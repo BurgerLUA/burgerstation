@@ -18,7 +18,7 @@ var/global/list/all_mobs = list()
 	all_mobs += src
 
 /mob/proc/on_life_client()
-	handle_movement()
+	handle_movement(TRUE)
 	return TRUE
 
 

@@ -10,12 +10,13 @@ atom/movable
 /atom/movable/proc/get_movement_delay()
 	return 8
 
-/atom/movable/proc/handle_movement()
+/atom/movable/proc/handle_movement(var/adjust_delay = FALSE)
 	if(move_dir && move_delay == 0)
 		update_movement()
 		step(src,move_dir)
 		move_delay += get_movement_delay()
 		return TRUE
 	else
-		move_delay = max(0,move_delay - 1)
+		if(adjust_delay)
+			move_delay = max(0,move_delay - 1)
 		return FALSE
