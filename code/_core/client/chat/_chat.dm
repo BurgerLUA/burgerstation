@@ -1,14 +1,11 @@
-/client/verb/say(var/text_to_say as text)
+/mob/verb/say(var/text_to_say as text)
 
 	if(!text_to_say)
 		text_to_say = input("What would you like to say?")
 
-	if(mob)
-		display_message(mob,text_to_say,TEXT_TALK)
-	else
-		display_message(src,text_to_say,TEXT_TALK)
+	display_message(src,text_to_say,TEXT_TALK)
 
-/client/verb/looc(var/text_to_say as text)
+/mob/verb/looc(var/text_to_say as text)
 	display_message(src,text_to_say,TEXT_LOOC)
 
 /client/verb/ooc(var/text_to_say as text)

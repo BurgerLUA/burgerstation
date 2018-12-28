@@ -39,7 +39,7 @@
 	else
 		switch(command)
 			if("say")
-				owner.say()
+				owner.mob.say()
 			if("sprint")
 				owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 			if("walk")

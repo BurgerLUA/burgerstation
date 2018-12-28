@@ -1,4 +1,5 @@
 var/global/list/all_mobs = list()
+
 /mob/
 	name = "MOB ERROR"
 	icon = 'icons/debug/mobs.dmi'
@@ -17,6 +18,7 @@ var/global/list/all_mobs = list()
 
 /mob/proc/on_life()
 	return TRUE
+
 
 /mob/get_movement_delay()
 	var/delay = movement_delay

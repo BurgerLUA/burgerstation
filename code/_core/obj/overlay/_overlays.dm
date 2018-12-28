@@ -1,0 +1,2 @@
+/obj/overlay
+	name = "overlay"

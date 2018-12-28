@@ -1,1 +1,1 @@
-/mob/living/basic
+//mob/living/basic

@@ -12,14 +12,12 @@
 
 /datum/button_tracker/proc/set_pressed(var/button)
 	if(is_released(button))
-		owner << "[button] pressed."
 		pressed_list += button
 		on_pressed(button)
 		return TRUE
 
 /datum/button_tracker/proc/set_released(var/button)
 	if(is_pressed(button))
-		owner << "[button] released."
 		pressed_list -= button
 		on_released(button)
 		return TRUE

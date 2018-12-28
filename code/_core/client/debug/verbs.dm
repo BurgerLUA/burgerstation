@@ -35,3 +35,19 @@ client/verb/debug_movement()
 	set category = "Debug"
 
 	src << mob.move_dir
+
+client/verb/debug_organs()
+	set category = "Debug"
+	var/mob/living/advanced/A = mob
+	for(var/obj/item/organ/O in A.organs)
+		src << O.name
+
+client/verb/debug_overlays()
+	set category = "Debug"
+	for(var/obj/overlay/O in mob.overlays)
+		src << O.name
+
+client/verb/debug_species()
+	set category = "Debug"
+	var/mob/living/advanced/A = mob
+	src << A.mob_species.name
