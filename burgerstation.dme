@@ -30,6 +30,7 @@
 #include "code\_core\atom\health.dm"
 #include "code\_core\atom\listening.dm"
 #include "code\_core\atom\moveable\_moveable.dm"
+#include "code\_core\atom\moveable\movement.dm"
 #include "code\_core\callback\_callback.dm"
 #include "code\_core\client\_client.dm"
 #include "code\_core\client\button_tracker.dm"

@@ -4,6 +4,7 @@ var/global/list/all_clients = list()
 /client/
 	var/datum/button_tracker/button_tracker
 	var/datum/macros/macros
+	fps = FPS_CLIENT
 
 /client/New()
 	if(!button_tracker)

@@ -2,7 +2,7 @@ var/global/list/active_subsystems = list()
 var/global/tick_count = 0
 
 /world/
-	fps = FPS
+	fps = FPS_SERVER
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
 

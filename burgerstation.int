@@ -1,8 +1,8 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1545967087
-DIR: code code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\turf code\_core\turf\simulated code\_core\turf\simulated\floor code\_core\world icons icons\debug icons\turf icons\turf\floor interface maps maps\debug 
+LAST_COMPILE_TIME: 1545971093
+DIR: code code\__defines code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\debug code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\turf\simulated code\_core\world 
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
@@ -11,9 +11,9 @@ PACKAGE_DME_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burger
 LAST_COMPILE_VERSION: 512.1462
 PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
-WINDOW: maps\debug\debug_01.dmm;icons\debug\areas.dmi;code\_core\turf\simulated\floor\_floor.dm;code\_core\turf\simulated\floor\grass.dm;icons\debug\turfs.dmi;icons\turf\floor\natural.dmi;code\_core\client\_client.dm;code\_core\client\debug\verbs.dm;code\_core\client\button_tracker.dm;code\_core\mob\_mob.dm;code\_core\atom\moveable\_moveable.dm
+WINDOW: code\_core\atom\moveable\movement.dm;code\_core\mob\_mob.dm;code\__defines\world.dm;code\_core\client\_client.dm;code\_core\world\_world.dm;code\_core\client\button_tracker.dm
 PACKAGE_DME_INFO: 
-FILE: code\_core\atom\moveable\_moveable.dm
+FILE: code\_core\atom\moveable\movement.dm
 PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 PACKAGE_DME_DEMO: 
 */
