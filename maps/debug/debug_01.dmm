@@ -1,5 +1,6 @@
-"a" = (/turf/simulated/floor,/area)
+"a" = (/turf/simulated/floor/grass,/area)
 "b" = (/turf/simulated/wall,/area)
+"c" = (/obj/marker/spawnpoint/debug,/turf/simulated/floor/grass,/area)
 
 (1,1,1) = {"
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -15,9 +16,9 @@ baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
 baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
 baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
 baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaacccaaaaaaaaaaaaaab
+baaaaaaaaaaaaacccaaaaaaaaaaaaaab
+baaaaaaaaaaaaacccaaaaaaaaaaaaaab
 baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
 baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
 baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab

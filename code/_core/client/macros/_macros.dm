@@ -4,7 +4,11 @@
 		"W" = NORTH,
 		"D" = EAST,
 		"S" = SOUTH,
-		"A" = WEST
+		"A" = WEST,
+		"T" = "say",
+		"Shift" = "sprint",
+		"Alt" = "walk",
+		"Ctrl" = "crouch"
 	)
 
 /datum/macros/New(var/client/spawning_owner)
@@ -16,6 +20,14 @@
 	if(isnum(command))
 		owner.mob.move_dir |= command
 		owner.mob.handle_movement()
+	else
+		switch(command)
+			if("sprint")
+				owner.mob.movement_flags |= MOVEMENT_RUNNING
+			if("walk")
+				owner.mob.movement_flags |= MOVEMENT_WALKING
+			if("crouch")
+				owner.mob.movement_flags |= MOVEMENT_CROUCHING
 
 	return TRUE
 
@@ -24,6 +36,16 @@
 
 	if(isnum(command))
 		owner.mob.move_dir &= ~command
+	else
+		switch(command)
+			if("say")
+				owner.say()
+			if("sprint")
+				owner.mob.movement_flags &= ~MOVEMENT_RUNNING
+			if("walk")
+				owner.mob.movement_flags &= ~MOVEMENT_WALKING
+			if("crouch")
+				owner.mob.movement_flags &= ~MOVEMENT_CROUCHING
 
 
 	return TRUE
