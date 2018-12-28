@@ -2,19 +2,19 @@
 /*
 MAP_ZOOM: 1.000
 LAST_COMPILE_TIME: 1545992598
-DIR: code code\__defines code\__helpers code\_core code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\mob\living\basic code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\obj\item\clothing\uniform code\_core\obj\item\organs code\_core\obj\overlay code\_core\species code\_core\turf\simulated code\_core\turf\simulated\floor code\_core\turf\simulated\wall code\_core\turf\unsimulated icons icons\mob icons\mob\living icons\mob\living\advanced icons\obj icons\obj\items icons\obj\items\clothing icons\turf\floor interface maps maps\debug 
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
+DIR: code code\__defines code\__helpers code\_core code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\mob code\_core\mob\living code\_core\mob\living\advanced 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_src.zip
 LAST_COMPILE_VERSION: 512.1462
-PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
-WINDOW: code\_core\mob\living\advanced\_advanced.dm;code\__defines\movement.dm;code\__defines\world.dm
+PACKAGE_TYPE: 0
 PACKAGE_DME_INFO: 
+WINDOW: code\_core\mob\living\advanced\_advanced.dm;code\__defines\movement.dm;code\__defines\world.dm
 FILE: code\_core\mob\living\advanced\_advanced.dm
-PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 PACKAGE_DME_DEMO: 
+PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 */
 // END_INTERNALS
