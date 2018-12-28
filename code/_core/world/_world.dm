@@ -5,8 +5,6 @@ var/global/tick_count = 0
 	fps = FPS
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
-	hub = "BurgerBB.burgerstation"
-	hub_password = "bigpenis"
 
 /world/New()
 	..()

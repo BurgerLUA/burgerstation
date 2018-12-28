@@ -47,6 +47,7 @@
 #include "code\_core\turf\simulated\wall\_wall.dm"
 #include "code\_core\turf\unsimulated\_unsimulated.dm"
 #include "code\_core\world\_world.dm"
+#include "code\_core\world\private.dm"
 #include "interface\default.dmf"
 #include "maps\debug\debug_01.dmm"
 #include "scripts\macro.dms"
