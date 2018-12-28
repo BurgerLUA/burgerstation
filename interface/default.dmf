@@ -1,0 +1,68 @@
+macro "macro"
+
+
+menu "menu"
+	elem 
+		name = "&File"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Quit"
+		command = ".quit"
+		category = "&File"
+		saved-params = "is-checked"
+
+
+window "main"
+	elem "main"
+		type = MAIN
+		pos = 281,0
+		size = 1280x720
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		macro = "macro"
+		menu = "menu"
+	elem "button1"
+		type = BUTTON
+		pos = 1200,696
+		size = 80x24
+		anchor1 = 100,100
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Enter"
+		command = ""
+	elem "input1"
+		type = INPUT
+		pos = 0,696
+		size = 1200x24
+		anchor1 = 0,100
+		anchor2 = 100,100
+		saved-params = ""
+	elem "info1"
+		type = INFO
+		pos = 768,0
+		size = 512x200
+		anchor1 = 100,0
+		anchor2 = none
+		saved-params = ""
+		tab-background-color = none
+	elem "output"
+		type = OUTPUT
+		pos = 768,200
+		size = 512x496
+		anchor1 = 100,100
+		anchor2 = none
+		is-default = true
+		saved-params = "max-lines"
+	elem "map1"
+		type = MAP
+		pos = 0,0
+		size = 768x696
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "zoom;letterbox;zoom-mode"
+

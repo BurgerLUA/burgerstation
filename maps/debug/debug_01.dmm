@@ -1,0 +1,37 @@
+"a" = (/turf/simulated/floor,/area)
+"b" = (/turf/simulated/wall,/area)
+
+(1,1,1) = {"
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+"}
