@@ -2,7 +2,7 @@
 	name = "TURF ERROR"
 	icon = 'icons/debug/turfs.dmi'
 	icon_state = ""
-	layer = LAYER_TURF
+	layer = LAYER_FLOOR
 
 	//Density
 	var/density_north = FALSE

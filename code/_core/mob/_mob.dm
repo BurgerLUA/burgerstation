@@ -5,12 +5,13 @@ var/global/list/all_mobs = list()
 	icon = 'icons/debug/mobs.dmi'
 	icon_state = ""
 	layer = LAYER_MOB
+	var/enable_AI = FALSE
 
-	var/tmp/list/action_list = list()
 	var/tmp/movement_flags = 0x0
 
 /mob/New()
 	all_mobs += src
+	. = ..()
 
 /mob/proc/on_life_client()
 	handle_movement(TRUE)
@@ -18,7 +19,6 @@ var/global/list/all_mobs = list()
 
 /mob/proc/on_life()
 	return TRUE
-
 
 /mob/get_movement_delay()
 	var/delay = movement_delay

@@ -2,21 +2,21 @@
 	name = "torso"
 	desc = "An organ."
 	icon = 'icons/mob/living/advanced/human.dmi'
-	icon_state = "torso"
+	icon_state = "torso_m"
 	worn_layer = LAYER_MOB_TORSO
 
 /obj/item/organ/groin
 	name = "groin"
 	desc = "An organ."
 	icon = 'icons/mob/living/advanced/human.dmi'
-	icon_state = "groin"
+	icon_state = "groin_m"
 	worn_layer = LAYER_MOB_GROIN
 
 /obj/item/organ/head
 	name = "head"
 	desc = "An organ."
 	icon = 'icons/mob/living/advanced/human.dmi'
-	icon_state = "head"
+	icon_state = "head_m"
 	worn_layer = LAYER_MOB_HEAD
 
 /obj/item/organ/right_arm

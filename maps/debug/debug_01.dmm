@@ -1,40 +1,53 @@
 "a" = (/turf/simulated/floor/grass,/area)
-"b" = (/turf/simulated/wall,/area)
-"c" = (/obj/marker/spawnpoint/debug,/turf/simulated/floor/grass,/area)
-"d" = (/obj/item/clothing/uniform/grey_suit,/turf/simulated/floor/grass,/area)
-"e" = (/obj/item/clothing/feet/shoes/grey,/turf/simulated/floor/grass,/area)
+"b" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 9},/area)
+"c" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 1},/area)
+"d" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 5},/area)
+"e" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 8},/area)
+"f" = (/obj/marker/spawnpoint/debug,/turf/simulated/floor/carpet,/area)
+"g" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 4},/area)
+"h" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 10},/area)
+"i" = (/turf/simulated/floor/carpet/end,/area)
+"j" = (/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 6},/area)
+"k" = (/turf/simulated/wall/fake_glass/end{icon_state = "end"; dir = 1},/area)
+"l" = (/turf/simulated/wall/fake_glass/end,/area)
+"m" = (/turf/simulated/wall/metal,/area)
+"n" = (/turf/simulated/wall/fake_glass,/area)
+"o" = (/turf/simulated/floor/tile,/area)
+"p" = (/turf/simulated/floor/wood,/area)
+"q" = (/mob/living/advanced/human/ai,/turf/simulated/floor/tile,/area)
+"r" = (/mob/living/advanced/human/ai,/turf/simulated/floor/wood,/area)
 
 (1,1,1) = {"
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaacccaaaaaaaaaaaaaab
-baaaaaaaaaaaaacccadaaaaaaaaaaaab
-baaaaaaaaaaaaacccaeaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaamooommmmmmmmmaaaaaaaaaam
+maaaaaaakooommmpppppmaaaaaaaaaam
+maaaaaaaloooooorbcdpmaaaaaaaaaam
+maaaaaaaooookqkpefgpmaaaaaaaaaam
+maaaaaaaoooonqlphijpmaaaaaaaaaam
+maaaaaaakooonqmpppppmaaaaaaaaaam
+maaaaaaalooolqmpppppmaaaaaaaaaam
+maaaaaaamoooqqmpppppmaaaaaaaaaam
+maaaaaaamooommmmmmmpmaaaaaaaaaam
+maaaaaaamooooooooooooaaaaaaaaaam
+maaaaaaamooooooooooooaaaaaaaaaam
+maaaaaaamooooooooooooaaaaaaaaaam
+maaaaaaamammmmmmmmmmmaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+maaaaaaaaaaaaaaaaaaaaaaaaaaaaaam
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 "}

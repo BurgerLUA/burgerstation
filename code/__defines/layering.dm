@@ -1,9 +1,11 @@
-#define LAYER_TURF 0
-#define LAYER_OBJ 1
-#define LAYER_MOB 2
-#define LAYER_AREA 3
+#define LAYER_FLOOR 1
+#define LAYER_OBJ 2
+#define LAYER_MOB 3
+#define LAYER_WALL 4
+#define LAYER_AREA 5
 
 #define LAYER_MOB_NONE    LAYER_MOB
+
 #define LAYER_MOB_GROIN   LAYER_MOB + 0.01
 #define LAYER_MOB_TORSO   LAYER_MOB + 0.02
 #define LAYER_MOB_LEGS    LAYER_MOB + 0.03
@@ -11,3 +13,12 @@
 #define LAYER_MOB_HEAD    LAYER_MOB + 0.05
 #define LAYER_MOB_ARMS    LAYER_MOB + 0.06
 #define LAYER_MOB_HANDS   LAYER_MOB + 0.07
+
+
+#define LAYER_MOB_SHOES   LAYER_MOB + 0.08
+#define LAYER_MOB_GLOVES  LAYER_MOB + 0.09
+#define LAYER_MOB_UNIFORM LAYER_MOB + 0.10
+
+
+
+

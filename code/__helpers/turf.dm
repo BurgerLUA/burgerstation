@@ -1,0 +1,1 @@
+#define get_turf(A) (get_step(A, 0)) //This helper is so fucking weird.

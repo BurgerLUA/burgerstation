@@ -44,8 +44,7 @@ client/verb/debug_organs()
 
 client/verb/debug_overlays()
 	set category = "Debug"
-	for(var/obj/overlay/O in mob.overlays)
-		src << O.name
+	src << "Found [length(mob.overlays)] overlays."
 
 client/verb/debug_species()
 	set category = "Debug"

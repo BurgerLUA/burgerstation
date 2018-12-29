@@ -22,3 +22,12 @@
 		if(adjust_delay)
 			move_delay = max(0,move_delay - 1)
 		return FALSE
+
+/atom/movable/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+	if(istype(NewLoc,/turf/))
+		var/turf/T = NewLoc
+		if(!T.can_pass(src,Dir))
+			dir = Dir
+			return FALSE
+
+	. = ..()

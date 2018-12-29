@@ -5,6 +5,7 @@ var/global/list/all_clients = list()
 	var/datum/button_tracker/button_tracker
 	var/datum/macros/macros
 	fps = FPS_CLIENT
+	preload_rsc = 1
 
 /client/New()
 	if(!button_tracker)
@@ -16,6 +17,12 @@ var/global/list/all_clients = list()
 	all_clients += src
 
 	src.mob = new /mob/living/advanced/human
+	src.mob.ckey = ckey
+	src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
+
+
+	src.mob.loc = pick(spawnpoints)
+
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE

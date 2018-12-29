@@ -1,0 +1,40 @@
+"a" = (/turf/simulated/floor/grass,/area)
+"b" = (/turf/simulated/wall,/area)
+"c" = (/obj/marker/spawnpoint/debug,/turf/simulated/floor/grass,/area)
+"d" = (/obj/item/clothing/uniform/grey_suit,/turf/simulated/floor/grass,/area)
+"e" = (/obj/item/clothing/feet/shoes/grey,/turf/simulated/floor/grass,/area)
+
+(1,1,1) = {"
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaacccaaaaaaaaaaaaaab
+baaaaaaaaaaaaacccadaaaaaaaaaaaab
+baaaaaaaaaaaaacccaeaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+"}
