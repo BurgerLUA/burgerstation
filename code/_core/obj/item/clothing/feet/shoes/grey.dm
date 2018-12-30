@@ -8,6 +8,12 @@
 	worn_icon = 'icons/obj/items/clothing/worn/feet.dmi'
 	worn_icon_state = "black"
 
+	held_icon_left = 'icons/obj/items/clothing/held/lefthand_shoes.dmi'
+	held_icon_right = 'icons/obj/items/clothing/held/righthand_shoes.dmi'
+	held_icon_state = "shoes"
+
+	damage_type = /datum/damagetype/clothing/shoe
+
 /obj/item/clothing/feet/shoes/black
 	name = "right black shoe"
 

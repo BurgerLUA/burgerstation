@@ -38,8 +38,6 @@
 	update_icon()
 
 /mob/living/advanced/proc/add_clothes(var/datum/outfit/spawning_outfit)
-	src << length(spawning_outfit.spawning_clothes)
-
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
@@ -80,6 +78,16 @@
 			spawned_overlay.layer = C.worn_layer
 			spawned_overlay.icon = C.worn_icon
 			spawned_overlay.icon_state = C.worn_icon_state
+			overlays += spawned_overlay
+		for(var/obj/item/I2 in I.held_objects)
+			I2.update_icon()
+			var/obj/overlay/spawned_overlay = new /obj/overlay
+			spawned_overlay.layer = LAYER_MOB_HELD
+			if(I.item_slot == SLOT_HAND_LEFT)
+				spawned_overlay.icon = I2.held_icon_left
+			else
+				spawned_overlay.icon = I2.held_icon_right
+			spawned_overlay.icon_state = I2.held_icon_state
 			overlays += spawned_overlay
 
 	. = ..()

@@ -47,6 +47,8 @@
 	inventory = /obj/inventory/organs/right_hand
 	health_max = 25
 
+	damage_type = /datum/damagetype/body/fists/
+
 /obj/item/organ/right_leg
 	name = "right leg"
 	id = "r_leg"
@@ -84,6 +86,8 @@
 	worn_layer = LAYER_MOB_HANDS
 	inventory = /obj/inventory/organs/left_hand
 	health_max = 25
+
+	damage_type = /datum/damagetype/body/fists/left
 
 /obj/item/organ/left_leg
 	name = "left leg"

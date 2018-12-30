@@ -1,6 +1,6 @@
 obj/inventory/use_item_on(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	if(length(held_objects) && length(held_objects)) //If we have an item in our hands, that item will now be the one that is being used.
+	if(length(held_objects)) //If we have an item in our hands, that item will now be the one that is being used.
 		var/obj/item/I = held_objects[1]
 		return I.use_item_on(caller,object,location,control,params)
 
@@ -25,3 +25,6 @@ obj/inventory/use_item_on(var/mob/caller as mob,var/atom/object,location,control
 		return FALSE
 
 	return src.attack(caller,object,params)
+
+/obj/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
+	return src.loc

@@ -10,8 +10,6 @@
 
 	screen_loc = "CENTER,CENTER"
 
-	attack_damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
-
 /obj/inventory/organs/head
 	name = "head slot"
 	screen_loc = "LEFT,BOTTOM+3"
@@ -63,7 +61,6 @@
 	icon_state = "left_hand"
 	screen_loc = "CENTER+0.5,BOTTOM"
 	click_flags = LEFT_HAND
-	attack_damage = list(BRUTE = 0, BURN = 10, TOX = 0, OXY = 0)
 	item_slot = SLOT_HAND_LEFT
 	worn_slots = 1
 	held_slots = 1
@@ -73,7 +70,6 @@
 	icon_state = "right_hand"
 	screen_loc = "CENTER-0.5,BOTTOM"
 	click_flags = RIGHT_HAND
-	attack_damage = list(BRUTE = 10, BURN = 0, TOX = 0, OXY = 0)
 	item_slot = SLOT_HAND_RIGHT
 	worn_slots = 1
 	held_slots = 1

@@ -3,6 +3,7 @@
 	icon = 'icons/debug/turfs.dmi'
 	icon_state = ""
 	layer = LAYER_FLOOR
+	var/area/area
 
 	//Density
 	var/density_north = FALSE
@@ -11,3 +12,6 @@
 	var/density_west  = FALSE
 	var/density_up    = FALSE
 	var/density_down  = FALSE
+
+/turf/New()
+	area = src.loc

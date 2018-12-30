@@ -32,4 +32,17 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 			for(var/atom/object in world)
 				object.to_chat(format_speech(source,text_to_say,text_type))
 
+/atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
+	for(var/atom/object in range(view_range))
+		if(src in view(object))
+			if(src == object)
+				object.to_chat(first_person_text)
+			else
+				object.to_chat(third_person_text)
+		else
+			object.to_chat(blind_text)
+
+
+
+
 

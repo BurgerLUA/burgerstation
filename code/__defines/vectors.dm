@@ -1,0 +1,1 @@
+#define vector(x,y,z) list(x,y,z)

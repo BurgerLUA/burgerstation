@@ -1,5 +1,4 @@
 /mob/living/advanced/proc/remove_organ(var/obj/item/organ/O)
-	src << O.name
 	organs.Remove(O)
 	update_organs()
 	O = null

@@ -89,3 +89,8 @@ client/verb/add_clothes()
 	set category = "Debug"
 	var/mob/living/advanced/A = mob
 	A.add_clothes(A.mob_outfit)
+
+
+client/verb/debug_sounds()
+	set category = "Debug"
+	src << "Found [length(active_sounds)] active sounds."

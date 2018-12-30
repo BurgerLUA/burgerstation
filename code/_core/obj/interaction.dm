@@ -7,6 +7,9 @@
 	else if (caller.attack_flags & ATTACK_DROP)
 		return drop_item()
 
+	if(src == object)
+		caller << "YEEHAW CHUCKLEFUCKS"
+
 	return FALSE
 
 /obj/proc/get_held()
