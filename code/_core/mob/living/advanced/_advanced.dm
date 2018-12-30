@@ -28,8 +28,8 @@
 	organs += O
 	if(O.id)
 		labeled_organs[O.id] = O
-	if(O.inventory && src.client)
-		O.inventory.update_owner(src.client)
+	if(O.inventory)
+		O.inventory.update_owner(src)
 
 /mob/living/advanced/Initialize()
 	. = ..()
@@ -41,7 +41,7 @@
 	src << length(spawning_outfit.spawning_clothes)
 
 	for(var/key in spawning_outfit.spawning_clothes)
-		var/obj/item/clothing/C = new key(get_turf(client.mob))
+		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
 
 /mob/living/advanced/proc/add_worn_item(var/obj/item/clothing/C)

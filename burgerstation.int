@@ -1,8 +1,8 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 2.000
-LAST_COMPILE_TIME: 1546129568
-DIR: code code\__defines code\__helpers code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\inventory code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\obj\item\clothing\hands code\_core\obj\item\clothing\uniform code\_core\obj\item\organs code\_core\outfit icons icons\hud icons\mob\living icons\mob\living\advanced icons\mob\living\advanced\overlays icons\obj icons\obj\items icons\obj\items\clothing icons\obj\items\clothing\inventory icons\obj\items\clothing\worn maps maps\debug 
+LAST_COMPILE_TIME: 1546131032
+DIR: code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\inventory code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\obj\item\clothing\hands code\_core\obj\item\clothing\uniform code\_core\obj\item\organs code\_core\outfit icons\hud icons\mob\living icons\mob\living\advanced icons\mob\living\advanced\overlays icons\obj icons\obj\items icons\obj\items\clothing icons\obj\items\clothing\inventory icons\obj\items\clothing\worn maps\debug scripts 
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
@@ -11,9 +11,9 @@ PACKAGE_DME_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burger
 LAST_COMPILE_VERSION: 512.1462
 PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
-WINDOW: code\_core\mob\living\advanced\_advanced.dm;code\_core\inventory\_inventory.dm;code\_core\client\inventory.dm;code\_core\mob\_mob.dm;code\_core\obj\interaction.dm
+WINDOW: code\_core\mob\living\advanced\_advanced.dm;code\_core\inventory\_inventory.dm;code\_core\client\inventory.dm;code\_core\mob\_mob.dm;code\_core\obj\interaction.dm;code\_core\client\_client.dm;code\_core\obj\item\_item.dm;code\_core\inventory\hand.dm;code\_core\inventory\interaction.dm;code\_core\atom\listening.dm;code\_core\atom\attacking.dm;scripts\macro.dms;scripts\style.dms
 PACKAGE_DME_INFO: 
-FILE: code\_core\obj\interaction.dm
+FILE: scripts\style.dms
 PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 PACKAGE_DME_DEMO: 
 */

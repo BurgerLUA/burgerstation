@@ -12,11 +12,3 @@
 	if(inventory)
 		inventory = new inventory(src)
 	. = ..()
-
-
-
-
-
-
-
-

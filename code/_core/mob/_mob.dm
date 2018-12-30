@@ -13,6 +13,21 @@ var/global/list/all_mobs = list()
 
 	var/list/obj/inventory/inventory //List of inventory items
 
+/mob/proc/add_inventory(var/obj/inventory/I)
+	inventory += I
+	if(client)
+		client.screen += I
+	update_inventory()
+
+/mob/proc/remove_inventory(var/obj/inventory/I)
+	inventory -= I
+	if(client)
+		client.screen -= I
+	update_inventory()
+
+/mob/proc/update_inventory()
+	client.known_inventory = inventory
+
 /mob/New()
 	all_mobs += src
 	inventory = list()

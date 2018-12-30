@@ -6,12 +6,13 @@
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
 
+	/*
 	attacker << "ATTACKER: [attacker]"
 	attacker << "VICTIM: [victim]"
 
 	attacker << "OBJECT TO DAMAGE WITH: [object_to_damage_with]"
 	attacker << "OBJECT TO DAMAGE: [object_to_damage]"
-
+	*/
 
 
 	if(!object_to_damage || !object_to_damage_with)

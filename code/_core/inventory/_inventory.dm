@@ -44,22 +44,18 @@
 	worn_objects = list()
 	. = ..()
 
-/obj/inventory/proc/update_owner(var/client/desired_owner) //Can also be safely used as an updater.
+/obj/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
 		return FALSE
 
 	if(owner)
-		owner.inventory -= src
-		if(owner.client)
-			owner.client.screen -= src
+		owner.remove_inventory(src)
 
 	owner = desired_owner
+	owner.add_inventory(src)
 
-	if(owner)
-		owner.inventory -= src
-		if(owner.client)
-			owner.client.screen += src
+	return TRUE
 
 /obj/inventory/proc/add_object(var/obj/item/I) //Prioritize wearing it, then holding it.
 	if(is_clothing(I))
@@ -76,9 +72,6 @@
 	I.loc = src
 	held_objects += I
 	overlays += I
-
-	owner << "HELD OBJECTS: [length(held_objects)]"
-
 	update_stats()
 
 	return TRUE
@@ -90,8 +83,6 @@
 	C.loc = src
 	worn_objects += C
 	overlays += C
-
-	owner << "WORN OBJECTS: [length(worn_objects)]"
 
 	update_stats()
 

@@ -117,5 +117,6 @@
 #include "interface\default.dmf"
 #include "maps\debug\debug_01.dmm"
 #include "scripts\macro.dms"
+#include "scripts\style.dms"
 // END_INCLUDE
 
