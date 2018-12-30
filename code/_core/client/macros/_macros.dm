@@ -8,7 +8,9 @@
 		"T" = "say",
 		"Shift" = "sprint",
 		"Alt" = "walk",
-		"Ctrl" = "crouch"
+		"Ctrl" = "crouch",
+		"R" = "throw",
+		"Q" = "drop"
 	)
 
 /datum/macros/New(var/client/spawning_owner)
@@ -28,6 +30,10 @@
 				owner.mob.movement_flags |= MOVEMENT_WALKING
 			if("crouch")
 				owner.mob.movement_flags |= MOVEMENT_CROUCHING
+			if("throw")
+				owner.mob.attack_flags |= ATTACK_THROW
+			if("drop")
+				owner.mob.attack_flags |= ATTACK_DROP
 
 	return TRUE
 
@@ -46,6 +52,10 @@
 				owner.mob.movement_flags &= ~MOVEMENT_WALKING
 			if("crouch")
 				owner.mob.movement_flags &= ~MOVEMENT_CROUCHING
+			if("throw")
+				owner.mob.attack_flags &= ~ATTACK_THROW
+			if("drop")
+				owner.mob.attack_flags &= ~ATTACK_DROP
 
 
 	return TRUE

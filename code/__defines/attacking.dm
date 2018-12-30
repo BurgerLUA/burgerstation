@@ -1,0 +1,2 @@
+#define ATTACK_THROW 0x1
+#define ATTACK_DROP 0x2

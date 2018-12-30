@@ -9,8 +9,13 @@ var/global/list/all_mobs = list()
 
 	var/tmp/movement_flags = 0x0
 
+	var/tmp/attack_flags = 0x0
+
+	var/list/obj/inventory/inventory //List of inventory items
+
 /mob/New()
 	all_mobs += src
+	inventory = list()
 	. = ..()
 
 /mob/proc/on_life_client()
@@ -26,8 +31,10 @@ var/global/list/all_mobs = list()
 	if(movement_flags & MOVEMENT_CROUCHING)
 		delay *= 2
 
+	/*
 	if(movement_flags & MOVEMENT_WALKING)
 		delay *= 2
+	*/
 
 	if(movement_flags & MOVEMENT_RUNNING)
 		delay *= 0.5

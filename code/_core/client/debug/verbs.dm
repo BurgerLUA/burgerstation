@@ -42,6 +42,17 @@ client/verb/debug_organs()
 	for(var/obj/item/organ/O in A.organs)
 		src << O.name
 
+	for(var/key in A.labeled_organs)
+		var/obj/item/organ/O = A.labeled_organs[key]
+		src << "[key] = [O.type]"
+
+
+client/verb/debug_species_organs()
+	set category = "Debug"
+	var/mob/living/advanced/A = mob
+	for(var/key in A.mob_species.spawning_organs)
+		src << "[key]"
+
 client/verb/debug_overlays()
 	set category = "Debug"
 	src << "Found [length(mob.overlays)] overlays."
@@ -50,3 +61,31 @@ client/verb/debug_species()
 	set category = "Debug"
 	var/mob/living/advanced/A = mob
 	src << A.mob_species.name
+
+client/verb/debug_images()
+	set category = "Debug"
+	src << "Found [length(src.images)] images."
+
+client/verb/debug_inventory()
+	set category = "Debug"
+	var/mob/living/advanced/A = mob
+	src << "Found [length(A.inventory)] inventory holders."
+
+client/verb/debug_attack_flags()
+	set category = "Debug"
+	src << mob.attack_flags
+
+client/verb/update_mob_icon()
+	set category = "Debug"
+	mob.update_icon()
+
+client/verb/remove_head()
+	set category = "Debug"
+	var/mob/living/advanced/A = mob
+	if(A.labeled_organs["head"])
+		A.remove_organ(A.labeled_organs["head"])
+
+client/verb/add_clothes()
+	set category = "Debug"
+	var/mob/living/advanced/A = mob
+	A.add_clothes(A.mob_outfit)

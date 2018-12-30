@@ -16,6 +16,9 @@
 "p" = (/turf/simulated/floor/wood,/area)
 "q" = (/mob/living/advanced/human/ai,/turf/simulated/floor/tile,/area)
 "r" = (/mob/living/advanced/human/ai,/turf/simulated/floor/wood,/area)
+"s" = (/obj/item/clothing/hands/gloves/yellow,/obj/item/clothing/hands/gloves/yellow/left,/turf/simulated/floor/wood,/area)
+"t" = (/obj/item/clothing/uniform/jumpsuit,/turf/simulated/floor/wood,/area)
+"u" = (/obj/item/clothing/feet/shoes/black,/obj/item/clothing/feet/shoes/black/left,/turf/simulated/floor/wood,/area)
 
 (1,1,1) = {"
 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
@@ -34,9 +37,9 @@ maaaaaaakooommmpppppmaaaaaaaaaam
 maaaaaaaloooooorbcdpmaaaaaaaaaam
 maaaaaaaooookqkpefgpmaaaaaaaaaam
 maaaaaaaoooonqlphijpmaaaaaaaaaam
-maaaaaaakooonqmpppppmaaaaaaaaaam
-maaaaaaalooolqmpppppmaaaaaaaaaam
-maaaaaaamoooqqmpppppmaaaaaaaaaam
+maaaaaaakooonqmppsppmaaaaaaaaaam
+maaaaaaalooolqmpptppmaaaaaaaaaam
+maaaaaaamoooqqmppuppmaaaaaaaaaam
 maaaaaaamooommmmmmmpmaaaaaaaaaam
 maaaaaaamooooooooooooaaaaaaaaaam
 maaaaaaamooooooooooooaaaaaaaaaam

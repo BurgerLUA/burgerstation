@@ -1,20 +1,20 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 2.000
-LAST_COMPILE_TIME: 1546049215
+LAST_COMPILE_TIME: 1546129568
+DIR: code code\__defines code\__helpers code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\inventory code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\obj\item\clothing\hands code\_core\obj\item\clothing\uniform code\_core\obj\item\organs code\_core\outfit icons icons\hud icons\mob\living icons\mob\living\advanced icons\mob\living\advanced\overlays icons\obj icons\obj\items icons\obj\items\clothing icons\obj\items\clothing\inventory icons\obj\items\clothing\worn maps maps\debug 
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
-DIR: code code\__defines code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\debug code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\mob\living\basic code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\obj\item\clothing\hands code\_core\obj\item\clothing\uniform code\_core\obj\item\organs code\_core\obj\markers code\_core\subsystems code\_core\turf code\_core\turf\simulated code\_core\turf\simulated\floor code\_core\turf\simulated\wall code\_core\world icons icons\mob\living icons\mob\living\advanced icons\obj\items icons\obj\items\clothing\inventory icons\obj\items\clothing\worn icons\turf\floor icons\turf\wall maps maps\debug 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_src.zip
 LAST_COMPILE_VERSION: 512.1462
-PACKAGE_DME_START: 
 PACKAGE_TYPE: 0
+PACKAGE_DME_START: 
+WINDOW: code\_core\mob\living\advanced\_advanced.dm;code\_core\inventory\_inventory.dm;code\_core\client\inventory.dm;code\_core\mob\_mob.dm;code\_core\obj\interaction.dm
 PACKAGE_DME_INFO: 
-WINDOW: icons\turf\wall\metal.dmi;code\_core\turf\simulated\wall\_wall.dm;code\_core\turf\simulated\wall\metal.dm;code\_core\turf\simulated\wall\fake_glass.dm;maps\debug\debug_01.dmm;code\_core\turf\simulated\floor\_floor.dm;code\_core\turf\simulated\floor\tile.dm;code\_core\obj\markers\spawnpoint.dm;code\_core\client\_client.dm;code\__helpers\html.dm;code\__helpers\turf.dm;code\__defines\layering.dm;code\_core\turf\_turf.dm;code\_core\turf\movement.dm;code\_core\atom\moveable\_moveable.dm;code\__defines\booleans.dm;code\__defines\resources.dm;burgerstation.dme;code\__defines\movement.dm
-FILE: code\_core\turf\movement.dm
-PACKAGE_DME_DEMO: 
+FILE: code\_core\obj\interaction.dm
 PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
+PACKAGE_DME_DEMO: 
 */
 // END_INTERNALS

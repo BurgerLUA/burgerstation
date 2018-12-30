@@ -7,6 +7,10 @@ var/global/list/all_clients = list()
 	fps = FPS_CLIENT
 	preload_rsc = 1
 
+	var/list/obj/inventory/known_inventory
+
+	var/zoom_level = 64
+
 /client/New()
 	if(!button_tracker)
 		button_tracker = new(src)
@@ -16,13 +20,16 @@ var/global/list/all_clients = list()
 
 	all_clients += src
 
-	src.mob = new /mob/living/advanced/human
+	known_inventory = list()
+
+	src.mob = new /mob/living/advanced/human(pick(spawnpoints))
 	src.mob.ckey = ckey
 	src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
+	src.mob.Initialize()
 
+	update_zoom(0)
 
-	src.mob.loc = pick(spawnpoints)
-
+	generate_HUD()
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE
@@ -33,3 +40,33 @@ var/global/list/all_clients = list()
 	set hidden = TRUE
 	set instant = TRUE
 	button_tracker.set_released(button)
+
+
+/client/MouseMove(object,location,control,params) //WARNING: OVERHEAD
+	if(mob && mob.move_delay == -1 && mob.movement_flags & MOVEMENT_WALKING)
+		mob.face_atom(location)
+
+/client/MouseWheel(object,delta_x,delta_y,location,control,params)
+	var/change_in_screen = clamp(delta_x + delta_y,-1,1)*8
+	update_zoom(zoom_level + change_in_screen)
+
+
+/client/MouseDown(object,location,control,params)
+
+	var/list/aug = params2list(params)
+
+	if("left" in aug)
+		mob.on_left_click(object,location,control,aug)
+
+	if("right" in aug)
+		mob.on_right_click(object,location,control,aug)
+
+	if("middle" in aug)
+		mob.on_middle_click(object,location,control,aug)
+
+
+/client/proc/update_zoom(var/desired_zoom_level)
+	if(desired_zoom_level == 0)
+		desired_zoom_level = initial(zoom_level)
+	zoom_level = clamp(desired_zoom_level,32,256)
+	winset(src, "main.map","icon-size=[zoom_level]")

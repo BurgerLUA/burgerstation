@@ -19,22 +19,18 @@ menu "menu"
 		name = "128x128 (200%)"
 		command = ".winset \"main.map.icon-size=128\""
 		category = "Icons"
-		can-check = true
 		group = "icon_size"
 		saved-params = "is-checked"
 	elem 
 		name = "64x64 (100%)"
 		command = ".winset \"main.map.icon-size=64\""
 		category = "Icons"
-		is-checked = true
-		can-check = true
 		group = "icon_size"
 		saved-params = "is-checked"
 	elem 
 		name = "32x32 (50%)"
 		command = ".winset \"main.map.icon-size=32\""
 		category = "Icons"
-		can-check = true
 		group = "icon_size"
 		saved-params = "is-checked"
 
@@ -90,7 +86,8 @@ window "main"
 		size = 768x696
 		anchor1 = 0,0
 		anchor2 = 100,100
+		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 64
-		zoom = 1
+		zoom = 2
 

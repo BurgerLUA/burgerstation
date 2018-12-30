@@ -1,7 +1,7 @@
 #define FPS_CLIENT 60
 #define FPS_SERVER 20
 #define TILE_SIZE 32
-#define VIEW_RANGE 8
+#define VIEW_RANGE 15
 #define TICK_LAG 10 / FPS_SERVER
 
 #define MAX_MESSAGE_LEN 256

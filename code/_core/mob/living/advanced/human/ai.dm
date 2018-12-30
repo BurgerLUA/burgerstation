@@ -3,6 +3,10 @@
 	enable_AI = TRUE
 	icon = ""
 
+/mob/living/advanced/human/ai/New()
+	. = ..()
+	Initialize()
+
 /mob/living/advanced/human/ai/on_life_AI()
 
 	if(prob(25))
