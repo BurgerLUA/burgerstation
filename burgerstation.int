@@ -1,20 +1,20 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1546154478
-DIR: code code\__defines code\__helpers code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\inventory code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\obj\item\clothing\hands code\_core\obj\item\clothing\uniform code\_core\obj\item\organs code\_core\sound code\_core\subsystems code\_core\turf code\_core\turf\simulated code\_core\turf\simulated\floor icons icons\mob\living icons\mob\living\advanced icons\mob\living\advanced\overlays icons\obj icons\obj\items icons\obj\items\clothing\held icons\obj\items\clothing\worn interface maps maps\debug scripts sounds sounds\effects sounds\effects\impacts 
+LAST_COMPILE_TIME: 1546317486
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
+DIR: code code\__defines code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\inventory code\_core\mob code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\sound 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_src.zip
 LAST_COMPILE_VERSION: 512.1462
-PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
-WINDOW: code\_core\sound\_sound.dm;code\_core\damagetype\_damagetype.dm;code\_core\damagetype\clothing.dm;code\_core\damagetype\body.dm;code\_core\obj\item\clothing\feet\shoes\grey.dm
+PACKAGE_TYPE: 0
 PACKAGE_DME_INFO: 
-FILE: code\_core\damagetype\clothing.dm
-PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
+WINDOW: code\_core\mob\_mob.dm;code\_core\client\macros\_macros.dm;code\_core\atom\moveable\_moveable.dm;code\__defines\world.dm;code\_core\damagetype\_damagetype.dm
+FILE: code\_core\damagetype\_damagetype.dm
 PACKAGE_DME_DEMO: 
+PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 */
 // END_INTERNALS

@@ -6,6 +6,8 @@
 	step_size = TILE_SIZE
 	appearance_flags = LONG_GLIDE
 
+	animate_movement = FALSE
+
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 

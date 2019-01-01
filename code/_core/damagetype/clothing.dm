@@ -16,7 +16,7 @@
 	name = "Shoe"
 	desc = "Your shoe."
 	verbs = list("behave")
-	weapon_name = "right fist"
+	weapon_name = "shoe"
 	impact_sounds = list(
 		'sounds/effects/impacts/punch1.ogg',
 		'sounds/effects/impacts/punch2.ogg',

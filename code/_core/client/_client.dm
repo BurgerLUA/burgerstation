@@ -11,6 +11,8 @@ var/global/list/all_clients = list()
 
 	var/zoom_level = 64
 
+	//lazy_eye = 5
+
 /client/New()
 	if(!button_tracker)
 		button_tracker = new(src)

@@ -18,3 +18,5 @@
 	if(damage_type)
 		damage_type = new damage_type
 	. = ..()
+
+

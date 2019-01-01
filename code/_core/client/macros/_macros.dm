@@ -21,7 +21,7 @@
 
 	if(isnum(command))
 		owner.mob.move_dir |= command
-		owner.mob.handle_movement()
+		//owner.mob.handle_movement()
 	else
 		switch(command)
 			if("sprint")

@@ -33,7 +33,6 @@
 	var/movement_x = 0
 	var/movement_y = 0
 
-
 	if(attacker.dir & NORTH)
 		movement_y = 5
 
@@ -46,8 +45,8 @@
 	if(attacker.dir & WEST)
 		movement_x = -5
 
-	animate(attacker,LINEAR_EASING,time = 2, pixel_x = movement_x, pixel_y = movement_y)
-	animate(attacker,LINEAR_EASING,time = 4, pixel_x = 0, pixel_y = 0)
+	animate(attacker,LINEAR_EASING,time = 2, pixel_x = movement_x, pixel_y = movement_y, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(attacker,LINEAR_EASING,time = 8, pixel_x = 0, pixel_y = 0, flags = ANIMATION_LINEAR_TRANSFORM)
 
 /datum/damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)

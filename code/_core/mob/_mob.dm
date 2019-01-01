@@ -60,3 +60,36 @@ var/global/list/all_mobs = list()
 /mob/Destroy() //TODO: Destroy system
 	all_mobs -= src
 */
+
+
+/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+
+	if((Dir & WEST) && (Dir & EAST))
+		return FALSE
+
+	if((Dir & NORTH) && (Dir & SOUTH))
+		return FALSE
+
+	if(..())
+		var/pixel_x_offset = 0
+		var/pixel_y_offset = 0
+
+		if(Dir & NORTH)
+			pixel_y_offset = -step_size
+
+		if(Dir & SOUTH)
+			pixel_y_offset = step_size
+
+		if(Dir & EAST)
+			pixel_x_offset = -step_size
+
+		if(Dir & WEST)
+			pixel_x_offset = step_size
+
+		var/movement_delay = get_movement_delay()
+		if(client)
+			animate(client, LINEAR_EASING, time = 1, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(client, LINEAR_EASING, time = movement_delay * 1, pixel_x = 0, pixel_y = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+
+		animate(src, LINEAR_EASING, time = 1, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(src, LINEAR_EASING, time = movement_delay * 1, pixel_x = 0, pixel_y = 0, flags = ANIMATION_LINEAR_TRANSFORM)
