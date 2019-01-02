@@ -1,9 +1,9 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1546317486
+LAST_COMPILE_TIME: 1546402921
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
-DIR: code code\__defines code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\inventory code\_core\mob code\_core\obj code\_core\obj\item code\_core\obj\item\clothing code\_core\obj\item\clothing\feet code\_core\obj\item\clothing\feet\shoes code\_core\sound 
+DIR: code code\__defines code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\mob code\_core\mob\living code\_core\obj code\_core\turf code\_core\turf\simulated code\_core\turf\simulated\floor code\_core\world interface Lib 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
@@ -12,8 +12,8 @@ LAST_COMPILE_VERSION: 512.1462
 PACKAGE_DME_START: 
 PACKAGE_TYPE: 0
 PACKAGE_DME_INFO: 
-WINDOW: code\_core\mob\_mob.dm;code\_core\client\macros\_macros.dm;code\_core\atom\moveable\_moveable.dm;code\__defines\world.dm;code\_core\damagetype\_damagetype.dm
-FILE: code\_core\damagetype\_damagetype.dm
+WINDOW: code\_core\turf\_turf.dm;code\_core\turf\movement.dm;code\_core\atom\moveable\_moveable.dm;code\_core\atom\_atom.dm;code\_core\atom\moveable\direction.dm;code\_core\atom\directon.dm;code\__defines\debug.dm;code\_core\client\debug\verbs.dm;code\_core\obj\interaction.dm;code\_core\client\_client.dm
+FILE: code\_core\client\_client.dm
 PACKAGE_DME_DEMO: 
 PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 */

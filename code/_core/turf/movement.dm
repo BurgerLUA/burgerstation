@@ -1,32 +1,35 @@
-/turf/proc/can_pass(var/atom/A,var/move_dir)
+/turf/can_not_enter(var/atom/A,var/move_direction)
 
-	var/turf/start = get_turf(A)
+	if(src.density) //If you're stuck because of some odd bullshit.
+		return src
 
-	if(!start)
-		return TRUE
-
-	if(start.density) //If you're stuck because of some odd bullshit.
-		return !src.density
-
-	if(move_dir & NORTH)
-		if(start.density_north)
-			return FALSE
-		if(src.density_south)
-			return FALSE
-	if(move_dir & EAST)
-		if(start.density_east)
-			return FALSE
-		if(src.density_west)
-			return FALSE
-	if(move_dir & SOUTH)
-		if(start.density_south)
-			return FALSE
+	if(move_direction & NORTH)
 		if(src.density_north)
-			return FALSE
-	if(move_dir & WEST)
-		if(start.density_west)
-			return FALSE
+			return src
+		if(src.density_south)
+			return src
+	if(move_direction & EAST)
 		if(src.density_east)
-			return FALSE
+			return src
+		if(src.density_west)
+			return src
+	if(move_direction & SOUTH)
+		if(src.density_south)
+			return src
+		if(src.density_north)
+			return src
+	if(move_direction & WEST)
+		if(src.density_west)
+			return src
+		if(src.density_east)
+			return src
 
-	return TRUE
+	for(var/atom/C in contents)
+		var/atom/R = C.can_not_enter(A,move_direction)
+		if(R)
+			return R
+
+	return FALSE
+
+/turf/do_bump(var/atom/bumper)
+	return FALSE

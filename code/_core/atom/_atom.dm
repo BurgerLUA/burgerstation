@@ -19,4 +19,17 @@
 		damage_type = new damage_type
 	. = ..()
 
+/atom/proc/can_not_leave(var/atom/A,var/move_direction)
+	return null
 
+/atom/proc/can_not_enter(var/atom/A,var/move_directio)
+	return null
+
+/atom/proc/on_enter(var/atom/A,var/move_direction)
+	return TRUE
+
+/atom/proc/on_exit(var/atom/A,var/move_direction)
+	return TRUE
+
+/atom/proc/do_bump(var/atom/A,var/move_direction)
+	return TRUE

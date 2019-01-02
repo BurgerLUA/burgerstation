@@ -45,8 +45,10 @@ var/global/list/all_clients = list()
 
 
 /client/MouseMove(object,location,control,params) //WARNING: OVERHEAD
-	if(mob && mob.move_delay == -1 && mob.movement_flags & MOVEMENT_WALKING)
+	/*
+	if(mob)
 		mob.face_atom(location)
+	*/
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
 	var/change_in_screen = clamp(delta_x + delta_y,-1,1)*8

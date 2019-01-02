@@ -32,21 +32,22 @@
 
 	var/movement_x = 0
 	var/movement_y = 0
+	var/punch_distance = 12
 
 	if(attacker.dir & NORTH)
-		movement_y = 5
+		movement_y = punch_distance
 
 	if(attacker.dir & SOUTH)
-		movement_y = -5
+		movement_y = -punch_distance
 
 	if(attacker.dir & EAST)
-		movement_x = 5
+		movement_x = punch_distance
 
 	if(attacker.dir & WEST)
-		movement_x = -5
+		movement_x = -punch_distance
 
-	animate(attacker,LINEAR_EASING,time = 2, pixel_x = movement_x, pixel_y = movement_y, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(attacker,LINEAR_EASING,time = 8, pixel_x = 0, pixel_y = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(attacker, pixel_x = attacker.pixel_x + movement_x, pixel_y = attacker.pixel_y + movement_y, time = 4)
+	animate(pixel_x = attacker.pixel_x - movement_x, pixel_y = attacker.pixel_y - movement_y, time = 4)
 
 /datum/damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)

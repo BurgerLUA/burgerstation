@@ -17,19 +17,50 @@
 /atom/movable/proc/handle_movement(var/adjust_delay = FALSE)
 	if(move_dir && move_delay <= 0)
 		update_glide()
-		Move(get_step(src,move_dir),move_dir)
-		move_delay += get_movement_delay()
+		do_move(get_step(src,move_dir))
+		var/final_movement_delay = get_movement_delay()
+		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
 		return TRUE
 	else
 		if(adjust_delay)
-			move_delay = max(-1,move_delay - 1)
+			move_delay = move_delay - TICK_LAG
 		return FALSE
 
-/atom/movable/Move(NewLoc,Dir=0,step_x=0,step_y=0)
-	if(istype(NewLoc,/turf/))
-		var/turf/T = NewLoc
-		if(!T.can_pass(src,Dir))
-			set_dir(Dir)
+/atom/movable/proc/can_move(var/turf/new_loc)
+	if(!new_loc)
+		return FALSE
+
+	var/move_direction = loc.get_relative_dir(new_loc)
+
+	if(loc)
+		var/atom/A = loc.can_not_leave(src,move_direction) //Is there an object preventing us from leaving?
+		if(A && !A.do_bump(src,move_direction))
 			return FALSE
 
-	. = ..()
+	if(new_loc)
+		var/atom/A = new_loc.can_not_enter(src,move_direction) //Is there an object prevent us from entering?
+		if(A && !A.do_bump(src,move_direction))
+			return FALSE
+
+	return TRUE
+
+/atom/movable/proc/do_move(var/turf/new_loc)
+	if(!can_move(new_loc))
+		src.face_atom(new_loc)
+		return FALSE
+	do_step(new_loc)
+	return TRUE
+
+/atom/movable/proc/do_step(var/turf/new_loc)
+	var/turf/old_loc = loc
+	old_loc.on_exit(src)
+	do_movement_effects(old_loc,new_loc)
+	loc = new_loc
+	x = new_loc.x
+	y = new_loc.y
+	z = new_loc.z
+	new_loc.on_enter(src)
+	return FALSE
+
+/atom/movable/proc/do_movement_effects(var/turf/old_loc,var/turf/new_loc)
+	return TRUE

@@ -1,4 +1,4 @@
-/obj/item/clothing/use_item_on(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/attack_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(item_slot && caller == object && istype(caller,/mob/living/advanced/))
 		var/mob/living/advanced/A = caller

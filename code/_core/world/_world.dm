@@ -1,10 +1,11 @@
 var/global/list/active_subsystems = list()
-var/global/tick_count = 0
+var/global/curtime = 0
 
 /world/
 	fps = FPS_SERVER
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
+	map_format = SIDE_MAP
 
 /world/New()
 	..()
@@ -20,7 +21,7 @@ var/global/tick_count = 0
 			if(!S.on_life())
 				active_subsystems -= S
 
-		tick_count += 1
-		sleep(1)
+		curtime += TICK_LAG
+		sleep(tick_lag)
 
 

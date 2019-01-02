@@ -13,6 +13,10 @@ var/global/list/all_mobs = list()
 
 	var/list/obj/inventory/inventory //List of inventory items
 
+	animate_movement = FALSE
+
+	movement_delay = 4
+
 /mob/proc/add_inventory(var/obj/inventory/I)
 	inventory += I
 	if(client)
@@ -26,7 +30,8 @@ var/global/list/all_mobs = list()
 	update_inventory()
 
 /mob/proc/update_inventory()
-	client.known_inventory = inventory
+	if(client)
+		client.known_inventory = inventory
 
 /mob/New()
 	all_mobs += src
@@ -41,6 +46,7 @@ var/global/list/all_mobs = list()
 	return TRUE
 
 /mob/get_movement_delay()
+
 	var/delay = movement_delay
 
 	if(movement_flags & MOVEMENT_CROUCHING)
@@ -56,40 +62,18 @@ var/global/list/all_mobs = list()
 
 	return delay
 
-/*
-/mob/Destroy() //TODO: Destroy system
-	all_mobs -= src
-*/
+/mob/do_movement_effects(var/turf/old_loc,var/turf/new_loc)
+	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size
+	var/pixel_y_offset = -(new_loc.y - old_loc.y)*step_size
 
+	var/real_movement_delay = get_movement_delay()
+	var/movement_dir = old_loc.get_relative_dir(new_loc)
 
-/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+	if(client) //Animate the client's camera so it's smooth.
+		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 
-	if((Dir & WEST) && (Dir & EAST))
-		return FALSE
+	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
 
-	if((Dir & NORTH) && (Dir & SOUTH))
-		return FALSE
-
-	if(..())
-		var/pixel_x_offset = 0
-		var/pixel_y_offset = 0
-
-		if(Dir & NORTH)
-			pixel_y_offset = -step_size
-
-		if(Dir & SOUTH)
-			pixel_y_offset = step_size
-
-		if(Dir & EAST)
-			pixel_x_offset = -step_size
-
-		if(Dir & WEST)
-			pixel_x_offset = step_size
-
-		var/movement_delay = get_movement_delay()
-		if(client)
-			animate(client, LINEAR_EASING, time = 1, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, flags = ANIMATION_LINEAR_TRANSFORM)
-			animate(client, LINEAR_EASING, time = movement_delay * 1, pixel_x = 0, pixel_y = 0, flags = ANIMATION_LINEAR_TRANSFORM)
-
-		animate(src, LINEAR_EASING, time = 1, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, flags = ANIMATION_LINEAR_TRANSFORM)
-		animate(src, LINEAR_EASING, time = movement_delay * 1, pixel_x = 0, pixel_y = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+	return ..()

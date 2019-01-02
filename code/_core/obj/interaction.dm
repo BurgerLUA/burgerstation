@@ -1,4 +1,4 @@
-/obj/proc/use_item_on(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/proc/attack_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	if(caller.attack_flags & ATTACK_THROW)
 		caller.face_atom(object)

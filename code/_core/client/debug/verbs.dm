@@ -21,9 +21,9 @@
 	for(var/listed_macro in macros.macros)
 		src << "[listed_macro] [macros.macros[listed_macro]]"
 
-/client/verb/debug_tickcount()
+/client/verb/debug_curtime()
 	set category = "Debug"
-	src << tick_count
+	src << curtime
 
 client/verb/debug_active_subsystems()
 	set category = "Debug"
@@ -90,7 +90,12 @@ client/verb/add_clothes()
 	var/mob/living/advanced/A = mob
 	A.add_clothes(A.mob_outfit)
 
-
 client/verb/debug_sounds()
 	set category = "Debug"
 	src << "Found [length(active_sounds)] active sounds."
+
+client/verb/debug_turf_contents()
+	set category = "Debug"
+	var/turf/T = get_turf(mob.loc)
+	for(var/atom/A in T.contents)
+		src << A
