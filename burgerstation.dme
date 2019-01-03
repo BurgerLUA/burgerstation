@@ -106,7 +106,6 @@
 #include "code\_core\species\_species.dm"
 #include "code\_core\species\human.dm"
 #include "code\_core\subsystems\_subsystems.dm"
-#include "code\_core\subsystems\animations.dm"
 #include "code\_core\subsystems\client.dm"
 #include "code\_core\subsystems\combat.dm"
 #include "code\_core\subsystems\mobs.dm"

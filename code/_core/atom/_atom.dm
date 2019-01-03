@@ -11,6 +11,9 @@
 
 	var/attack_range = 1 //If it's a melee weapon, it needs a range.
 
+	var/attack_delay = 4
+	var/attack_last = 0
+
 /atom/proc/Initialize()
 	//Initialize things here
 

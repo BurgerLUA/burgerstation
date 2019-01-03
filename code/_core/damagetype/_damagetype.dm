@@ -7,8 +7,15 @@
 	var/impact_sounds = list()
 	var/list/attack_damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0) //How much attack damage to deal
 
-	var/delay = 8
-	var/last_hit = 0
+	var/attack_delay = 8
+	var/attack_last = 0
+
+/datum/damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(attack_last + get_attack_delay(attacker,victim,weapon,hit_object) > world.time)
+		return FALSE
+
+	return TRUE
 
 /datum/damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -23,6 +30,7 @@
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE]) + hit_object.adjust_burn_loss(damage_to_deal[BURN]) + hit_object.adjust_tox_loss(damage_to_deal[TOX]) + hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 	victim.update_icon()
+
 	return damage_dealt
 
 /datum/damagetype/proc/play_effects(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
@@ -30,26 +38,30 @@
 		var/area/A = get_area(victim)
 		play_sound(pick(impact_sounds),all_mobs,vector(victim.x,victim.y,victim.z),environment = A.sound_environment)
 
-	var/movement_x = 0
-	var/movement_y = 0
+	var/pixel_x_offset = 0
+	var/pixel_y_offset = 0
 	var/punch_distance = 12
 
 	if(attacker.dir & NORTH)
-		movement_y = punch_distance
+		pixel_y_offset = punch_distance
 
 	if(attacker.dir & SOUTH)
-		movement_y = -punch_distance
+		pixel_y_offset = -punch_distance
 
 	if(attacker.dir & EAST)
-		movement_x = punch_distance
+		pixel_x_offset = punch_distance
 
 	if(attacker.dir & WEST)
-		movement_x = -punch_distance
+		pixel_x_offset = -punch_distance
 
 	if(is_mob(attacker))
 		var/mob/M = attacker
-		M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
-		M.add_animation(pixel_x = -movement_x, pixel_y = -movement_y, time = 4, delay = 2, time = 4)
+		//M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
+		//M.add_animation(pixel_x = -movement_x, pixel_y = -movement_y, time = 4, delay = 2, time = 4)
+
+		animate(M, pixel_x = M.pixel_x + pixel_x_offset, pixel_y = M.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(pixel_x = M.pixel_x - pixel_x_offset, pixel_y = M.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+
 
 /datum/damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
@@ -67,3 +79,6 @@
 
 /datum/damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return attack_damage
+
+/datum/damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return attack_delay

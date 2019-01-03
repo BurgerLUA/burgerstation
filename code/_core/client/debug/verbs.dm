@@ -101,11 +101,12 @@ client/verb/debug_turf_contents()
 		src << A
 
 
-
+/*
 client/verb/debug_animations()
 	set category = "Debug"
 
 	src << "Found [length(mob.animations)] animations."
+*/
 
 /*
 client/verb/debug_random()

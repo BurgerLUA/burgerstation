@@ -21,6 +21,8 @@ var/global/list/all_mobs = list()
 
 	movement_delay = 4
 
+	attack_delay = 2
+
 /mob/proc/add_inventory(var/obj/inventory/I)
 	inventory += I
 	if(client)
@@ -39,7 +41,7 @@ var/global/list/all_mobs = list()
 
 /mob/New()
 	all_mobs += src
-	animations = list()
+	//animations = list()
 	inventory = list()
 	. = ..()
 
@@ -75,10 +77,10 @@ var/global/list/all_mobs = list()
 	var/movement_dir = old_loc.get_relative_dir(new_loc)
 
 	if(client) //Animate the client's camera so it's smooth.
-		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
 		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 
-	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
 	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
 
 	return ..()

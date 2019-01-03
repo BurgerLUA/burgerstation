@@ -1,9 +1,9 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1546500306
+LAST_COMPILE_TIME: 1546505510
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
-DIR: code code\__defines code\__helpers code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\subsystems code\_core\turf\simulated code\_core\turf\simulated\floor code\_core\world maps maps\debug 
+DIR: code code\__defines code\__helpers code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\inventory code\_core\mob interface 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
@@ -12,8 +12,8 @@ LAST_COMPILE_VERSION: 512.1462
 PACKAGE_DME_START: 
 PACKAGE_TYPE: 0
 PACKAGE_DME_INFO: 
-WINDOW: code\_core\subsystems\animations.dm;burgerstation.dme;code\_core\mob\_mob.dm;code\_core\damagetype\_damagetype.dm;code\_core\client\debug\verbs.dm;code\__defines\world.dm;code\_core\atom\directon.dm;code\_core\world\_world.dm;code\_core\atom\moveable\_moveable.dm;code\_core\mob\living\advanced\human\_human.dm;code\_core\mob\living\advanced\human\ai.dm;code\_core\mob\living\advanced\_advanced.dm;code\__helpers\random.dm
-FILE: code\_core\world\_world.dm
+WINDOW: code\_core\mob\_mob.dm;code\_core\atom\_atom.dm;code\_core\atom\moveable\_moveable.dm;code\_core\atom\attacking.dm;code\_core\damagetype\_damagetype.dm;code\__defines\world.dm;interface\default.dmf
+FILE: code\_core\atom\moveable\_moveable.dm
 PACKAGE_DME_DEMO: 
 PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 */

@@ -160,6 +160,7 @@ window "input_output"
 		anchor2 = 100,100
 		is-default = true
 		border = sunken
+		drop-zone = true
 		saved-params = "max-lines"
 		enable-http-images = true
 	elem "button1"

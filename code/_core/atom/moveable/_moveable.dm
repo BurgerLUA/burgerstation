@@ -30,6 +30,12 @@
 	if(!new_loc)
 		return FALSE
 
+	if(!can_attack())
+		return FALSE
+
+	if(attack_last + (ATTACK_ANIMATION_LENGTH * 1.5) + 1 >= world.time)
+		return FALSE
+
 	var/move_direction = loc.get_relative_dir(new_loc)
 
 	if(loc)
@@ -60,7 +66,15 @@
 	y = new_loc.y
 	z = new_loc.z
 	new_loc.on_enter(src)
+	//action_last = world.time
 	return FALSE
 
 /atom/movable/proc/do_movement_effects(var/turf/old_loc,var/turf/new_loc)
 	return TRUE
+
+/atom/movable/can_attack(var/atom/victim,var/params)
+
+	if(move_delay >= get_movement_delay()*0.5)
+		return FALSE
+
+	return ..()
