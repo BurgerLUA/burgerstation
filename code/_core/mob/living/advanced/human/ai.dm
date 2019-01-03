@@ -9,14 +9,15 @@
 
 /mob/living/advanced/human/ai/on_life_AI()
 
-	if(prob(25))
+	if(time_prob(50))
 		move_dir = pick(NORTH,EAST,SOUTH,WEST)
 		handle_movement()
-	else if(prob(50))
+	else
+		move_dir = 0
 		handle_movement(TRUE)
 
 
-	if(prob(1) && prob(10))
+	if(time_prob(5))
 		var/list/ai_racism = list(
 			"all access pls",
 			"AI ROUGE",
@@ -58,3 +59,17 @@
 
 
 	 . = ..()
+
+/mob/living/advanced/human/ai/speedy/
+	name = "Speedy McSpeed"
+	mob_outfit = null
+	movement_delay = 1
+
+/mob/living/advanced/human/ai/speedy/on_life_AI()
+
+	if(prob(10))
+		move_dir = pick(NORTH,EAST,SOUTH,WEST)
+
+	handle_movement(TRUE)
+
+	return TRUE

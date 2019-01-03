@@ -24,12 +24,13 @@
 		if(src.density_east)
 			return src
 
-	for(var/atom/C in contents)
-		var/atom/R = C.can_not_enter(A,move_direction)
+	for(var/C in contents)
+		var/atom/CFix = C
+		var/atom/R = CFix.can_not_enter(A,move_direction)
 		if(R)
 			return R
 
 	return FALSE
 
-/turf/do_bump(var/atom/bumper)
+/turf/do_bump(var/atom/bumper,var/bump_direction)
 	return FALSE

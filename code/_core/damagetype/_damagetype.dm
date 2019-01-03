@@ -46,8 +46,10 @@
 	if(attacker.dir & WEST)
 		movement_x = -punch_distance
 
-	animate(attacker, pixel_x = attacker.pixel_x + movement_x, pixel_y = attacker.pixel_y + movement_y, time = 4)
-	animate(pixel_x = attacker.pixel_x - movement_x, pixel_y = attacker.pixel_y - movement_y, time = 4)
+	if(is_mob(attacker))
+		var/mob/M = attacker
+		M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
+		M.add_animation(pixel_x = -movement_x, pixel_y = -movement_y, time = 4, delay = 2, time = 4)
 
 /datum/damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)

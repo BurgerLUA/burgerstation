@@ -15,8 +15,10 @@
 	organs = list()
 	inventory = list()
 	labeled_organs = list()
-	mob_outfit = new mob_outfit
-	mob_species = new mob_species
+	if(mob_outfit)
+		mob_outfit = new mob_outfit
+	if(mob_species)
+		mob_species = new mob_species
 	. = ..()
 
 /mob/living/advanced/proc/add_species_organs()
@@ -38,10 +40,14 @@
 	update_icon()
 
 /mob/living/advanced/proc/add_clothes(var/datum/outfit/spawning_outfit)
+	if(!spawning_outfit)
+		return FALSE
+
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
 
+	return TRUE
 /mob/living/advanced/proc/add_worn_item(var/obj/item/clothing/C)
 	for(var/obj/inventory/I in inventory)
 		if(I.add_worn_object(C))

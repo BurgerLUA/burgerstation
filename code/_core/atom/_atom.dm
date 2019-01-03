@@ -22,7 +22,7 @@
 /atom/proc/can_not_leave(var/atom/A,var/move_direction)
 	return null
 
-/atom/proc/can_not_enter(var/atom/A,var/move_directio)
+/atom/proc/can_not_enter(var/atom/A,var/move_direction)
 	return null
 
 /atom/proc/on_enter(var/atom/A,var/move_direction)
@@ -31,5 +31,5 @@
 /atom/proc/on_exit(var/atom/A,var/move_direction)
 	return TRUE
 
-/atom/proc/do_bump(var/atom/A,var/move_direction)
+/atom/proc/do_bump(var/atom/A,var/bump_direction)
 	return TRUE

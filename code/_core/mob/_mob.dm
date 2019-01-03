@@ -13,6 +13,10 @@ var/global/list/all_mobs = list()
 
 	var/list/obj/inventory/inventory //List of inventory items
 
+	var/list/datum/animation/animations //List of running animation
+	var/animation_pixel_x = 0
+	var/animation_pixel_y = 0
+
 	animate_movement = FALSE
 
 	movement_delay = 4
@@ -35,6 +39,7 @@ var/global/list/all_mobs = list()
 
 /mob/New()
 	all_mobs += src
+	animations = list()
 	inventory = list()
 	. = ..()
 
@@ -77,3 +82,13 @@ var/global/list/all_mobs = list()
 	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
 
 	return ..()
+
+/mob/do_bump(var/atom/bumper,var/bump_direction)
+	if(move_delay > 0)
+		return FALSE
+	return do_move(get_step(src,bump_direction))
+
+/mob/can_not_enter(var/atom/A,var/move_direction)
+	if(is_mob(A))
+		return src
+	return FALSE

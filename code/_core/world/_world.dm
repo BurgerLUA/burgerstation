@@ -9,14 +9,16 @@ var/global/curtime = 0
 
 /world/New()
 	..()
+	life()
+
+/world/proc/life()
+	set background = TRUE
+
 	for(var/S in subtypesof(/datum/subsystem))
 		var/datum/subsystem/new_subsystem = new S
 		active_subsystems += new_subsystem
 
-	life()
-
-/world/proc/life()
-	while(TRUE)
+	spawn while(TRUE)
 		for(var/datum/subsystem/S in active_subsystems)
 			if(!S.on_life())
 				active_subsystems -= S

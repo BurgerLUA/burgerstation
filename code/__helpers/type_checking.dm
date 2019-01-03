@@ -6,3 +6,6 @@ proc/is_item(var/atom/A)
 
 proc/is_inventory(var/atom/A)
 	return istype(A,/obj/inventory/)
+
+proc/is_mob(var/atom/A)
+	return istype(A,/mob/)

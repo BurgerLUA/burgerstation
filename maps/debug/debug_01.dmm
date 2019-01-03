@@ -22,13 +22,14 @@
 "v" = (/obj/item/clothing/feet/shoes/black,/obj/item/clothing/feet/shoes/black/left,/turf/simulated/floor/wood,/area/debug/interior)
 "w" = (/turf/simulated/floor/grass,/area/debug/interior)
 "x" = (/obj/item/radio,/turf/simulated/floor/wood,/area/debug/interior)
+"y" = (/mob/living/advanced/human/ai/speedy,/turf/simulated/floor/grass,/area/debug/exterior)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
-abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
+abbbbbbbbbbbbbbbbbbbbbbbbbybbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
 abbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
