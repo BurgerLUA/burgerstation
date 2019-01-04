@@ -1,0 +1,8 @@
+#define SS_ORDER_ATTRIBUTES 1
+#define SS_ORDER_SKILLS 2
+#define SS_ORDER_CLIENT 3
+#define SS_ORDER_MOBS 4
+#define SS_ORDER_SOUND 5
+#define SS_ORDER_THROWING 6
+
+#define SS_ORDER_SIZE 7

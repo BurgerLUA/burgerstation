@@ -30,7 +30,6 @@ var/global/list/all_clients = list()
 	src.mob.Initialize()
 
 	update_zoom(0)
-
 	generate_HUD()
 
 /client/verb/button_press(button as text)
@@ -55,9 +54,14 @@ var/global/list/all_clients = list()
 	update_zoom(zoom_level + change_in_screen)
 
 
-/client/MouseDown(object,location,control,params)
+/client/MouseDown(var/atom/object,location,control,params)
 
 	var/list/aug = params2list(params)
+
+
+	if(mob.movement_flags & MOVEMENT_WALKING)
+		object.examine(mob)
+		return
 
 	if("left" in aug)
 		mob.on_left_click(object,location,control,aug)

@@ -14,8 +14,11 @@
 	var/attack_delay = 4
 	var/attack_last = 0
 
+	var/initialized = FALSE
+
 /atom/proc/Initialize()
 	//Initialize things here
+	initialized = TRUE
 
 /atom/New()
 	if(damage_type)
@@ -34,5 +37,6 @@
 /atom/proc/on_exit(var/atom/A,var/move_direction)
 	return TRUE
 
-/atom/proc/do_bump(var/atom/A,var/bump_direction)
+/atom/proc/do_bump(var/atom/A,var/bump_direction,var/movement_override = 0)
 	return TRUE
+

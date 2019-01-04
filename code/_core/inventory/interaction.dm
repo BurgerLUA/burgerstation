@@ -31,3 +31,7 @@ obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,contr
 
 /obj/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc
+
+
+
+

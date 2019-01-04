@@ -17,8 +17,8 @@
 /atom/movable/proc/handle_movement(var/adjust_delay = FALSE)
 	if(move_dir && move_delay <= 0)
 		update_glide()
-		do_move(get_step(src,move_dir))
 		var/final_movement_delay = get_movement_delay()
+		do_move(get_step(src,move_dir),final_movement_delay)
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
 		return TRUE
 	else
@@ -26,7 +26,7 @@
 			move_delay = move_delay - TICK_LAG
 		return FALSE
 
-/atom/movable/proc/can_move(var/turf/new_loc)
+/atom/movable/proc/can_move(var/turf/new_loc,var/movement_override = 0)
 	if(!new_loc)
 		return FALSE
 
@@ -40,27 +40,27 @@
 
 	if(loc)
 		var/atom/A = loc.can_not_leave(src,move_direction) //Is there an object preventing us from leaving?
-		if(A && !A.do_bump(src,move_direction))
+		if(A && !A.do_bump(src,move_direction,movement_override))
 			return FALSE
 
 	if(new_loc)
 		var/atom/A = new_loc.can_not_enter(src,move_direction) //Is there an object prevent us from entering?
-		if(A && !A.do_bump(src,move_direction))
+		if(A && !A.do_bump(src,move_direction,movement_override))
 			return FALSE
 
 	return TRUE
 
-/atom/movable/proc/do_move(var/turf/new_loc)
-	if(!can_move(new_loc))
+/atom/movable/proc/do_move(var/turf/new_loc,var/movement_override = 0)
+	if(!can_move(new_loc,movement_override))
 		src.face_atom(new_loc)
 		return FALSE
-	do_step(new_loc)
+	do_step(new_loc, movement_override)
 	return TRUE
 
-/atom/movable/proc/do_step(var/turf/new_loc)
+/atom/movable/proc/do_step(var/turf/new_loc, var/movement_override = 0)
 	var/turf/old_loc = loc
 	old_loc.on_exit(src)
-	do_movement_effects(old_loc,new_loc)
+	do_movement_effects(old_loc,new_loc,movement_override)
 	loc = new_loc
 	x = new_loc.x
 	y = new_loc.y
@@ -69,7 +69,7 @@
 	//action_last = world.time
 	return FALSE
 
-/atom/movable/proc/do_movement_effects(var/turf/old_loc,var/turf/new_loc)
+/atom/movable/proc/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
 	return TRUE
 
 /atom/movable/can_attack(var/atom/victim,var/params)

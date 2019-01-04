@@ -100,6 +100,70 @@ client/verb/debug_turf_contents()
 	for(var/atom/A in T.contents)
 		src << A
 
+client/verb/debug_skills()
+	set category = "Debug"
+	src << "Found [length(mob.skills)] skills in mob."
+	src << "Found [length(all_skills)] skills in world."
+	for(var/id in mob.skills)
+		var/experience/skill/S = mob.skills[id]
+		src << "[id] = [S.get_current_level()]"
+
+client/verb/debug_attributes()
+	set category = "Debug"
+	src << "Found [length(mob.attributes)] attributes in mob."
+	src << "Found [length(all_attributes)] attributes in world."
+	for(var/id in mob.attributes)
+		var/experience/attribute/A = mob.attributes[id]
+		src << "[id] = [A.get_current_level()]"
+
+client/verb/debug_attribute()
+	set category = "Debug"
+
+	var/text = input("What is the ID of the attribute?")
+
+	text = text ? text : ATTRIBUTE_STRENGTH
+
+	var/experience/attribute/A = mob.get_attribute(text)
+	src << "get_attribute([text]) = [A.type]"
+
+	var/level = mob.get_attribute_level(text)
+	src << "get_attribute_level([text]) = [level]"
+
+	var/power = mob.get_attribute_power(text,0,100)
+	src << "get_attribute_power([text],0,100) = [power]"
+
+
+/client/verb/debug_other_attribute()
+	set category = "Debug"
+
+	var/list/valid_choices = list()
+
+	for(var/mob/M in world)
+		valid_choices[M.name] = M
+
+	var/mob/chosen_mob = valid_choices[input("Which mob do you wish to debug?","Debug Mob") in valid_choices]
+
+	var/text = input("What is the ID of the attribute?")
+
+	text = text ? text : ATTRIBUTE_STRENGTH
+
+
+	src << "Found [length(chosen_mob.attributes)] attributes."
+
+	var/experience/attribute/A = chosen_mob.get_attribute(text)
+	src << "get_attribute([text]) = [A.type]"
+
+	var/level = chosen_mob.get_attribute_level(text)
+	src << "get_attribute_level([text]) = [level]"
+
+	var/power = chosen_mob.get_attribute_power(text,0,100)
+	src << "get_attribute_power([text],0,100) = [power]"
+
+
+
+
+
+
 
 /*
 client/verb/debug_animations()

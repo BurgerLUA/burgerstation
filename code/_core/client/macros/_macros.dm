@@ -10,7 +10,8 @@
 		"Alt" = "walk",
 		"Ctrl" = "crouch",
 		"R" = "throw",
-		"Q" = "drop"
+		"Q" = "drop",
+		"Space" = "kick"
 	)
 
 /datum/macros/New(var/client/spawning_owner)
@@ -34,6 +35,8 @@
 				owner.mob.attack_flags |= ATTACK_THROW
 			if("drop")
 				owner.mob.attack_flags |= ATTACK_DROP
+			if("kick")
+				owner.mob.attack_flags |= ATTACK_KICK
 
 	return TRUE
 
@@ -56,6 +59,7 @@
 				owner.mob.attack_flags &= ~ATTACK_THROW
 			if("drop")
 				owner.mob.attack_flags &= ~ATTACK_DROP
-
+			if("kick")
+				owner.mob.attack_flags &= ~ATTACK_KICK
 
 	return TRUE

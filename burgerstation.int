@@ -1,9 +1,9 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1546505510
+LAST_COMPILE_TIME: 1546642669
 PACKAGE_RSC_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation_rsc.zip
-DIR: code code\__defines code\__helpers code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\inventory code\_core\mob interface 
+DIR: code code\__defines code\_core code\_core\atom code\_core\atom\moveable code\_core\client code\_core\client\chat code\_core\client\debug code\_core\client\macros code\_core\damagetype code\_core\experience code\_core\mob code\_core\mob\living code\_core\mob\living\advanced code\_core\mob\living\advanced\human code\_core\obj code\_core\obj\item code\_core\obj\item\organs code\_core\obj\item\weapon code\_core\obj\item\weapon\melee code\_core\subsystems icons icons\obj icons\obj\items icons\obj\items\weapons icons\obj\items\weapons\melee icons\obj\items\weapons\melee\swords maps maps\debug 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
@@ -11,9 +11,9 @@ PACKAGE_DME_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burger
 LAST_COMPILE_VERSION: 512.1462
 PACKAGE_DME_START: 
 PACKAGE_TYPE: 0
+WINDOW: code\_core\damagetype\_damagetype.dm;code\_core\damagetype\swords.dm;code\_core\damagetype\unarmed.dm;code\_core\damagetype\clothing.dm;code\_core\mob\_mob.dm;code\__defines\attributes.dm;code\_core\atom\_atom.dm;code\_core\atom\interaction.dm;code\_core\atom\attacking.dm;code\_core\obj\item\interaction.dm;code\_core\mob\living\advanced\controls.dm;code\_core\client\_client.dm;code\__defines\movement.dm
 PACKAGE_DME_INFO: 
-WINDOW: code\_core\mob\_mob.dm;code\_core\atom\_atom.dm;code\_core\atom\moveable\_moveable.dm;code\_core\atom\attacking.dm;code\_core\damagetype\_damagetype.dm;code\__defines\world.dm;interface\default.dmf
-FILE: code\_core\atom\moveable\_moveable.dm
+FILE: code\_core\atom\interaction.dm
 PACKAGE_DME_DEMO: 
 PACKAGE_DMB_NAME: C:\Users\Matthew\Desktop\AurorastationDev\Burgerstation\burgerstation\burgerstation.zip
 */

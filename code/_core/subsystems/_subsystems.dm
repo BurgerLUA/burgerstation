@@ -2,7 +2,7 @@
 	var/name = "Base Subsystem"
 	var/desc = "Subsystem for base functions. You shouldn't be seeing this."
 	var/tick_rate = 1 //Tick delay for the subsystem.
-	var/priority = 0 //The higher the number, the higher the priority.
+	var/priority = 0 //The lower the number, the more priority it recieves
 
 /datum/subsystem/New()
 	..()

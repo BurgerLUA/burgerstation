@@ -3,11 +3,11 @@
 	enable_AI = TRUE
 	icon = ""
 
-/mob/living/advanced/human/ai/New()
-	. = ..()
-	Initialize()
-
 /mob/living/advanced/human/ai/on_life_AI()
+
+	if(!initialized)
+		Initialize()
+		return TRUE //Wait until next tick.
 
 	if(time_prob(50))
 		move_dir = pick(NORTH,EAST,SOUTH,WEST)
@@ -15,7 +15,6 @@
 	else
 		move_dir = 0
 		handle_movement(TRUE)
-
 
 	if(time_prob(5))
 		var/list/ai_racism = list(
@@ -66,6 +65,9 @@
 	movement_delay = 1
 
 /mob/living/advanced/human/ai/speedy/on_life_AI()
+
+	if(!initialized)
+		return TRUE
 
 	if(prob(10))
 		move_dir = pick(NORTH,EAST,SOUTH,WEST)

@@ -1,5 +1,9 @@
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/victim,params)
 
+	if(!params)
+		params = list("icon-y" = rand(16,32))
+
+
 	var/y_attack = text2num(params["icon-y"])
 
 	if(y_attack >= 24 && src.labeled_organs["head"])
@@ -33,3 +37,14 @@
 		return src.labeled_organs["r_foot"]
 
 	return victim
+
+/mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+
+	var/atom/right_hand = get_right_hand()
+	var/atom/left_hand = get_left_hand()
+
+	var/atom/object_to_parry = right_hand ? right_hand : left_hand
+	if(!object_to_parry)
+		return FALSE
+
+	return object_to_parry.attack(src,attacker)

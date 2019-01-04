@@ -7,9 +7,12 @@
 
 	var/obj/inventory/inventory //Inherint Inventory
 
-	var/held_icon_right
-	var/held_icon_left
-	var/held_icon_state
+	icon_state = "inventory"
+	var/icon_state_held_left = "held_left"
+	var/icon_state_held_right = "held_right"
+	var/icon_state_worn = "worn"
+
+	var/worn_layer = 0
 
 /obj/item/New(var/desired_loc)
 	src.loc = desired_loc
@@ -27,3 +30,5 @@
 
 /obj/item/radio/attack_self(var/atom/caller)
 	//play_sound(sound_to_play,all_mobs,vector(caller.x,caller.y,caller.z))
+
+

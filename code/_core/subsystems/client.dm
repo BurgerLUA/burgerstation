@@ -3,6 +3,7 @@
 	desc = "Controls how clients behave."
 	tick_rate = 1
 	priority = 100
+	priority = SS_ORDER_CLIENT
 
 /datum/subsystem/client/on_life()
 	for(var/client/C in all_clients)

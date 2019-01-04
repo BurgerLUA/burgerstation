@@ -2,7 +2,6 @@
 	name = "ORGAN"
 	desc = "An organ."
 
-	var/worn_layer = 0
 	var/damage_icon = 'icons/mob/living/advanced/overlays/dam_mob.dmi'
 	var/damage_tag = "human"
 

@@ -21,20 +21,34 @@
 	if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
 		return FALSE
 
-	var/datum/damagetype/DT = object_to_damage_with.damage_type
+	var/damagetype/DT = object_to_damage_with.damage_type
 
 	if(!DT)
 		attacker << "You can't see any way you can inflict harm with \the [object_to_damage_with.type]."
 		return FALSE
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
-
 	if(!can_attack)
 		return FALSE
 
-	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 	DT.attack_last = world.time
 	attacker.attack_last = world.time
+
+	switch(DT.handle_dodge(attacker,victim,object_to_damage_with,object_to_damage))
+		if(DODGE_MISS)
+			DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
+			return FALSE
+		if(DODGE_BLOCK)
+			victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)
+			return FALSE
+		if(DODGE_PARRY)
+			victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT)
+			return FALSE
+		if(DODGE_DODGE)
+			victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)
+			return FALSE
+
+	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
 	return can_attack
 
@@ -53,3 +67,24 @@
 
 /atom/proc/get_attack_delay(var/atom/victim,var/params)
 	return attack_delay
+
+/atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	return 0
+
+/atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	return 0
+
+/atom/proc/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	return 0
+
+/atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	easy_miss_message(attacker,src,weapon,target,DT,"the attack is blocked")
+	return FALSE
+
+/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	easy_miss_message(attacker,src,weapon,target,DT,"the attack is parried")
+	return FALSE
+
+/atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	easy_miss_message(attacker,src,weapon,target,DT,"the attack is dodged")
+	return FALSE

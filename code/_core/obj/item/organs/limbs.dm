@@ -47,7 +47,7 @@
 	inventory = /obj/inventory/organs/right_hand
 	health_max = 25
 
-	damage_type = /datum/damagetype/body/fists/
+	damage_type = /damagetype/unarmed/fists/
 
 /obj/item/organ/right_leg
 	name = "right leg"
@@ -68,6 +68,8 @@
 	health_max = 25
 	inventory = /obj/inventory/organs/right_foot
 
+	damage_type = /damagetype/unarmed/feet/
+
 /obj/item/organ/left_arm
 	name = "left arm"
 	id = "l_arm"
@@ -87,7 +89,7 @@
 	inventory = /obj/inventory/organs/left_hand
 	health_max = 25
 
-	damage_type = /datum/damagetype/body/fists/left
+	damage_type = /damagetype/unarmed/fists/left
 
 /obj/item/organ/left_leg
 	name = "left leg"
@@ -107,4 +109,6 @@
 	worn_layer = LAYER_MOB_FEET
 	health_max = 25
 	inventory = /obj/inventory/organs/left_foot
+
+	damage_type = /damagetype/unarmed/feet/left
 
