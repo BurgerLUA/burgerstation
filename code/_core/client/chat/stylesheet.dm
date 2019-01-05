@@ -20,6 +20,10 @@ span.looc{
 	color: cyan;
 	font-weight: bold;
 }
+span.notice{
+	color: blue;
+	font-style: italic;
+}
 
 
 </style>

@@ -20,6 +20,7 @@
 		mob_species = new mob_species
 	..()
 
+
 /mob/living/advanced/proc/add_species_organs()
 	for(var/key in mob_species.spawning_organs)
 		add_organ(mob_species.spawning_organs[key])
@@ -47,6 +48,12 @@
 /mob/living/advanced/Initialize()
 	add_species_organs()
 	add_clothes(mob_outfit)
+
+	for(var/obj/inventory/I in inventory)
+		if(I.item_slot == SLOT_HAND_RIGHT)
+			I.add_held_object(new /obj/item/weapon/melee/sword(src.loc))
+			break
+
 	update_icon()
 	. = ..()
 

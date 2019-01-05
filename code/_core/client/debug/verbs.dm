@@ -160,6 +160,56 @@ client/verb/debug_attribute()
 	src << "get_attribute_power([text],0,100) = [power]"
 
 
+/client/verb/set_attribute()
+	set name = "Set Attribute"
+	set category = "Cheat"
+
+	var/list/valid_choices = list()
+
+	for(var/k in mob.attributes)
+		valid_choices += k
+
+	var/chosen_attribute = input("Which attribute do you wish to modify?","Modify Attribute") in valid_choices
+
+	if(!chosen_attribute)
+		return
+
+	var/chosen_value = input("Which value do you wish to set [chosen_attribute] to?","Modify Attribute")
+
+	if(!chosen_value)
+		return
+
+	chosen_value = text2num(chosen_value)
+
+	mob.set_attribute_level(chosen_attribute,chosen_value)
+
+	mob << "Your [chosen_attribute] is now [mob.get_attribute_level(chosen_attribute)]."
+
+
+/client/verb/set_skill()
+	set name = "Set Skill"
+	set category = "Cheat"
+
+	var/list/valid_choices = list()
+
+	for(var/k in mob.skills)
+		valid_choices += k
+
+	var/chosen_skill = input("Which skill do you wish to modify?","Modify Skill") in valid_choices
+
+	if(!chosen_skill)
+		return
+
+	var/chosen_value = input("Which value do you wish to set [chosen_skill] to?","Modify Skill")
+
+	if(!chosen_value)
+		return
+
+	chosen_value = text2num(chosen_value)
+
+	mob.set_skill_level(chosen_skill,chosen_value)
+
+	mob << "Your [chosen_skill] is now [mob.get_skill_level(chosen_skill)]."
 
 
 

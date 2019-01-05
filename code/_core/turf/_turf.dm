@@ -15,3 +15,10 @@
 
 /turf/New()
 	area = src.loc
+
+/turf/change_victim(var/atom/attacker)
+	for(var/v in contents)
+		if(is_mob(v))
+			return v
+
+	return src

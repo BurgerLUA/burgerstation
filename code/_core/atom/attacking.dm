@@ -1,7 +1,12 @@
+/atom/proc/change_victim(var/atom/attacker)
+	return src
+
 /atom/proc/attack(var/atom/attacker,var/atom/victim,params)
 
 	if(attacker && victim)
 		attacker.face_atom(victim)
+
+	victim = victim.change_victim(attacker)
 
 	if(!attacker.can_attack(victim,params))
 		return FALSE

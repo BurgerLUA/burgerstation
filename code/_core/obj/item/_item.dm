@@ -20,7 +20,6 @@
 		inventory = new inventory(src)
 	. = ..()
 
-
 /obj/item/radio
 	name = "radio"
 	icon = 'icons/obj/items/radio.dmi'
@@ -32,3 +31,66 @@
 	//play_sound(sound_to_play,all_mobs,vector(caller.x,caller.y,caller.z))
 
 
+
+/obj/item/examine(var/atom/examiner)
+	..()
+
+	if(damage_type)
+
+		var/list/base_damage_list = list()
+		var/list/attribute_damage_list = list()
+		var/list/skill_damage_list = list()
+
+		for(var/k in damage_type.base_attack_damage)
+			var/v = damage_type.base_attack_damage[k]
+			if(v)
+				base_damage_list += "[capitalize(k)]: [v]"
+
+		for(var/k in damage_type.attribute_stats)
+			var/v = damage_type.attribute_stats[k]
+			switch(v)
+				if(CLASS_S)
+					v = "S"
+				if(CLASS_A)
+					v = "A"
+				if(CLASS_B)
+					v = "B"
+				if(CLASS_C)
+					v = "C"
+				if(CLASS_D)
+					v = "D"
+				if(CLASS_E)
+					v = "E"
+				if(CLASS_F)
+					v = "-"
+			attribute_damage_list += "[capitalize(k)]: [v]"
+
+
+		for(var/k in damage_type.skill_stats)
+			var/v = damage_type.skill_stats[k]
+			switch(v)
+				if(CLASS_S)
+					v = "S"
+				if(CLASS_A)
+					v = "A"
+				if(CLASS_B)
+					v = "B"
+				if(CLASS_C)
+					v = "C"
+				if(CLASS_D)
+					v = "D"
+				if(CLASS_E)
+					v = "E"
+				if(CLASS_F)
+					v = "-"
+			skill_damage_list += "[capitalize(k)]: [v]"
+
+
+		examiner.to_chat(span("notice"," Base Damage:"))
+		examiner.to_chat(span("notice","  [english_list(base_damage_list, and_text = ", ")]"))
+
+		examiner.to_chat(span("notice"," Attribute Damage:"))
+		examiner.to_chat(span("notice","  [english_list(attribute_damage_list, and_text = ", ")]"))
+
+		examiner.to_chat(span("notice"," Attribute Damage:"))
+		examiner.to_chat(span("notice","  [english_list(skill_damage_list, and_text = ", ")]"))
