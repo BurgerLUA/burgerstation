@@ -6,5 +6,8 @@
 		/obj/item/clothing/hands/gloves/yellow,
 		/obj/item/clothing/hands/gloves/yellow/left,
 		/obj/item/clothing/feet/shoes/black,
-		/obj/item/clothing/feet/shoes/black/left
+		/obj/item/clothing/feet/shoes/black/left,
+		/obj/item/clothing/back/backpack/grey,
+		/obj/item/clothing/belt/utility,
+		/obj/item/clothing/underbottom/underwear/boxers
 	)

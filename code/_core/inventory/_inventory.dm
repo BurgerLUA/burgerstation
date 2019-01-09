@@ -21,8 +21,9 @@
 	var/total_weight = 0 //Var storage value that is updated every time an item is changed.
 	var/total_size = 0 //Var storage value that is updated every time an item is changed.
 
-
 	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to clothing only.
+
+	var/priority = 0 //The priority level of the inventory. Item transfer favors inventories with higher values.
 
 	var/list/obj/item/item_blacklist = list() //Items that can't go in this invetory.
 	var/list/obj/item/item_whitelist = list() //Items that can only go in this inventory.

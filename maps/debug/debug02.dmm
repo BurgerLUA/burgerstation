@@ -25,6 +25,11 @@
 "y" = (/mob/living/advanced/human/ai,/turf/simulated/floor/carpet/end{icon_state = "end"; dir = 4},/area/debug/interior)
 "z" = (/obj/item/weapon/melee/sword,/turf/simulated/floor/wood,/area/debug/interior)
 "A" = (/mob/living/advanced/human/ai,/turf/simulated/floor/grass,/area/debug/exterior)
+"B" = (/obj/item/clothing/underbottom/underwear/panty,/turf/simulated/floor/wood,/area/debug/interior)
+"C" = (/obj/item/clothing/underbottom/underwear/boxers,/turf/simulated/floor/wood,/area/debug/interior)
+"D" = (/obj/item/clothing/undertop/underwear/bra,/turf/simulated/floor/wood,/area/debug/interior)
+"E" = (/obj/item/clothing/underbottom/underwear/panty/pink,/turf/simulated/floor/wood,/area/debug/interior)
+"F" = (/obj/item/clothing/undertop/underwear/bra/pink,/turf/simulated/floor/wood,/area/debug/interior)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -61,13 +66,13 @@ aaaaaabccccefgwjjjjjjxgfecccefghggggggggfeccccbaaaaaaaaaaaaaaaaa
 aaaaaabccccefglmmmmmmoggecccefgggggggghgfeccccbaaaaaaaaaaaaaaaaa
 aaaaaabccccefglmmmmmmoggecccefggggggggggfeccccbaaaaaaaaaaaaaaaaa
 aaaaaabccccefgpqqqqqqrgfecccefggggggggggfeccccbaaaaaaaaaaaaaaaaa
-aaaaaabccccefgggggggghgfecccefggghggggggfeccccbaaaaaaaaaaaaaaaaa
-aaaaaabcccceffffffffffffecccefffggggggfffeccccbaaaaaaaaaaaaaaaaa
-aaaaaabccccdeeeeeeeeeeeedcccdeefgijjkgfeedccccbaaaaaaaaaaaaaaaaa
-aaaaaabcccccccccccccccccccccccefglmmogfeccccccbaaaaaaaaaaaaaaaaa
-aaaaaabcccccccccccccccccccccccefglmmygfeccccccbaaaaaaaaaaaaaaaaa
-aaaaaabcccccccccccccccccccccccefgpqqrgfeccccccbaaaaaaaaaaaaaaaaa
-aaaaaabccccdeeeeeeeeeeeeeedcccefggggggfeccccccbaaaaaaaaaaaaaaaaa
+aaaaaabccccefgggggggghgfecccefggEhgggFggfeccccbaaaaaaaaaaaaaaaaa
+aaaaaabcccceffffffffffffecccefffBggggDfffeccccbaaaaaaaaaaaaaaaaa
+aaaaaabccccdeeeeeeeeeeeedcccdeefBijjkDfeedccccbaaaaaaaaaaaaaaaaa
+aaaaaabcccccccccccccccccccccccefBlmmoDfeccccccbaaaaaaaaaaaaaaaaa
+aaaaaabcccccccccccccccccccccccefBlmmyDfeccccccbaaaaaaaaaaaaaaaaa
+aaaaaabcccccccccccccccccccccccefBpqqrDfeccccccbaaaaaaaaaaaaaaaaa
+aaaaaabccccdeeeeeeeeeeeeeedcccefCCCCCCfeccccccbaaaaaaaaaaaaaaaaa
 aaaaaabcccceffffffffffffffeccceffffffffeccccccbaaaaaaaaaaaaaaaaa
 aaaaaabccccefzzzzzzzzzzzzfecccdeeeeeeeedccccccbaaaaaaaaaaaaaaaaa
 aaaaaabccccefghgggggggghgfecccccccccccccccccccbaaaaaaaaaaaaaaaaa

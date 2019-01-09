@@ -6,7 +6,12 @@
 	icon_state = "torso_m"
 	worn_layer = LAYER_MOB_TORSO
 	health_max = 100
-	inventory = /obj/inventory/organs/torso
+	inventories = list(
+		/obj/inventory/organs/torso,
+		/obj/inventory/organs/torso_o,
+		/obj/inventory/organs/torso_u,
+		/obj/inventory/organs/torso_b
+	)
 
 /obj/item/organ/groin
 	name = "groin"
@@ -16,7 +21,10 @@
 	icon_state = "groin_m"
 	worn_layer = LAYER_MOB_GROIN
 	health_max = 75
-	inventory = /obj/inventory/organs/groin
+	inventories = list(
+		/obj/inventory/organs/groin,
+		/obj/inventory/organs/groin_u
+	)
 
 /obj/item/organ/head
 	name = "head"
@@ -26,7 +34,7 @@
 	icon_state = "head_m"
 	worn_layer = LAYER_MOB_HEAD
 	health_max = 50
-	inventory = /obj/inventory/organs/head
+	inventories = list(/obj/inventory/organs/head)
 
 /obj/item/organ/right_arm
 	name = "right arm"
@@ -44,7 +52,10 @@
 	icon = 'icons/mob/living/advanced/human.dmi'
 	icon_state = "r_hand"
 	worn_layer = LAYER_MOB_HANDS
-	inventory = /obj/inventory/organs/right_hand
+	inventories = list(
+		/obj/inventory/organs/right_hand_worn,
+		/obj/inventory/organs/right_hand_held
+	)
 	health_max = 25
 
 	damage_type = /damagetype/unarmed/fists/
@@ -66,7 +77,7 @@
 	icon_state = "r_foot"
 	worn_layer = LAYER_MOB_FEET
 	health_max = 25
-	inventory = /obj/inventory/organs/right_foot
+	inventories = list(/obj/inventory/organs/right_foot)
 
 	damage_type = /damagetype/unarmed/feet/
 
@@ -86,7 +97,10 @@
 	icon = 'icons/mob/living/advanced/human.dmi'
 	icon_state = "l_hand"
 	worn_layer = LAYER_MOB_HANDS
-	inventory = /obj/inventory/organs/left_hand
+	inventories = list(
+		/obj/inventory/organs/left_hand_worn,
+		/obj/inventory/organs/left_hand_held
+	)
 	health_max = 25
 
 	damage_type = /damagetype/unarmed/fists/left
@@ -108,7 +122,7 @@
 	icon_state = "l_foot"
 	worn_layer = LAYER_MOB_FEET
 	health_max = 25
-	inventory = /obj/inventory/organs/left_foot
+	inventories = list(/obj/inventory/organs/left_foot)
 
 	damage_type = /damagetype/unarmed/feet/left
 

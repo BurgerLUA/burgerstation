@@ -30,8 +30,9 @@
 	organs += O
 	if(O.id)
 		labeled_organs[O.id] = O
-	if(O.inventory)
-		O.inventory.update_owner(src)
+
+	for(var/obj/inventory/I in O.inventories)
+		I.update_owner(src)
 
 /mob/living/advanced/initialize_attributes()
 	for(var/v in all_attributes)
@@ -50,7 +51,7 @@
 	add_clothes(mob_outfit)
 
 	for(var/obj/inventory/I in inventory)
-		if(I.item_slot == SLOT_HAND_RIGHT)
+		if(I.click_flags == RIGHT_HAND)
 			I.add_held_object(new /obj/item/weapon/melee/sword(src.loc))
 			break
 
@@ -101,6 +102,7 @@
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = C.worn_layer
 			spawned_overlay.icon = C.icon
+			spawned_overlay.color = C.color
 			spawned_overlay.icon_state = C.icon_state_worn
 			overlays += spawned_overlay
 		for(var/obj/item/I2 in I.held_objects)
@@ -108,6 +110,7 @@
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = LAYER_MOB_HELD
 			spawned_overlay.icon = I2.icon
+			spawned_overlay.color = I2.color
 			if(I.item_slot == SLOT_HAND_LEFT)
 				spawned_overlay.icon_state = I2.icon_state_held_left
 			else

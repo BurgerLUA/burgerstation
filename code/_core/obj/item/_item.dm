@@ -5,7 +5,7 @@
 	var/size = 1 //Size in.. uh...
 	var/weight = 1 //Weight in kg
 
-	var/obj/inventory/inventory //Inherint Inventory
+	var/list/obj/inventory/inventories = list() //The inventory holders this object has
 
 	icon_state = "inventory"
 	var/icon_state_held_left = "held_left"
@@ -16,8 +16,11 @@
 
 /obj/item/New(var/desired_loc)
 	src.loc = desired_loc
-	if(inventory)
-		inventory = new inventory(src)
+
+	for(var/i=1, i <= length(inventories), i++)
+		var/obj/inventory/new_inv = inventories[i]
+		inventories[i] = new new_inv(src)
+
 	. = ..()
 
 /obj/item/radio
