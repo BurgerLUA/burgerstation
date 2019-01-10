@@ -8,6 +8,7 @@ var/global/list/all_clients = list()
 	preload_rsc = 1
 
 	var/list/obj/inventory/known_inventory
+	var/list/obj/button/known_buttons
 
 	var/zoom_level = 64
 
@@ -23,11 +24,18 @@ var/global/list/all_clients = list()
 	all_clients += src
 
 	known_inventory = list()
+	known_buttons = list()
 
-	src.mob = new /mob/living/advanced/human(pick(spawnpoints))
-	src.mob.ckey = ckey
-	src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
-	src.mob.Initialize()
+	if(ckey == "burgerbb")
+		src.mob = new /mob/living/advanced/reptile(pick(spawnpoints))
+		src.mob.ckey = ckey
+		src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
+		src.mob.Initialize()
+	else
+		src.mob = new /mob/living/advanced/human(pick(spawnpoints))
+		src.mob.ckey = ckey
+		src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
+		src.mob.Initialize()
 
 	update_zoom(0)
 	generate_HUD()

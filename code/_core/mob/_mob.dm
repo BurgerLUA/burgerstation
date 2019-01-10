@@ -12,6 +12,7 @@ var/global/list/all_mobs = list()
 	var/tmp/attack_flags = 0x0
 
 	var/list/obj/inventory/inventory //List of inventory items
+	var/list/obj/button/buttons //List of HUD buttons
 
 	var/list/datum/animation/animations //List of running animation
 	var/animation_pixel_x = 0
@@ -26,62 +27,14 @@ var/global/list/all_mobs = list()
 
 	attack_delay = 4
 
-/mob/proc/get_skill(var/id)
-	return skills[id]
-
-/mob/proc/get_skill_level(var/id)
-	var/experience/skill/S = get_skill(id)
-	return S.get_current_level()
-
-/mob/proc/get_skill_power(var/id,var/min = 0,var/max = 1)
-	var/experience/skill/S = get_skill(id)
-	return S.get_power(min,max)
-
-/mob/proc/set_skill_level(var/id,var/desired_level)
-	var/experience/skill/S = get_skill(id)
-	return S.set_level(desired_level)
-
-/mob/proc/get_attribute(var/id)
-	return attributes[id]
-
-/mob/proc/get_attribute_level(var/id)
-	var/experience/attribute/A = get_attribute(id)
-	return A.get_current_level()
-
-/mob/proc/get_attribute_power(var/id,var/min = 0,var/max = 1)
-	var/experience/attribute/A = get_attribute(id)
-	return A.get_power(min,max)
-
-/mob/proc/set_attribute_level(var/id,var/desired_level)
-	var/experience/attribute/A = get_attribute(id)
-	return A.set_level(desired_level)
-
-
-
-/mob/proc/add_inventory(var/obj/inventory/I)
-	inventory += I
-	if(client)
-		client.screen += I
-	update_inventory()
-
-/mob/proc/remove_inventory(var/obj/inventory/I)
-	inventory -= I
-	if(client)
-		client.screen -= I
-	update_inventory()
-
-/mob/proc/update_inventory()
-	if(client)
-		client.known_inventory = inventory
-
 /mob/New()
 	inventory = list()
 	attributes = list()
 	skills = list()
+	buttons = list()
 
 	all_mobs += src
 	..()
-
 
 /mob/Initialize()
 	initialize_attributes()
@@ -151,4 +104,7 @@ var/global/list/all_mobs = list()
 /mob/can_not_enter(var/atom/A,var/move_direction)
 	if(is_mob(A))
 		return src
+	return FALSE
+
+/mob/proc/has_beast_legs()
 	return FALSE

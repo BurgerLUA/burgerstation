@@ -34,8 +34,15 @@
 	add_projectile(src)
 	return TRUE
 
-
 /obj/proc/transfer_item(var/obj/inventory/new_inventory)
+
+	if(new_inventory.held_slots >= 1)
+		if(!new_inventory.can_hold_object(src,TRUE))
+			return FALSE
+	else if(new_inventory.worn_slots >= 1)
+		if(!new_inventory.can_wear_object(src))
+			return FALSE
+
 	drop_item()
 	return new_inventory.add_object(src)
 

@@ -4,6 +4,8 @@
 
 	damage_type = /damagetype/clothing/shoe
 
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+
 /obj/item/clothing/feet/shoes/black
 	name = "right black shoe"
 	icon_state = "inventory_right"

@@ -10,31 +10,31 @@
 		return src.labeled_organs["head"]
 
 	if(y_attack >= 12)
-		if(prob(50) && src.labeled_organs["torso"])
-			return src.labeled_organs["torso"]
-		else if(prob(50) && src.labeled_organs["l_arm"])
-			return src.labeled_organs["l_arm"]
-		else if(src.labeled_organs["r_arm"])
-			return src.labeled_organs["r_arm"]
+		if(prob(50) && src.labeled_organs[BODY_TORSO])
+			return src.labeled_organs[BODY_TORSO]
+		else if(prob(50) && src.labeled_organs[BODY_ARM_LEFT])
+			return src.labeled_organs[BODY_ARM_LEFT]
+		else if(src.labeled_organs[BODY_ARM_RIGHT])
+			return src.labeled_organs[BODY_ARM_RIGHT]
 
 	if(y_attack >= 9)
-		if(prob(50) && src.labeled_organs["groin"])
-			return src.labeled_organs["groin"]
-		else if(prob(50) && src.labeled_organs["l_hand"])
-			return src.labeled_organs["l_hand"]
-		else if(src.labeled_organs["r_hand"])
-			return src.labeled_organs["r_hand"]
+		if(prob(50) && src.labeled_organs[BODY_GROIN])
+			return src.labeled_organs[BODY_GROIN]
+		else if(prob(50) && src.labeled_organs[BODY_HAND_LEFT])
+			return src.labeled_organs[BODY_HAND_LEFT]
+		else if(src.labeled_organs[BODY_HAND_LEFT])
+			return src.labeled_organs[BODY_HAND_LEFT]
 
 	if(y_attack >= 4)
-		if(prob(50) && src.labeled_organs["l_leg"])
-			return src.labeled_organs["l_leg"]
-		else if (src.labeled_organs["r_leg"])
-			return src.labeled_organs["r_leg"]
+		if(prob(50) && src.labeled_organs[BODY_LEG_LEFT])
+			return src.labeled_organs[BODY_LEG_LEFT]
+		else if (src.labeled_organs[BODY_LEG_RIGHT])
+			return src.labeled_organs[BODY_LEG_RIGHT]
 
-	if(prob(50) && src.labeled_organs["l_foot"])
-		return src.labeled_organs["l_foot"]
-	else if (src.labeled_organs["r_foot"])
-		return src.labeled_organs["r_foot"]
+	if(prob(50) && src.labeled_organs[BODY_FOOT_LEFT])
+		return src.labeled_organs[BODY_FOOT_LEFT]
+	else if (src.labeled_organs[BODY_FOOT_RIGHT])
+		return src.labeled_organs[BODY_FOOT_RIGHT]
 
 	return victim
 

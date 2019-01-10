@@ -9,5 +9,11 @@
 		/obj/item/clothing/feet/shoes/black/left,
 		/obj/item/clothing/back/backpack/grey,
 		/obj/item/clothing/belt/utility,
-		/obj/item/clothing/underbottom/underwear/boxers
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/overwear/armor/,
+		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/head/beaver,
+		/obj/item/clothing/glasses/sun,
+		/obj/item/clothing/ears/headset
 	)

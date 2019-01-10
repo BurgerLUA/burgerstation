@@ -46,13 +46,6 @@ client/verb/debug_organs()
 		var/obj/item/organ/O = A.labeled_organs[key]
 		src << "[key] = [O.type]"
 
-
-client/verb/debug_species_organs()
-	set category = "Debug"
-	var/mob/living/advanced/A = mob
-	for(var/key in A.mob_species.spawning_organs)
-		src << "[key]"
-
 client/verb/debug_overlays()
 	set category = "Debug"
 	src << "Found [length(mob.overlays)] overlays."
@@ -243,4 +236,7 @@ client/verb/debug_random()
 */
 
 
+/client/verb/debug_buttons()
+	set category = "Debug"
+	src << "Found [length(known_buttons)] known buttons."
 

@@ -2,8 +2,15 @@
 	name = "ORGAN"
 	desc = "An organ."
 
+	icon = 'icons/mob/living/advanced/species/mammal.dmi'
+
+
 	var/damage_icon = 'icons/mob/living/advanced/overlays/dam_mob.dmi'
 	var/damage_tag = "human"
+
+	color = "#e0b19d"
+
+	var/flags_organ = FLAG_ORGAN_NONE
 
 /obj/item/organ/update_icon()
 	. = ..()
@@ -34,5 +41,3 @@
 	icon = base_icon
 
 	return TRUE
-
-

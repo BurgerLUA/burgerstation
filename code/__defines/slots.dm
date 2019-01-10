@@ -8,6 +8,7 @@
 #define SLOT_HEAD         0x1000 //Helmets/Hats
 #define SLOT_FACE         0x2000 //Masks
 #define SLOT_EAR          0x4000 //Headsets
+#define SLOT_GLASSES      0x8000 //Glasses
 
 #define SLOT_GROIN        0x8    //Belts, mainly
 #define SLOT_GROIN_U      0x10   //Groin covering underwear

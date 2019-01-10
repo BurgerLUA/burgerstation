@@ -10,6 +10,8 @@
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
 
+	gender = FEMALE
+
 /mob/living/advanced/New()
 	organs = list()
 	inventory = list()
@@ -19,20 +21,6 @@
 	if(mob_species)
 		mob_species = new mob_species
 	..()
-
-
-/mob/living/advanced/proc/add_species_organs()
-	for(var/key in mob_species.spawning_organs)
-		add_organ(mob_species.spawning_organs[key])
-
-/mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
-	O = new O
-	organs += O
-	if(O.id)
-		labeled_organs[O.id] = O
-
-	for(var/obj/inventory/I in O.inventories)
-		I.update_owner(src)
 
 /mob/living/advanced/initialize_attributes()
 	for(var/v in all_attributes)
@@ -48,6 +36,8 @@
 
 /mob/living/advanced/Initialize()
 	add_species_organs()
+	sync_skin_color()
+	add_species_buttons()
 	add_clothes(mob_outfit)
 
 	for(var/obj/inventory/I in inventory)
@@ -93,11 +83,13 @@
 		spawned_overlay.layer = O.worn_layer
 		spawned_overlay.icon = O.icon
 		spawned_overlay.icon_state = O.icon_state
+		spawned_overlay.color = O.color
 		overlays += spawned_overlay
 
 	for(var/obj/inventory/I in inventory)
-		//I.update_owner(src.client)
-		for(var/obj/item/clothing/C in I.worn_objects)
+		if(!I.should_draw)
+			continue
+		for(var/obj/item/C in I.worn_objects)
 			C.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = C.worn_layer
@@ -112,10 +104,15 @@
 			spawned_overlay.icon = I2.icon
 			spawned_overlay.color = I2.color
 			if(I.item_slot == SLOT_HAND_LEFT)
-				spawned_overlay.icon_state = I2.icon_state_held_left
+				spawned_overlay.icon_state = I.reverse_draw ? I2.icon_state_worn : I2.icon_state_held_left
 			else
-				spawned_overlay.icon_state = I2.icon_state_held_right
+				spawned_overlay.icon_state = I.reverse_draw ? I2.icon_state_worn : I2.icon_state_held_right
 
 			overlays += spawned_overlay
 
 	. = ..()
+
+/mob/living/advanced/proc/sync_skin_color()
+	for(var/obj/item/organ/O in organs)
+		O.color = src.color
+		O.update_icon()

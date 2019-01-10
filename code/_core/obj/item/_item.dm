@@ -14,6 +14,8 @@
 
 	var/worn_layer = 0
 
+	var/item_slot = SLOT_NONE
+
 /obj/item/New(var/desired_loc)
 	src.loc = desired_loc
 
@@ -33,7 +35,13 @@
 /obj/item/radio/attack_self(var/atom/caller)
 	//play_sound(sound_to_play,all_mobs,vector(caller.x,caller.y,caller.z))
 
+obj/item/proc/update_owner(desired_owner)
+	for(var/v in inventories)
+		var/obj/inventory/I = v
+		I.update_owner(desired_owner)
 
+/obj/item/proc/can_be_worn()
+	return FALSE
 
 /obj/item/examine(var/atom/examiner)
 	..()

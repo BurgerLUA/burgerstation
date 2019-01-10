@@ -1,16 +1,22 @@
-/obj/item/clothing/attack_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/attack_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
-	if(item_slot && caller == object && istype(caller,/mob/living/advanced/))
-		var/mob/living/advanced/A = caller
-		if(A.labeled_organs[item_slot])
-			var/obj/item/organ/O = A.labeled_organs[item_slot]
+	if(is_mob(object))
+		var/mob/M = object
 
-			var/obj/inventory/best
-			for(var/obj/inventory/I in O.inventories)
-				if(!best || (best.priority < I.priority && best.can_wear_object(src)))
-					best = I
+		var/obj/inventory/best_inventory
 
-			if(best)
-				return transfer_item(best)
+		for(var/obj/inventory/I in M.inventory)
+			if(!best_inventory)
+				best_inventory = I
+				continue
+
+			if(I.can_wear_object(src) && I.priority >= best_inventory.priority)
+				best_inventory = I
+				continue
+
+		if(best_inventory)
+			return src.transfer_item(best_inventory)
+		else
+			return FALSE
 
 	return ..()

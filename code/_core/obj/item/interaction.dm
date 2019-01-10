@@ -6,8 +6,6 @@
 		if(length(I.held_objects) && I.held_objects[1] == src)
 			return attack_self(caller)
 
-
-
 		return transfer_item(I) //We're giving the object to the inventory
 
 	if(..())

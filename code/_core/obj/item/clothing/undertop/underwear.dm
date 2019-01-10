@@ -6,3 +6,6 @@
 
 /obj/item/clothing/undertop/underwear/bra/pink
 	color = "#ff66ff"
+
+/obj/item/clothing/undertop/underwear/shirt
+	icon = 'icons/obj/items/clothing/underwear/undershirt.dmi'

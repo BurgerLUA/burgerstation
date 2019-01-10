@@ -4,3 +4,10 @@
 
 	icon = 'icons/obj/items/clothing/uniforms/grey.dmi'
 	icon_state = "inventory"
+
+	inventories = list(
+		/obj/inventory/pocket/pocket01,
+		/obj/inventory/pocket/pocket02
+	)
+
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET

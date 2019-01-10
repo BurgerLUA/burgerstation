@@ -2,7 +2,11 @@
 	var/name = "BLANK SPECIES"
 	var/desc = "OH MY GOD"
 
-	var/list/obj/item/organ/spawning_organs = list()
+	var/list/obj/item/organ/spawning_organs_male = list()
+
+	var/list/obj/item/organ/spawning_organs_female = list()
+
+	var/list/obj/button/spawning_buttons = list()
 
 	var/list/attribute_defaults = list(
 		ATTRIBUTE_STRENGTH = 15,
