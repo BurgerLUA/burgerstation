@@ -4,5 +4,6 @@
 #define SS_ORDER_MOBS 4
 #define SS_ORDER_SOUND 5
 #define SS_ORDER_THROWING 6
+#define SS_ORDER_LIGHTING 7
 
 #define SS_ORDER_SIZE 7

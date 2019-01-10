@@ -9,6 +9,8 @@
 
 	var/is_static = TRUE //Is the button anchored?
 
+	plane = 3
+
 
 /obj/button/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 

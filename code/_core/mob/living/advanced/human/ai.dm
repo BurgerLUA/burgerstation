@@ -16,6 +16,7 @@
 		move_dir = 0
 		handle_movement(TRUE)
 
+	/*
 	if(time_prob(5))
 		var/list/ai_racism = list(
 			"all access pls",
@@ -55,6 +56,7 @@
 		)
 
 		say(pick(ai_racism))
+	*/
 
 
 	 . = ..()
@@ -75,3 +77,8 @@
 	handle_movement(TRUE)
 
 	return TRUE
+
+/mob/living/advanced/human/ai/logo
+	name = "greytide"
+	mob_outfit = null
+	movement_delay = 32

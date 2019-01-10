@@ -5,8 +5,9 @@
 #define LAYER_MOB_DAMAGE 5
 #define LAYER_MOB_CLOTHING 6
 #define LAYER_MOB_HELD 7
-#define LAYER_AREA 8
-#define LAYER_HUD 9
+#define LAYER_LIGHTING 8
+#define LAYER_AREA 9
+#define LAYER_HUD 10
 
 #define LAYER_MOB_NONE    LAYER_MOB + 0.01
 #define LAYER_MOB_TORSO   LAYER_MOB + 0.02

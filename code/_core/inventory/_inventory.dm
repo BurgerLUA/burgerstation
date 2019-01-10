@@ -9,6 +9,8 @@
 	icon = 'icons/hud/inventory.dmi'
 	icon_state = "slot"
 
+	plane = 3
+
 	var/list/obj/item/held_objects //Items that are held, and not worn.
 	var/list/obj/item/clothing/worn_objects //Items that are worn, and not held.
 
@@ -69,6 +71,7 @@
 	if(!can_hold_object(I,TRUE))
 		return FALSE
 
+	I.plane = 3
 	I.loc = src
 	held_objects += I
 	overlays += I
@@ -76,15 +79,16 @@
 
 	return TRUE
 
-/obj/inventory/proc/add_worn_object(var/obj/item/clothing/C)
-	if(!can_wear_object(C))
+/obj/inventory/proc/add_worn_object(var/obj/item/I)
+	if(!can_wear_object(I))
 		return FALSE
 
-	C.loc = src
-	worn_objects += C
-	overlays += C
+	I.plane = 3
+	I.loc = src
+	worn_objects += I
+	overlays += I
 
-	C.update_owner(owner)
+	I.update_owner(owner)
 
 	update_stats()
 
@@ -105,6 +109,7 @@
 
 	if(was_removed)
 		overlays -= I
+		I.plane = initial(I.plane)
 		I.loc = drop_loc ? drop_loc : get_turf(src.loc)
 		update_stats()
 
@@ -149,17 +154,19 @@
 
 	return TRUE
 
-/obj/inventory/proc/can_wear_object(var/obj/item/clothing/C)
+/obj/inventory/proc/can_wear_object(var/obj/item/I)
 
-	if(C.flags_clothing && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		for(var/obj/item/organ/O in A.organs)
-			if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
-				return FALSE
-			if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
-				return FALSE
+	if(is_clothing(I))
+		var/obj/item/clothing/C = I
+		if(C.flags_clothing && is_advanced(owner))
+			var/mob/living/advanced/A = owner
+			for(var/obj/item/organ/O in A.organs)
+				if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
+					return FALSE
+				if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
+					return FALSE
 
-	if(!(item_slot & C.item_slot))
+	if(!(item_slot & I.item_slot))
 		return FALSE
 
 	if(length(worn_objects) >= worn_slots)

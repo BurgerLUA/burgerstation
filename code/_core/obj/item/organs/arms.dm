@@ -9,6 +9,7 @@
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT
 	desc = "A left arm."
 
 /obj/item/organ/arm/reptile
