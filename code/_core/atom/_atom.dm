@@ -16,11 +16,13 @@
 
 	var/initialized = FALSE
 
+	var/area/area //The object's area.
+
 /atom/proc/Initialize()
 	//Initialize things here
 	initialized = TRUE
 
-/atom/New()
+/atom/New(var/new_loc)
 	if(damage_type)
 		damage_type = new damage_type
 	. = ..()

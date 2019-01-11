@@ -45,12 +45,17 @@ var/global/list/all_clients = list()
 
 	src.mob = new /mob/abstract/observer(pick(observer_spawnpoints),src)
 	src.mob.Initialize()
+	eye = locate(11,11,src.mob.z)
+	view = 8
+
+	var/turf/T = get_turf(src.mob)
+	if(T)
+		T.on_enter(src.mob)
 
 	if(!userdata)
 		userdata = new(src)
 
 	update_zoom(0)
-	generate_HUD()
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE
@@ -92,9 +97,8 @@ var/global/list/all_clients = list()
 		mob.on_middle_click(object,location,control,aug)
 
 /client/proc/update_zoom(var/desired_zoom_level)
-
-	if(should_static_view())
-		zoom_level = TILE_SIZE
+	if(eye != mob)
+		zoom_level = 64
 	else
 		if(desired_zoom_level == 0)
 			desired_zoom_level = initial(zoom_level)

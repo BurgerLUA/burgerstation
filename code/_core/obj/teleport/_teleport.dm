@@ -16,6 +16,9 @@
 		var/mob/abstract/observer/O = triggerer
 		var/mob/living/advanced/human = new(pick(spawnpoints_new_character),O.client)
 		human.Initialize()
+		if(human.client)
+			human.client.eye = human
+			human.client.update_zoom(0)
 		del(O)
 
 /obj/trigger/move_to_world

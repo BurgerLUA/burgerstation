@@ -12,7 +12,6 @@
 		return FALSE
 
 	for(var/obj/item/I2 in worn_objects)
-
 		if(I.item_slot & SLOT_TORSO_U)
 			if(messages)
 				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))

@@ -47,10 +47,8 @@
 		var/obj/O = new o_type(A.loc)
 		O.color = o_color
 		for(var/obj/inventory/I in A.inventory)
-			A << "[I.id] will accept [id]"
 			if(I.id != id)
 				continue
-			A << "OH MY GOD. THEY'RE THE SAME."
 			I.add_worn_object(O)
 
 	//Inventory - Held
@@ -219,9 +217,7 @@
 	var/list/best_data
 
 	for(var/v in file_paths)
-		owner << "OLD: [v]"
 		v = get_proper_id_from_filename(v)
-		owner << "NEW: [v]"
 		var/list/loaded_data = load_json_data_from_id(v)
 		if(!best_time || loaded_data["last_saved"] >= best_time)
 			best_time = loaded_data["last_saved"]

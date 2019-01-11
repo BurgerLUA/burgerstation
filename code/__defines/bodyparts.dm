@@ -10,6 +10,7 @@
 #define BODY_TORSO_FEMALE "torso_f"
 
 #define BODY_GROIN "groin"
+#define BODY_GROIN_O "groin_o"
 #define BODY_GROIN_MALE "groin_m"
 #define BODY_GROIN_FEMALE "groin_f"
 

@@ -3,7 +3,6 @@
 	icon = 'icons/debug/turfs.dmi'
 	icon_state = ""
 	layer = LAYER_FLOOR
-	var/area/area
 
 	//Density
 	var/density_north = FALSE
@@ -20,11 +19,10 @@
 	for(var/v in contents)
 		if(is_mob(v))
 			return v
-
 	return src
 
-
 /turf/on_enter(var/atom/enterer)
+	area.on_enter(enterer)
 	for(var/atom/A in contents)
 		if(is_trigger(A))
 			var/obj/trigger/T = A

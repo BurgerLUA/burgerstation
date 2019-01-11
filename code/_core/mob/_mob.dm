@@ -81,7 +81,7 @@ var/global/list/all_mobs = list()
 	var/real_movement_delay = movement_override ? movement_override : get_movement_delay()
 	var/movement_dir = old_loc.get_relative_dir(new_loc)
 
-	if(client && !should_static_view() ) //Animate the client's camera so it's smooth.
+	if(client && client.eye == src) //Animate the client's camera so it's smooth.
 		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
 		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 

@@ -13,4 +13,9 @@
 	desc = "the lobby area"
 	icon_state = "green"
 
+	flags_area = FLAG_AREA_MAXZOOM
+
 	//TODO: Camera Manipulation
+
+
+

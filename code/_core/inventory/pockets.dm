@@ -1,5 +1,6 @@
 /obj/inventory/pocket
 	name = "pocket"
+	id = "pocket"
 	screen_loc = "CENTER,BOTTOM+3"
 	worn_slots = 0
 	held_slots = 1
@@ -11,8 +12,10 @@
 
 /obj/inventory/pocket/pocket01
 	name = "right lower pocket"
+	id = "pocket01"
 	screen_loc = "CENTER+0.5+2,BOTTOM"
 
 /obj/inventory/pocket/pocket02
 	name = "right lower pocket"
+	id = "pocket02"
 	screen_loc = "CENTER+0.5+3,BOTTOM"
