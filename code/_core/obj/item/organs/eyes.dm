@@ -10,7 +10,7 @@
 
 /obj/item/organ/eye/left
 	name = "left eye"
-	id = BODY_EYE_RIGHT
+	id = BODY_EYE_LEFT
 	desc = "An eye."
 	icon_state = BODY_EYE_LEFT
 

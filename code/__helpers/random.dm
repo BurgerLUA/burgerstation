@@ -2,7 +2,7 @@ proc/time_prob(var/value)
 	return prob(value / FPS_SERVER)
 
 
-/proc/get_luck_calc(var/mob/positve_mob,var/positive_luck_mul,var/mob/negative_mob,var/negative_luck_mul)
+/proc/get_luck_calc(var/mob/living/positve_mob,var/positive_luck_mul,var/mob/living/negative_mob,var/negative_luck_mul)
 	var/base_prob = 0
 
 	if(positve_mob && positive_luck_mul)

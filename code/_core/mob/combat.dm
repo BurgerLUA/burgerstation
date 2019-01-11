@@ -1,25 +1,25 @@
-/mob/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	var/base_chance = get_skill_power(SKILL_PARRY,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
 
-/mob/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/mob/living/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	var/base_chance = get_skill_power(SKILL_DODGE,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
 
-/mob/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/mob/living/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	var/base_chance = get_skill_power(SKILL_BLOCK,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
 
 //TODO: Magic Effect System
 
-/mob/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return ..()
 
-/mob/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	attack(src,attacker)
 	return ..()
 
-/mob/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	var/pixel_x_offset = prob(50) ? -8 : 8
 	var/pixel_y_offset = prob(50) ? -8 : 8

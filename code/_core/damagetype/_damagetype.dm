@@ -77,19 +77,19 @@
 	return TRUE
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	if(!ismob(attacker))
+	if(!is_living(attacker))
 		return base_attack_damage
 
-	var/mob/M = attacker
+	var/mob/living/L = attacker
 	var/list/new_attack_damage = base_attack_damage.Copy()
 
 	for(var/k in attribute_stats)
 		var/v = attribute_stats[k]
-		new_attack_damage[attribute_damage[k]] += M.get_attribute_level(k)*v
+		new_attack_damage[attribute_damage[k]] += L.get_attribute_level(k)*v
 
 	for(var/k in skill_stats)
 		var/v = skill_stats[k]
-		new_attack_damage[skill_damage[k]] += M.get_skill_level(k)*v
+		new_attack_damage[skill_damage[k]] += L.get_skill_level(k)*v
 
 	return new_attack_damage
 

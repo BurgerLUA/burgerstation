@@ -1,7 +1,7 @@
 #define FPS_CLIENT 60
 #define FPS_SERVER 60
 #define TILE_SIZE 32
-#define VIEW_RANGE 15
+#define VIEW_RANGE 16
 #define TICK_LAG 10 / FPS_SERVER
 
 #define ATTACK_ANIMATION_LENGTH 2

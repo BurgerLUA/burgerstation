@@ -16,7 +16,8 @@
 		BODY_EYE_RIGHT = /obj/item/organ/eye/reptile,
 		BODY_EYE_LEFT = /obj/item/organ/eye/reptile/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile,
-		BODY_EAR_LEFT = /obj/item/organ/ear/reptile/left
+		BODY_EAR_LEFT = /obj/item/organ/ear/reptile/left,
+		BODY_TAIL = /obj/item/organ/tail/reptile
 	)
 
 	spawning_organs_female = list(
@@ -34,7 +35,8 @@
 		BODY_EYE_RIGHT = /obj/item/organ/eye/reptile,
 		BODY_EYE_LEFT = /obj/item/organ/eye/reptile/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile,
-		BODY_EAR_LEFT = /obj/item/organ/ear/reptile/left
+		BODY_EAR_LEFT = /obj/item/organ/ear/reptile/left,
+		BODY_TAIL = /obj/item/organ/tail/reptile
 	)
 
 	spawning_buttons = list(

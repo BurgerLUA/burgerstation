@@ -22,3 +22,10 @@
 			return v
 
 	return src
+
+
+/turf/on_enter(var/atom/enterer)
+	for(var/atom/A in contents)
+		if(is_trigger(A))
+			var/obj/trigger/T = A
+			T.on_trigger(enterer)

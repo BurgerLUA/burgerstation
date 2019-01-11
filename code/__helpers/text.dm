@@ -55,3 +55,6 @@
 
 	return t
 
+/proc/get_filename(var/file_path)
+	var/position = findlasttext(file_path,"/")
+	return copytext(file_path,position)

@@ -1,6 +1,13 @@
 /datum/species/human/
 	name = "Human"
 	desc = "Vanilla as fuck."
+
+	eye_color_default = "#000000"
+	skin_color_default = "#e0b19d"
+	hair_color_default = "#000000"
+
+	hair_style_default = "greytide"
+
 	spawning_organs_male = list(
 		BODY_HEAD = /obj/item/organ/head,
 		BODY_TORSO = /obj/item/organ/torso,
@@ -16,7 +23,8 @@
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
 		BODY_EYE_LEFT = /obj/item/organ/eye/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear,
-		BODY_EAR_LEFT = /obj/item/organ/ear/left
+		BODY_EAR_LEFT = /obj/item/organ/ear/left,
+		BODY_HAIR_HEAD = /obj/item/organ/hair
 	)
 
 	spawning_organs_female = list(
@@ -34,7 +42,8 @@
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
 		BODY_EYE_LEFT = /obj/item/organ/eye/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear,
-		BODY_EAR_LEFT = /obj/item/organ/ear/left
+		BODY_EAR_LEFT = /obj/item/organ/ear/left,
+		BODY_HAIR_HEAD = /obj/item/organ/hair
 	)
 
 	spawning_buttons = list(

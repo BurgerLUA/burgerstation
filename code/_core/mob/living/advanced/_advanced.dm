@@ -1,6 +1,9 @@
 /mob/living/advanced
+
+	name = "lost soul"
+
 	var/datum/species/mob_species = /datum/species/human/
-	var/datum/outfit/mob_outfit = /datum/outfit/assistant/
+	var/datum/outfit/mob_outfit = /datum/outfit/new_character/
 
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
@@ -10,7 +13,7 @@
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
 
-	gender = FEMALE
+	gender = MALE
 
 /mob/living/advanced/New()
 	organs = list()
@@ -35,17 +38,16 @@
 		skills[S.id] = S
 
 /mob/living/advanced/Initialize()
-	add_species_organs()
-	sync_skin_color()
-	add_species_buttons()
-	add_clothes(mob_outfit)
 
-	for(var/obj/inventory/I in inventory)
-		if(I.click_flags == RIGHT_HAND)
-			I.add_held_object(new /obj/item/weapon/melee/sword(src.loc))
-			break
+	if(!client || client.userdata.loaded_data["tutorial"])
+		add_species_organs()
+		add_species_colors()
+		add_species_buttons()
+		add_clothes(mob_outfit)
+		update_icon()
+	else
+		client.userdata.apply_data_to_mob(src)
 
-	update_icon()
 	. = ..()
 
 /mob/living/advanced/proc/add_clothes(var/datum/outfit/spawning_outfit)
@@ -57,9 +59,10 @@
 		add_worn_item(C)
 
 	return TRUE
+
 /mob/living/advanced/proc/add_worn_item(var/obj/item/clothing/C)
 	for(var/obj/inventory/I in inventory)
-		if(I.add_worn_object(C))
+		if(I.add_worn_object(C,FALSE))
 			update_icon()
 			return TRUE
 
@@ -79,6 +82,24 @@
 
 	for(var/obj/item/organ/O in organs)
 		O.update_icon()
+
+		if(is_tail(O))
+			var/obj/overlay/behind_overlay = new /obj/overlay
+			behind_overlay.layer = LAYER_MOB_TAIL_BEHIND
+			behind_overlay.icon = O.icon
+			behind_overlay.icon_state = "tail_behind"
+			behind_overlay.color = O.color
+
+			var/obj/overlay/front_overlay = new /obj/overlay
+			front_overlay.layer = LAYER_MOB_TAIL_FRONT
+			front_overlay.icon = O.icon
+			front_overlay.icon_state = "tail_front"
+			front_overlay.color = O.color
+
+			overlays += front_overlay
+			overlays += behind_overlay
+			continue
+
 		var/obj/overlay/spawned_overlay = new /obj/overlay
 		spawned_overlay.layer = O.worn_layer
 		spawned_overlay.icon = O.icon
@@ -90,14 +111,26 @@
 		if(!I.should_draw)
 			continue
 		for(var/obj/item/C in I.worn_objects)
+			if(C.loc != I)
+				continue
 			C.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = C.worn_layer
 			spawned_overlay.icon = C.icon
 			spawned_overlay.color = C.color
-			spawned_overlay.icon_state = C.icon_state_worn
+
+			if(C.slot_icons)
+				spawned_overlay.icon_state = "[C.icon_state_worn]_[I.id]"
+			else
+				spawned_overlay.icon_state = C.icon_state_worn
+
+
+
+
 			overlays += spawned_overlay
 		for(var/obj/item/I2 in I.held_objects)
+			if(I2.loc != I)
+				continue
 			I2.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = LAYER_MOB_HELD
@@ -112,7 +145,51 @@
 
 	. = ..()
 
-/mob/living/advanced/proc/sync_skin_color()
+/mob/living/advanced/proc/add_species_colors()
 	for(var/obj/item/organ/O in organs)
-		O.color = src.color
+		if(is_hair(O))
+			var/obj/item/organ/hair/H = O
+			H.color = mob_species.hair_color_default
+			H.hairstyle = mob_species.hair_style_default
+		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
+			O.color = mob_species.eye_color_default
+		else
+			O.color = mob_species.skin_color_default
+
 		O.update_icon()
+
+/mob/living/advanced/proc/change_skin_color(var/new_color)
+
+	for(var/obj/item/organ/O in organs)
+		if(is_hair(O))
+			continue
+		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
+			continue
+		else
+			O.color = new_color
+			O.update_icon()
+
+	update_icon()
+
+/mob/living/advanced/proc/change_eye_color(var/new_color)
+
+	for(var/obj/item/organ/O in organs)
+		if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
+			O.color = new_color
+			O.update_icon()
+
+	update_icon()
+
+/mob/living/advanced/proc/change_hair_color(var/new_color)
+
+	for(var/obj/item/organ/O in organs)
+		if(is_hair(O))
+			O.color = new_color
+			O.update_icon()
+
+	update_icon()
+
+/mob/living/advanced/proc/update_gender(var/new_gender)
+	remove_all_organs()
+	add_species_organs()
+	add_species_colors()

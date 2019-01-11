@@ -10,3 +10,9 @@
 		'sounds/effects/footsteps/wood4.ogg',
 		'sounds/effects/footsteps/wood5.ogg'
 	)
+
+/turf/simulated/floor/wood/opaque
+	opacity = 1
+
+/turf/simulated/floor/wood/dense
+	density = 1

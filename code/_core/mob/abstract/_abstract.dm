@@ -1,0 +1,1 @@
+/mob/abstract/ //Ghosts, spectators, other objects

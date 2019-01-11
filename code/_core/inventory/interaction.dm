@@ -1,5 +1,8 @@
 obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	if(..())
+		return TRUE
+
 	if(length(held_objects)) //If we have an item in our hands, that item will now be the one that is being used.
 		var/obj/item/I = held_objects[1]
 		if(I)
@@ -17,11 +20,11 @@ obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,contr
 
 		//Take held items first.
 		if(length(inv.held_objects))
-			var/obj/item/I = inv.held_objects[1]
+			var/obj/item/I = inv.get_top_held_object()
 			if(I)
 				return I.attack_object(caller,src,location,control,params)
 		else if(length(inv.worn_objects))
-			var/obj/item/I = inv.worn_objects[1]
+			var/obj/item/I = inv.get_top_worn_object()
 			if(I)
 				return I.attack_object(caller,src,location,control,params)
 

@@ -81,7 +81,8 @@ client/verb/remove_head()
 client/verb/add_clothes()
 	set category = "Debug"
 	var/mob/living/advanced/A = mob
-	A.add_clothes(A.mob_outfit)
+	if(A.mob_outfit)
+		A.add_clothes(A.mob_outfit)
 
 client/verb/debug_sounds()
 	set category = "Debug"
@@ -112,17 +113,21 @@ client/verb/debug_attributes()
 client/verb/debug_attribute()
 	set category = "Debug"
 
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
 	var/text = input("What is the ID of the attribute?")
 
 	text = text ? text : ATTRIBUTE_STRENGTH
 
-	var/experience/attribute/A = mob.get_attribute(text)
+	var/experience/attribute/A = L.get_attribute(text)
 	src << "get_attribute([text]) = [A.type]"
 
-	var/level = mob.get_attribute_level(text)
+	var/level = L.get_attribute_level(text)
 	src << "get_attribute_level([text]) = [level]"
 
-	var/power = mob.get_attribute_power(text,0,100)
+	var/power = L.get_attribute_power(text,0,100)
 	src << "get_attribute_power([text],0,100) = [power]"
 
 
@@ -131,10 +136,10 @@ client/verb/debug_attribute()
 
 	var/list/valid_choices = list()
 
-	for(var/mob/M in world)
+	for(var/mob/living/M in world)
 		valid_choices[M.name] = M
 
-	var/mob/chosen_mob = valid_choices[input("Which mob do you wish to debug?","Debug Mob") in valid_choices]
+	var/mob/living/chosen_mob = valid_choices[input("Which mob do you wish to debug?","Debug Mob") in valid_choices]
 
 	var/text = input("What is the ID of the attribute?")
 
@@ -157,9 +162,13 @@ client/verb/debug_attribute()
 	set name = "Set Attribute"
 	set category = "Cheat"
 
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
 	var/list/valid_choices = list()
 
-	for(var/k in mob.attributes)
+	for(var/k in L.attributes)
 		valid_choices += k
 
 	var/chosen_attribute = input("Which attribute do you wish to modify?","Modify Attribute") in valid_choices
@@ -174,18 +183,22 @@ client/verb/debug_attribute()
 
 	chosen_value = text2num(chosen_value)
 
-	mob.set_attribute_level(chosen_attribute,chosen_value)
+	L.set_attribute_level(chosen_attribute,chosen_value)
 
-	mob << "Your [chosen_attribute] is now [mob.get_attribute_level(chosen_attribute)]."
+	L << "Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."
 
 
 /client/verb/set_skill()
 	set name = "Set Skill"
 	set category = "Cheat"
 
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
 	var/list/valid_choices = list()
 
-	for(var/k in mob.skills)
+	for(var/k in L.skills)
 		valid_choices += k
 
 	var/chosen_skill = input("Which skill do you wish to modify?","Modify Skill") in valid_choices
@@ -200,9 +213,9 @@ client/verb/debug_attribute()
 
 	chosen_value = text2num(chosen_value)
 
-	mob.set_skill_level(chosen_skill,chosen_value)
+	L.set_skill_level(chosen_skill,chosen_value)
 
-	mob << "Your [chosen_skill] is now [mob.get_skill_level(chosen_skill)]."
+	L << "Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."
 
 
 

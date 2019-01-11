@@ -3,6 +3,7 @@
 /obj/inventory/
 	name = "Inventory Holder"
 	desc = "Inventory"
+	id = "other"
 	//icon = 'icons/invisible.dmi'
 	//icon_state = "0"
 
@@ -67,8 +68,8 @@
 
 	return add_held_object(I)
 
-/obj/inventory/proc/add_held_object(var/obj/item/I)
-	if(!can_hold_object(I,TRUE))
+/obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE)
+	if(!can_hold_object(I,messages))
 		return FALSE
 
 	I.plane = 3
@@ -79,13 +80,20 @@
 
 	return TRUE
 
-/obj/inventory/proc/add_worn_object(var/obj/item/I)
-	if(!can_wear_object(I))
+/obj/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE)
+	if(!can_wear_object(I,messages))
 		return FALSE
+
+	for(var/obj/item/C in owner.worn_objects)
+		if(C.item_slot & I.item_slot)
+			if(messages)
+				to_chat(owner,span("notice","\The [C] prevents you from wearing \the [I]!"))
+			return FALSE
 
 	I.plane = 3
 	I.loc = src
 	worn_objects += I
+	owner.worn_objects += I
 	overlays += I
 
 	I.update_owner(owner)
@@ -93,6 +101,12 @@
 	update_stats()
 
 	return TRUE
+
+/obj/inventory/proc/remove_all_objects()
+	for(var/obj/item/I in worn_objects)
+		del(remove_object(I))
+	for(var/obj/item/I in held_objects)
+		del(remove_object(I))
 
 /obj/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc) //Removes the object from both worn and held objects, just in case.
 
@@ -104,6 +118,7 @@
 
 	if(I in worn_objects)
 		worn_objects -= I
+		owner.worn_objects -= I
 		I.update_owner()
 		was_removed = TRUE
 
@@ -113,7 +128,7 @@
 		I.loc = drop_loc ? drop_loc : get_turf(src.loc)
 		update_stats()
 
-	return was_removed
+	return I
 
 /obj/inventory/proc/update_stats()
 	total_weight = 0
@@ -123,9 +138,19 @@
 		total_weight += O.weight
 		total_size += O.size
 
+	if(length(held_objects))
+		name = get_top_held_object().name
+	else if(length(worn_objects))
+		name = get_top_worn_object().name
+	else
+		name = initial(name)
+
 	owner.update_icon()
 
 /obj/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
+
+	if(held_slots <= 0)
+		return FALSE
 
 	if(length(item_blacklist) && (I.type in item_blacklist))
 		if(messages)
@@ -154,7 +179,10 @@
 
 	return TRUE
 
-/obj/inventory/proc/can_wear_object(var/obj/item/I)
+/obj/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
+
+	if(worn_slots <= 0)
+		return FALSE
 
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
@@ -162,16 +190,36 @@
 			var/mob/living/advanced/A = owner
 			for(var/obj/item/organ/O in A.organs)
 				if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
+					if(messages)
+						owner.to_chat(span("notice","Beast races cannot wear this!"))
 					return FALSE
 				if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
+					if(messages)
+						owner.to_chat(span("notice","Beast races cannot wear this!"))
 					return FALSE
 
-	if(!(item_slot & I.item_slot))
+	if(!(I.item_slot & item_slot))
+		if(messages)
+			owner.to_chat(span("notice","You cannot wear \the [I] like this!"))
 		return FALSE
 
 	if(length(worn_objects) >= worn_slots)
+		if(messages)
+			owner.to_chat(span("notice","You cannot seem to fit this on your already existing clothing!"))
 		return FALSE
 
 	return TRUE
 
+/obj/inventory/proc/get_top_worn_object()
+	if(!length(worn_objects))
+		return FALSE
 
+	return worn_objects[length(worn_objects)]
+
+
+
+/obj/inventory/proc/get_top_held_object()
+	if(!length(held_objects))
+		return FALSE
+
+	return held_objects[length(held_objects)]

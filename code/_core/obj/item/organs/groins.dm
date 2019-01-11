@@ -7,7 +7,7 @@
 	health_max = 75
 	inventories = list(
 		/obj/inventory/organs/groin,
-		/obj/inventory/organs/groin_u
+		/obj/inventory/organs/groin_o,
 	)
 
 /obj/item/organ/groin/female

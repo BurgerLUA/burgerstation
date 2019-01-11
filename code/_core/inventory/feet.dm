@@ -1,5 +1,6 @@
 /obj/inventory/organs/left_foot
 	name = "left foot slot"
+	id = BODY_FOOT_LEFT
 	screen_loc = "LEFT+1,BOTTOM"
 	click_flags = LEFT_FOOT
 	item_slot = SLOT_FOOT_LEFT
@@ -7,6 +8,7 @@
 
 /obj/inventory/organs/right_foot
 	name = "right foot slot"
+	id = BODY_FOOT_RIGHT
 	screen_loc = "LEFT,BOTTOM"
 	click_flags = RIGHT_FOOT
 	item_slot = SLOT_FOOT_RIGHT

@@ -12,6 +12,10 @@ var/global/list/all_clients = list()
 
 	var/zoom_level = 64
 
+	var/userdata/userdata
+
+	var/save_slot //The character slot that the client wishes to overwrite.
+
 	//lazy_eye = 5
 
 /client/New()
@@ -26,6 +30,7 @@ var/global/list/all_clients = list()
 	known_inventory = list()
 	known_buttons = list()
 
+	/*
 	if(ckey == "burgerbb")
 		src.mob = new /mob/living/advanced/reptile(pick(spawnpoints))
 		src.mob.ckey = ckey
@@ -36,6 +41,13 @@ var/global/list/all_clients = list()
 		src.mob.ckey = ckey
 		src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
 		src.mob.Initialize()
+	*/
+
+	src.mob = new /mob/abstract/observer(pick(observer_spawnpoints),src)
+	src.mob.Initialize()
+
+	if(!userdata)
+		userdata = new(src)
 
 	update_zoom(0)
 	generate_HUD()
@@ -66,7 +78,6 @@ var/global/list/all_clients = list()
 
 	var/list/aug = params2list(params)
 
-
 	if(mob.movement_flags & MOVEMENT_WALKING)
 		object.examine(mob)
 		return
@@ -80,9 +91,16 @@ var/global/list/all_clients = list()
 	if("middle" in aug)
 		mob.on_middle_click(object,location,control,aug)
 
-
 /client/proc/update_zoom(var/desired_zoom_level)
-	if(desired_zoom_level == 0)
-		desired_zoom_level = initial(zoom_level)
-	zoom_level = clamp(desired_zoom_level,32,256)
+
+	if(should_static_view())
+		zoom_level = TILE_SIZE
+	else
+		if(desired_zoom_level == 0)
+			desired_zoom_level = initial(zoom_level)
+		zoom_level = clamp(desired_zoom_level,32,256)
+
 	winset(src, "map.map","icon-size=[zoom_level]")
+
+/client/proc/save_current_character()
+	userdata.save_current_character()

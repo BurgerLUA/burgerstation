@@ -8,7 +8,6 @@
 	inventories = list(
 		/obj/inventory/organs/torso,
 		/obj/inventory/organs/torso_o,
-		/obj/inventory/organs/torso_u,
 		/obj/inventory/organs/torso_b
 	)
 

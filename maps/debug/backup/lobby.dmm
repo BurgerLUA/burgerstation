@@ -1,39 +1,43 @@
-"a" = (/turf/simulated/floor/grass,/area)
-"b" = (/obj/logo,/turf/simulated/floor/grass,/area)
+"a" = (/obj/effect/letter,/turf/simulated/floor/grass,/area)
+"b" = (/turf/simulated/floor/grass,/area)
 "c" = (/mob/living/advanced/human/ai/logo,/turf/simulated/floor/grass,/area)
 "d" = (/obj/marker/spawnpoint/debug,/turf/simulated/floor/grass,/area)
+"e" = (/obj/item/clothing/pants/brown,/turf/simulated/floor/grass,/area)
+"f" = (/obj/item/clothing/overwear/armor,/turf/simulated/floor/grass,/area)
+"g" = (/obj/item/clothing/overwear/coat,/turf/simulated/floor/grass,/area)
+"i" = (/obj/trigger/make_human,/turf/simulated/floor/grass,/area)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaacaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaacaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaacaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaacaaaaaaaaaaaaaaaa
-aaaaaacaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaadaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbcbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbcbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbcbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbebbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbfgbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbaaabbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbcbbbbbbbbbbbbbbbi
+ibbbbbcbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbdbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+ibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 "}

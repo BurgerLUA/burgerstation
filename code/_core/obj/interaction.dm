@@ -7,7 +7,7 @@
 	else if (caller.attack_flags & ATTACK_DROP)
 		return drop_item()
 
-	return FALSE
+	return object.activate(caller,src,location,control,params)
 
 /obj/proc/get_held()
 	if(is_held())
@@ -40,7 +40,7 @@
 		if(!new_inventory.can_hold_object(src,TRUE))
 			return FALSE
 	else if(new_inventory.worn_slots >= 1)
-		if(!new_inventory.can_wear_object(src))
+		if(!new_inventory.can_wear_object(src,TRUE))
 			return FALSE
 
 	drop_item()

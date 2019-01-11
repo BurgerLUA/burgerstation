@@ -14,5 +14,5 @@
 
 /turf/simulated/floor/on_enter(var/atom/A)
 	. = ..()
-	if(footstep_sounds && length(footstep_sounds))
+	if(is_living(A) && footstep_sounds && length(footstep_sounds))
 		play_sound(pick(footstep_sounds),all_mobs,vector(x,y,z-1),environment = area.sound_environment)
