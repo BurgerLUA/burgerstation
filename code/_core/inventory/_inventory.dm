@@ -45,6 +45,9 @@
 	worn_objects = list()
 	. = ..()
 
+/obj/inventory/update_icon()
+	owner.update_icon()
+
 /obj/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)

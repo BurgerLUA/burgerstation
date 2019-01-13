@@ -63,7 +63,7 @@
 
 		easy_miss_message(attacker,src,weapon,target,DT,"the attack is parried")
 
-		if(!O.attack_object(src,attacker))
+		if(!O.click_on_object(src,attacker))
 			return FALSE
 
 		return TRUE

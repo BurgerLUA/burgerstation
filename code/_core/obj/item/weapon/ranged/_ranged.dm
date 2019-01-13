@@ -22,7 +22,12 @@
 /obj/item/weapon/ranged/proc/can_shoot()
 	return next_shoot_time <= curtime
 
-/obj/item/weapon/ranged/attack_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(..())
+		return TRUE
+
+
 	if(!automatic)
 		return shoot(caller,object,location,params)
 	else
@@ -81,12 +86,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	return TRUE
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
-
-	attack_object(caller,object,location,null,params)
-	/*
 	if(defer_attack(caller,object,location,null,params))
 		return TRUE
 	shoot(caller,object,location,params)
-	*/
-
 

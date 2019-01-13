@@ -17,7 +17,6 @@
 	var/item_slot = SLOT_NONE
 
 	var/slot_icons = FALSE //Set to true if the clothing is based on where it's slot is.
-
 /obj/item/New(var/desired_loc)
 	src.loc = desired_loc
 
@@ -41,6 +40,19 @@ obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)
 		var/obj/inventory/I = v
 		I.update_owner(desired_owner)
+
+obj/item/update_icon()
+
+	. = ..()
+
+	if(is_inventory(src.loc))
+		var/obj/inventory/I = src.loc
+		I.owner << "HMMMMMMMMM"
+		I.update_icon()
+
+
+
+
 
 /obj/item/proc/can_be_worn()
 	return FALSE

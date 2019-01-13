@@ -1,4 +1,4 @@
-/obj/proc/attack_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 	return defer_attack(caller,object,location,control,params) ? TRUE : object.activate(caller,location,control,params)
 
 /obj/proc/get_held()

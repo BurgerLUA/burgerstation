@@ -1,4 +1,4 @@
-/obj/item/clothing/attack_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
+/obj/item/clothing/click_on_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_mob(object))
 		var/mob/M = object

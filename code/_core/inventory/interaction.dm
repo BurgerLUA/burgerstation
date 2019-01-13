@@ -1,4 +1,4 @@
-obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+obj/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	if(..())
 		return TRUE
@@ -6,7 +6,7 @@ obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,contr
 	if(length(held_objects)) //If we have an item in our hands, that item will now be the one that is being used.
 		var/obj/item/I = held_objects[1]
 		if(I)
-			return I.attack_object(caller,object,location,control,params)
+			return I.click_on_object(caller,object,location,control,params)
 
 	else if(is_item(object)) //If the object we're attacking can be held, then try to add it.
 		return add_object(object)
@@ -22,11 +22,11 @@ obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,contr
 		if(length(inv.held_objects))
 			var/obj/item/I = inv.get_top_held_object()
 			if(I)
-				return I.attack_object(caller,src,location,control,params)
+				return I.click_on_object(caller,src,location,control,params)
 		else if(length(inv.worn_objects))
 			var/obj/item/I = inv.get_top_worn_object()
 			if(I)
-				return I.attack_object(caller,src,location,control,params)
+				return I.click_on_object(caller,src,location,control,params)
 
 		return FALSE
 
@@ -34,7 +34,3 @@ obj/inventory/attack_object(var/mob/caller as mob,var/atom/object,location,contr
 
 /obj/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc
-
-
-
-

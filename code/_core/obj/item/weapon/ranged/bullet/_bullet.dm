@@ -14,6 +14,8 @@
 	else
 		icon_state = initial(icon_state)
 
+	. = ..()
+
 /obj/item/weapon/ranged/bullet/New()
 
 	. = ..()
@@ -22,6 +24,8 @@
 		stored_magazine = new(src)
 
 	stored_bullets = list()
+
+	update_icon()
 
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return length(stored_bullets)

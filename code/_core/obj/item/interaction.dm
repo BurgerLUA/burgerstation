@@ -1,4 +1,4 @@
-/obj/item/attack_object(var/mob/caller as mob,var/atom/object,location,control,params) //src is used on object
+/obj/item/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //src is used on object
 
 	if(istype(object,/obj/inventory/)) //We're attacking an inventory slot
 		var/obj/inventory/I = object

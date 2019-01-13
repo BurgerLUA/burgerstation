@@ -22,6 +22,11 @@
 
 	var/starting_class = "default"
 
+
+
+	var/list/atom/tracked_overlays = list()
+
+
 /mob/living/advanced/on_life_client()
 	..()
 	if(attack_flags & ATTACK_HELD_RIGHT)
@@ -101,7 +106,14 @@
 		del(O)
 	overlays = list()
 
+	update_organ_icons()
+	update_inventory_icons()
+
+	. = ..()
+
+/mob/living/advanced/proc/update_organ_icons()
 	for(var/obj/item/organ/O in organs)
+
 		O.update_icon()
 
 		if(is_tail(O))
@@ -128,12 +140,14 @@
 		spawned_overlay.color = O.color
 		overlays += spawned_overlay
 
+/mob/living/advanced/proc/update_inventory_icons()
 	for(var/obj/inventory/I in inventory)
 		if(!I.should_draw)
 			continue
 		for(var/obj/item/C in I.worn_objects)
 			if(C.loc != I)
 				continue
+
 			C.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = C.worn_layer
@@ -145,13 +159,11 @@
 			else
 				spawned_overlay.icon_state = C.icon_state_worn
 
-
-
-
 			overlays += spawned_overlay
 		for(var/obj/item/I2 in I.held_objects)
 			if(I2.loc != I)
 				continue
+
 			I2.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = LAYER_MOB_HELD
@@ -164,7 +176,10 @@
 
 			overlays += spawned_overlay
 
-	. = ..()
+
+
+
+
 
 /mob/living/advanced/proc/add_species_colors()
 	for(var/obj/item/organ/O in organs)
