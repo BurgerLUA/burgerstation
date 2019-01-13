@@ -33,14 +33,32 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 				object.to_chat(format_speech(source,text_to_say,text_type))
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
-	for(var/atom/object in range(view_range))
-		if(src in view(object))
-			if(src == object)
-				object.to_chat(first_person_text)
-			else
-				object.to_chat(third_person_text)
+
+	for(var/mob/M in range(view_range,src))
+		var/distance = get_dist(M,src)
+		if(distance <= 2)
+			first_person_text = span("distance_large",first_person_text)
+			third_person_text = span("distance_large",third_person_text)
+			blind_text = span("distance_large",blind_text)
+		else if(distance <= 6)
+			first_person_text = span("distance_medium",first_person_text)
+			third_person_text = span("distance_medium",third_person_text)
+			blind_text = span("distance_medium",blind_text)
+		else if(distance <= 9)
+			first_person_text = span("distance_small",first_person_text)
+			third_person_text = span("distance_small",third_person_text)
+			blind_text = span("distance_small",blind_text)
 		else
-			object.to_chat(blind_text)
+			first_person_text = span("distance_tiny",first_person_text)
+			third_person_text = span("distance_tiny",third_person_text)
+			blind_text = span("distance_tiny",blind_text)
+		if(src in view(M))
+			if(src == M)
+				M.to_chat(first_person_text)
+			else
+				M.to_chat(third_person_text)
+		else
+			M.to_chat(blind_text)
 
 
 

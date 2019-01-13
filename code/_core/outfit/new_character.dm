@@ -7,7 +7,7 @@
 	)
 
 /datum/outfit/new_character_female
-	name = "New Character's Outfit - FEmale"
+	name = "New Character's Outfit - Female"
 	desc = "This is given to new characters that spawn in. Female though."
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/panty,

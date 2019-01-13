@@ -1,5 +1,6 @@
 var/global/list/active_subsystems
 var/global/curtime = 0
+var/global/ticks = 0
 
 /world/
 	fps = FPS_SERVER
@@ -25,11 +26,14 @@ var/global/curtime = 0
 
 	spawn while(TRUE)
 		for(var/datum/subsystem/S in active_subsystems)
-			if(!S.on_life())
-				del(S)
-				continue
+			if(!S.tick_rate || S.next_run <= ticks)
+				if(!S.on_life())
+					del(S)
+					continue
+				S.next_run = ticks + S.tick_rate
 
 		curtime += TICK_LAG
+		ticks += 1
 		sleep(tick_lag)
 
 

@@ -1,6 +1,9 @@
 #define ATTACK_THROW 0x1
 #define ATTACK_DROP 0x2
 #define ATTACK_KICK 0x4
+#define ATTACK_HELD_LEFT 0x8
+#define ATTACK_HELD_RIGHT 0x10
+
 
 #define DODGE_MISS 0x1
 #define DODGE_BLOCK 0x2

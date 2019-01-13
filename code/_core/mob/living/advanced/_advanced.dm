@@ -10,10 +10,24 @@
 
 	//var/list/obj/item/clothing/clothing
 
+
+	var/obj/item/automatic_left
+	var/obj/item/automatic_right
+
+
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
 
 	gender = MALE
+
+	var/starting_class = "default"
+
+/mob/living/advanced/on_life_client()
+	..()
+	if(attack_flags & ATTACK_HELD_RIGHT)
+		do_automatic_left()
+	if(attack_flags & ATTACK_HELD_LEFT)
+		do_automatic_right()
 
 /mob/living/advanced/New()
 	organs = list()
@@ -26,15 +40,22 @@
 	..()
 
 /mob/living/advanced/initialize_attributes()
+
+	var/class/C = all_classes[starting_class]
+
 	for(var/v in all_attributes)
 		var/experience/attribute/A = new v(src)
-		A.experience = A.level_to_xp(mob_species.attribute_defaults[A.id])
+		A.Initialize(A.level_to_xp(C.attributes[A.id]))
 		attributes[A.id] = A
 
 /mob/living/advanced/initialize_skills()
+
+	var/class/C = all_classes[starting_class]
+
+
 	for(var/v in all_skills)
 		var/experience/skill/S = new v(src)
-		S.experience = S.level_to_xp(mob_species.skill_defaults[S.id])
+		S.Initialize(S.level_to_xp(C.skills[S.id]))
 		skills[S.id] = S
 
 /mob/living/advanced/Initialize()
@@ -193,3 +214,11 @@
 	remove_all_organs()
 	add_species_organs()
 	add_species_colors()
+
+/mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
+	. = ..()
+	if(.)
+		add_attribute_xp(ATTRIBUTE_AGILITY,1)
+		return TRUE
+	else
+		return FALSE

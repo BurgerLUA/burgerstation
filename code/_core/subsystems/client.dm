@@ -1,7 +1,7 @@
 /datum/subsystem/client/
 	name = "Client Subsystem"
 	desc = "Controls how clients behave."
-	tick_rate = 1
+	tick_rate = 0
 	priority = 100
 	priority = SS_ORDER_CLIENT
 

@@ -20,16 +20,18 @@ var/global/list/all_mobs = list()
 	var/animation_pixel_x = 0
 	var/animation_pixel_y = 0
 
-	var/list/experience/attribute/attributes
-	var/list/experience/skill/skills
-
-	var/list/faction/factions
-
 	animate_movement = FALSE
 
 	movement_delay = 4
 
 	attack_delay = 4
+
+/mob/Initialize()
+	for(var/obj/structure/interactive/localmachine/L in local_machines)
+		L.update_for_mob(src)
+	..()
+
+
 
 /mob/New(var/loc/spawning_location,var/client/C)
 
@@ -38,11 +40,8 @@ var/global/list/all_mobs = list()
 		ckey = C.ckey
 
 	inventory = list()
-	attributes = list()
-	skills = list()
 	buttons = list()
 	worn_objects = list()
-	factions = list()
 
 	all_mobs += src
 	..()

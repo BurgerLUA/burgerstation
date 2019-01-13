@@ -36,17 +36,27 @@ proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = l
 		active_sounds[created_sound] = duration
 
 	for(var/atom/H in hearers)
-		created_sound.volume = volume //This needs to be reset every time.
+		var/local_volume = volume
+
 		created_sound.x = pos[1] - H.x
 		created_sound.y = pos[2] - H.y
 		created_sound.z = pos[3] - H.z
+
+		if(created_sound.z != 0)
+			continue
+
+		var/distance = sqrt(created_sound.x**2 + created_sound.y**2)
+		local_volume = max(local_volume - distance*2,0)
+
+		if(volume <= 0)
+			continue
 
 		if(istype(H,/mob/))
 			var/mob/M = H
 			if(M.client)
 				var/zoom_level = M.client.zoom_level
 				var/zoom_volume = clamp( (log(zoom_level)*0.5) - 1.77,0.05,1)
-				created_sound.volume = volume * zoom_volume
+				created_sound.volume = local_volume * zoom_volume
 		H << created_sound
 
 	created_sound.status = SOUND_UPDATE

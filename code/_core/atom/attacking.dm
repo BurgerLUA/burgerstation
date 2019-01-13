@@ -83,13 +83,13 @@
 	return 0
 
 /atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	easy_miss_message(attacker,src,weapon,target,DT,"the attack is blocked")
+	easy_miss_message(attacker,src,weapon,target,DT,"the attack is blocked!")
 	return FALSE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	easy_miss_message(attacker,src,weapon,target,DT,"the attack is parried")
+	easy_miss_message(attacker,src,weapon,target,DT,"the attack is parried!")
 	return FALSE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	easy_miss_message(attacker,src,weapon,target,DT,"the attack is dodged")
+	easy_miss_message(attacker,src,weapon,target,DT,"the attack is dodged!")
 	return FALSE

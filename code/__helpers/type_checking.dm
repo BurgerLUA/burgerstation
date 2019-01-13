@@ -13,6 +13,9 @@
 /proc/is_obj(var/atom/A)
 	return istype(A,/obj/)
 
+/proc/is_turf(var/atom/A)
+	return istype(A,/turf/)
+
 /proc/is_button(var/atom/A)
 	return istype(A,/obj/button/)
 

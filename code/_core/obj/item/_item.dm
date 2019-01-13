@@ -107,3 +107,6 @@ obj/item/proc/update_owner(desired_owner)
 
 		examiner.to_chat(span("notice"," Attribute Damage:"))
 		examiner.to_chat(span("notice","  [english_list(skill_damage_list, and_text = ", ")]"))
+
+obj/item/proc/do_automatic(caller,object,location,params)
+	return TRUE

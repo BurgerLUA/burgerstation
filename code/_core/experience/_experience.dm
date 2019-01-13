@@ -1,9 +1,12 @@
+// https://www.desmos.com/calculator/lg5zticzca
 /experience/
 	var/name = "Base Experience Tracker"
 	var/id
 	var/desc = "This is the base experience tracker. You shouldn't have this."
 	var/desc_extended = "Extended description for that wall of text."
 	var/experience = 0
+
+	var/last_level = 0
 
 	var/experience_power = 2
 	var/experience_multiplier = 30
@@ -18,6 +21,10 @@
 	owner = M
 	. = ..()
 
+/experience/proc/Initialize(var/desired_xp)
+	experience = desired_xp
+	last_level = xp_to_level(desired_xp)
+
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
 	return floor( (xp ** (1/experience_power) ) / experience_multiplier)
 
@@ -30,8 +37,24 @@
 /experience/proc/get_current_level()
 	return min(max_level,xp_to_level(experience))
 
-/experience/proc/get_current_xp()
+/experience/proc/get_xp()
 	return experience
+
+/experience/proc/add_xp(var/xp_to_add)
+	experience += xp_to_add
+	var/current_level = get_current_level()
+	if(last_level != current_level)
+		on_level_up(last_level,current_level)
+
+/experience/proc/set_xp(var/new_xp)
+	experience = new_xp
 
 /experience/proc/get_power(var/min=1,var/max=100)
 	return scale(get_current_level(),min,max)
+
+/experience/proc/on_level_up(var/old_level,var/new_level)
+	owner.to_chat(span("notice","Your [name] increased to [new_level]."))
+	last_level = new_level
+
+
+

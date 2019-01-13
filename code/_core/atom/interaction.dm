@@ -1,4 +1,4 @@
-atom/proc/activate(caller,src,location,control,params)
+/atom/proc/activate(caller,location,control,params)
 	return FALSE
 
 /atom/proc/examine(var/atom/examiner) //Alt Clicking Objects

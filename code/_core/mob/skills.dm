@@ -1,8 +1,3 @@
-/mob/living/Initialize()
-	initialize_attributes()
-	initialize_skills()
-	. = ..()
-
 /mob/living/proc/initialize_attributes()
 	for(var/v in all_attributes)
 		var/experience/attribute/A = new v(src)
@@ -15,6 +10,8 @@
 		S.experience = S.level_to_xp(SKILL_DEFAULT)
 		skills[S.name] = S
 
+
+//Skills
 /mob/living/proc/get_skill(var/id)
 	return skills[id]
 
@@ -30,6 +27,15 @@
 	var/experience/skill/S = get_skill(id)
 	return S.set_level(desired_level)
 
+/mob/living/proc/set_skill_xp(var/id,var/desired_xp)
+	var/experience/skill/S = get_skill(id)
+	return S.set_xp(desired_xp)
+
+/mob/living/proc/add_skill_xp(var/id,var/xp_to_add)
+	var/experience/skill/S = get_skill(id)
+	return S.add_xp(xp_to_add)
+
+//Attributes
 /mob/living/proc/get_attribute(var/id)
 	return attributes[id]
 
@@ -44,3 +50,11 @@
 /mob/living/proc/set_attribute_level(var/id,var/desired_level)
 	var/experience/attribute/A = get_attribute(id)
 	return A.set_level(desired_level)
+
+/mob/living/proc/set_attribute_xp(var/id,var/desired_xp)
+	var/experience/attribute/A = get_attribute(id)
+	return A.set_xp(desired_xp)
+
+/mob/living/proc/add_attribute_xp(var/id,var/xp_to_add)
+	var/experience/attribute/A = get_attribute(id)
+	return A.add_xp(xp_to_add)

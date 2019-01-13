@@ -145,13 +145,6 @@ window "input_output"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-	elem "outfit"
-		type = OUTPUT
-		pos = 0,0
-		size = 640x460
-		anchor1 = 0,0
-		anchor2 = 100,100
-		saved-params = "max-lines"
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
@@ -163,7 +156,7 @@ window "input_output"
 		drop-zone = true
 		saved-params = "max-lines"
 		enable-http-images = true
-	elem "button1"
+	elem "enter"
 		type = BUTTON
 		pos = 560,460
 		size = 80x20
@@ -191,6 +184,7 @@ window "input_output_and_info"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -204,11 +198,13 @@ window "input_output_and_info"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
+		is-default = true
 		saved-params = "splitter"
 		left = "info"
 		right = "input_output"
 		is-vert = false
-		lock = left
+		lock = right
 
 window "main"
 	elem "main"
@@ -217,6 +213,7 @@ window "main"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -229,12 +226,14 @@ window "main"
 		size = 1280x720
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "splitter"
 		left = "map"
 		right = "input_output_and_info"
 		is-vert = true
+		lock = right
 
 window "map"
 	elem "map"

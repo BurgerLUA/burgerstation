@@ -1,17 +1,9 @@
-/obj/item/clothing/feet/shoes/
-	name = "black shoes"
-	desc = "Some nice black shoes."
-
-	damage_type = /damagetype/clothing/shoe
-
-	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
-
 /obj/item/clothing/feet/shoes/black
 	name = "right black shoe"
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	icon = 'icons/obj/items/clothing/shoes/black_shoes.dmi'
+	icon = 'icons/obj/items/clothing/shoes/black.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 

@@ -1,0 +1,24 @@
+/mob/living/advanced/human/npc
+	name = "greytide"
+	enable_AI = TRUE
+	starting_factions = list(
+		FACTION_PLAYER_HOSTILE,
+		FACTION_PLAYER
+	)
+	ai = /ai/
+	mob_outfit = /datum/outfit/assistant
+
+/mob/living/advanced/human/npc/on_life_AI()
+
+	if(!initialized)
+		Initialize()
+		return TRUE //Wait until next tick.
+
+	if(ai)
+		ai.on_life()
+
+
+
+	handle_movement(TRUE)
+
+	return TRUE

@@ -96,18 +96,20 @@ client/verb/debug_turf_contents()
 
 client/verb/debug_skills()
 	set category = "Debug"
-	src << "Found [length(mob.skills)] skills in mob."
+	var/mob/living/L = mob
+	src << "Found [length(L.skills)] skills in mob."
 	src << "Found [length(all_skills)] skills in world."
-	for(var/id in mob.skills)
-		var/experience/skill/S = mob.skills[id]
+	for(var/id in L.skills)
+		var/experience/skill/S = L.skills[id]
 		src << "[id] = [S.get_current_level()]"
 
 client/verb/debug_attributes()
 	set category = "Debug"
-	src << "Found [length(mob.attributes)] attributes in mob."
+	var/mob/living/L = mob
+	src << "Found [length(L.attributes)] attributes in mob."
 	src << "Found [length(all_attributes)] attributes in world."
-	for(var/id in mob.attributes)
-		var/experience/attribute/A = mob.attributes[id]
+	for(var/id in L.attributes)
+		var/experience/attribute/A = L.attributes[id]
 		src << "[id] = [A.get_current_level()]"
 
 client/verb/debug_attribute()

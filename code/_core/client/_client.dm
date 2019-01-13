@@ -16,6 +16,11 @@ var/global/list/all_clients = list()
 
 	var/save_slot //The character slot that the client wishes to overwrite.
 
+
+	var/list/last_params = list()
+	var/atom/last_object
+	var/atom/last_location
+
 	//lazy_eye = 5
 
 /client/New()
@@ -81,6 +86,8 @@ var/global/list/all_clients = list()
 
 /client/MouseDown(var/atom/object,location,control,params)
 
+	store_new_params(object,location,params)
+
 	var/list/aug = params2list(params)
 
 	if(mob.movement_flags & MOVEMENT_WALKING)
@@ -89,12 +96,33 @@ var/global/list/all_clients = list()
 
 	if("left" in aug)
 		mob.on_left_click(object,location,control,aug)
+		mob.attack_flags |= ATTACK_HELD_LEFT
 
 	if("right" in aug)
 		mob.on_right_click(object,location,control,aug)
+		mob.attack_flags |= ATTACK_HELD_RIGHT
 
 	if("middle" in aug)
 		mob.on_middle_click(object,location,control,aug)
+
+/client/MouseUp(object,location,control,params)
+
+	var/list/aug = params2list(params)
+
+	if("left" in aug)
+		mob.attack_flags &= ~ATTACK_HELD_LEFT
+
+	if("right" in aug)
+		mob.attack_flags &= ~ATTACK_HELD_RIGHT
+
+/client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
+	store_new_params(over_object,over_location,params)
+
+/client/proc/store_new_params(over_object,over_location,params)
+	var/list/new_params = params2list(params)
+	last_params = new_params
+	last_object = over_object
+	last_location = over_location
 
 /client/proc/update_zoom(var/desired_zoom_level)
 	if(eye != mob)

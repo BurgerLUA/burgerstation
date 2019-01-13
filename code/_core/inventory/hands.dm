@@ -22,6 +22,23 @@
 	held_slots = 1
 	priority = 100
 
+/obj/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
+	. = ..()
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.automatic_left = I
+
+	return .
+
+/obj/inventory/organs/left_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
+	. = ..()
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.automatic_left == I)
+			A.automatic_left = null
+
+	return .
+
 /obj/inventory/organs/right_hand_held
 	name = "right hand slot"
 	id = BODY_HAND_RIGHT
@@ -31,3 +48,19 @@
 	item_slot = SLOT_HAND_RIGHT
 	held_slots = 1
 	priority = 100
+
+/obj/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
+	. = ..()
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.automatic_right = I
+
+
+/obj/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
+	. = ..()
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.automatic_right == I)
+			A.automatic_right = null
+
+	return .

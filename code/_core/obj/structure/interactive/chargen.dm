@@ -5,19 +5,26 @@ obj/structure/interactive/chargen_mirror
 	icon = 'icons/obj/structure/medieval/bathroom.dmi'
 	icon_state = "mirror"
 
-obj/structure/interactive/chargen_mirror/activate(caller,src,location,control,params)
+obj/structure/interactive/chargen_mirror/activate(caller,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE
 
 	var/mob/living/advanced/A = caller
 
-
 	while(TRUE)
-		var/response = input(caller,"Would you like to change your appearance?") in list("Sex","Skin Color","Hair Style","Hair Color","Cancel")
+		var/response = input(caller,"Would you like to change your appearance?") in list("Name","Sex","Eye Color","Skin Color","Hair Style","Hair Color","Cancel")
 		switch(response)
 			if("Cancel")
 				break
+
+			if("Name")
+				while(TRUE)
+					var/name_input = sanitize(input(caller,"Which do you wish to be known by?"))
+					A.name = name_input
+					var/confirm = input(caller,"You are [name_input]. Are you sure you wish to be known as [name_input]?") in list("Yes","No")
+					if(confirm == "Yes")
+						break
 
 			if("Sex")
 				var/warning = input("Are you sure you wish to change your sex? All other changes will be lost.") in list("Yes","No")

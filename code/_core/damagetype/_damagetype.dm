@@ -16,7 +16,6 @@
 		OXY = 0
 	)
 
-
 	var/attack_delay = 8
 	var/attack_last = 0
 
@@ -66,7 +65,7 @@
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	do_miss_sound(attacker,victim,weapon,hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)
-	easy_miss_message(attacker,victim,weapon,hit_object,src,"misses")
+	easy_miss_message(attacker,victim,weapon,hit_object,src,"the attack misses!")
 	return TRUE
 
 /damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
@@ -108,7 +107,7 @@
 
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE]) + hit_object.adjust_burn_loss(damage_to_deal[BURN]) + hit_object.adjust_tox_loss(damage_to_deal[TOX]) + hit_object.adjust_oxy_loss(damage_to_deal[OXY])
-	victim.update_icon()
+	//victim.update_icon()
 
 	return damage_dealt
 

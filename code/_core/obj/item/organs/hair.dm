@@ -10,5 +10,6 @@
 
 /obj/item/organ/hair/update_icon()
 	var/hair/H = hair_types[hairstyle]
-	icon_state = H.icon_state
+	if(H)
+		icon_state = H.icon_state
 

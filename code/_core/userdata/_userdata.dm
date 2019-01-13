@@ -30,11 +30,15 @@
 
 /userdata/proc/apply_data_to_mob(var/mob/living/advanced/A)
 
+	//Name
+	A.name = loaded_data["name"]
+
 	//Organs
 	for(var/id in loaded_data["organs"])
 		var/o_type = loaded_data["organs"][id]["type"]
 		var/o_color = loaded_data["organs"][id]["color"]
 		var/obj/item/organ/O = A.add_organ(o_type,o_color)
+		//Hairstyle
 		if(is_hair(O))
 			var/obj/item/organ/hair/H = O
 			H.hairstyle = loaded_data["hairstyle"]
@@ -62,6 +66,17 @@
 				continue
 			I.add_held_object(O)
 
+	//Skills
+	for(var/id in loaded_data["skills"])
+		var/xp = loaded_data["skills"][id]
+		var/experience/skill/S = A.get_skill(id)
+		S.Initialize(xp)
+
+	//Attributes
+	for(var/id in loaded_data["attributes"])
+		var/xp = loaded_data["attributes"][id]
+		var/experience/attribute/S = A.get_attribute(id)
+		S.Initialize(xp)
 
 	A.update_icon()
 
@@ -125,7 +140,7 @@
 	for(var/id in A.attributes)
 		var/experience/attribute/B = A.attributes[id]
 		final_attribute_list[id] = B.experience
-	loaded_data["attributes"] = final_skill_list
+	loaded_data["attributes"] = final_attribute_list
 
 	loaded_data["tutorial"] = 0
 
@@ -228,7 +243,6 @@
 /userdata/proc/get_proper_id_from_filepath(var/file_string)
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
-
 
 /userdata/proc/get_proper_id_from_filename(var/file_string)
 	return replacetext(replacetext(file_string,"character_",""),".json","")

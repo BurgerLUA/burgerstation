@@ -9,3 +9,11 @@
 
 /proc/scale(value,min,max)
 	return (value - min) / (max - min)
+
+/proc/arctan(x,y)
+	if(!x && !y)
+		return 0
+
+	var/a = arccos(x/sqrt(x*x+y*y))
+
+	return (y>=0) ? (a):(-a)

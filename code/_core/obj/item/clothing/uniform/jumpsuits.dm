@@ -3,7 +3,6 @@
 	desc = "A nice grey suit."
 
 	icon = 'icons/obj/items/clothing/uniforms/grey.dmi'
-	icon_state = "inventory"
 
 	inventories = list(
 		/obj/inventory/pocket/pocket01,
@@ -15,3 +14,20 @@
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	slot_icons = TRUE
+
+
+
+/obj/item/clothing/uniform/security
+	name = "security uniform"
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+	icon = 'icons/obj/items/clothing/uniforms/security.dmi'
+
+	inventories = list(
+		/obj/inventory/pocket/pocket01,
+		/obj/inventory/pocket/pocket02
+	)
+
+	item_slot = SLOT_TORSO | SLOT_GROIN
+
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+

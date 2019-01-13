@@ -2,7 +2,7 @@ client/script = {"
 <style>
 body {
 	font-family: Verdana, sans-serif;
-	font-size: 100%;
+	font-size: 12px;
 }
 span.warning{
 	color: red;
@@ -24,6 +24,19 @@ span.notice{
 	color: blue;
 	font-style: italic;
 }
+span.distance_large{
+	font-size: 100%;
+}
+span.distance_medium{
+	font-size: 80%;
+}
+span.distance_small{
+	font-size: 60%;
+}
+span.distance_tiny{
+	font-size: 40%;
+}
+
 
 
 </style>

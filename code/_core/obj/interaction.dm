@@ -1,13 +1,5 @@
 /obj/proc/attack_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
-
-	if(caller.attack_flags & ATTACK_THROW)
-		caller.face_atom(object)
-		return throw_item(caller.dir)
-
-	else if (caller.attack_flags & ATTACK_DROP)
-		return drop_item()
-
-	return object.activate(caller,src,location,control,params)
+	return defer_attack(caller,object,location,control,params) ? TRUE : object.activate(caller,location,control,params)
 
 /obj/proc/get_held()
 	if(is_held())
@@ -31,7 +23,7 @@
 /obj/proc/throw_item(var/direction)
 	drop_item()
 	set_dir(direction)
-	add_projectile(src)
+	//add_projectile(src)
 	return TRUE
 
 /obj/proc/transfer_item(var/obj/inventory/new_inventory)
@@ -46,3 +38,16 @@
 	drop_item()
 	return new_inventory.add_object(src)
 
+
+/obj/proc/defer_attack(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(caller.attack_flags & ATTACK_THROW)
+		caller.face_atom(object)
+		//caller.attack_last = world.time
+		return throw_item(caller.dir)
+
+	else if (caller.attack_flags & ATTACK_DROP)
+		caller.attack_last = world.time
+		return drop_item()
+
+	return FALSE

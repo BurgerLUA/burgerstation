@@ -1,3 +1,4 @@
 /obj/marker/
-	name = "MARKER"
-	icon_state = "marker"
+	name = "marker"
+	invisibility = 101
+	icon = null

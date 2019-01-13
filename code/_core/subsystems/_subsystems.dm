@@ -1,8 +1,9 @@
 /datum/subsystem/
 	var/name = "Base Subsystem"
 	var/desc = "Subsystem for base functions. You shouldn't be seeing this."
-	var/tick_rate = 1 //Tick delay for the subsystem.
+	var/tick_rate = 1 //Tick delay for the subsystem, in deciseconds.
 	var/priority = 0 //The lower the number, the more priority it recieves
+	var/next_run = 0 //When the subsystem should run next
 
 /datum/subsystem/New()
 	..()
