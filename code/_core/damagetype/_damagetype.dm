@@ -19,8 +19,6 @@
 	var/attack_delay = 8
 	var/attack_last = 0
 
-	var/miss_chance = 10
-
 	var/list/attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_F,
 		ATTRIBUTE_AGILITY = CLASS_F,
@@ -45,10 +43,17 @@
 		SKILL_RANGED = BRUTE
 	)
 
+	var/allow_parry = TRUE
+	var/allow_parry_counter = TRUE
+	var/allow_miss = TRUE
+	var/allow_block = TRUE
+	var/allow_dodge = TRUE
+
+
 /damagetype/proc/handle_dodge(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	//I'm really not sure where to put this proc.
 
-	if(prob(miss_chance))
+	if(prob(victim.get_miss_chance(attacker,weapon,hit_object)))
 		return DODGE_MISS
 
 	if(prob(victim.get_parry_chance(attacker,weapon,hit_object)))
@@ -65,7 +70,7 @@
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	do_miss_sound(attacker,victim,weapon,hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)
-	easy_miss_message(attacker,victim,weapon,hit_object,src,"the attack misses!")
+	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
 	return TRUE
 
 /damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
@@ -95,15 +100,25 @@
 /damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return attack_delay
 
-/damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	play_effects(attacker,victim,weapon,hit_object)
-
+/damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	attacker.visible_message(\
 		get_attack_message_3rd(attacker,victim,weapon,hit_object),\
 		get_attack_message_1st(attacker,victim,weapon,hit_object),\
 		get_attack_message_sound(attacker,victim,weapon,hit_object)\
 	)
+
+/damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+	attacker.visible_message(\
+		replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text),\
+		replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text),\
+		replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text)\
+	)
+
+/damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	play_effects(attacker,victim,weapon,hit_object)
+	display_hit_message(attacker,victim,weapon,hit_object)
 
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE]) + hit_object.adjust_burn_loss(damage_to_deal[BURN]) + hit_object.adjust_tox_loss(damage_to_deal[TOX]) + hit_object.adjust_oxy_loss(damage_to_deal[OXY])
@@ -167,20 +182,21 @@
 		return span("warning","You [pick(attack_verbs)] \the [hit_object] with your [get_weapon_name(weapon)].")
 	else
 		return span("warning","You [pick(attack_verbs)] \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)].")
+
 /damagetype/proc/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear a sickening impact.")
 
 /damagetype/proc/get_miss_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("danger","\The [attacker] [pick(miss_verbs)]s at \the [hit_object] with \the [get_weapon_name(weapon)], but #REASON")
+		return span("danger","\The [attacker] [pick(miss_verbs)]s at \the [hit_object] with \the [get_weapon_name(weapon)], but the attack was #REASON!")
 	else
-		return span("danger","\The [attacker] [pick(miss_verbs)]s at \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)], but #REASON")
+		return span("danger","\The [attacker] [pick(miss_verbs)]s at \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)], but the attack was #REASON!")
 
 /damagetype/proc/get_miss_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("warning","You [pick(miss_verbs)] at \the [hit_object.name] with your [get_weapon_name(weapon)], but the attack #REASON!")
+		return span("warning","You [pick(miss_verbs)] at \the [hit_object.name] with your [get_weapon_name(weapon)], but the attack was #REASON!")
 	else
-		return span("warning","You [pick(miss_verbs)] at \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)], but the attack #REASON!")
+		return span("warning","You [pick(miss_verbs)] at \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)], but the attack was #REASON!")
 
 /damagetype/proc/get_miss_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear a swoosh...")

@@ -25,16 +25,16 @@ span.notice{
 	font-style: italic;
 }
 span.distance_large{
-	font-size: 100%;
+	font-size: 90%;
 }
 span.distance_medium{
 	font-size: 80%;
 }
 span.distance_small{
-	font-size: 60%;
+	font-size: 70%;
 }
 span.distance_tiny{
-	font-size: 40%;
+	font-size: 60%;
 }
 
 

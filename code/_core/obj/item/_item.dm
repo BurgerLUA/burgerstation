@@ -33,7 +33,7 @@
 
 	var/sound_to_play = 'sounds/music/clown.ogg'
 
-/obj/item/radio/attack_self(var/atom/caller)
+/obj/item/radio/click_self(var/atom/caller)
 	//play_sound(sound_to_play,all_mobs,vector(caller.x,caller.y,caller.z))
 
 obj/item/proc/update_owner(desired_owner)
@@ -42,17 +42,10 @@ obj/item/proc/update_owner(desired_owner)
 		I.update_owner(desired_owner)
 
 obj/item/update_icon()
-
 	. = ..()
-
 	if(is_inventory(src.loc))
 		var/obj/inventory/I = src.loc
-		I.owner << "HMMMMMMMMM"
 		I.update_icon()
-
-
-
-
 
 /obj/item/proc/can_be_worn()
 	return FALSE
@@ -122,3 +115,9 @@ obj/item/update_icon()
 
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
+
+/obj/item/proc/on_pickup(var/obj/inventory/I)
+	return
+
+/obj/item/proc/on_drop(var/obj/inventory/I)
+	return

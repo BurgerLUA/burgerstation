@@ -38,6 +38,8 @@
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 	var/reverse_draw = FALSE //Should the worn state and the held state be swapped?
 
+	var/drag_to_take = TRUE //You must click and drag to take the object.
+
 /obj/inventory/New(var/desired_loc)
 	loc = desired_loc
 
@@ -45,8 +47,23 @@
 	worn_objects = list()
 	. = ..()
 
+/obj/inventory/proc/update_overlays()
+
+	for(var/O in overlays)
+		O = null
+		del(O)
+	overlays = list()
+
+	for(var/atom/A in held_objects)
+		//A.update_icon()
+		overlays += A
+
+	for(var/atom/A in worn_objects)
+		//A.update_icon()
+		overlays += A
+
 /obj/inventory/update_icon()
-	owner.update_icon()
+	update_overlays()
 
 /obj/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
@@ -64,6 +81,13 @@
 	return TRUE
 
 /obj/inventory/proc/add_object(var/obj/item/I) //Prioritize wearing it, then holding it.
+
+	if(is_inventory(I.loc))
+		var/obj/inventory/I2 = I.loc
+		if(I2 == src)
+			return FALSE
+		I2.remove_object(I,owner.loc)
+
 	if(I.can_be_worn())
 		var/obj/item/clothing/C = I
 		if(add_worn_object(C))
@@ -71,14 +95,15 @@
 
 	return add_held_object(I)
 
-/obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE)
-	if(!can_hold_object(I,messages))
+/obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
+	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
 	I.plane = 3
 	I.loc = src
 	held_objects += I
-	overlays += I
+	I.on_pickup(src)
+	update_overlays()
 	update_stats()
 
 	return TRUE
@@ -97,7 +122,7 @@
 	I.loc = src
 	worn_objects += I
 	owner.worn_objects += I
-	overlays += I
+	update_overlays()
 
 	I.update_owner(owner)
 
@@ -117,6 +142,7 @@
 
 	if(I in held_objects)
 		held_objects -= I
+		I.on_drop(src)
 		was_removed = TRUE
 
 	if(I in worn_objects)
@@ -126,9 +152,9 @@
 		was_removed = TRUE
 
 	if(was_removed)
-		overlays -= I
 		I.plane = initial(I.plane)
 		I.loc = drop_loc ? drop_loc : get_turf(src.loc)
+		update_overlays()
 		update_stats()
 
 	return I
@@ -219,10 +245,19 @@
 
 	return worn_objects[length(worn_objects)]
 
-
-
 /obj/inventory/proc/get_top_held_object()
 	if(!length(held_objects))
 		return FALSE
 
 	return held_objects[length(held_objects)]
+
+
+/obj/inventory/defer_click_on_object()
+
+	if(length(held_objects))
+		return get_top_held_object()
+
+	if(length(worn_objects))
+		return get_top_worn_object()
+
+	return src

@@ -177,10 +177,6 @@
 			overlays += spawned_overlay
 
 
-
-
-
-
 /mob/living/advanced/proc/add_species_colors()
 	for(var/obj/item/organ/O in organs)
 		if(is_hair(O))

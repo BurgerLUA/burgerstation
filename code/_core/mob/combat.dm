@@ -15,8 +15,9 @@
 /mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return ..()
 
-/mob/living/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	attack(src,attacker)
+/mob/living/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
+	if(allow_parry_counter)
+		attack(src,attacker)
 	return ..()
 
 /mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)

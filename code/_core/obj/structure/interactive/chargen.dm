@@ -5,7 +5,7 @@ obj/structure/interactive/chargen_mirror
 	icon = 'icons/obj/structure/medieval/bathroom.dmi'
 	icon_state = "mirror"
 
-obj/structure/interactive/chargen_mirror/activate(caller,location,control,params)
+obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE

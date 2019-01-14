@@ -8,35 +8,38 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 				source.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/atom/object in range(source,2))
+				for(var/mob/object in range(source,2))
 					object.to_chat(format_speech(source,text_to_say,text_type))
 		if(TEXT_TALK)
 			if(istype(source,/client/))
 				source.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/atom/object in range(source,VIEW_RANGE))
+				for(var/mob/object in range(source,VIEW_RANGE))
 					object.to_chat(format_speech(source,text_to_say,text_type))
 		if(TEXT_YELL)
 			if(istype(source,/client/))
 				source.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/atom/object in range(source,VIEW_RANGE*3))
+				for(var/mob/object in range(source,VIEW_RANGE*3))
 					object.to_chat(format_speech(source,text_to_say,text_type))
 		if(TEXT_LOOC)
 			for(var/atom/object in range(source,VIEW_RANGE))
 				object.to_chat(format_speech(source,text_to_say,text_type))
 
 		if(TEXT_OOC)
-			for(var/atom/object in world)
+			for(var/mob/object in world)
 				object.to_chat(format_speech(source,text_to_say,text_type))
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
 
+	if(src.x == 0 && src.y == 0 && src.z == 0)
+		return
+
 	for(var/mob/M in range(view_range,src))
 		var/distance = get_dist(M,src)
-		if(distance <= 2)
+		if(distance <= 3)
 			first_person_text = span("distance_large",first_person_text)
 			third_person_text = span("distance_large",third_person_text)
 			blind_text = span("distance_large",blind_text)
@@ -52,6 +55,7 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 			first_person_text = span("distance_tiny",first_person_text)
 			third_person_text = span("distance_tiny",third_person_text)
 			blind_text = span("distance_tiny",blind_text)
+
 		if(src in view(M))
 			if(src == M)
 				M.to_chat(first_person_text)

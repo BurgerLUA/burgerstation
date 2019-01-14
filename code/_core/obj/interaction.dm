@@ -1,5 +1,5 @@
 /obj/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
-	return defer_attack(caller,object,location,control,params) ? TRUE : object.activate(caller,location,control,params)
+	return object.clicked_by_object(caller,src,location,control,params)
 
 /obj/proc/get_held()
 	if(is_held())
@@ -41,13 +41,3 @@
 
 /obj/proc/defer_attack(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(caller.attack_flags & ATTACK_THROW)
-		caller.face_atom(object)
-		//caller.attack_last = world.time
-		return throw_item(caller.dir)
-
-	else if (caller.attack_flags & ATTACK_DROP)
-		caller.attack_last = world.time
-		return drop_item()
-
-	return FALSE

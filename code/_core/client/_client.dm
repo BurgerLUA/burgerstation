@@ -83,7 +83,6 @@ var/global/list/all_clients = list()
 	var/change_in_screen = clamp(delta_x + delta_y,-1,1)*8
 	update_zoom(zoom_level + change_in_screen)
 
-
 /client/MouseDown(var/atom/object,location,control,params)
 
 	store_new_params(object,location,params)
@@ -114,6 +113,19 @@ var/global/list/all_clients = list()
 
 	if("right" in aug)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
+
+/client/MouseDrop(src_object,over_object,src_location,over_location,src_control,over_control,params)
+
+	var/list/aug = params2list(params)
+
+	if("left" in aug)
+		mob.on_left_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
+
+	if("right" in aug)
+		mob.on_right_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
+
+	if("middle" in aug)
+		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
 
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	store_new_params(over_object,over_location,params)

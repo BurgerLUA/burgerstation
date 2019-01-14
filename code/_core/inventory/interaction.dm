@@ -1,36 +1,71 @@
-obj/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	if(..())
+	if(caller.attack_flags & ATTACK_THROW)
+		caller.face_atom(object)
+		return throw_item(caller.dir)
+
+	else if (caller.attack_flags & ATTACK_DROP)
+		return drop_item()
+
+	if(is_inventory(object)) //Give items to another inventory if we click on it.
+		var/obj/inventory/I = object
+		if(length(held_objects) && I.add_object(get_top_held_object()))
+			return TRUE
+		if(length(worn_objects) && I.add_object(get_top_worn_object()))
+			return TRUE
+
+	object = object.defer_click_on_object()
+
+	var/obj/O = src.defer_click_on_object()
+
+	if(O != src)
+		return O.click_on_object(caller,object,location,control,params)
+
+	if(is_item(object)) //Take items from another inventory.
+		if(is_inventory(object.loc))
+			var/obj/inventory/I = object.loc
+			if(!I.drag_to_take && add_object(object))
+				return TRUE
+
+		else if(add_object(object))
+			return TRUE
+
+	if(..(caller,object,location,control,params))
 		return TRUE
-
-	if(length(held_objects)) //If we have an item in our hands, that item will now be the one that is being used.
-		var/obj/item/I = held_objects[1]
-		if(I)
-			return I.click_on_object(caller,object,location,control,params)
-
-	else if(is_item(object)) //If the object we're attacking can be held, then try to add it.
-		return add_object(object)
-	/*
-	else if(src == object && length(worn_objects)) //If the object we're attacking is us, and we are wearing a worn item, then unequip the worn item.
-		var/obj/item/clothing/C = worn_objects[length(worn_objects)]
-		return (remove_object(C,get_turf(caller)) && add_held_object(C))
-	*/
-	else if(is_inventory(object)) //If the object is another inventory, and it has an item, take the object.
-		var/obj/inventory/inv = object
-
-		//Take held items first.
-		if(length(inv.held_objects))
-			var/obj/item/I = inv.get_top_held_object()
-			if(I)
-				return I.click_on_object(caller,src,location,control,params)
-		else if(length(inv.worn_objects))
-			var/obj/item/I = inv.get_top_worn_object()
-			if(I)
-				return I.click_on_object(caller,src,location,control,params)
-
-		return FALSE
 
 	return src.attack(caller,object,params)
 
+obj/inventory/drop_on_object(caller,var/atom/object)
+	object = object.defer_click_on_object()
+
+	if(is_inventory(object)) //Give items to another inventory if we drag it.
+		var/obj/inventory/I = object
+		if(length(held_objects) && I.add_object(get_top_held_object()))
+			return TRUE
+		if(length(worn_objects) && I.add_object(get_top_worn_object()))
+			return TRUE
+
+	var/obj/O = src.defer_click_on_object()
+	if(O != src)
+		return O.drop_on_object(caller,object)
+
+	return ..(caller,object)
+
 /obj/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc
+
+obj/inventory/defer_click_on_object()
+
+	if(length(src.held_objects))
+		return src.get_top_held_object()
+
+	if(length(src.worn_objects))
+		return src.get_top_worn_object()
+
+	return src
+
+obj/inventory/drop_item(var/turf/new_location)
+	if(length(src.held_objects))
+		return get_top_held_object().drop_item(new_location)
+	else
+		return FALSE

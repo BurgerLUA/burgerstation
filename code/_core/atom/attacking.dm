@@ -47,7 +47,7 @@
 			victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)
 			return FALSE
 		if(DODGE_PARRY)
-			victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT)
+			victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)
 			return FALSE
 		if(DODGE_DODGE)
 			victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)
@@ -76,6 +76,9 @@
 /atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	return 0
 
+/atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	return 0
+
 /atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	return 0
 
@@ -83,13 +86,13 @@
 	return 0
 
 /atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	easy_miss_message(attacker,src,weapon,target,DT,"the attack is blocked!")
+	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	return FALSE
 
-/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	easy_miss_message(attacker,src,weapon,target,DT,"the attack is parried!")
+/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
+	DT.display_miss_message(attacker,src,weapon,target,"parried")
 	return FALSE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	easy_miss_message(attacker,src,weapon,target,DT,"the attack is dodged!")
+	DT.display_miss_message(attacker,src,weapon,target,"dodged")
 	return FALSE

@@ -16,5 +16,5 @@
 /obj/item/weapon/melee/rock/New()
 	. = ..()
 	icon_state = pick("inventory0[rand(1,3)]")
-	pixel_x = rand(0,32)
-	pixel_y = rand(0,32)
+	pixel_x = rand(-12,12)
+	pixel_y = rand(-12,12)

@@ -22,9 +22,12 @@
 	var/last_loc_x = 0
 	var/last_loc_y = 0
 
+	var/shoot_x = 0
+	var/shoot_y = 0
+
 	mouse_opacity = 0
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -44,6 +47,9 @@
 
 	pixel_x = vel_x
 	pixel_y = vel_y
+
+	shoot_x = desired_shoot_x
+	shoot_y = desired_shoot_y
 
 	. = ..()
 
@@ -80,11 +86,13 @@
 		var/turf/new_turf = current_loc
 		var/turf/old_turf = previous_loc
 
-
 		if(!previous_loc || !current_loc)
 			on_hit(src)
 			return FALSE
 
+		if(new_turf.density)
+			on_hit(new_turf)
+			return
 
 		if(vel_y > 0)
 			if(old_turf.density_north)
@@ -121,11 +129,12 @@
 				continue
 
 			if(A.density || is_mob(A))
-				on_hit(A)
-				return
+				if(on_hit(A))
+					return
 
 		previous_loc = current_loc
 
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
 	all_projectiles -= src
 	del(src)
+	return TRUE
