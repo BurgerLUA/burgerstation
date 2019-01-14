@@ -116,8 +116,8 @@ obj/item/update_icon()
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
 
-/obj/item/proc/on_pickup(var/obj/inventory/I)
+/obj/proc/on_pickup(var/obj/inventory/I)
 	return
 
-/obj/item/proc/on_drop(var/obj/inventory/I)
+/obj/proc/on_drop(var/obj/inventory/I)
 	return

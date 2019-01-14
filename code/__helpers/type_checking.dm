@@ -39,3 +39,7 @@
 
 proc/is_bullet_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/bullet/)
+/*
+/proc/is_holder(var/atom/A)
+	return istype(A,/obj/holder/)
+*/

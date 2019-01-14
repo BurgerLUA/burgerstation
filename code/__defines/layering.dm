@@ -9,6 +9,7 @@
 #define LAYER_LIGHTING 9
 #define LAYER_AREA 10
 #define LAYER_HUD 11
+#define LAYER_HUD_ITEMS 12
 
 #define LAYER_MOB_NONE                 LAYER_MOB + 0.01
 #define LAYER_MOB_TAIL_BEHIND          LAYER_MOB + 0.02

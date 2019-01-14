@@ -14,7 +14,7 @@
 		if(length(worn_objects) && I.add_object(get_top_worn_object()))
 			return TRUE
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object() //Change the object we click on to possibly the object that the inventory is holding
 
 	var/obj/O = src.defer_click_on_object()
 

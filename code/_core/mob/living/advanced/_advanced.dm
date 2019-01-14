@@ -8,12 +8,8 @@
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
 
-	//var/list/obj/item/clothing/clothing
-
-
 	var/obj/item/automatic_left
 	var/obj/item/automatic_right
-
 
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
@@ -21,8 +17,6 @@
 	gender = MALE
 
 	var/starting_class = "default"
-
-
 
 	var/list/atom/tracked_overlays = list()
 

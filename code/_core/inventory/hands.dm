@@ -26,7 +26,7 @@
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.automatic_left = I
+		A.automatic_left = I.defer_click_on_object()
 
 	return .
 
@@ -53,7 +53,7 @@
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.automatic_right = I
+		A.automatic_right = I.defer_click_on_object()
 
 
 /obj/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)

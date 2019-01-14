@@ -82,6 +82,8 @@
 
 /obj/inventory/proc/add_object(var/obj/item/I) //Prioritize wearing it, then holding it.
 
+	I = I.defer_click_on_object()
+
 	if(is_inventory(I.loc))
 		var/obj/inventory/I2 = I.loc
 		if(I2 == src)
@@ -99,7 +101,7 @@
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
-	I.plane = 3
+	I.plane = 4
 	I.loc = src
 	held_objects += I
 	I.on_pickup(src)
@@ -118,7 +120,7 @@
 				to_chat(owner,span("notice","\The [C] prevents you from wearing \the [I]!"))
 			return FALSE
 
-	I.plane = 3
+	I.plane = 4
 	I.loc = src
 	worn_objects += I
 	owner.worn_objects += I
@@ -177,6 +179,9 @@
 	owner.update_icon()
 
 /obj/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
+
+	if(is_holder(I))
+		return FALSE
 
 	if(held_slots <= 0)
 		return FALSE

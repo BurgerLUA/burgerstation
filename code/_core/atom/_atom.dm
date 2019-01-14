@@ -44,6 +44,3 @@
 
 /atom/proc/defer_click_on_object()
 	return src
-
-/atom/proc/clicked_by(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-	return FALSE

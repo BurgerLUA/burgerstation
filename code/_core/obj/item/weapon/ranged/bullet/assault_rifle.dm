@@ -1,12 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/
 	open = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/click_self(var/atom/caller)
-	caller.to_chat(span("notice","You cock \the [src]."))
-
-	caller << icon_state_held_left
-	caller << icon_state_held_right
-
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle
 	name = "assault rifle"
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
@@ -27,8 +21,5 @@
 		icon_state = "[initial(icon_state)]_open"
 	else
 		icon_state = initial(icon_state)
-
-
-
 
 	..()
