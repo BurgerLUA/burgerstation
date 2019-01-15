@@ -14,7 +14,7 @@
 
 	var/accuracy_loss = 0.1 //How much additional x/y noise to add per distance in pixels.
 
-	damage_type //This is the damage type for a melee attack
+	damage_type = null
 	var/damagetype/ranged_damage_type //This is the damage type for a ranged attack
 
 
@@ -43,7 +43,7 @@
 		return TRUE
 
 
-obj/item/weapon/ranged/proc/handle_ammo()
+obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return TRUE
 
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
@@ -68,7 +68,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	if(!can_gun_shoot(caller))
 		return
 
-	handle_ammo()
+	handle_ammo(caller)
+
+	update_icon()
 
 	if(projectile)
 
@@ -108,13 +110,13 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		else
 			return FALSE
 
-	//caller.move_delay += max(0.3,shoot_delay)
+	caller.move_delay = max(0, caller.move_delay + max(0.5,shoot_delay))
 	caller.face_atom(object)
 
 	return TRUE
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
-	if(!automatic || defer_attack(caller,object,location,null,params))
+	if(!automatic || defer_attack(caller,object,location,null,params) || object.plane > 1)
 		return TRUE
 	shoot(caller,object,location,params)
 

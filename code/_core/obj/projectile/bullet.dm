@@ -1,7 +1,5 @@
 /obj/projectile/bullet/
 	name = "bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet"
 
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 
@@ -40,3 +38,15 @@
 
 /obj/projectile/bullet/revolver
 	name = "revolver bullet"
+	icon = 'icons/obj/projectiles/bullet.dmi'
+	icon_state = "bullet_small"
+
+/obj/projectile/bullet/rifle
+	name = "rifle bullet"
+	icon = 'icons/obj/projectiles/bullet.dmi'
+	icon_state = "bullet_large"
+
+/obj/projectile/bullet/smg
+	name = "smg bullet"
+	icon = 'icons/obj/projectiles/bullet.dmi'
+	icon_state = "bullet_small"

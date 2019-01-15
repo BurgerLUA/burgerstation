@@ -1,9 +1,6 @@
 /obj/projectile/
 	name = "Projectile"
 
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet"
-
 	var/vel_x = 0 //X velocity, in pixels per decisecond
 	var/vel_y = 0 //Y velocity in pixels per decisecond
 

@@ -142,7 +142,7 @@
 			if(C.loc != I)
 				continue
 
-			C.update_icon()
+			//C.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = C.worn_layer
 			spawned_overlay.icon = C.icon
@@ -158,7 +158,7 @@
 			if(I2.loc != I)
 				continue
 
-			I2.update_icon()
+			//I2.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
 			spawned_overlay.layer = LAYER_MOB_HELD
 			spawned_overlay.icon = I2.icon

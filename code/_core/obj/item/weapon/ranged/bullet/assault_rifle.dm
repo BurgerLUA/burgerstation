@@ -1,25 +1,22 @@
-/obj/item/weapon/ranged/bullet/magazine/
-	open = TRUE
-
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle
 	name = "assault rifle"
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
+	icon_state = "inventory"
+
+	projectile = /obj/projectile/bullet/rifle/
+	ranged_damage_type = /damagetype/ranged/rifle_762
+	damage_type = /damagetype/sword/
+
+	bullet_speed = 31
+	shoot_delay = 3
+
+	automatic = FALSE
+
+	bullet_capacity = 1 //One in the chamber
+
+	bullet_type = "7.62"
+
+	shoot_sounds = list('sounds/weapon/ranged/gunshot_saw.ogg')
 
 	can_wield = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle/update_icon()
-
-	if(wielded)
-		icon_state_held_left = "wielded_left"
-		icon_state_held_right = "wielded_right"
-	else
-		var/open_text = open ? "_open" : ""
-		icon_state_held_left = "[initial(icon_state_held_left)][open_text]"
-		icon_state_held_right = "[initial(icon_state_held_right)][open_text]"
-
-	if(open)
-		icon_state = "[initial(icon_state)]_open"
-	else
-		icon_state = initial(icon_state)
-
-	..()

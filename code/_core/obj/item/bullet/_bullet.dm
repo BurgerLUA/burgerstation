@@ -2,16 +2,15 @@
 	name = "bullet"
 	desc = "just a regular bullet"
 	id = "bullet"
-	icon = 'icons/obj/items/bullet/bullet.dmi'
-	icon_state = "bullet"
 	var/is_spent = FALSE
+	icon_state = "bullet"
 
 /obj/item/bullet/update_icon()
 
 	if(!is_spent)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "[initial(icon_state)]_spent"
+		icon_state = "spent"
 		pixel_x = rand(-8,8)
 		pixel_y = rand(-8,8)
 	..()
@@ -52,9 +51,3 @@
 
 
 	return TRUE
-
-/obj/item/bullet/revolver_38
-	name = "\improper .38 special"
-	desc = "For revolvers that require .38 ammo."
-	id = ".38"
-	icon_state = ".38"

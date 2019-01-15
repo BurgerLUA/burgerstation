@@ -7,14 +7,14 @@
 	else if (caller.attack_flags & ATTACK_DROP)
 		return drop_item()
 
+	object = object.defer_click_on_object() //Change the object we click on to possibly the object that the inventory is holding
+
 	if(is_inventory(object)) //Give items to another inventory if we click on it.
 		var/obj/inventory/I = object
 		if(length(held_objects) && I.add_object(get_top_held_object()))
 			return TRUE
 		if(length(worn_objects) && I.add_object(get_top_worn_object()))
 			return TRUE
-
-	object = object.defer_click_on_object() //Change the object we click on to possibly the object that the inventory is holding
 
 	var/obj/O = src.defer_click_on_object()
 
@@ -36,6 +36,10 @@
 	return src.attack(caller,object,params)
 
 obj/inventory/drop_on_object(caller,var/atom/object)
+
+	if(!object)
+		return TRUE
+
 	object = object.defer_click_on_object()
 
 	if(is_inventory(object)) //Give items to another inventory if we drag it.

@@ -47,3 +47,12 @@
 
 /obj/structure/interactive/localmachine/item/weapon/assault_rifle
 	stored_item = /obj/item/weapon/ranged/bullet/magazine/assault_rifle
+
+/obj/structure/interactive/localmachine/item/ammo/assault_rifle
+	stored_item = /obj/item/magazine/rifle_762/full
+
+/obj/structure/interactive/localmachine/item/weapon/smg
+	stored_item = /obj/item/weapon/ranged/bullet/magazine/smg
+
+/obj/structure/interactive/localmachine/item/ammo/smg
+	stored_item = /obj/item/magazine/smg_45/full/

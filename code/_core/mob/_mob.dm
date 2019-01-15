@@ -57,7 +57,7 @@ var/global/list/all_mobs = list()
 
 	. = ..()
 
-	if(movement_flags & MOVEMENT_CROUCHING)
+	if(movement_flags & MOVEMENT_WALKING)
 		. *= 2
 
 	if(movement_flags & MOVEMENT_RUNNING)

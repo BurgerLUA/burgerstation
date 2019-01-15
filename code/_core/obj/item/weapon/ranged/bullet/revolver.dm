@@ -10,6 +10,9 @@
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
 
+	var/area/A = get_area(caller.loc)
+	play_sound('sounds/weapon/misc/revolver_click2.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+
 	update_icon()
 
 /obj/item/weapon/ranged/bullet/revolver/detective
@@ -30,7 +33,6 @@
 	bullet_capacity = 6
 
 	bullet_type = ".38"
-	icon_state_open = "inventory_open"
 
 	shoot_sounds = list('sounds/weapon/ranged/gunshot_strong.ogg')
 

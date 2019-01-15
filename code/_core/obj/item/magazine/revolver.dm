@@ -8,7 +8,8 @@
 	..()
 
 /obj/item/magazine/clip/revolver/bullet_38
-	name = ".38 clip"
+	name = "\improper .38 clip"
+	id = ".38"
 	icon = 'icons/obj/items/magazine/revolver/38.dmi'
 	icon_state = "38"
 	bullet_capacity = 6

@@ -41,8 +41,8 @@ obj/item/proc/update_owner(desired_owner)
 		var/obj/inventory/I = v
 		I.update_owner(desired_owner)
 
-obj/item/update_icon()
-	. = ..()
+/obj/item/update_icon()
+	..()
 	if(is_inventory(src.loc))
 		var/obj/inventory/I = src.loc
 		I.update_icon()

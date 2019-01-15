@@ -40,12 +40,21 @@
 
 	var/drag_to_take = TRUE //You must click and drag to take the object.
 
+
+	var/obj/inventory/parent_inventory //Basically one massive defer to this inventory.
+	var/obj/inventory/child_inventory
+
 /obj/inventory/New(var/desired_loc)
 	loc = desired_loc
 
 	held_objects = list()
 	worn_objects = list()
 	. = ..()
+
+/obj/inventory/examine(var/atom/examiner)
+	var/atom/A = defer_click_on_object()
+	if(A && A != src)
+		A.examine(examiner)
 
 /obj/inventory/proc/update_overlays()
 
@@ -63,6 +72,12 @@
 		overlays += A
 
 /obj/inventory/update_icon()
+
+	if(parent_inventory)
+		color = "#ff0000"
+	else
+		color = initial(color)
+
 	update_overlays()
 
 /obj/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
@@ -180,7 +195,7 @@
 
 /obj/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
-	if(is_holder(I))
+	if(parent_inventory)
 		return FALSE
 
 	if(held_slots <= 0)
@@ -215,6 +230,9 @@
 
 /obj/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
+	if(parent_inventory)
+		return FALSE
+
 	if(worn_slots <= 0)
 		return FALSE
 
@@ -245,6 +263,7 @@
 	return TRUE
 
 /obj/inventory/proc/get_top_worn_object()
+
 	if(!length(worn_objects))
 		return FALSE
 

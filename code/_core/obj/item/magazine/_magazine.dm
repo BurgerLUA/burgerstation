@@ -5,6 +5,10 @@
 	var/bullet_capacity = 30 //How many bullets can this store
 	var/list/obj/item/bullet/stored_bullets
 
+/obj/item/magazine/examine(var/atom/examiner)
+	..()
+	examiner.to_chat("it contains [length(stored_bullets)] bullets.")
+
 /obj/item/magazine/New()
 	. = ..()
 	stored_bullets = list()
@@ -14,12 +18,7 @@
 /obj/item/magazine/proc/add_ammo()
 	return
 
-/obj/item/magazine/clip/
-	name = "weapon clip"
-	id = "bullet"
-	desc = "IT'S NOT A MAGAZINE. IT'S A CLIP."
-
-/obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object()
 
@@ -28,19 +27,12 @@
 
 	var/obj/item/weapon/ranged/bullet/G = object
 
-	var/insert_count = 0
+	if(!G.stored_magazine)
+		src.drop_item(G)
+		src.loc = G
+		G.stored_magazine = src
+		G.open = FALSE
 
-	for(var/obj/item/bullet/B in stored_bullets)
-		if(!B.insert_into_gun(caller,G,location,control,params,FALSE))
-			break
-		insert_count += 1
-		stored_bullets -= B
-
-	if(insert_count)
-		caller.to_chat(span("notice","You insert [insert_count] bullet\s into \the [object]."))
-	//else
-		//caller.to_chat(span("notice","You cannot find a way to insert the bullets into \the [object]!"))
-
-	update_icon()
+	G.update_icon()
 
 	return TRUE

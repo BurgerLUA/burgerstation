@@ -1,59 +1,76 @@
 /obj/item/weapon/
-	var/obj/holder/connected_holder
 	var/wielded = FALSE
 	var/can_wield = FALSE
+	var/open = FALSE //Mainly used for ranged weapons, can be used for melee I guess
 
-/obj/item/weapon/on_drop(var/obj/inventory/I)
-	if(connected_holder && is_inventory(connected_holder.loc))
-		var/obj/inventory/I2 = connected_holder.loc
-		I2.drop_item(connected_holder)
+	var/override_icon_state = FALSE
 
 /obj/item/weapon/update_icon()
+	if(wielded)
+		icon_state_held_left = "wielded_left"
+		icon_state_held_right = "wielded_right"
+	else
+		icon_state_held_left = initial(icon_state_held_left)
+		icon_state_held_right = initial(icon_state_held_right)
 
-	if(is_inventory(src.loc) && wielded)
+	var/open_text = open ? "_open" : ""
+	icon_state_held_left = "[icon_state_held_left][open_text]"
+	icon_state_held_right = "[icon_state_held_right][open_text]"
+
+	if(!override_icon_state)
+		if(open)
+			icon_state = "[initial(icon_state)]_open"
+		else
+			icon_state = initial(icon_state)
+
+	if(is_inventory(src.loc))
 		var/obj/inventory/I = src.loc
-		if(I.item_slot & SLOT_HAND_RIGHT)
-			pixel_x = 16
-		else if(I.item_slot & SLOT_HAND_LEFT)
-			pixel_x = -16
+		if(wielded)
+			if(I.item_slot & SLOT_HAND_RIGHT)
+				pixel_x = 16
+			else if(I.item_slot & SLOT_HAND_LEFT)
+				pixel_x = -16
+			else
+				pixel_x = 0
 		else
 			pixel_x = 0
+
+		I.owner.update_icon()
+
 	else
 		pixel_x = 0
-
-	visible_message("The [src] is [wielded].")
-
-	..()
-
-/obj/item/weapon/click_self(var/atom/caller)
-	if(wielded)
-		wielded = FALSE
-		update_icon()
-		return TRUE
 
 	..()
 
 /obj/item/weapon/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-	if(can_wield && object && is_inventory(object) && src && src.loc && is_inventory(src.loc))
+
+	if(can_wield && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && caller.movement_flags & MOVEMENT_CROUCHING)
 
 		var/obj/inventory/offhand_slot = object
-
-		if(offhand_slot.get_top_held_object())
-			return
+		var/obj/inventory/main_slot = src.loc
 
 		wielded = !wielded
 
 		if(wielded)
-			connected_holder = new(offhand_slot,src)
-			offhand_slot.add_held_object(connected_holder,FALSE,TRUE)
-			caller << connected_holder.icon
-			caller << connected_holder.icon_state
+			offhand_slot.parent_inventory = main_slot
+			main_slot.child_inventory = offhand_slot
+			offhand_slot.update_icon()
 		else
-			if(connected_holder)
-				connected_holder.loc = null
-				del(connected_holder)
-				connected_holder = null
+			main_slot.child_inventory = null
+			offhand_slot.parent_inventory = null
+			offhand_slot.update_icon()
 
+		caller.to_chat(span("notice","You hold \the [src] with [wielded ? "two hands" : "one hand"]."))
 		update_icon()
+		return TRUE
 
 	return ..()
+
+/obj/item/weapon/on_drop(var/obj/inventory/I)
+	wielded = FALSE
+	if(I.child_inventory)
+		I.child_inventory.parent_inventory = null
+		I.child_inventory.update_icon()
+		I.child_inventory = null
+	update_icon()
+	..()

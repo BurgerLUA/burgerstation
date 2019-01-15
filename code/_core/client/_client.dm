@@ -116,6 +116,9 @@ var/global/list/all_clients = list()
 
 /client/MouseDrop(src_object,over_object,src_location,over_location,src_control,over_control,params)
 
+	if(src_object == over_object)
+		return
+
 	var/list/aug = params2list(params)
 
 	if("left" in aug)
