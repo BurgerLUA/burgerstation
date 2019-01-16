@@ -1,11 +1,11 @@
 /obj/item/magazine/rifle_762
 	name = "\improper 7.62mm magazine"
-	id = "7.62"
+	bullet_type = "7.62"
 	icon = 'icons/obj/items/magazine/762.dmi'
 	icon_state = "762"
 	bullet_capacity = 30
 
-/obj/item/magazine/rifle_762/full/add_ammo()
+/obj/item/magazine/rifle_762/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/rifle_762(src)
 

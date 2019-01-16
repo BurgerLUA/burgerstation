@@ -9,6 +9,7 @@
 
 	bullet_speed = 31
 	shoot_delay = 3
+	accuracy_loss = 0.05
 
 	automatic = FALSE
 
@@ -19,4 +20,3 @@
 	shoot_sounds = list('sounds/weapon/ranged/gunshot_saw.ogg')
 
 	can_wield = TRUE
-

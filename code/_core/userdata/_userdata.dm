@@ -33,8 +33,10 @@
 	//Name
 	A.name = loaded_data["name"]
 
+	owner << "APPLY DATA..."
+
 	//Organs
-	for(var/id in loaded_data["organs"])
+	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
 		var/o_type = loaded_data["organs"][id]["type"]
 		var/o_color = loaded_data["organs"][id]["color"]
 		var/obj/item/organ/O = A.add_organ(o_type,o_color)
@@ -46,10 +48,13 @@
 
 	//Inventory - Worn
 	for(var/id in loaded_data["worn"])
+
+
 		var/o_type = loaded_data["worn"][id]["type"]
-		var/o_color = loaded_data["worn"][id]["color"]
-		var/obj/O = new o_type(A.loc)
-		O.color = o_color
+		owner << "[id]: [o_type]"
+
+
+		var/obj/O = load_and_create_object(loaded_data["worn"][id])
 		for(var/obj/inventory/I in A.inventory)
 			if(I.id != id)
 				continue
@@ -57,10 +62,11 @@
 
 	//Inventory - Held
 	for(var/id in loaded_data["held"])
+
 		var/o_type = loaded_data["held"][id]["type"]
-		var/o_color = loaded_data["held"][id]["color"]
-		var/obj/O = new o_type(A.loc)
-		O.color = o_color
+		owner << "[id]: [o_type]"
+
+		var/obj/O = load_and_create_object(loaded_data["held"][id])
 		for(var/obj/inventory/I in A.inventory)
 			if(I.id != id)
 				continue
@@ -79,6 +85,38 @@
 		S.Initialize(xp)
 
 	A.update_icon()
+
+/userdata/proc/load_and_create_object(var/list/data,var/loc)
+
+	var/o_type = data["type"]
+	var/obj/O = new o_type(loc)
+
+	//General Information
+	if(data["color"])
+		O.color = data["color"]
+
+	if(is_bullet_gun(O))
+		var/obj/item/weapon/ranged/bullet/BG = O
+		if(data["stored_magazine"])
+			BG.stored_magazine = load_and_create_object(data["stored_magazine"],BG.loc)
+		if(data["stored_bullets"])
+			for(var/i=1, i <= length(data["stored_bullets"]), i++)
+				var/b_type = data["stored_bullets"][i]
+				BG.stored_bullets += new b_type(BG.loc)
+			BG.update_icon()
+
+	if(is_magazine(O))
+		var/obj/item/magazine/M = O
+		if(data["stored_bullets"])
+			for(var/i=1, i <= length(data["stored_bullets"]), i++)
+				var/b_type = data["stored_bullets"][i]
+				M.stored_bullets += new b_type(M.loc)
+			M.update_icon()
+
+	O.loc = loc
+
+	return O
+
 
 /userdata/proc/save_current_character()
 
@@ -248,7 +286,30 @@
 	return replacetext(replacetext(file_string,"character_",""),".json","")
 
 /userdata/proc/get_item_data(var/obj/item/I)
+	if(!I)
+		return list()
+
 	var/list/returning_list = list()
 	returning_list["type"] = I.type
-	returning_list["color"] = I.color
+	if(I.color && lowertext(I.color) != "#ffffff")
+		returning_list["color"] = I.color
+
+	if(is_bullet_gun(I))
+		var/obj/item/weapon/ranged/bullet/BG = I
+		if(BG.stored_magazine)
+			returning_list["stored_magazine"] = get_item_data(BG.stored_magazine)
+		if(length(BG.stored_bullets))
+			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
+			for(var/i=1,i<=length(BG.stored_bullets),i++)
+				var/obj/item/bullet/B = BG.stored_bullets[i]
+				returning_list["stored_bullets"][i] = B.type
+
+	if(is_magazine(I))
+		var/obj/item/magazine/M = I
+		if(length(M.stored_bullets))
+			returning_list["stored_bullets"] = new/list(length(M.stored_bullets))
+			for(var/i=1,i<=length(M.stored_bullets),i++)
+				var/obj/item/bullet/B = M.stored_bullets[i]
+				returning_list["stored_bullets"][i] = B.type
+
 	return returning_list

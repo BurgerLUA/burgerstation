@@ -14,8 +14,8 @@ var/global/list/mob_spawnpoints = list()
 	observer_spawnpoints += get_turf(src)
 
 /obj/marker/spawnpoint/new_character
-	name = "new playcer spawnpoint"
-	desc = "This is where new players."
+	name = "new player spawnpoint"
+	desc = "This is where new players spawn."
 
 /obj/marker/spawnpoint/new_character/New()
 	spawnpoints_new_character += get_turf(src)

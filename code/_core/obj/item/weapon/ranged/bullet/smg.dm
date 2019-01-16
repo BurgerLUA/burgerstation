@@ -9,6 +9,7 @@
 
 	bullet_speed = 31
 	shoot_delay = 1
+	accuracy_loss = 0.1
 
 	automatic = TRUE
 

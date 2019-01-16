@@ -50,8 +50,7 @@ var/global/list/all_clients = list()
 
 	src.mob = new /mob/abstract/observer(pick(observer_spawnpoints),src)
 	src.mob.Initialize()
-	eye = locate(11,11,src.mob.z)
-	view = 8
+	//view = 8
 
 	var/turf/T = get_turf(src.mob)
 	if(T)

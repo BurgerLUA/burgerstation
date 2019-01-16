@@ -9,11 +9,11 @@
 
 /obj/item/magazine/clip/revolver/bullet_38
 	name = "\improper .38 clip"
-	id = ".38"
+	bullet_type = ".38"
 	icon = 'icons/obj/items/magazine/revolver/38.dmi'
 	icon_state = "38"
 	bullet_capacity = 6
 
-/obj/item/magazine/clip/revolver/bullet_38/full/add_ammo()
+/obj/item/magazine/clip/revolver/bullet_38/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/revolver_38(src)

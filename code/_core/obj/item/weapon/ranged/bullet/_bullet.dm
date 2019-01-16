@@ -65,21 +65,3 @@
 
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return length(stored_bullets)
-
-/obj/item/weapon/ranged/bullet/can_gun_shoot(var/mob/caller)
-
-	if(!..())
-		return FALSE
-
-	if(open)
-		caller.to_chat(span("notice","You must close \the [src] first before shooting it!"))
-		return FALSE
-
-	if(get_ammo_count() <= 0)
-		caller.to_chat(span("danger","*click click*"))
-		var/area/A = get_area(caller.loc)
-		play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		return FALSE
-
-
-	return TRUE

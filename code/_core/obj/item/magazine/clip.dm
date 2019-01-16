@@ -1,6 +1,6 @@
 /obj/item/magazine/clip/
 	name = "weapon clip"
-	id = "bullet"
+	bullet_type = "none"
 	desc = "IT'S NOT A MAGAZINE. IT'S A CLIP."
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -11,6 +11,9 @@
 		return ..()
 
 	var/obj/item/weapon/ranged/bullet/G = object
+	if(bullet_type != G.bullet_type)
+		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
+		return TRUE
 
 	var/insert_count = 0
 

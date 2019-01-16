@@ -4,6 +4,8 @@
 
 	var/bullet_speed = 31
 
+	var/bullet_count = 1
+
 	var/obj/projectile/projectile = /obj/projectile/
 
 	var/automatic = TRUE
@@ -30,6 +32,10 @@
 	return next_shoot_time <= curtime
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
+
+	if(get_ammo_count() <= 0)
+		return FALSE
+
 	return TRUE
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -48,14 +54,19 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
 
-	if(!can_owner_shoot(caller))
-		return
-
-	if(!caller.can_attack(object,params))
-		return ..()
-
 	if(!object)
 		return ..()
+
+	//caller.move_delay = max(caller.move_delay,0.5)
+	caller.face_atom(object)
+
+	/*
+	if(!caller.can_attack(object,params))
+		return ..()
+	*/
+
+	if(!can_owner_shoot(caller))
+		return
 
 	if(!object.x && !object.y && !object.z)
 		return ..()
@@ -66,7 +77,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	next_shoot_time = curtime + shoot_delay
 
 	if(!can_gun_shoot(caller))
-		return
+		caller.to_chat(span("danger","*click click*"))
+		var/area/A = get_area(caller.loc)
+		play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		return FALSE
+
 
 	handle_ammo(caller)
 
@@ -87,31 +102,29 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16
 		var/object_fake_y = object.y*TILE_SIZE + icon_pos_y - 16
 
-		var/diffx = object_fake_x - caller_fake_x
-		var/diffy = object_fake_y - caller_fake_y
+		for(var/i=1,i<=bullet_count,i++)
+			var/diffx = object_fake_x - caller_fake_x
+			var/diffy = object_fake_y - caller_fake_y
 
-		var/distance = sqrt(diffx ** 2 + diffy ** 2)
-		diffx += rand(-distance*accuracy_loss,distance*accuracy_loss)
-		diffy += rand(-distance*accuracy_loss,distance*accuracy_loss)
+			var/distance = sqrt(diffx ** 2 + diffy ** 2)
+			diffx += rand(-distance*accuracy_loss,distance*accuracy_loss)
+			diffy += rand(-distance*accuracy_loss,distance*accuracy_loss)
 
-		var/highest = max(abs(diffx),abs(diffy))
+			var/highest = max(abs(diffx),abs(diffy))
 
-		if(highest > 0)
-			var/normx = diffx/highest
-			var/normy = diffy/highest
+			if(highest > 0)
+				var/normx = diffx/highest
+				var/normy = diffy/highest
 
-			var/turf/T = get_turf(caller)
+				var/turf/T = get_turf(caller)
 
 
-			bullet_speed = min(bullet_speed,31)
+				bullet_speed = min(bullet_speed,31)
 
-			new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y)
+				new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y)
 
-		else
-			return FALSE
-
-	caller.move_delay = max(0, caller.move_delay + max(0.5,shoot_delay))
-	caller.face_atom(object)
+			else
+				return FALSE
 
 	return TRUE
 

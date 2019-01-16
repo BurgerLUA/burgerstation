@@ -10,7 +10,7 @@
 	if(!is_spent)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "spent"
+		icon_state = "[initial(icon_state)]_spent"
 		pixel_x = rand(-8,8)
 		pixel_y = rand(-8,8)
 	..()
@@ -33,6 +33,7 @@
 		caller.to_chat(span("notice","You can't fit any more bullets into \the [src]!"))
 		return FALSE
 
+	src.drop_item(G)
 	src.loc = G
 	G.stored_bullets += src
 	if(display_message)
@@ -42,12 +43,14 @@
 
 /obj/item/bullet/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	object = object.defer_click_on_object()
+
 	if(!is_bullet_gun(object))
 		return ..()
 
 	var/obj/item/weapon/ranged/bullet/G = object
-	insert_into_gun(G)
 
-
+	if(G)
+		insert_into_gun(caller,G,location,control,params)
 
 	return TRUE

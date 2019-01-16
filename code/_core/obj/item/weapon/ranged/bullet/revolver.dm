@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/revolver/
 	open = FALSE
+	accuracy_loss = 0.05
 
 /obj/item/weapon/ranged/bullet/revolver/click_self(var/atom/caller)
 	open = !open
@@ -15,6 +16,13 @@
 
 	update_icon()
 
+/obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)
+
+	if(open)
+		return FALSE
+
+	return ..()
+
 /obj/item/weapon/ranged/bullet/revolver/detective
 	name = "\improper .38 revolver"
 	desc = "The detective's trusty sidearm. Uses .38 revolver rounds."
@@ -26,7 +34,7 @@
 	damage_type = /damagetype/sword/
 
 	bullet_speed = 31
-	shoot_delay = 10
+	shoot_delay = 5
 
 	automatic = FALSE
 

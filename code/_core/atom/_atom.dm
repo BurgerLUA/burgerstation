@@ -18,6 +18,8 @@
 
 	var/area/area //The object's area.
 
+	density = FALSE
+
 /atom/proc/Initialize()
 	//Initialize things here
 	initialized = TRUE
