@@ -24,6 +24,10 @@
 
 	mouse_opacity = 0
 
+	layer = LAYER_PROJECTILE
+
+	plane = 4
+
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0)
 
 	owner = desired_owner

@@ -71,9 +71,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	if(!object.x && !object.y && !object.z)
 		return ..()
 
-	if(get_dist(caller,object) <= 1)
-		return ..()
-
 	next_shoot_time = curtime + shoot_delay
 
 	if(!can_gun_shoot(caller))
@@ -86,6 +83,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	handle_ammo(caller)
 
 	update_icon()
+
+
+
+
+
 
 	if(projectile)
 
@@ -121,7 +123,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 
 				bullet_speed = min(bullet_speed,31)
 
-				new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y)
+				var/obj/projectile/P = new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y)
+				if(get_dist(caller,object) <= 1 && is_mob(object))
+					P.on_hit(object)
+
+
 
 			else
 				return FALSE

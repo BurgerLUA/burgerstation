@@ -1,8 +1,16 @@
 /datum/species/reptile/
 	name = "Reptile"
 	desc = "Fucking furries"
+
+	eye_color_default = "#FF8800"
+	skin_color_default = "#448844"
+	hair_color_default = "#000000"
+
+	hair_style_default = "bald"
+
 	spawning_organs_male = list(
 		BODY_HEAD = /obj/item/organ/head/reptile,
+		BODY_HAIR = /obj/item/organ/hair,
 		BODY_TORSO = /obj/item/organ/torso/reptile,
 		BODY_GROIN = /obj/item/organ/groin/reptile,
 		BODY_LEG_RIGHT = /obj/item/organ/leg/reptile,
@@ -22,6 +30,7 @@
 
 	spawning_organs_female = list(
 		BODY_HEAD = /obj/item/organ/head/reptile/female,
+		BODY_HAIR = /obj/item/organ/hair,
 		BODY_TORSO = /obj/item/organ/torso/reptile/female,
 		BODY_GROIN = /obj/item/organ/groin/reptile/female,
 		BODY_LEG_RIGHT = /obj/item/organ/leg/reptile,

@@ -8,6 +8,7 @@
 		/obj/inventory/organs/right_hand_worn,
 		/obj/inventory/organs/right_hand_held
 	)
+	break_threshold = 15
 	health_max = 25
 
 	damage_type = /damagetype/unarmed/fists/
@@ -24,8 +25,7 @@
 
 	damage_type = /damagetype/unarmed/fists/left
 
-
-
+//Reptile Advanced
 /obj/item/organ/hand/reptile
 	name = "right reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
@@ -39,6 +39,28 @@
 
 /obj/item/organ/hand/reptile/left
 	name = "left reptile hand"
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/inventory/organs/left_hand_worn,
+		/obj/inventory/organs/left_hand_held
+	)
+
+	damage_type = /damagetype/unarmed/fists/left
+
+//Reptile Advanced
+/obj/item/organ/hand/reptile_advanced
+	name = "right advanced reptile hand"
+	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+	inventories = list(
+		/obj/inventory/organs/right_hand_worn,
+		/obj/inventory/organs/right_hand_held
+	)
+
+	damage_type = /damagetype/unarmed/fists/
+
+
+/obj/item/organ/hand/reptile_advanced/left
+	name = "left advanced reptile hand"
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/inventory/organs/left_hand_worn,

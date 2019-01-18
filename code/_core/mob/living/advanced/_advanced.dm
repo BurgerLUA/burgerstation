@@ -20,6 +20,10 @@
 
 	var/list/atom/tracked_overlays = list()
 
+/mob/living/advanced/on_life()
+	..()
+	update_health_elemement_icons()
+	return ..()
 
 /mob/living/advanced/on_life_client()
 	..()
@@ -62,11 +66,14 @@
 	if(!client || client.userdata.loaded_data["tutorial"])
 		add_species_organs()
 		add_species_colors()
-		add_species_buttons()
 		add_clothes(mob_outfit)
 		update_icon()
 	else
 		client.userdata.apply_data_to_mob(src)
+
+	add_species_buttons()
+	add_species_health_elements()
+	update_health()
 
 	. = ..()
 
@@ -95,6 +102,8 @@
 
 /mob/living/advanced/update_icon()
 
+	icon = initial(icon)
+
 	for(var/O in overlays)
 		O = null
 		del(O)
@@ -102,7 +111,6 @@
 
 	update_organ_icons()
 	update_inventory_icons()
-
 	. = ..()
 
 /mob/living/advanced/proc/update_organ_icons()
@@ -170,13 +178,18 @@
 
 			overlays += spawned_overlay
 
+/mob/living/advanced/proc/update_health_elemement_icons()
+	for(var/k in health_elements)
+		var/obj/health/H = health_elements[k]
+		H.update_stats(src)
+		H.update_icon()
 
 /mob/living/advanced/proc/add_species_colors()
 	for(var/obj/item/organ/O in organs)
 		if(is_hair(O))
 			var/obj/item/organ/hair/H = O
 			H.color = mob_species.hair_color_default
-			H.hairstyle = mob_species.hair_style_default
+			H.hair_style = mob_species.hair_style_default
 		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
 			O.color = mob_species.eye_color_default
 		else
@@ -212,6 +225,14 @@
 		if(is_hair(O))
 			O.color = new_color
 			O.update_icon()
+
+	update_icon()
+
+/mob/living/advanced/proc/change_hair_style(var/new_style)
+	var/obj/item/organ/hair/H = labeled_organs[BODY_HAIR_HEAD]
+	if(H)
+		H.hair_style = new_style
+		H.update_icon()
 
 	update_icon()
 

@@ -1,14 +1,30 @@
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	if(status & FLAG_STATUS_STUN)
+		return 0
 	var/base_chance = get_skill_power(SKILL_PARRY,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
 
 /mob/living/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	if(status & FLAG_STATUS_STUN)
+		return 0
 	var/base_chance = get_skill_power(SKILL_DODGE,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
 
 /mob/living/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	if(status & FLAG_STATUS_STUN)
+		return 0
 	var/base_chance = get_skill_power(SKILL_BLOCK,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
+
+
+/mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	if(status & FLAG_STATUS_STUN)
+		var/distance = get_dist(attacker,src)
+		if(distance <= 1)
+			return 0
+		else
+			return 30 + distance*10
+	return 0
 
 //TODO: Magic Effect System
 

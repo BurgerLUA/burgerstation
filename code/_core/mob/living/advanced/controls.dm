@@ -1,13 +1,44 @@
-mob/living/advanced/on_left_click(object,location,control,params)
+
+//A down is just a press.
+mob/living/advanced/on_left_down(object,location,control,params)
+
+	if(is_inventory(object))
+		return FALSE
+
 	for(var/obj/inventory/I in inventory)
 		if((I.click_flags & RIGHT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 
-mob/living/advanced/on_right_click(object,location,control,params)
+mob/living/advanced/on_right_down(object,location,control,params)
+
+	if(is_inventory(object))
+		return FALSE
+
 	for(var/obj/inventory/I in inventory)
 		if((I.click_flags & LEFT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 
+
+
+
+//A click is a press and release.
+mob/living/advanced/on_left_click(var/atom/object,location,control,params)
+
+	if(!is_inventory(object))
+		return FALSE
+
+	for(var/obj/inventory/I in inventory)
+		if((I.click_flags & RIGHT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
+			I.click_on_object(src,object,location,control,params)
+
+mob/living/advanced/on_right_click(var/atom/object,location,control,params)
+
+	if(!is_inventory(object))
+		return FALSE
+
+	for(var/obj/inventory/I in inventory)
+		if((I.click_flags & LEFT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
+			I.click_on_object(src,object,location,control,params)
 
 /mob/living/advanced/on_left_drop(var/atom/src_object,over_object,src_location,over_location,src_control,over_control,aug)
 	src_object.drop_on_object(src,over_object)

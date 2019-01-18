@@ -4,6 +4,7 @@
 	desc = "An organ."
 	icon_state = BODY_TORSO_MALE
 	worn_layer = LAYER_MOB_TORSO
+	break_threshold = 50
 	health_max = 100
 	inventories = list(
 		/obj/inventory/organs/torso,
@@ -15,12 +16,25 @@
 	desc = "A torso. Female variant"
 	icon_state = BODY_TORSO_FEMALE
 
-
+//Reptile
 /obj/item/organ/torso/reptile
 	name = "reptile torso"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	desc = "An organ."
+	break_threshold = 75
 	health_max = 125
 
 /obj/item/organ/torso/reptile/female
+	icon_state = BODY_TORSO_FEMALE
+
+
+//Reptile Advanced
+/obj/item/organ/torso/reptile_advanced
+	name = "advanced reptile torso"
+	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+	desc = "An organ."
+	break_threshold = 75
+	health_max = 125
+
+/obj/item/organ/torso/reptile_advanced/female
 	icon_state = BODY_TORSO_FEMALE

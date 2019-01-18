@@ -1,40 +1,6 @@
 macro "macro"
 
 
-menu "menu"
-	elem 
-		name = "&File"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "&Quit"
-		command = ".quit"
-		category = "&File"
-		saved-params = "is-checked"
-	elem "icons"
-		name = "Icons"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "128x128 (200%)"
-		command = ".winset \"main.map.icon-size=128\""
-		category = "Icons"
-		group = "icon_size"
-		saved-params = "is-checked"
-	elem 
-		name = "64x64 (100%)"
-		command = ".winset \"main.map.icon-size=64\""
-		category = "Icons"
-		group = "icon_size"
-		saved-params = "is-checked"
-	elem 
-		name = "32x32 (50%)"
-		command = ".winset \"main.map.icon-size=32\""
-		category = "Icons"
-		group = "icon_size"
-		saved-params = "is-checked"
-
-
 window "info"
 	elem "info"
 		type = MAIN
@@ -138,6 +104,7 @@ window "input_output"
 		anchor1 = none
 		anchor2 = none
 		background-color = none
+		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -151,6 +118,8 @@ window "input_output"
 		size = 640x460
 		anchor1 = 0,0
 		anchor2 = 100,100
+		font-family = "Verdana"
+		font-size = 10
 		is-default = true
 		border = sunken
 		drop-zone = true
@@ -174,6 +143,7 @@ window "input_output"
 		anchor2 = 100,100
 		font-family = "Verdana"
 		font-size = 10
+		is-default = true
 		border = sunken
 		saved-params = ""
 
@@ -184,7 +154,6 @@ window "input_output_and_info"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -198,12 +167,12 @@ window "input_output_and_info"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
 		right = "input_output"
 		is-vert = false
+		splitter = 25
 		lock = right
 
 window "main"
@@ -213,7 +182,6 @@ window "main"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -226,7 +194,6 @@ window "main"
 		size = 1280x720
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "splitter"

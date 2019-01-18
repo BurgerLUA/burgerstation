@@ -56,10 +56,10 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 					name_to_id[H.name] = id
 				while(TRUE)
 					var/hair_style = input(caller,"Which hair style do you wish to have?") in name_to_id
-					O.hairstyle = name_to_id[hair_style]
+					O.hair_style = name_to_id[hair_style]
 					A.update_icon()
 					A.dir = SOUTH
-					var/confirm = input(caller,"Do you like your hairstyle?") in list("Yes, keep it.","No, I want a new one.")
+					var/confirm = input(caller,"Do you like your hair_style?") in list("Yes, keep it.","No, I want a new one.")
 					if(confirm == "Yes, keep it.")
 						break
 

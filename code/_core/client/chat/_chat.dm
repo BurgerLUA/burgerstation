@@ -38,31 +38,36 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 		return
 
 	for(var/mob/M in range(view_range,src))
+
+		var/local_first_person_text
+		var/local_third_person_text
+		var/local_blind_text
+
 		var/distance = get_dist(M,src)
-		if(distance <= 3)
-			first_person_text = span("distance_large",first_person_text)
-			third_person_text = span("distance_large",third_person_text)
-			blind_text = span("distance_large",blind_text)
+		if(distance <= 2)
+			local_first_person_text = span("distance_large",first_person_text)
+			local_third_person_text = span("distance_large",third_person_text)
+			local_blind_text = span("distance_large",blind_text)
+		else if(distance <= 4)
+			local_first_person_text = span("distance_medium",first_person_text)
+			local_third_person_text = span("distance_medium",third_person_text)
+			local_blind_text = span("distance_medium",blind_text)
 		else if(distance <= 6)
-			first_person_text = span("distance_medium",first_person_text)
-			third_person_text = span("distance_medium",third_person_text)
-			blind_text = span("distance_medium",blind_text)
-		else if(distance <= 9)
-			first_person_text = span("distance_small",first_person_text)
-			third_person_text = span("distance_small",third_person_text)
-			blind_text = span("distance_small",blind_text)
+			local_first_person_text = span("distance_small",first_person_text)
+			local_third_person_text = span("distance_small",third_person_text)
+			local_blind_text = span("distance_small",blind_text)
 		else
-			first_person_text = span("distance_tiny",first_person_text)
-			third_person_text = span("distance_tiny",third_person_text)
-			blind_text = span("distance_tiny",blind_text)
+			local_first_person_text = span("distance_tiny",first_person_text)
+			local_third_person_text = span("distance_tiny",third_person_text)
+			local_blind_text = span("distance_tiny",blind_text)
 
 		if(src in view(M))
 			if(src == M)
-				M.to_chat(first_person_text)
+				M.to_chat(local_first_person_text)
 			else
-				M.to_chat(third_person_text)
+				M.to_chat(local_third_person_text)
 		else
-			M.to_chat(blind_text)
+			M.to_chat(local_blind_text)
 
 
 

@@ -18,7 +18,8 @@
 	var/insert_count = 0
 
 	for(var/obj/item/bullet/B in stored_bullets)
-		if(!B.insert_into_gun(caller,G,location,control,params,FALSE))
+		if(!B.transfer_src_to_gun(caller,G,location,control,params,TRUE))
+			caller << "BREAKING"
 			break
 		insert_count += 1
 		stored_bullets -= B
@@ -28,5 +29,7 @@
 		G.update_icon()
 		update_icon()
 		return TRUE
+	else
+		caller.to_chat(span("notice","You can't insert anything into \the [object] with \the [src]!"))
 
 	return ..()

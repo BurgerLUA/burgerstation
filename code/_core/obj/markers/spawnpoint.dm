@@ -65,3 +65,9 @@ var/global/list/mob_spawnpoints = list()
 	name = "tutorial security spawnpoint"
 
 	type_to_spawn = /mob/living/advanced/human/npc/security/tutorial
+
+
+/obj/marker/spawnpoint/mob/marwani
+	name = "tutorial marwani spawnpoint"
+
+	type_to_spawn = /mob/living/advanced/human/npc/unique/marwani

@@ -13,11 +13,13 @@
 	stored_bullets = list()
 	..()
 
+/obj/item/magazine/proc/get_ammo_count()
+	return length(stored_bullets)
+
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(istype(src,/obj/item/magazine/clip))
 		return FALSE
-
 
 	object = object.defer_click_on_object()
 
@@ -28,7 +30,6 @@
 	if(bullet_type != G.bullet_type)
 		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 		return TRUE
-
 
 	if(!G.stored_magazine)
 		src.drop_item(G)

@@ -13,3 +13,4 @@
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_FOOT_LEFT
+

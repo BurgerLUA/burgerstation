@@ -2,8 +2,7 @@
 	name = "greytide"
 	enable_AI = TRUE
 	starting_factions = list(
-		FACTION_PLAYER_HOSTILE,
-		FACTION_PLAYER
+		FACTION_PLAYER_HOSTILE
 	)
 	ai = /ai/
 	mob_outfit = /datum/outfit/assistant

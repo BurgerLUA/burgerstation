@@ -20,6 +20,10 @@
 
 	density = FALSE
 
+	var/health_current = 0
+
+
+
 /atom/proc/Initialize()
 	//Initialize things here
 	initialized = TRUE
@@ -28,6 +32,7 @@
 	if(damage_type)
 		damage_type = new damage_type
 	. = ..()
+	update_health()
 
 /atom/proc/can_not_leave(var/atom/A,var/move_direction)
 	return null

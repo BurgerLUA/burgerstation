@@ -40,9 +40,11 @@
 
 	var/drag_to_take = TRUE //You must click and drag to take the object.
 
-
 	var/obj/inventory/parent_inventory //Basically one massive defer to this inventory.
 	var/obj/inventory/child_inventory
+
+	mouse_over_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drop_zone = TRUE
 
 /obj/inventory/New(var/desired_loc)
 	loc = desired_loc
@@ -274,7 +276,6 @@
 		return FALSE
 
 	return held_objects[length(held_objects)]
-
 
 /obj/inventory/defer_click_on_object()
 

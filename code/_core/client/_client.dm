@@ -9,6 +9,7 @@ var/global/list/all_clients = list()
 
 	var/list/obj/inventory/known_inventory
 	var/list/obj/button/known_buttons
+	var/list/obj/health/known_health_elements
 
 	var/zoom_level = 64
 
@@ -20,6 +21,8 @@ var/global/list/all_clients = list()
 	var/list/last_params = list()
 	var/atom/last_object
 	var/atom/last_location
+
+	mouse_pointer_icon = 'icons/pointer.dmi'
 
 	//lazy_eye = 5
 
@@ -77,14 +80,35 @@ var/global/list/all_clients = list()
 	if(mob)
 		mob.face_atom(location)
 	*/
+	..()
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
 	var/change_in_screen = clamp(delta_x + delta_y,-1,1)*8
 	update_zoom(zoom_level + change_in_screen)
 
+	..()
+
 /client/MouseDown(var/atom/object,location,control,params)
 
 	store_new_params(object,location,params)
+
+	var/list/aug = params2list(params)
+
+	if("left" in aug)
+		mob.attack_flags |= ATTACK_HELD_LEFT
+		mob.on_left_down(object,location,control,aug)
+
+	if("right" in aug)
+		mob.attack_flags |= ATTACK_HELD_RIGHT
+		mob.on_right_down(object,location,control,aug)
+
+	if("middle" in aug)
+		mob.on_middle_down(object,location,control,aug)
+
+	..()
+
+
+/client/Click(var/atom/object,location,control,params)
 
 	var/list/aug = params2list(params)
 
@@ -94,14 +118,14 @@ var/global/list/all_clients = list()
 
 	if("left" in aug)
 		mob.on_left_click(object,location,control,aug)
-		mob.attack_flags |= ATTACK_HELD_LEFT
 
 	if("right" in aug)
 		mob.on_right_click(object,location,control,aug)
-		mob.attack_flags |= ATTACK_HELD_RIGHT
 
 	if("middle" in aug)
 		mob.on_middle_click(object,location,control,aug)
+
+	..()
 
 /client/MouseUp(object,location,control,params)
 
@@ -112,6 +136,8 @@ var/global/list/all_clients = list()
 
 	if("right" in aug)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
+
+	..()
 
 /client/MouseDrop(src_object,over_object,src_location,over_location,src_control,over_control,params)
 
@@ -129,8 +155,11 @@ var/global/list/all_clients = list()
 	if("middle" in aug)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
 
+	..()
+
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	store_new_params(over_object,over_location,params)
+	..()
 
 /client/proc/store_new_params(over_object,over_location,params)
 	var/list/new_params = params2list(params)

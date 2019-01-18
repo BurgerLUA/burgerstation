@@ -2,9 +2,10 @@
 	var/tmp/move_dir = 0
 	var/tmp/move_delay = 0
 	var/movement_delay = 4
+	var/anchored = FALSE
 
 	step_size = TILE_SIZE
-	appearance_flags = LONG_GLIDE
+	appearance_flags = LONG_GLIDE | KEEP_TOGETHER
 
 	animate_movement = FALSE
 

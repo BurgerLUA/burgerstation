@@ -7,6 +7,9 @@
 /proc/is_inventory(var/atom/A)
 	return istype(A,/obj/inventory/)
 
+/proc/is_overlay(var/atom/A)
+	return istype(A,/obj/overlay/)
+
 /proc/is_mob(var/atom/A)
 	return istype(A,/mob/)
 
@@ -42,3 +45,9 @@ proc/is_bullet_gun(var/atom/A)
 
 /proc/is_magazine(var/atom/A)
 	return istype(A,/obj/item/magazine/)
+
+/proc/is_bullet(var/atom/A)
+	return istype(A,/obj/item/bullet/)
+
+proc/is_movable(var/atom/A)
+	return istype(A,/atom/movable/)

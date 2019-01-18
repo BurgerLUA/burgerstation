@@ -4,6 +4,7 @@
 	desc = "A right arm."
 	icon_state = BODY_ARM_RIGHT
 	worn_layer = LAYER_MOB_ARMS
+	break_threshold = 25
 	health_max = 50
 
 /obj/item/organ/arm/left
@@ -12,9 +13,11 @@
 	icon_state = BODY_ARM_LEFT
 	desc = "A left arm."
 
+//Reptile Feral
 /obj/item/organ/arm/reptile
 	name = "reptile right arm"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
+	break_threshold = 30
 	health_max = 60
 
 /obj/item/organ/arm/reptile/left
@@ -22,3 +25,14 @@
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT
 
+//Reptile Advanced
+/obj/item/organ/arm/reptile_advanced
+	name = "reptile advanced right arm"
+	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+	break_threshold = 30
+	health_max = 60
+
+/obj/item/organ/arm/reptile_advanced/left
+	name = "reptile advanced left arm"
+	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT

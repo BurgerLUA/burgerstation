@@ -81,6 +81,7 @@
 	return TRUE
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
 	if(!is_living(attacker))
 		return base_attack_damage
 
@@ -117,12 +118,18 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	play_effects(attacker,victim,weapon,hit_object)
-	display_hit_message(attacker,victim,weapon,hit_object)
-
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE]) + hit_object.adjust_burn_loss(damage_to_deal[BURN]) + hit_object.adjust_tox_loss(damage_to_deal[TOX]) + hit_object.adjust_oxy_loss(damage_to_deal[OXY])
-	//victim.update_icon()
+
+	if(victim != hit_object)
+		victim.update_health()
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_stun(damage_dealt,40)
+
+	play_effects(attacker,victim,weapon,hit_object)
+	display_hit_message(attacker,victim,weapon,hit_object)
 
 	return damage_dealt
 

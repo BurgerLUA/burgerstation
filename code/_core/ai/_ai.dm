@@ -48,10 +48,12 @@
 
 		if(prob(50))
 			params["left"] = TRUE
-			owner.on_left_click(objective_attack,owner,null,params)
+			owner.on_left_down(objective_attack,owner,null,params)
+			//owner.say("Take that!")
 		else
 			params["right"] = TRUE
-			owner.on_right_click(objective_attack,owner,null,params)
+			owner.on_right_down(objective_attack,owner,null,params)
+			//owner.say("Take this!")
 
 	attack_ticks = 0
 

@@ -3,7 +3,6 @@
 	desc = "Spawns the below item."
 	var/obj/item/stored_item
 	density = 0
-	anchored = 1
 
 /obj/structure/interactive/localmachine/item/New()
 	if(stored_item)
@@ -25,9 +24,7 @@
 		if(A.client)
 			A.client.MouseDown(local_item_clone,location,control,list2params(params))
 
-
 	return ..()
-
 
 /obj/structure/interactive/localmachine/item/coat
 	stored_item = /obj/item/clothing/overwear/coat/
@@ -47,7 +44,7 @@
 /obj/structure/interactive/localmachine/item/weapon/revolver
 	stored_item = /obj/item/weapon/ranged/bullet/revolver/detective
 
-/obj/structure/interactive/localmachine/item/ammo
+/obj/structure/interactive/localmachine/item/ammo/revolver
 	stored_item = /obj/item/magazine/clip/revolver/bullet_38/
 
 /obj/structure/interactive/localmachine/item/weapon/assault_rifle

@@ -12,6 +12,8 @@
 	var/density_up    = FALSE
 	var/density_down  = FALSE
 
+	mouse_over_pointer = MOUSE_INACTIVE_POINTER
+
 /turf/New()
 	area = src.loc
 

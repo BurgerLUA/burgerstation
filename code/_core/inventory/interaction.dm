@@ -21,19 +21,21 @@
 	if(O != src)
 		return O.click_on_object(caller,object,location,control,params)
 
-	if(is_item(object)) //Take items from another inventory.
-		if(is_inventory(object.loc))
+	if(is_item(object))
+		if(is_inventory(object.loc)) //Take items from another inventory.
 			var/obj/inventory/I = object.loc
 			if(!I.drag_to_take && add_object(object))
 				return TRUE
-
-		else if(add_object(object))
+		else if(add_object(object)) //Take items from the world.
 			return TRUE
 
 	if(..(caller,object,location,control,params))
 		return TRUE
 
-	return src.attack(caller,object,params)
+	if(is_mob(object))
+		return src.attack(caller,object,params) //Attack the object if you can.
+	else
+		return FALSE
 
 obj/inventory/drop_on_object(caller,var/atom/object)
 

@@ -1,6 +1,6 @@
 /hair/
 	var/name = "Hair Data"
-	var/desc = "Basically contains all the hairstyles"
+	var/desc = "Basically contains all the hair_styles"
 	var/id
 
 	var/gender = NEUTER //Hair of the person
@@ -20,7 +20,7 @@
 /hair/greytide
 	name = "the greytide"
 	id = "greytide"
-	desc = "The ultimate hairstyle for men. You will be drowning in a river of pussy if you choose this hairstyle."
+	desc = "The ultimate hair_style for men. You will be drowning in a river of pussy if you choose this hair_style."
 	icon_state = "hair_a"
 	masculinity = 20
 
@@ -39,4 +39,9 @@
 	masculinity = -100
 	degenercy = 100
 
+/hair/unathi_frills
+	name = "unathi frills"
+	id = "unathi_frills"
+	desc = "LIGGERS"
+	icon_state = "hair_unathi_frills"
 

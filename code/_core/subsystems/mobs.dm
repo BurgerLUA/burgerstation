@@ -2,7 +2,6 @@
 	name = "Mob Subsystem"
 	desc = "Controls how mobs behave. Includes AI."
 	tick_rate = 0
-	priority = 99
 	priority = SS_ORDER_MOBS
 
 /datum/subsystem/mobs/on_life()

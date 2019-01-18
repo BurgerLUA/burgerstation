@@ -50,3 +50,9 @@
 		/obj/button/equip,
 		/obj/button/equip/left
 	)
+
+	spawning_health = list(
+		"hp" = /obj/health/hp,
+		"sp" = /obj/health/sp,
+		"mp" = /obj/health/mp
+	)

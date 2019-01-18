@@ -31,10 +31,7 @@ var/global/list/all_mobs = list()
 		L.update_for_mob(src)
 	..()
 
-
-
 /mob/New(var/loc/spawning_location,var/client/C)
-
 	if(C)
 		client = C
 		ckey = C.ckey
@@ -88,13 +85,3 @@ var/global/list/all_mobs = list()
 	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
 
 	return ..()
-
-/mob/living/do_bump(var/atom/bumper, var/bump_direction = 0, var/movement_override = 0)
-	if(move_delay > 0)
-		return FALSE
-	return do_move(get_step(src,bump_direction),movement_override)
-
-/mob/living/can_not_enter(var/atom/A,var/move_direction)
-	if(is_living(A))
-		return src
-	return FALSE

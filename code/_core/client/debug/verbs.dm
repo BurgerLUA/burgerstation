@@ -94,6 +94,12 @@ client/verb/debug_turf_contents()
 	for(var/atom/A in T.contents)
 		src << A
 
+client/verb/debug_stun()
+	set category = "Debug"
+	var/mob/living/L = mob
+	L.add_stun(text2num(input("Stun amount?")))
+
+
 client/verb/debug_skills()
 	set category = "Debug"
 	var/mob/living/L = mob

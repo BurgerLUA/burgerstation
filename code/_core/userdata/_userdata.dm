@@ -7,7 +7,7 @@
 		"name" = "Urist McRobust",
 		"tutorial" = 1,
 		"id" = "none",
-		"hairstyle" = "bald",
+		"hair_style" = "bald",
 		"last_saved" = 0,
 		"organs" = list(),
 		"worn" = list(),
@@ -33,27 +33,20 @@
 	//Name
 	A.name = loaded_data["name"]
 
-	owner << "APPLY DATA..."
-
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
 		var/o_type = loaded_data["organs"][id]["type"]
 		var/o_color = loaded_data["organs"][id]["color"]
 		var/obj/item/organ/O = A.add_organ(o_type,o_color)
-		//Hairstyle
+		//hair_style
 		if(is_hair(O))
 			var/obj/item/organ/hair/H = O
-			H.hairstyle = loaded_data["hairstyle"]
+			H.hair_style = loaded_data["hair_style"]
 		O.update_icon()
 
 	//Inventory - Worn
 	for(var/id in loaded_data["worn"])
-
-
-		var/o_type = loaded_data["worn"][id]["type"]
-		owner << "[id]: [o_type]"
-
-
+		//var/o_type = loaded_data["worn"][id]["type"]
 		var/obj/O = load_and_create_object(loaded_data["worn"][id])
 		for(var/obj/inventory/I in A.inventory)
 			if(I.id != id)
@@ -62,10 +55,7 @@
 
 	//Inventory - Held
 	for(var/id in loaded_data["held"])
-
-		var/o_type = loaded_data["held"][id]["type"]
-		owner << "[id]: [o_type]"
-
+		//var/o_type = loaded_data["held"][id]["type"]
 		var/obj/O = load_and_create_object(loaded_data["held"][id])
 		for(var/obj/inventory/I in A.inventory)
 			if(I.id != id)
@@ -95,6 +85,13 @@
 	if(data["color"])
 		O.color = data["color"]
 
+	if(is_bullet(O))
+		var/obj/item/bullet/B = O
+		if(data["bullet_count"])
+			B.bullet_count = data["bullet_count"]
+		else
+			B.bullet_count = 1
+
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
 		if(data["stored_magazine"])
@@ -102,18 +99,21 @@
 		if(data["stored_bullets"])
 			for(var/i=1, i <= length(data["stored_bullets"]), i++)
 				var/b_type = data["stored_bullets"][i]
-				BG.stored_bullets += new b_type(BG.loc)
-			BG.update_icon()
+				var/obj/item/bullet/B = new b_type(BG.loc)
+				B.update_icon()
+				BG.stored_bullets += B
 
 	if(is_magazine(O))
 		var/obj/item/magazine/M = O
 		if(data["stored_bullets"])
 			for(var/i=1, i <= length(data["stored_bullets"]), i++)
 				var/b_type = data["stored_bullets"][i]
-				M.stored_bullets += new b_type(M.loc)
-			M.update_icon()
+				var/obj/item/bullet/B = new b_type(M.loc)
+				B.update_icon()
+				M.stored_bullets += B
 
 	O.loc = loc
+	O.update_icon()
 
 	return O
 
@@ -144,7 +144,7 @@
 
 		if(id == BODY_HAIR_HEAD)
 			var/obj/item/organ/hair/H = O
-			loaded_data["hairstyle"] = H.hairstyle
+			loaded_data["hair_style"] = H.hair_style
 		final_organ_list[id] = get_item_data(O)
 	loaded_data["organs"] = final_organ_list
 
@@ -293,6 +293,11 @@
 	returning_list["type"] = I.type
 	if(I.color && lowertext(I.color) != "#ffffff")
 		returning_list["color"] = I.color
+
+	if(is_bullet(I))
+		var/obj/item/bullet/B = I
+		if(B.bullet_count > 1)
+			returning_list["bullet_count"] = B.bullet_count
 
 	if(is_bullet_gun(I))
 		var/obj/item/weapon/ranged/bullet/BG = I

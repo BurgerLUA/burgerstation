@@ -8,7 +8,7 @@
 
 	damage_type = /damagetype/sword/sabre
 
-	item_slot = SLOT_GROIN
+	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 
 /obj/item/weapon/melee/sword/can_be_worn()

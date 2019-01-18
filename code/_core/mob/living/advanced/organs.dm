@@ -36,6 +36,7 @@
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O,var/organ_color)
 	O = new O
+	O.loc = src
 	if(organ_color)
 		O.color = organ_color
 	organs += O

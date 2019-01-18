@@ -25,13 +25,13 @@ span.notice{
 	font-style: italic;
 }
 span.distance_large{
-	font-size: 90%;
+	font-size: 120%;
 }
 span.distance_medium{
-	font-size: 80%;
+	font-size: 100%;
 }
 span.distance_small{
-	font-size: 70%;
+	font-size: 80%;
 }
 span.distance_tiny{
 	font-size: 60%;
