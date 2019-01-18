@@ -2,7 +2,7 @@
 	name = "ORGAN"
 	desc = "An organ."
 
-	icon = 'icons/mob/living/advanced/species/mammal.dmi'
+	icon = 'icons/mob/living/advanced/species/human.dmi'
 
 	var/damage_icon = 'icons/mob/living/advanced/overlays/damage_organs.dmi'
 	var/damage_tag = "human"

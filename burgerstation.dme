@@ -156,6 +156,7 @@
 #include "code\_core\obj\item\clothing\feet\shoes\brown.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\tutorial.dm"
 #include "code\_core\obj\item\clothing\glasses\_glasses.dm"
+#include "code\_core\obj\item\clothing\glasses\prescription.dm"
 #include "code\_core\obj\item\clothing\glasses\sunglasses.dm"
 #include "code\_core\obj\item\clothing\hands\_hands.dm"
 #include "code\_core\obj\item\clothing\hands\gloves.dm"
