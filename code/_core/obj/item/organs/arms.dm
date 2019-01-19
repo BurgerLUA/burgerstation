@@ -6,6 +6,7 @@
 	worn_layer = LAYER_MOB_ARMS
 	break_threshold = 25
 	health_max = 50
+	attach_flag = BODY_TORSO
 
 /obj/item/organ/arm/left
 	name = "left arm"
@@ -34,5 +35,20 @@
 
 /obj/item/organ/arm/reptile_advanced/left
 	name = "reptile advanced left arm"
+	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT
+
+
+//Diona
+/obj/item/organ/arm/diona
+	name = "diona right arm"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+	break_threshold = 30
+	health_max = 60
+	enable_color = TRUE
+	enable_glow = TRUE
+
+/obj/item/organ/arm/diona/left
+	name = "diona left arm"
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT

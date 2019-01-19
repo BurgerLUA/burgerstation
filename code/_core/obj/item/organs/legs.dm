@@ -7,6 +7,8 @@
 	break_threshold = 25
 	health_max = 50
 
+	attach_flag = BODY_GROIN
+
 /obj/item/organ/leg/left
 	name = "left leg"
 	id = BODY_LEG_LEFT
@@ -22,7 +24,7 @@
 	flags_organ = FLAG_ORGAN_BEAST_FEET
 
 /obj/item/organ/leg/reptile/left
-	name = "right reptile leg"
+	name = "left reptile leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
 
@@ -35,6 +37,23 @@
 	health_max = 75
 
 /obj/item/organ/leg/reptile_advanced/left
-	name = "right advanced reptile leg"
+	name = "left advanced reptile leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+
+
+//Diona
+/obj/item/organ/leg/diona
+	name = "right diona leg"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+	break_threshold = 50
+	health_max = 75
+
+	enable_color = TRUE
+	enable_glow = TRUE
+
+/obj/item/organ/leg/diona/left
+	name = "left diona leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT

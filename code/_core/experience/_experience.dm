@@ -32,7 +32,7 @@
 	return ceiling( (level*experience_multiplier) ** experience_power)
 
 /experience/proc/set_level(var/level)
-	experience = level_to_xp(level)
+	experience = level_to_xp(clamp(level,1,max_level))
 
 /experience/proc/get_current_level()
 	return min(max_level,xp_to_level(experience))

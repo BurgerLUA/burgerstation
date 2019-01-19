@@ -3,15 +3,15 @@
 	desc = "Fucking furries. Advanced."
 
 	eye_color_default = "#FFFF00"
-	skin_color_default = "#44FF44"
-	hair_color_default = "#000000"
+	color_skin_default = "#44FF44"
+	color_hair_default = "#000000"
 
 	hair_style_default = "bald"
 
 	spawning_organs_male = list(
+		BODY_TORSO = /obj/item/organ/torso/reptile_advanced,
 		BODY_HEAD = /obj/item/organ/head/reptile_advanced,
 		BODY_HAIR = /obj/item/organ/hair,
-		BODY_TORSO = /obj/item/organ/torso/reptile_advanced,
 		BODY_GROIN = /obj/item/organ/groin/reptile_advanced,
 		BODY_LEG_RIGHT = /obj/item/organ/leg/reptile_advanced,
 		BODY_LEG_LEFT = /obj/item/organ/leg/reptile_advanced/left,
@@ -29,9 +29,9 @@
 	)
 
 	spawning_organs_female = list(
+		BODY_TORSO = /obj/item/organ/torso/reptile_advanced/female,
 		BODY_HEAD = /obj/item/organ/head/reptile_advanced/female,
 		BODY_HAIR = /obj/item/organ/hair,
-		BODY_TORSO = /obj/item/organ/torso/reptile_advanced/female,
 		BODY_GROIN = /obj/item/organ/groin/reptile_advanced/female,
 		BODY_LEG_RIGHT = /obj/item/organ/leg/reptile_advanced,
 		BODY_LEG_LEFT = /obj/item/organ/leg/reptile_advanced/left,

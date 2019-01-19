@@ -76,8 +76,8 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 					"light brown" = "#9e5625"
 				)
 				while(TRUE)
-					var/hair_color = input(caller,"Which hair color do you wish to have?") in valid_colors
-					O.color = valid_colors[hair_color]
+					var/color_hair = input(caller,"Which hair color do you wish to have?") in valid_colors
+					O.color = valid_colors[color_hair]
 					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your hair color?") in list("Yes, keep it.","No, I want a new one.")
@@ -96,8 +96,8 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				)
 
 				while(TRUE)
-					var/skin_color = input(caller,"Which skin color do you wish to have?") in valid_colors
-					A.change_skin_color(valid_colors[skin_color])
+					var/color_skin = input(caller,"Which skin color do you wish to have?") in valid_colors
+					A.change_color_skin(valid_colors[color_skin])
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your skin color?") in list("Yes, keep it.","No, I want a new one.")
 					if(confirm == "Yes, keep it.")

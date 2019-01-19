@@ -52,13 +52,13 @@
 /experience/attribute/endurance/
 	name = "Endurance"
 	id = ATTRIBUTE_ENDURANCE
-	desc = "A measure of how long your body can last in this world. Affects resistance to poison and disease."
+	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, and stamina damage."
 	flags = ATTRIBUTE_RESISTANCE
 
 
 
 
-//None
+//None. Everyone starts with 50.
 /experience/attribute/luck/
 	name = "Luck"
 	id = ATTRIBUTE_LUCK

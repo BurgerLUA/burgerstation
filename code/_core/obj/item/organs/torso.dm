@@ -38,3 +38,15 @@
 
 /obj/item/organ/torso/reptile_advanced/female
 	icon_state = BODY_TORSO_FEMALE
+
+
+/obj/item/organ/torso/diona
+	name = "diona torso"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+	icon_state = BODY_TORSO
+	desc = "An organ."
+	break_threshold = 75
+	health_max = 125
+
+	enable_color = TRUE
+	enable_glow = TRUE

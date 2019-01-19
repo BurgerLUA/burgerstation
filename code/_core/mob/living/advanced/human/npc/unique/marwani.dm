@@ -11,6 +11,6 @@
 
 /mob/living/advanced/human/npc/unique/marwani/Initialize()
 	..()
-	change_skin_color("#97ad5a")
+	change_color_skin("#8CA73E")
 	change_hair_style("unathi_frills")
-	change_hair_color("#fff0be")
+	change_color_hair("#fff0be")

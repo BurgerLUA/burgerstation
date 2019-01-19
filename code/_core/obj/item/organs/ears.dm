@@ -7,6 +7,8 @@
 	break_threshold = 5
 	health_max = 10
 
+	attach_flag = BODY_HEAD
+
 	inventories = list(
 		/obj/inventory/organs/right_ear
 	)
@@ -51,6 +53,25 @@
 
 /obj/item/organ/ear/reptile_advanced/left
 	name = "left advanced reptile earhole"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT
+
+	inventories = list(
+		/obj/inventory/organs/left_ear
+	)
+
+
+//Diona
+/obj/item/organ/ear/diona
+	name = "right diona earhole"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+	inventories = list()
+	inventories = list(
+		/obj/inventory/organs/right_ear
+	)
+
+/obj/item/organ/ear/diona/left
+	name = "left diona earhole"
 	id = BODY_EAR_LEFT
 	icon_state = BODY_EAR_LEFT
 

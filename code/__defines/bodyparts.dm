@@ -36,3 +36,11 @@
 #define BODY_TAIL "tail"
 
 #define BODY_HAIR_HEAD "hair_head"
+
+
+#define BODY_BRAIN "brain"
+#define BODY_LUNGS "lung"
+#define BODY_STOMACH "stomach"
+#define BODY_LIVER "liver"
+#define BODY_INTESTINTES "intestines"
+#define BODY_KIDNEYS "kidneys"

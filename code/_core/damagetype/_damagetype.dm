@@ -121,15 +121,13 @@
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE]) + hit_object.adjust_burn_loss(damage_to_deal[BURN]) + hit_object.adjust_tox_loss(damage_to_deal[TOX]) + hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 
-	if(victim != hit_object)
-		victim.update_health()
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		L.add_stun(damage_dealt,40)
-
 	play_effects(attacker,victim,weapon,hit_object)
 	display_hit_message(attacker,victim,weapon,hit_object)
+
+	if(victim != hit_object)
+		victim.update_health(damage_dealt)
+
+	hit_object.update_health(damage_dealt)
 
 	return damage_dealt
 

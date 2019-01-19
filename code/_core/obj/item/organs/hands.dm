@@ -13,6 +13,8 @@
 
 	damage_type = /damagetype/unarmed/fists/
 
+	attach_flag = BODY_ARM_RIGHT
+
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT
@@ -22,6 +24,8 @@
 		/obj/inventory/organs/left_hand_worn,
 		/obj/inventory/organs/left_hand_held
 	)
+
+	attach_flag = BODY_ARM_LEFT
 
 	damage_type = /damagetype/unarmed/fists/left
 
@@ -45,6 +49,8 @@
 		/obj/inventory/organs/left_hand_held
 	)
 
+	attach_flag = BODY_ARM_LEFT
+
 	damage_type = /damagetype/unarmed/fists/left
 
 //Reptile Advanced
@@ -66,5 +72,35 @@
 		/obj/inventory/organs/left_hand_worn,
 		/obj/inventory/organs/left_hand_held
 	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	damage_type = /damagetype/unarmed/fists/left
+
+
+//Diona
+/obj/item/organ/hand/diona
+	name = "right diona hand"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+	inventories = list(
+		/obj/inventory/organs/right_hand_worn,
+		/obj/inventory/organs/right_hand_held
+	)
+
+	damage_type = /damagetype/unarmed/fists/
+
+	enable_color = TRUE
+	enable_glow = TRUE
+
+
+/obj/item/organ/hand/diona/left
+	name = "left diona hand"
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/inventory/organs/left_hand_worn,
+		/obj/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
 
 	damage_type = /damagetype/unarmed/fists/left

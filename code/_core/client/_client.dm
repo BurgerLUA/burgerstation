@@ -51,9 +51,7 @@ var/global/list/all_clients = list()
 		src.mob.Initialize()
 	*/
 
-	src.mob = new /mob/abstract/observer(pick(observer_spawnpoints),src)
-	src.mob.Initialize()
-	//view = 8
+	make_ghost(pick(observer_spawnpoints))
 
 	var/turf/T = get_turf(src.mob)
 	if(T)
@@ -74,6 +72,10 @@ var/global/list/all_clients = list()
 	//set instant = TRUE
 	button_tracker.set_released(button)
 
+
+/client/proc/make_ghost(var/desired_loc)
+	src.mob = new /mob/abstract/observer(desired_loc,src)
+	src.mob.Initialize()
 
 /client/MouseMove(object,location,control,params) //WARNING: OVERHEAD
 	/*

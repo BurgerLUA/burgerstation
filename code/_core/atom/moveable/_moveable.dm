@@ -9,6 +9,8 @@
 
 	animate_movement = FALSE
 
+	var/ghost = FALSE
+
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 
@@ -38,6 +40,9 @@
 		return FALSE
 
 	var/move_direction = loc.get_relative_dir(new_loc)
+
+	if(ghost)
+		return TRUE
 
 	if(loc)
 		var/atom/A = loc.can_not_leave(src,move_direction) //Is there an object preventing us from leaving?

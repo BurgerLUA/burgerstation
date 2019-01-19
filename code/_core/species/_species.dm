@@ -3,9 +3,11 @@
 	var/desc = "OH MY GOD"
 
 	var/eye_color_default = "#FF0000"
-	var/skin_color_default = "#0000FF"
-	var/hair_color_default = "#00FF00"
+	var/color_skin_default = "#0000FF"
+	var/color_hair_default = "#00FF00"
 	var/hair_style_default = "bald"
+
+	var/genderless = FALSE
 
 	var/list/obj/item/organ/spawning_organs_male = list()
 

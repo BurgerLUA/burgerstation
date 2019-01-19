@@ -40,7 +40,7 @@ client/verb/debug_organs()
 	set category = "Debug"
 	var/mob/living/advanced/A = mob
 	for(var/obj/item/organ/O in A.organs)
-		src << O.name
+		src << "[O.name] is attached to [O.attached_organ ? O.attached_organ.name : "nothing"]."
 
 	for(var/key in A.labeled_organs)
 		var/obj/item/organ/O = A.labeled_organs[key]
@@ -76,7 +76,7 @@ client/verb/remove_head()
 	set category = "Debug"
 	var/mob/living/advanced/A = mob
 	if(A.labeled_organs["head"])
-		A.remove_organ(A.labeled_organs["head"])
+		A.labeled_organs["head"].gib()
 
 client/verb/add_clothes()
 	set category = "Debug"

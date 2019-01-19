@@ -11,6 +11,8 @@
 		/obj/inventory/organs/groin_o,
 	)
 
+	attach_flag = BODY_TORSO
+
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
 	icon_state = BODY_GROIN_FEMALE
@@ -35,3 +37,15 @@
 
 /obj/item/organ/groin/reptile_advanced/female
 	icon_state = BODY_GROIN_FEMALE
+
+
+//Diona
+/obj/item/organ/groin/diona
+	name = "diona groin"
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+	icon_state = BODY_GROIN
+	break_threshold = 75
+	health_max = 100
+
+	enable_color = TRUE
+	enable_glow = TRUE

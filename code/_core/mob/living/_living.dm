@@ -19,7 +19,14 @@
 /mob/living/proc/is_sideways()
 	return status > 0
 
+/mob/living/proc/death()
+	if(client)
+		client.make_ghost(get_turf(src))
+	status |= FLAG_STATUS_DEAD
+	add_stun(10)
+
 /mob/living/on_life()
+
 	..()
 
 	if(status & FLAG_STATUS_STUN && stun_time <= 0)
@@ -29,6 +36,10 @@
 	if(!(status & FLAG_STATUS_STUN) && stun_time > 0)
 		status |= FLAG_STATUS_STUN
 		animate(src,transform = turn(matrix().Translate(10,0), 90), time = 1)
+
+
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
 
 	stun_time = max(0,stun_time - 1)
 

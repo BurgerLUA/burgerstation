@@ -7,7 +7,11 @@
 	worn_layer = LAYER_MOB_EYE
 	break_threshold = 5
 	health_max = 10
-	color = "#000000"
+
+	attach_flag = BODY_HEAD
+
+	has_dropped_icon = TRUE
+	has_dropped_icon_underlay = TRUE
 
 /obj/item/organ/eye/left
 	name = "left eye"
@@ -21,7 +25,6 @@
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	break_threshold = 5
 	health_max = 15
-	color = "#FFFF00"
 
 /obj/item/organ/eye/reptile/left
 	name = "left reptile eye"
@@ -35,7 +38,6 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	break_threshold = 5
 	health_max = 15
-	color = "#FFFF00"
 
 /obj/item/organ/eye/reptile_advanced/left
 	name = "left advanced reptile eye"

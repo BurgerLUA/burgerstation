@@ -165,6 +165,8 @@
 		for(var/obj/item/I2 in I.held_objects)
 			if(I2.loc != I)
 				continue
+			if(I2.no_held_draw)
+				continue
 
 			//I2.update_icon()
 			var/obj/overlay/spawned_overlay = new /obj/overlay
@@ -185,19 +187,12 @@
 		H.update_icon()
 
 /mob/living/advanced/proc/add_species_colors()
-	for(var/obj/item/organ/O in organs)
-		if(is_hair(O))
-			var/obj/item/organ/hair/H = O
-			H.color = mob_species.hair_color_default
-			H.hair_style = mob_species.hair_style_default
-		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
-			O.color = mob_species.eye_color_default
-		else
-			O.color = mob_species.skin_color_default
+	change_color_skin(mob_species.color_skin_default)
+	change_eye_color(mob_species.eye_color_default)
+	change_hair_style(mob_species.hair_style_default)
+	change_color_hair(mob_species.color_hair_default)
 
-		O.update_icon()
-
-/mob/living/advanced/proc/change_skin_color(var/new_color)
+/mob/living/advanced/proc/change_color_skin(var/new_color,var/update = TRUE)
 
 	for(var/obj/item/organ/O in organs)
 		if(is_hair(O))
@@ -205,36 +200,63 @@
 		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
 			continue
 		else
-			O.color = new_color
-			O.update_icon()
+			O.color_skin = new_color
+			if(update) O.update_icon()
 
-	update_icon()
+	if(update) update_icon()
 
-/mob/living/advanced/proc/change_eye_color(var/new_color)
+
+/mob/living/advanced/proc/change_secondary_color(var/new_color, var/update = TRUE)
+
+	for(var/obj/item/organ/O in organs)
+		if(is_hair(O))
+			continue
+		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
+			continue
+		else
+			O.color_secondary = new_color
+			if(update) O.update_icon()
+
+	if(update) update_icon()
+
+/mob/living/advanced/proc/change_glow_color(var/new_color, var/update = TRUE)
+
+	for(var/obj/item/organ/O in organs)
+		if(is_hair(O))
+			continue
+		else if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
+			continue
+		else
+			O.color_glow = new_color
+			if(update) O.update_icon()
+
+	if(update) update_icon()
+
+/mob/living/advanced/proc/change_eye_color(var/new_color, var/update = TRUE)
 
 	for(var/obj/item/organ/O in organs)
 		if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)
-			O.color = new_color
-			O.update_icon()
+			O.color_skin = new_color
+			if(update) O.update_icon()
 
-	update_icon()
+	if(update) update_icon()
 
-/mob/living/advanced/proc/change_hair_color(var/new_color)
+/mob/living/advanced/proc/change_color_hair(var/new_color, var/update = TRUE)
 
 	for(var/obj/item/organ/O in organs)
 		if(is_hair(O))
-			O.color = new_color
-			O.update_icon()
+			O.color_skin = new_color
+			if(update) O.update_icon()
 
-	update_icon()
+	if(update) update_icon()
 
-/mob/living/advanced/proc/change_hair_style(var/new_style)
+/mob/living/advanced/proc/change_hair_style(var/new_style, var/update = TRUE)
 	var/obj/item/organ/hair/H = labeled_organs[BODY_HAIR_HEAD]
 	if(H)
 		H.hair_style = new_style
-		H.update_icon()
+		if(update) H.update_icon()
 
-	update_icon()
+	if(update) update_icon()
 
 /mob/living/advanced/proc/update_gender(var/new_gender)
 	remove_all_organs()

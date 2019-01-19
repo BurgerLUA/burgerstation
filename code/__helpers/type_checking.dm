@@ -51,3 +51,6 @@ proc/is_bullet_gun(var/atom/A)
 
 proc/is_movable(var/atom/A)
 	return istype(A,/atom/movable/)
+
+proc/is_organ(var/atom/A)
+	return istype(A,/obj/item/organ)

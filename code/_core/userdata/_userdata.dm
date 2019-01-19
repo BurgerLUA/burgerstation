@@ -36,8 +36,17 @@
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
 		var/o_type = loaded_data["organs"][id]["type"]
-		var/o_color = loaded_data["organs"][id]["color"]
-		var/obj/item/organ/O = A.add_organ(o_type,o_color)
+
+		var/o_color = "#ffffff"
+		var/o_color_skin = "#ffffff"
+
+		if(loaded_data["organs"][id]["color"])
+			o_color = loaded_data["organs"][id]["color"]
+
+		if(loaded_data["organs"][id]["color_skin"])
+			o_color_skin = loaded_data["organs"][id]["color_skin"]
+
+		var/obj/item/organ/O = A.add_organ(o_type,o_color_skin,o_color)
 		//hair_style
 		if(is_hair(O))
 			var/obj/item/organ/hair/H = O
@@ -293,6 +302,11 @@
 	returning_list["type"] = I.type
 	if(I.color && lowertext(I.color) != "#ffffff")
 		returning_list["color"] = I.color
+
+	if(is_organ(I))
+		var/obj/item/organ/O = I
+		if(O.color_skin && lowertext(O.color_skin) != "#ffffff")
+			returning_list["color_skin"] = O.color_skin
 
 	if(is_bullet(I))
 		var/obj/item/bullet/B = I

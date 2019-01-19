@@ -11,11 +11,15 @@
 
 	damage_type = /damagetype/unarmed/feet/
 
+	attach_flag = BODY_LEG_RIGHT
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT
 	desc = "An organ."
 	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
 
 	inventories = list(/obj/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
@@ -37,8 +41,12 @@
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 
+	attach_flag = BODY_LEG_LEFT
+
 	inventories = list(/obj/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
+
+
 
 
 //Reptile Advanced
@@ -56,5 +64,33 @@
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 
+	attach_flag = BODY_LEG_LEFT
+
 	inventories = list(/obj/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
+
+//Reptile Advanced
+/obj/item/organ/foot/diona
+	name = "right diona foot"
+	break_threshold = 25
+	health_max = 35
+	icon = 'icons/mob/living/advanced/species/diona.dmi'
+
+	inventories = list(/obj/inventory/organs/right_foot)
+	damage_type = /damagetype/unarmed/feet/
+
+	enable_color = TRUE
+	enable_glow = TRUE
+
+/obj/item/organ/foot/diona/left
+	name = "left diona foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/inventory/organs/left_foot)
+	damage_type = /damagetype/unarmed/feet/left
+
+	enable_color = TRUE
+	enable_glow = TRUE

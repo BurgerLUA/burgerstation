@@ -1,12 +1,12 @@
-/mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_update = TRUE)
+/mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_update = TRUE,var/do_delete = FALSE)
 	if(length(O.inventories))
 		for(var/obj/inventory/I in O.inventories)
 			I.remove_all_objects()
 			I.update_owner()
 
 	organs -= O
-	O = null
-	del(O)
+	if(do_delete)
+		del(O)
 	if(do_update)
 		update_organs()
 		update_icon()
@@ -14,7 +14,7 @@
 
 /mob/living/advanced/proc/remove_all_organs()
 	for(var/obj/item/organ/O in organs)
-		remove_organ(O,FALSE)
+		remove_organ(O,FALSE,TRUE)
 	update_organs()
 	update_icon()
 
@@ -34,15 +34,24 @@
 		for(var/key in mob_species.spawning_organs_male)
 			add_organ(mob_species.spawning_organs_male[key])
 
-/mob/living/advanced/proc/add_organ(var/obj/item/organ/O,var/organ_color)
+/mob/living/advanced/proc/add_organ(var/obj/item/organ/O,var/color_skin,var/item_color)
 	O = new O
 	O.loc = src
-	if(organ_color)
-		O.color = organ_color
+
+	if(labeled_organs[O.attach_flag])
+		var/obj/item/organ/A = labeled_organs[O.attach_flag]
+		O.attach_to(A)
+
+	if(color_skin)
+		O.color_skin = color_skin
+		src << color_skin
+
+	if(item_color)
+		O.color = item_color
+
 	organs += O
 	if(O.id)
 		labeled_organs[O.id] = O
-
 	O.update_owner(src)
 
 	return O

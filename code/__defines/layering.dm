@@ -1,16 +1,18 @@
 #define LAYER_FLOOR 1
-#define LAYER_WALL 2
-#define LAYER_OBJ 3
-#define LAYER_MOB 4
-#define LAYER_MOB_DAMAGE 5
-#define LAYER_MOB_CLOTHING 6
-#define LAYER_MOB_HELD 7
-#define LAYER_PROJECTILE 8
-#define LAYER_EFFECT 9
-#define LAYER_LIGHTING 10
-#define LAYER_AREA 11
-#define LAYER_HUD 12
-#define LAYER_HUD_ITEMS 13
+#define LAYER_FLOOR_DECAL 2
+#define LAYER_WALL 3
+#define LAYER_OBJ 4
+#define LAYER_MOB 5
+#define LAYER_MOB_DAMAGE 6
+#define LAYER_MOB_CLOTHING 7
+#define LAYER_MOB_HELD 8
+#define LAYER_PROJECTILE 9
+#define LAYER_EFFECT 10
+#define LAYER_GHOST 11
+#define LAYER_LIGHTING 12
+#define LAYER_AREA 13
+#define LAYER_HUD 14
+#define LAYER_HUD_ITEMS 15
 
 
 /*WIP
