@@ -16,6 +16,13 @@
 
 	//appearance_flags = LONG_GLIDE | KEEP_TOGETHER | RESET_COLOR
 
+	var/attach_type //The organ type that it wishes to attach to.
+	var/obj/item/organ/attached_organ //The organ that it is attached to.
+	var/list/obj/item/organ/attached_organs //The organs that are attached to it.
+
+
+	var/attach_method = 0 //0 Means it's attached to it. 1 means inside it. TODO: Flags.
+
 /obj/item/organ/update_icon()
 	. = ..()
 
