@@ -26,11 +26,14 @@
 
 	return ..()
 
-
 /mob/living/proc/is_sideways()
 	return status > 0
 
 /mob/living/proc/death()
+
+	if(status & FLAG_STATUS_DEAD)
+		return
+
 	if(client)
 		client.make_ghost(get_turf(src))
 	status |= FLAG_STATUS_DEAD
@@ -59,21 +62,22 @@
 		status |= FLAG_STATUS_STUN
 		animate(src,transform = turn(matrix().Translate(10,0), 90), time = 1)
 
+		if(left_hand)
+			left_hand.drop_held_objects(src.loc)
+
+		if(right_hand)
+			right_hand.drop_held_objects(src.loc)
 
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
 	stun_time = max(0,stun_time - 1)
 
+	if(move_delay <= 0)
+		stamina_current = min(stamina_current + stamina_regeneration,stamina_max)
+		mana_current = min(mana_current + mana_regeneration,mana_max)
+
 	return TRUE
-
-/mob/living/get_movement_delay()
-	. = ..()
-
-	if(status & FLAG_STATUS_STUN)
-		. *= 4
-
-	return .
 
 /mob/living/proc/add_stun(var/value,var/max_value = 40)
 

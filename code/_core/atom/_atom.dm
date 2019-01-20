@@ -1,5 +1,18 @@
 /atom/
-	var/health_max = 100
+
+
+	var/health_max = 0
+	var/health_current = 0
+	var/health_regeneration = 0
+
+	var/stamina_max = 0
+	var/stamina_current = 0
+	var/stamina_regeneration = 0
+
+	var/mana_max = 0
+	var/mana_current = 0
+	var/mana_regeneration = 0
+
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
 	var/id
 
@@ -20,7 +33,7 @@
 
 	density = FALSE
 
-	var/health_current = 0
+
 
 
 

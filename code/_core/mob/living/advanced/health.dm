@@ -16,6 +16,11 @@
 		client.screen -= H
 	update_health_elements()
 
+
+/mob/living/proc/restore_health_elements()
+	for(var/k in health_elements)
+		var/health/H = health_elements[k]
+
 /mob/living/proc/update_health_elements()
 	if(client)
 		client.known_health_elements = health_elements

@@ -11,6 +11,12 @@
 		'sounds/effects/impacts/punchmiss.ogg'
 	)
 
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = 1,
+		SKILL_MELEE = 0,
+		SKILL_RANGED = 0
+	)
+
 /damagetype/unarmed/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(!is_living(attacker))
 		return attack_delay
@@ -32,14 +38,14 @@
 
 
 	base_attack_damage = list(
-		BRUTE = 1,
+		BRUTE = 0,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
+		ATTRIBUTE_STRENGTH = CLASS_D,
 		ATTRIBUTE_AGILITY = CLASS_D,
 		ATTRIBUTE_INTELLIGENCE = CLASS_F
 	)
@@ -51,7 +57,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_C,
+		SKILL_UNARMED = CLASS_D,
 		SKILL_MELEE = CLASS_F,
 		SKILL_RANGED = CLASS_F
 	)

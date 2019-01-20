@@ -72,13 +72,27 @@ var/global/list/all_mobs = list()
 
 	. = ..()
 
-	if(movement_flags & MOVEMENT_WALKING)
+	if(can_walk())
 		. *= 2
+		on_walk()
 
-	if(movement_flags & MOVEMENT_RUNNING)
+	else if(can_sprint())
 		. *= 0.5
+		on_sprint()
 
 	return .
+
+/mob/proc/can_sprint()
+	return movement_flags & MOVEMENT_RUNNING
+
+/mob/proc/on_sprint()
+	return TRUE
+
+/mob/proc/can_walk()
+	return movement_flags & MOVEMENT_WALKING
+
+/mob/proc/on_walk()
+	return TRUE
 
 /mob/living/do_step(var/turf/new_loc, var/movement_override = 0)
 
@@ -94,7 +108,13 @@ var/global/list/all_mobs = list()
 
 /mob/living/get_movement_delay()
 	. = ..()
-	return max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
+
+	if(status & FLAG_STATUS_STUN)
+		. *= 4
+
+	. = max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
+
+	return .
 
 /mob/living/get_attack_delay(var/atom/victim,var/params)
 	return 1 + max(0,attack_delay * (attack_delay * get_attribute_power(ATTRIBUTE_DEXTERITY,1,100) * 0.5))

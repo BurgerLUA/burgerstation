@@ -42,3 +42,9 @@
 		SKILL_MELEE = BRUTE,
 		SKILL_RANGED = BRUTE
 	)
+
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = 0,
+		SKILL_MELEE = 1,
+		SKILL_RANGED = 0
+	)

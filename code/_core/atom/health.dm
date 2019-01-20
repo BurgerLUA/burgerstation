@@ -57,16 +57,26 @@
 mob/living/advanced/update_health(var/damage_dealt)
 
 	health_max = 100 + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
+	health_regeneration = get_attribute_power(ATTRIBUTE_VITALITY,0,100)*0.125
+
+	stamina_max = 100 + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
+	stamina_regeneration = 0.2 + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*4
+
+	mana_max = 100 + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*400
+	mana_regeneration = 0.1 + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*2
+
 	health_current = 0
 
 	var/damage_current = 0
 	for(var/obj/item/organ/O in organs)
 		damage_current += O.get_total_loss()
+		stamina_max += O.stamina_max
+		mana_max += O.mana_max
 
 	health_current = health_max - damage_current
 
 	update_icon()
 	update_health_elemement_icons()
 
-	if(health_current <= 0 && !(status & FLAG_STATUS_DEAD))
+	if(health_current <= 0)
 		death()

@@ -37,8 +37,8 @@
 	id = SKILL_ATHLETICS
 	desc = "Your skill in walking, running, jumping, climbing, and swimming. Affects your movement speed when performing these actions."
 	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
-	experience_power = 1.7
-	experience_multiplier = 2
+	experience_power = 1.5
+	experience_multiplier = 5
 	//Each tile traveled = 1xp
 
 /experience/skill/instinct //ENDURANCE

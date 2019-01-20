@@ -27,6 +27,7 @@ var/global/list/all_clients = list()
 	//lazy_eye = 5
 
 /client/New()
+
 	if(!button_tracker)
 		button_tracker = new(src)
 
@@ -38,21 +39,6 @@ var/global/list/all_clients = list()
 	known_inventory = list()
 	known_buttons = list()
 
-	/*
-	if(ckey == "burgerbb")
-		src.mob = new /mob/living/advanced/reptile(pick(spawnpoints))
-		src.mob.ckey = ckey
-		src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
-		src.mob.Initialize()
-	else
-		src.mob = new /mob/living/advanced/human(pick(spawnpoints))
-		src.mob.ckey = ckey
-		src.mob.name = "Urist Mc[capitalize(lowertext(ckey))]"
-		src.mob.Initialize()
-	*/
-
-	make_ghost(pick(observer_spawnpoints))
-
 	var/turf/T = get_turf(src.mob)
 	if(T)
 		T.on_enter(src.mob)
@@ -61,6 +47,8 @@ var/global/list/all_clients = list()
 		userdata = new(src)
 
 	update_zoom(0)
+
+	make_ghost(pick(observer_spawnpoints))
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE

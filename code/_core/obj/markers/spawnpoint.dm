@@ -52,7 +52,7 @@ var/global/list/mob_spawnpoints = list()
 /obj/marker/spawnpoint/mob/hostile_human
 	name = "hostile new player spawnpoint"
 
-	type_to_spawn = /mob/living/advanced/human/npc
+	type_to_spawn = /mob/living/advanced/human/npc/greytide
 
 
 /obj/marker/spawnpoint/mob/tutorial_cultist

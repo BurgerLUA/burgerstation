@@ -2,7 +2,7 @@ client/script = {"
 <style>
 body {
 	font-family: Verdana, sans-serif;
-	font-size: 12px;
+	font-size: 8px;
 }
 span.warning{
 	color: red;

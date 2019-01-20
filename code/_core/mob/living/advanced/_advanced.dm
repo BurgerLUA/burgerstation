@@ -61,6 +61,11 @@
 		S.Initialize(S.level_to_xp(C.skills[S.id]))
 		skills[S.id] = S
 
+/mob/living/Login()
+	..()
+	add_species_buttons()
+	add_species_health_elements()
+
 /mob/living/advanced/Initialize()
 
 	if(!client || client.userdata.loaded_data["tutorial"])
@@ -71,8 +76,8 @@
 	else
 		client.userdata.apply_data_to_mob(src)
 
-	add_species_buttons()
-	add_species_health_elements()
+	//add_species_buttons()
+	//add_species_health_elements()
 	update_health()
 
 	. = ..()
@@ -265,10 +270,33 @@
 	add_species_organs()
 	add_species_colors()
 
+/mob/living/advanced/can_sprint()
+	if(stamina_current <= 5)
+		return FALSE
+
+	return ..()
+
 /mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
 	. = ..()
 	if(.)
 		add_skill_xp(SKILL_ATHLETICS,1)
+		stamina_current = max(0,stamina_current - 1)
 		return .
 	else
 		return FALSE
+
+/mob/living/advanced/proc/pickup(var/obj/item/I,var/left = 0)
+
+	if(left_hand && right_hand)
+		if(left)
+			return left_hand.add_held_object(I)
+		else
+			return right_hand.add_held_object(I)
+	else
+		if(left_hand)
+			return left_hand.add_held_object(I)
+		else if(right_hand)
+			return right_hand.add_held_object(I)
+
+	return FALSE
+

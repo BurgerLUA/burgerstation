@@ -18,6 +18,8 @@
 	var/attack_delay = SECONDS_TO_TICKS(1)
 	var/movement_delay = SECONDS_TO_TICKS(0.5)
 
+	var/list/target_distribution = list(16,16,16,8,8,32,32)
+
 /ai/New(var/mob/living/desired_owner)
 	owner = desired_owner
 
@@ -36,8 +38,8 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0
 		var/list/params = list(
-			"icon-x" = num2text(rand(0,32)),
-			"icon-y" = num2text(rand(0,32)),
+			"icon-x" = num2text(16),
+			"icon-y" = num2text(pick(target_distribution)),
 			"left" = 0,
 			"right" = 0,
 			"middle" = 0,
@@ -99,6 +101,10 @@
 	return -get_dist(L.loc,owner.loc)
 
 /ai/proc/should_attack_mob(var/mob/living/L)
+
+	if(L.status & FLAG_STATUS_DEAD)
+		return FALSE
+
 	for(var/id in owner.factions)
 		var/faction/F = owner.factions[id]
 		if(F.is_hostile_to_mob(L))

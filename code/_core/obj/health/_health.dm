@@ -50,8 +50,8 @@
 
 /obj/health/hp/update_stats(var/mob/living/M)
 	min = 0
-	max = M.health_max
-	current = M.health_current
+	max = floor(M.health_max)
+	current = floor(M.health_current)
 	name = "Health Bar ([current]/[max])"
 
 /obj/health/sp
@@ -63,6 +63,12 @@
 
 	screen_loc = "RIGHT,BOTTOM"
 
+/obj/health/sp/update_stats(var/mob/living/M)
+	min = 0
+	max = floor(M.stamina_max)
+	current = floor(M.stamina_current)
+	name = "Stamina Bar ([current]/[max])"
+
 /obj/health/mp
 	name = "mana"
 	id = "mana"
@@ -71,3 +77,9 @@
 	bar_color = "#0000ff"
 
 	screen_loc = "RIGHT+0.25,BOTTOM"
+
+/obj/health/mp/update_stats(var/mob/living/M)
+	min = 0
+	max = floor(M.mana_max)
+	current = floor(M.mana_current)
+	name = "Mana Bar ([current]/[max])"
