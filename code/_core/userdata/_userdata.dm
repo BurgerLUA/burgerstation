@@ -7,8 +7,8 @@
 		"name" = "Urist McRobust",
 		"tutorial" = 1,
 		"id" = "none",
-		"hair_style" = "bald",
-		"last_saved" = 0,
+		"last_saved_date" = 0,
+		"last_saved_time" = 0,
 		"organs" = list(),
 		"worn" = list(),
 		"held" = list(),
@@ -37,8 +37,9 @@
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
 		var/o_type = loaded_data["organs"][id]["type"]
 
-		var/o_color = "#ffffff"
-		var/o_color_skin = "#ffffff"
+		var/o_color
+		var/o_color_skin
+		var/o_style
 
 		if(loaded_data["organs"][id]["color"])
 			o_color = loaded_data["organs"][id]["color"]
@@ -46,30 +47,12 @@
 		if(loaded_data["organs"][id]["color_skin"])
 			o_color_skin = loaded_data["organs"][id]["color_skin"]
 
-		var/obj/item/organ/O = A.add_organ(o_type,o_color_skin,o_color)
-		//hair_style
-		if(is_hair(O))
-			var/obj/item/organ/hair/H = O
-			H.hair_style = loaded_data["hair_style"]
+		if(loaded_data["organs"][id]["style"])
+			o_style = loaded_data["organs"][id]["style"]
+
+		var/obj/item/organ/O = A.add_organ(o_type,o_color_skin,o_color,o_style)
+
 		O.update_icon()
-
-	//Inventory - Worn
-	for(var/id in loaded_data["worn"])
-		//var/o_type = loaded_data["worn"][id]["type"]
-		var/obj/O = load_and_create_object(loaded_data["worn"][id])
-		for(var/obj/inventory/I in A.inventory)
-			if(I.id != id)
-				continue
-			I.add_worn_object(O)
-
-	//Inventory - Held
-	for(var/id in loaded_data["held"])
-		//var/o_type = loaded_data["held"][id]["type"]
-		var/obj/O = load_and_create_object(loaded_data["held"][id])
-		for(var/obj/inventory/I in A.inventory)
-			if(I.id != id)
-				continue
-			I.add_held_object(O)
 
 	//Skills
 	for(var/id in loaded_data["skills"])
@@ -82,6 +65,24 @@
 		var/xp = loaded_data["attributes"][id]
 		var/experience/attribute/S = A.get_attribute(id)
 		S.Initialize(xp)
+
+	//Inventory - Worn
+	for(var/id in loaded_data["worn"])
+		for(var/list_data in loaded_data["worn"][id])
+			var/obj/O = load_and_create_object(list_data)
+			for(var/obj/inventory/I in A.inventory)
+				if(I.id != id)
+					continue
+				I.add_worn_object(O)
+
+	//Inventory - Held
+	for(var/id in loaded_data["held"])
+		for(var/list_data in loaded_data["held"][id])
+			var/obj/O = load_and_create_object(list_data)
+			for(var/obj/inventory/I in A.inventory)
+				if(I.id != id)
+					continue
+				I.add_held_object(O)
 
 	A.update_icon()
 
@@ -150,10 +151,6 @@
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)
 		var/obj/item/organ/O = A.labeled_organs[id]
-
-		if(id == BODY_HAIR_HEAD)
-			var/obj/item/organ/hair/H = O
-			loaded_data["hair_style"] = H.hair_style
 		final_organ_list[id] = get_item_data(O)
 	loaded_data["organs"] = final_organ_list
 
@@ -165,12 +162,12 @@
 		if(length(I.held_objects))
 			final_held_list[I.id] = list()
 			for(var/obj/item/H in I.held_objects)
-				final_held_list[I.id] += get_item_data(H)
+				final_held_list[I.id] += list((get_item_data(H)))
 		//Worn Objects
 		if(length(I.worn_objects))
 			final_worn_list[I.id] = list()
 			for(var/obj/item/W in I.worn_objects)
-				final_worn_list[I.id] += get_item_data(W)
+				final_worn_list[I.id] += list((get_item_data(W)))
 
 	loaded_data["worn"] = final_worn_list
 	loaded_data["held"] = final_held_list
@@ -211,7 +208,8 @@
 
 /userdata/proc/write_json_data_to_id(var/character_id)
 	loaded_data["id"] = character_id
-	loaded_data["last_saved"] = world.realtime
+	loaded_data["last_saved_date"] = get_date()
+	loaded_data["last_saved_time"] = get_time()
 	fdel(get_character_path(character_id))
 	var/data = json_encode(loaded_data)
 	return text2file(data,get_character_path(character_id))
@@ -275,14 +273,16 @@
 /userdata/proc/load_most_recent_character()
 	var/list/file_paths = get_character_files()
 
+	var/best_date = 0
 	var/best_time = 0
 	var/list/best_data
 
 	for(var/v in file_paths)
 		v = get_proper_id_from_filename(v)
 		var/list/loaded_data = load_json_data_from_id(v)
-		if(!best_time || loaded_data["last_saved"] >= best_time)
-			best_time = loaded_data["last_saved"]
+		if(!best_time || time_x_newer_than_y(loaded_data["last_saved_date"],loaded_data["last_saved_time"],best_date,best_time))
+			best_time = loaded_data["last_saved_time"]
+			best_date = loaded_data["last_saved_date"]
 			best_data = loaded_data
 
 	return best_data
@@ -307,6 +307,8 @@
 		var/obj/item/organ/O = I
 		if(O.color_skin && lowertext(O.color_skin) != "#ffffff")
 			returning_list["color_skin"] = O.color_skin
+		if(O.style)
+			returning_list["style"] = O.style
 
 	if(is_bullet(I))
 		var/obj/item/bullet/B = I

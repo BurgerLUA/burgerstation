@@ -30,16 +30,6 @@
 
 	. = ..()
 
-/obj/item/radio
-	name = "radio"
-	icon = 'icons/obj/items/radio.dmi'
-	icon_state = "radio"
-
-	var/sound_to_play = 'sounds/music/clown.ogg'
-
-/obj/item/radio/click_self(var/atom/caller)
-	//play_sound(sound_to_play,all_mobs,vector(caller.x,caller.y,caller.z))
-
 obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)
 		var/obj/inventory/I = v

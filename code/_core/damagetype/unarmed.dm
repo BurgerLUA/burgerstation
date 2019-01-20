@@ -16,7 +16,7 @@
 		return attack_delay
 
 	var/mob/living/L = attacker
-	return max(1,attack_delay - (attack_delay * L.get_attribute_power(ATTRIBUTE_AGILITY,0,100) * 0.5) - (attack_delay * L.get_skill_power(SKILL_UNARMED,0,100) * 0.5))
+	return max(1,attack_delay - (attack_delay * L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,100) * 0.5) - (attack_delay * L.get_skill_power(SKILL_UNARMED,0,100) * 0.5))
 
 /damagetype/unarmed/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("warning","You hear bone hitting flesh.")
@@ -104,6 +104,13 @@
 	)
 
 	attack_delay = 20
+
+/damagetype/unarmed/feet/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	if(!is_living(attacker))
+		return attack_delay
+
+	var/mob/living/L = attacker
+	return max(1,attack_delay - (attack_delay * L.get_attribute_power(ATTRIBUTE_AGILITY,0,100) * 0.5) - (attack_delay * L.get_skill_power(SKILL_UNARMED,0,100) * 0.5))
 
 /damagetype/unarmed/feet/left
 	weapon_name = "left foot"

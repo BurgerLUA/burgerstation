@@ -43,6 +43,12 @@
 		SKILL_RANGED = BRUTE
 	)
 
+	var/list/skill_xp_per_damage = list(
+		SKILL_UNARMED = 0,
+		SKILL_MELEE = 0,
+		SKILL_RANGED = 0
+	)
+
 	var/allow_parry = TRUE
 	var/allow_parry_counter = TRUE
 	var/allow_miss = TRUE
@@ -103,13 +109,16 @@
 
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
 	attacker.visible_message(\
 		get_attack_message_3rd(attacker,victim,weapon,hit_object),\
 		get_attack_message_1st(attacker,victim,weapon,hit_object),\
 		get_attack_message_sound(attacker,victim,weapon,hit_object)\
 	)
 
+
 /damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+
 	attacker.visible_message(\
 		replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text),\
 		replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text),\
@@ -128,6 +137,14 @@
 		victim.update_health(damage_dealt)
 
 	hit_object.update_health(damage_dealt)
+
+	if(is_living(attacker))
+		var/mob/living/A = attacker
+		for(var/skill in skill_xp_per_damage)
+			var/xp_to_give = floor(skill_xp_per_damage[skill] * damage_dealt * victim.get_xp_multiplier())
+			if(xp_to_give > 0)
+				A.add_skill_xp(skill,xp_to_give)
+
 
 	return damage_dealt
 

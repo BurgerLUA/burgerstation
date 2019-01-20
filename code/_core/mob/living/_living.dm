@@ -16,6 +16,17 @@
 	var/sleep_time = 0 //Decieconds of sleep
 	var/paralyze_time = 0 //Decieconds of paralyze
 
+/mob/living/get_xp_multiplier()
+	return 1
+
+/mob/living/can_move(var/turf/new_loc,var/movement_override = 0)
+
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
+
+	return ..()
+
+
 /mob/living/proc/is_sideways()
 	return status > 0
 
@@ -23,7 +34,17 @@
 	if(client)
 		client.make_ghost(get_turf(src))
 	status |= FLAG_STATUS_DEAD
+	if(ai)
+		ai = null
+	movement_flags = 0
+	attack_flags = 0
 	add_stun(10)
+
+/mob/living/on_life_AI()
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
+
+	return ..()
 
 /mob/living/on_life()
 

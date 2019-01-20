@@ -1,8 +1,12 @@
+/experience/attribute/
+	experience_power = 1
+	experience_multiplier = 1
+
 //Warrior
 /experience/attribute/strength/
 	name = "Strength"
 	id = ATTRIBUTE_STRENGTH
-	desc = "A measure of how strong you are in this world. Affects damage with some weapons."
+	desc = "A measure of how strong you are in this world. Affects damage with some weapons as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
 
 /experience/attribute/vitality/
@@ -21,7 +25,7 @@
 /experience/attribute/intelligence/
 	name = "Intelligence"
 	id = ATTRIBUTE_INTELLIGENCE
-	desc = "A measure of how effective you are at using FACTS and LOGIC to destroy LIBERALS. Affects damage with some weapons and magic."
+	desc = "A measure of how effective you are at using magic. Affects damage with some weapons and magic as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
 
 /experience/attribute/willpower/
@@ -40,7 +44,7 @@
 /experience/attribute/dexterity/
 	name = "Dexterity"
 	id = ATTRIBUTE_DEXTERITY
-	desc = "A measure of how well you can control your body. Affects the speed of performing actions and damage with some weapons."
+	desc = "A measure of how well you can control your body. Affects damage with some weapons as well as the speed of performing actions."
 	flags = ATTRIBUTE_DAMAGE
 
 /experience/attribute/agility/
@@ -54,8 +58,6 @@
 	id = ATTRIBUTE_ENDURANCE
 	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, and stamina damage."
 	flags = ATTRIBUTE_RESISTANCE
-
-
 
 
 //None. Everyone starts with 50.

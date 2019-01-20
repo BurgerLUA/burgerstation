@@ -7,6 +7,9 @@
 	ai = /ai/
 	mob_outfit = /datum/outfit/assistant
 
+/mob/living/get_xp_multiplier()
+	return 1
+
 /mob/living/advanced/human/npc/on_life_AI()
 
 	if(!initialized)

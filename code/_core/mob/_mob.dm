@@ -64,11 +64,10 @@ var/global/list/all_mobs = list()
 
 /mob/living/get_movement_delay()
 	. = ..()
-	return max(1, . * (1 - get_attribute_power(ATTRIBUTE_AGILITY,1,100)))
-
+	return max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
 
 /mob/living/get_attack_delay(var/atom/victim,var/params)
-	return 1 + max(0,attack_delay * (1 - get_attribute_power(ATTRIBUTE_AGILITY,1,100)))
+	return 1 + max(0,attack_delay * (attack_delay * get_attribute_power(ATTRIBUTE_DEXTERITY,1,100) * 0.5))
 
 /mob/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
 	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size

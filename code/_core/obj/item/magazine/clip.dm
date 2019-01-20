@@ -18,8 +18,7 @@
 	var/insert_count = 0
 
 	for(var/obj/item/bullet/B in stored_bullets)
-		if(!B.transfer_src_to_gun(caller,G,location,control,params,TRUE))
-			caller << "BREAKING"
+		if(!B.transfer_src_to_gun(caller,G,location,control,params,FALSE))
 			break
 		insert_count += 1
 		stored_bullets -= B

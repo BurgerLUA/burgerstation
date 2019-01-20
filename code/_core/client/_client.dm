@@ -96,6 +96,10 @@ var/global/list/all_clients = list()
 
 	var/list/aug = params2list(params)
 
+	if(mob.movement_flags & MOVEMENT_WALKING)
+		object.examine(mob)
+		return
+
 	if("left" in aug)
 		mob.attack_flags |= ATTACK_HELD_LEFT
 		mob.on_left_down(object,location,control,aug)
@@ -113,10 +117,6 @@ var/global/list/all_clients = list()
 /client/Click(var/atom/object,location,control,params)
 
 	var/list/aug = params2list(params)
-
-	if(mob.movement_flags & MOVEMENT_WALKING)
-		object.examine(mob)
-		return
 
 	if("left" in aug)
 		mob.on_left_click(object,location,control,aug)

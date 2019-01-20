@@ -64,3 +64,6 @@
 
 /obj/structure/interactive/localmachine/item/ammo/shotgun
 	stored_item = /obj/item/bullet/shotgun/buckshot
+
+/obj/structure/interactive/localmachine/item/weapon/sword
+	stored_item = /obj/item/weapon/melee/sword

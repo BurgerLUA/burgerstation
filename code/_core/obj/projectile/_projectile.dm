@@ -28,6 +28,8 @@
 
 	plane = 4
 
+	var/lifetime = 12
+
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0)
 
 	owner = desired_owner
@@ -56,6 +58,8 @@
 
 	update_icon()
 
+	animate(src, pixel_x = pixel_x + vel_x*lifetime, pixel_y = pixel_y + vel_y*lifetime, time = lifetime)
+
 /obj/projectile/update_icon()
 	var/icon/I = icon(icon,icon_state = icon_state)
 	var/new_angle = arctan(vel_x,vel_y) - 90
@@ -66,8 +70,6 @@
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
-
-	animate(src, pixel_x = pixel_x + vel_x, pixel_y = pixel_y + vel_y, time = 1/2)
 
 	var/current_loc_x = x + floor(pixel_x_float / TILE_SIZE)
 	var/current_loc_y = y + floor(pixel_y_float / TILE_SIZE)

@@ -51,3 +51,6 @@
 
 /atom/proc/defer_click_on_object()
 	return src
+
+/atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.
+	return 0

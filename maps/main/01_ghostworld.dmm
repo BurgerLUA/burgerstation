@@ -81,7 +81,7 @@
 "bC" = (/obj/structure/interactive/localmachine/item/ammo/revolver,/turf/simulated/floor/wood,/area/special/character_creation)
 "bD" = (/obj/item/weapon/melee/sword,/turf/simulated/floor/tile/grey,/area/debug/interior)
 "bE" = (/obj/item/weapon/melee/rock,/turf/simulated/floor/tile/grey,/area/debug/interior)
-"bF" = (/obj/structure/interactive/chargen_mirror{pixel_y = 32},/turf/simulated/floor/wood,/area/special/character_creation)
+"bF" = (/obj/structure/interactive/chargen_mirror{pixel_y = 32},/obj/structure/interactive/localmachine/item/weapon/sword,/turf/simulated/floor/wood,/area/special/character_creation)
 "bG" = (/obj/marker/spawnpoint/mob/hostile_human,/turf/simulated/floor/tile/grey,/area/debug/interior)
 "bH" = (/turf/simulated/wall/metal2/wall{icon_state = "wall"; dir = 8},/area/special/character_creation)
 "bI" = (/turf/simulated/wall/metal2/wall,/area/special/character_creation)

@@ -18,6 +18,7 @@
 	glide_size = round(step_size / max(get_movement_delay(),TICK_LAG) * TICK_LAG)
 
 /atom/movable/proc/handle_movement(var/adjust_delay = FALSE)
+
 	if(move_dir && move_delay <= 0)
 		update_glide()
 		var/final_movement_delay = get_movement_delay()
@@ -30,6 +31,10 @@
 		return FALSE
 
 /atom/movable/proc/can_move(var/turf/new_loc,var/movement_override = 0)
+
+	if(loc == new_loc) //Don't bother moving.
+		return FALSE
+
 	if(!new_loc)
 		return FALSE
 

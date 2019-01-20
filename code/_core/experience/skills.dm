@@ -1,5 +1,5 @@
 //Rogue 5
-/experience/skill/ranged/ //Agility
+/experience/skill/ranged/ //AGILITY
 	name = "Ranged Weapons"
 	id = SKILL_RANGED
 	desc = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
@@ -7,7 +7,7 @@
 	experience_multiplier = 2.5
 	//Each point of damage dealt = 1xp
 
-/experience/skill/dodge/ //Agility
+/experience/skill/dodge/ //AGILITY
 	name = "Dodge"
 	id = SKILL_DODGE
 	desc = "Your skill in dodging incoming attacks. Affects the chance of a successful dodge from melee weapons, ranged weapons, and magic."
@@ -15,26 +15,24 @@
 	experience_power = 1.5
 	experience_multiplier = 3.1
 
-/experience/skill/stealth/ //Dexterity
+/experience/skill/stealth/ //DEXTERITY
 	name = "Stealth"
 	id = SKILL_STEALTH
-	desc = "Your skill in blending in with your surroundings. Affects how well you're conceled in your enviroment when sneaking."
+	desc = "Your skill in blending in with your surroundings. Affects how well you're conceled in your enviroment when sneaking as well as the chance to take items undetected."
 	//Each successful tile stepped unnoticed with others around = 1xp
 	//Each successful sneak attack = 10xp
 	experience_power = 1.7
 	experience_multiplier = 0.7
 
-/experience/skill/theft/ //Dexterity
-	name = "Theft"
-	id = SKILL_THEFT
-	desc = "Your skill in taking items undetected. Affects how well you can secretly take items, steal take items off of people, or break into locks"
-	//Each time stolen in the open = 2xp
-	//Each item pickpocked = 10xp
-	//Each lock picked = 1xp
-	experience_power = 2.2
-	experience_multiplier = 0.2
+/experience/skill/parry/ //DEXTERITY
+	name = "Parrying"
+	id = SKILL_PARRY
+	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
+	//Each point of damage parried = 1xp, rounded up.
+	experience_power = 1.5
+	experience_multiplier = 3.1
 
-/experience/skill/athletics //Endurance
+/experience/skill/athletics //ENDURANCE
 	name = "Athletics"
 	id = SKILL_ATHLETICS
 	desc = "Your skill in walking, running, jumping, climbing, and swimming. Affects your movement speed when performing these actions."
@@ -43,9 +41,9 @@
 	experience_multiplier = 2
 	//Each tile traveled = 1xp
 
-/experience/skill/instinct //Endurance
+/experience/skill/instinct //ENDURANCE
 	name = "Instincts"
-	id = SKILL_INSTINCT
+	id = SKILL_INSTINCTS
 	desc = "Your skill in using your survival instincts. Affects your ability to identify threats such as traps, ambushes, player karma levels, and investigative skills."
 	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
 	experience_power = 1.7
@@ -148,13 +146,14 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 
-/experience/skill/parry/ //WILLPOWER
-	name = "Parrying"
-	id = SKILL_PARRY
-	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
-	//Each point of damage parried = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
+/experience/skill/reality_magic/ //WILLPOWER
+	name = "Chaos Magic"
+	id = SKILL_MAGIC_CHAOS
+	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
+	//Each successful spell = 1xp
+	//Each point of power in a spell successfully casted = 1xp
+	experience_power = 1.8
+	experience_multiplier = 4.1
 
 
 

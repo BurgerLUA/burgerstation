@@ -7,14 +7,21 @@
 	health_max = 10 //Yes, hair has health.
 	icon = 'icons/mob/living/advanced/hair/hair.dmi'
 	icon_state = "bald"
-	var/hair_style = "bald"
+	style = "bald"
 
 	attach_flag = BODY_HEAD
 
 /obj/item/organ/hair/update_icon()
-	var/hair/H = hair_types[hair_style]
+	var/hair/H = hair_types[style]
 	if(H)
 		icon_state = H.icon_state
+
+	icon = initial(icon)
+	var/icon/base_icon = new /icon(icon,icon_state)
+	base_icon.Blend(color_skin,ICON_MULTIPLY)
+
+
+	icon = base_icon
 
 /obj/item/organ/hair/unattach_from_parent()
 	del(src)

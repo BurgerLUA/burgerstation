@@ -243,6 +243,8 @@
 
 /mob/living/advanced/proc/change_color_hair(var/new_color, var/update = TRUE)
 
+	src << new_color
+
 	for(var/obj/item/organ/O in organs)
 		if(is_hair(O))
 			O.color_skin = new_color
@@ -253,7 +255,7 @@
 /mob/living/advanced/proc/change_hair_style(var/new_style, var/update = TRUE)
 	var/obj/item/organ/hair/H = labeled_organs[BODY_HAIR_HEAD]
 	if(H)
-		H.hair_style = new_style
+		H.style = new_style
 		if(update) H.update_icon()
 
 	if(update) update_icon()
@@ -266,7 +268,7 @@
 /mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
 	. = ..()
 	if(.)
-		add_attribute_xp(ATTRIBUTE_AGILITY,1)
-		return TRUE
+		add_skill_xp(SKILL_ATHLETICS,1)
+		return .
 	else
 		return FALSE

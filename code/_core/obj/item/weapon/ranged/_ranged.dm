@@ -14,11 +14,15 @@
 
 	var/next_shoot_time = 0
 
-	var/accuracy_loss = 0.1 //How much additional x/y noise to add per distance in pixels.
 
-	damage_type = null
+	damage_type = /damagetype/blunt/pistol
 	var/damagetype/ranged_damage_type //This is the damage type for a ranged attack
 
+/obj/item/weapon/ranged/proc/get_static_spread() //Base spread
+	return 0.1
+
+/obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))
 
 /obj/item/weapon/ranged/New()
 	if(ranged_damage_type)
@@ -40,14 +44,13 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(..())
-		return TRUE
-
 	if(!automatic)
-		return shoot(caller,object,location,params)
+		if(shoot(caller,object,location,params))
+			return TRUE
+		else
+			return ..()
 	else
 		return TRUE
-
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return TRUE
@@ -79,14 +82,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		return FALSE
 
-
 	handle_ammo(caller)
-
 	update_icon()
-
-
-
-
 
 
 	if(projectile)
@@ -103,6 +100,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 
 		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16
 		var/object_fake_y = object.y*TILE_SIZE + icon_pos_y - 16
+
+		var/accuracy_loss = get_static_spread()
+
+		if(is_living(caller))
+			var/mob/living/L = caller
+			accuracy_loss += get_skill_spread(L)
 
 		for(var/i=1,i<=bullet_count,i++)
 			var/diffx = object_fake_x - caller_fake_x

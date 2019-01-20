@@ -1,6 +1,4 @@
 /atom/proc/clicked_by_object(caller,object,location,control,params)
-	if(src == object)
-		return click_self(caller,location,control,params)
 	return FALSE
 
 /atom/proc/drop_on_object(caller,object)

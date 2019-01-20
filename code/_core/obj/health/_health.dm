@@ -23,6 +23,11 @@
 	var/start_x = 0
 	var/end_x = 32
 	var/start_y = 0
+
+	if(max == 0)
+		return
+
+
 	var/end_y = offset + (current/max)*(32-offset)
 
 	bar.Blend(bar_color,ICON_MULTIPLY)

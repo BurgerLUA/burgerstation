@@ -21,6 +21,8 @@
 	var/list/obj/item/organ/attached_organs //The organs that are attached to it.
 	var/attach_method = 0 //0 Means it's attached to it. 1 means inside it. TODO: Flags.
 
+	var/style
+
 	color = "#FFFFFF"
 	var/color_skin = "#FFFFFF"
 	var/color_secondary = "#FFFFFF"
@@ -141,7 +143,7 @@
 			flags_organ |= FLAG_ORGAN_BROKEN
 
 
-	if(health_max - brute_loss <= 0 && damage_dealt > health_max)
+	if(health_max - brute_loss <= 0)
 		gib()
 		return
 

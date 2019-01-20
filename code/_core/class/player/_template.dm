@@ -1,13 +1,15 @@
 /class/none
 	name = "The None"
-	desc = "This is a template"
-	id = "none"
+	desc = "This is a template. You shouldn't see this."
+	id = null
 
 	//Limits:
-	//3 ATTRIBUTE_STARTING_PRIMARY
-	//3 ATTRIBUTE_STARTING_SECONDARY
+	//1 ATTRIBUTE_STARTING_PRIMARY
+	//2 ATTRIBUTE_STARTING_SECONDARY
 	//3 ATTRIBUTE_STARTING_TERTIARY
+	//3 ATTRIBUTE_STARTING_NONE
 	//Luck untouched
+	//10 total attributes
 	attributes = list(
 		ATTRIBUTE_STRENGTH = 0,
 		ATTRIBUTE_VITALITY = 0,
@@ -23,17 +25,38 @@
 
 		ATTRIBUTE_LUCK = 50
 	)
+
+	attribute_descriptions = list(
+		ATTRIBUTE_STRENGTH 		= "None",
+		ATTRIBUTE_VITALITY 		= "None",
+		ATTRIBUTE_FORTITUDE 	= "None",
+
+		ATTRIBUTE_INTELLIGENCE 	= "None",
+		ATTRIBUTE_RESOLVE 		= "None",
+		ATTRIBUTE_WILLPOWER 	= "None",
+
+		ATTRIBUTE_DEXTERITY 	= "None",
+		ATTRIBUTE_AGILITY 		= "None",
+		ATTRIBUTE_ENDURANCE 	= "None",
+
+		ATTRIBUTE_LUCK 			= "None"
+
+	)
+
+
 	//Limits
 	//3 SKILL_STARTING_PRIMARY
-	//2 SKILL_STARTING_SECONDARY
-	//6 SKILL_STARTING_TERTIARY
+	//3 SKILL_STARTING_SECONDARY
+	//3 SKILL_STARTING_TERTIARY
+	//13 SKILL_STARTING_NONE
+	//22 total skills
 	skills = list(
 		SKILL_RANGED = 0,
 		SKILL_DODGE = 0,
 		SKILL_STEALTH = 0,
-		SKILL_THEFT = 0,
 		SKILL_ATHLETICS = 0,
 		SKILL_INSTINCT = 0,
+		SKILL_PARRY = 0,
 
 		SKILL_MELEE = 0,
 		SKILL_BLOCK = 0,
@@ -47,10 +70,42 @@
 		SKILL_MAGIC_SUPPORT = 0,
 		SKILL_MAGIC_DEFENSIVE = 0,
 		SKILL_MAGIC_REALITY = 0,
-		SKILL_PARRY = 0,
+		SKILL_MAGIC_CHAOS = 0,
 
 		SKILL_ALCHEMY = 0,
 		SKILL_COOKING = 0,
 		SKILL_CRAFTING = 0,
 		SKILL_ENCHANTING = 0
 	)
+
+	skill_descriptions = list(
+		SKILL_RANGED 			= "None",
+		SKILL_DODGE 			= "None",
+		SKILL_STEALTH 			= "None",
+		SKILL_ATHLETICS 		= "None",
+		SKILL_INSTINCT 			= "None",
+		SKILL_PARRY 			= "None",
+
+		SKILL_MELEE 			= "None",
+		SKILL_BLOCK 			= "None",
+		SKILL_UNARMED 			= "None",
+		SKILL_PRAYER 			= "None",
+		SKILL_ARMOR 			= "None",
+		SKILL_RECOVERY 			= "None",
+
+		SKILL_MEDICINE 			= "None",
+		SKILL_MAGIC_OFFENSIVE 	= "None",
+		SKILL_MAGIC_SUPPORT 	= "None",
+		SKILL_MAGIC_DEFENSIVE 	= "None",
+		SKILL_MAGIC_REALITY 	= "None",
+		SKILL_MAGIC_CHAOS 		= "None",
+
+		SKILL_ALCHEMY 			= "None",
+		SKILL_COOKING 			= "None",
+		SKILL_CRAFTING 			= "None",
+		SKILL_ENCHANTING 		= "None"
+	)
+
+
+
+

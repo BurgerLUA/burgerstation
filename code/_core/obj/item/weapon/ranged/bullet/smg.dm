@@ -9,7 +9,6 @@
 
 	bullet_speed = 31
 	shoot_delay = 1
-	accuracy_loss = 0.1
 
 	automatic = TRUE
 
@@ -47,3 +46,9 @@
 		icon_state = initial(icon_state)
 
 	..()
+
+/obj/item/weapon/ranged/bullet/magazine/smg/get_static_spread() //Base spread
+	return 0.05
+
+/obj/item/weapon/ranged/bullet/magazine/smg/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))

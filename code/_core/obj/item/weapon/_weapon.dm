@@ -42,6 +42,12 @@
 
 	..()
 
+/obj/item/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+	return src.attack(caller,object,params)
+
+/obj/item/weapon/click_self(var/mob/caller)
+	return TRUE
+
 /obj/item/weapon/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(can_wield && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && caller.movement_flags & MOVEMENT_CROUCHING)
