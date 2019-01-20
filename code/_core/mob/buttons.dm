@@ -1,10 +1,3 @@
-//All mobs should have access to buttons.
-
-/mob/living/advanced/proc/add_species_buttons()
-	for(var/v in mob_species.spawning_buttons)
-		var/obj/button/B = new v
-		B.update_owner(src)
-
 /mob/proc/add_button(var/obj/button/B)
 	buttons += B
 	if(client)

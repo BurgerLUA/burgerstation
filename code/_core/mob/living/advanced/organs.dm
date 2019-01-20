@@ -11,13 +11,11 @@
 		update_organs()
 		update_icon()
 
-
 /mob/living/advanced/proc/remove_all_organs()
 	for(var/obj/item/organ/O in organs)
 		remove_organ(O,FALSE,TRUE)
 	update_organs()
 	update_icon()
-
 
 /mob/living/advanced/proc/update_organs()
 	labeled_organs = list()
@@ -27,7 +25,7 @@
 
 /mob/living/advanced/proc/add_species_organs()
 
-	if(gender == FEMALE)
+	if(gender == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
 		for(var/key in mob_species.spawning_organs_female)
 			add_organ(mob_species.spawning_organs_female[key])
 	else

@@ -10,10 +10,7 @@ var/global/list/all_mobs = list()
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0
 
-
-
 	var/list/obj/button/buttons //List of HUD buttons
-
 
 	var/animation_pixel_x = 0
 	var/animation_pixel_y = 0
@@ -38,52 +35,6 @@ var/global/list/all_mobs = list()
 
 	all_mobs += src
 	..()
-
-/mob/proc/on_life_client()
-	handle_movement(TRUE)
-	return TRUE
-
-/mob/proc/on_life()
-	return TRUE
-
-/mob/get_movement_delay()
-
-	. = ..()
-
-	if(can_walk())
-		. *= 2
-		on_walk()
-
-	else if(can_sprint())
-		. *= 0.5
-		on_sprint()
-
-	return .
-
-/mob/proc/can_sprint()
-	return movement_flags & MOVEMENT_RUNNING
-
-/mob/proc/on_sprint()
-	return TRUE
-
-/mob/proc/can_walk()
-	return movement_flags & MOVEMENT_WALKING
-
-/mob/proc/on_walk()
-	return TRUE
-
-/mob/living/get_movement_delay()
-	. = ..()
-
-	if(status & FLAG_STATUS_STUN)
-		. *= 4
-
-	. = max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
-
-	return .
-
-/mob/living/get_attack_delay(var/atom/victim,var/params)
-	return 1 + max(0,attack_delay * (attack_delay * get_attribute_power(ATTRIBUTE_DEXTERITY,1,100) * 0.5))
 
 /mob/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
 	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size

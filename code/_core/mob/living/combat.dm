@@ -1,3 +1,17 @@
+/mob/living/proc/add_stun(var/value,var/max_value = 40)
+
+	value = max(value,10)
+
+	if(stun_time > max_value)
+		return FALSE
+
+	stun_time = min(max_value,stun_time + value)
+
+	return TRUE
+
+/mob/living/get_attack_delay(var/atom/victim,var/params)
+	return 1 + max(0,attack_delay * (attack_delay * get_attribute_power(ATTRIBUTE_DEXTERITY,1,100) * 0.5))
+
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status & FLAG_STATUS_STUN)
 		return 0

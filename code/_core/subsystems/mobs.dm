@@ -1,13 +1,13 @@
 /datum/subsystem/mobs/
-	name = "Mob Subsystem"
-	desc = "Controls how mobs behave. Includes AI."
+	name = "Living Mob Subsystem"
+	desc = "Controls how living mobs behave. Includes AI."
 	tick_rate = 0
 	priority = SS_ORDER_MOBS
 
 /datum/subsystem/mobs/on_life()
-	for(var/mob/M in all_mobs)
-		if(M.ckey || !M.enable_AI)
+	for(var/mob/living/L in all_living)
+		if(L.ckey || !L.enable_AI)
 			continue
-		M.on_life_AI()
+		L.on_life_AI()
 
 	return TRUE
