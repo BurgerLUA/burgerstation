@@ -14,8 +14,25 @@
 	var/current = 0
 	var/offset = 2
 
+	var/mob/living/owner
+
 /obj/health/proc/update_stats(var/mob/living/M)
 	return
+
+/obj/health/proc/update_owner(var/mob/living/desired_owner)
+
+	if(owner == desired_owner)
+		return FALSE
+
+	if(owner)
+		owner.remove_health_element(src)
+
+	owner = desired_owner
+	owner.add_health_element(src)
+
+	update_icon()
+
+	return TRUE
 
 /obj/health/update_icon()
 	var/icon/base = icon(initial(icon),icon_state = icon_state)
@@ -26,7 +43,6 @@
 
 	if(max == 0)
 		return
-
 
 	var/end_y = offset + (current/max)*(32-offset)
 

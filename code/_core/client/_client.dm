@@ -48,6 +48,9 @@ var/global/list/all_clients = list()
 
 	update_zoom(0)
 
+	if(usr) //The only time usr should ever be allowed.
+		return ..()
+
 	make_ghost(pick(observer_spawnpoints))
 
 /client/verb/button_press(button as text)

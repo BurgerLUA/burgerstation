@@ -1,4 +1,5 @@
 var/global/list/local_machines = list()
+
 /obj/structure/interactive/localmachine
 	name = "local machine"
 	desc = "only certain players can see this."

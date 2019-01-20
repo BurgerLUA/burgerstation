@@ -24,6 +24,15 @@
 		client.screen -= I
 	update_inventory()
 
+/mob/proc/restore_inventory()
+	if(!client)
+		return
+
+	for(var/obj/inventory/I in inventory)
+		client.screen += I
+
+	update_inventory()
+
 /mob/proc/update_inventory()
 	if(client)
 		client.known_inventory = inventory

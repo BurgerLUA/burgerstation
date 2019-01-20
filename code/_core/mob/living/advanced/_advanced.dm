@@ -20,6 +20,19 @@
 
 	var/list/atom/tracked_overlays = list()
 
+mob/living/advanced/Login()
+	..()
+	if(loc != null)
+		client << "LOGGING IN!"
+		restore_buttons()
+		restore_inventory()
+		restore_health_elements()
+		restore_local_machines()
+
+/mob/living/advanced/proc/restore_local_machines()
+	for(var/obj/structure/interactive/localmachine/L in local_machines)
+		L.update_for_mob(src)
+
 /mob/living/advanced/on_life()
 	..()
 	update_health_elemement_icons()
@@ -61,11 +74,6 @@
 		S.Initialize(S.level_to_xp(C.skills[S.id]))
 		skills[S.id] = S
 
-/mob/living/Login()
-	..()
-	add_species_buttons()
-	add_species_health_elements()
-
 /mob/living/advanced/Initialize()
 
 	if(!client || client.userdata.loaded_data["tutorial"])
@@ -76,8 +84,8 @@
 	else
 		client.userdata.apply_data_to_mob(src)
 
-	//add_species_buttons()
-	//add_species_health_elements()
+	add_species_buttons()
+	add_species_health_elements()
 	update_health()
 
 	. = ..()

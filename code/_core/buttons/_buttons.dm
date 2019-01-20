@@ -13,7 +13,7 @@
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
-/obj/button/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
+/obj/button/proc/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)
 		return FALSE
