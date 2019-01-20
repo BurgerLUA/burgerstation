@@ -177,4 +177,4 @@
 		transfer_src_to_gun(caller,G,location,control,params)
 		return TRUE
 
-	return ..()
+	return TRUE

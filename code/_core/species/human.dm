@@ -52,14 +52,3 @@
 		BODY_EAR_RIGHT = /obj/item/organ/ear,
 		BODY_EAR_LEFT = /obj/item/organ/ear/left
 	)
-
-	spawning_buttons = list(
-		/obj/button/equip,
-		/obj/button/equip/left
-	)
-
-	spawning_health = list(
-		"hp" = /obj/health/hp,
-		"sp" = /obj/health/sp,
-		"mp" = /obj/health/mp
-	)

@@ -23,8 +23,3 @@
 		BODY_HAND_RIGHT = /obj/item/organ/hand/diona,
 		BODY_HAND_LEFT = /obj/item/organ/hand/diona/left
 	)
-
-	spawning_buttons = list(
-		/obj/button/equip,
-		/obj/button/equip/left
-	)

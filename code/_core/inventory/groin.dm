@@ -6,11 +6,13 @@
 
 	item_slot = SLOT_GROIN_O
 
+	essential = TRUE
+
 
 /obj/inventory/organs/groin //Underwear + Pants
 	name = "pants slot"
 	id = BODY_GROIN
-	screen_loc = "LEFT+2, BOTTOM"
+	screen_loc = "LEFT+1,BOTTOM+1"
 	worn_slots = 2
 
 	item_slot = SLOT_GROIN_U | SLOT_GROIN

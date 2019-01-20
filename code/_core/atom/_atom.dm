@@ -27,12 +27,12 @@
 /atom/proc/Initialize()
 	//Initialize things here
 	initialized = TRUE
+	update_health()
 
 /atom/New(var/new_loc)
 	if(damage_type)
 		damage_type = new damage_type
 	. = ..()
-	update_health()
 
 /atom/proc/can_not_leave(var/atom/A,var/move_direction)
 	return null

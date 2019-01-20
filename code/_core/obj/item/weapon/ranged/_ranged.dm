@@ -49,8 +49,8 @@
 			return TRUE
 		else
 			return ..()
-	else
-		return TRUE
+
+	return TRUE
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return TRUE

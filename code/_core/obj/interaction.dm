@@ -1,5 +1,5 @@
 /obj/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
-	return object.clicked_by_object(caller,src,location,control,params)
+	return TRUE
 
 /obj/proc/get_held()
 	if(is_held())

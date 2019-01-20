@@ -1,17 +1,19 @@
+//Gloves
 /obj/inventory/organs/left_hand_worn
-	name = "left hand slot"
+	name = "left glove"
 	id = BODY_HAND_LEFT
-	screen_loc = "CENTER+0.5+1,BOTTOM"
+	screen_loc = "LEFT+2,BOTTOM+1"
 	item_slot = SLOT_HAND_LEFT
 	worn_slots = 1
 
 /obj/inventory/organs/right_hand_worn
-	name = "right hand slot"
+	name = "right glove"
 	id = BODY_HAND_RIGHT
-	screen_loc = "CENTER-0.5-1,BOTTOM"
+	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT
 	worn_slots = 1
 
+//Holding
 /obj/inventory/organs/left_hand_held
 	name = "left hand slot"
 	id = BODY_HAND_LEFT
@@ -21,6 +23,8 @@
 	item_slot = SLOT_HAND_LEFT
 	held_slots = 1
 	priority = 100
+
+	essential = TRUE
 
 /obj/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
@@ -49,12 +53,13 @@
 	held_slots = 1
 	priority = 100
 
+	essential = TRUE
+
 /obj/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.automatic_right = I.defer_click_on_object()
-
 
 /obj/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
 	. = ..()

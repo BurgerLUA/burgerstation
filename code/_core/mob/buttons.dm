@@ -1,14 +1,15 @@
 /mob/proc/add_button(var/obj/button/B)
-	B = new B
 	buttons += B
 	if(client)
 		client.screen += B
+	B.update_owner(src)
 	update_buttons()
 
 /mob/proc/remove_button(var/obj/button/B)
 	buttons -= B
 	if(client)
 		client.screen -= B
+	B.update_owner(null)
 	update_buttons()
 
 /mob/proc/update_buttons()

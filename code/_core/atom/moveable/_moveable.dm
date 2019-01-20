@@ -77,10 +77,19 @@
 	y = new_loc.y
 	z = new_loc.z
 	new_loc.on_enter(src)
-	//action_last = world.time
-	return FALSE
+	return old_loc
 
 /atom/movable/proc/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
+
+	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size
+	var/pixel_y_offset = -(new_loc.y - old_loc.y)*step_size
+
+	var/real_movement_delay = movement_override ? movement_override : get_movement_delay()
+	var/movement_dir = old_loc.get_relative_dir(new_loc)
+
+	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
+
 	return TRUE
 
 /atom/movable/can_attack(var/atom/victim,var/params)

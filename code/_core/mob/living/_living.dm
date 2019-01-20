@@ -39,6 +39,7 @@
 	movement_flags = 0
 	attack_flags = 0
 	add_stun(10)
+	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
 /mob/living/on_life_AI()
 	if(status & FLAG_STATUS_DEAD)

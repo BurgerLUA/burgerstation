@@ -16,7 +16,5 @@
 
 		if(best_inventory)
 			return src.transfer_item(best_inventory)
-		else
-			return FALSE
 
-	return ..()
+	return TRUE

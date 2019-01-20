@@ -13,6 +13,16 @@
 
 	var/list/obj/item/organ/spawning_organs_female = list()
 
-	var/list/obj/button/spawning_buttons = list()
+	var/list/obj/button/spawning_buttons = list(
+		///obj/button/equip,
+		///obj/button/equip/left,
+		/obj/button/resist,
+		/obj/button/resist_auto,
+		/obj/button/hide_show_inventory
+	)
 
-	var/list/obj/health/spawning_health = list()
+	var/list/obj/health/spawning_health = list(
+		"hp" = /obj/health/hp,
+		"sp" = /obj/health/sp,
+		"mp" = /obj/health/mp
+	)

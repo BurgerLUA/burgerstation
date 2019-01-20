@@ -42,9 +42,15 @@
 	O.attached_organs += src
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
+
 	if(attached_organ)
 		attached_organ.attached_organs -= src
 		attached_organ = null
+
+	if(inventories)
+		for(var/v in inventories)
+			var/obj/inventory/I = v
+			I.drop_all_objects(T)
 
 	for(var/obj/item/organ/O in attached_organs)
 		O.unattach_from_parent(T)
@@ -143,7 +149,7 @@
 			flags_organ |= FLAG_ORGAN_BROKEN
 
 
-	if(health_max - brute_loss <= 0)
+	if(health_max - brute_loss <= 0 && damage_dealt >= health_max*0.5 )
 		gib()
 		return
 

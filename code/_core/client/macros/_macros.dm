@@ -6,6 +6,7 @@
 		"S" = SOUTH,
 		"A" = WEST,
 		"T" = "say",
+		"E" = "grab",
 		"Shift" = "sprint",
 		"Alt" = "walk",
 		"Ctrl" = "crouch",
@@ -36,6 +37,8 @@
 				owner.mob.attack_flags |= ATTACK_DROP
 			if("kick")
 				owner.mob.attack_flags |= ATTACK_KICK
+			if("grab")
+				owner.mob.attack_flags |= ATTACK_GRAB
 
 	return TRUE
 
@@ -60,5 +63,7 @@
 				owner.mob.attack_flags &= ~ATTACK_DROP
 			if("kick")
 				owner.mob.attack_flags &= ~ATTACK_KICK
+			if("grab")
+				owner.mob.attack_flags &= ~ATTACK_GRAB
 
 	return TRUE

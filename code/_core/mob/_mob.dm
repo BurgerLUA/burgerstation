@@ -26,6 +26,24 @@ var/global/list/all_mobs = list()
 
 	attack_delay = 4
 
+	var/obj/inventory/left_hand
+	var/obj/inventory/right_hand
+
+	var/auto_resist = FALSE
+
+	var/draw_inventory = TRUE
+
+/mob/proc/toggle_inventory()
+	draw_inventory = !draw_inventory
+	for(var/v in inventory)
+		var/obj/inventory/O = v
+		if(!draw_inventory && !O.essential)
+			O.invisibility = 101
+		else
+			O.invisibility = 0
+
+	update_icon()
+
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
@@ -62,6 +80,18 @@ var/global/list/all_mobs = list()
 
 	return .
 
+/mob/living/do_step(var/turf/new_loc, var/movement_override = 0)
+
+	. = ..()
+
+	var/movement_delay = get_movement_delay()
+
+	if(left_hand)
+		left_hand.do_drag(.,movement_override ? movement_override : movement_delay)
+
+	if(right_hand)
+		right_hand.do_drag(.,movement_override ? movement_override : movement_delay)
+
 /mob/living/get_movement_delay()
 	. = ..()
 	return max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
@@ -83,4 +113,4 @@ var/global/list/all_mobs = list()
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
 	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
 
-	return ..()
+	return TRUE

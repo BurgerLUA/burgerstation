@@ -43,8 +43,12 @@
 	var/obj/inventory/parent_inventory //Basically one massive defer to this inventory.
 	var/obj/inventory/child_inventory
 
+	var/atom/movable/grabbed_object
+
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = TRUE
+
+	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 
 /obj/inventory/New(var/desired_loc)
 	loc = desired_loc
@@ -99,24 +103,25 @@
 
 /obj/inventory/proc/add_object(var/obj/item/I) //Prioritize wearing it, then holding it.
 
-	I = I.defer_click_on_object()
+	if(I.can_be_worn())
+		var/obj/item/C = I
+		if(add_worn_object(C))
+			return TRUE
+
+	if(add_held_object(I))
+		return TRUE
+
+	return FALSE
+
+/obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
+	if(!bypass_checks && !can_hold_object(I,messages))
+		return FALSE
 
 	if(is_inventory(I.loc))
 		var/obj/inventory/I2 = I.loc
 		if(I2 == src)
 			return FALSE
 		I2.remove_object(I,owner.loc)
-
-	if(I.can_be_worn())
-		var/obj/item/clothing/C = I
-		if(add_worn_object(C))
-			return TRUE
-
-	return add_held_object(I)
-
-/obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
-	if(!bypass_checks && !can_hold_object(I,messages))
-		return FALSE
 
 	I.plane = 4
 	I.loc = src
@@ -137,17 +142,28 @@
 				to_chat(owner,span("notice","\The [C] prevents you from wearing \the [I]!"))
 			return FALSE
 
+	if(is_inventory(I.loc))
+		var/obj/inventory/I2 = I.loc
+		if(I2 == src)
+			return FALSE
+		I2.remove_object(I,owner.loc)
+
 	I.plane = 4
 	I.loc = src
 	worn_objects += I
 	owner.worn_objects += I
-	update_overlays()
-
 	I.update_owner(owner)
-
+	update_overlays()
 	update_stats()
 
 	return TRUE
+
+/obj/inventory/proc/drop_all_objects(var/turf/T)
+	for(var/obj/item/I in worn_objects)
+		remove_object(I,T)
+
+	for(var/obj/item/I in held_objects)
+		remove_object(I,T)
 
 /obj/inventory/proc/remove_all_objects()
 	for(var/obj/item/I in worn_objects)

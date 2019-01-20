@@ -1,7 +1,7 @@
 /obj/inventory/organs/torso //Undershirt + Shirt
 	name = "torso slot"
 	id = BODY_TORSO
-	screen_loc = "LEFT+1,BOTTOM+1"
+	screen_loc = "LEFT+1,BOTTOM+2"
 	worn_slots = 2
 
 	item_slot = SLOT_TORSO | SLOT_TORSO_U
@@ -30,7 +30,7 @@
 /obj/inventory/organs/torso_o
 	name = "coat slot"
 	id = BODY_TORSO_O
-	screen_loc = "LEFT,BOTTOM+1"
+	screen_loc = "LEFT,BOTTOM+2"
 	worn_slots = 2
 
 	item_slot = SLOT_TORSO_O | SLOT_TORSO_A
@@ -63,3 +63,5 @@
 	worn_slots = 1
 
 	item_slot = SLOT_TORSO_B
+
+	essential = TRUE

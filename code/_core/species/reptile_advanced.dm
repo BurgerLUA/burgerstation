@@ -47,8 +47,3 @@
 		BODY_EAR_LEFT = /obj/item/organ/ear/reptile_advanced/left,
 		BODY_TAIL = /obj/item/organ/tail/reptile_advanced
 	)
-
-	spawning_buttons = list(
-		/obj/button/equip,
-		/obj/button/equip/left
-	)

@@ -1,16 +1,52 @@
+
+/obj/inventory/proc/do_drag(var/turf/T,var/movement_override = 0)
+	var/distance = get_dist(owner,grabbed_object)
+	if(grabbed_object && distance > 1)
+		if(distance > 2 || !grabbed_object.do_step(T,movement_override))
+			release_object()
+			return FALSE
+
+	return TRUE
+
+/obj/inventory/proc/grab_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(!is_movable(object))
+		caller.to_chat(span("notice","You cannot grab this object!"))
+		return FALSE
+
+	if(length(held_objects))
+		caller.to_chat(span("notice","You cannot grab this with objects already in your hand!"))
+		return FALSE
+
+	caller.to_chat(span("notice","You grab \the [object]."))
+	grabbed_object = object
+
+	return TRUE
+
+/obj/inventory/proc/release_object()
+	grabbed_object = null
+	return TRUE
+
 /obj/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	//Special Stuff
 	if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
 		return throw_item(caller.dir)
-
-	else if (caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
+	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 		return drop_item()
+	else if(grabbed_object && grabbed_object == object)
+		return release_object(caller,object,location,control,params)
+	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
+		return grab_object(caller,object,location,control,params)
 
 	var/atom/the_hand = src.defer_click_on_object()
 	var/atom/the_target = object.defer_click_on_object()
 
 	if(the_hand == the_target && the_hand.click_self(caller))
+		return TRUE
+
+	if(the_target.clicked_by_object(caller,the_hand,location,control,params))
 		return TRUE
 
 	if(is_inventory(the_hand) && is_item(the_target)) //We have an empty hand and the object we're clicking on is an item.
@@ -33,7 +69,7 @@
 		if(O.click_on_object(caller,object,location,control,params))
 			return TRUE
 
-	if(is_mob(the_target) && the_hand.attack(caller,the_target,params))
+	if(the_hand && is_mob(the_target) && the_hand.attack(caller,the_target,params))
 		return TRUE
 
 	return FALSE

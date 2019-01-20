@@ -55,11 +55,18 @@
 	health_current = get_overall_health()
 
 mob/living/advanced/update_health(var/damage_dealt)
-	health_max = 0
+
+	health_max = 100 + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
 	health_current = 0
+
+	var/damage_current = 0
 	for(var/obj/item/organ/O in organs)
-		health_current += O.get_overall_health()
-		health_max += O.health_max
+		damage_current += O.get_total_loss()
+
+	health_current = health_max - damage_current
 
 	update_icon()
 	update_health_elemement_icons()
+
+	if(health_current <= 0 && !(status & FLAG_STATUS_DEAD))
+		death()

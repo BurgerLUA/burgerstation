@@ -11,6 +11,7 @@
 
 	plane = 3
 
+	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
 /obj/button/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
@@ -23,4 +24,10 @@
 	owner = desired_owner
 	owner.add_button(src)
 
+	update_icon()
+
+	return TRUE
+
+
+/obj/button/clicked_by_object(var/mob/caller,object,location,control,params)
 	return TRUE

@@ -13,11 +13,10 @@
 	)
 
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
-
+	..()
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.death()
-	..()
 
 /obj/item/organ/torso/female
 	desc = "A torso. Female variant"
