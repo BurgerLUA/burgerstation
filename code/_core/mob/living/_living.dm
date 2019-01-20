@@ -16,6 +16,24 @@
 	var/sleep_time = 0 //Decieconds of sleep
 	var/paralyze_time = 0 //Decieconds of paralyze
 
+/mob/living/New()
+	. = ..()
+	attributes = list()
+	skills = list()
+	factions = list()
+	health_elements = list()
+
+	initialize_attributes()
+	initialize_skills()
+
+	if(ai)
+		ai = new(src)
+
+/mob/living/Initialize()
+	for(var/k in starting_factions)
+		factions[k] = all_factions[k]
+	..()
+
 /mob/living/get_xp_multiplier()
 	return 1
 
@@ -50,6 +68,9 @@
 
 	return ..()
 
+/mob/proc/on_stunned()
+	return TRUE
+
 /mob/living/on_life()
 
 	..()
@@ -61,12 +82,7 @@
 	if(!(status & FLAG_STATUS_STUN) && stun_time > 0)
 		status |= FLAG_STATUS_STUN
 		animate(src,transform = turn(matrix().Translate(10,0), 90), time = 1)
-
-		if(left_hand)
-			left_hand.drop_held_objects(src.loc)
-
-		if(right_hand)
-			right_hand.drop_held_objects(src.loc)
+		on_stunned()
 
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
@@ -89,24 +105,6 @@
 	stun_time = min(max_value,stun_time + value)
 
 	return TRUE
-
-/mob/living/New()
-	. = ..()
-	attributes = list()
-	skills = list()
-	factions = list()
-	health_elements = list()
-
-	initialize_attributes()
-	initialize_skills()
-
-	if(ai)
-		ai = new(src)
-
-/mob/living/Initialize()
-	for(var/k in starting_factions)
-		factions[k] = all_factions[k]
-	..()
 
 /mob/living/do_bump(var/atom/bumper, var/bump_direction = 0, var/movement_override = 0)
 	if(move_delay > 0)

@@ -31,7 +31,7 @@
 	var/list/obj/item/item_blacklist = list() //Items that can't go in this invetory.
 	var/list/obj/item/item_whitelist = list() //Items that can only go in this inventory.
 
-	var/mob/owner //The mob that owns this object
+	var/mob/living/advanced/owner //The mob that owns this object. Only living things should be able to store items.
 
 	var/click_flags
 

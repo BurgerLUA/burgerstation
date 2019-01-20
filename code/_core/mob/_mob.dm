@@ -8,41 +8,21 @@ var/global/list/all_mobs = list()
 	var/enable_AI = FALSE
 
 	var/tmp/movement_flags = 0x0
-
 	var/tmp/attack_flags = 0x0
 
-	var/list/obj/inventory/inventory //List of inventory items
-	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
+
 
 	var/list/obj/button/buttons //List of HUD buttons
 
-	var/list/datum/animation/animations //List of running animation
+
 	var/animation_pixel_x = 0
 	var/animation_pixel_y = 0
-
 	animate_movement = FALSE
 
 	movement_delay = 4
-
 	attack_delay = 4
 
-	var/obj/inventory/left_hand
-	var/obj/inventory/right_hand
-
 	var/auto_resist = FALSE
-
-	var/draw_inventory = TRUE
-
-/mob/proc/toggle_inventory()
-	draw_inventory = !draw_inventory
-	for(var/v in inventory)
-		var/obj/inventory/O = v
-		if(!draw_inventory && !O.essential)
-			O.invisibility = 101
-		else
-			O.invisibility = 0
-
-	update_icon()
 
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
@@ -54,9 +34,7 @@ var/global/list/all_mobs = list()
 		client = C
 		ckey = C.ckey
 
-	inventory = list()
 	buttons = list()
-	worn_objects = list()
 
 	all_mobs += src
 	..()
@@ -93,18 +71,6 @@ var/global/list/all_mobs = list()
 
 /mob/proc/on_walk()
 	return TRUE
-
-/mob/living/do_step(var/turf/new_loc, var/movement_override = 0)
-
-	. = ..()
-
-	var/movement_delay = get_movement_delay()
-
-	if(left_hand)
-		left_hand.do_drag(.,movement_override ? movement_override : movement_delay)
-
-	if(right_hand)
-		right_hand.do_drag(.,movement_override ? movement_override : movement_delay)
 
 /mob/living/get_movement_delay()
 	. = ..()

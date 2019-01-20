@@ -20,10 +20,56 @@
 
 	var/list/atom/tracked_overlays = list()
 
+	var/draw_inventory = TRUE
+	var/list/obj/inventory/inventory //List of inventory items
+	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
+	var/obj/inventory/left_hand
+	var/obj/inventory/right_hand
+
+/mob/living/advanced/New()
+	organs = list()
+	inventory = list()
+	worn_objects = list()
+	labeled_organs = list()
+	if(mob_outfit)
+		mob_outfit = new mob_outfit
+	if(mob_species)
+		mob_species = new mob_species
+	..()
+
+/mob/living/advanced/on_stunned()
+	if(left_hand)
+		left_hand.drop_held_objects(src.loc)
+
+	if(right_hand)
+		right_hand.drop_held_objects(src.loc)
+
+/mob/living/advanced/do_step(var/turf/new_loc, var/movement_override = 0)
+
+	. = ..()
+
+	var/movement_delay = get_movement_delay()
+
+	if(left_hand)
+		left_hand.do_drag(.,movement_override ? movement_override : movement_delay)
+
+	if(right_hand)
+		right_hand.do_drag(.,movement_override ? movement_override : movement_delay)
+
+/mob/living/advanced/proc/toggle_inventory()
+	draw_inventory = !draw_inventory
+	for(var/v in inventory)
+		var/obj/inventory/O = v
+		if(!draw_inventory && !O.essential)
+			O.invisibility = 101
+		else
+			O.invisibility = 0
+
+	update_icon()
+
 mob/living/advanced/Login()
 	..()
 	if(loc != null)
-		client << "LOGGING IN!"
 		restore_buttons()
 		restore_inventory()
 		restore_health_elements()
@@ -44,16 +90,6 @@ mob/living/advanced/Login()
 		do_automatic_left()
 	if(attack_flags & ATTACK_HELD_LEFT)
 		do_automatic_right()
-
-/mob/living/advanced/New()
-	organs = list()
-	inventory = list()
-	labeled_organs = list()
-	if(mob_outfit)
-		mob_outfit = new mob_outfit
-	if(mob_species)
-		mob_species = new mob_species
-	..()
 
 /mob/living/advanced/initialize_attributes()
 

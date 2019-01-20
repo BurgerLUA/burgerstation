@@ -8,9 +8,6 @@
 	icon_state = "autoeq"
 	screen_loc = "CENTER-0.5,BOTTOM+1"
 
-
-
-
 /obj/button/resist
 	name = "resist"
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
@@ -45,13 +42,25 @@
 	screen_loc = "LEFT,BOTTOM"
 
 /obj/button/hide_show_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
-	owner.toggle_inventory()
+
+	if(!is_advanced(owner))
+		return ..()
+
+	var/mob/living/advanced/A = owner
+	A.toggle_inventory()
+
 	update_icon()
 	..()
 
 /obj/button/hide_show_inventory/update_icon()
 
-	if(owner.draw_inventory)
+	if(!is_advanced(owner))
+		return ..()
+
+	var/mob/living/advanced/A = owner
+
+
+	if(A.draw_inventory)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]_off"

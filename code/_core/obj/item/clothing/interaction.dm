@@ -1,7 +1,7 @@
 /obj/item/clothing/click_on_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
-	if(is_mob(object))
-		var/mob/M = object
+	if(is_advanced(object))
+		var/mob/living/advanced/M = object
 
 		var/obj/inventory/best_inventory
 

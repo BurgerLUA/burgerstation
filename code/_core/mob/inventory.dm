@@ -1,4 +1,4 @@
-/mob/proc/add_inventory(var/obj/inventory/I)
+/mob/living/advanced/proc/add_inventory(var/obj/inventory/I)
 
 	if(I.id == BODY_HAND_LEFT)
 		left_hand = I
@@ -11,7 +11,7 @@
 		client.screen += I
 	update_inventory()
 
-/mob/proc/remove_inventory(var/obj/inventory/I)
+/mob/living/advanced/proc/remove_inventory(var/obj/inventory/I)
 
 	if(I.id == BODY_HAND_LEFT)
 		left_hand = null
@@ -24,7 +24,7 @@
 		client.screen -= I
 	update_inventory()
 
-/mob/proc/restore_inventory()
+/mob/living/advanced/proc/restore_inventory()
 	if(!client)
 		return
 
@@ -33,6 +33,6 @@
 
 	update_inventory()
 
-/mob/proc/update_inventory()
+/mob/living/advanced/proc/update_inventory()
 	if(client)
 		client.known_inventory = inventory
