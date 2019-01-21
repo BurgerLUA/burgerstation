@@ -18,6 +18,8 @@ var/global/list/all_living = list()
 	var/sleep_time = 0 //Decieconds of sleep
 	var/paralyze_time = 0 //Decieconds of paralyze
 
+	var/first_life = TRUE
+
 /mob/living/New()
 	. = ..()
 	attributes = list()

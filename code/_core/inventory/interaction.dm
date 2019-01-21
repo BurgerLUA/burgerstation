@@ -1,4 +1,3 @@
-
 /obj/inventory/proc/do_drag(var/turf/T,var/movement_override = 0)
 	var/distance = get_dist(owner,grabbed_object)
 	if(grabbed_object && distance > 1)
@@ -61,7 +60,7 @@
 
 	else if(is_inventory(the_target) && is_item(the_hand))
 		var/obj/inventory/I = the_target
-		if(I.click_on_object(caller,the_hand,location,control,params))
+		if(I.owner == caller && I.click_on_object(caller,the_hand,location,control,params))
 			return TRUE
 
 	if(is_item(the_hand))

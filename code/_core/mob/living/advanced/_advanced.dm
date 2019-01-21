@@ -160,7 +160,18 @@ mob/living/advanced/Login()
 
 	update_organ_icons()
 	update_inventory_icons()
+	update_faction_icons()
+
 	. = ..()
+
+/mob/living/advanced/proc/update_faction_icons()
+
+	for(var/faction/F in factions)
+		var/obj/overlay/spawned_overlay = new /obj/overlay
+		spawned_overlay.layer = LAYER_EFFECT
+		spawned_overlay.icon = F.icon
+		spawned_overlay.icon_state = F.icon_state
+		overlays += spawned_overlay
 
 /mob/living/advanced/proc/update_organ_icons()
 	for(var/obj/item/organ/O in organs)
@@ -310,6 +321,11 @@ mob/living/advanced/Login()
 	if(update) update_icon()
 
 /mob/living/advanced/proc/update_gender(var/new_gender)
+	remove_all_organs()
+	add_species_organs()
+	add_species_colors()
+
+/mob/living/advanced/proc/update_species()
 	remove_all_organs()
 	add_species_organs()
 	add_species_colors()

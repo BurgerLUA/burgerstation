@@ -21,7 +21,7 @@
 	can_wield = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
-	return 0.01
+	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.075 - (0.075 * L.get_skill_power(SKILL_RANGED,0,100))
+	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))

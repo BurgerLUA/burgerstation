@@ -1,10 +1,14 @@
 /datum/species/reptile_advanced/
 	name = "Advanced Reptile"
 	desc = "Fucking furries. Advanced."
+	id = "reptile_advanced"
+	flags_species = SPECIES_REPTILE_ADVANCED
 
-	eye_color_default = "#FFFF00"
-	color_skin_default = "#44FF44"
-	color_hair_default = "#000000"
+	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
+
+	eye_color_default = "#AAAA00"
+	color_skin_default = "#8CA73E"
+	color_hair_default = "#fff0be"
 
 	hair_style_default = "bald"
 
@@ -46,4 +50,23 @@
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile_advanced,
 		BODY_EAR_LEFT = /obj/item/organ/ear/reptile_advanced/left,
 		BODY_TAIL = /obj/item/organ/tail/reptile_advanced
+	)
+
+	chargen_hair_colors = list(
+		"bone" = "#fff0be",
+		"grey" = "#888888"
+	)
+
+	chargen_skin_colors = list(
+		"natural green" = "#8CA73E",
+		"albino" = "#FFFFFF",
+		"edgelord" = "#222222",
+	)
+
+	chargen_eye_colors = list(
+		"natural yellow" = "#AAAA00",
+		"orange" = "#FF8800",
+		"blue" = "#444488",
+		"red" = "#884444",
+		"green" = "#448844",
 	)

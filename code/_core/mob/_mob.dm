@@ -17,7 +17,7 @@ var/global/list/all_mobs = list()
 	animate_movement = FALSE
 
 	movement_delay = 4
-	attack_delay = 4
+	attack_delay = 10
 
 	var/auto_resist = FALSE
 

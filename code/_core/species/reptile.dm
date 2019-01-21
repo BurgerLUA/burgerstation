@@ -1,10 +1,14 @@
 /datum/species/reptile/
 	name = "Reptile"
 	desc = "Fucking furries"
+	id = "reptile_feral"
+	flags_species = SPECIES_REPTILE_FERAL
 
-	eye_color_default = "#FF8800"
-	color_skin_default = "#448844"
-	color_hair_default = "#000000"
+	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
+
+	eye_color_default = "#AAAA00"
+	color_skin_default = "#8CA73E"
+	color_hair_default = "#fff0be"
 
 	hair_style_default = "bald"
 
@@ -25,7 +29,14 @@
 		BODY_EYE_LEFT = /obj/item/organ/eye/reptile/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile,
 		BODY_EAR_LEFT = /obj/item/organ/ear/reptile/left,
-		BODY_TAIL = /obj/item/organ/tail/reptile
+		BODY_TAIL = /obj/item/organ/tail/reptile,
+
+		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_LUNGS = /obj/item/organ/internal/lungs,
+		BODY_STOMACH = /obj/item/organ/internal/stomach,
+		BODY_LIVER = /obj/item/organ/internal/liver,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
 
 	spawning_organs_female = list(
@@ -45,5 +56,31 @@
 		BODY_EYE_LEFT = /obj/item/organ/eye/reptile/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile,
 		BODY_EAR_LEFT = /obj/item/organ/ear/reptile/left,
-		BODY_TAIL = /obj/item/organ/tail/reptile
+		BODY_TAIL = /obj/item/organ/tail/reptile,
+
+		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_LUNGS = /obj/item/organ/internal/lungs,
+		BODY_STOMACH = /obj/item/organ/internal/stomach,
+		BODY_LIVER = /obj/item/organ/internal/liver,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
+	)
+
+	chargen_hair_colors = list(
+		"bone" = "#fff0be",
+		"grey" = "#888888"
+	)
+
+	chargen_skin_colors = list(
+		"natural green" = "#8CA73E",
+		"albino" = "#FFFFFF",
+		"edgelord" = "#222222",
+	)
+
+	chargen_eye_colors = list(
+		"natural yellow" = "#888800",
+		"orange" = "#FF8800",
+		"blue" = "#444488",
+		"red" = "#884444",
+		"green" = "#448844",
 	)

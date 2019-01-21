@@ -53,3 +53,23 @@
 		var/mob/living/advanced/A = triggerer
 		if(A.client)
 			A.client.save_current_character()
+
+/obj/trigger/jumploc/save_and_north
+	x_move = 0
+	y_move = 2
+	do_save = TRUE
+
+/obj/trigger/jumploc/save_and_south
+	x_move = 0
+	y_move = -2
+	do_save = TRUE
+
+/obj/trigger/jumploc/save_and_east
+	x_move = 2
+	y_move = 0
+	do_save = TRUE
+
+/obj/trigger/jumploc/save_and_west
+	x_move = 0
+	y_move = -2
+	do_save = TRUE

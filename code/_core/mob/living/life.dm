@@ -24,8 +24,6 @@
 
 /mob/living/proc/on_life()
 
-	..()
-
 	if(status & FLAG_STATUS_STUN && stun_time <= 0)
 		status &= ~FLAG_STATUS_STUN
 		animate(src,transform = matrix(), time = 1)
@@ -43,5 +41,11 @@
 	if(move_delay <= 0)
 		stamina_current = min(stamina_current + stamina_regeneration,stamina_max)
 		mana_current = min(mana_current + mana_regeneration,mana_max)
+
+	if(first_life)
+		stamina_current = stamina_max
+		mana_current = mana_max
+
+	first_life = FALSE
 
 	return TRUE

@@ -36,7 +36,30 @@ span.distance_small{
 span.distance_tiny{
 	font-size: 60%;
 }
+span.greeting{
+	font-size: 200%;
+	color: purple;
+}
 
+span.red{
+	font-size: 150%;
+	color: red;
+}
+
+span.blue{
+	font-size: 150%;
+	color: blue;
+}
+
+span.green{
+	font-size: 150%;
+	color: green;
+}
+
+span.yellow{
+	font-size: 150%;
+	color: yellow;
+}
 
 
 </style>

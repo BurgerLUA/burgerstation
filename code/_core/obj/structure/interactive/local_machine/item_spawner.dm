@@ -42,7 +42,7 @@
 	stored_item = /obj/item/clothing/overwear/armor
 
 /obj/structure/interactive/localmachine/item/weapon/revolver
-	stored_item = /obj/item/weapon/ranged/bullet/revolver/detective
+	stored_item = /obj/item/weapon/ranged/bullet/revolver/detective/
 
 /obj/structure/interactive/localmachine/item/ammo/revolver
 	stored_item = /obj/item/magazine/clip/revolver/bullet_38/
@@ -67,3 +67,12 @@
 
 /obj/structure/interactive/localmachine/item/weapon/sword
 	stored_item = /obj/item/weapon/melee/sword
+
+/obj/structure/interactive/localmachine/item/weapon/heavy_snip
+	stored_item = /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
+
+/obj/structure/interactive/localmachine/item/ammo/sniper50
+	stored_item = /obj/item/magazine/sniper50
+
+
+

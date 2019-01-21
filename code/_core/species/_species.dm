@@ -1,6 +1,11 @@
 /datum/species/
 	var/name = "BLANK SPECIES"
 	var/desc = "OH MY GOD"
+	var/id
+
+	var/flags_species = SPECIES_NONE
+
+	var/flags_chargen = CHARGEN_NONE
 
 	var/eye_color_default = "#FF0000"
 	var/color_skin_default = "#0000FF"
@@ -26,3 +31,13 @@
 		"sp" = /obj/health/sp,
 		"mp" = /obj/health/mp
 	)
+
+	var/list/chargen_hair_colors = list()
+
+	var/list/chargen_skin_colors = list()
+
+	var/list/chargen_eye_colors = list()
+
+	var/list/chargen_detail_colors = list()
+
+	var/list/chargen_glow_colors = list()

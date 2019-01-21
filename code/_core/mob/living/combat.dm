@@ -10,7 +10,7 @@
 	return TRUE
 
 /mob/living/get_attack_delay(var/atom/victim,var/params)
-	return 1 + max(0,attack_delay * (attack_delay * get_attribute_power(ATTRIBUTE_DEXTERITY,1,100) * 0.5))
+	return attack_delay * (0.5 + 0.5*(1 - get_attribute_power(ATTRIBUTE_DEXTERITY,1,100)))
 
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status & FLAG_STATUS_STUN)

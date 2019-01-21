@@ -28,7 +28,7 @@
 
 	plane = 4
 
-	var/lifetime = 12
+	var/lifetime = 24
 
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0)
 

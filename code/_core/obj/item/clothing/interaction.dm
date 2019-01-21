@@ -1,6 +1,6 @@
 /obj/item/clothing/click_on_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
-	if(is_advanced(object))
+	if(caller == object && is_advanced(object)) //Auto-equip.
 		var/mob/living/advanced/M = object
 
 		var/obj/inventory/best_inventory
@@ -17,4 +17,4 @@
 		if(best_inventory)
 			return src.transfer_item(best_inventory)
 
-	return TRUE
+	return FALSE

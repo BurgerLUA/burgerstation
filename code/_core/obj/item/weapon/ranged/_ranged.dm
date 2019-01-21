@@ -94,15 +94,19 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
 		var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
 
+		var/icon_pos_x = 0
+		var/icon_pos_y = 0
 
-		var/icon_pos_x = text2num(params["icon-x"])
-		var/icon_pos_y = text2num(params["icon-y"])
+		if(params["icon-x"])
+			icon_pos_x = text2num(params["icon-x"])
+
+		if(params["icon-y"])
+			icon_pos_y = text2num(params["icon-y"])
 
 		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16
 		var/object_fake_y = object.y*TILE_SIZE + icon_pos_y - 16
 
 		var/accuracy_loss = get_static_spread()
-
 		if(is_living(caller))
 			var/mob/living/L = caller
 			accuracy_loss += get_skill_spread(L)
@@ -110,10 +114,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		for(var/i=1,i<=bullet_count,i++)
 			var/diffx = object_fake_x - caller_fake_x
 			var/diffy = object_fake_y - caller_fake_y
-
 			var/distance = sqrt(diffx ** 2 + diffy ** 2)
-			diffx += rand(-distance*accuracy_loss,distance*accuracy_loss)
-			diffy += rand(-distance*accuracy_loss,distance*accuracy_loss)
+			var/inaccuracy_x = rand(-distance*accuracy_loss,distance*accuracy_loss)
+			var/inaccuracy_y = rand(-distance*accuracy_loss,distance*accuracy_loss)
+
+			diffx += inaccuracy_x
+			diffy += inaccuracy_y
 
 			var/highest = max(abs(diffx),abs(diffy))
 
