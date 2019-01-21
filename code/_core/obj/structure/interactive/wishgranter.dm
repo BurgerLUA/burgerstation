@@ -6,7 +6,7 @@ obj/structure/interactive/wishgranter
 	icon_state = "wishgranter"
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction
-	var/faction/faction_to_join
+	var/faction_to_join
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(caller,object,location,control,params)
 
@@ -20,8 +20,9 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(c
 		P.client.eye = P
 		P.client.update_zoom(0)
 	P.factions = list()
-	var/faction/F = new faction_to_join
-	P.factions += F
+
+	var/faction/F = all_factions[faction_to_join]
+	P.factions += faction_to_join
 	P.update_faction_icons()
 
 	P.to_chat(span(F.icon_state,"You have joined \the [F.name]! Note that friendly fire is currently <b>[F.friendly_fire ? "ON" : "OFF"]</b>."))
@@ -32,16 +33,16 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(c
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction/red
 	name = "red team wishgranter"
-	faction_to_join =/faction/arena/red/
+	faction_to_join = "arena_red"
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction/blue
 	name = "blue team wishgranter"
-	faction_to_join = /faction/arena/blue/
+	faction_to_join = "arena_blue"
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction/green
 	name = "green team wishgranter"
-	faction_to_join = /faction/arena/green/
+	faction_to_join = "arena_green"
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction/yellow
 	name = "yellow team wishgranter"
-	faction_to_join = /faction/arena/yellow/
+	faction_to_join = "arena_yellow"

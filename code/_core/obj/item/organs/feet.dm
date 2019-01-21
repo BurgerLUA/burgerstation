@@ -46,9 +46,6 @@
 	inventories = list(/obj/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
 
-
-
-
 //Reptile Advanced
 /obj/item/organ/foot/reptile_advanced
 	name = "right advanced reptile foot"

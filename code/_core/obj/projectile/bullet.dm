@@ -3,8 +3,8 @@
 
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 
-	if(weapon && is_bullet_gun(weapon))
-		var/obj/item/weapon/ranged/bullet/G = weapon
+	if(weapon && is_ranged_gun(weapon))
+		var/obj/item/weapon/ranged/G = weapon
 		if(G.ranged_damage_type)
 			var/damagetype/DT = G.ranged_damage_type
 			var/list/params = list()
@@ -32,7 +32,6 @@
 					return FALSE
 
 			DT.do_damage(owner,hit_atom,weapon,object_to_damage)
-
 
 	..()
 

@@ -323,7 +323,7 @@
 			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
 			for(var/i=1,i<=length(BG.stored_bullets),i++)
 				var/obj/item/bullet/B = BG.stored_bullets[i]
-				returning_list["stored_bullets"][i] = B.type
+				if(B) returning_list["stored_bullets"][i] = B.type
 
 	if(is_magazine(I))
 		var/obj/item/magazine/M = I
@@ -331,6 +331,6 @@
 			returning_list["stored_bullets"] = new/list(length(M.stored_bullets))
 			for(var/i=1,i<=length(M.stored_bullets),i++)
 				var/obj/item/bullet/B = M.stored_bullets[i]
-				returning_list["stored_bullets"][i] = B.type
+				if(B) returning_list["stored_bullets"][i] = B.type
 
 	return returning_list

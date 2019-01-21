@@ -28,7 +28,7 @@
 
 /obj/item/organ/eye/reptile/left
 	name = "left reptile eye"
-	id = BODY_EYE_RIGHT
+	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
 
 
@@ -41,6 +41,6 @@
 
 /obj/item/organ/eye/reptile_advanced/left
 	name = "left advanced reptile eye"
-	id = BODY_EYE_RIGHT
+	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
 

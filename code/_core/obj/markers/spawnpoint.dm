@@ -30,7 +30,9 @@ var/global/list/mob_spawnpoints = list()
 /obj/marker/spawnpoint/mob/
 	name = "Mob Spawnpoint"
 	desc = "This is where a mob should be placed at round start."
-	icon_state = "marker"
+
+	icon = 'icons/lighting.dmi'
+	icon_state = "white"
 
 	var/type_to_spawn
 	var/mob/living/owning_mob
@@ -76,3 +78,24 @@ var/global/list/mob_spawnpoints = list()
 	name = "diamond spawnpoint"
 
 	type_to_spawn = /mob/living/advanced/human/npc/unique/diamond_with_flaw
+
+
+/obj/marker/spawnpoint/mob/arena_red
+	name = "arena spawnpoint"
+	type_to_spawn = /mob/living/advanced/human/npc/arena_guard/red
+	color = "#FF0000"
+
+/obj/marker/spawnpoint/mob/arena_green
+	name = "arena spawnpoint"
+	type_to_spawn = /mob/living/advanced/human/npc/arena_guard/green
+	color = "#00FF00"
+
+/obj/marker/spawnpoint/mob/arena_blue
+	name = "arena spawnpoint"
+	type_to_spawn = /mob/living/advanced/human/npc/arena_guard/blue
+	color = "#0000FF"
+
+/obj/marker/spawnpoint/mob/arena_yellow
+	name = "arena spawnpoint"
+	type_to_spawn = /mob/living/advanced/human/npc/arena_guard/yellow
+	color = "#FFFF00"

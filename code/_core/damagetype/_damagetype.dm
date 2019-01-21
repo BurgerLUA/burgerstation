@@ -127,8 +127,14 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	if(is_living(victim))
+		var/mob/living/A = victim
+		if(A.status & FLAG_STATUS_IMMORTAL)
+			return 0
+
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE]) + hit_object.adjust_burn_loss(damage_to_deal[BURN]) + hit_object.adjust_tox_loss(damage_to_deal[TOX]) + hit_object.adjust_oxy_loss(damage_to_deal[OXY])
+
 
 	play_effects(attacker,victim,weapon,hit_object)
 	display_hit_message(attacker,victim,weapon,hit_object)

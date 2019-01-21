@@ -35,7 +35,8 @@
 		else
 			pixel_x = 0
 
-		I.owner.update_icon()
+		if(I.owner)
+			I.owner.update_icon()
 
 	else
 		pixel_x = 0

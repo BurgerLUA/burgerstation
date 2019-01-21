@@ -9,6 +9,7 @@ var/global/ticks = 0
 	map_format = SIDE_MAP
 
 /world/New()
+	log = file("logs/mylog.txt")
 	..()
 	life()
 

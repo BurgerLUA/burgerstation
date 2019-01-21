@@ -84,9 +84,11 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 
 						var/chosen_species = input("Which species do you wish to be?") in species_options
 						INTERACT_CHECK
-
+						var/list/clothing_list = A.drop_all_items()
 						A.mob_species = species_options[chosen_species]
 						A.update_species()
+						A.equip_objects_in_list(clothing_list)
+
 
 						var/confirm = input(caller,"Do you like your species?") in list("Yes, keep it.","No, I want a new one.")
 						INTERACT_CHECK
@@ -100,12 +102,10 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 					while(TRUE)
 						var/sex = input("Which sex do you wish to have?") in list("Male","Female")
 						INTERACT_CHECK
+						var/list/clothing_list = A.drop_all_items()
 						A.gender = sex == "Female" ? FEMALE : MALE
 						A.update_gender()
-						if(A.gender == FEMALE)
-							A.mob_outfit = new /datum/outfit/new_character_female
-						else
-							A.mob_outfit = new /datum/outfit/new_character
+						A.equip_objects_in_list(clothing_list)
 
 						A.add_clothes(A.mob_outfit)
 						A.dir = SOUTH

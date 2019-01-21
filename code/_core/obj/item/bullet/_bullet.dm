@@ -6,7 +6,6 @@
 	icon_state = "bullet"
 	var/bullet_count = 1
 
-
 	var/bullet_capacity_icon = 1
 	var/bullet_capacity = 1
 
@@ -16,7 +15,7 @@
 /obj/item/bullet/proc/get_ammo_count()
 	return bullet_count
 
-/obj/item/bullet/on_spawn()
+/obj/item/bullet/shotgun/on_spawn()
 	bullet_count = 3
 
 /obj/item/bullet/update_icon()
@@ -42,6 +41,7 @@
 /obj/item/bullet/proc/spend_bullet()
 	is_spent = TRUE
 	update_icon()
+	queue_delete(src,600)
 
 /obj/item/bullet/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet/transfer_target,location,control,params,var/display_message = TRUE)
 

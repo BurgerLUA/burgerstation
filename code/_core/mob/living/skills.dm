@@ -10,7 +10,6 @@
 		S.experience = S.level_to_xp(SKILL_DEFAULT)
 		skills[S.name] = S
 
-
 //Skills
 /mob/living/proc/get_skill(var/id)
 	return skills[id]

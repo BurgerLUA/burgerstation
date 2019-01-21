@@ -28,7 +28,7 @@
 
 	plane = 4
 
-	var/lifetime = 24
+	var/lifetime = 100
 
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0)
 
@@ -48,8 +48,8 @@
 	last_loc_x = x
 	last_loc_y = y
 
-	pixel_x = vel_x
-	pixel_y = vel_y
+	//pixel_x = vel_x
+	//pixel_y = vel_y
 
 	shoot_x = desired_shoot_x
 	shoot_y = desired_shoot_y
@@ -58,7 +58,7 @@
 
 	update_icon()
 
-	animate(src, pixel_x = pixel_x + vel_x*lifetime, pixel_y = pixel_y + vel_y*lifetime, time = lifetime)
+	animate(src, pixel_x = pixel_x + vel_x*lifetime, pixel_y = pixel_y + vel_y*lifetime, time = lifetime*0.5)
 
 /obj/projectile/update_icon()
 	var/icon/I = icon(icon,icon_state = icon_state)

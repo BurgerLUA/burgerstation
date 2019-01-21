@@ -41,6 +41,7 @@
 	//Initialize things here
 	initialized = TRUE
 	update_health()
+	update_icon()
 
 /atom/New(var/new_loc)
 	if(damage_type)

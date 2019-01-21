@@ -214,7 +214,8 @@
 	else
 		name = initial(name)
 
-	owner.update_icon()
+	if(owner)
+		owner.update_icon()
 
 /obj/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 

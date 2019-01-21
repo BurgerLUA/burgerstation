@@ -3,11 +3,10 @@
 	var/desc = "The faction's description."
 	var/id = "default"
 	var/priority = 0 //A higher value = overrides lower values
+	var/color = "#FFFFFF"
 
 	var/icon
 	var/icon_state
-
-
 
 	var/list/relationships = list()
 

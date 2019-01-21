@@ -13,6 +13,8 @@
 	add_stun(10)
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
+	queue_delete(src,600)
+
 /mob/living/proc/on_life_AI()
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE

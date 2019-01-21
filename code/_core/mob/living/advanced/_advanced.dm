@@ -67,6 +67,24 @@
 
 	update_icon()
 
+/mob/living/advanced/proc/drop_all_items()
+
+	var/dropped_objects = list()
+
+	for(var/v in inventory)
+		var/obj/inventory/O = v
+		for(var/obj/item/I in O.worn_objects)
+			if(O.remove_object(I,src.loc))
+				dropped_objects += I
+
+		O.drop_held_objects(src.loc)
+
+	return dropped_objects
+
+/mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
+	for(var/obj/item/clothing/C in clothing_list)
+		C.quick_equip(src)
+
 mob/living/advanced/Login()
 	..()
 	if(loc != null)
@@ -124,7 +142,7 @@ mob/living/advanced/Login()
 	add_species_health_elements()
 	update_health()
 
-	. = ..()
+	..()
 
 /mob/living/advanced/proc/add_clothes(var/datum/outfit/spawning_outfit)
 	if(!spawning_outfit)
@@ -165,8 +183,8 @@ mob/living/advanced/Login()
 	. = ..()
 
 /mob/living/advanced/proc/update_faction_icons()
-
-	for(var/faction/F in factions)
+	for(var/v in factions)
+		var/faction/F = all_factions[v]
 		var/obj/overlay/spawned_overlay = new /obj/overlay
 		spawned_overlay.layer = LAYER_EFFECT
 		spawned_overlay.icon = F.icon

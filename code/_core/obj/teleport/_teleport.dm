@@ -47,6 +47,10 @@
 	var/do_save = FALSE
 
 /obj/trigger/jumploc/on_trigger(var/atom/movable/triggerer)
+
+	if(!is_living(triggerer))
+		return FALSE
+
 	triggerer.loc = locate(x + x_move, y + y_move,z)
 
 	if(do_save && is_advanced(triggerer))
@@ -70,6 +74,6 @@
 	do_save = TRUE
 
 /obj/trigger/jumploc/save_and_west
-	x_move = 0
-	y_move = -2
+	x_move = -2
+	y_move = 0
 	do_save = TRUE

@@ -43,6 +43,7 @@
 
 /obj/item/organ/hand/reptile/left
 	name = "left reptile hand"
+	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/inventory/organs/left_hand_worn,
@@ -67,6 +68,7 @@
 
 /obj/item/organ/hand/reptile_advanced/left
 	name = "left advanced reptile hand"
+	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/inventory/organs/left_hand_worn,
@@ -95,6 +97,7 @@
 
 /obj/item/organ/hand/diona/left
 	name = "left diona hand"
+	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
 		/obj/inventory/organs/left_hand_worn,

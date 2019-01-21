@@ -33,7 +33,7 @@ var/global/list/all_living = list()
 	all_living += src
 
 	if(ai)
-		ai = new(src)
+		ai = new ai(src)
 
 /mob/living/Initialize()
 	for(var/k in starting_factions)

@@ -40,7 +40,10 @@
 /proc/is_hair(var/atom/A)
 	return istype(A,/obj/item/organ/hair/)
 
-proc/is_bullet_gun(var/atom/A)
+/proc/is_ranged_gun(var/atom/A)
+	return istype(A,/obj/item/weapon/ranged/)
+
+/proc/is_bullet_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/bullet/)
 
 /proc/is_magazine(var/atom/A)
@@ -49,11 +52,11 @@ proc/is_bullet_gun(var/atom/A)
 /proc/is_bullet(var/atom/A)
 	return istype(A,/obj/item/bullet/)
 
-proc/is_movable(var/atom/A)
+/proc/is_movable(var/atom/A)
 	return istype(A,/atom/movable/)
 
-proc/is_organ(var/atom/A)
+/proc/is_organ(var/atom/A)
 	return istype(A,/obj/item/organ)
 
-proc/is_wishgranter(var/atom/A)
+/proc/is_wishgranter(var/atom/A)
 	return istype(A,/obj/structure/interactive/wishgranter)
