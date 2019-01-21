@@ -9,6 +9,8 @@
 	eye_color_default = "#88FF88"
 	color_skin_default = "#BC9D58"
 	color_hair_default = "#008800"
+	color_secondary_default = "#719333"
+	color_glow_default = "#B2F861"
 
 	hair_style_default = "diona"
 

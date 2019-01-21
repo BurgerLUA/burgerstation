@@ -8,7 +8,11 @@
 	var/flags_chargen = CHARGEN_NONE
 
 	var/eye_color_default = "#FF0000"
+
+
 	var/color_skin_default = "#0000FF"
+	var/color_secondary_default = "#FFFFFF"
+	var/color_glow_default = "#FFFFFF"
 	var/color_hair_default = "#00FF00"
 	var/hair_style_default = "bald"
 

@@ -40,7 +40,6 @@
 
 /obj/item/bullet/proc/spend_bullet()
 	is_spent = TRUE
-	update_icon()
 	queue_delete(src,600)
 
 /obj/item/bullet/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet/transfer_target,location,control,params,var/display_message = TRUE)

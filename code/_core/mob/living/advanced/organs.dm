@@ -32,22 +32,13 @@
 		for(var/key in mob_species.spawning_organs_male)
 			add_organ(mob_species.spawning_organs_male[key])
 
-/mob/living/advanced/proc/add_organ(var/obj/item/organ/O,var/color_skin,var/item_color,var/style)
+/mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 	O = new O
 	O.loc = src
 
 	if(labeled_organs[O.attach_flag])
 		var/obj/item/organ/A = labeled_organs[O.attach_flag]
 		O.attach_to(A)
-
-	if(color_skin)
-		O.color_skin = color_skin
-
-	if(item_color)
-		O.color = item_color
-
-	if(style)
-		O.style = style
 
 	organs += O
 	if(O.id)

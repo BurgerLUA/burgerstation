@@ -48,7 +48,7 @@
 	if(the_target.clicked_by_object(caller,the_hand,location,control,params))
 		return TRUE
 
-	if(is_inventory(the_hand) && is_item(the_target)) //We have an empty hand and the object we're clicking on is an item.
+	if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it.
 		var/obj/inventory/I = the_hand
 		if(is_inventory(object)) //The target is actually inside the object, which is an inventory
 			var/obj/inventory/I2 = object

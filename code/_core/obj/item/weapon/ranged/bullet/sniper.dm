@@ -8,7 +8,7 @@
 	damage_type = /damagetype/sword/
 
 	bullet_speed = 31
-	shoot_delay = 3
+	shoot_delay = 20
 
 	automatic = FALSE
 
@@ -19,6 +19,7 @@
 	shoot_sounds = list('sounds/weapon/ranged/gunshot_saw.ogg')
 
 	can_wield = TRUE
+	wield_only = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper/get_static_spread() //Base spread
 	return 0

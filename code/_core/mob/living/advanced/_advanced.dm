@@ -265,8 +265,8 @@ mob/living/advanced/Login()
 		H.update_icon()
 
 /mob/living/advanced/proc/add_species_colors()
-	change_color_skin(mob_species.color_skin_default)
-	change_eye_color(mob_species.eye_color_default)
+	change_color_skin(mob_species.color_skin_default,mob_species.color_secondary_default,mob_species.color_glow_default)
+	change_color_eye(mob_species.eye_color_default)
 	change_hair_style(mob_species.hair_style_default)
 	change_color_hair(mob_species.color_hair_default)
 
@@ -310,7 +310,7 @@ mob/living/advanced/Login()
 
 	if(update) update_icon()
 
-/mob/living/advanced/proc/change_eye_color(var/new_color, var/update = TRUE)
+/mob/living/advanced/proc/change_color_eye(var/new_color, var/update = TRUE)
 
 	for(var/obj/item/organ/O in organs)
 		if(O.id == BODY_EYE_RIGHT || O.id == BODY_EYE_LEFT)

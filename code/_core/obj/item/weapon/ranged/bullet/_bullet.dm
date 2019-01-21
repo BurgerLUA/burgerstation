@@ -28,11 +28,13 @@
 	for(var/obj/item/bullet/B in stored_bullet_casings)
 		stored_bullet_casings -= B
 		B.loc = new_loc
+		B.update_icon()
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller, var/new_loc)
 	for(var/obj/item/bullet/B in stored_bullets)
 		stored_bullets -= B
 		B.loc = new_loc
+		B.update_icon()
 
 /obj/item/weapon/ranged/bullet/proc/spend_bullet()
 	if(length(stored_bullets)) //Spend a bullet

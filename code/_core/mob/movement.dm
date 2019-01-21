@@ -19,7 +19,7 @@
 		on_walk()
 
 	else if(can_sprint())
-		. *= 0.5
+		. *= 0.75
 		on_sprint()
 
 	return .

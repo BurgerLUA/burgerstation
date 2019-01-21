@@ -23,8 +23,7 @@
 /obj/item/organ/eye/reptile
 	name = "right reptile eye"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
-	break_threshold = 5
-	health_max = 15
+
 
 /obj/item/organ/eye/reptile/left
 	name = "left reptile eye"
@@ -36,8 +35,7 @@
 /obj/item/organ/eye/reptile_advanced
 	name = "right advanced reptile eye"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
-	break_threshold = 5
-	health_max = 15
+
 
 /obj/item/organ/eye/reptile_advanced/left
 	name = "left advanced reptile eye"

@@ -1,7 +1,8 @@
 /obj/item/clothing/click_on_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(caller == object && is_advanced(object)) //Auto-equip.
-		return quick_equip(caller)
+		quick_equip(caller)
+		return TRUE
 
 	return FALSE
 

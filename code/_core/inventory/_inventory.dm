@@ -133,6 +133,7 @@
 	return TRUE
 
 /obj/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE)
+
 	if(!can_wear_object(I,messages))
 		return FALSE
 

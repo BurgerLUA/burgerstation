@@ -154,6 +154,7 @@ window "input_output_and_info"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -167,13 +168,13 @@ window "input_output_and_info"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
 		right = "input_output"
 		is-vert = false
 		splitter = 25
-		lock = right
 
 window "main"
 	elem "main"
@@ -182,6 +183,7 @@ window "main"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -194,13 +196,14 @@ window "main"
 		size = 1280x720
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "splitter"
 		left = "map"
 		right = "input_output_and_info"
 		is-vert = true
-		lock = right
+		splitter = 75
 
 window "map"
 	elem "map"

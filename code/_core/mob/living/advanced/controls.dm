@@ -41,10 +41,10 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)
 			I.click_on_object(src,object,location,control,params)
 
 /mob/living/advanced/on_left_drop(var/atom/src_object,over_object,src_location,over_location,src_control,over_control,aug)
-	src_object.drop_on_object(src,over_object)
+	if(src_object) src_object.drop_on_object(src,over_object)
 
 /mob/living/advanced/on_right_drop(var/atom/src_object,over_object,src_location,over_location,src_control,over_control,aug)
-	src_object.drop_on_object(src,over_object)
+	if(src_object) src_object.drop_on_object(src,over_object)
 
 
 

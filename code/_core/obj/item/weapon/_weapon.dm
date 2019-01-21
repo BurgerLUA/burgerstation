@@ -1,6 +1,9 @@
 /obj/item/weapon/
 	var/wielded = FALSE
 	var/can_wield = FALSE
+	var/wield_only = FALSE //Set to true if you can only attack with this while wielded.
+
+
 	var/open = FALSE //Mainly used for ranged weapons, can be used for melee I guess
 
 	var/override_icon_state = FALSE
@@ -44,6 +47,11 @@
 	..()
 
 /obj/item/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(wield_only && !wielded)
+		caller.to_chat(span("notice","You can only attack with this when wielded! (CTRL+CLICK)"))
+		return TRUE
+
 	return src.attack(caller,object,params)
 
 /obj/item/weapon/click_self(var/mob/caller)

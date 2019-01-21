@@ -27,8 +27,7 @@
 //Reptile Feral
 /obj/item/organ/foot/reptile
 	name = "right reptile foot"
-	break_threshold = 25
-	health_max = 35
+
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
 	inventories = list(/obj/inventory/organs/right_foot)
@@ -49,8 +48,7 @@
 //Reptile Advanced
 /obj/item/organ/foot/reptile_advanced
 	name = "right advanced reptile foot"
-	break_threshold = 25
-	health_max = 35
+
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
 	inventories = list(/obj/inventory/organs/right_foot)
@@ -69,8 +67,7 @@
 //Reptile Advanced
 /obj/item/organ/foot/diona
 	name = "right diona foot"
-	break_threshold = 25
-	health_max = 35
+
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 
 	inventories = list(/obj/inventory/organs/right_foot)
@@ -78,6 +75,8 @@
 
 	enable_color = TRUE
 	enable_glow = TRUE
+
+	flags_organ = FLAG_ORGAN_BEAST_FEET
 
 /obj/item/organ/foot/diona/left
 	name = "left diona foot"

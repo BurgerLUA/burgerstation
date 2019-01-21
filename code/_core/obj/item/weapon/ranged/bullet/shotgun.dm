@@ -8,7 +8,7 @@
 	ranged_damage_type = /damagetype/ranged/shotgun
 	damage_type = /damagetype/sword/
 
-	bullet_speed = 31
+	bullet_speed = 16
 	bullet_count = 8
 	shoot_delay = 1
 

@@ -23,8 +23,7 @@
 	name = "reptile head"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	desc = "An organ."
-	break_threshold = 50
-	health_max = 75
+
 	inventories = list(
 		/obj/inventory/organs/head,
 		/obj/inventory/organs/face,
@@ -40,8 +39,7 @@
 	name = "advanced reptile head"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	desc = "An organ."
-	break_threshold = 50
-	health_max = 75
+
 	inventories = list(
 		/obj/inventory/organs/head,
 		/obj/inventory/organs/face,
@@ -59,8 +57,7 @@
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 	icon_state = BODY_HEAD
 	desc = "An organ."
-	break_threshold = 50
-	health_max = 75
+
 	inventories = list(
 		/obj/inventory/organs/head,
 		/obj/inventory/organs/face,

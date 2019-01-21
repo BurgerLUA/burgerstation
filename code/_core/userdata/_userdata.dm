@@ -37,20 +37,22 @@
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
 		var/o_type = loaded_data["organs"][id]["type"]
 
-		var/o_color
-		var/o_color_skin
-		var/o_style
+		var/obj/item/organ/O = A.add_organ(o_type)
 
 		if(loaded_data["organs"][id]["color"])
-			o_color = loaded_data["organs"][id]["color"]
+			O.color = loaded_data["organs"][id]["color"]
 
 		if(loaded_data["organs"][id]["color_skin"])
-			o_color_skin = loaded_data["organs"][id]["color_skin"]
+			O.color_skin = loaded_data["organs"][id]["color_skin"]
+
+		if(loaded_data["organs"][id]["color_glow"])
+			O.color_glow = loaded_data["organs"][id]["color_glow"]
+
+		if(loaded_data["organs"][id]["color_secondary"])
+			O.color_secondary = loaded_data["organs"][id]["color_secondary"]
 
 		if(loaded_data["organs"][id]["style"])
-			o_style = loaded_data["organs"][id]["style"]
-
-		var/obj/item/organ/O = A.add_organ(o_type,o_color_skin,o_color,o_style)
+			O.style = loaded_data["organs"][id]["style"]
 
 		O.update_icon()
 
@@ -307,8 +309,13 @@
 		var/obj/item/organ/O = I
 		if(O.color_skin && lowertext(O.color_skin) != "#ffffff")
 			returning_list["color_skin"] = O.color_skin
+		if(O.color_secondary && lowertext(O.color_secondary) != "#ffffff")
+			returning_list["color_secondary"] = O.color_secondary
+		if(O.color_glow && lowertext(O.color_glow) != "#ffffff")
+			returning_list["color_glow"] = O.color_glow
 		if(O.style)
 			returning_list["style"] = O.style
+
 
 	if(is_bullet(I))
 		var/obj/item/bullet/B = I

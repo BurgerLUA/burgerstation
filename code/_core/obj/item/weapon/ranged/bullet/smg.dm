@@ -7,7 +7,7 @@
 	ranged_damage_type = /damagetype/ranged/smg_45
 	damage_type = /damagetype/sword/
 
-	bullet_speed = 31
+	bullet_speed = 20
 	shoot_delay = 1
 
 	automatic = TRUE

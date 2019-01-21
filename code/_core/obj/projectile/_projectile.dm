@@ -58,7 +58,11 @@
 
 	update_icon()
 
-	animate(src, pixel_x = pixel_x + vel_x*lifetime, pixel_y = pixel_y + vel_y*lifetime, time = lifetime*0.5)
+	var/matrix/M = matrix()
+	M.Translate(vel_x*lifetime,vel_y*lifetime)
+
+	animate(src, transform = M, time = lifetime*0.5)
+	//animate(src, pixel_x = pixel_x + vel_x*lifetime, pixel_y = pixel_y + vel_y*lifetime, time = lifetime*0.5)
 
 /obj/projectile/update_icon()
 	var/icon/I = icon(icon,icon_state = icon_state)

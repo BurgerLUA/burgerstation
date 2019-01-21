@@ -20,8 +20,6 @@
 //Reptile Feral
 /obj/item/organ/groin/reptile
 	name = "reptile groin"
-	break_threshold = 75
-	health_max = 100
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
 /obj/item/organ/groin/reptile/female
@@ -31,8 +29,6 @@
 //Reptile Advanced
 /obj/item/organ/groin/reptile_advanced
 	name = "reptile groin"
-	break_threshold = 75
-	health_max = 100
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
 /obj/item/organ/groin/reptile_advanced/female
@@ -44,8 +40,6 @@
 	name = "diona groin"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 	icon_state = BODY_GROIN
-	break_threshold = 75
-	health_max = 100
 
 	enable_color = TRUE
 	enable_glow = TRUE

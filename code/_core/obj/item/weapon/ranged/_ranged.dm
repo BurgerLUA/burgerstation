@@ -44,6 +44,10 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(wield_only && !wielded)
+		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
+		return TRUE
+
 	if(!automatic)
 		if(shoot(caller,object,location,params))
 			return TRUE
@@ -144,7 +148,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	return TRUE
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
-	if(!automatic || defer_attack(caller,object,location,null,params) || object.plane > 1)
+	if(!automatic || defer_attack(caller,object,location,null,params) || (object && object.plane > 1))
 		return TRUE
 	shoot(caller,object,location,params)
 

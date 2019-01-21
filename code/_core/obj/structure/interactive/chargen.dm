@@ -198,7 +198,7 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				while(TRUE)
 					var/eye_color = input(caller,"Which eye color do you wish to have?") in valid_colors
 					INTERACT_CHECK
-					A.change_eye_color(valid_colors[eye_color])
+					A.change_color_eye(valid_colors[eye_color])
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your eye color?") in list("Yes, keep it.","No, I want a new one.")
 					INTERACT_CHECK

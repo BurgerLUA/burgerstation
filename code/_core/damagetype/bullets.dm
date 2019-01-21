@@ -2,7 +2,7 @@
 	name = "bullet"
 
 	base_attack_damage = list(
-		BRUTE = 30,
+		BRUTE = 35,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
@@ -42,7 +42,7 @@
 	name = "bullet"
 
 	base_attack_damage = list(
-		BRUTE = 20,
+		BRUTE = 25,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
@@ -123,7 +123,7 @@
 	name = "bullet"
 
 	base_attack_damage = list(
-		BRUTE = 15,
+		BRUTE = 12,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
@@ -163,7 +163,7 @@
 	name = "bullet"
 
 	base_attack_damage = list(
-		BRUTE = 300,
+		BRUTE = 90,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
