@@ -42,10 +42,7 @@
 	var/atom/the_hand = src.defer_click_on_object()
 	var/atom/the_target = object.defer_click_on_object()
 
-	if(the_hand == the_target && the_hand.click_self(caller))
-		return TRUE
-
-	if(the_target.clicked_by_object(caller,the_hand,location,control,params))
+	if((caller.attack_flags & ATTACK_SELF || the_hand == the_target) && the_hand.click_self(caller))
 		return TRUE
 
 	if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it.
@@ -58,10 +55,13 @@
 		else if(I.add_object(the_target)) //The target is not inside an inventory.
 			return TRUE
 
-	else if(is_inventory(the_target) && is_item(the_hand))
+	else if(is_inventory(the_target) && is_item(the_hand)) //We want to move the item to the target.
 		var/obj/inventory/I = the_target
-		if(I.owner == caller && I.click_on_object(caller,the_hand,location,control,params))
-			return TRUE
+		I.add_object(the_hand)
+		return TRUE
+
+	if(the_target.clicked_by_object(caller,the_hand,location,control,params))
+		return TRUE
 
 	if(is_item(the_hand))
 		var/obj/item/O = the_hand

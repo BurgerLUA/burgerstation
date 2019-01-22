@@ -9,6 +9,8 @@
 
 	var/icon_state_open = "inventory"
 
+	var/insert_limit = 1 //How many bullets are you allowed to insert at once?
+
 
 /obj/item/weapon/ranged/bullet/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 

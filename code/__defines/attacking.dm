@@ -4,6 +4,7 @@
 #define ATTACK_HELD_LEFT 0x8
 #define ATTACK_HELD_RIGHT 0x10
 #define ATTACK_GRAB 0x20
+#define ATTACK_SELF 0x40
 
 
 

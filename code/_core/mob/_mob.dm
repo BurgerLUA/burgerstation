@@ -19,6 +19,9 @@ var/global/list/all_mobs = list()
 	movement_delay = 4
 	attack_delay = 10
 
+	var/attack_turn = 0
+	var/attack_turn_delay = 10
+
 	var/auto_resist = FALSE
 
 /mob/Initialize()
@@ -48,6 +51,9 @@ var/global/list/all_mobs = list()
 		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
+	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
+
+	if(attack_turn <= curtime)
+		dir = movement_dir
 
 	return TRUE

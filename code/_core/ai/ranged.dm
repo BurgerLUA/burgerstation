@@ -1,11 +1,7 @@
 /ai/ranged/
 	name = "Ranged AI"
-	radius_find_enemy = 18
+	radius_find_enemy = 12
 	attack_delay = SECONDS_TO_TICKS(0.25)
-
-ai/ranged/New()
-	..()
-	attack_ticks = rand(1,attack_delay)
 
 /ai/ranged/handle_attacking()
 

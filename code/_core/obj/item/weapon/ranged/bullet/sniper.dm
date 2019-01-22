@@ -16,7 +16,7 @@
 
 	bullet_type = ".50"
 
-	shoot_sounds = list('sounds/weapon/ranged/gunshot_saw.ogg')
+	shoot_sounds = list('sounds/weapon/ranged/bullet/heavy_sniper.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

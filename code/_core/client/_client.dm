@@ -24,6 +24,8 @@ var/global/list/all_clients = list()
 
 	mouse_pointer_icon = 'icons/pointer.dmi'
 
+	var/swap_mouse = FALSE
+
 	//lazy_eye = 5
 
 /client/New()
@@ -81,25 +83,51 @@ var/global/list/all_clients = list()
 
 	..()
 
+/client/verb/change_click_mode()
+	set name = "Swap Click Mode"
+	set category = "Preferences"
+	swap_mouse = !swap_mouse
+	if(swap_mouse)
+		src << "Right clicking will now activate the object in your right hand, and vice versa."
+	else
+		src << "Left clicking will now activate the object in your right hand, and vice versa."
+
+/client/proc/get_actual_click_flags(aug)
+
+	var/returning = 0x0
+	if(swap_mouse ? ("left" in aug) :("right" in aug))
+		returning |= CLICK_RIGHT
+
+	if(swap_mouse ? ("right" in aug) : ("left" in aug))
+		returning |= CLICK_LEFT
+
+	if("middle" in aug)
+		returning |= CLICK_MIDDLE
+
+	return returning
+
 /client/MouseDown(var/atom/object,location,control,params)
 
 	store_new_params(object,location,params)
 
 	var/list/aug = params2list(params)
+	var/click_flags = get_actual_click_flags(aug)
 
 	if(mob.movement_flags & MOVEMENT_WALKING)
 		object.examine(mob)
 		return
 
-	if("left" in aug)
+
+
+	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT
 		mob.on_left_down(object,location,control,aug)
 
-	if("right" in aug)
+	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags |= ATTACK_HELD_RIGHT
 		mob.on_right_down(object,location,control,aug)
 
-	if("middle" in aug)
+	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_down(object,location,control,aug)
 
 	..()
@@ -108,14 +136,15 @@ var/global/list/all_clients = list()
 /client/Click(var/atom/object,location,control,params)
 
 	var/list/aug = params2list(params)
+	var/click_flags = get_actual_click_flags(aug)
 
-	if("left" in aug)
+	if(click_flags & CLICK_LEFT)
 		mob.on_left_click(object,location,control,aug)
 
-	if("right" in aug)
+	if(click_flags & CLICK_RIGHT)
 		mob.on_right_click(object,location,control,aug)
 
-	if("middle" in aug)
+	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_click(object,location,control,aug)
 
 	..()
@@ -123,11 +152,12 @@ var/global/list/all_clients = list()
 /client/MouseUp(object,location,control,params)
 
 	var/list/aug = params2list(params)
+	var/click_flags = get_actual_click_flags(aug)
 
-	if("left" in aug)
+	if(click_flags & CLICK_LEFT)
 		mob.attack_flags &= ~ATTACK_HELD_LEFT
 
-	if("right" in aug)
+	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
 
 	..()
@@ -138,14 +168,15 @@ var/global/list/all_clients = list()
 		return
 
 	var/list/aug = params2list(params)
+	var/click_flags = get_actual_click_flags(aug)
 
-	if("left" in aug)
+	if(click_flags & CLICK_LEFT)
 		mob.on_left_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
 
-	if("right" in aug)
+	if(click_flags & CLICK_RIGHT)
 		mob.on_right_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
 
-	if("middle" in aug)
+	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
 
 	..()

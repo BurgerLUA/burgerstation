@@ -12,7 +12,9 @@
 		"Ctrl" = "crouch",
 		"R" = "throw",
 		"Q" = "drop",
-		"Space" = "kick"
+		"Space" = "kick",
+		"C" = "quick_self",
+		"Tab" = "change_focus"
 	)
 
 /datum/macros/New(var/client/spawning_owner)
@@ -39,6 +41,8 @@
 				owner.mob.attack_flags |= ATTACK_KICK
 			if("grab")
 				owner.mob.attack_flags |= ATTACK_GRAB
+			if("quick_self")
+				owner.mob.attack_flags |= ATTACK_SELF
 
 	return TRUE
 
@@ -65,5 +69,10 @@
 				owner.mob.attack_flags &= ~ATTACK_KICK
 			if("grab")
 				owner.mob.attack_flags &= ~ATTACK_GRAB
+			if("quick_self")
+				owner.mob.attack_flags &= ~ATTACK_SELF
+			if("change_focus")
+				winset(owner,null,"map.map.focus = true")
+
 
 	return TRUE

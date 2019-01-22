@@ -49,9 +49,14 @@
 	stored_item = /obj/item/clothing/mask/gas/clown
 
 //Weapons
-/obj/structure/interactive/localmachine/item/weapon/revolver
+/obj/structure/interactive/localmachine/item/weapon/detective
 	stored_item = /obj/item/weapon/ranged/bullet/revolver/detective/
 	icon = 'icons/obj/items/weapons/ranged/revolver.dmi'
+	icon_state = "inventory"
+
+/obj/structure/interactive/localmachine/item/weapon/mateba
+	stored_item = /obj/item/weapon/ranged/bullet/revolver/mateba/
+	icon = 'icons/obj/items/weapons/ranged/mateba.dmi'
 	icon_state = "inventory"
 
 /obj/structure/interactive/localmachine/item/weapon/assault_rifle
@@ -69,6 +74,13 @@
 	icon = 'icons/obj/items/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 
+/obj/structure/interactive/localmachine/item/weapon/combat_shotgun
+	stored_item = /obj/item/weapon/ranged/bullet/pump/combat_shotgun
+	icon = 'icons/obj/items/weapons/ranged/combat_shotgun.dmi'
+	icon_state = "inventory_open"
+
+
+
 /obj/structure/interactive/localmachine/item/weapon/sword
 	stored_item = /obj/item/weapon/melee/sword
 
@@ -76,8 +88,11 @@
 	stored_item = /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
 
 //Ammo
-/obj/structure/interactive/localmachine/item/ammo/revolver
+/obj/structure/interactive/localmachine/item/ammo/revolver_38
 	stored_item = /obj/item/magazine/clip/revolver/bullet_38/
+
+/obj/structure/interactive/localmachine/item/ammo/revolver_44
+	stored_item = /obj/item/magazine/clip/revolver/bullet_44/
 
 /obj/structure/interactive/localmachine/item/ammo/assault_rifle
 	stored_item = /obj/item/magazine/rifle_762/

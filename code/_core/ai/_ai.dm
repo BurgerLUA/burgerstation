@@ -23,6 +23,11 @@
 /ai/New(var/mob/living/desired_owner)
 	owner = desired_owner
 
+	//Randomize starting dicks so it's desynced with other AI units.
+	attack_ticks = rand(1,attack_delay)
+	movement_ticks = rand(1,movement_delay)
+	objective_ticks = rand(1,objective_delay)
+
 /ai/proc/on_life()
 	handle_objectives()
 	handle_movement()

@@ -1,0 +1,161 @@
+"aa" = (/turf/simulated/wall/metal2,/area)
+"ab" = (/turf/simulated/wall/metal2/wall{icon_state = "wall"; dir = 8},/area)
+"ac" = (/turf/simulated/wall/metal2/wall,/area)
+"ad" = (/turf/simulated/floor/tile,/area)
+"ae" = (/turf/simulated/floor/tile/blue,/area)
+"af" = (/turf/simulated/floor/tile/yellow,/area)
+"ag" = (/turf/simulated/floor/tile/green,/area)
+"ah" = (/turf/simulated/floor/tile/red,/area)
+"ai" = (/turf/simulated/floor/tile/dark,/area)
+"aj" = (/turf/simulated/wall/metal2/corner{icon_state = "corner"; dir = 8},/area)
+"ak" = (/turf/simulated/wall/metal2/corner{icon_state = "corner"; dir = 4},/area)
+"al" = (/turf/simulated/wall/metal2/corner,/area)
+"am" = (/turf/simulated/wall/metal2/corner{icon_state = "corner"; dir = 1},/area)
+"an" = (/obj/marker/spawnpoint/mob/arena_red,/turf/simulated/floor/tile/red,/area)
+"ao" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/blue,/area)
+"ap" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/yellow,/area)
+"aq" = (/obj/marker/spawnpoint/ghost,/turf/simulated/wall/metal2,/area)
+"ar" = (/obj/marker/spawnpoint/ghost,/turf/simulated/wall/metal2/wall{icon_state = "wall"; dir = 8},/area)
+"as" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/dark,/area)
+"at" = (/obj/marker/spawnpoint/ghost,/turf/simulated/wall/metal2/wall,/area)
+"au" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/green,/area)
+"av" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/red,/area)
+"aw" = (/obj/effect/fake_lighting/gradient,/turf/simulated/floor/tile/blue,/area)
+"ax" = (/obj/effect/fake_lighting/gradient,/turf/simulated/floor/tile/yellow,/area)
+"ay" = (/obj/effect/fake_lighting/gradient,/obj/trigger/jumploc/save_and_north,/turf/simulated/floor/tile/green,/area)
+"az" = (/obj/effect/fake_lighting/gradient,/obj/trigger/jumploc/save_and_north,/turf/simulated/floor/tile/red,/area)
+"aA" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/turf/simulated/floor/tile/blue,/area)
+"aB" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/obj/trigger/jumploc/save_and_west,/turf/simulated/floor/tile/yellow,/area)
+"aC" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/turf/simulated/floor/tile/green,/area)
+"aD" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/obj/trigger/jumploc/save_and_south,/turf/simulated/floor/tile/blue,/area)
+"aE" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/turf/simulated/floor/tile/green,/area)
+"aF" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/turf/simulated/floor/tile/red,/area)
+"aG" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/obj/trigger/jumploc/save_and_south,/turf/simulated/floor/tile/yellow,/area)
+"aH" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/obj/trigger/jumploc/save_and_west,/turf/simulated/floor/tile/red,/area)
+"aI" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/obj/trigger/jumploc/save_and_east,/turf/simulated/floor/tile/blue,/area)
+"aJ" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/turf/simulated/floor/tile/yellow,/area)
+"aK" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/obj/trigger/jumploc/save_and_east,/turf/simulated/floor/tile/green,/area)
+"aL" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/turf/simulated/floor/tile/red,/area)
+"aM" = (/turf/simulated/wall/light,/area)
+"aN" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/red,/turf/simulated/floor/tile/red,/area)
+"aO" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/green,/turf/simulated/floor/tile/green,/area)
+"aP" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/blue,/turf/simulated/floor/tile/blue,/area)
+"aQ" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/yellow,/turf/simulated/floor/tile/yellow,/area)
+"aR" = (/obj/structure/interactive/chargen_mirror{pixel_x = 32},/turf/simulated/floor/tile,/area)
+"aS" = (/obj/structure/interactive/chargen_mirror{pixel_y = -32},/turf/simulated/floor/tile,/area)
+"aT" = (/obj/structure/interactive/chargen_mirror{pixel_y = -32},/obj/structure/interactive/chargen_mirror{pixel_x = 32},/turf/simulated/floor/tile,/area)
+"aU" = (/obj/structure/interactive/chargen_mirror{pixel_y = 32},/turf/simulated/floor/tile,/area)
+"aV" = (/obj/structure/interactive/chargen_mirror{pixel_y = -32},/obj/structure/interactive/chargen_mirror{pixel_x = -32},/turf/simulated/floor/tile,/area)
+"aW" = (/obj/structure/interactive/chargen_mirror{pixel_x = 32},/obj/structure/interactive/chargen_mirror{pixel_y = 32},/turf/simulated/floor/tile,/area)
+"aX" = (/obj/structure/interactive/chargen_mirror{pixel_y = 32},/obj/structure/interactive/chargen_mirror{pixel_x = -32},/turf/simulated/floor/tile,/area)
+"aY" = (/obj/structure/interactive/chargen_mirror{pixel_x = -32},/turf/simulated/floor/tile,/area)
+"aZ" = (/obj/structure/interactive/localmachine/item/weapon/revolver,/turf/simulated/floor/tile,/area)
+"ba" = (/obj/structure/interactive/localmachine/item/ammo/revolver,/obj/structure/interactive/localmachine/item/ammo/revolver,/turf/simulated/floor/tile,/area)
+"bb" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile,/area)
+"bc" = (/obj/structure/interactive/localmachine/item/weapon/dbarrel,/turf/simulated/floor/tile,/area)
+"bd" = (/obj/structure/interactive/localmachine/item/ammo/smg,/obj/structure/interactive/localmachine/item/ammo/smg,/turf/simulated/floor/tile,/area)
+"be" = (/obj/structure/interactive/localmachine/item/weapon/smg,/turf/simulated/floor/tile,/area)
+"bf" = (/obj/structure/interactive/localmachine/item/clothing/armor,/turf/simulated/floor/tile,/area)
+"bg" = (/obj/structure/interactive/localmachine/item/clothing/coat,/turf/simulated/floor/tile,/area)
+"bh" = (/obj/structure/interactive/localmachine/item/clothing/pants,/turf/simulated/floor/tile,/area)
+"bi" = (/obj/structure/interactive/localmachine/item/clothing/shoe_left,/obj/structure/interactive/localmachine/item/clothing/shoe_right,/turf/simulated/floor/tile,/area)
+"bj" = (/obj/structure/interactive/localmachine/item/clothing/clownmask,/turf/simulated/floor/tile,/area)
+"bk" = (/obj/structure/interactive/localmachine/item/clothing/sunglasses,/turf/simulated/floor/tile,/area)
+"bl" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/blue,/area)
+"bm" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/yellow,/area)
+"bn" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/green,/area)
+"bo" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/red,/area)
+"bp" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/blue,/area)
+"bq" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/yellow,/area)
+"br" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/green,/area)
+"bs" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/red,/area)
+"bt" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/heavy_snip,/turf/simulated/floor/tile/blue,/area)
+"bu" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/sniper50,/turf/simulated/floor/tile/yellow,/area)
+"bv" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/sniper50,/turf/simulated/floor/tile/green,/area)
+"bw" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/sniper50,/turf/simulated/floor/tile/red,/area)
+"bx" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile,/area)
+"by" = (/obj/marker/spawnpoint/mob/arena_yellow,/turf/simulated/floor/tile/yellow,/area)
+"bz" = (/obj/marker/spawnpoint/mob/arena_green,/turf/simulated/floor/tile/green,/area)
+"bA" = (/obj/structure/interactive/localmachine/item/ammo/smg,/turf/simulated/floor/tile,/area)
+"bB" = (/obj/marker/spawnpoint/mob/arena_blue,/turf/simulated/floor/tile/blue,/area)
+"bC" = (/obj/structure/interactive/localmachine/item/ammo/revolver,/turf/simulated/floor/tile/blue,/area)
+"bD" = (/obj/structure/interactive/localmachine/item/ammo/revolver,/turf/simulated/floor/tile/yellow,/area)
+"bE" = (/obj/structure/interactive/localmachine/item/ammo/revolver,/turf/simulated/floor/tile/green,/area)
+"bF" = (/obj/structure/interactive/localmachine/item/ammo/revolver,/turf/simulated/floor/tile/red,/area)
+"bG" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/blue,/area)
+"bH" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/yellow,/area)
+"bI" = (/turf/simulated/floor/red_sand,/area)
+"bJ" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/red_sand,/area)
+"bK" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/green,/area)
+"bL" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/red,/area)
+"bM" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/red,/area)
+"bN" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/green,/area)
+"bO" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/blue,/area)
+"bP" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/yellow,/area)
+
+(1,1,1) = {"
+aaabababababababababaaababababababababababababababababababababababababababababababababababababababababababaaabababababababababaa
+acaeaeaeaeaeaeaZbabaacaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiacaZbabaafafafafafafac
+acaeaeaeaeaeaebcbbbbacaeaeadadadbIbIbIbIbIadadadaeaeaaababababababababababaaafafadadadbIbIbIbIbIadadadafafacbcbbbbafafafafafafac
+acaeaeaeaeaeaebebdbdacbBadadamadbIbIbIbIbIbAamadadaeacadadadadadadadadadadacafadadambAbIbIbIbIbIadamadadbyacbebdbdafafafafafafac
+acaeaeaeaeaeaeaeaeaaaaaaadadacadbIbIbIbIbIbAacadadaeaaadadaabxadadbxaaadadaaafadadacbAbIbIbIbIbIadacadadaaaaaaafafafafafafafafac
+acaeaeaeaeaPaeaeaeaIaMaAadadacadbIbIbIbIbIbAacadadaeadadadadadbcbcadadadadadafadadacbAbIbIbIbIbIadacadadaJaMaBafafafaQafafafafac
+acaeaeaeaeaeaeaeaeaaaaaaadadacadbIbIbIbIbIbAacadadaeaaadadaabxadadbxaaadadaaafadadacbAbIbIbIbIbIadacadadaaaaaaafafafafafafafafac
+acbfbkadaeaeaeadadaRacbBadadaladbIbIbIbIbIbAaladadaeacadadadadadadadadadadacafadadalbAbIbIbIbIbIadaladadbyacaYadadafafafbfbkadac
+acbgbjadaeaeaeadadaRacaeaeadadadbIbIbIbIbIadadadaeaeaaababababababababababaaafafadadadbIbIbIbIbIadadadafafacaYadadafafafbgbjadac
+acbhbiadaaaDaaaSaSaTacbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIacaVaSaSaaaGaabhbiadac
+aaabababaaaMaaabababaabIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaaababababababababababaabIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaaabababaaaMaaabababaa
+acaiaebBaaawaabBaebIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIacadadadadadadadadadadacbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIafbyaaaxaabyafaiac
+acaiaeadadadadadaebIbIbIaeaeaaabaabIbIaaabababaabIbIaaadadaabxadadbxaaadadaabIbIaaabababaabIbIaaabaaafafbIbIbIafadadadadadafaiac
+acaiadadadadadadadbIbIbIaeaeaeaeacbIbIacaeaeaeacbIbIadadadadadbcbcadadadadadbIbIacafafafacbIbIacafafafafbIbIbIadadadadadadadaiac
+acaiadajabababakadbIbIbIaaaeaebOacbIbIacaeaeaeaabIbIaaadadaabxadadbxaaadadaabIbIaaafafafacbIbIacbPafafaabIbIbIadajabababakadaiac
+acaiadadadadadadadbIbIbIacaebObGacbIbIacaeaeaeaebIbIacadadadadadadadadadadacbIbIafafafafacbIbIacbHbPafacbIbIbIadadadadadadadaiac
+acaibIbIbIbIbIbIbIbIbIbIaaabababaabIbIaaabaaaeaebIbIaaababababababababababaabIbIafafaaabaabIbIaaabababaabIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIaaabababaabIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaaabababaabIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIacaeaeaeacbIbIbIbIbIbIbIbIbIbIbIbIbIbCbCbDbDbIbIbIbIbIbIbIbIbIbIbIbIbIacafafafacbIbIbIbIbIbIbIbIbIbIaiac
+acaiadbAbAbAbAbAadbIbIbIacaeaeaeaabIbIbIbIbIbIbIbIbIbIbIbIbIaaababaabIbIbIbIbIbIbIbIbIbIbIbIbIaaafafafacbIbIbIadbAbAbAbAbAadaiac
+acaiadajabababakadbIbIbIacaeaeaeaebIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIafafafafacbIbIbIadajabababakadaiac
+acaiadadadadadadadbIbIbIaaabaaaeaebIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIafafaaabaabIbIbIadadadadadadadaiac
+acaiaeadadadadadaebIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIafadadadadadafaiac
+acaiaeaeaeaeaeaeaebIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbJaqarararaqaoasasapaqarararaqbJbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIafafafafafafafaiac
+acaiaaabaaadaaabaabIaaabaaadaaabaabIbIbIbIbIbIbIbJatblbpaoaoaoasasapapapbqbmatbJbIbIbIbIbIbIbIaaabaaadaaabaabIaaabaaadaaabaaaiac
+acaiacadadadadadacbIacadadadadadacbIbIbIbIbIbIbIbJatbpaoaoaoaoasasapapapapbqatbJbIbIbIbIbIbIbIacadadadadadacbIacadadadadadacaiac
+acaiacadadadadadacbIacadadadadadacbIbIbIbIbIbIbIbJataoaoaoaoaoasasapapapapapatbJbIbIbIbIbIbIbIacadadadadadacbIacadadadadadacaiac
+acaiacadaaadaaadacbIacadaaadaaadacbIbIbIbIbIbIbIbJaqaoaoaoaoaoasasapapapapapaqbJbIbIbIbIbIbIbIacadaaadaaadacbIacadaaadaaadacaiac
+acaiacadbxadbxadacbIacadbxadbxadacbIbIbIbCaabIbIbJaoaoaoaoaoaqasasaqapapapapapbJbIbIaabDbIbIbIacadbxadbxadacbIacadbxadbxadacaiac
+acaiacadadbcadadacbIacadadbcadadacbIbIbIbCacbIbIbJasasasasasasbtbuasasasasasasbJbIbIacbDbIbIbIacadadbcadadacbIacadadbcadadacaiac
+acaiacadadbcadadacbIacadadbcadadacbIbIbIbEacbIbIbJasasasasasasbvbwasasasasasasbJbIbIacbFbIbIbIacadadbcadadacbIacadadbcadadacaiac
+acaiacadbxadbxadacbIacadbxadbxadacbIbIbIbEaabIbIbJauauauauauaqasasaqavavavavavbJbIbIaabFbIbIbIacadbxadbxadacbIacadbxadbxadacaiac
+acaiacadaaadaaadacbIacadaaadaaadacbIbIbIbIbIbIbIbJaqauauauauauasasavavavavavaqbJbIbIbIbIbIbIbIacadaaadaaadacbIacadaaadaaadacaiac
+acaiacadadadadadacbIacadadadadadacbIbIbIbIbIbIbIbJatauauauauauasasavavavavavatbJbIbIbIbIbIbIbIacadadadadadacbIacadadadadadacaiac
+acaiacadadadadadacbIacadadadadadacbIbIbIbIbIbIbIbJatbrauauauauasasavavavavbsatbJbIbIbIbIbIbIbIacadadadadadacbIacadadadadadacaiac
+acaiaaabaaadaaabaabIaaabaaadaaabaabIbIbIbIbIbIbIbJatbnbrauauauasasavavavbsboatbJbIbIbIbIbIbIbIaaabaaadaaabaabIaaabaaadaaabaaaiac
+acaiagagagagagagagbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbJaqarararaqauasasavaqarararaqbJbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIahahahahahahahaiac
+acaiagadadadadadagbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbJbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIahadadadadadahaiac
+acaiadadadadadadadbIbIbIaaabaaagagbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIahahaaabaabIbIbIadadadadadadadaiac
+acaiadajabababakadbIbIbIacagagagagbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIahahahahacbIbIbIadajabababakadaiac
+acaiadbAbAbAbAbAadbIbIbIacagagagaabIbIbIbIbIbIbIbIbIbIbIbIbIaaababaabIbIbIbIbIbIbIbIbIbIbIbIbIaaahahahacbIbIbIadbAbAbAbAbAadaiac
+acaibIbIbIbIbIbIbIbIbIbIacagagagacbIbIbIbIbIbIbIbIbIbIbIbIbIbEbEbFbFbIbIbIbIbIbIbIbIbIbIbIbIbIacahahahacbIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIaaabababaabIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaaabababaabIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaiac
+acaibIbIbIbIbIbIbIbIbIbIaaabababaabIbIaaabaaagagbIbIaaababababababababababaabIbIahahaaabaabIbIaaabababaabIbIbIbIbIbIbIbIbIbIaiac
+acaiadadadadadadadbIbIbIacagbNbKacbIbIacagagagagbIbIacadadadadadadadadadadacbIbIahahahahacbIbIacbLbMahacbIbIbIadadadadadadadaiac
+acaiadajabababakadbIbIbIaaagagbNacbIbIacagagagaabIbIaaadadaabxadadbxaaadadaabIbIaaahahahacbIbIacbMahahaabIbIbIadajabababakadaiac
+acaiadadadadadadadbIbIbIagagagagacbIbIacagagagacbIbIadadadadadbcbcadadadadadbIbIacahahahacbIbIacahahahahbIbIbIadadadadadadadaiac
+acaiagadadadadadagbIbIbIagagaaabaabIbIaaabababaabIbIaaadadaabxadadbxaaadadaabIbIaaabababaabIbIaaabaaahahbIbIbIahadadadadadahaiac
+acaiagbzaaaEaabzagbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIacadadadadadadadadadadacbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIahanaaaFaaanahaiac
+aaabababaaaMaaabababaabIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaaababababababababababaabIbIbIbIbIbIbIbIbIbIbIbIbIbIbIaaabababaaaMaaabababaa
+acbfbkadaaayaaaUaUaWacbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIbIacaXaUaUaaazaabfbkadac
+acbgbjadagagagadadaRacagagadadadbIbIbIbIbIadadadagagaaababababababababababaaahahadadadbIbIbIbIbIadadadahahacaYadadahahahbgbjadac
+acbhbiadagagagadadaRacbzadadamadbIbIbIbIbIadamadadagacadadadadadadadadadadacahadadamadbIbIbIbIbIadamadadanacaYadadahahahbhbiadac
+acagagagagagagagagaaaaaaadadacadbIbIbIbIbIadacadadagaaadadaabxadadbxaaadadaaahadadacadbIbIbIbIbIadacadadaaaaaaahahahahahahahahac
+acagagagagaOagagagaKaMaCadadacadbIbIbIbIbIadacadadagadadadadadbcbcadadadadadahadadacadbIbIbIbIbIadacadadaLaMaHahahahaNahahahahac
+acagagagagagagagagaaaaaaadadacadbIbIbIbIbIadacadadagaaadadaabxadadbxaaadadaaahadadacadbIbIbIbIbIadacadadaaaaaaahahahahahahahahac
+acagagagagagagaZbabaacbzadadaladbIbIbIbIbIadaladadagacadadadadadadadadadadacahadadaladbIbIbIbIbIadaladadanacaZbabaahahahahahahac
+acagagagagagagbcbbbbacagagadadadbIbIbIbIbIadadadagagaaababababababababababaaahahadadadbIbIbIbIbIadadadahahacbcbbbbahahahahahahac
+acagagagagagagbebdbdacaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiacbebdbdahahahahahahac
+aaababababababababababaaabababababababababababababababababababababababababababababababababababababababababaaabababababababababaa
+"}

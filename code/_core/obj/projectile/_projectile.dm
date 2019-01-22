@@ -135,7 +135,7 @@
 			if(A == owner)
 				continue
 
-			if(A.density || is_mob(A))
+			if(A.density || is_living(A))
 				if(on_hit(A))
 					return
 

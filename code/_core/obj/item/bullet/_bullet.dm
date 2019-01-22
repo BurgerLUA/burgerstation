@@ -129,7 +129,7 @@
 	var/transfered_bullets = 0
 	var/transfer_self = FALSE
 
-	var/bullets_to_add = min(bullet_count,transfer_target.bullet_capacity - transfer_target.get_ammo_count())
+	var/bullets_to_add = min(bullet_count,transfer_target.bullet_capacity - transfer_target.get_ammo_count(),transfer_target.insert_limit)
 	for(var/i=1,i<=bullets_to_add,i++)
 		bullet_count -= 1
 		transfered_bullets += 1

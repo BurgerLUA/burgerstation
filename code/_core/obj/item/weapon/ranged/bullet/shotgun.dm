@@ -18,6 +18,8 @@
 
 	bullet_type = "shotgun"
 
+	insert_limit = 2
+
 	shoot_sounds = list('sounds/weapon/ranged/shotgun.ogg')
 
 

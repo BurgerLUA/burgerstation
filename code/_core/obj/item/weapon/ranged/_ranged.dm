@@ -66,6 +66,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 
 	//caller.move_delay = max(caller.move_delay,0.5)
 	caller.face_atom(object)
+	caller.attack_turn = curtime + caller.attack_turn_delay
 
 	/*
 	if(!caller.can_attack(object,params))

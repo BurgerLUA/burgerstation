@@ -20,4 +20,7 @@ proc/format_speech(var/atom/source,var/text,var/talk_type)
 	return html
 
 proc/format_speaker(var/atom/source,var/tag = "")
-	return span(tag,trim("[tag] \icon[source] [source]"))
+	if(is_mob(source))
+		return span(tag,trim("[tag] \icon[source.icon] [source]"))
+	else
+		return span(tag,trim("[tag] [source]"))
