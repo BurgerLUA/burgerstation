@@ -102,10 +102,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		var/icon_pos_x = 0
 		var/icon_pos_y = 0
 
-		if(params["icon-x"])
+		if(params && params["icon-x"])
 			icon_pos_x = text2num(params["icon-x"])
 
-		if(params["icon-y"])
+		if(params && params["icon-y"])
 			icon_pos_y = text2num(params["icon-y"])
 
 		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16

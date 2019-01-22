@@ -3,7 +3,7 @@ var/global/list/obj/projectile/all_projectiles = list()
 /datum/subsystem/projectile/
 	name = "Projectile Subsystem"
 	desc = "Controls projectiles."
-	tick_rate = 3
+	tick_rate = DECISECONDS_TO_TICKS(0.5)
 	priority = 98
 	priority = SS_ORDER_THROWING
 

@@ -2,7 +2,7 @@ var/global/list/active_sounds = list()
 
 /datum/subsystem/sound/
 	name = "Sound Subsystem"
-	tick_rate = 1
+	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_SOUND
 
 /datum/subsystem/sound/on_life()

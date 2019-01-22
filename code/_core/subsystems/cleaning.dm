@@ -4,7 +4,7 @@ var/list/objects_to_delete = list()
 	name = "Class Subsystem"
 	desc = "Stores all the known classes in a list."
 	priority = SS_ORDER_DELETE
-	tick_rate = 60
+	tick_rate = SECONDS_TO_TICKS(10)
 
 /datum/subsystem/delete/on_life()
 
@@ -12,7 +12,8 @@ var/list/objects_to_delete = list()
 		var/time_to_delete = objects_to_delete[object_to_delete]
 		if(time_to_delete > curtime)
 			continue
-
+		if(!is_turf(object_to_delete.loc))
+			continue
 		del(object_to_delete)
 
 	return TRUE

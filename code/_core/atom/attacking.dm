@@ -41,17 +41,13 @@
 
 	switch(DT.handle_dodge(attacker,victim,object_to_damage_with,object_to_damage))
 		if(DODGE_MISS)
-			DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
-			return FALSE
+			if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
 		if(DODGE_BLOCK)
-			victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)
-			return FALSE
+			if(victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
 		if(DODGE_PARRY)
-			victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)
-			return FALSE
+			if(victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
 		if(DODGE_DODGE)
-			victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)
-			return FALSE
+			if(victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
 
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
@@ -87,12 +83,12 @@
 
 /atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
-	return FALSE
+	return TRUE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
 	DT.display_miss_message(attacker,src,weapon,target,"parried")
-	return FALSE
+	return TRUE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	DT.display_miss_message(attacker,src,weapon,target,"dodged")
-	return FALSE
+	return TRUE

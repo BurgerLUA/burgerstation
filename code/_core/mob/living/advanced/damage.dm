@@ -43,13 +43,24 @@
 	var/atom/right_hand = get_right_hand()
 	var/atom/left_hand = get_left_hand()
 
-	var/atom/object_to_parry = right_hand ? right_hand : left_hand
-	if(!object_to_parry)
+	var/list/cheap_list = list()
+
+	if(is_weapon(right_hand))
+		var/obj/item/weapon/W = right_hand
+		if(W.can_parry(attacker,weapon,target,DT,allow_parry_counter))
+			cheap_list += right_hand
+
+	if(is_weapon(left_hand))
+		var/obj/item/weapon/W = left_hand
+		if(W.can_parry(attacker,weapon,target,DT,allow_parry_counter))
+			cheap_list += left_hand
+
+	if(!length(cheap_list))
 		return FALSE
 
-	if(allow_parry_counter && is_obj(object_to_parry))
-		var/obj/O = object_to_parry
+	var/obj/item/weapon/W = pick(cheap_list)
 
+	if(allow_parry_counter)
 		var/pixel_x_offset = prob(50) ? -8 : 8
 		var/pixel_y_offset = prob(50) ? -8 : 8
 
@@ -58,17 +69,14 @@
 
 		move_delay += ATTACK_ANIMATION_LENGTH
 
-		//DT.do_miss_sound(attacker,src,weapon,target)
 		DT.do_attack_animation(attacker,src,weapon,target)
 		DT.display_miss_message(attacker,src,weapon,target,"parried")
 
-		if(!O.click_on_object(src,attacker))
+		if(!W.click_on_object(src,attacker))
 			return FALSE
 
 		return TRUE
 	else
 		DT.display_miss_message(attacker,src,weapon,target,"parried")
-		if(allow_parry_counter)
-			object_to_parry.attack(src,attacker)
 		return
 

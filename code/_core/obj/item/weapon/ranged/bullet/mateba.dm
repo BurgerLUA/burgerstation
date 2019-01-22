@@ -8,8 +8,8 @@
 	ranged_damage_type = /damagetype/ranged/revolver_44
 	damage_type = /damagetype/blunt/pistol
 
-	bullet_speed = 31
-	shoot_delay = 2
+	bullet_speed = 20
+	shoot_delay = 3
 
 	automatic = FALSE
 

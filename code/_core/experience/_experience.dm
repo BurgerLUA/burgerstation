@@ -32,6 +32,8 @@
 	return ceiling( (level*experience_multiplier) ** experience_power)
 
 /experience/proc/set_level(var/level)
+	if(!ENABLE_XP)
+		return FALSE
 	experience = level_to_xp(clamp(level,1,max_level))
 
 /experience/proc/get_current_level()
@@ -41,12 +43,16 @@
 	return experience
 
 /experience/proc/add_xp(var/xp_to_add)
+	if(!ENABLE_XP)
+		return FALSE
 	experience += xp_to_add
 	var/current_level = get_current_level()
 	if(last_level != current_level)
 		on_level_up(last_level,current_level)
 
 /experience/proc/set_xp(var/new_xp)
+	if(!ENABLE_XP)
+		return FALSE
 	experience = new_xp
 
 /experience/proc/get_power(var/min=1,var/max=100)

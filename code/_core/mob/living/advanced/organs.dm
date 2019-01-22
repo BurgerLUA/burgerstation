@@ -33,6 +33,7 @@
 			add_organ(mob_species.spawning_organs_male[key])
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
+
 	O = new O
 	O.loc = src
 

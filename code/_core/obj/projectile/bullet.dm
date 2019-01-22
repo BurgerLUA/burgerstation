@@ -3,6 +3,19 @@
 
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 
+
+	if(is_living(owner) && is_living(hit_atom) && hit_atom != owner)
+		var/mob/living/living_owner = owner
+		var/mob/living/living_target = hit_atom
+
+		if(length(living_target.factions) && length(living_owner.factions))
+			for(var/id in living_owner.factions)
+				if(!living_target.factions[id])
+					continue
+				var/faction/F = all_factions[id]
+				if(!F.can_damage_team())
+					return FALSE
+
 	if(weapon && is_ranged_gun(weapon))
 		var/obj/item/weapon/ranged/G = weapon
 		if(G.ranged_damage_type)

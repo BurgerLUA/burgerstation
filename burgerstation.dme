@@ -14,6 +14,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "code\__defines\_config.dm"
 #include "code\__defines\attacking.dm"
 #include "code\__defines\attributes.dm"
 #include "code\__defines\bodyparts.dm"
@@ -85,7 +86,6 @@
 #include "code\_core\client\chat\_chat.dm"
 #include "code\_core\client\chat\formatting.dm"
 #include "code\_core\client\chat\stylesheet.dm"
-#include "code\_core\client\debug\verbs.dm"
 #include "code\_core\client\macros\_macros.dm"
 #include "code\_core\damagetype\_damagetype.dm"
 #include "code\_core\damagetype\blunt.dm"
@@ -222,6 +222,7 @@
 #include "code\_core\obj\item\organs\internal\_internal.dm"
 #include "code\_core\obj\item\weapon\_weapon.dm"
 #include "code\_core\obj\item\weapon\melee\_melee.dm"
+#include "code\_core\obj\item\weapon\melee\energy.dm"
 #include "code\_core\obj\item\weapon\melee\rocks.dm"
 #include "code\_core\obj\item\weapon\melee\swords.dm"
 #include "code\_core\obj\item\weapon\melee\toolboxes.dm"
@@ -278,7 +279,6 @@
 #include "code\_core\subsystems\factions.dm"
 #include "code\_core\subsystems\hair.dm"
 #include "code\_core\subsystems\health.dm"
-#include "code\_core\subsystems\matrix.dm"
 #include "code\_core\subsystems\mobs.dm"
 #include "code\_core\subsystems\projectiles.dm"
 #include "code\_core\subsystems\skills.dm"
