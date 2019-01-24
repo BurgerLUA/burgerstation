@@ -59,6 +59,13 @@
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return TRUE
 
+obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
+	caller.to_chat(span("danger","*click click*"))
+	var/area/A = get_area(caller.loc)
+	play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	return FALSE
+
+
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
 
 	if(!object)
@@ -82,10 +89,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	next_shoot_time = curtime + shoot_delay
 
 	if(!can_gun_shoot(caller))
-		caller.to_chat(span("danger","*click click*"))
-		var/area/A = get_area(caller.loc)
-		play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		return FALSE
+		return handle_empty(caller)
 
 	handle_ammo(caller)
 	update_icon()
@@ -142,11 +146,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 				var/obj/projectile/P = new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y)
 				if(get_dist(caller,object) <= 1 && is_mob(object))
 					P.on_hit(object)
-
-
-
 			else
-				return FALSE
+				continue
 
 	return TRUE
 

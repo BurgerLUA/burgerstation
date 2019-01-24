@@ -5,11 +5,13 @@
 	return TRUE
 
 /atom/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save)
-	var/icon_blend/IB = new(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_should_save)
 	if(blend_exists(desired_id))
 		change_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type)
-	additional_blends[desired_id] = IB
-	return IB
+		return additional_blends[desired_id]
+	else
+		var/icon_blend/IB = new(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_should_save)
+		additional_blends[desired_id] = IB
+		return IB
 
 /atom/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type)
 	if(!additional_blends[desired_id])

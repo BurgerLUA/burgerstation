@@ -76,7 +76,6 @@
 obj/inventory/clicked_by_object(caller,object,location,control,params)
 	if(is_inventory(object) && transfer_inventory_to_inventory(object))
 		return TRUE
-
 	return ..()
 
 obj/inventory/proc/transfer_inventory_to_inventory(var/obj/inventory/I)
@@ -110,9 +109,6 @@ obj/inventory/defer_click_on_object()
 
 	if(length(src.held_objects))
 		return src.get_top_held_object()
-
-	if(length(src.worn_objects))
-		return src.get_top_worn_object()
 
 	return src
 

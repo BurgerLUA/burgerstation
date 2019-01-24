@@ -142,5 +142,10 @@
 
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
 	all_projectiles -= src
+	post_on_hit(hit_atom)
 	del(src)
+	return TRUE
+
+
+/obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 	return TRUE

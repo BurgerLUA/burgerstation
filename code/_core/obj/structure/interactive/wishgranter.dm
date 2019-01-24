@@ -1,9 +1,16 @@
+var/list/all_wishgranters = list()
+
+
 obj/structure/interactive/wishgranter
 	name = "wishgranter"
 	desc = "What secrets does this hold?"
 	density = 0
 	icon = 'icons/obj/structure/future/wishgranter.dmi'
 	icon_state = "wishgranter"
+
+obj/structure/interactive/wishgranter/New()
+	..()
+	all_wishgranters += src
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction
 	var/faction_to_join

@@ -10,7 +10,7 @@
 
 	bullet_speed = 16
 	bullet_count = 8
-	shoot_delay = 1
+	shoot_delay = 2
 
 	automatic = FALSE
 

@@ -63,3 +63,6 @@
 
 proc/is_weapon(var/atom/A)
 	return istype(A,/obj/item/weapon/)
+
+proc/is_scroll(var/atom/A)
+	return istype(A,/obj/item/weapon/ranged/magic/scroll/)

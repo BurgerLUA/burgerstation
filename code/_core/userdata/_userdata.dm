@@ -389,6 +389,8 @@
 	return returning_list
 
 /userdata/proc/apply_blend_data(var/atom/A, var/list/blend_data)
+
+	world.log << "ATTEMPTING TO APPLY BLEND DATA FOR [A]..."
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
 		var/desired_id = value_or_null(blend_list,"id")
@@ -397,4 +399,5 @@
 		var/desired_color = value_or_null(blend_list,"color")
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
+		world.log << "APPLYING BLEND DATA [desired_id] AND [desired_color] TO [A]."
 		A.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,1)

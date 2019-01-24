@@ -9,3 +9,10 @@
 		'sounds/effects/footsteps/grass3.ogg',
 		'sounds/effects/footsteps/grass4.ogg'
 	)
+
+
+/turf/simulated/floor/grass/New()
+	var/lightness = 255 - (x + y)*0.5
+	lightness += rand(-5,0)
+	color = rgb(lightness,lightness,lightness)
+	..()
