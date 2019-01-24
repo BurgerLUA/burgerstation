@@ -19,7 +19,6 @@
 	name = "reptile right arm"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
-
 /obj/item/organ/arm/reptile/left
 	name = "reptile left arm"
 	id = BODY_ARM_LEFT
@@ -39,10 +38,20 @@
 /obj/item/organ/arm/diona
 	name = "diona right arm"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
-	enable_color = TRUE
 	enable_glow = TRUE
+	enable_detail = TRUE
 
 /obj/item/organ/arm/diona/left
 	name = "diona left arm"
+	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT
+
+//Cyborg
+/obj/item/organ/arm/cyborg
+	name = "cyborg right arm"
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+
+/obj/item/organ/arm/cyborg/left
+	name = "cyborg left arm"
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT

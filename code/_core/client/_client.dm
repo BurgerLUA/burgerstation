@@ -30,6 +30,8 @@ var/global/list/all_clients = list()
 
 /client/New()
 
+	world.update_status()
+
 	if(!button_tracker)
 		button_tracker = new(src)
 
@@ -53,7 +55,20 @@ var/global/list/all_clients = list()
 	if(usr) //The only time usr should ever be allowed.
 		return ..()
 
+	welcome()
+
 	make_ghost(pick(observer_spawnpoints))
+	update_zoom(0.01)
+
+/client/proc/welcome()
+	src << "<title>Welcome to Burgerstation 13</title>"
+	src << "This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed."
+	src << "If you wish to join the discord, please do so here: https://discord.gg/yEaV92a"
+
+/client/Del()
+	all_clients -= src
+	world.update_status()
+	..()
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE

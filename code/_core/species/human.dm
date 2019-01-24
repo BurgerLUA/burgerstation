@@ -6,11 +6,11 @@
 
 	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
 
-	eye_color_default = "#000000"
-	color_skin_default = "#e0b19d"
-	color_hair_default = "#000000"
+	default_color_eye = "#000000"
+	default_color_skin = "#e0b19d"
+	default_color_hair = "#000000"
 
-	hair_style_default = "greytide"
+	default_icon_state_hair = "hair_a"
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,

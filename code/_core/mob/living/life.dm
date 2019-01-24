@@ -32,7 +32,7 @@
 
 	if(!(status & FLAG_STATUS_STUN) && stun_time > 0)
 		status |= FLAG_STATUS_STUN
-		animate(src,transform = turn(matrix().Translate(10,0), 90), time = 1)
+		animate(src,transform = turn(matrix(), 90), time = 1)
 		on_stunned()
 
 	if(status & FLAG_STATUS_DEAD)

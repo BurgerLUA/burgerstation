@@ -91,12 +91,38 @@
 
 	damage_type = /damagetype/unarmed/fists/
 
-	enable_color = TRUE
 	enable_glow = TRUE
+	enable_detail = TRUE
 
 
 /obj/item/organ/hand/diona/left
 	name = "left diona hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/inventory/organs/left_hand_worn,
+		/obj/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	damage_type = /damagetype/unarmed/fists/left
+
+
+//Cyborg
+/obj/item/organ/hand/cyborg
+	name = "right cyborg hand"
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+	inventories = list(
+		/obj/inventory/organs/right_hand_worn,
+		/obj/inventory/organs/right_hand_held
+	)
+
+	damage_type = /damagetype/unarmed/fists/
+
+
+/obj/item/organ/hand/cyborg/left
+	name = "left cyborg hand"
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(

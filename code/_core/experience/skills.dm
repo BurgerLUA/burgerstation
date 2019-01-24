@@ -146,7 +146,7 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 
-/experience/skill/reality_magic/ //WILLPOWER
+/experience/skill/chaos_magic/ //WILLPOWER
 	name = "Chaos Magic"
 	id = SKILL_MAGIC_CHAOS
 	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."

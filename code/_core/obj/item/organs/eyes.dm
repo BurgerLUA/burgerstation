@@ -13,6 +13,10 @@
 	has_dropped_icon = TRUE
 	has_dropped_icon_underlay = TRUE
 
+
+/obj/item/organ/eye/initialize_blends()
+	add_blend("eye", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
+
 /obj/item/organ/eye/left
 	name = "left eye"
 	id = BODY_EYE_LEFT
@@ -41,4 +45,18 @@
 	name = "left advanced reptile eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
+
+
+
+//Cyborg
+/obj/item/organ/eye/cyborg
+	name = "right cyborg optical sensor"
+	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+
+
+/obj/item/organ/eye/cyborg/left
+	name = "left cyborg optical sensor"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT
+
 

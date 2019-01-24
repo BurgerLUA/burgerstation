@@ -33,11 +33,12 @@
 
 	density = FALSE
 
+	var/list/additional_blends = list()
 
-
-
+	var/override_icon = FALSE
 
 /atom/proc/Initialize()
+	initialize_blends()
 	//Initialize things here
 	initialized = TRUE
 	update_health()

@@ -24,18 +24,38 @@
 	var/style
 
 	color = "#FFFFFF"
-	var/color_skin = "#FFFFFF"
-	var/color_secondary = "#FFFFFF"
-	var/color_glow = "#FFFFFF"
-
-	var/enable_color = FALSE
-	var/enable_glow = FALSE
 
 	no_held_draw = TRUE
+
+	var/enable_skin = TRUE
+	var/enable_glow = FALSE
+	var/enable_detail = FALSE
+	var/enable_wounds = FALSE
+
+/obj/item/organ/initialize_blends()
+
+	if(enable_skin)
+		add_blend("skin", desired_color = "#FF0000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
+
+	/*
+	if(enable_glow)
+		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#888888", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_EXTERNAL_ONLY)
+
+	if(enable_detail)
+		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_detail", desired_color = "#888888", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_EXTERNAL_ONLY)
+
+	if(enable_wounds)
+		add_blend("skin_bruises", desired_icon = icon, desired_icon_state = "bruises", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
+		add_blend("skin_cuts", desired_icon = icon, desired_icon_state = "cuts", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
+		add_blend("skin_burns", desired_icon = icon, desired_icon_state = "burns", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
+	*/
+
+	..()
 
 /obj/item/organ/New()
 	..()
 	attached_organs = list()
+	initialize_blends()
 
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)
 	attached_organ = O
@@ -62,6 +82,7 @@
 		src.loc = T
 
 	update_icon()
+	queue_delete(src,600)
 
 /obj/item/organ/proc/unattach_children(var/turf/T)
 	for(var/obj/item/organ/O in attached_organs)
@@ -81,9 +102,10 @@
 	if(A) //A might've gotten removed here
 		A.update_icon()
 
-	new /obj/effect/gibs/random/(T,"#FF0000",color_skin)
+	//new /obj/effect/gibs/random/(T,"#FF0000",color_secondary) TODO COLOR
 	del(src)
 
+/*
 /obj/item/organ/update_icon()
 	. = ..()
 
@@ -133,6 +155,7 @@
 	icon = base_icon
 
 	return TRUE
+*/
 
 /obj/item/organ/update_health(var/damage_dealt)
 

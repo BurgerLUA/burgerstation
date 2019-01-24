@@ -144,7 +144,7 @@
 
 	hit_object.update_health(damage_dealt)
 
-	if(is_living(attacker))
+	if(is_living(attacker) && victim && attacker != victim)
 		var/mob/living/A = attacker
 		for(var/skill in skill_xp_per_damage)
 			var/xp_to_give = floor(skill_xp_per_damage[skill] * damage_dealt * victim.get_xp_multiplier())

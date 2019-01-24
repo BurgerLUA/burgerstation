@@ -119,7 +119,7 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				if(!A.labeled_organs[BODY_HAIR_HEAD])
 					A.to_chat("You don't have any hair!")
 					continue
-				var/obj/item/organ/hair/O = A.labeled_organs[BODY_HAIR_HEAD]
+
 				var/list/name_to_id = list()
 
 				for(var/id in hair_types)
@@ -130,7 +130,8 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				while(TRUE)
 					var/hair_style = input(caller,"Which hair style do you wish to have?") in name_to_id
 					INTERACT_CHECK
-					O.style = name_to_id[hair_style]
+					var/hair/H = hair_types[name_to_id[hair_style]]
+					A.change_organ_visual("hair_head", desired_icon_state = H.icon_state)
 					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your hair_style?") in list("Yes, keep it.","No, I want a new one.")
@@ -142,13 +143,14 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				if(!A.labeled_organs[BODY_HAIR_HEAD])
 					A.to_chat("You don't have any hair!")
 					continue
-				var/obj/item/organ/hair/O = A.labeled_organs[BODY_HAIR_HEAD]
+				//var/obj/item/organ/hair/O = A.labeled_organs[BODY_HAIR_HEAD]
+
 				var/list/valid_colors = A.mob_species.chargen_hair_colors
 
 				while(TRUE)
 					var/color_hair = input(caller,"Which hair color do you wish to have?") in valid_colors
 					INTERACT_CHECK
-					O.color_skin = valid_colors[color_hair]
+					A.change_organ_visual("hair_head", desired_color = valid_colors[color_hair])
 					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your hair color?") in list("Yes, keep it.","No, I want a new one.")
@@ -161,7 +163,8 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				while(TRUE)
 					var/color_skin = input(caller,"Which skin color do you wish to have?") in valid_colors
 					INTERACT_CHECK
-					A.change_color_skin(valid_colors[color_skin])
+					A.change_organ_visual("skin", desired_color = valid_colors[color_skin])
+					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your skin color?") in list("Yes, keep it.","No, I want a new one.")
 					INTERACT_CHECK
@@ -173,7 +176,8 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				while(TRUE)
 					var/color_glow = input(caller,"Which skin color do you wish to have?") in valid_colors
 					INTERACT_CHECK
-					A.change_glow_color(valid_colors[color_glow])
+					A.change_organ_visual("skin_glow", desired_color = valid_colors[color_glow])
+					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your glow color?") in list("Yes, keep it.","No, I want a new one.")
 					INTERACT_CHECK
@@ -185,7 +189,8 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				while(TRUE)
 					var/color_detail = input(caller,"Which detail color do you wish to have?") in valid_colors
 					INTERACT_CHECK
-					A.change_secondary_color(valid_colors[color_detail])
+					A.change_organ_visual("skin_detail", desired_color = valid_colors[color_detail])
+					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your detail color?") in list("Yes, keep it.","No, I want a new one.")
 					INTERACT_CHECK
@@ -196,9 +201,10 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 				var/list/valid_colors = A.mob_species.chargen_eye_colors
 
 				while(TRUE)
-					var/eye_color = input(caller,"Which eye color do you wish to have?") in valid_colors
+					var/color_eye = input(caller,"Which eye color do you wish to have?") in valid_colors
 					INTERACT_CHECK
-					A.change_color_eye(valid_colors[eye_color])
+					A.change_organ_visual("eye", desired_color = valid_colors[color_eye])
+					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your eye color?") in list("Yes, keep it.","No, I want a new one.")
 					INTERACT_CHECK

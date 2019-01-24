@@ -38,7 +38,7 @@
 
 
 	base_attack_damage = list(
-		BRUTE = 0,
+		BRUTE = 1,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0

@@ -78,3 +78,22 @@
 	inventories = list(
 		/obj/inventory/organs/left_ear
 	)
+
+
+//Reptile Advanced
+/obj/item/organ/ear/cyborg
+	name = "right cyborg sensor"
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+	inventories = list()
+	inventories = list(
+		/obj/inventory/organs/right_ear
+	)
+
+/obj/item/organ/ear/cyborg/left
+	name = "left cyborg sensor"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT
+
+	inventories = list(
+		/obj/inventory/organs/left_ear
+	)

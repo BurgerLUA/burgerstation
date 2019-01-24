@@ -47,10 +47,10 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)
 	if(src_object) src_object.drop_on_object(src,over_object)
 
 /mob/living/advanced/proc/get_left_hand()
-	return length(left_hand.held_objects) ? left_hand.held_objects[1] : null
+	return left_hand && length(left_hand.held_objects) ? left_hand.held_objects[1] : null
 
 /mob/living/advanced/proc/get_right_hand()
-	return length(right_hand.held_objects) ? right_hand.held_objects[1] : null
+	return right_hand && length(right_hand.held_objects) ? right_hand.held_objects[1] : null
 
 /mob/living/advanced/proc/do_automatic_left()
 	if(automatic_left && client)

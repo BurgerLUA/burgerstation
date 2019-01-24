@@ -73,10 +73,10 @@
 	inventories = list(/obj/inventory/organs/right_foot)
 	damage_type = /damagetype/unarmed/feet/
 
-	enable_color = TRUE
-	enable_glow = TRUE
-
 	flags_organ = FLAG_ORGAN_BEAST_FEET
+
+	enable_glow = TRUE
+	enable_detail = TRUE
 
 /obj/item/organ/foot/diona/left
 	name = "left diona foot"
@@ -88,5 +88,24 @@
 	inventories = list(/obj/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
 
-	enable_color = TRUE
 	enable_glow = TRUE
+	enable_detail = TRUE
+
+//cyborg
+/obj/item/organ/foot/cyborg
+	name = "right cyborg foot"
+
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+
+	inventories = list(/obj/inventory/organs/right_foot)
+	damage_type = /damagetype/unarmed/feet/
+
+/obj/item/organ/foot/cyborg/left
+	name = "left cyborg foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/inventory/organs/left_foot)
+	damage_type = /damagetype/unarmed/feet/left

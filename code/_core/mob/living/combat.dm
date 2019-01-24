@@ -58,7 +58,7 @@
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
 	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
-	move_delay += ATTACK_ANIMATION_LENGTH
+	//move_delay += ATTACK_ANIMATION_LENGTH
 
 	DT.do_miss_sound(attacker,src,weapon,target)
 	DT.do_attack_animation(attacker,src,weapon,target)

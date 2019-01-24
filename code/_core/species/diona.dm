@@ -6,13 +6,13 @@
 
 	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_DETAIL | CHARGEN_COLOR_GLOW
 
-	eye_color_default = "#88FF88"
-	color_skin_default = "#BC9D58"
-	color_hair_default = "#008800"
-	color_secondary_default = "#719333"
-	color_glow_default = "#B2F861"
+	default_color_eye = "#88FF88"
+	default_color_skin = "#BC9D58"
+	default_color_hair = "#008800"
+	default_color_detail = "#719333"
+	default_color_glow = "#B2F861"
 
-	hair_style_default = "diona"
+	default_icon_state_hair = "diona"
 
 	genderless = TRUE
 

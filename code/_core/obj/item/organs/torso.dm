@@ -47,5 +47,12 @@
 	icon_state = BODY_TORSO
 	desc = "An organ."
 
-	enable_color = TRUE
 	enable_glow = TRUE
+	enable_detail = TRUE
+
+
+//Cyborg
+/obj/item/organ/torso/cyborg
+	name = "advanced cyborg torso"
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+	desc = "An organ."

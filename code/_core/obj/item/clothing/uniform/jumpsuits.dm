@@ -2,7 +2,7 @@
 	name = "grey suit"
 	desc = "A nice grey suit."
 
-	icon = 'icons/obj/items/clothing/uniforms/grey.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/jumpsuit.dmi'
 
 	inventories = list(
 		/obj/inventory/pocket/pocket01,

@@ -1,0 +1,180 @@
+"aa" = (/turf/simulated/wall/metal2,/area/enviroment/arena)
+"ab" = (/turf/simulated/wall/metal2/wall{icon_state = "wall"; dir = 8},/area/enviroment/arena)
+"ac" = (/turf/simulated/wall/metal2/wall,/area/enviroment/arena)
+"ad" = (/turf/simulated/floor/tile/dark,/area/enviroment/arena)
+"ae" = (/turf/simulated/wall/metal2,/area/enviroment/hanger)
+"af" = (/turf/simulated/wall/metal2/corner{icon_state = "corner"; dir = 1},/area/enviroment/arena)
+"ag" = (/obj/marker/spawnpoint/ghost,/turf/simulated/wall/metal2,/area/enviroment/parking_lot)
+"ah" = (/turf/simulated/wall/metal2/wall{icon_state = "wall"; dir = 8},/area/enviroment/hanger)
+"ai" = (/obj/marker/spawnpoint/ghost,/turf/simulated/wall/metal2/wall{icon_state = "wall"; dir = 8},/area/enviroment/parking_lot)
+"aj" = (/turf/simulated/wall/metal2/wall,/area/enviroment/hanger)
+"ak" = (/turf/simulated/wall/metal2/corner,/area/enviroment/arena)
+"al" = (/turf/simulated/floor/red_sand,/area/enviroment/arena)
+"am" = (/obj/structure/interactive/chargen_mirror{pixel_y = 32},/turf/simulated/floor/tile/blue,/area/enviroment/hanger)
+"an" = (/obj/structure/interactive/chargen_mirror{pixel_y = 32},/turf/simulated/floor/tile/yellow,/area/enviroment/hanger)
+"ao" = (/turf/simulated/floor/tile/blue,/area/enviroment/hanger)
+"ap" = (/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aq" = (/turf/simulated/floor/tile/yellow,/area/enviroment/hanger)
+"ar" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/blue,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"as" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/obj/trigger/jumploc/save_and_east,/turf/simulated/floor/tile/blue,/area/enviroment/hanger)
+"at" = (/turf/simulated/floor/tile,/area/enviroment/arena)
+"au" = (/turf/simulated/wall/light,/area/enviroment/hanger)
+"av" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/obj/trigger/jumploc/save_and_west,/turf/simulated/floor/tile/yellow,/area/enviroment/hanger)
+"aw" = (/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"ax" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/yellow,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"ay" = (/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"az" = (/turf/simulated/floor/tile/yellow,/area/enviroment/arena)
+"aA" = (/turf/simulated/floor/tile/red,/area/enviroment/arena)
+"aB" = (/obj/structure/interactive/localmachine/item/clothing/sunglasses,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aC" = (/obj/structure/interactive/localmachine/item/clothing/gasmask,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aD" = (/obj/structure/interactive/localmachine/item/clothing/coat,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aE" = (/obj/structure/interactive/localmachine/item/clothing/clownmask,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aF" = (/obj/structure/interactive/localmachine/item/clothing/beaverhat,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aG" = (/obj/structure/interactive/localmachine/item/weapon/sword,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aH" = (/obj/structure/interactive/localmachine/item/weapon/dbarrel,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aI" = (/obj/structure/interactive/localmachine/item/weapon/detective,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aJ" = (/obj/structure/interactive/localmachine/item/weapon/smg,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aK" = (/obj/structure/interactive/localmachine/item/clothing/shoe_right,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aL" = (/obj/structure/interactive/localmachine/item/clothing/jumpsuit,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aM" = (/obj/structure/interactive/localmachine/item/clothing/gloves_yellow,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"aN" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"aO" = (/turf/simulated/wall/metal2/corner{icon_state = "corner"; dir = 8},/area/enviroment/arena)
+"aP" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/yellow,/area/enviroment/arena)
+"aQ" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"aR" = (/turf/simulated/wall/metal2/corner{icon_state = "corner"; dir = 4},/area/enviroment/arena)
+"aS" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/blue,/area/enviroment/parking_lot)
+"aT" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/dark,/area/enviroment/parking_lot)
+"aU" = (/obj/structure/interactive/localmachine/item/weapon/combat_shotgun,/turf/simulated/floor/tile/red,/area/enviroment/arena)
+"aV" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/yellow,/area/enviroment/parking_lot)
+"aW" = (/obj/structure/interactive/localmachine/item/weapon/mateba,/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"aX" = (/obj/structure/interactive/localmachine/item/ammo/revolver_44,/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"aY" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/red_sand,/area/enviroment/arena)
+"aZ" = (/obj/marker/spawnpoint/ghost,/turf/simulated/wall/metal2/wall,/area/enviroment/parking_lot)
+"ba" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/blue,/area/enviroment/parking_lot)
+"bb" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/blue,/area/enviroment/parking_lot)
+"bc" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/yellow,/area/enviroment/parking_lot)
+"bd" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/yellow,/area/enviroment/parking_lot)
+"be" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/heavy_snip,/turf/simulated/floor/tile/blue,/area/enviroment/parking_lot)
+"bf" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/sniper50,/turf/simulated/floor/tile/yellow,/area/enviroment/parking_lot)
+"bg" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/sniper50,/turf/simulated/floor/tile/green,/area/enviroment/parking_lot)
+"bh" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/sniper50,/turf/simulated/floor/tile/red,/area/enviroment/parking_lot)
+"bi" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/green,/area/enviroment/parking_lot)
+"bj" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/tile/red,/area/enviroment/parking_lot)
+"bk" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/green,/area/enviroment/parking_lot)
+"bl" = (/obj/structure/interactive/localmachine/item/ammo/revolver_44,/turf/simulated/floor/tile/yellow,/area/enviroment/arena)
+"bm" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/ammo/assault_rifle,/turf/simulated/floor/tile/red,/area/enviroment/parking_lot)
+"bn" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/green,/area/enviroment/parking_lot)
+"bo" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"bp" = (/obj/marker/spawnpoint/ghost,/obj/structure/interactive/localmachine/item/weapon/assault_rifle,/turf/simulated/floor/tile/red,/area/enviroment/parking_lot)
+"bs" = (/obj/structure/interactive/localmachine/item/clothing/boot_left,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bt" = (/obj/structure/interactive/localmachine/item/clothing/black_shoe_left,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bu" = (/obj/structure/interactive/localmachine/item/weapon/energy_sword/blue,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bv" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"bw" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/yellow,/area/enviroment/arena)
+"bx" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"by" = (/obj/structure/interactive/localmachine/item/ammo/revolver_38,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bz" = (/obj/structure/interactive/localmachine/item/ammo/shotgun,/turf/simulated/floor/tile/red,/area/enviroment/arena)
+"bA" = (/obj/structure/interactive/localmachine/item/ammo/smg,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bB" = (/obj/structure/interactive/localmachine/item/weapon/energy_sword/yellow,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bC" = (/obj/structure/interactive/localmachine/item/clothing/shoe_left,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bD" = (/obj/structure/interactive/localmachine/item/clothing/pants,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bE" = (/obj/structure/interactive/localmachine/item/clothing/gloves_yellow/left,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bF" = (/obj/effect/fake_lighting/gradient,/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"bG" = (/obj/effect/fake_lighting/gradient,/turf/simulated/floor/tile/yellow,/area/enviroment/arena)
+"bH" = (/obj/structure/interactive/localmachine/item/clothing/boot_right,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bI" = (/obj/structure/interactive/localmachine/item/clothing/black_shoe_right,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bJ" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"bK" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/turf/simulated/floor/tile/red,/area/enviroment/arena)
+"bL" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"bM" = (/obj/structure/interactive/localmachine/item/weapon/energy_shield/blue,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bN" = (/obj/structure/interactive/localmachine/item/weapon/energy_shield/yellow,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bO" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/turf/simulated/floor/tile/blue,/area/enviroment/arena)
+"bP" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/obj/trigger/jumploc/save_and_south,/turf/simulated/floor/tile/blue,/area/enviroment/hanger)
+"bQ" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/obj/trigger/jumploc/save_and_south,/turf/simulated/floor/tile/yellow,/area/enviroment/hanger)
+"bR" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/turf/simulated/floor/tile/red,/area/enviroment/arena)
+"bS" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/turf/simulated/floor/tile/yellow,/area/enviroment/arena)
+"bT" = (/turf/simulated/floor/tile/green,/area/enviroment/hanger)
+"bU" = (/obj/effect/fake_lighting/gradient,/obj/trigger/jumploc/save_and_north,/turf/simulated/floor/tile/green,/area/enviroment/hanger)
+"bV" = (/turf/simulated/floor/tile/red,/area/enviroment/hanger)
+"bW" = (/obj/effect/fake_lighting/gradient,/obj/trigger/jumploc/save_and_north,/turf/simulated/floor/tile/red,/area/enviroment/hanger)
+"bX" = (/obj/structure/interactive/localmachine/item/weapon/energy_sword/green,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bY" = (/obj/structure/interactive/localmachine/item/weapon/energy_sword/red,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"bZ" = (/obj/structure/interactive/localmachine/item/weapon/energy_shield/green,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"ca" = (/obj/structure/interactive/localmachine/item/weapon/energy_shield/red,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"cb" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/green,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"cc" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 8},/obj/trigger/jumploc/save_and_east,/turf/simulated/floor/tile/green,/area/enviroment/hanger)
+"cd" = (/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 4},/obj/trigger/jumploc/save_and_west,/turf/simulated/floor/tile/red,/area/enviroment/hanger)
+"ce" = (/obj/structure/interactive/wishgranter/spawn_and_join_faction/red,/turf/simulated/floor/tile,/area/enviroment/hanger)
+"cf" = (/obj/structure/interactive/chargen_mirror{pixel_y = -32},/turf/simulated/floor/tile/green,/area/enviroment/hanger)
+"cg" = (/obj/structure/interactive/chargen_mirror{pixel_y = -32},/turf/simulated/floor/tile/red,/area/enviroment/hanger)
+"cq" = (/obj/structure/interactive/localmachine/item/ammo/revolver_44,/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"cr" = (/obj/structure/interactive/localmachine/item/ammo/revolver_44,/turf/simulated/floor/tile/red,/area/enviroment/arena)
+"cs" = (/obj/structure/interactive/localmachine/item/weapon/mateba,/turf/simulated/floor/tile/green,/area/enviroment/arena)
+"ct" = (/obj/structure/interactive/localmachine/item/weapon/mateba,/turf/simulated/floor/tile/red,/area/enviroment/arena)
+
+(1,1,1) = {"
+aeahahahahahahahahahahahahahahahaeababababababababababababababababababababababababababababababaeahahahahahahahahahahahahahahahae
+ajamamamamamamamamamamamamamamamajadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadajanananananananananananananananaj
+ajaoapapapapapapapapapapapapapaoajayayatatatatatayayaeahahahahahahahahahahaeazazatatatatatazazajaqapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaoajayatatatafatatatayajapapapapapapapapapapajazatatatafatatatazajaqapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaeaeaaatatatacatatatayaeapapaebxapapbxaeapapaeazatatatacatatataaaeaeapapapapapapapapapapapapapaqaj
+ajaoapapaparapapapapapapapapapasaubOatatatacatatatayapapapapapaHaHapapapapapazatatatacatatatbSauavapapapapapapapapapaxapapapaqaj
+ajaoapapapapapapapapapapapapapaeaeaaatatatacatatatayaeapapaebxapapbxaeapapaeazatatatacatatataaaeaeapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaoajayatatatakatatatayajapapapapapapapapapapajazatatatakatatatazajaqapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaoajayayatatatatatayayaeahahahahahahahahahahaeazazatatatatatazazajaqapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaoajadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadajaqapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaoajalalalalalalalalalaeahahahahahahahahahahaealalalalalalalalalajaqapapapapapapapapapapapapapaqaj
+ajaoapapapapapapapapapapapapapaoajalalalalalalalalalajapapapapapapapapapapajalalalalalalalalalajaqapapapapapapapapapapapapapaqaj
+ajaoaBaCapapapaDaEaFapaGaHaIaJaoajalalaaabababaaalalaeapapaebxapapbxaeapapaealalaaabababaaalalajaqaBaCaDaEaFapaGaHapapapaIaJaqaj
+ajaoaKaLapapapaMbsbtapbubxbybAaoajalalacayayayacalalapapapapapaHaHapapapapapalalacazazazacalalajaqaKaLaMbsbtapbBbxapapapbybAaqaj
+ajaobCbDapapapbEbHbIapbMbxbybAaoajalalacayayayaaalalaeapapaebxapapbxaeapapaealalaaazazazacalalajaqbCbDbEbHbIapbNbxapapapbybAaqaj
+ajaoaoaoaebPaeaoaoaoaoaoaoaoaoaoajalalacayayayayalalajapapapapapapapapapapajalalazazazazacalalajaqaqaqaqaqaqaqaqaqaebQaeaqaqaqaj
+aeahahahaeauaeahahahahahahahahahaealalaaabaaayayalalaeahahahahahahahahahahaealalazazaaabaaalalaeahahahahahahahahahaeauaeahahahae
+acadayayaabFaaayayadalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaladazazaabGaaazazadac
+acadayatatatatatayadalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaladazatatatatatazadac
+acadatatatatatatatadalalaaabababaaalalaaabababaaalalalalalalalalalalalalalalalalaaabababaaalalaaabababaaalaladatatatatatatatadac
+acadatatatatatatatadalalacayayayacalalacaNbvayacalalalalalalaWaXblblalalalalalalacazbwaPacalalacazazazacalaladatatatatatatatadac
+acadataOabababaRatadalalacayayayaaalalacbvayayaaalalalalalalaaababaaalalalalalalaaazazbwacalalaaazazazacalaladataOabababaRatadac
+acadatatatatatatatadalalacayayayayalalacayayayayalalalalalalalalalalalalalalalalazazazazacalalazazazazacalaladatatatatatatatadac
+acadatatatatatatatadalalaaabaaayayalalaaabaaayayalalalalalalalalalalalalalalalalazazaaabaaalalazazaaabaaalaladatatatatatatatadac
+acadayatatatatatayadalalalalalalalalalalalalalalaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYalalalalalalalalalalalalalaladazatatatatatazadac
+acadayayayayayayayadalalalalalalalalalalalalalalaYagaiaiagaSaSaTaTaVaVagaiaiagaYalalalalalalalalalalalalalaladazazazazazazazadac
+acadaeahaeapaeahaeadaeahaeapaeahaealalalalalalalaYaZbabbaSaSaSaTaTaVaVaVbcbdaZaYalalalalalalalaeahaeapaeahaeadaeahaeapaeahaeadac
+acadajapapapapapajadajapapapapapajalalalalalalalaYaZbbaSaSaSaSaTaTaVaVaVaVbcaZaYalalalalalalalajapapapapapajadajapapapapapajadac
+acadajapapapapapajadajapapapapapajalalalalalalalaYagaSaSaSaSaSaTaTaVaVaVaVaVagaYalalalalalalalajapapapapapajadajapapapapapajadac
+acadajapaeapaeapajadajapaeapaeapajalalalalalalalaYaSaSaSaSaSaSaTaTaVaVaVaVaVaVaYalalalalalalalajapaeapaeapajadajapaeapaeapajadac
+acadajapbxapbxapajadajapbxapbxapajalalalaXaaalalaYaSaSaSaSaSagaTaTagaVaVaVaVaVaYalalaablalalalajapbxapbxapajadajapbxapbxapajadac
+acadajapapaHapapajadajapapaHapapajalalalaXacalalaYaTaTaTaTaTaTbebfaTaTaTaTaTaTaYalalacblalalalajapapaHapapajadajapapaHapapajadac
+acadajapapaHapapajadajapapaHapapajalalalcqacalalaYaTaTaTaTaTaTbgbhaTaTaTaTaTaTaYalalaccralalalajapapaHapapajadajapapaHapapajadac
+acadajapbxapbxapajadajapbxapbxapajalalalcsaaalalaYbibibibibiagaTaTagbjbjbjbjbjaYalalaactalalalajapbxapbxapajadajapbxapbxapajadac
+acadajapaeapaeapajadajapaeapaeapajalalalalalalalaYbibibibibibiaTaTbjbjbjbjbjbjaYalalalalalalalajapaeapaeapajadajapaeapaeapajadac
+acadajapapapapapajadajapapapapapajalalalalalalalaYagbibibibibiaTaTbjbjbjbjbjagaYalalalalalalalajapapapapapajadajapapapapapajadac
+acadajapapapapapajadajapapapapapajalalalalalalalaYaZbkbibibibiaTaTbjbjbjbjbmaZaYalalalalalalalajapapapapapajadajapapapapapajadac
+acadaeahaeapaeahaeadaeahaeapaeahaealalalalalalalaYaZbnbkbibibiaTaTbjbjbjbmbpaZaYalalalalalalalaeahaeapaeahaeadaeahaeapaeahaeadac
+acadawawawawawawawadalalalalalalalalalalalalalalaYagaiaiagbibiaTaTbjbjagaiaiagaYalalalalalalalalalalalalalaladaAaAaAaAaAaAaAadac
+acadawatatatatatawadalalalalalalalalalalalalalalaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYalalalalalalalalalalalalalaladaAatatatatataAadac
+acadatatatatatatatadalalaaabaaawawalalaaabaaawawalalalalalalalalalalalalalalalalaAaAaaabaaalalaAaAaaabaaalaladatatatatatatatadac
+acadatatatatatatatadalalacawawawawalalacawawawawalalalalalalalalalalalalalalalalaAaAaAaAacalalaAaAaAaAacalaladatatatatatatatadac
+acadataOabababaRatadalalacawawawaaalalacboawawaaalalalalalalaaababaaalalalalalalaaaAaAbzacalalaaaAaAaAacalaladataOabababaRatadac
+acadatatatatatatatadalalacawawawacalalacaQboawacalalalalalalcscqcrcralalalalalalacaAbzaUacalalacaAaAaAacalaladatatatatatatatadac
+acadatatatatatatatadalalaaabababaaalalaaabababaaalalalalalalalalalalalalalalalalaaabababaaalalaaabababaaalaladatatatatatatatadac
+acadawatatatatatawadalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaladaAatatatatataAadac
+acadawawaabJaaawawadalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaladaAaAaabKaaaAaAadac
+aeahahahaeauaeahahahahahahahahahaealalaaabaaawawalalaeahahahahahahahahahahaealalaAaAaaabaaalalaeahahahahahahahahahaeauaeahahahae
+ajbTbTbTaebUaebTbTbTbTbTbTbTbTbTajalalacawawawawalalajapapapapapapapapapapajalalaAaAaAaAacalalajbVbVbVbVbVbVbVbVbVaebWaebVbVbVaj
+ajbTaBaCapapapaDaEaFapaGaHaIaJbTajalalacawawawaaalalaeapapaebxapapbxaeapapaealalaaaAaAaAacalalajbVaBaCaDaEaFapaGaHapapapaIaJbVaj
+ajbTaKaLapapapaMbsbtapbXbxbybAbTajalalacawawawacalalapapapapapaHaHapapapapapalalacaAaAaAacalalajbVaKaLaMbsbtapbYbxapapapbybAbVaj
+ajbTbCbDapapapbEbHbIapbZbxbybAbTajalalaaabababaaalalaeapapaebxapapbxaeapapaealalaaabababaaalalajbVbCbDbEbHbIapcabxapapapbybAbVaj
+ajbTapapapapapapapapapapapapapbTajalalalalalalalalalajapapapapapapapapapapajalalalalalalalalalajbVapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapbTajalalalalalalalalalaeahahahahahahahahahahaealalalalalalalalalajbVapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapbTajadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadajbVapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapbTajawawatatatatatawawaeahahahahahahahahahahaeaAaAatatatatataAaAajbVapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapbTajawatatatafatatatawajapapapapapapapapapapajaAatatatafatatataAajbVapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapaeaeaaatatatacatatatawaeapapaebxapapbxaeapapaeaAatatatacatatataaaeaeapapapapapapapapapapapapapbVaj
+ajbTapapapcbapapapapapapapapapccaubLatatatacatatatawapapapapapaHaHapapapapapaAatatatacatatatbRaucdapapapapapapapapapceapapapbVaj
+ajbTapapapapapapapapapapapapapaeaeaaatatatacatatatawaeapapaebxapapbxaeapapaeaAatatatacatatataaaeaeapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapbTajawatatatakatatatawajapapapapapapapapapapajaAatatatakatatataAajbVapapapapapapapapapapapapapbVaj
+ajbTapapapapapapapapapapapapapbTajawawatatatatatawawaeahahahahahahahahahahaeaAaAatatatatataAaAajbVapapapapapapapapapapapapapbVaj
+ajcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfajadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadajcgcgcgcgcgcgcgcgcgcgcgcgcgcgcgaj
+aeahahahahahahahahahahahahahahahaeababababababababababababababababababababababababababababababaeahahahahahahahahahahahahahahahae
+"}

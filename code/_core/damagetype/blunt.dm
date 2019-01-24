@@ -52,7 +52,7 @@
 	)
 
 /damagetype/blunt/toolbox
-	name = "pistol grip"
+	name = "toolbox"
 
 	base_attack_damage = list(
 		BRUTE = 0,

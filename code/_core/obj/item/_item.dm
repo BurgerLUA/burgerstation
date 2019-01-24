@@ -21,6 +21,7 @@
 	var/no_held_draw = FALSE
 
 	var/slot_icons = FALSE //Set to true if the clothing is based on where it's slot is.
+
 /obj/item/New(var/desired_loc)
 	src.loc = desired_loc
 

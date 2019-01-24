@@ -94,7 +94,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	if(projectile)
 
 		var/area/A = get_area(caller)
-		play_sound(pick(shoot_sounds),all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+
+		if(length(shoot_sounds))
+			play_sound(pick(shoot_sounds),all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 		var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
 		var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y

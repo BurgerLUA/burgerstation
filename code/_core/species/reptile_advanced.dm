@@ -6,11 +6,11 @@
 
 	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
 
-	eye_color_default = "#AAAA00"
-	color_skin_default = "#8CA73E"
-	color_hair_default = "#fff0be"
+	default_color_eye = "#AAAA00"
+	default_color_skin = "#8CA73E"
+	default_color_hair = "#fff0be"
 
-	hair_style_default = "bald"
+	default_icon_state_hair = "bald"
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/reptile_advanced,

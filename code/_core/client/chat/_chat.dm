@@ -5,6 +5,8 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 	if(!text_to_say)
 		return FALSE
 
+	text_to_say = sanitize(text_to_say)
+
 	switch(text_type)
 		if(TEXT_WHISPER)
 			if(istype(source,/client/))

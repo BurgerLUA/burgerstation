@@ -14,6 +14,11 @@
 
 	attach_flag = BODY_TORSO
 
+
+/obj/item/organ/head/initialize_blends()
+	..()
+	add_blend("hair_head", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/hair/hair.dmi', desired_icon_state = "hair_a", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
+
 /obj/item/organ/head/female
 	desc = "A head. Female variant"
 	icon_state = BODY_HEAD_FEMALE
@@ -65,5 +70,18 @@
 	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
-	enable_color = TRUE
 	enable_glow = TRUE
+	enable_detail = TRUE
+
+
+//cyborg
+/obj/item/organ/head/cyborg
+	name = "cyborg head"
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+	desc = "An organ."
+
+	inventories = list(
+		/obj/inventory/organs/head,
+		/obj/inventory/organs/face,
+		/obj/inventory/organs/glasses
+	)

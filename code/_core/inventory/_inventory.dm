@@ -123,6 +123,7 @@
 			return FALSE
 		I2.remove_object(I,owner.loc)
 
+	undelete(I)
 	I.plane = 4
 	I.loc = src
 	held_objects += I
@@ -149,6 +150,7 @@
 			return FALSE
 		I2.remove_object(I,owner.loc)
 
+	undelete(I)
 	I.plane = 4
 	I.loc = src
 	worn_objects += I
@@ -197,6 +199,7 @@
 		I.loc = drop_loc ? drop_loc : get_turf(src.loc)
 		update_overlays()
 		update_stats()
+		queue_delete(I,600)
 
 	return I
 

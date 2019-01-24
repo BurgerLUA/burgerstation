@@ -42,14 +42,16 @@
 	if(length(stored_bullets)) //Spend a bullet
 		var/obj/item/bullet/B = stored_bullets[1]
 		stored_bullets -= B
-		B.spend_bullet()
-		stored_bullet_casings += B
+		if(B)
+			B.spend_bullet()
+			stored_bullet_casings += B
 
 /obj/item/weapon/ranged/bullet/proc/load_bullet_from_magazine()
 	if(stored_magazine && length(stored_magazine.stored_bullets)) //Get a new bullet
 		var/obj/item/bullet/B = stored_magazine.stored_bullets[1]
-		stored_magazine.stored_bullets -= B
-		stored_bullets += B
+		if(B)
+			stored_magazine.stored_bullets -= B
+			stored_bullets += B
 
 /obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
 	spend_bullet()

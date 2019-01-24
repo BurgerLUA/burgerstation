@@ -14,6 +14,7 @@
 	blood_color = desired_blood_color
 	flesh_color = desired_flesh_color
 	update_icon()
+	queue_delete(src,600)
 
 /obj/effect/gibs/update_icon()
 

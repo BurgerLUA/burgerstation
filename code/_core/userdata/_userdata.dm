@@ -1,3 +1,7 @@
+#define value_or_null(the_list,key) the_list[key] ? the_list[key] : null
+
+
+
 /userdata/
 	var/name = "Userdata"
 	var/desc = "Data for a user."
@@ -23,6 +27,7 @@
 		owner << "Welcome to Burgerstation 13! Please create a new character in the \"Create Character\" menu to get started. A placeholder character was created and loaded for you if you wish to skip this step."
 		loaded_data = load_most_recent_character()
 		owner.save_slot = loaded_data["id"]
+		save_current_character()
 	else
 		loaded_data = load_most_recent_character()
 		owner.save_slot = loaded_data["id"]
@@ -36,9 +41,11 @@
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
 		var/o_type = loaded_data["organs"][id]["type"]
-
 		var/obj/item/organ/O = A.add_organ(o_type)
+		if(loaded_data["organs"][id]["blend_data"])
+			apply_blend_data(O, loaded_data["organs"][id]["blend_data"])
 
+		/*
 		if(loaded_data["organs"][id]["color"])
 			O.color = loaded_data["organs"][id]["color"]
 
@@ -53,6 +60,7 @@
 
 		if(loaded_data["organs"][id]["style"])
 			O.style = loaded_data["organs"][id]["style"]
+		*/
 
 		O.update_icon()
 
@@ -305,6 +313,11 @@
 	if(I.color && lowertext(I.color) != "#ffffff")
 		returning_list["color"] = I.color
 
+	var/list/blend_data = generate_blend_data(I)
+	if(length(blend_data))
+		returning_list["blend_data"] = blend_data
+
+	/*
 	if(is_organ(I))
 		var/obj/item/organ/O = I
 		if(O.color_skin && lowertext(O.color_skin) != "#ffffff")
@@ -315,6 +328,7 @@
 			returning_list["color_glow"] = O.color_glow
 		if(O.style)
 			returning_list["style"] = O.style
+	*/
 
 
 	if(is_bullet(I))
@@ -341,3 +355,46 @@
 				if(B) returning_list["stored_bullets"][i] = B.type
 
 	return returning_list
+
+/userdata/proc/generate_blend_data(var/atom/A)
+
+	var/list/returning_list = list()
+	for(var/id in A.additional_blends)
+
+		var/icon_blend/IB = A.additional_blends[id]
+
+		if(IB.should_save)
+			returning_list[id] = list()
+		else
+			continue
+
+		if(IB.id)
+			returning_list[id]["id"] = IB.id
+
+		if(IB.icon)
+			returning_list[id]["icon"] = IB.icon
+
+		if(IB.icon_state)
+			returning_list[id]["icon_state"] = IB.icon_state
+
+		if(IB.color)
+			returning_list[id]["color"] = IB.color
+
+		if(IB.blend)
+			returning_list[id]["blend"] = IB.blend
+
+		if(IB.special_type)
+			returning_list[id]["special_type"] = IB.special_type
+
+	return returning_list
+
+/userdata/proc/apply_blend_data(var/atom/A, var/list/blend_data)
+	for(var/id in blend_data)
+		var/list/blend_list = blend_data[id]
+		var/desired_id = value_or_null(blend_list,"id")
+		var/desired_icon = value_or_null(blend_list,"icon")
+		var/desired_icon_state = value_or_null(blend_list,"icon_state")
+		var/desired_color = value_or_null(blend_list,"color")
+		var/desired_blend = value_or_null(blend_list,"blend")
+		var/desired_type = value_or_null(blend_list,"type")
+		A.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,1)

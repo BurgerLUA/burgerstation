@@ -5,12 +5,11 @@
 	worn_layer = LAYER_MOB_HAIR_HEAD
 	break_threshold = 0
 	health_max = 10 //Yes, hair has health.
-	icon = 'icons/mob/living/advanced/hair/hair.dmi'
-	icon_state = "bald"
-	style = "bald"
 
 	attach_flag = BODY_HEAD
 
+//TODO COLOR
+/*
 /obj/item/organ/hair/update_icon()
 	var/hair/H = hair_types[style]
 	if(H)
@@ -22,6 +21,7 @@
 
 
 	icon = base_icon
+*/
 
 /obj/item/organ/hair/unattach_from_parent()
 	del(src)

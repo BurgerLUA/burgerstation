@@ -48,7 +48,81 @@
 /obj/structure/interactive/localmachine/item/clothing/clownmask
 	stored_item = /obj/item/clothing/mask/gas/clown
 
-//Weapons
+/obj/structure/interactive/localmachine/item/clothing/gasmask
+	stored_item =/obj/item/clothing/mask/gas
+
+/obj/structure/interactive/localmachine/item/clothing/boot_left
+	stored_item = /obj/item/clothing/feet/shoes/black_boots/left
+
+/obj/structure/interactive/localmachine/item/clothing/boot_right
+	stored_item = /obj/item/clothing/feet/shoes/black_boots
+
+/obj/structure/interactive/localmachine/item/clothing/black_shoe_left
+	stored_item = /obj/item/clothing/feet/shoes/black/left
+
+/obj/structure/interactive/localmachine/item/clothing/black_shoe_right
+	stored_item = /obj/item/clothing/feet/shoes/black
+
+/obj/structure/interactive/localmachine/item/clothing/gloves_yellow
+	stored_item = /obj/item/clothing/hands/gloves/yellow
+
+/obj/structure/interactive/localmachine/item/clothing/gloves_yellow/left
+	stored_item = /obj/item/clothing/hands/gloves/yellow/left
+
+/obj/structure/interactive/localmachine/item/clothing/beaverhat
+	stored_item = /obj/item/clothing/head/beaver
+
+/obj/structure/interactive/localmachine/item/clothing/jumpsuit
+	stored_item = /obj/item/clothing/uniform/jumpsuit
+
+//Melee
+/obj/structure/interactive/localmachine/item/weapon/sword
+	stored_item = /obj/item/weapon/melee/sword
+
+/obj/structure/interactive/localmachine/item/weapon/energy_sword
+	stored_item = /obj/item/weapon/melee/energy/sword/
+	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
+	icon_state = "inventory_on"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_sword/blue
+	stored_item = /obj/item/weapon/melee/energy/sword/blue
+	color = "#0000FF"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_sword/red
+	stored_item = /obj/item/weapon/melee/energy/sword/red
+	color = "#FF0000"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_sword/green
+	stored_item = /obj/item/weapon/melee/energy/sword/green
+	color = "#00FF00"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_sword/yellow
+	stored_item = /obj/item/weapon/melee/energy/sword/yellow
+	color = "#FFFF00"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_shield
+	stored_item = /obj/item/weapon/melee/energy/shield/
+	icon = 'icons/obj/items/weapons/melee/laser/shield.dmi'
+	icon_state = "inventory_on"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_shield/blue
+	stored_item = /obj/item/weapon/melee/energy/shield/blue
+	color = "#0000FF"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_shield/red
+	stored_item = /obj/item/weapon/melee/energy/shield/red
+	color = "#FF0000"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_shield/green
+	stored_item = /obj/item/weapon/melee/energy/shield/green
+	color = "#00FF00"
+
+/obj/structure/interactive/localmachine/item/weapon/energy_shield/yellow
+	stored_item = /obj/item/weapon/melee/energy/shield/yellow
+	color = "#FFFF00"
+
+
+//Guns
 /obj/structure/interactive/localmachine/item/weapon/detective
 	stored_item = /obj/item/weapon/ranged/bullet/revolver/detective/
 	icon = 'icons/obj/items/weapons/ranged/revolver.dmi'
@@ -79,13 +153,9 @@
 	icon = 'icons/obj/items/weapons/ranged/combat_shotgun.dmi'
 	icon_state = "inventory_open"
 
-
-
-/obj/structure/interactive/localmachine/item/weapon/sword
-	stored_item = /obj/item/weapon/melee/sword
-
 /obj/structure/interactive/localmachine/item/weapon/heavy_snip
 	stored_item = /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
+
 
 //Ammo
 /obj/structure/interactive/localmachine/item/ammo/revolver_38

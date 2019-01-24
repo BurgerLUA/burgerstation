@@ -7,14 +7,16 @@
 
 	var/flags_chargen = CHARGEN_NONE
 
-	var/eye_color_default = "#FF0000"
+	var/default_color_eye = "#FF0000"
 
 
-	var/color_skin_default = "#0000FF"
-	var/color_secondary_default = "#FFFFFF"
-	var/color_glow_default = "#FFFFFF"
-	var/color_hair_default = "#00FF00"
-	var/hair_style_default = "bald"
+	var/default_color_skin = "#0000FF"
+	var/default_color_detail = "#FFFFFF"
+	var/default_color_glow = "#FFFFFF"
+	var/default_color_hair = "#00FF00"
+
+	var/default_icon_hair = 'icons/mob/living/advanced/hair/hair.dmi'
+	var/default_icon_state_hair = "bald"
 
 	var/genderless = FALSE
 

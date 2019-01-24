@@ -46,10 +46,22 @@
 	name = "right diona leg"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 
-	enable_color = TRUE
 	enable_glow = TRUE
+	enable_detail = TRUE
 
 /obj/item/organ/leg/diona/left
 	name = "left diona leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+
+//Cyborg
+/obj/item/organ/leg/cyborg
+	name = "right cyborg leg"
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+
+
+/obj/item/organ/leg/cyborg/left
+	name = "left cyborg leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
