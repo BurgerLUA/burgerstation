@@ -105,57 +105,12 @@
 	//new /obj/effect/gibs/random/(T,"#FF0000",color_secondary) TODO COLOR
 	del(src)
 
-/*
 /obj/item/organ/update_icon()
-	. = ..()
 
 	var/is_attached_to = is_advanced(src.loc)
 
 	if(!is_attached_to && has_dropped_icon)
 		icon_state = "[initial(icon_state)]_inventory"
-
-	icon = initial(icon)
-	var/icon/base_icon = new /icon(icon,icon_state)
-	base_icon.Blend(color_skin,ICON_MULTIPLY)
-
-	if(enable_color)
-		var/icon/color_mask = new /icon(icon,"[icon_state]_color")
-		color_mask.Blend(color_secondary,ICON_MULTIPLY)
-		base_icon.Blend(color_mask,ICON_OVERLAY)
-
-	if(enable_glow)
-		var/icon/glow_mask = new /icon(icon,"[icon_state]_glow")
-		glow_mask.Blend(color_glow,ICON_MULTIPLY)
-		base_icon.Blend(glow_mask,ICON_OVERLAY)
-
-	var/brute_loss = get_brute_loss()
-	var/burn_loss = get_burn_loss()
-
-	var/brute_mod = clamp(round((brute_loss/health_max) * 5),0,5)
-	var/burn_mod = clamp(round((burn_loss/health_max) * 5),0,5)
-
-	var/icon/limb_mask = new /icon(icon,icon_state)
-	limb_mask.Blend("#FFFFFF",ICON_SUBTRACT)
-
-	var/icon/brute_overlay = new /icon(damage_icon,"[brute_mod]")
-	brute_overlay.Blend(limb_mask,ICON_ADD)
-	brute_overlay.Blend("#FF0000",ICON_MULTIPLY) //Blood color
-
-	var/icon/burn_overlay = new /icon(damage_icon,"[burn_mod]")
-	burn_overlay.Blend(limb_mask,ICON_ADD)
-	burn_overlay.Blend("#666666",ICON_MULTIPLY) //Burn color
-
-	base_icon.Blend(brute_overlay,ICON_OVERLAY)
-	base_icon.Blend(burn_overlay,ICON_OVERLAY)
-
-	if(!is_attached_to && has_dropped_icon_underlay)
-		var/icon/underlay = new /icon(icon,"[initial(icon_state)]_inventory_underlay")
-		base_icon.Blend(underlay,ICON_UNDERLAY)
-
-	icon = base_icon
-
-	return TRUE
-*/
 
 /obj/item/organ/update_health(var/damage_dealt)
 

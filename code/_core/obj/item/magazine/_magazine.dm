@@ -5,6 +5,10 @@
 	var/bullet_capacity = 30 //How many bullets can this store
 	var/list/obj/item/bullet/stored_bullets
 
+/obj/item/magazine/New()
+	..()
+	update_icon()
+
 /obj/item/magazine/examine(var/atom/examiner)
 	..()
 	examiner.to_chat("it contains [length(stored_bullets)] bullets.")

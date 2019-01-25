@@ -54,8 +54,12 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)
 
 /mob/living/advanced/proc/do_automatic_left()
 	if(automatic_left && client)
-		automatic_left.do_automatic(src,client.last_object,client.last_location,client.last_params)
+		return automatic_left.do_automatic(src,client.last_object,client.last_location,client.last_params)
+
+	return FALSE
 
 /mob/living/advanced/proc/do_automatic_right()
 	if(automatic_right && client)
-		automatic_right.do_automatic(src,client.last_object,client.last_location,client.last_params)
+		return automatic_right.do_automatic(src,client.last_object,client.last_location,client.last_params)
+
+	return FALSE

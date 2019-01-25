@@ -22,6 +22,14 @@
 
 	can_wield = TRUE
 
+	icon_state_worn = "worn"
+	item_slot = SLOT_TORSO_B
+	worn_layer = LAYER_MOB_CLOTHING_BACK
+	slot_icons = TRUE
+
+/obj/item/weapon/ranged/bullet/pump/combat_shotgun/can_be_worn()
+	return TRUE
+
 /obj/item/weapon/ranged/bullet/pump/combat_shotgun/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.1

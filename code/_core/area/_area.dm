@@ -11,6 +11,8 @@
 
 	var/sound_environment = ENVIRONMENT_GENERIC
 
+	var/safe = FALSE //Enable or disable shooting people.
+
 /area/on_enter(var/atom/movable/enterer)
 	if(enterer.area != src)
 		if(enterer.area)

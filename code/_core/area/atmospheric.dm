@@ -19,6 +19,7 @@ area/enviroment/livingroom
 
 area/enviroment/stoneroom
 	sound_environment = ENVIRONMENT_STONEROOM
+	icon_state = "red"
 
 area/enviroment/auditorium
 	sound_environment = ENVIRONMENT_AUDITORIUM
@@ -28,6 +29,7 @@ area/enviroment/concert_hall
 
 area/enviroment/cave
 	sound_environment = ENVIRONMENT_CAVE
+	icon_state = "red"
 
 area/enviroment/arena
 	sound_environment = ENVIRONMENT_ARENA

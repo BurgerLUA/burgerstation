@@ -54,7 +54,7 @@
 /atom/proc/update_health(var/damage_dealt) //Update the health values.
 	health_current = get_overall_health()
 
-mob/living/advanced/update_health(var/damage_dealt)
+mob/living/advanced/update_health()
 
 	var/changed = FALSE
 
@@ -90,9 +90,8 @@ mob/living/advanced/update_health(var/damage_dealt)
 		health_current = new_health_current
 		changed = TRUE
 
-	if(changed)
-		update_health_elements()
-		update_icon()
+	if(changed) //TODO: Do something here.
+		changed = FALSE
 
 	if(health_current <= 0)
 		death()

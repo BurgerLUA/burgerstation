@@ -9,6 +9,8 @@
 	var/override_icon_state = FALSE
 	var/override_icon_state_held = FALSE
 
+	ignore_other_slots = TRUE
+
 /obj/item/weapon/update_icon()
 
 	if(!override_icon_state_held)

@@ -33,11 +33,14 @@
 	return 1 //Unlimited
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller)
-	return next_shoot_time <= curtime
+	if(!caller.can_attack())
+		return FALSE
+
+	return TRUE
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
 
-	if(get_ammo_count() <= 0)
+	if(next_shoot_time > curtime)
 		return FALSE
 
 	return TRUE
@@ -69,7 +72,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
 
 	if(!object)
-		return ..()
+		return FALSE
 
 	//caller.move_delay = max(caller.move_delay,0.5)
 	caller.face_atom(object)
@@ -81,15 +84,19 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 	*/
 
 	if(!can_owner_shoot(caller))
-		return
+		return FALSE
 
 	if(!object.x && !object.y && !object.z)
-		return ..()
-
-	next_shoot_time = curtime + shoot_delay
+		return FALSE
 
 	if(!can_gun_shoot(caller))
-		return handle_empty(caller)
+		return TRUE
+
+	if(get_ammo_count() <= 0)
+		handle_empty(caller)
+		return FALSE
+
+	next_shoot_time = curtime + shoot_delay
 
 	handle_ammo(caller)
 	update_icon()
@@ -143,7 +150,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 
 				bullet_speed = min(bullet_speed,31)
 
-				var/obj/projectile/P = new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y)
+				var/obj/projectile/P = new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object))
 				if(get_dist(caller,object) <= 1 && is_mob(object))
 					P.on_hit(object)
 			else
@@ -154,5 +161,5 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
 	if(!automatic || defer_attack(caller,object,location,null,params) || (object && object.plane > 1))
 		return TRUE
-	shoot(caller,object,location,params)
+	return shoot(caller,object,location,params)
 

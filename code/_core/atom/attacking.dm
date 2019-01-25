@@ -61,6 +61,11 @@
 
 /atom/proc/can_attack(var/atom/victim,var/params)
 
+	var/area/A = get_area(src)
+	if(A && A.safe)
+		src.to_chat(span("notice","You can't attack in a safezone!"))
+		return FALSE
+
 	if(attack_last + get_attack_delay(victim,params) > world.time)
 		return FALSE
 

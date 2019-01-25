@@ -8,7 +8,7 @@
 	damage_type = /damagetype/sword/
 
 	bullet_speed = 20
-	shoot_delay = 1
+	shoot_delay = 1.5
 
 	automatic = TRUE
 

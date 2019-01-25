@@ -29,6 +29,10 @@
 
 	override_icon_state = TRUE
 
+/obj/item/weapon/ranged/magic/staff/fire/New()
+	..()
+	update_icon()
+
 /obj/item/weapon/ranged/magic/staff/fire/update_icon()
 
 	icon_state = "[initial(icon_state)][get_ammo_count() >= 1 ? "_1" : ""]"
@@ -50,4 +54,39 @@
 
 	projectile = /obj/projectile/bullet/chaos
 	ranged_damage_type = /damagetype/ranged/chaos
+	damage_type = /damagetype/sword/
+
+/obj/item/weapon/ranged/magic/staff/basic
+
+	name = "Staff of Magic"
+	desc = "MAGIC MWISSLE."
+	cost_charge = 100
+	total_charge = 1000
+
+	bullet_speed = 20
+
+	bullet_count = 1
+
+	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
+
+	projectile = /obj/projectile/bullet/magic_missile
+	ranged_damage_type = /damagetype/ranged/magic_missile
+	damage_type = /damagetype/sword/
+
+
+/obj/item/weapon/ranged/magic/staff/focus
+
+	name = "Staff of the Rift"
+	desc = "Shoot rifts and annoy the shit out of people."
+	cost_charge = 100
+	total_charge = 1000
+
+	bullet_speed = 31
+
+	bullet_count = 1
+
+	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'
+
+	projectile = /obj/projectile/bullet/rift
+	ranged_damage_type = null
 	damage_type = /damagetype/sword/

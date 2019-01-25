@@ -66,3 +66,7 @@ proc/is_weapon(var/atom/A)
 
 proc/is_scroll(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/magic/scroll/)
+
+
+proc/is_npc(var/atom/A)
+	return istype(A,/mob/living/advanced/human/npc/)

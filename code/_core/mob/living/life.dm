@@ -50,4 +50,6 @@
 
 	first_life = FALSE
 
+	update_health_element_icons()
+
 	return TRUE

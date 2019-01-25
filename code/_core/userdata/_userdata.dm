@@ -44,24 +44,6 @@
 		var/obj/item/organ/O = A.add_organ(o_type)
 		if(loaded_data["organs"][id]["blend_data"])
 			apply_blend_data(O, loaded_data["organs"][id]["blend_data"])
-
-		/*
-		if(loaded_data["organs"][id]["color"])
-			O.color = loaded_data["organs"][id]["color"]
-
-		if(loaded_data["organs"][id]["color_skin"])
-			O.color_skin = loaded_data["organs"][id]["color_skin"]
-
-		if(loaded_data["organs"][id]["color_glow"])
-			O.color_glow = loaded_data["organs"][id]["color_glow"]
-
-		if(loaded_data["organs"][id]["color_secondary"])
-			O.color_secondary = loaded_data["organs"][id]["color_secondary"]
-
-		if(loaded_data["organs"][id]["style"])
-			O.style = loaded_data["organs"][id]["style"]
-		*/
-
 		O.update_icon()
 
 	//Skills
@@ -104,6 +86,13 @@
 	//General Information
 	if(data["color"])
 		O.color = data["color"]
+
+	if(is_weapon(O))
+		var/obj/item/weapon/W = O
+		if(data["open"])
+			W.open = data["open"]
+		else
+			W.open = FALSE
 
 	if(is_bullet(O))
 		var/obj/item/bullet/B = O
@@ -317,19 +306,10 @@
 	if(length(blend_data))
 		returning_list["blend_data"] = blend_data
 
-	/*
-	if(is_organ(I))
-		var/obj/item/organ/O = I
-		if(O.color_skin && lowertext(O.color_skin) != "#ffffff")
-			returning_list["color_skin"] = O.color_skin
-		if(O.color_secondary && lowertext(O.color_secondary) != "#ffffff")
-			returning_list["color_secondary"] = O.color_secondary
-		if(O.color_glow && lowertext(O.color_glow) != "#ffffff")
-			returning_list["color_glow"] = O.color_glow
-		if(O.style)
-			returning_list["style"] = O.style
-	*/
-
+	if(is_weapon(I))
+		var/obj/item/weapon/W = I
+		if(W.open)
+			returning_list["open"] = TRUE
 
 	if(is_bullet(I))
 		var/obj/item/bullet/B = I
@@ -389,8 +369,6 @@
 	return returning_list
 
 /userdata/proc/apply_blend_data(var/atom/A, var/list/blend_data)
-
-	world.log << "ATTEMPTING TO APPLY BLEND DATA FOR [A]..."
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
 		var/desired_id = value_or_null(blend_list,"id")
@@ -399,5 +377,4 @@
 		var/desired_color = value_or_null(blend_list,"color")
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
-		world.log << "APPLYING BLEND DATA [desired_id] AND [desired_color] TO [A]."
 		A.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,1)

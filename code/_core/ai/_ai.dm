@@ -20,6 +20,8 @@
 
 	var/list/target_distribution = list(16,16,16,8,8,32,32)
 
+	var/turf/start_turf
+
 /ai/New(var/mob/living/desired_owner)
 	owner = desired_owner
 
@@ -27,6 +29,8 @@
 	attack_ticks = rand(1,attack_delay)
 	movement_ticks = rand(1,movement_delay)
 	objective_ticks = rand(1,objective_delay)
+
+	start_turf = get_turf(owner)
 
 /ai/proc/on_life()
 	handle_objectives()
@@ -53,14 +57,12 @@
 			"alt" = 0
 		)
 
-		if(prob(50))
+		if(prob(90))
 			params["left"] = TRUE
 			owner.on_left_down(objective_attack,owner,null,params)
-			//owner.say("Take that!")
 		else
 			params["right"] = TRUE
 			owner.on_right_down(objective_attack,owner,null,params)
-			//owner.say("Take this!")
 
 	attack_ticks = 0
 
@@ -72,8 +74,15 @@
 
 	if(objective_attack && get_dist(owner,objective_attack) > 1)
 		owner.move_dir = get_dir(owner,objective_attack)
+	else if(get_dist(owner,start_turf) >= 5)
+		owner.move_dir = get_dir(owner,start_turf)
+	else
+		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 
 	movement_ticks = 0
+
+/ai/proc/hostile_message()
+	owner.say("I will kill you, [objective_attack.name]!")
 
 /ai/proc/handle_objectives()
 
@@ -98,7 +107,7 @@
 
 		if(best_target)
 			objective_attack = best_target
-			owner.say("I will kill you, [best_target.name]!")
+			hostile_message()
 
 	objective_ticks = 0
 

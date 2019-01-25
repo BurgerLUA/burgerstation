@@ -24,7 +24,7 @@
 		open = TRUE
 		update_icon()
 
-	..()
+	return ..()
 
 /obj/item/weapon/ranged/bullet/proc/eject_spent_casings(var/mob/caller, var/new_loc)
 	for(var/obj/item/bullet/B in stored_bullet_casings)

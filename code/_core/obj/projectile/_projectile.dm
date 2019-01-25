@@ -30,7 +30,11 @@
 
 	var/lifetime = 100
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0)
+	var/turf/target_turf
+
+	var/only_hit_target_turf = FALSE
+
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -53,6 +57,8 @@
 
 	shoot_x = desired_shoot_x
 	shoot_y = desired_shoot_y
+
+	target_turf = desired_turf
 
 	. = ..()
 
@@ -95,6 +101,10 @@
 		if(!previous_loc || !current_loc)
 			on_hit(src)
 			return FALSE
+
+		if(only_hit_target_turf && current_loc == target_turf)
+			on_hit(current_loc)
+			return
 
 		if(new_turf.density)
 			on_hit(new_turf)
@@ -145,7 +155,6 @@
 	post_on_hit(hit_atom)
 	del(src)
 	return TRUE
-
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 	return TRUE

@@ -15,9 +15,6 @@
 /obj/item/bullet/proc/get_ammo_count()
 	return bullet_count
 
-/obj/item/bullet/shotgun/on_spawn()
-	bullet_count = 3
-
 /obj/item/bullet/update_icon()
 
 	if(!is_spent)
@@ -140,15 +137,15 @@
 		transfer_target.stored_bullets += B
 
 	if(display_message)
-		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
-
-	transfer_target.update_icon()
+		caller.to_chat(span("notice","You insert [transfered_bullets] [src.name]\s into \the [transfer_target]."))
 
 	if(transfer_self)
 		src.drop_item(transfer_target.loc)
 		transfer_target.stored_bullets += src
 		update_icon()
+		transfer_target.update_icon()
 	else
+		transfer_target.update_icon()
 		if(bullet_count <= 0)
 			src.drop_item()
 			qdel(src)

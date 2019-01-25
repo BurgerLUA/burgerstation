@@ -30,6 +30,12 @@
 /obj/structure/interactive/localmachine/item/clothing/coat
 	stored_item = /obj/item/clothing/overwear/coat/
 
+/obj/structure/interactive/localmachine/item/clothing/coat/wizard
+	stored_item = /obj/item/clothing/overwear/coat/wizard
+
+/obj/structure/interactive/localmachine/item/clothing/hat/wizard
+	stored_item = /obj/item/clothing/head/hat/wizard
+
 /obj/structure/interactive/localmachine/item/clothing/shoe_right
 	stored_item = /obj/item/clothing/feet/shoes/brown
 
@@ -42,6 +48,49 @@
 /obj/structure/interactive/localmachine/item/clothing/armor
 	stored_item = /obj/item/clothing/overwear/armor
 
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/red
+	stored_item = /obj/item/clothing/overwear/armor/knight/red
+
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/blue
+	stored_item = /obj/item/clothing/overwear/armor/knight/blue
+
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/green
+	stored_item = /obj/item/clothing/overwear/armor/knight/green
+
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/yellow
+	stored_item = /obj/item/clothing/overwear/armor/knight/yellow
+
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/templar
+	stored_item = /obj/item/clothing/overwear/armor/knight/templar
+
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/battlemage
+	stored_item = /obj/item/clothing/overwear/armor/knight/battlemage
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/red
+	stored_item = /obj/item/clothing/head/helmet/knight/red
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/green
+	stored_item = /obj/item/clothing/head/helmet/knight/green
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/yellow
+	stored_item = /obj/item/clothing/head/helmet/knight/yellow
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/blue
+	stored_item = /obj/item/clothing/head/helmet/knight/blue
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/templar
+	stored_item = /obj/item/clothing/head/helmet/knight/templar
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/battlemage
+	stored_item = /obj/item/clothing/head/helmet/knight/battlemage
+
+/obj/structure/interactive/localmachine/item/clothing/cloak
+	stored_item = /obj/item/clothing/overwear/cloak
+
+/obj/structure/interactive/localmachine/item/clothing/cloak/green
+	stored_item = /obj/item/clothing/overwear/cloak/green
+	color = "#008800"
+
 /obj/structure/interactive/localmachine/item/clothing/sunglasses
 	stored_item = /obj/item/clothing/glasses/sun
 
@@ -50,6 +99,27 @@
 
 /obj/structure/interactive/localmachine/item/clothing/gasmask
 	stored_item =/obj/item/clothing/mask/gas
+
+/obj/structure/interactive/localmachine/item/clothing/ABOMB_uniform
+	stored_item = /obj/item/clothing/uniform/ABOMB
+
+/obj/structure/interactive/localmachine/item/clothing/tacticool_uniform
+	stored_item = /obj/item/clothing/uniform/tacticool
+
+/obj/structure/interactive/localmachine/item/clothing/tacticool_vest
+	stored_item = /obj/item/clothing/overwear/vest/
+
+/obj/structure/interactive/localmachine/item/clothing/ABOMB_shades
+	stored_item = /obj/item/clothing/glasses/sun/ABOMB
+
+/obj/structure/interactive/localmachine/item/clothing/skimask
+	stored_item = /obj/item/clothing/mask/skimask
+
+/obj/structure/interactive/localmachine/item/clothing/military_helmet
+	stored_item = /obj/item/clothing/head/tactical_helmet
+
+/obj/structure/interactive/localmachine/item/clothing/military_helmet2
+	stored_item = /obj/item/clothing/head/tactical_helmet2
 
 /obj/structure/interactive/localmachine/item/clothing/boot_left
 	stored_item = /obj/item/clothing/feet/shoes/black_boots/left
@@ -63,11 +133,19 @@
 /obj/structure/interactive/localmachine/item/clothing/black_shoe_right
 	stored_item = /obj/item/clothing/feet/shoes/black
 
-/obj/structure/interactive/localmachine/item/clothing/gloves_yellow
-	stored_item = /obj/item/clothing/hands/gloves/yellow
+/obj/structure/interactive/localmachine/item/clothing/gloves
+	stored_item = /obj/item/clothing/hands/gloves/colored
 
-/obj/structure/interactive/localmachine/item/clothing/gloves_yellow/left
-	stored_item = /obj/item/clothing/hands/gloves/yellow/left
+/obj/structure/interactive/localmachine/item/clothing/gloves/left
+	stored_item = /obj/item/clothing/hands/gloves/colored/left
+
+/obj/structure/interactive/localmachine/item/clothing/gloves/black
+	stored_item = /obj/item/clothing/hands/gloves/colored/black
+	color = "#444444"
+
+/obj/structure/interactive/localmachine/item/clothing/gloves/black/left
+	stored_item = /obj/item/clothing/hands/gloves/colored/black/left
+	color = "#444444"
 
 /obj/structure/interactive/localmachine/item/clothing/beaverhat
 	stored_item = /obj/item/clothing/head/beaver
@@ -76,86 +154,114 @@
 	stored_item = /obj/item/clothing/uniform/jumpsuit
 
 //Melee
-/obj/structure/interactive/localmachine/item/weapon/sword
+/obj/structure/interactive/localmachine/item/weapon/melee/sword
 	stored_item = /obj/item/weapon/melee/sword
 
-/obj/structure/interactive/localmachine/item/weapon/energy_sword
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_sword
 	stored_item = /obj/item/weapon/melee/energy/sword/
 	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
 	icon_state = "inventory_on"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_sword/blue
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/blue
 	stored_item = /obj/item/weapon/melee/energy/sword/blue
 	color = "#0000FF"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_sword/red
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/red
 	stored_item = /obj/item/weapon/melee/energy/sword/red
 	color = "#FF0000"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_sword/green
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/green
 	stored_item = /obj/item/weapon/melee/energy/sword/green
 	color = "#00FF00"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_sword/yellow
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/yellow
 	stored_item = /obj/item/weapon/melee/energy/sword/yellow
 	color = "#FFFF00"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_shield
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_shield
 	stored_item = /obj/item/weapon/melee/energy/shield/
 	icon = 'icons/obj/items/weapons/melee/laser/shield.dmi'
 	icon_state = "inventory_on"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_shield/blue
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/blue
 	stored_item = /obj/item/weapon/melee/energy/shield/blue
 	color = "#0000FF"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_shield/red
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/red
 	stored_item = /obj/item/weapon/melee/energy/shield/red
 	color = "#FF0000"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_shield/green
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/green
 	stored_item = /obj/item/weapon/melee/energy/shield/green
 	color = "#00FF00"
 
-/obj/structure/interactive/localmachine/item/weapon/energy_shield/yellow
+/obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/yellow
 	stored_item = /obj/item/weapon/melee/energy/shield/yellow
 	color = "#FFFF00"
 
 
+/obj/structure/interactive/localmachine/item/weapon/melee/claymore
+	stored_item = /obj/item/weapon/melee/sword/claymore
+
 //Guns
-/obj/structure/interactive/localmachine/item/weapon/detective
+/obj/structure/interactive/localmachine/item/weapon/ranged/detective
 	stored_item = /obj/item/weapon/ranged/bullet/revolver/detective/
 	icon = 'icons/obj/items/weapons/ranged/revolver.dmi'
 	icon_state = "inventory"
 
-/obj/structure/interactive/localmachine/item/weapon/mateba
+/obj/structure/interactive/localmachine/item/weapon/ranged/crossbow
+	stored_item = /obj/item/weapon/ranged/bullet/crossbow/
+	icon = 'icons/obj/items/weapons/ranged/crossbow.dmi'
+	icon_state = "inventory_open"
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/mateba
 	stored_item = /obj/item/weapon/ranged/bullet/revolver/mateba/
 	icon = 'icons/obj/items/weapons/ranged/mateba.dmi'
 	icon_state = "inventory"
 
-/obj/structure/interactive/localmachine/item/weapon/assault_rifle
+/obj/structure/interactive/localmachine/item/weapon/ranged/assault_rifle
 	stored_item = /obj/item/weapon/ranged/bullet/magazine/assault_rifle
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
-/obj/structure/interactive/localmachine/item/weapon/smg
+/obj/structure/interactive/localmachine/item/weapon/ranged/smg
 	stored_item = /obj/item/weapon/ranged/bullet/magazine/smg
 	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
 	icon_state = "inventory_open"
 
-/obj/structure/interactive/localmachine/item/weapon/dbarrel
+/obj/structure/interactive/localmachine/item/weapon/ranged/dbarrel
 	stored_item = /obj/item/weapon/ranged/bullet/revolver/dbarrel
 	icon = 'icons/obj/items/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 
-/obj/structure/interactive/localmachine/item/weapon/combat_shotgun
+/obj/structure/interactive/localmachine/item/weapon/ranged/combat_shotgun
 	stored_item = /obj/item/weapon/ranged/bullet/pump/combat_shotgun
 	icon = 'icons/obj/items/weapons/ranged/combat_shotgun.dmi'
 	icon_state = "inventory_open"
 
-/obj/structure/interactive/localmachine/item/weapon/heavy_snip
+/obj/structure/interactive/localmachine/item/weapon/ranged/heavy_snip
 	stored_item = /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
 
+//Magic
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/staff/fireball
+	stored_item = /obj/item/weapon/ranged/magic/staff/fire
+	icon = 'icons/obj/items/weapons/ranged/magic/fire.dmi'
+	icon_state = "inventory"
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/staff/chaos
+	stored_item = /obj/item/weapon/ranged/magic/staff/chaos
+	icon = 'icons/obj/items/weapons/ranged/magic/chaos.dmi'
+	icon_state = "inventory"
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/staff/basic
+	stored_item = /obj/item/weapon/ranged/magic/staff/basic
+	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
+	icon_state = "inventory"
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/staff/focus
+	stored_item = /obj/item/weapon/ranged/magic/staff/focus
+	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'
+	icon_state = "inventory"
 
 //Ammo
 /obj/structure/interactive/localmachine/item/ammo/revolver_38
@@ -176,5 +282,7 @@
 /obj/structure/interactive/localmachine/item/ammo/sniper50
 	stored_item = /obj/item/magazine/sniper50
 
+/obj/structure/interactive/localmachine/item/ammo/bolt
+	stored_item = /obj/item/bullet/bolt/
 
 

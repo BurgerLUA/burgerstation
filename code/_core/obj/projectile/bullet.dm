@@ -77,3 +77,8 @@
 	name = "sniper bullet"
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_massive"
+
+/obj/projectile/bullet/bolt
+	name = "crossbow bolt"
+	icon = 'icons/obj/projectiles/bolt.dmi'
+	icon_state = "bolt"

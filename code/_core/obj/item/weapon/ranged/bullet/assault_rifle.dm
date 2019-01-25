@@ -8,9 +8,9 @@
 	damage_type = /damagetype/sword/
 
 	bullet_speed = 31
-	shoot_delay = 3
+	shoot_delay = 2
 
-	automatic = FALSE
+	automatic = TRUE
 
 	bullet_capacity = 1 //One in the chamber
 

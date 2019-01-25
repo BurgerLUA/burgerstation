@@ -13,15 +13,15 @@
 	name = "sabre"
 
 	base_attack_damage = list(
-		BRUTE = 50,
+		BRUTE = 40,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_AGILITY = CLASS_C,
+		ATTRIBUTE_STRENGTH = CLASS_F,
+		ATTRIBUTE_AGILITY = CLASS_F,
 		ATTRIBUTE_INTELLIGENCE = CLASS_F
 	)
 
@@ -33,7 +33,7 @@
 
 	skill_stats = list(
 		SKILL_UNARMED = CLASS_F,
-		SKILL_MELEE = CLASS_C,
+		SKILL_MELEE = CLASS_F,
 		SKILL_RANGED = CLASS_F
 	)
 
@@ -56,14 +56,14 @@
 
 	base_attack_damage = list(
 		BRUTE = 10,
-		BURN = 50,
+		BURN = 30,
 		TOX = 0,
 		OXY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_E,
-		ATTRIBUTE_AGILITY = CLASS_B,
+		ATTRIBUTE_STRENGTH = CLASS_F,
+		ATTRIBUTE_AGILITY = CLASS_F,
 		ATTRIBUTE_INTELLIGENCE = CLASS_F
 	)
 
@@ -75,7 +75,7 @@
 
 	skill_stats = list(
 		SKILL_UNARMED = CLASS_F,
-		SKILL_MELEE = CLASS_B,
+		SKILL_MELEE = CLASS_F,
 		SKILL_RANGED = CLASS_F
 	)
 
@@ -97,14 +97,54 @@
 	impact_sounds = list('sounds/weapon/melee/saberon.ogg')
 
 	base_attack_damage = list(
-		BRUTE = 25,
+		BRUTE = 30,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_E,
+		ATTRIBUTE_STRENGTH = CLASS_F,
+		ATTRIBUTE_AGILITY = CLASS_F,
+		ATTRIBUTE_INTELLIGENCE = CLASS_F
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = BRUTE,
+		ATTRIBUTE_AGILITY = BRUTE,
+		ATTRIBUTE_INTELLIGENCE = BRUTE
+	)
+
+	skill_stats = list(
+		SKILL_UNARMED = CLASS_F,
+		SKILL_MELEE = CLASS_F,
+		SKILL_RANGED = CLASS_F
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = BRUTE,
+		SKILL_MELEE = BRUTE,
+		SKILL_RANGED = BRUTE
+	)
+
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = 0,
+		SKILL_MELEE = 1,
+		SKILL_RANGED = 0
+	)
+
+/damagetype/sword/claymore
+	name = "claymore"
+
+	base_attack_damage = list(
+		BRUTE = 50,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = CLASS_F,
 		ATTRIBUTE_AGILITY = CLASS_F,
 		ATTRIBUTE_INTELLIGENCE = CLASS_F
 	)

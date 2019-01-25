@@ -6,7 +6,7 @@
 
 /datum/subsystem/spawnpoints/on_life()
 	for(var/v in mob_spawnpoints)
-		var/obj/marker/spawnpoint/mob/S = v
-		S.trigger_spawn()
+		var/obj/marker/mob_spawn/S = v
+		S.attempt_spawn()
 
 	return TRUE

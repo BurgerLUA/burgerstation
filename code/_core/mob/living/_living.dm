@@ -36,6 +36,10 @@ var/global/list/all_living = list()
 		ai = new ai(src)
 
 /mob/living/Initialize()
+	initialize_factions()
+	..()
+
+
+/mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)
 		factions[k] = all_factions[k]
-	..()

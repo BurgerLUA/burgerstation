@@ -28,6 +28,8 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(c
 		P.client.update_zoom(0)
 	P.factions = list()
 
+	P.initialize_factions()
+
 	var/faction/F = all_factions[faction_to_join]
 	P.factions += faction_to_join
 	P.update_faction_icons()

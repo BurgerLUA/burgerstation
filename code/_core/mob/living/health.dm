@@ -23,3 +23,9 @@
 /mob/living/proc/update_health_elements()
 	if(client)
 		client.known_health_elements = health_elements
+
+
+/mob/living/proc/update_health_element_icons()
+	for(var/id in health_elements)
+		var/obj/health/H = health_elements[id]
+		H.update_icon()

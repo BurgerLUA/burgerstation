@@ -1,6 +1,6 @@
 /obj/item/clothing/uniform/jumpsuit
-	name = "grey suit"
-	desc = "A nice grey suit."
+	name = "jumpsuit"
+	desc = "A nice jumpsuit."
 
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuit.dmi'
 
@@ -15,12 +15,44 @@
 
 	slot_icons = TRUE
 
+	color = "#FFFFFF"
 
+/obj/item/clothing/uniform/jumpsuit/red
+	color = "#FF0000"
 
 /obj/item/clothing/uniform/security
 	name = "security uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/items/clothing/uniforms/security.dmi'
+
+	inventories = list(
+		/obj/inventory/pocket/pocket01,
+		/obj/inventory/pocket/pocket02
+	)
+
+	item_slot = SLOT_TORSO | SLOT_GROIN
+
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+
+
+/obj/item/clothing/uniform/ABOMB
+	name = "\improper A.B.O.M.B. uniform"
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+	icon = 'icons/obj/items/clothing/uniforms/ABOMB.dmi'
+
+	inventories = list(
+		/obj/inventory/pocket/pocket01,
+		/obj/inventory/pocket/pocket02
+	)
+
+	item_slot = SLOT_TORSO | SLOT_GROIN
+
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+
+/obj/item/clothing/uniform/tacticool
+	name = "tacticool uniform"
+	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+	icon = 'icons/obj/items/clothing/uniforms/tacticool.dmi'
 
 	inventories = list(
 		/obj/inventory/pocket/pocket01,

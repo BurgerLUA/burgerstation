@@ -32,6 +32,8 @@ var/global/list/all_clients = list()
 
 	world.update_status()
 
+	broadcast("[ckey] has joined the game.")
+
 	if(!button_tracker)
 		button_tracker = new(src)
 

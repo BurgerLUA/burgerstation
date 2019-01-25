@@ -1,7 +1,7 @@
 /datum/subsystem/mobs/
 	name = "Living Mob Subsystem"
 	desc = "Controls how living mobs behave. Includes AI."
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = 1
 	priority = SS_ORDER_MOBS
 
 /datum/subsystem/mobs/on_life()

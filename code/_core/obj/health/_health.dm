@@ -35,6 +35,7 @@
 	return TRUE
 
 /obj/health/update_icon()
+
 	var/icon/base = icon(initial(icon),icon_state = icon_state)
 	var/icon/bar = icon(initial(icon),icon_state = "bar")
 	var/start_x = 0

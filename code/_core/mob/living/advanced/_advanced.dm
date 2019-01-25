@@ -26,6 +26,23 @@
 	var/obj/inventory/left_hand
 	var/obj/inventory/right_hand
 
+	var/is_typing = FALSE
+	var/talk_duration = 0
+	var/talk_type = 0
+
+/mob/living/advanced/proc/do_type(var/type_type)
+	talk_type = type_type
+	talk_duration = SECONDS_TO_DECISECONDS(6)
+	update_icon()
+
+/mob/living/advanced/proc/start_typing()
+	is_typing = TRUE
+	update_icon()
+
+/mob/living/advanced/proc/end_typing()
+	is_typing = FALSE
+	update_icon()
+
 /mob/living/advanced/New()
 	organs = list()
 	inventory = list()
@@ -99,15 +116,24 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/on_life()
 	..()
+	if(talk_duration)
+		talk_duration = max(0,talk_duration-1)
+		if(talk_duration <= 0)
+			talk_type = 0
+			update_icon()
+
 	update_health_elemement_icons()
 	return ..()
 
 /mob/living/advanced/on_life_client()
 	..()
 	if(attack_flags & ATTACK_HELD_RIGHT)
-		do_automatic_left()
+		if(!do_automatic_left())
+			attack_flags &= ~ATTACK_HELD_RIGHT
+
 	if(attack_flags & ATTACK_HELD_LEFT)
-		do_automatic_right()
+		if(!do_automatic_right())
+			attack_flags &= ~ATTACK_HELD_LEFT
 
 /mob/living/advanced/initialize_attributes()
 
@@ -179,8 +205,20 @@ mob/living/advanced/Login()
 	update_organ_icons()
 	update_inventory_icons()
 	update_faction_icons()
-
+	update_talking_icons()
 	. = ..()
+
+/mob/living/advanced/proc/update_talking_icons()
+	if(is_typing || talk_type)
+		var/obj/overlay/spawned_overlay = new /obj/overlay
+		spawned_overlay.layer = LAYER_EFFECT
+		spawned_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
+		if(is_typing)
+			spawned_overlay.icon_state = "talking"
+		else
+			spawned_overlay.icon_state = talk_type
+
+		overlays += spawned_overlay
 
 /mob/living/advanced/proc/update_faction_icons()
 	for(var/v in factions)

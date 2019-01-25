@@ -3,7 +3,9 @@
 	desc = "This is given to new characters that spawn in."
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
-		/obj/item/clothing/undertop/underwear/shirt
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/feet/socks/white,
+		/obj/item/clothing/feet/socks/white
 	)
 
 /datum/outfit/new_character_female
@@ -11,5 +13,7 @@
 	desc = "This is given to new characters that spawn in. Female though."
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/panty,
-		/obj/item/clothing/undertop/underwear/bra
+		/obj/item/clothing/undertop/underwear/bra,
+		/obj/item/clothing/feet/socks/white,
+		/obj/item/clothing/feet/socks/white
 	)

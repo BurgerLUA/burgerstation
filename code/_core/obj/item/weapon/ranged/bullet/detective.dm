@@ -23,4 +23,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))
+	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED,0,100))
