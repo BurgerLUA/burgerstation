@@ -1,15 +1,3 @@
-/mob/living/proc/initialize_attributes()
-	for(var/v in all_attributes)
-		var/experience/attribute/A = new v(src)
-		A.experience = A.level_to_xp(ATTRIBUTE_DEFAULT)
-		attributes[A.name] = A
-
-/mob/living/proc/initialize_skills()
-	for(var/v in all_skills)
-		var/experience/skill/S = new v(src)
-		S.experience = S.level_to_xp(SKILL_DEFAULT)
-		skills[S.name] = S
-
 //Skills
 /mob/living/proc/get_skill(var/id)
 	return skills[id]

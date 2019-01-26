@@ -33,6 +33,7 @@ var/global/list/all_mobs = list()
 	if(C)
 		client = C
 		ckey = C.ckey
+		C.reset()
 
 	buttons = list()
 

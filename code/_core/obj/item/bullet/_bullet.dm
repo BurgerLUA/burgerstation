@@ -1,6 +1,7 @@
 /obj/item/bullet/ //NOT TO BE CONFUSED WITH PROJECTILES.
 	name = "bullet"
-	desc = "just a regular bullet"
+	desc = "Try not to bite it."
+	desc_extended = "Bullets can be put in guns with the matching ammo type. Some bullets are very rare and should only be used when needed."
 	id = "bullet"
 	var/is_spent = FALSE
 	icon_state = "bullet"
@@ -11,6 +12,8 @@
 
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
+
+
 
 /obj/item/bullet/proc/get_ammo_count()
 	return bullet_count

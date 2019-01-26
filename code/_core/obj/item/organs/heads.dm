@@ -8,6 +8,7 @@
 	health_max = 50
 	inventories = list(
 		/obj/inventory/organs/head,
+		/obj/inventory/organs/neck,
 		/obj/inventory/organs/face,
 		/obj/inventory/organs/glasses
 	)
@@ -31,6 +32,7 @@
 
 	inventories = list(
 		/obj/inventory/organs/head,
+		/obj/inventory/organs/neck,
 		/obj/inventory/organs/face,
 		/obj/inventory/organs/glasses
 	)
@@ -47,6 +49,7 @@
 
 	inventories = list(
 		/obj/inventory/organs/head,
+		/obj/inventory/organs/neck,
 		/obj/inventory/organs/face,
 		/obj/inventory/organs/glasses
 	)
@@ -65,6 +68,7 @@
 
 	inventories = list(
 		/obj/inventory/organs/head,
+		/obj/inventory/organs/neck,
 		/obj/inventory/organs/face,
 		/obj/inventory/organs/glasses
 	)
@@ -82,6 +86,7 @@
 
 	inventories = list(
 		/obj/inventory/organs/head,
+		/obj/inventory/organs/neck,
 		/obj/inventory/organs/face,
 		/obj/inventory/organs/glasses
 	)

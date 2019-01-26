@@ -4,6 +4,12 @@
 	bullet_capacity = 6
 	bullet_capacity_icon = 6
 
+	worn_layer = LAYER_MOB_CLOTHING_BELT
+	item_slot = SLOT_GROIN_O
+
+/obj/item/bullet/shotgun/can_be_worn()
+	return TRUE
+
 /obj/item/bullet/shotgun/on_spawn()
 	bullet_count = 3
 

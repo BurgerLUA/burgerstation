@@ -28,6 +28,12 @@ var/global/list/all_clients = list()
 
 	//lazy_eye = 5
 
+/client/proc/reset()
+	known_inventory = list()
+	known_buttons = list()
+	known_health_elements = list()
+	screen = list()
+
 /client/New()
 
 	world.update_status()
@@ -130,9 +136,11 @@ var/global/list/all_clients = list()
 	var/list/aug = params2list(params)
 	var/click_flags = get_actual_click_flags(aug)
 
+	/*
 	if(mob.movement_flags & MOVEMENT_WALKING)
 		object.examine(mob)
 		return
+	*/
 
 
 
@@ -145,7 +153,9 @@ var/global/list/all_clients = list()
 		mob.on_right_down(object,location,control,aug)
 
 	if(click_flags & CLICK_MIDDLE)
-		mob.on_middle_down(object,location,control,aug)
+		//mob.on_middle_down(object,location,control,aug)
+		object.examine(mob)
+		return
 
 	..()
 

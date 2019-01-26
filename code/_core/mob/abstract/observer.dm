@@ -1,6 +1,7 @@
 /mob/abstract/observer/
 	name = "observer"
-	desc = "It's a ghost!"
+	desc = "Forever damned. Their spirit is powered by pure salt."
+	desc_extended = "Those who perish in this world turn into these beings to then later be resurrected to die again and again."
 	icon = 'icons/mob/abstract/ghosts.dmi'
 	icon_state = "basic"
 	ghost = TRUE
@@ -9,8 +10,10 @@
 	movement_delay = 1
 
 	var/list/spawning_buttons = list(
-		/obj/button/join_red,
-		/obj/button/join_blue
+		/obj/button/join/red,
+		/obj/button/join/blue,
+		/obj/button/join/green,
+		/obj/button/join/yellow
 	)
 
 /mob/abstract/observer/Initialize()
@@ -23,11 +26,6 @@
 	to_chat(span("greeting","You are a ghost! Click on one of the wishgranters near the corners of the map to join a team, or alternatively, use the buttons below."))
 
 	sight |= SEE_THRU
-
-	client.known_inventory = list()
-	client.known_buttons = list()
-	client.known_health_elements = list()
-	client.screen = list()
 
 	for(var/v in spawning_buttons)
 		var/obj/button/B = new v

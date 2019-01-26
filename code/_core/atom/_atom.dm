@@ -1,5 +1,7 @@
 /atom/
 
+	desc = "What the fuck is this?"
+	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
 	var/health_max = 0
 	var/health_current = 0
@@ -36,7 +38,6 @@
 	var/list/additional_blends = list()
 
 	var/override_icon = FALSE
-
 /atom/proc/Initialize()
 	initialize_blends()
 	//Initialize things here
@@ -69,3 +70,6 @@
 
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.
 	return 0
+
+/atom/proc/can_be_attacked(var/atom/attacker)
+	return TRUE

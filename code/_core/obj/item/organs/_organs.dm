@@ -63,14 +63,14 @@
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 
-	if(attached_organ)
-		attached_organ.attached_organs -= src
-		attached_organ = null
-
 	if(inventories)
 		for(var/v in inventories)
 			var/obj/inventory/I = v
 			I.drop_all_objects(T)
+
+	if(attached_organ)
+		attached_organ.attached_organs -= src
+		attached_organ = null
 
 	for(var/obj/item/organ/O in attached_organs)
 		O.unattach_from_parent(T)
@@ -106,15 +106,22 @@
 	del(src)
 
 /obj/item/organ/update_icon()
-
 	var/is_attached_to = is_advanced(src.loc)
-
 	if(!is_attached_to && has_dropped_icon)
 		icon_state = "[initial(icon_state)]_inventory"
+		if(has_dropped_icon_underlay)
+			var/icon/I = new /icon(icon,icon_state)
+			var/icon/U = new /icon(icon,"[icon_state]_underlay")
+			I.Blend(U,ICON_UNDERLAY)
+			icon = I
 
 /obj/item/organ/update_health(var/damage_dealt)
 
 	var/brute_loss = get_brute_loss()
+
+	if(health_max - brute_loss <= 0 && damage_dealt >= health_max*0.5 && flags_organ & flags_organ )
+		gib()
+		return
 
 	if(break_threshold)
 		if(!(flags_organ & FLAG_ORGAN_BROKEN) && brute_loss >= break_threshold)
@@ -125,11 +132,6 @@
 					span("danger","You hear a cracking sound!")\
 				)
 			flags_organ |= FLAG_ORGAN_BROKEN
-
-
-	if(health_max - brute_loss <= 0 && damage_dealt >= health_max*0.5 )
-		gib()
-		return
 
 	..()
 

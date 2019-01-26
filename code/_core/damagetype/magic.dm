@@ -3,7 +3,7 @@
 
 	base_attack_damage = list(
 		BRUTE = 0,
-		BURN = 50,
+		BURN = 100,
 		TOX = 0,
 		OXY = 0
 	)
@@ -43,7 +43,7 @@
 
 	base_attack_damage = list(
 		BRUTE = 0,
-		BURN = 20,
+		BURN = 15,
 		TOX = 0,
 		OXY = 0
 	)
@@ -82,8 +82,8 @@
 	name = "magic missle"
 
 	base_attack_damage = list(
-		BRUTE = 5,
-		BURN = 5,
+		BRUTE = 10,
+		BURN = 10,
 		TOX = 0,
 		OXY = 0
 	)

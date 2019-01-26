@@ -39,15 +39,12 @@
 	DT.attack_last = world.time
 	attacker.attack_last = world.time
 
-	switch(DT.handle_dodge(attacker,victim,object_to_damage_with,object_to_damage))
-		if(DODGE_MISS)
-			if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
-		if(DODGE_BLOCK)
-			if(victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
-		if(DODGE_PARRY)
-			if(victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
-		if(DODGE_DODGE)
-			if(victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
+
+	if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
+	if(victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
+	if(victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
+	if(victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
+
 
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
@@ -69,6 +66,9 @@
 	if(attack_last + get_attack_delay(victim,params) > world.time)
 		return FALSE
 
+	if(victim && !victim.can_be_attacked(src))
+		return FALSE
+
 	return TRUE
 
 /atom/proc/get_attack_delay(var/atom/victim,var/params)
@@ -87,13 +87,24 @@
 	return 0
 
 /atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	var/base_chance = get_block_chance(attacker,weapon,target)
+	if(!prob(base_chance))
+		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	return TRUE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
+	var/base_chance = get_parry_chance(attacker,weapon,target)
+	if(!prob(base_chance))
+		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"parried")
+	if(allow_parry_counter)
+		src.attack(src,attacker)
 	return TRUE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	var/base_chance = get_dodge_chance(attacker,weapon,target)
+	if(!prob(base_chance))
+		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"dodged")
 	return TRUE

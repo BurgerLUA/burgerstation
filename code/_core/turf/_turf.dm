@@ -14,6 +14,9 @@
 
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
+
+	var/allow_bullet_pass = FALSE
+
 /turf/New()
 	area = src.loc
 
@@ -29,3 +32,7 @@
 		if(is_trigger(A))
 			var/obj/trigger/T = A
 			T.on_trigger(enterer)
+
+
+/turf/can_be_attacked(var/atom/attacker)
+	return FALSE

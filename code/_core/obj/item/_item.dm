@@ -22,8 +22,21 @@
 
 	var/slot_icons = FALSE //Set to true if the clothing is based on where it's slot is.
 
-
 	var/ignore_other_slots = FALSE
+
+
+	var/block_mul = list(
+		ATTACK_TYPE_MELEE = 0,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
+
+	var/parry_mul = list(
+		ATTACK_TYPE_MELEE = 0,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
+
 
 /obj/item/New(var/desired_loc)
 	src.loc = desired_loc

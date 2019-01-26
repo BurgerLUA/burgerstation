@@ -106,39 +106,41 @@
 			on_hit(current_loc)
 			return
 
-		if(new_turf.density)
-			on_hit(new_turf)
-			return
+		if(!new_turf.allow_bullet_pass)
 
-		if(vel_y > 0)
-			if(old_turf.density_north)
-				on_hit(old_turf)
-				return
-			if(new_turf.density_south)
-				on_hit(new_turf)
-				return
-		else if(vel_y < 0)
-			if(old_turf.density_south)
-				on_hit(old_turf)
-				return
-			if(new_turf.density_north)
+			if(new_turf.density)
 				on_hit(new_turf)
 				return
 
-		if(vel_x > 0)
-			if(old_turf.density_east)
-				on_hit(old_turf)
-				return
-			if(new_turf.density_west)
-				on_hit(new_turf)
-				return
-		else if(vel_x < 0)
-			if(old_turf.density_west)
-				on_hit(old_turf)
-				return
-			if(new_turf.density_east)
-				on_hit(new_turf)
-				return
+			if(vel_y > 0)
+				if(!old_turf.allow_bullet_pass && old_turf.density_north)
+					on_hit(old_turf)
+					return
+				if(new_turf.density_south)
+					on_hit(new_turf)
+					return
+			else if(vel_y < 0)
+				if(!old_turf.allow_bullet_pass && old_turf.density_south)
+					on_hit(old_turf)
+					return
+				if(new_turf.density_north)
+					on_hit(new_turf)
+					return
+
+			if(vel_x > 0)
+				if(!old_turf.allow_bullet_pass && old_turf.density_east)
+					on_hit(old_turf)
+					return
+				if(new_turf.density_west)
+					on_hit(new_turf)
+					return
+			else if(vel_x < 0)
+				if(!old_turf.allow_bullet_pass && old_turf.density_west)
+					on_hit(old_turf)
+					return
+				if(new_turf.density_east)
+					on_hit(new_turf)
+					return
 
 		for(var/atom/A in new_turf.contents)
 			if(A == owner)

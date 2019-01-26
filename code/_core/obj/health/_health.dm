@@ -60,6 +60,7 @@
 	name = "health"
 	id = "health"
 	desc = "Approximately how close you are to death."
+	desc_extended = "Your health. When this reaches 0, you die. This value can be raised by increasing your vitality."
 	min = 0
 	bar_color = "#ff0000"
 
@@ -69,12 +70,12 @@
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
-	name = "Health Bar ([current]/[max])"
 
 /obj/health/sp
 	name = "stamina"
 	id = "stamina"
-	desc = "Approximately how close you are to death."
+	desc = "Approximately how close your are to physical fatigue."
+	desc_extended = "Your stamina. If this value is too low, some actions can't be performed. When it is 0, you will likely collapse from exhaution. This value can be raised by increasing your endurance."
 	min = 0
 	bar_color = "#00ff00"
 
@@ -84,12 +85,12 @@
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
-	name = "Stamina Bar ([current]/[max])"
 
 /obj/health/mp
 	name = "mana"
 	id = "mana"
-	desc = "Approximately how close you are to death."
+	desc = "Approximately how close you are to mental fatigue."
+	desc_extended = "Your mana. Determines which spells you can cast and how often. When it is 0, you will likely collapse from mental exhaution. This value can be raised by increasing your willpower."
 	min = 0
 	bar_color = "#0000ff"
 
@@ -99,4 +100,3 @@
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)
-	name = "Mana Bar ([current]/[max])"

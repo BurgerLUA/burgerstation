@@ -1,6 +1,7 @@
 /obj/item/clothing/feet/shoes/
-	name = "black shoes"
-	desc = "Some nice black shoes."
+	name = "shoes"
+	desc = "Behave yourself."
+	desc_extended = "Protects your feet from the harsh enviroment in the world."
 
 	damage_type = /damagetype/clothing/shoe
 

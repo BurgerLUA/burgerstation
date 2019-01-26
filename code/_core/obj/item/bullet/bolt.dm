@@ -7,5 +7,12 @@
 	bullet_capacity_icon = 6
 	icon_state = "bolt"
 
+	worn_layer = LAYER_MOB_CLOTHING_BELT
+	item_slot = SLOT_GROIN_O
+
 /obj/item/bullet/bolt/on_spawn()
 	bullet_count = 3
+
+
+/obj/item/bullet/bolt/can_be_worn()
+	return TRUE

@@ -11,12 +11,14 @@
 /obj/button/resist
 	name = "resist"
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
+	desc_extended = "Press this button if you want to resist out of whatever situation your in. (That doesn't mean that it will do it.)"
 	icon_state = "resist"
 	screen_loc = "RIGHT-1,BOTTOM"
 
 /obj/button/resist_auto
 	name = "toggle auto resist"
-	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
+	desc = "For when you don't like clicking."
+	desc_extended = "Automatically attempts to resist in some situations."
 	icon_state = "auto"
 	screen_loc = "RIGHT-1,BOTTOM"
 
@@ -37,7 +39,8 @@
 
 /obj/button/hide_show_inventory
 	name = "toggle inventory"
-	desc = "Show/hide useless inventory."
+	desc = "Need more space? Click this button."
+	desc_extended = "Hides your inventory from view. Inventories such as pockets, belts, backpacks, and hands are not hidden."
 	icon_state = "view_inventory"
 	screen_loc = "LEFT,BOTTOM"
 

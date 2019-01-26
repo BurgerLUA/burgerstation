@@ -7,6 +7,9 @@
 		/obj/inventory/pocket/pocket04
 	)
 
+	desc = "The detective's favorite."
+	desc_extended = "A dark brown leather coat. It is quite heavy."
+
 
 /obj/item/clothing/overwear/coat/wizard
 	name = "wizard's robes"
@@ -16,3 +19,13 @@
 		/obj/inventory/pocket/pocket03,
 		/obj/inventory/pocket/pocket04
 	)
+
+	desc = "Not a bathrobe."
+	desc_extended = "A colorful bathrobe."
+
+
+/obj/item/clothing/overwear/coat/wizard/red
+	color = "#FF6500"
+
+/obj/item/clothing/overwear/coat/wizard/blue
+	color = "#0065FF"

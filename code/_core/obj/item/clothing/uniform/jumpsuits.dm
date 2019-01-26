@@ -20,6 +20,9 @@
 /obj/item/clothing/uniform/jumpsuit/red
 	color = "#FF0000"
 
+/obj/item/clothing/uniform/jumpsuit/blue
+	color = "#4444FF"
+
 /obj/item/clothing/uniform/security
 	name = "security uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET

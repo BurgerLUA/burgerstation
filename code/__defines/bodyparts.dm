@@ -2,6 +2,7 @@
 #define BODY_FACE "face"
 #define BODY_HEAD_MALE "head_m"
 #define BODY_HEAD_FEMALE "head_f"
+#define BODY_NECK "neck"
 
 #define BODY_TORSO "torso"
 #define BODY_TORSO_O "torso_o"

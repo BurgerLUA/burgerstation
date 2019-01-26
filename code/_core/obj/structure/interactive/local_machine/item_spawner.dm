@@ -10,9 +10,9 @@
 		stored_item.on_spawn()
 		stored_item.update_icon()
 		name = stored_item.name
-		icon = stored_item.icon
-		icon_state = stored_item.icon_state
 		desc = stored_item.desc
+		desc_extended = stored_item.desc_extended
+		appearance = stored_item.appearance
 	..()
 
 /obj/structure/interactive/localmachine/item/clicked_by_object(caller,object,location,control,params)
@@ -27,14 +27,25 @@
 	return ..()
 
 //Clothing
+
+
+/obj/structure/interactive/localmachine/item/clothing/neck/tie_white
+	stored_item = /obj/item/clothing/neck/tie
+
+/obj/structure/interactive/localmachine/item/clothing/neck/tie_red
+	stored_item = /obj/item/clothing/neck/tie/red
+
+/obj/structure/interactive/localmachine/item/clothing/neck/tie_black
+	stored_item = /obj/item/clothing/neck/tie/black
+
 /obj/structure/interactive/localmachine/item/clothing/coat
 	stored_item = /obj/item/clothing/overwear/coat/
 
 /obj/structure/interactive/localmachine/item/clothing/coat/wizard
-	stored_item = /obj/item/clothing/overwear/coat/wizard
+	stored_item = /obj/item/clothing/overwear/coat/wizard/blue
 
 /obj/structure/interactive/localmachine/item/clothing/hat/wizard
-	stored_item = /obj/item/clothing/head/hat/wizard
+	stored_item = /obj/item/clothing/head/hat/wizard/blue
 
 /obj/structure/interactive/localmachine/item/clothing/shoe_right
 	stored_item = /obj/item/clothing/feet/shoes/brown
@@ -66,6 +77,19 @@
 /obj/structure/interactive/localmachine/item/clothing/armor/knight/battlemage
 	stored_item = /obj/item/clothing/overwear/armor/knight/battlemage
 
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/syndie1
+	stored_item = /obj/item/clothing/overwear/armor/knight/syndie1
+
+/obj/structure/interactive/localmachine/item/clothing/armor/knight/syndie2
+	stored_item = /obj/item/clothing/overwear/armor/knight/syndie2
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/syndie1
+	stored_item = /obj/item/clothing/head/helmet/knight/syndie1
+
+/obj/structure/interactive/localmachine/item/clothing/helmet/knight/syndie2
+	stored_item = /obj/item/clothing/head/helmet/knight/syndie2
+
+
 /obj/structure/interactive/localmachine/item/clothing/helmet/knight/red
 	stored_item = /obj/item/clothing/head/helmet/knight/red
 
@@ -89,7 +113,7 @@
 
 /obj/structure/interactive/localmachine/item/clothing/cloak/green
 	stored_item = /obj/item/clothing/overwear/cloak/green
-	color = "#008800"
+	//color = "#008800"
 
 /obj/structure/interactive/localmachine/item/clothing/sunglasses
 	stored_item = /obj/item/clothing/glasses/sun
@@ -102,6 +126,9 @@
 
 /obj/structure/interactive/localmachine/item/clothing/ABOMB_uniform
 	stored_item = /obj/item/clothing/uniform/ABOMB
+
+/obj/structure/interactive/localmachine/item/clothing/jumpsuit_blue
+	stored_item = /obj/item/clothing/uniform/jumpsuit/blue
 
 /obj/structure/interactive/localmachine/item/clothing/tacticool_uniform
 	stored_item = /obj/item/clothing/uniform/tacticool
@@ -126,6 +153,14 @@
 
 /obj/structure/interactive/localmachine/item/clothing/boot_right
 	stored_item = /obj/item/clothing/feet/shoes/black_boots
+
+
+/obj/structure/interactive/localmachine/item/clothing/sandal_right
+	stored_item = /obj/item/clothing/feet/shoes/sandal
+
+/obj/structure/interactive/localmachine/item/clothing/sandal_left
+	stored_item = /obj/item/clothing/feet/shoes/sandal/left
+
 
 /obj/structure/interactive/localmachine/item/clothing/black_shoe_left
 	stored_item = /obj/item/clothing/feet/shoes/black/left
@@ -164,19 +199,19 @@
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/blue
 	stored_item = /obj/item/weapon/melee/energy/sword/blue
-	color = "#0000FF"
+	//color = "#0000FF"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/red
 	stored_item = /obj/item/weapon/melee/energy/sword/red
-	color = "#FF0000"
+	//color = "#FF0000"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/green
 	stored_item = /obj/item/weapon/melee/energy/sword/green
-	color = "#00FF00"
+	//color = "#00FF00"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_sword/yellow
 	stored_item = /obj/item/weapon/melee/energy/sword/yellow
-	color = "#FFFF00"
+	//color = "#FFFF00"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_shield
 	stored_item = /obj/item/weapon/melee/energy/shield/
@@ -185,19 +220,19 @@
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/blue
 	stored_item = /obj/item/weapon/melee/energy/shield/blue
-	color = "#0000FF"
+	//color = "#0000FF"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/red
 	stored_item = /obj/item/weapon/melee/energy/shield/red
-	color = "#FF0000"
+	//color = "#FF0000"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/green
 	stored_item = /obj/item/weapon/melee/energy/shield/green
-	color = "#00FF00"
+	//color = "#00FF00"
 
 /obj/structure/interactive/localmachine/item/weapon/melee/energy_shield/yellow
 	stored_item = /obj/item/weapon/melee/energy/shield/yellow
-	color = "#FFFF00"
+	//color = "#FFFF00"
 
 
 /obj/structure/interactive/localmachine/item/weapon/melee/claymore
@@ -263,7 +298,15 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'
 	icon_state = "inventory"
 
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/scroll/fireball
+	stored_item = /obj/item/weapon/ranged/magic/scroll/fireball/amount_3
+	icon = 'icons/obj/items/weapons/ranged/magic/scroll.dmi'
+	icon_state = "scroll_open"
+
 //Ammo
+/obj/structure/interactive/localmachine/item/ammo/soulgem
+	stored_item = /obj/item/soulgem
+
 /obj/structure/interactive/localmachine/item/ammo/revolver_38
 	stored_item = /obj/item/magazine/clip/revolver/bullet_38/
 

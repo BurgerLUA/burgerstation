@@ -8,7 +8,7 @@
 
 	var/obj/projectile/projectile = /obj/projectile/
 
-	var/automatic = TRUE
+	var/automatic = FALSE
 
 	var/shoot_delay = 4 //In deciseconds
 
@@ -68,7 +68,6 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	return FALSE
 
-
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
 
 	if(!object)
@@ -109,8 +108,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		if(length(shoot_sounds))
 			play_sound(pick(shoot_sounds),all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
-		var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
-		var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
+
 
 		var/icon_pos_x = 0
 		var/icon_pos_y = 0
@@ -130,23 +128,19 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 			accuracy_loss += get_skill_spread(L)
 
 		for(var/i=1,i<=bullet_count,i++)
-			var/diffx = object_fake_x - caller_fake_x
-			var/diffy = object_fake_y - caller_fake_y
-			var/distance = sqrt(diffx ** 2 + diffy ** 2)
-			var/inaccuracy_x = rand(-distance*accuracy_loss,distance*accuracy_loss)
-			var/inaccuracy_y = rand(-distance*accuracy_loss,distance*accuracy_loss)
 
-			diffx += inaccuracy_x
-			diffy += inaccuracy_y
+			var/list/xy_list = get_projectile_path(caller,object_fake_x,object_fake_y,i,accuracy_loss)
 
-			var/highest = max(abs(diffx),abs(diffy))
+			var/new_x = xy_list[1]
+			var/new_y = xy_list[2]
+
+			var/highest = max(abs(new_x),abs(new_y))
 
 			if(highest > 0)
-				var/normx = diffx/highest
-				var/normy = diffy/highest
+				var/normx = new_x/highest
+				var/normy = new_y/highest
 
 				var/turf/T = get_turf(caller)
-
 
 				bullet_speed = min(bullet_speed,31)
 
@@ -157,6 +151,31 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 				continue
 
 	return TRUE
+
+obj/item/weapon/ranged/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
+
+	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
+	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
+
+	var/diffx = desired_x - caller_fake_x
+	var/diffy = desired_y - caller_fake_y
+	var/distance = sqrt(diffx ** 2 + diffy ** 2)
+	var/inaccuracy_x = rand(-distance*accuracy,distance*accuracy)
+	var/inaccuracy_y = rand(-distance*accuracy,distance*accuracy)
+
+	diffx += inaccuracy_x
+	diffy += inaccuracy_y
+
+	var/highest = max(abs(diffx),abs(diffy))
+
+	if(highest > 0)
+		var/normx = diffx/highest
+		var/normy = diffy/highest
+
+		return list(normx,normy)
+
+	return list(0,0)
+
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
 	if(!automatic || defer_attack(caller,object,location,null,params) || (object && object.plane > 1))

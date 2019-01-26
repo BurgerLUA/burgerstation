@@ -60,8 +60,12 @@
 			caller.to_chat(span("notice","It wouldn't be a very good idea to mix scrolls together without a tome."))
 			return TRUE
 
-		S.scroll_count -= 1
-		scroll_count += 1
+		var/transfer_count = S.scroll_count
+
+		caller.to_chat(span("notice","You take [transfer_count] scroll\s from \the [S]."))
+
+		S.scroll_count -= scroll_count
+		scroll_count += transfer_count
 		if(S.scroll_count <= 0)
 			del(S)
 
@@ -86,9 +90,9 @@
 	ranged_damage_type = /damagetype/ranged/fireball
 
 	shoot_delay = 10
-
 	bullet_speed = 16
 
+	shoot_sounds = list('sounds/weapon/ranged/magic/fireball.ogg')
 
-/obj/item/weapon/ranged/magic/scroll/fireball/amount_10
-	scroll_count = 10
+/obj/item/weapon/ranged/magic/scroll/fireball/amount_3/on_spawn()
+	scroll_count = 5

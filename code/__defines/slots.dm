@@ -6,10 +6,13 @@
 #define SLOT_TORSO_U      0x4    //Torso covering underwear (undershirts)
 #define SLOT_TORSO_B      0x800  //Backpack/Satchel
 
+
+
 #define SLOT_HEAD         0x1000 //Helmets/Hats
 #define SLOT_FACE         0x2000 //Masks
 #define SLOT_EAR          0x4000 //Headsets
 #define SLOT_GLASSES      0x8000 //Glasses
+#define SLOT_NECK         0x40000 //Neck
 
 #define SLOT_GROIN        0x8    //Pants
 #define SLOT_GROIN_O      0x10000//Belts, mainly

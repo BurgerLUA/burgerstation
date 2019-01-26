@@ -2,6 +2,8 @@
 	name = "body armor"
 	icon = 'icons/obj/items/clothing/suit/bulletproof_vest.dmi'
 	item_slot = SLOT_TORSO_A
+	desc = "Protecting against the greytide since 2193."
+	desc_extended = "A sturdy suit of armor."
 
 /obj/item/clothing/overwear/armor/cult
 	name = "cult armor"
@@ -45,3 +47,12 @@
 /obj/item/clothing/overwear/armor/knight/battlemage
 	name = "battlemage armor"
 	icon = 'icons/obj/items/clothing/suit/knight_battlemage.dmi'
+
+
+/obj/item/clothing/overwear/armor/knight/syndie1
+	name = "mauler hardsuit mk1"
+	icon = 'icons/obj/items/clothing/suit/syndie1.dmi'
+
+/obj/item/clothing/overwear/armor/knight/syndie2
+	name = "mauler hardsuit mk2"
+	icon = 'icons/obj/items/clothing/suit/syndie2.dmi'

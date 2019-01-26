@@ -7,3 +7,5 @@
 
 
 	var/current_cooldown = 0
+
+	automatic = FALSE

@@ -87,6 +87,13 @@
 	if(data["color"])
 		O.color = data["color"]
 
+	if(is_scroll(O))
+		var/obj/item/weapon/ranged/magic/scroll/S = O
+		if(data["scroll_count"])
+			S.scroll_count = data["scroll_count"]
+		else
+			S.scroll_count = 0
+
 	if(is_weapon(O))
 		var/obj/item/weapon/W = O
 		if(data["open"])
@@ -310,6 +317,11 @@
 		var/obj/item/weapon/W = I
 		if(W.open)
 			returning_list["open"] = TRUE
+
+	if(is_scroll(I))
+		var/obj/item/weapon/ranged/magic/scroll/S = I
+		if(S.scroll_count)
+			returning_list["scroll_count"] = S.scroll_count
 
 	if(is_bullet(I))
 		var/obj/item/bullet/B = I

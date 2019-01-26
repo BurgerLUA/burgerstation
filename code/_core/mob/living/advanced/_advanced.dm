@@ -16,8 +16,6 @@
 
 	gender = MALE
 
-	var/starting_class = "default"
-
 	var/list/atom/tracked_overlays = list()
 
 	var/draw_inventory = TRUE
@@ -134,25 +132,6 @@ mob/living/advanced/Login()
 	if(attack_flags & ATTACK_HELD_LEFT)
 		if(!do_automatic_right())
 			attack_flags &= ~ATTACK_HELD_LEFT
-
-/mob/living/advanced/initialize_attributes()
-
-	var/class/C = all_classes[starting_class]
-
-	for(var/v in all_attributes)
-		var/experience/attribute/A = new v(src)
-		A.Initialize(A.level_to_xp(C.attributes[A.id]))
-		attributes[A.id] = A
-
-/mob/living/advanced/initialize_skills()
-
-	var/class/C = all_classes[starting_class]
-
-
-	for(var/v in all_skills)
-		var/experience/skill/S = new v(src)
-		S.Initialize(S.level_to_xp(C.skills[S.id]))
-		skills[S.id] = S
 
 /mob/living/advanced/Initialize()
 
@@ -382,3 +361,12 @@ mob/living/advanced/Login()
 
 	return FALSE
 
+/mob/living/advanced/proc/get_held_left()
+	if(left_hand)
+		return left_hand.get_top_held_object()
+	return null
+
+/mob/living/advanced/proc/get_held_right()
+	if(right_hand)
+		return right_hand.get_top_held_object()
+	return null

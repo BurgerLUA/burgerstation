@@ -24,6 +24,21 @@ span.notice{
 	color: blue;
 	font-style: italic;
 }
+
+span.examine_title{
+	font-size: 200%;
+	text-align: center;
+}
+span.examine_description{
+	font-style: italic;
+	text-align: center;
+}
+span.examine_info{
+	font-style: italic;
+}
+
+
+
 span.distance_large{
 	font-size: 120%;
 }

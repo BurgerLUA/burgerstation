@@ -1,6 +1,7 @@
 /obj/item/clothing/feet/socks/
-	name = "socks"
-	desc = "Yes."
+	name = "sock"
+	desc = "Don't wear socks with this or I'll fucking end you."
+	desc_extended = "A sock. This can go on either foot."
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
@@ -12,7 +13,6 @@
 	slot_icons = TRUE
 
 /obj/item/clothing/feet/socks/white
-	name = "sock"
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
 
 

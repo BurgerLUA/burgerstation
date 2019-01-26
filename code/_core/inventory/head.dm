@@ -1,8 +1,15 @@
 /obj/inventory/organs/head
 	name = "head slot"
 	id = BODY_HEAD
-	screen_loc = "LEFT+1,BOTTOM+4"
+	screen_loc = "LEFT,BOTTOM+4"
 	item_slot = SLOT_HEAD
+	worn_slots = 1
+
+/obj/inventory/organs/neck
+	name = "neck slot"
+	id = BODY_NECK
+	screen_loc = "LEFT+1,BOTTOM+4"
+	item_slot = SLOT_NECK
 	worn_slots = 1
 
 /obj/inventory/organs/face

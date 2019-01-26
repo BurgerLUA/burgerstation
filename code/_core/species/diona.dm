@@ -27,7 +27,9 @@
 		BODY_ARM_RIGHT = /obj/item/organ/arm/diona,
 		BODY_ARM_LEFT = /obj/item/organ/arm/diona/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand/diona,
-		BODY_HAND_LEFT = /obj/item/organ/hand/diona/left
+		BODY_HAND_LEFT = /obj/item/organ/hand/diona/left,
+
+		BODY_BRAIN = /obj/item/organ/internal/brain
 	)
 
 	chargen_skin_colors = list(

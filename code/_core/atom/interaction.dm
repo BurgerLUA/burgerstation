@@ -2,7 +2,6 @@
 	return FALSE
 
 /atom/proc/drop_on_object(caller,object)
-
 	if(dropped_by_object(caller,object))
 		return TRUE
 
@@ -11,11 +10,11 @@
 /atom/proc/dropped_by_object(caller,object)
 	return FALSE
 
-/atom/proc/examine(var/atom/examiner) //Alt Clicking Objects
-	examiner.to_chat("\icon[src.icon] That's \a [src.name].")
-	examiner.to_chat(" [src.desc]")
+/atom/proc/examine(var/atom/examiner) //Middle clicking objects.
+	examiner.to_chat(span("examine_title","[src.name]"))
+	examiner.to_chat(span("examine_description","\"[src.desc]\""))
+	examiner.to_chat(span("examine_description_long","[src.desc_extended]"))
 	return TRUE
-
 
 /atom/proc/click_self(caller,location,control,params)
 	return FALSE

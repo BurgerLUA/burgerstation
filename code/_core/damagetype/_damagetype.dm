@@ -55,25 +55,15 @@
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
 
-
-/damagetype/proc/handle_dodge(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	//I'm really not sure where to put this proc.
-
-	if(prob(victim.get_miss_chance(attacker,weapon,hit_object)))
-		return DODGE_MISS
-
-	if(prob(victim.get_parry_chance(attacker,weapon,hit_object)))
-		return DODGE_PARRY
-
-	if(prob(victim.get_dodge_chance(attacker,weapon,hit_object)))
-		return DODGE_DODGE
-
-	if(prob(victim.get_block_chance(attacker,weapon,hit_object)))
-		return DODGE_BLOCK
-
+/damagetype/proc/get_miss_chance()
 	return 0
 
+/damagetype/proc/get_attack_type()
+	return ATTACK_TYPE_MELEE
+
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	if(!victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance())
+		return FALSE
 	do_miss_sound(attacker,victim,weapon,hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")

@@ -6,8 +6,6 @@
 #define ATTACK_GRAB 0x20
 #define ATTACK_SELF 0x40
 
-
-
 #define DODGE_MISS 0x1
 #define DODGE_BLOCK 0x2
 #define DODGE_PARRY 0x4
@@ -20,3 +18,7 @@
 #define CLASS_D 0.2
 #define CLASS_E 0.1
 #define CLASS_F 0
+
+#define ATTACK_TYPE_MELEE "melee"
+#define ATTACK_TYPE_RANGED "ranged"
+#define ATTACK_TYPE_MAGIC "ranged"

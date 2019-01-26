@@ -30,19 +30,8 @@
 			if(!can_attack)
 				return FALSE
 
-			switch(DT.handle_dodge(owner,hit_atom,weapon,object_to_damage))
-				if(DODGE_MISS)
-					DT.perform_miss(owner,hit_atom,weapon,object_to_damage)
-					return FALSE
-				if(DODGE_BLOCK)
-					hit_atom.perform_block(owner,weapon,object_to_damage,DT)
-					return FALSE
-				if(DODGE_PARRY)
-					hit_atom.perform_parry(owner,weapon,object_to_damage,DT)
-					return FALSE
-				if(DODGE_DODGE)
-					hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)
-					return FALSE
+			if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
+			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 
 			DT.do_damage(owner,hit_atom,weapon,object_to_damage)
 
