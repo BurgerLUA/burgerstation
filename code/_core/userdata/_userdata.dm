@@ -101,6 +101,12 @@
 		else
 			W.open = FALSE
 
+	if(is_soulgem(O))
+		var/obj/item/soulgem/S = O
+		if(data["total_charge"])
+			S.total_charge = data["total_charge"]
+
+
 	if(is_bullet(O))
 		var/obj/item/bullet/B = O
 		if(data["bullet_count"])
@@ -312,6 +318,11 @@
 	var/list/blend_data = generate_blend_data(I)
 	if(length(blend_data))
 		returning_list["blend_data"] = blend_data
+
+	if(is_soulgem(I))
+		var/obj/item/soulgem/S = I
+		if(S.total_charge)
+			returning_list["total_charge"] = S.total_charge
 
 	if(is_weapon(I))
 		var/obj/item/weapon/W = I

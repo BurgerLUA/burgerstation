@@ -41,7 +41,6 @@
 /mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	var/base_chance = get_block_chance(attacker,weapon,target)
-	src << "BASE CHANCE: [base_chance]."
 
 	var/obj/item/I_L = get_held_left(DT.get_attack_type())
 	var/obj/item/I_R = get_held_right(DT.get_attack_type())
@@ -53,11 +52,9 @@
 
 	if(I_L)
 		left_block_mul = I_L.get_block_mul(DT.get_attack_type())
-		src << "left_block_mul: [left_block_mul]."
 
 	if(I_R)
 		right_block_mul = I_R.get_block_mul(DT.get_attack_type())
-		src << "right_block_mul: [right_block_mul]."
 
 	if(left_block_mul && right_block_mul)
 		if(left_block_mul > right_block_mul)
@@ -78,7 +75,7 @@
 	if(!prob(min(base_chance,BLOCK_CHANCE_MAX)))
 		return FALSE
 
-	DT.display_miss_message(attacker,src,weapon,target,"blocked by \the [blocking_item ? blocking_item : "fists"]")
+	DT.display_miss_message(attacker,src,weapon,target,"blocked by [target]'s [blocking_item ? blocking_item : "fists"]")
 	return TRUE
 
 /mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
@@ -128,7 +125,7 @@
 	//animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
 	DT.do_attack_animation(attacker,src,weapon,target)
-	DT.display_miss_message(attacker,src,weapon,target,"parried by \the [parrying_item]")
+	DT.display_miss_message(attacker,src,weapon,target,"parried by [target]'s [parrying_item]")
 
 	if(allow_parry_counter)
 		attack(src,attacker)
@@ -150,7 +147,7 @@
 
 	//move_delay += ATTACK_ANIMATION_LENGTH
 
-	DT.display_miss_message(attacker,src,weapon,target,"dodged")
+	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [target]")
 	DT.do_miss_sound(attacker,src,weapon,target)
 	DT.do_attack_animation(attacker,src,weapon,target)
 	return TRUE

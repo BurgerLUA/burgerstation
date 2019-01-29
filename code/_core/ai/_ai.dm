@@ -72,8 +72,12 @@
 		movement_ticks += 1
 		return
 
-	if(objective_attack && get_dist(owner,objective_attack) > 1)
-		owner.move_dir = get_dir(owner,objective_attack)
+	if(objective_attack)
+		if(get_dist(owner,objective_attack) > 1)
+			owner.move_dir = get_dir(owner,objective_attack)
+		else
+			owner.move_dir = 0
+
 	else if(get_dist(owner,start_turf) >= 5)
 		owner.move_dir = get_dir(owner,start_turf)
 	else

@@ -72,3 +72,9 @@ proc/is_npc(var/atom/A)
 
 proc/is_staff(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/magic/staff/)
+
+proc/is_summon(var/atom/A)
+	return istype(A,/mob/living/simple/npc/summon/)
+
+proc/is_soulgem(var/atom/A)
+	return istype(A,/obj/item/soulgem/)

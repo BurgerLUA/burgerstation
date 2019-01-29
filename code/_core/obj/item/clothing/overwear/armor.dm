@@ -19,6 +19,7 @@
 	name = "heavy knight armor"
 	icon = 'icons/obj/items/clothing/suit/knight_blank.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	worn_layer = LAYER_MOB_CLOTHING_OVERALL
 
 /obj/item/clothing/overwear/armor/knight/red
 	name = "red heavy knight armor"

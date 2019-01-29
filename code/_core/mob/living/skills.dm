@@ -30,7 +30,7 @@
 	var/experience/attribute/A = get_attribute(id)
 	return A.get_current_level()
 
-/mob/living/proc/get_attribute_power(var/id,var/min = 0,var/max = 1)
+/mob/living/proc/get_attribute_power(var/id,var/min = 0,var/max = 100)
 	var/experience/attribute/A = get_attribute(id)
 	return A.get_power(min,max)
 

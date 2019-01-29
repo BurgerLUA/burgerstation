@@ -25,6 +25,9 @@
 	..()
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
+
 	if(is_staff(object))
 		var/obj/item/weapon/ranged/magic/staff/S = object
 		if(total_charge)

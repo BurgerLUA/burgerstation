@@ -28,7 +28,8 @@
 
 	plane = 4
 
-	var/lifetime = 100
+	var/start_time = 0
+	var/lifetime = SECONDS_TO_DECISECONDS(60)
 
 	var/turf/target_turf
 
@@ -76,6 +77,12 @@
 	icon = I
 
 /obj/projectile/proc/update_projectile()
+
+	start_time += 1
+
+	if(lifetime <= start_time)
+		on_hit(src.loc)
+		return FALSE
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y

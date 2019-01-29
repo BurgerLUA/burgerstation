@@ -41,6 +41,12 @@
 /obj/structure/interactive/localmachine/item/clothing/coat
 	stored_item = /obj/item/clothing/overwear/coat/
 
+/obj/structure/interactive/localmachine/item/clothing/overwear/chaplain
+	stored_item = /obj/item/clothing/overwear/chaplain/
+
+/obj/structure/interactive/localmachine/item/clothing/uniform/priest
+	stored_item = /obj/item/clothing/uniform/priest
+
 /obj/structure/interactive/localmachine/item/clothing/coat/wizard
 	stored_item = /obj/item/clothing/overwear/coat/wizard/blue
 
@@ -234,6 +240,8 @@
 	stored_item = /obj/item/weapon/melee/energy/shield/yellow
 	//color = "#FFFF00"
 
+/obj/structure/interactive/localmachine/item/weapon/melee/shield
+	stored_item = /obj/item/weapon/melee/shield
 
 /obj/structure/interactive/localmachine/item/weapon/melee/claymore
 	stored_item = /obj/item/weapon/melee/sword/claymore
@@ -302,6 +310,16 @@
 	stored_item = /obj/item/weapon/ranged/magic/scroll/fireball/amount_3
 	icon = 'icons/obj/items/weapons/ranged/magic/scroll.dmi'
 	icon_state = "scroll_open"
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/tome/lightning
+	stored_item = /obj/item/weapon/ranged/magic/tome/lightning
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/tome/heal
+	stored_item = /obj/item/weapon/ranged/magic/tome/heal
+
+
+/obj/structure/interactive/localmachine/item/weapon/ranged/magic/tome/holy_warrior
+	stored_item = /obj/item/weapon/ranged/magic/tome/holy_warrior
 
 //Ammo
 /obj/structure/interactive/localmachine/item/ammo/soulgem

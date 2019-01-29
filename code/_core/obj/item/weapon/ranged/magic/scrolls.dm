@@ -73,13 +73,9 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/magic/scroll/shoot(var/mob/caller as mob,var/atom/object,location,params)
-
-	if(..())
-		scroll_count -= 1
-		update_icon()
-
-	return TRUE
+/obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
+	scroll_count -= 1
+	update_icon()
 
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"

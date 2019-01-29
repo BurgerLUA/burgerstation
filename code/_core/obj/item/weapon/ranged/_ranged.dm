@@ -18,6 +18,18 @@
 	damage_type = /damagetype/blunt/pistol
 	var/damagetype/ranged_damage_type //This is the damage type for a ranged attack
 
+	block_mul = list(
+		ATTACK_TYPE_MELEE = 0.5,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
+
+	parry_mul = list(
+		ATTACK_TYPE_MELEE = 0,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
+
 /obj/item/weapon/ranged/proc/get_static_spread() //Base spread
 	return 0.1
 
