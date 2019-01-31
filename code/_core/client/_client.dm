@@ -1,5 +1,7 @@
 var/global/list/all_clients = list()
 
+#define LP(str) list2params(list(str))
+
 //Credit to Kaiochao for the button tracker and Anymacro framework
 /client/
 	var/datum/button_tracker/button_tracker
@@ -67,6 +69,8 @@ var/global/list/all_clients = list()
 
 	make_ghost(pick(observer_spawnpoints))
 	update_zoom(0.01)
+
+	open_menu(src,"appearance_editor")
 
 /client/proc/welcome()
 	src << "<title>Welcome to Burgerstation 13</title>"

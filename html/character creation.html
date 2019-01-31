@@ -1,0 +1,150 @@
+<html>
+	<head>
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+			}
+			button {
+				background:url('button_blue.png');
+				width: 20px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+			}
+			button:disabled {
+				background:url('button_grey.png');
+			}
+		</style>
+	</head>
+	<body>
+		<table id='formatting' border='solid 1px' width='100%' height='100%'>
+			<tr>
+				<th>
+					<div id='portrait'></div>
+					<h2>Attributes</h2>
+					<center>
+						<table id='attribute_table'></table>
+					</center>
+				</th>
+				<th>
+					<h2>Skills</h2>
+					<center><table id='skill_table'></table></center>
+				</th>
+			</tr>
+		</table>
+		
+	</body>
+</html>
+
+<script>
+
+	var stored_stats
+	var stored_attributes
+	var stored_max
+	var stored_min
+
+	function generate_value(id,value,type) {
+		document.getElementById(type + "_table").innerHTML += "<tr><th><b>" + id.toUpperCase() + "</b></th><th><button id = 'decrease_" + id + "' class='decrease' onclick=\"decrease_value('" + id +"')\">-</button></th><th width='40px' id='" + id + "_value'>" + value + "</th><th><button id ='increase_" + id + "' class='increase' onclick=\"increase_value('" + id +"')\">+</button></th></tr>"
+		update_button(id,value)
+		return value
+	}
+	
+	function increase_value(id_value) {
+		var doc_value = Math.min(parseInt(document.getElementById(id_value + "_value").innerHTML) + 1,stored_max[id_value])
+		document.getElementById(id_value + "_value").innerHTML = doc_value
+		update_values()
+		update_button(id_value,doc_value)
+	}
+	
+	function decrease_value(id_value) {
+		var doc_value = Math.max(parseInt(document.getElementById(id_value + "_value").innerHTML) - 1,stored_min[id_value])
+		document.getElementById(id_value + "_value").innerHTML = doc_value
+		update_values()
+		update_button(id_value,doc_value)
+	}
+	
+	function update_button(id_value,new_value) {
+		if(new_value >= stored_max[id_value]) {
+			document.getElementById("increase_" + id_value).disabled = true
+			document.getElementById("decrease_" + id_value).disabled = false
+		}
+		else if(new_value <= stored_min[id_value]) {
+			document.getElementById("increase_" + id_value).disabled = false
+			document.getElementById("decrease_" + id_value).disabled = true
+		}
+		else {
+			document.getElementById("increase_" + id_value).disabled = false
+			document.getElementById("decrease_" + id_value).disabled = false	
+		}
+	}
+	
+	
+	function generate_portrait(name,icon) {
+		document.getElementById("portrait").innerHTML = "<h1 id='name'>" + name + "</h1><img width='128px' height='128px' src='"+ icon +"'></img>"			
+	}
+
+	function generate_values(stat_list,type) {
+
+		var total_returning = 0
+		document.getElementById(type + "_table").innerHTML = ""
+		
+		for (k in stat_list) {
+			var v = stat_list[k]
+			generate_value(k,v,type)
+		}		
+		
+		document.getElementById(type + "_table").innerHTML += "<center>Points Left: <div id='" + type + "_left'>" + 0 + "</div></center>"
+
+	}
+	
+	function update_values() {
+	
+		var returning_attributes = 0
+	
+		for (k in stored_attributes) {
+			var value = parseInt(document.getElementById(k + "_value").innerHTML)
+			stored_attributes[k] = value
+			returning_attributes += value
+		}	
+
+		var returning_stats = 0
+		
+		for (k in stored_stats) {
+			var value = parseInt(document.getElementById(k + "_value").innerHTML) 
+			stored_stats[k] = value
+			returning_stats += value
+		}
+
+		document.getElementById("attribute_left").innerHTML = 150 - returning_attributes
+		document.getElementById("skill_left").innerHTML = 120 - returning_stats
+		
+		
+	}
+
+	function example_print() {
+
+		stored_max = {strength: 25, vitality: 25, fortitude: 25, intelligence: 25, willpower: 25, resolve: 25, dexterity: 25, agility: 25, endurance: 25, luck:60, ranged: 25, dodge: 25, stealth:25, parry: 25, athletics: 25, instinct: 25, melee: 25, block: 25, unarmed: 25, prayer: 25, armor: 25, recovery: 25, medicine: 25, subjugation: 25, reclamation: 25, determination: 25, substantion: 25, disorganization: 25}
+		
+		stored_min = {strength: 5, vitality: 5, fortitude: 5, intelligence: 5, willpower: 5, resolve: 5, dexterity: 5, agility: 5, endurance: 5, luck: 40, ranged: 5, dodge: 5, stealth: 5, parry: 5, athletics: 5, instinct: 5, melee: 5, block: 5, unarmed: 5, prayer: 5, armor: 5, recovery: 5, medicine: 5, subjugation: 5, reclamation: 5, determination: 5, substantion: 5, disorganization: 5}		
+		
+		
+		stored_attributes = {strength: 10, vitality: 10, fortitude: 10, intelligence: 10, willpower: 10, resolve: 10, dexterity: 10, agility: 10, endurance: 10, luck:50}
+		generate_values(stored_attributes,"attribute")
+		
+		stored_stats = {ranged: 5, dodge: 5, stealth:5, parry: 5, athletics: 5, instinct:5, melee: 5, block: 5, unarmed: 5, prayer: 5, armor: 5, recovery: 5, medicine: 5, subjugation: 5, reclamation: 5, determination: 5, substantion: 5, disorganization: 5 }		
+	
+		generate_values(stored_stats,"skill")	
+		generate_values(stored_attributes,"attribute")
+		update_values()
+		generate_portrait("Kappa McKappa","https://i.imgur.com/4xyNHCZ.png")
+		
+		
+	}
+
+	example_print()
+	
+</script>

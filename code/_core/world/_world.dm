@@ -12,6 +12,8 @@ var/global/ticks = 0
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
 
+	cache_lifespan = 0
+
 /world/New()
 	log = file("logs/mylog.txt")
 	..()
