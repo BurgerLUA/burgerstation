@@ -19,7 +19,7 @@
 		if(P.client)
 			P.client.eye = P
 			P.client.update_zoom(0)
-		del(O)
+		qdel(O)
 
 /obj/trigger/move_to_world
 	name = "move to world"

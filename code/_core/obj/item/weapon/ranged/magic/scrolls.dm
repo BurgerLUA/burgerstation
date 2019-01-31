@@ -67,7 +67,7 @@
 		S.scroll_count -= scroll_count
 		scroll_count += transfer_count
 		if(S.scroll_count <= 0)
-			del(S)
+			qdel(S)
 
 		return TRUE
 

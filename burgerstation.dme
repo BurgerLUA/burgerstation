@@ -14,6 +14,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "code\___garbage\_garbage_collection.dm"
 #include "code\__defines\_config.dm"
 #include "code\__defines\attacking.dm"
 #include "code\__defines\attributes.dm"
@@ -358,9 +359,6 @@
 #include "code\_core\turf\unsimulated\_unsimulated.dm"
 #include "code\_core\userdata\_userdata.dm"
 #include "code\_core\world\_world.dm"
-#include "code\modules\garbage.dm"
-#include "code\modules\logging.dm"
-#include "code\modules\turf.dm"
 #include "interface\verbs.dm"
 #include "interface\default.dmf"
 #include "maps\debug\midevil_medium.dmm"

@@ -15,7 +15,7 @@ var/list/objects_to_delete = list()
 		if(!is_turf(object_to_delete.loc))
 			continue
 		objects_to_delete -= object_to_delete
-		del(object_to_delete)
+		qdel(object_to_delete)
 
 	return TRUE
 

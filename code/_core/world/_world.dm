@@ -53,7 +53,7 @@ var/global/ticks = 0
 	for(var/S in subtypesof(/datum/subsystem))
 		var/datum/subsystem/new_subsystem = new S
 		if(!new_subsystem.priority)
-			del(S)
+			qdel(S)
 			continue
 		active_subsystems[new_subsystem.priority] = new_subsystem
 
@@ -61,7 +61,7 @@ var/global/ticks = 0
 		for(var/datum/subsystem/S in active_subsystems)
 			if(!S.tick_rate || S.next_run <= ticks)
 				if(!S.on_life())
-					del(S)
+					qdel(S)
 					continue
 				S.next_run = ticks + S.tick_rate
 

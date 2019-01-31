@@ -14,8 +14,7 @@ var/global/list/active_sounds = list()
 			for(var/mob/M in all_mobs)
 				M << S
 			active_sounds -= S
-			S = null
-			del(S)
+			qdel(S)
 			continue
 
 	return TRUE

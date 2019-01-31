@@ -38,7 +38,7 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(c
 	P.to_chat(span("notice","Use the mirror to change your apperance. Your appearance, worn items, and equipped items will be saved when you enter the white light."))
 	P.to_chat(span("danger","Be sure to equip everything you can! Once you enter the white light, you cannot return unless you die!"))
 
-	del(O)
+	qdel(O)
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction/red
 	name = "red team wishgranter"

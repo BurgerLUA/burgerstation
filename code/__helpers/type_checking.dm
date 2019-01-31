@@ -78,3 +78,6 @@ proc/is_summon(var/atom/A)
 
 proc/is_soulgem(var/atom/A)
 	return istype(A,/obj/item/soulgem/)
+
+proc/is_datum(var/atom/A)
+	return istype(A,/datum/)

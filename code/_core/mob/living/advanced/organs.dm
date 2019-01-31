@@ -6,7 +6,7 @@
 
 	organs -= O
 	if(do_delete)
-		del(O)
+		qdel(O)
 	if(do_update)
 		update_organs()
 		update_icon()

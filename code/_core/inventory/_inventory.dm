@@ -65,8 +65,8 @@
 /obj/inventory/proc/update_overlays()
 
 	for(var/O in overlays)
-		O = null
-		del(O)
+		qdel(O)
+
 	overlays = list()
 
 	for(var/atom/A in held_objects)
@@ -175,9 +175,9 @@
 
 /obj/inventory/proc/remove_all_objects()
 	for(var/obj/item/I in worn_objects)
-		del(remove_object(I))
+		qdel(remove_object(I))
 	for(var/obj/item/I in held_objects)
-		del(remove_object(I))
+		qdel(remove_object(I))
 
 /obj/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc) //Removes the object from both worn and held objects, just in case.
 

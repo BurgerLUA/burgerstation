@@ -24,4 +24,4 @@
 */
 
 /obj/item/organ/hair/unattach_from_parent()
-	del(src)
+	qdel(src)

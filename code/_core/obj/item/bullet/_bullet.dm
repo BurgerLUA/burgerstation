@@ -70,7 +70,7 @@
 	transfer_target.update_icon()
 	if(bullet_count <= 0)
 		src.drop_item()
-		del(src)
+		qdel(src)
 	else
 		update_icon()
 
@@ -102,7 +102,7 @@
 	transfer_target.update_icon()
 	if(bullet_count <= 0)
 		src.drop_item()
-		del(src)
+		qdel(src)
 	else
 		update_icon()
 

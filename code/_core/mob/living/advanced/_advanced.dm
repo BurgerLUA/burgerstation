@@ -177,8 +177,7 @@ mob/living/advanced/Login()
 	icon = initial(icon)
 
 	for(var/O in overlays)
-		O = null
-		del(O)
+		qdel(O)
 	overlays = list()
 
 	update_organ_icons()

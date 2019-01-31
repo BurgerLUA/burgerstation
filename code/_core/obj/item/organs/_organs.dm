@@ -103,7 +103,7 @@
 		A.update_icon()
 
 	//new /obj/effect/gibs/random/(T,"#FF0000",color_secondary) TODO COLOR
-	del(src)
+	qdel(src)
 
 /obj/item/organ/update_icon()
 	var/is_attached_to = is_advanced(src.loc)

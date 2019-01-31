@@ -15,7 +15,7 @@
 
 			if(A.time <= 0)
 				M.animations -= A
-				del(A)
+				qdel(A)
 				continue
 
 			var/time_to_remove = min(A.time,tick_rate * TICK_LAG)
