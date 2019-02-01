@@ -1,4 +1,4 @@
-/datum/macros/
+/macros/
 	var/client/owner
 	var/list/macros = list(
 		"W" = NORTH,
@@ -17,10 +17,10 @@
 		"Tab" = "change_focus"
 	)
 
-/datum/macros/New(var/client/spawning_owner)
+/macros/New(var/client/spawning_owner)
 	owner = spawning_owner
 
-/datum/macros/proc/on_pressed(button)
+/macros/proc/on_pressed(button)
 	var/command = macros[button]
 
 	if(isnum(command))
@@ -46,7 +46,7 @@
 
 	return TRUE
 
-/datum/macros/proc/on_released(button)
+/macros/proc/on_released(button)
 	var/command = macros[button]
 
 	if(isnum(command))

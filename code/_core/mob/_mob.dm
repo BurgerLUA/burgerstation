@@ -1,5 +1,3 @@
-var/global/list/all_mobs = list()
-
 /mob/
 	name = "MOB ERROR"
 	icon = 'icons/debug/mobs.dmi'
