@@ -4,8 +4,8 @@ var/global/list/all_clients = list()
 
 //Credit to Kaiochao for the button tracker and Anymacro framework
 /client/
-	var/datum/button_tracker/button_tracker
-	var/datum/macros/macros
+	var/button_tracker/button_tracker
+	var/macros/macros
 	fps = FPS_CLIENT
 	preload_rsc = 1
 

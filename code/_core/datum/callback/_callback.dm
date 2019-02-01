@@ -1,17 +1,17 @@
 //Stolen from SS13
-/datum/callback
+/callback
 	var/datum/object = GLOBAL_PROC
 	var/delegate
 	var/list/arguments
 
-/datum/callback/New(thingtocall, proctocall, ...)
+/callback/New(thingtocall, proctocall, ...)
 	if (thingtocall)
 		object = thingtocall
 	delegate = proctocall
 	if (length(args) > 2)
 		arguments = args.Copy(3)
 
-/datum/callback/proc/Invoke(...)
+/callback/proc/Invoke(...)
 	if (!object)
 		return
 	var/list/calling_arguments = arguments
@@ -24,7 +24,7 @@
 		return call(delegate)(arglist(calling_arguments))
 	return call(object, delegate)(arglist(calling_arguments))
 
-/datum/callback/proc/InvokeAsync(...)
+/callback/proc/InvokeAsync(...)
 	set waitfor = FALSE
 	if (!object)
 		return

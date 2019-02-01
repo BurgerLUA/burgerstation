@@ -15,4 +15,4 @@ Format:
 	priority = SS_ORDER_MATRIX
 
 /datum/subsystem/matrix/on_life()
-	return FALSE
+	return FALSEW
