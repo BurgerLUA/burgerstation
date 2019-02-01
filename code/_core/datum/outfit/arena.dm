@@ -1,4 +1,4 @@
-/datum/outfit/arena_guard
+/outfit/arena_guard
 	name = "Arena Guard Uniform"
 	desc = "Uniform for Arena Guards."
 	spawning_clothes = list(

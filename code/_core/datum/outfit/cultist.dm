@@ -1,4 +1,4 @@
-/datum/outfit/cultist
+/outfit/cultist
 	name = "Cultist's Uniform"
 	desc = "The cultist's uniform."
 	spawning_clothes = list(

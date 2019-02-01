@@ -1,4 +1,4 @@
-/datum/outfit/
+/outfit/
 	var/name = "OUTFIT"
 	var/desc = "THIS IS AN OUTFIT."
 	var/id

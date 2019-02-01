@@ -5,7 +5,7 @@
 		chef's bullshit have given them a considerable amount of natural recovery and fortitude. The fact that they're also a fucking talking tree also helps."
 	id = "botanist"
 
-	starting_species = /datum/species/diona
+	starting_species = /species/diona
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

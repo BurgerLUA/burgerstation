@@ -1,12 +1,12 @@
 var/list/objects_to_delete = list()
 
-/datum/subsystem/delete/
+/subsystem/delete/
 	name = "Class Subsystem"
 	desc = "Stores all the known classes in a list."
 	priority = SS_ORDER_DELETE
 	tick_rate = SECONDS_TO_TICKS(10)
 
-/datum/subsystem/delete/on_life()
+/subsystem/delete/on_life()
 
 	for(var/atom/object_to_delete in objects_to_delete)
 		var/time_to_delete = objects_to_delete[object_to_delete]

@@ -1,4 +1,4 @@
-/datum/outfit/assistant
+/outfit/assistant
 	name = "Assistant's Uniform"
 	desc = "The assistant's uniform, in a very pretty grey color."
 	spawning_clothes = list(

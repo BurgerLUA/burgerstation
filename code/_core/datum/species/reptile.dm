@@ -1,4 +1,4 @@
-/datum/species/reptile/
+/species/reptile/
 	name = "Reptile"
 	desc = "Fucking furries"
 	id = "reptile_feral"

@@ -28,7 +28,7 @@
 client/verb/debug_active_subsystems()
 	set category = "Debug"
 
-	for(var/datum/subsystem/subsystem in active_subsystems)
+	for(var/subsystem/subsystem in active_subsystems)
 		src << subsystem.name
 
 client/verb/debug_movement()

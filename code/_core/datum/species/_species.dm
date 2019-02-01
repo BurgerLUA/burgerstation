@@ -1,4 +1,4 @@
-/datum/species/
+/species/
 	var/name = "BLANK SPECIES"
 	var/desc = "OH MY GOD"
 	var/id

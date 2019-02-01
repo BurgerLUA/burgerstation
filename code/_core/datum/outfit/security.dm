@@ -1,4 +1,4 @@
-/datum/outfit/security
+/outfit/security
 	name = "Security's Uniform"
 	desc = "The security's uniform."
 	spawning_clothes = list(

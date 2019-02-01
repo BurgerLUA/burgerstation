@@ -50,15 +50,15 @@ var/global/ticks = 0
 
 	update_status()
 
-	for(var/S in subtypesof(/datum/subsystem))
-		var/datum/subsystem/new_subsystem = new S
+	for(var/S in subtypesof(/subsystem/))
+		var/subsystem/new_subsystem = new S
 		if(!new_subsystem.priority)
 			qdel(S)
 			continue
 		active_subsystems[new_subsystem.priority] = new_subsystem
 
 	spawn while(TRUE)
-		for(var/datum/subsystem/S in active_subsystems)
+		for(var/subsystem/S in active_subsystems)
 			if(!S.tick_rate || S.next_run <= ticks)
 				if(!S.on_life())
 					qdel(S)

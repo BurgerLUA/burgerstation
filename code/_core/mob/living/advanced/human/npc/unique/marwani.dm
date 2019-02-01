@@ -1,9 +1,9 @@
 /mob/living/advanced/human/npc/unique/marwani
 	name = "Ilaeza Marwani"
 	desc = "Fucking liggers."
-	mob_species = /datum/species/reptile_advanced/
+	mob_species = /species/reptile_advanced/
 
-	mob_outfit = /datum/outfit/marwani
+	mob_outfit = /outfit/marwani
 
 	ai = null
 

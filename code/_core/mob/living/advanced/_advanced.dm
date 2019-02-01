@@ -2,8 +2,8 @@
 
 	name = "lost soul"
 
-	var/datum/species/mob_species = /datum/species/human/
-	var/datum/outfit/mob_outfit = /datum/outfit/new_character/
+	var/species/mob_species = /species/human/
+	var/outfit/mob_outfit = /outfit/new_character/
 
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
@@ -149,7 +149,7 @@ mob/living/advanced/Login()
 
 	..()
 
-/mob/living/advanced/proc/add_clothes(var/datum/outfit/spawning_outfit)
+/mob/living/advanced/proc/add_clothes(var/outfit/spawning_outfit)
 	if(!spawning_outfit)
 		return FALSE
 

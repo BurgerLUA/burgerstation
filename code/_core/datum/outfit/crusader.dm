@@ -1,4 +1,4 @@
-/datum/outfit/crusader
+/outfit/crusader
 	name = "Crusader's Outfit"
 	desc = "DEUS VULT"
 	spawning_clothes = list(

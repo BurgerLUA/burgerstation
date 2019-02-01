@@ -1,4 +1,4 @@
-/datum/species/human/
+/species/human/
 	name = "Human"
 	desc = "Vanilla as fuck."
 	id = "human"

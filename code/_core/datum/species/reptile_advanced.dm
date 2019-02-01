@@ -1,4 +1,4 @@
-/datum/species/reptile_advanced/
+/species/reptile_advanced/
 	name = "Advanced Reptile"
 	desc = "Fucking furries. Advanced."
 	id = "reptile_advanced"

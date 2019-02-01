@@ -1,6 +1,6 @@
 //Stolen from SS13
 /callback
-	var/datum/object = GLOBAL_PROC
+	var/object = GLOBAL_PROC
 	var/delegate
 	var/list/arguments
 

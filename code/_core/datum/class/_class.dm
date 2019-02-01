@@ -14,4 +14,4 @@
 	var/list/attribute_descriptions = list()
 
 
-	var/starting_species = /datum/species/human/ //For chargen only.
+	var/starting_species = /species/human/ //For chargen only.

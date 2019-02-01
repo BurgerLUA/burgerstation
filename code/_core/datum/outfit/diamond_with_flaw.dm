@@ -1,4 +1,4 @@
-/datum/outfit/diamond_with_flaw
+/outfit/diamond_with_flaw
 	name = "Diamond with Flaw's Uniform"
 	desc = "Uniform for Diamond with Flaw."
 	spawning_clothes = list(

@@ -4,7 +4,7 @@
 		FACTION_PLAYER_HOSTILE
 	)
 	ai = /ai/
-	mob_outfit = /datum/outfit/cultist
+	mob_outfit = /outfit/cultist
 
 
 /mob/living/advanced/human/npc/cultist/tutorial

@@ -1,4 +1,4 @@
-/datum/species/diona/
+/species/diona/
 	name = "Dionae"
 	desc = "Fucking tree people."
 	id = "diona"

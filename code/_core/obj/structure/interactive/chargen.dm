@@ -26,7 +26,7 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 	while(TRUE)
 		INTERACT_CHECK
 
-		var/datum/species/S = A.mob_species
+		var/species/S = A.mob_species
 		var/chargen_options = S.flags_chargen
 
 		var/valid_options = list()
@@ -79,7 +79,7 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 					while(TRUE)
 						var/list/species_options = list()
 						for(var/id in chargen_species)
-							var/datum/species/Sp = chargen_species[id]
+							var/species/Sp = chargen_species[id]
 							species_options[Sp.name] = Sp
 
 						var/chosen_species = input("Which species do you wish to be?") in species_options

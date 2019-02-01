@@ -1,4 +1,4 @@
-/datum/subsystem/report/
+/subsystem/report/
 	name = "Report Subsystem"
 	desc = "Constrols statistics to display"
 	tick_rate = SECONDS_TO_TICKS(5)
@@ -9,7 +9,7 @@
 
 	var/passes = 0
 
-/datum/subsystem/report/on_life()
+/subsystem/report/on_life()
 
 	stored_tick_reports += world.tick_usage
 

@@ -1,9 +1,9 @@
 /mob/living/advanced/human/npc/unique/diamond_with_flaw
 	name = "Diamond with Flaw"
 	desc = "Fucking trees."
-	mob_species = /datum/species/diona/
+	mob_species = /species/diona/
 
-	mob_outfit = /datum/outfit/diamond_with_flaw/
+	mob_outfit = /outfit/diamond_with_flaw/
 
 	ai = null
 

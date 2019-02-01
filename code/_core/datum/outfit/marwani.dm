@@ -1,4 +1,4 @@
-/datum/outfit/marwani
+/outfit/marwani
 	name = "Marwani's Uniform"
 	desc = "Uniform for Marwani."
 	spawning_clothes = list(

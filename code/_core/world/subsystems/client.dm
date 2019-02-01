@@ -1,10 +1,10 @@
-/datum/subsystem/client/
+/subsystem/client/
 	name = "Client Subsystem"
 	desc = "Controls how clients behave."
 	tick_rate = 0
 	priority = SS_ORDER_CLIENT
 
-/datum/subsystem/client/on_life()
+/subsystem/client/on_life()
 	for(var/client/C in all_clients)
 		if(!C.mob)
 			continue
