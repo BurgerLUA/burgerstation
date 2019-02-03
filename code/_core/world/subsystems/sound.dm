@@ -76,6 +76,4 @@ var/global/list/active_sounds = list()
 
 		H << created_sound
 
-
-
 	return created_sound

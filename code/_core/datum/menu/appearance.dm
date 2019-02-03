@@ -1,7 +1,7 @@
 /menu/appearance/
 	name = "Appearance Editor"
 	id = "appearance_editor"
-	file = 'html/new.html'
+	file = 'html/chargen_appearance.html'
 	resources = list(
 		"button_blue.png" = 'html/button_blue.png',
 		"button_blue_extended.png" = 'html/button_blue_extended.png',
