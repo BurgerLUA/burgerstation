@@ -15,8 +15,11 @@
 	var/default_color_glow = "#FFFFFF"
 	var/default_color_hair = "#00FF00"
 
-	var/default_icon_hair = 'icons/mob/living/advanced/hair/hair.dmi'
+	var/default_icon_hair = 'icons/mob/living/advanced/hair/head.dmi'
 	var/default_icon_state_hair = "bald"
+
+	var/default_icon_face = 'icons/mob/living/advanced/hair/face.dmi'
+	var/default_icon_state_face = "none"
 
 	var/genderless = FALSE
 

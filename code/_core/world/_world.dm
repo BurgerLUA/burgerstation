@@ -61,6 +61,7 @@ var/global/ticks = 0
 		for(var/subsystem/S in active_subsystems)
 			if(!S.tick_rate || S.next_run <= ticks)
 				if(!S.on_life())
+					active_subsystems -= S
 					qdel(S)
 					continue
 				S.next_run = ticks + S.tick_rate

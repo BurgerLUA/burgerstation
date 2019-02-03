@@ -39,6 +39,7 @@
 #include "code\__defines\screen.dm"
 #include "code\__defines\skills.dm"
 #include "code\__defines\slots.dm"
+#include "code\__defines\sound.dm"
 #include "code\__defines\species.dm"
 #include "code\__defines\subsystems.dm"
 #include "code\__defines\talk_type.dm"
@@ -121,6 +122,8 @@
 #include "code\_core\datum\factions\basic.dm"
 #include "code\_core\datum\factions\player.dm"
 #include "code\_core\datum\hair\_hair.dm"
+#include "code\_core\datum\hair\face_hair.dm"
+#include "code\_core\datum\hair\head_hair.dm"
 #include "code\_core\datum\inventory\_inventory.dm"
 #include "code\_core\datum\inventory\feet.dm"
 #include "code\_core\datum\inventory\groin.dm"
@@ -365,7 +368,7 @@
 #include "code\_core\world\subsystems\species.dm"
 #include "interface\verbs.dm"
 #include "interface\default.dmf"
-#include "maps\debug\midevil_medium.dmm"
+#include "maps\debug\64x64.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

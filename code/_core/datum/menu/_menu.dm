@@ -18,10 +18,11 @@
 	winclone(user, "window", id)
 	winshow(user,id)
 	winset(user, "browser([id])", "parent=[id];type=browser;size=0x0;anchor1=0,0;anchor2=100,100")
-	sleep(10) //TODO: OnLoad function here.
+	sleep(1) //TODO: OnLoad function here.
 	user << output(file, "browser([id])")
-	sleep(10) //TODO: OnLoad function here.
-	user << output("initialize(\"hi\");", "browser([id]):eval")
+
+/menu/proc/run_function(var/user, var/function_name,var/args)
+	user << output("[function_name]([args]);", "browser([id]):eval")
 
 /menu/proc/on_load(var/user)
 	//When the browser sucessfully loaded.

@@ -1,0 +1,26 @@
+"a" = (/turf/simulated/wall/metal,/area/enviroment/alley)
+"b" = (/turf/simulated/floor/grass,/area/enviroment/alley)
+"c" = (/obj/trigger/jumploc/save_and_south,/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/turf/simulated/floor/grass,/area/enviroment/alley)
+"d" = (/turf/simulated/wall/light,/area/enviroment/alley)
+"e" = (/obj/effect/fake_lighting/gradient,/turf/simulated/floor/grass,/area/enviroment/alley)
+"f" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/grass,/area/enviroment/alley)
+"g" = (/obj/marker/spawnpoint/new_character,/turf/simulated/floor/grass,/area/enviroment/alley)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+abbbbbbbbbbbbbba
+abfbbbbbbbbbbgba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbacabbbbba
+abbbbbbadabbbbba
+abbbbbbaeabbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+aaaaaaaaaaaaaaaa
+"}

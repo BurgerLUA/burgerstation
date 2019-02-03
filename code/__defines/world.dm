@@ -18,7 +18,7 @@
 
 #define MAX_MESSAGE_LEN 256
 
-
+#define MAX_CHARACTERS 10
 
 
 

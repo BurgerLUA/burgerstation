@@ -11,7 +11,7 @@
 //TODO COLOR
 /*
 /obj/item/organ/hair/update_icon()
-	var/hair/H = hair_types[style]
+	var/hair/H = hair_head_types[style]
 	if(H)
 		icon_state = H.icon_state
 

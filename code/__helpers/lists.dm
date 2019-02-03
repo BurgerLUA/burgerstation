@@ -7,14 +7,14 @@
 	L -= N
 	return L.len < start_len
 
-/proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
+/proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "", quote = "" )
 	var/total = input.len
 	if (!total)
 		return "[nothing_text]"
 	else if (total == 1)
-		return "[input[1]]"
+		return "[quote][input[1]][quote]"
 	else if (total == 2)
-		return "[input[1]][and_text][input[2]]"
+		return "[quote][input[1]][quote][and_text][quote][input[2]][quote]"
 	else
 		var/output = ""
 		var/index = 1
@@ -22,7 +22,7 @@
 			if (index == total - 1)
 				comma_text = final_comma_text
 
-			output += "[input[index]][comma_text]"
+			output += "[quote][input[index]][quote][comma_text]"
 			index++
 
-		return "[output][and_text][input[index]]"
+		return "[output][and_text][quote][input[index]][quote]"

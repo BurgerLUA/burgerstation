@@ -13,7 +13,7 @@ var/global/list/all_clients = list()
 	var/list/obj/button/known_buttons
 	var/list/obj/health/known_health_elements
 
-	var/zoom_level = 64
+	var/zoom_level = TILE_SIZE * 2
 
 	var/userdata/userdata
 
@@ -60,7 +60,7 @@ var/global/list/all_clients = list()
 	if(!userdata)
 		userdata = new(src)
 
-	update_zoom(0)
+	//update_zoom(0)
 
 	if(usr) //The only time usr should ever be allowed.
 		return ..()
@@ -68,9 +68,6 @@ var/global/list/all_clients = list()
 	welcome()
 
 	make_ghost(pick(observer_spawnpoints))
-	update_zoom(0.01)
-
-	open_menu(src,"appearance_editor")
 
 /client/proc/welcome()
 	src << "<title>Welcome to Burgerstation 13</title>"
@@ -80,6 +77,10 @@ var/global/list/all_clients = list()
 /client/Del()
 	all_clients -= src
 	world.update_status()
+	..()
+
+
+/client/Topic(href,href_list)
 	..()
 
 /client/verb/button_press(button as text)
@@ -224,13 +225,13 @@ var/global/list/all_clients = list()
 
 /client/proc/update_zoom(var/desired_zoom_level)
 	if(eye != mob)
-		zoom_level = 64
+		zoom_level = TILE_SIZE
 	else
 		if(desired_zoom_level == 0)
 			desired_zoom_level = initial(zoom_level)
-		zoom_level = clamp(desired_zoom_level,32,256)
+		zoom_level = clamp(desired_zoom_level,TILE_SIZE,TILE_SIZE*4)
 
-	winset(src, "map.map","icon-size=[zoom_level]")
+	winset(src, "map.map","icon-size=[zoom_level];zoom-mode=normal")
 
 /client/proc/save_current_character()
 	userdata.save_current_character()

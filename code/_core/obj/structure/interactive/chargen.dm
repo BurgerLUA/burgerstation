@@ -122,16 +122,16 @@ obj/structure/interactive/chargen_mirror/clicked_by_object(caller,object,locatio
 
 				var/list/name_to_id = list()
 
-				for(var/id in hair_types)
-					var/hair/H = hair_types[id]
+				for(var/id in hair_head_types)
+					var/hair/H = hair_head_types[id]
 					if(A.mob_species.flags_species & H.species)
 						name_to_id[H.name] = id
 
 				while(TRUE)
 					var/hair_style = input(caller,"Which hair style do you wish to have?") in name_to_id
 					INTERACT_CHECK
-					var/hair/H = hair_types[name_to_id[hair_style]]
-					A.change_organ_visual("hair_head", desired_icon_state = H.icon_state)
+					var/hair/H = hair_head_types[name_to_id[hair_style]]
+					A.change_organ_visual("hair_head", desired_icon = H.icon, desired_icon_state = H.icon_state)
 					A.update_icon()
 					A.dir = SOUTH
 					var/confirm = input(caller,"Do you like your hair_style?") in list("Yes, keep it.","No, I want a new one.")

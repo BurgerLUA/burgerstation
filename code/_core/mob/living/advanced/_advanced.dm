@@ -14,6 +14,7 @@
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
 
+	var/sex = MALE
 	gender = MALE
 
 	var/list/atom/tracked_overlays = list()
@@ -134,6 +135,7 @@ mob/living/advanced/Login()
 			attack_flags &= ~ATTACK_HELD_LEFT
 
 /mob/living/advanced/Initialize()
+	src << "Initializing character.."
 
 	if(!client || client.userdata.loaded_data["tutorial"])
 		add_species_organs()

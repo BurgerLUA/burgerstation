@@ -1,6 +1,29 @@
 macro "macro"
 
 
+window "browser_override"
+	elem "browser_override"
+		type = MAIN
+		pos = 281,0
+		size = 700x700
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-minimize = false
+		can-resize = false
+	elem "browser"
+		type = BROWSER
+		pos = 0,0
+		size = 700x700
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		saved-params = ""
+
 window "info"
 	elem "info"
 		type = MAIN
@@ -179,6 +202,7 @@ window "main"
 		size = 1280x720
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -191,6 +215,7 @@ window "main"
 		size = 1280x720
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		drop-zone = true
 		saved-params = "splitter"
@@ -223,8 +248,5 @@ window "map"
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
-		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 32
-		zoom = 1
 

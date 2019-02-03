@@ -7,7 +7,10 @@
 	var/desc = "Data for a user."
 
 	var/client/owner
-	var/list/loaded_data = list(
+	var/list/loaded_data = list()
+
+/userdata/proc/reset_data()
+	loaded_data = list(
 		"name" = "Urist McRobust",
 		"tutorial" = 1,
 		"id" = "none",
@@ -20,18 +23,18 @@
 		"attributes" = list()
 	)
 
+
 /userdata/New(var/client/new_owner)
+	reset_data()
+
 	owner = new_owner
 
-	if(check_if_no_characters())
-		owner << "Welcome to Burgerstation 13! Please create a new character in the \"Create Character\" menu to get started. A placeholder character was created and loaded for you if you wish to skip this step."
-		loaded_data = load_most_recent_character()
-		owner.save_slot = loaded_data["id"]
-		save_current_character()
+	if(!has_character())
+		owner << "Welcome to Burgerstation!"
 	else
+		owner << "Welcome back to Burgerstation!"
 		loaded_data = load_most_recent_character()
 		owner.save_slot = loaded_data["id"]
-		owner << "Welcome back to Burgerstation 13! Your last saved character ([loaded_data["name"]]) was loaded."
 
 /userdata/proc/apply_data_to_mob(var/mob/living/advanced/A)
 
@@ -200,7 +203,7 @@
 
 	loaded_data["tutorial"] = 0
 
-	if(write_json_data_to_id(owner.save_slot))
+	if(write_json_data_to_id(owner.save_slot,loaded_data))
 		owner << "Sucessfully saved character [owner.mob.name]."
 	else
 		owner << "Save failed. Please contact the server owner."
@@ -216,14 +219,23 @@
 	return returning
 
 /userdata/proc/create_new_character(var/character_id)
-	return write_json_data_to_id(character_id)
+	owner << "Attempting to create character with the id of [character_id]."
+	if(text2num(character_id) > MAX_CHARACTERS)
+		owner << "You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"
+		return FALSE
+	reset_data()
+	owner.save_slot = character_id
 
-/userdata/proc/write_json_data_to_id(var/character_id)
-	loaded_data["id"] = character_id
-	loaded_data["last_saved_date"] = get_date()
-	loaded_data["last_saved_time"] = get_time()
+	return TRUE
+
+/userdata/proc/write_json_data_to_id(var/character_id,var/json_data)
+
+	json_data["id"] = character_id
+	json_data["last_saved_date"] = get_date()
+	json_data["last_saved_time"] = get_time()
 	fdel(get_character_path(character_id))
-	var/data = json_encode(loaded_data)
+	src << "Sucessfully wrote data [character_id]: [json_data["name"]]."
+	var/data = json_encode(json_data)
 	return text2file(data,get_character_path(character_id))
 
 /userdata/proc/load_json_data_from_id(var/character_id)
@@ -235,19 +247,7 @@
 		owner << "FATAL ERROR: NO DATA FOUND FOR [filename]"
 		return FALSE
 
-	loaded_data = json_decode(data)
-	return loaded_data
-
-/userdata/proc/load_json_data_from_file(var/filename)
-	var/data = file2text(filename)
-
-	if(!data)
-		owner << "FATAL ERROR: NO DATA FOUND FOR [filename]"
-		return FALSE
-
-
-	loaded_data = json_decode(data)
-	return loaded_data
+	return json_decode(data)
 
 /userdata/proc/get_character_files()
 	var/list/found_files = flist(get_ckey_path())
@@ -291,11 +291,11 @@
 
 	for(var/v in file_paths)
 		v = get_proper_id_from_filename(v)
-		var/list/loaded_data = load_json_data_from_id(v)
-		if(!best_time || time_x_newer_than_y(loaded_data["last_saved_date"],loaded_data["last_saved_time"],best_date,best_time))
-			best_time = loaded_data["last_saved_time"]
-			best_date = loaded_data["last_saved_date"]
-			best_data = loaded_data
+		var/list/new_loaded_data = load_json_data_from_id(v)
+		if(!best_time || time_x_newer_than_y(new_loaded_data["last_saved_date"],new_loaded_data["last_saved_time"],best_date,best_time))
+			best_time = new_loaded_data["last_saved_time"]
+			best_date = new_loaded_data["last_saved_date"]
+			best_data = new_loaded_data
 
 	return best_data
 
