@@ -2,7 +2,7 @@
 "b" = (/turf/simulated/floor/sand,/area/enviroment/alley)
 "c" = (/obj/marker/spawnpoint/ghost,/turf/simulated/floor/sand,/area/enviroment/alley)
 "d" = (/turf/simulated/wall/light,/area/enviroment/alley)
-"e" = (/turf/simulated/floor/hierophant,/area/enviroment/alley)
+"e" = (/turf/simulated/floor/generated,/area/enviroment/alley)
 "f" = (/obj/marker/spawnpoint/new_character,/turf/simulated/floor/sand,/area/enviroment/alley)
 "g" = (/obj/trigger/jumploc/save_and_south,/obj/effect/fake_lighting/gradient{icon_state = "gradient"; dir = 1},/turf/simulated/floor/sand,/area/enviroment/alley)
 "h" = (/obj/effect/fake_lighting/gradient,/turf/simulated/floor/sand,/area/enviroment/alley)

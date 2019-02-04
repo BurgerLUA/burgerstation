@@ -1,6 +1,16 @@
 #define LAYER_FLOOR 1
+#define LAYER_FLOOR_LARGE 1.1
+
+
 #define LAYER_FLOOR_DECAL 2
 #define LAYER_WALL 3
+
+
+
+
+
+
+
 #define LAYER_OBJ 4
 #define LAYER_MOB 5
 #define LAYER_MOB_DAMAGE 6

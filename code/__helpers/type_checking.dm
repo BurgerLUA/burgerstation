@@ -81,3 +81,9 @@ proc/is_soulgem(var/atom/A)
 
 proc/is_datum(var/atom/A)
 	return istype(A,/datum/)
+
+proc/is_wall(var/atom/A)
+	return istype(A,/turf/simulated/wall/)
+
+proc/is_simulated(var/atom/A)
+	return istype(A,/turf/simulated/)

@@ -24,16 +24,11 @@
 
 /menu/appearance/open(var/mob/user)
 	//Credit to Multiverse7 for providing the code for getting this to work.
-	user << "cache_resources"
 	cache_resources(user)
-	user << "winclone"
 	winclone(user, "window", id)
-	user << "play_sound"
-	play_sound('sounds/music/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
-	user << "winset"
+	play_sound('sounds/music/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
 	winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
 	sleep(1) //TODO: OnLoad function here.
-	user << "output"
 	user << output(file, "browser([id])")
 
 	sleep(1) //TODO: OnLoad function here.
@@ -76,12 +71,12 @@
 		forged_data["hair_head"] = list()
 		forged_data["hair_head"]["color"] = "#[href_list["hair_color"]]"
 		forged_data["hair_head"]["icon"] = 'icons/mob/living/advanced/hair/head.dmi'
-		forged_data["hair_head"]["icon_state"] = hair_head_types[href_list["hair_style"]].icon_state
+		forged_data["hair_head"]["icon_state"] = href_list["hair_style"]
 
 		forged_data["hair_face"] = list()
 		forged_data["hair_face"]["color"] = "#[href_list["beard_color"]]"
 		forged_data["hair_face"]["icon"] = 'icons/mob/living/advanced/hair/face.dmi'
-		forged_data["hair_face"]["icon_state"] = hair_face_types[href_list["beard_style"]].icon_state
+		forged_data["hair_face"]["icon_state"] = href_list["beard_style"]
 
 		forged_data["eye_l"] = list()
 		forged_data["eye_l"]["color"] = "#[href_list["eye_color"]]"
@@ -106,14 +101,36 @@
 		if(href_list["save_and_quit"] && href_list["save_and_quit"] == "true")
 			var/choice = input(usr,"Are you sure you want to save and finish creating your character? You won't be able to change your character again until later in the game.") in list("Yes","No")
 			if(choice == "Yes")
-				if(is_advanced(usr))
-					apply_javascript_to_mob(usr,forged_data)
 				winset(usr, "browser([id])","is-visible:false")
-				stop_sound('sounds/music/chargen.ogg',list(usr))
+				if(is_advanced(usr))
+					var/mob/living/advanced/A = usr
+					apply_javascript_to_mob(usr,forged_data)
+					stop_sound('sounds/music/chargen.ogg',list(usr))
+					if(A.client)
+						spawn(0)
+							play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+							add_notification_colored_easy(A.client,"#000000",SECONDS_TO_DECISECONDS(19),fade_in = FALSE)
+							sleep(SECONDS_TO_DECISECONDS(5))
+							add_notification_easy(A.client,'icons/hud/discovery.dmi',"meme1",SECONDS_TO_DECISECONDS(3))
+							sleep(SECONDS_TO_DECISECONDS(7))
+							add_notification_easy(A.client,'icons/hud/discovery.dmi',"meme2",SECONDS_TO_DECISECONDS(3))
+							sleep(SECONDS_TO_DECISECONDS(10))
+							add_notification_easy(A.client,'icons/hud/discovery.dmi',"meme3",SECONDS_TO_DECISECONDS(5))
+
 			return
 
-		var/icon/generated_icon = generate_character_icon(forged_data,SOUTH)
-		usr << browse_rsc(generated_icon,"character.png")
+		var/icon/generated_icon_NORTH = generate_character_icon(forged_data,NORTH)
+		usr << browse_rsc(generated_icon_NORTH,"character_NORTH.png")
+
+		var/icon/generated_icon_EAST = generate_character_icon(forged_data,EAST)
+		usr << browse_rsc(generated_icon_EAST,"character_EAST.png")
+
+		var/icon/generated_icon_WEST = generate_character_icon(forged_data,WEST)
+		usr << browse_rsc(generated_icon_WEST,"character_WEST.png")
+
+		var/icon/generated_icon_SOUTH = generate_character_icon(forged_data,SOUTH)
+		usr << browse_rsc(generated_icon_SOUTH,"character_SOUTH.png")
+
 		sleep(3)
 		run_function(usr,"refresh_character")
 
@@ -132,25 +149,25 @@
 
 /proc/generate_character_icon(var/list/data,direction = SOUTH)
 
-	var/icon/I = new /icon(data["head"]["icon"],data["head"]["icon_state"])
+	var/icon/I = new /icon(data["head"]["icon"],data["head"]["icon_state"],direction)
 	I.Blend(data["head"]["color"],ICON_MULTIPLY)
 
-	var/icon/hair_icon = new /icon(data["hair_head"]["icon"],data["hair_head"]["icon_state"])
+	var/icon/hair_icon = new /icon(data["hair_head"]["icon"],data["hair_head"]["icon_state"],direction)
 	hair_icon.Blend(data["hair_head"]["color"],ICON_MULTIPLY)
 
-	var/icon/beard_icon = new /icon(data["hair_face"]["icon"],data["hair_face"]["icon_state"])
+	var/icon/beard_icon = new /icon(data["hair_face"]["icon"],data["hair_face"]["icon_state"],direction)
 	beard_icon.Blend(data["hair_face"]["color"],ICON_MULTIPLY)
 
-	var/icon/eye_l_icon = new /icon(data["eye_l"]["icon"],data["eye_l"]["icon_state"])
+	var/icon/eye_l_icon = new /icon(data["eye_l"]["icon"],data["eye_l"]["icon_state"],direction)
 	eye_l_icon.Blend(data["eye_l"]["color"],ICON_MULTIPLY)
 
-	var/icon/eye_r_icon = new /icon(data["eye_r"]["icon"],data["eye_r"]["icon_state"])
+	var/icon/eye_r_icon = new /icon(data["eye_r"]["icon"],data["eye_r"]["icon_state"],direction)
 	eye_r_icon.Blend(data["eye_r"]["color"],ICON_MULTIPLY)
 
-	var/icon/mouth_icon = new /icon(data["mouth"]["icon"],data["mouth"]["icon_state"])
+	var/icon/mouth_icon = new /icon(data["mouth"]["icon"],data["mouth"]["icon_state"],direction)
 	mouth_icon.Blend(data["mouth"]["color"],ICON_MULTIPLY)
 
-	var/icon/blush_icon = new /icon(data["blush"]["icon"],data["blush"]["icon_state"])
+	var/icon/blush_icon = new /icon(data["blush"]["icon"],data["blush"]["icon_state"],direction)
 	blush_icon.Blend(data["blush"]["color"],ICON_MULTIPLY)
 
 	I.Blend(eye_r_icon,ICON_OVERLAY)

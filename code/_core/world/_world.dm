@@ -6,7 +6,7 @@ var/global/ticks = 0
 	fps = FPS_SERVER
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
-	map_format = SIDE_MAP
+	map_format = TOPDOWN_MAP
 
 	name = "Burgerstation 13"
 	hub = "Exadv1.spacestation13"

@@ -51,7 +51,6 @@
 	species = SPECIES_HUMAN
 	chargen = TRUE
 
-
 /hair/face/facial_abe
 	name = "the abe"
 	id = "facial_abe"

@@ -1,0 +1,1 @@
+#define ICON_INVISIBLE new /icon('icons/invisible.dmi',"0")

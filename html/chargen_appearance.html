@@ -109,7 +109,11 @@
 			<table id='formatting' width='100%' border='1px solid'>
 				<tr height='1px'>
 					<th align='center'>
-						<img id='portrait' width='128px' height='128px' src='https://i.imgur.com/4xyNHCZ.png' onmouseover="hover_update('The horror you have created.')"></img><br>
+						<img id='portrait_north' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
+						<img id='portrait_east' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
+						<img id='portrait_south' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
+						<img id='portrait_west' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img><br>
+						
 						<input type='text' class='name' rows="1" cols="48" value="Insert Name Here" onmouseover="hover_update('Your name and what people will identify you as when your face is visible. This can only be changed by special people after character creation.')" onchange="setName(this.value)">						
 					</th>
 				</tr>
@@ -193,10 +197,10 @@
 
 		var global_reference = ""
 		
-		var global_hair_head_style = "hair_a"
+		var global_hair_head_style = "none"
 		var global_hair_head_color = "000000"
 
-		var global_hair_face_style = "no_beard"
+		var global_hair_face_style = "none"
 		var global_hair_face_color = "000000"
 
 		var global_skin_color = "FFCCAF"
@@ -254,7 +258,14 @@
 		}
 	
 		function refresh_character() {
-			document.getElementById("portrait").src="character.png?" + global_hair_head_style + global_hair_head_color + global_hair_face_style + global_hair_face_color + global_skin_color + global_skin_sex + global_eye_color + global_lip_color + global_blush_color + global_has_lips + global_has_blush
+			document.getElementById("portrait_north").src="character_NORTH.png?" + get_image_modifier()
+			document.getElementById("portrait_east").src="character_EAST.png?" + get_image_modifier()
+			document.getElementById("portrait_south").src="character_SOUTH.png?" + get_image_modifier()
+			document.getElementById("portrait_west").src="character_WEST.png?" + get_image_modifier()
+		}
+		
+		function get_image_modifier() {
+			return global_hair_head_style + global_hair_head_color + global_hair_face_style + global_hair_face_color + global_skin_color + global_skin_sex + global_eye_color + global_lip_color + global_blush_color + global_has_lips + global_has_blush
 		}
 		
 		function update_sex(desired_sex) {

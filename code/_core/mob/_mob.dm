@@ -39,6 +39,7 @@
 	..()
 
 /mob/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
+
 	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size
 	var/pixel_y_offset = -(new_loc.y - old_loc.y)*step_size
 
