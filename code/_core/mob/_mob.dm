@@ -22,6 +22,8 @@
 
 	var/auto_resist = FALSE
 
+	mouse_opacity = 0
+
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)

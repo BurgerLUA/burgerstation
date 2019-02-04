@@ -28,6 +28,8 @@ var/global/list/all_clients = list()
 
 	var/swap_mouse = FALSE
 
+	var/image/lighting
+
 	//lazy_eye = 5
 
 /client/proc/reset()

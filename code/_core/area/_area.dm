@@ -13,6 +13,11 @@
 
 	var/safe = FALSE //Enable or disable shooting people.
 
+	var/map_color_r = rgb(51,13,13)
+	var/map_color_g = rgb(26,77,51)
+	var/map_color_b = rgb(26,26,102)
+	var/map_color_a = rgb(0,0,0)
+
 /area/on_enter(var/atom/movable/enterer)
 	if(enterer.area != src)
 		if(enterer.area)
@@ -24,3 +29,4 @@
 
 /area/on_exit(var/atom/movable/enterer)
 	return TRUE
+
