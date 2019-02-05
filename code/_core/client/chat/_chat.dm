@@ -46,7 +46,10 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 	if(src.x == 0 && src.y == 0 && src.z == 0)
 		return
 
-	for(var/mob/M in range(view_range,src))
+	for(var/mob/M in all_mobs_with_clients)
+
+		if(get_dist(M,src) > view_range)
+			continue
 
 		var/local_first_person_text
 		var/local_third_person_text

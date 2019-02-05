@@ -12,7 +12,7 @@ var/global/list/active_sounds = list()
 			active_sounds[S] -= 1
 			if(active_sounds[S] <= 0)
 				S.status = SOUND_MUTE | SOUND_UPDATE
-				for(var/mob/M in all_mobs)
+				for(var/mob/M in all_mobs_with_clients)
 					M << S
 				active_sounds -= S
 				qdel(S)
@@ -26,7 +26,6 @@ var/global/list/active_sounds = list()
 		if(S.file == sound_path)
 			S.status = SOUND_MUTE
 			for(var/atom/H in hearers)
-				H << "PAUSING [S.file]"
 				H << S
 
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC)
@@ -47,33 +46,27 @@ var/global/list/active_sounds = list()
 	else if(duration)
 		active_sounds[created_sound] = duration
 
-	for(var/atom/H in hearers)
+	for(var/mob/M in hearers)
+		if(!M.client)
+			continue
+
 		var/local_volume = volume
 
 		if(created_sound.z >= 0)
-			created_sound.x = pos[1] - H.x
-			created_sound.y = pos[2] - H.y
-			created_sound.z = pos[3] - H.z
+			created_sound.x = pos[1] - M.x
+			created_sound.y = pos[2] - M.y
+			created_sound.z = pos[3] - M.z
 
-			if(created_sound.z != 0)
-				continue
+			if(channel != SOUND_CHANNEL_MUSIC)
+				var/distance = 1 + sqrt(created_sound.x**2 + created_sound.y**2)
+				distance += (abs(4-M.client.zoom_level)**2)*5
+				local_volume -= distance
 
-			var/distance = 1 + sqrt(created_sound.x**2 + created_sound.y**2)
-
-			if(is_mob(H))
-				var/mob/M = H
-				if(M.client)
-					var/zoom_mod = (256/max(1,M.client.zoom_level))
-					distance += zoom_mod
-					distance *= zoom_mod
-
-			local_volume -= distance/2
-
-			if(local_volume <= 0)
-				continue
+		if(local_volume <= 0)
+			continue
 
 		created_sound.volume = local_volume
 
-		H << created_sound
+		M << created_sound
 
 	return created_sound

@@ -4,6 +4,7 @@
 	icon_state = "riverwater"
 	opacity = 0
 	allow_bullet_pass = TRUE
+	layer = LAYER_FLOOR
 
 /turf/simulated/wall/river/New()
 	var/lightness = 255 - x*0.25

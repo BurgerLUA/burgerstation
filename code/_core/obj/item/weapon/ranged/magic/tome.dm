@@ -25,10 +25,9 @@
 	return get_owner() && mana_cost ? floor(get_owner().mana_current / get_mana_cost()) : 0
 
 
-/obj/item/weapon/ranged/magic/tome/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/tome/handle_ammo(var/mob/living/caller as mob,var/atom/object,location,params)
 	caller.mana_current -= get_mana_cost()
 	update_icon()
-
 
 /obj/item/weapon/ranged/magic/tome/lightning
 	name = "tome of the lightning bolt"

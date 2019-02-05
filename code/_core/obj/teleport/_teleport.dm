@@ -18,7 +18,7 @@
 		P.Initialize()
 		if(P.client)
 			P.client.eye = P
-			P.client.update_zoom(0)
+			P.client.update_zoom(-1)
 		qdel(O)
 
 /obj/trigger/move_to_world
@@ -44,7 +44,6 @@
 	name = "loc jumper"
 	var/x_move = 0
 	var/y_move = 0
-	var/do_save = FALSE
 
 /obj/trigger/jumploc/on_trigger(var/atom/movable/triggerer)
 
@@ -53,27 +52,31 @@
 
 	triggerer.loc = locate(x + x_move, y + y_move,z)
 
-	if(do_save && is_advanced(triggerer))
-		var/mob/living/advanced/A = triggerer
-		if(A.client)
-			A.client.save_current_character()
-
-/obj/trigger/jumploc/save_and_north
+/obj/trigger/jumploc/north
 	x_move = 0
 	y_move = 2
-	do_save = TRUE
 
-/obj/trigger/jumploc/save_and_south
+/obj/trigger/jumploc/south
 	x_move = 0
 	y_move = -2
-	do_save = TRUE
-
-/obj/trigger/jumploc/save_and_east
+/obj/trigger/jumploc/east
 	x_move = 2
 	y_move = 0
-	do_save = TRUE
 
-/obj/trigger/jumploc/save_and_west
+/obj/trigger/jumploc/west
 	x_move = -2
 	y_move = 0
-	do_save = TRUE
+
+
+/obj/trigger/teleloc
+	name = "teleloc jumper"
+	var/x_move = 0
+	var/y_move = 0
+	var/z_move = 0
+
+/obj/trigger/teleloc/on_trigger(var/atom/movable/triggerer)
+
+	if(!is_living(triggerer))
+		return FALSE
+
+	triggerer.loc = locate(x_move,y_move,z_move)

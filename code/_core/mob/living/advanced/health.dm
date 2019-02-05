@@ -31,8 +31,6 @@ mob/living/advanced/update_health()
 	var/damage_current = 0
 	for(var/obj/item/organ/O in organs)
 		damage_current += O.get_total_loss()
-		stamina_max += O.stamina_max
-		mana_max += O.mana_max
 
 	var/new_health_current = health_max - damage_current
 

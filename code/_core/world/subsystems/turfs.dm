@@ -7,6 +7,7 @@
 	for(var/turf/simulated/S in world)
 		S.Initialize()
 
-	world.log << "Generated Turfs."
+	for(var/obj/structure/smooth/S in world)
+		S.Initialize()
 
 	return FALSE

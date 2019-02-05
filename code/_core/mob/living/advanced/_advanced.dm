@@ -42,7 +42,7 @@
 	is_typing = FALSE
 	update_icon()
 
-/mob/living/advanced/New()
+/mob/living/advanced/New(loc,desired_client)
 	organs = list()
 	inventory = list()
 	worn_objects = list()
@@ -121,7 +121,9 @@ mob/living/advanced/Login()
 			talk_type = 0
 			update_icon()
 
-	update_health_elemement_icons()
+	if(move_delay <= 0 && ( adjust_mana(mana_regeneration) || adjust_stamina(stamina_regeneration) ))
+		update_health_elemement_icons()
+
 	return ..()
 
 /mob/living/advanced/on_life_client()
@@ -148,8 +150,31 @@ mob/living/advanced/Login()
 	add_species_buttons()
 	add_species_health_elements()
 	update_health()
+	stamina_current = stamina_max
+	mana_current = mana_max
+	update_health_elemement_icons()
 
 	..()
+
+/mob/living/advanced/proc/adjust_mana(var/adjust_value)
+	var/old_value = mana_current
+	var/new_value = clamp(mana_current + adjust_value,0,mana_max)
+
+	if(old_value != new_value)
+		mana_current = new_value
+		return TRUE
+
+	return FALSE
+
+/mob/living/advanced/proc/adjust_stamina(var/adjust_value)
+	var/old_value = stamina_current
+	var/new_value = clamp(stamina_current + adjust_value,0,stamina_max)
+
+	if(old_value != new_value)
+		stamina_current = new_value
+		return TRUE
+
+	return FALSE
 
 /mob/living/advanced/proc/add_clothes(var/outfit/spawning_outfit)
 	if(!spawning_outfit)

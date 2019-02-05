@@ -14,13 +14,15 @@
 	var/attack_ticks = 0
 	var/movement_ticks = 0
 
-	var/objective_delay = SECONDS_TO_TICKS(2)
+	var/objective_delay = SECONDS_TO_TICKS(10)
 	var/attack_delay = SECONDS_TO_TICKS(1)
 	var/movement_delay = SECONDS_TO_TICKS(0.5)
 
 	var/list/target_distribution = list(16,16,16,8,8,32,32)
 
 	var/turf/start_turf
+
+	var/simple = TRUE
 
 /ai/New(var/mob/living/desired_owner)
 	owner = desired_owner
@@ -122,6 +124,9 @@
 
 	if(L.status & FLAG_STATUS_DEAD)
 		return FALSE
+
+	if(simple)
+		return L.client
 
 	for(var/id in owner.factions)
 		var/faction/F = owner.factions[id]

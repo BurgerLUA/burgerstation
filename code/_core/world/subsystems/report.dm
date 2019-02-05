@@ -7,7 +7,7 @@
 
 	var/list/stored_tick_reports = list()
 
-	var/passes = 0
+	var/passes = 60
 
 /subsystem/report/on_life()
 

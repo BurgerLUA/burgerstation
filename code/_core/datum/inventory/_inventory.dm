@@ -10,7 +10,7 @@
 	icon = 'icons/hud/inventory.dmi'
 	icon_state = "slot"
 
-	plane = 3
+	plane = PLANE_HUD
 
 	var/list/obj/item/held_objects //Items that are held, and not worn.
 	var/list/obj/item/clothing/worn_objects //Items that are worn, and not held.
@@ -124,7 +124,7 @@
 		I2.remove_object(I,owner.loc)
 
 	undelete(I)
-	I.plane = 4
+	I.plane = PLANE_HUD_OBJ
 	I.loc = src
 	held_objects += I
 	I.on_pickup(src)
@@ -151,7 +151,7 @@
 		I2.remove_object(I,owner.loc)
 
 	undelete(I)
-	I.plane = 4
+	I.plane = PLANE_HUD_OBJ
 	I.loc = src
 	worn_objects += I
 	owner.worn_objects += I

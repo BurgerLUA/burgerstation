@@ -11,8 +11,13 @@
 		'sounds/effects/footsteps/wood5.ogg'
 	)
 
-/turf/simulated/floor/wood/opaque
-	opacity = 1
 
-/turf/simulated/floor/wood/dense
-	density = 1
+/turf/simulated/floor/wood/brown
+	color = "#724C34"
+
+
+/turf/simulated/floor/wood/rich
+	color = "#A05120"
+
+/turf/simulated/floor/wood/dock
+	color = "#494E14"

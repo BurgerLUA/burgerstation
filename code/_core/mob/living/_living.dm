@@ -22,10 +22,16 @@ var/global/list/all_living = list()
 
 	var/first_life = TRUE
 
+	var/stamina_max = 0
+	var/stamina_current = 0
+	var/stamina_regeneration = 0
+
+	var/mana_max = 0
+	var/mana_current = 0
+	var/mana_regeneration = 0
 
 
-
-/mob/living/New()
+/mob/living/New(loc,desired_client)
 	. = ..()
 	attributes = list()
 	skills = list()

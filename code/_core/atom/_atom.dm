@@ -7,14 +7,6 @@
 	var/health_current = 0
 	var/health_regeneration = 0
 
-	var/stamina_max = 0
-	var/stamina_current = 0
-	var/stamina_regeneration = 0
-
-	var/mana_max = 0
-	var/mana_current = 0
-	var/mana_regeneration = 0
-
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
 	var/id
 
@@ -35,6 +27,8 @@
 
 	density = FALSE
 
+	plane = PLANE_DEFAULT
+
 	var/list/additional_blends = list()
 
 	var/override_icon = FALSE
@@ -44,6 +38,7 @@
 	initialized = TRUE
 	update_health()
 	update_icon()
+	area = get_area(src)
 
 /atom/New(var/new_loc)
 	if(damage_type)

@@ -3,3 +3,4 @@
 	icon = 'icons/turf/floor/lava.dmi'
 	icon_state = "floor"
 	corner_icons = TRUE
+	corner_category = "lava"

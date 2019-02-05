@@ -1,6 +1,5 @@
 /ai/summon/
 	name = "Summon AI"
-	attack_delay = SECONDS_TO_TICKS(0.25)
 
 /ai/summon/handle_movement()
 

@@ -8,9 +8,9 @@
 	update_icon()
 	var/area/A = get_area(caller.loc)
 	if(enabled)
-		play_sound('sounds/weapon/melee/saberon.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound('sounds/weapon/melee/saberon.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	else
-		play_sound('sounds/weapon/melee/saberoff.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound('sounds/weapon/melee/saberoff.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	return TRUE
 
 /obj/item/weapon/melee/energy/can_parry()

@@ -26,7 +26,7 @@
 
 	layer = LAYER_PROJECTILE
 
-	plane = 4
+	plane = PLANE_EFFECT
 
 	var/start_time = 0
 	var/lifetime = SECONDS_TO_DECISECONDS(60)

@@ -41,9 +41,8 @@
 		var/mob/living/advanced/player/P = new(pick(spawnpoints_new_character),client)
 		if(P.client)
 			P.client.eye = P
-			P.client.update_zoom(0)
+			P.client.update_zoom(-1)
 		open_menu(P,"appearance_editor")
-		P << "ATTEMPTING TO OPEN MENU!"
 		qdel(src)
 
 /mob/abstract/observer/verb/load_character()

@@ -13,7 +13,7 @@ var/global/list/all_clients = list()
 	var/list/obj/button/known_buttons
 	var/list/obj/health/known_health_elements
 
-	var/zoom_level = TILE_SIZE * 2
+	var/zoom_level = 2
 
 	var/userdata/userdata
 
@@ -37,6 +37,7 @@ var/global/list/all_clients = list()
 	known_buttons = list()
 	known_health_elements = list()
 	screen = list()
+	update_lighting()
 
 /client/New()
 
@@ -99,6 +100,7 @@ var/global/list/all_clients = list()
 /client/proc/make_ghost(var/desired_loc)
 	src.mob = new /mob/abstract/observer(desired_loc,src)
 	src.mob.Initialize()
+	update_lighting()
 
 /client/MouseMove(object,location,control,params) //WARNING: OVERHEAD
 	/*
@@ -108,7 +110,7 @@ var/global/list/all_clients = list()
 	..()
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
-	var/change_in_screen = clamp(delta_x + delta_y,-1,1)*8
+	var/change_in_screen = delta_y > 1 ? 1 : -1
 	update_zoom(zoom_level + change_in_screen)
 
 	..()
@@ -226,14 +228,14 @@ var/global/list/all_clients = list()
 	last_location = over_location
 
 /client/proc/update_zoom(var/desired_zoom_level)
-	if(eye != mob)
-		zoom_level = TILE_SIZE
-	else
-		if(desired_zoom_level == 0)
-			desired_zoom_level = initial(zoom_level)
-		zoom_level = clamp(desired_zoom_level,TILE_SIZE,TILE_SIZE*4)
+	if(!mob || eye != mob)
+		desired_zoom_level = 1
+	else if(desired_zoom_level < 0)
+		desired_zoom_level = initial(zoom_level)
 
-	winset(src, "map.map","icon-size=[zoom_level];zoom-mode=normal")
+	zoom_level = clamp(desired_zoom_level,1,4)
+
+	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 
 /client/proc/save_current_character()
 	userdata.save_current_character()

@@ -1,0 +1,14 @@
+#define PLANE_TURF 0
+#define PLANE_DEFAULT 1
+#define PLANE_OBJ 2
+#define PLANE_MOB 3
+#define PLANE_EFFECT 4
+#define PLANE_AREA 5
+#define PLANE_LIGHTING_AMBIENT 6
+#define PLANE_LIGHTING_DYNAMIC 7
+#define PLANE_HUD 8
+#define PLANE_HUD_OBJ 9
+
+
+#define PLANE_MAP 99
+#define PLANE_MAP_TEXT 100

@@ -3,3 +3,4 @@
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 	corner_icons = TRUE
+	corner_category = "ash"

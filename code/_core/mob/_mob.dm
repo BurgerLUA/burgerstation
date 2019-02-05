@@ -24,16 +24,21 @@
 
 	mouse_opacity = 0
 
+	plane = PLANE_MOB
+
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 	..()
 
 /mob/New(var/loc/spawning_location,var/client/C)
+
 	if(C)
 		client = C
+		all_mobs_with_clients += src
 		ckey = C.ckey
 		C.reset()
+		C << "HELLO"
 
 	buttons = list()
 

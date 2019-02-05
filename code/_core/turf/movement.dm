@@ -27,6 +27,7 @@
 	for(var/C in contents)
 		var/atom/CFix = C
 		var/atom/R = CFix.can_not_enter(A,move_direction)
+
 		if(R)
 			return R
 

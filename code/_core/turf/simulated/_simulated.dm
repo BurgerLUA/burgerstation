@@ -2,6 +2,7 @@
 	var/corner_icons = FALSE
 	var/real_icon
 	var/real_icon_state
+	var/corner_category = "none"
 
 /turf/simulated/New(loc)
 	if(real_icon)
@@ -11,8 +12,8 @@
 
 	..()
 
-/turf/simulated/proc/same_turf(var/turf/T)
-	return	icon_state == T.icon_state
+/turf/simulated/proc/same_turf(var/turf/simulated/T)
+	return corner_category == T.corner_category
 
 /turf/simulated/update_icon()
 
@@ -23,7 +24,7 @@
 
 	for(var/d in DIRECTIONS_ALL)
 		var/turf/T = get_step(src,d)
-		calc_list[direction_to_text(d)] = T ? same_turf(T) : FALSE
+		calc_list[direction_to_text(d)] = T ? same_turf(T) : TRUE
 
 	var/ne = ""
 	var/nw = ""

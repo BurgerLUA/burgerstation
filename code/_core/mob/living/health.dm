@@ -30,8 +30,6 @@
 		var/obj/health/H = health_elements[id]
 		H.update_icon()
 
-
-
 mob/living/update_health()
 
 	var/changed = FALSE

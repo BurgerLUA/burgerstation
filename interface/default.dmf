@@ -8,7 +8,6 @@ window "browser_override"
 		size = 700x700
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
@@ -21,7 +20,6 @@ window "browser_override"
 		size = 700x700
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 
 window "info"
@@ -126,6 +124,7 @@ window "input_output"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
@@ -153,6 +152,7 @@ window "input_output"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ""
@@ -167,6 +167,7 @@ window "input_output"
 		is-default = true
 		border = sunken
 		saved-params = ""
+		command = "say"
 
 window "input_output_and_info"
 	elem "input_output_and_info"
@@ -207,12 +208,24 @@ window "main"
 		drop-zone = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation13"
+		statusbar = false
 		macro = "macro"
 		menu = "menu"
+	elem "experience"
+		type = BAR
+		pos = 0,700
+		size = 1280x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		background-color = none
+		saved-params = ""
+		bar-color = #ff8040
+		is-slider = false
+		dir = east
 	elem "main_splitter"
 		type = CHILD
 		pos = 0,0
-		size = 1280x720
+		size = 1280x700
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none

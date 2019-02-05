@@ -1,7 +1,6 @@
 /ai/ranged/
 	name = "Ranged AI"
 	radius_find_enemy = 12
-	attack_delay = SECONDS_TO_TICKS(0.25)
 
 /ai/ranged/handle_attacking()
 

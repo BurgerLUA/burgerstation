@@ -106,7 +106,7 @@
 					var/mob/living/advanced/A = usr
 					apply_javascript_to_mob(usr,forged_data)
 					stop_sound('sounds/music/chargen.ogg',list(usr))
-					if(A.client)
+					if(A.client && FALSE)
 						spawn(0)
 							play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
 							add_notification_colored_easy(A.client,"#000000",SECONDS_TO_DECISECONDS(19),fade_in = FALSE)

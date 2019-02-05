@@ -77,7 +77,7 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click click*"))
 	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapon/misc/empty.ogg',all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound('sounds/weapon/misc/empty.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	return FALSE
 
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
@@ -118,7 +118,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 		var/area/A = get_area(caller)
 
 		if(length(shoot_sounds))
-			play_sound(pick(shoot_sounds),all_mobs,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			play_sound(pick(shoot_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 
 
@@ -190,7 +190,7 @@ obj/item/weapon/ranged/proc/get_projectile_path(var/atom/caller,var/desired_x,va
 
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
-	if(!automatic || defer_attack(caller,object,location,null,params) || (object && object.plane > 1))
+	if(!automatic || defer_attack(caller,object,location,null,params) || (object && object.plane >= PLANE_AREA))
 		return TRUE
 	return shoot(caller,object,location,params)
 

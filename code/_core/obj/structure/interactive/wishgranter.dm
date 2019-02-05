@@ -25,7 +25,7 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(c
 	P.Initialize()
 	if(P.client)
 		P.client.eye = P
-		P.client.update_zoom(0)
+		P.client.update_zoom(-1)
 	P.factions = list()
 
 	P.initialize_factions()
@@ -55,3 +55,12 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/green
 obj/structure/interactive/wishgranter/spawn_and_join_faction/yellow
 	name = "yellow team wishgranter"
 	faction_to_join = "arena_yellow"
+
+
+obj/structure/interactive/wishgranter/normal
+
+
+
+obj/structure/interactive/wishgranter/normal/village
+	name = "village wishgranter"
+	id = "village"

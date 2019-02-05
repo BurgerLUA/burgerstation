@@ -37,7 +37,7 @@ var/global/list/all_notifications = list()
 	I2.pixel_y = 16-(max_possible*0.5)
 	I2.loc = C.mob
 	I2.layer = LAYER_AREA
-	I2.plane = 9
+	I2.plane = PLANE_MAP
 	I2.mouse_opacity = 0
 
 	add_notification(C,I2,duration,fade_in,fade_out)
@@ -48,7 +48,7 @@ var/global/list/all_notifications = list()
 	I.pixel_y = 16-160
 	I.loc = C.mob
 	I.layer = LAYER_AREA
-	I.plane = 10
+	I.plane = PLANE_MAP_TEXT
 	I.mouse_opacity = 0
 	add_notification(C,I,duration)
 

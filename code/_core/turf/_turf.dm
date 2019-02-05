@@ -4,6 +4,8 @@
 	icon_state = ""
 	layer = LAYER_FLOOR
 
+	appearance_flags = TILE_BOUND | KEEP_TOGETHER
+
 	//Density
 	var/density_north = FALSE
 	var/density_south = FALSE
@@ -15,7 +17,10 @@
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
 
+
 	var/allow_bullet_pass = FALSE
+
+	plane = PLANE_TURF
 
 /turf/New()
 	area = src.loc
@@ -27,7 +32,9 @@
 	return src
 
 /turf/on_enter(var/atom/enterer)
+
 	area.on_enter(enterer)
+
 	for(var/atom/A in contents)
 		if(is_trigger(A))
 			var/obj/trigger/T = A
