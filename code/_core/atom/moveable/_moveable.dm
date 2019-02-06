@@ -65,25 +65,40 @@
 
 	return TRUE
 
-/atom/movable/proc/do_move(var/turf/new_loc,var/movement_override = 0)
+/atom/movable/proc/do_move(var/new_loc,var/movement_override = 0)
 	if(!can_move(new_loc,movement_override))
 		src.face_atom(new_loc)
 		return FALSE
 	do_step(new_loc, movement_override)
 	return TRUE
 
-/atom/movable/proc/do_step(var/turf/new_loc, var/movement_override = 0)
-	var/turf/old_loc = loc
-	old_loc.on_exit(src)
-	do_movement_effects(old_loc,new_loc,movement_override)
-	loc = new_loc
-	x = new_loc.x
-	y = new_loc.y
-	z = new_loc.z
-	new_loc.on_enter(src)
+/atom/movable/proc/force_move(var/atom/new_loc)
+
+	//world.log << "[src].force_move([new_loc])"
+
+	var/atom/old_loc = null
+
+	if(loc)
+		if(loc == new_loc)
+			return old_loc
+		old_loc = loc
+		old_loc.on_exit(src)
+
+	if(new_loc)
+		src.loc = new_loc
+		new_loc.on_enter(src)
+
+	for(var/datum/light_source/L in src.light_sources) // Cycle through the light sources on this atom and tell them to update.
+		L.source_atom.update_light()
+
 	return old_loc
 
-/atom/movable/proc/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
+/atom/movable/proc/do_step(var/atom/new_loc, var/movement_override = 0)
+	var/turf/old_loc = loc
+	do_movement_effects(old_loc,new_loc,movement_override)
+	return force_move(new_loc)
+
+/atom/movable/proc/do_movement_effects(var/atom/old_loc, var/atom/new_loc, var/movement_override = 0)
 
 	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size
 	var/pixel_y_offset = -(new_loc.y - old_loc.y)*step_size

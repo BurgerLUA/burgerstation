@@ -28,7 +28,7 @@
 /obj/trigger/move_to_world/on_trigger(var/atom/triggerer)
 	if(is_advanced(triggerer))
 		var/mob/living/advanced/A = triggerer
-		A.loc = pick(world_spawnpoints)
+		A.force_move(pick(world_spawnpoints))
 		if(A.client)
 			A.client.save_current_character()
 
@@ -50,7 +50,7 @@
 	if(!is_living(triggerer))
 		return FALSE
 
-	triggerer.loc = locate(x + x_move, y + y_move,z)
+	triggerer.force_move(locate(x + x_move, y + y_move,z))
 
 /obj/trigger/jumploc/north
 	x_move = 0
@@ -79,4 +79,4 @@
 	if(!is_living(triggerer))
 		return FALSE
 
-	triggerer.loc = locate(x_move,y_move,z_move)
+	triggerer.force_move(locate(x_move,y_move,z_move))

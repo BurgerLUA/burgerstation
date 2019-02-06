@@ -10,7 +10,7 @@
 
 /obj/effect/gibs/New(var/desired_loc,var/desired_blood_color,var/desired_flesh_color)
 	..()
-	loc = desired_loc
+	//force_move(desired_loc) TODO: WHY IS THIS HERE
 	blood_color = desired_blood_color
 	flesh_color = desired_flesh_color
 	update_icon()

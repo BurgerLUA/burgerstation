@@ -37,7 +37,7 @@
 
 	if(!G.stored_magazine)
 		src.drop_item(G)
-		src.loc = G
+		src.force_move(G)
 		G.stored_magazine = src
 		G.open = FALSE
 

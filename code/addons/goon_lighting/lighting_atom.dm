@@ -86,12 +86,19 @@
 
 // This code makes the light be queued for update when it is moved.
 // Entered() should handle it, however Exited() can do it if it is being moved to nullspace (as there would be no Entered() call in that situation).
+
+
+//Burger: Note that on enter means when an object(A) enters this object(src)
+/*.
 /atom/on_enter(var/atom/A,var/move_direction) //Implemented here because forceMove() doesn't call Move()
 	. = ..()
 	for(var/datum/light_source/L in A.light_sources) // Cycle through the light sources on this atom and tell them to update.
 		L.source_atom.update_light()
-
+*/
+/*
 /atom/on_exit(var/atom/A,var/move_direction)
 	. = ..()
+
 	for(var/datum/light_source/L in A.light_sources) // Cycle through the light sources on this atom and tell them to update.
 		L.source_atom.update_light()
+*/

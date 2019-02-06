@@ -137,7 +137,7 @@
 				B.update_icon()
 				M.stored_bullets += B
 
-	O.loc = loc
+	O.force_move(loc)
 	O.update_icon()
 
 	return O

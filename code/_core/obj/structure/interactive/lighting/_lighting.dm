@@ -13,3 +13,5 @@
 	light_color = "#FFFFB5"
 
 	layer = LAYER_LARGE_OBJ
+
+	density = 0

@@ -79,7 +79,7 @@
 		if(is_advanced(src.loc))
 			var/mob/living/advanced/A = src.loc
 			A.remove_organ(src,FALSE,FALSE)
-		src.loc = T
+		src.force_move(T)
 
 	update_icon()
 	queue_delete(src,600)

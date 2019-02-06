@@ -316,6 +316,7 @@
 #include "code\_core\obj\item\weapon\ranged\magic\scrolls.dm"
 #include "code\_core\obj\item\weapon\ranged\magic\staff.dm"
 #include "code\_core\obj\item\weapon\ranged\magic\tome.dm"
+#include "code\_core\obj\item\weapon\torch\_torch.dm"
 #include "code\_core\obj\lighting\_lighting.dm"
 #include "code\_core\obj\markers\_marker.dm"
 #include "code\_core\obj\markers\mob_spawn.dm"

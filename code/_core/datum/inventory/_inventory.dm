@@ -51,7 +51,8 @@
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 
 /obj/inventory/New(var/desired_loc)
-	loc = desired_loc
+
+	//loc = desired_loc
 
 	held_objects = list()
 	worn_objects = list()
@@ -117,6 +118,8 @@
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
+
+
 	if(is_inventory(I.loc))
 		var/obj/inventory/I2 = I.loc
 		if(I2 == src)
@@ -124,8 +127,10 @@
 		I2.remove_object(I,owner.loc)
 
 	undelete(I)
+
+	I.force_move(src)
+
 	I.plane = PLANE_HUD_OBJ
-	I.loc = src
 	held_objects += I
 	I.on_pickup(src)
 	update_overlays()
@@ -151,8 +156,10 @@
 		I2.remove_object(I,owner.loc)
 
 	undelete(I)
+
+	I.force_move(src)
+
 	I.plane = PLANE_HUD_OBJ
-	I.loc = src
 	worn_objects += I
 	owner.worn_objects += I
 	I.update_owner(owner)
@@ -195,8 +202,10 @@
 		was_removed = TRUE
 
 	if(was_removed)
+
+		I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
+
 		I.plane = initial(I.plane)
-		I.loc = drop_loc ? drop_loc : get_turf(src.loc)
 		update_overlays()
 		update_stats()
 		queue_delete(I,600)

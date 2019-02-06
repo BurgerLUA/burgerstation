@@ -39,7 +39,8 @@
 
 
 /obj/item/New(var/desired_loc)
-	src.loc = desired_loc
+
+	//force_move(desired_loc) //TODO: FIGURE THIS OUT
 
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/inventory/new_inv = inventories[i]

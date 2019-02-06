@@ -17,7 +17,7 @@
 	if(stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
 		caller.to_chat(span("notice","You eject the magazine from \the [src]."))
 		var/obj/inventory/offhand_slot = object
-		stored_magazine.loc = caller.loc
+		stored_magazine.force_move(caller.loc)
 		offhand_slot.add_object(stored_magazine)
 		stored_magazine.update_icon()
 		stored_magazine = null
@@ -29,13 +29,13 @@
 /obj/item/weapon/ranged/bullet/proc/eject_spent_casings(var/mob/caller, var/new_loc)
 	for(var/obj/item/bullet/B in stored_bullet_casings)
 		stored_bullet_casings -= B
-		B.loc = new_loc
+		B.force_move(new_loc)
 		B.update_icon()
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller, var/new_loc)
 	for(var/obj/item/bullet/B in stored_bullets)
 		stored_bullets -= B
-		B.loc = new_loc
+		B.force_move(new_loc)
 		B.update_icon()
 
 /obj/item/weapon/ranged/bullet/proc/spend_bullet()

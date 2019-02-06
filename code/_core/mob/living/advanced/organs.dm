@@ -34,8 +34,8 @@
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 
-	O = new O
-	O.loc = src
+	O = new O(src)
+	//O.force_move(src)
 
 	if(labeled_organs[O.attach_flag])
 		var/obj/item/organ/A = labeled_organs[O.attach_flag]

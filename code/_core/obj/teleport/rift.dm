@@ -14,7 +14,7 @@
 	if(!length(rift_markers))
 		return FALSE
 
-	triggerer.loc = pick(rift_markers)
+	triggerer.force_move(pick(rift_markers))
 
 	return TRUE
 

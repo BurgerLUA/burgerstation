@@ -9,6 +9,7 @@
 
 	var/is_static = TRUE //Is the button anchored?
 
+	layer = LAYER_HUD
 	plane = PLANE_HUD
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER

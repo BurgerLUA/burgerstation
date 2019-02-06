@@ -15,7 +15,7 @@
 	caller.to_chat(span("notice","You [action_name] \the [src]."))
 
 	if(stored_chamber)
-		stored_chamber.loc = caller.loc
+		stored_chamber.force_move(caller.loc)
 		stored_chamber.update_icon()
 		stored_chamber = null
 
