@@ -16,14 +16,13 @@
 
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
-
-
 	var/allow_bullet_pass = FALSE
 
 	plane = PLANE_TURF
 
-/turf/New()
+/turf/New(loc)
 	area = src.loc
+	..()
 
 /turf/change_victim(var/atom/attacker)
 	for(var/v in contents)

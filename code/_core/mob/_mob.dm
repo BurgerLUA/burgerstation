@@ -26,6 +26,10 @@
 
 	plane = PLANE_MOB
 
+	see_invisible = 20
+
+	sight = SEE_BLACKNESS
+
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)

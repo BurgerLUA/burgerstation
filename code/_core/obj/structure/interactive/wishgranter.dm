@@ -8,6 +8,11 @@ obj/structure/interactive/wishgranter
 	icon = 'icons/obj/structure/future/wishgranter.dmi'
 	icon_state = "wishgranter"
 
+
+	light_range = 5
+	light_power = 4
+	light_color = "#FFFFFF"
+
 obj/structure/interactive/wishgranter/New()
 	..()
 	all_wishgranters += src

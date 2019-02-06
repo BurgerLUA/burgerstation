@@ -14,6 +14,10 @@
 		/obj/button/new_character
 	)
 
+	light_range = 5
+	light_power = 4
+	light_color = "#FFFFFF"
+
 /mob/abstract/observer/Initialize()
 	. = ..()
 	name = "ghost of [ckey]"

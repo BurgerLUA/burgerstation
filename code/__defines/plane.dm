@@ -1,4 +1,4 @@
-#define PLANE_TURF 0
+#define PLANE_TURF -1
 #define PLANE_DEFAULT 1
 #define PLANE_OBJ 2
 #define PLANE_MOB 3
