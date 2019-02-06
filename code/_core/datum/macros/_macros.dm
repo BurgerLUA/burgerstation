@@ -71,8 +71,6 @@
 				owner.mob.attack_flags &= ~ATTACK_GRAB
 			if("quick_self")
 				owner.mob.attack_flags &= ~ATTACK_SELF
-			if("change_focus")
-				winset(owner,null,"map.map.focus = true")
 
 
 	return TRUE
