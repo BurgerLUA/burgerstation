@@ -13,6 +13,10 @@ obj/structure/interactive/wishgranter
 	light_power = 4
 	light_color = "#FFFFFF"
 
+obj/structure/interactive/wishgranter/fake/New()
+	//Do literally nothing.
+
+
 obj/structure/interactive/wishgranter/New()
 	..()
 	all_wishgranters += src

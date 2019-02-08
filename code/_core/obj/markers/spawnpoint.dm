@@ -2,9 +2,17 @@ var/global/list/observer_spawnpoints = list()
 var/global/list/spawnpoints_new_character = list()
 var/global/list/world_spawnpoints = list()
 var/global/list/mob_spawnpoints = list()
+var/global/list/lobby_spawnpoints = list()
 
 /obj/marker/spawnpoint
 	name = "SPAWNPOINT"
+
+/obj/marker/spawnpoint/lobby
+	name = "lobby spawnpoint"
+	desc = "This is where the lobby is"
+
+/obj/marker/spawnpoint/lobby/New()
+	lobby_spawnpoints += get_turf(src)
 
 /obj/marker/spawnpoint/ghost
 	name = "ghost spawnpoint"

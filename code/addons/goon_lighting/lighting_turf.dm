@@ -9,6 +9,10 @@
 	var/tmp/list/datum/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
 
+
+/turf/get_light_source()
+	return src
+
 /turf/New()
 	. = ..()
 

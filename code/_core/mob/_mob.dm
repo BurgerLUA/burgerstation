@@ -30,6 +30,9 @@
 
 	sight = SEE_BLACKNESS
 
+	var/list/quests/all_quests = list()
+	var/list/quests/active_quests = list()
+
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)

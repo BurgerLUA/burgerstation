@@ -57,3 +57,29 @@
 /obj/item/clothing/overwear/armor/knight/syndie2
 	name = "mauler hardsuit mk2"
 	icon = 'icons/obj/items/clothing/suit/syndie2.dmi'
+
+
+
+/obj/item/clothing/overwear/armor/knight/magnus
+	name = "magnus armor"
+	icon = 'icons/obj/items/clothing/suit/magnus.dmi'
+
+/obj/item/clothing/overwear/armor/captain_suit
+	name = "mauler suit"
+	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
+
+/obj/item/clothing/overwear/armor/carbon_armor
+	name = "fibre armor"
+	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
+
+/obj/item/clothing/overwear/armor/molded_armor
+	name = "molded armor"
+	icon = 'icons/obj/items/clothing/suit/mod_chest_armor.dmi'
+
+/obj/item/clothing/overwear/armor/medium_armor
+	name = "medium armor"
+	icon = 'icons/obj/items/clothing/suit/medium_chest_armor.dmi'
+
+/obj/item/clothing/overwear/armor/knight/worn
+	name = "gladiator armor"
+	icon = 'icons/obj/items/clothing/suit/gladiator.dmi'

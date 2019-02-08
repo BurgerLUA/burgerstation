@@ -90,13 +90,20 @@
 			input.appearance{
 				 background-image:url('chargen_head.png');
 			}
-			
 			.scroll{
 				overflow-x: scroll;
 				max-width: 80px;
 				overflow-y: hidden;
 				white-space: nowrap;
 			}
+			
+			.icons{
+				overflow-x: hidden;
+				max-width: 80px;
+				overflow-y: hidden;
+				white-space: nowrap;			
+			}
+			
 			div.colored{
 				width:15px;
 				height:15px;
@@ -106,7 +113,7 @@
 		</style>
 	</head>
 	<body>
-			<table id='formatting' width='100%' border='1px solid'>
+			<table id='formatting' width='100%'>
 				<tr height='1px'>
 					<th align='center'>
 						<img id='portrait_north' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
@@ -118,7 +125,7 @@
 					</th>
 				</tr>
 			</table>
-			<table id='customization' width='100%' border='1px solid'>
+			<table id='customization' width='100%'>
 				<tr>
 					<th>
 						<table id = "color_customization" width='100%'>
@@ -187,6 +194,9 @@
 						</table>
 					</th>
 				</tr>
+			</table>
+			<table id='icons' width='100%'>
+			
 			</table>
 			<br>
 			<button class='extended' id='char_submit' onmouseover="hover_update('Save your creation and play the damn game already.')" onclick="get_data_to_send(true)">Save Character</button>
@@ -305,7 +315,9 @@
 			}
 			
 			var name_to_type = {hair_head: "Hair",hair_face: "Facial Hair"}
-			document.getElementById("customization").innerHTML += "<tr onmouseover=\"hover_update('The style of your " + name_to_type[type].toLowerCase() + ", if you have any.')\")><th class='scroll' height='64px'>" + icons + "</th></tr>"
+			document.getElementById("icons").innerHTML += "<tr onmouseover=\"hover_update('The style of your " + name_to_type[type].toLowerCase() + ", if you have any.')\")><th width='1px'><input type='image' onclick=\"document.getElementById('scroll_" + type + "').scrollLeft -= 64\" src='left.png'/></th><th height='64px' class='icons' id='scroll_" + type + "'>" + icons + "</th><th width='1px'><input type='image' onclick=\"document.getElementById('scroll_" + type + "').scrollLeft += 64\" src='right.png'/></th></tr>"
+			
+			//<input type="image" src="http://example.com/path/to/image.png" />
 			
 			document.getElementById("color_customization").innerHTML += "<tr onmouseover=\"hover_update('The color of your " + name_to_type[type].toLowerCase() + ", if you have any.')\")><th align='right'>" + name_to_type[type] + " Color:</th><th align='left'><button class='extended' onclick=\"change_color_of('" + type + "')\">Choose...</button></th></tr>"
 
@@ -340,6 +352,11 @@
 			get_data_to_send()
 		}
 		
+		function done_loading() {
+			var desired_location = "byond://?done_loading=appearance_editor"
+			window.location = desired_location
+		}
+		
 		function get_data_to_send(save_and_quit) {
 			if(!save_and_quit)
 				save_and_quit = false;
@@ -356,8 +373,7 @@
 			global_reference = reference
 		}
 
-		//
-		//refresh_character()
+		done_loading()
 		
 	</script>
 	

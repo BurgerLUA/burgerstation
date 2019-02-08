@@ -3,8 +3,6 @@
 	desc = "Fucking liggers."
 	mob_species = /species/reptile_advanced/
 
-	mob_outfit = /outfit/marwani
-
 	ai = null
 
 	gender = FEMALE

@@ -63,7 +63,6 @@
 
 /mob/living/advanced/human/ai/speedy/
 	name = "Speedy McSpeed"
-	mob_outfit = null
 	movement_delay = 1
 
 /mob/living/advanced/human/ai/speedy/on_life_AI()
@@ -80,5 +79,4 @@
 
 /mob/living/advanced/human/ai/logo
 	name = "greytide"
-	mob_outfit = null
 	movement_delay = 32

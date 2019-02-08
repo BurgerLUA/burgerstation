@@ -50,7 +50,7 @@
 	if(!is_living(triggerer))
 		return FALSE
 
-	triggerer.force_move(locate(x + x_move, y + y_move,z))
+	triggerer.force_move(locate(x + x_move, y + y_move,z),FALSE,TRUE)
 
 /obj/trigger/jumploc/north
 	x_move = 0
@@ -67,16 +67,29 @@
 	x_move = -2
 	y_move = 0
 
+/obj/trigger/telesmart
+	name = "smart jumper"
+	var/desired_dir = 0
 
-/obj/trigger/teleloc
-	name = "teleloc jumper"
-	var/x_move = 0
-	var/y_move = 0
-	var/z_move = 0
+/obj/trigger/telesmart/up
+	desired_dir = UP
 
-/obj/trigger/teleloc/on_trigger(var/atom/movable/triggerer)
+/obj/trigger/telesmart/on_trigger(var/atom/movable/triggerer)
 
-	if(!is_living(triggerer))
-		return FALSE
+	var/final_x = triggerer.x
+	var/final_y = triggerer.y
+	var/final_z = triggerer.z
 
-	triggerer.force_move(locate(x_move,y_move,z_move))
+	if(desired_dir & UP)
+		final_z += 1
+
+	if(desired_dir & DOWN)
+		final_z -= 1
+
+	if(desired_dir & (WEST | EAST))
+		final_x = 128 - final_x
+
+	if(desired_dir & (NORTH | SOUTH))
+		final_y = 128 - final_x
+
+	triggerer.force_move(locate(final_x,final_y,final_z),FALSE,TRUE)

@@ -78,12 +78,6 @@ client/verb/remove_head()
 	if(A.labeled_organs["head"])
 		A.labeled_organs["head"].gib()
 
-client/verb/add_clothes()
-	set category = "Debug"
-	var/mob/living/advanced/A = mob
-	if(A.mob_outfit)
-		A.add_clothes(A.mob_outfit)
-
 client/verb/debug_sounds()
 	set category = "Debug"
 	src << "Found [length(active_sounds)] active sounds."

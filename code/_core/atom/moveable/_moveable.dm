@@ -21,7 +21,7 @@
 
 	if(move_dir && move_delay <= 0)
 		update_glide()
-		var/final_movement_delay = get_movement_delay()
+		var/final_movement_delay = round(get_movement_delay())
 		do_move(get_step(src,move_dir),final_movement_delay)
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
 		return TRUE
@@ -72,9 +72,7 @@
 	do_step(new_loc, movement_override)
 	return TRUE
 
-/atom/movable/proc/force_move(var/atom/new_loc)
-
-	//world.log << "[src].force_move([new_loc])"
+/atom/movable/proc/force_move(var/atom/new_loc, var/trigger_enter = TRUE, var/trigger_exit = TRUE)
 
 	var/atom/old_loc = null
 
@@ -82,11 +80,13 @@
 		if(loc == new_loc)
 			return old_loc
 		old_loc = loc
-		old_loc.on_exit(src)
+		if(trigger_exit)
+			old_loc.on_exit(src)
 
 	if(new_loc)
 		src.loc = new_loc
-		new_loc.on_enter(src)
+		if(trigger_enter)
+			new_loc.on_enter(src)
 
 	for(var/datum/light_source/L in src.light_sources) // Cycle through the light sources on this atom and tell them to update.
 		L.source_atom.update_light()

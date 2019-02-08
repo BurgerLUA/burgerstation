@@ -3,11 +3,17 @@
 	desc = ""
 	icon_state = "green"
 
+	ambient_sound = 'sounds/ambient/crickets.ogg'
+
+	dynamic_lighting = TRUE
+
 /area/overworld/village
 	name = "village"
 	safe = TRUE
 	icon = 'icons/area/safezone.dmi'
 	icon_state = "safe"
+
+	ambient_sound = 'sounds/ambient/peeper_frogs.ogg'
 
 
 

@@ -16,6 +16,12 @@
 	update_light()
 #undef NONSENSICAL_VALUE
 
+/atom/proc/get_light_source()
+	return src
+
+/atom/movable/get_light_source()
+	return loc.get_light_source()
+
 // Will update the light (duh).
 // Creates or destroys it if needed, makes it update values, makes sure it's got the correct source turf...
 /atom/proc/update_light()
@@ -28,10 +34,15 @@
 			light.destroy_light()
 			light = null
 	else
-		if(!istype(loc, /atom/movable)) // We choose what atom should be the top atom of the light here.
-			. = src
-		else
+
+		/*
+		if(istype(loc, /atom/movable)) // We choose what atom should be the top atom of the light here.
 			. = loc
+		else
+			. = src
+		*/
+
+		. = get_light_source()
 
 		if(light) // Update the light or create it if it does not exist.
 			light.update(.)

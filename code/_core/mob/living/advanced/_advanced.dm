@@ -3,7 +3,6 @@
 	name = "lost soul"
 
 	var/species/mob_species = /species/human/
-	var/outfit/mob_outfit = /outfit/new_character/
 
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
@@ -47,8 +46,6 @@
 	inventory = list()
 	worn_objects = list()
 	labeled_organs = list()
-	if(mob_outfit)
-		mob_outfit = new mob_outfit
 	if(mob_species)
 		mob_species = new mob_species
 	..()
@@ -142,7 +139,6 @@ mob/living/advanced/Login()
 	if(!client || client.userdata.loaded_data["tutorial"])
 		add_species_organs()
 		add_species_colors()
-		add_clothes(mob_outfit)
 		update_icon()
 	else
 		client.userdata.apply_data_to_mob(src)
@@ -176,7 +172,10 @@ mob/living/advanced/Login()
 
 	return FALSE
 
-/mob/living/advanced/proc/add_clothes(var/outfit/spawning_outfit)
+/mob/living/advanced/proc/add_clothes(var/outfit_id)
+
+	var/outfit/spawning_outfit = all_outfits[outfit_id]
+
 	if(!spawning_outfit)
 		return FALSE
 

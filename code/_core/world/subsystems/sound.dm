@@ -28,6 +28,27 @@ var/global/list/active_sounds = list()
 			for(var/atom/H in hearers)
 				H << S
 
+proc/stop_ambient_sounds(var/atom/hearer)
+	var/sound/created_sound = sound()
+	created_sound.priority = 100
+	//created_sound.status = SOUND_MUTE
+	//hearer << created_sound
+
+proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_GENERIC)
+
+	var/sound/created_sound = sound(sound_path)
+	created_sound.frequency = pitch
+	created_sound.repeat = loop
+	created_sound.pan = pan
+	created_sound.channel = SOUND_CHANNEL_AMBIENT
+	created_sound.priority = 0
+	created_sound.echo = echo
+	created_sound.environment = environment
+	created_sound.status = 0
+	created_sound.volume = volume
+
+	hearer << created_sound
+
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC)
 	var/sound/created_sound = sound(sound_path)
 

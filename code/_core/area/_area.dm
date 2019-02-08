@@ -20,7 +20,7 @@
 	var/map_color_a = rgb(0,0,0,255)
 
 
-	var/list/ambient_sounds = list()
+	var/ambient_sound
 	var/list/random_sounds = list()
 
 /area/on_enter(var/atom/movable/enterer)
@@ -28,6 +28,12 @@
 	if(enterer.area != src)
 		if(enterer.area)
 			enterer.area.on_exit(enterer)
+			if(is_mob(enterer))
+				var/mob/M = enterer
+				if(M.client)
+					if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
+						play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
+
 		enterer.area = src
 
 		if(is_mob(enterer))

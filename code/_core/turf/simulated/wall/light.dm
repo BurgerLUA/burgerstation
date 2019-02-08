@@ -9,4 +9,4 @@
 	color = "#000000"
 	opacity = 0
 	allow_bullet_pass = TRUE
-	layer = LAYER_FLOOR
+	layer = LAYER_EFFECT

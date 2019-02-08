@@ -4,8 +4,6 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	//ai = /ai/greytide/
-	mob_outfit = /outfit/assistant
 
 /mob/living/advanced/human/npc/greytide/Initialize()
 

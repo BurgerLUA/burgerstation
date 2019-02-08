@@ -2,9 +2,6 @@
 	name = "Diamond with Flaw"
 	desc = "Fucking trees."
 	mob_species = /species/diona/
-
-	mob_outfit = /outfit/diamond_with_flaw/
-
 	ai = null
 
 	gender = NEUTER

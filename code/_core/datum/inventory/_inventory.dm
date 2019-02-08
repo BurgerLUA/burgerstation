@@ -138,6 +138,9 @@
 
 	return TRUE
 
+/obj/inventory/get_light_source()
+	return owner
+
 /obj/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE)
 
 	if(!can_wear_object(I,messages))
@@ -202,9 +205,7 @@
 		was_removed = TRUE
 
 	if(was_removed)
-
 		I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
-
 		I.plane = initial(I.plane)
 		update_overlays()
 		update_stats()

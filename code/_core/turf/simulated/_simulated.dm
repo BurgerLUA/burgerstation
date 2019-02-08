@@ -8,6 +8,8 @@
 	light_range = 2
 	light_color = "#FFFFFF"
 
+
+
 /turf/simulated/New(loc)
 	if(real_icon)
 		icon = real_icon
@@ -28,6 +30,8 @@
 
 	for(var/d in DIRECTIONS_ALL)
 		var/turf/T = get_step(src,d)
+		if(!is_simulated(T))
+			continue
 		calc_list[direction_to_text(d)] = T ? same_turf(T) : TRUE
 
 	var/ne = ""

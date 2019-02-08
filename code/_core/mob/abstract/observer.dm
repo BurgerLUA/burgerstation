@@ -18,6 +18,12 @@
 	light_power = 4
 	light_color = "#FFFFFF"
 
+/mob/abstract/observer/no_move
+	icon_state = ""
+
+/mob/abstract/observer/no_move/can_move()
+	return FALSE
+
 /mob/abstract/observer/Initialize()
 	. = ..()
 	name = "ghost of [ckey]"

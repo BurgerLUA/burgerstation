@@ -17,5 +17,7 @@
 
 	//TODO: Camera Manipulation
 
+	dynamic_lighting = TRUE
+
 
 

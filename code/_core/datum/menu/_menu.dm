@@ -38,3 +38,8 @@
 /proc/open_menu(user,menu_id)
 	var/menu/M = all_menus[menu_id]
 	M.open(user)
+
+
+/proc/send_load(user,menu_id) //A common command I use every time I visit your mom.
+	var/menu/M = all_menus[menu_id]
+	M.on_load(user)

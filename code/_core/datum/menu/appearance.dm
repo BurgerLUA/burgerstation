@@ -7,6 +7,8 @@
 		"button_blue_extended.png" = 'html/button_blue_extended.png',
 		"button_green_extended.png" = 'html/button_green_extended.png',
 		"button_grey.png" = 'html/button_grey.png',
+		"left.png" = 'html/left.png',
+		"right.png" = 'html/right.png',
 		"tile.png" = 'html/tile.png',
 		"chargen_head.png" = 'html/chargen_head.png'
 	)
@@ -28,26 +30,26 @@
 	winclone(user, "window", id)
 	play_sound('sounds/music/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
 	winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
-	sleep(1) //TODO: OnLoad function here.
 	user << output(file, "browser([id])")
 
-	sleep(1) //TODO: OnLoad function here.
 
-	run_function(user,"set_reference","'\ref[src]'")
+/menu/appearance/on_load(var/mob/user)
+
+	run_function(usr,"set_reference","'\ref[src]'")
 
 	if(TRUE)
 		var/final_args = "'hair_head'"
 		final_args += ",'[english_list(hair_head_ids, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
 		final_args += ",'[english_list(hair_head_names, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
-		run_function(user,"generate_color_icon_picker",final_args)
+		run_function(usr,"generate_color_icon_picker",final_args)
 
 	if(TRUE)
 		var/final_args = "'hair_face'"
 		final_args += ",'[english_list(hair_face_ids, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
 		final_args += ",'[english_list(hair_face_names, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
-		run_function(user,"generate_color_icon_picker",final_args)
+		run_function(usr,"generate_color_icon_picker",final_args)
 
-	run_function(user,"get_data_to_send","")
+	run_function(usr,"get_data_to_send","")
 
 /menu/appearance/Topic(href,href_list)
 
@@ -106,6 +108,12 @@
 					var/mob/living/advanced/A = usr
 					apply_javascript_to_mob(usr,forged_data)
 					stop_sound('sounds/music/chargen.ogg',list(usr))
+
+					if(A.sex == MALE)
+						A.add_clothes("new_male")
+					else
+						A.add_clothes("new_female")
+
 					if(A.client && FALSE)
 						spawn(0)
 							play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)

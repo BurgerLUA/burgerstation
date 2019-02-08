@@ -4,8 +4,6 @@
 		FACTION_PLAYER_HOSTILE
 	)
 	ai = /ai/
-	mob_outfit = /outfit/cultist
-
 
 /mob/living/advanced/human/npc/cultist/tutorial
 	name = "strange clown"
