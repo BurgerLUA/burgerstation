@@ -26,24 +26,6 @@
 		ATTRIBUTE_LUCK = 10
 	)
 
-	attribute_descriptions = list(
-		ATTRIBUTE_STRENGTH 		= "None",
-		ATTRIBUTE_VITALITY 		= "None",
-		ATTRIBUTE_FORTITUDE 	= "None",
-
-		ATTRIBUTE_INTELLIGENCE 	= "None",
-		ATTRIBUTE_RESOLVE 		= "None",
-		ATTRIBUTE_WILLPOWER 	= "None",
-
-		ATTRIBUTE_DEXTERITY 	= "None",
-		ATTRIBUTE_AGILITY 		= "None",
-		ATTRIBUTE_ENDURANCE 	= "None",
-
-		ATTRIBUTE_LUCK 			= "None"
-
-	)
-
-
 	//Limits
 	//3 SKILL_STARTING_PRIMARY
 	//3 SKILL_STARTING_SECONDARY
@@ -76,34 +58,6 @@
 		SKILL_COOKING = SKILL_STARTING_NONE,
 		SKILL_CRAFTING = SKILL_STARTING_NONE,
 		SKILL_ENCHANTING = SKILL_STARTING_NONE
-	)
-
-	skill_descriptions = list(
-		SKILL_RANGED 			= "None",
-		SKILL_DODGE 			= "None",
-		SKILL_STEALTH 			= "None",
-		SKILL_ATHLETICS 		= "None",
-		SKILL_INSTINCT 			= "None",
-		SKILL_PARRY 			= "None",
-
-		SKILL_MELEE 			= "None",
-		SKILL_BLOCK 			= "None",
-		SKILL_UNARMED 			= "None",
-		SKILL_PRAYER 			= "None",
-		SKILL_ARMOR 			= "None",
-		SKILL_RECOVERY 			= "None",
-
-		SKILL_MEDICINE 			= "None",
-		SKILL_MAGIC_OFFENSIVE 	= "None",
-		SKILL_MAGIC_SUPPORT 	= "None",
-		SKILL_MAGIC_DEFENSIVE 	= "None",
-		SKILL_MAGIC_REALITY 	= "None",
-		SKILL_MAGIC_CHAOS 		= "None",
-
-		SKILL_ALCHEMY 			= "None",
-		SKILL_COOKING 			= "None",
-		SKILL_CRAFTING 			= "None",
-		SKILL_ENCHANTING 		= "None"
 	)
 
 

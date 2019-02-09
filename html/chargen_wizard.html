@@ -1,0 +1,158 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				
+				scrollbar-3dlight-color:gold;
+				scrollbar-arrow-color:blue;
+				scrollbar-base-color:;
+				scrollbar-darkshadow-color:blue;
+				scrollbar-face-color:;
+				scrollbar-highlight-color:;
+				scrollbar-shadow-color:				
+
+			}
+			button {
+				background:url('button_blue.png');
+				width: 20px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;
+			}
+			button:disabled {
+				background:url('button_grey.png');
+			}
+			button.extended {
+				background:url('button_blue_extended.png');
+				width: 120px;
+				height: 20px;
+			}
+			button.extended:disabled {
+				background:url('button_green_extended.png');
+			}			
+			button#char_submit{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body>
+		
+	
+	
+	
+	
+	
+	</body>
+	
+	<script>
+	
+		function add_question_answers(question,answer1,answer2,answer3,answer4,answer5) {
+		
+		
+		
+		}
+		
+		
+		//Your story begins.
+		
+		var family_type = "None" //Rich, Middle Class, Poor, Orphan.
+		
+		var significant_person = ""
+		
+		
+		function Question01() {
+			var question = "At birth, you were born into..."
+			var choices = new Object()
+			
+			
+			choices["wealth"] = "Fortune. Your great great grandparents made a substantial amount of profit owning and trading asteroid mines and stocks in NanoTrasen products, so your family was quite well off."
+			choices["common"] = "Labor. Your parents managed to get by working low-position 14 hour shifts in the social services sector.",
+			choices["poor"] = "Poverty. Both of your parents worked day shifts and night shifts in a waste recycling plant to provide you with clean water, air, and food.",
+			choices["orphan"] = "Nothing. Your mother and father are unknown to you and the man who found you alone in an alley."
+		
+			
+			//family_type
+		}
+		
+		
+		function Question02() {
+			var question = "During your childhood, your caretaker was..."
+			
+			var choices = new Object()
+			
+			if(family_type == "orphan") {
+				choices["abusive"] = "Abusive. The only reason you were saved from the streets was for the child benifits check that man would spend on drugs and booze. Beatings were all too common during their drunken rants and ravings."
+			}
+			if(family_type == "wealth") {
+				choices["abusive"] = "Abusive. Your family hired an nanny to raise you, as they were too busy attending parties and socializing to deal with you. The nanny would occasiionally hit you with a stick or force you to stick your hand in boiling water if you did not speak in the way she wanted you to speak."
+			}
+			else {
+				choices["abusive"] = "Abusive. Due to the lack of proper healthcare available to your family, your mother died during childbirth. Your father blamed you for it, and let you know with occasionally beatings."
+			}
+
+			if(family_type == "orphan") {
+				choices["protective"] = "Protective. The man would shelter you from the outer world, saying that someone as innocent as you should not be exposed to any more evil or corruption."
+			}
+			if(family_type == "wealth") {
+				choices["protective"] = "Protective. Fearing that a rival corporation would send assassins to kill the next in line for the company, your parents hired a professional bodyguard to protect and watch over you."
+			}
+			else {
+				choices["protective"] = "Protective. Not wanting for you to experience the hell that your parents experienced during their childhood, they sheltered you as much as they could from the outside world."
+			}
+			
+			if(family_type == "orphan") {
+				choices["demanding"] = "Demanding. The old man wanted to see you succeed in this strange new world, and pushed you to your mental and physical limits by training you to be street smart."
+			}
+			if(family_type == "wealth") {
+				choices["demanding"] = "Demanding. They expected nothing but the best grades from you in your overly-extensive education. They did not want an idiot to run their company when they die."
+			}
+			else {
+				choices["demanding"] = "Demanding. In order to make ends meet, they put you to work as soon as you were physically able. You did not have time for friends."
+			}
+			
+			if(family_type == "orphan") {
+				choices["religous"] = "Religious. The old man was actually quite insane and thought you were the third coming of Jesus. You believe it as a child."
+			}
+			if(family_type == "wealth") {
+				choices["religous"] = "Religious. Your parents believed that you were a literal gift from god, and treated you as such."
+			}
+			else {
+				choices["religous"] = "Relgious. Your parents replaced their off time with Buddhism, in hope that in the next life, they would live better lives."
+			}	
+			
+			if(family_type == "orphan") {
+				choices["rebellious"] = "Rebellious. The old man was a powerful leader of a resistance group and revealed this to you at the age of eight."
+			}
+			if(family_type == "wealth") {
+				choices["rebellious"] = "Rebellious. Your parents believed that you were a literal gift from god, and treated you as such."
+			}
+			else {
+				choices["rebellious"] = "Rebellious. Your parents replaced their off time with Buddhism, in hope that in the next life, they would live better lives."
+			}				
+			
+
+		}
+			
+			
+			
+		
+				
+			
+		
+		
+		
+		
+	
+	
+	
+	
+</html>

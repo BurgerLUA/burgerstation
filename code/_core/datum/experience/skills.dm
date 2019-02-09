@@ -156,9 +156,6 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 
-
-
-
 //Crafting
 /experience/skill/alchemy/ //Int
 	name = "Alchemy"

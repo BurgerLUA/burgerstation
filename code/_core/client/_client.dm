@@ -1,6 +1,6 @@
 var/global/list/all_clients = list()
 
-#define LP(str) list2params(list(str))
+#define string2params(str) list2params(list(str))
 
 //Credit to Kaiochao for the button tracker and Anymacro framework
 /client/
@@ -56,20 +56,17 @@ var/global/list/all_clients = list()
 	known_inventory = list()
 	known_buttons = list()
 
+	if(!userdata)
+		userdata = new(src)
+
+	if(usr)
+		return ..()
+
 	var/turf/T = get_turf(src.mob)
 	if(T)
 		T.on_enter(src.mob)
 
-	if(!userdata)
-		userdata = new(src)
-
-	//update_zoom(0)
-
-	if(usr) //The only time usr should ever be allowed.
-		return ..()
-
 	welcome()
-
 	make_lobby(pick(lobby_spawnpoints))
 	play_sound('sounds/music/off_boat.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
 
@@ -161,8 +158,6 @@ var/global/list/all_clients = list()
 		object.examine(mob)
 		return
 	*/
-
-
 
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT

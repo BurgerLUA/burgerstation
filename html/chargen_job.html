@@ -1,0 +1,144 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				
+				scrollbar-3dlight-color:gold;
+				scrollbar-arrow-color:blue;
+				scrollbar-base-color:;
+				scrollbar-darkshadow-color:blue;
+				scrollbar-face-color:;
+				scrollbar-highlight-color:;
+				scrollbar-shadow-color:				
+
+			}
+			button {
+				background:url('button_blue.png');
+				width: 20px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;
+			}
+			button:disabled {
+				background:url('button_grey.png');
+			}
+			button.extended {
+				background:url('button_blue_extended.png');
+				width: 120px;
+				height: 20px;
+			}
+			button.extended:disabled {
+				background:url('button_green_extended.png');
+			}			
+			button#char_submit{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			table {
+				border: 1px solid black;
+			}
+
+			tr {
+				border: 1px solid black;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+			.class_description{
+				text-align: left;
+				vertical-align: top;
+				padding-left:32px;
+			}
+
+			.class_name{
+				font-size: 24px;
+				text-align: left;
+				vertical-align: top;
+				padding-left:32px;
+			}			
+			.class_icon{
+				text-align: left;
+				vertical-align: top;
+			}				
+			.attribute_name {
+				overflow: hidden; 
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.attribute_storage {
+				vertical-align: top;
+			
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table id="classes"></table>
+	</body>
+	
+	<script>
+	
+		var global_attribute_names = ["Strength","Vitality","Fortitude","Intelligence","Resolve","Willpower","Dexterity","Agility","Endurance","Luck"]
+
+		var global_skill_names = ["Ranged","Dodge","Stealth","Parrying","Athletics","Instinct","Melee","Block","Unarmed","Prayer","Armor","Recovery","Medicine","Offensive Magic","Supportive Magic","Defensive Magic","Corporeality Magic", "Chaos Magic", "Alchemy", "Enchanting", "Cooking", "Crafting"]
+
+		function add_class_selection(name,icon,description,list_attribute_value,list_skill_values) {
+		
+			var main_information = "<th class='class_icon'><img src='" + icon + "'/></th><th class='class_name'>" + name + "</th><th class='class_description'>" + description + "</th>"
+
+			var attribute_information = "<th class='attribute_storage'><table>"
+			for(var i= 0; i < list_attribute_value.length; i++) {
+				var value = list_attribute_value[i]
+				attribute_information += "<tr><td class='attribute_name'>"+global_attribute_names[i]+"</td><td class='attribute_value'>" + list_attribute_value[i] + "</td></tr>"
+			}
+
+			attribute_information += "</table></th>"
+			
+			var skill_information = "<th class='attribute_storage'><table>"
+			for(var i= 0; i < 11; i++) {
+				var value = list_skill_values[i]
+				skill_information += "<tr><td class='attribute_name'>"+global_skill_names[i]+"</td><td class='attribute_value'>" + list_skill_values[i] + "</td></tr>"
+			}
+			
+			skill_information += "</table></th><th class='attribute_storage'><table>"
+			for(var i= 11; i < 22; i++) {
+				var value = list_skill_values[i]
+				skill_information += "<tr><td class='attribute_name'>"+global_skill_names[i]+"</td><td class='attribute_value'>" + list_skill_values[i] + "</td></tr>"
+			}		
+			
+			
+			
+			skill_information += "</table></th>"			
+			
+			
+			document.getElementById("classes").innerHTML += "<tr>" + main_information + skill_information + attribute_information + "</tr>"
+		
+		}
+	
+		add_class_selection("Wizard","chargen_head.png","What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little \"clever\" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo.",[1,4,3,6,23,7,6,45,32,1],[6,4,3,6,23,7,6,45,32,1,12,33,45,65,16,16,32,6,32,21,55,11])
+
+	</script>
+			
+		
+				
+			
+		
+		
+		
+		
+	
+	
+	
+	
+</html>

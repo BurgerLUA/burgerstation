@@ -8,10 +8,4 @@
 
 	var/list/skills = list()
 
-
-	var/list/skill_descriptions = list()
-
-	var/list/attribute_descriptions = list()
-
-
 	var/starting_species = /species/human/ //For chargen only.
