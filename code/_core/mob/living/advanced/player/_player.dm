@@ -6,4 +6,4 @@
 	starting_factions = list(
 		FACTION_PLAYER
 	)
-	starting_class = "pvp"
+	starting_class = "default"

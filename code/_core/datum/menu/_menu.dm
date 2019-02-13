@@ -20,6 +20,7 @@
 	winset(user, "browser([id])", "parent=[id];type=browser;size=0x0;anchor1=0,0;anchor2=100,100")
 	sleep(1) //TODO: OnLoad function here.
 	user << output(file, "browser([id])")
+	winset(user, "browser([id])", "parent=[id];size=[size]")
 
 /menu/proc/run_function(var/user, var/function_name,var/args)
 	user << output("[function_name]([args]);", "browser([id]):eval")

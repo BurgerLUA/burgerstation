@@ -55,9 +55,9 @@
 
 	if(length(href_list))
 		if(href_list["give_me_color"])
-			var/desired_color = input(usr,"What color would you like?") as color
-			var/total_message = "'[href_list["give_me_color"]]','[replacetext(desired_color,"#","")]'"
-			run_function(usr,"send_color",total_message)
+			var/desired_type = href_list["give_me_color"]
+			var/menu/M = all_menus[desired_type]
+			M.open(usr)
 			return
 
 		var/list/forged_data = list()

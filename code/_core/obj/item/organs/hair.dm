@@ -8,6 +8,8 @@
 
 	attach_flag = BODY_HEAD
 
+	enable_wounds = TRUE
+
 //TODO COLOR
 /*
 /obj/item/organ/hair/update_icon()

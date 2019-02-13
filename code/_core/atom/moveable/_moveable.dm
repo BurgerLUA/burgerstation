@@ -14,20 +14,16 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 
-/atom/movable/proc/update_glide()
-	glide_size = round(step_size / max(get_movement_delay(),TICK_LAG) * TICK_LAG)
-
-/atom/movable/proc/handle_movement(var/adjust_delay = FALSE)
+/atom/movable/proc/handle_movement(var/adjust_delay = 0) //Runs every decisecond
 
 	if(move_dir && move_delay <= 0)
-		update_glide()
-		var/final_movement_delay = round(get_movement_delay())
+		var/final_movement_delay = ceiling(get_movement_delay())
 		do_move(get_step(src,move_dir),final_movement_delay)
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
 		return TRUE
 	else
 		if(adjust_delay)
-			move_delay = move_delay - TICK_LAG
+			move_delay = move_delay - adjust_delay
 		return FALSE
 
 /atom/movable/proc/can_move(var/turf/new_loc,var/movement_override = 0)
@@ -107,7 +103,7 @@
 	var/movement_dir = old_loc.get_relative_dir(new_loc)
 
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
+	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = TICKS_TO_DECISECONDS(real_movement_delay), flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
 
 	return TRUE
 

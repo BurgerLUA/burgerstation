@@ -13,6 +13,8 @@
 	has_dropped_icon = TRUE
 	has_dropped_icon_underlay = TRUE
 
+	enable_wounds = TRUE
+
 
 /obj/item/organ/eye/initialize_blends()
 	add_blend("eye", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)

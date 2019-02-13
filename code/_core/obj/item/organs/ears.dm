@@ -13,6 +13,8 @@
 		/obj/inventory/organs/right_ear
 	)
 
+	enable_wounds = TRUE
+
 /obj/item/organ/ear/left
 	name = "left ear"
 	id = BODY_EAR_LEFT

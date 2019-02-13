@@ -60,7 +60,7 @@
 		I.add_object(the_hand)
 		return TRUE
 
-	if(the_target.clicked_by_object(caller,the_hand,location,control,params))
+	if(the_target.clicked_by_object(caller,the_hand,location,control,params)) //We click on the target
 		return TRUE
 
 	if(is_item(the_hand))
@@ -68,7 +68,11 @@
 		if(O.click_on_object(caller,object,location,control,params))
 			return TRUE
 
-	if(the_hand && is_mob(the_target) && the_hand.attack(caller,the_target,params))
+	owner << "WE RUN"
+	owner << the_hand
+	owner << the_target
+
+	if(the_hand && is_turf(the_target) && the_hand.attack(caller,the_target,params))
 		return TRUE
 
 	return FALSE
@@ -103,17 +107,21 @@ obj/inventory/drop_on_object(caller,var/atom/object)
 	return ..(caller,object)
 
 /obj/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
+	owner << "YEET"
 	return src.loc
-
-obj/inventory/defer_click_on_object()
-
-	if(length(src.held_objects))
-		return src.get_top_held_object()
-
-	return src
 
 obj/inventory/drop_item(var/turf/new_location)
 	if(length(src.held_objects))
 		return get_top_held_object().drop_item(new_location)
 	else
 		return FALSE
+
+/obj/inventory/defer_click_on_object()
+
+	if(length(held_objects))
+		return get_top_held_object()
+
+	if(length(worn_objects))
+		return get_top_worn_object()
+
+	return src

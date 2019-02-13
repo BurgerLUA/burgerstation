@@ -12,6 +12,8 @@
 		/obj/inventory/organs/torso_b
 	)
 
+	enable_wounds = TRUE
+
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	..()
 	if(is_advanced(src.loc))

@@ -8,6 +8,8 @@
 	health_max = 50
 	attach_flag = BODY_TORSO
 
+	enable_wounds = TRUE
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT

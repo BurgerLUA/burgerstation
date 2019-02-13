@@ -32,6 +32,8 @@ var/global/list/all_clients = list()
 
 	//lazy_eye = 5
 
+	var/karma = 1000
+
 /client/proc/reset()
 	known_inventory = list()
 	known_buttons = list()
@@ -89,7 +91,7 @@ var/global/list/all_clients = list()
 
 
 /client/Topic(href,href_list)
-	src << href
+	//src << href
 	if(length(href_list) && href_list["done_loading"])
 		send_load(src.mob,href_list["done_loading"])
 	..()

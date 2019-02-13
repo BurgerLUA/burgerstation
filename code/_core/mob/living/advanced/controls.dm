@@ -18,9 +18,6 @@ mob/living/advanced/on_right_down(object,location,control,params)
 		if((I.click_flags & LEFT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 
-
-
-
 //A click is a press and release.
 mob/living/advanced/on_left_click(var/atom/object,location,control,params)
 

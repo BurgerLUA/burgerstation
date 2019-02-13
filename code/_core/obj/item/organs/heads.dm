@@ -15,6 +15,8 @@
 
 	attach_flag = BODY_TORSO
 
+	enable_wounds = TRUE
+
 
 /obj/item/organ/head/initialize_blends()
 	..()

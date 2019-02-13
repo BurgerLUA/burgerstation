@@ -7,17 +7,317 @@
 				background-repeat: repeat;
 				color: white;
 				font-family: Arial Narrow,Arial,sans-serif;
+				margin: 0;
+				padding: 0;
 			}
+			button { 
+				display: inline-block; 
+				height: 32px;
+				width: 32px;
+				color: white;
+				border: none;	
+				margin: 0;
+				padding: 0;				
+			}
+			#colors {
+				width: 640px;
+				//height: 640px;
+				min-width: 640px;
+				//min-height: 640px;
+				max-width: 640px;
+				//max-height: 640px;
+				overflow: auto;
+
+				margin: auto;
+				width: 50%;
+				
+				padding:32px;
+			}
+			button:hover {
+				transform: scale(1.5);
+			}
+			#notice{
+				text-align:center;
+			}
+			#chosen_color{
+				width: 640px;
+				height: 32px;
+				min-width: 640px;
+				max-width: 640px;
+				background-color:#000000;
+				width: 50%;
+				
+				padding:0px;
+				margin:auto;
+				margin-min:32px;
+				margin-bottom:32px;
+			}
+			#hover_color{
+				width: 640px;
+				height: 32px;
+				min-width: 640px;
+				max-width: 640px;
+				background-color:#FFFFFF;
+				width: 50%;
+				
+				padding:0px;
+				margin:auto;
+				margin-min:32px;
+				margin-bottom:0px;
+			}
+			button.extended {
+				background:url('button_blue_extended.png');
+				width: 120px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;
+			}
+			button.extended:hover {
+				transform: scale(1);
+			}
+			button.extended:disabled {
+				background:url('button_green_extended.png');
+			}
+			
 		</style>
 	</head>
 
 	<body>
 
+		
+		
 	</body>
 	
-
-	
 	<script>
+	
+		var global_reference
+		
+		var desired_color = "000000"
+	
+		function quick_generate_skintones() {
+		
+			var colors_to_generate = []
+
+			for(x=0; x < 20; x++) {
+				var modi = x*4
+				var mod = (100 - modi)/100
+				var r = Math.floor(224 * mod)
+				var g = Math.floor(198 * mod)
+				var b = Math.floor(175 * mod)
+				
+				colors_to_generate[x] = "#" + rgbToHex(r, g, b)
+				
+				for(y=0;y < 20; y++) {
+					var mody = y*0.1
+					
+					var mod2 = (100 - mody)/100
+					b = Math.floor(b * mod2)
+					
+					var final_key = x + y*20
+					colors_to_generate[final_key] = "#" + rgbToHex(r, g, b)
+				}
+
+			}
+		
+			generate_colors(colors_to_generate)
+		
+		}
+		
+		function quick_generate_eyes() {
+		
+			var colors_to_generate = []
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(200 * mod)
+				var g = Math.floor(200 * mod)
+				var b = Math.floor(200 * mod)
+				
+				colors_to_generate[i] = "#" + rgbToHex(r, g, b)
+			}			
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(78 * mod)
+				var g = Math.floor(248 * mod)
+				var b = Math.floor(255 * mod)
+				
+				colors_to_generate[i+20] = "#" + rgbToHex(r, g, b)
+			}
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(50 * mod)
+				var g = Math.floor(150 * mod)
+				var b = Math.floor(50 * mod)
+				
+				colors_to_generate[i + 40] = "#" + rgbToHex(r, g, b)
+			}
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(165 * mod)
+				var g = Math.floor(165 * mod)
+				var b = Math.floor(0 * mod)
+				
+				colors_to_generate[i + 60] = "#" + rgbToHex(r, g, b)
+			}	
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(132 * mod)
+				var g = Math.floor(78 * mod)
+				var b = Math.floor(39 * mod)
+				
+				colors_to_generate[i + 80] = "#" + rgbToHex(r, g, b)
+			}	
+			
+			generate_colors(colors_to_generate)
+		
+		}
+		
+	
+		function quick_generate_hair() {
+		
+			var colors_to_generate = []
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(235 * mod)
+				var g = Math.floor(235 * mod)
+				var b = Math.floor(235 * mod)
+				
+				colors_to_generate[i] = "#" + rgbToHex(r, g, b)
+			}	
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(255 * mod)
+				var g = Math.floor(235 * mod)
+				var b = Math.floor(178 * mod)
+				
+				colors_to_generate[i+20] = "#" + rgbToHex(r, g, b)
+			}				
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(226 * mod)
+				var g = Math.floor(196 * mod)
+				var b = Math.floor(145 * mod)
+				
+				colors_to_generate[i+40] = "#" + rgbToHex(r, g, b)
+			}	
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(155 * mod)
+				var g = Math.floor(74 * mod)
+				var b = Math.floor(27 * mod)
+				
+				colors_to_generate[i+60] = "#" + rgbToHex(r, g, b)
+			}				
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(132 * mod)
+				var g = Math.floor(55 * mod)
+				var b = Math.floor(0 * mod)
+				
+				colors_to_generate[i+80] = "#" + rgbToHex(r, g, b)
+			}	
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(165 * mod)
+				var g = Math.floor(52 * mod)
+				var b = Math.floor(0 * mod)
+				
+				colors_to_generate[i+100] = "#" + rgbToHex(r, g, b)
+			}
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(193 * mod)
+				var g = Math.floor(47 * mod)
+				var b = Math.floor(54 * mod)
+				
+				colors_to_generate[i+140] = "#" + rgbToHex(r, g, b)
+			}	
+			
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(39 * mod)
+				var g = Math.floor(58 * mod)
+				var b = Math.floor(70 * mod)
+				
+				colors_to_generate[i+160] = "#" + rgbToHex(r, g, b)
+			}					
+
+			for(i=0; i < 20; i++) {
+				var modi = i*5
+				var mod = (100 - modi)/100
+				var r = Math.floor(255 * mod)
+				var g = Math.floor(105 * mod)
+				var b = Math.floor(0 * mod)
+				
+				colors_to_generate[i+120] = "#" + rgbToHex(r, g, b)
+			}	
+			
+			generate_colors(colors_to_generate)
+			
+		
+		}
+	
+	
+		function rgbToHex(r, g, b) {
+			return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+		}	
+		
+		function generate_colors(color_list) {
+			for(i=0; i < color_list.length; i++) {
+				var color_hex = color_list[i]
+				document.getElementById("colors").innerHTML += "<button onmouseover=\"document.getElementById('hover_color').style.backgroundColor='" + color_hex +"'\" style='background-color: " + color_hex + ";' onclick=\"send_color('" + color_hex + "')\"></button>"
+			}
+		}
+	
+		//quick_generate_hairtones()
+		
+		function send_color(color_hex) {
+			document.getElementById("chosen_color").style.backgroundColor = color_hex
+			desired_color = color_hex
+		}
+		
+		function send_color_to_server() {
+			var desired_location = "byond://?src="+global_reference+";color="+desired_color.replace("#", "");
+			window.location = desired_location
+			alert(desired_location)
+		}
+		
+		function set_reference(reference) {
+			global_reference = reference
+		}
+		
+		function done_loading() {
+			var desired_location = "byond://?done_loading=hair_head"
+			window.location = desired_location
+		}
+		
+		done_loading()
 	
 	</script>
 			

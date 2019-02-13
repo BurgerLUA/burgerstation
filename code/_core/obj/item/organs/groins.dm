@@ -13,6 +13,8 @@
 
 	attach_flag = BODY_TORSO
 
+	enable_wounds = TRUE
+
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
 	icon_state = BODY_GROIN_FEMALE

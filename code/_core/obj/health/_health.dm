@@ -16,6 +16,9 @@
 
 	var/mob/living/owner
 
+	layer = LAYER_HUD
+	plane = PLANE_HUD
+
 /obj/health/proc/update_stats(var/mob/living/M)
 	return
 

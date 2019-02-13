@@ -43,12 +43,13 @@
 
 	if(enable_detail)
 		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_detail", desired_color = "#888888", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_EXTERNAL_ONLY)
+	*/
 
 	if(enable_wounds)
-		add_blend("skin_bruises", desired_icon = icon, desired_icon_state = "bruises", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
-		add_blend("skin_cuts", desired_icon = icon, desired_icon_state = "cuts", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
-		add_blend("skin_burns", desired_icon = icon, desired_icon_state = "burns", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
-	*/
+		add_blend("skin_bruises", desired_icon = damage_icon, desired_icon_state = "5", desired_color = "#FF0000", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
+		//add_blend("skin_cuts", desired_icon = damage_icon, desired_icon_state = "cuts", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
+		//add_blend("skin_burns", desired_icon = damage_icon, desired_icon_state = "burns", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
+
 
 	..()
 
@@ -122,6 +123,13 @@
 	if(health_max - brute_loss <= 0 && damage_dealt >= health_max*0.5 && flags_organ & flags_organ )
 		gib()
 		return
+
+	if(enable_wounds && src.loc)
+		var/scale = floor((brute_loss/health_max)*5)
+		src.loc << scale
+		change_blend("skin_bruises", desired_icon_state = "[scale]")
+		update_icon()
+		src.loc.update_icon()
 
 	if(break_threshold)
 		if(!(flags_organ & FLAG_ORGAN_BROKEN) && brute_loss >= break_threshold)

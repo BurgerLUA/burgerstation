@@ -86,3 +86,9 @@
 	name = "deus vault spawnpoint"
 	type_to_spawn = /mob/living/advanced/human/npc/deus_vault
 	color = "#FF0000"
+
+
+/obj/marker/mob_spawn/spider
+	name = "deus vault spawnpoint"
+	type_to_spawn = /mob/living/simple/npc/spider
+	color = "#FF0000"

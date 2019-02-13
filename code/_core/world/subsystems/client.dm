@@ -1,7 +1,7 @@
 /subsystem/client/
 	name = "Client Subsystem"
 	desc = "Controls how clients behave."
-	tick_rate = 0
+	tick_rate = 1
 	priority = SS_ORDER_CLIENT
 
 /subsystem/client/on_life()

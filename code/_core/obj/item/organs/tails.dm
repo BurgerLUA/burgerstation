@@ -6,6 +6,8 @@
 
 	attach_flag = BODY_GROIN
 
+	enable_wounds = TRUE
+
 /obj/item/organ/tail/reptile
 	name = "reptile tail"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'

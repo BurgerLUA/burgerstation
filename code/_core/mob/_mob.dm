@@ -14,7 +14,7 @@
 	var/animation_pixel_y = 0
 	animate_movement = FALSE
 
-	movement_delay = 4
+	movement_delay = DECISECONDS_TO_TICKS(5)
 	attack_delay = 10
 
 	var/attack_turn = 0
@@ -32,6 +32,10 @@
 
 	var/list/quests/all_quests = list()
 	var/list/quests/active_quests = list()
+
+	mouse_over_pointer = MOUSE_ACTIVE_POINTER
+
+	var/karma = 0
 
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
@@ -61,11 +65,11 @@
 	var/movement_dir = old_loc.get_relative_dir(new_loc)
 
 	if(client && client.eye == src) //Animate the client's camera so it's smooth.
-		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
-		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = TICKS_TO_DECISECONDS(real_movement_delay), flags = ANIMATION_LINEAR_TRANSFORM)
 
-	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = real_movement_delay, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = TICKS_TO_DECISECONDS(real_movement_delay), flags = ANIMATION_LINEAR_TRANSFORM)
 
 	if(attack_turn <= curtime)
 		dir = movement_dir

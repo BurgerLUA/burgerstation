@@ -14,18 +14,22 @@
 		return IB
 
 /atom/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type)
+
 	if(!additional_blends[desired_id])
-		//additional_blends[desired_id] = add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type)
 		return FALSE
 
 	if(desired_icon)
 		additional_blends[desired_id].icon = desired_icon
+
 	if(desired_icon_state)
 		additional_blends[desired_id].icon_state = desired_icon_state
+
 	if(desired_color)
 		additional_blends[desired_id].color = desired_color
+
 	if(desired_blend)
 		additional_blends[desired_id].blend = desired_blend
+
 	if(desired_type)
 		additional_blends[desired_id].special_type = desired_type
 

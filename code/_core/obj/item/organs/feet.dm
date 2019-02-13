@@ -13,6 +13,8 @@
 
 	attach_flag = BODY_LEG_RIGHT
 
+	enable_wounds = TRUE
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT

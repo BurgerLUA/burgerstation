@@ -15,6 +15,8 @@
 
 	attach_flag = BODY_ARM_RIGHT
 
+	enable_wounds = TRUE
+
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT

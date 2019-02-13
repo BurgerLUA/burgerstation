@@ -129,10 +129,10 @@
 	play_effects(attacker,victim,weapon,hit_object)
 	display_hit_message(attacker,victim,weapon,hit_object)
 
+	hit_object.update_health(damage_dealt)
+
 	if(victim != hit_object)
 		victim.update_health(damage_dealt)
-
-	hit_object.update_health(damage_dealt)
 
 	if(is_living(attacker) && victim && attacker != victim)
 		var/mob/living/A = attacker
@@ -180,8 +180,11 @@
 		//M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
 		//M.add_animation(pixel_x = -movement_x, pixel_y = -movement_y, time = 4, delay = 2, time = 4)
 
-		animate(M, pixel_x = M.pixel_x + pixel_x_offset, pixel_y = M.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
-		animate(pixel_x = M.pixel_x - pixel_x_offset, pixel_y = M.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+		var/matrix/attack_matrix = matrix()
+		attack_matrix.Translate(pixel_x_offset,pixel_y_offset)
+
+		animate(M, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(transform = matrix(), time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
 /damagetype/proc/get_weapon_name(var/atom/backup)
 	if(weapon_name)

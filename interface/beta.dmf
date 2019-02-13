@@ -155,6 +155,7 @@ window "chat_looc"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "LOOC"
 		titlebar = false
@@ -171,6 +172,7 @@ window "chat_looc"
 		anchor2 = 100,100
 		background-color = #d7ffd7
 		saved-params = "max-lines"
+		style = "<style>\nbody {\n\tfont-family: Verdana, sans-serif;\n\tfont-size: 8px;\n}\nspan.warning{\n\tcolor: red;\n\tfont-style: italic;\n}\nspan.danger{\n\tcolor: red;\n\tfont-weight: bold;\n}\nspan.ooc{\n\tcolor: blue;\n\tfont-weight: bold;\n}\nspan.looc{\n\tcolor: cyan;\n\tfont-weight: bold;\n}\nspan.notice{\n\tcolor: blue;\n\tfont-style: italic;\n}\n\nspan.examine_title{\n\tfont-size: 200%;\n\ttext-align: center;\n}\nspan.examine_description{\n\tfont-style: italic;\n\ttext-align: center;\n}\nspan.examine_info{\n\tfont-style: italic;\n}\n\n\n\nspan.distance_large{\n\tfont-size: 120%;\n}\nspan.distance_medium{\n\tfont-size: 100%;\n}\nspan.distance_small{\n\tfont-size: 80%;\n}\nspan.distance_tiny{\n\tfont-size: 60%;\n}\nspan.greeting{\n\tfont-size: 200%;\n\tcolor: purple;\n}\n\nspan.red{\n\tfont-size: 150%;\n\tcolor: red;\n}\n\nspan.blue{\n\tfont-size: 150%;\n\tcolor: blue;\n}\n\nspan.green{\n\tfont-size: 150%;\n\tcolor: green;\n}\n\nspan.yellow{\n\tfont-size: 150%;\n\tcolor: yellow;\n}\n\n\n</style>"
 
 window "chat_ooc"
 	elem "chat_ooc"
@@ -334,7 +336,6 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false

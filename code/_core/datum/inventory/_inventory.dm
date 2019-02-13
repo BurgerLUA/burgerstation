@@ -312,13 +312,3 @@
 		return FALSE
 
 	return held_objects[length(held_objects)]
-
-/obj/inventory/defer_click_on_object()
-
-	if(length(held_objects))
-		return get_top_held_object()
-
-	if(length(worn_objects))
-		return get_top_worn_object()
-
-	return src

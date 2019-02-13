@@ -18,8 +18,6 @@
 	if(ai)
 		ai.on_life()
 
-
-
-	handle_movement(TRUE)
+	handle_movement(DECISECONDS_TO_TICKS(1))
 
 	return TRUE

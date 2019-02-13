@@ -30,7 +30,6 @@ var/global/list/all_living = list()
 	var/mana_current = 0
 	var/mana_regeneration = 0
 
-
 /mob/living/New(loc,desired_client)
 	. = ..()
 	attributes = list()
@@ -50,11 +49,9 @@ var/global/list/all_living = list()
 	initialize_factions()
 	..()
 
-
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)
 		factions[k] = all_factions[k]
-
 
 /mob/living/proc/initialize_attributes()
 

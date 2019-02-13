@@ -66,7 +66,7 @@ var/global/ticks = 0
 					continue
 				S.next_run = ticks + S.tick_rate
 
-		curtime += TICK_LAG
+		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1
 		sleep(tick_lag)
 

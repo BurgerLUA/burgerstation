@@ -20,7 +20,13 @@
 		"worn" = list(),
 		"held" = list(),
 		"skills" = list(),
-		"attributes" = list()
+		"attributes" = list(),
+		"karma" = list(
+			KARMA_HUMAN = 1000,
+			KARMA_LIZARD = 1000,
+			KARMA_CYBORG = 1000,
+			KARMA_DIONA = 1000
+		)
 	)
 
 
@@ -40,6 +46,7 @@
 
 	//Name
 	A.name = loaded_data["name"]
+	A.karma = loaded_data["karma"]
 
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
@@ -162,6 +169,7 @@
 	//Basic Information
 	loaded_data["name"] = owner.mob.name
 	loaded_data["id"] = owner.save_slot
+	loaded_data["karma"] = owner.mob.karma
 
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)

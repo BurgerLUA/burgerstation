@@ -14,9 +14,10 @@
 	var/attack_ticks = 0
 	var/movement_ticks = 0
 
-	var/objective_delay = SECONDS_TO_TICKS(10)
-	var/attack_delay = SECONDS_TO_TICKS(1)
-	var/movement_delay = SECONDS_TO_TICKS(0.5)
+	//Measured in deciseconds
+	var/objective_delay = 10
+	var/attack_delay = 1
+	var/movement_delay = 1
 
 	var/list/target_distribution = list(16,16,16,8,8,32,32)
 
@@ -24,8 +25,16 @@
 
 	var/simple = TRUE
 
+	var/sync_stats = FALSE
+
 /ai/New(var/mob/living/desired_owner)
+
 	owner = desired_owner
+
+	if(sync_stats)
+		attack_delay = max(attack_delay,owner.get_attack_delay())
+		movement_delay = max(movement_delay,owner.get_movement_delay())
+
 
 	//Randomize starting dicks so it's desynced with other AI units.
 	attack_ticks = rand(1,attack_delay)
@@ -33,6 +42,9 @@
 	objective_ticks = rand(1,objective_delay)
 
 	start_turf = get_turf(owner)
+
+
+
 
 /ai/proc/on_life()
 	handle_objectives()
