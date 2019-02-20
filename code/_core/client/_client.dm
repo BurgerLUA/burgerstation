@@ -90,6 +90,9 @@ var/global/list/all_clients = list()
 	..()
 
 
+
+
+
 /client/Topic(href,href_list)
 	//src << href
 	if(length(href_list) && href_list["done_loading"])
@@ -171,11 +174,14 @@ var/global/list/all_clients = list()
 
 	if(click_flags & CLICK_MIDDLE)
 		//mob.on_middle_down(object,location,control,aug)
-		object.examine(mob)
+		//object.examine(mob)
+		get_variables(object)
 		return
 
 	..()
-
+/client/proc/get_variables(var/datum/object)
+   for(var/v in object.vars)
+      src << "[v] = [object.vars[v]]"
 
 /client/Click(var/atom/object,location,control,params)
 

@@ -55,4 +55,3 @@
 				O.adjust_brute_loss(-10)
 				O.update_health()
 			L.update_health()
-			L.update_health_element_icons()

@@ -12,7 +12,7 @@
 
 	var/throw_speed = 8 //How far the object travels in pixels per decisecond, when thrown
 
-	var/damagetype/damage_type //The damage type of the weapon, if any.
+	var/damage_type //The id of the damage type of the weapon, if any.
 
 	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0) //How much to subtract damage
 
@@ -41,8 +41,6 @@
 	area = get_area(src)
 
 /atom/New(var/new_loc)
-	if(damage_type)
-		damage_type = new damage_type
 	. = ..()
 
 /atom/proc/can_not_leave(var/atom/A,var/move_direction)

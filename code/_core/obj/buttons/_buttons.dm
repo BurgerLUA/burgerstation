@@ -14,6 +14,8 @@
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
+	//var/click_sound = 'sounds/ui/beep-metallic.ogg'
+
 /obj/button/proc/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)
@@ -31,4 +33,11 @@
 
 
 /obj/button/clicked_by_object(var/mob/caller,object,location,control,params)
+
+	/*
+	if(caller && caller.client)
+		caller.client << click_sound
+	*/
+
+
 	return TRUE

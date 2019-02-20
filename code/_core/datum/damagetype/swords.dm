@@ -11,6 +11,7 @@
 
 /damagetype/sword/sabre
 	name = "sabre"
+	id = "sword_sabre"
 
 	base_attack_damage = list(
 		BRUTE = 40,
@@ -51,6 +52,7 @@
 
 /damagetype/sword/energy
 	name = "energy sword"
+	id = "sword_energy"
 
 	impact_sounds = list('sounds/weapon/melee/saberhit.ogg')
 
@@ -93,6 +95,7 @@
 
 /damagetype/shield/energy
 	name = "energy shield"
+	id = "shield_energy"
 
 	impact_sounds = list('sounds/weapon/melee/saberon.ogg')
 
@@ -135,6 +138,7 @@
 
 /damagetype/sword/claymore
 	name = "claymore"
+	id = "sword_claymore"
 
 	base_attack_damage = list(
 		BRUTE = 50,

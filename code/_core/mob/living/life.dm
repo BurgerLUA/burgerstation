@@ -10,7 +10,7 @@
 		ai = null
 	movement_flags = 0
 	attack_flags = 0
-	add_stun(10)
+	add_stun(2)
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
 	queue_delete(src,600)

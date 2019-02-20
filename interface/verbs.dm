@@ -1,6 +1,5 @@
 /client/verb/fullscreen()
 
-
 	var/is_fullscreen = winget(src, "main", "can-close") == "false"
 	is_fullscreen = !is_fullscreen
 

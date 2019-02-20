@@ -1,0 +1,154 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				margin: 0;
+				padding: 0;
+				font-size: 14px;
+			}
+			a{
+				color:#96F1FF;
+			
+			}
+			a:hover{
+				color:#969FFF;
+			}
+			table{
+				border: 2px solid #3D5E80;
+			}
+			th,td {
+				border: 2px solid #5D96A0;
+			}
+			#main_table {
+				width: 100%;
+				height: 100%;
+			}
+			#portrait {
+				width: 128px;	
+				vertical-align: top;
+			}		
+			#topics {
+				width: auto;
+				vertical-align: top;
+				text-align: left;
+				padding: 12px;
+			}
+			#dialogue {
+				vertical-align: top;
+				text-align: left;
+				margin: 0;
+				padding: 12px;
+			}
+			#character_name{
+				height: 32px;
+				font-size: 18px;
+				font-weight: bold;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="main_table">
+			<tr>
+				<th id='character_name' colspan=3>
+					CHARACTER NAME
+				</th>
+			</tr>
+			<tr>
+				<th id='portrait'>
+					PORTRAIT
+				</th>
+				<th id='dialogue'>
+					<div id='text'>YOUR TEXT HERE.</div>
+					<hr>
+					<div id='options'>YOUR OPTIONS HERE.</div>
+				</th>
+				<th id='topics'>
+					TOPICS
+				</th>				
+			</tr>	
+		</table>
+	</body>
+	<script>
+		var global_reference
+		
+		var global_stored_topics = []
+	
+		function set_reference(reference) {
+			global_reference = reference
+		}
+	
+		function done_loading() {
+			var desired_location = "byond://?done_loading=dialogue"
+			window.location = desired_location
+		}
+		
+		
+		function example() {
+			//convert_data('NameOfTopic_Dialogue #1 #2 #3_Link1Topic_Link2Topic_Link3Topic')
+			convert_data("Intro_Hello, welcome to our #1. We have many fine #2 for sale here, unlike what could be said for #3.\nFeel free to browse at your heart's content._shop_goods_some people")
+		}
+		
+		example()
+		
+		
+		
+		function add_topic(text,update) {
+			global_stored_topics[global_stored_topics.length] = text
+
+			if(update) {
+				update_topics()
+			}
+		}
+		
+		function update_topics() {
+			var i
+			
+			var returning = ""
+			for(i=0; i < global_stored_topics.length; i++) {
+				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ global_stored_topics[i] +"'>" + global_stored_topics[i] + "</a>"
+				returning = returning + formatted_link + "<br>"
+			}
+		
+			document.getElementById("topics").innerHTML = returning
+		}
+		
+		
+
+		//Ideal format:
+		//NameOfTopic_"Dialogue #1 #2 #3"_Link1Topic_Link2Topic_Link3Topic
+		
+		function convert_data(text) {
+			var tabledata = text.split("_");
+			var topic_name = tabledata[0]
+			var dialogue = tabledata[1]
+			
+			dialogue = dialogue.replace("\n", "<br><br>")
+			
+			var i
+			for(i=2; i < tabledata.length; i++) {
+			
+				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ tabledata[i] +"'>" + tabledata[i] + "</a>"
+				add_topic(tabledata[i])
+			
+			
+				dialogue = dialogue.replace("#" + (i-1).toString(), formatted_link)
+				
+			
+			}
+
+			document.getElementById("dialogue").innerHTML = dialogue
+			update_topics()
+		
+		}
+		
+		
+
+	</script>
+	
+</html>

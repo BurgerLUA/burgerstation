@@ -4,7 +4,6 @@
 	icon_state = "inventory"
 
 	projectile = /obj/projectile/bullet/bolt/
-	ranged_damage_type = /damagetype/ranged/bolt
 	damage_type = /damagetype/sword/
 
 	bullet_speed = 31

@@ -3,26 +3,50 @@
 	var/id
 	var/description = "This is a wound."
 
-	var/severity_level = 0
-	var/heal_level = 0
-	var/infection_level = 0
-	var/bleed_level = 0
+	var/severity_level = 0 //How large the wound is.
+	var/heal_level = 0 //How healed the wound is.
+	var/infection_level = 0 //How infected the wound is.
+	var/bleed_level = 0 //How much the wound is bleeding.
+	var/pain_tolerance = 0 //How much the wound is tolerated by your body.
+
+	var/severity_level_max = 5
+	var/heal_level_max = 5
+	var/infection_level_max = 3
+	var/bleed_level_max = 5
 
 	var/list/bleed_reference = list("%","lightly bleeding %","bleeding %","heavily bleeding %","hemorrhaging %")
 	var/list/severity_reference = list("tiny %","small %","medium %","large %","massive %")
 	var/list/heal_reference = list("fresh %","recent %","%","old %","% scar")
-	var/list/infection_reference = list("clean %","contaminated %","infected %","colonized %")
+	var/list/infection_reference = list("clean %","contaminated %","infected %")
 
 	var/atom/weapon //The weapon that caused this.
 	var/atom/inflictor //The person using the weapon that caused this.
-	var/atom/victim //The victim of the wound.
+	var/mob/living/victim //The victim of the wound.
+	var/obj/item/organ/location //The location of the wound, if any.
 
-/wound/proc/apply()
+/wound/New(var/mob/living/desired_owner,var/obj/item/organ/desired_location,var/atom/desired_inflictor,var/atom/desired_weapon,var/severity=1)
+	..()
+	victim = desired_owner
+	location = desired_location
+	inflictor = desired_inflictor
+	weapon = desired_weapon
 
-/wound/proc/remove()
+	severity_level = severity
+	bleed_level = severity
 
-/wound/proc/update()
-	//Should be "Bleeding Fresh Infected Large Wound"
+/wound/proc/get_infection_modifier()
+	return Clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
+
+#define WOUNDTICK 4	//It takes 4 seconds for on_life() to run
+
+/wound/proc/on_life() //Runs every 4 seconds.
+	pain_tolerance += Clamp((WOUNDTICK/300),0,severity_level) //Pain tolerance is increased by 1 every 5 minutes, up to the severity of the wound.
+	infection_level += Clamp((severity_level-heal_level)*(WOUNDTICK/600) + infection_level*0.01,0,infection_level_max) //Infection level is increased by 1 per severity level minus it's heal level every 10 minutes and 0.01% of it's current value every 4 seconds.
+	bleed_level -= Clamp((WOUNDTICK/300), 0, min(heal_level_max - heal_level,bleed_level_max) ) //Bleed level is decreased by 1 every 5 minutes, or clamped to the inverse of it's heal value
+	heal_level += Clamp(bleed_level*(WOUNDTICK/120)*get_infection_modifier(),0,heal_level_max) //Heal level is increased by 1 every 2 minutes unless the wound is infected.
+
+/wound/proc/update_name()
+	//Format should be "Bleeding Fresh Infected Large Wound"
 	name = initial(name)
 	name = replacetext(get_severity_name(),"%",name)
 	name = replacetext(get_infection_name(),"%",name)
@@ -31,9 +55,6 @@
 
 /wound/proc/examine(var/atom/examiner)
 	examiner.to_chat("It has \a [src]...")
-
-/wound/proc/on_life()
-	//Apply the wound
 
 /wound/proc/get_severity_name()
 	return severity_reference[ceiling(Clamp(severity_level,1,length(severity_reference)))]
@@ -51,7 +72,10 @@
 	return heal_reference[ceiling(Clamp(heal_level,1,length(heal_reference)))]
 
 /wound/proc/get_pain()
-	return (1+severity_level)*(1+infection_level)*(1+bleed_level)
+	return (1+severity_level)*(1+(infection_level/infection_level_max))*(1+(bleed_level/bleed_level_max))
+
+/wound/proc/get_max_pain()
+	return (1+severity_level_max)*(1+infection_level_max)*(1+bleed_level_max)
 
 /wound/proc/get_heal_time()
 	return min(heal_level,severity_level)*(infection_level)

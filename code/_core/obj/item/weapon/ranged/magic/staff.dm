@@ -24,7 +24,6 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/fire.dmi'
 
 	projectile = /obj/projectile/bullet/fireball
-	ranged_damage_type = /damagetype/ranged/fireball
 	damage_type = /damagetype/sword/
 
 	override_icon_state = TRUE
@@ -55,7 +54,6 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/chaos.dmi'
 
 	projectile = /obj/projectile/bullet/chaos
-	ranged_damage_type = /damagetype/ranged/chaos
 	damage_type = /damagetype/sword/
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/chaos.ogg')
@@ -84,7 +82,6 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
 
 	projectile = /obj/projectile/bullet/magic_missile
-	ranged_damage_type = /damagetype/ranged/magic_missile
 	damage_type = /damagetype/sword/
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/magic_missile.ogg')
@@ -103,7 +100,6 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'
 
 	projectile = /obj/projectile/bullet/rift
-	ranged_damage_type = null
 	damage_type = /damagetype/sword/
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/teleport_out.ogg')

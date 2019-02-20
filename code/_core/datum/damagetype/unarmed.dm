@@ -30,6 +30,7 @@
 //Fists
 /damagetype/unarmed/fists/
 	name = "Fist"
+	id = "human_fists"
 	desc = "Your fist."
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 	weapon_name = "right fist"
@@ -74,6 +75,7 @@
 //Feet
 /damagetype/unarmed/feet/
 	name = "Foot"
+	id = "human_feet"
 	desc = "Your foot"
 	attack_verbs = list("kick")
 	weapon_name = "right foot"
@@ -124,6 +126,7 @@
 /damagetype/unarmed/holy_warrior
 	name = "Holy Warrior Damage"
 	desc = "The touch of a holy warrior."
+	id = "holy_warrior"
 	attack_verbs = list("smite","punish","strike")
 	weapon_name = "right foot"
 

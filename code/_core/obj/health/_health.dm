@@ -20,7 +20,7 @@
 	plane = PLANE_HUD
 
 /obj/health/proc/update_stats(var/mob/living/M)
-	return
+	update_icon()
 
 /obj/health/proc/update_owner(var/mob/living/desired_owner)
 
@@ -32,8 +32,7 @@
 
 	owner = desired_owner
 	owner.add_health_element(src)
-
-	update_icon()
+	update_stats(owner)
 
 	return TRUE
 
@@ -67,12 +66,13 @@
 	min = 0
 	bar_color = "#ff0000"
 
-	screen_loc = "RIGHT-0.25,BOTTOM"
+	screen_loc = "RIGHT-0.25,BOTTOM+1.1"
 
 /obj/health/hp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
+	..()
 
 /obj/health/sp
 	name = "stamina"
@@ -82,12 +82,13 @@
 	min = 0
 	bar_color = "#00ff00"
 
-	screen_loc = "RIGHT,BOTTOM"
+	screen_loc = "RIGHT,BOTTOM+1.1"
 
 /obj/health/sp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
+	..()
 
 /obj/health/mp
 	name = "mana"
@@ -97,9 +98,10 @@
 	min = 0
 	bar_color = "#0000ff"
 
-	screen_loc = "RIGHT+0.25,BOTTOM"
+	screen_loc = "RIGHT+0.25,BOTTOM+1.1"
 
 /obj/health/mp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)
+	..()

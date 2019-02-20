@@ -1,6 +1,6 @@
-/damagetype/ranged/laser/
-	name = "laser"
-	id = "none"
+/damagetype/effect/
+	name = "effect"
+	id = "effect"
 
 	base_attack_damage = list(
 		BRUTE = 0,
@@ -16,9 +16,9 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BURN,
-		ATTRIBUTE_AGILITY = BURN,
-		ATTRIBUTE_INTELLIGENCE = BURN
+		ATTRIBUTE_STRENGTH = BRUTE,
+		ATTRIBUTE_AGILITY = BRUTE,
+		ATTRIBUTE_INTELLIGENCE = BRUTE
 	)
 
 	skill_stats = list(
@@ -36,16 +36,5 @@
 	skill_xp_per_damage = list(
 		SKILL_UNARMED = 0,
 		SKILL_MELEE = 0,
-		SKILL_RANGED = 0.5
-	)
-
-/damagetype/ranged/laser/pistol
-	name = "laser pistol"
-	id = "laser_pistol"
-
-	base_attack_damage = list(
-		BRUTE = 0,
-		BURN = 10,
-		TOX = 0,
-		OXY = 0
+		SKILL_RANGED = 0
 	)

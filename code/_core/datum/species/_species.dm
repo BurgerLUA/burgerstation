@@ -32,7 +32,11 @@
 		/obj/button/drop/left,
 		/obj/button/resist,
 		/obj/button/resist_auto,
-		/obj/button/hide_show_inventory
+		/obj/button/hide_show_inventory,
+		/obj/button/move,
+		/obj/button/targeting,
+		/obj/button/intent,
+		/obj/button/defense
 	)
 
 	var/list/obj/health/spawning_health = list(

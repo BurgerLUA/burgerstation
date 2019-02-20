@@ -47,6 +47,9 @@ var/global/list/all_living = list()
 
 /mob/living/Initialize()
 	initialize_factions()
+	update_health()
+	stamina_current = stamina_max
+	mana_current = mana_max
 	..()
 
 /mob/living/proc/initialize_factions()

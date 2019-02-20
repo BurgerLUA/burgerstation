@@ -83,7 +83,6 @@
 	id = "fireball"
 
 	projectile = /obj/projectile/bullet/fireball
-	ranged_damage_type = /damagetype/ranged/fireball
 
 	shoot_delay = 10
 	bullet_speed = 16

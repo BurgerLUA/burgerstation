@@ -3,8 +3,7 @@
 	icon = 'icons/mob/living/simple/animal.dmi'
 	icon_state = "guard"
 
-	damage_type = /damagetype/unarmed/spider
-
+	damage_type = "spider_bite"
 
 	ai = /ai/spider
 

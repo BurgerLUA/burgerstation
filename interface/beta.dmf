@@ -155,7 +155,6 @@ window "chat_looc"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "LOOC"
 		titlebar = false
@@ -322,7 +321,6 @@ window "main"
 		anchor2 = 100,100
 		background-color = #0080ff
 		is-default = true
-		border = sunken
 		saved-params = "splitter"
 		left = "map"
 		right = "control"
@@ -336,6 +334,7 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -352,7 +351,15 @@ window "map"
 		is-default = true
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 64
-		letterbox = false
-		zoom = 2
+		icon-size = 32
+		zoom = 1
+	elem "dialogue"
+		type = BROWSER
+		pos = 80,500
+		size = 640x200
+		anchor1 = 0,100
+		anchor2 = 100,100
+		background-color = none
+		border = sunken
+		saved-params = ""
 

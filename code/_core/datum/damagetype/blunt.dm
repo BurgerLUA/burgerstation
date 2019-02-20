@@ -1,5 +1,6 @@
 /damagetype/blunt/
 	name = "blunt object"
+	id = "blunt"
 	desc = "Live and die by it."
 	impact_sounds = list(
 		'sounds/effects/impacts/punch1.ogg',
@@ -15,7 +16,7 @@
 	name = "pistol grip"
 
 	base_attack_damage = list(
-		BRUTE = 1,
+		BRUTE = 5,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0
@@ -53,6 +54,7 @@
 
 /damagetype/blunt/toolbox
 	name = "toolbox"
+	id = "toolbox"
 
 	base_attack_damage = list(
 		BRUTE = 0,
@@ -91,8 +93,9 @@
 		SKILL_RANGED = 0
 	)
 
-/damagetype/shield
+/damagetype/blunt/shield
 	name = "shield"
+	id = "shield"
 
 	impact_sounds = list(
 		'sounds/effects/impacts/punch1.ogg',

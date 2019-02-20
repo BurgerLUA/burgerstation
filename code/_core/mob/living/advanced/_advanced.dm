@@ -28,6 +28,8 @@
 	var/talk_duration = 0
 	var/talk_type = 0
 
+	var/life_ticks = 0
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
@@ -121,6 +123,14 @@ mob/living/advanced/Login()
 	if(move_delay <= 0 && ( adjust_mana(mana_regeneration) || adjust_stamina(stamina_regeneration) ))
 		update_health_elemement_icons()
 
+	if(life_ticks >= 10*4)
+		for(var/obj/item/organ/O in organs)
+			for(var/wound/W in O.wounds)
+				W.on_life()
+		life_ticks = 0
+	else
+		life_ticks += 1
+
 	return ..()
 
 /mob/living/advanced/on_life_client()
@@ -145,12 +155,8 @@ mob/living/advanced/Login()
 
 	add_species_buttons()
 	add_species_health_elements()
-	update_health()
-	stamina_current = stamina_max
-	mana_current = mana_max
-	update_health_elemement_icons()
-
 	..()
+	update_health_elemement_icons()
 
 /mob/living/advanced/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current

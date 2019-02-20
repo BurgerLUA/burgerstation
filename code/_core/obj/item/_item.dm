@@ -72,19 +72,21 @@ obj/item/proc/update_owner(desired_owner)
 /obj/item/examine(var/atom/examiner)
 	..()
 
-	if(damage_type)
+	if(damage_type && all_damage_types[damage_type])
+
+		var/damagetype/DT = all_damage_types[damage_type]
 
 		var/list/base_damage_list = list()
 		var/list/attribute_damage_list = list()
 		var/list/skill_damage_list = list()
 
-		for(var/k in damage_type.base_attack_damage)
-			var/v = damage_type.base_attack_damage[k]
+		for(var/k in DT.base_attack_damage)
+			var/v = DT.base_attack_damage[k]
 			if(v)
 				base_damage_list += "[capitalize(k)]: [v]"
 
-		for(var/k in damage_type.attribute_stats)
-			var/v = damage_type.attribute_stats[k]
+		for(var/k in DT.attribute_stats)
+			var/v = DT.attribute_stats[k]
 			switch(v)
 				if(CLASS_S)
 					v = "S"
@@ -103,8 +105,8 @@ obj/item/proc/update_owner(desired_owner)
 			attribute_damage_list += "[capitalize(k)]: [v]"
 
 
-		for(var/k in damage_type.skill_stats)
-			var/v = damage_type.skill_stats[k]
+		for(var/k in DT.skill_stats)
+			var/v = DT.skill_stats[k]
 			switch(v)
 				if(CLASS_S)
 					v = "S"

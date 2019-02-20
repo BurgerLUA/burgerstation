@@ -1,5 +1,6 @@
 /damagetype/unarmed/spider
 	name = "Spider Damage"
+	id = "spider_bite"
 	desc = "The bite of a spider"
 	attack_verbs = list("bit","chomp","scratch")
 	weapon_name = "fangs"

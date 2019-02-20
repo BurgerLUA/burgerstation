@@ -30,7 +30,7 @@
 			I.Blend(IB.color,ICON_MULTIPLY)
 
 
-		world.log << "[IB.id] [IB.icon] [IB.icon_state]"
+		//world.log << "[IB.id] [IB.icon] [IB.icon_state]"
 
 	icon = I
 

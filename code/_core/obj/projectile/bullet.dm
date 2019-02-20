@@ -16,24 +16,22 @@
 				if(!F.can_damage_team())
 					return FALSE
 
-	if(weapon && is_ranged_gun(weapon))
-		var/obj/item/weapon/ranged/G = weapon
-		if(G.ranged_damage_type)
-			var/damagetype/DT = G.ranged_damage_type
-			var/list/params = list()
-			params["icon-x"] = shoot_x
-			params["icon-y"] = shoot_y
+	if(damage_type)
+		var/damagetype/DT = all_damage_types[damage_type]
+		var/list/params = list()
+		params["icon-x"] = shoot_x
+		params["icon-y"] = shoot_y
 
-			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,hit_atom,params)
-			var/can_attack = DT.can_attack(owner,hit_atom,weapon,object_to_damage)
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,hit_atom,params)
+		var/can_attack = DT.can_attack(owner,hit_atom,weapon,object_to_damage)
 
-			if(!can_attack)
-				return FALSE
+		if(!can_attack)
+			return FALSE
 
-			if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
-			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
+		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 
-			DT.do_damage(owner,hit_atom,weapon,object_to_damage)
+		DT.do_damage(owner,hit_atom,weapon,object_to_damage)
 
 	..()
 

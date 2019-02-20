@@ -3,7 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/laser.dmi'
 
 	projectile = /obj/projectile/bullet/laser_red
-	ranged_damage_type = /damagetype/ranged/pistol_laser
 	damage_type = /damagetype/blunt/pistol
 
 	bullet_speed = 31

@@ -1,22 +1,14 @@
 /obj/item/weapon/ranged/
 
 	var/list/shoot_sounds = list()
-
 	var/bullet_speed = 31
-
 	var/bullet_count = 1
-
 	var/obj/projectile/projectile = /obj/projectile/
-
 	var/automatic = FALSE
-
 	var/shoot_delay = 4 //In deciseconds
-
 	var/next_shoot_time = 0
 
-
 	damage_type = /damagetype/blunt/pistol
-	var/damagetype/ranged_damage_type //This is the damage type for a ranged attack
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 0.5,
@@ -35,11 +27,6 @@
 
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))
-
-/obj/item/weapon/ranged/New()
-	if(ranged_damage_type)
-		ranged_damage_type = new ranged_damage_type
-	..()
 
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited

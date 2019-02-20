@@ -26,7 +26,7 @@
 	if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
 		return FALSE
 
-	var/damagetype/DT = object_to_damage_with.damage_type
+	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
 		attacker << "You can't see any way you can inflict harm with \the [object_to_damage_with.type]."

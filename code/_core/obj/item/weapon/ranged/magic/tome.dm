@@ -39,8 +39,6 @@
 
 	associated_skill = SKILL_PRAYER
 
-
-	ranged_damage_type = /damagetype/ranged/lightning
 	projectile = /obj/projectile/bullet/lightning_bolt
 
 
@@ -59,8 +57,6 @@
 	associated_skill = SKILL_PRAYER
 
 	projectile = /obj/projectile/bullet/holy_summon
-
-	ranged_damage_type = /damagetype/ranged/summon_holy_warrior
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/summon.ogg')
 
@@ -85,8 +81,6 @@
 	associated_skill = SKILL_PRAYER
 
 	projectile = /obj/projectile/bullet/mass_heal
-
-	ranged_damage_type = null
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/heal.ogg')
 

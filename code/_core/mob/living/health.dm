@@ -62,7 +62,8 @@ mob/living/update_health()
 		health_current = new_health_current
 		changed = TRUE
 
-	if(changed) //TODO: Do something here.
+	if(changed)
+		update_health_element_icons()
 		changed = FALSE
 
 	if(health_current <= 0)

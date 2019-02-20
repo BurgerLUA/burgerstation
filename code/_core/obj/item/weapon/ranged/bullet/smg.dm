@@ -4,8 +4,7 @@
 	icon_state = "inventory_open"
 
 	projectile = /obj/projectile/bullet/smg/
-	ranged_damage_type = /damagetype/ranged/smg_45
-	damage_type = /damagetype/sword/
+	damage_type = "melee_smg"
 
 	bullet_speed = 20
 	shoot_delay = 1.5

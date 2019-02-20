@@ -32,6 +32,14 @@
 	var/enable_detail = FALSE
 	var/enable_wounds = FALSE
 
+	var/list/wound/wounds
+
+/obj/item/organ/examine(var/atom/examiner)
+	..()
+	for(var/wound/W in wounds)
+		W.update_name()
+		examiner.to_chat(span("notice",W.name))
+
 /obj/item/organ/initialize_blends()
 
 	if(enable_skin)
@@ -56,6 +64,7 @@
 /obj/item/organ/New()
 	..()
 	attached_organs = list()
+	wounds = list()
 	initialize_blends()
 
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)

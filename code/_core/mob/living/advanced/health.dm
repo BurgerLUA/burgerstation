@@ -2,7 +2,7 @@
 	for(var/k in mob_species.spawning_health)
 		var/obj/health/v = mob_species.spawning_health[k]
 		v = new v
-		add_health_element(v)
+		v.update_owner(src)
 
 mob/living/advanced/update_health()
 
@@ -38,7 +38,8 @@ mob/living/advanced/update_health()
 		health_current = new_health_current
 		changed = TRUE
 
-	if(changed) //TODO: Do something here.
+	if(changed)
+		update_health_element_icons()
 		changed = FALSE
 
 	if(health_current <= 0)

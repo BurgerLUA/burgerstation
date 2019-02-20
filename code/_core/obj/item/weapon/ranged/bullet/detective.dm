@@ -5,7 +5,6 @@
 	icon_state = "inventory"
 
 	projectile = /obj/projectile/bullet/revolver/
-	ranged_damage_type = /damagetype/ranged/revolver_38
 	damage_type = /damagetype/blunt/pistol
 
 	bullet_speed = 31
