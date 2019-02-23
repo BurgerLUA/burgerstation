@@ -89,13 +89,6 @@ obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,loc
 	name = "village wishgranter"
 	id = "village"
 
-/obj/structure/interactive/wishgranter/normal/tutorial
-	name = "tutorial wishgranter"
-	id = "tutorial"
-	icon_state = "none"
-
-	light_power = 0
-
 /obj/structure/interactive/wishgranter/normal/northern_heights
 	name = "northern heights wishgranter"
 	id = "northern_heights"

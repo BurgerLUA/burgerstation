@@ -9,6 +9,15 @@
 /mob/living/get_xp_multiplier()
 	return 1
 
+/mob/living/advanced/human/npc/can_be_grabbed()
+	return status & FLAG_STATUS_DEAD
+
+/mob/living/advanced/human/npc/can_not_enter(var/atom/A,var/move_direction)
+	return src
+
+/mob/living/advanced/human/npc/do_bump(var/atom/bumper, var/bump_direction = 0, var/movement_override = 0)
+	return FALSE
+
 /mob/living/advanced/human/npc/on_life_AI()
 
 	if(!initialized)

@@ -34,16 +34,6 @@
 	if(!new_loc)
 		return FALSE
 
-	/*
-	if(!can_attack())
-		return FALSE
-	*/
-
-	/*
-	if(attack_last + (ATTACK_ANIMATION_LENGTH * 1.5) + 1 >= world.time)
-		return FALSE
-	*/
-
 	var/move_direction = loc.get_relative_dir(new_loc)
 
 	if(ghost)

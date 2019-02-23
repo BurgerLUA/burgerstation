@@ -61,6 +61,10 @@
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
+
+	var/area/A = get_area(src)
+	A.on_enter(src)
+
 	..()
 
 /mob/New(var/loc/spawning_location,var/client/C)

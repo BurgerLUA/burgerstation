@@ -89,6 +89,22 @@
 
 
 /obj/marker/mob_spawn/spider
-	name = "deus vault spawnpoint"
+	name = "spider spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/spider
+	color = "#00FF00"
+
+
+/obj/marker/mob_spawn/cultist
+	name = "cultist spawnpoint"
+	type_to_spawn = /mob/living/simple/npc/cultist
+	color = "#00FF00"
+
+/obj/marker/mob_spawn/behemoth
+	name = "behemoth spawnpoint"
+	type_to_spawn = /mob/living/simple/npc/behemoth
 	color = "#FF0000"
+
+/obj/marker/mob_spawn/artificer
+	name = "artificer spawnpoint"
+	type_to_spawn = /mob/living/simple/npc/artificer
+	color = "#FFFF00"

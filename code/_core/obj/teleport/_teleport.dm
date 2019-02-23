@@ -74,6 +74,9 @@
 /obj/trigger/telesmart/up
 	desired_dir = UP
 
+/obj/trigger/telesmart/down
+	desired_dir = DOWN
+
 /obj/trigger/telesmart/on_trigger(var/atom/movable/triggerer)
 
 	var/final_x = triggerer.x

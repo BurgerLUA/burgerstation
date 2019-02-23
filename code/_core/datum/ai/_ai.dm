@@ -27,6 +27,8 @@
 
 	var/sync_stats = FALSE
 
+	var/stationary = TRUE
+
 /ai/New(var/mob/living/desired_owner)
 
 	owner = desired_owner
@@ -94,6 +96,8 @@
 
 	else if(get_dist(owner,start_turf) >= 5)
 		owner.move_dir = get_dir(owner,start_turf)
+	else if(stationary)
+		owner.move_dir = 0
 	else
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 
@@ -163,7 +167,21 @@
 
 
 
+/ai/simple/
+	name = "Simple AI"
+	simple = TRUE
 
+/ai/simple/handle_attacking()
+
+	if(attack_ticks < attack_delay)
+		attack_ticks += 1
+		return
+
+	if(objective_attack && get_dist(owner,objective_attack) <= 1)
+		owner.move_dir = 0
+		owner.attack(owner,objective_attack)
+
+	attack_ticks = 0
 
 
 

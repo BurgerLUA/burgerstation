@@ -110,9 +110,9 @@
 					stop_sound('sounds/music/chargen.ogg',list(usr))
 
 					if(A.sex == MALE)
-						A.add_clothes("new_male")
+						A.add_outfit("new_male")
 					else
-						A.add_clothes("new_female")
+						A.add_outfit("new_female")
 
 					if(A.client && FALSE)
 						spawn(0)

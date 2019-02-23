@@ -178,7 +178,7 @@ mob/living/advanced/Login()
 
 	return FALSE
 
-/mob/living/advanced/proc/add_clothes(var/outfit_id)
+/mob/living/advanced/proc/add_outfit(var/outfit_id)
 
 	var/outfit/spawning_outfit = all_outfits[outfit_id]
 

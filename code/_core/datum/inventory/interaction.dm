@@ -9,8 +9,8 @@
 
 /obj/inventory/proc/grab_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(!is_movable(object))
-		caller.to_chat(span("notice","You cannot grab this object!"))
+	if(!object.can_be_grabbed())
+		caller.to_chat(span("notice","You cannot grab this!"))
 		return FALSE
 
 	if(length(held_objects))

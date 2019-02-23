@@ -27,7 +27,7 @@
 			KARMA_CYBORG = 1000,
 			KARMA_DIONA = 1000
 		),
-		"last_save" = "tutorial"
+		"last_save" = "village"
 	)
 
 

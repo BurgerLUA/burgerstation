@@ -66,3 +66,6 @@
 
 /atom/proc/can_be_attacked(var/atom/attacker)
 	return TRUE
+
+/atom/proc/can_be_grabbed(var/atom/grabber)
+	return FALSE
