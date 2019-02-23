@@ -15,3 +15,7 @@
 	layer = LAYER_LARGE_OBJ
 
 	density = 0
+
+
+/obj/structure/interactive/lighting/streetlamp/snow
+	icon_state = "streetlamp_snow"

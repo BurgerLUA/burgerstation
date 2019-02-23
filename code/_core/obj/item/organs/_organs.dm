@@ -54,7 +54,7 @@
 	*/
 
 	if(enable_wounds)
-		add_blend("skin_bruises", desired_icon = damage_icon, desired_icon_state = "5", desired_color = "#FF0000", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
+		add_blend("skin_bruises", desired_icon = damage_icon, desired_icon_state = "0", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
 		//add_blend("skin_cuts", desired_icon = damage_icon, desired_icon_state = "cuts", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
 		//add_blend("skin_burns", desired_icon = damage_icon, desired_icon_state = "burns", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
 
@@ -135,7 +135,6 @@
 
 	if(enable_wounds && src.loc)
 		var/scale = floor((brute_loss/health_max)*5)
-		src.loc << scale
 		change_blend("skin_bruises", desired_icon_state = "[scale]")
 		update_icon()
 		src.loc.update_icon()

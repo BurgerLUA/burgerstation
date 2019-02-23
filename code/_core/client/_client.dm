@@ -70,7 +70,7 @@ var/global/list/all_clients = list()
 
 	welcome()
 	make_lobby(pick(lobby_spawnpoints))
-	play_sound('sounds/music/off_boat.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
+	play_sound('sounds/music/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
 
 
 /client/proc/make_lobby(var/desired_loc)

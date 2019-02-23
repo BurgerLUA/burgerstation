@@ -19,7 +19,7 @@ obj/structure/interactive/wishgranter/fake/New()
 
 obj/structure/interactive/wishgranter/New()
 	..()
-	all_wishgranters += src
+	all_wishgranters[id] = src
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction
 	var/faction_to_join
@@ -67,9 +67,35 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/yellow
 
 
 obj/structure/interactive/wishgranter/normal
+	name = "tutorial wishgranter"
+	id = "tutorial"
 
+obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,location,control,params)
 
+	if(!is_advanced(caller))
+		return FALSE
 
-obj/structure/interactive/wishgranter/normal/village
+	var/mob/living/advanced/A = caller
+
+	if(!A.client)
+		return FALSE
+
+	var/userdata/U = A.client.userdata
+
+	U.loaded_data["last_save"] = src.id
+	U.save_current_character()
+
+/obj/structure/interactive/wishgranter/normal/village
 	name = "village wishgranter"
 	id = "village"
+
+/obj/structure/interactive/wishgranter/normal/tutorial
+	name = "tutorial wishgranter"
+	id = "tutorial"
+	icon_state = "none"
+
+	light_power = 0
+
+/obj/structure/interactive/wishgranter/normal/northern_heights
+	name = "northern heights wishgranter"
+	id = "northern_heights"

@@ -9,6 +9,8 @@
 	corner_icons = TRUE
 	corner_category = "dirt"
 
+	light_power = 0.05
+
 	layer = LAYER_FLOOR_LARGE + 0.5
 
 /turf/simulated/floor/colored/
@@ -22,11 +24,21 @@
 	real_icon_state = "floor"
 	corner_icons = TRUE
 
+/turf/simulated/floor/colored/snow
+	name = "snow"
+	color = "#FFFFFF"
+	layer = LAYER_FLOOR_LARGE + 0.8
+	corner_category = "snow"
+
 /turf/simulated/floor/colored/grass
 	name = "grass"
 	color = "#008800"
 	layer = LAYER_FLOOR_LARGE + 0.9
 	corner_category = "grass"
+
+/turf/simulated/floor/colored/grass/jungle
+	name = "jungle grass"
+	color = "#279B3A"
 
 /turf/simulated/floor/colored/grass/New(loc)
 	var/lightness = 128
@@ -58,5 +70,14 @@
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 
+/turf/simulated/floor/colored/dirt/snow
+	name = "frosty dirt"
+	color = "#726253"
 
+/turf/simulated/floor/colored/sand/beach
+	name = "beach sand"
+	color = "#FFE36B"
 
+/turf/simulated/floor/colored/sand/desert
+	name = "desert sand"
+	color = "#FFC68C"

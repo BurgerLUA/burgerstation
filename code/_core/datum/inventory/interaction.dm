@@ -68,10 +68,6 @@
 		if(O.click_on_object(caller,object,location,control,params))
 			return TRUE
 
-	owner << "WE RUN"
-	owner << the_hand
-	owner << the_target
-
 	if(the_hand && is_turf(the_target) && the_hand.attack(caller,the_target,params))
 		return TRUE
 

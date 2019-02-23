@@ -14,9 +14,8 @@
 		/obj/button/new_character
 	)
 
-	light_range = 5
-	light_power = 4
-	light_color = "#FFFFFF"
+/mob/abstract/observer/can_move()
+	return FALSE
 
 /mob/abstract/observer/no_move
 	icon_state = ""
@@ -79,3 +78,8 @@
 	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])
 	C.save_slot = name_to_choice[choice]
 	src << "Successfully loaded character [U.loaded_data["name"]]."
+	stop_sound('sounds/music/lobby.ogg',list(src))
+
+	var/mob/living/advanced/player/P = new(src.loc,client)
+	P.Initialize()
+	qdel(src)

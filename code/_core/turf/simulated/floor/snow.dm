@@ -18,9 +18,9 @@
 	..()
 
 /turf/simulated/floor/ice
-	name = "snow"
+	name = "ice"
 	icon = 'icons/turf/floor/ice.dmi'
-	icon_state = "ice"
+	icon_state = "floor"
 
 	footstep_sounds = list(
 		'sounds/effects/footsteps/grass1.ogg',
@@ -28,3 +28,23 @@
 		'sounds/effects/footsteps/grass3.ogg',
 		'sounds/effects/footsteps/grass4.ogg'
 	)
+
+	corner_icons = TRUE
+	corner_category = "ice"
+
+
+
+/turf/simulated/floor/snow_plating
+	name = "plating"
+	icon = 'icons/turf/floor/snow_plating.dmi'
+	icon_state = "floor"
+
+	footstep_sounds = list(
+		'sounds/effects/footsteps/grass1.ogg',
+		'sounds/effects/footsteps/grass2.ogg',
+		'sounds/effects/footsteps/grass3.ogg',
+		'sounds/effects/footsteps/grass4.ogg'
+	)
+
+	corner_icons = TRUE
+	corner_category = "snow_plating"

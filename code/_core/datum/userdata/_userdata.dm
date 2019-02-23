@@ -26,7 +26,8 @@
 			KARMA_LIZARD = 1000,
 			KARMA_CYBORG = 1000,
 			KARMA_DIONA = 1000
-		)
+		),
+		"last_save" = "tutorial"
 	)
 
 
@@ -85,6 +86,9 @@
 				if(I.id != id)
 					continue
 				I.add_held_object(O)
+
+	A.force_move(all_wishgranters[loaded_data["last_save"]])
+	A.do_step(get_step(A,SOUTH))
 
 	A.update_icon()
 

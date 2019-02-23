@@ -46,9 +46,15 @@ var/global/ticks = 0
 /world/proc/life()
 	set background = TRUE
 
+	world.log << "STARTING WORLD."
+
 	active_subsystems = new(SS_ORDER_SIZE)
 
 	update_status()
+
+	var/benchmark = world.time
+
+	world.log << "STARTING WORLD."
 
 	for(var/S in subtypesof(/subsystem/))
 		var/subsystem/new_subsystem = new S
@@ -56,6 +62,12 @@ var/global/ticks = 0
 			qdel(S)
 			continue
 		active_subsystems[new_subsystem.priority] = new_subsystem
+
+	world.log << "Subsystem Creation took [DECISECONDS_TO_SECONDS(world.time - benchmark)] seconds."
+
+	benchmark = world.time
+
+	var/first_run = TRUE
 
 	spawn while(TRUE)
 		for(var/subsystem/S in active_subsystems)
@@ -65,6 +77,11 @@ var/global/ticks = 0
 					qdel(S)
 					continue
 				S.next_run = ticks + S.tick_rate
+
+		if(first_run)
+			world.log << "First time initialization took [DECISECONDS_TO_SECONDS(world.time - benchmark)] seconds."
+
+		first_run = FALSE
 
 		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1

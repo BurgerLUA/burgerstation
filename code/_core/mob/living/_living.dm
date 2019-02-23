@@ -30,6 +30,12 @@ var/global/list/all_living = list()
 	var/mana_current = 0
 	var/mana_regeneration = 0
 
+/mob/living/proc/get_brute_color()
+	return "#FF0000"
+
+/mob/living/proc/get_burn_color()
+	return "#444444"
+
 /mob/living/New(loc,desired_client)
 	. = ..()
 	attributes = list()

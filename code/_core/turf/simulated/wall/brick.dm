@@ -7,3 +7,8 @@
 
 /turf/simulated/wall/brick/red
 	color = "#C66B59"
+
+
+/turf/simulated/wall/brick/sand
+	name = "sandstone wall"
+	color = "#FFC68C"

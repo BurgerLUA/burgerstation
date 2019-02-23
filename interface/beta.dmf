@@ -360,6 +360,7 @@ window "map"
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = none
+		is-visible = false
 		border = sunken
 		saved-params = ""
 
