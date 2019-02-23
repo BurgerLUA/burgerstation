@@ -17,5 +17,7 @@
 
 /world/New()
 	. = ..()
-
+	var/benchmark = world.time
+	world.log << "Creating lighting overlays..."
 	create_all_lighting_overlays()
+	world.log << "Lighting overlays took [DECISECONDS_TO_SECONDS(world.time - benchmark)] seconds."

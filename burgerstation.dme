@@ -416,6 +416,7 @@
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
 #include "maps\RPG\001_centcomm.dmm"
+#include "maps\RPG\004_overworld_center.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
