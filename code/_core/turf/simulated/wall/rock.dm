@@ -13,4 +13,9 @@
 	corner_icons = TRUE
 	corner_category = "rock_snow"
 
-	icon_state = "floor"
+/turf/simulated/wall/rock/basalt
+	real_icon = 'icons/turf/wall/rock_basalt.dmi'
+	real_icon_state = "wall"
+
+	corner_icons = TRUE
+	corner_category = "rock_basalt"

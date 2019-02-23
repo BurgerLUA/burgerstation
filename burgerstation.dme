@@ -69,6 +69,7 @@
 #include "code\_core\area\special.dm"
 #include "code\_core\area\dungeons\_dungeons.dm"
 #include "code\_core\area\dungeons\lava.dm"
+#include "code\_core\area\dungeons\sand\_sand.dm"
 #include "code\_core\area\overworld\_overworld.dm"
 #include "code\_core\area\overworld\snow.dm"
 #include "code\_core\atom\_atom.dm"
@@ -341,6 +342,7 @@
 #include "code\_core\turf\movement.dm"
 #include "code\_core\turf\simulated\_simulated.dm"
 #include "code\_core\turf\simulated\hierophant.dm"
+#include "code\_core\turf\simulated\trick.dm"
 #include "code\_core\turf\simulated\floor\_floor.dm"
 #include "code\_core\turf\simulated\floor\ash.dm"
 #include "code\_core\turf\simulated\floor\basalt.dm"
@@ -416,7 +418,6 @@
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
 #include "maps\RPG\001_centcomm.dmm"
-#include "maps\RPG\004_overworld_center.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
