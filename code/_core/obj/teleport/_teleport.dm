@@ -4,6 +4,10 @@
 	icon = null
 	icon_state = null
 
+/obj/trigger/Crossed(var/atom/crosser)
+	..()
+	on_trigger(crosser)
+
 /obj/trigger/proc/on_trigger(var/atom/triggerer)
 	return TRUE
 
@@ -39,33 +43,41 @@
 /obj/trigger/no_entry/on_trigger(var/atom/triggerer)
 	triggerer.to_chat(span("notice",message))
 
-
 /obj/trigger/jumploc
 	name = "loc jumper"
 	var/x_move = 0
 	var/y_move = 0
+	var/dir_restriction = 0
 
 /obj/trigger/jumploc/on_trigger(var/atom/movable/triggerer)
 
 	if(!is_living(triggerer))
 		return FALSE
 
-	triggerer.force_move(locate(x + x_move, y + y_move,z),FALSE,TRUE)
+	if(!(triggerer.dir & dir_restriction))
+		return FALSE
+
+	triggerer.Move(locate(x + x_move, y + y_move,z))
 
 /obj/trigger/jumploc/north
 	x_move = 0
 	y_move = 2
+	dir_restriction = NORTH
 
 /obj/trigger/jumploc/south
 	x_move = 0
 	y_move = -2
+	dir_restriction = SOUTH
+
 /obj/trigger/jumploc/east
 	x_move = 2
 	y_move = 0
+	dir_restriction = EAST
 
 /obj/trigger/jumploc/west
 	x_move = -2
 	y_move = 0
+	dir_restriction = WEST
 
 /obj/trigger/telesmart
 	name = "smart jumper"
@@ -95,4 +107,4 @@
 	if(desired_dir & (NORTH | SOUTH))
 		final_y = 128 - final_x
 
-	triggerer.force_move(locate(final_x,final_y,final_z),FALSE,TRUE)
+	triggerer.Move(locate(final_x,final_y,final_z))

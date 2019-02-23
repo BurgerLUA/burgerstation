@@ -64,14 +64,9 @@ var/global/list/all_clients = list()
 	if(usr)
 		return ..()
 
-	var/turf/T = get_turf(src.mob)
-	if(T)
-		T.on_enter(src.mob)
-
 	welcome()
 	make_lobby(pick(lobby_spawnpoints))
 	play_sound('sounds/music/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
-
 
 /client/proc/make_lobby(var/desired_loc)
 	src.mob = new /mob/abstract/observer/no_move(desired_loc,src)

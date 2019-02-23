@@ -7,7 +7,7 @@
 	step_size = TILE_SIZE
 	appearance_flags = LONG_GLIDE | KEEP_TOGETHER
 
-	animate_movement = FALSE
+	animate_movement = SLIDE_STEPS
 
 	var/ghost = FALSE
 
@@ -17,8 +17,9 @@
 /atom/movable/proc/handle_movement(var/adjust_delay = 0) //Runs every decisecond
 
 	if(move_dir && move_delay <= 0)
-		var/final_movement_delay = ceiling(get_movement_delay())
-		do_move(get_step(src,move_dir),final_movement_delay)
+		var/final_movement_delay = max(1,ceiling(get_movement_delay()))
+		glide_size = TILE_SIZE/final_movement_delay
+		Move(get_step(src,move_dir),move_dir)
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
 		return TRUE
 	else
@@ -26,81 +27,74 @@
 			move_delay = move_delay - adjust_delay
 		return FALSE
 
-/atom/movable/proc/can_move(var/turf/new_loc,var/movement_override = 0)
+/atom/movable/proc/force_move(var/atom/new_loc)
+	if(loc)
+		loc.Exited(src, new_loc)
 
-	if(loc == new_loc) //Don't bother moving.
-		return FALSE
+	var/atom/old_loc = loc
+
+	loc = new_loc
+
+	if(loc) // Moving to nullspace is a perfectly valid usage of this proc.
+		loc.Entered(src, old_loc)
+
+	for(var/atom/movable/AM in loc)
+		AM.Crossed(src)
+
+/atom/movable/Bump(var/atom/obstacle)
+	return FALSE
+
+/atom/movable/proc/can_bump(var/atom/bumper)
+	return FALSE
+
+/* EXAMPLE CODE
+/atom/movable/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
+
+	var/atom/old_loc = src.loc
+	if(!desired_dir)
+		desired_dir = get_dir(old_loc,new_loc)
 
 	if(!new_loc)
+		new_loc = get_step(src,desired_dir)
+
+	if(!old_loc.Exit(src,desired_dir)) //Can we exit the current tile we're on?
 		return FALSE
 
-	var/move_direction = loc.get_relative_dir(new_loc)
+	for(var/atom/A in old_loc.contents)
+		if(A.Uncross(src)) //Can we uncross this object?
+			continue
 
-	if(ghost)
-		return TRUE
-
-	if(loc)
-		var/atom/A = loc.can_not_leave(src,move_direction) //Is there an object preventing us from leaving?
-		if(A && !A.do_bump(src,move_direction,movement_override))
-			return FALSE
-
-	if(new_loc)
-		var/atom/A = new_loc.can_not_enter(src,move_direction) //Is there an object prevent us from entering?
-		if(A && !A.do_bump(src,move_direction,movement_override))
-			return FALSE
-
-	return TRUE
-
-/atom/movable/proc/do_move(var/new_loc,var/movement_override = 0)
-	if(!can_move(new_loc,movement_override))
-		src.face_atom(new_loc)
-		return FALSE
-	do_step(new_loc, movement_override)
-	return TRUE
-
-/atom/movable/proc/force_move(var/atom/new_loc, var/trigger_enter = TRUE, var/trigger_exit = TRUE)
-
-	var/atom/old_loc = null
-
-	if(loc)
-		if(loc == new_loc)
-			return old_loc
-		old_loc = loc
-		if(trigger_exit)
-			old_loc.on_exit(src)
-
-	if(new_loc)
-		src.loc = new_loc
-		if(trigger_enter)
-			new_loc.on_enter(src)
+		if(is_movable(A))
 
 	for(var/datum/light_source/L in src.light_sources) // Cycle through the light sources on this atom and tell them to update.
 		L.source_atom.update_light()
+		return FALSE
 
-	return old_loc
+	if(!new_loc.Enter(src,desired_dir)) //Can we enter the current tile we're on?
+		return FALSE
 
-/atom/movable/proc/do_step(var/atom/new_loc, var/movement_override = 0)
-	var/turf/old_loc = loc
-	do_movement_effects(old_loc,new_loc,movement_override)
-	return force_move(new_loc)
+	for(var/atom/A in new_loc.contents)
+		if(A.Cross(src)) //Can we cross this object?
+			continue
 
-/atom/movable/proc/do_movement_effects(var/atom/old_loc, var/atom/new_loc, var/movement_override = 0)
+		if(is_movable(A))
+			var/atom/movable/M = A
+			if(M.Bump(src,desired_dir))
+				continue
 
-	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size
-	var/pixel_y_offset = -(new_loc.y - old_loc.y)*step_size
+		return FALSE
 
-	var/real_movement_delay = movement_override ? movement_override : get_movement_delay()
-	var/movement_dir = old_loc.get_relative_dir(new_loc)
+	step_x += desired_step_x
+	step_y += desired_step_y
 
-	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 1, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = TICKS_TO_DECISECONDS(real_movement_delay), flags = ANIMATION_LINEAR_TRANSFORM, dir = movement_dir)
+	old_loc.Exited()
+	for(var/atom/A in old_loc.contents)
+		A.Uncrossed(src)
+
+	new_loc.Entered()
+	for(var/atom/A in new_loc.contents)
+		A.Crossed(src)
 
 	return TRUE
+*/
 
-/atom/movable/can_attack(var/atom/victim,var/params)
-	/*
-	if(move_delay >= get_movement_delay()*0.5)
-		return FALSE
-	*/
-
-	return ..()

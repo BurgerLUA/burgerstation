@@ -88,7 +88,7 @@
 				I.add_held_object(O)
 
 	A.force_move(all_wishgranters[loaded_data["last_save"]])
-	A.do_step(get_step(A,SOUTH))
+	//A.do_step(get_step(A,SOUTH))
 
 	A.update_icon()
 

@@ -49,15 +49,6 @@
 /atom/proc/can_not_enter(var/atom/A,var/move_direction)
 	return null
 
-/atom/proc/on_enter(var/atom/A,var/move_direction)
-	return TRUE
-
-/atom/proc/on_exit(var/atom/A,var/move_direction)
-	return TRUE
-
-/atom/proc/do_bump(var/atom/A,var/bump_direction,var/movement_override = 0)
-	return TRUE
-
 /atom/proc/defer_click_on_object()
 	return src
 
@@ -69,3 +60,19 @@
 
 /atom/proc/can_be_grabbed(var/atom/grabber)
 	return FALSE
+
+/* OLD MOVEMENT STUFF
+/atom/proc/on_enter(var/atom/A,var/move_direction)
+	return TRUE
+
+/atom/proc/on_exit(var/atom/A,var/move_direction)
+	return TRUE
+
+/atom/proc/do_bump(var/atom/A,var/bump_direction,var/movement_override = 0)
+	return TRUE
+*/
+
+/atom/Entered()
+	..()
+	for(var/datum/light_source/L in src.light_sources) // Cycle through the light sources on this atom and tell them to update.
+		L.source_atom.update_light()

@@ -14,14 +14,8 @@
 		/obj/button/new_character
 	)
 
-/mob/abstract/observer/can_move()
-	return FALSE
-
 /mob/abstract/observer/no_move
 	icon_state = ""
-
-/mob/abstract/observer/no_move/can_move()
-	return FALSE
 
 /mob/abstract/observer/Initialize()
 	. = ..()
@@ -33,6 +27,10 @@
 	for(var/v in spawning_buttons)
 		var/obj/button/B = new v
 		B.update_owner(src)
+
+/mob/abstract/observer/Logout()
+	..()
+	qdel(src)
 
 /mob/abstract/on_left_click(var/atom/object,location,control,params)
 	if(is_wishgranter(object) || is_button(object))
@@ -51,6 +49,7 @@
 		if(P.client)
 			P.client.eye = P
 			P.client.update_zoom(-1)
+		P.chargen = TRUE
 		open_menu(P,"appearance_editor")
 		qdel(src)
 

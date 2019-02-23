@@ -73,15 +73,15 @@
 			has_opaque_atom = TRUE
 
 // If an opaque movable atom moves around we need to potentially update visibility.
-/turf/on_enter(var/atom/A,var/move_direction)
+/turf/Entered(var/atom/enterer,var/atom/old_loc)
 	. = ..()
-	if(A && A.opacity)
+	if(enterer && enterer.opacity)
 		has_opaque_atom = TRUE // Make sure to do this before reconsider_lights(), incase we're on instant updates. Guaranteed to be on in this case.
 		reconsider_lights()
 
-/turf/on_exit(var/atom/A,var/move_direction)
+/turf/Exited(var/atom/exiter,var/atom/old_loc)
 	. = ..()
-	if(A && A.opacity)
+	if(exiter && exiter.opacity)
 		recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
 		reconsider_lights()
 

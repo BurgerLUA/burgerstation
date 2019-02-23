@@ -5,16 +5,16 @@
 	layer = LAYER_FLOOR
 
 	appearance_flags = TILE_BOUND | KEEP_TOGETHER
+	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
 	//Density
+	density = 0
 	var/density_north = FALSE
 	var/density_south = FALSE
 	var/density_east  = FALSE
 	var/density_west  = FALSE
 	var/density_up    = FALSE
 	var/density_down  = FALSE
-
-	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
 	var/allow_bullet_pass = FALSE
 
@@ -30,15 +30,25 @@
 			return v
 	return src
 
-/turf/on_enter(var/atom/enterer)
-
-	area.on_enter(enterer)
-
-	for(var/atom/A in contents)
-		if(is_trigger(A))
-			var/obj/trigger/T = A
-			T.on_trigger(enterer)
-
+/turf/Entered(var/atom/enterer)
+	area.Entered(enterer)
 
 /turf/can_be_attacked(var/atom/attacker)
 	return FALSE
+
+/turf/Enter(var/atom/enterer,var/atom/oldloc)
+	var/enter_direction = get_dir(oldloc,src)
+
+	if((enter_direction & NORTH) && density_north)
+		return FALSE
+
+	if((enter_direction & EAST) && density_east)
+		return FALSE
+
+	if((enter_direction & SOUTH) && density_south)
+		return FALSE
+
+	if((enter_direction & WEST) && density_west)
+		return FALSE
+
+	return ..()

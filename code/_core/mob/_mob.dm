@@ -12,7 +12,6 @@
 
 	var/animation_pixel_x = 0
 	var/animation_pixel_y = 0
-	animate_movement = FALSE
 
 	movement_delay = DECISECONDS_TO_TICKS(5)
 	attack_delay = 10
@@ -56,14 +55,12 @@
 		list(16,16)
 	)
 
-
-
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 
 	var/area/A = get_area(src)
-	A.on_enter(src)
+	A.Entered(src)
 
 	..()
 
@@ -80,22 +77,8 @@
 	all_mobs += src
 	..()
 
-/mob/do_movement_effects(var/turf/old_loc, var/turf/new_loc, var/movement_override = 0)
+/mob/Cross(var/atom/moveable/A)
+	if(area && area.safe) //No collisions in safe areas.
+		return TRUE
 
-	var/pixel_x_offset = -(new_loc.x - old_loc.x)*step_size
-	var/pixel_y_offset = -(new_loc.y - old_loc.y)*step_size
-
-	var/real_movement_delay = movement_override ? movement_override : get_movement_delay()
-	var/movement_dir = old_loc.get_relative_dir(new_loc)
-
-	if(client && client.eye == src) //Animate the client's camera so it's smooth.
-		animate(client, pixel_x = client.pixel_x + pixel_x_offset, pixel_y = client.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
-		animate(client, pixel_x = client.pixel_x - pixel_x_offset, pixel_y = client.pixel_y - pixel_y_offset, time = TICKS_TO_DECISECONDS(real_movement_delay), flags = ANIMATION_LINEAR_TRANSFORM)
-
-	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = 0, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(src, pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = TICKS_TO_DECISECONDS(real_movement_delay), flags = ANIMATION_LINEAR_TRANSFORM)
-
-	if(attack_turn <= curtime)
-		dir = movement_dir
-
-	return TRUE
+	return ..()

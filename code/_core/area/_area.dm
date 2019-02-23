@@ -23,16 +23,14 @@
 	var/ambient_sound
 	var/list/random_sounds = list()
 
-/area/on_enter(var/atom/movable/enterer)
+/area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	if(enterer.area != src)
-		if(enterer.area)
-			enterer.area.on_exit(enterer)
-			if(is_mob(enterer))
-				var/mob/M = enterer
-				if(M.client)
-					if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
-						play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
+		if(enterer.area && is_mob(enterer))
+			var/mob/M = enterer
+			if(M.client)
+				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
+					play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
 
 		enterer.area = src
 
@@ -45,6 +43,6 @@
 
 	return FALSE
 
-/area/on_exit(var/atom/movable/enterer)
+/area/Exited(var/atom/movable/exiter,var/atom/old_loc)
 	return TRUE
 

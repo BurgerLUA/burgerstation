@@ -33,5 +33,7 @@
 
 	return FALSE
 
-/turf/do_bump(var/atom/bumper,var/bump_direction,var/movement_override = 0)
+/* TODO: CHECK THIS
+/turf/can_bump(var/atom/bumper,var/bump_direction,var/movement_override = 0)
 	return FALSE
+*/

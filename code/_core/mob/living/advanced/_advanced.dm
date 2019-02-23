@@ -30,6 +30,8 @@
 
 	var/life_ticks = 0
 
+	var/chargen = FALSE
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
@@ -52,24 +54,17 @@
 		mob_species = new mob_species
 	..()
 
+/mob/living/advanced/Logout()
+	..()
+	if(chargen)
+		qdel(src)
+
 /mob/living/advanced/on_stunned()
 	if(left_hand)
 		left_hand.drop_held_objects(src.loc)
 
 	if(right_hand)
 		right_hand.drop_held_objects(src.loc)
-
-/mob/living/advanced/do_step(var/turf/new_loc, var/movement_override = 0)
-
-	. = ..()
-
-	var/movement_delay = get_movement_delay()
-
-	if(left_hand)
-		left_hand.do_drag(.,movement_override ? movement_override : movement_delay)
-
-	if(right_hand)
-		right_hand.do_drag(.,movement_override ? movement_override : movement_delay)
 
 /mob/living/advanced/proc/toggle_inventory()
 	draw_inventory = !draw_inventory
@@ -368,6 +363,7 @@ mob/living/advanced/Login()
 
 	return ..()
 
+/* OLD MOVEMENT
 /mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
 	. = ..()
 	if(.)
@@ -376,6 +372,7 @@ mob/living/advanced/Login()
 		return .
 	else
 		return FALSE
+*/
 
 /mob/living/advanced/proc/pickup(var/obj/item/I,var/left = 0)
 
