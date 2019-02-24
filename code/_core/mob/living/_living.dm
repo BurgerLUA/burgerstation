@@ -6,7 +6,7 @@ var/global/list/all_living = list()
 	var/list/faction/factions
 	var/list/starting_factions = list()
 
-	var/starting_class = "default"
+	var/class = "default"
 
 	var/list/health_elements
 
@@ -64,7 +64,7 @@ var/global/list/all_living = list()
 
 /mob/living/proc/initialize_attributes()
 
-	var/class/C = all_classes[starting_class]
+	var/class/C = all_classes[class]
 
 	for(var/v in all_attributes)
 		var/experience/attribute/A = new v(src)
@@ -73,7 +73,7 @@ var/global/list/all_living = list()
 
 /mob/living/proc/initialize_skills()
 
-	var/class/C = all_classes[starting_class]
+	var/class/C = all_classes[class]
 
 	for(var/v in all_skills)
 		var/experience/skill/S = new v(src)

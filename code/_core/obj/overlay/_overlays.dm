@@ -29,8 +29,5 @@
 		if(IB.special_type & ICON_BLEND_COLOR)
 			I.Blend(IB.color,ICON_MULTIPLY)
 
-
-		//world.log << "[IB.id] [IB.icon] [IB.icon_state]"
-
 	icon = I
 

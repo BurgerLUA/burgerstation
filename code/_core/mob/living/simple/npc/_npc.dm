@@ -1,6 +1,10 @@
 /mob/living/simple/npc/
 	enable_AI = TRUE
 
+
+/mob/living/simple/npc/Initialize()
+	..()
+
 /mob/living/simple/npc/on_life_AI()
 
 	if(!initialized)

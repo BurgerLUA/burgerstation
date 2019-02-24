@@ -39,7 +39,7 @@ var/global/list/all_clients = list()
 	known_buttons = list()
 	known_health_elements = list()
 	screen = list()
-	update_lighting()
+	//update_lighting()
 
 /client/New()
 
@@ -72,7 +72,7 @@ var/global/list/all_clients = list()
 	src.mob = new /mob/abstract/observer/no_move(desired_loc,src)
 	src.mob.Initialize()
 	winset(src, "map.map","icon-size=[TILE_SIZE*2];zoom-mode=normal")
-	update_lighting()
+	//update_lighting()
 
 /client/proc/welcome()
 	src << "<title>Welcome to Burgerstation 13</title>"
@@ -83,10 +83,6 @@ var/global/list/all_clients = list()
 	all_clients -= src
 	world.update_status()
 	..()
-
-
-
-
 
 /client/Topic(href,href_list)
 	//src << href
@@ -108,7 +104,7 @@ var/global/list/all_clients = list()
 /client/proc/make_ghost(var/desired_loc)
 	src.mob = new /mob/abstract/observer(desired_loc,src)
 	src.mob.Initialize()
-	update_lighting()
+	//update_lighting()
 
 /client/MouseMove(object,location,control,params) //WARNING: OVERHEAD
 	/*

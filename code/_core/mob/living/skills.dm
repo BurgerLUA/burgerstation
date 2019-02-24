@@ -32,6 +32,9 @@
 
 /mob/living/proc/get_attribute_power(var/id,var/min = 0,var/max = 100)
 	var/experience/attribute/A = get_attribute(id)
+	if(!A)
+		world.log << "FATAL NPC ERROR: [id] IS A NULL ATTRIBUTE FOR [src]."
+		return min
 	return A.get_power(min,max)
 
 /mob/living/proc/set_attribute_level(var/id,var/desired_level)

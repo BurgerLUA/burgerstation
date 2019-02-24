@@ -6,4 +6,15 @@
 	starting_factions = list(
 		FACTION_PLAYER
 	)
-	starting_class = "default"
+	class = "default"
+
+	var/dialogue_target_id
+
+/mob/living/advanced/player/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
+	. = ..()
+	if(. && dialogue_target_id)
+		dialogue_target_id = null
+		close_menu(src,"dialogue")
+
+	return .
+

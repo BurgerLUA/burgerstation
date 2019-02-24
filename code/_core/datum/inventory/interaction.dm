@@ -75,7 +75,6 @@ obj/inventory/drop_on_object(caller,var/atom/object)
 	return ..(caller,object)
 
 /obj/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
-	owner << "YEET"
 	return src.loc
 
 obj/inventory/drop_item(var/turf/new_location)

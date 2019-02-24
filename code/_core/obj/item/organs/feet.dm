@@ -9,7 +9,7 @@
 	health_max = 25
 	inventories = list(/obj/inventory/organs/right_foot)
 
-	damage_type = /damagetype/unarmed/feet/
+	damage_type = "human_foot_right"
 
 	attach_flag = BODY_LEG_RIGHT
 
@@ -24,7 +24,7 @@
 	attach_flag = BODY_LEG_LEFT
 
 	inventories = list(/obj/inventory/organs/left_foot)
-	damage_type = /damagetype/unarmed/feet/left
+	damage_type = "human_foot_left"
 
 //Reptile Feral
 /obj/item/organ/foot/reptile

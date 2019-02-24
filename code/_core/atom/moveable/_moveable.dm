@@ -65,9 +65,10 @@
 			continue
 
 		if(is_movable(A))
+			var/atom/movable/M = A
+			if(M.Bump(src,desired_dir))
+				continue
 
-	for(var/datum/light_source/L in src.light_sources) // Cycle through the light sources on this atom and tell them to update.
-		L.source_atom.update_light()
 		return FALSE
 
 	if(!new_loc.Enter(src,desired_dir)) //Can we enter the current tile we're on?

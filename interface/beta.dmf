@@ -355,12 +355,12 @@ window "map"
 		zoom = 1
 	elem "dialogue"
 		type = BROWSER
-		pos = 80,500
-		size = 640x200
+		pos = 80,440
+		size = 640x260
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = none
 		is-visible = false
-		border = sunken
 		saved-params = ""
+		auto-format = false
 

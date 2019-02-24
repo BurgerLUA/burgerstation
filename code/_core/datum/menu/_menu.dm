@@ -22,6 +22,9 @@
 	user << output(file, "browser([id])")
 	winset(user, "browser([id])", "parent=[id];size=[size]")
 
+/menu/proc/close(var/user)
+	winset(usr, "browser([id])","is-visible:false")
+
 /menu/proc/run_function(var/user, var/function_name,var/args)
 	user << output("[function_name]([args]);", "browser([id]):eval")
 
@@ -40,6 +43,12 @@
 	var/menu/M = all_menus[menu_id]
 	M.open(user)
 
+/proc/close_menu(user,menu_id)
+	var/menu/M = all_menus[menu_id]
+	M.close(user)
+
+proc/get_menu(menu_id)
+	return all_menus[menu_id]
 
 /proc/send_load(user,menu_id) //A common command I use every time I visit your mom.
 	var/menu/M = all_menus[menu_id]

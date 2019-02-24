@@ -11,7 +11,7 @@
 	break_threshold = 15
 	health_max = 25
 
-	damage_type = /damagetype/unarmed/fists/
+	damage_type = "human_fist_right"
 
 	attach_flag = BODY_ARM_RIGHT
 
@@ -29,7 +29,7 @@
 
 	attach_flag = BODY_ARM_LEFT
 
-	damage_type = /damagetype/unarmed/fists/left
+	damage_type = "human_fist_left"
 
 //Reptile Advanced
 /obj/item/organ/hand/reptile

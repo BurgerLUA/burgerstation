@@ -10,6 +10,10 @@
 				margin: 0;
 				padding: 0;
 				font-size: 14px;
+				width: 100%;
+				max-width: 100%;
+				height: 260px;
+				max-height: 260px;				
 			}
 			a{
 				color:#96F1FF;
@@ -24,19 +28,22 @@
 			th,td {
 				border: 2px solid #5D96A0;
 			}
-			#main_table {
+			table#main_table {
 				width: 100%;
-				height: 100%;
+				max-width: 100%;
+				height: 260px;
+				max-height: 260px;
 			}
-			#portrait {
-				width: 128px;	
+			#topic_container{
 				vertical-align: top;
-			}		
+				text-align: left;			
+				padding: 0px;
+				width: 128px;
+			}
 			#topics {
-				width: auto;
-				vertical-align: top;
-				text-align: left;
-				padding: 12px;
+				width: 100%;
+				height: 162px;
+				overflow-y: scroll;
 			}
 			#dialogue {
 				vertical-align: top;
@@ -50,6 +57,18 @@
 				font-weight: bold;
 				text-align: center;
 			}
+			#goodbye {
+				height:32px;
+			}
+			button.extended {
+				background:url('button_blue_extended.png');
+				width: 120px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;				
+			}			
 		</style>
 	</head>
 	<body>
@@ -60,18 +79,21 @@
 				</th>
 			</tr>
 			<tr>
-				<th id='portrait'>
-					PORTRAIT
-				</th>
-				<th id='dialogue'>
+				<th id='dialogue' rowspan=2>
 					<div id='text'>YOUR TEXT HERE.</div>
 					<hr>
 					<div id='options'>YOUR OPTIONS HERE.</div>
 				</th>
-				<th id='topics'>
-					TOPICS
-				</th>				
-			</tr>	
+				<th id="topic_container">
+					<div id='topics'>What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little "clever" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo.</div>
+				</th>			
+			</tr>
+			<tr>
+				<th id='goodbye'>HELLO</th>
+			</tr>
+			
+			
+			
 		</table>
 	</body>
 	<script>
@@ -87,19 +109,21 @@
 			var desired_location = "byond://?done_loading=dialogue"
 			window.location = desired_location
 		}
-		
-		
-		function example() {
-			//convert_data('NameOfTopic_Dialogue #1 #2 #3_Link1Topic_Link2Topic_Link3Topic')
-			convert_data("Intro_Hello, welcome to our #1. We have many fine #2 for sale here, unlike what could be said for #3.\nFeel free to browse at your heart's content._shop_goods_some people")
-		}
-		
-		example()
-		
-		
-		
+
 		function add_topic(text,update) {
-			global_stored_topics[global_stored_topics.length] = text
+			
+			var found = false
+			var i
+			for(i=0; i < global_stored_topics.length; i++) {
+				if(global_stored_topics[i] == text) {
+					found = true
+					break
+				}
+			}
+		
+			if(!found) {
+				global_stored_topics[global_stored_topics.length] = text
+			}
 
 			if(update) {
 				update_topics()
@@ -107,47 +131,57 @@
 		}
 		
 		function update_topics() {
-			var i
-			
 			var returning = ""
+			var existing_topics = [];
+			
+			var i
 			for(i=0; i < global_stored_topics.length; i++) {
-				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ global_stored_topics[i] +"'>" + global_stored_topics[i] + "</a>"
+				var chosen_topic = global_stored_topics[i]
+				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ chosen_topic +"'>" + chosen_topic + "</a>"
 				returning = returning + formatted_link + "<br>"
 			}
-		
 			document.getElementById("topics").innerHTML = returning
 		}
-		
-		
 
-		//Ideal format:
-		//NameOfTopic_"Dialogue #1 #2 #3"_Link1Topic_Link2Topic_Link3Topic
-		
 		function convert_data(text) {
 			var tabledata = text.split("_");
 			var topic_name = tabledata[0]
 			var dialogue = tabledata[1]
 			
-			dialogue = dialogue.replace("\n", "<br><br>")
+			dialogue = dialogue.replace("/n", "<br><br>")
 			
 			var i
 			for(i=2; i < tabledata.length; i++) {
-			
 				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ tabledata[i] +"'>" + tabledata[i] + "</a>"
 				add_topic(tabledata[i])
-			
-			
 				dialogue = dialogue.replace("#" + (i-1).toString(), formatted_link)
-				
-			
 			}
 
 			document.getElementById("dialogue").innerHTML = dialogue
 			update_topics()
 		
+		}	
+		
+		function goodbye() {
+			var desired_location = "byond://?src="+global_reference+";topic=goodbye"
+			window.location = desired_location
 		}
 		
+		function add_goodbye() {
+			document.getElementById("goodbye").innerHTML = "<button class='extended' onclick='goodbye()'>Goodbye</button>"
+		}
 		
+		function set_name(name) {
+			document.getElementById("character_name").innerHTML = name
+		}
+		
+		function done_loading() {
+			var desired_location = "byond://?done_loading=dialogue"
+			window.location = desired_location
+			add_goodbye()
+		}		
+		
+		done_loading()
 
 	</script>
 	

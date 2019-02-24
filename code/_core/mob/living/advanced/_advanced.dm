@@ -139,7 +139,6 @@ mob/living/advanced/Login()
 			attack_flags &= ~ATTACK_HELD_LEFT
 
 /mob/living/advanced/Initialize()
-	src << "Initializing character.."
 
 	if(!client || client.userdata.loaded_data["tutorial"])
 		add_species_organs()

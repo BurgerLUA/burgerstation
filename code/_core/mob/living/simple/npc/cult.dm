@@ -23,7 +23,7 @@
 	icon = 'icons/mob/living/simple/cult.dmi'
 	icon_state = "artificer"
 
-	damage_type = "artificer"
+	damage_type = null
 
 	ai = /ai/simple/artificer
 

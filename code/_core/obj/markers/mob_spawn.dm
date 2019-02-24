@@ -51,9 +51,16 @@
 
 
 /obj/marker/mob_spawn/marwani
-	name = "tutorial marwani spawnpoint"
+	name = "marwani spawnpoint"
 
 	type_to_spawn = /mob/living/advanced/human/npc/unique/marwani
+
+
+/obj/marker/mob_spawn/marwani/ship
+	name = "ship marwani spawnpoint"
+	type_to_spawn = /mob/living/advanced/human/npc/unique/marwani/ship
+
+
 
 /obj/marker/mob_spawn/diamond_with_flaw
 	name = "diamond spawnpoint"

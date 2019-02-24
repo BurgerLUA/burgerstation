@@ -21,8 +21,6 @@
 
 	var/auto_resist = FALSE
 
-	mouse_opacity = 0
-
 	plane = PLANE_MOB
 
 	see_invisible = 20

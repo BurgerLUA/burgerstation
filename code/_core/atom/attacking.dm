@@ -3,10 +3,10 @@
 
 /atom/proc/attack(var/atom/attacker,var/atom/victim,params) //The src attacks the victim, with the attacker taking responsibility
 
+	victim = victim.change_victim(attacker)
+
 	if(attacker && victim)
 		attacker.face_atom(victim)
-
-	victim = victim.change_victim(attacker)
 
 	if(!attacker.can_attack(victim,params))
 		return FALSE
@@ -20,7 +20,7 @@
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
 
 	if(!object_to_damage || !object_to_damage_with)
-		attacker << "You can't attack that!"
+		attacker.to_chat(span("notice","You can't attack that!"))
 		return FALSE
 
 	if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
@@ -34,6 +34,7 @@
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
 	if(!can_attack)
+		attacker << "HMM"
 		return FALSE
 
 	DT.attack_last = world.time
@@ -45,7 +46,7 @@
 	if(victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
 	if(victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
 
-
+	attacker << "DO DAMAGE"
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
 	return can_attack
