@@ -6,8 +6,6 @@
 	plane = PLANE_AREA
 	invisibility = 101
 
-	luminosity = 2
-
 	var/flags_area = FLAG_AREA_NONE
 
 	var/sound_environment = ENVIRONMENT_GENERIC
@@ -19,13 +17,22 @@
 	var/map_color_b = rgb(0,0,255,255)
 	var/map_color_a = rgb(0,0,0,255)
 
-
 	var/ambient_sound
 	var/list/random_sounds = list()
+
+	luminosity           = 2
+	var/dynamic_lighting = FALSE
+
+/area/New()
+	. = ..()
+
+	if(dynamic_lighting)
+		luminosity = 0
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	if(enterer.area != src)
+
 		if(enterer.area && is_mob(enterer))
 			var/mob/M = enterer
 			if(M.client)
@@ -48,3 +55,20 @@
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
 	return TRUE
 
+/area/proc/set_dynamic_lighting(var/new_dynamic_lighting = TRUE)
+	if (new_dynamic_lighting == dynamic_lighting)
+		return FALSE
+
+	dynamic_lighting = new_dynamic_lighting
+
+	if (new_dynamic_lighting)
+		for (var/turf/T in world)
+			if (T.dynamic_lighting)
+				T.lighting_build_overlay()
+
+	else
+		for (var/turf/T in world)
+			if (T.lighting_overlay)
+				T.lighting_clear_overlay()
+
+	return TRUE

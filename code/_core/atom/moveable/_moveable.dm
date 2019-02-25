@@ -11,6 +11,14 @@
 
 	var/ghost = FALSE
 
+/atom/movable/destroy()
+	var/turf/T = loc
+	if(opacity && istype(T))
+		T.reconsider_lights()
+
+	. = ..()
+
+
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 

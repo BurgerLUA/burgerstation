@@ -5,10 +5,7 @@ var/global/list/all_factions = list()
 	desc = "Store all the factions."
 	priority = SS_ORDER_FACTIONS
 
-/subsystem/faction/on_life()
-
+/subsystem/faction/Initialize()
 	for(var/v in subtypesof(/faction/))
 		var/faction/F = new v
 		all_factions[F.id] = F
-
-	return FALSE

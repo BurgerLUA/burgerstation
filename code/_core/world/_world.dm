@@ -1,3 +1,6 @@
+#define TICK_CHECK if(world.tick_usage >= 80) sleep(1)
+
+
 var/global/list/active_subsystems
 var/global/curtime = 0
 var/global/ticks = 0
@@ -19,14 +22,11 @@ var/global/ticks = 0
 	..()
 	life()
 
-
 /world/proc/update_status()
 
-	var/server_name = "Burgerstation 13"
+	var/server_name = "Burgerstation 13 RPG"
 	var/server_link = "https://discord.gg/yEaV92a"
-	//var/github_link = "https://github.com/BurgerLUA/burgerstation"
 	var/github_name = "Space Station 13 Code <b>FROM SCRATCH</b>"
-	var/gamemode = "Team Deathmatch"
 
 	var/minutes = floor(curtime / 600) % 60
 	var/hours = floor(curtime / 12000)
@@ -35,11 +35,10 @@ var/global/ticks = 0
 		minutes = "0[minutes]"
 
 	var/duration = "[hours]:[minutes]"
-	var/map = "Square Arena(64x64x1)"
+	var/map = "Nar'sie's Realm (128x128x10)"
 
 	//Format it.
 	status = "<a href='[server_link]'><b>[server_name]</b></a>] ([github_name])<br><br>"
-	status += "Currently playing: <b>[gamemode]</b><br>"
 	status += "Map: <b>[map]</b><br>"
 	status += "Round Duration: <b>[duration]</b>"
 
@@ -52,10 +51,6 @@ var/global/ticks = 0
 
 	update_status()
 
-	var/benchmark = world.time
-
-	world.log << "STARTING WORLD."
-
 	for(var/S in subtypesof(/subsystem/))
 		var/subsystem/new_subsystem = new S
 		if(!new_subsystem.priority)
@@ -63,25 +58,23 @@ var/global/ticks = 0
 			continue
 		active_subsystems[new_subsystem.priority] = new_subsystem
 
-	world.log << "Subsystem Creation took [DECISECONDS_TO_SECONDS(world.time - benchmark)] seconds."
+	var/benchmark = world.timeofday
 
-	benchmark = world.time
+	for(var/subsystem/S in active_subsystems)
+		var/local_benchmark = world.timeofday
+		S.Initialize()
+		world.log << "[S.name] Initialization: Took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds."
 
-	var/first_run = TRUE
+	world.log << "All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds."
 
 	spawn while(TRUE)
 		for(var/subsystem/S in active_subsystems)
-			if(!S.tick_rate || S.next_run <= ticks)
-				if(!S.on_life())
+			if(S.next_run <= ticks)
+				if(!S.tick_rate || !S.on_life())
 					active_subsystems -= S
 					qdel(S)
 					continue
 				S.next_run = ticks + S.tick_rate
-
-		if(first_run)
-			world.log << "First time initialization took [DECISECONDS_TO_SECONDS(world.time - benchmark)] seconds."
-
-		first_run = FALSE
 
 		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1

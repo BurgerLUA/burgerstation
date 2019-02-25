@@ -7,5 +7,4 @@
 /subsystem/health/on_life()
 	for(var/mob/living/M in all_mobs)
 		M.on_life()
-
 	return TRUE

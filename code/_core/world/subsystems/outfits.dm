@@ -5,13 +5,10 @@ var/global/list/all_outfits = list()
 	desc = "Store all the outfits."
 	priority = SS_ORDER_OUTFITS
 
-/subsystem/outfits/on_life()
-
+/subsystem/outfits/Initialize()
 	for(var/v in subtypesof(/outfit/))
 		var/outfit/O = new v
 		if(O.id)
 			all_outfits[O.id] = O
 		else
 			qdel(O)
-
-	return FALSE

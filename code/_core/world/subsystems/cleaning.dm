@@ -1,8 +1,8 @@
 var/list/objects_to_delete = list()
 
 /subsystem/delete/
-	name = "Class Subsystem"
-	desc = "Stores all the known classes in a list."
+	name = "Cleanup Subsystem"
+	desc = "Cleans up things that need to be deleted."
 	priority = SS_ORDER_DELETE
 	tick_rate = SECONDS_TO_TICKS(10)
 

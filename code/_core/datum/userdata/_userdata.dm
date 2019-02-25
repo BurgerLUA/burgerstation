@@ -92,58 +92,58 @@
 
 	A.update_icon()
 
-/userdata/proc/load_and_create_object(var/list/data,var/loc)
+/userdata/proc/load_and_create_object(var/list/object_data,var/loc)
 
-	var/o_type = data["type"]
+	var/o_type = object_data["type"]
 	var/obj/O = new o_type(loc)
 
 	//General Information
-	if(data["color"])
-		O.color = data["color"]
+	if(object_data["color"])
+		O.color = object_data["color"]
 
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
-		if(data["scroll_count"])
-			S.scroll_count = data["scroll_count"]
+		if(object_data["scroll_count"])
+			S.scroll_count = object_data["scroll_count"]
 		else
 			S.scroll_count = 0
 
 	if(is_weapon(O))
 		var/obj/item/weapon/W = O
-		if(data["open"])
-			W.open = data["open"]
+		if(object_data["open"])
+			W.open = object_data["open"]
 		else
 			W.open = FALSE
 
 	if(is_soulgem(O))
 		var/obj/item/soulgem/S = O
-		if(data["total_charge"])
-			S.total_charge = data["total_charge"]
+		if(object_data["total_charge"])
+			S.total_charge = object_data["total_charge"]
 
 
 	if(is_bullet(O))
 		var/obj/item/bullet/B = O
-		if(data["bullet_count"])
-			B.bullet_count = data["bullet_count"]
+		if(object_data["bullet_count"])
+			B.bullet_count = object_data["bullet_count"]
 		else
 			B.bullet_count = 1
 
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
-		if(data["stored_magazine"])
-			BG.stored_magazine = load_and_create_object(data["stored_magazine"],BG.loc)
-		if(data["stored_bullets"])
-			for(var/i=1, i <= length(data["stored_bullets"]), i++)
-				var/b_type = data["stored_bullets"][i]
+		if(object_data["stored_magazine"])
+			BG.stored_magazine = load_and_create_object(object_data["stored_magazine"],BG.loc)
+		if(object_data["stored_bullets"])
+			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
+				var/b_type = object_data["stored_bullets"][i]
 				var/obj/item/bullet/B = new b_type(BG.loc)
 				B.update_icon()
 				BG.stored_bullets += B
 
 	if(is_magazine(O))
 		var/obj/item/magazine/M = O
-		if(data["stored_bullets"])
-			for(var/i=1, i <= length(data["stored_bullets"]), i++)
-				var/b_type = data["stored_bullets"][i]
+		if(object_data["stored_bullets"])
+			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
+				var/b_type = object_data["stored_bullets"][i]
 				var/obj/item/bullet/B = new b_type(M.loc)
 				B.update_icon()
 				M.stored_bullets += B

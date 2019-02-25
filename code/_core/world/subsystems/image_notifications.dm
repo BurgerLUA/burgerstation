@@ -1,7 +1,5 @@
 var/global/list/all_notifications = list()
 
-
-
 /subsystem/image_notifications/
 	name = "Image Notifications"
 	desc = "Handles animations of pop-up image notifications."

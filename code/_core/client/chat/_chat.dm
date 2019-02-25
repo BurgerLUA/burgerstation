@@ -5,6 +5,9 @@ proc/broadcast(var/text_to_say as text)
 	for(var/mob/object in world)
 		object.to_chat(text_to_say)
 
+/proc/warning(var/text)
+	world.log << "## WARNING: [text]"
+
 proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as num)
 	if(!text_to_say)
 		return FALSE
