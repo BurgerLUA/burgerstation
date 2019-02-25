@@ -437,6 +437,14 @@
 #include "maps\RPG\001_centcomm.dmm"
 #include "maps\RPG\002_overworld_center.dmm"
 #include "maps\RPG\003_overworld_center_underground.dmm"
+#include "maps\RPG\004_overworld_north.dmm"
+#include "maps\RPG\005_overworld_north_underground.dmm"
+#include "maps\RPG\006_overworld_east.dmm"
+#include "maps\RPG\007_overworld_east_underground.dmm"
+#include "maps\RPG\007_overworld_west.dmm"
+#include "maps\RPG\008_overworld_west_underground.dmm"
+#include "maps\RPG\009_overworld_south.dmm"
+#include "maps\RPG\010_overworld_south_underground.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

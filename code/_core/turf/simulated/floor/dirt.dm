@@ -70,6 +70,10 @@
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 
+/turf/simulated/floor/colored/dirt/cave
+	name = "cave dirt"
+	color = "#493C2F"
+
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
 	color = "#726253"
