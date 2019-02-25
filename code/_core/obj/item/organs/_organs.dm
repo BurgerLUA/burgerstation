@@ -34,7 +34,7 @@
 
 	var/list/wound/wounds
 
-/obj/item/organ/examine(var/atom/examiner)
+/obj/item/organ/examine(var/mob/examiner)
 	..()
 	for(var/wound/W in wounds)
 		W.update_name()

@@ -40,7 +40,7 @@
 	name = "no entry"
 	var/message = "You cannot go that way."
 
-/obj/trigger/no_entry/on_trigger(var/atom/triggerer)
+/obj/trigger/no_entry/on_trigger(var/mob/triggerer)
 	triggerer.to_chat(span("notice",message))
 
 /obj/trigger/jumploc

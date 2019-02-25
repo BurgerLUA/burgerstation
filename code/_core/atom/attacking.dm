@@ -20,7 +20,9 @@
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
 
 	if(!object_to_damage || !object_to_damage_with)
-		attacker.to_chat(span("notice","You can't attack that!"))
+		if(is_mob(attacker))
+			var/mob/M = attacker
+			M.to_chat(span("notice","You can't attack that!"))
 		return FALSE
 
 	if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
@@ -61,7 +63,6 @@
 
 	var/area/A = get_area(src)
 	if(A && A.safe)
-		src.to_chat(span("notice","You can't attack in a safezone!"))
 		return FALSE
 
 	if(attack_last + get_attack_delay(victim,params) > world.time)

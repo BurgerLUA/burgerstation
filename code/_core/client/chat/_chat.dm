@@ -8,7 +8,7 @@ proc/broadcast(var/text_to_say as text)
 /proc/warning(var/text)
 	world.log << "## WARNING: [text]"
 
-proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as num)
+proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_type as num)
 	if(!text_to_say)
 		return FALSE
 
@@ -37,12 +37,12 @@ proc/display_message(var/atom/source, var/text_to_say as text, var/text_type as 
 				for(var/mob/object in range(source,VIEW_RANGE*3))
 					object.to_chat(format_speech(source,text_to_say,text_type))
 		if(TEXT_LOOC)
-			for(var/atom/object in range(source,VIEW_RANGE))
-				object.to_chat(format_speech(source,text_to_say,text_type))
+			for(var/mob/M in range(source,VIEW_RANGE))
+				M.to_chat(format_speech(source,text_to_say,text_type))
 
 		if(TEXT_OOC)
-			for(var/mob/object in world)
-				object.to_chat(format_speech(source,text_to_say,text_type))
+			for(var/mob/M in world)
+				M.to_chat(format_speech(source,text_to_say,text_type))
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
 

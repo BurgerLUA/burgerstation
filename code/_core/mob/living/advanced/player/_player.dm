@@ -1,3 +1,5 @@
+var/list/mob/living/advanced/player/all_players
+
 /mob/living/advanced/player/
 	name = "lost soul"
 	desc = "Seems a little smarter than most, you think."
@@ -9,6 +11,17 @@
 	class = "default"
 
 	var/dialogue_target_id
+
+
+/mob/living/advanced/player/Initialize()
+	..()
+	all_players += src
+
+/mob/living/advanced/player/destroy()
+	..()
+	all_players -= src
+
+
 
 /mob/living/advanced/player/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
 	. = ..()

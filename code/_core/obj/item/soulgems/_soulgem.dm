@@ -13,7 +13,7 @@
 /obj/item/soulgem/on_spawn()
 	total_charge = 1000
 
-/obj/item/soulgem/examine(var/atom/caller)
+/obj/item/soulgem/examine(var/mob/caller)
 	..()
 	caller.to_chat(span("notice","It has [total_charge] total charge."))
 

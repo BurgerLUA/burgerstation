@@ -69,7 +69,7 @@ obj/item/proc/update_owner(desired_owner)
 /obj/item/proc/can_be_worn()
 	return FALSE
 
-/obj/item/examine(var/atom/examiner)
+/obj/item/examine(var/mob/examiner)
 	..()
 
 	if(damage_type && all_damage_types[damage_type])

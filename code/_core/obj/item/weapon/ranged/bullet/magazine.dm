@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/
 	open = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/click_self(var/atom/caller)
+/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
 	caller.to_chat(span("notice","You cock \the [src]."))
 	eject_stored_bullets(caller,caller.loc)
 	load_bullet_from_magazine()

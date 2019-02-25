@@ -10,7 +10,7 @@
 	else
 		return FALSE
 
-/obj/item/weapon/ranged/bullet/pump/click_self(var/atom/caller)
+/obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller)
 
 	caller.to_chat(span("notice","You [action_name] \the [src]."))
 

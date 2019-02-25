@@ -10,7 +10,7 @@
 /atom/proc/dropped_by_object(caller,object)
 	return FALSE
 
-/atom/proc/examine(var/atom/examiner) //Middle clicking objects.
+/atom/proc/examine(var/mob/examiner) //Middle clicking objects.
 	examiner.to_chat(span("examine_title","[src.name]"))
 	examiner.to_chat(span("examine_description","\"[src.desc]\""))
 	examiner.to_chat(span("examine_description_long","[src.desc_extended]"))

@@ -30,7 +30,7 @@
 
 	..()
 
-/obj/item/bullet/examine(var/atom/examiner)
+/obj/item/bullet/examine(var/mob/examiner)
 	..()
 	if(is_spent)
 		examiner.to_chat("It is spent.")

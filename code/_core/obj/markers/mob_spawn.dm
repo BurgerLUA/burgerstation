@@ -101,17 +101,17 @@
 	color = "#00FF00"
 
 
-/obj/marker/mob_spawn/cultist
+/obj/marker/mob_spawn/cult/cultist
 	name = "cultist spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/cultist
 	color = "#00FF00"
 
-/obj/marker/mob_spawn/behemoth
+/obj/marker/mob_spawn/cult/behemoth
 	name = "behemoth spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/behemoth
 	color = "#FF0000"
 
-/obj/marker/mob_spawn/artificer
+/obj/marker/mob_spawn/cult/artificer
 	name = "artificer spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/artificer
 	color = "#FFFF00"

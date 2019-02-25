@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/
 	open = FALSE
 
-/obj/item/weapon/ranged/bullet/revolver/click_self(var/atom/caller)
+/obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)
 	open = !open
 
 	if(open)

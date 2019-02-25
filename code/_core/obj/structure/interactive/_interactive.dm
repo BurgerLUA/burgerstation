@@ -7,7 +7,7 @@ obj/structure/interactive/
 	var/interact_distance = 1
 
 
-obj/structure/interactive/proc/can_interact(var/atom/caller)
+obj/structure/interactive/proc/can_interact(var/mob/caller)
 	if(get_dist(src,caller) > interact_distance)
 		caller.to_chat("You're too far away!")
 		return FALSE

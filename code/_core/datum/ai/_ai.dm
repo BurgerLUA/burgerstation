@@ -165,8 +165,6 @@
 
 	return possible_targets
 
-
-
 /ai/simple/
 	name = "Simple AI"
 	simple = TRUE

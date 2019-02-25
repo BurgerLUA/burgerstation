@@ -53,7 +53,7 @@
 	name = replacetext(get_heal_name(),"%",name)
 	name = replacetext(get_bleed_name(),"%",name)
 
-/wound/proc/examine(var/atom/examiner)
+/wound/proc/examine(var/mob/examiner)
 	examiner.to_chat("It has \a [src]...")
 
 /wound/proc/get_severity_name()

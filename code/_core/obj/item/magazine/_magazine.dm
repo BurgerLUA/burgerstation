@@ -9,7 +9,7 @@
 	..()
 	update_icon()
 
-/obj/item/magazine/examine(var/atom/examiner)
+/obj/item/magazine/examine(var/mob/examiner)
 	..()
 	examiner.to_chat("it contains [length(stored_bullets)] bullets.")
 

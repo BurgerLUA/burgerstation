@@ -23,3 +23,7 @@
 // Yes, this implementation is faster than a min(max()) clamp, I've profiled it.
 #define Clamp(x, min, max) (x <= min ? min : (x >= max ? max : x))
 #define CLAMP01(x)         Clamp((x), 0, 1)
+
+
+
+#define BLOCK_DISTANCE(A1,A2) max(abs(A1.x - A2.x),abs(A1.y - A2.y))

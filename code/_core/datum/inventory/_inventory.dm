@@ -149,7 +149,7 @@
 	for(var/obj/item/C in owner.worn_objects)
 		if(C.item_slot & I.item_slot && (!C.ignore_other_slots && !I.ignore_other_slots))
 			if(messages)
-				to_chat(owner,span("notice","\The [C] prevents you from wearing \the [I]!"))
+				owner.to_chat(span("notice","\The [C] prevents you from wearing \the [I]!"))
 			return FALSE
 
 	if(is_inventory(I.loc))
