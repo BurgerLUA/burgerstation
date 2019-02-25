@@ -78,6 +78,10 @@
 	name = "beach sand"
 	color = "#FFE36B"
 
+/turf/simulated/floor/colored/sand/underwater
+	name = "bed sand"
+	color = "#AECA91"
+
 /turf/simulated/floor/colored/sand/desert
 	name = "desert sand"
 	color = "#FFC68C"

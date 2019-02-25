@@ -30,4 +30,3 @@
 
 /turf/simulated/floor/tile/cyan
 	color = "#44FF99"
-
