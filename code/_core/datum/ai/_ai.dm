@@ -37,16 +37,11 @@
 		attack_delay = max(attack_delay,owner.get_attack_delay())
 		movement_delay = max(movement_delay,owner.get_movement_delay())
 
-
-	//Randomize starting dicks so it's desynced with other AI units.
 	attack_ticks = rand(1,attack_delay)
 	movement_ticks = rand(1,movement_delay)
 	objective_ticks = rand(1,objective_delay)
 
 	start_turf = get_turf(owner)
-
-
-
 
 /ai/proc/on_life()
 	handle_objectives()
@@ -157,11 +152,9 @@
 
 /ai/proc/get_possible_targets()
 	var/list/possible_targets = list()
-	for(var/mob/living/L in view(radius_find_enemy,owner))
-		if(L == owner)
-			continue
-		if(should_attack_mob(L))
-			possible_targets += L
+	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
+		if(should_attack_mob(P))
+			possible_targets += P
 
 	return possible_targets
 
