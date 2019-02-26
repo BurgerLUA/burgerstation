@@ -40,7 +40,7 @@
 		if(O.click_on_object(caller,object,location,control,params))
 			return TRUE
 
-	if(the_hand && is_turf(the_target) && the_hand.attack(caller,the_target,params))
+	if(the_hand && the_hand.attack(caller,the_target,params))
 		return TRUE
 
 	return FALSE

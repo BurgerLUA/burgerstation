@@ -115,7 +115,7 @@ mob/living/advanced/Login()
 			talk_type = 0
 			update_icon()
 
-	if(move_delay <= 0 && ( adjust_mana(mana_regeneration) || adjust_stamina(stamina_regeneration) ))
+	if(adjust_mana(mana_regeneration) || (regen_delay <= 0 && adjust_stamina(stamina_regeneration)) )
 		update_health_elemement_icons()
 
 	if(life_ticks >= 10*4)
@@ -357,7 +357,7 @@ mob/living/advanced/Login()
 	add_species_colors()
 
 /mob/living/advanced/can_sprint()
-	if(stamina_current <= 5)
+	if(stamina_current <= 0)
 		return FALSE
 
 	return ..()

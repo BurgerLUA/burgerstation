@@ -35,6 +35,7 @@
 	var/karma = 0
 
 	var/move_mod = 2
+	var/real_move_mod = 2
 
 	var/attack_mode = 1
 

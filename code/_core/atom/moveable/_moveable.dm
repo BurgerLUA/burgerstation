@@ -1,6 +1,8 @@
 /atom/movable/
 	var/tmp/move_dir = 0
 	var/tmp/move_delay = 0
+	var/tmp/regen_delay = 0
+
 	var/movement_delay = 4
 	var/anchored = FALSE
 
@@ -18,7 +20,6 @@
 
 	. = ..()
 
-
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 
@@ -29,10 +30,12 @@
 		glide_size = TILE_SIZE/final_movement_delay
 		Move(get_step(src,move_dir),move_dir)
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
+		regen_delay = max(regen_delay,final_movement_delay*2)
 		return TRUE
 	else
 		if(adjust_delay)
 			move_delay = move_delay - adjust_delay
+			regen_delay = regen_delay - adjust_delay
 		return FALSE
 
 /atom/movable/proc/force_move(var/atom/new_loc)

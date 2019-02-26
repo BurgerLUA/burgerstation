@@ -1,6 +1,6 @@
 /mob/living/simple/npc/spider
 	name = "cave spider"
-	icon = 'icons/mob/living/simple/animal.dmi'
+	//icon = 'icons/mob/living/simple/spider.dmi'
 	icon_state = "guard"
 
 	damage_type = "spider"

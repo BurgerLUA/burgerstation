@@ -12,7 +12,6 @@
 	var/min = 0
 	var/max = 100
 	var/current = 0
-	var/offset = 2
 
 	var/mob/living/owner
 
@@ -38,16 +37,15 @@
 
 /obj/health/update_icon()
 
+	if(max == 0)
+		return
+
 	var/icon/base = icon(initial(icon),icon_state = icon_state)
 	var/icon/bar = icon(initial(icon),icon_state = "bar")
 	var/start_x = 0
 	var/end_x = 32
 	var/start_y = 0
-
-	if(max == 0)
-		return
-
-	var/end_y = offset + (current/max)*(32-offset)
+	var/end_y = 1 + (current/max)*(28)
 
 	bar.Blend(bar_color,ICON_MULTIPLY)
 	bar.Crop(start_x,start_y,end_x,end_y)

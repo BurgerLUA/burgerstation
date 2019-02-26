@@ -3,6 +3,9 @@
 
 /atom/proc/attack(var/atom/attacker,var/atom/victim,params) //The src attacks the victim, with the attacker taking responsibility
 
+	attacker << "STARTING ATTACK"
+	attacker << victim
+
 	victim = victim.change_victim(attacker)
 
 	if(attacker && victim)

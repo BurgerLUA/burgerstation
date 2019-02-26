@@ -14,6 +14,7 @@
 		P.dialogue_target_id = dialogue_id
 		open_menu(P,"dialogue")
 		return TRUE
+
 	return ..()
 
 /mob/living/advanced/human/npc/get_xp_multiplier()
