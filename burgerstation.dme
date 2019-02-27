@@ -215,6 +215,7 @@
 #include "code\_core\mob\living\simple\summon.dm"
 #include "code\_core\mob\living\simple\npc\_npc.dm"
 #include "code\_core\mob\living\simple\npc\cult.dm"
+#include "code\_core\mob\living\simple\npc\cyborg.dm"
 #include "code\_core\mob\living\simple\npc\spider.dm"
 #include "code\_core\obj\_obj.dm"
 #include "code\_core\obj\interaction.dm"

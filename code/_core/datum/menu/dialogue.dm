@@ -23,7 +23,7 @@
 	var/mob/living/advanced/player/P = user
 
 	var/dialogue/D = all_dialogue[P.dialogue_target_id]
-	D.set_topic(P,"hello")
+	D.add_stored_topics_if_exist(P)
 	run_function(usr,"set_name","'[D.name]'")
 
 /menu/dialogue/close(var/user)

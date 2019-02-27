@@ -8,8 +8,7 @@
 
 	dialogue_options["hello"] = list(
 		"Hello, is there something you wish to discuss? If not, you should go see #1.",
-		"the mayor",
-		"goodbye"
+		"the mayor"
 	)
 
 	dialogue_options["the mayor"] = list(

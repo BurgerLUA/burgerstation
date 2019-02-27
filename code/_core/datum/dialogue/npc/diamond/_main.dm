@@ -7,9 +7,7 @@
 	var/list/dialogue_options = list()
 
 	dialogue_options["hello"] = list(
-		"Oh, hello there.",
-		"the mayor",
-		"goodbye"
+		"Oh, hello there."
 	)
 
 	dialogue_options["the mayor"] = list(

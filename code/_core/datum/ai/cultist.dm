@@ -56,7 +56,7 @@
 		return
 
 	if(objective_attack && spawned_mobs < 5)
-		new /mob/living/simple/npc/harvester(owner.loc)
+		new /mob/living/simple/npc/cult/harvester(owner.loc)
 		spawned_mobs += 1
 
 	attack_ticks = 0
