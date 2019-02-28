@@ -317,6 +317,7 @@ mob/living/advanced/Login()
 
 	if(mob_species.default_color_hair && mob_species.default_icon_hair && mob_species.default_icon_state_hair)
 		change_organ_visual("hair_head", desired_icon = mob_species.default_icon_hair, desired_icon_state = mob_species.default_icon_state_hair, desired_color = mob_species.default_color_hair)
+		change_organ_visual("hair_face", desired_color = mob_species.default_color_hair)
 
 
 	/*

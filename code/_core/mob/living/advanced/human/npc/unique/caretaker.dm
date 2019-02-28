@@ -2,6 +2,7 @@
 	name = "Ilaeza Marwani"
 	desc = "Fucking liggers."
 	mob_species = /species/reptile_advanced/
+	sex = FEMALE
 	gender = FEMALE
 	dialogue_id = "marwani_dialogue"
 

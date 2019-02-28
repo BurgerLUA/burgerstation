@@ -2,7 +2,8 @@
 	name = "Diamond with Flaw"
 	desc = "Fucking trees."
 	mob_species = /species/diona/
-	gender = NEUTER
+	sex = NEUTER
+	gender = MALE
 	dialogue_id = "diamond_dialogue"
 
 /mob/living/advanced/human/npc/unique/diamond_with_flaw/Initialize()
