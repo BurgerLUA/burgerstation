@@ -15,7 +15,7 @@
 
 	var/menu/M = get_menu("dialogue")
 	var/list/dialogue_options = get_dialogue_options(P)
-	var/list/known_options = P.client.userdata.loaded_data["known_topics"]
+	var/list/known_options = P.client.savedata.loaded_data["known_topics"]
 	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
 
 	for(var/topic in dialogue_options)
@@ -36,8 +36,8 @@
 
 	for(var/i=2,i<=length(chosen_dialogue),i++)
 		final_topic += "_[chosen_dialogue[i]]"
-		if(!(chosen_dialogue[i] in P.client.userdata.loaded_data["known_topics"]))
-			P.client.userdata.loaded_data["known_topics"] += chosen_dialogue[i]
+		if(!(chosen_dialogue[i] in P.client.savedata.loaded_data["known_topics"]))
+			P.client.savedata.loaded_data["known_topics"] += chosen_dialogue[i]
 
 	return final_topic
 

@@ -80,7 +80,7 @@ obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,loc
 	if(!A.client)
 		return FALSE
 
-	var/userdata/U = A.client.userdata
+	var/savedata/client/mob/U = A.client.savedata
 
 	U.loaded_data["last_save"] = src.id
 	U.save_current_character()

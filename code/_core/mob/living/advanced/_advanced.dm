@@ -140,12 +140,12 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Initialize()
 
-	if(!client || client.userdata.loaded_data["tutorial"])
+	if(!client || client.savedata.loaded_data["tutorial"])
 		add_species_organs()
 		add_species_colors()
 		update_icon()
 	else
-		client.userdata.apply_data_to_mob(src)
+		client.savedata.apply_data_to_mob(src)
 
 	add_species_buttons()
 	add_species_health_elements()

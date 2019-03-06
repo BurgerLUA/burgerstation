@@ -2,14 +2,14 @@
 
 
 
-/userdata/
-	var/name = "Userdata"
+/savedata/
+	var/name = "savedata"
 	var/desc = "Data for a user."
 
 	var/client/owner
 	var/list/loaded_data = list()
 
-/userdata/proc/reset_data()
+/savedata/proc/reset_data()
 	loaded_data = list(
 		"name" = "Urist McRobust",
 		"tutorial" = 1,
@@ -32,7 +32,7 @@
 	)
 
 
-/userdata/New(var/client/new_owner)
+/savedata/New(var/client/new_owner)
 	reset_data()
 
 	owner = new_owner
@@ -44,7 +44,7 @@
 		loaded_data = load_most_recent_character()
 		owner.save_slot = loaded_data["id"]
 
-/userdata/proc/apply_data_to_mob(var/mob/living/advanced/A)
+/savedata/proc/apply_data_to_mob(var/mob/living/advanced/A)
 
 	//Name
 	A.name = loaded_data["name"]
@@ -93,7 +93,7 @@
 
 	A.update_icon()
 
-/userdata/proc/load_and_create_object(var/list/object_data,var/loc)
+/savedata/proc/load_and_create_object(var/list/object_data,var/loc)
 
 	var/o_type = object_data["type"]
 	var/obj/O = new o_type(loc)
@@ -155,7 +155,7 @@
 	return O
 
 
-/userdata/proc/save_current_character()
+/savedata/proc/save_current_character()
 
 	if(!owner)
 		return FALSE
@@ -221,17 +221,17 @@
 	else
 		owner << "Save failed. Please contact the server owner."
 
-/userdata/proc/get_ckey_path()
+/savedata/proc/get_ckey_path()
 	var/returning = replacetext(CKEY_PATH,"%CKEY",owner.ckey)
 	return returning
 
-/userdata/proc/get_character_path(var/character_id)
+/savedata/proc/get_character_path(var/character_id)
 	var/returning = "[CKEY_PATH][DATA_FORMAT]"
 	returning = replacetext(returning,"%CKEY",owner.ckey)
 	returning = replacetext(returning,"%CID",character_id)
 	return returning
 
-/userdata/proc/create_new_character(var/character_id)
+/savedata/proc/create_new_character(var/character_id)
 	owner << "Attempting to create character with the id of [character_id]."
 	if(text2num(character_id) > MAX_CHARACTERS)
 		owner << "You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"
@@ -241,7 +241,7 @@
 
 	return TRUE
 
-/userdata/proc/write_json_data_to_id(var/character_id,var/json_data)
+/savedata/proc/write_json_data_to_id(var/character_id,var/json_data)
 
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
@@ -251,7 +251,7 @@
 	var/data = json_encode(json_data)
 	return text2file(data,get_character_path(character_id))
 
-/userdata/proc/load_json_data_from_id(var/character_id)
+/savedata/proc/load_json_data_from_id(var/character_id)
 
 	var/filename = get_character_path(character_id)
 	var/data = file2text(filename)
@@ -262,20 +262,20 @@
 
 	return json_decode(data)
 
-/userdata/proc/get_character_files()
+/savedata/proc/get_character_files()
 	var/list/found_files = flist(get_ckey_path())
 	return found_files
 
-/userdata/proc/has_character()
+/savedata/proc/has_character()
 	return length(get_character_files())
 
-/userdata/proc/check_if_no_characters()
+/savedata/proc/check_if_no_characters()
 	if(has_character())
 		return FALSE
 	else
 		return create_new_character("01")
 
-/userdata/proc/get_next_character_id()
+/savedata/proc/get_next_character_id()
 
 	var/list/file_numbers = list()
 
@@ -295,7 +295,7 @@
 	else
 		return "[best_number]"
 
-/userdata/proc/load_most_recent_character()
+/savedata/proc/load_most_recent_character()
 	var/list/file_paths = get_character_files()
 
 	var/best_date = 0
@@ -312,14 +312,14 @@
 
 	return best_data
 
-/userdata/proc/get_proper_id_from_filepath(var/file_string)
+/savedata/proc/get_proper_id_from_filepath(var/file_string)
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
 
-/userdata/proc/get_proper_id_from_filename(var/file_string)
+/savedata/proc/get_proper_id_from_filename(var/file_string)
 	return replacetext(replacetext(file_string,"character_",""),".json","")
 
-/userdata/proc/get_item_data(var/obj/item/I)
+/savedata/proc/get_item_data(var/obj/item/I)
 	if(!I)
 		return list()
 
@@ -372,7 +372,7 @@
 
 	return returning_list
 
-/userdata/proc/generate_blend_data(var/atom/A)
+/savedata/proc/generate_blend_data(var/atom/A)
 
 	var/list/returning_list = list()
 	for(var/id in A.additional_blends)
@@ -404,7 +404,7 @@
 
 	return returning_list
 
-/userdata/proc/apply_blend_data(var/atom/A, var/list/blend_data)
+/savedata/proc/apply_blend_data(var/atom/A, var/list/blend_data)
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
 		var/desired_id = value_or_null(blend_list,"id")

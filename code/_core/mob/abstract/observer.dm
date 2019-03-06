@@ -42,7 +42,7 @@
 	set category = "Data"
 
 	var/client/C = src.client
-	var/userdata/U = C.userdata
+	var/savedata/client/mob/U = C.savedata
 
 	if(U.create_new_character(U.get_next_character_id()))
 		var/mob/living/advanced/player/P = new(pick(spawnpoints_new_character),client)
@@ -58,7 +58,7 @@
 	set category = "Data"
 
 	var/client/C = src.client
-	var/userdata/U = C.userdata
+	var/savedata/client/mob/U = C.savedata
 
 	if(!U.has_character())
 		src << "You don't have a character to load! Please create a new character."

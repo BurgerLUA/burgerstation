@@ -6,6 +6,7 @@ var/global/list/all_clients = list()
 /client/
 	var/button_tracker/button_tracker
 	var/macros/macros
+	dir = EAST
 	fps = FPS_CLIENT
 	preload_rsc = 1
 
@@ -15,7 +16,7 @@ var/global/list/all_clients = list()
 
 	var/zoom_level = 2
 
-	var/userdata/userdata
+	var/savedata/client/mob/savedata
 
 	var/save_slot //The character slot that the client wishes to overwrite.
 
@@ -58,8 +59,8 @@ var/global/list/all_clients = list()
 	known_inventory = list()
 	known_buttons = list()
 
-	if(!userdata)
-		userdata = new(src)
+	if(!savedata)
+		savedata = new(src)
 
 	if(usr)
 		return ..()
@@ -243,4 +244,4 @@ var/global/list/all_clients = list()
 	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 
 /client/proc/save_current_character()
-	userdata.save_current_character()
+	savedata.save_current_character()

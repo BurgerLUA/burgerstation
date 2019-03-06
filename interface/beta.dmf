@@ -204,6 +204,7 @@ window "chat_say"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Say"
 		titlebar = false
@@ -293,6 +294,7 @@ window "main"
 		size = 800x20
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = ""
 		text = ""
 	elem "button_chat"
@@ -301,6 +303,7 @@ window "main"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ""
@@ -353,6 +356,16 @@ window "map"
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 32
 		zoom = 1
+	elem "popup"
+		type = BROWSER
+		pos = 60,40
+		size = 680x680
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		is-visible = false
+		saved-params = ""
+		auto-format = false
 	elem "dialogue"
 		type = BROWSER
 		pos = 80,440

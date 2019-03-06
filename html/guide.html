@@ -1,0 +1,355 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				font-size:18px;
+
+				padding:0px;
+				margin:0px;
+			}
+			button.small {
+				background:url('button_blue.png');
+				width: 20px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;
+			}
+			button.small:disabled {
+				background:url('button_grey.png');
+			}
+			button.extended {
+				background:url('button_blue_extended.png');
+				width: 120px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;				
+			}
+			button.extended:disabled {
+				background:url('button_green_extended.png');
+			}
+			table{
+				padding:0px;
+				margin:0px;
+				border: 2px solid #3D5E80;
+				text-align:center;
+			}
+			table#main{
+				width: 100%;
+				height: 100%;		
+			}
+			table#index{
+				text-align:left;
+			}
+			
+			.padding32 {
+				padding: 32px;
+			}	
+			
+			th,td {
+				border: 2px solid #5D96A0;
+				height:auto;
+				width:auto;
+				font-size: 18px;
+				font-weight:normal;
+				padding:8px;
+			}
+			#content {
+				height:100%;
+				vertical-align: top;
+				text-align: left;
+				padding: 32px;
+			}
+			h1 {
+				padding:0px;
+				margin:0px;
+				font-size: 36px;
+				text-decoration: underline;
+			}
+			li {
+				font-size: 18px;
+				padding:0px;
+				margin:0px;
+				font-weight:normal;
+				padding-top:12px;
+			}
+			hr {
+				margin:18px;
+			}
+			p {
+				text-indent: 2em;
+				padding:0px;
+				margin:0px;
+				margin-bottom:32px;
+				text-align: justify;
+				text-justify: inter-word;
+			}
+			a{
+				color:#96F1FF;
+			
+			}
+			a:hover{
+				color:#969FFF;
+			}
+			
+			.key {
+				border: 2px solid #5D96A0;
+				padding:0px;
+				margin:0px;
+				width:50px;
+			}
+			
+			.keyrow {
+				padding:0px;
+				margin:0px;			
+				height:50px;
+			}
+			
+			.key_large {
+				border: 2px solid #5D96A0;
+			}
+			
+			.keyrow {
+				width: 100%;
+			}
+			
+			#keyboard {
+				width:100%;
+			}
+			.movement {
+				background-color: rgba(93,150,160,0.5);
+			}
+			.quick {
+				background-color: rgba(150,93,160,0.5);
+			}
+			.none {
+				border: 0px;
+			}
+
+	
+		</style>
+	</head>
+	<body>
+		<table id='main'>
+			<tr height='62px'>
+				<th>
+					<h1>Quickstart Guide</h1>
+				</th>
+			</tr>
+			<tr height='62px'>
+				<th>This is the Official Quickstart guide to Nar-sie's realm. Reading this is optional as most of this is explained in-game through the story, however if you are not interested in the story, it is recommended that you read this.</th>
+			</tr>
+			<tr>
+				<th id='content'>
+					<a name='story'></a>
+					<h1>The Story So Far</h1>
+					<p>The year is 2519. Humankind has conquered and teraformed several different planets in an attempt to obtain as much resources as possible in the name of prosperity, safety, and greed. Various scientific, medical, and religious discoveries have been made since then, such as the discovery of several other sentient lifeforms and the creation of a fully functioning sentient supercomputer, or Artificial Intelligence.
+					Despite the many advancements of human technology, the wealthy and powerful still rule. However it is not kings nor leaders who rule, but mega-corporations with enough capital to buy out any government entity forty times over. The masses are complicit as war has been completely eliminated, and crime only affects those who "chose" to live in poverty by rejecting a corporate entity as their overlord. Those who live in this lifestyle are said not to be pitied, as it is claimed that those in poverty usually align with the likes of ultra-terrorist organizations such as the Communist controlled Syndicate or the Fascist run Federation.
+					You, however, work at one of the largest mega-corporations in the galaxy: NanoTrasen. It's total market share in food, medicine, weapons, and property has surpassed all it's competitors several times over for the past 200 years. You grew up eating NanoTrasen food, living in NanoTrasen apartments, going to a NanoTrasen school, graduating at a NanoTrasen University, working at a NanoTrasen fast food joint while under a NanoTrasen healthcare provider, wiping your own ass with NanoTrasen toilet paper, and masturbating to NanoTrasen sponsored pornography. You eat, breath, and live NanoTrasen, so it is only natural that you work on a NanoTrasen space station.</p>
+
+					<table id='index'><tr><th class='padding32'>
+					<h2>Table of Contents</h2>
+					
+					<a href='#controls'>1.0 - Controls</a><br>
+					&nbsp;&nbsp;<a href='#looting'>2.1 - Heads Up Display</a><br>
+					&nbsp;&nbsp;<a href='#looting'>2.2 - Chatboxes</a><br>
+					&nbsp;&nbsp;<a href='#looting'>2.3 - Dialogue</a><br>
+					&nbsp;&nbsp;<a href='#looting'>2.4 - Command Bar</a><br>					
+					
+					<a href='#getting_started'>1.0 - Getting Started</a><br>
+					&nbsp;&nbsp;<a href='#character_creation'>1.1 - Character Creation</a><br>
+					&nbsp;&nbsp;<a href='#saving'>1.1 - Saving</a><br>
+					&nbsp;&nbsp;<a href='#death'>1.2 - Death</a><br>
+					&nbsp;&nbsp;<a href='#karma'>1.3 - Karma</a><br>
+					&nbsp;&nbsp;<a href='#looting'>1.4 - Looting</a><br>
+
+					</th></tr></table>
+					
+					
+					
+					<a name='controls'></a>
+					<h1>Controls and Interface</h1>
+					
+					<p>While there are some on-screen buttons, the game's controls are designed to be able to be exclusively played with a keyboard. The server's controls currently support 8-way walk, running, and sprint for the best character movement experience. Hotkeys can also be assigned to items on the fly using our unique quick tab system, as described later below.</p>
+					
+					
+					<table id='keyboard'></table>
+					
+					
+					<a name='getting_started'></a>
+					<h1>Getting Started</h1>
+					<p>It's important to familiarize yourself with the rules first. If you have not read them, you should do so now before continuing. Secondly, you should ensure that you have a somewhat stable internet connection. It is recommend that your ping does not exceed 400ms while playing, however if you believe your connection might be an issue, you should enable an option in combat preferences called "Auto-Attack" that will automatically attack the nearest hostile target every second. Thirdly, understand that the game contains blood, gore, violence, and online interaction. If you cannot handle these themes then it is suggested that you do not play this game.</p>
+
+					<a name='character_creation'></a>
+					<h2>Character Creation</h2>
+					<p>Once you're done the above, you should go ahead and create your own character by pressing the "Create Character" button. You'll be greeted to a new window where you can customize the character you will be playing. Currently, you can only start as a Human, but depending on your actions in the world, this can change along with other appearance options. Once you've created your character, you will be able to choose your starting class. Choose carefully, as your starting class cannot change once it is selected. After you are done making your character, you will spawn in the tutorial level, or the prologue. Complete the short tutorial provided and you'll spawn in the main world.</p>
+					
+					<a name='saving'></a>
+					<h2>Saving</h2>
+					<p>Once you've completed the short tutorial, it is recommended that you activate a wishgranter to save your progress. Wishgranters are the bright doorway-like objects located in the center of safezones that allow you to travel between all discovered wishgranters safely, and as mentioned earlier, save your progress. Note that your progress is automatically saved whenever you die, so there is no way to avoid the penalties of death as described below.</p>			
+					
+					<a name='death'></a>
+					<h2>Death</h2>
+					<p style='margin:0px;'>You will die. And a lot. You may die by other players, or by enemies. You might die because you fell or stepped in lava. You may lose items that are valuable to you, you may get upset, you may get angry. This is completely normal and should be expected. The point is: You will die. On most servers you will need a very good reason to kill someone, however on this server you can kill or be killed without a reason needed or provided. If you do not wish to die, it is suggested that you do the following:
+					<ul style='margin:0px;margin-bottom:8px;'>
+						<li>Avoid players with low karma (see below).</li>
+						<li>Maintain a positive karma and use karma related spells.</li>
+						<li>Find and play with someone you trust.</li>
+						<li>Avoid areas that are difficult at low levels, such as dungeons or underground areas.</li>
+						<li>Find possible ways to cheat death or loosing your items...</li>
+					</ul>
+					Thankfully, not everything is lost when you die. On death, you will respawn with all your attributes and skills, however any equipment you were carrying will be dropped. Safezones also exist that protect you and other players from being attacked. Your character will be notified if they leave or enter a safezone. Upon creation of a new character, you will be placed in a safe zone where you can get familiar with the game's mechanics.
+					</p>
+					
+					<a name='karma'></a>
+					<h2>Karma</h2>
+					<p style='margin:0px;'>Your Karma will go up or down depending on your actions in the world. Generally, your Karma will go up if you help people and down if you harm people. Exceptions apply when harming those with low karma; in some cases killing a player with an exceptionally low karma will grant a karma bonus to yourself. While players with negative karma will never be punished by administrators, there are some in character consequences to beware of when having low karma, including:
+					<ul style='margin:0px;margin-bottom:8px;'>
+						<li>Occasional Bounty Hunters</li>
+						<li>Weakness to certain attacks</li>
+						<li>No karma penalty given to the other player when killed</li>
+						<li>Players know you have low karma by examining you</li>
+						<li>Possibly a different outcome with the main story</li>
+					</ul>
+					It is arguable that having high karma is also negative. High karma players are usually desirable targets by players intentionally willing to decrease their karma, as killing players with high karma will decrease your karma even lower compared to players of neutral karma. However, players with high karma will have access to special spells, abilities, and powers that prevent other players from damaging them as long as they maintain a high karma. In short, if you're looking for a PvP experience, you should not worry about having high karma. If you're strictly interested in PvE content, it is wise to keep a positive karma rating.</p>
+					
+					<a name='looting'></a>
+					<h2>Looting</h2>
+					<p>Items can be obtained in various places throughout the world, including safezones. Low level items can be obtained in low level areas, while high level items can be obtained in high level areas. The best loot is usually located in dangerous dungeons, and the worst is usually scattered around safezones. If you're in need of items, but you're too afraid to go out in the wilderness unprepared, then you can try your luck at scavenging containers inside the safezone for supplies, or perhaps begging other players for them. Please note that begging for items excessively in certain areas, or harassing people for them may result in administrative action depending on how annoying you are. Alternatively, if you wish to risk the karma penalty, you can hunt down other players to kill or intimidate them into giving them your items.</p>
+					<br><br>
+					<a name='hud'></a>
+					<h1>Information and Heads Up Display</h1>					
+					
+					You should next get familiar with the HUD (Heads up Display) as it contains important information about your character, your items, and your surroundings.
+					
+					INSERT SCREENSHOT HERE
+					
+					<table width='100%'>
+						<tr>
+							<td><b>A</b><br>Health, Stamina, and Mana</td>
+							<td><b>B</b><br>Targeting Widget</td>
+							<td><b>C</b><br>Interaction Intent</td>
+							<td><b>D</b><br>Defense Toggles</td>
+							<td><b>E</b><br>Resist Buttons</td>
+							<td><b>F</b><br>Speed Toggle</td>
+						</tr>
+						<tr>
+							<td><b>G</b><br>Left Hand</td>
+							<td><b>H</b><br>Right Hand</td>
+							<td><b>I</b><br>Inventory</td>
+							<td><b>J</b><br>Inventory Toggle</td>
+							<td><b>K</b><br>Quick Action Bar</td>
+							<td><b>K</b><br>Status Effects</td>
+						</tr>
+						<tr>
+							<td><b>L</b><br>Menu Options</td>
+							<td><b>M</b><br>Examine Information</td>
+							<td><b>N</b><br>Chat Tabs</td>
+							<td><b>O</b><br>Chat Box</td>
+							<td><b>P</b><br>Chat Bar</td>
+							<td><b>Q</b><br>Quick Button</td>
+						</tr>
+						
+					</table>
+					
+					
+					
+					
+					<a name='movement_and_controls'></a>
+					<h1>Movement and Controls</h1>
+					If you played Space Station 13 before, you'll notice most of the controls may be different than what you are used to. To move, use WASD or the ARROW KEYS. The server supports 8 directional movement, so you can use different combinations of the keys to move in a certain direction. To move at a higher speed, hold down SHIFT. To move at a slower speed, hold down ALT.
+					
+					
+					
+				</th>
+			</tr>
+		
+		
+		</table>
+		
+		
+		
+	</body>
+	
+	
+	
+	<script>
+	
+		function generateKeyboard() {
+		
+			var colors = {
+				"rgba(93,150,160,0.5)":["W","A","S","D","L SHIFT","L ALT","R SHIFT","R ALT","SPACE","L CTRL","R CTRL","&#8593;","&#8592;","&#8595;","&#8594;"], //Movement
+				"rgba(150,93,160,0.5)":["&#49;","&#50;","&#51;","&#52;","&#53;","&#54;","&#55;","&#56;","&#57;","&#48;"], //Quick Tabs
+				"rgba(150,160,93,0.5":["F1","F2","F3","F4","&#126;","ESC"], //Menus
+				"rgba(158,93,93,0.5":["T","Y","U","ENTER","TAB"], //Chat
+				"rgba(90,106,153)":["Q","E","R","F","C","X","Z"] //Items
+				
+			}
+		
+			var keys = [
+				{"ESC":1,"n1":0,"F1":1,"F2":1,"F3":1,"F4":1,"n2":0,"F5":1,"F6":1,"F7":1,"F8":1,"n3":0,"F9":1,"F10":1,"F11":1,"F12":1},
+				{"n1":0},
+				{"&#126;":1,"&#49;":1,"&#50;":1,"&#51;":1,"&#52;":1,"&#53;":1,"&#54;":1,"&#55;":1,"&#56;":1,"&#57;":1,"&#48;":1,"-":1,"+":1,"Backspace":3,"n1":0,"INS":1,"HOME":1,"PAGE UP":1},
+				{"TAB":2,"Q":1,"W":1,"E":1,"R":1,"T":1,"Y":1,"U":1,"I":1,"O":1,"P":1,"[":1,"]":1,"&#92;":2,"n1":0,"DEL":1,"END":1,"PAGE DOWN":1},
+				{"CAPS LOCK":2,"A":1,"S":1,"D":1,"F":1,"G":1,"H":1,"J":1,"K":1,"L":1,";":1,"'":1,"ENTER":3},
+				{"L SHIFT":3,"Z":1,"X":1,"C":1,"V":1,"B":1,"N":1,"M":1,",":1,".":1,"/":1,"R SHIFT":3,"n1":0,"n2":0,"&#8593;":1},
+				{"L CTRL":2,"&nbsp;":1,"L ALT":2,"SPACE":6,"R ALT":2,"&nbsp;&nbsp;":1,"R CTRL":2,"n1":0,"&#8592;":1,"&#8595;":1,"&#8594;":1}
+			]
+			
+			var table_content = ""
+			
+			for(var row_key in keys) {
+				var row_value = keys[row_key]
+				table_content += "<tr class='keyrow'>"
+				for(var col_key in row_value) {
+					var col_value = row_value[col_key]
+					
+					var desired_span = parseInt(col_value)
+					
+					if(col_value == 0)
+						table_content += "<th colspan='1' class='key none'></th>"
+					else {
+						var addition = "key"
+						if(desired_span > 2) {
+							addition = "key_large"
+						}
+						
+						var style_override = ""
+
+						for(var color_key in colors) {
+							var color_value = colors[color_key]
+							if(color_value.includes(col_key))
+								style_override = "style='background-color:" + color_key + "'"
+						}
+
+						table_content += "<th " + style_override + " class='"+addition+"' colspan='" + desired_span.toString() + "'>" + col_key +"</th>"
+					}
+				}
+				table_content += "</tr>"
+			}
+			
+			document.getElementById("keyboard").innerHTML = table_content
+			
+
+		
+		
+		
+		}
+	
+	
+	generateKeyboard()
+	
+	
+	</script>
+	
+	
+	
+</html>
