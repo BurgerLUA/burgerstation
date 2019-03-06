@@ -58,3 +58,90 @@
 	O.update_icon()
 
 	return O
+
+
+/savedata/proc/get_item_data(var/obj/item/I)
+	if(!I)
+		return list()
+
+	var/list/returning_list = list()
+	returning_list["type"] = I.type
+	if(I.color && lowertext(I.color) != "#ffffff")
+		returning_list["color"] = I.color
+
+	var/list/blend_data = generate_blend_data(I)
+	if(length(blend_data))
+		returning_list["blend_data"] = blend_data
+
+	if(is_soulgem(I))
+		var/obj/item/soulgem/S = I
+		if(S.total_charge)
+			returning_list["total_charge"] = S.total_charge
+
+	if(is_weapon(I))
+		var/obj/item/weapon/W = I
+		if(W.open)
+			returning_list["open"] = TRUE
+
+	if(is_scroll(I))
+		var/obj/item/weapon/ranged/magic/scroll/S = I
+		if(S.scroll_count)
+			returning_list["scroll_count"] = S.scroll_count
+
+	if(is_bullet(I))
+		var/obj/item/bullet/B = I
+		if(B.bullet_count > 1)
+			returning_list["bullet_count"] = B.bullet_count
+
+	if(is_bullet_gun(I))
+		var/obj/item/weapon/ranged/bullet/BG = I
+		if(BG.stored_magazine)
+			returning_list["stored_magazine"] = get_item_data(BG.stored_magazine)
+		if(length(BG.stored_bullets))
+			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
+			for(var/i=1,i<=length(BG.stored_bullets),i++)
+				var/obj/item/bullet/B = BG.stored_bullets[i]
+				if(B) returning_list["stored_bullets"][i] = B.type
+
+	if(is_magazine(I))
+		var/obj/item/magazine/M = I
+		if(length(M.stored_bullets))
+			returning_list["stored_bullets"] = new/list(length(M.stored_bullets))
+			for(var/i=1,i<=length(M.stored_bullets),i++)
+				var/obj/item/bullet/B = M.stored_bullets[i]
+				if(B) returning_list["stored_bullets"][i] = B.type
+
+	return returning_list
+
+
+/savedata/proc/generate_blend_data(var/atom/A)
+
+	var/list/returning_list = list()
+	for(var/id in A.additional_blends)
+
+		var/icon_blend/IB = A.additional_blends[id]
+
+		if(IB.should_save)
+			returning_list[id] = list()
+		else
+			continue
+
+		if(IB.id)
+			returning_list[id]["id"] = IB.id
+
+		if(IB.icon)
+			returning_list[id]["icon"] = IB.icon
+
+		if(IB.icon_state)
+			returning_list[id]["icon_state"] = IB.icon_state
+
+		if(IB.color)
+			returning_list[id]["color"] = IB.color
+
+		if(IB.blend)
+			returning_list[id]["blend"] = IB.blend
+
+		if(IB.special_type)
+			returning_list[id]["special_type"] = IB.special_type
+
+	return returning_list

@@ -26,3 +26,6 @@
 			index++
 
 		return "[output][and_text][quote][input[index]][quote]"
+
+
+#define value_or_null(the_list,key) the_list[key] ? the_list[key] : null

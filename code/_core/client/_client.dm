@@ -6,7 +6,7 @@ var/global/list/all_clients = list()
 /client/
 	var/button_tracker/button_tracker
 	var/macros/macros
-	dir = EAST
+
 	fps = FPS_CLIENT
 	preload_rsc = 1
 
@@ -17,6 +17,7 @@ var/global/list/all_clients = list()
 	var/zoom_level = 2
 
 	var/savedata/client/mob/savedata
+	var/savedata/client/connection_history/connection_data
 
 	var/save_slot //The character slot that the client wishes to overwrite.
 
@@ -68,6 +69,9 @@ var/global/list/all_clients = list()
 	welcome()
 	make_lobby(pick(lobby_spawnpoints))
 	play_sound('sounds/music/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
+
+	if(!connection_data)
+		connection_data = new(src)
 
 /client/proc/make_lobby(var/desired_loc)
 	src.mob = new /mob/abstract/observer/no_move(desired_loc,src)

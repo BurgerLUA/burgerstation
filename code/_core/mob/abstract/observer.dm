@@ -60,13 +60,13 @@
 	var/client/C = src.client
 	var/savedata/client/mob/U = C.savedata
 
-	if(!U.has_character())
+	if(!U.has_files())
 		src << "You don't have a character to load! Please create a new character."
 		return
 
 	var/list/name_to_choice = list()
 
-	for(var/file in U.get_character_files())
+	for(var/file in U.get_files())
 		var/filenum = U.get_proper_id_from_filename(file)
 		var/list/local_loaded_data = U.load_json_data_from_id(filenum)
 		var/name = "[filenum]: [local_loaded_data["name"]]"

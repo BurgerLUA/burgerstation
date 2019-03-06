@@ -17,7 +17,7 @@
 	return replacetext(replacetext(file_string,"character_",""),".json","")
 
 /savedata/client/mob/proc/load_most_recent_character()
-	var/list/file_paths = get_character_files()
+	var/list/file_paths = get_files()
 
 	var/best_date = 0
 	var/best_time = 0
@@ -33,107 +33,8 @@
 
 	return best_data
 
-
-
-/savedata/client/mob/proc/get_item_data(var/obj/item/I)
-	if(!I)
-		return list()
-
-	var/list/returning_list = list()
-	returning_list["type"] = I.type
-	if(I.color && lowertext(I.color) != "#ffffff")
-		returning_list["color"] = I.color
-
-	var/list/blend_data = generate_blend_data(I)
-	if(length(blend_data))
-		returning_list["blend_data"] = blend_data
-
-	if(is_soulgem(I))
-		var/obj/item/soulgem/S = I
-		if(S.total_charge)
-			returning_list["total_charge"] = S.total_charge
-
-	if(is_weapon(I))
-		var/obj/item/weapon/W = I
-		if(W.open)
-			returning_list["open"] = TRUE
-
-	if(is_scroll(I))
-		var/obj/item/weapon/ranged/magic/scroll/S = I
-		if(S.scroll_count)
-			returning_list["scroll_count"] = S.scroll_count
-
-	if(is_bullet(I))
-		var/obj/item/bullet/B = I
-		if(B.bullet_count > 1)
-			returning_list["bullet_count"] = B.bullet_count
-
-	if(is_bullet_gun(I))
-		var/obj/item/weapon/ranged/bullet/BG = I
-		if(BG.stored_magazine)
-			returning_list["stored_magazine"] = get_item_data(BG.stored_magazine)
-		if(length(BG.stored_bullets))
-			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
-			for(var/i=1,i<=length(BG.stored_bullets),i++)
-				var/obj/item/bullet/B = BG.stored_bullets[i]
-				if(B) returning_list["stored_bullets"][i] = B.type
-
-	if(is_magazine(I))
-		var/obj/item/magazine/M = I
-		if(length(M.stored_bullets))
-			returning_list["stored_bullets"] = new/list(length(M.stored_bullets))
-			for(var/i=1,i<=length(M.stored_bullets),i++)
-				var/obj/item/bullet/B = M.stored_bullets[i]
-				if(B) returning_list["stored_bullets"][i] = B.type
-
-	return returning_list
-
-
-
-
-
-/savedata/client/mob/proc/generate_blend_data(var/atom/A)
-
-	var/list/returning_list = list()
-	for(var/id in A.additional_blends)
-
-		var/icon_blend/IB = A.additional_blends[id]
-
-		if(IB.should_save)
-			returning_list[id] = list()
-		else
-			continue
-
-		if(IB.id)
-			returning_list[id]["id"] = IB.id
-
-		if(IB.icon)
-			returning_list[id]["icon"] = IB.icon
-
-		if(IB.icon_state)
-			returning_list[id]["icon_state"] = IB.icon_state
-
-		if(IB.color)
-			returning_list[id]["color"] = IB.color
-
-		if(IB.blend)
-			returning_list[id]["blend"] = IB.blend
-
-		if(IB.special_type)
-			returning_list[id]["special_type"] = IB.special_type
-
-	return returning_list
-
-
-/savedata/client/mob/proc/get_character_files()
-	var/list/found_files = flist(get_folder())
-	return found_files
-
-/savedata/client/mob/proc/has_character()
-	return length(get_character_files())
-
 /savedata/client/mob/proc/check_if_no_characters()
-	if(has_character())
+	if(has_files())
 		return FALSE
 	else
 		return create_new_character("01")
@@ -142,7 +43,7 @@
 
 	var/list/file_numbers = list()
 
-	for(var/v in get_character_files())
+	for(var/v in get_files())
 		file_numbers += text2num(get_proper_id_from_filename(v))
 
 	var/best_number = 0
@@ -160,7 +61,7 @@
 
 /savedata/client/mob/proc/load_json_data_from_id(var/character_id)
 
-	var/filename = get_character_path(character_id)
+	var/filename = get_file(character_id)
 	var/data = file2text(filename)
 
 	if(!data)
@@ -174,17 +75,10 @@
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
 	json_data["last_saved_time"] = get_time()
-	fdel(get_character_path(character_id))
+	fdel(get_file(character_id))
 	src << "Sucessfully wrote data [character_id]: [json_data["name"]]."
 	var/data = json_encode(json_data)
-	return text2file(data,get_character_path(character_id))
-
-
-/savedata/client/mob/proc/get_character_path(var/character_id)
-	var/returning = "[CKEY_PATH][DATA_FORMAT]"
-	returning = replacetext(returning,"%CKEY",owner.ckey)
-	returning = replacetext(returning,"%CID",character_id)
-	return returning
+	return text2file(data,get_file(character_id))
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
 	owner << "Attempting to create character with the id of [character_id]."

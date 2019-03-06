@@ -1,7 +1,3 @@
-#define value_or_null(the_list,key) the_list[key] ? the_list[key] : null
-
-
-
 /savedata/
 	var/name = "savedata"
 	var/desc = "Data for a user."
@@ -11,10 +7,14 @@
 /savedata/proc/reset_data()
 	loaded_data = list()
 
-
-
-
-
-
-/savedata/proc/get_folder(var/list/data)
+/savedata/proc/get_folder(var/folder_id)
 	return ""
+
+/savedata/proc/get_file(var/file_id)
+	return ""
+
+/savedata/proc/get_files()
+	return flist(get_folder())
+
+/savedata/proc/has_files()
+	return length(get_files())
