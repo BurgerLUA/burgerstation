@@ -17,5 +17,8 @@
 		var/mob/living/advanced/A = src
 		A.end_typing()
 
+/mob/verb/emote(var/emote_id as text)
+	//do stuff
+
 /mob/verb/looc(var/text_to_say as text)
 	display_message(src,text_to_say,TEXT_LOOC)

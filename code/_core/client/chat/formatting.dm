@@ -1,6 +1,11 @@
+/var/icon/chat_tags = new('icons/hud/chattags.dmi')
+
+
 proc/format_speech(var/atom/source,var/text,var/talk_type)
 
 	//text = periodize(capitalize(sanitize(text)))
+
+
 
 	var/html = "ERROR"
 	switch(talk_type)
@@ -15,12 +20,15 @@ proc/format_speech(var/atom/source,var/text,var/talk_type)
 		if(TEXT_OOC)
 			html = "[format_speaker(source,"OOC")]: [span("ooc",text)]"
 		if(TEXT_GHOST)
-			html = "[format_speaker(source,"GHOSTCHAT")] moans, \"[span("ghost",text)]\""
+			html = "[format_speaker(source,"DEAD")] moans, \"[span("ghost",text)]\""
 
 	return html
 
-proc/format_speaker(var/atom/source,var/tag = "")
-	if(is_mob(source))
-		return span(tag,trim("[tag] \icon[source.icon] [source]"))
-	else
-		return span(tag,trim("[tag] [source]"))
+proc/format_speaker(var/atom/source,var/tag)
+
+	var/append = ""
+
+	if(tag)
+		append = "<img src='\ref[chat_tags.icon]' iconstate='[tag]' class='chat_tag' alt='[tag]'></img>"
+
+	return span(tag,trim("[append] [source]"))

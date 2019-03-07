@@ -136,6 +136,7 @@ var/global/list/all_clients = list()
 /client/proc/get_actual_click_flags(aug)
 
 	var/returning = 0x0
+
 	if(swap_mouse ? ("left" in aug) :("right" in aug))
 		returning |= CLICK_RIGHT
 
@@ -170,8 +171,8 @@ var/global/list/all_clients = list()
 
 	if(click_flags & CLICK_MIDDLE)
 		//mob.on_middle_down(object,location,control,aug)
-		//object.examine(mob)
-		get_variables(object)
+		object.examine(mob)
+		//get_variables(object)
 		return
 
 	..()
