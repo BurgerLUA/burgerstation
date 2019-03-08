@@ -27,15 +27,16 @@
 
 	if(move_dir && move_delay <= 0)
 		var/final_movement_delay = ceiling(get_movement_delay())
-
 		if(final_movement_delay < 1)
 			step_size = ceiling(TILE_SIZE * (1/final_movement_delay))
 			final_movement_delay = 1
 
 		glide_size = step_size/final_movement_delay
-		if(Move(get_step(src,move_dir),move_dir))
-			regen_delay = max(regen_delay,final_movement_delay*2)
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
+
+		if(Move(get_step(src,move_dir),move_dir))
+			regen_delay = max(regen_delay,move_delay*2)
+
 		return TRUE
 	else
 		if(adjust_delay)

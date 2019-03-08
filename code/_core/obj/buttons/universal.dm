@@ -121,8 +121,6 @@
 
 	move_mode = caller.move_mod
 
-	caller << move_mode
-
 	update_icon()
 
 	..()

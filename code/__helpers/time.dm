@@ -18,3 +18,28 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 		return x_time > y_time
 
 	return FALSE
+
+
+/proc/get_nice_time(var/seconds)
+
+	var/time_list = list()
+
+	var/day_value = floor(seconds/(60*60*24))
+	time_list += "[day_value] day\s"
+	seconds -= day_value*60*60*24
+
+	var/hour_value = floor(seconds/(60*60))
+	time_list += "[hour_value] hour\s"
+	seconds -= hour_value*60*60
+
+	var/minute_value = floor(seconds/60)
+	time_list += "[minute_value] minute\s"
+	seconds -= minute_value*60
+
+	var/second_value = floor(seconds)
+	time_list += "[seconds] second\s"
+	seconds -= second_value
+
+
+	return time_list
+

@@ -76,6 +76,7 @@
 		return FALSE
 
 	DT.display_miss_message(attacker,src,weapon,target,"blocked by [target]'s [blocking_item ? blocking_item : "fists"]")
+	add_skill_xp(SKILL_DODGE,DT.get_attack_damage(attacker,src,weapon,target))
 	return TRUE
 
 /mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
@@ -115,26 +116,22 @@
 	if(!prob(min(base_chance,PARRY_CHANCE_MAX)))
 		return FALSE
 
-	//var/pixel_x_offset = prob(50) ? -8 : 8
-	//var/pixel_y_offset = prob(50) ? -8 : 9
-
 	if(!parrying_item.click_on_object(src,attacker))
 		return FALSE
-
-	//animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
-	//animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"parried by [target]'s [parrying_item]")
 
 	if(allow_parry_counter)
 		attack(src,attacker)
+
+	add_skill_xp(SKILL_PARRY,DT.get_attack_damage(attacker,src,weapon,target))
+
 	return TRUE
 
-/mob/living/advanced/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	var/base_chance = get_dodge_chance(attacker,weapon,target)
-
 
 	if(!prob(base_chance))
 		return FALSE
@@ -145,9 +142,8 @@
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
 	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
-	//move_delay += ATTACK_ANIMATION_LENGTH
-
 	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [target]")
 	DT.do_miss_sound(attacker,src,weapon,target)
 	DT.do_attack_animation(attacker,src,weapon,target)
+	add_skill_xp(SKILL_DODGE,DT.get_attack_damage(attacker,src,weapon,target))
 	return TRUE

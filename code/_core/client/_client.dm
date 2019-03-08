@@ -18,10 +18,9 @@ var/global/list/all_clients = list()
 
 	var/savedata/client/mob/savedata
 	var/savedata/client/connection_history/connection_data
+	var/savedata/client/roles/roles
 
 	var/save_slot //The character slot that the client wishes to overwrite.
-
-
 	var/list/last_params = list()
 	var/atom/last_object
 	var/atom/last_location
@@ -62,6 +61,9 @@ var/global/list/all_clients = list()
 
 	if(!savedata)
 		savedata = new(src)
+
+	if(!roles)
+		roles = new(src)
 
 	if(usr)
 		return ..()
@@ -250,3 +252,7 @@ var/global/list/all_clients = list()
 
 /client/proc/save_current_character()
 	savedata.save_current_character()
+
+
+/client/proc/get_permissions()
+	return FALSE

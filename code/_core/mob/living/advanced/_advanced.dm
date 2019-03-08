@@ -115,8 +115,19 @@ mob/living/advanced/Login()
 			talk_type = 0
 			update_icon()
 
-	if(adjust_mana(mana_regeneration) || (regen_delay <= 0 && adjust_stamina(stamina_regeneration)) )
-		update_health_elemement_icons()
+	var/health_adjust = regen_delay <= 0 ? adjust_health(health_regeneration) : 0
+	var/stamina_adjust = regen_delay <= 0 ? adjust_stamina(stamina_regeneration) : 0
+	var/mana_adjust = adjust_mana(mana_regeneration)
+
+	if(health_adjust || stamina_adjust || mana_adjust)
+		if(health_adjust)
+			add_skill_xp(SKILL_RECOVERY,health_adjust)
+		if(stamina_adjust)
+			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
+		if(mana_adjust)
+			add_skill_xp(SKILL_RECOVERY,mana_adjust)
+
+		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
 
 	if(life_ticks >= 10*4)
 		for(var/obj/item/organ/O in organs)
@@ -150,7 +161,62 @@ mob/living/advanced/Login()
 	add_species_buttons()
 	add_species_health_elements()
 	..()
-	update_health_elemement_icons()
+	update_health_element_icons(TRUE,TRUE,TRUE)
+
+/mob/living/advanced/proc/adjust_health(var/adjust_value)
+
+	if(adjust_value <= 0)
+		return FALSE
+
+	var/list/damaged_organs = list()
+
+	var/damage_length = 0
+
+	for(var/obj/item/organ/O in organs)
+		var/brute_loss = get_brute_loss()
+		var/burn_loss = get_burn_loss()
+		var/tox_loss = get_tox_loss()
+		var/oxy_loss = get_oxy_loss()
+		if(brute_loss || burn_loss || tox_loss || oxy_loss)
+			damaged_organs[O.id] = list()
+			if(brute_loss)
+				damaged_organs[O.id][BRUTE] = brute_loss
+				damage_length += brute_loss
+			if(burn_loss)
+				damaged_organs[O.id][BURN] = burn_loss
+				damage_length += burn_loss
+			if(tox_loss)
+				damaged_organs[O.id][TOX] = tox_loss
+				damage_length += tox_loss
+			if(oxy_loss)
+				damaged_organs[O.id][OXY] = oxy_loss
+				damage_length += oxy_loss
+
+	if(damage_length <= 0)
+		return FALSE
+
+	var/total_healed = 0
+
+	for(var/organ_id in damaged_organs)
+		var/obj/item/organ/O = labeled_organs[organ_id]
+		if(damaged_organs[organ_id][BRUTE])
+			var/heal_amount = (damaged_organs[organ_id][BRUTE]/damage_length) * adjust_value
+			O.adjust_brute_loss(-heal_amount)
+			total_healed += heal_amount
+		if(damaged_organs[organ_id][BURN])
+			var/heal_amount = (damaged_organs[organ_id][BURN]/damage_length) * adjust_value
+			O.adjust_burn_loss(-heal_amount)
+			total_healed += heal_amount
+		if(damaged_organs[organ_id][TOX])
+			var/heal_amount = (damaged_organs[organ_id][TOX]/damage_length) * adjust_value
+			O.adjust_tox_loss(-heal_amount)
+			total_healed += heal_amount
+		if(damaged_organs[organ_id][OXY])
+			var/heal_amount = (damaged_organs[organ_id][OXY]/damage_length) * adjust_value
+			O.adjust_oxy_loss(-heal_amount)
+			total_healed += heal_amount
+
+	return total_healed
 
 /mob/living/advanced/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current
@@ -158,7 +224,7 @@ mob/living/advanced/Login()
 
 	if(old_value != new_value)
 		mana_current = new_value
-		return TRUE
+		return new_value - old_value
 
 	return FALSE
 
@@ -168,7 +234,7 @@ mob/living/advanced/Login()
 
 	if(old_value != new_value)
 		stamina_current = new_value
-		return TRUE
+		return new_value - old_value
 
 	return FALSE
 
@@ -301,11 +367,6 @@ mob/living/advanced/Login()
 				spawned_overlay.icon_state = I.reverse_draw ? I2.icon_state_worn : I2.icon_state_held_right
 
 			overlays += spawned_overlay
-
-/mob/living/advanced/proc/update_health_elemement_icons()
-	for(var/k in health_elements)
-		var/obj/health/H = health_elements[k]
-		H.update_stats(src)
 
 /mob/living/advanced/proc/add_species_colors()
 

@@ -1,12 +1,12 @@
 #define SKILL_DEFAULT 5
 
 //STRENGTH
-#define SKILL_UNARMED "unarmed"
-#define SKILL_MELEE "melee"
-#define SKILL_BLOCK "block"
+#define SKILL_UNARMED "unarmed" //Completed
+#define SKILL_MELEE "melee" //Completed
+#define SKILL_BLOCK "block" //Completed
 #define SKILL_ARMOR "armor"
 #define SKILL_PRAYER "prayer"
-#define SKILL_RECOVERY "recovery"
+#define SKILL_RECOVERY "recovery" //Add a way to level
 
 //INTELLIGENCE
 #define SKILL_MAGIC_OFFENSE "magic_offensive"

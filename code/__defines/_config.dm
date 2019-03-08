@@ -1,2 +1,2 @@
-#define ENABLE_XP FALSE
+#define ENABLE_XP TRUE
 #define ENABLE_LIGHTING TRUE

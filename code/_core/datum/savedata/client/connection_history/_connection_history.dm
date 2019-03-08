@@ -27,12 +27,14 @@
 		for(var/file in connection_files)
 			var/list/time_data = splittext(file,"_")
 			var/local_date = time_data[1]
-			var/local_time = time_data[2]
+			var/local_time = replacetext(time_data[2],".json","")
 			if(!worst_date || !worst_time || !time_x_newer_than_y(local_date,local_time,worst_date,worst_time))
 				worst_date = local_date
 				worst_time = local_time
 
 		if(worst_date && worst_time)
+			new_owner << worst_date
+			new_owner << worst_time
 			var/file_to_delete = "[get_folder(owner.ckey)][worst_date]_[worst_time].json"
 			fdel(file_to_delete)
 
