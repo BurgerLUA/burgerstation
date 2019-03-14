@@ -23,3 +23,12 @@
 
 /area/overworld/caves
 	name = "caves"
+
+
+
+/area/overworld/rain
+	icon_state = "rain"
+	icon = 'icons/area/weather.dmi'
+	invisibility = 0
+	color = "#429FCE"
+	alpha = 100

@@ -19,3 +19,10 @@
 
 /obj/structure/interactive/lighting/streetlamp/snow
 	icon_state = "streetlamp_snow"
+
+
+
+
+/obj/structure/interactive/lighting/streetlamp/jungle
+	icon_state = "torch"
+

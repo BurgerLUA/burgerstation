@@ -33,12 +33,6 @@ obj/structure/interactive/nature/grass/New()
 			icon_state = "fullgrass_[rand(1,3)]"
 
 
-obj/structure/interactive/nature/grass_bush
-	name = "grassy bush"
-	icon = 'icons/obj/structure/flora/ausflora.dmi'
-	icon_state = "grassybush_1"
-	density = 0
-
 obj/structure/interactive/nature/grass_bush/New()
 	..()
 	icon_state = "grassybush_[rand(1,4)]"

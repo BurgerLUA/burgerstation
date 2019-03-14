@@ -4,3 +4,7 @@
 	icon_state = "floor"
 	corner_icons = TRUE
 	corner_category = "lava"
+
+	light_power = 0.25
+	light_range = 4
+	light_color = "#FF8300"
