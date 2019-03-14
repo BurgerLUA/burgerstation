@@ -30,6 +30,26 @@ var/global/list/all_living = list()
 	var/mana_current = 0
 	var/mana_regeneration = 0
 
+	var/attack_mode = 1
+
+	var/list/attack_left = list(
+		list(16,16),
+		list(16,16),
+		list(16,16),
+		list(16,16)
+
+	)
+
+	var/list/attack_right = list(
+		list(16,16),
+		list(16,16),
+		list(16,16),
+		list(16,16)
+	)
+
+	var/is_sneaking = FALSE
+
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

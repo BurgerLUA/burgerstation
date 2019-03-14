@@ -8,7 +8,7 @@
 	var/impact_sounds = list()
 	var/miss_sounds = list()
 
-	//var/wound/wound_type
+	var/list/wound/wound_types = list()
 
 	//How much base attack damage to deal
 	var/list/base_attack_damage = list(
@@ -125,14 +125,17 @@
 			return 0
 
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
-
-
 	var/brute_damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE])
 	var/burn_damage_dealt = hit_object.adjust_burn_loss(damage_to_deal[BURN])
 	var/tox_damage_dealt = hit_object.adjust_tox_loss(damage_to_deal[TOX])
 	var/oxy_damage_dealt = hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 	var/damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
 
+	var/wound/W = pick(wound_types)
+	W = new W(src)
+	hit_object.wounds += W
+	if(victim != hit_object)
+		victim.wounds += W
 
 	play_effects(attacker,victim,weapon,hit_object)
 	display_hit_message(attacker,victim,weapon,hit_object)

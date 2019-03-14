@@ -7,28 +7,53 @@
 	var/list/dialogue_options = list()
 
 	dialogue_options["hello"] = list(
-		"Hello, is there something you wish to discuss? If not, you should go see #1.",
+		"Hello, is there something you wish to discuss? If not, you should go see #1 if you haven't already.",
 		"the mayor"
 	)
 
+	//Story related
 	dialogue_options["the mayor"] = list(
 		"He should be here somewhere... have you tried checking #1? It is the big building, just southwest of here.",
-		"bar"
+		"the bar"
 	)
+
 	dialogue_options["the bar"] = list(
-		"Just because we've been cursed with #1 doesn't mean we can't have fun. It's a great place to go an socialize, assuming if there is any alcohol.",
-		"immortality"
+		"Just because we've been cursed with #1 doesn't mean we can't have fun. It's a great place to go an socialize... assuming if there is any alcohol... and assuming we have any #2 to trade.",
+		"immortality",
+		"trinkets"
 	)
+
+
+	//Tutorial related
 	dialogue_options["immortality"] = list(
-		"Yes, everyone and anything with a soul in this #1 is immortal. When you succumb to #2, you travel to the last #3 used. Microorganisms don't seem to have a soul so disease does not exist here, and you can still be 'mortally' wounded.",
-		"realm",
+		"Yes, everyone and anything with a soul in #1 is immortal. When you succumb to #2, you travel to the last #3 used. Microorganisms don't seem to have a soul so disease does not exist here, and you can still be 'mortally' wounded.",
+		"the realm",
 		"death",
 		"wishgranter"
 	)
 
-	dialogue_options["realm"] = list(
+	dialogue_options["the realm"] = list(
 		"An odd place, isn't it? According to #1, it wasn't always like this. I'm not one for stories, but if you ever do find him, I'm sure he'll tell you all about it.",
 		"the mayor"
+	)
+
+	dialogue_options["trinkets"] = list(
+		"Some may call it junk, but to many they're treasures of their #1. They're things that have come in with people or used as offerings to #2. Coinage is worthless in these lands, and instead, people resort to #3 with trinkets.",
+		"past life",
+		"Nar-sie",
+		"bartering"
+	)
+
+
+	dialogue_options["bartering"] = list(
+		"What, do you think people are just going to give items and secrets away for free? People still embrace capitalism here. #1 are exchanged for #2. Though, not everyone will accept trinkets ",
+		"goods and services",
+		"trinkets"
+	)
+
+	dialogue_options["goods and services"] = list(
+		"Many people are willing to trade their work for #1 found outside of these walls. I do not offer any services personally; all the advice and help I give is for free.",
+		"trinkets"
 	)
 
 	dialogue_options["death"] = list(
@@ -40,24 +65,48 @@
 	)
 
 	dialogue_options["wounds"] = list(
-		"You can still get wounds here, yes. If you have one, be sure to treat it as soon as possible, or you might get an infection."
+		"I mean, when most of us talk about #1, we're talking about your soul. You can still get wounds, and if you have one, be sure to treat it as soon as possible with #2, or you might get #3.",
+		"immortality",
+		"medical supplies",
+		"infections"
+	)
+
+	dialogue_options["infections"] = list(
+		"Infections are super common in this realm. A lot of disease carriers from less developed civilizations tend to come in and spread their diseases on those with open #1. \
+		However, that isn't so much as the case for you. Last time I checked, medicine was quite advanced before I got here. I assume that is still the case now, and you should have most of your vaccinations up to date.\n\
+		...assuming you're not one of those people.\n\
+		Regardless, if you develop and infection, you will need #2 in order to completely cure it. I mean, you could use #3 or #4, but those usually come with side effects...",
+		"wounds",
+		"medical supplies",
+		"magic",
+		"potions"
 	)
 
 	dialogue_options["weapons"] = list(
 		"If you're looking for weapons, you'll have to buy them with #1 like everyone else from #2. He's the weaponsmith.",
-		"currency",
+		"trinkets",
 		"Bundy Bundus"
 	)
 
-	dialogue_options["armor"] = list(
-		"Good armor is incredibly rare here as it usually requires a lot of materials to make. I think #1 can provide you with something basic, if you have the #2.",
-		"Bundy Bundus",
-		"currency"
+	dialogue_options["medical supplies"] = list(
+		"Medical supplies are quite uncommon here, safe and sanitary medical supplies are even rarer, trained medical professionals are the rarest. In most cases you may need to rely on #1 or #2. I recommend saving the medical supplies for the most severe #3 or #4.",
+		"potions",
+		"magic",
+		"wounds",
+		"infections"
 	)
 
-	dialogue_options["currency"] = list(
-		"We don't use credits or gold for goods around here. We usually trade for goods or items of equal value or use. Merchants usually like trading #1 or #2 for goods.",
-		"food",
+	dialogue_options["magic"] = list(
+		"Yes, could you believe that magic exists? I mean you are in a realm dedicated to a god who frequently uses occult magic, but yes: Magic does exist.\n\
+		But unfortunately magic is quite rare and costly to maintain. Not many of us know about using magic, including myself.\
+		If you want to learn more about magic, I suggest visiting #1 to the north."
+	)
+
+
+
+	dialogue_options["armor"] = list(
+		"Good armor is incredibly rare here as it usually requires a lot of materials to make. I think #1 can provide you with something basic, if you have #2.",
+		"Bundy Bundus",
 		"trinkets"
 	)
 

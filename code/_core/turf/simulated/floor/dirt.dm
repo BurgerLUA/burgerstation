@@ -38,7 +38,7 @@
 
 /turf/simulated/floor/colored/grass/jungle
 	name = "jungle grass"
-	color = "#279B3A"
+	color = "#3A7A46"
 
 /turf/simulated/floor/colored/grass/New(loc)
 	var/lightness = 128
@@ -77,6 +77,11 @@
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
 	color = "#726253"
+
+/turf/simulated/floor/colored/dirt/jungle
+	name = "jungle soil"
+	color = "#4C2C1D"
+
 
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"

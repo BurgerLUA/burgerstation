@@ -33,6 +33,8 @@
 
 	var/override_icon = FALSE
 
+	var/wound/wounds = list()
+
 	var/light_power = 1 // Intensity of the light.
 	var/light_range = 0 // Range in tiles of the light.
 	var/light_color     // Hexadecimal RGB string representing the colour of the light.

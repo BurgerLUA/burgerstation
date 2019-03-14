@@ -34,6 +34,12 @@
 	icon_state = "resist"
 	screen_loc = "RIGHT-3,BOTTOM"
 
+/obj/button/resist/clicked_by_object(var/mob/caller,object,location,control,params)
+
+
+	..()
+
+
 /obj/button/resist_auto
 	name = "toggle auto resist"
 	desc = "For when you don't like clicking."
@@ -87,6 +93,32 @@
 	else
 		icon_state = "[initial(icon_state)]_off"
 
+	..()
+
+/obj/button/sneak
+	name = "sneak"
+	desc = "sneaker no sneaking"
+	desc_extended = "Press to sneak."
+	icon_state = "sneak_0"
+	screen_loc = "RIGHT-4,BOTTOM"
+
+	var/sneaking = 0
+
+/obj/button/sneak/clicked_by_object(var/mob/caller,object,location,control,params)
+
+	if(!is_living(caller))
+		return
+
+	var/mob/living/L = caller
+
+
+	sneaking = !sneaking
+	L.is_sneaking = sneaking
+	update_icon()
+	..()
+
+/obj/button/sneak/update_icon()
+	icon_state = "sneak_[sneaking]"
 	..()
 
 /obj/button/move
@@ -174,10 +206,15 @@
 
 /obj/button/targeting/clicked_by_object(var/mob/caller,object,location,control,params)
 
+	if(!is_living(caller))
+		return
+
 	if(!caller.client)
 		return
 
-	var/click_flags = caller.client.get_actual_click_flags(params)
+	var/mob/living/L = caller
+
+	var/click_flags = L.client.get_actual_click_flags(params)
 
 	if(!(params["icon-x"] && params["icon-y"]))
 		return
@@ -201,9 +238,9 @@
 			if(2 to 8)
 				mode = 4
 
-	caller.attack_mode = mode
-	caller.attack_right = right
-	caller.attack_left = left
+	L.attack_mode = mode
+	L.attack_right = right
+	L.attack_left = left
 	update_icon()
 	..()
 

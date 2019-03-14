@@ -7,7 +7,7 @@
 	var/list/dialogue_options = list()
 
 	dialogue_options["hello"] = list(
-		"Oh, hello there."
+		"Oh. Hello there."
 	)
 
 	dialogue_options["the mayor"] = list(
@@ -16,15 +16,27 @@
 	)
 
 	dialogue_options["Diamond with Flaw"] = list(
-		"Oh, you are new. I do not believe we have met. I am Diamond with Flaw; a #1. The villagers call me the mayor for some reason. Do you wish to know more about the #3? Or perhaps #4 us?",
+		"Oh, you are new. I do not believe we have met. I am Diamond with Flaw; a #1. The villagers call me #2, for some reason. I suppose you're here to know more about the #3? Your #4 Or perhaps offer #5?",
 		"dionae",
+		"the mayor",
 		"realm",
-		"help"
+		"immortality",
+		"assistance"
 	)
 
-	dialogue_options["help"] = list(
-		"We are in dire need of your assistance. But first, do you know about #1?",
-		"the rule"
+	dialogue_options["assistance"] = list(
+		"We're looking for someone capable of leaving the safety of #1 and investigating a few... #2. Are you interested?",
+		"the village",
+		"disturbances"
+	)
+
+	dialogue_options["disturbances"] = list(
+		"We fear that the safety of those in the realm may be at risk. I shall not go into too much detail, as I do not #1 you quite yet, but we have discovered a credible threat to the realm and possibly beyond it.\n\
+		In short, we believe that the #2 are up to something in #3 to the west. We would like you to investigate on our behalf and find out what they're up to. Report your #4 back to me, and only me, when you are done.",
+		"trust",
+		"cultists",
+		"the caves",
+		"findings on the disturbances"
 	)
 
 	dialogue_options["dionae"] = list(
@@ -33,7 +45,7 @@
 	)
 
 	dialogue_options["becoming a dionae"] = list(
-		"Most organic lifeforms become a part of a diona by soul absorbtion through digestion, however given your #1 it would be a pointless task. There are #2, but I cannot speak of them.",
+		"Most organic lifeforms become a part of a diona by soul absorbtion through assimilation, however given your #1 it would be a pointless task. There are #2, but I cannot speak of them.",
 		"immortality",
 		"other ways of becoming a diona"
 	)
@@ -56,7 +68,9 @@
 	)
 
 	dialogue_options["other ways of becoming a diona"] = list(
-		"I do not trust you. Perhaps I will trust you in the future to tell you this."
+		"I do not #1 you to speak about this. Perhaps offer your #2 first, and I can tell you the secrets of this.",
+		"trust",
+		"assistance"
 	)
 
 	dialogue_options["realm"] = list(
@@ -80,10 +94,9 @@
 	)
 
 	dialogue_options["a way out"] = list(
-		"Leaving the realm is something many of us have been trying to figure out. Most of us do this in secret in fear or some of the less desirable inhabitants following us into the next life. We believe that #1 secretly found a way out as he spoke of this quite a bit. \
-		However, this is not something I wish to discuss with you. Before we complete that task, we must first put an #2.",
+		"Leaving the realm is something many of us have been trying to figure out. Most of us do this in secret in fear or some of the less desirable inhabitants following us into the next life. We believe that #1 secretly found a way out as he spoke of this quite a bit before disappearing. \
+		However, this is not something I wish to discuss with you.",
 		"the old man",
-		"end to the rule"
 	)
 
 	dialogue_options["the rule"] = list(
@@ -147,20 +160,11 @@
 	)
 
 	dialogue_options["end of the rule"] = list(
-		"We believe that we can bring an end to #1. This rule was not put in by #2, but by something else. Perhaps #3. Perhaps the #4. We do not know, so we wish for you to #5.",
+		"We believe that we can bring an end to #1. This rule was not put in by #2, but by something else. Perhaps #3. Perhaps the #4. We do not know, and I shall speak no further of this until you earn my #4.",
 		"the rule",
 		"Nar-sie",
 		"the old man",
-		"cultists",
-		"investigate"
-	)
-
-	dialogue_options["investigate"] = list(
-		"There is considerable cult activity to the west of here, in #1. We wish for you to travel there and find out anything you can. If the #2 are not responsible for #3, then they should know who. \
-		We believe that finding out this rule",
-		"the caves",
-		"cultists",
-		"the rule"
+		"trust"
 	)
 
 	dialogue_options["self defense"] = list(
@@ -179,16 +183,16 @@
 	)
 
 	dialogue_options["wishgranter"] = list(
-		"Wishgranters are ressurection points for spirits trapped in this realm. This one in the #1 is where new souls come in."
+		"Wishgranters are ressurection points for spirits trapped in this realm. This one in #1 is where new souls come in.",
+		"the village"
 	)
-
 
 	dialogue_options["cultists"] = list(
 		"They are the servants of #1. They are tasked with bringing as much suffering to the souls in this realm as possible. Do not trust them.",
 		"Nar-sie"
 	)
 	dialogue_options["Nar-sie"] = list(
-		"Nar-sie is the dark lord who looks over this realm. Allegedly. Other than the #1, there is no evidence of Nar-sie's influence here.",
+		"Nar-sie is the dark lord who looks over this realm. Allegedly. Other than the #1 and hearsay, there is no evidence of Nar-sie's influence here. Yet.",
 		"cultists"
 	)
 

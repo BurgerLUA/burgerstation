@@ -32,27 +32,10 @@
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
-	var/karma = 0
-
 	var/move_mod = 2
 	var/real_move_mod = 2
 
-	var/attack_mode = 1
-
-	var/list/attack_left = list(
-		list(16,16),
-		list(16,16),
-		list(16,16),
-		list(16,16)
-
-	)
-
-	var/list/attack_right = list(
-		list(16,16),
-		list(16,16),
-		list(16,16),
-		list(16,16)
-	)
+	var/karma = 0
 
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)

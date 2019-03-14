@@ -32,8 +32,6 @@
 	var/enable_detail = FALSE
 	var/enable_wounds = FALSE
 
-	var/list/wound/wounds
-
 /obj/item/organ/examine(var/mob/examiner)
 	..()
 	for(var/wound/W in wounds)

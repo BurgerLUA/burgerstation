@@ -56,7 +56,7 @@
 	)
 
 	dialogue_options["the bank"] = list(
-		"It's the big building in the center of #1. East of that #2. In #3 section..",
+		"It's the big building in the center of #1. East of that #2. In #3 section.",
 		"the village",
 		"wishgranter",
 		"the upper class"

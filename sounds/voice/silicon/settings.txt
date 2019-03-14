@@ -1,0 +1,7 @@
+Microsoft Zira, English. Default Settings.
+Audacity
+Echo: 0.2 delay, 0.25 Delay Factor.
+Paulstretch: 1 factor, 0.25 time resolution
+Bass and Treble: -30db Bass, 30 Treble, 0db change.
+-40 Pitch Change
+hypocrisy

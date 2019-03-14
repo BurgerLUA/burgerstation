@@ -25,6 +25,8 @@
 	var/obj/inventory/right_hand
 
 	var/is_typing = FALSE
+
+
 	var/talk_duration = 0
 	var/talk_type = 0
 

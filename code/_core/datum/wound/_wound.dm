@@ -7,7 +7,6 @@
 	var/heal_level = 0 //How healed the wound is.
 	var/infection_level = 0 //How infected the wound is.
 	var/bleed_level = 0 //How much the wound is bleeding.
-	var/pain_tolerance = 0 //How much the wound is tolerated by your body.
 
 	var/severity_level_max = 5
 	var/heal_level_max = 5
@@ -40,7 +39,6 @@
 #define WOUNDTICK 4	//It takes 4 seconds for on_life() to run
 
 /wound/proc/on_life() //Runs every 4 seconds.
-	pain_tolerance += Clamp((WOUNDTICK/300),0,severity_level) //Pain tolerance is increased by 1 every 5 minutes, up to the severity of the wound.
 	infection_level += Clamp((severity_level-heal_level)*(WOUNDTICK/600) + infection_level*0.01,0,infection_level_max) //Infection level is increased by 1 per severity level minus it's heal level every 10 minutes and 0.01% of it's current value every 4 seconds.
 	bleed_level -= Clamp((WOUNDTICK/300), 0, min(heal_level_max - heal_level,bleed_level_max) ) //Bleed level is decreased by 1 every 5 minutes, or clamped to the inverse of it's heal value
 	heal_level += Clamp(bleed_level*(WOUNDTICK/120)*get_infection_modifier(),0,heal_level_max) //Heal level is increased by 1 every 2 minutes unless the wound is infected.
@@ -80,21 +78,6 @@
 /wound/proc/get_heal_time()
 	return min(heal_level,severity_level)*(infection_level)
 
-/wound/proc/get_pain_text()
-	switch(get_pain())
-		if(0)
-			return ""
-		if(0 to 2)
-			return span("notice","It tingles.")
-		if(2 to 4)
-			return span("warning","It hurts quite a bit.")
-		if(4 to 6)
-			return span("warning","It really hurts!")
-		if(6 to 8)
-			return span("danger","It is very painful!")
-		if(10 to 100)
-			return span("danger","It hurts like hell!")
-
 /wound/proc/get_heal_time_text()
 	switch(get_heal_time())
 		if(0)
@@ -108,7 +91,7 @@
 		if(6 to 8)
 			return span("danger","I really need professional medical attention to treat this, and fast!")
 		if(8 to 100)
-			return span("danger","It will be the of me if I do not treat this right now!")
+			return span("danger","It will be the death of me if I do not treat this right now!")
 
 /wound/proc/get_bleed_text()
 	switch(get_bleed())
@@ -131,13 +114,6 @@
 	id = "incision"
 	description = ""
 
-/wound/incision/examine(var/atom/examiner)
-
-
-
-
-
-
 /wound/laceration/
 	name = "laceration"
 	id = "laceration"
@@ -158,7 +134,7 @@
 	id = "penetration"
 	description = ""
 
-/wound/penetration/
+/wound/gun_shot/
 	name = "gunshot wound"
 	id = "gunshot"
 	description = ""
