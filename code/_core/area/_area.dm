@@ -6,6 +6,8 @@
 	plane = PLANE_AREA
 	invisibility = 101
 
+	mouse_opacity = 0
+
 	var/flags_area = FLAG_AREA_NONE
 
 	var/sound_environment = ENVIRONMENT_GENERIC

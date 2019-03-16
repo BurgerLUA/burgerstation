@@ -204,7 +204,6 @@ window "chat_say"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Say"
 		titlebar = false
@@ -229,6 +228,7 @@ window "control"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -257,6 +257,7 @@ window "info"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -264,13 +265,15 @@ window "info"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-	elem "output1"
-		type = OUTPUT
+	elem "browser"
+		type = BROWSER
 		pos = 0,0
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		saved-params = "max-lines"
+		background-color = none
+		saved-params = ""
+		auto-format = false
 
 window "main"
 	elem "main"
@@ -294,7 +297,6 @@ window "main"
 		size = 800x20
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = ""
 		text = ""
 	elem "button_chat"
@@ -303,7 +305,6 @@ window "main"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ""
@@ -337,7 +338,6 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -362,7 +362,6 @@ window "map"
 		size = 680x680
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false
@@ -372,7 +371,6 @@ window "map"
 		size = 640x260
 		anchor1 = 0,100
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false

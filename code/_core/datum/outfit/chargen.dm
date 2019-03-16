@@ -23,6 +23,7 @@
 
 /outfit/warrior
 	name = "Assistant's Uniform"
+	id = "warrior"
 	desc = "The assistant's uniform, in a very pretty grey color."
 	spawning_clothes = list(
 		/obj/item/clothing/uniform/jumpsuit,

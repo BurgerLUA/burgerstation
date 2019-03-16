@@ -26,12 +26,17 @@
 
 /menu/appearance/open(var/mob/user)
 	//Credit to Multiverse7 for providing the code for getting this to work.
-	cache_resources(user)
-	winclone(user, "window", id)
-	play_sound('sounds/music/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
-	winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
-	user << output(file, "browser([id])")
-
+	if(ENABLE_CHARGEN)
+		cache_resources(user)
+		winclone(user, "window", id)
+		play_sound('sounds/music/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
+		winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
+		user << output(file, "browser([id])")
+	else if(is_advanced(user))
+		var/mob/living/advanced/A = user
+		A.Initialize()
+		stop_sound('sounds/music/lobby.ogg',list(user))
+		A.chargen = FALSE
 
 /menu/appearance/on_load(var/mob/user)
 
@@ -141,6 +146,9 @@
 
 		sleep(3)
 		run_function(usr,"refresh_character")
+
+
+
 
 /proc/apply_javascript_to_mob(var/mob/living/advanced/A,var/forged_data)
 	A.name = forged_data["name"]

@@ -9,9 +9,8 @@
 	..()
 	update_icon()
 
-/obj/item/magazine/examine(var/mob/examiner)
-	..()
-	examiner.to_chat("it contains [length(stored_bullets)] bullets.")
+/obj/item/magazine/get_examine_text(var/mob/examiner)
+	return ..() + span("notice","it contains [length(stored_bullets)] bullets.")
 
 /obj/item/magazine/New()
 	stored_bullets = list()

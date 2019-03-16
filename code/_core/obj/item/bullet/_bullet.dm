@@ -30,13 +30,15 @@
 
 	..()
 
-/obj/item/bullet/examine(var/mob/examiner)
-	..()
+/obj/item/bullet/get_examine_text(var/mob/examiner)
+	. = ..()
 	if(is_spent)
-		examiner.to_chat("It is spent.")
+		. += span("notice","It is spent.")
 
 	if(bullet_count > 1)
-		examiner.to_chat("It contains [bullet_count] bullets.")
+		. += span("notice","It contains [bullet_count] bullets.")
+
+	return .
 
 /obj/item/bullet/proc/spend_bullet()
 	is_spent = TRUE

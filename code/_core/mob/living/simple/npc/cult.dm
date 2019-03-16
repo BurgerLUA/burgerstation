@@ -3,9 +3,11 @@
 	icon = 'icons/mob/living/simple/cult.dmi'
 	icon_state = "cultist"
 
-	damage_type = "cult_blade"
+	damage_type = "cultist"
 
 	ai = /ai/simple/cultist
+
+
 
 
 /mob/living/simple/npc/cult/behemoth

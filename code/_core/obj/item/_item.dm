@@ -69,8 +69,7 @@ obj/item/proc/update_owner(desired_owner)
 /obj/item/proc/can_be_worn()
 	return FALSE
 
-/obj/item/examine(var/mob/examiner)
-	..()
+/obj/item/get_examine_text(var/mob/examiner)
 
 	if(damage_type && all_damage_types[damage_type])
 
@@ -125,14 +124,7 @@ obj/item/proc/update_owner(desired_owner)
 			skill_damage_list += "[capitalize(k)]: [v]"
 
 
-		examiner.to_chat(span("notice"," Base Damage:"))
-		examiner.to_chat(span("notice","  [english_list(base_damage_list, and_text = ", ")]"))
-
-		examiner.to_chat(span("notice"," Attribute Damage:"))
-		examiner.to_chat(span("notice","  [english_list(attribute_damage_list, and_text = ", ")]"))
-
-		examiner.to_chat(span("notice"," Attribute Damage:"))
-		examiner.to_chat(span("notice","  [english_list(skill_damage_list, and_text = ", ")]"))
+		return ..() + span("notice"," Base Damage:") + span("notice","  [english_list(base_damage_list, and_text = ", ")]") + span("notice"," Attribute Damage:") + span("notice","  [english_list(attribute_damage_list, and_text = ", ")]") + span("notice"," Attribute Damage:") + span("notice","  [english_list(skill_damage_list, and_text = ", ")]")
 
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE

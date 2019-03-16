@@ -1,5 +1,14 @@
 obj/structure/interactive/nature
+	var/has_transparency_marker = FALSE
 
+	var/list/crossed_objects = list()
+
+obj/structure/interactive/nature/New()
+	..()
+
+	if(has_transparency_marker)
+		var/obj/trigger/transparency_trigger/T1 = new(get_step(src,NORTH),src)
+		new/obj/trigger/transparency_trigger(get_step(T1,NORTH),src)
 
 
 obj/structure/interactive/nature/flowers
@@ -47,3 +56,24 @@ obj/structure/interactive/nature/rocks
 obj/structure/interactive/nature/rocks/New()
 	..()
 	icon_state = "rock_[rand(1,10)]"
+
+
+obj/structure/interactive/nature/evergreen
+	name = "evergreen tree"
+	icon = 'icons/obj/structure/flora/evergreen.dmi'
+	icon_state = "evergreen_1"
+
+	density = 1
+	pixel_x = -16
+	pixel_y = 0
+	layer = LAYER_LARGE_OBJ
+
+	mouse_opacity = 0
+
+	has_transparency_marker = TRUE
+
+
+
+obj/structure/interactive/nature/evergreen/New()
+	..()
+	icon_state = "evergreen_[rand(1,3)]"

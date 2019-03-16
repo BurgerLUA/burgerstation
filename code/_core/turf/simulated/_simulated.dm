@@ -4,7 +4,7 @@
 	var/real_icon_state
 	var/corner_category = "none"
 
-	light_power = 0.1
+	light_power = DEFAULT_BRIGHTNESS
 	light_range = 2
 	light_color = "#FFFFFF"
 

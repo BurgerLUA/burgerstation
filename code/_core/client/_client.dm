@@ -35,6 +35,10 @@ var/global/list/all_clients = list()
 
 	var/karma = 1000
 
+
+/client/proc/setup_stylesheets()
+	winset(src,"info.browser","style=[src.script]")
+
 /client/proc/reset()
 	known_inventory = list()
 	known_buttons = list()
@@ -64,6 +68,8 @@ var/global/list/all_clients = list()
 
 	if(!roles)
 		roles = new(src)
+
+	setup_stylesheets()
 
 	if(usr)
 		return ..()
@@ -157,12 +163,6 @@ var/global/list/all_clients = list()
 	var/list/aug = params2list(params)
 	var/click_flags = get_actual_click_flags(aug)
 
-	/*
-	if(mob.movement_flags & MOVEMENT_WALKING)
-		object.examine(mob)
-		return
-	*/
-
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT
 		mob.on_left_down(object,location,control,aug)
@@ -172,12 +172,14 @@ var/global/list/all_clients = list()
 		mob.on_right_down(object,location,control,aug)
 
 	if(click_flags & CLICK_MIDDLE)
-		//mob.on_middle_down(object,location,control,aug)
-		object.examine(mob)
-		//get_variables(object)
+		examine(object)
 		return
 
 	..()
+
+/client/proc/examine(var/atom/object)
+	src << output(object.get_examine_text(src.mob),"info.browser")
+
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
       src << "[v] = [object.vars[v]]"

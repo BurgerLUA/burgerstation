@@ -58,10 +58,12 @@
 	worn_objects = list()
 	. = ..()
 
-/obj/inventory/examine(var/atom/examiner)
+/obj/inventory/get_examine_text(var/atom/examiner)
 	var/atom/A = defer_click_on_object()
 	if(A && A != src)
-		A.examine(examiner)
+		return A.get_examine_text(examiner)
+	else
+		return ..()
 
 /obj/inventory/proc/update_overlays()
 

@@ -19,7 +19,7 @@ var/list/objects_to_delete = list()
 
 	return TRUE
 
-proc/queue_delete(var/object_to_delete,var/delete_in)
+proc/queue_delete(var/object_to_delete,var/delete_in = 1)
 	objects_to_delete[object_to_delete] = curtime + delete_in
 
 proc/undelete(var/object_to_delete)

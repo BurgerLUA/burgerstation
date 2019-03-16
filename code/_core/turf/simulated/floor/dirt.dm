@@ -30,6 +30,8 @@
 	layer = LAYER_FLOOR_WEATHER
 	corner_category = "snow"
 
+	has_footprints = TRUE
+
 /turf/simulated/floor/colored/grass
 	name = "grass"
 	color = "#008800"

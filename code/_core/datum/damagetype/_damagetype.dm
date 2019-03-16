@@ -131,11 +131,12 @@
 	var/oxy_damage_dealt = hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 	var/damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
 
-	var/wound/W = pick(wound_types)
-	W = new W(src)
-	hit_object.wounds += W
-	if(victim != hit_object)
-		victim.wounds += W
+	if(length(wound_types))
+		var/wound/W = pick(wound_types)
+		W = new W(victim,hit_object,attacker,weapon,damage_dealt)
+		hit_object.wounds += W
+		if(victim != hit_object)
+			victim.wounds += W
 
 	play_effects(attacker,victim,weapon,hit_object)
 	display_hit_message(attacker,victim,weapon,hit_object)

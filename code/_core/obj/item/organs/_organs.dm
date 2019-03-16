@@ -32,11 +32,13 @@
 	var/enable_detail = FALSE
 	var/enable_wounds = FALSE
 
-/obj/item/organ/examine(var/mob/examiner)
-	..()
+/obj/item/organ/get_examine_text(var/mob/examiner)
+	. = ..()
 	for(var/wound/W in wounds)
 		W.update_name()
-		examiner.to_chat(span("notice",W.name))
+		. += span("notice",W.name)
+
+	return .
 
 /obj/item/organ/initialize_blends()
 

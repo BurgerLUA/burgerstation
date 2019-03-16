@@ -13,9 +13,8 @@
 /obj/item/soulgem/on_spawn()
 	total_charge = 1000
 
-/obj/item/soulgem/examine(var/mob/caller)
-	..()
-	caller.to_chat(span("notice","It has [total_charge] total charge."))
+/obj/item/soulgem/get_examine_text(var/mob/caller)
+	return ..() + span("notice","It has [total_charge] total charge.")
 
 /obj/item/soulgem/update_icon()
 	if(total_charge)

@@ -33,6 +33,8 @@
 	severity_level = severity
 	bleed_level = severity
 
+	desired_owner << "Applied a [name] on your [desired_location.name] with a severity of [severity]."
+
 /wound/proc/get_infection_modifier()
 	return Clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
 
@@ -51,8 +53,8 @@
 	name = replacetext(get_heal_name(),"%",name)
 	name = replacetext(get_bleed_name(),"%",name)
 
-/wound/proc/examine(var/mob/examiner)
-	examiner.to_chat("It has \a [src]...")
+/wound/proc/get_examine_text(var/mob/examiner)
+	span("warning","It has \a [src]...")
 
 /wound/proc/get_severity_name()
 	return severity_reference[ceiling(Clamp(severity_level,1,length(severity_reference)))]

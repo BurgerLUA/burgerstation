@@ -31,7 +31,7 @@
 			step_size = ceiling(TILE_SIZE * (1/final_movement_delay))
 			final_movement_delay = 1
 
-		glide_size = step_size/final_movement_delay
+		glide_size = step_size/final_movement_delay //decimal values are allowed
 		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
 
 		if(Move(get_step(src,move_dir),move_dir))

@@ -3,9 +3,6 @@
 
 /atom/proc/attack(var/atom/attacker,var/atom/victim,params) //The src attacks the victim, with the attacker taking responsibility
 
-	attacker << "STARTING ATTACK"
-	attacker << victim
-
 	victim = victim.change_victim(attacker)
 
 	if(attacker && victim)
@@ -13,11 +10,6 @@
 
 	if(!attacker.can_attack(victim,params))
 		return FALSE
-
-	/*
-	if(attacker != src && !can_attack(victim,params))
-		return FALSE
-	*/
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
@@ -34,17 +26,15 @@
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
-		attacker << "You can't see any way you can inflict harm with \the [object_to_damage_with.type]."
+		world.log << "[attacker] can't inflict harm with the [object_to_damage_with.type]!"
 		return FALSE
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
 	if(!can_attack)
-		attacker << "HMM"
 		return FALSE
 
 	DT.attack_last = world.time
 	attacker.attack_last = world.time
-
 
 	if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
