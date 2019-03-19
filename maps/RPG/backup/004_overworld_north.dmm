@@ -11,7 +11,8 @@
 "k" = (/obj/structure/interactive/lighting/streetlamp/snow,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
 "l" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/dirt/snow,/area/overworld/snow/south_entrance)
 "m" = (/obj/structure/interactive/lighting/streetlamp/snow,/turf/simulated/floor/colored/snow,/area/overworld/snow)
-"n" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/snow,/area/overworld/snow)
+"n" = (/obj/structure/interactive/nature/rocks,/turf/simulated/floor/colored/dirt/snow,/area/overworld/snow)
+"o" = (/obj/marker/spawnpoint/new_character,/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
 "p" = (/obj/structure/interactive/wishgranter/normal/northern_heights,/turf/simulated/floor/colored/dirt/snow,/area/overworld/snow/south_entrance)
 "q" = (/turf/simulated/wall/wood/brown,/area/overworld/south_cave)
 "r" = (/turf/simulated/wall/rock/snow,/area/overworld/south_cave)
@@ -24,10 +25,10 @@
 "y" = (/turf/simulated/wall/wood/brown,/area/overworld/caves)
 "z" = (/turf/simulated/floor/wood/brown,/area/overworld/caves)
 "A" = (/turf/simulated/wall/rock/snow,/area/overworld/caves)
-"B" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
+"B" = (/obj/structure/interactive/nature/rocks,/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
 "C" = (/obj/effect/fake_lighting/solid/black,/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
 "D" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
-"E" = (/obj/structure/scenery/rocks,/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
+"E" = (/obj/structure/interactive/nature/rocks,/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/cave_dirt,/area/overworld/south_cave)
 "F" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/overworld/south_cabin)
 "G" = (/obj/marker/mob_spawn/cult/cultist,/turf/simulated/floor/colored/snow,/area/overworld/snow)
 "H" = (/turf/simulated/wall/rock,/area/overworld/snow)
@@ -35,13 +36,14 @@
 "J" = (/obj/marker/mob_spawn/cult/cultist,/turf/simulated/floor/ice,/area/overworld/snow)
 "K" = (/obj/marker/mob_spawn/cult/behemoth,/turf/simulated/floor/colored/snow,/area/overworld/snow)
 "L" = (/obj/marker/mob_spawn/cult/artificer,/turf/simulated/floor/colored/snow,/area/overworld/snow)
-"M" = (/obj/structure/scenery/pinetrees,/turf/simulated/floor/colored/snow,/area/overworld/snow)
-"N" = (/obj/structure/scenery/pinetrees,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
-"O" = (/obj/structure/scenery/snow_grass,/turf/simulated/floor/colored/snow,/area/overworld/snow)
-"P" = (/obj/structure/scenery/snow_grass,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
-"Q" = (/obj/structure/scenery/snow_bush,/turf/simulated/floor/colored/snow,/area/overworld/snow)
-"R" = (/obj/structure/scenery/snow_bush,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
+"M" = (/obj/structure/interactive/nature/pinetrees,/turf/simulated/floor/colored/snow,/area/overworld/snow)
+"N" = (/obj/structure/interactive/nature/pinetrees,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
+"O" = (/obj/structure/interactive/nature/snow_grass,/turf/simulated/floor/colored/snow,/area/overworld/snow)
+"P" = (/obj/structure/interactive/nature/snow_grass,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
+"Q" = (/obj/structure/interactive/nature/snow_bush,/turf/simulated/floor/colored/snow,/area/overworld/snow)
+"R" = (/obj/structure/interactive/nature/snow_bush,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
 "S" = (/obj/marker/spawnpoint/new_character,/turf/simulated/floor/colored/snow,/area/overworld/snow/south_entrance)
+"T" = (/obj/effect/footprint/emboss,/turf/simulated/floor/colored/dirt/snow,/area/overworld/snow/south_entrance)
 
 (1,1,1) = {"
 jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -159,7 +161,7 @@ aabbMbOOOOObMbbbhhhhhhhbbbbMbbbOOMbbbOOMbbbbObbbbbbbObMbMbbOObbbaaaffRcdddddddcg
 aaabbbObbbObbbbbbhhhhhhbbbbbbbbbObbbbbOOObMbObbbMbbMbbbbbbbOOMbbaaafRfcFFFFFFFcgPgPPffiiifaaabbbhhhhhhhhhhhhhhhhhhhhhhhbbbbbbbaa
 aaabbbObMOOOOObMbhhhhhhbbbbbQbMbObbbMOObbbbOOMOObbbbbbMbbbbObbbaaaaafRcdddddddcgggPgpffiffaaaabbhhhhhhhhhhhhhhhhhhhhhhhbbbbbbbaa
 aaabbMObbObbbOObbbhhhhhbbMbbbbbOObbbOOObbMbObOObbbMbbbbbbMOObbbaaaaaffcdddddddcggggggfffffaaaabbbhhhhhhhhhhhhhhhhhhhhhhhbbbbbbaa
-aaaabOObQObMbbOOObhhhhhhbbbbGbOObbMbObbMbbOObObbbbbbbMOOOObbbbbbaaaaffcddddddddgPgggffffSfaaaaabbhhhhhhhhhhhhhhhhhhhhhhhhbbbbbba
+aaaabOObQObMbbOOObhhhhhhbbbbGbOObbMbObbMbbOObObbbbbbbMOOOObbbbbbaaaaffcddddddddgPgTgffffSfaaaaabbhhhhhhhhhhhhhhhhhhhhhhhhbbbbbba
 aaaabbbbbOOObbbbbbhhhhhhbbbbbbGbbbbOObbbbbObbObMbbbMbOObbObbMbbbaaaaffcdddddddcgPggPPfNffffaaaaabbhhhhhhhhhhhhhhhhhhhhhhhbbbbbba
 aaaabbbbbOOOObMbbbbhhhhhbbbbGbbbMbbObMbbbbbOMObbbbbbbObbbbbbbbbbaaaaffcdddddddcfPggPPPfffffaaaaaabbhhhhhhhhhhhhhhhhhhhhhbbbbbbba
 aaaaabbMOObbObbbbbbhhhhhbMbbbbbbOObOObbbMbbOOOObbbMbbbbMbbbbbbQbaaaafPccccccccckPPggPPPfNffaaaaaaabbhhhhhhhhhhhhhhhhhhhhhbbbbbba
@@ -169,7 +171,7 @@ aaaabbbbMbbbbObMbbbbhhhhbbbMbbbbObbbbbbbbbbObbbbbbaaaaaaabbbQbQbbbfPfffaaaaaaaaa
 aaaabbbbbbbbbbbbbbQbhhhhbbbbbbbbObMbbMbbbbbObMbbbaaaaaaaabbbbbbbOOPPfaaaaaaaaaaHvvwwwwwwBvvvHHaaaaaaaabbbbbbhhhhhhhhbbbbbbbbbaaa
 aaabbbaaaaaaabbQbbbbhhhhbbbaaabbObbbbbbObMbObbbbbaaaaaaaaabbQbQbbbffaaaaaaaaaaaHvvvwwwwwwvvvHHaaaaaaaaaabbaaaahhhhhbbbbbbbbbaaaa
 aaaaaaaaaaaaaabbbaaahhhaaaaaabbbbbbbbbbOOOOObaaaaaaaaaaaaaabbbbbbbkaaaaaaaaaaaaHvvvwwwwwwwvvHHaaaaaaaaaaaaaaaaaaaaaaaaabbbbaaaaa
-aaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaabbbbbaaaaaaaaaaaaaaaaabbbbaaaaaaaaaaaaaaHvvvBwwwwwwvvHHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaabbbbbaaaaaaaaaaaaaaaaabbbbaaaaaaaaaaaaaaHvvvBwowwwwvvHHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaHvvvDDDDDDEvvHHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaHvvvCCCCCCCvvHHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

@@ -4,7 +4,7 @@
 	icon = null
 	icon_state = null
 
-	var/obj/structure/interactive/nature/linked_object
+	var/obj/structure/scenery/linked_object
 
 /obj/trigger/transparency_trigger/New(var/new_loc,var/atom/new_linked_object)
 	..()
