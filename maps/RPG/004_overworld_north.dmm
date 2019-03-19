@@ -15,7 +15,6 @@
 "p" = (/obj/structure/interactive/wishgranter/normal/northern_heights,/turf/simulated/floor/colored/dirt/snow,/area/overworld/snow/south_entrance)
 "q" = (/turf/simulated/wall/wood/brown,/area/overworld/south_cave)
 "r" = (/turf/simulated/wall/rock/snow,/area/overworld/south_cave)
-"s" = (/turf/simulated/floor/cave_dirt,/area/overworld/snow)
 "t" = (/turf/simulated/floor/cave_dirt,/area/overworld/caves)
 "u" = (/turf/simulated/floor/colored/snow,/area/overworld/caves)
 "v" = (/turf/simulated/wall/rock,/area/overworld/south_cave)
@@ -89,7 +88,7 @@ aaabbbbbhhhhhhhbbbbbbbbbbbbbbbbbbbbbQbOOOOOObbbjjjbbbbbbbbbbbbjjjbbbbbbbbbbbbbbb
 aaabbbbbhhhhhhhbbbbbbbbbbbbbbbbbbMbbOOOOOOOObbbjjjbbbbbbbbbbbbjjjbbbbbbbbbbbbbbbbbbbbbbbbbGbbbbbbbbbbbbbbbhhbbbbbbbaaaaaaaaaaaaa
 aaabbbbbhhhhhhbbbbbbbMbbbbbbbbbbbbbOOOOOOOOObbbjjjbbbbbbbbbbbbjjjbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbhhhhbbbbbbaaaaaaaaaaaa
 aaabbbbbhhhhhbbbQbbbbbbbbbMbbbbbbOOOOOOOOOOObbajjjbbbbbbbbbbbbjjjbbbbbbbbbbbbbbbbbbbbbbbGbbbbbbbbbbbbbbbbhhhhhhhbbbbbaaaaaaaaaaa
-aaaabbbbbbbbbbbbOOObbbbbbbbbbMbbOOOOOOOOOOObbbajjjjbbbbsssbbbjjjjbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhbbbbbbAAxxxxxxx
+aaaabbbbbbbbbbbbOOObbbbbbbbbbMbbOOOOOOOOOOObbbajjjjbbbbbbbbbbjjjjbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhbbbbbbAAxxxxxxx
 aaaabbbbbbbbbbOOOOObQbbbbbbbbbbbOOOOOOOOOOObMbaaaaaaaattttaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhhhhbbbbbuuuxxxxxx
 aaaaaabbbbQbbOOOOOOOObbbbbbbbbbQOOOOOOOOOObbbaaaxxxxxxttttxxxxxxxxxxaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhhhhhbbbbbuuuuxxxxx
 aaaaaabbbbbbOOOOOOOOObbbbbMbbbbbOOOOOOOOObbaaaxxxxxxxxttttxxxxxxxxxxxaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhhhhhbbbbbuuuuutxxx
