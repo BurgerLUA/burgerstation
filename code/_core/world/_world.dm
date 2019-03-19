@@ -1,9 +1,9 @@
-#define TICK_CHECK if(world.tick_usage >= 80) sleep(1)
-
+#define TICK_CHECK if(tick_usage_average >= 80) sleep(1)
 
 var/global/list/active_subsystems
 var/global/curtime = 0
 var/global/ticks = 0
+var/global/tick_usage_average = 0
 
 /world/
 	fps = FPS_SERVER
@@ -16,6 +16,8 @@ var/global/ticks = 0
 	hub_password = "kMZy3U5jJHSiBQjr"
 
 	cache_lifespan = 0
+
+
 
 /world/New()
 	log = file("logs/mylog.txt")
@@ -78,6 +80,10 @@ var/global/ticks = 0
 
 		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1
-		sleep(tick_lag)
+		tick_usage_average = (tick_usage_average+tick_usage)/2
+
+		var/sleep_time = max(tick_lag,tick_usage*tick_lag*0.01)
+
+		sleep(sleep_time)
 
 

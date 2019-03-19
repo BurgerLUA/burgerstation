@@ -22,7 +22,7 @@
 			W.open = FALSE
 
 	if(is_soulgem(O))
-		var/obj/item/soulgem/S = O
+		var/obj/item/consumable/soulgem/S = O
 		if(object_data["total_charge"])
 			S.total_charge = object_data["total_charge"]
 
@@ -74,7 +74,7 @@
 		returning_list["blend_data"] = blend_data
 
 	if(is_soulgem(I))
-		var/obj/item/soulgem/S = I
+		var/obj/item/consumable/soulgem/S = I
 		if(S.total_charge)
 			returning_list["total_charge"] = S.total_charge
 

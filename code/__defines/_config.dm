@@ -1,3 +1,19 @@
+#define FPS_CLIENT 60
+#define FPS_SERVER 60
+#define TILE_SIZE 32
+#define VIEW_RANGE 9
+
+
+
+
+#define ATTACK_ANIMATION_LENGTH 2
+
+#define MAX_MESSAGE_LEN 256
+
+#define MAX_CHARACTERS 10
+
+
+
 #define ENABLE_XP TRUE
 #define ENABLE_LIGHTING FALSE
 #define ENABLE_CHARGEN FALSE

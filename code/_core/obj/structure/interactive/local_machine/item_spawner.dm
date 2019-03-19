@@ -323,7 +323,7 @@
 
 //Ammo
 /obj/structure/interactive/localmachine/item/ammo/soulgem
-	stored_item = /obj/item/soulgem
+	stored_item = /obj/item/consumable/soulgem
 
 /obj/structure/interactive/localmachine/item/ammo/revolver_38
 	stored_item = /obj/item/magazine/clip/revolver/bullet_38/

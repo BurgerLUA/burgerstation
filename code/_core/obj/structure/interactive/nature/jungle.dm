@@ -22,13 +22,6 @@ obj/structure/interactive/nature/jungle_rock/New()
 	..()
 	icon_state = "rock[rand(1,5)]"
 
-obj/structure/interactive/nature/grass_bush
-	name = "grassy bush"
-	icon = 'icons/obj/structure/flora/ausflora.dmi'
-	icon_state = "grassybush_1"
-	density = 0
-
-
 
 obj/structure/interactive/nature/jungle_trees
 	name = "jungle tree"

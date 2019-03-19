@@ -31,3 +31,8 @@ var/list/mob/living/advanced/player/all_players
 
 	return .
 
+/mob/living/advanced/player/verb/progress_debug()
+	set name = "Progress Bar Debug"
+	set category = "Debug"
+	add_progress_bar(src,"test",60)
+

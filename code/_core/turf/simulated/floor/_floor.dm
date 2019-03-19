@@ -1,3 +1,5 @@
+#define FOOTPRINT_FADE_TIME SECONDS_TO_DECISECONDS(60)
+
 /turf/simulated/floor/
 	name = "FLOOR"
 	icon_state = "floor"
@@ -28,6 +30,8 @@
 			F.color = footprint_color
 			F.alpha = footprint_alpha
 			F.Initialize()
+			animate(F,alpha=0,time=FOOTPRINT_FADE_TIME,easing=QUAD_EASING)
+			queue_delete(F,FOOTPRINT_FADE_TIME)
 
 /turf/simulated/floor/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
@@ -44,3 +48,6 @@
 				F.color = footprint_color
 				F.alpha = footprint_alpha
 				F.Initialize()
+				animate(F,alpha=0,time=FOOTPRINT_FADE_TIME,easing=QUAD_EASING)
+				queue_delete(F,FOOTPRINT_FADE_TIME)
+

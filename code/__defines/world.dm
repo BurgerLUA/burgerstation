@@ -1,26 +1,3 @@
-#define FPS_CLIENT 60
-#define FPS_SERVER 30
-#define TILE_SIZE 32
-#define VIEW_RANGE 16
-#define TICK_LAG 10 / FPS_SERVER
-
-#define DECISECONDS_TO_TICKS(x) x * FPS_SERVER * 0.1
-#define TICKS_TO_DECISECONDS(x) (x / FPS_SERVER) * 10
-
-#define SECONDS_TO_TICKS(x) FPS_SERVER * x
-#define TICKS_TO_SECONDS(x) x/FPS_SERVER
-
-#define SECONDS_TO_DECISECONDS(x) x * 10
-#define DECISECONDS_TO_SECONDS(x) x / 10
-
-
-
-
-#define ATTACK_ANIMATION_LENGTH 2
-
-#define MAX_MESSAGE_LEN 256
-
-#define MAX_CHARACTERS 10
 
 
 

@@ -43,13 +43,6 @@
 
 		enterer.area = src
 
-		/*
-		if(is_mob(enterer))
-			var/mob/M = enterer
-			if(M.client)
-				M.client.update_lighting()
-		*/
-
 		return TRUE
 
 	return FALSE

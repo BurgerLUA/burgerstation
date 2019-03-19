@@ -10,6 +10,24 @@ obj/structure/interactive/nature/New()
 		var/obj/trigger/transparency_trigger/T1 = new(get_step(src,NORTH),src)
 		new/obj/trigger/transparency_trigger(get_step(T1,NORTH),src)
 
+obj/structure/interactive/nature/grass_bush
+	name = "grassy bush"
+	icon = 'icons/obj/structure/flora/ausflora.dmi'
+	icon_state = "grassybush_1"
+	density = 0
+
+obj/structure/interactive/nature/grass_bush/New()
+	..()
+	icon_state = "grassybush_[rand(1,4)]"
+
+
+obj/structure/interactive/nature/grass_bush/clicked_by_object(caller,object,location,control,params)
+	//Give loot
+
+	return TRUE
+
+
+
 
 obj/structure/interactive/nature/flowers
 	name = "flowers"
@@ -40,11 +58,6 @@ obj/structure/interactive/nature/grass/New()
 			icon_state = "sparsegrass_[rand(1,3)]"
 		if(2)
 			icon_state = "fullgrass_[rand(1,3)]"
-
-
-obj/structure/interactive/nature/grass_bush/New()
-	..()
-	icon_state = "grassybush_[rand(1,4)]"
 
 
 obj/structure/interactive/nature/rocks

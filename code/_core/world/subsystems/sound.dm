@@ -79,8 +79,8 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 			created_sound.z = pos[3] - M.z
 
 			if(channel != SOUND_CHANNEL_MUSIC)
-				var/distance = 1 + sqrt(created_sound.x**2 + created_sound.y**2)
-				distance += (abs(4-M.client.zoom_level)**2)*5
+				var/distance = 2 + sqrt(created_sound.x**2 + created_sound.y**2)
+				distance *= 0.5 + M.client.zoom_level*0.5
 				local_volume -= distance
 
 		if(local_volume <= 0)

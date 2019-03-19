@@ -77,7 +77,7 @@ proc/is_summon(var/atom/A)
 	return istype(A,/mob/living/simple/npc/summon/)
 
 proc/is_soulgem(var/atom/A)
-	return istype(A,/obj/item/soulgem/)
+	return istype(A,/obj/item/consumable/soulgem/)
 
 proc/is_datum(var/atom/A)
 	return istype(A,/datum/)

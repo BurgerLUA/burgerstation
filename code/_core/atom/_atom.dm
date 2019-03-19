@@ -148,3 +148,6 @@
 			light.update(.)
 		else
 			light = new/datum/light_source(src, .)
+
+/atom/proc/on_progress_bar_completed(var/id)
+	return TRUE
