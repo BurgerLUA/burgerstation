@@ -11,6 +11,7 @@
 /obj/trigger/proc/on_trigger(var/atom/triggerer)
 	return TRUE
 
+/*
 /obj/trigger/new_character
 	name = "new character teleport trigger"
 	desc = "turns the person into a player"
@@ -35,6 +36,8 @@
 		A.force_move(pick(world_spawnpoints))
 		if(A.client)
 			A.client.save_current_character()
+*/
+
 
 /obj/trigger/no_entry
 	name = "no entry"
@@ -79,32 +82,22 @@
 	y_move = 0
 	dir_restriction = WEST
 
-/obj/trigger/telesmart
-	name = "smart jumper"
-	var/desired_dir = 0
 
-/obj/trigger/telesmart/up
-	desired_dir = UP
+/obj/trigger/jumplevel
+	name = "level jumper"
+	var/desired_x
+	var/desired_y
+	var/desired_map
+	var/dir_restriction = 0
 
-/obj/trigger/telesmart/down
-	desired_dir = DOWN
+/obj/trigger/jumplevel/on_trigger(var/atom/movable/triggerer)
 
-/obj/trigger/telesmart/on_trigger(var/atom/movable/triggerer)
+	if(!is_mob(triggerer))
+		return FALSE
 
-	var/final_x = triggerer.x
-	var/final_y = triggerer.y
-	var/final_z = triggerer.z
+	if(!(triggerer.dir & dir_restriction))
+		return FALSE
 
-	if(desired_dir & UP)
-		final_z += 1
+	triggerer.Move(locate(desired_x,desired_y,get_z_level(desired_map)))
 
-	if(desired_dir & DOWN)
-		final_z -= 1
-
-	if(desired_dir & (WEST | EAST))
-		final_x = 128 - final_x
-
-	if(desired_dir & (NORTH | SOUTH))
-		final_y = 128 - final_x
-
-	triggerer.Move(locate(final_x,final_y,final_z))
+	return TRUE

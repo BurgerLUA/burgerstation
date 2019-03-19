@@ -441,6 +441,7 @@
 #include "code\_core\world\subsystems\health.dm"
 #include "code\_core\world\subsystems\image_notifications.dm"
 #include "code\_core\world\subsystems\lighting.dm"
+#include "code\_core\world\subsystems\maps.dm"
 #include "code\_core\world\subsystems\menus.dm"
 #include "code\_core\world\subsystems\mobs.dm"
 #include "code\_core\world\subsystems\outfits.dm"
@@ -454,8 +455,7 @@
 #include "code\_core\world\subsystems\turfs.dm"
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
-#include "maps\RPG\001_centcomm.dmm"
-#include "maps\RPG\004_overworld_north.dmm"
+#include "maps\RPG\_centcomm.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
