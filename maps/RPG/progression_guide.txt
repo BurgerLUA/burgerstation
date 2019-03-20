@@ -1,0 +1,34 @@
+Village
+	Find and talk to the Mayor
+
+Caves
+	Defeat the boss, return findings to the Mayor
+
+Moth Desert
+	Find the Moth Temple.
+
+Moth Temple
+	Defeat the moth temple boss and return the artifact to the Mayor.
+
+Magic Jungle
+	Find the Magic Temple.
+
+Magic Temple
+	Defeat the moth temple boss and return the artifact to the Mayor.
+
+Gates of Hell
+	Use the artifacts to find the gates of hell. Defeat the gatekeeper.
+
+Hell Level 1
+	Defeat the Ash Drake
+	Defeat Colossus
+
+Hell Level 2
+	Defeat Bubblegum
+	Defeat Legion
+
+Realm of Shadows
+	Defeat Avatar of Nar'sie
+
+The Core
+	Defeat ????
