@@ -34,7 +34,7 @@
 "aH" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/stair/wood,/area/overworld/village)
 "aI" = (/turf/simulated/floor/plating,/area/overworld/village)
 "aJ" = (/obj/structure/interactive/door/metal,/turf/simulated/floor/plating,/area/overworld/village)
-"aK" = (/turf/simulated/wall/hole,/area/overworld/village)
+"aK" = (/obj/trigger/telesmart/up,/turf/simulated/wall/hole,/area/overworld/village)
 "aL" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/brown,/area/overworld/village)
 "aM" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/rich,/area/overworld/village)
 "aN" = (/turf/simulated/floor/carpet,/area/overworld/village)

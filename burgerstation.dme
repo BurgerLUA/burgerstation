@@ -426,6 +426,7 @@
 #include "code\_core\turf\simulated\wall\metal.dm"
 #include "code\_core\turf\simulated\wall\river.dm"
 #include "code\_core\turf\simulated\wall\rock.dm"
+#include "code\_core\turf\simulated\wall\shuttle.dm"
 #include "code\_core\turf\simulated\wall\wood.dm"
 #include "code\_core\turf\unsimulated\_unsimulated.dm"
 #include "code\_core\world\_world.dm"
@@ -456,6 +457,7 @@
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
 #include "maps\RPG\_centcomm.dmm"
+#include "maps\RPG\space_station.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
