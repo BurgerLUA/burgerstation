@@ -49,6 +49,9 @@ var/global/list/all_living = list()
 
 	var/is_sneaking = FALSE
 
+	var/intent = INTENT_HELP
+
+	var/level = 0
 
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
@@ -77,26 +80,12 @@ var/global/list/all_living = list()
 	update_health()
 	stamina_current = stamina_max
 	mana_current = mana_max
+	update_level()
 	..()
+	if(ai)
+		name = "[initial(name)] (lvl. [level])"
 
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)
 		factions[k] = all_factions[k]
 
-/mob/living/proc/initialize_attributes()
-
-	var/class/C = all_classes[class]
-
-	for(var/v in all_attributes)
-		var/experience/attribute/A = new v(src)
-		A.Initialize(A.level_to_xp(C.attributes[A.id]))
-		attributes[A.id] = A
-
-/mob/living/proc/initialize_skills()
-
-	var/class/C = all_classes[class]
-
-	for(var/v in all_skills)
-		var/experience/skill/S = new v(src)
-		S.Initialize(S.level_to_xp(C.skills[S.id]))
-		skills[S.id] = S

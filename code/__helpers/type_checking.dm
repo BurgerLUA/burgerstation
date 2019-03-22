@@ -93,3 +93,7 @@ proc/is_player(var/atom/A)
 
 proc/is_floor(var/atom/A)
 	return istype(A,/turf/simulated/floor)
+
+
+proc/is_safezone(var/area/A)
+	return istype(A) && A.safe

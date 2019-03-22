@@ -1,3 +1,4 @@
+/*
 /turf/can_not_enter(var/atom/A,var/move_direction)
 
 	if(src.density) //If you're stuck because of some odd bullshit.
@@ -32,6 +33,7 @@
 			return R
 
 	return FALSE
+*/
 
 /* TODO: CHECK THIS
 /turf/can_bump(var/atom/bumper,var/bump_direction,var/movement_override = 0)

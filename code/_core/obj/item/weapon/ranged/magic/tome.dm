@@ -5,7 +5,7 @@
 
 	var/mana_cost = 100 //Base cost per cast
 
-	var/associated_skill = SKILL_MAGIC_OFFENSE
+	var/associated_skill = SKILL_MAGIC_OFFENSIVE
 
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost()
 	var/mob/living/advanced/A = get_owner()

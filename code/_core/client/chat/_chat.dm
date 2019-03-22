@@ -54,6 +54,9 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 		if(get_dist(M,src) > view_range)
 			continue
 
+		if(M.see_invisible < src.invisibility)
+			continue
+
 		var/local_first_person_text
 		var/local_third_person_text
 		var/local_blind_text

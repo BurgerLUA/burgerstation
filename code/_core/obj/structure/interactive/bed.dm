@@ -3,6 +3,7 @@ obj/structure/interactive/bed
 	desc = "What does it do?"
 	icon = 'icons/obj/structure/future/furniture.dmi'
 	icon_state = "bed"
+	density = 0
 	var/second_color = "#ff0000"
 
 obj/structure/interactive/bed/New()

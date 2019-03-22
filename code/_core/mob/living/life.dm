@@ -26,11 +26,11 @@
 
 /mob/living/proc/on_life()
 
-	if(status & FLAG_STATUS_STUN && stun_time <= 0)
+	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
 		status &= ~FLAG_STATUS_STUN
 		animate(src,transform = matrix(), time = 1)
 
-	if(!(status & FLAG_STATUS_STUN) && stun_time > 0)
+	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
 		status |= FLAG_STATUS_STUN
 		animate(src,transform = turn(matrix(), 90), time = 1)
 		on_stunned()
@@ -38,6 +38,7 @@
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
-	stun_time = max(0,stun_time - 1)
+	if(stun_time != -1)
+		stun_time = max(0,stun_time - 1)
 
 	return TRUE

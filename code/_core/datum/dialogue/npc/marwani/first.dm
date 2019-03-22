@@ -10,18 +10,24 @@
 	)
 
 	dialogue_options["out for a couple a days"] = list(
-		"Oh! Where are my manners? I'm being rude. My name is #2. I am the caretarker of this area in #1. ",
-		"the realm",
-		"Ilaeza Marwani"
+		"Oh! Where are my manners? I'm being rude. My name is #1. I am the caretarker of this area in #2. ",
+		"Ilaeza Marwani",
+		"the realm"
+	)
+
+	dialogue_options["Ilaeza Marwani"] = list(
+		"That is what I was called before I was in #1, that is what I am still called to this day.",
+		"the realm"
 	)
 
 	dialogue_options["the realm"] = list(
-		"Oh, shoot. I should not have said that. Usually someone else handles this sort of thing but they're uh... busy but...\n\
-		...unfortunately you died, and with your death, you are now #1.",
-		"trapped in Nar-sie's realm"
+		"Oh, shoot. I should not have said that. Usually someone else handles this sort of thing but they're uh... busy but...NEWLINE\
+		...unfortunately you died, and with your death, you are now #1 in #2 realm.",
+		"trapped",
+		"Nar-sie"
 	)
 
-	dialogue_options["trapped in Nar-sie's realm"] = list(
+	dialogue_options["trapped"] = list(
 		"Everyone here is a prisoner of #1, including me. This is his realm where he stores souls for goodness knows what. Probably something to do with torturing us given our #2 and all. You should speak to #3 about it, he tends to introduce the new ones to our village... but apparantly he's been busy of late so I took up that duty.",
 		"Nar-sie",
 		"immortality",
@@ -54,13 +60,13 @@
 		"the mayor"
 	)
 	dialogue_options["the village"] = list(
-		"Yes, we're located in a village that this ship is currently docked with. Our current leader is #1; he runs the place. I think.",
+		"We're located in a village that this ship is currently docked with. Our current leader is #1; he runs the place. I think.",
 		"the mayor",
 	)
 
 	dialogue_options["past life"] = list(
-		"I rather not talk about that right now. I have others to tend to. Please, go find #1. I believe they can tell you more about being #1.",
-		"trapped in Nar-sie's realm"
+		"I rather not talk about that right now. I have others to tend to. Please, go find #1. I believe they can tell you more about #1's realm.",
+		"Nar-sie"
 	)
 
 

@@ -23,9 +23,9 @@
 
 	plane = PLANE_MOB
 
-	see_invisible = 20
+	see_invisible = INVISIBILITY_LIGHTING
 
-	sight = SEE_BLACKNESS
+	sight = SEE_BLACKNESS | SEE_SELF | SEE_TURFS | SEE_PIXELS
 
 	var/list/quests/all_quests = list()
 	var/list/quests/active_quests = list()
@@ -36,6 +36,9 @@
 	var/real_move_mod = 2
 
 	var/karma = 0
+
+	see_invisible = INVISIBILITY_DEFAULT
+	invisibility = INVISIBILITY_MOBS
 
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)

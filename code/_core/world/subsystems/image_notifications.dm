@@ -27,12 +27,12 @@ var/global/list/all_notifications = list()
 	var/icon/I = new /icon('icons/invisible.dmi',"0")
 	I.Blend(color,ICON_OVERLAY)
 
-	var/max_possible = TILE_SIZE*VIEW_RANGE*2
+	var/max_possible = TILE_SIZE*(1+VIEW_RANGE)*2
 	I.Scale(max_possible,max_possible)
 
 	var/image/I2 = new /image(I)
-	I2.pixel_x = 16-(max_possible*0.5)
-	I2.pixel_y = 16-(max_possible*0.5)
+	I2.pixel_x = 16-(max_possible*0.5) + C.pixel_x
+	I2.pixel_y = 16-(max_possible*0.5) + C.pixel_y
 	I2.loc = C.mob
 	I2.layer = LAYER_AREA
 	I2.plane = PLANE_MAP
@@ -42,8 +42,8 @@ var/global/list/all_notifications = list()
 
 /proc/add_notification_easy(var/client/C,var/icon,var/icon_state,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)
 	var/image/I = new /image(icon,icon_state)
-	I.pixel_x = 16-160
-	I.pixel_y = 16-160
+	I.pixel_x = 16-160 + C.pixel_x
+	I.pixel_y = 16-160 + C.pixel_y
 	I.loc = C.mob
 	I.layer = LAYER_AREA
 	I.plane = PLANE_MAP_TEXT

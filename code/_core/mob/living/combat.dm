@@ -1,6 +1,6 @@
 /mob/living/proc/add_stun(var/value,var/max_value = 40)
 
-	value = max(value,10)
+	//value = max(value,10)
 
 	if(stun_time > max_value)
 		return FALSE

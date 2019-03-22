@@ -1,17 +1,10 @@
-/mob/living/can_not_enter(var/atom/A,var/move_direction)
+/mob/living/Move()
 
-	if(is_living(A))
-		var/mob/living/L = A
-		if(L.status & FLAG_STATUS_STUN)
-			return FALSE
-
-	if(status & FLAG_STATUS_STUN)
+	if(stun_time == -1)
 		return FALSE
 
-	if(area && area.safe)
-		return FALSE
+	return ..()
 
-	return src
 
 /mob/living/get_movement_delay()
 	. = ..()

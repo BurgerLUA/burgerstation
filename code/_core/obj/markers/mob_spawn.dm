@@ -115,3 +115,9 @@
 	name = "artificer spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/cult/artificer
 	color = "#FFFF00"
+
+
+/obj/marker/mob_spawn/player_debug
+	name = "player debug spawn"
+	type_to_spawn = /mob/living/advanced/human/npc/unique/debug
+	color = "#00FF00"

@@ -85,12 +85,14 @@
 		T.recalc_atom_opacity()
 		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
-
+/*
 /atom/proc/can_not_leave(var/atom/A,var/move_direction)
 	return null
 
 /atom/proc/can_not_enter(var/atom/A,var/move_direction)
 	return null
+*/
+
 
 /atom/proc/defer_click_on_object()
 	return src

@@ -17,10 +17,16 @@
 /mob/abstract/observer/no_move
 	icon_state = ""
 
+/mob/abstract/observer/no_move/Initialize()
+	..()
+	to_chat(span("Please load a character or create a new character to play using the buttons below."))
+
+/mob/abstract/observer/auto_camera
+	icon_state = ""
+
 /mob/abstract/observer/Initialize()
 	. = ..()
 	name = "ghost of [ckey]"
-	to_chat(span("greeting","You are a ghost! Please load a character or create a new character to play using the buttons below."))
 
 	sight |= SEE_THRU
 

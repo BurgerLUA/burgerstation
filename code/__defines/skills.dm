@@ -9,8 +9,8 @@
 #define SKILL_RECOVERY "recovery" //Add a way to level
 
 //INTELLIGENCE
-#define SKILL_MAGIC_OFFENSE "magic_offensive" //Completed
-#define SKILL_MAGIC_DEFENSE "magic_defensive" //Completed
+#define SKILL_MAGIC_OFFENSIVE "magic_offensive" //Completed
+#define SKILL_MAGIC_DEFENSIVE "magic_defensive" //Completed
 #define SKILL_MAGIC_SUPPORT "magic_support" //Completed
 #define SKILL_MAGIC_REALITY "magic_reality" //Completed
 #define SKILL_MAGIC_CHAOS "magic_chaos" //Completed

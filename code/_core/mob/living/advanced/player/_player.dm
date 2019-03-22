@@ -12,6 +12,7 @@ var/list/mob/living/advanced/player/all_players
 
 	var/dialogue_target_id
 
+	invisibility = INVISIBILITY_PLAYERS
 
 /mob/living/advanced/player/Initialize()
 	..()
@@ -21,6 +22,9 @@ var/list/mob/living/advanced/player/all_players
 	..()
 	all_players -= src
 
+
+/mob/living/advanced/player/Cross(var/atom/moveable/A)
+	return is_safezone(area) || intent == INTENT_HARM
 
 
 /mob/living/advanced/player/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
@@ -36,3 +40,7 @@ var/list/mob/living/advanced/player/all_players
 	set category = "Debug"
 	add_progress_bar(src,"test",60)
 
+/mob/living/advanced/player/verb/class_debug()
+	set name = "Class Debug"
+	set category = "Debug"
+	open_menu(src,"class_editor")

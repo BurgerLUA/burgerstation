@@ -1,0 +1,210 @@
+<html>
+	<head>
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				font-size: 18px;		
+			}
+			button.small {
+				background:url('button_blue.png');
+				width: 20px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;
+			}
+			button.small:disabled {
+				background:url('button_grey.png');
+				height: 60px;
+			}
+			button.extended {
+				background:url('button_blue_extended.png');
+				width: 120px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				color: white;
+				padding: 0px;				
+			}
+		</style>
+	</head>
+	<body>
+		<hr width='50%'>
+		<table id='formatting' border='0px' width='100%'>
+			<tr>
+				<th>
+					<h2>Attributes</h2>
+					<table id='attribute_table'>
+					</table>
+					Points Left: <div id='attribute_left'>0</div>
+				</th>
+				<th>
+					<h2>Skills</h2>
+					<table id='skill_table'>
+					</table>
+					Points Left: <div id='skill_left'>0</div>
+				</th>
+			</tr>
+			
+			<tr>
+				<th colspan=2>
+					<button class='extended' id="apply_button" onclick="finish_allocation()">Save</button>
+				</th>
+			</tr>
+			
+		</table>
+		<hr width='50%'>
+	</body>
+</html>
+
+<script>
+
+	var global_stored_skills = new Object();
+	var global_stored_attributes = new Object();
+	var global_stored_max = new Object();
+	var global_stored_min = new Object();
+	
+	var global_max_attribute
+	var global_min_attribute
+	
+	var global_max_skill
+	var global_min_skill
+	
+	var global_attribute_allocation
+	var global_skill_allocation
+	
+	var global_reference
+	
+	function set_attribute_allocation(value) {
+		global_attribute_allocation = value
+	}
+	
+	function set_skill_allocation(value) {
+		global_skill_allocation = value
+	}	
+	
+	function generate_max(id,value) {
+		global_stored_max[id] = value
+	}
+	
+	function generate_min(id,value) {
+		global_stored_min[id] = value
+	}
+
+	function generate_value(id,value,type) {
+		var desired_doc = document.getElementById(type + "_table")
+		var new_row = desired_doc.insertRow(-1);
+		var new_col1 = new_row.insertCell(0);
+		var new_col2 = new_row.insertCell(1);
+		var new_col3 = new_row.insertCell(2);
+		var new_col4 = new_row.insertCell(3);
+
+		new_col1.innerHTML = "<b>" + id.toUpperCase() + "</b>"
+		new_col2.innerHTML = "<button id = 'decrease_" + id + "' class='decrease small' onclick=\"decrease_value('" + id +"',5)\">-</button>"
+		new_col3.id = id + "_value"
+		new_col3.innerHTML = value
+		new_col4.innerHTML = "<button id ='increase_" + id + "' class='increase small' onclick=\"increase_value('" + id +"',5)\">+</button>"
+		
+		
+		//alert(id + " " + value.toString() + " " + type)
+
+		if(type == "skill") {
+			global_stored_skills[id] = value
+		}
+		else if(type == "attribute") {
+			global_stored_attributes[id] = value
+		}
+
+		update_button(id,value)
+		return value
+	}
+	
+	function increase_value(id_value,num) {
+		var doc_value = Math.min(parseInt(document.getElementById(id_value + "_value").innerHTML) + num,global_stored_max[id_value])
+		document.getElementById(id_value + "_value").innerHTML = doc_value
+		update_values()
+		update_button(id_value,doc_value)
+	}
+	
+	function decrease_value(id_value,num) {
+		var doc_value = Math.max(parseInt(document.getElementById(id_value + "_value").innerHTML) - num,global_stored_min[id_value])
+		document.getElementById(id_value + "_value").innerHTML = doc_value
+		update_values()
+		update_button(id_value,doc_value)
+	}
+	
+	function update_button(id_value,new_value) {
+		if(new_value >= global_stored_max[id_value]) {
+			document.getElementById("increase_" + id_value).disabled = true
+			document.getElementById("decrease_" + id_value).disabled = false
+		}
+		else if(new_value <= global_stored_min[id_value]) {
+			document.getElementById("increase_" + id_value).disabled = false
+			document.getElementById("decrease_" + id_value).disabled = true
+		}
+		else {
+			document.getElementById("increase_" + id_value).disabled = false
+			document.getElementById("decrease_" + id_value).disabled = false	
+		}
+	}
+	
+	function update_values() {
+	
+		var returning_attributes = 0
+		
+		var a
+		for (a in global_stored_attributes) {
+			var value = parseInt(document.getElementById(a + "_value").innerHTML)
+			global_stored_attributes[a] = value
+			returning_attributes += value
+		}	
+
+		var returning_skills = 0
+		
+		var s
+		for (s in global_stored_skills) {
+			var value = parseInt(document.getElementById(s + "_value").innerHTML) 
+			global_stored_skills[s] = value
+			returning_skills += value
+		}
+
+		document.getElementById("attribute_left").innerHTML = global_attribute_allocation - returning_attributes
+		document.getElementById("skill_left").innerHTML = global_skill_allocation - returning_skills
+		
+	}
+	
+	function finish_allocation() {
+		var starting_string = "byond://?src="+global_reference
+
+		for (k in global_stored_skills) {
+			var v = global_stored_skills[k]
+			starting_string += ";" + k + "=" + v.toString()
+		}
+			
+		for (k in global_stored_attributes) {
+			var v = global_stored_attributes[k]
+			starting_string += ";" + k + "=" + v.toString()
+		}
+	
+		window.location = starting_string
+	
+	}
+	
+	function set_reference(reference) {
+		global_reference = reference
+	}	
+	
+	function done_loading() {
+		var desired_location = "byond://?done_loading=class_editor"
+		window.location = desired_location
+		
+	}	
+	
+	
+	done_loading()
+	
+</script>

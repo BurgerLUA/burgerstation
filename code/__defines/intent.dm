@@ -1,0 +1,4 @@
+#define INTENT_HELP 0
+#define INTENT_DISARM 1
+#define INTENT_GRAB 2
+#define INTENT_HARM 3

@@ -112,23 +112,13 @@
 				if(is_advanced(usr))
 					var/mob/living/advanced/A = usr
 					apply_javascript_to_mob(usr,forged_data)
-					stop_sound('sounds/music/chargen.ogg',list(usr))
 
 					if(A.sex == MALE)
 						A.add_outfit("new_male")
 					else
 						A.add_outfit("new_female")
 
-					if(A.client && FALSE)
-						spawn(0)
-							play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
-							add_notification_colored_easy(A.client,"#000000",SECONDS_TO_DECISECONDS(19),fade_in = FALSE)
-							sleep(SECONDS_TO_DECISECONDS(5))
-							add_notification_easy(A.client,'icons/hud/discovery.dmi',"meme1",SECONDS_TO_DECISECONDS(3))
-							sleep(SECONDS_TO_DECISECONDS(7))
-							add_notification_easy(A.client,'icons/hud/discovery.dmi',"meme2",SECONDS_TO_DECISECONDS(3))
-							sleep(SECONDS_TO_DECISECONDS(10))
-							add_notification_easy(A.client,'icons/hud/discovery.dmi',"meme3",SECONDS_TO_DECISECONDS(5))
+					open_menu(A,"class_editor")
 
 			return
 

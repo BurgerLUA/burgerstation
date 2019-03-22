@@ -35,6 +35,8 @@ var/global/list/all_clients = list()
 
 	var/karma = 1000
 
+	perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
+
 
 /client/proc/setup_stylesheets()
 	winset(src,"info.browser","style=[src.script]")

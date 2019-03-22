@@ -1,6 +1,9 @@
 /experience/attribute/
 	experience_power = 1
 	experience_multiplier = 1
+	default_level = 5
+	chargen_min_level = 5
+	chargen_max_level = 20
 
 //Warrior
 /experience/attribute/strength/
@@ -66,3 +69,6 @@
 	id = ATTRIBUTE_LUCK
 	desc = "A measure of how gosh darn lucky you are to be alive. Luck affects everything you do in small or, sometimes big, ways."
 	flags = ATTRIBUTE_STAT
+	chargen_min_level = 40
+	chargen_max_level = 60
+	counts_towards_level = FALSE

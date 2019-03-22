@@ -10,6 +10,8 @@
 	light_range = 2
 	light_color = "#AAAAFF"
 
+/turf/simulated/wall/river/non_moving
+	icon_state = "riverwater_static"
 
 /turf/simulated/wall/river/New()
 	var/lightness = 255 - x*0.25

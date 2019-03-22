@@ -1,3 +1,9 @@
+/experience/skill/
+	experience_power = 1
+	experience_multiplier = 1
+	default_level = 5
+	chargen_min_level = 5
+	chargen_max_level = 25
 
 //Rogue 5
 /experience/skill/ranged/ //AGILITY
@@ -113,7 +119,7 @@
 
 /experience/skill/offensive_magic/ //INTELLIGENCE
 	name = "Subjugation Magic"
-	id = SKILL_MAGIC_OFFENSE
+	id = SKILL_MAGIC_OFFENSIVE
 	desc = "Your skill in casting damage-dealing subjugation magic such as fireball, lightning bolt, and frostwave. Affects the damage and mana cost of subjugation magic."
 	//Each successful spell = 1xp
 	//Each point of power in a spell successfully casted = 1xp
@@ -131,7 +137,7 @@
 
 /experience/skill/defensive_magic/ //RESOLVE
 	name = "Deterrence Magic"
-	id = SKILL_MAGIC_DEFENSE
+	id = SKILL_MAGIC_DEFENSIVE
 	desc = "Your skill in casting damage-warding deterrence magic such as raise barrier, conjure armor, and reflect spell."
 	//Each successful spell = 1xp
 	//Each point of power in a spell successfully casted = 1xp
@@ -163,6 +169,7 @@
 	desc = "Your skill in mixing potions. Affects the speed, sucess rate, and quality of potions."
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	counts_towards_level = FALSE
 
 /experience/skill/enchanting/ //Int
 	name = "Enchanting"
@@ -170,6 +177,7 @@
 	desc = "Your skill in enchanting objects. Affects the speed, sucess rate, and quality of enchanted items."
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	counts_towards_level = FALSE
 
 /experience/skill/cooking/ //Str
 	name = "Cooking"
@@ -177,6 +185,7 @@
 	desc = "Your skill in cooking food. Affects the speed, success rate, and quality of cooking new items."
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	counts_towards_level = FALSE
 
 /experience/skill/crafting //Str
 	name = "Crafting"
@@ -184,3 +193,4 @@
 	desc = "Your skill in crafting items. Affects the speed and success rate of crafting items."
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	counts_towards_level = FALSE

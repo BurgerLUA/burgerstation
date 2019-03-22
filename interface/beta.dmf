@@ -228,7 +228,6 @@ window "control"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -257,7 +256,6 @@ window "info"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -271,7 +269,6 @@ window "info"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 		auto-format = false
 
@@ -286,7 +283,6 @@ window "main"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
-		statusbar = false
 		icon = 'interface\\icons\\burger.png'
 		image-mode = tile
 		macro = "macro"
@@ -297,6 +293,7 @@ window "main"
 		size = 800x20
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = ""
 		text = ""
 	elem "button_chat"
@@ -305,6 +302,7 @@ window "main"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ""

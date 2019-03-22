@@ -61,8 +61,10 @@
 /atom/movable/Bump(var/atom/obstacle)
 	return FALSE
 
+/*
 /atom/movable/proc/can_bump(var/atom/bumper)
 	return FALSE
+*/
 
 /* EXAMPLE CODE
 /atom/movable/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
