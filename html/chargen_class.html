@@ -6,7 +6,20 @@
 				background-repeat: repeat;
 				color: white;
 				font-family: Arial Narrow,Arial,sans-serif;
-				font-size: 18px;		
+				font-size: 22px;
+				
+				scrollbar-3dlight-color:gold;
+				scrollbar-arrow-color:blue;
+				scrollbar-base-color:;
+				scrollbar-darkshadow-color:blue;
+				scrollbar-face-color:;
+				scrollbar-highlight-color:;
+				scrollbar-shadow-color:		
+			}
+			table{
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				font-size: 22px;
 			}
 			button.small {
 				background:url('button_blue.png');
@@ -30,13 +43,25 @@
 				color: white;
 				padding: 0px;				
 			}
+			h1 {
+				text-align:center;
+			}
 		</style>
 	</head>
 	<body>
+		<h1>Class Creation</h1>
 		<hr width='50%'>
 		<table id='formatting' border='0px' width='100%'>
 			<tr>
 				<th>
+					<h2>Stats</h2>
+					<table id='stat_table'>
+						<tr><th onmouseover="set_helper_text('There is only one race: NASCAR.')">Race:</th><th>Human</th></tr>
+						<tr><th onmouseover="set_helper_text('The amount of karma your character has. The higher your karma, the more good you appear. The lower your karma, the more evil you appear. Karma can affect your ability to cast certain spells and use certain items.')">Karma:</th><th>1000</th></tr>
+						<tr><th onmouseover="set_helper_text('The amount of health your character has. If this reaches 0, you will die.')">Health:</th><th id='health'>100</th></tr>
+						<tr><th onmouseover="set_helper_text('The amount of stamina your character has. Stamina affects your ability to run, block, dodge, parry, attack, and perform actions.')">Stamina:</th><th id='stamina'>100</th></tr>
+						<tr><th onmouseover="set_helper_text('The amount of mana your character has. Mana affects your ability to cast spells, activate abilities, and use special artifacts.')">Mana:</th><th id='mana'>100</th></tr>
+					</table>
 					<h2>Attributes</h2>
 					<table id='attribute_table'>
 					</table>
@@ -49,24 +74,29 @@
 					Points Left: <div id='skill_left'>0</div>
 				</th>
 			</tr>
-			
 			<tr>
 				<th colspan=2>
 					<button class='extended' id="apply_button" onclick="finish_allocation()">Save</button>
 				</th>
 			</tr>
-			
 		</table>
 		<hr width='50%'>
+		<table width='100%'>
+			<tr>
+				<th>
+					<div id="help_text">Help text.</div>
+				</th>
+			</tr>
+		</table>
 	</body>
 </html>
 
 <script>
 
-	var global_stored_skills = new Object();
-	var global_stored_attributes = new Object();
-	var global_stored_max = new Object();
-	var global_stored_min = new Object();
+	var global_stored_skills = new Object()
+	var global_stored_attributes = new Object()
+	var global_stored_max = new Object()
+	var global_stored_min = new Object()
 	
 	var global_max_attribute
 	var global_min_attribute
@@ -78,6 +108,18 @@
 	var global_skill_allocation
 	
 	var global_reference
+	
+	var global_all_names = new Object()
+	var global_all_descriptions = new Object()
+	
+	
+
+	
+	function calculate_stats() {
+		document.getElementById("health").innerHTML = 100 + global_stored_attributes["vitality"]*4
+		document.getElementById("stamina").innerHTML = 100 + global_stored_attributes["agility"]*4
+		document.getElementById("mana").innerHTML = 100 + global_stored_attributes["willpower"]*4
+	}
 	
 	function set_attribute_allocation(value) {
 		global_attribute_allocation = value
@@ -94,6 +136,16 @@
 	function generate_min(id,value) {
 		global_stored_min[id] = value
 	}
+	
+	function set_description(id,name,desc) {
+		global_all_names[id] = name
+		global_all_descriptions[id] = desc
+	}
+
+	function set_helper_text(text) {
+		document.getElementById("help_text").innerHTML = text	
+	}
+	
 
 	function generate_value(id,value,type) {
 		var desired_doc = document.getElementById(type + "_table")
@@ -102,15 +154,12 @@
 		var new_col2 = new_row.insertCell(1);
 		var new_col3 = new_row.insertCell(2);
 		var new_col4 = new_row.insertCell(3);
-
-		new_col1.innerHTML = "<b>" + id.toUpperCase() + "</b>"
+		new_col1.innerHTML = "<div id='"+id+"' onmouseover=\"set_helper_text('" + global_all_descriptions[id] + "')\"><b>" + global_all_names[id] + "</b></div>"
 		new_col2.innerHTML = "<button id = 'decrease_" + id + "' class='decrease small' onclick=\"decrease_value('" + id +"',5)\">-</button>"
 		new_col3.id = id + "_value"
 		new_col3.innerHTML = value
 		new_col4.innerHTML = "<button id ='increase_" + id + "' class='increase small' onclick=\"increase_value('" + id +"',5)\">+</button>"
-		
-		
-		//alert(id + " " + value.toString() + " " + type)
+
 
 		if(type == "skill") {
 			global_stored_skills[id] = value
@@ -175,6 +224,8 @@
 		document.getElementById("attribute_left").innerHTML = global_attribute_allocation - returning_attributes
 		document.getElementById("skill_left").innerHTML = global_skill_allocation - returning_skills
 		
+		calculate_stats()
+		
 	}
 	
 	function finish_allocation() {
@@ -200,8 +251,7 @@
 	
 	function done_loading() {
 		var desired_location = "byond://?done_loading=class_editor"
-		window.location = desired_location
-		
+		window.location = desired_location	
 	}	
 	
 	

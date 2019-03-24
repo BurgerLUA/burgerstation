@@ -1,4 +1,4 @@
-/obj/health/
+/obj/button/health/
 	name = "Health Element"
 	desc = "This is an element for health."
 	id = "none"
@@ -13,15 +13,13 @@
 	var/max = 100
 	var/current = 0
 
-	var/mob/living/owner
-
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-/obj/health/proc/update_stats(var/mob/living/M)
+/obj/button/health/proc/update_stats(var/mob/living/M)
 	update_icon()
 
-/obj/health/proc/update_owner(var/mob/living/desired_owner)
+/obj/button/health/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)
 		return FALSE
@@ -35,7 +33,7 @@
 
 	return TRUE
 
-/obj/health/update_icon()
+/obj/button/health/update_icon()
 
 	if(max == 0)
 		return
@@ -56,7 +54,7 @@
 
 	..()
 
-/obj/health/hp
+/obj/button/health/hp
 	name = "health"
 	id = "health"
 	desc = "Approximately how close you are to death."
@@ -66,13 +64,13 @@
 
 	screen_loc = "RIGHT-0.25,BOTTOM+1.1"
 
-/obj/health/hp/update_stats(var/mob/living/M)
+/obj/button/health/hp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
 	..()
 
-/obj/health/sp
+/obj/button/health/sp
 	name = "stamina"
 	id = "stamina"
 	desc = "Approximately how close your are to physical fatigue."
@@ -82,13 +80,13 @@
 
 	screen_loc = "RIGHT,BOTTOM+1.1"
 
-/obj/health/sp/update_stats(var/mob/living/M)
+/obj/button/health/sp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
 	..()
 
-/obj/health/mp
+/obj/button/health/mp
 	name = "mana"
 	id = "mana"
 	desc = "Approximately how close you are to mental fatigue."
@@ -98,7 +96,7 @@
 
 	screen_loc = "RIGHT+0.25,BOTTOM+1.1"
 
-/obj/health/mp/update_stats(var/mob/living/M)
+/obj/button/health/mp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)

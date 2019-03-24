@@ -9,6 +9,7 @@
 	var/tmp/attack_flags = 0x0
 
 	var/list/obj/button/buttons //List of HUD buttons
+	var/list/obj/button/health/health_elements
 
 	var/animation_pixel_x = 0
 	var/animation_pixel_y = 0
@@ -39,6 +40,11 @@
 
 	see_invisible = INVISIBILITY_DEFAULT
 	invisibility = INVISIBILITY_MOBS
+
+	var/draw_buttons = TRUE
+	var/draw_health = TRUE
+
+
 
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)

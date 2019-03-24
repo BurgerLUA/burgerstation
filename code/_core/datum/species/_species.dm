@@ -40,10 +40,10 @@
 		/obj/button/sneak
 	)
 
-	var/list/obj/health/spawning_health = list(
-		"hp" = /obj/health/hp,
-		"sp" = /obj/health/sp,
-		"mp" = /obj/health/mp
+	var/list/obj/button/health/spawning_health = list(
+		"hp" = /obj/button/health/hp,
+		"sp" = /obj/button/health/sp,
+		"mp" = /obj/button/health/mp
 	)
 
 	var/list/chargen_hair_colors = list()

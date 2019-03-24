@@ -68,14 +68,15 @@
 	if(right_hand)
 		right_hand.drop_held_objects(src.loc)
 
-/mob/living/advanced/proc/toggle_inventory()
+/mob/living/advanced/proc/toggle_inventory(var/important_too = FALSE,var/speed=3)
 	draw_inventory = !draw_inventory
 	for(var/v in inventory)
 		var/obj/inventory/O = v
-		if(!draw_inventory && !O.essential)
-			O.invisibility = 101
+		if(!draw_inventory)
+			if(!O.essential || important_too)
+				animate(O,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
 		else
-			O.invisibility = 0
+			animate(O,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
 
 	update_icon()
 

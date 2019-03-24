@@ -201,7 +201,6 @@
 #include "code\_core\mob\buttons.dm"
 #include "code\_core\mob\chat.dm"
 #include "code\_core\mob\controls.dm"
-#include "code\_core\mob\inventory.dm"
 #include "code\_core\mob\life.dm"
 #include "code\_core\mob\lighting.dm"
 #include "code\_core\mob\movement.dm"

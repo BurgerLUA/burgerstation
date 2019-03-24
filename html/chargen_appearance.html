@@ -7,7 +7,7 @@
 				background-repeat: repeat;
 				color: white;
 				font-family: Arial Narrow,Arial,sans-serif;
-				font-size: 18px;
+				font-size: 22px;
 				
 				scrollbar-3dlight-color:gold;
 				scrollbar-arrow-color:blue;
@@ -17,6 +17,11 @@
 				scrollbar-highlight-color:;
 				scrollbar-shadow-color:				
 
+			}
+			table{
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				font-size: 22px;
 			}
 			button.small {
 				background:url('button_blue.png');
@@ -164,99 +169,99 @@
 				margin: 0px;
 			
 			}
+			h1 {
+				text-align:center;
+			}
 		</style>
 	</head>
 	<body>
-			<table id='formatting' width='100%'>
-				<tr height='1px'>
-					<th align='center'>
-						<img id='portrait_north' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
-						<img id='portrait_east' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
-						<img id='portrait_south' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
-						<img id='portrait_west' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img><br>
-						
-						<input type='text' class='name' rows="1" cols="48" value="Insert Name Here" onmouseover="hover_update('Your name and what people will identify you as when your face is visible. This can only be changed by special people after character creation.')" onchange="setName(this.value)">						
-					</th>
-				</tr>
-			</table>
-			<table id='customization' width='100%'>
-				<tr>
-					<th>
-						<table id = "color_customization" width='100%'>
-							<tr onmouseover="hover_update('What private parts god has given you.')">
-								<th width='45%' align='right'>
-									Sex:
-								</th>
-								<th width='55%' align='left'>
-									<button class='extended' disabled=true id="sex_m" onclick="update_sex('m')">Male &#9794;</button>
-									<button class='extended' id="sex_f" onclick="update_sex('f')">Female &#9792;</button>
-								</th>
-							</tr>
-							<!--
-							<tr onmouseover="hover_update('What gender identify you\'ve given yourself. Despite rampant exploitive anarcho-capitalism taking over the galaxy, those pesky liberals have made a lot of progress since The Great Race War of 2020 to the point where 4 out of the 8000 existing genders are options.')">
-								<th>
-									Gender:
-								</th>
-								<th width='75%'>
-									<button class='extended' disabled=true id="gender_m" onclick="update_gender('m')">He &#9794;</button>
-									<button class='extended' id="gender_f" onclick="update_gender('f')">She &#9792;</button>
-									<button class='extended' id="gender_p" onclick="update_gender('p')">They &#9895;</button>
-									<button class='extended' id="gender_n" onclick="update_gender('n')">It &#9675;</button>
-								</th>
-							</tr>
-							-->
-							<tr onmouseover="hover_update('How light or dark your skin tone is. Determines how often you can get away with using certain racial slurs.')">
-								<th align='right'>
-									Skin Tone:
-								</th>
-								<th align='left'>
-									<button class='extended' onclick="change_color_of('skin')">Choose...</button>
-								</th>
-							</tr>
-							<tr onmouseover="hover_update('The color of your lips, or to be honest, the mouth considering it is very difficult to represent lips on a 9x9 head.')">
-								<th align='right'>
-									Lip Color:
-								</th>
-								<th align='left'>
-									<button class='extended' onclick="change_color_of('lips')">Choose...</button><button id="toggle_lips" class='small' onclick="toggle_lips()">+</button>
-								</th>
-							</tr>	
-							<tr onmouseover="hover_update('Your blush color. Basically lets other players know you\'re either a completely original troll trying to make the 5793rd male genderless crossdressing character or some thot.')">
-								<th align='right'>
-									Blush Color:
-								</th>
-								<th align='left'>
-									<button class='extended' onclick="change_color_of('blush')">Choose...</button><button id="toggle_blush" class='small' onclick="toggle_blush()">+</button>
-								</th>
-							</tr>							
-							<tr onmouseover="hover_update('The color of your eyes. Set to a color other than what\'s naturally possible and people will know to stay away from you.')">
-								<th align='right'>
-									Eye Color:
-								</th>
-								<th align='left'>
-									<button class='extended' onclick="change_color_of('eyes')">Choose...</button>
-								</th>
-							</tr>
-						</table>
-					</th>
-				</tr>
-			</table>
-			<table id='icons' width='100%'>
-			
-			</table>
-			<br>
-			<button class='extended' id='char_submit' onmouseover="hover_update('Save your creation and play the damn game already.')" onclick="get_data_to_send(true)">Finish Character</button>
-			
-			
-			
-			<!--HIDDEN STUFF  get_data_to_send(true)-->
-			<div id="color_picker">
-				Color Selection <button id='close_button' class='small' onclick='close_colors()'>x</button>
-				<div id='colors'></div>
-				<div id='hover_color'></div>
-				<div id='chosen_color'></div>
-			</div>
-			
+		<h1>Character Creation</h1>
+		<hr width='50%'>
+		<table id='formatting' width='100%'>
+			<tr height='1px'>
+				<th align='center'>
+					<img id='portrait_north' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
+					<img id='portrait_east' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
+					<img id='portrait_south' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
+					<img id='portrait_west' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img><br>
+					
+					<input type='text' class='name' rows="1" cols="48" value="Insert Name Here" onmouseover="hover_update('Your name and what people will identify you as when your face is visible. This can only be changed by special people after character creation.')" onchange="setName(this.value)">						
+				</th>
+			</tr>
+		</table>
+		<table id='customization' width='100%'>
+			<tr>
+				<th>
+					<table id = "color_customization" width='100%'>
+						<tr onmouseover="hover_update('What private parts god has given you.')">
+							<th width='45%' align='right'>
+								Sex:
+							</th>
+							<th width='55%' align='left'>
+								<button class='extended' disabled=true id="sex_m" onclick="update_sex('m')">Male &#9794;</button>
+								<button class='extended' id="sex_f" onclick="update_sex('f')">Female &#9792;</button>
+							</th>
+						</tr>
+						<!--
+						<tr onmouseover="hover_update('What gender identify you\'ve given yourself. Despite rampant exploitive anarcho-capitalism taking over the galaxy, those pesky liberals have made a lot of progress since The Great Race War of 2020 to the point where 4 out of the 8000 existing genders are options.')">
+							<th>
+								Gender:
+							</th>
+							<th width='75%'>
+								<button class='extended' disabled=true id="gender_m" onclick="update_gender('m')">He &#9794;</button>
+								<button class='extended' id="gender_f" onclick="update_gender('f')">She &#9792;</button>
+								<button class='extended' id="gender_p" onclick="update_gender('p')">They &#9895;</button>
+								<button class='extended' id="gender_n" onclick="update_gender('n')">It &#9675;</button>
+							</th>
+						</tr>
+						-->
+						<tr onmouseover="hover_update('How light or dark your skin tone is. Determines how often you can get away with using certain racial slurs.')">
+							<th align='right'>
+								Skin Tone:
+							</th>
+							<th align='left'>
+								<button class='extended' onclick="change_color_of('skin')">Choose...</button>
+							</th>
+						</tr>
+						<tr onmouseover="hover_update('The color of your lips, or to be honest, the mouth considering it is very difficult to represent lips on a 9x9 head.')">
+							<th align='right'>
+								Lip Color:
+							</th>
+							<th align='left'>
+								<button class='extended' onclick="change_color_of('lips')">Choose...</button><button id="toggle_lips" class='small' onclick="toggle_lips()">+</button>
+							</th>
+						</tr>	
+						<tr onmouseover="hover_update('Your blush color. Basically lets other players know you\'re either a completely original troll trying to make the 5793rd male genderless crossdressing character or some thot.')">
+							<th align='right'>
+								Blush Color:
+							</th>
+							<th align='left'>
+								<button class='extended' onclick="change_color_of('blush')">Choose...</button><button id="toggle_blush" class='small' onclick="toggle_blush()">+</button>
+							</th>
+						</tr>							
+						<tr onmouseover="hover_update('The color of your eyes. Set to a color other than what\'s naturally possible and people will know to stay away from you.')">
+							<th align='right'>
+								Eye Color:
+							</th>
+							<th align='left'>
+								<button class='extended' onclick="change_color_of('eyes')">Choose...</button>
+							</th>
+						</tr>
+					</table>
+				</th>
+			</tr>
+		</table>
+		<table id='icons' width='100%'>
+		</table>
+		<button class='extended' id='char_submit' onmouseover="hover_update('Save your creation and play the damn game already.')" onclick="get_data_to_send(true)">Finish Character</button>
+		<hr width='50%'>
+		<!--HIDDEN STUFF  get_data_to_send(true)-->
+		<div id="color_picker">
+			Color Selection <button id='close_button' class='small' onclick='close_colors()'>x</button>
+			<div id='colors'></div>
+			<div id='hover_color'></div>
+			<div id='chosen_color'></div>
+		</div>
 	
 	</body>
 	

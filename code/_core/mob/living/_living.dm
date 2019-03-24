@@ -8,8 +8,6 @@ var/global/list/all_living = list()
 
 	var/class = "default"
 
-	var/list/health_elements
-
 	var/ai/ai
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER

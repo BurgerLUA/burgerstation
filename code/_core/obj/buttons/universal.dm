@@ -75,7 +75,7 @@
 		return ..()
 
 	var/mob/living/advanced/A = owner
-	A.toggle_inventory()
+	A.toggle_inventory(FALSE,0.1)
 
 	update_icon()
 	..()

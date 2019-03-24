@@ -1,44 +1,44 @@
-/mob/living/proc/add_health_element(var/obj/health/H)
+/mob/proc/add_health_element(var/obj/button/health/H)
 	health_elements[H.id] = H
 	if(client)
 		client.screen += H
 	update_health_elements()
 
-/mob/living/proc/remove_health_element(var/obj/health/H)
+/mob/proc/remove_health_element(var/obj/button/health/H)
 	health_elements -= H
 	if(client)
 		client.screen -= H
 	update_health_elements()
 
-/mob/living/proc/restore_health_elements()
+/mob/proc/restore_health_elements()
 	if(!client)
 		return
 
 	for(var/k in health_elements)
-		var/obj/health/H = health_elements[k]
+		var/obj/button/health/H = health_elements[k]
 		client.screen += H
 
 	update_health_elements()
 
-/mob/living/proc/update_health_elements()
+/mob/proc/update_health_elements()
 	if(client)
 		client.known_health_elements = health_elements
 
-/mob/living/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
+/mob/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
 	if(!src.client)
 		return FALSE
 
 	if(health)
-		var/obj/health/H = health_elements["health"]
+		var/obj/button/health/H = health_elements["health"]
 		H.update_stats(src)
 
 	if(stamina)
-		var/obj/health/S = health_elements["stamina"]
+		var/obj/button/health/S = health_elements["stamina"]
 		S.update_stats(src)
 
 	if(mana)
-		var/obj/health/M = health_elements["mana"]
+		var/obj/button/health/M = health_elements["mana"]
 		M.update_stats(src)
 
 	return TRUE

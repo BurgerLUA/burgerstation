@@ -25,7 +25,7 @@
 /experience/skill/stealth/ //DEXTERITY
 	name = "Stealth"
 	id = SKILL_STEALTH
-	desc = "Your skill in blending in with your surroundings. Affects how well you're conceled in your enviroment when sneaking as well as the chance to take items undetected."
+	desc = "Your skill in blending in with your surroundings. Affects how well you can be conceled in your enviroment when sneaking."
 	//Each successful tile stepped unnoticed with others around = 1xp
 	//Each successful sneak attack = 10xp
 	experience_power = 1.7

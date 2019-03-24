@@ -26,14 +26,16 @@
 
 	run_function(user,"set_reference","'\ref[src]'")
 
-	for(var/skill_id in A.skills)
+	for(var/skill_id in A.skills) //TODO: Make this just one function for each skill/attribute
 		var/experience/skill/S = A.skills[skill_id]
+		run_function(user,"set_description","'[skill_id]','[html_encode(S.name)]','[html_encode(S.desc)]'")
 		run_function(user,"generate_min","'[skill_id]',[S.chargen_min_level]")
 		run_function(user,"generate_max","'[skill_id]',[S.chargen_max_level]")
 		run_function(user,"generate_value","'[skill_id]',[S.get_current_level()],'skill'")
 
 	for(var/attribute_id in A.attributes)
 		var/experience/attribute/AT = A.attributes[attribute_id]
+		run_function(user,"set_description","'[attribute_id]','[html_encode(AT.name)]','[html_encode(AT.desc)]'")
 		run_function(user,"generate_min","'[attribute_id]',[AT.chargen_min_level]")
 		run_function(user,"generate_max","'[attribute_id]',[AT.chargen_max_level]")
 		run_function(user,"generate_value","'[attribute_id]',[AT.get_current_level()],'attribute'")
@@ -78,19 +80,26 @@
 
 	var/client/C = A.client
 
-	spawn(0)
+	var/show_disclaimer = FALSE
 
+	spawn(0)
+		A.show_hud(FALSE,1)
 		A.sight |= SEE_THRU
 		C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
-		add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(43),fade_in = FALSE)
-		add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",SECONDS_TO_DECISECONDS(20),fade_in = FALSE)
-		sleep(SECONDS_TO_DECISECONDS(2))
-		add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer2",SECONDS_TO_DECISECONDS(15))
+
+		if(show_disclaimer)
+			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(46),fade_in = FALSE)
+			add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",SECONDS_TO_DECISECONDS(18),fade_in = FALSE)
+		else
+			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(28),fade_in = FALSE)
 
 		sleep(1)
 		winset(usr, "browser([id])","is-visible:false")
 		A.update_level()
-		sleep(SECONDS_TO_DECISECONDS(20))
+
+		if(show_disclaimer)
+			sleep(SECONDS_TO_DECISECONDS(20))
+
 
 		play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
 
@@ -107,6 +116,9 @@
 			C.pixel_y = min(0,C.pixel_y + 1)
 			sleep(0.2)
 
+		sleep(1)
+
 		A.sight &= ~SEE_THRU
-		sleep(SECONDS_TO_DECISECONDS(5))
+		sleep(SECONDS_TO_DECISECONDS(3))
+		A.show_hud(TRUE,3)
 		A.stun_time = 1

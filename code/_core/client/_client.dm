@@ -12,7 +12,7 @@ var/global/list/all_clients = list()
 
 	var/list/obj/inventory/known_inventory
 	var/list/obj/button/known_buttons
-	var/list/obj/health/known_health_elements
+	var/list/obj/button/health/known_health_elements
 
 	var/zoom_level = 2
 
