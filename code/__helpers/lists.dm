@@ -30,6 +30,23 @@
 
 #define value_or_null(the_list,key) the_list[key] ? the_list[key] : null
 
+/proc/get_best_key(var/list/input)
+
+	var/best_key = null
+	var/best_value = null
+
+	for(var/key in input)
+		var/value = input[key]
+		if(!best_key)
+			best_key = key
+			best_value = value
+			continue
+		if(value >= best_value)
+			best_key = key
+			best_value = value
+			continue
+
+	return best_key
 
 
 //ListSort by Kuraudo

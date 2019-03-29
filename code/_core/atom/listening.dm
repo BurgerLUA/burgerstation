@@ -12,6 +12,8 @@
 	if(!src.client)
 		return
 
+	src << output(text,"chat_all.output")
+
 	if(chat_type & CHAT_TYPE_SAY)
 		src << output(text,"chat_say.output")
 
@@ -23,6 +25,3 @@
 
 	if(chat_type & CHAT_TYPE_COMBAT)
 		src << output(text,"chat_combat.output")
-
-	src << text
-

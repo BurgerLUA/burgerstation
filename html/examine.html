@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				font-size: 18px;
+				
+				width: 100%;
+				max-width: 100%;
+
+				margin: 10px;
+				padding: 0;				
+			}
+		</style>
+	</head>
+	<body>
+	HELLO
+	</body>
+	<script>
+	
+		var global_reference
+		
+		function set_reference(reference) {
+			global_reference = reference
+		}
+
+		function set_text(text) {
+			document.body.innerHTML = text
+		}
+		
+		function done_loading() {
+			var desired_location = "byond://?done_loading=examine"
+			window.location = desired_location
+		}		
+		
+		done_loading()		
+
+	</script>
+	
+</html>

@@ -39,8 +39,16 @@ var/global/list/all_clients = list()
 
 
 /client/proc/setup_stylesheets()
-	winset(src,"info.browser","style=[src.script]")
+	winset(src,"chat_all.output","style='[STYLESHEET]'")
+	winset(src,"chat_combat.output","style='[STYLESHEET]'")
+	winset(src,"chat_looc.output","style='[STYLESHEET]'")
+	winset(src,"chat_ooc.output","style='[STYLESHEET]'")
+	winset(src,"chat_say.output","style='[STYLESHEET]'")
+	var/menu/M = get_menu("examine")
+	M.open(src)
 
+/client/proc/examine(var/atom/object)
+	var/menu/M = get_menu("examine")
 /client/proc/reset()
 	known_inventory = list()
 	known_buttons = list()
@@ -178,9 +186,6 @@ var/global/list/all_clients = list()
 		return
 
 	..()
-
-/client/proc/examine(var/atom/object)
-	src << output(object.get_examine_text(src.mob),"info.browser")
 
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)

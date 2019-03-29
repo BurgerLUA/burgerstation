@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+			body {
+				background-image:url('tile.png');
+				background-repeat: repeat;
+				color: white;
+				font-family: Arial Narrow,Arial,sans-serif;
+				font-size: 18px;
+				
+				width: 100%;
+				max-width: 100%;
+
+				margin: 10px;
+				padding: 0;				
+			}
+			a{
+				color:#96F1FF;
+			
+			}
+			a:hover{
+				color:#969FFF;
+			}	
+
+			div:not([count="1"]):after {
+				content: "x" attr(count) " ";
+				background-color:red;
+				font-size:0.75em;
+				border-radius: 6px;
+				margin:2px;
+				padding:2px;
+			}
+
+			
+		</style>
+	</head>
+	<body>
+
+	</body>
+	<script>
+		var global_reference
+		
+		function add_text(text_to_add) {
+		
+			if(document.body.lastChild.innerHTML == text_to_add) {
+				document.body.lastChild.setAttribute("count", parseInt(document.body.lastChild.getAttribute("count")) + 1)
+			}
+			else {
+				var new_element = document.createElement("div");
+				new_element.className = "line";
+				new_element.innerHTML = text_to_add
+				new_element.setAttribute("count", 1)
+				document.body.appendChild(new_element)
+			}
+
+		}
+		
+		add_text("Burgerchat loaded.")
+		add_text("Welcome to heck.")
+
+	</script>
+	
+</html>

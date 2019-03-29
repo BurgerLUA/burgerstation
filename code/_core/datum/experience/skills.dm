@@ -4,6 +4,54 @@
 	default_level = 5
 	chargen_min_level = 5
 	chargen_max_level = 25
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
 
 //Rogue 5
 /experience/skill/ranged/ //AGILITY
@@ -13,6 +61,53 @@
 	experience_power = 1.9
 	experience_multiplier = 2.5
 	//Each point of damage dealt = 1xp
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 1,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"= 1,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 1,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= -1,
+
+			//STR
+			"Warden"= 1,
+			"Bartender"= 1,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 1,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/dodge/ //AGILITY
 	name = "Dodge"
@@ -21,6 +116,53 @@
 	//Each point of damage dodged = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 3.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 1,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 1,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/stealth/ //DEXTERITY
 	name = "Stealth"
@@ -30,6 +172,53 @@
 	//Each successful sneak attack = 10xp
 	experience_power = 1.7
 	experience_multiplier = 0.7
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 1,
+			"Clown"= -1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 1,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/parry/ //DEXTERITY
 	name = "Parrying"
@@ -38,6 +227,55 @@
 	//Each point of damage parried = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 3.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 1,
+			"Janitor"= 1,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
+
 
 /experience/skill/athletics //ENDURANCE
 	name = "Athletics"
@@ -47,6 +285,56 @@
 	experience_power = 1.5
 	experience_multiplier = 5
 	//Each tile traveled = 1xp
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 1,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 1,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
+
+
 
 /experience/skill/instinct //ENDURANCE
 	name = "Instincts"
@@ -55,6 +343,56 @@
 	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
 	experience_power = 1.7
 	experience_multiplier = 2
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 1,
+			"Botanist"= 1,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 1,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 1,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 1,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
+
+
 	//Each tile traveled = 1xp
 
 //Warrior 5
@@ -66,6 +404,54 @@
 	//Each successful blow = 1xp
 	experience_power = 1.9
 	experience_multiplier = 2.5
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 1,
+			"Botanist"= 1,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 1,
+			"Janitor"= 1,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 1,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
 
 /experience/skill/block/ //STRENGTH
 	name = "Blocking"
@@ -74,6 +460,56 @@
 	//Each point of damage blocked = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 3.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 1,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 1,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
+
+
 
 /experience/skill/unarmed/ //VITALITY
 	name = "Unarmed"
@@ -82,6 +518,53 @@
 	//Each point of damage dealt = 1xp
 	experience_power = 2
 	experience_multiplier = 1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 1,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 2,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 1,
+			"Bartender"= 0,
+			"Ninja"= 1,
+
+			//INT
+			"Detective"= 1,
+			"Curator"= 0.5,
+			"Medical Doctor"= 1,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/prayer/ //VITALITY
 	name = "Prayer"
@@ -90,6 +573,53 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 2,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/armor/ //FORTITUDE
 	name = "Armor"
@@ -98,6 +628,54 @@
 	//Each point of damage absorbed = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 4.8
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 1,
+
+			//INT
+			"Engineer"= 1,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 1,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 2,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 1,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
 
 /experience/skill/recovery/ //FORTITUDE
 	name = "Recovery"
@@ -106,6 +684,53 @@
 	//Each point of health recovered = 1xp
 	experience_power = 1.5
 	experience_multiplier = 4.8
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 1,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 1,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 2,
+
+		"Assistant"= 0
+	)
 
 
 //Mage 5
@@ -116,6 +741,53 @@
 	//Each point of health recovered = 1xp
 	experience_power = 1.5
 	experience_multiplier = 4.8
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 1,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 1,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 3,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/offensive_magic/ //INTELLIGENCE
 	name = "Subjugation Magic"
@@ -125,6 +797,54 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 2,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 2,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
 
 /experience/skill/supportive_magic/ //RESOLVE
 	name = "Reclamation Magic"
@@ -134,6 +854,54 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 1,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 2,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 2,
+			"Medical Doctor"= 1,
+
+		"Assistant"= 0
+	)
+
 
 /experience/skill/defensive_magic/ //RESOLVE
 	name = "Deterrence Magic"
@@ -143,6 +911,53 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 1,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 2,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 1,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 2,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/reality_magic/ //WILLPOWER
 	name = "Corporeality Magic"
@@ -152,6 +967,54 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 2,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 1,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 3,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 2,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
+
 
 /experience/skill/chaos_magic/ //WILLPOWER
 	name = "Chaos Magic"
@@ -161,7 +1024,53 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
 
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 2,
+			"Lawyer"= 1,
+
+			//STR
+			"Chaplain"= 1,
+			"Roboticist"= 1,
+			"Geneticist"= 1,
+
+			//AGI
+			"Atmospheric Technician"= 1,
+			"Chemist"= 1,
+			"Virologist"= 1,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 3,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 2,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 //Crafting
 /experience/skill/alchemy/ //Int
 	name = "Alchemy"
@@ -170,6 +1079,53 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 2,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 1,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 4,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 2,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/enchanting/ //Int
 	name = "Enchanting"
@@ -178,6 +1134,53 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 0,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 1,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 2,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 4,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/cooking/ //Str
 	name = "Cooking"
@@ -186,6 +1189,53 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 0,
+
+			//INT
+			"Engineer"= 0,
+			"Botanist"= 2,
+			"Quartermaster"=0,
+			//AGI
+			"Cook"= 4,
+			"Janitor"= 0,
+			"Shaft Miner"= 0,
+
+		//INT
+			//PURE
+			"Scientist"= 0,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 0,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 0,
+			"Chemist"= 0,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 1,
+			"Clown"= 1,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 1,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)
 
 /experience/skill/crafting //Str
 	name = "Crafting"
@@ -194,3 +1244,50 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	associated_classes = list(
+		//STR
+			//PURE
+			"Security Officer" = 0,
+			"Cargo Technician"= 2,
+
+			//INT
+			"Engineer"= 4,
+			"Botanist"= 0,
+			"Quartermaster"=1,
+			//AGI
+			"Cook"= 0,
+			"Janitor"= 2,
+			"Shaft Miner"= 2,
+
+		//INT
+			//PURE
+			"Scientist"= 2,
+			"Lawyer"= 0,
+
+			//STR
+			"Chaplain"= 0,
+			"Roboticist"= 2,
+			"Geneticist"= 0,
+
+			//AGI
+			"Atmospheric Technician"= 2,
+			"Chemist"= 1,
+			"Virologist"= 0,
+
+		//AGI
+			//PURE
+			"Mime"= 0,
+			"Clown"= 0,
+
+			//STR
+			"Warden"= 0,
+			"Bartender"= 0,
+			"Ninja"= 0,
+
+			//INT
+			"Detective"= 0,
+			"Curator"= 0.5,
+			"Medical Doctor"= 0,
+
+		"Assistant"= 0
+	)

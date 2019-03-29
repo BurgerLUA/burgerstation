@@ -46,79 +46,103 @@
 
 /menu/class/Topic(href,href_list)
 
+
+
+	if(!href_list["command"])
+		return FALSE
+
 	if(!is_advanced(usr))
 		return FALSE
 
 	var/mob/living/advanced/A = usr
 
-	if(!A.chargen)
-		return FALSE
+	A << href
 
-	A.chargen = FALSE
+	if(href_list["command"] == "getjob")
 
-	for(var/k in href_list)
-		if(k == "src") //Ignore
-			continue
-		var/v = text2num(href_list[k])
+		var/list/clean = list()
 
-		if(A.attributes[k])
-			var/experience/attribute/AT = A.attributes[k]
-			AT.set_level(v)
-			//usr << "Setting [AT.name] to [v]."
-			continue
+		for(var/k in href_list)
+			A << "[k]:[href_list[k]]"
+			if(k == "src" || k == "command")
+				continue
+			clean[k] = text2num(href_list[k])
 
-		if(A.skills[k])
-			var/experience/skill/S = A.skills[k]
-			S.set_level(v)
-			//usr << "Setting [S.name] to [v]."
-			continue
+		var/selected_job = calculate_class(A,clean)
 
-	stop_sound('sounds/music/chargen.ogg',list(usr))
+		A << selected_job
 
-	if(!A.client)
-		return
+		run_function(A,"set_job","'[selected_job]'")
 
-	var/client/C = A.client
+	else if(href_list["command"] == "submit")
 
-	var/show_disclaimer = FALSE
+		if(!A.chargen)
+			return FALSE
 
-	spawn(0)
-		A.show_hud(FALSE,1)
-		A.sight |= SEE_THRU
-		C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
+		A.chargen = FALSE
 
-		if(show_disclaimer)
-			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(46),fade_in = FALSE)
-			add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",SECONDS_TO_DECISECONDS(18),fade_in = FALSE)
-		else
-			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(28),fade_in = FALSE)
+		for(var/k in href_list)
+			if(k == "src") //Ignore
+				continue
+			var/v = text2num(href_list[k])
 
-		sleep(1)
-		winset(usr, "browser([id])","is-visible:false")
-		A.update_level()
+			if(A.attributes[k])
+				var/experience/attribute/AT = A.attributes[k]
+				AT.set_level(v)
+				//usr << "Setting [AT.name] to [v]."
+				continue
 
-		if(show_disclaimer)
-			sleep(SECONDS_TO_DECISECONDS(20))
+			if(A.skills[k])
+				var/experience/skill/S = A.skills[k]
+				S.set_level(v)
+				//usr << "Setting [S.name] to [v]."
+				continue
 
+		stop_sound('sounds/music/chargen.ogg',list(usr))
 
-		play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+		if(!A.client)
+			return
 
-		sleep(SECONDS_TO_DECISECONDS(5))
-		A.see_invisible = INVISIBILITY_NO_PLAYERS
-		add_notification_easy(C,'icons/hud/discovery.dmi',"byond",SECONDS_TO_DECISECONDS(3))
-		sleep(SECONDS_TO_DECISECONDS(7))
-		add_notification_easy(C,'icons/hud/discovery.dmi',"burger",SECONDS_TO_DECISECONDS(3))
-		sleep(SECONDS_TO_DECISECONDS(10))
-		add_notification_easy(C,'icons/hud/discovery.dmi',"logo",SECONDS_TO_DECISECONDS(10))
-		sleep(SECONDS_TO_DECISECONDS(10))
+		var/client/C = A.client
 
-		while(C.pixel_y<0)
-			C.pixel_y = min(0,C.pixel_y + 1)
-			sleep(0.2)
+		var/show_disclaimer = FALSE
 
-		sleep(1)
+		spawn(0)
+			A.show_hud(FALSE,1)
+			A.sight |= SEE_THRU
+			C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
 
-		A.sight &= ~SEE_THRU
-		sleep(SECONDS_TO_DECISECONDS(3))
-		A.show_hud(TRUE,3)
-		A.stun_time = 1
+			if(show_disclaimer)
+				add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(46),fade_in = FALSE)
+				add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",SECONDS_TO_DECISECONDS(18),fade_in = FALSE)
+			else
+				add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(28),fade_in = FALSE)
+
+			sleep(1)
+			winset(usr, "browser([id])","is-visible:false")
+			A.update_level()
+
+			if(show_disclaimer)
+				sleep(SECONDS_TO_DECISECONDS(20))
+
+			play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+
+			sleep(SECONDS_TO_DECISECONDS(5))
+			A.see_invisible = INVISIBILITY_NO_PLAYERS
+			add_notification_easy(C,'icons/hud/discovery.dmi',"byond",SECONDS_TO_DECISECONDS(3))
+			sleep(SECONDS_TO_DECISECONDS(7))
+			add_notification_easy(C,'icons/hud/discovery.dmi',"burger",SECONDS_TO_DECISECONDS(3))
+			sleep(SECONDS_TO_DECISECONDS(10))
+			add_notification_easy(C,'icons/hud/discovery.dmi',"logo",SECONDS_TO_DECISECONDS(10))
+			sleep(SECONDS_TO_DECISECONDS(10))
+
+			while(C.pixel_y<0)
+				C.pixel_y = min(0,C.pixel_y + 1)
+				sleep(0.2)
+
+			sleep(1)
+
+			A.sight &= ~SEE_THRU
+			sleep(SECONDS_TO_DECISECONDS(3))
+			A.show_hud(TRUE,3)
+			A.stun_time = 1

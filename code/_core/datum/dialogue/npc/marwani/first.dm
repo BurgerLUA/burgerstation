@@ -69,6 +69,32 @@
 		"Nar-sie"
 	)
 
+	dialogue_options["the bartender"] = list(
+		"#1 is her name, you can find her at #2 in the southwest of #3. I believe she has seen #4 last.",
+		"Miss Flanagan",
+		"the bar",
+		"the village",
+		"the major"
+	)
+
+	dialogue_options["Miss Flanagan"] = list(
+		"As I said, she's #1. I think she has seen #2 last in #3. If you want me to #4 about her, you'd be out of luck; she's the gossip queen and I rather not tread on her.",
+		"the bartender",
+		"the mayor",
+		"the bar",
+		"gossip"
+	)
+
+	dialogue_options["the bar"] = list(
+		"The bar is located southwest of the village. I believe I saw #1 in there today. #2 could probably tell you more about where he went, assuming he's not there already.",
+		"the mayor",
+		"Miss Flanagan"
+	)
+
+	dialogue_options["gossip"] = list(
+		"I don't have time to gossip right now! I have people other than you to look after, and you need to go find #1. Perhaps another time we can chit-chat, yes?",
+		"the mayor"
+	)
 
 	return dialogue_options
 

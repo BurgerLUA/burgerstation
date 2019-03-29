@@ -93,7 +93,6 @@
 	return null
 */
 
-
 /atom/proc/defer_click_on_object()
 	return src
 

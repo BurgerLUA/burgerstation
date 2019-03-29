@@ -22,6 +22,9 @@
 
 	var/mob/living/owner
 
+
+	var/list/associated_classes = list()
+
 /experience/New(var/mob/M)
 	owner = M
 	. = ..()

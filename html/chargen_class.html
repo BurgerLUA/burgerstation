@@ -61,6 +61,8 @@
 						<tr><th onmouseover="set_helper_text('The amount of health your character has. If this reaches 0, you will die.')">Health:</th><th id='health'>100</th></tr>
 						<tr><th onmouseover="set_helper_text('The amount of stamina your character has. Stamina affects your ability to run, block, dodge, parry, attack, and perform actions.')">Stamina:</th><th id='stamina'>100</th></tr>
 						<tr><th onmouseover="set_helper_text('The amount of mana your character has. Mana affects your ability to cast spells, activate abilities, and use special artifacts.')">Mana:</th><th id='mana'>100</th></tr>
+						<tr><th onmouseover="set_helper_text('The amount of mana your character has. Mana affects your ability to cast spells, activate abilities, and use special artifacts.')">Job:</th><th id='job'>Assistant</th></tr>	
+						<tr><th></th><th><button class='extended' onclick='get_job()'>Recalculate</button></th></tr>
 					</table>
 					<h2>Attributes</h2>
 					<table id='attribute_table'>
@@ -112,13 +114,31 @@
 	var global_all_names = new Object()
 	var global_all_descriptions = new Object()
 	
+	function set_job(desired_job) {
+		document.getElementById("job").innerHTML = desired_job	
+	}
 	
+	function get_job() {
+		var starting_string = "byond://?src="+global_reference+";command=getjob"
 
-	
+		for (k in global_stored_skills) {
+			var v = global_stored_skills[k]
+			starting_string += ";" + k + "=" + v.toString()
+		}
+			
+		for (k in global_stored_attributes) {
+			var v = global_stored_attributes[k]
+			starting_string += ";" + k + "=" + v.toString()
+		}		
+
+		window.location = starting_string
+	}	
+
 	function calculate_stats() {
 		document.getElementById("health").innerHTML = 100 + global_stored_attributes["vitality"]*4
 		document.getElementById("stamina").innerHTML = 100 + global_stored_attributes["agility"]*4
 		document.getElementById("mana").innerHTML = 100 + global_stored_attributes["willpower"]*4
+		
 	}
 	
 	function set_attribute_allocation(value) {
@@ -229,7 +249,7 @@
 	}
 	
 	function finish_allocation() {
-		var starting_string = "byond://?src="+global_reference
+		var starting_string = "byond://?src="+global_reference+";command=submit"
 
 		for (k in global_stored_skills) {
 			var v = global_stored_skills[k]

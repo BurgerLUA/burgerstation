@@ -43,7 +43,5 @@
 
 /dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic)
 	var/menu/M = get_menu("dialogue")
-
 	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P)))
-
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")

@@ -82,6 +82,7 @@ window "chat"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Chat Tabs"
 		titlebar = false
@@ -96,7 +97,10 @@ window "chat"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #ff8000
+		font-family = "Arial Narrow"
+		font-size = 10
+		text-color = #ffffff
+		background-color = #3d5e80
 		saved-params = ""
 		tabs = "chat_all,chat_say,chat_looc,chat_ooc,chat_combat"
 		current-tab = "chat_all"
@@ -108,6 +112,7 @@ window "chat_all"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "All"
 		titlebar = false
@@ -124,6 +129,7 @@ window "chat_all"
 		anchor2 = 100,100
 		is-default = true
 		saved-params = "max-lines"
+		legacy-size = false
 
 window "chat_combat"
 	elem "chat_combat"
@@ -171,7 +177,6 @@ window "chat_looc"
 		anchor2 = 100,100
 		background-color = #d7ffd7
 		saved-params = "max-lines"
-		style = "<style>\nbody {\n\tfont-family: Verdana, sans-serif;\n\tfont-size: 8px;\n}\nspan.warning{\n\tcolor: red;\n\tfont-style: italic;\n}\nspan.danger{\n\tcolor: red;\n\tfont-weight: bold;\n}\nspan.ooc{\n\tcolor: blue;\n\tfont-weight: bold;\n}\nspan.looc{\n\tcolor: cyan;\n\tfont-weight: bold;\n}\nspan.notice{\n\tcolor: blue;\n\tfont-style: italic;\n}\n\nspan.examine_title{\n\tfont-size: 200%;\n\ttext-align: center;\n}\nspan.examine_description{\n\tfont-style: italic;\n\ttext-align: center;\n}\nspan.examine_info{\n\tfont-style: italic;\n}\n\n\n\nspan.distance_large{\n\tfont-size: 120%;\n}\nspan.distance_medium{\n\tfont-size: 100%;\n}\nspan.distance_small{\n\tfont-size: 80%;\n}\nspan.distance_tiny{\n\tfont-size: 60%;\n}\nspan.greeting{\n\tfont-size: 200%;\n\tcolor: purple;\n}\n\nspan.red{\n\tfont-size: 150%;\n\tcolor: red;\n}\n\nspan.blue{\n\tfont-size: 150%;\n\tcolor: blue;\n}\n\nspan.green{\n\tfont-size: 150%;\n\tcolor: green;\n}\n\nspan.yellow{\n\tfont-size: 150%;\n\tcolor: yellow;\n}\n\n\n</style>"
 
 window "chat_ooc"
 	elem "chat_ooc"
@@ -228,6 +233,7 @@ window "control"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -241,7 +247,7 @@ window "control"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #0080ff
+		background-color = #3d5e80
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
@@ -256,6 +262,7 @@ window "info"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -263,14 +270,26 @@ window "info"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-	elem "browser"
-		type = BROWSER
+	elem "info"
+		type = INFO
 		pos = 0,0
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
+		font-family = "Arial Narrow"
+		font-size = 10
+		text-color = #ffffff
+		background-color = #3d5e80
+		is-default = true
+		right-click = true
 		saved-params = ""
-		auto-format = false
+		highlight-color = #ffff80
+		tab-text-color = #ffffff
+		tab-background-color = #3d5e80
+		tab-font-family = "Arial Narrow"
+		tab-font-size = 10
+		prefix-color = #ff80ff
+		suffix-color = #0080ff
 
 window "main"
 	elem "main"
@@ -279,30 +298,24 @@ window "main"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = #000000
+		background-color = #ffffff
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
 		icon = 'interface\\icons\\burger.png'
-		image-mode = tile
+		image-mode = center
 		macro = "macro"
 		menu = "menu"
-	elem "label1"
-		type = LABEL
-		pos = 0,780
-		size = 800x20
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		saved-params = ""
-		text = ""
 	elem "button_chat"
 		type = BUTTON
 		pos = 720,780
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = 100,100
-		background-color = none
+		font-family = "Arial Narrow"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #3d5e80
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ""
@@ -312,6 +325,10 @@ window "main"
 		size = 720x20
 		anchor1 = 0,100
 		anchor2 = 100,100
+		font-family = "Arial Narrow"
+		font-size = 10
+		text-color = #ffffff
+		background-color = #5d96a0
 		is-default = true
 		border = sunken
 		saved-params = ""
@@ -321,7 +338,7 @@ window "main"
 		size = 800x780
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #0080ff
+		background-color = #3d5e80
 		is-default = true
 		saved-params = "splitter"
 		left = "map"
@@ -336,7 +353,6 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -361,7 +377,6 @@ window "map"
 		size = 680x680
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false
@@ -371,7 +386,6 @@ window "map"
 		size = 760x260
 		anchor1 = 0,100
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false
