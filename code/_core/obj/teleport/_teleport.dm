@@ -93,11 +93,9 @@
 /obj/trigger/jumplevel/on_trigger(var/atom/movable/triggerer)
 
 	if(!is_mob(triggerer))
-		triggerer << "You're not a mob!"
 		return FALSE
 
 	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))
-		triggerer << "Direction restriction!"
 		return FALSE
 
 	triggerer << "Moving!"
@@ -105,3 +103,27 @@
 	triggerer.Move(locate(desired_x,desired_y,get_z_level(desired_map)))
 
 	return TRUE
+
+/obj/trigger/jumpmarker
+	name = "marker jumper"
+	var/desired_marker = ""
+	var/dir_restriction = 0
+
+/obj/trigger/jumpmarker/on_trigger(var/atom/movable/triggerer)
+
+	if(!is_mob(triggerer))
+		return FALSE
+
+	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))
+		return FALSE
+
+	triggerer << teleport_locations[desired_marker]
+
+	var/turf/T = get_turf(teleport_locations[desired_marker])
+
+	triggerer.force_move(T)
+
+
+
+/obj/trigger/jumpmarker/ship_exit
+	desired_marker = "ship_exit"

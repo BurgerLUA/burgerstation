@@ -4,6 +4,10 @@
 	priority = SS_ORDER_TURFS
 
 /subsystem/turfs/Initialize()
+
+	if(!ENABLE_TURFGEN)
+		return
+
 	for(var/turf/simulated/S in world)
 		S.Initialize()
 

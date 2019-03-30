@@ -14,10 +14,17 @@
 #define SHOP_RESTOCK_COUNTDOWN 60
 
 
-#define ENABLE_XP TRUE
-#define ENABLE_LIGHTING TRUE
-#define ENABLE_CHARGEN FALSE
 
+
+
+//Makes compiling faster
+#define ENABLE_LIGHTING FALSE
+#define ENABLE_CHARGEN FALSE
+#define ENABLE_TURFGEN FALSE
+
+
+
+#define ENABLE_XP TRUE
 #define LEVEL_CAP 100
 
 

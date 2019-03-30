@@ -34,7 +34,7 @@
 "aH" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/stair/wood,/area/overworld/village)
 "aI" = (/turf/simulated/floor/wood/rich,/area/shop/great_bank)
 "aJ" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons,/turf/simulated/floor/carpet,/area/shop/great_bank)
-"aK" = (/turf/simulated/wall/hole,/area/overworld/village)
+"aK" = (/obj/marker/teleport_location/ship_exit,/turf/simulated/wall/hole,/area/overworld/village)
 "aL" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/brown,/area/overworld/village)
 "aN" = (/turf/simulated/floor/carpet,/area/shop/great_bank)
 "aO" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/overworld)

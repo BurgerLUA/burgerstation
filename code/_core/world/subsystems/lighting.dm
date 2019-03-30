@@ -15,10 +15,20 @@
 	priority = SS_ORDER_LIGHTING
 
 /subsystem/lighting/Initialize()
+
+	if(!ENABLE_LIGHTING)
+		return FALSE
+
+
+
 	create_all_lighting_overlays()
 	lighting_process()
 
 /subsystem/lighting/on_life()
+
+	if(!ENABLE_LIGHTING)
+		return FALSE
+
 	lighting_process()
 	return TRUE
 
