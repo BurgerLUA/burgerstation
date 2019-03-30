@@ -438,7 +438,7 @@ mob/living/advanced/Login()
 		return FALSE
 */
 
-/mob/living/advanced/proc/pickup(var/obj/item/I,var/left = 0)
+/mob/living/advanced/proc/pickup(var/obj/item/I,var/left = FALSE)
 
 	if(left_hand && right_hand)
 		if(left)

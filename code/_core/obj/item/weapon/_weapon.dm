@@ -11,6 +11,8 @@
 
 	ignore_other_slots = TRUE
 
+	var/prefix_id //The weapon's prefix, if any.
+
 /obj/item/weapon/update_icon()
 
 	if(!override_icon_state_held)

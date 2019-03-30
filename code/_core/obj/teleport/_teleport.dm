@@ -85,18 +85,22 @@
 
 /obj/trigger/jumplevel
 	name = "level jumper"
-	var/desired_x
-	var/desired_y
-	var/desired_map
+	var/desired_x = 0
+	var/desired_y = 0
+	var/desired_map = ""
 	var/dir_restriction = 0
 
 /obj/trigger/jumplevel/on_trigger(var/atom/movable/triggerer)
 
 	if(!is_mob(triggerer))
+		triggerer << "You're not a mob!"
 		return FALSE
 
-	if(!(triggerer.dir & dir_restriction))
+	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))
+		triggerer << "Direction restriction!"
 		return FALSE
+
+	triggerer << "Moving!"
 
 	triggerer.Move(locate(desired_x,desired_y,get_z_level(desired_map)))
 

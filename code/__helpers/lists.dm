@@ -28,6 +28,21 @@
 		return "[output][and_text][quote][input[index]][quote]"
 
 
+/proc/pickweight(list/L) //Credit to Nanako for most of this code.
+	var/total = 0
+	var/item
+	for (item in L)
+		if (isnull(L[item]))
+			L[item] = 1
+		total += L[item]
+	total = rand() * total
+	for (item in L)
+		total -= L[item]
+		if (total <= 0)
+			return item
+
+	return null
+
 #define value_or_null(the_list,key) the_list[key] ? the_list[key] : null
 
 /proc/get_best_key(var/list/input)

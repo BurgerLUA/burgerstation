@@ -48,7 +48,8 @@ var/global/list/all_clients = list()
 	M.open(src)
 
 /client/proc/examine(var/atom/object)
-	var/menu/M = get_menu("examine")
+
+
 /client/proc/reset()
 	known_inventory = list()
 	known_buttons = list()

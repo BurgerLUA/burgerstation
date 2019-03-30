@@ -1,5 +1,6 @@
 /area/
 	name = "AREA ERROR"
+	id = null
 	icon = 'icons/debug/areas.dmi'
 	icon_state = ""
 	layer = LAYER_AREA

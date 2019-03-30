@@ -19,7 +19,7 @@
 "s" = (/turf/simulated/floor/wood/brown,/area/special/lobby)
 "t" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "u" = (/obj/structure/smooth/table/wood,/obj/item/torch/candle,/turf/simulated/floor/wood/brown,/area/singleplayer)
-"v" = (/turf/simulated/floor/stair/wood,/area/singleplayer)
+"v" = (/obj/trigger/jumplevel{desired_map = "village"; desired_x = 118; desired_y = 103},/turf/simulated/floor/stair/wood,/area/singleplayer)
 "w" = (/turf/simulated/floor/wood/brown,/area/singleplayer)
 "x" = (/obj/marker/mob_spawn/marwani/ship,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "y" = (/obj/structure/interactive/bed,/turf/simulated/floor/wood/brown,/area/singleplayer)
