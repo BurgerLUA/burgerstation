@@ -41,7 +41,6 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
-
 /obj/item/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(!is_container)
@@ -188,8 +187,13 @@ obj/item/proc/update_owner(desired_owner)
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
 
-/obj/proc/on_pickup(var/obj/inventory/I)
+/obj/item/proc/on_pickup(var/obj/inventory/I) //When the item is picked up.
+
+	if(is_container)
+		for(var/obj/inventory/I2 in inventories)
+			I2.update_owner(I.owner)
+
 	return
 
-/obj/proc/on_drop(var/obj/inventory/I)
+/obj/item/proc/on_drop(var/obj/inventory/I)
 	return

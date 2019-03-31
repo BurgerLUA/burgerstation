@@ -6,11 +6,6 @@
 /obj/item/weapon/melee/energy/click_self(var/atom/caller)
 	enabled = !enabled
 	update_icon()
-	var/area/A = get_area(caller.loc)
-	if(enabled)
-		play_sound('sounds/weapon/melee/saberon.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-	else
-		play_sound('sounds/weapon/melee/saberoff.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	return TRUE
 
 /obj/item/weapon/melee/energy/can_parry()
@@ -54,6 +49,14 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
+/obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
+	. = ..()
+	var/area/A = get_area(caller.loc)
+	if(enabled)
+		play_sound('sounds/weapon/melee/saberon.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	else
+		play_sound('sounds/weapon/melee/saberoff.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	return .
 
 /obj/item/weapon/melee/energy/sword/blue
 	color = "#0000FF"

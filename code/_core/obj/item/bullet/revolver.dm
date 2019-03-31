@@ -7,6 +7,9 @@
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = "38"
 
+	bullet_capacity = 6
+	bullet_capacity_icon = 6
+
 
 /obj/item/bullet/revolver_44
 	name = "\improper .44 magnum"

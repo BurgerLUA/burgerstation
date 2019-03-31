@@ -31,3 +31,42 @@
 		/obj/item/magazine/clip/revolver/bullet_38 = 20
 
 	)
+
+
+/obj/structure/interactive/shop_holder/weapons/detective
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/revolver/detective = 1
+	)
+
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/revolver/detective = 30
+	)
+
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/revolver/detective = 6
+
+	)
+
+/obj/structure/interactive/shop_holder/ammo/bullet_38
+	possible_items = list(
+		/obj/item/magazine/clip/revolver/bullet_38 = 1
+	)
+
+	possible_prices = list(
+		/obj/item/magazine/clip/revolver/bullet_38 = 2
+	)
+
+	possible_quantity = list(
+		/obj/item/magazine/clip/revolver/bullet_38 = 30
+	)
+
+/obj/structure/interactive/shop_holder/weapons/stunbaton
+	possible_items = list(
+		/obj/item/weapon/melee/energy/stunbaton = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/melee/energy/stunbaton = 10
+	)
+	possible_quantity = list(
+		/obj/item/weapon/melee/energy/stunbaton = 20
+	)
