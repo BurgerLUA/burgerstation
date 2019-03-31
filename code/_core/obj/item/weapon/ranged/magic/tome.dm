@@ -41,12 +41,14 @@
 
 	projectile = /obj/projectile/bullet/lightning_bolt
 
+	damage_type = "magic_lightning"
+
 
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/zap_large.ogg')
 
 
-/obj/item/weapon/ranged/magic/tome/holy_warrior
+/obj/item/weapon/ranged/magic/tome/holy_warrior //TODO:FIX THIS
 	name = "tome of the holy warrior"
 	desc = "For those too lazy for combat."
 	desc_extended = "Costs mana to use."

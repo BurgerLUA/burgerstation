@@ -37,7 +37,6 @@ var/global/list/all_clients = list()
 
 	perspective = EYE_PERSPECTIVE
 
-
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
 	winset(src,"chat_combat.output","style='[STYLESHEET]'")
@@ -48,6 +47,7 @@ var/global/list/all_clients = list()
 	M.open(src)
 
 /client/proc/examine(var/atom/object)
+	object.examine(src.mob)
 	return TRUE
 
 /client/proc/reset()

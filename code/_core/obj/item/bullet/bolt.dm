@@ -10,8 +10,12 @@
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
 
+	projectile = /obj/projectile/bullet/bolt/
+	damage_type = "bolt_metal"
+
 /obj/item/bullet/bolt/on_spawn()
 	bullet_count = 3
+	update_icon()
 
 
 /obj/item/bullet/bolt/can_be_worn()

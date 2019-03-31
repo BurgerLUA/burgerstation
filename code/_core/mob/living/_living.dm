@@ -20,6 +20,11 @@ var/global/list/all_living = list()
 
 	var/first_life = TRUE
 
+	//Base attributes.
+	var/health_base = 10
+	var/stamina_base = 10
+	var/mana_base = 10
+
 	var/stamina_max = 0
 	var/stamina_current = 0
 	var/stamina_regeneration = 0

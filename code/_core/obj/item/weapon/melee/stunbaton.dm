@@ -16,7 +16,7 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
-	damage_type = "stunbaton"
+	damage_type = "stunbaton_off"
 
 
 /obj/item/weapon/melee/energy/stunbaton/click_self(var/atom/caller)

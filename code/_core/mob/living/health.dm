@@ -51,13 +51,13 @@ mob/living/proc/get_health()
 mob/living/proc/update_stats()
 
 	var/recovery_skill =  get_skill_power(SKILL_RECOVERY,0,100)
-	health_regeneration = health_max * recovery_skill * (1/30)
-	stamina_regeneration = 0.2 + stamina_max * recovery_skill * (1/10)
-	mana_regeneration = 0.1 + mana_max * recovery_skill * (1/10)
+	health_regeneration = round(0.01 + health_max * recovery_skill * 0.005,0.01)
+	stamina_regeneration = round(0.2 + stamina_max * recovery_skill * 0.1,0.01)
+	mana_regeneration = round(0.1 + mana_max * recovery_skill * 0.05,0.01)
 
-	health_max = 100 + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
-	mana_max = 100 + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*400
-	stamina_max = 100 + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
+	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
+	mana_max = mana_base + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*400
+	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
 
 	update_health_element_icons(TRUE,TRUE,TRUE)
 

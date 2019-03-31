@@ -3,9 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/crossbow.dmi'
 	icon_state = "inventory"
 
-	projectile = /obj/projectile/bullet/bolt/
-	damage_type = /damagetype/sword/
-
 	bullet_speed = 31
 	shoot_delay = 20
 

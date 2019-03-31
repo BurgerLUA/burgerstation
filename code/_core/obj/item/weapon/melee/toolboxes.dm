@@ -2,7 +2,7 @@
 	name = "toolbox"
 	desc = "Ultra robust."
 	icon = 'icons/obj/items/weapons/melee/toolbox/red.dmi'
-	damage_type = /damagetype/sword/sabre
+	damage_type = "toolbox"
 
 /obj/item/weapon/melee/toolbox/red
 	color = "#FF0000"

@@ -85,8 +85,8 @@
 	id = "magic_missile"
 
 	base_attack_damage = list(
-		BRUTE = 30,
-		BURN = 30,
+		BRUTE = 5,
+		BURN = 5,
 		TOX = 0,
 		OXY = 0
 	)
@@ -123,41 +123,27 @@
 
 /damagetype/ranged/magic/lightning
 	name = "lightning"
-	id = "magic_lightning_bolt"
+	id = "magic_lightning"
 
 	base_attack_damage = list(
-		BRUTE = 20,
-		BURN = 60,
+		BRUTE = 0,
+		BURN = 5,
 		TOX = 0,
 		OXY = 0
 	)
 
-	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_F,
-		ATTRIBUTE_AGILITY = CLASS_F,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
-	)
+	attribute_stats = list()
 
-	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BURN,
-		ATTRIBUTE_AGILITY = BURN,
-		ATTRIBUTE_INTELLIGENCE = BURN
-	)
+	attribute_damage = list()
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_F,
-		SKILL_MELEE = CLASS_F,
-		SKILL_RANGED = CLASS_F
+		SKILL_PRAYER = CLASS_A
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BURN,
-		SKILL_MELEE = BURN,
-		SKILL_RANGED = BURN
+		SKILL_PRAYER = BURN
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_UNARMED = 0,
-		SKILL_MELEE = 0,
-		SKILL_RANGED = 0
+		SKILL_PRAYER = 1
 	)

@@ -72,15 +72,22 @@ obj/structure/interactive/wishgranter/normal
 
 obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_player(caller))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/player/P = caller
 
-	if(!A.client)
+	if(!P.client)
 		return FALSE
 
-	var/savedata/client/mob/U = A.client.savedata
+	if(P.spam_protection_command > 0)
+		P.spam_protection_command += 2
+		P.to_chat(span("warning","Spam Protection: You must wait [ceiling(P.spam_protection_command)] second\s before using this!"))
+		return FALSE
+
+	P.spam_protection_command += 10
+
+	var/savedata/client/mob/U = P.client.savedata
 
 	U.loaded_data["last_save"] = src.id
 	U.save_current_character()

@@ -16,11 +16,7 @@
 
 
 /atom/proc/examine(var/mob/examiner) //Middle clicking objects.
-
-
-
-
-
+	examiner.to_chat(get_examine_text(examiner))
 	return TRUE
 
 /atom/proc/click_self(caller,location,control,params)

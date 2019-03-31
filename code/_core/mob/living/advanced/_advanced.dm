@@ -26,6 +26,9 @@
 
 	var/is_typing = FALSE
 
+	health_base = 100
+	stamina_base = 100
+	mana_base = 100
 
 	var/talk_duration = 0
 	var/talk_type = 0

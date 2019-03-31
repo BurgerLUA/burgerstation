@@ -65,8 +65,83 @@
 		/obj/item/weapon/melee/energy/stunbaton = 1
 	)
 	possible_prices = list(
-		/obj/item/weapon/melee/energy/stunbaton = 10
+		/obj/item/weapon/melee/energy/stunbaton = 25
 	)
 	possible_quantity = list(
-		/obj/item/weapon/melee/energy/stunbaton = 20
+		/obj/item/weapon/melee/energy/stunbaton = 6
 	)
+
+/obj/structure/interactive/shop_holder/weapons/baton
+	possible_items = list(
+		/obj/item/weapon/melee/baton = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/melee/baton = 6
+	)
+	possible_quantity = list(
+		/obj/item/weapon/melee/baton = 20
+	)
+
+/obj/structure/interactive/shop_holder/weapons/shield
+	possible_items = list(
+		/obj/item/weapon/melee/shield = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/melee/shield = 8
+	)
+	possible_quantity = list(
+		/obj/item/weapon/melee/shield = 6
+	)
+
+/obj/structure/interactive/shop_holder/weapons/claymore
+	possible_items = list(
+		/obj/item/weapon/melee/sword/claymore = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/melee/sword/claymore = 20
+	)
+	possible_quantity = list(
+		/obj/item/weapon/melee/sword/claymore = 6
+	)
+
+/obj/structure/interactive/shop_holder/weapons/crossbow
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/crossbow = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/crossbow = 12
+	)
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/crossbow = 6
+	)
+
+/obj/structure/interactive/shop_holder/ammo/bolt
+	possible_items = list(
+		/obj/item/bullet/bolt = 1
+	)
+
+	possible_prices = list(
+		/obj/item/bullet/bolt = 1
+	)
+
+	possible_quantity = list(
+		/obj/item/bullet/bolt = 60
+	)
+
+/obj/structure/interactive/shop_holder/weapons/null
+	possible_items = list(
+		/obj/item/weapon/melee/null_rod = 1,
+		/obj/item/weapon/melee/null_rod/staff = 1,
+		/obj/item/weapon/melee/null_rod/dagger = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/melee/null_rod = 22,
+		/obj/item/weapon/melee/null_rod/staff = 36,
+		/obj/item/weapon/melee/null_rod/dagger = 28
+	)
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/crossbow = 6
+	)
+
+
+

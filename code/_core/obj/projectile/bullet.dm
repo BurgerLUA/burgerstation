@@ -3,8 +3,6 @@
 
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 
-	world.log << "HIT!"
-
 	/*
 	if(is_living(owner) && is_living(hit_atom) && hit_atom != owner)
 		var/mob/living/living_owner = owner
@@ -20,10 +18,6 @@
 
 	if(damage_type)
 		var/damagetype/DT = all_damage_types[damage_type]
-
-		world.log << "damge_type: [damage_type]"
-		world.log << "DT: [DT]"
-
 
 		var/list/params = list()
 		params["icon-x"] = shoot_x

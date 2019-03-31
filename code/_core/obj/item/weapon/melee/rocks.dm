@@ -8,7 +8,7 @@
 
 	icon_state_worn = "worn"
 
-	damage_type = /damagetype/sword/sabre
+	damage_type = "rock"
 
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK

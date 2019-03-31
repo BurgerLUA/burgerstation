@@ -106,11 +106,11 @@
 	)
 
 /damagetype/ranged/bullet/bolt
-	name = "bolt"
-	id = "bolt"
+	name = "metal bolt"
+	id = "bolt_metal"
 
 	base_attack_damage = list(
-		BRUTE = 70,
+		BRUTE = 20,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0

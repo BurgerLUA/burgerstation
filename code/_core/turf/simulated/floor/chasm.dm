@@ -6,3 +6,7 @@
 
 	corner_icons = TRUE
 	corner_category = "chasm"
+
+
+/turf/simulated/floor/chasm/end/
+	name = "end of the world"

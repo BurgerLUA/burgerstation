@@ -23,7 +23,7 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/fire.dmi'
 
 	projectile = /obj/projectile/bullet/fireball
-	damage_type = /damagetype/sword/
+	damage_type = "magic_fireball"
 
 	override_icon_state = TRUE
 
@@ -53,7 +53,7 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/chaos.dmi'
 
 	projectile = /obj/projectile/bullet/chaos
-	damage_type = /damagetype/sword/
+	damage_type = "magic_chaos"
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/chaos.ogg')
 
@@ -69,7 +69,7 @@
 
 /obj/item/weapon/ranged/magic/staff/basic
 
-	name = "Staff of Magic"
+	name = "Staff of Magic Missile"
 	desc = "MAGIC MWISSLE."
 	cost_charge = 100
 	total_charge = 1000
@@ -81,7 +81,9 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
 
 	projectile = /obj/projectile/bullet/magic_missile
-	damage_type = /damagetype/sword/
+	damage_type = "magic_missile"
+
+
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/magic_missile.ogg')
 
@@ -99,7 +101,7 @@
 	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'
 
 	projectile = /obj/projectile/bullet/rift
-	damage_type = /damagetype/sword/
+	damage_type = "magic_focus"
 
 	shoot_sounds = list('sounds/weapon/ranged/magic/teleport_out.ogg')
 

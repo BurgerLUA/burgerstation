@@ -35,7 +35,7 @@
 	name = "energy sword"
 	desc = "A blade made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
-	damage_type = /damagetype/sword/energy
+	damage_type = "sword_energy_off"
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 1,
@@ -54,8 +54,10 @@
 	var/area/A = get_area(caller.loc)
 	if(enabled)
 		play_sound('sounds/weapon/melee/saberon.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		damage_type = "sword_energy_on"
 	else
 		play_sound('sounds/weapon/melee/saberoff.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		damage_type = "sword_energy_off"
 	return .
 
 /obj/item/weapon/melee/energy/sword/blue
