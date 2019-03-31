@@ -3,6 +3,9 @@
 	if(stun_time == -1)
 		return FALSE
 
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
+
 	return ..()
 
 

@@ -51,4 +51,6 @@
 	return TRUE
 
 /obj/item/currency/on_spawn()
-	value = 100
+	if(value == initial(value))
+		value = 100
+	update_icon()

@@ -1,19 +1,24 @@
 /mob/living/proc/death()
 
 	if(status & FLAG_STATUS_DEAD)
-		return
+		return FALSE
 
 	if(client)
 		client.make_ghost(get_turf(src))
 	status |= FLAG_STATUS_DEAD
 	if(ai)
 		ai = null
-	movement_flags = 0
-	attack_flags = 0
+	movement_flags = 0x0
+	attack_flags = 0x0
+
 	add_stun(2)
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
 	queue_delete(src,600)
+
+	layer = LAYER_MOB_DEAD
+
+	return TRUE
 
 /mob/living/proc/on_life_AI()
 	if(status & FLAG_STATUS_DEAD)

@@ -23,12 +23,13 @@
 
 	object = object.defer_click_on_object()
 
-	if(is_inventory(object))
+	if(is_inventory(object) && length(stored_bullets))
 		var/obj/inventory/I = object
-		var/obj/item/bullet/B = stored_bullets[length(stored_bullets)-1]
+		var/obj/item/bullet/B = stored_bullets[length(stored_bullets)]
 		if(I.add_held_object(B))
 			B.update_icon()
 			stored_bullets -= B
+		update_icon()
 
 	return ..()
 

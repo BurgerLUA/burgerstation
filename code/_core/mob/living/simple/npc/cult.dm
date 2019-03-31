@@ -7,6 +7,8 @@
 
 	ai = /ai/simple/cultist
 
+	loot_drop = "cult"
+
 
 
 
@@ -19,6 +21,8 @@
 
 	ai = /ai/simple/behemoth
 
+	loot_drop = "cult"
+
 
 /mob/living/simple/npc/cult/artificer
 	name = "artificer"
@@ -29,6 +33,8 @@
 
 	ai = /ai/simple/artificer
 
+	loot_drop = "cult"
+
 
 /mob/living/simple/npc/cult/harvester
 	name = "harvester"
@@ -38,3 +44,5 @@
 	damage_type = "harvester"
 
 	ai = /ai/simple/harvester
+
+	loot_drop = "cult"

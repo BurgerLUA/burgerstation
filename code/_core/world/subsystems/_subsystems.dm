@@ -13,7 +13,7 @@
 	//When this subsystem runs for the first time.
 
 /subsystem/proc/on_life()
-	//When this subsystem runs. Returning ture means that this always runs, false means it doesn't run.
+	//When this subsystem runs. Returning true means that this always runs, false means it doesn't run.
 	return FALSE
 
 
