@@ -35,7 +35,7 @@ var/global/list/all_clients = list()
 
 	var/karma = 1000
 
-	perspective = EYE_PERSPECTIVE | EDGE_PERSPECTIVE
+	perspective = EYE_PERSPECTIVE
 
 
 /client/proc/setup_stylesheets()
@@ -48,7 +48,7 @@ var/global/list/all_clients = list()
 	M.open(src)
 
 /client/proc/examine(var/atom/object)
-
+	return TRUE
 
 /client/proc/reset()
 	known_inventory = list()

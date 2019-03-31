@@ -13,7 +13,7 @@
 	plane = PLANE_HUD
 
 	var/list/obj/item/held_objects //Items that are held, and not worn.
-	var/list/obj/item/clothing/worn_objects //Items that are worn, and not held.
+	var/list/obj/item/worn_objects //Items that are worn, and not held.
 
 	var/held_slots = 1 //How many items this object can hold.
 	var/max_weight = -1 //Maximum weight this inventory object can hold. -1 basically means it can't hold anything.
@@ -49,6 +49,15 @@
 	mouse_drop_zone = TRUE
 
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
+	var/is_container = FALSE //Set to true if it uses the container inventory system.
+
+	var/x_offset_initial = 0
+	var/y_offset_initial = 0
+
+	var/x_offset_mul = 0
+	var/y_offset_mul = 0
+
+	var/draw_extra = FALSE
 
 /obj/inventory/New(var/desired_loc)
 
@@ -72,13 +81,33 @@
 
 	overlays = list()
 
-	for(var/atom/A in held_objects)
-		//A.update_icon()
-		overlays += A
+	var/total_pixel_x = 0
+	var/total_pixel_y = 0
 
-	for(var/atom/A in worn_objects)
-		//A.update_icon()
-		overlays += A
+	for(var/obj/item/I in held_objects)
+		I.pixel_x = x_offset_initial + total_pixel_x*TILE_SIZE
+		I.pixel_y = y_offset_initial + total_pixel_y*TILE_SIZE
+
+		if(x_offset_mul)
+			total_pixel_x += I.size*x_offset_mul
+
+		if(y_offset_mul)
+			total_pixel_y += I.size*y_offset_mul
+
+		overlays += I
+
+	for(var/obj/item/I in worn_objects)
+		I.pixel_x = x_offset_initial + total_pixel_x*TILE_SIZE
+		I.pixel_y = y_offset_initial + total_pixel_y*TILE_SIZE
+
+		if(x_offset_mul)
+			total_pixel_x += I.size*x_offset_mul
+
+		if(y_offset_mul)
+			total_pixel_y += I.size*y_offset_mul
+
+		overlays += I
+
 
 /obj/inventory/update_icon()
 
@@ -104,14 +133,14 @@
 
 	return TRUE
 
-/obj/inventory/proc/add_object(var/obj/item/I) //Prioritize wearing it, then holding it.
+/obj/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE) //Prioritize wearing it, then holding it.
 
 	if(I.can_be_worn())
 		var/obj/item/C = I
-		if(add_worn_object(C))
+		if(add_worn_object(C,messages))
 			return TRUE
 
-	if(add_held_object(I))
+	if(add_held_object(I,messages))
 		return TRUE
 
 	return FALSE
@@ -120,13 +149,11 @@
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
-
-
 	if(is_inventory(I.loc))
 		var/obj/inventory/I2 = I.loc
 		if(I2 == src)
 			return FALSE
-		I2.remove_object(I,owner.loc)
+		I2.remove_object(I,get_turf(I))
 
 	undelete(I)
 

@@ -51,7 +51,7 @@
 		return FALSE
 
 	if(src == transfer_target)
-		return TRUE
+		return FALSE //TODO: THIS USED TO BE TRUE, TEST BULLETS TO SEE IF THIS SHOULD BE TRUE
 
 	if(id != transfer_target.id)
 		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))

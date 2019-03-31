@@ -12,8 +12,6 @@
 		"last_saved_date" = 0,
 		"last_saved_time" = 0,
 		"organs" = list(),
-		"worn" = list(),
-		"held" = list(),
 		"skills" = list(),
 		"attributes" = list(),
 		"karma" = list(

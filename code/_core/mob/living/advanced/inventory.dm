@@ -36,3 +36,10 @@
 /mob/living/advanced/proc/update_inventory()
 	if(client)
 		client.known_inventory = inventory
+
+
+
+/mob/living/advanced/proc/open_inventory(var/obj/inventory/I)
+	active_inventory = I
+
+

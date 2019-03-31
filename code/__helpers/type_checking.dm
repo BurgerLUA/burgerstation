@@ -99,3 +99,6 @@ proc/is_safezone(var/area/A)
 
 proc/is_currency(var/atom/A)
 	return istype(A,/obj/item/currency)
+
+proc/is_dynamic_inventory(var/atom/A)
+	return istype(A,/obj/inventory/dynamic)

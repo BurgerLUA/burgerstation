@@ -12,7 +12,6 @@ mob/living/advanced/on_left_down(object,location,control,params)
 mob/living/advanced/on_right_down(object,location,control,params)
 
 	if(is_inventory(object))
-		src << "Something went wrong. Code: 100."
 		return FALSE
 
 	for(var/obj/inventory/I in inventory)

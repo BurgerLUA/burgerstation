@@ -17,6 +17,9 @@
 
 	color = "#FFFFFF"
 
+/obj/item/clothing/uniform/jumpsuit/grey
+	color = "#888888"
+
 /obj/item/clothing/uniform/jumpsuit/red
 	color = "#FF0000"
 

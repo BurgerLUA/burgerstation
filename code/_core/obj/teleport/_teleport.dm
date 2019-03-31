@@ -60,7 +60,7 @@
 	if(!(triggerer.dir & dir_restriction))
 		return FALSE
 
-	triggerer.Move(locate(x + x_move, y + y_move,z))
+	triggerer.force_move(locate(x + x_move, y + y_move,z))
 
 /obj/trigger/jumploc/north
 	x_move = 0
@@ -82,7 +82,7 @@
 	y_move = 0
 	dir_restriction = WEST
 
-
+/*
 /obj/trigger/jumplevel
 	name = "level jumper"
 	var/desired_x = 0
@@ -103,6 +103,7 @@
 	triggerer.Move(locate(desired_x,desired_y,get_z_level(desired_map)))
 
 	return TRUE
+*/
 
 /obj/trigger/jumpmarker
 	name = "marker jumper"
@@ -117,13 +118,9 @@
 	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))
 		return FALSE
 
-	triggerer << teleport_locations[desired_marker]
-
 	var/turf/T = get_turf(teleport_locations[desired_marker])
 
 	triggerer.force_move(T)
-
-
 
 /obj/trigger/jumpmarker/ship_exit
 	desired_marker = "ship_exit"

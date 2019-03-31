@@ -5,6 +5,10 @@
 	var/size = 1 //Size in.. uh...
 	var/weight = 1 //Weight in kg
 
+	var/is_container = FALSE //Setting this to true will open the below inventories on use.
+	var/container_max_size = 0 //I this item has a container, how much should it be able to hold in each slot?
+	var/container_max_weight = 0 //I this item has a container, how much should it be able to hold in each slot?
+
 	var/list/obj/inventory/inventories = list() //The inventory holders this object has
 
 	icon_state = "inventory"
@@ -38,13 +42,68 @@
 	)
 
 
+/obj/item/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+
+	if(!is_container)
+		return ..()
+
+	if(is_inventory(object) && is_advanced(caller))
+
+		var/mob/living/advanced/A = caller
+
+		for(var/obj/inventory/I in A.inventory)
+			if(I in inventories)
+				continue
+			if(!I.is_container)
+				continue
+			I.alpha = 0
+			I.mouse_opacity = 0
+
+		for(var/i=1,i<=length(inventories),i++)
+			var/obj/inventory/I = inventories[i]
+			I.screen_loc = "LEFT+4+[i],BOTTOM+1"
+			if(!I.alpha)
+				animate(I,alpha=255,time=4)
+				I.mouse_opacity = 2
+			else
+				animate(I,alpha=0,time=4)
+				I.mouse_opacity = 0
+		return TRUE
+
+	if(is_item(object) && length(inventories))
+		var/added = FALSE
+
+		if(object.type != src.type)
+			for(var/obj/inventory/I in inventories)
+				if(I.add_object(object,FALSE))
+					added = TRUE
+					break
+
+		if(added)
+			caller.to_chat(span("notice","You stuff \the [object] in your [src]."))
+		else
+			caller.to_chat(span("warning","You don't have enough inventory space to hold this!"))
+
+	return 	..()
+
 /obj/item/New(var/desired_loc)
 
 	//force_move(desired_loc) //TODO: FIGURE THIS OUT
 
+	var/dynamic_id = 1
+
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
+
+		if(is_dynamic_inventory(inventories[i]))
+			inventories[i].id = "dynamic_[dynamic_id]"
+			dynamic_id += 1
+
+		if(container_max_size)
+			inventories[i].max_size = container_max_size
+		if(container_max_weight)
+			inventories[i].max_weight = container_max_weight
 
 	. = ..()
 

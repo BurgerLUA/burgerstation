@@ -1,4 +1,4 @@
-var/list/mob/living/advanced/player/all_players
+var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/
 	name = "lost soul"

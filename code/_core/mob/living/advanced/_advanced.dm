@@ -34,6 +34,8 @@
 
 	var/chargen = FALSE
 
+	var/obj/inventory/active_inventory
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
@@ -72,11 +74,15 @@
 	draw_inventory = !draw_inventory
 	for(var/v in inventory)
 		var/obj/inventory/O = v
-		if(!draw_inventory)
+		if(O.is_container)
+			continue
+		if(draw_inventory)
+			animate(O,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
+			O.mouse_opacity = 2
+		else
 			if(!O.essential || important_too)
 				animate(O,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
-		else
-			animate(O,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
+				O.mouse_opacity = 0
 
 	update_icon()
 

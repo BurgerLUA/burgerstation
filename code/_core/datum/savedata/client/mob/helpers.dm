@@ -117,6 +117,7 @@
 		final_organ_list[id] = get_item_data(O)
 	loaded_data["organs"] = final_organ_list
 
+	/*
 	//Inventory stuff
 	var/list/final_worn_list = list()
 	var/list/final_held_list = list()
@@ -134,6 +135,7 @@
 
 	loaded_data["worn"] = final_worn_list
 	loaded_data["held"] = final_held_list
+	*/
 
 	//Skills
 	var/list/final_skill_list = list()
@@ -157,6 +159,9 @@
 		owner << "Save failed. Please contact the server owner."
 
 
+
+
+
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/A)
 
 	//Name
@@ -169,6 +174,13 @@
 		var/obj/item/organ/O = A.add_organ(o_type)
 		if(loaded_data["organs"][id]["blend_data"])
 			apply_blend_data(O, loaded_data["organs"][id]["blend_data"])
+		if(loaded_data["organs"][id]["inventories"])
+			for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
+				apply_inventory_data(O,loaded_data["organs"][id]["inventories"][i])
+
+
+
+
 		O.update_icon()
 
 	//Skills
@@ -183,6 +195,7 @@
 		var/experience/attribute/S = A.get_attribute(id)
 		S.Initialize(xp)
 
+	/*
 	//Inventory - Worn
 	for(var/id in loaded_data["worn"])
 		for(var/list_data in loaded_data["worn"][id])
@@ -200,6 +213,7 @@
 				if(I.id != id)
 					continue
 				I.add_held_object(O)
+	*/
 
 	A.force_move(all_wishgranters[loaded_data["last_save"]])
 	A.update_icon()

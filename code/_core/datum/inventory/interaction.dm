@@ -85,10 +85,10 @@ obj/inventory/drop_item(var/turf/new_location)
 
 /obj/inventory/defer_click_on_object()
 
-	if(length(held_objects))
+	if(length(held_objects) && held_slots <= 1)
 		return get_top_held_object()
 
-	if(length(worn_objects))
+	if(length(worn_objects) && worn_slots <= 1)
 		return get_top_worn_object()
 
 	return src

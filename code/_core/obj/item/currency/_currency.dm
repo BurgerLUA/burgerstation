@@ -12,13 +12,14 @@
 	update_icon()
 
 /obj/item/currency/update_icon()
-
 	if(value <= 9)
 		icon_state = "[value]"
 	else if(value <= 100)
 		icon_state = "[floor(value/10)]"
 	else
 		icon_state = "100"
+
+	..()
 
 /obj/item/currency/proc/adjust_value(var/value_amount)
 	var/value_added = max(value_amount,-value)
@@ -31,6 +32,9 @@
 
 /obj/item/currency/clicked_by_object(caller,object,location,control,params)
 
+	if(object == src)
+		return ..()
+
 	if(!is_currency(object))
 		return ..()
 
@@ -41,5 +45,10 @@
 	var/obj/item/currency/C = object
 
 	M.to_chat(span("notice","You add [adjust_value(C.value)] crystals to the [src]. \The [src] now has [value] crystals."))
+	C.drop_item()
+	qdel(C)
 
 	return TRUE
+
+/obj/item/currency/on_spawn()
+	value = 100

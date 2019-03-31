@@ -10,7 +10,6 @@
 	var/obj/item/stored_item //This is assigned automatically
 	var/quantity = 0//This is assigned automatically
 
-
 /obj/structure/interactive/shop_holder/proc/restock()
 
 	if(stored_item)
@@ -18,8 +17,9 @@
 
 	var/obj/item/desired_item = pickweight(possible_items)
 	stored_item = new desired_item(src)
-	item_cost = ceiling(possible_prices[stored_item.type]*rand(90,110)*0.01)
+	item_cost = possible_prices[stored_item.type]
 	quantity = 1 + (possible_quantity[stored_item.type]-1)*rand(90,110)*0.01
+	stored_item.update_icon()
 	update_icon()
 
 /obj/structure/interactive/shop_holder/update_icon()
@@ -52,18 +52,19 @@
 
 		var/click_flags = A.client.get_actual_click_flags(params)
 
-		if(click_flags & RIGHT_HAND && A.get_left_hand())
-			A.to_chat(span("notice","Your left hand needs to be unoccupied in order to buy this!"))
-			return
-
-		if(click_flags & LEFT_HAND && A.get_right_hand())
+		if(click_flags & RIGHT_HAND && A.get_right_hand())
 			A.to_chat(span("notice","Your right hand needs to be unoccupied in order to buy this!"))
 			return
 
-		C.adjust_value(item_cost)
+		if(click_flags & LEFT_HAND && A.get_left_hand())
+			A.to_chat(span("notice","Your left hand needs to be unoccupied in order to buy this!"))
+			return
+
+		C.adjust_value(-item_cost)
 		quantity -= 1
 
-		var/obj/item/new_item = new stored_item(get_turf(A))
+		var/obj/item/new_item = new stored_item.type(get_turf(A))
+		new_item.on_spawn()
 		A.pickup(new_item,click_flags & LEFT_HAND)
 		A.to_chat(span("notice","You successfully purchase \the [new_item] for [item_cost] crystal\s."))
 

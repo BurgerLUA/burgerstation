@@ -31,16 +31,20 @@
 		var/obj/button/health/H = health_elements[k]
 		if(draw_health)
 			animate(H,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
+			H.mouse_opacity = 2
 		else
 			animate(H,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
+			H.mouse_opacity = 0
 
 /mob/proc/toggle_buttons(var/important_too = FALSE,var/speed = 1)
 	draw_buttons = !draw_buttons
 	for(var/obj/button/B in buttons)
 		if(draw_buttons)
 			animate(B,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
+			B.mouse_opacity = 2
 		else
 			animate(B,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
+			B.mouse_opacity = 0
 
 /mob/proc/show_hud(var/show,var/speed=1)
 	if(!show)

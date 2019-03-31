@@ -347,3 +347,6 @@
 	stored_item = /obj/item/bullet/bolt/
 
 
+/obj/structure/interactive/localmachine/item/currency
+	stored_item = /obj/item/currency/
+

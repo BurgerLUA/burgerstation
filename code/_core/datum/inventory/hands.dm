@@ -1,14 +1,14 @@
 //Gloves
 /obj/inventory/organs/left_hand_worn
 	name = "left glove"
-	id = BODY_HAND_LEFT
+	id = BODY_HAND_LEFT + "_worn"
 	screen_loc = "LEFT+2,BOTTOM+1"
 	item_slot = SLOT_HAND_LEFT
 	worn_slots = 1
 
 /obj/inventory/organs/right_hand_worn
 	name = "right glove"
-	id = BODY_HAND_RIGHT
+	id = BODY_HAND_RIGHT + "_worn"
 	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT
 	worn_slots = 1

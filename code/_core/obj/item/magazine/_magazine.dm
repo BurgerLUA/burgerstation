@@ -19,6 +19,19 @@
 /obj/item/magazine/proc/get_ammo_count()
 	return length(stored_bullets)
 
+/obj/item/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
+
+	if(is_inventory(object))
+		var/obj/inventory/I = object
+		var/obj/item/bullet/B = stored_bullets[length(stored_bullets)-1]
+		if(I.add_held_object(B))
+			B.update_icon()
+			stored_bullets -= B
+
+	return ..()
+
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(istype(src,/obj/item/magazine/clip))

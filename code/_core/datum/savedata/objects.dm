@@ -7,6 +7,17 @@
 	if(object_data["color"])
 		O.color = object_data["color"]
 
+	if(is_item(O))
+		var/obj/item/I = O
+		if(object_data["inventories"])
+			world.log << "NOTICE: [O] HAS INVENTORIES."
+			for(var/i=1,i<=length(object_data["inventories"]),i++)
+				apply_inventory_data(I,object_data["inventories"][i])
+		else
+			world.log << "NOTICE: [O] DOES NOT HAVE INVENTORIES."
+	else
+		world.log << "NOTICE: [O] IS NOT AN ITEM"
+
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
 		if(object_data["scroll_count"])
@@ -26,6 +37,10 @@
 		if(object_data["total_charge"])
 			S.total_charge = object_data["total_charge"]
 
+	if(is_currency(O))
+		var/obj/item/currency/C = O
+		if(object_data["value"])
+			C.value = object_data["value"]
 
 	if(is_bullet(O))
 		var/obj/item/bullet/B = O
@@ -59,8 +74,56 @@
 
 	return O
 
+/savedata/proc/get_inventory_data(var/obj/inventory/I)
+	if(!I)
+		return list()
 
-/savedata/proc/get_item_data(var/obj/item/I)
+	var/list/returning_list = list()
+	returning_list["type"] = I.type
+	returning_list["id"] = I.id
+
+	if(length(I.held_objects))
+		returning_list["held"] = new/list(length(I.held_objects))
+		for(var/i=1,i<=length(I.held_objects),i++)
+			returning_list["held"][i] = get_item_data(I.held_objects[i])
+
+	if(length(I.worn_objects))
+		returning_list["worn"] = new/list(length(I.worn_objects))
+		for(var/i=1,i<=length(I.worn_objects),i++)
+			returning_list["worn"][i] = get_item_data(I.worn_objects[i])
+
+	return returning_list
+
+
+/savedata/proc/apply_inventory_data(var/obj/item/O,var/list/inventory_data)
+
+	var/obj/inventory/I
+
+	world.log << "[O] has a total of [length(O.inventories)] inventories."
+
+
+	for(var/obj/inventory/I2 in O.inventories)
+		if(I2.id == inventory_data["id"])
+			I = I2
+			break
+
+	if(I)
+		if(inventory_data["held"])
+			for(var/i=1,i<=length(inventory_data["held"]),i++)
+				var/obj/item/I2 = load_and_create_object(inventory_data["held"][i],get_turf(I))
+				I.add_held_object(I2,FALSE,TRUE)
+
+		if(inventory_data["worn"])
+			for(var/i=1,i<=length(inventory_data["worn"]),i++)
+				var/obj/item/I2 = load_and_create_object(inventory_data["worn"][i],get_turf(I))
+				I.add_worn_object(I2,FALSE,TRUE)
+
+		return TRUE
+
+
+	return FALSE
+
+/savedata/proc/get_item_data(var/obj/I)
 	if(!I)
 		return list()
 
@@ -72,6 +135,14 @@
 	var/list/blend_data = generate_blend_data(I)
 	if(length(blend_data))
 		returning_list["blend_data"] = blend_data
+
+	if(is_item(I))
+		var/obj/item/IT = I
+		if(length(IT.inventories))
+			returning_list["inventories"] = new/list(length(IT.inventories))
+			for(var/i=1,i<=length(IT.inventories),i++)
+				var/obj/inventory/IN = IT.inventories[i]
+				returning_list["inventories"][i] = get_inventory_data(IN)
 
 	if(is_soulgem(I))
 		var/obj/item/consumable/soulgem/S = I
@@ -92,6 +163,11 @@
 		var/obj/item/bullet/B = I
 		if(B.bullet_count > 1)
 			returning_list["bullet_count"] = B.bullet_count
+
+	if(is_currency(I))
+		var/obj/item/currency/C = I
+		if(C.value > 1)
+			returning_list["value"] = C.value
 
 	if(is_bullet_gun(I))
 		var/obj/item/weapon/ranged/bullet/BG = I
