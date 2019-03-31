@@ -35,10 +35,11 @@
 
 	var/only_hit_target_turf = FALSE
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type)
 
 	owner = desired_owner
 	weapon = desired_weapon
+	damage_type = desired_damage_type
 
 	vel_x = desired_vel_x
 	vel_y = desired_vel_y

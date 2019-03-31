@@ -189,7 +189,6 @@
 
 	return returning_list
 
-
 /savedata/proc/generate_blend_data(var/atom/A)
 
 	var/list/returning_list = list()

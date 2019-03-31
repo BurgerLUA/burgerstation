@@ -3,7 +3,7 @@
 #define FPS_CLIENT 60
 #define FPS_SERVER 30
 
-#define VIEW_RANGE 9
+#define VIEW_RANGE 11
 
 #define MAX_MESSAGE_LEN 256
 #define MAX_CHARACTERS 10 //Maximum amount of characters a player can have at once.

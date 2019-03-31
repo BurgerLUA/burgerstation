@@ -145,7 +145,6 @@
 
 	if(victim != hit_object)
 		victim.update_health(damage_dealt)
-		victim << "UPDATING YOUR HEALTH"
 
 	if(is_living(attacker) && victim && attacker != victim)
 		var/mob/living/A = attacker

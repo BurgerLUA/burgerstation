@@ -45,6 +45,7 @@
 		if(B)
 			B.spend_bullet()
 			stored_bullet_casings += B
+		return B
 
 /obj/item/weapon/ranged/bullet/proc/load_bullet_from_magazine()
 	if(stored_magazine && length(stored_magazine.stored_bullets)) //Get a new bullet
@@ -54,8 +55,9 @@
 			stored_bullets += B
 
 /obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
-	spend_bullet()
+	var/obj/item/bullet/B = spend_bullet()
 	load_bullet_from_magazine()
+	return B
 
 /obj/item/weapon/ranged/bullet/New()
 

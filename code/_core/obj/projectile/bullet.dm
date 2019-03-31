@@ -3,11 +3,12 @@
 
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 
+	world.log << "HIT!"
 
+	/*
 	if(is_living(owner) && is_living(hit_atom) && hit_atom != owner)
 		var/mob/living/living_owner = owner
 		var/mob/living/living_target = hit_atom
-
 		if(length(living_target.factions) && length(living_owner.factions))
 			for(var/id in living_owner.factions)
 				if(!living_target.factions[id])
@@ -15,9 +16,15 @@
 				var/faction/F = all_factions[id]
 				if(!F.can_damage_team())
 					return FALSE
+	*/
 
 	if(damage_type)
 		var/damagetype/DT = all_damage_types[damage_type]
+
+		world.log << "damge_type: [damage_type]"
+		world.log << "DT: [DT]"
+
+
 		var/list/params = list()
 		params["icon-x"] = shoot_x
 		params["icon-y"] = shoot_y

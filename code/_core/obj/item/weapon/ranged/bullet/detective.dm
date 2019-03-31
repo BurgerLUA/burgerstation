@@ -4,9 +4,6 @@
 	icon = 'icons/obj/items/weapons/ranged/revolver.dmi'
 	icon_state = "inventory"
 
-	projectile = /obj/projectile/bullet/revolver/
-	damage_type = /damagetype/blunt/pistol
-
 	bullet_speed = 31
 	shoot_delay = 5
 

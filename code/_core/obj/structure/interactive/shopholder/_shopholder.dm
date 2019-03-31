@@ -19,6 +19,7 @@
 	stored_item = new desired_item(src)
 	item_cost = possible_prices[stored_item.type]
 	quantity = 1 + (possible_quantity[stored_item.type]-1)*rand(90,110)*0.01
+	stored_item.on_spawn()
 	stored_item.update_icon()
 	update_icon()
 

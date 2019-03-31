@@ -96,18 +96,27 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 
 	next_shoot_time = curtime + shoot_delay
 
-	handle_ammo(caller)
+	var/obj/projectile/projectile_to_use = projectile
+	var/list/shoot_sounds_to_use = shoot_sounds
+	var/damage_type_to_use = damage_type
+
+	var/obj/item/bullet/spent_bullet = handle_ammo(caller)
+	if(spent_bullet)
+		if(spent_bullet.projectile)
+			projectile_to_use = spent_bullet.projectile
+		if(spent_bullet.shoot_sounds && length(spent_bullet.shoot_sounds))
+			shoot_sounds_to_use = spent_bullet.shoot_sounds
+		if(spent_bullet.damage_type)
+			damage_type_to_use = spent_bullet.damage_type
+
 	update_icon()
 
-
-	if(projectile)
+	if(projectile_to_use)
 
 		var/area/A = get_area(caller)
 
 		if(length(shoot_sounds))
-			play_sound(pick(shoot_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-
-
+			play_sound(pick(shoot_sounds_to_use),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 		var/icon_pos_x = 0
 		var/icon_pos_y = 0
@@ -143,7 +152,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location
 
 				bullet_speed = min(bullet_speed,31)
 
-				var/obj/projectile/P = new projectile(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object))
+				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use)
 				if(get_dist(caller,object) <= 1 && is_mob(object))
 					P.on_hit(object)
 			else
