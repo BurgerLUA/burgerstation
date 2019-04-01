@@ -39,78 +39,23 @@
 		SKILL_RANGED = 0.5
 	)
 
-/damagetype/ranged/bullet/revolver_38
-	name = ".38 bullet"
-	id = "38"
-
-	base_attack_damage = list(
-		BRUTE = 35,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
-	)
-
-/damagetype/ranged/bullet/revolver_44
-	name = ".44 bullet"
-	id = "44"
-
-	base_attack_damage = list(
-		BRUTE = 45,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
-	)
-
-/damagetype/ranged/bullet/rifle_762
-	name = "7.62 bullet"
-	id = "762rifle"
-
-	base_attack_damage = list(
-		BRUTE = 25,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
-	)
-
-/damagetype/ranged/bullet/smg_45
-	name = "smg"
-	id = "45smg"
-
-	base_attack_damage = list(
-		BRUTE = 15,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
-	)
-
-/damagetype/ranged/bullet/shotgun
-	name = "shotgun pellet"
-	id = "pellet"
-
-	base_attack_damage = list(
-		BRUTE = 12,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
-	)
-
-/damagetype/ranged/bullet/sniper_50
-	name = ".50 bullet"
-	id = "50sniper"
-
-	base_attack_damage = list(
-		BRUTE = 90,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
-	)
-
 /damagetype/ranged/bullet/bolt
 	name = "metal bolt"
 	id = "bolt_metal"
 
 	base_attack_damage = list(
 		BRUTE = 20,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/bullet/revolver_38
+	name = ".38 bullet"
+	id = "38"
+
+	base_attack_damage = list(
+		BRUTE = 15,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0

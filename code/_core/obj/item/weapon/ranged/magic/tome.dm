@@ -64,18 +64,16 @@
 
 	bullet_speed = 3
 
-
-/obj/item/weapon/ranged/magic/tome/lightning/get_static_spread() //Base spread
+/obj/item/weapon/ranged/magic/tome/holy_warrior/get_static_spread() //Base spread
 	return 0
 
-/obj/item/weapon/ranged/magic/tome/lightning/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/magic/tome/holy_warrior/get_skill_spread(var/mob/living/L) //Base spread
 	return 0
-
 
 /obj/item/weapon/ranged/magic/tome/heal
 	name = "tome of healing"
 	desc = "Wounds-B-Gone"
-	desc_extended = "Costs mana to use. Those in a 3x3 area are affected by the heal."
+	desc_extended = "Costs mana to use. Those in a 3x3 area are affected by the heal, including the caster."
 	mana_cost = 50
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/healing.dmi'

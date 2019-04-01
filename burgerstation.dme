@@ -180,7 +180,6 @@
 #include "code\_core\datum\menu\class.dm"
 #include "code\_core\datum\menu\color.dm"
 #include "code\_core\datum\menu\dialogue.dm"
-#include "code\_core\datum\menu\examine.dm"
 #include "code\_core\datum\outfit\_outfit.dm"
 #include "code\_core\datum\outfit\chargen.dm"
 #include "code\_core\datum\outfit\diamond_with_flaw.dm"

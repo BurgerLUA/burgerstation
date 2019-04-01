@@ -3,7 +3,7 @@
 	desc = "Carry two of these and be the ultimate asshole."
 	desc_extended = "Good for blocking melee attacks. This buckler doubles your chance of blocking or parrying melee attacks. Can block ranged and melee attacks."
 	icon = 'icons/obj/items/weapons/melee/shield.dmi'
-	damage_type = /damagetype/shield/
+	damage_type = "shield_wood"
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 2,

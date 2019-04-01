@@ -5,6 +5,8 @@
 	max_weight = 100
 	max_size = 100
 
+	drag_to_take = TRUE
+
 	icon = 'icons/hud/inventory.dmi'
 	icon_state = "square_round_small"
 

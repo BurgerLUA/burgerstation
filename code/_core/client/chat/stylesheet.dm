@@ -4,74 +4,74 @@ body {
 	font-family: Verdana, sans-serif;
 	font-size: 8px;
 }
-span.warning{
+.warning{
 	color: red;
 	font-style: italic;
 }
-span.danger{
+.danger{
 	color: red;
 	font-weight: bold;
 }
-span.ooc{
+.ooc{
 	color: blue;
 	font-weight: bold;
 }
-span.looc{
+.looc{
 	color: cyan;
 	font-weight: bold;
 }
-span.notice{
+.notice{
 	color: blue;
 	font-style: italic;
 }
 
-span.examine_title{
+.examine_title{
 	font-size: 200%;
 	text-align: center;
 }
-span.examine_description{
+.examine_description{
 	font-style: italic;
 	text-align: center;
 }
-span.examine_info{
+.examine_info{
 	font-style: italic;
 }
 
 
 
-span.distance_large{
+.distance_large{
 	font-size: 120%;
 }
-span.distance_medium{
+.distance_medium{
 	font-size: 100%;
 }
-span.distance_small{
+.distance_small{
 	font-size: 80%;
 }
-span.distance_tiny{
+.distance_tiny{
 	font-size: 60%;
 }
-span.greeting{
+.greeting{
 	font-size: 200%;
 	color: purple;
 }
 
-span.red{
+.red{
 	font-size: 150%;
 	color: red;
 }
 
-span.blue{
+.blue{
 	font-size: 150%;
 	color: blue;
 }
 
-span.green{
+.green{
 	font-size: 150%;
 	color: green;
 }
 
-span.yellow{
+.yellow{
 	font-size: 150%;
 	color: yellow;
 }

@@ -64,6 +64,9 @@
 
 	screen_loc = "RIGHT-0.25,BOTTOM+1.1"
 
+/obj/button/health/hp/get_examine_text(var/mob/examiner)
+	return ..() + div("notice","You have [current] out of [max] health.")
+
 /obj/button/health/hp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.health_max)
@@ -80,6 +83,9 @@
 
 	screen_loc = "RIGHT,BOTTOM+1.1"
 
+/obj/button/health/sp/get_examine_text(var/mob/examiner)
+	return ..() + div("notice","You have [current] out of [max] stamina.")
+
 /obj/button/health/sp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.stamina_max)
@@ -95,6 +101,9 @@
 	bar_color = "#0000ff"
 
 	screen_loc = "RIGHT+0.25,BOTTOM+1.1"
+
+/obj/button/health/mp/get_examine_text(var/mob/examiner)
+	return ..() + div("notice","You have [current] out of [max] mana.")
 
 /obj/button/health/mp/update_stats(var/mob/living/M)
 	min = 0

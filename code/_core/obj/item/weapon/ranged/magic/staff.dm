@@ -3,7 +3,7 @@
 	total_charge = 1000
 
 /obj/item/weapon/ranged/magic/staff/get_examine_text(var/mob/caller)
-	return ..() + span("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
+	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
 /obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
 	total_charge -= cost_charge

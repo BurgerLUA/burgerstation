@@ -43,11 +43,9 @@ var/global/list/all_clients = list()
 	winset(src,"chat_looc.output","style='[STYLESHEET]'")
 	winset(src,"chat_ooc.output","style='[STYLESHEET]'")
 	winset(src,"chat_say.output","style='[STYLESHEET]'")
-	var/menu/M = get_menu("examine")
-	M.open(src)
 
 /client/proc/examine(var/atom/object)
-	object.examine(src.mob)
+	src.mob.to_chat(object.get_examine_text(src.mob))
 	return TRUE
 
 /client/proc/reset()
@@ -184,7 +182,7 @@ var/global/list/all_clients = list()
 
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)
-		return
+		return TRUE
 
 	..()
 

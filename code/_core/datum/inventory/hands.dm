@@ -26,6 +26,8 @@
 
 	essential = TRUE
 
+	drag_to_take = FALSE
+
 /obj/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
 	if(. && is_advanced(owner))
@@ -54,6 +56,8 @@
 	priority = 100
 
 	essential = TRUE
+
+	drag_to_take = FALSE
 
 /obj/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()

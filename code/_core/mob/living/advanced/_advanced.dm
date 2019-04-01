@@ -127,7 +127,9 @@ mob/living/advanced/Login()
 			talk_type = 0
 			update_icon()
 
-	var/health_adjust = regen_delay <= 0 ? adjust_health(health_regeneration) : 0
+	var/regen_bonus = (health_current/health_max > 0.5) ? 0 : 1
+
+	var/health_adjust = regen_delay <= 0 ? adjust_health(health_regeneration + regen_bonus) : 0
 	var/stamina_adjust = regen_delay <= 0 ? adjust_stamina(stamina_regeneration) : 0
 	var/mana_adjust = adjust_mana(mana_regeneration)
 
@@ -175,7 +177,7 @@ mob/living/advanced/Login()
 	..()
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
-/mob/living/advanced/proc/adjust_health(var/adjust_value)
+/mob/living/advanced/proc/adjust_health(var/adjust_value) //TODO: FIX THIS, IT'S BROKEN.
 
 	if(adjust_value <= 0)
 		return FALSE

@@ -12,6 +12,8 @@
 	if(!src.client)
 		return
 
+	text = "<div class='message'>[text]</div>"
+
 	src << output(text,"chat_all.output")
 
 	if(chat_type & CHAT_TYPE_SAY)

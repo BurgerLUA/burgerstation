@@ -127,9 +127,11 @@
 
 	var/brute_loss = get_brute_loss()
 
+	/*
 	if(health_max - brute_loss <= 0 && damage_dealt >= health_max*0.5 && flags_organ & flags_organ )
 		gib()
 		return
+	*/
 
 	if(enable_wounds && src.loc)
 		var/scale = floor((brute_loss/health_max)*5)

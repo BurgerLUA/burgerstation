@@ -32,12 +32,14 @@
 	..()
 
 /obj/item/bullet/get_examine_text(var/mob/examiner)
+
 	. = ..()
+
 	if(is_spent)
-		. += span("notice","It is spent.")
+		. += div("notice","It is spent.")
 
 	if(bullet_count > 1)
-		. += span("notice","It contains [bullet_count] bullets.")
+		. += div("notice","It contains [bullet_count] [src.name]\s.")
 
 	return .
 

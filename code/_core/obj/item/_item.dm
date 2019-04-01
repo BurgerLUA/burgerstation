@@ -129,6 +129,13 @@ obj/item/proc/update_owner(desired_owner)
 
 /obj/item/get_examine_text(var/mob/examiner)
 
+	if(!is_advanced(examiner))
+		return ..()
+
+	. = ..()
+
+	var/mob/living/advanced/A = examiner
+
 	if(damage_type && all_damage_types[damage_type])
 
 		var/damagetype/DT = all_damage_types[damage_type]
@@ -140,49 +147,63 @@ obj/item/proc/update_owner(desired_owner)
 		for(var/k in DT.base_attack_damage)
 			var/v = DT.base_attack_damage[k]
 			if(v)
-				base_damage_list += "[capitalize(k)]: [v]"
+				base_damage_list += "[v] [k]"
 
 		for(var/k in DT.attribute_stats)
 			var/v = DT.attribute_stats[k]
+			var/experience/E = A.attributes[k]
+			var/grade
 			switch(v)
 				if(CLASS_S)
-					v = "S"
+					grade = "S"
 				if(CLASS_A)
-					v = "A"
+					grade = "A"
 				if(CLASS_B)
-					v = "B"
+					grade = "B"
 				if(CLASS_C)
-					v = "C"
+					grade = "C"
 				if(CLASS_D)
-					v = "D"
+					grade = "D"
 				if(CLASS_E)
-					v = "E"
-				if(CLASS_F)
-					v = "-"
-			attribute_damage_list += "[capitalize(k)]: [v]"
+					grade = "E"
 
+			if(grade)
+				attribute_damage_list += "[capitalize(k)]: [grade] ([floor(E.get_current_level()*v)] [DT.attribute_damage[k]])"
 
 		for(var/k in DT.skill_stats)
 			var/v = DT.skill_stats[k]
+			var/experience/E = A.skills[k]
+			var/grade
 			switch(v)
 				if(CLASS_S)
-					v = "S"
+					grade = "S"
 				if(CLASS_A)
-					v = "A"
+					grade = "A"
 				if(CLASS_B)
-					v = "B"
+					grade = "B"
 				if(CLASS_C)
-					v = "C"
+					grade = "C"
 				if(CLASS_D)
-					v = "D"
+					grade = "D"
 				if(CLASS_E)
-					v = "E"
-				if(CLASS_F)
-					v = "-"
-			skill_damage_list += "[capitalize(k)]: [v]"
+					grade = "E"
 
+			if(grade)
+				skill_damage_list += "[capitalize(k)]: [grade] ([floor(E.get_current_level()*v)] [DT.skill_damage[k]])"
 
-		return ..() + span("notice"," Base Damage:") + span("notice","  [english_list(base_damage_list, and_text = ", ")]") + span("notice"," Attribute Damage:") + span("notice","  [english_list(attribute_damage_list, and_text = ", ")]") + span("notice"," Attribute Damage:") + span("notice","  [english_list(skill_damage_list, and_text = ", ")]")
+		var/returning_text = ..()
+		if(length(base_damage_list))
+			returning_text += div("notice bold","Base Damage:") + div("notice","[english_list(base_damage_list, and_text = ", ")]")
+
+		if(length(attribute_damage_list))
+			returning_text += div("notice bold","Attribute Damage:") + div("notice","[english_list(attribute_damage_list, and_text = ", ")]")
+
+		if(length(skill_damage_list))
+			returning_text += div("notice bold","Skill Damage:") + div("notice","[english_list(skill_damage_list, and_text = ", ")]")
+
+		return . + returning_text
+
+	return .
 
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE

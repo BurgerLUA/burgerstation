@@ -76,7 +76,9 @@
 		return FALSE
 
 	DT.display_miss_message(attacker,src,weapon,target,"blocked by [target]'s [blocking_item ? blocking_item : "fists"]")
-	add_skill_xp(SKILL_DODGE,DT.get_attack_damage(attacker,src,weapon,target))
+
+	add_skill_xp(SKILL_BLOCK,max(1,(100-base_chance)/1))
+
 	return TRUE
 
 /mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
@@ -125,7 +127,7 @@
 	if(allow_parry_counter)
 		attack(src,attacker)
 
-	add_skill_xp(SKILL_PARRY,DT.get_attack_damage(attacker,src,weapon,target))
+	add_skill_xp(SKILL_PARRY,max(1,(100-base_chance)/1))
 
 	return TRUE
 
@@ -145,5 +147,6 @@
 	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [target]")
 	DT.do_miss_sound(attacker,src,weapon,target)
 	DT.do_attack_animation(attacker,src,weapon,target)
-	add_skill_xp(SKILL_DODGE,DT.get_attack_damage(attacker,src,weapon,target))
+
+	add_skill_xp(SKILL_DODGE,max(1,(100-base_chance)/1))
 	return TRUE
