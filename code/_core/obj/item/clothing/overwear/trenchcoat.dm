@@ -2,11 +2,6 @@
 	name = "coat"
 	icon = 'icons/obj/items/clothing/suit/detective_coat.dmi'
 
-	inventories = list(
-		/obj/inventory/pocket/pocket03,
-		/obj/inventory/pocket/pocket04
-	)
-
 	desc = "The detective's favorite."
 	desc_extended = "A dark brown leather coat. It is quite heavy."
 
@@ -14,11 +9,6 @@
 /obj/item/clothing/overwear/coat/wizard
 	name = "wizard's robes"
 	icon = 'icons/obj/items/clothing/suit/wizard.dmi'
-
-	inventories = list(
-		/obj/inventory/pocket/pocket03,
-		/obj/inventory/pocket/pocket04
-	)
 
 	desc = "Not a bathrobe."
 	desc_extended = "A colorful bathrobe."
@@ -35,10 +25,6 @@
 	name = "priest garb"
 	icon = 'icons/obj/items/clothing/suit/religious.dmi'
 
-	inventories = list(
-		/obj/inventory/pocket/pocket03,
-		/obj/inventory/pocket/pocket04
-	)
 
 	desc = "Ultra fancy!"
 	desc_extended = ""

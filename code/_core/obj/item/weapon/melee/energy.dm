@@ -76,7 +76,7 @@
 	name = "energy shield"
 	desc = "A shield made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/shield.dmi'
-	damage_type = /damagetype/shield/energy
+	damage_type = "shield_energy"
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 3,

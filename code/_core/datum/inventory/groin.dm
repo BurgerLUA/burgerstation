@@ -1,7 +1,7 @@
 /obj/inventory/organs/groin_o
 	name = "belt slot"
 	id = BODY_GROIN_O
-	screen_loc = "CENTER-0.5-2,BOTTOM"
+	screen_loc = "CENTER-2,BOTTOM"
 	worn_slots = 1
 
 	item_slot = SLOT_GROIN_O

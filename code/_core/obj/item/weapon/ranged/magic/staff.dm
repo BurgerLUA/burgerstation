@@ -6,7 +6,7 @@
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
 /obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
-	total_charge -= cost_charge
+	total_charge -= cost_charge*NPC_MANA_COST_MULTIPLIER
 	update_icon()
 
 /obj/item/weapon/ranged/magic/staff/get_ammo_count()
@@ -27,7 +27,7 @@
 
 	override_icon_state = TRUE
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/fireball.ogg')
+	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 
 /obj/item/weapon/ranged/magic/staff/fire/New()
 	..()
@@ -55,7 +55,7 @@
 	projectile = /obj/projectile/bullet/chaos
 	damage_type = "magic_chaos"
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/chaos.ogg')
+	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
 
 
 /obj/item/weapon/ranged/magic/staff/chaos/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
@@ -85,7 +85,7 @@
 
 
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/magic_missile.ogg')
+	shoot_sounds = list('sounds/weapons/magic/magic_missile.ogg')
 
 /obj/item/weapon/ranged/magic/staff/focus
 
@@ -103,5 +103,5 @@
 	projectile = /obj/projectile/bullet/rift
 	damage_type = "magic_focus"
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/teleport_out.ogg')
+	shoot_sounds = list('sounds/weapons/magic/teleport_out.ogg')
 

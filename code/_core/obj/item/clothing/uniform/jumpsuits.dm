@@ -4,11 +4,6 @@
 
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuit.dmi'
 
-	inventories = list(
-		/obj/inventory/pocket/pocket01,
-		/obj/inventory/pocket/pocket02
-	)
-
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
@@ -31,11 +26,6 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/items/clothing/uniforms/security.dmi'
 
-	inventories = list(
-		/obj/inventory/pocket/pocket01,
-		/obj/inventory/pocket/pocket02
-	)
-
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
@@ -46,11 +36,6 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/items/clothing/uniforms/ABOMB.dmi'
 
-	inventories = list(
-		/obj/inventory/pocket/pocket01,
-		/obj/inventory/pocket/pocket02
-	)
-
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
@@ -59,11 +44,6 @@
 	name = "tacticool uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/items/clothing/uniforms/tacticool.dmi'
-
-	inventories = list(
-		/obj/inventory/pocket/pocket01,
-		/obj/inventory/pocket/pocket02
-	)
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
@@ -74,11 +54,6 @@
 	name = "priest's uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/items/clothing/uniforms/religious.dmi'
-
-	inventories = list(
-		/obj/inventory/pocket/pocket01,
-		/obj/inventory/pocket/pocket02
-	)
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

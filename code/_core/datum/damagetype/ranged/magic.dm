@@ -125,6 +125,8 @@
 	name = "lightning"
 	id = "magic_lightning"
 
+	impact_sounds = list('sounds/weapons/magic/zap_large.ogg')
+
 	base_attack_damage = list(
 		BRUTE = 0,
 		BURN = 5,

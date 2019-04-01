@@ -87,7 +87,7 @@
 	shoot_delay = 10
 	bullet_speed = 16
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/fireball.ogg')
+	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 
 /obj/item/weapon/ranged/magic/scroll/fireball/amount_3/on_spawn()
 	scroll_count = 5

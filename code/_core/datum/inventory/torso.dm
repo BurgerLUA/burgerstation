@@ -59,7 +59,7 @@
 /obj/inventory/organs/torso_b
 	name = "back slot"
 	id = BODY_TORSO_B
-	screen_loc = "CENTER-0.5-3,BOTTOM"
+	screen_loc = "CENTER-3,BOTTOM"
 	worn_slots = 1
 
 	item_slot = SLOT_TORSO_B

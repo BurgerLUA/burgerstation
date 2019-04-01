@@ -60,7 +60,7 @@
 
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/inventory/I = inventories[i]
-			I.screen_loc = "LEFT+4+[i],BOTTOM+1"
+			I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
 			if(!I.alpha)
 				animate(I,alpha=255,time=4)
 				I.mouse_opacity = 2

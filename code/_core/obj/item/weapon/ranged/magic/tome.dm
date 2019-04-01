@@ -10,7 +10,7 @@
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost()
 	var/mob/living/advanced/A = get_owner()
 	if(!is_advanced(A))
-		return mana_cost
+		return mana_cost * NPC_MANA_COST_MULTIPLIER
 
 	return mana_cost * (1 - (A.get_skill_level(associated_skill)/200))
 
@@ -43,9 +43,7 @@
 
 	damage_type = "magic_lightning"
 
-
-
-	//shoot_sounds = list('sounds/weapon/ranged/magic/zap_large.ogg')
+	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
 
 
 /obj/item/weapon/ranged/magic/tome/holy_warrior //TODO:FIX THIS
@@ -60,7 +58,7 @@
 
 	projectile = /obj/projectile/bullet/holy_summon
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/summon.ogg')
+	shoot_sounds = list('sounds/weapons/magic/summon.ogg')
 
 	bullet_speed = 3
 
@@ -82,7 +80,7 @@
 
 	projectile = /obj/projectile/bullet/mass_heal
 
-	//shoot_sounds = list('sounds/weapon/ranged/magic/heal.ogg')
+	shoot_sounds = list('sounds/weapons/magic/heal.ogg')
 
 	bullet_speed = 1
 

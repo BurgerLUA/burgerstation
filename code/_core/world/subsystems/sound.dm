@@ -49,7 +49,7 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 
 	hearer << created_sound
 
-/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=75, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0)
 	var/sound/created_sound = sound(sound_path)
 
 	//created_sound.volume = volume

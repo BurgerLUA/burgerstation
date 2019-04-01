@@ -12,7 +12,7 @@
 
 	bullet_type = "bolt"
 
-	//shoot_sounds = list('sounds/weapon/ranged/crossbow.ogg')
+	shoot_sounds = list('sounds/weapons/crossbow/fire.ogg')
 
 	override_icon_state = TRUE
 

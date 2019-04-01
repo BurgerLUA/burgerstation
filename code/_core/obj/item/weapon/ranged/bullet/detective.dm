@@ -13,7 +13,7 @@
 
 	bullet_type = ".38"
 
-	//shoot_sounds = list('sounds/weapon/ranged/bullet/revolver.ogg')
+	shoot_sounds = list('sounds/weapons/revolver_light/revolver.ogg')
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
 	return 0
