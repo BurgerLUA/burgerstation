@@ -15,7 +15,7 @@
 
 	bullet_type = ".45"
 
-	shoot_sounds = list('sounds/weapon/ranged/bullet/smg.ogg')
+	//shoot_sounds = list('sounds/weapon/ranged/bullet/smg.ogg')
 
 	can_wield = FALSE
 

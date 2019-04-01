@@ -22,6 +22,8 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
+	var/list/empty_sounds = list()
+
 /obj/item/weapon/ranged/proc/get_static_spread() //Base spread
 	return 0.1
 
@@ -64,7 +66,10 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click click*"))
 	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapon/misc/empty.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+
+	if(length(empty_sounds))
+		play_sound(pick(empty_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+
 	return FALSE
 
 obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)

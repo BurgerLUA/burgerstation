@@ -1,13 +1,6 @@
 /damagetype/sword/
 	name = "sword"
 	desc = "Live and die by it."
-	impact_sounds = list(
-		'sounds/effects/impacts/bladeslice.ogg',
-	)
-	miss_sounds = list(
-		'sounds/effects/impacts/punchmiss.ogg'
-	)
-
 
 /damagetype/sword/sabre
 	name = "sabre"
@@ -54,7 +47,7 @@
 	name = "energy sword"
 	id = "sword_energy"
 
-	impact_sounds = list('sounds/weapon/melee/saberhit.ogg')
+	//impact_sounds = list('sounds/weapon/melee/saberhit.ogg')
 
 	base_attack_damage = list(
 		BRUTE = 10,
@@ -97,7 +90,7 @@
 	name = "energy shield"
 	id = "shield_energy"
 
-	impact_sounds = list('sounds/weapon/melee/saberon.ogg')
+	//impact_sounds = list('sounds/weapon/melee/saberon.ogg')
 
 	base_attack_damage = list(
 		BRUTE = 30,

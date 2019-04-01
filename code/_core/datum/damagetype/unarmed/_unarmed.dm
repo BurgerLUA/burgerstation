@@ -1,15 +1,6 @@
 /damagetype/unarmed/
 	name = "Body"
 	desc = "Your body deals damage."
-	impact_sounds = list(
-		'sounds/effects/impacts/punch1.ogg',
-		'sounds/effects/impacts/punch2.ogg',
-		'sounds/effects/impacts/punch3.ogg',
-		'sounds/effects/impacts/punch4.ogg'
-	)
-	miss_sounds = list(
-		'sounds/effects/impacts/punchmiss.ogg'
-	)
 
 	skill_xp_per_damage = list(
 		SKILL_UNARMED = 1,

@@ -2,15 +2,17 @@
 	name = "blunt object"
 	id = "blunt"
 	desc = "Live and die by it."
+	/*
 	impact_sounds = list(
-		'sounds/effects/impacts/punch1.ogg',
-		'sounds/effects/impacts/punch2.ogg',
-		'sounds/effects/impacts/punch3.ogg',
-		'sounds/effects/impacts/punch4.ogg'
+		'sounds/weapons/fists/punch1.ogg',
+		'sounds/weapons/fists/punch2.ogg',
+		'sounds/weapons/fists/punch3.ogg',
+		'sounds/weapons/fists/punch4.ogg'
 	)
 	miss_sounds = list(
-		'sounds/effects/impacts/punchmiss.ogg'
+		'sounds/weapons/fists/punchmiss.ogg'
 	)
+	*/
 
 /damagetype/blunt/pistol
 	name = "pistol grip"
@@ -97,13 +99,6 @@
 	name = "shield"
 	id = "shield_wood"
 
-	impact_sounds = list(
-		'sounds/effects/impacts/punch1.ogg',
-		'sounds/effects/impacts/punch2.ogg',
-		'sounds/effects/impacts/punch3.ogg',
-		'sounds/effects/impacts/punch4.ogg'
-	)
-
 	base_attack_damage = list(
 		BRUTE = 5,
 		BURN = 0,
@@ -138,13 +133,6 @@
 /damagetype/blunt/stunbaton_off
 	name = "stunbaton off"
 	id = "stunbaton_off"
-
-	impact_sounds = list(
-		'sounds/effects/impacts/punch1.ogg',
-		'sounds/effects/impacts/punch2.ogg',
-		'sounds/effects/impacts/punch3.ogg',
-		'sounds/effects/impacts/punch4.ogg'
-	)
 
 	base_attack_damage = list(
 		BRUTE = 20,
@@ -186,13 +174,6 @@
 /damagetype/blunt/stunbaton_on
 	name = "stunbaton on"
 	id = "stunbaton_on"
-
-	impact_sounds = list(
-		'sounds/effects/impacts/punch1.ogg',
-		'sounds/effects/impacts/punch2.ogg',
-		'sounds/effects/impacts/punch3.ogg',
-		'sounds/effects/impacts/punch4.ogg'
-	)
 
 	base_attack_damage = list(
 		BRUTE = 10,

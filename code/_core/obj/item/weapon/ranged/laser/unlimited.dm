@@ -10,4 +10,4 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapon/ranged/pew.ogg')
+	//shoot_sounds = list('sounds/weapon/ranged/pew.ogg')

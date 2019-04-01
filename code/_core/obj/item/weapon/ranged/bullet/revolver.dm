@@ -11,7 +11,7 @@
 		caller.to_chat(span("notice","You close \the [src]."))
 
 	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapon/misc/revolver_click2.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound('sounds/weapons/revolver_click2.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 	update_icon()
 

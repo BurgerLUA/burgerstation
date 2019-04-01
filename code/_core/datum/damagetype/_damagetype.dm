@@ -5,8 +5,16 @@
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
-	var/impact_sounds = list()
-	var/miss_sounds = list()
+	var/impact_sounds = list(
+		'sounds/weapons/fists/punch1.ogg',
+		'sounds/weapons/fists/punch2.ogg',
+		'sounds/weapons/fists/punch3.ogg',
+		'sounds/weapons/fists/punch4.ogg'
+	)
+
+	var/miss_sounds = list(
+		'sounds/weapons/fists/punchmiss.ogg'
+	)
 
 	var/list/wound/wound_types = list()
 

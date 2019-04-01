@@ -45,7 +45,7 @@
 
 
 
-	shoot_sounds = list('sounds/weapon/ranged/magic/zap_large.ogg')
+	//shoot_sounds = list('sounds/weapon/ranged/magic/zap_large.ogg')
 
 
 /obj/item/weapon/ranged/magic/tome/holy_warrior //TODO:FIX THIS
@@ -60,7 +60,7 @@
 
 	projectile = /obj/projectile/bullet/holy_summon
 
-	shoot_sounds = list('sounds/weapon/ranged/magic/summon.ogg')
+	//shoot_sounds = list('sounds/weapon/ranged/magic/summon.ogg')
 
 	bullet_speed = 3
 
@@ -82,7 +82,7 @@
 
 	projectile = /obj/projectile/bullet/mass_heal
 
-	shoot_sounds = list('sounds/weapon/ranged/magic/heal.ogg')
+	//shoot_sounds = list('sounds/weapon/ranged/magic/heal.ogg')
 
 	bullet_speed = 1
 
