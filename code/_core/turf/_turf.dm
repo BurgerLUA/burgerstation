@@ -30,6 +30,9 @@
 	var/tmp/list/datum/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
 
+
+	var/list/mob/living/old_living = list() //List of mobs that used to be on this turf.
+
 /turf/proc/reconsider_lights()
 	for(var/datum/light_source/L in affecting_lights)
 		L.vis_update()
@@ -98,8 +101,12 @@
 
 /turf/change_victim(var/atom/attacker)
 	for(var/v in contents)
-		if(is_mob(v))
+		if(is_mob(v) && attacker != v)
 			return v
+	for(var/mob/living/L in old_living)
+		if(L.move_delay > 0 && attacker != L)
+			return L
+
 	return src
 
 /turf/Entered(var/atom/enterer)
@@ -114,6 +121,13 @@
 	if(exiter && exiter.opacity)
 		recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
 		reconsider_lights()
+
+	if(is_living(exiter))
+		var/mob/living/L = exiter
+		if(L.old_turf)
+			L.old_turf.old_living -= L
+		L.old_turf = src
+		old_living += L
 
 /turf/can_be_attacked(var/atom/attacker)
 	return FALSE

@@ -16,4 +16,3 @@
 		/obj/inventory/dynamic,
 		/obj/inventory/dynamic
 	)
-

@@ -14,6 +14,9 @@ obj/structure/interactive/door
 
 	var/door_state = DOOR_STATE_CLOSED
 
+	var/open_time = 10
+	var/close_time = 10
+
 obj/structure/interactive/door/New()
 	..()
 	update_icon()
@@ -42,8 +45,24 @@ obj/structure/interactive/door/update_icon()
 		if(DOOR_STATE_CLOSED)
 			icon_state = initial(icon_state)
 			desc = "The door is closed."
-			opacity = 1
+			opacity = initial(opacity)
 			density = 1
+
+
+obj/structure/interactive/door/proc/open()
+	door_state = DOOR_STATE_OPENING
+	update_icon()
+	spawn(open_time)
+		door_state = DOOR_STATE_OPEN
+		update_icon()
+
+obj/structure/interactive/door/proc/close()
+	door_state = DOOR_STATE_CLOSING
+	update_icon()
+	spawn(close_time)
+		door_state = DOOR_STATE_CLOSED
+		update_icon()
+
 
 obj/structure/interactive/door/clicked_by_object(caller,object,location,control,params)
 
@@ -53,17 +72,9 @@ obj/structure/interactive/door/clicked_by_object(caller,object,location,control,
 		return FALSE
 
 	if(door_state == DOOR_STATE_OPEN)
-		door_state = DOOR_STATE_CLOSING
-		update_icon()
-		spawn(10)
-			door_state = DOOR_STATE_CLOSED
-			update_icon()
+		close()
 	else if(door_state == DOOR_STATE_CLOSED)
-		door_state = DOOR_STATE_OPENING
-		update_icon()
-		spawn(10)
-			door_state = DOOR_STATE_OPEN
-			update_icon()
+		open()
 
 	return TRUE
 

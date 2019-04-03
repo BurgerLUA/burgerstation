@@ -32,10 +32,13 @@
 
 
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	if(status & FLAG_STATUS_DEAD && get_dist(attacker,src) > 1)
+		return 1000
+
 	if(status & FLAG_STATUS_STUN)
 		var/distance = get_dist(attacker,src)
 		if(distance <= 1)
 			return 0
 		else
-			return 30 + distance*10
+			return 50 + distance*10
 	return 0

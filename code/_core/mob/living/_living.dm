@@ -56,6 +56,8 @@ var/global/list/all_living = list()
 
 	var/level = 0
 
+	var/turf/old_turf //Last turf someone has been in.
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 
@@ -64,6 +66,9 @@ var/global/list/all_living = list()
 
 /mob/living/New(loc,desired_client)
 	. = ..()
+
+	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
+
 	attributes = list()
 	skills = list()
 	factions = list()

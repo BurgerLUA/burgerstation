@@ -20,6 +20,12 @@
 	icon = 'icons/area/safezone.dmi'
 	icon_state = "safe"
 
+/area/overworld/center_caves
+	name = "center cave safezone"
+	safe = TRUE
+	icon = 'icons/area/safezone.dmi'
+	icon_state = "safe"
+
 
 /area/overworld/caves
 	name = "caves"

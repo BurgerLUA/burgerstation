@@ -254,7 +254,7 @@ var/global/list/all_clients = list()
 	else if(desired_zoom_level < 0)
 		desired_zoom_level = initial(zoom_level)
 
-	zoom_level = clamp(desired_zoom_level,1,4)
+	zoom_level = clamp(desired_zoom_level,2,4)
 
 	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 

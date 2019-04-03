@@ -82,8 +82,8 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 			created_sound.z = pos[3] - M.z
 
 			if(channel != SOUND_CHANNEL_MUSIC)
-				var/distance_mod = max(0,VIEW_RANGE - sqrt(created_sound.x**2 + created_sound.y**2))/VIEW_RANGE
-				local_volume *= distance_mod
+				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5))
+				local_volume = (local_volume - distance*0.25)*max(0,SOUND_RANGE - distance)/SOUND_RANGE
 
 		if(local_volume <= 0)
 			continue

@@ -20,7 +20,9 @@
 			M.to_chat(span("notice","You can't attack that!"))
 		return FALSE
 
-	if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
+	if(is_living(attacker) && is_living(victim) && get_dist_between_living(attacker,victim) > object_to_damage_with.attack_range)
+		return FALSE
+	else if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
 		return FALSE
 
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]

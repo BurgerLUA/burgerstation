@@ -1,5 +1,5 @@
 /obj/item/clothing/neck/tie
-	layer = LAYER_MOB_CLOTHING_TIE
+	layer = LAYER_MOB_CLOTHING_NECK_UNDER
 	name = "tie"
 	icon = 'icons/obj/items/clothing/neck/tie.dmi'
 	desc = "Clip-ons are for pussies."

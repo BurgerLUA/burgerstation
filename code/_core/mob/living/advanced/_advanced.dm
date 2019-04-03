@@ -120,27 +120,44 @@ mob/living/advanced/Login()
 		L.update_for_mob(src)
 
 /mob/living/advanced/on_life()
-	..()
+	. = ..()
+
+	if(chargen)
+		return .
+
 	if(talk_duration)
 		talk_duration = max(0,talk_duration-1)
 		if(talk_duration <= 0)
 			talk_type = 0
 			update_icon()
 
-	var/regen_bonus = (health_current/health_max > 0.5) ? 0 : 1
+	if(!.)
+		return .
 
-	var/health_adjust = regen_delay <= 0 ? adjust_health(health_regeneration + regen_bonus) : 0
-	var/stamina_adjust = regen_delay <= 0 ? adjust_stamina(stamina_regeneration) : 0
-	var/mana_adjust = adjust_mana(mana_regeneration)
+	var/health_adjust = 0
+	var/mana_adjust = 0
+	var/stamina_adjust = 0
+
+	if(regen_delay <= 0)
+		if(health_current < health_max)
+			var/heal_amount = health_regeneration
+			if((get_brute_loss() + get_burn_loss())/health_max)
+				heal_amount *= 2
+			health_adjust = heal_all_organs(heal_amount,heal_amount,0,1)
+		if(stamina_current < stamina_max)
+			stamina_adjust = adjust_stamina(stamina_regeneration)
+
+	if(mana_current < mana_max)
+		mana_adjust = adjust_mana(mana_regeneration)
+
+	if(health_adjust)
+		add_skill_xp(SKILL_RECOVERY,health_adjust)
+	if(stamina_adjust)
+		add_skill_xp(SKILL_RECOVERY,stamina_adjust)
+	if(mana_adjust)
+		add_skill_xp(SKILL_RECOVERY,mana_adjust)
 
 	if(health_adjust || stamina_adjust || mana_adjust)
-		if(health_adjust)
-			add_skill_xp(SKILL_RECOVERY,health_adjust)
-		if(stamina_adjust)
-			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
-		if(mana_adjust)
-			add_skill_xp(SKILL_RECOVERY,mana_adjust)
-
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
 
 	if(life_ticks >= 10*4)
@@ -151,7 +168,7 @@ mob/living/advanced/Login()
 	else
 		life_ticks += 1
 
-	return ..()
+	return .
 
 /mob/living/advanced/on_life_client()
 	..()
@@ -177,56 +194,68 @@ mob/living/advanced/Login()
 	..()
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
-/mob/living/advanced/proc/adjust_health(var/adjust_value) //TODO: FIX THIS, IT'S BROKEN.
-
-	if(adjust_value <= 0)
-		return FALSE
+/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //TODO: FIX THIS, IT'S BROKEN.
 
 	var/list/damaged_organs = list()
 
-	var/damage_length = 0
+	var/total_brute = 0
+	var/total_burn = 0
+	var/total_tox = 0
+	var/total_oxy = 0
 
-	for(var/obj/item/organ/O in organs)
-		var/brute_loss = get_brute_loss()
-		var/burn_loss = get_burn_loss()
-		var/tox_loss = get_tox_loss()
-		var/oxy_loss = get_oxy_loss()
-		if(brute_loss || burn_loss || tox_loss || oxy_loss)
-			damaged_organs[O.id] = list()
-			if(brute_loss)
-				damaged_organs[O.id][BRUTE] = brute_loss
-				damage_length += brute_loss
-			if(burn_loss)
-				damaged_organs[O.id][BURN] = burn_loss
-				damage_length += burn_loss
-			if(tox_loss)
-				damaged_organs[O.id][TOX] = tox_loss
-				damage_length += tox_loss
-			if(oxy_loss)
-				damaged_organs[O.id][OXY] = oxy_loss
-				damage_length += oxy_loss
+	for(var/organ_id in labeled_organs)
 
-	if(damage_length <= 0)
-		return FALSE
+		var/obj/item/organ/O = labeled_organs[organ_id]
+
+		var/brute_loss = O.get_brute_loss()
+		var/burn_loss = O.get_burn_loss()
+		var/tox_loss = O.get_tox_loss()
+		var/oxy_loss = O.get_oxy_loss()
+
+		damaged_organs[organ_id] = list()
+
+		//src << "BRUTE LOSS: [organ_id] = [brute_loss]"
+
+		if(brute_loss)
+			damaged_organs[organ_id][BRUTE] = brute_loss
+
+		if(burn_loss)
+			damaged_organs[organ_id][BURN] = burn_loss
+
+		if(tox_loss)
+			damaged_organs[organ_id][TOX] = tox_loss
+
+		if(oxy_loss)
+			damaged_organs[organ_id][OXY] = oxy_loss
+
+		total_brute += brute_loss
+		total_burn += burn_loss
+		total_tox += tox_loss
+		total_oxy += oxy_loss
 
 	var/total_healed = 0
 
 	for(var/organ_id in damaged_organs)
 		var/obj/item/organ/O = labeled_organs[organ_id]
-		if(damaged_organs[organ_id][BRUTE])
-			var/heal_amount = (damaged_organs[organ_id][BRUTE]/damage_length) * adjust_value
+
+		//src << "OKAY: 1: [damaged_organs[organ_id][BRUTE]]"
+		//src << "OKAY: 2: [total_brute]"
+		//src << "OKAY: 3: [brute]"
+
+		if(damaged_organs[organ_id][BRUTE] && total_brute > 0 && brute > 0)
+			var/heal_amount = (damaged_organs[organ_id][BRUTE] / total_brute) * brute
 			O.adjust_brute_loss(-heal_amount)
 			total_healed += heal_amount
-		if(damaged_organs[organ_id][BURN])
-			var/heal_amount = (damaged_organs[organ_id][BURN]/damage_length) * adjust_value
+		if(damaged_organs[organ_id][BURN]  && total_burn > 0 && burn > 0)
+			var/heal_amount = (damaged_organs[organ_id][BURN] / total_burn) * burn
 			O.adjust_burn_loss(-heal_amount)
 			total_healed += heal_amount
-		if(damaged_organs[organ_id][TOX])
-			var/heal_amount = (damaged_organs[organ_id][TOX]/damage_length) * adjust_value
+		if(damaged_organs[organ_id][TOX]  && total_tox > 0 && tox > 0)
+			var/heal_amount = (damaged_organs[organ_id][TOX] / total_tox) * tox
 			O.adjust_tox_loss(-heal_amount)
 			total_healed += heal_amount
-		if(damaged_organs[organ_id][OXY])
-			var/heal_amount = (damaged_organs[organ_id][OXY]/damage_length) * adjust_value
+		if(damaged_organs[organ_id][OXY]  && total_oxy > 0 && oxy > 0)
+			var/heal_amount = (damaged_organs[organ_id][OXY] / total_oxy) * oxy
 			O.adjust_oxy_loss(-heal_amount)
 			total_healed += heal_amount
 

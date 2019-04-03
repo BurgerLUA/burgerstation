@@ -2,28 +2,19 @@
 	name = "hair"
 	id = BODY_HAIR_HEAD
 	desc = "Yes. This is hair."
+	icon_state = "none"
 	worn_layer = LAYER_MOB_HAIR_HEAD
-	break_threshold = 0
+	break_threshold = 5
 	health_max = 10 //Yes, hair has health.
 
 	attach_flag = BODY_HEAD
 
-	enable_wounds = TRUE
+	enable_wounds = FALSE
 
-//TODO COLOR
-/*
-/obj/item/organ/hair/update_icon()
-	var/hair/H = hair_head_types[style]
-	if(H)
-		icon_state = H.icon_state
-
-	icon = initial(icon)
-	var/icon/base_icon = new /icon(icon,icon_state)
-	base_icon.Blend(color_skin,ICON_MULTIPLY)
-
-
-	icon = base_icon
-*/
+/obj/item/organ/hair/initialize_blends()
+	..()
+	add_blend("hair_head", desired_color = "#00FF00", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/head.dmi', desired_icon_state = "hair_a", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
+	add_blend("hair_face", desired_color = "#00FF00", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/face.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 /obj/item/organ/hair/unattach_from_parent()
 	qdel(src)

@@ -11,7 +11,7 @@
 	return FALSE
 
 /atom/proc/get_examine_text(var/mob/examiner)
-	return span("examine_title","[src.name]") + span("examine_description","\"[src.desc]\"") + span("examine_description_long","[src.desc_extended]")
+	return div("examine_title","[src.name]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long","[src.desc_extended]")
 
 /*
 /atom/proc/examine(var/mob/examiner) //Middle clicking objects.

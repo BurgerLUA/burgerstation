@@ -26,13 +26,10 @@
 /atom/movable/proc/handle_movement(var/adjust_delay = 0) //Runs every decisecond
 
 	if(move_dir && move_delay <= 0)
-		var/final_movement_delay = ceiling(get_movement_delay())
-		if(final_movement_delay < 1)
-			step_size = ceiling(TILE_SIZE * (1/final_movement_delay))
-			final_movement_delay = 1
+		var/final_movement_delay = get_movement_delay()
 
-		glide_size = step_size/final_movement_delay //decimal values are allowed
-		move_delay = max(final_movement_delay,move_delay + final_movement_delay)
+		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay),0.1)
+		glide_size = step_size/move_delay
 
 		if(Move(get_step(src,move_dir),move_dir))
 			regen_delay = max(regen_delay,move_delay*2)

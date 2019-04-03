@@ -1,6 +1,6 @@
 "aa" = (/turf/simulated/floor/colored/dirt,/area/overworld)
 "ab" = (/turf/simulated/floor/colored/grass,/area/overworld)
-"ac" = (/turf/simulated/wall/brick/red,/area/shop/great_bank)
+"ac" = (/turf/simulated/wall/metal,/area/shop/great_bank)
 "ad" = (/turf/simulated/wall/metal/rusted,/area/overworld/village)
 "ae" = (/turf/simulated/wall/river,/area/overworld/village)
 "af" = (/obj/structure/smooth/wall/wood,/turf/simulated/wall/river,/area/overworld/village)
@@ -28,16 +28,16 @@
 "aB" = (/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 4},/area/overworld/village)
 "aC" = (/turf/simulated/floor/colored/dirt/cave,/area/overworld)
 "aD" = (/turf/simulated/floor/colored/dirt/cave,/area/overworld/sw_cave_entrance)
-"aE" = (/turf/simulated/wall/brick/red,/area/overworld/village)
+"aE" = (/turf/simulated/wall/wood/brown,/area/shop/church)
 "aF" = (/turf/simulated/floor/wood/rich,/area/overworld/village)
 "aG" = (/turf/simulated/floor/wood/dock,/area/overworld/village)
 "aH" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/stair/wood,/area/overworld/village)
-"aI" = (/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"aJ" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_shoes,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
+"aI" = (/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"aJ" = (/obj/structure/smooth/table,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
 "aK" = (/obj/marker/teleport_location/ship_exit,/turf/simulated/wall/hole,/area/overworld/village)
 "aL" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/brown,/area/overworld/village)
-"aM" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons/stunbaton,/turf/simulated/floor/carpet,/area/shop/great_bank)
-"aN" = (/turf/simulated/floor/carpet,/area/shop/great_bank)
+"aM" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_shoes,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"aN" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_jumpsuit,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
 "aO" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/overworld)
 "aP" = (/obj/structure/interactive/plank/wood{icon_state = "plank_l"},/turf/simulated/floor/wood/dock,/area/overworld/village)
 "aQ" = (/turf/simulated/wall/rock,/area/shop/farm)
@@ -52,9 +52,9 @@
 "aZ" = (/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/overworld)
 "ba" = (/obj/structure/interactive/wishgranter/normal/village,/turf/simulated/floor/colored/dirt,/area/overworld/village)
 "bb" = (/turf/simulated/floor/colored/sand,/area/overworld)
-"bc" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons/baton,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"bd" = (/obj/structure/smooth/window,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"be" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/cobblestone/corner{icon_state = "cobble_corner"; dir = 1},/area/shop/great_bank)
+"bc" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_backpack,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"bd" = (/obj/structure/interactive/grille,/obj/structure/smooth/window,/turf/simulated/floor/plating,/area/shop/great_bank)
+"be" = (/obj/structure/interactive/lighting/tube,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
 "bf" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/rich,/area/overworld/village)
 "bg" = (/turf/simulated/wall/wood/boat,/area/overworld/village)
 "bh" = (/turf/simulated/wall/metal/rusted,/area/overworld)
@@ -68,7 +68,7 @@
 "bp" = (/obj/effect/fake_lighting/solid/black,/turf/simulated/floor/colored/dirt,/area/overworld/sw_cave_entrance)
 "bq" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/overworld/village)
 "br" = (/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/overworld/village)
-"bs" = (/obj/marker/spawnpoint/ghost,/obj/structure/scenery/grass,/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/overworld/village)
+"bs" = (/obj/marker/spawnpoint/ghost,/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/overworld/village)
 "bt" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/overworld/village)
 "bu" = (/obj/structure/scenery/grass_bush,/turf/simulated/floor/colored/grass,/area/overworld)
 "bv" = (/obj/structure/scenery/grass_bush,/turf/simulated/floor/colored/grass,/area/overworld/village)
@@ -82,7 +82,7 @@
 "bD" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/overworld/village)
 "bE" = (/obj/structure/scenery/grass,/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/overworld/village)
 "bF" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/overworld)
-"bG" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/shop/great_bank)
+"bG" = (/obj/structure/smooth/table,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/turf/simulated/floor/tile/grey,/area/shop/great_bank)
 "bH" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/sand,/area/overworld/village)
 "bI" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/dirt,/area/overworld/village)
 "bJ" = (/obj/marker/mob_spawn/cult/cultist,/turf/simulated/floor/colored/dirt,/area/overworld)
@@ -91,19 +91,19 @@
 "bM" = (/obj/marker/mob_spawn/cult/artificer,/turf/simulated/floor/colored/dirt,/area/overworld)
 "bN" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/colored/dirt/cave,/area/shop/farm)
 "bO" = (/obj/structure/scenery/grass,/obj/marker/mob_spawn/marwani,/turf/simulated/floor/colored/grass,/area/overworld/village)
-"bP" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/cobblestone/corner,/area/shop/great_bank)
-"bQ" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_jumpsuit,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
+"bP" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons/detective,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"bQ" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/toolbelt,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
 "bR" = (/obj/marker/mob_spawn/cult/behemoth,/turf/simulated/floor/colored/grass,/area/overworld)
-"bS" = (/obj/structure/smooth/table/reinforced,/turf/simulated/floor/carpet,/area/shop/great_bank)
-"bT" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_backpack,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"bU" = (/obj/structure/smooth/table/reinforced,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"bV" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
+"bS" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/yellow_gloves,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"bT" = (/obj/structure/smooth/table/reinforced,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"bU" = (/obj/structure/smooth/wall/wood,/obj/structure/smooth/window,/turf/simulated/floor/wood/brown,/area/overworld/village)
+"bV" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons/stunbaton,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
 "bW" = (/turf/simulated/floor/colored/dirt,/area/shop/farm)
 "bX" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/colored/dirt,/area/shop/farm)
-"bY" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/toolbelt,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"bZ" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/yellow_gloves,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"ca" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/ammo/bullet_38,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
-"cb" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons/detective,/turf/simulated/floor/wood/rich,/area/shop/great_bank)
+"bY" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/ammo/bullet_38,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"bZ" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/weapons/baton,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"ca" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile/grey,/area/shop/great_bank)
+"cb" = (/turf/simulated/floor/wood/brown,/area/shop/church)
 "cc" = (/turf/simulated/wall/metal/rusted,/area/shop/farm)
 "cd" = (/turf/simulated/wall/wood/brown,/area/shop/farm)
 "ce" = (/turf/simulated/floor/wood/brown,/area/shop/farm)
@@ -115,9 +115,17 @@
 "ck" = (/turf/simulated/floor/colored/grass,/area/shop/farm)
 "cl" = (/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/shop/farm)
 "cm" = (/obj/structure/scenery/grass_bush,/turf/simulated/floor/colored/grass,/area/shop/farm)
-"cn" = (/obj/structure/smooth/table/reinforced,/turf/simulated/floor/wood/brown,/area/overworld/village)
+"cn" = (/obj/structure/interactive/grille,/obj/structure/smooth/window/tinted,/turf/simulated/floor/plating,/area/shop/church)
 "co" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/colored/dirt/cave,/area/overworld/village)
 "cp" = (/obj/structure/scenery/grass,/obj/marker/mob_spawn/hostile_wizard,/turf/simulated/floor/colored/grass,/area/overworld)
+"cq" = (/obj/structure/scenery/evergreen,/turf/simulated/floor/colored/grass,/area/overworld/village)
+"cr" = (/obj/structure/scenery/evergreen,/turf/simulated/floor/colored/grass,/area/shop/farm)
+"cs" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/brown,/area/shop/church)
+"ct" = (/turf/simulated/floor/colored/grass,/area/shop/church)
+"cu" = (/turf/simulated/floor/stair/wood,/area/shop/church)
+"cv" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/shop/church)
+"cw" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/rich,/area/shop/church)
+"cx" = (/turf/simulated/floor/colored/dirt,/area/shop/church)
 
 (1,1,1) = {"
 azazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazazaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaQaxaxaxaxaxaxaxaTaTaTaTaxaxaxaxaxaxaxaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
@@ -135,32 +143,32 @@ azazazazaOaCaCaCababababababaCazaCazazazaCaCabababababababaZaZaZaZaZaZaZaZaZaZab
 azazazazaOaCaCaCabababababababaCaCaCaCaCaCababababababababaZaZaZaZaZaZaZaZaZaZabababababababababababaaaaaaccbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWaoaoaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
 azazazazaOaCaCaCaCabababababababababababababababababababaZaZaZaZaZaZaZaZaZaZaZababababababababababaaaaaCaCccbWbWbWbWbWbWckbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWakaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
 azazazazaOaOaCaCaCababababababababababababbBababababbBaZaZaZaZaZaZaZaZaZaZaZababababababababababaaaaaCaCaCccbWbWbWbWckckckbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWckckckckckckbWbWbWbWbWbWakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
-azazazazazaOaOaCaCaCabababababababababababababababababaZaZaZaZaZaZaZaZaZaZababababababababbBababaaaaaCaCaCccbWbWbWclclckckbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWckckckckckckckckckckckckckckbWbWbWbWakakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
-azazazaCaOaOaCaCaCaCaCababababababababaCaCaCaCabababababaZaZaZaZaZaZaZaZababababbBabababababababaaaCaCaCaCccbWbWbWbWclclclbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWckckckckckckckckckckckckckckckckckckckbWbWakakakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
-azaCaOaOaOaCaCaCaCaCaCabababababababaCazazazazaCabababababaZaZaZaZaZaZabababababababababababababaaaCaCaCaCccbWbWbWbWckckckbWbWbWbWbWbWbWbWbWbWbWbWbWbWckckckckckckckckckckckckckckckckckckckckckckckckakakakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
-azaCaOaOaCaOaCazazazaCaCabababababaCazazazazazaCababababababaZaZaZaZababababababababbBababababaaaaaCaCaCaCccbWbWbWbWbWbWbWckbWbWbWbWbWbWclclclcmckckckckckckckckckckckckckckckckckckckckckckckckckckckanakaoaoaoaoaoaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
-azazaCaOaOaOazazazazazaCabababababaCazaCaCazaCaCababababababababababababbBababababababaaaaaaaaaaaCaCaCaaaaccbWbWbWbWckckbWbWbWbWclclclclclclclclckckckckclclclclclckckckckckckckckclclclclclckckckckckanakakaoaoaoaoaeaeaeaeaeaeaeaeaeaeapapapaeaeaeaeaeaeaeaeae
-azazazazazazazazazazazababaZabababaCaCababaCaCababababababababababababababaaabaaaaaaaaaaaaaCaCaCaCaaaaaaaaadaqaqaqaqaqanaqaqaqaqaqbraqaqaqaqaqbrarasasasasasasasasasasasasasasasasasasasasasasasasasasasasatbHaoaoaoaeaeaeaeaeaeaeaeaeaeapauapaeaeaeaeaeaeaeaeae
-azazazazazababazazazababaZaZabababababababababababababbBababababababaaaaaaaaaaaCaCaCaCaCaCaCaaaaaaaaaaaZaZadaqauauauaqakaqauauauaqbraqauauauaqbravawayayayayayayayayayayayayayayayawawayayayayayayayayayawaBaoaoaoaoaeaeaeaeaeaeaeaeaeapapauapapaeaeaeaeaeaeaeae
-azazazazazabababazababaZaZaZababababababababababababababababababaaaaaaaaaaaCaCaCaCaCaCaaaaaaaaabababababaZadaqauauauaqakaqauauauaqbraqauauauaqbravaBbDbrbrananananbrbrbrbranananbDavaBbDanananananananbDavaBaoaoaoaoaeaeaeaeaeaeaeaeapapauauauapapaeaeaeaeaeaeae
-azazazazazazabababaZaZaZaZabababazazazazababababababababaaaaaaaaaaaaaCaCaCaCaCaCaaaaaaaaaaaaabababababababadaqauauauaqakaqauauauaqakaqauauauaqbravaBbvacacacacacacacacacacacacacanavaBanaEaEaEaEaEaEaEanavaBaoaoaoaoaeaeaeaeaeaeaeapapauauauauauapapaeaeaeaeaeae
-azazazazazabababaZaZaZaZababazazazazazazazazazababaaaaaaaaaaaaaaaCaCaCaCaCaaaaaaaaaaaaababababababbuabababadaqauauauaqakaqauauauaqakaqauauauaqbravaBbracaIaIaIbVaIaJbQbTbYbZbUacanavaBbraEaFaFaFaFaFaEanavaBbIaoaGaGaGaeaeaGaGaGaeapauauauaHauauauapaeaeaeaeaeae
-azazazazazazababaZaZabababazazazazazazazazazaaaaaaaaaCaCaCaCaCaCaCaaaaaaaaaaaaababababababababababababababadaqauauauaqbraqauauauaqakaqauauauaqbravaBbracaIaIaIbVaIaNaNaNaNaNbUacanavaBbraEaFaFaFaFaFaEbravaBakaoaGaGaGaeaeaGaGaGaeapauauauaKauauauapaeaeaeaeaeae
-azazazazazazazababababazazazazazazazazaaaaaaaaaCaCaCaCaCaCaaaaaaaaaaaaaaababababababababababababbBababababadaqaqaLaqaqbraqaqaLaqaqakaqaqaLaqaqbravaBanacbVbVbVbVaIaNaNbSbSaNbUacanavaBbraEaFaFaFaFaFaEbravaBakaoaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
-azazazazazazazababazazazazazazazaaaaaaaCaCaCaCaCaCaaaaaaaaaaaaababababababababababababababababababababababadakbrakakbrbrbrbrakakakakbrbrakbrbrbEavaBbracaIaIaIaIaIaIaIbSbSaIbUacbravaBbraEaFaFaFaFaFaEbravaBakaoaGaGaGaeaeaGaGaGaeapauauauapauauauapaeaeaeaeaeae
-azazazazazazabababazazazazazaaaaaCaCaCaaaaaaaaaaaaaaababababababababababababababababbBababababababababababadakakakakakakakakakakakarasasasasasasawaBbraccbaNbSaMaNaNaNaNaNaNbUacbravaBanaEaFaFaFaFaFaEbravaBakaoaGaGaGaeaeaGaGaPaWaYauauauauauauauapaeaeaeaeaeae
-azazazazazazbuabababaCaCaCaaaCaCaCaaaaaaaaaaaaabababababbBababababababababababaZaZaZabababababababababababadakakakakakakakakakakakavawayayayayayawaBbraccaaNbSbSaNaNaNaNaNaNbUacbravaBanaEaFaFaFaFaFaEanavaBakaoaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
-azazazbmazazazazaCaCaCaCaCaCaCaCaaaabuababababababababababababababababbBaZaZaZaZaZaZaZabababbBababababababadakakbIbrbrbrbrbrbrbrbravaBbDbrbrbrbsavaBbracbcaNaNaNaNaNaNaNaNaNbUacbravaBanaEaFaFaFaFaFaEanavaBakaoaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
-azazbmbmazazbmbmaCaCaCaCaCaCaaaaaaabababababababababababababababbBababaZaZaZaZaZaZaZaZaZaZababababababababadaTakaqaqaqaqaqaqaqaqbravaBbrbranbrbravaBbracbUbUbUaIaIaIaIaIbUbUbUacanavaBanaEaFaFaFaFaFaEanavaBbIaoaGaGaGaeaeaGaGaGaeapauauauapauauauapaeaeaeaeaeae
-bnbobmbmbmbmbmbmaCaCaCaCaCaaaaaaababababababababababababababababababaZaZaZaZaZaZaZaZaZaZaZaZabababababababadaTakaqbqbqbqbqbqbqaqbravaBbranbaanbravaBbracbdbdbdacbebGbPacbdbdbdacanavaBanaEaFaFaFaFaFaEanavaBakakaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
-bnbobmbmbmbmbmbmaCaCaCaCaCabababababababababababbBabababbBababababaZaZaZaZaZaZaZaZaZaZaZaZaZaZababababababadaTakaqauauauauauauaqbravaBbranakanbOavaBanbtbtbtbtbtavawaBbtbtbtbtbtanavaBanaEaEaEbfaEaEaEanavaBakakaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
-bnbobmbmbmbmbmbmaCaCababababababababababbBababababababababababababaZaZaZaZaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqauauauauauauaqbravaBbranakanbravaBanbtbtbtbtbDavawaBbDbtbtbtbtbDavaBbDbtbtanakbtbtbtbDavaBakakaGaGaGaeaeaGaGaGaebgbgbgbgaLbgbgbgbgaeaeaeaeaeae
-azazbmbmbmbmbmbmaCaCababababababbBabababababbBababababababababbBabaZaZaZaZaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqcncncncncncnaqbravawasasasasasawawasasasasasasawawawasasasasasasawawasasasasasasasasasawaBakakaGaGaGaGaGaGaGaGaebgauauauauauauaubgaeaeaeaeaeae
-azazazbmbmbmbmbmaCazabababbBabababababababababababbBababbBabababababaZaZaZaZaZaZaZaZaZaZaZaZaZaZabbBabababadaTakaqauauauauauauaqbrbiayayayayawawayayayayayayayayayayayayayayayayayayayayayayayayayayayayaybjbIaoaGaGaGaGaGaGaGaGaebgauauauauauauaubgaeaeaeaeaeae
-azazazazazazbmbmazazababababababababbBabababababababababababababababababaZaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqauauauauauauaqbvananananbDavaBbEbkbkbfbkbkbkbkbkbkanbkbkbfbkbkbkbkbkanbkbkbkbkbkbkbkbfbkbkakaoaGaGaGaGaGaGaGaGaebgauauauauauauaubgaeaeaeaeaeae
-azazazazazazazazazababababababababababababbBabababababababababababababababaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqauauauauauauaqaqaqaqaqaqakavaBbrbkaFaFaFaFaFaFaFbkanbkaFaFaFaFaFaFbkanbkaFaFaFaFaFaFaFaFbkakaoaoaoaeaeaeaeaeaeaebgauaubqbqbqauaubgaeaeaeaeaeae
+azazazazazaOaOaCaCaCabababababababababababababababababaZaZaZaZaZaZaZaZaZaZababababababababbBababaaaaaCaCaCccbWbWbWclclcrckbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWclckclckckckckckckckcrckckckbWbWbWbWakakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
+azazazaCaOaOaCaCaCaCaCababababababababaCaCaCaCabababababaZaZaZaZaZaZaZaZababababbBabababababababaaaCaCaCaCccbWbWbWbWclclclbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWckckckckckckclckcrckckcrckckckckckckckbWbWakakakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
+azaCaOaOaOaCaCaCaCaCaCabababababababaCazazazazaCabababababaZaZaZaZaZaZabababababababababababababaaaCaCaCaCccbWbWbWbWckckckbWbWbWbWbWbWbWbWbWbWbWbWbWbWckclclckckckckckcrckclclclclclckckclctctctctcxbWakakakakaoaoaoaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
+azaCaOaOaCaOaCazazazaCaCabababababaCazazazazazaCababababababaZaZaZaZababababababababbBababababaaaaaCaCaCaCccbWbWbWbWbWbWbWckbWbWbWbWbWbWclclclcmckckckclclckckckcrckckckckckckclckckckcrckaEaEaEaEaEbWanakaoaoaoaoaoaeaeaeaeaeaeaeaeaeaeaeafaeaeaeaeaeaeaeaeaeae
+azazaCaOaOaOazazazazazaCabababababaCazaCaCazaCaCababababababababababababbBababababababaaaaaaaaaaaCaCaCaaaaccbWbWbWbWckckbWbWbWbWclclclclclclclclckckckckclclclclclckcrckckcrckckcrclclclclaEcbcbcbaEckanakakaoaoaoaoaeaeaeaeaeaeaeaeaeaeapapapaeaeaeaeaeaeaeaeae
+azazazazazazazazazazazababaZabababaCaCababaCaCababababababababababababababaaabaaaaaaaaaaaaaCaCaCaCaaaaaaaaadaqaqaqaqaqanaqaqaqaqaqbraqaqaqaqaqbrarasasasasasasasasasasasasasasasasasatcqanaEcbcbcbaEananaratbHaoaoaoaeaeaeaeaeaeaeaeaeaeapauapaeaeaeaeaeaeaeaeae
+azazazazazababazazazababaZaZabababababababababababababbBababababababaaaaaaaaaaaCaCaCaCaCaCaCaaaaaaaaaaaZaZadaqauauauaqakaqauauauaqbraqauauauaqbravawayayayayayayayayayayayayayayayawaBbraEaEaEcsaEaEaEanavaBaoaoaoaoaeaeaeaeaeaeaeaeaeapapauapapaeaeaeaeaeaeaeae
+azazazazazabababazababaZaZaZababababababababababababababababababaaaaaaaaaaaCaCaCaCaCaCaaaaaaaaabababababaZadaqauauauaqakaqauauauaqbraqauauauaqbravaBbDbrbrananananbrbrbrbranananbDavaBancncbcbcbcbcbcnanavaBaoaoaoaoaeaeaeaeaeaeaeaeapapauauauapapaeaeaeaeaeaeae
+azazazazazazabababaZaZaZaZabababazazazazababababababababaaaaaaaaaaaaaCaCaCaCaCaCaaaaaaaaaaaaabababababababadaqauauauaqakaqauauauaqakaqauauauaqbravaBbvacacacacacbdbdbdacbdbdbdacanavaBancncbcbcbcbcbcnanavaBaoaoaoaoaeaeaeaeaeaeaeapapauauauauauapapaeaeaeaeaeae
+azazazazazabababaZaZaZaZababazazazazazazazazazababaaaaaaaaaaaaaaaCaCaCaCaCaaaaaaaaaaaaababababababbuabababadaqauauauaqakaqauauauaqakaqauauauaqbravaBbracaIaIaIbGaIaMaNbcbQbSbTbdanavaBbraEcucvcvcvcuaEanavaBbIaoaGaGaGaeaeaGaGaGaeapauauauaHauauauapaeaeaeaeaeae
+azazazazazazababaZaZabababazazazazazazazazazaaaaaaaaaCaCaCaCaCaCaCaaaaaaaaaaaaababababababababababababababadaqauauauaqbraqauauauaqakaqauauauaqbravaBbracaIaIaIaJaIaIaIaIaIaIbTbdanavaBbrcncbcbcbcbcbcnanavaBakaoaGaGaGaeaeaGaGaGaeapauauauaKauauauapaeaeaeaeaeae
+azazazazazazazababababazazazazazazazazaaaaaaaaaCaCaCaCaCaCaaaaaaaaaaaaaaababababababababababababbBababababadaqaqaLaqaqbraqaqaLaqaqakaqaqaLaqaqbravaBanacaJaJaJaJaIaIaIbTbTaIbTbdanavaBbrcncbcbcbcbcbcnbravaBakaoaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
+azazazazazazazababazazazazazazazaaaaaaaCaCaCaCaCaCaaaaaaaaaaaaababababababababababababababababababababababadakbrakakbrbrbrbrakakakakbrbrakbrbrbEavaBbracaIaIaIaIaIaIaIbTbTaIbTacbravaBbraEcvcbcbcbcvaEbravaBakaoaGaGaGaeaeaGaGaGaeapauauauapauauauapaeaeaeaeaeae
+azazazazazazabababazazazazazaaaaaCaCaCaaaaaaaaaaaaaaababababababababababababababababbBababababababababababadakakakakakakakakakakakarasasasasasasawaBbracbPaIbTbVaIaIaIaIaIaIbTacbravaBancncvcbcbcbcvcnbravaBakaoaGaGaGaeaeaGaGaPaWaYauauauauauauauapaeaeaeaeaeae
+azazazazazazbuabababaCaCaCaaaCaCaCaaaaaaaaaaaaabababababbBababababababababababaZaZaZabababababababababababadakakakakakakakakakakakavawayayayayayawaBbrbdbYaIbTbTaIaIaIaIaIaIbTbdbravaBancncvcbcbcbcvcnanavaBakaoaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
+azazazbmazazazazaCaCaCaCaCaCaCaCaaaabuababababababababababababababababbBaZaZaZaZaZaZaZabababbBababababababadakakbIbrbrbrbrbrbrbrbravaBanbrbrbrbsavaBbrbdbZaIaIaIaIaIaIaIaIaIbTbdbravaBanaEcvcbcbcbcvaEanavaBakaoaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
+azazbmbmazazbmbmaCaCaCaCaCaCaaaaaaabababababababababababababababbBababaZaZaZaZaZaZaZaZaZaZababababababababadaTakaqaqaqaqaqaqaqaqbravaBbrbranbrbravaBbrbdbTbTbTbeaIaIaIbebTbTbTbdanavaBancncvcbcbcbcvcnanavaBbIaoaGaGaGaeaeaGaGaGaeapauauauapauauauapaeaeaeaeaeae
+bnbobmbmbmbmbmbmaCaCaCaCaCaaaaaaababababababababababababababababababaZaZaZaZaZaZaZaZaZaZaZaZabababababababadaTakaqbqbqbqbqbqbqaqbravaBbranbaanbravaBbracbdbdbdaccabdcaacbdbdbdacanavaBancncvcbcbcbcvcnanavaBakakaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
+bnbobmbmbmbmbmbmaCaCaCaCaCabababababababababababbBabababbBababababaZaZaZaZaZaZaZaZaZaZaZaZaZaZababababababadaTakaqauauauauauauaqbravaBbranakanbOavaBanbtbtbtbtbtarasatbtbtbtbtbtanavaBanaEaEaEcwaEaEaEanavaBakakaGaGaGaeaeaGaGaGaeapauauauauauauauapaeaeaeaeaeae
+bnbobmbmbmbmbmbmaCaCababababababababababbBababababababababababababaZaZaZaZaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqauauauauauauaqbravaBbranakanbravaBcqbtbtbtbtbDavawaBbDbtbtbtbtbDavaBbDbtbtanakbtbtbtbDavaBakakaGaGaGaeaeaGaGaGaebgbgbgbgaLbgbgbgbgaeaeaeaeaeae
+azazbmbmbmbmbmbmaCaCababababababbBabababababbBababababababababbBabaZaZaZaZaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqbqbqbqbqbqbqaqbravawasasasasasawawasasasasasasawawawasasasasasasawawasasasasasasasasasawaBakakaGaGaGaGaGaGaGaGaebgauauauauauauaubgaeaeaeaeaeae
+azazazbmbmbmbmbmaCazabababbBabababababababababababbBababbBabababababaZaZaZaZaZaZaZaZaZaZaZaZaZaZabbBabababadaTakaqauauauauauauaqbrbiayayayayawawayayayayayayayayayayayayayayayayayayayayayayayayayayayayaybjbIaoaGaGaGaGaGaGaGaGaebUauauauauauauaubUaeaeaeaeaeae
+azazazazazazbmbmazazababababababababbBabababababababababababababababababaZaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqauauauauauauaqbvananananbDavaBbEbkbkbfbkbkbkbkbkbkanbkbkbfbkbkbkbkbkanbkbkbkbkbkbkbkbfbkbkakaoaGaGaGaGaGaGaGaGaebUauauauauauauaubUaeaeaeaeaeae
+azazazazazazazazazababababababababababababbBabababababababababababababababaZaZaZaZaZaZaZaZaZaZaZabababababadaTakaqauauauauauauaqaqaqaqaqaqakavaBbrbkaFaFaFaFaFaFaFbkanbkaFaFaFaFaFaFbkanbkaFaFaFaFaFaFaFaFbkakaoaoaoaeaeaeaeaeaeaebUauaubqbqbqauaubUaeaeaeaeaeae
 azazazazazazazabababababababbBabababababababababababbBabababbBabababbBababbBabaZaZaZaZaZaZaZaZababababababadaTakaqauauauauauauauauauauauaqakavaBbrbkaFaFaFaFaFaFaFbkanbkaFaFaFaFaFaFbkanbkaFaFaFaFaFaFaFaFbkaoaoaoaoaeaeaeaeaeaeaebgauauauauauauaubgaeaeaeaeaeae
-azazazazazazazabababbBababababababbBababababababaZaZaZaZabababababababababababababaZaZaZaZababababababababadaTaTaqauauauauauauauauauauauaLakavaBbrbkaFaFaFaFaFaFaFbkanbkaFaFaFaFaFaFbkanbkaFaFaFaFaFaFaFaFbkaoaoaoaoaeaeaeaeaeaeaebgbgbgbgbgbgbgbgbgaeaeaeaeaeae
+azazazazazazazabababbBababababababbBababababababaZaZaZaZabababababababababababababaZaZaZaZababababababababadaTaTaqauauauauauauauauauauauaLakavaBbrbkaFaFaFaFaFaFaFbkanbkaFaFaFaFaFaFbkanbkaFaFaFaFaFaFaFaFbkaoaoaoaoaeaeaeaeaeaeaebgbgbUbUbUbUbUbgbgaeaeaeaeaeae
 azazazazazazazababababababababababababababababaZaZaZaZaZaZababababababababababababababaZababbBababbBabababadaTaTaqauauauauauauauauauauauaqakavaBbrbkaFaFaFaFaFaFaFbkanbkaFaFaFaFaFaFbkanbkaFaFaFaFaFaFaFaFbkaoaoaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
 azazazazazazabababababababbBababababababbBaZaZaZaZaZaZaZaZaZaZababbBabababbBababababababababababababababaZadaTaTaqauauauauauauauauauauauaqbIavaBbEbkbkbkbkbkbkbkbkbkanbkbkbkbkbkbkbkbkanbkbkbkbkbkbkbkbkbkbkbAaoaoaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
 azazazazazazababbBababababababababababababaZaZaZaZaZaZaZaZaZaZaZabababababababbBabababababababababababaZaZadaTaTaqauauauauauauauauauauauaqanavaBanananananananananananananananananananananananananananananakbAbAbAbAbAbAaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae

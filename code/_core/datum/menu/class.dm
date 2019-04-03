@@ -125,7 +125,7 @@
 			if(show_disclaimer)
 				sleep(SECONDS_TO_DECISECONDS(20))
 
-			play_sound('sounds/music/meme.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+			play_sound('sounds/music/leaf_short.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
 
 			sleep(SECONDS_TO_DECISECONDS(5))
 			A.see_invisible = INVISIBILITY_NO_PLAYERS

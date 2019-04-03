@@ -14,6 +14,7 @@
 "n" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt,/area/special/lobby)
 "o" = (/obj/structure/scenery/evergreen,/turf/simulated/floor/colored/grass,/area/special/lobby)
 "p" = (/obj/marker/spawnpoint/lobby,/turf/simulated/floor/colored/dirt,/area/special/lobby)
+"q" = (/obj/marker/spawnpoint/new_character,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "r" = (/turf/simulated/wall/wood/brown,/area/singleplayer)
 "s" = (/turf/simulated/floor/wood/brown,/area/special/lobby)
 "t" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/singleplayer)
@@ -49,7 +50,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwrwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrrrrwrrrrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCryurwruyrCCCCCCCCCCCCCCaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwrwwwwrCCCCCCCCCCCCCCaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrqwrwwwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwwwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwrwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrrrrwrrrrCCCCCCCCCCCCCCaaaa

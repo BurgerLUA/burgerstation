@@ -9,8 +9,8 @@ obj/structure/interactive/wishgranter
 	icon_state = "wishgranter"
 
 
-	light_range = 5
-	light_power = 4
+	light_range = 10
+	light_power = 0.5
 	light_color = "#FFFFFF"
 
 obj/structure/interactive/wishgranter/fake/New()

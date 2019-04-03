@@ -18,3 +18,6 @@
 
 /turf/simulated/floor/stair/wood/dock
 	color = "#494E14"
+
+/turf/simulated/floor/stair/cult
+	color = "#33241B"
