@@ -145,6 +145,11 @@
 #include "code\_core\datum\dialogue\npc\farmer\_main.dm"
 #include "code\_core\datum\dialogue\npc\marwani\_main.dm"
 #include "code\_core\datum\dialogue\npc\marwani\first.dm"
+#include "code\_core\datum\dmm_suite\_core.dm"
+#include "code\_core\datum\dmm_suite\api.dm"
+#include "code\_core\datum\dmm_suite\map_placeholders.dm"
+#include "code\_core\datum\dmm_suite\reader.dm"
+#include "code\_core\datum\dmm_suite\writer.dm"
 #include "code\_core\datum\emote\_emote.dm"
 #include "code\_core\datum\emote\standard.dm"
 #include "code\_core\datum\experience\_experience.dm"
@@ -496,9 +501,6 @@
 #include "code\_core\world\subsystems\turfs.dm"
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
-#include "maps\main\_map.dm"
-#include "maps\main\_centcomm.dmm"
-#include "maps\main\village.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

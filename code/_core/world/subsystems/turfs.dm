@@ -5,6 +5,8 @@
 
 /subsystem/turfs/Initialize()
 
+	set background = 1
+
 	if(!ENABLE_TURFGEN)
 		return
 
