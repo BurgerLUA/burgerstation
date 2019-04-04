@@ -58,6 +58,18 @@ var/global/list/all_living = list()
 
 	var/turf/old_turf //Last turf someone has been in.
 
+	var/loot_drop
+
+/mob/living/death()
+	if(..())
+		var/turf/T = get_turf(src)
+		if(T && loot_drop)
+			var/loot/L = all_loot[loot_drop]
+			L.spawn_loot_turf(T)
+		return TRUE
+
+	return FALSE
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

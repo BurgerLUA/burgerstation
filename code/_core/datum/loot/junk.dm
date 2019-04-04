@@ -27,5 +27,16 @@
 		/obj/item/currency/{value=8} = 1,
 	)
 
+/loot/wizard/
+	name = "wizard loot"
+	id = "wizard"
+	desc = "Loot you find off of dead cultists."
+	loot_table = list(
+		/obj/item/currency/{value=10} = 1,
+		/obj/item/weapon/ranged/magic/scroll/fireball{scroll_count=5} = 1,
+		/obj/item/consumable/soulgem = 1
+	)
+
+	loot_count = 3
 
 

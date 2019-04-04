@@ -6,6 +6,8 @@
 	ai = /ai/wizard
 	class = "wizard"
 
+	loot_drop = "wizard"
+
 /mob/living/advanced/human/npc/evil_wizard/Initialize()
 
 	. = ..()
