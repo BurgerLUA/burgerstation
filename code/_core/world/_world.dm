@@ -17,6 +17,9 @@ var/global/tick_usage_average = 0
 
 	cache_lifespan = 0
 
+	maxx = WORLD_SIZE
+	maxy = WORLD_SIZE
+	maxz = 1
 
 
 /world/New()
@@ -37,7 +40,7 @@ var/global/tick_usage_average = 0
 		minutes = "0[minutes]"
 
 	var/duration = "[hours]:[minutes]"
-	var/map = "Nar'sie's Realm (128x128x10)"
+	var/map = "Nar'sie's Realm ([WORLD_SIZE]x[WORLD_SIZE]x1)"
 
 	//Format it.
 	status = "<a href='[server_link]'><b>[server_name]</b></a>] ([github_name])<br><br>"

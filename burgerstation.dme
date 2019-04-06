@@ -500,6 +500,7 @@
 #include "code\_core\world\subsystems\turfs.dm"
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
+#include "maps\main\_map.dm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
