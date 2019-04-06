@@ -1,5 +1,5 @@
-/subsystem/mobs/
-	name = "Living Mob Subsystem"
+/subsystem/ai/
+	name = "AI subsystem"
 	desc = "Controls how living mobs behave. Includes AI."
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_MOBS

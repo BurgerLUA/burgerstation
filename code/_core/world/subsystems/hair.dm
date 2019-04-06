@@ -11,7 +11,7 @@ var/global/list/hair_face_icons = list()
 /subsystem/hair/
 	name = "Hair Subsystem"
 	desc = "Yes, there is a fucking subsystem dedicated to hair."
-	priority = SS_ORDER_HAIR
+	priority = SS_ORDER_NORMAL
 
 /subsystem/hair/Initialize()
 

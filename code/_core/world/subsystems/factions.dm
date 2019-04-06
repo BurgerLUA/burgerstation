@@ -3,7 +3,7 @@ var/global/list/all_factions = list()
 /subsystem/faction/
 	name = "Faction Subsystem"
 	desc = "Store all the factions."
-	priority = SS_ORDER_FACTIONS
+	priority = SS_ORDER_NORMAL
 
 /subsystem/faction/Initialize()
 	for(var/v in subtypesof(/faction/))

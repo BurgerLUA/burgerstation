@@ -5,7 +5,7 @@ var/global/list/all_progress_bars = list()
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
 	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_PROGRESS_BARS
+	priority = SS_ORDER_IMPORTANT
 
 /subsystem/progress_bars/on_life()
 	for(var/obj/progress_bar/P in all_progress_bars)

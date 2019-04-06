@@ -3,7 +3,7 @@ var/global/list/all_outfits = list()
 /subsystem/outfits/
 	name = "Outfit Subsystem"
 	desc = "Store all the outfits."
-	priority = SS_ORDER_OUTFITS
+	priority = SS_ORDER_NORMAL
 
 /subsystem/outfits/Initialize()
 	for(var/v in subtypesof(/outfit/))

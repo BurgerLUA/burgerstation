@@ -5,7 +5,7 @@ var/global/list/shops = list()
 	name = "Shop Subsystem"
 	desc = "Controls shops."
 	tick_rate = SECONDS_TO_TICKS(1)
-	priority = SS_ORDER_SHOP
+	priority = SS_ORDER_NORMAL
 
 	var/countdown = SHOP_RESTOCK_COUNTDOWN
 

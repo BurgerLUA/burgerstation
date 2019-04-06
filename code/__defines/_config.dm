@@ -3,8 +3,8 @@
 #define FPS_CLIENT 60
 #define FPS_SERVER 30
 
-#define VIEW_RANGE 9
-#define SOUND_RANGE 20
+#define VIEW_RANGE 21
+#define SOUND_RANGE 31
 
 #define MAX_MESSAGE_LEN 256
 #define MAX_CHARACTERS 10 //Maximum amount of characters a player can have at once.
@@ -15,7 +15,7 @@
 #define SHOP_RESTOCK_COUNTDOWN 60
 
 
-#define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cost spells for less.
+#define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cost spells for less. We skyrim now.
 
 
 

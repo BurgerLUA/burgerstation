@@ -4,11 +4,9 @@
 
 	world.log << "STARTING WORLD."
 
-	active_subsystems = new(SS_ORDER_SIZE)
-
-	world.log << "EXPECTING [SS_ORDER_SIZE] ACTIVE SUBSYSTEMS."
-
 	update_status()
+
+	var/list/presorted_subsystems = list()
 
 	for(var/S in subtypesof(/subsystem/))
 		var/subsystem/new_subsystem = new S
@@ -16,7 +14,19 @@
 			world.log << "ERROR: COUNT NOT LOAD SUBSYSTEM [new_subsystem.name]."
 			qdel(new_subsystem)
 			continue
-		active_subsystems[new_subsystem.priority] = new_subsystem
+
+		presorted_subsystems[new_subsystem] = new_subsystem.priority
+
+	ls_quicksort(presorted_subsystems)
+
+	active_subsystems = new(length(presorted_subsystems))
+
+	world.log << "[length(presorted_subsystems)] SUBSYSTEMS LOADED"
+
+	var/index_tracker = 1
+	for(var/subsystem/S in presorted_subsystems)
+		active_subsystems[index_tracker] = S
+		index_tracker += 1
 
 	var/benchmark = world.timeofday
 

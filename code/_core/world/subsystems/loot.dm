@@ -3,7 +3,7 @@ var/global/list/all_loot = list()
 /subsystem/loot/
 	name = "Loot Subsystem"
 	desc = "Yes."
-	priority = SS_ORDER_LOOT
+	priority = SS_ORDER_NORMAL
 
 /subsystem/loot/Initialize()
 	world.log << "STARTING LOOT SUBSYSTEM"
