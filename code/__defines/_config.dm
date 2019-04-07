@@ -8,8 +8,8 @@
 #define WORLD_SIZE_SEGMENT 128 //This shouldn't be touched unless you know what you're doing
 
 
-#define VIEW_RANGE 21
-#define SOUND_RANGE 31
+#define VIEW_RANGE 12
+#define SOUND_RANGE 18
 
 #define MAX_MESSAGE_LEN 256
 #define MAX_CHARACTERS 10 //Maximum amount of characters a player can have at once.
@@ -26,7 +26,8 @@
 
 
 //Makes compiling faster
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_MAPLOAD FALSE
+#define ENABLE_LIGHTING FALSE
 #define ENABLE_CHARGEN FALSE
 #define ENABLE_TURFGEN TRUE
 

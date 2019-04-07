@@ -21,6 +21,8 @@ var/global/tick_usage_average = 0
 	maxy = WORLD_SIZE
 	maxz = 1
 
+	turf = /turf/unsimulated/
+
 
 /world/New()
 	log = file("logs/mylog.txt")

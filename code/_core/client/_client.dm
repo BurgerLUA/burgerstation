@@ -84,7 +84,7 @@ var/global/list/all_clients = list()
 		return ..()
 
 	welcome()
-	make_lobby(pick(lobby_spawnpoints))
+	make_lobby(locate(1,1,1))
 	play_sound('sounds/music/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
 
 	if(!connection_data)

@@ -6,4 +6,4 @@
 #define SS_ORDER_IMPORTANT 5
 #define SS_ORDER_NORMAL 6
 
-#define SS_ORDER_REPORT 1000
+#define SS_ORDER_REPORT 7

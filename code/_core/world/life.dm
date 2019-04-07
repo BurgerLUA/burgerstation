@@ -6,42 +6,40 @@
 
 	update_status()
 
-	var/list/presorted_subsystems = list()
-
-	for(var/S in subtypesof(/subsystem/))
-		var/subsystem/new_subsystem = new S
-		if(!new_subsystem.priority)
-			world.log << "ERROR: COUNT NOT LOAD SUBSYSTEM [new_subsystem.name]."
-			qdel(new_subsystem)
+	for(var/subsystem in subtypesof(/subsystem/))
+		var/subsystem/S = new subsystem
+		if(!S.priority)
+			world.log << "ERROR: COUNT NOT LOAD SUBSYSTEM [S.name]."
+			qdel(S)
 			continue
+		var/new_list = list()
+		new_list["name"] = S.name
+		new_list["priority"] = S.priority
+		new_list["subsystem"] = S
+		active_subsystems += list(new_list)
 
-		presorted_subsystems[new_subsystem] = new_subsystem.priority
+	active_subsystems = sortByKey(active_subsystems,"priority")
 
-	ls_quicksort(presorted_subsystems)
-
-	active_subsystems = new(length(presorted_subsystems))
-
-	world.log << "[length(presorted_subsystems)] SUBSYSTEMS LOADED"
-
-	var/index_tracker = 1
-	for(var/subsystem/S in presorted_subsystems)
-		active_subsystems[index_tracker] = S
-		index_tracker += 1
+	world.log << "[length(active_subsystems)] SUBSYSTEMS LOADED"
+	world.log << "FIRST: [active_subsystems[1]["name"]]"
+	world.log << "LAST: [active_subsystems[length(active_subsystems)]["name"]]"
 
 	var/benchmark = world.timeofday
 
-	for(var/subsystem/S in active_subsystems)
+	for(var/list/v in active_subsystems)
 		var/local_benchmark = world.timeofday
+		var/subsystem/S = v["subsystem"]
 		S.Initialize()
-		world.log << "[S.name] Initialization: Took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds."
+		world.log << "[v["name"]] Initialization: Took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds."
 
 	world.log << "All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds."
 
 	spawn while(TRUE)
-		for(var/subsystem/S in active_subsystems)
+		for(var/list/v in active_subsystems)
+			var/subsystem/S = v["subsystem"]
 			if(S.next_run <= ticks)
 				if(!S.tick_rate || !S.on_life())
-					active_subsystems -= S
+					active_subsystems -= v
 					qdel(S)
 					continue
 				S.next_run = ticks + S.tick_rate
@@ -50,6 +48,5 @@
 		ticks += 1
 		tick_usage_average = (tick_usage_average+tick_usage)/2
 
-		var/sleep_time = max(tick_lag,tick_usage*tick_lag*0.01)
-
-		sleep(sleep_time)
+		sleep(max(tick_lag,tick_usage*tick_lag*0.01)
+)

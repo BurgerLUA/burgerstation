@@ -184,3 +184,46 @@
 		L.Swap(p, pivot)
 		return p
 	else return m
+
+
+//InsertionSort by Lummox JR
+proc/InsertionSort(list/L)
+    var/i,len=L.len,first,last,k,v
+    for(i=2, i<=len, ++i)
+        // look for an index from 1 to i-1 where L[i] belongs
+        // this is a binary insertion sort, so it uses a binary search
+        first = 1
+        last = i-1
+        v = L[i]   // make this L[L[i]] to sort by associated value
+        while(first <= last)
+            k = round((first+last) / 2)
+            // if sorting by associated values, change L[k] to L[L[k]]
+            if(v >= L[k]) first = k + 1
+            else last = k - 1
+        L.Insert(first, v)
+        // cut after insertion, to keep the associated value intact
+        L.Cut(i+1,i+2)
+
+//Aurora Sorting, tweaked.
+/proc/sortByKey(var/list/L, var/key)
+	if(L.len < 2)
+		return L
+	var/middle = L.len / 2 + 1
+	return mergeKeyedLists(sortByKey(L.Copy(0, middle), key), sortByKey(L.Copy(middle), key), key)
+
+/proc/mergeKeyedLists(var/list/L, var/list/R, var/key)
+	var/Li=1
+	var/Ri=1
+	var/list/result = new()
+	while(Li <= L.len && Ri <= R.len)
+		if(L[Li][key] > R[Ri][key])
+			// Works around list += list2 merging lists; it's not pretty but it works
+			result += "temp item"
+			result[result.len] = R[Ri++]
+		else
+			result += "temp item"
+			result[result.len] = L[Li++]
+
+	if(Li <= L.len)
+		return (result + L.Copy(Li, 0))
+	return (result + R.Copy(Ri, 0))
