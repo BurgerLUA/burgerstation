@@ -18,7 +18,7 @@
 "r" = (/turf/simulated/wall/wood/brown,/area/singleplayer)
 "s" = (/turf/simulated/floor/wood/brown,/area/special/lobby)
 "t" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/singleplayer)
-"u" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/brown,/area/singleplayer)
+"u" = (/obj/structure/smooth/table/wood,/obj/item/torch/candle,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "v" = (/obj/trigger/jumpmarker/ship_exit,/turf/simulated/floor/stair/wood,/area/singleplayer)
 "w" = (/turf/simulated/floor/wood/brown,/area/singleplayer)
 "x" = (/obj/marker/mob_spawn/marwani/ship,/turf/simulated/floor/wood/brown,/area/singleplayer)

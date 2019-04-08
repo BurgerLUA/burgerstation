@@ -143,5 +143,38 @@
 		/obj/item/weapon/ranged/bullet/crossbow = 6
 	)
 
+/obj/structure/interactive/shop_holder/weapons/holy
+	possible_items = list(
+		/obj/item/weapon/ranged/magic/tome/heal = 1,
+		/obj/item/weapon/ranged/magic/tome/holy_warrior = 1,
+		/obj/item/weapon/ranged/magic/tome/lightning = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/ranged/magic/tome/heal = 60,
+		/obj/item/weapon/ranged/magic/tome/holy_warrior = 40,
+		/obj/item/weapon/ranged/magic/tome/lightning = 50
+	)
+	possible_quantity = list(
+		/obj/item/weapon/ranged/magic/tome/heal = 10,
+		/obj/item/weapon/ranged/magic/tome/holy_warrior = 10,
+		/obj/item/weapon/ranged/magic/tome/lightning = 10
+	)
+
+/obj/structure/interactive/shop_holder/weapons/toolbox
+	possible_items = list(
+		/obj/item/weapon/melee/toolbox/red = 1,
+		/obj/item/weapon/melee/toolbox/green = 1,
+		/obj/item/weapon/melee/toolbox/blue = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/melee/toolbox/red = 6,
+		/obj/item/weapon/melee/toolbox/green = 6,
+		/obj/item/weapon/melee/toolbox/blue = 6
+	)
+	possible_quantity = list(
+		/obj/item/weapon/melee/toolbox/red = 20,
+		/obj/item/weapon/melee/toolbox/green = 20,
+		/obj/item/weapon/melee/toolbox/blue = 20
+	)
 
 

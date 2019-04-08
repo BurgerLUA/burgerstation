@@ -30,7 +30,6 @@
 	var/base_chance = get_skill_power(SKILL_BLOCK,1,100)*50 + get_luck_calc(src,0.5,attacker,-0.5)
 	return base_chance
 
-
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status & FLAG_STATUS_DEAD && get_dist(attacker,src) > 1)
 		return 1000

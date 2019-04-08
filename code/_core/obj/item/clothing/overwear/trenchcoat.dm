@@ -21,7 +21,7 @@
 	color = "#0065FF"
 
 
-/obj/item/clothing/overwear/chaplain/
+/obj/item/clothing/overwear/chaplain
 	name = "priest garb"
 	icon = 'icons/obj/items/clothing/suit/religious.dmi'
 

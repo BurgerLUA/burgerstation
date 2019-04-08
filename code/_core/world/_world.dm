@@ -1,9 +1,6 @@
-#define TICK_CHECK if(tick_usage_average >= 80) sleep(1)
-
 var/global/list/active_subsystems
 var/global/curtime = 0
 var/global/ticks = 0
-var/global/tick_usage_average = 0
 
 /world/
 	fps = FPS_SERVER

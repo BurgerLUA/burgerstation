@@ -1,7 +1,7 @@
 /obj/structure/interactive/lighting/streetlamp
 	name = "street lamp"
 
-	icon = 'icons/obj/structure/medieval/light.dmi'
+	icon = 'icons/obj/structure/medieval/light_large.dmi'
 	icon_state = "streetlamp"
 
 	light_power = 0.5
@@ -21,4 +21,5 @@
 
 /obj/structure/interactive/lighting/streetlamp/jungle
 	icon_state = "torch"
+
 

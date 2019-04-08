@@ -39,6 +39,11 @@
 
 	var/obj/inventory/active_inventory
 
+
+	var/health_regen_delay
+
+
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
@@ -138,24 +143,23 @@ mob/living/advanced/Login()
 	var/mana_adjust = 0
 	var/stamina_adjust = 0
 
-	if(regen_delay <= 0)
-		if(health_current < health_max)
-			var/heal_amount = health_regeneration
-			if((get_brute_loss() + get_burn_loss())/health_max)
-				heal_amount *= 2
-			health_adjust = heal_all_organs(heal_amount,heal_amount,0,1)
-		if(stamina_current < stamina_max)
-			stamina_adjust = adjust_stamina(stamina_regeneration)
+	if(health_regen_delay <= 0 && health_current < health_max)
+		var/heal_amount = health_regeneration
+		if((get_brute_loss() + get_burn_loss())/health_max)
+			heal_amount *= 2
+		health_adjust = heal_all_organs(heal_amount,heal_amount,0,1)
+		if(health_adjust)
+			add_skill_xp(SKILL_RECOVERY,health_adjust)
 
-	if(mana_current < mana_max)
+	if(stamina_regen_delay <= 0 && stamina_current < stamina_max)
+		stamina_adjust = adjust_stamina(stamina_regeneration)
+		if(stamina_adjust)
+			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
+
+	if(mana_regen_delay <= 0 && mana_current < mana_max)
 		mana_adjust = adjust_mana(mana_regeneration)
-
-	if(health_adjust)
-		add_skill_xp(SKILL_RECOVERY,health_adjust)
-	if(stamina_adjust)
-		add_skill_xp(SKILL_RECOVERY,stamina_adjust)
-	if(mana_adjust)
-		add_skill_xp(SKILL_RECOVERY,mana_adjust)
+		if(mana_adjust)
+			add_skill_xp(SKILL_RECOVERY,mana_adjust)
 
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)

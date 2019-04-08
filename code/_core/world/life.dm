@@ -46,7 +46,4 @@
 
 		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1
-		tick_usage_average = (tick_usage_average+tick_usage)/2
-
-		sleep(max(tick_lag,tick_usage*tick_lag*0.01)
-)
+		sleep(tick_lag)

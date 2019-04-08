@@ -74,3 +74,23 @@
 	possible_quantity = list(
 		/obj/item/clothing/belt/storage = 10
 	)
+
+/obj/structure/interactive/shop_holder/clothing/templar
+	possible_items = list(
+		/obj/item/clothing/head/helmet/knight/templar = 15,
+		/obj/item/clothing/overwear/armor/knight/templar = 15,
+		/obj/item/clothing/overwear/chaplain = 25,
+		/obj/item/clothing/uniform/priest = 50
+	)
+	possible_prices = list(
+		/obj/item/clothing/head/helmet/knight/templar = 60,
+		/obj/item/clothing/overwear/armor/knight/templar = 80,
+		/obj/item/clothing/overwear/chaplain = 10,
+		/obj/item/clothing/uniform/priest = 5
+	)
+	possible_quantity = list(
+		/obj/item/clothing/head/helmet/knight/templar = 5,
+		/obj/item/clothing/overwear/armor/knight/templar = 5,
+		/obj/item/clothing/overwear/chaplain = 10,
+		/obj/item/clothing/uniform/priest = 20
+	)

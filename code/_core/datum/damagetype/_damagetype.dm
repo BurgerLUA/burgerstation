@@ -128,8 +128,12 @@
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(is_living(victim))
-		var/mob/living/A = victim
-		if(A.status & FLAG_STATUS_IMMORTAL)
+		var/mob/living/L = victim
+		if(L.status & FLAG_STATUS_IMMORTAL)
+			return 0
+		var/area/A1 = get_area(L)
+		var/area/A2 = get_area(L)
+		if(A1.safe || A2.safe)
 			return 0
 
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)

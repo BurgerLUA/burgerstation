@@ -7,7 +7,6 @@ var/list/objects_to_delete = list()
 	tick_rate = SECONDS_TO_TICKS(10)
 
 /subsystem/delete/on_life()
-
 	for(var/atom/object_to_delete in objects_to_delete)
 		var/time_to_delete = objects_to_delete[object_to_delete]
 		if(time_to_delete > curtime)

@@ -27,7 +27,7 @@
 
 //Makes compiling faster
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
+#define ENABLE_LIGHTING TRUE
 #define ENABLE_CHARGEN FALSE
 #define ENABLE_TURFGEN TRUE
 
