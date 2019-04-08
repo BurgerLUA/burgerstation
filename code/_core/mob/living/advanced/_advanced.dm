@@ -40,7 +40,9 @@
 	var/obj/inventory/active_inventory
 
 
-	var/health_regen_delay
+	var/health_regen_delay = 0
+	var/stamina_regen_delay = 0
+	var/mana_regen_delay = 0
 
 
 
@@ -164,6 +166,10 @@ mob/living/advanced/Login()
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
 
+	health_regen_delay = max(0,health_regen_delay - 1)
+	stamina_regen_delay = max(0,stamina_regen_delay - 1)
+	mana_regen_delay = max(0,mana_regen_delay - 1)
+
 	if(life_ticks >= 10*4)
 		for(var/obj/item/organ/O in organs)
 			for(var/wound/W in O.wounds)
@@ -173,6 +179,26 @@ mob/living/advanced/Login()
 		life_ticks += 1
 
 	return .
+
+/mob/living/advanced/adjust_brute_loss(var/value)
+	if(value > 0)
+		health_regen_delay = max(health_regen_delay,300)
+	return ..()
+
+/mob/living/advanced/adjust_tox_loss(var/value)
+	if(value > 0)
+		health_regen_delay = max(health_regen_delay,300)
+	return ..()
+
+/mob/living/advanced/adjust_oxy_loss(var/value)
+	if(value > 0)
+		health_regen_delay = max(health_regen_delay,300)
+	return ..()
+
+/mob/living/advanced/adjust_burn_loss(var/value)
+	if(value > 0)
+		health_regen_delay = max(health_regen_delay,300)
+	return ..()
 
 /mob/living/advanced/on_life_client()
 	..()

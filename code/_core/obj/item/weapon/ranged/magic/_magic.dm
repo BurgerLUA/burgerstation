@@ -21,3 +21,13 @@
 		ATTACK_TYPE_RANGED = 0,
 		ATTACK_TYPE_MAGIC = 0
 	)
+
+/obj/item/weapon/ranged/magic/shoot(var/mob/caller as mob,var/atom/object,location,params)
+
+	. = ..()
+
+	if(. && is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		A.mana_regen_delay = max(A.mana_regen_delay,30)
+
+	return .

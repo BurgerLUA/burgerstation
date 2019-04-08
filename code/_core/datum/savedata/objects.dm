@@ -10,14 +10,8 @@
 	if(is_item(O))
 		var/obj/item/I = O
 		if(object_data["inventories"])
-			world.log << "NOTICE: [O] HAS INVENTORIES."
 			for(var/i=1,i<=length(object_data["inventories"]),i++)
 				apply_inventory_data(I,object_data["inventories"][i])
-		else
-			world.log << "NOTICE: [O] DOES NOT HAVE INVENTORIES."
-	else
-		world.log << "NOTICE: [O] IS NOT AN ITEM"
-
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
 		if(object_data["scroll_count"])
@@ -98,9 +92,6 @@
 /savedata/proc/apply_inventory_data(var/obj/item/O,var/list/inventory_data)
 
 	var/obj/inventory/I
-
-	world.log << "[O] has a total of [length(O.inventories)] inventories."
-
 
 	for(var/obj/inventory/I2 in O.inventories)
 		if(I2.id == inventory_data["id"])
