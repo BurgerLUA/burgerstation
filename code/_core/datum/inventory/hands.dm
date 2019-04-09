@@ -26,7 +26,7 @@
 
 	essential = TRUE
 
-	drag_to_take = FALSE
+	drag_to_take = TRUE
 
 /obj/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
@@ -57,7 +57,7 @@
 
 	essential = TRUE
 
-	drag_to_take = FALSE
+	drag_to_take = TRUE
 
 /obj/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()

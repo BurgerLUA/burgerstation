@@ -1,8 +1,8 @@
 /atom/proc/clicked_by_object(caller,object,location,control,params)
 	return FALSE
 
-/atom/proc/drop_on_object(caller,object)
-	if(dropped_by_object(caller,object))
+/atom/proc/drop_on_object(var/atom/caller,var/atom/object)
+	if(object && object.dropped_by_object(caller,src))
 		return TRUE
 
 	return FALSE

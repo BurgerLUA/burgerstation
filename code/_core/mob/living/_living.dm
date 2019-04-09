@@ -60,6 +60,8 @@ var/global/list/all_living = list()
 
 	var/loot_drop
 
+	var/obj/vehicle/driving
+
 /mob/living/death()
 	if(..())
 		var/turf/T = get_turf(src)
@@ -108,4 +110,3 @@ var/global/list/all_living = list()
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)
 		factions[k] = all_factions[k]
-

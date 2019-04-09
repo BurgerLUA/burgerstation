@@ -3,6 +3,8 @@
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
+	pre_death()
+
 	if(client)
 		client.make_ghost(get_turf(src))
 	status |= FLAG_STATUS_DEAD
@@ -18,7 +20,17 @@
 
 	layer = LAYER_MOB_DEAD
 
+	post_death()
+
 	return TRUE
+
+/mob/living/proc/pre_death()
+	return
+
+
+/mob/living/proc/post_death()
+	return
+
 
 /mob/living/proc/on_life_AI()
 	if(status & FLAG_STATUS_DEAD)

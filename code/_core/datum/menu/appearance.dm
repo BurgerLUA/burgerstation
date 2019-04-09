@@ -114,9 +114,9 @@
 					apply_javascript_to_mob(usr,forged_data)
 
 					if(A.sex == MALE)
-						A.add_outfit("new_male")
+						A.add_outfit("new_male",TRUE)
 					else
-						A.add_outfit("new_female")
+						A.add_outfit("new_female",TRUE)
 
 					open_menu(A,"class_editor")
 

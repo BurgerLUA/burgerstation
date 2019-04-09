@@ -200,17 +200,31 @@
 
 	return TRUE
 
-/obj/inventory/proc/drop_worn_objects(var/turf/T)
+/obj/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
+	var/list/dropped_objects = list()
 	for(var/obj/item/I in worn_objects)
-		remove_object(I,T)
+		if(exclude_soulbound && I.soul_bound)
+			continue
+		if(remove_object(I,T))
+			dropped_objects += I
 
-/obj/inventory/proc/drop_held_objects(var/turf/T)
+	return dropped_objects
+
+/obj/inventory/proc/drop_held_objects(var/turf/T,var/exclude_soulbound=FALSE)
+	var/list/dropped_objects = list()
 	for(var/obj/item/I in held_objects)
-		remove_object(I,T)
+		if(exclude_soulbound && I.soul_bound)
+			continue
+		if(remove_object(I,T))
+			dropped_objects += I
 
-/obj/inventory/proc/drop_all_objects(var/turf/T)
-	drop_held_objects(T)
-	drop_worn_objects(T)
+	return dropped_objects
+
+/obj/inventory/proc/drop_all_objects(var/turf/T,var/exclude_soulbound=FALSE)
+	var/list/dropped_objects = list()
+	dropped_objects += drop_held_objects(T)
+	dropped_objects += drop_worn_objects(T)
+	return dropped_objects
 
 /obj/inventory/proc/remove_all_objects()
 	for(var/obj/item/I in worn_objects)

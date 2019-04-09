@@ -39,12 +39,9 @@
 
 	var/obj/inventory/active_inventory
 
-
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
-
-
 
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
@@ -96,17 +93,13 @@
 
 	update_icon()
 
-/mob/living/advanced/proc/drop_all_items()
+/mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE)
 
 	var/dropped_objects = list()
 
 	for(var/v in inventory)
 		var/obj/inventory/O = v
-		for(var/obj/item/I in O.worn_objects)
-			if(O.remove_object(I,src.loc))
-				dropped_objects += I
-
-		O.drop_held_objects(src.loc)
+		dropped_objects += O.drop_all_objects(get_turf(src))
 
 	return dropped_objects
 
@@ -311,7 +304,7 @@ mob/living/advanced/Login()
 
 	return FALSE
 
-/mob/living/advanced/proc/add_outfit(var/outfit_id)
+/mob/living/advanced/proc/add_outfit(var/outfit_id,var/soul_bound=FALSE)
 
 	var/outfit/spawning_outfit = all_outfits[outfit_id]
 
@@ -321,6 +314,8 @@ mob/living/advanced/Login()
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
+		if(soul_bound)
+			C.soul_bound = TRUE
 
 	return TRUE
 

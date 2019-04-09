@@ -431,6 +431,8 @@
 #include "code\_core\obj\teleport\_teleport.dm"
 #include "code\_core\obj\teleport\rift.dm"
 #include "code\_core\obj\teleport\transparency.dm"
+#include "code\_core\obj\vehicle\_vehicle.dm"
+#include "code\_core\obj\vehicle\mech\_mech.dm"
 #include "code\_core\turf\_turf.dm"
 #include "code\_core\turf\movement.dm"
 #include "code\_core\turf\simulated\_simulated.dm"

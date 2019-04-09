@@ -41,6 +41,8 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
+	var/soul_bound = FALSE
+
 /obj/item/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(!is_container)

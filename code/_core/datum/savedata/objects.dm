@@ -12,6 +12,9 @@
 		if(object_data["inventories"])
 			for(var/i=1,i<=length(object_data["inventories"]),i++)
 				apply_inventory_data(I,object_data["inventories"][i])
+		if(object_data["soul_bound"])
+			I.soul_bound = object_data["soul_bound"]
+
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
 		if(object_data["scroll_count"])
@@ -134,6 +137,8 @@
 			for(var/i=1,i<=length(IT.inventories),i++)
 				var/obj/inventory/IN = IT.inventories[i]
 				returning_list["inventories"][i] = get_inventory_data(IN)
+		if(IT.soul_bound)
+			returning_list["soul_bound"] = TRUE
 
 	if(is_soulgem(I))
 		var/obj/item/consumable/soulgem/S = I
