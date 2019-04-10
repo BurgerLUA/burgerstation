@@ -171,7 +171,6 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0
 		owner.attack(owner,objective_attack)
-		world.log << "TRYING TO ATTACK: [objective_attack]"
 
 	attack_ticks = 0
 

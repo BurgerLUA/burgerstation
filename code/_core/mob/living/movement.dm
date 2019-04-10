@@ -18,3 +18,5 @@
 	. = max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
 
 	return .
+
+

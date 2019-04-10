@@ -51,7 +51,7 @@
 
 	if(C.value >= item_cost)
 
-		var/click_flags = A.client.get_actual_click_flags(params)
+		var/click_flags = A.client.get_click_flags(params,TRUE)
 
 		if(click_flags & RIGHT_HAND && A.get_right_hand())
 			A.to_chat(span("notice","Your right hand needs to be unoccupied in order to buy this!"))

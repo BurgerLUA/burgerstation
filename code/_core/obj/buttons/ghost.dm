@@ -62,9 +62,14 @@
 	if(!is_observer(caller))
 		caller << "You are not an observer! Please yell at Burger and tell them to fix this."
 		return TRUE
+	if(world_state != STATE_RUNNING)
+		caller << "The game has not loaded yet!"
+		return TRUE
 
 	var/mob/abstract/observer/O = caller
 	O.new_character()
+
+	return TRUE
 
 /obj/button/load_character/
 	name = "load an existing character"
@@ -76,6 +81,11 @@
 	if(!is_observer(caller))
 		caller << "You are not an observer! Please yell at Burger and tell them to fix this."
 		return TRUE
+	if(world_state != STATE_RUNNING)
+		caller << "The game has not loaded yet!"
+		return TRUE
+
 	var/mob/abstract/observer/O = caller
 	O.load_character()
 
+	return TRUE

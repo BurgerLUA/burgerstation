@@ -61,7 +61,7 @@
 	return TRUE
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
-	return TRUE
+	return FALSE
 
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click click*"))
@@ -72,14 +72,16 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 
 	return FALSE
 
-obj/item/weapon/ranged/proc/shoot(var/mob/caller as mob,var/atom/object,location,params)
+obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params)
 
 	if(!object)
 		return FALSE
 
 	//caller.move_delay = max(caller.move_delay,0.5)
 	caller.face_atom(object)
-	caller.attack_turn = curtime + caller.attack_turn_delay
+	if(is_mob(caller))
+		var/mob/M = caller
+		M.attack_turn = curtime + M.attack_turn_delay
 
 	/*
 	if(!caller.can_attack(object,params))

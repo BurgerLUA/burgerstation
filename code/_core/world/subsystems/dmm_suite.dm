@@ -25,7 +25,7 @@ var/global/dmm_suite/dmm_suite
 		if(x_value <= 0 || y_value <= 0)
 			continue
 
-		world.log << "Loading [MAP_DIRECTORY][filename]..."
+		LOG_SERVER("Loading [MAP_DIRECTORY][filename]...")
 
 		var/file_data = file2text("[MAP_DIRECTORY]/[filename]")
 

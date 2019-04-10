@@ -2,6 +2,10 @@
 //A down is just a press.
 mob/living/advanced/on_left_down(object,location,control,params)
 
+	if(driving)
+		driving.click_on_object(src,object,location,control,params)
+		return
+
 	if(is_inventory(object))
 		return FALSE
 
@@ -10,6 +14,10 @@ mob/living/advanced/on_left_down(object,location,control,params)
 			I.click_on_object(src,object,location,control,params)
 
 mob/living/advanced/on_right_down(object,location,control,params)
+
+	if(driving)
+		driving.click_on_object(src,object,location,control,params)
+		return
 
 	if(is_inventory(object))
 		return FALSE
@@ -21,6 +29,10 @@ mob/living/advanced/on_right_down(object,location,control,params)
 //A click is a press and release.
 mob/living/advanced/on_left_click(var/atom/object,location,control,params)
 
+	if(driving)
+		driving.click_on_object(src,object,location,control,params)
+		return
+
 	if(!is_inventory(object))
 		return FALSE
 
@@ -29,6 +41,10 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params)
 			I.click_on_object(src,object,location,control,params)
 
 mob/living/advanced/on_right_click(var/atom/object,location,control,params)
+
+	if(driving)
+		driving.click_on_object(src,object,location,control,params)
+		return
 
 	if(!is_inventory(object))
 		return FALSE

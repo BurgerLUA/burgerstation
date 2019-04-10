@@ -214,7 +214,7 @@
 
 	var/mob/living/L = caller
 
-	var/click_flags = L.client.get_actual_click_flags(params)
+	var/click_flags = L.client.get_click_flags(params,TRUE)
 
 	if(!(params["icon-x"] && params["icon-y"]))
 		return

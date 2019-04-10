@@ -5,9 +5,6 @@ proc/broadcast(var/text_to_say as text)
 	for(var/mob/object in world)
 		object.to_chat(text_to_say)
 
-/proc/warning(var/text)
-	world.log << "## WARNING: [text]"
-
 proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_type as num)
 	if(!text_to_say)
 		return FALSE
@@ -51,6 +48,8 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 
 	for(var/mob/M in all_mobs_with_clients)
 
+		M << get_dist(M,src)
+
 		if(get_dist(M,src) > view_range)
 			continue
 
@@ -79,7 +78,7 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 			local_third_person_text = span("distance_tiny",third_person_text)
 			local_blind_text = span("distance_tiny",blind_text)
 
-		if(src in view(M))
+		if(src in view(M.client.eye))
 			if(src == M)
 				M.to_chat(local_first_person_text)
 			else

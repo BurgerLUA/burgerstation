@@ -150,14 +150,14 @@ var/global/list/all_clients = list()
 	else
 		src << "Left clicking will now activate the object in your right hand, and vice versa."
 
-/client/proc/get_actual_click_flags(aug)
+/client/proc/get_click_flags(aug,var/check_swap = FALSE)
 
 	var/returning = 0x0
 
-	if(swap_mouse ? ("left" in aug) :("right" in aug))
+	if(swap_mouse && check_swap ? ("left" in aug) :("right" in aug))
 		returning |= CLICK_RIGHT
 
-	if(swap_mouse ? ("right" in aug) : ("left" in aug))
+	if(swap_mouse && check_swap ? ("right" in aug) : ("left" in aug))
 		returning |= CLICK_LEFT
 
 	if("middle" in aug)
@@ -170,7 +170,7 @@ var/global/list/all_clients = list()
 	store_new_params(object,location,params)
 
 	var/list/aug = params2list(params)
-	var/click_flags = get_actual_click_flags(aug)
+	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT
@@ -193,7 +193,7 @@ var/global/list/all_clients = list()
 /client/Click(var/atom/object,location,control,params)
 
 	var/list/aug = params2list(params)
-	var/click_flags = get_actual_click_flags(aug)
+	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_click(object,location,control,aug)
@@ -209,7 +209,7 @@ var/global/list/all_clients = list()
 /client/MouseUp(object,location,control,params)
 
 	var/list/aug = params2list(params)
-	var/click_flags = get_actual_click_flags(aug)
+	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags &= ~ATTACK_HELD_LEFT
@@ -225,7 +225,7 @@ var/global/list/all_clients = list()
 		return
 
 	var/list/aug = params2list(params)
-	var/click_flags = get_actual_click_flags(aug)
+	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)

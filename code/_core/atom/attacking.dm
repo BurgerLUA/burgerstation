@@ -1,7 +1,10 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,params) //The src attacks the victim, with the attacker taking responsibility
+/atom/proc/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed) //The src attacks the victim, with the blamed taking responsibility
+
+	if(!blamed)
+		blamed = attacker
 
 	victim = victim.change_victim(attacker)
 
@@ -15,8 +18,8 @@
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
 
 	if(!object_to_damage || !object_to_damage_with)
-		if(is_mob(attacker))
-			var/mob/M = attacker
+		if(is_mob(blamed))
+			var/mob/M = blamed
 			M.to_chat(span("notice","You can't attack that!"))
 		return FALSE
 
@@ -28,7 +31,7 @@
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
-		world.log << "[attacker] can't inflict harm with the [object_to_damage_with.type]!"
+		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type]!")
 		return FALSE
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
@@ -38,12 +41,11 @@
 	DT.attack_last = world.time
 	attacker.attack_last = world.time
 
-	if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
-	if(victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
-	if(victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
-	if(victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
+	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
+	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
+	if(victim.perform_parry(blamed,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
+	if(victim.perform_dodge(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
 
-	attacker << "DO DAMAGE"
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
 	return can_attack

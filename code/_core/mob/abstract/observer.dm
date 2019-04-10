@@ -88,3 +88,22 @@
 	var/mob/living/advanced/player/P = new(src.loc,client)
 	P.Initialize()
 	qdel(src)
+
+/mob/abstract/observer/verb/load_most_recent_character()
+	set name = "Quickload"
+	set category = "Data"
+
+	var/client/C = src.client
+	var/savedata/client/mob/U = C.savedata
+
+	var/list/files = U.get_files()
+
+	var/file_num = U.get_proper_id_from_filename(files[1])
+	U.loaded_data = U.load_json_data_from_id(file_num)
+	C.save_slot = file_num
+	src << "Successfully loaded character [U.loaded_data["name"]]."
+	stop_sound('sounds/music/lobby.ogg',list(src))
+
+	var/mob/living/advanced/player/P = new(src.loc,client)
+	P.Initialize()
+	qdel(src)

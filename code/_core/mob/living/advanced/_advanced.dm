@@ -43,6 +43,8 @@
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 
+	var/obj/vehicle/driving
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)

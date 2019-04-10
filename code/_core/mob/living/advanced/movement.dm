@@ -5,3 +5,10 @@
 		stamina_regen_delay = max(stamina_regen_delay,30)
 
 	return ..()
+
+/mob/living/advanced/handle_movement(var/adjust_delay=0)
+
+	if(driving)
+		return driving.handle_movement(adjust_delay)
+
+	return ..()

@@ -1,6 +1,6 @@
 /damagetype/ranged/laser/
 	name = "laser"
-	id = "none"
+	id = "laser"
 
 	base_attack_damage = list(
 		BRUTE = 0,

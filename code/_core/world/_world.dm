@@ -2,6 +2,8 @@ var/global/list/active_subsystems
 var/global/curtime = 0
 var/global/ticks = 0
 
+var/global/world_state = STATE_STARTING
+
 /world/
 	fps = FPS_SERVER
 	icon_size = TILE_SIZE

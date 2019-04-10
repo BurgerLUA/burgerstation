@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/laser.dmi'
 
 	projectile = /obj/projectile/bullet/laser_red
-	damage_type = /damagetype/blunt/pistol
+	damage_type = "laser_pistol"
 
 	bullet_speed = 31
 	shoot_delay = 2
