@@ -41,7 +41,7 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(c
 
 	var/faction/F = all_factions[faction_to_join]
 	P.factions += faction_to_join
-	P.update_faction_icons()
+	//P.update_faction_icons()
 
 	P.to_chat(span(F.icon_state,"You have joined \the [F.name]! Note that friendly fire is currently <b>[F.friendly_fire ? "ON" : "OFF"]</b>."))
 	P.to_chat(span("notice","Use the mirror to change your apperance. Your appearance, worn items, and equipped items will be saved when you enter the white light."))

@@ -10,4 +10,5 @@
 	..()
 	change_organ_visual("skin", desired_color = "#E0BCAA")
 	change_organ_visual("hair_head", desired_color = "#C45927")
+	update_all_blends()
 

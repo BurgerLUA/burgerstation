@@ -218,6 +218,7 @@ mob/living/advanced/Login()
 	add_species_health_elements()
 	..()
 	update_health_element_icons(TRUE,TRUE,TRUE)
+	update_all_blends()
 
 /mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //TODO: FIX THIS, IT'S BROKEN.
 
@@ -324,8 +325,9 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/add_worn_item(var/obj/item/clothing/C)
 	for(var/obj/inventory/I in inventory)
 		if(I.add_worn_object(C,FALSE))
-			update_icon()
 			return TRUE
+
+	return FALSE
 
 /mob/living/advanced/proc/remove_worn_item(var/obj/item/clothing/C)
 	for(var/obj/inventory/I in inventory)
@@ -333,110 +335,6 @@ mob/living/advanced/Login()
 			return TRUE
 
 	return FALSE
-
-/mob/living/advanced/update_icon()
-
-	icon = initial(icon)
-
-	for(var/O in overlays)
-		qdel(O)
-	overlays = list()
-
-	update_organ_icons()
-	update_inventory_icons()
-	update_faction_icons()
-	update_talking_icons()
-	. = ..()
-
-/mob/living/advanced/proc/update_talking_icons()
-	if(is_typing || talk_type)
-		var/obj/overlay/spawned_overlay = new /obj/overlay
-		spawned_overlay.layer = LAYER_EFFECT
-		spawned_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
-		if(is_typing)
-			spawned_overlay.icon_state = "talking"
-		else
-			spawned_overlay.icon_state = talk_type
-
-		overlays += spawned_overlay
-
-/mob/living/advanced/proc/update_faction_icons()
-	for(var/v in factions)
-		var/faction/F = all_factions[v]
-		var/obj/overlay/spawned_overlay = new /obj/overlay
-		spawned_overlay.layer = LAYER_EFFECT
-		spawned_overlay.icon = F.icon
-		spawned_overlay.icon_state = F.icon_state
-		overlays += spawned_overlay
-
-/mob/living/advanced/proc/update_organ_icons()
-	for(var/obj/item/organ/O in organs)
-		O.update_icon()
-		if(is_tail(O))
-			var/obj/overlay/behind_overlay = new /obj/overlay
-			behind_overlay.layer = LAYER_MOB_TAIL_BEHIND
-			behind_overlay.initial_icon = O.icon
-			behind_overlay.initial_icon_state = "tail_behind"
-			behind_overlay.color = O.color
-			behind_overlay.additional_blends = O.additional_blends
-			behind_overlay.update_icon()
-
-			var/obj/overlay/front_overlay = new /obj/overlay
-			front_overlay.layer = LAYER_MOB_TAIL_FRONT
-			front_overlay.initial_icon = O.icon
-			front_overlay.initial_icon_state = "tail_front"
-			front_overlay.color = O.color
-			front_overlay.additional_blends = O.additional_blends
-			front_overlay.update_icon()
-
-			overlays += front_overlay
-			overlays += behind_overlay
-			continue
-
-		var/obj/overlay/spawned_overlay = new /obj/overlay
-		spawned_overlay.layer = O.worn_layer
-		spawned_overlay.initial_icon = O.icon
-		spawned_overlay.initial_icon_state = O.icon_state
-		spawned_overlay.color = O.color
-		spawned_overlay.additional_blends = O.additional_blends
-		spawned_overlay.update_icon()
-		overlays += spawned_overlay
-
-/mob/living/advanced/proc/update_inventory_icons()
-	for(var/obj/inventory/I in inventory)
-		if(!I.should_draw)
-			continue
-		for(var/obj/item/C in I.worn_objects)
-			if(C.loc != I)
-				continue
-
-			var/obj/overlay/spawned_overlay = new /obj/overlay
-			spawned_overlay.layer = C.worn_layer
-			spawned_overlay.icon = C.icon
-			spawned_overlay.color = C.color
-			if(C.slot_icons)
-				spawned_overlay.icon_state = "[C.icon_state_worn]_[I.id]"
-			else
-				spawned_overlay.icon_state = C.icon_state_worn
-			overlays += spawned_overlay
-
-		for(var/obj/item/I2 in I.held_objects)
-			if(I2.loc != I)
-				continue
-			if(I2.no_held_draw)
-				continue
-
-			//I2.update_icon()
-			var/obj/overlay/spawned_overlay = new /obj/overlay
-			spawned_overlay.layer = LAYER_MOB_HELD
-			spawned_overlay.icon = I2.icon
-			spawned_overlay.color = I2.color
-			if(I.item_slot == SLOT_HAND_LEFT)
-				spawned_overlay.icon_state = I.reverse_draw ? I2.icon_state_worn : I2.icon_state_held_left
-			else
-				spawned_overlay.icon_state = I.reverse_draw ? I2.icon_state_worn : I2.icon_state_held_right
-
-			overlays += spawned_overlay
 
 /mob/living/advanced/proc/add_species_colors()
 
@@ -450,7 +348,6 @@ mob/living/advanced/Login()
 		change_organ_visual("hair_head", desired_icon = mob_species.default_icon_hair, desired_icon_state = mob_species.default_icon_state_hair, desired_color = mob_species.default_color_hair)
 		change_organ_visual("hair_face", desired_color = mob_species.default_color_hair)
 
-
 	/*
 	if(mob_species.default_color_detail)
 		change_organ_visual("skin_detail", desired_color = mob_species.default_color_detail)
@@ -461,20 +358,15 @@ mob/living/advanced/Login()
 
 	*/
 
-	update_icon_organs()
-	update_icon()
-
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type)
 	for(var/obj/item/organ/O in organs)
 		if(!length(O.additional_blends))
 			continue
 		O.change_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type)
 
-/mob/living/advanced/proc/update_icon_organs()
-	for(var/obj/item/organ/O in organs)
-		O.update_icon()
+	update_all_blends()
 
-/mob/living/advanced/proc/update_gender(var/new_gender)
+/mob/living/advanced/proc/update_gender()
 	remove_all_organs()
 	add_species_organs()
 	add_species_colors()
@@ -484,9 +376,7 @@ mob/living/advanced/Login()
 	if(mob_species.genderless)
 		gender = NEUTER
 
-	remove_all_organs()
-	add_species_organs()
-	add_species_colors()
+	update_gender()
 
 /mob/living/advanced/can_sprint()
 	if(stamina_current <= 0)

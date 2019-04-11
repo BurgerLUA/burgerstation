@@ -133,11 +133,11 @@
 		return
 	*/
 
-	if(enable_wounds && src.loc)
+	if(enable_wounds && src.loc && is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
 		var/scale = floor((brute_loss/health_max)*5)
 		change_blend("skin_bruises", desired_icon_state = "[scale]")
-		update_icon()
-		src.loc.update_icon()
+		A.update_all_blends()
 
 	if(break_threshold)
 		if(!(flags_organ & FLAG_ORGAN_BROKEN) && brute_loss >= break_threshold)

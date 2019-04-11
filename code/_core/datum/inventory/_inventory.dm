@@ -164,6 +164,7 @@
 	I.on_pickup(src)
 	update_overlays()
 	update_stats()
+	owner.add_overlay(I,desired_layer = LAYER_MOB_HELD)
 
 	return TRUE
 
@@ -197,6 +198,14 @@
 	I.update_owner(owner)
 	update_overlays()
 	update_stats()
+
+	var/desired_icon_state
+	if(I.slot_icons)
+		desired_icon_state = "[I.icon_state_worn]_[src.id]"
+	else
+		desired_icon_state = I.icon_state_worn
+
+	owner.add_overlay(I,desired_layer = I.worn_layer,desired_icon_state = desired_icon_state)
 
 	return TRUE
 
@@ -244,7 +253,6 @@
 	if(I in worn_objects)
 		worn_objects -= I
 		owner.worn_objects -= I
-		I.update_owner()
 		was_removed = TRUE
 
 	if(was_removed)
@@ -252,6 +260,7 @@
 		I.plane = initial(I.plane)
 		update_overlays()
 		update_stats()
+		owner.remove_overlay(I)
 		queue_delete(I,600)
 
 	return I

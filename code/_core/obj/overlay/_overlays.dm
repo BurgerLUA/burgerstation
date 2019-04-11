@@ -7,27 +7,34 @@
 	var/initial_icon
 	var/initial_icon_state
 
+	var/atom/attached_object
+
 /obj/overlay/update_icon()
 
-	var/icon/I = new /icon(initial_icon,initial_icon_state)
+	if(length(additional_blends))
 
-	for(var/id in additional_blends)
-		var/icon_blend/IB = additional_blends[id]
+		world.log << "UPDATING [attached_object.name] [length(additional_blends)]"
 
-		if(IB.special_type & ICON_BLEND_MASK)
-			var/icon/OI = new (IB.icon,IB.icon_state)
-			var/icon/MI = new (initial_icon,initial_icon_state)
-			MI.Blend("#FFFFFF",ICON_ADD)
-			MI.Blend(OI,ICON_MULTIPLY)
-			I.Blend(MI,ICON_OVERLAY)
+		var/icon/I = new /icon(initial_icon,initial_icon_state)
 
-		else if(IB.special_type & ICON_BLEND_OVERLAY)
-			var/icon/OI = new (IB.icon,IB.icon_state)
-			OI.Blend(IB.color,ICON_MULTIPLY)
-			I.Blend(OI,ICON_OVERLAY)
+		for(var/id in additional_blends)
+			var/icon_blend/IB = additional_blends[id]
 
-		if(IB.special_type & ICON_BLEND_COLOR)
-			I.Blend(IB.color,ICON_MULTIPLY)
+			world.log << "GIVE US A BLEND COLOR: [id] [IB.color]"
 
-	icon = I
+			if(IB.special_type & ICON_BLEND_MASK)
+				var/icon/OI = new (IB.icon,IB.icon_state)
+				var/icon/MI = new (initial_icon,initial_icon_state)
+				MI.Blend("#FFFFFF",ICON_ADD)
+				MI.Blend(OI,ICON_MULTIPLY)
+				I.Blend(MI,ICON_OVERLAY)
 
+			else if(IB.special_type & ICON_BLEND_OVERLAY)
+				var/icon/OI = new (IB.icon,IB.icon_state)
+				OI.Blend(IB.color,ICON_MULTIPLY)
+				I.Blend(OI,ICON_OVERLAY)
+
+			if(IB.special_type & ICON_BLEND_COLOR)
+				I.Blend(IB.color,ICON_MULTIPLY)
+
+		icon = I
