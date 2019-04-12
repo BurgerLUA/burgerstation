@@ -67,6 +67,9 @@
 	worn_objects = list()
 	. = ..()
 
+/obj/inventory/can_be_attacked(var/atom/attacker)
+	return FALSE
+
 /obj/inventory/get_examine_text(var/atom/examiner)
 	var/atom/A = defer_click_on_object()
 	if(A && A != src)
@@ -164,7 +167,11 @@
 	I.on_pickup(src)
 	update_overlays()
 	update_stats()
-	owner.add_overlay(I,desired_layer = LAYER_MOB_HELD)
+
+	if(id == BODY_HAND_LEFT)
+		owner.add_overlay(I, desired_icon_state=I.icon_state_held_left, desired_layer = LAYER_MOB_HELD)
+	else if(id == BODY_HAND_RIGHT)
+		owner.add_overlay(I, desired_icon_state=I.icon_state_held_right, desired_layer = LAYER_MOB_HELD)
 
 	return TRUE
 

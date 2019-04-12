@@ -43,33 +43,59 @@
 
 	var/soul_bound = FALSE
 
+/obj/item/can_be_attacked(var/atom/attacker)
+	return FALSE
+
+/obj/item/click_self(caller,location,control,params)
+
+	if(!length(inventories))
+		return FALSE
+
+	var/mob/living/advanced/A = caller
+
+	for(var/obj/inventory/I in A.inventory)
+		if(I in inventories)
+			continue
+		if(!I.is_container)
+			continue
+		I.alpha = 0
+		I.mouse_opacity = 0
+
+	for(var/i=1,i<=length(inventories),i++)
+		var/obj/inventory/I = inventories[i]
+		I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
+		if(!I.alpha)
+			animate(I,alpha=255,time=4)
+			I.mouse_opacity = 2
+		else
+			animate(I,alpha=0,time=4)
+			I.mouse_opacity = 0
+
+	for(var/obj/button/B in A.buttons)
+		if(B.type != /obj/button/close_inventory)
+			continue
+
+		B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
+
+		if(!B.alpha)
+			animate(B,alpha=255,time=4)
+			B.mouse_opacity = 2
+		else
+			animate(B,alpha=0,time=4)
+			B.mouse_opacity = 0
+
+		break
+
+	return TRUE
+
+
 /obj/item/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(!is_container)
 		return ..()
 
-	if(is_inventory(object) && is_advanced(caller))
-
-		var/mob/living/advanced/A = caller
-
-		for(var/obj/inventory/I in A.inventory)
-			if(I in inventories)
-				continue
-			if(!I.is_container)
-				continue
-			I.alpha = 0
-			I.mouse_opacity = 0
-
-		for(var/i=1,i<=length(inventories),i++)
-			var/obj/inventory/I = inventories[i]
-			I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
-			if(!I.alpha)
-				animate(I,alpha=255,time=4)
-				I.mouse_opacity = 2
-			else
-				animate(I,alpha=0,time=4)
-				I.mouse_opacity = 0
-		return TRUE
+	if(is_inventory(object) && is_advanced(caller) && length(inventories))
+		return click_self(caller,location,control,params)
 
 	if(is_item(object) && length(inventories))
 		var/added = FALSE

@@ -11,17 +11,11 @@
 
 /obj/overlay/update_icon()
 
+
 	if(length(additional_blends))
-
-		world.log << "UPDATING [attached_object.name] [length(additional_blends)]"
-
 		var/icon/I = new /icon(initial_icon,initial_icon_state)
-
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
-
-			world.log << "GIVE US A BLEND COLOR: [id] [IB.color]"
-
 			if(IB.special_type & ICON_BLEND_MASK)
 				var/icon/OI = new (IB.icon,IB.icon_state)
 				var/icon/MI = new (initial_icon,initial_icon_state)
@@ -38,3 +32,6 @@
 				I.Blend(IB.color,ICON_MULTIPLY)
 
 		icon = I
+	else
+		icon = initial_icon
+		icon_state = initial_icon_state

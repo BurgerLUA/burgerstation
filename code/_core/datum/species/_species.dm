@@ -37,7 +37,8 @@
 		/obj/button/targeting,
 		/obj/button/intent,
 		/obj/button/defense,
-		/obj/button/sneak
+		/obj/button/sneak,
+		/obj/button/close_inventory
 	)
 
 	var/list/obj/button/health/spawning_health = list(
