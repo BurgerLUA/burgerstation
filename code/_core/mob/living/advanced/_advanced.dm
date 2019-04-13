@@ -364,8 +364,6 @@ mob/living/advanced/Login()
 			continue
 		O.change_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type)
 
-	update_all_blends()
-
 /mob/living/advanced/proc/update_gender()
 	remove_all_organs()
 	add_species_organs()

@@ -1,6 +1,5 @@
 /obj/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	//Special Stuff
 	if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
 		return throw_item(caller.dir)
@@ -20,10 +19,9 @@
 	if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it.
 		var/obj/inventory/I = the_hand
 		if(is_inventory(object)) //The target is actually inside the object, which is an inventory
-			var/obj/inventory/I2 = object
+			var/obj/inventory/I2 = object //Object = What we're clicking on
 			if(!I2.drag_to_take && add_object(the_target))
 				return TRUE
-
 		else if(I.add_object(the_target)) //The target is not inside an inventory.
 			return TRUE
 
@@ -85,10 +83,10 @@ obj/inventory/drop_item(var/turf/new_location)
 
 /obj/inventory/defer_click_on_object()
 
-	if(length(held_objects) && held_slots <= 1)
+	if(length(held_objects))
 		return get_top_held_object()
 
-	if(length(worn_objects) && worn_slots <= 1)
+	if(length(worn_objects))
 		return get_top_worn_object()
 
 	return src
