@@ -44,6 +44,8 @@
 
 	var/list/overlays_assoc
 
+	var/doing_progress = FALSE
+
 
 /atom/proc/Initialize()
 	initialize_blends()
@@ -155,5 +157,8 @@
 		else
 			light = new/datum/light_source(src, .)
 
-/atom/proc/on_progress_bar_completed(var/id)
+/atom/proc/on_progress_bar_completed(var/id,var/list/callback_list)
+	return TRUE
+
+/atom/proc/on_progress_bar_failed(var/id,var/list/callback_list)
 	return TRUE

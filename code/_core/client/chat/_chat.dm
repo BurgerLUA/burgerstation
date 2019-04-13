@@ -48,8 +48,6 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 
 	for(var/mob/M in all_mobs_with_clients)
 
-		M << get_dist(M,src)
-
 		if(get_dist(M,src) > view_range)
 			continue
 

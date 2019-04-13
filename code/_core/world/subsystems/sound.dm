@@ -74,12 +74,15 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
+		var/turf/mob_turf = get_turf(M)
+
+
 		var/local_volume = volume
 
 		if(created_sound.z >= 0)
-			created_sound.x = pos[1] - M.x
-			created_sound.y = pos[2] - M.y
-			created_sound.z = pos[3] - M.z
+			created_sound.x = pos[1] - mob_turf.x
+			created_sound.y = pos[2] - mob_turf.y
+			created_sound.z = pos[3] - mob_turf.z
 
 			if(channel != SOUND_CHANNEL_MUSIC)
 				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5))

@@ -95,17 +95,20 @@
 
 	return ..()
 
-/obj/vehicle/dropped_by_object(caller,object)
-	if(!is_living(object) || caller != object || get_dist(caller,src) > 1)
+
+/obj/vehicle/clicked_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
+
+	if(!is_living(caller) || get_dist(caller,src) > 1)
 		return ..()
 
-	var/mob/living/L = object
-	L.Move(src)
+	var/list/callback_list = list()
+	callback_list["vehicle"] = src
+	callback_list["start_turf"] = get_turf(caller)
+	add_progress_bar(caller,"enter_vehicle",10,callback_list)
 
 	return TRUE
 
-
-/obj/vehicle/drop_on_object(caller,object)
+/obj/vehicle/drop_on_object(caller,object) //Exit the vehicle.
 
 	if(!length(passengers) || !passengers[1] || !is_living(passengers[1]) || !get_turf(object) || get_dist(src,object) > 1)
 		return ..()
@@ -118,3 +121,4 @@
 	driver.force_move(get_turf(object))
 
 	return TRUE
+

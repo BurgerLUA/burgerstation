@@ -9,9 +9,17 @@ var/global/list/all_progress_bars = list()
 
 /subsystem/progress_bars/on_life()
 	for(var/obj/progress_bar/P in all_progress_bars)
-		if(P.end_time <= curtime+1)
+		if(P.callback_list && length(P.callback_list) && P.callback_list["start_turf"]  && P.callback_list["start_turf"] != get_turf(P.loc))
 			all_progress_bars -= P
-			P.loc.on_progress_bar_completed(P.id)
+			P.loc.on_progress_bar_failed(P.id,P.callback_list)
+			P.loc.doing_progress = FALSE
+			animate(P,alpha=0,time=5)
+			queue_delete(P,10)
+			continue
+		if(P.end_time < curtime)
+			all_progress_bars -= P
+			P.loc.on_progress_bar_completed(P.id,P.callback_list)
+			P.loc.doing_progress = FALSE
 			animate(P,alpha=0,time=5)
 			queue_delete(P,10)
 		else
@@ -19,6 +27,15 @@ var/global/list/all_progress_bars = list()
 
 	return TRUE
 
-/proc/add_progress_bar(var/atom/A,var/desired_id,var/duration)
-	var/obj/progress_bar/P = new(A,desired_id,curtime,curtime + duration)
+/proc/add_progress_bar(var/atom/A,var/desired_id,var/duration,var/list/callback_list)
+
+	if(A.doing_progress) //TEST IF THIS WORKS
+		if(is_living(A))
+			var/mob/living/L = A
+			L.to_chat(span("notice","You're already busy with a task!"))
+		return FALSE
+
+	var/obj/progress_bar/P = new(A,desired_id,curtime,curtime + duration,callback_list)
 	all_progress_bars += P
+	A.doing_progress = TRUE
+	return TRUE

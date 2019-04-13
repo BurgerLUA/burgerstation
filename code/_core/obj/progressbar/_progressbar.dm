@@ -11,7 +11,9 @@
 	var/start_time = 0
 	var/end_time = 0
 
-/obj/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time)
+	var/list/callback_list
+
+/obj/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time,var/new_callback_list = list())
 
 	if(is_mob(new_loc))
 		screen_loc = "CENTER,CENTER+1"
@@ -26,6 +28,8 @@
 	id = new_id
 	start_time = new_start_time
 	end_time = new_end_time
+	callback_list = new_callback_list
+
 	..()
 
 /obj/progress_bar/update_icon()
