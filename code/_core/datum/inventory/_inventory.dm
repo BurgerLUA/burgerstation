@@ -168,10 +168,11 @@
 	update_overlays()
 	update_stats()
 
+
 	if(id == BODY_HAND_LEFT)
-		owner.add_overlay(I, desired_icon_state=I.icon_state_held_left, desired_layer = LAYER_MOB_HELD)
+		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 	else if(id == BODY_HAND_RIGHT)
-		owner.add_overlay(I, desired_icon_state=I.icon_state_held_right, desired_layer = LAYER_MOB_HELD)
+		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 
 	return TRUE
 

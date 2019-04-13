@@ -9,13 +9,15 @@
 
 	var/atom/attached_object
 
+	var/never_blend = FALSE
+
 /obj/overlay/update_icon()
 
-
-	if(length(additional_blends))
+	if(length(additional_blends) && !never_blend)
 		var/icon/I = new /icon(initial_icon,initial_icon_state)
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
+
 			if(IB.special_type & ICON_BLEND_MASK)
 				var/icon/OI = new (IB.icon,IB.icon_state)
 				var/icon/MI = new (initial_icon,initial_icon_state)
