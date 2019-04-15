@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/basalt.dmi'
 	icon_state = "basalt1"
 
-	light_power = 0.1
+	light_power = DEFAULT_BRIGHTNESS_EXTERIOR
 	light_range = 2
 	light_color = "#FF8300"
 

@@ -1,6 +1,5 @@
 var/global/list/all_progress_bars = list()
 
-
 /subsystem/progress_bars/
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
@@ -29,7 +28,7 @@ var/global/list/all_progress_bars = list()
 
 /proc/add_progress_bar(var/atom/A,var/desired_id,var/duration,var/list/callback_list)
 
-	if(A.doing_progress) //TEST IF THIS WORKS
+	if(A.doing_progress)
 		if(is_living(A))
 			var/mob/living/L = A
 			L.to_chat(span("notice","You're already busy with a task!"))

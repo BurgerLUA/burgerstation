@@ -9,7 +9,7 @@
 	corner_icons = TRUE
 	corner_category = "dirt"
 
-	light_power = 0.05
+	light_power = DEFAULT_BRIGHTNESS_INTERIOR
 
 	layer = LAYER_FLOOR_LARGE
 
@@ -91,6 +91,8 @@
 /turf/simulated/floor/colored/dirt/cave
 	name = "cave dirt"
 	color = "#493C2F"
+
+	light_power = DEFAULT_BRIGHTNESS_INTERIOR
 
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"

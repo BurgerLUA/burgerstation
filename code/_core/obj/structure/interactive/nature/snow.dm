@@ -13,7 +13,7 @@ obj/structure/scenery/pinetrees
 	has_transparency_marker = TRUE
 
 
-obj/structure/scenery/rocks/New()
+obj/structure/scenery/pinetrees/New()
 	..()
 	icon_state = "pine_[rand(1,3)]"
 

@@ -11,3 +11,5 @@
 	density_west = TRUE
 	density_up = TRUE
 	density_down = TRUE
+
+	light_power = 0

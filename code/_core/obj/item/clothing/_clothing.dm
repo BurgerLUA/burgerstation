@@ -19,6 +19,11 @@
 	..()
 	initialize_blends()
 
+/obj/item/clothing/on_spawn()
+	if(polymorphic)
+		update_icon()
+	..()
+
 /obj/item/clothing/initialize_blends()
 
 	if(polymorphic)

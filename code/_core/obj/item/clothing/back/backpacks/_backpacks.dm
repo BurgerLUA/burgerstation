@@ -5,17 +5,7 @@ obj/item/clothing/back/backpack
 
 	is_container = TRUE
 
-	inventories = list(
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic
-	)
+	dynamic_inventory_count = 12
 
 	size = 4
 	container_max_size = 3

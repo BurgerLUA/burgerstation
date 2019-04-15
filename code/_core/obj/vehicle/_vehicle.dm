@@ -9,6 +9,8 @@
 	opacity = 0
 	anchored = 0
 
+	layer = LAYER_OBJ_VEHICLE
+
 	var/list/obj/item/equipment
 
 /obj/vehicle/proc/attach_equipment(var/obj/item/I)

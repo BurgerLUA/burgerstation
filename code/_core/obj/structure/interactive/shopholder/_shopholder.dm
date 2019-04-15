@@ -26,6 +26,7 @@
 /obj/structure/interactive/shop_holder/update_icon()
 	if(stored_item)
 		appearance = stored_item.appearance
+	..()
 
 /obj/structure/interactive/shop_holder/clicked_by_object(caller,object,location,control,params)
 

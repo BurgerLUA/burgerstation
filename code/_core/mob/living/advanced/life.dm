@@ -8,5 +8,5 @@
 
 
 /mob/living/advanced/post_death()
-	//Effects here.
+	new/obj/effect/temp/death(get_turf(src))
 	qdel(src)

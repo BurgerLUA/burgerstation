@@ -3,6 +3,7 @@ obj/structure/scenery/jungle_grass
 	icon = 'icons/obj/structure/flora/jungleflora.dmi'
 	icon_state = "grassa1"
 	density = 0
+	layer = LAYER_FLOOR_DECAL
 
 obj/structure/scenery/jungle_grass/New()
 	..()

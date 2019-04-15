@@ -4,7 +4,7 @@ var/list/objects_to_delete = list()
 	name = "Cleanup Subsystem"
 	desc = "Cleans up things that need to be deleted."
 	priority = SS_ORDER_DELETE
-	tick_rate = SECONDS_TO_TICKS(10)
+	tick_rate = SECONDS_TO_TICKS(1)
 
 /subsystem/delete/on_life()
 	for(var/atom/object_to_delete in objects_to_delete)

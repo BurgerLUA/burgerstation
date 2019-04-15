@@ -28,6 +28,8 @@
 
 	var/ignore_other_slots = FALSE
 
+	var/dynamic_inventory_count = 0
+
 
 	var/block_mul = list(
 		ATTACK_TYPE_MELEE = 0,
@@ -61,15 +63,19 @@
 		I.alpha = 0
 		I.mouse_opacity = 0
 
+	var/opening = FALSE
+
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/inventory/I = inventories[i]
 		I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
-		if(!I.alpha)
+		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)
 			I.mouse_opacity = 2
+			opening = TRUE
 		else
 			animate(I,alpha=0,time=4)
 			I.mouse_opacity = 0
+			opening = FALSE
 
 	for(var/obj/button/B in A.buttons)
 		if(B.type != /obj/button/close_inventory)
@@ -77,7 +83,7 @@
 
 		B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
 
-		if(!B.alpha)
+		if(opening)
 			animate(B,alpha=255,time=4)
 			B.mouse_opacity = 2
 		else
@@ -117,20 +123,23 @@
 
 	//force_move(desired_loc) //TODO: FIGURE THIS OUT
 
-	var/dynamic_id = 1
-
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
-
-		if(is_dynamic_inventory(inventories[i]))
-			inventories[i].id = "dynamic_[dynamic_id]"
-			dynamic_id += 1
 
 		if(container_max_size)
 			inventories[i].max_size = container_max_size
 		if(container_max_weight)
 			inventories[i].max_weight = container_max_weight
+
+	for(var/i=1, i <= dynamic_inventory_count, i++)
+		var/obj/inventory/dynamic/D = new(src)
+		D.id = "dynamic_[i]"
+		if(container_max_size)
+			D.max_size = container_max_size
+		if(container_max_weight)
+			D.max_weight = container_max_weight
+		inventories += D
 
 	. = ..()
 

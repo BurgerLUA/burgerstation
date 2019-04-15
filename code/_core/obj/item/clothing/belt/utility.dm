@@ -6,17 +6,7 @@
 
 	is_container = TRUE
 
-	inventories = list(
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic
-	)
+	dynamic_inventory_count = 6
 
 	size = 3
 	container_max_size = 2

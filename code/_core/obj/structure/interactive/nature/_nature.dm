@@ -28,14 +28,12 @@ obj/structure/scenery/grass_bush/clicked_by_object(caller,object,location,contro
 
 	return TRUE
 
-
-
-
 obj/structure/scenery/flowers
 	name = "flowers"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "ywflowers_1"
 	density = 0
+	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/flowers/New()
 	..()
@@ -52,6 +50,7 @@ obj/structure/scenery/grass
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "sparsegrass_1"
 	density = 0
+	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/grass/New()
 	..()
@@ -61,17 +60,16 @@ obj/structure/scenery/grass/New()
 		if(2)
 			icon_state = "fullgrass_[rand(1,3)]"
 
-
 obj/structure/scenery/rocks
 	name = "rocks"
-	icon = 'icons/obj/structure/flora/rocks.dmi'
+	icon = 'icons/obj/structure/flora/rocks_new.dmi'
 	icon_state = "rock_1"
 	density = 0
+	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/rocks/New()
 	..()
 	icon_state = "rock_[rand(1,10)]"
-
 
 obj/structure/scenery/evergreen
 	name = "evergreen tree"
@@ -86,8 +84,6 @@ obj/structure/scenery/evergreen
 	mouse_opacity = 0
 
 	has_transparency_marker = TRUE
-
-
 
 obj/structure/scenery/evergreen/New()
 	..()
