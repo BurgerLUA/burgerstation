@@ -39,6 +39,8 @@
 /mob/proc/toggle_buttons(var/important_too = FALSE,var/speed = 1)
 	draw_buttons = !draw_buttons
 	for(var/obj/button/B in buttons)
+		if(B.essential)
+			continue
 		if(draw_buttons)
 			animate(B,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
 			B.mouse_opacity = 2

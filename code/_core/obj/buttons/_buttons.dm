@@ -16,6 +16,8 @@
 
 	//var/click_sound = 'sounds/ui/beep-metallic.ogg'
 
+	var/essential = FALSE
+
 /obj/button/proc/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)

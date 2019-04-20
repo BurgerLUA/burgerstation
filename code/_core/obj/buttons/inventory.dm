@@ -4,6 +4,8 @@
 	alpha = 0
 	mouse_opacity = 0
 
+	essential = TRUE
+
 /obj/button/close_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
