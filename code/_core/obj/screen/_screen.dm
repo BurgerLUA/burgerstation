@@ -2,14 +2,19 @@
 	name = "screen"
 	desc = "This does something, I think."
 
-	icon = 'icons/invisible.dmi'
-	icon_state = "0"
+	icon = 'icons/hud/discovery.dmi'
+	icon_state = "blank"
 
 	layer = LAYER_AREA
 	plane = PLANE_MAP_TEXT
 
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 
-	screen_loc = "CENTER,CENTER"
+	screen_loc = "CENTER-4.5,CENTER-4.5"
 
 	mouse_opacity = 0
+
+	var/time = 0
+	var/is_fading = FALSE
+	var/fade_out = FALSE
+	var/client

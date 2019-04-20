@@ -37,8 +37,12 @@
 	world_state = STATE_RUNNING
 
 	if(ENABLE_INSTALOAD)
-		for(var/mob/abstract/observer/O in all_mobs_with_clients)
-			O.load_most_recent_character()
+		if(ENABLE_CHARGEN)
+			for(var/mob/abstract/observer/O in all_mobs_with_clients)
+				O.new_character()
+		else
+			for(var/mob/abstract/observer/O in all_mobs_with_clients)
+				O.load_most_recent_character()
 
 	spawn while(TRUE)
 		for(var/list/v in active_subsystems)

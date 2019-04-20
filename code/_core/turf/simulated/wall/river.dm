@@ -6,7 +6,7 @@
 	allow_bullet_pass = TRUE
 	layer = LAYER_FLOOR
 
-	light_power = DEFAULT_BRIGHTNESS_TURF_LIGHT
+	light_power = DEFAULT_BRIGHTNESS_TURF_LIGHT_HIGH
 	light_range = 2
 	light_color = "#AAAAFF"
 
