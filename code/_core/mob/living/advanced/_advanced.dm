@@ -79,22 +79,6 @@
 	if(right_hand)
 		right_hand.drop_held_objects(src.loc)
 
-/mob/living/advanced/proc/toggle_inventory(var/important_too = FALSE,var/speed=3)
-	draw_inventory = !draw_inventory
-	for(var/v in inventory)
-		var/obj/inventory/O = v
-		if(O.is_container)
-			continue
-		if(draw_inventory)
-			animate(O,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
-			O.mouse_opacity = 2
-		else
-			if(!O.essential || important_too)
-				animate(O,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
-				O.mouse_opacity = 0
-
-	update_icon()
-
 /mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE)
 
 	var/dropped_objects = list()

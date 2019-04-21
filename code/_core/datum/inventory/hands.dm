@@ -6,12 +6,16 @@
 	item_slot = SLOT_HAND_LEFT
 	worn_slots = 1
 
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
 /obj/inventory/organs/right_hand_worn
 	name = "right glove"
 	id = BODY_HAND_RIGHT + "_worn"
 	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT
 	worn_slots = 1
+
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 //Holding
 /obj/inventory/organs/left_hand_held

@@ -11,3 +11,5 @@
 	icon_state = "square_round_small"
 
 	screen_loc = "CENTER,CENTER"
+
+	flags = FLAGS_HUD_MOB

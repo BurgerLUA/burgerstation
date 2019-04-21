@@ -6,6 +6,8 @@
 
 	item_slot = SLOT_TORSO | SLOT_TORSO_U
 
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
 /obj/inventory/organs/torso/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
@@ -34,6 +36,8 @@
 	worn_slots = 2
 
 	item_slot = SLOT_TORSO_O | SLOT_TORSO_A
+
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/inventory/organs/torso_o/can_wear_object(var/obj/item/I,var/messages = FALSE)
 

@@ -6,6 +6,8 @@
 	item_slot = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 	worn_slots = 2
 
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
 /obj/inventory/organs/left_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
@@ -34,6 +36,8 @@
 	click_flags = RIGHT_FOOT
 	item_slot = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U
 	worn_slots = 2
+
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/inventory/organs/right_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 

@@ -25,46 +25,43 @@
 	if(client)
 		client.known_buttons = buttons
 
-/mob/proc/toggle_health(var/important_too = FALSE,var/speed = 1)
+//Health
+/mob/proc/toggle_health(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
 	draw_health = !draw_health
+	show_health(draw_health,show_flags_whitelist,show_flags_blacklist,speed)
+
+/mob/proc/show_health(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
 	for(var/k in health_elements)
 		var/obj/button/health/H = health_elements[k]
-		if(draw_health)
-			animate(H,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
-			H.mouse_opacity = 2
-		else
-			animate(H,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
-			H.mouse_opacity = 0
+		if(H.flags & show_flags_whitelist && !(H.flags & show_flags_blacklist))
+			H.show(show,speed)
 
-/mob/proc/toggle_buttons(var/important_too = FALSE,var/speed = 1)
+//Buttons
+/mob/proc/toggle_buttons(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
 	draw_buttons = !draw_buttons
+	show_buttons(draw_buttons,show_flags_whitelist,show_flags_blacklist,speed)
+
+/mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
 	for(var/obj/button/B in buttons)
-		if(B.essential)
-			continue
-		if(draw_buttons)
-			animate(B,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
-			B.mouse_opacity = 2
-		else
-			animate(B,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
-			B.mouse_opacity = 0
+		if(B.flags & show_flags_whitelist && !(B.flags & show_flags_blacklist))
+			B.show(show,speed)
 
-/mob/proc/show_hud(var/show,var/speed=1)
-	if(!show)
-		if(draw_buttons)
-			toggle_buttons(TRUE,speed)
-		if(draw_health)
-			toggle_health(TRUE,speed)
-	else
-		if(!draw_buttons)
-			toggle_buttons(TRUE,speed)
-		if(!draw_health)
-			toggle_health(TRUE,speed)
+//Inventory
+/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
+	draw_inventory = !draw_inventory
+	show_inventory(draw_inventory,show_flags_whitelist,show_flags_blacklist,speed)
 
-/mob/living/advanced/show_hud(var/show,var/speed=1)
+/mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
+	for(var/v in inventory)
+		var/obj/inventory/O = v
+		if(O.flags & show_flags_whitelist && !(O.flags & show_flags_blacklist))
+			O.show(show,speed)
+
+//HUD
+/mob/proc/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=1)
+	show_buttons(show,show_flags_whitelist,show_flags_blacklist,speed)
+	show_health(show,show_flags_whitelist,show_flags_blacklist,speed)
+
+/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=1)
 	..()
-	if(!show)
-		if(draw_inventory)
-			toggle_inventory(TRUE,speed)
-	else
-		if(!draw_inventory)
-			toggle_inventory(TRUE,speed)
+	show_inventory(show,show_flags_whitelist,show_flags_blacklist,speed)

@@ -17,6 +17,8 @@
 
 	item_slot = SLOT_GROIN_U | SLOT_GROIN
 
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
 /obj/inventory/organs/groin/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())

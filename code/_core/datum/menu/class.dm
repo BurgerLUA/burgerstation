@@ -108,7 +108,7 @@
 		var/show_disclaimer = FALSE
 
 		spawn(0)
-			A.show_hud(FALSE,1)
+			A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,1)
 			A.sight |= SEE_THRU
 			C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
 
@@ -144,5 +144,5 @@
 
 			A.sight &= ~SEE_THRU
 			sleep(SECONDS_TO_DECISECONDS(3))
-			A.show_hud(TRUE,3)
+			A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 			A.stun_time = 1

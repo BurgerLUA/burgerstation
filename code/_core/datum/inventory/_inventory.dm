@@ -35,6 +35,8 @@
 
 	var/click_flags
 
+	var/flags = FLAGS_HUD_NONE
+
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 	var/reverse_draw = FALSE //Should the worn state and the held state be swapped?
 
@@ -58,6 +60,14 @@
 	var/y_offset_mul = 0
 
 	var/draw_extra = FALSE
+
+/obj/inventory/proc/show(var/should_show,var/speed)
+	if(should_show)
+		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
+		src.mouse_opacity = 2
+	else
+		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
+		src.mouse_opacity = 0
 
 /obj/inventory/New(var/desired_loc)
 

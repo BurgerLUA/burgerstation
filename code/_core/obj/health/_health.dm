@@ -64,6 +64,8 @@
 
 	screen_loc = "RIGHT-0.25,BOTTOM+1.1"
 
+	flags = FLAGS_HUD_MOB
+
 /obj/button/health/hp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] health.")
 
@@ -83,6 +85,8 @@
 
 	screen_loc = "RIGHT,BOTTOM+1.1"
 
+	flags = FLAGS_HUD_MOB
+
 /obj/button/health/sp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] stamina.")
 
@@ -101,6 +105,8 @@
 	bar_color = "#0000ff"
 
 	screen_loc = "RIGHT+0.25,BOTTOM+1.1"
+
+	flags = FLAGS_HUD_MOB
 
 /obj/button/health/mp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] mana.")

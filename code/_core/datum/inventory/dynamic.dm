@@ -13,4 +13,4 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
-	is_container = TRUE
+	flags = FLAGS_HUD_SPECIAL | FLAGS_HUD_INVENTORY
