@@ -1,4 +1,4 @@
-obj/structure/smooth/window
+/obj/structure/smooth/window
 	name = "window"
 	desc = "See through this."
 	icon = 'icons/obj/structure/modern/window.dmi'
@@ -11,8 +11,15 @@ obj/structure/smooth/window
 	layer = LAYER_OBJ_WINDOW
 
 
-obj/structure/smooth/window/tinted
+/obj/structure/smooth/window/tinted
 	name = "tinted window"
 	desc = "Don't see through this."
 	color = "#444444"
 	opacity = 1
+
+
+/obj/structure/smooth/window/clockwork
+	name = "clockwork window"
+	opacity = 1
+	icon = 'icons/obj/structure/clockwork/window.dmi'
+	icon_state = "window"

@@ -28,3 +28,12 @@ obj/structure/smooth/table/reinforced
 	icon_state = "table"
 
 	corner_category = "table_reinforced"
+
+
+obj/structure/smooth/table/brass
+	name = "clockwork table"
+	desc = "Extra sturdy."
+	icon = 'icons/obj/structure/clockwork/table.dmi'
+	icon_state = "table"
+
+	corner_category = "table_clockwork"

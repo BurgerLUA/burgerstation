@@ -31,7 +31,7 @@
 
 /experience/proc/Initialize(var/desired_xp)
 	experience = desired_xp
-	last_level = xp_to_level(desired_xp)
+	last_level = xp_to_level(experience)
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
 	return floor( (xp ** (1/experience_power) ) / experience_multiplier)

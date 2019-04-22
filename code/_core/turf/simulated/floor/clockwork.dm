@@ -26,3 +26,8 @@
 	icon_state = "vent_on"
 
 
+
+/turf/simulated/floor/clockwork/reebe
+	name = "clockwork plating"
+	icon = 'icons/turf/floor/clockwork.dmi'
+	icon_state = "reebe"
