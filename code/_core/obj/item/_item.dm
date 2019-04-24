@@ -58,7 +58,7 @@
 	for(var/obj/inventory/I in A.inventory)
 		if(I in inventories)
 			continue
-		if(!I.is_container)
+		if(!(I.flags & FLAGS_HUD_INVENTORY))
 			continue
 		I.alpha = 0
 		I.mouse_opacity = 0
@@ -77,14 +77,23 @@
 			I.mouse_opacity = 0
 			opening = FALSE
 
+	if(opening)
+		for(var/obj/button/B in A.buttons)
+			if(B.type != /obj/button/close_inventory) //TODO: Fix this shitcode
+				continue
+			B.alpha = 0
+			B.mouse_opacity = 0
+			world.log << "HIDING BUTTON"
+
 	for(var/obj/button/B in A.buttons)
-		if(B.type != /obj/button/close_inventory)
+		if(B.type != /obj/button/close_inventory) //TODO: Fix this shitcode
 			continue
 
 		B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
 
 		if(opening)
 			animate(B,alpha=255,time=4)
+			world.log << "SHOWING BUTTON"
 			B.mouse_opacity = 2
 		else
 			animate(B,alpha=0,time=4)
@@ -94,13 +103,12 @@
 
 	return TRUE
 
-
 /obj/item/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(!is_container)
 		return ..()
 
-	if(is_inventory(object) && is_advanced(caller) && length(inventories))
+	if(is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1)
 		return click_self(caller,location,control,params)
 
 	if(is_item(object) && length(inventories))

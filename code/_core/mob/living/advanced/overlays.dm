@@ -1,5 +1,4 @@
 mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE)
-	world.log << "ADDING OVERLAY OF [A] with icon_state of [desired_icon_state ? desired_icon_state : A.icon_state]"
 	var/obj/overlay/O = new /obj/overlay
 	O.attached_object = A
 	O.initial_icon = desired_icon ? desired_icon : A.icon
@@ -12,11 +11,9 @@ mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_ic
 	if(!desired_never_blend)
 		O.additional_blends = desired_additional_blends ? desired_additional_blends : A.additional_blends
 	O.update_icon()
-	world.log << "FINAL OVERLAY: [O.icon_state] WITH COLOR [A.color]."
 	add_overlay_image(O)
 
 mob/living/advanced/proc/remove_overlay(var/atom/A)
-	world.log << "REMOVING OVERLAY OF [A]"
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != A)
 			continue
@@ -31,7 +28,6 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 
 mob/living/advanced/proc/update_all_blends()
 	for(var/obj/overlay/O in overlays_assoc)
-		world.log << "PENIS [O.attached_object.name]"
 		remove_overlay_image(O)
 		O.update_icon()
 		add_overlay_image(O)

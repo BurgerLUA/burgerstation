@@ -1,0 +1,1 @@
+#define PIXELS_TO_SCREEN(x) (x/TILE_SIZE)

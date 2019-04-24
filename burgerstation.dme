@@ -37,6 +37,7 @@
 #include "code\__defines\flags_movement.dm"
 #include "code\__defines\flags_status.dm"
 #include "code\__defines\goon_lighting.dm"
+#include "code\__defines\HUD.dm"
 #include "code\__defines\icons.dm"
 #include "code\__defines\intent.dm"
 #include "code\__defines\interaction.dm"

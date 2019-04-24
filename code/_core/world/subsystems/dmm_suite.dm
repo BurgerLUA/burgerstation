@@ -13,6 +13,8 @@ var/global/dmm_suite/dmm_suite
 
 	var/list/map_files = flist(MAP_DIRECTORY)
 
+	var/maps_loaded = 0
+
 	for(var/filename in map_files)
 
 		var/x_value = text2num(copytext(filename,1,2))
@@ -30,3 +32,7 @@ var/global/dmm_suite/dmm_suite
 		var/file_data = file2text("[MAP_DIRECTORY]/[filename]")
 
 		dmm_suite.read_map(file_data, 1 + (x_value-1)*WORLD_SIZE_SEGMENT, 1 + (y_value-1)*WORLD_SIZE_SEGMENT, 1)
+
+		maps_loaded++
+
+	LOG_SERVER("Loaded [maps_loaded] maps.")

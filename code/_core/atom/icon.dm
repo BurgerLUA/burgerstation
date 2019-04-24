@@ -15,8 +15,6 @@
 
 /atom/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type)
 
-	world.log << "WE WANT A NEW BLEND FOR [desired_id] WITH THE COLOR [desired_color]."
-
 	if(!additional_blends[desired_id])
 		return FALSE
 

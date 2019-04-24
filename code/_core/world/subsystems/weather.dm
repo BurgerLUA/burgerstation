@@ -3,7 +3,7 @@
 	name = "Weather and Climate Subsystem"
 	desc = "Manages the icon states of areas, aka weather and climate."
 	priority = SS_ORDER_WEATHER
-	tick_rate = SECONDS_TO_TICKS(20) //Weather is 10 minute intervals
+	tick_rate = SECONDS_TO_TICKS(600) //Weather is 10 minute intervals
 	var/list/area/world/areas_rain = list()
 	var/list/area/world/areas_snow = list()
 
@@ -30,19 +30,19 @@
 				if(WEATHER_RAIN)
 					areas_rain += A
 
-	world.log << "Initialized [area_count] areas."
+	LOG_SERVER("Initialized [area_count] areas.")
 
 /subsystem/weather/on_life()
 
 	if(prob(is_raining ? 25 : 75))
 		is_raining = !is_raining
 		set_weather(WEATHER_RAIN,is_raining,areas_rain)
-		world.log << "TOGGLING RAIN [is_raining ? "ON" : "OFF"]"
+		LOG_DEBUG("TOGGLING RAIN [is_raining ? "ON" : "OFF"]")
 
 	if(prob(is_snowing ? 25 : 75))
 		is_snowing = !is_snowing
 		set_weather(WEATHER_SNOW,is_snowing,areas_snow)
-		world.log << "TOGGLING SNOW [is_snowing ? "ON" : "OFF"]"
+		LOG_DEBUG("TOGGLING SNOW [is_snowing ? "ON" : "OFF"]")
 
 	return TRUE
 

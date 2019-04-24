@@ -16,7 +16,7 @@
 	var/mob/living/advanced/A = caller
 
 	for(var/obj/inventory/I in A.inventory)
-		if(!I.is_container)
+		if(!(I.flags & FLAGS_HUD_INVENTORY))
 			continue
 		animate(I,alpha=0,time=4)
 		I.mouse_opacity = 0
