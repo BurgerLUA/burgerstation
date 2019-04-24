@@ -23,8 +23,6 @@
 
 	var/initialized = FALSE
 
-	var/area/area //The object's area.
-
 	density = FALSE
 
 	plane = PLANE_DEFAULT
@@ -49,11 +47,9 @@
 
 /atom/proc/Initialize()
 	initialize_blends()
-	//Initialize things here
 	initialized = TRUE
 	update_health()
 	update_icon()
-	area = get_area(src)
 
 /atom/New()
 	. = ..()

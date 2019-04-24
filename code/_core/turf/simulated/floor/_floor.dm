@@ -20,11 +20,12 @@
 	. = ..()
 
 	if(is_living(enterer))
+		var/area/A = src.loc
 		spawn(TICKS_TO_DECISECONDS(enterer.get_movement_delay()*0.5))
 			if(footstep_sounds && length(footstep_sounds))
 				var/footstep_sound = pick(footstep_sounds)
-				play_sound(footstep_sound,all_mobs_with_clients - enterer,vector(enterer.x,enterer.y,enterer.z),environment = area.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = enterer.invisibility)
-				play_sound(footstep_sound,list(enterer),vector(enterer.x,enterer.y,enterer.z),environment = area.sound_environment, volume = FOOTSTEP_VOLUME/2)
+				play_sound(footstep_sound,all_mobs_with_clients - enterer,vector(enterer.x,enterer.y,enterer.z),environment = A.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = enterer.invisibility)
+				play_sound(footstep_sound,list(enterer),vector(enterer.x,enterer.y,enterer.z),environment = A.sound_environment, volume = FOOTSTEP_VOLUME/2)
 
 			if(has_footprints)
 				var/obj/effect/footprint/emboss/F = new(src,enterer.dir,TRUE,TRUE)
@@ -39,10 +40,11 @@
 	. = ..()
 
 	if(is_living(exiter))
+		var/area/A = src.loc
 		if(footstep_sounds && length(footstep_sounds))
 			var/footstep_sound = pick(footstep_sounds)
-			play_sound(footstep_sound,all_mobs_with_clients - exiter,vector(exiter.x,exiter.y,exiter.z),environment = area.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = exiter.invisibility)
-			play_sound(footstep_sound,list(exiter),vector(exiter.x,exiter.y,exiter.z),environment = area.sound_environment, volume = FOOTSTEP_VOLUME/2)
+			play_sound(footstep_sound,all_mobs_with_clients - exiter,vector(exiter.x,exiter.y,exiter.z),environment = A.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = exiter.invisibility)
+			play_sound(footstep_sound,list(exiter),vector(exiter.x,exiter.y,exiter.z),environment = A.sound_environment, volume = FOOTSTEP_VOLUME/2)
 
 		if(has_footprints)
 			var/obj/effect/footprint/emboss/exit/F = new(src,exiter.dir,TRUE,TRUE)

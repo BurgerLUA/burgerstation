@@ -1,4 +1,7 @@
 /atom/movable/
+
+	var/area/area //The object's area.
+
 	var/tmp/move_dir = 0
 	var/tmp/move_delay = 0
 
@@ -8,9 +11,15 @@
 	step_size = TILE_SIZE
 	appearance_flags = LONG_GLIDE | KEEP_TOGETHER
 
+	var/collision_flags = FLAG_COLLISION_NONE
+
 	animate_movement = SLIDE_STEPS
 
 	var/ghost = FALSE
+
+/atom/movable/Initialize()
+	..()
+	area = get_area(src)
 
 /atom/movable/destroy()
 	var/turf/T = loc

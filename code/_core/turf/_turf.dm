@@ -29,9 +29,13 @@
 	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
 	var/tmp/list/datum/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
-
-
 	var/list/mob/living/old_living = list() //List of mobs that used to be on this turf.
+
+/*
+/turf/Initialize()
+	..()
+	area = src.loc //TODO: Remove this, and make sure it's safe to remove.
+*/
 
 /turf/proc/reconsider_lights()
 	for(var/datum/light_source/L in affecting_lights)
@@ -89,7 +93,6 @@
 	return src
 
 /turf/New(loc)
-	area = src.loc
 	global.turfs += src
 	if(opacity)
 		has_opaque_atom = TRUE
@@ -110,7 +113,7 @@
 	return src
 
 /turf/Entered(var/atom/enterer)
-	area.Entered(enterer)
+	src.loc.Entered(enterer)
 	..()
 	if(enterer && enterer.opacity)
 		has_opaque_atom = TRUE // Make sure to do this before reconsider_lights(), incase we're on instant updates. Guaranteed to be on in this case.
@@ -132,20 +135,22 @@
 /turf/can_be_attacked(var/atom/attacker)
 	return FALSE
 
-/turf/Enter(var/atom/enterer,var/atom/oldloc)
-	var/enter_direction = get_dir(oldloc,src)
+/turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
-	if((enter_direction & NORTH) && density_north)
-		return FALSE
+	if(!(enterer.collision_flags & FLAG_COLLISION_ETHEREAL))
+		var/enter_direction = get_dir(oldloc,src)
 
-	if((enter_direction & EAST) && density_east)
-		return FALSE
+		if((enter_direction & NORTH) && density_north)
+			return FALSE
 
-	if((enter_direction & SOUTH) && density_south)
-		return FALSE
+		if((enter_direction & EAST) && density_east)
+			return FALSE
 
-	if((enter_direction & WEST) && density_west)
-		return FALSE
+		if((enter_direction & SOUTH) && density_south)
+			return FALSE
+
+		if((enter_direction & WEST) && density_west)
+			return FALSE
 
 	return ..()
 

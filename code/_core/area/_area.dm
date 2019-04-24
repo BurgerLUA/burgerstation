@@ -1,7 +1,9 @@
+/var/list/area/areas = list()
+
 /area/
 	name = "AREA ERROR"
 	id = null
-	icon = 'icons/debug/areas.dmi'
+	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
 	plane = PLANE_AREA
@@ -28,7 +30,7 @@
 
 /area/New()
 	. = ..()
-
+	global.areas += src
 	if(dynamic_lighting)
 		luminosity = 0
 

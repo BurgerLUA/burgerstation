@@ -14,6 +14,8 @@
 		/obj/button/new_character
 	)
 
+	collision_flags = FLAG_COLLISION_ETHEREAL
+
 /mob/abstract/observer/no_move
 	icon_state = ""
 

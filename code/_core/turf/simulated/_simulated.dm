@@ -8,7 +8,8 @@
 	light_range = 2
 	light_color = "#FFFFFF"
 
-
+/turf/simulated/Initialize()
+	..()
 
 /turf/simulated/New(loc)
 	if(real_icon)
