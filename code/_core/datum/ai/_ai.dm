@@ -14,10 +14,10 @@
 	var/attack_ticks = 0
 	var/movement_ticks = 0
 
-	//Measured in deciseconds
-	var/objective_delay = 10
-	var/attack_delay = 1
-	var/movement_delay = 1
+	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 tick in between
+	var/objective_delay = 3
+	var/attack_delay = 0
+	var/movement_delay = 0
 
 	var/list/target_distribution = list(16,16,16,8,8,32,32)
 
@@ -25,7 +25,7 @@
 
 	var/simple = TRUE
 
-	var/sync_stats = FALSE
+	var/sync_stats = TRUE
 
 	var/stationary = TRUE
 
@@ -34,8 +34,8 @@
 	owner = desired_owner
 
 	if(sync_stats)
-		attack_delay = max(attack_delay,owner.get_attack_delay())
-		movement_delay = max(movement_delay,owner.get_movement_delay())
+		attack_delay = ceiling(TICK_LAG*owner.get_attack_delay()/LIFE_TICK)
+		movement_delay = ceiling(TICK_LAG*owner.get_movement_delay()/LIFE_TICK)
 
 	attack_ticks = rand(1,attack_delay)
 	movement_ticks = rand(1,movement_delay)
@@ -44,16 +44,22 @@
 	start_turf = get_turf(owner)
 
 /ai/proc/on_life()
-	handle_objectives()
-	handle_movement()
-	handle_attacking()
+
+	objective_ticks += 1
+	if(objective_ticks >= objective_delay)
+		handle_objectives()
+
+	movement_ticks += 1
+	if(movement_ticks >= movement_delay)
+		handle_movement()
+
+	attack_ticks += 1
+	if(attack_ticks >= attack_delay)
+		handle_attacking()
+
 	return TRUE
 
 /ai/proc/handle_attacking()
-
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
 
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0
@@ -79,10 +85,6 @@
 
 /ai/proc/handle_movement()
 
-	if(movement_ticks < movement_delay)
-		movement_ticks += 1
-		return
-
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) > 1)
 			owner.move_dir = get_dir(owner,objective_attack)
@@ -102,10 +104,6 @@
 	owner.say("I will kill you, [objective_attack.name]!")
 
 /ai/proc/handle_objectives()
-
-	if(objective_ticks < objective_delay)
-		objective_ticks += 1
-		return
 
 	if(objective_attack && !can_see_enemy(objective_attack))
 		objective_attack = null
@@ -163,10 +161,6 @@
 	simple = TRUE
 
 /ai/simple/handle_attacking()
-
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
 
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0

@@ -4,10 +4,6 @@
 
 /ai/simple/cultist/handle_movement()
 
-	if(movement_ticks < movement_delay)
-		movement_ticks += 1
-		return
-
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) > 1)
 			owner.move_dir = get_dir(owner,objective_attack) & pick(0,0,0,0,NORTH,EAST,SOUTH,WEST)
@@ -51,10 +47,6 @@
 
 /ai/simple/artificer/handle_attacking()
 
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
-
 	if(objective_attack && spawned_mobs < 5)
 		new /mob/living/simple/npc/cult/harvester(owner.loc)
 		spawned_mobs += 1
@@ -62,10 +54,6 @@
 	attack_ticks = 0
 
 /ai/simple/artificer/handle_movement()
-
-	if(movement_ticks < movement_delay)
-		movement_ticks += 1
-		return
 
 	if(objective_attack)
 		if(get_dist(objective_attack,owner) <= 6)

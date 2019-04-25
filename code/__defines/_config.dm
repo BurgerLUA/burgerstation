@@ -48,3 +48,6 @@
 
 #define DEFAULT_SKILL_ALLOCATION 190
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
+
+
+#define LIFE_TICK 4 //Deciseconds per life tick.

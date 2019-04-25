@@ -8,6 +8,12 @@
 
 	override_icon_state = TRUE
 
+	has_quick_function = TRUE
+
+/obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
+	shoot(caller,object,location,params)
+	return TRUE
+
 /obj/item/weapon/ranged/magic/scroll/click_self(var/mob/caller)
 	open = !open
 	caller.to_chat(span("notice","You [open ? "unravel" : "roll up"] the scroll."))
@@ -83,6 +89,8 @@
 	id = "fireball"
 
 	projectile = /obj/projectile/bullet/fireball
+
+	damage_type = "magic_fireball"
 
 	shoot_delay = 10
 	bullet_speed = 16

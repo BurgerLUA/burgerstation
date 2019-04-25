@@ -45,6 +45,11 @@
 
 	var/soul_bound = FALSE
 
+	var/has_quick_function = TRUE
+
+/obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
+	return FALSE
+
 /obj/item/can_be_attacked(var/atom/attacker)
 	return FALSE
 
@@ -83,7 +88,6 @@
 				continue
 			B.alpha = 0
 			B.mouse_opacity = 0
-			world.log << "HIDING BUTTON"
 
 	for(var/obj/button/B in A.buttons)
 		if(B.type != /obj/button/close_inventory) //TODO: Fix this shitcode
@@ -93,7 +97,6 @@
 
 		if(opening)
 			animate(B,alpha=255,time=4)
-			world.log << "SHOWING BUTTON"
 			B.mouse_opacity = 2
 		else
 			animate(B,alpha=0,time=4)

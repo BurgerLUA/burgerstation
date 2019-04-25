@@ -34,7 +34,6 @@
 
 	if(ai)
 		ai.on_life()
-
-	handle_movement(DECISECONDS_TO_TICKS(1))
+		handle_movement(DECISECONDS_TO_TICKS(LIFE_TICK))
 
 	return TRUE

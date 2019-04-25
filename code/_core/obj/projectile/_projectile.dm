@@ -66,9 +66,11 @@
 
 	update_icon()
 
+	/*
 	var/matrix/M = matrix()
 	M.Translate(vel_x*lifetime,vel_y*lifetime)
 	animate(src, transform = M, time = lifetime*0.5)
+	*/
 
 /obj/projectile/update_icon()
 	var/icon/I = icon(icon,icon_state = icon_state)
@@ -93,6 +95,10 @@
 	if(last_loc_x != current_loc_x || last_loc_x != current_loc_y)
 
 		current_loc = locate(current_loc_x,current_loc_y,z)
+
+		var/matrix/M = matrix()
+		M.Translate(pixel_x_float,pixel_y_float)
+		animate(src, transform = M, time = 0.50)
 
 		if(!is_turf(previous_loc))
 			on_hit(previous_loc)

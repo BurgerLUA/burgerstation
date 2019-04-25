@@ -30,7 +30,7 @@
 
 	return value_added
 
-/obj/item/currency/clicked_by_object(caller,object,location,control,params)
+/obj/item/currency/click_on_object(caller,object,location,control,params)
 
 	if(object == src)
 		return ..()

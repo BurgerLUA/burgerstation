@@ -44,8 +44,6 @@
 	var/draw_buttons = TRUE
 	var/draw_health = TRUE
 
-
-
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)

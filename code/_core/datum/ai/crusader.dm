@@ -8,10 +8,6 @@
 
 /ai/crusader/handle_attacking()
 
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
-
 	var/weapon_distance = 1
 
 	if(is_advanced(owner))

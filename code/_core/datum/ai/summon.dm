@@ -3,10 +3,6 @@
 
 /ai/summon/handle_movement()
 
-	if(movement_ticks < movement_delay)
-		movement_ticks += 1
-		return
-
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) > 1)
 			owner.move_dir = get_dir(owner,objective_attack)
@@ -30,10 +26,6 @@
 
 
 /ai/summon/handle_attacking()
-
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
 
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0

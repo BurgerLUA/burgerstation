@@ -4,10 +4,6 @@
 
 /ai/ranged/handle_attacking()
 
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
-
 	if(objective_attack)
 		owner.move_dir = 0
 		var/list/params = list(

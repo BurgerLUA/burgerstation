@@ -2,6 +2,19 @@
 //A down is just a press.
 mob/living/advanced/on_left_down(object,location,control,params)
 
+	if(quick_mode)
+		for(var/obj/button/slot/B in buttons)
+			if(B.id == quick_mode)
+				if(!B.stored_item)
+					break
+				if(!is_inventory(B.stored_item.loc))
+					break
+				var/obj/inventory/I = B.stored_item.loc
+				if(I.owner != src)
+					B.clear_object(src)
+					break
+				return B.stored_item.quick(src,location,control,params)
+
 	if(driving)
 		driving.click_on_object(src,object,location,control,params)
 		return

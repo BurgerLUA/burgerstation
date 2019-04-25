@@ -45,6 +45,8 @@
 
 	var/obj/vehicle/driving
 
+	var/quick_mode = null
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
@@ -106,13 +108,14 @@ mob/living/advanced/Login()
 		L.update_for_mob(src)
 
 /mob/living/advanced/on_life()
+
 	. = ..()
 
 	if(chargen)
 		return .
 
 	if(talk_duration)
-		talk_duration = max(0,talk_duration-1)
+		talk_duration = max(0,talk_duration-LIFE_TICK)
 		if(talk_duration <= 0)
 			talk_type = 0
 			update_icon()
@@ -125,7 +128,7 @@ mob/living/advanced/Login()
 	var/stamina_adjust = 0
 
 	if(health_regen_delay <= 0 && health_current < health_max)
-		var/heal_amount = health_regeneration
+		var/heal_amount = health_regeneration*LIFE_TICK*0.1
 		if((get_brute_loss() + get_burn_loss())/health_max)
 			heal_amount *= 2
 		health_adjust = heal_all_organs(heal_amount,heal_amount,0,1)
@@ -133,22 +136,25 @@ mob/living/advanced/Login()
 			add_skill_xp(SKILL_RECOVERY,health_adjust)
 
 	if(stamina_regen_delay <= 0 && stamina_current < stamina_max)
-		stamina_adjust = adjust_stamina(stamina_regeneration)
+		var/heal_amount = stamina_regeneration*LIFE_TICK*0.1
+		stamina_adjust = adjust_stamina(heal_amount)
 		if(stamina_adjust)
 			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
 
 	if(mana_regen_delay <= 0 && mana_current < mana_max)
-		mana_adjust = adjust_mana(mana_regeneration)
+		var/heal_amount = mana_regeneration*LIFE_TICK*0.1
+		mana_adjust = adjust_mana(heal_amount)
 		if(mana_adjust)
 			add_skill_xp(SKILL_RECOVERY,mana_adjust)
 
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
 
-	health_regen_delay = max(0,health_regen_delay - 1)
-	stamina_regen_delay = max(0,stamina_regen_delay - 1)
-	mana_regen_delay = max(0,mana_regen_delay - 1)
+	health_regen_delay = max(0,health_regen_delay - LIFE_TICK)
+	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK)
+	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK)
 
+	/*
 	if(life_ticks >= 10*4)
 		for(var/obj/item/organ/O in organs)
 			for(var/wound/W in O.wounds)
@@ -156,6 +162,11 @@ mob/living/advanced/Login()
 		life_ticks = 0
 	else
 		life_ticks += 1
+	*/
+
+	for(var/obj/item/organ/O in organs)
+		for(var/wound/W in O.wounds)
+			W.on_life()
 
 	return .
 

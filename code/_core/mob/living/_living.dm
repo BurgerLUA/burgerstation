@@ -25,6 +25,8 @@ var/global/list/all_living = list()
 	var/stamina_base = 10
 	var/mana_base = 10
 
+	//Regeneration times are in seconds.
+
 	var/stamina_max = 0
 	var/stamina_current = 0
 	var/stamina_regeneration = 0

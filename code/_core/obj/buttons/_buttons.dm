@@ -21,15 +21,12 @@
 	var/flags = FLAGS_HUD_NONE
 
 /obj/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
-
 	if(should_show)
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(draw_speed))
 		src.mouse_opacity = 2
 	else
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		src.mouse_opacity = 0
-
-
 
 /obj/button/proc/update_owner(var/mob/desired_owner)
 

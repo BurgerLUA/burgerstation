@@ -38,7 +38,17 @@
 		/obj/button/intent,
 		/obj/button/defense,
 		/obj/button/sneak,
-		/obj/button/close_inventory
+		/obj/button/close_inventory,
+		/obj/button/slot/A,
+		/obj/button/slot/B,
+		/obj/button/slot/C,
+		/obj/button/slot/D,
+		/obj/button/slot/E,
+		/obj/button/slot/F,
+		/obj/button/slot/G,
+		/obj/button/slot/H,
+		/obj/button/slot/I,
+		/obj/button/slot/J
 	)
 
 	var/list/obj/button/health/spawning_health = list(

@@ -16,15 +16,8 @@
 
 /ai/spider/handle_attacking()
 
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
-
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0
 		owner.attack(owner,objective_attack)
 
 	attack_ticks = 0
-
-/ai/spider/handle_movement()
-	..()

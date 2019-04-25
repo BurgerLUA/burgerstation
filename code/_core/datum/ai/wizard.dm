@@ -9,12 +9,8 @@
 
 /ai/wizard/handle_attacking()
 
-	if(attack_ticks < attack_delay)
-		attack_ticks += 1
-		return
-
 	if(objective_attack && get_dist(owner,objective_attack) <= 8)
-		owner.move_dir = 0
+
 		var/list/params = list(
 			"icon-x" = num2text(16),
 			"icon-y" = num2text(pick(target_distribution)),
@@ -33,22 +29,17 @@
 			params["left"] = TRUE
 			owner.on_left_down(objective_attack,owner,null,params)
 
-
 	attack_ticks = 0
 
 
 /ai/wizard/handle_movement()
 
-	if(movement_ticks < movement_delay)
-		movement_ticks += 1
-		return
-
 	if(objective_attack)
-
 		if(get_dist(owner,objective_attack) > 8)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else if(get_dist(owner,objective_attack) <= 4)
-			owner.move_dir = reverse_direction(get_dir(owner,objective_attack))
+			var/desired_direction = reverse_direction(get_dir(owner,objective_attack))
+			owner.move_dir = desired_direction
 		else
 			owner.move_dir = 0
 

@@ -56,6 +56,6 @@
 		return FALSE
 
 	if(stun_time != -1)
-		stun_time = max(0,stun_time - 1)
+		stun_time = max(0,stun_time - LIFE_TICK)
 
 	return TRUE
