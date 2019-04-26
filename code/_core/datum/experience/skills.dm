@@ -1,7 +1,7 @@
 /experience/skill/
 	experience_power = 1
 	experience_multiplier = 1
-	default_level = 5
+	default_level = SKILL_STARTING_NONE
 	chargen_min_level = 5
 	chargen_max_level = 25
 	associated_classes = list(

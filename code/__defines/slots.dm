@@ -28,6 +28,10 @@
 #define SLOT_HAND_RIGHT   0x400  //Gloves/Gauntlets
 
 
+#define SLOT_SPECIAL      0x80000 //Special items
+
+
+
 //1
 //2
 //4

@@ -8,11 +8,18 @@ proc/time_prob(var/value)
 	if(positive && positive_luck_mul)
 		if(is_living(positive))
 			var/mob/living/L = positive
-			base_prob += (L.get_attribute_level(ATTRIBUTE_LUCK)-50)*positive_luck_mul
+			var/luck = L.get_attribute_level(ATTRIBUTE_LUCK)
+			world.log << "Luck for [positive]: [luck]"
+			base_prob += (luck-50)*positive_luck_mul
 
 	if(negative && negative_luck_mul)
 		if(is_living(negative))
 			var/mob/living/L = negative
-			base_prob += (L.get_attribute_level(ATTRIBUTE_LUCK)-50)*negative_luck_mul
+			var/luck = L.get_attribute_level(ATTRIBUTE_LUCK)
+			world.log << "Luck for [negative]: [luck]"
+			base_prob += (luck-50)*negative_luck_mul
+
+
+	world.log << "LUCK: [base_prob]"
 
 	return base_prob

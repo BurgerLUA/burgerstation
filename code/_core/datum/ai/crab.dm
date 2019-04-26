@@ -15,7 +15,6 @@
 	sync_stats = TRUE
 
 /ai/crab/handle_attacking()
-
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)
 		owner.move_dir = 0
 		owner.attack(owner,objective_attack)
@@ -40,7 +39,6 @@
 	sync_stats = TRUE
 
 /ai/king_crab/handle_attacking()
-
 	if(objective_attack && get_dist(owner,objective_attack) <= 2)
 		owner.move_dir = 0
 		owner.attack(owner,objective_attack)

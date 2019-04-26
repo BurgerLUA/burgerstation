@@ -1,7 +1,7 @@
 /experience/attribute/
 	experience_power = 1
 	experience_multiplier = 1
-	default_level = 5
+	default_level = ATTRIBUTE_STARTING_NONE
 	chargen_min_level = 5
 	chargen_max_level = 20
 	associated_classes = list(
@@ -543,4 +543,5 @@
 	flags = ATTRIBUTE_STAT
 	chargen_min_level = 40
 	chargen_max_level = 60
+	default_level = 50
 	counts_towards_level = FALSE

@@ -25,8 +25,8 @@
 	if(stored_item)
 		A.to_chat(span("notice","\The [stored_item] was unbound from slot [icon_state]."))
 		stored_item = null
-		animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 		update_icon()
+		animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
 
 /obj/button/slot/clicked_by_object(caller,object,location,control,params)

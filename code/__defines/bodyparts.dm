@@ -38,6 +38,8 @@
 
 #define BODY_HAIR_HEAD "hair_head"
 
+#define BODY_SPECIAL "special"
+
 
 #define BODY_BRAIN "brain"
 #define BODY_LUNGS "lung"

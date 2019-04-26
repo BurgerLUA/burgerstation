@@ -10,13 +10,13 @@
 		/obj/inventory/organs/head,
 		/obj/inventory/organs/neck,
 		/obj/inventory/organs/face,
-		/obj/inventory/organs/glasses
+		/obj/inventory/organs/glasses,
+		/obj/inventory/organs/special
 	)
 
 	attach_flag = BODY_TORSO
 
 	enable_wounds = TRUE
-
 
 /obj/item/organ/head/initialize_blends()
 	..()

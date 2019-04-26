@@ -16,9 +16,9 @@
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
 	pixel_x = -32
-	pixel_y = -16
+	pixel_y = 0
 
-	health_max = 500
+	health_base = 1000
 
 	ai = /ai/king_crab
 
@@ -26,6 +26,8 @@
 	level_multiplier = 100
 
 	attack_range = 3
+
+	density = 1
 
 /mob/living/simple/npc/crab/king/get_movement_delay()
 	return SECONDS_TO_TICKS(1)

@@ -51,3 +51,12 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
+/obj/inventory/organs/special
+	name = "special slot"
+	id = BODY_SPECIAL
+	screen_loc = "LEFT+3,BOTTOM+4"
+	item_slot = SLOT_SPECIAL
+	worn_slots = 1
+
+	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB

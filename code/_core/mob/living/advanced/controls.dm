@@ -8,6 +8,7 @@ mob/living/advanced/on_left_down(object,location,control,params)
 				if(!B.stored_item)
 					break
 				if(!is_inventory(B.stored_item.loc))
+					B.clear_object(src)
 					break
 				var/obj/inventory/I = B.stored_item.loc
 				if(I.owner != src)
