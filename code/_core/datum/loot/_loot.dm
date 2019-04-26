@@ -18,6 +18,7 @@
 /loot/proc/spawn_loot_advanced(var/mob/living/advanced/A,var/left = FALSE)
 	var/obj/item/I = spawn_loot(get_turf(A))
 	A.pickup(I,left)
+	return I
 
 /loot/proc/spawn_loot_turf(var/turf/T)
 

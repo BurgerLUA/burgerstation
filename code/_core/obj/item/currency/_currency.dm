@@ -12,10 +12,11 @@
 	update_icon()
 
 /obj/item/currency/update_icon()
+
 	if(value <= 9)
 		icon_state = "[value]"
 	else if(value <= 100)
-		icon_state = "[floor(value/10)]"
+		icon_state = "[floor(value/10)*10]"
 	else
 		icon_state = "100"
 
@@ -26,11 +27,14 @@
 	value += value_added
 	update_icon()
 	if(value<=0)
+		drop_item(get_turf(src))
 		qdel(src)
 
 	return value_added
 
-/obj/item/currency/click_on_object(caller,object,location,control,params)
+/obj/item/currency/click_on_object(caller,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
 
 	if(object == src)
 		return ..()
@@ -44,9 +48,14 @@
 	var/mob/M = caller
 	var/obj/item/currency/C = object
 
-	M.to_chat(span("notice","You add [adjust_value(C.value)] crystals to the [src]. \The [src] now has [value] crystals."))
-	C.drop_item()
-	qdel(C)
+	if(is_inventory(object.loc))
+		M.to_chat(span("notice","You add [C.adjust_value(src.value)] crystals to the [C]. \The [C] now has [C.value] crystals."))
+		drop_item()
+		qdel(src)
+	else
+		M.to_chat(span("notice","You take [adjust_value(C.value)] crystals from the [C]. \The [src] now has [value] crystals."))
+		C.drop_item()
+		qdel(C)
 
 	return TRUE
 

@@ -45,7 +45,7 @@
 
 	var/soul_bound = FALSE
 
-	var/has_quick_function = TRUE
+	var/has_quick_function = FALSE
 
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE

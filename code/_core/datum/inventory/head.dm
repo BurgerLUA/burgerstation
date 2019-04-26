@@ -55,7 +55,7 @@
 /obj/inventory/organs/special
 	name = "special slot"
 	id = BODY_SPECIAL
-	screen_loc = "LEFT+3,BOTTOM+4"
+	screen_loc = "LEFT+2,BOTTOM+4"
 	item_slot = SLOT_SPECIAL
 	worn_slots = 1
 

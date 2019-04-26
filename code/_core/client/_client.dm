@@ -154,10 +154,10 @@ var/global/list/all_clients = list()
 
 	var/returning = 0x0
 
-	if(swap_mouse && check_swap ? ("left" in aug) :("right" in aug))
+	if((swap_mouse && check_swap) ? ("left" in aug) :("right" in aug))
 		returning |= CLICK_RIGHT
 
-	if(swap_mouse && check_swap ? ("right" in aug) : ("left" in aug))
+	if((swap_mouse && check_swap) ? ("right" in aug) : ("left" in aug))
 		returning |= CLICK_LEFT
 
 	if("middle" in aug)

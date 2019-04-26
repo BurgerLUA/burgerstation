@@ -5,7 +5,10 @@
 			var/obj/vehicle/V = callback_list["vehicle"]
 			src.Move(V)
 			return TRUE
-
+		if("loot_object")
+			var/obj/structure/interactive/lootable/L = callback_list["object"]
+			L.give_items(src,callback_list["left"])
+			return TRUE
 
 	..()
 
@@ -14,6 +17,9 @@
 	switch(id)
 		if("enter_vehicle")
 			to_chat(span("notice","You must remain still in order to enter the vehicle!"))
+			return TRUE
+		if("loot_object")
+			to_chat(span("notice","You must remain still in order to find an object!"))
 			return TRUE
 
 	..()
