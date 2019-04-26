@@ -34,9 +34,10 @@
 	last_level = xp_to_level(experience)
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
-	return floor( (xp ** (1/experience_power) ) / experience_multiplier)
+	return Clamp(floor( (xp ** (1/experience_power) ) / experience_multiplier),1,max_level)
 
 /experience/proc/level_to_xp(var/level) //Convert level to xp
+	level = clamp(level,1,max_level)
 	return ceiling( (level*experience_multiplier) ** experience_power)
 
 /experience/proc/set_level(var/level)

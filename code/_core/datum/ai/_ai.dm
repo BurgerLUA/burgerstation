@@ -34,12 +34,12 @@
 	owner = desired_owner
 
 	if(sync_stats)
-		attack_delay = ceiling(TICK_LAG*owner.get_attack_delay()/LIFE_TICK)
-		movement_delay = ceiling(TICK_LAG*owner.get_movement_delay()/LIFE_TICK)
+		attack_delay = ceiling(owner.get_attack_delay()/LIFE_TICK)
+		movement_delay = ceiling(TICKS_TO_DECISECONDS(owner.get_movement_delay())/LIFE_TICK)
 
-	attack_ticks = rand(1,attack_delay)
-	movement_ticks = rand(1,movement_delay)
-	objective_ticks = rand(1,objective_delay)
+	attack_ticks = rand(0,attack_delay)
+	movement_ticks = rand(0,movement_delay)
+	objective_ticks = rand(0,objective_delay)
 
 	start_turf = get_turf(owner)
 
@@ -101,7 +101,7 @@
 	movement_ticks = 0
 
 /ai/proc/hostile_message()
-	owner.say("I will kill you, [objective_attack.name]!")
+	return FALSE
 
 /ai/proc/handle_objectives()
 

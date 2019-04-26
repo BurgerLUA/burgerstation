@@ -75,7 +75,7 @@
 	if(!prob(min(base_chance,BLOCK_CHANCE_MAX)))
 		return FALSE
 
-	DT.display_miss_message(attacker,src,weapon,target,"blocked by [target]'s [blocking_item ? blocking_item : "fists"]")
+	DT.display_miss_message(attacker,src,weapon,target,"blocked by [src]'s [blocking_item ? blocking_item : "fists"]")
 
 	add_skill_xp(SKILL_BLOCK,max(1,(100-base_chance)/1))
 
@@ -122,7 +122,7 @@
 		return FALSE
 
 	DT.do_attack_animation(attacker,src,weapon,target)
-	DT.display_miss_message(attacker,src,weapon,target,"parried by [target]'s [parrying_item]")
+	DT.display_miss_message(attacker,src,weapon,target,"parried by [src]'s [parrying_item]")
 
 	if(allow_parry_counter)
 		attack(src,attacker)
@@ -144,7 +144,7 @@
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
 	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
-	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [target]")
+	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [src]")
 	DT.do_miss_sound(attacker,src,weapon,target)
 	DT.do_attack_animation(attacker,src,weapon,target)
 

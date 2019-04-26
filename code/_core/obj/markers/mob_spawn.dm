@@ -1,37 +1,3 @@
-/obj/marker/mob_spawn/
-	name = "Mob Spawnpoint"
-	desc = "This is where a mob should be placed at round start."
-
-	icon = 'icons/lighting.dmi'
-	icon_state = "white"
-
-	var/type_to_spawn
-	var/time_to_respawn = 0 //Set to 0 if it doesn't respawn.
-
-	//Internal Values
-	var/mob/living/owning_mob
-	var/death_time = 0
-
-/obj/marker/mob_spawn/New()
-	mob_spawnpoints += src
-
-/obj/marker/mob_spawn/proc/attempt_spawn()
-
-	if(!type_to_spawn)
-		return
-
-	if(owning_mob)
-		if(!time_to_respawn)
-			return
-		if(!death_time && owning_mob.status & FLAG_STATUS_DEAD)
-			death_time = curtime
-			return
-		if(death_time && death_time + time_to_respawn > curtime)
-			return
-
-	owning_mob = new type_to_spawn(src.loc)
-	death_time = 0
-
 /obj/marker/mob_spawn/hostile_human
 	name = "hostile new player spawnpoint"
 
@@ -52,7 +18,6 @@
 
 /obj/marker/mob_spawn/marwani
 	name = "marwani spawnpoint"
-
 	type_to_spawn = /mob/living/advanced/human/npc/unique/marwani
 
 
@@ -60,7 +25,10 @@
 	name = "ship marwani spawnpoint"
 	type_to_spawn = /mob/living/advanced/human/npc/unique/marwani/ship
 
-
+/obj/marker/mob_spawn/hunter
+	name = "hunter spawnpoint"
+	type_to_spawn = /mob/living/advanced/human/npc/unique/hunter
+	dir = EAST
 
 /obj/marker/mob_spawn/diamond_with_flaw
 	name = "diamond spawnpoint"
@@ -128,3 +96,6 @@
 	name = "player debug spawn"
 	type_to_spawn = /mob/living/advanced/human/npc/unique/debug
 	color = "#00FF00"
+
+
+

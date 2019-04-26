@@ -44,6 +44,17 @@
 	var/draw_buttons = TRUE
 	var/draw_health = TRUE
 
+	var/can_attack_while_moving = TRUE
+
+
+/mob/can_attack(var/atom/victim,var/params)
+
+	if(!can_attack_while_moving && move_delay > 0)
+		return FALSE
+
+	return ..()
+
+
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)

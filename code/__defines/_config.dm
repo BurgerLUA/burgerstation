@@ -50,4 +50,4 @@
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
 
-#define LIFE_TICK 4 //Deciseconds per life tick.
+#define LIFE_TICK 1 //Deciseconds per life tick.
