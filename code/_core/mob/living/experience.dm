@@ -52,6 +52,6 @@
 
 	var/old_level = level
 
-	level = floor(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1))
+	level = Clamp(floor(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1)),1,200)
 
 	return (old_level != 0 && old_level < level)

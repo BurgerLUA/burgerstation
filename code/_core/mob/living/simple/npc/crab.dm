@@ -26,15 +26,12 @@
 
 	ai = /ai/king_crab
 
-	class = "crab"
+	class = "crab_king"
 	level_multiplier = 100
 
 	attack_range = 3
 
 	density = 1
-
-
-
 
 /mob/living/simple/npc/crab/king/get_movement_delay()
 	return SECONDS_TO_TICKS(1)
