@@ -11,10 +11,18 @@
 
 	var/never_blend = FALSE
 
+	var/no_initial = FALSE
+
 /obj/overlay/update_icon()
 
 	if(length(additional_blends) && !never_blend)
-		var/icon/I = new /icon(initial_icon,initial_icon_state)
+		var/icon/I
+
+		if(no_initial)
+			I = ICON_INVISIBLE
+		else
+			I = new /icon(initial_icon,initial_icon_state)
+
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
 

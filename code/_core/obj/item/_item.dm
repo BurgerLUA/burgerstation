@@ -24,12 +24,13 @@
 
 	var/no_held_draw = FALSE
 
+	var/no_initial_blend = FALSE //Should we draw the initial icon when worn/held?
+
 	var/slot_icons = FALSE //Set to true if the clothing is based on where it's slot is.
 
 	var/ignore_other_slots = FALSE
 
 	var/dynamic_inventory_count = 0
-
 
 	var/block_mul = list(
 		ATTACK_TYPE_MELEE = 0,
@@ -46,6 +47,8 @@
 	var/soul_bound = FALSE
 
 	var/has_quick_function = FALSE
+
+
 
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE

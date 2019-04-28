@@ -76,6 +76,11 @@
 		return FALSE
 
 	DT.display_miss_message(attacker,src,weapon,target,"blocked by [src]'s [blocking_item ? blocking_item : "fists"]")
+	DT.do_attack_animation(attacker,src,weapon,target)
+
+	var/area/A = get_area(src)
+	if(A && istype(A))
+		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment, volume = Clamp(100 - base_chance,25,100) )
 
 	add_skill_xp(SKILL_BLOCK,max(1,(100-base_chance)/1))
 

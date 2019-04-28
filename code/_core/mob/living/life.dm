@@ -49,7 +49,7 @@
 
 	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
 		status |= FLAG_STATUS_STUN
-		animate(src,transform = turn(matrix(), 90), time = 1)
+		animate(src,transform = turn(matrix(), stun_angle), time = 1)
 		on_stunned()
 
 	if(status & FLAG_STATUS_DEAD)

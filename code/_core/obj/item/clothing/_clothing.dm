@@ -36,6 +36,8 @@
 
 /obj/item/clothing/update_icon()
 
+	world.log << "UPDATING [src.type]."
+
 	if(!polymorphic)
 		return ..()
 

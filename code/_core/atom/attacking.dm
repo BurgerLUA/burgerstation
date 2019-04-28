@@ -90,6 +90,7 @@
 	if(!prob(base_chance))
 		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
+	DT.do_attack_animation(attacker,src,weapon,target)
 	return TRUE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
@@ -97,6 +98,7 @@
 	if(!prob(base_chance))
 		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"parried")
+	DT.do_attack_animation(attacker,src,weapon,target)
 	if(allow_parry_counter)
 		src.attack(src,attacker)
 	return TRUE
@@ -106,4 +108,5 @@
 	if(!prob(base_chance))
 		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"dodged")
+	DT.do_attack_animation(attacker,src,weapon,target)
 	return TRUE

@@ -65,6 +65,8 @@ var/global/list/all_living = list()
 
 	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 
+	var/stun_angle = 0
+
 /mob/living/death()
 	if(..())
 		var/turf/T = get_turf(src)

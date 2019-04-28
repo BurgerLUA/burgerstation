@@ -10,6 +10,8 @@
 
 	polymorphic = TRUE
 
+	no_initial_blend = TRUE
+
 /obj/item/clothing/uniform/jumpsuit/grey
 	color_primary = "#A0A0A0"
 	color_secondary = "#A0A0A0"

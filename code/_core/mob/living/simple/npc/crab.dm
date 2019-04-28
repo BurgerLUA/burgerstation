@@ -7,6 +7,10 @@
 
 	ai = /ai/crab
 
+/mob/living/simple/npc/crab/post_death()
+	icon_state = "[initial(icon_state)]_dead"
+	update_icon()
+
 /mob/living/simple/npc/crab/passive
 	ai = /ai/passive
 	can_attack_while_moving = FALSE
@@ -28,6 +32,9 @@
 	attack_range = 3
 
 	density = 1
+
+
+
 
 /mob/living/simple/npc/crab/king/get_movement_delay()
 	return SECONDS_TO_TICKS(1)

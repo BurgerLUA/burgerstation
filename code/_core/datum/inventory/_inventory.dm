@@ -222,7 +222,9 @@
 	else
 		desired_icon_state = I.icon_state_worn
 
-	owner.add_overlay(I,desired_layer = I.worn_layer,desired_icon_state = desired_icon_state)
+
+
+	owner.add_overlay(I,desired_layer = I.worn_layer,desired_icon_state = desired_icon_state,desired_no_initial = I.no_initial_blend)
 
 	return TRUE
 

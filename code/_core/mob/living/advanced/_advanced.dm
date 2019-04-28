@@ -47,6 +47,8 @@
 
 	var/quick_mode = null
 
+	stun_angle = 90
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
