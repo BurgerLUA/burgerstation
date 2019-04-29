@@ -140,7 +140,9 @@
 		/obj/item/weapon/melee/null_rod/dagger = 28
 	)
 	possible_quantity = list(
-		/obj/item/weapon/ranged/bullet/crossbow = 6
+		/obj/item/weapon/melee/null_rod = 10,
+		/obj/item/weapon/melee/null_rod/staff = 10,
+		/obj/item/weapon/melee/null_rod/dagger = 10
 	)
 
 /obj/structure/interactive/shop_holder/weapons/holy

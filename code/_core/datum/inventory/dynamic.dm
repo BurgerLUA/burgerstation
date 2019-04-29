@@ -13,4 +13,7 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
+	held_slots = 1
+	worn_slots = 0
+
 	flags = FLAGS_HUD_SPECIAL | FLAGS_HUD_INVENTORY

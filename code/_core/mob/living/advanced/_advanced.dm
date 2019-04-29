@@ -89,6 +89,8 @@
 
 	for(var/v in inventory)
 		var/obj/inventory/O = v
+		if(O.type == "/obj/inventory/dynamic")
+			continue
 		dropped_objects += O.drop_all_objects(get_turf(src))
 
 	return dropped_objects

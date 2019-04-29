@@ -107,6 +107,17 @@
 /damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return attack_delay
 
+/damagetype/proc/get_rating()
+
+	var/returning = 0
+
+	for(var/k in attribute_stats)
+		returning += attribute_stats[k]
+
+	for(var/k in skill_stats)
+		returning += skill_stats[k]
+
+	return returning*10
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -115,7 +126,6 @@
 		get_attack_message_1st(attacker,victim,weapon,hit_object),\
 		get_attack_message_sound(attacker,victim,weapon,hit_object)\
 	)
-
 
 /damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
 

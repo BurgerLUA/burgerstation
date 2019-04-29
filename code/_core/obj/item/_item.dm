@@ -243,6 +243,27 @@ obj/item/proc/update_owner(desired_owner)
 				skill_damage_list += "[capitalize(k)]: [grade] ([floor(E.get_current_level()*v)] [DT.skill_damage[k]])"
 
 		var/returning_text = ..()
+
+		var/combat_rating = DT.get_rating()
+
+		var/combat_rating_text = ""
+		switch(combat_rating)
+			if(0 to 5)
+				combat_rating_text = "E"
+			if(5 to 10)
+				combat_rating_text = "D"
+			if(10 to 15)
+				combat_rating_text = "C"
+			if(15 to 20)
+				combat_rating_text = "B"
+			if(20 to 25)
+				combat_rating_text = "A"
+			if(25 to INFINITY)
+				combat_rating_text = "S"
+
+
+		returning_text += div("notice bold","Combat Rating:") + div("notice","[combat_rating_text] ([combat_rating])")
+
 		if(length(base_damage_list))
 			returning_text += div("notice bold","Base Damage:") + div("notice","[english_list(base_damage_list, and_text = ", ")]")
 

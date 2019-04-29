@@ -27,3 +27,5 @@
 
 
 #define BLOCK_DISTANCE(A1,A2) max(abs(A1.x - A2.x),abs(A1.y - A2.y))
+
+#define INFINITY 0xFFFFFF

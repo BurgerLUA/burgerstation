@@ -7,8 +7,8 @@
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 2,
-		ATTACK_TYPE_RANGED = 1,
-		ATTACK_TYPE_MAGIC = 1
+		ATTACK_TYPE_RANGED = 0.25,
+		ATTACK_TYPE_MAGIC = 0.25
 	)
 
 	parry_mul = list(

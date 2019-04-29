@@ -134,6 +134,10 @@
 	if(L.status & FLAG_STATUS_DEAD)
 		return FALSE
 
+	var/area/A = get_area(L)
+	if(A && A.safe)
+		return FALSE
+
 	if(simple)
 		return L.client
 

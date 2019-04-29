@@ -16,9 +16,13 @@
 /obj/item/weapon/melee/sword/can_be_worn()
 	return TRUE
 
+
+
+
 /obj/item/weapon/melee/sword/claymore
 	name = "steel claymore sword"
 	desc = "Looking at this really makes you want to go on a crusade."
+	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe. It is one of the most common weapons in The Realm, as it is a un-cursed version of the unholy cult blade."
 
 	icon = 'icons/obj/items/weapons/melee/swords/claymore.dmi'
 	icon_state_worn = "worn"
