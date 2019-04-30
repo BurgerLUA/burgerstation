@@ -13,7 +13,7 @@ var/global/subsystem/soapstone/SS_Soapstone
 	save_soapstone.quick_load()
 
 
-/subsystem/soapstone/proc/create_soapstone(var/turf/desired_loc,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
+/subsystem/soapstone/proc/create_new_soapstone(var/turf/desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
 
 	var/list/data_to_write = list()
 	data_to_write["name"] = desired_owner
@@ -23,6 +23,8 @@ var/global/subsystem/soapstone/SS_Soapstone
 	data_to_write["time"] = desired_time
 	data_to_write["x"] = desired_loc.x
 	data_to_write["y"] = desired_loc.y
+	data_to_write["dir"] = desired_dir
+	data_to_write["color"] = desired_color
 	save_soapstone.quick_write(data_to_write)
 
-	new/obj/structure/interactive/soapstone_message(desired_loc,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
+	new/obj/structure/interactive/soapstone_message(desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
