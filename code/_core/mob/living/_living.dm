@@ -25,6 +25,9 @@ var/global/list/all_living = list()
 	var/stamina_base = 10
 	var/mana_base = 10
 
+	var/armor_burn_base = 0
+	var/armor_brute_base = 0
+
 	//Regeneration times are in seconds.
 
 	var/stamina_max = 0

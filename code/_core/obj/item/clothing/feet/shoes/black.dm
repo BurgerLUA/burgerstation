@@ -6,6 +6,7 @@
 	icon = 'icons/obj/items/clothing/shoes/black.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
+	protected_limbs = list(BODY_FOOT_RIGHT)
 
 /obj/item/clothing/feet/shoes/black/left
 	name = "left black shoe"
@@ -13,3 +14,4 @@
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_FOOT_LEFT
+	protected_limbs = list(BODY_FOOT_LEFT)

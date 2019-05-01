@@ -15,6 +15,13 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
+	var/list/armor_rating = list(
+		BRUTE = 0,
+		BURN = 0
+	)
+
+	var/list/protected_limbs = list()
+
 /obj/item/clothing/New(var/desired_loc)
 	..()
 	initialize_blends()

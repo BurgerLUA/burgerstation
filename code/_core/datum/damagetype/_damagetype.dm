@@ -140,6 +140,9 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	var/brute_armor = 0
+	var/burn_armor = 0
+
 	if(is_living(victim))
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
@@ -149,9 +152,25 @@
 		if(A1.safe || A2.safe)
 			return 0
 
+		brute_armor += L.armor_brute_base
+		burn_armor += L.armor_burn_base
+
+		if(is_advanced(victim) && is_organ(hit_object))
+			var/mob/living/advanced/A = victim
+			var/obj/item/organ/O = hit_object
+			for(var/obj/item/clothing/C in A.worn_objects)
+				if(O.id in C.protected_limbs)
+					brute_armor += C.armor_rating[BRUTE]
+					burn_armor += C.armor_rating[BURN]
+
+			world.log << "BRUTE ARMOR: [brute_armor]"
+			world.log << "BURN ARMOR: [burn_armor]"
+
+
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
-	var/brute_damage_dealt = hit_object.adjust_brute_loss(damage_to_deal[BRUTE])
-	var/burn_damage_dealt = hit_object.adjust_burn_loss(damage_to_deal[BURN])
+
+	var/brute_damage_dealt = calculate_damage_with_armor(hit_object.adjust_brute_loss(damage_to_deal[BRUTE]),brute_armor)
+	var/burn_damage_dealt = calculate_damage_with_armor(hit_object.adjust_burn_loss(damage_to_deal[BURN]),burn_armor)
 	var/tox_damage_dealt = hit_object.adjust_tox_loss(damage_to_deal[TOX])
 	var/oxy_damage_dealt = hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 	var/damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt

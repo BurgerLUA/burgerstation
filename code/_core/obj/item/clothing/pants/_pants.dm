@@ -3,3 +3,5 @@
 	item_slot = SLOT_GROIN
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
+
+	protected_limbs = list(BODY_GROIN,BODY_LEG_LEFT,BODY_LEG_RIGHT)

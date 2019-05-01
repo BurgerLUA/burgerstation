@@ -51,3 +51,6 @@
 
 
 #define LIFE_TICK 1 //Deciseconds per life tick.
+
+
+#define ARMOR_CAP 1000 //How much armor you're allowed to have.

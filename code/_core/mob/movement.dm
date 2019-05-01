@@ -27,7 +27,7 @@
 	else if(movement_flags & MOVEMENT_WALKING && can_walk())
 		real_move_mod -= 1
 
-	real_move_mod = clamp(real_move_mod,0,3)
+	real_move_mod = Clamp(real_move_mod,0,3)
 
 	switch(real_move_mod)
 		if(1)

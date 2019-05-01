@@ -1,6 +1,3 @@
-/proc/clamp(var/value,var/min,var/max)
-	return max(min,min(value,max))
-
 /proc/floor(x, y=1)
 	return round(x,y)
 
