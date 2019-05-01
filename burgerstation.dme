@@ -145,6 +145,7 @@
 #include "code\_core\datum\damagetype\melee\_melee.dm"
 #include "code\_core\datum\damagetype\melee\club\null_rod.dm"
 #include "code\_core\datum\damagetype\melee\club\null_staff.dm"
+#include "code\_core\datum\damagetype\melee\club\stunbaton.dm"
 #include "code\_core\datum\damagetype\melee\dagger\null_dagger.dm"
 #include "code\_core\datum\damagetype\melee\sword\claymore.dm"
 #include "code\_core\datum\damagetype\npc\_npc.dm"

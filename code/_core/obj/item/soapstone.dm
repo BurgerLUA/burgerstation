@@ -1,4 +1,4 @@
-/obj/item/soapstone/
+/obj/item/soapstone/ //Rare drops from bosses.
 	name = "soapstone"
 	desc = "Writes a message."
 	icon = 'icons/obj/items/soapstone.dmi'
@@ -55,3 +55,12 @@
 	var/time = get_time()
 
 	SS_Soapstone.create_new_soapstone(T,get_dir(caller,object),stone_color,caller.name,caller.ckey,input_text,date,time)
+
+
+	caller.visible_message(\
+		span("notice","\The [caller] writes a message with the soapstone."),\
+		span("notice","The soapstone fades in your hand after you write down the last word on \the [T].")\
+	)
+
+	drop_item()
+	qdel(src)

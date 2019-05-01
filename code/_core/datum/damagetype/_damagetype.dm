@@ -111,6 +111,9 @@
 
 	var/returning = 0
 
+	for(var/k in base_attack_damage)
+		returning += base_attack_damage[k]*0.5
+
 	for(var/k in attribute_stats)
 		returning += attribute_stats[k]
 

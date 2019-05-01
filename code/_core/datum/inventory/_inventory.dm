@@ -3,7 +3,8 @@
 /obj/inventory/
 	name = "Inventory Holder"
 	desc = "Inventory"
-	id = "other"
+	id = "BADINVENTORY"
+
 	//icon = 'icons/invisible.dmi'
 	//icon_state = "0"
 

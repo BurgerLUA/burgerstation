@@ -178,6 +178,10 @@ obj/item/proc/update_owner(desired_owner)
 /obj/item/proc/can_be_worn()
 	return FALSE
 
+/obj/item/proc/get_damage_type()
+	return damage_type
+
+
 /obj/item/get_examine_text(var/mob/examiner)
 
 	if(!is_advanced(examiner))
@@ -185,11 +189,14 @@ obj/item/proc/update_owner(desired_owner)
 
 	. = ..()
 
+
 	var/mob/living/advanced/A = examiner
 
-	if(damage_type && all_damage_types[damage_type])
+	var/damage_type_to_use = get_damage_type()
 
-		var/damagetype/DT = all_damage_types[damage_type]
+	if(damage_type_to_use && all_damage_types[damage_type_to_use])
+
+		var/damagetype/DT = all_damage_types[damage_type_to_use]
 
 		var/list/base_damage_list = list()
 		var/list/attribute_damage_list = list()

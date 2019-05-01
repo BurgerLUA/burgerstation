@@ -96,10 +96,15 @@
 
 	var/obj/inventory/I
 
+	world.log << "INVENTORY FOR [O]"
+
 	for(var/obj/inventory/I2 in O.inventories)
 		if(I2.id == inventory_data["id"])
+			world.log << "[I2.id]: CORRECT"
 			I = I2
 			break
+		else
+			world.log << "[I2.id]: INCORRECT"
 
 	if(I)
 		if(inventory_data["held"])

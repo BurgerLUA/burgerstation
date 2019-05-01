@@ -12,6 +12,12 @@
 	var/insert_limit = 1 //How many bullets are you allowed to insert at once?
 
 
+/obj/item/weapon/ranged/bullet/get_damage_type()
+	if(stored_bullets && length(stored_bullets) && stored_bullets[1])
+		return stored_bullets[1].damage_type
+	else
+		return FALSE
+
 /obj/item/weapon/ranged/bullet/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))

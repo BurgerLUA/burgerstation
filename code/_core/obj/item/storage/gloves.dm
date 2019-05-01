@@ -8,10 +8,7 @@
 	is_container = TRUE
 	container_max_size = 1
 
-	inventories = list(
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic
-	)
+	dynamic_inventory_count = 2
 
 /obj/item/storage/glovebox/yellow/
 	name = "yellow glovebox"

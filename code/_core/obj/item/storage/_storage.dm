@@ -1,4 +1,4 @@
-/obj/item/storage/
+/obj/item/storage/ //For boxes and such, not backpacks.
 	name = "storage"
 	desc = "What could it contain?"
 
@@ -10,9 +10,4 @@
 	is_container = TRUE
 	container_max_size = 2
 
-	inventories = list(
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic,
-		/obj/inventory/dynamic
-	)
+	dynamic_inventory_count = 4
