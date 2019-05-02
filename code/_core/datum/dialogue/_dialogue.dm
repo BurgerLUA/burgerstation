@@ -6,7 +6,7 @@
 	var/id = "Dialogue"
 	//* means hidden
 
-/dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P)
+/dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 	var/list/dialogue_options = list()
 	return dialogue_options
 
@@ -14,8 +14,8 @@
 /dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
 
 	var/menu/M = get_menu("dialogue")
-	var/list/dialogue_options = get_dialogue_options(P)
 	var/list/known_options = P.client.savedata.loaded_data["known_topics"]
+	var/list/dialogue_options = get_dialogue_options(P,known_options)
 	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
 
 	for(var/topic in dialogue_options)
@@ -43,5 +43,6 @@
 
 /dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic)
 	var/menu/M = get_menu("dialogue")
-	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P)))
+	var/list/known_options = P.client.savedata.loaded_data["known_topics"]
+	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P,known_options)))
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")

@@ -1,7 +1,7 @@
 /dialogue/npc/marwani/tutorial
 	id = "marwani_tutorial_dialogue"
 
-/dialogue/npc/marwani/tutorial/get_dialogue_options(var/mob/living/advanced/player/P)
+/dialogue/npc/marwani/tutorial/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	var/list/dialogue_options = list()
 	dialogue_options["hello"] = list(
@@ -22,7 +22,8 @@
 
 	dialogue_options["the realm"] = list(
 		"Oh, shoot. I should not have said that. Usually someone else handles this sort of thing but they're uh... busy but...NEWLINE\
-		...unfortunately you died, and with your death, you are now #1 in #2 realm.",
+		...unfortunately you died, and with your death, you are now #1 in #2 realm.NEWLINE\
+		Sorry.",
 		"trapped",
 		"Nar-sie"
 	)
@@ -35,7 +36,7 @@
 	)
 
 	dialogue_options["Nar-sie"] = list(
-		"Nar'sie, Narsie, Nar-sie, the Dark Lord. He's the evil that owns this realm that he torments us in. Allegedly. It's actually quite nice here, well... at least inside #1.",
+		"Nar'sie, Narsie, Nar-sie, the Dark Lord. He, she, or it is the evil that owns this realm that he torments us in. Allegedly. It's actually quite nice here, well... at least inside #1.",
 		"the village"
 	)
 
@@ -60,8 +61,14 @@
 		"the mayor"
 	)
 	dialogue_options["the village"] = list(
-		"We're located in a village that this ship is currently docked with. Our current leader is #1; he runs the place. I think.",
+		"We're located in a village that this ship is currently docked with. Our current leader is #1; he runs the place. I think. Its #2 protects us from harm, mostly.",
 		"the mayor",
+		"magical aura"
+	)
+	dialogue_options["magical aura"] = list(
+		"I'm afraid I don't know much about how it works. You'll have to speak to #1 about it, or god forbid, #2.",
+		"the mayor",
+		"Bar-Shaleez"
 	)
 
 	dialogue_options["past life"] = list(
@@ -83,6 +90,11 @@
 		"the mayor",
 		"the bar",
 		"gossip"
+	)
+
+	dialogue_options["Bar-Shaleez"] = list(
+		"I... er. Don't speak to her. I suggest ignoring what she has to say completely. Speak to me, or #1, if you have any questions that need answering. She is not that helpful.",
+		"the mayor"
 	)
 
 	dialogue_options["the bar"] = list(

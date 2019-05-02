@@ -189,7 +189,6 @@ obj/item/proc/update_owner(desired_owner)
 
 	. = ..()
 
-
 	var/mob/living/advanced/A = examiner
 
 	var/damage_type_to_use = get_damage_type()

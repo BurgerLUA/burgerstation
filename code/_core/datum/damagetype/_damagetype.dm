@@ -112,7 +112,7 @@
 	var/returning = 0
 
 	for(var/k in base_attack_damage)
-		returning += base_attack_damage[k]*0.5
+		returning += base_attack_damage[k]*0.05
 
 	for(var/k in attribute_stats)
 		returning += attribute_stats[k]
@@ -157,18 +157,16 @@
 
 		if(is_advanced(victim) && is_organ(hit_object))
 			var/mob/living/advanced/A = victim
+			var/armor_level_mod = 1 + A.get_skill_power(SKILL_ARMOR,0,100)/100
 			var/obj/item/organ/O = hit_object
 			for(var/obj/item/clothing/C in A.worn_objects)
 				if(O.id in C.protected_limbs)
-					brute_armor += C.armor_rating[BRUTE]
-					burn_armor += C.armor_rating[BURN]
+					brute_armor += C.armor_rating[BRUTE] * armor_level_mod
+					burn_armor += C.armor_rating[BURN] * armor_level_mod
 
-			world.log << "BRUTE ARMOR: [brute_armor]"
-			world.log << "BURN ARMOR: [burn_armor]"
-
+			A.add_skill_xp(SKILL_ARMOR,brute_armor + burn_armor)
 
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
-
 	var/brute_damage_dealt = calculate_damage_with_armor(hit_object.adjust_brute_loss(damage_to_deal[BRUTE]),brute_armor)
 	var/burn_damage_dealt = calculate_damage_with_armor(hit_object.adjust_burn_loss(damage_to_deal[BURN]),burn_armor)
 	var/tox_damage_dealt = hit_object.adjust_tox_loss(damage_to_deal[TOX])

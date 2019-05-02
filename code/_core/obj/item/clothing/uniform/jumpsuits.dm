@@ -12,6 +12,13 @@
 
 	no_initial_blend = TRUE
 
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
+
+	armor_rating = list(
+		BRUTE = 15,
+		BURN = 5
+	)
+
 /obj/item/clothing/uniform/jumpsuit/grey
 	color_primary = "#A0A0A0"
 	color_secondary = "#A0A0A0"

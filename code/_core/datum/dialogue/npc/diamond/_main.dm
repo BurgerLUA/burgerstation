@@ -2,7 +2,7 @@
 	name = "Diamond with Flaw"
 	id = "diamond_dialogue"
 
-/dialogue/npc/diamond/get_dialogue_options(var/mob/living/advanced/player/P)
+/dialogue/npc/diamond/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	var/list/dialogue_options = list()
 

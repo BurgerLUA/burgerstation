@@ -5,6 +5,11 @@
 	desc = "Oxygen not included."
 	desc_extended = "A modern gas mask. Filters out most forms of gas."
 
+	armor_rating = list(
+		BRUTE = 15,
+		BURN = 5
+	)
+
 
 /obj/item/clothing/mask/gas/clown
 	name = "clown mask"

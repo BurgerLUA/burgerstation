@@ -25,3 +25,20 @@
 
 	return FALSE
 
+
+/obj/item/clothing/get_examine_text(var/mob/examiner)
+
+	if(!is_advanced(examiner))
+		return ..()
+
+	. = ..()
+
+	if(armor_rating && length(armor_rating) && protected_limbs && length(protected_limbs))
+		. += div("notice bold","Armor:")
+		for(var/damagetype in armor_rating)
+			var/damage_rating = armor_rating[damagetype]
+			. += div("notice",damagetype + ": " + damage_rating)
+
+		. += div("notice bold","Protected Parts") + div("notice",english_list(protected_limbs))
+
+	return .

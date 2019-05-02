@@ -2,7 +2,7 @@
 	name = "Ilaeza Marwani"
 	id = "marwani_dialogue"
 
-/dialogue/npc/marwani/get_dialogue_options(var/mob/living/advanced/player/P)
+/dialogue/npc/marwani/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	var/list/dialogue_options = list()
 
@@ -22,7 +22,6 @@
 		"immortality",
 		"trinkets"
 	)
-
 
 	//Tutorial related
 	dialogue_options["immortality"] = list(

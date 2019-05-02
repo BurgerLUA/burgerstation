@@ -4,3 +4,8 @@
 
 	desc = "Please wear these at least."
 	desc_extended = "The peak of fashion."
+
+	armor_rating = list(
+		BRUTE = 15,
+		BURN = 5
+	)
