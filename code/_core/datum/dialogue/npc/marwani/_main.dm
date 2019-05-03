@@ -43,7 +43,6 @@
 		"bartering"
 	)
 
-
 	dialogue_options["bartering"] = list(
 		"What, do you think people are just going to give items and secrets away for free? People still embrace capitalism here. #1 are exchanged for #2. Though, not everyone will accept trinkets ",
 		"goods and services",

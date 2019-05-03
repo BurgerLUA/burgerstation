@@ -56,6 +56,7 @@ var/global/list/all_living = list()
 	)
 
 	var/is_sneaking = FALSE
+	var/stealth_mod = 0
 
 	var/intent = INTENT_HELP
 
@@ -64,7 +65,6 @@ var/global/list/all_living = list()
 	var/turf/old_turf //Last turf someone has been in.
 
 	var/loot_drop
-
 
 	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 

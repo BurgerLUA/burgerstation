@@ -24,7 +24,7 @@
 
 //Makes compiling faster when disabled
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
+#define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN FALSE
 #define ENABLE_TURFGEN FALSE
 #define ENABLE_CHARGEN FALSE
@@ -32,10 +32,8 @@
 //Basically debug mode
 #define ENABLE_INSTALOAD TRUE
 
-
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100
-
 
 #define FOOTSTEP_VOLUME 25
 #define FOOTPRINT_FADE_TIME SECONDS_TO_DECISECONDS(60)
@@ -45,12 +43,12 @@
 #define DEFAULT_BRIGHTNESS_TURF_LIGHT 0.4
 #define DEFAULT_BRIGHTNESS_TURF_LIGHT_HIGH 0.8
 
-
 #define DEFAULT_SKILL_ALLOCATION 190
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
-
 #define LIFE_TICK 1 //Deciseconds per life tick.
 
-
 #define ARMOR_CAP 1000 //How much armor you're allowed to have.
+
+#define STEALTH_MAX_ALPHA 10
+#define STEALTH_MIN_ALPHA 1

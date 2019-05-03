@@ -157,7 +157,7 @@
 
 		if(is_advanced(victim) && is_organ(hit_object))
 			var/mob/living/advanced/A = victim
-			var/armor_level_mod = 1 + A.get_skill_power(SKILL_ARMOR,0,100)/100
+			var/armor_level_mod = 1 + A.get_skill_power(SKILL_ARMOR,0,100)
 			var/obj/item/organ/O = hit_object
 			for(var/obj/item/clothing/C in A.worn_objects)
 				if(O.id in C.protected_limbs)

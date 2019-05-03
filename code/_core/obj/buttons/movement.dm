@@ -16,9 +16,8 @@
 
 	var/mob/living/L = caller
 
-
 	sneaking = !sneaking
-	L.is_sneaking = sneaking
+	L.toggle_sneak(sneaking)
 	update_icon()
 	..()
 

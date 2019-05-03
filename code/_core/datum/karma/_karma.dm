@@ -1,3 +1,5 @@
+var/global/protected_species = RULE_HUMAN
+
 #define KARMA_OVERALL "all" //Killed/Help players
 #define KARMA_CLIENT "client" //Client karma
 

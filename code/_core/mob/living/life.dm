@@ -52,6 +52,12 @@
 		animate(src,transform = turn(matrix(), stun_angle), time = 1)
 		on_stunned()
 
+	if(is_sneaking)
+		var/desired_alpha = floor(10 + (1-stealth_mod)*100)
+		update_alpha(desired_alpha)
+	else
+		update_alpha(255)
+
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
