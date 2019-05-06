@@ -51,6 +51,12 @@
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'
 			A.icon_state = weather_type
-			animate(A,alpha=255,time=SECONDS_TO_DECISECONDS(10))
+			A.color = "#000000"
+			switch(weather_type)
+				if(WEATHER_RAIN)
+					animate(A,alpha=255,color="#429FCE",time=SECONDS_TO_DECISECONDS(10))
+				if(WEATHER_SNOW)
+					animate(A,alpha=255,color="#FFFFFF",time=SECONDS_TO_DECISECONDS(10))
+
 		else
 			animate(A,alpha=0,time=SECONDS_TO_DECISECONDS(10))

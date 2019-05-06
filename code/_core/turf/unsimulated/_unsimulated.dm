@@ -18,3 +18,10 @@
 	icon_state = "abyss"
 	density = 0
 	opacity = 1
+
+/turf/unsimulated/void
+	name = "abyss"
+	icon = 'icons/turf/space/void.dmi'
+	icon_state = "void"
+	density = 1
+	opacity = 0

@@ -19,7 +19,7 @@
 		. *= 4
 
 	if(is_sneaking)
-		. *= 2
+		. *= (2 - stealth_mod*0.5)
 
 	. = max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
 
@@ -27,6 +27,13 @@
 
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
+
+	for(var/obj/button/B in buttons)
+		if(B.type == /obj/button/sneak)
+			var/obj/button/sneak/S = B
+			S.sneaking = on
+			S.update_icon()
+
 	if(on)
 		stealth_mod = get_skill_power(SKILL_STEALTH,1,100)
 		is_sneaking = TRUE

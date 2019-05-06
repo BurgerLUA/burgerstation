@@ -29,6 +29,8 @@
 
 	var/stationary = TRUE
 
+	var/true_sight = FALSE
+
 /ai/New(var/mob/living/desired_owner)
 
 	owner = desired_owner
@@ -115,6 +117,9 @@
 		var/best_score = 0
 
 		for(var/mob/living/L in possible_targets)
+			if(!true_sight && L.is_sneaking)
+				continue
+
 			var/local_score = get_attack_score(L)
 			if(!best_score || local_score > best_score)
 				best_target = L

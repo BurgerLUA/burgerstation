@@ -26,17 +26,8 @@
 	name = "lavaland safezone"
 	icon_state = "safe"
 
-/area/world/jungle //2,1
-	name = "magic jungle"
-
-/area/world/caves //2,2
-	name = "caves"
-
 /area/world/shadows //2,4
 	name = "shadow realm"
-
-/area/world/desert //3,1
-	name = "the desert"
 
 /area/world/core //3,4
 	name = "the core"

@@ -16,13 +16,12 @@
 /mob/living/advanced/toggle_sneak(var/on = TRUE)
 	if(on && !adjust_stamina(-10))
 		update_health_element_icons(stamina=TRUE)
-		stamina_regen_delay = max(stamina_regen_delay,30)
+		stamina_regen_delay = max(stamina_regen_delay,60)
 		return FALSE
 
 	return ..()
 
 /mob/living/advanced/on_sneak()
-	world.log << stealth_mod
 	if(adjust_stamina( -(2-stealth_mod)*5 ))
 		update_health_element_icons(stamina=TRUE)
 		stamina_regen_delay = max(stamina_regen_delay,30)

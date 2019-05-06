@@ -13,12 +13,9 @@
 
 	if(!is_living(caller))
 		return
-
 	var/mob/living/L = caller
+	L.toggle_sneak(!sneaking)
 
-	sneaking = !sneaking
-	L.toggle_sneak(sneaking)
-	update_icon()
 	..()
 
 /obj/button/sneak/update_icon()
