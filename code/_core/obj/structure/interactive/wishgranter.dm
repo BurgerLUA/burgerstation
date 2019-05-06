@@ -100,6 +100,10 @@ obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,loc
 	name = "northern heights wishgranter"
 	id = "northern_heights"
 
-obj/structure/interactive/wishgranter/normal/jungle
+/obj/structure/interactive/wishgranter/normal/jungle
 	name = "jungle wishgranter"
 	id = "jungle"
+
+/obj/structure/interactive/wishgranter/normal/clockwork
+	name = "clockwork wishgranter"
+	id = "clockwork"

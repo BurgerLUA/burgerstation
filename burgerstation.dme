@@ -469,6 +469,7 @@
 #include "code\_core\obj\structure\interactive\containers\_containers.dm"
 #include "code\_core\obj\structure\interactive\door\_door.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\_airlock.dm"
+#include "code\_core\obj\structure\interactive\door\airlock\brass.dm"
 #include "code\_core\obj\structure\interactive\lighting\_lighting.dm"
 #include "code\_core\obj\structure\interactive\lighting\candle.dm"
 #include "code\_core\obj\structure\interactive\lighting\fireplace.dm"
