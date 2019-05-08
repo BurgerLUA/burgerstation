@@ -30,7 +30,7 @@
 #define ENABLE_CHARGEN FALSE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100

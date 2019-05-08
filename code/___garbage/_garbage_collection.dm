@@ -20,6 +20,13 @@
 
 /proc/qdel(var/datum/object)
 	if(is_datum(object))
+
+		if(!object.qdel_warning)
+			object.qdel_attempts += 1
+			if(object.qdel_attempts >= 5)
+				object.qdel_warning = TRUE
+				world.log << "WARNING: Object of type [object.type] was queued for delete [object.qdel_attempts] times!"
+
 		if(!object.qdeleting)
 			object.qdeleting = TRUE
 			object.destroy()

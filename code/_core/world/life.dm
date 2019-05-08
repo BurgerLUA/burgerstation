@@ -47,12 +47,12 @@
 	spawn while(TRUE)
 		for(var/list/v in active_subsystems)
 			var/subsystem/S = v["subsystem"]
-			if(S.next_run <= ticks)
+			if(S.next_run <= ticks && S.next_run >= 0)
 				if(!S.tick_rate || !S.on_life())
-					active_subsystems -= v
-					qdel(S)
-					continue
-				S.next_run = ticks + S.tick_rate
+					active_subsystems -= v //TODO: Figure out why this isn't working.
+					S.next_run = -1
+				else
+					S.next_run = ticks + S.tick_rate
 
 		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1

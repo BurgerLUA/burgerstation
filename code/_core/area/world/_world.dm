@@ -9,8 +9,7 @@
 		icon = 'icons/area/weather.dmi'
 		icon_state = weather
 
-/area/world/temple01 //1,1
-	name = "clockwork temple"
+
 
 /area/world/cult //1,2
 	name = "cult lair"

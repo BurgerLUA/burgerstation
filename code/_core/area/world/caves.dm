@@ -10,3 +10,8 @@
 	name = "cave exterior"
 	icon_state = "safe"
 	safe = TRUE
+
+
+/area/world/caves/exterior_unsafe
+	name = "cave exterior"
+	icon_state = "green"

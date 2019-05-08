@@ -63,6 +63,25 @@
 	color = rgb(r,g,b)
 	..()
 
+/turf/simulated/floor/colored/dark_grass
+	name = "dark grass"
+	color = "#527F3F"
+	layer = LAYER_FLOOR_LARGE + 0.1
+	corner_category = "grass"
+
+/turf/simulated/floor/colored/dark_grass/New(loc)
+	var/r = 82
+	var/g = 127
+	var/b = 63
+
+	r += rand(-10,0)
+	g += rand(-10,0)
+	b += rand(-10,0)
+
+	color = rgb(r,g,b)
+	..()
+
+
 
 /turf/simulated/floor/colored/sand
 	name = "grey sand"
