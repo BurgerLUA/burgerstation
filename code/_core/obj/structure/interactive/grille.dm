@@ -9,3 +9,8 @@ obj/structure/interactive/grille
 	opacity = 0
 
 	layer = LAYER_OBJ_GRILLE
+
+
+obj/structure/interactive/grille/cult
+	name = "cult grille"
+	color = "#491919"

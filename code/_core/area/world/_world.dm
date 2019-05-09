@@ -14,6 +14,17 @@
 /area/world/cult //1,2
 	name = "cult lair"
 
+/area/world/cult/exterior //1,2
+	name = "cult exterior"
+	icon_state = "blue"
+
+/area/world/cult/interior //1,2
+	name = "cult exterior"
+	icon_state = "green"
+
+
+
+
 /area/world/lava //1,3; 1,4; 2,3
 	name = "lavaland"
 

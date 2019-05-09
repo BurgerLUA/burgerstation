@@ -1,10 +1,10 @@
 "a" = (/turf/unsimulated/void,/area/world/temple01/exterior)
-"b" = (/obj/effect/fake_lighting/gradient/black,/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 4},/turf/unsimulated/abyss,/area/world/temple01/exterior)
-"c" = (/obj/effect/fake_lighting/gradient/black,/turf/unsimulated/abyss,/area/world/temple01/exterior)
-"d" = (/obj/effect/fake_lighting/gradient/black,/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/turf/unsimulated/abyss,/area/world/temple01/exterior)
-"e" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 4},/turf/unsimulated/abyss,/area/world/temple01/exterior)
-"f" = (/turf/unsimulated/abyss,/area/world/temple01/exterior)
-"g" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/turf/unsimulated/abyss,/area/world/temple01/exterior)
+"b" = (/obj/effect/fake_lighting/gradient/black,/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 4},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
+"c" = (/obj/effect/fake_lighting/gradient/black,/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
+"d" = (/obj/effect/fake_lighting/gradient/black,/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
+"e" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 4},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
+"f" = (/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
+"g" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
 "h" = (/turf/simulated/wall/clockwork,/area/world/temple01/interior)
 "i" = (/turf/simulated/floor/clockwork/reebe,/area/world/temple01/interior)
 "j" = (/obj/structure/interactive/door/airlock/brass,/turf/simulated/floor/clockwork/reebe,/area/world/temple01/interior)
@@ -13,11 +13,10 @@
 "m" = (/obj/structure/smooth/table/brass,/turf/simulated/floor/clockwork/reebe,/area/world/temple01/interior)
 "n" = (/obj/structure/smooth/window/clockwork,/turf/simulated/floor/clockwork/alt3,/area/world/temple01/interior)
 "o" = (/obj/structure/smooth/table/brass,/turf/simulated/floor/clockwork/alt3,/area/world/temple01/interior)
-"p" = (/turf/unsimulated/abyss,/area/world/temple01/interior)
+"p" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
 "q" = (/turf/simulated/floor/clockwork/alt2,/area/world/temple01/interior)
 "r" = (/obj/structure/interactive/door/airlock/brass,/turf/simulated/floor/clockwork/alt3,/area/world/temple01/interior)
-"t" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/unsimulated/abyss,/area/world/temple01/exterior)
-"u" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/unsimulated/abyss,/area/world/temple01/exterior)
+"t" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
 "v" = (/obj/structure/interactive/wishgranter/normal/clockwork,/turf/simulated/floor/clockwork/alt3,/area/world/temple01/interior)
 
 (1,1,1) = {"
@@ -101,14 +100,14 @@ aeffffffffffffffffffffffffffffffffffffffffffhiiiiiijkknonkkhiiiiiiiiihkknonkkjii
 aeffffffffffffffffffffffffffffffffffffffffffhiiiiiihkknnnkkjiiiiiiiiijkknnnkkhiiiiiihfffffffffffffffffffffffffffffffffffffffffga
 aeffffffffffffffffffffffffffffffffffffffffffhhhhhhhhkkkkkkkhiiiiiiiiihkkkkkkkhhhhhhhhfffffffffffffffffffffffffffffffffffffffffga
 aeffffffffffffffffffffffffffffffffffffffffffhiiiiiihkkkkkkkhihhlllhhihkkkkkkkhiiiiiihfffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffffhihhhiihhhhhhhhhjhppppphjhhhhhhhhhiihhhihfffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffffhiiihiiiiiiiiiiiihppppphiiiiiiiiiiiihiiihfffffffffffffffffffffffffffffffffffffffffga
-aefffffffffffffffffffffffffffffffffffffffffhhhhjhhhhhhhhhhhhhhppppphhhhhhhhhhhhhhjhhhhffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiiiiihppppphiiiiihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiqiqilpppppliqiqihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiijiiiiilpppppliiiiijiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiqiqilpppppliqiqihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
-aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiiiiihppppphiiiiihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffffhihhhiihhhhhhhhhjhfffffhjhhhhhhhhhiihhhihfffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffffhiiihiiiiiiiiiiiihfffffhiiiiiiiiiiiihiiihfffffffffffffffffffffffffffffffffffffffffga
+aefffffffffffffffffffffffffffffffffffffffffhhhhjhhhhhhhhhhhhhhfffffhhhhhhhhhhhhhhjhhhhffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiiiiihfffffhiiiiihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiqiqilfffffliqiqihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiijiiiiilfffffliiiiijiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiqiqilfffffliqiqihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
+aeffffffffffffffffffffffffffffffffffffffffflmiiiiiiiiiihiiiiihfffffhiiiiihiiiiiiiiiimlffffffffffffffffffffffffffffffffffffffffga
 aefffffffffffffffffffffffffffffffffffffffffhhhhhhhhhhhhhhhjhhhhlllhhhhjhhhhhhhhhhhhhhhffffffffffffffffffffffffffffffffffffffffga
 aeffffffffffffffffffffffffffffffffffffffffffhiiiiiiiiiiiiiihkkkkkkkkkhiiiiiiiiiiiiiihfffffffffffffffffffffffffffffffffffffffffga
 aeffffffffffffffffffffffffffffffffffffffffffhjhhhhhhhhhhhhhhkkkkkkkkkhhhhhhhhhhhhhhjhfffffffffffffffffffffffffffffffffffffffffga
@@ -129,12 +128,11 @@ aeffffffffffffffffffffffffffffffffffffffffffliiiiiiiliiiiiiiliiiiiiiliiiiiiiliii
 aeffffffffffffffffffffffffffffffffffffffffffliiiiiiiliiiiiiiliiiiiiiliiiiiiiliiiiiiilfffffffffffffffffffffffffffffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffliiiqiiiliiiqiiiliiiqiiiliiiqiiiliiiqiiilfffffffffffffffffffffffffffffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffliiiiiiiliiiiiiiliiiiiiiliiiiiiiliiiiiiilfffffffffffffffffffffffffffffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffliiiiiiiliiiiiiiliiiiiiiliiiiiiiliiiiiiilfffffffffffffffffffffffffffffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffhiiiiiiihiiiiiiihiiiiiiihiiiiiiihiiiiiiihffffffffffffffffffhhhhhffffffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffhhhlllhhhhhlllhhhhhlllhhhhhlllhhhhhlllhhhffffffffffffffffffhiiihffffffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffhmmmhfffhmmmhfffhmmmhfffhmmmhfffhmmmhffffffffffffffffffffhiqihffffffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffhhhhhfffhhhhhfffhhhhhfffhhhhhfffhhhhhffffffffffffffffhhhhhiiihhhhhffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffhkkkkkkkkkkkhffffffffffffffga
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffliiiiiiiliiiiiiiliiiiiiiliiiiiiiliiiiiiilffffffffffffffffffhhhhhffffffffffffffffffga
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffhiiiiiiihiiiiiiihiiiiiiihiiiiiiihiiiiiiihffffffffffffffffffhiiihffffffffffffffffffga
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffhhhlllhhhhhlllhhhhhlllhhhhhlllhhhhhlllhhhffffffffffffffffffhiqihffffffffffffffffffga
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffhmmmhfffhmmmhfffhmmmhfffhmmmhfffhmmmhffffffffffffffffhhhhhiiihhhhhffffffffffffffga
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffhhhhhfffhhhhhfffhhhhhfffhhhhhfffhhhhhffffffffffffffffhkkkkkkkkkkkhffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffflkkkkkkkkkkklffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffflkkkkkkkkkkklffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffflkkkkkkkkkkklffffffffffffffga
@@ -147,6 +145,7 @@ aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 aaaaaaaaaaaaaaaaaaaaaafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffhhhlllllllhhhffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffhmmmmmmmhffffffffffffffffga
 aaaaaaaaaaaaaaaaaaaaaafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffhhhhhhhhhffffffffffffffffga
-aaaaaaaaaaaaaaaaaaaaaattttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttua
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffga
+aaaaaaaaaaaaaaaaaaaaaappppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppta
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

@@ -19,8 +19,6 @@
 	if(!ENABLE_LIGHTING)
 		return FALSE
 
-
-
 	create_all_lighting_overlays()
 	lighting_process()
 
@@ -36,18 +34,26 @@
 	for(var/zlevel = 1 to world.maxz)
 		create_lighting_overlays_zlevel(zlevel)
 
+
+/proc/turf_has_lighting(var/turf/T)
+	if(!T.dynamic_lighting)
+		return FALSE
+
+	var/area/A = T.loc
+	if(!A.dynamic_lighting)
+		return FALSE
+
+	return TRUE
+
 /proc/create_lighting_overlays_zlevel(var/zlevel)
 	ASSERT(zlevel)
 
 	for(var/turf/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
-		if(!T.dynamic_lighting)
+		if(!turf_has_lighting(T))
 			continue
-		else
-			var/area/A = T.loc
-			if(!A.dynamic_lighting)
-				continue
 
 		getFromPool(/atom/movable/lighting_overlay, T, TRUE)
+		sleep(-1)
 
 /proc/lighting_process()
 	lighting_update_lights_old = lighting_update_lights
@@ -64,6 +70,7 @@
 		L.vis_update   = FALSE
 		L.force_update = FALSE
 		L.needs_update = FALSE
+		sleep(-1)
 
 	lighting_update_corners_old = lighting_update_corners
 	lighting_update_corners = list()
@@ -71,6 +78,7 @@
 		var/datum/lighting_corner/C = A
 		C.update_overlays()
 		C.needs_update = FALSE
+		sleep(-1)
 
 	lighting_update_overlays_old = lighting_update_overlays
 	lighting_update_overlays = list()
@@ -81,3 +89,4 @@
 		var/atom/movable/lighting_overlay/L = A // Typecasting this later so BYOND doesn't istype each entry.
 		L.update_overlay()
 		L.needs_update = FALSE
+		sleep(-1)

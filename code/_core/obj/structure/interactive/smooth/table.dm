@@ -37,3 +37,16 @@ obj/structure/smooth/table/brass
 	icon_state = "table"
 
 	corner_category = "table_clockwork"
+
+	light_power = 0.5
+	light_range = 2
+	light_color = "#E29E00"
+
+obj/structure/smooth/table/cult
+
+	name = "cult table"
+	color = "#261E1C"
+
+
+
+	corner_category = "table_cult"

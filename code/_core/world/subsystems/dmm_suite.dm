@@ -21,7 +21,7 @@ var/global/dmm_suite/dmm_suite
 		var/y_value = text2num(copytext(filename,3,4))
 
 		if(!ENABLE_MAPLOAD)
-			if (!((x_value == 4 && y_value == 4) || (x_value == 3 && y_value == 2)))
+			if ( !((x_value == 4 && y_value == 4) || (x_value == 3 && y_value == 2) || (x_value == 1 && y_value == 1)) )
 				continue
 
 		if(x_value <= 0 || y_value <= 0)

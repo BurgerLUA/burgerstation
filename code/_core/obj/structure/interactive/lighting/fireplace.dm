@@ -9,7 +9,7 @@
 	icon_state = "fireplace"
 
 	light_power = 0.5
-	light_range = 1
+	light_range = 2
 	light_color = "#FFFFB5"
 
 /obj/structure/interactive/lighting/fireplace/New()
@@ -37,16 +37,16 @@
 	icon = I
 
 /obj/structure/interactive/lighting/fireplace/fire01
-	light_range = 1
-
-/obj/structure/interactive/lighting/fireplace/fire02
 	light_range = 2
 
-/obj/structure/interactive/lighting/fireplace/fire03
+/obj/structure/interactive/lighting/fireplace/fire02
 	light_range = 3
 
-/obj/structure/interactive/lighting/fireplace/fire04
+/obj/structure/interactive/lighting/fireplace/fire03
 	light_range = 4
 
-/obj/structure/interactive/lighting/fireplace/fire05
+/obj/structure/interactive/lighting/fireplace/fire04
 	light_range = 5
+
+/obj/structure/interactive/lighting/fireplace/fire05
+	light_range = 6

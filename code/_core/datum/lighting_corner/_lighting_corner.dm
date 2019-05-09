@@ -31,6 +31,11 @@
 /datum/lighting_corner/New(var/turf/new_turf, var/diagonal)
 	. = ..()
 
+	if(!masters)
+		LOG_ERROR("WARNING: LIGHTING CORNER FOR TURF [new_turf] at [new_turf.x],[new_turf.y] RETURNED A BAD LIST.")
+		qdel(src)
+		return FALSE
+
 	masters[new_turf] = turn(diagonal, 180)
 
 	var/vertical   = diagonal & ~(diagonal - 1) // The horizontal directions (4 and 8) are bigger than the vertical ones (1 and 2), so we can reliably say the lsb is the horizontal direction.
