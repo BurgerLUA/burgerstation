@@ -10,6 +10,10 @@
 
 	layer = LAYER_OBJ_WINDOW
 
+/obj/structure/smooth/window/reinforced
+	name = "reinforced window"
+	icon = 'icons/obj/structure/modern/window_reinforced.dmi'
+	icon_state = "window"
 
 /obj/structure/smooth/window/tinted
 	name = "tinted window"

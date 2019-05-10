@@ -99,6 +99,7 @@
 #include "code\_core\area\world\desert.dm"
 #include "code\_core\area\world\forest.dm"
 #include "code\_core\area\world\jungle.dm"
+#include "code\_core\area\world\lava.dm"
 #include "code\_core\area\world\mountain.dm"
 #include "code\_core\area\world\temple1.dm"
 #include "code\_core\atom\_atom.dm"

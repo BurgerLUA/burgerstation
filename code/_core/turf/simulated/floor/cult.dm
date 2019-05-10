@@ -12,3 +12,6 @@
 
 	..()
 
+/turf/simulated/floor/cult/darker
+	color = "#AAAAAA"
+

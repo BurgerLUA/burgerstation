@@ -30,6 +30,10 @@ obj/structure/smooth/table/reinforced
 	corner_category = "table_reinforced"
 
 
+obj/structure/smooth/table/reinforced/dark
+	color = "#AAAAAA"
+
+
 obj/structure/smooth/table/brass
 	name = "clockwork table"
 	desc = "Extra sturdy."

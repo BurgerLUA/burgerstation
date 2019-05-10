@@ -1,6 +1,5 @@
 /turf/simulated/wall/
 	name = "WALL"
-	icon_state = "wall"
 	layer = LAYER_WALL
 	density = 1
 	opacity = 1

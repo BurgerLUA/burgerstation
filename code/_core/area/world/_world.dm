@@ -25,16 +25,7 @@
 
 
 
-/area/world/lava //1,3; 1,4; 2,3
-	name = "lavaland"
 
-/area/world/lava/lab
-	name = "the lab"
-	icon_state = "green"
-
-/area/world/lava/safezone
-	name = "lavaland safezone"
-	icon_state = "safe"
 
 /area/world/shadows //2,4
 	name = "shadow realm"
