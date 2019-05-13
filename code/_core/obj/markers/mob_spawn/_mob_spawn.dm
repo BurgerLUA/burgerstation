@@ -14,6 +14,8 @@
 
 	var/random_dir = FALSE
 
+	var/level_multiplier = 1 //The level multiplier of this spawn. Keep in mind that the area also multiplies the mobs level.
+
 /obj/marker/mob_spawn/New()
 	mob_spawnpoints += src
 
@@ -31,7 +33,9 @@
 		if(death_time && death_time + time_to_respawn > curtime)
 			return
 
-	owning_mob = new type_to_spawn(src.loc)
+	var/area/A = get_area(src)
+
+	owning_mob = new type_to_spawn(src.loc,desired_level_multiplier = level_multiplier * A.level_multiplier)
 	if(random_dir)
 		owning_mob.dir = pick(NORTH,EAST,SOUTH,WEST)
 	else

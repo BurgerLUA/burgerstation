@@ -86,8 +86,10 @@ var/global/list/all_living = list()
 /mob/living/proc/get_burn_color()
 	return "#444444"
 
-/mob/living/New(loc,desired_client)
+/mob/living/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
+
+	level_multiplier *= desired_level_multiplier
 
 	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
 

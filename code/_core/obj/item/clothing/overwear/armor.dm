@@ -6,9 +6,18 @@
 	desc_extended = "A sturdy suit of armor."
 
 /obj/item/clothing/overwear/armor/cult
-	name = "cult armor"
+	name = "cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult.dmi'
-	item_slot = SLOT_TORSO_O
+	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	worn_layer = LAYER_MOB_CLOTHING_OVERALL
+
+/obj/item/clothing/overwear/armor/cult/old
+	name = "ancient cult robes"
+	icon = 'icons/obj/items/clothing/suit/cult_old.dmi'
+
+/obj/item/clothing/overwear/armor/cult/hard
+	name = "hardened cult robes"
+	icon = 'icons/obj/items/clothing/suit/cult_hard.dmi'
 
 /obj/item/clothing/overwear/armor/tutorial
 	name = "tutorial armor"

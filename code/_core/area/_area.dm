@@ -28,6 +28,8 @@
 	luminosity           = 2
 	var/dynamic_lighting = FALSE
 
+	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners.
+
 /area/New()
 	. = ..()
 	global.areas += src
