@@ -25,13 +25,13 @@
 		return ..()
 
 	var/light_mod = Clamp(round(light_range-1),0,4)
-	var/icon/I = new/icon(icon,icon_state)
-	var/icon/F = new/icon(icon,"fireplace_fire[light_mod]")
+	var/icon/I = new /icon(icon,icon_state)
+	var/icon/F = new /icon(icon,"fireplace_fire[light_mod]")
 
 	I.Blend(F,ICON_OVERLAY)
 
 	if(light_mod > 0)
-		var/icon/F2 = new/icon(icon,"fireplace_glow")
+		var/icon/F2 = new /icon(icon,"fireplace_glow")
 		I.Blend(F2,ICON_OVERLAY)
 
 	icon = I

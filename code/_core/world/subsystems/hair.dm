@@ -34,6 +34,8 @@ var/global/list/hair_face_icons = list()
 		hair_head_ids += H.id
 		hair_head_names += H.name
 
+	LOG_SERVER("Initialized [length(hair_head_ids)] hairstyles.")
+
 	for(var/k in icon_states('icons/mob/living/advanced/hair/face.dmi'))
 		if(!k || k == "")
 			continue
@@ -52,3 +54,5 @@ var/global/list/hair_face_icons = list()
 		hair_face_icons[H.id] = I
 		hair_face_ids += H.id
 		hair_face_names += H.name
+
+	LOG_SERVER("Initialized [length(hair_face_ids)] beardstyles.")

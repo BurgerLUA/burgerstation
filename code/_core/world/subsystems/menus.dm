@@ -11,3 +11,5 @@ var/global/list/menu/all_menus = list()
 		var/menu/M = new t
 		if(M.id)
 			all_menus[M.id] = M
+
+	LOG_SERVER("Initialized [length(all_menus)] menus.")

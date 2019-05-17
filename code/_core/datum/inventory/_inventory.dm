@@ -160,6 +160,9 @@
 	return FALSE
 
 /obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
+
+	var/atom/old_location = I.loc
+
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
@@ -175,7 +178,6 @@
 
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
-	I.on_pickup(src)
 	update_overlays()
 	update_stats()
 
@@ -183,6 +185,8 @@
 		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 	else if(id == BODY_HAND_RIGHT)
 		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+
+	I.on_pickup(old_location,src)
 
 	return TRUE
 
@@ -267,7 +271,6 @@
 
 	if(I in held_objects)
 		held_objects -= I
-		I.on_drop(src)
 		was_removed = TRUE
 
 	if(I in worn_objects)
@@ -282,6 +285,7 @@
 		update_stats()
 		owner.remove_overlay(I)
 		queue_delete(I,600)
+		I.on_drop(src,drop_loc)
 
 	return I
 

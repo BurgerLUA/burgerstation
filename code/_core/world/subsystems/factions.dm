@@ -9,3 +9,5 @@ var/global/list/all_factions = list()
 	for(var/v in subtypesof(/faction/))
 		var/faction/F = new v
 		all_factions[F.id] = F
+
+	LOG_SERVER("Initialized [length(all_factions)] factions.")

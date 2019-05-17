@@ -9,3 +9,5 @@ var/global/list/all_classes = list()
 	for(var/A in subtypesof(/class/))
 		var/class/C = new A
 		all_classes[C.id] = C
+
+	LOG_SERVER("Initialized [length(all_classes)] classes.")

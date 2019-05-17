@@ -20,8 +20,8 @@
 
 	icon = initial(icon)
 
-	var/icon/I = new/icon(icon,icon_state)
-	var/icon/O = new/icon(icon,icon_state + "_overlay")
+	var/icon/I = new /icon(icon,icon_state)
+	var/icon/O = new /icon(icon,icon_state + "_overlay")
 
 	I.Blend(O,ICON_OVERLAY)
 

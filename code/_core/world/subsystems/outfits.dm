@@ -12,3 +12,5 @@ var/global/list/all_outfits = list()
 			all_outfits[O.id] = O
 		else
 			qdel(O)
+
+	LOG_SERVER("Initialized [length(all_outfits)] outfits.")

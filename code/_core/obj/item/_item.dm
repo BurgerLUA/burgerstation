@@ -286,13 +286,23 @@ obj/item/proc/update_owner(desired_owner)
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
 
-/obj/item/proc/on_pickup(var/obj/inventory/I) //When the item is picked up.
+/obj/item/proc/on_pickup(var/atom/old_location,var/obj/inventory/new_location) //When the item is picked up.
 
 	if(is_container)
-		for(var/obj/inventory/I2 in inventories)
-			I2.update_owner(I.owner)
+		for(var/obj/inventory/I in inventories)
+			I.update_owner(new_location.owner)
 
 	return
 
-/obj/item/proc/on_drop(var/obj/inventory/I)
+/obj/item/proc/on_drop(var/obj/inventory/old_inventory,var/atom/new_loc)
 	return
+
+/obj/item/proc/inventory_to_list()
+
+	var/list/returning_list = list()
+
+	for(var/obj/inventory/I in inventories)
+		if(length(I.held_objects) && I.held_objects[1])
+			returning_list += I.held_objects[1]
+
+	return returning_list

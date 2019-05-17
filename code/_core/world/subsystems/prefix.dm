@@ -9,3 +9,5 @@ var/global/list/loot/all_prefixes = list()
 	for(var/v in subtypesof(/prefix/))
 		var/prefix/P = new v
 		all_prefixes[P.id] = P
+
+	LOG_SERVER("Initialized [length(all_prefixes)] prefixes.")

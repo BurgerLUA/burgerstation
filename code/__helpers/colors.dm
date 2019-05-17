@@ -1,5 +1,9 @@
 // Taken from Jeremy "Spuzzum" Gibson's s_html library.
 // http://www.byond.com/developer/Spuzzum/s_html
+
+/proc/random_color()
+	return rgb(rand(1,255),rand(1,255),rand(1,255))
+
 /proc/hex2num(hex)
 	//Converts a hexadecimal string (eg. "9F") into a numeral (eg. 159).
 

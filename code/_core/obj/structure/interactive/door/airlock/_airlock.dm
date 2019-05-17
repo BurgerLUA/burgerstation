@@ -44,16 +44,16 @@ obj/structure/interactive/door/airlock/update_icon()
 			opacity = 1
 			density = 1
 
-	var/icon/base_icon = new/icon(icon,icon_state)
+	var/icon/base_icon = new /icon(icon,icon_state)
 	base_icon.Blend(base_color,ICON_MULTIPLY)
 
 	if(filler)
-		var/icon/fill_icon = new/icon(icon,"[filler]_[icon_state]")
+		var/icon/fill_icon = new /icon(icon,"[filler]_[icon_state]")
 		fill_icon.Blend(fill_color,ICON_MULTIPLY)
 		base_icon.Blend(fill_icon,ICON_OVERLAY)
 
 	if(door_state == DOOR_STATE_OPENING || door_state == DOOR_STATE_CLOSING)
-		var/icon/light_icon = new/icon(icon,"lights_[icon_state]")
+		var/icon/light_icon = new /icon(icon,"lights_[icon_state]")
 		base_icon.Blend(light_icon,ICON_OVERLAY)
 
 	icon = base_icon

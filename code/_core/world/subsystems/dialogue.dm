@@ -9,3 +9,5 @@ var/global/list/all_dialogue = list()
 	for(var/A in subtypesof(/dialogue/))
 		var/dialogue/D = new A
 		all_dialogue[D.id] = D
+
+	LOG_SERVER("Initialized [length(all_dialogue)] dialogues.")

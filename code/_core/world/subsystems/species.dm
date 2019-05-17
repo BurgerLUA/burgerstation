@@ -9,3 +9,5 @@ var/global/list/chargen_species = list()
 	for(var/v in subtypesof(/species/))
 		var/species/S = new v
 		chargen_species[S.id] = S
+
+	LOG_SERVER("Initialized [length(chargen_species)] species.")

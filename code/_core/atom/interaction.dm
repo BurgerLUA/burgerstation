@@ -21,3 +21,6 @@
 
 /atom/proc/click_self(caller,location,control,params)
 	return FALSE
+
+/atom/proc/set_color(var/desired_color,var/desired_substype)
+	color = desired_color

@@ -30,7 +30,7 @@
 				if(WEATHER_RAIN)
 					areas_rain += A
 
-	LOG_SERVER("Initialized [area_count] areas.")
+	LOG_SERVER("Initialized [area_count] weather areas.")
 
 /subsystem/weather/on_life()
 

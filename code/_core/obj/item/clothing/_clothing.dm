@@ -51,9 +51,9 @@
 	if(layer == LAYER_MOB_HELD)
 		return ..()
 
-	var/icon/I1 = new/icon(icon,"[icon_state]_primary")
-	var/icon/I2 = new/icon(icon,"[icon_state]_secondary")
-	var/icon/I3 = new/icon(icon,"[icon_state]_tertiary")
+	var/icon/I1 = new /icon(icon,"[icon_state]_primary")
+	var/icon/I2 = new /icon(icon,"[icon_state]_secondary")
+	var/icon/I3 = new /icon(icon,"[icon_state]_tertiary")
 	I1.Blend(color_primary,ICON_MULTIPLY)
 	I2.Blend(color_secondary,ICON_MULTIPLY)
 	I3.Blend(color_tertiary,ICON_MULTIPLY)

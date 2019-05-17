@@ -37,6 +37,9 @@
 	area = src.loc //TODO: Remove this, and make sure it's safe to remove.
 */
 
+/turf/proc/is_safe_teleport()
+	return FALSE
+
 /turf/proc/reconsider_lights()
 	for(var/datum/light_source/L in affecting_lights)
 		L.vis_update()

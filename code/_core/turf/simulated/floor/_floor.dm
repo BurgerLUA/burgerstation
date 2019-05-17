@@ -14,6 +14,13 @@
 	var/footprint_color = "#FFFFFF"
 	var/footprint_alpha = 255
 
+
+/turf/simulated/floor/is_safe_teleport()
+	if(density)
+		return FALSE
+
+	return TRUE
+
 /turf/simulated/floor/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	. = ..()

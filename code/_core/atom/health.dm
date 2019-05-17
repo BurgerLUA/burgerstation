@@ -61,3 +61,16 @@
 
 /atom/proc/update_health(var/damage_dealt) //Update the health values.
 	health_current = get_overall_health()
+
+/atom/proc/adjust_loss(var/type=BRUTE,var/amount)
+	if(!amount)
+		return FALSE
+	switch(type)
+		if(BRUTE)
+			return adjust_brute_loss(amount)
+		if(BURN)
+			return adjust_burn_loss(amount)
+		if(TOX)
+			return adjust_tox_loss(amount)
+		if(OXY)
+			return adjust_oxy_loss(amount)

@@ -9,3 +9,5 @@ var/global/list/all_damage_types = list()
 	for(var/A in subtypesof(/damagetype/))
 		var/damagetype/D = new A
 		all_damage_types[D.id] = D
+
+	LOG_SERVER("Initialized [length(all_damage_types)] damage types.")

@@ -19,6 +19,8 @@ var/global/list/shops = list()
 		else
 			shops[A.id] = list(S)
 
+	LOG_SERVER("Initialized [length(shops)] shops.")
+
 	restock()
 
 /subsystem/shop/on_life()

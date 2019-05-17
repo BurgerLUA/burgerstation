@@ -36,8 +36,8 @@
 
 	icon = initial(icon)
 
-	var/icon/I = new/icon(icon,icon_state)
-	var/icon/O = new/icon(icon,"progress_bar")
+	var/icon/I = new /icon(icon,icon_state)
+	var/icon/O = new /icon(icon,"progress_bar")
 	var/time_normalized = end_time - start_time
 	var/time_left = end_time - curtime
 	var/time_mul = 1 - (time_left/time_normalized)

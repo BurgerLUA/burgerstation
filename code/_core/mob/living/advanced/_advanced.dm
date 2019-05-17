@@ -62,7 +62,7 @@
 	is_typing = FALSE
 	update_icon()
 
-/mob/living/advanced/New(loc,desired_client)
+/mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 	organs = list()
 	inventory = list()
 	worn_objects = list()

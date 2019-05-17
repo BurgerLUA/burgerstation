@@ -22,15 +22,15 @@
 
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cost spells for less. We skyrim now.
 
+//Basically debug mode
+#define ENABLE_INSTALOAD TRUE
+
 //Makes compiling faster when disabled
-#define ENABLE_MAPLOAD TRUE
+#define ENABLE_MAPLOAD FALSE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN FALSE
-
-//Basically debug mode
-#define ENABLE_INSTALOAD FALSE
 
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100

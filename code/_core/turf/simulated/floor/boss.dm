@@ -24,10 +24,10 @@
 	var/icon/I = new /icon(under_icon,under_icon_state)
 
 	if(prob(10))
-		var/icon/N = new/icon(icon,get_quad_icon_state(),NORTH)
-		var/icon/E = new/icon(icon,get_quad_icon_state(),EAST)
-		var/icon/W = new/icon(icon,get_quad_icon_state(),WEST)
-		var/icon/S = new/icon(icon,get_quad_icon_state(),SOUTH)
+		var/icon/N = new /icon(icon,get_quad_icon_state(),NORTH)
+		var/icon/E = new /icon(icon,get_quad_icon_state(),EAST)
+		var/icon/W = new /icon(icon,get_quad_icon_state(),WEST)
+		var/icon/S = new /icon(icon,get_quad_icon_state(),SOUTH)
 		I.Blend(N,ICON_OVERLAY)
 		I.Blend(E,ICON_OVERLAY)
 		I.Blend(W,ICON_OVERLAY)
@@ -37,15 +37,15 @@
 			if(1 to 32)
 				var/dir_to_use = prob(10) ? DIRECTIONS_X : SOUTH
 				dir_to_use = pick(dir_to_use)
-				var/icon/S = new/icon(icon,get_solid_icon_state(),dir_to_use)
+				var/icon/S = new /icon(icon,get_solid_icon_state(),dir_to_use)
 				I.Blend(S,ICON_OVERLAY)
 			if(33 to 9999)
 				var/dir_to_use = prob(10) ? DIRECTIONS_X : DIRECTIONS_CARDINAL
 				dir_to_use = pick(dir_to_use)
-				var/icon/D = new/icon(icon,get_donut_icon_state(),dir_to_use)
+				var/icon/D = new /icon(icon,get_donut_icon_state(),dir_to_use)
 				I.Blend(D,ICON_OVERLAY)
 				if(prob(90))
-					var/icon/T = new/icon(icon,get_timbit_icon_state())
+					var/icon/T = new /icon(icon,get_timbit_icon_state())
 					I.Blend(T,ICON_OVERLAY)
 
 

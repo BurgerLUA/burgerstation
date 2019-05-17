@@ -8,3 +8,5 @@ var/global/list/experience/attribute/all_attributes = list()
 /subsystem/attributes/Initialize()
 	for(var/A in subtypesof(/experience/attribute/))
 		all_attributes += A
+
+	LOG_SERVER("Initialized [length(all_attributes)] attributes.")
