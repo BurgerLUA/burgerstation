@@ -22,6 +22,8 @@
 	stored_buff = desired_buff
 	stored_buff_color = desired_buff_color
 
+	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stored_effect_color)
+
 	..()
 	update_icon()
 

@@ -12,7 +12,7 @@ obj/structure/interactive/soapstone_message
 	var/date
 	var/time
 
-	alpha = 100
+	alpha = 180
 
 obj/structure/interactive/soapstone_message/New(var/desired_loc,var/desired_dir,var/desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
 	dir = desired_dir

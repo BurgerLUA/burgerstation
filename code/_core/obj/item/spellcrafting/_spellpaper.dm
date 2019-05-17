@@ -22,6 +22,14 @@
 
 	if(!stored_modifier_color)
 		stored_modifier_color = random_color()
+
+	if(stored_effect)
+		filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stored_effect_color)
+	else if(stored_modifier)
+		filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stored_modifier_color)
+	else if(stored_buff)
+		filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stored_buff_color)
+
 	..()
 	update_icon()
 
@@ -35,18 +43,21 @@
 	if(stored_buff)
 		var/spellcraft/buff/B = all_buffs[stored_buff]
 		var/icon/I = new /icon(B.icon,B.icon_state)
+		I.Scale(16,16)
 		I.Blend(stored_buff_color,ICON_MULTIPLY)
 		new_icon.Blend(I,ICON_OVERLAY)
 
 	if(stored_effect)
 		var/spellcraft/effect/E = all_effects[stored_effect]
 		var/icon/I = new /icon(E.icon,E.icon_state)
+		I.Scale(16,16)
 		I.Blend(stored_effect_color,ICON_MULTIPLY)
 		new_icon.Blend(I,ICON_OVERLAY)
 
 	if(stored_modifier)
 		var/spellcraft/modifier/M = all_modifiers[stored_modifier]
 		var/icon/I = new /icon(M.icon,M.icon_state)
+		I.Scale(16,16)
 		I.Blend(stored_modifier_color,ICON_MULTIPLY)
 		new_icon.Blend(I,ICON_OVERLAY)
 

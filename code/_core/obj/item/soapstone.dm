@@ -9,6 +9,7 @@
 
 /obj/item/soapstone/New(var/desired_loc)
 	update_icon()
+	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stone_color)
 
 /obj/item/soapstone/orange
 	stone_color = "#FF6A00"
@@ -27,6 +28,8 @@
 	I.Blend(stone_color,ICON_MULTIPLY)
 	var/icon/I2 = new(icon,"rope")
 	I.Blend(I2,ICON_OVERLAY)
+	var/icon/I3 = new(icon,"fade")
+	I.Blend(I3,ICON_OVERLAY)
 
 	icon = I
 
