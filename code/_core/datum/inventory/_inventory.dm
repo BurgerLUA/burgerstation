@@ -193,9 +193,9 @@
 /obj/inventory/get_light_source()
 	return owner
 
-/obj/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE)
+/obj/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
 
-	if(!can_wear_object(I,messages))
+	if(!bypass_checks && !can_wear_object(I,messages))
 		return FALSE
 
 	for(var/obj/item/C in owner.worn_objects)
@@ -309,6 +309,9 @@
 
 /obj/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
+	if(!I.can_be_held(owner,src))
+		return FALSE
+
 	if(parent_inventory)
 		return FALSE
 
@@ -343,6 +346,9 @@
 	return TRUE
 
 /obj/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
+
+	if(!I.can_be_worn(owner,src))
+		return FALSE
 
 	if(parent_inventory)
 		return FALSE

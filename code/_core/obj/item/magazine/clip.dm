@@ -32,3 +32,4 @@
 		caller.to_chat(span("notice","You can't insert anything into \the [object] with \the [src]!"))
 
 	return ..()
+

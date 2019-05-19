@@ -26,7 +26,20 @@
 /obj/structure/interactive/shop_holder/update_icon()
 	if(stored_item)
 		appearance = stored_item.appearance
+		name = "[name] - [item_cost] crystals"
 	..()
+
+/obj/structure/interactive/shop_holder/get_examine_text(var/mob/examiner)
+
+	var/returning_text = stored_item.get_examine_text(examiner)
+
+	if(stored_item.is_container)
+		var/list/contents = stored_item.inventory_to_list()
+		returning_text += div("notice","It contains: [english_list(contents)]")
+
+	returning_text += div("notice","This item is being sold for [item_cost] crystals.")
+
+	return returning_text
 
 /obj/structure/interactive/shop_holder/clicked_by_object(caller,object,location,control,params)
 

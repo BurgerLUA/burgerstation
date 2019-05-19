@@ -52,10 +52,43 @@
 
 /damagetype/ranged/bullet/revolver_38
 	name = ".38 bullet"
-	id = "38"
+	id = ".38"
 
 	base_attack_damage = list(
 		BRUTE = 15,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/bullet/sniper_50
+	name = ".50 bullet"
+	id = ".50"
+
+	base_attack_damage = list(
+		BRUTE = 60,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/bullet/smg_45
+	name = ".45 bullet"
+	id = ".45"
+
+	base_attack_damage = list(
+		BRUTE = 20,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/bullet/rifle_762
+	name = "7.62 bullet"
+	id = "7.62"
+
+	base_attack_damage = list(
+		BRUTE = 30,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0

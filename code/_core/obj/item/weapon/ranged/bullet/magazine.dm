@@ -10,5 +10,6 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/handle_ammo(var/mob/caller)
-	..()
+	. = ..()
 	eject_spent_casings(caller,caller.loc)
+	return .

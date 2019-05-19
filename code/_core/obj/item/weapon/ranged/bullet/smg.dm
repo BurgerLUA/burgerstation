@@ -3,9 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
 	icon_state = "inventory_open"
 
-	projectile = /obj/projectile/bullet/smg/
-	damage_type = "melee_smg"
-
 	bullet_speed = 20
 	shoot_delay = 1.5
 
@@ -15,7 +12,7 @@
 
 	bullet_type = ".45"
 
-	//shoot_sounds = list('sounds/weapon/ranged/bullet/smg.ogg')
+	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 
 	can_wield = FALSE
 

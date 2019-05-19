@@ -21,5 +21,5 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
-/obj/item/weapon/melee/can_be_worn()
+/obj/item/weapon/melee/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
 	return TRUE

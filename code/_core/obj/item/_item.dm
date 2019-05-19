@@ -175,21 +175,12 @@ obj/item/proc/update_owner(desired_owner)
 		var/obj/inventory/I = src.loc
 		I.update_icon()
 
-/obj/item/proc/can_be_worn()
-	return FALSE
-
 /obj/item/proc/get_damage_type()
 	return damage_type
 
+/obj/item/proc/get_damage_type_text(var/mob/living/advanced/A)
 
-/obj/item/get_examine_text(var/mob/examiner)
-
-	if(!is_advanced(examiner))
-		return ..()
-
-	. = ..()
-
-	var/mob/living/advanced/A = examiner
+	var/returning_text = ""
 
 	var/damage_type_to_use = get_damage_type()
 
@@ -248,8 +239,6 @@ obj/item/proc/update_owner(desired_owner)
 			if(grade)
 				skill_damage_list += "[capitalize(k)]: [grade] ([floor(E.get_current_level()*v)] [DT.skill_damage[k]])"
 
-		var/returning_text = ..()
-
 		var/combat_rating = DT.get_rating()
 
 		var/combat_rating_text = ""
@@ -279,9 +268,20 @@ obj/item/proc/update_owner(desired_owner)
 		if(length(skill_damage_list))
 			returning_text += div("notice bold","Skill Damage:") + div("notice","[english_list(skill_damage_list, and_text = ", ")]")
 
-		return . + returning_text
+	return returning_text
 
-	return .
+
+
+/obj/item/get_examine_text(var/mob/examiner)
+
+	if(!is_advanced(examiner))
+		return ..()
+
+	. = ..()
+
+	var/mob/living/advanced/A = examiner
+
+	return . + get_damage_type_text(A)
 
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
@@ -306,3 +306,10 @@ obj/item/proc/do_automatic(caller,object,location,params)
 			returning_list += I.held_objects[1]
 
 	return returning_list
+
+
+/obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/inventory/I)
+	return TRUE
+
+/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+	return FALSE

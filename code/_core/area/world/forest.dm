@@ -52,6 +52,10 @@
 	name = "farm shop"
 	id = "farm_shop"
 
+/area/world/forest/village/shop/alley
+	name = "alley shop"
+	id = "alley_shop"
+
 /area/world/forest/village/interior
 	name = "interior"
 

@@ -33,7 +33,7 @@
 	var/talk_duration = 0
 	var/talk_type = 0
 
-	var/life_ticks = 0
+	var/automatic_ticks = 0
 
 	var/chargen = FALSE
 
@@ -42,6 +42,8 @@
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
+
+
 
 	var/obj/vehicle/driving
 
@@ -196,13 +198,18 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/on_life_client()
 	..()
-	if(attack_flags & ATTACK_HELD_RIGHT)
-		if(!do_automatic_left())
-			attack_flags &= ~ATTACK_HELD_RIGHT
 
-	if(attack_flags & ATTACK_HELD_LEFT)
-		if(!do_automatic_right())
-			attack_flags &= ~ATTACK_HELD_LEFT
+	if(automatic_ticks >= 10)
+		if(attack_flags & ATTACK_HELD_RIGHT)
+			if(!do_automatic_left())
+				attack_flags &= ~ATTACK_HELD_RIGHT
+
+		if(attack_flags & ATTACK_HELD_LEFT)
+			if(!do_automatic_right())
+				attack_flags &= ~ATTACK_HELD_LEFT
+		automatic_ticks = 0
+	else
+		automatic_ticks++
 
 /mob/living/advanced/Initialize()
 

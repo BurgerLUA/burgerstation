@@ -18,9 +18,12 @@
 	if(!is_turf(object))
 		return ..()
 
+	if(get_dist(caller,object) > 1)
+		return FALSE
+
 	var/turf/T = object
 
-	var/obj/item/weapon/ranged/magic/rune/S = make_spell(inventory_to_list(),T)
+	var/obj/item/weapon/ranged/magic/rune/S = make_spell(caller,inventory_to_list(),T)
 	if(S)
 		caller.to_chat(span("notice","You cast a rune on \the [T]."))
 	else
@@ -29,7 +32,7 @@
 	return TRUE
 
 
-/obj/item/storage/spelltome/proc/make_spell(var/list/inventory_contents,var/turf/chosen_turf)
+/obj/item/storage/spelltome/proc/make_spell(var/mob/caller,var/list/inventory_contents,var/turf/chosen_turf)
 
 	var/list/buff_list = list()
 	var/list/buff_color_list = list()
@@ -72,4 +75,4 @@
 	var/final_modifier_color = modifier_color_list[final_modifier]
 	var/final_buff_color = buff_color_list[final_buff]
 
-	return new/obj/item/weapon/ranged/magic/rune(chosen_turf,final_effect,final_modifier,final_buff,final_effect_color,final_modifier_color,final_buff_color)
+	return new/obj/item/weapon/ranged/magic/rune(chosen_turf,caller,final_effect,final_modifier,final_buff,final_effect_color,final_modifier_color,final_buff_color)

@@ -5,6 +5,11 @@
 
 /spellcraft/effect/teleport/on_cast(var/turf/cast_loc,var/mob/living/caster,var/atom/target,var/effect_color,var/spell_mod_id,var/spell_buff_id)
 
+	if(!is_advanced(caster))
+		return FALSE
+
+	var/mob/living/advanced/A = caster
+
 	var/spellcraft/modifier/M = all_modifiers[spell_mod_id]
 	var/final_x = M.teleport_center_x
 	var/final_y = M.teleport_center_y
@@ -18,14 +23,23 @@
 
 	var/turf/selected_turf = locate(final_x,final_y,1)
 
-	if(get_turf(caster) != cast_loc)
-		caster.to_chat(span("notice","You need to be standing on the rune in order to cast it!"))
-		return FALSE
-
 	if(!selected_turf || !selected_turf.is_safe_teleport())
-		caster.to_chat(span("warning","The rune fizzes weakly as you touch it..."))
+		A.to_chat(span("warning","The rune fizzes weakly as you touch it..."))
 		return FALSE
 
-	caster.force_move(selected_turf)
+	var/list/callback_list = list()
+	callback_list["start_turf"] = get_turf(A)
+	callback_list["end_turf"] = selected_turf
+	add_progress_bar(A,"teleport",SECONDS_TO_DECISECONDS(10),callback_list)
 
 	return ..()
+
+/spellcraft/effect/teleport/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params,var/obj/item/weapon/ranged/magic/rune/R)
+
+	if(caller.loc != R.loc)
+		caller.to_chat(span("notice","\The [R] doesn't seem to react."))
+		return FALSE
+
+	on_cast(R.loc,caller,caller,R.stored_effect_color,R.stored_modifier,R.stored_buff)
+
+	return TRUE

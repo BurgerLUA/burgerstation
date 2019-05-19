@@ -9,6 +9,10 @@
 			var/obj/structure/interactive/lootable/L = callback_list["object"]
 			L.give_items(src,callback_list["left"])
 			return TRUE
+		if("teleport")
+			var/atom/A = callback_list["end_turf"]
+			src.force_move(A)
+			return TRUE
 
 	..()
 
@@ -20,6 +24,9 @@
 			return TRUE
 		if("loot_object")
 			to_chat(span("notice","You must remain still in order to find an object!"))
+			return TRUE
+		if("teleport")
+			to_chat(span("notice","You need to be standing still in order to teleport!"))
 			return TRUE
 
 	..()

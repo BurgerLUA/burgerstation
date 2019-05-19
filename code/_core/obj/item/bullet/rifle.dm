@@ -3,3 +3,6 @@
 	desc = "For rifles that requre 7.62mm"
 	id = "7.62"
 	icon = 'icons/obj/items/bullet/762.dmi'
+
+	projectile = /obj/projectile/bullet/rifle
+	damage_type = "7.62"

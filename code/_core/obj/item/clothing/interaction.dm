@@ -37,7 +37,7 @@
 		. += div("notice bold","Armor:")
 		for(var/damagetype in armor_rating)
 			var/damage_rating = armor_rating[damagetype]
-			. += div("notice",damagetype + ": " + damage_rating)
+			. += div("notice", "[damagetype]: [damage_rating]" )
 
 		. += div("notice bold","Protected Parts") + div("notice",english_list(protected_limbs))
 

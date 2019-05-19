@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
 	name = "heavy sniper rifle"
+	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/heavy_sniper.dmi'
 	icon_state = "inventory"
 
@@ -12,7 +13,7 @@
 
 	bullet_type = ".50"
 
-	//shoot_sounds = list('sounds/weapon/ranged/bullet/heavy_sniper.ogg')
+	shoot_sounds = list('sounds/weapons/sniper_heavy/heavy_sniper.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

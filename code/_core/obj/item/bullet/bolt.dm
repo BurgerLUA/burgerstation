@@ -18,5 +18,5 @@
 	update_icon()
 
 
-/obj/item/bullet/bolt/can_be_worn()
+/obj/item/bullet/bolt/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
 	return TRUE

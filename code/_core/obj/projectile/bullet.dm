@@ -41,6 +41,11 @@
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_small"
 
+/obj/projectile/bullet/sniper
+	name = "sniper bullet"
+	icon = 'icons/obj/projectiles/bullet.dmi'
+	icon_state = "bullet_massive"
+
 /obj/projectile/bullet/revolver_44
 	name = "revolver bullet"
 	icon = 'icons/obj/projectiles/bullet.dmi'
@@ -60,11 +65,6 @@
 	name = "shotgun bullet"
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "pellet"
-
-/obj/projectile/bullet/sniper
-	name = "sniper bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_massive"
 
 /obj/projectile/bullet/bolt
 	name = "crossbow bolt"

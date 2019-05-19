@@ -4,11 +4,11 @@
 	id = ".38"
 	icon = 'icons/obj/items/bullet/38.dmi'
 
-	projectile = /obj/projectile/bullet/revolver/
-	damage_type = "38"
-
 	bullet_capacity = 6
 	bullet_capacity_icon = 6
+
+	projectile = /obj/projectile/bullet/revolver/
+	damage_type = ".38"
 
 
 /obj/item/bullet/revolver_44

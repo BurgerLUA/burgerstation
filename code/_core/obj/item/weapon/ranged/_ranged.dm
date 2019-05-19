@@ -160,6 +160,14 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 				bullet_speed = min(bullet_speed,31)
 
 				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use)
+
+				world.log << P.icon
+				world.log << P.icon_state
+				world.log << P.type
+				world.log << projectile
+
+				world.log << damage_type_to_use
+
 				if(get_dist(caller,object) <= 1 && is_mob(object))
 					P.on_hit(object)
 			else
@@ -193,7 +201,8 @@ obj/item/weapon/ranged/proc/get_projectile_path(var/atom/caller,var/desired_x,va
 
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
-	if(!automatic || defer_attack(caller,object,location,null,params) || (object && object.plane >= PLANE_AREA))
+	if(!automatic || (object && object.plane >= PLANE_HUD))
 		return TRUE
+
 	return shoot(caller,object,location,params)
 

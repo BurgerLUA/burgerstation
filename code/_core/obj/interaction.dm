@@ -37,7 +37,3 @@
 
 	drop_item()
 	return new_inventory.add_object(src)
-
-
-/obj/proc/defer_attack(var/mob/caller as mob,var/atom/object,location,control,params)
-

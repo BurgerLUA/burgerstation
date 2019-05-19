@@ -11,7 +11,7 @@
 	var/stored_modifier
 	var/stored_modifier_color
 
-/obj/item/weapon/ranged/magic/rune/New(var/new_loc,var/desired_effect,var/desired_modifer,var/desired_buff,var/desired_effect_color,var/desired_modifier_color,var/desired_buff_color)
+/obj/item/weapon/ranged/magic/rune/New(var/new_loc,var/mob/owner,var/desired_effect,var/desired_modifer,var/desired_buff,var/desired_effect_color,var/desired_modifier_color,var/desired_buff_color)
 
 	stored_effect = desired_effect
 	stored_effect_color = desired_effect_color
@@ -71,3 +71,19 @@
 		A.mana_regen_delay = max(A.mana_regen_delay,30)
 
 	return TRUE
+
+/obj/item/weapon/ranged/magic/rune/can_be_held(var/mob/living/advanced/owner,var/obj/inventory/I)
+	var/spellcraft/effect/E = all_effects[stored_effect]
+	return E.can_be_held
+
+/obj/item/weapon/ranged/magic/rune/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+	return FALSE
+
+/obj/item/weapon/ranged/magic/rune/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(!can_be_held(caller,object))
+		var/spellcraft/effect/E = all_effects[stored_effect]
+		if(E.clicked_by_object(caller,object,location,control,params,src))
+			return TRUE
+
+	return ..()

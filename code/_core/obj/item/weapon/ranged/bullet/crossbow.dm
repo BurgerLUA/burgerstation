@@ -23,7 +23,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
-/obj/item/weapon/ranged/bullet/crossbow/can_be_worn()
+/obj/item/weapon/ranged/bullet/crossbow/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/crossbow/get_static_spread() //Base spread

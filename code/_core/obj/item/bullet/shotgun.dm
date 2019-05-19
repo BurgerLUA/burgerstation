@@ -7,7 +7,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
 
-/obj/item/bullet/shotgun/can_be_worn()
+/obj/item/bullet/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
 	return TRUE
 
 /obj/item/bullet/shotgun/on_spawn()
