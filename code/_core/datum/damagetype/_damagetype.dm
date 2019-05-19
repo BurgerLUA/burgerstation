@@ -183,10 +183,10 @@
 	play_effects(attacker,victim,weapon,hit_object)
 	display_hit_message(attacker,victim,weapon,hit_object)
 
-	hit_object.update_health(damage_dealt)
+	hit_object.update_health(damage_dealt,attacker)
 
 	if(victim != hit_object)
-		victim.update_health(damage_dealt)
+		victim.update_health(damage_dealt,attacker)
 
 	if(is_living(attacker) && victim && attacker != victim)
 		var/mob/living/A = attacker

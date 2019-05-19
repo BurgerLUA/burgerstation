@@ -43,8 +43,6 @@
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 
-
-
 	var/obj/vehicle/driving
 
 	var/quick_mode = null
@@ -197,19 +195,30 @@ mob/living/advanced/Login()
 	return ..()
 
 /mob/living/advanced/on_life_client()
+
 	..()
 
-	if(automatic_ticks >= 10)
+	if(automatic_ticks != 0)
+		automatic_ticks = Clamp(automatic_ticks - 1,0,5)
+	else
+
+		var/set_tick = FALSE
+
 		if(attack_flags & ATTACK_HELD_RIGHT)
 			if(!do_automatic_left())
 				attack_flags &= ~ATTACK_HELD_RIGHT
+			else
+				set_tick = TRUE
 
 		if(attack_flags & ATTACK_HELD_LEFT)
 			if(!do_automatic_right())
 				attack_flags &= ~ATTACK_HELD_LEFT
-		automatic_ticks = 0
-	else
-		automatic_ticks++
+			else
+				set_tick = TRUE
+
+		if(set_tick)
+			automatic_ticks = 5
+
 
 /mob/living/advanced/Initialize()
 

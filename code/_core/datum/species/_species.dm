@@ -48,7 +48,8 @@
 		/obj/button/slot/G,
 		/obj/button/slot/H,
 		/obj/button/slot/I,
-		/obj/button/slot/J
+		/obj/button/slot/J,
+		/obj/button/boss_health
 	)
 
 	var/list/obj/button/health/spawning_health = list(

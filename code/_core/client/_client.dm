@@ -250,11 +250,11 @@ var/global/list/all_clients = list()
 
 /client/proc/update_zoom(var/desired_zoom_level)
 	if(!mob || !is_living(mob) || eye != mob)
-		desired_zoom_level = 2
+		desired_zoom_level = 1
 	else if(desired_zoom_level < 0)
 		desired_zoom_level = initial(zoom_level)
 
-	zoom_level = Clamp(desired_zoom_level,2,4)
+	zoom_level = Clamp(desired_zoom_level,1,4)
 
 	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 

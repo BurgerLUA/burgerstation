@@ -16,6 +16,11 @@
 					return FALSE
 	*/
 
+	if(hit_atom != target_atom && is_living(hit_atom))
+		var/mob/living/L = hit_atom
+		if(L.status & FLAG_STATUS_DEAD || L.status & FLAG_STATUS_STUN)
+			return FALSE
+
 	if(damage_type)
 		var/damagetype/DT = all_damage_types[damage_type]
 
@@ -29,12 +34,18 @@
 		if(!can_attack)
 			return FALSE
 
-		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
-		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT))
+			return TRUE
+
+		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT))
+			return FALSE
+
+		if(DT.perform_miss(owner,weapon,object_to_damage))
+			return FALSE
 
 		DT.do_damage(owner,hit_atom,weapon,object_to_damage)
 
-	..()
+	return ..()
 
 /obj/projectile/bullet/revolver
 	name = "revolver bullet"

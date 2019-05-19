@@ -159,7 +159,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 				bullet_speed = min(bullet_speed,31)
 
-				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use)
+				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object)
 
 				world.log << P.icon
 				world.log << P.icon_state

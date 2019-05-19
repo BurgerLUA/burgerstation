@@ -38,17 +38,15 @@
 
 	return victim
 
-/mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/advanced/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
-	var/base_chance = get_block_chance(attacker,weapon,target)
+	. = ..()
 
 	var/obj/item/I_L = get_held_left(DT.get_attack_type())
 	var/obj/item/I_R = get_held_right(DT.get_attack_type())
 
 	var/left_block_mul = 0
 	var/right_block_mul = 0
-
-	var/blocking_item
 
 	if(I_L)
 		left_block_mul = I_L.get_block_mul(DT.get_attack_type())
@@ -58,24 +56,26 @@
 
 	if(left_block_mul && right_block_mul)
 		if(left_block_mul > right_block_mul)
-			blocking_item = I_L.name
-			base_chance *= left_block_mul
+			. *= left_block_mul
 		else
-			blocking_item = I_R.name
-			base_chance *= right_block_mul
+			. *= right_block_mul
 	else if(left_block_mul)
-		blocking_item = I_L.name
-		base_chance *= left_block_mul
+		. *= left_block_mul
 	else if(right_block_mul)
-		blocking_item = I_R.name
-		base_chance *= right_block_mul
+		. *= right_block_mul
 	else
-		base_chance *= get_skill_power(SKILL_UNARMED,1,100)
+		. *= get_skill_power(SKILL_UNARMED,1,100)
+
+	return .
+
+/mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+
+	var/base_chance = get_block_chance(attacker,weapon,target,DT)
 
 	if(!prob(min(base_chance,BLOCK_CHANCE_MAX)))
 		return FALSE
 
-	DT.display_miss_message(attacker,src,weapon,target,"blocked by [src]'s [blocking_item ? blocking_item : "fists"]")
+	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	DT.do_attack_animation(attacker,src,weapon,target)
 
 	var/area/A = get_area(src)
@@ -138,7 +138,7 @@
 
 /mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
-	var/base_chance = get_dodge_chance(attacker,weapon,target)
+	var/base_chance = get_dodge_chance(attacker,weapon,target,DT)
 
 	if(!prob(base_chance))
 		return FALSE

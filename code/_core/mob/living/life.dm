@@ -29,6 +29,10 @@
 
 
 /mob/living/proc/post_death()
+	if(boss && length(linked_players))
+		for(var/mob/living/advanced/player/P in linked_players)
+			for(var/obj/button/boss_health/B in P.buttons)
+				B.clear_boss()
 	return
 
 

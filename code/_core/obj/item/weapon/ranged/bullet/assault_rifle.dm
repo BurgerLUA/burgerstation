@@ -3,9 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
-	projectile = /obj/projectile/bullet/rifle/
-	damage_type = "melee_rifle"
-
 	bullet_speed = 31
 	shoot_delay = 2
 

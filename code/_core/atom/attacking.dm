@@ -79,14 +79,14 @@
 /atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	return 0
 
-/atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return 0
 
-/atom/proc/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/atom/proc/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return 0
 
 /atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	var/base_chance = get_block_chance(attacker,weapon,target)
+	var/base_chance = get_block_chance(attacker,weapon,target,DT)
 	if(!prob(base_chance))
 		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
@@ -104,7 +104,7 @@
 	return TRUE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	var/base_chance = get_dodge_chance(attacker,weapon,target)
+	var/base_chance = get_dodge_chance(attacker,weapon,target,DT)
 	if(!prob(base_chance))
 		return FALSE
 	DT.display_miss_message(attacker,src,weapon,target,"dodged")

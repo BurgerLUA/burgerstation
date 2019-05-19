@@ -62,7 +62,7 @@ mob/living/proc/update_stats()
 
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
-mob/living/update_health()
+mob/living/update_health(var/damage_dealt,var/atom/attacker)
 
 	var/new_health_current = get_health()
 	var/difference = new_health_current - health_current
@@ -72,7 +72,21 @@ mob/living/update_health()
 
 	if(health_current <= 0)
 		death()
+		if(boss && attacker in linked_players)
+			linked_players -= attacker
+	else
+		if(boss)
+			if(!(attacker in linked_players))
+				linked_players += attacker
+
+			if(length(linked_players))
+				for(var/mob/living/advanced/player/P in linked_players)
+					for(var/obj/button/boss_health/B in P.buttons)
+						B.target_boss = src
+						B.update_stats()
 
 	update_health_element_icons(health=TRUE)
+
+
 
 	return difference

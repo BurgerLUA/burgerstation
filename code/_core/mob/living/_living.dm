@@ -70,6 +70,10 @@ var/global/list/all_living = list()
 
 	var/stun_angle = 0
 
+	var/boss = FALSE
+
+	var/list/mob/living/advanced/player/linked_players
+
 /mob/living/death()
 	if(..())
 		var/turf/T = get_turf(src)
@@ -97,6 +101,7 @@ var/global/list/all_living = list()
 	skills = list()
 	factions = list()
 	health_elements = list()
+	linked_players = list()
 
 	initialize_attributes()
 	initialize_skills()
@@ -105,6 +110,10 @@ var/global/list/all_living = list()
 
 	if(ai)
 		ai = new ai(src)
+
+	if(boss)
+		tracked_bosses[id] = src
+		update_boss(id)
 
 /mob/living/Initialize()
 	initialize_factions()

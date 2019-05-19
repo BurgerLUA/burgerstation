@@ -8,5 +8,6 @@
 
 
 /mob/living/advanced/post_death()
+	..()
 	new/obj/effect/temp/death(get_turf(src))
 	qdel(src)

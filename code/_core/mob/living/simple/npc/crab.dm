@@ -8,6 +8,7 @@
 	ai = /ai/crab
 
 /mob/living/simple/npc/crab/post_death()
+	..()
 	icon_state = "[initial(icon_state)]_dead"
 	update_icon()
 
@@ -17,21 +18,42 @@
 
 /mob/living/simple/npc/crab/king
 	name = "king crab"
+	desc = "A crab this size must be the work of some maniac."
+	desc_extended = "A ferocious king crab with massive sharp claws and a thick magic and bullet deflecting outer shell. You'll likely have to get up close and personal in order to crack this crab."
+	id = "crab_king"
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
 	pixel_x = -32
 	pixel_y = 0
 
-	health_base = 1000
+	health_base = 500
 
 	ai = /ai/king_crab
 
 	class = "crab_king"
-	level_multiplier = 100
+	level_multiplier = 10
 
 	attack_range = 3
 
 	density = 1
+
+	boss = TRUE
+
+/mob/living/simple/npc/crab/king/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	return 0
+
+/mob/living/simple/npc/crab/king/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	switch(DT.get_attack_type())
+		if(ATTACK_TYPE_MELEE)
+			return 0
+
+		if(ATTACK_TYPE_RANGED)
+			return 90
+
+		if(ATTACK_TYPE_MAGIC)
+			return 75
+
+	return 0
 
 /mob/living/simple/npc/crab/king/get_movement_delay()
 	return SECONDS_TO_TICKS(1)

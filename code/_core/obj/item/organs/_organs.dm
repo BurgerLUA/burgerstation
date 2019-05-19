@@ -123,7 +123,7 @@
 			I.Blend(U,ICON_UNDERLAY)
 			icon = I
 
-/obj/item/organ/update_health(var/damage_dealt)
+/obj/item/organ/update_health(var/damage_dealt,var/atom/attacker)
 
 	var/brute_loss = get_brute_loss()
 

@@ -59,7 +59,7 @@
 /atom/proc/get_oxy_loss()
 	return damage[OXY]
 
-/atom/proc/update_health(var/damage_dealt) //Update the health values.
+/atom/proc/update_health(var/damage_dealt,var/atom/attacker) //Update the health values.
 	health_current = get_overall_health()
 
 /atom/proc/adjust_loss(var/type=BRUTE,var/amount)
