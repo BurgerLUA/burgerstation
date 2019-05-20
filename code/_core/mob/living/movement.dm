@@ -21,7 +21,7 @@
 	if(is_sneaking)
 		. *= (2 - stealth_mod*0.5)
 
-	. = max(1, . - (. * get_skill_power(SKILL_ATHLETICS,1,100) * 0.5))
+	. *= 1 + (1 - get_skill_power(SKILL_ATHLETICS,1,100))*2
 
 	return .
 

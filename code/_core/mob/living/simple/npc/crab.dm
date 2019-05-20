@@ -26,12 +26,12 @@
 	pixel_x = -32
 	pixel_y = 0
 
-	health_base = 500
+	health_base = 750
 
 	ai = /ai/king_crab
 
 	class = "crab_king"
-	level_multiplier = 10
+	level_multiplier = 40
 
 	attack_range = 3
 

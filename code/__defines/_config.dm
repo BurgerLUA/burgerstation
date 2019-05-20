@@ -8,8 +8,8 @@
 #define WORLD_SIZE_SEGMENT 128 //This shouldn't be touched unless you know what you're doing
 
 
-//#define VIEW_RANGE 11
-#define VIEW_RANGE 15
+#define VIEW_RANGE 11
+//#define VIEW_RANGE 15
 
 
 #define SOUND_RANGE 18

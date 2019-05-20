@@ -1,5 +1,6 @@
 /mob/living/advanced/human/npc/evil_wizard
 	name = "Merlin"
+	id = "merlin"
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
@@ -7,6 +8,8 @@
 	class = "wizard"
 
 	loot_drop = "wizard"
+
+	boss = TRUE
 
 /mob/living/advanced/human/npc/evil_wizard/Initialize()
 
