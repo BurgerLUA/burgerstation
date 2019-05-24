@@ -4,9 +4,8 @@
 		v = new v
 		v.update_owner(src)
 
-mob/living/advanced/get_health()
+mob/living/advanced/get_total_loss()
 	var/damage_current = 0
 	for(var/obj/item/organ/O in organs)
 		damage_current += O.get_total_loss()
-
-	return health_max - damage_current
+	return damage_current

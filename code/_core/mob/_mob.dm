@@ -46,6 +46,10 @@
 
 	var/can_attack_while_moving = TRUE
 
+	var/spam_protection_say = 0
+	//Increases by a certain amount every time you speak in IC.
+	//Measured in seconds.
+	//Reduces by 1 every second
 
 /mob/can_attack(var/atom/victim,var/params)
 

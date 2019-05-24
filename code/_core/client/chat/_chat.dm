@@ -1,5 +1,9 @@
 /client/verb/ooc(var/text_to_say as text)
+	if(last_ooc+20 >= curtime)
+		src.to_chat(span("warning","You're using OOC too fast!"))
+		return FALSE
 	display_message(src,text_to_say,TEXT_OOC)
+	last_ooc = curtime
 
 proc/broadcast(var/text_to_say as text)
 	for(var/mob/object in world)

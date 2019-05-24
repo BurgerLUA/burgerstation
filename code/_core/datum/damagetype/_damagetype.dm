@@ -147,6 +147,8 @@
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
 			return 0
+		if(L.spawn_protection > 0)
+			return 0
 		var/area/A1 = get_area(L)
 		var/area/A2 = get_area(L)
 		if(A1.safe || A2.safe)

@@ -16,7 +16,7 @@
 	)
 
 	dialogue_options["Ilaeza Marwani"] = list(
-		"That is what I was called before I was in #1, that is what I am still called to this day.",
+		"That is what I was called before I was in #1, that is what I am still called to this day. I prefer to keep things on a professional basis, so you can call me Marwani.",
 		"the realm"
 	)
 
@@ -29,14 +29,20 @@
 	)
 
 	dialogue_options["trapped"] = list(
-		"Everyone here is a prisoner of #1, including me. This is his realm where he stores souls for goodness knows what. Probably something to do with torturing us given our #2 and all. You should speak to #3 about it, he tends to introduce the new ones to our village... but apparantly he's been busy of late so I took up that duty.",
+		"Everyone here is a prisoner of #1, including me. This is his realm where he stores souls for goodness knows what. Probably something to do with torturing us given our #2 and all. You should speak to #3 about it, he tends to introduce the new ones to our village... but apparantly he's been busy of late so I'm usually the one informing #4.",
 		"Nar-sie",
 		"immortality",
-		"the mayor"
+		"the mayor",
+		"newcomers"
+	)
+
+	dialogue_options["newcomers"] = list(
+		"There has been a large influx of newcomers lately, for some reason. They all come through the #1, usually unconscious. You were one of them.",
+		"wishgranter"
 	)
 
 	dialogue_options["Nar-sie"] = list(
-		"Nar'sie, Narsie, Nar-sie, the Dark Lord. He, she, or it is the evil that owns this realm that he torments us in. Allegedly. It's actually quite nice here, well... at least inside #1.",
+		"Nar'sie, Narsie, Nar-sie, the Dark Lord, the Dark Lordess. He, she, or it is the evil that owns this realm that he torments us in. Allegedly. It's actually quite nice here, well... at least inside #1.",
 		"the village"
 	)
 
@@ -57,7 +63,8 @@
 		"past life"
 	)
 	dialogue_options["wishgranter"] = list(
-		"Oh, I don't know much about those things. Speak to #1 about it if you want to know more. I have to tend to the others.",
+		"Oh, I don't know much about those things, but they give out a nice calming, relaxing #1. I believe #2 can tell you more about it if you ask nicely.",
+		"magical aura",
 		"the mayor"
 	)
 	dialogue_options["the village"] = list(
@@ -66,13 +73,14 @@
 		"magical aura"
 	)
 	dialogue_options["magical aura"] = list(
-		"I'm afraid I don't know much about how it works. You'll have to speak to #1 about it, or god forbid, #2.",
+		"I'm afraid I don't know much about how it works; I just know that when near it, you feel total and utter pacification. I never questioned its inner workings, but if you want to know more I suggest speaking to #1 about it, or god forbid, #2.",
 		"the mayor",
 		"Bar-Shaleez"
 	)
 
 	dialogue_options["past life"] = list(
-		"I rather not talk about that right now. I have others to tend to. Please, go find #1. I believe they can tell you more about #1's realm.",
+		"I rather not talk about that right now. I have others to tend to. Please, go find #1. I believe they can tell you more about #2's realm.",
+		"the mayor",
 		"Nar-sie"
 	)
 
@@ -81,7 +89,7 @@
 		"Miss Flanagan",
 		"the bar",
 		"the village",
-		"the major"
+		"the mayor"
 	)
 
 	dialogue_options["Miss Flanagan"] = list(
@@ -93,7 +101,7 @@
 	)
 
 	dialogue_options["Bar-Shaleez"] = list(
-		"I... er. Don't speak to her. I suggest ignoring what she has to say completely. Speak to me, or #1, if you have any questions that need answering. She is not that helpful.",
+		"I... er. Don't speak to her. I suggest ignoring what she has to say completely. Speak to me, or #1, if you have any questions that need answering. She is not that helpful, honestly.",
 		"the mayor"
 	)
 

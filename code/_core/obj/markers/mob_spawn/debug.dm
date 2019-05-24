@@ -1,6 +1,5 @@
 /obj/marker/mob_spawn/hostile_human
 	name = "hostile new player spawnpoint"
-
 	type_to_spawn = /mob/living/advanced/human/npc/greytide
 
 

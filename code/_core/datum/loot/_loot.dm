@@ -21,7 +21,6 @@
 	return I
 
 /loot/proc/spawn_loot_turf(var/turf/T)
-
 	for(var/i=1,i <= loot_count,i++)
 		var/obj/item/I = spawn_loot(T)
 		step_rand(I)

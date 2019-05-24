@@ -11,8 +11,27 @@
 		"leave the village"
 	)
 
-	dialogue_options["leave the village"] = list(
-		"HA. Good luck. There are plenty of people like you out there waiting for you to make a mistake and kill you, regardless of any penalties. Have you talked to #1 yet?",
+
+	if(!known_options["_given_money"])
+		dialogue_options["leave the village"] = list(
+			"HA. Good luck. There are plenty of people like you out there waiting for you to make a mistake and kill you, regardless of how much you beg for your life. \
+			You should know this, yes? Have you not spoken to #1? Go find him, and buy yourself some better clothes.NEWLINE\
+			(100 #2 have been added to your inventory.)",
+			"the mayor",
+			"bluespace crystals",
+			"_given_money"
+		)
+	else
+		dialogue_options["leave the village"] = list(
+			"HA. Good luck. There are plenty of people like you out there waiting for you to make a mistake and kill you, regardless of how much you beg for your life. \
+			You should know this, yes? Have you not spoken to #1? Go find him, and buy yourself some better clothes.",
+			"the mayor",
+			"bluespace crystals",
+			"_given_money"
+		)
+
+	dialogue_options["bluespace crystals"] = list(
+		"What? Those things? Oh, they're what you use for currency here. They're magical, special gems that have some arbitrary value to them, for some reason. You probably guessed it, but it was #1 who introduced the idea of a standardized currency here.",
 		"the mayor"
 	)
 
@@ -23,19 +42,19 @@
 		)
 	else if(known_options["Diamond with Flaw"])
 		dialogue_options["the mayor"] = list(
-			"I can tell you talked to him. He leaves a certain... impression on people. Fives people that look on their face. You probably don't know what you're #1, yes?",
+			"I can tell you talked to him. He leaves a certain... impression on people. Gives people that look on their face. You probably don't know what you're #1, yes?",
 			"getting into"
 		)
 	else
 		dialogue_options["the mayor"] = list(
-			"HA. I knew it. You never did talk to him! Well that is no matter. They are a little weird and we could use people like you who don't give a lizard's patootie about important things. \
-			You're here to have fun, yes? Well fun can really only be have if you know what you're #1, yes?",
+			"I knew it. You never did talk to him! Well that is no matter. They are a little weird and we could use people like you who don't give a lizard's patootie about important things. \
+			You're here to have fun, yes? Well fun can really only be had if you know what you're #1, yes?",
 			"getting into"
 		)
 
 	if(known_options["the rule"])
 		dialogue_options["getting into"] = list(
-			"This isn't like your previous life where you're protected by shitcurity or the AI. Out here, anyone can kill you for any reason whatsoever and you can do the same to them. \
+			"This isn't like your previous life where you're protected by shitcurity or the AI. Out here, anyone can kill you for any reason whatsoever and you can do the same to them.. \
 			On a normal day, #1 probably told you about #2, or not. Depends what mood they're in. Long story short, if you want to kill people, just be prepared to #3, if there are any even to begin with.",
 			"the mayor",
 			"the rule",
@@ -77,10 +96,19 @@
 
 
 	dialogue_options["face the consequences"] = list(
-		"If you wrong someone, there is a chance you'll answer to us; #1. Regardless of what species you kill, we'll likely find out and put a bounty on your head. \
-		We don't do it out of the kindness of our hearts, but as an excuse to kill people. Turns out "
+		"If you wrong someone by death, there is a chance you'll answer to us; #1. \
+		Regardless of what sentient species you kill, we'll likely find out and put a bounty on your head we have people watching eveywhere, so don't try to avoid us.",
+		"The Bounty Hunters"
 	)
 
+	dialogue_options["Bounty Hunters"] = list(
+		"We're an organization meant to be a counterbalance to the amount of shitters that come in this realm to fuck people up for the sake of fucking people up. \
+		We're not zealots in a sense where we want total peace, we just hate kids who ruin other's attempt at an escape from this realm. We're always looking for members to #1.",
+		"join the Bounty Hunters"
+	)
 
+	dialogue_options["join the Bounty Hunters"] = list(
+		"You wish to join the Bounty Hunters? Uh... no. Not yet, anyways. Prove your use to us, and we'll approach you."
+	)
 
 	return dialogue_options

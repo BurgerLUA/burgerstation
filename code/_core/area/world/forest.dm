@@ -2,10 +2,12 @@
 	name = "forest"
 	id = "forest"
 	icon_state = "red"
+	ambient_sound = 'sounds/ambient/crickets.ogg'
 
 /area/world/forest/cave
 	name = "lizard cave"
 	icon_state = "green"
+	light_power_mul = 0.5
 
 /area/world/forest/cave/cave
 	name = "cave cave"
@@ -13,7 +15,7 @@
 /area/world/forest/cave/spider
 	name = "spider cave"
 
-/area/world/forest/cave/lizard
+/area/world/forest/cave/lizard //actually crab cave
 	name = "lizard cave"
 
 /area/world/forest/cave/desert
@@ -22,12 +24,16 @@
 /area/world/forest/cave/open
 	name = "open cave"
 	icon_state = "pink"
+	light_power_mul = 0.75
 
 /area/world/forest/village
 	name = "village"
 	id = "village"
 	icon_state = "safe"
 	safe = TRUE
+	tracks = list(
+		"village"
+	)
 
 /area/world/forest/village/ship_exterior
 	icon_state = "pink"
@@ -39,6 +45,7 @@
 /area/world/forest/village/cave
 	name = "diona's cave"
 	icon_state = "pink"
+	light_power_mul = 0.75
 
 /area/world/forest/village/shop/nanotrasen
 	name = "nanotrasen shop"
@@ -58,6 +65,7 @@
 
 /area/world/forest/village/interior
 	name = "interior"
+	light_power_mul = 0.75
 
 /area/world/forest/village/interior/ship
 	name = "ship interior"

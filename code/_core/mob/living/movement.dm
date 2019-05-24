@@ -47,7 +47,6 @@
 
 /mob/living/proc/update_alpha(var/desired_alpha)
 	if(alpha != desired_alpha)
-		world.log << "NEW ALPHA: [desired_alpha]"
 		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = SECONDS_TO_DECISECONDS(1))
 		return TRUE
 

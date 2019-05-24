@@ -4,6 +4,9 @@
 /area/world/temple01/interior
 	icon_state = "green"
 
+/area/world/temple01/interior/safe
+	safe = TRUE
+	icon_state = "safe"
 
 /area/world/temple01/exterior
 	icon_state = "red"

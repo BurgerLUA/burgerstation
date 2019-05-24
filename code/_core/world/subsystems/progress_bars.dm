@@ -8,7 +8,11 @@ var/global/list/all_progress_bars = list()
 
 /subsystem/progress_bars/on_life()
 	for(var/obj/progress_bar/P in all_progress_bars)
-		if(P.callback_list && length(P.callback_list) && P.callback_list["start_turf"]  && P.callback_list["start_turf"] != get_turf(P.loc))
+
+		var/failed_first_turf = length(P.callback_list) && P.callback_list["start_turf"]  && P.callback_list["start_turf"] != get_turf(P.loc)
+		var/failed_second_turf = length(P.callback_list) && P.callback_list["target_start_turf"] && P.callback_list["target"]  && P.callback_list["target_start_turf"] != get_turf(P.callback_list["target"])
+
+		if(failed_first_turf || failed_second_turf)
 			all_progress_bars -= P
 			P.loc.on_progress_bar_failed(P.id,P.callback_list)
 			P.loc.doing_progress = FALSE

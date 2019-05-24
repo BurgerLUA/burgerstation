@@ -124,3 +124,7 @@
 
 /obj/trigger/jumpmarker/ship_exit
 	desired_marker = "ship_exit"
+
+
+/obj/trigger/jumpmarker/clockwork_exit
+	desired_marker = "clockwork_exit"

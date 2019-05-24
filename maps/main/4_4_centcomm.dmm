@@ -14,7 +14,7 @@
 "n" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt,/area/special/lobby)
 "o" = (/obj/structure/scenery/evergreen,/turf/simulated/floor/colored/grass,/area/special/lobby)
 "p" = (/obj/marker/spawnpoint/lobby,/turf/simulated/floor/colored/dirt,/area/special/lobby)
-"q" = (/obj/marker/spawnpoint/new_character,/turf/simulated/floor/wood/brown,/area/singleplayer)
+"q" = (/obj/structure/interactive/bed,/obj/marker/spawnpoint/new_character,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "r" = (/turf/simulated/wall/wood/brown,/area/singleplayer)
 "s" = (/turf/simulated/floor/wood/brown,/area/special/lobby)
 "t" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/singleplayer)
@@ -23,7 +23,6 @@
 "w" = (/turf/simulated/floor/wood/brown,/area/singleplayer)
 "x" = (/obj/marker/mob_spawn/marwani/ship,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "y" = (/obj/structure/interactive/bed,/turf/simulated/floor/wood/brown,/area/singleplayer)
-"B" = (/obj/marker/mob_spawn/player_debug,/turf/simulated/floor/wood/brown,/area/singleplayer)
 "C" = (/turf/simulated/wall/river/non_moving,/area/singleplayer)
 
 (1,1,1) = {"
@@ -41,7 +40,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCCrrrrrrrCCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrrrrrrrrrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrturvrttrCCCCCCCCCCCCCCaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwxwBwwrCCCCCCCCCCCCCCaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwxwwwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwwwwwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrrrrwrrrrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCryurwruyrCCCCCCCCCCCCCCaaaa
@@ -49,8 +48,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwwwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwrwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrrrrwrrrrCCCCCCCCCCCCCCaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCryurwruyrCCCCCCCCCCCCCCaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrqwrwwwwrCCCCCCCCCCCCCCaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrqurwruyrCCCCCCCCCCCCCCaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwrwwwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwwwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrwwrwrwwrCCCCCCCCCCCCCCaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCrrrrwrrrrCCCCCCCCCCCCCCaaaa

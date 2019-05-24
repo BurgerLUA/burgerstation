@@ -14,6 +14,8 @@
 
 	sync_stats = TRUE
 
+	stationary = FALSE
+
 /ai/passive/handle_attacking()
 
 	if(objective_attack && get_dist(owner,objective_attack) <= 1)

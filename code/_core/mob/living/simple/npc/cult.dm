@@ -9,7 +9,7 @@
 
 	loot_drop = "cult"
 
-
+	stun_angle = 90
 
 
 /mob/living/simple/npc/cult/behemoth

@@ -2,6 +2,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/
 	name = "lost soul"
+	var/real_name = "lost soul"
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
@@ -23,9 +24,12 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	movement_delay = 4 //Basically the minimum movement delay.
 
+	var/last_track_time = -1
+
 /mob/living/advanced/player/Initialize()
 	..()
 	all_players += src
+	name = "[real_name] ([ckey])"
 
 /mob/living/advanced/player/destroy()
 	..()

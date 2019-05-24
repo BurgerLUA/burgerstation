@@ -14,7 +14,7 @@
 
 #define SOUND_RANGE 18
 
-#define MAX_MESSAGE_LEN 256
+#define MAX_MESSAGE_LEN 512
 #define MAX_CHARACTERS 10 //Maximum amount of characters a player can have at once.
 
 
@@ -26,17 +26,19 @@
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cost spells for less. We skyrim now.
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
-//Makes compiling faster when disabled
+//Makes compiling faster FALSE disabled
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING TRUE
-#define ENABLE_WEATHERGEN TRUE
-#define ENABLE_TURFGEN TRUE
-#define ENABLE_CHARGEN FALSE
+#define ENABLE_LIGHTING FALSE
+#define ENABLE_WEATHERGEN FALSE
+#define ENABLE_TURFGEN FALSE
+#define ENABLE_CHARGEN TRUE
 
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100
+
+#define SPAWN_PROTECTION_TIME 10 //Time in seconds that you have spawn protection for when you leave a safezone.
 
 #define FOOTSTEP_VOLUME 25
 #define FOOTPRINT_FADE_TIME SECONDS_TO_DECISECONDS(60)

@@ -3,11 +3,15 @@
 	type_to_spawn = /mob/living/simple/npc/spider
 	color = "#00FF00"
 
+	time_to_respawn = 300
+
 
 /obj/marker/mob_spawn/cult/cultist
 	name = "cultist spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/cult/cultist
 	color = "#00FF00"
+
+	time_to_respawn = 300
 
 /obj/marker/mob_spawn/cult/behemoth
 	name = "behemoth spawnpoint"
@@ -19,8 +23,12 @@
 	type_to_spawn = /mob/living/simple/npc/cult/artificer
 	color = "#FFFF00"
 
+	time_to_respawn = 300
+
 
 /obj/marker/mob_spawn/cult/master
 	name = "cult master spawnpoint"
 	type_to_spawn = /mob/living/simple/npc/cult/artificer
 	color = "#FFFF00"
+
+	time_to_respawn = 300

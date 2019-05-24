@@ -74,15 +74,7 @@ var/global/list/all_living = list()
 
 	var/list/mob/living/advanced/player/linked_players
 
-/mob/living/death()
-	if(..())
-		var/turf/T = get_turf(src)
-		if(T && loot_drop)
-			var/loot/L = all_loot[loot_drop]
-			L.spawn_loot_turf(T)
-		return TRUE
-
-	return FALSE
+	var/spawn_protection = 0
 
 /mob/living/proc/get_brute_color()
 	return "#FF0000"

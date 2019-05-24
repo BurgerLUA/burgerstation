@@ -20,6 +20,17 @@
 
 	layer = LAYER_MOB_DEAD
 
+	var/turf/T = get_turf(src)
+	if(T && loot_drop)
+		var/loot/L = all_loot[loot_drop]
+		L.spawn_loot_turf(T)
+		var/obj/item/currency/C = new(src.loc)
+		C.value = 1 + floor(health_max/10)
+		C.update_icon()
+		step_rand(C)
+
+	return TRUE
+
 	post_death()
 
 	return TRUE
@@ -47,6 +58,12 @@
 
 /mob/living/proc/on_life()
 
+	if(area && !area.safe)
+		var/was_protected = spawn_protection > 0
+		spawn_protection =  max(0,spawn_protection - LIFE_TICK)
+		if(!spawn_protection && was_protected)
+			src.to_chat(span("notice","Your spawn protection has worn off."))
+
 	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
 		status &= ~FLAG_STATUS_STUN
 		animate(src,transform = matrix(), time = 1)
@@ -56,7 +73,9 @@
 		animate(src,transform = turn(matrix(), stun_angle), time = 1)
 		on_stunned()
 
-	if(is_sneaking)
+	if(spawn_protection > 0 && !area.safe)
+		update_alpha(10)
+	else if(is_sneaking)
 		var/desired_alpha = floor(10 + (1-stealth_mod)*100)
 		update_alpha(desired_alpha)
 	else

@@ -11,6 +11,11 @@
 	..()
 	color = selected_color
 
+/obj/item/color/crayon/blue
+	name = "blue crayon"
+	color = "#0000FF"
+	uses = 20
+
 /obj/item/color/crayon/dev
 	name = "dev crayon"
 	uses = 99999

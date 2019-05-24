@@ -253,11 +253,25 @@
 
 	return dropped_objects
 
+/obj/inventory/proc/delete_held_objects()
+	for(var/obj/item/I in held_objects)
+		remove_object(I,owner.loc)
+		qdel(I)
+
+/obj/inventory/proc/delete_worn_objects()
+	for(var/obj/item/I in worn_objects)
+		remove_object(I,owner.loc)
+		qdel(I)
+
 /obj/inventory/proc/drop_all_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
 	dropped_objects += drop_held_objects(T)
 	dropped_objects += drop_worn_objects(T)
 	return dropped_objects
+
+/obj/inventory/proc/delete_all_objects()
+	delete_held_objects()
+	delete_worn_objects()
 
 /obj/inventory/proc/remove_all_objects()
 	for(var/obj/item/I in worn_objects)

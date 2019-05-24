@@ -13,6 +13,18 @@
 			var/atom/A = callback_list["end_turf"]
 			src.force_move(A)
 			return TRUE
+		if("feed_self")
+			var/obj/item/food/F = callback_list["object"]
+			src.to_chat(span("notice","You [F.consume_verb] \the [F]."))
+			F.consume(src)
+			return TRUE
+		if("feed_other")
+			var/obj/item/food/F = callback_list["object"]
+			var/mob/living/advanced/A = callback_list["target"]
+			src.to_chat(span("notice","You forcefeed \the [F] to \the [A]."))
+			A.to_chat(span("warning","\The [src] forcefeeds you \the [F]!"))
+			F.consume(A)
+			return TRUE
 
 	..()
 
@@ -28,5 +40,12 @@
 		if("teleport")
 			to_chat(span("notice","You need to be standing still in order to teleport!"))
 			return TRUE
+		if("feed_self") //TODO: Debate whether or not you should be standing still in order to eat food.
+			to_chat(span("notice","You need to be standing still in order to eat!"))
+			return TRUE
+		if("feed_other")
+			to_chat(span("notice","You and your target needs to be standing still in order to feed them!"))
+			return TRUE
+
 
 	..()

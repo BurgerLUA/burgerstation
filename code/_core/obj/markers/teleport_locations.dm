@@ -12,3 +12,8 @@ var/list/teleport_locations = list()
 /obj/marker/teleport_location/ship_exit
 	name = "ship exit"
 	id = "ship_exit"
+
+
+/obj/marker/teleport_location/clockwork_exit
+	name = "clockwork exit"
+	id = "clockwork_exit"

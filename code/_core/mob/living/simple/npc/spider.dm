@@ -1,6 +1,6 @@
 /mob/living/simple/npc/spider
 	name = "cave spider"
-	//icon = 'icons/mob/living/simple/spider.dmi'
+	icon = 'icons/mob/living/simple/spiders.dmi'
 	icon_state = "guard"
 
 	damage_type = "spider"
@@ -9,5 +9,6 @@
 
 	class = "spider"
 
-/mob/living/simple/npc/spider/get_movement_delay()
-	return SECONDS_TO_TICKS(1)
+	stun_angle = 180
+
+	health_base = 100

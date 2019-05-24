@@ -17,6 +17,9 @@
 	if(real_icon_state)
 		icon_state = real_icon_state
 
+	var/area/A = src.loc
+	light_power *= A.light_power_mul
+
 	..()
 
 /turf/simulated/proc/same_turf(var/turf/simulated/T)

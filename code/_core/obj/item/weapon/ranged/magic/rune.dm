@@ -32,21 +32,18 @@
 	var/icon/new_icon = ICON_INVISIBLE
 
 	if(stored_effect)
-		world.log << stored_effect
 		var/spellcraft/effect/E = all_effects[stored_effect]
 		var/icon/I = new /icon(E.icon,E.icon_state)
 		I.Blend(stored_effect_color,ICON_MULTIPLY)
 		new_icon.Blend(I,ICON_OVERLAY)
 
 	if(stored_modifier)
-		world.log << stored_modifier
 		var/spellcraft/modifier/M = all_modifiers[stored_modifier]
 		var/icon/I = new /icon(M.icon,M.icon_state)
 		I.Blend(stored_modifier_color,ICON_MULTIPLY)
 		new_icon.Blend(I,ICON_OVERLAY)
 
 	if(stored_buff)
-		world.log << stored_buff
 		var/spellcraft/buff/B = all_buffs[stored_buff]
 		var/icon/I = new /icon(B.icon,B.icon_state)
 		I.Blend(stored_buff_color,ICON_MULTIPLY)

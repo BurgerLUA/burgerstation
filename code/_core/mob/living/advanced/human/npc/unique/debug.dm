@@ -4,7 +4,6 @@
 	mob_species = /species/diona/
 	sex = NEUTER
 	gender = MALE
-	dialogue_id = "diamond_dialogue"
 	invisibility = INVISIBILITY_PLAYERS
 
 /mob/living/advanced/human/npc/unique/debug/Initialize()

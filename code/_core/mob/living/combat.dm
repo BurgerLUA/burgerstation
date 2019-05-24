@@ -31,6 +31,8 @@
 	return base_chance
 
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	if(spawn_protection > 0)
+		return 10000
 	if(status & FLAG_STATUS_STUN)
 		var/distance = get_dist(attacker,src)
 		if(distance <= 1)
@@ -38,3 +40,9 @@
 		else
 			return 50 + distance*10
 	return 0
+
+/mob/living/can_attack(var/atom/victim,var/params)
+	if(spawn_protection > 0)
+		return FALSE
+
+	return ..()

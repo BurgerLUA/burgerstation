@@ -24,11 +24,14 @@
 
 	var/ambient_sound
 	var/list/random_sounds = list()
+	var/list/tracks = list()
 
 	luminosity           = 2
 	var/dynamic_lighting = FALSE
 
 	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners.
+
+	var/light_power_mul = 1
 
 /area/New()
 	. = ..()
@@ -38,13 +41,24 @@
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
+	if(safe && is_living(enterer))
+		var/mob/living/L = enterer
+		L.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
+
 	if(enterer.area != src)
 
-		if(enterer.area && is_mob(enterer))
+		if(is_mob(enterer))
 			var/mob/M = enterer
 			if(M.client)
 				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
 					play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
+
+			if(is_living(enterer) && enterer.area)
+				var/mob/living/L = M
+				if(enterer.area.safe && !src.safe) //Leaving a safezone
+					L.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional[SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
+				else if(!enterer.area.safe && src.safe) //Entering a safezone
+					L.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
 
 		enterer.area = src
 

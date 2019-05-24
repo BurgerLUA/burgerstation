@@ -1,3 +1,6 @@
+/proc/is_client(var/client/C)
+	return istype(C,/client/)
+
 /proc/is_clothing(var/atom/A)
 	return istype(A,/obj/item/clothing)
 
@@ -102,3 +105,6 @@ proc/is_currency(var/atom/A)
 
 proc/is_dynamic_inventory(var/atom/A)
 	return istype(A,/obj/inventory/dynamic)
+
+proc/is_food(var/atom/A)
+	return istype(A,/obj/item/food/)

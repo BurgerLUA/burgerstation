@@ -45,4 +45,5 @@
 	var/menu/M = get_menu("dialogue")
 	var/list/known_options = P.client.savedata.loaded_data["known_topics"]
 	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P,known_options)))
+	P << final_topic_string
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")

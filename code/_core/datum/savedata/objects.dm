@@ -29,6 +29,11 @@
 		else
 			W.open = FALSE
 
+	if(is_food(O))
+		var/obj/item/food/F = O
+		if(object_data["uses_left"])
+			F.uses_left = object_data["uses_left"]
+
 	if(is_soulgem(O))
 		var/obj/item/consumable/soulgem/S = O
 		if(object_data["total_charge"])
@@ -49,11 +54,11 @@
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
 		if(object_data["stored_magazine"])
-			BG.stored_magazine = load_and_create_object(object_data["stored_magazine"],BG.loc)
+			BG.stored_magazine = load_and_create_object(object_data["stored_magazine"],BG)
 		if(object_data["stored_bullets"])
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
-				var/obj/item/bullet/B = new b_type(BG.loc)
+				var/obj/item/bullet/B = new b_type(BG)
 				B.update_icon()
 				BG.stored_bullets += B
 
@@ -96,15 +101,10 @@
 
 	var/obj/inventory/I
 
-	world.log << "INVENTORY FOR [O]"
-
 	for(var/obj/inventory/I2 in O.inventories)
 		if(I2.id == inventory_data["id"])
-			world.log << "[I2.id]: CORRECT"
 			I = I2
 			break
-		else
-			world.log << "[I2.id]: INCORRECT"
 
 	if(I)
 		if(inventory_data["held"])
@@ -169,6 +169,11 @@
 		var/obj/item/currency/C = I
 		if(C.value > 1)
 			returning_list["value"] = C.value
+
+	if(is_food(I))
+		var/obj/item/food/F = I
+		if(F.uses_left)
+			returning_list["uses_left"] = F.uses_left
 
 	if(is_bullet_gun(I))
 		var/obj/item/weapon/ranged/bullet/BG = I

@@ -1,3 +1,5 @@
+//Rework this shit
+
 /dialogue/npc/marwani/
 	name = "Ilaeza Marwani"
 	id = "marwani_dialogue"

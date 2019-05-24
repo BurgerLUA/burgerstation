@@ -92,6 +92,18 @@ obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,loc
 	U.loaded_data["last_save"] = src.id
 	U.save_current_character()
 
+obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
+	if(is_player(crosser))
+		var/mob/living/advanced/player/P = crosser
+		var/choice = input("Which Wishgranter would you like to teleport to?","Teleport Destination") in all_wishgranters
+		var/list/callback_list = list()
+		callback_list["start_turf"] = get_turf(P)
+		callback_list["end_turf"] = all_wishgranters[choice]
+		if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(10),callback_list))
+			P.to_chat(span("notice","Now teleporting..."))
+
+	return ..()
+
 /obj/structure/interactive/wishgranter/normal/village
 	name = "village wishgranter"
 	id = "village"
@@ -107,3 +119,7 @@ obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,loc
 /obj/structure/interactive/wishgranter/normal/clockwork
 	name = "clockwork wishgranter"
 	id = "clockwork"
+
+/obj/structure/interactive/wishgranter/normal/clockwork/boss
+	name = "clockwork bosh wishgranter"
+	id = "clockwork_boss"

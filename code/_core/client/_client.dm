@@ -37,6 +37,8 @@ var/global/list/all_clients = list()
 
 	perspective = EYE_PERSPECTIVE
 
+	var/last_ooc = 0
+
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
 	winset(src,"chat_combat.output","style='[STYLESHEET]'")

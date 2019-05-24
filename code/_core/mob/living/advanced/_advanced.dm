@@ -95,6 +95,14 @@
 
 	return dropped_objects
 
+/mob/living/advanced/proc/delete_all_items()
+	for(var/v in inventory)
+		var/obj/inventory/O = v
+		O.delete_all_objects()
+
+
+
+
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/obj/item/clothing/C in clothing_list)
 		C.quick_equip(src)

@@ -7,6 +7,10 @@
 
 	ai = /ai/crab
 
+	stun_angle = 180
+
+	loot_drop = "wizard"
+
 /mob/living/simple/npc/crab/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

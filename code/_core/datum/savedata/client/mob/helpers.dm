@@ -104,12 +104,12 @@
 		owner << "Save failed! You aren't controlling an advanced mob!"
 		return FALSE
 
-	var/mob/living/advanced/A = owner.mob
+	var/mob/living/advanced/player/A = owner.mob
 
 	//Basic Information
-	loaded_data["name"] = owner.mob.name
+	loaded_data["name"] = A.real_name
 	loaded_data["id"] = owner.save_slot
-	loaded_data["karma"] = owner.mob.karma
+	loaded_data["karma"] = A.karma
 
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)
@@ -158,14 +158,10 @@
 	else
 		owner << "Save failed. Please contact the server owner."
 
-
-
-
-
-/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/A)
+/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A)
 
 	//Name
-	A.name = loaded_data["name"]
+	A.real_name = loaded_data["name"]
 	A.karma = loaded_data["karma"]
 
 	//Organs
@@ -177,10 +173,6 @@
 		if(loaded_data["organs"][id]["inventories"])
 			for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
 				apply_inventory_data(O,loaded_data["organs"][id]["inventories"][i])
-
-
-
-
 		O.update_icon()
 
 	//Skills
