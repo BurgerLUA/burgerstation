@@ -140,7 +140,8 @@
 		return FALSE
 
 	var/area/A = get_area(L)
-	if(A && A.safe)
+	var/area/starting_area = get_area(start_turf)
+	if(A && A.safe && !starting_area.safe)
 		return FALSE
 
 	if(simple)

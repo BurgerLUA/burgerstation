@@ -187,25 +187,5 @@
 		var/experience/attribute/S = A.get_attribute(id)
 		S.Initialize(xp)
 
-	/*
-	//Inventory - Worn
-	for(var/id in loaded_data["worn"])
-		for(var/list_data in loaded_data["worn"][id])
-			var/obj/O = load_and_create_object(list_data)
-			for(var/obj/inventory/I in A.inventory)
-				if(I.id != id)
-					continue
-				I.add_worn_object(O)
-
-	//Inventory - Held
-	for(var/id in loaded_data["held"])
-		for(var/list_data in loaded_data["held"][id])
-			var/obj/O = load_and_create_object(list_data)
-			for(var/obj/inventory/I in A.inventory)
-				if(I.id != id)
-					continue
-				I.add_held_object(O)
-	*/
-
 	A.force_move(all_wishgranters[loaded_data["last_save"]])
 	A.update_icon()

@@ -1,6 +1,7 @@
 /mob/living/simple/npc/passive/chicken
 	name = "white chicken"
 	icon_state = "chicken_white"
+	damage_type = "chicken_peck"
 
 /mob/living/simple/npc/passive/chicken/brown
 	name = "brown chicken"

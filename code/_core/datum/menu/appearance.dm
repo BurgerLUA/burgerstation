@@ -151,9 +151,7 @@
 	A.change_organ_visual("eye", desired_color = forged_data["eye_r"]["color"])
 	A.change_organ_visual("blush", desired_color = forged_data["blush"]["color"], desired_icon = forged_data["blush"]["icon"], desired_icon_state = forged_data["blush"]["icon_state"])
 	A.change_organ_visual("lips", desired_color = forged_data["mouth"]["color"], desired_icon = forged_data["mouth"]["icon"], desired_icon_state = forged_data["mouth"]["icon_state"])
-	//A.update_overlay()
 	A.update_all_blends()
-	//A.update_icon()
 
 /proc/generate_character_icon(var/list/data,direction = SOUTH)
 

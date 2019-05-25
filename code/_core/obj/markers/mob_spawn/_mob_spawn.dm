@@ -26,13 +26,18 @@
 		return
 
 	if(owning_mob)
-		if(!time_to_respawn)
+
+		if(!death_time)
+			if(owning_mob.status & FLAG_STATUS_DEAD) //The owning mob is dead now, so we'll tell it to spawn when appropriate.
+				death_time = curtime //Approximate time of death
 			return
-		if(!death_time && (owning_mob.status & FLAG_STATUS_DEAD))
-			death_time = curtime
+
+		if(!time_to_respawn) //Don't spawn since it's not time yet.
 			return
-		if(death_time && death_time + time_to_respawn > curtime)
+
+		if(death_time + time_to_respawn <= curtime) //We have a time of death. Spawn it when needed.
 			return
+
 
 	var/area/A = get_area(src)
 

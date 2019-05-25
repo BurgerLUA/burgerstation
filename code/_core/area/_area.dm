@@ -41,9 +41,9 @@
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
-	if(safe && is_living(enterer))
-		var/mob/living/L = enterer
-		L.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
+	if(safe && is_player(enterer))
+		var/mob/living/advanced/player/P = enterer
+		P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
 
 	if(enterer.area != src)
 

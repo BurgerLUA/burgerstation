@@ -53,11 +53,14 @@
 
 /mob/can_attack(var/atom/victim,var/params)
 
+	world.log << "MOB START"
+
 	if(!can_attack_while_moving && move_delay > 0)
 		return FALSE
 
-	return ..()
+	world.log << "MOB END"
 
+	return ..()
 
 /mob/Initialize()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
@@ -82,7 +85,4 @@
 	..()
 
 /mob/Cross(var/atom/moveable/A)
-	if(area && area.safe) //No collisions in safe areas.
-		return TRUE
-
 	return ..()

@@ -147,12 +147,13 @@
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
 			return 0
-		if(L.spawn_protection > 0)
-			return 0
-		var/area/A1 = get_area(L)
-		var/area/A2 = get_area(L)
-		if(A1.safe || A2.safe)
-			return 0
+		/* TODO: Find out if this is needed.
+		if(is_player(victim))
+			var/area/A1 = get_area(L)
+			var/area/A2 = get_area(L)
+			if(A1.safe || A2.safe)
+				return 0
+		*/
 
 		brute_armor += L.armor_brute_base
 		burn_armor += L.armor_burn_base

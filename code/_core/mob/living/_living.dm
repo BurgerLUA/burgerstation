@@ -74,8 +74,6 @@ var/global/list/all_living = list()
 
 	var/list/mob/living/advanced/player/linked_players
 
-	var/spawn_protection = 0
-
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

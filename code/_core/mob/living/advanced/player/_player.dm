@@ -26,6 +26,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/last_track_time = -1
 
+	var/spawn_protection = 0
+
 /mob/living/advanced/player/Initialize()
 	..()
 	all_players += src
@@ -38,9 +40,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 mob/living/advanced/player/on_life_client()
 	..()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
-
-/mob/living/advanced/player/Cross(var/atom/moveable/A)
-	return is_safezone(area) || intent == INTENT_HARM
 
 /mob/living/advanced/player/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
 	. = ..()

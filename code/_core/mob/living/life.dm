@@ -58,12 +58,6 @@
 
 /mob/living/proc/on_life()
 
-	if(area && !area.safe)
-		var/was_protected = spawn_protection > 0
-		spawn_protection =  max(0,spawn_protection - LIFE_TICK)
-		if(!spawn_protection && was_protected)
-			src.to_chat(span("notice","Your spawn protection has worn off."))
-
 	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
 		status &= ~FLAG_STATUS_STUN
 		animate(src,transform = matrix(), time = 1)
@@ -73,13 +67,8 @@
 		animate(src,transform = turn(matrix(), stun_angle), time = 1)
 		on_stunned()
 
-	if(spawn_protection > 0 && !area.safe)
-		update_alpha(10)
-	else if(is_sneaking)
-		var/desired_alpha = floor(10 + (1-stealth_mod)*100)
-		update_alpha(desired_alpha)
-	else
-		update_alpha(255)
+
+	update_alpha(handle_alpha())
 
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
@@ -88,3 +77,13 @@
 		stun_time = max(0,stun_time - LIFE_TICK)
 
 	return TRUE
+
+/mob/living/proc/handle_alpha()
+
+	if(is_sneaking)
+		var/desired_alpha = floor(10 + (1-stealth_mod)*100)
+		return desired_alpha
+
+	return 255
+
+

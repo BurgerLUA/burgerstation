@@ -15,7 +15,7 @@
 	var/final_y = M.teleport_center_y
 	var/list/hsv = ReadHSV(RGBtoHSV(effect_color))
 	var/offset_x = sin(hsv[1])
-	var/offset_y = sin(hsv[1])
+	var/offset_y = cos(hsv[1])
 	var/strength = hsv[3]*0.01*WORLD_SIZE_SEGMENT*0.5 - WORLD_SIZE_SEGMENT
 
 	final_x += floor(offset_x*strength)
