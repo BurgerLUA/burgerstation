@@ -52,3 +52,19 @@
 
 	return FALSE
 
+
+/mob/living/Cross(var/atom/movable/M)
+
+	var/area/A = get_area(src)
+
+	if(!A.safe)
+		var/turf/T = get_turf(M)
+
+		var/count = 0
+		for(var/mob/living/L in T.contents)
+			count++
+
+		if(count>1)
+			return FALSE
+
+	return ..()

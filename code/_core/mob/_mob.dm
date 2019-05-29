@@ -53,12 +53,8 @@
 
 /mob/can_attack(var/atom/victim,var/params)
 
-	world.log << "MOB START"
-
 	if(!can_attack_while_moving && move_delay > 0)
 		return FALSE
-
-	world.log << "MOB END"
 
 	return ..()
 
@@ -84,5 +80,5 @@
 	all_mobs += src
 	..()
 
-/mob/Cross(var/atom/moveable/A)
+/mob/Cross(var/atom/movable/A)
 	return ..()

@@ -23,7 +23,7 @@
 /mob/living/advanced/human/npc/can_be_grabbed()
 	return status & FLAG_STATUS_DEAD
 
-/mob/living/advanced/human/npc/Cross(var/atom/moveable/A)
+/mob/living/advanced/human/npc/Cross(var/atom/movable/A)
 	return FALSE
 
 /mob/living/advanced/human/npc/on_life_AI()

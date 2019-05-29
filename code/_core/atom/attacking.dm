@@ -36,7 +36,7 @@
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
 	if(!can_attack)
-		world.log << "[attacker] cannot attack the [victim] with the [object_to_damage_with]."
+		LOG_ERROR("[attacker] cannot attack the [victim] with the [object_to_damage_with].")
 		return FALSE
 
 	DT.attack_last = world.time
@@ -46,8 +46,6 @@
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
 	if(victim.perform_parry(blamed,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
 	if(victim.perform_dodge(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
-
-	world.log << "YEAH BOT"
 
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
@@ -61,17 +59,11 @@
 
 /atom/proc/can_attack(var/atom/victim,var/params)
 
-	world.log << "ATOM START"
-
 	if(attack_last + get_attack_delay(victim,params) > world.time)
-		world.log << "BUNGA"
 		return FALSE
 
 	if(victim && !victim.can_be_attacked(src))
-		world.log << "UNGA"
 		return FALSE
-
-	world.log << "ATOM END"
 
 	return TRUE
 

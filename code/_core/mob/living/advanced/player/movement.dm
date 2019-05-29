@@ -1,6 +1,6 @@
 /mob/living/advanced/player/Cross(var/atom/crosser)
 
-	if(area && area.safe && is_player(crosser)) //No collisions in safe areas.
-		return TRUE
+	if(is_player(crosser) && intent == INTENT_HARM && !(area && area.safe))
+		return FALSE
 
-	return intent == INTENT_HARM
+	return ..()

@@ -15,5 +15,5 @@
 	add_outfit("diamond_outfit")
 
 
-/mob/living/advanced/human/npc/unique/debug/Cross(var/atom/moveable/A)
+/mob/living/advanced/human/npc/unique/debug/Cross(var/atom/movable/A)
 	return TRUE

@@ -29,23 +29,19 @@
 		C.update_icon()
 		step_rand(C)
 
-	return TRUE
-
 	post_death()
 
 	return TRUE
 
 /mob/living/proc/pre_death()
-	return
-
+	return TRUE
 
 /mob/living/proc/post_death()
 	if(boss && length(linked_players))
 		for(var/mob/living/advanced/player/P in linked_players)
 			for(var/obj/button/boss_health/B in P.buttons)
 				B.clear_boss()
-	return
-
+	return TRUE
 
 /mob/living/proc/on_life_AI()
 	if(status & FLAG_STATUS_DEAD)

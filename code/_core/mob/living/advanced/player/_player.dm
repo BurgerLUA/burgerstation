@@ -58,3 +58,10 @@ mob/living/advanced/player/on_life_client()
 	set name = "Class Debug"
 	set category = "Debug"
 	open_menu(src,"class_editor")
+
+/mob/living/advanced/player/verb/spawn_player()
+	set name = "Spawn Player"
+	set category = "Debug"
+
+	var/mob/living/advanced/player/fake/F = new(src.loc)
+	F.Initialize()
