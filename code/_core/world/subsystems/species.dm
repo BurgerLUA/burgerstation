@@ -3,7 +3,7 @@ var/global/list/chargen_species = list()
 /subsystem/chargen/
 	name = "Chargen Subsystem"
 	desc = "Basically allows the chargen system not to be dumb."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_PRELOAD
 
 /subsystem/chargen/Initialize()
 	for(var/v in subtypesof(/species/))

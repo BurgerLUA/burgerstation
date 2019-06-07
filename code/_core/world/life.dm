@@ -44,6 +44,10 @@
 			for(var/mob/abstract/observer/O in all_mobs_with_clients)
 				O.load_most_recent_character()
 
+	else if(length(lobby_positions))
+		for(var/mob/abstract/observer/O in all_mobs_with_clients)
+			O.force_move(pick(lobby_positions))
+
 	spawn while(TRUE)
 		for(var/list/v in active_subsystems)
 			var/subsystem/S = v["subsystem"]

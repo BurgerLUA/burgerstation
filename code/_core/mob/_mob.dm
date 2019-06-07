@@ -59,8 +59,10 @@
 	return ..()
 
 /mob/Initialize()
-	for(var/obj/structure/interactive/localmachine/L in local_machines)
-		L.update_for_mob(src)
+
+	if(src.client)
+		for(var/obj/structure/interactive/localmachine/L in local_machines)
+			L.update_for_mob(src)
 
 	var/area/A = get_area(src)
 	A.Entered(src)

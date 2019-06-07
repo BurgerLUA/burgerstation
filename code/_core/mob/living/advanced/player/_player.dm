@@ -28,6 +28,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/spawn_protection = 0
 
+	respawn = FALSE
+
 /mob/living/advanced/player/Initialize()
 	..()
 	all_players += src

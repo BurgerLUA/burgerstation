@@ -31,6 +31,10 @@
 
 	var/true_sight = FALSE
 
+	var/roaming_distance = 5
+
+	var/attack_distance = 1
+
 /ai/New(var/mob/living/desired_owner)
 
 	owner = desired_owner
@@ -46,6 +50,9 @@
 	start_turf = get_turf(owner)
 
 /ai/proc/on_life()
+
+	if(!is_turf(owner.loc))
+		return TRUE
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
@@ -63,7 +70,7 @@
 
 /ai/proc/handle_attacking()
 
-	if(objective_attack && get_dist(owner,objective_attack) <= 1)
+	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
 		owner.move_dir = 0
 		var/list/params = list(
 			"icon-x" = num2text(16),
@@ -88,12 +95,12 @@
 /ai/proc/handle_movement()
 
 	if(objective_attack)
-		if(get_dist(owner,objective_attack) > 1)
+		if(get_dist(owner,objective_attack) > attack_distance)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
 			owner.move_dir = 0
 
-	else if(get_dist(owner,start_turf) >= 5)
+	else if(get_dist(owner,start_turf) >= roaming_distance)
 		owner.move_dir = get_dir(owner,start_turf)
 	else if(stationary)
 		owner.move_dir = 0
@@ -172,7 +179,7 @@
 
 /ai/simple/handle_attacking()
 
-	if(objective_attack && get_dist(owner,objective_attack) <= 1)
+	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
 		owner.move_dir = 0
 		owner.attack(owner,objective_attack)
 

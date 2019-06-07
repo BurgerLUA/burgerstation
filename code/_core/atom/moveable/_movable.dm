@@ -48,6 +48,9 @@
 		return FALSE
 
 /atom/movable/proc/force_move(var/atom/new_loc)
+
+	// Moving to nullspace is a perfectly valid usage of this proc.
+
 	if(loc)
 		loc.Exited(src, new_loc)
 
@@ -55,7 +58,7 @@
 
 	loc = new_loc
 
-	if(loc) // Moving to nullspace is a perfectly valid usage of this proc.
+	if(loc)
 		loc.Entered(src, old_loc)
 
 	for(var/atom/movable/AM in loc)

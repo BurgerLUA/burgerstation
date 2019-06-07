@@ -19,13 +19,20 @@
 	name = "cult exterior"
 	icon_state = "blue"
 
+/area/world/cult/exterior/safe //1,2
+	name = "cult exterior wishgranter"
+	icon_state = "safe2"
+	safe = TRUE
+
 /area/world/cult/interior //1,2
 	name = "cult exterior"
 	icon_state = "green"
 
 
-
-
+/area/world/cult/interior/safe //1,2
+	name = "cult wishgranter"
+	icon_state = "safe"
+	safe = TRUE
 
 
 /area/world/shadows //2,4

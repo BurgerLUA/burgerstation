@@ -6,10 +6,6 @@
 
 /mob/living/simple/npc/on_life_AI()
 
-	if(!initialized)
-		Initialize()
-		return TRUE //Wait until next tick.
-
 	if(ai)
 		ai.on_life()
 		handle_movement(DECISECONDS_TO_TICKS(LIFE_TICK))

@@ -3,7 +3,7 @@ var/global/list/all_damage_types = list()
 /subsystem/damagetype/
 	name = "Damage Type Subsystem"
 	desc = "Stores all the known damage types in a list."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_PRELOAD
 
 /subsystem/damagetype/Initialize()
 	for(var/A in subtypesof(/damagetype/))

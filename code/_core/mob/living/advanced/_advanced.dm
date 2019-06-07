@@ -10,8 +10,10 @@
 	var/obj/item/automatic_left
 	var/obj/item/automatic_right
 
+	/*
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
+	*/
 
 	var/sex = MALE
 	gender = MALE
@@ -48,6 +50,8 @@
 	var/quick_mode = null
 
 	stun_angle = 90
+
+	random_spawn_dir = FALSE
 
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type

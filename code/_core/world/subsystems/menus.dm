@@ -3,7 +3,7 @@ var/global/list/menu/all_menus = list()
 /subsystem/menus/
 	name = "Menu Subsystem"
 	desc = "Stores all the known menus in a list."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_PRELOAD
 
 /subsystem/menus/Initialize()
 

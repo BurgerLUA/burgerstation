@@ -74,6 +74,10 @@ var/global/list/all_living = list()
 
 	var/list/mob/living/advanced/player/linked_players
 
+	var/respawn = TRUE
+	var/respawn_time = 300 //In deciseconds
+	var/random_spawn_dir = TRUE
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 
@@ -96,14 +100,18 @@ var/global/list/all_living = list()
 	initialize_attributes()
 	initialize_skills()
 
-	all_living += src
-
 	if(ai)
 		ai = new ai(src)
+
+	all_living += src
 
 	if(boss)
 		tracked_bosses[id] = src
 		update_boss(id)
+
+/mob/living/destroy()
+	qdel(ai)
+	..()
 
 /mob/living/Initialize()
 	initialize_factions()

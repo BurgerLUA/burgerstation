@@ -11,6 +11,8 @@
 
 	stun_angle = 90
 
+	damage_type = "slime_pounce"
+
 
 /mob/living/simple/npc/cult/behemoth
 	name = "behemoth"

@@ -123,3 +123,12 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 /obj/structure/interactive/wishgranter/normal/clockwork/boss
 	name = "clockwork bosh wishgranter"
 	id = "clockwork_boss"
+
+
+/obj/structure/interactive/wishgranter/normal/caves/
+	name = "caves wishgranter"
+	id = "caves"
+
+/obj/structure/interactive/wishgranter/normal/cult_hideout/
+	name = "cult hideout wishgranter"
+	id = "cult_hideout"

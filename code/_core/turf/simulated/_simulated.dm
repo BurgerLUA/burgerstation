@@ -8,6 +8,9 @@
 	light_range = 2
 	light_color = "#FFFFFF"
 
+	var/list/spawning_data = list()
+
+
 /turf/simulated/Initialize()
 	..()
 

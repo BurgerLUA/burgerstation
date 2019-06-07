@@ -105,3 +105,6 @@ proc/is_dynamic_inventory(var/atom/A)
 
 proc/is_food(var/atom/A)
 	return istype(A,/obj/item/food/)
+
+/proc/is_slime(var/atom/A)
+	return istype(A,/mob/living/simple/npc/slime)

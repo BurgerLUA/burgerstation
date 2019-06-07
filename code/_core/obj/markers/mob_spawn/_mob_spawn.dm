@@ -25,26 +25,22 @@
 	if(!type_to_spawn)
 		return
 
-	if(owning_mob)
-
+	if(!owning_mob)
+		spawn_mob()
+	else if( (owning_mob.status & FLAG_STATUS_DEAD) || owning_mob.qdeleting)
+		world.log << "DEAD"
 		if(!death_time)
-			if(owning_mob.status & FLAG_STATUS_DEAD) //The owning mob is dead now, so we'll tell it to spawn when appropriate.
-				death_time = curtime //Approximate time of death
-			return
+			death_time = curtime
 
-		if(!time_to_respawn) //Don't spawn since it's not time yet.
-			return
+		if(death_time + time_to_respawn <= curtime)
+			spawn_mob()
+			death_time = 0
 
-		if(death_time + time_to_respawn <= curtime) //We have a time of death. Spawn it when needed.
-			return
-
-
+/obj/marker/mob_spawn/proc/spawn_mob()
 	var/area/A = get_area(src)
-
+	owning_mob = null
 	owning_mob = new type_to_spawn(src.loc,desired_level_multiplier = level_multiplier * A.level_multiplier)
 	if(random_dir)
 		owning_mob.dir = pick(NORTH,EAST,SOUTH,WEST)
 	else
 		owning_mob.dir = dir
-
-	death_time = 0

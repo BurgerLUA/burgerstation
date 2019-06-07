@@ -4,7 +4,7 @@ var/global/list/all_notifications = list()
 	name = "Image Notifications"
 	desc = "Handles animations of pop-up image notifications."
 	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_PRELOAD
 
 /subsystem/image_notifications/on_life()
 	for(var/var/obj/screen/S in all_notifications)

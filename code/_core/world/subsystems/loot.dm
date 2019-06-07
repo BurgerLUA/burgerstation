@@ -3,7 +3,7 @@ var/global/list/all_loot = list()
 /subsystem/loot/
 	name = "Loot Subsystem"
 	desc = "Yes."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_PRELOAD
 
 /subsystem/loot/Initialize()
 	for(var/v in subtypesof(/loot/))

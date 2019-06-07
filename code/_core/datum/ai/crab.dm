@@ -8,7 +8,7 @@
 	attack_delay = 1
 	movement_delay = 1
 
-	target_distribution = list(8,8,8,8,16,32)
+	target_distribution = list(0,0,0,0,4,8)
 
 	simple = TRUE
 

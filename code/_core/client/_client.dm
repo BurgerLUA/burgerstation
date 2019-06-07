@@ -8,7 +8,7 @@ var/global/list/all_clients = list()
 	var/macros/macros
 
 	fps = FPS_CLIENT
-	preload_rsc = 1
+	preload_rsc = 2
 
 	var/list/obj/inventory/known_inventory
 	var/list/obj/button/known_buttons
