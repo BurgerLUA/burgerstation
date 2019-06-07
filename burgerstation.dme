@@ -317,6 +317,7 @@
 #include "code\_core\mob\living\simple\npc\cult.dm"
 #include "code\_core\mob\living\simple\npc\cyborg.dm"
 #include "code\_core\mob\living\simple\npc\slime.dm"
+#include "code\_core\mob\living\simple\npc\slime_test.dm"
 #include "code\_core\mob\living\simple\npc\spider.dm"
 #include "code\_core\mob\living\simple\npc\passive\_passive.dm"
 #include "code\_core\mob\living\simple\npc\passive\chicken.dm"

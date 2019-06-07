@@ -9,7 +9,7 @@
 
 /mob/living/simple/npc/passive/chicken/black
 	name = "black chicken"
-	icon_state = "chicken_brown"
+	icon_state = "chicken_black"
 
 /mob/living/simple/npc/passive/chicken/black/Initialize()
 	..()

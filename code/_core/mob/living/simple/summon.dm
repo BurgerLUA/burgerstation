@@ -16,8 +16,9 @@ mob/living/simple/npc/summon/New(var/loc/spawning_location,var/client/C,var/mob/
 	owner = desired_owner
 	time_left = desired_time
 	name = "[owner.name]'s [initial(name)]"
-	..()
+	. = ..()
 	src.factions = desired_owner.factions
+	return .
 
 mob/living/simple/npc/summon/on_life()
 	..()

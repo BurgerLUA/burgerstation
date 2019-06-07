@@ -26,7 +26,7 @@
 	if(S == self)
 		return FALSE
 
-	if(S.color == self.color)
+	if(S.slime_color == self.slime_color)
 		return FALSE
 
 	if(S.stored_slimes > self.stored_slimes)

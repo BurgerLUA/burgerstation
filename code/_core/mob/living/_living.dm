@@ -120,9 +120,10 @@ var/global/list/all_living = list()
 	stamina_current = stamina_max
 	mana_current = mana_max
 	update_level()
-	..()
+	. = ..()
 	if(ai)
 		name = "[initial(name)] (lvl. [level])"
+	return .
 
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)

@@ -67,7 +67,7 @@
 	var/area/A = get_area(src)
 	A.Entered(src)
 
-	..()
+	return ..()
 
 /mob/New(var/loc/spawning_location,var/client/C)
 

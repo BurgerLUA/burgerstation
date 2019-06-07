@@ -11,6 +11,10 @@
 
 	health_base = 200
 
+	color = "#880000"
+
+
+
 /mob/living/simple/npc/bear/snow
 	name = "snow bear"
 	icon_state = "white"

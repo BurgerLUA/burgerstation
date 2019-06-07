@@ -18,15 +18,16 @@
 	var/ghost = FALSE
 
 /atom/movable/Initialize()
-	..()
+	. = ..()
 	area = get_area(src)
+	return .
 
 /atom/movable/destroy()
 	var/turf/T = loc
 	if(opacity && istype(T))
 		T.reconsider_lights()
 
-	. = ..()
+	return ..()
 
 /atom/movable/proc/get_movement_delay()
 	return movement_delay

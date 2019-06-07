@@ -53,8 +53,17 @@
 	return TRUE
 
 /mob/living/proc/on_life_AI()
+
+	if(!initialized)
+		Initialize()
+		return TRUE //Wait until next tick.
+
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
+
+	if(ai)
+		ai.on_life()
+		handle_movement(DECISECONDS_TO_TICKS(LIFE_TICK))
 
 	return ..()
 

@@ -45,13 +45,19 @@
 	var/doing_progress = FALSE
 
 
+
+
 /atom/proc/Initialize()
+	/*
 	initialize_blends()
-	initialized = TRUE
 	update_health()
 	update_icon()
+	*/
+	initialized = TRUE
+	return TRUE
 
 /atom/New()
+
 	. = ..()
 
 	if(light_power && light_range)
@@ -62,6 +68,8 @@
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
 	overlays_assoc = list()
+
+	return .
 
 /atom/destroy()
 	if(light)

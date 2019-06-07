@@ -58,7 +58,6 @@
 
 	var/area/A = get_area(T)
 	T.spawning_data["mob_stored"] = null
-	world.log << T.spawning_data["mob_type"]
 	var/path = T.spawning_data["mob_type"]
 	var/mob/living/L = new path(T,desired_level_multiplier = T.spawning_data["level_multiplier"] + A.level_multiplier)
 	L.dir = T.spawning_data["mob_dir"]
