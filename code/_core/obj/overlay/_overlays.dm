@@ -13,7 +13,12 @@
 
 	var/no_initial = FALSE
 
+	var/no_update = FALSE
+
 /obj/overlay/update_icon()
+
+	if(no_update)
+		return
 
 	if(length(additional_blends) && !never_blend)
 		var/icon/I
@@ -26,6 +31,9 @@
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
 
+			if(IB.layer)
+				layer = IB.layer
+
 			if(IB.special_type & ICON_BLEND_MASK)
 				var/icon/OI = new (IB.icon,IB.icon_state)
 				var/icon/MI = new (initial_icon,initial_icon_state)
@@ -35,6 +43,7 @@
 
 			else if(IB.special_type & ICON_BLEND_OVERLAY)
 				var/icon/OI = new (IB.icon,IB.icon_state)
+				world.log << IB.icon_state
 				OI.Blend(IB.color,ICON_MULTIPLY)
 				I.Blend(OI,ICON_OVERLAY)
 

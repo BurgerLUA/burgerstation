@@ -78,6 +78,11 @@ var/global/list/all_living = list()
 	var/respawn_time = 300 //In deciseconds
 	var/random_spawn_dir = TRUE
 
+
+	var/has_footsteps = FALSE
+	var/has_footprints = FALSE
+	var/list/footstep_override
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

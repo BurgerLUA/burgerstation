@@ -53,6 +53,9 @@
 
 	random_spawn_dir = FALSE
 
+	has_footsteps = TRUE
+	has_footprints = TRUE
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)
@@ -67,6 +70,9 @@
 	update_icon()
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
+	icon = 'icons/invisible.dmi'
+	icon_state = "0"
+
 	organs = list()
 	inventory = list()
 	worn_objects = list()
@@ -377,21 +383,17 @@ mob/living/advanced/Login()
 		change_organ_visual("hair_head", desired_icon = mob_species.default_icon_hair, desired_icon_state = mob_species.default_icon_state_hair, desired_color = mob_species.default_color_hair)
 		change_organ_visual("hair_face", desired_color = mob_species.default_color_hair)
 
-	/*
 	if(mob_species.default_color_detail)
 		change_organ_visual("skin_detail", desired_color = mob_species.default_color_detail)
 
 	if(mob_species.default_color_glow)
 		change_organ_visual("skin_glow", desired_color = mob_species.default_color_glow)
 
-
-	*/
-
-/mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type)
+/mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/obj/item/organ/O in organs)
 		if(!length(O.additional_blends))
 			continue
-		O.change_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type)
+		O.change_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
 
 /mob/living/advanced/proc/update_gender()
 	remove_all_organs()

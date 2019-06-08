@@ -6,6 +6,7 @@
 	icon_state = "small_neutral"
 
 	var/stored_slimes = 1
+	var/stored_slimes_max = 2
 
 	ai = /ai/slime/
 
@@ -100,13 +101,13 @@
 
 //Black
 /mob/living/simple/npc/slime/grey
-	color = "#888888"
+	slime_color = "#888888"
 
 /mob/living/simple/npc/slime/grey/pure
-	color = "#FFFFFF"
+	slime_color = "#FFFFFF"
 
 /mob/living/simple/npc/slime/grey/dark
-	color = "#444444"
+	slime_color = "#444444"
 
 
 //Red
@@ -127,7 +128,6 @@
 
 /mob/living/simple/npc/slime/green/pure
 	slime_color = "#00FF00"
-
 
 //Blue
 /mob/living/simple/npc/slime/blue

@@ -41,7 +41,8 @@
 
 	owner = desired_owner
 	weapon = desired_weapon
-	damage_type = desired_damage_type
+	if(desired_damage_type)
+		damage_type = desired_damage_type
 
 	vel_x = desired_vel_x
 	vel_y = desired_vel_y

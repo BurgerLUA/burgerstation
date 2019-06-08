@@ -4,16 +4,16 @@
 /atom/proc/initialize_blends()
 	return TRUE
 
-/atom/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save)
+/atom/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save,var/desired_layer)
 	if(blend_exists(desired_id))
-		change_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type)
+		change_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,desired_layer)
 		return additional_blends[desired_id]
 	else
-		var/icon_blend/IB = new(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_should_save)
+		var/icon_blend/IB = new(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_should_save, desired_layer)
 		additional_blends[desired_id] = IB
 		return IB
 
-/atom/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type)
+/atom/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 
 	if(!additional_blends[desired_id])
 		return FALSE
@@ -32,6 +32,12 @@
 
 	if(desired_type)
 		additional_blends[desired_id].special_type = desired_type
+
+	if(desired_layer)
+		additional_blends[desired_id].layer = desired_layer
+
+	if(debug_message)
+		LOG_DEBUG("[debug_message]: [desired_id] [additional_blends[desired_id].icon_state]")
 
 	return TRUE
 

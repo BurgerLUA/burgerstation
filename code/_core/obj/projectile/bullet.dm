@@ -24,6 +24,9 @@
 	if(damage_type)
 		var/damagetype/DT = all_damage_types[damage_type]
 
+		if(!DT)
+			return ..()
+
 		var/list/params = list()
 		params["icon-x"] = shoot_x
 		params["icon-y"] = shoot_y

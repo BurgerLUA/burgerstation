@@ -32,7 +32,10 @@
 	if(S.stored_slimes > self.stored_slimes)
 		return FALSE
 
-	if(self.stored_slimes >= 4)
+	if(self.stored_slimes >= self.stored_slimes_max)
+		return FALSE
+
+	if(self.stored_slimes + S.stored_slimes > self.stored_slimes_max)
 		return FALSE
 
 	if(S.can_attack(self))
@@ -46,7 +49,7 @@
 
 	var/mob/living/simple/npc/slime/self = owner
 
-	if(self.stored_slimes < 4)
+	if(self.stored_slimes < self.stored_slimes_max)
 		for(var/mob/living/simple/npc/slime/S in view(radius_find_enemy,owner))
 			if(can_absorb_slime(S))
 				possible_targets += S

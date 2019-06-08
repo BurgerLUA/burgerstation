@@ -10,8 +10,9 @@
 	var/blend
 	var/special_type
 	var/should_save
+	var/layer
 
-/icon_blend/New(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save)
+/icon_blend/New(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save, var/desired_layer)
 
 	if(desired_icon)
 		icon = desired_icon
@@ -33,3 +34,6 @@
 
 	if(desired_should_save)
 		should_save = desired_should_save
+
+	if(desired_layer)
+		layer = desired_layer

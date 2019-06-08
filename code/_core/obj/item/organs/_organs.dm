@@ -46,18 +46,17 @@
 		add_blend("skin", desired_color = "#FF0000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
 
 	if(enable_glow)
-		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#888888", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
+		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#00FF00", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 	if(enable_detail)
-		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_detail", desired_color = "#888888", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
+		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_color", desired_color = "#0000FF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 	if(enable_wounds)
 		add_blend("skin_bruises", desired_icon = damage_icon, desired_icon_state = "0", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
 		//add_blend("skin_cuts", desired_icon = damage_icon, desired_icon_state = "cuts", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
 		//add_blend("skin_burns", desired_icon = damage_icon, desired_icon_state = "burns", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
 
-
-	..()
+	return ..()
 
 /obj/item/organ/New()
 	..()

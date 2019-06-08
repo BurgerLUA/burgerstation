@@ -5,3 +5,4 @@
 
 	mob_species = /species/human/
 	starting_factions = list()
+
