@@ -3,8 +3,7 @@
 	desc = "Weaponized Anime"
 	icon = 'icons/obj/vehicles/mechs.dmi'
 
-	density = 1
-	opacity = 1
+	collision_flags = FLAG_COLLISION_WALKING
 	anchored = 1
 
 /obj/vehicle/mech/update_icon()

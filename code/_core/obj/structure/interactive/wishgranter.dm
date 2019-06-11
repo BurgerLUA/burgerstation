@@ -4,7 +4,7 @@ var/list/all_wishgranters = list()
 obj/structure/interactive/wishgranter
 	name = "wishgranter"
 	desc = "What secrets does this hold?"
-	density = 0
+	collision_flags = FLAG_COLLISION_NONE
 	icon = 'icons/obj/structure/future/wishgranter.dmi'
 	icon_state = "wishgranter"
 
@@ -128,6 +128,14 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 /obj/structure/interactive/wishgranter/normal/caves/
 	name = "caves wishgranter"
 	id = "caves"
+
+/obj/structure/interactive/wishgranter/normal/caves/hidden
+	name = "hidden caves wishgranter"
+	id = "caves_hidden"
+
+/obj/structure/interactive/wishgranter/normal/caves/nymph
+	name = "nymph caves wishgranter"
+	id = "caves_nymph"
 
 /obj/structure/interactive/wishgranter/normal/cult_hideout/
 	name = "cult hideout wishgranter"

@@ -39,7 +39,7 @@
 
 	attack_range = 3
 
-	density = 1
+	collision_flags = FLAG_COLLISION_REAL
 
 	boss = TRUE
 

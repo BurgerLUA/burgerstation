@@ -4,5 +4,4 @@
 
 /turf/simulated/floor/shuttle/wall
 	name = "shuttle wall"
-	density = 1
 	opacity = 1

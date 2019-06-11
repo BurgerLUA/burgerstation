@@ -10,8 +10,6 @@
 
 	layer = LAYER_LARGE_OBJ
 
-	density = 0
-
 /obj/structure/interactive/lighting/tube/New()
 	..()
 	update_icon()

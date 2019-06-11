@@ -2,7 +2,7 @@
 "ab" = (/turf/simulated/wall/rock/brown,/area/world/forest)
 "ac" = (/turf/simulated/wall/rock/brown,/area/world/forest/village)
 "ad" = (/mob/living/simple/npc/crab/king,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/cave/lizard)
-"ae" = (/turf/simulated/wall/river,/area/world/forest/village)
+"ae" = (/turf/simulated/floor/river,/area/world/forest/village)
 "af" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/village)
 "ag" = (/mob/living/simple/npc/crab,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/cave/lizard)
 "ah" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/village)
@@ -12,7 +12,7 @@
 "al" = (/turf/simulated/wall/metal/rusted,/area/world/forest/village)
 "am" = (/turf/simulated/wall/wood/brown,/area/world/forest/village/interior/house/d)
 "an" = (/obj/structure/smooth/table/wood/poor,/turf/simulated/floor/wood/brown,/area/world/forest/village/interior/house/d)
-"ao" = (/obj/structure/smooth/wall/wood,/turf/simulated/wall/river,/area/world/forest/village/ship_exterior)
+"ao" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/river,/area/world/forest/village/ship_exterior)
 "ap" = (/turf/simulated/floor/wood/brown,/area/world/forest/village/interior/house/d)
 "aq" = (/mob/living/simple/npc/passive/chicken,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/village)
 "ar" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/colored/dirt,/area/world/forest/village/shop/farm)
@@ -61,7 +61,7 @@
 "bi" = (/obj/structure/smooth/table,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/turf/simulated/floor/tile/grey,/area/world/forest/village/shop/nanotrasen)
 "bj" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_shoes,/turf/simulated/floor/tile/grey,/area/world/forest/village/shop/nanotrasen)
 "bk" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop_holder/clothing/greytide_jumpsuit,/turf/simulated/floor/tile/grey,/area/world/forest/village/shop/nanotrasen)
-"bl" = (/turf/simulated/wall/river,/area/world/forest)
+"bl" = (/turf/simulated/floor/river,/area/world/forest)
 "bm" = (/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/world/forest)
 "bn" = (/turf/simulated/floor/colored/sand,/area/world/forest)
 "bo" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/sand,/area/world/forest)
@@ -90,7 +90,7 @@
 "bL" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/brown,/area/world/forest/village/shop/chapel)
 "bM" = (/mob/living/advanced/human/npc/unique/hunter,/turf/simulated/floor/colored/grass,/area/world/forest/village)
 "bN" = (/obj/structure/interactive/plank/wood{icon_state = "plank_l"},/turf/simulated/floor/wood/dock,/area/world/forest/village)
-"bO" = (/obj/structure/interactive/plank/wood,/turf/simulated/floor/river,/area/world/forest/village)
+"bO" = (/obj/structure/interactive/plank/wood,/turf/simulated/floor/river/walkable,/area/world/forest/village)
 "bP" = (/obj/structure/interactive/plank/wood{icon_state = "plank_r"},/turf/simulated/floor/wood/brown,/area/world/forest/village/ship_exterior)
 "bQ" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/world/forest/village/shop/chapel)
 "bR" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop_holder/weapons/crossbow,/turf/simulated/floor/colored/dirt,/area/world/forest/village/shop/farm)
@@ -192,6 +192,8 @@
 "dJ" = (/mob/living/simple/npc/slime/cyan/pure,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/cave/open)
 "dK" = (/mob/living/simple/npc/slime/grey/dark,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/cave/open)
 "dL" = (/mob/living/simple/npc/turret/smg,/turf/simulated/floor/colored/grass,/area/world/forest)
+"dM" = (/mob/living/simple/npc/spacecarp/leader,/turf/simulated/floor/river,/area/world/forest)
+"dN" = (/mob/living/simple/npc/spacecarp,/turf/simulated/floor/river,/area/world/forest)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacdodododododododododocrcrcrcrdododododododoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
@@ -290,12 +292,12 @@ aadmdmdmaaaaaadmbhbhdmaaaaaOdDdDdDdDdDdkdkdkdkdkdkdkdkdkaxaxdkdDdkaaaaaxaxdDdDaO
 aabhbhdmdmaaaaaadmdmaaaadDdDdDdDdDdkdkaxaxaxaxdkdkdkdkaaaaaadDdDdkdkdkdkaxdDdDdDdDdDdDaOdDdDdDdDdkdkdkdDdDdDaOdDdDdDdDdDdDdDdDbmbmdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDaOdDdDdDdDdDdDdDazazazazdDdDdDbmbmbmbmdDdDdDbBbnbnblblblblblblblblblblblblblblblblblblblblbl
 aabhdmdmaaaaaaaaaaaaaadDdDdDdDdDdkaxaxaxaxaxdkdkbFbFbFbFbFbFbFdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdkdkaadkdkdDdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmdDdDdDaOdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDazazazazdDdDbmbmbmbmbmdDdDazbnbnblblblblblblblblblblblblblblblblblblblblbl
 aabhdmdmaaaaaaaaaaaadDdDdDdDdDdDdkaxdkdkaabFbFbFbFbFbFbFbFbFbFbFdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdkaaaaaadkdkdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDazazazdDdDdDbmbmbmbmdDdDazbnbnblblblblblblblblblblblblblblblblblblblblbl
-aabhbhdmaaaaaaaaaadDdDaOdDdDaOdDdDdkdkbFbFbFbFbFdGbFbFbFdGdGbFbFbFdDdDdDdDaOdDdDdDdDdDdDdDdDdDdkaaaadkdkdkdkdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDaOdDdDdDazazazdDdDdDdDbmbmbmdDdDazbnbnbnblblblblblblblblblblblblblblblblblblblbl
+aabhbhdmaaaaaaaaaadDdDaOdDdDaOdDdDdkdkbFbFbFbFbFdGbFbFbFdGdGbFbFbFdDdDdDdDaOdDdDdDdDdDdDdDdDdDdkaaaadkdkdkdkdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDaOdDdDdDazazazdDdDdDdDbmbmbmdDdDazbnbnbnblblblblblblblblblblblblbldNblblblblblbl
 aadmbhdmaaaaaaaadDdDdDdDdDdDdDdDaOdDdGdGdGbFbFbFdGdGdGdGdGdGdGbFbFbFbFdDdDdDdDdDdDdDdDdDdDdDdDdkdkaaaadkaadkdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDaOdDdDdDdDdDdDdDdDdDdDdDdDdDdDazazazazdDdDdDbmbmbmdDdDazbnbobnblblblblblblblblblblblblblblblblblblblbl
-aadmdmdmaaaaaadDdDdDdDdDdDdDdGdGdGdGdGdGbFdGdKbFbFdGdGdGdGdGdGdGbFbFbFbFdDdDdDdDdDdDaOdDdDdDdDdDdkaaaaaaaadkdDdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDdDdDbCbCbCdDdDdDdDdDdDdDazazazdDdDdDbmbmbmdDdDazazbnbnblblblblblblblblblblblblblblblblblblblbl
-aaaadmdmdmdmaadDaOdDdDdDdDdGdGdGdGdGdGdGdGdGdGdGdGbFdGdGdGdGdGdGdGbFbFbFbFdDdDdDdDdDdDdDdDdDdDdDaxaxaaaaaadkdDdDdDdDaOdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDbCbCbCbCbCbCdDdDdDdDdDazazazazdDdDbmbmbmdDdDdDazbnbnblblblblblblblblblblblblblblblblblblblbl
+aadmdmdmaaaaaadDdDdDdDdDdDdDdGdGdGdGdGdGbFdGdKbFbFdGdGdGdGdGdGdGbFbFbFbFdDdDdDdDdDdDaOdDdDdDdDdDdkaaaaaaaadkdDdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDdDdDbCbCbCdDdDdDdDdDdDdDazazazdDdDdDbmbmbmdDdDazazbnbnblblblblblblblblblblblblblblblbldNblblbl
+aaaadmdmdmdmaadDaOdDdDdDdDdGdGdGdGdGdGdGdGdGdGdGdGbFdGdGdGdGdGdGdGbFbFbFbFdDdDdDdDdDdDdDdDdDdDdDaxaxaaaaaadkdDdDdDdDaOdDdDdDdDdDbmbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDdDbCbCbCbCbCbCdDdDdDdDdDazazazazdDdDbmbmbmdDdDdDazbnbnblblblblblblblblblbldMblblblblblblblblbl
 aaaaaadmdmdmaadDdDdDdDaOdDdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGbFbFbFbFdDdDdDdDdDdDdDdDdDdDdDaxaxaxaxaxdDdDdDdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmbmbmdDdDdDdDdDdDdDbCbCbCbCbCbCbCdDdDdDdDdDdDazazazdDdDbmbmbmbmdDdDazbnaiblblblblblblblblblblblblblblblblblblblbl
-aaaaaadmdmaaaadDdDdDdDdDdDdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdhdGbFbFdhdhbzdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmdDdDdDdDdDbCbCbCbCbCbCbCbCbCbCdDdDdDdDdDazazazdDdDbmdDbmbmdDdDazazbnblblblblblblblblblblblblblblblblblblblbl
+aaaaaadmdmaaaadDdDdDdDdDdDdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdhdGbFbFdhdhbzdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDbmbmbmbmbmbmbmdDdDdDdDdDbCbCbCbCbCbCbCbCbCbCdDdDdDdDdDazazazdDdDbmdDbmbmdDdDazazbnblblblblblblblblblblblblblblbldNblblblbl
 aaaaaadmdmaadDdDdDdDdDdDdDdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdhdhbFbFbFdGdhdhdDdDdDdDaOdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDbCbCbCbCbCbCbCbCbCbCbCbCdDdDdDazazazazdDbmbmbmbmdDdDazbnbnblblblblblblblblblblblblblblblblblblblbl
 aaaaaadmdmaaaadDdDaOdDdDdDaaaadGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdhbFbFbFbFbFdhdhdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDaOdDdDdDdDaOdDdDdDdDdDdDdDdDdDbCbCbCbCbCbCbCbCbCbCbCbCbCbCdDdDdDazazazdDdDdDbmbmdDdDazazbnbnblblblblblblblblblblblblblblblblblblblbl
 aaaadmdmdmaaaaaadDdDdDdDdDaaaaaaaadGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdGdhbFbFdGbFbFdGdhdGdGdDdDdDdDdDaOdDdDdDdDdDaOdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDdDbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCdDdDdDazazazdDdDbmbmdDdDazbnbnbnblblblblblblblblblblblblblblblblblblblbl

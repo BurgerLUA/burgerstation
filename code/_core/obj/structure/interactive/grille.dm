@@ -4,7 +4,7 @@ obj/structure/interactive/grille
 	icon = 'icons/obj/structure/modern/grille.dmi'
 	icon_state = "default"
 
-	density = 1
+	collision_flags = FLAG_COLLISION_REAL
 	anchored = 1
 	opacity = 0
 

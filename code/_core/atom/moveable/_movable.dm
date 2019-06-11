@@ -11,7 +11,7 @@
 	step_size = TILE_SIZE
 	appearance_flags = LONG_GLIDE | KEEP_TOGETHER
 
-	var/collision_flags = FLAG_COLLISION_NONE
+	collision_flags = FLAG_COLLISION_NONE
 
 	animate_movement = SLIDE_STEPS
 

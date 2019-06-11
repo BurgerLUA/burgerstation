@@ -5,6 +5,9 @@
 	name = "caves"
 	icon_state = "blue"
 
+/area/world/caves/cave/safe
+	icon_state = "safe"
+	safe = TRUE
 
 /area/world/caves/exterior
 	name = "cave exterior"

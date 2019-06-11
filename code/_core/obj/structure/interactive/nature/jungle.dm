@@ -2,7 +2,6 @@ obj/structure/scenery/jungle_grass
 	name = "jungle grass"
 	icon = 'icons/obj/structure/flora/jungleflora.dmi'
 	icon_state = "grassa1"
-	density = 0
 	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/jungle_grass/New()
@@ -17,7 +16,6 @@ obj/structure/scenery/jungle_rock
 	name = "jungle grass"
 	icon = 'icons/obj/structure/flora/jungleflora.dmi'
 	icon_state = "rock1"
-	density = 0
 
 obj/structure/scenery/jungle_rock/New()
 	..()
@@ -28,7 +26,7 @@ obj/structure/scenery/jungle_trees
 	name = "jungle tree"
 	icon = 'icons/obj/structure/flora/jungletrees.dmi'
 	icon_state = "tree1"
-	density = 1
+	collision_flags = FLAG_COLLISION_WALKING
 	pixel_x = -48
 	pixel_y = -16
 	layer = LAYER_LARGE_OBJ
@@ -42,7 +40,7 @@ obj/structure/scenery/jungle_trees_small
 	name = "small jungle tree"
 	icon = 'icons/obj/structure/flora/jungletreesmall.dmi'
 	icon_state = "tree1"
-	density = 1
+	collision_flags = FLAG_COLLISION_WALKING
 	pixel_x = -32
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ

@@ -57,7 +57,7 @@
 
 	if(objective_attack)
 		if(get_dist(objective_attack,owner) <= 6)
-			owner.move_dir = reverse_direction(get_dir(owner,objective_attack))
+			owner.move_dir = get_dir(objective_attack,owner)
 		else
 			owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 	else if(get_dist(owner,start_turf) >= 5)

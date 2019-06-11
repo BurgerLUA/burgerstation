@@ -23,8 +23,6 @@
 
 	var/initialized = FALSE
 
-	density = FALSE
-
 	plane = PLANE_DEFAULT
 
 	var/list/additional_blends = list()
@@ -45,7 +43,16 @@
 	var/doing_progress = FALSE
 
 
+	var/collision_flags = FLAG_COLLISION_NONE
+	density = FALSE //DEPCRECATED
 
+
+/atom/Cross(var/atom/A)
+
+	if(A.collision_flags & src.collision_flags)
+		return FALSE
+
+	return ..()
 
 /atom/proc/Initialize()
 	/*

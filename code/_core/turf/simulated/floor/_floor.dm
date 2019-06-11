@@ -14,9 +14,10 @@
 	var/footprint_color = "#FFFFFF"
 	var/footprint_alpha = 255
 
+	collision_flags = FLAG_COLLISION_NONE
 
 /turf/simulated/floor/is_safe_teleport()
-	if(density)
+	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE
 
 	return TRUE

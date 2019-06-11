@@ -83,6 +83,8 @@ var/global/list/all_living = list()
 	var/has_footprints = FALSE
 	var/list/footstep_override
 
+	collision_flags = FLAG_COLLISION_WALKING
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

@@ -1,4 +1,4 @@
-"a" = (/turf/simulated/floor/river,/area)
+"a" = (/turf/simulated/wall/river,/area)
 "b" = (/turf/simulated/floor/colored/sand/beach,/area)
 "c" = (/turf/simulated/wall/rock,/area)
 "d" = (/turf/simulated/floor/colored/dirt,/area)
@@ -9,7 +9,7 @@
 "i" = (/turf/simulated/wall/wood/boat,/area)
 "j" = (/turf/simulated/floor/wood/brown,/area)
 "k" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/wood/brown,/area)
-"l" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/river,/area)
+"l" = (/obj/structure/smooth/wall/wood,/turf/simulated/wall/river,/area)
 "m" = (/turf/simulated/wall/wood,/area)
 
 (1,1,1) = {"

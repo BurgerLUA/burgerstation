@@ -7,7 +7,7 @@
 obj/structure/interactive/door
 	name = "door"
 	desc = "What's on the other side?"
-	density = 1
+	collision_flags = FLAG_COLLISION_REAL
 	opacity = 1
 	icon = 'icons/obj/structure/medieval/doors.dmi'
 	icon_state = "woodrustic"
@@ -28,25 +28,25 @@ obj/structure/interactive/door/update_icon()
 			icon_state = "[initial(icon_state)]opening"
 			desc = "The door is opening."
 			opacity = 0
-			density = 1
+			collision_flags = FLAG_COLLISION_REAL
 
 		if(DOOR_STATE_CLOSING)
 			icon_state = "[initial(icon_state)]closing"
 			desc = "The door is closing."
 			opacity = 0
-			density = 0
+			collision_flags = FLAG_COLLISION_NONE
 
 		if(DOOR_STATE_OPEN)
 			icon_state = "[initial(icon_state)]open"
 			desc = "The door is open."
 			opacity = 0
-			density = 0
+			collision_flags = FLAG_COLLISION_NONE
 
 		if(DOOR_STATE_CLOSED)
 			icon_state = initial(icon_state)
 			desc = "The door is closed."
 			opacity = initial(opacity)
-			density = 1
+			collision_flags = FLAG_COLLISION_REAL
 
 
 obj/structure/interactive/door/proc/open()

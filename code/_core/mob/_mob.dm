@@ -51,6 +51,8 @@
 	//Measured in seconds.
 	//Reduces by 1 every second
 
+	collision_flags = FLAG_COLLISION_NONE
+
 /mob/can_attack(var/atom/victim,var/params)
 
 	if(!can_attack_while_moving && move_delay > 0)

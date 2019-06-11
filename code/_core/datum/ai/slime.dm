@@ -64,16 +64,17 @@
 /ai/slime/handle_attacking()
 
 	if(objective_attack)
-		var/is_slime = is_slime(objective_attack)
-		if(is_slime && get_dist(owner,objective_attack) <= 0)
-			if(!can_absorb_slime(objective_attack))
-				objective_attack = null
-				return
-			var/mob/living/simple/npc/slime/self = owner
-			self.absorb_slime(objective_attack)
-		else if(!is_slime && get_dist(owner,objective_attack) <= 1)
-			owner.move_dir = 0
-				owner.attack(owner,objective_attack)
+		if(get_dist(owner,objective_attack) <= 1)
+			var/is_slime = is_slime(objective_attack)
+			if(is_slime)
+				if(!can_absorb_slime(objective_attack))
+					objective_attack = null
+					return
+				var/mob/living/simple/npc/slime/self = owner
+				self.absorb_slime(objective_attack)
+			else
+				owner.move_dir = 0
+					owner.attack(owner,objective_attack)
 
 	attack_ticks = 0
 

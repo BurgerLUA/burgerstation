@@ -1,7 +1,6 @@
 /turf/simulated/wall/
 	name = "WALL"
 	layer = LAYER_WALL
-	density = 1
 	opacity = 1
 
 	density_north = TRUE
@@ -12,3 +11,5 @@
 	density_down = TRUE
 
 	light_power = 0
+
+	collision_flags = FLAG_COLLISION_REAL

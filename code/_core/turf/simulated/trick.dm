@@ -2,13 +2,14 @@
 	name = "strange wall"
 	icon = 'icons/turf/wall/brick.dmi'
 	icon_state = "wall"
+	var/open = FALSE
 
 	var/ticking = FALSE
 
 /turf/simulated/floor/trick/update_icon()
 
 	if(ticking)
-		if(density)
+		if(!open)
 			opacity = 0
 			name = "vibrataing wall"
 			icon = 'icons/turf/wall/brick.dmi'
@@ -19,7 +20,7 @@
 			icon = 'icons/turf/wall/brick.dmi'
 			icon_state = "wall"
 	else
-		if(density)
+		if(!open)
 			opacity = 0
 			name = "strange wall"
 			icon = 'icons/turf/wall/brick.dmi'

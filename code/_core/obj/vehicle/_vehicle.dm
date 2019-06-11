@@ -5,7 +5,7 @@
 	var/mob/living/advanced/passengers //Slot 1 is a driver.
 	var/passengers_max = 1
 
-	density = 0
+	collision_flags = FLAG_COLLISION_WALKING
 	opacity = 0
 	anchored = 0
 

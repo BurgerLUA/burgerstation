@@ -38,7 +38,7 @@
 		if(get_dist(owner,objective_attack) > 8)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else if(get_dist(owner,objective_attack) <= 4)
-			var/desired_direction = reverse_direction(get_dir(owner,objective_attack))
+			var/desired_direction = get_dir(objective_attack,owner)
 			owner.move_dir = desired_direction
 		else
 			owner.move_dir = 0

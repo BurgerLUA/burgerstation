@@ -16,7 +16,6 @@ obj/structure/scenery/grass_bush
 	name = "grassy bush"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "grassybush_1"
-	density = 0
 
 obj/structure/scenery/grass_bush/New()
 	..()
@@ -32,7 +31,6 @@ obj/structure/scenery/flowers
 	name = "flowers"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "ywflowers_1"
-	density = 0
 	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/flowers/New()
@@ -49,7 +47,6 @@ obj/structure/scenery/grass
 	name = "uncut grass"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "sparsegrass_1"
-	density = 0
 	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/grass/New()
@@ -64,7 +61,6 @@ obj/structure/scenery/rocks
 	name = "rocks"
 	icon = 'icons/obj/structure/flora/rocks_new.dmi'
 	icon_state = "rock_1"
-	density = 0
 	layer = LAYER_GROUND_SCENERY
 
 obj/structure/scenery/rocks/New()
@@ -76,7 +72,7 @@ obj/structure/scenery/evergreen
 	icon = 'icons/obj/structure/flora/evergreen.dmi'
 	icon_state = "evergreen_1"
 
-	density = 1
+	collision_flags = FLAG_COLLISION_WALKING
 	pixel_x = -16
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ

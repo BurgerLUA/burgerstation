@@ -24,25 +24,25 @@ obj/structure/interactive/door/airlock/update_icon()
 			icon_state = "opening"
 			desc = "The door is opening."
 			opacity = 0
-			density = 1
+			collision_flags = FLAG_COLLISION_REAL
 
 		if(DOOR_STATE_CLOSING)
 			icon_state = "closing"
 			desc = "The door is closing."
 			opacity = 0
-			density = 0
+			collision_flags = FLAG_COLLISION_REAL
 
 		if(DOOR_STATE_OPEN)
 			icon_state = "open"
 			desc = "The door is open."
 			opacity = 0
-			density = 0
+			collision_flags = FLAG_COLLISION_NONE
 
 		if(DOOR_STATE_CLOSED)
 			icon_state = "closed"
 			desc = "The door is closed."
 			opacity = 1
-			density = 1
+			collision_flags = FLAG_COLLISION_REAL
 
 	var/icon/base_icon = new /icon(icon,icon_state)
 	base_icon.Blend(base_color,ICON_MULTIPLY)

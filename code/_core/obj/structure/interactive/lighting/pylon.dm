@@ -10,4 +10,4 @@
 
 	layer = LAYER_LARGE_OBJ
 
-	density = 1
+	collision_flags = FLAG_COLLISION_WALKING

@@ -5,7 +5,7 @@
 "e" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/special/lobby)
 "f" = (/turf/simulated/wall/wood/brown,/area/special/lobby)
 "g" = (/obj/structure/interactive/wishgranter/fake,/turf/simulated/floor/colored/dirt,/area/special/lobby)
-"h" = (/turf/simulated/wall/river,/area/special/lobby)
+"h" = (/turf/simulated/floor/river,/area/special/lobby)
 "i" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/wood/brown,/area/special/lobby)
 "j" = (/turf/unsimulated,/area)
 "k" = (/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/special/lobby)
@@ -22,7 +22,7 @@
 "v" = (/obj/trigger/jumpmarker/ship_exit,/turf/simulated/floor/stair/wood,/area/singleplayer)
 "x" = (/turf/simulated/floor/wood/brown,/area/singleplayer)
 "y" = (/obj/structure/interactive/bed,/turf/simulated/floor/wood/brown,/area/singleplayer)
-"C" = (/turf/simulated/wall/river/non_moving,/area/singleplayer)
+"C" = (/turf/simulated/floor/river,/area/singleplayer)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCaaaa

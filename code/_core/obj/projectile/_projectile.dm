@@ -124,11 +124,7 @@
 			on_hit(current_loc)
 			return
 
-		if(!new_turf.allow_bullet_pass)
-
-			if(new_turf.density)
-				on_hit(new_turf)
-				return
+		if(!new_turf.allow_bullet_pass && new_turf.collision_flags & FLAG_COLLISION_REAL)
 
 			if(vel_y > 0)
 				if(!old_turf.allow_bullet_pass && old_turf.density_north)
@@ -164,7 +160,7 @@
 			if(A == owner)
 				continue
 
-			if(A.density || is_living(A))
+			if(A.collision_flags & FLAG_COLLISION_REAL)
 				if(on_hit(A))
 					return
 

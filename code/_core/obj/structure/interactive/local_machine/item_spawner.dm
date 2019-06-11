@@ -2,7 +2,6 @@
 	name = "Item Spawner"
 	desc = "Spawns the below item."
 	var/obj/item/stored_item
-	density = 0
 
 /obj/structure/interactive/localmachine/item/New()
 	if(stored_item)

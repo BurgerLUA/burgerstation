@@ -34,7 +34,7 @@
 "L" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/world/mountain/village/interior/bar)
 "M" = (/turf/simulated/wall/wood/brown,/area/world/mountain/shack)
 "N" = (/turf/simulated/floor/wood/brown,/area/world/mountain/shack)
-"O" = (/turf/simulated/wall/river,/area/world/mountain/exterior)
+"O" = (/turf/simulated/floor/river,/area/world/mountain/exterior)
 
 (1,1,1) = {"
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy

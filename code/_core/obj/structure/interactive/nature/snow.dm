@@ -3,7 +3,7 @@ obj/structure/scenery/pinetrees
 	icon = 'icons/obj/structure/flora/pinetrees.dmi'
 	icon_state = "pine_1"
 
-	density = 1
+	collision_flags = FLAG_COLLISION_WALKING
 	pixel_x = -16
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ
@@ -22,7 +22,6 @@ obj/structure/scenery/snow_grass
 	name = "grass"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
 	icon_state = "snowgrass1"
-	density = 0
 
 
 obj/structure/scenery/snow_grass/New()
@@ -34,7 +33,6 @@ obj/structure/scenery/snow_bush
 	name = "berry bush"
 	icon = 'icons/obj/structure/flora/snowflora.dmi'
 	icon_state = "snowbush1"
-	density = 0
 	layer = LAYER_LARGE_OBJ
 
 

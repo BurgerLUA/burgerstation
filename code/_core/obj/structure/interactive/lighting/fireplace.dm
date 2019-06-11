@@ -2,7 +2,6 @@
 	name = "fireplace"
 	desc = "a large fireplace"
 
-	density = 0
 	opacity = 0
 
 	icon = 'icons/obj/structure/modern/fireplace.dmi'

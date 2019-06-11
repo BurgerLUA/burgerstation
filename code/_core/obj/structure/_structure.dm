@@ -1,12 +1,5 @@
 /obj/structure/
 	name = "structure"
 	desc = "Some kind of strange structure."
-	density = 1
+	collision_flags = FLAG_COLLISION_NONE
 	anchored = 1
-
-/obj/structure/Cross(var/atom/movable/A)
-
-	if(density)
-		return FALSE
-
-	return ..()

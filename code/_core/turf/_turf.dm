@@ -8,9 +8,9 @@
 
 	appearance_flags = TILE_BOUND | KEEP_TOGETHER
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
+	collision_flags = FLAG_COLLISION_NONE
 
 	//Density
-	density = 0
 	var/density_north = FALSE
 	var/density_south = FALSE
 	var/density_east  = FALSE
@@ -140,7 +140,7 @@
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
-	if(!(enterer.collision_flags & FLAG_COLLISION_ETHEREAL))
+	if(enterer.collision_flags & src.collision_flags)
 		var/enter_direction = get_dir(oldloc,src)
 
 		if((enter_direction & NORTH) && density_north)
