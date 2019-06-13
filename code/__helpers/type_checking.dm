@@ -111,3 +111,6 @@ proc/is_food(var/atom/A)
 
 /proc/is_turret(var/atom/A)
 	return istype(A,/mob/living/simple/npc/turret)
+
+/proc/is_unique(var/atom/A)
+	return istype(A,/mob/living/advanced/human/npc/unique)

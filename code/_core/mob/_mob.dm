@@ -28,8 +28,10 @@
 
 	sight = SEE_BLACKNESS | SEE_SELF | SEE_TURFS | SEE_PIXELS
 
+	/*
 	var/list/quests/all_quests = list()
 	var/list/quests/active_quests = list()
+	*/
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
@@ -55,6 +57,8 @@
 
 /mob/destroy()
 	key = null // required to GC
+	buttons = null
+	health_elements = null
 	return ..()
 
 /mob/can_attack(var/atom/victim,var/params)

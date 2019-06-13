@@ -56,6 +56,15 @@
 	has_footsteps = TRUE
 	has_footprints = TRUE
 
+/mob/living/advanced/destroy()
+	inventory = null
+	worn_objects = null
+	left_hand = null
+	right_hand = null
+	active_inventory = null
+	driving = null
+	return ..()
+
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
 	talk_duration = SECONDS_TO_DECISECONDS(6)

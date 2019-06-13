@@ -18,6 +18,10 @@
 
 	class = "spider"
 
+/mob/living/simple/npc/turret/destroy()
+	stored_weapon = null
+	return ..()
+
 /mob/living/simple/npc/turret/update_icon()
 
 	if(status & FLAG_STATUS_DEAD)

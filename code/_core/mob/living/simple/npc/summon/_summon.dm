@@ -7,11 +7,6 @@ mob/living/simple/npc/summon
 
 	ai = /ai/summon/
 
-
-
-
-
-
 mob/living/simple/npc/summon/New(var/loc/spawning_location,var/client/C,var/mob/living/desired_owner,var/desired_time)
 	owner = desired_owner
 	time_left = desired_time

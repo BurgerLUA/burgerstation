@@ -12,6 +12,10 @@
 
 	var/active = FALSE
 
+/obj/button/slot/destroy()
+	stored_item = null
+	return ..()
+
 /obj/button/slot/update_icon()
 	..()
 	overlays = list()

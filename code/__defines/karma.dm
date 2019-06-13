@@ -7,3 +7,10 @@
 
 #define RULE_ALL 0xFFFFFF
 
+#define KARMA_OVERALL "all" //Killed/Help players
+#define KARMA_CLIENT "client" //Client karma
+
+#define KARMA_HUMAN "human"
+#define KARMA_LIZARD "lizard"
+#define KARMA_CYBORG "cyborg"
+#define KARMA_DIONA "diona"

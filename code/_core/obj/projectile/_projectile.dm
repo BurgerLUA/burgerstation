@@ -158,16 +158,20 @@
 					on_hit(new_turf)
 					return
 
+		var/area/A2 = get_area(new_turf)
+
 		for(var/atom/A in new_turf.contents)
 
 			if(A == src)
 				continue
 
 			if(A == owner)
-				LOG_DEBUG("We are the owner.")
 				continue
 
-			if(!src.Cross(A))
+			if(A2.safe && is_player(owner) && (is_player(A) || is_unique(A)))
+				continue
+
+			if(!A.Cross(src))
 				if(on_hit(A))
 					return
 

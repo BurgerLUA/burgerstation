@@ -20,6 +20,10 @@
 
 	alpha = 0
 
+/obj/button/boss_health/destroy()
+	target_boss = null
+	return ..()
+
 /obj/button/boss_health/proc/clear_boss()
 	target_boss = null
 	update_stats()
