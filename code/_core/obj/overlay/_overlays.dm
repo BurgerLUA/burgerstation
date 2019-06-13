@@ -15,6 +15,10 @@
 
 	var/no_update = FALSE
 
+/obj/overlay/destroy()
+	attached_object = null
+	return ..()
+
 /obj/overlay/update_icon()
 
 	if(no_update)
@@ -43,7 +47,6 @@
 
 			else if(IB.special_type & ICON_BLEND_OVERLAY)
 				var/icon/OI = new (IB.icon,IB.icon_state)
-				world.log << IB.icon_state
 				OI.Blend(IB.color,ICON_MULTIPLY)
 				I.Blend(OI,ICON_OVERLAY)
 

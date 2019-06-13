@@ -1,6 +1,6 @@
 /karma_penalty/
-	var/name = "Karma Penalty"
-	var/id
+	name = "Karma Penalty"
+	id = null
 
 	var/min_karma //Karma has to be above this amount to trigger.
 	var/max_karma //Karma has to be below this amount to trigger.

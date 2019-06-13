@@ -1,5 +1,5 @@
 /client/verb/ooc(var/text_to_say as text)
-	if(last_ooc+20 >= curtime)
+	if(last_ooc+10 >= curtime)
 		src.to_chat(span("warning","You're using OOC too fast!"))
 		return FALSE
 	display_message(src,text_to_say,TEXT_OOC)

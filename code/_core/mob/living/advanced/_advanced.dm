@@ -87,20 +87,26 @@
 		qdel(src)
 
 /mob/living/advanced/on_stunned()
+
 	if(left_hand)
 		left_hand.drop_held_objects(src.loc)
 
 	if(right_hand)
 		right_hand.drop_held_objects(src.loc)
 
-/mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE)
+	return ..()
+
+/mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
 
 	var/dropped_objects = list()
 
 	for(var/v in inventory)
 		var/obj/inventory/O = v
-		if(O.type == "/obj/inventory/dynamic")
-			continue
+		if(is_item(O.loc))
+			var/obj/item/I = O.loc
+			if(I.is_container)
+				continue
+
 		dropped_objects += O.drop_all_objects(get_turf(src))
 
 	return dropped_objects
@@ -275,8 +281,6 @@ mob/living/advanced/Login()
 
 		damaged_organs[organ_id] = list()
 
-		//src << "BRUTE LOSS: [organ_id] = [brute_loss]"
-
 		if(brute_loss)
 			damaged_organs[organ_id][BRUTE] = brute_loss
 
@@ -298,11 +302,6 @@ mob/living/advanced/Login()
 
 	for(var/organ_id in damaged_organs)
 		var/obj/item/organ/O = labeled_organs[organ_id]
-
-		//src << "OKAY: 1: [damaged_organs[organ_id][BRUTE]]"
-		//src << "OKAY: 2: [total_brute]"
-		//src << "OKAY: 3: [brute]"
-
 		if(damaged_organs[organ_id][BRUTE] && total_brute > 0 && brute > 0)
 			var/heal_amount = (damaged_organs[organ_id][BRUTE] / total_brute) * brute
 			O.adjust_brute_loss(-heal_amount)

@@ -14,9 +14,6 @@
 
 
 /menu/examine/on_load(var/user)
-
-	//run_function(usr,"set_reference","'\ref[src]'")
-
 	if(!is_player(user))
 		return FALSE
 

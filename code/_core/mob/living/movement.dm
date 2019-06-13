@@ -52,7 +52,7 @@
 
 	return FALSE
 
-
+/*
 /mob/living/Cross(var/atom/movable/M)
 
 	var/area/A = get_area(src)
@@ -68,3 +68,4 @@
 			return FALSE
 
 	return ..()
+*/

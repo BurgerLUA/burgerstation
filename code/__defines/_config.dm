@@ -1,6 +1,6 @@
 #define TILE_SIZE 32 //This should generally always be 32.
 
-#define FPS_CLIENT 60
+#define FPS_CLIENT 0 //0 Means synced
 #define FPS_SERVER 30
 
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing
@@ -30,9 +30,9 @@
 
 //Makes compiling faster FALSE disabled
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
-#define ENABLE_WEATHERGEN FALSE
-#define ENABLE_TURFGEN FALSE
+#define ENABLE_LIGHTING TRUE
+#define ENABLE_WEATHERGEN TRUE
+#define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN TRUE
 
 #define ENABLE_XP TRUE

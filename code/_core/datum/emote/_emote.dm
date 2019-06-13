@@ -1,7 +1,7 @@
 /emote/
-	var/name = "Emote"
-	var/desc = "Emote description."
-	var/id
+	name = "Emote"
+	desc = "Emote description."
+	id = null
 
 /emote/proc/on_emote(var/atom/emoter,var/atom/target)
 	//When the emote is triggered

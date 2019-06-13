@@ -147,18 +147,18 @@
 
 /obj/structure/interactive/shop_holder/weapons/holy
 	possible_items = list(
-		/obj/item/weapon/ranged/magic/tome/heal = 1,
-		/obj/item/weapon/ranged/magic/tome/holy_warrior = 1,
+		///obj/item/weapon/ranged/magic/tome/heal = 1,
+		///obj/item/weapon/ranged/magic/tome/holy_warrior = 1,
 		/obj/item/weapon/ranged/magic/tome/lightning = 1
 	)
 	possible_prices = list(
-		/obj/item/weapon/ranged/magic/tome/heal = 60,
-		/obj/item/weapon/ranged/magic/tome/holy_warrior = 40,
+		///obj/item/weapon/ranged/magic/tome/heal = 60,
+		///obj/item/weapon/ranged/magic/tome/holy_warrior = 40,
 		/obj/item/weapon/ranged/magic/tome/lightning = 50
 	)
 	possible_quantity = list(
-		/obj/item/weapon/ranged/magic/tome/heal = 10,
-		/obj/item/weapon/ranged/magic/tome/holy_warrior = 10,
+		///obj/item/weapon/ranged/magic/tome/heal = 10,
+		///obj/item/weapon/ranged/magic/tome/holy_warrior = 10,
 		/obj/item/weapon/ranged/magic/tome/lightning = 10
 	)
 

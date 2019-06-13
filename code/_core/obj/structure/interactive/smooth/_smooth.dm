@@ -7,6 +7,11 @@ obj/structure/smooth/
 	var/corner_category = "none"
 	var/corner_icons = TRUE
 
+obj/structure/smooth/Initialize()
+	. = ..()
+	update_icon()
+	return .
+
 obj/structure/smooth/proc/same_object(var/obj/structure/smooth/A)
 	return A.corner_category == corner_category
 

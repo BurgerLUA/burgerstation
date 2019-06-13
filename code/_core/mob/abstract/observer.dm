@@ -20,8 +20,12 @@
 	icon_state = ""
 
 /mob/abstract/observer/no_move/Initialize()
-	..()
+	. = ..()
 	to_chat(span("Please load a character or create a new character to play using the buttons below."))
+	return .
+
+/mob/abstract/observer/no_move/Move()
+	return FALSE
 
 /mob/abstract/observer/auto_camera
 	icon_state = ""
@@ -69,7 +73,7 @@
 	var/savedata/client/mob/U = C.savedata
 
 	if(!U.has_files())
-		src << "You don't have a character to load! Please create a new character."
+		to_chat(span("notice","You don't have a character to load! Please create a new character."))
 		return
 
 	var/list/name_to_choice = list()
@@ -84,7 +88,7 @@
 
 	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])
 	C.save_slot = name_to_choice[choice]
-	src << "Successfully loaded character [U.loaded_data["name"]]."
+	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
 	stop_sound('sounds/music/lobby.ogg',list(src))
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
@@ -103,7 +107,7 @@
 	var/file_num = U.get_proper_id_from_filename(files[1])
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	C.save_slot = file_num
-	src << "Successfully loaded character [U.loaded_data["name"]]."
+	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
 	stop_sound('sounds/music/lobby.ogg',list(src))
 
 	var/mob/living/advanced/player/P = new(src.loc,client)

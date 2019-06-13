@@ -12,9 +12,9 @@
 #define RARITY_LEGENDARY "legendary"
 
 /prefix/
-	var/name = "Prefix Template"
-	var/id
-	var/desc
+	name = "Prefix Template"
+	id = null
+	desc = "Description for the prefix."
 
 	var/value_mul = 1
 

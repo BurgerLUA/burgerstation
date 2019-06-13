@@ -65,7 +65,7 @@
 	var/data = file2text(filename)
 
 	if(!data)
-		owner << "FATAL ERROR: NO DATA FOUND FOR [filename]"
+		LOG_ERROR("FATAL ERROR: NO DATA FOUND FOR [filename] for [owner.mob.ckey].")
 		return FALSE
 
 	return json_decode(data)
@@ -76,14 +76,12 @@
 	json_data["last_saved_date"] = get_date()
 	json_data["last_saved_time"] = get_time()
 	fdel(get_file(character_id))
-	src << "Sucessfully wrote data [character_id]: [json_data["name"]]."
 	var/data = json_encode(json_data)
 	return text2file(data,get_file(character_id))
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
-	owner << "Attempting to create character with the id of [character_id]."
 	if(text2num(character_id) > MAX_CHARACTERS)
-		owner << "You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"
+		owner.mob.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
 		return FALSE
 	reset_data()
 	owner.save_slot = character_id
@@ -95,13 +93,10 @@
 	if(!owner)
 		return FALSE
 	if(!owner.save_slot)
-		owner << "Save failed! You don't have a character loaded!"
 		return
 	if(!owner.mob)
-		owner << "Save failed! You aren't controlling a mob!"
 		return FALSE
 	if(!is_advanced(owner.mob))
-		owner << "Save failed! You aren't controlling an advanced mob!"
 		return FALSE
 
 	var/mob/living/advanced/player/A = owner.mob
@@ -154,9 +149,9 @@
 	loaded_data["tutorial"] = 0
 
 	if(write_json_data_to_id(owner.save_slot,loaded_data))
-		owner << "Sucessfully saved character [owner.mob.name]."
+		owner.mob.to_chat(span("notice","Sucessfully saved character [owner.mob.name]."))
 	else
-		owner << "Save failed. Please contact the server owner."
+		owner.mob.to_chat(span("warning","Save failed. Please contact the server owner."))
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A)
 

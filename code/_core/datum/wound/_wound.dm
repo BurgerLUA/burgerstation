@@ -1,7 +1,7 @@
 /wound/
-	var/name = "wound"
-	var/id
-	var/description = "This is a wound."
+	name = "wound"
+	id
+	desc = "This is a wound."
 
 	var/severity_level = 0 //How large the wound is.
 	var/heal_level = 0 //How healed the wound is.
@@ -32,8 +32,6 @@
 
 	severity_level = severity
 	bleed_level = severity
-
-	desired_owner << "Applied a [name] on your [desired_location.name] with a severity of [severity]."
 
 /wound/proc/get_infection_modifier()
 	return Clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
@@ -114,29 +112,29 @@
 /wound/incision/
 	name = "incision"
 	id = "incision"
-	description = ""
+	desc = ""
 
 /wound/laceration/
 	name = "laceration"
 	id = "laceration"
-	description = ""
+	desc = ""
 
 /wound/abration/
 	name = "abration"
 	id = "abration"
-	description = ""
+	desc = ""
 
 /wound/pucture/
 	name = "pucture wound"
 	id = "pucture"
-	description = ""
+	desc = ""
 
 /wound/penetration/
 	name = "penetration wound"
 	id = "penetration"
-	description = ""
+	desc = ""
 
 /wound/gun_shot/
 	name = "gunshot wound"
 	id = "gunshot"
-	description = ""
+	desc = ""

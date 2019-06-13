@@ -12,10 +12,40 @@
 		"tile.png" = 'html/tile.png',
 		"chargen_head.png" = 'html/chargen_head.png'
 	)
+
+
+	var/list/valid_hair_head_ids = list(
+		"none",
+		"hair_a",
+		"hair_b",
+		"hair_c",
+		"hair_d",
+		"hair_e",
+		"hair_f"
+	)
+	var/list/valid_hair_face_ids = list(
+		"none",
+		"facial_fullbeard_s",
+		"facial_wise_s",
+		"facial_5oclock_s",
+		"facial_gt_s"
+	)
+
 	size = "800x800"
 
 /menu/appearance/cache_resources(var/user)
 	..()
+
+	for(var/k in valid_hair_head_ids)
+		var/icon/v = hair_head_icons[k]
+		user << browse_rsc(v,"[k].png")
+
+
+	for(var/k in valid_hair_face_ids)
+		var/icon/v = hair_face_icons[k]
+		user << browse_rsc(v,"[k].png")
+
+	/*
 	for(var/k in hair_head_icons)
 		var/icon/v = hair_head_icons[k]
 		user << browse_rsc(v,"[k].png")
@@ -23,6 +53,7 @@
 	for(var/k in hair_face_icons)
 		var/icon/v = hair_face_icons[k]
 		user << browse_rsc(v,"[k].png")
+	*/
 
 /menu/appearance/open(var/mob/user)
 	//Credit to Multiverse7 for providing the code for getting this to work.
@@ -44,14 +75,14 @@
 
 	if(TRUE)
 		var/final_args = "'hair_head'"
-		final_args += ",'[english_list(hair_head_ids, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
-		final_args += ",'[english_list(hair_head_names, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
+		final_args += ",'[english_list(valid_hair_head_ids, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
+		//final_args += ",'[english_list(hair_head_names, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
 		run_function(usr,"generate_color_icon_picker",final_args)
 
 	if(TRUE)
 		var/final_args = "'hair_face'"
-		final_args += ",'[english_list(hair_face_ids, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
-		final_args += ",'[english_list(hair_face_names, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
+		final_args += ",'[english_list(valid_hair_face_ids, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
+		//final_args += ",'[english_list(hair_face_names, nothing_text = "", and_text = "|", comma_text = "|", final_comma_text = "")]'"
 		run_function(usr,"generate_color_icon_picker",final_args)
 
 	run_function(usr,"get_data_to_send","")

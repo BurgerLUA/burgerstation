@@ -3,8 +3,10 @@
 #define EVENT_TYPE_MARKER "marker"
 
 /event/
-	var/name = "Event Name"
-	var/id = "Event ID"
+	name = "Event"
+	id = null
+
+
 	var/weight = 0 //Chance of happening.
 	var/event_type = EVENT_TYPE_GLOBAL
 

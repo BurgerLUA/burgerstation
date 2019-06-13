@@ -10,6 +10,8 @@
 
 	layer = LAYER_OBJ_WINDOW
 
+	collision_flags = FLAG_COLLISION_WALKING
+
 /obj/structure/smooth/window/reinforced
 	name = "reinforced window"
 	icon = 'icons/obj/structure/modern/window_reinforced.dmi'

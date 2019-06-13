@@ -7,6 +7,8 @@ obj/structure/smooth/wall
 	corner_category = "small_wall"
 	corner_icons = TRUE
 
+	collision_flags = FLAG_COLLISION_WALKING
+
 
 obj/structure/smooth/wall/wood
 	color = "#4C3323"

@@ -33,7 +33,28 @@
 	desc = "Loot you find off of dead spiders."
 	loot_table = list(
 		/obj/item/food/spider/spider_leg = 100,
-		/obj/item/food/spider/spider_eggs = 25
+		/obj/item/food/spider/spider_eggs = 25,
 	)
 
 	loot_count = 4
+
+/loot/crab/
+	name = "crab loot"
+	id = "crab"
+	desc = "Loot for crabs."
+	loot_table = list(
+		/obj/item/food/burger/fish/crab = 100,
+		/obj/item/clothing/glasses/sun = 5,
+		/obj/item/color/crayon/orange = 5,
+
+	)
+
+/loot/crab_king
+	name = "crab king loot"
+	id = "crab_king"
+	desc = "Loot for crabs."
+	loot_table = list(
+		/obj/item/soapstone/orange = 5,
+
+
+	)

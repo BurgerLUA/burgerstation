@@ -117,21 +117,31 @@
 	if(is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1)
 		return click_self(caller,location,control,params)
 
-	if(is_item(object) && length(inventories))
-		var/added = FALSE
+	if(is_item(object))
+		add_to_inventory(caller,object,TRUE)
 
-		if(object.type != src.type)
-			for(var/obj/inventory/I in inventories)
-				if(I.add_object(object,FALSE))
-					added = TRUE
-					break
+	return 	..()
 
+/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE)
+
+	if(!length(inventories))
+		return FALSE
+
+	var/added = FALSE
+
+	if(object != src)
+		for(var/obj/inventory/I in inventories)
+			if(I.add_object(object,FALSE))
+				added = TRUE
+				break
+
+	if(enable_messages && caller)
 		if(added)
 			caller.to_chat(span("notice","You stuff \the [object] in your [src]."))
 		else
 			caller.to_chat(span("warning","You don't have enough inventory space to hold this!"))
 
-	return 	..()
+	return added
 
 /obj/item/New(var/desired_loc)
 

@@ -37,12 +37,10 @@
 	if(prob(is_raining ? 25 : 75))
 		is_raining = !is_raining
 		set_weather(WEATHER_RAIN,is_raining,areas_rain)
-		LOG_DEBUG("TOGGLING RAIN [is_raining ? "ON" : "OFF"]")
 
 	if(prob(is_snowing ? 25 : 75))
 		is_snowing = !is_snowing
 		set_weather(WEATHER_SNOW,is_snowing,areas_snow)
-		LOG_DEBUG("TOGGLING SNOW [is_snowing ? "ON" : "OFF"]")
 
 	return TRUE
 

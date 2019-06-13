@@ -23,6 +23,7 @@
 	return .
 
 /atom/movable/destroy()
+	loc = null
 	var/turf/T = loc
 	if(opacity && istype(T))
 		T.reconsider_lights()

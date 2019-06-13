@@ -1,6 +1,7 @@
 /savedata/
-	var/name = "savedata"
-	var/desc = "Data for a user."
+	name = "savedata"
+	desc = "Data for a user."
+	id = null
 
 	var/list/loaded_data = list()
 

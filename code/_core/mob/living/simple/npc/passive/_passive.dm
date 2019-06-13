@@ -8,6 +8,8 @@
 	class = "passive"
 	damage_type = "passive"
 
+	collision_flags = FLAG_COLLISION_NONE
+
 /mob/living/simple/npc/passive/get_movement_delay()
 	return SECONDS_TO_TICKS(8)
 

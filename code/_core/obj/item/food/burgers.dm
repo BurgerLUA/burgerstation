@@ -100,6 +100,9 @@
 	heal_amount_stamina = 20
 	heal_amount_mana = 0
 
+/obj/item/food/burger/fish/crab
+	name = "crab burger"
+
 /obj/item/food/burger/clown
 	name = "clown burger"
 	icon_state = "clownburger"

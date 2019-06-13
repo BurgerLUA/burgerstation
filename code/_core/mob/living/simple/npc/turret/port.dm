@@ -1,54 +1,14 @@
-/mob/living/simple/npc/turret
-	name = "turret"
-	icon = 'icons/mob/living/simple/turrets.dmi'
-	icon_state = "turretCover"
-
-	var/gun_type = "standard"
-
+/mob/living/simple/npc/turret/port
 	var/state = 0
 	// 0 = closed
 	// 1 = opening
 	// 2 = open
 	// 3 = closing
+	icon_state = "turretCover"
 
-	var/mode = 1
-	// 0 = off
-	// 1 = stun
-	// 2 = lethal
+	ai = /ai/ranged/immobile/turret/port
 
-	ai = /ai/ranged/immobile/turret
-
-	var/obj/item/stored_weapon
-
-	health_base = 100
-
-	class = "spider"
-
-
-/mob/living/simple/npc/turret/Initialize()
-	. = ..()
-
-	if(stored_weapon)
-		stored_weapon = new stored_weapon(src)
-
-	return .
-
-/mob/living/simple/npc/turret/on_left_down(object,location,control,params)
-	if(stored_weapon)
-		stored_weapon.click_on_object(src,object,location,control,params)
-	return TRUE
-
-/mob/living/simple/npc/turret/can_attack(var/atom/victim,var/params)
-
-	if(mode == 0)
-		return FALSE
-
-	if(state != 2)
-		return FALSE
-
-	return ..()
-
-/mob/living/simple/npc/turret/proc/open()
+/mob/living/simple/npc/turret/port/proc/open()
 
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
@@ -65,7 +25,7 @@
 
 	return TRUE
 
-/mob/living/simple/npc/turret/proc/close()
+/mob/living/simple/npc/turret/port/proc/close()
 
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
@@ -82,7 +42,7 @@
 
 	return TRUE
 
-/mob/living/simple/npc/turret/update_icon()
+/mob/living/simple/npc/turret/port/update_icon()
 
 	underlays = list()
 
@@ -124,10 +84,8 @@
 	underlays += icon_base
 	icon_state = desired_cover_state
 
-/mob/living/simple/npc/turret/smg
-	stored_weapon = /obj/item/weapon/ranged/laser/unlimited
+/mob/living/simple/npc/turret/port/can_attack(var/atom/victim,var/params)
+	if(state != 2)
+		return FALSE
 
-
-
-/mob/living/simple/npc/turret/laser
-	stored_weapon = /obj/item/weapon/ranged/laser/unlimited
+	return ..()

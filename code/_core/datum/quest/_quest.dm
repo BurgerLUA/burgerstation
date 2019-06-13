@@ -2,10 +2,11 @@
 #define FLAG_QUEST_SESSION_ONLY 0x2 //Quest is only valid when the server is up. It is removed when the server restarts.
 
 /quest/
-	var/name = "Quest"
-	var/id = null
-	var/desc = "" //Short description.
-	var/desc_extended = "" //Long description.
+	name = "Quest"
+	id = null
+	desc = "" //Short description.
+	desc_extended = "" //Long description.
+
 	var/quest_flags = 0
 	var/objectives = list()
 

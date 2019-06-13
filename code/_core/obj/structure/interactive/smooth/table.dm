@@ -9,6 +9,8 @@ obj/structure/smooth/table
 
 	layer = LAYER_TABLE
 
+	collision_flags = FLAG_COLLISION_WALKING
+
 
 obj/structure/smooth/table/wood
 	name = "wood table"

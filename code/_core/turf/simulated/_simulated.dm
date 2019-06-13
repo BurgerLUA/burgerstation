@@ -12,7 +12,9 @@
 
 
 /turf/simulated/Initialize()
-	..()
+	. = ..()
+	update_icon()
+	return .
 
 /turf/simulated/New(loc)
 	if(real_icon)

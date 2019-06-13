@@ -94,7 +94,8 @@ var/global/list/all_living = list()
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 
-	level_multiplier *= desired_level_multiplier
+	if(desired_level_multiplier)
+		level_multiplier *= desired_level_multiplier
 
 	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
 
@@ -118,7 +119,7 @@ var/global/list/all_living = list()
 
 /mob/living/destroy()
 	qdel(ai)
-	..()
+	return ..()
 
 /mob/living/Initialize()
 	initialize_factions()

@@ -1,6 +1,6 @@
 /menu/
-	var/name = "Menu"
-	var/id
+	name = "Menu"
+	id = null
 
 	var/file
 	var/list/resources = list()
@@ -18,9 +18,11 @@
 	winclone(user, "window", id)
 	winshow(user,id)
 	winset(user, "browser([id])", "parent=[id];type=browser;size=0x0;anchor1=0,0;anchor2=100,100")
+	/*
 	sleep(1) //TODO: OnLoad function here.
 	user << output(file, "browser([id])")
 	winset(user, "browser([id])", "parent=[id];size=[size]")
+	*/
 
 /menu/proc/close(var/user)
 	winset(usr, "browser([id])","is-visible:false")
@@ -30,6 +32,9 @@
 
 /menu/proc/on_load(var/user)
 	//When the browser sucessfully loaded.
+	user << output(file, "browser([id])")
+	winset(user, "browser([id])", "parent=[id];size=[size]")
+
 
 /menu/proc/cache_resources(var/user)
 	for(var/k in resources)
@@ -40,8 +45,9 @@
 	//Do topic things here.
 
 /proc/open_menu(user,menu_id)
-	var/menu/M = all_menus[menu_id]
-	M.open(user)
+	spawn(0)
+		var/menu/M = all_menus[menu_id]
+		M.open(user)
 
 /proc/close_menu(user,menu_id)
 	var/menu/M = all_menus[menu_id]

@@ -9,7 +9,7 @@
 
 	stun_angle = 180
 
-	loot_drop = "wizard"
+	loot_drop = "crab"
 
 /mob/living/simple/npc/crab/post_death()
 	..()
@@ -35,6 +35,8 @@
 	ai = /ai/king_crab
 
 	class = "crab_king"
+	loot_drop = "crab_king"
+
 	level_multiplier = 40
 
 	attack_range = 3

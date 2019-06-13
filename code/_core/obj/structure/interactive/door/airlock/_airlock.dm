@@ -65,5 +65,4 @@ obj/structure/interactive/door/airlock/Cross(var/atom/movable/A)
 	if(!. && door_state == DOOR_STATE_CLOSED)
 		open()
 
-
 	return .

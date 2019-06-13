@@ -31,13 +31,14 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	respawn = FALSE
 
 /mob/living/advanced/player/Initialize()
-	..()
+	. = ..()
 	all_players += src
 	name = "[real_name] ([ckey])"
+	return .
 
 /mob/living/advanced/player/destroy()
-	..()
 	all_players -= src
+	return ..()
 
 mob/living/advanced/player/on_life_client()
 	..()
@@ -51,6 +52,7 @@ mob/living/advanced/player/on_life_client()
 
 	return .
 
+/*
 /mob/living/advanced/player/verb/progress_debug()
 	set name = "Progress Bar Debug"
 	set category = "Debug"
@@ -67,3 +69,4 @@ mob/living/advanced/player/on_life_client()
 
 	var/mob/living/advanced/player/fake/F = new(src.loc)
 	F.Initialize()
+*/

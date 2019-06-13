@@ -12,4 +12,3 @@
 
 	dynamic_inventory_count = 4
 
-

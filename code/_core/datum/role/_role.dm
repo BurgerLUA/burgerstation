@@ -7,9 +7,10 @@
 #define FLAG_PERMISSION_GAMEMASTER 0x10
 
 /role/
-	var/name = "Roll Name"
-	var/desc = "Roll Description"
-	var/id = "Roll ID"
+	name = "Roll Name"
+	desc = "Roll Description"
+	id = null
+
 	var/permissions = FLAG_PERMISSION_NONE
 	var/protection = 0
 

@@ -8,10 +8,9 @@
 
 /obj/button/new_character/clicked_by_object(var/mob/caller,object,location,control,params)
 	if(!is_observer(caller))
-		caller << "You are not an observer! Please yell at Burger and tell them to fix this."
 		return TRUE
 	if(world_state != STATE_RUNNING)
-		caller << "The game has not loaded yet!"
+		caller.to_chat(span("notice","The game has not loaded yet!"))
 		return TRUE
 
 	var/mob/abstract/observer/O = caller
@@ -29,10 +28,9 @@
 
 /obj/button/load_character/clicked_by_object(var/mob/caller,object,location,control,params)
 	if(!is_observer(caller))
-		caller << "You are not an observer! Please yell at Burger and tell them to fix this."
 		return TRUE
 	if(world_state != STATE_RUNNING)
-		caller << "The game has not loaded yet!"
+		caller.to_chat(span("notice","The game has not loaded yet!"))
 		return TRUE
 
 	var/mob/abstract/observer/O = caller

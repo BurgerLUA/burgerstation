@@ -157,10 +157,15 @@
 					return
 
 		for(var/atom/A in new_turf.contents)
-			if(A == owner)
+
+			if(A == src)
 				continue
 
-			if(A.collision_flags & FLAG_COLLISION_REAL)
+			if(A == owner)
+				LOG_DEBUG("We are the owner.")
+				continue
+
+			if(!src.Cross(A))
 				if(on_hit(A))
 					return
 

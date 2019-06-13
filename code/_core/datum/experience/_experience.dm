@@ -1,9 +1,10 @@
 // https://www.desmos.com/calculator/lg5zticzca
 /experience/
-	var/name = "Base Experience Tracker"
-	var/id
-	var/desc = "This is the base experience tracker. You shouldn't have this."
-	var/desc_extended = "Extended description for that wall of text."
+	name = "Base Experience Tracker"
+	id = null
+	desc = "This is the base experience tracker. You shouldn't have this."
+	desc_extended = "Extended description for that wall of text."
+
 	var/experience = 0
 
 	var/chargen_min_level = 1

@@ -19,6 +19,6 @@
 	. = ..()
 	if(. && is_player(exiter))
 		var/mob/living/advanced/player/P = exiter
-		P.see_invisible = INVISIBILITY_PLAYERS
+		P.see_invisible = initial(P.see_invisible)
 
 	return .

@@ -1,7 +1,7 @@
 /spellcraft/
-	var/name = "Spellcraft Type"
-	var/desc = "What this spellcraft does."
-	var/id
+	name = "Spellcraft Type"
+	desc = "What this spellcraft does."
+	id = null
 
 	var/icon
 	var/icon_state

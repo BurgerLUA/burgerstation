@@ -31,7 +31,10 @@
 	if(prob(loot_chance))
 		var/loot/L = all_loot[loot_id]
 		var/obj/item/I = L.spawn_loot_advanced(A,left_hand)
-		A.to_chat(span("notice","You found \a [I] in \the [src]!"))
+		if(I)
+			A.to_chat(span("notice","You found \a [I] in \the [src]!"))
+		else
+			A.to_chat(span("notice","You failed to find anything in \the [src]."))
 	else
 		A.to_chat(span("notice","You failed to find anything in \the [src]."))
 

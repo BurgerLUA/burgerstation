@@ -15,8 +15,9 @@
 
 	add_stun(2)
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
+	collision_flags = FLAG_COLLISION_NONE
 
-	queue_delete(src,600)
+	queue_delete(src,300)
 
 	layer = LAYER_MOB_DEAD
 

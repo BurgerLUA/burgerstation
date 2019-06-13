@@ -1,8 +1,8 @@
 //Basically a class system for mobs only.
 /class/
-	var/name
-	var/desc
-	var/id
+	name = "Class"
+	desc = "A class."
+	id = null
 
 	var/list/attributes = list()
 

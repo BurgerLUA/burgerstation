@@ -36,7 +36,7 @@
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
 	if(!can_attack)
-		LOG_ERROR("[attacker] cannot attack the [victim] with the [object_to_damage_with].")
+		//LOG_ERROR("[attacker] cannot attack the [victim] with the [object_to_damage_with].")
 		return FALSE
 
 	DT.attack_last = world.time

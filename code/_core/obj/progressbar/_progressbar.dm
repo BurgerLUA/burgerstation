@@ -49,7 +49,6 @@
 	icon = I
 
 /obj/progress_bar/destroy()
-
 	if(is_mob(loc))
 		var/mob/M = loc
 		if(M.client)

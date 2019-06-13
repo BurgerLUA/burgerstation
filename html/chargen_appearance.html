@@ -100,11 +100,11 @@
 			input[type='text']{
 				color: white;
 				font-family: Arial Narrow,Arial,sans-serif;
-				font-size:18px;				
+				font-size: 32px;				
 				width: 256px;
 				text-align: center;
 				background: transparent;
-				border: none;
+				border: 1px solid white;
 			}			
 			input.appearance{
 				 background-image:url('chargen_head.png');
@@ -185,7 +185,7 @@
 					<img id='portrait_south' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img>
 					<img id='portrait_west' width='128px' height='128px' src='' onmouseover="hover_update('The horror you have created.')"></img><br>
 					
-					<input type='text' class='name' rows="1" cols="48" value="Insert Name Here" onmouseover="hover_update('Your name and what people will identify you as when your face is visible. This can only be changed by special people after character creation.')" onchange="setName(this.value)">						
+					<input type='text' class='name' rows="1" cols="48" value="Name" onmouseover="hover_update('Your name and what people will identify you as when your face is visible. This can only be changed by special people after character creation.')" onchange="setName(this.value)">						
 				</th>
 			</tr>
 		</table>
@@ -429,16 +429,14 @@
 			return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 		}
 	
-		function generate_color_icon_picker(type,hair_ids,hair_names) {
+		function generate_color_icon_picker(type,hair_ids) {
 
 			hair_ids = hair_ids.split("|");
-			hair_names = hair_names.split("|");
-		
-		
+
 			var icons = ""
 			
 			for(i = 0; i < hair_ids.length; i++) {
-				var final_button = "<input onclick=\"global_"+type+"_style='"+hair_ids[i]+"';get_data_to_send()\" type='image' class='appearance' id='" + hair_ids[i] + "' name='" + hair_names[i] +"' src='" + hair_ids[i] + ".png'/>"
+				var final_button = "<input onclick=\"global_"+type+"_style='"+hair_ids[i]+"';get_data_to_send()\" type='image' class='appearance' id='" + hair_ids[i] + "' src='" + hair_ids[i] + ".png'/>"
 				icons += final_button
 			}
 			

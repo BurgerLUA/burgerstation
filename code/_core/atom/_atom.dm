@@ -1,14 +1,16 @@
 /atom/
 
+	name = "atom"
 	desc = "What the fuck is this?"
-	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
+	desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
+	id = null
 
 	var/health_max = 0
 	var/health_current = 0
 	var/health_regeneration = 0
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
-	var/id
+
 
 	var/throw_speed = 8 //How far the object travels in pixels per decisecond, when thrown
 
@@ -46,10 +48,19 @@
 	var/collision_flags = FLAG_COLLISION_NONE
 	density = FALSE //DEPCRECATED
 
+/atom/destroy()
+	invisibility = 101
+	if(light)
+		light.destroy_light()
+		light = null
+	return ..()
+
+/atom/proc/can_collide_with(var/atom/A)
+	return A.collision_flags & src.collision_flags
 
 /atom/Cross(var/atom/A)
 
-	if(A.collision_flags & src.collision_flags)
+	if(can_collide_with(A))
 		return FALSE
 
 	return ..()
@@ -77,12 +88,6 @@
 	overlays_assoc = list()
 
 	return .
-
-/atom/destroy()
-	if(light)
-		light.destroy_light()
-		light = null
-	. = ..()
 
 // Should always be used to change the opacity of an atom.
 // It notifies (potentially) affected light sources so they can update (if needed).

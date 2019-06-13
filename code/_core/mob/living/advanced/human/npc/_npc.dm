@@ -8,6 +8,8 @@
 
 	var/dialogue_id
 
+	collision_flags = FLAG_COLLISION_REAL
+
 /mob/living/advanced/human/npc/clicked_by_object(var/mob/caller,object,location,control,params)
 	if(dialogue_id && is_player(caller))
 		var/mob/living/advanced/player/P = caller
@@ -18,10 +20,7 @@
 	return ..()
 
 /mob/living/advanced/human/npc/get_xp_multiplier()
-	return 1
+	return 0
 
 /mob/living/advanced/human/npc/can_be_grabbed()
 	return status & FLAG_STATUS_DEAD
-
-/mob/living/advanced/human/npc/Cross(var/atom/movable/A)
-	return FALSE

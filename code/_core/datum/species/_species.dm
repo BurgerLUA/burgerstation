@@ -1,7 +1,7 @@
 /species/
-	var/name = "BLANK SPECIES"
-	var/desc = "OH MY GOD"
-	var/id
+	name = "BLANK SPECIES"
+	desc = "OH MY GOD"
+	id = null
 
 	var/flags_species = SPECIES_NONE
 
