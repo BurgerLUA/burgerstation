@@ -48,6 +48,10 @@
 	var/collision_flags = FLAG_COLLISION_NONE
 	density = FALSE //DEPCRECATED
 
+	var/interact_distance = 1
+
+
+
 /atom/destroy()
 	invisibility = 101
 	if(light)

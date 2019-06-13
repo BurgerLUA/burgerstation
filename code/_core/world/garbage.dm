@@ -17,7 +17,7 @@
 			object.qdel_attempts += 1
 			if(object.qdel_attempts >= 5)
 				object.qdel_warning = TRUE
-				LOG_ERROR("WARNING: Object of type [object.type]([object.name]) was queued for delete [object.qdel_attempts] times!")
+				LOG_ERROR("WARNING: Object of type [object.type](Name: [object.name], ID:[object.id]) was queued for delete [object.qdel_attempts] times!")
 
 		if(!object.qdeleting)
 			object.qdeleting = TRUE

@@ -16,19 +16,22 @@
 	if((caller.attack_flags & ATTACK_SELF || the_hand == the_target) && the_hand.click_self(caller))
 		return TRUE
 
-	if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it.
-		var/obj/inventory/I = the_hand
-		if(is_inventory(object)) //The target is actually inside the object, which is an inventory
-			var/obj/inventory/I2 = object //Object = What we're clicking on
-			if(!I2.drag_to_take && add_object(the_target))
-				return TRUE
-		else if(I.add_object(the_target)) //The target is not inside an inventory.
-			return TRUE
+	if(is_movable(the_target))
+		var/atom/movable/A = the_target
+		if(!A.anchored)
+			if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it.
+				var/obj/inventory/I = the_hand
+				if(is_inventory(object)) //The target is actually inside the object, which is an inventory
+					var/obj/inventory/I2 = object //Object = What we're clicking on
+					if(!I2.drag_to_take && add_object(the_target))
+						return TRUE
+				else if(I.add_object(the_target)) //The target is not inside an inventory.
+					return TRUE
 
-	else if(is_inventory(the_target) && is_item(the_hand)) //We want to move the item to the target.
-		var/obj/inventory/I = the_target
-		I.add_object(the_hand)
-		return TRUE
+			else if(is_inventory(the_target) && is_item(the_hand)) //We want to move the item to the target.
+				var/obj/inventory/I = the_target
+				I.add_object(the_hand)
+				return TRUE
 
 	if(the_target.clicked_by_object(caller,the_hand,location,control,params)) //We click on the target
 		return TRUE

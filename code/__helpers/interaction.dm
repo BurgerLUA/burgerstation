@@ -1,0 +1,1 @@
+#define INTERACT_CHECK if(!can_interact(caller)) return FALSE

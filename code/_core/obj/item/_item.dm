@@ -75,6 +75,7 @@
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/inventory/I = inventories[i]
+		I.update_owner(A)
 		I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
 		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)

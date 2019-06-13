@@ -8,8 +8,11 @@
 
 	container_max_size = 99
 
-	dynamic_inventory_count = 18
+	dynamic_inventory_count = 12
 
+	anchored = TRUE
 
 /obj/item/storage/heavy/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-	return click_self(caller,location,control,params)
+	INTERACT_CHECK
+	click_self(caller,location,control,params)
+	return TRUE

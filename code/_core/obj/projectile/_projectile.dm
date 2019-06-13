@@ -37,6 +37,8 @@
 
 	var/only_hit_target_turf = FALSE
 
+	collision_flags = FLAG_COLLISION_REAL
+
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target)
 
 	owner = desired_owner
