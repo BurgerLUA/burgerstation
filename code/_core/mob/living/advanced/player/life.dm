@@ -9,10 +9,11 @@
 
 	return ..()
 
-
+/*
 /mob/living/advanced/player/handle_alpha()
 
 	if(spawn_protection > 0 && !area.safe)
 		return 10
 
 	return ..()
+*/

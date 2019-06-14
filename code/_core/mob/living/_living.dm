@@ -130,7 +130,8 @@ var/global/list/all_living = list()
 	update_level()
 	. = ..()
 	if(ai)
-		name = "[initial(name)] (lvl. [level])"
+		name = "[name] (lvl. [level])"
+
 	return .
 
 /mob/living/proc/initialize_factions()

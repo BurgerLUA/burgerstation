@@ -45,6 +45,12 @@
 
 	boss = TRUE
 
+/mob/living/simple/npc/crab/king/can_collide_with(var/atom/A)
+	if(istype(src,A))
+		return FALSE
+
+	return ..()
+
 /mob/living/simple/npc/crab/king/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return 0
 

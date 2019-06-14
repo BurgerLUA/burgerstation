@@ -42,7 +42,7 @@ mob/living/advanced/proc/add_overlay_image(var/obj/overlay/O)
 mob/living/advanced/proc/remove_overlay_image(var/obj/overlay/O)
 	var/image/I = overlays_assoc[O]
 	overlays -= I
-	overlays_assoc -= I
+	overlays_assoc -= O
 	qdel(I)
 
 mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends)

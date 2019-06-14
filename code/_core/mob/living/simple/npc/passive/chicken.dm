@@ -3,6 +3,11 @@
 	icon_state = "chicken_white"
 	damage_type = "chicken_peck"
 
+/mob/living/simple/npc/passive/chicken/post_death()
+	..()
+	icon_state = "[initial(icon_state)]_dead"
+	update_icon()
+
 /mob/living/simple/npc/passive/chicken/brown
 	name = "brown chicken"
 	icon_state = "chicken_brown"

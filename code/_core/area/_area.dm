@@ -56,7 +56,7 @@
 			if(is_living(enterer) && enterer.area)
 				var/mob/living/L = M
 				if(enterer.area.safe && !src.safe) //Leaving a safezone
-					L.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional[SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
+					L.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
 				else if(!enterer.area.safe && src.safe) //Entering a safezone
 					L.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
 

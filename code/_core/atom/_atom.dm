@@ -64,7 +64,7 @@
 
 /atom/Cross(var/atom/A)
 
-	if(can_collide_with(A))
+	if(A.can_collide_with(src))
 		return FALSE
 
 	return ..()

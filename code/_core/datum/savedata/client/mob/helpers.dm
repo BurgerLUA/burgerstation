@@ -184,3 +184,4 @@
 
 	A.force_move(all_wishgranters[loaded_data["last_save"]])
 	A.update_icon()
+	step(A,SOUTH)
