@@ -5,6 +5,5 @@
 	corner_icons = TRUE
 	corner_category = "lava"
 
-	light_power = DEFAULT_BRIGHTNESS_TURF_LIGHT
 	light_range = 4
 	light_color = "#FF8300"

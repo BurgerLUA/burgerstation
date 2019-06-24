@@ -2,30 +2,30 @@
 	name = "snowy mountain"
 	icon_state = "blue"
 
+/area/world/mountain/interior
+	name = "interior"
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
+	icon_state = "green"
+
 /area/world/mountain/exterior
-	name = "snow"
+	name = "exterior"
 	icon_state = "red"
 	weather = WEATHER_SNOW
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 
-/area/world/mountain/village
+/area/world/mountain/exterior/village
 	name = "village"
 	icon_state = "safe"
-	weather = WEATHER_SNOW
 	safe = TRUE
 
-/area/world/mountain/village/interior
-	name = "interior"
-	weather = WEATHER_NONE
-
-/area/world/mountain/village/interior/bar
+/area/world/mountain/interior/bar
 	name = "snow bar"
 	icon_state = "green"
 
-/area/world/mountain/shack
+/area/world/mountain/interior/shack
 	name = "snow shack"
 	icon_state = "green"
 
-
-/area/world/mountain/cave
+/area/world/mountain/interior/cave
 	name = "snow cave"
 	icon_state = "pink"

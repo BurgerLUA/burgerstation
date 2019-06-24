@@ -3,7 +3,6 @@
 	icon = 'icons/turf/floor/diona.dmi'
 	icon_state = "1"
 
-	light_power = DEFAULT_BRIGHTNESS_EXTERIOR
 	light_range = 2
 	light_color = "#9FD733"
 

@@ -2,7 +2,6 @@
 	name = "the world"
 	dynamic_lighting = TRUE
 	var/weather = WEATHER_NONE //Optional weather
-	light_power_mul = 1
 
 /area/world/Initialize()
 	..()

@@ -4,12 +4,11 @@
 	var/real_icon_state
 	var/corner_category = "none"
 
-	light_power = DEFAULT_BRIGHTNESS_EXTERIOR
-	light_range = 2
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	light_range = DEFAULT_RANGE_AMBIENT
 	light_color = "#FFFFFF"
 
 	var/list/spawning_data = list()
-
 
 /turf/simulated/Initialize()
 	. = ..()
@@ -23,7 +22,7 @@
 		icon_state = real_icon_state
 
 	var/area/A = src.loc
-	light_power *= A.light_power_mul
+	light_power *= A.area_light_power
 
 	..()
 

@@ -5,6 +5,5 @@
 	corner_category = "diona_wall"
 	corner_icons = TRUE
 
-	light_power = DEFAULT_BRIGHTNESS_TURF_LIGHT
 	light_range = 2
 	light_color = "#9FD733"

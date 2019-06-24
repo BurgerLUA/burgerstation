@@ -31,7 +31,7 @@
 
 	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners.
 
-	var/light_power_mul = 1
+	var/area_light_power = 0
 
 /area/New()
 	. = ..()

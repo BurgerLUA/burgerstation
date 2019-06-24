@@ -10,7 +10,7 @@
 	)
 
 	dialogue_options["out for a couple a days"] = list(
-		"Oh! Where are my manners? I'm being rude. My name is #1. I am the caretarker of this area in #2. ",
+		"Oh! Where are my manners? I'm being rude. My name is #1. I am the caretarker of #2. ",
 		"Ilaeza Marwani",
 		"the realm"
 	)

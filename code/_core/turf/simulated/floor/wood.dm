@@ -3,8 +3,6 @@
 	icon = 'icons/turf/floor/wood.dmi'
 	icon_state = "wood"
 
-	light_power = DEFAULT_BRIGHTNESS_INTERIOR
-
 	footstep_sounds = list(
 		'sounds/effects/footsteps/wood1.ogg',
 		'sounds/effects/footsteps/wood2.ogg',
@@ -14,11 +12,17 @@
 	)
 
 /turf/simulated/floor/wood/brown
-	color = "#724C34"
-
+	color = "#6F4533"
 
 /turf/simulated/floor/wood/rich
-	color = "#A05120"
+	color = "#53331E"
 
 /turf/simulated/floor/wood/dock
-	color = "#494E14"
+	color = "#B4ADAB"
+
+
+/turf/simulated/floor/wood/boat
+	color = "#423022"
+
+/turf/simulated/floor/wood/boat/starting
+	color = "#724C34"

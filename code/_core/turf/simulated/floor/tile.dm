@@ -4,8 +4,6 @@
 	icon = 'icons/turf/floor/tile.dmi'
 	icon_state = "white"
 
-	light_power = DEFAULT_BRIGHTNESS_INTERIOR
-
 /turf/simulated/floor/tile/grey
 	color = "#999999"
 

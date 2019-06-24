@@ -9,8 +9,6 @@
 	corner_icons = TRUE
 	corner_category = "dirt"
 
-	light_power = DEFAULT_BRIGHTNESS_INTERIOR
-
 	layer = LAYER_FLOOR_LARGE
 
 /turf/simulated/floor/colored/
@@ -29,19 +27,22 @@
 	color = "#FFFFFF"
 	layer = LAYER_FLOOR_WEATHER
 	corner_category = "snow"
+	light_color = "#88FFFF"
+
 
 	has_footprints = TRUE
 
 /turf/simulated/floor/colored/grass
 	name = "grass"
-	color = "#008800"
+	color = "#44683B"
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "grass"
+	light_color = "#CCFFBF"
 
 /turf/simulated/floor/colored/grass/New(loc)
-	var/lightness = 128
+	var/lightness = 104
 	lightness += rand(-5,0)
-	color = rgb(0,lightness,0)
+	color = rgb(68,lightness,59)
 	..()
 
 /turf/simulated/floor/colored/jungle_grass
@@ -49,6 +50,7 @@
 	color = "#27512E"
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "jungle_grass"
+	light_color = "#27512E"
 
 /turf/simulated/floor/colored/jungle_grass/New(loc)
 
@@ -68,6 +70,7 @@
 	color = "#527F3F"
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "grass"
+	light_color = "#527F3F"
 
 /turf/simulated/floor/colored/dark_grass/New(loc)
 	var/r = 82
@@ -81,8 +84,6 @@
 	color = rgb(r,g,b)
 	..()
 
-
-
 /turf/simulated/floor/colored/sand
 	name = "grey sand"
 	color = "#80806D"
@@ -91,15 +92,16 @@
 
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
+	light_color = "#80806D"
 
 /turf/simulated/floor/colored/moss
-	name = "grass"
+	name = "moss"
 	color = "#5A916E"
 	layer = LAYER_FLOOR_LARGE + 0.08
-
+	light_color = "#5A916E"
 
 /turf/simulated/floor/colored/dirt
-	name = "soft dirt"
+	name = "dirt"
 	color = "#5B4128"
 	layer = LAYER_FLOOR_LARGE + 0.01
 	corner_category = "dirt_soft"
@@ -107,29 +109,35 @@
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 
+	light_color = "#FFD3AA"
+
 /turf/simulated/floor/colored/dirt/cave
 	name = "cave dirt"
 	color = "#493C2F"
-
-	light_power = DEFAULT_BRIGHTNESS_INTERIOR
+	light_color = "#FFE8D1"
 
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
 	color = "#C6B4A9"
+	light_color = "#C6B4A9"
 
 /turf/simulated/floor/colored/dirt/jungle
-	name = "jungle soil"
+	name = "jungle dirt"
 	color = "#4C2C1D"
-
+	light_color = "#4C2C1D"
 
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"
 	color = "#FFE36B"
+	light_color = "#FFE36B"
 
 /turf/simulated/floor/colored/sand/underwater
 	name = "bed sand"
 	color = "#AECA91"
+	light_color = "#AECA91"
+
 
 /turf/simulated/floor/colored/sand/desert
 	name = "desert sand"
 	color = "#FFC68C"
+	light_color = "#FFC68C"

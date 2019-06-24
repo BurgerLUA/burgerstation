@@ -5,6 +5,7 @@
 	sex = NEUTER
 	gender = MALE
 	dialogue_id = "diamond_dialogue"
+	dir = EAST
 
 /mob/living/advanced/human/npc/unique/diamond_with_flaw/Initialize()
 	. = ..()

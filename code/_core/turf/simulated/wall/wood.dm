@@ -7,11 +7,13 @@
 
 
 /turf/simulated/wall/wood/brown
-	color = "#724C34"
-
+	color = "#6F4533"
 
 /turf/simulated/wall/wood/rich
-	color = "#A05120"
+	color = "#53331E"
 
 /turf/simulated/wall/wood/boat
-	color = "#4C3323"
+	color = "#423022"
+
+/turf/simulated/wall/wood/boat/starting
+	color = "#724C34"

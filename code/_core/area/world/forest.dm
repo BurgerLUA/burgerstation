@@ -1,32 +1,37 @@
 /area/world/forest //3,2
 	name = "forest"
 	id = "forest"
-	icon_state = "red"
 	ambient_sound = 'sounds/ambient/crickets.ogg'
 
-/area/world/forest/cave
-	name = "lizard cave"
+/area/world/forest/interior
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
 	icon_state = "green"
-	light_power_mul = 0.5
 
-/area/world/forest/cave/cave
-	name = "cave cave"
+/area/world/forest/exterior
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
+	icon_state = "red"
 
-/area/world/forest/cave/spider
+/area/world/forest/interior/cave
+	name = "caves"
+
+/area/world/forest/interior/cave/spider
 	name = "spider cave"
 
-/area/world/forest/cave/lizard //actually crab cave
+/area/world/forest/interior/cave/crab
 	name = "lizard cave"
 
-/area/world/forest/cave/desert
+/area/world/forest/interior/cave/desert
 	name = "desert cave"
 
-/area/world/forest/cave/open
+/area/world/forest/interior/cave/open
 	name = "open cave"
 	icon_state = "pink"
-	light_power_mul = 0.75
 
-/area/world/forest/village
+/area/world/forest/interior/village/cave
+	name = "diona's cave"
+	icon_state = "pink"
+
+/area/world/forest/exterior/village
 	name = "village"
 	id = "village"
 	icon_state = "safe"
@@ -35,60 +40,63 @@
 		"village"
 	)
 
-/area/world/forest/village/ship_exterior
+/area/world/forest/exterior/village/ship
 	icon_state = "pink"
 
-/area/world/forest/village/shop
+
+/area/world/forest/interior/village
+	name = "village"
+	id = "village"
+	icon_state = "safe"
+	safe = TRUE
+	tracks = list(
+		"village"
+	)
+
+
+/area/world/forest/interior/village/shop
 	name = "shop"
 	icon_state = "shop"
 
-/area/world/forest/village/cave
-	name = "diona's cave"
-	icon_state = "pink"
-	light_power_mul = 0.75
-
-/area/world/forest/village/shop/nanotrasen
+/area/world/forest/interior/village/shop/nanotrasen
 	name = "nanotrasen shop"
 	id = "nanotrasen_shop"
 
-/area/world/forest/village/shop/chapel
+/area/world/forest/interior/village/shop/chapel
 	name = "chapel shop"
 	id = "chapel_shop"
 
-/area/world/forest/village/shop/farm
+/area/world/forest/interior/village/shop/farm
 	name = "farm shop"
 	id = "farm_shop"
 
-/area/world/forest/village/shop/alley
+/area/world/forest/interior/village/shop/alley
 	name = "alley shop"
 	id = "alley_shop"
 
-/area/world/forest/village/interior
-	name = "interior"
-	light_power_mul = 0.75
 
-/area/world/forest/village/interior/ship
+/area/world/forest/interior/village/ship
 	name = "ship interior"
 	icon_state = "blue"
 
-/area/world/forest/village/interior/bar
+/area/world/forest/interior/village/bar
 	name = "bar"
 	icon_state = "yellow"
 
-/area/world/forest/village/interior/house
+/area/world/forest/interior/village/house
 	name = "house"
 	icon_state = "green"
 
-/area/world/forest/village/interior/house/a
+/area/world/forest/interior/village/house/a
 
-/area/world/forest/village/interior/house/b
+/area/world/forest/interior/village/house/b
 
-/area/world/forest/village/interior/house/c
+/area/world/forest/interior/village/house/c
 
-/area/world/forest/village/interior/house/d
+/area/world/forest/interior/village/house/d
 
-/area/world/forest/village/interior/house/e
+/area/world/forest/interior/village/house/e
 
-/area/world/forest/village/interior/house/f
+/area/world/forest/interior/village/house/f
 
-/area/world/forest/village/interior/house/g
+/area/world/forest/interior/village/house/g
