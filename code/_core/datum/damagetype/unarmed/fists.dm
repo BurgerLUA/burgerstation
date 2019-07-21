@@ -39,6 +39,8 @@
 		SKILL_RANGED = BRUTE
 	)
 
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
 /damagetype/unarmed/fists/left
 	weapon_name = "left fist"
 	id = "human_fist_left"

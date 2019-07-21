@@ -10,6 +10,7 @@
 		'sounds/weapons/fists/punchmiss.ogg'
 	)
 
+	hit_effect = /obj/effect/temp/impact/combat/smash
 
 /damagetype/blunt/pistol
 	name = "pistol grip"

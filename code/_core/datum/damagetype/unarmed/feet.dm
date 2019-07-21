@@ -39,6 +39,8 @@
 
 	attack_delay = 20
 
+	hit_effect = /obj/effect/temp/impact/combat/kick
+
 /damagetype/unarmed/feet/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(!is_living(attacker))
 		return attack_delay

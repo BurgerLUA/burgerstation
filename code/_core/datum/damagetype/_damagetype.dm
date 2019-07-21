@@ -66,6 +66,8 @@
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
 
+	var/obj/effect/temp/impact/hit_effect = /obj/effect/temp/impact/combat/smash
+
 /damagetype/proc/get_miss_chance()
 	return 0
 
@@ -148,13 +150,6 @@
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
 			return 0
-		/* TODO: Find out if this is needed.
-		if(is_player(victim))
-			var/area/A1 = get_area(L)
-			var/area/A2 = get_area(L)
-			if(A1.safe || A2.safe)
-				return 0
-		*/
 
 		brute_armor += L.armor_brute_base
 		burn_armor += L.armor_burn_base
@@ -205,6 +200,11 @@
 /damagetype/proc/play_effects(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	do_attack_sound(attacker,victim,weapon,hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)
+	do_attack_visuals(attacker,victim,weapon,hit_object)
+
+/damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	if(hit_effect)
+		new hit_effect(get_turf(victim))
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(impact_sounds))
