@@ -12,6 +12,8 @@
 
 	hit_effect = /obj/effect/temp/impact/combat/smash
 
+	draw_blood = TRUE
+
 /damagetype/blunt/pistol
 	name = "pistol grip"
 

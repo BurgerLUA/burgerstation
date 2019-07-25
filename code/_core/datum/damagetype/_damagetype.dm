@@ -68,6 +68,8 @@
 
 	var/obj/effect/temp/impact/hit_effect = /obj/effect/temp/impact/combat/smash
 
+	var/draw_blood = FALSE
+
 /damagetype/proc/get_miss_chance()
 	return 0
 
@@ -179,7 +181,7 @@
 		if(victim != hit_object)
 			victim.wounds += W
 
-	play_effects(attacker,victim,weapon,hit_object)
+	play_effects(attacker,victim,weapon,hit_object,damage_dealt)
 	display_hit_message(attacker,victim,weapon,hit_object)
 
 	hit_object.update_health(damage_dealt,attacker)
@@ -197,14 +199,73 @@
 
 	return damage_dealt
 
-/damagetype/proc/play_effects(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/play_effects(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt=0)
 	do_attack_sound(attacker,victim,weapon,hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)
-	do_attack_visuals(attacker,victim,weapon,hit_object)
+	do_attack_visuals(attacker,victim,weapon,hit_object,damage_dealt)
 
-/damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+
+
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
+
+	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
+
+	world.log << "HIT OBJECT: [hit_object.name]."
+
+	if(victim.health_max)
+
+		var/multiplier = TILE_SIZE * (damage_dealt / victim.health_max) * 2
+		multiplier = Clamp(multiplier,0,TILE_SIZE*0.5)
+
+		var/offset_x = (victim.x - attacker.x)
+		var/offset_y = (victim.y - attacker.y)
+
+		if(!offset_x && !offset_y)
+			offset_x = rand(-1,1)
+
+		var/total_offset = abs(offset_x) + abs(offset_y)
+
+		offset_x = offset_x/total_offset
+		offset_y = offset_y/total_offset
+
+		offset_x *= multiplier
+		offset_y *= multiplier
+
+		if(is_player(victim))
+			var/mob/living/advanced/player/P = victim
+			if(P && P.client)
+				var/client/C = P.client
+				animate(C,pixel_x = offset_x, pixel_y = offset_y,time=1)
+				animate(pixel_x = 0, pixel_y = 0, time = 5)
+
+		if(is_movable(victim) && victim.health_current <= 0)
+			if(multiplier >= TILE_SIZE)
+				var/atom/movable/M = victim
+				M.glide_size = TILE_SIZE
+				var/move_direction = 0
+				if(offset_x)
+					if(offset_x > 0)
+						move_direction &= WEST
+					else
+						move_direction &= EAST
+				if(offset_y)
+					if(offset_y > 0)
+						move_direction &= NORTH
+					else
+						move_direction &= SOUTH
+				step(M,move_direction)
+
+			else if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
+				animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
+
+		else
+			animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
+			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
+
+
+
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(impact_sounds))

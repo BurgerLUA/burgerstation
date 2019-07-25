@@ -3,6 +3,8 @@
 	desc = "Shot with a ranged weapon."
 	allow_parry_counter = FALSE
 
+	draw_blood = TRUE
+
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return
 

@@ -19,6 +19,8 @@
 		SKILL_RANGED = 0
 	)
 
+	draw_blood = TRUE
+
 /damagetype/npc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(!is_living(attacker))
 		return attack_delay

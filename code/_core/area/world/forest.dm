@@ -3,6 +3,11 @@
 	id = "forest"
 	ambient_sound = 'sounds/ambient/crickets.ogg'
 
+	map_color_r = rgb(255,0,0,255)
+	map_color_g = rgb(0,255,0,255)
+	map_color_b = rgb(25,25,200,255)
+	map_color_a = rgb(0,0,0,255)
+
 /area/world/forest/interior
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
 	icon_state = "green"

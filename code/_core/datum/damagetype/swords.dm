@@ -9,6 +9,7 @@
 		'sounds/weapons/fists/punchmiss.ogg'
 	)
 
+	draw_blood = TRUE
 
 /damagetype/sword/sabre
 	name = "sabre"

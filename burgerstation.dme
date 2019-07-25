@@ -337,6 +337,7 @@
 #include "code\_core\obj\effect\temp\_temp.dm"
 #include "code\_core\obj\effect\temp\death.dm"
 #include "code\_core\obj\effect\temp\impact\_impact.dm"
+#include "code\_core\obj\effect\temp\impact\blood.dm"
 #include "code\_core\obj\effect\temp\impact\combat.dm"
 #include "code\_core\obj\health\_health.dm"
 #include "code\_core\obj\health\boss.dm"

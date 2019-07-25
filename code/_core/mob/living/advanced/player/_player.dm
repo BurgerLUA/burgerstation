@@ -44,7 +44,7 @@ mob/living/advanced/player/on_life_client()
 	..()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
 
-/mob/living/advanced/player/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
+/mob/living/advanced/player/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 	. = ..()
 	if(. && dialogue_target_id)
 		dialogue_target_id = null

@@ -147,5 +147,34 @@
 				)
 			flags_organ |= FLAG_ORGAN_BROKEN
 
-	..()
+	return ..()
 
+/obj/item/organ/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
+
+	. = ..()
+
+	if(!DT.draw_blood)
+		return .
+
+	var/turf/T = get_turf(src)
+
+	var/obj/effect/temp/impact/blood/B = new(T,SECONDS_TO_DECISECONDS(60),"#FF0000")
+	B.transform.Scale(0.1,0.1)
+
+	var/offset_x = (T.x - attacker.x)
+	var/offset_y = (T.y - attacker.y)
+
+	if(!offset_x && !offset_y)
+		offset_x = rand(-1,1)
+
+	var/total_offset = abs(offset_x) + abs(offset_y)
+
+	offset_x = offset_x/total_offset
+	offset_y = offset_y/total_offset
+
+	offset_x *= TILE_SIZE
+	offset_y *= TILE_SIZE
+
+	animate(B,pixel_x = offset_x,pixel_y = offset_y, transform = null, time = 2)
+
+	return .

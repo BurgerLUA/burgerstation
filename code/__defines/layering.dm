@@ -6,6 +6,8 @@
 #define LAYER_GROUND_SCENERY 2
 
 #define LAYER_WALL 3
+
+
 #define LAYER_TABLE 4
 
 #define LAYER_MOB_DEAD 5
@@ -16,6 +18,7 @@
 
 #define LAYER_OBJ_VEHICLE LAYER_OBJ + 0.99
 
+#define LAYER_BLOOD LAYER_MOB - 0.01
 #define LAYER_MOB 7
 #define LAYER_MOB_DAMAGE 8
 #define LAYER_MOB_CLOTHING 9
@@ -28,7 +31,7 @@
 
 #define LAYER_LARGE_OBJ 13
 
-#define LAYER_AREA 14
+#define LAYER_AREA 14 //Weather
 
 #define LAYER_LIGHTING 15
 #define LAYER_LIGHTING_DYNAMIC 16

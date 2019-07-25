@@ -39,7 +39,7 @@
 
 	return .
 
-/mob/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
+/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 	. = ..()
 	if(.)
 		switch(real_move_mod)

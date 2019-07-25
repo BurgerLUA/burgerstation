@@ -24,7 +24,7 @@
 	to_chat(span("Please load a character or create a new character to play using the buttons below."))
 	return .
 
-/mob/abstract/observer/no_move/Move()
+/mob/abstract/observer/no_move/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 	return FALSE
 
 /mob/abstract/observer/auto_camera

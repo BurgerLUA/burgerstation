@@ -13,6 +13,8 @@
 
 	var/list/callback_list
 
+	mouse_opacity = 0
+
 /obj/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time,var/new_callback_list = list())
 
 	if(is_mob(new_loc))

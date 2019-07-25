@@ -74,3 +74,7 @@
 			return adjust_tox_loss(amount)
 		if(OXY)
 			return adjust_oxy_loss(amount)
+
+
+/atom/proc/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
+	return TRUE
