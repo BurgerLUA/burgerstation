@@ -21,28 +21,39 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 				source.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/mob/object in range(source,2))
-					object.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
+				for(var/mob/M in range(source,WHISPER_RANGE))
+					if(!M.client)
+						continue
+					M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
 		if(TEXT_TALK)
 			if(istype(source,/client/))
 				source.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/mob/object in range(source,VIEW_RANGE))
-					object.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
+				for(var/mob/M in range(source,TALK_RANGE))
+					if(!M.client)
+						continue
+					M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
 		if(TEXT_YELL)
 			if(istype(source,/client/))
 				source.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/mob/object in range(source,VIEW_RANGE*3))
-					object.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
+				for(var/mob/M in range(source,YELL_RANGE))
+					if(!M.client)
+						continue
+					M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
+
 		if(TEXT_LOOC)
-			for(var/mob/M in range(source,VIEW_RANGE))
+			for(var/mob/M in range(source,YELL_RANGE))
+				if(!M.client)
+					continue
 				M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_LOOC)
 
 		if(TEXT_OOC)
 			for(var/mob/M in world)
+				if(!M.client)
+					continue
 				M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_OOC)
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)

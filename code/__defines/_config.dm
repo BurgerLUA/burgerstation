@@ -1,35 +1,37 @@
-#define TILE_SIZE 32 //This should generally always be 32.
+//Game Options
+
 
 #define FPS_CLIENT 0 //0 Means synced
 #define FPS_SERVER 30
 
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing
+#define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 #define WORLD_SIZE 512 //This shouldn't be touched unless you know what you're doing
 #define WORLD_SIZE_SEGMENT 128 //This shouldn't be touched unless you know what you're doing
 
-
 #define VIEW_RANGE 11
-//#define VIEW_RANGE 15
-
 
 #define SOUND_RANGE 18
 
+#define TALK_RANGE 14
+#define YELL_RANGE 21
+#define WHISPER_RANGE 2
+
 #define MAX_MESSAGE_LEN 512
-#define MAX_CHARACTERS 10 //Maximum amount of characters a player can have at once.
+#define MAX_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
 
 
 #define ATTACK_ANIMATION_LENGTH 2
 
-#define SHOP_RESTOCK_COUNTDOWN 60
+#define SHOP_RESTOCK_COUNTDOWN 300
 
-
-#define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cost spells for less. We skyrim now.
+#define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
-#define ENABLE_MAPLOAD FALSE
+#define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
@@ -56,7 +58,7 @@
 
 #define LIFE_TICK 1 //Deciseconds per life tick.
 
-#define ARMOR_CAP 1000 //How much armor you're allowed to have.
+#define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 
 #define STEALTH_MAX_ALPHA 10
 #define STEALTH_MIN_ALPHA 1

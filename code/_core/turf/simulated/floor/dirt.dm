@@ -39,11 +39,14 @@
 	corner_category = "grass"
 	light_color = "#CCFFBF"
 
+/*
 /turf/simulated/floor/colored/grass/New(loc)
 	var/lightness = 104
 	lightness += rand(-5,0)
 	color = rgb(68,lightness,59)
 	..()
+*/
+
 
 /turf/simulated/floor/colored/jungle_grass
 	name = "jungle grass"
@@ -51,7 +54,7 @@
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "jungle_grass"
 	light_color = "#27512E"
-
+/*
 /turf/simulated/floor/colored/jungle_grass/New(loc)
 
 	var/r = 39
@@ -64,6 +67,7 @@
 
 	color = rgb(r,g,b)
 	..()
+*/
 
 /turf/simulated/floor/colored/dark_grass
 	name = "dark grass"
@@ -72,6 +76,7 @@
 	corner_category = "grass"
 	light_color = "#527F3F"
 
+/*
 /turf/simulated/floor/colored/dark_grass/New(loc)
 	var/r = 82
 	var/g = 127
@@ -83,6 +88,7 @@
 
 	color = rgb(r,g,b)
 	..()
+*/
 
 /turf/simulated/floor/colored/sand
 	name = "grey sand"

@@ -224,14 +224,17 @@
 
 		if(!offset_x && !offset_y)
 			offset_x = rand(-1,1)
-
+		//TODO: Just make a normalize proc
 		var/total_offset = abs(offset_x) + abs(offset_y)
 
-		offset_x = offset_x/total_offset
-		offset_y = offset_y/total_offset
-
-		offset_x *= multiplier
-		offset_y *= multiplier
+		if(total_offset)
+			offset_x = offset_x/total_offset
+			offset_y = offset_y/total_offset
+			offset_x *= multiplier
+			offset_y *= multiplier
+		else
+			offset_x = 0
+			offset_y = 0
 
 		if(is_player(victim))
 			var/mob/living/advanced/player/P = victim
