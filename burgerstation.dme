@@ -609,6 +609,7 @@
 #include "code\_core\world\subsystems\factions.dm"
 #include "code\_core\world\subsystems\hair.dm"
 #include "code\_core\world\subsystems\image_notifications.dm"
+#include "code\_core\world\subsystems\lag_b_gone.dm"
 #include "code\_core\world\subsystems\lighting.dm"
 #include "code\_core\world\subsystems\living.dm"
 #include "code\_core\world\subsystems\loot.dm"
