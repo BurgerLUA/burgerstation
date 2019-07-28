@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/crossbow
-	name = "crossbow"
+	name = "bolt crossbow"
 	icon = 'icons/obj/items/weapons/ranged/crossbow.dmi'
 	icon_state = "inventory"
 

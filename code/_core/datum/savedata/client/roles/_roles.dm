@@ -20,6 +20,8 @@
 	var/file_contents = file2text(full_path)
 	loaded_data = json_decode(file_contents)
 
+	world.log << loaded_data["role"]
+
 /savedata/client/roles/proc/add_role(var/role_to_add)
 	loaded_data["role"] |= role_to_add
 	save()

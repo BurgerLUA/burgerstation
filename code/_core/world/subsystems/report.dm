@@ -33,7 +33,7 @@
 		passes = 0
 
 		var/text_to_broadcast = "<title>Tick Report</title> Lowest: [lowest]%, Highest: [highest]%, Average: [average]%.<br><i>Values over 100% means the server is experiencing CPU lag and you should yell and scream at Burger. Values less than 100% mean the server is functioning normally.</i>"
-		broadcast(text_to_broadcast)
+		broadcast_to_clients(text_to_broadcast)
 
 	passes++
 	return TRUE

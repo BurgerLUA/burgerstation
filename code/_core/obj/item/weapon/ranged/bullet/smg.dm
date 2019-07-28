@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg
-	name = "submachine gun"
+	name = ".45 bullpup submachine gun"
 	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
 	icon_state = "inventory_open"
 

@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/dbarrel
-	name = "\improper double barrel shotgun"
+	name = "\improper 12 gauge double barrel shotgun"
 	desc = "The bartender's trusty double barrel shotgun"
 	icon = 'icons/obj/items/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"

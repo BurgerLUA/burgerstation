@@ -49,3 +49,14 @@ var/global/world_state = STATE_STARTING
 	status += "Round Duration: <b>[duration]</b>"
 
 
+/world/Error(var/exception/e)
+	var/name = e.name
+	var/file = e.file
+	var/line = e.line
+	var/desc = e.desc
+
+	var/final_text = "<span class='error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>"
+
+	broadcast_to_role(final_text,TEXT_OOC,FLAG_PERMISSION_DEVELOPER)
+
+	return TRUE

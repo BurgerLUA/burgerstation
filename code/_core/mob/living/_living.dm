@@ -65,6 +65,7 @@ var/global/list/all_living = list()
 	var/turf/old_turf //Last turf someone has been in.
 
 	var/loot_drop
+	var/loot_drop_in_corpse = FALSE
 
 	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 

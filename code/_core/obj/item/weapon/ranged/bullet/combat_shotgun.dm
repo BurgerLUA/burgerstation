@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/pump/combat_shotgun
-	name = "combat shotgun"
+	name = "12 gauge combat shotgun"
 	desc = "A very robust combat shotgun."
 	icon = 'icons/obj/items/weapons/ranged/combat_shotgun.dmi'
 	icon_state = "inventory"

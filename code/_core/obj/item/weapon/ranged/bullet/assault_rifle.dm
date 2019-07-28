@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle
-	name = "assault rifle"
+	name = "\improper 7.62mm assault rifle"
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 

@@ -1,7 +1,15 @@
 /savedata/proc/load_and_create_object(var/list/object_data,var/loc)
 
+
+
 	var/o_type = object_data["type"]
-	var/obj/O = new o_type(loc)
+	var/obj/O
+
+	try
+		new o_type(loc)
+	catch
+		LOG_ERROR("ERROR: [o_type] does not exist in code!")
+		return FALSE
 
 	//General Information
 	if(object_data["color"])
@@ -53,14 +61,19 @@
 
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
-		if(object_data["stored_magazine"])
-			BG.stored_magazine = load_and_create_object(object_data["stored_magazine"],BG)
+
 		if(object_data["stored_bullets"])
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
 				var/obj/item/bullet/B = new b_type(BG)
 				B.update_icon()
 				BG.stored_bullets += B
+
+	if(is_magazine_gun(O))
+		var/obj/item/weapon/ranged/bullet/magazine/MG = O
+		if(object_data["stored_magazine"])
+			MG.stored_magazine = load_and_create_object(object_data["stored_magazine"],MG)
+
 
 	if(is_magazine(O))
 		var/obj/item/magazine/M = O
@@ -177,13 +190,16 @@
 
 	if(is_bullet_gun(I))
 		var/obj/item/weapon/ranged/bullet/BG = I
-		if(BG.stored_magazine)
-			returning_list["stored_magazine"] = get_item_data(BG.stored_magazine)
 		if(length(BG.stored_bullets))
 			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
 			for(var/i=1,i<=length(BG.stored_bullets),i++)
 				var/obj/item/bullet/B = BG.stored_bullets[i]
 				if(B) returning_list["stored_bullets"][i] = B.type
+
+	if(is_magazine_gun(I))
+		var/obj/item/weapon/ranged/bullet/magazine/MG = I
+		if(MG.stored_magazine)
+			returning_list["stored_magazine"] = get_item_data(MG.stored_magazine)
 
 	if(is_magazine(I))
 		var/obj/item/magazine/M = I

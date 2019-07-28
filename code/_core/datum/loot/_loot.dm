@@ -33,6 +33,9 @@
 		var/obj/item/I = spawn_loot(T)
 		step_rand(I)
 
-
-
-
+loot/proc/spawn_loot_corpse(var/turf/T)
+	var/obj/item/storage/heavy/corpse/C = new(T)
+	for(var/i=1,i <= loot_count,i++)
+		var/obj/item/I = spawn_loot(T)
+		C.add_to_inventory(null,I,FALSE)
+	return C

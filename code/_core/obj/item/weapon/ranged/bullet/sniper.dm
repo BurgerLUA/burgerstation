@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
-	name = "heavy sniper rifle"
+	name = "\improper .50 AT sniper rifle"
 	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/heavy_sniper.dmi'
 	icon_state = "inventory"

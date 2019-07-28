@@ -9,3 +9,6 @@
 
 	projectile = /obj/projectile/bullet/sniper
 	damage_type = ".50"
+
+
+

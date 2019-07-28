@@ -93,3 +93,25 @@
 		TOX = 0,
 		OXY = 0
 	)
+
+/damagetype/ranged/bullet/pistol_10mm
+	name = "10mm auto bullet"
+	id = "10mm_auto"
+
+	base_attack_damage = list(
+		BRUTE = 30,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/bullet/revolver_44
+	name = ".44 revolver bullet"
+	id = ".44"
+
+	base_attack_damage = list(
+		BRUTE = 50,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)

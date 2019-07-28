@@ -49,6 +49,10 @@
 /proc/is_bullet_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/bullet/)
 
+/proc/is_magazine_gun(var/atom/A)
+	return istype(A,/obj/item/weapon/ranged/bullet/magazine/)
+
+
 /proc/is_magazine(var/atom/A)
 	return istype(A,/obj/item/magazine/)
 

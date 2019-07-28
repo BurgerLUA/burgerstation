@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/mateba
-	name = "\improper .44 Mateba"
+	name = "\improper .44 Mateba revolver"
 	desc = "Semi-automatic!"
 	icon = 'icons/obj/items/weapons/ranged/mateba.dmi'
 	icon_state = "inventory"

@@ -340,7 +340,7 @@
 	stored_item = /obj/item/bullet/shotgun/buckshot
 
 /obj/structure/interactive/localmachine/item/ammo/sniper50
-	stored_item = /obj/item/magazine/sniper50
+	stored_item = /obj/item/magazine/sniper_50
 
 /obj/structure/interactive/localmachine/item/ammo/bolt
 	stored_item = /obj/item/bullet/bolt/

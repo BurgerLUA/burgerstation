@@ -24,7 +24,12 @@
 	var/turf/T = get_turf(src)
 	if(T && loot_drop)
 		var/loot/L = all_loot[loot_drop]
-		L.spawn_loot_turf(T)
+
+		if(loot_drop_in_corpse)
+			L.spawn_loot_corpse(T)
+		else
+			L.spawn_loot_turf(T)
+
 		var/obj/item/currency/C = new(src.loc)
 		C.value = 1 + floor(health_max/10)
 		C.update_icon()

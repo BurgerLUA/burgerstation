@@ -43,7 +43,7 @@
 	if(!is_bullet_gun(object))
 		return ..()
 
-	var/obj/item/weapon/ranged/bullet/G = object
+	var/obj/item/weapon/ranged/bullet/magazine/G = object
 	if(bullet_type != G.bullet_type)
 		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 		return TRUE
@@ -53,6 +53,9 @@
 		src.force_move(G)
 		G.stored_magazine = src
 		G.open = FALSE
+
+	var/area/A = get_area(caller)
+	play_sound(pick(G.mag_insert_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 	G.update_icon()
 
