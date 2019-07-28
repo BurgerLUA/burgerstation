@@ -5,23 +5,22 @@
 	display_message(src,text_to_say,TEXT_OOC)
 	last_ooc = curtime
 
+/*
 /proc/broadcast(var/text_to_say as text, var/text_type = TEXT_OOC)
 	for(var/mob/object in world)
 		object.to_chat(text_to_say)
+*/
 
 /proc/broadcast_to_clients(var/text_to_say as text, var/text_type = TEXT_OOC)
-	for(var/mob/M in all_mobs_with_clients)
-		M.to_chat(text_to_say,TEXT_OOC)
+	for(var/client/C in all_clients)
+		C.to_chat(text_to_say,TEXT_OOC)
 
 /proc/broadcast_to_role(var/text_to_say as text, var/text_type = TEXT_OOC, var/desired_role = FLAG_PERMISSION_NONE)
-
-	for(var/mob/M in all_mobs_with_clients)
-		var/client/C = M.client
+	for(var/client/C in all_clients)
 		var/savedata/client/roles/R = C.roles
-		var/actual_role = R.loaded_data["roles"]
-
-		if(desired_role & actual_role)
-			M.to_chat(text_to_say,TEXT_OOC)
+		var/actual_role = R.loaded_data["role"]
+		if(actual_role & desired_role)
+			C.to_chat(text_to_say,TEXT_OOC)
 
 proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_type as num)
 	if(!text_to_say)

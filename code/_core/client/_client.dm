@@ -71,14 +71,14 @@ var/global/list/all_clients = list()
 
 	all_clients += src
 
+	if(!roles)
+		roles = new(src)
+
 	known_inventory = list()
 	known_buttons = list()
 
 	if(!savedata)
 		savedata = new(src)
-
-	if(!roles)
-		roles = new(src)
 
 	setup_stylesheets()
 

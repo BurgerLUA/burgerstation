@@ -78,10 +78,9 @@ body {
 	font-size: 150%;
 	color: yellow;
 }
+
 .error{
 	font-size: 12px;
 	color:red;
-	font-family: 'Lucida Console', Monaco, monospace;
 }
-
 "}

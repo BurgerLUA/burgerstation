@@ -56,9 +56,20 @@
 	collision_flags = FLAG_COLLISION_NONE
 
 /mob/destroy()
+
+	if(client)
+		all_mobs_with_clients -= src
+		//Keep the last ckey just in case.
+		client.reset()
+		client = null
+
 	key = null // required to GC
 	buttons = null
 	health_elements = null
+
+
+	all_mobs -= src
+
 	return ..()
 
 /mob/can_attack(var/atom/victim,var/params)

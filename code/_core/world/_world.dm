@@ -55,7 +55,7 @@ var/global/world_state = STATE_STARTING
 	var/line = e.line
 	var/desc = e.desc
 
-	var/final_text = "<span class='error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>"
+	var/final_text = "<span class='system error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>"
 
 	broadcast_to_role(final_text,TEXT_OOC,FLAG_PERMISSION_DEVELOPER)
 
