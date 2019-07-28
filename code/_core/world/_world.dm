@@ -1,6 +1,7 @@
 var/global/list/active_subsystems
 var/global/curtime = 0
 var/global/ticks = 0
+var/global/rollovers = 0
 
 var/global/world_state = STATE_STARTING
 
@@ -9,6 +10,7 @@ var/global/world_state = STATE_STARTING
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
+	sleep_offline = TRUE
 
 	name = "Burgerstation 13"
 	hub = "Exadv1.spacestation13"
@@ -24,7 +26,6 @@ var/global/world_state = STATE_STARTING
 
 
 /world/New()
-	log = file("logs/mylog.txt")
 	..()
 	life()
 
@@ -55,8 +56,6 @@ var/global/world_state = STATE_STARTING
 	var/line = e.line
 	var/desc = e.desc
 
-	var/final_text = "<span class='system error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>"
-
-	broadcast_to_role(final_text,TEXT_OOC,FLAG_PERMISSION_DEVELOPER)
+	broadcast_to_role("<span class='system error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>",TEXT_OOC,FLAG_PERMISSION_DEVELOPER)
 
 	return TRUE

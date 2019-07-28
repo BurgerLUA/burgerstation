@@ -34,6 +34,9 @@
 	var/command = macros[button]
 	if(isnum(command))
 		owner.mob.move_dir |= command
+		if(owner.mob)
+			owner.mob.move_delay = max(owner.mob.move_delay,2)
+
 	else if(copytext(command,1,5) == "bind")
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
