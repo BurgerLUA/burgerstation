@@ -1,4 +1,4 @@
-/mob/living/advanced/human/npc/unique/farmer
+/mob/living/advanced/npc/unique/farmer
 	name = "Crundus Bundus"
 	desc = "Remember the!"
 	mob_species = /species/human/
@@ -6,7 +6,7 @@
 	gender = MALE
 	dialogue_id = "farmer_dialogue"
 
-/mob/living/advanced/human/npc/unique/farmer/Initialize()
+/mob/living/advanced/npc/unique/farmer/Initialize()
 	..()
 	change_organ_visual("skin", desired_color = "#FFBAA3")
 	change_organ_visual("hair_head", desired_color = "#9E7E6E")

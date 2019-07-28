@@ -1,18 +1,18 @@
-/mob/living/advanced/human/npc/cultist
+/mob/living/advanced/npc/cultist
 	name = "clown cultist"
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
 	ai = /ai/
 
-/mob/living/advanced/human/npc/cultist/tutorial
+/mob/living/advanced/npc/cultist/tutorial
 	name = "strange clown"
 	starting_factions = list()
 	ai = /ai/
 
 
 
-/mob/living/advanced/human/npc/cultist01
+/mob/living/advanced/npc/cultist01
 	name = "Nalagaf the Wicked"
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
@@ -22,7 +22,7 @@
 
 	loot_drop = "wizard"
 
-/mob/living/advanced/human/npc/cultist01/Initialize()
+/mob/living/advanced/npc/cultist01/Initialize()
 
 	. = ..()
 

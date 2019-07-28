@@ -283,7 +283,6 @@
 #include "code\_core\mob\living\advanced\organs.dm"
 #include "code\_core\mob\living\advanced\overlays.dm"
 #include "code\_core\mob\living\advanced\progress_bars.dm"
-#include "code\_core\mob\living\advanced\human\_human.dm"
 #include "code\_core\mob\living\advanced\human\npc\_npc.dm"
 #include "code\_core\mob\living\advanced\human\npc\arena.dm"
 #include "code\_core\mob\living\advanced\human\npc\cultist.dm"

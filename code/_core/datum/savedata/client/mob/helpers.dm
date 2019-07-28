@@ -75,9 +75,11 @@
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
 	json_data["last_saved_time"] = get_time()
-	fdel(get_file(character_id))
+	var/desired_file = get_file(character_id)
 	var/data = json_encode(json_data)
-	return text2file(data,get_file(character_id))
+	if(data)
+		fdel(desired_file)
+	return text2file(data,desired_file)
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
 	if(text2num(character_id) > MAX_CHARACTERS)
@@ -148,10 +150,11 @@
 
 	loaded_data["tutorial"] = 0
 
-	if(write_json_data_to_id(owner.save_slot,loaded_data))
-		owner.mob.to_chat(span("notice","Sucessfully saved character [owner.mob.name]."))
-	else
-		owner.mob.to_chat(span("warning","Save failed. Please contact the server owner."))
+	spawn(0)
+		if(write_json_data_to_id(owner.save_slot,loaded_data))
+			owner.mob.to_chat(span("notice","Sucessfully saved character [owner.mob.name]."))
+		else
+			owner.mob.to_chat(span("warning","Save failed. Please contact the server owner."))
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A)
 

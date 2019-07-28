@@ -1,4 +1,4 @@
-/mob/living/advanced/human/npc/deus_vault
+/mob/living/advanced/npc/deus_vault
 	name = "crusader"
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
@@ -6,7 +6,7 @@
 	ai = /ai/crusader
 	class = "crusader"
 
-/mob/living/advanced/human/npc/deus_vault/Initialize()
+/mob/living/advanced/npc/deus_vault/Initialize()
 
 	. = ..()
 

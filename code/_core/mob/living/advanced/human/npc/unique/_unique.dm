@@ -1,2 +1,2 @@
-/mob/living/advanced/human/npc/unique/
+/mob/living/advanced/npc/unique/
 	ai = null

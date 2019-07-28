@@ -38,7 +38,7 @@ var/global/list/all_notifications = list()
 
 /proc/add_notification(var/client/C,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)
 
-	if(!C.mob)
+	if(!C || !C.mob)
 		return
 
 	if(fade_in)
@@ -57,12 +57,17 @@ var/global/list/all_notifications = list()
 	if(fade_in)
 		animate(S,time=SECONDS_TO_DECISECONDS(2),alpha = 255,easing=LINEAR_EASING)
 
-	C.screen += S
+	if(C && C.screen)
+		C.screen += S
+
 	all_notifications += S
 
 	return S
 
 /proc/remove_notification(var/client/C,var/obj/screen/S)
-	C.screen -= S
+
+	if(C && C.screen)
+		C.screen -= S
+
 	all_notifications -= S
 	qdel(S)

@@ -75,7 +75,7 @@ proc/is_scroll(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/magic/scroll/)
 
 proc/is_npc(var/atom/A)
-	return istype(A,/mob/living/advanced/human/npc/)
+	return istype(A,/mob/living/advanced/npc/)
 
 proc/is_staff(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/magic/staff/)
@@ -117,4 +117,4 @@ proc/is_food(var/atom/A)
 	return istype(A,/mob/living/simple/npc/turret)
 
 /proc/is_unique(var/atom/A)
-	return istype(A,/mob/living/advanced/human/npc/unique)
+	return istype(A,/mob/living/advanced/npc/unique)

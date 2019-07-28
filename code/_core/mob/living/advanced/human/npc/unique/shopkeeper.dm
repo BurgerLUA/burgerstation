@@ -1,4 +1,4 @@
-/mob/living/advanced/human/npc/unique/shopkeeper
+/mob/living/advanced/npc/unique/shopkeeper
 	name = "Shopkeeper Eric"
 	desc = "Some may call this junk, me, I call them treasures."
 	mob_species = /species/human/
@@ -6,7 +6,7 @@
 	gender = MALE
 	dialogue_id = "shopkeeper_dialogue"
 
-/mob/living/advanced/human/npc/unique/shopkeeper/Initialize()
+/mob/living/advanced/npc/unique/shopkeeper/Initialize()
 	..()
 	change_organ_visual("skin", desired_color = "#FFBAA3")
 	change_organ_visual("hair_head", desired_color = "#9E7E6E")

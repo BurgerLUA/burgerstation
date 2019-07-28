@@ -18,6 +18,9 @@
 	var/list/dialogue_options = get_dialogue_options(P,known_options)
 	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
 
+	if(!final_topic_string)
+		return FALSE
+
 	for(var/topic in dialogue_options)
 		if(topic in known_options)
 			final_topic_string += "_[topic]"
@@ -28,9 +31,15 @@
 
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")
 
+	return TRUE
+
 /dialogue/proc/get_topic_string(var/mob/living/advanced/player/P,var/topic,var/list/dialogue_options)
 
 	var/list/chosen_dialogue = dialogue_options[topic]
+
+	if(!length(chosen_dialogue))
+		LOG_ERROR("ERROR: [P] cannot access chosen topic [topic]!")
+		return FALSE
 
 	var/final_topic = "[topic]_[chosen_dialogue[1]]"
 

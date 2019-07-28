@@ -1,4 +1,4 @@
-/mob/living/advanced/human/npc/unique/diamond_with_flaw
+/mob/living/advanced/npc/unique/diamond_with_flaw
 	name = "Diamond with Flaw"
 	desc = "Fucking trees."
 	mob_species = /species/diona/
@@ -7,7 +7,7 @@
 	dialogue_id = "diamond_dialogue"
 	dir = EAST
 
-/mob/living/advanced/human/npc/unique/diamond_with_flaw/Initialize()
+/mob/living/advanced/npc/unique/diamond_with_flaw/Initialize()
 	. = ..()
 	change_organ_visual("skin", desired_color = "#BC9D58")
 	change_organ_visual("skin_detail", desired_color = "#719333")

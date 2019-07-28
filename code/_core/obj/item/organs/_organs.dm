@@ -66,25 +66,25 @@
 
 /obj/item/organ/adjust_brute_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
-		`var/mob/living/advanced/A = src.loc
+		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 	return ..()
 
 /obj/item/organ/adjust_tox_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
-		`var/mob/living/advanced/A = src.loc
+		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 	return ..()
 
 /obj/item/organ/adjust_oxy_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
-		`var/mob/living/advanced/A = src.loc
+		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 	return ..()
 
 /obj/item/organ/adjust_burn_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
-		`var/mob/living/advanced/A = src.loc
+		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 	return ..()
 

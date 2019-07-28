@@ -1,4 +1,4 @@
-/mob/living/advanced/human/npc/evil_wizard
+/mob/living/advanced/npc/evil_wizard
 	name = "Merlin"
 	id = "merlin"
 	starting_factions = list(
@@ -13,7 +13,7 @@
 
 	loot_drop_in_corpse = TRUE
 
-/mob/living/advanced/human/npc/evil_wizard/Initialize()
+/mob/living/advanced/npc/evil_wizard/Initialize()
 
 	. = ..()
 

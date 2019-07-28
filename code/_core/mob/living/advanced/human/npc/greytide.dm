@@ -1,11 +1,11 @@
-/mob/living/advanced/human/npc/greytide
+/mob/living/advanced/npc/greytide
 	name = "greytide"
 	enable_AI = TRUE
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
 
-/mob/living/advanced/human/npc/greytide/Initialize()
+/mob/living/advanced/npc/greytide/Initialize()
 
 	. = ..()
 

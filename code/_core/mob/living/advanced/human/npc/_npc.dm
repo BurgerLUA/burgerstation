@@ -1,4 +1,4 @@
-/mob/living/advanced/human/npc
+/mob/living/advanced/npc/
 	name = "greytide"
 	enable_AI = TRUE
 	starting_factions = list(
@@ -10,7 +10,7 @@
 
 	collision_flags = FLAG_COLLISION_REAL
 
-/mob/living/advanced/human/npc/clicked_by_object(var/mob/caller,object,location,control,params)
+/mob/living/advanced/npc/clicked_by_object(var/mob/caller,object,location,control,params)
 	if(dialogue_id && is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		P.dialogue_target_id = dialogue_id
@@ -19,8 +19,8 @@
 
 	return ..()
 
-/mob/living/advanced/human/npc/get_xp_multiplier()
+/mob/living/advanced/npc/get_xp_multiplier()
 	return 0
 
-/mob/living/advanced/human/npc/can_be_grabbed()
+/mob/living/advanced/npc/can_be_grabbed()
 	return status & FLAG_STATUS_DEAD
