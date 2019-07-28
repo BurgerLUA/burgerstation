@@ -328,6 +328,8 @@ mob/living/advanced/Login()
 			O.adjust_oxy_loss(-heal_amount)
 			total_healed += heal_amount
 
+	update_health(-total_healed,src,do_update = FALSE)
+
 	return total_healed
 
 /mob/living/advanced/proc/adjust_mana(var/adjust_value)

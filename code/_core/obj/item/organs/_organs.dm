@@ -64,6 +64,30 @@
 	wounds = list()
 	initialize_blends()
 
+/obj/item/organ/adjust_brute_loss(var/value)
+	if(value > 0 && is_advanced(src.loc))
+		`var/mob/living/advanced/A = src.loc
+		A.health_regen_delay = max(A.health_regen_delay,300)
+	return ..()
+
+/obj/item/organ/adjust_tox_loss(var/value)
+	if(value > 0 && is_advanced(src.loc))
+		`var/mob/living/advanced/A = src.loc
+		A.health_regen_delay = max(A.health_regen_delay,300)
+	return ..()
+
+/obj/item/organ/adjust_oxy_loss(var/value)
+	if(value > 0 && is_advanced(src.loc))
+		`var/mob/living/advanced/A = src.loc
+		A.health_regen_delay = max(A.health_regen_delay,300)
+	return ..()
+
+/obj/item/organ/adjust_burn_loss(var/value)
+	if(value > 0 && is_advanced(src.loc))
+		`var/mob/living/advanced/A = src.loc
+		A.health_regen_delay = max(A.health_regen_delay,300)
+	return ..()
+
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)
 	attached_organ = O
 	O.attached_organs += src
@@ -169,11 +193,14 @@
 
 	var/total_offset = abs(offset_x) + abs(offset_y)
 
-	offset_x = offset_x/total_offset
-	offset_y = offset_y/total_offset
-
-	offset_x *= TILE_SIZE
-	offset_y *= TILE_SIZE
+	if(total_offset)
+		offset_x = offset_x/total_offset
+		offset_y = offset_y/total_offset
+		offset_x *= TILE_SIZE
+		offset_y *= TILE_SIZE
+	else
+		offset_x = 0
+		offset_y = 0
 
 	animate(B,pixel_x = offset_x,pixel_y = offset_y, transform = null, time = 2)
 

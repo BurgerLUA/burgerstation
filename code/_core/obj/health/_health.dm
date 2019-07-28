@@ -18,6 +18,7 @@
 
 /obj/button/health/proc/update_stats(var/mob/living/M)
 	update_icon()
+	return TRUE
 
 /obj/button/health/update_owner(var/mob/desired_owner)
 
@@ -37,6 +38,8 @@
 
 	if(max == 0)
 		return
+
+	icon = null
 
 	var/icon/base = icon(initial(icon),icon_state = icon_state)
 	var/icon/bar = icon(initial(icon),icon_state = "bar")
@@ -73,7 +76,8 @@
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
-	..()
+	world.log << "We have updated health."
+	return ..()
 
 /obj/button/health/sp
 	name = "stamina"
@@ -94,7 +98,8 @@
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
-	..()
+	world.log << "We have updated stamina."
+	return ..()
 
 /obj/button/health/mp
 	name = "mana"
@@ -115,4 +120,5 @@
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)
+	world.log << "We have updated mana."
 	..()

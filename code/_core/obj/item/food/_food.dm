@@ -52,7 +52,7 @@
 	if(heal_amount_mana)
 		consumer.adjust_mana(heal_amount_mana)
 
-	consumer.update_health_element_icons(TRUE,TRUE,TRUE)
+	consumer.update_health_element_icons(heal_amount_health,heal_amount_stamina,heal_amount_mana)
 
 	uses_left -= 1
 

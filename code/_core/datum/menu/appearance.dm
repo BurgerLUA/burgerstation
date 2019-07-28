@@ -13,7 +13,6 @@
 		"chargen_head.png" = 'html/chargen_head.png'
 	)
 
-
 	var/list/valid_hair_head_ids = list(
 		"none",
 		"hair_a",

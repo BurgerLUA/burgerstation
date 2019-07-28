@@ -26,18 +26,23 @@
 
 /mob/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
+
+
 	if(!src.client)
 		return FALSE
 
 	if(health)
+		world.log << "We are trying to update health."
 		var/obj/button/health/H = health_elements["health"]
 		H.update_stats(src)
 
 	if(stamina)
+		world.log << "We are trying to update stamina."
 		var/obj/button/health/S = health_elements["stamina"]
 		S.update_stats(src)
 
 	if(mana)
+		world.log << "We are trying to update mana."
 		var/obj/button/health/M = health_elements["mana"]
 		M.update_stats(src)
 
@@ -62,7 +67,7 @@ mob/living/proc/update_stats()
 
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
-mob/living/update_health(var/damage_dealt,var/atom/attacker)
+mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 
 	var/new_health_current = get_health()
 	var/difference = new_health_current - health_current
@@ -85,7 +90,8 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker)
 						B.target_boss = src
 						B.update_stats()
 
-	update_health_element_icons(health=TRUE)
+	if(do_update)
+		update_health_element_icons(health=TRUE)
 
 
 

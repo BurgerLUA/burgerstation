@@ -56,7 +56,7 @@
 #define DEFAULT_SKILL_ALLOCATION 190
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
-#define LIFE_TICK 1 //Deciseconds per life tick.
+#define LIFE_TICK 10 //Deciseconds per life tick interval.
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 

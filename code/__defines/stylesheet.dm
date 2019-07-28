@@ -82,5 +82,6 @@ body {
 .error{
 	font-size: 12px;
 	color:red;
+	font-family: Courier, Monaco, monospace;
 }
 "}

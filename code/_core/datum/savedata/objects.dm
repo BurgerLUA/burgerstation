@@ -1,12 +1,10 @@
 /savedata/proc/load_and_create_object(var/list/object_data,var/loc)
 
-
-
 	var/o_type = object_data["type"]
 	var/obj/O
 
 	try
-		new o_type(loc)
+		O = new o_type(loc)
 	catch
 		LOG_ERROR("ERROR: [o_type] does not exist in code!")
 		return FALSE
