@@ -152,7 +152,10 @@
 		return FALSE
 
 	if(simple)
-		return L.client
+		if(L.client)
+			return TRUE
+		else
+			return FALSE
 
 	for(var/id in owner.factions)
 		var/faction/F = owner.factions[id]
@@ -172,19 +175,6 @@
 			possible_targets += P
 
 	return possible_targets
-
-/ai/simple/
-	name = "Simple AI"
-	simple = TRUE
-
-/ai/simple/handle_attacking()
-
-	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
-		owner.move_dir = 0
-		owner.attack(owner,objective_attack)
-
-	attack_ticks = 0
-
 
 
 

@@ -32,17 +32,14 @@
 		return FALSE
 
 	if(health)
-		world.log << "We are trying to update health."
 		var/obj/button/health/H = health_elements["health"]
 		H.update_stats(src)
 
 	if(stamina)
-		world.log << "We are trying to update stamina."
 		var/obj/button/health/S = health_elements["stamina"]
 		S.update_stats(src)
 
 	if(mana)
-		world.log << "We are trying to update mana."
 		var/obj/button/health/M = health_elements["mana"]
 		M.update_stats(src)
 

@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/sealife.dmi'
 	icon_state = "carp"
 
-	ai = /ai/carp
+	ai = /ai/simple/carp
 	damage_type = "carp_bite"
 	class = "carp"
 

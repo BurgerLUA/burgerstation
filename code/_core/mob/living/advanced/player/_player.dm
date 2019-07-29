@@ -22,7 +22,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	//Measured in seconds.
 	//Reduces by 1 every second.
 
-	movement_delay = 4 //Basically the minimum movement delay.
+	movement_delay = 4 //Basically the minimum movement delay. Measured in ticks.
 
 	var/last_track_time = -1
 

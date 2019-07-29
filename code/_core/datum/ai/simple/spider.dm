@@ -1,4 +1,4 @@
-/ai/spider
+/ai/simple/spider
 	name = "Spider"
 	desc = "Spider bites and whatnot."
 
@@ -14,10 +14,4 @@
 
 	sync_stats = TRUE
 
-/ai/spider/handle_attacking()
-
-	if(objective_attack && get_dist(owner,objective_attack) <= 1)
-		owner.move_dir = 0
-		owner.attack(owner,objective_attack)
-
-	attack_ticks = 0
+/ai/simple/spider/handle_attacking()

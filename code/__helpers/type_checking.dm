@@ -99,22 +99,25 @@ proc/is_player(var/atom/A)
 	return istype(A,/mob/living/advanced/player/)
 
 proc/is_floor(var/atom/A)
-	return istype(A,/turf/simulated/floor)
+	return istype(A,/turf/simulated/floor/)
 
 proc/is_currency(var/atom/A)
-	return istype(A,/obj/item/currency)
+	return istype(A,/obj/item/currency/)
 
 proc/is_dynamic_inventory(var/atom/A)
-	return istype(A,/obj/inventory/dynamic)
+	return istype(A,/obj/inventory/dynamic/)
 
 proc/is_food(var/atom/A)
 	return istype(A,/obj/item/food/)
 
 /proc/is_slime(var/atom/A)
-	return istype(A,/mob/living/simple/npc/slime)
+	return istype(A,/mob/living/simple/npc/slime/)
 
 /proc/is_turret(var/atom/A)
-	return istype(A,/mob/living/simple/npc/turret)
+	return istype(A,/mob/living/simple/npc/turret/)
 
 /proc/is_unique(var/atom/A)
-	return istype(A,/mob/living/advanced/npc/unique)
+	return istype(A,/mob/living/advanced/npc/unique/)
+
+/proc/is_projectile(var/atom/A)
+	return istype(A,/obj/projectile/)

@@ -5,11 +5,11 @@
 	var/tmp/move_dir = 0
 	var/tmp/move_delay = 0
 
-	var/movement_delay = 4
+	var/movement_delay = 4 //Measured in ticks.
 	var/anchored = FALSE
 
 	step_size = TILE_SIZE
-	appearance_flags = LONG_GLIDE | KEEP_TOGETHER
+	appearance_flags = LONG_GLIDE | KEEP_TOGETHER // | TILE_BOUND | PIXEL_SCALE
 
 	collision_flags = FLAG_COLLISION_NONE
 
@@ -33,13 +33,13 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 
-/atom/movable/proc/handle_movement(var/adjust_delay = 0) //Runs every decisecond
+/atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
 
 	if(move_dir && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()
 
-		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay),0.1)
-		glide_size = step_size/move_delay
+		move_delay = floor(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
+		glide_size = step_size/move_delay //TODO: Find out how this works.
 
 		Move(get_step(src,move_dir),move_dir)
 

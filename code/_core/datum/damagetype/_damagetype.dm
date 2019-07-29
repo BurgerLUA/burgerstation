@@ -80,8 +80,8 @@
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(!victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance())
 		return FALSE
-	do_miss_sound(attacker,victim,weapon,hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)
+	do_miss_sound(attacker,victim,weapon,hit_object)
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
 	return TRUE
 
@@ -146,6 +146,8 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+
+
 	var/brute_armor = 0
 	var/burn_armor = 0
 
@@ -168,12 +170,17 @@
 
 			A.add_skill_xp(SKILL_ARMOR,brute_armor + burn_armor)
 
+	do_attack_animation(attacker,victim,weapon,hit_object)
+
 	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/brute_damage_dealt = calculate_damage_with_armor(hit_object.adjust_brute_loss(damage_to_deal[BRUTE]),brute_armor)
 	var/burn_damage_dealt = calculate_damage_with_armor(hit_object.adjust_burn_loss(damage_to_deal[BURN]),burn_armor)
 	var/tox_damage_dealt = hit_object.adjust_tox_loss(damage_to_deal[TOX])
 	var/oxy_damage_dealt = hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 	var/damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
+
+	do_attack_visuals(attacker,victim,weapon,hit_object,damage_dealt)
+	do_attack_sound(attacker,victim,weapon,hit_object)
 
 	if(length(wound_types))
 		var/wound/W = pick(wound_types)
@@ -182,7 +189,6 @@
 		if(victim != hit_object)
 			victim.wounds += W
 
-	play_effects(attacker,victim,weapon,hit_object,damage_dealt)
 	display_hit_message(attacker,victim,weapon,hit_object)
 
 	hit_object.update_health(damage_dealt,attacker)
@@ -197,29 +203,14 @@
 			if(xp_to_give > 0)
 				A.add_skill_xp(skill,xp_to_give)
 
-
 	return damage_dealt
 
-/damagetype/proc/play_effects(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt=0)
-	do_attack_sound(attacker,victim,weapon,hit_object)
-	do_attack_animation(attacker,victim,weapon,hit_object)
-	do_attack_visuals(attacker,victim,weapon,hit_object,damage_dealt)
-
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
-
 
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
-
-	if(draw_weapon)
-		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
-
-		var/offset_x = (victim.x - attacker.x)*TILE_SIZE
-		var/offset_y = (victim.y - attacker.y)*TILE_SIZE
-
-		animate(WC,pixel_x = offset_x, pixel_y = offset_y,time = 3)
 
 	if(victim.health_max)
 
@@ -250,7 +241,7 @@
 				animate(C,pixel_x = offset_x, pixel_y = offset_y,time=1)
 				animate(pixel_x = 0, pixel_y = 0, time = 5)
 
-		if(is_movable(victim) && victim.health_current <= 0)
+		if(is_movable(victim) && victim.health_current - damage_dealt <= 0)
 			if(multiplier >= TILE_SIZE)
 				var/atom/movable/M = victim
 				M.glide_size = TILE_SIZE
@@ -274,9 +265,6 @@
 			animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
 			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
 
-
-
-
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(impact_sounds))
 		var/area/A = get_area(victim)
@@ -288,6 +276,16 @@
 		play_sound(pick(miss_sounds),all_mobs_with_clients,vector(victim.x,victim.y,victim.z),environment = A.sound_environment)
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(draw_weapon)
+		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
+		WC.appearance = weapon.appearance
+
+		var/offset_x = (victim.x - attacker.x)*TILE_SIZE
+		var/offset_y = (victim.y - attacker.y)*TILE_SIZE
+
+		animate(WC,pixel_x = offset_x, pixel_y = offset_y,time = ATTACK_ANIMATION_LENGTH)
+
 	var/pixel_x_offset = 0
 	var/pixel_y_offset = 0
 	var/punch_distance = 12
@@ -314,6 +312,8 @@
 
 		animate(M, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
 		animate(transform = matrix(), time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+
+	sleep(ATTACK_ANIMATION_LENGTH)
 
 /damagetype/proc/get_weapon_name(var/atom/backup)
 	if(weapon_name)

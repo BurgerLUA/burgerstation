@@ -14,7 +14,7 @@ var/global/list/all_clients = list()
 	var/list/obj/button/known_buttons
 	var/list/obj/button/health/known_health_elements
 
-	var/zoom_level = 2
+	var/zoom_level = MIN_ZOOM
 
 	var/savedata/client/mob/savedata
 	var/savedata/client/connection_history/connection_data
@@ -251,12 +251,12 @@ var/global/list/all_clients = list()
 	last_location = over_location
 
 /client/proc/update_zoom(var/desired_zoom_level)
-	if(!mob || !is_living(mob) || eye != mob)
-		desired_zoom_level = 1
+	if(!mob || !eye || eye != mob)
+		desired_zoom_level = MIN_ZOOM
 	else if(desired_zoom_level < 0)
 		desired_zoom_level = initial(zoom_level)
 
-	zoom_level = Clamp(desired_zoom_level,1,4)
+	zoom_level = Clamp(desired_zoom_level,MIN_ZOOM,MAX_ZOOM)
 
 	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 

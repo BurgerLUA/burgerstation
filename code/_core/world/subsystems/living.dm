@@ -6,7 +6,7 @@
 
 /subsystem/living/on_life()
 
-	for(var/mob/living/L in all_mobs)
+	for(var/mob/living/L in all_living)
 		L.on_life()
 		if(!L.ckey && L.enable_AI)
 			L.on_life_AI()

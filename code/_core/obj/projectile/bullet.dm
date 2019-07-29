@@ -37,14 +37,9 @@
 		if(!can_attack)
 			return FALSE
 
-		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT))
-			return TRUE
-
-		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT))
-			return FALSE
-
-		if(DT.perform_miss(owner,weapon,object_to_damage))
-			return FALSE
+		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
+		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+		if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
 
 		DT.do_damage(owner,hit_atom,weapon,object_to_damage)
 

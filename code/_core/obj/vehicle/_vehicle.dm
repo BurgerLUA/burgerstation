@@ -51,7 +51,7 @@
 
 	return ..()
 
-/obj/vehicle/handle_movement(var/adjust_delay = 0) //Runs every decisecond
+/obj/vehicle/handle_movement(var/adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
 
 	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()

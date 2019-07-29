@@ -1,7 +1,7 @@
 obj/effect/temp/impact/combat
 	name = "combat effect"
 	icon = 'icons/obj/effects/combat.dmi'
-	duration = 5
+	duration = 3
 	mouse_opacity = 0
 
 obj/effect/temp/impact/combat/smash

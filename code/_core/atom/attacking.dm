@@ -31,12 +31,11 @@
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
-		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type]!")
+		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to it not existing!")
 		return FALSE
 
 	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
 	if(!can_attack)
-		//LOG_ERROR("[attacker] cannot attack the [victim] with the [object_to_damage_with].")
 		return FALSE
 
 	DT.attack_last = world.time
@@ -49,7 +48,7 @@
 
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
 
-	return can_attack
+	return TRUE
 
 /atom/proc/get_object_to_damage(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage?
 	return victim
@@ -86,16 +85,16 @@
 	var/base_chance = get_block_chance(attacker,weapon,target,DT)
 	if(!prob(base_chance))
 		return FALSE
-	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	return TRUE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
 	var/base_chance = get_parry_chance(attacker,weapon,target)
 	if(!prob(base_chance))
 		return FALSE
-	DT.display_miss_message(attacker,src,weapon,target,"parried")
 	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"parried")
 	if(allow_parry_counter)
 		src.attack(src,attacker)
 	return TRUE
@@ -104,6 +103,6 @@
 	var/base_chance = get_dodge_chance(attacker,weapon,target,DT)
 	if(!prob(base_chance))
 		return FALSE
-	DT.display_miss_message(attacker,src,weapon,target,"dodged")
 	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"dodged")
 	return TRUE
