@@ -8,7 +8,7 @@
 	var/shoot_delay = 4 //In deciseconds
 	var/next_shoot_time = 0
 
-	damage_type = /damagetype/blunt/pistol
+	damage_type = "gun_butt"
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 0.5,

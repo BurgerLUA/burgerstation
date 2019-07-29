@@ -69,6 +69,7 @@
 	var/obj/effect/temp/impact/hit_effect = /obj/effect/temp/impact/combat/smash
 
 	var/draw_blood = FALSE
+	var/draw_weapon = FALSE
 
 /damagetype/proc/get_miss_chance()
 	return 0
@@ -212,7 +213,13 @@
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
-	world.log << "HIT OBJECT: [hit_object.name]."
+	if(draw_weapon)
+		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
+
+		var/offset_x = (victim.x - attacker.x)*TILE_SIZE
+		var/offset_y = (victim.y - attacker.y)*TILE_SIZE
+
+		animate(WC,pixel_x = offset_x, pixel_y = offset_y,time = 3)
 
 	if(victim.health_max)
 

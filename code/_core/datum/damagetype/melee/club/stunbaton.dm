@@ -1,4 +1,4 @@
-/damagetype/blunt/stunbaton
+/damagetype/melee/club/stunbaton
 	name = "stunbaton off"
 	id = "stunbaton_off"
 
@@ -39,7 +39,7 @@
 		SKILL_RANGED = 0
 	)
 
-/damagetype/blunt/stunbaton/on
+/damagetype/melee/club/stunbaton/on
 	name = "stunbaton on"
 	id = "stunbaton_on"
 

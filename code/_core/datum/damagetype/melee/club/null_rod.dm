@@ -1,4 +1,4 @@
-/damagetype/melee/dagger/null_rod
+/damagetype/melee/club/null_rod
 	name = "null rod"
 	id = "null_rod"
 
