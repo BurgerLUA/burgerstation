@@ -97,6 +97,7 @@
 #include "code\_core\area\world\_world.dm"
 #include "code\_core\area\world\abyss.dm"
 #include "code\_core\area\world\caves.dm"
+#include "code\_core\area\world\cult.dm"
 #include "code\_core\area\world\desert.dm"
 #include "code\_core\area\world\forest.dm"
 #include "code\_core\area\world\jungle.dm"
