@@ -2,9 +2,7 @@
 	name = "basalt"
 	icon = 'icons/turf/floor/basalt.dmi'
 	icon_state = "basalt1"
-
-
-
+	light_color = "#FFFFFF"
 
 /turf/simulated/floor/basalt/New(var/desired_loc)
 	if(prob(10))

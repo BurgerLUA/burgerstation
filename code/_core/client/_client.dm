@@ -93,7 +93,7 @@ var/global/list/all_clients = list()
 		connection_data = new(src)
 
 /client/proc/make_lobby(var/desired_loc)
-	src.mob = new /mob/abstract/observer/no_move(desired_loc,src)
+	src.mob = new /mob/abstract/observer(desired_loc,src)
 	src.mob.Initialize()
 	winset(src, "map.map","icon-size=[TILE_SIZE*2];zoom-mode=normal")
 	//update_lighting()

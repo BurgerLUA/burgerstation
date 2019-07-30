@@ -1,6 +1,5 @@
 /area/world/mountain //3,3
 	name = "snowy mountain"
-	icon_state = "blue"
 
 /area/world/mountain/interior
 	name = "interior"
