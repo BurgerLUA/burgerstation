@@ -5,5 +5,6 @@
 	corner_icons = TRUE
 	corner_category = "lava"
 
-	light_range = 4
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT * 0.5
+	light_range = 6
 	light_color = "#FF8300"

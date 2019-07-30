@@ -6,7 +6,7 @@
 
 	collision_flags = FLAG_COLLISION_WALKING
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT_STRONG
 	light_range = DEFAULT_RANGE_AMBIENT
 	light_color = "#AAAAFF"
 

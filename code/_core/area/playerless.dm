@@ -6,6 +6,13 @@
 	dynamic_lighting = TRUE
 	safe = TRUE
 
+/area/singleplayer/exterior
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
+
+/area/singleplayer/interior
+	icon_state = "one_alt"
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
+
 /area/singleplayer/Entered(var/atom/movable/enterer,var/atom/old_loc)
 	. = ..()
 	if(. && is_player(enterer))
