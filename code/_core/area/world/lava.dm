@@ -1,5 +1,6 @@
 /area/world/lava //1,3; 1,4; 2,3
 	name = "lavaland"
+	tracks = ("lava")
 
 /area/world/lava/exterior
 	name = "lavaland exterior"

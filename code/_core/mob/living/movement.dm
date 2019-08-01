@@ -11,6 +11,11 @@
 
 	return ..()
 
+/mob/living/handle_movement(var/adjust_delay = 1)
+	if(status & FLAG_STATUS_PARALYZE)
+		return FALSE
+
+	return ..()
 
 /mob/living/get_movement_delay()
 	. = ..()

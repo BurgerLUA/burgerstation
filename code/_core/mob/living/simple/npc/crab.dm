@@ -44,6 +44,7 @@
 	collision_flags = FLAG_COLLISION_REAL
 
 	boss = TRUE
+	boss_music = "crab"
 
 /mob/living/simple/npc/crab/king/can_collide_with(var/atom/A)
 	if(istype(src,A))

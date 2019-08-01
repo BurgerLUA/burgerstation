@@ -6,6 +6,8 @@ var/global/list/all_living = list()
 	var/list/faction/factions
 	var/list/starting_factions = list()
 
+	icon_state = "directional"
+
 	var/class = "default"
 
 	var/ai/ai
@@ -14,9 +16,9 @@ var/global/list/all_living = list()
 
 	var/status = 0 //Negative status
 
-	var/stun_time = 0 //Deciseconds of stun
-	var/sleep_time = 0 //Decieconds of sleep
-	var/paralyze_time = 0 //Decieconds of paralyze
+	var/stun_time = 0 //Deciseconds of stun. Stun is being knocked down.
+	var/sleep_time = 0 //Decieconds of sleep Sleep is being knocke down and blind.
+	var/paralyze_time = 0 //Decieconds of paralyze. Paralyze is being unable to move.
 
 	var/first_life = TRUE
 
@@ -72,6 +74,7 @@ var/global/list/all_living = list()
 	var/stun_angle = 0
 
 	var/boss = FALSE
+	var/boss_music
 
 	var/list/mob/living/advanced/player/linked_players
 

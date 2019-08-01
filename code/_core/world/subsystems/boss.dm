@@ -7,3 +7,4 @@ var/global/list/tracked_bosses = list()
 	for(var/mob/living/advanced/player/P in view(L))
 		for(var/obj/button/boss_health/B in P.buttons)
 			B.target_boss = L
+			B.update_stats()

@@ -73,10 +73,13 @@
 
 	return ..()
 
-/mob/proc/on_stunned()
+/mob/living/proc/on_stunned()
 	return TRUE
 
-/mob/living/proc/on_life()
+/mob/living/proc/on_paralyze()
+	return TRUE
+
+/mob/living/proc/handle_status_effects()
 
 	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
 		status &= ~FLAG_STATUS_STUN
@@ -88,13 +91,29 @@
 		on_stunned()
 
 
-	update_alpha(handle_alpha())
+	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
+		status &= ~FLAG_STATUS_PARALYZE
+
+	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
+		status |= FLAG_STATUS_PARALYZE
+		on_paralyze()
+
+
 
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
 	if(stun_time != -1)
 		stun_time = max(0,stun_time - LIFE_TICK)
+
+	if(paralyze_time != -1)
+		paralyze_time = max(0,paralyze_time - LIFE_TICK)
+
+/mob/living/proc/on_life()
+
+	handle_status_effects()
+
+	update_alpha(handle_alpha())
 
 	return TRUE
 

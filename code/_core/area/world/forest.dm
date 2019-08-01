@@ -8,6 +8,8 @@
 	map_color_b = rgb(25,25,200,255)
 	map_color_a = rgb(0,0,0,255)
 
+	tracks = list("village","rise","downwards")
+
 /area/world/forest/interior
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
 	icon_state = "green"

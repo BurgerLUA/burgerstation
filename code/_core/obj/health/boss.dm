@@ -37,11 +37,18 @@
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
 		mouse_opacity = 2
+		if(target_boss.boss_music && owner)
+			var/client/C = owner.client
+			if(C && C.current_music_track != target_boss.boss_music)
+				world.log << "HELLO [C]. LETS PLAY SOME [target_boss.boss_music]."
+				play_music_track(target_boss.boss_music,C)
 
 	min = 0
 	max = target_boss.health_max
 	current = max - target_boss.get_total_loss()
 	update_icon()
+
+	return TRUE
 
 /obj/button/boss_health/update_icon()
 

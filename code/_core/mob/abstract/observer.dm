@@ -89,7 +89,7 @@
 	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])
 	C.save_slot = name_to_choice[choice]
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_sound('sounds/music/lobby.ogg',list(src))
+	stop_sound('sounds/music/menu/lobby.ogg',list(src))
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
 	P.Initialize()
@@ -108,7 +108,7 @@
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	C.save_slot = file_num
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_sound('sounds/music/lobby.ogg',list(src))
+	stop_sound('sounds/music/menu/lobby.ogg',list(src))
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
 	P.Initialize()

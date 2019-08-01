@@ -5,7 +5,7 @@
 	sex = FEMALE
 	gender = FEMALE
 	//dialogue_id = "marwani_dialogue"
-
+	dir = EAST
 
 /mob/living/advanced/npc/unique/hunter/Initialize()
 	..()

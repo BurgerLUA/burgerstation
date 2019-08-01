@@ -18,7 +18,7 @@
 	color = "#53331E"
 
 /turf/simulated/floor/wood/dock
-	color = "#B4ADAB"
+	color = "#7F604B"
 
 
 /turf/simulated/floor/wood/boat
@@ -26,3 +26,7 @@
 
 /turf/simulated/floor/wood/boat/starting
 	color = "#724C34"
+
+
+
+//C67843 good color

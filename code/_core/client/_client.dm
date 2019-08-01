@@ -39,6 +39,11 @@ var/global/list/all_clients = list()
 
 	var/last_ooc = 0
 
+	var/current_music_track //Id of music track that last played.
+	var/next_music_track = 0 //When the next music track should be triggered.
+
+	var/disable_controls = FALSE
+
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
 	winset(src,"chat_combat.output","style='[STYLESHEET]'")
@@ -87,7 +92,7 @@ var/global/list/all_clients = list()
 
 	welcome()
 	make_lobby(locate(1,1,1))
-	play_sound('sounds/music/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
+	play_sound('sounds/music/menu/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
 
 	if(!connection_data)
 		connection_data = new(src)
@@ -117,13 +122,14 @@ var/global/list/all_clients = list()
 /client/verb/button_press(button as text)
 	set hidden = TRUE
 	set instant = TRUE
-	button_tracker.set_pressed(button)
+	if(!disable_controls)
+		button_tracker.set_pressed(button)
 
 /client/verb/button_release(button as text)
 	set hidden = TRUE
 	set instant = TRUE
-	button_tracker.set_released(button)
-
+	if(!disable_controls)
+		button_tracker.set_released(button)
 
 /client/proc/make_ghost(var/desired_loc)
 	src.mob = new /mob/abstract/observer(desired_loc,src)

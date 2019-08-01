@@ -59,13 +59,13 @@
 	if(ENABLE_CHARGEN)
 		cache_resources(user)
 		winclone(user, "window", id)
-		play_sound('sounds/music/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
+		play_sound('sounds/music/menu/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
 		winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
 		user << output(file, "browser([id])")
 	else if(is_advanced(user))
 		var/mob/living/advanced/A = user
 		A.Initialize()
-		stop_sound('sounds/music/lobby.ogg',list(user))
+		stop_sound('sounds/music/menu/lobby.ogg',list(user))
 		A.chargen = FALSE
 
 /menu/appearance/on_load(var/mob/user)

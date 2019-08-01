@@ -31,7 +31,13 @@ var/global/list/active_sounds = list()
 proc/stop_ambient_sounds(var/atom/hearer)
 	var/sound/created_sound = sound()
 	created_sound.priority = 100
-	//created_sound.status = SOUND_MUTE
+	created_sound.status = SOUND_MUTE
+	//hearer << created_sound
+
+proc/stop_music_track(var/client/hearer)
+	var/sound/created_sound = sound()
+	created_sound.priority = 100
+	created_sound.status = SOUND_MUTE
 	//hearer << created_sound
 
 proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_GENERIC)
@@ -48,6 +54,27 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 	created_sound.volume = volume
 
 	hearer << created_sound
+
+proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
+
+	stop_music_track(hearer)
+
+	var/track/T = all_tracks[music_track_id]
+	if(!T)
+		return FALSE
+
+	var/sound/created_sound = sound(T.path)
+	created_sound.channel = SOUND_CHANNEL_MUSIC
+	created_sound.priority = 0
+	created_sound.environment = ENVIRONMENT_GENERIC
+	created_sound.status = 0
+	created_sound.volume = volume
+
+	hearer.mob << created_sound
+	hearer.current_music_track = music_track_id
+	hearer.next_music_track = curtime + T.length
+
+	return created_sound
 
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=75, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0)
 	var/sound/created_sound = sound(sound_path)

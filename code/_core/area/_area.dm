@@ -53,6 +53,9 @@
 				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
 					play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
 
+				if(length(tracks) && !M.client.savedata.loaded_data["tutorial"])
+					play_music_track(pick(tracks),M.client)
+
 			if(is_living(enterer) && enterer.area)
 				var/mob/living/L = M
 				if(enterer.area.safe && !src.safe) //Leaving a safezone

@@ -98,7 +98,7 @@
 				//usr << "Setting [S.name] to [v]."
 				continue
 
-		stop_sound('sounds/music/chargen.ogg',list(usr))
+		stop_sound('sounds/music/menu/chargen.ogg',list(usr))
 
 		if(!A.client)
 			return
@@ -125,7 +125,10 @@
 			if(show_disclaimer)
 				sleep(SECONDS_TO_DECISECONDS(20))
 
-			play_sound('sounds/music/leaf_short.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+			LOG_DEBUG("Playing music!")
+			//play_sound('sounds/music/world/leaf_short.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+			play_music_track("leaf",C)
+
 
 			sleep(SECONDS_TO_DECISECONDS(5))
 			A.see_invisible = INVISIBILITY_NO_PLAYERS
