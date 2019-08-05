@@ -9,4 +9,4 @@
 	corner_icons = TRUE
 	corner_category = "dirt"
 
-	layer = LAYER_FLOOR_LARGE
+	layer = LAYER_FLOOR

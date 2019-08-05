@@ -76,6 +76,14 @@
 	..()
 */
 
+/turf/simulated/floor/colored/necro_grass
+	name = "dark grass"
+	color = "#393317"
+	layer = LAYER_FLOOR_LARGE + 0.1
+	corner_category = "grass"
+	light_color = "#393317"
+
+
 /turf/simulated/floor/colored/sand
 	name = "grey sand"
 	color = "#80806D"
@@ -90,6 +98,11 @@
 	name = "moss"
 	color = "#5A916E"
 	layer = LAYER_FLOOR_LARGE + 0.08
+	corner_category = "moss"
+
+
+
+
 	light_color = "#5A916E"
 
 /turf/simulated/floor/colored/dirt
@@ -106,7 +119,11 @@
 /turf/simulated/floor/colored/dirt/cave
 	name = "cave dirt"
 	color = "#493C2F"
+	corner_category = "dirt_cave"
+
+
 	light_color = "#FFE8D1"
+	layer = LAYER_FLOOR_LARGE
 
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
@@ -150,7 +167,25 @@
 	color = "#5E5D77"
 	light_color = "#CBC9FF"
 
+/turf/simulated/floor/colored/ash/necro
+	name = "necro ash"
+	color = "#211811"
+	light_color = "#FFB984"
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT_STRONG
+
 /turf/simulated/floor/colored/ash/dark
 	name = "volcanic ash"
 	color = "#3F3F3F"
-	light_color = "#FFFFFF"
+
+/turf/simulated/floor/colored/ash/rocky
+	name = "rocky necro ash"
+	color = "#563F2D"
+	icon_state = "ash_rocky"
+
+
+	real_icon = 'icons/turf/floor/rocky_ash.dmi'
+
+	layer = LAYER_FLOOR_LARGE + 0.1
+
+	light_color = "#563F2D"
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT_STRONG

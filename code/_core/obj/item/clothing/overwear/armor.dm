@@ -9,7 +9,7 @@
 	name = "cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
-	worn_layer = LAYER_MOB_CLOTHING_OVERALL
+	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
@@ -28,7 +28,7 @@
 	name = "heavy knight armor"
 	icon = 'icons/obj/items/clothing/suit/knight_blank.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
-	worn_layer = LAYER_MOB_CLOTHING_OVERALL
+	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
 /obj/item/clothing/overwear/armor/knight/red
 	name = "red heavy knight armor"
@@ -89,6 +89,15 @@
 	name = "medium armor"
 	icon = 'icons/obj/items/clothing/suit/medium_chest_armor.dmi'
 
-/obj/item/clothing/overwear/armor/knight/worn
+/obj/item/clothing/overwear/armor/gladiator
 	name = "gladiator armor"
 	icon = 'icons/obj/items/clothing/suit/gladiator.dmi'
+
+/obj/item/clothing/overwear/armor/gladiator/brass
+	name = "bronze gladiator armor"
+	color = "#B7A33E"
+	item_slot = SLOT_TORSO_A
+	worn_layer = LAYER_MOB_CLOTHING_ARMOR
+
+
+

@@ -13,19 +13,24 @@
 
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"
+	light_color = "#6F4533"
 
 /turf/simulated/floor/wood/rich
 	color = "#53331E"
+	light_color = "#53331E"
 
 /turf/simulated/floor/wood/dock
 	color = "#7F604B"
+	light_color = "#7F604B"
 
 
 /turf/simulated/floor/wood/boat
 	color = "#423022"
+	light_color = "#423022"
 
 /turf/simulated/floor/wood/boat/starting
 	color = "#724C34"
+	light_color = "#724C34"
 
 
 

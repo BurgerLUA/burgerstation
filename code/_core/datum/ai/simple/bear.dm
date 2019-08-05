@@ -1,4 +1,4 @@
-/ai/bear
+/ai/simple/bear
 	name = "Bear"
 	desc = "AI for bears. They're exceptionally hostile when approached, and can roam around."
 

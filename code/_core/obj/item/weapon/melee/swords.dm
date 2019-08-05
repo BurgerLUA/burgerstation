@@ -32,3 +32,13 @@
 	slot_icons = TRUE
 
 	damage_type = "sword_claymore"
+
+
+
+
+/obj/item/weapon/melee/spear
+	name = "steel spear"
+	desc = "Unga bunga."
+	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense."
+	icon = 'icons/obj/items/weapons/melee/swords/spear.dmi'
+	damage_type = "spear"

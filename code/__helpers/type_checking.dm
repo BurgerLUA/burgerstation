@@ -43,6 +43,9 @@
 /proc/is_hair(var/atom/A)
 	return istype(A,/obj/item/organ/hair/)
 
+/proc/is_melee(var/atom/A)
+	return istype(A,/obj/item/weapon/melee/)
+
 /proc/is_ranged_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/)
 
@@ -121,3 +124,6 @@ proc/is_food(var/atom/A)
 
 /proc/is_projectile(var/atom/A)
 	return istype(A,/obj/projectile/)
+
+/proc/is_mob_blocker(var/atom/A)
+	return istype(A,/obj/marker/mob_blocker/)

@@ -1,5 +1,6 @@
 /area/world/desert //3,1
 	name = "the desert"
+	id = "desert"
 
 
 /area/world/desert/exterior

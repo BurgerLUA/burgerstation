@@ -1,8 +1,9 @@
-/ai/crab
+/ai/simple/crab
 	name = "Aggressive Crab"
 	desc = "Seems smarter and deadlier than normal crabs."
 
 	radius_find_enemy = 12
+	attack_distance = 1
 
 	objective_delay = 10
 	attack_delay = 1
@@ -14,19 +15,15 @@
 
 	sync_stats = TRUE
 
-/ai/crab/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= 1)
-		owner.move_dir = 0
-		owner.attack(owner,objective_attack)
-
-	attack_ticks = 0
 
 
-/ai/king_crab
+
+/ai/simple/king_crab
 	name = "King Crab"
 	desc = "Seems smarter and deadlier than normal crabs."
 
 	radius_find_enemy = 8
+	attack_distance = 2
 
 	objective_delay = 4
 	attack_delay = 1
@@ -38,9 +35,3 @@
 
 	sync_stats = TRUE
 
-/ai/king_crab/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= 2)
-		owner.move_dir = 0
-		owner.attack(owner,objective_attack)
-
-	attack_ticks = 0

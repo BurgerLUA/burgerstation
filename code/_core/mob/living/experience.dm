@@ -34,13 +34,13 @@
 	for(var/k in attributes)
 		var/experience/attribute/A = attributes[k]
 		if(A.counts_towards_level)
-			total_attribute_mod += (A.get_current_level() - A.default_level)/A.max_level
+			total_attribute_mod += ((A.get_current_level() - A.default_level)/A.max_level)*A.combat_level_mul
 			total_attributes += 1
 
 	for(var/k in skills)
 		var/experience/skill/S = skills[k]
 		if(S.counts_towards_level)
-			total_skill_mod += (S.get_current_level() - S.default_level)/S.max_level
+			total_skill_mod += ((S.get_current_level() - S.default_level)/S.max_level)*S.combat_level_mul
 			total_skills += 1
 
 	if(!total_skills || !total_attributes)

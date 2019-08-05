@@ -5,6 +5,7 @@
 	sex = FEMALE
 	gender = FEMALE
 	dialogue_id = "marwani_dialogue"
+	ai = /ai/villager
 
 /mob/living/advanced/npc/unique/marwani/Initialize()
 	..()
@@ -15,3 +16,4 @@
 
 /mob/living/advanced/npc/unique/marwani/ship
 	dialogue_id = "marwani_tutorial_dialogue"
+	ai = null

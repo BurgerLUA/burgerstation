@@ -1,5 +1,6 @@
 /area/world/mountain //3,3
 	name = "snowy mountain"
+	id = "mountain"
 
 /area/world/mountain/interior
 	name = "interior"

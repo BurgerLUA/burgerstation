@@ -60,3 +60,7 @@
 /proc/get_filename(var/file_path)
 	var/position = findlasttext(file_path,"/")
 	return copytext(file_path,position)
+
+
+/proc/getCharacter(string, pos=1) //Stolen from goon.
+            return ascii2text(text2ascii(string, pos))

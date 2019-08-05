@@ -25,6 +25,19 @@
 			A.to_chat(span("warning","\The [src] forcefeeds you \the [F]!"))
 			F.consume(A)
 			return TRUE
+		if("mine_ore")
+			var/obj/structure/interactive/localmachine/ore_deposit/OD = callback_list["deposit"]
+			var/obj/item/ore/O = callback_list["ore"]
+
+			for(var/i=1,i<=pick(2,5),i++)
+				var/obj/item/ore/NO = new O(get_turf(OD))
+				step(NO,get_dir(OD,src))
+				animate(NO,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+
+			OD.disallowed_mobs += src
+			if(src.client)
+				src.client.images -= OD.cached_image
+			return TRUE
 
 	..()
 
@@ -46,6 +59,8 @@
 		if("feed_other")
 			to_chat(span("notice","You and your target needs to be standing still in order to feed them!"))
 			return TRUE
-
+		if("mine_ore")
+			to_chat(span("notice","You must remain still in order to mine!"))
+			return TRUE
 
 	..()

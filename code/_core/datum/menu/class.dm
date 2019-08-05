@@ -109,6 +109,8 @@
 
 		spawn(0)
 			A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,1)
+			var/obj/button/skip/SB = new(A.loc)
+			A.add_button(SB)
 			A.sight |= SEE_THRU
 			C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
 
@@ -149,3 +151,4 @@
 			sleep(SECONDS_TO_DECISECONDS(3))
 			A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 			A.stun_time = 1
+			A.remove_button(SB)

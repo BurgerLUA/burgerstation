@@ -33,20 +33,19 @@
 		I.Blend(W,ICON_OVERLAY)
 		I.Blend(S,ICON_OVERLAY)
 	else
-		switch(rand(1,16 + y*0.25) + abs(x - 64)*10)
-			if(1 to 32)
-				var/dir_to_use = prob(10) ? DIRECTIONS_X : SOUTH
-				dir_to_use = pick(dir_to_use)
-				var/icon/S = new /icon(icon,get_solid_icon_state(),dir_to_use)
-				I.Blend(S,ICON_OVERLAY)
-			if(33 to 9999)
-				var/dir_to_use = prob(10) ? DIRECTIONS_X : DIRECTIONS_CARDINAL
-				dir_to_use = pick(dir_to_use)
-				var/icon/D = new /icon(icon,get_donut_icon_state(),dir_to_use)
-				I.Blend(D,ICON_OVERLAY)
-				if(prob(90))
-					var/icon/T = new /icon(icon,get_timbit_icon_state())
-					I.Blend(T,ICON_OVERLAY)
+		if(rand(1,4))
+			var/dir_to_use = prob(10) ? DIRECTIONS_X : SOUTH
+			dir_to_use = pick(dir_to_use)
+			var/icon/S = new /icon(icon,get_solid_icon_state(),dir_to_use)
+			I.Blend(S,ICON_OVERLAY)
+		else
+			var/dir_to_use = prob(10) ? DIRECTIONS_X : DIRECTIONS_CARDINAL
+			dir_to_use = pick(dir_to_use)
+			var/icon/D = new /icon(icon,get_donut_icon_state(),dir_to_use)
+			I.Blend(D,ICON_OVERLAY)
+			if(prob(90))
+				var/icon/T = new /icon(icon,get_timbit_icon_state())
+				I.Blend(T,ICON_OVERLAY)
 
 
 	icon = I
@@ -55,12 +54,12 @@
 
 	var/returning = ""
 
-	switch(rand(1,32) + y)
-		if(1 to 31)
+	switch(rand(1,6))
+		if(1 to 4)
 			returning = "pristine"
-		if(32 to 63)
+		if(5)
 			returning = "burnt"
-		if(64 to 9999)
+		if(6)
 			returning = "cracked"
 
 	return "[returning]_surrounding[rand(1,4)]"
@@ -70,12 +69,12 @@
 
 	var/returning = ""
 
-	switch(rand(16,32) + y)
-		if(1 to 31)
+	switch(rand(1,6))
+		if(1 to 4)
 			returning = "pristine"
-		if(32 to 63)
+		if(5)
 			returning = "burnt"
-		if(64 to 9999)
+		if(6)
 			returning = "cracked"
 
 	return "[returning]_center[rand(1,4)]"
@@ -84,12 +83,12 @@
 
 	var/returning = ""
 
-	switch(rand(1,32) + y)
-		if(1 to 31)
+	switch(rand(1,6))
+		if(1 to 4)
 			returning = "pristine"
-		if(32 to 63)
+		if(5)
 			returning = "burnt"
-		if(64 to 9999)
+		if(6)
 			returning = "cracked"
 
 	return "[returning]_slab[rand(1,4)]"
@@ -98,12 +97,12 @@
 
 	var/returning = ""
 
-	switch(rand(1,32) + y)
-		if(1 to 31)
+	switch(rand(1,6))
+		if(1 to 4)
 			returning = "pristine"
-		if(32 to 63)
+		if(5)
 			returning = "burnt"
-		if(64 to 9999)
+		if(6)
 			returning = "cracked"
 
 	if(prob(25))

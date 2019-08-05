@@ -1,5 +1,6 @@
 /area/world/caves //2,2
 	name = "caves"
+	id = "caves"
 
 /area/world/caves/interior
 	name = "cave interior"

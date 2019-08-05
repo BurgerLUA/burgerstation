@@ -1,5 +1,5 @@
 /mob/living/simple/npc/xenomorph
-	name = "alien"
+	name = "xenomorph"
 	desc = "Oh shit they're here too?!"
 	icon = 'icons/mob/living/simple/alien.dmi'
 	icon_state = "alien"
@@ -8,8 +8,6 @@
 	damage_type = "xenomorph"
 	class = "xenomorph"
 	health_base = 100
-
-	level_multiplier = 20
 
 /mob/living/simple/npc/xenomorph/get_movement_delay()
 	return DECISECONDS_TO_TICKS(3)
@@ -23,10 +21,10 @@
 	ai = /ai/simple/xenomorph/pack_leader
 	health_base = 100
 
-	level_multiplier = 40
+	level_multiplier = 2
 
 /mob/living/simple/npc/xenomorph/pack_leader/queen
-	name = "alien queen"
+	name = "xenomorph queen"
 	id = "xenomorph_queen"
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "alien_queen"
@@ -36,7 +34,5 @@
 	ai = /ai/simple/xenomorph_queen
 	damage_type = "xenomorph_queen"
 	class = "xenomorph_queen"
-
-	level_multiplier = 80
 
 	boss = TRUE

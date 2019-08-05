@@ -61,6 +61,7 @@
 	experience_power = 1.9
 	experience_multiplier = 2.5
 	//Each point of damage dealt = 1xp
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -116,6 +117,7 @@
 	//Each point of damage dodged = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 3.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -172,6 +174,7 @@
 	//Each successful sneak attack = 10xp
 	experience_power = 1.7
 	experience_multiplier = 0.7
+	combat_level_mul = 0.5
 	associated_classes = list(
 		//STR
 			//PURE
@@ -227,6 +230,7 @@
 	//Each point of damage parried = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 3.1
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -284,6 +288,7 @@
 	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
 	experience_power = 1.5
 	experience_multiplier = 5
+	combat_level_mul = 0.75
 	//Each tile traveled = 1xp
 	associated_classes = list(
 		//STR
@@ -343,6 +348,7 @@
 	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
 	experience_power = 1.7
 	experience_multiplier = 2
+	combat_level_mul = 0.25
 	associated_classes = list(
 		//STR
 			//PURE
@@ -404,6 +410,7 @@
 	//Each successful blow = 1xp
 	experience_power = 1.9
 	experience_multiplier = 2.5
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -460,6 +467,7 @@
 	//Each point of damage blocked = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 3.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -518,6 +526,7 @@
 	//Each point of damage dealt = 1xp
 	experience_power = 2
 	experience_multiplier = 1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -573,6 +582,7 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -628,6 +638,7 @@
 	//Each point of damage absorbed = 1xp, rounded up.
 	experience_power = 1.5
 	experience_multiplier = 4.8
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -684,6 +695,7 @@
 	//Each point of health recovered = 1xp
 	experience_power = 1.5
 	experience_multiplier = 4.8
+	combat_level_mul = 0.5
 	associated_classes = list(
 		//STR
 			//PURE
@@ -741,6 +753,7 @@
 	//Each point of health recovered = 1xp
 	experience_power = 1.5
 	experience_multiplier = 4.8
+	combat_level_mul = 0.5
 	associated_classes = list(
 		//STR
 			//PURE
@@ -797,6 +810,7 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -854,6 +868,7 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -911,6 +926,7 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -967,6 +983,7 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -1024,6 +1041,7 @@
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -1079,6 +1097,7 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	combat_level_mul = 0
 	associated_classes = list(
 		//STR
 			//PURE
@@ -1134,6 +1153,7 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	combat_level_mul = 0
 	associated_classes = list(
 		//STR
 			//PURE
@@ -1189,6 +1209,7 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	combat_level_mul = 0
 	associated_classes = list(
 		//STR
 			//PURE
@@ -1244,6 +1265,7 @@
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	counts_towards_level = FALSE
+	combat_level_mul = 0
 	associated_classes = list(
 		//STR
 			//PURE

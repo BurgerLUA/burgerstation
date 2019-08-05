@@ -28,3 +28,8 @@
 
 	desc = "Ultra fancy!"
 	desc_extended = ""
+
+
+/obj/item/clothing/overwear/coat/winter
+	name = "winter coat"
+	icon = 'icons/obj/items/clothing/suit/winter_coat.dmi'

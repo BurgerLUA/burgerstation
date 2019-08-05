@@ -1,5 +1,6 @@
 /area/world/jungle //2,1
 	name = "magic jungle"
+	id = "jungle"
 
 /area/world/jungle/exterior
 	name = "rain"

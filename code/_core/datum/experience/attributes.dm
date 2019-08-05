@@ -58,6 +58,7 @@
 	id = ATTRIBUTE_STRENGTH
 	desc = "A measure of how strong you are in this world. Affects damage with some weapons as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -111,6 +112,7 @@
 	id = ATTRIBUTE_VITALITY
 	desc = "A measure of how long your life can last in this world. Affects maximum health and health regeneration."
 	flags = ATTRIBUTE_STAT
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -164,6 +166,7 @@
 	id = ATTRIBUTE_FORTITUDE
 	desc = "A measure of how resistant you are to the troubles of this world. Affects pain tolerance and physical damage resistance."
 	flags = ATTRIBUTE_RESISTANCE
+	combat_level_mul = 0.5
 	associated_classes = list(
 		//STR
 			//PURE
@@ -218,6 +221,7 @@
 	id = ATTRIBUTE_INTELLIGENCE
 	desc = "A measure of how effective you are at using magic. Affects damage with some weapons and magic as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -271,6 +275,7 @@
 	id = ATTRIBUTE_WILLPOWER
 	desc = "A measure of how long your mind can last in this world. Affects maximum mana and mana regeneration."
 	flags = ATTRIBUTE_RESISTANCE
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -326,6 +331,7 @@
 	id = ATTRIBUTE_RESOLVE
 	desc = "A measure of how conductive you are to the magic of this world. Affects magic resistance."
 	flags = ATTRIBUTE_STAT
+	combat_level_mul = 0.5
 	associated_classes = list(
 		//STR
 			//PURE
@@ -381,6 +387,7 @@
 	id = ATTRIBUTE_DEXTERITY
 	desc = "A measure of how well you can control your body. Affects damage with some weapons as well as the speed of performing actions."
 	flags = ATTRIBUTE_DAMAGE
+	combat_level_mul = 1
 	associated_classes = list(
 		//STR
 			//PURE
@@ -434,6 +441,7 @@
 	id = ATTRIBUTE_AGILITY
 	desc = "A measure of how agile you are in the world. Affects maximum stamina and stamina regeneration."
 	flags = ATTRIBUTE_STAT
+	combat_level_mul = 0.75
 	associated_classes = list(
 		//STR
 			//PURE
@@ -487,6 +495,7 @@
 	id = ATTRIBUTE_ENDURANCE
 	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, and stamina damage."
 	flags = ATTRIBUTE_RESISTANCE
+	combat_level_mul = 0.5
 	associated_classes = list(
 		//STR
 			//PURE
@@ -539,9 +548,10 @@
 /experience/attribute/luck/
 	name = "Luck"
 	id = ATTRIBUTE_LUCK
+	combat_level_mul = 1
 	desc = "A measure of how gosh darn lucky you are to be alive. Luck affects everything you do in small or, sometimes big, ways."
 	flags = ATTRIBUTE_STAT
 	chargen_min_level = 40
-	chargen_max_level = 60
+	chargen_max_level = 50
 	default_level = 50
 	counts_towards_level = FALSE

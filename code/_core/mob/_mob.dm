@@ -53,6 +53,8 @@
 	//Measured in seconds.
 	//Reduces by 1 every second
 
+	var/skip_cutscene = FALSE //For cutscene skipping.
+
 	collision_flags = FLAG_COLLISION_NONE
 
 /mob/destroy()

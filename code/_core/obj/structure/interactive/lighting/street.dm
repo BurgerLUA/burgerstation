@@ -21,4 +21,8 @@
 	icon_state = "torch"
 
 
+/obj/structure/interactive/lighting/streetlamp/jungle/dark
+	icon_state = "torch_dark"
+
+
 

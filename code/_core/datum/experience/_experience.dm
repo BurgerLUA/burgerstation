@@ -12,6 +12,8 @@
 	var/default_level = 5
 	var/counts_towards_level = TRUE
 
+	var/combat_level_mul = 0 //How much this skill counts towards your combat level.
+
 	var/last_level = 0
 
 	var/experience_power = 2

@@ -1,5 +1,6 @@
 /area/world/cult //1,2
 	name = "cult lair"
+	id = "cult"
 
 /area/world/cult/exterior //1,2
 	name = "cult exterior"

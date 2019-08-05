@@ -1,5 +1,6 @@
 /area/world/abyss //3,3
 	name = "the abyss"
+	id = "abyss"
 
 /area/world/abyss/interior
 	name = "interior"
