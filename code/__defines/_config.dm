@@ -17,9 +17,10 @@
 #define YELL_RANGE 21
 #define WHISPER_RANGE 2
 
+#define BOSS_RANGE 18 //If you're out of this range, you're out of the boss fight.
+
 #define MAX_MESSAGE_LEN 512
 #define MAX_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
-
 
 #define ATTACK_ANIMATION_LENGTH 2
 
@@ -27,13 +28,14 @@
 
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
+
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
-#define ENABLE_WEATHERGEN FALSE
+#define ENABLE_LIGHTING TRUE
+#define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN TRUE
 

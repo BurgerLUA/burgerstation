@@ -6,6 +6,7 @@
 #define FLAGS_HUD_INVENTORY 0x4
 #define FLAGS_HUD_SPECIAL 0x8
 #define FLAGS_HUD_WORN 0x10
+#define FLAGS_HUD_CRAFTING 0x20
 
 
 

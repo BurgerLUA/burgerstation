@@ -35,6 +35,8 @@
 
 	var/attack_distance = 1
 
+	var/enabled = FALSE
+
 /ai/New(var/mob/living/desired_owner)
 
 	owner = desired_owner
@@ -50,6 +52,9 @@
 	start_turf = get_turf(owner)
 
 /ai/proc/on_life()
+
+	if(!enabled)
+		return TRUE
 
 	if(!is_turf(owner.loc))
 		return TRUE

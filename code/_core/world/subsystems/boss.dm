@@ -1,5 +1,6 @@
 var/global/list/tracked_bosses = list()
 
+/*
 /proc/update_boss(var/boss_id)
 
 	var/mob/living/L = tracked_bosses[boss_id]
@@ -8,3 +9,4 @@ var/global/list/tracked_bosses = list()
 		for(var/obj/button/boss_health/B in P.buttons)
 			B.target_boss = L
 			B.update_stats()
+*/

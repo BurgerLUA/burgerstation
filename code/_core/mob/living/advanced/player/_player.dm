@@ -50,6 +50,13 @@ mob/living/advanced/player/on_life_client()
 		dialogue_target_id = null
 		close_menu(src,"dialogue")
 
+	if(.)
+		for(var/mob/living/L in view(src,VIEW_RANGE))
+			if(!L.ai)
+				continue
+			var/ai/AI = L.ai
+			AI.enabled = TRUE
+
 	return .
 
 /*

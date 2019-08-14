@@ -49,6 +49,7 @@
 	var/has_quick_function = FALSE
 
 
+	var/crafting_id = null
 
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE

@@ -70,11 +70,6 @@
 	return ..()
 
 /atom/proc/Initialize()
-	/*
-	initialize_blends()
-	update_health()
-	update_icon()
-	*/
 	initialized = TRUE
 	return TRUE
 

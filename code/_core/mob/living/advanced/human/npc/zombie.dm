@@ -42,4 +42,5 @@
 
 /mob/living/advanced/npc/zombie/winter
 	outfit_to_use = "zombie_winter"
+	loot_drop = "zombie"
 	spear_chance = 100

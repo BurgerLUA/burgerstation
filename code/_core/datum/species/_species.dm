@@ -49,7 +49,11 @@
 		/obj/button/slot/H,
 		/obj/button/slot/I,
 		/obj/button/slot/J,
-		/obj/button/boss_health
+
+		/obj/button/boss_health,
+
+		/obj/button/crafting/craft,
+		/obj/button/crafting/close
 	)
 
 	var/list/obj/button/health/spawning_health = list(

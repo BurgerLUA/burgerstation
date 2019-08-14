@@ -119,7 +119,6 @@ var/global/list/all_living = list()
 
 	if(boss)
 		tracked_bosses[id] = src
-		update_boss(id)
 
 /mob/living/destroy()
 	qdel(ai)
@@ -135,6 +134,12 @@ var/global/list/all_living = list()
 	. = ..()
 	if(ai)
 		name = "[name] (lvl. [level])"
+
+	if(boss)
+		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
+			for(var/obj/button/boss_health/B in P.buttons)
+				B.target_boss = src
+				B.update_stats()
 
 	return .
 

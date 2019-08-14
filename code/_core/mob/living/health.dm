@@ -78,12 +78,16 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 			linked_players -= attacker
 	else
 		if(boss)
+
 			if(!(attacker in linked_players))
 				linked_players += attacker
 
 			if(length(linked_players))
 				for(var/mob/living/advanced/player/P in linked_players)
 					for(var/obj/button/boss_health/B in P.buttons)
+						if(get_dist(P,src) > BOSS_RANGE)
+							B.clear_boss()
+							continue
 						B.target_boss = src
 						B.update_stats()
 

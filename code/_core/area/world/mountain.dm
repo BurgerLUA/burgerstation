@@ -9,7 +9,7 @@
 
 /area/world/mountain/exterior
 	name = "exterior"
-	icon_state = "red"
+	icon_state = "yellow"
 	weather = WEATHER_SNOW
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 
@@ -29,3 +29,8 @@
 /area/world/mountain/interior/cave
 	name = "snow cave"
 	icon_state = "pink"
+
+
+/area/world/mountain/interior/temple
+	name = "snow temple"
+	icon_state = "green"

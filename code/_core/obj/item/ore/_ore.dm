@@ -28,6 +28,7 @@ obj/item/ore/iron
 	id = "iron"
 	desc = "Commonly found in caves."
 	ore_color = "#B5634F"
+	crafting_id = "ore_iron"
 
 obj/item/ore/copper
 	name = "copper ore"
@@ -100,3 +101,10 @@ obj/item/ore/magnesium
 	id = "magnesium"
 	desc = "Commonly found in caves."
 	ore_color = "#404040"
+
+
+obj/item/ore/plasma
+	name = "phoron plasma ore"
+	id = "plasma"
+	desc = "Commonly found in areas of great power."
+	ore_color = "#B200B6"

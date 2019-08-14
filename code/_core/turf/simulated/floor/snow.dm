@@ -32,8 +32,6 @@
 	corner_icons = TRUE
 	corner_category = "ice"
 
-
-
 /turf/simulated/floor/snow_plating
 	name = "plating"
 	icon = 'icons/turf/floor/snow_plating.dmi'
