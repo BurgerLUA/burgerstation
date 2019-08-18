@@ -73,8 +73,14 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 		health_current = new_health_current
 
 	if(health_current <= 0)
-		death()
-		if(boss && attacker in linked_players)
+
+		if(!has_hard_crit || status & FLAG_STATUS_CRIT)
+			death()
+		else
+			set_hard_crit(TRUE)
+
+
+		if(boss && attacker in linked_players) //Figure out why this exists. Should do this for everyone who is linked.
 			linked_players -= attacker
 	else
 		if(boss)
@@ -97,3 +103,36 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 
 
 	return difference
+
+
+/mob/living/proc/set_hard_crit(var/hard_crit_enabled = TRUE)
+
+	if(hard_crit_enabled)
+		adjust_stamina(-stamina_current)
+		status |= FLAG_STATUS_CRIT
+		stun_time = -1
+	else
+		status &= ~FLAG_STATUS_CRIT
+		stun_time = 5
+
+	return TRUE
+
+/mob/living/proc/adjust_mana(var/adjust_value)
+	var/old_value = mana_current
+	var/new_value = Clamp(mana_current + adjust_value,0,mana_max)
+
+	if(old_value != new_value)
+		mana_current = new_value
+		return new_value - old_value
+
+	return FALSE
+
+/mob/living/proc/adjust_stamina(var/adjust_value)
+	var/old_value = stamina_current
+	var/new_value = Clamp(stamina_current + adjust_value,0,stamina_max)
+
+	if(old_value != new_value)
+		stamina_current = new_value
+		return new_value - old_value
+
+	return FALSE

@@ -89,6 +89,8 @@ var/global/list/all_living = list()
 
 	collision_flags = FLAG_COLLISION_WALKING
 
+	var/has_hard_crit = FALSE
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

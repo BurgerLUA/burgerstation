@@ -90,14 +90,12 @@
 		animate(src,transform = turn(matrix(), stun_angle), time = 1)
 		on_stunned()
 
-
 	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
 		status &= ~FLAG_STATUS_PARALYZE
 
 	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
 		status |= FLAG_STATUS_PARALYZE
 		on_paralyze()
-
 
 
 	if(status & FLAG_STATUS_DEAD)
@@ -108,6 +106,17 @@
 
 	if(paralyze_time != -1)
 		paralyze_time = max(0,paralyze_time - LIFE_TICK)
+
+	if(status & FLAG_STATUS_CRIT)
+		var/stamina_to_regenerate = max(1,ceiling(stamina_max*(1/60)))
+		adjust_stamina(stamina_to_regenerate)
+		if(stamina_current>=stamina_max*0.50)
+			set_hard_crit(FALSE)
+
+
+	return TRUE
+
+
 
 /mob/living/proc/on_life()
 
