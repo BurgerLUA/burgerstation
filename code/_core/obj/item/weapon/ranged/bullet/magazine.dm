@@ -43,7 +43,7 @@
 		caller.to_chat(span("notice","You eject the magazine from \the [src]."))
 		var/area/A = get_area(caller)
 		play_sound(pick(mag_remove_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		var/obj/inventory/offhand_slot = object
+		var/obj/hud/inventory/offhand_slot = object
 		stored_magazine.force_move(caller.loc)
 		offhand_slot.add_object(stored_magazine)
 		stored_magazine.update_icon()

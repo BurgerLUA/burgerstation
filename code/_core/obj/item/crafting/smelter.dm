@@ -4,11 +4,11 @@
 	icon_state = "smelter"
 
 	inventories = list(
-		/obj/inventory/crafting/slotB1,
-		/obj/inventory/crafting/slotB2,
-		/obj/inventory/crafting/slotB3,
+		/obj/hud/inventory/crafting/slotB1,
+		/obj/hud/inventory/crafting/slotB2,
+		/obj/hud/inventory/crafting/slotB3,
 
-		/obj/inventory/crafting/result
+		/obj/hud/inventory/crafting/result
 	)
 
 	crafting_id = "smelter"

@@ -13,7 +13,7 @@
 
 	slot_icons = TRUE
 
-/obj/item/weapon/melee/sword/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/weapon/melee/sword/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
 

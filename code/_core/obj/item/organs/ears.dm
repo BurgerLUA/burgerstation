@@ -10,7 +10,7 @@
 	attach_flag = BODY_HEAD
 
 	inventories = list(
-		/obj/inventory/organs/right_ear
+		/obj/hud/inventory/organs/right_ear
 	)
 
 	enable_wounds = TRUE
@@ -22,7 +22,7 @@
 	icon_state = BODY_EAR_LEFT
 
 	inventories = list(
-		/obj/inventory/organs/left_ear
+		/obj/hud/inventory/organs/left_ear
 	)
 
 //Reptile
@@ -31,7 +31,7 @@
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	inventories = list()
 	inventories = list(
-		/obj/inventory/organs/right_ear
+		/obj/hud/inventory/organs/right_ear
 	)
 
 /obj/item/organ/ear/reptile/left
@@ -40,7 +40,7 @@
 	icon_state = BODY_EAR_LEFT
 
 	inventories = list(
-		/obj/inventory/organs/left_ear
+		/obj/hud/inventory/organs/left_ear
 	)
 
 
@@ -50,7 +50,7 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	inventories = list()
 	inventories = list(
-		/obj/inventory/organs/right_ear
+		/obj/hud/inventory/organs/right_ear
 	)
 
 /obj/item/organ/ear/reptile_advanced/left
@@ -59,7 +59,7 @@
 	icon_state = BODY_EAR_LEFT
 
 	inventories = list(
-		/obj/inventory/organs/left_ear
+		/obj/hud/inventory/organs/left_ear
 	)
 
 
@@ -69,7 +69,7 @@
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 	inventories = list()
 	inventories = list(
-		/obj/inventory/organs/right_ear
+		/obj/hud/inventory/organs/right_ear
 	)
 
 /obj/item/organ/ear/diona/left
@@ -78,7 +78,7 @@
 	icon_state = BODY_EAR_LEFT
 
 	inventories = list(
-		/obj/inventory/organs/left_ear
+		/obj/hud/inventory/organs/left_ear
 	)
 
 
@@ -88,7 +88,7 @@
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	inventories = list()
 	inventories = list(
-		/obj/inventory/organs/right_ear
+		/obj/hud/inventory/organs/right_ear
 	)
 
 /obj/item/organ/ear/cyborg/left
@@ -97,5 +97,5 @@
 	icon_state = BODY_EAR_LEFT
 
 	inventories = list(
-		/obj/inventory/organs/left_ear
+		/obj/hud/inventory/organs/left_ear
 	)

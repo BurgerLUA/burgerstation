@@ -139,7 +139,7 @@ var/global/list/all_living = list()
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
-			for(var/obj/button/boss_health/B in P.buttons)
+			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_boss = src
 				B.update_stats()
 

@@ -7,7 +7,7 @@
 	worn_layer = LAYER_MOB_FEET
 	break_threshold = 15
 	health_max = 25
-	inventories = list(/obj/inventory/organs/right_foot)
+	inventories = list(/obj/hud/inventory/organs/right_foot)
 
 	damage_type = "human_foot_right"
 
@@ -23,7 +23,7 @@
 
 	attach_flag = BODY_LEG_LEFT
 
-	inventories = list(/obj/inventory/organs/left_foot)
+	inventories = list(/obj/hud/inventory/organs/left_foot)
 	damage_type = "human_foot_left"
 
 //Reptile Feral
@@ -32,7 +32,7 @@
 
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
-	inventories = list(/obj/inventory/organs/right_foot)
+	inventories = list(/obj/hud/inventory/organs/right_foot)
 	damage_type = /damagetype/unarmed/feet/
 
 	flags_organ = FLAG_ORGAN_BEAST_FEET
@@ -44,7 +44,7 @@
 
 	attach_flag = BODY_LEG_LEFT
 
-	inventories = list(/obj/inventory/organs/left_foot)
+	inventories = list(/obj/hud/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
 
 //Reptile Advanced
@@ -53,7 +53,7 @@
 
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
-	inventories = list(/obj/inventory/organs/right_foot)
+	inventories = list(/obj/hud/inventory/organs/right_foot)
 	damage_type = /damagetype/unarmed/feet/
 
 /obj/item/organ/foot/reptile_advanced/left
@@ -63,7 +63,7 @@
 
 	attach_flag = BODY_LEG_LEFT
 
-	inventories = list(/obj/inventory/organs/left_foot)
+	inventories = list(/obj/hud/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
 
 //Reptile Advanced
@@ -72,7 +72,7 @@
 
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 
-	inventories = list(/obj/inventory/organs/right_foot)
+	inventories = list(/obj/hud/inventory/organs/right_foot)
 	damage_type = /damagetype/unarmed/feet/
 
 	flags_organ = FLAG_ORGAN_BEAST_FEET
@@ -87,7 +87,7 @@
 
 	attach_flag = BODY_LEG_LEFT
 
-	inventories = list(/obj/inventory/organs/left_foot)
+	inventories = list(/obj/hud/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left
 
 	enable_glow = TRUE
@@ -99,7 +99,7 @@
 
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
-	inventories = list(/obj/inventory/organs/right_foot)
+	inventories = list(/obj/hud/inventory/organs/right_foot)
 	damage_type = /damagetype/unarmed/feet/
 
 /obj/item/organ/foot/cyborg/left
@@ -109,5 +109,5 @@
 
 	attach_flag = BODY_LEG_LEFT
 
-	inventories = list(/obj/inventory/organs/left_foot)
+	inventories = list(/obj/hud/inventory/organs/left_foot)
 	damage_type = /damagetype/unarmed/feet/left

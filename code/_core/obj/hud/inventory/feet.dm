@@ -1,4 +1,4 @@
-/obj/inventory/organs/left_foot
+/obj/hud/inventory/organs/left_foot
 	name = "left foot slot"
 	id = BODY_FOOT_LEFT
 	screen_loc = "LEFT+2,BOTTOM"
@@ -8,7 +8,7 @@
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-/obj/inventory/organs/left_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/organs/left_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
 		return FALSE
@@ -29,7 +29,7 @@
 
 	return TRUE
 
-/obj/inventory/organs/right_foot
+/obj/hud/inventory/organs/right_foot
 	name = "right foot slot"
 	id = BODY_FOOT_RIGHT
 	screen_loc = "LEFT+1,BOTTOM"
@@ -39,7 +39,7 @@
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-/obj/inventory/organs/right_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/organs/right_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
 		return FALSE

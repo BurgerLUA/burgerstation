@@ -87,7 +87,7 @@
 
 	return O
 
-/savedata/proc/get_inventory_data(var/obj/inventory/I)
+/savedata/proc/get_inventory_data(var/obj/hud/inventory/I)
 	if(!I)
 		return list()
 
@@ -110,9 +110,9 @@
 
 /savedata/proc/apply_inventory_data(var/obj/item/O,var/list/inventory_data)
 
-	var/obj/inventory/I
+	var/obj/hud/inventory/I
 
-	for(var/obj/inventory/I2 in O.inventories)
+	for(var/obj/hud/inventory/I2 in O.inventories)
 		if(I2.id == inventory_data["id"])
 			I = I2
 			break
@@ -151,7 +151,7 @@
 		if(length(IT.inventories))
 			returning_list["inventories"] = new/list(length(IT.inventories))
 			for(var/i=1,i<=length(IT.inventories),i++)
-				var/obj/inventory/IN = IT.inventories[i]
+				var/obj/hud/inventory/IN = IT.inventories[i]
 				returning_list["inventories"][i] = get_inventory_data(IN)
 		if(IT.soul_bound)
 			returning_list["soul_bound"] = TRUE

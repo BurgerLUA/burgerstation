@@ -1,4 +1,4 @@
-/obj/inventory/organs/
+/obj/hud/inventory/organs/
 	name = "head slot"
 	held_slots = 0
 	worn_slots = 0

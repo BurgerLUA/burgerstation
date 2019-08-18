@@ -7,8 +7,8 @@
 	break_threshold = 50
 	health_max = 75
 	inventories = list(
-		/obj/inventory/organs/groin,
-		/obj/inventory/organs/groin_o,
+		/obj/hud/inventory/organs/groin,
+		/obj/hud/inventory/organs/groin_o,
 	)
 
 	attach_flag = BODY_TORSO

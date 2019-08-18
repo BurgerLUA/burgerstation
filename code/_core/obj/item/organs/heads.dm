@@ -7,11 +7,11 @@
 	break_threshold = 25
 	health_max = 50
 	inventories = list(
-		/obj/inventory/organs/head,
-		/obj/inventory/organs/neck,
-		/obj/inventory/organs/face,
-		/obj/inventory/organs/glasses,
-		/obj/inventory/organs/special
+		/obj/hud/inventory/organs/head,
+		/obj/hud/inventory/organs/neck,
+		/obj/hud/inventory/organs/face,
+		/obj/hud/inventory/organs/glasses,
+		/obj/hud/inventory/organs/special
 	)
 
 	attach_flag = BODY_TORSO
@@ -34,10 +34,10 @@
 	desc = "An organ."
 
 	inventories = list(
-		/obj/inventory/organs/head,
-		/obj/inventory/organs/neck,
-		/obj/inventory/organs/face,
-		/obj/inventory/organs/glasses
+		/obj/hud/inventory/organs/head,
+		/obj/hud/inventory/organs/neck,
+		/obj/hud/inventory/organs/face,
+		/obj/hud/inventory/organs/glasses
 	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
@@ -51,10 +51,10 @@
 	desc = "An organ."
 
 	inventories = list(
-		/obj/inventory/organs/head,
-		/obj/inventory/organs/neck,
-		/obj/inventory/organs/face,
-		/obj/inventory/organs/glasses
+		/obj/hud/inventory/organs/head,
+		/obj/hud/inventory/organs/neck,
+		/obj/hud/inventory/organs/face,
+		/obj/hud/inventory/organs/glasses
 	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
@@ -70,10 +70,10 @@
 	desc = "An organ."
 
 	inventories = list(
-		/obj/inventory/organs/head,
-		/obj/inventory/organs/neck,
-		/obj/inventory/organs/face,
-		/obj/inventory/organs/glasses
+		/obj/hud/inventory/organs/head,
+		/obj/hud/inventory/organs/neck,
+		/obj/hud/inventory/organs/face,
+		/obj/hud/inventory/organs/glasses
 	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
@@ -88,8 +88,8 @@
 	desc = "An organ."
 
 	inventories = list(
-		/obj/inventory/organs/head,
-		/obj/inventory/organs/neck,
-		/obj/inventory/organs/face,
-		/obj/inventory/organs/glasses
+		/obj/hud/inventory/organs/head,
+		/obj/hud/inventory/organs/neck,
+		/obj/hud/inventory/organs/face,
+		/obj/hud/inventory/organs/glasses
 	)

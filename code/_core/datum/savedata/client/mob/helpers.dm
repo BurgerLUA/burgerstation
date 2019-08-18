@@ -118,7 +118,7 @@
 	//Inventory stuff
 	var/list/final_worn_list = list()
 	var/list/final_held_list = list()
-	for(var/obj/inventory/I in A.inventory)
+	for(var/obj/hud/inventory/I in A.inventory)
 		//Held Objects
 		if(length(I.held_objects))
 			final_held_list[I.id] = list()

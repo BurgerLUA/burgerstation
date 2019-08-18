@@ -51,7 +51,7 @@
 
 	icon = new_icon
 
-/obj/item/weapon/ranged/magic/rune/on_drop(var/obj/inventory/old_inventory,var/atom/new_loc)
+/obj/item/weapon/ranged/magic/rune/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 	if(!is_inventory(new_loc) || is_dynamic_inventory(new_loc))
 		qdel(src)
 		return
@@ -69,11 +69,11 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/magic/rune/can_be_held(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/weapon/ranged/magic/rune/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	var/spellcraft/effect/E = all_effects[stored_effect]
 	return E.can_be_held
 
-/obj/item/weapon/ranged/magic/rune/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/weapon/ranged/magic/rune/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE
 
 /obj/item/weapon/ranged/magic/rune/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)

@@ -1,6 +1,6 @@
 /mob/living/advanced/proc/add_species_buttons()
 	for(var/v in mob_species.spawning_buttons)
-		var/obj/button/B = new v
+		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
 //Inventory
@@ -10,7 +10,7 @@
 
 /mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
 	for(var/v in inventory)
-		var/obj/inventory/O = v
+		var/obj/hud/inventory/O = v
 		if(O.flags & show_flags_whitelist && !(O.flags & show_flags_blacklist))
 			O.show(show,speed)
 

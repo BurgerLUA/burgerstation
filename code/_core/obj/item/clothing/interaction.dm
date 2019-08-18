@@ -9,9 +9,9 @@
 
 /obj/item/clothing/proc/quick_equip(var/mob/living/advanced/caller)
 
-	var/obj/inventory/best_inventory
+	var/obj/hud/inventory/best_inventory
 
-	for(var/obj/inventory/I in caller.inventory)
+	for(var/obj/hud/inventory/I in caller.inventory)
 		if(!best_inventory)
 			best_inventory = I
 			continue

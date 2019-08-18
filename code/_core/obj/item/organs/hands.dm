@@ -5,8 +5,8 @@
 	icon_state = BODY_HAND_RIGHT
 	worn_layer = LAYER_MOB_HANDS
 	inventories = list(
-		/obj/inventory/organs/right_hand_worn,
-		/obj/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
 	)
 	break_threshold = 15
 	health_max = 25
@@ -23,8 +23,8 @@
 	desc = "A left hand."
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
-		/obj/inventory/organs/left_hand_worn,
-		/obj/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -36,8 +36,8 @@
 	name = "right reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	inventories = list(
-		/obj/inventory/organs/right_hand_worn,
-		/obj/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
 	)
 
 	damage_type = /damagetype/unarmed/fists/
@@ -48,8 +48,8 @@
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
-		/obj/inventory/organs/left_hand_worn,
-		/obj/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -61,8 +61,8 @@
 	name = "right advanced reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	inventories = list(
-		/obj/inventory/organs/right_hand_worn,
-		/obj/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
 	)
 
 	damage_type = /damagetype/unarmed/fists/
@@ -73,8 +73,8 @@
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
-		/obj/inventory/organs/left_hand_worn,
-		/obj/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -87,8 +87,8 @@
 	name = "right diona hand"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 	inventories = list(
-		/obj/inventory/organs/right_hand_worn,
-		/obj/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
 	)
 
 	damage_type = /damagetype/unarmed/fists/
@@ -102,8 +102,8 @@
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
-		/obj/inventory/organs/left_hand_worn,
-		/obj/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
 	)
 
 	attach_flag = BODY_ARM_LEFT
@@ -116,8 +116,8 @@
 	name = "right cyborg hand"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	inventories = list(
-		/obj/inventory/organs/right_hand_worn,
-		/obj/inventory/organs/right_hand_held
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
 	)
 
 	damage_type = /damagetype/unarmed/fists/
@@ -128,8 +128,8 @@
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(
-		/obj/inventory/organs/left_hand_worn,
-		/obj/inventory/organs/left_hand_held
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
 	)
 
 	attach_flag = BODY_ARM_LEFT

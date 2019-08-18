@@ -10,9 +10,9 @@ var/global/list/all_clients = list()
 	fps = FPS_CLIENT
 	preload_rsc = 2
 
-	var/list/obj/inventory/known_inventory
-	var/list/obj/button/known_buttons
-	var/list/obj/button/health/known_health_elements
+	var/list/obj/hud/inventory/known_inventory
+	var/list/obj/hud/button/known_buttons
+	var/list/obj/hud/button/health/known_health_elements
 
 	var/zoom_level = MIN_ZOOM
 

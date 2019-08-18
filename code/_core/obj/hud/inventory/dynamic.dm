@@ -1,4 +1,4 @@
-/obj/inventory/dynamic
+/obj/hud/inventory/dynamic
 	name = "inventory space"
 	worn_slots = 0
 	held_slots = 1

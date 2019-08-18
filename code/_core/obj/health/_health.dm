@@ -1,4 +1,4 @@
-/obj/button/health/
+/obj/hud/button/health/
 	name = "Health Element"
 	desc = "This is an element for health."
 	id = "none"
@@ -16,11 +16,11 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-/obj/button/health/proc/update_stats(var/mob/living/M)
+/obj/hud/button/health/proc/update_stats(var/mob/living/M)
 	update_icon()
 	return TRUE
 
-/obj/button/health/update_owner(var/mob/desired_owner)
+/obj/hud/button/health/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)
 		return FALSE
@@ -34,7 +34,7 @@
 
 	return TRUE
 
-/obj/button/health/update_icon()
+/obj/hud/button/health/update_icon()
 
 	if(max == 0)
 		return
@@ -57,7 +57,7 @@
 
 	..()
 
-/obj/button/health/hp
+/obj/hud/button/health/hp
 	name = "health"
 	id = "health"
 	desc = "Approximately how close you are to death."
@@ -69,16 +69,16 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/health/hp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/hp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] health.")
 
-/obj/button/health/hp/update_stats(var/mob/living/M)
+/obj/hud/button/health/hp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
 	return ..()
 
-/obj/button/health/sp
+/obj/hud/button/health/sp
 	name = "stamina"
 	id = "stamina"
 	desc = "Approximately how close your are to physical fatigue."
@@ -90,16 +90,16 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/health/sp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/sp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] stamina.")
 
-/obj/button/health/sp/update_stats(var/mob/living/M)
+/obj/hud/button/health/sp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
 	return ..()
 
-/obj/button/health/mp
+/obj/hud/button/health/mp
 	name = "mana"
 	id = "mana"
 	desc = "Approximately how close you are to mental fatigue."
@@ -111,10 +111,10 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/health/mp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/mp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] mana.")
 
-/obj/button/health/mp/update_stats(var/mob/living/M)
+/obj/hud/button/health/mp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)

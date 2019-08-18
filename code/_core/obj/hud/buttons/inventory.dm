@@ -1,4 +1,4 @@
-/obj/button/close_inventory
+/obj/hud/button/close_inventory
 	icon_state = "close_inventory"
 	screen_loc = "CENTER,CENTER"
 	alpha = 0
@@ -8,14 +8,14 @@
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
 
-/obj/button/close_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/close_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return TRUE
 
 	var/mob/living/advanced/A = caller
 
-	for(var/obj/inventory/I in A.inventory)
+	for(var/obj/hud/inventory/I in A.inventory)
 		if(!(I.flags & FLAGS_HUD_INVENTORY))
 			continue
 		animate(I,alpha=0,time=4)
@@ -26,7 +26,7 @@
 
 	return TRUE
 
-/obj/button/drop
+/obj/hud/button/drop
 	name = "drop item"
 	desc = "Drop the item in this slot."
 	icon_state = "extension_left"
@@ -35,12 +35,12 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/drop/left
+/obj/hud/button/drop/left
 	icon_state = "extension_right"
 	screen_loc = "CENTER+1.5,BOTTOM"
 	left = 1
 
-/obj/button/drop/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/drop/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return TRUE
@@ -57,7 +57,7 @@
 
 	return TRUE
 
-/obj/button/hide_show_inventory
+/obj/hud/button/hide_show_inventory
 	name = "toggle inventory"
 	desc = "Need more space? Click this button."
 	desc_extended = "Hides your inventory from view. Inventories such as pockets, belts, backpacks, and hands are not hidden."
@@ -66,7 +66,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/hide_show_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/hide_show_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(owner))
 		return ..()
@@ -77,7 +77,7 @@
 	update_icon()
 	..()
 
-/obj/button/hide_show_inventory/update_icon()
+/obj/hud/button/hide_show_inventory/update_icon()
 
 	if(!is_advanced(owner))
 		return ..()

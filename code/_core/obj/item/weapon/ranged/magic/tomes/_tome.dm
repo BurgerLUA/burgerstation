@@ -22,7 +22,7 @@
 
 /obj/item/weapon/ranged/magic/tome/get_owner()
 	if(is_inventory(src.loc))
-		var/obj/inventory/I = src.loc
+		var/obj/hud/inventory/I = src.loc
 		return I.owner
 
 	return null

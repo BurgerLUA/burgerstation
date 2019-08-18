@@ -45,7 +45,7 @@
 				A.quick_mode = null
 			else
 				A.quick_mode = text_num
-			for(var/obj/button/slot/B in A.buttons)
+			for(var/obj/hud/button/slot/B in A.buttons)
 				var/was_active = B.active
 				B.active = A.quick_mode == B.id
 				if(was_active != B.active)

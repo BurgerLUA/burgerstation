@@ -1,8 +1,7 @@
 /obj/trigger/
 	name = "trigger"
 	desc = "This triggers something."
-	icon = null
-	icon_state = null
+	invisibility = 101
 
 /obj/trigger/Crossed(var/atom/crosser)
 	..()

@@ -34,7 +34,7 @@
 			icon_state = initial(icon_state)
 
 	if(is_inventory(src.loc))
-		var/obj/inventory/I = src.loc
+		var/obj/hud/inventory/I = src.loc
 		if(wielded)
 			if(I.item_slot & SLOT_HAND_RIGHT)
 				pixel_x = 16
@@ -68,8 +68,8 @@
 
 	if(can_wield && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && caller.movement_flags & MOVEMENT_CROUCHING)
 
-		var/obj/inventory/offhand_slot = object
-		var/obj/inventory/main_slot = src.loc
+		var/obj/hud/inventory/offhand_slot = object
+		var/obj/hud/inventory/main_slot = src.loc
 
 		wielded = !wielded
 
@@ -88,7 +88,7 @@
 
 	return ..()
 
-/obj/item/weapon/on_drop(var/obj/inventory/I)
+/obj/item/weapon/on_drop(var/obj/hud/inventory/I)
 	wielded = FALSE
 	if(I.child_inventory)
 		I.child_inventory.parent_inventory = null

@@ -1,4 +1,4 @@
-/obj/inventory/organs/torso //Undershirt + Shirt
+/obj/hud/inventory/organs/torso //Undershirt + Shirt
 	name = "torso slot"
 	id = BODY_TORSO
 	screen_loc = "LEFT+1,BOTTOM+2"
@@ -8,7 +8,7 @@
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-/obj/inventory/organs/torso/can_wear_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/organs/torso/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
 		return FALSE
@@ -29,7 +29,7 @@
 
 	return TRUE
 
-/obj/inventory/organs/torso_o
+/obj/hud/inventory/organs/torso_o
 	name = "coat slot"
 	id = BODY_TORSO_O
 	screen_loc = "LEFT,BOTTOM+2"
@@ -39,7 +39,7 @@
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-/obj/inventory/organs/torso_o/can_wear_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/organs/torso_o/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
 		return FALSE
@@ -60,7 +60,7 @@
 
 	return TRUE
 
-/obj/inventory/organs/torso_b
+/obj/hud/inventory/organs/torso_b
 	name = "back slot"
 	id = BODY_TORSO_B
 	screen_loc = "CENTER-3,BOTTOM"

@@ -1,4 +1,4 @@
-/obj/button/chargen
+/obj/hud/button/chargen
 	name = "chargen button"
 	desc = "Press this."
 	desc_extended = "Press this button."
@@ -7,8 +7,8 @@
 
 	//flags = FLAGS_HUD_CHARGEN
 
-/obj/button/chargen/change_hairstyle
+/obj/hud/button/chargen/change_hairstyle
 	name = "cycle hairstyle"
 
-/obj/button/chargen/change_hairstyle/left
+/obj/hud/button/chargen/change_hairstyle/left
 	name = "cycle hairstyle"

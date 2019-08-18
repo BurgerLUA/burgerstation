@@ -1,4 +1,4 @@
-/obj/progress_bar
+/obj/hud/progress_bar
 	name = "progress bar"
 	icon = 'icons/hud/inventory.dmi'
 	icon_state = "progress"
@@ -15,7 +15,7 @@
 
 	mouse_opacity = 0
 
-/obj/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time,var/new_callback_list = list())
+/obj/hud/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time,var/new_callback_list = list())
 
 	if(is_mob(new_loc))
 		screen_loc = "CENTER,CENTER+1"
@@ -34,7 +34,7 @@
 
 	..()
 
-/obj/progress_bar/update_icon()
+/obj/hud/progress_bar/update_icon()
 
 	icon = initial(icon)
 
@@ -50,7 +50,7 @@
 
 	icon = I
 
-/obj/progress_bar/destroy()
+/obj/hud/progress_bar/destroy()
 	if(is_mob(loc))
 		var/mob/M = loc
 		if(M.client)

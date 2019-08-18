@@ -1,4 +1,4 @@
-/obj/button/
+/obj/hud/button/
 	name = "button"
 	desc = "This button does something, I think."
 
@@ -20,11 +20,11 @@
 
 	var/flags = FLAGS_HUD_NONE
 
-/obj/button/destroy()
+/obj/hud/button/destroy()
 	owner = null
 	return ..()
 
-/obj/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
+/obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
 	if(should_show)
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(draw_speed))
 		src.mouse_opacity = 2
@@ -32,7 +32,7 @@
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		src.mouse_opacity = 0
 
-/obj/button/proc/update_owner(var/mob/desired_owner)
+/obj/hud/button/proc/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)
 		return FALSE
@@ -48,7 +48,7 @@
 	return TRUE
 
 
-/obj/button/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	/*
 	if(caller && caller.client)

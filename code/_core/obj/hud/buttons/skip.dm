@@ -1,4 +1,4 @@
-/obj/button/skip
+/obj/hud/button/skip
 	name = "skip cutscene"
 	desc = "I PUT EFFORT INTO THESE."
 	desc_extended = "Skips the current cutscene."
@@ -10,6 +10,6 @@
 	flags = FLAGS_HUD_SPECIAL
 
 
-/obj/button/skip/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/skip/clicked_by_object(var/mob/caller,object,location,control,params)
 	caller.skip_cutscene = TRUE
 	return ..()

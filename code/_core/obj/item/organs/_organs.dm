@@ -96,7 +96,7 @@
 
 	if(inventories)
 		for(var/v in inventories)
-			var/obj/inventory/I = v
+			var/obj/hud/inventory/I = v
 			I.drop_all_objects(T)
 
 	if(attached_organ)

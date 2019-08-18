@@ -7,7 +7,7 @@ var/global/list/all_notifications = list()
 	priority = SS_ORDER_PRELOAD
 
 /subsystem/image_notifications/on_life()
-	for(var/var/obj/screen/S in all_notifications)
+	for(var/var/obj/hud/screen/S in all_notifications)
 		if(S.time <= SECONDS_TO_DECISECONDS(2) && !S.is_fading && S.fade_out)
 			S.is_fading = TRUE
 			animate(S,time=SECONDS_TO_DECISECONDS(2),alpha = 0,easing=LINEAR_EASING)
@@ -20,14 +20,14 @@ var/global/list/all_notifications = list()
 	return TRUE
 
 /proc/add_notification_colored_easy(var/client/C,var/color,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)
-	var/obj/screen/S = add_notification_easy(C,'icons/hud/screen.dmi',"blank",duration,fade_in,fade_out)
+	var/obj/hud/screen/S = add_notification_easy(C,'icons/hud/screen.dmi',"blank",duration,fade_in,fade_out)
 	S.color = color
 	S.screen_loc = "LEFT,BOTTOM"
 
 	return S
 
 /proc/add_notification_easy(var/client/C,var/icon,var/icon_state,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)
-	var/obj/screen/S = add_notification(C,duration,fade_in,fade_out)
+	var/obj/hud/screen/S = add_notification(C,duration,fade_in,fade_out)
 	S.layer = LAYER_AREA
 	S.plane = PLANE_MAP_TEXT
 	S.icon = icon
@@ -47,7 +47,7 @@ var/global/list/all_notifications = list()
 	if(fade_out)
 		duration += SECONDS_TO_DECISECONDS(2)
 
-	var/obj/screen/S = new()
+	var/obj/hud/screen/S = new()
 	S.alpha = fade_in ? 0 : 255
 	S.client = C
 	S.time = duration
@@ -64,7 +64,7 @@ var/global/list/all_notifications = list()
 
 	return S
 
-/proc/remove_notification(var/client/C,var/obj/screen/S)
+/proc/remove_notification(var/client/C,var/obj/hud/screen/S)
 
 	if(C && C.screen)
 		C.screen -= S

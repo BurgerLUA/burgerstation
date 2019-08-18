@@ -27,39 +27,39 @@
 
 	var/list/obj/item/organ/spawning_organs_female = list()
 
-	var/list/obj/button/spawning_buttons = list(
-		/obj/button/drop,
-		/obj/button/drop/left,
-		/obj/button/resist,
-		/obj/button/resist_auto,
-		/obj/button/hide_show_inventory,
-		/obj/button/move,
-		/obj/button/targeting,
-		/obj/button/intent,
-		/obj/button/defense,
-		/obj/button/sneak,
-		/obj/button/close_inventory,
-		/obj/button/slot/A,
-		/obj/button/slot/B,
-		/obj/button/slot/C,
-		/obj/button/slot/D,
-		/obj/button/slot/E,
-		/obj/button/slot/F,
-		/obj/button/slot/G,
-		/obj/button/slot/H,
-		/obj/button/slot/I,
-		/obj/button/slot/J,
+	var/list/obj/hud/button/spawning_buttons = list(
+		/obj/hud/button/drop,
+		/obj/hud/button/drop/left,
+		/obj/hud/button/resist,
+		/obj/hud/button/resist_auto,
+		/obj/hud/button/hide_show_inventory,
+		/obj/hud/button/move,
+		/obj/hud/button/targeting,
+		/obj/hud/button/intent,
+		/obj/hud/button/defense,
+		/obj/hud/button/sneak,
+		/obj/hud/button/close_inventory,
+		/obj/hud/button/slot/A,
+		/obj/hud/button/slot/B,
+		/obj/hud/button/slot/C,
+		/obj/hud/button/slot/D,
+		/obj/hud/button/slot/E,
+		/obj/hud/button/slot/F,
+		/obj/hud/button/slot/G,
+		/obj/hud/button/slot/H,
+		/obj/hud/button/slot/I,
+		/obj/hud/button/slot/J,
 
-		/obj/button/boss_health,
+		/obj/hud/button/boss_health,
 
-		/obj/button/crafting/craft,
-		/obj/button/crafting/close
+		/obj/hud/button/crafting/craft,
+		/obj/hud/button/crafting/close
 	)
 
-	var/list/obj/button/health/spawning_health = list(
-		"hp" = /obj/button/health/hp,
-		"sp" = /obj/button/health/sp,
-		"mp" = /obj/button/health/mp
+	var/list/obj/hud/button/health/spawning_health = list(
+		"hp" = /obj/hud/button/health/hp,
+		"sp" = /obj/hud/button/health/sp,
+		"mp" = /obj/hud/button/health/mp
 	)
 
 	var/list/chargen_hair_colors = list()

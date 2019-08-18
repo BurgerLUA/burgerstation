@@ -33,9 +33,9 @@
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
-	for(var/obj/button/B in buttons)
-		if(B.type == /obj/button/sneak)
-			var/obj/button/sneak/S = B
+	for(var/obj/hud/button/B in buttons)
+		if(B.type == /obj/hud/button/sneak)
+			var/obj/hud/button/sneak/S = B
 			S.sneaking = on
 			S.update_icon()
 

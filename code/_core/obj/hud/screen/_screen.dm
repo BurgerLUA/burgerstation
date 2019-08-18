@@ -1,4 +1,4 @@
-/obj/screen/
+/obj/hud/screen/
 	name = "screen"
 	desc = "This does something, I think."
 

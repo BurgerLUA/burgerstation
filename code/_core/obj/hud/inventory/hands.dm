@@ -1,5 +1,5 @@
 //Gloves
-/obj/inventory/organs/left_hand_worn
+/obj/hud/inventory/organs/left_hand_worn
 	name = "left glove"
 	id = BODY_HAND_LEFT + "_worn"
 	screen_loc = "LEFT+2,BOTTOM+1"
@@ -8,7 +8,7 @@
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-/obj/inventory/organs/right_hand_worn
+/obj/hud/inventory/organs/right_hand_worn
 	name = "right glove"
 	id = BODY_HAND_RIGHT + "_worn"
 	screen_loc = "LEFT,BOTTOM+1"
@@ -18,7 +18,7 @@
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 //Holding
-/obj/inventory/organs/left_hand_held
+/obj/hud/inventory/organs/left_hand_held
 	name = "left hand slot"
 	id = BODY_HAND_LEFT
 	icon_state = "left_hand"
@@ -30,7 +30,7 @@
 
 	essential = TRUE
 
-/obj/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
+/obj/hud/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
@@ -38,7 +38,7 @@
 
 	return .
 
-/obj/inventory/organs/left_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
+/obj/hud/inventory/organs/left_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
@@ -47,7 +47,7 @@
 
 	return .
 
-/obj/inventory/organs/right_hand_held
+/obj/hud/inventory/organs/right_hand_held
 	name = "right hand slot"
 	id = BODY_HAND_RIGHT
 	icon_state = "right_hand"
@@ -59,13 +59,13 @@
 
 	essential = TRUE
 
-/obj/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
+/obj/hud/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.automatic_right = I.defer_click_on_object()
 
-/obj/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
+/obj/hud/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner

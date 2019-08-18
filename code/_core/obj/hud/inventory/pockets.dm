@@ -1,4 +1,4 @@
-/obj/inventory/pocket
+/obj/hud/inventory/pocket
 	name = "pocket"
 	id = "pocket"
 	screen_loc = "CENTER,BOTTOM+3"
@@ -13,12 +13,12 @@
 
 	essential = TRUE
 
-/obj/inventory/pocket/pocket01
+/obj/hud/inventory/pocket/pocket01
 	name = "left lower pocket"
 	id = "pocket01"
 	screen_loc = "CENTER+2,BOTTOM"
 
-/obj/inventory/pocket/pocket02
+/obj/hud/inventory/pocket/pocket02
 	name = "right lower pocket"
 	id = "pocket02"
 	screen_loc = "CENTER+3,BOTTOM"

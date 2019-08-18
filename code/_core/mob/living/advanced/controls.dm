@@ -3,14 +3,14 @@
 mob/living/advanced/on_left_down(object,location,control,params)
 
 	if(quick_mode)
-		for(var/obj/button/slot/B in buttons)
+		for(var/obj/hud/button/slot/B in buttons)
 			if(B.id == quick_mode)
 				if(!B.stored_item)
 					break
 				if(!is_inventory(B.stored_item.loc))
 					B.clear_object(src)
 					break
-				var/obj/inventory/I = B.stored_item.loc
+				var/obj/hud/inventory/I = B.stored_item.loc
 				if(I.owner != src)
 					B.clear_object(src)
 					break
@@ -23,7 +23,7 @@ mob/living/advanced/on_left_down(object,location,control,params)
 	if(is_inventory(object))
 		return FALSE
 
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & RIGHT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 
@@ -36,7 +36,7 @@ mob/living/advanced/on_right_down(object,location,control,params)
 	if(is_inventory(object))
 		return FALSE
 
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & LEFT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 
@@ -50,7 +50,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params)
 	if(!is_inventory(object))
 		return FALSE
 
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & RIGHT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 
@@ -63,7 +63,7 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)
 	if(!is_inventory(object))
 		return FALSE
 
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & LEFT_HAND) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
 			I.click_on_object(src,object,location,control,params)
 

@@ -1,11 +1,11 @@
-/mob/proc/add_button(var/obj/button/B)
+/mob/proc/add_button(var/obj/hud/button/B)
 	buttons += B
 	if(client)
 		client.screen += B
 	B.update_owner(src)
 	update_buttons()
 
-/mob/proc/remove_button(var/obj/button/B)
+/mob/proc/remove_button(var/obj/hud/button/B)
 	buttons -= B
 	if(client)
 		client.screen -= B
@@ -16,7 +16,7 @@
 	if(!client)
 		return
 
-	for(var/obj/button/B in buttons)
+	for(var/obj/hud/button/B in buttons)
 		client.screen += B
 
 	update_buttons()
@@ -32,7 +32,7 @@
 
 /mob/proc/show_health(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
 	for(var/k in health_elements)
-		var/obj/button/health/H = health_elements[k]
+		var/obj/hud/button/health/H = health_elements[k]
 		if(H.flags & show_flags_whitelist && !(H.flags & show_flags_blacklist))
 			H.show(show,speed)
 
@@ -42,7 +42,7 @@
 	show_buttons(draw_buttons,show_flags_whitelist,show_flags_blacklist,speed)
 
 /mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
-	for(var/obj/button/B in buttons)
+	for(var/obj/hud/button/B in buttons)
 		if(B.flags & show_flags_whitelist && !(B.flags & show_flags_blacklist))
 			B.show(show,speed)
 

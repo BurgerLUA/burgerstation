@@ -10,8 +10,8 @@
 	movement_delay = 1
 
 	var/list/spawning_buttons = list(
-		/obj/button/load_character,
-		/obj/button/new_character
+		/obj/hud/button/load_character,
+		/obj/hud/button/new_character
 	)
 
 	collision_flags = FLAG_COLLISION_ETHEREAL
@@ -37,7 +37,7 @@
 	sight |= SEE_THRU
 
 	for(var/v in spawning_buttons)
-		var/obj/button/B = new v
+		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
 /mob/abstract/observer/Logout()

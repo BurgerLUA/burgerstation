@@ -21,10 +21,10 @@
 	var/list/atom/tracked_overlays = list()
 
 	var/draw_inventory = TRUE
-	var/list/obj/inventory/inventory //List of inventory items
+	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
-	var/obj/inventory/left_hand
-	var/obj/inventory/right_hand
+	var/obj/hud/inventory/left_hand
+	var/obj/hud/inventory/right_hand
 
 	var/is_typing = FALSE
 
@@ -39,7 +39,7 @@
 
 	var/chargen = FALSE
 
-	var/obj/inventory/active_inventory
+	var/obj/hud/inventory/active_inventory
 
 	var/health_regen_delay = 0
 	var/stamina_regen_delay = 0
@@ -110,7 +110,7 @@
 	var/dropped_objects = list()
 
 	for(var/v in inventory)
-		var/obj/inventory/O = v
+		var/obj/hud/inventory/O = v
 		if(is_item(O.loc))
 			var/obj/item/I = O.loc
 			if(I.is_container)
@@ -122,7 +122,7 @@
 
 /mob/living/advanced/proc/delete_all_items()
 	for(var/v in inventory)
-		var/obj/inventory/O = v
+		var/obj/hud/inventory/O = v
 		O.delete_all_objects()
 
 
@@ -348,14 +348,14 @@ mob/living/advanced/Login()
 	return TRUE
 
 /mob/living/advanced/proc/add_worn_item(var/obj/item/clothing/C)
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if(I.add_worn_object(C,FALSE))
 			return TRUE
 
 	return FALSE
 
 /mob/living/advanced/proc/remove_worn_item(var/obj/item/clothing/C)
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if(I.remove_object(C))
 			return TRUE
 

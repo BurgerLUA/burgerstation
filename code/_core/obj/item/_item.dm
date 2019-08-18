@@ -9,7 +9,7 @@
 	var/container_max_size = 0 //I this item has a container, how much should it be able to hold in each slot?
 	var/container_max_weight = 0 //I this item has a container, how much should it be able to hold in each slot?
 
-	var/list/obj/inventory/inventories = list() //The inventory holders this object has
+	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
 
 	icon_state = "inventory"
 	var/icon_state_held_left = "held_left"
@@ -64,7 +64,7 @@
 
 	var/mob/living/advanced/A = caller
 
-	for(var/obj/inventory/I in A.inventory)
+	for(var/obj/hud/inventory/I in A.inventory)
 		if(I in inventories)
 			continue
 		if(!(I.flags & FLAGS_HUD_INVENTORY))
@@ -75,7 +75,7 @@
 	var/opening = FALSE
 
 	for(var/i=1,i<=length(inventories),i++)
-		var/obj/inventory/I = inventories[i]
+		var/obj/hud/inventory/I = inventories[i]
 		I.update_owner(A)
 		I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
 		if(opening || !I.alpha)
@@ -88,14 +88,14 @@
 			opening = FALSE
 
 	if(opening)
-		for(var/obj/button/B in A.buttons)
-			if(B.type != /obj/button/close_inventory) //TODO: Fix this shitcode
+		for(var/obj/hud/button/B in A.buttons)
+			if(B.type != /obj/hud/button/close_inventory) //TODO: Fix this shitcode
 				continue
 			B.alpha = 0
 			B.mouse_opacity = 0
 
-	for(var/obj/button/B in A.buttons)
-		if(B.type != /obj/button/close_inventory) //TODO: Fix this shitcode
+	for(var/obj/hud/button/B in A.buttons)
+		if(B.type != /obj/hud/button/close_inventory) //TODO: Fix this shitcode
 			continue
 
 		B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
@@ -132,7 +132,7 @@
 	var/added = FALSE
 
 	if(object != src)
-		for(var/obj/inventory/I in inventories)
+		for(var/obj/hud/inventory/I in inventories)
 			if(I.add_object(object,FALSE))
 				added = TRUE
 				break
@@ -150,7 +150,7 @@
 	//force_move(desired_loc) //TODO: FIGURE THIS OUT
 
 	for(var/i=1, i <= length(inventories), i++)
-		var/obj/inventory/new_inv = inventories[i]
+		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
 
 		if(container_max_size)
@@ -159,7 +159,7 @@
 			inventories[i].max_weight = container_max_weight
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
-		var/obj/inventory/dynamic/D = new(src)
+		var/obj/hud/inventory/dynamic/D = new(src)
 		D.id = "dynamic_[i]"
 		if(container_max_size)
 			D.max_size = container_max_size
@@ -171,12 +171,12 @@
 
 obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)
-		var/obj/inventory/I = v
+		var/obj/hud/inventory/I = v
 		I.update_owner(desired_owner)
 
 /obj/item/proc/get_owner()
 	if(is_inventory(src.loc))
-		var/obj/inventory/I = src.loc
+		var/obj/hud/inventory/I = src.loc
 		return I.owner
 
 	return null
@@ -184,7 +184,7 @@ obj/item/proc/update_owner(desired_owner)
 /obj/item/update_icon()
 	..()
 	if(is_inventory(src.loc))
-		var/obj/inventory/I = src.loc
+		var/obj/hud/inventory/I = src.loc
 		I.update_icon()
 
 /obj/item/proc/get_damage_type()
@@ -298,30 +298,30 @@ obj/item/proc/update_owner(desired_owner)
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
 
-/obj/item/proc/on_pickup(var/atom/old_location,var/obj/inventory/new_location) //When the item is picked up.
+/obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
 
 	if(is_container)
-		for(var/obj/inventory/I in inventories)
+		for(var/obj/hud/inventory/I in inventories)
 			I.update_owner(new_location.owner)
 
 	return
 
-/obj/item/proc/on_drop(var/obj/inventory/old_inventory,var/atom/new_loc)
+/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 	return
 
 /obj/item/proc/inventory_to_list()
 
 	var/list/returning_list = list()
 
-	for(var/obj/inventory/I in inventories)
+	for(var/obj/hud/inventory/I in inventories)
 		if(length(I.held_objects) && I.held_objects[1])
 			returning_list += I.held_objects[1]
 
 	return returning_list
 
 
-/obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE

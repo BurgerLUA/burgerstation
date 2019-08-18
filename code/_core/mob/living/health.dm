@@ -1,10 +1,10 @@
-/mob/proc/add_health_element(var/obj/button/health/H)
+/mob/proc/add_health_element(var/obj/hud/button/health/H)
 	health_elements[H.id] = H
 	if(client)
 		client.screen += H
 	update_health_elements()
 
-/mob/proc/remove_health_element(var/obj/button/health/H)
+/mob/proc/remove_health_element(var/obj/hud/button/health/H)
 	health_elements -= H
 	if(client)
 		client.screen -= H
@@ -15,7 +15,7 @@
 		return
 
 	for(var/k in health_elements)
-		var/obj/button/health/H = health_elements[k]
+		var/obj/hud/button/health/H = health_elements[k]
 		client.screen += H
 
 	update_health_elements()
@@ -32,15 +32,15 @@
 		return FALSE
 
 	if(health)
-		var/obj/button/health/H = health_elements["health"]
+		var/obj/hud/button/health/H = health_elements["health"]
 		H.update_stats(src)
 
 	if(stamina)
-		var/obj/button/health/S = health_elements["stamina"]
+		var/obj/hud/button/health/S = health_elements["stamina"]
 		S.update_stats(src)
 
 	if(mana)
-		var/obj/button/health/M = health_elements["mana"]
+		var/obj/hud/button/health/M = health_elements["mana"]
 		M.update_stats(src)
 
 	return TRUE
@@ -90,7 +90,7 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 
 			if(length(linked_players))
 				for(var/mob/living/advanced/player/P in linked_players)
-					for(var/obj/button/boss_health/B in P.buttons)
+					for(var/obj/hud/button/boss_health/B in P.buttons)
 						if(get_dist(P,src) > BOSS_RANGE)
 							B.clear_boss()
 							continue

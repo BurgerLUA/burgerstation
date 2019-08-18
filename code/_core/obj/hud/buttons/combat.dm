@@ -1,4 +1,4 @@
-/obj/button/resist
+/obj/hud/button/resist
 	name = "resist"
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
 	desc_extended = "Press this button if you want to resist out of whatever situation your in. (That doesn't mean that it will do it.)"
@@ -7,11 +7,11 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/resist/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/resist/clicked_by_object(var/mob/caller,object,location,control,params)
 	//Resist code here
 	..()
 
-/obj/button/resist_auto
+/obj/hud/button/resist_auto
 	name = "toggle auto resist"
 	desc = "For when you don't like clicking."
 	desc_extended = "Automatically attempts to resist in some situations."
@@ -20,7 +20,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/resist_auto/update_icon()
+/obj/hud/button/resist_auto/update_icon()
 
 	if(owner.auto_resist)
 		icon_state = initial(icon_state)
@@ -29,12 +29,12 @@
 
 	..()
 
-/obj/button/resist_auto/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/resist_auto/clicked_by_object(var/mob/caller,object,location,control,params)
 	owner.auto_resist = !owner.auto_resist
 	update_icon()
 	..()
 
-/obj/button/targeting
+/obj/hud/button/targeting
 	name = "limb targeting"
 	desc = "aim for the head"
 	desc_extended = "Where you press determines where you attack."
@@ -59,7 +59,7 @@
 		list(16,16)
 	)
 
-/obj/button/targeting/update_icon()
+/obj/hud/button/targeting/update_icon()
 
 	icon = initial(icon)
 	var/icon/base_icon = new /icon(icon,icon_state)
@@ -83,7 +83,7 @@
 
 	..()
 
-/obj/button/targeting/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/targeting/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_living(caller))
 		return
@@ -123,7 +123,7 @@
 	update_icon()
 	..()
 
-/obj/button/intent
+/obj/hud/button/intent
 	name = "intent"
 	desc = "harm intent or bust"
 	desc_extended = "Where you press determines where you attack."
@@ -134,7 +134,7 @@
 
 	var/help_intent = 1
 
-/obj/button/intent/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/intent/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!params["icon-y"])
 		return
@@ -149,14 +149,14 @@
 	update_icon()
 	..()
 
-/obj/button/intent/update_icon()
+/obj/hud/button/intent/update_icon()
 	if(help_intent)
 		icon_state = "intent_help"
 	else
 		icon_state = "intent_harm"
 	..()
 
-/obj/button/defense
+/obj/hud/button/defense
 	name = "defense toggles"
 	desc = "turn all of them on, what could possibly go wrong"
 	desc_extended = ""
@@ -169,7 +169,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/defense/update_icon()
+/obj/hud/button/defense/update_icon()
 
 	icon = initial(icon)
 
@@ -192,7 +192,7 @@
 
 	..()
 
-/obj/button/defense/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/defense/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!params["icon-y"])
 		return

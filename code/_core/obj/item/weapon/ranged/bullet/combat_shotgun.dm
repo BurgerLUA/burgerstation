@@ -23,7 +23,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
-/obj/item/weapon/ranged/bullet/pump/combat_shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/weapon/ranged/bullet/pump/combat_shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/pump/combat_shotgun/get_static_spread() //Base spread

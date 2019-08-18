@@ -1,4 +1,4 @@
-/obj/button/boss_health
+/obj/hud/button/boss_health
 	name = "Boss Health"
 	desc = "Health bar for bosses"
 	id = "boss_health"
@@ -20,15 +20,15 @@
 
 	alpha = 0
 
-/obj/button/boss_health/destroy()
+/obj/hud/button/boss_health/destroy()
 	target_boss = null
 	return ..()
 
-/obj/button/boss_health/proc/clear_boss()
+/obj/hud/button/boss_health/proc/clear_boss()
 	target_boss = null
 	update_stats()
 
-/obj/button/boss_health/proc/update_stats()
+/obj/hud/button/boss_health/proc/update_stats()
 
 	if(!target_boss)
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
@@ -50,7 +50,7 @@
 
 	return TRUE
 
-/obj/button/boss_health/update_icon()
+/obj/hud/button/boss_health/update_icon()
 
 	if(max == 0)
 		return

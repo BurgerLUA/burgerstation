@@ -63,5 +63,5 @@
 
 	..()
 
-/obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/inventory/I)
+/obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE

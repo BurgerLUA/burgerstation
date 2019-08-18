@@ -1,4 +1,4 @@
-/obj/button/sneak
+/obj/hud/button/sneak
 	name = "sneak"
 	desc = "sneaker no sneaking"
 	desc_extended = "Press to sneak."
@@ -9,7 +9,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/sneak/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/sneak/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_living(caller))
 		return
@@ -18,11 +18,11 @@
 
 	..()
 
-/obj/button/sneak/update_icon()
+/obj/hud/button/sneak/update_icon()
 	icon_state = "sneak_[sneaking]"
 	..()
 
-/obj/button/move
+/obj/hud/button/move
 	name = "move"
 	desc = "who fucking walks lmao"
 	desc_extended = "Where you press determines where you click"
@@ -33,11 +33,11 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/button/move/update_icon()
+/obj/hud/button/move/update_icon()
 	icon_state = "move_[move_mode]"
 	..()
 
-/obj/button/move/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/move/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(params["icon-x"] && params["icon-y"] && text2num(params["icon-y"]) >= 10)
 

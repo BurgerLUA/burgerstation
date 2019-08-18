@@ -1,4 +1,4 @@
-/obj/inventory/organs/groin_o
+/obj/hud/inventory/organs/groin_o
 	name = "belt slot"
 	id = BODY_GROIN_O
 	screen_loc = "CENTER-2,BOTTOM"
@@ -9,7 +9,7 @@
 	essential = TRUE
 
 
-/obj/inventory/organs/groin //Underwear + Pants
+/obj/hud/inventory/organs/groin //Underwear + Pants
 	name = "pants slot"
 	id = BODY_GROIN
 	screen_loc = "LEFT+1,BOTTOM+1"
@@ -19,7 +19,7 @@
 
 	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-/obj/inventory/organs/groin/can_wear_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/organs/groin/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
 		return FALSE

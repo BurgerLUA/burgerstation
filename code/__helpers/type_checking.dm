@@ -8,7 +8,7 @@
 	return istype(A,/obj/item/)
 
 /proc/is_inventory(var/atom/A)
-	return istype(A,/obj/inventory/)
+	return istype(A,/obj/hud/inventory/)
 
 /proc/is_overlay(var/atom/A)
 	return istype(A,/obj/overlay/)
@@ -23,7 +23,7 @@
 	return istype(A,/turf/)
 
 /proc/is_button(var/atom/A)
-	return istype(A,/obj/button/)
+	return istype(A,/obj/hud/button/)
 
 /proc/is_advanced(var/atom/A)
 	return istype(A,/mob/living/advanced/)
@@ -108,7 +108,7 @@ proc/is_currency(var/atom/A)
 	return istype(A,/obj/item/currency/)
 
 proc/is_dynamic_inventory(var/atom/A)
-	return istype(A,/obj/inventory/dynamic/)
+	return istype(A,/obj/hud/inventory/dynamic/)
 
 proc/is_food(var/atom/A)
 	return istype(A,/obj/item/food/)

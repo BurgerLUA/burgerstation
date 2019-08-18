@@ -20,7 +20,7 @@ var/global/list/all_recipes = list()
 
 	var/list/item_table = list()
 
-	for(var/obj/inventory/crafting/I in caller.inventory)
+	for(var/obj/hud/inventory/crafting/I in caller.inventory)
 		var/obj/item/held_item = I.get_top_held_object()
 		if(held_item)
 			item_table[I.id] = held_item
@@ -31,9 +31,9 @@ var/global/list/all_recipes = list()
 
 /proc/attempt_to_craft(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table)
 
-	var/obj/inventory/crafting/result/product_slot
+	var/obj/hud/inventory/crafting/result/product_slot
 
-	for(var/obj/inventory/crafting/result/R in caller.inventory)
+	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
 		if(R.get_top_held_object())
 			caller.to_chat(span("notice","Remove the already completed item in the product slot before doing this!"))
 			return FALSE
@@ -49,7 +49,7 @@ var/global/list/all_recipes = list()
 		if(length(recipe_check)) //We can craft
 			for(var/obj/item/I in recipe_check)
 				if(is_inventory(I.loc))
-					var/obj/inventory/I2 = I.loc
+					var/obj/hud/inventory/I2 = I.loc
 					I2.remove_object(I,get_turf(caller))
 				qdel(I)
 

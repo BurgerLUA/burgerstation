@@ -54,7 +54,7 @@
 		overlays += spawned_overlay
 
 /mob/living/advanced/proc/update_inventory_icons()
-	for(var/obj/inventory/I in inventory)
+	for(var/obj/hud/inventory/I in inventory)
 		if(!I.should_draw)
 			continue
 		for(var/obj/item/C in I.worn_objects)

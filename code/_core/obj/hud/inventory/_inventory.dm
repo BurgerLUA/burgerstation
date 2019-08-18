@@ -1,6 +1,6 @@
 //Inventory system. Basically anything that can hold an object needs an inventory.
 
-/obj/inventory/
+/obj/hud/inventory/
 	name = "Inventory Holder"
 	desc = "Inventory"
 	id = "BADINVENTORY"
@@ -43,8 +43,8 @@
 
 	var/drag_to_take = TRUE //You must click and drag to take the object.
 
-	var/obj/inventory/parent_inventory //Basically one massive defer to this inventory.
-	var/obj/inventory/child_inventory
+	var/obj/hud/inventory/parent_inventory //Basically one massive defer to this inventory.
+	var/obj/hud/inventory/child_inventory
 
 	var/atom/movable/grabbed_object
 
@@ -62,7 +62,7 @@
 
 	var/draw_extra = FALSE
 
-/obj/inventory/proc/show(var/should_show,var/speed)
+/obj/hud/inventory/proc/show(var/should_show,var/speed)
 	if(should_show)
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
 		src.mouse_opacity = 2
@@ -70,7 +70,7 @@
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
 		src.mouse_opacity = 0
 
-/obj/inventory/New(var/desired_loc)
+/obj/hud/inventory/New(var/desired_loc)
 
 	//loc = desired_loc
 
@@ -78,17 +78,17 @@
 	worn_objects = list()
 	. = ..()
 
-/obj/inventory/can_be_attacked(var/atom/attacker)
+/obj/hud/inventory/can_be_attacked(var/atom/attacker)
 	return FALSE
 
-/obj/inventory/get_examine_text(var/atom/examiner)
+/obj/hud/inventory/get_examine_text(var/atom/examiner)
 	var/atom/A = defer_click_on_object()
 	if(A && A != src)
 		return A.get_examine_text(examiner)
 	else
 		return ..()
 
-/obj/inventory/proc/update_overlays()
+/obj/hud/inventory/proc/update_overlays()
 
 	for(var/O in overlays)
 		qdel(O)
@@ -123,7 +123,7 @@
 		overlays += I
 
 
-/obj/inventory/update_icon()
+/obj/hud/inventory/update_icon()
 
 	if(parent_inventory)
 		color = "#ff0000"
@@ -132,7 +132,7 @@
 
 	update_overlays()
 
-/obj/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
+/obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
 		return FALSE
@@ -147,7 +147,7 @@
 
 	return TRUE
 
-/obj/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE) //Prioritize wearing it, then holding it.
+/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE) //Prioritize wearing it, then holding it.
 
 	if(I.can_be_worn())
 		var/obj/item/C = I
@@ -159,7 +159,7 @@
 
 	return FALSE
 
-/obj/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
+/obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
 
 	var/atom/old_location = I.loc
 
@@ -167,7 +167,7 @@
 		return FALSE
 
 	if(is_inventory(I.loc))
-		var/obj/inventory/I2 = I.loc
+		var/obj/hud/inventory/I2 = I.loc
 		if(I2 == src)
 			return FALSE
 		I2.remove_object(I,get_turf(I))
@@ -190,10 +190,10 @@
 
 	return TRUE
 
-/obj/inventory/get_light_source()
+/obj/hud/inventory/get_light_source()
 	return owner
 
-/obj/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
+/obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
 
 	if(!bypass_checks && !can_wear_object(I,messages))
 		return FALSE
@@ -205,7 +205,7 @@
 			return FALSE
 
 	if(is_inventory(I.loc))
-		var/obj/inventory/I2 = I.loc
+		var/obj/hud/inventory/I2 = I.loc
 		if(I2 == src)
 			return FALSE
 		I2.remove_object(I,owner.loc)
@@ -233,7 +233,7 @@
 
 	return TRUE
 
-/obj/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
+/obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
 	for(var/obj/item/I in worn_objects)
 		if(exclude_soulbound && I.soul_bound)
@@ -243,7 +243,7 @@
 
 	return dropped_objects
 
-/obj/inventory/proc/drop_held_objects(var/turf/T,var/exclude_soulbound=FALSE)
+/obj/hud/inventory/proc/drop_held_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
 	for(var/obj/item/I in held_objects)
 		if(exclude_soulbound && I.soul_bound)
@@ -253,33 +253,33 @@
 
 	return dropped_objects
 
-/obj/inventory/proc/delete_held_objects()
+/obj/hud/inventory/proc/delete_held_objects()
 	for(var/obj/item/I in held_objects)
 		remove_object(I,owner.loc)
 		qdel(I)
 
-/obj/inventory/proc/delete_worn_objects()
+/obj/hud/inventory/proc/delete_worn_objects()
 	for(var/obj/item/I in worn_objects)
 		remove_object(I,owner.loc)
 		qdel(I)
 
-/obj/inventory/proc/drop_all_objects(var/turf/T,var/exclude_soulbound=FALSE)
+/obj/hud/inventory/proc/drop_all_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
 	dropped_objects += drop_held_objects(T)
 	dropped_objects += drop_worn_objects(T)
 	return dropped_objects
 
-/obj/inventory/proc/delete_all_objects()
+/obj/hud/inventory/proc/delete_all_objects()
 	delete_held_objects()
 	delete_worn_objects()
 
-/obj/inventory/proc/remove_all_objects()
+/obj/hud/inventory/proc/remove_all_objects()
 	for(var/obj/item/I in worn_objects)
 		qdel(remove_object(I))
 	for(var/obj/item/I in held_objects)
 		qdel(remove_object(I))
 
-/obj/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc) //Removes the object from both worn and held objects, just in case.
+/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc) //Removes the object from both worn and held objects, just in case.
 
 	var/was_removed = FALSE
 
@@ -303,7 +303,7 @@
 
 	return I
 
-/obj/inventory/proc/update_stats()
+/obj/hud/inventory/proc/update_stats()
 	total_weight = 0
 	total_size = 0
 
@@ -321,7 +321,7 @@
 	if(owner)
 		owner.update_icon()
 
-/obj/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!I.can_be_held(owner,src))
 		return FALSE
@@ -359,7 +359,7 @@
 
 	return TRUE
 
-/obj/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!I.can_be_worn(owner,src))
 		return FALSE
@@ -396,14 +396,14 @@
 
 	return TRUE
 
-/obj/inventory/proc/get_top_worn_object()
+/obj/hud/inventory/proc/get_top_worn_object()
 
 	if(!length(worn_objects))
 		return FALSE
 
 	return worn_objects[length(worn_objects)]
 
-/obj/inventory/proc/get_top_held_object()
+/obj/hud/inventory/proc/get_top_held_object()
 	if(!length(held_objects))
 		return FALSE
 

@@ -1,19 +1,19 @@
 /obj/item/crafting/
 	name = "crafting table"
 	inventories = list(
-		/obj/inventory/crafting/slotA1,
-		/obj/inventory/crafting/slotA2,
-		/obj/inventory/crafting/slotA3,
+		/obj/hud/inventory/crafting/slotA1,
+		/obj/hud/inventory/crafting/slotA2,
+		/obj/hud/inventory/crafting/slotA3,
 
-		/obj/inventory/crafting/slotB1,
-		/obj/inventory/crafting/slotB2,
-		/obj/inventory/crafting/slotB3,
+		/obj/hud/inventory/crafting/slotB1,
+		/obj/hud/inventory/crafting/slotB2,
+		/obj/hud/inventory/crafting/slotB3,
 
-		/obj/inventory/crafting/slotC1,
-		/obj/inventory/crafting/slotC2,
-		/obj/inventory/crafting/slotC3,
+		/obj/hud/inventory/crafting/slotC1,
+		/obj/hud/inventory/crafting/slotC2,
+		/obj/hud/inventory/crafting/slotC3,
 
-		/obj/inventory/crafting/result
+		/obj/hud/inventory/crafting/result
 	)
 
 	is_container = TRUE
@@ -31,13 +31,13 @@
 
 	var/opening = FALSE
 
-	for(var/obj/inventory/crafting/I in A.inventory)
+	for(var/obj/hud/inventory/crafting/I in A.inventory)
 		if(I in inventories)
 			continue
 		I.alpha = 0
 		I.mouse_opacity = 0
 
-	for(var/obj/inventory/I in inventories)
+	for(var/obj/hud/inventory/I in inventories)
 		I.update_owner(A)
 		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)
@@ -48,7 +48,7 @@
 			I.mouse_opacity = 0
 			opening = FALSE
 
-	for(var/obj/button/crafting/B in A.buttons)
+	for(var/obj/hud/button/crafting/B in A.buttons)
 		B.stored_crafting_table = src
 		if(opening || !B.alpha)
 			animate(B,alpha=255,time=4)

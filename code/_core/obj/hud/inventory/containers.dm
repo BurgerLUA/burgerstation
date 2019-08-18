@@ -1,4 +1,4 @@
-/obj/inventory/container
+/obj/hud/inventory/container
 	name = "container"
 	id = "container_debug"
 	screen_loc = "CENTER,CENTER" //This is set elsewhere.
@@ -19,6 +19,6 @@
 	x_offset_mul = 1
 	y_offset_mul = 0
 
-/obj/inventory/container/backpack
+/obj/hud/inventory/container/backpack
 	name = "backpack"
 	id = "backpack"

@@ -7,9 +7,9 @@
 	break_threshold = 50
 	health_max = 100
 	inventories = list(
-		/obj/inventory/organs/torso,
-		/obj/inventory/organs/torso_o,
-		/obj/inventory/organs/torso_b
+		/obj/hud/inventory/organs/torso,
+		/obj/hud/inventory/organs/torso_o,
+		/obj/hud/inventory/organs/torso_b
 	)
 
 	enable_wounds = TRUE

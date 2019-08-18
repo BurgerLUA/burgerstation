@@ -1,7 +1,7 @@
 /mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_update = TRUE,var/do_delete = FALSE)
 
 	if(length(O.inventories))
-		for(var/obj/inventory/I in O.inventories)
+		for(var/obj/hud/inventory/I in O.inventories)
 			I.remove_all_objects()
 			I.update_owner()
 
