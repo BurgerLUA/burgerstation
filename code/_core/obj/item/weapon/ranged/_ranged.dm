@@ -24,8 +24,18 @@
 
 	var/list/empty_sounds = list()
 
+	thinks = TRUE
+
+	//Dynamic accuracy.
+	var/heat_per_shot = 0.05
+	var/heat_current = 0
+	var/heat_max = 0.2
+
+/obj/item/weapon/ranged/proc/get_heat_spread()
+	return heat_current
+
 /obj/item/weapon/ranged/proc/get_static_spread() //Base spread
-	return 0.1
+	return 0.025
 
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))
@@ -40,11 +50,16 @@
 	return TRUE
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
-
 	if(next_shoot_time > curtime)
 		return FALSE
 
 	return TRUE
+
+/obj/item/weapon/ranged/think()
+	if(next_shoot_time + min(10,shoot_delay) < curtime)
+		heat_current = max(heat_current-1,0)
+
+	return ..()
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -137,10 +152,12 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16
 		var/object_fake_y = object.y*TILE_SIZE + icon_pos_y - 16
 
-		var/accuracy_loss = get_static_spread()
+		var/accuracy_loss = get_static_spread() + get_heat_spread()
 		if(is_living(caller))
 			var/mob/living/L = caller
 			accuracy_loss += get_skill_spread(L)
+
+		accuracy_loss = Clamp(accuracy_loss,0,0.5)
 
 		for(var/i=1,i<=bullet_count,i++)
 
@@ -157,7 +174,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 				var/turf/T = get_turf(caller)
 
-				bullet_speed = min(bullet_speed,31)
+				bullet_speed = min(bullet_speed,TILE_SIZE-1)
 
 				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object)
 
@@ -165,6 +182,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					P.on_hit(object)
 			else
 				continue
+
+	heat_current = min(heat_max, heat_current + heat_per_shot)
 
 	return TRUE
 

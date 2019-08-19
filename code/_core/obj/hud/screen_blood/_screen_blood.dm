@@ -1,0 +1,92 @@
+/obj/hud/screen_blood/
+	name = "screen blood"
+	desc = "This does something, I think."
+
+	icon = 'icons/hud/injury.dmi'
+	icon_state = "corner"
+
+	layer = LAYER_SCREEN_BLOOD
+	plane = PLANE_INJURY
+
+	screen_loc = "CENTER-4.5,CENTER-4.5"
+
+	mouse_opacity = 0
+
+	var/mob/living/owner
+
+/obj/hud/screen_blood/New(var/desired_loc,var/desired_direction=NORTHWEST)
+
+
+	if(is_living(desired_loc))
+		var/mob/living/L = desired_loc
+		owner = L
+		if(L.client)
+			var/client/C = L.client
+			C.screen += src
+
+		dir = desired_direction
+
+		switch(dir)
+			if(NORTHWEST)
+				screen_loc = "LEFT,TOP"
+			if(NORTHEAST)
+				screen_loc = "RIGHT,TOP"
+			if(SOUTHEAST)
+				screen_loc = "RIGHT,BOTTOM"
+			if(SOUTHWEST)
+				screen_loc = "LEFT,BOTTOM"
+			if(SOUTH)
+				screen_loc = "CENTER-2,CENTER-2"
+
+	..()
+
+
+/obj/hud/screen_blood/proc/update_stats()
+
+	var/max_health = owner.health_max
+	var/health = owner.health_current
+
+	if(dir==SOUTH)
+		color = "#FFFFFF"
+		alpha = Clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
+
+		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
+			var/client/C = owner.client
+
+			var/health_loss = 1 - health/max_health
+			var/greyscale_amount = Clamp(( (health_loss**2) - 0.6)*3,0,1)
+
+			var/light_mod = Clamp(0.5 + health/max_health,0,1)
+			var/a = (1 - greyscale_amount)*light_mod
+			var/b = greyscale_amount*light_mod
+
+			//world.log << "A: [a], B: [b]"
+
+			var/list/desired_color = list(
+				a,b,b,0,
+				b,a,b,0,
+				b,b,a,0,
+				0,0,0,1,
+				0,0,0,0
+			)
+
+			C.color = desired_color
+
+	else if(dir == SOUTHEAST)
+		var/max_stamina = owner.stamina_max
+		var/stamina = owner.stamina_current
+
+		var/max_mana = owner.mana_max
+		var/mana = owner.mana_current
+
+		alpha = max(1 - health/max_health, 1 - stamina/max_stamina, 1 - mana/max_mana)*255
+		color = rgb(255 - (health/max_health)*255,255 - (stamina/max_stamina)*255,255 - (mana/max_mana)*255)
+
+	else
+		alpha = 255 - 255*(health/max_health)
+		color = rgb(255,0,0)
+
+	return TRUE
+
+
+

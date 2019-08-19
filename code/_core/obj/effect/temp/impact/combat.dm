@@ -4,6 +4,14 @@ obj/effect/temp/impact/combat
 	duration = 3
 	mouse_opacity = 0
 
+obj/effect/temp/impact/combat/New(var/desired_loc,var/desired_pixel_x,var/desired_pixel_y)
+	. = ..()
+
+	pixel_x = desired_pixel_x
+	pixel_y = desired_pixel_y
+
+	return .
+
 obj/effect/temp/impact/combat/smash
 	icon_state = "smash"
 

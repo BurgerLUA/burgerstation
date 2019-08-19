@@ -36,8 +36,10 @@
 #define LAYER_LIGHTING 15
 #define LAYER_LIGHTING_DYNAMIC 16
 
-#define LAYER_HUD 17
-#define LAYER_HUD_ITEMS 18
+#define LAYER_SCREEN_BLOOD 17
+
+#define LAYER_HUD 18
+#define LAYER_HUD_ITEMS 19
 
 #define LAYER_MOB_NONE                 LAYER_MOB + 0.01
 #define LAYER_MOB_TAIL_BEHIND          LAYER_MOB + 0.02

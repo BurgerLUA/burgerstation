@@ -91,6 +91,8 @@ var/global/list/all_living = list()
 
 	var/has_hard_crit = FALSE
 
+	var/list/obj/hud/screen_blood/screen_blood
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 
@@ -116,6 +118,14 @@ var/global/list/all_living = list()
 
 	if(ai)
 		ai = new ai(src)
+
+	if(desired_client)
+		screen_blood = list()
+		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
+		screen_blood += new /obj/hud/screen_blood(src,NORTHEAST)
+		screen_blood += new /obj/hud/screen_blood(src,SOUTHEAST)
+		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
+		screen_blood += new /obj/hud/screen_blood(src,SOUTH)
 
 	all_living += src
 

@@ -41,6 +41,8 @@
 
 	var/collide_with_other_projectiles = FALSE
 
+	var/obj/effect/temp/impact/impact_effect
+
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target)
 
 	owner = desired_owner
@@ -194,4 +196,10 @@
 	return TRUE
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
+	if(impact_effect && !is_living(hit_atom))
+		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
+		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
+		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
+		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
+		new impact_effect(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y)
 	return TRUE

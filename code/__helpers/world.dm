@@ -6,3 +6,12 @@ proc/should_static_view()
 /proc/stoplag()
 	while(world.cpu >= 90 || world.tick_usage >= 90)
 		sleep(TICK_LAG)
+
+
+
+proc/get_true_offset_x(var/atom/atom_a,var/atom/atom_b)
+	return (atom_a.x*TILE_SIZE + atom_a.pixel_x) - (atom_b.x*TILE_SIZE + atom_b.pixel_x)
+
+
+proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
+	return (atom_a.y*TILE_SIZE + atom_a.pixel_y) - (atom_b.y*TILE_SIZE + atom_b.pixel_y)

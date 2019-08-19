@@ -1,5 +1,6 @@
 /obj/projectile/bullet/
 	name = "bullet"
+	impact_effect = /obj/effect/temp/impact/bullet
 
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 

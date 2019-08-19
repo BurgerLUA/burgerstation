@@ -26,8 +26,6 @@
 
 /mob/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
-
-
 	if(!src.client)
 		return FALSE
 
@@ -45,12 +43,20 @@
 
 	return TRUE
 
+/mob/living/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
-mob/living/proc/get_health()
+	. = ..()
+
+	if(. && length(screen_blood))
+		for(var/obj/hud/screen_blood/SB in screen_blood)
+			SB.update_stats()
+
+	return ..()
+
+/mob/living/proc/get_health()
 	return health_max - get_total_loss()
 
-
-mob/living/proc/update_stats()
+/mob/living/proc/update_stats()
 
 	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
 	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400

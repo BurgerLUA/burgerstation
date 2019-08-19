@@ -6,8 +6,9 @@
 #define PLANE_AREA -1
 #define PLANE_LIGHTING_AMBIENT 1
 #define PLANE_LIGHTING_DYNAMIC 2
-#define PLANE_HUD 3
-#define PLANE_HUD_OBJ 4
+#define PLANE_INJURY 3
+#define PLANE_HUD 4
+#define PLANE_HUD_OBJ 5
 
 
 #define PLANE_MAP 99

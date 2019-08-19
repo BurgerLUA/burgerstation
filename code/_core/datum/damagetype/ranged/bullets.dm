@@ -39,6 +39,8 @@
 		SKILL_RANGED = 0.5
 	)
 
+	hit_effect = null
+
 /damagetype/ranged/bullet/bolt
 	name = "metal bolt"
 	id = "bolt_metal"

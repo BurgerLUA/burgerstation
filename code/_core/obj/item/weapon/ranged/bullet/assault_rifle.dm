@@ -12,13 +12,13 @@
 
 	bullet_type = "7.62"
 
-	//shoot_sounds = list('sounds/weapon/ranged/bullet/assault_rifle.ogg')
+	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 
 	can_wield = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
 	if(!wielded)
-		return 0.1
+		return 0.2
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_skill_spread(var/mob/living/L) //Base spread

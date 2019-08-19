@@ -66,7 +66,7 @@
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
 
-	var/obj/effect/temp/impact/hit_effect = /obj/effect/temp/impact/combat/smash
+	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
 	var/draw_blood = FALSE
 	var/draw_weapon = FALSE
@@ -146,8 +146,6 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-
-
 	var/brute_armor = 0
 	var/burn_armor = 0
 
@@ -208,7 +206,7 @@
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 
 	if(hit_effect)
-		new hit_effect(get_turf(victim))
+		new hit_effect(get_turf(victim),victim.pixel_x,victim.pixel_y)
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
@@ -217,8 +215,8 @@
 		var/multiplier = TILE_SIZE * (damage_dealt / victim.health_max) * 2
 		multiplier = Clamp(multiplier,0,TILE_SIZE*0.5)
 
-		var/offset_x = (victim.x - attacker.x)
-		var/offset_y = (victim.y - attacker.y)
+		var/offset_x = get_true_offset_x(victim,attacker)
+		var/offset_y = get_true_offset_y(victim,attacker)
 
 		if(!offset_x && !offset_y)
 			offset_x = rand(-1,1)
@@ -242,7 +240,7 @@
 				animate(pixel_x = 0, pixel_y = 0, time = 5)
 
 		if(is_movable(victim) && victim.health_current - damage_dealt <= 0)
-			if(multiplier >= TILE_SIZE)
+			if(multiplier >= TILE_SIZE*0.5)
 				var/atom/movable/M = victim
 				M.glide_size = TILE_SIZE
 				var/move_direction = 0
@@ -281,8 +279,8 @@
 		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
 		WC.appearance = weapon.appearance
 
-		var/offset_x = (victim.x - attacker.x)*TILE_SIZE
-		var/offset_y = (victim.y - attacker.y)*TILE_SIZE
+		var/offset_x = get_true_offset_x(victim,attacker)
+		var/offset_y = get_true_offset_y(victim,attacker)
 
 		animate(WC,pixel_x = offset_x, pixel_y = offset_y,time = ATTACK_ANIMATION_LENGTH)
 

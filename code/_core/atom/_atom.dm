@@ -50,13 +50,15 @@
 
 	var/interact_distance = 1
 
-
+	var/thinks = FALSE
 
 /atom/destroy()
 	invisibility = 101
 	if(light)
 		light.destroy_light()
 		light = null
+	if(thinks)
+		all_thinkers -= src
 	return ..()
 
 /atom/proc/can_collide_with(var/atom/A)
@@ -85,6 +87,9 @@
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
 	overlays_assoc = list()
+
+	if(thinks)
+		all_thinkers += src
 
 	return .
 
@@ -177,3 +182,6 @@
 
 /atom/proc/on_progress_bar_failed(var/id,var/list/callback_list)
 	return TRUE
+
+/atom/proc/think()
+	return TRUE //Return false to remove from thinking.
