@@ -43,8 +43,21 @@
 	)
 
 	possible_quantity = list(
-		/obj/item/weapon/ranged/bullet/revolver/detective = 6
+		/obj/item/weapon/ranged/bullet/revolver/detective = 10
 
+	)
+
+/obj/structure/interactive/shop_holder/weapons/dbarrel
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/revolver/dbarrel = 1
+	)
+
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/revolver/dbarrel = 60
+	)
+
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/revolver/dbarrel = 10
 	)
 
 /obj/structure/interactive/shop_holder/ammo/bullet_38
@@ -58,6 +71,22 @@
 
 	possible_quantity = list(
 		/obj/item/magazine/clip/revolver/bullet_38 = 30
+	)
+
+/obj/structure/interactive/shop_holder/ammo/bullet_shotgun
+	possible_items = list(
+		/obj/item/bullet/shotgun/buckshot = 2,
+		/obj/item/bullet/shotgun/slug = 1
+	)
+
+	possible_prices = list(
+		/obj/item/bullet/shotgun/buckshot = 4,
+		/obj/item/bullet/shotgun/slug = 6
+	)
+
+	possible_quantity = list(
+		/obj/item/bullet/shotgun/buckshot = 30,
+		/obj/item/bullet/shotgun/slug = 20
 	)
 
 /obj/structure/interactive/shop_holder/weapons/stunbaton
@@ -179,4 +208,50 @@
 		/obj/item/weapon/melee/toolbox/blue = 20
 	)
 
+
+/obj/structure/interactive/shop_holder/weapons/smg2
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw = 200
+	)
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw = 5
+	)
+
+/obj/structure/interactive/shop_holder/ammo/smg2
+	possible_items = list(
+		/obj/item/magazine/smg_9mm = 1
+	)
+	possible_prices = list(
+		/obj/item/magazine/smg_9mm = 5
+	)
+	possible_quantity = list(
+		/obj/item/magazine/smg_9mm = 20
+	)
+
+
+/obj/structure/interactive/shop_holder/weapons/lmg
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/magazine/lmg = 1
+	)
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/magazine/lmg = 800
+	)
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/magazine/lmg = 5
+	)
+
+
+/obj/structure/interactive/shop_holder/ammo/lmg
+	possible_items = list(
+		/obj/item/magazine/lmg_556 = 1
+	)
+	possible_prices = list(
+		/obj/item/magazine/lmg_556 = 20
+	)
+	possible_quantity = list(
+		/obj/item/magazine/lmg_556 = 10
+	)
 

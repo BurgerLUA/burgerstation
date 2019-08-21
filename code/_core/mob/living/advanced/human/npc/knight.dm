@@ -25,6 +25,7 @@
 	if(W.type == /obj/item/weapon/ranged/bullet/crossbow)
 		var/obj/item/bullet/bolt/B = new(src.loc)
 		B.on_spawn()
+		B.update_icon()
 		pickup(B)
 
 	return .

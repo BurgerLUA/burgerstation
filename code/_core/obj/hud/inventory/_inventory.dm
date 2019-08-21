@@ -132,6 +132,19 @@
 
 	update_overlays()
 
+/obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
+
+
+
+	if(owner && item_to_update)
+		owner.remove_overlay(item_to_update)
+		if(id == BODY_HAND_LEFT)
+			owner.add_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+		else if(id == BODY_HAND_RIGHT)
+			owner.add_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+
+	return TRUE
+
 /obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
@@ -160,6 +173,10 @@
 	return FALSE
 
 /obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
+
+	if(!I)
+		LOG_ERROR("Tried to add a null item to [src]!")
+		return FALSE
 
 	var/atom/old_location = I.loc
 

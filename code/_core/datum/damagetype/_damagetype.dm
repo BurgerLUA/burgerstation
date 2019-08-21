@@ -177,6 +177,8 @@
 	var/oxy_damage_dealt = hit_object.adjust_oxy_loss(damage_to_deal[OXY])
 	var/damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
 
+	//var/stamina_dealt = hit_object.adjust_stamina_loss(damage_to_deal[STAMINA]) TODO: Make this work.
+
 	do_attack_visuals(attacker,victim,weapon,hit_object,damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)
 

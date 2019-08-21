@@ -76,10 +76,15 @@
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_small"
 
-/obj/projectile/bullet/shotgun
-	name = "shotgun bullet"
+/obj/projectile/bullet/shotgun_pellet
+	name = "shotgun pellet"
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "pellet"
+
+/obj/projectile/bullet/shotgun_slug
+	name = "shotgun slug"
+	icon = 'icons/obj/projectiles/bullet.dmi'
+	icon_state = "bullet_large"
 
 /obj/projectile/bullet/bolt
 	name = "crossbow bolt"

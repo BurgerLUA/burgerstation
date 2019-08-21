@@ -7,8 +7,10 @@
 
 	var/value = 1
 
-/obj/item/currency/New(var/spawn_loc)
+/obj/item/currency/New(var/spawn_loc,var/desired_value=0)
 	..()
+	if(desired_value)
+		value = desired_value
 	update_icon()
 
 /obj/item/currency/update_icon()
@@ -60,6 +62,5 @@
 	return TRUE
 
 /obj/item/currency/on_spawn()
-	if(value == initial(value))
-		value = 100
-	update_icon()
+	value = 10000
+	return ..()

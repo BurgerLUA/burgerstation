@@ -2,7 +2,7 @@
 	name = "nut gun"
 	icon = 'icons/obj/items/weapons/ranged/laser.dmi'
 
-	projectile = /obj/projectile/bullet/laser_red
+	projectile = /obj/projectile/bullet/laser
 	damage_type = "laser_pistol"
 
 	bullet_speed = 31

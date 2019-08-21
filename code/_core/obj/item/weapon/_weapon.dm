@@ -26,6 +26,7 @@
 		var/open_text = open ? "_open" : ""
 		icon_state_held_left = "[icon_state_held_left][open_text]"
 		icon_state_held_right = "[icon_state_held_right][open_text]"
+		update_held_icon()
 
 	if(!override_icon_state)
 		if(open)

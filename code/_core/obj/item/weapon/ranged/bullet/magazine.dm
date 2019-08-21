@@ -36,6 +36,7 @@
 	load_bullet_from_magazine()
 	var/area/A = get_area(caller.loc)
 	play_sound('sounds/weapons/generic_close.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	update_icon()
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object

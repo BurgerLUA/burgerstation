@@ -325,3 +325,12 @@ obj/item/proc/do_automatic(caller,object,location,params)
 
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE
+
+
+/obj/item/proc/update_held_icon()
+
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		I.update_held_icon(src)
+
+	return TRUE

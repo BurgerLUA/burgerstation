@@ -15,3 +15,7 @@ obj/effect/temp/impact/bullet/New(var/desired_location,var/desired_time,var/desi
 
 obj/effect/temp/impact/bullet/laser
 	icon_state = "laser"
+
+obj/effect/temp/impact/bullet/laser/blue
+	icon_state = "laser_blue"
+

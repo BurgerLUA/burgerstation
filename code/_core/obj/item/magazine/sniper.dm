@@ -8,6 +8,7 @@
 /obj/item/magazine/sniper_50/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/sniper_50(src)
+	update_icon()
 
 /obj/item/magazine/sniper_50/update_icon()
 	if(length(stored_bullets))

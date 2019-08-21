@@ -5,19 +5,29 @@
 	id = "bullet"
 	var/is_spent = FALSE
 	icon_state = "bullet"
-	var/bullet_count = 1
+
 
 	var/bullet_capacity_icon = 1
 	var/bullet_capacity = 1
+	var/bullet_count = 1 //How many bullets are in this object?
 
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 
 	var/obj/projectile/projectile //The projectile to create when the bullet is fired. Optional. Overrides the gun's settings.
 	var/list/shoot_sounds //The shoots sounds to create when the bullet is fired. Optional. Overrides the gun's settings.
+	var/base_spread = 0 //The added spread of this type of bullet. Optional. Adds to the gun's settings.
+	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
+	var/bullet_speed = TILE_SIZE - 1 //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 
 /obj/item/bullet/proc/get_ammo_count()
 	return bullet_count
+
+
+/obj/item/bullet/New(var/desired_loc)
+	. = ..()
+	update_icon()
+	return .
 
 /obj/item/bullet/update_icon()
 
@@ -136,13 +146,13 @@
 
 	var/bullets_to_add = min(bullet_count,transfer_target.bullet_capacity - transfer_target.get_ammo_count(),transfer_target.insert_limit)
 	for(var/i=1,i<=bullets_to_add,i++)
-		bullet_count -= 1
 		transfered_bullets += 1
-		if(bullet_count == 0)
+		if(bullet_count == 1)
 			transfer_self = TRUE
 			break
 		var/obj/item/bullet/B = new src.type(transfer_target.loc)
 		transfer_target.stored_bullets += B
+		bullet_count -= 1
 
 	if(display_message)
 		caller.to_chat(span("notice","You insert [transfered_bullets] [src.name]\s into \the [transfer_target]."))

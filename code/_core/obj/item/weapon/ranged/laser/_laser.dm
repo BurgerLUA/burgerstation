@@ -5,3 +5,7 @@
 
 /obj/item/weapon/ranged/laser/get_ammo_count()
 	return floor(charge_current/charge_cost)
+
+/obj/item/weapon/ranged/laser/handle_ammo(caller)
+	charge_current -= charge_cost
+	return null

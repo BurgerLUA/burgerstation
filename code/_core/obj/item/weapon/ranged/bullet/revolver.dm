@@ -25,3 +25,14 @@
 	return ..()
 
 
+/obj/item/weapon/ranged/bullet/revolver/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(open && object && is_inventory(object) && src && src.loc && is_inventory(src.loc))
+		var/obj/hud/inventory/I = object
+		var/obj/item/bullet/B = eject_top_stored_bullet(caller, get_turf(src))
+		if(B)
+			I.add_held_object(B)
+
+		return TRUE
+
+	return ..()

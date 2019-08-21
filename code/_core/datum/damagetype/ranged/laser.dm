@@ -39,6 +39,8 @@
 		SKILL_RANGED = 0.5
 	)
 
+	hit_effect = null
+
 /damagetype/ranged/laser/pistol
 	name = "laser pistol"
 	id = "laser_pistol"
@@ -46,6 +48,29 @@
 	base_attack_damage = list(
 		BRUTE = 0,
 		BURN = 10,
+		TOX = 0,
+		OXY = 0
+	)
+
+
+/damagetype/ranged/laser/carbine
+	name = "laser carbine kill mode"
+	id = "laser_carbine_kill"
+
+	base_attack_damage = list(
+		BRUTE = 0,
+		BURN = 20,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/laser/carbine/stun
+	name = "laser carbine stun mode"
+	id = "laser_carbine_stun"
+
+	base_attack_damage = list(
+		BRUTE = 0,
+		BURN = 0,
 		TOX = 0,
 		OXY = 0
 	)

@@ -1,13 +1,14 @@
 /obj/item/weapon/ranged/
 
 	var/list/shoot_sounds = list()
-	var/bullet_speed = 31
-	var/bullet_count = 1
-	var/obj/projectile/projectile = /obj/projectile/
+
 	var/automatic = FALSE
 	var/shoot_delay = 4 //In deciseconds
 	var/next_shoot_time = 0
 
+	var/bullet_speed = 31 //Fallback value
+	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
+	var/bullet_count = 1 //Fallback value
 	damage_type = "gun_butt"
 
 	block_mul = list(
@@ -121,6 +122,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = damage_type
+	var/bullet_count_to_use = bullet_count
+	var/bullet_spread = 0
+	var/bullet_speed_to_use = bullet_speed
 
 	var/obj/item/bullet/spent_bullet = handle_ammo(caller)
 	if(spent_bullet)
@@ -130,6 +134,12 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			shoot_sounds_to_use = spent_bullet.shoot_sounds
 		if(spent_bullet.damage_type)
 			damage_type_to_use = spent_bullet.damage_type
+		if(spent_bullet.projectile_count)
+			bullet_count_to_use = spent_bullet.projectile_count
+		if(spent_bullet.base_spread)
+			bullet_spread = spent_bullet.base_spread
+		if(spent_bullet.bullet_speed)
+			bullet_speed_to_use = spent_bullet.bullet_speed
 
 	update_icon()
 
@@ -152,14 +162,14 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16
 		var/object_fake_y = object.y*TILE_SIZE + icon_pos_y - 16
 
-		var/accuracy_loss = get_static_spread() + get_heat_spread()
+		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
 		if(is_living(caller))
 			var/mob/living/L = caller
 			accuracy_loss += get_skill_spread(L)
 
 		accuracy_loss = Clamp(accuracy_loss,0,0.5)
 
-		for(var/i=1,i<=bullet_count,i++)
+		for(var/i=1,i<=bullet_count_to_use,i++)
 
 			var/list/xy_list = get_projectile_path(caller,object_fake_x,object_fake_y,i,accuracy_loss)
 
@@ -174,9 +184,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 				var/turf/T = get_turf(caller)
 
-				bullet_speed = min(bullet_speed,TILE_SIZE-1)
+				bullet_speed_to_use = min(bullet_speed_to_use,TILE_SIZE-1)
 
-				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed,normy * bullet_speed,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object)
+				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object)
 
 				if(get_dist(caller,object) <= 1 && is_mob(object))
 					P.on_hit(object)

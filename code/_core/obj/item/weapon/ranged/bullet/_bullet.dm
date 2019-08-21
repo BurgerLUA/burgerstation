@@ -29,6 +29,17 @@
 		B.force_move(new_loc)
 		B.update_icon()
 
+/obj/item/weapon/ranged/bullet/proc/eject_top_stored_bullet(var/mob/caller, var/new_loc)
+	if(length(stored_bullets) && stored_bullets[length(stored_bullets)])
+		var/obj/item/bullet/B = stored_bullets[length(stored_bullets)]
+		stored_bullets -= B
+		B.force_move(new_loc)
+		B.update_icon()
+		return B
+
+	return FALSE
+
+
 /obj/item/weapon/ranged/bullet/proc/spend_bullet()
 	if(length(stored_bullets)) //Spend a bullet
 		var/obj/item/bullet/B = stored_bullets[1]

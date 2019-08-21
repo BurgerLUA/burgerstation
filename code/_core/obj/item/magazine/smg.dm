@@ -12,3 +12,4 @@
 /obj/item/magazine/smg_45/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/smg_45(src)
+	update_icon()

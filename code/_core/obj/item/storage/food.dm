@@ -1,11 +1,6 @@
 /obj/item/storage/foodbox/
 	name = "food box"
 	desc = "Contains food"
-	icon_state = "glovebox"
-
-	size = 2
-
-	is_container = TRUE
 
 /obj/item/storage/foodbox/donkbox/
 	name = "box of donk pockets"
