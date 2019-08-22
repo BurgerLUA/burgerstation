@@ -42,6 +42,9 @@ var/global/list/all_living = list()
 
 	var/attack_mode = 1
 
+	var/boss_range = VIEW_RANGE
+	var/list/mob/living/advanced/player/players_fighting_boss
+
 	var/list/attack_left = list(
 		list(16,16),
 		list(16,16),
@@ -76,7 +79,7 @@ var/global/list/all_living = list()
 	var/boss = FALSE
 	var/boss_music
 
-	var/list/mob/living/advanced/player/linked_players
+	//var/list/mob/living/advanced/player/linked_players
 
 	var/respawn = TRUE
 	var/respawn_time = 300 //In deciseconds
@@ -111,7 +114,8 @@ var/global/list/all_living = list()
 	skills = list()
 	factions = list()
 	health_elements = list()
-	linked_players = list()
+	//linked_players = list()
+	players_fighting_boss = list()
 
 	initialize_attributes()
 	initialize_skills()

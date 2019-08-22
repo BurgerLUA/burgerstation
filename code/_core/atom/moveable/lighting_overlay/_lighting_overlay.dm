@@ -9,6 +9,7 @@
 	layer            = LAYER_LIGHTING_DYNAMIC
 	plane            = PLANE_LIGHTING_DYNAMIC
 	invisibility     = INVISIBILITY_LIGHTING
+	infra_luminosity = 10
 
 	blend_mode       = BLEND_MULTIPLY
 

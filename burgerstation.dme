@@ -540,6 +540,8 @@
 #include "code\_core\obj\item\weapon\ranged\laser\unlimited.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\hybrid\_hybrid.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\hybrid\carbine.dm"
+#include "code\_core\obj\item\weapon\ranged\laser\recharging\_recharging.dm"
+#include "code\_core\obj\item\weapon\ranged\laser\recharging\captain.dm"
 #include "code\_core\obj\item\weapon\ranged\magic\_magic.dm"
 #include "code\_core\obj\item\weapon\ranged\magic\artifact.dm"
 #include "code\_core\obj\item\weapon\ranged\magic\rune.dm"

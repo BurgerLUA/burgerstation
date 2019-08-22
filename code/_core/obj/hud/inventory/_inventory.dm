@@ -329,14 +329,18 @@
 		total_size += O.size
 
 	if(length(held_objects))
-		name = get_top_held_object().name
+		var/obj/item/I = get_top_held_object()
+		name = I.name
 	else if(length(worn_objects))
-		name = get_top_worn_object().name
+		var/obj/item/I = get_top_worn_object()
+		name = I.name
 	else
 		name = initial(name)
 
+	/* TODO: IMPORTANT, IS THIS NEEDED?
 	if(owner)
 		owner.update_icon()
+	*/
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 

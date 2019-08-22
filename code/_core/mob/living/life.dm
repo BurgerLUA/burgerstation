@@ -52,10 +52,6 @@
 	return TRUE
 
 /mob/living/proc/post_death()
-	if(boss && length(linked_players))
-		for(var/mob/living/advanced/player/P in linked_players)
-			for(var/obj/hud/button/boss_health/B in P.buttons)
-				B.clear_boss()
 	return TRUE
 
 /mob/living/proc/on_life_AI()
@@ -107,15 +103,7 @@
 	if(paralyze_time != -1)
 		paralyze_time = max(0,paralyze_time - LIFE_TICK)
 
-	if(status & FLAG_STATUS_CRIT)
-		var/stamina_to_regenerate = max(1,ceiling(stamina_max*(1/60)))
-		adjust_stamina(stamina_to_regenerate)
-		if(stamina_current>=stamina_max*0.50)
-			set_hard_crit(FALSE)
-
-
 	return TRUE
-
 
 
 /mob/living/proc/on_life()

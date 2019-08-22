@@ -78,50 +78,17 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 	if(difference)
 		health_current = new_health_current
 
-	if(health_current <= 0)
-
-		if(!has_hard_crit || status & FLAG_STATUS_CRIT)
-			death()
-		else
-			set_hard_crit(TRUE)
-
-
-		if(boss && attacker in linked_players) //Figure out why this exists. Should do this for everyone who is linked.
-			linked_players -= attacker
-	else
-		if(boss)
-
-			if(!(attacker in linked_players))
-				linked_players += attacker
-
-			if(length(linked_players))
-				for(var/mob/living/advanced/player/P in linked_players)
-					for(var/obj/hud/button/boss_health/B in P.buttons)
-						if(get_dist(P,src) > BOSS_RANGE)
-							B.clear_boss()
-							continue
-						B.target_boss = src
-						B.update_stats()
+	if(check_death())
+		death()
 
 	if(do_update)
 		update_health_element_icons(health=TRUE)
-
-
+		update_boss_health()
 
 	return difference
 
-
-/mob/living/proc/set_hard_crit(var/hard_crit_enabled = TRUE)
-
-	if(hard_crit_enabled)
-		adjust_stamina(-stamina_current)
-		status |= FLAG_STATUS_CRIT
-		stun_time = -1
-	else
-		status &= ~FLAG_STATUS_CRIT
-		stun_time = 5
-
-	return TRUE
+/mob/living/proc/check_death()
+	return health_current <= 0
 
 /mob/living/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current

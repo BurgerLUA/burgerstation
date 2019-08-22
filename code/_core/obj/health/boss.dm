@@ -16,9 +16,12 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
+
+
 	var/mob/living/target_boss
 
 	alpha = 0
+	mouse_opacity = 0
 
 /obj/hud/button/boss_health/destroy()
 	target_boss = null
@@ -33,6 +36,10 @@
 	if(!target_boss)
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
 		mouse_opacity = 0
+		if(target_boss.boss_music && owner)
+			var/client/C = owner.client
+			if(C)
+				stop_sound(target_boss.boss_music,C)
 		return FALSE
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
@@ -40,7 +47,6 @@
 		if(target_boss.boss_music && owner)
 			var/client/C = owner.client
 			if(C && C.current_music_track != target_boss.boss_music)
-				world.log << "HELLO [C]. LETS PLAY SOME [target_boss.boss_music]."
 				play_music_track(target_boss.boss_music,C)
 
 	min = 0

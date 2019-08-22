@@ -40,7 +40,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-	if(stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
+	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
 		caller.to_chat(span("notice","You eject the magazine from \the [src]."))
 		var/area/A = get_area(caller)
 		play_sound(pick(mag_remove_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)

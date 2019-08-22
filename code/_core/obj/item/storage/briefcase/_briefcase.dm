@@ -9,7 +9,6 @@
 	container_max_size = 3
 	dynamic_inventory_count = 4
 
-
 /obj/item/storage/briefcase/deagle
 	name = "golden eagle collector's kit"
 	desc = "A gold plated .50ae eagle handcannon. AMURICA."
