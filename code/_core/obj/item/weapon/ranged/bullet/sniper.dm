@@ -18,6 +18,8 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
+	view_punch = 32
+
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper/get_static_spread() //Base spread
 	return 0
 

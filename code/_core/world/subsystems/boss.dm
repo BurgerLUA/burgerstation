@@ -15,13 +15,15 @@ var/global/list/tracked_bosses = list()
 				L.remove_player_from_boss(P)
 			continue
 
-		for(var/mob/living/advanced/P in view(L,L.boss_range))
-			L.add_player_to_boss(P)
+		if(L.ai)
+			var/ai/AI = L.ai
+			if(AI.objective_attack)
+				for(var/mob/living/advanced/P in view(L,L.boss_range))
+					L.add_player_to_boss(P)
 
 		for(var/mob/living/advanced/P in L.players_fighting_boss)
-			if(get_dist(P,L) > L.boss_range*2)
-				L.players_fighting_boss -= P
-
+			if(get_dist(P,L) >= L.boss_range*2)
+				L.remove_player_from_boss(P)
 
 	return TRUE
 
@@ -30,8 +32,6 @@ var/global/list/tracked_bosses = list()
 		for(var/obj/hud/button/boss_health/B in P.buttons)
 			B.target_boss = src
 			B.update_stats()
-
-	return TRUE
 
 /mob/living/proc/add_player_to_boss(var/mob/living/advanced/player/P)
 	if(P in src.players_fighting_boss)

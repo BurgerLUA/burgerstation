@@ -15,6 +15,8 @@
 
 	bullet_type = ".44"
 
+	view_punch = 10
+
 	//shoot_sounds = list('sounds/weapon/ranged/bullet/heavy_revolver.ogg')
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread

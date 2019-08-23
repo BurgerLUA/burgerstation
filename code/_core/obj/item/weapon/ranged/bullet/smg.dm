@@ -18,6 +18,8 @@
 
 	override_icon_state = TRUE
 
+	view_punch = 6
+
 /obj/item/weapon/ranged/bullet/magazine/smg/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
@@ -53,6 +55,8 @@
 	can_wield = FALSE
 
 	override_icon_state = TRUE
+
+	view_punch = 4
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
 	return 0.1

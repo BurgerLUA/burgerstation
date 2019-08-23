@@ -6,6 +6,9 @@
 	var/obj/projectile/projectile_stun
 	var/obj/projectile/projectile_kill
 
+	var/bullet_color_stun = "#00FFFF"
+	var/bullet_color_kill = "#FF0000"
+
 	var/damage_type_kill
 	var/damage_type_stun
 
@@ -15,10 +18,12 @@
 /obj/item/weapon/ranged/laser/hybrid/New(var/desired_loc)
 	. = ..()
 
-	mode = 0 //stun
+	//Set to stun.
+	mode = 0
 	projectile = projectile_stun
 	damage_type = damage_type_stun
 	shoot_sounds = shoot_sounds_stun
+	bullet_color = bullet_color_stun
 
 	update_icon()
 
@@ -33,10 +38,12 @@
 		projectile = projectile_kill
 		damage_type = damage_type_kill
 		shoot_sounds = shoot_sounds_kill
+		bullet_color = bullet_color_kill
 	else
 		projectile = projectile_stun
 		damage_type = damage_type_stun
 		shoot_sounds = shoot_sounds_stun
+		bullet_color = bullet_color_stun
 
 	update_icon()
 

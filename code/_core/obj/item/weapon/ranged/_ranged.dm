@@ -32,6 +32,10 @@
 	var/heat_current = 0
 	var/heat_max = 0.2
 
+	var/bullet_color = "#FFFFFF"
+
+	var/view_punch = 0
+
 /obj/item/weapon/ranged/proc/get_heat_spread()
 	return heat_current
 
@@ -186,7 +190,14 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 				bullet_speed_to_use = min(bullet_speed_to_use,TILE_SIZE-1)
 
-				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object)
+				if(i == ceiling(bullet_count_to_use/2) && is_player(caller) && view_punch && shoot_delay > 1)
+					var/mob/living/advanced/player/P = caller
+					if(P.client)
+						var/client/C = P.client
+						animate(C,pixel_x = -normx*view_punch, pixel_y = -normy*view_punch, time = (shoot_delay-1)*0.5)
+						animate(C,pixel_x = 0, pixel_y = 0, time = shoot_delay-1)
+
+				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object, bullet_color)
 
 				if(get_dist(caller,object) <= 1 && is_mob(object))
 					P.on_hit(object)

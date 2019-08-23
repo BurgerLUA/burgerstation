@@ -21,6 +21,8 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
+	view_punch = 12
+
 /obj/item/weapon/ranged/bullet/pump/combat_shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 

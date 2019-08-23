@@ -15,6 +15,8 @@
 
 	shoot_sounds = list('sounds/weapons/revolver_light/revolver.ogg')
 
+	view_punch = 4
+
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
 	return 0
 

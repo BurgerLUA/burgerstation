@@ -27,6 +27,12 @@
 		OXY = 0
 	)
 
+	var/list/armor_penetration = list(
+		BRUTE = 0,
+		BURN = 0
+	)
+
+
 	var/attack_delay = 8
 	var/attack_last = 0
 
@@ -167,6 +173,9 @@
 					burn_armor += C.armor_rating[BURN] * armor_level_mod
 
 			A.add_skill_xp(SKILL_ARMOR,brute_armor + burn_armor)
+
+		brute_armor = max(0,brute_armor - armor_penetration[BRUTE])
+		burn_armor = max(0,burn_armor - armor_penetration[BURN])
 
 	do_attack_animation(attacker,victim,weapon,hit_object)
 

@@ -537,6 +537,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\smg.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\sniper.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\_laser.dm"
+#include "code\_core\obj\item\weapon\ranged\laser\laser_rifle.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\unlimited.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\hybrid\_hybrid.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\hybrid\carbine.dm"

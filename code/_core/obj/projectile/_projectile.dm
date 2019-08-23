@@ -43,7 +43,9 @@
 
 	var/obj/effect/temp/impact/impact_effect
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target)
+	var/bullet_color = "#FFFFFF"
+
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -73,6 +75,10 @@
 
 	target_turf = desired_turf
 
+	bullet_color = desired_color
+
+	world.log << "FROM NEW: [bullet_color]"
+
 	. = ..()
 
 	update_icon()
@@ -82,6 +88,8 @@
 	M.Translate(vel_x*lifetime,vel_y*lifetime)
 	animate(src, transform = M, time = lifetime*0.5)
 	*/
+
+	return .
 
 /obj/projectile/update_icon()
 	var/icon/I = icon(icon,icon_state = icon_state)
@@ -201,5 +209,5 @@
 		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
 		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
 		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
-		new impact_effect(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y)
+		new impact_effect(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
 	return TRUE

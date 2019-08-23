@@ -52,6 +52,54 @@
 		OXY = 0
 	)
 
+/damagetype/ranged/laser/rifle
+	name = "laser rifle"
+	id = "laser_rifle"
+
+	base_attack_damage = list(
+		BRUTE = 0,
+		BURN = 35,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/laser/rifle/hardlight
+	name = "hardlight laser rifle"
+	id = "laser_rifle_hardlight"
+
+	base_attack_damage = list(
+		BRUTE = 10,
+		BURN = 30,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/laser/rifle/xray
+	name = "xray laser rifle"
+	id = "laser_rifle_xray"
+
+	base_attack_damage = list(
+		BRUTE = 0,
+		BURN = 20,
+		TOX = 0,
+		OXY = 0
+	)
+
+	armor_penetration = list(
+		BRUTE = 0,
+		BURN = 50
+	)
+
+/damagetype/ranged/laser/captain
+	name = "captain's laser pistol"
+	id = "captain_laser_pistol"
+
+	base_attack_damage = list(
+		BRUTE = 0,
+		BURN = 15,
+		TOX = 0,
+		OXY = 0
+	)
 
 /damagetype/ranged/laser/carbine
 	name = "laser carbine kill mode"

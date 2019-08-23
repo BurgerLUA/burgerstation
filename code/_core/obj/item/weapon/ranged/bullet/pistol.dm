@@ -18,6 +18,8 @@
 
 	override_icon_state = TRUE
 
+	view_punch = 6
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)
@@ -43,3 +45,5 @@
 	shoot_delay = 2
 	bullet_type = ".50ae"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
+
+	view_punch = 8

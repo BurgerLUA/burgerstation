@@ -16,6 +16,8 @@
 
 	can_wield = TRUE
 
+	view_punch = 6
+
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.2

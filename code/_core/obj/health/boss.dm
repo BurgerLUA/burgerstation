@@ -19,6 +19,7 @@
 
 
 	var/mob/living/target_boss
+	var/current_boss_music
 
 	alpha = 0
 	mouse_opacity = 0
@@ -36,10 +37,10 @@
 	if(!target_boss)
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
 		mouse_opacity = 0
-		if(target_boss.boss_music && owner)
+		if(current_boss_music && owner)
 			var/client/C = owner.client
 			if(C)
-				stop_sound(target_boss.boss_music,C)
+				stop_sound(current_boss_music,C)
 		return FALSE
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
@@ -48,6 +49,7 @@
 			var/client/C = owner.client
 			if(C && C.current_music_track != target_boss.boss_music)
 				play_music_track(target_boss.boss_music,C)
+				current_boss_music = target_boss.boss_music
 
 	min = 0
 	max = target_boss.health_max

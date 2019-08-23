@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/carbine.dmi'
 
 	projectile_kill = /obj/projectile/bullet/laser/
-	projectile_stun = /obj/projectile/bullet/laser/blue
+	projectile_stun = /obj/projectile/bullet/laser/
 
 	damage_type_kill = "laser_carbine_kill"
 	damage_type_stun = "laser_carbine_stun"
@@ -22,6 +22,8 @@
 	charge_max = 30000
 	charge_current = 30000
 	charge_cost = 1500
+
+	view_punch = 6
 
 /obj/item/weapon/ranged/laser/hybrid/carbine/update_icon()
 

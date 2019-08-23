@@ -20,6 +20,8 @@
 
 	override_icon_state_held = TRUE
 
+	view_punch = 4
+
 
 /obj/item/weapon/ranged/bullet/magazine/lmg/update_icon()
 

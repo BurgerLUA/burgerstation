@@ -15,6 +15,8 @@
 
 	insert_limit = 2
 
+	view_punch = 12
+
 	//shoot_sounds = list('sounds/weapon/ranged/bullet/doublebarrel_shotgun.ogg')
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread

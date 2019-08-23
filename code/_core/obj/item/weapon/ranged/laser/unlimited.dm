@@ -10,4 +10,8 @@
 
 	automatic = FALSE
 
+	charge_max = 1
+	charge_current = 1
+	charge_cost = 0
+
 	//shoot_sounds = list('sounds/weapon/ranged/pew.ogg')

@@ -3,6 +3,8 @@
 	var/charge_current = 1000
 	var/charge_cost = 100
 
+	bullet_color = "#FF0000"
+
 /obj/item/weapon/ranged/laser/get_ammo_count()
 	return floor(charge_current/charge_cost)
 
