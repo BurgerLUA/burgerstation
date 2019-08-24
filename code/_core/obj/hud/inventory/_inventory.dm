@@ -31,6 +31,7 @@
 
 	var/list/obj/item/item_blacklist = list() //Items that can't go in this invetory.
 	var/list/obj/item/item_whitelist = list() //Items that can only go in this inventory.
+	var/list/obj/item/item_bypass = list() //Items that bypass any size and weight requirements.
 
 	var/mob/living/advanced/owner //The mob that owns this object. Only living things should be able to store items.
 
@@ -368,15 +369,16 @@
 			owner.to_chat(span("notice","You don't see how you can fit any more objects in \the [src]."))
 		return FALSE
 
-	if(total_size + I.size > max_size)
-		if(messages)
-			owner.to_chat(span("notice","\The [I] is too large to be put in \the [src]."))
-		return FALSE
+	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass))
+		if(total_size + I.size > max_size)
+			if(messages)
+				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src]."))
+			return FALSE
 
-	if(total_weight + I.weight > max_weight)
-		if(messages)
-			owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src]."))
-		return FALSE
+		if(total_weight + I.weight > max_weight)
+			if(messages)
+				owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src]."))
+			return FALSE
 
 	return TRUE
 

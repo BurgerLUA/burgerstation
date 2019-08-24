@@ -19,9 +19,13 @@
 	if(is_movable(the_target))
 		var/atom/movable/A = the_target
 		if(!A.anchored)
-			if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it.
+			if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it or we have it in our inventory.
 				var/obj/hud/inventory/I = the_hand
 				if(is_inventory(object)) //The target is actually inside the object, which is an inventory
+					if(is_item(the_target))
+						var/obj/item/I2 = the_target
+						if(I2 && I2.on_inventory_click(caller,location,control,params))
+							return TRUE
 					var/obj/hud/inventory/I2 = object //Object = What we're clicking on
 					if(!I2.drag_to_take && add_object(the_target))
 						return TRUE

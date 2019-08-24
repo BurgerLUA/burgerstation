@@ -11,4 +11,3 @@
 	container_max_size = 2
 
 	dynamic_inventory_count = 4
-

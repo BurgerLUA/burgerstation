@@ -48,6 +48,7 @@
 
 	var/has_quick_function = FALSE
 
+	var/list/inventory_bypass = list()
 
 	var/crafting_id = null
 
@@ -123,6 +124,13 @@
 		add_to_inventory(caller,object,TRUE)
 
 	return 	..()
+
+/obj/item/drop_on_object(var/atom/caller,var/atom/object)
+
+	if(caller == object)
+		return click_self(caller)
+
+	return ..()
 
 /obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE)
 
@@ -334,3 +342,7 @@ obj/item/proc/do_automatic(caller,object,location,params)
 		I.update_held_icon(src)
 
 	return TRUE
+
+
+/obj/item/proc/on_inventory_click(var/mob/caller as mob,location,control,params) //When the object is clicked on when it is in your inventory.
+	return FALSE //Return false to do nothing and proceed with normal behavior. Return true to cancel normal behavior.

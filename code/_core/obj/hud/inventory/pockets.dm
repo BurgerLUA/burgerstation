@@ -4,7 +4,7 @@
 	screen_loc = "CENTER,BOTTOM+3"
 	worn_slots = 0
 	held_slots = 1
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	max_size = 1
 	max_weight = 5
 	//should_draw = FALSE
@@ -12,6 +12,8 @@
 	drag_to_take = FALSE
 
 	essential = TRUE
+
+	item_bypass = list()
 
 /obj/hud/inventory/pocket/pocket01
 	name = "left lower pocket"

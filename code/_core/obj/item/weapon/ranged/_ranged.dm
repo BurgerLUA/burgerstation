@@ -97,16 +97,10 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(!object)
 		return FALSE
 
-	//caller.move_delay = max(caller.move_delay,0.5)
 	caller.face_atom(object)
 	if(is_mob(caller))
 		var/mob/M = caller
 		M.attack_turn = curtime + M.attack_turn_delay
-
-	/*
-	if(!caller.can_attack(object,params))
-		return ..()
-	*/
 
 	if(!can_owner_shoot(caller))
 		return FALSE
@@ -231,7 +225,6 @@ obj/item/weapon/ranged/proc/get_projectile_path(var/atom/caller,var/desired_x,va
 		return list(normx,normy)
 
 	return list(0,0)
-
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
 	if(!automatic || (object && object.plane >= PLANE_HUD))

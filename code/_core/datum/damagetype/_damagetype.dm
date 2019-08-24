@@ -271,7 +271,7 @@
 				animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
 
 		else
-			animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
+			animate(victim, pixel_x = initial(victim.pixel_x) + offset_x, pixel_y = initial(victim.pixel_y) + offset_y,time=1)
 			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)

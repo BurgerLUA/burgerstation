@@ -9,6 +9,9 @@
 	inventories = list(
 		/obj/hud/inventory/organs/groin,
 		/obj/hud/inventory/organs/groin_o,
+		/obj/hud/inventory/pocket/pocket01,
+		/obj/hud/inventory/pocket/pocket02
+
 	)
 
 	attach_flag = BODY_TORSO

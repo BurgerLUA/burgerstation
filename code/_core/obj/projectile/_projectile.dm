@@ -29,20 +29,16 @@
 	plane = PLANE_EFFECT
 
 	var/start_time = 0
-	var/lifetime = SECONDS_TO_DECISECONDS(60)
+	var/lifetime = SECONDS_TO_DECISECONDS(60) //Just in case.
 
 	var/turf/target_turf
-
 	var/atom/target_atom
 
 	var/only_hit_target_turf = FALSE
-
+	var/collide_with_other_projectiles = FALSE
 	collision_flags = FLAG_COLLISION_REAL
 
-	var/collide_with_other_projectiles = FALSE
-
 	var/obj/effect/temp/impact/impact_effect
-
 	var/bullet_color = "#FFFFFF"
 
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color)

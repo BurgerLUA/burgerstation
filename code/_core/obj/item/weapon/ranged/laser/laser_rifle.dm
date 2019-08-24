@@ -8,7 +8,7 @@
 	bullet_speed = 31
 	shoot_delay = 4
 
-	automatic = FALSE
+	automatic = TRUE
 
 	bullet_color = "#FF0000"
 
@@ -19,7 +19,7 @@
 	charge_current = 70000
 	charge_cost = 5000
 
-	view_punch = 8
+	view_punch = 6
 
 /obj/item/weapon/ranged/laser/rifle/New(var/desired_loc)
 	. = ..()
@@ -54,7 +54,7 @@
 
 	charge_cost = 7000
 
-	view_punch = 6
+	view_punch = 8
 
 /obj/item/weapon/ranged/laser/rifle/xray
 	name = "xray laser rifle"
@@ -66,4 +66,4 @@
 
 	charge_cost = 7000
 
-	view_punch = 6
+	view_punch = 8
