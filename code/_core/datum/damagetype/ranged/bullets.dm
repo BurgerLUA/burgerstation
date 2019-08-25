@@ -57,7 +57,30 @@
 	id = ".38"
 
 	base_attack_damage = list(
+		BRUTE = 25,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+
+/damagetype/ranged/bullet/revolver_22
+	name = ".22 bullet"
+	id = ".22"
+
+	base_attack_damage = list(
 		BRUTE = 20,
+		BURN = 0,
+		TOX = 0,
+		OXY = 0
+	)
+
+/damagetype/ranged/bullet/revolver_22/surplus
+	name = ".22 surplus bullet"
+	id = ".22_surplus"
+
+	base_attack_damage = list(
+		BRUTE = 15,
 		BURN = 0,
 		TOX = 0,
 		OXY = 0

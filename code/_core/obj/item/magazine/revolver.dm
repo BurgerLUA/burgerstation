@@ -30,3 +30,16 @@
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/revolver_44(src)
 	update_icon()
+
+
+/obj/item/magazine/clip/revolver/bullet_22
+	name = "\improper .22LR speedloader"
+	bullet_type = ".22"
+	icon = 'icons/obj/items/magazine/revolver/22.dmi'
+	icon_state = "22"
+	bullet_capacity = 6
+
+/obj/item/magazine/clip/revolver/bullet_22/on_spawn()
+	for(var/i=1, i <= bullet_capacity, i++)
+		stored_bullets += new /obj/item/bullet/revolver_22(src)
+	update_icon()

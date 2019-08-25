@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/smg
 	name = ".45 bullpup submachine gun"
 	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
-	icon_state = "inventory_open"
+	icon_state = "inventory"
 
 	bullet_speed = 20
-	shoot_delay = 1.5
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -42,7 +42,7 @@
 	icon_state = "inventory"
 
 	bullet_speed = 26
-	shoot_delay = 1
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -63,3 +63,12 @@
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED,0,100))
+
+
+/obj/item/weapon/ranged/bullet/magazine/smg/tactical
+	name = ".45 tactical syndicate submachine gun"
+	icon = 'icons/obj/items/weapons/ranged/c20r.dmi'
+	icon_state = "inventory"
+	shoot_delay = 1.5
+	view_punch = 4
+	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')

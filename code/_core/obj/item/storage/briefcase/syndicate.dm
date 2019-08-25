@@ -17,7 +17,7 @@
 
 /obj/item/storage/briefcase/syndicate/sniper/on_spawn()
 	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/heavy_sniper(src.loc),bypass_checks = TRUE)
-	for(var/i=2,i<=2,i++)
+	for(var/i=2,i<=dynamic_inventory_count,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/sniper_50(src.loc)
 		M.on_spawn()
 		M.update_icon()
@@ -31,7 +31,7 @@
 
 /obj/item/storage/briefcase/syndicate/smg/on_spawn()
 	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/smg(src.loc),bypass_checks = TRUE)
-	for(var/i=2,i<=4,i++)
+	for(var/i=2,i<=dynamic_inventory_count,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/smg_45(src.loc)
 		M.on_spawn()
 		M.update_icon()
@@ -45,7 +45,7 @@
 
 /obj/item/storage/briefcase/syndicate/rifle/on_spawn()
 	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src.loc),bypass_checks = TRUE)
-	for(var/i=2,i<=4,i++)
+	for(var/i=2,i<=dynamic_inventory_count,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/rifle_762(src.loc)
 		M.on_spawn()
 		M.update_icon()
@@ -59,7 +59,7 @@
 
 /obj/item/storage/briefcase/syndicate/pistol/on_spawn()
 	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/pistol(src.loc),bypass_checks = TRUE)
-	for(var/i=2,i<=6,i++)
+	for(var/i=2,i<=dynamic_inventory_count,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/pistol_10mm(src.loc)
 		M.on_spawn()
 		M.update_icon()

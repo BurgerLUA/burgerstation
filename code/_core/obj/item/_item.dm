@@ -6,8 +6,9 @@
 	var/weight = 1 //Weight in kg
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
-	var/container_max_size = 0 //I this item has a container, how much should it be able to hold in each slot?
-	var/container_max_weight = 0 //I this item has a container, how much should it be able to hold in each slot?
+	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
+	var/container_max_weight = 0 //This item has a container, how much should it be able to carry in each slot?
+	var/container_held_slots = 1 //How much each inventory slot can hold.
 
 	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
 
@@ -155,12 +156,12 @@
 
 /obj/item/New(var/desired_loc)
 
-	//force_move(desired_loc) //TODO: FIGURE THIS OUT
-
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
 
+		if(container_held_slots)
+			inventories[i].held_slots = container_held_slots
 		if(container_max_size)
 			inventories[i].max_size = container_max_size
 		if(container_max_weight)
@@ -169,6 +170,8 @@
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new(src)
 		D.id = "dynamic_[i]"
+		if(container_held_slots)
+			D.held_slots = container_held_slots
 		if(container_max_size)
 			D.max_size = container_max_size
 		if(container_max_weight)
@@ -177,7 +180,7 @@
 
 	. = ..()
 
-obj/item/proc/update_owner(desired_owner)
+/obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)
 		var/obj/hud/inventory/I = v
 		I.update_owner(desired_owner)

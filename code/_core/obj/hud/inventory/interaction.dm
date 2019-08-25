@@ -90,10 +90,11 @@ obj/hud/inventory/drop_item(var/turf/new_location)
 
 /obj/hud/inventory/defer_click_on_object()
 
-	if(length(held_objects))
-		return get_top_held_object()
+	if(held_slots <= 1 && worn_slots <= 1)
+		if(length(held_objects))
+			return get_top_held_object()
 
-	if(length(worn_objects))
-		return get_top_worn_object()
+		if(length(worn_objects))
+			return get_top_worn_object()
 
 	return src

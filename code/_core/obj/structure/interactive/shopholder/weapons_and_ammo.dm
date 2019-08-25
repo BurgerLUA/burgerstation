@@ -44,8 +44,28 @@
 
 	possible_quantity = list(
 		/obj/item/weapon/ranged/bullet/revolver/detective = 10
-
 	)
+
+
+/obj/structure/interactive/shop_holder/weapons/deckhard
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/revolver/deckhard = 1
+	)
+
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/revolver/deckhard = 20
+	)
+
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/revolver/deckhard = 10
+	)
+
+
+
+
+
+
+
 
 /obj/structure/interactive/shop_holder/weapons/dbarrel
 	possible_items = list(
@@ -66,12 +86,28 @@
 	)
 
 	possible_prices = list(
-		/obj/item/magazine/clip/revolver/bullet_38 = 2
+		/obj/item/magazine/clip/revolver/bullet_38 = 3
 	)
 
 	possible_quantity = list(
 		/obj/item/magazine/clip/revolver/bullet_38 = 30
 	)
+
+/obj/structure/interactive/shop_holder/ammo/bullet_22
+	possible_items = list(
+		/obj/item/magazine/clip/revolver/bullet_22 = 1
+	)
+
+	possible_prices = list(
+		/obj/item/magazine/clip/revolver/bullet_22 = 2
+	)
+
+	possible_quantity = list(
+		/obj/item/magazine/clip/revolver/bullet_22 = 30
+	)
+
+
+
 
 /obj/structure/interactive/shop_holder/ammo/bullet_shotgun
 	possible_items = list(
