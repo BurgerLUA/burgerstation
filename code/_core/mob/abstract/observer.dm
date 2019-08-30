@@ -40,6 +40,8 @@
 		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
+	return .
+
 /mob/abstract/observer/Logout()
 	..()
 	qdel(src)

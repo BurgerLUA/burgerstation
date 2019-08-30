@@ -4,11 +4,11 @@
 	var/weather = WEATHER_NONE //Optional weather
 
 /area/world/Initialize()
-	..()
+	. = ..()
 	if(weather)
 		icon = 'icons/area/weather.dmi'
 		icon_state = weather
-
+	return .
 
 /area/world/shadows //2,4
 	name = "shadow realm"

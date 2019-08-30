@@ -6,3 +6,12 @@
 
 	if(response == "Yes")
 		death()
+
+/mob/living/verb/test_damage()
+	set category = "Debug"
+	set name = "Test Damage"
+
+	health_regen_buffer -= 50
+
+
+	to_chat(span("notice",health_regen_buffer))

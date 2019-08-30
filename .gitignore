@@ -11,6 +11,7 @@ data/
 cfg/
 build_log.txt
 code/_core/world/private.dm
+text/badwords.txt
 
 __pycache__/
 *.py[cod]

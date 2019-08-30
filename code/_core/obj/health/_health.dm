@@ -12,6 +12,7 @@
 	var/min = 0
 	var/max = 100
 	var/current = 0
+	var/overflow = 0
 
 	layer = LAYER_HUD
 	plane = PLANE_HUD
@@ -46,10 +47,19 @@
 	var/start_x = 0
 	var/end_x = 32
 	var/start_y = 0
-	var/end_y = 1 + (current/max)*(28)
+	var/end_y = 1 + (Clamp(current+min(0,overflow),0,max)/max)*(28)
 
 	bar.Blend(bar_color,ICON_MULTIPLY)
 	bar.Crop(start_x,start_y,end_x,end_y)
+
+	if(overflow < 0)
+		var/icon/bar_changing = icon(initial(icon),icon_state = "bar")
+		var/start_x_changing = 0
+		var/end_x_changing = 32
+		var/start_y_changing = end_y
+		var/end_y_changing = 1 + (overflow/max)*(28)
+		bar_changing.Crop(start_x_changing,start_y_changing,end_x_changing,end_y_changing)
+		base.Blend(bar_changing,ICON_OVERLAY)
 
 	base.Blend(bar,ICON_OVERLAY)
 
@@ -76,6 +86,7 @@
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
+	overflow = -M.damage_soft_total
 	return ..()
 
 /obj/hud/button/health/sp
@@ -97,6 +108,7 @@
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
+	overflow = M.stamina_regen_buffer
 	return ..()
 
 /obj/hud/button/health/mp
@@ -118,4 +130,5 @@
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)
+	overflow = M.mana_regen_buffer
 	..()

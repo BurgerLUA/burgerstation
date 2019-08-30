@@ -56,18 +56,13 @@
 
 /mob/living/proc/on_life_AI()
 
-	if(!initialized)
-		Initialize()
-		return TRUE //Wait until next tick.
-
-	if(status & FLAG_STATUS_DEAD)
+	if(!ai || !initialized || status & FLAG_STATUS_DEAD)
 		return FALSE
 
-	if(ai)
-		ai.on_life()
-		handle_movement(DECISECONDS_TO_TICKS(LIFE_TICK))
+	ai.on_life()
+	handle_movement(DECISECONDS_TO_TICKS(LIFE_TICK))
 
-	return ..()
+	return TRUE
 
 /mob/living/proc/on_stunned()
 	return TRUE
@@ -108,7 +103,11 @@
 
 /mob/living/proc/on_life()
 
+	if(!initialized)
+		return FALSE
+
 	handle_status_effects()
+	handle_health_buffer()
 
 	update_alpha(handle_alpha())
 
@@ -123,3 +122,24 @@
 	return 255
 
 
+/mob/living/proc/handle_health_buffer()
+
+	if(health_regen_buffer)
+		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		adjust_tox_loss(-health_to_regen)
+		health_regen_buffer -= health_to_regen
+
+	if(stamina_regen_buffer)
+		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
+		adjust_stamina(stamina_to_regen)
+		stamina_regen_buffer -= stamina_to_regen
+
+	if(mana_regen_buffer)
+		var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
+		adjust_mana(mana_to_regen)
+		mana_regen_buffer -= mana_to_regen
+
+	update_health(health_regen_buffer,FALSE)
+	update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0)
+
+	return TRUE

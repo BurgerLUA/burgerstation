@@ -41,16 +41,16 @@
 
 	return TRUE
 
-/obj/item/food/proc/consume(var/mob/living/advanced/consumer)
+/obj/item/food/proc/consume(var/mob/living/consumer)
 
 	if(heal_amount_health)
-		consumer.heal_all_organs(heal_amount_health,heal_amount_health,heal_amount_health,heal_amount_health)
+		consumer.health_regen_buffer += heal_amount_health
 
 	if(heal_amount_stamina)
-		consumer.adjust_stamina(heal_amount_stamina)
+		consumer.stamina_regen_buffer += heal_amount_stamina
 
 	if(heal_amount_mana)
-		consumer.adjust_mana(heal_amount_mana)
+		consumer.mana_regen_buffer += heal_amount_mana
 
 	consumer.update_health_element_icons(heal_amount_health,heal_amount_stamina,heal_amount_mana)
 

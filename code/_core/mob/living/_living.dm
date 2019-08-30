@@ -40,6 +40,10 @@ var/global/list/all_living = list()
 	var/mana_current = 0
 	var/mana_regeneration = 0
 
+	var/health_regen_buffer = 0
+	var/mana_regen_buffer = 0
+	var/stamina_regen_buffer = 0
+
 	var/attack_mode = 1
 
 	var/boss_range = VIEW_RANGE

@@ -83,6 +83,8 @@
 
 /mob/Initialize()
 
+	. = ..()
+
 	if(src.client)
 		for(var/obj/structure/interactive/localmachine/L in local_machines)
 			L.update_for_mob(src)
@@ -90,7 +92,7 @@
 	var/area/A = get_area(src)
 	A.Entered(src)
 
-	return ..()
+	return .
 
 /mob/New(var/loc/spawning_location,var/client/C)
 

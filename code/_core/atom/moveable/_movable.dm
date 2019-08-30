@@ -19,7 +19,7 @@
 
 /atom/movable/Initialize()
 	. = ..()
-	area = get_area(src)
+	area = get_area(src) //TODO: Is this needed?
 	return .
 
 /atom/movable/destroy()

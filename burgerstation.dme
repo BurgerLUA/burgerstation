@@ -661,6 +661,7 @@
 #include "code\_core\world\life.dm"
 #include "code\_core\world\subsystems\_subsystems.dm"
 #include "code\_core\world\subsystems\attributes.dm"
+#include "code\_core\world\subsystems\badwords.dm"
 #include "code\_core\world\subsystems\boss.dm"
 #include "code\_core\world\subsystems\classes.dm"
 #include "code\_core\world\subsystems\cleaning.dm"

@@ -10,7 +10,9 @@
 	var/health_regeneration = 0
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
+	var/list/damage_soft = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
 
+	var/damage_soft_total = 0
 
 	var/throw_speed = 8 //How far the object travels in pixels per decisecond, when thrown
 

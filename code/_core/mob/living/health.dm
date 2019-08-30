@@ -53,10 +53,15 @@
 
 	return ..()
 
-/mob/living/proc/get_health()
-	return health_max - get_total_loss()
-
 /mob/living/proc/update_stats()
+
+	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
+	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
+	mana_max = mana_base + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*400
+
+	update_health_element_icons(TRUE,TRUE,TRUE)
+
+/mob/living/advanced/update_stats()
 
 	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
 	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
@@ -70,13 +75,9 @@
 
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
-mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
+/mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 
-	var/new_health_current = get_health()
-	var/difference = new_health_current - health_current
-
-	if(difference)
-		health_current = new_health_current
+	. = ..()
 
 	if(check_death())
 		death()
@@ -85,10 +86,14 @@ mob/living/update_health(var/damage_dealt,var/atom/attacker,var/do_update=TRUE)
 		update_health_element_icons(health=TRUE)
 		update_boss_health()
 
-	return difference
+	return .
 
 /mob/living/proc/check_death()
-	return health_current <= 0
+	if(health_current <= 0)
+		world.log << "[src] has [health_current] HP."
+		return TRUE
+	else
+		return FALSE
 
 /mob/living/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current

@@ -49,7 +49,7 @@ var/global/world_state = STATE_STARTING
 	status += "Map: <b>[map]</b><br>"
 	status += "Round Duration: <b>[duration]</b>"
 
-
+/*
 /world/Error(var/exception/e)
 	var/name = e.name
 	var/file = e.file
@@ -59,3 +59,4 @@ var/global/world_state = STATE_STARTING
 	broadcast_to_role("<span class='system error'>Runtime Error!<br>[name] at line [line] at [file]<br>[desc]</span>",TEXT_OOC,FLAG_PERMISSION_DEVELOPER)
 
 	return TRUE
+*/

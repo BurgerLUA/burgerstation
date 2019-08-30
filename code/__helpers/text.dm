@@ -1,5 +1,30 @@
 #define ICON_TO_TEXT(icon,icon_state) <img class='icon' src=\ref[icon] ICONSTATE='[icon_state]'>
 
+/proc/police_input(var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
+
+	for(var/badword in all_badwords)
+		input = replacetextEx(input, badword, repeat_text("*",length(badword)))
+
+	if(capitalize)
+		input = capitalize(input)
+
+	if(periodize)
+		input = periodize(input)
+
+	input = sanitize(input,max_length)
+
+	return input
+
+//Skull132 made this
+/proc/repeat_text(var/text_to_repeat, var/times_to_repeat=1)
+
+    var/list/returning_list = list()
+
+    for (var/i = 0; i < times_to_repeat; i++)
+        returning_list += text_to_repeat
+
+    return returning_list.Join("")
+
 /proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
 	if(!input)
 		return
@@ -63,4 +88,4 @@
 
 
 /proc/getCharacter(string, pos=1) //Stolen from goon.
-            return ascii2text(text2ascii(string, pos))
+	return ascii2text(text2ascii(string, pos))

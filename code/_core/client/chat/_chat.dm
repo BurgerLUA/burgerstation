@@ -23,10 +23,11 @@
 			C.to_chat(text_to_say,TEXT_OOC)
 
 proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_type as num)
+
 	if(!text_to_say)
 		return FALSE
 
-	text_to_say = sanitize(text_to_say)
+	text_to_say = police_input(text_to_say)
 
 	switch(text_type)
 		if(TEXT_WHISPER)

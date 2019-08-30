@@ -4,9 +4,10 @@
 	status = FLAG_STATUS_IMMORTAL
 
 /mob/living/advanced/npc/arena_guard/Initialize()
-	..()
+	. = ..()
 	var/obj/item/weapon/W1 = new /obj/item/weapon/ranged/laser/unlimited(src.loc)
 	pickup(W1)
+	return .
 
 /mob/living/advanced/npc/arena_guard/red
 	name = "red team guard"

@@ -57,7 +57,7 @@
 	has_footprints = TRUE
 
 /mob/living/advanced/destroy()
-	inventory = null
+	inventory.Cut()
 	worn_objects = null
 	left_hand = null
 	right_hand = null
@@ -83,6 +83,7 @@
 	icon_state = "0"
 
 	organs = list()
+	world.log << "NEW?"
 	inventory = list()
 	worn_objects = list()
 	labeled_organs = list()
@@ -125,9 +126,6 @@
 		var/obj/hud/inventory/O = v
 		O.delete_all_objects()
 
-
-
-
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/obj/item/clothing/C in clothing_list)
 		C.quick_equip(src)
@@ -144,88 +142,21 @@ mob/living/advanced/Login()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 
-/mob/living/advanced/on_life()
-
-	. = ..()
-
-	if(chargen)
-		return .
-
-	if(talk_duration)
-		talk_duration = max(0,talk_duration-LIFE_TICK)
-		if(talk_duration <= 0)
-			talk_type = 0
-			update_icon()
-
-	if(!.)
-		return .
-
-	var/health_adjust = 0
-	var/mana_adjust = 0
-	var/stamina_adjust = 0
-
-	if(health_regen_delay <= 0 && health_current < health_max)
-		var/heal_amount = health_regeneration*LIFE_TICK*0.1
-		if((get_brute_loss() + get_burn_loss())/health_max)
-			heal_amount *= 2
-		health_adjust = heal_all_organs(heal_amount,heal_amount,0,1)
-		if(health_adjust)
-			add_skill_xp(SKILL_RECOVERY,health_adjust)
-
-	if(stamina_regen_delay <= 0 && stamina_current < stamina_max)
-		var/heal_amount = stamina_regeneration*LIFE_TICK*0.1
-		stamina_adjust = adjust_stamina(heal_amount)
-		if(stamina_adjust)
-			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
-
-	if(mana_regen_delay <= 0 && mana_current < mana_max)
-		var/heal_amount = mana_regeneration*LIFE_TICK*0.1
-		mana_adjust = adjust_mana(heal_amount)
-		if(mana_adjust)
-			add_skill_xp(SKILL_RECOVERY,mana_adjust)
-
-	if(health_adjust || stamina_adjust || mana_adjust)
-		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
-
-	health_regen_delay = max(0,health_regen_delay - LIFE_TICK)
-	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK)
-	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK)
-
-	/*
-	if(life_ticks >= 10*4)
-		for(var/obj/item/organ/O in organs)
-			for(var/wound/W in O.wounds)
-				W.on_life()
-		life_ticks = 0
-	else
-		life_ticks += 1
-	*/
-
-	for(var/obj/item/organ/O in organs)
-		for(var/wound/W in O.wounds)
-			W.on_life()
-
-	return .
-
 /mob/living/advanced/adjust_brute_loss(var/value)
-	if(value > 0)
-		health_regen_delay = max(health_regen_delay,300)
-	return ..()
+	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
+	return torso.adjust_brute_loss(value)
 
 /mob/living/advanced/adjust_tox_loss(var/value)
-	if(value > 0)
-		health_regen_delay = max(health_regen_delay,300)
-	return ..()
+	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
+	return torso.adjust_tox_loss(value)
 
 /mob/living/advanced/adjust_oxy_loss(var/value)
-	if(value > 0)
-		health_regen_delay = max(health_regen_delay,300)
-	return ..()
+	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
+	return torso.adjust_oxy_loss(value)
 
 /mob/living/advanced/adjust_burn_loss(var/value)
-	if(value > 0)
-		health_regen_delay = max(health_regen_delay,300)
-	return ..()
+	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
+	return torso.adjust_burn_loss(value)
 
 /mob/living/advanced/on_life_client()
 
@@ -265,10 +196,12 @@ mob/living/advanced/Login()
 	add_species_buttons()
 	add_species_health_elements()
 
-	..()
+	. = ..()
 
 	update_health_element_icons(TRUE,TRUE,TRUE)
 	update_all_blends()
+
+	return .
 
 /mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //TODO: FIX THIS, IT'S BROKEN.
 

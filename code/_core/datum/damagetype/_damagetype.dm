@@ -155,6 +155,8 @@
 	var/brute_armor = 0
 	var/burn_armor = 0
 
+	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
+
 	if(is_living(victim))
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
@@ -179,7 +181,6 @@
 
 	do_attack_animation(attacker,victim,weapon,hit_object)
 
-	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 	var/brute_damage_dealt = calculate_damage_with_armor(hit_object.adjust_brute_loss(damage_to_deal[BRUTE]),brute_armor)
 	var/burn_damage_dealt = calculate_damage_with_armor(hit_object.adjust_burn_loss(damage_to_deal[BURN]),burn_armor)
 	var/tox_damage_dealt = hit_object.adjust_tox_loss(damage_to_deal[TOX])

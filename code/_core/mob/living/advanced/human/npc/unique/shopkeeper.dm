@@ -13,3 +13,4 @@
 	change_organ_visual("hair_face", desired_color = "#9E7E6E")
 	update_all_blends()
 	add_outfit("shopkeeper_outfit")
+	return .

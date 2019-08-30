@@ -44,7 +44,18 @@
 	return value
 
 /atom/proc/get_total_loss()
-	return get_brute_loss() + get_burn_loss() + get_tox_loss() + get_oxy_loss()
+	var/returning_value = 0
+	for(var/damage_type in damage)
+		returning_value += damage[damage_type]
+
+	return returning_value
+
+/atom/proc/get_total_loss_soft()
+	var/returning_value = 0
+	for(var/damage_type in damage_soft)
+		returning_value += damage_soft[damage_type]
+
+	return returning_value
 
 //Retrieving
 /atom/proc/get_brute_loss()
@@ -61,6 +72,7 @@
 
 /atom/proc/update_health(var/damage_dealt,var/atom/attacker) //Update the health values.
 	health_current = get_overall_health()
+	damage_soft_total = get_total_loss_soft()
 
 /atom/proc/adjust_loss(var/type=BRUTE,var/amount)
 	if(!amount)

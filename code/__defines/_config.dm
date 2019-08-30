@@ -9,6 +9,8 @@
 #define WORLD_SIZE 512 //This shouldn't be touched unless you know what you're doing
 #define WORLD_SIZE_SEGMENT 128 //This shouldn't be touched unless you know what you're doing
 
+#define BADWORDS "text/badwords.txt"
+
 #define VIEW_RANGE 11
 
 #define SOUND_RANGE 18
@@ -34,8 +36,8 @@
 
 //Makes compiling faster FALSE disabled
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING TRUE
-#define ENABLE_WEATHERGEN TRUE
+#define ENABLE_LIGHTING FALSE
+#define ENABLE_WEATHERGEN FALSE
 #define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN TRUE
 
@@ -66,6 +68,15 @@
 #define STEALTH_MAX_ALPHA 10
 #define STEALTH_MIN_ALPHA 1
 
+
+#define HEALTH_REGEN_BUFFER_MAX 1
+#define HEALTH_REGEN_BUFFER_MIN -1
+
+#define STAMINA_REGEN_BUFFER_MAX 1
+#define STAMINA_REGEN_BUFFER_MIN -1
+
+#define MANA_REGEN_BUFFER_MAX 1
+#define MANA_REGEN_BUFFER_MIN -1
 
 #define MAX_ZOOM 4
 #define MIN_ZOOM 2

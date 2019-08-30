@@ -5,7 +5,13 @@
 		v.update_owner(src)
 
 mob/living/advanced/get_total_loss()
-	var/damage_current = 0
 	for(var/obj/item/organ/O in organs)
-		damage_current += O.get_total_loss()
-	return damage_current
+		. += O.get_total_loss()
+
+	return .
+
+mob/living/advanced/get_total_loss_soft()
+	for(var/obj/item/organ/O in organs)
+		. += O.get_total_loss_soft()
+
+	return .
