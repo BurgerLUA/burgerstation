@@ -33,10 +33,12 @@
 
 /recipe/proc/check_recipe(var/list/item_table,var/obj/item/crafting/crafting_table)
 
+	/*
 	if(do_debug)
-		world.log << "[crafting_table.crafting_id] == [recipe_type]"
+		LOG_DEBUG("[crafting_table.crafting_id] == [recipe_type]")
 		for(var/k in item_table)
-			world.log << "[k]: [item_table[k]]"
+			LOG_DEBUG("[k]: [item_table[k]]")
+	*/
 
 	if(crafting_table.crafting_id != recipe_type)
 		return list()
@@ -47,14 +49,14 @@
 		for(var/grid_id in required_item_grid)
 			var/grid_crafting_id = required_item_grid[grid_id]
 			if(!grid_crafting_id || grid_crafting_id == null)
-				if(do_debug) world.log << "No item is needed for [grid_id]. Skipping."
+				if(do_debug) LOG_DEBUG("No item is needed for [grid_id]. Skipping.")
 				continue
 			var/obj/item/held_item_in_grid = item_table[grid_id]
 			if(!held_item_in_grid)
-				if(do_debug) world.log << "There is no item in [grid_id]. We cannot craft this recipe without a [grid_crafting_id] in [grid_id]."
+				if(do_debug) LOG_DEBUG("There is no item in [grid_id]. We cannot craft this recipe without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else if(held_item_in_grid.crafting_id != grid_crafting_id)
-				if(do_debug) world.log << "There is an incorrect item in [grid_id]. We cannot craft this recipe without a [grid_crafting_id] in [grid_id]."
+				if(do_debug) LOG_DEBUG("There is an incorrect item in [grid_id]. We cannot craft this recipe without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else
 				used_items += held_item_in_grid

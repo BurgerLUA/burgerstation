@@ -26,13 +26,10 @@
 
 		var/obj/item/weapon_to_use = is_left_click ? A.get_held_right() : A.get_held_right()
 
-
 		if(is_ranged_gun(weapon_to_use))
 			weapon_distance = 100
 		else if(is_melee(weapon_to_use))
 			weapon_distance = 1
-
-
 
 	if(objective_attack && get_dist(owner,objective_attack) <= weapon_distance)
 		owner.move_dir = 0

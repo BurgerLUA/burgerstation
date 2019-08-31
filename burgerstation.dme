@@ -78,6 +78,7 @@
 #include "code\__helpers\logging.dm"
 #include "code\__helpers\pooling.dm"
 #include "code\__helpers\random.dm"
+#include "code\__helpers\screen_location.dm"
 #include "code\__helpers\text.dm"
 #include "code\__helpers\time.dm"
 #include "code\__helpers\turf.dm"

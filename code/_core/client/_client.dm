@@ -44,6 +44,8 @@ var/global/list/all_clients = list()
 
 	var/disable_controls = FALSE
 
+	var/is_zoomed = FALSE
+
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
 	winset(src,"chat_combat.output","style='[STYLESHEET]'")
@@ -249,6 +251,20 @@ var/global/list/all_clients = list()
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	store_new_params(over_object,over_location,params)
 	..()
+
+/client/MouseMove(object,location,control,params)
+
+	if(is_zoomed)
+
+		var/list/params_list = params2list(params)
+		var/list/screen_loc = parse_screen_loc(params_list["screen-loc"])
+
+		pixel_x = Clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*2, -VIEW_RANGE*TILE_SIZE, VIEW_RANGE*TILE_SIZE)
+		pixel_y = Clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*2, -VIEW_RANGE*TILE_SIZE, VIEW_RANGE*TILE_SIZE)
+
+	..()
+
+
 
 /client/proc/store_new_params(over_object,over_location,params)
 	var/list/new_params = params2list(params)

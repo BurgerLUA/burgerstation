@@ -22,7 +22,9 @@
 		return FALSE
 
 	var/mob/living/advanced/A = user
+
 	A.stun_time = -1
+	A.paralyze_time = -1
 
 	run_function(user,"set_reference","'\ref[src]'")
 
@@ -151,4 +153,5 @@
 			sleep(SECONDS_TO_DECISECONDS(3))
 			A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 			A.stun_time = 1
+			A.paralyze_time = 1
 			A.remove_button(SB)

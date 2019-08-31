@@ -69,7 +69,12 @@
 
 	//Regeneration is measured in seconds
 	var/recovery_skill =  get_skill_power(SKILL_RECOVERY,0,100)
-	health_regeneration = health_max * (0.002 + recovery_skill*0.005)
+
+	if(status & FLAG_STATUS_CRIT)
+		health_regeneration = health_max * 0.01
+	else
+		health_regeneration = health_max * (0.002 + recovery_skill*0.005)
+
 	stamina_regeneration = stamina_max * (0.02 + recovery_skill*0.03)
 	mana_regeneration = mana_max * (0.01 + recovery_skill*0.02)
 

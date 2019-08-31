@@ -45,6 +45,7 @@
 	layer = initial(layer)
 	health_current = health_max
 	stun_time = 0
+	paralyze_time = 0
 	update_health()
 	return TRUE
 

@@ -18,11 +18,9 @@
 	var/mana_adjust = 0
 	var/stamina_adjust = 0
 
-	if(health_regen_delay <= 0 && health_current < health_max)
+	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT) && health_current < health_max)
 		var/heal_amount = health_regeneration*LIFE_TICK*0.1
-		if((get_brute_loss() + get_burn_loss())/health_max)
-			heal_amount *= 2
-		health_adjust = heal_all_organs(heal_amount,heal_amount,0,1)
+		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount)
 		if(health_adjust)
 			add_skill_xp(SKILL_RECOVERY,health_adjust)
 
@@ -75,7 +73,7 @@
 /mob/living/advanced/handle_status_effects()
 	. = ..()
 	if(. && status & FLAG_STATUS_CRIT)
-		if(health_current>=health_max*0.25)
+		if(health_current>=health_max*0.1)
 			set_hard_crit(FALSE)
 
 	return .
@@ -93,7 +91,7 @@
 
 /mob/living/advanced/check_death()
 
-	if(health_current <= health_max*-0.25)
+	if(health_current <= min(-50,health_max*-0.25))
 		return TRUE
 
 	if(health_current <= 0)
@@ -106,7 +104,11 @@
 
 /mob/living/advanced/handle_health_buffer()
 
-	//Health regen buffer handled in organs.
+	if(health_regen_buffer)
+		var/obj/item/organ/O = labeled_organs[BODY_TORSO]
+		if(O)
+			O.adjust_tox_loss(-health_regen_buffer)
+			health_regen_buffer = 0
 
 	if(stamina_regen_buffer)
 		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
@@ -127,11 +129,14 @@
 
 	var/should_update_health = FALSE
 
+	var/damage_min = -1
+	var/damage_max = health_max*0.01
+
 	for(var/obj/item/organ/O in organs)
 
 		//Soft damage to hard damage.
 		for(var/damage_type in O.damage_soft)
-			var/damage_amount = Clamp(O.damage_soft[damage_type],-1,1)
+			var/damage_amount = Clamp(O.damage_soft[damage_type],damage_min,damage_max)
 			if(damage_amount)
 				should_update_health = TRUE
 				O.damage[damage_type] += damage_amount

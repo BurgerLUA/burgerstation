@@ -1,6 +1,6 @@
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(stun_time == -1)
+	if(paralyze_time != 0)
 		return FALSE
 
 	if(status & FLAG_STATUS_DEAD)

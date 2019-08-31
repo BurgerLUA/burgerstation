@@ -18,9 +18,14 @@
 	icon_state = "safe"
 	safe = TRUE
 
-/area/world/mountain/interior/bar
-	name = "snow bar"
-	icon_state = "green"
+/area/world/mountain/interior/shop
+	name = "shop"
+	icon_state = "shop"
+
+/area/world/mountain/interior/shop/gunstore
+	name = "gunstore"
+	id = "mountain_gunstore"
+	icon_state = "shop"
 
 /area/world/mountain/interior/shack
 	name = "snow shack"

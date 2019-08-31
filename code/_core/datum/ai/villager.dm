@@ -46,7 +46,6 @@
 		valid_directions -= NORTH
 	else
 		for(var/atom/A in N.contents)
-			//world.log << "NORTH: [A]"
 			if(is_mob(A) || is_mob_blocker(A))
 				valid_directions -= NORTH
 				break
@@ -55,7 +54,6 @@
 		valid_directions -= EAST
 	else
 		for(var/atom/A in E.contents)
-			//world.log << "EAST: [A]"
 			if(is_mob(A) || is_mob_blocker(A))
 				valid_directions -= EAST
 				break
@@ -64,7 +62,6 @@
 		valid_directions -= SOUTH
 	else
 		for(var/atom/A in S.contents)
-			//world.log << "SOUTH: [A]"
 			if(is_mob(A) || is_mob_blocker(A))
 				valid_directions -= SOUTH
 				break
@@ -73,7 +70,6 @@
 		valid_directions -= WEST
 	else
 		for(var/atom/A in W.contents)
-			//world.log << "WEST: [A]"
 			if(is_mob(A) || is_mob_blocker(A))
 				valid_directions -= WEST
 				break

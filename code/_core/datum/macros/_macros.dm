@@ -24,7 +24,8 @@
 		"7" = "bind_7",
 		"8" = "bind_8",
 		"9" = "bind_9",
-		"0" = "bind_0"
+		"0" = "bind_0",
+		"Z" = "zoom"
 	)
 
 /macros/New(var/client/spawning_owner)
@@ -69,6 +70,8 @@
 				owner.mob.attack_flags |= ATTACK_GRAB
 			if("quick_self")
 				owner.mob.attack_flags |= ATTACK_SELF
+			if("zoom")
+				owner.is_zoomed = TRUE
 
 	return TRUE
 
@@ -97,6 +100,10 @@
 				owner.mob.attack_flags &= ~ATTACK_GRAB
 			if("quick_self")
 				owner.mob.attack_flags &= ~ATTACK_SELF
+			if("zoom")
+				owner.is_zoomed = FALSE
+				owner.pixel_x = 0
+				owner.pixel_y = 0
 
 
 	return TRUE

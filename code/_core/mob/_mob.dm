@@ -26,7 +26,7 @@
 
 	see_invisible = INVISIBILITY_LIGHTING
 
-	sight = SEE_BLACKNESS | SEE_SELF | SEE_TURFS | SEE_PIXELS
+	sight = SEE_SELF | SEE_PIXELS
 
 	/*
 	var/list/quests/all_quests = list()
