@@ -16,7 +16,6 @@
 
 /obj/hud/screen_blood/New(var/desired_loc,var/desired_direction=NORTHWEST)
 
-
 	if(is_living(desired_loc))
 		var/mob/living/L = desired_loc
 		owner = L
@@ -46,7 +45,7 @@
 	var/max_health = owner.health_max
 	var/health = owner.health_current
 
-	if(dir==SOUTH)
+	if(dir==SOUTH) //Master screen blood
 		color = "#FFFFFF"
 		alpha = Clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
 
@@ -54,13 +53,11 @@
 			var/client/C = owner.client
 
 			var/health_loss = 1 - health/max_health
-			var/greyscale_amount = Clamp(( (health_loss**2) - 0.6)*3,0,1)
+			var/greyscale_amount = Clamp(( (health_loss**2) - 0.6)*3,0,0.9)
 
-			var/light_mod = Clamp(0.5 + health/max_health,0,1)
+			var/light_mod = Clamp(0.5 + health/max_health,0.5,1)
 			var/a = (1 - greyscale_amount)*light_mod
 			var/b = greyscale_amount*light_mod
-
-			//world.log << "A: [a], B: [b]"
 
 			var/list/desired_color = list(
 				a,b,b,0,

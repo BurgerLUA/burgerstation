@@ -23,7 +23,6 @@
 		return ..()
 
 	var/mob/living/advanced/A = caller
-	world.log << "Table: [stored_crafting_table]"
 	attempt_to_craft(A,stored_crafting_table)
 
 	return TRUE

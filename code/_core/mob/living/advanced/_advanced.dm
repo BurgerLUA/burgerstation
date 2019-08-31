@@ -81,9 +81,7 @@
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
-
 	organs = list()
-	world.log << "NEW?"
 	inventory = list()
 	worn_objects = list()
 	labeled_organs = list()

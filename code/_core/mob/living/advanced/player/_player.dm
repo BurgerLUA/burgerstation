@@ -30,6 +30,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	respawn = FALSE
 
+	has_hard_crit = TRUE
+
 /mob/living/advanced/player/Initialize()
 	. = ..()
 	all_players += src

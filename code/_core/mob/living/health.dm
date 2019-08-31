@@ -90,7 +90,6 @@
 
 /mob/living/proc/check_death()
 	if(health_current <= 0)
-		world.log << "[src] has [health_current] HP."
 		return TRUE
 	else
 		return FALSE

@@ -73,8 +73,6 @@
 
 	bullet_color = desired_color
 
-	world.log << "FROM NEW: [bullet_color]"
-
 	. = ..()
 
 	update_icon()

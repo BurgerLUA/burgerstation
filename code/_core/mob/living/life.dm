@@ -88,7 +88,6 @@
 		status |= FLAG_STATUS_PARALYZE
 		on_paralyze()
 
-
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
@@ -97,6 +96,8 @@
 
 	if(paralyze_time != -1)
 		paralyze_time = max(0,paralyze_time - LIFE_TICK)
+
+	handle_health_buffer()
 
 	return TRUE
 
@@ -107,8 +108,6 @@
 		return FALSE
 
 	handle_status_effects()
-	handle_health_buffer()
-
 	update_alpha(handle_alpha())
 
 	return TRUE
@@ -139,7 +138,10 @@
 		adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 
-	update_health(health_regen_buffer,FALSE)
-	update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0)
+	if(health_regen_buffer)
+		update_health(health_regen_buffer,FALSE)
+
+	if(health_regen_buffer || stamina_regen_buffer || mana_regen_buffer)
+		update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0)
 
 	return TRUE

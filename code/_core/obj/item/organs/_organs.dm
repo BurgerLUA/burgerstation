@@ -68,25 +68,49 @@
 	if(value > 0 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
-	damage_soft[BRUTE] += value
+
+	if(is_player(src.loc))
+		damage_soft[BRUTE] += value
+	else
+		damage[BRUTE] += value
+
+	return value
 
 /obj/item/organ/adjust_tox_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
-	damage_soft[TOX] += value
+
+	if(is_player(src.loc))
+		damage_soft[TOX] += value
+	else
+		damage[TOX] += value
+
+	return value
 
 /obj/item/organ/adjust_oxy_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
-	damage_soft[OXY] += value
+
+	if(is_player(src.loc))
+		damage_soft[OXY] += value
+	else
+		damage[OXY] += value
+
+	return value
 
 /obj/item/organ/adjust_burn_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
-	damage_soft[BURN] += value
+
+	if(is_player(src.loc))
+		damage_soft[BURN] += value
+	else
+		damage[BURN] += value
+
+	return value
 
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)
 	attached_organ = O

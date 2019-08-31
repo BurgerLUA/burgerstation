@@ -45,16 +45,6 @@
 	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK)
 	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK)
 
-	/*
-	if(life_ticks >= 10*4)
-		for(var/obj/item/organ/O in organs)
-			for(var/wound/W in O.wounds)
-				W.on_life()
-		life_ticks = 0
-	else
-		life_ticks += 1
-	*/
-
 	handle_organs()
 
 	return .
@@ -85,7 +75,7 @@
 /mob/living/advanced/handle_status_effects()
 	. = ..()
 	if(. && status & FLAG_STATUS_CRIT)
-		if(stamina_current>=stamina_max*0.50)
+		if(health_current>=health_max*0.25)
 			set_hard_crit(FALSE)
 
 	return .
@@ -93,7 +83,6 @@
 /mob/living/advanced/proc/set_hard_crit(var/hard_crit_enabled = TRUE)
 
 	if(hard_crit_enabled)
-		adjust_stamina(-stamina_current)
 		status |= FLAG_STATUS_CRIT
 		stun_time = -1
 	else
@@ -103,11 +92,14 @@
 	return TRUE
 
 /mob/living/advanced/check_death()
+
+	if(health_current <= health_max*-0.25)
+		return TRUE
+
 	if(health_current <= 0)
-		if(!has_hard_crit || status & FLAG_STATUS_CRIT)
-			return TRUE
-		else
-			set_hard_crit(TRUE)
+		if(has_hard_crit)
+			if(!(status & FLAG_STATUS_CRIT))
+				set_hard_crit(TRUE)
 			return FALSE
 
 	return FALSE
@@ -132,19 +124,24 @@
 	return TRUE
 
 /mob/living/advanced/proc/handle_organs()
+
+	var/should_update_health = FALSE
+
 	for(var/obj/item/organ/O in organs)
 
 		//Soft damage to hard damage.
 		for(var/damage_type in O.damage_soft)
 			var/damage_amount = Clamp(O.damage_soft[damage_type],-1,1)
 			if(damage_amount)
-				damage[damage_type] += damage_amount
-				damage_soft[damage_type] -= damage_amount
+				should_update_health = TRUE
+				O.damage[damage_type] += damage_amount
+				O.damage_soft[damage_type] -= damage_amount
 
 		for(var/wound/W in O.wounds)
 			W.on_life()
 
-	update_health(do_update=FALSE)
-	update_health_element_icons(TRUE,FALSE,FALSE)
+	if(should_update_health)
+		update_health(do_update=FALSE)
+		update_health_element_icons(TRUE,FALSE,FALSE)
 
 	return TRUE

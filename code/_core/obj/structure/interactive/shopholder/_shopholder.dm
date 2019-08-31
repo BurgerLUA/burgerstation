@@ -20,9 +20,6 @@
 	item_cost = ceiling(possible_prices[stored_item.type]*rand(0.5,4),min(possible_prices[stored_item.type],5))
 	quantity = ceiling(1 + (possible_quantity[stored_item.type]-1)*rand(90,110)*0.01,1)
 
-	world.log << "QUANTITY: [quantity]."
-
-
 	stored_item.on_spawn()
 	stored_item.update_icon()
 	update_icon()

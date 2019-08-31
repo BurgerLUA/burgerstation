@@ -33,7 +33,7 @@
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status & FLAG_STATUS_STUN)
 		var/distance = get_dist(attacker,src)
-		if(distance <= 1)
+		if(distance <= max(weapon.attack_range,attacker.attack_range))
 			return 0
 		else
 			return 50 + distance*10
