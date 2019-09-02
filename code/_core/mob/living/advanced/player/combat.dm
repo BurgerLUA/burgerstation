@@ -1,6 +1,6 @@
-/mob/living/advanced/player/can_attack(var/atom/victim,var/params)
+/mob/living/advanced/player/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
-	if(is_player(victim))
+	if(is_player(victim) && victim != src)
 		var/area/A = get_area(src)
 		if(A && A.safe)
 			return FALSE

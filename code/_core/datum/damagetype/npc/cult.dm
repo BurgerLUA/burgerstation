@@ -5,38 +5,54 @@
 	attack_verbs = list("slash","stab")
 	weapon_name = "dark blade"
 
-	base_attack_damage = list(
-		BRUTE = 1,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLADE = 10,
+		PIERCE = 5,
+		MAGIC = 5,
+		DARK = 20
+	)
+
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
+	attack_damage_conversion = list(
+		BLADE = BRUTE,
+		PIERCE = BRUTE,
+		MAGIC = BURN,
+		DARK = BURN
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLADE = 20,
+		PIERCE = 50,
+		MAGIC = 0,
+		DARK = 10
 	)
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_AGILITY = CLASS_D,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
+		ATTRIBUTE_DEXTERITY = CLASS_C,
+		ATTRIBUTE_INTELLIGENCE = CLASS_A
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLADE,
+		ATTRIBUTE_DEXTERITY = BLADE,
+		ATTRIBUTE_INTELLIGENCE = MAGIC
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_F,
 		SKILL_MELEE = CLASS_D,
-		SKILL_RANGED = CLASS_F
+		SKILL_PRAYER = CLASS_A
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_MELEE = BLADE,
+		SKILL_PRAYER = DARK
 	)
 
-	attack_delay = 5
+	skill_xp_per_damage = list()
 
 /damagetype/npc/harvester
 	name = "Harvester Damage"
@@ -45,39 +61,56 @@
 	attack_verbs = list("slash","pummel")
 	weapon_name = "dark claws"
 
-	base_attack_damage = list(
-		BRUTE = 1,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		MAGIC = 5,
+		DARK = 10
 	)
 
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
+	attack_damage_conversion = list(
+		BLADE = BRUTE,
+		BLUNT = BRUTE,
+		PIERCE = BRUTE,
+		MAGIC = BURN,
+		DARK = BURN
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 50,
+		MAGIC = 5,
+		DARK = 5
+	)
+
+
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_AGILITY = CLASS_D,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
+		ATTRIBUTE_STRENGTH = CLASS_C,
+		ATTRIBUTE_DEXTERITY = CLASS_C,
+		ATTRIBUTE_INTELLIGENCE = CLASS_C
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLADE,
+		ATTRIBUTE_INTELLIGENCE = MAGIC
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_D,
-		SKILL_MELEE = CLASS_F,
-		SKILL_RANGED = CLASS_F
+		SKILL_UNARMED = CLASS_B
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_UNARMED = PIERCE
 	)
 
-	attack_delay = 5
-
+	skill_xp_per_damage = list()
 
 /damagetype/npc/behemoth
 	name = "Behemoth Damage"
@@ -86,35 +119,44 @@
 	attack_verbs = list("slam","slap","pummel")
 	weapon_name = "dark fists"
 
-	base_attack_damage = list(
-		BRUTE = 1,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 20,
+		DARK = 20
 	)
 
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
+	attack_damage_conversion = list(
+		BLUNT = BRUTE,
+		DARK = BURN
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 25,
+		DARK = 0
+	)
+
+
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_E,
-		ATTRIBUTE_AGILITY = CLASS_F,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
+		ATTRIBUTE_STRENGTH = CLASS_B,
+		ATTRIBUTE_DEXTERITY = CLASS_D,
+		ATTRIBUTE_INTELLIGENCE = CLASS_D
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT,
+		ATTRIBUTE_INTELLIGENCE = DARK
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_E,
-		SKILL_MELEE = CLASS_F,
-		SKILL_RANGED = CLASS_F
+		SKILL_UNARMED = CLASS_B
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_UNARMED = BLUNT
 	)
 
-	attack_delay = 10
+	skill_xp_per_damage = list()

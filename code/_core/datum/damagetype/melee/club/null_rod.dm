@@ -5,7 +5,7 @@
 	attack_damage_base = list(
 		BLUNT = 10,
 		HOLY = 20,
-		FATIGUE = 10
+		DARK = -25
 	)
 
 	attack_damage_conversion = list(
@@ -21,13 +21,14 @@
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_DEXTERITY = CLASS_D,
+		ATTRIBUTE_KARMA = -0.5
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLUNT,
 		ATTRIBUTE_DEXTERITY = BLUNT,
-		ATTRIBUTE_VITALITY = FATIGUE
+		ATTRIBUTE_KARMA = DARK
 	)
 
 	skill_stats = list(

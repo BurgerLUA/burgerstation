@@ -84,7 +84,7 @@
 	underlays += icon_base
 	icon_state = desired_cover_state
 
-/mob/living/simple/npc/turret/port/can_attack(var/atom/victim,var/params)
+/mob/living/simple/npc/turret/port/can_attack(var/atom/victim,vat/atom/weapon/var/params)
 	if(state != 2)
 		return FALSE
 

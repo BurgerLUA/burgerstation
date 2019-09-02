@@ -19,52 +19,78 @@
 
 	var/list/wound/wound_types = list()
 
-	//How much base attack damage to deal
+	var/allow_parry = TRUE
+	var/allow_parry_counter = TRUE
+	var/allow_miss = TRUE
+	var/allow_block = TRUE
+	var/allow_dodge = TRUE
+
+	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
+
+	var/draw_blood = FALSE
+	var/draw_weapon = FALSE
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	var/list/attack_damage_base = list(
 		BLADE = 0,
-		BULLET = 0,
+		BLUNT = 0,
+		PIERCE = 0,
 		LASER = 0,
 		MAGIC = 0,
 		HEAT = 0,
 		COLD = 0,
 		BOMB = 0,
 		BIO = 0,
-		RAD = 0
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0
 	)
 
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
 	var/list/attack_damage_conversion = list(
 		BLADE = BRUTE,
-		BULLET = BRUTE,
+		BLUNT = BRUTE,
+		PIERCE = BRUTE,
 		LASER = BURN,
 		MAGIC = BURN,
 		HEAT = BURN,
 		COLD = BURN,
 		BOMB = BRUTE,
 		BIO = TOX,
-		RAD = TOX
+		RAD = TOX,
+		HOLY = BURN,
+		DARK = BURN,
+		FATIGUE = OXY
 	)
 
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	var/list/attack_damage_penetration = list(
 		BLADE = 0,
-		BULLET = 0,
+		BLUNT = 0,
+		PIERCE = 0,
 		LASER = 0,
 		MAGIC = 0,
 		HEAT = 0,
 		COLD = 0,
 		BOMB = 0,
 		BIO = 0,
-		RAD = 0
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0
 	)
+
 
 	var/list/attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_F,
-		ATTRIBUTE_AGILITY = CLASS_F,
+		ATTRIBUTE_DEXTERITY = CLASS_F,
 		ATTRIBUTE_INTELLIGENCE = CLASS_F
 	)
 
 	var/list/attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_AGILITY = BLADE,
+		ATTRIBUTE_DEXTERITY = BLADE,
 		ATTRIBUTE_INTELLIGENCE = BLADE
 	)
 
@@ -86,16 +112,8 @@
 		SKILL_RANGED = 0
 	)
 
-	var/allow_parry = TRUE
-	var/allow_parry_counter = TRUE
-	var/allow_miss = TRUE
-	var/allow_block = TRUE
-	var/allow_dodge = TRUE
 
-	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
-	var/draw_blood = FALSE
-	var/draw_weapon = FALSE
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -150,7 +168,7 @@
 
 	for(var/attribute in attribute_stats)
 		var/class = attribute_stats[attribute]
-		new_attack_damage[attribute_damage[attribute]] += L.get_skill_level(attribute) * class
+		new_attack_damage[attribute_damage[attribute]] += L.get_attribute_level(attribute) * class
 
 	for(var/skill in skill_stats)
 		var/class = skill_stats[skill]
@@ -228,10 +246,8 @@
 		for(var/damage_type in damage_to_deal)
 			var/old_damage_amount = damage_to_deal[damage_type]
 			var/defense_amount = Clamp(defense_rating_victim[damage_type] - attack_damage_penetration[damage_type],0,100)
-			var/new_damage_amount = (old_damage_amount * Clamp((100-defense_amount)/100,1 - DAMAGE_REDUCTION_CAP,2))
-
-			armor_experienced_earned = old_damage_amount - new_damage_amount
-
+			var/new_damage_amount = old_damage_amount * Clamp((100-defense_amount)/100,1 - DAMAGE_REDUCTION_CAP,2)
+			armor_experienced_earned += old_damage_amount - new_damage_amount
 			damage_to_deal[damage_type] = new_damage_amount
 
 		if(armor_experienced_earned > 0)
@@ -244,7 +260,7 @@
 
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
-		var/real_damage_type = attack_damage_conversion[damage_to_deal]
+		var/real_damage_type = attack_damage_conversion[damage_type]
 		switch(real_damage_type)
 			if(BRUTE)
 				brute_damage_to_deal += damage_amount
@@ -262,6 +278,10 @@
 	var/tox_damage_dealt = oxy_damage_to_deal ? hit_object.adjust_tox_loss(oxy_damage_to_deal) : 0
 	var/oxy_damage_dealt = tox_damage_to_deal ? hit_object.adjust_oxy_loss(tox_damage_to_deal) : 0
 	var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
+
+	if(!total_damage_dealt)
+		display_glance_message(attacker,victim,weapon,hit_object)
+		return total_damage_dealt
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)
@@ -437,3 +457,29 @@
 
 /damagetype/proc/get_miss_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear a swoosh...")
+
+/damagetype/proc/get_glance_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return span("danger","You hear a leaf hitting metal...")
+
+/damagetype/proc/get_glance_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	if(victim == hit_object)
+		return span("warning","You [pick(attack_verbs)] \the [hit_object] with your [get_weapon_name(weapon)]... but it has no effect!")
+	else
+		return span("warning","You [pick(attack_verbs)] \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)]... but it has no effect!")
+
+
+/damagetype/proc/get_glance_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	if(victim == hit_object)
+		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [hit_object] with \the [get_weapon_name(weapon)]... but it has no effect!")
+	else
+		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)]... but it has no effect!")
+
+
+
+/damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	attacker.visible_message(\
+		get_glance_message_3rd(attacker,victim,weapon,hit_object),\
+		get_glance_message_1st(attacker,victim,weapon,hit_object),\
+		get_glance_message_sound(attacker,victim,weapon,hit_object)\
+	)

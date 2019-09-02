@@ -14,7 +14,7 @@
 /obj/item/weapon/melee/energy/can_block()
 	return enabled
 
-/obj/item/weapon/melee/energy/can_attack()
+/obj/item/weapon/melee/energy/can_attack(var/atom/victim,vat/atom/weapon/var/params)
 	if(!enabled)
 		return FALSE
 	return ..()

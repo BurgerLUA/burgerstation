@@ -11,9 +11,6 @@
 	if(attacker && victim)
 		attacker.face_atom(victim)
 
-	if(!attacker.can_attack(victim,params))
-		return FALSE
-
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
 
@@ -21,6 +18,9 @@
 		if(is_mob(blamed))
 			var/mob/M = blamed
 			M.to_chat(span("notice","You can't attack that!"))
+		return FALSE
+
+	if(!attacker.can_attack(victim,object_to_damage_with,params))
 		return FALSE
 
 	if(is_living(attacker) && is_living(victim) && get_dist_between_living(attacker,victim) > object_to_damage_with.attack_range)
@@ -31,10 +31,12 @@
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
-		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to it not existing!")
+		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
 		return FALSE
 
-	attacker.attack_last = world.time
+	object_to_damage_with.attack_last = world.time
+
+	world.log << "Object: [object_to_damage_with.type], delay: [object_to_damage_with.get_attack_delay()]"
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
@@ -51,17 +53,20 @@
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
 	return src
 
-/atom/proc/can_attack(var/atom/victim,var/params)
+/atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
-	if(attack_last + get_attack_delay(victim,params) > world.time)
+	if(attack_last + get_attack_delay() > world.time)
 		return FALSE
 
-	if(victim && !victim.can_be_attacked(src))
+	if(weapon && weapon != src && weapon.attack_last + weapon.get_attack_delay() > world.time)
+		return FALSE
+
+	if(victim && !victim.can_be_attacked(src,weapon,params))
 		return FALSE
 
 	return TRUE
 
-/atom/proc/get_attack_delay(var/atom/victim,var/params)
+/atom/proc/get_attack_delay()
 	return attack_delay
 
 /atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

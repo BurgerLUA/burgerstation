@@ -76,7 +76,7 @@
 
 	return ..()
 
-/mob/can_attack(var/atom/victim,var/params)
+/mob/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
 	if(!can_attack_while_moving && move_delay > 0)
 		return FALSE

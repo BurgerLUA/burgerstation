@@ -19,7 +19,7 @@
 		FATIGUE = 0
 	)
 
-	//The damage conversion table of the weapon. Useful for when you have blades that are unholy or something.
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
 	attack_damage_conversion = list(
 		BLADE = BRUTE,
 		BLUNT = BRUTE,
@@ -56,13 +56,13 @@
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_F,
-		ATTRIBUTE_AGILITY = CLASS_F,
+		ATTRIBUTE_DEXTERITY = CLASS_F,
 		ATTRIBUTE_INTELLIGENCE = CLASS_F
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_AGILITY = BLADE,
+		ATTRIBUTE_DEXTERITY = BLADE,
 		ATTRIBUTE_INTELLIGENCE = BLADE
 	)
 

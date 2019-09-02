@@ -49,7 +49,7 @@
 	return 1 //Unlimited
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller)
-	if(!caller.can_attack())
+	if(!caller.can_attack(null,src))
 		return FALSE
 
 	return TRUE

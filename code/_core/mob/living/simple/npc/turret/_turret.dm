@@ -50,7 +50,7 @@
 
 	return TRUE
 
-/mob/living/simple/npc/turret/can_attack(var/atom/victim,var/params)
+/mob/living/simple/npc/turret/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
 	if(mode == 0)
 		return FALSE

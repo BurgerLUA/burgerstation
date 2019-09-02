@@ -38,7 +38,7 @@
 	if(self.stored_slimes + S.stored_slimes > self.stored_slimes_max)
 		return FALSE
 
-	if(S.can_attack(self))
+	if(S.can_attack(self,S))
 		return FALSE
 
 	return TRUE

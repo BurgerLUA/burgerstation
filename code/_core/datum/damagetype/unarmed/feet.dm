@@ -4,50 +4,42 @@
 	id = "human_foot_right"
 	desc = "Your foot"
 	attack_verbs = list("kick")
-	weapon_name = "right foot"
+	weapon_name = "foot"
 
-	base_attack_damage = list(
-		BRUTE = -10,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = -10
+	)
+
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
+	attack_damage_conversion = list(
+		BLUNT = BRUTE
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = 75
 	)
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_AGILITY = CLASS_C,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
+		ATTRIBUTE_DEXTERITY = CLASS_B
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_C,
-		SKILL_MELEE = CLASS_F,
-		SKILL_RANGED = CLASS_F
+		SKILL_UNARMED = CLASS_A
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_UNARMED = BLUNT,
 	)
 
-	attack_delay = 20
-
-	hit_effect = /obj/effect/temp/impact/combat/kick
-
-/damagetype/unarmed/feet/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	if(!is_living(attacker))
-		return attack_delay
-
-	var/mob/living/L = attacker
-	return max(1,attack_delay - (attack_delay * L.get_attribute_power(ATTRIBUTE_AGILITY,0,100) * 0.5) - (attack_delay * L.get_skill_power(SKILL_UNARMED,0,100) * 0.5))
-
-/damagetype/unarmed/feet/left
-	weapon_name = "left foot"
-	id = "human_foot_left"
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = 1
+	)

@@ -2,39 +2,44 @@
 	name = "claymore"
 	id = "sword_claymore"
 
-	base_attack_damage = list(
-		BRUTE = 10,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLADE = 20,
+		PIERCE = 10,
 	)
 
+	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
+	attack_damage_conversion = list(
+		BLADE = BRUTE,
+		PIERCE = BRUTE,
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLADE = 10,
+		PIERCE = 50,
+	)
+
+
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_AGILITY = CLASS_D,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
+		ATTRIBUTE_STRENGTH = CLASS_B,
+		ATTRIBUTE_DEXTERITY = CLASS_D,
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLADE,
+		ATTRIBUTE_DEXTERITY = PIERCE
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_F,
-		SKILL_MELEE = CLASS_C,
-		SKILL_RANGED = CLASS_F
+		SKILL_MELEE = CLASS_B
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_MELEE = BLADE
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_UNARMED = 0,
-		SKILL_MELEE = 1,
-		SKILL_RANGED = 0
+		SKILL_MELEE = 1
 	)
