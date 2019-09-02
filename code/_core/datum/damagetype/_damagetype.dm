@@ -20,21 +20,41 @@
 	var/list/wound/wound_types = list()
 
 	//How much base attack damage to deal
-	var/list/base_attack_damage = list(
-		BRUTE = 0,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+	var/list/attack_damage_base = list(
+		BLADE = 0,
+		BULLET = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0
 	)
 
-	var/list/armor_penetration = list(
-		BRUTE = 0,
-		BURN = 0
+	var/list/attack_damage_conversion = list(
+		BLADE = BRUTE,
+		BULLET = BRUTE,
+		LASER = BURN,
+		MAGIC = BURN,
+		HEAT = BURN,
+		COLD = BURN,
+		BOMB = BRUTE,
+		BIO = TOX,
+		RAD = TOX
 	)
 
-
-	var/attack_delay = 8
-	var/attack_last = 0
+	var/list/attack_damage_penetration = list(
+		BLADE = 0,
+		BULLET = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0
+	)
 
 	var/list/attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_F,
@@ -43,9 +63,9 @@
 	)
 
 	var/list/attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLADE,
+		ATTRIBUTE_AGILITY = BLADE,
+		ATTRIBUTE_INTELLIGENCE = BLADE
 	)
 
 	var/list/skill_stats = list(
@@ -55,9 +75,9 @@
 	)
 
 	var/list/skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_UNARMED = BLADE,
+		SKILL_MELEE = BLADE,
+		SKILL_RANGED = BLADE
 	)
 
 	var/list/skill_xp_per_damage = list(
@@ -77,6 +97,35 @@
 	var/draw_blood = FALSE
 	var/draw_weapon = FALSE
 
+/damagetype/proc/get_combat_rating(var/mob/living/L)
+
+	var/combat_rating = 0
+
+	var/list/attack_damage = get_attack_damage(L)
+
+	for(var/damage_type in attack_damage)
+		var/damage = attack_damage[damage_type]
+		combat_rating += damage
+
+	if(!allow_parry)
+		combat_rating *= 1.1
+
+	if(allow_parry_counter)
+		combat_rating *= 1.1
+
+	if(!allow_block)
+		combat_rating *= 1.1
+
+	if(!allow_dodge)
+		combat_rating *= 1.1
+
+	if(allow_miss)
+		combat_rating *= (100-get_miss_chance())/100
+	else
+		combat_rating *= 1.1
+
+	return combat_rating
+
 /damagetype/proc/get_miss_chance()
 	return 0
 
@@ -91,48 +140,23 @@
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
 	return TRUE
 
-/damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-
-	if(attack_last + get_attack_delay(attacker,victim,weapon,hit_object) > world.time)
-		return FALSE
-
-	return TRUE
-
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(!is_living(attacker))
-		return base_attack_damage
+		return attack_damage_base
 
 	var/mob/living/L = attacker
-	var/list/new_attack_damage = base_attack_damage.Copy()
+	var/list/new_attack_damage = attack_damage_base.Copy()
 
-	for(var/k in attribute_stats)
-		var/v = attribute_stats[k]
-		new_attack_damage[attribute_damage[k]] += L.get_attribute_level(k)*v
+	for(var/attribute in attribute_stats)
+		var/class = attribute_stats[attribute]
+		new_attack_damage[attribute_damage[attribute]] += L.get_skill_level(attribute) * class
 
-	for(var/k in skill_stats)
-		var/v = skill_stats[k]
-		new_attack_damage[skill_damage[k]] += L.get_skill_level(k)*v
+	for(var/skill in skill_stats)
+		var/class = skill_stats[skill]
+		new_attack_damage[skill_damage[skill]] += L.get_skill_level(skill)* class
 
 	return new_attack_damage
-
-/damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	return attack_delay
-
-/damagetype/proc/get_rating()
-
-	var/returning = 0
-
-	for(var/k in base_attack_damage)
-		returning += base_attack_damage[k]*0.05
-
-	for(var/k in attribute_stats)
-		returning += attribute_stats[k]
-
-	for(var/k in skill_stats)
-		returning += skill_stats[k]
-
-	return returning*10
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -150,70 +174,123 @@
 		replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text)\
 	)
 
+
+/mob/living/proc/get_defense(var/atom/attacker,var/atom/hit_object)
+
+	var/returning_value = list()
+
+	var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR,0,100)
+
+	for(var/damage_type in src.armor_base)
+		var/armor_amount = src.armor_base[damage_type] * armor_level_mod
+		returning_value[damage_type] = armor_amount
+
+	return returning_value
+
+/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object)
+
+	var/returning_value = ..()
+
+	if(is_organ(hit_object))
+		var/obj/item/organ/O = hit_object
+
+		var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR,0,100)
+
+		for(var/obj/item/clothing/C in src.worn_objects)
+			if(!C.defense_rating && length(C.defense_rating))
+				continue
+
+			if(O.id in C.protected_limbs)
+				for(var/damage_type in C.defense_rating)
+					var/defense = C.defense_rating[damage_type]
+					if(returning_value[damage_type])
+						returning_value[damage_type] += defense*armor_level_mod
+					else
+						returning_value[damage_type] = defense*armor_level_mod
+
+	return returning_value
+
+
+
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	var/brute_armor = 0
-	var/burn_armor = 0
-
-	var/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
+	var/list/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
 			return 0
 
-		brute_armor += L.armor_brute_base
-		burn_armor += L.armor_burn_base
+		var/defense_rating_victim = L.get_defense(attacker,hit_object)
 
-		if(is_advanced(victim) && is_organ(hit_object))
-			var/mob/living/advanced/A = victim
-			var/armor_level_mod = 1 + A.get_skill_power(SKILL_ARMOR,0,100)
-			var/obj/item/organ/O = hit_object
-			for(var/obj/item/clothing/C in A.worn_objects)
-				if(O.id in C.protected_limbs)
-					brute_armor += C.armor_rating[BRUTE] * armor_level_mod
-					burn_armor += C.armor_rating[BURN] * armor_level_mod
+		var/armor_experienced_earned = 0
 
-			A.add_skill_xp(SKILL_ARMOR,brute_armor + burn_armor)
+		for(var/damage_type in damage_to_deal)
+			var/old_damage_amount = damage_to_deal[damage_type]
+			var/defense_amount = Clamp(defense_rating_victim[damage_type] - attack_damage_penetration[damage_type],0,100)
+			var/new_damage_amount = (old_damage_amount * Clamp((100-defense_amount)/100,1 - DAMAGE_REDUCTION_CAP,2))
 
-		brute_armor = max(0,brute_armor - armor_penetration[BRUTE])
-		burn_armor = max(0,burn_armor - armor_penetration[BURN])
+			armor_experienced_earned = old_damage_amount - new_damage_amount
+
+			damage_to_deal[damage_type] = new_damage_amount
+
+		if(armor_experienced_earned > 0)
+			L.add_skill_xp(SKILL_ARMOR,armor_experienced_earned)
+
+	var/brute_damage_to_deal = 0
+	var/burn_damage_to_deal = 0
+	var/tox_damage_to_deal = 0
+	var/oxy_damage_to_deal = 0
+
+	for(var/damage_type in damage_to_deal)
+		var/damage_amount = damage_to_deal[damage_type]
+		var/real_damage_type = attack_damage_conversion[damage_to_deal]
+		switch(real_damage_type)
+			if(BRUTE)
+				brute_damage_to_deal += damage_amount
+			if(BURN)
+				burn_damage_to_deal += damage_amount
+			if(TOX)
+				tox_damage_to_deal += damage_amount
+			if(OXY)
+				oxy_damage_to_deal += damage_amount
 
 	do_attack_animation(attacker,victim,weapon,hit_object)
 
-	var/brute_damage_dealt = calculate_damage_with_armor(hit_object.adjust_brute_loss(damage_to_deal[BRUTE]),brute_armor)
-	var/burn_damage_dealt = calculate_damage_with_armor(hit_object.adjust_burn_loss(damage_to_deal[BURN]),burn_armor)
-	var/tox_damage_dealt = hit_object.adjust_tox_loss(damage_to_deal[TOX])
-	var/oxy_damage_dealt = hit_object.adjust_oxy_loss(damage_to_deal[OXY])
-	var/damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
+	var/brute_damage_dealt = brute_damage_to_deal ? hit_object.adjust_brute_loss(brute_damage_to_deal) : 0
+	var/burn_damage_dealt = burn_damage_to_deal ? hit_object.adjust_burn_loss(burn_damage_to_deal) : 0
+	var/tox_damage_dealt = oxy_damage_to_deal ? hit_object.adjust_tox_loss(oxy_damage_to_deal) : 0
+	var/oxy_damage_dealt = tox_damage_to_deal ? hit_object.adjust_oxy_loss(tox_damage_to_deal) : 0
+	var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
 
-	//var/stamina_dealt = hit_object.adjust_stamina_loss(damage_to_deal[STAMINA]) TODO: Make this work.
-
-	do_attack_visuals(attacker,victim,weapon,hit_object,damage_dealt)
+	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)
 
+	//TODO: WOUNDS
+	/*
 	if(length(wound_types))
 		var/wound/W = pick(wound_types)
-		W = new W(victim,hit_object,attacker,weapon,damage_dealt)
+		W = new W(victim,hit_object,attacker,weapon,total_damage_dealt)
 		hit_object.wounds += W
 		if(victim != hit_object)
 			victim.wounds += W
+	*/
 
 	display_hit_message(attacker,victim,weapon,hit_object)
 
-	hit_object.update_health(damage_dealt,attacker)
+	hit_object.update_health(total_damage_dealt,attacker)
 
 	if(victim != hit_object)
-		victim.update_health(damage_dealt,attacker)
+		victim.update_health(total_damage_dealt,attacker)
 
 	if(is_living(attacker) && victim && attacker != victim)
 		var/mob/living/A = attacker
 		for(var/skill in skill_xp_per_damage)
-			var/xp_to_give = floor(skill_xp_per_damage[skill] * damage_dealt * victim.get_xp_multiplier())
+			var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
 			if(xp_to_give > 0)
 				A.add_skill_xp(skill,xp_to_give)
 
-	return damage_dealt
+	return total_damage_dealt
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 

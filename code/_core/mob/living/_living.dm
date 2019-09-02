@@ -100,6 +100,9 @@ var/global/list/all_living = list()
 
 	var/list/obj/hud/screen_blood/screen_blood
 
+
+	var/list/armor_base = list() //Base armor for the mob.
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

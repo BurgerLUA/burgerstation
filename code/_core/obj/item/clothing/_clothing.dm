@@ -15,9 +15,16 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
-	var/list/armor_rating = list(
-		BRUTE = 0,
-		BURN = 0
+	var/list/defense_rating = list(
+		BLADE = 0,
+		BULLET = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0
 	)
 
 	var/list/protected_limbs = list()

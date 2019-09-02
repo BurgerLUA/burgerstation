@@ -98,3 +98,26 @@ obj/hud/inventory/drop_item(var/turf/new_location)
 			return get_top_worn_object()
 
 	return src
+
+/*
+/obj/hud/inventory/get_examine_text(var/mob/examiner)
+	. = ..()
+
+	var/list/held_names = list()
+	var/list/worn_names = list()
+
+	for(var/obj/item/I in held_objects)
+		held_names += I.name
+
+	for(var/obj/item/I in worn_objects)
+		worn_names += I.name
+
+	if(length(worn_names))
+		. +=
+
+	if(length(held_names))
+		. +=
+
+
+	return .
+*/

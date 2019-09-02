@@ -34,11 +34,6 @@
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to it not existing!")
 		return FALSE
 
-	var/can_attack = DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage)
-	if(!can_attack)
-		return FALSE
-
-	DT.attack_last = world.time
 	attacker.attack_last = world.time
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE

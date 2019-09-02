@@ -2,39 +2,42 @@
 	name = "null staff"
 	id = "null_staff"
 
-	base_attack_damage = list(
-		BRUTE = 2,
-		BURN = 0,
-		TOX = 0,
-		OXY = 0
+	attack_damage_base = list(
+		BLUNT = 5,
+		HOLY = 20
+	)
+
+	attack_damage_conversion = list(
+		BLUNT = BRUTE,
+		HOLY = BURN
+	)
+
+	attack_damage_penetration = list(
+		BLADE = 15,
+		HOLY = 20
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_AGILITY = CLASS_C,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
+		ATTRIBUTE_STRENGTH = CLASS_D,
+		ATTRIBUTE_DEXTERITY = CLASS_C
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BRUTE,
-		ATTRIBUTE_AGILITY = BRUTE,
-		ATTRIBUTE_INTELLIGENCE = BRUTE
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_F,
-		SKILL_MELEE = CLASS_B,
-		SKILL_RANGED = CLASS_F
+		SKILL_MELEE = CLASS_C,
+		SKILL_PRAYER = CLASS_A
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BRUTE,
-		SKILL_MELEE = BRUTE,
-		SKILL_RANGED = BRUTE
+		SKILL_MELEE = BLUNT,
+		SKILL_PRAYER = HOLY
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_UNARMED = 0,
-		SKILL_MELEE = 1,
-		SKILL_RANGED = 0
+		SKILL_PRAYER = 0.5,
+		SKILL_MELEE = 0.5
 	)

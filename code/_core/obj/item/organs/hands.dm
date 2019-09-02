@@ -11,7 +11,7 @@
 	break_threshold = 15
 	health_max = 25
 
-	damage_type = "human_fist_right"
+	damage_type = "fist_human"
 
 	attach_flag = BODY_ARM_RIGHT
 
@@ -29,8 +29,6 @@
 
 	attach_flag = BODY_ARM_LEFT
 
-	damage_type = "human_fist_left"
-
 //Reptile Advanced
 /obj/item/organ/hand/reptile
 	name = "right reptile hand"
@@ -39,8 +37,6 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
-
-	damage_type = /damagetype/unarmed/fists/
 
 
 /obj/item/organ/hand/reptile/left
@@ -54,8 +50,6 @@
 
 	attach_flag = BODY_ARM_LEFT
 
-	damage_type = /damagetype/unarmed/fists/left
-
 //Reptile Advanced
 /obj/item/organ/hand/reptile_advanced
 	name = "right advanced reptile hand"
@@ -64,9 +58,6 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
-
-	damage_type = /damagetype/unarmed/fists/
-
 
 /obj/item/organ/hand/reptile_advanced/left
 	name = "left advanced reptile hand"
@@ -79,8 +70,6 @@
 
 	attach_flag = BODY_ARM_LEFT
 
-	damage_type = /damagetype/unarmed/fists/left
-
 
 //Diona
 /obj/item/organ/hand/diona
@@ -90,8 +79,6 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
-
-	damage_type = /damagetype/unarmed/fists/
 
 	enable_glow = TRUE
 	enable_detail = TRUE
@@ -108,8 +95,6 @@
 
 	attach_flag = BODY_ARM_LEFT
 
-	damage_type = /damagetype/unarmed/fists/left
-
 
 //Cyborg
 /obj/item/organ/hand/cyborg
@@ -119,8 +104,6 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
-
-	damage_type = /damagetype/unarmed/fists/
 
 
 /obj/item/organ/hand/cyborg/left
@@ -133,5 +116,3 @@
 	)
 
 	attach_flag = BODY_ARM_LEFT
-
-	damage_type = /damagetype/unarmed/fists/left

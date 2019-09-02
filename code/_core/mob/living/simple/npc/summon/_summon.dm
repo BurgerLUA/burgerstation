@@ -30,4 +30,4 @@ mob/living/simple/npc/summon/holy_warrior
 
 	desc_extended = "A common summon among high level prayer users."
 
-	damage_type = /damagetype/npc/holy_warrior
+	damage_type = "holy_warrior"

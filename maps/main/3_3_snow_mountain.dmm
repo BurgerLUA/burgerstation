@@ -1,14 +1,18 @@
 "a" = (/turf/simulated/floor/chasm,/area/world/mountain/exterior)
 "b" = (/turf/simulated/wall/rock/snow,/area/world/mountain/exterior)
 "c" = (/mob/living/simple/npc/bear/snow,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
+"d" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop_holder/weapons/detective,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "e" = (/obj/structure/scenery/snow_bush,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
 "f" = (/obj/structure/scenery/pinetrees,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
 "g" = (/obj/structure/interactive/lighting/streetlamp/snow,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
+"h" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop_holder/weapons/hunting_rifle,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
+"i" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop_holder/weapons/pump_shotgun,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "j" = (/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
 "k" = (/obj/structure/scenery/snow_grass,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
 "l" = (/turf/simulated/wall/rock,/area/world/mountain/exterior)
 "m" = (/turf/simulated/wall/rock/snow,/area/world/mountain/interior/cave)
 "n" = (/turf/simulated/floor/colored/dirt/snow,/area/world/mountain/exterior)
+"o" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop_holder/ammo/bullet_22/box,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "p" = (/turf/simulated/floor/ice,/area/world/mountain/exterior)
 "s" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/snow,/area/world/mountain/exterior)
 "t" = (/turf/simulated/floor/colored/snow,/area/world/mountain/exterior/village)
@@ -143,13 +147,13 @@ jjkjjjkkkkjpppppppppppjjjjjbbbbbjjjjjjjjjfjjjkkjjjfkkjjjjjjjjfjjjjjjkjjjkkjjkkjj
 kjkjjjjjjkjjjpppppppppjjjjjjjbbjjjfjjkkjjjjjjjkkkjjkjfjjfjjjjkjjjjjkkjjjkkjjkjjbbttFttvtvvDDDDDttEEEEEttbjjppppppppppppjjjjbbbbb
 jkkjjjfjfkkjjjppppppppjjfjjjjjjjjjjjkkjjjjfjjfjkkkkkkjjjjjjfkkjjfjjkjjjkkkkkjjbbttttuuuuuuuuuGDDttEEEEEtjjjpppppppppppppjjjjbbbb
 jjkjjjjjjjkjjjjpppppppjjjjjjjjjkjjjcjkjjjjjjjjkkjjjjkjjjjjjjkjjjjjkkjfjkjkkkkjbbtFttuKKKLKLLuDDDvtEEEEEtjjjjppppppppppppjjjjbbbb
-jjkjfjkkkkkjfjjjpppppppjjjjfjjjkkfjjjkkfjjjjkjjjjjjjkjfjfjjkkjjjjkkjjjjjkkkkkjbbbttHuKKKLKKLuDDDvvtEEEEtjbjjjpppppppppppjjjjjbbb
+jjkjfjkkkkkjfjjjpppppppjjjjfjjjkkfjjjkkfjjjjkjjjjjjjkjfjfjjkkjjjjkkjjjjjkkkkkjbbbttHuKKKLKKduDDDvvtEEEEtjbjjjpppppppppppjjjjjbbb
 fjjjjjkjjjkjjjjjjppppppjjjjjjjjjkjjjjjkkkjfjkjjjfjjfjjjjjjjkkfjjjjjjjjjjkkkkkjbbbtHtuLLLLKKLuDvDvvttEEEtjbbjjjpppppppppjjjjjjjbb
 jjjjjjkjfkkkkkjfjppppppjjjjjejfjkjjjfkkjjjjkkfkkjjjjjjfjjjjkjjjjjjjjfjjjkkkkjbbbbbtHuKKKKKKLuDDDvDIttEttbbbbjjpppppppppjjjjjjjbb
 jjjjjfkjjkjjjkkjjjpppppjjfjjjjjkkjjjkkkjjfjkjkkjjjfjjjjjjfkkjjjjfjjjjjjkkkjjjbbbbbttuKKKKKKKuDDDDDDtttttbbbbjjjpppppppppjjjjjjbb
-jjfjjkkjekjfjjkkkjppppppjjjjjjkkjjfjkjjfjjkkjkjjjjjjjfkkkkjjjjjjjjjjjjkkkjjjjjbbbbttuLKKKKKKKDvDDDttttttbbbbbjjppppppppppjjjjjbb
+jjfjjkkjekjfjjkkkjppppppjjjjjjkkjjfjkjjfjjkkjkjjjjjjjfkkkkjjjjjjjjjjjjkkkjjjjjbbbbttuoKKKKKKKDvDDDttttttbbbbbjjppppppppppjjjjjbb
 jjkkkjjjjkkkjjjjjjppppppjjjjjjjjjjjkkjjjjjkjjkjfjjjfjkkjjkjjfjjjjjjfkkkkkjjjjjbbbbttuLKKKKKKuDvDDvvtFttttbbbbbjpppppppppppjjjjbb
-kkkjjkjjjkkkkjfjjjjpppppjjjjjjjjfjjkjfjjjjjkfkjjjjjjjkjjjjjjjjjjjjkkkjjkkjfjjjbbbbttuLLLLLLLutvDDvvvtttttbbbbbbppppppppppppjjjbb
+kkkjjkjjjkkkkjfjjjjpppppjjjjjjjjfjjkjfjjjjjkfkjjjjjjjkjjjjjjjjjjjjkkkjjkkjfjjjbbbbttuLLLLLihutvDDvvvtttttbbbbbbppppppppppppjjjbb
 jjjjjkjfkkjjkjjjjjjpppppjfjjjjjjkkjkkjjjfjjkkkkjjjfjjjjfjjjjjjjfjkkjjjkkkjjjejbbbbtvuuuuuuuuuJvvDDvvvtFttbbbbbbpppOpppppppppjjbb
 jjjjjjjkkkjjkkjjjjfpppppjjjjjjjjkjfjkjjjjjjjkjjfjjkkjjjjjjjfjjkkkjkkjjkkkkjjjejbbtvvtttttttttttvvDDDvvtttbbbbbbpppOppOOppppppjbb
 jjfjkjkkjjjfjkjjjjjjppppjjjjjjfjkjjjjjjfjjfkkjjjjjjbbbbjjjejjjkkjjkjjjjkjjjjjjjjJtttttttbbbbbtttvDDDvtttbbbbbbppppOpppOppOpppppb

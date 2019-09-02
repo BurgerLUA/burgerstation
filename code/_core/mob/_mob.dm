@@ -26,7 +26,7 @@
 
 	see_invisible = INVISIBILITY_LIGHTING
 
-	sight = SEE_SELF | SEE_PIXELS
+	sight = SEE_SELF | SEE_PIXELS | SEE_BLACKNESS
 
 	/*
 	var/list/quests/all_quests = list()
@@ -57,6 +57,8 @@
 
 	collision_flags = FLAG_COLLISION_NONE
 
+	var/obj/hud/screen/paralax = /obj/hud/screen/
+
 /mob/destroy()
 
 	if(client)
@@ -86,11 +88,30 @@
 	. = ..()
 
 	if(src.client)
+
+		var/client/C = src.client
+
 		for(var/obj/structure/interactive/localmachine/L in local_machines)
 			L.update_for_mob(src)
 
+		paralax = new paralax
+		paralax.name = "unknown"
+		paralax.mouse_opacity = 1
+		paralax.icon = 'icons/hud/screen.dmi'
+		paralax.icon_state = "blank"
+		paralax.color = "#000000"
+		paralax.plane = PLANE_PARALAX
+		paralax.screen_loc = "LEFT,BOTTOM"
+		paralax.update_icon()
+		C.screen += paralax
+
 	var/area/A = get_area(src)
 	A.Entered(src)
+
+
+
+
+
 
 	return .
 

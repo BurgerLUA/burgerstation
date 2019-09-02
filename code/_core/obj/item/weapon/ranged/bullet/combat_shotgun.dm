@@ -12,7 +12,7 @@
 
 	bullet_type = "shotgun"
 
-	//shoot_sounds = list('sounds/weapon/ranged/bullet/combat_shotgun.ogg')
+	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 

@@ -27,7 +27,7 @@
 
 	var/initialized = FALSE
 
-	plane = PLANE_DEFAULT
+	plane = PLANE_OBJ
 
 	var/list/additional_blends = list()
 

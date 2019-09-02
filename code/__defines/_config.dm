@@ -65,6 +65,9 @@
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 
+
+#define DAMAGE_REDUCTION_CAP 0.8 //How much damage maximum (percentage) is someone allowed to reduce when attacked. For example, 0.8 means you can absorb up to 80% of the damage dealt.
+
 #define STEALTH_MAX_ALPHA 10
 #define STEALTH_MIN_ALPHA 1
 

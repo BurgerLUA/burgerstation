@@ -15,10 +15,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	invisibility = INVISIBILITY_PLAYERS
 
-	//sight = SEE_SELF | SEE_PIXELS
-
-	see_infrared = TRUE
-
 	var/spam_protection_command = 0
 	//Increases by a certain amount every time something is used.
 	//Measured in seconds.

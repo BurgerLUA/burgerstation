@@ -20,11 +20,6 @@
 		params["icon-y"] = shoot_y
 
 		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,hit_atom,params)
-		var/can_attack = DT.can_attack(owner,hit_atom,weapon,object_to_damage)
-
-		if(!can_attack)
-			return FALSE
-
 		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
 		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 		if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE

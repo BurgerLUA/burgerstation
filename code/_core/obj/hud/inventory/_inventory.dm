@@ -163,12 +163,10 @@
 
 /obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE) //Prioritize wearing it, then holding it.
 
-	if(I.can_be_worn())
-		var/obj/item/C = I
-		if(add_worn_object(C,messages))
-			return TRUE
+	if(I.can_be_worn() && add_worn_object(I,messages))
+		return TRUE
 
-	if(add_held_object(I,messages))
+	if(I.can_be_held() && add_held_object(I,messages))
 		return TRUE
 
 	return FALSE

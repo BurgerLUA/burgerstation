@@ -34,9 +34,6 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
-
-
-
 /obj/item/bullet/revolver_22/surplus
 	name = "\improper .22 LR surplus"
 	damage_type = ".22_surplus"

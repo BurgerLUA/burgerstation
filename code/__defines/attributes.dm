@@ -18,6 +18,7 @@
 
 
 #define ATTRIBUTE_LUCK "luck"
+#define ATTRIBUTE_KARMA "karma"
 
 
 

@@ -1,9 +1,13 @@
-#define PLANE_TURF -1
-#define PLANE_DEFAULT -1
-#define PLANE_OBJ -1
-#define PLANE_MOB -1
-#define PLANE_EFFECT -1
-#define PLANE_AREA -1
+#define PLANE_TURF 1
+#define PLANE_DEFAULT 1
+#define PLANE_OBJ 1
+#define PLANE_MOB 1
+#define PLANE_EFFECT 1
+#define PLANE_AREA 1
+
+#define PLANE_PARALAX -1
+
+
 #define PLANE_LIGHTING_AMBIENT 1
 #define PLANE_LIGHTING_DYNAMIC 2
 #define PLANE_INJURY 3

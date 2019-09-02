@@ -39,12 +39,39 @@
 	)
 
 	possible_prices = list(
-		/obj/item/weapon/ranged/bullet/revolver/detective = 30
+		/obj/item/weapon/ranged/bullet/revolver/detective = 40
 	)
 
 	possible_quantity = list(
 		/obj/item/weapon/ranged/bullet/revolver/detective = 10
 	)
+
+/obj/structure/interactive/shop_holder/weapons/pump_shotgun
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/pump/pump_shotgun = 1
+	)
+
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/pump/pump_shotgun = 80
+	)
+
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/pump/pump_shotgun = 10
+	)
+
+/obj/structure/interactive/shop_holder/weapons/hunting_rifle
+	possible_items = list(
+		/obj/item/weapon/ranged/bullet/pump/hunting_rifle = 1
+	)
+
+	possible_prices = list(
+		/obj/item/weapon/ranged/bullet/pump/hunting_rifle = 70
+	)
+
+	possible_quantity = list(
+		/obj/item/weapon/ranged/bullet/pump/hunting_rifle = 10
+	)
+
 
 
 /obj/structure/interactive/shop_holder/weapons/deckhard
@@ -104,6 +131,19 @@
 
 	possible_quantity = list(
 		/obj/item/magazine/clip/revolver/bullet_22 = 30
+	)
+
+/obj/structure/interactive/shop_holder/ammo/bullet_22/box
+	possible_items = list(
+		/obj/item/storage/ammo/bullet_22/ = 1
+	)
+
+	possible_prices = list(
+		/obj/item/storage/ammo/bullet_22/ = 10
+	)
+
+	possible_quantity = list(
+		/obj/item/storage/ammo/bullet_22/ = 20
 	)
 
 

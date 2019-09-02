@@ -4,8 +4,8 @@
 	id = "10mm_auto"
 	icon = 'icons/obj/items/bullet/10mm.dmi'
 
-	bullet_capacity = 6
-	bullet_capacity_icon = 6
+	bullet_capacity = 5
+	bullet_capacity_icon = 5
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "10mm_auto"
@@ -18,8 +18,8 @@
 	id = ".50ae"
 	icon = 'icons/obj/items/bullet/50ae.dmi'
 
-	bullet_capacity = 7
-	bullet_capacity_icon = 7
+	bullet_capacity = 5
+	bullet_capacity_icon = 5
 
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = ".50ae"
@@ -31,8 +31,8 @@
 	id = "9mm"
 	icon = 'icons/obj/items/bullet/9mm.dmi'
 
-	bullet_capacity = 6
-	bullet_capacity_icon = 6
+	bullet_capacity = 5
+	bullet_capacity_icon = 5
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "9mm"

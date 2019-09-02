@@ -5,9 +5,17 @@
 	desc = "Oxygen not included."
 	desc_extended = "A modern gas mask. Filters out most forms of gas."
 
-	armor_rating = list(
-		BRUTE = 15,
-		BURN = 5
+	defense_rating = list(
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 5,
+		COLD = 5,
+		BOMB = 0,
+		BIO = 50,
+		RAD = 5
 	)
 
 

@@ -8,7 +8,8 @@
 	dynamic_inventory_count = 4
 	container_held_slots = 10
 	container_max_size = 100 //Can hold anything.
-	size = 4
+
+	size = 36
 
 
 /obj/item/clothing/back/backpack/bluespace/satchel
@@ -19,4 +20,5 @@
 
 	dynamic_inventory_count = 3
 	container_held_slots = 10
-	size = 3
+
+	size = 18

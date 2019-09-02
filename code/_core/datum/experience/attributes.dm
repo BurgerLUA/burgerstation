@@ -555,3 +555,13 @@
 	chargen_max_level = 50
 	default_level = 50
 	counts_towards_level = FALSE
+
+/experience/attribute/karma/
+	name = "Karma"
+	id = ATTRIBUTE_KARMA
+	combat_level_mul = 0
+	desc = "A measure of how rightous you are. Karma affects the strength of some weapons and your moral standing in this world. Remember, it's easier to lose karma than it is to gain it."
+	chargen_min_level = 50
+	chargen_max_level = 50
+	default_level = 50
+	counts_towards_level = FALSE
