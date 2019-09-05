@@ -36,7 +36,7 @@
 			W.open = FALSE
 
 	if(is_food(O))
-		var/obj/item/food/F = O
+		var/obj/item/consumable/food/F = O
 		if(object_data["uses_left"])
 			F.uses_left = object_data["uses_left"]
 
@@ -121,12 +121,14 @@
 		if(inventory_data["held"])
 			for(var/i=1,i<=length(inventory_data["held"]),i++)
 				var/obj/item/I2 = load_and_create_object(inventory_data["held"][i],get_turf(I))
-				I.add_held_object(I2,FALSE,TRUE)
+				if(I2)
+					I.add_held_object(I2,FALSE,TRUE)
 
 		if(inventory_data["worn"])
 			for(var/i=1,i<=length(inventory_data["worn"]),i++)
 				var/obj/item/I2 = load_and_create_object(inventory_data["worn"][i],get_turf(I))
-				I.add_worn_object(I2,FALSE,TRUE)
+				if(I2)
+					I.add_worn_object(I2,FALSE,TRUE)
 
 		return TRUE
 
@@ -182,7 +184,7 @@
 			returning_list["value"] = C.value
 
 	if(is_food(I))
-		var/obj/item/food/F = I
+		var/obj/item/consumable/food/F = I
 		if(F.uses_left)
 			returning_list["uses_left"] = F.uses_left
 

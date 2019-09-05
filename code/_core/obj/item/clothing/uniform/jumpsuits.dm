@@ -15,16 +15,19 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = 10,
+		BLADE = 5,
 		BLUNT = 5,
 		PIERCE = 5,
-		LASER = 5,
-		MAGIC = 25,
-		HEAT = 5,
-		COLD = 5,
+		LASER = 0,
+		MAGIC = 15,
+		HEAT = 0,
+		COLD = 20,
 		BOMB = 0,
-		BIO = 10,
-		RAD = 0
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0
 	)
 
 /obj/item/clothing/uniform/jumpsuit/grey

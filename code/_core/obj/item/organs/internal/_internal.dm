@@ -8,6 +8,8 @@
 	enable_detail = FALSE
 	enable_wounds = FALSE
 
+	reagents = null
+
 /obj/item/organ/internal/brain
 	name = "brain"
 	id = BODY_BRAIN
@@ -39,6 +41,8 @@
 
 	attach_flag = BODY_TORSO
 
+	reagents = /reagent_container/stomach
+
 /obj/item/organ/internal/liver
 	name = "liver"
 	id = BODY_LIVER
@@ -62,6 +66,16 @@
 	desc = "Filters waste from blood. Requires things."
 
 	attach_flag = BODY_GROIN
+
+/obj/item/organ/internal/heart
+	name = "heart"
+	id = BODY_HEART
+	icon_state = BODY_HEART
+	desc = "Pumps blood throughout the body."
+
+	attach_flag = BODY_TORSO
+
+	reagents = /reagent_container/heart
 
 
 

@@ -41,7 +41,7 @@
 	stored_item = /obj/item/clothing/overwear/coat/
 
 /obj/structure/interactive/localmachine/item/clothing/overwear/chaplain
-	stored_item = /obj/item/clothing/overwear/chaplain/
+	stored_item = /obj/item/clothing/overwear/coat/chaplain/
 
 /obj/structure/interactive/localmachine/item/clothing/uniform/priest
 	stored_item = /obj/item/clothing/uniform/priest
@@ -83,16 +83,16 @@
 	stored_item = /obj/item/clothing/overwear/armor/knight/battlemage
 
 /obj/structure/interactive/localmachine/item/clothing/armor/knight/syndie1
-	stored_item = /obj/item/clothing/overwear/armor/knight/syndie1
+	stored_item = /obj/item/clothing/overwear/armor/hardsuit/syndie1
 
 /obj/structure/interactive/localmachine/item/clothing/armor/knight/syndie2
-	stored_item = /obj/item/clothing/overwear/armor/knight/syndie2
+	stored_item = /obj/item/clothing/overwear/armor/hardsuit/syndie2
 
 /obj/structure/interactive/localmachine/item/clothing/helmet/knight/syndie1
-	stored_item = /obj/item/clothing/head/helmet/knight/syndie1
+	stored_item = /obj/item/clothing/head/helmet/hardsuit/syndie1
 
 /obj/structure/interactive/localmachine/item/clothing/helmet/knight/syndie2
-	stored_item = /obj/item/clothing/head/helmet/knight/syndie2
+	stored_item = /obj/item/clothing/head/helmet/hardsuit/syndie2
 
 
 /obj/structure/interactive/localmachine/item/clothing/helmet/knight/red
@@ -139,7 +139,7 @@
 	stored_item = /obj/item/clothing/uniform/tacticool
 
 /obj/structure/interactive/localmachine/item/clothing/tacticool_vest
-	stored_item = /obj/item/clothing/overwear/vest/
+	stored_item = /obj/item/clothing/overwear/armor/vest/
 
 /obj/structure/interactive/localmachine/item/clothing/ABOMB_shades
 	stored_item = /obj/item/clothing/glasses/sun/ABOMB
@@ -148,10 +148,10 @@
 	stored_item = /obj/item/clothing/mask/skimask
 
 /obj/structure/interactive/localmachine/item/clothing/military_helmet
-	stored_item = /obj/item/clothing/head/tactical_helmet
+	stored_item = /obj/item/clothing/head/helmet/security/tactical_helmet
 
 /obj/structure/interactive/localmachine/item/clothing/military_helmet2
-	stored_item = /obj/item/clothing/head/tactical_helmet2
+	stored_item = /obj/item/clothing/head/helmet/security/tactical_helmet2
 
 /obj/structure/interactive/localmachine/item/clothing/boot_left
 	stored_item = /obj/item/clothing/feet/shoes/black_boots/left
@@ -188,7 +188,7 @@
 	color = "#444444"
 
 /obj/structure/interactive/localmachine/item/clothing/beaverhat
-	stored_item = /obj/item/clothing/head/beaver
+	stored_item = /obj/item/clothing/head/hat/beaver
 
 /obj/structure/interactive/localmachine/item/clothing/jumpsuit
 	stored_item = /obj/item/clothing/uniform/jumpsuit

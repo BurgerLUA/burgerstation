@@ -1,5 +1,5 @@
 /obj/hud/inventory/organs/
-	name = "head slot"
+	name = "organ slot"
 	held_slots = 0
 	worn_slots = 0
 	max_weight = 100

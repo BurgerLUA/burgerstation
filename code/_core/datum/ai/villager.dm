@@ -11,7 +11,7 @@
 	target_distribution = list(32)
 
 	simple = TRUE
-	sync_stats = FALSE
+	sync_movement_delay = TRUE
 	stationary = FALSE
 
 

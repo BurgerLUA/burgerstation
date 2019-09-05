@@ -15,7 +15,7 @@
 	//var/animation_pixel_y = 0
 
 	movement_delay = DECISECONDS_TO_TICKS(5)
-	attack_delay = 10
+	interact_delay_base = 10
 
 	var/attack_turn = 0
 	var/attack_turn_delay = 10

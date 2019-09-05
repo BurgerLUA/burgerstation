@@ -11,11 +11,14 @@
 		PIERCE = 5,
 		LASER = 0,
 		MAGIC = 0,
-		HEAT = 5,
-		COLD = 5,
-		BOMB = 0,
-		BIO = 50,
-		RAD = 5
+		HEAT = 10,
+		COLD = 10,
+		BOMB = 5,
+		BIO = 300,
+		RAD = 25,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0
 	)
 
 
@@ -24,3 +27,19 @@
 	icon = 'obj/items/clothing/masks/clown.dmi'
 	desc = "Where the clown gets their power."
 	desc_extended = "A flawless clown mask and wig."
+
+	defense_rating = list(
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		MAGIC = 50,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 50,
+		RAD = 10,
+		HOLY = 25,
+		DARK = 25,
+		FATIGUE = 100
+	)

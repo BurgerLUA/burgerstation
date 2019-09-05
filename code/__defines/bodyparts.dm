@@ -7,6 +7,7 @@
 #define BODY_TORSO "torso"
 #define BODY_TORSO_O "torso_o"
 #define BODY_TORSO_B "torso_b"
+#define BODY_TORSO_OB "torso_ob"
 #define BODY_TORSO_MALE "torso_m"
 #define BODY_TORSO_FEMALE "torso_f"
 
@@ -42,6 +43,7 @@
 
 
 #define BODY_BRAIN "brain"
+#define BODY_HEART "heart"
 #define BODY_LUNGS "lung"
 #define BODY_STOMACH "stomach"
 #define BODY_LIVER "liver"

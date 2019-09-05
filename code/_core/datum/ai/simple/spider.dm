@@ -12,6 +12,7 @@
 
 	simple = TRUE
 
-	sync_stats = TRUE
+	sync_attack_delay = TRUE
+	sync_movement_delay = TRUE
 
 /ai/simple/spider/handle_attacking()

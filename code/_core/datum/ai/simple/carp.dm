@@ -10,10 +10,9 @@
 
 	target_distribution = list(4,4,4,16,32,32,32)
 
-	sync_stats = TRUE
-
+	sync_attack_delay = TRUE
+	sync_movement_delay = TRUE
 	simple = TRUE
-
 	stationary = FALSE
 
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader

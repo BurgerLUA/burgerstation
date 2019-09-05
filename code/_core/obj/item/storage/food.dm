@@ -11,5 +11,5 @@
 
 /obj/item/storage/foodbox/donkbox/on_spawn()
 	for(var/i=1,i<=8,i++)
-		var/obj/item/food/processed/donkpocket/D = new(src.loc)
+		var/obj/item/consumable/food/processed/donkpocket/D = new(src.loc)
 		inventories[i].add_held_object(D,bypass_checks = TRUE)

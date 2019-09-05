@@ -56,6 +56,7 @@
 	has_footsteps = TRUE
 	has_footprints = TRUE
 
+
 /mob/living/advanced/destroy()
 	inventory.Cut()
 	worn_objects = null

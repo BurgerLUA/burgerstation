@@ -12,7 +12,8 @@
 
 	simple = TRUE
 	stationary = FALSE
-	sync_stats = FALSE
+	sync_attack_delay = TRUE
+	sync_movement_delay = TRUE
 
 	var/mob/living/simple/npc/xenomorph/pack_leader/leader
 

@@ -9,8 +9,9 @@
 	desc_extended = "An ammo box that can hold 36 .22 LR bullets."
 	icon_state = "22"
 	size = 3
-	container_max_size = 1
+
 	dynamic_inventory_count = 1
+	container_max_size = 6
 	container_held_slots = 6
 
 /obj/item/storage/ammo/bullet_22/on_spawn()
@@ -18,4 +19,4 @@
 		var/obj/item/bullet/B = new /obj/item/bullet/revolver_22/surplus(src)
 		B.on_spawn()
 		B.update_icon()
-		add_to_inventory(null,B)
+		add_to_inventory(null,B,FALSE)

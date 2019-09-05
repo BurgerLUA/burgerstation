@@ -17,8 +17,6 @@
 
 	enable_wounds = TRUE
 
-	attack_delay = 5
-
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT

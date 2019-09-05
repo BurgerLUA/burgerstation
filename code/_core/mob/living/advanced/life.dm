@@ -145,6 +145,9 @@
 		for(var/wound/W in O.wounds)
 			W.on_life()
 
+		if(O.reagents)
+			O.reagents.metabolize()
+
 	if(should_update_health)
 		update_health(do_update=FALSE)
 		update_health_element_icons(TRUE,FALSE,FALSE)

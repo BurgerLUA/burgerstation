@@ -25,7 +25,8 @@
 
 	var/simple = TRUE
 
-	var/sync_stats = TRUE
+	var/sync_movement_delay = TRUE
+	var/sync_attack_delay = FALSE
 
 	var/stationary = TRUE
 
@@ -41,8 +42,11 @@
 
 	owner = desired_owner
 
-	if(sync_stats)
-		attack_delay = ceiling(owner.get_attack_delay()/LIFE_TICK)
+	if(sync_attack_delay && all_damage_types[desired_owner.damage_type])
+		var/damagetype/DT = all_damage_types[desired_owner.damage_type]
+		attack_delay = ceiling(DT.get_attack_delay()/LIFE_TICK)
+
+	if(sync_movement_delay)
 		movement_delay = ceiling(TICKS_TO_DECISECONDS(owner.get_movement_delay())/LIFE_TICK)
 
 	attack_ticks = rand(0,attack_delay)

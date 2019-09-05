@@ -20,10 +20,7 @@
 
 	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0) //How much to subtract damage
 
-	var/attack_range = 1 //If it's a melee weapon, it needs a range.
-
-	var/attack_delay = 4
-	var/attack_last = 0
+	var/attack_range = 1 //If it's a melee weapon, it needs a range. TODO: MOVE TO ITEM
 
 	var/initialized = FALSE
 
@@ -51,10 +48,17 @@
 	density = FALSE //DEPCRECATED
 
 	var/interact_distance = 1
+	var/interact_delay_base = 4
+	var/interact_last = 0
 
 	var/thinks = FALSE
 
+	var/reagent_container/reagents
+
+
 /atom/destroy()
+	if(reagents)
+		qdel(reagents)
 	invisibility = 101
 	if(light)
 		light.destroy_light()
@@ -92,6 +96,9 @@
 
 	if(thinks)
 		all_thinkers += src
+
+	if(reagents)
+		reagents = new reagents(src)
 
 	return .
 

@@ -6,7 +6,7 @@
 
 		/obj/item/clothing/uniform/jumpsuit/red,
 
-		/obj/item/clothing/head/cult,
+		/obj/item/clothing/head/hood/cult,
 		/obj/item/clothing/overwear/armor/cult,
 
 		/obj/item/clothing/feet/shoes/brown,

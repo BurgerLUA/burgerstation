@@ -5,6 +5,7 @@
 			I.remove_all_objects()
 			I.update_owner()
 
+
 	remove_overlay(O)
 	organs -= O
 	labeled_organs -= O

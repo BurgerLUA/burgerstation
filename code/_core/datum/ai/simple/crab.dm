@@ -11,9 +11,9 @@
 
 	target_distribution = list(0,0,0,0,4,8)
 
+	sync_attack_delay = TRUE
+	sync_movement_delay = TRUE
 	simple = TRUE
-
-	sync_stats = TRUE
 
 
 
@@ -31,7 +31,6 @@
 
 	target_distribution = list(8,8,8,8,16,32)
 
+	sync_attack_delay = TRUE
+	sync_movement_delay = TRUE
 	simple = TRUE
-
-	sync_stats = TRUE
-

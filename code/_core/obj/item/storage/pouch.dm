@@ -1,5 +1,5 @@
 /obj/item/storage/pouch //For boxes and such, not backpacks.
-	name = "pouch"
+	name = "small pouch"
 	desc = "Simple pounches"
 
 	icon_state = "pouch_small1"
@@ -43,10 +43,12 @@
 	name = "large pouch"
 
 	container_max_size = 4
+	container_max_weight = 10
 
 	icon_state = "pouch_large1"
 	size = 4
 	dynamic_inventory_count = 1
+	container_held_slots = 4
 
 
 /obj/item/storage/pouch/bluespace

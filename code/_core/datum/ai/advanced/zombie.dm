@@ -9,9 +9,3 @@
 	movement_delay = 10
 
 	target_distribution = list(16,16,32,32,32,32,32) //BRAINS
-
-	sync_stats = TRUE
-
-	simple = TRUE
-
-	stationary = FALSE

@@ -71,6 +71,3 @@
 /mob/living/simple/npc/crab/king/get_movement_delay()
 	return SECONDS_TO_TICKS(1)
 
-/mob/living/simple/npc/crab/king/get_attack_delay()
-	return SECONDS_TO_DECISECONDS(1)
-

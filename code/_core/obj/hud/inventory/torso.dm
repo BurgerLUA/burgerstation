@@ -69,3 +69,15 @@
 	item_slot = SLOT_TORSO_B
 
 	essential = TRUE
+
+
+
+/obj/hud/inventory/organs/torso_ob
+	name = "overwear belt slot"
+	id = BODY_TORSO_OB
+	screen_loc = "CENTER-4,BOTTOM"
+	worn_slots = 1
+
+	item_slot = SLOT_TORSO_OB
+
+	essential = TRUE

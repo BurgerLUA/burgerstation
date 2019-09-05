@@ -18,7 +18,7 @@
 		/obj/item/weapon/ranged/magic/staff/basic = 50,
 		/obj/item/weapon/ranged/magic/tome/fireball = 25,
 		/obj/item/consumable/soulgem = 25,
-		/obj/item/food/burger/spellburger = 25,
+		/obj/item/consumable/food/burger/spellburger = 25,
 		/obj/item/clothing/head/hat/wizard/blue = 10,
 		/obj/item/weapon/ranged/magic/tome/lightning = 10,
 		/obj/item/soapstone/blue = 5,
@@ -32,8 +32,8 @@
 	id = "spider"
 	desc = "Loot you find off of dead spiders."
 	loot_table = list(
-		/obj/item/food/spider/spider_leg = 100,
-		/obj/item/food/spider/spider_eggs = 25,
+		/obj/item/consumable/food/spider/spider_leg = 100,
+		/obj/item/consumable/food/spider/spider_eggs = 25,
 	)
 
 	loot_count = 4
@@ -43,7 +43,7 @@
 	id = "crab"
 	desc = "Loot for crabs."
 	loot_table = list(
-		/obj/item/food/burger/fish/crab = 100,
+		/obj/item/consumable/food/burger/fish/crab = 100,
 		/obj/item/clothing/glasses/sun = 5,
 		/obj/item/color/crayon/orange = 5,
 

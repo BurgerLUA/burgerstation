@@ -1,5 +1,5 @@
-/obj/item/food/processed
-	icon = 'icons/obj/items/food/processed.dmi'
+/obj/item/consumable/food/processed
+	icon = 'icons/obj/items/consumable/food/processed.dmi'
 
 	heal_amount_health = 0
 	heal_amount_stamina = 0
@@ -9,7 +9,7 @@
 	consume_verb = "eat"
 
 
-/obj/item/food/processed/donkpocket
+/obj/item/consumable/food/processed/donkpocket
 	name = "donk pocket"
 	icon_state = "donkpocket"
 

@@ -8,7 +8,8 @@
 	movement_delay = 1
 
 	simple = TRUE
-	sync_stats = TRUE
+	sync_movement_delay = TRUE
+	sync_attack_delay = TRUE
 
 	stationary = FALSE
 

@@ -83,7 +83,12 @@
 	return FALSE
 
 /obj/hud/inventory/get_examine_text(var/atom/examiner)
-	var/atom/A = defer_click_on_object()
+
+	var/atom/A = get_top_held_object()
+
+	if(!A)
+		A = get_top_worn_object()
+
 	if(A && A != src)
 		return A.get_examine_text(examiner)
 	else
@@ -352,15 +357,24 @@
 	if(held_slots <= 0)
 		return FALSE
 
-	if(length(item_blacklist) && (I.type in item_blacklist))
-		if(messages)
-			owner.to_chat(span("notice","You can't seem to fit \the [I] in \the [src]!"))
-		return FALSE
+	if(length(item_blacklist))
+		for(var/o in item_blacklist)
+			if(istype(I,o))
+				if(messages)
+					owner.to_chat(span("notice","You can't seem to fit \the [I] in \the [src]!"))
+				return FALSE
 
-	if(length(item_whitelist) && !(I.type in item_whitelist))
-		if(messages)
-			owner.to_chat(span("notice","You can't seem to fit \the [I] in \the [src]!"))
-		return FALSE
+	if(length(item_whitelist))
+		var/whitelist_found = FALSE
+		for(var/o in item_whitelist)
+			if(istype(I,o))
+				whitelist_found = TRUE
+				break
+
+		if(!whitelist_found)
+			if(messages)
+				owner.to_chat(span("notice","You can't seem to fit \the [I] in \the [src]!"))
+			return FALSE
 
 	if(length(held_objects) >= held_slots)
 		if(messages)

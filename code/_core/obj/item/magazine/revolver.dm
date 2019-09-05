@@ -36,6 +36,8 @@
 	icon_state = "22"
 	bullet_capacity = 6
 
+/*
 /obj/item/magazine/clip/revolver/bullet_22/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/revolver_22(src)
+*/

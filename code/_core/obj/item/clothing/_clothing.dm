@@ -17,14 +17,18 @@
 
 	var/list/defense_rating = list(
 		BLADE = 0,
-		BULLET = 0,
+		BLUNT = 0,
+		PIERCE = 0,
 		LASER = 0,
 		MAGIC = 0,
 		HEAT = 0,
 		COLD = 0,
 		BOMB = 0,
 		BIO = 0,
-		RAD = 0
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0
 	)
 
 	var/list/protected_limbs = list()

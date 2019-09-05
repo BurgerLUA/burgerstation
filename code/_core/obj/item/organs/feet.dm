@@ -15,8 +15,6 @@
 
 	enable_wounds = TRUE
 
-	attack_delay = 10
-
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT

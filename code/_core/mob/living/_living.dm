@@ -101,7 +101,7 @@ var/global/list/all_living = list()
 
 	var/list/armor_base = list() //Base armor for the mob.
 
-	attack_delay = 4
+	interact_delay_base = 4
 
 /mob/living/proc/get_brute_color()
 	return "#FF0000"

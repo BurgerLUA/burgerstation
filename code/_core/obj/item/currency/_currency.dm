@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/currency/bluespace.dmi'
 	icon_state = "1"
 
-	var/value = 1
+	value = 1 //TODO: Change this to amount.
 
 /obj/item/currency/New(var/spawn_loc,var/desired_value=0)
 	..()

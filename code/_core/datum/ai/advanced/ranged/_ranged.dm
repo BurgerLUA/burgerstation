@@ -1,9 +1,6 @@
 /ai/advanced/ranged/
 	name = "Advanced Ranged AI"
 
-	sync_stats = TRUE
-	stationary = FALSE
-
 	left_click_chance = 100
 
 	var/distance_target_min = 4

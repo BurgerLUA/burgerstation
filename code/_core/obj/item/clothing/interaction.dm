@@ -34,11 +34,13 @@
 	. = ..()
 
 	if(defense_rating && length(defense_rating) && protected_limbs && length(protected_limbs))
-		. += div("notice bold","Armor:")
+		var/list/armor_list = list()
 		for(var/damagetype in defense_rating)
 			var/damage_rating = defense_rating[damagetype]
-			. += div("notice", "[damagetype]: [damage_rating]" )
+			if(damage_rating)
+				armor_list += "[capitalize(damagetype)]: [damage_rating]%"
 
-		. += div("notice bold","Protected Parts") + div("notice",english_list(protected_limbs))
+		. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
+		. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")
 
 	return .

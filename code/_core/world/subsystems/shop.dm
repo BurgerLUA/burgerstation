@@ -12,14 +12,18 @@ var/global/list/shops = list()
 
 /subsystem/shop/Initialize()
 
-	for(var/obj/structure/interactive/shop_holder/S in world)
+	var/total_items = 0
+
+	for(var/obj/structure/interactive/shop/S in world)
 		var/area/A = get_area(S)
 		if(shops[A.id])
 			shops[A.id] += S
 		else
 			shops[A.id] = list(S)
+		S.Initialize()
+		total_items += length(S.stored_items)
 
-	LOG_SERVER("Initialized [length(shops)] shops.")
+	LOG_SERVER("Initialized [length(shops)] shops with [length(total_items)].")
 
 	restock()
 
@@ -31,11 +35,10 @@ var/global/list/shops = list()
 		restock()
 		countdown = initial(countdown)
 
-
 	return TRUE
 
 
 /subsystem/shop/proc/restock()
 	for(var/k in shops)
-		for(var/obj/structure/interactive/shop_holder/S in shops[k])
+		for(var/obj/structure/interactive/shop/S in shops[k])
 			S.restock()

@@ -34,9 +34,10 @@
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
 		return FALSE
 
-	object_to_damage_with.attack_last = world.time
+	if(!DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage))
+		return FALSE
 
-	world.log << "Object: [object_to_damage_with.type], delay: [object_to_damage_with.get_attack_delay()]"
+	DT.attack_last = world.time
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
@@ -53,21 +54,21 @@
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
 	return src
 
+/atom/proc/get_interact_delay(var/atom/user)
+	return interact_delay_base
+
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
-	if(attack_last + get_attack_delay() > world.time)
+	if(interact_last + get_interact_delay(src) > world.time)
 		return FALSE
 
-	if(weapon && weapon != src && weapon.attack_last + weapon.get_attack_delay() > world.time)
+	if(weapon && weapon != src && !weapon.can_attack(victim,weapon,params))
 		return FALSE
 
 	if(victim && !victim.can_be_attacked(src,weapon,params))
 		return FALSE
 
 	return TRUE
-
-/atom/proc/get_attack_delay()
-	return attack_delay
 
 /atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	return 0

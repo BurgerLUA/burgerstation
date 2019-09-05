@@ -9,9 +9,3 @@
 	movement_delay = 1
 
 	target_distribution = list(8,16,16,16,16,32,32,32)
-
-	sync_stats = TRUE
-
-	simple = TRUE
-
-	stationary = FALSE

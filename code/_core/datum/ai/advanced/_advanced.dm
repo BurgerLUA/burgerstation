@@ -10,7 +10,8 @@
 
 	target_distribution = list(0,8,8,16,16,16,32,32,32,32,64,64,64)
 
-	sync_stats = TRUE
+	sync_movement_delay = TRUE
+	sync_attack_delay = FALSE
 	simple = TRUE
 	stationary = FALSE
 

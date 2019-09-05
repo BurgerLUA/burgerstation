@@ -5,10 +5,17 @@
 	var/size = 1 //Size in.. uh...
 	var/weight = 1 //Weight in kg
 
+	var/value = 1 //Value in whatever currency this world uses.
+
+	var/rarity = RARITY_COMMON
+
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
+	var/dynamic_inventory_count = 0
 	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
-	var/container_max_weight = 0 //This item has a container, how much should it be able to carry in each slot?
+	var/container_max_weight = 0 //This item has a container, how much should it be able to carry in TOTAL?
 	var/container_held_slots = 0 //How much each inventory slot can hold.
+	var/container_blacklist = list()
+	var/container_whitelist = list()
 
 	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
 
@@ -30,8 +37,6 @@
 	var/slot_icons = FALSE //Set to true if the clothing is based on where it's slot is.
 
 	var/ignore_other_slots = FALSE
-
-	var/dynamic_inventory_count = 0
 
 	var/block_mul = list(
 		ATTACK_TYPE_MELEE = 0,
@@ -166,6 +171,10 @@
 			inventories[i].max_size = container_max_size
 		if(container_max_weight)
 			inventories[i].max_weight = container_max_weight
+		if(container_blacklist)
+			inventories[i].item_blacklist = container_blacklist
+		if(container_whitelist)
+			inventories[i].item_whitelist = container_whitelist
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new(src)

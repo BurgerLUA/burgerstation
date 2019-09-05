@@ -9,7 +9,8 @@
 	inventories = list(
 		/obj/hud/inventory/organs/torso,
 		/obj/hud/inventory/organs/torso_o,
-		/obj/hud/inventory/organs/torso_b
+		/obj/hud/inventory/organs/torso_b,
+		/obj/hud/inventory/organs/torso_ob
 	)
 
 	enable_wounds = TRUE

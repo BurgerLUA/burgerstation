@@ -112,8 +112,8 @@
 		SKILL_RANGED = 0
 	)
 
-
-
+	var/attack_delay_base = 4
+	var/attack_last = 0
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -142,7 +142,13 @@
 	else
 		combat_rating *= 1.1
 
-	return combat_rating
+	if(get_attack_type() == ATTACK_TYPE_MELEE)
+		combat_rating *= (10/max(1,get_attack_delay(L)))
+
+	return round(combat_rating*0.25,1)
+
+/damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return attack_last + get_attack_delay(attacker,victim,weapon,hit_object) < world.time
 
 /damagetype/proc/get_miss_chance()
 	return 0
@@ -467,14 +473,11 @@
 	else
 		return span("warning","You [pick(attack_verbs)] \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)]... but it has no effect!")
 
-
 /damagetype/proc/get_glance_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
 		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [hit_object] with \the [get_weapon_name(weapon)]... but it has no effect!")
 	else
 		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)]... but it has no effect!")
-
-
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -483,3 +486,11 @@
 		get_glance_message_1st(attacker,victim,weapon,hit_object),\
 		get_glance_message_sound(attacker,victim,weapon,hit_object)\
 	)
+
+/damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		return floor(attack_delay_base * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY,1,100)))
+
+	return attack_delay_base

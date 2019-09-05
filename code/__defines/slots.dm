@@ -5,6 +5,7 @@
 #define SLOT_TORSO_A      0x20000//Armor
 #define SLOT_TORSO_U      0x4    //Torso covering underwear (undershirts)
 #define SLOT_TORSO_B      0x800  //Backpack/Satchel
+#define SLOT_TORSO_OB     0x100000 //Overwear belt
 
 
 

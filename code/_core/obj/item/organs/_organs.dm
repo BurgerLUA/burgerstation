@@ -32,6 +32,8 @@
 	var/enable_detail = FALSE
 	var/enable_wounds = FALSE
 
+	reagents = /reagent_container/limb/
+
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
 	for(var/wound/W in wounds)

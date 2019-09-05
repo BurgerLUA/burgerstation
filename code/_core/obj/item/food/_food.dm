@@ -1,4 +1,4 @@
-/obj/item/food/
+/obj/item/consumable/food/
 	name = "food"
 	desc = "FOOD!"
 
@@ -10,7 +10,7 @@
 
 	var/consume_verb = "take a bite out of"
 
-/obj/item/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/consumable/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(get_dist(caller,object) > 1)
 		return FALSE
@@ -41,7 +41,7 @@
 
 	return TRUE
 
-/obj/item/food/proc/consume(var/mob/living/consumer)
+/obj/item/consumable/food/proc/consume(var/mob/living/consumer)
 
 	if(heal_amount_health)
 		consumer.health_regen_buffer += heal_amount_health
@@ -62,7 +62,7 @@
 
 	return TRUE
 
-/obj/item/food/get_examine_text(var/mob/examiner)
+/obj/item/consumable/food/get_examine_text(var/mob/examiner)
 
 	. = ..()
 	if(uses_left)
