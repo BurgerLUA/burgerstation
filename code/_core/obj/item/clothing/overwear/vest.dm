@@ -5,6 +5,14 @@
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
 
+	size = 8
+
+	is_container = TRUE
+	dynamic_inventory_count = 4
+
+	container_max_weight = 8
+	container_max_size = 2
+
 	defense_rating = list(
 		BLADE = 20,
 		BLUNT = 10,
@@ -21,3 +29,6 @@
 		FATIGUE = 0
 	)
 
+/obj/item/clothing/overwear/armor/vest/on_inventory_click(var/mob/caller as mob,location,control,params)
+	click_self(caller,location,control,params)
+	return TRUE

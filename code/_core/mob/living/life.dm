@@ -5,6 +5,15 @@
 
 	pre_death()
 
+	for(var/mob/living/advanced/player/P in view(VIEW_RANGE,src.loc))
+		if(P == src)
+			continue
+		P.to_chat(span("notice","<b>\The [src.name] dies!</b>"),CHAT_TYPE_COMBAT)
+
+	src.to_chat(span("danger","<h1>You die!</h1>"),CHAT_TYPE_COMBAT)
+
+	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
+
 	if(client)
 		client.make_ghost(get_turf(src))
 	status |= FLAG_STATUS_DEAD
@@ -14,7 +23,6 @@
 	attack_flags = 0x0
 
 	add_stun(2)
-	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 	collision_flags = FLAG_COLLISION_NONE
 
 	queue_delete(src,300)
@@ -41,6 +49,7 @@
 
 
 /mob/living/proc/resurrect()
+	world.log << "resurrect"
 	status &= ~FLAG_STATUS_DEAD
 	layer = initial(layer)
 	health_current = health_max

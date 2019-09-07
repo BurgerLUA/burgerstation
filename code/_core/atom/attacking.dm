@@ -88,6 +88,15 @@
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] blocks your attack!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
 	return TRUE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
@@ -96,8 +105,18 @@
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"parried")
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] parries your attack!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You parry \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
 	if(allow_parry_counter)
 		src.attack(src,attacker)
+
 	return TRUE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
@@ -106,4 +125,13 @@
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"dodged")
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
 	return TRUE

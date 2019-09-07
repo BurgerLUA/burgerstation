@@ -42,7 +42,7 @@
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 	var/reverse_draw = FALSE //Should the worn state and the held state be swapped?
 
-	var/drag_to_take = TRUE //You must click and drag to take the object.
+	var/drag_to_take = TRUE //You must click and drag to take the object inside.
 
 	var/obj/hud/inventory/parent_inventory //Basically one massive defer to this inventory.
 	var/obj/hud/inventory/child_inventory

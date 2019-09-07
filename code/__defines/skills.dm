@@ -4,9 +4,9 @@
 #define SKILL_UNARMED "unarmed" //Completed
 #define SKILL_MELEE "melee" //Completed
 #define SKILL_BLOCK "block" //Completed
-#define SKILL_ARMOR "armor"
+#define SKILL_ARMOR "armor" //Completed
 #define SKILL_PRAYER "prayer" //Completed
-#define SKILL_RECOVERY "recovery" //Add a way to level
+#define SKILL_RECOVERY "recovery" //Completed
 
 //INTELLIGENCE
 #define SKILL_MAGIC_OFFENSIVE "magic_offensive" //Completed

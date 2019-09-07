@@ -52,9 +52,11 @@
 /proc/is_bullet_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/bullet/)
 
+/proc/is_laser_gun(var/atom/A)
+	return istype(A,/obj/item/weapon/ranged/laser/)
+
 /proc/is_magazine_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/bullet/magazine/)
-
 
 /proc/is_magazine(var/atom/A)
 	return istype(A,/obj/item/magazine/)
@@ -127,3 +129,6 @@ proc/is_food(var/atom/A)
 
 /proc/is_mob_blocker(var/atom/A)
 	return istype(A,/obj/marker/mob_blocker/)
+
+proc/is_powercell(var/atom/A)
+	return istype(A,/obj/item/powercell/)

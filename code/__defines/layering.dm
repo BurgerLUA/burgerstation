@@ -10,6 +10,7 @@
 
 #define LAYER_TABLE 4
 
+#define LAYER_BLOOD LAYER_MOB_DEAD - 0.01
 #define LAYER_MOB_DEAD 5
 
 #define LAYER_OBJ 6
@@ -18,7 +19,6 @@
 
 #define LAYER_OBJ_VEHICLE LAYER_OBJ + 0.99
 
-#define LAYER_BLOOD LAYER_MOB - 0.01
 #define LAYER_MOB 7
 #define LAYER_MOB_DAMAGE 8
 #define LAYER_MOB_CLOTHING 9

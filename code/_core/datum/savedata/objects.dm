@@ -50,6 +50,11 @@
 		if(object_data["value"])
 			C.value = object_data["value"]
 
+	if(is_powercell(O))
+		var/obj/item/powercell/P = O
+		if(object_data["charge_current"])
+			P.charge_current = object_data["charge_current"]
+
 	if(is_bullet(O))
 		var/obj/item/bullet/B = O
 		if(object_data["bullet_count"])
@@ -177,6 +182,11 @@
 		var/obj/item/bullet/B = I
 		if(B.bullet_count > 1)
 			returning_list["bullet_count"] = B.bullet_count
+
+	if(is_powercell(I))
+		var/obj/item/powercell/P = I
+		if(P.charge_current)
+			returning_list["charge_current"] = P.charge_current
 
 	if(is_currency(I))
 		var/obj/item/currency/C = I

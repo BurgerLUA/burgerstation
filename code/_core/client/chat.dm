@@ -1,7 +1,8 @@
 /client/proc/to_chat(var/text,var/chat_type)
 	text = "<div class='message'>[text]</div>"
 
-	src << output(text,"chat_all.output")
+	if(!(chat_type & CHAT_TYPE_COMBAT))
+		src << output(text,"chat_all.output")
 
 	if(chat_type & CHAT_TYPE_SAY)
 		src << output(text,"chat_say.output")

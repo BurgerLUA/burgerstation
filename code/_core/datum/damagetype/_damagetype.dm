@@ -240,6 +240,8 @@
 
 	var/list/damage_to_deal = get_attack_damage(attacker,victim,weapon,hit_object)
 
+	var/damage_blocked = 0
+
 	if(is_living(victim))
 		var/mob/living/L = victim
 		if(L.status & FLAG_STATUS_IMMORTAL)
@@ -247,17 +249,15 @@
 
 		var/defense_rating_victim = L.get_defense(attacker,hit_object)
 
-		var/armor_experienced_earned = 0
-
 		for(var/damage_type in damage_to_deal)
 			var/old_damage_amount = damage_to_deal[damage_type]
 			var/defense_amount = Clamp(defense_rating_victim[damage_type] - attack_damage_penetration[damage_type],0,100)
 			var/new_damage_amount = old_damage_amount * Clamp((100-defense_amount)/100,1 - DAMAGE_REDUCTION_CAP,2)
-			armor_experienced_earned += old_damage_amount - new_damage_amount
+			damage_blocked += old_damage_amount - new_damage_amount
 			damage_to_deal[damage_type] = new_damage_amount
 
-		if(armor_experienced_earned > 0)
-			L.add_skill_xp(SKILL_ARMOR,armor_experienced_earned)
+		if(damage_blocked > 0)
+			L.add_skill_xp(SKILL_ARMOR,damage_blocked)
 
 	var/brute_damage_to_deal = 0
 	var/burn_damage_to_deal = 0
@@ -304,6 +304,14 @@
 
 	display_hit_message(attacker,victim,weapon,hit_object)
 
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.to_chat(span("warning","Took <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked)" : " "]damage [hit_object == victim ? "to yourself" : "to your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","Dealt <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked)" : " "]damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+
 	hit_object.update_health(total_damage_dealt,attacker)
 
 	if(victim != hit_object)
@@ -321,7 +329,7 @@
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 
 	if(hit_effect)
-		new hit_effect(get_turf(victim),victim.pixel_x,victim.pixel_y)
+		new hit_effect(get_turf(victim))
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
@@ -330,52 +338,42 @@
 		var/multiplier = TILE_SIZE * (damage_dealt / victim.health_max) * 2
 		multiplier = Clamp(multiplier,0,TILE_SIZE*0.5)
 
-		var/offset_x = get_true_offset_x(victim,attacker)
-		var/offset_y = get_true_offset_y(victim,attacker)
+		var/attack_direction = get_dir(attacker,victim)
+		var/offset_x = 0
+		var/offset_y = 0
 
-		if(!offset_x && !offset_y)
-			offset_x = rand(-1,1)
-		//TODO: Just make a normalize proc
-		var/total_offset = abs(offset_x) + abs(offset_y)
-
-		if(total_offset)
-			offset_x = offset_x/total_offset
-			offset_y = offset_y/total_offset
-			offset_x *= multiplier
-			offset_y *= multiplier
-		else
-			offset_x = 0
-			offset_y = 0
+		if(attack_direction & EAST)
+			offset_x += 1
+		if(attack_direction & WEST)
+			offset_x -= 1
+		if(attack_direction & NORTH)
+			offset_y += 1
+		if(attack_direction & SOUTH)
+			offset_y -= 1
 
 		if(is_player(victim))
 			var/mob/living/advanced/player/P = victim
 			if(P && P.client)
 				var/client/C = P.client
-				animate(C,pixel_x = offset_x, pixel_y = offset_y,time=1)
+				animate(C,pixel_x = offset_x*multiplier, pixel_y = offset_y*multiplier,time=1)
 				animate(pixel_x = 0, pixel_y = 0, time = 5)
 
 		if(is_movable(victim) && victim.health_current - damage_dealt <= 0)
-			if(multiplier >= TILE_SIZE*0.5)
+			//if(multiplier >= TILE_SIZE*0.5)
+			if(TRUE)
 				var/atom/movable/M = victim
-				M.glide_size = TILE_SIZE
-				var/move_direction = 0
-				if(offset_x)
-					if(offset_x > 0)
-						move_direction &= WEST
-					else
-						move_direction &= EAST
-				if(offset_y)
-					if(offset_y > 0)
-						move_direction &= NORTH
-					else
-						move_direction &= SOUTH
-				step(M,move_direction)
 
-			else if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
-				animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
+				M.glide_size = TILE_SIZE * 0.25
+				M.force_move(get_step(M,attack_direction))
+				//M.pixel_x = -offset_x*TILE_SIZE
+				//M.pixel_y = -offset_y*TILE_SIZE
+				//animate(victim,pixel_x = 0,pixel_y = 0,time = 2)
+
+			//else if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
+				//animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
 
 		else
-			animate(victim, pixel_x = initial(victim.pixel_x) + offset_x, pixel_y = initial(victim.pixel_y) + offset_y,time=1)
+			animate(victim, pixel_x = initial(victim.pixel_x) + offset_x*multiplier, pixel_y = initial(victim.pixel_y) + offset_y*multiplier,time=1)
 			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
@@ -394,8 +392,8 @@
 		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
 		WC.appearance = weapon.appearance
 
-		var/offset_x = get_true_offset_x(victim,attacker)
-		var/offset_y = get_true_offset_y(victim,attacker)
+		var/offset_x = get_offset_x(victim,attacker)
+		var/offset_y = get_offset_y(victim,attacker)
 
 		animate(WC,pixel_x = offset_x, pixel_y = offset_y,time = ATTACK_ANIMATION_LENGTH)
 
@@ -404,16 +402,16 @@
 	var/punch_distance = 12
 
 	if(attacker.dir & NORTH)
-		pixel_y_offset = punch_distance
+		pixel_y_offset += punch_distance
 
 	if(attacker.dir & SOUTH)
-		pixel_y_offset = -punch_distance
+		pixel_y_offset += -punch_distance
 
 	if(attacker.dir & EAST)
-		pixel_x_offset = punch_distance
+		pixel_x_offset += punch_distance
 
 	if(attacker.dir & WEST)
-		pixel_x_offset = -punch_distance
+		pixel_x_offset += -punch_distance
 
 	if(is_mob(attacker))
 		var/mob/M = attacker

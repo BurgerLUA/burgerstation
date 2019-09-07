@@ -4,7 +4,7 @@
 	icon = 'icons/obj/projectiles/laser.dmi'
 	icon_state = "laser"
 
-	impact_effect = /obj/effect/temp/impact/bullet/laser
+	impact_effect_turf = /obj/effect/temp/impact/bullet/laser
 
 /obj/projectile/bullet/laser/update_icon()
 

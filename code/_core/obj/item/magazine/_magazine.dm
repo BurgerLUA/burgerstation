@@ -5,6 +5,8 @@
 	var/bullet_capacity = 30 //How many bullets can this store
 	var/list/obj/item/bullet/stored_bullets
 
+	var/list/weapon_whitelist = list() //What guns can fit this object?
+
 /obj/item/magazine/New()
 	..()
 	update_icon()
@@ -44,7 +46,7 @@
 		return ..()
 
 	var/obj/item/weapon/ranged/bullet/magazine/G = object
-	if(bullet_type != G.bullet_type)
+	if(!(G.type in weapon_whitelist))
 		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 		return TRUE
 

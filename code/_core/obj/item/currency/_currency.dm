@@ -1,8 +1,8 @@
 /obj/item/currency/
-	name = "bluespace crystals"
+	name = "telecrystal"
 	desc = "Often used as currency in the realm for its rarity and magical properties."
 
-	icon = 'icons/obj/items/currency/bluespace.dmi'
+	icon = 'icons/obj/items/currency/telecrystals.dmi'
 	icon_state = "1"
 
 	value = 1 //TODO: Change this to amount.
@@ -15,12 +15,18 @@
 
 /obj/item/currency/update_icon()
 
-	if(value <= 9)
+	if(value <= 10)
 		icon_state = "[value]"
 	else if(value <= 100)
 		icon_state = "[floor(value/10)*10]"
+	else if(value <= 1000)
+		icon_state = "[floor(value/100)*100]"
+	else if(value <= 5000)
+		icon_state = "[floor(value/1000)*1000]"
 	else
-		icon_state = "100"
+		icon_state = "5000"
+
+	name = "\improper [value] telecrystal\s"
 
 	..()
 

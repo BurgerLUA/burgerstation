@@ -5,6 +5,10 @@
 	icon_state = "762"
 	bullet_capacity = 30
 
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/assault_rifle
+	)
+
 /obj/item/magazine/rifle_762/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/rifle_762(src)

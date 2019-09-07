@@ -5,6 +5,10 @@
 	icon_state = "556"
 	bullet_capacity = 50
 
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/lmg
+	)
+
 /obj/item/magazine/lmg_556/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/rifle_556(src)

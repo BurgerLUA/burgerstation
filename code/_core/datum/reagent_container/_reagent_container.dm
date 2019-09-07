@@ -13,6 +13,8 @@
 
 	var/atom/owner
 
+	var/should_update_owner = FALSE //Should a change in reagents update the owner?
+
 /reagent_container/New(var/atom/desired_owner,var/desired_volume_max)
 
 	. = ..()
@@ -57,11 +59,13 @@
 	else
 		color = "#FFFFFF"
 
+	if(should_update_owner)
+		owner.update_icon()
+
 	return TRUE
 
 /reagent_container/proc/add_reagent(var/reagent_id,var/amount=0)
 
-	world.log << "[src] of [owner].add_reagent([reagent_id],[amount])"
 
 	if(amount == 0)
 		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
@@ -85,7 +89,6 @@
 
 /reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0)
 
-	world.log << "[src] of [owner].add_reagent([reagent_id],[amount])"
 
 	if(amount <= 0)
 		return 0
@@ -105,12 +108,10 @@
 
 
 /reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0) //Transfer a single reagent by id.
-	world.log << "[src]  of [owner].transfer_reagent_to([target_container],[reagent_id],[amount])"
 	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount))
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0) //Transfer all the reagents.
 
-	world.log << "[src] of [owner].transfer_reagents_to([target_container],[amount])"
 
 	if(amount <= 0)
 		return FALSE
@@ -123,9 +124,7 @@
 
 	for(var/reagent/R in stored_reagents)
 		var/ratio = R.volume / old_volume
-		world.log << "The ratio is: [ratio]."
 		var/transfered = R.transfer_reagent_to(target_container,ceiling(ratio*amount,1))
-		world.log << "Transfered [transfered] units of [R.id]!"
 		amount_transfered += transfered
 
 	return amount_transfered

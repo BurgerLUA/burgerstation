@@ -14,6 +14,10 @@
 	icon_state = "38"
 	bullet_capacity = 6
 
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/revolver/detective
+	)
+
 /obj/item/magazine/clip/revolver/bullet_38/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/revolver_38(src)
@@ -25,6 +29,10 @@
 	icon_state = "44"
 	bullet_capacity = 7
 
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/revolver/mateba
+	)
+
 /obj/item/magazine/clip/revolver/bullet_44/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/revolver_44(src)
@@ -35,6 +43,10 @@
 	icon = 'icons/obj/items/magazine/revolver/22.dmi'
 	icon_state = "22"
 	bullet_capacity = 6
+
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/revolver/deckhard
+	)
 
 /*
 /obj/item/magazine/clip/revolver/bullet_22/on_spawn()

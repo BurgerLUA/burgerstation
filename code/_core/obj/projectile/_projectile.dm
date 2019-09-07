@@ -35,10 +35,11 @@
 	var/atom/target_atom
 
 	var/only_hit_target_turf = FALSE
-	var/collide_with_other_projectiles = FALSE
 	collision_flags = FLAG_COLLISION_REAL
 
-	var/obj/effect/temp/impact/impact_effect
+	var/obj/effect/temp/impact/impact_effect_turf
+	var/obj/effect/temp/impact/impact_effect_movable
+
 	var/bullet_color = "#FFFFFF"
 
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color)
@@ -177,10 +178,8 @@
 			if(A.type == src.type)
 				continue
 
-			if(collide_with_other_projectiles && is_projectile(A))
-				var/obj/projectile/P = A
-				if(!P.collide_with_other_projectiles)
-					continue
+			if(is_projectile(A))
+				continue
 
 			if(A2.safe && is_player(owner) && (is_player(A) || is_unique(A)))
 				continue
@@ -198,10 +197,20 @@
 	return TRUE
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
-	if(impact_effect && !is_living(hit_atom))
+	if(impact_effect_turf && is_turf(hit_atom))
 		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
 		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
 		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
 		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
-		new impact_effect(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
+		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
+
+	else if(impact_effect_movable && is_movable(hit_atom))
+		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
+		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
+		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
+		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
+		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
+
+
+
 	return TRUE

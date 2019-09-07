@@ -59,6 +59,8 @@
 		for(var/obj/item/I in dropped_items)
 			C.add_to_inventory(src,I,FALSE)
 
+		C.prune_inventory()
+
 		queue_delete(C,3000)
 
 	else

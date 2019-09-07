@@ -38,4 +38,6 @@ loot/proc/spawn_loot_corpse(var/turf/T)
 	for(var/i=1,i <= loot_count,i++)
 		var/obj/item/I = spawn_loot(T)
 		C.add_to_inventory(null,I,FALSE)
+
+	C.prune_inventory()
 	return C

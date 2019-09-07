@@ -1,0 +1,1 @@
+/damagetype/ranged/magic/

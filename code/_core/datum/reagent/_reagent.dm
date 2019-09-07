@@ -69,8 +69,6 @@
 
 /reagent/proc/add_amount(var/volume_to_add)
 
-	world.log << "[src] of [current_container.owner].add_amount([volume_to_add])"
-
 	if(!volume_to_add)
 		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [name] to [current_container.owner]!")
 		return 0
@@ -88,5 +86,4 @@
 	return -add_amount(-volume_to_remove)
 
 /reagent/proc/transfer_reagent_to(var/reagent_container/target_container,var/amount=0)
-	world.log << "[src] of [current_container.owner].transfer_reagent_to([target_container],[amount])"
 	return target_container.add_reagent(src.id,src.remove_amount(amount))

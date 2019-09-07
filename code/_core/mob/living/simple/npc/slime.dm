@@ -1,6 +1,6 @@
 /mob/living/simple/npc/slime/
 	name = "slime"
-	desc = "Oh no. They're here too!"
+	desc = "Oh no. They're here too."
 
 	icon = 'icons/mob/living/simple/slimes_new.dmi'
 	icon_state = "small_neutral"
@@ -24,17 +24,19 @@
 	return .
 
 /mob/living/simple/npc/slime/post_death()
-	..()
-	update_icon()
-	spawn while(stored_slimes > 0)
+
+	. = ..()
+
+	for(var/i=1,i<=stored_slimes-1)
 		var/mob/living/simple/npc/slime/S = new(src.loc)
 		S.slime_color = slime_color
-		S.update_icon()
-		stored_slimes--
-		sleep(3)
+		S.Initialize()
 
-	//Loot spawning is handled here.
-	//Fuck snowflake code but whatever.
+	stored_slimes = 0
+
+	update_icon()
+
+	return .
 
 /mob/living/simple/npc/slime/update_icon()
 
@@ -45,11 +47,12 @@
 	var/anger = (my_rgb[1]/255) + anger_mod
 	var/happiness = (my_rgb[2]/255) + happiness_mod
 	var/sadness = (my_rgb[3]/255) + sadness_mod
+	var/face_state = "none"
 
 	if(status & FLAG_STATUS_DEAD)
 		icon_state = "death"
 	else if(stored_slimes > 1)
-		icon_state = "grow"
+		icon_state = "large"
 	else
 		var/mood = "neutral"
 		if(anger > happiness && anger > sadness)
@@ -60,21 +63,22 @@
 			mood = "sad"
 		icon_state = "small_[mood]"
 
-	var/face_state = "none"
-
-	if(anger > happiness + sadness)
-		face_state = "angry"
-	else if(happiness > anger + sadness)
-		face_state = "mischevous"
-	else if(sadness > anger + happiness)
-		face_state = "sad"
+		if(anger > happiness + sadness)
+			face_state = "angry"
+		else if(happiness > anger + sadness)
+			face_state = "mischevous"
+		else if(sadness > anger + happiness)
+			face_state = "sad"
 
 	var/icon/I = new(icon,icon_state)
 	I.Blend(slime_color,ICON_MULTIPLY)
-	var/icon/I2 = new(icon,"emotion_[face_state]")
-	I.Blend(I2,ICON_OVERLAY)
+	if(icon_state != "death")
+		var/icon/I2 = new(icon,"emotion_[face_state]")
+		I.Blend(I2,ICON_OVERLAY)
 
 	icon = I
+
+	return ..()
 
 /mob/living/simple/npc/slime/proc/absorb_slime(var/mob/living/simple/npc/slime/desired_slime)
 

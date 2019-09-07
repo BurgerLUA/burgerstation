@@ -5,6 +5,10 @@
 	icon_state = "50"
 	bullet_capacity = 4
 
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/heavy_sniper
+	)
+
 /obj/item/magazine/sniper_50/on_spawn()
 	for(var/i=1, i <= bullet_capacity, i++)
 		stored_bullets += new /obj/item/bullet/sniper_50(src)

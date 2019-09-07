@@ -42,8 +42,18 @@
 	name = ".50AE gold eagle"
 	icon = 'icons/obj/items/weapons/ranged/deagle.dmi'
 	bullet_speed = 28
-	shoot_delay = 2
+	shoot_delay = 4
 	bullet_type = ".50ae"
+	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
+
+	view_punch = 12
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
+	name = ".45 "
+	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
+	bullet_speed = 28
+	shoot_delay = 2
+	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
 
 	view_punch = 8

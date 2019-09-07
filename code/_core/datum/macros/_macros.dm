@@ -104,6 +104,8 @@
 				owner.is_zoomed = FALSE
 				owner.pixel_x = 0
 				owner.pixel_y = 0
+				//animate(owner,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(1))
+
 
 
 	return TRUE

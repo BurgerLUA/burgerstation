@@ -3,7 +3,7 @@
 	desc = "Makes you think."
 
 	icon = 'icons/obj/items/consumable/food/burgers.dmi'
-	icon_state = "hburger"
+	icon_state = "burger"
 
 	consume_verb = "eat"
 

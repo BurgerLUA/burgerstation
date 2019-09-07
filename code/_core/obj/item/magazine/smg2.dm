@@ -5,6 +5,10 @@
 	icon_state = "9mmt"
 	bullet_capacity = 20
 
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw
+	)
+
 /obj/item/magazine/smg_9mm/update_icon()
 	icon_state = "[initial(icon_state)]-[round(length(stored_bullets),4)]"
 	..()

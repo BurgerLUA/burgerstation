@@ -45,18 +45,6 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
 		FATIGUE = 50
 	)
 
@@ -74,14 +62,8 @@
 
 	attribute_damage = list()
 
-	skill_stats = list(
-		SKILL_MELEE = CLASS_C
-	)
+	skill_stats = list()
 
-	skill_damage = list(
-		SKILL_MELEE = FATIGUE
-	)
+	skill_damage = list()
 
-	skill_xp_per_damage = list(
-		SKILL_MELEE = 0.25
-	)
+	skill_xp_per_damage = list()

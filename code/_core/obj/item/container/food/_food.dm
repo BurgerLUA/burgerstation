@@ -24,7 +24,7 @@
 		var/list/callback_list = list()
 		callback_list["object"] = src
 		if(add_progress_bar(A1,"feed_self",SECONDS_TO_DECISECONDS(1),callback_list))
-			A1.to_chat(span("notice","You start eating \the [src]..."))
+			A1.to_chat(span("notice","You start to [consume_verb] \the [src]..."))
 
 	else
 		var/list/callback_list = list()
@@ -34,7 +34,7 @@
 		callback_list["start_turf"] = get_turf(src)
 
 		if(add_progress_bar(A1,"feed_other",SECONDS_TO_DECISECONDS(3),callback_list))
-			A1.to_chat(span("notice","You start to forcefeed \the [src] to \the [A2]..."))
+			A1.to_chat(span("notice","You force \the [src] to [consume_verb] \the [A2]..."))
 
 	return TRUE
 

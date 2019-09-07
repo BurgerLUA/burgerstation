@@ -82,6 +82,12 @@
 	if(A && istype(A))
 		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment, volume = Clamp(100 - base_chance,25,100) )
 
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] blocks your attack!"),CHAT_TYPE_COMBAT)
+
+	src.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
 	add_skill_xp(SKILL_BLOCK,max(1,(100-base_chance)/1))
 
 	return TRUE
@@ -129,6 +135,12 @@
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"parried by [src]'s [parrying_item]")
 
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] parries your attack with their [parrying_item.name]!"),CHAT_TYPE_COMBAT)
+
+	src.to_chat(span("warning","You parry \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name] with your [parrying_item.name]!"),CHAT_TYPE_COMBAT)
+
 	if(allow_parry_counter)
 		attack(src,attacker)
 
@@ -152,6 +164,12 @@
 	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [src]")
 	DT.do_miss_sound(attacker,src,weapon,target)
 	DT.do_attack_animation(attacker,src,weapon,target)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
+
+	src.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
 
 	add_skill_xp(SKILL_DODGE,max(1,(100-base_chance)/1))
 	return TRUE
