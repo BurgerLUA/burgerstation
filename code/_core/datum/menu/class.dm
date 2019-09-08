@@ -130,7 +130,7 @@
 				sleep(SECONDS_TO_DECISECONDS(20))
 
 			LOG_DEBUG("Playing music!")
-			//play_sound('sounds/music/world/leaf_short.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC)
+			//play_sound('sounds/music/world/leaf_short.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC, sound_type = SOUND_TYPE_MUSIC)
 			play_music_track("leaf",C)
 
 

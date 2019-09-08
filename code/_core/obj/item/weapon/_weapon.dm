@@ -5,6 +5,7 @@
 
 
 	var/open = FALSE //Mainly used for ranged weapons, can be used for melee I guess
+	var/open_icon = TRUE //Does the weapon have an icon for it being open?
 
 	var/override_icon_state = FALSE
 	var/override_icon_state_held = FALSE
@@ -15,6 +16,8 @@
 
 /obj/item/weapon/update_icon()
 
+	var/open_text = open_icon && open ? "_open" : ""
+
 	if(!override_icon_state_held)
 		if(wielded)
 			icon_state_held_left = "wielded_left"
@@ -23,16 +26,12 @@
 			icon_state_held_left = initial(icon_state_held_left)
 			icon_state_held_right = initial(icon_state_held_right)
 
-		var/open_text = open ? "_open" : ""
 		icon_state_held_left = "[icon_state_held_left][open_text]"
 		icon_state_held_right = "[icon_state_held_right][open_text]"
 		update_held_icon()
 
 	if(!override_icon_state)
-		if(open)
-			icon_state = "[initial(icon_state)]_open"
-		else
-			icon_state = initial(icon_state)
+		icon_state = "[initial(icon_state)][open_text]"
 
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc

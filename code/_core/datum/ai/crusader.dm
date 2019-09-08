@@ -4,7 +4,7 @@
 /ai/crusader/hostile_message()
 	owner.say("DEUS VULT!")
 	var/area/A = get_area(owner)
-	play_sound('sounds/voice/deusvult.ogg',all_mobs_with_clients,vector(owner.x,owner.y,owner.z),environment = A.sound_environment)
+	play_sound('sounds/voice/deusvult.ogg',all_mobs_with_clients,vector(owner.x,owner.y,owner.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
 
 /ai/crusader/handle_attacking()
 

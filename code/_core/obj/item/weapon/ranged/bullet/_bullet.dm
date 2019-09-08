@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet
 
-
 	var/list/obj/item/bullet/stored_bullets //Also good for one in the chamber stuff.
 	var/list/obj/item/bullet/stored_bullet_casings
 
@@ -11,11 +10,9 @@
 
 	var/insert_limit = 1 //How many bullets are you allowed to insert at once?
 
+
 /obj/item/weapon/ranged/bullet/get_damage_type()
-	if(stored_bullets && length(stored_bullets) && stored_bullets[1])
-		return stored_bullets[1].damage_type
-	else
-		return FALSE
+	return length(stored_bullets) && stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
 
 /obj/item/weapon/ranged/bullet/proc/eject_spent_casings(var/mob/caller, var/new_loc)
 	for(var/obj/item/bullet/B in stored_bullet_casings)

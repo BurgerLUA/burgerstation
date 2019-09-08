@@ -81,6 +81,10 @@
 	name = "alley shop"
 	id = "alley_shop"
 
+/area/world/forest/interior/village/shop/debug
+	name = "debug shop"
+	id = "debug_shop"
+
 
 /area/world/forest/interior/village/ship
 	name = "ship interior"

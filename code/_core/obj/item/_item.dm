@@ -207,10 +207,6 @@
 		var/obj/hud/inventory/I = src.loc
 		I.update_icon()
 
-/obj/item/proc/get_damage_type()
-	return damage_type
-
-
 /obj/item/get_examine_text(var/mob/examiner)
 
 	if(!is_advanced(examiner))
@@ -253,6 +249,8 @@ obj/item/proc/do_automatic(caller,object,location,params)
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE
 
+/obj/item/proc/get_damage_type() //Information purposes only.
+	return damage_type
 
 /obj/item/proc/update_held_icon()
 

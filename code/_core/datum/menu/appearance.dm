@@ -59,7 +59,7 @@
 	if(ENABLE_CHARGEN)
 		cache_resources(user)
 		winclone(user, "window", id)
-		play_sound('sounds/music/menu/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25)
+		play_sound('sounds/music/menu/chargen.ogg',list(user),list(user.x,user.y,user.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=25, sound_type = SOUND_TYPE_MUSIC)
 		winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
 		user << output(file, "browser([id])")
 	else if(is_advanced(user))

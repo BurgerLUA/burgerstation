@@ -88,7 +88,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	var/area/A = get_area(caller.loc)
 
 	if(length(empty_sounds))
-		play_sound(pick(empty_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound(pick(empty_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
 
 	return FALSE
 
@@ -125,6 +125,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/bullet_speed_to_use = bullet_speed
 
 	var/obj/item/bullet/spent_bullet = handle_ammo(caller)
+
 	if(spent_bullet)
 		if(spent_bullet.projectile)
 			projectile_to_use = spent_bullet.projectile
@@ -146,7 +147,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/area/A = get_area(caller)
 
 		if(length(shoot_sounds))
-			play_sound(pick(shoot_sounds_to_use),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			play_sound(pick(shoot_sounds_to_use),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
 
 		var/icon_pos_x = 0
 		var/icon_pos_y = 0

@@ -57,7 +57,7 @@
 		G.open = FALSE
 
 	var/area/A = get_area(caller)
-	play_sound(pick(G.mag_insert_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(pick(G.mag_insert_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
 
 	G.update_icon()
 

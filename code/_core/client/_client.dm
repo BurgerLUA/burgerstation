@@ -19,6 +19,7 @@ var/global/list/all_clients = list()
 	var/savedata/client/mob/savedata
 	var/savedata/client/connection_history/connection_data
 	var/savedata/client/roles/roles
+	var/savedata/client/settings/settings
 
 	var/save_slot //The character slot that the client wishes to overwrite.
 	var/list/last_params = list()
@@ -66,9 +67,7 @@ var/global/list/all_clients = list()
 
 /client/New()
 
-	world.update_status()
-
-	broadcast_to_clients("[ckey] has joined the game.")
+	all_clients += src
 
 	if(!button_tracker)
 		button_tracker = new(src)
@@ -76,10 +75,11 @@ var/global/list/all_clients = list()
 	if(!macros) //TODO: LOADING SYSTEM OF CUSTOM MACROS
 		macros = new(src)
 
-	all_clients += src
-
 	if(!roles)
 		roles = new(src)
+
+	if(!settings)
+		settings = new(src)
 
 	known_inventory = list()
 	known_buttons = list()
@@ -98,6 +98,9 @@ var/global/list/all_clients = list()
 
 	if(!connection_data)
 		connection_data = new(src)
+
+	world.update_status()
+	broadcast_to_clients("[ckey] has joined the game.")
 
 /client/proc/make_lobby(var/desired_loc)
 	src.mob = new /mob/abstract/observer(desired_loc,src)

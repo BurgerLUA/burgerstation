@@ -76,7 +76,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return created_sound
 
-/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=75, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=75, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0, var/sound_type = SOUND_TYPE_FX)
 	var/sound/created_sound = sound(sound_path)
 
 	//created_sound.volume = volume

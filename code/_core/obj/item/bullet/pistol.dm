@@ -36,3 +36,12 @@
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "9mm"
+
+/obj/item/bullet/pistol_45/
+	name = "\improper .45 bullet"
+	desc = "For pistols and smgs that requre .45 ammo."
+	id = ".45"
+	icon = 'icons/obj/items/bullet/45.dmi'
+
+	projectile = /obj/projectile/bullet/smg
+	damage_type = ".45"

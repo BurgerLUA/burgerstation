@@ -4,11 +4,13 @@
 	var/needs_pump = TRUE
 	var/obj/item/bullet/stored_chamber
 
+	open_icon = FALSE
+
+/obj/item/weapon/ranged/bullet/pump/get_damage_type()
+	return length(stored_bullets) && stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
+
 /obj/item/weapon/ranged/bullet/pump/can_gun_shoot(var/atom/caller)
-	if(stored_chamber && stored_chamber.is_spent == FALSE)
-		return TRUE
-	else
-		return FALSE
+	return stored_chamber && stored_chamber.is_spent == FALSE
 
 /obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller)
 
@@ -24,7 +26,7 @@
 		stored_bullets -= stored_chamber
 
 	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapons/shotgun_pump.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound('sounds/weapons/shotgun_pump.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
 	needs_pump = FALSE
 	update_icon()
 
@@ -34,5 +36,6 @@
 	return length(stored_bullets)
 
 /obj/item/weapon/ranged/bullet/pump/spend_bullet()
-	stored_chamber.spend_bullet()
 	needs_pump = TRUE
+	stored_chamber.spend_bullet()
+	return stored_chamber

@@ -49,10 +49,10 @@
 	view_punch = 12
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
-	name = ".45 "
+	name = ".45 private security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
 	bullet_speed = 28
-	shoot_delay = 2
+	shoot_delay = 3
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
 
