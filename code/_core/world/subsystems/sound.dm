@@ -76,18 +76,17 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return created_sound
 
-/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=75, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=0, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0, var/sound_type = SOUND_TYPE_FX)
+/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=75, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0)
 	var/sound/created_sound = sound(sound_path)
 
-	//created_sound.volume = volume
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
 	created_sound.pan = pan
-	created_sound.channel = channel
 	created_sound.priority = priority
 	created_sound.echo = echo
 	created_sound.environment = environment
 	created_sound.status = 0
+	created_sound.channel = channel
 
 	if(loop)
 		active_sounds[created_sound] = -1
@@ -101,12 +100,24 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
-		var/turf/mob_turf = get_turf(M)
+		volume *= M.client.settings.loaded_data["volume_master"] / 100
 
+		switch(channel)
+			if(SOUND_CHANNEL_MUSIC)
+				volume *= M.client.settings.loaded_data["volume_music"] / 100
+			if(SOUND_CHANNEL_AMBIENT)
+				volume *= M.client.settings.loaded_data["volume_ambient"] / 100
+			if(SOUND_CHANNEL_FOOTSTEPS)
+				volume *= M.client.settings.loaded_data["volume_footsteps"] / 100
+			if(SOUND_CHANNEL_UI)
+				volume *= M.client.settings.loaded_data["volume_ui"] / 100
+			if(SOUND_CHANNEL_FX)
+				volume *= M.client.settings.loaded_data["volume_fx"] / 100
 
 		var/local_volume = volume
 
 		if(created_sound.z >= 0)
+			var/turf/mob_turf = get_turf(M)
 			created_sound.x = pos[1] - mob_turf.x
 			created_sound.y = pos[2] - mob_turf.y
 			created_sound.z = pos[3] - mob_turf.z

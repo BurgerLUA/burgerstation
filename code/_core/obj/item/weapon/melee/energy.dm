@@ -53,10 +53,10 @@
 	. = ..()
 	var/area/A = get_area(caller.loc)
 	if(enabled)
-		play_sound('sounds/weapons/energy/energy_on.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
+		play_sound('sounds/weapons/energy/energy_on.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		damage_type = "sword_energy_on"
 	else
-		play_sound('sounds/weapons/energy/energy_off.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
+		play_sound('sounds/weapons/energy/energy_off.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		damage_type = "sword_energy_off"
 	return .
 

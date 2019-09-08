@@ -26,7 +26,7 @@
 		stored_bullets -= stored_chamber
 
 	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapons/shotgun_pump.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment, sound_type = SOUND_TYPE_FX)
+	play_sound('sounds/weapons/shotgun_pump.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	needs_pump = FALSE
 	update_icon()
 

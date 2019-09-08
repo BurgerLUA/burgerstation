@@ -35,8 +35,8 @@
 				if(L.footstep_override)
 					footstep_sound = pick(L.footstep_override)
 
-				play_sound(footstep_sound,all_mobs_with_clients - enterer,vector(enterer.x,enterer.y,enterer.z),environment = A.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = enterer.invisibility, sound_type = SOUND_TYPE_FOOTSTEPS)
-				play_sound(footstep_sound,list(enterer),vector(enterer.x,enterer.y,enterer.z),environment = A.sound_environment, volume = FOOTSTEP_VOLUME/2, sound_type = SOUND_TYPE_FX)
+				play_sound(footstep_sound,all_mobs_with_clients - enterer,vector(enterer.x,enterer.y,enterer.z),environment = A.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = enterer.invisibility, channel = SOUND_CHANNEL_FOOTSTEPS)
+				play_sound(footstep_sound,list(enterer),vector(enterer.x,enterer.y,enterer.z),environment = A.sound_environment, volume = FOOTSTEP_VOLUME/2)
 
 			if(has_footprints && L.has_footprints)
 				var/obj/effect/footprint/emboss/F = new(src,enterer.dir,TRUE,TRUE)
@@ -59,8 +59,8 @@
 			var/footstep_sound = pick(footstep_sounds)
 			if(L.footstep_override)
 				footstep_sound = pick(L.footstep_override)
-			play_sound(footstep_sound,all_mobs_with_clients - exiter,vector(exiter.x,exiter.y,exiter.z),environment = A.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = exiter.invisibility, sound_type = SOUND_TYPE_FOOTSTEPS)
-			play_sound(footstep_sound,list(exiter),vector(exiter.x,exiter.y,exiter.z),environment = A.sound_environment, volume = FOOTSTEP_VOLUME/2, sound_type = SOUND_TYPE_FOOTSTEPS)
+			play_sound(footstep_sound,all_mobs_with_clients - exiter,vector(exiter.x,exiter.y,exiter.z),environment = A.sound_environment,volume = FOOTSTEP_VOLUME, invisibility_check = exiter.invisibility, channel = SOUND_CHANNEL_FOOTSTEPS)
+			play_sound(footstep_sound,list(exiter),vector(exiter.x,exiter.y,exiter.z),environment = A.sound_environment, volume = FOOTSTEP_VOLUME/2, channel = SOUND_CHANNEL_FOOTSTEPS)
 
 		if(has_footprints && L.has_footprints)
 			var/obj/effect/footprint/emboss/exit/F = new(src,exiter.dir,TRUE,TRUE)
