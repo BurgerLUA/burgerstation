@@ -7,6 +7,9 @@
 
 	var/value = 1 //Value in whatever currency this world uses.
 
+	var/slowdown_mul_held = 1 //Slow down multiplier. Stacks multiplicatively or however you spell the damn word.
+	var/slowdown_mul_worn = 1
+
 	var/rarity = RARITY_COMMON
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.

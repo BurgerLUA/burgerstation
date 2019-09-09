@@ -10,24 +10,24 @@
 	return TRUE
 
 /mob/living/get_interact_delay(var/mob/user)
-	return interact_delay_base * (2 - get_attribute_power(ATTRIBUTE_DEXTERITY,1,100))
+	return interact_delay_base * (2 - get_attribute_power(ATTRIBUTE_DEXTERITY))
 
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status & FLAG_STATUS_STUN)
 		return 0
-	var/base_chance = get_skill_power(SKILL_PARRY,1,100)*50 + get_luck_calc(src,0.25,attacker,-0.25)
+	var/base_chance = get_skill_power(SKILL_PARRY)*50 + get_luck_calc(src,0.25,attacker,-0.25)
 	return base_chance
 
 /mob/living/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	if(status & FLAG_STATUS_STUN)
 		return 0
-	var/base_chance = get_skill_power(SKILL_DODGE,1,100)*50 + get_luck_calc(src,0.25,attacker,-0.25)
+	var/base_chance = get_skill_power(SKILL_DODGE)*50 + get_luck_calc(src,0.25,attacker,-0.25)
 	return base_chance
 
 /mob/living/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	if(status & FLAG_STATUS_STUN)
 		return 0
-	var/base_chance = get_skill_power(SKILL_BLOCK,1,100)*50 + get_luck_calc(src,0.25,attacker,-0.25)
+	var/base_chance = get_skill_power(SKILL_BLOCK)*50 + get_luck_calc(src,0.25,attacker,-0.25)
 	return base_chance
 
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

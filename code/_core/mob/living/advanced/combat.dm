@@ -64,7 +64,7 @@
 	else if(right_block_mul)
 		. *= right_block_mul
 	else
-		. *= get_skill_power(SKILL_UNARMED,1,100)
+		. *= 0.5 + get_skill_power(SKILL_UNARMED)*0.5
 
 	return .
 

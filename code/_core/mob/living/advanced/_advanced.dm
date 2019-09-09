@@ -23,6 +23,9 @@
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
+	var/list/obj/item/held_objects
+
+
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand
 
@@ -56,9 +59,21 @@
 	has_footsteps = TRUE
 	has_footprints = TRUE
 
+	var/slowdown_mul = 1
+
+/mob/living/advanced/proc/update_slowdown_mul()
+
+	for(var/obj/item/I in worn_objects)
+		slowdown_mul *= I.slowdown_mul_worn
+
+	for(var/obj/item/I in held_objects)
+		slowdown_mul *= I.slowdown_mul_held
+
+	slowdown_mul = Clamp(slowdown_mul,0.5,4)
 
 /mob/living/advanced/destroy()
 	inventory.Cut()
+	held_objects = null
 	worn_objects = null
 	left_hand = null
 	right_hand = null
@@ -84,6 +99,7 @@
 	icon_state = "0"
 	organs = list()
 	inventory = list()
+	held_objects = list()
 	worn_objects = list()
 	labeled_organs = list()
 	if(mob_species)

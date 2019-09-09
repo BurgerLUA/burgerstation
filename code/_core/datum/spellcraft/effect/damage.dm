@@ -8,5 +8,5 @@
 	var/spellcraft/modifier/M = all_modifiers[spell_mod_id]
 	var/damage_type = M.damage_type
 	var/damage_mod = 1 + (GetRedPart(effect_color) + GetGreenPart(effect_color) + GetBluePart(effect_color))/(255*3)
-	damage_mod *= 1 + caster.get_skill_power(SKILL_MAGIC_OFFENSIVE,0,100)
+	damage_mod *= 1 + caster.get_skill_power(SKILL_MAGIC_OFFENSIVE)
 	target.adjust_loss(damage_type,base_damage * damage_mod)

@@ -338,8 +338,9 @@
 		"Assistant"= 0
 	)
 
-
-
+/experience/skill/athletics/get_power()
+	//return (get_current_level() ** 2) * (1/(max_level*100))
+	return log(10,get_current_level()+1)*0.5
 
 /experience/skill/instinct //ENDURANCE
 	name = "Instincts"

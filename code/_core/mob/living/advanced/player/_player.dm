@@ -20,8 +20,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	//Measured in seconds.
 	//Reduces by 1 every second.
 
-	movement_delay = 4 //Basically the minimum movement delay. Measured in ticks.
-
 	var/last_track_time = -1
 
 	var/spawn_protection = 0
@@ -29,6 +27,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	respawn = FALSE
 
 	has_hard_crit = TRUE
+
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 /mob/living/advanced/player/Initialize()
 	. = ..()
@@ -58,22 +58,3 @@ mob/living/advanced/player/on_life_client()
 			AI.enabled = TRUE
 
 	return .
-
-/*
-/mob/living/advanced/player/verb/progress_debug()
-	set name = "Progress Bar Debug"
-	set category = "Debug"
-	add_progress_bar(src,"test",60)
-
-/mob/living/advanced/player/verb/class_debug()
-	set name = "Class Debug"
-	set category = "Debug"
-	open_menu(src,"class_editor")
-
-/mob/living/advanced/player/verb/spawn_player()
-	set name = "Spawn Player"
-	set category = "Debug"
-
-	var/mob/living/advanced/player/fake/F = new(src.loc)
-	F.Initialize()
-*/

@@ -112,60 +112,6 @@ client/verb/debug_attributes()
 		var/experience/attribute/A = L.attributes[id]
 		src << "[id] = [A.get_current_level()]"
 
-client/verb/debug_attribute()
-	set category = "Debug"
-
-	if(!is_living(mob))
-		return
-	var/mob/living/L = mob
-
-	var/text = input("What is the ID of the attribute?")
-
-	text = text ? text : ATTRIBUTE_STRENGTH
-
-	var/experience/attribute/A = L.get_attribute(text)
-	src << "get_attribute([text]) = [A.type]"
-
-	var/level = L.get_attribute_level(text)
-	src << "get_attribute_level([text]) = [level]"
-
-	var/power = L.get_attribute_power(text,0,100)
-	src << "get_attribute_power([text],0,100) = [power]"
-
-
-/client/verb/debug_other_attribute()
-	set category = "Debug"
-
-	var/list/valid_choices = list()
-
-	for(var/mob/living/M in world)
-		valid_choices[M.name] = M
-
-	var/mob/living/chosen_mob = valid_choices[input("Which mob do you wish to debug?","Debug Mob") in valid_choices]
-
-	var/text = input("What is the ID of the attribute?")
-
-	text = text ? text : ATTRIBUTE_STRENGTH
-
-
-	src << "Found [length(chosen_mob.attributes)] attributes."
-
-	var/experience/attribute/A = chosen_mob.get_attribute(text)
-	src << "get_attribute([text]) = [A.type]"
-
-	var/level = chosen_mob.get_attribute_level(text)
-	src << "get_attribute_level([text]) = [level]"
-
-	var/power = chosen_mob.get_attribute_power(text,0,100)
-	src << "get_attribute_power([text],0,100) = [power]"
-
-
-
-
-
-
-
-
 /*
 client/verb/debug_animations()
 	set category = "Debug"

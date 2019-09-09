@@ -55,20 +55,20 @@
 
 /mob/living/proc/update_stats()
 
-	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
-	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
-	mana_max = mana_base + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*400
+	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY)*400
+	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY)*400
+	mana_max = mana_base + get_attribute_power(ATTRIBUTE_WILLPOWER)*400
 
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
 /mob/living/advanced/update_stats()
 
-	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY,0,100)*400
-	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY,0,100)*400
-	mana_max = mana_base + get_attribute_power(ATTRIBUTE_WILLPOWER,0,100)*400
+	health_max = health_base + get_attribute_power(ATTRIBUTE_VITALITY)*400
+	stamina_max = stamina_base + get_attribute_power(ATTRIBUTE_AGILITY)*400
+	mana_max = mana_base + get_attribute_power(ATTRIBUTE_WILLPOWER)*400
 
 	//Regeneration is measured in seconds
-	var/recovery_skill =  get_skill_power(SKILL_RECOVERY,0,100)
+	var/recovery_skill =  get_skill_power(SKILL_RECOVERY)
 
 	if(status & FLAG_STATUS_CRIT)
 		health_regeneration = health_max * 0.01

@@ -49,7 +49,6 @@
 
 
 /mob/living/proc/resurrect()
-	world.log << "resurrect"
 	status &= ~FLAG_STATUS_DEAD
 	layer = initial(layer)
 	health_current = health_max

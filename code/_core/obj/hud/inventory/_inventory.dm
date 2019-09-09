@@ -72,9 +72,6 @@
 		src.mouse_opacity = 0
 
 /obj/hud/inventory/New(var/desired_loc)
-
-	//loc = desired_loc
-
 	held_objects = list()
 	worn_objects = list()
 	. = ..()
@@ -140,8 +137,6 @@
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
-
-
 	if(owner && item_to_update)
 		owner.remove_overlay(item_to_update)
 		if(id == BODY_HAND_LEFT)
@@ -199,6 +194,10 @@
 
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
+	if(owner)
+		I.update_owner(owner)
+		owner.held_objects += I
+		owner.update_slowdown_mul()
 	update_overlays()
 	update_stats()
 
@@ -208,6 +207,8 @@
 		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 
 	I.on_pickup(old_location,src)
+
+
 
 	return TRUE
 
@@ -237,10 +238,12 @@
 
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
-	owner.worn_objects += I
-	I.update_owner(owner)
 	update_overlays()
 	update_stats()
+	if(owner)
+		I.update_owner(owner)
+		owner.worn_objects += I
+		owner.update_slowdown_mul()
 
 	var/desired_icon_state
 	if(I.slot_icons)
@@ -306,6 +309,7 @@
 
 	if(I in held_objects)
 		held_objects -= I
+		owner.held_objects -= I
 		was_removed = TRUE
 
 	if(I in worn_objects)

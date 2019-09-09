@@ -203,7 +203,7 @@
 
 	var/returning_value = list()
 
-	var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR,0,100)
+	var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR)
 
 	for(var/damage_type in src.armor_base)
 		var/armor_amount = src.armor_base[damage_type] * armor_level_mod
@@ -218,7 +218,7 @@
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
 
-		var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR,0,100)
+		var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR)
 
 		for(var/obj/item/clothing/C in src.worn_objects)
 			if(!C.defense_rating && length(C.defense_rating))
@@ -489,6 +489,6 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		return floor(attack_delay_base * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY,1,100)))
+		return floor(attack_delay_base * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY)))
 
 	return attack_delay_base

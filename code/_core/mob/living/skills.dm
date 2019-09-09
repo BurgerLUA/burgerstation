@@ -6,9 +6,9 @@
 	var/experience/skill/S = get_skill(id)
 	return S.get_current_level()
 
-/mob/living/proc/get_skill_power(var/id,var/min = 0,var/max = 1)
+/mob/living/proc/get_skill_power(var/id)
 	var/experience/skill/S = get_skill(id)
-	return S.get_power(min,max)
+	return S.get_power()
 
 /mob/living/proc/set_skill_level(var/id,var/desired_level)
 	var/experience/skill/S = get_skill(id)
@@ -30,12 +30,12 @@
 	var/experience/attribute/A = get_attribute(id)
 	return A.get_current_level()
 
-/mob/living/proc/get_attribute_power(var/id,var/min = 0,var/max = 100)
+/mob/living/proc/get_attribute_power(var/id)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
 		LOG_ERROR("FATAL NPC ERROR: [id] IS A NULL ATTRIBUTE FOR [src].")
-		return min
-	return A.get_power(min,max)
+		return 0
+	return A.get_power()
 
 /mob/living/proc/set_attribute_level(var/id,var/desired_level)
 	var/experience/attribute/A = get_attribute(id)

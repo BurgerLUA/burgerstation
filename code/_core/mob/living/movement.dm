@@ -21,12 +21,14 @@
 	. = ..()
 
 	if(status & FLAG_STATUS_STUN)
-		. *= 4
+		. *= 3
 
 	if(is_sneaking)
 		. *= (2 - stealth_mod*0.5)
 
-	. *= 1 + (1 - get_skill_power(SKILL_ATHLETICS,1,100))*2
+	var/skill_power = get_skill_power(SKILL_ATHLETICS)
+
+	. *= 1 + (1 - skill_power)
 
 	return .
 
@@ -40,7 +42,7 @@
 			S.update_icon()
 
 	if(on)
-		stealth_mod = get_skill_power(SKILL_STEALTH,1,100)
+		stealth_mod = get_skill_power(SKILL_STEALTH)
 		is_sneaking = TRUE
 		return TRUE
 	else

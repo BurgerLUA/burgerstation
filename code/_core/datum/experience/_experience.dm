@@ -67,8 +67,8 @@
 		return FALSE
 	experience = new_xp
 
-/experience/proc/get_power(var/min=1,var/max=100)
-	return scale(get_current_level(),min,max)
+/experience/proc/get_power()
+	return get_current_level() / max_level
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
 	owner.to_chat(span("notice","Your [name] increased to [new_level]."))

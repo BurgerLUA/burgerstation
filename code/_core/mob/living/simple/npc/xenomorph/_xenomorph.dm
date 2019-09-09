@@ -9,9 +9,6 @@
 	class = "xenomorph"
 	health_base = 100
 
-/mob/living/simple/npc/xenomorph/get_movement_delay()
-	return DECISECONDS_TO_TICKS(3)
-
 /mob/living/simple/npc/xenomorph/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

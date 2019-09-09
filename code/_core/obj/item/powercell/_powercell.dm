@@ -17,7 +17,6 @@
 	var/icon/I = new/icon(icon,icon_state)
 	var/charge_number = floor((charge_current/charge_max)*7)
 	var/desired_icon = "charge_[charge_number]"
-	world.log << desired_icon
 	var/icon/I2 = new/icon(icon,desired_icon)
 
 	I.Blend(I2,ICON_OVERLAY)

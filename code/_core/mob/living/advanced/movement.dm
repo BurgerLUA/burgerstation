@@ -13,6 +13,10 @@
 
 	return ..()
 
+
+mob/living/advanced/get_movement_delay()
+	return ..() * (1/slowdown_mul)
+
 /mob/living/advanced/toggle_sneak(var/on = TRUE)
 	if(on && !adjust_stamina(-10))
 		update_health_element_icons(stamina=TRUE)
