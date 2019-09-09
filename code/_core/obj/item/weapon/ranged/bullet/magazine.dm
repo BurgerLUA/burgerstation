@@ -39,18 +39,25 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
-		caller.to_chat(span("notice","You eject the magazine from \the [src]."))
-		var/area/A = get_area(caller)
-		play_sound(pick(mag_remove_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+
+/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
+	var/area/A = get_area(caller)
+	play_sound(pick(mag_remove_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	stored_magazine.force_move(caller.loc)
+	if(object)
 		var/obj/hud/inventory/offhand_slot = object
-		stored_magazine.force_move(caller.loc)
 		offhand_slot.add_object(stored_magazine)
-		stored_magazine.update_icon()
-		stored_magazine = null
-		open = TRUE
-		update_icon()
+	stored_magazine.update_icon()
+	stored_magazine = null
+	open = TRUE
+	update_icon()
+
+/obj/item/weapon/ranged/bullet/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+
+	//object = object.defer_click_on_object()
+
+	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
+		eject_magazine(caller)
 
 	return ..()
 

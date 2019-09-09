@@ -1,6 +1,6 @@
 /obj/item/magazine/pistol_45
 	name = "\improper 45mm pistol magazine"
-	bullet_type = "45"
+	bullet_type = ".45"
 	icon = 'icons/obj/items/magazine/45pistol.dmi'
 	icon_state = "45"
 	bullet_capacity = 7

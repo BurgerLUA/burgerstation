@@ -50,15 +50,15 @@
 		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 		return TRUE
 
-	if(!G.stored_magazine)
-		src.drop_item(G)
-		src.force_move(G)
-		G.stored_magazine = src
-		G.open = FALSE
+	if(G.stored_magazine)
+		G.eject_magazine(caller)
 
+	src.drop_item(G)
+	src.force_move(G)
+	G.stored_magazine = src
+	G.open = FALSE
 	var/area/A = get_area(caller)
 	play_sound(pick(G.mag_insert_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-
 	G.update_icon()
 
 	return TRUE
