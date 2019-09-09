@@ -18,9 +18,6 @@
 	icon = 'icons/obj/projectiles/rift.dmi'
 	icon_state = "rift"
 
-/obj/projectile/bullet/rift/post_on_hit(var/atom/hit_atom)
-	new /obj/trigger/rift/forest_debug(previous_loc)
-
 /obj/projectile/bullet/lightning_bolt
 	name = "holy lightning bolt"
 	icon = 'icons/obj/projectiles/holy.dmi'

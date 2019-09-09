@@ -94,7 +94,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		active_sounds[created_sound] = duration
 
 	for(var/mob/M in hearers)
-		if(!M.client)
+		if(!M.client || !M.client.settings)
 			continue
 
 		if(invisibility_check && M.see_invisible < invisibility_check)

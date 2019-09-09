@@ -1,8 +1,6 @@
 "a" = (/turf/simulated/wall/rock,/area/world/desert/exterior)
-"b" = (/obj/effect/fake_lighting/solid/black,/turf/simulated/floor/asteroid,/area/world/desert/exterior)
 "c" = (/turf/simulated/floor/river,/area/world/desert/exterior)
 "d" = (/turf/simulated/floor/asteroid,/area/world/desert/exterior)
-"e" = (/obj/effect/fake_lighting/gradient/black,/turf/simulated/floor/asteroid,/area/world/desert/exterior)
 "f" = (/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior)
 "g" = (/turf/simulated/wall/brick/sand,/area/world/desert/exterior)
 "h" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior)
@@ -11,8 +9,8 @@
 "k" = (/turf/simulated/floor/asteroid,/area/world/desert/cave)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbaaaaaaaaaaaaaaaaccccccccccccccc
-aaaaaaddaaaaaaaadddaddaaaaddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddaaeeeaadddddaaaaaaaaaccccccccccccccc
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddaaaaaaaaaaaaaaaaccccccccccccccc
+aaaaaaddaaaaaaaadddaddaaaaddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddaadddaadddddaaaaaaaaaccccccccccccccc
 adddddddaaaaddddddddddaaaddddaaaaaaddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddaaaaddaadddddddddddddddddaaaaaaaaccccccccccccccc
 aaddddddaaadddddddddddaaaddddaaaadddffffdddddaaaaaddddddddddddddddddddddddddddddaadddaadddddddddddddddddddaaaaaacccccccccccccccc
 aadddddaaaaddddddddddddddddddaadddffffffffffddddddddffffffffffffffffffffffdddddddddddaadddddddddddfffddddddaaaaacccccccccccccccc
