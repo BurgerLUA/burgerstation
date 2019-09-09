@@ -267,8 +267,6 @@ var/global/list/all_clients = list()
 
 	..()
 
-
-
 /client/proc/store_new_params(over_object,over_location,params)
 	var/list/new_params = params2list(params)
 	last_params = new_params
@@ -287,7 +285,6 @@ var/global/list/all_clients = list()
 
 /client/proc/save_current_character()
 	savedata.save_current_character()
-
 
 /client/proc/get_permissions()
 	return FALSE

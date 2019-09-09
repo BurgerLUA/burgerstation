@@ -1,18 +1,18 @@
-#define PLANE_TURF 1
-#define PLANE_DEFAULT 1
-#define PLANE_OBJ 1
-#define PLANE_MOB 1
-#define PLANE_EFFECT 1
-#define PLANE_AREA 1
+#define PLANE_TURF 0
+#define PLANE_DEFAULT 0
+#define PLANE_OBJ 0
+#define PLANE_MOB 0
+#define PLANE_EFFECT 0
+#define PLANE_AREA 0
 
 #define PLANE_PARALAX -1
 
 
-#define PLANE_LIGHTING_AMBIENT 1
-#define PLANE_LIGHTING_DYNAMIC 2
-#define PLANE_INJURY 3
-#define PLANE_HUD 4
-#define PLANE_HUD_OBJ 5
+#define PLANE_LIGHTING_AMBIENT 0
+#define PLANE_LIGHTING_DYNAMIC 0
+#define PLANE_INJURY 1
+#define PLANE_HUD 2
+#define PLANE_HUD_OBJ 3
 
 
 #define PLANE_MAP 99

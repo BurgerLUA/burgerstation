@@ -3,7 +3,7 @@
 	id = "clockwork_temple"
 
 /area/world/temple01/interior
-	icon_state = "green"
+	icon_state = "yellow"
 
 /area/world/temple01/interior/safe
 	safe = TRUE

@@ -103,6 +103,8 @@ var/global/list/all_living = list()
 
 	interact_delay_base = 4
 
+	sight = SEE_SELF | SEE_PIXELS | SEE_BLACKNESS
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

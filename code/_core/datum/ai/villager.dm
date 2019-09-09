@@ -34,6 +34,11 @@
 
 	owner.move_dir = 0
 
+	if(prob(75))
+		return FALSE
+
+
+
 	var/list/valid_directions = list(NORTH,EAST,SOUTH,WEST)
 
 	var/turf/N = get_step(owner,NORTH)
@@ -76,6 +81,5 @@
 
 	if(length(valid_directions))
 		owner.move_dir = pick(valid_directions)
-
 
 	movement_ticks = 0

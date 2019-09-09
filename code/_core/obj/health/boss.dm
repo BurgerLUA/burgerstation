@@ -16,8 +16,6 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-
-
 	var/mob/living/target_boss
 	var/current_boss_music
 
@@ -40,7 +38,7 @@
 		if(current_boss_music && owner)
 			var/client/C = owner.client
 			if(C)
-				stop_sound(current_boss_music,C)
+				stop_music_track(C)
 		return FALSE
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
