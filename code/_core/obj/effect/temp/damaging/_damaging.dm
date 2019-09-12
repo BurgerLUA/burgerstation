@@ -5,7 +5,7 @@ obj/effect/temp/hazard
 
 	var/mob/owner
 
-	var/hazard_range = 1
+	var/hazard_range = 0
 	var/hazard_delay = SECONDS_TO_DECISECONDS(1)
 
 	var/cross_hazard = TRUE
@@ -26,21 +26,27 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 /obj/effect/temp/hazard/Crossed(atom/movable/O)
 	if(cross_hazard && is_living(O))
-		attack(owner,O)
+		attack(owner,O,ignore_distance = TRUE)
 
 	return ..()
 
 /obj/effect/temp/hazard/proc/do_hazard()
-	for(var/mob/living/L in range(hazard_range,src))
-		world.log << "HELLO: [L]"
-		attack(owner,L)
+
+
+	if(hazard_range >= 1)
+		for(var/mob/living/L in range(hazard_range,src))
+			attack(owner,L,ignore_distance = TRUE)
+	else
+		var/turf/T = get_turf(src)
+		for(var/mob/living/L in T.contents)
+			attack(owner,L,ignore_distance = TRUE)
 
 obj/effect/temp/hazard/falling_fireball
 	name = "falling fireball"
 	icon = 'icons/obj/projectiles/fire.dmi'
 	icon_state = "ball2"
 	duration = SECONDS_TO_DECISECONDS(2.1)
-	hazard_range = 1
+	hazard_range = 0
 	hazard_delay = SECONDS_TO_DECISECONDS(2)
 	damage_type = "ash_drake_fireball"
 
@@ -77,7 +83,7 @@ obj/effect/temp/hazard/tentacle/
 	duration = 15
 	hazard_delay = 3
 
-	hazard_range = 1
+	hazard_range = 0
 	damage_type = "goliath_tentacle"
 	cross_hazard = TRUE
 

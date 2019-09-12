@@ -1,14 +1,14 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!blamed)
 		blamed = attacker
 
 	victim = victim.change_victim(attacker)
 
-	if(attacker && victim)
+	if(attacker && victim && !ignore_distance)
 		attacker.face_atom(victim)
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
@@ -18,20 +18,27 @@
 		if(is_mob(blamed))
 			var/mob/M = blamed
 			M.to_chat(span("notice","You can't attack that!"))
+
+		//LOG_DEBUG("No object to damage or object to damage with.")
 		return FALSE
 
 	if(!attacker.can_attack(victim,object_to_damage_with,params))
+		//LOG_DEBUG("Cannot attack.")
 		return FALSE
 
-	if(is_living(attacker) && is_living(victim) && get_dist_between_living(attacker,victim) > object_to_damage_with.attack_range)
-		return FALSE
-	else if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
-		return FALSE
+	if(!ignore_distance)
+		if(is_living(attacker) && is_living(victim) && get_dist_between_living(attacker,victim) > object_to_damage_with.attack_range)
+			//LOG_DEBUG("Distance issues.")
+			return FALSE
+
+		else if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
+			//LOG_DEBUG("Distance issues 2.")
+			return FALSE
 
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
-		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
+		//LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
 		return FALSE
 
 	if(!DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage))
