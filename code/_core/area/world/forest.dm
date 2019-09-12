@@ -18,6 +18,9 @@
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 	icon_state = "red"
 
+/area/world/forest/exterior/plains
+	name = "forest plains"
+
 /area/world/forest/interior/cave
 	name = "caves"
 

@@ -75,7 +75,8 @@
 	A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 
 	update_icon()
-	..()
+
+	return TRUE
 
 /obj/hud/button/hide_show_inventory/update_icon()
 

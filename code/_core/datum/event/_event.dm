@@ -1,21 +1,22 @@
-#define EVENT_TYPE_AREA "area"
-#define EVENT_TYPE_GLOBAL "global"
-#define EVENT_TYPE_MARKER "marker"
-
 /event/
-	name = "Event"
+	name = "event name"
+	desc = "event desc"
 	id = null
 
+	var/probability = 0 //Relative probability of this event occuring.
+	var/duration = 0 //In deciseconds
 
-	var/weight = 0 //Chance of happening.
-	var/event_type = EVENT_TYPE_GLOBAL
+
+
 
 	var/start_time = 0
 	var/end_time = 0
 
 /event/proc/on_start()
+	return TRUE
 
+/event/proc/on_life()
+	return TRUE
 
-/event/proc/on_finish()
-
-	qdel(src)
+/event/proc/on_end()
+	return TRUE

@@ -17,3 +17,24 @@
 
 	return ..()
 */
+
+
+/mob/living/advanced/player/post_death()
+
+	var/list/people_who_contributed = list()
+	var/list/people_who_killed = list()
+	var/list/people_who_killed_names = list()
+
+	for(var/list/attack_log in attack_logs)
+		if(attack_log["lethal"])
+			var/mob/living/advanced/player/P = attack_log["attacker"]
+			people_who_killed += P
+			people_who_killed_names += P.name
+
+		if(!attack_log["lethal"] && attack_log["critical"])
+			people_who_contributed += attack_log["attacker"]
+
+	world.log << "It has been determined that [english_list(people_who_killed_names)] killed [src.name]."
+	attack_logs = list()
+
+	return ..()

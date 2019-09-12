@@ -37,6 +37,9 @@
 		if(3)
 			. *= 1
 
+	if(health_max)
+		. *= 2 - (health_current/health_max)
+
 	return .
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)

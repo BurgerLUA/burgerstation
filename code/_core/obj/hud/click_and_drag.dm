@@ -19,8 +19,8 @@
 	if(is_mob(desired_loc))
 		screen_loc = "CENTER,CENTER"
 		loc = desired_loc
-		var/mob/M = desired_loc
-		if(M.client)
-			M.client.screen += src
+		var/mob/ME = desired_loc
+		if(ME.client)
+			ME.client.screen += src
 
 	..()

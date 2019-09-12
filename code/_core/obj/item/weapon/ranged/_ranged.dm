@@ -49,8 +49,13 @@
 	return 1 //Unlimited
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller)
+
+	world.log << "CAN ATTACK"
 	if(!caller.can_attack(null,src))
+		world.log << "NO"
 		return FALSE
+
+	world.log << "YES"
 
 	return TRUE
 

@@ -1,7 +1,7 @@
 //Game Options
 
 
-#define FPS_CLIENT 0 //0 Means synced
+#define FPS_CLIENT 60 //0 Means synced
 #define FPS_SERVER 30
 
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing

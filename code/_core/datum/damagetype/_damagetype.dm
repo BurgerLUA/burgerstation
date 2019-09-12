@@ -305,11 +305,11 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.to_chat(span("warning","Took <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked)" : " "]damage [hit_object == victim ? "to yourself" : "to your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		L.to_chat(span("warning","Took <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked) " : ""]damage [hit_object == victim ? "to yourself" : "to your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		L.to_chat(span("notice","Dealt <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked)" : " "]damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		L.to_chat(span("notice","Dealt <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked) " : ""]damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
 	hit_object.update_health(total_damage_dealt,attacker)
 
@@ -322,6 +322,21 @@
 			var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
 			if(xp_to_give > 0)
 				A.add_skill_xp(skill,xp_to_give)
+
+	if(is_player(attacker) && is_player(victim))
+		var/mob/living/advanced/player/PA = attacker
+		var/mob/living/advanced/player/PV = victim
+		if(!(PV.status & FLAG_STATUS_DEAD))
+			var/list/attack_log_format = list()
+			attack_log_format["attacker"] = PA
+			attack_log_format["attacker_ckey"] = PA.ckey
+			attack_log_format["time"] = curtime
+			attack_log_format["damage"] = total_damage_dealt
+			attack_log_format["critical"] = (PV.health_current - total_damage_dealt < 0) || PV.status & FLAG_STATUS_CRIT
+			attack_log_format["lethal"] = PV.health_current - total_damage_dealt <= min(-50,PV.health_max*-0.25)
+			PV.attack_logs += list(attack_log_format)
+			world.log << "Adding attack log."
+			world.log << "Attack logs now have [length(PV.attack_logs)] entries."
 
 	return total_damage_dealt
 

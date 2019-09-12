@@ -3,7 +3,7 @@ obj/effect/temp/hazard
 	desc = "Avoid this."
 	duration = SECONDS_TO_DECISECONDS(3)
 
-	var/mob/owner
+	var/atom/owner
 
 	var/hazard_range = 0
 	var/hazard_delay = SECONDS_TO_DECISECONDS(1)
@@ -40,6 +40,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 		var/turf/T = get_turf(src)
 		for(var/mob/living/L in T.contents)
 			attack(owner,L,ignore_distance = TRUE)
+
 
 obj/effect/temp/hazard/falling_fireball
 	name = "falling fireball"
@@ -92,5 +93,34 @@ obj/effect/temp/hazard/tentacle/
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
 	if(istype(victim,/mob/living/simple/npc/goliath/)) //This bug is hilarious but we don't want to have it.
 		return FALSE
+
+	return ..()
+
+
+obj/effect/temp/hazard/falling_meteor
+	name = "falling meteor"
+	icon = 'icons/obj/effects/meteor.dmi'
+	icon_state = "small"
+	duration = SECONDS_TO_DECISECONDS(3)
+	hazard_range = 1
+	hazard_delay = SECONDS_TO_DECISECONDS(3)
+	damage_type = "meteor"
+
+	plane = PLANE_ALWAYS_VISIBLE
+
+obj/effect/temp/hazard/falling_meteor/New(var/desired_location,var/desired_time,var/desired_owner)
+
+	owner = src
+
+	alpha = 0
+	pixel_z = TILE_SIZE*VIEW_RANGE*2
+	pixel_w = TILE_SIZE*VIEW_RANGE
+
+	var/matrix/M = matrix()
+	M.Scale(2,2)
+	src.transform = M
+
+	animate(src, alpha=255, time=hazard_delay*0.5)
+	animate(src, pixel_z=0, pixel_w=0, time=hazard_delay*0.9, transform = matrix())
 
 	return ..()

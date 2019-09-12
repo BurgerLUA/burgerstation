@@ -30,6 +30,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
+	var/list/attack_logs = list()
+
 /mob/living/advanced/player/Initialize()
 	. = ..()
 	all_players += src

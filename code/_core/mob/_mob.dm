@@ -79,6 +79,20 @@
 
 /mob/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
+	if(victim)
+
+		if(victim.can_be_attacked(src,weapon,params))
+			return FALSE
+
+		var/area/A1 = get_area(victim)
+		var/area/A2 = get_area(src)
+
+		if(A1.safe != A2.safe)
+			return FALSE
+
+	if(weapon && weapon != src && !weapon.can_attack(victim,weapon,params))
+		return FALSE
+
 	if(!can_attack_while_moving && move_delay > 0)
 		return FALSE
 

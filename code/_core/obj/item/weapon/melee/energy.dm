@@ -14,13 +14,6 @@
 /obj/item/weapon/melee/energy/can_block()
 	return enabled
 
-/*
-/obj/item/weapon/melee/energy/can_attack(var/atom/victim,vat/atom/weapon/var/params)
-	if(!enabled)
-		return FALSE
-	return ..()
-*/
-
 /obj/item/weapon/melee/energy/update_icon()
 	if(enabled)
 		icon_state = "[initial(icon_state)]_on"

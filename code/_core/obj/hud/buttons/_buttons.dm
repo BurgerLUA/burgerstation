@@ -49,11 +49,4 @@
 
 
 /obj/hud/button/clicked_by_object(var/mob/caller,object,location,control,params)
-
-	/*
-	if(caller && caller.client)
-		caller.client << click_sound
-	*/
-
-
 	return TRUE
