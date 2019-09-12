@@ -66,6 +66,15 @@
 
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
+	if(!victim)
+		return FALSE
+
+	var/area/A1 = get_area(victim)
+	var/area/A2 = get_area(src)
+
+	if(A1.safe != A2.safe)
+		return FALSE
+
 	if(interact_last + get_interact_delay(src) > curtime)
 		return FALSE
 
