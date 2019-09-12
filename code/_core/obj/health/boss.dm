@@ -67,8 +67,8 @@
 		var/icon/name = new /icon(initial(icon),icon_state = target_boss.id)
 		base.Blend(name,ICON_OVERLAY)
 
-	var/start_x = 3
-	var/end_x = 3 + (current/max)*(90)
+	var/start_x = 4
+	var/end_x = 4 + (current/max)*(89)
 	var/start_y = 1
 	var/end_y = 32
 

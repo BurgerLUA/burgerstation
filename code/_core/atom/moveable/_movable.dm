@@ -12,6 +12,7 @@
 	appearance_flags = LONG_GLIDE | KEEP_TOGETHER // | TILE_BOUND | PIXEL_SCALE
 
 	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	animate_movement = SLIDE_STEPS
 

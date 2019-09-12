@@ -5,6 +5,9 @@ obj/structure/interactive/grille
 	icon_state = "default"
 
 	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
+
 	anchored = 1
 	opacity = 0
 

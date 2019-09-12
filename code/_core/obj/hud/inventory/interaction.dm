@@ -71,8 +71,15 @@ obj/hud/inventory/drop_on_object(caller,var/atom/object)
 	var/atom/the_hand = src.defer_click_on_object()
 	var/atom/the_target = object.defer_click_on_object()
 
-	if(is_inventory(the_target) && transfer_inventory_to_inventory(the_target))
+	if(is_inventory(the_target) && transfer_inventory_to_inventory(the_target)) //When we drop the src on the target, and the target is an inventory and we can transfer it.
 		return TRUE
+
+	if(is_item(the_target) && is_item(the_hand))
+		var/obj/item/I1 = the_hand
+		var/obj/item/I2 = the_target
+		if(I2.is_container)
+			I2.add_to_inventory(caller,I1)
+			return TRUE
 
 	if(the_hand != src && the_hand.drop_on_object(caller,object))
 		return TRUE

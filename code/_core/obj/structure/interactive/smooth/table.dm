@@ -10,6 +10,7 @@ obj/structure/smooth/table
 	layer = LAYER_TABLE
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 
 obj/structure/smooth/table/wood

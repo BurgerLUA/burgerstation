@@ -4,6 +4,8 @@ obj/structure/scenery/pinetrees
 	icon_state = "pine_1"
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
 	pixel_x = -16
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ

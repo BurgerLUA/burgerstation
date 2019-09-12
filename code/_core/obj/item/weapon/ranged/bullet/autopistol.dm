@@ -7,7 +7,8 @@
 	bullet_speed = 28
 	shoot_delay = 2
 	bullet_type = ".45"
-	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
+
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
 	view_punch = 10
 

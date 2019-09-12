@@ -3,14 +3,14 @@
 	desc = "See through this."
 	icon = 'icons/obj/structure/modern/window.dmi'
 	icon_state = "window"
+
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	corner_category = "window"
 	corner_icons = TRUE
 
 	layer = LAYER_OBJ_WINDOW
-
-	collision_flags = FLAG_COLLISION_WALKING
 
 /obj/structure/smooth/window/reinforced
 	name = "reinforced window"

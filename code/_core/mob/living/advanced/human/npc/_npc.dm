@@ -9,6 +9,7 @@
 	var/dialogue_id
 
 	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 /mob/living/advanced/npc/clicked_by_object(var/mob/caller,object,location,control,params)
 	if(dialogue_id && is_player(caller))

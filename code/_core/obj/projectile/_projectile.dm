@@ -35,7 +35,9 @@
 	var/atom/target_atom
 
 	var/only_hit_target_turf = FALSE
-	collision_flags = FLAG_COLLISION_REAL
+
+	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	var/obj/effect/temp/impact/impact_effect_turf
 	var/obj/effect/temp/impact/impact_effect_movable
@@ -184,7 +186,7 @@
 			if(A2.safe && is_player(owner) && (is_player(A) || is_unique(A)))
 				continue
 
-			if(!A.Cross(src))
+			if(src.collision_bullet_flags & A.collision_bullet_flags)
 				if(on_hit(A))
 					return
 

@@ -6,7 +6,13 @@
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
 /obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
-	total_charge -= cost_charge*NPC_MANA_COST_MULTIPLIER
+
+	var/charge_to_remove = cost_charge
+
+	if(is_npc(caller))
+		charge_to_remove *= NPC_MANA_COST_MULTIPLIER
+
+	total_charge -= charge_to_remove
 	update_icon()
 
 /obj/item/weapon/ranged/magic/staff/get_ammo_count()
@@ -15,8 +21,8 @@
 /obj/item/weapon/ranged/magic/staff/fire
 	name = "Wand of Fireballs"
 	desc = "Shoot fireballs!"
-	cost_charge = 1000
-	total_charge = 1000
+	cost_charge = 100
+	total_charge = 2500
 
 	bullet_speed = 16
 

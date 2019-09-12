@@ -56,6 +56,7 @@
 	var/skip_cutscene = FALSE //For cutscene skipping.
 
 	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	var/obj/hud/screen/paralax = /obj/hud/screen/
 
@@ -127,6 +128,3 @@
 
 	all_mobs += src
 	..()
-
-/mob/Cross(var/atom/movable/A)
-	return ..()

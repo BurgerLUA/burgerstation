@@ -80,7 +80,7 @@ proc/is_scroll(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/magic/scroll/)
 
 proc/is_npc(var/atom/A)
-	return istype(A,/mob/living/advanced/npc/)
+	return istype(A,/mob/living/advanced/npc/) || istype(A,/mob/living/simple/npc/)
 
 proc/is_staff(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/magic/staff/)
@@ -89,7 +89,7 @@ proc/is_summon(var/atom/A)
 	return istype(A,/mob/living/simple/npc/summon/)
 
 proc/is_soulgem(var/atom/A)
-	return istype(A,/obj/item/consumable/soulgem/)
+	return istype(A,/obj/item/soulgem/)
 
 proc/is_datum(var/atom/A)
 	return istype(A,/datum/)

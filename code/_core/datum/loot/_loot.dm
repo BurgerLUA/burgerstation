@@ -17,6 +17,7 @@
 
 	var/obj/item/I = pickweight(loot_table)
 	I = new I(spawn_loc)
+	I.on_spawn()
 
 	return I
 

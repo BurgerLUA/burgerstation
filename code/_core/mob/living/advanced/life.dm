@@ -102,6 +102,8 @@
 				set_hard_crit(TRUE)
 			return FALSE
 
+		return TRUE
+
 	return FALSE
 
 /mob/living/advanced/handle_health_buffer()

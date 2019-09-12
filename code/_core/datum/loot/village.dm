@@ -17,7 +17,7 @@
 		/obj/item/weapon/ranged/magic/scroll/fireball{scroll_count=5} = 100,
 		/obj/item/weapon/ranged/magic/staff/basic = 50,
 		/obj/item/weapon/ranged/magic/tome/fireball = 25,
-		/obj/item/consumable/soulgem = 25,
+		/obj/item/soulgem/rare = 25,
 		/obj/item/consumable/food/burger/spellburger = 25,
 		/obj/item/clothing/head/hat/wizard/blue = 10,
 		/obj/item/weapon/ranged/magic/tome/lightning = 10,

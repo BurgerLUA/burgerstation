@@ -15,6 +15,7 @@
 	var/footprint_alpha = 255
 
 	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 /turf/simulated/floor/is_safe_teleport()
 	if(collision_flags & FLAG_COLLISION_WALKING)

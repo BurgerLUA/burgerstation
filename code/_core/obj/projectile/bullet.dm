@@ -2,6 +2,8 @@
 	name = "bullet"
 	impact_effect_turf = /obj/effect/temp/impact/bullet
 
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
 /obj/projectile/bullet/on_hit(var/atom/hit_atom)
 
 	if(hit_atom != target_atom && is_living(hit_atom))

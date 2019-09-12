@@ -25,6 +25,7 @@
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
 	var/list/obj/item/held_objects
 
+	var/obj/hud/click_and_drag/click_and_drag_icon
 
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand
@@ -60,6 +61,8 @@
 	has_footprints = TRUE
 
 	var/slowdown_mul = 1
+
+	var/has_hard_crit = FALSE
 
 /mob/living/advanced/proc/update_slowdown_mul()
 
@@ -102,9 +105,13 @@
 	held_objects = list()
 	worn_objects = list()
 	labeled_organs = list()
+
 	if(mob_species)
 		mob_species = new mob_species
+
 	..()
+
+	click_and_drag_icon	= new(src)
 
 /mob/living/advanced/Logout()
 	..()

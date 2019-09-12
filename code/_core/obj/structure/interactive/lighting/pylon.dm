@@ -11,3 +11,4 @@
 	layer = LAYER_LARGE_OBJ
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC

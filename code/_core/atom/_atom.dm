@@ -45,15 +45,22 @@
 
 
 	var/collision_flags = FLAG_COLLISION_NONE
+	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
 	density = FALSE //DEPCRECATED
 
 	var/interact_distance = 1
 	var/interact_delay_base = 4
 	var/interact_last = 0
 
+
+	var/attack_last = -1
+
 	var/thinks = FALSE
 
 	var/reagent_container/reagents
+
+
 
 
 /atom/destroy()

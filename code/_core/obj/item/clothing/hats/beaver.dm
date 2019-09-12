@@ -62,7 +62,7 @@
 	)
 
 /obj/item/clothing/head/hat/wizard/red
-	color = "#FF6500"
+	color = "#FF0000"
 
 	defense_rating = list(
 		BLADE = 0,

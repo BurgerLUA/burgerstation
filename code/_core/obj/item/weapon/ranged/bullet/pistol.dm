@@ -12,7 +12,7 @@
 
 	bullet_type = "10mm_auto"
 
-	shoot_sounds = list('sounds/weapons/smg_heavy/classic_2.ogg')
+	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -54,6 +54,6 @@
 	bullet_speed = 28
 	shoot_delay = 3
 	bullet_type = ".45"
-	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
 	view_punch = 8

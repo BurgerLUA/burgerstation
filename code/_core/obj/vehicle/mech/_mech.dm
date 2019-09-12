@@ -4,6 +4,8 @@
 	icon = 'icons/obj/vehicles/mechs.dmi'
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
 	anchored = 1
 
 /obj/vehicle/mech/update_icon()

@@ -45,7 +45,7 @@
 	)
 
 /obj/item/clothing/overwear/coat/wizard/red
-	color = "#FF6500"
+	color = "#FF0000"
 
 /obj/item/clothing/overwear/coat/wizard/blue
 	color = "#0065FF"

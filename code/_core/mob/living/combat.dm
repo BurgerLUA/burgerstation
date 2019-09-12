@@ -1,6 +1,7 @@
 /mob/living/proc/add_stun(var/value,var/max_value = 40)
 
-	//value = max(value,10)
+	if(stun_time == -1)
+		return FALSE
 
 	if(stun_time > max_value)
 		return FALSE
@@ -56,7 +57,8 @@
 	var/offset_y = (T.y - attacker.y)
 
 	if(!offset_x && !offset_y)
-		offset_x = rand(-1,1)
+		offset_x = pick(-1,1)
+		offset_y = pick(-1,1)
 
 	var/total_offset = abs(offset_x) + abs(offset_y)
 

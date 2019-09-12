@@ -141,7 +141,7 @@
 
 	return ..()
 
-/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE)
+/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE

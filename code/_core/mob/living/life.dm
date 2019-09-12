@@ -24,6 +24,7 @@
 
 	add_stun(2)
 	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	queue_delete(src,300)
 

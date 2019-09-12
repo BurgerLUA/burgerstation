@@ -6,6 +6,8 @@
 
 	impact_effect_turf = /obj/effect/temp/impact/bullet/laser
 
+	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
+
 /obj/projectile/bullet/laser/update_icon()
 
 	var/icon/I = new/icon(initial(icon),initial(icon_state))

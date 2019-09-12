@@ -158,9 +158,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		if(params && params["icon-y"])
 			icon_pos_y = text2num(params["icon-y"])
 
-		var/object_fake_x = object.x*TILE_SIZE + icon_pos_x - 16
-		var/object_fake_y = object.y*TILE_SIZE + icon_pos_y - 16
-
 		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
 		if(is_living(caller))
 			var/mob/living/L = caller
@@ -168,42 +165,51 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 		accuracy_loss = Clamp(accuracy_loss,0,0.5)
 
-		for(var/i=1,i<=bullet_count_to_use,i++)
+		var/view_punch_time = shoot_delay
 
-			var/list/xy_list = get_projectile_path(caller,object_fake_x,object_fake_y,i,accuracy_loss)
+		shoot_projectile(caller,object,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time)
 
-			var/new_x = xy_list[1]
-			var/new_y = xy_list[2]
-
-			var/highest = max(abs(new_x),abs(new_y))
-
-			if(highest > 0)
-				var/normx = new_x/highest
-				var/normy = new_y/highest
-
-				var/turf/T = get_turf(caller)
-
-				bullet_speed_to_use = min(bullet_speed_to_use,TILE_SIZE-1)
-
-				if(i == ceiling(bullet_count_to_use/2) && is_player(caller) && view_punch && shoot_delay > 1)
-					var/mob/living/advanced/player/P = caller
-					if(P.client)
-						var/client/C = P.client
-						animate(C,pixel_x = -normx*view_punch, pixel_y = -normy*view_punch, time = (shoot_delay-1)*0.5)
-						animate(C,pixel_x = 0, pixel_y = 0, time = shoot_delay-1)
-
-				var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,icon_pos_x,icon_pos_y, get_turf(object), damage_type_to_use, object, bullet_color)
-
-				if(get_dist(caller,object) <= 1 && is_mob(object))
-					P.on_hit(object)
-			else
-				continue
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 
 	return TRUE
 
-obj/item/weapon/ranged/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/bullet_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2)
+
+	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
+	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
+
+	for(var/i=1,i<=bullet_count_to_use,i++)
+
+		var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,i,accuracy_loss)
+
+		var/new_x = xy_list[1]
+		var/new_y = xy_list[2]
+
+		var/highest = max(abs(new_x),abs(new_y))
+
+		if(highest > 0)
+			var/normx = new_x/highest
+			var/normy = new_y/highest
+
+			var/turf/T = get_turf(caller)
+
+			bullet_speed_to_use = min(bullet_speed_to_use,TILE_SIZE-1)
+
+			if(i == ceiling(bullet_count_to_use/2) && is_player(caller) && view_punch && view_punch_time > 1)
+				var/mob/living/advanced/player/P = caller
+				if(P.client)
+					var/client/C = P.client
+					animate(C,pixel_x = -normx*view_punch, pixel_y = -normy*view_punch, time = (view_punch_time-1)*0.5)
+					animate(C,pixel_x = 0, pixel_y = 0, time = view_punch_time-1)
+
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,icon_pos_x,icon_pos_y, get_turf(target), damage_type_to_use, target, bullet_color)
+
+			if(get_dist(caller,target) <= 1 && is_mob(target))
+				P.on_hit(target)
+
+
+/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
 
 	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
 	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y

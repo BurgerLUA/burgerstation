@@ -8,6 +8,7 @@ obj/structure/smooth/wall
 	corner_icons = TRUE
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 
 obj/structure/smooth/wall/wood

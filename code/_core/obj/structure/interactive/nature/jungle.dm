@@ -27,6 +27,7 @@ obj/structure/scenery/jungle_trees
 	icon = 'icons/obj/structure/flora/jungletrees.dmi'
 	icon_state = "tree1"
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	pixel_x = -48
 	pixel_y = -16
 	layer = LAYER_LARGE_OBJ
@@ -41,6 +42,7 @@ obj/structure/scenery/jungle_trees_small
 	icon = 'icons/obj/structure/flora/jungletreesmall.dmi'
 	icon_state = "tree1"
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	pixel_x = -32
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ

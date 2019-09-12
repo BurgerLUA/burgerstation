@@ -5,6 +5,7 @@
 	icon_state = "riverwater_static"
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	light_power = DEFAULT_BRIGHTNESS_AMBIENT_STRONG
 	light_range = DEFAULT_RANGE_AMBIENT
@@ -12,6 +13,7 @@
 
 /turf/simulated/floor/river/walkable
 	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 /*
 /turf/simulated/floor/river/New()

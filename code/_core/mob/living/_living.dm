@@ -94,8 +94,7 @@ var/global/list/all_living = list()
 	var/list/footstep_override
 
 	collision_flags = FLAG_COLLISION_WALKING
-
-	var/has_hard_crit = FALSE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
 	var/list/obj/hud/screen_blood/screen_blood
 

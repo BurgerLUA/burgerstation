@@ -54,10 +54,11 @@
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	//object = object.defer_click_on_object()
+	object = object.defer_click_on_object()
 
 	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
-		eject_magazine(caller)
+		eject_magazine(caller,object)
+		return TRUE
 
 	return ..()
 

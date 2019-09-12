@@ -6,6 +6,8 @@
 	var/passengers_max = 1
 
 	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
 	opacity = 0
 	anchored = 0
 

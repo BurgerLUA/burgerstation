@@ -197,6 +197,7 @@ var/global/list/all_clients = list()
 		examine(object)
 		return TRUE
 
+
 	..()
 
 /client/proc/get_variables(var/datum/object)
@@ -230,6 +231,14 @@ var/global/list/all_clients = list()
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
 
+
+	if(is_advanced(mob))
+
+		var/mob/living/advanced/A = mob
+		var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
+		click_and_drag_icon.stored_object = null
+		click_and_drag_icon.alpha = 0
+
 	..()
 
 /client/MouseDrop(src_object,over_object,src_location,over_location,src_control,over_control,params)
@@ -253,6 +262,23 @@ var/global/list/all_clients = list()
 
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	store_new_params(over_object,over_location,params)
+
+	if(is_advanced(mob) && is_inventory(src_object))
+		var/list/params_list = params2list(params)
+		var/mob/living/advanced/A = mob
+		var/atom/object = src_object
+		object = object.defer_click_on_object()
+		if(!is_inventory(object))
+			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
+			click_and_drag_icon.screen_loc = params_list["screen-loc"]
+
+			if(click_and_drag_icon.stored_object != object)
+				click_and_drag_icon.appearance = object.appearance
+				click_and_drag_icon.stored_object = object
+				click_and_drag_icon.mouse_opacity = 0
+				click_and_drag_icon.alpha = 100
+
+
 	..()
 
 /client/MouseMove(object,location,control,params)

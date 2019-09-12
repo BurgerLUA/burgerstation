@@ -15,6 +15,7 @@
 	)
 
 	collision_flags = FLAG_COLLISION_ETHEREAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 /mob/abstract/observer/no_move
 	icon_state = ""

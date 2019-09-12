@@ -5,13 +5,8 @@
 	icon = 'icons/obj/items/soulgem.dmi'
 	icon_state = "common"
 
-
-
 	var/total_charge = 0
 	//TODO: Make these enchant things.
-
-/obj/item/soulgem/on_spawn()
-	total_charge = 1000
 
 /obj/item/soulgem/get_examine_text(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
@@ -40,3 +35,16 @@
 		return TRUE
 
 	return ..()
+
+
+/obj/item/soulgem/common/on_spawn()
+	total_charge = 1000
+
+/obj/item/soulgem/uncommon/on_spawn()
+	total_charge = 2500
+
+/obj/item/soulgem/rare/on_spawn()
+	total_charge = 5000
+
+/obj/item/soulgem/mystic/on_spawn()
+	total_charge = 10000

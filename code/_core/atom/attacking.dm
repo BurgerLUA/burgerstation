@@ -37,7 +37,7 @@
 	if(!DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage))
 		return FALSE
 
-	DT.attack_last = world.time
+	object_to_damage_with.attack_last = curtime
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
@@ -59,7 +59,7 @@
 
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
-	if(interact_last + get_interact_delay(src) > world.time)
+	if(interact_last + get_interact_delay(src) > curtime)
 		return FALSE
 
 	if(weapon && weapon != src && !weapon.can_attack(victim,weapon,params))

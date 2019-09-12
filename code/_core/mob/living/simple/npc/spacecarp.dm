@@ -9,6 +9,7 @@
 	class = "carp"
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 /mob/living/simple/npc/spacecarp/leader
 	name = "alpha space carp"

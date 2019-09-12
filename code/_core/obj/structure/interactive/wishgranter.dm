@@ -5,6 +5,9 @@ obj/structure/interactive/wishgranter
 	name = "wishgranter"
 	desc = "What secrets does this hold?"
 	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
+
 	icon = 'icons/obj/structure/future/wishgranter.dmi'
 	icon_state = "wishgranter"
 

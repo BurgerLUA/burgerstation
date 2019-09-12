@@ -41,8 +41,6 @@
 
 	attack_range = 3
 
-	collision_flags = FLAG_COLLISION_REAL
-
 	boss = TRUE
 	boss_music = "crab"
 

@@ -112,8 +112,7 @@
 		SKILL_RANGED = 0
 	)
 
-	var/attack_delay_base = 4
-	var/attack_last = 0
+	var/attack_delay = 4
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -148,7 +147,7 @@
 	return round(combat_rating*0.25,1)
 
 /damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	return attack_last + get_attack_delay(attacker,victim,weapon,hit_object) < world.time
+	return weapon.attack_last + get_attack_delay(attacker,victim,weapon,hit_object) <= curtime
 
 /damagetype/proc/get_miss_chance()
 	return 0
@@ -157,7 +156,7 @@
 	return ATTACK_TYPE_MELEE
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	if(!victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance())
+	if(!prob(victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance()))
 		return FALSE
 	do_attack_animation(attacker,victim,weapon,hit_object)
 	do_miss_sound(attacker,victim,weapon,hit_object)
@@ -489,6 +488,6 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		return floor(attack_delay_base * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY)))
+		return floor(attack_delay * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY)))
 
-	return attack_delay_base
+	return attack_delay

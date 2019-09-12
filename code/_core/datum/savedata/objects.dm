@@ -41,7 +41,7 @@
 			F.uses_left = object_data["uses_left"]
 
 	if(is_soulgem(O))
-		var/obj/item/consumable/soulgem/S = O
+		var/obj/item/soulgem/S = O
 		if(object_data["total_charge"])
 			S.total_charge = object_data["total_charge"]
 
@@ -164,7 +164,7 @@
 			returning_list["soul_bound"] = TRUE
 
 	if(is_soulgem(I))
-		var/obj/item/consumable/soulgem/S = I
+		var/obj/item/soulgem/S = I
 		if(S.total_charge)
 			returning_list["total_charge"] = S.total_charge
 

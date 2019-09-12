@@ -13,3 +13,4 @@
 	light_power = 0
 
 	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
