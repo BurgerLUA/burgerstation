@@ -28,7 +28,7 @@
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
 	pixel_x = -32
-	pixel_y = 0
+	pixel_y = -12
 
 	health_base = 750
 
@@ -37,9 +37,9 @@
 	class = "crab_king"
 	loot_drop = "crab_king"
 
-	level_multiplier = 40
+	level_multiplier = 4
 
-	attack_range = 3
+	object_size = 1
 
 	boss = TRUE
 	boss_music = "crab"

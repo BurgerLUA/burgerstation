@@ -26,14 +26,8 @@
 		//LOG_DEBUG("Cannot attack.")
 		return FALSE
 
-	if(!ignore_distance)
-		if(is_living(attacker) && is_living(victim) && get_dist_between_living(attacker,victim) > object_to_damage_with.attack_range)
-			//LOG_DEBUG("Distance issues.")
-			return FALSE
-
-		else if(get_dist(attacker,victim) > object_to_damage_with.attack_range) //Out of range
-			//LOG_DEBUG("Distance issues 2.")
-			return FALSE
+	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
+		return FALSE
 
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
@@ -66,7 +60,18 @@
 
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
+	if(victim)
+
+		var/area/A1 = get_area(victim)
+		var/area/A2 = get_area(src)
+
+		if(A1.safe != A2.safe)
+			return FALSE
+
 	if(interact_last + get_interact_delay(src) > curtime)
+		return FALSE
+
+	if(victim && !victim.can_be_attacked(src,weapon,params))
 		return FALSE
 
 	return TRUE

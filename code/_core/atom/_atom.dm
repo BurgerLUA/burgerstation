@@ -60,7 +60,7 @@
 
 	var/reagent_container/reagents
 
-
+	var/object_size = 1 //This-1 is added to attack range.
 
 
 /atom/destroy()

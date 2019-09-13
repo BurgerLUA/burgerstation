@@ -74,6 +74,7 @@
 
 	bar.Blend(bar_color,ICON_MULTIPLY)
 	bar.Crop(start_x,start_y,end_x,end_y)
+	bar.Shift(EAST,start_x)
 
 	base.Blend(bar,ICON_OVERLAY)
 

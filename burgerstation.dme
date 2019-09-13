@@ -633,6 +633,7 @@
 #include "code\_core\obj\structure\interactive\rack.dm"
 #include "code\_core\obj\structure\interactive\soapstone.dm"
 #include "code\_core\obj\structure\interactive\wishgranter.dm"
+#include "code\_core\obj\structure\interactive\constructed\engine.dm"
 #include "code\_core\obj\structure\interactive\containers\_containers.dm"
 #include "code\_core\obj\structure\interactive\door\_door.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\_airlock.dm"

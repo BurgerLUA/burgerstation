@@ -3,6 +3,7 @@
 	if(is_player(victim) && victim != src)
 		var/area/A = get_area(src)
 		if(A && A.safe)
+			world.log << "WE ARE SAFE."
 			return FALSE
 
 	return ..()
