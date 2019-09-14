@@ -15,6 +15,12 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+
+/turf/simulated/floor/river/chocolate
+	name = "chocolate river"
+	icon_state = "chocolatewater"
+
+
 /*
 /turf/simulated/floor/river/New()
 	var/lightness = 255 - x*0.25

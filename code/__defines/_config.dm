@@ -32,11 +32,11 @@
 
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
-#define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
+#define ENABLE_MAPLOAD TRUE
+#define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN FALSE

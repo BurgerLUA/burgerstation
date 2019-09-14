@@ -53,6 +53,7 @@
 	if(calc_list["south"])
 		se += "s"
 		sw += "s"
+
 	if(calc_list["east"])
 		ne += "e"
 		se += "e"

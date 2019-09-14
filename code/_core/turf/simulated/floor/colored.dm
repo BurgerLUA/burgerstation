@@ -76,6 +76,14 @@
 	..()
 */
 
+/turf/simulated/floor/colored/mint_grass
+	name = "mint grass"
+	color = "#47E059"
+	layer = LAYER_FLOOR_LARGE + 0.1
+	corner_category = "grass"
+	light_color = "#47E059"
+
+
 /turf/simulated/floor/colored/necro_grass
 	name = "dark grass"
 	color = "#393317"
@@ -121,7 +129,6 @@
 	color = "#493C2F"
 	corner_category = "dirt_cave"
 
-
 	light_color = "#FFE8D1"
 	layer = LAYER_FLOOR_LARGE
 
@@ -134,6 +141,28 @@
 	name = "jungle dirt"
 	color = "#4C2C1D"
 	light_color = "#4C2C1D"
+
+/turf/simulated/floor/colored/dirt/cake
+	name = "cake"
+	color = "#F779E6"
+	corner_category = "cake"
+
+	layer = LAYER_FLOOR_LARGE + 0.01
+
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	light_range = DEFAULT_RANGE_AMBIENT
+	light_color = "#F779E6"
+
+/turf/simulated/floor/colored/dirt/cake_icing
+	name = "cake"
+	color = "#FFF4C1"
+	corner_category = "cake_icing"
+
+	layer = LAYER_FLOOR_LARGE
+
+	light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	light_range = DEFAULT_RANGE_AMBIENT
+	light_color = "#FFF4C1"
 
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"
@@ -178,7 +207,7 @@
 	color = "#3F3F3F"
 
 /turf/simulated/floor/colored/ash/rocky
-	name = "rocky necro ash"
+	name = "rocky ash"
 	color = "#563F2D"
 	icon_state = "ash_rocky"
 
