@@ -18,6 +18,8 @@
 
 	enable_wounds = TRUE
 
+	hud_id = "body_groin"
+
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
 	icon_state = BODY_GROIN_FEMALE

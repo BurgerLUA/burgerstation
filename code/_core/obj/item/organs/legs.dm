@@ -11,11 +11,15 @@
 
 	enable_wounds = TRUE
 
+	hud_id = "body_leg_right"
+
 /obj/item/organ/leg/left
 	name = "left leg"
 	id = BODY_LEG_LEFT
 	desc = "An organ."
 	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
 
 //Reptile
 /obj/item/organ/leg/reptile
@@ -29,6 +33,8 @@
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
 
+	hud_id = "body_leg_left"
+
 
 //Reptile Advanced
 /obj/item/organ/leg/reptile_advanced
@@ -40,6 +46,8 @@
 	name = "left advanced reptile leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
 
 
 
@@ -56,6 +64,8 @@
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
 
+	hud_id = "body_leg_left"
+
 
 //Cyborg
 /obj/item/organ/leg/cyborg
@@ -67,3 +77,5 @@
 	name = "left cyborg leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"

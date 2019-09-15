@@ -34,7 +34,6 @@
 		if(!attack_log["lethal"] && attack_log["critical"])
 			people_who_contributed += attack_log["attacker"]
 
-	world.log << "It has been determined that [english_list(people_who_killed_names)] killed [src.name]."
 	attack_logs = list()
 
 	return ..()

@@ -56,11 +56,13 @@
 		/obj/hud/button/crafting/close
 	)
 
-	var/list/obj/hud/button/health/spawning_health = list(
-		"hp" = /obj/hud/button/health/hp,
-		"sp" = /obj/hud/button/health/sp,
-		"mp" = /obj/hud/button/health/mp
+	var/list/obj/hud/button/spawning_health = list(
+		/obj/hud/button/health/bar/hp,
+		/obj/hud/button/health/bar/sp,
+		/obj/hud/button/health/bar/mp,
+		/obj/hud/button/health/body
 	)
+
 
 	var/list/chargen_hair_colors = list()
 

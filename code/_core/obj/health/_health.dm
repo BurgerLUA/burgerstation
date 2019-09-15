@@ -8,14 +8,15 @@
 
 	screen_loc = "CENTER,CENTER"
 
+	layer = LAYER_HUD
+	plane = PLANE_HUD
+
+/obj/hud/button/health/bar/
 	var/bar_color = "#ffffff"
 	var/min = 0
 	var/max = 100
 	var/current = 0
 	var/overflow = 0
-
-	layer = LAYER_HUD
-	plane = PLANE_HUD
 
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
 	update_icon()
@@ -35,7 +36,7 @@
 
 	return TRUE
 
-/obj/hud/button/health/update_icon()
+/obj/hud/button/health/bar/update_icon()
 
 	if(max == 0)
 		return
@@ -71,7 +72,7 @@
 
 	..()
 
-/obj/hud/button/health/hp
+/obj/hud/button/health/bar/hp
 	name = "health"
 	id = "health"
 	desc = "Approximately how close you are to death."
@@ -83,17 +84,17 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/hp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/bar/hp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] health.")
 
-/obj/hud/button/health/hp/update_stats(var/mob/living/M)
+/obj/hud/button/health/bar/hp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.health_max)
 	current = floor(M.health_current)
 	overflow = -M.damage_soft_total
 	return ..()
 
-/obj/hud/button/health/sp
+/obj/hud/button/health/bar/sp
 	name = "stamina"
 	id = "stamina"
 	desc = "Approximately how close your are to physical fatigue."
@@ -105,17 +106,17 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/sp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/bar/sp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] stamina.")
 
-/obj/hud/button/health/sp/update_stats(var/mob/living/M)
+/obj/hud/button/health/bar/sp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.stamina_max)
 	current = floor(M.stamina_current)
 	overflow = M.stamina_regen_buffer
 	return ..()
 
-/obj/hud/button/health/mp
+/obj/hud/button/health/bar/mp
 	name = "mana"
 	id = "mana"
 	desc = "Approximately how close you are to mental fatigue."
@@ -127,10 +128,10 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/mp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/bar/mp/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] mana.")
 
-/obj/hud/button/health/mp/update_stats(var/mob/living/M)
+/obj/hud/button/health/bar/mp/update_stats(var/mob/living/M)
 	min = 0
 	max = floor(M.mana_max)
 	current = floor(M.mana_current)

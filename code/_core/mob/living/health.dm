@@ -1,10 +1,10 @@
-/mob/proc/add_health_element(var/obj/hud/button/health/H)
+/mob/proc/add_health_element(var/obj/hud/button/H)
 	health_elements[H.id] = H
 	if(client)
 		client.screen += H
 	update_health_elements()
 
-/mob/proc/remove_health_element(var/obj/hud/button/health/H)
+/mob/proc/remove_health_element(var/obj/hud/button/H)
 	health_elements -= H
 	if(client)
 		client.screen -= H
@@ -15,7 +15,7 @@
 		return
 
 	for(var/k in health_elements)
-		var/obj/hud/button/health/H = health_elements[k]
+		var/obj/hud/button/H = health_elements[k]
 		client.screen += H
 
 	update_health_elements()
@@ -51,7 +51,7 @@
 		for(var/obj/hud/screen_blood/SB in screen_blood)
 			SB.update_stats()
 
-	return ..()
+	return .
 
 /mob/living/proc/update_stats()
 

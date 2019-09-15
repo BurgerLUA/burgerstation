@@ -30,3 +30,7 @@
 
 /turf/simulated/floor/tile/cyan
 	color = "#44FF99"
+
+
+/turf/simulated/floor/tile/bananium
+	icon_state = "bananium"

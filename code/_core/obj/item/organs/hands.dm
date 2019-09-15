@@ -17,6 +17,8 @@
 
 	enable_wounds = TRUE
 
+	hud_id = "body_hand_right"
+
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT
@@ -28,6 +30,8 @@
 	)
 
 	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
 
 //Reptile Advanced
 /obj/item/organ/hand/reptile
@@ -50,6 +54,8 @@
 
 	attach_flag = BODY_ARM_LEFT
 
+	hud_id = "body_hand_left"
+
 //Reptile Advanced
 /obj/item/organ/hand/reptile_advanced
 	name = "right advanced reptile hand"
@@ -69,6 +75,8 @@
 	)
 
 	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
 
 
 //Diona
@@ -95,6 +103,8 @@
 
 	attach_flag = BODY_ARM_LEFT
 
+	hud_id = "body_hand_left"
+
 
 //Cyborg
 /obj/item/organ/hand/cyborg
@@ -104,7 +114,6 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
-
 
 /obj/item/organ/hand/cyborg/left
 	name = "left cyborg hand"
@@ -116,3 +125,5 @@
 	)
 
 	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"

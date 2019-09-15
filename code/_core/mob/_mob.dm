@@ -9,7 +9,7 @@
 	var/tmp/attack_flags = 0x0
 
 	var/list/obj/hud/button/buttons //List of HUD buttons
-	var/list/obj/hud/button/health/health_elements
+	var/list/obj/hud/button/health_elements
 
 	//var/animation_pixel_x = 0
 	//var/animation_pixel_y = 0

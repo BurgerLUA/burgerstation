@@ -15,6 +15,8 @@
 
 	enable_wounds = TRUE
 
+	hud_id = "body_torso"
+
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	..()
 	if(is_advanced(src.loc))

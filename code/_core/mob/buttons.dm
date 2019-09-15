@@ -32,7 +32,7 @@
 
 /mob/proc/show_health(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
 	for(var/k in health_elements)
-		var/obj/hud/button/health/H = health_elements[k]
+		var/obj/hud/button/H = health_elements[k]
 		if(H.flags & show_flags_whitelist && !(H.flags & show_flags_blacklist))
 			H.show(show,speed)
 

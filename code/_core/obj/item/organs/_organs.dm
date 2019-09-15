@@ -34,6 +34,8 @@
 
 	reagents = /reagent_container/limb/
 
+	var/hud_id
+
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
 	for(var/wound/W in wounds)
@@ -65,6 +67,7 @@
 	attached_organs = list()
 	wounds = list()
 	initialize_blends()
+	update_health()
 
 /obj/item/organ/adjust_brute_loss(var/value)
 	if(value > 0 && is_advanced(src.loc))
@@ -172,6 +175,8 @@
 			I.Blend(U,ICON_UNDERLAY)
 			icon = I
 
+	return ..()
+
 /obj/item/organ/update_health(var/damage_dealt,var/atom/attacker)
 
 	var/brute_loss = get_brute_loss()
@@ -187,6 +192,7 @@
 		var/scale = floor((brute_loss/health_max)*5)
 		change_blend("skin_bruises", desired_icon_state = "[scale]")
 
+	/*
 	if(break_threshold)
 		if(!(flags_organ & FLAG_ORGAN_BROKEN) && brute_loss >= break_threshold)
 			if(src.loc)
@@ -196,8 +202,13 @@
 					span("danger","You hear a cracking sound!")\
 				)
 			flags_organ |= FLAG_ORGAN_BROKEN
+	*/
 
-	return ..()
+	. = ..()
+
+	update_icon()
+
+	return .
 
 /obj/item/organ/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
 

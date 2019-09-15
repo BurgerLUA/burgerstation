@@ -10,11 +10,15 @@
 
 	enable_wounds = TRUE
 
+	hud_id = "body_arm_right"
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT
 	desc = "A left arm."
+
+	hud_id = "body_arm_left"
 
 //Reptile Feral
 /obj/item/organ/arm/reptile
@@ -26,6 +30,8 @@
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT
 
+	hud_id = "body_arm_left"
+
 //Reptile Advanced
 /obj/item/organ/arm/reptile_advanced
 	name = "reptile advanced right arm"
@@ -35,6 +41,8 @@
 	name = "reptile advanced left arm"
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT
+
+	hud_id = "body_arm_left"
 
 //Diona
 /obj/item/organ/arm/diona
@@ -48,6 +56,8 @@
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT
 
+	hud_id = "body_arm_left"
+
 //Cyborg
 /obj/item/organ/arm/cyborg
 	name = "cyborg right arm"
@@ -57,3 +67,5 @@
 	name = "cyborg left arm"
 	id = BODY_ARM_LEFT
 	icon_state = BODY_ARM_LEFT
+
+	hud_id = "body_arm_left"

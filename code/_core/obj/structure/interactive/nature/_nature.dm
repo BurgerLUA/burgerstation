@@ -86,3 +86,65 @@ obj/structure/scenery/evergreen
 obj/structure/scenery/evergreen/New()
 	..()
 	icon_state = "evergreen_[rand(1,3)]"
+
+
+
+obj/structure/scenery/lolipop_tree
+	name = "giant lolipop"
+	icon = 'icons/obj/structure/flora/lolipop_tree.dmi'
+	icon_state = "stick"
+
+	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	pixel_x = 0
+	pixel_y = 0
+	layer = LAYER_LARGE_OBJ
+
+	mouse_opacity = 0
+
+	has_transparency_marker = TRUE
+
+	var/top_color = "#FFFFFF"
+
+obj/structure/scenery/lolipop_tree/New()
+
+	switch(rand(1,3))
+		if(1)
+			top_color = rgb(255,pick(0,255),pick(0,255))
+		if(2)
+			top_color = rgb(pick(0,255),255,pick(0,255))
+		if(3)
+			top_color = rgb(pick(0,255),pick(0,255),255)
+
+	update_icon()
+
+	return ..()
+
+
+obj/structure/scenery/lolipop_tree/update_icon()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	var/icon/I = new/icon(icon,icon_state)
+	var/icon/I2 = new/icon(icon,"top")
+
+	I2.Blend(top_color,ICON_MULTIPLY)
+	I.Blend(I2,ICON_OVERLAY)
+
+	icon = I
+
+	return ..()
+
+obj/structure/scenery/peppermint
+	name = "red peppermint"
+	icon = 'icons/obj/structure/flora/peppermint.dmi'
+	icon_state = "peppermint_red"
+	layer = LAYER_GROUND_SCENERY
+
+
+obj/structure/scenery/peppermint/green
+	name = "green peppermint"
+	icon_state = "peppermint_green"
+

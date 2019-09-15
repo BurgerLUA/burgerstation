@@ -335,8 +335,6 @@
 			attack_log_format["critical"] = (PV.health_current - total_damage_dealt < 0) || PV.status & FLAG_STATUS_CRIT
 			attack_log_format["lethal"] = PV.health_current - total_damage_dealt <= min(-50,PV.health_max*-0.25)
 			PV.attack_logs += list(attack_log_format)
-			world.log << "Adding attack log."
-			world.log << "Attack logs now have [length(PV.attack_logs)] entries."
 
 	return total_damage_dealt
 

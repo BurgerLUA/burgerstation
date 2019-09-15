@@ -78,10 +78,8 @@
 	if(!se) se = "i"
 	if(!sw) sw = "i"
 
-	var/icon/I = new /icon(icon,icon_state)
-
-	var/icon/NW = new /icon(icon,"1-[nw]")
-	I.Blend(NW,ICON_OVERLAY)
+	var/icon/I = new /icon(icon,"1-[nw]")
+	//I.Blend(NW,ICON_OVERLAY)
 
 	var/icon/NE = new /icon(icon,"2-[ne]")
 	I.Blend(NE,ICON_OVERLAY)

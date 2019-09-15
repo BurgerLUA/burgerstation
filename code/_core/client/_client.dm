@@ -12,7 +12,7 @@ var/global/list/all_clients = list()
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
-	var/list/obj/hud/button/health/known_health_elements
+	var/list/obj/hud/button/known_health_elements
 
 	var/zoom_level = MIN_ZOOM
 
@@ -46,6 +46,8 @@ var/global/list/all_clients = list()
 	var/disable_controls = FALSE
 
 	var/is_zoomed = FALSE
+
+	var/next_allowed_topic = -1
 
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
@@ -118,11 +120,32 @@ var/global/list/all_clients = list()
 	world.update_status()
 	..()
 
+/client/Command(command as command_text)
+	mob.say(command)
+	return TRUE
+
 /client/Topic(href,href_list)
-	//src << href
+
+
+	if(next_allowed_topic < curtime)
+		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - curtime] second\s!"))
+		return FALSE
+
+	if(length(href_list) > 32)
+		to_chat(span("danger","No."))
+		return FALSE
+
+	if(length(href) > 1000)
+		to_chat(span("danger","No!"))
+		return FALSE
+
 	if(length(href_list) && href_list["done_loading"])
 		send_load(src.mob,href_list["done_loading"])
+
 	..()
+
+	next_allowed_topic = curtime + 1
+
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE
@@ -140,13 +163,6 @@ var/global/list/all_clients = list()
 	src.mob = new /mob/abstract/observer(desired_loc,src)
 	src.mob.Initialize()
 	//update_lighting()
-
-/client/MouseMove(object,location,control,params) //WARNING: OVERHEAD
-	/*
-	if(mob)
-		mob.face_atom(location)
-	*/
-	..()
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
 	var/change_in_screen = delta_y > 1 ? 1 : -1
@@ -290,6 +306,9 @@ var/global/list/all_clients = list()
 
 		pixel_x = Clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*2, -VIEW_RANGE*TILE_SIZE, VIEW_RANGE*TILE_SIZE)
 		pixel_y = Clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*2, -VIEW_RANGE*TILE_SIZE, VIEW_RANGE*TILE_SIZE)
+
+		if(mob)
+			mob.face_atom(location)
 
 	..()
 

@@ -80,9 +80,6 @@
 
 /mob/living/simple/npc/ash_drake/proc/fire_cross()
 
-
-	world.log << "YEET"
-
 	var/starting_x = src.x
 	var/starting_y = src.y
 

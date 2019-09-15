@@ -15,6 +15,8 @@
 
 	enable_wounds = TRUE
 
+	hud_id = "body_foot_right"
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT
@@ -24,6 +26,8 @@
 	attach_flag = BODY_LEG_LEFT
 
 	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
 
 //Reptile Feral
 /obj/item/organ/foot/reptile
@@ -44,6 +48,8 @@
 
 	inventories = list(/obj/hud/inventory/organs/left_foot)
 
+	hud_id = "body_foot_left"
+
 //Reptile Advanced
 /obj/item/organ/foot/reptile_advanced
 	name = "right advanced reptile foot"
@@ -60,6 +66,8 @@
 	attach_flag = BODY_LEG_LEFT
 
 	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
 
 //Reptile Advanced
 /obj/item/organ/foot/diona
@@ -86,6 +94,8 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
+	hud_id = "body_foot_left"
+
 //cyborg
 /obj/item/organ/foot/cyborg
 	name = "right cyborg foot"
@@ -102,3 +112,5 @@
 	attach_flag = BODY_LEG_LEFT
 
 	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"

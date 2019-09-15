@@ -9,7 +9,7 @@
 
 /obj/hud/button/resist/clicked_by_object(var/mob/caller,object,location,control,params)
 	//Resist code here
-	..()
+	return TRUE
 
 /obj/hud/button/resist_auto
 	name = "toggle auto resist"
@@ -32,7 +32,7 @@
 /obj/hud/button/resist_auto/clicked_by_object(var/mob/caller,object,location,control,params)
 	owner.auto_resist = !owner.auto_resist
 	update_icon()
-	..()
+	return TRUE
 
 /obj/hud/button/targeting
 	name = "limb targeting"
@@ -121,7 +121,8 @@
 	L.attack_right = right
 	L.attack_left = left
 	update_icon()
-	..()
+
+	return TRUE
 
 /obj/hud/button/intent
 	name = "intent"
@@ -147,7 +148,8 @@
 		help_intent = 0
 
 	update_icon()
-	..()
+
+	return TRUE
 
 /obj/hud/button/intent/update_icon()
 	if(help_intent)
@@ -208,4 +210,5 @@
 			enable_block = !enable_block
 
 	update_icon()
-	..()
+
+	return TRUE
