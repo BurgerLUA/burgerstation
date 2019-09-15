@@ -65,13 +65,13 @@
 	var/icon/base_icon = new /icon(icon,icon_state)
 
 	var/list/chosen_left = left[mode]
-	var/icon/left_overlay = new /icon(icon,"targeting_l")
-	left_overlay.Shift(NORTH,0 + chosen_left[2] - 16)
+	var/icon/left_overlay = new /icon(icon,"targeting_r")
+	left_overlay.Shift(NORTH,0 + chosen_left[2] - 16 + 2)
 	left_overlay.Shift(EAST,chosen_left[1] - 16 + 4)
 
 	var/list/chosen_right = right[mode]
-	var/icon/right_overlay = new /icon(icon,"targeting_r")
-	right_overlay.Shift(NORTH,chosen_right[2] - 16)
+	var/icon/right_overlay = new /icon(icon,"targeting_l")
+	right_overlay.Shift(NORTH,chosen_right[2] - 16 + 2)
 	right_overlay.Shift(EAST,chosen_right[1] - 16 + 4)
 
 	var/list/preset_overlay = new /icon(icon,"targeting_preset_[mode]")
@@ -95,17 +95,20 @@
 
 	var/click_flags = L.client.get_click_flags(params,TRUE)
 
-	if(!(params["icon-x"] && params["icon-y"]))
+	if(!(params[PARAM_ICON_X] && params[PARAM_ICON_Y]))
 		return
 
-	var/x_click = text2num(params["icon-x"])
-	var/y_click = text2num(params["icon-y"])
+	var/x_click = text2num(params[PARAM_ICON_X])
+	var/y_click = text2num(params[PARAM_ICON_Y])
+
+	world.log << "Your x_click is [x_click]."
+	world.log << "Your y_click is [y_click]."
 
 	if(x_click >= 10)
 		if(click_flags & CLICK_LEFT)
-			left[mode] = list(x_click - 5,y_click)
+			left[mode] = list(x_click - 4,y_click - 2)
 		if(click_flags & CLICK_RIGHT)
-			right[mode] = list(x_click - 5,y_click)
+			right[mode] = list(x_click - 4,y_click - 2)
 	else
 		switch(y_click)
 			if(26 to 32)
@@ -137,10 +140,10 @@
 
 /obj/hud/button/intent/clicked_by_object(var/mob/caller,object,location,control,params)
 
-	if(!params["icon-y"])
+	if(!params[PARAM_ICON_Y])
 		return
 
-	var/y_click = text2num(params["icon-y"])
+	var/y_click = text2num(params[PARAM_ICON_Y])
 
 	if(y_click >= 16)
 		help_intent = 1
@@ -196,10 +199,10 @@
 
 /obj/hud/button/defense/clicked_by_object(var/mob/caller,object,location,control,params)
 
-	if(!params["icon-y"])
+	if(!params[PARAM_ICON_Y])
 		return
 
-	var/y_click = text2num(params["icon-y"])
+	var/y_click = text2num(params[PARAM_ICON_Y])
 
 	switch(y_click)
 		if(21 to 32)

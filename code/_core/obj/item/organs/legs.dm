@@ -13,6 +13,14 @@
 
 	hud_id = "body_leg_right"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 12
+	target_bounds_x_max = 15
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
+
 /obj/item/organ/leg/left
 	name = "left leg"
 	id = BODY_LEG_LEFT
@@ -20,6 +28,12 @@
 	icon_state = BODY_LEG_LEFT
 
 	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
 
 //Reptile
 /obj/item/organ/leg/reptile
@@ -35,6 +49,12 @@
 
 	hud_id = "body_leg_left"
 
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
+
 
 //Reptile Advanced
 /obj/item/organ/leg/reptile_advanced
@@ -48,6 +68,12 @@
 	icon_state = BODY_LEG_LEFT
 
 	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
 
 
 
@@ -66,6 +92,12 @@
 
 	hud_id = "body_leg_left"
 
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
+
 
 //Cyborg
 /obj/item/organ/leg/cyborg
@@ -79,3 +111,9 @@
 	icon_state = BODY_LEG_LEFT
 
 	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8

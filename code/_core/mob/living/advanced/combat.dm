@@ -1,42 +1,43 @@
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/victim,params)
 
 	if(!params)
-		params = list("icon-y" = rand(16,32))
+		params = list(PARAM_ICON_X = rand(16,32),PARAM_ICON_Y = rand(16,32))
 
+	var/x_attack = text2num(params[PARAM_ICON_X])
+	var/y_attack = text2num(params[PARAM_ICON_Y])
 
-	var/y_attack = text2num(params["icon-y"])
+	world.log << "x:[x_attack], y:[y_attack]"
 
-	if(y_attack >= 24 && src.labeled_organs["head"])
-		return src.labeled_organs["head"]
+	var/obj/item/organ/best_organ
 
-	if(y_attack >= 12)
-		if(prob(50) && src.labeled_organs[BODY_TORSO])
-			return src.labeled_organs[BODY_TORSO]
-		else if(prob(50) && src.labeled_organs[BODY_ARM_LEFT])
-			return src.labeled_organs[BODY_ARM_LEFT]
-		else if(src.labeled_organs[BODY_ARM_RIGHT])
-			return src.labeled_organs[BODY_ARM_RIGHT]
+	var/best_distance = INFINITY
+	var/obj/item/organ/best_distance_organ
 
-	if(y_attack >= 9)
-		if(prob(50) && src.labeled_organs[BODY_GROIN])
-			return src.labeled_organs[BODY_GROIN]
-		else if(prob(50) && src.labeled_organs[BODY_HAND_LEFT])
-			return src.labeled_organs[BODY_HAND_LEFT]
-		else if(src.labeled_organs[BODY_HAND_LEFT])
-			return src.labeled_organs[BODY_HAND_LEFT]
+	for(var/obj/item/organ/O in src.organs)
+		if(!O.can_be_targeted)
+			continue
 
-	if(y_attack >= 4)
-		if(prob(50) && src.labeled_organs[BODY_LEG_LEFT])
-			return src.labeled_organs[BODY_LEG_LEFT]
-		else if (src.labeled_organs[BODY_LEG_RIGHT])
-			return src.labeled_organs[BODY_LEG_RIGHT]
+		if(x_attack >= O.target_bounds_x_min && x_attack <= O.target_bounds_x_max && y_attack >= O.target_bounds_y_min && y_attack <= O.target_bounds_y_max)
+			best_organ = O
+			break
 
-	if(prob(50) && src.labeled_organs[BODY_FOOT_LEFT])
-		return src.labeled_organs[BODY_FOOT_LEFT]
-	else if (src.labeled_organs[BODY_FOOT_RIGHT])
-		return src.labeled_organs[BODY_FOOT_RIGHT]
+		var/center_x = (O.target_bounds_x_min + O.target_bounds_x_max) / 2
+		var/center_y = (O.target_bounds_y_min + O.target_bounds_y_max) / 2
+		var/distance = sqrt( (abs(center_x - x_attack) ** 2) + (abs(center_y - y_attack) ** 2) )
 
-	return victim
+		if(distance < best_distance)
+			best_distance = distance
+			best_distance_organ = best_organ
+
+	if(best_organ)
+		world.log << "Best organ is [best_organ]."
+		return best_organ
+
+	if(best_distance_organ)
+		world.log << "Best distance organ is [best_distance_organ]."
+		return best_distance_organ
+
+	return ..()
 
 /mob/living/advanced/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 

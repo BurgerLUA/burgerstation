@@ -36,6 +36,14 @@
 
 	var/hud_id
 
+	var/can_be_targeted = FALSE
+
+	var/target_bounds_x_min = 0
+	var/target_bounds_x_max = 0
+
+	var/target_bounds_y_min = 0
+	var/target_bounds_y_max = 0
+
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
 	for(var/wound/W in wounds)

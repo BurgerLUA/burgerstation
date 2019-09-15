@@ -20,6 +20,14 @@
 
 	hud_id = "body_head"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 12
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 23
+	target_bounds_y_max = 29
+
 /obj/item/organ/head/initialize_blends()
 	..()
 	add_blend("blush", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/species/human.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)

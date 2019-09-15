@@ -20,6 +20,14 @@
 
 	hud_id = "body_groin"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 12
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 13
+
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
 	icon_state = BODY_GROIN_FEMALE

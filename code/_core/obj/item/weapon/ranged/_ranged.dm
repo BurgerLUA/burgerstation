@@ -153,11 +153,11 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/icon_pos_x = 0
 		var/icon_pos_y = 0
 
-		if(params && params["icon-x"])
-			icon_pos_x = text2num(params["icon-x"])
+		if(params && params[PARAM_ICON_X])
+			icon_pos_x = text2num(params[PARAM_ICON_X])
 
-		if(params && params["icon-y"])
-			icon_pos_y = text2num(params["icon-y"])
+		if(params && params[PARAM_ICON_Y])
+			icon_pos_y = text2num(params[PARAM_ICON_Y])
 
 		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
 		if(is_living(caller))

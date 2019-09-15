@@ -12,6 +12,14 @@
 
 	hud_id = "body_arm_right"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 8
+	target_bounds_x_max = 11
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 22
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT
@@ -19,6 +27,12 @@
 	desc = "A left arm."
 
 	hud_id = "body_arm_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 22
 
 //Reptile Feral
 /obj/item/organ/arm/reptile
@@ -32,6 +46,12 @@
 
 	hud_id = "body_arm_left"
 
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 22
+
 //Reptile Advanced
 /obj/item/organ/arm/reptile_advanced
 	name = "reptile advanced right arm"
@@ -43,6 +63,12 @@
 	icon_state = BODY_ARM_LEFT
 
 	hud_id = "body_arm_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 22
 
 //Diona
 /obj/item/organ/arm/diona
@@ -58,6 +84,12 @@
 
 	hud_id = "body_arm_left"
 
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 22
+
 //Cyborg
 /obj/item/organ/arm/cyborg
 	name = "cyborg right arm"
@@ -69,3 +101,9 @@
 	icon_state = BODY_ARM_LEFT
 
 	hud_id = "body_arm_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 9
+	target_bounds_y_max = 22

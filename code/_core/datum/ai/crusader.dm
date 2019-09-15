@@ -18,8 +18,8 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= weapon_distance)
 		owner.move_dir = 0
 		var/list/params = list(
-			"icon-x" = num2text(16),
-			"icon-y" = num2text(pick(target_distribution)),
+			PARAM_ICON_X = num2text(16),
+			PARAM_ICON_Y = num2text(pick(target_distribution)),
 			"left" = 0,
 			"right" = 0,
 			"middle" = 0,

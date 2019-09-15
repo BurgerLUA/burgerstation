@@ -17,6 +17,14 @@
 
 	hud_id = "body_foot_right"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 10
+	target_bounds_x_max = 15
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT
@@ -28,6 +36,12 @@
 	inventories = list(/obj/hud/inventory/organs/left_foot)
 
 	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
 
 //Reptile Feral
 /obj/item/organ/foot/reptile
@@ -50,6 +64,12 @@
 
 	hud_id = "body_foot_left"
 
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
+
 //Reptile Advanced
 /obj/item/organ/foot/reptile_advanced
 	name = "right advanced reptile foot"
@@ -68,6 +88,12 @@
 	inventories = list(/obj/hud/inventory/organs/left_foot)
 
 	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
 
 //Reptile Advanced
 /obj/item/organ/foot/diona
@@ -96,6 +122,12 @@
 
 	hud_id = "body_foot_left"
 
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
+
 //cyborg
 /obj/item/organ/foot/cyborg
 	name = "right cyborg foot"
@@ -114,3 +146,9 @@
 	inventories = list(/obj/hud/inventory/organs/left_foot)
 
 	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3

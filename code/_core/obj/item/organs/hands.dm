@@ -19,6 +19,14 @@
 
 	hud_id = "body_hand_right"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 8
+	target_bounds_x_max = 11
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT
@@ -32,6 +40,12 @@
 	attach_flag = BODY_ARM_LEFT
 
 	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
 
 //Reptile Advanced
 /obj/item/organ/hand/reptile
@@ -56,6 +70,12 @@
 
 	hud_id = "body_hand_left"
 
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
 //Reptile Advanced
 /obj/item/organ/hand/reptile_advanced
 	name = "right advanced reptile hand"
@@ -77,6 +97,12 @@
 	attach_flag = BODY_ARM_LEFT
 
 	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
 
 
 //Diona
@@ -105,6 +131,12 @@
 
 	hud_id = "body_hand_left"
 
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
 
 //Cyborg
 /obj/item/organ/hand/cyborg
@@ -127,3 +159,9 @@
 	attach_flag = BODY_ARM_LEFT
 
 	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14

@@ -18,8 +18,8 @@
 			return ..()
 
 		var/list/params = list()
-		params["icon-x"] = shoot_x
-		params["icon-y"] = shoot_y
+		params[PARAM_ICON_X] = shoot_x
+		params[PARAM_ICON_Y] = shoot_y
 
 		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,hit_atom,params)
 		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE

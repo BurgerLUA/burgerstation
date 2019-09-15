@@ -39,9 +39,9 @@
 
 /obj/hud/button/move/clicked_by_object(var/mob/caller,object,location,control,params)
 
-	if(params["icon-x"] && params["icon-y"] && text2num(params["icon-y"]) >= 10)
+	if(params[PARAM_ICON_X] && params[PARAM_ICON_Y] && text2num(params[PARAM_ICON_Y]) >= 10)
 
-		switch(text2num(params["icon-x"]))
+		switch(text2num(params[PARAM_ICON_X]))
 			if(1 to 10)
 				caller.move_mod = 1
 			if(12 to 21)

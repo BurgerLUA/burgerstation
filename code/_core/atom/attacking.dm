@@ -8,8 +8,26 @@
 
 	victim = victim.change_victim(attacker)
 
-	if(attacker && victim && !ignore_distance)
+	if(attacker && victim && attacker != victim && !ignore_distance)
 		attacker.face_atom(victim)
+
+	if(is_player(attacker))
+		var/mob/living/advanced/player/P = attacker
+		if(P.client)
+			var/click_flags = P.client.get_click_flags(params,TRUE)
+
+			var/attack_x = 16
+			var/attack_y = 16
+
+			if(click_flags & CLICK_LEFT)
+				attack_x = P.attack_left[P.attack_mode][1]
+				attack_y = P.attack_left[P.attack_mode][2]
+			else if(click_flags & CLICK_RIGHT)
+				attack_x = P.attack_right[P.attack_mode][1]
+				attack_y = P.attack_right[P.attack_mode][2]
+
+			params[PARAM_ICON_X] = attack_x
+			params[PARAM_ICON_Y] = attack_y
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)

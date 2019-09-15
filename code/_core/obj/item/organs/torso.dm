@@ -17,6 +17,14 @@
 
 	hud_id = "body_torso"
 
+	can_be_targeted = TRUE
+
+	target_bounds_x_min = 12
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 14
+	target_bounds_y_max = 22
+
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	..()
 	if(is_advanced(src.loc))
