@@ -282,6 +282,7 @@ mob/living/advanced/Login()
 			var/heal_amount = (damaged_organs[organ_id][OXY] / total_oxy) * oxy
 			O.adjust_oxy_loss(-heal_amount)
 			total_healed += heal_amount
+		O.update_health()
 
 	update_health(-total_healed,src,do_update = FALSE)
 

@@ -668,7 +668,6 @@
 #include "code\_core\obj\vehicle\_vehicle.dm"
 #include "code\_core\obj\vehicle\mech\_mech.dm"
 #include "code\_core\turf\_turf.dm"
-#include "code\_core\turf\movement.dm"
 #include "code\_core\turf\simulated\_simulated.dm"
 #include "code\_core\turf\simulated\floor\_floor.dm"
 #include "code\_core\turf\simulated\floor\basalt.dm"

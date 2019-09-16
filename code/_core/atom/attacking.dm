@@ -1,10 +1,13 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!blamed)
 		blamed = attacker
+
+	if(!params)
+		params = list()
 
 	victim = victim.change_victim(attacker)
 
@@ -77,6 +80,9 @@
 	return interact_delay_base
 
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
+
+	if(!mouse_opacity)
+		return FALSE
 
 	if(victim)
 
