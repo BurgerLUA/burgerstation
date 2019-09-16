@@ -31,7 +31,8 @@
 	weapon = desired_weapon
 
 	severity_level = severity
-	bleed_level = severity
+
+	desired_location.wounds += src
 
 /wound/proc/get_infection_modifier()
 	return Clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
@@ -53,6 +54,17 @@
 
 /wound/proc/get_examine_text(var/mob/examiner)
 	span("warning","It has \a [src]...")
+
+/wound/proc/get_simple_examine_text(var/mob/examiner)
+
+	var/returning = src.name
+
+	returning = replacetext(get_severity_name(), "%", returning)
+	returning = replacetext(get_infection_name(), "%", returning)
+	returning = replacetext(get_bleed_name(), "%", returning)
+	returning = replacetext(get_heal_name(), "%", returning)
+
+	return returning
 
 /wound/proc/get_severity_name()
 	return severity_reference[ceiling(Clamp(severity_level,1,length(severity_reference)))]
@@ -96,7 +108,7 @@
 /wound/proc/get_bleed_text()
 	switch(get_bleed())
 		if(0)
-			return ""
+			return "It is not bleeding."
 		if(0 to 1)
 			return span("notice","A little blood trickling out.")
 		if(1 to 2)
@@ -125,16 +137,21 @@
 	desc = ""
 
 /wound/pucture/
-	name = "pucture wound"
+	name = "pucture"
 	id = "pucture"
 	desc = ""
 
+/wound/bruise/
+	name = "bruise"
+	id = "bruise"
+	desc = ""
+
 /wound/penetration/
-	name = "penetration wound"
+	name = "penetration"
 	id = "penetration"
 	desc = ""
 
 /wound/gun_shot/
-	name = "gunshot wound"
+	name = "gunshot"
 	id = "gunshot"
 	desc = ""

@@ -17,8 +17,6 @@
 		'sounds/weapons/fists/punchmiss.ogg'
 	)
 
-	var/list/wound/wound_types = list()
-
 	var/allow_parry = TRUE
 	var/allow_parry_counter = TRUE
 	var/allow_miss = TRUE
@@ -290,16 +288,7 @@
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object)
-
-	//TODO: WOUNDS
-	/*
-	if(length(wound_types))
-		var/wound/W = pick(wound_types)
-		W = new W(victim,hit_object,attacker,weapon,total_damage_dealt)
-		hit_object.wounds += W
-		if(victim != hit_object)
-			victim.wounds += W
-	*/
+	do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 	display_hit_message(attacker,victim,weapon,hit_object)
 
@@ -504,3 +493,7 @@
 		return floor(attack_delay * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY)))
 
 	return attack_delay
+
+
+/damagetype/proc/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+	return TRUE

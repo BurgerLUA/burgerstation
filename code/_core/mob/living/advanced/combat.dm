@@ -6,8 +6,6 @@
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
-	world.log << "x:[x_attack], y:[y_attack]"
-
 	var/obj/item/organ/best_organ
 
 	var/best_distance = INFINITY
@@ -23,18 +21,20 @@
 
 		var/center_x = (O.target_bounds_x_min + O.target_bounds_x_max) / 2
 		var/center_y = (O.target_bounds_y_min + O.target_bounds_y_max) / 2
-		var/distance = sqrt( (abs(center_x - x_attack) ** 2) + (abs(center_y - y_attack) ** 2) )
 
-		if(distance < best_distance)
+		var/distance_x = abs(x_attack - center_x)
+		var/distance_y = abs(y_attack - center_y)
+
+		var/distance = sqrt( (distance_x ** 2) + (distance_y ** 2) )
+
+		if(!best_distance_organ || distance < best_distance)
 			best_distance = distance
 			best_distance_organ = best_organ
 
 	if(best_organ)
-		world.log << "Best organ is [best_organ]."
 		return best_organ
 
 	if(best_distance_organ)
-		world.log << "Best distance organ is [best_distance_organ]."
 		return best_distance_organ
 
 	return ..()

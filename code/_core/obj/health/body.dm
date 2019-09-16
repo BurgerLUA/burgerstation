@@ -31,3 +31,35 @@
 		I.Blend(IO,ICON_OVERLAY)
 
 	icon = I
+
+
+/obj/hud/button/health/body/get_examine_text(var/mob/examiner)
+
+	. = ..()
+
+	var/returning = ""
+
+	if(is_advanced(examiner))
+
+		var/mob/living/advanced/A = examiner
+
+		for(var/obj/item/organ/O in A.organs)
+
+			if(!O.hud_id)
+				continue
+
+			var/health_percent = O.health_current / O.health_max
+
+			var/is_injured = health_percent < 1 || length(O.wounds)
+
+			var/organ_information = span("","Your [O.name] is [is_injured ? "injured" : "healthy"]")
+
+			var/wound_information = list()
+
+			for(var/wound/W in O.wounds)
+				wound_information += W.get_simple_examine_text()
+
+			returning += div(is_injured ? "warning" : "notice","[organ_information]. It has [english_list(wound_information,nothing_text = "no visible wounds")].")
+
+
+	return ..() + returning

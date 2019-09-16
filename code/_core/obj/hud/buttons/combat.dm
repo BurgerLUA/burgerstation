@@ -101,9 +101,6 @@
 	var/x_click = text2num(params[PARAM_ICON_X])
 	var/y_click = text2num(params[PARAM_ICON_Y])
 
-	world.log << "Your x_click is [x_click]."
-	world.log << "Your y_click is [y_click]."
-
 	if(x_click >= 10)
 		if(click_flags & CLICK_LEFT)
 			left[mode] = list(x_click - 4,y_click - 2)
