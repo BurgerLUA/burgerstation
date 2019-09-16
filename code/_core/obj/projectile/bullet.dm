@@ -11,11 +11,8 @@
 		if(L.status & FLAG_STATUS_DEAD || L.status & FLAG_STATUS_STUN)
 			return FALSE
 
-	if(damage_type)
+	if(damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
-
-		if(!DT)
-			return ..()
 
 		var/list/params = list()
 		params[PARAM_ICON_X] = shoot_x
@@ -27,6 +24,8 @@
 		if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
 
 		DT.do_damage(owner,hit_atom,weapon,object_to_damage)
+	else
+		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 
 	return ..()
 

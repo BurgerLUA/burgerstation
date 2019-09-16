@@ -1,4 +1,4 @@
-/damagetype/ranged/magic/fireball
+/damagetype/ranged/magic/fireball/ash_drake
 	name = "ash drake's true fire ball"
 	id = "ash_drake_fireball"
 

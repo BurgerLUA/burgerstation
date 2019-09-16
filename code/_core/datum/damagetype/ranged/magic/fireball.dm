@@ -29,7 +29,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = CLASS_B,
+		SKILL_MAGIC_OFFENSIVE = CLASS_B
 	)
 
 	skill_damage = list(
