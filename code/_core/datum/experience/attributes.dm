@@ -556,6 +556,7 @@
 	default_level = 50
 	counts_towards_level = FALSE
 
+/*
 /experience/attribute/karma/
 	name = "Karma"
 	id = ATTRIBUTE_KARMA
@@ -565,3 +566,4 @@
 	chargen_max_level = 50
 	default_level = 50
 	counts_towards_level = FALSE
+*/

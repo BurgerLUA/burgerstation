@@ -8,7 +8,7 @@
 
 	automatic = TRUE
 
-	bullet_capacity = 1 //One in the chamber
+	bullet_count_max = 1 //One in the chamber
 
 	bullet_type = ".45"
 
@@ -46,7 +46,7 @@
 
 	automatic = TRUE
 
-	bullet_capacity = 1 //One in the chamber
+	bullet_count_max = 1 //One in the chamber
 
 	bullet_type = "9mm"
 

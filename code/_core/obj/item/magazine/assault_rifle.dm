@@ -3,14 +3,14 @@
 	bullet_type = "7.62"
 	icon = 'icons/obj/items/magazine/762.dmi'
 	icon_state = "762"
-	bullet_capacity = 30
+	bullet_count_max = 30
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/assault_rifle
 	)
 
 /obj/item/magazine/rifle_762/on_spawn()
-	for(var/i=1, i <= bullet_capacity, i++)
+	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/rifle_762(src)
 	update_icon()
 

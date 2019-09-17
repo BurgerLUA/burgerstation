@@ -6,10 +6,9 @@
 	var/is_spent = FALSE
 	icon_state = "bullet"
 
-
-	var/bullet_capacity_icon = 1
-	var/bullet_capacity = 1
-	var/bullet_count = 1 //How many bullets are in this object?
+	item_count_max_icon = 1
+	item_count_max = 1
+	item_count_current = 1 //How many bullets are in this object?
 
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
@@ -21,7 +20,7 @@
 	var/bullet_speed = TILE_SIZE - 1 //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 
 /obj/item/bullet/proc/get_ammo_count()
-	return bullet_count
+	return item_count_current
 
 
 /obj/item/bullet/New(var/desired_loc)
@@ -32,10 +31,10 @@
 /obj/item/bullet/update_icon()
 
 	if(!is_spent)
-		icon_state = "[initial(icon_state)]_[min(bullet_capacity_icon,bullet_count)]"
+		icon_state = "[initial(icon_state)]_[min(item_count_max_icon,item_count_current)]"
 	else
 		icon_state = "[initial(icon_state)]_spent"
-		if(bullet_count <= 1)
+		if(item_count_current <= 1 && is_turf(src.loc))
 			pixel_x = rand(-8,8)
 			pixel_y = rand(-8,8)
 
@@ -48,8 +47,8 @@
 	if(is_spent)
 		. += div("notice","It is spent.")
 
-	if(bullet_count > 1)
-		. += div("notice","It contains [bullet_count] [src.name]\s.")
+	if(item_count_current > 1)
+		. += div("notice","It contains [item_count_current] [src.name]\s.")
 
 	return .
 
@@ -70,20 +69,20 @@
 		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))
 		return FALSE
 
-	if(transfer_target.bullet_capacity <= transfer_target.get_ammo_count())
+	if(transfer_target.item_count_max <= transfer_target.get_ammo_count())
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
 	var/transfered_bullets = 0
-	var/bullets_to_add = min(bullet_count,transfer_target.bullet_capacity - transfer_target.get_ammo_count())
+	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count())
 	for(var/i=1,i<=bullets_to_add,i++)
-		transfer_target.bullet_count += 1
-		bullet_count -= 1
+		transfer_target.item_count_current += 1
+		item_count_current -= 1
 		transfered_bullets += 1
 	if(display_message)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
 	transfer_target.update_icon()
-	if(bullet_count <= 0)
+	if(item_count_current <= 0)
 		src.drop_item()
 		qdel(src)
 	else
@@ -101,21 +100,21 @@
 		caller.to_chat(span("notice","You can't insert this type of bullet into this magazine."))
 		return FALSE
 
-	if(transfer_target.bullet_capacity <= transfer_target.get_ammo_count())
+	if(transfer_target.bullet_count_max <= transfer_target.get_ammo_count())
 		caller.to_chat(span("notice","The magazine is full."))
 		return FALSE
 
 	var/transfered_bullets = 0
-	var/bullets_to_add = min(bullet_count,transfer_target.bullet_capacity - transfer_target.get_ammo_count())
+	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
 	for(var/i=1,i<=bullets_to_add,i++)
 		var/obj/item/bullet/B = new src.type(transfer_target.loc)
 		transfer_target.stored_bullets += B
-		bullet_count -= 1
+		item_count_current -= 1
 		transfered_bullets += 1
 	if(display_message)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
 	transfer_target.update_icon()
-	if(bullet_count <= 0)
+	if(item_count_current <= 0)
 		src.drop_item()
 		qdel(src)
 	else
@@ -137,22 +136,22 @@
 		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src]!"))
 		return FALSE
 
-	if(transfer_target.bullet_capacity <= transfer_target.get_ammo_count())
+	if(transfer_target.bullet_count_max <= transfer_target.get_ammo_count())
 		caller.to_chat(span("notice","You can't fit any more bullets into \the [src]!"))
 		return FALSE
 
 	var/transfered_bullets = 0
 	var/transfer_self = FALSE
 
-	var/bullets_to_add = min(bullet_count,transfer_target.bullet_capacity - transfer_target.get_ammo_count(),transfer_target.insert_limit)
+	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count(),transfer_target.insert_limit)
 	for(var/i=1,i<=bullets_to_add,i++)
 		transfered_bullets += 1
-		if(bullet_count == 1)
+		if(item_count_current == 1)
 			transfer_self = TRUE
 			break
 		var/obj/item/bullet/B = new src.type(transfer_target.loc)
 		transfer_target.stored_bullets += B
-		bullet_count -= 1
+		item_count_current -= 1
 
 	if(display_message)
 		caller.to_chat(span("notice","You insert [transfered_bullets] [src.name]\s into \the [transfer_target]."))
@@ -164,7 +163,7 @@
 		transfer_target.update_icon()
 	else
 		transfer_target.update_icon()
-		if(bullet_count <= 0)
+		if(item_count_current <= 0)
 			src.drop_item()
 			qdel(src)
 		else

@@ -9,7 +9,7 @@
 
 	automatic = FALSE
 
-	bullet_capacity = 2
+	bullet_count_max = 2
 
 	bullet_type = "shotgun"
 

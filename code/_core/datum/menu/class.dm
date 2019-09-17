@@ -133,7 +133,6 @@
 			//play_sound('sounds/music/world/leaf_short.ogg',list(A),list(A.x,A.y,A.z),channel=SOUND_CHANNEL_MUSIC, sound_type = SOUND_TYPE_MUSIC)
 			play_music_track("leaf",C)
 
-
 			sleep(SECONDS_TO_DECISECONDS(5))
 			A.see_invisible = INVISIBILITY_NO_PLAYERS
 			add_notification_easy(C,'icons/hud/discovery.dmi',"byond",SECONDS_TO_DECISECONDS(3))
@@ -144,8 +143,15 @@
 			sleep(SECONDS_TO_DECISECONDS(10))
 
 			while(C.pixel_y<0)
+				if(C.mob && C.mob.skip_cutscene)
+					C.mob.skip_cutscene = FALSE
+					break
+
+
 				C.pixel_y = min(0,C.pixel_y + 1)
 				sleep(0.2)
+
+			A.remove_button(SB)
 
 			sleep(1)
 
@@ -154,4 +160,3 @@
 			A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 			A.stun_time = 1
 			A.paralyze_time = 1
-			A.remove_button(SB)

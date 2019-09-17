@@ -3,7 +3,7 @@
 	bullet_type = ".45"
 	icon = 'icons/obj/items/magazine/45smg.dmi'
 	icon_state = "c20r45"
-	bullet_capacity = 24
+	bullet_count_max = 24
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg,
@@ -15,6 +15,6 @@
 	..()
 
 /obj/item/magazine/smg_45/on_spawn()
-	for(var/i=1, i <= bullet_capacity, i++)
+	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/pistol_45/(src)
 	update_icon()

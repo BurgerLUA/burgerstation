@@ -30,6 +30,7 @@ var/global/list/hair_face_icons = list()
 		I.Crop(64-32,64-32,64+32,64+32)
 		I.Blend("#888888",ICON_MULTIPLY)
 
+		hair_head_types[H.id] = H
 		hair_head_icons[H.id] = I
 		hair_head_ids += H.id
 		hair_head_names += H.name
@@ -51,6 +52,7 @@ var/global/list/hair_face_icons = list()
 		I.Crop(64-32,64-32,64+32,64+32)
 		I.Blend("#888888",ICON_MULTIPLY)
 
+		hair_face_types[H.id] = H
 		hair_face_icons[H.id] = I
 		hair_face_ids += H.id
 		hair_face_names += H.name

@@ -20,6 +20,8 @@
 				apply_inventory_data(I,object_data["inventories"][i])
 		if(object_data["soul_bound"])
 			I.soul_bound = object_data["soul_bound"]
+		if(object_data["item_count_current"])
+			I.item_count_current = object_data["item_count_current"]
 
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
@@ -54,13 +56,6 @@
 		var/obj/item/powercell/P = O
 		if(object_data["charge_current"])
 			P.charge_current = object_data["charge_current"]
-
-	if(is_bullet(O))
-		var/obj/item/bullet/B = O
-		if(object_data["bullet_count"])
-			B.bullet_count = object_data["bullet_count"]
-		else
-			B.bullet_count = 1
 
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
@@ -162,6 +157,8 @@
 				returning_list["inventories"][i] = get_inventory_data(IN)
 		if(IT.soul_bound)
 			returning_list["soul_bound"] = TRUE
+		if(IT.item_count_current > 1)
+			returning_list["item_count_current"] = IT.item_count_current
 
 	if(is_soulgem(I))
 		var/obj/item/soulgem/S = I
@@ -177,11 +174,6 @@
 		var/obj/item/weapon/ranged/magic/scroll/S = I
 		if(S.scroll_count)
 			returning_list["scroll_count"] = S.scroll_count
-
-	if(is_bullet(I))
-		var/obj/item/bullet/B = I
-		if(B.bullet_count > 1)
-			returning_list["bullet_count"] = B.bullet_count
 
 	if(is_powercell(I))
 		var/obj/item/powercell/P = I

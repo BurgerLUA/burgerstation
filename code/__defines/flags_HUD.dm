@@ -7,6 +7,7 @@
 #define FLAGS_HUD_SPECIAL 0x8
 #define FLAGS_HUD_WORN 0x10
 #define FLAGS_HUD_CRAFTING 0x20
+#define FLAGS_HUD_CHARGEN 0x40
 
 
 

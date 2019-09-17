@@ -9,7 +9,7 @@
 
 	automatic = TRUE
 
-	bullet_capacity = 6
+	bullet_count_max = 6
 
 	bullet_type = ".22"
 

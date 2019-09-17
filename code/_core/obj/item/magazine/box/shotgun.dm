@@ -4,8 +4,8 @@
 	icon = 'icons/obj/items/bullet/boxes.dmi'
 	icon_state = "buckshot"
 	bullet_type = "shotgun"
-	bullet_capacity = 12
+	bullet_count_max = 12
 
 /obj/item/magazine/box/buckshot/on_spawn()
-	for(var/i=1, i <= bullet_capacity, i++)
+	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/shotgun/buckshot(src)

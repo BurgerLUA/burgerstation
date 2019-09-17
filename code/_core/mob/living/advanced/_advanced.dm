@@ -215,12 +215,15 @@ mob/living/advanced/Login()
 	else
 		client.savedata.apply_data_to_mob(src)
 
-	add_species_buttons()
-	add_species_health_elements()
+	if(client)
+		add_species_buttons()
+		add_species_health_elements()
 
 	. = ..()
 
-	update_health_element_icons(TRUE,TRUE,TRUE)
+	if(client)
+		update_health_element_icons(TRUE,TRUE,TRUE)
+
 	update_all_blends()
 
 	return .

@@ -8,7 +8,7 @@
 
 	automatic = FALSE
 
-	bullet_capacity = 5
+	bullet_count_max = 5
 
 	bullet_type = "7.65"
 

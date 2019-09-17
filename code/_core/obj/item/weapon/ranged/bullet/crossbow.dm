@@ -8,7 +8,7 @@
 
 	automatic = FALSE
 
-	bullet_capacity = 1 //One in the chamber
+	bullet_count_max = 1 //One in the chamber
 
 	bullet_type = "bolt"
 

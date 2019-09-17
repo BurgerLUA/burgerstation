@@ -81,7 +81,6 @@
 	total_charge = 1000
 
 	bullet_speed = 20
-
 	bullet_count = 1
 
 	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
@@ -101,7 +100,6 @@
 	total_charge = 1000
 
 	bullet_speed = 31
-
 	bullet_count = 1
 
 	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'

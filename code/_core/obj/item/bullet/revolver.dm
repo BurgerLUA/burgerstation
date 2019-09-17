@@ -4,8 +4,8 @@
 	id = ".38"
 	icon = 'icons/obj/items/bullet/38.dmi'
 
-	bullet_capacity = 6
-	bullet_capacity_icon = 6
+	item_count_max = 6
+	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = ".38"
@@ -29,8 +29,8 @@
 
 	damage_type = ".22"
 
-	bullet_capacity = 6
-	bullet_capacity_icon = 6
+	item_count_max = 6
+	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
 
@@ -38,8 +38,8 @@
 	name = "\improper .22 LR surplus"
 	damage_type = ".22_surplus"
 
-	bullet_capacity = 6
-	bullet_capacity_icon = 6
+	item_count_max = 6
+	item_count_max_icon = 6
 
 /obj/item/bullet/revolver_22/surplus/on_spawn()
-	bullet_count = 6
+	item_count_current = 6

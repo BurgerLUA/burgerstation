@@ -4,8 +4,11 @@
 
 	var/size = 1 //Size in.. uh...
 	var/weight = 1 //Weight in kg
-
 	var/value = 1 //Value in whatever currency this world uses.
+
+	var/item_count_current = 1
+	var/item_count_max = 1
+	var/item_count_max_icon = 0
 
 	var/slowdown_mul_held = 1 //Slow down multiplier. Stacks multiplicatively or however you spell the damn word.
 	var/slowdown_mul_worn = 1

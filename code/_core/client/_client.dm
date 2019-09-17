@@ -126,11 +126,13 @@ var/global/list/all_clients = list()
 
 /client/Topic(href,href_list)
 
-
-	if(next_allowed_topic < curtime)
+	/*
+	if(next_allowed_topic > curtime)
 		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - curtime] second\s!"))
 		return FALSE
+	*/
 
+	/*
 	if(length(href_list) > 32)
 		to_chat(span("danger","No."))
 		return FALSE
@@ -138,6 +140,7 @@ var/global/list/all_clients = list()
 	if(length(href) > 1000)
 		to_chat(span("danger","No!"))
 		return FALSE
+	*/
 
 	if(length(href_list) && href_list["done_loading"])
 		send_load(src.mob,href_list["done_loading"])

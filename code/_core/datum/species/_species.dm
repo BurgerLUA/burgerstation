@@ -53,7 +53,26 @@
 		/obj/hud/button/boss_health,
 
 		/obj/hud/button/crafting/craft,
-		/obj/hud/button/crafting/close
+		/obj/hud/button/crafting/close,
+
+		/obj/hud/button/chargen/hairstyle/main,
+		/obj/hud/button/chargen/hairstyle/slot01,
+		/obj/hud/button/chargen/hairstyle/slot02,
+		/obj/hud/button/chargen/hairstyle/slot03,
+		/obj/hud/button/chargen/hairstyle/slot04,
+
+		/obj/hud/button/chargen/change_hairstyle/,
+		/obj/hud/button/chargen/change_hairstyle/left,
+
+		/obj/hud/button/chargen/beardstyle/main,
+		/obj/hud/button/chargen/beardstyle/slot01,
+		/obj/hud/button/chargen/beardstyle/slot02,
+		/obj/hud/button/chargen/beardstyle/slot03,
+		/obj/hud/button/chargen/beardstyle/slot04,
+
+		/obj/hud/button/chargen/change_beardstyle/,
+		/obj/hud/button/chargen/change_beardstyle/left
+
 	)
 
 	var/list/obj/hud/button/spawning_health = list(

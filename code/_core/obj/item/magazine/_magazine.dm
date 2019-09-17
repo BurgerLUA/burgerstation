@@ -2,7 +2,7 @@
 	name = "weapon magazine"
 	var/bullet_type = "none"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
-	var/bullet_capacity = 30 //How many bullets can this store
+	var/bullet_count_max = 30 //How many bullets can this store
 	var/list/obj/item/bullet/stored_bullets
 
 	var/list/weapon_whitelist = list() //What guns can fit this object?

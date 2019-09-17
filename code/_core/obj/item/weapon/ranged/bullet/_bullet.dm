@@ -4,7 +4,7 @@
 	var/list/obj/item/bullet/stored_bullet_casings
 
 	var/bullet_type = "none"
-	var/bullet_capacity = 1 //How many bullets can this store? Note that this isn't neccisarily the magazine size.
+	var/bullet_count_max = 1 //How many bullets can this store? Note that this isn't neccisarily the magazine size.
 
 	var/icon_state_open = "inventory"
 

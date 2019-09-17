@@ -2,7 +2,7 @@
 	name = "skip cutscene"
 	desc = "I PUT EFFORT INTO THESE."
 	desc_extended = "Skips the current cutscene."
-	icon_state = "sneak_0"
+	icon_state = "skip"
 	screen_loc = "RIGHT,BOTTOM"
 
 	var/sneaking = 0
