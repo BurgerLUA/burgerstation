@@ -5,6 +5,10 @@
 	desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 	id = null
 
+	plane = PLANE_OBJ
+
+	density = FALSE //DEPCRECATED
+
 	var/health_max = 0
 	var/health_current = 0
 	var/health_regeneration = 0
@@ -23,8 +27,6 @@
 	var/attack_range = 1 //If it's a melee weapon, it needs a range. TODO: MOVE TO ITEM
 
 	var/initialized = FALSE
-
-	plane = PLANE_OBJ
 
 	var/list/additional_blends = list()
 
@@ -47,12 +49,9 @@
 	var/collision_flags = FLAG_COLLISION_NONE
 	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	density = FALSE //DEPCRECATED
-
 	var/interact_distance = 1
 	var/interact_delay_base = 4
 	var/interact_last = 0
-
 
 	var/attack_last = -1
 

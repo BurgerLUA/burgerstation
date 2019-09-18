@@ -14,8 +14,6 @@
 	health_max = 10
 	var/break_threshold = 0 //0 Means it doesn't break. Other values means it breaks.
 
-	//appearance_flags = LONG_GLIDE | KEEP_TOGETHER | RESET_COLOR
-
 	var/attach_flag //The organ type that it wishes to attach to. Use FLAG_ORGAN_ flags.
 	var/obj/item/organ/attached_organ //The organ that it is attached to.
 	var/list/obj/item/organ/attached_organs //The organs that are attached to it.

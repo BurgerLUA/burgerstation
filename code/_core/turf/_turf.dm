@@ -8,7 +8,7 @@
 	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR
 
-	appearance_flags = TILE_BOUND | KEEP_TOGETHER
+	appearance_flags = KEEP_TOGETHER | TILE_BOUND
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	collision_flags = FLAG_COLLISION_NONE
 

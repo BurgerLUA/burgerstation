@@ -26,7 +26,7 @@
 
 	see_invisible = INVISIBILITY_LIGHTING
 
-	sight = SEE_SELF | SEE_PIXELS | SEE_BLACKNESS
+	sight = SEE_SELF | SEE_PIXELS
 
 	/*
 	var/list/quests/all_quests = list()
@@ -61,6 +61,7 @@
 	var/obj/hud/screen/paralax
 
 	var/obj/plane_master/walls/plane_master_wall
+	var/obj/plane_master/mobs/plane_master_mob
 
 /mob/destroy()
 
@@ -102,21 +103,27 @@
 		for(var/obj/structure/interactive/localmachine/L in local_machines)
 			L.update_for_mob(src)
 
-		if(!paralax)
+		/*
+		if(!paralax && FALSE)
 			paralax = new
 			paralax.name = "unknown"
-			paralax.mouse_opacity = 1
+			paralax.mouse_opacity = 0
 			paralax.icon = 'icons/hud/screen.dmi'
 			paralax.icon_state = "blank"
-			paralax.color = "#000000"
+			paralax.color = "#FF0000"
 			paralax.plane = PLANE_PARALAX
 			paralax.screen_loc = "LEFT,BOTTOM"
 			paralax.update_icon()
 			C.screen += paralax
+		*/
 
 		if(!plane_master_wall)
 			plane_master_wall = new
 			C.screen += plane_master_wall
+
+		if(!plane_master_mob)
+			plane_master_mob = new
+			C.screen += plane_master_mob
 
 	var/area/A = get_area(src)
 	A.Entered(src)

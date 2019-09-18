@@ -1,5 +1,5 @@
 #define TICK_USAGE world.tick_usage
-#define TICK_LIMIT 75
+#define TICK_LIMIT 90
 
 #define TICK_CHECK TICK_USAGE > TICK_LIMIT
 

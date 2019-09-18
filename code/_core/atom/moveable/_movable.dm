@@ -1,5 +1,13 @@
 /atom/movable/
 
+	step_size = TILE_SIZE
+	appearance_flags = KEEP_TOGETHER | LONG_GLIDE | PIXEL_SCALE
+
+	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
+	animate_movement = SLIDE_STEPS
+
 	var/area/area //The object's area.
 
 	var/tmp/move_dir = 0
@@ -7,15 +15,6 @@
 
 	var/movement_delay = 4 //Measured in ticks.
 	var/anchored = FALSE
-
-	step_size = TILE_SIZE
-	appearance_flags = LONG_GLIDE | KEEP_TOGETHER // | TILE_BOUND | PIXEL_SCALE
-
-	collision_flags = FLAG_COLLISION_NONE
-	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
-
-	animate_movement = SLIDE_STEPS
-
 	var/ghost = FALSE
 
 /atom/movable/Initialize()
@@ -42,7 +41,12 @@
 		move_delay = floor(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = step_size/move_delay //TODO: Find out how this works.
 
-		Move(get_step(src,move_dir),move_dir)
+		var/move_result = Move(get_step(src,move_dir),move_dir)
+
+		if(move_result == 0 && (move_dir in DIRECTIONS_X))
+			for(var/new_dir in DIRECTIONS_CARDINAL)
+				if((new_dir & move_dir) && Move(get_step(src,new_dir),new_dir))
+					return TRUE
 
 		return TRUE
 	else
