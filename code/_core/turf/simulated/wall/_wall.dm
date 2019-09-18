@@ -1,6 +1,7 @@
 /turf/simulated/wall/
 	name = "WALL"
 	layer = LAYER_WALL
+	plane = PLANE_WALL
 	opacity = 1
 
 	density_north = TRUE

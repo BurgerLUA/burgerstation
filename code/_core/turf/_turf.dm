@@ -4,6 +4,8 @@
 	name = "TURF ERROR"
 	icon = 'icons/debug/turfs.dmi'
 	icon_state = ""
+
+	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR
 
 	appearance_flags = TILE_BOUND | KEEP_TOGETHER
@@ -20,8 +22,6 @@
 
 	var/allow_bullet_pass = FALSE
 
-	plane = PLANE_TURF
-
 	var/dynamic_lighting = TRUE
 	luminosity           = 1
 	var/tmp/lighting_corners_initialised = FALSE
@@ -30,6 +30,7 @@
 	var/tmp/list/datum/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
 	var/list/mob/living/old_living = list() //List of mobs that used to be on this turf.
+
 
 /*
 /turf/Initialize()

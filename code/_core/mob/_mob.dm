@@ -58,7 +58,9 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/obj/hud/screen/paralax = /obj/hud/screen/
+	var/obj/hud/screen/paralax
+
+	var/obj/plane_master/walls/plane_master_wall
 
 /mob/destroy()
 
@@ -100,16 +102,21 @@
 		for(var/obj/structure/interactive/localmachine/L in local_machines)
 			L.update_for_mob(src)
 
-		paralax = new paralax
-		paralax.name = "unknown"
-		paralax.mouse_opacity = 1
-		paralax.icon = 'icons/hud/screen.dmi'
-		paralax.icon_state = "blank"
-		paralax.color = "#000000"
-		paralax.plane = PLANE_PARALAX
-		paralax.screen_loc = "LEFT,BOTTOM"
-		paralax.update_icon()
-		C.screen += paralax
+		if(!paralax)
+			paralax = new
+			paralax.name = "unknown"
+			paralax.mouse_opacity = 1
+			paralax.icon = 'icons/hud/screen.dmi'
+			paralax.icon_state = "blank"
+			paralax.color = "#000000"
+			paralax.plane = PLANE_PARALAX
+			paralax.screen_loc = "LEFT,BOTTOM"
+			paralax.update_icon()
+			C.screen += paralax
+
+		if(!plane_master_wall)
+			plane_master_wall = new
+			C.screen += plane_master_wall
 
 	var/area/A = get_area(src)
 	A.Entered(src)

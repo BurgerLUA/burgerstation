@@ -1,5 +1,8 @@
 obj/structure/interactive/door/airlock/brass
-	name = "clockwork airlock"
+	name = "glass clockwork airlock"
 	desc = "a powered airlock"
 	icon = 'icons/obj/structure/clockwork/airlock.dmi'
-	filler = "fill"
+
+obj/structure/interactive/door/airlock/brass/glass
+	name = "clockwork airlock"
+	filler = "glass"

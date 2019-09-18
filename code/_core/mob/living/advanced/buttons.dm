@@ -3,6 +3,17 @@
 		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
+
+/mob/living/advanced/proc/add_chargen_buttons()
+	for(var/v in chargen_buttons)
+		var/obj/hud/button/B = new v
+		B.update_owner(src)
+
+/mob/living/advanced/proc/remove_chargen_buttons()
+	for(var/obj/hud/button/B  in buttons)
+		if(B in chargen_buttons)
+			B.update_owner(null)
+
 //Inventory
 /mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
 	draw_inventory = !draw_inventory

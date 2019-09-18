@@ -3,7 +3,7 @@ obj/structure/interactive/door/airlock
 	desc = "a powered airlock"
 	icon = 'icons/obj/structure/future/airlock.dmi'
 	icon_state = "closed"
-	var/filler = "glass"
+	var/filler = "fill"
 
 	var/base_color = "#FFFFFF"
 	var/fill_color = "#FFFFFF"
@@ -23,9 +23,10 @@ obj/structure/interactive/door/airlock/update_icon()
 		if(DOOR_STATE_OPENING)
 			icon_state = "opening"
 			desc = "The door is opening."
+			opacity = 0
 			collision_flags = FLAG_COLLISION_NONE
 			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
-			opacity = 1
+
 
 		if(DOOR_STATE_CLOSING)
 			icon_state = "closing"
@@ -44,15 +45,14 @@ obj/structure/interactive/door/airlock/update_icon()
 		if(DOOR_STATE_CLOSED)
 			icon_state = "closed"
 			desc = "The door is closed."
-			opacity = 1
 			collision_flags = FLAG_COLLISION_REAL
 			switch(filler)
 				if("glass")
-					opacity = 1
+					opacity = 0
 					collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 				else
 					collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-					opacity = 0
+					opacity = 1
 
 	var/icon/base_icon = new /icon(icon,icon_state)
 	base_icon.Blend(base_color,ICON_MULTIPLY)
@@ -76,3 +76,7 @@ obj/structure/interactive/door/airlock/Cross(var/atom/movable/A)
 		open()
 
 	return .
+
+
+obj/structure/interactive/door/airlock/glass
+	filler = "glass"

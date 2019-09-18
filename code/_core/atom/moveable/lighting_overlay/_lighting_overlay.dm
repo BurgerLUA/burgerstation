@@ -7,7 +7,7 @@
 
 	mouse_opacity    = 0
 	layer            = LAYER_LIGHTING_DYNAMIC
-	plane            = PLANE_LIGHTING_DYNAMIC
+	plane            = PLANE_LIGHTING
 	invisibility     = INVISIBILITY_LIGHTING
 	infra_luminosity = 1
 

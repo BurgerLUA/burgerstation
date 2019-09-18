@@ -6,8 +6,24 @@
 /turf/unsimulated/space
 	name = "space"
 	icon = 'icons/turf/space/space.dmi'
-	icon_state = "space"
+	icon_state = "1"
 	opacity = 1
+	var/generate = TRUE
+
+/turf/unsimulated/space/New()
+	. = ..()
+	update_icon()
+	return TRUE
+
+/turf/unsimulated/space/update_icon()
+	icon_state = "[rand(0,25)]"
+
+/turf/unsimulated/space/blocking
+	name = "deep space"
+	icon = 'icons/turf/space/space.dmi'
+	icon_state = "space"
+	opacity = 0
+	generate = FALSE
 
 
 /turf/unsimulated/abyss

@@ -226,7 +226,24 @@ mob/living/advanced/Login()
 
 	update_all_blends()
 
-	return .
+	return
+
+/mob/living/advanced/proc/perform_sexchange(var/desired_sex)
+
+	if(sex == desired_sex)
+		return FALSE
+
+	sex = desired_sex
+	gender = desired_sex
+
+	remove_all_organs()
+	add_species_organs()
+	add_species_colors()
+	update_icon()
+	update_health_element_icons(TRUE,TRUE,TRUE)
+	update_all_blends()
+
+	return TRUE
 
 /mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //TODO: FIX THIS, IT'S BROKEN.
 

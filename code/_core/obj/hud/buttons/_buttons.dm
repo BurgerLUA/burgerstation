@@ -40,10 +40,12 @@
 	if(owner)
 		owner.remove_button(src)
 
-	owner = desired_owner
-	owner.add_button(src)
-
-	update_icon()
+	if(desired_owner)
+		owner = desired_owner
+		owner.add_button(src)
+		update_icon()
+	else
+		qdel(src)
 
 	return TRUE
 
