@@ -26,7 +26,7 @@
 
 	see_invisible = INVISIBILITY_LIGHTING
 
-	sight = SEE_SELF | SEE_PIXELS
+	sight = SEE_SELF | SEE_BLACKNESS
 
 	/*
 	var/list/quests/all_quests = list()
@@ -62,6 +62,7 @@
 
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
+	var/obj/plane_master/darkness/plane_master_darkness
 
 /mob/destroy()
 
@@ -104,7 +105,7 @@
 			L.update_for_mob(src)
 
 		/*
-		if(!paralax && FALSE)
+		if(!paralax)
 			paralax = new
 			paralax.name = "unknown"
 			paralax.mouse_opacity = 0
@@ -117,6 +118,7 @@
 			C.screen += paralax
 		*/
 
+
 		if(!plane_master_wall)
 			plane_master_wall = new
 			C.screen += plane_master_wall
@@ -124,6 +126,10 @@
 		if(!plane_master_mob)
 			plane_master_mob = new
 			C.screen += plane_master_mob
+
+		if(!plane_master_darkness)
+			plane_master_darkness = new
+			C.screen += plane_master_darkness
 
 	var/area/A = get_area(src)
 	A.Entered(src)

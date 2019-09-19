@@ -4,6 +4,8 @@
 
 #define PLANE_FLOOR -2
 
+#define PLANE_DARKNESS -1
+
 #define PLANE_OBJ -1
 
 #define PLANE_MOB 0

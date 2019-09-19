@@ -4,6 +4,7 @@ mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_ic
 	O.initial_icon = desired_icon ? desired_icon : A.icon
 	O.initial_icon_state = desired_icon_state ? desired_icon_state : A.icon_state
 	O.layer = desired_layer ? desired_layer : A.layer
+	//O.plane = src.plane
 	O.icon = desired_icon ? desired_icon : A.icon
 	O.icon_state = desired_icon_state ? desired_icon_state : A.icon_state
 	O.color = desired_color ? desired_color : A.color

@@ -43,7 +43,7 @@
 
 		var/move_result = Move(get_step(src,move_dir),move_dir)
 
-		if(move_result == 0 && (move_dir in DIRECTIONS_X))
+		if(move_result == 0 && (move_dir in DIRECTIONS_INTERCARDINAL))
 			for(var/new_dir in DIRECTIONS_CARDINAL)
 				if((new_dir & move_dir) && Move(get_step(src,new_dir),new_dir))
 					return TRUE

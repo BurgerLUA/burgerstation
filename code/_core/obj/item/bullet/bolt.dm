@@ -10,7 +10,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
 
-	projectile = /obj/projectile/bullet/bolt/
+	projectile = /obj/projectile/bullet/bolt
 	damage_type = "bolt_metal"
 
 /obj/item/bullet/bolt/on_spawn()

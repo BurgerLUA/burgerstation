@@ -4,14 +4,17 @@
 	screen_loc = "1,1"
 	appearance_flags = PLANE_MASTER
 
+
+//WALLS
 /obj/plane_master/walls
-	plane = PLANE_FLOOR
+	plane = PLANE_WALL
 
 /obj/plane_master/walls/New(var/desired_loc)
 	. = ..()
 	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
 	return .
 
+//MOBS
 /obj/plane_master/mobs
 	plane = PLANE_MOB
 
@@ -20,3 +23,14 @@
 	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
 	return .
 
+
+//DARKNESS
+/obj/plane_master/darkness
+	plane = PLANE_DARKNESS
+	mouse_opacity = 1
+	blend_mode = BLEND_MULTIPLY
+
+/obj/plane_master/darkness/New(var/desired_loc)
+	. = ..()
+	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=rgb(0,0,0))
+	return .

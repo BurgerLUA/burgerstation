@@ -34,12 +34,12 @@
 		I.Blend(S,ICON_OVERLAY)
 	else
 		if(rand(1,4))
-			var/dir_to_use = prob(10) ? DIRECTIONS_X : SOUTH
+			var/dir_to_use = prob(10) ? DIRECTIONS_INTERCARDINAL : SOUTH
 			dir_to_use = pick(dir_to_use)
 			var/icon/S = new /icon(icon,get_solid_icon_state(),dir_to_use)
 			I.Blend(S,ICON_OVERLAY)
 		else
-			var/dir_to_use = prob(10) ? DIRECTIONS_X : DIRECTIONS_CARDINAL
+			var/dir_to_use = prob(10) ? DIRECTIONS_INTERCARDINAL : DIRECTIONS_CARDINAL
 			dir_to_use = pick(dir_to_use)
 			var/icon/D = new /icon(icon,get_donut_icon_state(),dir_to_use)
 			I.Blend(D,ICON_OVERLAY)
