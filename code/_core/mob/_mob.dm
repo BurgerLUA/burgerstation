@@ -118,7 +118,6 @@
 			C.screen += paralax
 		*/
 
-
 		if(!plane_master_wall)
 			plane_master_wall = new
 			C.screen += plane_master_wall

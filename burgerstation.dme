@@ -49,6 +49,7 @@
 #include "code\__defines\old_plane.dm"
 #include "code\__defines\params.dm"
 #include "code\__defines\permissions.dm"
+#include "code\__defines\plane.dm"
 #include "code\__defines\rarity.dm"
 #include "code\__defines\reagents.dm"
 #include "code\__defines\resources.dm"
