@@ -24,3 +24,12 @@
 	I.Blend(O,ICON_OVERLAY)
 
 	icon = I
+
+
+/obj/structure/interactive/lighting/tube/strong
+
+	name = "station tube light"
+
+	light_power = 0.4
+	light_range = 6
+	light_color = "#FFFFAA"

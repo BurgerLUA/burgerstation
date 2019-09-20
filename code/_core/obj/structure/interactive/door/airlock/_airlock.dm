@@ -11,10 +11,6 @@ obj/structure/interactive/door/airlock
 	open_time = 5
 	close_time = 5
 
-obj/structure/interactive/door/airlock/New()
-	..()
-	update_icon()
-
 obj/structure/interactive/door/airlock/update_icon()
 
 	icon = initial(icon)
@@ -62,6 +58,10 @@ obj/structure/interactive/door/airlock/update_icon()
 		fill_icon.Blend(fill_color,ICON_MULTIPLY)
 		base_icon.Blend(fill_icon,ICON_OVERLAY)
 
+	if(locked && door_state == DOOR_STATE_CLOSED)
+		var/icon/light_icon = new /icon(icon,"lights_bolts")
+		base_icon.Blend(light_icon,ICON_OVERLAY)
+
 	if(door_state == DOOR_STATE_OPENING || door_state == DOOR_STATE_CLOSING)
 		var/icon/light_icon = new /icon(icon,"lights_[icon_state]")
 		base_icon.Blend(light_icon,ICON_OVERLAY)
@@ -80,3 +80,6 @@ obj/structure/interactive/door/airlock/Cross(var/atom/movable/A)
 
 obj/structure/interactive/door/airlock/glass
 	filler = "glass"
+
+obj/structure/interactive/door/airlock/glass/locked
+	locked = TRUE

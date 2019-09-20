@@ -19,9 +19,12 @@ obj/structure/interactive/door
 	var/open_time = 10
 	var/close_time = 10
 
+	var/locked = FALSE
+
 obj/structure/interactive/door/New()
-	..()
+	. = ..()
 	update_icon()
+	return .
 
 obj/structure/interactive/door/update_icon()
 	..()
