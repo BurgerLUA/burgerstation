@@ -12,6 +12,7 @@ cfg/
 build_log.txt
 code/_core/world/private.dm
 text/badwords.txt
+icons/OLD/
 
 __pycache__/
 *.py[cod]
