@@ -14,10 +14,11 @@ var/global/list/local_machines = list()
 	update_icon()
 
 /obj/structure/interactive/localmachine/proc/update_for_mob(var/mob/M)
+
 	if(M in disallowed_mobs)
 		return
-	if(!(cached_image in M.overlays))
-		M << cached_image
+
+	M << cached_image
 
 /obj/structure/interactive/localmachine/update_icon()
 	if(!cached_image)
@@ -32,7 +33,16 @@ var/global/list/local_machines = list()
 	if(is_mob(caller))
 		var/mob/M = caller
 		disallowed_mobs += M
-		if(M.client)
-			M.client.images -= cached_image
+		clear_existing_images(M)
+
+	return TRUE
+
+
+/obj/structure/interactive/localmachine/proc/clear_existing_images(var/mob/M)
+
+	if(!M.client)
+		return
+
+	M.client.images -= cached_image
 
 	return TRUE

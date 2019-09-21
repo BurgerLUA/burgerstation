@@ -1,7 +1,8 @@
-#define DOOR_STATE_OPEN 1
+#define DOOR_STATE_OPENED 1
 #define DOOR_STATE_OPENING 2
 #define DOOR_STATE_CLOSED 3
 #define DOOR_STATE_CLOSING 4
+#define DOOR_STATE_LOCKED 5 //Only used for singleplayer airlocks
 
 
 obj/structure/interactive/door
@@ -41,8 +42,9 @@ obj/structure/interactive/door/update_icon()
 			desc = "The door is closing."
 			opacity = 0
 			collision_flags = FLAG_COLLISION_NONE
+			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-		if(DOOR_STATE_OPEN)
+		if(DOOR_STATE_OPENED)
 			icon_state = "[initial(icon_state)]open"
 			desc = "The door is open."
 			opacity = 0
@@ -61,7 +63,7 @@ obj/structure/interactive/door/proc/open()
 	door_state = DOOR_STATE_OPENING
 	update_icon()
 	spawn(open_time)
-		door_state = DOOR_STATE_OPEN
+		door_state = DOOR_STATE_OPENED
 		update_icon()
 
 obj/structure/interactive/door/proc/close()
@@ -79,7 +81,7 @@ obj/structure/interactive/door/clicked_by_object(caller,object,location,control,
 	if(!is_mob(caller))
 		return FALSE
 
-	if(door_state == DOOR_STATE_OPEN)
+	if(door_state == DOOR_STATE_OPENED)
 		close()
 	else if(door_state == DOOR_STATE_CLOSED)
 		open()

@@ -20,6 +20,8 @@
 
 /obj/structure/interactive/localmachine/ore_deposit/clicked_by_object(caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(A in disallowed_mobs)
@@ -29,9 +31,8 @@
 		callback_list["ore"] = stored_ore
 		callback_list["start_turf"] = get_turf(A)
 		add_progress_bar(A,"mine_ore",SECONDS_TO_DECISECONDS(10),callback_list)
-		return TRUE
 
-	return ..()
+	return TRUE
 
 
 /obj/structure/interactive/localmachine/ore_deposit/iron

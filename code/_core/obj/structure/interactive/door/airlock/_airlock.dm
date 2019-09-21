@@ -20,9 +20,12 @@ obj/structure/interactive/door/airlock/update_icon()
 			icon_state = "opening"
 			desc = "The door is opening."
 			opacity = 0
-			collision_flags = FLAG_COLLISION_NONE
-			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
-
+			collision_flags = FLAG_COLLISION_REAL
+			switch(filler)
+				if("glass")
+					collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+				else
+					collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 		if(DOOR_STATE_CLOSING)
 			icon_state = "closing"
@@ -31,7 +34,7 @@ obj/structure/interactive/door/airlock/update_icon()
 			collision_flags = FLAG_COLLISION_NONE
 			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-		if(DOOR_STATE_OPEN)
+		if(DOOR_STATE_OPENED)
 			icon_state = "open"
 			desc = "The door is open."
 			opacity = 0

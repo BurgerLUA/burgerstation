@@ -89,6 +89,9 @@
 
 	var/choice = input("Choose a character to load.") in name_to_choice
 
+	if(!is_valid(src))
+		return FALSE
+
 	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])
 	C.save_slot = name_to_choice[choice]
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))

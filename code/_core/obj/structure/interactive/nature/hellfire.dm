@@ -7,3 +7,9 @@ obj/structure/scenery/hellfire
 	light_power = 0.25
 	light_range = 8
 	light_color = "#FF7F00"
+
+obj/structure/scenery/hellfire/New(var/desired_loc)
+
+	dir = pick(NORTH,EAST,SOUTH,WEST)
+
+	return ..()
