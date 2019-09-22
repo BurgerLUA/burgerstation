@@ -1,9 +1,10 @@
 /obj/structure/scenery/fake_door
 	name = "airlock"
-	icon = 'icons/obj/structure/fakedoor.dmi'
+	icon = 'icons/obj/structure/airlock/fake.dmi'
 
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	opacity = 1
 
 /obj/structure/scenery/fake_door/glass_bolted
 	icon_state = "glass_bolted"
@@ -32,6 +33,7 @@
 /obj/structure/scenery/fake_door/nocolide
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	opacity = 0
 
 /obj/structure/scenery/fake_door/nocolide/glass_door
 	icon_state = "glass_opened"

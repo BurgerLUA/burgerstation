@@ -61,6 +61,14 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 
 	screen_loc = "CENTER+3,CENTER+4"
 
+/obj/hud/button/chargen/change_hairstyle/main/update_owner(var/mob/desired_owner)
+	. = ..()
+	if(. && is_advanced(desired_owner))
+		var/mob/living/advanced/A = desired_owner
+		A.handle_hairstyle_chargen(A.sex == MALE ? 2 : 16)
+
+	return .
+
 /obj/hud/button/chargen/change_hairstyle/clicked_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_advanced(caller))

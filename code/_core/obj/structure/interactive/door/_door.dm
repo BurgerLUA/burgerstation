@@ -12,7 +12,7 @@ obj/structure/interactive/door
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	opacity = 1
-	icon = 'icons/obj/structure/medieval/doors.dmi'
+	icon = 'icons/obj/structure/airlock/doors.dmi'
 	icon_state = "woodrustic"
 
 	var/door_state = DOOR_STATE_CLOSED

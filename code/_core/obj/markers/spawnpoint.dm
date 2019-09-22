@@ -3,6 +3,7 @@ var/global/list/spawnpoints_new_character = list()
 var/global/list/world_spawnpoints = list()
 var/global/list/mob_spawnpoints = list()
 var/global/list/lobby_spawnpoints = list()
+var/global/list/chargen_spawnpoints = list()
 
 /obj/marker/spawnpoint
 	name = "SPAWNPOINT"
@@ -24,6 +25,13 @@ var/global/list/lobby_spawnpoints = list()
 /obj/marker/spawnpoint/new_character
 	name = "new player spawnpoint"
 	desc = "This is where new players spawn."
+
+/obj/marker/spawnpoint/chargen
+	name = "chargen spawnpoint"
+	desc = "This is where new chargen players spawn."
+
+/obj/marker/spawnpoint/chargen/New()
+	chargen_spawnpoints += get_turf(src)
 
 /obj/marker/spawnpoint/new_character/New()
 	spawnpoints_new_character += get_turf(src)

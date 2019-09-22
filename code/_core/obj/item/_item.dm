@@ -80,7 +80,7 @@
 	for(var/obj/hud/inventory/I in A.inventory)
 		if(I in inventories)
 			continue
-		if(!(I.flags & FLAGS_HUD_INVENTORY))
+		if(!(I.flags & FLAGS_HUD_CONTAINER))
 			continue
 		I.alpha = 0
 		I.mouse_opacity = 0

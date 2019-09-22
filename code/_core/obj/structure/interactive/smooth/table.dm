@@ -1,7 +1,7 @@
 obj/structure/smooth/table
 	name = "table"
 	desc = "What does it do?"
-	icon = 'icons/obj/structure/modern/table.dmi'
+	icon = 'icons/obj/structure/smooth/table/normal.dmi'
 	icon_state = "table"
 
 	corner_category = "table"
@@ -27,7 +27,7 @@ obj/structure/smooth/table/wood/poor
 obj/structure/smooth/table/reinforced
 	name = "reinforced table"
 	desc = "Extra sturdy."
-	icon = 'icons/obj/structure/modern/table_reinforced.dmi'
+	icon = 'icons/obj/structure/smooth/table/reinforced.dmi'
 	icon_state = "table"
 
 	corner_category = "table_reinforced"

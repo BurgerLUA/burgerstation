@@ -43,9 +43,11 @@
 	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK)
 	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK)
 
-	handle_organs()
-
 	return .
+
+/mob/living/advanced/on_life_slow()
+	handle_organs()
+	return ..()
 
 /mob/living/advanced/pre_death()
 

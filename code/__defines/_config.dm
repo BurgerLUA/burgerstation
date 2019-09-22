@@ -11,6 +11,7 @@
 
 #define BADWORDS "text/badwords.txt"
 
+#define ZOOM_RANGE 7
 #define VIEW_RANGE 11
 
 #define SOUND_RANGE 18
@@ -62,6 +63,7 @@
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
 #define LIFE_TICK 1 //Deciseconds per life tick interval.
+#define LIFE_TICK_SLOW 10
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 

@@ -4,7 +4,7 @@
 
 	opacity = 0
 
-	icon = 'icons/obj/structure/modern/fireplace.dmi'
+	icon = 'icons/obj/structure/fireplace.dmi'
 	icon_state = "fireplace"
 
 	light_power = 0.5

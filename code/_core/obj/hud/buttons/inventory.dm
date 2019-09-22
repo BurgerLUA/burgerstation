@@ -6,7 +6,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
+	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL
 
 /obj/hud/button/close_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
 
@@ -16,7 +16,7 @@
 	var/mob/living/advanced/A = caller
 
 	for(var/obj/hud/inventory/I in A.inventory)
-		if(!(I.flags & FLAGS_HUD_INVENTORY))
+		if(!(I.flags & FLAGS_HUD_CONTAINER))
 			continue
 		animate(I,alpha=0,time=4)
 		I.mouse_opacity = 0
@@ -26,6 +26,7 @@
 
 	return TRUE
 
+/*
 /obj/hud/button/drop
 	name = "drop item"
 	desc = "Drop the item in this slot."
@@ -56,6 +57,7 @@
 			A.right_hand.drop_held_objects(A.loc)
 
 	return TRUE
+*/
 
 /obj/hud/button/hide_show_inventory
 	name = "toggle inventory"
@@ -64,7 +66,7 @@
 	icon_state = "view_inventory"
 	screen_loc = "LEFT,BOTTOM"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY
 
 /obj/hud/button/hide_show_inventory/clicked_by_object(var/mob/caller,object,location,control,params)
 

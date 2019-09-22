@@ -1,7 +1,7 @@
 /obj/structure/smooth/window
 	name = "window"
 	desc = "See through this."
-	icon = 'icons/obj/structure/modern/window.dmi'
+	icon = 'icons/obj/structure/smooth/window/normal.dmi'
 	icon_state = "window"
 
 	collision_flags = FLAG_COLLISION_WALKING
@@ -14,7 +14,7 @@
 
 /obj/structure/smooth/window/reinforced
 	name = "reinforced window"
-	icon = 'icons/obj/structure/modern/window_reinforced.dmi'
+	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'
 	icon_state = "window"
 
 /obj/structure/smooth/window/tinted

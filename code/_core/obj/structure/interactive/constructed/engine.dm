@@ -1,6 +1,6 @@
 obj/structure/shuttle_engine
 	name = "engine"
-	icon = 'icons/obj/structure/future/shuttle.dmi'
+	icon = 'icons/obj/structure/shuttle.dmi'
 	icon_state = "router"
 
 

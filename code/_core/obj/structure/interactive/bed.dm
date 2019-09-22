@@ -1,7 +1,7 @@
 obj/structure/interactive/bed
 	name = "bed"
 	desc = "What does it do?"
-	icon = 'icons/obj/structure/future/furniture.dmi'
+	icon = 'icons/obj/structure/bed.dmi'
 	icon_state = "bed"
 	var/second_color = "#ff0000"
 

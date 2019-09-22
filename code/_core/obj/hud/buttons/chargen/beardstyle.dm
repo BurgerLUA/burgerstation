@@ -70,6 +70,16 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=1,var/desired_co
 
 	return TRUE
 
+
+/obj/hud/button/chargen/change_beardstyle/main/update_owner(var/mob/desired_owner)
+	. = ..()
+	if(. && is_advanced(desired_owner))
+		var/mob/living/advanced/A = desired_owner
+		hair_num = 1
+		A.handle_beardstyle_chargen(1)
+
+	return .
+
 /obj/hud/button/chargen/change_beardstyle/left
 	name = "cycle beardstyle left"
 	dir = WEST

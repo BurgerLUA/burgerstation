@@ -8,7 +8,7 @@
 	max_size = 100
 	max_weight = 100
 
-	flags = FLAGS_HUD_SPECIAL | FLAGS_HUD_CRAFTING
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CRAFTING
 
 	alpha = 0 //Hidden until enabled
 	mouse_opacity = 0 //Off until enabled.

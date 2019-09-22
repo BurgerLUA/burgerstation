@@ -4,7 +4,7 @@
 
 	opacity = 0
 
-	icon = 'icons/obj/structure/medieval/bonfire.dmi'
+	icon = 'icons/obj/structure/bonfire.dmi'
 	icon_state = "bonfire"
 
 	light_power = 0

@@ -8,6 +8,8 @@
 
 	screen_loc = "RIGHT,BOTTOM+2.2"
 
+	flags = FLAGS_HUD_MOB
+
 /obj/hud/button/health/body/update_icon()
 
 	icon = initial(icon)

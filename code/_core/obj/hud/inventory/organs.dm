@@ -12,4 +12,4 @@
 
 	screen_loc = "CENTER,CENTER"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB

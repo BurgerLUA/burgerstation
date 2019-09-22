@@ -6,7 +6,7 @@
 
 	item_slot = SLOT_TORSO | SLOT_TORSO_U
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/torso/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
@@ -37,7 +37,7 @@
 
 	item_slot = SLOT_TORSO_O | SLOT_TORSO_A
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/torso_o/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
@@ -70,7 +70,7 @@
 
 	essential = TRUE
 
-
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/torso_ob
 	name = "overwear belt slot"
@@ -81,3 +81,5 @@
 	item_slot = SLOT_TORSO_OB
 
 	essential = TRUE
+
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB

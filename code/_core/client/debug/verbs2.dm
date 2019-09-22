@@ -17,12 +17,11 @@
 
 		valid_floors += F
 
-	spawn()
-		for(var/i=1,i<=100,i++)
-			var/turf/T = pick(valid_floors)
-			var/mob/living/advanced/player/debug/P = new(T)
-			P.Initialize()
-			step(P,pick(NORTH,EAST,SOUTH,WEST))
-			sleep(1)
+
+	for(var/i=1,i<=100,i++)
+		var/turf/T = pick(valid_floors)
+		var/mob/living/advanced/player/debug/P = new(T)
+		P.Initialize()
+		step(P,pick(NORTH,EAST,SOUTH,WEST))
 
 

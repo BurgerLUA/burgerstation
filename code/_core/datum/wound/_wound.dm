@@ -39,7 +39,7 @@
 
 /wound/proc/on_life()
 
-	var/life_tick_mod = LIFE_TICK/10
+	var/life_tick_mod = LIFE_TICK_SLOW/10 //Convert into seconds.
 	var/infection_mod = (infection_level/infection_level_max)
 
 	infection_level += life_tick_mod*(1/600)*(severity_level*0.5)

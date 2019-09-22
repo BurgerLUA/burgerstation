@@ -2,7 +2,7 @@
 
 	name = "glass airlock"
 
-	icon = 'icons/obj/structure/future/airlock_glass_merged.dmi'
+	icon = 'icons/obj/structure/airlock/airlock_glass_merged.dmi'
 	icon_state = "closed"
 
 	var/list/mob_to_door_state = list()

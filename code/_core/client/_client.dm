@@ -307,8 +307,8 @@ var/global/list/all_clients = list()
 		var/list/params_list = params2list(params)
 		var/list/screen_loc = parse_screen_loc(params_list["screen-loc"])
 
-		pixel_x = Clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*2, -VIEW_RANGE*TILE_SIZE, VIEW_RANGE*TILE_SIZE)
-		pixel_y = Clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*2, -VIEW_RANGE*TILE_SIZE, VIEW_RANGE*TILE_SIZE)
+		pixel_x = Clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE)
+		pixel_y = Clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE)
 
 		if(mob)
 			mob.face_atom(location)

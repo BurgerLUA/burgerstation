@@ -1,7 +1,7 @@
 obj/structure/interactive/door/airlock
 	name = "airlock"
 	desc = "a powered airlock"
-	icon = 'icons/obj/structure/future/airlock.dmi'
+	icon = 'icons/obj/structure/airlock/airlock.dmi'
 	icon_state = "closed"
 	var/filler = "fill"
 

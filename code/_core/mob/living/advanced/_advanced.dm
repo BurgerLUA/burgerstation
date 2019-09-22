@@ -241,7 +241,10 @@ mob/living/advanced/Login()
 	add_species_colors()
 	update_icon()
 	update_health_element_icons(TRUE,TRUE,TRUE)
-	update_all_blends()
+
+	handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
+	handle_beardstyle_chargen(1,"#000000")
+	//Blends are updated in the above two procs
 
 	return TRUE
 

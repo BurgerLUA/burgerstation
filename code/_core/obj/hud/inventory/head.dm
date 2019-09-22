@@ -5,7 +5,7 @@
 	item_slot = SLOT_HEAD
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/neck
 	name = "neck slot"
@@ -14,7 +14,7 @@
 	item_slot = SLOT_NECK
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/face
 	name = "face slot"
@@ -23,7 +23,7 @@
 	item_slot = SLOT_FACE
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/left_ear
 	name = "left ear slot"
@@ -32,7 +32,7 @@
 	item_slot = SLOT_EAR
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/right_ear
 	name = "right ear slot"
@@ -41,7 +41,7 @@
 	item_slot = SLOT_EAR
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/glasses
 	name = "glasses slot"
@@ -50,7 +50,7 @@
 	item_slot = SLOT_GLASSES
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 /obj/hud/inventory/organs/special
 	name = "special slot"
@@ -59,4 +59,4 @@
 	item_slot = SLOT_SPECIAL
 	worn_slots = 1
 
-	flags = FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB

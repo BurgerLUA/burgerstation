@@ -1,6 +1,6 @@
 /obj/structure/interactive/lighting/candle
 	name = "candle"
-	icon = 'icons/obj/structure/medieval/light.dmi'
+	icon = 'icons/obj/structure/light.dmi'
 	icon_state = "candle"
 
 	light_power = 0.5

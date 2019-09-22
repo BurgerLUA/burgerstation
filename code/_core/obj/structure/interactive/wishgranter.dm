@@ -8,7 +8,7 @@ obj/structure/interactive/wishgranter
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 
-	icon = 'icons/obj/structure/future/wishgranter.dmi'
+	icon = 'icons/obj/structure/wishgranter.dmi'
 	icon_state = "wishgranter"
 
 

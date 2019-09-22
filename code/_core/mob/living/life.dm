@@ -122,6 +122,13 @@
 
 	return TRUE
 
+mob/living/proc/on_life_slow()
+
+	if(!initialized)
+		return FALSE
+
+	return TRUE
+
 /mob/living/proc/handle_alpha()
 
 	if(is_sneaking)

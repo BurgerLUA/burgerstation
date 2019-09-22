@@ -1,7 +1,7 @@
 /obj/structure/interactive/lighting/tube
 	name = "tube light"
 
-	icon = 'icons/obj/structure/modern/lights.dmi'
+	icon = 'icons/obj/structure/lights.dmi'
 	icon_state = "tube"
 
 	light_power = 0.25
@@ -9,6 +9,14 @@
 	light_color = "#FFFFAA"
 
 	layer = LAYER_LARGE_OBJ
+
+/obj/structure/interactive/lighting/tube/off
+	light_power = 0
+	light_range = 0
+	light_color = "#FFFFFF"
+
+/obj/structure/interactive/lighting/tube/off/update_icon()
+	return
 
 /obj/structure/interactive/lighting/tube/New()
 	..()

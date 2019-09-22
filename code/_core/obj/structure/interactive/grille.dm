@@ -1,7 +1,7 @@
 obj/structure/interactive/grille
 	name = "grille"
 	desc = "A metal grille."
-	icon = 'icons/obj/structure/modern/grille.dmi'
+	icon = 'icons/obj/structure/grille.dmi'
 	icon_state = "default"
 
 	collision_flags = FLAG_COLLISION_REAL

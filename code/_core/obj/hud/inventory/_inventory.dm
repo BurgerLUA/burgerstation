@@ -37,7 +37,7 @@
 
 	var/click_flags
 
-	var/flags = FLAGS_HUD_NONE
+	var/flags = FLAGS_HUD_INVENTORY
 
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 	var/reverse_draw = FALSE //Should the worn state and the held state be swapped?

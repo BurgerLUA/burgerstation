@@ -1,7 +1,6 @@
 obj/structure/smooth/
 	name = "table"
 	desc = "What does it do?"
-	icon = 'icons/obj/structure/modern/table.dmi'
 	icon_state = "table"
 
 	var/corner_category = "none"

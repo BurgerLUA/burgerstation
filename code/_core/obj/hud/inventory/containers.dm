@@ -19,6 +19,8 @@
 	x_offset_mul = 1
 	y_offset_mul = 0
 
+	flags = FLAGS_HUD_MOB
+
 /obj/hud/inventory/container/backpack
 	name = "backpack"
 	id = "backpack"
