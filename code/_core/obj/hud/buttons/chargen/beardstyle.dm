@@ -39,8 +39,6 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=1,var/desired_co
 	for(var/obj/hud/button/chargen/change_beardstyle/B in buttons)
 		B.hair_num = hair_num
 
-	world.log << choice_main
-
 	var/hair_id = hair_face_ids[choice_main]
 	var/hair/face/H = hair_face_types[hair_id]
 	if(desired_color)
@@ -77,6 +75,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=1,var/desired_co
 		var/mob/living/advanced/A = desired_owner
 		hair_num = 1
 		A.handle_beardstyle_chargen(1)
+		world.log << "PENIS"
 
 	return .
 
@@ -103,8 +102,11 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=1,var/desired_co
 			if(H)
 				name = H.name
 				var/icon/I = new/icon(icon,icon_state)
-				var/icon/I2 = new/icon(H.icon,H.icon_state)
-				I2.Blend(hair_color,ICON_MULTIPLY)
+				var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head")
+				var/icon/I3 = new/icon(H.icon,H.icon_state)
+				I3.Blend(hair_color,ICON_MULTIPLY)
+				I2.Blend(I3,ICON_OVERLAY)
+				I2.Shift(SOUTH,9)
 				I.Blend(I2,ICON_OVERLAY)
 				icon = I
 

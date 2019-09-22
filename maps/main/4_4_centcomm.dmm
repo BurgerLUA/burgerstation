@@ -1,8 +1,8 @@
 "aa" = (/obj/structure/interactive/lighting/tube/strong,/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
 "ab" = (/obj/structure/interactive/lighting/tube/strong,/turf/simulated/floor/tile,/area/singleplayer/interior)
-"ac" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile,/area/singleplayer/exterior)
+"ac" = (/obj/structure/scenery/fake_door/maint_door,/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
 "ad" = (/turf/simulated/wall/metal,/area/singleplayer/interior)
-"ae" = (/obj/structure/scenery/fake_door/maint_door,/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
+"ae" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile,/area/singleplayer/interior)
 "af" = (/turf/simulated/floor/river,/area/singleplayer/interior)
 "ag" = (/turf/simulated/wall/wood/boat/starting,/area/singleplayer/exterior)
 "ah" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/singleplayer/exterior)
@@ -16,7 +16,7 @@
 "ap" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/rich,/area/singleplayer/interior)
 "aq" = (/turf/simulated/floor/river,/area/singleplayer/exterior)
 "ar" = (/turf/simulated/wall/wood/boat/starting,/area/singleplayer/interior)
-"as" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/obj/structure/interactive/misc/mirror{pixel_x = 32},/turf/simulated/floor/tile,/area/singleplayer/exterior)
+"as" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/obj/structure/interactive/misc/mirror/chargen{pixel_x = 32},/turf/simulated/floor/tile,/area/singleplayer/interior)
 "at" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/singleplayer/interior)
 "au" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/brown,/area/singleplayer/interior)
 "av" = (/obj/trigger/jumpmarker/ship_exit,/turf/simulated/floor/stair/wood,/area/singleplayer/interior)
@@ -29,6 +29,7 @@
 "aC" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/boat/starting,/area/singleplayer/exterior)
 "aD" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/singleplayer/interior)
 "aE" = (/turf/simulated/floor/tile/dark,/area/singleplayer/interior)
+"aF" = (/obj/structure/interactive/bed,/turf/simulated/floor/carpet,/area/singleplayer/interior)
 "aG" = (/obj/structure/smooth/table,/turf/simulated/floor/tile,/area/singleplayer/interior)
 "aH" = (/turf/simulated/floor/tile,/area/singleplayer/interior)
 "aI" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/singleplayer/interior)
@@ -92,36 +93,37 @@
 "bO" = (/obj/structure/interactive/lighting/tube/strong,/turf/simulated/floor/wood/rich,/area/singleplayer/interior)
 "bP" = (/obj/structure/interactive/lighting/tube/strong{icon_state = "tube"; dir = 8},/turf/simulated/floor/wood/rich,/area/singleplayer/interior)
 "bQ" = (/obj/structure/interactive/localmachine/snowflake/airlock,/turf/simulated/floor/wood/boat/starting,/area/singleplayer/interior)
-"bR" = (/obj/structure/interactive/bed,/turf/simulated/floor/carpet,/area/singleplayer/exterior)
-"bS" = (/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/obj/marker/spawnpoint/chargen,/turf/simulated/floor/carpet,/area/singleplayer/exterior)
+"bR" = (/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/obj/marker/spawnpoint/chargen,/obj/structure/interactive/localmachine/snowflake/hint/walk{pixel_y = 32},/turf/simulated/floor/carpet,/area/singleplayer/interior)
+"bS" = (/obj/structure/interactive/misc/dresser/chargen,/turf/simulated/floor/carpet,/area/singleplayer/interior)
 "bT" = (/turf/simulated/floor/carpet,/area/singleplayer/interior)
-"bU" = (/obj/structure/interactive/misc/dresser,/turf/simulated/floor/carpet,/area/singleplayer/exterior)
-"bV" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"bW" = (/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 8},/turf/simulated/floor/tile,/area/singleplayer/exterior)
-"bX" = (/obj/structure/interactive/localmachine/snowflake/airlock,/turf/simulated/floor/tile,/area/singleplayer/exterior)
-"bY" = (/turf/simulated/floor/carpet,/area/singleplayer/exterior)
-"bZ" = (/obj/structure/interactive/localmachine/snowflake/airlock,/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"ca" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 4},/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"cb" = (/obj/structure/interactive/misc/curtain_open,/obj/structure/interactive/misc/shower{icon_state = "shower"; dir = 1},/turf/simulated/floor/tile,/area/singleplayer/exterior)
-"cc" = (/obj/structure/smooth/table/reinforced,/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"cd" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"ce" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"cf" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 8},/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
-"cg" = (/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 4},/turf/simulated/floor/tile/grey,/area/singleplayer/exterior)
+"bU" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"bV" = (/obj/structure/interactive/localmachine/snowflake/airlock,/obj/trigger/leave_bathroom,/turf/simulated/floor/tile,/area/singleplayer/interior)
+"bW" = (/obj/structure/interactive/localmachine/snowflake/hint/click{pixel_y = 64},/turf/simulated/floor/carpet,/area/singleplayer/interior)
+"bX" = (/obj/structure/interactive/localmachine/snowflake/airlock,/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"bY" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 4},/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"bZ" = (/obj/structure/interactive/misc/curtain_open,/obj/structure/interactive/misc/shower{icon_state = "shower"; dir = 1},/turf/simulated/floor/tile,/area/singleplayer/interior)
+"ca" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/computer/console/old/chargen_job,/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"cb" = (/obj/structure/interactive/localmachine/snowflake/hint/click{pixel_y = 64},/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"cc" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"cd" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"ce" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 8},/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"cf" = (/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 4},/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
+"cg" = (/turf/unsimulated/space/blocking,/area/singleplayer/interior)
+"ch" = (/obj/trigger/leave_chargen,/turf/simulated/floor/tile/grey,/area/singleplayer/interior)
 
 (1,1,1) = {"
-aYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKaKaKaKaKaKaKaKaKaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKaKaKaKaKaKaeaKaKaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKaKaKaKaKaKboboaKaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKacasaKbRbSbUaKbobobVaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKbWaUbXbYbYbYbZbobocaaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKcbaKaKaKaKaKaKbobobVaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKboboboboboboboboaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKccbobocdbVbVceboaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKcfbobocdbVbVcecgaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKccccboboboboboboaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqafafafafaragagagagaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-aYalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaKaKaKaKaKaKbxaKbxaKbxaKaKaKaYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqafafafafarararagagagagaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYcgcgcgcgcgcgcgcgcgcgcgcgcgcgcgcgaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadadadadadadadadadadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadadadadadadacadadadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadadadadadadchajadadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadaeasadaFbRbSadajajbUadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadblaHbVbTbTbWbXajajbYadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadbZadadadadadadajajcaadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadajajajajajajajcbadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadbGajajccbUbUcdajadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadceajajccbUbUcdcfadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadbGbGajajajajajajadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqaqafafafafaragagagagaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
+aYalalalalalalalalalalalalalalalalalalalalalalalalalalalcgadadadadadadaDadaDadaDadadadcgalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqaqafafafafarararagagagagaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
 aYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqafafafafarararararagagagagaqaqaqaqaqaqaqaqaqaqaqaqaqaq
 aYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqafafafafaratauaravagahahagaqaqaqaqaqaqaqaqaqaqaqaqaqaq
 aYalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalaYaqaqaqaqaqafafafafaraxaxaxaxaBaiaiagaqaqaqaqaqaqaqaqaqaqaqaqaqaq

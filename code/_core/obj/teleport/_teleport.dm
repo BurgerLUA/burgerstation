@@ -97,8 +97,6 @@
 	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))
 		return FALSE
 
-	triggerer << "Moving!"
-
 	triggerer.Move(locate(desired_x,desired_y,get_z_level(desired_map)))
 
 	return TRUE

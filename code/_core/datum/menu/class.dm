@@ -58,21 +58,16 @@
 
 	var/mob/living/advanced/A = usr
 
-	A << href
-
 	if(href_list["command"] == "getjob")
 
 		var/list/clean = list()
 
 		for(var/k in href_list)
-			A << "[k]:[href_list[k]]"
 			if(k == "src" || k == "command")
 				continue
 			clean[k] = text2num(href_list[k])
 
 		var/selected_job = calculate_class(A,clean)
-
-		A << selected_job
 
 		run_function(A,"set_job","'[selected_job]'")
 

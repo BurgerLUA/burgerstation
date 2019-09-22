@@ -4,14 +4,6 @@ body {
 	font-size: 8px;
 }
 
-.warning{
-	color: red;
-	font-style: italic;
-}
-.danger{
-	color: red;
-	font-weight: bold;
-}
 .ooc{
 	color: #1339AC;
 	font-weight: bold;
@@ -21,10 +13,21 @@ body {
 	font-weight: bold;
 }
 
+.warning{
+	color: red;
+	font-style: italic;
+}
+.danger{
+	color: red;
+	font-weight: bold;
+}
+.thought{
+	color: purple;
+	font-style: italic;
+}
 .bold{
 	font-weight: bold;
 }
-
 .notice{
 	color: blue;
 	font-style: italic;

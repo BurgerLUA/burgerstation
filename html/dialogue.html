@@ -7,12 +7,12 @@
 				background-repeat: repeat;
 				color: white;
 				font-family: Arial Narrow,Arial,sans-serif;
-				font-size: 18px;
+				font-size: 14px;
 				
 				width: 100%;
 				max-width: 100%;
-				height: 260px;
-				max-height: 260px;	
+				height: 320px;
+				max-height: 320px;	
 
 				margin: 0;
 				padding: 0;				
@@ -30,18 +30,18 @@
 			table#main_table {
 				width: 100%;
 				max-width: 100%;
-				height: 260px;
-				max-height: 260px;
+				height: 320px;
+				max-height: 320px;
 			}
 			#topic_container{
 				vertical-align: top;
 				text-align: left;			
 				padding: 0px;
-				width: 128px;
+				width: 224px;
 			}
 			#topics {
 				width: 100%;
-				height: 162px;
+				height: 220px;
 				overflow-y: scroll;
 				font-size: 18px;
 			}
@@ -50,7 +50,7 @@
 				text-align: left;
 				margin: 0;
 				padding: 12px;
-				font-size: 22px;
+				font-size: 20px;
 			}
 			#character_name{
 				height: 32px;
@@ -138,7 +138,7 @@
 			var i
 			for(i=0; i < global_stored_topics.length; i++) {
 				var chosen_topic = global_stored_topics[i]
-				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ chosen_topic +"'>" + chosen_topic + "</a>"
+				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ chosen_topic +"'>" + chosen_topic.replace("*","") + "</a>"
 				returning = returning + formatted_link + "<br>"
 			}
 			document.getElementById("topics").innerHTML = returning
@@ -148,15 +148,19 @@
 			var tabledata = text.split("_");
 			var topic_name = tabledata[0]
 			var dialogue = tabledata[1]
-			
-			dialogue = dialogue.replace("NEWLINE", "<br><br>")
+	
+			if(dialogue) {
+				dialogue = dialogue.replace(/NEWLINE/g, "<br>")
+			}
 			
 			var i
 			for(i=2; i < tabledata.length; i++) {
-				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ tabledata[i] +"'>" + tabledata[i] + "</a>"
+				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ tabledata[i] +"'>" + tabledata[i].replace("*","") + "</a>"
 				add_topic(tabledata[i])
 				dialogue = dialogue.replace("#" + (i-1).toString(), formatted_link)
 			}
+			
+
 
 			document.getElementById("dialogue").innerHTML = dialogue
 			update_topics()

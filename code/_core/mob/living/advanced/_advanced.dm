@@ -41,7 +41,11 @@
 
 	var/automatic_ticks = 0
 
-	var/chargen = FALSE
+	var/chargen = FALSE //In the chargen area
+	var/appearance_changed = FALSE
+	var/job_changed = FALSE
+	var/clothing_changed = FALSE
+	var/underwear_added = FALSE
 
 	var/obj/hud/inventory/active_inventory
 
@@ -228,7 +232,7 @@ mob/living/advanced/Login()
 
 	return
 
-/mob/living/advanced/proc/perform_sexchange(var/desired_sex)
+/mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes)
 
 	if(sex == desired_sex)
 		return FALSE
@@ -236,15 +240,37 @@ mob/living/advanced/Login()
 	sex = desired_sex
 	gender = desired_sex
 
+	var/list/kept_clothes = list()
+
+	if(!keep_clothes)
+		for(var/obj/hud/inventory/I in inventory)
+			I.remove_all_objects()
+	else
+		for(var/obj/hud/inventory/I in inventory)
+			kept_clothes += I.drop_all_objects()
+
 	remove_all_organs()
 	add_species_organs()
 	add_species_colors()
 	update_icon()
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
+	show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
+	for(var/obj/hud/button/hide_show_inventory/B in buttons)
+		B.update_icon()
+
 	handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
 	handle_beardstyle_chargen(1,"#000000")
 	//Blends are updated in the above two procs
+
+	if(keep_clothes)
+		for(var/obj/item/I in kept_clothes)
+			add_worn_item(I)
+	else
+		if(sex == MALE)
+			add_outfit("new_male",TRUE)
+		else
+			add_outfit("new_female",TRUE)
 
 	return TRUE
 

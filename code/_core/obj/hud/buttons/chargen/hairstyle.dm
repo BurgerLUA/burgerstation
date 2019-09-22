@@ -39,8 +39,6 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num
 
-	world.log << choice_main
-
 	var/hair_id = hair_head_ids[choice_main]
 	var/hair/head/H = hair_head_types[hair_id]
 	if(desired_color)
@@ -101,8 +99,11 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 			if(H)
 				name = H.name
 				var/icon/I = new/icon(icon,icon_state)
-				var/icon/I2 = new/icon(H.icon,H.icon_state)
-				I2.Blend(hair_color,ICON_MULTIPLY)
+				var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head")
+				var/icon/I3 = new/icon(H.icon,H.icon_state)
+				I3.Blend(hair_color,ICON_MULTIPLY)
+				I2.Blend(I3,ICON_OVERLAY)
+				I2.Shift(SOUTH,9)
 				I.Blend(I2,ICON_OVERLAY)
 				icon = I
 

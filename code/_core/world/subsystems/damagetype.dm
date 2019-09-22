@@ -10,7 +10,6 @@ var/global/list/all_damage_types = list()
 		var/damagetype/D = new A
 		if(D.id)
 			all_damage_types[D.id] = D
-			world.log << D.id
 		else
 			qdel(D)
 

@@ -27,8 +27,6 @@
 
 	final_topic_string = url_encode(final_topic_string)
 
-	//P << final_topic_string
-
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")
 
 	return TRUE
@@ -41,11 +39,17 @@
 		LOG_ERROR("ERROR: [P] cannot access chosen topic [topic]!")
 		return FALSE
 
-	var/final_topic = "[topic]_[chosen_dialogue[1]]"
+	var/dialogue = chosen_dialogue[1]
+
+	var/final_topic = "[topic]_[dialogue]"
 
 	for(var/i=2,i<=length(chosen_dialogue),i++)
+
 		final_topic += "_[chosen_dialogue[i]]"
-		if(!(chosen_dialogue[i] in P.client.savedata.loaded_data["known_topics"]))
+
+		var/first_letter = copytext(chosen_dialogue[i],1,2)
+
+		if(!(chosen_dialogue[i] in P.client.savedata.loaded_data["known_topics"]) && first_letter != "*")
 			P.client.savedata.loaded_data["known_topics"] += chosen_dialogue[i]
 
 	return final_topic
