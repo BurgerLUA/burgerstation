@@ -46,6 +46,8 @@
 	var/job_changed = FALSE
 	var/clothing_changed = FALSE
 	var/underwear_added = FALSE
+	var/used_mirror = FALSE
+	var/found_job = FALSE
 
 	var/obj/hud/inventory/active_inventory
 
@@ -232,7 +234,7 @@ mob/living/advanced/Login()
 
 	return
 
-/mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes)
+/mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes,var/chargen)
 
 	if(sex == desired_sex)
 		return FALSE
@@ -255,9 +257,13 @@ mob/living/advanced/Login()
 	update_icon()
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
-	show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
-	for(var/obj/hud/button/hide_show_inventory/B in buttons)
-		B.update_icon()
+	if(chargen)
+		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
+		show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+	else
+		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
+		for(var/obj/hud/button/hide_show_inventory/B in buttons)
+			B.update_icon()
 
 	handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
 	handle_beardstyle_chargen(1,"#000000")

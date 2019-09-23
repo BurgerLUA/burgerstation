@@ -49,7 +49,7 @@
 		"The email contains the following message:NEWLINE\
 		Greetings [P.real_name],NEWLINE\
 		We regret to inform you that your job application to Aurora Station was rejected.NEWLINE\
-		Reason: Called a Tajara a nazi when expressing radical views. Next time, please be more considerate of Aurorastation Lore and understand that Tajara are communists.NEWLINE\
+		Reason: Called a Tajara a nazi. Next time, please be more considerate of Aurorastation Lore and understand that Tajara are not nazis, but proud communists.NEWLINE\
 		End of message."
 	)
 
@@ -57,7 +57,7 @@
 		"The email contains the following message:NEWLINE\
 		Greetings [P.real_name],NEWLINE\
 		We regret to inform you that your job application to Citadel Station was rejected.NEWLINE\
-		Reason: Reported a crewmember trying to fuck Ian and describing their actions on comms. Kinkshaming is not tolerated here, especially when it's against members of staff.NEWLINE\
+		Reason: Reported a crewmember trying to fuck Ian. Kinkshaming is not tolerated here, especially when it's against Citadel Station staff.NEWLINE\
 		End of message."
 	)
 
@@ -65,7 +65,7 @@
 		"The email contains the following message:NEWLINE\
 		Greetings [P.real_name],NEWLINE\
 		We regret to inform you that your job application to TG Station was rejected.NEWLINE\
-		Reason: Threw a toolbox at my catgirl gf. When questioned why they would assault my gf, they said that all catgirl players are all secretly males which is simply not true because I am not gay.NEWLINE\
+		Reason: Threw a toolbox at my catgirl gf. When questioned, they said that all catgirls are all secretly males which is simply not true because I am not gay and therefore they can't be a guy.NEWLINE\
 		End of message."
 	)
 
@@ -81,7 +81,7 @@
 		"The email contains the following message:NEWLINE\
 		Greetings [P.real_name],NEWLINE\
 		We regret to inform you that your job application to Paradise Station was rejected.NEWLINE\
-		Reason: When asked about who they thought the most fuckable Star Fox character is, they instead said that they're not really into Star Fox that much. This is a very clear attack on furries and such attitude will not be tolerated here.NEWLINE\
+		Reason: When asked about who they thought the most fuckable Star Fox character is, they said that they're not really into Star Fox that much. This is a very clear attack on furries and such attitude will not be tolerated here.NEWLINE\
 		End of message."
 	)
 
@@ -100,7 +100,7 @@
 		Reason: None Provided. NEWLINE\
 		Attached Files: #1. NEWLINE\
 		End of message.",
-		"fart.ogg"
+		"*fart.ogg"
 	)
 
 	dialogue_options["*Baystation"] = list(
@@ -115,13 +115,13 @@
 		"The email contains the following message:NEWLINE\
 		Greetings [P.real_name],NEWLINE\
 		We are happy to report that your job application to Burgerstation was accepted!NEWLINE\
-		Please fill out the skills sheet forum attached to this email and send it to us as soon as you can.NEWLINE\
-		Attached Files: #1 NEWLINE\
-		End of message.",
-		"skill-sheet-forum.pdf"
+		Your next shift starts in 1 hour. Please arrive on time and in standard grey uniform.NEWLINE\
+		End of message."
 	)
 
-	dialogue_options["skill-sheet-forum.pdf"] = list("Penis")
+	dialogue_options["*fart.ogg"] = list(
+		"Now playing: fart.ogg..."
+	)
 
 	return dialogue_options
 
@@ -150,6 +150,17 @@
 			P.real_name = desired_name
 			P.name = "[P.real_name] ([P.ckey])"
 			set_topic(P,"*success")
+
+		if("*fart.ogg")
+			play_sound('sounds/ui/rasp.ogg',list(P),list(P.x,P.y,P.z))
+
+		if("*skill-sheet-forum.pdf")
+			for(var/obj/structure/interactive/localmachine/snowflake/paper/O in range(3,P))
+				O.set_icon_state_mob(P,"paper_normal")
+
+		if("*Burgerstation")
+			P.found_job = TRUE
+			P.to_chat(span("thought","My shift starts in one hour! I should get into uniform, then catch the next shuttle!"))
 
 
 	return .

@@ -11,7 +11,7 @@
 		var/choice = input("Are you sure you want to change your sex? Your appearance will reset to default.","Sex Change") in list("Yes","No")
 
 		if(choice == "Yes")
-			A.perform_sexchange(sex_button,!A.clothing_changed)
+			A.perform_sexchange(sex_button,!A.underwear_added,TRUE)
 
 	return TRUE
 
