@@ -82,3 +82,16 @@
 		return FALSE
 
 	return ..()
+
+/obj/structure/interactive/localmachine/snowflake/airlock/external
+	name = "external airlock"
+	icon = 'icons/obj/structure/airlock/airlock_external_merged.dmi'
+	icon_state = "closed"
+
+
+var/global/list/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/tutorial_docks = list()
+
+/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/New(var/desired_loc)
+	. = ..()
+	tutorial_docks += src
+	return .

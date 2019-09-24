@@ -18,7 +18,8 @@
 
 
 /turf/simulated/floor/space/transit
-	icon_state = "transit_east"
+	icon_state = "speedspace_ew_1"
 
 /turf/simulated/floor/space/transit/update_icon()
+	icon_state = "speedspace_ew_[rand(1,15)]"
 	return

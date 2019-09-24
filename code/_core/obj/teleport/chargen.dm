@@ -33,6 +33,9 @@
 		A.paralyze_time = 0
 		sleep(SECONDS_TO_DECISECONDS(10))
 		dock_shuttle.do_move(A)
+		sleep(SECONDS_TO_DECISECONDS(2))
+		for(var/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/TD in tutorial_docks)
+			TD.open_for(A)
 
 	return TRUE
 
