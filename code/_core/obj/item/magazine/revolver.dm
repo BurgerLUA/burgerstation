@@ -27,7 +27,7 @@
 	bullet_type = ".44"
 	icon = 'icons/obj/items/magazine/revolver/44.dmi'
 	icon_state = "44"
-	bullet_count_max = 7
+	bullet_count_max = 6
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/revolver/mateba
@@ -48,8 +48,6 @@
 		/obj/item/weapon/ranged/bullet/revolver/deckhard
 	)
 
-/*
 /obj/item/magazine/clip/revolver/bullet_22/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/revolver_22(src)
-*/

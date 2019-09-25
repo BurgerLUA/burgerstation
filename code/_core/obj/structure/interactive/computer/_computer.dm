@@ -10,7 +10,12 @@ obj/structure/interactive/computer/console
 
 	icon_state = "computer"
 
-	var/on = FALSE
+	var/on = TRUE
+
+obj/structure/interactive/computer/console/New(var/desired_loc)
+	. = ..()
+	update_icon()
+	return .
 
 obj/structure/interactive/computer/console/update_icon()
 
@@ -43,7 +48,6 @@ obj/structure/interactive/computer/console/old/chargen_job
 	name = "\improper IMB piece of shit"
 	computer_type = "library"
 	keyboard_type = ""
-	on = TRUE
 
 obj/structure/interactive/computer/console/old/chargen_job/clicked_by_object(caller,object,location,control,params)
 
@@ -62,3 +66,9 @@ obj/structure/interactive/computer/console/old/chargen_job/clicked_by_object(cal
 	open_menu(P,"dialogue")
 
 	return TRUE
+
+
+obj/structure/interactive/computer/console/medical
+	name = "medical console"
+	computer_type = "medcomp"
+	keyboard_type = "med_key"

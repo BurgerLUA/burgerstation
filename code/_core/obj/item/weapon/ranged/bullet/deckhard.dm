@@ -1,21 +1,21 @@
 /obj/item/weapon/ranged/bullet/revolver/deckhard
-	name = "\improper .22 space police revolver"
-	desc = "A sidearm commonly used by space police. Uses .22 LR rounds."
+	name = "\improper .44 space detective revolver"
+	desc = "A sidearm commonly used by space police. Uses .44 rounds."
 	icon = 'icons/obj/items/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
 
 	bullet_speed = 31
-	shoot_delay = 8
+	shoot_delay = 10
 
 	automatic = TRUE
 
 	bullet_count_max = 6
 
-	bullet_type = ".22"
+	bullet_type = ".44"
 
 	shoot_sounds = list('sounds/weapons/deckhard/shot.ogg')
 
-	view_punch = 2
+	view_punch = 8
 
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread() //Base spread
 	return 0

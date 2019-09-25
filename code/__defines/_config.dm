@@ -1,6 +1,5 @@
 //Game Options
 
-
 #define FPS_CLIENT 60 //0 Means synced
 #define FPS_SERVER 30
 

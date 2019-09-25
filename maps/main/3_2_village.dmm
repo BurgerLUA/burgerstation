@@ -43,7 +43,7 @@
 "aQ" = (/mob/living/simple/npc/crab,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/crab)
 "aR" = (/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/crab)
 "aS" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/magazine/pistol_45,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"aT" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/belt/storage,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"aT" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/belt/storage,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "aU" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/crab)
 "aV" = (/obj/structure/interactive/localmachine/ore_deposit/tin,/turf/simulated/wall/rock,/area/world/forest/interior/cave/crab)
 "aW" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/crab)
@@ -91,11 +91,11 @@
 "bM" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "bN" = (/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "bO" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/storage/foodbox/donkbox,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"bP" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/storage/shoebox/black,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"bP" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 1},/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "bQ" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/boat/starting,/area/world/forest/interior/village/ship)
 "bR" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/boat/starting,/area/world/forest/interior/village/ship)
 "bS" = (/mob/living/simple/npc/crab/king,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/crab)
-"bT" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/uniform/jumpsuit/grey,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"bT" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/magazine/clip/revolver/bullet_44,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "bU" = (/mob/living/simple/npc/crab,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/crab)
 "bV" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "bW" = (/obj/structure/smooth/table/reinforced,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
@@ -134,12 +134,11 @@
 "cD" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/knight/templar,/obj/item/clothing/overwear/armor/knight/yellow,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
 "cE" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/melee/toolbox/blue,/obj/item/weapon/melee/toolbox/green,/obj/item/weapon/melee/toolbox/red,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cF" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
-"cG" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/revolver/deckhard,/obj/item/weapon/ranged/bullet/pump/babygun,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cG" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/revolver/deckhard,/obj/item/weapon/ranged/bullet/revolver/mateba,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cH" = (/obj/marker/spawnpoint/ghost,/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cI" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cJ" = (/turf/simulated/floor/carpet,/area/world/forest/interior/village/shop/chapel)
 "cK" = (/obj/structure/interactive/lighting/tube,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"cL" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/storage/ammo/bullet_22,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cM" = (/obj/structure/scenery/grass,/obj/marker/mob_blocker,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cN" = (/obj/marker/mob_blocker,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cO" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
@@ -319,11 +318,11 @@ aaaaaaaaaaagagaaaaaaagagbNbNagagagagagagagagagagagagagaZagagagagagagafafafafafac
 aaaaaaaaaaagagagaaagagbNbNbNagagagagagagagagagagagagagagagagagagafafafafafacajajajacacafafafafagagagagagbNavabdqdqdqabanbwdsdsdsbwbidodudududobibxbBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbBbDaBbZbXbXbXbXbXbZaBbxbDbdbdbdbdbcbcbcbcbcbcbcbcbcbcbcaHaHaHbcbcbcbcbcbcbcbc
 aaaaaaaaaaaaagagagbNbNbNbNagagagaaaaaaaaagagagagagagagagafafafafafafacajajajajacafafafafafafagagagagagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbFbKbKbLbLbLbLbKbKbKbKbLbLbLbFbxbDaBbZbXbXbXbXbXbZaBbxbDbdbdbdbdbcbcbcbcbcbcbcbcbcbcbcaHaJaHbcbcbcbcbcbcbcbc
 aaaaaaaaaaagagagbNbNbNbNagagaaaaaaaaaaaaaaaaaaagagafafafafafafafacacajajacafafafafafafagagagagagagaGagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbibHbHbHbHbHbIbIbIbHbIbIbIbHaBbxbDbibGcAcFdKcFcAbGaBbxbDcabdbgbgbgbcbcbgbgbgbcbcbcbcaHaHaJaHaHbcbcbcbcbcbcbc
-aaaaaaaaaaaaagagbNbNagagagaeaaaaaaaaaaaaaaaaafafafafacacajajajajacafafafafafafagagagagagagagagagagagagagafavabdqdqdqabbibwdsdsdsbwandodudududobibxbDbibHeNeNeNbMbTccbPaTcucEcIbIaBbxbDbibZbXcJcJcJbXbZaBbxbDanbdbgbgbgbcbcbgbgbgbcbcbcaHaJaJaJaJaJaHbcbcbcbcbcbc
+aaaaaaaaaaaaagagbNbNagagagaeaaaaaaaaaaaaaaaaafafafafacacajajajajacafafafafafafagagagagagagagagagagagagagafavabdqdqdqabbibwdsdsdsbwandodudududobibxbDbibHeNeNeNbMccaTcubPcIcIcEbIaBbxbDbibZbXcJcJcJbXbZaBbxbDanbdbgbgbgbcbcbgbgbgbcbcbcaHaJaJaJaJaJaHbcbcbcbcbcbc
 aaaaaaaaaaaaaaagagagagaeaeaaaaaaaaaaaaafafafafacacajajajajafafafafafafafagagagagagagagagagagagagaZagagagafavababdvababbibwbwdwbwbwandododxdodobibxbDaBbHeNeNcbbWeNeNeNeNeNeNeNbIaBbxbDbibZbXcJcJcJbXbZbibxbDanbdbgbgbgbcbcbgbgbgbcbcaHaHaJaJaJaJaJaHaHbcbcbcbcbc
 aaaaaaaaaaaaaaagagaaaaaaaaaaaaaaafafafacacacacacacafafafafafafagagagagagagagagagagagagagagagagagagagagagafavanbiananbibibibiananananbibianbibicBbxbDbibHbWbWbabWeNeNeNeNeNeNeNbIbibxbDbibGcFcJcJcJcFbGbibxbDanbdbgbgbgbcbcbgbgbgbcbcaHaJaJaJaHaJaJaJaHbcbcbcbcbc
 aaaaaaaaaaaaagagagaaaaaaaaaaafafacacacafafafafafafafagagagagagagagagagagagagagagagagaZagagagagagagagagafafavanananananananananananbrbsbsbsbsbsbsbBbDbibHcGeNeNeNeNeNcCcveNeNcdbHbibxbDaBbZdJcJcJcJcRbZbibxbDanbdbgbgbgbcbcbgbgbgbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
-aaaaaaaaaaaaaGagagagacacacafacacacafafafafafafagagagagagaZagagagagagagagagagagbNbNbNagagagagagagagagagafafavanananananananananananbxbBbCbCbCbCbCbBbDbibIcLeNeNeNeNeNctcqeNeNbObIbibxbDaBbZdPcJcJcJcDbZaBbxbDanbdbgbgbgbcbcbgbgbgbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
+aaaaaaaaaaaaaGagagagacacacafacacacafafafafafafagagagagagaZagagagagagagagagagagbNbNbNagagagagagagagagagafafavanananananananananananbxbBbCbCbCbCbCbBbDbibIbTeNeNeNeNeNctcqeNeNbObIbibxbDaBbZdPcJcJcJcDbZaBbxbDanbdbgbgbgbcbcbgbgbgbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
 aaaaaaacaaaaaaaaacacacacacacacacafafaGagagagagagagagagagagagagagagagagaZbNbNbNbNbNbNbNagagagaZagagagafafafavanananananananananananbxbDbibibibicHbxbDbibIbVeNeNeNeNeNeNeNeNeNePbIbibxbDaBbGdQcJcJcJdNbGaBbxbDanbdbgbgbgbcbcbgbgbgbcbcaHaJaJaJaOaJaJaJaHbcbcbcbcbc
 aaaaacacaaaaacacacacacacacacafafafagagagagagagagagagagagagagagagaZagagbNbNbNbNbNbNbNbNbNbNagagagagafafafafavaiananananananananbibibxbDbicMcNcMbibxbDbibIaSeNeNcKeNeNeNcKeNeNePbIaBbxbDaBbZdKcJcJcJdKbZaBbxbDcabdbgbgbgbcbcbgbgbgbcbcaHaJaJaJbnaJaJaJaHbcbcbcbcbc
 acacacacacacacacacacacacacafafafagagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagafafafafavaianbibibibibibibibibibxbDbiegapegelbxbDbibHbIbIbIbHcObIcObHbIbIbIbHbkbxbDaBbZcFcJcJcJcFbZaBbxbDananbgbgbgbcbcbgbgaYbmbmbuaJaJaJaJaJaJaJaJbcbcbcbcbc
