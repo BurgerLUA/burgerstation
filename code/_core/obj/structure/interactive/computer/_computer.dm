@@ -29,7 +29,7 @@ obj/structure/interactive/computer/console/update_icon()
 		I.Blend(I2,ICON_OVERLAY)
 
 	if(keyboard_type)
-		var/icon/I3 = new/icon(icon,computer_type)
+		var/icon/I3 = new/icon(icon,keyboard_type)
 		I.Blend(I3,ICON_OVERLAY)
 
 	icon = I

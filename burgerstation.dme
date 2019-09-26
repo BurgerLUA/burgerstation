@@ -125,6 +125,7 @@
 #include "code\_core\client\debug\events.dm"
 #include "code\_core\client\debug\experience.dm"
 #include "code\_core\client\debug\verbs2.dm"
+#include "code\_core\client\verbs\visuals.dm"
 #include "code\_core\client\verbs\volume.dm"
 #include "code\_core\datum\_datum.dm"
 #include "code\_core\datum\ai\_ai.dm"

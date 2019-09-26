@@ -198,17 +198,12 @@
 		I.update_owner(owner)
 		owner.held_objects += I
 		owner.update_slowdown_mul()
+		update_held_icon(I)
+
 	update_overlays()
 	update_stats()
 
-	if(id == BODY_HAND_LEFT)
-		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
-	else if(id == BODY_HAND_RIGHT)
-		owner.add_overlay(I, desired_icon=initial(I.icon), desired_icon_state=I.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
-
 	I.on_pickup(old_location,src)
-
-
 
 	return TRUE
 
@@ -244,18 +239,19 @@
 		I.update_owner(owner)
 		owner.worn_objects += I
 		owner.update_slowdown_mul()
-
-	var/desired_icon_state
-	if(I.slot_icons)
-		desired_icon_state = "[I.icon_state_worn]_[src.id]"
-	else
-		desired_icon_state = I.icon_state_worn
-
-
-
-	owner.add_overlay(I,desired_layer = I.worn_layer,desired_icon_state = desired_icon_state,desired_no_initial = I.no_initial_blend)
+		update_worn_icon(I)
 
 	return TRUE
+
+/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
+
+	var/desired_icon_state
+	if(item_to_update.slot_icons)
+		desired_icon_state = "[item_to_update.icon_state_worn]_[src.id]"
+	else
+		desired_icon_state = item_to_update.icon_state_worn
+
+	owner.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend)
 
 /obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()

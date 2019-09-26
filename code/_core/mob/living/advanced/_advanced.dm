@@ -70,6 +70,8 @@
 
 	var/has_hard_crit = FALSE
 
+	var/list/overlays_assoc
+
 /mob/living/advanced/proc/update_slowdown_mul()
 
 	for(var/obj/item/I in worn_objects)
@@ -111,6 +113,7 @@
 	held_objects = list()
 	worn_objects = list()
 	labeled_organs = list()
+	overlays_assoc = list()
 
 	if(mob_species)
 		mob_species = new mob_species

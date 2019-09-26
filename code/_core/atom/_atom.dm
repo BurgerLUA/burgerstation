@@ -41,8 +41,6 @@
 	var/tmp/datum/light_source/light // Our light source. Don't fuck with this directly unless you have a good reason!
 	var/tmp/list/light_sources       // Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
 
-	var/list/overlays_assoc
-
 	var/doing_progress = FALSE
 
 
@@ -97,8 +95,6 @@
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-	overlays_assoc = list()
 
 	if(thinks)
 		all_thinkers += src

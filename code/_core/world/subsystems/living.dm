@@ -15,13 +15,18 @@
 
 /subsystem/living/on_life()
 
+	var/do_slow = advanced_ticks >= (LIFE_TICK_SLOW/LIFE_TICK)
+
 	for(var/mob/living/L in all_living)
 		L.on_life()
 		if(!L.ckey && L.enable_AI)
 			L.on_life()
-		if(advanced_ticks >= floor(LIFE_TICK_SLOW/LIFE_TICK))
+		if(do_slow)
 			L.on_life_slow()
-			advanced_ticks = 0
-		advanced_ticks++
+
+	if(do_slow)
+		advanced_ticks = 0
+	else
+		advanced_ticks += 1
 
 	return TRUE

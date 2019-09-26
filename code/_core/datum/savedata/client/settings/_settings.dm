@@ -6,7 +6,8 @@
 		"volume_fx" = 70,
 		"volume_ambient" = 50,
 		"volume_music" = 70,
-		"volume_footsteps" = 50
+		"volume_footsteps" = 50,
+		"fps_client" = FPS_CLIENT
 	)
 
 /savedata/client/settings/get_file(var/file_id)
@@ -25,6 +26,12 @@
 
 	var/file_contents = file2text(full_path)
 	loaded_data = json_decode(file_contents)
+
+
+	//Some settings need to be applied here.
+
+	if(loaded_data["fps_client"])
+		new_owner.fps = loaded_data["fps_client"]
 
 /savedata/client/settings/proc/change_setting(var/setting_id,var/setting_value)
 	loaded_data[setting_id] = setting_value

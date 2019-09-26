@@ -45,8 +45,36 @@
 
 	return .
 
+/mob/living/advanced/on_life_client()
+
+	..()
+
+	if(automatic_ticks != 0)
+		automatic_ticks = Clamp(automatic_ticks - 1,0,5)
+	else
+
+		var/set_tick = FALSE
+
+		if(attack_flags & ATTACK_HELD_RIGHT)
+			if(!do_automatic_left())
+				attack_flags &= ~ATTACK_HELD_RIGHT
+			else
+				set_tick = TRUE
+
+		if(attack_flags & ATTACK_HELD_LEFT)
+			if(!do_automatic_right())
+				attack_flags &= ~ATTACK_HELD_LEFT
+			else
+				set_tick = TRUE
+
+		if(set_tick)
+			automatic_ticks = 5
+
 /mob/living/advanced/on_life_slow()
+
 	handle_organs()
+	update_icon(TRUE)
+
 	return ..()
 
 /mob/living/advanced/pre_death()

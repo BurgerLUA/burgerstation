@@ -99,7 +99,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 			if(H)
 				name = H.name
 				var/icon/I = new/icon(icon,icon_state)
-				var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head")
+				var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
 				var/icon/I3 = new/icon(H.icon,H.icon_state)
 				I3.Blend(hair_color,ICON_MULTIPLY)
 				I2.Blend(I3,ICON_OVERLAY)

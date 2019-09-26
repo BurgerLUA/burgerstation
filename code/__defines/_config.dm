@@ -1,6 +1,6 @@
 //Game Options
 
-#define FPS_CLIENT 60 //0 Means synced
+#define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 30
 
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing
@@ -35,11 +35,11 @@
 #define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
-#define ENABLE_MAPLOAD FALSE
+#define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
-#define ENABLE_CHARGEN FALSE
+#define ENABLE_CHARGEN TRUE
 
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100
