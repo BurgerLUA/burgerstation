@@ -75,7 +75,6 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=1,var/desired_co
 		var/mob/living/advanced/A = desired_owner
 		hair_num = 1
 		A.handle_beardstyle_chargen(1)
-		world.log << "PENIS"
 
 	return .
 

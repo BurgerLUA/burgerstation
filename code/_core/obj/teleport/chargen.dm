@@ -24,18 +24,12 @@
 		A.to_chat(span("thought","I should put some clothes on before I leave for work!"))
 		return TRUE
 
-	//Move the player to the shuttle.
-	spawn()
-		A.paralyze_time = -1
-		add_notification_colored_easy(A.client,"#FFFFFF",SECONDS_TO_DECISECONDS(3),fade_in = TRUE, fade_out = TRUE)
-		sleep(SECONDS_TO_DECISECONDS(3))
-		A.force_move(get_turf(transit_shuttle))
-		A.paralyze_time = 0
-		sleep(SECONDS_TO_DECISECONDS(10))
-		dock_shuttle.do_move(A)
-		sleep(SECONDS_TO_DECISECONDS(2))
-		for(var/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/TD in tutorial_docks)
-			TD.open_for(A)
+	var/choice = start_choice(A,/choice/skip_tutorial/)
+
+	if(choice == "yes")
+		play_the_fucking_game(A)
+	else
+		play_the_fucking_tutorial(A)
 
 	return TRUE
 
@@ -74,3 +68,75 @@
 		A.appearance_changed = TRUE
 
 	return ..()
+
+
+/proc/play_the_fucking_tutorial(var/mob/living/advanced/A)
+	spawn(0)
+		A.paralyze_time = -1
+		add_notification_colored_easy(A.client,"#FFFFFF",SECONDS_TO_DECISECONDS(3),fade_in = TRUE, fade_out = TRUE)
+		sleep(SECONDS_TO_DECISECONDS(3))
+		A.force_move(get_turf(transit_shuttle))
+		A.paralyze_time = 0
+		sleep(SECONDS_TO_DECISECONDS(10))
+		dock_shuttle.do_move(A)
+		sleep(SECONDS_TO_DECISECONDS(2))
+		for(var/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/TD in tutorial_docks)
+			TD.open_for(A)
+
+/proc/play_the_fucking_game(var/mob/living/advanced/A)
+
+	var/client/C = A.client
+
+	var/show_disclaimer = FALSE
+
+	spawn(0)
+		A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,1)
+		var/obj/hud/button/skip/SB = new(A)
+		SB.update_owner(A)
+		A.sight |= SEE_THRU
+		C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
+
+		if(show_disclaimer)
+			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(46),fade_in = FALSE)
+			add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",SECONDS_TO_DECISECONDS(18),fade_in = FALSE)
+		else
+			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(28),fade_in = FALSE)
+
+		sleep(1)
+
+		A.force_move(pick(spawnpoints_new_character))
+		A.stun_time = -1
+		A.paralyze_time = -1
+
+		if(show_disclaimer)
+			sleep(SECONDS_TO_DECISECONDS(20))
+
+		play_music_track("leaf",C)
+
+		sleep(SECONDS_TO_DECISECONDS(5))
+		A.see_invisible = INVISIBILITY_NO_PLAYERS
+		add_notification_easy(C,'icons/hud/discovery.dmi',"byond",SECONDS_TO_DECISECONDS(3))
+		sleep(SECONDS_TO_DECISECONDS(7))
+		add_notification_easy(C,'icons/hud/discovery.dmi',"burger",SECONDS_TO_DECISECONDS(3))
+		sleep(SECONDS_TO_DECISECONDS(10))
+		add_notification_easy(C,'icons/hud/discovery.dmi',"logo",SECONDS_TO_DECISECONDS(10))
+		sleep(SECONDS_TO_DECISECONDS(10))
+
+		while(C.pixel_y<0)
+			if(C.mob && C.mob.skip_cutscene)
+				C.mob.skip_cutscene = FALSE
+				C.pixel_y = 0
+				break
+
+			C.pixel_y = min(0,C.pixel_y + 1)
+			sleep(0.2)
+
+		SB.update_owner(null)
+
+		sleep(1)
+
+		A.sight &= ~SEE_THRU
+		sleep(SECONDS_TO_DECISECONDS(3))
+		A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
+		A.stun_time = 1
+		A.paralyze_time = 1

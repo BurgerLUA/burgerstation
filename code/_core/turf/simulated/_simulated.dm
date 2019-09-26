@@ -1,8 +1,6 @@
 /turf/simulated/
-	var/corner_icons = FALSE
 	var/real_icon
 	var/real_icon_state
-	var/corner_category = "none"
 
 	light_power = DEFAULT_BRIGHTNESS_AMBIENT
 	light_range = DEFAULT_RANGE_AMBIENT
@@ -26,9 +24,6 @@
 
 	..()
 
-/turf/simulated/proc/same_turf(var/turf/simulated/T)
-	return corner_category == T.corner_category
-
 /turf/simulated/update_icon()
 
 	if(!corner_icons)
@@ -37,10 +32,23 @@
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
+
+		var/dir_to_text = direction_to_text(d)
 		var/turf/T = get_step(src,d)
-		if(!is_simulated(T))
+		calc_list[dir_to_text] = FALSE //Default
+
+		if(!T)
+			calc_list[dir_to_text] = TRUE
 			continue
-		calc_list[direction_to_text(d)] = T ? same_turf(T) : TRUE
+
+		if(should_smooth_with(T))
+			calc_list[dir_to_text] = TRUE
+			continue
+
+		for(var/atom/A in T.contents)
+			if(should_smooth_with(A))
+				calc_list[dir_to_text] = TRUE
+				break
 
 	var/ne = ""
 	var/nw = ""

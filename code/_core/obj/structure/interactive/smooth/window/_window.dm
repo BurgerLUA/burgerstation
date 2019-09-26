@@ -38,3 +38,23 @@
 /obj/structure/smooth/window/cult
 	name = "cult window"
 	color = "#7F0000"
+
+
+
+/obj/structure/smooth/window/shuttle
+	name = "shuttle window"
+	icon = 'icons/obj/structure/smooth/window/shuttle.dmi'
+	icon_state = "window"
+	corner_category = "shuttle"
+
+/obj/structure/smooth/window/shuttle/middle
+	icon_state = "single"
+	corner_icons = FALSE
+
+/obj/structure/smooth/window/shuttle/end_01
+	icon_state = "end_01"
+	corner_icons = FALSE
+
+/obj/structure/smooth/window/shuttle/end_02
+	icon_state = "end_02"
+	corner_icons = FALSE

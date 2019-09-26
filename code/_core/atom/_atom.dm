@@ -59,6 +59,11 @@
 
 	var/object_size = 1 //This-1 is added to attack range.
 
+	var/corner_icons = FALSE
+	var/corner_category = "none"
+
+/atom/proc/should_smooth_with(var/atom/A)
+	return A.corner_category == corner_category
 
 /atom/destroy()
 	if(reagents)

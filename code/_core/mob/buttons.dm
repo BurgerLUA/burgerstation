@@ -1,27 +1,26 @@
-/mob/proc/add_button(var/obj/hud/button/B)
+/mob/proc/add_button(var/obj/hud/button/B) //This should never actually be used to add buttons. Call update_owner(M) instead on the button.
 	buttons += B
 	if(client)
 		client.screen += B
-	B.update_owner(src)
-	update_buttons()
+	sync_buttons()
 
-/mob/proc/remove_button(var/obj/hud/button/B)
+/mob/proc/remove_button(var/obj/hud/button/B) //This should never actually be used to remove buttons. Call update_owner(null) instead on the button.
 	buttons -= B
 	if(client)
 		client.screen -= B
-	B.update_owner(null)
-	update_buttons()
+	sync_buttons()
 
 /mob/proc/restore_buttons()
+
 	if(!client)
 		return
 
 	for(var/obj/hud/button/B in buttons)
 		client.screen += B
 
-	update_buttons()
+	sync_buttons()
 
-/mob/proc/update_buttons()
+/mob/proc/sync_buttons()
 	if(client)
 		client.known_buttons = buttons
 

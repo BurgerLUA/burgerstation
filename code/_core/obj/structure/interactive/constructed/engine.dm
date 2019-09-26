@@ -28,6 +28,8 @@ obj/structure/shuttle_engine/propulsion/right
 
 obj/structure/shuttle_engine/wall_diagonal_1
 	icon_state = "wall_diagonal_1"
+	corner_category = "shuttle"
 
 obj/structure/shuttle_engine/wall_diagonal_2
 	icon_state = "wall_diagonal_2"
+	corner_category = "shuttle"

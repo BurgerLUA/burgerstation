@@ -6,3 +6,8 @@ obj/structure/interactive/door/airlock/external
 
 obj/structure/interactive/door/airlock/external/glass
 	filler = "glass"
+
+
+
+obj/structure/interactive/door/airlock/external/glass/bolted
+	locked = TRUE

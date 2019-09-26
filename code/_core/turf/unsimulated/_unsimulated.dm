@@ -16,7 +16,8 @@
 	return TRUE
 
 /turf/unsimulated/space/update_icon()
-	icon_state = "[rand(0,25)]"
+	if(generate)
+		icon_state = "[rand(0,25)]"
 
 /turf/unsimulated/space/blocking
 	name = "deep space"
@@ -24,7 +25,6 @@
 	icon_state = "space"
 	opacity = 0
 	generate = FALSE
-
 
 /turf/unsimulated/abyss
 	name = "abyss"

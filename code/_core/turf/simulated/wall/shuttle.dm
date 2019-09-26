@@ -1,6 +1,6 @@
 /turf/simulated/wall/shuttle
 	name = "shuttle wall"
-	icon = 'icons/turf/wall/shuttle_light.dmi'
+	icon = 'icons/turf/wall/shuttle_old.dmi'
 	icon_state = "wall"
-	corner_category = "shuttle_wall"
+	corner_category = "shuttle"
 	corner_icons = TRUE

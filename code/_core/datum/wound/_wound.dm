@@ -77,8 +77,6 @@
 
 /wound/proc/get_infection_name()
 	var/infection_stage = floor(Clamp(infection_level,1,length(infection_reference)))
-	world.log << "Infection Level: [infection_level]."
-	world.log << "Stage: [infection_stage]."
 	return infection_reference[infection_stage]
 
 /wound/proc/get_bleed()

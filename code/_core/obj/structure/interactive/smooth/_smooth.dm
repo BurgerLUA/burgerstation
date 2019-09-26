@@ -3,16 +3,10 @@ obj/structure/smooth/
 	desc = "What does it do?"
 	icon_state = "table"
 
-	var/corner_category = "none"
-	var/corner_icons = TRUE
-
 obj/structure/smooth/Initialize()
 	. = ..()
 	update_icon()
 	return .
-
-obj/structure/smooth/proc/same_object(var/obj/structure/smooth/A)
-	return A.corner_category == corner_category
 
 obj/structure/smooth/update_icon()
 
@@ -26,8 +20,13 @@ obj/structure/smooth/update_icon()
 		var/turf/T = get_step(src,d)
 		if(!T)
 			continue
-		for(var/obj/structure/smooth/A in T.contents)
-			if(same_object(A))
+
+		if(should_smooth_with(T))
+			calc_list[direction_to_text(d)] = TRUE
+			continue
+
+		for(var/atom/A in T.contents)
+			if(should_smooth_with(A))
 				calc_list[direction_to_text(d)] = TRUE
 				break
 
