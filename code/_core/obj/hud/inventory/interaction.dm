@@ -2,7 +2,23 @@
 
 	if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
-		return throw_item(caller.dir)
+		var/atom/movable/object_to_throw = src.defer_click_on_object()
+		if(is_item(object_to_throw))
+			var/obj/item/I = object_to_throw
+			var/vel_x = object.x - caller.x
+			var/vel_y = object.y - caller.y
+			var/highest = max(abs(vel_x),abs(vel_y))
+
+			vel_x *= 1/highest
+			vel_y *= 1/highest
+
+			vel_x *= 28
+			vel_y *= 28
+
+			I.drop_item(get_turf(caller))
+			I.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
+
+		return TRUE
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 		return drop_item()
 	else if(grabbed_object && grabbed_object == object)

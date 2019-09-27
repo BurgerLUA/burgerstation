@@ -152,12 +152,15 @@
 
 				var/step_num = 1
 				while(TRUE)
+
+					var/speed = 2
+
 					var/desired_x_cord = WORLD_SIZE_SEGMENT*2 + points[step_num][1]
 					var/desired_y_cord = WORLD_SIZE_SEGMENT*1 + points[step_num][2]
 					var/actual_x = P.x + floor((P.client.pixel_x+16)/TILE_SIZE)
 					var/actual_y = P.y + floor((P.client.pixel_y+16)/TILE_SIZE)
-					var/mod_x = Clamp(desired_x_cord - actual_x,-1,1)
-					var/mod_y = Clamp(desired_y_cord - actual_y,-1,1)
+					var/mod_x = Clamp(desired_x_cord - actual_x,-speed,speed)
+					var/mod_y = Clamp(desired_y_cord - actual_y,-speed,speed)
 
 					if(mod_x == 0 && mod_y == 0)
 						step_num += 1

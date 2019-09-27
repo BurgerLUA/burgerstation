@@ -34,7 +34,7 @@
 	var/turf/target_turf
 	var/atom/target_atom
 
-	var/only_hit_target_turf = FALSE
+	var/hit_target_turf = FALSE
 
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -131,10 +131,6 @@
 			on_hit(src)
 			return FALSE
 
-		if(only_hit_target_turf && current_loc == target_turf)
-			on_hit(current_loc)
-			return
-
 		if(!new_turf.allow_bullet_pass && new_turf.collision_flags & FLAG_COLLISION_REAL)
 
 			if(vel_y > 0)
@@ -189,6 +185,10 @@
 			if(src.collision_bullet_flags & A.collision_bullet_flags)
 				if(on_hit(A))
 					return
+
+		if(hit_target_turf && current_loc == target_turf)
+			on_hit(current_loc)
+			return
 
 		previous_loc = current_loc
 

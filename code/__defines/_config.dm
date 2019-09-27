@@ -10,13 +10,16 @@
 
 #define BADWORDS "text/badwords.txt"
 
+#define MAX_ZOOM 4 //This is for z-zoom.
+#define MIN_ZOOM 2
+
 #define ZOOM_RANGE 7
-#define VIEW_RANGE 11
+#define VIEW_RANGE 14
 
 #define SOUND_RANGE 18
 
-#define TALK_RANGE 14
-#define YELL_RANGE 21
+#define TALK_RANGE VIEW_RANGE
+#define YELL_RANGE VIEW_RANGE*1.5
 #define WHISPER_RANGE 2
 
 #define BOSS_RANGE 18 //If you're out of this range, you're out of the boss fight.
@@ -83,6 +86,3 @@
 
 #define MANA_REGEN_BUFFER_MAX 1
 #define MANA_REGEN_BUFFER_MIN -1
-
-#define MAX_ZOOM 4
-#define MIN_ZOOM 2

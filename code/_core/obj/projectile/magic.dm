@@ -28,7 +28,7 @@
 	icon = 'icons/obj/projectiles/holy.dmi'
 	icon_state = "summon"
 
-	only_hit_target_turf = TRUE
+	hit_target_turf = TRUE
 
 	lifetime = SECONDS_TO_DECISECONDS(2)
 

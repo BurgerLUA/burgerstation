@@ -6,7 +6,22 @@
 	if(stun_time > max_value)
 		return FALSE
 
-	stun_time = min(max_value,stun_time + value)
+	if(stun_time < max_value)
+		stun_time = min(max_value,stun_time + value)
+
+	return TRUE
+
+
+/mob/living/proc/add_paralyze(var/value,var/max_value = 40)
+
+	if(paralyze_time == -1)
+		return FALSE
+
+	if(paralyze_time > max_value)
+		return FALSE
+
+	if(paralyze_time < max_value)
+		paralyze_time = min(max_value,paralyze_time + value)
 
 	return TRUE
 
