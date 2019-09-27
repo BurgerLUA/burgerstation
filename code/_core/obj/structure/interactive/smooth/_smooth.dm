@@ -16,19 +16,21 @@ obj/structure/smooth/update_icon()
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
-		calc_list[direction_to_text(d)] = FALSE
+		var/dir_to_text = direction_to_text(d)
+		calc_list[dir_to_text] = FALSE
 		var/turf/T = get_step(src,d)
 		if(!T)
 			continue
 
 		if(should_smooth_with(T))
-			calc_list[direction_to_text(d)] = TRUE
+			calc_list[dir_to_text] = TRUE
 			continue
 
-		for(var/atom/A in T.contents)
-			if(should_smooth_with(A))
-				calc_list[direction_to_text(d)] = TRUE
-				break
+		for(var/obj/structure/O in T.contents)
+			if(!should_smooth_with(A))
+				continue
+			calc_list[dir_to_text] = TRUE
+			break
 
 	var/ne = ""
 	var/nw = ""

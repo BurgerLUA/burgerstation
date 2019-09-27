@@ -32,23 +32,24 @@
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
-
 		var/dir_to_text = direction_to_text(d)
 		var/turf/T = get_step(src,d)
+
 		calc_list[dir_to_text] = FALSE //Default
 
-		if(!T)
-			calc_list[dir_to_text] = TRUE
+		if(!T || !is_simulated(T))
+			calc_list[dir_to_text] = FALSE
 			continue
 
 		if(should_smooth_with(T))
 			calc_list[dir_to_text] = TRUE
 			continue
 
-		for(var/atom/A in T.contents)
-			if(should_smooth_with(A))
-				calc_list[dir_to_text] = TRUE
-				break
+		for(var/obj/structure/O in T.contents)
+			if(!should_smooth_with(A))
+				continue
+			calc_list[dir_to_text] = TRUE
+			break
 
 	var/ne = ""
 	var/nw = ""
