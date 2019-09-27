@@ -11,8 +11,8 @@
 	dynamic_inventory_count = 2
 
 /obj/item/storage/glovebox/yellow/
-	name = "yellow glovebox"
-	desc = "Contains 2 yellow gloves."
+	name = "insulated glovebox"
+	desc = "Contains 2 insulated yellow gloves."
 
 /obj/item/storage/glovebox/yellow/on_spawn()
 	var/obj/item/clothing/hands/gloves/colored/yellow/G1 = new(src.loc)

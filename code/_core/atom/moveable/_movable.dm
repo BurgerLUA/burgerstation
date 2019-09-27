@@ -17,7 +17,7 @@
 	var/anchored = FALSE
 	var/ghost = FALSE
 
-	var/damage_type_thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
+	var/damage_type_thrown = "thrown" //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
 
 /atom/movable/Initialize()
 	. = ..()

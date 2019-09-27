@@ -16,9 +16,6 @@
 /obj/item/weapon/melee/sword/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-
-
-
 /obj/item/weapon/melee/sword/claymore
 	name = "steel claymore sword"
 	desc = "Looking at this really makes you want to go on a crusade."
@@ -33,12 +30,10 @@
 
 	damage_type = "sword_claymore"
 
-
-
-
 /obj/item/weapon/melee/spear
 	name = "steel spear"
 	desc = "Unga bunga."
-	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense."
+	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/items/weapons/melee/swords/spear.dmi'
 	damage_type = "spear"
+	damage_type_thrown = "spear_thrown"

@@ -52,7 +52,7 @@
 
 	// Diagonal one is easy.
 	T = get_step(new_turf, diagonal)
-	if(T) // In case we're on the map's border.
+	if(T && is_simulated(T)) // In case we're on the map's border.
 		if (!T.corners)
 			T.corners = list(null, null, null, null)
 		masters[T]   = diagonal
@@ -61,7 +61,7 @@
 
 	// Now the horizontal one.
 	T = get_step(new_turf, horizontal)
-	if(T) // Ditto.
+	if(T && is_simulated(T)) // Ditto.
 		if (!T.corners)
 			T.corners = list(null, null, null, null)
 		masters[T]   = ((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH) // Get the dir based on coordinates.
@@ -70,7 +70,7 @@
 
 	// And finally the vertical one.
 	T = get_step(new_turf, vertical)
-	if(T)
+	if(T && is_simulated(T))
 		if (!T.corners)
 			T.corners = list(null, null, null, null)
 		masters[T]   = ((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH) // Get the dir based on coordinates.

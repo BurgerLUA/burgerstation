@@ -8,10 +8,11 @@
 
 /subsystem/living/Initialize()
 
-	for(var/mob/living/L in all_living)
-		L.Initialize()
+	if(ENABLE_MOBS)
+		for(var/mob/living/L in all_living)
+			L.Initialize()
 
-	LOG_SERVER("Initialized [length(all_living)] living beings.")
+		LOG_SERVER("Initialized [length(all_living)] living beings.")
 
 /subsystem/living/on_life()
 

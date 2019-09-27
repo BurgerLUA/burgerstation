@@ -34,7 +34,6 @@
 	for(var/zlevel = 1 to world.maxz)
 		create_lighting_overlays_zlevel(zlevel)
 
-
 /proc/turf_has_lighting(var/turf/T)
 	if(!T.dynamic_lighting)
 		return FALSE
@@ -46,14 +45,19 @@
 	return TRUE
 
 /proc/create_lighting_overlays_zlevel(var/zlevel)
+
 	ASSERT(zlevel)
 
-	for(var/turf/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
+	var/lighting_counter = 0
+
+	for(var/turf/simulated/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
 		if(!turf_has_lighting(T))
 			continue
-
+		lighting_counter += 1
 		getFromPool(/atom/movable/lighting_overlay, T, TRUE)
 		sleep(-1)
+
+	LOG_DEBUG("Initialized [lighting_counter] lights for zlevel [zlevel].")
 
 /proc/lighting_process()
 	lighting_update_lights_old = lighting_update_lights

@@ -19,12 +19,6 @@
 /area/world/temple02 //4,1
 	name = "moth temple"
 
-/area/world/ocean //4,2
-	name = "ocean"
-
-/area/world/island //4,3
-	name = "diona island"
-
 /area/world/admin //4,3
 	name = "admin area"
 

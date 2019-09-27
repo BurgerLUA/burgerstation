@@ -145,8 +145,6 @@
 
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count(),transfer_target.insert_limit)
 
-	world.log << "HEY: [bullets_to_add]"
-
 	if(!bullets_to_add)
 		LOG_ERROR("Warning! Something went wrong when trying to insert [src] into [transfer_target]!")
 		return FALSE
