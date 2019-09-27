@@ -16,7 +16,8 @@
 			vel_y *= 28
 
 			I.drop_item(get_turf(caller))
-			I.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
+			//I.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
+			caller.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
 
 		return TRUE
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.

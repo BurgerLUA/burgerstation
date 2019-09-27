@@ -9,7 +9,7 @@
 
 	automatic = FALSE
 
-	bullet_count_max = 7
+	bullet_count_max = 6
 
 	bullet_type = ".44"
 

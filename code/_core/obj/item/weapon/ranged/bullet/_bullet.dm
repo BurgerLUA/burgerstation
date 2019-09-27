@@ -36,7 +36,6 @@
 
 	return FALSE
 
-
 /obj/item/weapon/ranged/bullet/proc/spend_bullet()
 	if(length(stored_bullets)) //Spend a bullet
 		var/obj/item/bullet/B = stored_bullets[1]

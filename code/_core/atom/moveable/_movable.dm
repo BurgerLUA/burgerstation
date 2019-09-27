@@ -73,7 +73,6 @@
 	for(var/atom/movable/AM in loc)
 		AM.Crossed(src)
 
-
 	return TRUE
 
 /atom/movable/Bump(var/atom/obstacle)

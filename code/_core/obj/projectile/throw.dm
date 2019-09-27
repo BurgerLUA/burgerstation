@@ -11,6 +11,10 @@
 	. =..()
 
 	for(var/atom/movable/A in src.contents)
+		if(is_living(A))
+			var/mob/living/L = A
+			L.stun_time = 40
+			L.paralyze_time = 20
 		if(hit_atom == target_turf && is_floor(target_turf))
 			A.force_move(target_turf)
 		else

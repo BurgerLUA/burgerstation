@@ -19,6 +19,9 @@
 
 	damage_type = ".44"
 
+	item_count_max = 6
+	item_count_max_icon = 6
+
 	projectile = /obj/projectile/bullet/revolver/
 
 /obj/item/bullet/revolver_22

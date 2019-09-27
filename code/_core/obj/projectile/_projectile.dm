@@ -98,8 +98,8 @@
 
 	start_time += 0.5
 
-	if(lifetime <= start_time)
-		on_hit(src.loc)
+	if(lifetime <= start_time && current_loc)
+		on_hit(current_loc)
 		return FALSE
 
 	pixel_x_float += vel_x
@@ -115,6 +115,10 @@
 		var/matrix/M = matrix()
 		M.Translate(pixel_x_float,pixel_y_float)
 		animate(src, transform = M, time = 0.50)
+
+		for(var/mob/MO in contents)
+			if(MO.client)
+				animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = 0.5)
 
 		if(!is_turf(previous_loc))
 			on_hit(previous_loc)
@@ -199,6 +203,13 @@
 	return TRUE
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
+
+	for(var/mob/MO in contents)
+		if(MO.client)
+			MO.client.pixel_x = vel_x
+			MO.client.pixel_y = vel_y
+			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
+
 	if(impact_effect_turf && is_turf(hit_atom))
 		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
 		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
@@ -212,7 +223,5 @@
 		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
 		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
-
-
 
 	return TRUE
