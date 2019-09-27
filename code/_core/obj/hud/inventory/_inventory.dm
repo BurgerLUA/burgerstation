@@ -207,9 +207,6 @@
 
 	return TRUE
 
-/obj/hud/inventory/get_light_source()
-	return owner
-
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
 
 	if(!bypass_checks && !can_wear_object(I,messages))

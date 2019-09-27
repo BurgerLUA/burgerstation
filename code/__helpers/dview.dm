@@ -8,8 +8,9 @@
 
 	return view(range, dview)
 
-// for(thing in view()) is optimized so view() only returns the thing looked for by the for loop, this is a native BYOND feature, as using the above dview() would not work for that, this define will.
-#define FOR_DVIEW(type, range, source, see_invis) \
-	dview.loc           = source;                 \
-	dview.see_invisible = see_invis;              \
+#define FOR_DVIEW(type, range, center, invis_flags) \
+	dview.loc = center; \
+	dview.see_invisible = invis_flags; \
 	for(type in view(range, dview))
+
+#define END_FOR_DVIEW dview.loc = null

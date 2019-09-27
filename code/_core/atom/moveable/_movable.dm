@@ -26,10 +26,6 @@
 
 /atom/movable/destroy()
 	loc = null
-	var/turf/T = loc
-	if(opacity && istype(T))
-		T.reconsider_lights()
-
 	return ..()
 
 /atom/movable/proc/get_movement_delay()

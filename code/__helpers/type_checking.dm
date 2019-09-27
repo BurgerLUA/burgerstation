@@ -132,3 +132,6 @@ proc/is_food(var/atom/A)
 
 proc/is_powercell(var/atom/A)
 	return istype(A,/obj/item/powercell/)
+
+proc/is_list(var/atom/A)
+	return istype(A, /list)

@@ -26,9 +26,6 @@
 	var/list/random_sounds = list()
 	var/list/tracks = list()
 
-	luminosity           = 2
-	var/dynamic_lighting = FALSE
-
 	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners.
 
 	var/area_light_power = 0
@@ -36,8 +33,6 @@
 /area/New()
 	. = ..()
 	global.areas += src
-	if(dynamic_lighting)
-		luminosity = 0
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
@@ -70,22 +65,4 @@
 	return FALSE
 
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
-	return TRUE
-
-/area/proc/set_dynamic_lighting(var/new_dynamic_lighting = TRUE)
-	if (new_dynamic_lighting == dynamic_lighting)
-		return FALSE
-
-	dynamic_lighting = new_dynamic_lighting
-
-	if (new_dynamic_lighting)
-		for (var/turf/T in world)
-			if (T.dynamic_lighting)
-				T.lighting_build_overlay()
-
-	else
-		for (var/turf/T in world)
-			if (T.lighting_overlay)
-				T.lighting_clear_overlay()
-
 	return TRUE

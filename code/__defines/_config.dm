@@ -39,7 +39,7 @@
 
 //Makes compiling faster FALSE disabled
 
-#define ENABLE_MOBS FALSE
+#define ENABLE_MOBS TRUE
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE

@@ -1,9 +1,13 @@
 // Taken from Jeremy "Spuzzum" Gibson's s_html library.
 // http://www.byond.com/developer/Spuzzum/s_html
 
+/proc/color_matrix_identity()
+	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
+
 /proc/random_color()
 	return rgb(rand(1,255),rand(1,255),rand(1,255))
 
+/*
 /proc/hex2num(hex)
 	//Converts a hexadecimal string (eg. "9F") into a numeral (eg. 159).
 
@@ -38,6 +42,7 @@
 		power++
 
 	return(num)
+*/
 
 // Couple of helpers to get the RGB of a hexadecimal colour string.
 /proc/GetRedPart(var/hexadecimal)

@@ -1,0 +1,1 @@
+#define QDEL_NULL(x) if(x) { qdel(x) ; x = null }

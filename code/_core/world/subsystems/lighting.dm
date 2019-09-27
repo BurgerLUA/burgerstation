@@ -1,96 +1,132 @@
-/var/list/lighting_update_lights    = list()    // List of lighting sources  queued for update.
-/var/list/lighting_update_corners   = list()    // List of lighting corners  queued for update.
-/var/list/lighting_update_overlays  = list()    // List of lighting overlays queued for update.
 
-/var/list/lighting_update_lights_old    // List of lighting sources  currently being updated.
-/var/list/lighting_update_corners_old   // List of lighting corners  currently being updated.
-/var/list/lighting_update_overlays_old  // List of lighting overlays currently being updated.
-
-/var/lighting_processing            = TRUE
+var/global/subsystem/lighting/SSlighting
 
 /subsystem/lighting/
 	name = "Lighting Subsystem"
-	desc = "Controls the lighting."
-	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)
+	desc = "Controls how fast everything runs. Slows down subsystems if they lag."
+	tick_rate = SECONDS_TO_TICKS(1)
 	priority = SS_ORDER_LIGHTING
+
+	var/total_lighting_overlays = 0
+	var/total_lighting_sources = 0
+	var/list/lighting_corners = list()	// List of all lighting corners in the world.
+
+	var/list/light_queue   = list() // lighting sources  queued for update.
+	var/lq_idex = 1
+	var/list/corner_queue  = list() // lighting corners  queued for update.
+	var/cq_idex = 1
+	var/list/overlay_queue = list() // lighting overlays queued for update.
+	var/oq_idex = 1
+
+	var/tmp/processed_lights = 0
+	var/tmp/processed_corners = 0
+	var/tmp/processed_overlays = 0
+
+	var/total_ss_updates = 0
+	var/total_instant_updates = 0
+
+#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
+	var/force_queued = TRUE
+	var/force_override = FALSE	// For admins.
+#endif
+
+/subsystem/lighting/New()
+	. = ..()
+	SSlighting = src
+	return .
 
 /subsystem/lighting/Initialize()
 
-	if(!ENABLE_LIGHTING)
-		return FALSE
+	var/overlay_count = 0
 
-	create_all_lighting_overlays()
-	lighting_process()
+	for(var/zlevel = 1 to world.maxz)
+		overlay_count += CreateLobjForZ(zlevel)
+
+	LOG_DEBUG("Initialized [overlay_count] lighting overlays.")
+
+	return TRUE
+
+
+#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
+/subsystem/lighting/proc/handle_roundstart()
+	force_queued = FALSE
+	total_ss_updates = 0
+	total_instant_updates = 0
+
+#endif
+
+
+
+/subsystem/lighting/proc/CreateLobjForZ(zlevel)
+	. = 0
+	for (var/thing in Z_ALL_TURFS(zlevel))
+		var/turf/T = thing
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+			new /atom/movable/lighting_overlay(T)
+			. += 1
+
+		CHECK_TICK
+
+
+/subsystem/lighting/proc/InitializeLightingAtoms(list/atoms)
+	. = 0
+	for (var/turf/T in atoms)
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+			new /atom/movable/lighting_overlay(T)
+			. += 1
 
 /subsystem/lighting/on_life()
 
-	if(!ENABLE_LIGHTING)
-		return FALSE
+	var/list/curr_lights = light_queue
+	var/list/curr_corners = corner_queue
+	var/list/curr_overlays = overlay_queue
 
-	lighting_process()
+	while (lq_idex <= curr_lights.len)
+		var/datum/light_source/L = curr_lights[lq_idex++]
+
+		if (L.needs_update != LIGHTING_NO_UPDATE)
+			total_ss_updates += 1
+			L.update_corners()
+
+			L.needs_update = LIGHTING_NO_UPDATE
+
+			processed_lights++
+
+		CHECK_TICK
+
+	if (lq_idex > 1)
+		curr_lights.Cut(1, lq_idex)
+		lq_idex = 1
+
+	while (cq_idex <= curr_corners.len)
+		var/datum/lighting_corner/C = curr_corners[cq_idex++]
+
+		if (C.needs_update)
+			C.update_overlays()
+
+			C.needs_update = FALSE
+
+			processed_corners++
+
+		CHECK_TICK
+
+	if (cq_idex > 1)
+		curr_corners.Cut(1, cq_idex)
+		cq_idex = 1
+
+	while (oq_idex <= curr_overlays.len)
+		var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex++]
+
+		if (!O.qdeleting && O.needs_update)
+			O.update_overlay()
+			O.needs_update = FALSE
+
+			processed_overlays++
+
+		CHECK_TICK
+
+	if (oq_idex > 1)
+		curr_overlays.Cut(1, oq_idex)
+		oq_idex = 1
+
 	return TRUE
-
-/proc/create_all_lighting_overlays()
-	for(var/zlevel = 1 to world.maxz)
-		create_lighting_overlays_zlevel(zlevel)
-
-/proc/turf_has_lighting(var/turf/T)
-	if(!T.dynamic_lighting)
-		return FALSE
-
-	var/area/A = T.loc
-	if(!A.dynamic_lighting)
-		return FALSE
-
-	return TRUE
-
-/proc/create_lighting_overlays_zlevel(var/zlevel)
-
-	ASSERT(zlevel)
-
-	var/lighting_counter = 0
-
-	for(var/turf/simulated/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
-		if(!turf_has_lighting(T))
-			continue
-		lighting_counter += 1
-		getFromPool(/atom/movable/lighting_overlay, T, TRUE)
-		sleep(-1)
-
-	LOG_DEBUG("Initialized [lighting_counter] lights for zlevel [zlevel].")
-
-/proc/lighting_process()
-	lighting_update_lights_old = lighting_update_lights
-	lighting_update_lights = list()
-	for(var/datum/light_source/L in lighting_update_lights_old)
-		if(L.check() || L.destroyed || L.force_update)
-			L.remove_lum()
-			if(!L.destroyed)
-				L.apply_lum()
-
-		else if(L.vis_update)	// We smartly update only tiles that became (in) visible to use.
-			L.smart_vis_update()
-
-		L.vis_update   = FALSE
-		L.force_update = FALSE
-		L.needs_update = FALSE
-		sleep(-1)
-
-	lighting_update_corners_old = lighting_update_corners
-	lighting_update_corners = list()
-	for(var/A in lighting_update_corners_old)
-		var/datum/lighting_corner/C = A
-		C.update_overlays()
-		C.needs_update = FALSE
-		sleep(-1)
-
-	lighting_update_overlays_old = lighting_update_overlays
-	lighting_update_overlays = list()
-	for(var/A in lighting_update_overlays_old)
-		if(!A)
-			continue
-
-		var/atom/movable/lighting_overlay/L = A // Typecasting this later so BYOND doesn't istype each entry.
-		L.update_overlay()
-		L.needs_update = FALSE
-		sleep(-1)

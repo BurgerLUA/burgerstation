@@ -27,7 +27,7 @@ obj/structure/smooth/update_icon()
 			continue
 
 		for(var/obj/structure/O in T.contents)
-			if(!should_smooth_with(A))
+			if(!should_smooth_with(O))
 				continue
 			calc_list[dir_to_text] = TRUE
 			break
