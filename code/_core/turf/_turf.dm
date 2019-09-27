@@ -1,5 +1,3 @@
-/var/list/turf/turfs = list()
-
 /turf/
 	name = "TURF ERROR"
 	icon = 'icons/debug/turfs.dmi'
@@ -23,7 +21,6 @@
 
 	var/list/mob/living/old_living = list() //List of mobs that used to be on this turf.
 
-
 /*
 /turf/Initialize()
 	..()
@@ -34,14 +31,14 @@
 	return FALSE
 
 /turf/New(loc)
-	global.turfs += src
+
 	if(opacity)
 		has_opaque_atom = TRUE
 	..()
 
-/turf/Del()
-	global.turfs -= src
-	. = ..()
+/turf/destroy()
+	old_living = null
+	return ..()
 
 /turf/change_victim(var/atom/attacker)
 	for(var/v in contents)

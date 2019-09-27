@@ -2,7 +2,7 @@
 	name = "FLOOR"
 	density_down = TRUE
 
-	var/list/footstep_sounds = list(
+	var/list/footstep_sounds = list( //TODO: Make this into a datum, or better yet, link it to shoes instead.
 		'sounds/effects/footsteps/floor1.ogg',
 		'sounds/effects/footsteps/floor2.ogg',
 		'sounds/effects/footsteps/floor3.ogg',

@@ -3,6 +3,8 @@
 	icon_state = "bluespace"
 	opacity = 0
 
+	dynamic_lighting = FALSE
+
 /turf/unsimulated/space
 	name = "space"
 	icon = 'icons/turf/space/space.dmi'

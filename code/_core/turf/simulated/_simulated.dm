@@ -6,7 +6,9 @@
 	light_range = DEFAULT_RANGE_AMBIENT
 	light_color = "#FFFFFF"
 
-	var/list/spawning_data = list()
+	var/list/spawning_data //For mob respawns.
+
+	dynamic_lighting = TRUE
 
 /turf/simulated/Initialize()
 	. = ..()
@@ -21,6 +23,7 @@
 
 	var/area/A = src.loc
 	light_power *= A.area_light_power
+	spawning_data = list()
 
 	..()
 
@@ -86,6 +89,9 @@
 	if(!nw) nw = "i"
 	if(!se) se = "i"
 	if(!sw) sw = "i"
+
+	if(opacity && "[nw][ne][sw][se]" == "ffff")
+		dynamic_lighting = FALSE
 
 	var/icon/I = new /icon(icon,"1-[nw]")
 	//I.Blend(NW,ICON_OVERLAY)
