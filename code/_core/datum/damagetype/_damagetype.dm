@@ -311,6 +311,26 @@
 			var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
 			if(xp_to_give > 0)
 				A.add_skill_xp(skill,xp_to_give)
+		if(brute_damage_dealt > victim.health_max*0.25)
+
+			var/offset_x = victim.x - attacker.x
+			var/offset_y = victim.y - attacker.y
+
+			var/maxum = max(offset_x,offset_y)
+
+			if(maxum == 0)
+				offset_x = pick(-1,1)
+				offset_y = pick(-1,1)
+
+			offset_x *= 1/maxum
+			offset_y *= 1/maxum
+
+			if(is_living(victim))
+
+				var/strength_mod = 0.5 * Clamp(brute_damage_dealt/victim.health_max,0,0.5)
+
+				var/mob/living/L = victim
+				L.throw_self(attacker,null,16,16,offset_x*16*strength_mod,offset_y*16*strength_mod)
 
 	if(is_player(attacker) && is_player(victim))
 		var/mob/living/advanced/player/PA = attacker
@@ -359,20 +379,10 @@
 				animate(C,pixel_x = offset_x*multiplier, pixel_y = offset_y*multiplier,time=1)
 				animate(pixel_x = 0, pixel_y = 0, time = 5)
 
-		if(is_movable(victim) && victim.health_current - damage_dealt <= 0)
-			//if(multiplier >= TILE_SIZE*0.5)
-			if(TRUE)
-				var/atom/movable/M = victim
-
-				M.glide_size = TILE_SIZE * 0.25
-				M.force_move(get_step(M,attack_direction))
-				//M.pixel_x = -offset_x*TILE_SIZE
-				//M.pixel_y = -offset_y*TILE_SIZE
-				//animate(victim,pixel_x = 0,pixel_y = 0,time = 2)
-
-			//else if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
-				//animate(victim,pixel_x = offset_x, pixel_y = offset_y,time=1)
-
+		else if(victim.health_current - damage_dealt <= 0)
+			if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
+				multiplier *= 2
+				animate(victim, pixel_x = initial(victim.pixel_x) + offset_x*multiplier, pixel_y = initial(victim.pixel_y) + offset_y*multiplier,time=2)
 		else
 			animate(victim, pixel_x = initial(victim.pixel_x) + offset_x*multiplier, pixel_y = initial(victim.pixel_y) + offset_y*multiplier,time=1)
 			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)

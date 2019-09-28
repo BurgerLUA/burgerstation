@@ -20,12 +20,6 @@
 
 	return FALSE
 
-/obj/proc/throw_item(var/direction)
-	drop_item()
-	set_dir(direction)
-	//add_projectile(src)
-	return TRUE
-
 /obj/proc/transfer_item(var/obj/hud/inventory/new_inventory)
 
 	if(new_inventory.held_slots >= 1)

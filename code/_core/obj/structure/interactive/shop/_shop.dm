@@ -97,6 +97,8 @@
 
 /obj/structure/interactive/shop/clicked_by_object(caller,object,location,control,params)
 
+	world.log << "The object is: [object]!"
+
 	INTERACT_CHECK
 
 	if(!is_advanced(caller))

@@ -47,25 +47,20 @@
 	..()
 	qdel(src)
 
-/mob/abstract/on_left_click(var/atom/object,location,control,params)
-	if(is_wishgranter(object) || is_button(object))
-		object.clicked_by_object(src,src,location,control,params)
-		return TRUE
-
 /mob/abstract/observer/verb/new_character()
 	set name = "Create New Character"
 	set category = "Data"
 
-	var/client/C = src.client
-	var/savedata/client/mob/U = C.savedata
+	if(client)
+		var/savedata/client/mob/U = client.savedata
 
-	if(U.create_new_character(U.get_next_character_id()))
-		var/mob/living/advanced/player/P = new(pick(chargen_spawnpoints),client)
-		if(P.client)
-			P.client.eye = P
-			P.client.update_zoom(-1)
-		P.start_chargen()
-		qdel(src)
+		if(U.create_new_character(U.get_next_character_id()))
+			var/mob/living/advanced/player/P = new(pick(chargen_spawnpoints),client)
+			if(P.client)
+				P.client.eye = P
+				P.client.update_zoom(-1)
+			P.start_chargen()
+			qdel(src)
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Existing Character"

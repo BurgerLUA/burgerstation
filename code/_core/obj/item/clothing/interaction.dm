@@ -7,16 +7,18 @@
 	return FALSE
 
 
-/obj/item/clothing/on_inventory_click(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
+/obj/item/clothing/clicked_by_object(var/atom/caller,var/atom/object,location,control,params)
 
-	if(delete_on_drop)
-		drop_item()
-		return TRUE
+	if(is_inventory(object))
 
-	if(is_advanced(caller))
-		//var/mob/living/advanced/A = caller
-		if(equip_additional_clothing(caller,object,location,control,params))
+		if(delete_on_drop)
+			drop_item()
 			return TRUE
+
+		if(is_advanced(caller))
+			//var/mob/living/advanced/A = caller
+			if(equip_additional_clothing(caller,object,location,control,params))
+				return TRUE
 
 	return ..()
 

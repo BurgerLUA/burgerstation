@@ -37,18 +37,20 @@ var/global/subsystem/lighting/SSlighting
 
 /subsystem/lighting/Initialize()
 
-	LOG_DEBUG("Initializing lighting... this may take a while...")
+	if(ENABLE_LIGHTING)
 
-	var/overlay_count = 0
+		LOG_DEBUG("Initializing lighting... this may take a while...")
 
-	for(var/zlevel = 1 to world.maxz)
-		overlay_count += CreateLobjForZ(zlevel)
+		var/overlay_count = 0
 
-	on_life()
+		for(var/zlevel = 1 to world.maxz)
+			overlay_count += CreateLobjForZ(zlevel)
 
-	LOG_DEBUG("Initialized [processed_lights] lights.")
-	LOG_DEBUG("Initialized [processed_corners] corners.")
-	LOG_DEBUG("Initialized [processed_overlays] overlays.")
+		on_life()
+
+		LOG_DEBUG("Initialized [processed_lights] lights.")
+		LOG_DEBUG("Initialized [processed_corners] corners.")
+		LOG_DEBUG("Initialized [processed_overlays] overlays.")
 
 	return TRUE
 

@@ -17,9 +17,13 @@
 		/obj/hud/inventory/pocket/pocket02
 	)
 
-/obj/item/storage/pouch/on_inventory_click(var/mob/caller as mob,location,control,params)
-	click_self(caller,location,control,params)
-	return TRUE
+/obj/item/storage/pouch/clicked_by_object(var/atom/caller,var/atom/object,location,control,params)
+
+	if(is_inventory(object))
+		click_self(caller,location,control,params)
+		return TRUE
+
+	return ..()
 
 /obj/item/storage/pouch/small2
 	name = "small double pouch"

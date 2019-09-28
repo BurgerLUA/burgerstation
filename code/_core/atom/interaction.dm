@@ -2,12 +2,12 @@
 	return FALSE
 
 /atom/proc/drop_on_object(var/atom/caller,var/atom/object)
-	if(object && object.dropped_by_object(caller,src))
+	if(object && object.dropped_on_by_object(caller,src))
 		return TRUE
 
 	return FALSE
 
-/atom/proc/dropped_by_object(caller,object)
+/atom/proc/dropped_on_by_object(var/atom/caller,var/atom/object)
 	return FALSE
 
 /atom/proc/get_examine_text(var/mob/examiner)

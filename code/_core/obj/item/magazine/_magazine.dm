@@ -32,6 +32,7 @@
 			B.update_icon()
 			stored_bullets -= B
 		update_icon()
+		return TRUE
 
 	return ..()
 

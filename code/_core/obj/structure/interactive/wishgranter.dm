@@ -95,6 +95,8 @@ obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,loc
 	U.loaded_data["last_save"] = src.id
 	U.save_current_character()
 
+	return TRUE
+
 obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 	if(is_player(crosser))
 		var/mob/living/advanced/player/P = crosser

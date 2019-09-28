@@ -137,14 +137,12 @@
 
 /obj/item/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(!is_container)
-		return ..()
+	if(is_container)
+		if(is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1) //Open the inventory
+			return click_self(caller,location,control,params)
 
-	if(is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1)
-		return click_self(caller,location,control,params)
-
-	if(is_item(object))
-		add_to_inventory(caller,object,TRUE)
+		if(is_item(object)) //Add to the inventory
+			add_to_inventory(caller,object,TRUE)
 
 	return 	..()
 
@@ -278,7 +276,3 @@ obj/item/proc/do_automatic(caller,object,location,params)
 		I.update_held_icon(src)
 
 	return TRUE
-
-
-/obj/item/proc/on_inventory_click(var/mob/caller as mob,location,control,params) //When the object is clicked on when it is in your inventory.
-	return FALSE //Return false to do nothing and proceed with normal behavior. Return true to cancel normal behavior.
