@@ -21,7 +21,7 @@ mob/living/advanced/get_total_loss_soft()
 
 	. = ..()
 
-	if(health && health_elements["body"])
+	if(health && health_elements && health_elements["body"])
 		var/obj/hud/button/health/body/B = health_elements["body"]
 		B.update_stats()
 

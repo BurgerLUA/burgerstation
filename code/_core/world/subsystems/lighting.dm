@@ -3,8 +3,8 @@ var/global/subsystem/lighting/SSlighting
 
 /subsystem/lighting/
 	name = "Lighting Subsystem"
-	desc = "Controls how fast everything runs. Slows down subsystems if they lag."
-	tick_rate = SECONDS_TO_TICKS(1)
+	desc = "Controls lighting."
+	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)
 	priority = SS_ORDER_LIGHTING
 
 	var/total_lighting_overlays = 0

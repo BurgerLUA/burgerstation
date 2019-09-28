@@ -5,6 +5,22 @@
 
 	draw_blood = TRUE
 
+	hit_effect = null //Handled elsewhere.
+
+	miss_sounds = list(
+		'sounds/weapons/bulletflyby.ogg',
+		'sounds/weapons/bulletflyby2.ogg',
+		'sounds/weapons/bulletflyby3.ogg'
+	)
+
+	impact_sounds = list(
+		'sounds/weapons/ric1.ogg',
+		'sounds/weapons/ric2.ogg',
+		'sounds/weapons/ric3.ogg',
+		'sounds/weapons/ric4.ogg',
+		'sounds/weapons/ric5.ogg'
+	)
+
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return
 

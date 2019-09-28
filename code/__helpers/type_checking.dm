@@ -100,6 +100,9 @@ proc/is_wall(var/atom/A)
 proc/is_simulated(var/atom/A)
 	return istype(A,/turf/simulated/)
 
+proc/is_unsimulated(var/atom/A)
+	return istype(A,/turf/unsimulated/)
+
 proc/is_player(var/atom/A)
 	return istype(A,/mob/living/advanced/player/)
 

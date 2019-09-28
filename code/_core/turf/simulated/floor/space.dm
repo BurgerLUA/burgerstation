@@ -10,6 +10,7 @@
 
 /turf/simulated/floor/space/New()
 	. = ..()
+	set_light(light_range,light_power,light_color)
 	update_icon()
 	return TRUE
 

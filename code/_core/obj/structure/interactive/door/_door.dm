@@ -33,28 +33,28 @@ obj/structure/interactive/door/update_icon()
 		if(DOOR_STATE_OPENING)
 			icon_state = "[initial(icon_state)]opening"
 			desc = "The door is opening."
-			opacity = 0
+			set_opacity(0)
 			collision_flags = FLAG_COLLISION_REAL
 			collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 		if(DOOR_STATE_CLOSING)
 			icon_state = "[initial(icon_state)]closing"
 			desc = "The door is closing."
-			opacity = 0
+			set_opacity(0)
 			collision_flags = FLAG_COLLISION_NONE
 			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 		if(DOOR_STATE_OPENED)
 			icon_state = "[initial(icon_state)]open"
 			desc = "The door is open."
-			opacity = 0
+			set_opacity(0)
 			collision_flags = FLAG_COLLISION_NONE
 			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 		if(DOOR_STATE_CLOSED)
 			icon_state = initial(icon_state)
 			desc = "The door is closed."
-			opacity = initial(opacity)
+			set_opacity(initial(opacity))
 			collision_flags = FLAG_COLLISION_REAL
 			collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 

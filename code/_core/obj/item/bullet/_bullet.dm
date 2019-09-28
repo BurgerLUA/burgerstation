@@ -107,7 +107,7 @@
 	var/transfered_bullets = 0
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
 	for(var/i=1,i<=bullets_to_add,i++)
-		var/obj/item/bullet/B = new src.type(transfer_target.loc)
+		var/obj/item/bullet/B = new src.type(transfer_target)
 		transfer_target.stored_bullets += B
 		item_count_current -= 1
 		transfered_bullets += 1
@@ -154,7 +154,7 @@
 		if(item_count_current == 1)
 			transfer_self = TRUE
 			break
-		var/obj/item/bullet/B = new src.type(transfer_target.loc)
+		var/obj/item/bullet/B = new src.type(transfer_target)
 		transfer_target.stored_bullets += B
 		item_count_current -= 1
 
@@ -162,7 +162,7 @@
 		caller.to_chat(span("notice","You insert [transfered_bullets] [src.name]\s into \the [transfer_target]."))
 
 	if(transfer_self)
-		src.drop_item(transfer_target.loc)
+		src.drop_item(transfer_target)
 		transfer_target.stored_bullets += src
 		update_icon()
 		transfer_target.update_icon()

@@ -78,7 +78,7 @@
 		if(object_data["stored_bullets"])
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
-				var/obj/item/bullet/B = new b_type(M.loc)
+				var/obj/item/bullet/B = new b_type(M)
 				B.update_icon()
 				M.stored_bullets += B
 

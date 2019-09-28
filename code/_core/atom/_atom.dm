@@ -55,7 +55,7 @@
 	var/corner_category = "none"
 
 /atom/proc/should_smooth_with(var/atom/A)
-	return A.corner_category == corner_category
+	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
 /atom/destroy()
 	if(reagents)

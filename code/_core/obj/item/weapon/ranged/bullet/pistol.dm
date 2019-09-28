@@ -20,6 +20,8 @@
 
 	view_punch = 6
 
+	cock_sound = 'sounds/weapons/gun_slide1.ogg'
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)

@@ -40,7 +40,7 @@
 
 		calc_list[dir_to_text] = FALSE //Default
 
-		if(!T || !is_simulated(T))
+		if(!T)
 			calc_list[dir_to_text] = FALSE
 			continue
 

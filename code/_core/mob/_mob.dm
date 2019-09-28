@@ -95,6 +95,8 @@
 
 /mob/Initialize()
 
+	//set_light(VIEW_RANGE*0.25,0.25,"#FFFFFF")
+
 	. = ..()
 
 	if(src.client)
@@ -130,8 +132,24 @@
 			plane_master_darkness = new
 			C.screen += plane_master_darkness
 
+		/*
+		var/image/I = new/image('icons/obj/effects/light_sprite/192x192.dmi',"")
+		I.pixel_x = 16-(192*0.5)
+		I.pixel_y = 16-(192*0.5)
+		I.blend_mode = BLEND_MULTIPLY
+		I.loc = src
+		I.plane = PLANE_LIGHTING+0.1
+		client.images += I
+		see_in_dark  = 2
+		*/
+
+
+
 	var/area/A = get_area(src)
 	A.Entered(src)
+
+
+
 
 	return .
 
