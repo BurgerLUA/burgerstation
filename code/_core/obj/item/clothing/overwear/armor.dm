@@ -231,6 +231,8 @@
 		FATIGUE = 0
 	)
 
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie1)
+
 /obj/item/clothing/overwear/armor/hardsuit/syndie2
 	name = "mauler hardsuit mk2"
 	icon = 'icons/obj/items/clothing/suit/syndie2.dmi'
@@ -250,6 +252,8 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie2)
 
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "white magnus armor"

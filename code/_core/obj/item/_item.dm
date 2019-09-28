@@ -6,6 +6,8 @@
 	var/weight = 1 //Weight in kg
 	var/value = 1 //Value in whatever currency this world uses.
 
+	var/delete_on_drop = FALSE
+
 	var/item_count_current = 1
 	var/item_count_max = 1
 	var/item_count_max_icon = 0
@@ -245,6 +247,8 @@ obj/item/proc/do_automatic(caller,object,location,params)
 	return
 
 /obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+	if(delete_on_drop)
+		qdel(src)
 	return
 
 /obj/item/proc/inventory_to_list()

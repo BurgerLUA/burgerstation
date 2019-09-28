@@ -1,11 +1,24 @@
 /obj/item/clothing/click_on_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
-	if(caller == object && is_advanced(object)) //Auto-equip.
+	if(is_advanced(caller) && caller == object) //Auto-equip.
 		quick_equip(caller)
 		return TRUE
 
 	return FALSE
 
+
+/obj/item/clothing/on_inventory_click(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
+
+	if(delete_on_drop)
+		drop_item()
+		return TRUE
+
+	if(is_advanced(caller))
+		//var/mob/living/advanced/A = caller
+		if(equip_additional_clothing(caller,object,location,control,params))
+			return TRUE
+
+	return ..()
 
 /obj/item/clothing/proc/quick_equip(var/mob/living/advanced/caller)
 

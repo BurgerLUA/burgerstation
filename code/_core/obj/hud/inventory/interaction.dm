@@ -37,21 +37,24 @@
 		var/atom/movable/A = the_target
 		if(!A.anchored)
 			if(is_inventory(the_hand) && is_item(the_target) && get_dist(caller,the_target) <= 1) //We have an empty hand and the object we're clicking on is an item and we're next to it or we have it in our inventory.
+				var/obj/item/target_item = the_target
 				var/obj/hud/inventory/I = the_hand
-				if(is_inventory(object)) //The target is actually inside the object, which is an inventory
-					if(is_item(the_target))
-						var/obj/item/I2 = the_target
-						if(I2 && I2.on_inventory_click(caller,location,control,params))
-							return TRUE
+				if(is_inventory(object)) //The thing we're clicking on is actually inside the object, which is an inventory
+
 					var/obj/hud/inventory/I2 = object //Object = What we're clicking on
-					if(!I2.drag_to_take && add_object(the_target))
+					if(target_item && target_item.on_inventory_click(caller,location,control,params))
 						return TRUE
-				else if(I.add_object(the_target)) //The target is not inside an inventory.
+
+					if(!I2.drag_to_take && target_item.transfer_item(I2))
+						return TRUE
+
+				else if(target_item.transfer_item(I)) //The thing we're clicking on is not inside an inventory, so we're going to TAKE IT.
 					return TRUE
 
-			else if(is_inventory(the_target) && is_item(the_hand)) //We want to move the item to the target.
-				var/obj/hud/inventory/I = the_target
-				I.add_object(the_hand)
+			else if(is_inventory(the_target) && is_item(the_hand)) //We want to move the item we're holding to the thing we're clicking on.
+				var/obj/item/I = the_hand
+				var/obj/hud/inventory/I2 = the_target
+				I.transfer_item(I2)
 				return TRUE
 
 	if(the_target.clicked_by_object(caller,the_hand,location,control,params)) //We click on the target
@@ -73,12 +76,8 @@ obj/hud/inventory/clicked_by_object(caller,object,location,control,params)
 	return ..()
 
 obj/hud/inventory/proc/transfer_inventory_to_inventory(var/obj/hud/inventory/I)
-	if(length(held_objects) && I.add_object(get_top_held_object()))
-		return TRUE
-	if(length(worn_objects) && I.add_object(get_top_worn_object()))
-		return TRUE
-
-	return FALSE
+	var/obj/item/O = get_top_held_object() || get_top_worn_object()
+	return O && O.transfer_item(I)
 
 obj/hud/inventory/drop_on_object(caller,var/atom/object)
 

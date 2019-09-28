@@ -36,4 +36,5 @@
 			return FALSE
 
 	drop_item()
+
 	return new_inventory.add_object(src)

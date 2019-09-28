@@ -345,6 +345,9 @@
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
+	if(I.delete_on_drop)
+		return FALSE
+
 	if(!I.can_be_held(owner,src))
 		return FALSE
 

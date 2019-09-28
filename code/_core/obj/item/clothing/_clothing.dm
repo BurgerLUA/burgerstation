@@ -33,7 +33,13 @@
 
 	var/list/protected_limbs = list()
 
+
+	var/list/obj/item/clothing/additional_clothing = list()
+	var/list/obj/item/clothing/additional_clothing_stored
+
+
 /obj/item/clothing/New(var/desired_loc)
+	additional_clothing_stored = list()
 	..()
 	initialize_blends()
 
@@ -50,6 +56,14 @@
 		add_blend("outfit_tertiary", desired_icon = icon, desired_icon_state = "[icon_state_worn]_tertiary", desired_color = color_tertiary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 	..()
+/obj/item/clothing/transfer_item(var/obj/hud/inventory/new_inventory)
+
+	. = ..()
+
+	if(.)
+		delete_additonal_clothing()
+
+	return .
 
 
 /obj/item/clothing/update_icon()
