@@ -20,8 +20,8 @@
 
 	for(var/mob/living/L in all_living)
 		L.on_life()
-		if(!L.ckey && L.enable_AI)
-			L.on_life()
+		if(ENABLE_AI && !L.ckey && L.enable_AI)
+			L.on_life_AI()
 		if(do_slow)
 			L.on_life_slow()
 

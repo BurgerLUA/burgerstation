@@ -40,6 +40,7 @@
 //Makes compiling faster FALSE disabled
 
 #define ENABLE_MOBS TRUE
+#define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD FALSE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
@@ -67,7 +68,7 @@
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
 #define LIFE_TICK 1 //Deciseconds per life tick interval.
-#define LIFE_TICK_SLOW 10
+#define LIFE_TICK_SLOW 4
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 

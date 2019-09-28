@@ -37,7 +37,7 @@
 		var/final_movement_delay = get_movement_delay()
 
 		move_delay = floor(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
-		glide_size = step_size/move_delay //TODO: Find out how this works.
+		glide_size = step_size/move_delay
 
 		var/move_result = Move(get_step(src,move_dir),move_dir)
 

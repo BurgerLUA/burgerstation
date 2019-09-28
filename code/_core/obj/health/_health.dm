@@ -48,7 +48,7 @@
 	var/start_x = 1
 	var/end_x = 32
 	var/start_y = 1
-	var/end_y = 1 +  floor(Clamp((current+overflow)/max,0,1)*29) //TODO: There is something wrong with this causing the icon to spaz out.
+	var/end_y = 1 + floor(Clamp((current+min(0,overflow))/max,0,1)*29) //TODO: There is something wrong with this causing the icon to spaz out.
 
 	bar.Blend(bar_color,ICON_MULTIPLY)
 	bar.Crop(start_x,start_y,end_x,end_y)

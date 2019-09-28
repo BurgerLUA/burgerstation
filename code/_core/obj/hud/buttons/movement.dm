@@ -16,7 +16,7 @@
 	var/mob/living/L = caller
 	L.toggle_sneak(!sneaking)
 
-	..()
+	return TRUE
 
 /obj/hud/button/sneak/update_icon()
 	icon_state = "sneak_[sneaking]"
@@ -27,7 +27,7 @@
 	desc = "who fucking walks lmao"
 	desc_extended = "Where you press determines where you click"
 	icon_state = "move_1"
-	screen_loc = "RIGHT-4,BOTTOM"
+	screen_loc = "RIGHT-3,BOTTOM"
 
 	var/move_mode = 2 //1 = run, 2 = jog, 3 = sprint
 
@@ -58,4 +58,4 @@
 
 	update_icon()
 
-	..()
+	return TRUE

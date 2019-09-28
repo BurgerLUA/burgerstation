@@ -15,3 +15,23 @@
 	worn_slots = 0
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
+
+	var/list/add_sounds = list(
+		'sounds/effects/inventory/rustle1.ogg',
+		'sounds/effects/inventory/rustle2.ogg',
+		'sounds/effects/inventory/rustle3.ogg',
+		'sounds/effects/inventory/rustle4.ogg',
+		'sounds/effects/inventory/rustle5.ogg'
+	)
+
+
+/obj/hud/inventory/dynamic/remove_object(var/obj/item/I,var/turf/drop_loc)
+
+	. = ..()
+
+	if(.)
+		var/turf/T = get_turf(src)
+		var/area/A = get_area(T)
+		play_sound(pick(add_sounds),all_mobs_with_clients,vector(T.x,T.y,T.z),environment = A.sound_environment, channel = SOUND_CHANNEL_FX)
+
+	return .

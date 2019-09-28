@@ -249,7 +249,7 @@
 		for(var/damage_type in damage_to_deal)
 			var/old_damage_amount = damage_to_deal[damage_type]
 			var/defense_amount = Clamp(defense_rating_victim[damage_type] - attack_damage_penetration[damage_type],0,100)
-			var/new_damage_amount = old_damage_amount * Clamp((100-defense_amount)/100,1 - DAMAGE_REDUCTION_CAP,2)
+			var/new_damage_amount = calculate_armor(old_damage_amount,defense_amount)
 			damage_blocked += old_damage_amount - new_damage_amount
 			damage_to_deal[damage_type] = new_damage_amount
 

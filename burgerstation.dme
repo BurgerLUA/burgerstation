@@ -69,6 +69,7 @@
 #include "code\__defines\world_states.dm"
 #include "code\__globals\_globals.dm"
 #include "code\__helpers\_math.dm"
+#include "code\__helpers\armor.dm"
 #include "code\__helpers\attacking.dm"
 #include "code\__helpers\colors.dm"
 #include "code\__helpers\conversions.dm"

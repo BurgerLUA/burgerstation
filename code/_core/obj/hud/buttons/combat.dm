@@ -3,7 +3,7 @@
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
 	desc_extended = "Press this button if you want to resist out of whatever situation your in. (That doesn't mean that it will do it.)"
 	icon_state = "resist"
-	screen_loc = "RIGHT-3,BOTTOM"
+	screen_loc = "RIGHT-1,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 

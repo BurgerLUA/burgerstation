@@ -289,7 +289,32 @@ var/global/list/all_clients = list()
 		object = object.defer_click_on_object()
 		if(!is_inventory(object))
 			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
-			click_and_drag_icon.screen_loc = params_list["screen-loc"]
+
+			var/screen_loc = params_list["screen-loc"]
+
+			var/list/screen_loc_list = splittext(screen_loc,",")
+
+			var/x_list = splittext(screen_loc_list[1],":")
+			var/y_list = splittext(screen_loc_list[2],":")
+
+			var/x_full = text2num(x_list[1])
+			var/x_partial = text2num(x_list[2])
+
+			var/y_full = text2num(y_list[1])
+			var/y_partial = text2num(y_list[2])
+
+			x_partial -= 16
+			y_partial -= 16
+
+			if(x_partial < 0)
+				x_full -= 1
+				x_partial += 32
+
+			if(y_partial < 0)
+				y_full -= 1
+				y_partial += 32
+
+			click_and_drag_icon.screen_loc = "[x_full]:[x_partial],[y_full]:[y_partial]"
 
 			if(click_and_drag_icon.stored_object != object)
 				click_and_drag_icon.appearance = object.appearance

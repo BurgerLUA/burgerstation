@@ -64,6 +64,15 @@
 
 	var/crafting_id = null
 
+	var/list/inventory_sounds = list(
+		'sounds/effects/inventory/rustle1.ogg',
+		'sounds/effects/inventory/rustle2.ogg',
+		'sounds/effects/inventory/rustle3.ogg',
+		'sounds/effects/inventory/rustle4.ogg',
+		'sounds/effects/inventory/rustle5.ogg'
+	)
+
+
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE
 
@@ -101,15 +110,15 @@
 			opening = FALSE
 
 	if(opening)
-		for(var/obj/hud/button/B in A.buttons)
-			if(B.type != /obj/hud/button/close_inventory) //TODO: Fix this shitcode
-				continue
+		for(var/obj/hud/button/close_inventory/B in A.buttons)
 			B.alpha = 0
 			B.mouse_opacity = 0
 
-	for(var/obj/hud/button/B in A.buttons)
-		if(B.type != /obj/hud/button/close_inventory) //TODO: Fix this shitcode
-			continue
+		var/turf/T = get_turf(src)
+		var/area/A2 = get_area(T)
+		play_sound(pick(inventory_sounds),all_mobs_with_clients,vector(T.x,T.y,T.z),environment = A2.sound_environment, channel = SOUND_CHANNEL_FX)
+
+	for(var/obj/hud/button/close_inventory/B in A.buttons)
 
 		B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
 
