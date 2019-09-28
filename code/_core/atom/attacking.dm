@@ -84,7 +84,7 @@
 	if(!mouse_opacity)
 		return FALSE
 
-	if(victim)
+	if(victim && is_valid(victim))
 
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)

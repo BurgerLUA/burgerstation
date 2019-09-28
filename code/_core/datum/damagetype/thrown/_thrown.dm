@@ -35,3 +35,5 @@
 	skill_xp_per_damage = list(
 		SKILL_MELEE = 1
 	)
+
+	use_blamed_stats = TRUE

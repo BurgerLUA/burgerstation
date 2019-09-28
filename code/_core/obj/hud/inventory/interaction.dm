@@ -51,13 +51,8 @@
 		if(src != defer_self_as_item && defer_self_as_item.click_on_object(caller,object,location,control,params))
 			return TRUE
 
-	if(object.clicked_by_object(caller,defer_self,location,control,params))
-		return TRUE
+	return ..()
 
-	if(defer_self.attack(caller,defer_object,params)) //Attack the object, I guess.
-		return TRUE
-
-	return FALSE
 obj/hud/inventory/clicked_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	var/atom/defer_self = src.defer_click_on_object()

@@ -16,7 +16,7 @@
 	desc = "For when you don't like clicking."
 	desc_extended = "Automatically attempts to resist in some situations."
 	icon_state = "auto"
-	screen_loc = "RIGHT-3,BOTTOM"
+	screen_loc = "RIGHT-1,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 

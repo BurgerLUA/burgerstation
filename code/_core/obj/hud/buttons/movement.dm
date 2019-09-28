@@ -3,7 +3,7 @@
 	desc = "sneaker no sneaking"
 	desc_extended = "Press to sneak."
 	icon_state = "sneak_0"
-	screen_loc = "RIGHT-4,BOTTOM"
+	screen_loc = "RIGHT-3,BOTTOM"
 
 	var/sneaking = 0
 

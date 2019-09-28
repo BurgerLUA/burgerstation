@@ -82,30 +82,32 @@
 
 /mob/living/proc/handle_status_effects()
 
-	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
-		status &= ~FLAG_STATUS_STUN
-		animate(src,transform = matrix(), time = 1)
+	if(is_turf(src.loc))
 
-	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
-		status |= FLAG_STATUS_STUN
-		animate(src,transform = turn(matrix(), stun_angle), time = 1)
-		on_stunned()
+		if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
+			status &= ~FLAG_STATUS_STUN
+			animate(src,transform = matrix(), time = 1)
 
-	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
-		status &= ~FLAG_STATUS_PARALYZE
+		if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
+			status |= FLAG_STATUS_STUN
+			animate(src,transform = turn(matrix(), stun_angle), time = 1)
+			on_stunned()
 
-	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
-		status |= FLAG_STATUS_PARALYZE
-		on_paralyze()
+		if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
+			status &= ~FLAG_STATUS_PARALYZE
 
-	if(status & FLAG_STATUS_DEAD)
-		return FALSE
+		if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
+			status |= FLAG_STATUS_PARALYZE
+			on_paralyze()
 
-	if(stun_time != -1)
-		stun_time = max(0,stun_time - LIFE_TICK)
+		if(status & FLAG_STATUS_DEAD)
+			return FALSE
 
-	if(paralyze_time != -1)
-		paralyze_time = max(0,paralyze_time - LIFE_TICK)
+		if(stun_time != -1)
+			stun_time = max(0,stun_time - LIFE_TICK)
+
+		if(paralyze_time != -1)
+			paralyze_time = max(0,paralyze_time - LIFE_TICK)
 
 	handle_health_buffer()
 

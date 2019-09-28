@@ -12,6 +12,7 @@
 
 	var/atom/owner //Who is the one who shot the weapon?
 	var/atom/weapon //What weapon did the projectile come from?
+	var/atom/blamed //Who should we blame for the damage?
 
 	var/previous_loc
 	var/current_loc
@@ -44,7 +45,10 @@
 
 	var/bullet_color = "#FFFFFF"
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color)
+	var/steps_current = 0
+	var/steps_allowed = 0
+
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -76,6 +80,11 @@
 
 	bullet_color = desired_color
 
+	if(desired_blamed)
+		blamed = desired_blamed
+	else
+		blamed = owner
+
 	. = ..()
 
 	update_icon()
@@ -96,7 +105,13 @@
 
 /obj/projectile/proc/update_projectile() //This runs every 0.5 deciseconds.
 
+	steps_current += 1
+
 	start_time += 0.5
+
+	if(steps_allowed && steps_allowed <= steps_current && current_loc)
+		on_hit(current_loc)
+		return FALSE
 
 	if(lifetime <= start_time && current_loc)
 		on_hit(current_loc)

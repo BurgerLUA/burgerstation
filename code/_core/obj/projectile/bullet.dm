@@ -23,7 +23,7 @@
 		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 		if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
 
-		DT.do_damage(owner,hit_atom,weapon,object_to_damage)
+		DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed)
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 
