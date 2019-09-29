@@ -72,6 +72,12 @@
 
 	var/list/overlays_assoc
 
+	var/list/protection_heat = TARGETABLE_LIMBS_KV
+
+	var/list/protection_cold = TARGETABLE_LIMBS_KV
+
+	var/list/protection_pressure = TARGETABLE_LIMBS_KV
+
 /mob/living/advanced/proc/update_slowdown_mul()
 
 	for(var/obj/item/I in worn_objects)

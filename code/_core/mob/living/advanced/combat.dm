@@ -174,3 +174,27 @@
 
 	add_skill_xp(SKILL_DODGE,max(1,(100-base_chance)/1))
 	return TRUE
+
+/mob/living/advanced/proc/update_protection()
+
+	protection_cold = TARGETABLE_LIMBS_KV
+	protection_heat = TARGETABLE_LIMBS_KV
+	protection_pressure = TARGETABLE_LIMBS_KV
+
+	for(var/obj/item/clothing/C in src.worn_objects)
+		if(C.protection_cold)
+			for(var/k in C.protection_cold)
+				var/v = C.protection_cold[k]
+				protection_cold[k] += v
+
+		if(C.protection_heat)
+			for(var/k in C.protection_heat)
+				var/v = C.protection_heat[k]
+				protection_heat[k] += v
+
+		if(C.protection_pressure)
+			for(var/k in C.protection_pressure)
+				var/v = C.protection_pressure[k]
+				protection_pressure[k] += v
+
+	return TRUE

@@ -143,13 +143,7 @@
 		see_in_dark  = 2
 		*/
 
-
-
-	var/area/A = get_area(src)
-	A.Entered(src)
-
-
-
+	force_move(src.loc)
 
 	return .
 

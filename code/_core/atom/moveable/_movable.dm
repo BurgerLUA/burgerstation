@@ -25,7 +25,7 @@
 	return .
 
 /atom/movable/destroy()
-	loc = null
+	force_move(null)
 	return ..()
 
 /atom/movable/proc/get_movement_delay()
@@ -65,9 +65,8 @@
 
 	if(loc)
 		loc.Entered(src, old_loc)
-
-	for(var/atom/movable/AM in loc)
-		AM.Crossed(src)
+		for(var/atom/movable/AM in loc)
+			AM.Crossed(src)
 
 	return TRUE
 

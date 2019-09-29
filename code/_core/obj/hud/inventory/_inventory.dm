@@ -236,6 +236,7 @@
 		I.update_owner(owner)
 		owner.worn_objects += I
 		owner.update_slowdown_mul()
+		owner.update_protection()
 		update_worn_icon(I)
 
 	return TRUE

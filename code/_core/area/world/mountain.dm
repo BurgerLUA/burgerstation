@@ -11,6 +11,7 @@
 	name = "exterior"
 	icon_state = "yellow"
 	weather = WEATHER_SNOW
+	hazard = "cold"
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 
 /area/world/mountain/exterior/village
@@ -21,6 +22,7 @@
 /area/world/mountain/interior/shop
 	name = "shop"
 	icon_state = "shop"
+	safe = TRUE
 
 /area/world/mountain/interior/shop/gunstore
 	name = "gunstore"
@@ -35,6 +37,10 @@
 	name = "snow cave"
 	icon_state = "pink"
 
+/area/world/mountain/interior/cave/safe
+	name = "entrance cave"
+	icon_state = "safe"
+	safe = TRUE
 
 /area/world/mountain/interior/temple
 	name = "snow temple"

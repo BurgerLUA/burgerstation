@@ -50,11 +50,17 @@
 
 	return src
 
-/turf/Entered(var/atom/enterer)
-	src.loc.Entered(enterer)
+/turf/Entered(var/atom/enterer,var/atom/old_loc)
+
+	if(!old_loc || src.loc != old_loc.loc)
+		src.loc.Entered(enterer)
+
 	..()
 
-/turf/Exited(var/atom/exiter,var/atom/old_loc)
+/turf/Exited(var/atom/exiter,var/atom/new_loc)
+
+	if(!new_loc || src.loc != new_loc.loc)
+		src.loc.Exited(exiter)
 
 	..()
 

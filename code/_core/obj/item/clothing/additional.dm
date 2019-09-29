@@ -6,6 +6,7 @@
 	for(var/k in additional_clothing)
 		var/obj/item/clothing/C = new k(get_turf(src))
 		C.delete_on_drop = TRUE
+		C.should_save = FALSE
 		if(!C.quick_equip(caller))
 			caller.to_chat(span("notice","There is no way to toggle \the [C.name]!"))
 			qdel(C)

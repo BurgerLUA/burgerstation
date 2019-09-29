@@ -85,6 +85,9 @@ var/global/subsystem/lighting/SSlighting
 
 /subsystem/lighting/on_life()
 
+	if(!ENABLE_LIGHTING)
+		return TRUE
+
 	var/list/curr_lights = light_queue
 	var/list/curr_corners = corner_queue
 	var/list/curr_overlays = overlay_queue

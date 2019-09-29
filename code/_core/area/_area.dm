@@ -30,15 +30,27 @@
 
 	var/area_light_power = 0
 
+
+	var/list/mob/living/advanced/player/players_inside = list()
+
+	var/hazard //The id of the hazard
+
 /area/New()
 	. = ..()
 	global.areas += src
 
+	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
+		all_areas_with_hazards += src
+
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
-	if(safe && is_player(enterer))
-		var/mob/living/advanced/player/P = enterer
-		P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
+	if(is_player(enterer))
+		if(safe)
+			var/mob/living/advanced/player/P = enterer
+			P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
+
+		if(!(enterer in players_inside))
+			players_inside += enterer
 
 	if(enterer.area != src)
 
@@ -65,4 +77,8 @@
 	return FALSE
 
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
+
+	if(is_player(exiter))
+		players_inside -= exiter
+
 	return TRUE

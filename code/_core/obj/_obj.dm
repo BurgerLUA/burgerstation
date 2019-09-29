@@ -5,5 +5,7 @@
 	layer = LAYER_OBJ
 	plane = PLANE_OBJ
 
+	var/should_save = TRUE
+
 /obj/proc/on_spawn() //When the object is spawned by a spawnpoint
 	return

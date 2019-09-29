@@ -22,6 +22,8 @@
 			I.soul_bound = object_data["soul_bound"]
 		if(object_data["item_count_current"])
 			I.item_count_current = object_data["item_count_current"]
+		if(object_data["delete_on_drop"])
+			I.delete_on_drop = TRUE
 
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
@@ -136,7 +138,8 @@
 	return FALSE
 
 /savedata/proc/get_item_data(var/obj/I)
-	if(!I)
+
+	if(!I || !I.should_save)
 		return list()
 
 	var/list/returning_list = list()
@@ -159,6 +162,8 @@
 			returning_list["soul_bound"] = TRUE
 		if(IT.item_count_current > 1)
 			returning_list["item_count_current"] = IT.item_count_current
+		if(IT.delete_on_drop)
+			returning_list["delete_on_drop"] = TRUE
 
 	if(is_soulgem(I))
 		var/obj/item/soulgem/S = I

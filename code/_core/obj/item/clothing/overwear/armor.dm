@@ -210,6 +210,7 @@
 /obj/item/clothing/overwear/armor/hardsuit/
 	name = "hardsuit"
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
+	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
 /obj/item/clothing/overwear/armor/hardsuit/syndie1
 	name = "mauler hardsuit mk1"

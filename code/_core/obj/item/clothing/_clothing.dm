@@ -33,6 +33,9 @@
 
 	var/list/protected_limbs = list()
 
+	var/list/protection_cold = list()
+	var/list/protection_heat = list()
+	var/list/protection_pressure = list()
 
 	var/list/obj/item/clothing/additional_clothing = list()
 	var/list/obj/item/clothing/additional_clothing_stored
