@@ -32,6 +32,7 @@
 /obj/structure/interactive/shop/update_icon()
 	if(current_item)
 		appearance = current_item.appearance
+		mouse_opacity = 2
 		name = "[current_item.name] - [current_item_cost] crystals"
 	..()
 

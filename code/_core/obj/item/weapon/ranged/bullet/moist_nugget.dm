@@ -10,7 +10,7 @@
 
 	bullet_count_max = 5
 
-	bullet_type = "7.65"
+	bullet_type = "7.62"
 
 	shoot_sounds = list('sounds/weapons/rifle_heavy/shoot.ogg')
 

@@ -1,8 +1,8 @@
 /obj/item/bullet/shotgun/
 	id = "shotgun"
 	icon = 'icons/obj/items/bullet/shotgun.dmi'
-	item_count_max = 6
-	item_count_max_icon = 6
+	item_count_max = 4
+	item_count_max_icon = 4
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
@@ -11,7 +11,7 @@
 	return TRUE
 
 /obj/item/bullet/shotgun/on_spawn()
-	item_count_current = 6
+	item_count_current = 4
 
 /obj/item/bullet/shotgun/slug
 	name = "\improper 12 gauge slug"

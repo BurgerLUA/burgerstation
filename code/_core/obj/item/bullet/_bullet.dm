@@ -112,7 +112,7 @@
 		item_count_current -= 1
 		transfered_bullets += 1
 	if(display_message)
-		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
+		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target.name]."))
 	transfer_target.update_icon()
 	if(item_count_current <= 0)
 		src.drop_item()
@@ -129,15 +129,15 @@
 		return FALSE
 
 	if(!transfer_target.open)
-		caller.to_chat(span("notice","You must open \the [transfer_target] first before loading it!"))
+		caller.to_chat(span("notice","You must open \the [transfer_target.name] first before loading it!"))
 		return FALSE
 
 	if(transfer_target.bullet_type != id)
-		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src]!"))
+		caller.to_chat(span("notice","You can't insert this type of bullet into \the [transfer_target.name]!"))
 		return FALSE
 
 	if(transfer_target.bullet_count_max <= transfer_target.get_ammo_count())
-		caller.to_chat(span("notice","You can't fit any more bullets into \the [src]!"))
+		caller.to_chat(span("notice","You can't fit any more bullets into \the [transfer_target.name]!"))
 		return FALSE
 
 	var/transfered_bullets = 0
@@ -146,7 +146,7 @@
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count(),transfer_target.insert_limit)
 
 	if(!bullets_to_add)
-		LOG_ERROR("Warning! Something went wrong when trying to insert [src] into [transfer_target]!")
+		LOG_ERROR("Warning! Something went wrong when trying to insert \the [src.name] into [transfer_target.name]!")
 		return FALSE
 
 	for(var/i=1,i<=bullets_to_add,i++)

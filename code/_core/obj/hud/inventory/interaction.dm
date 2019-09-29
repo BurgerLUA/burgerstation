@@ -37,7 +37,7 @@
 		var/obj/item/defer_object_as_item = defer_object
 		if(is_inventory(object)) //The item in question is in another inventory.
 			var/obj/hud/inventory/object_as_inventory = object
-			if(!object_as_inventory.drag_to_take && defer_object_as_item.transfer_item(src))
+			if(!defer_object_as_item.is_container && !object_as_inventory.drag_to_take && defer_object_as_item.transfer_item(src))
 				return TRUE
 		else if (!defer_object_as_item.anchored && defer_object_as_item.transfer_item(src))
 			return TRUE

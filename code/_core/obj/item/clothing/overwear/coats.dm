@@ -78,17 +78,24 @@
 	icon = 'icons/obj/items/clothing/suit/winter_coat.dmi'
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 10,
-		HEAT = -100,
-		COLD = 150,
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
+		LASER = -10,
+		MAGIC = 25,
+		HEAT = -50,
+		COLD = 100,
 		BOMB = 0,
 		BIO = 0,
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = 0
+	)
+
+	protection_cold = list(
+		BODY_TORSO = 5,
+		BODY_ARM_LEFT = 4,
+		BODY_ARM_RIGHT = 4,
+		BODY_GROIN = 1
 	)

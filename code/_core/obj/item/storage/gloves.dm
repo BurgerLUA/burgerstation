@@ -19,3 +19,15 @@
 	var/obj/item/clothing/hands/gloves/colored/yellow/left/G2 = new(src.loc)
 	inventories[1].add_held_object(G1,bypass_checks = TRUE)
 	inventories[2].add_held_object(G2,bypass_checks = TRUE)
+
+
+
+/obj/item/storage/glovebox/padded/
+	name = "padded glovebox"
+	desc = "Contains 2 padded black gloves. Perfect for winter conditions."
+
+/obj/item/storage/glovebox/padded/on_spawn()
+	var/obj/item/clothing/hands/gloves/colored/padded/black/G1 = new(src.loc)
+	var/obj/item/clothing/hands/gloves/colored/padded/black/left/G2 = new(src.loc)
+	inventories[1].add_held_object(G1,bypass_checks = TRUE)
+	inventories[2].add_held_object(G2,bypass_checks = TRUE)

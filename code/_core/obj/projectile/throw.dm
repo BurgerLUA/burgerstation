@@ -11,9 +11,7 @@
 	. =..()
 
 	for(var/atom/movable/A in src.contents)
-		if(hit_atom == target_turf && is_floor(target_turf))
-			A.force_move(target_turf)
-		else
+		if(!is_floor(hit_atom))
 			A.force_move(previous_loc)
 			A.pixel_x = vel_x
 			A.pixel_y = vel_y
@@ -24,6 +22,8 @@
 				L.add_stun(guessed_velocity)
 				L.add_paralyze(guessed_velocity*0.5)
 				L.adjust_brute_loss(guessed_velocity)
+		else
+			A.force_move(hit_atom)
 
 
 	return .

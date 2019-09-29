@@ -138,11 +138,12 @@
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_container)
-		if(is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1) //Open the inventory
-			return click_self(caller,location,control,params)
+		if(is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1 && click_self(caller,location,control,params)) //Open the inventory
+			return TRUE
 
 		if(is_item(object)) //Add to the inventory
 			add_to_inventory(caller,object,TRUE)
+			return TRUE
 
 	return 	..()
 
