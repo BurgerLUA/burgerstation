@@ -67,7 +67,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 
 	return .
 
-/obj/hud/button/chargen/change_hairstyle/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
@@ -109,7 +109,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 
 	..()
 
-/obj/hud/button/chargen/hairstyle/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.handle_hairstyle_chargen(hair_num)
@@ -119,7 +119,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+4"
 
-/obj/hud/button/chargen/hairstyle/main/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/hairstyle/main/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/desired_color = input("Hair Color") as color

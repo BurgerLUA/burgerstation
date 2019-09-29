@@ -18,7 +18,7 @@
 	opacity = 0
 
 
-/obj/structure/interactive/localmachine/snowflake/airlock/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/localmachine/snowflake/airlock/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_mob(caller))
 		return TRUE

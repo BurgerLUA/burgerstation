@@ -7,7 +7,7 @@
 	return FALSE
 
 
-/obj/item/clothing/clicked_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 

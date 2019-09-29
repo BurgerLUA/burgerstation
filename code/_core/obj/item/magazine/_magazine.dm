@@ -21,7 +21,7 @@
 /obj/item/magazine/proc/get_ammo_count()
 	return length(stored_bullets)
 
-/obj/item/magazine/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object()
 

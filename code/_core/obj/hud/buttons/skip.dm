@@ -10,6 +10,6 @@
 	flags = FLAGS_HUD_SPECIAL
 
 
-/obj/hud/button/skip/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/skip/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	caller.skip_cutscene = TRUE
 	return ..()

@@ -49,7 +49,7 @@ obj/structure/interactive/computer/console/old/chargen_job
 	computer_type = "library"
 	keyboard_type = ""
 
-obj/structure/interactive/computer/console/old/chargen_job/clicked_by_object(caller,object,location,control,params)
+obj/structure/interactive/computer/console/old/chargen_job/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_player(caller))
 		return TRUE

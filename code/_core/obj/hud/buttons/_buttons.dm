@@ -50,5 +50,5 @@
 	return TRUE
 
 
-/obj/hud/button/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	return TRUE

@@ -1,16 +1,3 @@
-/obj/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
-
-	var/atom/defer_self = src.defer_click_on_object()
-	var/atom/defer_object = object.defer_click_on_object()
-
-	if(object.clicked_by_object(caller,defer_self,location,control,params))
-		return TRUE
-
-	if(defer_self.attack(caller,defer_object,params)) //Attack the object, I guess.
-		return TRUE
-
-	return FALSE
-
 /obj/proc/get_held()
 	if(is_held())
 		var/obj/hud/inventory/I = src.loc

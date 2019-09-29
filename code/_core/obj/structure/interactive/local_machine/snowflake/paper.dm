@@ -15,7 +15,7 @@
 	name = "skillsheet"
 	icon_state = "none"
 
-/obj/structure/interactive/localmachine/snowflake/paper/chargen/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/localmachine/snowflake/paper/chargen/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_player(caller))
 		return TRUE

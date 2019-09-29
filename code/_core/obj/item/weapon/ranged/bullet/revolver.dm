@@ -25,7 +25,7 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/bullet/revolver/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(open && object && is_inventory(object) && src && src.loc && is_inventory(src.loc))
 		var/obj/hud/inventory/I = object

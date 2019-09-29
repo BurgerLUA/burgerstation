@@ -42,7 +42,7 @@
 
 	return returning_text
 
-/obj/structure/interactive/shop_holder/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/shop_holder/clicked_on_by_object(caller,object,location,control,params)
 
 	INTERACT_CHECK
 

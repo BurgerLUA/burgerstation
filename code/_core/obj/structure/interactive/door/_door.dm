@@ -74,7 +74,7 @@ obj/structure/interactive/door/proc/close()
 		update_icon()
 
 
-obj/structure/interactive/door/clicked_by_object(caller,object,location,control,params)
+obj/structure/interactive/door/clicked_on_by_object(caller,object,location,control,params)
 
 	INTERACT_CHECK
 

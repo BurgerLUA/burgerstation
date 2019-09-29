@@ -33,7 +33,7 @@
 		animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
 
-/obj/hud/button/slot/clicked_by_object(caller,object,location,control,params)
+/obj/hud/button/slot/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

@@ -4,7 +4,7 @@
 
 	screen_loc = "CENTER-1.5,CENTER-2"
 
-/obj/hud/button/chargen/skin_color/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/skin_color/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
@@ -21,7 +21,7 @@
 
 	screen_loc = "CENTER+1.5,CENTER-2"
 
-/obj/hud/button/chargen/eye_color/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/eye_color/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

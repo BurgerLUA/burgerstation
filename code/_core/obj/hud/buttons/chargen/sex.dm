@@ -4,7 +4,7 @@
 
 	var/sex_button = MALE
 
-/obj/hud/button/chargen/sex/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/sex/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

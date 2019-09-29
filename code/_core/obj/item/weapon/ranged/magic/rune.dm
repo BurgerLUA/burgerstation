@@ -76,11 +76,11 @@
 /obj/item/weapon/ranged/magic/rune/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE
 
-/obj/item/weapon/ranged/magic/rune/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/magic/rune/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(!can_be_held(caller,object))
 		var/spellcraft/effect/E = all_effects[stored_effect]
-		if(E.clicked_by_object(caller,object,location,control,params,src))
+		if(E.clicked_on_by_object(caller,object,location,control,params,src))
 			return TRUE
 
 	return ..()

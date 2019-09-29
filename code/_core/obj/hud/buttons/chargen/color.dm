@@ -7,7 +7,7 @@
 	var/green = 0
 	var/blue = 0
 
-/obj/hud/button/chargen/color/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/color/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	var/icon_x = params[PARAM_ICON_X]
 	var/icon_y = params[PARAM_ICON_Y]

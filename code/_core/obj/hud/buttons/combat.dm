@@ -7,7 +7,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/resist/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/resist/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	//Resist code here
 	return TRUE
 
@@ -29,7 +29,7 @@
 
 	..()
 
-/obj/hud/button/resist_auto/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/resist_auto/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	owner.auto_resist = !owner.auto_resist
 	update_icon()
 	return TRUE
@@ -83,7 +83,7 @@
 
 	..()
 
-/obj/hud/button/targeting/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/targeting/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_living(caller))
 		return
@@ -135,7 +135,7 @@
 
 	var/help_intent = 1
 
-/obj/hud/button/intent/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/intent/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!params[PARAM_ICON_Y])
 		return
@@ -194,7 +194,7 @@
 
 	..()
 
-/obj/hud/button/defense/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/defense/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!params[PARAM_ICON_Y])
 		return

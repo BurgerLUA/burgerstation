@@ -29,7 +29,7 @@ var/global/list/local_machines = list()
 	for(var/mob/M in all_mobs_with_clients)
 		update_for_mob(M)
 
-/obj/structure/interactive/localmachine/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/localmachine/clicked_on_by_object(caller,object,location,control,params)
 	if(is_mob(caller))
 		var/mob/M = caller
 		disallowed_mobs += M

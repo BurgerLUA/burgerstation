@@ -27,7 +27,7 @@ obj/structure/interactive/wishgranter/New()
 obj/structure/interactive/wishgranter/spawn_and_join_faction
 	var/faction_to_join
 
-obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_by_object(caller,object,location,control,params)
+obj/structure/interactive/wishgranter/spawn_and_join_faction/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_observer(caller))
 		return FALSE
@@ -73,7 +73,7 @@ obj/structure/interactive/wishgranter/normal
 	name = "tutorial wishgranter"
 	id = "tutorial"
 
-obj/structure/interactive/wishgranter/normal/clicked_by_object(caller,object,location,control,params)
+obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_player(caller))
 		return FALSE

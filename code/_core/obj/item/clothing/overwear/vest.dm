@@ -29,7 +29,7 @@
 		FATIGUE = 0
 	)
 
-/obj/item/clothing/overwear/armor/vest/clicked_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/armor/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		click_self(caller,location,control,params)

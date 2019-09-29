@@ -9,7 +9,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/sneak/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/sneak/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_living(caller))
 		return
@@ -37,7 +37,7 @@
 	icon_state = "move_[move_mode]"
 	..()
 
-/obj/hud/button/move/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/move/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(params[PARAM_ICON_X] && params[PARAM_ICON_Y] && text2num(params[PARAM_ICON_Y]) >= 10)
 

@@ -4,7 +4,7 @@
 	var/loot_id = "basic"
 	var/loot_chance = 100
 
-/obj/structure/interactive/lootable/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/lootable/clicked_on_by_object(caller,object,location,control,params)
 
 	INTERACT_CHECK
 

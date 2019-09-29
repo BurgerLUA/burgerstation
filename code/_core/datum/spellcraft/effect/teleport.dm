@@ -34,7 +34,7 @@
 
 	return ..()
 
-/spellcraft/effect/teleport/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params,var/obj/item/weapon/ranged/magic/rune/R)
+/spellcraft/effect/teleport/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params,var/obj/item/weapon/ranged/magic/rune/R)
 
 	if(caller.loc != R.loc)
 		caller.to_chat(span("notice","\The [R] doesn't seem to react."))

@@ -59,12 +59,12 @@
 		caller.to_chat(span("notice","You can only attack with this when wielded! (CTRL+CLICK)"))
 		return TRUE
 
-	return src.attack(caller,object,params)
+	return ..()
 
 /obj/item/weapon/click_self(var/mob/caller)
 	return TRUE
 
-/obj/item/weapon/clicked_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/weapon/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(can_wield && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && caller.movement_flags & MOVEMENT_CROUCHING)
 

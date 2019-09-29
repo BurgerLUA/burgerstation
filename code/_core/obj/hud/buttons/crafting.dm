@@ -17,7 +17,7 @@
 	screen_loc = "CENTER-2,CENTER"
 
 
-/obj/hud/button/crafting/craft/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()
@@ -32,7 +32,7 @@
 	icon_state = "close_crafting"
 	screen_loc = "CENTER-6,CENTER"
 
-/obj/hud/button/crafting/close/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/crafting/close/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

@@ -39,7 +39,7 @@
 			var/obj/hud/inventory/object_as_inventory = object
 			if(!object_as_inventory.drag_to_take && defer_object_as_item.transfer_item(src))
 				return TRUE
-		else if (defer_object_as_item.transfer_item(src))
+		else if (!defer_object_as_item.anchored && defer_object_as_item.transfer_item(src))
 			return TRUE
 
 	if(is_item(defer_self))
@@ -53,41 +53,7 @@
 
 	return ..()
 
-obj/hud/inventory/clicked_by_object(var/atom/caller,var/atom/object,location,control,params)
-
-	var/atom/defer_self = src.defer_click_on_object()
-	var/atom/defer_object = object.defer_click_on_object()
-
-	if(src != defer_self && defer_self.clicked_by_object(caller,defer_object))
-		return TRUE
-
-	/*
-	if(is_inventory(object))
-		var/obj/hud/inventory/I = object
-		var/obj/item/O = get_top_held_object() || get_top_worn_object()
-		if(O && O.transfer_item(I))
-			return TRUE
-	*/
-
-	return ..()
-
-obj/hud/inventory/drop_on_object(var/atom/caller,var/atom/object)
-
-	var/atom/defer_self = src.defer_click_on_object()
-	var/atom/defer_object = object.defer_click_on_object()
-
-	if(src != defer_self && defer_self.drop_on_object(caller,defer_object))
-		return TRUE
-
-	return ..()
-
 obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
-
-	var/atom/defer_self = src.defer_click_on_object()
-	var/atom/defer_object = object.defer_click_on_object()
-
-	if(src != defer_self && defer_self.dropped_on_by_object(caller,defer_object))
-		return TRUE
 
 	if(is_item(object))
 		var/obj/item/object_as_item = object

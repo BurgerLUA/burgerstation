@@ -14,7 +14,7 @@
 		appearance = stored_item.appearance
 	..()
 
-/obj/structure/interactive/localmachine/item/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/localmachine/item/clicked_on_by_object(caller,object,location,control,params)
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/obj/item/local_item_clone = new stored_item.type(loc)

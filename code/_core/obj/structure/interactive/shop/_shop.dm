@@ -95,7 +95,7 @@
 	return returning_text
 
 
-/obj/structure/interactive/shop/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/shop/clicked_on_by_object(caller,object,location,control,params)
 
 	world.log << "The object is: [object]!"
 

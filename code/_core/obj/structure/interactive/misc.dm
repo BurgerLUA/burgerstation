@@ -14,7 +14,7 @@ obj/structure/interactive/misc/dresser
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-obj/structure/interactive/misc/dresser/chargen/clicked_by_object(caller,object,location,control,params)
+obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return TRUE

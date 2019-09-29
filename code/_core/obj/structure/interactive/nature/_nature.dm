@@ -22,7 +22,7 @@ obj/structure/scenery/grass_bush/New()
 	icon_state = "grassybush_[rand(1,4)]"
 
 
-obj/structure/scenery/grass_bush/clicked_by_object(caller,object,location,control,params)
+obj/structure/scenery/grass_bush/clicked_on_by_object(caller,object,location,control,params)
 	//Give loot
 
 	return TRUE

@@ -6,9 +6,11 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/new_character/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
 	if(!is_observer(caller))
 		return TRUE
+
 	if(world_state != STATE_RUNNING)
 		caller.to_chat(span("notice","The game has not loaded yet!"))
 		return TRUE
@@ -26,7 +28,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/load_character/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(!is_observer(caller))
 		return TRUE
 	if(world_state != STATE_RUNNING)

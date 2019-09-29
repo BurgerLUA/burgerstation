@@ -100,7 +100,7 @@
 	return ..()
 
 
-/obj/vehicle/clicked_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
+/obj/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
 
 	if(!is_living(caller) || get_dist(caller,src) > 1)
 		return ..()

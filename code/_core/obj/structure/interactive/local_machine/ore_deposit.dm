@@ -18,7 +18,7 @@
 
 	return ..()
 
-/obj/structure/interactive/localmachine/ore_deposit/clicked_by_object(caller,object,location,control,params)
+/obj/structure/interactive/localmachine/ore_deposit/clicked_on_by_object(caller,object,location,control,params)
 
 	INTERACT_CHECK
 

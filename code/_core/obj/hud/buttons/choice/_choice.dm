@@ -15,7 +15,7 @@
 	linked_choice = desired_choice
 	return ..()
 
-/obj/hud/button/choice/clicked_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/choice/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	linked_choice.choice_made = id
 	return TRUE
 
