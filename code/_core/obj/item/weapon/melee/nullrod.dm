@@ -41,7 +41,7 @@
 
 
 /obj/item/weapon/melee/null_rod/dagger
-	name = "null staff"
+	name = "null dagger"
 	desc = "A short holy dagger that is somehow legal for a priest to carry around openly. Has the ability to block magic, and is also good for parrying attacks."
 	icon = 'icons/obj/items/weapons/melee/clubs/nullathame.dmi'
 	damage_type = "stunbaton_off"

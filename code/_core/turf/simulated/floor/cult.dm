@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/cult.dmi'
 	icon_state = "floor1"
 
-	light_color = "#FFFFFF"
+	desired_light_color = "#FFFFFF"
 
 /turf/simulated/floor/cult/New(var/desired_loc)
 

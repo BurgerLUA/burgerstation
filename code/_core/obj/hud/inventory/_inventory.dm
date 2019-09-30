@@ -63,6 +63,9 @@
 
 	var/draw_extra = FALSE
 
+	var/should_add_held = TRUE
+	var/should_add_worn = TRUE
+
 /obj/hud/inventory/proc/show(var/should_show,var/speed)
 	if(should_show)
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
@@ -196,9 +199,10 @@
 	held_objects += I
 	if(owner)
 		I.update_owner(owner)
-		owner.held_objects += I
-		owner.update_slowdown_mul()
-		update_held_icon(I)
+		if(should_add_held)
+			owner.held_objects += I
+			owner.update_slowdown_mul()
+			update_held_icon(I)
 
 	update_overlays()
 	update_stats()
@@ -234,10 +238,11 @@
 	update_stats()
 	if(owner)
 		I.update_owner(owner)
-		owner.worn_objects += I
-		owner.update_slowdown_mul()
-		owner.update_protection()
-		update_worn_icon(I)
+		if(should_add_worn)
+			owner.worn_objects += I
+			owner.update_slowdown_mul()
+			owner.update_protection()
+			update_worn_icon(I)
 
 	return TRUE
 
@@ -303,12 +308,14 @@
 
 	if(I in held_objects)
 		held_objects -= I
-		owner.held_objects -= I
+		if(should_add_held)
+			owner.held_objects -= I
 		was_removed = TRUE
 
 	if(I in worn_objects)
 		worn_objects -= I
-		owner.worn_objects -= I
+		if(should_add_worn)
+			owner.worn_objects -= I
 		was_removed = TRUE
 
 	if(was_removed)

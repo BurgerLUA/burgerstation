@@ -24,6 +24,9 @@
 		'sounds/effects/inventory/rustle5.ogg'
 	)
 
+	should_add_worn = FALSE
+	should_add_held = FALSE
+
 
 /obj/hud/inventory/dynamic/remove_object(var/obj/item/I,var/turf/drop_loc)
 

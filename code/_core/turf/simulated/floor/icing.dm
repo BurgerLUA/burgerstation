@@ -6,6 +6,6 @@
 
 	layer = LAYER_FLOOR
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	light_range = DEFAULT_RANGE_AMBIENT
-	light_color = "#FFF4C1"
+	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	desired_light_range = DEFAULT_RANGE_AMBIENT
+	desired_light_color = "#FFF4C1"

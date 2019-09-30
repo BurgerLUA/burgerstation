@@ -24,6 +24,8 @@
 		icon_state_held_left = initial(icon_state_held_left)
 		icon_state_held_right = initial(icon_state_held_right)
 
+	update_held_icon()
+
 	..()
 
 /obj/item/weapon/melee/energy/sword/

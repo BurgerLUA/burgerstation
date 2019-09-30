@@ -5,6 +5,6 @@
 	corner_category = "diona_wall"
 	corner_icons = TRUE
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT_STRONG
-	light_range = 2
-	light_color = "#9FD733"
+	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT_STRONG
+	desired_light_range = 2
+	desired_light_color = "#9FD733"

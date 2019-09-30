@@ -13,9 +13,9 @@
 
 	layer = LAYER_FLOOR_LARGE + 0.2
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	light_range = DEFAULT_RANGE_AMBIENT
-	light_color = "#FFFFFF"
+	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	desired_light_range = DEFAULT_RANGE_AMBIENT
+	desired_light_color = "#FFFFFF"
 
 /turf/simulated/floor/candy_cane/
 	name = "candy cane bridge"
@@ -32,6 +32,6 @@
 
 	layer = LAYER_FLOOR_LARGE + 0.3
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	light_range = DEFAULT_RANGE_AMBIENT
-	light_color = "#FFFFFF"
+	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	desired_light_range = DEFAULT_RANGE_AMBIENT
+	desired_light_color = "#FFFFFF"

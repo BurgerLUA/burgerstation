@@ -3,6 +3,6 @@
 	icon = 'icons/obj/structure/light.dmi'
 	icon_state = "candle"
 
-	light_power = 0.5
-	light_range = 4
-	light_color = "#FFFFB5"
+	desired_light_power = 0.5
+	desired_light_range = 4
+	desired_light_color = "#FFFFB5"

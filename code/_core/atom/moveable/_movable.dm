@@ -21,7 +21,8 @@
 
 /atom/movable/Initialize()
 	. = ..()
-	area = get_area(src) //TODO: Is this needed?
+	if(loc)
+		area = get_area(src) //TODO: Is this needed?
 	return .
 
 /atom/movable/destroy()

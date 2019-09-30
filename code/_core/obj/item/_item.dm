@@ -237,18 +237,47 @@
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE
 
+/obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
+
+	var/obj/hud/inventory/I = inventory_override || src.loc
+
+	if(!I || !is_inventory(I))
+		return FALSE
+
+	if(!I.owner || !is_advanced(I.owner))
+		return FALSE
+
+	var/mob/living/advanced/A = I.owner
+
+	A.update_lighting()
+
+	return TRUE
+
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
 
 	if(is_container)
 		for(var/obj/hud/inventory/I in inventories)
 			I.update_owner(new_location.owner)
 
-	return
+	if(new_location)
+		update_lighting_for_owner(new_location)
+
+	return TRUE
+
+/obj/item/set_light(range,power,color,angle,no_update)
+	. = ..()
+	update_lighting_for_owner()
+	return .
 
 /obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+
 	if(delete_on_drop)
 		qdel(src)
-	return
+		return TRUE
+
+	update_lighting_for_owner(old_inventory)
+
+	return TRUE
 
 /obj/item/proc/inventory_to_list()
 

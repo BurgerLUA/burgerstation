@@ -5,6 +5,6 @@
 	corner_icons = TRUE
 	corner_category = "ice_wall"
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	light_range = DEFAULT_RANGE_AMBIENT
-	light_color = "#FFFFFF"
+	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	desired_light_range = DEFAULT_RANGE_AMBIENT
+	desired_light_color = "#FFFFFF"

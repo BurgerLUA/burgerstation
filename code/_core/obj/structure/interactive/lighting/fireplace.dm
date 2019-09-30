@@ -7,9 +7,9 @@
 	icon = 'icons/obj/structure/fireplace.dmi'
 	icon_state = "fireplace"
 
-	light_power = 0.5
-	light_range = 2
-	light_color = "#FFFFB5"
+	desired_light_power = 0.5
+	desired_light_range = 2
+	desired_light_color = "#FFFFB5"
 
 /obj/structure/interactive/lighting/fireplace/New()
 	..()
@@ -20,10 +20,10 @@
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
-	if(light_range <= 0)
+	if(desired_light_range <= 0)
 		return ..()
 
-	var/light_mod = Clamp(round(light_range-1),0,4)
+	var/light_mod = Clamp(round(desired_light_range-1),0,4)
 	var/icon/I = new /icon(icon,icon_state)
 	var/icon/F = new /icon(icon,"fireplace_fire[light_mod]")
 
@@ -36,16 +36,16 @@
 	icon = I
 
 /obj/structure/interactive/lighting/fireplace/fire01
-	light_range = 2
+	desired_light_range = 2
 
 /obj/structure/interactive/lighting/fireplace/fire02
-	light_range = 3
+	desired_light_range = 3
 
 /obj/structure/interactive/lighting/fireplace/fire03
-	light_range = 4
+	desired_light_range = 4
 
 /obj/structure/interactive/lighting/fireplace/fire04
-	light_range = 5
+	desired_light_range = 5
 
 /obj/structure/interactive/lighting/fireplace/fire05
-	light_range = 6
+	desired_light_range = 6

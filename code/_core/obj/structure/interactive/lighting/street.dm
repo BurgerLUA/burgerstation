@@ -4,9 +4,9 @@
 	icon = 'icons/obj/structure/light_large.dmi'
 	icon_state = "streetlamp"
 
-	light_power = 0.5
-	light_range = 4
-	light_color = "#FFFFB5"
+	desired_light_power = 0.5
+	desired_light_range = 4
+	desired_light_color = "#FFFFB5"
 
 	layer = LAYER_LARGE_OBJ
 

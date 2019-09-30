@@ -4,16 +4,16 @@
 	icon = 'icons/obj/structure/lights.dmi'
 	icon_state = "tube"
 
-	light_power = 0.4
-	light_range = 6
-	light_color = "#FFFFAA"
+	desired_light_power = 0.4
+	desired_light_range = 6
+	desired_light_color = "#FFFFAA"
 
 	layer = LAYER_LARGE_OBJ
 
 /obj/structure/interactive/lighting/tube/off
-	light_power = 0
-	light_range = 0
-	light_color = "#FFFFFF"
+	desired_light_power = 0
+	desired_light_range = 0
+	desired_light_color = "#FFFFFF"
 
 /obj/structure/interactive/lighting/tube/off/update_icon()
 	return
@@ -35,9 +35,9 @@
 
 
 /obj/structure/interactive/lighting/tube/strong
-	light_power = 0.4
-	light_range = 8
+	desired_light_power = 0.4
+	desired_light_range = 8
 
 /obj/structure/interactive/lighting/tube/stronger
-	light_power = 0.8
-	light_range = 4
+	desired_light_power = 0.8
+	desired_light_range = 4

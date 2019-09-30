@@ -2,9 +2,9 @@
 	var/real_icon
 	var/real_icon_state
 
-	light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	light_range = DEFAULT_RANGE_AMBIENT
-	light_color = "#FFFFFF"
+	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
+	desired_light_range = DEFAULT_RANGE_AMBIENT
+	desired_light_color = "#FFFFFF"
 
 	var/list/spawning_data //For mob respawns.
 
@@ -22,7 +22,7 @@
 		icon_state = real_icon_state
 
 	var/area/A = src.loc
-	light_power *= A.area_light_power
+	desired_light_power *= A.area_light_power
 	spawning_data = list()
 
 	..()

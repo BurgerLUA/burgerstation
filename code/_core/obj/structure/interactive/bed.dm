@@ -39,8 +39,8 @@ obj/structure/interactive/bed/sleeper
 	name = "sleeper"
 	icon_state = "sleeper"
 
-	light_power = 0.25
-	light_range = 3
-	light_color = "#3AC2FF"
+	desired_light_power = 0.25
+	desired_light_range = 3
+	desired_light_color = "#3AC2FF"
 
 

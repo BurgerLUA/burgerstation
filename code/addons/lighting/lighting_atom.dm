@@ -1,6 +1,12 @@
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.4
 
 /atom/
+
+	var/desired_light_power = 0
+	var/desired_light_range = 0
+	var/desired_light_color = 0
+
+
 	var/light_power = 1 // Intensity of the light.
 	var/light_range = 0 // Range in tiles of the light.
 	var/light_color     // Hexadecimal RGB string representing the colour of the light.
@@ -15,12 +21,6 @@
 
 // Nonesensical value for l_color default, so we can detect if it gets set to null.
 #define NONSENSICAL_VALUE -99999
-
-/atom/New(var/desired_loc)
-	. = ..()
-	if(light_power && light_range && !is_turf(src))
-		set_light(light_range,light_power,light_color)
-	return .
 
 // The proc you should always use to set the light of this atom.
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE)

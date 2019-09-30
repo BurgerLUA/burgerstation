@@ -11,7 +11,7 @@
 	density_up = TRUE
 	density_down = TRUE
 
-	light_power = 0
+	desired_light_power = 0
 
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC

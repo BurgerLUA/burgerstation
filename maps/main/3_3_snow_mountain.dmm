@@ -43,7 +43,7 @@
 "aQ" = (/turf/simulated/floor/colored/snow,/area/world/mountain/interior/cave)
 "aR" = (/mob/living/simple/npc/cult/cultist,/turf/simulated/floor/colored/dirt/snow,/area/world/mountain/exterior)
 "aS" = (/mob/living/simple/npc/cult/cultist,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
-"aT" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
+"aT" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/melee/torch,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aU" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/overwear/coat/winter,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aV" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/yellow,/obj/item/storage/pouch/small4,/obj/item/clothing/glasses/sun,/obj/item/clothing/underbottom/underwear/long_johns/grey,/obj/item/clothing/overwear/cape/hide,/obj/item/clothing/overwear/cloak/brown,/obj/item/storage/briefcase/syndicate/rifle,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aW" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/padded,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
@@ -61,6 +61,7 @@
 "bi" = (/turf/simulated/wall/rock,/area/world/forest/interior/village/cave)
 "bj" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/village/cave)
 "bk" = (/turf/simulated/wall/rock/snow,/area/world/forest/interior/village/cave)
+"bl" = (/obj/item/weapon/melee/torch,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior/village)
 
 (1,1,1) = {"
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
@@ -180,7 +181,7 @@ ajajajajajajakajafakakakakakajafajapapapapapapajajajajajaeajafajakajajajafakakaj
 ajajajajajafakajajakajajajakakajajajapapapapapajajafajajajajajakakajajajakakakajajafajakajakakajajajafajajajajajajafakakajajajajafajajajajajajakakakajajajabababababatataubcaKaKaKaKaKaKauaDaDaDaDaDaDatatatatatababababajajajapapapapapapapapapajajajajajajabab
 ajajafajajakakajaeakajafajajakakakajapapapapapapajajajajajajakakajajafajakajajafajajakakajakajajajajajajajafakakakakajajajajajajajajajajajajakakakajajajajajababababatatauaYaKaKaKaKaKaKaKaDavaDaDaDatatatatatatabababababajajapapapapapapapapapapajajajajajabab
 ajajakakakajajajajakakakajajajajajajapapapapapapajajajajajajajajajajajakakajajajajajakajajakajafajajajafajakakajajakajajafajajajajajajafakakakakakajajajajajababababatatauaKaKaKaKaKaKaKauaDavaDaDavavataFatatatatabababababajapapapapapapapapapapapajajajajabab
-akakakajajakajajajakakakakajafajajajajapapapapapajajajajajajajajafajajakajafajajajajajakafakajajajajajajajakajajajajajajajajajajajajakakakajajakakajafajajajababababatatauaZbabdbbbebfaTauatavaDaDavavavatatatatatababababababapapapapapapapapapapapapajajajabab
+akakakajajakajajajakakakakajafajajajajapapapapapajajajajajajajajafajajakajafajajajajajakafakajajajajajajajakajajajajajajajajajajajajakakakajajakakajafajajajababababatatauaZaTbabdbbbebfaublavaDaDavavavatatatatatababababababapapapapapapapapapapapapajajajabab
 ajajajajajakajafakakajajakajajajajajajapapapapapajafajajajajajajakakajakakajajajafajajakakakakajajajafajajajajafajajajajajajajafajakakajajajakakakajajajaeajababababatavauauauauauauauauauaJavavaDaDavavavataFatatababababababapapapaOapapapapapapapapapajajabab
 ajajajajajajajakakakajajakakajajajajafapapapapapajajajajajajajajakajafajakajajajajajajajakajajafajajakakajajajajajajajafajajakakakajakakajajakakakakajajajaeajababatavavatatatatatatatatatatatavavaDaDaDavavatatatababababababapapapaOapapaOaOapapapapapapajabab
 ajajafajakajakakajajajafajakajajajajajajapapapapajajajajajajafajakajajajajajajafajajafakakajajajajajajababababajajajaeajajajakakajajakajajajajakajajajajajajajajaJatatatatatatatabababababatatatavaDaDaDavatatatababababababapapapapaOapapaiaOapapaOapapapapapab

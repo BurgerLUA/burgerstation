@@ -1,5 +1,5 @@
 /turf/simulated/wall/light
-	name = "white light"
+	name = "white desired_light"
 	icon = 'icons/lighting.dmi'
 	icon_state = "white"
 
@@ -9,9 +9,9 @@
 	icon = 'icons/turf/space/abyss.dmi'
 	icon_state = "abyss"
 
-	light_power = 1
-	light_range = 2
-	light_color = "#FFFFFF"
+	desired_light_power = 1
+	desired_light_range = 2
+	desired_light_color = "#FFFFFF"
 
 /turf/simulated/wall/hole
 	icon = 'icons/lighting.dmi'

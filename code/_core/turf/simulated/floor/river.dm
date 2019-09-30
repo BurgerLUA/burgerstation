@@ -6,13 +6,13 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	light_power = 0.05
-	light_range = 8
-	light_color = "#AAAAFF"
+	desired_light_power = 0.05
+	desired_light_range = 8
+	desired_light_color = "#AAAAFF"
 
 /turf/simulated/floor/river/New(var/desired_loc)
 	. = ..()
-	set_light(light_range,light_power,light_color)
+	set_light(desired_light_range,desired_light_power,desired_light_color)
 	return .
 
 /turf/simulated/floor/river/walkable
@@ -27,7 +27,7 @@
 
 /*
 /turf/simulated/floor/river/New()
-	var/lightness = 255 - x*0.25
-	color = rgb(lightness,lightness,lightness)
+	var/desired_lightness = 255 - x*0.25
+	color = rgb(desired_lightness,desired_lightness,desired_lightness)
 	..()
 */

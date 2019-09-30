@@ -4,13 +4,13 @@
 	icon_state = "1"
 	var/generate = TRUE
 
-	light_power = 1
-	light_range = 4
-	light_color = "#CCD9E8"
+	desired_light_power = 1
+	desired_light_range = 4
+	desired_light_color = "#CCD9E8"
 
 /turf/simulated/floor/space/New()
 	. = ..()
-	set_light(light_range,light_power,light_color)
+	set_light(desired_light_range,desired_light_power,desired_light_color)
 	update_icon()
 	return TRUE
 

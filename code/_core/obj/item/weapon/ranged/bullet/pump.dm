@@ -6,6 +6,8 @@
 
 	open_icon = FALSE
 
+	var/pump_sound = 'sounds/weapons/shotgun_pump.ogg'
+
 /obj/item/weapon/ranged/bullet/pump/get_damage_type()
 	return length(stored_bullets) && stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
 
@@ -26,7 +28,7 @@
 		stored_bullets -= stored_chamber
 
 	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapons/shotgun_pump.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(pump_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	needs_pump = FALSE
 	update_icon()
 
