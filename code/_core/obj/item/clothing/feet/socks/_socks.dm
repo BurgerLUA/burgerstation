@@ -21,7 +21,7 @@
 		LASER = 0,
 		MAGIC = 10,
 		HEAT = 0,
-		COLD = 50,
+		COLD = 25,
 		BOMB = 0,
 		BIO = 0,
 		RAD = 0,

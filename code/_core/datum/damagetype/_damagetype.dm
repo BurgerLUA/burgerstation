@@ -300,7 +300,7 @@
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked) " : ""]damage [hit_object == victim ? "to yourself" : "to your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
-	if(is_living(blamed)) //TODO: Seperate log for blamed.
+	if(is_living(blamed) && victim.health_max) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed
 		L.to_chat(span("notice","Dealt <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked) " : ""]damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 

@@ -1,17 +1,24 @@
 /client/proc/to_chat(var/text,var/chat_type)
+
 	text = "<div class='message'>[text]</div>"
 
+	var/output_target_list = list()
+
 	if(!(chat_type & CHAT_TYPE_COMBAT))
-		src << output(text,"chat_all.output")
+		output_target_list += "chat_all.output"
 
 	if(chat_type & CHAT_TYPE_SAY)
-		src << output(text,"chat_say.output")
+		output_target_list += "chat_say.output"
 
 	if(chat_type & CHAT_TYPE_OOC)
-		src << output(text,"chat_ooc.output")
+		output_target_list += "chat_ooc.output"
 
 	if(chat_type & CHAT_TYPE_LOOC)
-		src << output(text,"chat_looc.output")
+		output_target_list += "chat_looc.output"
 
 	if(chat_type & CHAT_TYPE_COMBAT)
-		src << output(text,"chat_combat.output")
+		output_target_list += "chat_combat.output"
+
+	queued_chat_messages.Add(list(list("text" = text,"output_target_list" = output_target_list)))
+
+	return TRUE

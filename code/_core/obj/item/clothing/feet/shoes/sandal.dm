@@ -14,7 +14,7 @@
 		PIERCE = 0,
 		LASER = 0,
 		MAGIC = 50,
-		HEAT = 10,
+		HEAT = 25,
 		COLD = 0,
 		BOMB = 0,
 		BIO = 0,

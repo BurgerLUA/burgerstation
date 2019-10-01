@@ -168,7 +168,7 @@
 
 	var/should_update_health = FALSE
 
-	var/damage_min = -1
+	var/damage_min = -2*(LIFE_TICK_SLOW/LIFE_TICK)
 	var/damage_max = health_max*0.01*(LIFE_TICK_SLOW/LIFE_TICK)
 
 	for(var/obj/item/organ/O in organs)

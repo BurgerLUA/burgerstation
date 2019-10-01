@@ -3,6 +3,9 @@
 
 /atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
+	if(!attacker)
+		attacker = src
+
 	if(!blamed)
 		blamed = attacker
 

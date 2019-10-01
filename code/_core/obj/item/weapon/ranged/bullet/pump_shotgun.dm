@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/basic_shotgun.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -12,7 +12,7 @@
 
 	bullet_type = "shotgun"
 
-	//shoot_sounds = list('sounds/weapons/pumpshotgun/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
 
 	view_punch = 12
 

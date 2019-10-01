@@ -96,7 +96,21 @@ var/global/list/all_living = list()
 
 	var/list/obj/hud/screen_blood/screen_blood
 
-	var/list/armor_base = list() //Base armor for the mob.
+	var/list/armor_base = list(  //Base armor for the mob.
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 25,
+		COLD = -25,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 25,
+		DARK = 25,
+		FATIGUE = 0
+	)
 
 	interact_delay_base = 4
 

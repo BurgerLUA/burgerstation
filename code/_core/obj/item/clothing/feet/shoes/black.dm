@@ -10,12 +10,12 @@
 
 	defense_rating = list(
 		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
+		BLUNT = 0,
+		PIERCE = 0,
 		LASER = 0,
-		MAGIC = 15,
+		MAGIC = 10,
 		HEAT = 0,
-		COLD = 5,
+		COLD = 10,
 		BOMB = 0,
 		BIO = 0,
 		RAD = 0,

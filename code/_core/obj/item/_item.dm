@@ -7,6 +7,8 @@
 
 	var/value = 1 //Value in whatever currency this world uses.
 
+	var/default_direction = SOUTH
+
 	var/delete_on_drop = FALSE
 
 	var/item_count_current = 1
@@ -177,6 +179,8 @@
 
 /obj/item/New(var/desired_loc)
 
+	dir = default_direction
+
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
@@ -203,7 +207,7 @@
 			D.max_weight = container_max_weight
 		inventories += D
 
-	. = ..()
+	return ..()
 
 /obj/item/proc/update_owner(desired_owner)
 	for(var/v in inventories)

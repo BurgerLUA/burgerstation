@@ -1,5 +1,9 @@
 /savedata/proc/load_and_create_object(var/list/object_data,var/loc)
 
+	if(!object_data)
+		LOG_ERROR("Tried to create an object with a blank object_data list!")
+		return FALSE
+
 	var/o_type = object_data["type"]
 	var/obj/O
 
@@ -61,7 +65,6 @@
 
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
-
 		if(object_data["stored_bullets"])
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
@@ -77,7 +80,10 @@
 	if(is_pump_gun(O))
 		var/obj/item/weapon/ranged/bullet/pump/P = O
 		if(object_data["stored_chamber"])
-			P.stored_chamber = load_and_create_object(object_data["stored_chamber"],P)
+			var/b_type = object_data["stored_chamber"]
+			var/obj/item/bullet/B = new b_type(P)
+			B.update_icon()
+			P.stored_chamber += B
 
 	if(is_magazine(O))
 		var/obj/item/magazine/M = O

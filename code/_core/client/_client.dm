@@ -51,6 +51,8 @@ var/global/list/all_clients = list()
 
 	var/update_stats = FALSE
 
+	var/list/queued_chat_messages = list()
+
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
 	winset(src,"chat_combat.output","style='[STYLESHEET]'")

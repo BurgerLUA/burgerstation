@@ -38,6 +38,7 @@
 	display_message(src,text_to_say,TEXT_LOOC)
 
 /mob/proc/to_chat(var/text,var/chat_type = CHAT_TYPE_INFO)
+
 	if(client)
 		client.to_chat(text,chat_type)
 		return TRUE

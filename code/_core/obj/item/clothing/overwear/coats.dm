@@ -97,5 +97,5 @@
 		BODY_TORSO = 5,
 		BODY_ARM_LEFT = 4,
 		BODY_ARM_RIGHT = 4,
-		BODY_GROIN = 1
+		BODY_GROIN = 2
 	)

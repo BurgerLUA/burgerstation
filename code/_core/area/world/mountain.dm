@@ -14,6 +14,12 @@
 	hazard = "cold"
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 
+	sunlight_freq = 4
+
+	desired_light_range = 4
+	desired_light_power = 1
+	desired_light_color = "#110D21"
+
 /area/world/mountain/exterior/village
 	name = "village"
 	icon_state = "safe"

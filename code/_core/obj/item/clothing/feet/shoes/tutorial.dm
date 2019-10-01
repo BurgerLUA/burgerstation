@@ -13,13 +13,13 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = 5,
-		MAGIC = 25,
+		MAGIC = -10,
 		HEAT = 5,
-		COLD = 10,
+		COLD = 30,
 		BOMB = 5,
 		BIO = 0,
 		RAD = 0,
-		HOLY = 0,
+		HOLY = -25,
 		DARK = 50,
 		FATIGUE = 0
 	)
