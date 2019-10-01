@@ -28,6 +28,13 @@ body {
 .bold{
 	font-weight: bold;
 }
+.centered {
+	text-align: center;
+}
+
+.underlined{
+	text-decoration: underline;
+}
 .notice{
 	color: blue;
 	font-style: italic;

@@ -441,6 +441,7 @@
 #include "code\_core\obj\hud\buttons\movement.dm"
 #include "code\_core\obj\hud\buttons\skip.dm"
 #include "code\_core\obj\hud\buttons\slot.dm"
+#include "code\_core\obj\hud\buttons\widget.dm"
 #include "code\_core\obj\hud\buttons\chargen\_chargen.dm"
 #include "code\_core\obj\hud\buttons\chargen\beardstyle.dm"
 #include "code\_core\obj\hud\buttons\chargen\hairstyle.dm"

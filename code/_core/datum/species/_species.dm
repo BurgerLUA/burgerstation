@@ -53,7 +53,9 @@
 		/obj/hud/button/boss_health,
 
 		/obj/hud/button/crafting/craft,
-		/obj/hud/button/crafting/close
+		/obj/hud/button/crafting/close,
+
+		/obj/hud/button/widget/experience
 
 	)
 

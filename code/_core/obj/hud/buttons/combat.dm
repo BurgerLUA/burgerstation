@@ -9,7 +9,7 @@
 
 /obj/hud/button/resist/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	//Resist code here
-	return TRUE
+	return ..()
 
 /obj/hud/button/resist_auto
 	name = "toggle auto resist"
@@ -122,7 +122,7 @@
 	L.attack_left = left
 	update_icon()
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/intent
 	name = "intent"
@@ -149,7 +149,7 @@
 
 	update_icon()
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/intent/update_icon()
 	if(help_intent)
@@ -211,4 +211,4 @@
 
 	update_icon()
 
-	return TRUE
+	return ..()

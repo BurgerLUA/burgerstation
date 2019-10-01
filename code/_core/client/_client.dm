@@ -49,6 +49,8 @@ var/global/list/all_clients = list()
 
 	var/next_allowed_topic = -1
 
+	var/update_stats = FALSE
+
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
 	winset(src,"chat_combat.output","style='[STYLESHEET]'")

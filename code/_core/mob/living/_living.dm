@@ -124,6 +124,10 @@ var/global/list/all_living = list()
 	initialize_attributes()
 	initialize_skills()
 
+	if(client)
+		client.update_stats = TRUE
+		client.statpanel = "Skills"
+
 	if(ai)
 		ai = new ai(src)
 

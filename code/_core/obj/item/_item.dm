@@ -2,8 +2,9 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
-	var/size = 1 //Size in.. uh...
-	var/weight = 1 //Weight in kg
+	var/size = 1
+	var/weight = 1
+
 	var/value = 1 //Value in whatever currency this world uses.
 
 	var/delete_on_drop = FALSE

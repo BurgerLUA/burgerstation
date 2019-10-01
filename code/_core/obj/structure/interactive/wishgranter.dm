@@ -21,8 +21,12 @@ obj/structure/interactive/wishgranter/fake/New()
 
 
 obj/structure/interactive/wishgranter/New()
-	..()
+	. = ..()
 	all_wishgranters[id] = src
+	if(desired_light_range && desired_light_power && desired_light_color)
+		set_light(desired_light_range,desired_light_power,desired_light_color)
+
+	return .
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction
 	var/faction_to_join

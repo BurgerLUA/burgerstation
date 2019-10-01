@@ -50,7 +50,11 @@
 	var/atom/movable/grabbed_object
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
-	mouse_drop_zone = TRUE
+	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drop_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drop_zone = 1
+
+	mouse_opacity = 2
 
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 	var/is_container = FALSE //Set to true if it uses the container inventory system.

@@ -114,6 +114,8 @@
 
 	var/use_blamed_stats = FALSE
 
+	var/throw_mul = 1
+
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
 	var/combat_rating = 0
@@ -330,9 +332,10 @@
 
 			if(is_living(victim))
 				var/mob/living/L = victim
-				var/strength_mod = brute_damage_dealt/victim.health_max
-				var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*31,offset_y*31)
-				P.steps_allowed = Clamp(4 * strength_mod,0,VIEW_RANGE)
+				var/strength_mod = floor( (brute_damage_dealt/victim.health_max)*throw_mul )
+				if(strength_mod >= 1)
+					var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*31,offset_y*31)
+					P.steps_allowed = Clamp(4 * strength_mod,0,VIEW_RANGE)
 
 	if(is_player(blamed) && is_player(victim))
 		var/mob/living/advanced/player/PA = blamed

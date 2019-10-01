@@ -114,26 +114,6 @@
 		final_organ_list[id] = get_item_data(O)
 	loaded_data["organs"] = final_organ_list
 
-	/*
-	//Inventory stuff
-	var/list/final_worn_list = list()
-	var/list/final_held_list = list()
-	for(var/obj/hud/inventory/I in A.inventory)
-		//Held Objects
-		if(length(I.held_objects))
-			final_held_list[I.id] = list()
-			for(var/obj/item/H in I.held_objects)
-				final_held_list[I.id] += list((get_item_data(H)))
-		//Worn Objects
-		if(length(I.worn_objects))
-			final_worn_list[I.id] = list()
-			for(var/obj/item/W in I.worn_objects)
-				final_worn_list[I.id] += list((get_item_data(W)))
-
-	loaded_data["worn"] = final_worn_list
-	loaded_data["held"] = final_held_list
-	*/
-
 	//Skills
 	var/list/final_skill_list = list()
 	for(var/id in A.skills)
@@ -150,11 +130,10 @@
 
 	loaded_data["tutorial"] = 0
 
-	spawn(0)
-		if(write_json_data_to_id(owner.save_slot,loaded_data))
-			owner.mob.to_chat(span("notice","Sucessfully saved character [owner.mob.name]."))
-		else
-			owner.mob.to_chat(span("warning","Save failed. Please contact the server owner."))
+	if(write_json_data_to_id(owner.save_slot,loaded_data))
+		owner.to_chat(span("notice","Sucessfully saved character [A.name]."))
+	else
+		owner.to_chat(span("warning","Save failed. Please contact the server owner."))
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A)
 

@@ -21,6 +21,8 @@
 		'sounds/weapons/ric5.ogg'
 	)
 
+	throw_mul = 0.25
+
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return
 
