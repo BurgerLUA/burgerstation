@@ -40,4 +40,18 @@
 
 	L.to_chat(final_text)
 
-	return TRUE
+	return ..()
+
+/obj/hud/button/widget/logout
+
+	icon_state = "logout"
+
+	screen_loc = "RIGHT,TOP"
+
+/obj/hud/button/widget/logout/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		P.logout()
+
+	return ..()

@@ -25,7 +25,7 @@
 	var/mob/living/advanced/A = caller
 	attempt_to_craft(A,stored_crafting_table)
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/crafting/close
 	name = "close crafting menu"
@@ -47,5 +47,4 @@
 		animate(B,alpha=0,time=4)
 		B.mouse_opacity = 0
 
-
-	return TRUE
+	return ..()

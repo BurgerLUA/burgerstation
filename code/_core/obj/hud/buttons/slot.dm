@@ -56,7 +56,7 @@
 	animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	update_icon()
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/slot/A
 	id = "1"

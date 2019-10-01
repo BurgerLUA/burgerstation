@@ -24,7 +24,7 @@
 	animate(src,alpha=0,time=4)
 	src.mouse_opacity = 0
 
-	return TRUE
+	return ..()
 
 /*
 /obj/hud/button/drop
@@ -78,7 +78,7 @@
 
 	update_icon()
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/hide_show_inventory/update_icon()
 

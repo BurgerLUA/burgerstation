@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/currency/telecrystals.dmi'
 	icon_state = "1"
 
-	value = 1 //TODO: Change this to amount.
+	value = 1
 
 /obj/item/currency/New(var/spawn_loc,var/desired_value=0)
 	..()
@@ -40,33 +40,27 @@
 
 	return value_added
 
-/obj/item/currency/click_on_object(caller,var/atom/object,location,control,params)
+/obj/item/currency/Crossed(var/atom/movable/O)
 
-	object = object.defer_click_on_object()
-
-	if(object == src)
+	if(!is_player(O))
 		return ..()
 
-	if(!is_currency(object))
+	var/mob/living/advanced/player/P = O
+
+	P.adjust_currency(value)
+	value = 0
+	qdel(src)
+
+	return ..()
+
+/obj/item/currency/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(!is_player(caller) || !value)
 		return ..()
 
-	if(!is_mob(caller))
-		return ..()
-
-	var/mob/M = caller
-	var/obj/item/currency/C = object
-
-	if(is_inventory(object.loc))
-		M.to_chat(span("notice","You add [C.adjust_value(src.value)] crystals to the [C]. \The [C] now has [C.value] crystals."))
-		drop_item()
-		qdel(src)
-	else
-		M.to_chat(span("notice","You take [adjust_value(C.value)] crystals from the [C]. \The [src] now has [value] crystals."))
-		C.drop_item()
-		qdel(C)
+	var/mob/living/advanced/player/P = caller
+	P.adjust_currency(value)
+	value = 0 //just in case
+	qdel(src)
 
 	return TRUE
-
-/obj/item/currency/on_spawn()
-	value = 10000
-	return ..()

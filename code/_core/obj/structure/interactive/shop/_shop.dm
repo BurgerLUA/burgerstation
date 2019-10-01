@@ -100,49 +100,39 @@
 
 	INTERACT_CHECK
 
-	if(!is_advanced(caller))
+	if(!is_player(caller))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
-
-	if(!A.client) //I mean, when the fuck will this ever happen?
-		return FALSE
+	var/mob/living/advanced/player/P = caller
 
 	if(current_item_quantity <= 0)
-		A.to_chat(span("notice","This item is out of stock! Come back another time!"))
+		P.to_chat(span("notice","This item is out of stock! Come back another time!"))
 		return TRUE
 
-	if(!is_currency(object))
-		A.to_chat(span("notice","You need at least [current_item_cost] crystal\s in order to buy \the [current_item]."))
-		return TRUE
 
-	var/obj/item/currency/C = object
+	if(P.currency >= current_item_cost)
 
-	if(C.value >= current_item_cost)
+		var/click_flags = P.client.get_click_flags(params,TRUE)
 
-		var/click_flags = A.client.get_click_flags(params,TRUE)
-
-		if(click_flags & RIGHT_HAND && A.get_right_hand())
-			A.to_chat(span("notice","Your right hand needs to be unoccupied in order to buy this!"))
+		if(click_flags & RIGHT_HAND && P.get_right_hand())
+			P.to_chat(span("notice","Your right hand needs to be unoccupied in order to buy this!"))
 			return
 
-		if(click_flags & LEFT_HAND && A.get_left_hand())
-			A.to_chat(span("notice","Your left hand needs to be unoccupied in order to buy this!"))
+		if(click_flags & LEFT_HAND && P.get_left_hand())
+			P.to_chat(span("notice","Your left hand needs to be unoccupied in order to buy this!"))
 			return
 
-		C.adjust_value(-current_item_cost)
-		current_item_quantity -= 1
+		if(P.spend_currency(current_item_cost)) //Just in case
+			current_item_quantity -= 1
+			var/obj/item/new_item = new current_item.type(get_turf(P))
+			new_item.on_spawn()
+			P.pickup(new_item,click_flags & RIGHT_HAND)
+			new_item.update_icon()
+			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [current_item_cost] telecrystal\s."))
+			if(current_item_quantity <= 0)
+				update_icon()
+			return TRUE
 
-		var/obj/item/new_item = new current_item.type(get_turf(A))
-		new_item.on_spawn()
-		A.pickup(new_item,click_flags & LEFT_HAND)
-		new_item.update_icon()
-		A.to_chat(span("notice","You successfully purchase \the [new_item] for [current_item_cost] crystal\s."))
-
-		if(current_item_quantity <= 0)
-			update_icon()
-
-	else
-		A.to_chat(span("notice","You don't have enough crystals to buy this!"))
+	P.to_chat(span("notice","You don't have enough telecrystals ([current_item_cost] TC) to buy this!"))
 
 	return TRUE

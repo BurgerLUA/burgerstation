@@ -32,7 +32,7 @@
 /obj/hud/button/resist_auto/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	owner.auto_resist = !owner.auto_resist
 	update_icon()
-	return TRUE
+	return ..()
 
 /obj/hud/button/targeting
 	name = "limb targeting"

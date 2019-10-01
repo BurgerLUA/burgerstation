@@ -16,7 +16,7 @@
 	var/mob/living/L = caller
 	L.toggle_sneak(!sneaking)
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/sneak/update_icon()
 	icon_state = "sneak_[sneaking]"
@@ -58,4 +58,4 @@
 
 	update_icon()
 
-	return TRUE
+	return ..()

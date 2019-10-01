@@ -18,7 +18,7 @@
 	var/mob/abstract/observer/O = caller
 	O.new_character()
 
-	return TRUE
+	return ..()
 
 /obj/hud/button/load_character/
 	name = "load an existing character"
@@ -38,4 +38,4 @@
 	var/mob/abstract/observer/O = caller
 	O.load_character()
 
-	return TRUE
+	return ..()

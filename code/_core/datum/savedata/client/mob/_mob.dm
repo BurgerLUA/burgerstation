@@ -14,6 +14,7 @@
 		"organs" = list(),
 		"skills" = list(),
 		"attributes" = list(),
+		"currency" = 0,
 		"karma" = list(
 			KARMA_HUMAN = 1000,
 			KARMA_LIZARD = 1000,

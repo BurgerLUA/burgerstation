@@ -32,6 +32,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/list/attack_logs = list()
 
+	var/currency = 0
+
 /mob/living/advanced/player/Initialize()
 	. = ..()
 	all_players += src

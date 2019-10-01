@@ -107,6 +107,7 @@
 	loaded_data["name"] = A.real_name
 	loaded_data["id"] = owner.save_slot
 	loaded_data["karma"] = A.karma
+	loaded_data["currency"] = A.currency
 
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)
@@ -140,6 +141,7 @@
 	//Name
 	A.real_name = loaded_data["name"]
 	A.karma = loaded_data["karma"]
+	A.currency = loaded_data["currency"]
 
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special

@@ -49,13 +49,16 @@
 		/obj/hud/button/slot/H,
 		/obj/hud/button/slot/I,
 		/obj/hud/button/slot/J,
+		/obj/hud/button/toggle_cash_money,
+		/obj/hud/button/cash_money,
 
 		/obj/hud/button/boss_health,
 
 		/obj/hud/button/crafting/craft,
 		/obj/hud/button/crafting/close,
 
-		/obj/hud/button/widget/experience
+		/obj/hud/button/widget/experience,
+		/obj/hud/button/widget/logout
 
 	)
 
