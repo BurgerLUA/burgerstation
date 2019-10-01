@@ -75,7 +75,6 @@
 		'sounds/effects/inventory/rustle5.ogg'
 	)
 
-
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE
 
@@ -275,6 +274,9 @@ obj/item/proc/do_automatic(caller,object,location,params)
 	if(delete_on_drop)
 		qdel(src)
 		return TRUE
+
+	if(light)
+		light.update(src)
 
 	update_lighting_for_owner(old_inventory)
 

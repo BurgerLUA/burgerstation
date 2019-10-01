@@ -1,5 +1,8 @@
 /atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	if(!object)
+		return FALSE
+
 	var/atom/defer_self = src.defer_click_on_object()
 	var/atom/defer_object = object.defer_click_on_object()
 
@@ -19,6 +22,9 @@
 
 /atom/proc/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
+	if(!object)
+		return FALSE
+
 	var/atom/defer_self = src.defer_click_on_object()
 	var/atom/defer_object = object.defer_click_on_object()
 
@@ -28,6 +34,9 @@
 	return FALSE
 
 /atom/proc/drop_on_object(var/atom/caller,var/atom/object)
+
+	if(!object)
+		return FALSE
 
 	var/atom/defer_self = src.defer_click_on_object()
 	var/atom/defer_object = object.defer_click_on_object()
@@ -44,6 +53,9 @@
 	return FALSE
 
 /atom/proc/dropped_on_by_object(var/atom/caller,var/atom/object)
+
+	if(!object)
+		return FALSE
 
 	var/atom/defer_self = src.defer_click_on_object()
 	var/atom/defer_object = object.defer_click_on_object()

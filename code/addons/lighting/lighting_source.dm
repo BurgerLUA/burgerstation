@@ -2,6 +2,7 @@
 // These are the main datums that emit light.
 
 /datum/light_source
+
 	var/atom/top_atom        // The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
 	var/atom/source_atom     // The atom that we belong to.
 
@@ -54,7 +55,11 @@
 
 	LAZYADD(source_atom.light_sources, src)
 
+	if(!top)
+		top = source_atom
+
 	top_atom = top
+
 	if (top_atom != source_atom)
 		LAZYADD(top_atom.light_sources, src)
 

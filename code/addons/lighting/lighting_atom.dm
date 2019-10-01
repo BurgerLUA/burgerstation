@@ -5,6 +5,7 @@
 	var/desired_light_power = 0
 	var/desired_light_range = 0
 	var/desired_light_color = 0
+	var/desired_light_angle = LIGHT_OMNI
 
 
 	var/light_power = 1 // Intensity of the light.
@@ -57,15 +58,18 @@
 	if (!light_power || !light_range) // We won't emit light anyways, destroy the light source.
 		QDEL_NULL(light)
 	else
+
+		/*
 		if (!istype(loc, /atom/movable)) // We choose what atom should be the top atom of the light here.
 			. = src
 		else
 			. = loc
+		*/
 
 		if (light)
-			light.update(.)
+			light.update()
 		else
-			light = new /datum/light_source(src, .)
+			light = new /datum/light_source(src)
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
 /atom/movable/destroy()
