@@ -1,5 +1,3 @@
-/var/list/area/areas = list()
-
 /area/
 	name = "AREA ERROR"
 	id = null
@@ -35,12 +33,39 @@
 
 	var/hazard //The id of the hazard
 
+	var/sunlight_freq = 0
+
+	desired_light_range = 0
+	desired_light_power = 0
+	desired_light_color = 0
+
 /area/New()
 	. = ..()
-	global.areas += src
 
 	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
 		all_areas_with_hazards += src
+
+	return .
+
+/area/Initialize()
+
+	if(sunlight_freq > 0 && desired_light_range && desired_light_power && desired_light_color)
+
+		var/light_count = 0
+
+		for(var/turf/simulated/T in contents)
+
+			if((T.x % sunlight_freq) || (T.y % sunlight_freq))
+				continue
+
+			T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
+			light_count++
+
+		world.log << "Initialized Area \"[name]\" with [light_count] sun lights."
+
+
+	return ..()
+
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 

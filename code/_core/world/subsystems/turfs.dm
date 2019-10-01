@@ -11,7 +11,14 @@
 		return
 
 	var/turf_count = 0
+	var/area_count = 0
 	var/smooth_count = 0
+
+	for(var/area/A in world)
+		A.Initialize()
+		area_count++
+
+	LOG_SERVER("Initialized [area_count] areas.")
 
 	for(var/turf/simulated/S in world)
 		S.Initialize()

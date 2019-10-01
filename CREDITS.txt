@@ -1,1 +1,5 @@
 UI Sounds obtained from: http://raisedbeaches.com/octave/
+
+Sprites taken from AuroraStation, Baystation, /tg/station, Citadel Station.
+
+Lighting taking from EuropaStation.

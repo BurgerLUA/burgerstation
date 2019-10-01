@@ -12,7 +12,7 @@
 
 /event/meteors/New()
 
-	for(var/area/world/forest/exterior/plains/A in areas)
+	for(var/area/world/forest/exterior/plains/A in world)
 		for(var/turf/T in A.contents)
 			valid_turfs += T
 

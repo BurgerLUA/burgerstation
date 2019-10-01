@@ -165,6 +165,34 @@
 
 	var/angle = light_angle * 0.5
 	switch (old_direction)
+
+		/* WIP
+		if(NORTHEAST)
+			limit_a_t = angle + 45
+			limit_b_t = -(angle) - 45
+			++test_x_offset
+			++test_y_offset
+
+		if(NORTHWEST)
+			limit_a_t = angle + 135
+			limit_b_t = -(angle) + 135
+			--test_x_offset
+			++test_y_offset
+
+		if(SOUTHEAST)
+			limit_a_t = angle - 45
+			limit_b_t = -(angle) - 45
+			++test_x_offset
+			--test_y_offset
+
+		if(SOUTHWEST)
+			limit_a_t = angle + 90
+			limit_b_t = -(angle) - 135
+			--test_x_offset
+			--test_y_offset
+		*/
+
+
 		if (NORTH)
 			limit_a_t = angle + 90
 			limit_b_t = -(angle) + 90

@@ -223,6 +223,9 @@
 	if(!DT.draw_blood)
 		return .
 
+	if(!attacker)
+		return .
+
 	var/turf/T = get_turf(src)
 
 	var/obj/effect/temp/impact/blood/B = new(T,SECONDS_TO_DECISECONDS(60),"#FF0000")
