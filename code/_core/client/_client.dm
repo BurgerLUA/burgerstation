@@ -100,7 +100,11 @@ var/global/list/all_clients = list()
 
 	welcome()
 	make_lobby(locate(1,1,1))
-	play_sound('sounds/music/menu/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC,volume=12)
+
+	if(world_state == STATE_RUNNING)
+		play_sound('sounds/music/menu/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
+	else
+		play_sound('sounds/music/menu/loading.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
 
 	if(!connection_data)
 		connection_data = new(src)

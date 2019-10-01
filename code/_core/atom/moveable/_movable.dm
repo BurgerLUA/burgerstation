@@ -55,14 +55,19 @@
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
-	// Moving to nullspace is a perfectly valid usage of this proc.
-
 	if(loc)
 		loc.Exited(src, new_loc)
 
 	var/atom/old_loc = loc
 
 	loc = new_loc
+
+	/*
+	if(new_loc)
+		x = new_loc.x
+		y = new_loc.y
+		z = new_loc.z
+	*/
 
 	if(loc)
 		loc.Entered(src, old_loc)

@@ -37,13 +37,17 @@
 	return FALSE
 
 /obj/item/weapon/ranged/bullet/proc/spend_bullet()
+
 	if(length(stored_bullets)) //Spend a bullet
 		var/obj/item/bullet/B = stored_bullets[1]
 		stored_bullets -= B
-		if(B)
-			B.spend_bullet()
+		if(B && !B.is_spent)
+			var/returning = B.spend_bullet()
 			stored_bullet_casings += B
-		return B
+			return returning
+
+	return FALSE
+
 
 /obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
 	var/obj/item/bullet/B = spend_bullet()

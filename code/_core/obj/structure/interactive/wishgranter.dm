@@ -101,17 +101,20 @@ obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,
 
 	return TRUE
 
+/*
 obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 	if(is_player(crosser))
 		var/mob/living/advanced/player/P = crosser
-		var/choice = input("Which Wishgranter would you like to teleport to?","Teleport Destination") in all_wishgranters
-		var/list/callback_list = list()
-		callback_list["start_turf"] = get_turf(P)
-		callback_list["end_turf"] = all_wishgranters[choice]
-		if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(10),callback_list))
-			P.to_chat(span("notice","Now teleporting..."))
+		if(P.client)
+			var/choice = input("Which Wishgranter would you like to teleport to?","Teleport Destination") in all_wishgranters
+			var/list/callback_list = list()
+			callback_list["start_turf"] = get_turf(P)
+			callback_list["end_turf"] = all_wishgranters[choice]
+			if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(10),callback_list))
+				P.to_chat(span("notice","Now teleporting..."))
 
 	return ..()
+*/
 
 /obj/structure/interactive/wishgranter/normal/village
 	name = "village wishgranter"

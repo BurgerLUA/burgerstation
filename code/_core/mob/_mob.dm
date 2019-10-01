@@ -63,6 +63,7 @@
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
+	var/obj/plane_master/trees/plane_master_tree
 
 /mob/destroy()
 
@@ -131,6 +132,10 @@
 		if(!plane_master_darkness)
 			plane_master_darkness = new
 			C.screen += plane_master_darkness
+
+		if(!plane_master_tree)
+			plane_master_tree = new
+			C.screen += plane_master_tree
 
 		/*
 		var/image/I = new/image('icons/obj/effects/light_sprite/192x192.dmi',"")

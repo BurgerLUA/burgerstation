@@ -73,13 +73,10 @@
 		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
 		return TRUE
 
-	if(!automatic)
-		if(shoot(caller,object,location,params))
-			return TRUE
-		else
-			return ..()
+	if(!automatic && shoot(caller,object,location,params))
+		return TRUE
 
-	return TRUE
+	return ..()
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
@@ -235,6 +232,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	return list(0,0)
 
 obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
+
 	if(!automatic || (object && object.plane >= PLANE_HUD))
 		return TRUE
 

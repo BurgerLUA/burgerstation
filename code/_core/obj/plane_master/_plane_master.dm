@@ -34,3 +34,15 @@
 	. = ..()
 	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=rgb(0,0,0))
 	return .
+
+
+//DARKNESS
+/obj/plane_master/trees
+	plane = PLANE_TREE
+	mouse_opacity = 1
+	blend_mode = BLEND_MULTIPLY
+
+/obj/plane_master/trees/New(var/desired_loc)
+	. = ..()
+	filters += filter(type="drop_shadow", x=4, y=4, size=6, offset=0, color=rgb(0,0,0))
+	return .

@@ -115,7 +115,8 @@
 			L = thing
 			L.source_atom.update_light()
 
-/atom/movable/force_move()
+/atom/movable/force_move(var/atom/new_loc)
+
 	. = ..()
 
 	var/datum/light_source/L

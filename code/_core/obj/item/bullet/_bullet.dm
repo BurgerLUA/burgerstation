@@ -53,8 +53,13 @@
 	return .
 
 /obj/item/bullet/proc/spend_bullet()
-	is_spent = TRUE
-	queue_delete(src,600)
+
+	if(!is_spent)
+		is_spent = TRUE
+		queue_delete(src,600)
+		return src
+
+	return FALSE
 
 /obj/item/bullet/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet/transfer_target,location,control,params,var/display_message = TRUE)
 

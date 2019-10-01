@@ -48,8 +48,10 @@
 			var/obj/hud/inventory/defer_object_as_inventory = defer_object
 			if(defer_self_as_item.transfer_item(defer_object_as_inventory))
 				return TRUE
+		/*
 		if(src != defer_self_as_item && defer_self_as_item.click_on_object(caller,object,location,control,params))
 			return TRUE
+		*/
 
 	return ..()
 

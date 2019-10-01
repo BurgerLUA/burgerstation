@@ -61,7 +61,7 @@
 			T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
 			light_count++
 
-		world.log << "Initialized Area \"[name]\" with [light_count] sun lights."
+		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
 
 
 	return ..()
