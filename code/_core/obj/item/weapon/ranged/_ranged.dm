@@ -47,6 +47,16 @@
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
 
+/obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
+
+	if(L.move_delay >= -2) //Moving
+		return 0.2
+
+	var/returning = Clamp(0.2 + 0.1*(TICKS_TO_SECONDS(L.move_delay)/2),0,0.1)
+	world.log << returning
+	return returning
+
+
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited
 
@@ -160,7 +170,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
 		if(is_living(caller))
 			var/mob/living/L = caller
-			accuracy_loss += get_skill_spread(L)
+			accuracy_loss += (get_skill_spread(L) + get_movement_spread(L))
+
 
 		accuracy_loss = Clamp(accuracy_loss,0,0.5)
 

@@ -36,7 +36,7 @@
 	)
 
 
-/damagetype/ranged/bullet/rifle_762
+/damagetype/ranged/bullet/rifle_762/surplus
 	name = "7.62mm surplus bullet"
 	id = "7.62_surplus"
 
