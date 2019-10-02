@@ -41,7 +41,6 @@
 /obj/item/weapon/ranged/bullet/revolver/handle_ammo(var/mob/caller)
 	var/obj/item/bullet/B = spend_stored_bullet(current_chamber)
 	rotate_cylinder(1)
-	world.log << current_chamber
 	return B
 
 /obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)

@@ -126,23 +126,7 @@
 
 	return TRUE
 
-/obj/item/bullet/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/transfer_target,location,control,params,var/display_message = TRUE)
-
-	if(src.is_spent)
-		caller.to_chat(span("notice","The bullet is spent!"))
-		return FALSE
-
-	if(!transfer_target.open)
-		caller.to_chat(span("notice","You must open \the [transfer_target.name] first before loading it!"))
-		return FALSE
-
-	if(transfer_target.bullet_type != id)
-		caller.to_chat(span("notice","You can't insert this type of bullet into \the [transfer_target.name]!"))
-		return FALSE
-
-	if(transfer_target.bullet_count_max <= transfer_target.get_ammo_count())
-		caller.to_chat(span("notice","You can't fit any more bullets into \the [transfer_target.name]!"))
-		return FALSE
+/obj/item/bullet/proc/transfer_src_to_gun_stored_bullets(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/transfer_target,location,control,params,var/display_message = TRUE)
 
 	var/transfered_bullets = 0
 	var/transfer_self = FALSE
@@ -199,9 +183,11 @@
 		transfer_src_to_magazine(caller,M,location,control,params)
 		return TRUE
 
+	/*
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		transfer_src_to_gun(caller,G,location,control,params)
 		return TRUE
+	*/
 
 	return ..()
