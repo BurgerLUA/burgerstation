@@ -44,9 +44,10 @@
 	boss = TRUE
 	boss_music = "crab"
 
-/mob/living/simple/npc/crab/king/can_collide_with(var/atom/A)
-	if(istype(src,A))
-		return FALSE
+/mob/living/simple/npc/crab/king/Cross(atom/movable/O)
+
+	if(istype(O,/mob/living/simple/npc/crab/))
+		return TRUE
 
 	return ..()
 

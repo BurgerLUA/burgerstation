@@ -65,6 +65,8 @@
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/trees/plane_master_tree
 
+	var/last_words = ""
+
 /mob/destroy()
 
 	if(client)

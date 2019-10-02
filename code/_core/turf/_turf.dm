@@ -21,6 +21,8 @@
 
 	var/list/mob/living/old_living = list() //List of mobs that used to be on this turf.
 
+	var/turf/destroy_turf //The turf that is placed when this one is destroyed, if any.
+
 /*
 /turf/Initialize()
 	..()

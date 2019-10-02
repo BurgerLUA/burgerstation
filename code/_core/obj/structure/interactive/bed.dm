@@ -16,7 +16,7 @@ obj/structure/interactive/bed/padded
 
 
 obj/structure/interactive/bed/padded/update_icon()
-	overlays = null
+	overlays.Cut()
 	var/icon/sheets = new(icon,"bed_padding")
 	overlays += sheets
 

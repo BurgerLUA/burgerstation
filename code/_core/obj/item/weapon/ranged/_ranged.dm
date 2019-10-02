@@ -49,10 +49,10 @@
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
 
-	if(L.move_delay >= -2) //Moving
+	if(L.move_delay >= -2)
 		return 0.2
 
-	var/returning = Clamp(0.2 + 0.1*(TICKS_TO_SECONDS(L.move_delay)/2),0,0.1)
+	var/returning = Clamp(0.2 + 0.1*(TICKS_TO_SECONDS(L.move_delay)),0,0.1)
 	world.log << returning
 	return returning
 

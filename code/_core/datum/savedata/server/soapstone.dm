@@ -17,6 +17,7 @@
 	return TRUE
 
 /savedata/server/soapstone/proc/quick_load()
+
 	var/json_data = file2text(get_file())
 
 	if(!json_data)
@@ -40,5 +41,12 @@
 
 		var/date = formatted_data[instance]["date"]
 		var/time = formatted_data[instance]["time"]
+
+		if(color == "#000000")
+			if(prob(90))
+				continue
+		else
+			if(prob(75))
+				continue
 
 		new/obj/structure/interactive/soapstone_message(desired_loc,dir,color,name,ckey,text,date,time)

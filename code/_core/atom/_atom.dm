@@ -65,12 +65,9 @@
 		all_thinkers -= src
 	return ..()
 
-/atom/proc/can_collide_with(var/atom/A)
-	return A.collision_flags & src.collision_flags
-
 /atom/Cross(var/atom/A)
 
-	if(A.can_collide_with(src))
+	if(src.collision_flags & A.collision_flags)
 		return FALSE
 
 	return ..()
@@ -115,3 +112,12 @@
 
 /atom/proc/think()
 	return TRUE //Return false to remove from thinking.
+
+/turf/Exit(atom/movable/O, atom/newloc)
+
+	for(var/atom/A in contents)
+		if(!A.Uncross(O,newloc))
+			O << "FUCK [A]"
+			return 0
+
+	return 1

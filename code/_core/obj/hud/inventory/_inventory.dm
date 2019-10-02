@@ -100,7 +100,7 @@
 
 /obj/hud/inventory/proc/update_overlays()
 
-	overlays = list()
+	overlays.Cut()
 
 	var/total_pixel_x = 0
 	var/total_pixel_y = 0

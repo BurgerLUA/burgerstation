@@ -18,7 +18,7 @@
 
 /obj/hud/button/slot/update_icon()
 	..()
-	overlays = list()
+	overlays.Cut()
 	overlays += stored_item
 	if(active)
 		color = "#00FF00"

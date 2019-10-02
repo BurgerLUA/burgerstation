@@ -7,7 +7,6 @@
 
 #define LAYER_WALL 3
 
-
 #define LAYER_TABLE 4
 
 #define LAYER_BLOOD LAYER_MOB_DEAD - 0.01
@@ -19,9 +18,13 @@
 
 #define LAYER_OBJ_VEHICLE LAYER_OBJ + 0.99
 
+#define LAYER_BELOW_MOB 6.99
+
 #define LAYER_MOB 7
 #define LAYER_MOB_DAMAGE 8
 #define LAYER_MOB_CLOTHING 9
+
+#define LAYER_ABOVE_MOB 9.99
 
 #define LAYER_PROJECTILE 10
 
