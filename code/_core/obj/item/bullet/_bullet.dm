@@ -22,7 +22,6 @@
 /obj/item/bullet/proc/get_ammo_count()
 	return item_count_current
 
-
 /obj/item/bullet/New(var/desired_loc)
 	. = ..()
 	update_icon()
@@ -160,7 +159,11 @@
 			transfer_self = TRUE
 			break
 		var/obj/item/bullet/B = new src.type(transfer_target)
-		transfer_target.stored_bullets += B
+		var/first_missing = get_first_missing_value(transfer_target.stored_bullets)
+		if(!first_missing)
+			break
+
+		transfer_target.stored_bullets[first_missing] = B
 		item_count_current -= 1
 
 	if(display_message)
@@ -168,7 +171,8 @@
 
 	if(transfer_self)
 		src.drop_item(transfer_target)
-		transfer_target.stored_bullets += src
+		var/first_missing = get_first_missing_value(transfer_target.stored_bullets)
+		transfer_target.stored_bullets[first_missing] = src
 		update_icon()
 		transfer_target.update_icon()
 	else

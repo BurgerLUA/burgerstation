@@ -96,38 +96,33 @@
 	return returning_text
 
 
-/obj/structure/interactive/shop/clicked_on_by_object(caller,object,location,control,params)
+/obj/structure/interactive/shop/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 
 	if(!is_player(caller))
-		return FALSE
+		return TRUE
 
 	var/mob/living/advanced/player/P = caller
+	var/atom/defer_object = object.defer_click_on_object()
 
 	if(current_item_quantity <= 0)
 		P.to_chat(span("notice","This item is out of stock! Come back another time!"))
 		return TRUE
 
+	if(!is_inventory(defer_object))
+		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
+		return TRUE
+
+	var/obj/hud/inventory/I = defer_object
 
 	if(P.currency >= current_item_cost)
-
-		var/click_flags = P.client.get_click_flags(params,TRUE)
-
-		if(click_flags & RIGHT_HAND && P.get_right_hand())
-			P.to_chat(span("notice","Your right hand needs to be unoccupied in order to buy this!"))
-			return
-
-		if(click_flags & LEFT_HAND && P.get_left_hand())
-			P.to_chat(span("notice","Your left hand needs to be unoccupied in order to buy this!"))
-			return
-
 		if(P.spend_currency(current_item_cost)) //Just in case
 			current_item_quantity -= 1
 			var/obj/item/new_item = new current_item.type(get_turf(P))
 			new_item.on_spawn()
-			P.pickup(new_item,click_flags & RIGHT_HAND)
 			new_item.update_icon()
+			new_item.transfer_item(I)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [current_item_cost] telecrystal\s."))
 			if(current_item_quantity <= 0)
 				update_icon()

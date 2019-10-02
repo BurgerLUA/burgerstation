@@ -26,7 +26,7 @@
 
 	icon_state = initial(icon_state)
 
-	if(!length(stored_bullets))
+	if(!chambered_bullet)
 		icon_state = "[icon_state]_unloaded"
 
 	if(!stored_magazine)

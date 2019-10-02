@@ -68,15 +68,17 @@
 		if(object_data["stored_bullets"])
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
-				var/obj/item/bullet/B = new b_type(BG)
-				B.update_icon()
-				BG.stored_bullets += B
+				if(b_type)
+					var/obj/item/bullet/B = new b_type(BG)
+					if(B)
+						B.update_icon()
+						BG.stored_bullets[i] = B
 
 	if(is_magazine_gun(O))
 		var/obj/item/weapon/ranged/bullet/magazine/MG = O
 		if(object_data["stored_magazine"])
 			MG.stored_magazine = load_and_create_object(object_data["stored_magazine"],MG)
-
+/*
 	if(is_pump_gun(O))
 		var/obj/item/weapon/ranged/bullet/pump/P = O
 		if(object_data["stored_chamber"])
@@ -84,6 +86,7 @@
 			var/obj/item/bullet/B = new b_type(P)
 			B.update_icon()
 			P.stored_chamber += B
+*/
 
 	if(is_magazine(O))
 		var/obj/item/magazine/M = O
@@ -213,10 +216,12 @@
 				var/obj/item/bullet/B = BG.stored_bullets[i]
 				if(B) returning_list["stored_bullets"][i] = B.type
 
+	/*
 	if(is_pump_gun(I))
 		var/obj/item/weapon/ranged/bullet/pump/P = I
 		if(P.stored_chamber)
 			returning_list["stored_chamber"] = P.stored_chamber.type
+	*/
 
 	if(is_magazine_gun(I))
 		var/obj/item/weapon/ranged/bullet/magazine/MG = I

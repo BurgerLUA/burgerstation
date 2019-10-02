@@ -227,3 +227,41 @@ proc/InsertionSort(list/L)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
+
+
+/proc/get_real_length(var/list/L)
+
+	if(!L)
+		return 0
+
+	var/list_length = length(L)
+
+	var/actual_length = 0
+
+	for(var/i=1,i<=list_length,i++)
+		if(L[i])
+			actual_length++
+
+	return actual_length
+
+/proc/get_last_value(var/list/L)
+
+	if(!L || !length(L))
+		return null
+
+	for(var/i=length(L),i>=1,i--)
+		if(L[i])
+			return L[i]
+
+	return null
+
+/proc/get_first_missing_value(var/list/L)
+
+	if(!L || !length(L))
+		return FALSE
+
+	for(var/i=1,i<=length(L),i++)
+		if(!L[i])
+			return i
+
+	return FALSE

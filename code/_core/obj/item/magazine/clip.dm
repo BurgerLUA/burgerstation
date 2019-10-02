@@ -18,8 +18,13 @@
 	var/insert_count = 0
 
 	for(var/obj/item/bullet/B in stored_bullets)
-		if(!B.transfer_src_to_gun(caller,G,location,control,params,FALSE))
+
+		var/target_point = get_first_missing_value(G.stored_bullets)
+		if(target_point == 0)
 			break
+
+		B.force_move(G)
+		G.stored_bullets[target_point] = B
 		insert_count += 1
 		stored_bullets -= B
 

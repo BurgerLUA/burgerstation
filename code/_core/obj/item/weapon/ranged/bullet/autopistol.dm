@@ -20,7 +20,7 @@
 
 	icon = initial(icon)
 
-	var/icon/I = new/icon(icon,"inventory_[length(stored_bullets) ? 1 : 0]")
+	var/icon/I = new/icon(icon,"inventory_[chambered_bullet ? 1 : 0]")
 
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

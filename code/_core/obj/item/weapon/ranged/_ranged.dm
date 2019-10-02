@@ -36,6 +36,8 @@
 
 	var/view_punch = 0
 
+	var/requires_bullets = FALSE
+
 /obj/item/weapon/ranged/proc/get_heat_spread()
 	return heat_current
 
@@ -109,10 +111,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(!can_gun_shoot(caller))
 		return TRUE
 
-	if(get_ammo_count() <= 0)
-		handle_empty(caller)
-		return FALSE
-
 	next_shoot_time = curtime + shoot_delay
 
 	var/obj/projectile/projectile_to_use = projectile
@@ -123,6 +121,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/bullet_speed_to_use = bullet_speed
 
 	var/obj/item/bullet/spent_bullet = handle_ammo(caller)
+
+	world.log << "The ammo is: [spent_bullet]."
 
 	if(spent_bullet)
 		if(spent_bullet.projectile)
@@ -137,6 +137,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			bullet_spread = spent_bullet.base_spread
 		if(spent_bullet.bullet_speed)
 			bullet_speed_to_use = spent_bullet.bullet_speed
+	else if(requires_bullets)
+		handle_empty(caller)
+		return FALSE
 
 	update_icon()
 

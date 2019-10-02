@@ -33,9 +33,10 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
-	caller.to_chat(span("notice","You cock \the [src]."))
-	eject_stored_bullets(caller,caller.loc)
-	load_bullet_from_magazine()
+
+	eject_chambered_bullet(caller.loc)
+	load_new_bullet_from_magazine()
+
 	var/area/A = get_area(caller.loc)
 	play_sound(cock_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	update_icon()
@@ -64,16 +65,22 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/proc/load_bullet_from_magazine()
-	if(stored_magazine && length(stored_magazine.stored_bullets)) //Get a new bullet
+/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine()
+	if(stored_magazine && length(stored_magazine.stored_bullets) && stored_magazine.stored_bullets[1] && !chambered_bullet)
 		var/obj/item/bullet/B = stored_magazine.stored_bullets[1]
-		if(B)
-			stored_magazine.stored_bullets -= B
-			stored_bullets += B
+		stored_magazine.stored_bullets -= B
+		B.force_move(src)
+		chambered_bullet = B
+		return TRUE
+
+	return FALSE
 
 /obj/item/weapon/ranged/bullet/magazine/handle_ammo(var/mob/caller)
-	. = ..()
-	eject_spent_casings(caller,caller.loc)
-	load_bullet_from_magazine()
-	return .
 
+	. = ..()
+
+	if(.)
+		eject_chambered_bullet(get_turf(src))
+		load_new_bullet_from_magazine()
+
+	return .

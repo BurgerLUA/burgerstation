@@ -43,7 +43,7 @@
 
 /obj/item/weapon/ranged/bullet/crossbow/update_icon()
 
-	if(get_ammo_count() > 0)
+	if(chambered_bullet)
 		icon_state = "inventory_1"
 	else
 		icon_state = initial(icon_state)
@@ -52,5 +52,6 @@
 
 /obj/item/weapon/ranged/bullet/crossbow/handle_ammo(var/mob/caller)
 	. = ..()
-	eject_spent_casings(caller,caller.loc)
+	if(.)
+		eject_stored_bullet(.,get_turf(src))
 	return .

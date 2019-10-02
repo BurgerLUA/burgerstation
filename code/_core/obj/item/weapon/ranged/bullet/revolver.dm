@@ -1,11 +1,29 @@
 /obj/item/weapon/ranged/bullet/revolver/
 	open = FALSE
 
+	var/current_chamber = 1
+
+/obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
+	. = ..()
+	stored_bullets = new/list(bullet_count_max)
+	return ..()
+
+/obj/item/weapon/ranged/bullet/revolver/get_damage_type()
+	return stored_bullets[current_chamber] ? stored_bullets[current_chamber].damage_type : damage_type
+
+/obj/item/weapon/ranged/bullet/revolver/proc/rotate_cylinder(var/rotate_amount=1)
+
+	if(rotate_amount == 0)
+		return FALSE
+
+	current_chamber = 1 + ( (current_chamber + (rotate_amount) - 1) % bullet_count_max)
+	return current_chamber
+
 /obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)
 	open = !open
 
 	if(open)
-		eject_spent_casings(caller, caller.loc)
+		eject_stored_bullets_spent(get_turf(src))
 		caller.to_chat(span("notice","You open \the [src]. It contains [get_ammo_count()] bullet\s."))
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
@@ -17,6 +35,15 @@
 
 	return TRUE
 
+/obj/item/weapon/ranged/bullet/revolver/get_ammo_count()
+	return get_real_length(stored_bullets)
+
+/obj/item/weapon/ranged/bullet/revolver/handle_ammo(var/mob/caller)
+	var/obj/item/bullet/B = spend_stored_bullet(current_chamber)
+	rotate_cylinder(1)
+	world.log << current_chamber
+	return B
+
 /obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)
 
 	if(open)
@@ -24,14 +51,23 @@
 
 	return ..()
 
-
 /obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(open && object && is_inventory(object) && src && src.loc && is_inventory(src.loc))
+	if(!object)
+		return TRUE
+
+	var/atom/defer_object = object.defer_click_on_object()
+
+	if(open && defer_object && is_inventory(defer_object) && src && src.loc && is_inventory(src.loc)) //The revolver is in an inventory, and you're click on it with your hands.
+
 		var/obj/hud/inventory/I = object
-		var/obj/item/bullet/B = eject_top_stored_bullet(caller, get_turf(src))
-		if(B)
-			I.add_held_object(B)
+
+		var/last_value = get_last_value(stored_bullets)
+
+		if(last_value)
+			var/obj/item/bullet/B = eject_stored_bullet(last_value,get_turf(src))
+			if(B)
+				B.transfer_item(I)
 
 		return TRUE
 

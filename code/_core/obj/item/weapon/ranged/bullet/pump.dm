@@ -1,14 +1,12 @@
 /obj/item/weapon/ranged/bullet/pump/
 	var/action_name = "pump"
 	open = TRUE
-	var/obj/item/bullet/stored_chamber
-
 	open_icon = FALSE
 
 	var/pump_sound = 'sounds/weapons/shotgun_pump.ogg'
 
 /obj/item/weapon/ranged/bullet/pump/get_damage_type()
-	return length(stored_bullets) && stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
+	return stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
 
 /obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller)
 
@@ -17,14 +15,13 @@
 
 	caller.to_chat(span("notice","You [action_name] \the [src]."))
 
-	if(stored_chamber)
-		stored_chamber.force_move(caller.loc)
-		stored_chamber.update_icon()
-		stored_chamber = null
+	eject_chambered_bullet(get_turf(src))
 
-	if(length(stored_bullets) && stored_bullets[1])
-		stored_chamber = stored_bullets[1]
-		stored_bullets -= stored_chamber
+	if(stored_bullets[1])
+		var/obj/item/bullet/B = stored_bullets[1]
+		stored_bullets -= B
+		chambered_bullet = B
+		stored_bullets += null
 
 	var/area/A = get_area(caller.loc)
 	play_sound(pump_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
@@ -35,8 +32,4 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/pump/get_ammo_count()
-	return stored_chamber ? 1 : 0
-
-/obj/item/weapon/ranged/bullet/pump/spend_bullet()
-	var/obj/item/bullet/B = stored_chamber
-	return B.spend_bullet()
+	return get_real_length(stored_bullets)
