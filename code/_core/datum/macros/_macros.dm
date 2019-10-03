@@ -42,15 +42,9 @@
 		var/text_num = copytext(command,6,7)
 		if(is_advanced(owner.mob))
 			var/mob/living/advanced/A = owner.mob
-			if(text_num == A.quick_mode)
-				A.quick_mode = null
-			else
-				A.quick_mode = text_num
 			for(var/obj/hud/button/slot/B in A.buttons)
-				var/was_active = B.active
-				B.active = A.quick_mode == B.id
-				if(was_active != B.active)
-					B.update_icon() //Only update if changed. Prevents lag.
+				if(B.id == text_num)
+					B.trigger(owner.mob)
 
 	else
 		switch(command)

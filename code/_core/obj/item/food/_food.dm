@@ -10,6 +10,13 @@
 
 	var/consume_verb = "take a bite out of"
 
+	has_quick_function = TRUE
+	quick_function_type =  FLAG_QUICK_INSTANT
+
+/obj/item/consumable/food/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
+	click_on_object(caller,caller)
+	return TRUE
+
 /obj/item/consumable/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(get_dist(caller,object) > 1)

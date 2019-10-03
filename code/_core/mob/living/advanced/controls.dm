@@ -5,7 +5,7 @@ mob/living/advanced/on_left_down(object,location,control,params)
 	if(quick_mode)
 		for(var/obj/hud/button/slot/B in buttons)
 			if(B.id == quick_mode)
-				if(!B.stored_item)
+				if(!B.stored_item || !B.stored_item.quick_function_type == FLAG_QUICK_TOGGLE)
 					break
 				if(!is_inventory(B.stored_item.loc))
 					B.clear_object(src)
@@ -14,7 +14,8 @@ mob/living/advanced/on_left_down(object,location,control,params)
 				if(I.owner != src)
 					B.clear_object(src)
 					break
-				return B.stored_item.quick(src,location,control,params)
+				B.stored_item.quick(src,location,control,params)
+				return TRUE
 
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)

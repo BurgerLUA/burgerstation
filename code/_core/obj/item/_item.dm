@@ -64,6 +64,9 @@
 	var/soul_bound = FALSE
 
 	var/has_quick_function = FALSE
+	var/quick_function_type =  FLAG_QUICK_INSTANT
+	//FLAG_QUICK_INSTANT
+	//FLAG_QUICK_TOGGLE
 
 	var/list/inventory_bypass = list()
 

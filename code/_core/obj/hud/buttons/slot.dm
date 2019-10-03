@@ -25,6 +25,29 @@
 	else
 		color = "#FFFFFF"
 
+/obj/hud/button/slot/proc/trigger(var/mob/living/advanced/caller)
+
+	if(!stored_item)
+		return FALSE
+
+	if(!is_valid(stored_item))
+		clear_object(caller)
+		return FALSE
+
+	if(stored_item.quick_function_type == FLAG_QUICK_INSTANT)
+		stored_item.quick(caller)
+		caller.quick_mode = 0
+		spawn()
+			color = "#00FF00"
+			sleep(5)
+			color = "#FFFFFF"
+	else
+		active = !active
+		caller.quick_mode = active ? id : null
+		update_icon()
+
+	return TRUE
+
 /obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
 	if(stored_item)
 		A.to_chat(span("notice","\The [stored_item] was unbound from slot [icon_state]."))

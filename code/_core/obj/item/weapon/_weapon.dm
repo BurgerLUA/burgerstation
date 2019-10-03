@@ -14,6 +14,8 @@
 
 	var/prefix_id //The weapon's prefix, if any.
 
+	quick_function_type = FLAG_QUICK_TOGGLE
+
 /obj/item/weapon/update_icon()
 
 	var/open_text = open_icon && open ? "_open" : ""
