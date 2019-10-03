@@ -9,6 +9,27 @@
 	var/density_east  = TRUE
 	var/density_west  = TRUE
 
+	var/bullet_block_chance = 100 //Chance to block bullets.
+
+/obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	var/projectile_dir = get_dir(old_turf,new_turf)
+
+	if(prob(max(0,100-bullet_block_chance)))
+		return FALSE
+
+	if((projectile_dir & NORTH) && src.density_south)
+		return src
+	else if((projectile_dir & SOUTH) && src.density_north)
+		return src
+
+	if((projectile_dir & EAST) && src.density_west)
+		return src
+	else if((projectile_dir & WEST) && src.density_east)
+		return src
+
+	return FALSE
+
 /obj/structure/Cross(var/atom/movable/O)
 
 	if(O.collision_flags & src.collision_flags)

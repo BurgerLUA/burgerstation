@@ -141,3 +141,6 @@ proc/is_list(var/atom/A)
 
 proc/is_pump_gun(var/atom/A)
 	return istype(A, /obj/item/weapon/ranged/bullet/pump/)
+
+proc/is_structure(var/atom/A)
+	return istype(A, /obj/structure/)

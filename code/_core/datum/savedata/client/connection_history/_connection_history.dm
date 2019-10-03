@@ -33,8 +33,6 @@
 				worst_time = local_time
 
 		if(worst_date && worst_time)
-			new_owner << worst_date
-			new_owner << worst_time
 			var/file_to_delete = "[get_folder(owner.ckey)][worst_date]_[worst_time].json"
 			fdel(file_to_delete)
 

@@ -186,9 +186,9 @@ var/global/list/all_clients = list()
 	set category = "Preferences"
 	swap_mouse = !swap_mouse
 	if(swap_mouse)
-		src << "Right clicking will now activate the object in your right hand, and vice versa."
+		to_chat("Right clicking will now activate the object in your right hand, and vice versa.")
 	else
-		src << "Left clicking will now activate the object in your right hand, and vice versa."
+		to_chat("Left clicking will now activate the object in your right hand, and vice versa.")
 
 /client/proc/get_click_flags(aug,var/check_swap = FALSE)
 

@@ -117,7 +117,6 @@
 
 	for(var/atom/A in contents)
 		if(!A.Uncross(O,newloc))
-			O << "FUCK [A]"
 			return 0
 
 	return 1

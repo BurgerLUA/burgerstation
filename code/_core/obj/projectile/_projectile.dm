@@ -150,66 +150,73 @@
 			on_hit(src)
 			return FALSE
 
-		if(!new_turf.allow_bullet_pass && new_turf.collision_flags & FLAG_COLLISION_REAL)
+		var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
 
-			if(vel_y > 0)
-				if(!old_turf.allow_bullet_pass && old_turf.density_north)
-					on_hit(old_turf)
-					return
-				if(new_turf.density_south)
-					on_hit(new_turf)
-					return
-			else if(vel_y < 0)
-				if(!old_turf.allow_bullet_pass && old_turf.density_south)
-					on_hit(old_turf)
-					return
-				if(new_turf.density_north)
-					on_hit(new_turf)
-					return
-
-			if(vel_x > 0)
-				if(!old_turf.allow_bullet_pass && old_turf.density_east)
-					on_hit(old_turf)
-					return
-				if(new_turf.density_west)
-					on_hit(new_turf)
-					return
-			else if(vel_x < 0)
-				if(!old_turf.allow_bullet_pass && old_turf.density_west)
-					on_hit(old_turf)
-					return
-				if(new_turf.density_east)
-					on_hit(new_turf)
-					return
-
-		var/area/A2 = get_area(new_turf)
+		if(collide_with_turf)
+			on_hit(collide_with_turf)
+			return
 
 		for(var/atom/A in new_turf.contents)
-
-			if(A == src)
-				continue
-
-			if(A == owner)
-				continue
-
-			if(A.type == src.type)
-				continue
-
-			if(is_projectile(A))
-				continue
-
-			if(A2.safe && is_player(owner) && (is_player(A) || is_unique(A)))
-				continue
-
-			if(src.collision_bullet_flags & A.collision_bullet_flags)
-				if(on_hit(A))
-					return
+			var/atom/collide_with_atom = A.projectile_should_collide(src,new_turf,old_turf)
+			if(collide_with_atom)
+				on_hit(collide_with_atom)
+				return
 
 		if(hit_target_turf && current_loc == target_turf)
 			on_hit(current_loc)
 			return
 
 		previous_loc = current_loc
+
+/atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	if(P == src)
+		return FALSE
+
+	if(P.owner == src)
+		return FALSE
+
+	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
+		return FALSE
+
+	return src
+
+/mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	var/area/A = get_area(new_turf)
+
+	if(A.safe)
+		return FALSE
+
+	return ..()
+
+/turf/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	if(P.vel_y > 0)
+		if(!old_turf.allow_bullet_pass && old_turf.density_north)
+			return old_turf
+		if(!new_turf.allow_bullet_pass && new_turf.density_south)
+			return new_turf
+	else if(P.vel_y < 0)
+		if(!old_turf.allow_bullet_pass && old_turf.density_south)
+			return old_turf
+		if(!new_turf.allow_bullet_pass && new_turf.density_north)
+			return new_turf
+	if(P.vel_x > 0)
+		if(!old_turf.allow_bullet_pass && old_turf.density_east)
+			return old_turf
+		if(!new_turf.allow_bullet_pass && new_turf.density_west)
+			return new_turf
+	else if(P.vel_x < 0)
+		if(!old_turf.allow_bullet_pass && old_turf.density_west)
+			return old_turf
+		if(!new_turf.allow_bullet_pass && new_turf.density_east)
+			return new_turf
+
+	return FALSE
+
+/obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+	return FALSE
 
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
 	all_projectiles -= src
