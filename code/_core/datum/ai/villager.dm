@@ -34,10 +34,14 @@
 
 	owner.move_dir = 0
 
-	if(prob(75))
+	for(var/mob/living/advanced/player/P in oview(owner,3))
+		if(P)
+			owner.dir = get_dir(owner,P)
+			movement_ticks = 0
+			return TRUE
+
+	if(prob(70))
 		return FALSE
-
-
 
 	var/list/valid_directions = list(NORTH,EAST,SOUTH,WEST)
 
