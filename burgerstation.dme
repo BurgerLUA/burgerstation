@@ -129,6 +129,7 @@
 #include "code\_core\client\hud.dm"
 #include "code\_core\client\karma.dm"
 #include "code\_core\client\life.dm"
+#include "code\_core\client\varedit.dm"
 #include "code\_core\client\chat\_chat.dm"
 #include "code\_core\client\chat\formatting.dm"
 #include "code\_core\client\debug\events.dm"

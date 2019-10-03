@@ -1,7 +1,7 @@
 /savedata/client/roles
 	name = "Role Data"
 	desc = "The role that the user has."
-	loaded_data = list("role" = 0)
+	loaded_data = list("role" = FLAG_PERMISSION_NONE)
 
 /savedata/client/roles/get_file(var/file_id)
 	return "roles.json"

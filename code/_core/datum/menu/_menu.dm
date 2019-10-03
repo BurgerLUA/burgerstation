@@ -42,7 +42,7 @@
 		user << browse_rsc(v,k)
 
 /menu/Topic(href,href_list)
-	//Do topic things here.
+	return ..()
 
 /proc/open_menu(user,menu_id)
 	spawn(0)

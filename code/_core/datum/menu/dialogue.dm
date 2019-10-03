@@ -36,6 +36,7 @@
 	user << output("[function_name]([args]);", "map.dialogue:eval")
 
 /menu/dialogue/Topic(href,href_list)
+
 	if(length(href_list) && href_list["topic"] && is_player(usr))
 		var/mob/living/advanced/player/P = usr
 		if(href_list["topic"] == "goodbye")
@@ -43,3 +44,5 @@
 			return
 		var/dialogue/D = all_dialogue[P.dialogue_target_id]
 		D.set_topic(P,href_list["topic"])
+
+	return ..()

@@ -26,7 +26,7 @@ obj/structure/interactive/barricade/update_icon()
 		pixel_y = -10
 		density_north = TRUE
 	else if(dir == EAST)
-		pixel_x = -8
+		pixel_x = 0
 		pixel_y = -2
 		density_east = TRUE
 	else if(dir == SOUTH)
@@ -34,7 +34,7 @@ obj/structure/interactive/barricade/update_icon()
 		pixel_y = 0
 		density_south = TRUE
 	else if(dir == WEST)
-		pixel_x = 8
+		pixel_x = 0
 		pixel_y = -2
 		density_west = TRUE
 
