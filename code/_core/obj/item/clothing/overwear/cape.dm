@@ -1,4 +1,4 @@
-/obj/item/clothing/overwear/cape
+/obj/item/clothing/neck/cape
 	name = "cape"
 	icon = 'icons/obj/items/clothing/suit/cape.dmi'
 	polymorphic = TRUE
@@ -20,7 +20,7 @@
 	)
 
 
-/obj/item/clothing/overwear/cape/hunter
+/obj/item/clothing/neck/cape/hunter
 	name = "hunter's cape"
 	color_primary = "#700100"
 	color_secondary = "#700100"
@@ -42,7 +42,7 @@
 		FATIGUE = 0
 	)
 
-/obj/item/clothing/overwear/cape/hide
+/obj/item/clothing/neck/cape/hide
 	name = "hide cape"
 	color_primary = "#703B18"
 	color_secondary = "#703B18"

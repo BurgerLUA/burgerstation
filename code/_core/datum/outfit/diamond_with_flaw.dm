@@ -3,6 +3,6 @@
 	id = "diamond_outfit"
 	desc = "Uniform for Diamond with Flaw."
 	spawning_clothes = list(
-		/obj/item/clothing/overwear/mantle/purple,
+		/obj/item/clothing/neck/mantle/purple,
 		/obj/item/clothing/head/hat/beaver
 	)

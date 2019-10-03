@@ -178,7 +178,7 @@
 			var/damage_amount = Clamp(O.damage_soft[damage_type],damage_min,damage_max)
 			if(damage_amount)
 				should_update_health = TRUE
-				O.damage[damage_type] += damage_amount
+				O.damage[damage_type] = max(0,O.damage[damage_type] + damage_amount)
 				O.damage_soft[damage_type] -= damage_amount
 
 		for(var/wound/W in O.wounds)

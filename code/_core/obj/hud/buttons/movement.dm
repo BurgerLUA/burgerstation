@@ -3,7 +3,7 @@
 	desc = "sneaker no sneaking"
 	desc_extended = "Press to sneak."
 	icon_state = "sneak_0"
-	screen_loc = "RIGHT-3,BOTTOM"
+	screen_loc = "RIGHT-2,BOTTOM"
 
 	var/sneaking = 0
 
@@ -27,7 +27,7 @@
 	desc = "who fucking walks lmao"
 	desc_extended = "Where you press determines where you click"
 	icon_state = "move_1"
-	screen_loc = "RIGHT-3,BOTTOM"
+	screen_loc = "RIGHT-2,BOTTOM"
 
 	var/move_mode = 2 //1 = run, 2 = jog, 3 = sprint
 

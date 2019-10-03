@@ -163,7 +163,7 @@
 	desc = "turn all of them on, what could possibly go wrong"
 	desc_extended = ""
 	icon_state = "dpb_box"
-	screen_loc = "RIGHT-2,BOTTOM"
+	screen_loc = "RIGHT-2,BOTTOM+1"
 
 	var/enable_dodge = 0
 	var/enable_block = 1

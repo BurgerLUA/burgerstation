@@ -26,7 +26,7 @@ client/verb/var_edit(var/object as anything in view())
 
 			returning_text += "[line_text]<br>"
 
-		src << browse(returning_text,"window=help")
+		src << browse("<head><style>[STYLESHEET]</style></head><body>[returning_text]</body>","window=help")
 
 client/verb/change_variable(var/datum/object as anything in view(), var/desired_varable_key as text, var/desired_varable_value as anything)
 

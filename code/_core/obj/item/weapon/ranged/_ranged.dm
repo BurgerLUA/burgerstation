@@ -205,7 +205,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			bullet_speed_to_use = min(bullet_speed_to_use,TILE_SIZE-1)
 
-			if(i == ceiling(bullet_count_to_use/2) && is_player(caller) && view_punch && view_punch_time > 1)
+			if(i == ceiling(bullet_count_to_use/2,1) && is_player(caller) && view_punch && view_punch_time > 1)
 				var/mob/living/advanced/player/P = caller
 				if(P.client)
 					var/client/C = P.client

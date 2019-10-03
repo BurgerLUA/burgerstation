@@ -9,7 +9,7 @@
 	var/density_east  = TRUE
 	var/density_west  = TRUE
 
-	var/bullet_block_chance = 100 //Chance to block bullets.
+	var/bullet_block_chance = 0 //Chance to block bullets.
 
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 

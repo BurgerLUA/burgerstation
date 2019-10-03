@@ -1,4 +1,4 @@
-/obj/item/clothing/overwear/cloak
+/obj/item/clothing/neck/cloak
 	name = "cloak"
 	icon = 'icons/obj/items/clothing/suit/cloak.dmi'
 	desc_extended = "A simple cloak. Wear your colors proudly."
@@ -20,11 +20,11 @@
 		FATIGUE = 0
 	)
 
-/obj/item/clothing/overwear/cloak/green
+/obj/item/clothing/neck/cloak/green
 	color = "#002200"
 
-/obj/item/clothing/overwear/cloak/brown
+/obj/item/clothing/neck/cloak/brown
 	color = "#603A20"
 
-/obj/item/clothing/overwear/cloak/red
+/obj/item/clothing/neck/cloak/red
 	color = "#8E0000"

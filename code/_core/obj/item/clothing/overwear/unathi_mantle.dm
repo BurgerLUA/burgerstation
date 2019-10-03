@@ -1,4 +1,4 @@
-/obj/item/clothing/overwear/mantle
+/obj/item/clothing/neck/mantle
 	name = "torn mantle"
 	icon = 'icons/obj/items/clothing/suit/mantle.dmi'
 
@@ -24,9 +24,9 @@
 	)
 
 
-/obj/item/clothing/overwear/mantle/purple
+/obj/item/clothing/neck/mantle/purple
 	color = "#1A1D29"
 
 
-/obj/item/clothing/overwear/mantle/brown
+/obj/item/clothing/neck/mantle/brown
 	color = "#603A20"

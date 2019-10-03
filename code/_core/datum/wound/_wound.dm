@@ -73,7 +73,7 @@
 	return returning
 
 /wound/proc/get_severity_name()
-	return severity_reference[ceiling(Clamp(severity_level,1,length(severity_reference)))]
+	return severity_reference[ceiling(Clamp(severity_level,1,length(severity_reference)),1)]
 
 /wound/proc/get_infection_name()
 	var/infection_stage = floor(Clamp(infection_level,1,length(infection_reference)))
@@ -83,10 +83,10 @@
 	return min(bleed_level,severity_level)
 
 /wound/proc/get_bleed_name()
-	return bleed_reference[ceiling(Clamp(bleed_level,1,length(bleed_reference)))]
+	return bleed_reference[ceiling(Clamp(bleed_level,1,length(bleed_reference)),1)]
 
 /wound/proc/get_heal_name()
-	return heal_reference[ceiling(Clamp(heal_level,1,length(heal_reference)))]
+	return heal_reference[ceiling(Clamp(heal_level,1,length(heal_reference)),1)]
 
 /wound/proc/get_pain()
 	return (1+severity_level)*(1+(infection_level/infection_level_max))*(1+(bleed_level/bleed_level_max))

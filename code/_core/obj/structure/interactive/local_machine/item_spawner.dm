@@ -114,10 +114,10 @@
 	stored_item = /obj/item/clothing/head/helmet/knight/battlemage
 
 /obj/structure/interactive/localmachine/item/clothing/cloak
-	stored_item = /obj/item/clothing/overwear/cloak
+	stored_item = /obj/item/clothing/neck/cloak
 
 /obj/structure/interactive/localmachine/item/clothing/cloak/green
-	stored_item = /obj/item/clothing/overwear/cloak/green
+	stored_item = /obj/item/clothing/neck/cloak/green
 	//color = "#008800"
 
 /obj/structure/interactive/localmachine/item/clothing/sunglasses

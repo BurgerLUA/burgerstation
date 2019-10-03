@@ -37,7 +37,7 @@
 		icon_state = "[icon_state]_stun"
 		icon_state_held = "[icon_state_held]_stun"
 
-	var/charge_mod = ceiling((charge_current/charge_max)*4)
+	var/charge_mod = ceiling((charge_current/charge_max)*4,1)
 
 	icon_state = "[icon_state]_[charge_mod]"
 	icon_state_held = "[icon_state_held]_[charge_mod]"

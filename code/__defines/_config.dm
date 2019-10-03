@@ -38,11 +38,11 @@
 #define ENABLE_INSTALOAD TRUE
 
 //Makes compiling faster FALSE disabled
-#define ENABLE_AI FALSE
+#define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
-#define ENABLE_WEATHERGEN FALSE
-#define ENABLE_TURFGEN FALSE
+#define ENABLE_LIGHTING TRUE
+#define ENABLE_WEATHERGEN TRUE
+#define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN FALSE
 
 #define ENABLE_XP TRUE
@@ -70,12 +70,12 @@
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 
+#define MAX_INVENTORY_X 8
 
 #define DAMAGE_REDUCTION_CAP 0.8 //How much damage maximum (percentage) is someone allowed to reduce when attacked. For example, 0.8 means you can absorb up to 80% of the damage dealt.
 
 #define STEALTH_MAX_ALPHA 10
 #define STEALTH_MIN_ALPHA 1
-
 
 #define CONSUME_AMOUNT_MAX 30
 

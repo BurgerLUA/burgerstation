@@ -89,7 +89,7 @@ obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,
 
 	if(P.spam_protection_command > 0)
 		P.spam_protection_command += 2
-		P.to_chat(span("warning","Spam Protection: You must wait [ceiling(P.spam_protection_command)] second\s before using this!"))
+		P.to_chat(span("warning","Spam Protection: You must wait [ceiling(P.spam_protection_command,1)] second\s before using this!"))
 		return FALSE
 
 	P.spam_protection_command += 10

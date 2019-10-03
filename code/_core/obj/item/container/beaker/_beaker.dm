@@ -88,7 +88,7 @@
 	icon_state = initial(icon_state)
 
 	var/icon/I = new/icon(icon,icon_state)
-	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.total_volume/reagents.volume_max,0,1)*icon_count)]")
+	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.total_volume/reagents.volume_max,0,1)*icon_count,1)]")
 
 	I2.Blend(reagents.color,ICON_MULTIPLY)
 	I.Blend(I2,ICON_OVERLAY)

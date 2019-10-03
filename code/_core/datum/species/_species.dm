@@ -36,7 +36,6 @@
 		/obj/hud/button/move,
 		/obj/hud/button/targeting,
 		/obj/hud/button/intent,
-		/obj/hud/button/defense,
 		/obj/hud/button/sneak,
 		/obj/hud/button/close_inventory,
 		/obj/hud/button/slot/A,

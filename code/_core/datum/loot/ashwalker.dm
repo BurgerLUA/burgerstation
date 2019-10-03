@@ -8,7 +8,7 @@
 		/obj/item/consumable/food/burger/ratburger = 10,
 		/obj/item/color/crayon/brown = 20,
 		/obj/item/color/crayon/green = 20,
-		/obj/item/clothing/overwear/cloak/brown = 50
+		/obj/item/clothing/neck/cloak/brown = 50
 
 	)
 
@@ -25,7 +25,7 @@
 		/obj/item/consumable/food/burger/ratburger = 10,
 		/obj/item/color/crayon/green = 20,
 		/obj/item/color/crayon/red = 10,
-		/obj/item/clothing/overwear/cloak/red = 50,
+		/obj/item/clothing/neck/cloak/red = 50,
 		/obj/item/clothing/overwear/armor/gladiator/brass = 10,
 		/obj/item/clothing/overwear/armor/tutorial = 5
 

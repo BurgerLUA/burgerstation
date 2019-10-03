@@ -8,7 +8,17 @@
 	desired_light_range = 4
 	desired_light_color = "#FFFFB5"
 
-	layer = LAYER_LARGE_OBJ
+	layer = LAYER_ABOVE_MOB
+
+	plane = PLANE_MOB
+
+	density_north = TRUE
+	density_south = TRUE
+	density_east  = TRUE
+	density_west  = TRUE
+
+	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 /obj/structure/interactive/lighting/streetlamp/strong
 	desired_light_power = 0.4

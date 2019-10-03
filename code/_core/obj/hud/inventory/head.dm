@@ -1,7 +1,7 @@
 /obj/hud/inventory/organs/head
 	name = "head slot"
 	id = BODY_HEAD
-	screen_loc = "LEFT,BOTTOM+4"
+	screen_loc = "LEFT,BOTTOM+3"
 	item_slot = SLOT_HEAD
 	worn_slots = 1
 
@@ -10,7 +10,7 @@
 /obj/hud/inventory/organs/neck
 	name = "neck slot"
 	id = BODY_NECK
-	screen_loc = "LEFT+1,BOTTOM+4"
+	screen_loc = "LEFT+2,BOTTOM+2"
 	item_slot = SLOT_NECK
 	worn_slots = 1
 
@@ -25,6 +25,7 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+/*
 /obj/hud/inventory/organs/left_ear
 	name = "left ear slot"
 	id = BODY_EAR_LEFT
@@ -42,11 +43,12 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+*/
 
 /obj/hud/inventory/organs/glasses
 	name = "glasses slot"
 	id = BODY_EYES
-	screen_loc = "LEFT,BOTTOM+3"
+	screen_loc = "LEFT+2,BOTTOM+3"
 	item_slot = SLOT_GLASSES
 	worn_slots = 1
 
@@ -55,8 +57,8 @@
 /obj/hud/inventory/organs/special
 	name = "special slot"
 	id = BODY_SPECIAL
-	screen_loc = "LEFT+2,BOTTOM+4"
+	screen_loc = "CENTER+4,BOTTOM"
 	item_slot = SLOT_SPECIAL
 	worn_slots = 1
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB

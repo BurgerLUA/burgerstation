@@ -4,7 +4,7 @@
 	desc = "Uniform for Standard Ashwalkers."
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/brown,
-		/obj/item/clothing/overwear/cloak/brown
+		/obj/item/clothing/neck/cloak/brown
 	)
 
 /outfit/ashwalker/female
@@ -14,7 +14,7 @@
 	spawning_clothes = list(
 		/obj/item/clothing/undertop/underwear/bra/brown,
 		/obj/item/clothing/underbottom/underwear/panty/brown,
-		/obj/item/clothing/overwear/cloak/brown
+		/obj/item/clothing/neck/cloak/brown
 	)
 
 
@@ -25,7 +25,7 @@
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/red,
 		/obj/item/clothing/overwear/armor/gladiator/brass,
-		/obj/item/clothing/overwear/cloak/red
+		/obj/item/clothing/neck/cloak/red
 	)
 
 /outfit/ashwalker/warrior/female
@@ -36,5 +36,5 @@
 		/obj/item/clothing/undertop/underwear/bra/red,
 		/obj/item/clothing/underbottom/underwear/panty/red,
 		/obj/item/clothing/overwear/armor/gladiator/brass,
-		/obj/item/clothing/overwear/cloak/red
+		/obj/item/clothing/neck/cloak/red
 	)

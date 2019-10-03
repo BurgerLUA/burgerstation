@@ -100,10 +100,17 @@
 
 	var/opening = FALSE
 
+	var/should_center = length(inventories) <= 8
+
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/I = inventories[i]
 		I.update_owner(A)
-		I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
+
+		if(should_center)
+			I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
+		else
+			I.screen_loc = "CENTER+[-MAX_INVENTORY_X*0.5 + i - 0.5 - floor((i-1)/MAX_INVENTORY_X)*MAX_INVENTORY_X],BOTTOM+[1.25 + floor((i-1)/MAX_INVENTORY_X)]"
+
 		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)
 			I.mouse_opacity = 2
@@ -124,7 +131,10 @@
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
 
-		B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
+		if(should_center)
+			B.screen_loc = "CENTER+[(length(inventories)+1)/2],BOTTOM+1.25"
+		else
+			B.screen_loc = "CENTER+[0.5+MAX_INVENTORY_X*0.5],BOTTOM+1.25"
 
 		if(opening)
 			animate(B,alpha=255,time=4)
