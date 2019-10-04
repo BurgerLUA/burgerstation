@@ -1,5 +1,7 @@
 var/global/list/all_reagents = list()
 
+var/global/list/all_reagent_recipes = list()
+
 /subsystem/reagent/
 	name = "Reagent Subsystem"
 	desc = "Store all the reagents."
@@ -7,11 +9,20 @@ var/global/list/all_reagents = list()
 
 /subsystem/reagent/Initialize()
 
-	for(var/v in subtypesof(/reagent/))
-		var/reagent/R = new v
-		if(!R.id)
-			LOG_ERROR("Reagent Subsystem Error: Reagent of type [R.type] has a null ID!")
-			continue
-		all_reagents[R.id] = v
+	for(var/k in subtypesof(/reagent/))
+		var/reagent/R = k
+		var/id = initial(R.id)
+		if(id)
+			R = new k
+			all_reagents[id] = R
 
 	LOG_SERVER("Initialized [length(all_reagents)] reagents.")
+
+	for(var/k in subtypesof(/reagent_recipe/))
+		var/reagent_recipe/R = k
+		var/id = initial(R.id)
+		if(id)
+			R = new k
+			all_reagent_recipes[id] = new k
+
+	LOG_SERVER("Initialized [length(all_reagent_recipes)] reagent recipes.")

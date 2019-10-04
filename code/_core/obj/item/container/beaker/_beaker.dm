@@ -14,6 +14,9 @@
 
 	var/transfer_amount = 10
 
+/obj/item/container/beaker/get_examine_text(var/mob/examiner)
+	return ..() + div("notice",reagents.get_contents_english())
+
 /obj/item/container/beaker/click_self(var/mob/caller,location,control,params)
 
 	var/initial_amount = initial(transfer_amount)
@@ -108,3 +111,8 @@
 /obj/item/container/beaker/large/bicaridine/on_spawn()
 	reagents.add_reagent("bicaridine",reagents.volume_max)
 
+/obj/item/container/beaker/large/kelotane/on_spawn()
+	reagents.add_reagent("kelotane",reagents.volume_max)
+
+/obj/item/container/beaker/large/dylovene/on_spawn()
+	reagents.add_reagent("dylovene",reagents.volume_max)

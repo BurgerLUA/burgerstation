@@ -43,11 +43,6 @@
 		else
 			W.open = FALSE
 
-	if(is_food(O))
-		var/obj/item/consumable/food/F = O
-		if(object_data["uses_left"])
-			F.uses_left = object_data["uses_left"]
-
 	if(is_soulgem(O))
 		var/obj/item/soulgem/S = O
 		if(object_data["total_charge"])
@@ -202,11 +197,6 @@
 		var/obj/item/currency/C = I
 		if(C.value > 1)
 			returning_list["value"] = C.value
-
-	if(is_food(I))
-		var/obj/item/consumable/food/F = I
-		if(F.uses_left)
-			returning_list["uses_left"] = F.uses_left
 
 	if(is_bullet_gun(I))
 		var/obj/item/weapon/ranged/bullet/BG = I

@@ -13,16 +13,7 @@
 	name = "cult loot"
 	id = "cult"
 	desc = "Loot you find off of dead cultists."
-	loot_table = list(
-		/obj/item/currency/{value=1} = 100,
-		/obj/item/currency/{value=2} = 50,
-		/obj/item/currency/{value=3} = 25,
-		/obj/item/currency/{value=4} = 12,
-		/obj/item/currency/{value=5} = 6,
-		/obj/item/currency/{value=6} = 3,
-		/obj/item/currency/{value=7} = 2,
-		/obj/item/currency/{value=8} = 1,
-	)
+	loot_table = list()
 
 	loot_count = 3
 
@@ -31,7 +22,7 @@
 /loot/money/
 	name = "money loot"
 	id = "money"
-	desc = "Loot you find off of dead cultists."
+	desc = "General low-level money loot.."
 	loot_table = list(
 		/obj/item/currency/{value=1} = 100,
 		/obj/item/currency/{value=2} = 50,
@@ -43,7 +34,7 @@
 		/obj/item/currency/{value=8} = 1,
 	)
 
-	loot_count = 3
+	loot_count = 1
 
 
 

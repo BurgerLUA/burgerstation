@@ -14,12 +14,12 @@
 			src.force_move(A)
 			return TRUE
 		if("feed_self")
-			var/obj/item/consumable/food/F = callback_list["object"]
+			var/obj/item/container/food/F = callback_list["object"]
 			src.to_chat(span("notice","You [F.consume_verb] \the [F]."))
 			F.consume(src)
 			return TRUE
 		if("feed_other")
-			var/obj/item/consumable/food/F = callback_list["object"]
+			var/obj/item/container/food/F = callback_list["object"]
 			var/mob/living/advanced/A = callback_list["target"]
 			src.to_chat(span("notice","You forcefeed \the [F] to \the [A]."))
 			A.to_chat(span("warning","\The [src] forcefeeds you \the [F]!"))

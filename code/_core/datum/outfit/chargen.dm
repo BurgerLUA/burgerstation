@@ -29,6 +29,6 @@
 		/obj/item/clothing/uniform/jumpsuit,
 		/obj/item/clothing/feet/shoes/black,
 		/obj/item/clothing/feet/shoes/black/left,
-		/obj/item/clothing/back/backpack/grey,
+		/obj/item/clothing/back/storage/backpack,
 		/obj/item/clothing/ears/headset
 	)

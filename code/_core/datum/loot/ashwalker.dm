@@ -5,7 +5,6 @@
 	loot_table = list(
 		/obj/item/weapon/melee/shield = 5,
 		/obj/item/weapon/melee/spear = 5,
-		/obj/item/consumable/food/burger/ratburger = 10,
 		/obj/item/color/crayon/brown = 20,
 		/obj/item/color/crayon/green = 20,
 		/obj/item/clothing/neck/cloak/brown = 50
@@ -22,8 +21,6 @@
 	loot_table = list(
 		/obj/item/weapon/melee/shield = 50,
 		/obj/item/weapon/melee/spear = 50,
-		/obj/item/consumable/food/burger/ratburger = 10,
-		/obj/item/color/crayon/green = 20,
 		/obj/item/color/crayon/red = 10,
 		/obj/item/clothing/neck/cloak/red = 50,
 		/obj/item/clothing/overwear/armor/gladiator/brass = 10,

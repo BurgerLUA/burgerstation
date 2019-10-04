@@ -104,7 +104,7 @@
 "bZ" = (/obj/structure/interactive/grille,/obj/structure/smooth/window/tinted,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chapel)
 "ca" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "cb" = (/mob/living/advanced/npc/unique/shopkeeper,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"cc" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/back/backpack/grey,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cc" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/back/storage/backpack,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cd" = (/obj/structure/smooth/table,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 4},/obj/structure/interactive/shop,/obj/item/powercell,/obj/item/powercell/advanced,/obj/item/powercell/industrial,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "ce" = (/mob/living/simple/npc/bear,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
 "cf" = (/turf/simulated/wall/rock,/area/world/forest/interior/cave/crab)
@@ -123,7 +123,7 @@
 "cs" = (/obj/structure/scenery/grass,/mob/living/advanced/npc/evil_wizard,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "ct" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/melee/energy/stunbaton,/obj/item/weapon/melee/baton,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cu" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/mask/gas,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"cv" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/storage/briefcase/deagle,/obj/item/clothing/back/backpack/bluespace,/obj/item/clothing/back/backpack/bluespace/satchel,/obj/item/storage/pouch/bluespace,/obj/item/clothing/overwear/armor/carbon_armor,/obj/item/weapon/ranged/laser/rifle,/obj/item/storage/bags/mining/bluespace,/obj/item/weapon/ranged/laser/hybrid/carbine,/obj/item/weapon/ranged/bullet/magazine/autopistol,/obj/item/weapon/ranged/bullet/revolver/mateba,/obj/item/storage/shoebox/jackboot,/obj/item/storage/glovebox/yellow,/obj/item/clothing/uniform/skirt/white,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cv" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/storage/briefcase/deagle,/obj/item/storage/pouch/bluespace,/obj/item/clothing/overwear/armor/carbon_armor,/obj/item/weapon/ranged/laser/rifle,/obj/item/storage/bags/mining/bluespace,/obj/item/weapon/ranged/laser/hybrid/carbine,/obj/item/weapon/ranged/bullet/magazine/autopistol,/obj/item/weapon/ranged/bullet/revolver/mateba,/obj/item/storage/shoebox/jackboot,/obj/item/storage/glovebox/yellow,/obj/item/clothing/uniform/skirt/white,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cw" = (/turf/simulated/wall/rock,/area/world/forest/interior/cave/open)
 "cx" = (/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
 "cy" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
@@ -255,9 +255,14 @@
 "eU" = (/mob/living/simple/npc/slime/blue,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
 "eV" = (/mob/living/simple/npc/spacecarp,/turf/simulated/floor/river,/area/world/forest/exterior/plains)
 "eW" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
+"eX" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
+"eY" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/large/bicaridine,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "eZ" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
 "fa" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/medium_armor/leather,/obj/item/clothing/overwear/armor/molded_armor/leather,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
+"fb" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/large/dylovene,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "fc" = (/turf/simulated/floor/carpet,/area/world/forest/interior/village/shop/debug)
+"fd" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/large/kelotane,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
+"fe" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/large,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "fG" = (/mob/living/simple/npc/slime/green,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
 "fH" = (/mob/living/simple/npc/spacecarp/leader,/turf/simulated/floor/river,/area/world/forest/exterior/plains)
 "fI" = (/mob/living/simple/npc/bear,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
@@ -310,9 +315,9 @@ aaaaacacacacacacacacagagagagagagaZagagagagagaZagagagagagagagagaZagbNbNbNbNbNbNbN
 aaaaaaajajajajajajaaagagagaZagagagagagagagagagagagaZagagaZagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagbNavanandhdjdjdjdjdjdjdhbicTbCbCbCbCbBbBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCcVcabdbgbgbgbgbgbgbgbgbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
 aaaaaaaaaaaaajajaaaaagagagagagagagagaZagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdjdjdkdjdjdjdhbkaBaBaBaBbFbxbDcBcXcXcYcXcXcXcXcXcXbicXcXcYcXcXcXcXcXaBcXcXcXcXcXcXcXcYcXcXanbdbgbgbgbgbgbgbgbgbcbcaHaJaJaJaHaJaJaJaHbcbcbcbcbc
 aaaaaaaaaaaaaaaaaaagagagagagagagagagagagagaZagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdGdidididididhdhdhdhdhdhanbxbDbicXdBdEdEdEdFdEdEcXbicXdEdEdEdFdEdEcXbicXdEdFdEdEdEdEdEdEcXanbdbdbdbcbcbcbcbcbcbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
-aaaaaaaaaaaaaEagagagagagagagaZagagagagagagagagagagagaZagagagaZagagagaZagagaZagbNbNbNbNbNbNbNbNagagagagagagavanandhdDdDdDdDdDdDdjdldjdjdjdhanbxbDbicXcZdEfcfcfcdEdEcXbicXdEdEdEfcfcdEcXbicXdEfcfcdEfcfcfcdEcXbdbdbdbdbcbcbcbcbcbcbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
-aaaaaaaaaaaaaEagagagaZagagagagagagaZagagagagagagbNbNbNbNagagagagagagagagagagagagagbNbNbNbNagagagagagagagagavaiaidhdjdmdmdmdmdjdjdmdmdjdjdnanbxbDbicXdHdEfcfcfcdEdEcXaBcXdBdEdEfcfcdEcXbicXdEfcfcdydadadzdEcXbdbdbdbqbcbcbcbcbcbcbcbcbpbpbybpbzbpbybpbpbcbcbcbcbc
-aaaaaaaaaaaaaEagagagagagagagagagagagagagagagagbNbNbNckbNbNagagagagagagagagagagagagagagbNagagaZagagaZagagagavaiaidhdjdmdmdmdmdjdjdjdjdjdjdhanbxbDbicXdCdEdEdEdEdEdEcXaBcXcZdHdEdEdEdEcXaBcXdEdEdEdycZdHdAdEcXbdbdbdbdbdbcbcbcbcbcbcbcbpbAbAbAbAbAbAbAbpbcbcbcbcbc
+aaaaaaaaaaaaaEagagagagagagagaZagagagagagagagagagagagaZagagagaZagagagaZagagaZagbNbNbNbNbNbNbNbNagagagagagagavanandhdDdDdDdDdDdDdjdldjdjdjdhanbxbDbicXcZdEfcfcfcdEeXcXbicXdEdEdEfcfcdEcXbicXdEfcfcdEfcfcfcdEcXbdbdbdbdbcbcbcbcbcbcbcbcaHaJaJaJaJaJaJaJaHbcbcbcbcbc
+aaaaaaaaaaaaaEagagagaZagagagagagagaZagagagagagagbNbNbNbNagagagagagagagagagagagagagbNbNbNbNagagagagagagagagavaiaidhdjdmdmdmdmdjdjdmdmdjdjdnanbxbDbicXdHdEfcfcfcdEeXcXaBcXdBdEdEfcfcdEcXbicXdEfcfcdydadadzdEcXbdbdbdbqbcbcbcbcbcbcbcbcbpbpbybpbzbpbybpbpbcbcbcbcbc
+aaaaaaaaaaaaaEagagagagagagagagagagagagagagagagbNbNbNckbNbNagagagagagagagagagagagagagagbNagagaZagagaZagagagavaiaidhdjdmdmdmdmdjdjdjdjdjdjdhanbxbDbicXdCdEeYfbfdfedHcXaBcXcZdHdEdEdEdEcXaBcXdEdEdEdycZdHdAdEcXbdbdbdbdbdbcbcbcbcbcbcbcbpbAbAbAbAbAbAbAbpbcbcbcbcbc
 aaaaaaaaaaaaagagagagagagagaZagagagagagagaZbNbNbNbNbNbNbNbNbNbNagagaZagagagaZagagagagagagagagagagagagagagbNavaiaidhdjdmdmdmdmdjdjdjdjdjdjdhcabxbDcBcXcXcXcXcXcXcXcXcXaBcXcXcXcXcXcXcXcXaBcXcXcXcXcXcXcXcXcXcXbfbdbdbdbdbcbcbcbcbcbcbcbybAbAbAbAbAbAbAbybcbcbcbcbc
 aaaaaaaaaaaaagagaZagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagagagaZagagagagagagagagagagagbNbNavaiaidhdjdjdjdjdjdjdjdjdjdjdjdhaBbxbDaBaBaBaBaBbibibibibibibibibibibibibibiaBbkaBaBbibibiaBaBaBanbfbfbfbfbfddbcbcbcbcbcbcbybAbAbAbAbAbAbAbybcbcbcbcbc
 aaaaaaaaagagagagagagagagagaZagagagaZagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagagagagaZagagagagagagagagagbNavavdeaidhdhdhdhdhdhdhdhdhdhdhdhdhavbxbDavbkbibibiaBaBaBaBbkbibibibibibibibibibiaBaBaBbibibibibibiananbfbfbdavavbcbcbcbcbcbcbybAbAbQbRbRbAbAbybcbcbcbcbc

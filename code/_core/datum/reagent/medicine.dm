@@ -61,3 +61,46 @@
 	. = ..()
 	owner.adjust_oxy_loss(-.*0.5)
 	return .
+
+/reagent/medicine/tricordrazine
+	name = "Tricordrazine"
+	id = "tricordrazine"
+	desc = "Heals everything except for oxygen loss."
+	color = "#B21FFF"
+
+/reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner)
+	. = ..()
+	owner.adjust_brute_loss(-.*0.33)
+	owner.adjust_burn_loss(-.*0.33)
+	owner.adjust_tox_loss(-.*0.33)
+	return .
+
+/reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner)
+	. = ..()
+	owner.adjust_brute_loss(-.*0.33*0.5)
+	owner.adjust_burn_loss(-.*0.33*0.5)
+	owner.adjust_tox_loss(-.*0.33*0.5)
+	return .
+
+/reagent/medicine/omnizine
+	name = "Omnizine"
+	id = "omnizine"
+	desc = "Heals everything."
+	desc_extended = "Works just as good when consumed."
+	color = "#F7F7F7"
+
+/reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner)
+	. = ..()
+	owner.adjust_brute_loss(-.*0.25)
+	owner.adjust_burn_loss(-.*0.25)
+	owner.adjust_tox_loss(-.*0.25)
+	owner.adjust_oxy_loss(-.*0.25)
+	return .
+
+/reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner)
+	. = ..()
+	owner.adjust_brute_loss(-.*0.25)
+	owner.adjust_burn_loss(-.*0.25)
+	owner.adjust_tox_loss(-.*0.25)
+	owner.adjust_oxy_loss(-.*0.25)
+	return .

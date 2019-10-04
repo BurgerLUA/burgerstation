@@ -15,6 +15,16 @@
 
 	var/should_update_owner = FALSE //Should a change in reagents update the owner?
 
+
+/reagent_container/proc/get_contents_english()
+
+	var/returning_text = list()
+
+	for(var/reagent/R in stored_reagents)
+		returning_text += "[R.volume] units of [R.name]"
+
+	return "It contains [english_list(returning_text)]"
+
 /reagent_container/New(var/atom/desired_owner,var/desired_volume_max)
 
 	. = ..()
@@ -55,7 +65,7 @@
 	var/total_reagents = length(stored_reagents)
 
 	if(total_reagents)
-		color = rgb(red/total_reagents,green/total_reagents,blue/total_reagents)
+		color = rgb(red/total_volume,green/total_volume,blue/total_volume)
 	else
 		color = "#FFFFFF"
 
@@ -64,8 +74,68 @@
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0)
 
+/reagent_container/proc/process_recipes()
+
+	var/list/c_id_to_volume = list() //What is in the reagent container, but in a nice id = volume form
+
+	for(var/reagent/C in stored_reagents)
+		c_id_to_volume[C.id] = C.volume
+
+	var/reagent_recipe/found_recipe = null
+
+	for(var/k in all_reagent_recipes)
+
+		var/reagent_recipe/recipe = all_reagent_recipes[k]
+
+		if(!length(recipe.required_reagents))
+			continue
+
+		var/good_recipe = TRUE
+
+		for(var/reagent_id in recipe.required_reagents)
+			if(!c_id_to_volume[reagent_id] || c_id_to_volume[reagent_id] < recipe.required_reagents[reagent_id]) //if our container doesn't have what is required, then lets fuck off.
+				good_recipe = FALSE
+				//world.log << "[k] is not a good recipe because there is no [reagent_id] or it is less than the required amount."
+				break
+
+		if(!good_recipe) //This recipe doesn't work. Onto the next recipe.
+			continue
+
+		found_recipe = recipe
+		break
+
+	if(!found_recipe)
+		return FALSE
+
+	//Okay now we figure out math bullshit.
+
+	var/portions_to_make
+
+	for(var/k in found_recipe.required_reagents)
+		var/required_amount = found_recipe.required_reagents[k]
+		var/current_volume = c_id_to_volume[k]
+		var/math_to_do = current_volume / required_amount
+
+		if(!portions_to_make)
+			portions_to_make = math_to_do
+			continue
+
+		portions_to_make = min(portions_to_make,math_to_do)
+
+	for(var/k in found_recipe.required_reagents)
+		var/required_amount = found_recipe.required_reagents[k]
+		remove_reagent(k,portions_to_make* required_amount)
+
+	for(var/k in found_recipe.results)
+		var/v = found_recipe.results[k]
+		add_reagent(k,portions_to_make * v)
+
+	update_container()
+
+	return TRUE
+
+/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0)
 
 	if(amount == 0)
 		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
@@ -83,8 +153,11 @@
 		LOG_ERROR("Reagent Error: Tried to take away a reagent ([reagent_id]) that doesn't exist in [owner]!")
 		return 0
 
-	var/reagent/R = all_reagents[reagent_id]
-	R = new R(src,amount)
+	var/R = all_reagents[reagent_id].type
+	new R(src,amount)
+
+	process_recipes()
+
 	return amount
 
 /reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0)

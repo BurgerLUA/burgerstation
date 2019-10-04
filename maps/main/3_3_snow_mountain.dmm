@@ -48,7 +48,7 @@
 "aV" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/yellow,/obj/item/storage/pouch/small4,/obj/item/clothing/glasses/sun,/obj/item/clothing/underbottom/underwear/long_johns/grey,/obj/item/storage/briefcase/syndicate/rifle,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aW" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/padded,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aX" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/mask/skimask,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
-"aY" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/back/backpack/grey,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
+"aY" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aZ" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/melee/spear,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "ba" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/pump/hunting_rifle,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "bb" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/pump/pump_shotgun,/obj/item/weapon/ranged/bullet/revolver/dbarrel,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
