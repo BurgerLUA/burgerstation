@@ -12,3 +12,6 @@
 	)
 
 	crafting_id = "smelter"
+
+
+

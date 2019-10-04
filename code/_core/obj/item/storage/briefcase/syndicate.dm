@@ -64,3 +64,18 @@
 		M.on_spawn()
 		M.update_icon()
 		inventories[i].add_held_object(M,bypass_checks = TRUE)
+
+
+/obj/item/storage/briefcase/syndicate/autoshotgun
+	name = "syndicate autoshotgun pack"
+	desc = "For all your shotgun needs."
+	container_max_size = 3
+	dynamic_inventory_count = 3
+
+/obj/item/storage/briefcase/syndicate/autoshotgun/on_spawn()
+	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/autoshotgun(src.loc),bypass_checks = TRUE)
+	for(var/i=2,i<=dynamic_inventory_count,i++)
+		var/obj/item/magazine/M = new /obj/item/magazine/shotgun_auto(src.loc)
+		M.on_spawn()
+		M.update_icon()
+		inventories[i].add_held_object(M,bypass_checks = TRUE)

@@ -59,6 +59,6 @@
 	name = "bluespace pouch"
 	icon_state = "pouch_bluespace"
 	size = 4
-	dynamic_inventory_count = 1
+	dynamic_inventory_count = 4
 	container_held_slots = 10
 	container_max_size = 100

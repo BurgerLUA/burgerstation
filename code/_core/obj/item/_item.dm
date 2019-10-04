@@ -80,6 +80,9 @@
 		'sounds/effects/inventory/rustle5.ogg'
 	)
 
+	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_id = volume.
+
+
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE
 

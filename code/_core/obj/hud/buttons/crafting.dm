@@ -19,11 +19,11 @@
 
 /obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(caller) || !stored_crafting_table)
 		return ..()
 
 	var/mob/living/advanced/A = caller
-	attempt_to_craft(A,stored_crafting_table)
+	stored_crafting_table.attempt_to_craft(A)
 
 	return ..()
 

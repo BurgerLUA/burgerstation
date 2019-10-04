@@ -26,4 +26,19 @@
 	icon_state = "safe"
 	safe = TRUE
 
+/area/world/caves/interior/safe/shop
+	name = "cave interior shop"
+	id = "cave_shop"
+	icon_state = "shop"
+	safe = TRUE
 
+/area/world/caves/interior/water
+	name = "water"
+	icon_state = "pink"
+
+
+	sunlight_freq = 2
+
+	desired_light_range = 2
+	desired_light_power = 1
+	desired_light_color = "#213A68"

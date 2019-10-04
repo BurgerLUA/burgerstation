@@ -29,6 +29,7 @@ var/global/list/all_recipes = list()
 
 	return item_table
 
+/*
 /proc/attempt_to_craft(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table)
 
 	var/obj/hud/inventory/crafting/result/product_slot
@@ -59,3 +60,4 @@ var/global/list/all_recipes = list()
 
 	caller.to_chat(span("notice","You fail to craft anything..."))
 	return FALSE
+*/

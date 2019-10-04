@@ -60,3 +60,35 @@
 			opening = FALSE
 
 	return TRUE
+
+
+/obj/item/crafting/proc/attempt_to_craft(var/mob/living/advanced/caller)
+
+	var/obj/hud/inventory/crafting/result/product_slot
+
+	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
+		if(R.get_top_held_object())
+			caller.to_chat(span("notice","Remove the already completed item in the product slot before doing this!"))
+			return FALSE
+		else
+			product_slot = R
+
+	var/list/item_table = generate_crafting_table(caller)
+
+	for(var/R_id in all_recipes)
+		var/recipe/R = all_recipes[R_id]
+
+		var/list/recipe_check = R.check_recipe(item_table,src)
+		if(length(recipe_check)) //We can craft
+			for(var/obj/item/I in recipe_check)
+				if(is_inventory(I.loc))
+					var/obj/hud/inventory/I2 = I.loc
+					I2.remove_object(I,get_turf(caller))
+				qdel(I)
+
+			var/obj/item/I = new R.product(caller.loc)
+			product_slot.add_held_object(I,caller,FALSE,TRUE)
+			return I
+
+	caller.to_chat(span("notice","You fail to craft anything..."))
+	return FALSE

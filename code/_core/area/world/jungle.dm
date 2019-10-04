@@ -7,6 +7,17 @@
 	icon_state = "red"
 	weather = WEATHER_RAIN
 
+/area/world/jungle/exterior/water
+
+	icon_state = "yellow"
+
+	sunlight_freq = 2
+
+	desired_light_range = 2
+	desired_light_power = 1
+	desired_light_color = "#213A68"
+
+
 /area/world/jungle/cave
 	name = "jungle cave"
 	icon_state = "green"

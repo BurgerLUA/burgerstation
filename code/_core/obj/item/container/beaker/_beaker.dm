@@ -2,6 +2,7 @@
 	name = "glass beaker"
 	desc = "For the mad scientist in all of us."
 	desc_extended = "Holds reagents."
+	crafting_id = "beaker"
 
 	icon = 'icons/obj/items/container/cup/beaker.dmi'
 	icon_state = "beaker"
@@ -87,6 +88,8 @@
 
 /obj/item/container/beaker/update_icon()
 
+	name = "[reagents.total_volume ? "" : "empty "][initial(name)]"
+
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
@@ -94,25 +97,8 @@
 	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.total_volume/reagents.volume_max,0,1)*icon_count,1)]")
 
 	I2.Blend(reagents.color,ICON_MULTIPLY)
-	I.Blend(I2,ICON_OVERLAY)
+	I.Blend(I2,ICON_UNDERLAY)
 
 	icon = I
 
 	..()
-
-/obj/item/container/beaker/large
-	name = "large beaker"
-	icon = 'icons/obj/items/container/cup/beaker_large.dmi'
-	icon_state = "beaker"
-	icon_count = 9
-
-	reagents = /reagent_container/beaker/large
-
-/obj/item/container/beaker/large/bicaridine/on_spawn()
-	reagents.add_reagent("bicaridine",reagents.volume_max)
-
-/obj/item/container/beaker/large/kelotane/on_spawn()
-	reagents.add_reagent("kelotane",reagents.volume_max)
-
-/obj/item/container/beaker/large/dylovene/on_spawn()
-	reagents.add_reagent("dylovene",reagents.volume_max)

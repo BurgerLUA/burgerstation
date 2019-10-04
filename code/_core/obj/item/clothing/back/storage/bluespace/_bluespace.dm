@@ -5,7 +5,7 @@ obj/item/clothing/back/storage/bluespace
 
 	icon = 'icons/obj/items/clothing/back/backpack/bluespace.dmi'
 
-	dynamic_inventory_count = 4
+	dynamic_inventory_count = 8
 	container_held_slots = 10
 	container_max_size = 100 //Can hold anything.
 
@@ -18,7 +18,7 @@ obj/item/clothing/back/storage/bluespace/satchel
 
 	icon = 'icons/obj/items/clothing/back/satchel/bluespace.dmi'
 
-	dynamic_inventory_count = 3
+	dynamic_inventory_count = 6
 	container_held_slots = 10
 
 	size = 18

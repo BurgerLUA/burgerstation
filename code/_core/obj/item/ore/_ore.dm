@@ -95,6 +95,8 @@ obj/item/ore/carbon
 	id = "carbon"
 	desc = "Found in caves and deep underground."
 	ore_color = "#0A0A0A"
+	crafting_id = "ore_carbon"
+	alchemy_reagents = list("carbon" = 15)
 
 obj/item/ore/magnesium
 	name = "magnesium ore"
