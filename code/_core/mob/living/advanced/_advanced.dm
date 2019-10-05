@@ -133,16 +133,6 @@
 	if(chargen)
 		qdel(src)
 
-/mob/living/advanced/on_stunned()
-
-	if(left_hand)
-		left_hand.drop_held_objects(src.loc)
-
-	if(right_hand)
-		right_hand.drop_held_objects(src.loc)
-
-	return ..()
-
 /mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
 
 	var/dropped_objects = list()

@@ -3,21 +3,23 @@
 	desc = "Spawns the below item."
 	var/obj/item/stored_item
 
+	var/obj/item/cached_item
+
 /obj/structure/interactive/localmachine/item/New()
 	if(stored_item)
-		stored_item = new stored_item(src.contents)
-		stored_item.on_spawn()
-		stored_item.update_icon()
-		name = stored_item.name
-		desc = stored_item.desc
-		desc_extended = stored_item.desc_extended
-		appearance = stored_item.appearance
+		cached_item = new stored_item(src.contents)
+		cached_item.on_spawn()
+		cached_item.update_icon()
+		appearance = cached_item.appearance
+		name = cached_item.name
+		desc = cached_item.desc
+		desc_extended = cached_item.desc_extended
 	..()
 
 /obj/structure/interactive/localmachine/item/clicked_on_by_object(caller,object,location,control,params)
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
-		var/obj/item/local_item_clone = new stored_item.type(loc)
+		var/obj/item/local_item_clone = new stored_item(loc)
 		local_item_clone.on_spawn()
 		local_item_clone.update_icon()
 		if(A.client)

@@ -111,6 +111,11 @@
 
 	var/list/files = U.get_files()
 
+	if(!files || !length(files))
+		new_character()
+		return FALSE
+
+
 	var/file_num = U.get_proper_id_from_filename(files[1])
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	C.save_slot = file_num

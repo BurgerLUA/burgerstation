@@ -28,6 +28,10 @@
 			I.item_count_current = object_data["item_count_current"]
 		if(object_data["delete_on_drop"])
 			I.delete_on_drop = TRUE
+		if(object_data["reagents"] && length(object_data["reagents"]))
+			for(var/k in object_data["reagents"])
+				var/v = object_data["reagents"][k]
+				I.reagents.add_reagent(k,v)
 
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
@@ -60,7 +64,15 @@
 
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
-		if(object_data["stored_bullets"])
+
+		if(object_data["chambered_bullet"])
+			var/b_type = object_data["chambered_bullet"]
+			var/obj/item/bullet/B = new b_type(BG)
+			if(B)
+				B.update_icon()
+				BG.chambered_bullet = B
+
+		if(object_data["stored_bullets"] && length(object_data["stored_bullets"]))
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
 				if(b_type)
@@ -172,6 +184,10 @@
 			returning_list["item_count_current"] = IT.item_count_current
 		if(IT.delete_on_drop)
 			returning_list["delete_on_drop"] = TRUE
+		if(IT.reagents && IT.reagents.stored_reagents && length(IT.reagents.stored_reagents))
+			returning_list["reagents"] = list()
+			for(var/reagent/R in IT.reagents.stored_reagents)
+				returning_list["reagents"][R.id] = R.volume
 
 	if(is_soulgem(I))
 		var/obj/item/soulgem/S = I
@@ -200,11 +216,16 @@
 
 	if(is_bullet_gun(I))
 		var/obj/item/weapon/ranged/bullet/BG = I
+
+		if(BG.chambered_bullet)
+			returning_list["chambered_bullet"] = BG.chambered_bullet.type
+
 		if(length(BG.stored_bullets))
 			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
 			for(var/i=1,i<=length(BG.stored_bullets),i++)
 				var/obj/item/bullet/B = BG.stored_bullets[i]
 				if(B) returning_list["stored_bullets"][i] = B.type
+
 
 	/*
 	if(is_pump_gun(I))
