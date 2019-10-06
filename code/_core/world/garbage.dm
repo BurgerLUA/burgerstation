@@ -1,3 +1,5 @@
+var/list/qdel_refs_to_type = list()
+
 //Credit to Kachnov for this garbage collection code.
 /datum/
 	var/name
@@ -11,6 +13,7 @@
 	return TRUE
 
 /proc/qdel(var/datum/object)
+
 	if(is_datum(object))
 
 		if(!object.qdel_warning)
@@ -21,6 +24,9 @@
 
 		if(!object.qdeleting)
 			object.qdeleting = TRUE
+			qdel_refs_to_type["\ref[object]"] = object.type
 			object.destroy()
 			return TRUE
+
+
 	return FALSE

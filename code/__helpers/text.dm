@@ -89,3 +89,7 @@
 
 /proc/getCharacter(string, pos=1) //Stolen from goon.
 	return ascii2text(text2ascii(string, pos))
+
+
+#define datum2text(x) "[x.name]([x.type])"
+#define atom2text(x) "[x.name]([x.type])([x.x][x.y])"

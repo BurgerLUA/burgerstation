@@ -798,6 +798,7 @@
 #include "code\_core\world\subsystems\dmm_suite.dm"
 #include "code\_core\world\subsystems\events.dm"
 #include "code\_core\world\subsystems\factions.dm"
+#include "code\_core\world\subsystems\garbage_tracking.dm"
 #include "code\_core\world\subsystems\hair.dm"
 #include "code\_core\world\subsystems\hazard.dm"
 #include "code\_core\world\subsystems\image_notifications.dm"
