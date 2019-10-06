@@ -12,9 +12,7 @@
 
 /savedata/client/connection_history/New(var/client/new_owner)
 
-	..()
-
-	owner = new_owner
+	. = ..()
 
 	reset_data()
 
@@ -43,6 +41,8 @@
 	new_owner << new_file_name
 
 	text2file(new_file_data,new_file_name)
+
+	return .
 
 
 /savedata/client/connection_history/get_folder(var/folder_id)

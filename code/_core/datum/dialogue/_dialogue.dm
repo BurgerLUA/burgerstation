@@ -14,7 +14,7 @@
 /dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
 
 	var/menu/M = get_menu("dialogue")
-	var/list/known_options = P.client.savedata.loaded_data["known_topics"]
+	var/list/known_options = P.mobdata.loaded_data["known_topics"]
 	var/list/dialogue_options = get_dialogue_options(P,known_options)
 	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
 
@@ -49,13 +49,13 @@
 
 		var/first_letter = copytext(chosen_dialogue[i],1,2)
 
-		if(!(chosen_dialogue[i] in P.client.savedata.loaded_data["known_topics"]) && first_letter != "*")
-			P.client.savedata.loaded_data["known_topics"] += chosen_dialogue[i]
+		if(!(chosen_dialogue[i] in P.mobdata.loaded_data["known_topics"]) && first_letter != "*")
+			P.mobdata.loaded_data["known_topics"] += chosen_dialogue[i]
 
 	return final_topic
 
 /dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic)
 	var/menu/M = get_menu("dialogue")
-	var/list/known_options = P.client.savedata.loaded_data["known_topics"]
+	var/list/known_options = P.mobdata.loaded_data["known_topics"]
 	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P,known_options)))
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")

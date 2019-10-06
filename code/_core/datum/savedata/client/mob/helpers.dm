@@ -65,7 +65,7 @@
 	var/data = file2text(filename)
 
 	if(!data)
-		LOG_ERROR("FATAL ERROR: NO DATA FOUND FOR [filename] for [owner.mob.ckey].")
+		LOG_ERROR("FATAL ERROR: NO DATA FOUND FOR [filename] for [owner.ckey].")
 		return FALSE
 
 	return json_decode(data)

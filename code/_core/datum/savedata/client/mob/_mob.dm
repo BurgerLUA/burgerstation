@@ -32,8 +32,6 @@
 
 	reset_data()
 
-	owner = new_owner
-
 	if(!has_files())
 		owner << "Welcome to Burgerstation!"
 	else

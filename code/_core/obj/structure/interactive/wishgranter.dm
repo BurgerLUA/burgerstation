@@ -105,7 +105,6 @@ obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,
 	P.spam_protection_command += 10
 
 	var/savedata/client/mob/U = P.client.savedata
-
 	U.loaded_data["last_save"] = src.id
 	U.save_current_character()
 

@@ -17,29 +17,25 @@
 	collision_flags = FLAG_COLLISION_ETHEREAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+	var/savedata/client/mob/mobdata
+
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE
-
-
 	return ..()
 
-/mob/abstract/observer/no_move
-	icon_state = ""
-
-/mob/abstract/observer/no_move/Initialize()
-	. = ..()
-	to_chat(span("Please load a character or create a new character to play using the buttons below."))
-	return .
-
-/mob/abstract/observer/no_move/Move(NewLoc,Dir=0,step_x=0,step_y=0)
-	return FALSE
-
-/mob/abstract/observer/auto_camera
-	icon_state = ""
+/mob/abstract/observer/on_right_click(var/atom/object,location,control,params)
+	if(src.click_on_object(src,object,location,control,params))
+		return TRUE
+	return ..()
 
 /mob/abstract/observer/Initialize()
+
 	. = ..()
+
+	if(!mobdata)
+		mobdata = new(client)
+
 	name = "ghost of [ckey]"
 
 	sight |= SEE_THRU
@@ -48,21 +44,25 @@
 		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
+	to_chat(span("notice","Please load a character or create a new character to play using the buttons below."))
+
 	return .
 
 /mob/abstract/observer/Logout()
-	..()
+	. = ..()
 	qdel(src)
+	return .
 
 /mob/abstract/observer/verb/new_character()
 	set name = "Create New Character"
 	set category = "Data"
 
 	if(client)
-		var/savedata/client/mob/U = client.savedata
+		var/savedata/client/mob/U = mobdata
 
 		if(U.create_new_character(U.get_next_character_id()))
 			var/mob/living/advanced/player/P = new(pick(chargen_spawnpoints),client)
+			P.mobdata = mobdata
 			if(P.client)
 				P.client.eye = P
 				P.client.update_zoom(-1)
@@ -74,7 +74,7 @@
 	set category = "Data"
 
 	var/client/C = src.client
-	var/savedata/client/mob/U = C.savedata
+	var/savedata/client/mob/U = mobdata
 
 	if(!U.has_files())
 		to_chat(span("notice","You don't have a character to load! Please create a new character."))
@@ -99,6 +99,7 @@
 	stop_sound('sounds/music/menu/lobby.ogg',list(src))
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
+	P.mobdata = mobdata
 	P.Initialize()
 	qdel(src)
 
@@ -107,14 +108,13 @@
 	set category = "Data"
 
 	var/client/C = src.client
-	var/savedata/client/mob/U = C.savedata
+	var/savedata/client/mob/U = mobdata
 
 	var/list/files = U.get_files()
 
 	if(!files || !length(files))
 		new_character()
 		return FALSE
-
 
 	var/file_num = U.get_proper_id_from_filename(files[1])
 	U.loaded_data = U.load_json_data_from_id(file_num)
@@ -123,5 +123,6 @@
 	stop_sound('sounds/music/menu/lobby.ogg',list(src))
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
+	P.mobdata = mobdata
 	P.Initialize()
 	qdel(src)

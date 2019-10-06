@@ -131,9 +131,11 @@
 	click_and_drag_icon	= new(src)
 
 /mob/living/advanced/Logout()
-	..()
+
 	if(chargen)
 		qdel(src)
+
+	return ..()
 
 /mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
 
@@ -213,14 +215,13 @@ mob/living/advanced/Login()
 			automatic_ticks = 5
 
 
+/mob/living/advanced/proc/apply_mob_parts()
+	add_species_organs()
+	add_species_colors()
+
 /mob/living/advanced/Initialize()
 
-	if(!client || client.savedata.loaded_data["tutorial"])
-		add_species_organs()
-		add_species_colors()
-		update_icon()
-	else
-		client.savedata.apply_data_to_mob(src)
+	apply_mob_parts()
 
 	if(client)
 		add_species_buttons()

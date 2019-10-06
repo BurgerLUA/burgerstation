@@ -34,6 +34,18 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/currency = 0
 
+	var/savedata/client/mob/mobdata
+
+	var/logout_time = 0
+
+/mob/living/advanced/player/apply_mob_parts()
+
+	if(!mobdata || mobdata.loaded_data["tutorial"])
+		return ..()
+
+	mobdata.apply_data_to_mob(src)
+	return TRUE
+
 /mob/living/advanced/player/Initialize()
 	. = ..()
 	all_players += src

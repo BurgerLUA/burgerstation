@@ -80,14 +80,12 @@
 			players_inside += enterer
 
 	if(enterer.area != src)
-
 		if(is_mob(enterer))
 			var/mob/M = enterer
 			if(M.client)
 				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
 					play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
-
-				if(length(tracks) && !M.client.savedata.loaded_data["tutorial"] && (!enterer.area || enterer.area.id != src.id))
+				if(length(tracks) && (!enterer.area || enterer.area.id != src.id))
 					play_music_track(pick(tracks),M.client)
 
 			if(is_player(enterer) && enterer.area)
@@ -96,14 +94,10 @@
 					P.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
 				else if(!enterer.area.safe && src.safe) //Entering a safezone
 					P.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
-
 					if(assoc_wishgranter)
-						var/savedata/client/mob/U = P.client.savedata
+						var/savedata/client/mob/U = P.mobdata
 						U.loaded_data["last_save"] = assoc_wishgranter
 						U.save_current_character()
-
-
-
 
 		enterer.area = src
 

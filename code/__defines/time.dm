@@ -6,5 +6,9 @@
 #define SECONDS_TO_TICKS(x) (FPS_SERVER * x)
 #define TICKS_TO_SECONDS(x) (x/FPS_SERVER)
 
+
+#define MINUTES_TO_SECONDS(x) (x * 60)
+
+
 #define SECONDS_TO_DECISECONDS(x) (x * 10)
 #define DECISECONDS_TO_SECONDS(x) (x / 10)

@@ -16,7 +16,6 @@ var/global/list/all_clients = list()
 
 	var/zoom_level = MIN_ZOOM
 
-	var/savedata/client/mob/savedata
 	var/savedata/client/connection_history/connection_data
 	var/savedata/client/roles/roles
 	var/savedata/client/settings/settings
@@ -52,6 +51,8 @@ var/global/list/all_clients = list()
 	var/update_stats = FALSE
 
 	var/list/queued_chat_messages = list()
+
+	var/inactivity_warning_stage = 0
 
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
@@ -89,9 +90,6 @@ var/global/list/all_clients = list()
 
 	known_inventory = list()
 	known_buttons = list()
-
-	if(!savedata)
-		savedata = new(src)
 
 	setup_stylesheets()
 
@@ -398,7 +396,9 @@ var/global/list/all_clients = list()
 	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 
 /client/proc/save_current_character()
-	savedata.save_current_character()
+	if(mob && is_player(mob))
+		var/mob/living/advanced/player/P = mob
+		P.mobdata.save_current_character()
 
 /client/proc/get_permissions()
 	return FALSE

@@ -79,23 +79,17 @@
 
 /mob/living/advanced/pre_death()
 
-	if(client)
-		var/obj/item/storage/heavy/corpse/C = new(src.loc)
-		var/list/dropped_items = drop_all_items(exclude_soulbound = TRUE,exclude_containers=TRUE)
+	var/obj/item/storage/heavy/corpse/C = new(src.loc)
+	var/list/dropped_items = drop_all_items(exclude_soulbound = TRUE,exclude_containers=TRUE)
 
-		var/savedata/client/mob/U = client.savedata
-		U.save_current_character()
+	for(var/obj/item/I in dropped_items)
+		C.add_to_inventory(src,I,FALSE)
 
-		for(var/obj/item/I in dropped_items)
-			C.add_to_inventory(src,I,FALSE)
+	C.prune_inventory()
 
-		C.prune_inventory()
+	queue_delete(C,3000)
 
-		queue_delete(C,3000)
-
-	else
-		delete_all_items()
-
+	return ..()
 
 /mob/living/advanced/post_death()
 

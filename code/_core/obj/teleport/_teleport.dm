@@ -183,7 +183,7 @@
 				P.sight &= ~SEE_THRU
 				sleep(SECONDS_TO_DECISECONDS(3))
 				P.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
-				var/savedata/client/mob/U = P.client.savedata
+				var/savedata/client/mob/U = P.mobdata
 				U.loaded_data["tutorial"] = 0
 				U.save_current_character()
 			return .

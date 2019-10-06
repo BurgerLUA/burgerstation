@@ -1,6 +1,10 @@
 /savedata/client/
 	var/client/owner
 
+/savedata/client/New(var/client/new_owner)
+	owner = new_owner
+	return ..()
+
 /savedata/client/get_folder(var/folder_id)
 	return replacetext(CKEY_PATH_FORMAT,"%CKEY",folder_id)
 

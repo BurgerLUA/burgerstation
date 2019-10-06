@@ -16,12 +16,6 @@ mob/living/advanced/player/verb/logout()
 	if(A && A.safe && client)
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && A && A.safe && client)
-			var/savedata/client/mob/U = src.client.savedata
-			if(U)
-				client.save_current_character()
-				client.make_ghost(get_turf(src))
-				qdel(src)
-			return TRUE
-
+			return save_and_logout()
 
 	return FALSE
