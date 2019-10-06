@@ -1,4 +1,5 @@
-var/list/all_wishgranters = list()
+var/list/obj/structure/interactive/wishgranter/all_wishgranters = list()
+var/obj/structure/interactive/wishgranter/main_wishgranter
 
 
 obj/structure/interactive/wishgranter
@@ -16,10 +17,6 @@ obj/structure/interactive/wishgranter
 	desired_light_power = 0.5
 	desired_light_color = "#FFFFFF"
 
-obj/structure/interactive/wishgranter/fake/New()
-	//Do literally nothing.
-
-
 obj/structure/interactive/wishgranter/New()
 	. = ..()
 	all_wishgranters[id] = src
@@ -27,6 +24,10 @@ obj/structure/interactive/wishgranter/New()
 		set_light(desired_light_range,desired_light_power,desired_light_color)
 
 	return .
+
+obj/structure/interactive/wishgranter/fake/New()
+	//Do literally nothing.
+	return TRUE
 
 obj/structure/interactive/wishgranter/spawn_and_join_faction
 	var/faction_to_join
@@ -76,7 +77,16 @@ obj/structure/interactive/wishgranter/spawn_and_join_faction/yellow
 obj/structure/interactive/wishgranter/normal
 	name = "tutorial wishgranter"
 	id = "tutorial"
+	var/main = FALSE
 
+obj/structure/interactive/wishgranter/normal/New(var/desired_loc)
+
+	if(main)
+		main_wishgranter = src
+
+	return ..()
+
+/*
 obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_player(caller))
@@ -100,6 +110,46 @@ obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,
 	U.save_current_character()
 
 	return TRUE
+*/
+
+obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
+
+	if(!is_player(crosser))
+		return FALSE
+
+	var/mob/living/advanced/player/P = crosser
+
+	if(!P.client)
+		return FALSE
+
+	if(main)
+		P.show_hud(TRUE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL,speed=1)
+		return TRUE
+
+	var/turf/desired_turf = get_turf(main_wishgranter)
+	desired_turf = get_step(desired_turf,SOUTH)
+
+	var/list/callback_list = list()
+	callback_list["start_turf"] = get_turf(P)
+	callback_list["end_turf"] = desired_turf
+	if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(3),callback_list))
+		P.to_chat(span("notice","You begin walking into the light..."))
+		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL,speed=1)
+
+	return TRUE
+
+
+obj/structure/interactive/wishgranter/normal/Uncrossed(var/atom/crosser)
+
+	if(!is_player(crosser))
+		return TRUE
+
+	var/mob/living/advanced/player/P = crosser
+
+	if(main)
+		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL,speed=1)
+
+	return TRUE
 
 /*
 obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
@@ -116,12 +166,17 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 	return ..()
 */
 
+obj/structure/interactive/wishgranter/normal/main
+	name = "the first wishgranter"
+	id = "first"
+	main = TRUE
+
 /obj/structure/interactive/wishgranter/normal/village
 	name = "village wishgranter"
 	id = "village"
 
 /obj/structure/interactive/wishgranter/normal/northern_heights
-	name = "northern heights wishgranter"
+	name = "northern heights bar wishgranter"
 	id = "northern_heights"
 
 /obj/structure/interactive/wishgranter/normal/jungle

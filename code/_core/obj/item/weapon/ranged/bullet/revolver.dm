@@ -16,7 +16,9 @@
 	if(rotate_amount == 0)
 		return FALSE
 
-	current_chamber = 1 + ( (current_chamber + (rotate_amount) - 1) % bullet_count_max)
+	current_chamber += rotate_amount
+	current_chamber = SAFEINDEX(current_chamber,bullet_count_max)
+
 	return current_chamber
 
 /obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)

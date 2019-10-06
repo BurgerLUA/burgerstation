@@ -78,6 +78,8 @@
 
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
+	var/list/known_wishgranters = list() //ID based.
+
 /mob/living/advanced/proc/update_slowdown_mul()
 
 	for(var/obj/item/I in worn_objects)

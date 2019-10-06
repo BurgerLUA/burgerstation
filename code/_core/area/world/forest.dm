@@ -10,6 +10,8 @@
 
 	tracks = list("village","rise","downwards")
 
+	assoc_wishgranter = "village"
+
 /area/world/forest/interior
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
 	icon_state = "green"

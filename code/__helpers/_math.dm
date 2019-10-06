@@ -34,3 +34,9 @@
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
 
 #define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))
+
+
+
+#define SAFEINDEX(x,y) ( ( MODULUS(x-1,y) ) + 1 )
+
+

@@ -22,7 +22,8 @@
 			KARMA_DIONA = 1000
 		),
 		"last_save" = "village",
-		"known_topics" = list()
+		"known_topics" = list(),
+		"known_wishgranters" = list()
 	)
 
 /savedata/client/mob/New(var/client/new_owner)

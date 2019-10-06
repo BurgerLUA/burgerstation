@@ -39,6 +39,8 @@
 	desired_light_power = 0
 	desired_light_color = 0
 
+	var/assoc_wishgranter //The wishgranter ID this is area is associated with, if any.
+
 /area/New()
 	. = ..()
 
@@ -88,12 +90,20 @@
 				if(length(tracks) && !M.client.savedata.loaded_data["tutorial"] && (!enterer.area || enterer.area.id != src.id))
 					play_music_track(pick(tracks),M.client)
 
-			if(is_living(enterer) && enterer.area)
-				var/mob/living/L = M
+			if(is_player(enterer) && enterer.area)
+				var/mob/living/advanced/player/P = M
 				if(enterer.area.safe && !src.safe) //Leaving a safezone
-					L.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
+					P.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
 				else if(!enterer.area.safe && src.safe) //Entering a safezone
-					L.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
+					P.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
+
+					if(assoc_wishgranter)
+						var/savedata/client/mob/U = P.client.savedata
+						U.loaded_data["last_save"] = assoc_wishgranter
+						U.save_current_character()
+
+
+
 
 		enterer.area = src
 

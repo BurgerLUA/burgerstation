@@ -57,7 +57,11 @@
 		/obj/hud/button/crafting/close,
 
 		/obj/hud/button/widget/experience,
-		/obj/hud/button/widget/logout
+		/obj/hud/button/widget/logout,
+
+		/obj/hud/button/teleport/teleport_here,
+		/obj/hud/button/teleport/cycle/right,
+		/obj/hud/button/teleport/cycle/left
 
 	)
 
