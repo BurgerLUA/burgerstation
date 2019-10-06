@@ -7,13 +7,13 @@
 	icon = 'icons/obj/structure/fireplace.dmi'
 	icon_state = "fireplace"
 
-	desired_light_power = 0.5
+	desired_light_power = 0.8
 	desired_light_range = 2
 	desired_light_color = "#FFFFB5"
 
 /obj/structure/interactive/lighting/fireplace/New()
-	..()
 	update_icon()
+	return ..()
 
 /obj/structure/interactive/lighting/fireplace/update_icon()
 
