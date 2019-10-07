@@ -346,6 +346,7 @@
 #include "code\_core\mob\movement.dm"
 #include "code\_core\mob\abstract\_abstract.dm"
 #include "code\_core\mob\abstract\observer.dm"
+#include "code\_core\mob\abstract\saving_and_loading.dm"
 #include "code\_core\mob\living\_living.dm"
 #include "code\_core\mob\living\combat.dm"
 #include "code\_core\mob\living\experience.dm"

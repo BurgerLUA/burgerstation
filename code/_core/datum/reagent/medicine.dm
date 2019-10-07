@@ -11,7 +11,6 @@
 
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	world.log << "EAT ASS, SKATE [owner.name] inside the [container.name] with [.]/[starting_volume]!"
 	owner.adjust_brute_loss(-.*0.5)
 	return .
 

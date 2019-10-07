@@ -121,7 +121,7 @@ var/global/list/all_clients = list()
 		return ..()
 
 	welcome()
-	make_ghost(locate(1,1,1))
+	make_ghost(locate(VIEW_RANGE,VIEW_RANGE,1))
 
 	if(world_state == STATE_RUNNING)
 		play_sound('sounds/music/menu/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
@@ -162,8 +162,6 @@ var/global/list/all_clients = list()
 	*/
 
 	if(length(href_list))
-
-		world.log << href
 
 		if(href_list["var_edit_ref"])
 			var/datum/actual_reference = locate(href_list["var_edit_ref"])

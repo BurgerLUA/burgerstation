@@ -78,4 +78,3 @@ client/verb/change_variable(var/datum/object as anything in view(), var/desired_
 
 	if(object && is_datum(object) && desired_varable_key && desired_varable_value)
 		object.vars[desired_varable_key] = desired_varable_value
-		world.log << "[object]: set [desired_varable_key] to [desired_varable_value]."

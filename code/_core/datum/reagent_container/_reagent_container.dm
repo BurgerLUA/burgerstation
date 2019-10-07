@@ -111,7 +111,6 @@
 		for(var/reagent_id in recipe.required_reagents)
 			if(!c_id_to_volume[reagent_id] || c_id_to_volume[reagent_id] < recipe.required_reagents[reagent_id]) //if our container doesn't have what is required, then lets fuck off.
 				good_recipe = FALSE
-				//world.log << "[k] is not a good recipe because there is no [reagent_id] or it is less than the required amount."
 				break
 
 		if(!good_recipe) //This recipe doesn't work. Onto the next recipe.

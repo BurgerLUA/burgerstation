@@ -24,8 +24,6 @@ mob/living/advanced/player/verb/logout()
 	if(!T)
 		T = get_turf(src)
 
-	world.log << "THE TURF IS: [T]"
-
 	client.make_ghost(T)
 
 	return TRUE

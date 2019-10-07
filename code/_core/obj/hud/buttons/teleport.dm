@@ -66,8 +66,6 @@
 
 	map_number = SAFEINDEX(map_number,length(known_locations))
 
-	world.log << map_number
-
 	icon_state = known_locations[map_number]
 	name = known_locations[map_number]
 

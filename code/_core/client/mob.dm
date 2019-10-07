@@ -34,5 +34,4 @@
 	all_mobs_with_clients -= M
 	M.client = null
 	if(M == mob)
-		world.log << "CLEARING MOB"
 		mob = null
