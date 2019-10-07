@@ -70,6 +70,23 @@
 	var/should_add_held = TRUE
 	var/should_add_worn = TRUE
 
+/obj/hud/inventory/destroy()
+
+	for(var/obj/item/I in held_objects)
+		qdel(I)
+	held_objects.Cut()
+
+	for(var/obj/item/I in worn_objects)
+		qdel(I)
+	worn_objects.Cut()
+
+	update_owner(null)
+	parent_inventory = null
+	child_inventory = null
+	grabbed_object = null
+
+	return ..()
+
 /obj/hud/inventory/proc/show(var/should_show,var/speed)
 	if(should_show)
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
@@ -81,7 +98,7 @@
 /obj/hud/inventory/New(var/desired_loc)
 	held_objects = list()
 	worn_objects = list()
-	. = ..()
+	return ..()
 
 /obj/hud/inventory/can_be_attacked(var/atom/attacker)
 	return FALSE

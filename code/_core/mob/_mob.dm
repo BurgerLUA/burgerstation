@@ -70,18 +70,12 @@
 /mob/destroy()
 
 	if(client)
-		all_mobs_with_clients -= src
-		//Keep the last ckey just in case.
-		client.reset()
-		client = null
+		client.clear_mob(src)
 
 	key = null // required to GC
-	buttons = null
-	health_elements = null
-
-
+	buttons.Cut()
+	health_elements.Cut()
 	all_mobs -= src
-
 	return ..()
 
 /mob/can_attack(var/atom/victim,var/atom/weapon,var/params)
@@ -156,13 +150,12 @@
 
 /mob/New(var/loc/spawning_location,var/client/C)
 
-	if(C)
-		client = C
-		all_mobs_with_clients += src
-		ckey = C.ckey
-		C.reset()
-
 	buttons = list()
+	health_elements = list()
+
+	if(C)
+		C.control_mob(src)
 
 	all_mobs += src
+
 	..()

@@ -85,7 +85,7 @@
 	if (top_atom)
 		LAZYREMOVE(top_atom.light_sources, src)
 
-	. = ..()
+	return ..()
 
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 // Picks either scheduled or instant updates based on current server load.

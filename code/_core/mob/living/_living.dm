@@ -160,6 +160,7 @@ var/global/list/all_living = list()
 
 /mob/living/destroy()
 	qdel(ai)
+	ai = null
 	return ..()
 
 /mob/living/Initialize()

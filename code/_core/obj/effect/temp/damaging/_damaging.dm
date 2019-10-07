@@ -10,6 +10,10 @@ obj/effect/temp/hazard
 
 	var/cross_hazard = TRUE
 
+obj/effect/temp/hazard/destroy()
+	owner = null
+	return ..()
+
 obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_owner)
 
 	cross_hazard = FALSE

@@ -39,7 +39,7 @@
 	..()
 
 /turf/destroy()
-	old_living = null
+	old_living.Cut()
 	return ..()
 
 /turf/change_victim(var/atom/attacker)

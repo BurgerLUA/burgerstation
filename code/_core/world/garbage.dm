@@ -25,7 +25,10 @@ var/list/qdel_refs_to_type = list()
 		if(!object.qdeleting)
 			object.qdeleting = TRUE
 			qdel_refs_to_type["\ref[object]"] = object.type
-			object.destroy()
+
+			if(!object.destroy())
+				LOG_ERROR("WARNING! Object of type [object.type] did not have a proper destroy call!")
+
 			return TRUE
 
 

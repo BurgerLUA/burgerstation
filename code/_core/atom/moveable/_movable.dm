@@ -62,13 +62,6 @@
 
 	loc = new_loc
 
-	/*
-	if(new_loc)
-		x = new_loc.x
-		y = new_loc.y
-		z = new_loc.z
-	*/
-
 	if(loc)
 		loc.Entered(src, old_loc)
 		for(var/atom/movable/AM in loc)

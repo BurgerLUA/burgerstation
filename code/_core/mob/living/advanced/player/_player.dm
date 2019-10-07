@@ -54,6 +54,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/destroy()
 	all_players -= src
+	qdel(mobdata)
+	mobdata = null
+	attack_logs.Cut()
 	return ..()
 
 mob/living/advanced/player/on_life_client()

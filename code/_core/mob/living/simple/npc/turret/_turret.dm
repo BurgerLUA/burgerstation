@@ -19,6 +19,7 @@
 	class = "spider"
 
 /mob/living/simple/npc/turret/destroy()
+	qdel(stored_weapon)
 	stored_weapon = null
 	return ..()
 

@@ -7,5 +7,9 @@
 
 	var/should_save = TRUE
 
+/obj/destroy()
+	loc = null
+	return ..()
+
 /obj/proc/on_spawn() //When the object is spawned by a spawnpoint
 	return

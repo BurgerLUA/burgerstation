@@ -82,6 +82,15 @@
 
 	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_id = volume.
 
+/obj/item/destroy()
+
+	for(var/obj/hud/inventory/I in inventories)
+		qdel(I)
+
+	inventories.Cut()
+
+	return ..()
+
 
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE

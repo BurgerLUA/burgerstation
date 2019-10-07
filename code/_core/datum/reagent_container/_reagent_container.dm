@@ -16,6 +16,17 @@
 	var/should_update_owner = FALSE //Should a change in reagents update the owner?
 
 
+/reagent_container/destroy()
+
+	owner = null
+
+	for(var/reagent/R in stored_reagents)
+		qdel(R)
+
+	stored_reagents.Cut()
+
+	return ..()
+
 /reagent_container/proc/get_contents_english()
 
 	var/returning_text = list()

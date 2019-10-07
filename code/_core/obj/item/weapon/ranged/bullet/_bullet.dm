@@ -12,6 +12,19 @@
 
 	requires_bullets = TRUE
 
+/obj/item/weapon/ranged/bullet/destroy()
+
+	qdel(chambered_bullet)
+	chambered_bullet = null
+
+	if(stored_bullets) //Sometimes this doesn't exist.
+		for(var/obj/item/bullet/B in stored_bullets)
+			qdel(B)
+
+		stored_bullets.Cut()
+
+	return ..()
+
 /obj/item/weapon/ranged/bullet/get_damage_type()
 	return chambered_bullet ? chambered_bullet.damage_type : damage_type
 

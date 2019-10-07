@@ -73,6 +73,7 @@
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
 /atom/movable/destroy()
+
 	var/turf/T = loc
 
 	. = ..()
@@ -80,6 +81,8 @@
 	if (opacity && istype(T))
 		T.recalc_atom_opacity()
 		T.reconsider_lights()
+
+	return .
 
 
 // Should always be used to change the opacity of an atom.
@@ -107,13 +110,17 @@
 			T.reconsider_lights()
 
 /atom/movable/Move()
+
 	. = ..()
+
 	if (. && light_sources)
 		var/datum/light_source/L
 		var/thing
 		for (thing in light_sources)
 			L = thing
 			L.source_atom.update_light()
+
+	return .
 
 /atom/movable/force_move(var/atom/new_loc)
 
@@ -124,3 +131,5 @@
 	for (thing in light_sources)
 		L = thing
 		L.source_atom.update_light()
+
+	return .

@@ -51,9 +51,12 @@
 	icon = I
 
 /obj/hud/progress_bar/destroy()
+
 	if(is_mob(loc))
 		var/mob/M = loc
 		if(M.client)
 			M.client.screen -= src
+
+	callback_list.Cut()
 
 	return ..()

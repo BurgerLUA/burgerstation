@@ -58,11 +58,17 @@
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
 /atom/destroy()
+
+	underlays.Cut()
+	overlays.Cut()
+
 	if(reagents)
 		qdel(reagents)
+
 	invisibility = 101
 	if(thinks)
 		all_thinkers -= src
+
 	return ..()
 
 /atom/Cross(var/atom/A)

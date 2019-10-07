@@ -5,7 +5,6 @@
 
 	var/list/stored_items = list()
 
-
 	var/obj/item/current_item
 	var/current_item_cost
 	var/current_item_quantity
@@ -13,8 +12,20 @@
 	icon = 'icons/obj/structure/shop.dmi'
 	icon_state = "debug"
 
+/obj/structure/interactive/shop/destroy()
+
+	all_shops -= src
+
+	stored_items.Cut()
+
+	qdel(current_item)
+	current_item = null
+
+
+	return ..()
 
 /obj/structure/interactive/shop/Initialize()
+
 	. = ..()
 
 	var/turf/T = get_turf(src)
@@ -26,6 +37,7 @@
 
 	if(!length(stored_items))
 		qdel(src)
+		return FALSE
 
 	return .
 
@@ -36,11 +48,11 @@
 		name = "[current_item.name] - [current_item_cost] crystals"
 	..()
 
-
 /obj/structure/interactive/shop/proc/restock()
 
 	if(current_item)
 		qdel(current_item)
+		current_item = null
 
 	if(!length(stored_items))
 		LOG_ERROR("Warning: shop at [x],[y] has no items to sell. Please delete it.")

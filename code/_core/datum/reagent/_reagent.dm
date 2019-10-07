@@ -11,9 +11,14 @@
 
 	var/flags_metabolism = REAGENT_METABOLISM_INGEST | REAGENT_METABOLISM_BLOOD
 
-	var/reagent_container/current_container
+	var/reagent_container/current_container //Circular reference
 
 	var/volume = 0 //How many units does this reagent instance contain?
+
+
+/reagent/destroy()
+	current_container = null
+	return ..()
 
 /reagent/New(var/reagent_container/desired_container,var/desired_volume)
 

@@ -29,15 +29,13 @@ var/global/list/all_clients = list()
 
 	var/swap_mouse = FALSE
 
-	var/image/lighting
+	//var/image/lighting
 
 	//lazy_eye = 5
 
 	var/karma = 1000
 
 	perspective = EYE_PERSPECTIVE
-
-	var/last_ooc = 0
 
 	var/current_music_track //Id of music track that last played.
 	var/next_music_track = 0 //When the next music track should be triggered.
@@ -52,7 +50,35 @@ var/global/list/all_clients = list()
 
 	var/list/queued_chat_messages = list()
 
+	var/last_ooc = 0
 	var/inactivity_warning_stage = 0
+
+/client/Del() // Can't have destroy.
+
+	last_location = null
+	last_object = null
+
+	qdel(connection_data)
+	connection_data = null
+
+	qdel(roles)
+	roles = null
+
+	qdel(settings)
+	settings = null
+
+	qdel(macros)
+	macros = null
+
+	qdel(roles)
+	roles = null
+
+	clear_mob(mob)
+
+	all_clients -= src
+	world.update_status()
+
+	return ..()
 
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
@@ -64,13 +90,6 @@ var/global/list/all_clients = list()
 /client/proc/examine(var/atom/object)
 	src.mob.to_chat(object.get_examine_text(src.mob))
 	return TRUE
-
-/client/proc/reset()
-	known_inventory = list()
-	known_buttons = list()
-	known_health_elements = list()
-	screen = list()
-	//update_lighting()
 
 /client/New()
 
@@ -88,6 +107,7 @@ var/global/list/all_clients = list()
 	if(!settings)
 		settings = new(src)
 
+	known_health_elements = list()
 	known_inventory = list()
 	known_buttons = list()
 
@@ -97,7 +117,7 @@ var/global/list/all_clients = list()
 		return ..()
 
 	welcome()
-	make_lobby(locate(1,1,1))
+	make_ghost(locate(1,1,1))
 
 	if(world_state == STATE_RUNNING)
 		play_sound('sounds/music/menu/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
@@ -110,21 +130,15 @@ var/global/list/all_clients = list()
 	world.update_status()
 	broadcast_to_clients("[ckey] has joined the game.")
 
-/client/proc/make_lobby(var/desired_loc)
-	src.mob = new /mob/abstract/observer(desired_loc,src)
+/client/proc/make_ghost(var/desired_loc)
+	new /mob/abstract/observer(desired_loc,src)
 	src.mob.Initialize()
-	winset(src, "map.map","icon-size=[TILE_SIZE*2];zoom-mode=normal")
-	//update_lighting()
+	//winset(src, "map.map","icon-size=[TILE_SIZE*2];zoom-mode=normal") TODO: Find out if this is needed
 
 /client/proc/welcome()
 	src << "<title>Welcome to Burgerstation 13</title>"
 	src << "This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed."
 	src << "If you wish to join the discord, please do so here: https://discord.gg/yEaV92a"
-
-/client/Del()
-	all_clients -= src
-	world.update_status()
-	..()
 
 /client/Command(command as command_text)
 	mob.say(command)
@@ -200,11 +214,6 @@ var/global/list/all_clients = list()
 	set instant = TRUE
 	if(!disable_controls)
 		button_tracker.set_released(button)
-
-/client/proc/make_ghost(var/desired_loc)
-	src.mob = new /mob/abstract/observer(desired_loc,src)
-	src.mob.Initialize()
-	//update_lighting()
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
 	var/change_in_screen = delta_y > 1 ? 1 : -1

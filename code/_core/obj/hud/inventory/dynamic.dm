@@ -28,6 +28,14 @@
 	should_add_held = FALSE
 
 
+/obj/hud/inventory/dynamic/New(var/desired_loc)
+
+	if(desired_loc && is_datum(desired_loc))
+		var/datum/D = desired_loc
+		name = "inventory space of [D.name]"
+
+	return ..()
+
 /obj/hud/inventory/dynamic/remove_object(var/obj/item/I,var/turf/drop_loc)
 
 	. = ..()

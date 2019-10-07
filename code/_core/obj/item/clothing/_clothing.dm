@@ -59,6 +59,7 @@
 		add_blend("outfit_tertiary", desired_icon = icon, desired_icon_state = "[icon_state_worn]_tertiary", desired_color = color_tertiary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 	..()
+
 /obj/item/clothing/transfer_item(var/obj/hud/inventory/new_inventory)
 
 	. = ..()
