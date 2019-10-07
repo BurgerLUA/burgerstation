@@ -40,7 +40,7 @@
 
 /obj/item/container/food/proc/consume(var/mob/living/consumer)
 
-	if(!reagents || !length(reagents.stored_reagents) || reagents.total_volume <= 0)
+	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
 		drop_item(get_turf(consumer))
 		qdel(src)
@@ -58,7 +58,7 @@
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
 		var/returning = reagents.transfer_reagents_to(S.reagents,bite_size)
 
-		if(!reagents || !length(reagents.stored_reagents) || reagents.total_volume <= 0)
+		if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 			consumer.to_chat(span("notice","You finish eating \the [src.name]."))
 			drop_item(get_turf(consumer))
 			qdel(src)
@@ -69,7 +69,7 @@
 		bite_count += 1
 		var/returning = reagents.transfer_reagents_to(consumer.reagents,bite_size)
 
-		if(!reagents || !length(reagents.stored_reagents) || reagents.total_volume <= 0)
+		if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 			drop_item(get_turf(consumer))
 			qdel(src)
 

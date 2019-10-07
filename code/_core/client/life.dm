@@ -18,7 +18,7 @@
 			var/mob/living/advanced/player/P = mob
 			to_chat(span("danger","You've been inactive for 11 minutes. You will now be logged out of your character."))
 			inactivity_warning_stage = 3
-			P.save_and_logout()
+			P.make_ghost()
 		else if(inactivity > SECONDS_TO_DECISECONDS(600))
 			to_chat(span("danger","You've been inactive for 10 minutes. If you are inactive for another minute, your character will be logged out."))
 			inactivity_warning_stage = 2

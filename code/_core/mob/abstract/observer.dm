@@ -4,7 +4,7 @@
 	desc_extended = "Those who perish in this world turn into these beings to then later be resurrected to die again and again."
 	icon = 'icons/mob/abstract/ghosts.dmi'
 	icon_state = "basic"
-	ghost = TRUE
+	//ghost = TRUE
 	layer = LAYER_GHOST
 
 	movement_delay = 1
@@ -58,16 +58,20 @@
 	set category = "Data"
 
 	if(client)
+
 		var/savedata/client/mob/U = mobdata
+
+		if(!U)
+			LOG_ERROR("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
+			return FALSE
 
 		if(U.create_new_character(U.get_next_character_id()))
 			var/mob/living/advanced/player/P = new(pick(chargen_spawnpoints),client)
-			P.mobdata = mobdata
-			if(P.client)
-				P.client.eye = P
-				P.client.update_zoom(-1)
 			P.start_chargen()
-			qdel(src)
+			return TRUE
+		else
+			LOG_ERROR("Something went wrong!")
+
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Existing Character"

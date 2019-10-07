@@ -1,19 +1,34 @@
-/mob/living/advanced/player/proc/save_and_logout(var/desired_last_safe)
+mob/living/advanced/player/verb/logout()
 
-	if(save(desired_last_safe))
-		client.make_ghost(get_turf(src))
-		qdel(src)
-		return TRUE
+	set name = "Save and Quit"
+	set desc = "Saves and quits your character, returning you to the main menu."
+	set category = "Menu"
+
+	if(!loc)
+		return FALSE
+
+	var/area/A = get_area(src)
+
+	if(A && A.safe && A.assoc_wishgranter && client)
+		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
+		if(question == "Yes" && A && A.safe && client)
+			save(A.assoc_wishgranter)
+			make_ghost()
+			return TRUE
 
 	return FALSE
 
-/mob/living/advanced/player/proc/save_and_delete(var/desired_last_safe)
 
-	if(save(desired_last_safe))
-		qdel(src)
-		return TRUE
+/mob/living/advanced/player/proc/make_ghost(var/turf/T)
 
-	return FALSE
+	if(!T)
+		T = get_turf(src)
+
+	world.log << "THE TURF IS: [T]"
+
+	client.make_ghost(T)
+
+	return TRUE
 
 /mob/living/advanced/player/proc/save(var/desired_last_safe)
 
@@ -29,11 +44,14 @@
 
 /mob/living/advanced/player/Logout()
 
-	var/area/A = get_area(src)
+	if(!qdeleting) //Only do this if you're not being deleted.
 
-	if(A.safe && A.assoc_wishgranter)
-		save_and_delete(A.assoc_wishgranter)
-	else
 		logout_time = curtime
+
+		if(loc)
+			var/area/A = get_area(src)
+			if(A.safe && A.assoc_wishgranter)
+				save(A.assoc_wishgranter)
+				qdel(src)
 
 	return ..()

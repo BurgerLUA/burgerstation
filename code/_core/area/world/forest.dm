@@ -26,6 +26,17 @@
 	desired_light_power = 1
 	desired_light_color = "#B7AB71"
 
+
+/area/world/forest/exterior/river
+
+	icon_state = "blue"
+
+	sunlight_freq = 4
+
+	desired_light_range = 4
+	desired_light_power = 1
+	desired_light_color = "#1E6489"
+
 /area/world/forest/exterior/plains
 	name = "forest plains"
 

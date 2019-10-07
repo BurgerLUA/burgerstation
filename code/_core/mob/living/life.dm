@@ -16,6 +16,7 @@
 
 	if(client)
 		client.make_ghost(get_turf(src))
+
 	status |= FLAG_STATUS_DEAD
 	if(ai)
 		ai = null

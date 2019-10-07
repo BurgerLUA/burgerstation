@@ -154,8 +154,8 @@
 	health_elements = list()
 
 	if(C)
-		C.control_mob(src)
+		C.control_mob(src,TRUE)
 
 	all_mobs += src
 
-	..()
+	return ..()

@@ -67,7 +67,7 @@
 
 /obj/item/container/beaker/proc/consume(var/mob/living/consumer)
 
-	if(!reagents || !length(reagents.stored_reagents) || reagents.total_volume <= 0)
+	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
 		return FALSE
 
@@ -88,13 +88,11 @@
 
 /obj/item/container/beaker/update_icon()
 
-	name = "[reagents.total_volume ? "" : "empty "][initial(name)]"
-
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
 	var/icon/I = new/icon(icon,icon_state)
-	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.total_volume/reagents.volume_max,0,1)*icon_count,1)]")
+	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
 
 	I2.Blend(reagents.color,ICON_MULTIPLY)
 	I.Blend(I2,ICON_UNDERLAY)

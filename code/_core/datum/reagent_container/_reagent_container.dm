@@ -3,10 +3,10 @@
 	desc = "The basic description of the reagent container."
 	desc_extended = "The extended description of the reagent container, usually a detailed note of how much it can hold."
 
-	var/list/reagent/stored_reagents = list()
+	var/list/stored_reagents = list()
 
+	var/volume_current = 0
 	var/volume_max = 1000
-	var/total_volume = 0
 	var/color = "#FFFFFF"
 
 	var/flags_metabolism = REAGENT_METABOLISM_NONE
@@ -17,22 +17,17 @@
 
 
 /reagent_container/destroy()
-
 	owner = null
-
-	for(var/reagent/R in stored_reagents)
-		qdel(R)
-
-	stored_reagents.Cut()
-
 	return ..()
 
 /reagent_container/proc/get_contents_english()
 
 	var/returning_text = list()
 
-	for(var/reagent/R in stored_reagents)
-		returning_text += "[R.volume] units of [R.name]"
+	for(var/r_id in stored_reagents)
+		var/reagent/R = all_reagents[r_id]
+		var/volume = stored_reagents[r_id]
+		returning_text += "[volume] units of [R.name]"
 
 	return "It contains [english_list(returning_text)]"
 
@@ -50,12 +45,14 @@
 
 /reagent_container/proc/metabolize()
 
-	if(!total_volume)
+	if(!volume_current)
 		return
 
-	for(var/reagent/R in stored_reagents)
-		if(owner && flags_metabolism)
-			R.metabolize(owner)
+	for(var/r_id in stored_reagents)
+		var/volume = stored_reagents[r_id]
+		var/reagent/R = all_reagents[r_id]
+		if(owner && flags_metabolism && volume)
+			remove_reagent(r_id,R.metabolize(owner,src,volume),FALSE)
 
 	update_container()
 
@@ -65,18 +62,25 @@
 	var/green = 0
 	var/blue = 0
 
-	total_volume = 0
+	volume_current = 0
 
-	for(var/reagent/R in stored_reagents)
-		red += GetRedPart(R.color) * R.volume
-		green += GetGreenPart(R.color) * R.volume
-		blue += GetBluePart(R.color) * R.volume
-		total_volume += R.volume
+	for(var/r_id in stored_reagents)
+		var/reagent/R = all_reagents[r_id]
+		var/volume = stored_reagents[r_id]
+
+		if(volume <= 0)
+			stored_reagents -= r_id
+			continue
+
+		red += GetRedPart(R.color) * volume
+		green += GetGreenPart(R.color) * volume
+		blue += GetBluePart(R.color) * volume
+		volume_current += volume
 
 	var/total_reagents = length(stored_reagents)
 
 	if(total_reagents)
-		color = rgb(red/total_volume,green/total_volume,blue/total_volume)
+		color = rgb(red/volume_current,green/volume_current,blue/volume_current)
 	else
 		color = "#FFFFFF"
 
@@ -90,8 +94,8 @@
 
 	var/list/c_id_to_volume = list() //What is in the reagent container, but in a nice id = volume form
 
-	for(var/reagent/C in stored_reagents)
-		c_id_to_volume[C.id] = C.volume
+	for(var/reagent_id in stored_reagents)
+		c_id_to_volume[reagent_id] = stored_reagents[reagent_id]
 
 	var/reagent_recipe/found_recipe = null
 
@@ -136,79 +140,73 @@
 
 	for(var/k in found_recipe.required_reagents)
 		var/required_amount = found_recipe.required_reagents[k]
-		remove_reagent(k,portions_to_make* required_amount)
+		remove_reagent(k,portions_to_make* required_amount,FALSE)
 
 	for(var/k in found_recipe.results)
 		var/v = found_recipe.results[k]
-		add_reagent(k,portions_to_make * v)
+		add_reagent(k,portions_to_make * v,FALSE)
 
 	update_container()
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0)
+/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE)
+
+	if(!all_reagents[reagent_id])
+		LOG_ERROR("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
+		return 0
 
 	if(amount == 0)
 		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
 		return 0
 
-	for(var/reagent/R in stored_reagents)
-		if(R.id == reagent_id)
-			return R.add_amount(amount)
+	if(volume_current + amount > volume_max)
+		amount = volume_max - volume_current
 
-	if(!all_reagents[reagent_id])
-		LOG_ERROR("Reagent Error: Tried to add a null reagent ([reagent_id]) (ID) to [owner]!")
+	if(amount == 0)
 		return 0
 
-	if(amount <= 0)
-		LOG_ERROR("Reagent Error: Tried to take away a reagent ([reagent_id]) that doesn't exist in [owner]!")
-		return 0
-
-	var/R = all_reagents[reagent_id].type
-	new R(src,amount)
+	if(stored_reagents[reagent_id])
+		stored_reagents[reagent_id] += amount
+	else
+		stored_reagents[reagent_id] = amount
 
 	process_recipes()
 
+	if(should_update)
+		update_container()
+
 	return amount
 
-/reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0)
-
-
-	if(amount <= 0)
-		return 0
-
-	var/reagent/found_reagent
-
-	for(var/reagent/R in stored_reagents)
-		if(R.id == reagent_id)
-			found_reagent = R
-			break
-
-	if(!found_reagent)
-		return 0
-
-	var/amount_removed = found_reagent.remove_amount(amount)
-	return amount_removed
-
+/reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE)
+	return -add_reagent(reagent_id,-amount,should_update)
 
 /reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0) //Transfer a single reagent by id.
 	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount))
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE) //Transfer all the reagents.
 
-
-	if(amount <= 0)
+	if(amount == 0)
 		return FALSE
 
-	amount = min(amount,total_volume)
+	if(amount < 0)
+		return -target_container.transfer_reagents_to(src,-amount,should_update)
 
-	var/amount_transfered = 0
+	amount = min(amount,volume_current)
 
-	var/old_volume = total_volume
+	var/total_amount_transfered = 0
 
-	for(var/reagent/R in stored_reagents)
-		var/ratio = R.volume / old_volume
-		var/transfered = R.transfer_reagent_to(target_container,ceiling(ratio*amount,1))
-		amount_transfered += transfered
+	var/old_volume = volume_current
 
-	return amount_transfered
+	for(var/r_id in stored_reagents)
+		var/volume = stored_reagents[r_id]
+		var/ratio = volume / old_volume
+		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,FALSE)
+		remove_reagent(r_id,amount_transfered,FALSE)
+		total_amount_transfered += amount_transfered
+
+	if(should_update)
+		src.update_container()
+		target_container.update_container()
+
+	return total_amount_transfered

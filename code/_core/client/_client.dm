@@ -53,6 +53,7 @@ var/global/list/all_clients = list()
 	var/last_ooc = 0
 	var/inactivity_warning_stage = 0
 
+/*
 /client/Del() // Can't have destroy.
 
 	last_location = null
@@ -79,6 +80,7 @@ var/global/list/all_clients = list()
 	world.update_status()
 
 	return ..()
+*/
 
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
@@ -113,6 +115,8 @@ var/global/list/all_clients = list()
 
 	setup_stylesheets()
 
+	update_zoom(-1)
+
 	if(usr)
 		return ..()
 
@@ -129,11 +133,6 @@ var/global/list/all_clients = list()
 
 	world.update_status()
 	broadcast_to_clients("[ckey] has joined the game.")
-
-/client/proc/make_ghost(var/desired_loc)
-	new /mob/abstract/observer(desired_loc,src)
-	src.mob.Initialize()
-	//winset(src, "map.map","icon-size=[TILE_SIZE*2];zoom-mode=normal") TODO: Find out if this is needed
 
 /client/proc/welcome()
 	src << "<title>Welcome to Burgerstation 13</title>"

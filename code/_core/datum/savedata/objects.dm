@@ -29,9 +29,11 @@
 		if(object_data["delete_on_drop"])
 			I.delete_on_drop = TRUE
 		if(object_data["reagents"] && length(object_data["reagents"]))
-			for(var/k in object_data["reagents"])
-				var/v = object_data["reagents"][k]
-				I.reagents.add_reagent(k,v)
+			for(var/r_id in object_data["reagents"])
+				var/volume = object_data["reagents"][r_id]
+				I.reagents.add_reagent(r_id,volume,FALSE)
+			I.reagents.update_container()
+
 
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
@@ -186,8 +188,8 @@
 			returning_list["delete_on_drop"] = TRUE
 		if(IT.reagents && IT.reagents.stored_reagents && length(IT.reagents.stored_reagents))
 			returning_list["reagents"] = list()
-			for(var/reagent/R in IT.reagents.stored_reagents)
-				returning_list["reagents"][R.id] = R.volume
+			for(var/r_id in IT.reagents.stored_reagents)
+				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
 
 	if(is_soulgem(I))
 		var/obj/item/soulgem/S = I

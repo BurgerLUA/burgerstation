@@ -4,15 +4,16 @@
 	desc = "Red for brute."
 	color = "#FF0000"
 
-/reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner)
+/reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_brute_loss(-.)
 	return .
 
-/reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner)
+/reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
+	world.log << "EAT ASS, SKATE [owner.name] inside the [container.name] with [.]/[starting_volume]!"
 	owner.adjust_brute_loss(-.*0.5)
-	return
+	return .
 
 /reagent/medicine/kelotane
 	name = "Kelotane"
@@ -20,12 +21,12 @@
 	desc = "Yellow for burn."
 	color = "#FFFF00"
 
-/reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner)
+/reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_burn_loss(-.)
 	return .
 
-/reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner)
+/reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_burn_loss(-.*0.5)
 	return .
@@ -36,12 +37,12 @@
 	desc = "Green for toxin."
 	color = "#00FF00"
 
-/reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner)
+/reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_tox_loss(-.)
 	return .
 
-/reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner)
+/reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_tox_loss(-.*0.5)
 	return .
@@ -52,12 +53,12 @@
 	desc = "Blue for oxy."
 	color = "#0000FF"
 
-/reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner)
+/reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_oxy_loss(-.)
 	return .
 
-/reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner)
+/reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_oxy_loss(-.*0.5)
 	return .
@@ -68,14 +69,14 @@
 	desc = "Heals everything except for oxygen loss."
 	color = "#B21FFF"
 
-/reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner)
+/reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_brute_loss(-.*0.33)
 	owner.adjust_burn_loss(-.*0.33)
 	owner.adjust_tox_loss(-.*0.33)
 	return .
 
-/reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner)
+/reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_brute_loss(-.*0.33*0.5)
 	owner.adjust_burn_loss(-.*0.33*0.5)
@@ -89,7 +90,7 @@
 	desc_extended = "Works just as good when consumed."
 	color = "#F7F7F7"
 
-/reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner)
+/reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_brute_loss(-.*0.25)
 	owner.adjust_burn_loss(-.*0.25)
@@ -97,7 +98,7 @@
 	owner.adjust_oxy_loss(-.*0.25)
 	return .
 
-/reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner)
+/reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	owner.adjust_brute_loss(-.*0.25)
 	owner.adjust_burn_loss(-.*0.25)

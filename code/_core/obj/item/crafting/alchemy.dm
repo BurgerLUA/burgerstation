@@ -36,11 +36,14 @@
 
 	var/obj/item/I = item_table["b1"]
 
-	var/list/reagents_list = list()
+	var/list/reagents_list = I.reagents ? I.reagents.stored_reagents.Copy() : list()
 
+	/* PRE FUCKERY
 	if(I.reagents && I.reagents.stored_reagents)
-		for(var/reagent/R in I.reagents.stored_reagents)
-			reagents_list[R.id] = R.volume
+		for(var/r_id in I.reagents.stored_reagents)
+			var/volume = reagents.stored_reagents[R_id]
+			reagents_list[r_id] = volume
+	*/
 
 	if(I.alchemy_reagents)
 		for(var/r_id in I.alchemy_reagents)
@@ -57,7 +60,9 @@
 
 	for(var/k in reagents_list)
 		var/v = reagents_list[k]
-		C.reagents.add_reagent(k,v)
+		C.reagents.add_reagent(k,v,FALSE)
+
+	C.reagents.update_container()
 
 	C.transfer_item(product_slot)
 

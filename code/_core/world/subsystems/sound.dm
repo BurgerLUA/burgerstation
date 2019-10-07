@@ -86,6 +86,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.echo = echo
 	created_sound.environment = environment
 	created_sound.status = 0
+
 	if(loop)
 		active_sounds[created_sound] = -1
 	else if(duration)
