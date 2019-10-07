@@ -12,6 +12,8 @@
 
 /area/singleplayer/exterior/space_lights
 
+	name = "space light exterior"
+
 	icon_state = "one_alt_alt"
 
 	sunlight_freq = 4
@@ -21,6 +23,8 @@
 	desired_light_color = "#CCD9E8"
 
 /area/singleplayer/exterior/river_lights
+
+	name = "river lights exterior"
 
 	icon_state = "one_alt_alt"
 

@@ -47,7 +47,12 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	return TRUE
 
 /mob/living/advanced/player/Initialize()
+
 	. = ..()
+
+	if(!mobdata)
+		mobdata = new(client)
+
 	all_players += src
 	name = "[real_name] ([ckey])"
 	return .

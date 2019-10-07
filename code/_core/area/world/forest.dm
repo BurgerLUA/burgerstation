@@ -37,6 +37,10 @@
 	desired_light_power = 1
 	desired_light_color = "#1E6489"
 
+/area/world/forest/exterior/river/singleplayer
+	singleplayer = TRUE
+
+
 /area/world/forest/exterior/plains
 	name = "forest plains"
 
@@ -70,6 +74,10 @@
 	)
 
 /area/world/forest/exterior/village/ship
+	icon_state = "pink"
+
+/area/world/forest/exterior/village/ship/singleplayer
+	singleplayer = TRUE
 	icon_state = "pink"
 
 /area/world/forest/exterior/village/river

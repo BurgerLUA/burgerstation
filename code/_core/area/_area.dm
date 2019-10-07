@@ -14,6 +14,7 @@
 	var/sound_environment = ENVIRONMENT_GENERIC
 
 	var/safe = FALSE //Enable or disable shooting people.
+	var/singleplayer = FALSE //Set to true if you don't want players to see other players in this area.
 
 	var/map_color_r = rgb(255,0,0,255)
 	var/map_color_g = rgb(0,255,0,255)
@@ -27,7 +28,6 @@
 	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners.
 
 	var/area_light_power = 0
-
 
 	var/list/mob/living/advanced/player/players_inside = list()
 
@@ -72,12 +72,17 @@
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	if(is_player(enterer))
+
+		var/mob/living/advanced/player/P = enterer
+
 		if(safe)
-			var/mob/living/advanced/player/P = enterer
 			P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
 
 		if(!(enterer in players_inside))
 			players_inside += enterer
+
+		if(singleplayer)
+			P.see_invisible = INVISIBILITY_NO_PLAYERS
 
 	if(enterer.area != src)
 		if(is_mob(enterer))
@@ -108,6 +113,9 @@
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
 
 	if(is_player(exiter))
+		var/mob/living/advanced/player/P = exiter
 		players_inside -= exiter
+		if(singleplayer)
+			P.see_invisible = initial(P.see_invisible)
 
 	return TRUE
