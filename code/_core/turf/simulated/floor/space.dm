@@ -8,15 +8,8 @@
 	desired_light_range = 4
 	desired_light_color = "#CCD9E8"
 
-/turf/simulated/floor/space/New()
-	. = ..()
-	set_light(desired_light_range,desired_light_power,desired_light_color)
-	update_icon()
-	return TRUE
-
 /turf/simulated/floor/space/update_icon()
 	icon_state = "[rand(0,25)]"
-
 
 /turf/simulated/floor/space/transit
 	icon_state = "speedspace_ew_1"

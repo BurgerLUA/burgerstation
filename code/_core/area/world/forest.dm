@@ -72,6 +72,14 @@
 /area/world/forest/exterior/village/ship
 	icon_state = "pink"
 
+/area/world/forest/exterior/village/river
+	icon_state = "safe2"
+
+	sunlight_freq = 4
+
+	desired_light_range = 4
+	desired_light_power = 1
+	desired_light_color = "#1E6489"
 
 /area/world/forest/interior/village
 	name = "village"
@@ -110,7 +118,7 @@
 
 /area/world/forest/interior/village/ship
 	name = "ship interior"
-	icon_state = "blue"
+	icon_state = "green"
 
 /area/world/forest/interior/village/bar
 	name = "bar"

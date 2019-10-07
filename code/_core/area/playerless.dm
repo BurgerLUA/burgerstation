@@ -9,8 +9,20 @@
 /area/singleplayer/exterior
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 
+
+/area/singleplayer/exterior/space_lights
+
+	icon_state = "one_alt_alt"
+
+	sunlight_freq = 4
+
+	desired_light_range = 4
+	desired_light_power = 1
+	desired_light_color = "#CCD9E8"
+
 /area/singleplayer/exterior/river_lights
-	icon_state = "blue"
+
+	icon_state = "one_alt_alt"
 
 	sunlight_freq = 4
 
