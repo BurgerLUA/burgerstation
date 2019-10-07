@@ -41,6 +41,8 @@
 
 	var/assoc_wishgranter //The wishgranter ID this is area is associated with, if any.
 
+	var/weather = WEATHER_NONE //Optional weather
+
 /area/New()
 	. = ..()
 
@@ -65,6 +67,9 @@
 
 		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
 
+	if(weather)
+		icon = 'icons/area/weather.dmi'
+		icon_state = weather
 
 	return ..()
 
