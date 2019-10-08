@@ -114,6 +114,8 @@ var/global/list/all_living = list()
 
 	interact_delay_base = 4
 
+	var/allow_experience_gains = FALSE
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 

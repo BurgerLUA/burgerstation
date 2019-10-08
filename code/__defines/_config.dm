@@ -69,6 +69,9 @@
 
 #define LIFE_TICK 1 //Deciseconds per life tick interval.
 #define LIFE_TICK_SLOW 4
+#define PROJECTILE_TICK 1 //Ticks per project tick interval
+
+
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 

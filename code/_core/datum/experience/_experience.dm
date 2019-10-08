@@ -30,11 +30,12 @@
 
 /experience/New(var/mob/M)
 	owner = M
-	. = ..()
+	return ..()
 
 /experience/proc/Initialize(var/desired_xp)
 	experience = desired_xp
 	last_level = xp_to_level(experience)
+	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
 	return Clamp(floor( (xp ** (1/experience_power) ) / experience_multiplier),1,max_level)
@@ -47,6 +48,7 @@
 	if(!ENABLE_XP)
 		return FALSE
 	experience = level_to_xp(Clamp(level,1,max_level))
+	return experience
 
 /experience/proc/get_current_level()
 	return min(max_level,xp_to_level(experience))
@@ -54,7 +56,12 @@
 /experience/proc/get_xp()
 	return experience
 
-/experience/proc/add_xp(var/xp_to_add)
+/experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE)
+
+	if(!(bypass_checks || owner.allow_experience_gains))
+		return FALSE
+
+
 	if(!ENABLE_XP)
 		return FALSE
 	experience += xp_to_add
@@ -62,19 +69,26 @@
 	if(last_level != current_level)
 		on_level_up(last_level,current_level)
 
+
+	return xp_to_add
+
 /experience/proc/set_xp(var/new_xp)
 	if(!ENABLE_XP)
 		return FALSE
 	experience = new_xp
+	return experience
 
 /experience/proc/get_power()
 	return get_current_level() / max_level
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
+
 	owner.to_chat(span("notice","Your [name] increased to [new_level]."))
 	last_level = new_level
 	if(owner.update_level())
 		owner.to_chat(span("notice","Your overall level increased to [owner.level]."))
+
+	return new_level
 
 
 

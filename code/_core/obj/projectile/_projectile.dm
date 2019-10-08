@@ -89,12 +89,6 @@
 
 	update_icon()
 
-	/*
-	var/matrix/M = matrix()
-	M.Translate(vel_x*lifetime,vel_y*lifetime)
-	animate(src, transform = M, time = lifetime*0.5)
-	*/
-
 	return .
 
 /obj/projectile/update_icon()
@@ -103,11 +97,11 @@
 	I.Turn(-new_angle)
 	icon = I
 
-/obj/projectile/proc/update_projectile() //This runs every 0.5 deciseconds.
+/obj/projectile/proc/update_projectile()
 
 	steps_current += 1
 
-	start_time += 0.5
+	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
 	if(steps_allowed && steps_allowed <= steps_current && current_loc)
 		on_hit(current_loc)
@@ -117,24 +111,16 @@
 		on_hit(current_loc)
 		return FALSE
 
-	pixel_x_float += vel_x
-	pixel_y_float += vel_y
+	var/current_loc_x = x + floor( ((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE)
+	var/current_loc_y = y + floor( ((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE)
 
-	var/current_loc_x = x + floor(pixel_x_float / TILE_SIZE)
-	var/current_loc_y = y + floor(pixel_y_float / TILE_SIZE)
-
-	if(last_loc_x != current_loc_x || last_loc_x != current_loc_y)
-
-		current_loc = locate(current_loc_x,current_loc_y,z)
-
-		var/matrix/M = matrix()
-		M.Translate(pixel_x_float,pixel_y_float)
-		animate(src, transform = M, time = 0.50)
+	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 
 		for(var/mob/MO in contents)
 			if(MO.client)
-				animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = 0.5)
+				animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
+		current_loc = locate(current_loc_x,current_loc_y,z)
 		if(!is_turf(previous_loc))
 			on_hit(previous_loc)
 			return
@@ -148,25 +134,43 @@
 
 		if(!previous_loc || !current_loc)
 			on_hit(src)
-			return FALSE
-
-		var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
-
-		if(collide_with_turf)
-			on_hit(collide_with_turf)
 			return
 
-		for(var/atom/A in new_turf.contents)
-			var/atom/collide_with_atom = A.projectile_should_collide(src,new_turf,old_turf)
-			if(collide_with_atom)
-				on_hit(collide_with_atom)
-				return
-
-		if(hit_target_turf && current_loc == target_turf)
-			on_hit(current_loc)
+		if(do_turf_collide(old_turf,new_turf))
 			return
 
 		previous_loc = current_loc
+
+	var/matrix/M = matrix()
+	M.Translate(pixel_x_float,pixel_y_float)
+	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+
+	pixel_x_float += vel_x
+	pixel_y_float += vel_y
+
+/obj/projectile/proc/do_turf_collide(var/turf/old_turf,var/turf/new_turf)
+
+	new /obj/effect/temp/tile(new_turf,20)
+
+	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
+
+	if(collide_with_turf)
+		on_hit(collide_with_turf)
+		return TRUE
+
+	for(var/atom/A in new_turf.contents)
+		var/atom/collide_with_atom = A.projectile_should_collide(src,new_turf,old_turf)
+		if(collide_with_atom)
+			on_hit(collide_with_atom)
+			return TRUE
+
+	if(hit_target_turf && new_turf == target_turf)
+		on_hit(current_loc)
+		return TRUE
+
+	return FALSE
+
+
 
 /atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
@@ -233,17 +237,28 @@
 			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
 
 	if(impact_effect_turf && is_turf(hit_atom))
+
+
+		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
+
+
+
+		/*
 		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
 		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
-		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
+		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE - 16
 		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
+		*/
 
 	else if(impact_effect_movable && is_movable(hit_atom))
+
+		/*
 		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
 		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
 		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
 		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
+		*/
 
 	return TRUE

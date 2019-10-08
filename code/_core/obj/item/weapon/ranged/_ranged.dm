@@ -148,6 +148,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		handle_empty(caller)
 		return FALSE
 
+
+	bullet_speed_to_use = min(bullet_speed_to_use,31)
+
 	update_icon()
 
 	if(projectile_to_use)

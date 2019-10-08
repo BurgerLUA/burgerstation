@@ -427,6 +427,7 @@
 #include "code\_core\obj\effect\temp\_temp.dm"
 #include "code\_core\obj\effect\temp\ash_drake.dm"
 #include "code\_core\obj\effect\temp\death.dm"
+#include "code\_core\obj\effect\temp\debug.dm"
 #include "code\_core\obj\effect\temp\phasing.dm"
 #include "code\_core\obj\effect\temp\sparkles.dm"
 #include "code\_core\obj\effect\temp\damaging\_damaging.dm"
