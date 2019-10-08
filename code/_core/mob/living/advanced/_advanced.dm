@@ -2,7 +2,7 @@
 
 	name = "lost soul"
 
-	var/species/mob_species = /species/human/
+	var/species = "human"
 
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
@@ -123,9 +123,6 @@
 	labeled_organs = list()
 	overlays_assoc = list()
 
-	if(mob_species)
-		mob_species = new mob_species
-
 	..()
 
 	click_and_drag_icon	= new(src)
@@ -236,6 +233,52 @@ mob/living/advanced/Login()
 
 	return
 
+/mob/living/advanced/proc/perform_specieschange(var/desired_species,var/keep_clothes,var/chargen)
+
+	world.log << "Hello. I want to change my species to [desired_species]."
+
+	if(!desired_species)
+		return FALSE
+
+	var/list/kept_clothes = list()
+
+	if(!keep_clothes)
+		for(var/obj/hud/inventory/I in inventory)
+			I.remove_all_objects()
+	else
+		for(var/obj/hud/inventory/I in inventory)
+			kept_clothes += I.drop_all_objects()
+
+	remove_all_organs()
+
+	species = desired_species
+
+	world.log << "Your species is now [species]."
+
+	add_species_organs()
+	add_species_colors()
+	update_all_blends()
+
+	update_icon()
+	update_health_element_icons(TRUE,TRUE,TRUE)
+
+	if(chargen)
+		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
+		show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+	else
+		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
+		for(var/obj/hud/button/hide_show_inventory/B in buttons)
+			B.update_icon()
+
+	if(keep_clothes)
+		for(var/obj/item/I in kept_clothes)
+			add_worn_item(I)
+	else
+		if(sex == MALE)
+			add_outfit("new_male",TRUE)
+		else
+			add_outfit("new_female",TRUE)
+
 /mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes,var/chargen)
 
 	if(sex == desired_sex)
@@ -256,6 +299,8 @@ mob/living/advanced/Login()
 	remove_all_organs()
 	add_species_organs()
 	add_species_colors()
+	update_all_blends()
+
 	update_icon()
 	update_health_element_icons(TRUE,TRUE,TRUE)
 
@@ -267,7 +312,9 @@ mob/living/advanced/Login()
 		for(var/obj/hud/button/hide_show_inventory/B in buttons)
 			B.update_icon()
 
-	handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
+	var/species/S = all_species[species]
+
+	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,"#000000")
 	handle_beardstyle_chargen(1,"#000000")
 	//Blends are updated in the above two procs
 
@@ -376,21 +423,23 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/add_species_colors()
 
-	if(mob_species.default_color_skin)
-		change_organ_visual("skin", desired_color = mob_species.default_color_skin)
+	var/species/S = all_species[species]
 
-	if(mob_species.default_color_eye)
-		change_organ_visual("eye", desired_color = mob_species.default_color_eye)
+	if(S.default_color_skin)
+		change_organ_visual("skin", desired_color = S.default_color_skin)
 
-	if(mob_species.default_color_hair && mob_species.default_icon_hair && mob_species.default_icon_state_hair)
-		change_organ_visual("hair_head", desired_icon = mob_species.default_icon_hair, desired_icon_state = mob_species.default_icon_state_hair, desired_color = mob_species.default_color_hair)
-		change_organ_visual("hair_face", desired_color = mob_species.default_color_hair)
+	if(S.default_color_eye)
+		change_organ_visual("eye", desired_color = S.default_color_eye)
 
-	if(mob_species.default_color_detail)
-		change_organ_visual("skin_detail", desired_color = mob_species.default_color_detail)
+	if(S.default_color_hair && S.default_icon_hair && S.default_icon_state_hair)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = S.default_icon_state_hair, desired_color = S.default_color_hair)
+		change_organ_visual("hair_face", desired_color = S.default_color_hair)
 
-	if(mob_species.default_color_glow)
-		change_organ_visual("skin_glow", desired_color = mob_species.default_color_glow)
+	if(S.default_color_detail)
+		change_organ_visual("skin_detail", desired_color = S.default_color_detail)
+
+	if(S.default_color_glow)
+		change_organ_visual("skin_glow", desired_color = S.default_color_glow)
 
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/obj/item/organ/O in organs)
@@ -405,7 +454,9 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/update_species()
 
-	if(mob_species.genderless)
+	var/species/S = all_species[species]
+
+	if(S.genderless)
 		gender = NEUTER
 
 	update_gender()

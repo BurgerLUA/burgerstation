@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/unique/bartender
 	name = "Miss Flanagan"
 	desc = "Remember the!"
-	mob_species = /species/human/
+	species = "human"
 	gender = FEMALE
 	sex = FEMALE
 	dialogue_id = "bartender_dialogue"

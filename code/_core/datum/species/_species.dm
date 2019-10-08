@@ -15,11 +15,14 @@
 	var/default_color_glow = "#FFFFFF"
 	var/default_color_hair = "#00FF00"
 
-	var/default_icon_hair = 'icons/mob/living/advanced/hair/head.dmi'
+	var/default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	var/default_icon_state_hair = "bald"
 
-	var/default_icon_face = 'icons/mob/living/advanced/hair/face.dmi'
+	var/default_icon_face = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
 	var/default_icon_state_face = "none"
+
+	var/default_hairstyle_chargen_male = 2
+	var/default_hairstyle_chargen_female = 16
 
 	var/genderless = FALSE
 

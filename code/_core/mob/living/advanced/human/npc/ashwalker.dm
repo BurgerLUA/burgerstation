@@ -6,7 +6,7 @@
 	ai = /ai/advanced/ashwalker
 	class = "ashwalker"
 
-	mob_species = /species/reptile/
+	species = "reptile"
 
 	loot_drop_in_corpse = TRUE
 
@@ -40,7 +40,7 @@
 	var/horns_to_use = sex == MALE ? "horns" : pick("frills_long","frills_short","frills_aqua")
 
 	change_organ_visual("skin", desired_color = skin_color)
-	change_organ_visual("hair_head", desired_color = horn_color, desired_icon = 'icons/mob/living/advanced/hair/unathi.dmi', desired_icon_state = horns_to_use)
+	change_organ_visual("hair_head", desired_color = horn_color, desired_icon_state = horns_to_use)
 
 	update_all_blends()
 	add_outfit(outfit_to_use)

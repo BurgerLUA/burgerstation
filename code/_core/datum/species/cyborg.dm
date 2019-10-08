@@ -12,8 +12,6 @@
 	default_color_detail = "#FFFFFF"
 	default_color_glow = "#FFFFFF"
 
-	default_icon_state_hair = "bald"
-
 	genderless = TRUE
 
 	spawning_organs_male = list(

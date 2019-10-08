@@ -6,7 +6,9 @@
 
 	var/list/dialogue_options = list()
 
-	if(P.mob_species.type == "/species/human/")
+
+
+	if(P.species == "human")
 		switch(P.sex)
 			if(MALE)
 				dialogue_options["hello"] = list(

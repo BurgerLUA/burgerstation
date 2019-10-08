@@ -1,5 +1,8 @@
 /mob/living/advanced/proc/add_species_health_elements()
-	for(var/v in mob_species.spawning_health)
+
+	var/species/S = all_species[species]
+
+	for(var/v in S.spawning_health)
 		var/obj/hud/button/B = v
 		B = new B
 		B.update_owner(src)

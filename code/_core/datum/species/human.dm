@@ -10,8 +10,6 @@
 	default_color_skin = "#e0b19d"
 	default_color_hair = "#000000"
 
-	default_icon_state_hair = "hair_a"
-
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,
 		BODY_HEAD = /obj/item/organ/head,

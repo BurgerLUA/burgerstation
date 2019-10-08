@@ -1,4 +1,4 @@
-var/global/list/chargen_species = list()
+var/global/list/all_species = list()
 
 /subsystem/chargen/
 	name = "Chargen Subsystem"
@@ -6,8 +6,11 @@ var/global/list/chargen_species = list()
 	priority = SS_ORDER_PRELOAD
 
 /subsystem/chargen/Initialize()
-	for(var/v in subtypesof(/species/))
-		var/species/S = new v
-		chargen_species[S.id] = S
+	for(var/k in subtypesof(/species/))
+		var/species/S = k
+		var/s_id = initial(S.id)
+		if(s_id)
+			S = new k
+			all_species[s_id] = S
 
-	LOG_SERVER("Initialized [length(chargen_species)] species.")
+	LOG_SERVER("Initialized [length(all_species)] species.")

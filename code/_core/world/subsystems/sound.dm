@@ -42,7 +42,7 @@ proc/stop_music_track(var/client/hearer)
 	created_sound.channel = SOUND_CHANNEL_MUSIC
 	hearer << created_sound
 
-proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_GENERIC)
+proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
 	var/sound/created_sound = sound(sound_path)
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
@@ -66,7 +66,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	var/sound/created_sound = sound(T.path)
 	created_sound.channel = SOUND_CHANNEL_MUSIC
 	created_sound.priority = 0
-	created_sound.environment = ENVIRONMENT_GENERIC
+	created_sound.environment = ENVIRONMENT_NONE
 	created_sound.status = 0
 	created_sound.volume = volume
 
@@ -76,7 +76,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return created_sound
 
-/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_GENERIC, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0)
 	var/sound/created_sound = sound(sound_path)
 
 	created_sound.frequency = pitch

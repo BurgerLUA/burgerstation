@@ -1,6 +1,6 @@
 /hair/face/
 	name = "facial hair"
-	icon = 'icons/mob/living/advanced/hair/face.dmi'
+	icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
 
 
 /hair/face/none

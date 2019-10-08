@@ -4,7 +4,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	mob_species = /species/human/
+	species = "human"
 	sex = MALE
 	gender = MALE
 	class = "robust"

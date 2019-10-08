@@ -1,16 +1,11 @@
-/species/reptile_advanced/
+/species/reptile/advanced
+
 	name = "Advanced Reptile"
 	desc = "Fucking furries. Advanced."
 	id = "reptile_advanced"
 	flags_species = SPECIES_REPTILE_ADVANCED
 
 	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
-
-	default_color_eye = "#AAAA00"
-	default_color_skin = "#8CA73E"
-	default_color_hair = "#fff0be"
-
-	default_icon_state_hair = "bald"
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/reptile_advanced,

@@ -15,14 +15,14 @@ var/global/list/hair_face_icons = list()
 
 /subsystem/hair/Initialize()
 
-	for(var/k in icon_states('icons/mob/living/advanced/hair/head.dmi'))
+	for(var/k in icon_states('icons/mob/living/advanced/hair/human_hair_head.dmi'))
 		if(!k || k=="")
 			continue
 
 		var/hair/head/H = new
 		H.id = k
 		H.icon_state = k
-		H.icon = 'icons/mob/living/advanced/hair/head.dmi'
+		H.icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 
 		var/icon/I = new /icon(H.icon,H.icon_state)
 		I.Shift(SOUTH,9)
@@ -37,14 +37,14 @@ var/global/list/hair_face_icons = list()
 
 	LOG_SERVER("Initialized [length(hair_head_ids)] hairstyles.")
 
-	for(var/k in icon_states('icons/mob/living/advanced/hair/face.dmi'))
+	for(var/k in icon_states('icons/mob/living/advanced/hair/human_hair_face.dmi'))
 		if(!k || k == "")
 			continue
 
 		var/hair/face/H = new
 		H.id = k
 		H.icon_state = k
-		H.icon = 'icons/mob/living/advanced/hair/face.dmi'
+		H.icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
 
 		var/icon/I = new /icon(H.icon,H.icon_state)
 		I.Shift(SOUTH,9)

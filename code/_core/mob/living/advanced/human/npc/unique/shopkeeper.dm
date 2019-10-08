@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/unique/shopkeeper
 	name = "Shopkeeper Eric"
 	desc = "Some may call this junk, me, I call them treasures."
-	mob_species = /species/human/
+	species = "human"
 	sex = MALE
 	gender = MALE
 	dialogue_id = "shopkeeper_dialogue"

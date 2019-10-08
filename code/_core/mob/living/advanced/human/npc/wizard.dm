@@ -17,7 +17,7 @@
 
 	. = ..()
 
-	change_organ_visual("hair_face", desired_color = "#FFFFFF", desired_icon = 'icons/mob/living/advanced/hair/face.dmi', desired_icon_state = "facial_wise_s")
+	change_organ_visual("hair_face", desired_color = "#FFFFFF", desired_icon_state = "facial_wise_s")
 	update_all_blends()
 	add_outfit("wizard_evil")
 

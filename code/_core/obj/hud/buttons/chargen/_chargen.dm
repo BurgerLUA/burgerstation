@@ -17,8 +17,8 @@ var/global/list/obj/hud/button/chargen_buttons = list(
 	/obj/hud/button/chargen/change_beardstyle/,
 	/obj/hud/button/chargen/change_beardstyle/left,
 
-	/obj/hud/button/chargen/sex/male,
-	/obj/hud/button/chargen/sex/female,
+	/obj/hud/button/chargen/sex/,
+	/obj/hud/button/chargen/species/,
 
 	/obj/hud/button/chargen/skin_color,
 	/obj/hud/button/chargen/eye_color

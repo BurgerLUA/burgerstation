@@ -1,5 +1,7 @@
 /mob/living/advanced/proc/get_flavortext()
 
+	var/species/S = all_species[species]
+
 	var/strength = get_attribute_level(ATTRIBUTE_STRENGTH)
 	var/vitality = get_attribute_level(ATTRIBUTE_VITALITY)
 	var/fortitude = get_attribute_level(ATTRIBUTE_FORTITUDE)
@@ -77,7 +79,7 @@
 		if(130 to INFINITY)
 			returning_text += "wide"
 
-	returning_text += " [mob_species.name]."
+	returning_text += " [S.name]."
 
 	return returning_text
 

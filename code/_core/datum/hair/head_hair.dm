@@ -1,6 +1,6 @@
 /hair/head/
 	name = "Head Hair"
-	icon = 'icons/mob/living/advanced/hair/head.dmi'
+	icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 
 /hair/head/bald
 	name = "the none"

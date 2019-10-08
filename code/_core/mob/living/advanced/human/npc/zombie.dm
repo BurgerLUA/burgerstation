@@ -6,7 +6,7 @@
 	ai = /ai/advanced/zombie
 	class = "zombie"
 
-	mob_species = /species/human/
+	species = "human"
 
 	loot_drop_in_corpse = TRUE
 

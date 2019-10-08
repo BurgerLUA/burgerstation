@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/unique/diamond_with_flaw
 	name = "Diamond with Flaw"
 	desc = "Fucking trees."
-	mob_species = /species/diona/
+	species = "diona"
 	sex = NEUTER
 	gender = MALE
 	dialogue_id = "diamond_dialogue"

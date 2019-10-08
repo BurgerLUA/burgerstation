@@ -6,7 +6,6 @@
 	src.force_move(P) //Move it to contents.
 	return P
 
-
 /mob/living/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
 	var/obj/projectile/bullet/thrown/P = ..()
 	P.dir = thrower.dir

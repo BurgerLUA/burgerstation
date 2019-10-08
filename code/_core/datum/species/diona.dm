@@ -12,8 +12,6 @@
 	default_color_detail = "#719333"
 	default_color_glow = "#B2F861"
 
-	default_icon_state_hair = "diona"
-
 	genderless = TRUE
 
 	spawning_organs_male = list(

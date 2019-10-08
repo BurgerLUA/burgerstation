@@ -53,6 +53,8 @@ var/global/list/all_clients = list()
 	var/last_ooc = 0
 	var/inactivity_warning_stage = 0
 
+	var/allow_zoom_controls = TRUE
+
 /*
 /client/Del() // Can't have destroy.
 
@@ -211,12 +213,6 @@ var/global/list/all_clients = list()
 	set instant = TRUE
 	if(!disable_controls)
 		button_tracker.set_released(button)
-
-/client/MouseWheel(object,delta_x,delta_y,location,control,params)
-	var/change_in_screen = delta_y > 1 ? 1 : -1
-	update_zoom(zoom_level + change_in_screen)
-
-	..()
 
 /client/verb/change_click_mode()
 	set name = "Swap Click Mode"
@@ -390,16 +386,6 @@ var/global/list/all_clients = list()
 	last_params = new_params
 	last_object = over_object
 	last_location = over_location
-
-/client/proc/update_zoom(var/desired_zoom_level)
-	if(!mob || !eye || eye != mob)
-		desired_zoom_level = MIN_ZOOM
-	else if(desired_zoom_level < 0)
-		desired_zoom_level = initial(zoom_level)
-
-	zoom_level = Clamp(desired_zoom_level,MIN_ZOOM,MAX_ZOOM)
-
-	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 
 /client/proc/save_current_character()
 	if(mob && is_player(mob))

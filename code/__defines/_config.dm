@@ -11,7 +11,7 @@
 #define BADWORDS "text/badwords.txt"
 
 #define MAX_ZOOM 4 //This is for z-zoom.
-#define MIN_ZOOM 2
+#define MIN_ZOOM 1
 
 #define ZOOM_RANGE 7
 #define VIEW_RANGE 14
@@ -33,9 +33,11 @@
 
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
+#define ENABLE_LORE FALSE
+
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
 #define ENABLE_AI TRUE

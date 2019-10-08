@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/unique/farmer
 	name = "Crundus Bundus"
 	desc = "Remember the!"
-	mob_species = /species/human/
+	species = "human"
 	sex = MALE
 	gender = MALE
 	dialogue_id = "farmer_dialogue"

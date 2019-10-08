@@ -1,16 +1,20 @@
 /species/reptile/
 	name = "Reptile"
 	desc = "Fucking furries"
-	id = "reptile_feral"
+	id = "reptile"
 	flags_species = SPECIES_REPTILE_FERAL
 
 	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
 
+	default_icon_hair = 'icons/mob/living/advanced/hair/reptile_hair_head.dmi'
+	default_icon_state_hair = "bald"
+
+	default_icon_face = 'icons/mob/living/advanced/hair/reptile_hair_face.dmi'
+	default_icon_state_face = "none"
+
 	default_color_eye = "#AAAA00"
 	default_color_skin = "#8CA73E"
 	default_color_hair = "#fff0be"
-
-	default_icon_state_hair = "bald"
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/reptile,
