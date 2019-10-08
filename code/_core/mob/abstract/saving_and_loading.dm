@@ -1,3 +1,17 @@
+/mob/abstract/observer/verb/debug_next_character()
+	set name = "Debug Next Character"
+	set category = "Data"
+
+	if(client)
+
+		var/savedata/client/mob/U = mobdata
+
+		if(!U)
+			LOG_ERROR("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
+			return FALSE
+
+		to_chat(U.get_next_character_id())
+
 /mob/abstract/observer/verb/new_character()
 	set name = "Create New Character"
 	set category = "Data"
@@ -12,6 +26,7 @@
 
 		if(U.create_new_character(U.get_next_character_id()))
 			var/mob/living/advanced/player/P = new(pick(chargen_spawnpoints),client)
+			P.mobdata = U
 			P.start_chargen()
 			return TRUE
 		else

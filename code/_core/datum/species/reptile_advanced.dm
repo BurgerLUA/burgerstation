@@ -7,6 +7,9 @@
 
 	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
 
+	default_hairstyle_chargen_male = 1
+	default_hairstyle_chargen_female = 1
+
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/reptile_advanced,
 		BODY_HEAD = /obj/item/organ/head/reptile_advanced,

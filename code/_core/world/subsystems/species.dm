@@ -6,11 +6,35 @@ var/global/list/all_species = list()
 	priority = SS_ORDER_PRELOAD
 
 /subsystem/chargen/Initialize()
+
 	for(var/k in subtypesof(/species/))
 		var/species/S = k
 		var/s_id = initial(S.id)
 		if(s_id)
 			S = new k
 			all_species[s_id] = S
+
+			if(S.default_icon_hair)
+				for(var/v in icon_states(S.default_icon_hair))
+
+					if(!v || v=="")
+						continue
+
+					S.all_hair_head += v
+
+				LOG_SERVER("Initialized [length(S.all_hair_head)] species hairstyles for [S.name].")
+
+			if(S.default_icon_face)
+				for(var/v in icon_states(S.default_icon_face))
+
+					if(!v || v == "")
+						continue
+
+					S.all_hair_face += v
+
+				LOG_SERVER("Initialized [length(S.all_hair_face)] species beardstyles for [S.name].")
+
+
+
 
 	LOG_SERVER("Initialized [length(all_species)] species.")

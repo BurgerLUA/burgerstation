@@ -18,6 +18,12 @@
 	var/default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	var/default_icon_state_hair = "bald"
 
+
+	var/list/all_hair_head = list()
+	var/list/all_hair_face = list()
+
+
+
 	var/default_icon_face = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
 	var/default_icon_state_face = "none"
 

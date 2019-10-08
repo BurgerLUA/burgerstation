@@ -1,13 +1,3 @@
-var/global/list/hair_head_types = list()
-var/global/list/hair_head_ids = list()
-var/global/list/hair_head_names = list()
-var/global/list/hair_head_icons = list()
-
-var/global/list/hair_face_types = list()
-var/global/list/hair_face_ids = list()
-var/global/list/hair_face_names = list()
-var/global/list/hair_face_icons = list()
-
 /subsystem/hair/
 	name = "Hair Subsystem"
 	desc = "Yes, there is a fucking subsystem dedicated to hair."
@@ -15,46 +5,27 @@ var/global/list/hair_face_icons = list()
 
 /subsystem/hair/Initialize()
 
-	for(var/k in icon_states('icons/mob/living/advanced/hair/human_hair_head.dmi'))
-		if(!k || k=="")
-			continue
+	for(var/s_id in all_species)
 
-		var/hair/head/H = new
-		H.id = k
-		H.icon_state = k
-		H.icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
+		var/species/S = all_species[s_id]
 
-		var/icon/I = new /icon(H.icon,H.icon_state)
-		I.Shift(SOUTH,9)
-		I.Scale(128, 128)
-		I.Crop(64-32,64-32,64+32,64+32)
-		I.Blend("#888888",ICON_MULTIPLY)
+		if(S.default_icon_hair)
+			for(var/k in icon_states(S.default_icon_hair))
 
-		hair_head_types[H.id] = H
-		hair_head_icons[H.id] = I
-		hair_head_ids += H.id
-		hair_head_names += H.name
+				if(!k || k=="")
+					continue
 
-	LOG_SERVER("Initialized [length(hair_head_ids)] hairstyles.")
+				S.all_hair_head += k
 
-	for(var/k in icon_states('icons/mob/living/advanced/hair/human_hair_face.dmi'))
-		if(!k || k == "")
-			continue
 
-		var/hair/face/H = new
-		H.id = k
-		H.icon_state = k
-		H.icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
+			LOG_SERVER("Initialized [length(S.all_hair_head)] hairstyles for [S.name].")
 
-		var/icon/I = new /icon(H.icon,H.icon_state)
-		I.Shift(SOUTH,9)
-		I.Scale(128, 128)
-		I.Crop(64-32,64-32,64+32,64+32)
-		I.Blend("#888888",ICON_MULTIPLY)
+		if(S.default_icon_face)
+			for(var/k in icon_states(S.default_icon_face))
 
-		hair_face_types[H.id] = H
-		hair_face_icons[H.id] = I
-		hair_face_ids += H.id
-		hair_face_names += H.name
+				if(!k || k == "")
+					continue
 
-	LOG_SERVER("Initialized [length(hair_face_ids)] beardstyles.")
+				S.all_hair_face += k
+
+			LOG_SERVER("Initialized [length(S.all_hair_face)] beardstyles for [S.name].")

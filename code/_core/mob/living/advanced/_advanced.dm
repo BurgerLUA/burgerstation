@@ -270,6 +270,11 @@ mob/living/advanced/Login()
 		for(var/obj/hud/button/hide_show_inventory/B in buttons)
 			B.update_icon()
 
+	var/species/S = all_species[species]
+
+	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair)
+	handle_beardstyle_chargen(1,S.default_color_hair)
+
 	if(keep_clothes)
 		for(var/obj/item/I in kept_clothes)
 			add_worn_item(I)
@@ -314,8 +319,8 @@ mob/living/advanced/Login()
 
 	var/species/S = all_species[species]
 
-	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,"#000000")
-	handle_beardstyle_chargen(1,"#000000")
+	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair)
+	handle_beardstyle_chargen(1,S.default_color_hair)
 	//Blends are updated in the above two procs
 
 	if(keep_clothes)

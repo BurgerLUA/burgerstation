@@ -126,7 +126,8 @@
 /obj/trigger/jumpmarker/ship_exit/on_trigger(var/atom/movable/triggerer)
 	if(is_player(triggerer))
 		var/mob/living/advanced/player/P = triggerer
-		if(P.client)
+
+		if(P.client && ENABLE_LORE)
 			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,SECONDS_TO_DECISECONDS(1))
 			P.sight |= SEE_THRU
 			. = ..()
@@ -188,6 +189,9 @@
 				U.save_current_character()
 			return .
 		else
+			var/savedata/client/mob/U = P.mobdata
+			U.loaded_data["tutorial"] = 0
+			U.save_current_character()
 			return ..()
 	else
 		return ..()

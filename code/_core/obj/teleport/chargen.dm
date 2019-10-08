@@ -89,6 +89,11 @@
 
 	var/show_disclaimer = FALSE
 
+	if(!ENABLE_LORE)
+		A.force_move(pick(spawnpoints_new_character))
+		A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
+		return TRUE
+
 	spawn(0)
 		A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,1)
 		var/obj/hud/button/skip/SB = new(A)

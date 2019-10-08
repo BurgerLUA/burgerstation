@@ -1,5 +1,7 @@
 mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_color) //This needs to be called when the buttons are made visible.
 
+	var/species/S = all_species[species]
+
 	var/choice01 = hair_num - 2
 	var/choice02 = hair_num - 1
 	var/choice_main = hair_num + 0
@@ -39,12 +41,12 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_id = hair_head_ids[choice_main]
-	var/hair/head/H = hair_head_types[hair_id]
+	var/hair_icon = S.all_hair_head[choice_main]
+
 	if(desired_color)
-		change_organ_visual("hair_head", desired_icon = H.icon, desired_icon_state = H.icon_state, desired_color = desired_color)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)
 	else
-		change_organ_visual("hair_head", desired_icon = H.icon, desired_icon_state = H.icon_state)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon)
 
 	update_all_blends()
 
@@ -71,7 +73,8 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
-		hair_num = Clamp(hair_num + (dir == EAST ? 1 : -1),1,length(hair_head_types))
+		var/species/S = all_species[A.species]
+		hair_num = Clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_head))
 		A.handle_hairstyle_chargen(hair_num)
 
 	return TRUE
@@ -92,20 +95,25 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
-	if(hair_num >= 1 && hair_num <= length(hair_head_types))
-		var/hair_id = hair_head_ids[hair_num]
-		if(hair_id)
-			var/hair/head/H = hair_head_types[hair_id]
-			if(H)
-				name = H.name
-				var/icon/I = new/icon(icon,icon_state)
-				var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
-				var/icon/I3 = new/icon(H.icon,H.icon_state)
-				I3.Blend(hair_color,ICON_MULTIPLY)
-				I2.Blend(I3,ICON_OVERLAY)
-				I2.Shift(SOUTH,9)
-				I.Blend(I2,ICON_OVERLAY)
-				icon = I
+
+	if(!is_advanced(owner))
+		return ..()
+
+	var/mob/living/advanced/A = owner
+	var/species/S = all_species[A.species]
+
+
+	if(hair_num >= 1 && hair_num <= length(S.all_hair_head))
+		var/hair_icon = S.all_hair_head[hair_num]
+		if(hair_icon)
+			var/icon/I = new/icon(icon,icon_state)
+			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
+			var/icon/I3 = new/icon(S.default_icon_hair,hair_icon)
+			I3.Blend(hair_color,ICON_MULTIPLY)
+			I2.Blend(I3,ICON_OVERLAY)
+			I2.Shift(SOUTH,9)
+			I.Blend(I2,ICON_OVERLAY)
+			icon = I
 
 	..()
 
