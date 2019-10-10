@@ -4,8 +4,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_C,
-		BLUNT = DAMAGE_C
+		BLADE = DAMAGE_D,
+		BLUNT = DAMAGE_D
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -26,8 +26,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_D,
-		BLUNT = DAMAGE_D
+		BLADE = DAMAGE_E,
+		BLUNT = DAMAGE_E
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.

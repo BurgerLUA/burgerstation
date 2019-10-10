@@ -36,7 +36,7 @@
 			params[PARAM_ICON_Y] = attack_y
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
-	var/atom/object_to_damage = victim.get_object_to_damage(attacker,victim,params)
+	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)
 
 	if(!object_to_damage || !object_to_damage_with)
 		if(is_mob(blamed))
@@ -73,8 +73,8 @@
 
 	return TRUE
 
-/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage?
-	return victim
+/atom/proc/get_object_to_damage(var/atom/attacker,params) //Which object should the attacker damage?
+	return src
 
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
 	return src

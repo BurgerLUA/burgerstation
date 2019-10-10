@@ -46,7 +46,7 @@
 		params[PARAM_ICON_X] = shoot_x
 		params[PARAM_ICON_Y] = shoot_y
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,hit_atom,params)
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
 		var/can_attack = DT.can_attack(owner,hit_atom,weapon,object_to_damage)
 
 		if(!can_attack)

@@ -1,4 +1,4 @@
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/victim,params)
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,params)
 
 	if(!params)
 		params = list(PARAM_ICON_X = rand(16,32),PARAM_ICON_Y = rand(16,32))
@@ -30,13 +30,15 @@
 
 		if(!best_distance_organ || distance < best_distance)
 			best_distance = distance
-			best_distance_organ = best_organ
+			best_distance_organ = O
 
 	if(best_organ)
 		return best_organ
 
 	if(best_distance_organ)
 		return best_distance_organ
+
+	LOG_ERROR("WARNING: Did not correctly run damage on [src] when [attacker] attacked!")
 
 	return ..()
 

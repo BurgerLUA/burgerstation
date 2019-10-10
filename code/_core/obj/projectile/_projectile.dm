@@ -150,7 +150,7 @@
 
 /obj/projectile/proc/do_turf_collide(var/turf/old_turf,var/turf/new_turf)
 
-	new /obj/effect/temp/tile(new_turf,20)
+	//new /obj/effect/temp/tile(new_turf,20) DEBUG
 
 	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
 

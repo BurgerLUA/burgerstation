@@ -181,6 +181,9 @@
 		var/class = skill_stats[skill]
 		new_attack_damage[skill_damage[skill]] += L.get_skill_level(skill)* class
 
+	for(var/k in new_attack_damage)
+		new_attack_damage[k] *= hit_object.damage_multiplier
+
 	return new_attack_damage
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
@@ -294,12 +297,11 @@
 
 	display_hit_message(attacker,victim,weapon,hit_object)
 
-
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]\s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]\s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
-	if(is_living(blamed) && victim.health_max) //TODO: Seperate log for blamed.
+	if(is_living(blamed) && victim.health_max && blamed != victim) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed
 		L.to_chat(span("notice","Dealt <b>[round(total_damage_dealt,0.1)]</b> damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 

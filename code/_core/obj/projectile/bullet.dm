@@ -18,7 +18,7 @@
 		params[PARAM_ICON_X] = shoot_x
 		params[PARAM_ICON_Y] = shoot_y
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,hit_atom,params)
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
 		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
 		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 		if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
