@@ -207,10 +207,12 @@
 
 	var/returning_value = list()
 
+	var/armor_level = get_skill_level(SKILL_ARMOR)
 	var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR)
 
+
 	for(var/damage_type in src.armor_base)
-		var/armor_amount = src.armor_base[damage_type] * armor_level_mod
+		var/armor_amount = min(armor_level,src.armor_base[damage_type] * armor_level_mod)
 		returning_value[damage_type] = armor_amount
 
 	return returning_value
@@ -218,13 +220,14 @@
 /mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object)
 
 	var/returning_value = ..()
+	var/armor_level = get_skill_level(SKILL_ARMOR)
+	var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR)
 
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
 
-		var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR)
-
 		for(var/obj/item/clothing/C in src.worn_objects)
+
 			if(!C.defense_rating && length(C.defense_rating))
 				continue
 
@@ -235,6 +238,10 @@
 						returning_value[damage_type] += defense*armor_level_mod
 					else
 						returning_value[damage_type] = defense*armor_level_mod
+
+	for(var/k in returning_value)
+		var/v = returning_value[k]
+		returning_value[k] = min(v,armor_level+BASE_ARMOR_CAP)
 
 	return returning_value
 

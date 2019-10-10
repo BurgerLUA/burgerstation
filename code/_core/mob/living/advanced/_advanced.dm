@@ -145,7 +145,7 @@
 			if(I.is_container)
 				continue
 
-		dropped_objects += O.drop_all_objects(get_turf(src))
+		dropped_objects += O.drop_all_objects(get_turf(src),exclude_soulbound)
 
 	return dropped_objects
 
@@ -407,8 +407,8 @@ mob/living/advanced/Login()
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
-		if(soul_bound)
-			C.soul_bound = TRUE
+		if(soul_bound && ckey)
+			C.soul_bound = ckey
 
 	return TRUE
 

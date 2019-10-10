@@ -1,0 +1,3 @@
+Increasing your Armor skill increases the effectiveness of armor, as well as the maximum armor cap a limb is allowed to have.
+Getting hit while wearing armor increases your armor skill based how much damage was deflected by armor.
+If you have a low armor skill, sometimes it is better to wear light armor instead of heavy armor.

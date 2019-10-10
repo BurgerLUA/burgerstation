@@ -2,3 +2,7 @@ Increasing your Ranged Weapons skill improves your accuracy and reduces your mis
 Shooting a Ranged Weapon while moving decreases your accuracy. Remain still to get the best shot!
 Shooting a Ranged Weapon in quick succession reduces your accuracy with every shot. To maintain accuracy, shoot in short bursts.
 Headshots deal triple damage.
+Surplus ammo is cheaper and easier to find, however it deals much less damage than it's regular counterpart.
+Hollow point rounds deal very high damage against unarmored targets, however has little to no armor penetration.
+Armor piercing rounds deal low damage, however it pierces through armor like butter.
+Casings can be reused to remake ammo at a portable ammo crafting bench.

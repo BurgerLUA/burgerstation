@@ -181,7 +181,7 @@
 				var/obj/hud/inventory/IN = IT.inventories[i]
 				returning_list["inventories"][i] = get_inventory_data(IN)
 		if(IT.soul_bound)
-			returning_list["soul_bound"] = TRUE
+			returning_list["soul_bound"] = IT.soul_bound
 		if(IT.item_count_current > 1)
 			returning_list["item_count_current"] = IT.item_count_current
 		if(IT.delete_on_drop)

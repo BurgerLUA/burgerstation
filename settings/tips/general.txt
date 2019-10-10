@@ -1,0 +1,4 @@
+All items you craft are soulbound, which means they do not drop on death. Items you find in the world, are not, unless soulbound to someone else.
+Soulbound items are attached to your BYOND account, rather than your character. 
+Clothes that provide no physical armor protection are often very resistant against magic.
+

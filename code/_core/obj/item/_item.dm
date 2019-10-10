@@ -61,7 +61,7 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
-	var/soul_bound = FALSE
+	var/soul_bound = null
 
 	var/has_quick_function = FALSE
 	var/quick_function_type =  FLAG_QUICK_INSTANT

@@ -45,3 +45,13 @@
 
 	projectile = /obj/projectile/bullet/smg
 	damage_type = ".45"
+
+
+/obj/item/bullet/pistol_45/surplus
+	name = "\improper surplus .45 bullet"
+	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
+	id = ".45_surplus"
+	icon = 'icons/obj/items/bullet/45_surplus.dmi'
+
+	projectile = /obj/projectile/bullet/smg
+	damage_type = ".45_surplus"

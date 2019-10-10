@@ -35,6 +35,7 @@
 
 #define ENABLE_LORE FALSE
 
+#define BASE_ARMOR_CAP 10
 
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE

@@ -279,7 +279,7 @@
 /obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
 	for(var/obj/item/I in worn_objects)
-		if(exclude_soulbound && I.soul_bound)
+		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
 			continue
 		if(remove_object(I,T))
 			dropped_objects += I
@@ -289,7 +289,7 @@
 /obj/hud/inventory/proc/drop_held_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
 	for(var/obj/item/I in held_objects)
-		if(exclude_soulbound && I.soul_bound)
+		if(exclude_soulbound && I.soul_bound && I.soul_bound == owner.ckey)
 			continue
 		if(remove_object(I,T))
 			dropped_objects += I
@@ -308,8 +308,8 @@
 
 /obj/hud/inventory/proc/drop_all_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()
-	dropped_objects += drop_held_objects(T)
-	dropped_objects += drop_worn_objects(T)
+	dropped_objects += drop_held_objects(T,exclude_soulbound)
+	dropped_objects += drop_worn_objects(T,exclude_soulbound)
 	return dropped_objects
 
 /obj/hud/inventory/proc/delete_all_objects()
