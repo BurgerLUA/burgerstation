@@ -20,7 +20,7 @@
 
 	var/throw_speed = 8 //How far the object travels in pixels per decisecond, when thrown
 
-	var/damage_type //The id of the damage type of the weapon, if any.
+	var/damage_type = "default" //The id of the damage type of the weapon, if any.
 
 	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0) //How much to subtract damage
 

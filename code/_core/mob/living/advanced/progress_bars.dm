@@ -26,17 +26,49 @@
 			F.consume(A)
 			return TRUE
 		if("mine_ore")
-			var/obj/structure/interactive/localmachine/ore_deposit/OD = callback_list["deposit"]
+			var/obj/structure/interactive/ore_deposit/OD = callback_list["deposit"]
 			var/obj/item/ore/O = callback_list["ore"]
 
-			for(var/i=1,i<=pick(2,5),i++)
-				var/obj/item/ore/NO = new O(get_turf(OD))
-				step(NO,get_dir(OD,src))
-				animate(NO,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+			if(OD.uses_current <= 0)
+				src.to_chat(span("notice","This ore vein is depleted!."))
+				return TRUE
 
-			OD.disallowed_mobs += src
-			if(src.client)
-				src.client.images -= OD.cached_image
+			var/obj/item/ore/NO = new O(get_turf(src))
+
+			var/move_direction = get_dir(OD,src)
+
+			var/animation_offset_x = 0
+			var/animation_offset_y = 0
+
+			if(move_direction & NORTH)
+				animation_offset_y -= 32
+
+			if(move_direction & SOUTH)
+				animation_offset_y += 32
+
+			if(move_direction & EAST)
+				animation_offset_x -= 32
+
+			if(move_direction & WEST)
+				animation_offset_x += 32
+
+			NO.pixel_x = animation_offset_x
+			NO.pixel_y = animation_offset_y
+
+			animate(NO, pixel_x = rand(-16,16), pixel_y=rand(-16,16), time = 1)
+
+			OD.uses_current -= 1
+			OD.update_icon()
+
+			if(OD.uses_current > 0 && get_dist(src,OD) <= 1)
+				var/obj/item/I = callback_list["object"]
+				add_progress_bar(src,"mine_ore",I.tool_time,callback_list)
+
+			spawn(SECONDS_TO_DECISECONDS(60))
+				if(OD)
+					OD.uses_current += 1
+					OD.update_icon()
+
 			return TRUE
 
 	..()

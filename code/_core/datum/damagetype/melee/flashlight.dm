@@ -1,11 +1,10 @@
-/damagetype/sword/energy
-	name = "energy sword"
-	id = "sword_energy_off"
+/damagetype/flashlight
+	name = "flash light"
+	id = "flashlight"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 10,
-		FATIGUE = 20
+		BLUNT = 5
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -15,13 +14,12 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 75,
-		FATIGUE = 20
+		BLUNT = 0
 	)
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_C
+		ATTRIBUTE_DEXTERITY = CLASS_E
 	)
 
 	attribute_damage = list(
@@ -30,7 +28,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_D,
+		SKILL_MELEE = CLASS_E
 	)
 
 	skill_damage = list(
@@ -41,43 +39,32 @@
 		SKILL_MELEE = 1
 	)
 
-/damagetype/sword/energy/on
-	name = "energy sword"
-	id = "sword_energy_on"
+/damagetype/flashlight/on
+
+	name = "flashlight"
+	id = "flashlight_on"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = 40
+		HOLY = 50
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
 	attack_damage_conversion = list(
-		LASER = BRUTE
+		HOLY = BURN
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = 100
+		HOLY = -100
 	)
 
-	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_E,
-		ATTRIBUTE_DEXTERITY = CLASS_D
-	)
+	attribute_stats = list()
 
-	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = LASER,
-		ATTRIBUTE_DEXTERITY = LASER
-	)
+	attribute_damage = list()
 
-	skill_stats = list(
-		SKILL_MELEE = CLASS_D,
-	)
+	skill_stats = list()
 
-	skill_damage = list(
-		SKILL_MELEE = LASER
-	)
+	skill_damage = list()
 
-	skill_xp_per_damage = list(
-		SKILL_MELEE = 1
-	)
+	skill_xp_per_damage = list()

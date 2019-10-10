@@ -18,7 +18,7 @@
 	name = "Intro"
 	desc = "Intro to the village soundtrack."
 	id = "intro"
-	path = 'sounds/music/world/intro.ogg'
+	path = 'sounds/music/world/village_intro.ogg'
 	length = 1*60 + 50
 
 /track/snowfall

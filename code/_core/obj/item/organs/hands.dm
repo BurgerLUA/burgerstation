@@ -11,7 +11,7 @@
 	break_threshold = 15
 	health_max = 25
 
-	damage_type = "fist_human"
+	damage_type = "fist"
 
 	attach_flag = BODY_ARM_RIGHT
 

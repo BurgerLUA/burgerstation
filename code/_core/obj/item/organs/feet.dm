@@ -9,7 +9,7 @@
 	health_max = 25
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
-	damage_type = "foot_human"
+	damage_type = "foot"
 
 	attach_flag = BODY_LEG_RIGHT
 

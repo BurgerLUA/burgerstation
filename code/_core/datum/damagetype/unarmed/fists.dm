@@ -1,7 +1,7 @@
 //Fists
 /damagetype/unarmed/fists/
 	name = "Fist"
-	id = "fist_human"
+	id = "fist"
 	desc = "Your human fist."
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 	weapon_name = "fist"
@@ -10,17 +10,20 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 5
+		BLUNT = 5,
+		FATIGUE = 20
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
 	attack_damage_conversion = list(
-		BLUNT = BRUTE
+		BLUNT = BRUTE,
+		FATIGUE = STAMINA
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 0
+		BLUNT = 50,
+		FATIGUE = 0
 	)
 
 	attribute_stats = list(

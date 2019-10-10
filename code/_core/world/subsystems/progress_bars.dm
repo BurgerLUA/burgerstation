@@ -21,9 +21,9 @@ var/global/list/all_progress_bars = list()
 			continue
 		if(P.end_time < curtime)
 			all_progress_bars -= P
-			P.loc.on_progress_bar_completed(P.id,P.callback_list)
 			P.loc.doing_progress = FALSE
 			animate(P,alpha=0,time=5)
+			P.loc.on_progress_bar_completed(P.id,P.callback_list)
 			queue_delete(P,10)
 		else
 			P.update_icon()

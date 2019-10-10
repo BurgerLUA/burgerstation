@@ -1,4 +1,5 @@
-/obj/item/weapon/melee/sword
+/obj/item/weapon/melee/sword/sabre
+
 	name = "sabre"
 	desc = "A curved sword. Curved. Sword."
 
@@ -6,14 +7,14 @@
 
 	icon_state_worn = "worn"
 
-	damage_type = "sword"
+	damage_type = "sword_sabre"
 
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 
 	slot_icons = TRUE
 
-/obj/item/weapon/melee/sword/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/weapon/melee/sword/sabre/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
 /obj/item/weapon/melee/sword/claymore
@@ -29,6 +30,10 @@
 	slot_icons = TRUE
 
 	damage_type = "sword_claymore"
+
+/obj/item/weapon/melee/sword/claymore/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+	return TRUE
+
 
 /obj/item/weapon/melee/spear
 	name = "steel spear"

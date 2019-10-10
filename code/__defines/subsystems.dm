@@ -12,4 +12,6 @@
 #define SS_ORDER_NORMAL 9
 #define SS_ORDER_LIFE 10
 
-#define SS_ORDER_REPORT 11
+#define SS_ORDER_LAST 11
+
+#define SS_ORDER_REPORT 12

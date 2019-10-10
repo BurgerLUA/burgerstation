@@ -82,6 +82,10 @@
 
 	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_id = volume.
 
+
+	var/flags_tool = FLAG_TOOL_NONE
+	var/tool_time = SECONDS_TO_DECISECONDS(5)
+
 /obj/item/destroy()
 
 	for(var/obj/hud/inventory/I in inventories)

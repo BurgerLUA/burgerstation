@@ -2,7 +2,7 @@
 	name = "torch"
 	desc = "Somehow it has unlimited fuel."
 	icon = 'icons/obj/items/weapons/melee/clubs/torch.dmi'
-	damage_type = "torch_off"
+	damage_type = "torch"
 
 	var/enabled = FALSE
 

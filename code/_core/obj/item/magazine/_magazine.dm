@@ -7,6 +7,15 @@
 
 	var/list/weapon_whitelist = list() //What guns can fit this object?
 
+/obj/item/magazine/destroy()
+
+	for(var/obj/item/bullet/B in stored_bullets)
+		qdel(B)
+
+	stored_bullets.Cut()
+
+	return ..()
+
 /obj/item/magazine/New()
 	..()
 	update_icon()

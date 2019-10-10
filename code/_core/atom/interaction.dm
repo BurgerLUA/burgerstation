@@ -69,6 +69,7 @@
 	return div("examine_title","[src.name]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long","[src.desc_extended]")
 
 /atom/proc/can_interact(var/mob/caller,var/enable_message = TRUE)
+
 	if(get_dist(src,caller) > interact_distance)
 		if(enable_message)
 			caller.to_chat("You're too far away!")

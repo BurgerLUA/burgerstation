@@ -185,11 +185,21 @@
 
 	return src
 
+
+/mob/living/advanced/npc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	var/area/A = get_area(new_turf)
+
+	if(A && A.safe && dialogue_id && P && P.owner && is_player(P.owner))
+		return FALSE
+
+	return ..()
+
 /mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	var/area/A = get_area(new_turf)
 
-	if(A.safe)
+	if(A && A.safe) //Honestly it's a bad idea to have projectiles in safezones. Players can bait NPCs into shooting stray bullets into people who are AFK/Busy.
 		return FALSE
 
 	return ..()
@@ -252,6 +262,9 @@
 		*/
 
 	else if(impact_effect_movable && is_movable(hit_atom))
+
+		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
+
 
 		/*
 		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)

@@ -6,22 +6,23 @@ obj/item/ore/
 	var/ore_color = "#FFFFFF"
 
 obj/item/ore/New(var/desired_loc)
-	..()
+	. = ..()
 	update_icon()
+	return .
 
 obj/item/ore/update_icon()
 
 	icon_state = initial(icon_state)
 	icon = initial(icon)
 
-	var/icon/I = icon(icon,icon_state)
-	var/icon/V = icon(icon,"vein_small")
-	V.Blend(ore_color,ICON_MULTIPLY)
+	if(icon_state == "rock_small")
+		var/icon/I = icon(icon,icon_state)
+		var/icon/V = icon(icon,"vein_small")
+		V.Blend(ore_color,ICON_MULTIPLY)
+		I.Blend(V,ICON_OVERLAY)
+		icon = I
 
-	I.Blend(V,ICON_OVERLAY)
-
-	icon = I
-
+	..()
 
 obj/item/ore/iron
 	name = "iron ore"
@@ -29,6 +30,7 @@ obj/item/ore/iron
 	desc = "Commonly found in caves."
 	ore_color = "#B5634F"
 	crafting_id = "ore_iron"
+	icon_state = "ore_iron"
 
 obj/item/ore/copper
 	name = "copper ore"
@@ -65,12 +67,14 @@ obj/item/ore/silver
 	id = "silver"
 	desc = "Found deep underground, usually well hidden."
 	ore_color = "#E5E5EA"
+	icon_state = "ore_silver"
 
 obj/item/ore/gold
 	name = "gold ore"
 	id = "gold"
 	desc = "Found deep underground, usually well hidden."
 	ore_color = "#FFE74F"
+	icon_state = "ore_gold"
 
 obj/item/ore/titanium
 	name = "titanium ore"
@@ -97,6 +101,7 @@ obj/item/ore/carbon
 	ore_color = "#0A0A0A"
 	crafting_id = "ore_carbon"
 	alchemy_reagents = list("carbon" = 15)
+	icon_state = "ore_coal"
 
 obj/item/ore/magnesium
 	name = "magnesium ore"
@@ -110,3 +115,4 @@ obj/item/ore/plasma
 	id = "plasma"
 	desc = "Commonly found in areas of great power."
 	ore_color = "#B200B6"
+	icon_state = "ore_phoron"

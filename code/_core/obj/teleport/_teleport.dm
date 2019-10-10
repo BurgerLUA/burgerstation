@@ -127,7 +127,7 @@
 	if(is_player(triggerer))
 		var/mob/living/advanced/player/P = triggerer
 
-		if(P.client && ENABLE_LORE)
+		if(P.client)
 			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,SECONDS_TO_DECISECONDS(1))
 			P.sight |= SEE_THRU
 			. = ..()
@@ -144,17 +144,13 @@
 				var/list/points = list( //start at 116,100
 					list(109,100), //Leaving the ship
 					list(96,100), //Chapel
-					list(82,100), //Store
-					list(70,93), //Wishgranter
-					list(60,90), //Bar
-					list(60, 117), //Farm
-					list(103, 120) //Cave
+					list(60,100) //Bar
 				)
 
 				var/step_num = 1
 				while(TRUE)
 
-					var/speed = 2
+					var/speed = 1
 
 					var/desired_x_cord = WORLD_SIZE_SEGMENT*2 + points[step_num][1]
 					var/desired_y_cord = WORLD_SIZE_SEGMENT*1 + points[step_num][2]
@@ -173,7 +169,7 @@
 						P.client.pixel_x += mod_x
 						P.client.pixel_y += mod_y
 
-					sleep(0.01) //sleep(0) doesn't work
+					sleep(0.000001)
 
 				add_notification_colored_easy(P.client,"#FFFFFF",SECONDS_TO_DECISECONDS(2),fade_in = TRUE)
 				sleep(SECONDS_TO_DECISECONDS(2))
