@@ -182,17 +182,28 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 		var/view_punch_time = shoot_delay
 
-		shoot_projectile(caller,object,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time)
 
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/bullet_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/bullet_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2)
+
+	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
 	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
 	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
+
+	var/final_pixel_target_x = rand(-8,8)
+	var/final_pixel_target_y = rand(-8,8)
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		var/list/target_cords = L.get_current_target_cords(params)
+		final_pixel_target_x = target_cords[1]
+		final_pixel_target_y = target_cords[2]
 
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
@@ -218,7 +229,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					animate(C,pixel_x = -normx*view_punch, pixel_y = -normy*view_punch, time = (view_punch_time-1)*0.5)
 					animate(C,pixel_x = 0, pixel_y = 0, time = view_punch_time-1)
 
-			var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,icon_pos_x,icon_pos_y, get_turf(target), damage_type_to_use, target, bullet_color)
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color)
 
 			if(get_dist(caller,target) <= 1 && is_mob(target))
 				P.on_hit(target)

@@ -40,6 +40,18 @@
 
 	return ..()
 
+/mob/living/proc/get_current_target_cords(params)
+
+	if(!params || !client)
+		return list(16,16)
+
+	var/click_flags = client.get_click_flags(params,TRUE)
+
+	if(click_flags & CLICK_RIGHT)
+		return attack_right[attack_mode]
+
+	return attack_left[attack_mode]
+
 /mob/living/advanced/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	. = ..()
