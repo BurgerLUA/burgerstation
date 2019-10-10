@@ -160,14 +160,17 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		if(length(shoot_sounds))
 			play_sound(pick(shoot_sounds_to_use),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
-		var/icon_pos_x = 0
-		var/icon_pos_y = 0
+		if(!params || !length(params))
+			params = list()
 
-		if(params && params[PARAM_ICON_X])
-			icon_pos_x = text2num(params[PARAM_ICON_X])
+		if(!params[PARAM_ICON_X])
+			params[PARAM_ICON_X] = rand(-8,8)
 
-		if(params && params[PARAM_ICON_Y])
-			icon_pos_y = text2num(params[PARAM_ICON_Y])
+		if(!params[PARAM_ICON_Y])
+			params[PARAM_ICON_Y] = rand(-8,8)
+
+		var/icon_pos_x = text2num(params[PARAM_ICON_X])
+		var/icon_pos_y = text2num(params[PARAM_ICON_Y])
 
 		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
 		if(is_living(caller))

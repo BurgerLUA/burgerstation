@@ -117,7 +117,7 @@
 	return ..()
 
 /mob/living/simple/npc/ash_drake/proc/shoot_fireball(var/atom/desired_target)
-	shoot_projectile(src,desired_target,/obj/projectile/bullet/fireball/,"ash_drake_fireball",16,16,0,20,1,"#FFFFFF",0,0)
+	shoot_projectile(src,desired_target,null,null,/obj/projectile/bullet/fireball/,"ash_drake_fireball",16,16,0,20,1,"#FFFFFF",0,0)
 
 
 

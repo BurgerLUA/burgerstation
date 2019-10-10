@@ -25,8 +25,6 @@
 
 	var/list/targetable_limbs = TARGETABLE_LIMBS
 
-
-
 	for(var/k in P.labeled_organs)
 
 		if(!(k in targetable_limbs) || !P.labeled_organs[k])

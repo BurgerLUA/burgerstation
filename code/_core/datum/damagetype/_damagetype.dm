@@ -235,8 +235,6 @@
 
 	return returning_value
 
-
-
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object)
@@ -253,7 +251,7 @@
 		for(var/damage_type in damage_to_deal)
 			var/old_damage_amount = damage_to_deal[damage_type]
 			var/defense_amount = Clamp(defense_rating_victim[damage_type] - attack_damage_penetration[damage_type],0,100)
-			var/new_damage_amount = calculate_armor(old_damage_amount,defense_amount)
+			var/new_damage_amount = Clamp(old_damage_amount - defense_amount,1,old_damage_amount)
 			damage_blocked += old_damage_amount - new_damage_amount
 			damage_to_deal[damage_type] = new_damage_amount
 
@@ -296,13 +294,14 @@
 
 	display_hit_message(attacker,victim,weapon,hit_object)
 
+
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.to_chat(span("warning","Took <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked) " : ""]damage [hit_object == victim ? "to yourself" : "to your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] from \the [attacker == weapon ? "[attacker.name]\s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
 	if(is_living(blamed) && victim.health_max) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed
-		L.to_chat(span("notice","Dealt <b>[total_damage_dealt]</b> [damage_blocked ? "(<b>[damage_blocked]</b> blocked) " : ""]damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
+		L.to_chat(span("notice","Dealt <b>[round(total_damage_dealt,0.1)]</b> damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health_current - total_damage_dealt)]/[victim.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
 	hit_object.update_health(total_damage_dealt,attacker)
 

@@ -69,7 +69,7 @@
 	if(victim.perform_parry(blamed,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
 	if(victim.perform_dodge(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
 
-	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage)
+	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker)
 
 	return TRUE
 

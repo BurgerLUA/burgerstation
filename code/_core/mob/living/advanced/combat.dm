@@ -12,6 +12,7 @@
 	var/obj/item/organ/best_distance_organ
 
 	for(var/obj/item/organ/O in src.organs)
+
 		if(!O.can_be_targeted)
 			continue
 
