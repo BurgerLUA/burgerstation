@@ -15,6 +15,7 @@
 
 // BEGIN_INCLUDE
 #include "code\__defines\_config.dm"
+#include "code\__defines\_config_damage.dm"
 #include "code\__defines\attacking.dm"
 #include "code\__defines\attributes.dm"
 #include "code\__defines\bodyparts.dm"
@@ -206,6 +207,7 @@
 #include "code\_core\datum\damagetype\melee\sword\chainsaw.dm"
 #include "code\_core\datum\damagetype\melee\sword\claymore.dm"
 #include "code\_core\datum\damagetype\melee\sword\energy.dm"
+#include "code\_core\datum\damagetype\melee\sword\sabre.dm"
 #include "code\_core\datum\damagetype\npc\_npc.dm"
 #include "code\_core\datum\damagetype\npc\ash_drake.dm"
 #include "code\_core\datum\damagetype\npc\bear.dm"

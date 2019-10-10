@@ -21,4 +21,4 @@
 #define SKILL_C 0.5
 #define SKILL_B 0.75
 #define SKILL_A 1
-#defein SKILL_B 2
+#define SKILL_B 2
