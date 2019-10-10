@@ -4,8 +4,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		MAGIC = 5,
-		DARK = 10
+		MAGIC = DAMAGE_D,
+		DARK = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -36,6 +36,6 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MAGIC_CHAOS = 0.75,
-		SKILL_MAGIC_OFFENSIVE = 0.25
+		SKILL_MAGIC_CHAOS = SKILL_B,
+		SKILL_MAGIC_OFFENSIVE = SKILL_C
 	)

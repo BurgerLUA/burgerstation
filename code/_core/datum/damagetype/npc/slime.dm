@@ -8,9 +8,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BIO = 10,
-		FIRE = 10,
-		FATIGUE = 10
+		BIO = DAMAGE_D,
+		FIRE = DAMAGE_E,
+		FATIGUE = DAMAGE_D
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -22,9 +22,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BIO = 50,
-		FIRE = 50,
-		FATIGUE = 0
+		BIO = ARMOR_A,
+		FIRE = ARMOR_D,
+		FATIGUE = ARMOR_E
 	)
 
 	attribute_stats = list(
@@ -43,4 +43,6 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = SKILL_D
+	)

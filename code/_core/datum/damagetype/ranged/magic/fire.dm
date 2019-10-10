@@ -4,7 +4,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = 10
+		HEAT = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -14,7 +14,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HEAT = 25
+		HEAT = ARMOR_D
 	)
 
 	attribute_stats = list(
@@ -34,5 +34,5 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MAGIC_OFFENSIVE = 1
+		SKILL_MAGIC_OFFENSIVE = SKILL_C
 	)

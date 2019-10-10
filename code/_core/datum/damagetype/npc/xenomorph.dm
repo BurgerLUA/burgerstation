@@ -8,10 +8,10 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 25,
-		BLUNT = 5,
-		PIERCE = 25,
-		FATIGUE = 30
+		BLADE = DAMAGE_C,
+		BLUNT = DAMAGE_E,
+		PIERCE = DAMAGE_C,
+		FATIGUE = DAMAGE_D
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -23,10 +23,10 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 75,
-		FATIGUE = 10
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		FATIGUE = ARMOR_C
 	)
 
 	attribute_stats = list(
@@ -47,7 +47,9 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = SKILL_D
+	)
 
 /damagetype/npc/xenomorph/queen
 	name = "Xenomorph Poisoned Claws"
@@ -56,12 +58,12 @@
 	attack_verbs = list("claw","scratch","maul")
 	weapon_name = "poisonous claws"
 
-
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 30,
-		BLUNT = 10,
-		PIERCE = 20
+		BLADE = DAMAGE_B,
+		BLUNT = DAMAGE_D,
+		PIERCE = DAMAGE_C,
+		BIO = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -73,14 +75,15 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_B,
+		PIERCE = ARMOR_B,
+		BIO = ARMOR_F
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_S,
-		ATTRIBUTE_DEXTERITY = CLASS_E
+		ATTRIBUTE_STRENGTH = CLASS_B,
+		ATTRIBUTE_DEXTERITY = CLASS_D
 	)
 
 	attribute_damage = list(
@@ -96,4 +99,6 @@
 		SKILL_UNARMED = BLUNT
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = SKILL_D
+	)

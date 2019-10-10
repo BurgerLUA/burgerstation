@@ -4,9 +4,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 5,
-		BLUNT = 20,
-		PIERCE = 10
+		BLADE = DAMAGE_E,
+		BLUNT = DAMAGE_C,
+		PIERCE = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -18,11 +18,10 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 0,
-		BLUNT = 50,
-		PIERCE = 50
+		BLADE = ARMOR_F,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_B
 	)
-
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_B,
@@ -43,5 +42,5 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 1
+		SKILL_MELEE = SKILL_D
 	)

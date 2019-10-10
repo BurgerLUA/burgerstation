@@ -690,7 +690,7 @@
 #include "code\_core\obj\projectile\bullet.dm"
 #include "code\_core\obj\projectile\laser.dm"
 #include "code\_core\obj\projectile\magic.dm"
-#include "code\_core\obj\projectile\throw.dm"
+#include "code\_core\obj\projectile\thrown.dm"
 #include "code\_core\obj\shadow\_shadow.dm"
 #include "code\_core\obj\structure\_structure.dm"
 #include "code\_core\obj\structure\interactive\_interactive.dm"

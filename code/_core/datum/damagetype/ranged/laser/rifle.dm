@@ -4,9 +4,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = 5,
-		LASER = 25,
-		HEAT = 10
+		PIERCE = DAMAGE_C,
+		LASER = DAMAGE_B,
+		HEAT = DAMAGE_B
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -18,21 +18,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = 50,
-		LASER = 25,
-		HEAT = 50
-	)
-
-	attribute_stats = list()
-
-	attribute_damage = list()
-
-	skill_stats = list()
-
-	skill_damage = list()
-
-	skill_xp_per_damage = list(
-		SKILL_RANGED = 1
+		PIERCE = ARMOR_B,
+		LASER = ARMOR_B,
+		HEAT = ARMOR_C
 	)
 
 /damagetype/ranged/laser/rifle/hardlight
@@ -41,11 +29,11 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 5,
-		BLUNT = 10,
-		PIERCE = 20,
-		LASER = 10,
-		COLD = 10
+		BLADE = DAMAGE_E,
+		BLUNT = DAMAGE_D,
+		PIERCE = DAMAGE_C,
+		LASER = DAMAGE_C,
+		COLD = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -59,24 +47,11 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 100,
-		LASER = 50,
-		COLD = 50
-	)
-
-
-	attribute_stats = list()
-
-	attribute_damage = list()
-
-	skill_stats = list()
-
-	skill_damage = list()
-
-	skill_xp_per_damage = list(
-		SKILL_RANGED = 1
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_C,
+		COLD = ARMOR_C
 	)
 
 /damagetype/ranged/laser/rifle/xray
@@ -85,9 +60,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = 20,
-		HEAT = 10,
-		RAD = 20
+		LASER = DAMAGE_C,
+		HEAT = DAMAGE_D,
+		RAD = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -99,19 +74,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = 75,
-		HEAT = 75,
-		RAD = 75
-	)
-
-	attribute_stats = list()
-
-	attribute_damage = list()
-
-	skill_stats = list()
-
-	skill_damage = list()
-
-	skill_xp_per_damage = list(
-		SKILL_RANGED = 1
+		LASER = ARMOR_S,
+		HEAT = ARMOR_C,
+		RAD = ARMOR_C
 	)

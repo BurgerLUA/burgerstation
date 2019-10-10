@@ -1,11 +1,11 @@
 /damagetype/npc/goliath/
-	name = "template"
+	name = "goliath claw"
 	id = "goliath_claw"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 15,
-		PIERCE = 10
+		BLADE = DAMAGE_D,
+		PIERCE = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -16,8 +16,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 20,
-		PIERCE = 50
+		BLADE = ARMOR_D,
+		PIERCE = ARMOR_C
 	)
 
 	attribute_stats = list(
@@ -39,9 +39,8 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_UNARMED = 1
+		SKILL_UNARMED = SKILL_D
 	)
-
 
 /damagetype/npc/goliath/tentacle
 	name = "goliath tentacle"
@@ -49,10 +48,10 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 20,
-		BLUNT = 5,
-		PIERCE = 5,
-		DARK = 10
+		BLADE = DAMAGE_D,
+		BLUNT = DAMAGE_D,
+		PIERCE = DAMAGE_B,
+		DARK = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -65,12 +64,11 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 25,
-		BLUNT = 0,
-		PIERCE = 50,
-		DARK = 25
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_F,
+		PIERCE = ARMOR_C,
+		DARK = ARMOR_B
 	)
-
 
 	attribute_stats = list()
 

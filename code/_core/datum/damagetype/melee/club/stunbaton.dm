@@ -4,7 +4,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 15
+		BLUNT = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -14,7 +14,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 25
+		BLUNT = ARMOR_D
 	)
 
 	attribute_stats = list(
@@ -36,7 +36,7 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 1
+		SKILL_MELEE = SKILL_C
 	)
 
 /damagetype/melee/club/stunbaton/on
@@ -45,7 +45,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 50
+		FATIGUE = DAMAGE_A
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -55,7 +55,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		FATIGUE = 75
+		FATIGUE = ARMOR_A
 	)
 
 	attribute_stats = list()

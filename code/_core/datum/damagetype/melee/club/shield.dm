@@ -4,8 +4,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 10,
-		FATIGUE = 20
+		BLUNT = DAMAGE_C,
+		FATIGUE = DAMAGE_B
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -16,9 +16,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 5
+		BLUNT = ARMOR_F,
+		FATIGUE = ARMOR_S
 	)
-
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
@@ -41,8 +41,8 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 0.75,
-		SKILL_BLOCK = 0.25
+		SKILL_MELEE = SKILL_D,
+		SKILL_BLOCK = SKILL_D
 	)
 
 /damagetype/melee/club/shield/energy
@@ -53,9 +53,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 5,
-		LASER = 10,
-		FATIGUE = 20
+		BLUNT = DAMAGE_D,
+		LASER = DAMAGE_C,
+		FATIGUE = DAMAGE_B
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -67,9 +67,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 5,
-		LASER = 10,
-		FATIGUE = 10
+		BLUNT = ARMOR_F,
+		LASER = ARMOR_F,
+		FATIGUE = ARMOR_F
 	)
 
 	attribute_stats = list(
@@ -93,6 +93,6 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 0.75,
-		SKILL_BLOCK = 0.25
+		SKILL_MELEE = SKILL_D,
+		SKILL_BLOCK = SKILL_D
 	)

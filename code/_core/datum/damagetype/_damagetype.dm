@@ -334,7 +334,7 @@
 				var/mob/living/L = victim
 				var/strength_mod = floor( (brute_damage_dealt/victim.health_max)*throw_mul )
 				if(strength_mod >= 1)
-					var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*31,offset_y*31)
+					var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*min(8*strength_mod,31),offset_y*min(8*strength_mod,31))
 					P.steps_allowed = Clamp(4 * strength_mod,1,VIEW_RANGE)
 
 	if(is_player(blamed) && is_player(victim))

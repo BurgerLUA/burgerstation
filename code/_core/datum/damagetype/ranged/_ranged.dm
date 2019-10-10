@@ -21,7 +21,20 @@
 		'sounds/weapons/ric5.ogg'
 	)
 
+	attribute_stats = list()
+
+	attribute_damage = list()
+
+	skill_stats = list()
+
+	skill_damage = list()
+
 	throw_mul = 0.25
+
+	skill_xp_per_damage = list(
+		SKILL_RANGED = SKILL_A
+	)
+
 
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return

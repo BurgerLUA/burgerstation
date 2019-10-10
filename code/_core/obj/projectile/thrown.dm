@@ -15,7 +15,7 @@
 			A.force_move(previous_loc)
 			A.pixel_x = vel_x
 			A.pixel_y = vel_y
-			animate(A,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(1))
+			animate(A,pixel_x = 0, pixel_y = 0, time = max(1, 10 * steps_allowed ? (1/steps_allowed) : 10 ))
 			if(is_living(A))
 				var/mob/living/L = A
 				var/guessed_velocity = Clamp(10*steps_allowed*(1 - steps_current/steps_allowed),10,40)

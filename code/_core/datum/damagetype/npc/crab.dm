@@ -1,26 +1,14 @@
 /damagetype/npc/crab
 	name = "Crab Claw"
 	id = "crab_claw"
-	desc = "The claw of a spider"
+	desc = "The claw of a crab"
 	attack_verbs = list("pinch","snip")
 	weapon_name = "claw"
 
-
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 10,
-		BLUNT = 0,
-		PIERCE = 10,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = DAMAGE_D,
+		PIERCE = DAMAGE_E,
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -29,12 +17,10 @@
 		PIERCE = BRUTE
 	)
 
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 10,
-		PIERCE = 50
+		BLADE = ARMOR_D,
+		PIERCE = ARMOR_B
 	)
-
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_B,
@@ -42,16 +28,18 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = PIERCE
+		ATTRIBUTE_STRENGTH = PIERCE,
+		ATTRIBUTE_DEXTERITY = BLADE
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_B
+		SKILL_UNARMED = CLASS_D
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = PIERCE
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = SKILL_D
+	)

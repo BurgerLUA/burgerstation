@@ -4,9 +4,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 4,
-		BLUNT = 3,
-		PIERCE = 3
+		BLADE = DAMAGE_E,
+		BLUNT = DAMAGE_E,
+		PIERCE = DAMAGE_E
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -18,21 +18,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 25
-	)
-
-	attribute_stats = list()
-
-	attribute_damage = list()
-
-	skill_stats = list()
-
-	skill_damage = list()
-
-	skill_xp_per_damage = list(
-		SKILL_RANGED = 1
+		BLADE = DAMAGE_C,
+		BLUNT = DAMAGE_C,
+		PIERCE = DAMAGE_C
 	)
 
 /damagetype/ranged/bullet/shotgun/slug
@@ -41,8 +29,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 40,
-		PIERCE = 10
+		BLUNT = DAMAGE_A,
+		PIERCE = DAMAGE_D
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -53,18 +41,6 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 25,
-		PIERCE = 50
-	)
-
-	attribute_stats = list()
-
-	attribute_damage = list()
-
-	skill_stats = list()
-
-	skill_damage = list()
-
-	skill_xp_per_damage = list(
-		SKILL_RANGED = 1
+		BLUNT = ARMOR_B,
+		PIERCE = ARMOR_B
 	)

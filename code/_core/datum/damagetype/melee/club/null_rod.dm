@@ -3,32 +3,28 @@
 	id = "null_rod"
 
 	attack_damage_base = list(
-		BLUNT = 10,
-		HOLY = 20,
-		DARK = -25
+		BLUNT = DAMAGE_D,
+		HOLY = DAMAGE_B
 	)
 
 	attack_damage_conversion = list(
 		BLUNT = BRUTE,
-		HOLY = BURN,
-		FATIGUE = OXY
+		HOLY = BURN
 	)
 
 	attack_damage_penetration = list(
-		BLADE = 5,
-		HOLY = 20
+		BLUNT = ARMOR_D,
+		HOLY = ARMOR_A
 	)
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_D,
-		ATTRIBUTE_KARMA = -0.5
+		ATTRIBUTE_DEXTERITY = CLASS_D
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT,
-		ATTRIBUTE_KARMA = DARK
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
@@ -42,6 +38,6 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_PRAYER = 0.5,
-		SKILL_MELEE = 0.5
+		SKILL_PRAYER = SKILL_A,
+		SKILL_MELEE = SKILL_C
 	)

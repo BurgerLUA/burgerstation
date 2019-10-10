@@ -8,10 +8,10 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 10,
-		PIERCE = 5,
-		MAGIC = 5,
-		DARK = 20
+		BLADE = DAMAGE_D,
+		PIERCE = DAMAGE_E,
+		MAGIC = DAMAGE_E,
+		DARK = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -24,10 +24,10 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 20,
-		PIERCE = 50,
-		MAGIC = 0,
-		DARK = 10
+		BLADE = ARMOR_F,
+		PIERCE = ARMOR_F,
+		MAGIC = ARMOR_C,
+		DARK = ARMOR_C
 	)
 
 	attribute_stats = list(
@@ -52,7 +52,10 @@
 		SKILL_PRAYER = DARK
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_MELEE = SKILL_D,
+		SKILL_PRAYER = SKILL_B
+	)
 
 /damagetype/npc/harvester
 	name = "Harvester Damage"
@@ -61,14 +64,13 @@
 	attack_verbs = list("slash","pummel")
 	weapon_name = "dark claws"
 
-
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		MAGIC = 5,
-		DARK = 10
+		BLADE = DAMAGE_D,
+		BLUNT = DAMAGE_E,
+		PIERCE = DAMAGE_D,
+		MAGIC = DAMAGE_E,
+		DARK = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -82,13 +84,12 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 15,
-		BLUNT = 15,
-		PIERCE = 50,
-		MAGIC = 5,
-		DARK = 5
+		BLADE = ARMOR_F,
+		BLUNT = ARMOR_F,
+		PIERCE = ARMOR_F,
+		MAGIC = ARMOR_D,
+		DARK = ARMOR_C
 	)
-
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
@@ -103,14 +104,16 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_B
+		SKILL_UNARMED = CLASS_D
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = PIERCE
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = SKILL_D
+	)
 
 /damagetype/npc/behemoth
 	name = "Behemoth Damage"
@@ -122,8 +125,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 20,
-		DARK = 20
+		BLUNT = DAMAGE_C,
+		DARK = DAMAGE_C
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -134,10 +137,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 25,
-		DARK = 0
+		BLUNT = ARMOR_D,
+		DARK = ARMOR_C
 	)
-
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_B,
@@ -152,11 +154,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_B
+		SKILL_UNARMED = CLASS_D
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT
 	)
 
-	skill_xp_per_damage = list()
+	skill_xp_per_damage = list(
+		SKILL_UNARMED = SKILL_D
+	)

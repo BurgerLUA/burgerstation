@@ -3,9 +3,9 @@
 	id = "null_dagger"
 
 	attack_damage_base = list(
-		BLADE = 10,
-		PIERCE = 5,
-		HOLY = 20
+		BLADE = DAMAGE_C,
+		PIERCE = DAMAGE_D,
+		HOLY = DAMAGE_B
 	)
 
 	attack_damage_conversion = list(
@@ -14,8 +14,8 @@
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = 15,
-		HOLY = 20
+		PIERCE = ARMOR_D,
+		HOLY = ARMOR_S
 	)
 
 	attribute_stats = list(
@@ -39,6 +39,6 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_PRAYER = 0.5,
-		SKILL_MELEE = 0.5
+		SKILL_PRAYER = SKILL_A,
+		SKILL_MELEE = SKILL_D
 	)

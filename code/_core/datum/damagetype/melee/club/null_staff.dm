@@ -3,8 +3,8 @@
 	id = "null_staff"
 
 	attack_damage_base = list(
-		BLUNT = 5,
-		HOLY = 20
+		BLUNT = DAMAGE_C,
+		HOLY = DAMAGE_B
 	)
 
 	attack_damage_conversion = list(
@@ -13,8 +13,8 @@
 	)
 
 	attack_damage_penetration = list(
-		BLADE = 15,
-		HOLY = 20
+		BLUNT = ARMOR_D,
+		HOLY = ARMOR_A
 	)
 
 	attribute_stats = list(
@@ -38,6 +38,6 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_PRAYER = 0.5,
-		SKILL_MELEE = 0.5
+		SKILL_PRAYER = SKILL_A,
+		SKILL_MELEE = SKILL_C
 	)

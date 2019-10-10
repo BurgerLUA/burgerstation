@@ -3,8 +3,8 @@
 	id = "spear"
 
 	attack_damage_base = list(
-		PIERCE = 10,
-		BLADE = 5
+		PIERCE = DAMAGE_B,
+		BLADE = DAMAGE_C
 	)
 
 	attack_damage_conversion = list(
@@ -13,7 +13,7 @@
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = 25
+		PIERCE = ARMOR_A
 	)
 
 	attribute_stats = list(
@@ -35,7 +35,7 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 1
+		SKILL_MELEE = SKILL_B
 	)
 
 /damagetype/melee/spear/thrown
@@ -43,8 +43,8 @@
 	id = "spear_thrown"
 
 	attack_damage_base = list(
-		PIERCE = 40,
-		BLADE = 10
+		PIERCE = DAMAGE_A,
+		BLADE = DAMAGE_B
 	)
 
 	attack_damage_conversion = list(
@@ -53,7 +53,7 @@
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = 75
+		PIERCE = ARMOR_S
 	)
 
 	attribute_stats = list(
@@ -67,13 +67,16 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_B
+		SKILL_MELEE = CLASS_D,
+		SKILL_RANGED = CLASS_B
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = PIERCE
+		SKILL_MELEE = PIERCE,
+		SKILL_RANGED = PIERCE
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 1
+		SKILL_MELEE = SKILL_D,
+		SKILL_RANGED = SKILL_B
 	)

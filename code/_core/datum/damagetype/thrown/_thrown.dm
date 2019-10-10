@@ -3,20 +3,16 @@
 	id = "thrown"
 
 	attack_damage_base = list(
-		BLUNT = 5,
+		BLUNT = DAMAGE_E,
 	)
 
 	attack_damage_conversion = list(
 		BLUNT = BRUTE,
 	)
 
-	attack_damage_penetration = list(
-		BLUNT = 10
-	)
-
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_C
+		ATTRIBUTE_DEXTERITY = CLASS_D
 	)
 
 	attribute_damage = list(
@@ -25,7 +21,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_C
+		SKILL_MELEE = CLASS_E
 	)
 
 	skill_damage = list(
@@ -33,7 +29,7 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MELEE = 1
+		SKILL_MELEE = SKILL_E
 	)
 
 	use_blamed_stats = TRUE
