@@ -16,7 +16,7 @@ obj/structure/interactive/soapstone_message
 	layer = LAYER_FLOOR_DECAL
 
 obj/structure/interactive/soapstone_message/New(var/desired_loc,var/desired_dir,var/desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
-	dir = desired_dir
+	set_dir(desired_dir)
 	color = desired_color
 	owner = desired_owner
 	ckey = desired_ckey

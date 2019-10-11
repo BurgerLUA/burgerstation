@@ -208,7 +208,7 @@
 
 /obj/item/New(var/desired_loc)
 
-	dir = default_direction
+	set_dir(default_direction)
 
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]
@@ -228,6 +228,7 @@
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new(src)
 		D.id = "dynamic_[i]"
+		D.slot_num = i
 		if(container_held_slots)
 			D.held_slots = container_held_slots
 		if(container_max_size)

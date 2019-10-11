@@ -8,6 +8,8 @@
 	var/should_save = TRUE
 
 /obj/destroy()
+	if(loc)
+		drop_item()
 	loc = null
 	return ..()
 

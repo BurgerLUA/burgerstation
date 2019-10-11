@@ -10,6 +10,6 @@ obj/structure/scenery/hellfire
 
 obj/structure/scenery/hellfire/New(var/desired_loc)
 
-	dir = pick(NORTH,EAST,SOUTH,WEST)
+	set_dir(pick(NORTH,EAST,SOUTH,WEST))
 
 	return ..()

@@ -6,7 +6,7 @@
 	mouse_opacity = 1
 
 /obj/effect/footprint/New(var/newloc,var/desired_dir = 0)
-	dir = desired_dir
+	set_dir(desired_dir)
 	..()
 
 /obj/effect/footprint/emboss

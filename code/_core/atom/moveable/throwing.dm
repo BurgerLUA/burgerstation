@@ -8,5 +8,5 @@
 
 /mob/living/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
 	var/obj/projectile/bullet/thrown/P = ..()
-	P.dir = thrower.dir
+	P.set_dir(thrower.dir)
 	return P

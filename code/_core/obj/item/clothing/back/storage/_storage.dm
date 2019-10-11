@@ -4,7 +4,7 @@ obj/item/clothing/back/storage
 
 	is_container = TRUE
 
-	dynamic_inventory_count = 12
+	dynamic_inventory_count = 16
 
 	size = 4
 	container_max_size = 3

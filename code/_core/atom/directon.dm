@@ -1,7 +1,3 @@
-/atom/proc/force_dir(var/desired_direction)
-	dir = desired_direction
-	return TRUE
-
 /atom/proc/set_dir(var/desired_direction)
 	//animate(src,time = 1, dir = desired_direction, flags = ANIMATION_LINEAR_TRANSFORM)
 	dir = desired_direction

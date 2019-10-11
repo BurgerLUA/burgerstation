@@ -87,11 +87,28 @@ mob/living/advanced/proc/handle_regen()
 	for(var/obj/item/I in dropped_items)
 		C.add_to_inventory(src,I,FALSE)
 
+	do_loot_drop(C)
+
 	C.prune_inventory()
 
 	queue_delete(C,3000)
 
-	return ..()
+	return TRUE
+
+/mob/living/advanced/do_loot_drop(var/atom/desired_loc)
+
+	if(desired_loc && loot_drop && is_item(desired_loc))
+		var/obj/item/I = desired_loc
+		var/loot/L = all_loot[loot_drop]
+		L.spawn_loot_container(desired_loc)
+
+		var/obj/item/currency/C = new(src.loc)
+		C.value = 1 + floor(health_max/10)
+		C.update_icon()
+		I.add_to_inventory(null,C,FALSE)
+		return TRUE
+
+	return FALSE
 
 /mob/living/advanced/post_death()
 
@@ -101,7 +118,7 @@ mob/living/advanced/proc/handle_regen()
 
 	qdel(src)
 
-	return .
+	return TRUE
 
 /mob/living/advanced/handle_status_effects()
 	. = ..()
@@ -168,7 +185,7 @@ mob/living/advanced/proc/handle_regen()
 	var/should_update_health = FALSE
 
 	var/damage_min = -2*(10/LIFE_TICK_SLOW)
-	var/damage_max = health_max*0.01*(10/LIFE_TICK_SLOW)
+	var/damage_max = health_max*0.1*(10/LIFE_TICK_SLOW)
 
 	for(var/obj/item/organ/O in organs)
 

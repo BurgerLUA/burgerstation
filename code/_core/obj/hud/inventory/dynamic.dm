@@ -27,6 +27,7 @@
 	should_add_worn = FALSE
 	should_add_held = FALSE
 
+	var/slot_num = 0
 
 /obj/hud/inventory/dynamic/New(var/desired_loc)
 

@@ -36,7 +36,7 @@
 
 	for(var/mob/living/advanced/player/P in oview(owner,3))
 		if(P)
-			owner.dir = get_dir(owner,P)
+			owner.set_dir(get_dir(owner,P))
 			movement_ticks = 0
 			return TRUE
 

@@ -21,6 +21,22 @@
 
 	return I
 
+/loot/proc/spawn_loot_container(var/obj/item/C)
+
+	if(!C)
+		return FALSE
+
+	if(chance_none && prob(chance_none))
+		return FALSE
+
+	var/obj/item/I = pickweight(loot_table)
+	I = new I(get_turf(C))
+	I.on_spawn()
+
+	C.add_to_inventory(null,I,FALSE)
+
+	return I
+
 /loot/proc/spawn_loot_advanced(var/mob/living/advanced/A,var/left = FALSE)
 	var/obj/item/I = spawn_loot(get_turf(A))
 	if(I)

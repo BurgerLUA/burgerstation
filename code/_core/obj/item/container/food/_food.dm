@@ -42,7 +42,6 @@
 
 	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
-		drop_item(get_turf(consumer))
 		qdel(src)
 		return FALSE
 
@@ -60,7 +59,6 @@
 
 		if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 			consumer.to_chat(span("notice","You finish eating \the [src.name]."))
-			drop_item(get_turf(consumer))
 			qdel(src)
 
 		return returning
@@ -70,7 +68,6 @@
 		var/returning = reagents.transfer_reagents_to(consumer.reagents,bite_size)
 
 		if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
-			drop_item(get_turf(consumer))
 			qdel(src)
 
 		return returning

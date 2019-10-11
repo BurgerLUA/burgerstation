@@ -133,3 +133,16 @@
 		L.source_atom.update_light()
 
 	return .
+
+
+/atom/set_dir(var/desired_direction)
+
+	. = ..()
+
+	var/datum/light_source/L
+	var/thing
+	for (thing in light_sources)
+		L = thing
+		L.source_atom.update_light()
+
+	return .

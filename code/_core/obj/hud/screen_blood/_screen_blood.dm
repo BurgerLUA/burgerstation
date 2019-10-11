@@ -23,7 +23,7 @@
 			var/client/C = L.client
 			C.screen += src
 
-		dir = desired_direction
+		set_dir(desired_direction)
 
 		switch(dir)
 			if(NORTHWEST)

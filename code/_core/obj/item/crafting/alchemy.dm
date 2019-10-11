@@ -66,7 +66,6 @@
 
 	C.transfer_item(product_slot)
 
-	I.drop_item(get_turf(caller))
 	qdel(I)
 
 	return TRUE

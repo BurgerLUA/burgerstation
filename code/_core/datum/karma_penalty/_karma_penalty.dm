@@ -8,8 +8,6 @@
 /karma_penalty/proc/on_trigger(var/mob/attacker,var/mob/victim)
 	//Trigger stuff here.
 
-
-
 //Assassins
 /karma_penalty/assassin_01
 	name = "Very Easy Assassin"

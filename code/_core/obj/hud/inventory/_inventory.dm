@@ -125,7 +125,7 @@
 	for(var/obj/item/I in held_objects)
 		I.pixel_x = x_offset_initial + total_pixel_x*TILE_SIZE
 		I.pixel_y = y_offset_initial + total_pixel_y*TILE_SIZE
-		I.dir = I.default_direction
+		I.set_dir(I.default_direction)
 
 		if(x_offset_mul)
 			total_pixel_x += I.size*x_offset_mul
@@ -138,7 +138,7 @@
 	for(var/obj/item/I in worn_objects)
 		I.pixel_x = x_offset_initial + total_pixel_x*TILE_SIZE
 		I.pixel_y = y_offset_initial + total_pixel_y*TILE_SIZE
-		I.dir = I.default_direction
+		I.set_dir(I.default_direction)
 
 		if(x_offset_mul)
 			total_pixel_x += I.size*x_offset_mul

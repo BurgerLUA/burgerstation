@@ -31,24 +31,30 @@
 
 	layer = LAYER_MOB_DEAD
 
-	var/turf/T = get_turf(src)
-	if(T && loot_drop)
+	post_death()
+
+	return TRUE
+
+/mob/living/proc/do_loot_drop(var/atom/desired_loc)
+
+	if(desired_loc && loot_drop)
 		var/loot/L = all_loot[loot_drop]
 
+		if(!is_turf(desired_loc))
+			return FALSE
+
 		if(loot_drop_in_corpse)
-			L.spawn_loot_corpse(T)
+			L.spawn_loot_corpse(desired_loc)
 		else
-			L.spawn_loot_turf(T)
+			L.spawn_loot_turf(desired_loc)
 
 		var/obj/item/currency/C = new(src.loc)
 		C.value = 1 + floor(health_max/10)
 		C.update_icon()
 		step_rand(C)
+		return TRUE
 
-	post_death()
-
-	return TRUE
-
+	return FALSE
 
 /mob/living/proc/resurrect()
 	status &= ~FLAG_STATUS_DEAD
@@ -60,6 +66,8 @@
 	return TRUE
 
 /mob/living/proc/pre_death()
+	var/turf/T = get_turf(src)
+	do_loot_drop(T)
 	return TRUE
 
 /mob/living/proc/post_death()

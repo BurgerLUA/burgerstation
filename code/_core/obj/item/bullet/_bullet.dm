@@ -87,7 +87,6 @@
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
 	transfer_target.update_icon()
 	if(item_count_current <= 0)
-		src.drop_item()
 		qdel(src)
 	else
 		update_icon()
@@ -119,7 +118,6 @@
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target.name]."))
 	transfer_target.update_icon()
 	if(item_count_current <= 0)
-		src.drop_item()
 		qdel(src)
 	else
 		update_icon()
@@ -162,7 +160,6 @@
 	else
 		transfer_target.update_icon()
 		if(item_count_current <= 0)
-			src.drop_item()
 			qdel(src)
 		else
 			update_icon()

@@ -17,6 +17,7 @@
 /obj/item/clothing/proc/delete_additonal_clothing()
 
 	for(var/obj/item/clothing/C in additional_clothing_stored)
-		C.drop_item(get_turf(src))
+		additional_clothing_stored -= C
+		qdel(C)
 
 	return TRUE

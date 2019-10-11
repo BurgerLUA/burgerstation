@@ -12,7 +12,7 @@
 	if(is_inventory(object))
 
 		if(delete_on_drop)
-			drop_item()
+			qdel(src)
 			return TRUE
 
 		if(is_advanced(caller))

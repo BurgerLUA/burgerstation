@@ -68,7 +68,12 @@ body {
 	font-size: 200%;
 	color: purple;
 }
-
+.karma{
+	color:purple;
+	font-size: 200%;
+	font-style: italic;
+	font-weight: bold;
+}
 .red{
 	font-size: 150%;
 	color: red;

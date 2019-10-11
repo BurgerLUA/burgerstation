@@ -32,9 +32,9 @@
 
 	var/is_typing = FALSE
 
-	health_base = 200
-	stamina_base = 100
-	mana_base = 100
+	health_base = 50
+	stamina_base = 50
+	mana_base = 50
 
 	var/talk_duration = 0
 	var/talk_type = 0

@@ -38,6 +38,10 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/logout_time = 0
 
+	health_base = 100
+	stamina_base = 100
+	mana_base = 100
+
 /mob/living/advanced/player/apply_mob_parts()
 
 	if(!mobdata || mobdata.loaded_data["tutorial"])

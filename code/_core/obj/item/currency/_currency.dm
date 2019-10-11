@@ -35,7 +35,6 @@
 	value += value_added
 	update_icon()
 	if(value<=0)
-		drop_item(get_turf(src))
 		qdel(src)
 
 	return value_added

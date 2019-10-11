@@ -65,7 +65,7 @@
 	var/data = file2text(filename)
 
 	if(!data)
-		LOG_ERROR("FATAL ERROR: NO DATA FOUND FOR [filename] for [owner.ckey].")
+		LOG_ERROR("FATAL ERROR: NO DATA FOUND FOR [filename] for [bot_controlled ? "BOT" : owner.ckey].")
 		return FALSE
 
 	return json_decode(data)
@@ -82,6 +82,10 @@
 	return text2file(data,desired_file)
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
+
+	if(!owner)
+		return FALSE
+
 	if(text2num(character_id) > MAX_CHARACTERS)
 		owner.mob.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
 		return FALSE

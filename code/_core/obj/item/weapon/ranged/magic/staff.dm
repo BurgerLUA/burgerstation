@@ -25,6 +25,7 @@
 	total_charge = 2500
 
 	bullet_speed = 16
+	shoot_delay = SECONDS_TO_DECISECONDS(2)
 
 	icon = 'icons/obj/items/weapons/ranged/magic/fire.dmi'
 
@@ -52,14 +53,14 @@
 	cost_charge = 250
 	total_charge = 1000
 
-	bullet_speed = 10
+	bullet_speed = 4
 
 	bullet_count = 9
 
 	icon = 'icons/obj/items/weapons/ranged/magic/chaos.dmi'
 
 	projectile = /obj/projectile/bullet/chaos
-	damage_type = "magic_chaos"
+	damage_type = "magic_chaosball"
 
 	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
 

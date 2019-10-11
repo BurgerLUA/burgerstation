@@ -130,7 +130,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 /obj/hud/button/chargen/hairstyle/main/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
-		var/desired_color = input("Hair Color") as color
+		var/desired_color = input("Hair Color","Hair Color",hair_color) as color
 		A.handle_hairstyle_chargen(hair_num,desired_color)
 
 	return TRUE

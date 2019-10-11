@@ -64,7 +64,6 @@
 	uses_left -= 1
 
 	if(uses_left <= 0)
-		drop_item()
 		qdel(src)
 
 	return TRUE

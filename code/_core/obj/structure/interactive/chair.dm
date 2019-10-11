@@ -12,7 +12,7 @@ obj/structure/interactive/chair/Crossed(var/atom/movable/O)
 		spawn(SECONDS_TO_DECISECONDS(1))
 			var/turf/T = O.loc
 			if(src in T.contents)
-				O.dir = src.dir
+				O.set_dir(src.dir)
 
 	return .
 

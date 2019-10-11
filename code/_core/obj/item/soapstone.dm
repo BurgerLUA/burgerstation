@@ -64,5 +64,4 @@
 		span("notice","The soapstone fades in your hand after you write down the last word on \the [T].")\
 	)
 
-	drop_item()
 	qdel(src)

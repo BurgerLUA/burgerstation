@@ -1,14 +1,28 @@
-/mob/living/advanced/npc/cultist
-	name = "clown cultist"
+/mob/living/advanced/npc/clown
+	name = "clown"
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/
 
-/mob/living/advanced/npc/cultist/tutorial
+	loot_drop = "clown"
+
+	ai = /ai/advanced/ranged
+
+/mob/living/advanced/npc/clown/Initialize()
+
+	. = ..()
+
+	add_outfit("clown")
+	pickup(new /obj/item/weapon/ranged/magic/staff/chaos(src.loc),FALSE)
+
+	return .
+
+
+
+
+/mob/living/advanced/npc/clown/tutorial
 	name = "strange clown"
 	starting_factions = list()
-	ai = /ai/
 
 
 

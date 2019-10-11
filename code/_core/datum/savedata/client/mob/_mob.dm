@@ -15,15 +15,14 @@
 		"skills" = list(),
 		"attributes" = list(),
 		"currency" = 0,
-		"karma" = list(
-			KARMA_HUMAN = 1000,
-			KARMA_LIZARD = 1000,
-			KARMA_CYBORG = 1000,
-			KARMA_DIONA = 1000
-		),
+		"karma" = 10000,
+		"justice_broken" = 0,
+		"justice_served" = 0,
+		"justice_reward_claimed" = 0,
 		"last_save" = "village",
 		"known_topics" = list(),
-		"known_wishgranters" = list()
+		"known_wishgranters" = list(),
+
 	)
 
 /savedata/client/mob/New(var/client/new_owner)
@@ -32,17 +31,18 @@
 
 	reset_data()
 
-	if(!has_files())
-		owner << "Welcome to Burgerstation!"
-	else
-		owner << "Welcome back to Burgerstation!"
-		loaded_data = load_most_recent_character()
-		owner.save_slot = loaded_data["id"]
+	if(owner)
+		if(!has_files())
+			owner << "Welcome to Burgerstation!"
+		else
+			owner << "Welcome back to Burgerstation!"
+			loaded_data = load_most_recent_character()
+			owner.save_slot = loaded_data["id"]
 
 
 /savedata/client/mob/get_file(var/file_id)
 	var/returning = "[get_folder(owner.ckey)][CHARACTER_FILE_FORMAT]"
-	returning = replacetext(returning,"%CKEY",owner.ckey)
+	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : owner.ckey)
 	returning = replacetext(returning,"%CID",file_id)
 	return returning
 
