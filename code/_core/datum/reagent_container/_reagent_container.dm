@@ -49,10 +49,28 @@
 		return
 
 	for(var/r_id in stored_reagents)
+
+		if(!flags_metabolism)
+			continue
+
 		var/volume = stored_reagents[r_id]
+
+		if(!volume)
+			continue
+
+
 		var/reagent/R = all_reagents[r_id]
-		if(owner && flags_metabolism && volume)
-			remove_reagent(r_id,R.metabolize(owner,src,volume),FALSE)
+
+
+		var/atom/owner_to_use = owner
+
+		if(owner && is_organ(owner) && owner.loc && flags_metabolism & REAGENT_METABOLISM_INGEST)
+			owner_to_use = owner.loc
+
+		if(!owner_to_use)
+			continue
+
+		remove_reagent(r_id,R.metabolize(owner_to_use,src,volume),FALSE)
 
 	update_container()
 

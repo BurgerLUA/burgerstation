@@ -80,14 +80,3 @@
 		/obj/hud/button/health/bar/mp,
 		/obj/hud/button/health/body
 	)
-
-
-	var/list/chargen_hair_colors = list()
-
-	var/list/chargen_skin_colors = list()
-
-	var/list/chargen_eye_colors = list()
-
-	var/list/chargen_detail_colors = list()
-
-	var/list/chargen_glow_colors = list()

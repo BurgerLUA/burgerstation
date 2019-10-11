@@ -107,7 +107,6 @@
 
 	return returning_text
 
-
 /obj/structure/interactive/shop/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK

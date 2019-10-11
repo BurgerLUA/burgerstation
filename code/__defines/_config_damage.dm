@@ -1,3 +1,11 @@
+#define HEALING_F 0
+#define HEALING_E 1
+#define HEALING_D 2
+#define HEALING_C 5
+#define HEALING_B 10
+#define HEALING_A 15
+#define HEALING_S 20
+
 #define DAMAGE_F 0
 #define DAMAGE_E 5
 #define DAMAGE_D 10
@@ -7,12 +15,12 @@
 #define DAMAGE_S 30
 
 #define ARMOR_F 0
-#define ARMOR_E 10
-#define ARMOR_D 20
-#define ARMOR_C 30
-#define ARMOR_B 40
+#define ARMOR_E 5
+#define ARMOR_D 10
+#define ARMOR_C 15
+#define ARMOR_B 25
 #define ARMOR_A 50
-#define ARMOR_S 60
+#define ARMOR_S 75
 
 #define CLASS_S 0.35
 #define CLASS_A 0.30

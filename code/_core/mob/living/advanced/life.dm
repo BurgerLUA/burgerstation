@@ -11,38 +11,6 @@
 			talk_type = 0
 			update_icon()
 
-	if(!.)
-		return .
-
-	var/health_adjust = 0
-	var/mana_adjust = 0
-	var/stamina_adjust = 0
-
-	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT) && health_current < health_max)
-		var/heal_amount = health_regeneration*LIFE_TICK*0.1
-		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount)
-		if(health_adjust)
-			add_skill_xp(SKILL_RECOVERY,health_adjust)
-
-	if(stamina_regen_delay <= 0 && stamina_current < stamina_max)
-		var/heal_amount = stamina_regeneration*LIFE_TICK*0.1
-		stamina_adjust = adjust_stamina(heal_amount)
-		if(stamina_adjust)
-			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
-
-	if(mana_regen_delay <= 0 && mana_current < mana_max)
-		var/heal_amount = mana_regeneration*LIFE_TICK*0.1
-		mana_adjust = adjust_mana(heal_amount)
-		if(mana_adjust)
-			add_skill_xp(SKILL_RECOVERY,mana_adjust)
-
-	if(health_adjust || stamina_adjust || mana_adjust)
-		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
-
-	health_regen_delay = max(0,health_regen_delay - LIFE_TICK)
-	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK)
-	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK)
-
 	return .
 
 /mob/living/advanced/on_life_client()
@@ -70,8 +38,42 @@
 		if(set_tick)
 			automatic_ticks = 5
 
+mob/living/advanced/proc/handle_regen()
+
+	var/health_adjust = 0
+	var/mana_adjust = 0
+	var/stamina_adjust = 0
+
+	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT) && health_current < health_max)
+		var/heal_amount = health_regeneration*LIFE_TICK_SLOW*0.1
+		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount)
+		if(health_adjust)
+			add_skill_xp(SKILL_RECOVERY,health_adjust)
+
+	if(stamina_regen_delay <= 0 && stamina_current < stamina_max)
+		var/heal_amount = stamina_regeneration*LIFE_TICK_SLOW*0.1
+		stamina_adjust = adjust_stamina(heal_amount)
+		if(stamina_adjust)
+			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
+
+	if(mana_regen_delay <= 0 && mana_current < mana_max)
+		var/heal_amount = mana_regeneration*LIFE_TICK_SLOW*0.1
+		mana_adjust = adjust_mana(heal_amount)
+		if(mana_adjust)
+			add_skill_xp(SKILL_RECOVERY,mana_adjust)
+
+	if(health_adjust || stamina_adjust || mana_adjust)
+		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
+
+	health_regen_delay = max(0,health_regen_delay - LIFE_TICK_SLOW)
+	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK_SLOW)
+	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK_SLOW)
+
+
+
 /mob/living/advanced/on_life_slow()
 
+	handle_regen()
 	handle_organs()
 	update_icon(TRUE)
 
@@ -137,11 +139,14 @@
 
 /mob/living/advanced/handle_health_buffer()
 
+	var/regened_health = FALSE
+	var/regened_stamina = FALSE
+	var/regened_mana = FALSE
+
 	if(health_regen_buffer)
-		var/obj/item/organ/O = labeled_organs[BODY_TORSO]
-		if(O)
-			O.adjust_tox_loss(-health_regen_buffer)
-			health_regen_buffer = 0
+		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		heal_all_organs(health_to_regen,health_to_regen,health_to_regen,health_to_regen)
+		health_regen_buffer -= health_to_regen
 
 	if(stamina_regen_buffer)
 		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
@@ -153,8 +158,8 @@
 		adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 
-	if(stamina_regen_buffer || mana_regen_buffer)
-		update_health_element_icons(FALSE, stamina_regen_buffer != 0, mana_regen_buffer != 0)
+	if(regened_health || regened_stamina || regened_mana)
+		update_health_element_icons(regened_health,regened_stamina,regened_mana)
 
 	return TRUE
 
@@ -162,8 +167,8 @@
 
 	var/should_update_health = FALSE
 
-	var/damage_min = -2*(LIFE_TICK_SLOW/LIFE_TICK)
-	var/damage_max = health_max*0.01*(LIFE_TICK_SLOW/LIFE_TICK)
+	var/damage_min = -2*(10/LIFE_TICK_SLOW)
+	var/damage_max = health_max*0.01*(10/LIFE_TICK_SLOW)
 
 	for(var/obj/item/organ/O in organs)
 
@@ -171,9 +176,10 @@
 		for(var/damage_type in O.damage_soft)
 			var/damage_amount = Clamp(O.damage_soft[damage_type],damage_min,damage_max)
 			if(damage_amount)
-				should_update_health = TRUE
 				O.damage[damage_type] = max(0,O.damage[damage_type] + damage_amount)
 				O.damage_soft[damage_type] -= damage_amount
+				O.update_health()
+				should_update_health = TRUE
 
 		for(var/wound/W in O.wounds)
 			W.on_life()

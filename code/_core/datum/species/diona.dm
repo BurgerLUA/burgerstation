@@ -29,24 +29,3 @@
 
 		BODY_BRAIN = /obj/item/organ/internal/brain
 	)
-
-	chargen_skin_colors = list(
-		"natural brown" = "#BC9D58",
-		"albino" = "#FFFFFF",
-		"edgelord" = "#222222",
-	)
-
-	chargen_detail_colors = list(
-		"natural green" = "#719333",
-		"blue" = "#444488",
-		"red" = "#884444",
-		"green" = "#448844",
-	)
-
-	chargen_glow_colors = list(
-		"natural green" = "#B2F861",
-		"blue" = "#0000FF",
-		"red" = "#FF0000",
-		"green" = "#00FF00",
-		"yellow" = "#FFFF00"
-	)

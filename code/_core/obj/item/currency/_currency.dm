@@ -26,7 +26,7 @@
 	else
 		icon_state = "5000"
 
-	name = "\improper [value] telecrystal\s"
+	name = "[value] telecrystal\s"
 
 	..()
 
@@ -50,6 +50,17 @@
 	P.adjust_currency(value)
 	value = 0
 	qdel(src)
+
+	return ..()
+
+/obj/item/currency/transfer_item(var/obj/hud/inventory/new_inventory)
+
+	if(new_inventory && new_inventory.owner && is_player(new_inventory.owner))
+		var/mob/living/advanced/player/P = new_inventory.owner
+		P.adjust_currency(value)
+		value = 0 //just in case
+		qdel(src)
+		return TRUE
 
 	return ..()
 

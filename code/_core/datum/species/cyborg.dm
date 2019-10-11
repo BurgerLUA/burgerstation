@@ -29,9 +29,3 @@
 
 		BODY_BRAIN = /obj/item/organ/internal/brain
 	)
-
-	chargen_skin_colors = list()
-
-	chargen_detail_colors = list()
-
-	chargen_glow_colors = list()

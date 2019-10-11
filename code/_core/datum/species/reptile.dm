@@ -69,22 +69,3 @@
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
-
-	chargen_hair_colors = list(
-		"bone" = "#fff0be",
-		"grey" = "#888888"
-	)
-
-	chargen_skin_colors = list(
-		"natural green" = "#8CA73E",
-		"albino" = "#FFFFFF",
-		"edgelord" = "#222222",
-	)
-
-	chargen_eye_colors = list(
-		"natural yellow" = "#888800",
-		"orange" = "#FF8800",
-		"blue" = "#444488",
-		"red" = "#884444",
-		"green" = "#448844",
-	)

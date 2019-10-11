@@ -1,26 +1,19 @@
-/obj/item/clothing/overwear/armor/
-	name = "body armor"
+/obj/item/clothing/overwear/armor/bulletproof
+	name = "bulletproof armor"
 	icon = 'icons/obj/items/clothing/suit/bulletproof_vest.dmi'
 	item_slot = SLOT_TORSO_A
 	desc = "Protecting against the greytide since 2193."
-	desc_extended = "A sturdy suit of armor."
+	desc_extended = "A sturdy chestplate of bulletproof armor. Should protect against most small arms fire."
 
-	protected_limbs = list(BODY_TORSO,BODY_GROIN)
+	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 40,
-		LASER = 10,
-		MAGIC = -25,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 10,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_E,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_E,
+		MAGIC = -ARMOR_C,
+		COLD = ARMOR_C
 	)
 
 /obj/item/clothing/overwear/armor/cult
@@ -30,19 +23,15 @@
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -50,
-		MAGIC = -25,
-		HEAT = 10,
-		COLD = 30,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 75,
-		DARK = -75,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_D,
+		LASER = -ARMOR_B,
+		MAGIC = -ARMOR_D,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_C,
+		HOLY = -ARMOR_B,
+		DARK = ARMOR_B
 	)
 
 /obj/item/clothing/overwear/armor/cult/old
@@ -50,19 +39,15 @@
 	icon = 'icons/obj/items/clothing/suit/cult_old.dmi'
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 10,
-		PIERCE = 20,
-		LASER = -50,
-		MAGIC = -10,
-		HEAT = 5,
-		COLD = 30,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 90,
-		DARK = -90,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_D,
+		LASER = -ARMOR_A,
+		MAGIC = -ARMOR_C,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_C,
+		HOLY = -ARMOR_A,
+		DARK = ARMOR_A
 	)
 
 /obj/item/clothing/overwear/armor/cult/hard
@@ -70,19 +55,15 @@
 	icon = 'icons/obj/items/clothing/suit/cult_hard.dmi'
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 30,
-		PIERCE = 30,
-		LASER = -50,
-		MAGIC = -25,
-		HEAT = 5,
-		COLD = 15,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 50,
-		DARK = -50,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		LASER = -ARMOR_A,
+		MAGIC = -ARMOR_A,
+		HEAT = ARMOR_B,
+		COLD = ARMOR_B,
+		HOLY = -ARMOR_C,
+		DARK = ARMOR_C
 	)
 
 /obj/item/clothing/overwear/armor/tutorial
@@ -91,19 +72,14 @@
 	item_slot = SLOT_TORSO_O
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 0,
-		MAGIC = 25,
-		HEAT = 0,
-		COLD = -20,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -50,
-		DARK = 25,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_E,
+		MAGIC = ARMOR_D,
+		COLD = -ARMOR_C,
+		HOLY = ARMOR_D,
+		DARK = ARMOR_D
 	)
 
 /obj/item/clothing/overwear/armor/knight
@@ -115,19 +91,14 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 0,
-		MAGIC = -25,
-		HEAT = -25,
-		COLD = 10,
-		BOMB = 5,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_C,
+		MAGIC = -ARMOR_S,
+		HEAT = -ARMOR_A,
+		COLD = ARMOR_D,
+		BOMB = ARMOR_D
 	)
 
 /obj/item/clothing/overwear/armor/knight/red
@@ -151,19 +122,14 @@
 	icon = 'icons/obj/items/clothing/suit/knight_special.dmi'
 
 	defense_rating = list(
-		BLADE = 100,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 75,
-		MAGIC = -75,
-		HEAT = 50,
-		COLD = 50,
-		BOMB = 25,
-		BIO = 40,
-		RAD = 10,
-		HOLY = 0,
-		DARK = 10,
-		FATIGUE = 0
+		BLADE = ARMOR_S,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_C,
+		MAGIC = -ARMOR_S,
+		HEAT = -ARMOR_S,
+		COLD = ARMOR_D,
+		BOMB = ARMOR_D
 	)
 
 /obj/item/clothing/overwear/armor/knight/templar
@@ -171,19 +137,16 @@
 	icon = 'icons/obj/items/clothing/suit/knight_templar.dmi'
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 20,
-		PIERCE = 10,
-		LASER = 0,
-		MAGIC = -10,
-		HEAT = -10,
-		COLD = 20,
-		BOMB = 5,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -75,
-		DARK = 75,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_E,
+		LASER = ARMOR_E,
+		MAGIC = -ARMOR_C,
+		HEAT = -ARMOR_D,
+		COLD = ARMOR_B,
+		BOMB = ARMOR_E,
+		HOLY = -ARMOR_A,
+		DARK = ARMOR_A
 	)
 
 /obj/item/clothing/overwear/armor/knight/battlemage
@@ -191,25 +154,22 @@
 	icon = 'icons/obj/items/clothing/suit/knight_battlemage.dmi'
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 10,
-		MAGIC = 75,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 10,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_E,
+		LASER = -ARMOR_C,
+		MAGIC = ARMOR_C,
+		HEAT = ARMOR_C,
+		COLD = ARMOR_C,
+		BOMB = ARMOR_E,
+		HOLY = -ARMOR_C,
+		DARK = -ARMOR_C
 	)
 
 
 /obj/item/clothing/overwear/armor/hardsuit/
 	name = "hardsuit"
-	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
 /obj/item/clothing/overwear/armor/hardsuit/syndie1
@@ -217,19 +177,16 @@
 	icon = 'icons/obj/items/clothing/suit/syndie1.dmi'
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 70,
-		LASER = 50,
-		MAGIC = -50,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 50,
-		BIO = 60,
-		RAD = 60,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_C,
+		MAGIC = -ARMOR_S,
+		HEAT = ARMOR_B,
+		COLD = ARMOR_A,
+		BOMB = ARMOR_C,
+		BIO = ARMOR_A,
+		RAD = ARMOR_C
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie1)
@@ -239,19 +196,16 @@
 	icon = 'icons/obj/items/clothing/suit/syndie2.dmi'
 
 	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 80,
-		LASER = 60,
-		MAGIC = -50,
-		HEAT = 90,
-		COLD = 90,
-		BOMB = 90,
-		BIO = 75,
-		RAD = 75,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_B,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_B,
+		MAGIC = -ARMOR_S,
+		HEAT = ARMOR_C,
+		COLD = ARMOR_B,
+		BOMB = ARMOR_D,
+		BIO = ARMOR_C,
+		RAD = ARMOR_D
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie2)
@@ -261,64 +215,48 @@
 	icon = 'icons/obj/items/clothing/suit/magnus.dmi'
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 5,
-		MAGIC = 75,
-		HEAT = 10,
-		COLD = 20,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 25,
-		DARK = 50,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_E,
+		LASER = -ARMOR_C,
+		MAGIC = ARMOR_C,
+		HEAT = ARMOR_C,
+		COLD = ARMOR_D,
+		HOLY = -ARMOR_C,
+		DARK = ARMOR_C
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
+
+/obj/item/clothing/overwear/armor/knight/magnus/red
+	name = "red magnus armor"
+	defense_rating = list(
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_E,
+		LASER = -ARMOR_D,
+		MAGIC = ARMOR_D,
+		HEAT = ARMOR_B,
+		COLD = -ARMOR_C,
+		HOLY = ARMOR_C,
+		DARK = -ARMOR_C
+	)
+	color = "#FF0000"
 
 /obj/item/clothing/overwear/armor/carbon_armor
 	name = "carbon fibre armor"
 	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 30,
-		PIERCE = 80,
-		LASER = 40,
-		MAGIC = -50,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 25,
-		BIO = 25,
-		RAD = 25,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_S,
+		MAGIC = -ARMOR_S,
+		BOMB = ARMOR_D
 	)
 
-	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
-
-/obj/item/clothing/overwear/armor/hardsuit/captain
-	name = "captain's hardsuit"
-	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
-
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 40,
-		PIERCE = 80,
-		LASER = 40,
-		MAGIC = -50,
-		HEAT = 90,
-		COLD = 90,
-		BOMB = 50,
-		BIO = 90,
-		RAD = 90,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
-	)
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 
 /obj/item/clothing/overwear/armor/molded_armor
 	name = "light armor"
@@ -329,19 +267,10 @@
 	color = "#8C4438"
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		COLD = ARMOR_C
 	)
 
 /obj/item/clothing/overwear/armor/molded_armor/security
@@ -349,19 +278,12 @@
 	color = "#111111"
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 20,
-		LASER = 0,
-		MAGIC = -10,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_E,
+		MAGIC = -ARMOR_D,
+		COLD = ARMOR_D
 	)
 
 
@@ -374,19 +296,10 @@
 	color = "#8C4438"
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 20,
-		LASER = 0,
-		MAGIC = -10,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		COLD = ARMOR_C
 	)
 
 /obj/item/clothing/overwear/armor/medium_armor/security
@@ -394,19 +307,11 @@
 	color = "#111111"
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 40,
-		LASER = 10,
-		MAGIC = -25,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 10,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_B,
+		MAGIC = -ARMOR_B,
+		COLD = ARMOR_D
 	)
 
 /obj/item/clothing/overwear/armor/gladiator
@@ -420,19 +325,11 @@
 	worn_layer = LAYER_MOB_CLOTHING_ARMOR
 
 	defense_rating = list(
-		BLADE = 35,
-		BLUNT = 15,
-		PIERCE = 35,
-		LASER = 0,
-		MAGIC = -25,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_C,
+		MAGIC = -ARMOR_A
 	)
 
 

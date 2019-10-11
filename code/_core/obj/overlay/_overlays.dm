@@ -24,6 +24,8 @@
 	if(no_update)
 		return
 
+	name = "[attached_object.name] overlay"
+
 	if(length(additional_blends) && !never_blend)
 		var/icon/I
 

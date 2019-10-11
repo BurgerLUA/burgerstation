@@ -18,9 +18,9 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = DAMAGE_C,
-		BLUNT = DAMAGE_C,
-		PIERCE = DAMAGE_C
+		BLADE = DAMAGE_E,
+		BLUNT = DAMAGE_E,
+		PIERCE = DAMAGE_E
 	)
 
 /damagetype/ranged/bullet/shotgun/slug
@@ -41,6 +41,6 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_B
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C
 	)

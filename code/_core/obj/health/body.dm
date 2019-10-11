@@ -25,9 +25,12 @@
 			continue
 
 		var/icon/IO = new/icon(icon,O.hud_id)
-
 		var/health_mod = O.health_current / O.health_max
-		var/color_mod = rgb(93 + (1-health_mod)*(255-93),150 * health_mod,160 * health_mod)
+		var/color_mod = "#FFFFFF"
+		if(health_mod <= 0)
+			color_mod = "#666666"
+		else
+			color_mod = rgb(93 + (1-health_mod)*(255-93),150 * health_mod,160 * health_mod)
 
 		IO.Blend(color_mod,ICON_MULTIPLY)
 		I.Blend(IO,ICON_OVERLAY)

@@ -23,10 +23,14 @@ mob/living/advanced/proc/remove_overlay(var/atom/A)
 		qdel(O)
 
 mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends)
+
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != A)
 			continue
 		update_overlay_direct(O)
+		return TRUE
+
+	return FALSE
 
 mob/living/advanced/proc/update_all_blends()
 	for(var/obj/overlay/O in overlays_assoc)
@@ -60,5 +64,7 @@ mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_lay
 		O.color = desired_color
 	if(desired_additional_blends)
 		O.additional_blends = desired_additional_blends
+
+	O.update_icon()
 
 	add_overlay_image(O)

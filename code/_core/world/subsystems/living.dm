@@ -15,7 +15,7 @@
 
 /subsystem/living/on_life()
 
-	var/do_slow = advanced_ticks >= (LIFE_TICK_SLOW/LIFE_TICK)
+	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
 
 	for(var/mob/living/L in all_living)
 		L.on_life()

@@ -35,8 +35,6 @@
 
 #define ENABLE_LORE FALSE
 
-#define BASE_ARMOR_CAP 10
-
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE
 
@@ -69,7 +67,11 @@
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
 #define LIFE_TICK 1 //Deciseconds per life tick interval.
-#define LIFE_TICK_SLOW 4
+#define LIFE_TICK_SLOW 4 //Deciseconds per slow life tick interval.
+#define LIFE_TICKS_PER_SLOW_LIFE_TICKS (LIFE_TICK_SLOW / LIFE_TICK)
+
+
+
 #define PROJECTILE_TICK 1 //Ticks per project tick interval
 
 

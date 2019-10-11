@@ -42,6 +42,12 @@
 	var/target_bounds_y_min = 0
 	var/target_bounds_y_max = 0
 
+	var/list/visual_wounds = list(
+		BRUTE = 0,
+		BURN = 0
+
+	)
+
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
 	for(var/wound/W in wounds)
@@ -62,9 +68,9 @@
 		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_color", desired_color = "#0000FF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 	if(enable_wounds)
-		add_blend("skin_bruises", desired_icon = damage_icon, desired_icon_state = "0", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
-		//add_blend("skin_cuts", desired_icon = damage_icon, desired_icon_state = "cuts", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
-		//add_blend("skin_burns", desired_icon = damage_icon, desired_icon_state = "burns", desired_color = "#888888", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_COLOR | ICON_BLEND_MASK | ICON_BLEND_EXTERNAL_ONLY)
+		for(var/damagetype in visual_wounds)
+			var/damage_value = visual_wounds[damagetype]
+			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_icon_state = "[damage_value]", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
 
 	return ..()
 
@@ -80,7 +86,7 @@
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(src.loc))
+	if(is_player(src.loc) && value > 0)
 		damage_soft[BRUTE] += value
 	else
 		damage[BRUTE] += value
@@ -92,7 +98,7 @@
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(src.loc))
+	if(is_player(src.loc) && value > 0)
 		damage_soft[TOX] += value
 	else
 		damage[TOX] += value
@@ -104,7 +110,7 @@
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(src.loc))
+	if(is_player(src.loc) && value > 0)
 		damage_soft[OXY] += value
 	else
 		damage[OXY] += value
@@ -116,7 +122,7 @@
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(src.loc))
+	if(is_player(src.loc) && value > 0)
 		damage_soft[BURN] += value
 	else
 		damage[BURN] += value
@@ -172,6 +178,7 @@
 	qdel(src)
 
 /obj/item/organ/update_icon()
+
 	var/is_attached_to = is_advanced(src.loc)
 	if(!is_attached_to && has_dropped_icon)
 		icon_state = "[initial(icon_state)]_inventory"
@@ -185,34 +192,23 @@
 
 /obj/item/organ/update_health(var/damage_dealt,var/atom/attacker)
 
-	var/brute_loss = get_brute_loss()
-
-	/*
-	if(health_max - brute_loss <= 0 && damage_dealt >= health_max*0.5 && flags_organ & flags_organ )
-		gib()
-		return
-	*/
-
-	if(enable_wounds && src.loc && is_advanced(src.loc))
-		//var/mob/living/advanced/A = src.loc
-		var/scale = floor((brute_loss/health_max)*5)
-		change_blend("skin_bruises", desired_icon_state = "[scale]")
-
-	/*
-	if(break_threshold)
-		if(!(flags_organ & FLAG_ORGAN_BROKEN) && brute_loss >= break_threshold)
-			if(src.loc)
-				src.loc.visible_message(\
-					span("danger","You hear a cracking sound coming from \the [src.loc]'s [name]!"),\
-					span("danger","You hear a cracking sound coming from your [name]!"),\
-					span("danger","You hear a cracking sound!")\
-				)
-			flags_organ |= FLAG_ORGAN_BROKEN
-	*/
-
 	. = ..()
 
-	update_icon()
+	if(enable_wounds && src.loc && is_advanced(src.loc))
+
+		var/should_update = FALSE
+		var/mob/living/advanced/A = src.loc
+
+		for(var/damage_type in visual_wounds)
+			var/last_amount = visual_wounds[damage_type]
+			var/current_amount = floor((get_loss(damage_type)/health_max)*5)
+
+			if(last_amount != current_amount)
+				change_blend("damage_[damage_type]", desired_icon_state = "[current_amount]")
+				should_update = TRUE
+
+		if(should_update)
+			A.update_overlay(src)
 
 	return .
 

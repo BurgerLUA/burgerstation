@@ -70,6 +70,9 @@
 /atom/proc/get_oxy_loss()
 	return damage[OXY]
 
+/atom/proc/get_loss(var/damage_type)
+	return damage[damage_type]
+
 /atom/proc/update_health(var/damage_dealt,var/atom/attacker) //Update the health values.
 	health_current = get_overall_health()
 	damage_soft_total = get_total_loss_soft()

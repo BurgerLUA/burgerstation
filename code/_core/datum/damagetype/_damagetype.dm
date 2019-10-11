@@ -221,7 +221,6 @@
 
 	var/returning_value = ..()
 	var/armor_level = get_skill_level(SKILL_ARMOR)
-	var/armor_level_mod = 1 + get_skill_power(SKILL_ARMOR)
 
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
@@ -231,17 +230,15 @@
 			if(!C.defense_rating && length(C.defense_rating))
 				continue
 
-			if(O.id in C.protected_limbs)
-				for(var/damage_type in C.defense_rating)
-					var/defense = C.defense_rating[damage_type]
-					if(returning_value[damage_type])
-						returning_value[damage_type] += defense*armor_level_mod
-					else
-						returning_value[damage_type] = defense*armor_level_mod
+			if(!(O.id in C.protected_limbs))
+				continue
+
+			for(var/damage_type in C.defense_rating)
+				returning_value[damage_type] += C.defense_rating[damage_type]
 
 	for(var/k in returning_value)
 		var/v = returning_value[k]
-		returning_value[k] = min(v,armor_level+BASE_ARMOR_CAP)
+		returning_value[k] = min(v,armor_level+ARMOR_C)
 
 	return returning_value
 

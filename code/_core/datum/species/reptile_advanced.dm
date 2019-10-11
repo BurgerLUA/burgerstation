@@ -27,7 +27,14 @@
 		BODY_EYE_LEFT = /obj/item/organ/eye/reptile_advanced/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile_advanced,
 		BODY_EAR_LEFT = /obj/item/organ/ear/reptile_advanced/left,
-		BODY_TAIL = /obj/item/organ/tail/reptile_advanced
+		BODY_TAIL = /obj/item/organ/tail/reptile_advanced,
+
+		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_LUNGS = /obj/item/organ/internal/lungs,
+		BODY_STOMACH = /obj/item/organ/internal/stomach,
+		BODY_LIVER = /obj/item/organ/internal/liver,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
 
 	spawning_organs_female = list(
@@ -47,24 +54,12 @@
 		BODY_EYE_LEFT = /obj/item/organ/eye/reptile_advanced/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear/reptile_advanced,
 		BODY_EAR_LEFT = /obj/item/organ/ear/reptile_advanced/left,
-		BODY_TAIL = /obj/item/organ/tail/reptile_advanced
-	)
+		BODY_TAIL = /obj/item/organ/tail/reptile_advanced,
 
-	chargen_hair_colors = list(
-		"bone" = "#fff0be",
-		"grey" = "#888888"
-	)
-
-	chargen_skin_colors = list(
-		"natural green" = "#8CA73E",
-		"albino" = "#FFFFFF",
-		"edgelord" = "#222222",
-	)
-
-	chargen_eye_colors = list(
-		"natural yellow" = "#AAAA00",
-		"orange" = "#FF8800",
-		"blue" = "#444488",
-		"red" = "#884444",
-		"green" = "#448844",
+		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_LUNGS = /obj/item/organ/internal/lungs,
+		BODY_STOMACH = /obj/item/organ/internal/stomach,
+		BODY_LIVER = /obj/item/organ/internal/liver,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)

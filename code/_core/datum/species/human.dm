@@ -64,30 +64,3 @@
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 		*/
 	)
-
-	chargen_hair_colors = list(
-		"black" = "#ffffff",
-		"grey" = "#5e5954",
-		"dark brown" = "#60330d",
-		"blond" = "#d3c276",
-		"light brown" = "#9e5625"
-	)
-
-	chargen_skin_colors = list(
-		"pale" = "#fff3e8",
-		"white" = "#ffd6ba",
-		"tan" = "#e0b19d",
-		"dark" = "#bc9784",
-		"darker" = "#997563",
-		"ebony" = "#63493c",
-		"black" = "#35241c"
-	)
-
-	chargen_eye_colors = list(
-		"black" = "#000000",
-		"blue" = "#66c4ff",
-		"brown" = "#6b431f",
-		"dark brown" = "#3d220a",
-		"green" = "#435b1d",
-		"grey" = "#999999"
-	)

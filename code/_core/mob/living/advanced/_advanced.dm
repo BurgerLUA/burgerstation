@@ -32,7 +32,7 @@
 
 	var/is_typing = FALSE
 
-	health_base = 100
+	health_base = 200
 	stamina_base = 100
 	mana_base = 100
 
@@ -171,20 +171,16 @@ mob/living/advanced/Login()
 		L.update_for_mob(src)
 
 /mob/living/advanced/adjust_brute_loss(var/value)
-	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
-	return torso.adjust_brute_loss(value)
-
-/mob/living/advanced/adjust_tox_loss(var/value)
-	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
-	return torso.adjust_tox_loss(value)
-
-/mob/living/advanced/adjust_oxy_loss(var/value)
-	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
-	return torso.adjust_oxy_loss(value)
+	return heal_all_organs(-value,0,0,0)
 
 /mob/living/advanced/adjust_burn_loss(var/value)
-	var/obj/item/organ/torso = labeled_organs[BODY_TORSO]
-	return torso.adjust_burn_loss(value)
+	return heal_all_organs(0,-value,0,0)
+
+/mob/living/advanced/adjust_tox_loss(var/value)
+	return heal_all_organs(0,0,-value,0)
+
+/mob/living/advanced/adjust_oxy_loss(var/value)
+	return heal_all_organs(0,0,0,-value)
 
 /mob/living/advanced/on_life_client()
 
@@ -235,8 +231,6 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/perform_specieschange(var/desired_species,var/keep_clothes,var/chargen)
 
-	world.log << "Hello. I want to change my species to [desired_species]."
-
 	if(!desired_species)
 		return FALSE
 
@@ -252,8 +246,6 @@ mob/living/advanced/Login()
 	remove_all_organs()
 
 	species = desired_species
-
-	world.log << "Your species is now [species]."
 
 	add_species_organs()
 	add_species_colors()
@@ -334,7 +326,7 @@ mob/living/advanced/Login()
 
 	return TRUE
 
-/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //TODO: FIX THIS, IT'S BROKEN.
+/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy)
 
 	var/list/damaged_organs = list()
 
@@ -344,28 +336,20 @@ mob/living/advanced/Login()
 	var/total_oxy = 0
 
 	for(var/organ_id in labeled_organs)
-
 		var/obj/item/organ/O = labeled_organs[organ_id]
-
 		var/brute_loss = O.get_brute_loss()
 		var/burn_loss = O.get_burn_loss()
 		var/tox_loss = O.get_tox_loss()
 		var/oxy_loss = O.get_oxy_loss()
-
 		damaged_organs[organ_id] = list()
-
 		if(brute_loss)
 			damaged_organs[organ_id][BRUTE] = brute_loss
-
 		if(burn_loss)
 			damaged_organs[organ_id][BURN] = burn_loss
-
 		if(tox_loss)
 			damaged_organs[organ_id][TOX] = tox_loss
-
 		if(oxy_loss)
 			damaged_organs[organ_id][OXY] = oxy_loss
-
 		total_brute += brute_loss
 		total_burn += burn_loss
 		total_tox += tox_loss
@@ -393,7 +377,8 @@ mob/living/advanced/Login()
 			total_healed += heal_amount
 		O.update_health()
 
-	update_health(-total_healed,src,do_update = FALSE)
+	if(total_healed)
+		update_health(-total_healed,src,do_update = TRUE)
 
 	return total_healed
 
@@ -487,14 +472,14 @@ mob/living/advanced/Login()
 
 	if(left_hand && right_hand)
 		if(left)
-			return left_hand.add_held_object(I)
+			return I.transfer_item(left_hand)
 		else
-			return right_hand.add_held_object(I)
+			return I.transfer_item(right_hand)
 	else
 		if(left_hand)
-			return left_hand.add_held_object(I)
+			return I.transfer_item(left_hand)
 		else if(right_hand)
-			return right_hand.add_held_object(I)
+			return I.transfer_item(right_hand)
 
 	return FALSE
 

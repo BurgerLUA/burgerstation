@@ -20,6 +20,8 @@
 
 	var/flags = FLAGS_HUD_NONE
 
+	mouse_opacity = 1
+
 /obj/hud/button/destroy()
 	owner = null
 	return ..()
@@ -27,10 +29,10 @@
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
 	if(should_show)
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(draw_speed))
-		src.mouse_opacity = 2
+		mouse_opacity = initial(mouse_opacity)
 	else
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
-		src.mouse_opacity = 0
+		mouse_opacity = 0
 
 /obj/hud/button/proc/update_owner(var/mob/desired_owner)
 

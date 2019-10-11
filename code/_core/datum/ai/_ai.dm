@@ -82,7 +82,7 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
 		owner.move_dir = 0
 		var/list/params = list(
-			PARAM_ICON_X = num2text(16),
+			PARAM_ICON_X = num2text(pick(8,16,16,16,16,24)),
 			PARAM_ICON_Y = num2text(pick(target_distribution)),
 			"left" = 0,
 			"right" = 0,

@@ -53,7 +53,7 @@
 		for(var/damagetype in defense_rating)
 			var/damage_rating = defense_rating[damagetype]
 			if(damage_rating)
-				armor_list += "[capitalize(damagetype)]: [damage_rating]%"
+				armor_list += "[capitalize(damagetype)]: [damage_rating]"
 
 		. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
 		. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")
