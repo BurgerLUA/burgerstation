@@ -48,6 +48,15 @@
 
 	)
 
+	var/base_miss_chance = 0
+
+/obj/item/organ/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+
+	if(src.loc && !is_turf(src.loc))
+		return src.loc.get_miss_chance(attacker,weapon,target) + base_miss_chance
+
+	return ..()
+
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
 	for(var/wound/W in wounds)

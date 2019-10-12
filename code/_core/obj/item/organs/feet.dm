@@ -25,6 +25,8 @@
 	target_bounds_y_min = 1
 	target_bounds_y_max = 3
 
+	base_miss_chance = 20
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT

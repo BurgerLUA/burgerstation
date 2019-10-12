@@ -20,6 +20,8 @@
 	target_bounds_y_min = 9
 	target_bounds_y_max = 22
 
+	base_miss_chance = 10
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT
