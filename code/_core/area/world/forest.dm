@@ -20,11 +20,11 @@
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
 	icon_state = "red"
 
-	sunlight_freq = 4
+	sunlight_freq = 6
 
-	desired_light_range = 4
+	desired_light_range = 7
 	desired_light_power = 1
-	desired_light_color = "#B7AB71"
+	desired_light_color = "#847B52"
 
 
 /area/world/forest/exterior/river

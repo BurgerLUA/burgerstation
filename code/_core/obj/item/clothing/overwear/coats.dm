@@ -78,19 +78,13 @@
 	icon = 'icons/obj/items/clothing/suit/winter_coat.dmi'
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		LASER = -10,
-		MAGIC = 25,
-		HEAT = -50,
-		COLD = 100,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
+		LASER = -ARMOR_D,
+		MAGIC = ARMOR_C,
+		HEAT = -ARMOR_A,
+		COLD = ARMOR_A
 	)
 
 	protection_cold = list(
@@ -99,3 +93,5 @@
 		BODY_ARM_RIGHT = 4,
 		BODY_GROIN = 2
 	)
+
+	additional_clothing = list(/obj/item/clothing/head/hood/winter)

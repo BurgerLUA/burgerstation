@@ -2,6 +2,8 @@
 	name = "snowy mountain"
 	id = "mountain"
 
+	assoc_wishgranter = "northern_heights"
+
 /area/world/mountain/interior
 	name = "interior"
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
@@ -16,7 +18,7 @@
 
 	sunlight_freq = 4
 
-	desired_light_range = 4
+	desired_light_range = 8
 	desired_light_power = 1
 	desired_light_color = "#110D21"
 

@@ -45,7 +45,7 @@
 "aS" = (/mob/living/simple/npc/cult/cultist,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior)
 "aT" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/melee/torch,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aU" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/overwear/coat/winter,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
-"aV" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/yellow,/obj/item/storage/pouch/small4,/obj/item/clothing/glasses/sun,/obj/item/clothing/underbottom/underwear/long_johns/grey,/obj/item/storage/briefcase/syndicate/rifle,/obj/item/storage/briefcase/syndicate/autoshotgun,/obj/item/bullet/shotgun/slug,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
+"aV" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/yellow,/obj/item/storage/pouch/small4,/obj/item/clothing/underbottom/underwear/long_johns/grey,/obj/item/storage/briefcase/syndicate/rifle,/obj/item/bullet/shotgun/slug,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aW" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/glovebox/padded,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aX" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/mask/skimask,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aY" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/back/storage/backpack,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
@@ -55,7 +55,6 @@
 "bc" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/pouch/small2,/obj/item/storage/pouch/small3,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "bd" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/bullet/rifle_762/surplus,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "be" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/bullet/shotgun/buckshot,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
-"bf" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "bg" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/storage/shoebox/winter,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "bh" = (/turf/simulated/floor/cave_dirt,/area/world/forest/interior/village/cave)
 "bi" = (/turf/simulated/wall/rock,/area/world/forest/interior/village/cave)
@@ -186,7 +185,7 @@ ajajajajajajakajafakakakakakajafajapapapapapapajajajajajaeajafajakajajajafakakaj
 ajajajajajafakajajakajajajakakajajajapapapapapajajafajajajajajakakajajajakakakajajafajakajakakajajajafajajajajajajafakakajajajajafajajajajajajakakakajajajabababababatataubcaKaKaKaKaKaKauaDaDaDaDaDaDatatatatatababababajbnajapapapapapapapapapajajajajajajabab
 ajajafajajakakajaeakajafajajakakakajapapapapapapajajajajajajakakajajafajakajajafajajakakajakajajajajajajajafakakakakajajajajajajajajajajajajakakakajajajajajababababatatauaYaKaKaKaKaKaKaKaDavaDaDaDatatatatatatabababababajajapapapapapapapapapapajajajajajabab
 ajajakakakajajajajakakakajajajajajboapapapapapapajajajajajajajajajajajakakajajajajajakajajakajafajajajafajakakajajakajajafajajajajajajafakakakakakajajajajajababababatatauaKaKaKaKaKaKaKauaDavaDaDavavataFatatatatabababababajapapapapapapapapapapapajajajajabab
-akakakajajakajajajakakakakajafajajajajapapapapapajajajajajajajajafajajakajafajajajajajakafakajajajajajajajakajajajajajajajajajajajajakakakajajakakajafajajajababababatataubfaZaTbabdbbbeaublavaDaDavavavatatatatatababababababapapapapapapapapapapapapajajajabab
+akakakajajakajajajakakakakajafajajajajapapapapapajajajajajajajajafajajakajafajajajajajakafakajajajajajajajakajajajajajajajajajajajajakakakajajakakajafajajajababababatatauaKaZaTbabdbbbeaublavaDaDavavavatatatatatababababababapapapapapapapapapapapapajajajabab
 ajajajajajakajafakakajajakajajajajajajapapapapapajafajajajajajajakakajakakajajajafajajakakakakajajajafajajajajafajajajajajajajafajakakajajajakakakajajajaeajababababatavauauauauauauauauauaJavavaDaDavavavataFatatababababababapapapaOapapapapapapapapapajajabab
 ajajajajajajajakakakajajakakajajajajafapapapapapajajajajajajajajakajafajakajajajajajajajakajajafajajakakajajajajajajajafajajakakakajakakajajakakakakajajajaeajababatavavatatatatatatatatatatatavavaDaDaDavavatatatababababababapapapaOapapaOaOapapapapapapajabab
 ajajafajakajakakajajajafajakajajajajajajapapapapajajajajajajafajakajajajajajajafajajafakakajajajajajajababababajajajaeajajajakakajajakajajajajakajajajajajajajajaJatatatatatatatabababababatatatavaDaDaDavatatatababababababapapapapaOapapaiaOapapaOapapapapapab

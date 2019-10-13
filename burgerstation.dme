@@ -538,6 +538,7 @@
 #include "code\_core\obj\item\clothing\hats\helmet.dm"
 #include "code\_core\obj\item\clothing\hats\jobs.dm"
 #include "code\_core\obj\item\clothing\hats\military.dm"
+#include "code\_core\obj\item\clothing\hats\winter_hood.dm"
 #include "code\_core\obj\item\clothing\masks\_masks.dm"
 #include "code\_core\obj\item\clothing\masks\conceal.dm"
 #include "code\_core\obj\item\clothing\masks\gasmask.dm"
