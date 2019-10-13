@@ -68,7 +68,7 @@
 /atom/proc/get_examine_text(var/mob/examiner)
 	return div("examine_title","[src.name]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long","[src.desc_extended]")
 
-/atom/proc/can_interact(var/mob/caller,var/enable_message = TRUE)
+/atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)
 
 	if(get_dist(src,caller) > interact_distance)
 		if(enable_message)

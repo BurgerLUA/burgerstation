@@ -108,6 +108,21 @@
 	src.visible_message("\The [src.name] wakes up!","You wake up feeling [health_current < health_max ? "refreshed... sort of." : "refreshed!"]")
 	return TRUE
 
+/mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
+
+	if(status & FLAG_STATUS_PARALYZE || status & FLAG_STATUE_FATIGUE)
+		return FALSE
+
+	return ..()
+
+
+/mob/living/can_use_controls(object,location,control,params)
+
+	if(status & FLAG_STATUS_PARALYZE || status & FLAG_STATUE_FATIGUE)
+		return FALSE
+
+	return ..()
+
 /mob/living/proc/handle_status_effects()
 
 	if(is_turf(src.loc))

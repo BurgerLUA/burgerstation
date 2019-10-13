@@ -179,7 +179,8 @@ mob/living/advanced/Login()
 	if(fatigue_time > 0)
 		return 0
 
-	adjust_stamina(-value)
+	if(adjust_stamina(-value))
+		update_health_element_icons(stamina=TRUE)
 
 	if(stamina_current <= 0)
 		add_fatigue(600)

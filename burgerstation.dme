@@ -359,6 +359,7 @@
 #include "code\_core\mob\living\combat.dm"
 #include "code\_core\mob\living\experience.dm"
 #include "code\_core\mob\living\health.dm"
+#include "code\_core\mob\living\interaction.dm"
 #include "code\_core\mob\living\karma.dm"
 #include "code\_core\mob\living\life.dm"
 #include "code\_core\mob\living\movement.dm"

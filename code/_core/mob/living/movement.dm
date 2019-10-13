@@ -3,6 +3,12 @@
 	if(paralyze_time != 0)
 		return FALSE
 
+	if(sleep_time != 0)
+		return FALSE
+
+	if(fatigue_time != 0)
+		return FALSE
+
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
