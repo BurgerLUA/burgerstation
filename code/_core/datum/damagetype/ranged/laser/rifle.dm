@@ -9,13 +9,6 @@
 		HEAT = DAMAGE_C
 	)
 
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		PIERCE = BRUTE,
-		LASER = BURN,
-		HEAT = BURN
-	)
-
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		PIERCE = ARMOR_C,
@@ -36,15 +29,6 @@
 		COLD = DAMAGE_D
 	)
 
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		BLADE = BRUTE,
-		BLUNT = BRUTE,
-		PIERCE = BRUTE,
-		LASER = BRUTE,
-		COLD = BURN
-	)
-
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLADE = ARMOR_C,
@@ -63,13 +47,6 @@
 		LASER = DAMAGE_C,
 		HEAT = DAMAGE_D,
 		RAD = DAMAGE_D
-	)
-
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		LASER = BURN,
-		HEAT = BURN,
-		RAD = TOX
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

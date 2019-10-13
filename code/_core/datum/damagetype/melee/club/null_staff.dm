@@ -7,11 +7,6 @@
 		HOLY = DAMAGE_B
 	)
 
-	attack_damage_conversion = list(
-		BLUNT = BRUTE,
-		HOLY = BURN
-	)
-
 	attack_damage_penetration = list(
 		BLUNT = ARMOR_D,
 		HOLY = ARMOR_A

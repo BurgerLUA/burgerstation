@@ -8,12 +8,6 @@
 		FATIGUE = DAMAGE_B
 	)
 
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		BLUNT = BRUTE,
-		FATIGUE = OXY
-	)
-
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = ARMOR_F,
@@ -56,13 +50,6 @@
 		BLUNT = DAMAGE_D,
 		LASER = DAMAGE_C,
 		FATIGUE = DAMAGE_B
-	)
-
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		BLUNT = BRUTE,
-		LASER = BURN,
-		FATIGUE = OXY
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

@@ -13,8 +13,8 @@
 	var/health_current = 0
 	var/health_regeneration = 0
 
-	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
-	var/list/damage_soft = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0)
+	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
+	var/list/damage_soft = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
 
 	var/damage_multiplier = 1 //How much damage, multiplied, does this atom recieve?
 
@@ -24,7 +24,7 @@
 
 	var/damage_type = "default" //The id of the damage type of the weapon, if any.
 
-	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0) //How much to subtract damage
+	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0) //How much to subtract damage
 
 	var/attack_range = 1 //If it's a melee weapon, it needs a range. TODO: MOVE TO ITEM
 

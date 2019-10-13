@@ -59,7 +59,7 @@
 		RAD = TOX,
 		HOLY = BURN,
 		DARK = BURN,
-		FATIGUE = OXY
+		FATIGUE = FATIGUE
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

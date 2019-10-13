@@ -18,6 +18,10 @@
 	damage[OXY] = value
 	return value
 
+/atom/proc/set_fatigue_loss(var/value)
+	damage[FATIGUE] = value
+	return value
+
 //Adding/Subtracting
 /atom/proc/adjust_brute_loss(var/value)
 	value -= (value > 0 ? resistance[BRUTE] : 0)
@@ -43,16 +47,26 @@
 	damage[OXY] += value
 	return value
 
-/atom/proc/get_total_loss()
+/atom/proc/adjust_fatigue_loss(var/value)
+	value -= (value > 0 ? resistance[FATIGUE] : 0)
+	value -= min(0,damage[FATIGUE] + value)
+	damage[FATIGUE] += value
+	return value
+
+/atom/proc/get_total_loss(var/include_fatigue = TRUE)
 	var/returning_value = 0
 	for(var/damage_type in damage)
+		if(!include_fatigue && damage_type == FATIGUE)
+			continue
 		returning_value += damage[damage_type]
 
 	return returning_value
 
-/atom/proc/get_total_loss_soft()
+/atom/proc/get_total_loss_soft(var/include_fatigue = TRUE)
 	var/returning_value = 0
 	for(var/damage_type in damage_soft)
+		if(!include_fatigue && damage_type == FATIGUE)
+			continue
 		returning_value += damage_soft[damage_type]
 
 	return returning_value
@@ -69,6 +83,9 @@
 
 /atom/proc/get_oxy_loss()
 	return damage[OXY]
+
+/atom/proc/get_fatigue_loss()
+	return damage[FATIGUE]
 
 /atom/proc/get_loss(var/damage_type)
 	return damage[damage_type]
@@ -89,7 +106,8 @@
 			return adjust_tox_loss(amount)
 		if(OXY)
 			return adjust_oxy_loss(amount)
-
+		if(FATIGUE)
+			return adjust_fatigue_loss(amount)
 
 /atom/proc/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
 	return TRUE

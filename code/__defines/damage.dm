@@ -2,6 +2,7 @@
 #define BURN "burn"
 #define TOX "toxin"
 #define OXY "oxy"
+#define FATIGUE "fatigue"
 
 #define HEALTH "health"
 #define MANA "mana"
@@ -22,4 +23,3 @@
 #define HOLY "holy"
 #define DARK "dark"
 
-#define FATIGUE "fatigue"

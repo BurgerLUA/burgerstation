@@ -7,11 +7,6 @@
 		BLADE = DAMAGE_C
 	)
 
-	attack_damage_conversion = list(
-		PIERCE = BRUTE,
-		BLADE = BRUTE
-	)
-
 	attack_damage_penetration = list(
 		PIERCE = ARMOR_A
 	)
@@ -45,11 +40,6 @@
 	attack_damage_base = list(
 		PIERCE = DAMAGE_A,
 		BLADE = DAMAGE_B
-	)
-
-	attack_damage_conversion = list(
-		PIERCE = BRUTE,
-		BLADE = BRUTE
 	)
 
 	attack_damage_penetration = list(

@@ -11,12 +11,6 @@
 		PIERCE = DAMAGE_E,
 	)
 
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		BLADE = BRUTE,
-		PIERCE = BRUTE
-	)
-
 	attack_damage_penetration = list(
 		BLADE = ARMOR_D,
 		PIERCE = ARMOR_B

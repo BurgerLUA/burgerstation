@@ -6,10 +6,6 @@
 		BLUNT = DAMAGE_E,
 	)
 
-	attack_damage_conversion = list(
-		BLUNT = BRUTE,
-	)
-
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_C,
 		ATTRIBUTE_DEXTERITY = CLASS_D

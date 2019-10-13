@@ -13,13 +13,6 @@
 		FATIGUE = DAMAGE_D
 	)
 
-	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
-	attack_damage_conversion = list(
-		BIO = TOX,
-		FIRE = BURN,
-		FATIGUE = OXY
-	)
-
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BIO = ARMOR_A,
