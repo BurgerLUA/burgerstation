@@ -148,7 +148,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		handle_empty(caller)
 		return FALSE
 
-
 	bullet_speed_to_use = min(bullet_speed_to_use,31)
 
 	update_icon()
@@ -231,8 +230,10 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			var/obj/projectile/P = new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color)
 
+			/* NO. BAD IDEA.
 			if(get_dist(caller,target) <= 1 && is_mob(target))
 				P.on_hit(target)
+			*/
 
 
 /atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)

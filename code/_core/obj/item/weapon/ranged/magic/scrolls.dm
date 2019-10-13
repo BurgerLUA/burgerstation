@@ -21,6 +21,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/magic/scroll/can_gun_shoot(var/mob/caller)
+
 	if(!open)
 		return FALSE
 

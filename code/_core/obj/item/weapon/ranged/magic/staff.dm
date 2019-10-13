@@ -2,6 +2,14 @@
 	cost_charge = 10
 	total_charge = 1000
 
+/obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller)
+
+	if(total_charge < cost_charge)
+		handle_empty(caller)
+		return FALSE
+
+	return ..()
+
 /obj/item/weapon/ranged/magic/staff/get_examine_text(var/mob/caller)
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
@@ -13,7 +21,10 @@
 		charge_to_remove *= NPC_MANA_COST_MULTIPLIER
 
 	total_charge -= charge_to_remove
+
 	update_icon()
+
+	return FALSE
 
 /obj/item/weapon/ranged/magic/staff/get_ammo_count()
 	return round(total_charge / cost_charge)
@@ -52,6 +63,8 @@
 	desc = "Summon Chaos!"
 	cost_charge = 250
 	total_charge = 1000
+
+	shoot_delay = 20
 
 	bullet_speed = 4
 

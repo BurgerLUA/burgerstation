@@ -8,9 +8,6 @@
 		DARK = DAMAGE_C
 	)
 
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list()
-
 	attribute_stats = list(
 		ATTRIBUTE_INTELLIGENCE = CLASS_C
 	)

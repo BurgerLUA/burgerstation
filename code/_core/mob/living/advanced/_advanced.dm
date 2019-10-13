@@ -363,7 +363,7 @@ mob/living/advanced/Login()
 
 	return TRUE
 
-/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy,var/fatigue) //BEHOLD: SHITCODE.
+/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //BEHOLD: SHITCODE.
 
 	var/list/desired_heal_amounts = list(
 		BRUTE = brute,
@@ -380,7 +380,7 @@ mob/living/advanced/Login()
 		var/obj/item/organ/O = labeled_organs[organ_id]
 		for(var/damage_type in O.damage)
 			var/damage_amount =  O.damage[damage_type]
-			if(!damage_amount)
+			if(!damage_amount || damage_amount < 0)
 				continue
 			if(!damaged_organs[organ_id])
 				damaged_organs[organ_id] = list()
@@ -397,11 +397,13 @@ mob/living/advanced/Login()
 			var/total_damage_of_type = damage_totals[damage_type]
 			if(damage_amount_of_type <= 0 || heal_amount_of_type <= 0 || total_damage_of_type <= 0)
 				continue
-			total_healed += O.adjust_loss(damage_type,(heal_amount_of_type / total_damage_of_type) * heal_amount_of_type)
+			total_healed -= O.adjust_loss(damage_type,(damage_amount_of_type / total_damage_of_type) * -heal_amount_of_type)
 		O.update_health()
 
 	if(total_healed)
 		update_health(-total_healed,src,do_update = TRUE)
+
+	world.log << "TOTAL HEALED: [total_healed]"
 
 	return total_healed
 

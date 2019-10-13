@@ -345,7 +345,8 @@
 			owner.remove_overlay(I)
 		queue_delete(I,600)
 		I.on_drop(src,drop_loc)
-		I.set_dir(owner.dir)
+		if(owner)
+			I.set_dir(owner.dir)
 
 	return I
 

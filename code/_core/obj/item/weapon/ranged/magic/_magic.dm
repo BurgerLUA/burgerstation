@@ -3,7 +3,7 @@
 	var/cost_mana = 0
 	var/cost_charge = 0
 	var/total_charge = 100
-	var/cooldown = 60 //In deciseconds
+	var/cooldown = 60 //In deciseconds. Only used for artifacts.
 
 
 	var/current_cooldown = 0
@@ -29,3 +29,5 @@
 		A.mana_regen_delay = max(A.mana_regen_delay,30)
 
 	return null
+
+

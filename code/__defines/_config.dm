@@ -1,6 +1,6 @@
 //Game Options
 
-#define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
+#define FPS_CLIENT 30 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 30
 
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing

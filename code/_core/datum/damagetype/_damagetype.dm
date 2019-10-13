@@ -439,16 +439,20 @@
 	if(attacker.dir & WEST)
 		pixel_x_offset += -punch_distance
 
-	if(is_mob(attacker))
-		var/mob/M = attacker
+	if(is_living(attacker))
+		var/mob/living/L = attacker
 		//M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
 		//M.add_animation(pixel_x = -movement_x, pixel_y = -movement_y, time = 4, delay = 2, time = 4)
 
 		var/matrix/attack_matrix = matrix()
 		attack_matrix.Translate(pixel_x_offset,pixel_y_offset)
 
-		animate(M, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
-		animate(transform = matrix(), time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(L, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
+
+		if(L.should_be_knocked_down)
+			animate(transform = turn(matrix(), L.stun_angle), time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+		else
+			animate(transform = matrix(), time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
 	sleep(ATTACK_ANIMATION_LENGTH)
 

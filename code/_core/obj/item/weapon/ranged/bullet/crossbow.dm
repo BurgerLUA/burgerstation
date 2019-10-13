@@ -34,13 +34,6 @@
 /obj/item/weapon/ranged/bullet/crossbow/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
 
-/obj/item/weapon/ranged/bullet/crossbow/get_ammo_count()
-
-	if(is_npc(get_owner()))
-		return 1
-
-	return length(stored_bullets)
-
 /obj/item/weapon/ranged/bullet/crossbow/update_icon()
 
 	if(chambered_bullet)
