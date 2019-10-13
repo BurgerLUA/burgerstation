@@ -30,12 +30,13 @@
 	bullet_count_max = 6
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/mateba
+		/obj/item/weapon/ranged/bullet/revolver/mateba,
+		/obj/item/weapon/ranged/bullet/revolver/deckhard
 	)
 
 /obj/item/magazine/clip/revolver/bullet_44/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_44(src)
+		stored_bullets += new /obj/item/bullet/revolver_44/surplus(src)
 
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
@@ -44,9 +45,7 @@
 	icon_state = "22"
 	bullet_count_max = 6
 
-	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/deckhard
-	)
+	weapon_whitelist = list()
 
 /obj/item/magazine/clip/revolver/bullet_22/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)

@@ -39,7 +39,25 @@ body {
 	color: blue;
 	font-style: italic;
 }
-
+.rarity{
+	text-align: center;
+	font-weight: bold;
+}
+.common{
+	color: black;
+}
+.uncommon{
+	color: blue;
+}
+.rare{
+	color: yellow;
+}
+.mythical{
+	color: purple;
+}
+.legendary{
+	color: gold;
+}
 .examine_title{
 	font-size: 200%;
 	text-align: center;

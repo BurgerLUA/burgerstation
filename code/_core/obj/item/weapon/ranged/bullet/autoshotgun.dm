@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/riot_shotgun.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = TRUE
 

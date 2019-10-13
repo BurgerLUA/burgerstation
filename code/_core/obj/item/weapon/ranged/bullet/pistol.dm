@@ -4,7 +4,7 @@
 	icon_state = "inventory"
 
 	bullet_speed = 20
-	shoot_delay = 4
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -44,7 +44,7 @@
 	name = ".50AE gold eagle"
 	icon = 'icons/obj/items/weapons/ranged/deagle.dmi'
 	bullet_speed = 28
-	shoot_delay = 6
+	shoot_delay = 4
 	bullet_type = ".50ae"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
 
@@ -54,7 +54,7 @@
 	name = ".45 private security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
 	bullet_speed = 28
-	shoot_delay = 6
+	shoot_delay = 3
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 

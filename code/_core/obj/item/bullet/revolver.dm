@@ -24,6 +24,20 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
+/obj/item/bullet/revolver_44/surplus
+	name = "\improper surplus .44 magnum"
+	desc = "For revolvers that require .44 magnum ammo. Surplus ammo."
+	id = ".44"
+	icon = 'icons/obj/items/bullet/44_surplus.dmi'
+
+	damage_type = ".44_surplus"
+
+	item_count_max = 6
+	item_count_max_icon = 6
+
+	projectile = /obj/projectile/bullet/revolver/
+
+
 /obj/item/bullet/revolver_22
 	name = "\improper .22 LR"
 	desc = "For revolvers that require .22 LR ammo."

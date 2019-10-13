@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/combat_shotgun.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1
+	shoot_delay = 4
 
 	automatic = FALSE
 

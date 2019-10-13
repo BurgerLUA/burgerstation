@@ -7,7 +7,6 @@
 
 	flags_metabolism = REAGENT_METABOLISM_INGEST
 
-
 /reagent_container/heart
 	name = "Heart"
 	desc = "And you're to blame."

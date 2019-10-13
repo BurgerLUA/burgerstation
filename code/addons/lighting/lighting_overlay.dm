@@ -64,7 +64,7 @@
 		ca = corners[1] || dummy_lighting_corner
 
 	var/max = max(cr.cache_mx, cg.cache_mx, cb.cache_mx, ca.cache_mx)
-	luminosity = max > LIGHTING_SOFT_THRESHOLD
+	luminosity = 1
 
 	var/rr = cr.cache_r
 	var/rg = cr.cache_g
@@ -85,7 +85,7 @@
 	if ((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
 		icon_state = LIGHTING_TRANSPARENT_ICON_STATE
 		color = null
-	else if (!luminosity)
+	else if (max < LIGHTING_SOFT_THRESHOLD)
 		icon_state = LIGHTING_DARKNESS_ICON_STATE
 		color = null
 	else if (rr == LIGHTING_DEFAULT_TUBE_R && rg == LIGHTING_DEFAULT_TUBE_G && rb == LIGHTING_DEFAULT_TUBE_B && ALL_EQUAL)

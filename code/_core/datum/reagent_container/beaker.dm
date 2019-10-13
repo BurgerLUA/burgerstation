@@ -1,9 +1,10 @@
 /reagent_container/beaker
 	name = "Beaker"
 	desc = "Beaker!"
-	should_update_owner = TRUE
 
 	volume_max = 60
+
+	should_update_owner = TRUE
 
 /reagent_container/beaker/large
 	volume_max = 120

@@ -28,7 +28,6 @@
 
 	caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
 
-
 	return TRUE
 
 /obj/item/container/beaker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

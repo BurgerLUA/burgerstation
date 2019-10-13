@@ -58,8 +58,6 @@
 	icon = 'icons/obj/items/weapons/melee/clubs/flashlight.dmi'
 	damage_type = "flashlight_off"
 
-	default_direction = WEST
-
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 1,
 		ATTACK_TYPE_RANGED = 0,

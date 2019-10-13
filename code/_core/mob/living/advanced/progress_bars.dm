@@ -25,6 +25,21 @@
 			A.to_chat(span("warning","\The [src] forcefeeds you \the [F]!"))
 			F.consume(A)
 			return TRUE
+		if("inject")
+			var/obj/item/organ/O = callback_list["target"]
+			var/obj/item/container/syringe/S = callback_list["object"]
+			var/is_injecting = callback_list["injecting"]
+			var/verb_to_use = is_injecting ? "inject" : "draw blood from"
+			if(is_injecting)
+				S.reagents.transfer_reagents_to(O.reagents,S.inject_amount)
+			else
+				O.reagents.transfer_reagents_to(S.reagents,S.draw_amount)
+
+			src.to_chat(span("notice","You [verb_to_use] \the [O.name] with your [S.name]."))
+
+			S.update_icon()
+
+			return TRUE
 		if("mine_ore")
 			var/obj/structure/interactive/ore_deposit/OD = callback_list["deposit"]
 			var/obj/item/ore/O = callback_list["ore"]

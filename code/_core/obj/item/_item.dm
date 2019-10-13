@@ -2,12 +2,12 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	var/rarity = RARITY_COMMON
+
 	var/size = 1
 	var/weight = 1
 
-	var/value = 1 //Value in whatever currency this world uses.
-
-	var/default_direction = SOUTH
+	var/value = 1 //Value in whatever currency this world uses. Used for buying and selling items.
 
 	var/delete_on_drop = FALSE
 
@@ -18,7 +18,6 @@
 	var/slowdown_mul_held = 1 //Slow down multiplier. Stacks multiplicatively or however you spell the damn word.
 	var/slowdown_mul_worn = 1
 
-	var/rarity = RARITY_COMMON
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0
@@ -81,7 +80,6 @@
 	)
 
 	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_id = volume.
-
 
 	var/flags_tool = FLAG_TOOL_NONE
 	var/tool_time = SECONDS_TO_DECISECONDS(5)
@@ -208,8 +206,6 @@
 
 /obj/item/New(var/desired_loc)
 
-	set_dir(default_direction)
-
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
@@ -258,15 +254,8 @@
 		I.update_icon()
 
 /obj/item/get_examine_text(var/mob/examiner)
+	return div("examine_title","[src.name]") + div("rarity [rarity]","[capitalize(rarity)]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long","[src.desc_extended]") + get_damage_type_text(examiner)
 
-	if(!is_advanced(examiner))
-		return ..()
-
-	. = ..()
-
-	var/mob/living/advanced/A = examiner
-
-	return . + get_damage_type_text(A)
 
 obj/item/proc/do_automatic(caller,object,location,params)
 	return TRUE

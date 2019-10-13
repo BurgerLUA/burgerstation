@@ -5,7 +5,7 @@
 	icon_state = "inventory"
 
 	bullet_speed = 31
-	shoot_delay = 5
+	shoot_delay = 6
 
 	automatic = FALSE
 

@@ -102,7 +102,6 @@
 
 	return TRUE
 
-
 //Black
 /mob/living/simple/npc/slime/grey
 	slime_color = "#888888"
