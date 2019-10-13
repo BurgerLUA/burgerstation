@@ -15,6 +15,8 @@
 
 	var/transfer_amount = 10
 
+	allow_beaker_transfer = TRUE
+
 /obj/item/container/beaker/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
@@ -39,6 +41,11 @@
 
 		var/mob/living/advanced/A1 = caller
 		var/mob/living/advanced/A2 = object
+		var/area/A3 = get_area(object)
+
+		if(A1 != A2 && A3.safe)
+			A1.to_chat(span("notice","For some reason you can't bring yourself to feed [A2] the delicious [src.name]..."))
+			return FALSE
 
 		if(A1 == A2)
 			var/list/callback_list = list()
@@ -57,7 +64,7 @@
 
 		return TRUE
 
-	if(object.reagents)
+	if(object.reagents && object.allow_beaker_transfer)
 		var/transfer_amount = reagents.transfer_reagents_to(object.reagents,10)
 		caller.to_chat(span("notice","You transfer [transfer_amount] units of liquid to \the [object]."))
 		return TRUE

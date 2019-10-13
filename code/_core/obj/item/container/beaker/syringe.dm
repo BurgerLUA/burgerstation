@@ -39,10 +39,11 @@
 	var/num_state = ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
 
 	var/icon/I = icon(icon,"[icon_state]_[num_state]")
-	var/icon/I2 = icon(icon,"liquid_[num_state]")
+	var/icon/I2 = icon(icon,"liquid")
 
-	I2.Blend(reagents.color,ICON_MULTIPLY)
-	I.Blend(I2,ICON_OVERLAY)
+	if(reagents && reagents.volume_current)
+		I2.Blend(reagents.color,ICON_MULTIPLY)
+		I.Blend(I2,ICON_UNDERLAY)
 
 	if(src.loc && is_inventory(src.loc))
 		var/icon/I3 = icon(icon,"action_[injecting]")
@@ -65,16 +66,22 @@
 
 	if(is_advanced(object) && is_advanced(caller))
 		var/mob/living/advanced/A = object
+		var/mob/living/advanced/A2 = caller
+		var/list/new_x_y = A2.get_current_target_cords(params)
+
+		params[PARAM_ICON_X] = new_x_y[1]
+		params[PARAM_ICON_Y] = new_x_y[2]
+
 		var/obj/item/organ/O = A.get_object_to_damage(caller,params)
 
 		if(!O.reagents)
 			return FALSE
 
-		var/area/A2 = get_area(object)
+		var/area/A3 = get_area(object)
 
 		var/verb_to_use = injecting ? "inject" : "draw blood from"
 
-		if(caller != object && A2.safe)
+		if(caller != object && A3.safe)
 			caller.to_chat(span("notice","For some reason you can't bring yourself to [verb_to_use] \the [object]..."))
 			return FALSE
 
@@ -86,7 +93,6 @@
 		callback_list["object"] = src
 		callback_list["start_turf"] = get_turf(src)
 		callback_list["injecting"] = injecting
-
 		add_progress_bar(caller,"inject",10 + inject_amount*5,callback_list)
 
 
