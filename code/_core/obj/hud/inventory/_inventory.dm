@@ -169,6 +169,9 @@
 
 /obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
+	if(!is_advanced(desired_owner))
+		return FALSE
+
 	if(owner == desired_owner)
 		return FALSE
 

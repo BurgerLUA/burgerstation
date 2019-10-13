@@ -1,5 +1,3 @@
-var/global/list/all_living = list()
-
 /mob/living/
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
@@ -119,6 +117,12 @@ var/global/list/all_living = list()
 
 	var/should_be_knocked_down = FALSE
 
+/mob/living/destroy()
+	qdel(ai)
+	ai = null
+	all_living -= src
+	return ..()
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 
@@ -160,11 +164,6 @@ var/global/list/all_living = list()
 
 	if(boss)
 		tracked_bosses[id] = src
-
-/mob/living/destroy()
-	qdel(ai)
-	ai = null
-	return ..()
 
 /mob/living/Initialize()
 	initialize_factions()

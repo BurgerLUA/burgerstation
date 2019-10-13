@@ -75,7 +75,10 @@
 	key = null // required to GC
 	buttons.Cut()
 	health_elements.Cut()
+
 	all_mobs -= src
+	all_mobs_with_clients -= src
+
 	return ..()
 
 /mob/can_attack(var/atom/victim,var/atom/weapon,var/params)

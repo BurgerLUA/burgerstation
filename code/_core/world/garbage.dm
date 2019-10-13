@@ -10,6 +10,7 @@ var/list/qdel_refs_to_type = list()
 
 /datum/proc/destroy()
 	tag = null // required to GC
+	objects_to_delete -= src
 	return TRUE
 
 /proc/qdel(var/datum/object)

@@ -18,8 +18,6 @@
 	var/sex = MALE
 	gender = MALE
 
-	var/list/atom/tracked_overlays = list()
-
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
@@ -80,9 +78,26 @@
 
 	var/list/known_wishgranters = list() //ID based.
 
-	var/obj/chat_text/chat_text
-
 	var/list/stored_chat_text = list() //experiment
+
+/mob/living/advanced/destroy()
+
+	inventory.Cut()
+	stored_chat_text.Cut()
+	overlays_assoc.Cut()
+
+	qdel(click_and_drag_icon)
+	click_and_drag_icon = null
+
+	held_objects = null
+	worn_objects = null
+	left_hand = null
+	right_hand = null
+	automatic_left = null
+	automatic_right = null
+	active_inventory = null
+	driving = null
+	return ..()
 
 /mob/living/advanced/proc/update_slowdown_mul()
 
@@ -93,16 +108,6 @@
 		slowdown_mul *= I.slowdown_mul_held
 
 	slowdown_mul = Clamp(slowdown_mul,0.5,4)
-
-/mob/living/advanced/destroy()
-	inventory.Cut()
-	held_objects = null
-	worn_objects = null
-	left_hand = null
-	right_hand = null
-	active_inventory = null
-	driving = null
-	return ..()
 
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
@@ -403,7 +408,7 @@ mob/living/advanced/Login()
 	if(total_healed)
 		update_health(-total_healed,src,do_update = TRUE)
 
-	world.log << "TOTAL HEALED: [total_healed]"
+	world.log << "TOTAL HEALED FOR [src]: [total_healed]"
 
 	return total_healed
 

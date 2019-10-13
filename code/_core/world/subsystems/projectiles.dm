@@ -7,6 +7,7 @@ var/global/list/obj/projectile/all_projectiles = list()
 	priority = SS_ORDER_IMPORTANT
 
 /subsystem/projectile/on_life()
+
 	for(var/obj/projectile/P in all_projectiles)
 		P.update_projectile()
 

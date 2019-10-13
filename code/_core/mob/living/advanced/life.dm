@@ -73,11 +73,14 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/on_life_slow()
 
-	handle_regen()
-	handle_organs()
-	update_icon(TRUE)
+	. = ..()
 
-	return ..()
+	if(.)
+		handle_regen()
+		handle_organs()
+		update_icon(TRUE)
+
+	return .
 
 /mob/living/advanced/pre_death()
 

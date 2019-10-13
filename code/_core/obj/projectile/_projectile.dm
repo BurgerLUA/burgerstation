@@ -48,6 +48,13 @@
 	var/steps_current = 0
 	var/steps_allowed = 0
 
+/obj/projectile/destroy()
+	blamed = null
+	owner = null
+	weapon = null
+	all_projectiles -= src
+	return ..()
+
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed)
 
 	owner = desired_owner

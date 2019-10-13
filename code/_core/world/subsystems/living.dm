@@ -1,3 +1,5 @@
+var/global/list/all_living = list()
+
 /subsystem/living/
 	name = "Living Subsystem"
 	desc = "Controls the life of mobs."

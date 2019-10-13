@@ -14,6 +14,10 @@
 
 	var/atom/stored_object
 
+/obj/hud/click_and_drag/destroy()
+	stored_object = null
+	return ..()
+
 /obj/hud/click_and_drag/New(var/desired_loc)
 
 	if(is_mob(desired_loc))

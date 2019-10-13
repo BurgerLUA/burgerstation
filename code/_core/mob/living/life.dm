@@ -110,6 +110,9 @@
 
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
+
 	if(status & FLAG_STATUS_PARALYZE || status & FLAG_STATUE_FATIGUE)
 		return FALSE
 
@@ -117,6 +120,9 @@
 
 
 /mob/living/can_use_controls(object,location,control,params)
+
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
 
 	if(status & FLAG_STATUS_PARALYZE || status & FLAG_STATUE_FATIGUE)
 		return FALSE
@@ -193,6 +199,9 @@
 	if(!initialized)
 		return FALSE
 
+	if(status & FLAG_STATUS_DEAD)
+		return FALSE
+
 	handle_status_effects()
 	update_alpha(handle_alpha())
 
@@ -201,6 +210,9 @@
 mob/living/proc/on_life_slow()
 
 	if(!initialized)
+		return FALSE
+
+	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
 	return TRUE
