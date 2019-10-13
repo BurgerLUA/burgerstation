@@ -246,6 +246,9 @@
 
 	var/turf/T = get_turf(src)
 
+	if(!T)
+		return .
+
 	var/obj/effect/temp/impact/blood/B = new(T,SECONDS_TO_DECISECONDS(60),"#FF0000")
 	B.transform.Scale(0.1,0.1)
 
