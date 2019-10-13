@@ -44,10 +44,12 @@
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
-#define ENABLE_CHARGEN FALSE
+#define ENABLE_CHARGEN TRUE
 
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100
+
+#define CHAT_FONT_SIZE 0.25
 
 #define SPAWN_PROTECTION_TIME 10 //Time in seconds that you have spawn protection for when you leave a safezone.
 

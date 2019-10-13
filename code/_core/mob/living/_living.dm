@@ -131,8 +131,6 @@ var/global/list/all_living = list()
 	if(desired_level_multiplier)
 		level_multiplier *= desired_level_multiplier
 
-	//filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
-
 	attributes = list()
 	skills = list()
 	factions = list()

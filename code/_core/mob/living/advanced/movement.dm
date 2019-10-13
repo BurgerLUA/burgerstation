@@ -34,3 +34,14 @@ mob/living/advanced/get_movement_delay()
 		return FALSE
 
 	return ..()
+
+
+/mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+	. = ..()
+
+	if(.)
+		for(var/obj/chat_text/CT in stored_chat_text)
+			CT.glide_size = src.glide_size
+			CT.force_move(src.loc)
+
+	return .

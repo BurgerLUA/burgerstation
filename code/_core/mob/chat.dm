@@ -21,8 +21,6 @@
 		var/mob/living/advanced/A = src
 		A.end_typing()
 
-	last_words = text_to_say
-
 	spam_protection_say += max(0.25,lentext(text_to_say)*0.01)
 
 	return TRUE

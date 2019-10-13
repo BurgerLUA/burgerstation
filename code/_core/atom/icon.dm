@@ -43,8 +43,3 @@
 
 /atom/proc/blend_exists(var/desired_id)
 	return additional_blends[desired_id]
-
-
-
-
-

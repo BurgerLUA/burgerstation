@@ -1,6 +1,5 @@
 #define PLANE_PARALAX -6
 
-
 #define PLANE_FLOOR -5
 
 #define PLANE_WALL -4
@@ -23,9 +22,11 @@
 
 #define PLANE_ALWAYS_VISIBLE 8
 
-#define PLANE_HUD 9
+#define PLANE_CHAT 9
 
-#define PLANE_HUD_OBJ 10
+#define PLANE_HUD 10
+
+#define PLANE_HUD_OBJ 11
 
 #define PLANE_MAP 99
 

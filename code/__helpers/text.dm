@@ -2,8 +2,10 @@
 
 /proc/police_input(var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
 
+	/*
 	for(var/badword in all_badwords)
 		input = replacetextEx(input, badword, repeat_text("*",length(badword)))
+	*/
 
 	if(capitalize)
 		input = capitalize(input)

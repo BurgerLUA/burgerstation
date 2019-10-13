@@ -80,6 +80,10 @@
 
 	var/list/known_wishgranters = list() //ID based.
 
+	var/obj/chat_text/chat_text
+
+	var/list/stored_chat_text = list() //experiment
+
 /mob/living/advanced/proc/update_slowdown_mul()
 
 	for(var/obj/item/I in worn_objects)
@@ -122,6 +126,13 @@
 	worn_objects = list()
 	labeled_organs = list()
 	overlays_assoc = list()
+
+	/*
+	maptext_width = TILE_SIZE*ceiling(VIEW_RANGE*2 - 1,2)
+	maptext_x = -(maptext_width-TILE_SIZE)*0.5
+	maptext_y = TILE_SIZE*0.5
+	maptext = "<center>THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG.</center>"
+	*/
 
 	..()
 
@@ -244,6 +255,7 @@ mob/living/advanced/Login()
 	if(client)
 		add_species_buttons()
 		add_species_health_elements()
+		//chat_text = new(src)
 
 	. = ..()
 

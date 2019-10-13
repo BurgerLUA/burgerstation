@@ -2,7 +2,7 @@
 	name = "plane master"
 	plane = 0
 	screen_loc = "1,1"
-	appearance_flags = PLANE_MASTER
+	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE
 
 
 //WALLS

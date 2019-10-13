@@ -70,6 +70,11 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 					continue
 				M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_OOC)
 
+	if(text_type == TEXT_TALK || text_type == TEXT_YELL)
+		if(is_advanced(source))
+			new/obj/chat_text(source,text_to_say)
+
+
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
 
 	if(src.x == 0 && src.y == 0 && src.z == 0)

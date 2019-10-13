@@ -27,9 +27,10 @@ var/global/list/question_button_id_to_button = list()
 
 /proc/start_choice(var/mob/M,var/choice/C)
 
-	if(is_living(M))
-		var/mob/living/L = M
-		L.paralyze_time = -1
+	if(!M.client)
+		return FALSE
+
+	M.client.disable_controls = TRUE
 
 	C = new C(M)
 
@@ -37,8 +38,8 @@ var/global/list/question_button_id_to_button = list()
 		sleep(TICK_LAG)
 
 	var/decision_made = C.on_decision()
-	if(is_living(M))
-		var/mob/living/L = M
-		L.paralyze_time = 1
+
+	M.client.disable_controls = FALSE
+
 	qdel(C)
 	return decision_made
