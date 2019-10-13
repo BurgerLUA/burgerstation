@@ -28,6 +28,10 @@
 		"Z" = "zoom"
 	)
 
+/macros/destroy()
+	owner = null
+	return ..()
+
 /macros/New(var/client/spawning_owner)
 	owner = spawning_owner
 

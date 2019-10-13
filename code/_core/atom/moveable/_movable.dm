@@ -26,6 +26,7 @@
 	return .
 
 /atom/movable/destroy()
+	area = null
 	force_move(null)
 	return ..()
 
@@ -55,7 +56,7 @@
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
-	if(loc)
+	if(loc && new_loc != null)
 		loc.Exited(src, new_loc)
 
 	var/atom/old_loc = loc

@@ -12,11 +12,12 @@ var/global/list/all_events_active = list()
 
 /subsystem/events/Initialize()
 
-	for(var/A in subtypesof(/event/))
-		var/event/E = new A
-		if(!E.id)
-			qdel(E)
+	for(var/k in subtypesof(/event/))
+		var/event/E = k
+		var/E_id = initial(E.id)
+		if(!E_id)
 			continue
+		E = new k
 		all_events[E.id] = E
 		all_events_prob[E.id] = E.probability
 
@@ -26,7 +27,6 @@ var/global/list/all_events_active = list()
 		if(E.end_time <= curtime)
 			E.on_end()
 			all_events_active -= E
-			qdel(E)
 		else
 			E.on_life()
 

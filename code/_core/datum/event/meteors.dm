@@ -1,5 +1,3 @@
-
-
 /event/meteors
 	name = "event name"
 	desc = "event desc"
@@ -9,6 +7,10 @@
 	duration = SECONDS_TO_DECISECONDS(60)
 
 	var/list/valid_turfs = list()
+
+/event/meteors/destroy()
+	valid_turfs.Cut()
+	return ..()
 
 /event/meteors/New()
 

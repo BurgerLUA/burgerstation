@@ -66,7 +66,7 @@
 
 	..()
 
-	if(is_living(exiter))
+	if(is_living(exiter) && !exiter.qdeleting)
 		var/mob/living/L = exiter
 		if(L.old_turf)
 			L.old_turf.old_living -= L

@@ -23,6 +23,13 @@
 	var/mob/living/victim //The victim of the wound.
 	var/obj/item/organ/location //The location of the wound, if any.
 
+/wound/destroy()
+	weapon = null
+	inflictor = null
+	victim = null
+	location = null
+	return ..()
+
 /wound/New(var/mob/living/desired_owner,var/obj/item/organ/desired_location,var/atom/desired_inflictor,var/atom/desired_weapon,var/severity=1)
 	..()
 	victim = desired_owner

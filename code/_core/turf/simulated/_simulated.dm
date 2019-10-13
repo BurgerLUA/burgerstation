@@ -10,6 +10,10 @@
 
 	dynamic_lighting = TRUE
 
+/turf/simulated/destroy()
+	spawning_data.Cut()
+	return ..()
+
 /turf/simulated/Initialize()
 	. = ..()
 	update_icon()

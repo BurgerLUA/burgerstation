@@ -12,18 +12,19 @@
 			return FALSE
 
 	if(damage_type && all_damage_types[damage_type])
-		var/damagetype/DT = all_damage_types[damage_type]
+		if(owner && !owner.qdeleting)
+			var/damagetype/DT = all_damage_types[damage_type]
 
-		var/list/params = list()
-		params[PARAM_ICON_X] = shoot_x
-		params[PARAM_ICON_Y] = shoot_y
+			var/list/params = list()
+			params[PARAM_ICON_X] = shoot_x
+			params[PARAM_ICON_Y] = shoot_y
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
-		if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
-		if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
-		if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
+			if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
+			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
 
-		DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed)
+			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed)
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 

@@ -82,6 +82,12 @@
 
 /mob/living/advanced/destroy()
 
+	for(var/obj/item/organ/O in organs)
+		qdel(O)
+
+	organs.Cut()
+	labeled_organs.Cut()
+
 	inventory.Cut()
 	stored_chat_text.Cut()
 	overlays_assoc.Cut()

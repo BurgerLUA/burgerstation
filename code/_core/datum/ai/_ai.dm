@@ -38,6 +38,14 @@
 
 	var/enabled = FALSE
 
+/ai/destroy()
+	owner = null
+	objective_move = null
+	objective_attack = null
+	objective_defend = null
+	start_turf = null
+	return ..()
+
 /ai/New(var/mob/living/desired_owner)
 
 	owner = desired_owner

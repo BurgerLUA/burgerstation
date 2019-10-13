@@ -14,8 +14,8 @@
 	var/atom/weapon //What weapon did the projectile come from?
 	var/atom/blamed //Who should we blame for the damage?
 
-	var/previous_loc
-	var/current_loc
+	var/atom/previous_loc
+	var/atom/current_loc
 
 	var/last_loc_x = 0
 	var/last_loc_y = 0
@@ -49,9 +49,14 @@
 	var/steps_allowed = 0
 
 /obj/projectile/destroy()
-	blamed = null
 	owner = null
 	weapon = null
+	blamed = null
+	target_atom = null
+	target_turf = null
+	previous_loc = null
+	current_loc = null
+
 	all_projectiles -= src
 	return ..()
 

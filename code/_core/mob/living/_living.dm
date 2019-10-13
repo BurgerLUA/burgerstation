@@ -1,4 +1,5 @@
 /mob/living/
+
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 	var/list/faction/factions
@@ -118,9 +119,40 @@
 	var/should_be_knocked_down = FALSE
 
 /mob/living/destroy()
+
+	factions.Cut()
+
+	for(var/experience/E in attributes)
+		qdel(E)
+
+	attributes.Cut()
+
+	for(var/experience/E in skills)
+		qdel(E)
+
+	skills.Cut()
+
 	qdel(ai)
 	ai = null
+
+	if(screen_blood)
+		for(var/obj/hud/screen_blood/S in screen_blood)
+			qdel(S)
+
+		screen_blood.Cut()
+
 	all_living -= src
+
+	if(old_turf)
+		old_turf.old_living -= src
+
+	old_turf = null
+
+	if(boss)
+		tracked_bosses -= src
+
+	players_fighting_boss.Cut()
+
 	return ..()
 
 /mob/living/proc/get_brute_color()

@@ -11,6 +11,10 @@
 
 	var/choice/linked_choice
 
+/obj/hud/button/choice/destroy()
+	linked_choice = null
+	return ..()
+
 /obj/hud/button/choice/New(var/desired_loc,var/desired_choice)
 	linked_choice = desired_choice
 	return ..()

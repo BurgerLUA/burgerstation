@@ -34,7 +34,7 @@
 
 	var/override_icon = FALSE
 
-	var/wound/wounds = list()
+	var/list/wound/wounds = list()
 
 	var/doing_progress = FALSE
 
@@ -62,15 +62,38 @@
 
 /atom/destroy()
 
+	for(var/wound/W in wounds)
+		qdel(W)
+
+	wounds.Cut()
+
+	for(var/blend_id in additional_blends)
+		var/icon_blend/IB = additional_blends[blend_id]
+		qdel(IB)
+
+	additional_blends.Cut()
+
+	for(var/datum/O in underlays)
+		qdel(O)
 	underlays.Cut()
+
+	for(var/datum/O in overlays)
+		qdel(O)
 	overlays.Cut()
 
 	if(reagents)
 		qdel(reagents)
 
-	invisibility = 101
+	reagents = null
+
 	if(thinks)
 		all_thinkers -= src
+
+	for(var/atom/A in contents)
+		qdel(A)
+
+	appearance = null
+	invisibility = 101
 
 	return ..()
 

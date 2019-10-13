@@ -59,6 +59,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	return .
 
 /mob/living/advanced/player/destroy()
+	if(area && area.players_inside)
+		area.players_inside -= src
 	all_players -= src
 	qdel(mobdata)
 	mobdata = null

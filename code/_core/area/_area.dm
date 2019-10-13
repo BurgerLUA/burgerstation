@@ -43,6 +43,10 @@
 
 	var/weather = WEATHER_NONE //Optional weather
 
+/area/destroy()
+	players_inside.Cut()
+	return ..()
+
 /area/New()
 	. = ..()
 

@@ -10,6 +10,10 @@
 
 	var/obj/item/crafting/stored_crafting_table
 
+/obj/hud/button/crafting/destroy()
+	stored_crafting_table = null
+	return ..()
+
 /obj/hud/button/crafting/craft
 	name = "craft object"
 	icon_state = "arrow"

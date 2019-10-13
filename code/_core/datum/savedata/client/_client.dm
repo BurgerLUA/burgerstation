@@ -2,6 +2,10 @@
 	var/client/owner
 	var/bot_controlled = FALSE
 
+/savedata/client/destroy()
+	owner = null
+	return ..()
+
 /savedata/client/New(var/client/new_owner)
 
 	if(new_owner)

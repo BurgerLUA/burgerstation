@@ -10,7 +10,6 @@ var/list/qdel_refs_to_type = list()
 
 /datum/proc/destroy()
 	tag = null // required to GC
-	objects_to_delete -= src
 	return TRUE
 
 /proc/qdel(var/datum/object)
@@ -19,7 +18,7 @@ var/list/qdel_refs_to_type = list()
 
 		if(!object.qdel_warning)
 			object.qdel_attempts += 1
-			if(object.qdel_attempts >= 5)
+			if(object.qdel_attempts >= 2)
 				object.qdel_warning = TRUE
 				LOG_ERROR("WARNING: Object of type [object.type](Name: [object.name], ID:[object.id]) was queued for delete [object.qdel_attempts] times!")
 

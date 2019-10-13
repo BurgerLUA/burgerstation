@@ -79,6 +79,21 @@
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
+	qdel(plane_master_wall)
+	plane_master_wall = null
+
+	qdel(plane_master_mob)
+	plane_master_mob = null
+
+	qdel(paralax)
+	paralax = null
+
+	qdel(plane_master_darkness)
+	plane_master_darkness = null
+
+	qdel(plane_master_tree)
+	plane_master_tree = null
+
 	return ..()
 
 /mob/can_attack(var/atom/victim,var/atom/weapon,var/params)

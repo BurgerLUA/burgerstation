@@ -50,6 +50,11 @@
 
 	var/base_miss_chance = 0
 
+/obj/item/organ/destroy()
+	attached_organ = null
+	attached_organs.Cut()
+	return ..()
+
 /obj/item/organ/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 
 	if(src.loc && !is_turf(src.loc))

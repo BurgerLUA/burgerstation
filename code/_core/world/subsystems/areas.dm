@@ -10,7 +10,6 @@
 	var/is_raining = FALSE
 	var/is_snowing = FALSE
 
-
 /subsystem/weather/Initialize()
 
 	if(!ENABLE_WEATHERGEN)

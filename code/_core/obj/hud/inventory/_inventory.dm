@@ -81,6 +81,7 @@
 	worn_objects.Cut()
 
 	update_owner(null)
+
 	parent_inventory = null
 	child_inventory = null
 	grabbed_object = null
@@ -169,14 +170,14 @@
 
 /obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
-	if(!is_advanced(desired_owner))
-		return FALSE
-
 	if(owner == desired_owner)
 		return FALSE
 
 	if(owner)
 		owner.remove_inventory(src)
+
+	if(!is_advanced(desired_owner))
+		return FALSE
 
 	owner = desired_owner
 

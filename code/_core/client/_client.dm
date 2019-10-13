@@ -55,8 +55,11 @@ var/global/list/all_clients = list()
 
 	var/allow_zoom_controls = TRUE
 
-/*
 /client/Del() // Can't have destroy.
+
+	known_inventory.Cut()
+	known_buttons.Cut()
+	known_health_elements.Cut()
 
 	last_location = null
 	last_object = null
@@ -82,7 +85,6 @@ var/global/list/all_clients = list()
 	world.update_status()
 
 	return ..()
-*/
 
 /client/proc/setup_stylesheets()
 	winset(src,"chat_all.output","style='[STYLESHEET]'")
