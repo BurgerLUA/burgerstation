@@ -84,39 +84,89 @@
 	return TRUE
 
 /mob/living/proc/on_stunned()
+	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground!")
 	return TRUE
 
-/mob/living/proc/on_paralyze()
+/mob/living/proc/on_unstunned()
+	src.visible_message("\The [src.name] gets up!","You force yourself on your feet!")
+	return TRUE
+
+/mob/living/proc/on_paralyzed()
+	src.visible_message("\The [src.name] collapses!","You can't move your limbs!")
+	return TRUE
+
+/mob/living/proc/on_unparalyzed()
+	src.visible_message("\The [src.name] shakes themselves up","You regain control of your limbs!")
+	return TRUE
+
+/mob/living/proc/on_fatigued()
+	src.visible_message("\The [src.name] blacks out!","You black out!")
+	return TRUE
+
+/mob/living/proc/on_unfatigued()
+	stamina_current = stamina_max
+	src.visible_message("\The [src.name] wakes up!","You wake up feeling [health_current < health_max ? "refreshed... sort of." : "refreshed!"]")
 	return TRUE
 
 /mob/living/proc/handle_status_effects()
 
 	if(is_turf(src.loc))
 
+		var/desired_should_be_knocked_down = FALSE
+
+		if(status & FLAG_STATUE_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
+			status &= ~FLAG_STATUE_FATIGUE
+			on_unfatigued()
+
+		if(!(status & FLAG_STATUE_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
+			status |= FLAG_STATUE_FATIGUE
+			on_fatigued()
+
 		if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
 			status &= ~FLAG_STATUS_STUN
-			animate(src,transform = matrix(), time = 1)
+			on_unstunned()
 
 		if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
 			status |= FLAG_STATUS_STUN
-			animate(src,transform = turn(matrix(), stun_angle), time = 1)
 			on_stunned()
 
 		if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
 			status &= ~FLAG_STATUS_PARALYZE
+			on_unparalyzed()
 
 		if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
 			status |= FLAG_STATUS_PARALYZE
-			on_paralyze()
-
-		if(status & FLAG_STATUS_DEAD)
-			return FALSE
+			on_paralyzed()
 
 		if(stun_time != -1)
 			stun_time = max(0,stun_time - LIFE_TICK)
 
 		if(paralyze_time != -1)
 			paralyze_time = max(0,paralyze_time - LIFE_TICK)
+
+		if(fatigue_time != -1)
+			if(stamina_current == stamina_max)
+				fatigue_time = 0
+			else
+				fatigue_time = max(0,fatigue_time - LIFE_TICK)
+
+		if(sleep_time != -1)
+			sleep_time = max(0,sleep_time - LIFE_TICK)
+
+		if(stun_time || paralyze_time || fatigue_time || sleep_time || status & FLAG_STATUS_DEAD)
+			desired_should_be_knocked_down = TRUE
+
+		if(desired_should_be_knocked_down != should_be_knocked_down)
+			if(desired_should_be_knocked_down) //KNOCK DOWN
+				animate(src,transform = turn(matrix(), stun_angle), time = 1)
+			else //GET UP
+				animate(src,transform = matrix(), time = 1)
+			should_be_knocked_down = desired_should_be_knocked_down
+
+		if(status & FLAG_STATUS_DEAD)
+			return FALSE
+
+
 
 	handle_health_buffer()
 

@@ -159,16 +159,33 @@
 		C.quick_equip(src)
 
 mob/living/advanced/Login()
-	..()
+	. = ..()
 	if(loc != null)
 		restore_buttons()
 		restore_inventory()
 		restore_health_elements()
 		restore_local_machines()
+	return .
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
+
+/mob/living/advanced/adjust_fatigue_loss(var/value)
+
+	if(!value)
+		return 0
+
+	if(fatigue_time > 0)
+		return 0
+
+	adjust_stamina(-value)
+
+	if(stamina_current <= 0)
+		add_fatigue(600)
+
+	return value
+
 
 /mob/living/advanced/adjust_brute_loss(var/value)
 	return heal_all_organs(-value,0,0,0)
@@ -181,6 +198,13 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/adjust_oxy_loss(var/value)
 	return heal_all_organs(0,0,0,-value)
+
+//Not needed
+
+/*
+/mob/living/advanced/adjust_fatigue_loss(var/value)
+	return heal_all_organs(0,0,0,0,-value)
+*/
 
 /mob/living/advanced/on_life_client()
 
@@ -326,55 +350,41 @@ mob/living/advanced/Login()
 
 	return TRUE
 
-/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy)
+/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy,var/fatigue) //BEHOLD: SHITCODE.
+
+	var/list/desired_heal_amounts = list(
+		BRUTE = brute,
+		BURN = burn,
+		TOX = tox,
+		OXY = oxy
+	) //Fatigue not included here. Organs are told to directly deal fatigue damage to the owner.
 
 	var/list/damaged_organs = list()
 
-	var/total_brute = 0
-	var/total_burn = 0
-	var/total_tox = 0
-	var/total_oxy = 0
+	var/list/damage_totals = list()
 
 	for(var/organ_id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[organ_id]
-		var/brute_loss = O.get_brute_loss()
-		var/burn_loss = O.get_burn_loss()
-		var/tox_loss = O.get_tox_loss()
-		var/oxy_loss = O.get_oxy_loss()
-		damaged_organs[organ_id] = list()
-		if(brute_loss)
-			damaged_organs[organ_id][BRUTE] = brute_loss
-		if(burn_loss)
-			damaged_organs[organ_id][BURN] = burn_loss
-		if(tox_loss)
-			damaged_organs[organ_id][TOX] = tox_loss
-		if(oxy_loss)
-			damaged_organs[organ_id][OXY] = oxy_loss
-		total_brute += brute_loss
-		total_burn += burn_loss
-		total_tox += tox_loss
-		total_oxy += oxy_loss
+		for(var/damage_type in O.damage)
+			var/damage_amount =  O.damage[damage_type]
+			if(!damage_amount)
+				continue
+			if(!damaged_organs[organ_id])
+				damaged_organs[organ_id] = list()
+			damaged_organs[organ_id][damage_type] += damage_amount
+			damage_totals[damage_type] += damage_amount
 
 	var/total_healed = 0
 
 	for(var/organ_id in damaged_organs)
 		var/obj/item/organ/O = labeled_organs[organ_id]
-		if(damaged_organs[organ_id][BRUTE] && total_brute > 0 && brute > 0)
-			var/heal_amount = (damaged_organs[organ_id][BRUTE] / total_brute) * brute
-			O.adjust_brute_loss(-heal_amount)
-			total_healed += heal_amount
-		if(damaged_organs[organ_id][BURN]  && total_burn > 0 && burn > 0)
-			var/heal_amount = (damaged_organs[organ_id][BURN] / total_burn) * burn
-			O.adjust_burn_loss(-heal_amount)
-			total_healed += heal_amount
-		if(damaged_organs[organ_id][TOX]  && total_tox > 0 && tox > 0)
-			var/heal_amount = (damaged_organs[organ_id][TOX] / total_tox) * tox
-			O.adjust_tox_loss(-heal_amount)
-			total_healed += heal_amount
-		if(damaged_organs[organ_id][OXY]  && total_oxy > 0 && oxy > 0)
-			var/heal_amount = (damaged_organs[organ_id][OXY] / total_oxy) * oxy
-			O.adjust_oxy_loss(-heal_amount)
-			total_healed += heal_amount
+		for(var/damage_type in damaged_organs[organ_id])
+			var/damage_amount_of_type = damaged_organs[organ_id][damage_type]
+			var/heal_amount_of_type = desired_heal_amounts[damage_type]
+			var/total_damage_of_type = damage_totals[damage_type]
+			if(damage_amount_of_type <= 0 || heal_amount_of_type <= 0 || total_damage_of_type <= 0)
+				continue
+			total_healed += O.adjust_loss(damage_type,(heal_amount_of_type / total_damage_of_type) * heal_amount_of_type)
 		O.update_health()
 
 	if(total_healed)

@@ -46,7 +46,7 @@ mob/living/advanced/proc/handle_regen()
 
 	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT) && health_current < health_max)
 		var/heal_amount = health_regeneration*LIFE_TICK_SLOW*0.1
-		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount)
+		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount,heal_amount,0)
 		if(health_adjust)
 			add_skill_xp(SKILL_RECOVERY,health_adjust)
 

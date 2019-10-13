@@ -11,7 +11,6 @@
 
 	return TRUE
 
-
 /mob/living/proc/add_paralyze(var/value,var/max_value = 40)
 
 	if(paralyze_time == -1)
@@ -22,6 +21,19 @@
 
 	if(paralyze_time < max_value)
 		paralyze_time = min(max_value,paralyze_time + value)
+
+	return TRUE
+
+/mob/living/proc/add_fatigue(var/value,var/max_value = 600)
+
+	if(fatigue_time == -1)
+		return FALSE
+
+	if(fatigue_time > max_value)
+		return FALSE
+
+	if(fatigue_time < max_value)
+		fatigue_time = min(max_value,fatigue_time + value)
 
 	return TRUE
 

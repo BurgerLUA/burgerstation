@@ -19,6 +19,7 @@ var/global/list/all_living = list()
 	var/stun_time = 0 //Deciseconds of stun. Stun is being knocked down.
 	var/sleep_time = 0 //Decieconds of sleep Sleep is being knocke down and blind.
 	var/paralyze_time = 0 //Decieconds of paralyze. Paralyze is being unable to move.
+	var/fatigue_time = 0 //Deciseconds of fatigue.
 
 	var/first_life = TRUE
 
@@ -116,6 +117,8 @@ var/global/list/all_living = list()
 
 	var/allow_experience_gains = FALSE
 
+	var/should_be_knocked_down = FALSE
+
 /mob/living/proc/get_brute_color()
 	return "#FF0000"
 
@@ -153,7 +156,7 @@ var/global/list/all_living = list()
 		screen_blood += new /obj/hud/screen_blood(src,NORTHEAST)
 		screen_blood += new /obj/hud/screen_blood(src,SOUTHEAST)
 		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
+		//screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
 
 	all_living += src
 

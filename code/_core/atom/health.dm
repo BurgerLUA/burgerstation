@@ -1,5 +1,5 @@
-/atom/proc/get_overall_health()
-	return health_max - get_total_loss()
+/atom/proc/get_overall_health(var/includes_fatigue = FALSE)
+	return health_max - get_total_loss(includes_fatigue)
 
 //Setting
 /atom/proc/set_brute_loss(var/value)

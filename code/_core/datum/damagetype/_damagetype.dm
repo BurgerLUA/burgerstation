@@ -269,6 +269,7 @@
 	var/burn_damage_to_deal = 0
 	var/tox_damage_to_deal = 0
 	var/oxy_damage_to_deal = 0
+	var/fatigue_damage_to_deal = 0
 
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
@@ -282,14 +283,18 @@
 				tox_damage_to_deal += damage_amount
 			if(OXY)
 				oxy_damage_to_deal += damage_amount
+			if(FATIGUE)
+				fatigue_damage_to_deal += damage_amount
 
 	do_attack_animation(attacker,victim,weapon,hit_object)
 
 	var/brute_damage_dealt = brute_damage_to_deal ? hit_object.adjust_brute_loss(brute_damage_to_deal) : 0
 	var/burn_damage_dealt = burn_damage_to_deal ? hit_object.adjust_burn_loss(burn_damage_to_deal) : 0
-	var/tox_damage_dealt = oxy_damage_to_deal ? hit_object.adjust_tox_loss(oxy_damage_to_deal) : 0
-	var/oxy_damage_dealt = tox_damage_to_deal ? hit_object.adjust_oxy_loss(tox_damage_to_deal) : 0
-	var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt
+	var/tox_damage_dealt = tox_damage_to_deal ? hit_object.adjust_tox_loss(tox_damage_to_deal) : 0
+	var/oxy_damage_dealt = oxy_damage_to_deal ? hit_object.adjust_oxy_loss(oxy_damage_to_deal) : 0
+	var/fatigue_damage_dealt = fatigue_damage_to_deal ? hit_object.adjust_fatigue_loss(fatigue_damage_to_deal) : 0
+
+	var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt + fatigue_damage_dealt
 
 	if(!total_damage_dealt)
 		display_glance_message(attacker,victim,weapon,hit_object)

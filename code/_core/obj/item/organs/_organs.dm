@@ -138,6 +138,14 @@
 
 	return value
 
+/obj/item/organ/adjust_fatigue_loss(var/value)
+	if(!src.loc || !is_advanced(src.loc))
+		return 0
+
+	var/mob/living/advanced/A = src.loc
+
+	return A.adjust_fatigue_loss(value)
+
 /obj/item/organ/proc/attach_to(var/obj/item/organ/O)
 	attached_organ = O
 	O.attached_organs += src
