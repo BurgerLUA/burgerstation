@@ -15,6 +15,7 @@
 	return .
 
 /ai/advanced/ranged/wizard/handle_attacking()
+
 	. = ..()
 
 	if(objective_attack && attack_ticks == 0)

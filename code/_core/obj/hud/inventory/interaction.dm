@@ -1,5 +1,7 @@
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	world.log << "/obj/hud/inventory/click_on_object(): [caller] is clicking on [object]"
+
 	if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = src.defer_click_on_object()
@@ -17,7 +19,6 @@
 
 			I.drop_item(get_turf(caller))
 			I.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
-			//caller.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
 
 		return TRUE
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.

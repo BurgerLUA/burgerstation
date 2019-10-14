@@ -143,7 +143,6 @@
 #include "code\_core\client\verbs\volume.dm"
 #include "code\_core\datum\_datum.dm"
 #include "code\_core\datum\ai\_ai.dm"
-#include "code\_core\datum\ai\crusader.dm"
 #include "code\_core\datum\ai\slime.dm"
 #include "code\_core\datum\ai\summon.dm"
 #include "code\_core\datum\ai\villager.dm"

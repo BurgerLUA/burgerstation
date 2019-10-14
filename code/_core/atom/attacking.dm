@@ -1,7 +1,7 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!attacker)
 		attacker = src
@@ -9,7 +9,7 @@
 	if(!blamed)
 		blamed = attacker
 
-	if(!params)
+	if(!length(params))
 		params = list()
 
 	victim = victim.change_victim(attacker)
@@ -34,6 +34,8 @@
 
 			params[PARAM_ICON_X] = attack_x
 			params[PARAM_ICON_Y] = attack_y
+
+	world.log << "THE attack() PARAMS ARE: [params[PARAM_ICON_X]] AND [params[PARAM_ICON_Y]]."
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)

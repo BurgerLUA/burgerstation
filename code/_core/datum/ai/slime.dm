@@ -1,7 +1,8 @@
 /ai/slime/
 	name = "Slime AI"
 	radius_find_enemy = 12
-	target_distribution = list(0,0,0,0,4,8)
+
+	target_distribution_y = list(0,0,0,0,4,8)
 
 	objective_delay = 10
 	attack_delay = 1
@@ -75,7 +76,7 @@
 				self.absorb_slime(objective_attack)
 			else
 				owner.move_dir = 0
-					owner.attack(owner,objective_attack)
+				return ..()
 
 	attack_ticks = 0
 

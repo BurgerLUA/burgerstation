@@ -8,7 +8,7 @@
 	attack_delay = 1000
 	movement_delay = SECONDS_TO_DECISECONDS(5)
 
-	target_distribution = list(32)
+	target_distribution_y = list(32)
 
 	simple = TRUE
 	sync_movement_delay = TRUE

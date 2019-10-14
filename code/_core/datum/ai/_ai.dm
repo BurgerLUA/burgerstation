@@ -19,7 +19,8 @@
 	var/attack_delay = 0
 	var/movement_delay = 0
 
-	var/list/target_distribution = list(16,16,16,8,8,32,32)
+	var/list/target_distribution_x = list(0,16,16,16,32)
+	var/list/target_distribution_y = list(16,16,16,8,8,32,32)
 
 	var/turf/start_turf
 
@@ -37,6 +38,8 @@
 	var/attack_distance = 1
 
 	var/enabled = FALSE
+
+	var/left_click_chance = 90
 
 /ai/destroy()
 	owner = null
@@ -93,8 +96,8 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
 		owner.move_dir = 0
 		var/list/params = list(
-			PARAM_ICON_X = num2text(pick(-16,-1,-1,1,1,16)),
-			PARAM_ICON_Y = num2text(pick(target_distribution)),
+			PARAM_ICON_X = num2text(pick(target_distribution_x)),
+			PARAM_ICON_Y = num2text(pick(target_distribution_y)),
 			"left" = 0,
 			"right" = 0,
 			"middle" = 0,
@@ -103,12 +106,12 @@
 			"alt" = 0
 		)
 
-		if(prob(90))
+		if(prob(left_click_chance))
 			params["left"] = TRUE
-			owner.on_left_down(objective_attack,owner,null,params)
+			owner.on_left_down(objective_attack,null,null,params)
 		else
 			params["right"] = TRUE
-			owner.on_right_down(objective_attack,owner,null,params)
+			owner.on_right_down(objective_attack,null,null,params)
 
 		attack_message()
 

@@ -8,4 +8,4 @@
 	attack_delay = 10
 	movement_delay = 10
 
-	target_distribution = list(16,16,32,32,32,32,32) //BRAINS
+	target_distribution_y = list(16,16,32,32,32,32,32) //BRAINS

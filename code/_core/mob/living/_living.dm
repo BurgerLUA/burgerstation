@@ -47,21 +47,6 @@
 	var/boss_range = VIEW_RANGE
 	var/list/mob/living/advanced/player/players_fighting_boss
 
-	var/attack_mode = 1
-	var/list/attack_left = list(
-		list(16,16),
-		list(16,16),
-		list(16,16),
-		list(16,16)
-
-	)
-	var/list/attack_right = list(
-		list(16,16),
-		list(16,16),
-		list(16,16),
-		list(16,16)
-	)
-
 	var/is_sneaking = FALSE
 	var/stealth_mod = 0
 

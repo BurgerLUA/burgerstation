@@ -8,4 +8,4 @@
 	attack_delay = 1
 	movement_delay = 1
 
-	target_distribution = list(8,16,16,16,16,32,32,32)
+	target_distribution_y = list(8,16,16,16,16,32,32,32)

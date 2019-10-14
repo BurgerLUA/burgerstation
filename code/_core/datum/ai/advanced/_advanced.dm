@@ -8,14 +8,13 @@
 	attack_delay = 1
 	movement_delay = 1
 
-	target_distribution = list(0,8,8,16,16,16,32,32,32,32,64,64,64)
+	target_distribution_y = list(0,8,8,16,16,16,32,32,32,32,64,64,64)
 
 	sync_movement_delay = TRUE
 	sync_attack_delay = FALSE
 	simple = TRUE
 	stationary = FALSE
 
-	var/left_click_chance = 90
 	var/kick_chance = 10
 
 /ai/advanced/handle_attacking()
@@ -36,8 +35,8 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= weapon_distance)
 		owner.move_dir = 0
 		var/list/params = list(
-			PARAM_ICON_X = num2text(pick(-16,-1,-1,1,1,16)),
-			PARAM_ICON_Y = num2text(pick(target_distribution)),
+			PARAM_ICON_X = num2text(pick(0,16,16,16,32)),
+			PARAM_ICON_Y = num2text(pick(target_distribution_y)),
 			"left" = 0,
 			"right" = 0,
 			"middle" = 0,

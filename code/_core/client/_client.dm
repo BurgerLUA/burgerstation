@@ -259,7 +259,6 @@ var/global/list/all_clients = list()
 		examine(object)
 		return TRUE
 
-
 	..()
 
 /client/proc/get_variables(var/datum/object)
@@ -293,9 +292,7 @@ var/global/list/all_clients = list()
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
 
-
 	if(is_advanced(mob))
-
 		var/mob/living/advanced/A = mob
 		var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
 		click_and_drag_icon.stored_object = null

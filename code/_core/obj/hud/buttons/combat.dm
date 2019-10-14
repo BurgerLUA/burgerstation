@@ -85,15 +85,15 @@
 
 /obj/hud/button/targeting/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_living(caller))
+	if(!is_player(caller))
 		return
 
 	if(!caller.client)
 		return
 
-	var/mob/living/L = caller
+	var/mob/living/advanced/player/P = caller
 
-	var/click_flags = L.client.get_click_flags(params,TRUE)
+	var/click_flags = P.client.get_click_flags(params,TRUE)
 
 	if(!(params[PARAM_ICON_X] && params[PARAM_ICON_Y]))
 		return
@@ -117,9 +117,9 @@
 			if(2 to 8)
 				mode = 4
 
-	L.attack_mode = mode
-	L.attack_right = right
-	L.attack_left = left
+	P.attack_mode = mode
+	P.attack_right = right
+	P.attack_left = left
 	update_icon()
 
 	return ..()

@@ -51,7 +51,7 @@
 		new /mob/living/simple/npc/cult/harvester(owner.loc)
 		spawned_mobs += 1
 
-	attack_ticks = 0
+	return ..()
 
 /ai/simple/artificer/handle_movement()
 

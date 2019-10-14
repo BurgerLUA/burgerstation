@@ -31,9 +31,8 @@
 			var/shoot_chance = max(0,distance*10 - 25) + max(0,failed_attack_frames - 25)
 
 			if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
-				owner.move_dir = 0
-				owner.attack(owner,objective_attack)
 				failed_attack_frames = 0
+				return ..()
 			else if(fly_delay <= 0 && prob(fly_chance))
 				owner_as_ash_drake.fly()
 				var/fly_multiplier = Clamp(owner_as_ash_drake.health_current / owner_as_ash_drake.health_max,0.5,1)

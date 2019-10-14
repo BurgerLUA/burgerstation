@@ -23,16 +23,6 @@
 
 	movement_ticks = 0
 
-
-
-/ai/summon/handle_attacking()
-
-	if(objective_attack && get_dist(owner,objective_attack) <= 1)
-		owner.move_dir = 0
-		owner.attack(owner,objective_attack)
-
-	attack_ticks = 0
-
 /ai/summon/hostile_message()
 	owner.say("YOU SHALL SUFFER FOR THE SINS AGAINST MY MASTER.")
 

@@ -1,7 +1,7 @@
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,params)
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/list/params = list())
 
-	if(!params)
-		params = list(PARAM_ICON_X = rand(16,32),PARAM_ICON_Y = rand(16,32))
+	if(!length(params))
+		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
 
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
@@ -43,7 +43,11 @@
 	return ..()
 
 /mob/living/proc/get_current_target_cords(params)
+	return list(params[PARAM_ICON_X],params[PARAM_ICON_Y])
 
+
+
+/mob/living/advanced/player/get_current_target_cords(params)
 	if(!params || !client)
 		return list(16,16)
 

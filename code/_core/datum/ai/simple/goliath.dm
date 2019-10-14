@@ -8,7 +8,7 @@
 	attack_delay = 1
 	movement_delay = 1
 
-	target_distribution = list(8,8,8,8,16,32)
+	target_distribution_y = list(8,8,8,8,16,32)
 
 	sync_attack_delay = TRUE
 	sync_movement_delay = TRUE
@@ -29,8 +29,7 @@
 
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) <= attack_distance)
-			owner.move_dir = 0
-			owner.attack(owner,objective_attack)
+			return ..()
 		else if(tentacle_attack_ticks < 15)
 			tentacle_attack_ticks++
 		else

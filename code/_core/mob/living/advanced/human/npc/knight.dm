@@ -3,7 +3,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/crusader
+	ai = /ai/advanced
 	class = "crusader"
 
 /mob/living/advanced/npc/deus_vault/Initialize()

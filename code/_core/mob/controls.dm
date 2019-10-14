@@ -1,17 +1,17 @@
 mob/proc/on_left_click(object,location,control,params)
-	return can_use_controls(object,location,control,params)
+	return FALSE
 
 mob/proc/on_right_click(object,location,control,params)
-	return can_use_controls(object,location,control,params)
+	return FALSE
 
 mob/proc/on_middle_click(object,location,control,params)
-	return can_use_controls(object,location,control,params)
+	return FALSE
 
 mob/proc/on_left_down(object,location,control,params)
-	return can_use_controls(object,location,control,params)
+	return FALSE
 
 mob/proc/on_right_down(object,location,control,params)
-	return can_use_controls(object,location,control,params)
+	return FALSE
 
 mob/proc/on_middle_down(object,location,control,params)
 	return can_use_controls(object,location,control,params)

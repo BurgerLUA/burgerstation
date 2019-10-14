@@ -42,6 +42,21 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	stamina_base = 100
 	mana_base = 100
 
+	var/attack_mode = 1
+	var/list/attack_left = list(
+		list(16,16),
+		list(16,16),
+		list(16,16),
+		list(16,16)
+
+	)
+	var/list/attack_right = list(
+		list(16,16),
+		list(16,16),
+		list(16,16),
+		list(16,16)
+	)
+
 /mob/living/advanced/player/apply_mob_parts()
 
 	if(!mobdata || mobdata.loaded_data["tutorial"])
