@@ -41,6 +41,8 @@
 
 	var/left_click_chance = 90
 
+	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
+
 /ai/destroy()
 	owner = null
 	objective_move = null
@@ -176,6 +178,9 @@
 	var/area/A = get_area(L)
 	var/area/starting_area = get_area(start_turf)
 	if(A && A.safe && !starting_area.safe)
+		return FALSE
+
+	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
 		return FALSE
 
 	if(simple)

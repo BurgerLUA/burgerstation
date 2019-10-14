@@ -127,19 +127,18 @@
 
 	var/obj/hud/inventory/I = defer_object
 
-	if(P.currency >= current_item_cost)
-		if(P.spend_currency(current_item_cost)) //Just in case
-			spawn()
-				current_item_quantity -= 1
-				var/obj/item/new_item = new current_item.type(get_turf(P))
-				new_item.on_spawn()
-				new_item.update_icon()
-				new_item.transfer_item(I)
-				P.to_chat(span("notice","You have successfully purchased \the [new_item] for [current_item_cost] telecrystal\s."))
-				if(current_item_quantity <= 0)
-					update_icon()
+	if(P.currency >= current_item_cost && P.spend_currency(current_item_cost)) //Just in case
+		spawn()
+			current_item_quantity -= 1
+			var/obj/item/new_item = new current_item.type(get_turf(P))
+			new_item.on_spawn()
+			new_item.update_icon()
+			new_item.transfer_item(I)
+			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [current_item_cost] telecrystal\s."))
+			if(current_item_quantity <= 0)
+				update_icon()
 
-			return TRUE
+		return TRUE
 
 	P.to_chat(span("notice","You don't have enough telecrystals ([current_item_cost] TC) to buy this!"))
 

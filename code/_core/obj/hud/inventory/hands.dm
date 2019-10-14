@@ -36,7 +36,7 @@
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.automatic_left = I.defer_click_on_object()
+		A.left_item = I.defer_click_on_object()
 
 	return .
 
@@ -44,8 +44,8 @@
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		if(A.automatic_left == I)
-			A.automatic_left = null
+		if(A.left_item == I)
+			A.left_item = null
 
 	return .
 
@@ -67,13 +67,13 @@
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.automatic_right = I.defer_click_on_object()
+		A.right_item = I.defer_click_on_object()
 
 /obj/hud/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc)
 	. = ..()
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		if(A.automatic_right == I)
-			A.automatic_right = null
+		if(A.right_item == I)
+			A.right_item = null
 
 	return .

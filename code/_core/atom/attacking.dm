@@ -35,8 +35,6 @@
 			params[PARAM_ICON_X] = num2text(attack_x)
 			params[PARAM_ICON_Y] = num2text(attack_y)
 
-	world.log << "THEY GOT [params[PARAM_ICON_X]] AND [params[PARAM_ICON_Y]]!"
-
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)
 

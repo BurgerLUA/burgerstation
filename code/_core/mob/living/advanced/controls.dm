@@ -133,26 +133,26 @@ mob/living/advanced/on_left_click(object,location,control,params) //THIS ONLY WO
 
 /mob/living/advanced/proc/do_automatic_left()
 
-	if(!client)
+	if(!client) //Non-clients shouldn't use this.
 		return FALSE
 
 	if(!can_use_controls(client.last_object,client.last_location,null,client.last_params))
 		return FALSE
 
-	if(automatic_left)
-		return automatic_left.do_automatic(src,client.last_object,client.last_location,client.last_params)
+	if(left_item)
+		return left_item.do_automatic(src,client.last_object,client.last_location,client.last_params)
 
 	return FALSE
 
 /mob/living/advanced/proc/do_automatic_right()
 
-	if(!client)
+	if(!client) //Non-clients shouldn't use this.
 		return FALSE
 
 	if(!can_use_controls(client.last_object,client.last_location,null,client.last_params))
 		return FALSE
 
-	if(automatic_right)
-		return automatic_right.do_automatic(src,client.last_object,client.last_location,client.last_params)
+	if(right_item)
+		return right_item.do_automatic(src,client.last_object,client.last_location,client.last_params)
 
 	return FALSE

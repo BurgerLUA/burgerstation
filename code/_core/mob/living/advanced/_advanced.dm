@@ -7,8 +7,7 @@
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
 
-	var/obj/item/automatic_left
-	var/obj/item/automatic_right
+
 
 	/*
 	icon = 'icons/invisible.dmi'
@@ -27,6 +26,9 @@
 
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand
+
+	var/obj/item/left_item
+	var/obj/item/right_item
 
 	var/is_typing = FALSE
 
@@ -99,8 +101,8 @@
 	worn_objects = null
 	left_hand = null
 	right_hand = null
-	automatic_left = null
-	automatic_right = null
+	left_item = null
+	right_item = null
 	active_inventory = null
 	driving = null
 	return ..()
@@ -228,32 +230,6 @@ mob/living/advanced/Login()
 /mob/living/advanced/adjust_fatigue_loss(var/value)
 	return heal_all_organs(0,0,0,0,-value)
 */
-
-/mob/living/advanced/on_life_client()
-
-	..()
-
-	if(automatic_ticks != 0)
-		automatic_ticks = Clamp(automatic_ticks - 1,0,5)
-	else
-
-		var/set_tick = FALSE
-
-		if(attack_flags & ATTACK_HELD_RIGHT)
-			if(!do_automatic_left())
-				attack_flags &= ~ATTACK_HELD_RIGHT
-			else
-				set_tick = TRUE
-
-		if(attack_flags & ATTACK_HELD_LEFT)
-			if(!do_automatic_right())
-				attack_flags &= ~ATTACK_HELD_LEFT
-			else
-				set_tick = TRUE
-
-		if(set_tick)
-			automatic_ticks = 5
-
 
 /mob/living/advanced/proc/apply_mob_parts()
 	add_species_organs()
