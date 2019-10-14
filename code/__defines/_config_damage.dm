@@ -27,7 +27,7 @@
 #define CLASS_B 0.25
 #define CLASS_C 0.20
 #define CLASS_D 0.15
-#define CLASS_E 0.1
+#define CLASS_E 0.10
 #define CLASS_F 0
 
 #define SKILL_F 0

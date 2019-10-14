@@ -7,7 +7,7 @@
 	attack_damage_base = list(
 		BLADE = DAMAGE_B,
 		PIERCE = DAMAGE_D,
-		DARK = DAMAGE_S
+		DARK = DAMAGE_C
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -29,7 +29,7 @@
 
 	skill_stats = list(
 		SKILL_MELEE = CLASS_D,
-		SKILL_MAGIC_CHAOS = CLASS_S
+		SKILL_MAGIC_CHAOS = CLASS_B
 	)
 
 	skill_damage = list(
@@ -39,5 +39,7 @@
 
 	skill_xp_per_damage = list(
 		SKILL_MELEE = SKILL_E,
-		SKILL_MAGIC_CHAOS = SKILL_A
+		SKILL_MAGIC_CHAOS = SKILL_C
 	)
+
+	throw_mul = 10

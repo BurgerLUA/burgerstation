@@ -12,13 +12,13 @@
 	charge_current -= charge_cost
 	return null
 
-/obj/item/weapon/ranged/laser/can_gun_shoot()
+/obj/item/weapon/ranged/laser/can_gun_shoot(var/mob/caller)
 
 	if(!..())
 		return FALSE
 
 	if(charge_current - charge_cost < 0)
-		handle_empty()
+		handle_empty(caller)
 		return FALSE
 
 

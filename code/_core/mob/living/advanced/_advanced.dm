@@ -414,8 +414,6 @@ mob/living/advanced/Login()
 	if(total_healed)
 		update_health(-total_healed,src,do_update = TRUE)
 
-	world.log << "TOTAL HEALED FOR [src]: [total_healed]"
-
 	return total_healed
 
 /mob/living/advanced/proc/add_outfit(var/outfit_id,var/soul_bound=FALSE)

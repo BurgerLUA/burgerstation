@@ -464,30 +464,30 @@
 
 /damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [hit_object] with \the [get_weapon_name(weapon)].")
+		return span("danger","\The [attacker.name] [pick(attack_verbs)]s \the [hit_object.name]] with \the [get_weapon_name(weapon)].")
 	else
-		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)].")
+		return span("danger","\The [attacker.name]] [pick(attack_verbs)]s \the [victim.name]]'s [hit_object.name] with \the [get_weapon_name(weapon)].")
 
 /damagetype/proc/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("warning","You [pick(attack_verbs)] \the [hit_object] with your [get_weapon_name(weapon)].")
+		return span("warning","You [pick(attack_verbs)] \the [hit_object.name]] with your [get_weapon_name(weapon)].")
 	else
-		return span("warning","You [pick(attack_verbs)] \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)].")
+		return span("warning","You [pick(attack_verbs)] \the [victim.name]]'s [hit_object.name] with your [get_weapon_name(weapon)].")
 
 /damagetype/proc/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear a sickening impact.")
 
 /damagetype/proc/get_miss_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("danger","\The [attacker] [pick(miss_verbs)]s at \the [hit_object] with \the [get_weapon_name(weapon)], but the attack was #REASON!")
+		return span("danger","\The [attacker.name]] [pick(miss_verbs)]s at \the [hit_object.name]] with \the [get_weapon_name(weapon)], but the attack was #REASON!")
 	else
-		return span("danger","\The [attacker] [pick(miss_verbs)]s at \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)], but the attack was #REASON!")
+		return span("danger","\The [attacker.name]] [pick(miss_verbs)]s at \the [victim.name]]'s [hit_object.name] with \the [get_weapon_name(weapon)], but the attack was #REASON!")
 
 /damagetype/proc/get_miss_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
 		return span("warning","You [pick(miss_verbs)] at \the [hit_object.name] with your [get_weapon_name(weapon)], but the attack was #REASON!")
 	else
-		return span("warning","You [pick(miss_verbs)] at \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)], but the attack was #REASON!")
+		return span("warning","You [pick(miss_verbs)] at \the [victim.name]]'s [hit_object.name] with your [get_weapon_name(weapon)], but the attack was #REASON!")
 
 /damagetype/proc/get_miss_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear a swoosh...")
@@ -497,15 +497,15 @@
 
 /damagetype/proc/get_glance_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("warning","You [pick(attack_verbs)] \the [hit_object] with your [get_weapon_name(weapon)]... but it has no effect!")
+		return span("warning","You [pick(attack_verbs)] \the [hit_object.name]] with your [get_weapon_name(weapon)]... but it has no effect!")
 	else
-		return span("warning","You [pick(attack_verbs)] \the [victim]'s [hit_object.name] with your [get_weapon_name(weapon)]... but it has no effect!")
+		return span("warning","You [pick(attack_verbs)] \the [victim.name]]'s [hit_object.name] with your [get_weapon_name(weapon)]... but it has no effect!")
 
 /damagetype/proc/get_glance_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(victim == hit_object)
-		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [hit_object] with \the [get_weapon_name(weapon)]... but it has no effect!")
+		return span("danger","\The [attacker.name]] [pick(attack_verbs)]s \the [hit_object.name]] with \the [get_weapon_name(weapon)]... but it has no effect!")
 	else
-		return span("danger","\The [attacker] [pick(attack_verbs)]s \the [victim]'s [hit_object.name] with \the [get_weapon_name(weapon)]... but it has no effect!")
+		return span("danger","\The [attacker.name]] [pick(attack_verbs)]s \the [victim.name]]'s [hit_object.name] with \the [get_weapon_name(weapon)]... but it has no effect!")
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 

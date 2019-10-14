@@ -4,8 +4,13 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/advanced/ashwalker
+	ai = /ai/advanced/daddy
 	class = "daddy"
+
+
+/mob/living/advanced/npc/daddy/setup_name()
+	name = "\improper THE LEGEND (SL 99)"
+	return TRUE
 
 /mob/living/advanced/npc/daddy/Initialize()
 

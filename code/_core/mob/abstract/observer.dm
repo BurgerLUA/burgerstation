@@ -19,6 +19,8 @@
 
 	var/savedata/client/mob/mobdata
 
+	damage_type = null //Just in case.
+
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE
@@ -28,6 +30,12 @@
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE
 	return ..()
+
+/mob/abstract/observer/can_attack(var/atom/victim,var/atom/weapon,var/params)
+	return FALSE
+
+/mob/abstract/observer/can_be_attacked(var/atom/attacker)
+	return FALSE
 
 /mob/abstract/observer/Initialize()
 

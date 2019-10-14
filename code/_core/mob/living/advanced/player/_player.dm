@@ -38,7 +38,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/logout_time = 0
 
-	health_base = 100
+	health_base = 200
 	stamina_base = 100
 	mana_base = 100
 

@@ -85,12 +85,15 @@
 
 	return TRUE
 
+/ai/proc/attack_message()
+	return TRUE
+
 /ai/proc/handle_attacking()
 
 	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
 		owner.move_dir = 0
 		var/list/params = list(
-			PARAM_ICON_X = num2text(pick(8,16,16,16,16,24)),
+			PARAM_ICON_X = num2text(pick(-16,-1,-1,1,1,16)),
 			PARAM_ICON_Y = num2text(pick(target_distribution)),
 			"left" = 0,
 			"right" = 0,
@@ -106,6 +109,8 @@
 		else
 			params["right"] = TRUE
 			owner.on_right_down(objective_attack,owner,null,params)
+
+		attack_message()
 
 	attack_ticks = 0
 

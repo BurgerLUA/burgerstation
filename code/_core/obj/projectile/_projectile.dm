@@ -151,6 +151,7 @@
 		if(do_turf_collide(old_turf,new_turf))
 			return
 
+	if(current_loc)
 		previous_loc = current_loc
 
 	var/matrix/M = matrix()
@@ -172,8 +173,11 @@
 
 	for(var/atom/A in new_turf.contents)
 		var/atom/collide_with_atom = A.projectile_should_collide(src,new_turf,old_turf)
-		if(collide_with_atom)
-			on_hit(collide_with_atom)
+		if(!collide_with_atom)
+			continue
+
+		if(hit_atom(A))
+			on_hit(A)
 			return TRUE
 
 	if(hit_target_turf && new_turf == target_turf)
@@ -182,7 +186,34 @@
 
 	return FALSE
 
+/obj/projectile/proc/hit_atom(var/atom/hit_atom) //Return true to delete the projectile
 
+	if(!hit_atom.can_be_attacked(owner))
+		return FALSE
+
+	if(hit_atom != target_atom && is_living(hit_atom))
+		var/mob/living/L = hit_atom
+		if(L.status & FLAG_STATUS_DEAD || L.status & FLAG_STATUS_STUN)
+			return FALSE
+
+	if(damage_type && all_damage_types[damage_type])
+		if(owner && !owner.qdeleting)
+			var/damagetype/DT = all_damage_types[damage_type]
+
+			var/list/params = list()
+			params[PARAM_ICON_X] = shoot_x
+			params[PARAM_ICON_Y] = shoot_y
+
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
+			if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
+			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
+
+			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed)
+	else
+		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
+
+	return TRUE
 
 /atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 

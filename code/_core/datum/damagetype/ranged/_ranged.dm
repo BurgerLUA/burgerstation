@@ -1,3 +1,4 @@
+
 /damagetype/ranged/
 	name = "ranged weapon"
 	desc = "Shot with a ranged weapon."

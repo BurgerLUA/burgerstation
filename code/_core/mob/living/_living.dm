@@ -205,8 +205,7 @@
 	mana_current = mana_max
 	update_level()
 	. = ..()
-	if(ai)
-		name = "[name] (lvl. [level])"
+	setup_name()
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
@@ -215,6 +214,12 @@
 				B.update_stats()
 
 	return .
+
+/mob/living/proc/setup_name()
+
+	if(ai)
+		name = "[name] (lvl. [level])"
+
 
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)

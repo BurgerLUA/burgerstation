@@ -16,6 +16,7 @@
 	stationary = FALSE
 
 	var/left_click_chance = 90
+	var/kick_chance = 10
 
 /ai/advanced/handle_attacking()
 
@@ -35,7 +36,7 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= weapon_distance)
 		owner.move_dir = 0
 		var/list/params = list(
-			PARAM_ICON_X = num2text(pick(8,16,16,16,16,24)),
+			PARAM_ICON_X = num2text(pick(-16,-1,-1,1,1,16)),
 			PARAM_ICON_Y = num2text(pick(target_distribution)),
 			"left" = 0,
 			"right" = 0,
@@ -45,11 +46,18 @@
 			"alt" = 0
 		)
 
+		if(get_dist(owner,objective_attack) <= 1 && prob(kick_chance))
+			owner.attack_flags |= ATTACK_KICK
+
 		if(is_left_click)
 			params["left"] = TRUE
 			owner.on_left_down(objective_attack,owner,null,params)
 		else
 			params["right"] = TRUE
 			owner.on_right_down(objective_attack,owner,null,params)
+
+		owner.attack_flags &= ~ATTACK_KICK
+
+		attack_message()
 
 	attack_ticks = 0

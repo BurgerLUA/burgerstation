@@ -131,6 +131,15 @@
 	return 0
 
 /atom/proc/can_be_attacked(var/atom/attacker)
+
+	if(attacker && is_valid(attacker))
+
+		var/area/A1 = get_area(attacker)
+		var/area/A2 = get_area(src)
+
+		if(A1.safe != A2.safe)
+			return FALSE
+
 	return TRUE
 
 /atom/proc/can_be_grabbed(var/atom/grabber)

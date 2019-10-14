@@ -149,6 +149,7 @@
 #include "code\_core\datum\ai\villager.dm"
 #include "code\_core\datum\ai\advanced\_advanced.dm"
 #include "code\_core\datum\ai\advanced\ashwalker.dm"
+#include "code\_core\datum\ai\advanced\daddy.dm"
 #include "code\_core\datum\ai\advanced\zombie.dm"
 #include "code\_core\datum\ai\advanced\ranged\_ranged.dm"
 #include "code\_core\datum\ai\advanced\ranged\wizard.dm"
