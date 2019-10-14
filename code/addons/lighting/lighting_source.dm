@@ -46,6 +46,7 @@
 
 // Kill ourselves.
 /datum/light_source/destroy()
+
 	SSlighting.total_lighting_sources--
 
 	remove_lum()
@@ -59,8 +60,11 @@
 	source_atom = null
 	source_turf = null
 	pixel_turf = null
-	effect_str.Cut()
-	affecting_turfs.Cut()
+
+	if(effect_str)
+		effect_str.Cut()
+	if(affecting_turfs)
+		affecting_turfs.Cut()
 
 	return ..()
 

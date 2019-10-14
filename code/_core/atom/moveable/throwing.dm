@@ -2,6 +2,8 @@
 	var/damage_type_to_use = damage_type_thrown ? damage_type_thrown : damage_type
 	var/obj/projectile/bullet/thrown/P = new(get_turf(src),src,src,vel_x,vel_y,target_x,target_y,get_turf(desired_target),damage_type_to_use,desired_target,"#FFFFFF",thrower)
 	P.appearance = src.appearance
+	P.pixel_x_float = src.pixel_x
+	P.pixel_y_float = src.pixel_y
 	P.lifetime = SECONDS_TO_DECISECONDS(5)
 	src.force_move(P) //Move it to contents.
 	return P
