@@ -94,9 +94,9 @@
 		callback_list["start_turf"] = get_turf(src)
 		callback_list["injecting"] = injecting
 		add_progress_bar(caller,"inject",10 + inject_amount*5,callback_list)
+		return TRUE
 
-
-	else if(object.reagents)
+	if(object.reagents)
 
 		if(injecting)
 			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,inject_amount)
@@ -104,8 +104,6 @@
 		else
 			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,draw_amount)
 			caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
-
-		//update_icon()
 
 		return TRUE
 

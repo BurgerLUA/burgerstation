@@ -7,9 +7,14 @@
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
-	var/obj/item/organ/best_organ
+	if(is_living(attacker) && attacker != src)
+		var/mob/living/L = attacker
+		var/inaccuracy = (1 - L.get_attribute_power(ATTRIBUTE_DEXTERITY))*16
+		x_attack = Clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
+		y_attack = Clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
 	var/best_distance = INFINITY
+	var/obj/item/organ/best_organ
 	var/obj/item/organ/best_distance_organ
 
 	for(var/obj/item/organ/O in src.organs)

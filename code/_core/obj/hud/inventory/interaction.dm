@@ -45,7 +45,7 @@
 		var/obj/item/defer_self_as_item = defer_self
 		if(is_inventory(defer_object)) //We have an item in hand and the object we're clicking on is a blank inventory
 			var/obj/hud/inventory/defer_object_as_inventory = defer_object
-			if(defer_self_as_item.transfer_item(defer_object_as_inventory))
+			if(get_dist(defer_self_as_item,defer_object_as_inventory) <= 1 && defer_self_as_item.transfer_item(defer_object_as_inventory))
 				return TRUE
 		/*
 		if(src != defer_self_as_item && defer_self_as_item.click_on_object(caller,object,location,control,params))

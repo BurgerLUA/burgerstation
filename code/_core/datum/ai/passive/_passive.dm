@@ -15,11 +15,3 @@
 	sync_movement_delay = TRUE
 
 	stationary = FALSE
-
-
-/ai/passive/crab
-
-	name = "Non-Aggressive Crab"
-
-	target_distribution_x = list(0,8)
-	target_distribution_y = list(0)
