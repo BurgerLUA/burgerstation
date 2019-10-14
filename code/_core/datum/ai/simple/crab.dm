@@ -9,7 +9,8 @@
 	attack_delay = 1
 	movement_delay = 1
 
-	target_distribution_y = list(0,0,0,0,4,8)
+	target_distribution_x = list(0,8)
+	target_distribution_y = list(0)
 
 	sync_attack_delay = TRUE
 	sync_movement_delay = TRUE

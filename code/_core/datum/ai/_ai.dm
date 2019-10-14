@@ -106,6 +106,8 @@
 			"alt" = 0
 		)
 
+		world.log << "WE WANT [params[PARAM_ICON_X]] and [params[PARAM_ICON_Y]]!"
+
 		if(prob(left_click_chance))
 			params["left"] = TRUE
 			owner.on_left_down(objective_attack,null,null,params)

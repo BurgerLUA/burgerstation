@@ -56,8 +56,6 @@ mob/living/advanced/on_right_down(object,location,control,params)  //THIS ONLY W
 				B.stored_item.quick(src,location,control,params)
 				return TRUE
 
-	world.log << "THE ACTUAL OBJECT IS: [object]."
-
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT
 		return FALSE
 

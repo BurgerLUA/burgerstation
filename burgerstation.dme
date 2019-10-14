@@ -155,6 +155,7 @@
 #include "code\_core\datum\ai\boss\_boss.dm"
 #include "code\_core\datum\ai\boss\ash_drake.dm"
 #include "code\_core\datum\ai\passive\_passive.dm"
+#include "code\_core\datum\ai\passive\crab.dm"
 #include "code\_core\datum\ai\ranged\_ranged.dm"
 #include "code\_core\datum\ai\ranged\turret.dm"
 #include "code\_core\datum\ai\simple\_simple.dm"

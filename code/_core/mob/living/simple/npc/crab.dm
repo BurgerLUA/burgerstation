@@ -17,7 +17,7 @@
 	update_icon()
 
 /mob/living/simple/npc/crab/passive
-	ai = /ai/passive
+	ai = /ai/passive/crab
 	can_attack_while_moving = FALSE
 
 /mob/living/simple/npc/crab/king

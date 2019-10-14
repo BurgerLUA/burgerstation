@@ -32,10 +32,10 @@
 				attack_x = P.attack_right[P.attack_mode][1]
 				attack_y = P.attack_right[P.attack_mode][2]
 
-			params[PARAM_ICON_X] = attack_x
-			params[PARAM_ICON_Y] = attack_y
+			params[PARAM_ICON_X] = num2text(attack_x)
+			params[PARAM_ICON_Y] = num2text(attack_y)
 
-	world.log << "THE attack() PARAMS ARE: [params[PARAM_ICON_X]] AND [params[PARAM_ICON_Y]]."
+	world.log << "THEY GOT [params[PARAM_ICON_X]] AND [params[PARAM_ICON_Y]]!"
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)
