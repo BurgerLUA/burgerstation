@@ -12,7 +12,7 @@
 	container_max_size = 2
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_D
 	)

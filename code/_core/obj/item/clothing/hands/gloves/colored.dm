@@ -11,19 +11,13 @@
 	protected_limbs = list(BODY_HAND_RIGHT)
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 15,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_C,
+		HEAT = ARMOR_D,
+		COLD = ARMOR_C,
+		BIO = ARMOR_D
 	)
 
 /obj/item/clothing/hands/gloves/colored/left
@@ -34,40 +28,19 @@
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
 
-	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 15,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 25,
-		RAD = 0,
-		HOLY = -15,
-		DARK = 15,
-		FATIGUE = 0
-	)
-
 /obj/item/clothing/hands/gloves/colored/black
 	name = "right combat glove"
 	color = "#AAAAAA"
+	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 10,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 5,
-		HEAT = 5,
-		COLD = 30,
-		BOMB = 5,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 15,
-		DARK = -15,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_C,
+		MAGIC = -ARMOR_D,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_D,
+		BIO = ARMOR_E
 	)
 
 	protection_cold = list(
@@ -93,21 +66,17 @@
 /obj/item/clothing/hands/gloves/colored/yellow
 	name = "right insulted glove"
 	color = "#FFFF00"
+	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 25,
-		MAGIC = 0,
-		HEAT = 50,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 25,
-		FATIGUE = 50
+		BLADE = ARMOR_E,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
+		MAGIC = ARMOR_A,
+		HEAT = ARMOR_A,
+		COLD = ARMOR_A,
+		BIO = ARMOR_E,
+		FATIGUE = ARMOR_A
 	)
 
 	protection_cold = list(
@@ -131,21 +100,18 @@
 /obj/item/clothing/hands/gloves/colored/padded
 	name = "padded glove"
 	icon = 'icons/obj/items/clothing/gloves/padded.dmi'
+	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 5,
-		MAGIC = 0,
-		HEAT = 10,
-		COLD = 100,
-		BOMB = 5,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_E,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
+		LASER = ARMOR_E,
+		MAGIC = -ARMOR_E,
+		HEAT = -ARMOR_D,
+		COLD = ARMOR_S,
+		BOMB = ARMOR_D,
+		FATIGUE = ARMOR_D
 	)
 
 	protection_cold = list(
@@ -165,7 +131,7 @@
 	)
 
 /obj/item/clothing/hands/gloves/colored/padded/black
-	color = "#111111"
+	color = "#222222"
 
 /obj/item/clothing/hands/gloves/colored/padded/black/left
 	name = "left padded glove"

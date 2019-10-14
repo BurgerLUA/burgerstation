@@ -7,10 +7,12 @@
 
 	protected_limbs = list(BODY_TORSO)
 
+	rarity = RARITY_UNCOMMON
+
 	defense_rating = list(
 		BLADE = ARMOR_E,
 		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_D,
+		PIERCE = ARMOR_C,
 		LASER = ARMOR_E,
 		MAGIC = -ARMOR_C,
 		COLD = ARMOR_C
@@ -22,6 +24,8 @@
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
+	rarity = RARITY_UNCOMMON
+
 	defense_rating = list(
 		BLADE = ARMOR_C,
 		BLUNT = ARMOR_E,
@@ -30,13 +34,14 @@
 		MAGIC = -ARMOR_D,
 		HEAT = ARMOR_E,
 		COLD = ARMOR_C,
-		HOLY = -ARMOR_B,
-		DARK = ARMOR_B
+		HOLY = ARMOR_B
 	)
 
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult_old.dmi'
+
+	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -46,13 +51,14 @@
 		MAGIC = -ARMOR_C,
 		HEAT = ARMOR_E,
 		COLD = ARMOR_C,
-		HOLY = -ARMOR_A,
-		DARK = ARMOR_A
+		HOLY = ARMOR_A
 	)
 
 /obj/item/clothing/overwear/armor/cult/hard
 	name = "hardened cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult_hard.dmi'
+
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -62,14 +68,14 @@
 		MAGIC = -ARMOR_A,
 		HEAT = ARMOR_B,
 		COLD = ARMOR_B,
-		HOLY = -ARMOR_C,
-		DARK = ARMOR_C
+		HOLY = ARMOR_C,
 	)
 
 /obj/item/clothing/overwear/armor/tutorial
 	name = "tutorial armor"
 	icon = 'icons/obj/items/clothing/suit/tutorial_dress.dmi'
 	item_slot = SLOT_TORSO_O
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -87,6 +93,7 @@
 	icon = 'icons/obj/items/clothing/suit/knight_blank.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	rarity = RARITY_UNCOMMON
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
@@ -120,6 +127,7 @@
 /obj/item/clothing/overwear/armor/knight/special
 	name = "ultra heavy knight armor"
 	icon = 'icons/obj/items/clothing/suit/knight_special.dmi'
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = ARMOR_S,
@@ -135,6 +143,7 @@
 /obj/item/clothing/overwear/armor/knight/templar
 	name = "templar knight armor"
 	icon = 'icons/obj/items/clothing/suit/knight_templar.dmi'
+	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -152,6 +161,7 @@
 /obj/item/clothing/overwear/armor/knight/battlemage
 	name = "battlemage armor"
 	icon = 'icons/obj/items/clothing/suit/knight_battlemage.dmi'
+	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -166,11 +176,31 @@
 		DARK = -ARMOR_C
 	)
 
+/obj/item/clothing/overwear/armor/knight/daddy
+	name = "giant father's armor"
+	rarity = RARITY_LEGENDARY
+	desc = "THE LEGEND NEVER DIES"
+	icon = 'icons/obj/items/clothing/suit/knight_daddy.dmi'
+
+	defense_rating = list(
+		BLADE = ARMOR_S,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_B,
+		LASER = -ARMOR_C,
+		MAGIC = -ARMOR_S,
+		HEAT = -ARMOR_S,
+		COLD = ARMOR_D,
+		BOMB = ARMOR_E,
+		HOLY = -ARMOR_C,
+		DARK = -ARMOR_C
+	)
+
 
 /obj/item/clothing/overwear/armor/hardsuit/
 	name = "hardsuit"
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/overwear/armor/hardsuit/syndie1
 	name = "mauler hardsuit mk1"
@@ -213,6 +243,7 @@
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "white magnus armor"
 	icon = 'icons/obj/items/clothing/suit/magnus.dmi'
+	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -244,8 +275,10 @@
 	color = "#FF0000"
 
 /obj/item/clothing/overwear/armor/carbon_armor
-	name = "carbon fibre armor"
+	name = "prototype carbon fibre armor"
 	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
+
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = ARMOR_B,
@@ -255,6 +288,8 @@
 		MAGIC = -ARMOR_S,
 		BOMB = ARMOR_D
 	)
+
+
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
 
@@ -317,6 +352,7 @@
 /obj/item/clothing/overwear/armor/gladiator
 	name = "gladiator armor"
 	icon = 'icons/obj/items/clothing/suit/gladiator.dmi'
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/overwear/armor/gladiator/brass
 	name = "bronze gladiator armor"

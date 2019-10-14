@@ -5,19 +5,12 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 15,
-		PIERCE = 30,
-		LASER = 15,
-		MAGIC = -10,
-		HEAT = 10,
-		COLD = 10,
-		BOMB = 25,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_C,
+		BOMB = ARMOR_D
 	)
 
 /obj/item/clothing/head/helmet/security/tactical_helmet2
@@ -27,17 +20,10 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 15,
-		PIERCE = 50,
-		LASER = 15,
-		MAGIC = -30,
-		HEAT = 10,
-		COLD = 10,
-		BOMB = 40,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_B,
+		LASER = ARMOR_C,
+		MAGIC = -ARMOR_B,
+		BOMB = ARMOR_C
 	)

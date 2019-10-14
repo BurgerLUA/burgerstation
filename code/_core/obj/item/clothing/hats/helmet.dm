@@ -1,24 +1,23 @@
+
+/obj/item/clothing/head/helmet/knight/
+
+	rarity = RARITY_UNCOMMON
+	defense_rating = list(
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_B,
+		MAGIC = -ARMOR_A,
+		HEAT = -ARMOR_C,
+		COLD = ARMOR_E
+	)
+
+
 /obj/item/clothing/head/helmet/knight/red
 	name = "red knight helmet"
 	icon = 'icons/obj/items/clothing/hats/knight_red.dmi'
 	desc = "Deus Vult."
 	desc_extended = "A knight's helmet. Made out of the finest metal."
-
-	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 50,
-		MAGIC = 0,
-		HEAT = -25,
-		COLD = 0,
-		BOMB = 10,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
-	)
 
 /obj/item/clothing/head/helmet/knight/blue
 	name = "blue knight helmet"
@@ -37,19 +36,14 @@
 	icon = 'icons/obj/items/clothing/hats/knight_templar.dmi'
 
 	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 40,
-		MAGIC = 20,
-		HEAT = -25,
-		COLD = 0,
-		BOMB = 5,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -75,
-		DARK = 50,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_A,
+		MAGIC = -ARMOR_B,
+		HEAT = -ARMOR_C,
+		COLD = ARMOR_E,
+		DARK = ARMOR_B
 	)
 
 /obj/item/clothing/head/helmet/knight/battlemage
@@ -57,18 +51,15 @@
 	icon = 'icons/obj/items/clothing/hats/knight_battlemage.dmi'
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 15,
-		PIERCE = 5,
-		LASER = 25,
-		MAGIC = 75,
-		HEAT = 10,
-		COLD = 10,
-		BOMB = 5,
-		BIO = 0,
-		RAD = 0,
-		HOLY = -25,
-		DARK = 25,
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_C,
+		MAGIC = ARMOR_C,
+		HEAT = ARMOR_C,
+		COLD = ARMOR_C,
+		HOLY = -ARMOR_C,
+		DARK = -ARMOR_C,
 		FATIGUE = 0
 	)
 
@@ -76,39 +67,35 @@
 /obj/item/clothing/head/helmet/hardsuit/syndie1
 	name = "mauler helmet mk1"
 	icon = 'icons/obj/items/clothing/hats/syndie1.dmi'
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 30,
-		PIERCE = 40,
-		LASER = 60,
-		MAGIC = -25,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 25,
-		BIO = 25,
-		RAD = 25,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_B,
+		BLUNT = ARMOR_B,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_C,
+		MAGIC = -ARMOR_A,
+		HEAT = ARMOR_A,
+		COLD = ARMOR_S,
+		BOMB = ARMOR_A,
+		BIO = ARMOR_A,
+		RAD = ARMOR_C
 	)
 
 /obj/item/clothing/head/helmet/hardsuit/syndie2
 	name = "mauler helmet mk2"
 	icon = 'icons/obj/items/clothing/hats/syndie2.dmi'
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 50,
-		LASER = 70,
-		MAGIC = -25,
-		HEAT = 100,
-		COLD = 100,
-		BOMB = 30,
-		BIO = 40,
-		RAD = 30,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_B,
+		PIERCE = ARMOR_C,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_B,
+		HEAT = ARMOR_A,
+		COLD = ARMOR_S,
+		BOMB = ARMOR_A,
+		BIO = ARMOR_A,
+		RAD = ARMOR_D
 	)

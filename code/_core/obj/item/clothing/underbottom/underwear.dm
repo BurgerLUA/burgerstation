@@ -7,19 +7,8 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 10,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_D,
+		COLD = ARMOR_D,
 	)
 
 /obj/item/clothing/underbottom/underwear/long_johns
@@ -27,20 +16,12 @@
 	icon = 'icons/obj/items/clothing/underwear/long_john.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
+	rarity = RARITY_UNCOMMON
+
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 10,
-		HEAT = -25,
-		COLD = 50,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_D,
+		HEAT = -ARMOR_C,
+		COLD = ARMOR_B,
 	)
 
 /obj/item/clothing/underbottom/underwear/long_johns/grey
@@ -50,19 +31,8 @@
 	icon = 'icons/obj/items/clothing/underwear/panty.dmi'
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 10,
-		HEAT = 0,
-		COLD = 5,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_C,
+		COLD = ARMOR_E,
 	)
 
 
@@ -80,19 +50,7 @@
 	icon = 'icons/obj/items/clothing/underwear/loincloth.dmi'
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 15,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_C
 	)
 
 

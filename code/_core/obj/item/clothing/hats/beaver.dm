@@ -5,19 +5,8 @@
 	desc_extended = "It's a hat."
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 30,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_C,
+		COLD = ARMOR_C
 	)
 
 /obj/item/clothing/head/hat/wizard
@@ -25,57 +14,27 @@
 	icon = 'icons/obj/items/clothing/hats/wizard.dmi'
 	desc = "Roll for style."
 	desc_extended = "A typical hat worn often by manchildren and those in the wizard federation."
+	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 75,
-		HEAT = 0,
-		COLD = 5,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 25,
-		DARK = 25,
-		FATIGUE = 0
+		MAGIC = ARMOR_B,
+		DARK = ARMOR_A
 	)
 
 /obj/item/clothing/head/hat/wizard/blue
 	color = "#0065FF"
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 75,
-		HEAT = 0,
-		COLD = 5,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 25,
-		DARK = 50,
-		FATIGUE = 0
+		MAGIC = ARMOR_A,
+		HOLY = ARMOR_C,
+		DARK = ARMOR_C
 	)
 
 /obj/item/clothing/head/hat/wizard/red
 	color = "#FF0000"
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 75,
-		HEAT = 0,
-		COLD = 5,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 50,
-		DARK = 25,
-		FATIGUE = 0
+		MAGIC = ARMOR_A,
+		HOLY = ARMOR_C,
+		DARK = ARMOR_C
 	)

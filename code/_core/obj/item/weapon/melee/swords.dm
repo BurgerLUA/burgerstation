@@ -42,3 +42,10 @@
 	icon = 'icons/obj/items/weapons/melee/swords/spear.dmi'
 	damage_type = "spear"
 	damage_type_thrown = "spear_thrown"
+
+/obj/item/weapon/melee/zweihander
+	name = "chaos zweihander"
+	rarity = RARITY_LEGENDARY
+	desc = "THE LEGEND."
+	icon = 'icons/obj/items/weapons/melee/swords/zweihander.dmi'
+	damage_type = "sword_chaos_zweihander"

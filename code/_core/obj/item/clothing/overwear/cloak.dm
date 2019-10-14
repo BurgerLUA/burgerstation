@@ -4,20 +4,11 @@
 	desc_extended = "A simple cloak. Wear your colors proudly."
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 
+	protected_limbs = list(BODY_TORSO)
+
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 25,
-		HEAT = 0,
-		COLD = 15,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_E,
+		COLD = ARMOR_D,
 	)
 
 /obj/item/clothing/neck/cloak/green

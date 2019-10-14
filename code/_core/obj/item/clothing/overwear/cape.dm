@@ -3,21 +3,14 @@
 	icon = 'icons/obj/items/clothing/suit/cape.dmi'
 	polymorphic = TRUE
 
+	protected_limbs = list(BODY_TORSO)
+
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 25,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_C,
+		COLD = ARMOR_C
 	)
+
+	rarity = RARITY_UNCOMMON
 
 
 /obj/item/clothing/neck/cape/hunter
@@ -27,20 +20,15 @@
 	color_tertiary = "#490000"
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = 0,
-		MAGIC = 15,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_E,
+		COLD = ARMOR_C,
+		DARK = ARMOR_C
 	)
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/neck/cape/hide
 	name = "hide cape"
@@ -49,17 +37,11 @@
 	color_tertiary = "#703B18"
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = -25,
-		COLD = 50,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_D,
+		COLD = ARMOR_C
 	)
+
+	rarity = RARITY_UNCOMMON

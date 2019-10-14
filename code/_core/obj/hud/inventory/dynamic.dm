@@ -41,7 +41,7 @@
 
 	. = ..()
 
-	if(. && owner)
+	if(. && owner && !qdeleting)
 		var/turf/T = get_turf(src)
 		var/area/A = get_area(T)
 		play_sound(pick(add_sounds),all_mobs_with_clients,vector(T.x,T.y,T.z),environment = A.sound_environment, channel = SOUND_CHANNEL_FX)

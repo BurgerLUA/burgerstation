@@ -4,21 +4,17 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
 	desc_extended = "A modern gas mask. Filters out most forms of gas."
+	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 10,
-		COLD = 10,
-		BOMB = 5,
-		BIO = 300,
-		RAD = 25,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_D,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_E,
+		BOMB = ARMOR_E,
+		BIO = ARMOR_S,
+		RAD = ARMOR_D
 	)
 
 
@@ -29,17 +25,7 @@
 	desc_extended = "A flawless clown mask and wig."
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 50,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 50,
-		RAD = 10,
-		HOLY = 25,
-		DARK = 25,
-		FATIGUE = 100
+		MAGIC = ARMOR_A,
+		HOLY = ARMOR_C,
+		DARK = ARMOR_C
 	)

@@ -2,6 +2,8 @@
 	name = "tactical vest"
 	icon = 'icons/obj/items/clothing/suit/black_vest.dmi'
 
+	rarity = RARITY_UNCOMMON
+
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
 

@@ -76,7 +76,7 @@
 
 #define PROJECTILE_TICK 1 //Ticks per project tick interval
 
-
+#define SPRINT_STAMINA_LOSS 1
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 

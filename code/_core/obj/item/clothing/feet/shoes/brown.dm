@@ -1,5 +1,6 @@
 /obj/item/clothing/feet/shoes/brown
-	name = "right brown shoe"
+	name = "right leather shoe"
+	rarity = RARITY_UNCOMMON
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
@@ -9,23 +10,16 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 0,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 5,
-		HEAT = 0,
-		COLD = 20,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_D,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_E
 	)
 
 /obj/item/clothing/feet/shoes/brown/left
-	name = "left brown shoe"
+	name = "left leather shoe"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

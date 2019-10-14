@@ -44,6 +44,27 @@
 
 	var/needs_update = LIGHTING_NO_UPDATE
 
+// Kill ourselves.
+/datum/light_source/destroy()
+	SSlighting.total_lighting_sources--
+
+	remove_lum()
+	if (source_atom)
+		LAZYREMOVE(source_atom.light_sources, src)
+
+	if (top_atom)
+		LAZYREMOVE(top_atom.light_sources, src)
+
+	top_atom = null
+	source_atom = null
+	source_turf = null
+	pixel_turf = null
+	effect_str.Cut()
+	affecting_turfs.Cut()
+
+	return ..()
+
+
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
 // Anything pixelshifted 16px or more will be considered on the next tile.
 #define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : ((PX >= 16 ? EAST : (PX <= -16 ? WEST : 0)))) | (!PY ? 0 : (PY >= 16 ? NORTH : (PY <= -16 ? SOUTH : 0))))
@@ -73,19 +94,6 @@
 	parse_light_color()
 
 	update()
-
-// Kill ourselves.
-/datum/light_source/destroy()
-	SSlighting.total_lighting_sources--
-
-	remove_lum()
-	if (source_atom)
-		LAZYREMOVE(source_atom.light_sources, src)
-
-	if (top_atom)
-		LAZYREMOVE(top_atom.light_sources, src)
-
-	return ..()
 
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 // Picks either scheduled or instant updates based on current server load.

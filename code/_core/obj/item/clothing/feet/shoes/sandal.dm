@@ -1,5 +1,6 @@
 /obj/item/clothing/feet/shoes/sandal
 	name = "right sandal"
+	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
@@ -9,19 +10,7 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 50,
-		HEAT = 25,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 25,
-		DARK = 25,
-		FATIGUE = 0
+		MAGIC = ARMOR_S
 	)
 
 /obj/item/clothing/feet/shoes/sandal/left

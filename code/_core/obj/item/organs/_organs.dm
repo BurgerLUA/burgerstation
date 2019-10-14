@@ -99,11 +99,10 @@
 	if(value > 0 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
-
 	if(is_player(src.loc) && value > 0)
 		damage_soft[BRUTE] += value
 	else
-		damage[BRUTE] += value
+		return ..()
 
 	return value
 
@@ -115,7 +114,7 @@
 	if(is_player(src.loc) && value > 0)
 		damage_soft[TOX] += value
 	else
-		damage[TOX] += value
+		return ..()
 
 	return value
 
@@ -127,7 +126,7 @@
 	if(is_player(src.loc) && value > 0)
 		damage_soft[OXY] += value
 	else
-		damage[OXY] += value
+		return ..()
 
 	return value
 
@@ -139,7 +138,7 @@
 	if(is_player(src.loc) && value > 0)
 		damage_soft[BURN] += value
 	else
-		damage[BURN] += value
+		return ..()
 
 	return value
 

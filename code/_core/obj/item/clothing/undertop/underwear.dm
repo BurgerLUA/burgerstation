@@ -2,24 +2,34 @@
 	name = "underwear"
 
 /obj/item/clothing/undertop/underwear/bra
+	name = "brassiere"
 	icon = 'icons/obj/items/clothing/underwear/bra.dmi'
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 10,
-		HEAT = 0,
-		COLD = 5,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_D,
+		COLD = ARMOR_E
 	)
 
+/obj/item/clothing/undertop/underwear/bra/alt
+	icon = 'icons/obj/items/clothing/underwear/bra_alt.dmi'
+
+/obj/item/clothing/undertop/underwear/bra/alt/black
+	color = "#111111"
+
+/obj/item/clothing/undertop/underwear/bra/alt/red
+	color = "#8E0000"
+
+/obj/item/clothing/undertop/underwear/bra/strapless
+	icon = 'icons/obj/items/clothing/underwear/bra_strapless.dmi'
+
+/obj/item/clothing/undertop/underwear/bra/strapless/brown
+	color = "#603A20"
+
+/obj/item/clothing/undertop/underwear/bra/sport
+	icon = 'icons/obj/items/clothing/underwear/bra_sports.dmi'
+
+/obj/item/clothing/undertop/underwear/bra/sport/pink
+	color = "#FF9BC6"
 
 /obj/item/clothing/undertop/underwear/bra/pink
 	color = "#ff66ff"
@@ -34,17 +44,8 @@
 	icon = 'icons/obj/items/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 10,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_D,
+		COLD = ARMOR_D
 	)
+
+

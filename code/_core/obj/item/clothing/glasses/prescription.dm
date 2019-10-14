@@ -1,23 +1,16 @@
 /obj/item/clothing/glasses/prescription
 	name = "prescription glasses"
+	rarity = RARITY_UNCOMMON
 	desc = "For nerds."
 	desc_extended = "Some less-than-sturdy prescription glasses."
 	icon = 'icons/obj/items/clothing/glasses/prescription.dmi'
 
 	defense_rating = list(
-		BLADE = -10,
-		BLUNT = -10,
-		PIERCE = -10,
-		LASER = -20,
-		MAGIC = 30,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = -ARMOR_D,
+		BLUNT = -ARMOR_D,
+		PIERCE = -ARMOR_D,
+		LASER = -ARMOR_D,
+		MAGIC = ARMOR_A
 	)
 
 

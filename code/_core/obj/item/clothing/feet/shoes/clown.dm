@@ -1,5 +1,6 @@
 /obj/item/clothing/feet/shoes/clown
 	name = "right clown shoe"
+	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 

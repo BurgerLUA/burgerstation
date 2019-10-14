@@ -6,17 +6,7 @@
 	desc_extended = "An identity concealing face mask."
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 25,
-		HEAT = -50,
-		COLD = 100,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		MAGIC = ARMOR_C,
+		HEAT = -ARMOR_A,
+		COLD = ARMOR_A
 	)
