@@ -11,11 +11,23 @@
 	if(!text_to_say)
 		text_to_say = input("What would you like to say?")
 
-	if(text_to_say)
-		display_message(src,src,text_to_say,TEXT_TALK)
-		if(is_advanced(src))
-			var/mob/living/advanced/A = src
-			A.do_type(TALK_TYPE_EXCLAIMATION)
+	text_to_say = police_input(text_to_say)
+
+	if(text_to_say && length(text_to_say))
+
+		var/first_character = copytext(text_to_say,1,2)
+
+		switch(first_character)
+			if("/" || "!")
+				if(src.client)
+					var/client/C = src.client
+					var/final_command = copytext(text_to_say,2,0)
+					winset(C, null, "command='[final_command]'")
+			else
+				display_message(src,src,text_to_say,TEXT_TALK)
+				if(is_advanced(src))
+					var/mob/living/advanced/A = src
+					A.do_type(TALK_TYPE_EXCLAIMATION)
 
 	if(is_advanced(src))
 		var/mob/living/advanced/A = src
