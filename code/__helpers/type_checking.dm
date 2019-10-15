@@ -7,6 +7,9 @@
 /proc/is_item(var/atom/A)
 	return istype(A,/obj/item/)
 
+/proc/is_atom(var/atom/A)
+	return istype(A,/atom/)
+
 /proc/is_inventory(var/atom/A)
 	return istype(A,/obj/hud/inventory/)
 

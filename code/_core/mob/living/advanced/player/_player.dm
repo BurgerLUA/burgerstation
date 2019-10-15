@@ -70,8 +70,11 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	. = ..()
 
 	all_players += src
-	name = "[real_name] ([ckey])"
+
 	return .
+
+/mob/living/advanced/player/setup_name()
+	name = "[real_name]"
 
 /mob/living/advanced/player/destroy()
 	if(area && area.players_inside)

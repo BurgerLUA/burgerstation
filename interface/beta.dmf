@@ -82,6 +82,7 @@ window "chat"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Chat Tabs"
 		titlebar = false
@@ -111,6 +112,7 @@ window "chat_all"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "All"
 		titlebar = false
@@ -125,8 +127,11 @@ window "chat_all"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		saved-params = "max-lines"
+		link-color = #000000
+		visited-color = #000000
 		legacy-size = false
 
 window "chat_combat"
@@ -349,7 +354,6 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -376,7 +380,6 @@ window "map"
 		size = 680x680
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false
@@ -386,7 +389,6 @@ window "map"
 		size = 680x320
 		anchor1 = 0,100
 		anchor2 = 100,100
-		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false

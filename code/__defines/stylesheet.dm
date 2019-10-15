@@ -1,4 +1,8 @@
 #define STYLESHEET {"
+img{
+	margin:0;
+	padding:0;
+}
 body {
 	font-family: Verdana, sans-serif;
 	font-size: 8px;
@@ -10,6 +14,25 @@ body {
 .looc{
 	color: cyan;
 	font-weight: bold;
+}
+a.{
+	pointer-events: none !important;
+	cursor: default !important;
+	text-decoration: none !important;
+	color: inherit !important;
+}
+a:hover{
+	cursor:pointer !important;
+	text-decoration: none !important;
+	text-decoration: none !important;
+}
+a:link{
+	color: inherit !important;
+	text-decoration: none !important;
+}
+a:visited{
+	color: inherit !important;
+	text-decoration: none !important;
 }
 .bot{
 	color: #921FAA;

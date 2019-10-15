@@ -201,7 +201,6 @@
 	return .
 
 /mob/living/proc/setup_name()
-
 	if(ai)
 		name = "[name] (lvl. [level])"
 

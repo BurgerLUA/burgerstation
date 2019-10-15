@@ -1,7 +1,12 @@
 /client/verb/ooc(var/text_to_say as text)
+
+	if(!text_to_say)
+		text_to_say = input("What would you like to say?")
+
 	if(last_ooc+10 >= curtime)
 		src.to_chat(span("warning","You're using OOC too fast!"))
 		return FALSE
+
 	display_message(src,text_to_say,TEXT_OOC)
 	last_ooc = curtime
 

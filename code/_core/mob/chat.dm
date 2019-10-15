@@ -32,8 +32,6 @@
 /mob/verb/whisper(var/text_to_say as text)
 	//do stuff
 
-
-
 /mob/verb/looc(var/text_to_say as text)
 	display_message(src,text_to_say,TEXT_LOOC)
 

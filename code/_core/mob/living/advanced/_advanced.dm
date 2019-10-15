@@ -131,8 +131,10 @@
 	update_icon()
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
+
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"
+
 	organs = list()
 	inventory = list()
 	held_objects = list()
@@ -140,16 +142,11 @@
 	labeled_organs = list()
 	overlays_assoc = list()
 
-	/*
-	maptext_width = TILE_SIZE*ceiling(VIEW_RANGE*2 - 1,2)
-	maptext_x = -(maptext_width-TILE_SIZE)*0.5
-	maptext_y = TILE_SIZE*0.5
-	maptext = "<center>THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG.</center>"
-	*/
-
-	..()
+	. = ..()
 
 	click_and_drag_icon	= new(src)
+
+	return .
 
 /mob/living/advanced/Logout()
 

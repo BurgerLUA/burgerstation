@@ -327,7 +327,7 @@
 				var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
 				if(xp_to_give > 0)
 					A.add_skill_xp(skill,xp_to_give)
-			if(brute_damage_dealt > victim.health_current*0.5)
+			if(brute_damage_dealt > victim.health_max*0.5)
 
 				var/offset_x = victim.x - attacker.x
 				var/offset_y = victim.y - attacker.y
@@ -344,7 +344,7 @@
 
 				if(is_living(victim))
 					var/mob/living/L = victim
-					var/strength_mod = floor( (brute_damage_dealt/victim.health_current)*throw_mul )
+					var/strength_mod = floor( (brute_damage_dealt/max(victim.health_max,1))*throw_mul )
 					if(strength_mod >= 1)
 						var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*min(8*strength_mod,31),offset_y*min(8*strength_mod,31))
 						P.steps_allowed = Clamp(4 * strength_mod,2,ceiling(VIEW_RANGE*0.75))

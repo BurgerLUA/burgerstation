@@ -1,4 +1,5 @@
 /var/icon/chat_tags = new('icons/hud/chattags.dmi')
+/var/icon/chat_icons = new('icons/hud/chat_icon.dmi')
 
 
 proc/format_speech(var/atom/source,var/text,var/talk_type)
@@ -28,7 +29,10 @@ proc/format_speaker(var/atom/source,var/tag)
 
 	var/append = ""
 
+	if(!istext(source))
+		append += "<a class='name' href='?chat_examine=\ref[source]'><img src='\ref[chat_icons.icon]' iconstate='info'></img></a>"
+
 	if(tag)
-		append = "<img src='\ref[chat_tags.icon]' iconstate='[tag]' class='chat_tag' alt='[tag]'></img>"
+		append += "<img src='\ref[chat_tags.icon]' iconstate='[tag]' class='chat_tag' alt='[tag]'></img>"
 
 	return span(tag,trim("[append] [source]"))
