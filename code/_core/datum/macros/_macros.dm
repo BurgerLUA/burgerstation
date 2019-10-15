@@ -82,7 +82,7 @@
 	else
 		switch(command)
 			if("say")
-				owner.mob.say()
+				spawn owner.mob.say()
 			if("sprint")
 				owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 			if("walk")
@@ -105,7 +105,7 @@
 				owner.pixel_y = 0
 				//animate(owner,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(1))
 			if("ooc")
-				owner.ooc()
+				spawn owner.ooc()
 
 
 	return TRUE

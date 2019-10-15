@@ -15,6 +15,10 @@ body {
 	color: cyan;
 	font-weight: bold;
 }
+.radio{
+	color: #24A800;
+	font-weight: bold;
+}
 a.{
 	pointer-events: none !important;
 	cursor: default !important;

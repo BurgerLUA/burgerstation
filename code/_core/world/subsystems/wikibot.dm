@@ -63,4 +63,4 @@ var/subsystem/wikibot/SSWikibot
 			sleep(-1)
 
 		if(best_answer)
-			broadcast_to_clients(format_speech("WikiBot","[asker], [best_answer]",TEXT_BOT))
+			broadcast_to_clients(format_speech("WikiBot","WikiBot","[asker], [best_answer]",TEXT_BOT))

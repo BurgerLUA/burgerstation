@@ -145,6 +145,8 @@ proc/is_pump_gun(var/atom/A)
 proc/is_structure(var/atom/A)
 	return istype(A, /obj/structure/)
 
-
 proc/is_container(var/atom/A)
 	return istype(A, /obj/item/container/)
+
+proc/is_radio(var/atom/A)
+	return istype(A, /obj/item/radio/)

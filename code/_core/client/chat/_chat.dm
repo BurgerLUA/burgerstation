@@ -7,7 +7,7 @@
 		src.to_chat(span("warning","You're using OOC too fast!"))
 		return FALSE
 
-	display_message(src,text_to_say,TEXT_OOC)
+	display_message(src,src,text_to_say,TEXT_OOC)
 	last_ooc = curtime
 
 /*
@@ -27,7 +27,11 @@
 		if(actual_role & desired_role)
 			C.to_chat(text_to_say,TEXT_OOC)
 
-proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_type as num)
+proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_type as num)
+
+	//world.log << "display_message([speaker],[source],[text_to_say],[text_type])"
+
+	var/turf/source_turf = get_turf(source)
 
 	if(!text_to_say)
 		return FALSE
@@ -35,45 +39,71 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 	text_to_say = police_input(text_to_say)
 
 	switch(text_type)
-		if(TEXT_WHISPER)
-			if(istype(source,/client/))
-				source.to_chat("You cannot talk like this!")
-				return
-			else
-				for(var/mob/M in range(source,WHISPER_RANGE))
-					if(!M.client)
-						continue
-					M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
-		if(TEXT_TALK)
-			if(istype(source,/client/))
-				source.to_chat("You cannot talk like this!")
-				return
-			else
-				for(var/mob/M in range(source,TALK_RANGE))
-					if(!M.client)
-						continue
-					M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
-		if(TEXT_YELL)
-			if(istype(source,/client/))
-				source.to_chat("You cannot talk like this!")
-				return
-			else
-				for(var/mob/M in range(source,YELL_RANGE))
-					if(!M.client)
-						continue
-					M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_SAY)
-
-		if(TEXT_LOOC)
-			for(var/mob/M in range(source,YELL_RANGE))
+		if(TEXT_RADIO)
+			for(var/mob/M in range(source_turf,RADIO_RANGE))
 				if(!M.client)
 					continue
-				M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_LOOC)
+				M.to_chat(format_speech(speaker,source,text_to_say,text_type,),CHAT_TYPE_RADIO)
+			//We don't send to other radios because that's a fucking terrible idea.
+		if(TEXT_WHISPER)
+			if(istype(source,/client/))
+				var/client/C = source
+				C.to_chat("You cannot talk like this!")
+				return
+			else
+				for(var/mob/M in range(source_turf,WHISPER_RANGE))
+					if(!M.client)
+						continue
+					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
+
+				for(var/obj/item/radio/R in all_radios)
+					if(get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
+						continue
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
+
+		if(TEXT_TALK)
+			if(istype(source,/client/))
+				var/client/C = source
+				C.to_chat("You cannot talk like this!")
+				return
+			else
+				for(var/mob/M in range(source_turf,TALK_RANGE))
+					if(!M.client)
+						continue
+					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
+
+				for(var/obj/item/radio/R in all_radios)
+					if(get_dist(source_turf,R) > RADIO_TALK_RANGE)
+						continue
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
+
+		if(TEXT_YELL)
+			if(istype(source,/client/))
+				var/client/C = source
+				C.to_chat("You cannot talk like this!")
+				return
+			else
+				for(var/mob/M in range(source_turf,YELL_RANGE))
+					if(!M.client)
+						continue
+					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
+
+				for(var/obj/item/radio/R in all_radios)
+					if(get_dist(source_turf,R) > RADIO_YELL_RANGE)
+						continue
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
+
+		if(TEXT_LOOC)
+			for(var/mob/M in range(source_turf,YELL_RANGE))
+				if(!M.client)
+					continue
+				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_LOOC)
 
 		if(TEXT_OOC)
 			for(var/mob/M in world)
 				if(!M.client)
 					continue
-				M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_OOC)
+				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_OOC)
 
 			if(SSWikibot)
 				SSWikibot.process_string(source,text_to_say)

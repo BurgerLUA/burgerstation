@@ -19,11 +19,16 @@
 
 #define SOUND_RANGE 18
 
+#define WHISPER_RANGE 2
 #define TALK_RANGE VIEW_RANGE
 #define YELL_RANGE VIEW_RANGE*1.5
-#define WHISPER_RANGE 2
 
-#define BOSS_RANGE 18 //If you're out of this range, you're out of the boss fight.
+#define RADIO_RANGE 3 //Can only recieve radio messages in this distance
+#define RADIO_WHISPER_RANGE 1
+#define RADIO_TALK_RANGE 4
+#define RADIO_YELL_RANGE 8
+
+#define BOSS_RANGE VIEW_RANGE*2 //If you're out of this range, you're out of the boss fight.
 
 #define MAX_MESSAGE_LEN 512
 #define MAX_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
