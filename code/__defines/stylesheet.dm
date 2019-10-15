@@ -19,28 +19,13 @@ body {
 	color: #24A800;
 	font-weight: bold;
 }
-a.{
-	pointer-events: none !important;
-	cursor: default !important;
-	text-decoration: none !important;
-	color: inherit !important;
-}
-a:hover{
-	cursor:pointer !important;
-	text-decoration: none !important;
-	text-decoration: none !important;
-}
-a:link{
-	color: inherit !important;
-	text-decoration: none !important;
-}
-a:visited{
-	color: inherit !important;
-	text-decoration: none !important;
-}
 .bot{
 	color: #921FAA;
 	font-weight: bold;
+}
+.notice{
+	color: blue;
+	font-style: italic;
 }
 .warning{
 	color: red;
@@ -62,10 +47,6 @@ a:visited{
 }
 .underlined{
 	text-decoration: underline;
-}
-.notice{
-	color: blue;
-	font-style: italic;
 }
 .rarity{
 	text-align: center;

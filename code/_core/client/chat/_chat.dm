@@ -55,7 +55,7 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 
 				for(var/obj/item/radio/R in all_radios)
-					if(get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
+					if(!R.enabled || !R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
 
@@ -71,7 +71,7 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 
 				for(var/obj/item/radio/R in all_radios)
-					if(get_dist(source_turf,R) > RADIO_TALK_RANGE)
+					if(!R.enabled || !R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
 
@@ -87,7 +87,7 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 
 				for(var/obj/item/radio/R in all_radios)
-					if(get_dist(source_turf,R) > RADIO_YELL_RANGE)
+					if(!R.enabled || !R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
 

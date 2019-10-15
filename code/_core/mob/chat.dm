@@ -14,20 +14,25 @@
 	text_to_say = police_input(text_to_say)
 
 	if(text_to_say && length(text_to_say))
-
 		var/first_character = copytext(text_to_say,1,2)
-
-		switch(first_character)
-			if("/" || "!")
-				if(src.client)
-					var/client/C = src.client
-					var/final_command = copytext(text_to_say,2,0)
-					winset(C, null, "command='[final_command]'")
-			else
-				display_message(src,src,text_to_say,TEXT_TALK)
-				if(is_advanced(src))
-					var/mob/living/advanced/A = src
-					A.do_type(TALK_TYPE_EXCLAIMATION)
+		if(first_character == "/" || first_character == "!")
+			if(src.client)
+				var/client/C = src.client
+				var/final_command = trim(copytext(text_to_say,2,0))
+				winset(C, null, "command='[final_command]'")
+		else if(first_character == ";")
+			for(var/obj/item/radio/R in all_radios)
+				if(!R.broadcasting || !R.enabled || get_turf(R) != get_turf(src))
+					continue
+				var/final_command = trim(copytext(text_to_say,2,0))
+				visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
+				R.send_data(list("speaker" = src, "source" = src, "message" = final_command))
+				break
+		else
+			display_message(src,src,text_to_say,TEXT_TALK)
+			if(is_advanced(src))
+				var/mob/living/advanced/A = src
+				A.do_type(TALK_TYPE_EXCLAIMATION)
 
 	if(is_advanced(src))
 		var/mob/living/advanced/A = src

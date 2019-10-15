@@ -1,6 +1,6 @@
 /class/chef
 	name = "The Chef"
-	desc = "He's just a cook. Despite recieving no combat training whatsoever, their skill with knives and cleavers have given them the dexterity, strength, and agility to become \
+	desc = "He's just a cook. Despite receiving no combat training whatsoever, their skill with knives and cleavers have given them the dexterity, strength, and agility to become \
 	a full fledged swordsman."
 	id = "chef"
 

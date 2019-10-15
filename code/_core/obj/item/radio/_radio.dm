@@ -6,7 +6,7 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	var/frequency = RADIO_FREQ_COMMON //The frequency of the radio.
 	var/enabled = TRUE //Whether or not the radio itself is turned on.
-	var/recieving = TRUE //Whether or not the radio can recieve messages.
+	var/receiving = TRUE //Whether or not the radio can recieve messages.
 	var/broadcasting = TRUE //Whether or not the radio can broadcast messages without having to press the button.
 
 	var/radio_sound = 'sounds/items/radio.ogg'
@@ -39,7 +39,12 @@ list(
 	if(!data["frequency"])
 		data["frequency"] = frequency
 
-	all_unprocessed_radio_data[data["speaker"]] = data
+	var/speaker_ref = "/ref[data["speaker"]]"
+
+	if(all_unprocessed_radio_data[speaker_ref])
+		return FALSE
+
+	all_unprocessed_radio_data[speaker_ref] = data
 
 	var/turf/current_turf = get_turf(src)
 

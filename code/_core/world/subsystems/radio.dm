@@ -9,6 +9,8 @@ var/global/list/all_unprocessed_radio_data = list()
 /subsystem/radio/on_life()
 
 	for(var/obj/item/radio/R in all_radios)
+		if(!R.enabled || !R.receiving)
+			continue
 		for(var/data_key in all_unprocessed_radio_data)
 			var/data_value = all_unprocessed_radio_data[data_key]
 			R.recieve_data(data_value)
