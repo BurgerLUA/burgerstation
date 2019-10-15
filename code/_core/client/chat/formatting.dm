@@ -5,8 +5,6 @@ proc/format_speech(var/atom/source,var/text,var/talk_type)
 
 	//text = periodize(capitalize(sanitize(text)))
 
-
-
 	var/html = "ERROR"
 	switch(talk_type)
 		if(TEXT_WHISPER)
@@ -21,6 +19,8 @@ proc/format_speech(var/atom/source,var/text,var/talk_type)
 			html = "[format_speaker(source,"OOC")]: [span("ooc",text)]"
 		if(TEXT_GHOST)
 			html = "[format_speaker(source,"DEAD")] moans, &#34;[span("ghost",text)]&#34;"
+		if(TEXT_BOT)
+			html = "[format_speaker(source,"BOT")]: [span("bot",text)]"
 
 	return html
 

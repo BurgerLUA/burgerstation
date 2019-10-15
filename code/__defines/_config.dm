@@ -9,6 +9,7 @@
 #define WORLD_SIZE_SEGMENT 128 //This shouldn't be touched unless you know what you're doing
 
 #define BADWORDS "text/badwords.txt"
+#define WIKIBOT "data/server/wikibot.txt"
 
 #define MAX_ZOOM 4 //This is for z-zoom.
 #define MIN_ZOOM 1

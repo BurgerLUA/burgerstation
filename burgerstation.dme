@@ -851,6 +851,7 @@
 #include "code\_core\world\subsystems\thinking.dm"
 #include "code\_core\world\subsystems\tracks.dm"
 #include "code\_core\world\subsystems\turfs.dm"
+#include "code\_core\world\subsystems\wikibot.dm"
 #include "code\addons\lighting\__lighting_docs.dm"
 #include "code\addons\lighting\_lighting_defs.dm"
 #include "code\addons\lighting\lighting_area.dm"

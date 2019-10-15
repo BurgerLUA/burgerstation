@@ -2,7 +2,6 @@
 
 	if(!length(params))
 		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
-		world.log << "NO PARAMS PROVIDED!"
 
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])

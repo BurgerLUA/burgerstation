@@ -3,7 +3,6 @@ body {
 	font-family: Verdana, sans-serif;
 	font-size: 8px;
 }
-
 .ooc{
 	color: #1339AC;
 	font-weight: bold;
@@ -12,7 +11,10 @@ body {
 	color: cyan;
 	font-weight: bold;
 }
-
+.bot{
+	color: #921FAA;
+	font-weight: bold;
+}
 .warning{
 	color: red;
 	font-style: italic;
@@ -31,7 +33,6 @@ body {
 .centered {
 	text-align: center;
 }
-
 .underlined{
 	text-decoration: underline;
 }
@@ -69,7 +70,6 @@ body {
 .examine_info{
 	font-style: italic;
 }
-
 .distance_large{
 	font-size: 120%;
 }
@@ -96,7 +96,6 @@ body {
 	font-size: 150%;
 	color: red;
 }
-
 .blue{
 	font-size: 150%;
 	color: blue;
@@ -111,7 +110,6 @@ body {
 	font-size: 150%;
 	color: yellow;
 }
-
 .error{
 	font-size: 12px;
 	color:red;

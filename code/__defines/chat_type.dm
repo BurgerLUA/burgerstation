@@ -4,6 +4,7 @@
 #define TEXT_LOOC 3
 #define TEXT_OOC 4
 #define TEXT_GHOST 5
+#define TEXT_BOT 6
 
 #define CHAT_TYPE_SAY 0x1
 #define CHAT_TYPE_OOC 0x2

@@ -108,8 +108,6 @@
 			"alt" = 0
 		)
 
-		world.log << "WE WANT [params[PARAM_ICON_X]] and [params[PARAM_ICON_Y]]!"
-
 		if(prob(left_click_chance))
 			params["left"] = TRUE
 			owner.on_left_down(objective_attack,null,null,params)
@@ -153,9 +151,6 @@
 		var/best_score = 0
 
 		for(var/mob/living/L in possible_targets)
-			if(!true_sight && L.is_sneaking)
-				continue
-
 			var/local_score = get_attack_score(L)
 			if(!best_score || local_score > best_score)
 				best_target = L
@@ -178,6 +173,9 @@
 	var/area/A = get_area(L)
 	var/area/starting_area = get_area(start_turf)
 	if(A && A.safe && !starting_area.safe)
+		return FALSE
+
+	if(!true_sight && L.is_sneaking)
 		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)

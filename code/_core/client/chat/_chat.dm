@@ -70,6 +70,9 @@ proc/display_message(var/mob/source as mob, var/text_to_say as text, var/text_ty
 					continue
 				M.to_chat(format_speech(source,text_to_say,text_type),CHAT_TYPE_OOC)
 
+			if(SSWikibot)
+				SSWikibot.process_string(source,text_to_say)
+
 	if(text_type == TEXT_TALK || text_type == TEXT_YELL)
 		if(is_advanced(source))
 			new/obj/chat_text(source,text_to_say)
