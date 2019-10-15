@@ -94,6 +94,10 @@ var/global/list/all_clients = list()
 	winset(src,"chat_say.output","style='[STYLESHEET]'")
 
 /client/proc/examine(var/atom/object)
+
+	if(!(object in view(src)))
+		return FALSE
+
 	src.mob.to_chat(object.get_examine_text(src.mob))
 	return TRUE
 
