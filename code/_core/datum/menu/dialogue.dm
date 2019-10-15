@@ -31,6 +31,8 @@
 
 /menu/dialogue/close(var/user)
 	winset(user, "map.dialogue","is-visible=false")
+	winset(user,"map.map","focus=true")
+	winset(user,"main.input","focus=false")
 
 /menu/dialogue/run_function(var/user, var/function_name,var/args)
 	user << output("[function_name]([args]);", "map.dialogue:eval")

@@ -14,7 +14,6 @@
 		"Q" = "drop",
 		"Space" = "kick",
 		"C" = "quick_self",
-		"Tab" = "change_focus",
 		"1" = "bind_1",
 		"2" = "bind_2",
 		"3" = "bind_3",
@@ -25,7 +24,9 @@
 		"8" = "bind_8",
 		"9" = "bind_9",
 		"0" = "bind_0",
-		"Z" = "zoom"
+		"Z" = "zoom",
+		"O" = "ooc",
+		"L" = "looc"
 	)
 
 /macros/destroy()
@@ -103,7 +104,8 @@
 				owner.pixel_x = 0
 				owner.pixel_y = 0
 				//animate(owner,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(1))
-
+			if("ooc")
+				owner.ooc()
 
 
 	return TRUE

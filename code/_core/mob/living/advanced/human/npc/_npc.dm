@@ -18,6 +18,13 @@
 
 	return ..()
 
+/mob/living/advanced/npc/can_be_attacked(var/atom/attacker)
+
+	if(dialogue_id)
+		return FALSE
+
+	return ..()
+
 /mob/living/advanced/npc/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(dialogue_id && is_player(caller))

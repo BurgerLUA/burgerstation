@@ -28,7 +28,7 @@
 
 /obj/structure/interactive/localmachine/snowflake/hint/walk
 	icon_state = "movement"
-	icon_state_enter = "none"
+	icon_state_enter = "movement"
 	icon_state_exit = "none"
 
 /obj/structure/interactive/localmachine/snowflake/hint/click
