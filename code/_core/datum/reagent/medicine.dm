@@ -6,12 +6,14 @@
 
 /reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_brute_loss(-.*HEALING_C)
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_C)
 	return .
 
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_brute_loss(-.*HEALING_C*0.5)
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_C*0.5)
 	return .
 
 /reagent/medicine/kelotane
@@ -22,12 +24,14 @@
 
 /reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_burn_loss(-.*HEALING_C)
+	if(owner && owner.health)
+		owner.health.adjust_burn_loss(-.*HEALING_C)
 	return .
 
 /reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_burn_loss(-.*HEALING_C*0.5)
+	if(owner && owner.health)
+		owner.health.adjust_burn_loss(-.*HEALING_C*0.5)
 	return .
 
 /reagent/medicine/dylovene
@@ -38,12 +42,14 @@
 
 /reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_tox_loss(-.*HEALING_C)
+	if(owner && owner.health)
+		owner.health.adjust_tox_loss(-.*HEALING_C)
 	return .
 
 /reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_tox_loss(-.*HEALING_C*0.5)
+	if(owner && owner.health)
+		owner.health.adjust_tox_loss(-.*HEALING_C*0.5)
 	return .
 
 /reagent/medicine/dexalin
@@ -54,12 +60,14 @@
 
 /reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_oxy_loss(-.*HEALING_C)
+	if(owner && owner.health)
+		owner.health.adjust_oxy_loss(-.*HEALING_C)
 	return .
 
 /reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_oxy_loss(-.*HEALING_C*0.5)
+	if(owner && owner.health)
+		owner.health.adjust_oxy_loss(-.*HEALING_C*0.5)
 	return .
 
 /reagent/medicine/tricordrazine
@@ -70,16 +78,18 @@
 
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_brute_loss(-.*HEALING_D*0.33)
-	owner.adjust_burn_loss(-.*HEALING_D*0.33)
-	owner.adjust_tox_loss(-.*HEALING_D*0.33)
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_D*0.33)
+		owner.health.adjust_burn_loss(-.*HEALING_D*0.33)
+		owner.health.adjust_tox_loss(-.*HEALING_D*0.33)
 	return .
 
 /reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_brute_loss(-.*HEALING_D*0.33*0.5)
-	owner.adjust_burn_loss(-.*HEALING_D*0.33*0.5)
-	owner.adjust_tox_loss(-.*HEALING_D*0.33*0.5)
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_D*0.33*0.5)
+		owner.health.adjust_burn_loss(-.*HEALING_D*0.33*0.5)
+		owner.health.adjust_tox_loss(-.*HEALING_D*0.33*0.5)
 	return .
 
 /reagent/medicine/omnizine
@@ -91,16 +101,18 @@
 
 /reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_brute_loss(-.*HEALING_D*0.25)
-	owner.adjust_burn_loss(-.*HEALING_D*0.25)
-	owner.adjust_tox_loss(-.*HEALING_D*0.25)
-	owner.adjust_oxy_loss(-.*HEALING_D*0.25)
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_burn_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_tox_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_oxy_loss(-.*HEALING_D*0.25)
 	return .
 
 /reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
-	owner.adjust_brute_loss(-.*HEALING_D*0.25)
-	owner.adjust_burn_loss(-.*HEALING_D*0.25)
-	owner.adjust_tox_loss(-.*HEALING_D*0.25)
-	owner.adjust_oxy_loss(-.*HEALING_D*0.25)
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_burn_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_tox_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_oxy_loss(-.*HEALING_D*0.25)
 	return .

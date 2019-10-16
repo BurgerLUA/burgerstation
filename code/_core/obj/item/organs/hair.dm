@@ -5,7 +5,7 @@
 	icon_state = "none"
 	worn_layer = LAYER_MOB_HAIR_HEAD
 	break_threshold = 5
-	health_max = 10 //Yes, hair has health.
+	//health_max = 10 //Yes, hair has health.
 
 	attach_flag = BODY_HEAD
 

@@ -40,25 +40,28 @@
 
 mob/living/advanced/proc/handle_regen()
 
+	if(!health)
+		return FALSE
+
 	var/health_adjust = 0
 	var/mana_adjust = 0
 	var/stamina_adjust = 0
 
-	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT) && health_current < health_max)
-		var/heal_amount = health_regeneration*LIFE_TICK_SLOW*0.1
+	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT) && health.health_current < health.health_max)
+		var/heal_amount = health.health_regeneration*LIFE_TICK_SLOW*0.1
 		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount,heal_amount,0)
 		if(health_adjust)
 			add_skill_xp(SKILL_RECOVERY,health_adjust)
 
-	if(stamina_regen_delay <= 0 && stamina_current < stamina_max)
-		var/heal_amount = stamina_regeneration*LIFE_TICK_SLOW*0.1
-		stamina_adjust = adjust_stamina(heal_amount)
+	if(stamina_regen_delay <= 0 && health.stamina_current < health.stamina_max)
+		var/heal_amount = health.stamina_regeneration*LIFE_TICK_SLOW*0.1
+		stamina_adjust = health.adjust_stamina(heal_amount)
 		if(stamina_adjust)
 			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
 
-	if(mana_regen_delay <= 0 && mana_current < mana_max)
-		var/heal_amount = mana_regeneration*LIFE_TICK_SLOW*0.1
-		mana_adjust = adjust_mana(heal_amount)
+	if(mana_regen_delay <= 0 && health.mana_current < health.mana_max)
+		var/heal_amount = health.mana_regeneration*LIFE_TICK_SLOW*0.1
+		mana_adjust = health.adjust_mana(heal_amount)
 		if(mana_adjust)
 			add_skill_xp(SKILL_RECOVERY,mana_adjust)
 
@@ -69,7 +72,7 @@ mob/living/advanced/proc/handle_regen()
 	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK_SLOW)
 	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK_SLOW)
 
-
+	return TRUE
 
 /mob/living/advanced/on_life_slow()
 
@@ -100,13 +103,13 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/do_loot_drop(var/atom/desired_loc)
 
-	if(desired_loc && loot_drop && is_item(desired_loc))
+	if(health && desired_loc && loot_drop && is_item(desired_loc))
 		var/obj/item/I = desired_loc
 		var/loot/L = all_loot[loot_drop]
 		L.spawn_loot_container(desired_loc)
 
 		var/obj/item/currency/C = new(src.loc)
-		C.value = 1 + floor(health_max/10)
+		C.value = 1 + floor(health.health_max/10)
 		C.update_icon()
 		I.add_to_inventory(null,C,FALSE)
 		return TRUE
@@ -125,9 +128,9 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/handle_status_effects()
 	. = ..()
-	if(. && status & FLAG_STATUS_CRIT)
-		if(health_current>=health_max*0.1)
-			set_hard_crit(FALSE)
+
+	if(. && health && status & FLAG_STATUS_CRIT && health.health_current >= health.health_max*0.1)
+		set_hard_crit(FALSE)
 
 	return .
 
@@ -144,10 +147,13 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/check_death()
 
-	if(health_current <= min(-50,health_max*-0.25))
+	if(!health)
+		return FALSE
+
+	if(health.health_current <= min(-50,health.health_max*-0.25))
 		return TRUE
 
-	if(health_current <= 0)
+	if(health.health_current <= 0)
 		if(has_hard_crit)
 			if(!(status & FLAG_STATUS_CRIT))
 				set_hard_crit(TRUE)
@@ -158,6 +164,9 @@ mob/living/advanced/proc/handle_regen()
 	return FALSE
 
 /mob/living/advanced/handle_health_buffer()
+
+	if(!health)
+		return FALSE
 
 	var/regened_health = FALSE
 	var/regened_stamina = FALSE
@@ -170,12 +179,12 @@ mob/living/advanced/proc/handle_regen()
 
 	if(stamina_regen_buffer)
 		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
-		adjust_stamina(stamina_to_regen)
+		health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
 
 	if(mana_regen_buffer)
 		var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
-		adjust_mana(mana_to_regen)
+		health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 
 	if(regened_health || regened_stamina || regened_mana)
@@ -185,30 +194,36 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/proc/handle_organs()
 
+	if(!health)
+		return FALSE
+
 	var/should_update_health = FALSE
 
 	var/damage_min = -2*(10/LIFE_TICK_SLOW)
-	var/damage_max = health_max*0.1*(10/LIFE_TICK_SLOW)
+	var/damage_max = health.health_max*0.1*(10/LIFE_TICK_SLOW)
 
 	for(var/obj/item/organ/O in organs)
 
+		if(!O.health)
+			continue
+
 		//Soft damage to hard damage.
-		for(var/damage_type in O.damage_soft)
-			var/damage_amount = Clamp(O.damage_soft[damage_type],damage_min,damage_max)
+		for(var/damage_type in O.health.damage_soft)
+			var/damage_amount = Clamp(O.health.damage_soft[damage_type],damage_min,damage_max)
 			if(damage_amount)
-				O.damage[damage_type] = max(0,O.damage[damage_type] + damage_amount)
-				O.damage_soft[damage_type] -= damage_amount
-				O.update_health()
+				O.health.damage[damage_type] = max(0,O.health.damage[damage_type] + damage_amount)
+				O.health.damage_soft[damage_type] -= damage_amount
+				O.health.update_health()
 				should_update_health = TRUE
 
-		for(var/wound/W in O.wounds)
+		for(var/wound/W in O.health.wounds)
 			W.on_life()
 
 		if(O.reagents)
 			O.reagents.metabolize()
 
 	if(should_update_health)
-		update_health(do_update=FALSE)
+		health.update_health(update_hud=FALSE)
 		update_health_element_icons(TRUE,FALSE,FALSE)
 
 	return TRUE

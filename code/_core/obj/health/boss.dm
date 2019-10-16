@@ -32,7 +32,7 @@
 
 /obj/hud/button/boss_health/proc/update_stats()
 
-	if(!target_boss)
+	if(!target_boss || !target_boss.health)
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
 		mouse_opacity = 0
 		if(current_boss_music && owner)
@@ -50,8 +50,8 @@
 				current_boss_music = target_boss.boss_music
 
 	min = 0
-	max = target_boss.health_max
-	current = max - target_boss.get_total_loss()
+	max = target_boss.health.health_max
+	current = max - target_boss.health.get_total_loss()
 	update_icon()
 
 	return TRUE

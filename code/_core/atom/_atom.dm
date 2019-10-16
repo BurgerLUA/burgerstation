@@ -9,22 +9,14 @@
 
 	density = FALSE //DEPCRECATED
 
-	var/health_max = 0
-	var/health_current = 0
-	var/health_regeneration = 0
 
-	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
-	var/list/damage_soft = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
-
-	var/damage_multiplier = 1 //How much damage, multiplied, does this atom recieve?
-
-	var/damage_soft_total = 0
+	var/health_base = 1
+	var/mana_base = 1
+	var/stamina_base = 1
 
 	var/throw_speed = 8 //How far the object travels in pixels per decisecond, when thrown
 
 	var/damage_type = "default" //The id of the damage type of the weapon, if any.
-
-	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0) //How much to subtract damage
 
 	var/attack_range = 1 //If it's a melee weapon, it needs a range. TODO: MOVE TO ITEM
 
@@ -33,8 +25,6 @@
 	var/list/additional_blends = list()
 
 	var/override_icon = FALSE
-
-	var/list/wound/wounds = list()
 
 	var/doing_progress = FALSE
 
@@ -57,15 +47,12 @@
 	var/corner_icons = FALSE
 	var/corner_category = "none"
 
+	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
+
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
 /atom/destroy()
-
-	for(var/wound/W in wounds)
-		qdel(W)
-
-	wounds.Cut()
 
 	for(var/blend_id in additional_blends)
 		var/icon_blend/IB = additional_blends[blend_id]
@@ -85,6 +72,11 @@
 		qdel(reagents)
 
 	reagents = null
+
+	if(health)
+		qdel(health)
+
+	health = null
 
 	if(thinks)
 		all_thinkers -= src
@@ -121,6 +113,9 @@
 
 	if(reagents)
 		reagents = new reagents(src)
+
+	if(health)
+		health = new health(src)
 
 	return .
 

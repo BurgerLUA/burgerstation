@@ -27,12 +27,16 @@
 	if(owner == desired_owner)
 		return FALSE
 
-	if(owner)
-		owner.remove_health_element(src)
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		L.remove_health_element(src)
 
 	owner = desired_owner
-	owner.add_health_element(src)
-	update_stats(owner)
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		L.add_health_element(src)
+		update_stats(L)
 
 	return TRUE
 
@@ -88,10 +92,14 @@
 	return ..() + div("notice","You have [current] out of [max] health.")
 
 /obj/hud/button/health/bar/hp/update_stats(var/mob/living/M)
+
+	if(!M.health)
+		return FALSE
+
 	min = 0
-	max = floor(M.health_max)
-	current = floor(M.health_current)
-	overflow = -M.damage_soft_total
+	max = floor(M.health.health_max)
+	current = floor(M.health.health_current)
+	overflow = -M.health.damage_soft_total
 	return ..()
 
 /obj/hud/button/health/bar/sp
@@ -110,9 +118,13 @@
 	return ..() + div("notice","You have [current] out of [max] stamina.")
 
 /obj/hud/button/health/bar/sp/update_stats(var/mob/living/M)
+
+	if(!M.health)
+		return ..()
+
 	min = 0
-	max = floor(M.stamina_max)
-	current = floor(M.stamina_current)
+	max = floor(M.health.stamina_max)
+	current = floor(M.health.stamina_current)
 	overflow = M.stamina_regen_buffer
 	return ..()
 
@@ -132,8 +144,12 @@
 	return ..() + div("notice","You have [current] out of [max] mana.")
 
 /obj/hud/button/health/bar/mp/update_stats(var/mob/living/M)
+
+	if(!M.health)
+		return ..()
+
 	min = 0
-	max = floor(M.mana_max)
-	current = floor(M.mana_current)
+	max = floor(M.health.mana_max)
+	current = floor(M.health.mana_current)
 	overflow = M.mana_regen_buffer
 	..()

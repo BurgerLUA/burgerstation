@@ -43,6 +43,7 @@
 
 	lifetime = SECONDS_TO_DECISECONDS(1)
 
+/* MAKE THIS BETTER
 /obj/projectile/bullet/mass_heal/post_on_hit(var/atom/hit_atom)
 	for(var/mob/living/L in range(3,hit_atom))
 		L.to_chat(span("notice","You are hit with a soothing energy..."))
@@ -51,6 +52,7 @@
 			var/adjusted_total = 0
 			for(var/obj/item/organ/O in A.organs)
 				var/adjusted_organ = O.adjust_brute_loss(-10)
-				O.update_health(adjusted_organ,owner)
+				O.health.update_health(adjusted_organ,owner)
 				adjusted_total += adjusted_organ
 			L.update_health(adjusted_total,owner)
+*/

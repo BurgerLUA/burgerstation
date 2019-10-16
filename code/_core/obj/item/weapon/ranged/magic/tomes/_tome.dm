@@ -37,5 +37,8 @@
 		return ..()
 
 	var/mob/living/advanced/A = caller
-	A.adjust_mana(-get_mana_cost())
+	if(!A.health)
+		return ..()
+
+	A.health.adjust_mana(-get_mana_cost())
 	A.update_health_element_icons(mana=TRUE)

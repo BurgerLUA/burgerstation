@@ -72,7 +72,7 @@
 
 			step(L,get_dir(src,L))
 			L.add_stun(10 + is_center*30)
-			L.adjust_brute_loss(20 + is_center*20)
+			//L.adjust_brute_loss(20 + is_center*20) HEALTH TODO
 
 		if(prob(1000))
 			fire_cross()
@@ -98,17 +98,22 @@
 
 /mob/living/simple/npc/ash_drake/proc/fire_rain()
 
+	if(!health)
+		return FALSE
+
 	var/list/turf/simulated/floor/valid_floors = list()
 
 	for(var/turf/simulated/floor/T in range(4,src))
 		valid_floors += T
 
-	var/amount_multiplier = floor(10 + (1 - (health_current/health_max))*20)
+	var/amount_multiplier = floor(10 + (1 - (health.health_current/health.health_max))*20)
 
 	for(var/i=1,i<=amount_multiplier,i++)
 		var/turf/T = pick(valid_floors)
 		new/obj/effect/temp/ash_drake/target/(T)
 		new/obj/effect/temp/hazard/falling_fireball(T,desired_owner = src)
+
+	return TRUE
 
 /mob/living/simple/npc/ash_drake/get_movement_delay()
 	if(boss_state)

@@ -46,9 +46,6 @@
 	labeled_organs[O.id] = O
 	O.update_owner(src)
 
-	O.health_max = initial(O.health_max) * (1 + get_attribute_power(ATTRIBUTE_VITALITY)*2)
-	O.health_current = O.health_max
-
 	if(is_tail(O))
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
@@ -56,3 +53,7 @@
 		add_overlay(O,desired_layer = O.worn_layer)
 
 	return O
+
+/obj/item/organ/proc/attach_to(var/obj/item/organ/O)
+	attached_organ = O
+	O.attached_organs += src

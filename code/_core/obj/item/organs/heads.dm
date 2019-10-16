@@ -5,7 +5,7 @@
 	icon_state = BODY_HEAD_MALE
 	worn_layer = LAYER_MOB_HEAD
 	break_threshold = 25
-	health_max = 50
+	//health_max = 50
 	inventories = list(
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,
@@ -28,7 +28,7 @@
 	target_bounds_y_min = 23
 	target_bounds_y_max = 29
 
-	damage_multiplier = 2
+	//damage_multiplier = 2
 
 	base_miss_chance = 20
 

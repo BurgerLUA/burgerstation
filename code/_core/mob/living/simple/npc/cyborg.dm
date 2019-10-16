@@ -26,7 +26,12 @@
 
 
 /mob/living/simple/npc/silicon/squats/update_icon()
-	if(icon_state == "squats-roll" || (get_overall_health() / health_max) <= 0.5 )
+
+	if(!health)
+		return ..()
+
+
+	if(icon_state == "squats-roll" || (health.get_overall_health() / health.health_max) <= 0.5 )
 		return ..()
 	var/icon/new_icon = icon(icon,icon_state)
 	var/icon/shield_icon = icon(icon,"squats-shield")

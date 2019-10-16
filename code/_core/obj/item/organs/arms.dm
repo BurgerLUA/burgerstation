@@ -5,7 +5,7 @@
 	icon_state = BODY_ARM_RIGHT
 	worn_layer = LAYER_MOB_ARMS
 	break_threshold = 25
-	health_max = 50
+	//health_max = 50
 	attach_flag = BODY_TORSO
 
 	enable_wounds = TRUE

@@ -6,7 +6,6 @@
 	icon_state = BODY_EYE_RIGHT
 	worn_layer = LAYER_MOB_EYE
 	break_threshold = 5
-	health_max = 10
 
 	attach_flag = BODY_HEAD
 

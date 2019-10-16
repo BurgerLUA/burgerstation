@@ -42,8 +42,11 @@
 
 /obj/hud/screen_blood/proc/update_stats()
 
-	var/max_health = owner.health_max
-	var/health = owner.health_current
+	if(!owner.health)
+		return FALSE
+
+	var/max_health = owner.health.health_max
+	var/health = owner.health.health_current
 
 	if(dir==SOUTH) //Master screen blood
 		color = "#FFFFFF"
@@ -70,11 +73,11 @@
 			C.color = desired_color
 
 	else if(dir == SOUTHEAST)
-		var/max_stamina = owner.stamina_max
-		var/stamina = owner.stamina_current
+		var/max_stamina = owner.health.stamina_max
+		var/stamina = owner.health.stamina_current
 
-		var/max_mana = owner.mana_max
-		var/mana = owner.mana_current
+		var/max_mana = owner.health.mana_max
+		var/mana = owner.health.mana_current
 
 		alpha = max(1 - health/max_health, 1 - stamina/max_stamina, 1 - mana/max_mana)*255
 		color = rgb(255 - (health/max_health)*255,255 - (stamina/max_stamina)*255,255 - (mana/max_mana)*255)

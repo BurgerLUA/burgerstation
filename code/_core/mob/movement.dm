@@ -37,8 +37,8 @@
 		if(3)
 			. *= 1
 
-	if(health_max)
-		. *= 2 - (health_current/health_max)
+	if(health && health.health_max)
+		. *= 2 - (health.health_current/health.health_max)
 
 	return .
 

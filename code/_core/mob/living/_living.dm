@@ -22,24 +22,6 @@
 
 	var/first_life = TRUE
 
-	//Base attributes.
-	var/health_base = 10
-	var/stamina_base = 10
-	var/mana_base = 10
-
-	var/armor_burn_base = 0
-	var/armor_brute_base = 0
-
-	//Regeneration times are in seconds.
-
-	var/stamina_max = 0
-	var/stamina_current = 0
-	var/stamina_regeneration = 0
-
-	var/mana_max = 0
-	var/mana_current = 0
-	var/mana_regeneration = 0
-
 	var/health_regen_buffer = 0
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0
@@ -81,27 +63,13 @@
 
 	var/list/obj/hud/screen_blood/screen_blood
 
-	var/list/armor_base = list(  //Base armor for the mob.
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 25,
-		COLD = -25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 25,
-		DARK = 25,
-		FATIGUE = 0
-	)
-
 	interact_delay_base = 4
 
 	var/allow_experience_gains = FALSE
 
 	var/should_be_knocked_down = FALSE
+
+	health = /health/mob/living/
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
@@ -154,6 +122,7 @@
 	return "#444444"
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
+
 	. = ..()
 
 	if(desired_level_multiplier)
@@ -163,11 +132,13 @@
 	skills = list()
 	factions = list()
 	health_elements = list()
-	//linked_players = list()
 	players_fighting_boss = list()
 
 	initialize_attributes()
 	initialize_skills()
+
+	if(health)
+		health.Initialize()
 
 	if(client)
 		client.update_stats = TRUE
@@ -189,12 +160,11 @@
 	if(boss)
 		tracked_bosses[id] = src
 
+	return .
+
 /mob/living/Initialize()
+
 	initialize_factions()
-	update_stats()
-	update_health()
-	stamina_current = stamina_max
-	mana_current = mana_max
 	update_level()
 	. = ..()
 	setup_name()

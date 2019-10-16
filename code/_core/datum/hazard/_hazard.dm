@@ -31,9 +31,13 @@
 			continue
 
 		var/obj/item/organ/O = P.labeled_organs[k]
+
+		if(!O.health)
+			continue
+
 		var/damage_amount = base_damage - P.protection_cold[k]
 		if(damage_amount > 0)
-			total_damage += O.adjust_burn_loss(damage_amount)
+			total_damage += O.health.adjust_burn_loss(damage_amount)
 			all_damaged_organs += O.name
 
 	if(total_damage)

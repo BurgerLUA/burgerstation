@@ -31,7 +31,9 @@
 	return ..()
 
 /wound/New(var/mob/living/desired_owner,var/obj/item/organ/desired_location,var/atom/desired_inflictor,var/atom/desired_weapon,var/severity=1)
-	..()
+
+	. = ..()
+
 	victim = desired_owner
 	location = desired_location
 	inflictor = desired_inflictor
@@ -39,7 +41,13 @@
 
 	severity_level = severity
 
-	desired_location.wounds += src
+	if(desired_location && desired_location.health)
+		desired_location.health.wounds += src
+	else
+		qdel(src)
+		return FALSE
+
+	return .
 
 /wound/proc/get_infection_modifier()
 	return Clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)

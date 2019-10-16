@@ -5,7 +5,7 @@
 	icon_state = BODY_TORSO_MALE
 	worn_layer = LAYER_MOB_TORSO
 	break_threshold = 50
-	health_max = 100
+	//health_max = 100
 	inventories = list(
 		/obj/hud/inventory/organs/torso,
 		/obj/hud/inventory/organs/torso_o,
@@ -26,10 +26,11 @@
 	target_bounds_y_max = 22
 
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
-	..()
+	. = ..()
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.death()
+	return .
 
 /obj/item/organ/torso/female
 	desc = "A torso. Female variant"

@@ -37,7 +37,7 @@
 
 /mob/living/proc/do_loot_drop(var/atom/desired_loc)
 
-	if(desired_loc && loot_drop)
+	if(desired_loc && loot_drop && health)
 		var/loot/L = all_loot[loot_drop]
 
 		if(!is_turf(desired_loc))
@@ -49,7 +49,7 @@
 			L.spawn_loot_turf(desired_loc)
 
 		var/obj/item/currency/C = new(src.loc)
-		C.value = 1 + floor(health_max/10)
+		C.value = 1 + floor(health.health_max/10)
 		C.update_icon()
 		step_rand(C)
 		return TRUE
@@ -59,10 +59,11 @@
 /mob/living/proc/resurrect()
 	status &= ~FLAG_STATUS_DEAD
 	layer = initial(layer)
-	health_current = health_max
 	stun_time = 0
 	paralyze_time = 0
-	update_health()
+	if(health)
+		health.health_current = health.health_max
+		health.update_health()
 	return TRUE
 
 /mob/living/proc/pre_death()
@@ -104,8 +105,9 @@
 	return TRUE
 
 /mob/living/proc/on_unfatigued()
-	stamina_current = stamina_max
-	src.visible_message("\The [src.name] wakes up!","You wake up feeling [health_current < health_max ? "refreshed... sort of." : "refreshed!"]")
+	if(health)
+		health.stamina_current = health.stamina_max
+		src.visible_message("\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]")
 	return TRUE
 
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
@@ -165,8 +167,8 @@
 		if(paralyze_time != -1)
 			paralyze_time = max(0,paralyze_time - LIFE_TICK)
 
-		if(fatigue_time != -1)
-			if(stamina_current == stamina_max)
+		if(health && fatigue_time != -1)
+			if(health.stamina_current == health.stamina_max)
 				fatigue_time = 0
 			else
 				fatigue_time = max(0,fatigue_time - LIFE_TICK)
@@ -228,25 +230,27 @@ mob/living/proc/on_life_slow()
 
 /mob/living/proc/handle_health_buffer()
 
-	if(health_regen_buffer)
-		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		adjust_tox_loss(-health_to_regen)
-		health_regen_buffer -= health_to_regen
+	if(health)
 
-	if(stamina_regen_buffer)
-		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
-		adjust_stamina(stamina_to_regen)
-		stamina_regen_buffer -= stamina_to_regen
+		if(health_regen_buffer)
+			var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+			health.adjust_tox_loss(-health_to_regen)
+			health_regen_buffer -= health_to_regen
 
-	if(mana_regen_buffer)
-		var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
-		adjust_mana(mana_to_regen)
-		mana_regen_buffer -= mana_to_regen
+		if(stamina_regen_buffer)
+			var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
+			health.adjust_stamina(stamina_to_regen)
+			stamina_regen_buffer -= stamina_to_regen
 
-	if(health_regen_buffer)
-		update_health(health_regen_buffer,FALSE)
+		if(mana_regen_buffer)
+			var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
+			health.adjust_mana(mana_to_regen)
+			mana_regen_buffer -= mana_to_regen
 
-	if(health_regen_buffer || stamina_regen_buffer || mana_regen_buffer)
-		update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0)
+		if(health_regen_buffer)
+			health.update_health(health_regen_buffer,FALSE)
+
+		if(health_regen_buffer || stamina_regen_buffer || mana_regen_buffer)
+			update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0)
 
 	return TRUE

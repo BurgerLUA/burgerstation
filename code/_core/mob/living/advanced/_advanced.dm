@@ -82,6 +82,8 @@
 
 	var/list/stored_chat_text = list() //experiment
 
+	health = /health/mob/living/advanced
+
 /mob/living/advanced/destroy()
 
 	for(var/obj/item/organ/O in organs)
@@ -192,34 +194,7 @@ mob/living/advanced/Login()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 
-/mob/living/advanced/adjust_fatigue_loss(var/value)
 
-	if(!value)
-		return 0
-
-	if(fatigue_time > 0)
-		return 0
-
-	if(adjust_stamina(-value))
-		update_health_element_icons(stamina=TRUE)
-
-	if(stamina_current <= 0)
-		add_fatigue(600)
-
-	return value
-
-
-/mob/living/advanced/adjust_brute_loss(var/value)
-	return heal_all_organs(-value,0,0,0)
-
-/mob/living/advanced/adjust_burn_loss(var/value)
-	return heal_all_organs(0,-value,0,0)
-
-/mob/living/advanced/adjust_tox_loss(var/value)
-	return heal_all_organs(0,0,-value,0)
-
-/mob/living/advanced/adjust_oxy_loss(var/value)
-	return heal_all_organs(0,0,0,-value)
 
 //Not needed
 
@@ -349,6 +324,9 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //BEHOLD: SHITCODE.
 
+	if(!health)
+		return 0
+
 	var/list/desired_heal_amounts = list(
 		BRUTE = brute,
 		BURN = burn,
@@ -362,8 +340,10 @@ mob/living/advanced/Login()
 
 	for(var/organ_id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[organ_id]
-		for(var/damage_type in O.damage)
-			var/damage_amount =  O.damage[damage_type]
+		if(!O.health)
+			continue
+		for(var/damage_type in O.health.damage)
+			var/damage_amount =  O.health.damage[damage_type]
 			if(!damage_amount || damage_amount < 0)
 				continue
 			if(!damaged_organs[organ_id])
@@ -375,17 +355,19 @@ mob/living/advanced/Login()
 
 	for(var/organ_id in damaged_organs)
 		var/obj/item/organ/O = labeled_organs[organ_id]
+		if(!O.health)
+			continue
 		for(var/damage_type in damaged_organs[organ_id])
 			var/damage_amount_of_type = damaged_organs[organ_id][damage_type]
 			var/heal_amount_of_type = desired_heal_amounts[damage_type]
 			var/total_damage_of_type = damage_totals[damage_type]
 			if(damage_amount_of_type <= 0 || heal_amount_of_type <= 0 || total_damage_of_type <= 0)
 				continue
-			total_healed -= O.adjust_loss(damage_type,(damage_amount_of_type / total_damage_of_type) * -heal_amount_of_type)
-		O.update_health()
+			total_healed -= O.health.adjust_loss(damage_type,(damage_amount_of_type / total_damage_of_type) * -heal_amount_of_type)
+		O.health.update_health()
 
 	if(total_healed)
-		update_health(-total_healed,src,do_update = TRUE)
+		health.update_health(-total_healed,src)
 
 	return total_healed
 
@@ -459,7 +441,11 @@ mob/living/advanced/Login()
 	update_gender()
 
 /mob/living/advanced/can_sprint()
-	if(stamina_current <= 0)
+
+	if(!health)
+		return ..()
+
+	if(health.stamina_current <= 0)
 		return FALSE
 
 	return ..()

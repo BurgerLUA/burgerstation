@@ -11,7 +11,10 @@ var/global/list/all_living = list()
 /subsystem/living/Initialize()
 
 	for(var/mob/living/L in all_living)
-		L.Initialize()
+		if(ENABLE_MOB)
+			L.Initialize()
+		else
+			qdel(L)
 
 	LOG_SERVER("Initialized [length(all_living)] living beings.")
 

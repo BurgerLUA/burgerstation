@@ -29,8 +29,6 @@
 
 proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_type as num)
 
-	//world.log << "display_message([speaker],[source],[text_to_say],[text_type])"
-
 	var/turf/source_turf = get_turf(source)
 
 	if(!text_to_say)

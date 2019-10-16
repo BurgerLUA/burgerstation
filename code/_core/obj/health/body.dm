@@ -10,22 +10,31 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/body/update_icon()
+/obj/hud/button/health/body/update_icon() //Wait, isn't this a clone of something? TODO HEALTH
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
-	var/icon/I = new/icon(icon,icon_state)
+	if(!is_advanced(owner))
+		return FALSE
 
 	var/mob/living/advanced/A = owner
 
+	var/icon/I = new/icon(icon,icon_state)
+
 	for(var/obj/item/organ/O in A.organs)
+
+		if(!O.health)
+			continue
 
 		if(!O.hud_id)
 			continue
 
+		if(!O.health.health_max)
+			continue
+
 		var/icon/IO = new/icon(icon,O.hud_id)
-		var/health_mod = O.health_current / O.health_max
+		var/health_mod = O.health.health_current / O.health.health_max
 		var/color_mod = "#FFFFFF"
 		if(health_mod <= 0)
 			color_mod = "#666666"
@@ -50,18 +59,21 @@
 
 		for(var/obj/item/organ/O in A.organs)
 
+			if(!O.health)
+				continue
+
 			if(!O.hud_id)
 				continue
 
-			var/health_percent = O.health_current / O.health_max
+			var/health_percent = O.health.health_current / O.health.health_max
 
-			var/is_injured = health_percent < 1 || length(O.wounds)
+			var/is_injured = health_percent < 1 || length(O.health.wounds)
 
 			var/organ_information = span("","Your [O.name] is [is_injured ? "injured" : "healthy"]")
 
 			var/wound_information = list()
 
-			for(var/wound/W in O.wounds)
+			for(var/wound/W in O.health.wounds)
 				wound_information += W.get_simple_examine_text()
 
 			returning += div(is_injured ? "warning" : "notice","[organ_information]. It has [english_list(wound_information,nothing_text = "no visible wounds")].")

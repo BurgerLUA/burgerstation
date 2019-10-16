@@ -7,19 +7,6 @@
 		B = new B
 		B.update_owner(src)
 
-mob/living/advanced/get_total_loss()
-	for(var/obj/item/organ/O in organs)
-		. += O.get_total_loss()
-
-	return .
-
-mob/living/advanced/get_total_loss_soft()
-	for(var/obj/item/organ/O in organs)
-		. += O.get_total_loss_soft()
-
-	return .
-
-
 /mob/living/advanced/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
 
 	. = ..()

@@ -5,7 +5,6 @@
 	icon_state = BODY_EAR_RIGHT
 	worn_layer = LAYER_MOB_EAR
 	break_threshold = 5
-	health_max = 10
 
 	attach_flag = BODY_HEAD
 

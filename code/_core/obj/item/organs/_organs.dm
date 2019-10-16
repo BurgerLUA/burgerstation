@@ -11,7 +11,7 @@
 
 	var/flags_organ = FLAG_ORGAN_NONE
 
-	health_max = 10
+	//health_max = 10
 	var/break_threshold = 0 //0 Means it doesn't break. Other values means it breaks.
 
 	var/attach_flag //The organ type that it wishes to attach to. Use FLAG_ORGAN_ flags.
@@ -50,6 +50,11 @@
 
 	var/base_miss_chance = 0
 
+	health_base = 200
+
+	health = /health/obj/item/organ/
+
+
 /obj/item/organ/destroy()
 	attached_organ = null
 	attached_organs.Cut()
@@ -62,6 +67,7 @@
 
 	return ..()
 
+/* HEALTH TODO: FIX THIS
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
 	for(var/wound/W in wounds)
@@ -69,6 +75,7 @@
 		. += span("notice",W.name)
 
 	return .
+*/
 
 /obj/item/organ/initialize_blends()
 
@@ -89,70 +96,12 @@
 	return ..()
 
 /obj/item/organ/New()
-	..()
+	. = ..()
 	attached_organs = list()
-	wounds = list()
 	initialize_blends()
-	update_health()
-
-/obj/item/organ/adjust_brute_loss(var/value)
-	if(value > 0 && is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-	if(is_player(src.loc) && value > 0)
-		damage_soft[BRUTE] += value
-	else
-		return ..()
-
-	return value
-
-/obj/item/organ/adjust_tox_loss(var/value)
-	if(value > 0 && is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-
-	if(is_player(src.loc) && value > 0)
-		damage_soft[TOX] += value
-	else
-		return ..()
-
-	return value
-
-/obj/item/organ/adjust_oxy_loss(var/value)
-	if(value > 0 && is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-
-	if(is_player(src.loc) && value > 0)
-		damage_soft[OXY] += value
-	else
-		return ..()
-
-	return value
-
-/obj/item/organ/adjust_burn_loss(var/value)
-	if(value > 0 && is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-
-	if(is_player(src.loc) && value > 0)
-		damage_soft[BURN] += value
-	else
-		return ..()
-
-	return value
-
-/obj/item/organ/adjust_fatigue_loss(var/value)
-	if(!src.loc || !is_advanced(src.loc))
-		return 0
-
-	var/mob/living/advanced/A = src.loc
-
-	return A.adjust_fatigue_loss(value)
-
-/obj/item/organ/proc/attach_to(var/obj/item/organ/O)
-	attached_organ = O
-	O.attached_organs += src
+	if(health)
+		health.Initialize()
+	return .
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 
@@ -210,28 +159,6 @@
 			icon = I
 
 	return ..()
-
-/obj/item/organ/update_health(var/damage_dealt,var/atom/attacker)
-
-	. = ..()
-
-	if(enable_wounds && src.loc && is_advanced(src.loc))
-
-		var/should_update = FALSE
-		var/mob/living/advanced/A = src.loc
-
-		for(var/damage_type in visual_wounds)
-			var/last_amount = visual_wounds[damage_type]
-			var/current_amount = floor((get_loss(damage_type)/health_max)*5)
-
-			if(last_amount != current_amount)
-				change_blend("damage_[damage_type]", desired_icon_state = "[current_amount]")
-				should_update = TRUE
-
-		if(should_update)
-			A.update_overlay(src)
-
-	return .
 
 /obj/item/organ/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
 
