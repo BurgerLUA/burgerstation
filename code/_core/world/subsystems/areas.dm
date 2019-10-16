@@ -1,4 +1,3 @@
-
 /subsystem/weather
 	name = "Weather and Climate Subsystem"
 	desc = "Manages the icon states of areas, aka weather and climate."

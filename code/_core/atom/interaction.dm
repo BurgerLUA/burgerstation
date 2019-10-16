@@ -1,4 +1,4 @@
-/atom/proc/on_mouse_wheel(var/mob/caller as mob,location,control,params)
+/atom/proc/on_mouse_wheel(caller,delta_x,delta_y,location,control,params)
 
 	if(!caller)
 		return FALSE

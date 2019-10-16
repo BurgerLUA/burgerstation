@@ -29,8 +29,8 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	return TRUE
 
-/obj/item/radio/on_mouse_wheel(var/mob/caller as mob,var/atom/object,location,control,params)
-	world.log << "mouse_wheel_object([caller],[object],[location],[control],[params])"
+/obj/item/radio/on_mouse_wheel(caller,delta_x,delta_y,location,control,params)
+	world.log << delta_y
 	return TRUE
 
 /obj/item/radio/New(var/desired_loc)
