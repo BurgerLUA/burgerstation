@@ -1,3 +1,18 @@
+/atom/proc/on_mouse_wheel(var/mob/caller as mob,location,control,params)
+
+	if(!caller)
+		return FALSE
+
+	var/atom/defer_self = src.defer_click_on_object()
+
+	if(!defer_self)
+		return FALSE
+
+	if(src != defer_self && defer_self.on_mouse_wheel(caller,location,control,params))
+		return TRUE
+
+	return FALSE
+
 /atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	if(!object || !caller)

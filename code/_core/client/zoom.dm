@@ -12,9 +12,11 @@
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
 
-
-	if(allow_zoom_controls)
+	if(allow_zoom_controls && is_zoomed)
 		var/change_in_screen = delta_y > 1 ? 1 : -1
 		update_zoom(zoom_level + change_in_screen)
+		return TRUE
 
-	..()
+	mob.do_mouse_wheel(object,delta_x,delta_y,location,control,params)
+
+	return TRUE

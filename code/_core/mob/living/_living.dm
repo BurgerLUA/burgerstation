@@ -103,6 +103,13 @@
 
 	var/should_be_knocked_down = FALSE
 
+/mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
+	if(object && is_atom(object))
+		var/atom/A = object
+		A.on_mouse_wheel(src,delta_x,delta_y,location,control,params)
+
+	return TRUE
+
 /mob/living/destroy()
 
 	factions.Cut()

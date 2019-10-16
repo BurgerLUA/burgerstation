@@ -2,14 +2,36 @@ var/global/list/obj/item/radio/all_radios = list()
 
 /obj/item/radio/
 	name = "radio"
+	desc = "Long distance communication in the realm. What could possibly go wrong?"
 	icon = 'icons/obj/items/radio.dmi'
 
 	var/frequency = RADIO_FREQ_COMMON //The frequency of the radio.
-	var/enabled = TRUE //Whether or not the radio itself is turned on.
 	var/receiving = TRUE //Whether or not the radio can recieve messages.
 	var/broadcasting = TRUE //Whether or not the radio can broadcast messages without having to press the button.
 
 	var/radio_sound = 'sounds/items/radio.ogg'
+
+/obj/item/radio/click_self(var/mob/caller,location,control,params)
+
+	receiving = !receiving
+
+	caller.to_chat(span("notice","You toggle the reciever to [receiving ? "always broadcast." : "only broadcast when pressed."]"))
+
+	return TRUE
+
+/obj/item/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(!is_inventory(object))
+		return ..()
+
+	broadcasting = !broadcasting
+	caller.to_chat(span("notice","You toggle the speaker [broadcasting ? "on" : "off"]."))
+
+	return TRUE
+
+/obj/item/radio/on_mouse_wheel(var/mob/caller as mob,var/atom/object,location,control,params)
+	world.log << "mouse_wheel_object([caller],[object],[location],[control],[params])"
+	return TRUE
 
 /obj/item/radio/New(var/desired_loc)
 	all_radios += src

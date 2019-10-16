@@ -22,7 +22,7 @@
 				winset(C, null, "command='[final_command]'")
 		else if(first_character == ";")
 			for(var/obj/item/radio/R in all_radios)
-				if(!R.broadcasting || !R.enabled || get_turf(R) != get_turf(src))
+				if(!R.broadcasting || get_turf(R) != get_turf(src))
 					continue
 				var/final_command = trim(copytext(text_to_say,2,0))
 				visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
