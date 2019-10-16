@@ -10,6 +10,8 @@
 		return additional_blends[desired_id]
 	else
 		var/icon_blend/IB = new(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_should_save, desired_layer)
+		if(!additional_blends)
+			additional_blends = list()
 		additional_blends[desired_id] = IB
 		return IB
 
@@ -42,4 +44,6 @@
 	return TRUE
 
 /atom/proc/blend_exists(var/desired_id)
+	if(!additional_blends)
+		return FALSE
 	return additional_blends[desired_id]

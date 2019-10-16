@@ -33,9 +33,10 @@ var/global/list/all_hazards = list()
 			if(!H)
 				continue
 
-			for(var/mob/living/advanced/player/P in A.players_inside)
-				H.process_player_tick(P)
-				sleep(-1)
+			if(A.players_inside)
+				for(var/mob/living/advanced/player/P in A.players_inside)
+					H.process_player_tick(P)
+					sleep(-1)
 
 			sleep(-1)
 

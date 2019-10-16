@@ -29,7 +29,7 @@
 
 	var/area_light_power = 0
 
-	var/list/mob/living/advanced/player/players_inside = list()
+	var/list/mob/living/advanced/player/players_inside
 
 	var/hazard //The id of the hazard
 
@@ -44,7 +44,8 @@
 	var/weather = WEATHER_NONE //Optional weather
 
 /area/destroy()
-	players_inside.Cut()
+	if(players_inside)
+		players_inside.Cut()
 	return ..()
 
 /area/New()
@@ -87,6 +88,9 @@
 		if(safe)
 			P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
 
+		if(!players_inside)
+			players_inside = list()
+
 		if(!(enterer in players_inside))
 			players_inside += enterer
 
@@ -123,7 +127,8 @@
 
 	if(is_player(exiter))
 		var/mob/living/advanced/player/P = exiter
-		players_inside -= exiter
+		if(players_inside)
+			players_inside -= exiter
 		if(singleplayer)
 			P.see_invisible = initial(P.see_invisible)
 

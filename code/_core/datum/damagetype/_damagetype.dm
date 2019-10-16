@@ -290,7 +290,8 @@
 				var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
 				if(xp_to_give > 0)
 					A.add_skill_xp(skill,xp_to_give)
-			if(brute_damage_dealt > victim.health.health_max*0.5)
+
+			if(victim.health && brute_damage_dealt > victim.health.health_max*0.5)
 
 				var/offset_x = victim.x - attacker.x
 				var/offset_y = victim.y - attacker.y

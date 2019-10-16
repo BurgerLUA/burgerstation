@@ -3,66 +3,80 @@
 	desc = "Controls the spawning of all mob-based spawnpoints on the map."
 	priority = SS_ORDER_SPAWNING
 	tick_rate = SECONDS_TO_TICKS(10)
-	var/list/turf/simulated/stored_turfs = list()
+	var/list/obj/mob_spawn/stored_spawns = list()
 
 /subsystem/spawning/Initialize()
 
+	if(!ENABLE_MOB)
+		return TRUE
+
 	for(var/mob/living/L in world)
+
 		if(!L.respawn)
 			continue
+
 		var/turf/simulated/T = get_turf(L)
-		if(!istype(T))
+
+		if(!is_turf(T))
 			LOG_ERROR("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and has a mob spawnpoint on it.")
 			continue
-		if(length(T.spawning_data))
-			LOG_ERROR("Warning: [T] at ([T.x],[T.y],[T.z]) has more than one mob on it.")
-			continue
-		T.spawning_data = list()
-		T.spawning_data["mob_type"] = L.type
-		T.spawning_data["mob_stored"] = L
-		T.spawning_data["time_to_respawn"] = L.respawn_time
-		T.spawning_data["time_of_death"] = 0
-		T.spawning_data["mob_dir"] = L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir
-		T.spawning_data["level_multiplier"] = L.level_multiplier
-		stored_turfs += T
+
+		var/obj/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.level_multiplier)
+		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
+
+		stored_spawns += M
 
 	return TRUE
 
 /subsystem/spawning/on_life()
-	for(var/turf/simulated/T in stored_turfs)
-		attempt_spawn(T)
+
+	if(!ENABLE_MOB)
+		return TRUE
+
+	for(var/obj/mob_spawn/M in stored_spawns)
+		attempt_spawn(M)
 
 	return TRUE
 
-/subsystem/spawning/proc/attempt_spawn(var/turf/simulated/T)
+/subsystem/spawning/proc/attempt_spawn(var/obj/mob_spawn/M)
 
-	if(!T.spawning_data["mob_type"])
-		LOG_ERROR("Warning: [T] at ([T.x],[T.y],[T.z]) has invalid spawning data.")
+	if(!M.mob_type)
+		LOG_ERROR("Warning: [M] at ([M.x],[M.y],[M.z]) has invalid spawning data.")
 		return
 
-	if(!T.spawning_data["mob_stored"])
-		return do_spawn(T)
+	if(!M.mob_stored)
+		return do_spawn(M)
 
-	var/mob/living/L = T.spawning_data["mob_stored"]
+	var/mob/living/L = M.mob_stored
 	if( (L.status & FLAG_STATUS_DEAD) || L.qdeleting)
-		if(!T.spawning_data["time_of_death"])
-			T.spawning_data["time_of_death"] = curtime
+		if(!M.time_of_death)
+			M.time_of_death = curtime
 
-		if(T.spawning_data["time_of_death"] + T.spawning_data["time_to_respawn"] <= curtime)
-			T.spawning_data["time_of_death"] = 0
-			return do_spawn(T)
+		if(M.time_of_death + M.time_to_respawn <= curtime)
+			M.time_of_death = null
+			return do_spawn(M)
 
 	return FALSE
 
-/subsystem/spawning/proc/do_spawn(var/turf/simulated/T)
+/subsystem/spawning/proc/do_spawn(var/obj/mob_spawn/M)
 
-	var/area/A = get_area(T)
-	T.spawning_data["mob_stored"] = null
-	var/path = T.spawning_data["mob_type"]
-	var/mob/living/L = new path(T,desired_level_multiplier = T.spawning_data["level_multiplier"] + A.level_multiplier)
-	L.set_dir(T.spawning_data["mob_dir"])
+	var/turf/spawning_turf = get_turf(M)
+
+	for(var/mob/living/advanced/player/P in range(spawning_turf,VIEW_RANGE))
+		if(P && is_valid(P))
+			M.time_of_death = curtime
+			return FALSE
+
+	var/path = M.mob_type
+	var/area/A = get_area(M)
+	M.mob_stored = null
+
+	var/mob/living/L = new path(spawning_turf,desired_level_multiplier = M.level_multiplier + A.level_multiplier)
+	L.set_dir(M.dir)
+
 	if(!L.initialized)
 		L.Initialize()
-	T.spawning_data["mob_stored"] = L
+
+	M.mob_stored = L
 
 	return TRUE

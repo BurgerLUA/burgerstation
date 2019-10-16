@@ -1,4 +1,5 @@
 /turf/simulated/
+
 	var/real_icon
 	var/real_icon_state
 
@@ -6,13 +7,7 @@
 	desired_light_range = DEFAULT_RANGE_AMBIENT
 	desired_light_color = "#FFFFFF"
 
-	var/list/spawning_data //For mob respawns.
-
 	dynamic_lighting = TRUE
-
-/turf/simulated/destroy()
-	spawning_data.Cut()
-	return ..()
 
 /turf/simulated/Initialize()
 	. = ..()
@@ -27,7 +22,6 @@
 
 	var/area/A = src.loc
 	desired_light_power *= A.area_light_power
-	spawning_data = list()
 
 	..()
 

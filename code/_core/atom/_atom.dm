@@ -9,7 +9,6 @@
 
 	density = FALSE //DEPCRECATED
 
-
 	var/health_base = 1
 	var/mana_base = 1
 	var/stamina_base = 1
@@ -22,7 +21,7 @@
 
 	var/initialized = FALSE
 
-	var/list/additional_blends = list()
+	var/list/additional_blends
 
 	var/override_icon = FALSE
 
@@ -58,7 +57,8 @@
 		var/icon_blend/IB = additional_blends[blend_id]
 		qdel(IB)
 
-	additional_blends.Cut()
+	if(additional_blends)
+		additional_blends.Cut()
 
 	for(var/datum/O in underlays)
 		qdel(O)
