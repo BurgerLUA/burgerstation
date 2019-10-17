@@ -5,70 +5,9 @@
 	chargen_min_level = 5
 	chargen_max_level = 25
 
-//Rogue 6
-/experience/skill/ranged/ //AGILITY
-	name = "Ranged Weapons"
-	id = SKILL_RANGED
-	desc = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
-	experience_power = 1.9
-	experience_multiplier = 2.5
-	//Each point of damage dealt = 1xp
-	combat_level_mul = 1
-
-/experience/skill/dodge/ //AGILITY
-	name = "Dodge"
-	id = SKILL_DODGE
-	desc = "Your skill in dodging incoming attacks. Affects the chance of a successful dodge from melee weapons, ranged weapons, and magic."
-	//Each point of damage dodged = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
-	combat_level_mul = 0.75
-
-/experience/skill/stealth/ //DEXTERITY
-	name = "Stealth"
-	id = SKILL_STEALTH
-	desc = "Your skill in blending in with your surroundings. Affects how well you can be conceled in your enviroment when sneaking."
-	//Each successful tile stepped unnoticed with others around = 1xp
-	//Each successful sneak attack = 10xp
-	experience_power = 1.7
-	experience_multiplier = 0.7
-	combat_level_mul = 0.5
-
-/experience/skill/parry/ //DEXTERITY
-	name = "Parrying"
-	id = SKILL_PARRY
-	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
-	//Each point of damage parried = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
-	combat_level_mul = 1
-
-/experience/skill/athletics //ENDURANCE
-	name = "Athletics"
-	id = SKILL_ATHLETICS
-	desc = "Your skill in walking, running, jumping, climbing, and swimming. Affects your movement speed when performing these actions."
-	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
-	experience_power = 1.5
-	experience_multiplier = 5
-	combat_level_mul = 0.75
-
-/experience/skill/athletics/get_power()
-	//return (get_current_level() ** 2) * (1/(max_level*100))
-	return min(0.5,log(10,get_current_level()+1)*0.5)
-
-/experience/skill/instinct //ENDURANCE
-	name = "Instincts"
-	id = SKILL_INSTINCTS
-	desc = "Your skill in using your survival instincts. Affects your ability to identify threats such as traps, ambushes, player karma levels, and investigative skills."
-	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
-	experience_power = 1.7
-	experience_multiplier = 2
-	combat_level_mul = 0.25
-
-
 //Warrior 6
 /experience/skill/melee/ //STRENGTH
-	name = "Melee Weapons"
+	name = "Melee"
 	id = SKILL_MELEE
 	desc = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
 	//Each successful blow = 1xp
@@ -76,16 +15,7 @@
 	experience_multiplier = 2.5
 	combat_level_mul = 1
 
-/experience/skill/block/ //STRENGTH
-	name = "Blocking"
-	id = SKILL_BLOCK
-	desc = "Your skill in blocking attacks with a weapon or a shield. Affects the chance of a successful block of swords, bucklers, or even your fists."
-	//Each point of damage blocked = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
-	combat_level_mul = 0.75
-
-/experience/skill/unarmed/ //VITALITY
+/experience/skill/unarmed/ //STRENGTH
 	name = "Unarmed"
 	id = SKILL_UNARMED
 	desc = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
@@ -103,57 +33,77 @@
 	experience_multiplier = 4.1
 	combat_level_mul = 0.75
 
-/experience/skill/armor/ //FORTITUDE
-	name = "Armor"
-	id = SKILL_ARMOR
-	desc = "Your skill in wearing armor. Affects the protection rate of armor, as well as how much armor negatively affects you."
-	//Each point of damage absorbed = 1xp, rounded up.
+/experience/skill/block/ //FORTITUDE
+	name = "Block"
+	id = SKILL_BLOCK
+	desc = "Your skill in blocking attacks with a weapon or a shield. Affects the chance of a successful block of swords, bucklers, or even your fists."
+	//Each point of damage blocked = 1xp, rounded up.
 	experience_power = 1.5
-	experience_multiplier = 4.8
+	experience_multiplier = 3.1
 	combat_level_mul = 0.75
 
-/experience/skill/recovery/ //FORTITUDE
-	name = "Recovery"
-	id = SKILL_RECOVERY
-	desc = "Your skill in recovering from wounds. Affects the natural rate of which wounds heal."
-	//Each point of health recovered = 1xp
+//Rogue 6
+/experience/skill/ranged/ //DEXTERITY
+	name = "Ranged"
+	id = SKILL_RANGED
+	desc = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
+	experience_power = 1.9
+	experience_multiplier = 2.5
+	//Each point of damage dealt = 1xp
+	combat_level_mul = 1
+
+/experience/skill/precision/ //DEXTERITY
+	name = "Precision"
+	id = SKILL_PRECISION
+	desc = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
+	experience_power = 1.9
+	experience_multiplier = 2.5
+	//Each point of damage dealt = 1xp
+	combat_level_mul = 1
+
+/experience/skill/dodge/ //AGILITY
+	name = "Dodge"
+	id = SKILL_DODGE
+	desc = "Your skill in dodging incoming attacks. Affects the chance of a successful dodge from melee weapons, ranged weapons, and magic."
+	//Each point of damage dodged = 1xp, rounded up.
 	experience_power = 1.5
-	experience_multiplier = 4.8
-	combat_level_mul = 0.5
+	experience_multiplier = 3.1
+	combat_level_mul = 0.75
+
+/experience/skill/survival //ENDURANCE
+	name = "Survival"
+	id = SKILL_SURVIVAL
+	desc = "Your skill in analyzing people, objects, or situations. Affects the chance of detecting traps and illusions, and how robust descriptions are when you examine things."
+	desc_extended = "You can level this skill by walking, running, climbing, swimming, and jumping."
+	experience_power = 1.5
+	experience_multiplier = 5
+	combat_level_mul = 0.75
+
 
 //Mage 6
-/experience/skill/medicine/ //INTELLIGENCE
-	name = "Medicine"
-	id = SKILL_MEDICINE
-	desc = "Your skill in treating wounds through medicine. Affects the rate in which treated wounds heal, as well as the strength of treating wounds."
-	//Each point of health recovered = 1xp
-	experience_power = 1.5
-	experience_multiplier = 4.8
-	combat_level_mul = 0.5
-
-/experience/skill/offensive_magic/ //INTELLIGENCE
-	name = "Subjugation Magic"
-	id = SKILL_MAGIC_OFFENSIVE
-	desc = "Your skill in casting damage-dealing subjugation magic such as fireball, lightning bolt, and frostwave. Affects the damage and mana cost of subjugation magic."
+/experience/skill/magic/ //INTELLIGENCE
+	name = "Magic"
+	id = SKILL_MAGIC
+	desc = "Your skill in casting damage-dealing subjugation magic such as fireball, lightning bolt, and frostwave."
 	//Each successful spell = 1xp
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	combat_level_mul = 1
 
-/experience/skill/supportive_magic/ //RESOLVE
-	name = "Reclamation Magic"
-	id = SKILL_MAGIC_SUPPORT
-	desc = "Your skill in casting damage-reversing reclamation magic such as restore flesh, cure self, and revive other."
+/experience/skill/sorcery/ //INTELLIGENCE
+	name = "Sorcery"
+	id = SKILL_SORCERY
+	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
 	//Each successful spell = 1xp
 	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	combat_level_mul = 0.75
 
-/experience/skill/defensive_magic/ //RESOLVE
-	name = "Deterrence Magic"
-	id = SKILL_MAGIC_DEFENSIVE
+/experience/skill/medicine/ //WILLPOWER
+	name = "Medicine"
+	id = SKILL_MEDICINE
 	desc = "Your skill in casting damage-warding deterrence magic such as raise barrier, conjure armor, and reflect spell."
 	//Each successful spell = 1xp
 	//Each point of power in a spell successfully casted = 1xp
@@ -161,25 +111,15 @@
 	experience_multiplier = 4.1
 	combat_level_mul = 0.75
 
-/experience/skill/reality_magic/ //WILLPOWER
-	name = "Corporeality Magic"
-	id = SKILL_MAGIC_REALITY
-	desc = "Your skill in casting damage-tricking corporeality magic such as summon illusion, hallucinate other, and invisibility."
-	//Each successful spell = 1xp
-	//Each point of power in a spell successfully casted = 1xp
-	experience_power = 1.8
-	experience_multiplier = 4.1
-	combat_level_mul = 0.75
+/experience/skill/parry/ //WISDOM
+	name = "Parrying"
+	id = SKILL_PARRY
+	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
+	//Each point of damage parried = 1xp, rounded up.
+	experience_power = 1.5
+	experience_multiplier = 3.1
+	combat_level_mul = 1
 
-/experience/skill/chaos_magic/ //WILLPOWER
-	name = "Chaos Magic"
-	id = SKILL_MAGIC_CHAOS
-	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
-	//Each successful spell = 1xp
-	//Each point of power in a spell successfully casted = 1xp
-	experience_power = 1.8
-	experience_multiplier = 4.1
-	combat_level_mul = 0.75
 
 //Crafting
 /experience/skill/alchemy/ //Int

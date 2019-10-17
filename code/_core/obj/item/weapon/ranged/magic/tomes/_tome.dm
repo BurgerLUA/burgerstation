@@ -3,7 +3,7 @@
 	desc = "What secrets does this tome hold?"
 	desc_extended = "A weapon that uses mana to cast spells."
 
-	var/associated_skill = SKILL_MAGIC_OFFENSIVE
+	var/associated_skill = SKILL_MAGIC //For mana cost calculation
 
 	has_quick_function = TRUE
 

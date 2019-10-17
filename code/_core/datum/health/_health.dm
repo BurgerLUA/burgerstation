@@ -197,18 +197,7 @@
 	if(!is_living(owner))
 		return ..()
 
-	var/mob/living/L = owner
-
-	var/returning_value = list()
-
-	var/armor_level = L.get_skill_level(SKILL_ARMOR)
-	var/armor_level_mod = 1 + L.get_skill_power(SKILL_ARMOR)
-
-	for(var/damage_type in src.armor_base)
-		var/armor_amount = min(armor_level,src.armor_base[damage_type] * armor_level_mod)
-		returning_value[damage_type] = armor_amount
-
-	return returning_value
+	return armor_base
 
 
 /health/proc/adjust_mana(var/adjust_value)

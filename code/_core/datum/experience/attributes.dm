@@ -16,14 +16,14 @@
 /experience/attribute/vitality/
 	name = "Vitality"
 	id = ATTRIBUTE_VITALITY
-	desc = "A measure of how long your life can last in this world. Affects maximum health and health regeneration."
+	desc = "A measure of how long your life can last in this world. Affects maximum health."
 	flags = ATTRIBUTE_STAT
 	combat_level_mul = 0.75
 
 /experience/attribute/fortitude/
 	name = "Fortitude"
 	id = ATTRIBUTE_FORTITUDE
-	desc = "A measure of how resistant you are to the troubles of this world. Affects pain tolerance and physical damage resistance."
+	desc = "A measure of how resistant you are to the troubles of this world. Affects pain tolerance and physical damage resistance and health regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	combat_level_mul = 0.5
 
@@ -35,19 +35,19 @@
 	flags = ATTRIBUTE_DAMAGE
 	combat_level_mul = 1
 
+/experience/attribute/wisdom/
+	name = "Wisdom"
+	id = ATTRIBUTE_WISDOM
+	desc = "A measure of how wise you are. Affects maximum mana."
+	flags = ATTRIBUTE_STAT
+	combat_level_mul = 0.75
+
 /experience/attribute/willpower/
 	name = "Willpower"
 	id = ATTRIBUTE_WILLPOWER
-	desc = "A measure of how long your mind can last in this world. Affects maximum mana and mana regeneration."
+	desc = "A measure of how long your mind can last in this world. Affects magic resistance and and mana regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	combat_level_mul = 0.75
-
-/experience/attribute/resolve/
-	name = "Resolve"
-	id = ATTRIBUTE_RESOLVE
-	desc = "A measure of how conductive you are to the magic of this world. Affects magic resistance."
-	flags = ATTRIBUTE_STAT
-	combat_level_mul = 0.5
 
 //Rogue
 /experience/attribute/dexterity/
@@ -60,14 +60,18 @@
 /experience/attribute/agility/
 	name = "Agility"
 	id = ATTRIBUTE_AGILITY
-	desc = "A measure of how agile you are in the world. Affects maximum stamina and stamina regeneration."
+	desc = "A measure of how agile you are in the world. Affects movement speed and the speed of which you perform movement based actions."
 	flags = ATTRIBUTE_STAT
 	combat_level_mul = 0.75
+
+/experience/skill/agility/get_power()
+	//return (get_current_level() ** 2) * (1/(max_level*100))
+	return min(0.25,log(10,get_current_level()+1)*0.5)
 
 /experience/attribute/endurance/
 	name = "Endurance"
 	id = ATTRIBUTE_ENDURANCE
-	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, and stamina damage."
+	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, stamina damage. Also increases maximum stamina and stamina regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	combat_level_mul = 0.5
 

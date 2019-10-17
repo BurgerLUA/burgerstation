@@ -32,7 +32,7 @@
 	if(is_sneaking)
 		. *= (2 - stealth_mod*0.5)
 
-	var/skill_power = get_skill_power(SKILL_ATHLETICS)
+	var/skill_power = get_attribute_power(ATTRIBUTE_AGILITY)
 
 	. *= 1 + (1 - skill_power)
 
@@ -48,7 +48,7 @@
 			S.update_icon()
 
 	if(on)
-		stealth_mod = get_skill_power(SKILL_STEALTH)
+		stealth_mod = get_skill_power(SKILL_SURVIVAL)
 		is_sneaking = TRUE
 		return TRUE
 	else

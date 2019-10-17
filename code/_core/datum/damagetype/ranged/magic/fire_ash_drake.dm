@@ -21,13 +21,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = CLASS_C,
+		SKILL_MAGIC = CLASS_C,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = HEAT
+		SKILL_MAGIC = HEAT
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_MAGIC_OFFENSIVE = SKILL_C
+		SKILL_MAGIC = SKILL_C
 	)

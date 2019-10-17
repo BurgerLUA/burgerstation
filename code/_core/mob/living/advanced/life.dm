@@ -51,19 +51,19 @@ mob/living/advanced/proc/handle_regen()
 		var/heal_amount = health.health_regeneration*LIFE_TICK_SLOW*0.1
 		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount,heal_amount,0)
 		if(health_adjust)
-			add_skill_xp(SKILL_RECOVERY,health_adjust)
+			add_attribute_xp(ATTRIBUTE_VITALITY,health_adjust)
 
 	if(stamina_regen_delay <= 0 && health.stamina_current < health.stamina_max)
 		var/heal_amount = health.stamina_regeneration*LIFE_TICK_SLOW*0.1
 		stamina_adjust = health.adjust_stamina(heal_amount)
 		if(stamina_adjust)
-			add_skill_xp(SKILL_RECOVERY,stamina_adjust)
+			add_attribute_xp(ATTRIBUTE_ENDURANCE,stamina_adjust)
 
 	if(mana_regen_delay <= 0 && health.mana_current < health.mana_max)
 		var/heal_amount = health.mana_regeneration*LIFE_TICK_SLOW*0.1
 		mana_adjust = health.adjust_mana(heal_amount)
 		if(mana_adjust)
-			add_skill_xp(SKILL_RECOVERY,mana_adjust)
+			add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust)
 
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)

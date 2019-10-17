@@ -26,15 +26,15 @@
 
 	skill_stats = list(
 		SKILL_PRAYER = CLASS_A,
-		SKILL_MAGIC_OFFENSIVE = CLASS_D
+		SKILL_MAGIC = CLASS_D
 	)
 
 	skill_damage = list(
 		SKILL_PRAYER = HOLY,
-		SKILL_MAGIC_OFFENSIVE = MAGIC
+		SKILL_MAGIC = MAGIC
 	)
 
 	skill_xp_per_damage = list(
 		SKILL_PRAYER = SKILL_A,
-		SKILL_MAGIC_OFFENSIVE = SKILL_D
+		SKILL_MAGIC = SKILL_D
 	)

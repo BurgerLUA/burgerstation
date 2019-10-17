@@ -227,9 +227,6 @@
 				damage_blocked += old_damage_amount - new_damage_amount
 				damage_to_deal[damage_type] = new_damage_amount
 
-			if(damage_blocked > 0)
-				L.add_skill_xp(SKILL_ARMOR,damage_blocked)
-
 		var/brute_damage_to_deal = 0
 		var/burn_damage_to_deal = 0
 		var/tox_damage_to_deal = 0

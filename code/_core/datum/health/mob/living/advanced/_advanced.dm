@@ -62,20 +62,19 @@ health/mob/living/advanced/update_stats()
 
 	var/mob/living/advanced/A = owner
 
-	health_max = A.health_base + A.get_attribute_power(ATTRIBUTE_VITALITY)*400
-	stamina_max = A.stamina_base + A.get_attribute_power(ATTRIBUTE_AGILITY)*400
-	mana_max = A.mana_base + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*400
+	var/endurance = A.get_attribute_power(ATTRIBUTE_ENDURANCE) //Endurance is used twice here.
 
-	//Regeneration is measured in seconds
-	var/recovery_skill =  A.get_skill_power(SKILL_RECOVERY)
+	health_max = A.health_base + A.get_attribute_power(ATTRIBUTE_VITALITY)*400
+	stamina_max = A.stamina_base + endurance*400
+	mana_max = A.mana_base + A.get_attribute_power(ATTRIBUTE_WISDOM)*400
 
 	if(A.status & FLAG_STATUS_CRIT)
-		health_regeneration = health_max * 0.01
+		health_regeneration = health_max * (0.01 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*0.02)
 	else
-		health_regeneration = health_max * (0.002 + recovery_skill*0.005)
+		health_regeneration = health_max * (0.002 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*0.005)
 
-	stamina_regeneration = stamina_max * (0.02 + recovery_skill*0.03)
-	mana_regeneration = mana_max * (0.01 + recovery_skill*0.02)
+	stamina_regeneration = stamina_max * (0.02 + endurance*0.03)
+	mana_regeneration = mana_max * (0.01 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.02)
 
 	A.update_health_element_icons(TRUE,TRUE,TRUE)
 
@@ -88,8 +87,6 @@ health/mob/living/advanced/update_stats()
 	var/mob/living/advanced/A = owner
 
 	var/returning_value = ..()
-	var/armor_level = A.get_skill_level(SKILL_ARMOR)
-
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
 
@@ -103,10 +100,6 @@ health/mob/living/advanced/update_stats()
 
 			for(var/damage_type in C.defense_rating)
 				returning_value[damage_type] += C.defense_rating[damage_type]
-
-	for(var/k in returning_value)
-		var/v = returning_value[k]
-		returning_value[k] = min(v,armor_level+ARMOR_C)
 
 	return returning_value
 

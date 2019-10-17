@@ -466,7 +466,7 @@ mob/living/advanced/Login()
 /mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
 	. = ..()
 	if(.)
-		add_skill_xp(SKILL_ATHLETICS,1)
+		add_skill_xp(,1)
 		stamina_current = max(0,stamina_current - 1)
 		return .
 	else

@@ -29,17 +29,17 @@
 
 	skill_stats = list(
 		SKILL_MELEE = CLASS_D,
-		SKILL_MAGIC_CHAOS = CLASS_B
+		SKILL_SORCERY = CLASS_B
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_MAGIC_CHAOS = DARK
+		SKILL_SORCERY = DARK
 	)
 
 	skill_xp_per_damage = list(
 		SKILL_MELEE = SKILL_E,
-		SKILL_MAGIC_CHAOS = SKILL_C
+		SKILL_SORCERY = SKILL_C
 	)
 
 	throw_mul = 10

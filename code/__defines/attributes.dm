@@ -9,12 +9,12 @@
 #define ATTRIBUTE_FORTITUDE "fortitude"
 
 #define ATTRIBUTE_INTELLIGENCE "intelligence"
-#define ATTRIBUTE_RESOLVE "resolve"
+#define ATTRIBUTE_WISDOM "wisdom"
 #define ATTRIBUTE_WILLPOWER "willpower"
 
+#define ATTRIBUTE_DEXTERITY "dexterity"
 #define ATTRIBUTE_AGILITY "agility"
 #define ATTRIBUTE_ENDURANCE "endurance"
-#define ATTRIBUTE_DEXTERITY "dexterity"
 
 #define ATTRIBUTE_LUCK "luck"
 
