@@ -15,3 +15,6 @@
 	protection_cold = list(
 		BODY_HEAD = 5,
 	)
+
+	size = SIZE_2
+	weight = WEIGHT_1

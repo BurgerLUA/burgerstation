@@ -18,6 +18,9 @@
 		DARK = ARMOR_C
 	)
 
+	size = SIZE_0
+	weight = WEIGHT_0
+
 /obj/item/clothing/hands/gloves/tutorial/left
 	name = "left tutorial glove"
 	icon_state = "inventory_left"

@@ -19,6 +19,10 @@
 		COLD = ARMOR_D
 	)
 
+	size = SIZE_0
+	weight = WEIGHT_0
+
+
 /obj/item/clothing/feet/socks/white
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
 

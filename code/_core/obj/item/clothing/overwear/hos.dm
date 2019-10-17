@@ -17,3 +17,6 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+
+	size = SIZE_4
+	weight = WEIGHT_4

@@ -12,6 +12,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /obj/item/clothing/neck/cape/hunter
 	name = "hunter's cape"

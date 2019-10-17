@@ -18,6 +18,9 @@
 		COLD = ARMOR_B,
 	)
 
+	size = SIZE_3
+	weight = WEIGHT_2
+
 
 /obj/item/clothing/neck/mantle/purple
 	color = "#1A1D29"

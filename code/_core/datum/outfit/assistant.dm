@@ -5,6 +5,5 @@
 	spawning_clothes = list(
 		/obj/item/clothing/uniform/jumpsuit/grey,
 		/obj/item/clothing/feet/shoes/black,
-		/obj/item/clothing/feet/shoes/black/left,
-		/obj/item/clothing/ears/headset
+		/obj/item/clothing/feet/shoes/black/left
 	)

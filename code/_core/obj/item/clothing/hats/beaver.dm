@@ -9,6 +9,9 @@
 		COLD = ARMOR_C
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_1
+
 /obj/item/clothing/head/hat/wizard
 	name = "wizard hat"
 	icon = 'icons/obj/items/clothing/hats/wizard.dmi'
@@ -20,6 +23,9 @@
 		MAGIC = ARMOR_B,
 		DARK = ARMOR_A
 	)
+
+	size = SIZE_2
+	weight = WEIGHT_1
 
 /obj/item/clothing/head/hat/wizard/blue
 	color = "#0065FF"

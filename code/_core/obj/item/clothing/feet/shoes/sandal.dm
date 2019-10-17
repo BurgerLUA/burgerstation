@@ -13,6 +13,9 @@
 		MAGIC = ARMOR_S
 	)
 
+	size = SIZE_1
+	weight = WEIGHT_0
+
 /obj/item/clothing/feet/shoes/sandal/left
 	name = "left sandal"
 	icon_state = "inventory_left"

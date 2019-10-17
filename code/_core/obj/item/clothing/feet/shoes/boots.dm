@@ -20,6 +20,9 @@
 		BOMB = ARMOR_E
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/clothing/feet/shoes/black_boots/left
 	name = "left black boot"
 	icon_state = "inventory_left"

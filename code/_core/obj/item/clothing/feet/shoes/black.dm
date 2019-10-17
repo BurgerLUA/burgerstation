@@ -17,7 +17,8 @@
 		COLD = ARMOR_D
 	)
 
-
+	size = SIZE_1
+	weight = WEIGHT_1
 
 /obj/item/clothing/feet/shoes/black/left
 	name = "left black shoe"

@@ -6,10 +6,13 @@
 
 	is_container = TRUE
 
-	dynamic_inventory_count = 6
+	dynamic_inventory_count = MAX_INVENTORY_X
 
-	size = 3
+	size = MAX_INVENTORY_X*2
+
 	container_max_size = 2
+
+	weight = WEIGHT_3
 
 	defense_rating = list(
 		BLADE = ARMOR_D,

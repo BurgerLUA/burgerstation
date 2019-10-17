@@ -13,6 +13,9 @@
 		BOMB = ARMOR_D
 	)
 
+	size = SIZE_3
+	weight = WEIGHT_2
+
 /obj/item/clothing/head/helmet/security/tactical_helmet2
 	name = "tactical military helmet"
 	icon = 'icons/obj/items/clothing/hats/tacticool2.dmi'
@@ -27,3 +30,6 @@
 		MAGIC = -ARMOR_B,
 		BOMB = ARMOR_C
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_3

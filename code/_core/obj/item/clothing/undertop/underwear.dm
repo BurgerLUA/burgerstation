@@ -1,5 +1,8 @@
 /obj/item/clothing/undertop/underwear/
-	name = "underwear"
+	name = "undertop"
+
+	size = SIZE_2
+	weight = WEIGHT_1
 
 /obj/item/clothing/undertop/underwear/bra
 	name = "brassiere"

@@ -4,8 +4,8 @@
 
 	var/rarity = RARITY_COMMON
 
-	var/size = 1
-	var/weight = 1
+	var/size = SIZE_1
+	var/weight = WEIGHT_1
 
 	var/value = 1 //Value in whatever currency this world uses. Used for buying and selling items.
 
@@ -15,7 +15,7 @@
 	var/item_count_max = 1
 	var/item_count_max_icon = 0
 
-	var/slowdown_mul_held = 1 //Slow down multiplier. Stacks multiplicatively or however you spell the damn word.
+	var/slowdown_mul_held = 1 //Slow down multiplier. High values means more slower.
 	var/slowdown_mul_worn = 1
 
 
@@ -256,10 +256,11 @@
 /obj/item/get_examine_text(var/mob/examiner)
 	var/name_text = div("examine_title",src.name)
 	var/rarity_text = div("rarity [rarity]",capitalize(rarity))
+	var/physical_text = div("weightsize","Size: [size] | Weight: [weight]")
 	var/desc_text = div("examine_description","\"[src.desc]\"")
 	var/desc_extended_text = div("examine_description_long",src.desc_extended)
 	var/damage_type_text = get_damage_type_text(examiner)
-	return "[name_text][rarity_text][desc_text][desc_extended_text][damage_type_text]"
+	return "[name_text][desc_text][rarity_text][physical_text][desc_extended_text][damage_type_text]"
 
 
 obj/item/proc/do_automatic(caller,object,location,params)

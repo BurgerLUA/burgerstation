@@ -23,6 +23,9 @@
 		BODY_LEG_RIGHT = 1
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_3
+
 /obj/item/clothing/feet/shoes/winter/left
 	name = "left winter boot"
 	icon_state = "inventory_left"

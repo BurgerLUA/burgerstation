@@ -15,6 +15,9 @@
 		HOLY = ARMOR_C
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 
 /obj/item/clothing/head/hood/cult/old
 
@@ -33,6 +36,9 @@
 		HOLY = ARMOR_A
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_1
+
 /obj/item/clothing/head/helmet/cult
 
 	name = "hardened cult hood"
@@ -49,6 +55,9 @@
 		COLD = ARMOR_B,
 		HOLY = ARMOR_D
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_3
 
 
 

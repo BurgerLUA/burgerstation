@@ -3,3 +3,6 @@
 	item_slot = SLOT_GLASSES
 
 	protected_limbs = list(BODY_HEAD)
+
+	size = SIZE_0
+	weight = WEIGHT_0

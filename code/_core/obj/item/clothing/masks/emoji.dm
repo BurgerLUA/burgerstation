@@ -14,3 +14,6 @@
 		HOLY = ARMOR_B,
 		DARK = -ARMOR_A
 	)
+
+	size = SIZE_1
+	weight = WEIGHT_0

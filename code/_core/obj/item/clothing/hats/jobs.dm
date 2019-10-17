@@ -15,6 +15,8 @@
 		COLD = ARMOR_C
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_1
 
 /obj/item/clothing/head/hat/hos
 	name = "\improper Head of Security's hat"
@@ -31,3 +33,6 @@
 		HEAT = ARMOR_D,
 		COLD = ARMOR_C
 	)
+
+	size = SIZE_2
+	weight = WEIGHT_1

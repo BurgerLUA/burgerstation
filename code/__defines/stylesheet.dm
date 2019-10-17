@@ -81,6 +81,9 @@ body {
 .examine_info{
 	font-style: italic;
 }
+.weightsize{
+	text-align: center;
+}
 .distance_large{
 	font-size: 120%;
 }

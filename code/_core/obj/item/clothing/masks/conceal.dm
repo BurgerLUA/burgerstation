@@ -10,3 +10,6 @@
 		HEAT = -ARMOR_A,
 		COLD = ARMOR_A
 	)
+
+	size = SIZE_1
+	weight = WEIGHT_1

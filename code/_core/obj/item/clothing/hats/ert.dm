@@ -10,3 +10,6 @@
 		PIERCE = ARMOR_D,
 		MAGIC = -ARMOR_D
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_2

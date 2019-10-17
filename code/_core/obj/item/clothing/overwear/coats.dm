@@ -13,6 +13,9 @@
 		COLD = ARMOR_C
 	)
 
+	size = SIZE_3
+	weight = WEIGHT_2
+
 /obj/item/clothing/overwear/coat/wizard
 	name = "wizard's robes"
 	icon = 'icons/obj/items/clothing/suit/wizard.dmi'
@@ -24,6 +27,9 @@
 		MAGIC = ARMOR_A,
 		COLD = ARMOR_C
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_2
 
 /obj/item/clothing/overwear/coat/wizard/red
 	color = "#FF0000"
@@ -42,6 +48,9 @@
 		MAGIC = ARMOR_C,
 		DARK = ARMOR_S
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_2
 
 /obj/item/clothing/overwear/coat/winter
 	name = "winter coat"
@@ -65,3 +74,6 @@
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/hood/winter)
+
+	size = SIZE_3
+	weight = WEIGHT_3

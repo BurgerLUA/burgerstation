@@ -30,5 +30,4 @@
 		/obj/item/clothing/feet/shoes/black,
 		/obj/item/clothing/feet/shoes/black/left,
 		/obj/item/clothing/back/storage/backpack,
-		/obj/item/clothing/ears/headset
 	)

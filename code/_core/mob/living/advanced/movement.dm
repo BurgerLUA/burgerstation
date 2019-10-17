@@ -16,7 +16,7 @@
 
 
 mob/living/advanced/get_movement_delay()
-	return ..() * (1/slowdown_mul)
+	return ..() * slowdown_mul
 
 /mob/living/advanced/toggle_sneak(var/on = TRUE)
 

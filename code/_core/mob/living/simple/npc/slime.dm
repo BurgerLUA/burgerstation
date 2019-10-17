@@ -40,7 +40,6 @@
 			xvel = pick(-1,1)
 			yvel = pick(-1,1)
 
-
 		S.throw_self(src,null,16,16,xvel*5,yvel*5)
 
 	stored_slimes = 0

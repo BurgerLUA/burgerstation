@@ -1,6 +1,9 @@
 /obj/item/clothing/underbottom/underwear
 	name = "underwear"
 
+	size = SIZE_1
+	weight = WEIGHT_0
+
 /obj/item/clothing/underbottom/underwear/boxers
 	name = "heart boxers"
 	icon = 'icons/obj/items/clothing/underwear/heart_boxers.dmi'

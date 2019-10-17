@@ -18,6 +18,9 @@
 		COLD = ARMOR_E
 	)
 
+	size = SIZE_1
+	weight = WEIGHT_1
+
 /obj/item/clothing/feet/shoes/brown/left
 	name = "left leather shoe"
 	icon_state = "inventory_left"

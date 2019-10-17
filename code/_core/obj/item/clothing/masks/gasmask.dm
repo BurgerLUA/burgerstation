@@ -17,6 +17,9 @@
 		RAD = ARMOR_D
 	)
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 
 /obj/item/clothing/mask/gas/clown
 	name = "clown mask"
@@ -29,3 +32,6 @@
 		HOLY = ARMOR_C,
 		DARK = ARMOR_C
 	)
+
+	size = SIZE_2
+	weight = WEIGHT_1

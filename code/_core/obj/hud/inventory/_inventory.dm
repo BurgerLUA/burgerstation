@@ -351,6 +351,7 @@
 		I.on_drop(src,drop_loc)
 		if(owner)
 			I.set_dir(owner.dir)
+			owner.update_slowdown_mul()
 
 	return I
 

@@ -11,6 +11,9 @@
 		MAGIC = ARMOR_D
 	)
 
+	size = SIZE_1
+	weight = WEIGHT_0
+
 /obj/item/clothing/neck/tie/red
 	color = "#FF0000"
 

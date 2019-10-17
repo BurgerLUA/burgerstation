@@ -111,13 +111,20 @@
 
 /mob/living/advanced/proc/update_slowdown_mul()
 
+	var/weight = 0
+	var/slow_mul = 1
+
 	for(var/obj/item/I in worn_objects)
-		slowdown_mul *= I.slowdown_mul_worn
+		slow_mul *= I.slowdown_mul_worn
+		weight += I.weight
 
 	for(var/obj/item/I in held_objects)
-		slowdown_mul *= I.slowdown_mul_held
+		slow_mul *= I.slowdown_mul_held
+		weight += I.weight
 
-	slowdown_mul = Clamp(slowdown_mul,0.5,4)
+	var/max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
+
+	slowdown_mul = Clamp(slow_mul * (2*(weight/max_capacity)),0.75,4)
 
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type
@@ -222,6 +229,7 @@ mob/living/advanced/Login()
 		update_health_element_icons(TRUE,TRUE,TRUE)
 
 	update_all_blends()
+	update_slowdown_mul()
 
 	return
 

@@ -1,4 +1,3 @@
-
 /obj/item/clothing/head/helmet/knight/
 
 	rarity = RARITY_UNCOMMON
@@ -11,6 +10,9 @@
 		HEAT = -ARMOR_C,
 		COLD = ARMOR_E
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_4
 
 
 /obj/item/clothing/head/helmet/knight/red
@@ -63,6 +65,9 @@
 		FATIGUE = 0
 	)
 
+	size = SIZE_4
+	weight = WEIGHT_4
+
 
 /obj/item/clothing/head/helmet/hardsuit/syndie1
 	name = "mauler helmet mk1"
@@ -82,6 +87,9 @@
 		RAD = ARMOR_C
 	)
 
+	size = SIZE_3
+	weight = WEIGHT_4
+
 /obj/item/clothing/head/helmet/hardsuit/syndie2
 	name = "mauler helmet mk2"
 	icon = 'icons/obj/items/clothing/hats/syndie2.dmi'
@@ -99,3 +107,6 @@
 		BIO = ARMOR_A,
 		RAD = ARMOR_D
 	)
+
+	size = SIZE_3
+	weight = WEIGHT_4

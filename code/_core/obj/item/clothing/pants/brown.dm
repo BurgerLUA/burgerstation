@@ -13,3 +13,6 @@
 		HEAT = ARMOR_D,
 		COLD = ARMOR_C
 	)
+
+	size = SIZE_2
+	weight = WEIGHT_2
