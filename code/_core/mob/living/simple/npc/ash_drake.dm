@@ -21,6 +21,7 @@
 
 	attack_range = 2
 
+	force_spawn = TRUE
 	boss = TRUE
 
 /mob/living/simple/npc/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

@@ -4,11 +4,16 @@
 	P.appearance = src.appearance
 	P.pixel_x_float = src.pixel_x
 	P.pixel_y_float = src.pixel_y
-	P.lifetime = SECONDS_TO_DECISECONDS(5)
+	P.lifetime = SECONDS_TO_DECISECONDS(1)
 	src.force_move(P) //Move it to contents.
 	return P
 
 /mob/living/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
 	var/obj/projectile/bullet/thrown/P = ..()
 	P.set_dir(thrower.dir)
+	return P
+
+/mob/living/simple/npc/slime/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
+	var/obj/projectile/bullet/thrown/P = ..()
+	P.steps_allowed = 3
 	return P

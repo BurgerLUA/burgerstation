@@ -42,6 +42,7 @@
 	object_size = 1
 
 	boss = TRUE
+	force_spawn = TRUE
 	boss_music = "crab"
 
 /mob/living/simple/npc/crab/king/Cross(atom/movable/O)

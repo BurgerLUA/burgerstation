@@ -271,6 +271,10 @@
 
 		display_hit_message(attacker,victim,weapon,hit_object)
 
+		victim.on_damage_received(hit_object,attacker,total_damage_dealt)
+		if(victim != hit_object)
+			hit_object.on_damage_received(hit_object,attacker,total_damage_dealt)
+
 		if(is_living(victim))
 			var/mob/living/L = victim
 			L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]\s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)

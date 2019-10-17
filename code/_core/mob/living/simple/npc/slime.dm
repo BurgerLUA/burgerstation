@@ -33,6 +33,16 @@
 		S.stored_slimes = 1
 		S.Initialize()
 
+		var/xvel = rand(-1,1)
+		var/yvel = rand(-1,1)
+
+		if(xvel == 0 && yvel == 0)
+			xvel = pick(-1,1)
+			yvel = pick(-1,1)
+
+
+		S.throw_self(src,null,16,16,xvel*5,yvel*5)
+
 	stored_slimes = 0
 
 	update_icon()

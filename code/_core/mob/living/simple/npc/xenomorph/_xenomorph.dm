@@ -33,3 +33,4 @@
 	class = "xenomorph_queen"
 
 	boss = TRUE
+	force_spawn = TRUE

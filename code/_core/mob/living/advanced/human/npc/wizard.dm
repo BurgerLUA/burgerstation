@@ -9,6 +9,7 @@
 
 	loot_drop = "wizard"
 
+	force_spawn = TRUE
 	boss = TRUE
 
 	loot_drop_in_corpse = TRUE

@@ -1,3 +1,6 @@
+/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/damage_amount)
+	return TRUE
+
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 

@@ -21,6 +21,28 @@
 
 	object_size = 1
 
-	attack_range = 2
+	attack_range = 1
 
 	boss = TRUE
+	force_spawn = TRUE
+
+/mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/damage_amount)
+
+	. = ..()
+
+	if(damage_amount >= 10)
+		var/mob/living/simple/npc/slime/S = new(src.loc)
+
+		var/xvel = rand(-1,1)
+		var/yvel = rand(-1,1)
+
+		if(xvel == 0 && yvel == 0)
+			xvel = pick(-1,1)
+			yvel = pick(-1,1)
+
+		S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
+		S.color = src.color
+		S.slime_color = src.color
+		S.Initialize()
+
+	return .
