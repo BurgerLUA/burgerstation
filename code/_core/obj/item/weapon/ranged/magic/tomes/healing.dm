@@ -2,7 +2,7 @@
 	name = "tome of healing"
 	desc = "Wounds-B-Gone"
 	desc_extended = "Costs mana to use. Those in a 3x3 area are affected by the heal, including the caster."
-	mana_cost = 50
+	cost_mana = 50
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/healing.dmi'
 

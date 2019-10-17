@@ -2,7 +2,7 @@
 	name = "tome of the holy warrior"
 	desc = "For those too lazy for combat."
 	desc_extended = "Costs mana to use."
-	mana_cost = 100
+	cost_mana = 100
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/holy_summon.dmi'
 

@@ -29,12 +29,12 @@
 	icon_state = "move_1"
 	screen_loc = "RIGHT-2,BOTTOM"
 
-	var/move_mode = 2 //1 = run, 2 = jog, 3 = sprint
+	var/move_mod_button = 0
 
 	flags = FLAGS_HUD_MOB
 
 /obj/hud/button/move/update_icon()
-	icon_state = "move_[move_mode]"
+	icon_state = "move_[move_mod_button+2]"
 	..()
 
 /obj/hud/button/move/clicked_on_by_object(var/mob/caller,object,location,control,params)
@@ -43,18 +43,18 @@
 
 		switch(text2num(params[PARAM_ICON_X]))
 			if(1 to 10)
-				caller.move_mod = 1
+				caller.move_mod_button = -1
 			if(12 to 21)
-				caller.move_mod = 2
+				caller.move_mod_button = 0
 			if(23 to 32)
-				caller.move_mod = 3
+				caller.move_mod_button = 1
 	else
-		caller.move_mod += 1
+		move_mod_button += 1
 
-	if(caller.move_mod > 3)
-		caller.move_mod = 1
+	if(caller.move_mod_button > 1)
+		caller.move_mod_button = -1
 
-	move_mode = caller.move_mod
+	move_mod_button = caller.move_mod_button
 
 	update_icon()
 

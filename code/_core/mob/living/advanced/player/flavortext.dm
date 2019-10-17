@@ -14,8 +14,6 @@
 	var/agility = get_attribute_level(ATTRIBUTE_AGILITY)
 	var/endurance = get_attribute_level(ATTRIBUTE_ENDURANCE)
 
-	var/karma = get_attribute_level(ATTRIBUTE_KARMA)
-
 	var/weight_muscle = 20 + strength*1.2 + vitality*0.25 - intelligence*0.2
 	var/weight_fat = 60 + strength*0.3 - intelligence*0.2 - agility*0.5 - willpower*0.1 - resolve*0.1 - dexterity*0.1 - endurance*0.5
 	var/weight_total = weight_fat + weight_muscle

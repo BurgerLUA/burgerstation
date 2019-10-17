@@ -25,8 +25,6 @@
 
 	var/mob/living/owner
 
-	var/list/associated_classes = list()
-
 /experience/destroy()
 	owner = null
 	return ..()

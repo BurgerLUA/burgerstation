@@ -148,7 +148,7 @@
 				return .
 
 			P.real_name = desired_name
-			P.name = "[P.real_name] ([P.ckey])"
+			P.name = "[P.real_name]"
 			set_topic(P,"*success")
 
 		if("*fart.ogg")

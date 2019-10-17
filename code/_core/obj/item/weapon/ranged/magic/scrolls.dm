@@ -10,6 +10,9 @@
 
 	has_quick_function = TRUE
 
+	automatic = FALSE
+
+
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
 	shoot(caller,object,location,params)
 	return TRUE

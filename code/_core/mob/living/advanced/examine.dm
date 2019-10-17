@@ -1,3 +1,10 @@
 mob/living/advanced/get_examine_text(var/mob/examiner)
+
 	. = ..()
-	return . + get_flavortext()
+
+	if(examiner == src)
+		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
+
+	. += get_flavortext()
+
+	return .

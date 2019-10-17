@@ -165,7 +165,7 @@
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
 	return TRUE
 
-/damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
 	if(!is_living(attacker))
 		return attack_damage_base
@@ -182,7 +182,7 @@
 		new_attack_damage[skill_damage[skill]] += L.get_skill_level(skill)* class
 
 	for(var/k in new_attack_damage)
-		new_attack_damage[k] *= hit_object.health.damage_multiplier
+		new_attack_damage[k] *= hit_object.health.damage_multiplier*damage_multiplier
 
 	return new_attack_damage
 
@@ -202,14 +202,14 @@
 		replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text)\
 	)
 
-/damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
+/damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	if(!hit_object.health || !victim.health)
 		return FALSE
 
 	spawn()
 
-		var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object)
+		var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 
 		var/damage_blocked = 0
 

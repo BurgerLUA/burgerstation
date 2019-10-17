@@ -84,6 +84,10 @@
 
 	health = /health/mob/living/advanced
 
+	//Read only values. Don't change these.
+	var/capacity = 0
+	var/max_capacity = 1
+
 /mob/living/advanced/destroy()
 
 	for(var/obj/item/organ/O in organs)
@@ -111,20 +115,20 @@
 
 /mob/living/advanced/proc/update_slowdown_mul()
 
-	var/weight = 0
+	capacity = 0
+
 	var/slow_mul = 1
 
 	for(var/obj/item/I in worn_objects)
 		slow_mul *= I.slowdown_mul_worn
-		weight += I.weight
+		capacity += I.weight
 
 	for(var/obj/item/I in held_objects)
 		slow_mul *= I.slowdown_mul_held
-		weight += I.weight
+		capacity += I.weight
 
-	var/max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
-
-	slowdown_mul = Clamp(slow_mul * (2*(weight/max_capacity)),0.75,4)
+	max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
+	slowdown_mul = Clamp(slow_mul * (2*(capacity/max_capacity)),0.75,4)
 
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type

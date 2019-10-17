@@ -101,7 +101,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 
 	return FALSE
 
-obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params)
+obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!object)
 		return FALSE
@@ -162,6 +162,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		if(!params || !length(params))
 			params = list()
 
+		world.log << params
+
 		if(!params[PARAM_ICON_X])
 			params[PARAM_ICON_X] = rand(0,32)
 
@@ -181,14 +183,14 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 		var/view_punch_time = shoot_delay
 
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier)
 
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/bullet_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/bullet_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1)
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
@@ -228,7 +230,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					animate(C,pixel_x = -normx*view_punch, pixel_y = -normy*view_punch, time = (view_punch_time-1)*0.5)
 					animate(C,pixel_x = 0, pixel_y = 0, time = view_punch_time-1)
 
-			new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color)
+			new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier)
 
 			/* NO. BAD IDEA.
 			if(get_dist(caller,target) <= 1 && is_mob(target))

@@ -29,5 +29,3 @@
 		A.mana_regen_delay = max(A.mana_regen_delay,30)
 
 	return null
-
-

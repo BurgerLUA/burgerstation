@@ -48,6 +48,8 @@
 	var/steps_current = 0
 	var/steps_allowed = 0
 
+	var/damage_multiplier = 1
+
 /obj/projectile/destroy()
 	owner = null
 	weapon = null
@@ -60,7 +62,7 @@
 	all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -96,6 +98,10 @@
 		blamed = desired_blamed
 	else
 		blamed = owner
+
+	damage_multiplier = desired_damage_multiplier
+
+	world.log << "DAMAGE MULTIPLIER FOR PROJECTILE: [damage_multiplier]"
 
 	. = ..()
 
@@ -209,7 +215,7 @@
 			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
 
-			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed)
+			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 
@@ -290,31 +296,9 @@
 			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
 
 	if(impact_effect_turf && is_turf(hit_atom))
-
-
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
 
-
-
-		/*
-		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
-		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
-		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE - 16
-		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
-		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
-		*/
-
 	else if(impact_effect_movable && is_movable(hit_atom))
-
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
-
-
-		/*
-		var/tiles_traveled_x = floor(pixel_x_float / TILE_SIZE)
-		var/tiles_traveled_y = floor(pixel_y_float / TILE_SIZE)
-		var/desired_pixel_x = pixel_x_float - tiles_traveled_x*TILE_SIZE
-		var/desired_pixel_y = pixel_y_float - tiles_traveled_y*TILE_SIZE
-		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),desired_pixel_x,desired_pixel_y,bullet_color)
-		*/
 
 	return TRUE

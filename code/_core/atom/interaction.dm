@@ -1,3 +1,19 @@
+/atom/proc/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params)
+
+	if(!object || !caller)
+		return FALSE
+
+	var/atom/defer_self = src.defer_click_on_object()
+	var/atom/defer_object = object.defer_click_on_object()
+
+	if(!defer_self || !defer_object)
+		return FALSE
+
+	if(src != defer_self && defer_self.on_mouse_up(caller,defer_object,location,control,params))
+		return TRUE
+
+	return FALSE
+
 /atom/proc/on_mouse_wheel(caller,delta_x,delta_y,location,control,params)
 
 	if(!caller)

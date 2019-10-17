@@ -16,12 +16,7 @@
 #define ATTRIBUTE_ENDURANCE "endurance"
 #define ATTRIBUTE_DEXTERITY "dexterity"
 
-
 #define ATTRIBUTE_LUCK "luck"
-#define ATTRIBUTE_KARMA "karma"
-
-
-
 
 #define ATTRIBUTE_LEVEL_S 90
 #define ATTRIBUTE_LEVEL_A 75

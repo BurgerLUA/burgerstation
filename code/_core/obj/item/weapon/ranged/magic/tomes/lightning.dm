@@ -2,7 +2,7 @@
 	name = "tome of the lightning bolt"
 	desc = "Be like Zeus!"
 	desc_extended = "Costs mana to use."
-	mana_cost = 25
+	cost_mana = 25
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/lightning.dmi'
 
@@ -13,3 +13,5 @@
 	damage_type = "magic_lightning"
 
 	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
+
+	automatic = TRUE

@@ -20,16 +20,20 @@
 
 	. = ..()
 
-	real_move_mod = move_mod
+	move_mod = initial(move_mod)
 
 	if(movement_flags & MOVEMENT_RUNNING && can_sprint())
-		real_move_mod += 1
+		move_mod += 10
 	else if(movement_flags & MOVEMENT_WALKING && can_walk())
-		real_move_mod -= 1
+		move_mod -= 10
 
-	real_move_mod = Clamp(real_move_mod,1,3)
+	move_mod += move_mod_button
 
-	switch(real_move_mod)
+	move_mod = Clamp(move_mod,0,3)
+
+	switch(move_mod)
+		if(0)
+			. *= 4
 		if(1)
 			. *= 2
 		if(2)
@@ -45,7 +49,7 @@
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 	. = ..()
 	if(.)
-		switch(real_move_mod)
+		switch(move_mod)
 			if(1)
 				on_walk()
 			if(2)

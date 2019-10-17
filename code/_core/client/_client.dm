@@ -231,9 +231,11 @@ var/global/list/all_clients = list()
 	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
+		mob.on_left_up(object,location,control,aug)
 		mob.attack_flags &= ~ATTACK_HELD_LEFT
 
 	if(click_flags & CLICK_RIGHT)
+		mob.on_right_up(object,location,control,aug)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
 
 	if(is_advanced(mob))

@@ -34,7 +34,6 @@
 				I.reagents.add_reagent(r_id,volume,FALSE)
 			I.reagents.update_container()
 
-
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
 		if(object_data["scroll_count"])

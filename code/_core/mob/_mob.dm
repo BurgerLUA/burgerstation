@@ -36,7 +36,7 @@
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
 	var/move_mod = 2
-	var/real_move_mod = 2
+	var/move_mod_button = 0
 
 	var/karma = 0
 
