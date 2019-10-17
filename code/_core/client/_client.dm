@@ -94,10 +94,6 @@ var/global/list/all_clients = list()
 	winset(src,"chat_say.output","style='[STYLESHEET]'")
 
 /client/proc/examine(var/atom/object)
-
-	if(!(object in view(src)))
-		return FALSE
-
 	src.mob.to_chat(object.get_examine_text(src.mob))
 	return TRUE
 
@@ -203,6 +199,7 @@ var/global/list/all_clients = list()
 		mob.on_right_down(object,location,control,aug)
 
 	if(click_flags & CLICK_MIDDLE)
+		world.log << "MIDDLE CLICK"
 		examine(object)
 		return TRUE
 

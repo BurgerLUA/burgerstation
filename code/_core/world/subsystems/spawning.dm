@@ -21,7 +21,7 @@
 			LOG_ERROR("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and has a mob spawnpoint on it.")
 			continue
 
-		var/obj/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.level_multiplier)
+		var/obj/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.level_multiplier,L.force_spawn)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
 
 		stored_spawns += M
@@ -62,10 +62,11 @@
 
 	var/turf/spawning_turf = get_turf(M)
 
-	for(var/mob/living/advanced/player/P in range(spawning_turf,VIEW_RANGE))
-		if(P && is_valid(P))
-			M.time_of_death = curtime
-			return FALSE
+	if(!M.force_spawn)
+		for(var/mob/living/advanced/player/P in range(spawning_turf,VIEW_RANGE))
+			if(P && is_valid(P))
+				M.time_of_death = curtime
+				return FALSE
 
 	var/path = M.mob_type
 	var/area/A = get_area(M)

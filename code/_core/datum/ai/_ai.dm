@@ -93,29 +93,36 @@
 /ai/proc/attack_message()
 	return TRUE
 
+/ai/proc/do_attack()
+
+	owner.move_dir = 0
+
+	var/list/params = list(
+		PARAM_ICON_X = num2text(pick(target_distribution_x)),
+		PARAM_ICON_Y = num2text(pick(target_distribution_y)),
+		"left" = 0,
+		"right" = 0,
+		"middle" = 0,
+		"ctrl" = 0,
+		"shift" = 0,
+		"alt" = 0
+	)
+
+	if(prob(left_click_chance))
+		params["left"] = TRUE
+		owner.on_left_down(objective_attack,null,null,params)
+	else
+		params["right"] = TRUE
+		owner.on_right_down(objective_attack,null,null,params)
+
+	attack_message()
+
+	return TRUE
+
 /ai/proc/handle_attacking()
 
 	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
-		owner.move_dir = 0
-		var/list/params = list(
-			PARAM_ICON_X = num2text(pick(target_distribution_x)),
-			PARAM_ICON_Y = num2text(pick(target_distribution_y)),
-			"left" = 0,
-			"right" = 0,
-			"middle" = 0,
-			"ctrl" = 0,
-			"shift" = 0,
-			"alt" = 0
-		)
-
-		if(prob(left_click_chance))
-			params["left"] = TRUE
-			owner.on_left_down(objective_attack,null,null,params)
-		else
-			params["right"] = TRUE
-			owner.on_right_down(objective_attack,null,null,params)
-
-		attack_message()
+		do_attack(objective_attack)
 
 	attack_ticks = 0
 

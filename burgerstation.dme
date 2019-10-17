@@ -720,6 +720,7 @@
 #include "code\_core\obj\shadow\_shadow.dm"
 #include "code\_core\obj\spawn\_spawn.dm"
 #include "code\_core\obj\structure\_structure.dm"
+#include "code\_core\obj\structure\render_target_test.dm"
 #include "code\_core\obj\structure\interactive\_interactive.dm"
 #include "code\_core\obj\structure\interactive\barricade.dm"
 #include "code\_core\obj\structure\interactive\bed.dm"

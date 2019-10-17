@@ -8,7 +8,7 @@
 	if(!defer_self)
 		return FALSE
 
-	if(src != defer_self && defer_self.on_mouse_wheel(caller,location,control,params))
+	if(src != defer_self && defer_self.on_mouse_wheel(caller,delta_x,delta_y,location,control,params))
 		return TRUE
 
 	return FALSE
@@ -86,7 +86,7 @@
 	return FALSE
 
 /atom/proc/get_examine_text(var/mob/examiner)
-	return div("examine_title","[src.name]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long","[src.desc_extended]")
+	return "[div("examine_title","[src.name]")][div("examine_description","\"[src.desc]\"")][div("examine_description_long","[src.desc_extended]")]"
 
 /atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)
 
@@ -96,12 +96,6 @@
 		return FALSE
 
 	return TRUE
-
-/*
-/atom/proc/examine(var/mob/examiner) //Middle clicking objects.
-	examiner.to_chat(get_examine_text(examiner))
-	return TRUE
-*/
 
 /atom/proc/click_self(caller,location,control,params)
 	return FALSE

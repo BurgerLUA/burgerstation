@@ -7,6 +7,8 @@
 
 	var/mob/living/advanced/owner
 
+	mouse_opacity = 0
+
 /obj/chat_text/destroy()
 	owner.stored_chat_text -= src
 	owner = null
@@ -30,7 +32,11 @@
 		maptext_width = TILE_SIZE*ceiling(VIEW_RANGE*0.75,2)
 		maptext_x = -(maptext_width-TILE_SIZE)*0.5
 		maptext_y = TILE_SIZE*0.75
-		maptext = "<center>[desired_text]</center>"
+
+		if(length(desired_text) >= 52) //52 is a magic number because reasons.
+			desired_text = copytext(desired_text,1,52) + "..."
+
+		maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>[html_decode(desired_text)]</font></center>"
 
 		spawn(50)
 			animate(src,alpha=0,time=10)

@@ -82,7 +82,6 @@ window "chat"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Chat Tabs"
 		titlebar = false
@@ -112,7 +111,6 @@ window "chat_all"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "All"
 		titlebar = false
@@ -354,6 +352,7 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -367,7 +366,7 @@ window "map"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "serif,sans-serif"
+		font-family = "serif"
 		font-size = 6
 		is-default = true
 		right-click = true
@@ -380,6 +379,7 @@ window "map"
 		size = 680x680
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false
@@ -389,6 +389,7 @@ window "map"
 		size = 680x320
 		anchor1 = 0,100
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		saved-params = ""
 		auto-format = false

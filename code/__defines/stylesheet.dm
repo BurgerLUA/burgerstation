@@ -3,6 +3,9 @@ img{
 	margin:0;
 	padding:0;
 }
+a:link{
+	font-color: inherit;
+}
 body {
 	font-family: Verdana, sans-serif;
 	font-size: 8px;

@@ -7,15 +7,20 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	var/frequency = RADIO_FREQ_COMMON //The frequency of the radio.
 	var/receiving = TRUE //Whether or not the radio can recieve messages.
-	var/broadcasting = TRUE //Whether or not the radio can broadcast messages without having to press the button.
+	var/broadcasting = FALSE //Whether or not the radio can broadcast messages without having to press the button.
+
+	var/frequency_min = RADIO_FREQ_COMMON
+	var/frequency_max = RADIO_FREQ_MAX
+
+	var/spam_fix_time = 0
 
 	var/radio_sound = 'sounds/items/radio.ogg'
 
 /obj/item/radio/click_self(var/mob/caller,location,control,params)
 
-	receiving = !receiving
+	broadcasting = !broadcasting
 
-	caller.to_chat(span("notice","You toggle the reciever to [receiving ? "always broadcast." : "only broadcast when pressed."]"))
+	caller.to_chat(span("notice","You toggle the reciever to [broadcasting ? "always broadcast." : "only broadcast when pressed."]"))
 
 	return TRUE
 
@@ -24,13 +29,28 @@ var/global/list/obj/item/radio/all_radios = list()
 	if(!is_inventory(object))
 		return ..()
 
-	broadcasting = !broadcasting
-	caller.to_chat(span("notice","You toggle the speaker [broadcasting ? "on" : "off"]."))
+	receiving = !receiving
+	caller.to_chat(span("notice","You toggle the speaker [receiving ? "on" : "off"]."))
 
 	return TRUE
 
-/obj/item/radio/on_mouse_wheel(caller,delta_x,delta_y,location,control,params)
-	world.log << delta_y
+/obj/item/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+
+	var/fixed_delta = round(Clamp(delta_y,-1,1))
+
+	var/old_frequency = frequency
+
+	frequency = Clamp(frequency + fixed_delta*0.2,frequency_min,frequency_max)
+
+	if(old_frequency == frequency)
+		caller.to_chat("The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"].")
+	else if(spam_fix_time <= curtime)
+		caller.to_chat("You change \the [src.name]'s frequency to [frequency] kHz...")
+	else
+		caller.to_chat("...[frequency] kHz...")
+
+	spam_fix_time = curtime + 20
+
 	return TRUE
 
 /obj/item/radio/New(var/desired_loc)

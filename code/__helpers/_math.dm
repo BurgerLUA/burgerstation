@@ -11,6 +11,7 @@
 /proc/rand_precise(var/min,var/max)
 	return rand(min*100,max*100) / 100
 
+
 /proc/arctan(x,y)
 	if(!x && !y)
 		return 0
@@ -38,5 +39,4 @@
 
 
 #define SAFEINDEX(x,y) ( ( MODULUS(x-1,y) ) + 1 )
-
 

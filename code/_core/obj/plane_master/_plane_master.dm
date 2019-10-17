@@ -5,6 +5,12 @@
 	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE
 
 
+/*
+/obj/plane_master/render_target
+	render_target = "screen"
+	plane = 0
+*/
+
 //WALLS
 /obj/plane_master/walls
 	plane = PLANE_WALL

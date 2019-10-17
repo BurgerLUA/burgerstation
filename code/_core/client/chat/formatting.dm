@@ -4,8 +4,6 @@
 
 proc/format_speech(var/atom/speaker,var/atom/source,var/text,var/talk_type)
 
-	//text = periodize(capitalize(sanitize(text)))
-
 	var/html = "ERROR"
 	switch(talk_type)
 		if(TEXT_WHISPER)

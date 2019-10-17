@@ -6,11 +6,11 @@
 	icon_state = "small_neutral"
 
 	var/stored_slimes = 1
-	var/stored_slimes_max = 2
+	var/stored_slimes_max = 4
 
 	ai = /ai/slime/
 
-	can_attack_while_moving = FALSE
+	can_attack_while_moving = TRUE
 
 	var/happiness_mod = 0
 	var/anger_mod = 0
@@ -27,9 +27,10 @@
 
 	. = ..()
 
-	for(var/i=1,i<=stored_slimes-1)
-		var/mob/living/simple/npc/slime/S = new(src.loc)
+	for(var/i=1,i<=stored_slimes-1,i++)
+		var/mob/living/simple/npc/slime/S = new(get_turf(src))
 		S.slime_color = slime_color
+		S.stored_slimes = 1
 		S.Initialize()
 
 	stored_slimes = 0

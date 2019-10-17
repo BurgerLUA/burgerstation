@@ -64,6 +64,7 @@
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/trees/plane_master_tree
+	var/obj/plane_master/render_target/plane_master_render_target
 
 	var/last_words = ""
 
@@ -153,6 +154,12 @@
 		if(!plane_master_tree)
 			plane_master_tree = new
 			C.screen += plane_master_tree
+
+		/*
+		if(!plane_master_render_target)
+			plane_master_render_target = new
+			C.screen += plane_master_render_target
+		*/
 
 		/*
 		var/image/I = new/image('icons/obj/effects/light_sprite/192x192.dmi',"")

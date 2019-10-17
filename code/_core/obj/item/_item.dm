@@ -254,7 +254,12 @@
 		I.update_icon()
 
 /obj/item/get_examine_text(var/mob/examiner)
-	return div("examine_title","[src.name]") + div("rarity [rarity]","[capitalize(rarity)]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long","[src.desc_extended]") + get_damage_type_text(examiner)
+	var/name_text = div("examine_title",src.name)
+	var/rarity_text = div("rarity [rarity]",capitalize(rarity))
+	var/desc_text = div("examine_description","\"[src.desc]\"")
+	var/desc_extended_text = div("examine_description_long",src.desc_extended)
+	var/damage_type_text = get_damage_type_text(examiner)
+	return "[name_text][rarity_text][desc_text][desc_extended_text][damage_type_text]"
 
 
 obj/item/proc/do_automatic(caller,object,location,params)
