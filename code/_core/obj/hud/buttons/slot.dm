@@ -50,7 +50,7 @@
 
 /obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
 	if(stored_item)
-		A.to_chat(span("notice","\The [stored_item] was unbound from slot [icon_state]."))
+		A.to_chat(span("notice","\The [stored_item.name] was unbound from slot [icon_state]."))
 		stored_item = null
 		update_icon()
 		animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
@@ -71,11 +71,11 @@
 	var/obj/item/I = object
 
 	if(!I.has_quick_function)
-		A.to_chat(span("notice","\The [stored_item] doesn't have a quick bind function."))
+		A.to_chat(span("notice","\The [I.name] doesn't have a quick bind function."))
 		return TRUE
 
 	stored_item = object
-	A.to_chat(span("notice","\The [stored_item] was bound to slot [icon_state]."))
+	A.to_chat(span("notice","\The [I.name] was bound to slot [icon_state]."))
 	animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	update_icon()
 

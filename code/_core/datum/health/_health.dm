@@ -212,6 +212,7 @@
 
 
 /health/proc/adjust_mana(var/adjust_value)
+
 	var/old_value = mana_current
 	var/new_value = Clamp(mana_current + adjust_value,0,mana_max)
 

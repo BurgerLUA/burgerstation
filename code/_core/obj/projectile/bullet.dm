@@ -1,7 +1,6 @@
 /obj/projectile/bullet/
 	name = "bullet"
 	impact_effect_turf = /obj/effect/temp/impact/bullet
-
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/bullet/revolver

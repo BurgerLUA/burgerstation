@@ -7,12 +7,13 @@
 
 	has_quick_function = TRUE
 
-	var/power_gain = 10
+	var/power_gain = 5
 	var/power_current = 0
 	var/power_max = 100
 
 /obj/item/weapon/ranged/magic/tome/quick(var/mob/caller as mob,var/atom/object,location,params)
-	shoot(caller,object,location,params)
+	if(!automatic)
+		shoot(caller,object,location,params)
 	return TRUE
 
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(var/mob/living/caster)
@@ -70,21 +71,30 @@
 
 	power_current = Clamp(power_current + power_gain,0,power_max)
 
-	A.health.adjust_mana(-1)
+	A.mana_regen_delay = max(A.mana_regen_delay,30)
+
+	if(!A.health.adjust_mana(-power_gain))
+		on_mouse_up(caller,object,location,params,TRUE)
+
 	A.update_health_element_icons(mana=TRUE)
 
 	return TRUE
 
-/obj/item/weapon/ranged/magic/tome/on_mouse_up(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/magic/tome/on_mouse_up(var/mob/caller,var/atom/object,location,control,params,var/secret_bypass=FALSE)
 
-	if(!automatic)
+	if(!automatic || !is_advanced(caller))
 		return TRUE
 
-	var/damage_mod = Clamp(power_current/power_max,0.5,1)
+	var/mob/living/advanced/A = caller
 
-	world.log << damage_mod
+	var/damage_mod = Clamp(power_current/power_max,0,1)
 
-	shoot(caller,object,location,params,damage_mod)
+	if(object && object.plane < PLANE_HUD && damage_mod >= 0.25)
+		shoot(caller,object,location,params,damage_mod)
+	else if(secret_bypass)
+		A.health.adjust_mana(power_current)
+		A.update_health_element_icons(mana=TRUE)
+
 	power_current = 0
 
 	return TRUE
