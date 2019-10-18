@@ -9,6 +9,8 @@
 
 	var/mob/living/advanced/A = triggerer
 
+	A.movement_flags = 0x0
+
 	if(!A.client)
 		return FALSE
 

@@ -180,6 +180,8 @@
 #include "code\_core\datum\class\npc\ashwalker.dm"
 #include "code\_core\datum\class\npc\bear.dm"
 #include "code\_core\datum\class\npc\carp.dm"
+#include "code\_core\datum\class\npc\chicken.dm"
+#include "code\_core\datum\class\npc\cow.dm"
 #include "code\_core\datum\class\npc\crab.dm"
 #include "code\_core\datum\class\npc\daddy.dm"
 #include "code\_core\datum\class\npc\goliath.dm"

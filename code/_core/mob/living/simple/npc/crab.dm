@@ -34,10 +34,10 @@
 
 	ai = /ai/simple/king_crab
 
-	class = "crab_king"
-	loot_drop = "crab_king"
+	class = "crab"
+	loot_drop = "crab"
 
-	level_multiplier = 4
+	level_multiplier = 20
 
 	object_size = 1
 

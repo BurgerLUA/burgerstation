@@ -2,6 +2,7 @@
 	name = "white chicken"
 	icon_state = "chicken_white"
 	damage_type = "chicken_peck"
+	class = "chicken"
 
 /mob/living/simple/npc/passive/chicken/post_death()
 	..()
