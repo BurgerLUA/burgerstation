@@ -199,7 +199,6 @@ var/global/list/all_clients = list()
 		mob.on_right_down(object,location,control,aug)
 
 	if(click_flags & CLICK_MIDDLE)
-		world.log << "MIDDLE CLICK"
 		examine(object)
 		return TRUE
 

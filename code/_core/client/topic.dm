@@ -24,7 +24,6 @@
 			if(is_client(actual_reference))
 				world.log << "CLIENT MENU"
 
-
 			else if(is_atom(actual_reference))
 				world.log << "ATOM MENU"
 

@@ -162,8 +162,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		if(!params || !length(params))
 			params = list()
 
-		world.log << params
-
 		if(!params[PARAM_ICON_X])
 			params[PARAM_ICON_X] = rand(0,32)
 

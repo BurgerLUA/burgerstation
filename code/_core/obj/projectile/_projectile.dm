@@ -101,8 +101,6 @@
 
 	damage_multiplier = desired_damage_multiplier
 
-	world.log << "DAMAGE MULTIPLIER FOR PROJECTILE: [damage_multiplier]"
-
 	. = ..()
 
 	update_icon()

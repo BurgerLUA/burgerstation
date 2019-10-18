@@ -9,8 +9,6 @@
 
 	var/mob/living/advanced/A = triggerer
 
-	A.movement_flags = 0x0
-
 	if(!A.client)
 		return FALSE
 
@@ -26,12 +24,15 @@
 		A.to_chat(span("thought","I should put some clothes on before I leave for work!"))
 		return TRUE
 
+	A.movement_flags = 0x0
 	var/choice = start_choice(A,/choice/skip_tutorial/)
 
 	if(choice == "yes")
 		play_the_fucking_game(A)
 	else
 		play_the_fucking_tutorial(A)
+
+	A.movement_flags = 0x0
 
 	return TRUE
 
@@ -75,10 +76,12 @@
 /proc/play_the_fucking_tutorial(var/mob/living/advanced/A)
 	spawn(0)
 		A.paralyze_time = -1
+		A.movement_flags = 0x0
 		add_notification_colored_easy(A.client,"#FFFFFF",SECONDS_TO_DECISECONDS(3),fade_in = TRUE, fade_out = TRUE)
 		sleep(SECONDS_TO_DECISECONDS(3))
 		A.force_move(get_turf(transit_shuttle))
 		A.paralyze_time = 0
+		A.movement_flags = 0x0
 		sleep(SECONDS_TO_DECISECONDS(10))
 		dock_shuttle.do_move(A)
 		sleep(SECONDS_TO_DECISECONDS(2))
@@ -114,6 +117,7 @@
 		A.force_move(pick(spawnpoints_new_character))
 		A.stun_time = -1
 		A.paralyze_time = -1
+		A.movement_flags = 0x0
 
 		if(show_disclaimer)
 			sleep(SECONDS_TO_DECISECONDS(20))
@@ -147,3 +151,4 @@
 		A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 		A.stun_time = 1
 		A.paralyze_time = 1
+		A.movement_flags = 0x0

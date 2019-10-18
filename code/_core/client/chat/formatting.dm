@@ -22,7 +22,12 @@ proc/format_speech(var/atom/speaker,var/atom/source,var/text,var/talk_type)
 			html = "[format_speaker(speaker,source,"BOT")]: [span("bot",text)]"
 		if(TEXT_RADIO)
 			html = span("radio","[format_speaker(speaker,source)] broadcasts, &#34;[span("say",text)]&#34;")
-
+		if(TEXT_PM)
+			html = "[format_speaker(speaker,source,"PM_OTHER")]: [span("pm_other",text)]"
+		if(TEXT_PM_ADMIN_IN)
+			html = "[format_speaker(speaker,source,"PM_IN")]: [span("admin",text)]"
+		if(TEXT_PM_ADMIN_OUT)
+			html = "[format_speaker(speaker,source,"PM_OUT")]: [span("admin",text)]"
 
 	return html
 

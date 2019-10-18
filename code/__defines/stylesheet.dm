@@ -10,6 +10,10 @@ body {
 	font-family: Verdana, sans-serif;
 	font-size: 8px;
 }
+.pm_other{
+	color:#498DB6;
+	font-weight: bold;
+}
 .ooc{
 	color: #1339AC;
 	font-weight: bold;

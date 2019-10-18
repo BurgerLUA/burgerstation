@@ -7,7 +7,7 @@
 	if(!(chat_type & CHAT_TYPE_COMBAT))
 		output_target_list += "chat_all.output"
 
-	if(chat_type & CHAT_TYPE_SAY || chat_type & CHAT_TYPE_RADIO)
+	if(chat_type & CHAT_TYPE_SAY)
 		output_target_list += "chat_say.output"
 
 	if(chat_type & CHAT_TYPE_OOC)

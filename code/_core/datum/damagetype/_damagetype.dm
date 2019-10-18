@@ -204,10 +204,13 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
-	if(!hit_object.health || !victim.health)
-		return FALSE
-
 	spawn()
+
+		if(!attacker || !victim || !weapon || !hit_object)
+			return FALSE
+
+		if(!hit_object.health || !victim.health)
+			return FALSE
 
 		var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 
@@ -249,6 +252,9 @@
 					fatigue_damage_to_deal += damage_amount
 
 		do_attack_animation(attacker,victim,weapon,hit_object)
+
+		if(!attacker || !victim || !weapon || !hit_object)
+			return FALSE
 
 		var/brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0
 		var/burn_damage_dealt = burn_damage_to_deal ? hit_object.health.adjust_burn_loss(burn_damage_to_deal) : 0

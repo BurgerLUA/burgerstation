@@ -20,8 +20,6 @@
 
 /mob/living/advanced/player/post_death()
 
-	world.log << "[src] has died!"
-
 	var/list/people_who_contributed = list()
 	var/list/people_who_killed = list()
 	var/list/people_who_killed_names = list()
@@ -66,7 +64,7 @@
 
 	var/punishment_level = -P.mobdata.loaded_data["karma"]
 
-	world.log << punishment_level
+	world.log << "Punishment Level: [punishment_level]"
 
 	return TRUE
 
@@ -152,11 +150,13 @@
 
 	var/gained_karma = 0
 
-	if(attacker_karma < 0) //The attacker is not without sin
+	if(victim_karma <= 0 && attacker_karma <= 0) //We're both shit.
 		gained_karma = Clamp(-victim_karma*0.5 + attacker_karma,0,1000)
-	else if(victim_karma > 0) //The victim is without sin
-		gained_karma = min(-1000,-attacker_karma*0.5,-victim_karma*0.25)
-	else //The attacker is without sin, and the victim is with sin
-		gained_karma = min(1000,-victim_karma * 0.25)
+	else if(victim_karma > 0 && attacker_karma <= 0) //The victim is good but the attacker is shit.
+		gained_karma = min(-1000,-victim_karma*0.25)
+	else if (victim_karma <= 0 && attacker_karma > 0) //The victim is shit but the attacker is good.
+		gained_karma = min(10000,-attacker_karma*0.25)
+	else if (victim_karma > 0 && attacker_karma > 0) //We're both good.
+		gained_karma = max(-1000.-attacker_karma*0.5,-victim_karma*0.5)
 
-	return gained_karma
+	return round(gained_karma,1)
