@@ -1,3 +1,11 @@
+/atom/proc/get_attack_delay(var/mob/user)
+
+	if(is_living(user))
+		var/mob/living/L = user
+		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
+
+	return attack_delay
+
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/damage_amount)
 	return TRUE
 
@@ -62,9 +70,6 @@
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
 		return FALSE
 
-	if(!DT.can_attack(attacker,victim,object_to_damage_with,object_to_damage))
-		return FALSE
-
 	object_to_damage_with.attack_last = curtime
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
@@ -82,9 +87,6 @@
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
 	return src
 
-/atom/proc/get_interact_delay(var/atom/user)
-	return interact_delay_base
-
 /atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
 	if(!mouse_opacity)
@@ -98,7 +100,10 @@
 		if(A1.safe != A2.safe)
 			return FALSE
 
-	if(interact_last + get_interact_delay(src) > curtime)
+	if(attack_last + get_attack_delay(src) > curtime)
+		return FALSE
+
+	if(weapon && weapon.attack_last + weapon.get_attack_delay(src) > curtime)
 		return FALSE
 
 	if(victim && !victim.can_be_attacked(src,weapon,params))

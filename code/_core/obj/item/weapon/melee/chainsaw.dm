@@ -4,6 +4,9 @@
 	icon = 'icons/obj/items/weapons/melee/swords/chainsaw.dmi'
 	damage_type = "chainsaw_off"
 
+	attack_delay = 10
+	attack_delay_max = 15
+
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/atom/caller)
 	. = ..()
 	var/area/A = get_area(caller.loc)
@@ -14,3 +17,4 @@
 		play_sound('sounds/weapons/energy/energy_off.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		damage_type = "chainsaw_off"
 	return .
+

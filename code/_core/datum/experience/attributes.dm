@@ -11,6 +11,8 @@
 	id = ATTRIBUTE_STRENGTH
 	desc = "A measure of how strong you are in this world. Affects damage with some weapons as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
+	experience_power = 1.35
+	experience_multiplier = 10
 	combat_level_mul = 1
 
 /experience/attribute/vitality/
@@ -25,7 +27,10 @@
 	id = ATTRIBUTE_FORTITUDE
 	desc = "A measure of how resistant you are to the troubles of this world. Affects pain tolerance and physical damage resistance and health regeneration."
 	flags = ATTRIBUTE_RESISTANCE
+	experience_power = 1.2
+	experience_multiplier = 25
 	combat_level_mul = 0.5
+	//19,000 xp to level 100
 
 //Wizard
 /experience/attribute/intelligence/
@@ -33,6 +38,8 @@
 	id = ATTRIBUTE_INTELLIGENCE
 	desc = "A measure of how effective you are at using magic. Affects damage with some weapons and magic as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
+	experience_power = 1.35
+	experience_multiplier = 10
 	combat_level_mul = 1
 
 /experience/attribute/wisdom/
@@ -47,7 +54,9 @@
 	id = ATTRIBUTE_WILLPOWER
 	desc = "A measure of how long your mind can last in this world. Affects magic resistance and and mana regeneration."
 	flags = ATTRIBUTE_RESISTANCE
-	combat_level_mul = 0.75
+	experience_power = 1.2
+	experience_multiplier = 25
+	combat_level_mul = 0.5
 
 //Rogue
 /experience/attribute/dexterity/
@@ -55,6 +64,8 @@
 	id = ATTRIBUTE_DEXTERITY
 	desc = "A measure of how well you can control your body. Affects damage with some weapons as well as the speed of performing actions."
 	flags = ATTRIBUTE_DAMAGE
+	experience_power = 1.35
+	experience_multiplier = 10
 	combat_level_mul = 1
 
 /experience/attribute/agility/
@@ -62,17 +73,20 @@
 	id = ATTRIBUTE_AGILITY
 	desc = "A measure of how agile you are in the world. Affects movement speed and the speed of which you perform movement based actions."
 	flags = ATTRIBUTE_STAT
+	experience_power = 1.5
+	experience_multiplier = 5
 	combat_level_mul = 0.75
 
 /experience/skill/agility/get_power()
-	//return (get_current_level() ** 2) * (1/(max_level*100))
-	return min(0.25,log(10,get_current_level()+1)*0.5)
+	return min(0.10,log(10,get_current_level()+1)*0.5)
 
 /experience/attribute/endurance/
 	name = "Endurance"
 	id = ATTRIBUTE_ENDURANCE
 	desc = "A measure of how long your body can last in this world. Affects resistance to poison, disease, fatigue, stamina damage. Also increases maximum stamina and stamina regeneration."
 	flags = ATTRIBUTE_RESISTANCE
+	experience_power = 1.2
+	experience_multiplier = 25
 	combat_level_mul = 0.5
 
 //None. Everyone starts with 50.

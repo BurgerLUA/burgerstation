@@ -268,15 +268,21 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
+/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update) //BEHOLD. SHITCODE.
 
 	var/desired_icon_state
+
 	if(item_to_update.slot_icons)
 		desired_icon_state = "[item_to_update.icon_state_worn]_[src.id]"
 	else
 		desired_icon_state = item_to_update.icon_state_worn
 
-	owner.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend)
+	if(is_clothing(item_to_update))
+		var/obj/item/clothing/C = item_to_update
+		if(C.polymorphic)
+			C.initialize_blends(desired_icon_state)
+
+	owner.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend)
 
 /obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()

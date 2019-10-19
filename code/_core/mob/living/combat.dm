@@ -37,9 +37,6 @@
 
 	return TRUE
 
-/mob/living/get_interact_delay(var/mob/user)
-	return interact_delay_base * (2 - get_attribute_power(ATTRIBUTE_DEXTERITY))
-
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status & FLAG_STATUS_STUN)
 		return 0

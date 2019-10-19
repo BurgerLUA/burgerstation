@@ -4,6 +4,9 @@
 	icon = 'icons/obj/items/weapons/melee/toolbox/red.dmi'
 	damage_type = "toolbox"
 
+	attack_delay = 5
+	attack_delay_max = 10
+
 /obj/item/weapon/melee/toolbox/red
 	color = "#FF0000"
 

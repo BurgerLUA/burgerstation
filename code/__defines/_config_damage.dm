@@ -48,12 +48,12 @@
 #define SIZE_7 7
 #define SIZE_8 8
 
-#define WEIGHT_0 1
-#define WEIGHT_1 3
-#define WEIGHT_2 5
-#define WEIGHT_3 10
-#define WEIGHT_4 25
-#define WEIGHT_5 50
-#define WEIGHT_6 75
-#define WEIGHT_7 100
-#define WEIGHT_8 200
+#define WEIGHT_0 0.5
+#define WEIGHT_1 1
+#define WEIGHT_2 3
+#define WEIGHT_3 5
+#define WEIGHT_4 10
+#define WEIGHT_5 20
+#define WEIGHT_6 50
+#define WEIGHT_7 75
+#define WEIGHT_8 100

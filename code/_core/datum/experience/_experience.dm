@@ -83,8 +83,7 @@
 	return min(0.5,get_current_level() / max_level)
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
-
-	owner.to_chat(span("notice","Your [name] increased to [new_level]."))
+	owner.on_level_up(src,old_level,new_level)
 	last_level = new_level
 	if(owner.update_level())
 		owner.to_chat(span("notice","Your overall level increased to [owner.level]."))

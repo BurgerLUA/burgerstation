@@ -63,8 +63,6 @@
 
 	var/list/obj/hud/screen_blood/screen_blood
 
-	interact_delay_base = 4
-
 	var/allow_experience_gains = FALSE
 
 	var/should_be_knocked_down = FALSE

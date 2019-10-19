@@ -79,7 +79,6 @@
 	experience_multiplier = 5
 	combat_level_mul = 0.75
 
-
 //Mage 6
 /experience/skill/magic/ //INTELLIGENCE
 	name = "Magic"
@@ -119,7 +118,6 @@
 	experience_power = 1.5
 	experience_multiplier = 3.1
 	combat_level_mul = 1
-
 
 //Crafting
 /experience/skill/alchemy/ //Int

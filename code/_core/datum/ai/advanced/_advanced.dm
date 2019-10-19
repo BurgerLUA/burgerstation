@@ -55,8 +55,9 @@
 			params["right"] = TRUE
 			owner.on_right_down(objective_attack,owner,null,params)
 
+
 		owner.attack_flags &= ~ATTACK_KICK
 
-		attack_message()
+
 
 	attack_ticks = 0

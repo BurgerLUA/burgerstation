@@ -55,9 +55,8 @@
 
 	owner = desired_owner
 
-	if(sync_attack_delay && all_damage_types[desired_owner.damage_type])
-		var/damagetype/DT = all_damage_types[desired_owner.damage_type]
-		attack_delay = ceiling(DT.get_attack_delay()/LIFE_TICK,1)
+	if(sync_attack_delay)
+		attack_delay = ceiling(desired_owner.get_attack_delay()/LIFE_TICK,1)
 
 	if(sync_movement_delay)
 		movement_delay = ceiling(TICKS_TO_DECISECONDS(owner.get_movement_delay())/LIFE_TICK,1)
@@ -114,8 +113,6 @@
 	else
 		params["right"] = TRUE
 		owner.on_right_down(objective_attack,null,null,params)
-
-	attack_message()
 
 	return TRUE
 

@@ -14,6 +14,9 @@
 
 	slot_icons = TRUE
 
+	attack_delay = 5
+	attack_delay_max = 12
+
 /obj/item/weapon/melee/sword/sabre/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -31,6 +34,8 @@
 
 	damage_type = "sword_claymore"
 
+	attack_delay = 8
+
 /obj/item/weapon/melee/sword/claymore/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -43,9 +48,15 @@
 	damage_type = "spear"
 	damage_type_thrown = "spear_thrown"
 
+	attack_delay = 5
+	attack_delay_max = 12
+
 /obj/item/weapon/melee/zweihander
 	name = "chaos zweihander"
 	rarity = RARITY_LEGENDARY
 	desc = "THE LEGEND."
 	icon = 'icons/obj/items/weapons/melee/swords/zweihander.dmi'
 	damage_type = "sword_chaos_zweihander"
+
+	attack_delay = 10
+	attack_delay_max = 30

@@ -1,6 +1,6 @@
 /mob/verb/say(var/text_to_say as text)
 
-	if(spam_protection_say >= 1)
+	if(spam_protection_say >= 1 && src.client)
 		to_chat(span("warning","You are out of breath! Please wait [spam_protection_say - 1] seconds before speaking again!"))
 		return FALSE
 

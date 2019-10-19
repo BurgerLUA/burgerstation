@@ -28,3 +28,19 @@
 
 
 
+/obj/item/clothing/feet/socks/programmer
+	name = "programmer sock"
+	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
+
+	polymorphic = TRUE
+	color_primary = "#FFFFFF"
+	color_secondary = "#EE9AA8"
+	color_tertiary = "#FFFFFF"
+
+/obj/item/clothing/feet/socks/programmer/bee
+	name = "bee stockings"
+
+	polymorphic = TRUE
+	color_primary = "#1E1E1E"
+	color_secondary = "#FFD819"
+	color_tertiary = "#1E1E1E"

@@ -15,7 +15,10 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
-	damage_type = "stunbaton_off"
+	damage_type = "null_rod"
+
+	attack_delay = 6
+	attack_delay_max = 10
 
 
 /obj/item/weapon/melee/null_rod/staff
@@ -35,8 +38,11 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
-	damage_type = "stunbaton_off"
+	damage_type = "null_staff"
 
+
+	attack_delay = 8
+	attack_delay_max = 20
 
 /obj/item/weapon/melee/null_rod/dagger
 	name = "null dagger"
@@ -55,4 +61,7 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
-	damage_type = "stunbaton_off"
+	damage_type = "null_dagger"
+
+	attack_delay = 4
+	attack_delay_max = 6

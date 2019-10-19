@@ -46,6 +46,9 @@
 		ATTACK_TYPE_MAGIC = 0
 	)
 
+	attack_delay = 4
+	attack_delay_max = 8
+
 /obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
 	. = ..()
 	var/area/A = get_area(caller.loc)

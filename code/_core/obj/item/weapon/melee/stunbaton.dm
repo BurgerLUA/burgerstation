@@ -18,6 +18,8 @@
 
 	damage_type = "stunbaton_off"
 
+	attack_delay = 5
+	attack_delay_max = 10
 
 /obj/item/weapon/melee/energy/stunbaton/click_self(var/atom/caller)
 	. = ..()

@@ -51,12 +51,15 @@
 		update_icon()
 	..()
 
-/obj/item/clothing/initialize_blends()
+/obj/item/clothing/initialize_blends(var/desired_icon_state)
 
 	if(polymorphic)
-		add_blend("outfit_primary", desired_icon = icon, desired_icon_state = "[icon_state_worn]_primary", desired_color = color_primary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
-		add_blend("outfit_secondary", desired_icon = icon, desired_icon_state = "[icon_state_worn]_secondary", desired_color = color_secondary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
-		add_blend("outfit_tertiary", desired_icon = icon, desired_icon_state = "[icon_state_worn]_tertiary", desired_color = color_tertiary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
+		if(!desired_icon_state)
+			desired_icon_state = icon_state_worn
+		var/icon/initial_icon = initial(icon)
+		add_blend("outfit_primary", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_primary", desired_color = color_primary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
+		add_blend("outfit_secondary", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_secondary", desired_color = color_secondary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
+		add_blend("outfit_tertiary", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_tertiary", desired_color = color_tertiary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)
 
 	..()
 
@@ -75,7 +78,7 @@
 	if(!polymorphic)
 		return ..()
 
-	if(layer == LAYER_MOB_HELD)
+	if(layer >= LAYER_MOB_CLOTHING)
 		return ..()
 
 	var/icon/I1 = new /icon(icon,"[icon_state]_primary")

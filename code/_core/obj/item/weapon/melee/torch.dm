@@ -27,6 +27,9 @@
 	desired_light_power = 0.5
 	desired_light_color = "#FFD175"
 
+	attack_delay = 5
+	attack_delay_max = 10
+
 /obj/item/weapon/melee/torch/click_self(var/atom/caller)
 	enabled = !enabled
 	update_icon()

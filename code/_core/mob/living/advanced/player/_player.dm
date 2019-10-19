@@ -57,6 +57,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 		list(16,16)
 	)
 
+	allow_experience_gains = TRUE
+
 /mob/living/advanced/player/apply_mob_parts()
 
 	if(!mobdata || mobdata.loaded_data["tutorial"])

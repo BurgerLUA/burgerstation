@@ -21,5 +21,9 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
+
+	attack_delay = 10
+	attack_delay_max = 15
+
 /obj/item/weapon/melee/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE

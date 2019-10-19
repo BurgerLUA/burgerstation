@@ -31,8 +31,13 @@
 	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	var/interact_distance = 1
-	var/interact_delay_base = 4
-	var/interact_last = 0
+
+	var/command_delay_base = 1 //For things like clicking.
+	var/command_last = 0
+
+	var/attack_delay = 5 //The attack delay for an object.
+	var/attack_delay_max = 10 //For living mobs using this object, the maximum attack delay.
+
 
 	var/attack_last = -1
 

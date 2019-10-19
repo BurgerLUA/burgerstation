@@ -116,6 +116,13 @@
 
 	var/throw_mul = 1
 
+	var/crit_multiplier = 2
+	var/crit_chance = 5
+	var/crit_chance_max = 10
+
+/damagetype/proc/get_crit_chance(var/mob/living/L)
+	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION) + L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)
+
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
 	var/combat_rating = 0
@@ -143,13 +150,7 @@
 	else
 		combat_rating *= 1.1
 
-	if(get_attack_type() == ATTACK_TYPE_MELEE)
-		combat_rating *= (10/max(1,get_attack_delay(L)))
-
 	return round(combat_rating*0.25,1)
-
-/damagetype/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	return weapon.attack_last + get_attack_delay(attacker,victim,weapon,hit_object) <= curtime
 
 /damagetype/proc/get_miss_chance()
 	return 0
@@ -163,6 +164,10 @@
 	do_attack_animation(attacker,victim,weapon,hit_object)
 	do_miss_sound(attacker,victim,weapon,hit_object)
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
+	return TRUE
+
+/damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	hit_object.visible_message(span("danger","Critical hit!"))
 	return TRUE
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
@@ -251,7 +256,18 @@
 				if(FATIGUE)
 					fatigue_damage_to_deal += damage_amount
 
-		do_attack_animation(attacker,victim,weapon,hit_object)
+		var/is_crit = FALSE
+		if(is_living(attacker))
+			is_crit = prob(get_crit_chance(attacker))
+
+		if(is_crit)
+			brute_damage_to_deal *= crit_multiplier
+			burn_damage_to_deal *= crit_multiplier
+			tox_damage_to_deal *= crit_multiplier
+			oxy_damage_to_deal *= crit_multiplier
+			fatigue_damage_to_deal *= crit_multiplier
+
+		do_attack_animation(attacker,victim,weapon,hit_object,is_crit)
 
 		if(!attacker || !victim || !weapon || !hit_object)
 			return FALSE
@@ -273,6 +289,9 @@
 		do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 		display_hit_message(attacker,victim,weapon,hit_object)
+
+		if(is_crit)
+			do_critical_hit(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 		victim.on_damage_received(hit_object,attacker,total_damage_dealt)
 		if(victim != hit_object)
@@ -382,7 +401,7 @@
 		var/area/A = get_area(victim)
 		play_sound(pick(miss_sounds),all_mobs_with_clients,vector(victim.x,victim.y,victim.z),environment = A.sound_environment)
 
-/damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 
 	if(draw_weapon)
 		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
@@ -490,6 +509,7 @@
 		get_glance_message_sound(attacker,victim,weapon,hit_object)\
 	)
 
+/*
 /damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(is_living(attacker))
@@ -497,6 +517,7 @@
 		return floor(attack_delay * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY)))
 
 	return attack_delay
+*/
 
 
 /damagetype/proc/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
