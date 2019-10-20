@@ -27,3 +27,9 @@
 
 /obj/item/weapon/melee/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
+
+
+
+/obj/item/weapon/melee/shield/glass
+	name = "glass shield"
+	icon = 'icons/obj/items/weapons/melee/glass_shield.dmi'

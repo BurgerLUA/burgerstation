@@ -9,20 +9,11 @@
 		/obj/item/weapon/ranged/bullet/revolver/dbarrel = 0.25
 	)
 
-/loot/cult/
-	name = "cult loot"
-	id = "cult"
-	desc = "Loot you find off of dead cultists."
-	loot_table = list()
-
-	loot_count = 3
-
-
 
 /loot/money/
 	name = "money loot"
 	id = "money"
-	desc = "General low-level money loot.."
+	desc = "General low-level money loot."
 	loot_table = list(
 		/obj/item/currency/{value=1} = 100,
 		/obj/item/currency/{value=2} = 50,
@@ -35,6 +26,3 @@
 	)
 
 	loot_count = 1
-
-
-

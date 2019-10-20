@@ -207,6 +207,9 @@
 		replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text)\
 	)
 
+/damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return is_living(attacker) && prob(get_crit_chance(attacker))
+
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	spawn()
@@ -256,9 +259,7 @@
 				if(FATIGUE)
 					fatigue_damage_to_deal += damage_amount
 
-		var/is_crit = FALSE
-		if(is_living(attacker))
-			is_crit = prob(get_crit_chance(attacker))
+		var/is_crit = get_critical_hit_condition(attacker,victim,weapon,hit_object)
 
 		if(is_crit)
 			brute_damage_to_deal *= crit_multiplier

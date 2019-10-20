@@ -17,7 +17,7 @@
 
 	charge_max = 70000
 	charge_current = 70000
-	charge_cost = 5000
+	charge_cost = 1000
 
 	view_punch = 6
 
@@ -52,7 +52,7 @@
 	bullet_speed = 26
 	shoot_delay = 8
 
-	charge_cost = 7000
+	charge_cost = 2000
 
 	view_punch = 8
 
@@ -64,6 +64,6 @@
 	bullet_speed = 20
 	shoot_delay = 6
 
-	charge_cost = 7000
+	charge_cost = 2000
 
 	view_punch = 8

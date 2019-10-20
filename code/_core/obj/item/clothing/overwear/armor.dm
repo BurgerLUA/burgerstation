@@ -314,7 +314,7 @@
 		HOLY = ARMOR_C,
 		DARK = -ARMOR_C
 	)
-	color = "#FF0000"
+	color = "#7F0000"
 
 /obj/item/clothing/overwear/armor/carbon_armor
 	name = "prototype carbon fibre armor"

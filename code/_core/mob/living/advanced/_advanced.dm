@@ -129,7 +129,7 @@
 
 	max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
 
-	var/carry_mod = 1 + (capacity/max_capacity)**2
+	var/carry_mod = 1 + (max(0,capacity/max_capacity))**2
 
 	slowdown_mul = Clamp(slow_mul * carry_mod,0.75,4)
 

@@ -40,7 +40,6 @@
 	var/list/obj/item/clothing/additional_clothing = list()
 	var/list/obj/item/clothing/additional_clothing_stored
 
-
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	..()

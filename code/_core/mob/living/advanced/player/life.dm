@@ -63,7 +63,7 @@
 /proc/punish_player(var/mob/living/advanced/player/P)
 
 	var/punishment_level = -P.mobdata.loaded_data["karma"]
-
+	world.log << punishment_level
 	return TRUE
 
 /proc/do_karma_event(var/mob/living/advanced/player/attacker,var/mob/living/advanced/player/victim,var/karma_gain = 0)

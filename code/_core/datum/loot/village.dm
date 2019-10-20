@@ -43,6 +43,7 @@
 		/obj/item/color/crayon/orange = 5,
 
 	)
+	chance_none = 75
 
 /loot/crab_king
 	name = "crab king loot"
@@ -53,3 +54,20 @@
 
 
 	)
+
+
+/loot/cult/
+	name = "cult loot"
+	id = "cult"
+	desc = "Loot you find off of dead cultists."
+	loot_table = list(
+		/obj/item/clothing/head/hood/cult = 75,
+		/obj/item/clothing/overwear/armor/cult = 100,
+
+		/obj/item/clothing/overwear/armor/cult/hard = 20,
+		/obj/item/clothing/head/helmet/cult = 10
+	)
+
+	loot_count = 1
+
+	chance_none = 90

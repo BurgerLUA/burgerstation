@@ -1,4 +1,4 @@
-mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE)
+mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
 	var/obj/overlay/O = new /obj/overlay
 	O.attached_object = A
 	O.initial_icon = desired_icon ? desired_icon : A.icon
@@ -10,6 +10,8 @@ mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_ic
 	O.color = desired_color ? desired_color : A.color
 	O.never_blend = desired_never_blend
 	O.no_initial = desired_no_initial
+	O.pixel_x = desired_pixel_x
+	O.pixel_y = desired_pixel_y
 	if(!desired_never_blend)
 		O.additional_blends = desired_additional_blends ? desired_additional_blends : A.additional_blends
 	O.update_icon()

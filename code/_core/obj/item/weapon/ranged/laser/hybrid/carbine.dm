@@ -21,7 +21,7 @@
 
 	charge_max = 30000
 	charge_current = 30000
-	charge_cost = 1500
+	charge_cost = 500
 
 	view_punch = 6
 

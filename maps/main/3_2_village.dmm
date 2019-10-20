@@ -50,7 +50,7 @@
 "aX" = (/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/crab)
 "aY" = (/obj/structure/interactive/plank/wood{icon_state = "plank_l"},/turf/simulated/floor/wood/dock,/area/world/forest/exterior/village)
 "aZ" = (/obj/structure/scenery/evergreen,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
-"ba" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/undertop/underwear/shirt,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"ba" = (/obj/structure/smooth/table,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "bb" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/crafting/workbench,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
 "bc" = (/turf/simulated/floor/river,/area/world/forest/exterior/village)
 "bd" = (/turf/simulated/floor/colored/sand,/area/world/forest/exterior/village)
@@ -113,30 +113,30 @@
 "ci" = (/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/spider)
 "cj" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/spider)
 "ck" = (/obj/structure/scenery/grass,/obj/marker/boss/wizard,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
-"cl" = (/obj/item/radio,/turf/simulated/floor/cobblestone,/area/world/forest/exterior/village)
+"cl" = (/obj/marker/mob_blocker,/turf/simulated/floor/colored/sand,/area/world/forest/exterior/village)
 "cm" = (/turf/simulated/wall/rock/desert,/area/world/forest/interior/cave/desert)
 "cn" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/spider)
 "co" = (/turf/simulated/floor/colored/sand,/area/world/forest/exterior/plains)
 "cp" = (/mob/living/simple/npc/crab/passive,/turf/simulated/floor/colored/sand,/area/world/forest/exterior/plains)
-"cq" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/pants/brown,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cq" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/overwear/coat,/obj/item/clothing/pants/brown,/obj/item/clothing/undertop/underwear/shirt,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cr" = (/mob/living/simple/npc/spacecarp,/turf/simulated/floor/river,/area/world/forest/exterior/river)
 "cs" = (/obj/structure/scenery/grass,/mob/living/advanced/npc/evil_wizard,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "ct" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/melee/energy/stunbaton,/obj/item/weapon/melee/baton,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"cu" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cu" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/radio,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cv" = (/mob/living/simple/npc/slime/cyan,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
-"cw" = (/obj/item/clothing/feet/socks/programmer,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 8},/area/world/forest/exterior/village)
+"cw" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/head/helmet/security/tactical_helmet,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cx" = (/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
 "cy" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
 "cz" = (/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/desert)
 "cA" = (/turf/simulated/floor/stair/wood,/area/world/forest/interior/village/shop/chapel)
 "cB" = (/obj/structure/scenery/grass,/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
-"cC" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/head/helmet/security/old,/obj/item/clothing/head/helmet/security/tactical_helmet2,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cC" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/medium_armor/leather,/obj/item/clothing/overwear/armor/molded_armor/leather,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
 "cD" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/knight/templar,/obj/item/clothing/overwear/armor/knight/yellow,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
-"cE" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/melee/toolbox/blue,/obj/item/weapon/melee/toolbox/green,/obj/item/weapon/melee/toolbox/red,/obj/item/weapon/melee/pickaxe,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
+"cE" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/melee/toolbox/blue,/obj/item/weapon/melee/toolbox/green,/obj/item/weapon/melee/toolbox/red,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cF" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
 "cG" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/revolver/deckhard,/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 8},/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cH" = (/obj/marker/spawnpoint/ghost,/obj/structure/scenery/grass,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
-"cI" = (/obj/item/clothing/feet/socks/programmer,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 4},/area/world/forest/exterior/village)
+"cI" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "cJ" = (/turf/simulated/floor/carpet,/area/world/forest/interior/village/shop/chapel)
 "cK" = (/obj/structure/interactive/lighting/tube,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cL" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/uniform/jumpsuit/blue,/obj/item/clothing/uniform/jumpsuit/grey,/obj/item/clothing/uniform/jumpsuit/red,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
@@ -197,9 +197,10 @@
 "dO" = (/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/open)
 "dP" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/ranged/magic/tome/lightning,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
 "dQ" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/weapon/melee/null_rod,/obj/item/weapon/melee/null_rod/dagger,/obj/item/weapon/melee/null_rod/staff,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
-"dR" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/melee/energy/chainsaw,/turf/simulated/floor/wood/dock,/area/world/forest/interior/village/shop/farm)
+"dR" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/melee/energy/chainsaw,/obj/item/weapon/melee/zweihander,/obj/item/weapon/melee/sword/sabre,/turf/simulated/floor/wood/dock,/area/world/forest/interior/village/shop/farm)
 "dS" = (/mob/living/simple/npc/spider,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/spider)
 "dT" = (/mob/living/simple/npc/spider,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/spider)
+"dU" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 8},/area/world/forest/exterior/village)
 "dV" = (/obj/structure/scenery/rocks,/obj/structure/smooth/table/wood/poor,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/village/cave)
 "dW" = (/obj/structure/scenery/rocks,/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/village/cave)
 "dX" = (/obj/marker/mob_blocker,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/village/cave)
@@ -221,8 +222,13 @@
 "en" = (/obj/structure/scenery/grass,/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/world/forest/interior/village/shop/nanotrasen)
 "eo" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/plains)
 "ep" = (/obj/structure/scenery/rocks,/obj/marker/mob_blocker,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
+"eq" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 4},/area/world/forest/exterior/village)
+"er" = (/obj/structure/scenery/flowers,/obj/marker/mob_blocker,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "es" = (/mob/living/simple/npc/cult/cultist,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
+"et" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/world/forest/exterior/village)
 "eu" = (/mob/living/simple/npc/crab,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/plains)
+"ev" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side,/area/world/forest/exterior/village)
+"ew" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/ore/carbon,/obj/item/container/food/plant/nitrogen_flower,/obj/item/container/food/plant/oxygen_fruit,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "ey" = (/turf/simulated/wall/rock,/area/world/forest/interior/cave/desert)
 "ez" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "eA" = (/turf/simulated/wall/rock/moss,/area/world/forest/interior/cave/crab)
@@ -239,7 +245,6 @@
 "eM" = (/mob/living/simple/npc/bear,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/open)
 "eN" = (/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "eO" = (/turf/simulated/wall/rock,/area/world/forest/exterior/plains)
-"eP" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/bottle/dylovene,/obj/item/container/beaker/bottle/kelotane,/obj/item/container/beaker/bottle/bicaridine,/obj/item/ore/carbon,/obj/item/container/food/plant/nitrogen_flower,/obj/item/container/food/plant/oxygen_fruit,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "eQ" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "eR" = (/mob/living/simple/npc/slime/green,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
 "eS" = (/mob/living/simple/npc/bear,/turf/simulated/floor/cave_dirt,/area/world/forest/exterior/plains)
@@ -250,14 +255,11 @@
 "eX" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/mask/gas,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "eY" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/large,/obj/item/container/beaker,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "eZ" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/neck/cape/hide,/obj/item/clothing/neck/cloak/brown,/obj/item/clothing/neck/mantle/brown,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
-"fa" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/medium_armor/leather,/obj/item/clothing/overwear/armor/molded_armor/leather,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
 "fb" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/bottle,/obj/item/container/beaker/bottle/large,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "fc" = (/turf/simulated/floor/carpet,/area/world/forest/interior/village/shop/debug)
 "fd" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/vial,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "fe" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/crafting/alchemy,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "ff" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/crafting/smelter,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
-"fh" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/bottle/bicaridine,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
-"fi" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/container/beaker/bottle/kelotane,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "fj" = (/turf/simulated/floor/river,/area/world/forest/exterior/river)
 "fk" = (/obj/structure/interactive/plank/wood,/turf/simulated/floor/river/walkable,/area/world/forest/exterior/village/river)
 "fl" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/melee/pickaxe,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
@@ -265,8 +267,6 @@
 "fI" = (/mob/living/simple/npc/bear,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "fK" = (/obj/structure/scenery/grass,/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "fL" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
-"fM" = (/obj/item/weapon/melee/torch,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/world/forest/exterior/village)
-"fN" = (/obj/item/weapon/melee/torch/flashlight,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/world/forest/exterior/village)
 "fU" = (/obj/structure/interactive/barricade,/turf/simulated/floor/cobblestone/corner{icon_state = "cobble_corner"; dir = 8},/area/world/forest/exterior/village)
 "fV" = (/obj/structure/interactive/barricade,/turf/simulated/floor/cobblestone/side,/area/world/forest/exterior/village)
 "fW" = (/obj/structure/interactive/barricade,/turf/simulated/floor/cobblestone/corner{icon_state = "cobble_corner"; dir = 4},/area/world/forest/exterior/village)
@@ -278,7 +278,7 @@ eOeOeOeOeOeOeOadadadadacafafafacacacaceOeOeOeOeOagagagagagagagageOeOeOeOeOeOeOem
 eOeOeOeOeOajatadafaDafafafafafafafafafafagagagagagagagagagagagagagagageOeOeOeOaGemememazdcdcdcdcemememememememememememememememememaiaiananananananalaoaoaqararalaianaiananamaiasanakakemememdZdcdbazeiazazazdZdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOajatadacafafafafaDafafagagagagagagagagagagagagagagagagagagagagagagagagagagagemememememememagagemavavavananaiaiaiaiaiaiaiaiaiaianananananaBfLcPaBcUanayalanaBanasaiaiaiaiaiececakemememdZdZazdXazazazazdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOatadacacaMafaNafagagagagagagagagagagagagagagagagagagagaZagagagagagagagagagagagagagemagagagagagemavavavananaAaAaAaAaAaAaAaAaLaLaLaLaLaLaBaBaBaBaBaBananaxanbiaBaBaBaBbianaiaiecececemememdZdZejazazazazdcemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
-eOeOeOeOatacacafafafafagagagagagagagagagagagagagagaZagagagagagagagagagagagagagaZagagagagagagagagagagagagavavavaBanaAaCaIaKaIaIaIaAbbeIfaeZdMaLbiaBaBaBaBaBbianaxanaBaBbiaBaBaBaBaBananaiececememememememazazazemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
+eOeOeOeOatacacafafafafagagagagagagagagagagagagagagaZagagagagagagagagagagagagagaZagagagagagagagagagagagagavavavaBanaAaCaIaKaIaIaIaAbbeIcCeZdMaLbiaBaBaBaBaBbianaxanaBaBbiaBaBaBaBaBananaiececememememememazazazemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOadacacafbJafagagagagagagagagacacacagagagagagagagagagagagagbNbNbNbNagagagagagagagagagagagagagagagagavaBaBanaAaCaIaIaIaIaIaAdMdMdMdMeGaLanaBaBaBaBaBaBanaxananaBaBbiaBaBbiaBaBanananaialememememememazdfemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOadacacacafafagagagagagagacacaceOacacagagagagagaZagagagbNbNbNbNbNbNbNagagagagagagagagagagaZagagagagavaBananaAaIaIaIaIaIaIaAdMdMdMeEeLaLanaBaBaBbiaBaBanaxaxaxaxaxaxaxaBaxaxaxaxaxaxaxalaiaiememememembdbdemembcbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOadadacacaGagagagagagagacaceOeOeOeOacagagagagagagagagbNbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagavaBananaAaIaIaIaIaIaIaAffeEeEeEeJaLaBaBaBaBaBaBaBananananananananananananananananananaiaiemememembdbdemembfbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
@@ -295,35 +295,35 @@ eOeOacadadadeOeOeOeOeOacagagagagagaceOacaceOacacagagagagagagagagagagagagaZagagag
 eOeOeOeOeOeOeOeOeOeOeOagagbNagagagacacagagacacagagagagagagagagagagagagagagafagafafafafafafacacacacafafafafavabababababaBbwbwbwbwbwbidododododobiaBananbibibibibibibibibibiaBaBbibibibibjaBbGbXbXbXbGbkaBbrbtbvbdbdbdbmbmbmbmbmbmbmbmbmbmbmbmawbmbmbmbmbmbmbmbmbm
 eOeOeOeOeOagageOeOeOagagbNbNagagagagagagagagagagagagagaZagagagagagagafafafafafacacacacacacacafafafafafbNbNavabdpdqdqabanbwdrdsdsbwbidodtdududobibrbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbtbibGbGbGbYbGbGbGaBbxbDbdbdbdbqbmbmbmbmbmbmbmbmbmbmbmbmawbmbmbmbmbmbmbmbmbm
 eOeOeOeOeOagagageOagagbNbNbNagagagagagagagagagagagagagagagagagagafafafafafacajajajacacafafafafagagagagagbNavabdqdqdqabanbwdsdsdsbwbidodudududobibxbBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbBbDaBbZbXbXbXbXbXbZaBbxbDbdbdbdbdbmbmbmbmbmbmbmbmbmbmbmaHaHaHbmbmbmbmbmbmbmbm
-eOeOeOeOeOeOagagagbNbNbNbNagagageOeOeOeOagagagagagagagagafafafafafafacajajajajacafafafafafafagagagagagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbFbKbKbLbLbLbLenbKbKbKbLbLbLbFbxbDaBbZbXbXbXbXbXbZaBbxbDbdbdbdbdbmbmbmbmbmbmbmbmbmbmbmaHaJaHbmbmbmbmbmbmbmbm
+eOeOeOeOeOeOagagagbNbNbNbNagagageOeOeOeOagagagagagagagagafafafafafafacajajajajacafafafafafafagagagagagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbFbKbKbLbLbLbLenbKbKbKbLbLbLbFbxbDaBbZbXbXbXbXbXbZcNdUeqclclclclbmbmbmbmbmbmbmbmbmbmbmaHaJaHbmbmbmbmbmbmbmbm
 eOeOeOeOeOagagagbNbNbNbNagageOeOeOeOeOeOeOeOeOagagafafafafafafafacacajajacafafafafafafagagagagagagaGagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbibHbHbHbHbHbIbIbIbHbIbIbIbHaBbxbDbibGcAcFdKcFcAbGaBbxbDcabdbgbgbgbmbmbgbgbgbmbmbmbmaHaHaJaHaHbmbmbmbmbmbmbm
-eOeOeOeOeOeOagagbNbNagagageOeOeOeOeOeOeOeOeOafafafafacacajajajajacafafafafafafagagagagagagagagagagagagagafavabdqdqdqabbibwdsdsdsbwandodudududobibxbDbibHeNeNeNbMccaTcubPcLbacqbIaBbxbDbibZbXcJcJcJbXbZaBbxbDanbdbgbgbgbmbmbgbgbgbmbmbmaHaJaJaJaJaJaHbmbmbmbmbmbm
+eOeOeOeOeOeOagagbNbNagagageOeOeOeOeOeOeOeOeOafafafafacacajajajajacafafafafafafagagagagagagagagagagagagagafavabdqdqdqabbibwdsdsdsbwandodudududobibxbDbibHeNeNeNbMccaTcubPcLcqbabIaBbxbDbibZbXcJcJcJbXbZaBbxbDanbdbgbgbgbmbmbgbgbgbmbmbmaHaJaJaJaJaJaHbmbmbmbmbmbm
 eOeOeOeOeOeOeOagagagageOeOeOeOeOeOeOeOafafafafacacajajajajafafafafafafafagagagagagagagagagagagagaZagbNbNafavababdvababbibwbwdwbwbwandododxdodobibxbDaBbHeNeNcbbWeNeNeNeNeNeNeNbIaBbxbDbibZbXcJcJcJbXbZbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaHaJaJaJaJaJaHaHbmbmbmbmbm
 eOeOeOeOeOeOeOagageOeOeOeOeOeOeOafafafacacacacacacafafafafafafagagagagagagagagagagagagagagagagagagbNavavavavanbiananbibibibiananananbibianbibicBbxbDbibHbWbWaebWeNeNeNeNeNeNeNbIbibxbDbibGcFcJcJcJcFbGbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOagagageOeOeOeOeOafafacacacafafafafafafafagagagagagagagagagagagagagagagagaZagagagagagagbNeQaiavavaiananananananananananbrbsbsbsbsbsbsbBbDbibHcGeNeNeNeNeNcWaEeNeNcdbHcBbxbDaBbZdJcJcJcJcRbZbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
-eOeOeOeOeOeOaGagagagacacacafacacacafafafafafafagagagagagaZagagagagagagagagagagbNbNbNagagagagagagbNafeQaiavavaiananananaiaiaiaiaiaibxbBbCbCbCbCbCbBbDbibIbTeNeNeNeNeNctcCeNeNbObIbibxbDaBbZdPcJcJcJcDbZaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
+eOeOeOeOeOeOaGagagagacacacafacacacafafafafafafagagagagagaZagagagagagagagagagagbNbNbNagagagagagagbNafeQaiavavaiananananaiaiaiaiaiaibxbBbCbCbCbCbCbBbDbibIbTeNeNeNeNeNctcweNeNbObIbibxbDaBbZdPcJcJcJcDbZaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOaceOeOeOeOacacacacacacacacafafaGagagagagagagagagagagagagagagagagaZbNbNbNbNbNbNbNagagagaZagafafananaiaiaiaiaiaiaiaiaiaianananbxbDbibibibicHbxbDbibIbVeNeNeNeNeNeNeNeNeNcEbIbibxbDaBbGdQcJcJcJdNbGaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaOaJaJaJaHbmbmbmbmbm
 eOeOacaceOeOacacacacacacacacafafafagagagagagagagagagagagagagagagaZagagbNbNbNbNbNbNbNbNbNbNagagagafafanaiaiaiaiaiaianaiaiaiananbibibxbDbicMcNcMbibxbDbibIaueNeNcKeNeNeNcKeNeNeHbIaBbxbDaBbZdKcJcJcJdKbZaBbxbDcabdbgbgbgbmbmbgbgbgbmbmaHaJaJaJbnaJaJaJaHbmbmbmbmbm
 acacacacacacacacacacacacacafafafagagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagafdgaiavavaianananbibibibibibibibxbDbiegapegelbxbDbibHbIbIbIbHcObIcObHbIbIbIbHbkbxbDaBbZcFcJcJcJcFbZaBbxbDananbgbgbgbmbmbgbgaYfkfkbuaJaJaJaJaJaJaJaJbmbmbmbmbm
 acacacacacacacacacacacacacagagagagagagagagagagagaZagagagaZagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagbNeQaiavavaiananbibibibibibibibibxbDbiegekepbibxbDaBcQcQcQcQcQbrbsbtcQcQcQcQcQaBbxbDaBbGbGbGdLbGbGbGaBbxbDananbgbgbgbmbmbgbgaYfkfkbuaJaJaJaHaJaJaJaJbmbmbmbmbm
-acacacacacacacacacacagagagagagagagagagagaZagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagbNavavavavaiandhdhdhdhdhdhdhdhbibxbDbicSancSbibxbDbjcQcQcQcQbFbxbBbDbFcQcQcQcQbFbxbDbFcQcQaBancQcQcQbFbxbDananbgbgbgbmbmbgbgaYfkfkbuaJaJaJaJaJaJaJaJbmbmbmbmbm
-eOeOacacacacacacacacagagagagagagaZagagagagagaZagagagagagagagagaZagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagbNbNafavanandhdidididididGdhbibxclbsfMbsfNbsbBclbsbsbsbsbsbsbBbBbBbsbsbsbsbsbsbBbBbsbsbsbsbsbsbsbsbsbBbDananbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
-eOeOeOajajajajajajeOagagagaZagagagagagagagagagagagaZagagaZagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagbNavanandhdjdjdjdjdjdjdhbicTbCbCbCbCbBbBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCcVcabdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
-eOeOeOeOeOeOajajeOeOagagagagagagagagaZagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdjdjdkdjdjdjdhbkaBaBaBaBbFcwcIcBcXcXcYcXcXcXcXcXcXbicXcXcYcXcXcXcXcXaBcXcXcXcXcXcXcXcYcXcXanbdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
-eOeOeOeOeOeOeOeOeOagagagagagagagagagagagagaZagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdGdidididididhdhdhdhdhdhanbxbDbicXdBdEfhfidFdEdEcXbicXdEdEdEdFdEdEcXbicXdEdFdEdEdEdEdEdEcXanbdbdbdbmbmbmbmbmbmbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
+acacacacacacacacacacagagagagagagagagagagaZagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagbNavavavavaiandhdhdhdhdhdhdhdhbibxbDbicSancSbibxbDbjcQcQcQcQbFbxbBbDbFcQcQcQcQbFbxbDbFcQcQaBancQcQerbFbxbDananbgbgbgbmbmbgbgaYfkfkbuaJaJaJaJaJaJaJaJbmbmbmbmbm
+eOeOacacacacacacacacagagagagagagaZagagagagagaZagagagagagagagagaZagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagbNbNafavanandhdidididididGdhbibxbBbsbsbsbsbsbBbBbsbsbsbsbsbsbBbBbBbsbsbsbsbsbsbBbBbsbsbsbsbsbsbsetbsbBbDananbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
+eOeOeOajajajajajajeOagagagaZagagagagagagagagagagagaZagagaZagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagbNavanandhdjdjdjdjdjdjdhbicTbCbCbCbCbBbBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCevbCbCcVcabdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
+eOeOeOeOeOeOajajeOeOagagagagagagagagaZagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdjdjdkdjdjdjdhbkaBaBaBaBbFbxbDcBcXcXcYcXcXcXcXcXcXbicXcXcYcXcXcXcXcXaBcXcXcXcXcXcXcXcYcXcXanbdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
+eOeOeOeOeOeOeOeOeOagagagagagagagagagagagagaZagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdGdidididididhdhdhdhdhdhanbxbDbicXdBdEcIcIdFdEdEcXbicXdEdEdEdFdEdEcXbicXdEdFdEdEdEdEdEdEcXekclclclbmbmbmbmbmbmbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOeOagagagagagagagaZagagagagagagagagagagagaZagagagaZagagagaZagagaZagbNbNbNbNbNbNbNbNagagagagagagavanandhdDdDdDdDdDdDdjdldjdjdjdhanbxbDbicXdHdEfcfcfcdEeXcXbicXdEdEdEfcfcdEcXbicXdEfcfcdEfcfcfcdEcXbdbdbdbdbmbmbmbmbmbmbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
-eOeOeOeOeOeOeOagagagaZagagagagagagaZagagagagagagbNbNbNbNagagagagagagagagagagagagagbNbNbNbNagagagagagagagagavaiaidhdjdmdmdmdmdjdjdmdmdjdjdnanbxbDbicXePdEfcfcfcdEaScXaBcXdBdEdEfcfcdEcXbicXdEfcfcdydadadzdEcXbdbdbdbqbmbmbmbmbmbmbmbmbpbpbybpbzbpbybpbpbmbmbmbmbm
+eOeOeOeOeOeOeOagagagaZagagagagagagaZagagagagagagbNbNbNbNagagagagagagagagagagagagagbNbNbNbNagagagagagagagagavaiaidhdjdmdmdmdmdjdjdmdmdjdjdnanbxbDbicXewdEfcfcfcdEaScXaBcXdBdEdEfcfcdEcXbicXdEfcfcdydadadzdEcXbdbdbdbqbmbmbmbmbmbmbmbmbpbpbybpbzbpbybpbpbmbmbmbmbm
 eOeOeOeOeOeOeOagagagagagagagagagagagagagagagagbNbNbNckbNbNagagagagagagagagagagagagagagbNagagaZagagaZagagagavaiaidhdjdmdmdmdmdjdjdjdjdjdjdhanbxbDbicXdCdEfefdfbeYdHcXaBcXcZdHdEdEdEdEcXaBcXdEdEdEdycZdHdAdEcXbdbdbdbdbdbmbmbmbmbmbmbmbpbAbAbAbAbAbAbAbpbmbmbmbmbm
 eOeOeOeOeOeOagagagagagagagaZagagagagagagaZbNbNbNbNbNbNbNbNbNbNagagaZagagagaZagagagagagagagagagagagagagagbNavaiaidhdjdmdmdmdmdjdjdjdjdjdjdhcabxbDcBcXcXcXcXcXcXcXcXcXaBcXcXcXcXcXcXcXcXaBcXcXcXcXcXcXcXcXcXcXbfbdbdbdbdbmbmbmbmbmbmbmbybAbAbAbAbAbAbAbybmbmbmbmbm
 eOeOeOeOeOeOagagaZagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagagagaZagagagagagagagagagagagbNbNavaiaidhdjdjdjdjdjdjdjdjdjdjdjdhaBbxbDaBaBaBaBaBbibibibibibibibibibibibibibiaBbkaBaBbibibiaBaBaBanbfbfbfbfbfddbmbmbmbmbmbmbybAbAbAbAbAbAbAbybmbmbmbmbm
 eOeOeOeOagagagagagagagagagaZagagagaZagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagagagagaZagagagagagagagagagbNavavdeaidhdhdhdhdhdhdhdhdhdhdhdhdhavbxbDavbkbibibiaBaBaBaBbkbibibibibibibibibibiaBaBaBbibibibibibiananbfbfavavavbmbmbmbmbmbmbybAbAbQbRbRbAbAbybmbmbmbmbm
 eOeOeOeOeOagaZagagagagagagagagagagagagbNbNbNckbNbNbNbNbNbNbNbNckbNbNbNagagagagagagagagagaZagagagagagagbNavavavavavavavavavavavavavavavavavavbxbDavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavbmbmbmbmbmbmbpbAbAbAbAbAbAbAbpbmbmbmbmbm
 eOeOeOeOeOagagagagagagaZagagagagaZagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagagagavavavbNbNbNagagagagbNbNbNbNbNavavavbxbDavavavbNbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagagagagagagagafavavavbmbmbmbmbmbmbpbpbybybybybybpbpbmbmbmbmbm
-eOeOeOeOeOagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagaZagagagagagagagagagaZagagagagbNbNbNagagagagagagagbNbNbNavbrbsbBbBbsbtavbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagagagagagagagagafcocpfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eOeOeOeOeOagagagagaZagagagagaZagagagbNckbNbNbNbNbNbNcsbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagagagagagagagagagagagagagagagaGbNavfUfVbCbCfVfWavbNbNbNbNbNbNbNagagagagagagagagagagagagagagagagagagagagagafafcoeafjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eOeOeOeOagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagagagagaZagagagagagagagagagagagagagagagagagagagagagagagebagagafafagagebagagagaGagagagagagagagagagagagagagagbNbNagagagagagagagagafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eOeOeOeOagagagaZagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNckbNagagagagagagagagagagagagagagagaZagagagagagagbNbNagagagagagagagagafafagagagagagagagagagagagagagagagagagagagbNbNbNbNbNagagagagagagagafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eOeOeOagagagagagagagagagagaZagagagaZagagbNbNbNbNckbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagagagagagagagaGagagagagagagagagagbNbNbNbNagagagagagagagagafafagagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNagagagagagagafeaeacofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eOeOeOeOeOagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagaZagagagagagagagagagaZagagagagbNbNbNagagagagagagagbNbNbNavbrbsbBbBbsbtavbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagageOeOeOagagagafcocpfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eOeOeOeOeOagagagagaZagagagagaZagagagbNckbNbNbNbNbNbNcsbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagagagagagagagagagagagagagagagaGbNavfUfVbCbCfVfWavbNbNbNbNbNbNbNagagagagagagagagagagagagagagageOeOeOeOeOagafafcoeafjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eOeOeOeOagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagagagagaZagagagagagagagagagagagagagagagagagagagagagagagebagagafafagagebagagagaGagagagagagagagagagagagagagagbNbNagagageOeOeOeOeOafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eOeOeOeOagagagaZagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNckbNagagagagagagagagagagagagagagagaZagagagagagagbNbNagagagagagagagagafafagagagagagagagagagagagagagagagagagagagbNbNbNbNbNagagageOeOeOeOafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eOeOeOagagagagagagagagagagaZagagagaZagagbNbNbNbNckbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagagagagagagagaGagagagagagagagagagbNbNbNbNagagagagagagagagafafagagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNagagageOeOagafeaeacofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eOeOeOagagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagagagafafcvagaFagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNagagagagagafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eOeOeOagagagagagagagagagagagagagagagagagagagbNbNbNbNbNbNckbNbNbNbNbNbNbNagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagagagebafafafagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eOeOeOeOeOagagagagagagagagagagagagagagagaZagagagbNbNbNbNbNbNbNbNagagagagagagagagagagaZagagagaZagagagbNbNbNbNbNbNbNbNbNbNbNbNbNagagagagagafafafagagagagagagagagagagaZagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagagafcocococpfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
@@ -353,8 +353,8 @@ eDchcncjcidTcheDeDeDeDagagacaceCeCeMdOeCacagagagagagagagagagagagagbNbNbNbNbNbNag
 eDchcncjcjchchcheDeDeDagagagacaceCdOcyeCacagagagagagagagagagagagagbNbNbNbNbNbNbNbNagagagagagaZagagagebafafafafafafafebagagagagagagagagagagagagagacacacagagagagagagacaceAeAeAeAeAeAeAeAacezagagagagagagagagafafcocofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eDcncncicnchchcheDeDeDagaZagagacacadadadacagagacacacacagagagaZagagagbNbNbNbNbNbNbNbNbNagagagagagagagagagagagafafafafafagagagagagagagagagagagagagagagagagagagagagagagacaceAeAeAeAeAeAeAacacagagagagagagagagagafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eDcnchcicjcichchcheDeDagagagagagacadacadagagacaceCacacacacacagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagafafafafagagagagagagagagagagagagagagagagagagagagagagacacaceAeAeAeAeAeAacagagaGagagagagagagafafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eDcnchcicjcichcncheDeDeDagagagagagagagagagagaceCcxcxeCeCeCacacagagagagagagagbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagafafafafagagagagagagagagagagagagagagagagagagagagagacacacacacacacacacagagagagagagagagagagafeacocofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eDcnchcicncichchcheDeDeDagagagaZagagagagaZagaceCeCeCeCeOacacacagagagagagagagagagaGbNbNbNbNbNbNbNagagagagagagaZagagagagagagebafafafafafagagebagagagagagagagagagagagagagagagagagagagagagagagagagbNbNbNagagagagagafcocococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eDcnchcicjcichcncheDeDeDagagagagagagagagagagaceCcxcxeCeCeCacacagagagagagagagbNbNbNbNbNbNbNbNbNbNagagagagagagagagagagagafafafafagagagagagagagagagagagagagagagagagagagagagacacaceAeAeAeAacacagagagagagagagagagagafeacocofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eDcnchcicncichchcheDeDeDagagagaZagagagagaZagaceCeCeCeCeOacacacagagagagagagagagagaGbNbNbNbNbNbNbNagagagagagagaZagagagagagagebafafafafafagagebagagagagagagagagagagagagagagagagacacacacacacagagagbNbNbNagagagagagafcocococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eDcncncicjcichcncheDeDeDagagagagagagaZagagagaceCeCeCeCeCeCeCacacagagagaZagagagagagagagagagagagagagaZagagagagagagagagagagagagagagagafafafafafafafafafafafagagagagagagagagagagagagagagagagagagbNbNbNbNagagagagagafafcococpfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eDchcncicjchcncncheDeDeDeDagagagagagagagagagacaceCajajeCeCeCacacagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagafafafafafafafafafafafafafagagagagagaGagagagagagagbNbNbNbNbNagagagagagafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eDchcncncjchcnchcheDeDeDeDagagagagagagagagagagacacaceCeCeCeCacacacagagagagagagagaZagagaZagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagebafafafafafafebagagagagagagagagagagbNbNbNbNbNbNagagagagafafcocofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj

@@ -150,3 +150,6 @@ proc/is_container(var/atom/A)
 
 proc/is_radio(var/atom/A)
 	return istype(A, /obj/item/radio/)
+
+proc/is_wings(var/atom/A)
+	return istype(A, /obj/item/clothing/back/wings)

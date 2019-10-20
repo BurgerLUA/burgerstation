@@ -10,6 +10,13 @@
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "10mm_auto"
 
+/obj/item/bullet/pistol_10mm/surplus
+	name = "\improper surplus 10mm auto round"
+	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
+	icon = 'icons/obj/items/bullet/10mm_surplus.dmi'
+
+	projectile = /obj/projectile/bullet/pistol
+	damage_type = "10mm_auto_surplus"
 
 
 /obj/item/bullet/pistol_50ae/

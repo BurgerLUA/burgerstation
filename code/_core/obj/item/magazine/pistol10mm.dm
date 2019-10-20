@@ -21,3 +21,13 @@
 		icon_state = "[initial(icon_state)]"
 
 	..()
+
+
+/obj/item/magazine/pistol_10mm/surplus
+	name = "\improper surplus 10mm auto pistol magazine"
+
+
+/obj/item/magazine/pistol_10mm/surplus/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new /obj/item/bullet/pistol_10mm/surplus(src)
+	update_icon()

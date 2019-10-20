@@ -124,8 +124,8 @@
 	var/total_pixel_y = 0
 
 	for(var/obj/item/I in held_objects)
-		I.pixel_x = x_offset_initial + total_pixel_x*TILE_SIZE
-		I.pixel_y = y_offset_initial + total_pixel_y*TILE_SIZE
+		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
+		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
 
 		if(x_offset_mul)
 			total_pixel_x += I.size*x_offset_mul
@@ -136,8 +136,8 @@
 		overlays += I
 
 	for(var/obj/item/I in worn_objects)
-		I.pixel_x = x_offset_initial + total_pixel_x*TILE_SIZE
-		I.pixel_y = y_offset_initial + total_pixel_y*TILE_SIZE
+		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
+		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
 
 		if(x_offset_mul)
 			total_pixel_x += I.size*x_offset_mul
@@ -282,7 +282,12 @@
 		if(C.polymorphic)
 			C.initialize_blends(desired_icon_state)
 
-	owner.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend)
+	if(is_wings(item_to_update))
+		owner.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		owner.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		owner.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+	else
+		owner.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
 
 /obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()

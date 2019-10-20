@@ -84,6 +84,9 @@
 	var/flags_tool = FLAG_TOOL_NONE
 	var/tool_time = SECONDS_TO_DECISECONDS(5)
 
+	var/worn_pixel_x = 0
+	var/worn_pixel_y = 0
+
 /obj/item/destroy()
 
 	for(var/obj/hud/inventory/I in inventories)

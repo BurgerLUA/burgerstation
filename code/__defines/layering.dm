@@ -45,16 +45,18 @@
 #define LAYER_HUD_ITEMS 19
 
 #define LAYER_MOB_NONE                 LAYER_MOB + 0.01
-#define LAYER_MOB_TAIL_BEHIND          LAYER_MOB + 0.02
-#define LAYER_MOB_TORSO                LAYER_MOB + 0.03
-#define LAYER_MOB_HEAD                 LAYER_MOB + 0.04
-#define LAYER_MOB_EAR                  LAYER_MOB + 0.05
-#define LAYER_MOB_EYE                  LAYER_MOB + 0.06
-#define LAYER_MOB_MASK                 LAYER_MOB + 0.07
-#define LAYER_MOB_GROIN                LAYER_MOB + 0.08
-#define LAYER_MOB_LEGS                 LAYER_MOB + 0.09
-#define LAYER_MOB_FEET                 LAYER_MOB + 0.10
-#define LAYER_MOB_ARMS                 LAYER_MOB + 0.11
+#define LAYER_MOB_WINGS_BEHIND         LAYER_MOB + 0.02
+#define LAYER_MOB_TAIL_BEHIND          LAYER_MOB + 0.03
+#define LAYER_MOB_WINGS_ADJACENT       LAYER_MOB + 0.04
+#define LAYER_MOB_TORSO                LAYER_MOB + 0.05
+#define LAYER_MOB_HEAD                 LAYER_MOB + 0.06
+#define LAYER_MOB_EAR                  LAYER_MOB + 0.07
+#define LAYER_MOB_EYE                  LAYER_MOB + 0.08
+#define LAYER_MOB_MASK                 LAYER_MOB + 0.09
+#define LAYER_MOB_GROIN                LAYER_MOB + 0.10
+#define LAYER_MOB_LEGS                 LAYER_MOB + 0.11
+#define LAYER_MOB_FEET                 LAYER_MOB + 0.12
+#define LAYER_MOB_ARMS                 LAYER_MOB + 0.13
 
 #define LAYER_MOB_CLOTHING_UNDERWEAR   LAYER_MOB_CLOTHING + 0.01
 #define LAYER_MOB_CLOTHING_SOCKS       LAYER_MOB_CLOTHING + 0.02
@@ -78,6 +80,7 @@
 #define LAYER_MOB_CLOTHING_OVER_MOB    LAYER_MOB_CLOTHING + 0.17
 #define LAYER_MOB_CLOTHING_NECK_OVER   LAYER_MOB_CLOTHING + 0.18
 #define LAYER_MOB_TAIL_FRONT           LAYER_MOB_CLOTHING + 0.19
+#define LAYER_MOB_WINGS_FRONT          LAYER_MOB_CLOTHING + 0.20
 
 #define LAYER_MOB_CLOTHING_BACK        LAYER_MOB_CLOTHING + 0.20
 #define LAYER_MOB_HELD                 LAYER_MOB_CLOTHING + 0.21
