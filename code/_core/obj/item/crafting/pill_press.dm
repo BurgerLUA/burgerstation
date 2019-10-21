@@ -33,16 +33,16 @@
 
 	world.log << "HELLO: [item_table["b1"]]"
 
-	if(!item_table["b1"] || !is_container(item_table["b1"]))
-		caller.to_chat(span("notice","There must be a reagent container in the left slot in order to make a pill!"))
+	if(!item_table["b1"] || !is_beaker(item_table["b1"]))
+		caller.to_chat(span("notice","There must be a beaker in the left slot in order to make a pill!"))
 		return FALSE
 
-	if(item_table["b2"] && !is_container(item_table["b2"]))
-		caller.to_chat(span("notice","There must be a reagent container in the right slot in order to make a double pill!"))
+	if(item_table["b2"] && !is_beaker(item_table["b2"]))
+		caller.to_chat(span("notice","There must be a beaker in the right slot in order to make a double pill!"))
 		return FALSE
 
-	var/obj/item/container/I1 = item_table["b1"]
-	var/obj/item/container/I2 = item_table["b3"]
+	var/obj/item/container/beaker/I1 = item_table["b1"]
+	var/obj/item/container/beaker/I2 = item_table["b3"]
 	var/is_double = I1 && I2
 
 	if(I1 && !I1.reagents.volume_current)
@@ -54,9 +54,9 @@
 		return FALSE
 
 	var/obj/item/container/pill/P = new/obj/item/container/pill(get_turf(src),is_double)
-	I1.reagents.transfer_reagents_to(P.reagents,10)
+	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount)
 	if(I2)
-		I2.reagents.transfer_reagents_to(P.reagents_2,10)
+		I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount)
 
 	P.update_icon()
 

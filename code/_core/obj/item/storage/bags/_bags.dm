@@ -33,7 +33,7 @@
 	icon_state = "chemistry"
 
 	dynamic_inventory_count = 6
-	container_max_size = 3
+	container_max_size = 100
 	container_max_weight = 100
 	container_held_slots = 10
 	container_whitelist = list(
@@ -49,8 +49,8 @@
 	icon = 'icons/obj/items/storage/bottles.dmi'
 	icon_state = "pill_canister"
 
-	size = SIZE_1
-	weight = WEIGHT_1
+	size = SIZE_2
+	weight = WEIGHT_2
 
 	dynamic_inventory_count = 1
 	container_max_size = SIZE_1

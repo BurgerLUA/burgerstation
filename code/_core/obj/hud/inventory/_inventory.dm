@@ -427,12 +427,12 @@
 		return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass))
-		if(total_size + I.size > max_size)
+		if(I.size > max_size)
 			if(messages)
 				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src]."))
 			return FALSE
 
-		if(total_weight + I.weight > max_weight)
+		if(I.weight > max_weight)
 			if(messages)
 				owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src]."))
 			return FALSE

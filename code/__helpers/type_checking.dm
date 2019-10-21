@@ -152,4 +152,7 @@ proc/is_radio(var/atom/A)
 	return istype(A, /obj/item/radio/)
 
 proc/is_wings(var/atom/A)
-	return istype(A, /obj/item/clothing/back/wings)
+	return istype(A, /obj/item/clothing/back/wings/)
+
+proc/is_beaker(var/atom/A)
+	return istype(A, /obj/item/container/beaker/)

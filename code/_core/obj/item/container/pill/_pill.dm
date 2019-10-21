@@ -10,6 +10,9 @@
 	var/marking = "A"
 	var/double = FALSE
 
+	size = SIZE_0
+	weight = WEIGHT_0
+
 	var/reagent_container/reagents_2
 
 /obj/item/container/pill/get_examine_text(var/mob/examiner)
