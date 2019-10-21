@@ -32,6 +32,13 @@
 	if((caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
+	if(is_inventory(object) && is_item(defer_self)) //We're clicking on an inventory with an item.
+		var/obj/hud/inventory/object_as_inventory = object
+		var/obj/item/defer_self_as_item = defer_self
+		if(object_as_inventory.held_slots > 1 || object_as_inventory.worn_slots > 1) //The inventory we're clicking on can hold more than one object per slot.
+			defer_self_as_item.transfer_item(object_as_inventory)
+			return TRUE
+
 	if(src == defer_self && is_item(defer_object) && get_dist(caller,defer_object) <= 1) //We're clicking on an item with an empty hand, and it is in range.
 		var/obj/item/defer_object_as_item = defer_object
 		if(is_inventory(object)) //The item in question is in another inventory.
@@ -47,10 +54,9 @@
 			var/obj/hud/inventory/defer_object_as_inventory = defer_object
 			if(get_dist(defer_self_as_item,defer_object_as_inventory) <= 1 && defer_self_as_item.transfer_item(defer_object_as_inventory))
 				return TRUE
-		/*
-		if(src != defer_self_as_item && defer_self_as_item.click_on_object(caller,object,location,control,params))
-			return TRUE
-		*/
+
+
+
 
 	return ..()
 
@@ -75,13 +81,11 @@ obj/hud/inventory/drop_item(var/turf/new_location)
 
 /obj/hud/inventory/defer_click_on_object()
 
-	if(!is_dynamic_inventory(src) || held_slots <= 1 && worn_slots <= 1)
-		if(length(held_objects))
-			return get_top_held_object()
+	if(length(held_objects))
+		return get_top_held_object()
 
-		if(length(worn_objects))
-			return get_top_worn_object()
-
+	if(length(worn_objects))
+		return get_top_worn_object()
 
 	return src
 
