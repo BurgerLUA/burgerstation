@@ -38,7 +38,6 @@
 	var/attack_delay = 5 //The attack delay for an object.
 	var/attack_delay_max = 10 //For living mobs using this object, the maximum attack delay.
 
-
 	var/attack_last = -1
 
 	var/thinks = FALSE

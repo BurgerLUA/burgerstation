@@ -10,7 +10,7 @@
 "j" = (/turf/simulated/wall/rock,/area/world/desert/cave)
 "k" = (/turf/simulated/floor/asteroid,/area/world/desert/cave)
 "l" = (/turf/simulated/wall/brick/sand,/area/world/desert/exterior/village/shop01)
-"m" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
+"m" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/melee/sword/sabre,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
 "n" = (/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village)
 "o" = (/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
 "p" = (/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop01)
@@ -26,6 +26,9 @@
 "z" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/ranged/magic/scroll/fireball/amount_3,/obj/item/weapon/ranged/magic/staff/fire,/obj/item/weapon/ranged/magic/tome/fireball,/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop02)
 "A" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/magazine/pistol_10mm/surplus,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
 "B" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/head/hat/wizard/red,/obj/item/clothing/head/hood/cult/old,/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop02)
+"C" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/melee/torch,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
+"D" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/radio,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
+"E" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/back/storage/backpack,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbeeebbbbbbbbbbbbbbbbccccccccccccccc
@@ -42,7 +45,7 @@ aaaaddddddfffddddaaadddaaddfffffffffffffffffffffffffffffffffffffffffffffffffffff
 aaaaaddddfffffdddddaaaaaddffffffffffffffffffffffffffffffffffffffffffffffffffffffffffeeeeeennneeeenneeeeeenneeecccccccccccccccccc
 aaaaaddddddddffffddaaaaddffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdeeeeeeennneeeeeeeeeeeeeeeecccccccccccccccccc
 aaaaaddaaaaadddffffddaadfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdbbbbeeeeeeeeeeeeenuuuuuunecccccccccccccccccc
-aaadddaaaaaadddddfffddddfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddbbbbeeeeeeeeeeenvwwwwveecccccccccccccccccc
+aaadddaaaaaadddddfffddddfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddbbbbeeeeeeeeeeenvwEDCveecccccccccccccccccc
 aaaddddaaaaddddaddfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddbbbbbeeeeeeeenvvvxxxeecccccccccccccccccc
 aadddddaaadddddaaadffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddbbbbbeeeeeeeuvvvvxeecccccccccccccccccc
 aaaddddaaaddddaaaaaddffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddbbbbbbebeeuuuuuxeecccccccccccccccccc

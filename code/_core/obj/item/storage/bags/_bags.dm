@@ -3,8 +3,6 @@
 	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "mining"
 
-
-
 /obj/item/storage/bags/mining
 	name = "mining bag"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots. Holds up to 40 ores or ingots."
@@ -27,3 +25,37 @@
 	container_max_size = 100
 	container_max_weight = 200
 	container_held_slots = 30
+
+
+/obj/item/storage/bags/chemistry
+	name = "chemistry bag"
+	desc_extended = "A giant white and orange bag that is designed to hold all your medicine. Holds up to 40 objects."
+	icon_state = "chemistry"
+
+	dynamic_inventory_count = 6
+	container_max_size = 3
+	container_max_weight = 100
+	container_held_slots = 10
+	container_whitelist = list(
+		/obj/item/container/beaker,
+		/obj/item/container/pill,
+		/obj/item/container/syringe,
+		/obj/item/storage/bags/pills,
+	)
+
+/obj/item/storage/bags/pills
+	name = "pill bottle"
+	desc_extended = "A pill bottle that can hold up to 30 pills."
+	icon = 'icons/obj/items/storage/bottles.dmi'
+	icon_state = "pill_canister"
+
+	size = SIZE_1
+	weight = WEIGHT_1
+
+	dynamic_inventory_count = 1
+	container_max_size = SIZE_1
+	container_max_weight = WEIGHT_1
+	container_held_slots = 30
+	container_whitelist = list(
+		/obj/item/container/pill,
+	)

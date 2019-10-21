@@ -201,9 +201,9 @@
 
 	if(enable_messages && caller)
 		if(added)
-			caller.to_chat(span("notice","You stuff \the [object] in your [src]."))
+			caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
 		else
-			caller.to_chat(span("warning","You don't have enough inventory space to hold this!"))
+			caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
 
 	return added
 
