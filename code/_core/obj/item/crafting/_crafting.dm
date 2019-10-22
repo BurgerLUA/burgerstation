@@ -73,7 +73,7 @@
 		else
 			product_slot = R
 
-	var/list/item_table = generate_crafting_table(caller)
+	var/list/item_table = generate_crafting_table(caller,src)
 
 	for(var/R_id in all_recipes)
 		var/recipe/R = all_recipes[R_id]

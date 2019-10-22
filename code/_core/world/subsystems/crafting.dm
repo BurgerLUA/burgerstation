@@ -16,11 +16,11 @@ var/global/list/all_recipes = list()
 	LOG_SERVER("Initialized [length(all_recipes)] recipes.")
 
 
-/proc/generate_crafting_table(var/mob/living/advanced/caller)
+/proc/generate_crafting_table(var/mob/living/advanced/caller,var/obj/item/crafting/C)
 
 	var/list/item_table = list()
 
-	for(var/obj/hud/inventory/crafting/I in caller.inventory)
+	for(var/obj/hud/inventory/crafting/I in C.inventories)
 		var/obj/item/held_item = I.get_top_held_object()
 		if(held_item)
 			item_table[I.id] = held_item
@@ -41,7 +41,7 @@ var/global/list/all_recipes = list()
 		else
 			product_slot = R
 
-	var/list/item_table = generate_crafting_table(caller)
+	var/list/item_table = generate_crafting_table(caller,src)
 
 	for(var/R_id in all_recipes)
 		var/recipe/R = all_recipes[R_id]

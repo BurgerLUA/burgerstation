@@ -29,9 +29,9 @@
 		else
 			product_slot = R
 
-	var/list/item_table = generate_crafting_table(caller)
+	var/list/item_table = generate_crafting_table(caller,src)
 
-	world.log << "HELLO: [item_table["b1"]]"
+	world.log << item_table
 
 	if(!item_table["b1"] || !is_beaker(item_table["b1"]))
 		caller.to_chat(span("notice","There must be a beaker in the left slot in order to make a pill!"))
@@ -53,7 +53,13 @@
 		caller.to_chat(span("notice","There is no matter in the right slot to make a double pill from!"))
 		return FALSE
 
-	var/obj/item/container/pill/P = new/obj/item/container/pill(get_turf(src),is_double)
+	var/obj/item/container/pill/P
+
+	if(is_double)
+		P = new/obj/item/container/pill/double(get_turf(src))
+	else
+		P = new/obj/item/container/pill(get_turf(src))
+
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount)
 	if(I2)
 		I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount)

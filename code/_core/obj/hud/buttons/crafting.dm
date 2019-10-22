@@ -18,7 +18,7 @@
 	name = "craft object"
 	icon_state = "arrow"
 	dir = EAST
-	screen_loc = "CENTER-2,CENTER"
+	screen_loc = "CENTER+2,TOP-3"
 
 
 /obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/caller,object,location,control,params)
@@ -34,7 +34,7 @@
 /obj/hud/button/crafting/close
 	name = "close crafting menu"
 	icon_state = "close_crafting"
-	screen_loc = "CENTER-6,CENTER"
+	screen_loc = "CENTER-2,TOP-3"
 
 /obj/hud/button/crafting/close/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

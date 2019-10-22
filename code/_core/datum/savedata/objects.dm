@@ -34,6 +34,19 @@
 				I.reagents.add_reagent(r_id,volume,FALSE)
 			I.reagents.update_container()
 
+	if(is_pill(O))
+		var/obj/item/container/pill/P = O
+		if(object_data["double"])
+			P.double = TRUE
+
+
+
+		if(object_data["reagents_2"] && length(object_data["reagents_2"]))
+			for(var/r_id in object_data["reagents_2"])
+				var/volume = object_data["reagents_2"][r_id]
+				P.reagents_2.add_reagent(r_id,volume,FALSE)
+			P.reagents_2.update_container()
+
 	if(is_scroll(O))
 		var/obj/item/weapon/ranged/magic/scroll/S = O
 		if(object_data["scroll_count"])
@@ -189,6 +202,13 @@
 			returning_list["reagents"] = list()
 			for(var/r_id in IT.reagents.stored_reagents)
 				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+
+	if(is_pill(I))
+		var/obj/item/container/pill/P = I
+		if(P.reagents_2 && P.reagents_2.stored_reagents && length(P.reagents_2.stored_reagents))
+			returning_list["reagents_2"] = list()
+			for(var/r_id in P.reagents_2.stored_reagents)
+				returning_list["reagents_2"][r_id] = P.reagents_2.stored_reagents[r_id]
 
 	if(is_soulgem(I))
 		var/obj/item/soulgem/S = I

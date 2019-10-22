@@ -380,8 +380,8 @@
 	else if(length(worn_objects))
 		var/obj/item/I = get_top_worn_object()
 		name = I.name
-	else
-		name = initial(name)
+	else if(src.loc)
+		name = "[src.loc.name] inventory"
 
 	/* TODO: IMPORTANT, IS THIS NEEDED?
 	if(owner)
@@ -405,8 +405,8 @@
 	if(length(item_blacklist))
 		for(var/o in item_blacklist)
 			if(istype(I,o))
-				if(messages)
-					owner.to_chat(span("notice","You can't seem to fit \the [I] in \the [src]!"))
+				if(messages && src.loc)
+					owner.to_chat(span("notice","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
 				return FALSE
 
 	if(length(item_whitelist))
@@ -417,24 +417,24 @@
 				break
 
 		if(!whitelist_found)
-			if(messages)
-				owner.to_chat(span("notice","You can't seem to fit \the [I] in \the [src]!"))
+			if(messages && src.loc)
+				owner.to_chat(span("notice","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
 			return FALSE
 
 	if(length(held_objects) >= held_slots)
 		if(messages)
-			owner.to_chat(span("notice","You don't see how you can fit any more objects in \the [src]."))
+			owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src]."))
 		return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass))
 		if(I.size > max_size)
-			if(messages)
-				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src]."))
+			if(messages && src.loc)
+				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src.loc.name]."))
 			return FALSE
 
 		if(I.weight > max_weight)
-			if(messages)
-				owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src]."))
+			if(messages && src.loc)
+				owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src.loc.name]."))
 			return FALSE
 
 	return TRUE
@@ -479,12 +479,13 @@
 /obj/hud/inventory/proc/get_top_worn_object()
 
 	if(!length(worn_objects))
-		return FALSE
+		return null
 
 	return worn_objects[length(worn_objects)]
 
 /obj/hud/inventory/proc/get_top_held_object()
+
 	if(!length(held_objects))
-		return FALSE
+		return null
 
 	return held_objects[length(held_objects)]

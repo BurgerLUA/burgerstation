@@ -16,7 +16,7 @@
 	var/reagent_container/reagents_2
 
 /obj/item/container/pill/get_examine_text(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
+	return ..() + div("notice","There is a marking that reads \"[marking]\" on the pill.")
 
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -71,9 +71,7 @@
 
 	return TRUE
 
-/obj/item/container/pill/New(var/desired_loc,var/desired_double=FALSE)
-
-	double = desired_double
+/obj/item/container/pill/New(var/desired_loc)
 
 	if(double)
 		reagents_2 = new/reagent_container/pill/half(src)
@@ -82,3 +80,7 @@
 		reagents = /reagent_container/pill/
 
 	return ..()
+
+
+/obj/item/container/pill/double/ //Yes, this is shitcode.
+	double = TRUE

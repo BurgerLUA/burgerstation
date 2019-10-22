@@ -156,3 +156,6 @@ proc/is_wings(var/atom/A)
 
 proc/is_beaker(var/atom/A)
 	return istype(A, /obj/item/container/beaker/)
+
+proc/is_pill(var/atom/A)
+	return istype(A, /obj/item/container/pill)

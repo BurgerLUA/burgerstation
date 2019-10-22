@@ -239,6 +239,10 @@
 			D.max_size = container_max_size
 		if(container_max_weight)
 			D.max_weight = container_max_weight
+		if(container_blacklist)
+			D.item_blacklist = container_blacklist
+		if(container_whitelist)
+			D.item_whitelist = container_whitelist
 		inventories += D
 
 	return ..()

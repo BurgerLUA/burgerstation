@@ -24,7 +24,7 @@
 		else
 			product_slot = R
 
-	var/list/item_table = generate_crafting_table(caller)
+	var/list/item_table = generate_crafting_table(caller,src)
 
 	if(!item_table["b3"] || !is_container(item_table["b3"]))
 		caller.to_chat(span("notice","You're missing a container in the right slot!"))
