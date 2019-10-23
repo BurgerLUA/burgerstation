@@ -390,6 +390,9 @@
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
+	if(I.loc && I.loc == I)
+		return FALSE
+
 	if(I.delete_on_drop)
 		return FALSE
 
@@ -441,13 +444,16 @@
 
 /obj/hud/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
-	if(!I.can_be_worn(owner,src))
+	if(I.loc && I.loc == I)
 		return FALSE
 
 	if(parent_inventory)
 		return FALSE
 
 	if(worn_slots <= 0)
+		return FALSE
+
+	if(!I.can_be_worn(owner,src))
 		return FALSE
 
 	if(is_clothing(I))

@@ -38,9 +38,8 @@
 		var/obj/item/container/pill/P = O
 		if(object_data["double"])
 			P.double = TRUE
-
-
-
+		if(object_data["marking"])
+			P.marking = object_data["marking"]
 		if(object_data["reagents_2"] && length(object_data["reagents_2"]))
 			for(var/r_id in object_data["reagents_2"])
 				var/volume = object_data["reagents_2"][r_id]
@@ -209,6 +208,8 @@
 			returning_list["reagents_2"] = list()
 			for(var/r_id in P.reagents_2.stored_reagents)
 				returning_list["reagents_2"][r_id] = P.reagents_2.stored_reagents[r_id]
+		if(P.marking)
+			returning_list["marking"] = P.marking
 
 	if(is_soulgem(I))
 		var/obj/item/soulgem/S = I
