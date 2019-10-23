@@ -34,6 +34,13 @@
 				I.reagents.add_reagent(r_id,volume,FALSE)
 			I.reagents.update_container()
 
+	if(is_clothing(O))
+		var/obj/item/clothing/C = O
+		if(C.polymorphic)
+			C.color_primary = object_data["color_primary"]
+			C.color_secondary = object_data["color_secondary"]
+			C.color_tertiary = object_data["color_tertiary"]
+
 	if(is_pill(O))
 		var/obj/item/container/pill/P = O
 		if(object_data["double"])
@@ -180,9 +187,10 @@
 	if(I.color && lowertext(I.color) != "#ffffff")
 		returning_list["color"] = I.color
 
-	var/list/blend_data = generate_blend_data(I)
-	if(length(blend_data))
-		returning_list["blend_data"] = blend_data
+	if(is_organ(I)) //Only organs should save blend data.
+		var/list/blend_data = generate_blend_data(I)
+		if(length(blend_data))
+			returning_list["blend_data"] = blend_data
 
 	if(is_item(I))
 		var/obj/item/IT = I
@@ -201,6 +209,13 @@
 			returning_list["reagents"] = list()
 			for(var/r_id in IT.reagents.stored_reagents)
 				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+
+	if(is_clothing(I))
+		var/obj/item/clothing/C = I
+		if(C.polymorphic)
+			returning_list["color_primary"] = C.color_primary
+			returning_list["color_secondary"] = C.color_secondary
+			returning_list["color_tertiary"] = C.color_tertiary
 
 	if(is_pill(I))
 		var/obj/item/container/pill/P = I

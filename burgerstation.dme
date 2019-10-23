@@ -762,7 +762,6 @@
 #include "code\_core\obj\structure\interactive\lighting\street.dm"
 #include "code\_core\obj\structure\interactive\lighting\tube.dm"
 #include "code\_core\obj\structure\interactive\local_machine\_local_machine.dm"
-#include "code\_core\obj\structure\interactive\local_machine\flora.dm"
 #include "code\_core\obj\structure\interactive\local_machine\item_spawner.dm"
 #include "code\_core\obj\structure\interactive\local_machine\snowflake\_snowflake.dm"
 #include "code\_core\obj\structure\interactive\local_machine\snowflake\airlock.dm"

@@ -341,13 +341,13 @@
 
 	if(I in held_objects)
 		held_objects -= I
-		if(should_add_held)
+		if(owner && should_add_held)
 			owner.held_objects -= I
 		was_removed = TRUE
 
 	if(I in worn_objects)
 		worn_objects -= I
-		if(should_add_worn)
+		if(owner && should_add_worn)
 			owner.worn_objects -= I
 		was_removed = TRUE
 

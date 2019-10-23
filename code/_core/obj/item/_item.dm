@@ -260,10 +260,11 @@
 	return null
 
 /obj/item/update_icon()
-	..()
+	. = ..()
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		I.update_icon()
+	return .
 
 /obj/item/get_examine_text(var/mob/examiner)
 	var/name_text = div("examine_title",src.name)
