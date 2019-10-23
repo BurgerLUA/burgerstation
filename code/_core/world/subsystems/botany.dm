@@ -2,8 +2,8 @@ var/global/list/plant_type/all_plant_types = list()
 
 /subsystem/botany/
 	name = "Botany Subsystem"
-	desc = "Handle botany related matters.s"
-	tick_rate = SECONDS_TO_TICKS(1)
+	desc = "Handle botany related matters."
+	tick_rate = SECONDS_TO_TICKS(4)
 	priority = SS_ORDER_PRELOAD
 
 

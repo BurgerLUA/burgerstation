@@ -58,6 +58,9 @@
 #define ENABLE_XP TRUE
 #define LEVEL_CAP 100
 
+#define ITEM_DELETION_TIME_DROPPED 3000
+#define ITEM_DELETION_TIME_NEW 600
+
 #define CHAT_FONT_SIZE 0.25
 
 #define SPAWN_PROTECTION_TIME 10 //Time in seconds that you have spawn protection for when you leave a safezone.

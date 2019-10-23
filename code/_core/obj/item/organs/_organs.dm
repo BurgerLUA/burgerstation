@@ -124,7 +124,7 @@
 		src.force_move(T)
 
 	update_icon()
-	queue_delete(src,600)
+	queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 
 /obj/item/organ/proc/unattach_children(var/turf/T)
 	for(var/obj/item/organ/O in attached_organs)

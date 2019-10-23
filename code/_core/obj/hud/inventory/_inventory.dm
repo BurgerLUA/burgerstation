@@ -358,7 +358,7 @@
 		update_stats()
 		if(owner)
 			owner.remove_overlay(I)
-		queue_delete(I,600)
+		queue_delete(I,ITEM_DELETION_TIME_DROPPED)
 		I.on_drop(src,drop_loc)
 		if(owner)
 			I.set_dir(owner.dir)

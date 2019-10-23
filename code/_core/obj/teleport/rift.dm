@@ -7,7 +7,7 @@
 
 /obj/trigger/rift/New(loc)
 	..()
-	queue_delete(src,600)
+	queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 
 /obj/trigger/rift/on_trigger(var/atom/movable/triggerer)
 

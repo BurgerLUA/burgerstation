@@ -55,7 +55,7 @@
 
 	if(!is_spent)
 		is_spent = TRUE
-		queue_delete(src,600)
+		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 		return src
 
 	return FALSE

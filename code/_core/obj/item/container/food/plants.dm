@@ -27,3 +27,18 @@
 
 /obj/item/container/food/plant/oxygen_fruit/on_spawn()
 	reagents.add_reagent("oxygen",10)
+
+/obj/item/container/food/plant/wheat
+	name = "wheat"
+	icon_state = "wheat"
+
+/obj/item/container/food/plant/wheat/on_spawn()
+	reagents.add_reagent("wheat_grain",10)
+
+
+/obj/item/container/food/plant/sugarcane
+	name = "sugarcane"
+	icon_state = "sugarcane"
+
+/obj/item/container/food/plant/sugarcane/on_spawn()
+	reagents.add_reagent("sugarcane",10)

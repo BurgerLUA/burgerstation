@@ -125,7 +125,7 @@
 	desired_light_color = "#FFD3AA"
 
 /turf/simulated/floor/colored/dirt/cave
-	name = "cave dirt"
+	name = "dirt"
 	color = "#493C2F"
 	corner_category = "dirt_cave"
 
@@ -141,6 +141,13 @@
 	name = "jungle dirt"
 	color = "#4C2C1D"
 	desired_light_color = "#4C2C1D"
+
+/turf/simulated/floor/colored/dirt/soil
+	name = "soil"
+	color = "#3D2414"
+	desired_light_color = "#3D2414"
+	corner_category = "soil"
+	layer = LAYER_FLOOR_LARGE + 0.02
 
 /turf/simulated/floor/colored/dirt/cake
 	name = "cake"

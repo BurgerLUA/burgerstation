@@ -15,10 +15,12 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	//Stats
 	var/potency = 20 //How much chemicals?
 	var/yield = 1
-	var/growth_speed = 5 //How much to add to growth every 10 seconds
+	var/growth_speed = 5 //How much to add to growth every plant tick
 
 	var/rest_stats_after_harvest = TRUE
 	var/delete_after_harvest = FALSE
+
+	mouse_opacity = 2
 
 /obj/structure/interactive/plant/New(var/desired_loc)
 	all_plants += src
@@ -31,7 +33,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	return ..()
 
 /obj/structure/interactive/plant/proc/on_life()
-	growth += growth_speed
+	growth += floor(growth_speed * (rand(75,125)/100))
 	update_icon()
 	return TRUE
 
@@ -59,12 +61,33 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	if(!caller_turf)
 		return FALSE
 
+
 	if(potency <= 0 || yield <= 0)
 		caller.to_chat(span("notice","You fail to harvest anything from \the [src.name]!"))
 		return TRUE
 	else
+
+		var/move_direction = get_dir(src,caller)
+
+		var/animation_offset_x = 0
+		var/animation_offset_y = 0
+
+		if(move_direction & NORTH)
+			animation_offset_y -= 32
+
+		if(move_direction & SOUTH)
+			animation_offset_y += 32
+
+		if(move_direction & EAST)
+			animation_offset_x -= 32
+
+		if(move_direction & WEST)
+			animation_offset_x += 32
+
 		for(var/i=1,i<=yield,i++)
 			var/obj/item/container/food/plant/P = new(caller_turf)
+			P.pixel_x = animation_offset_x
+			P.pixel_y = animation_offset_y
 			P.name = associated_plant.name
 			P.desc = associated_plant.desc
 			P.icon = associated_plant.harvest_icon
@@ -75,6 +98,8 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			for(var/r_id in associated_plant.reagents)
 				var/r_value = associated_plant.reagents[r_id] * potency
 				P.reagents.add_reagent(r_id,r_value)
+			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
+			queue_delete(P,ITEM_DELETION_TIME_NEW)
 
 		caller.to_chat(span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
 

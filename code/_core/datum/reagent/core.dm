@@ -16,12 +16,6 @@
 	desc = "What most lifeforms also breathe in but don't really use."
 	color = "#D9E2E2"
 
-/reagent/core/sugar //Found in the forest, near the beaches.
-	name = "Sugar"
-	id = "sugar"
-	desc = "What most lifeforms consume."
-	color = "#FFF9F9"
-
 /reagent/core/silicon //Found while mining silicon ore deposits
 	name = "Silicon"
 	id = "silicon"
