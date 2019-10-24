@@ -202,6 +202,9 @@
 		LOG_ERROR("Tried to add a null item to [src]!")
 		return FALSE
 
+	if(!is_item(I))
+		return FALSE
+
 	var/atom/old_location = I.loc
 
 	if(!bypass_checks && !can_hold_object(I,messages))

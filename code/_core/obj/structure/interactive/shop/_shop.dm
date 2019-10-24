@@ -130,7 +130,7 @@
 	if(P.currency >= current_item_cost && P.spend_currency(current_item_cost)) //Just in case
 		spawn()
 			current_item_quantity -= 1
-			var/obj/item/new_item = new current_item.type(get_turf(P))
+			var/obj/item/new_item = new current_item.type(get_turf(src))
 			new_item.on_spawn()
 			new_item.update_icon()
 			new_item.transfer_item(I)
