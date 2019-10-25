@@ -163,6 +163,11 @@
 		var/v = found_recipe.results[k]
 		add_reagent(k,portions_to_make * v,FALSE)
 
+	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
+		var/obj/item/A = new found_recipe.result(get_turf(src))
+		if(A.reagents)
+			transfer_reagents_to(A.reagents,A.reagents.volume_current)
+
 	update_container()
 
 	return TRUE

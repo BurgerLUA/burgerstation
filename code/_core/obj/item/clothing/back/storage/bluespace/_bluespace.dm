@@ -7,7 +7,7 @@ obj/item/clothing/back/storage/backpack/bluespace
 
 	dynamic_inventory_count = MAX_INVENTORY_X*2
 	container_held_slots = MAX_INVENTORY_X*0.5
-	container_max_size = 100 //Can hold anything.
+	container_max_size = 100 //Can hold anything, almost.
 
 	weight = WEIGHT_4
 

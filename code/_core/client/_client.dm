@@ -204,10 +204,6 @@ var/global/list/all_clients = list()
 
 	..()
 
-/client/proc/get_variables(var/datum/object)
-   for(var/v in object.vars)
-      src << "[v] = [object.vars[v]]"
-
 /client/Click(var/atom/object,location,control,params)
 
 	var/list/aug = params2list(params)
@@ -223,6 +219,10 @@ var/global/list/all_clients = list()
 		mob.on_middle_click(object,location,control,aug)
 
 	..()
+
+/client/proc/get_variables(var/datum/object)
+   for(var/v in object.vars)
+      src << "[v] = [object.vars[v]]"
 
 /client/MouseUp(object,location,control,params)
 

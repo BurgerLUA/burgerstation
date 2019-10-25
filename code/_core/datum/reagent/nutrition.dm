@@ -31,7 +31,7 @@
 
 /reagent/core/nutrition/wheat_grain/flour/ //Found in the snow biome as a magic plant
 	name = "whole wheat flour"
-	id = "whole_wheat_flour"
+	id = "flour_whole_wheat"
 	desc = "Processed wheat grains for use in baking. Process this some more to get white flour."
 	color = "#E8E7D0"
 
@@ -39,9 +39,34 @@
 
 /reagent/core/nutrition/wheat_grain/flour/processed //Found in the snow biome as a magic plant
 	name = "white flour"
-	id = "flour"
+	id = "flour_white"
 	desc = "Finely processed white flour for use in baking."
 	color = "#E5E5E3"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+
+/reagent/core/nutrition/dough //Found in the snow biome as a magic plant
+	name = "wheat grain dough"
+	id = "dough_wheat_grain"
+	desc = "Crudely mixed and made wheat dough."
+	color = "#AF6E1C"
+
+	nutrition_amount = 0.1 NUT_FACTOR
+
+/reagent/core/nutrition/dough/flour //Found in the snow biome as a magic plant
+	name = "whole wheat flour dough"
+	id = "dough_flour"
+	desc = "Typical whole wheat water-flour based dough."
+	color = "#D6C08F"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+/reagent/core/nutrition/dough/flour/processed //Found in the snow biome as a magic plant
+	name = "white flour dough"
+	id = "dough_flour_white"
+	desc = "Typical whole wheat water-flour based dough."
+	color = "#D3C4A5"
 
 	nutrition_amount = 0.2 NUT_FACTOR
 

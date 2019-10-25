@@ -33,3 +33,9 @@
 	id = "blood"
 	desc = "What most lifeforms do things with."
 	color = "#880000"
+
+/reagent/core/water //Found through organic things
+	name = "Water"
+	id = "water"
+	desc = "What most lifeforms drink."
+	color = "#99D5FF"

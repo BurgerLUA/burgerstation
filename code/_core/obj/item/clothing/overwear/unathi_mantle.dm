@@ -28,3 +28,14 @@
 
 /obj/item/clothing/neck/mantle/brown
 	color = "#603A20"
+
+
+/obj/item/clothing/neck/mantle/daddy
+	name = "dad's bib"
+	rarity = RARITY_RARE
+	icon = 'icons/obj/items/clothing/suit/knight_daddy_bib.dmi'
+
+	desc = "For eating ass."
+	desc_extended = "A near pristine bib."
+
+

@@ -10,8 +10,8 @@
 
 	priority = 1
 
-	max_size = 100
-	max_weight = 100
+	max_size = -1
+	max_weight = -1
 
 	x_offset_initial = 0
 	y_offset_initial = TILE_SIZE

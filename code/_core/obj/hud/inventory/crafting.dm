@@ -5,8 +5,8 @@
 
 	priority = 1
 
-	max_size = 100
-	max_weight = 100
+	max_size = -1
+	max_weight = -1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CRAFTING
 

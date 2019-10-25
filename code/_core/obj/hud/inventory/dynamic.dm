@@ -5,8 +5,8 @@
 	alpha = 0 //Hidden until enabled
 	mouse_opacity = 0 //Off until enabled.
 
-	max_size = 100
-	max_weight = 100
+	max_size = -1
+	max_weight = -1
 
 	should_draw = FALSE
 	drag_to_take = FALSE

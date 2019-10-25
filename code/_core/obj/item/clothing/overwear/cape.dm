@@ -47,3 +47,4 @@
 	)
 
 	rarity = RARITY_UNCOMMON
+

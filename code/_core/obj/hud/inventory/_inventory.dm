@@ -432,13 +432,13 @@
 			owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src]."))
 		return FALSE
 
-	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass))
-		if(I.size > max_size)
+	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && (max_size >= 0 || max_weight >= 0))
+		if(max_size >= 0 && I.size > max_size)
 			if(messages && src.loc)
 				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src.loc.name]."))
 			return FALSE
 
-		if(I.weight > max_weight)
+		if(max_weight >= 0 && I.weight > max_weight)
 			if(messages && src.loc)
 				owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src.loc.name]."))
 			return FALSE

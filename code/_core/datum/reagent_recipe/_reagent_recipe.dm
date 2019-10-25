@@ -6,3 +6,5 @@
 	var/list/required_reagents = list()
 
 	var/list/results = list()
+
+	var/atom/result
