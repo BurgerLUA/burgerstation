@@ -25,6 +25,8 @@
 	target_bounds_y_min = 14
 	target_bounds_y_max = 22
 
+	health_base = 100
+
 /obj/item/organ/torso/unattach_from_parent(var/turf/T)
 	. = ..()
 	if(is_advanced(src.loc))

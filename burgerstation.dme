@@ -362,6 +362,7 @@
 #include "code\_core\datum\spellcraft\modifer\cult.dm"
 #include "code\_core\datum\track\_track.dm"
 #include "code\_core\datum\wound\_wound.dm"
+#include "code\_core\datum\wound\wound_types.dm"
 #include "code\_core\mob\_mob.dm"
 #include "code\_core\mob\buttons.dm"
 #include "code\_core\mob\chat.dm"

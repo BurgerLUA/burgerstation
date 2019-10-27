@@ -32,6 +32,8 @@
 	attack_delay = 4
 	attack_delay_max = 12
 
+	health_base = 25
+
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT

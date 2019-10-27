@@ -101,11 +101,6 @@
 
 /mob/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
-	/*
-	if(weapon && weapon != src && !weapon.can_attack(victim,weapon,params))
-		return FALSE
-	*/
-
 	if(!can_attack_while_moving && move_delay > 0)
 		return FALSE
 

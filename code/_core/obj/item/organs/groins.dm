@@ -28,6 +28,8 @@
 	target_bounds_y_min = 9
 	target_bounds_y_max = 13
 
+	health_base = 50
+
 /obj/item/organ/groin/female
 	desc = "A groin. Female variant"
 	icon_state = BODY_GROIN_FEMALE

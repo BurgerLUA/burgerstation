@@ -25,6 +25,8 @@
 	corner_category = "grass"
 	desired_light_color = "#CCFFBF"
 
+	fade = TRUE
+
 /*
 /turf/simulated/floor/colored/grass/New(loc)
 	var/desired_lightness = 104

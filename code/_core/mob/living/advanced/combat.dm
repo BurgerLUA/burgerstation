@@ -166,8 +166,8 @@
 
 	src.to_chat(span("warning","You parry \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name] with your [parrying_item.name]!"),CHAT_TYPE_COMBAT)
 
-	if(allow_parry_counter)
-		attack(src,attacker)
+	if(allow_parry_counter && parrying_item)
+		parrying_item.attack(src,attacker)
 
 	add_skill_xp(SKILL_PARRY,max(1,(100-base_chance)/1))
 

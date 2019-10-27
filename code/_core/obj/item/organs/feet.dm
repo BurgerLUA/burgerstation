@@ -27,6 +27,8 @@
 
 	base_miss_chance = 20
 
+	health_base = 25
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT

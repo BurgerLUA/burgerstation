@@ -5,7 +5,6 @@
 	icon_state = BODY_ARM_RIGHT
 	worn_layer = LAYER_MOB_ARMS
 	break_threshold = 25
-	//health_max = 50
 	attach_flag = BODY_TORSO
 
 	enable_wounds = TRUE
@@ -21,6 +20,8 @@
 	target_bounds_y_max = 22
 
 	base_miss_chance = 10
+
+	health_base = 50
 
 /obj/item/organ/arm/left
 	name = "left arm"

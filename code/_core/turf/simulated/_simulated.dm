@@ -9,6 +9,8 @@
 
 	dynamic_lighting = TRUE
 
+	var/fade = FALSE
+
 /turf/simulated/Initialize()
 	. = ..()
 	update_icon()
@@ -102,6 +104,10 @@
 
 	var/icon/SE = new /icon(icon,"4-[se]")
 	I.Blend(SE,ICON_OVERLAY)
+
+	if(fade)
+		var/icon/A = new /icon(icon,"fade")
+		I.Blend(A,ICON_MULTIPLY)
 
 	icon = I
 	pixel_x = (32 - I.Width())/2

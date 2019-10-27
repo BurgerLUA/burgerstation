@@ -120,6 +120,11 @@
 	var/crit_chance = 5
 	var/crit_chance_max = 10
 
+
+	var/list/wound_types = list(
+		/wound/bruise/ = 1,
+	)
+
 /damagetype/proc/get_crit_chance(var/mob/living/L)
 	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION) + L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)
 
@@ -211,6 +216,10 @@
 	return is_living(attacker) && prob(get_crit_chance(attacker))
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
+
+	if(is_advanced(weapon))
+		CRASH("Advanced should never be a weapon!")
+		return FALSE
 
 	spawn()
 
@@ -520,6 +529,22 @@
 	return attack_delay
 */
 
-
 /damagetype/proc/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
-	return TRUE
+
+	if(damage_dealt <= 0)
+		return FALSE
+
+	if(!length(wound_types))
+		return FALSE
+
+	if(!victim || !is_advanced(victim) || !hit_object || !is_organ(hit_object) || !hit_object.health)
+		return FALSE
+
+	var/obj/item/organ/O = hit_object
+
+	if(!O.enable_wounds)
+		return FALSE
+
+	var/wound/W = pickweight(wound_types)
+
+	return new W(victim,hit_object,attacker,weapon,damage_dealt)

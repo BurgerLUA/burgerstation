@@ -9,9 +9,9 @@
 	var/obj/item/organ/O = owner
 	var/mob/living/advanced/A = owner.loc
 
-	health_max = O.health_base + A.get_attribute_power(ATTRIBUTE_VITALITY)*400
-	stamina_max = O.stamina_base + A.get_attribute_power(ATTRIBUTE_AGILITY)*400
-	mana_max = O.mana_base + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*400
+	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY))
+	//stamina_max = O.stamina_base + A.get_attribute_power(ATTRIBUTE_AGILITY)*400
+	//mana_max = O.mana_base + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*400
 
 	A.update_health_element_icons(TRUE,TRUE,TRUE)
 
