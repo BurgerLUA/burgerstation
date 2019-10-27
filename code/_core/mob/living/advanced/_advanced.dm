@@ -7,13 +7,6 @@
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
 
-
-
-	/*
-	icon = 'icons/invisible.dmi'
-	icon_state = "0"
-	*/
-
 	var/sex = MALE
 	gender = MALE
 

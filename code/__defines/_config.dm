@@ -35,7 +35,8 @@
 #define MAX_MESSAGE_LEN 512
 #define MAX_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
 
-#define ATTACK_ANIMATION_LENGTH 2
+#define ATTACK_ANIMATION_LENGTH 1
+#define DODGE_ANIMATION_LENGTH 4
 
 #define SHOP_RESTOCK_COUNTDOWN 300
 
@@ -49,7 +50,7 @@
 //Makes compiling faster FALSE disabled
 #define ENABLE_MOB TRUE
 #define ENABLE_AI TRUE
-#define ENABLE_MAPLOAD FALSE
+#define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE

@@ -12,8 +12,8 @@
 	)
 
 /turf/simulated/floor/asteroid/New(var/desired_loc)
-	icon_state = "asteroid[rand(0,12)]"
-	var/lightness = 255 - (x + y)*0.25
-	lightness += rand(-1,1)
-	color = rgb(lightness,lightness,lightness)
-	..()
+
+	if(prob(25))
+		icon_state = "asteroid[rand(1,12)]"
+
+	return ..()

@@ -186,7 +186,8 @@
 
 /turf/simulated/floor/colored/sand/desert
 	name = "desert sand"
-	color = "#FFC68C"
+	//color = "#FFC68C"
+	color = "#AE8A67"
 	desired_light_color = "#FFC68C"
 
 /turf/simulated/floor/colored/ash/

@@ -5,7 +5,16 @@
 
 /area/world/desert/exterior
 	name = "sandstorm"
-	icon_state = "blue"
+	icon_state = "red"
+
+	area_light_power = DEFAULT_BRIGHTNESS_MUL_EXTERIOR
+	icon_state = "red"
+
+	sunlight_freq = 6
+
+	desired_light_range = 7
+	desired_light_power = 1
+	desired_light_color = "#A06A33"
 
 
 /area/world/desert/exterior/village/

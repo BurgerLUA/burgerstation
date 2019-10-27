@@ -15,6 +15,13 @@
 /area/world/caves/interior/dionae
 	name = "cave interior"
 	icon_state = "red"
+	safe = TRUE
+
+	sunlight_freq = 2
+
+	desired_light_range = 2
+	desired_light_power = 1
+	desired_light_color = "#528200"
 
 /area/world/caves/exterior
 	name = "cave exterior"

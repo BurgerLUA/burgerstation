@@ -50,8 +50,6 @@
 /mob/living/proc/get_current_target_cords(params)
 	return list(params[PARAM_ICON_X],params[PARAM_ICON_Y])
 
-
-
 /mob/living/advanced/player/get_current_target_cords(params)
 	if(!params || !client)
 		return list(16,16)
@@ -183,8 +181,8 @@
 	var/pixel_x_offset = prob(50) ? -8 : 8
 	var/pixel_y_offset = prob(50) ? -8 : 8
 
-	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = ATTACK_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = DODGE_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = DODGE_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
 	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [src]")
 	DT.do_miss_sound(attacker,src,weapon,target)
