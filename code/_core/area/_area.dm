@@ -63,12 +63,8 @@
 		var/light_count = 0
 
 		for(var/turf/simulated/T in contents)
-
-			if((T.x % sunlight_freq) || (T.y % sunlight_freq))
-				continue
-
-			T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
-			light_count++
+			if(setup_sunlight(T))
+				light_count++
 
 		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
 
@@ -78,6 +74,14 @@
 
 	return ..()
 
+/area/proc/setup_sunlight(var/turf/T)
+
+	if((T.x % sunlight_freq) || (T.y % sunlight_freq))
+		return FALSE
+
+	T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
+
+	return TRUE
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 

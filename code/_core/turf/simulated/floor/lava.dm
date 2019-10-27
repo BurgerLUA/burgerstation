@@ -1,9 +1,11 @@
 /turf/simulated/floor/lava/
 	name = "lava"
-	icon = 'icons/turf/floor/lava.dmi'
-	icon_state = "floor"
+	icon = 'icons/turf/floor/lava2.dmi'
+	icon_state = "lava"
+	/*
 	corner_icons = TRUE
 	corner_category = "lava"
+	*/
 
 	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT * 0.5
 	desired_light_range = 6

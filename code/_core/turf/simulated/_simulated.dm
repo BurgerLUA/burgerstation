@@ -92,6 +92,10 @@
 
 	if(opacity && "[nw][ne][sw][se]" == "ffff")
 		dynamic_lighting = FALSE
+		icon = 'icons/debug/turfs.dmi'
+		icon_state = "black"
+		plane = PLANE_ALWAYS_VISIBLE
+		return FALSE
 
 	var/icon/I = new /icon(icon,"1-[nw]")
 	//I.Blend(NW,ICON_OVERLAY)

@@ -8,7 +8,6 @@
 "h" = (/turf/simulated/wall/xenomorph,/area/world/abyss/exterior)
 "i" = (/mob/living/advanced/npc/ashwalker/warrior,/turf/simulated/floor/boss,/area/world/abyss/exterior)
 "j" = (/turf/simulated/floor/xenomorph,/area/world/abyss/exterior)
-"k" = (/mob/living/simple/npc/xenomorph/pack_leader/queen,/turf/simulated/floor/xenomorph,/area/world/abyss/exterior)
 "l" = (/mob/living/simple/npc/xenomorph,/turf/simulated/floor/xenomorph,/area/world/abyss/exterior)
 "m" = (/mob/living/advanced/npc/ashwalker/warrior,/turf/simulated/floor/basalt,/area/world/abyss/exterior)
 "n" = (/turf/simulated/floor/boss,/area/world/abyss/exterior)
@@ -93,7 +92,7 @@ eedddddddddddddeeehhjjjjjjjhheeeeeeeebbbbbbgggeedddeeeeeddddbgggggggeeeeeeebggeb
 eeeedeeeeeeeeeeeehhjjjjjjjjjhhehhhhheebbbbbgggeeddddeeeddddbggggeeeeeeeeeebbbggggbbbbbbddddeeeeeeggbbbbdbbbbddddbbbbbbbbbdbbbeee
 eeeeeeeeeeeeeeeehhjjjljjjljjjhhhjjjhheebbbbggeeedddddedddddbeeeeeeeeeeeeebbbbbbbbbbbbbbbbdddeeeeeggbbbbdbbbbddddbbbbbbbbbdbbbeee
 hhhhhhhhhhhhhhhhhjjjjjjjjjjjjjhjjjjjhhebbbbggeedddddddddddeeeeeeeeeeeeebbbbbbbbbbbbbbbbbbbdddeeebggbbbbddbbbddddbbbbbbbbddbbbbee
-hhhhhhhhhhhhhhhhhjjjljjkjjljjjjjjljjjhebbbggeeddddddddddeeeeeeeddddedbbbbbbbbbbbddddbbbbbbbddeeebgbbbbdddbbbddddbbbbbbbbbbbbbbee
+hhhhhhhhhhhhhhhhhjjjljjjjjljjjjjjljjjhebbbggeeddddddddddeeeeeeeddddedbbbbbbbbbbbddddbbbbbbbddeeebgbbbbdddbbbddddbbbbbbbbbbbbbbee
 hhhhjjjjjhhhhhhhhjjjjjjjjjjjjjjjjjjjjhebbbgeeddddddddddeeeeeeddddddddbbbbbbbbbbddddddbbbbbbbddeebbbbbbdddbbbdddbbbbbbdbbbbbbbdee
 hhhjjjjjjjhhhhhhhjjjjljjjljjjjjjjjjjjhebbeeeedddddddddeeeeeeddddbbbbbbbbbbbbddddddddddbbbbbbbdeebbbbbbdddbbbdddbbbbdddbbbbbbddee
 hhjjjjjjjjjhhhhhhjjjjjjjjjjjjjhjjjjjhhebbeeeeddddddbeeeeeeedddbbbbbbbbbbbbdddddddddddbbbbbbbbbeebbbbbdddbbbbdddbbbddbbbbbbbdddde

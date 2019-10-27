@@ -10,15 +10,15 @@
 
 #define PLANE_TREE -1
 
-#define PLANE_DARKNESS 0
+#define PLANE_EFFECT 0
 
-#define PLANE_EFFECT 4
+#define PLANE_DARKNESS 0
 
 #define PLANE_AREA 5 //Or weather
 
-#define PLANE_LIGHTING 6
+#define PLANE_INJURY 6
 
-#define PLANE_INJURY 7
+#define PLANE_LIGHTING 7
 
 #define PLANE_ALWAYS_VISIBLE 8
 
