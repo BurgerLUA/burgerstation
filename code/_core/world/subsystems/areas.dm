@@ -50,7 +50,7 @@
 			A.color = "#000000"
 			switch(weather_type)
 				if(WEATHER_RAIN)
-					animate(A,alpha=255,color="#429FCE",time=SECONDS_TO_DECISECONDS(10))
+					animate(A,alpha=100,color="#429FCE",time=SECONDS_TO_DECISECONDS(10))
 				if(WEATHER_SNOW)
 					animate(A,alpha=255,color="#FFFFFF",time=SECONDS_TO_DECISECONDS(10))
 

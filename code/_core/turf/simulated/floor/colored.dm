@@ -38,10 +38,9 @@
 
 /turf/simulated/floor/colored/jungle_grass
 	name = "jungle grass"
-	color = "#27512E"
+	color = "#42512B"
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "jungle_grass"
-	desired_light_color = "#27512E"
 /*
 /turf/simulated/floor/colored/jungle_grass/New(loc)
 
@@ -141,7 +140,7 @@
 
 /turf/simulated/floor/colored/dirt/jungle
 	name = "jungle dirt"
-	color = "#4C2C1D"
+	color = "#4C403A"
 	desired_light_color = "#4C2C1D"
 
 /turf/simulated/floor/colored/dirt/soil

@@ -56,7 +56,7 @@
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
-	if(loc && new_loc != null)
+	if(loc)
 		loc.Exited(src, new_loc)
 
 	var/atom/old_loc = loc

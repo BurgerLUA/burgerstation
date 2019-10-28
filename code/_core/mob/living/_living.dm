@@ -103,7 +103,7 @@
 
 	all_living -= src
 
-	if(old_turf)
+	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
 
 	old_turf = null

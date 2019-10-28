@@ -19,7 +19,7 @@
 	var/density_down  = FALSE
 	var/allow_bullet_pass = FALSE
 
-	var/list/mob/living/old_living = list() //List of mobs that used to be on this turf.
+	var/list/mob/living/old_living //List of mobs that used to be on this turf.
 
 	var/turf/destroy_turf //The turf that is placed when this one is destroyed, if any.
 
@@ -39,16 +39,19 @@
 	..()
 
 /turf/destroy()
-	old_living.Cut()
+	if(old_living)
+		old_living.Cut()
 	return ..()
 
 /turf/change_victim(var/atom/attacker)
 	for(var/v in contents)
 		if(is_mob(v) && attacker != v)
 			return v
-	for(var/mob/living/L in old_living)
-		if(L.move_delay > 0 && attacker != L)
-			return L
+
+	if(old_living)
+		for(var/mob/living/L in old_living)
+			if(L.move_delay > 0 && attacker != L)
+				return L
 
 	return src
 
@@ -68,10 +71,19 @@
 
 	if(is_living(exiter) && !exiter.qdeleting)
 		var/mob/living/L = exiter
-		if(L.old_turf)
-			L.old_turf.old_living -= L
 		L.old_turf = src
+		if(!old_living)
+			old_living = list()
 		old_living += L
+
+/atom/Exited(var/atom/exiter,var/atom/new_loc)
+
+	if(is_living(exiter))
+		var/mob/living/L = exiter
+		if(L.old_turf && L.old_turf.old_living)
+			L.old_turf.old_living -= L
+
+	..()
 
 /turf/can_be_attacked(var/atom/attacker)
 	return FALSE
