@@ -5,7 +5,7 @@
 
 	var/turf/simulated/floor/valid_floors = list()
 
-	for(var/turf/simulated/floor/F in world)
+	for(var/turf/simulated/floor/F in range(100,src.mob))
 		var/valid_turf = TRUE
 		for(var/atom/movable/A in F.contents)
 			if(A.density)

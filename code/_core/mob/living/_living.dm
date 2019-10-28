@@ -32,7 +32,7 @@
 	var/is_sneaking = FALSE
 	var/stealth_mod = 0
 
-	var/intent = INTENT_HELP
+	var/intent = INTENT_HARM
 
 	var/level = 0
 

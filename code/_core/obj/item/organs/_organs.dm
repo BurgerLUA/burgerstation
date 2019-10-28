@@ -54,7 +54,6 @@
 
 	health = /health/obj/item/organ/
 
-
 /obj/item/organ/destroy()
 	attached_organ = null
 	attached_organs.Cut()

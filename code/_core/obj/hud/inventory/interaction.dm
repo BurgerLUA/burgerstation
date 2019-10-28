@@ -27,10 +27,6 @@
 		if(desired_turf && get_dist(caller_turf,desired_turf) <= 1)
 			return drop_item(desired_turf)
 
-
-
-
-
 		return drop_item()
 	else if(grabbed_object && grabbed_object == object)
 		return release_object(caller,object,location,control,params)
@@ -119,6 +115,13 @@ obj/hud/inventory/drop_item(var/turf/new_location)
 	if(length(held_names))
 		. +=
 
-
 	return .
 */
+
+/obj/hud/inventory/help(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","Nothing happens..."))
+
+	return TRUE

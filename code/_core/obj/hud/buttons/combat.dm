@@ -133,7 +133,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-	var/help_intent = 1
+	var/help_intent = 0 //By default, everyone is a dick.
 
 /obj/hud/button/intent/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -146,6 +146,10 @@
 		help_intent = 1
 	else
 		help_intent = 0
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		L.intent = help_intent ? INTENT_HELP : INTENT_HARM
 
 	update_icon()
 
