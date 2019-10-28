@@ -31,8 +31,6 @@
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
-	world.log << item_table
-
 	if(!item_table["b1"] || !is_beaker(item_table["b1"]))
 		caller.to_chat(span("notice","There must be a beaker in the left slot in order to make a pill!"))
 		return FALSE

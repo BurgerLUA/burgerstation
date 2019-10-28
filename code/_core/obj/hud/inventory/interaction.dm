@@ -28,6 +28,7 @@
 			return drop_item(desired_turf)
 
 		return drop_item()
+
 	else if(grabbed_object && grabbed_object == object)
 		return release_object(caller,object,location,control,params)
 	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
@@ -61,9 +62,6 @@
 			var/obj/hud/inventory/defer_object_as_inventory = defer_object
 			if(get_dist(defer_self_as_item,defer_object_as_inventory) <= 1 && defer_self_as_item.transfer_item(defer_object_as_inventory))
 				return TRUE
-
-
-
 
 	return ..()
 
@@ -118,10 +116,15 @@ obj/hud/inventory/drop_item(var/turf/new_location)
 	return .
 */
 
-/obj/hud/inventory/help(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE)
+/obj/hud/inventory/help(var/atom/caller,var/atom/object,var/list/params=list())
 
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		L.to_chat(span("notice","Nothing happens..."))
+	var/atom/defer_self = src.defer_click_on_object() //We could be holding an object.
+	var/atom/defer_object = object.defer_click_on_object() //The object we're clicking on could be something else.
 
-	return TRUE
+	if(defer_self == src)
+		defer_self = get_object_to_damage_with(caller,object,params)
+
+	if(defer_self && defer_object && defer_self != src && defer_self.help(caller,defer_object,params))
+		return TRUE
+
+	return ..()

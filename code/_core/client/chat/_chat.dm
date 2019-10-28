@@ -114,6 +114,12 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 	if(src.x == 0 && src.y == 0 && src.z == 0)
 		return
 
+	if(!first_person_text)
+		first_person_text = third_person_text
+
+	if(!blind_text)
+		blind_text = third_person_text
+
 	for(var/mob/M in all_mobs_with_clients)
 
 		if(!M.client) //Just in case.

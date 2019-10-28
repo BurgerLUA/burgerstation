@@ -107,7 +107,7 @@
 /mob/living/proc/on_unfatigued()
 	if(health)
 		health.stamina_current = health.stamina_max
-		src.visible_message("\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]")
+		src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
 	return TRUE
 
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
