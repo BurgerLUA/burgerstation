@@ -4,20 +4,24 @@
 	desc_extended = "The extended description of the reagent container, usually a detailed note of how much it can hold."
 
 	var/list/stored_reagents = list()
+	var/list/stored_reagents_temperature = list()
 
 	var/volume_current = 0
 	var/volume_max = 1000
 	var/color = "#FFFFFF"
 
+	var/average_temperature = T0C + 20
+
 	var/flags_metabolism = REAGENT_METABOLISM_NONE
+	var/flags_temperature = REAGENT_TEMPERATURE_NONE
 
 	var/atom/owner
 
 	var/should_update_owner = FALSE //Should a change in reagents update the owner?
 
-
 /reagent_container/destroy()
 	owner = null
+	all_reagent_containers -= src
 	return ..()
 
 /reagent_container/proc/get_contents_english()
@@ -29,7 +33,7 @@
 		var/volume = stored_reagents[r_id]
 		returning_text += "[volume] units of [R.name]"
 
-	return "It contains [english_list(returning_text)]"
+	return "It contains [english_list(returning_text)]. The temperature reads [average_temperature] kelvin."
 
 /reagent_container/New(var/atom/desired_owner,var/desired_volume_max)
 
@@ -40,6 +44,8 @@
 
 	if(desired_volume_max)
 		volume_max = desired_volume_max
+
+	all_reagent_containers += src
 
 	return .
 
@@ -74,6 +80,36 @@
 
 	update_container()
 
+
+/reagent_container/proc/process_temperature()
+
+	if(!owner)
+		return FALSE
+
+	if(!volume_current)
+		return FALSE
+
+	var/area/A = get_area(owner)
+	var/area_temperature = A.ambient_temperature
+
+	if(area_temperature == average_temperature)
+		return TRUE
+
+	var/temperature_mod = 0
+
+	for(var/r_id in stored_reagents)
+		temperature_mod += stored_reagents[r_id] * all_reagents[r_id].temperature_mod
+
+	var/temperature_diff = area_temperature - average_temperature
+
+	if(average_temperature > area_temperature)
+		average_temperature = max(area_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
+	else
+		average_temperature = min(area_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
+
+	return TRUE
+
+
 /reagent_container/proc/update_container()
 
 	var/red = 0
@@ -81,13 +117,22 @@
 	var/blue = 0
 
 	volume_current = 0
+	average_temperature = 0
+
+	var/list/temperature_math_01 = list()
+
+	var/list/temperature_math_02 = list()
+	var/math_02_total = 0
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = all_reagents[r_id]
+
 		var/volume = stored_reagents[r_id]
+		var/temperature = stored_reagents_temperature[r_id] ? stored_reagents_temperature[r_id] : T0C + 20
 
 		if(volume <= 0)
 			stored_reagents -= r_id
+			stored_reagents_temperature -= r_id
 			continue
 
 		red += GetRedPart(R.color) * volume
@@ -95,12 +140,20 @@
 		blue += GetBluePart(R.color) * volume
 		volume_current += volume
 
+		temperature_math_01[r_id] = temperature
+		temperature_math_02[r_id] = volume * R.temperature_mod
+		math_02_total += temperature_math_02[r_id]
+
+	for(var/r_id in temperature_math_01)
+		average_temperature += temperature_math_01[r_id] * (temperature_math_02[r_id] / math_02_total)
+
 	var/total_reagents = length(stored_reagents)
 
 	if(total_reagents)
 		color = rgb(red/volume_current,green/volume_current,blue/volume_current)
 	else
 		color = "#FFFFFF"
+		average_temperature = T0C+20
 
 	if(should_update_owner)
 		owner.update_icon()
@@ -155,24 +208,42 @@
 
 		portions_to_make = min(portions_to_make,math_to_do)
 
+	var/desired_temperature = 0
+	var/amount_removed = 0
+
 	for(var/k in found_recipe.required_reagents)
 		var/required_amount = found_recipe.required_reagents[k]
-		remove_reagent(k,portions_to_make* required_amount,FALSE)
+		var/amount_to_remove = portions_to_make * required_amount
+		remove_reagent(k,amount_to_remove,FALSE)
+		desired_temperature += amount_to_remove*all_reagents[k].temperature_mod
+		amount_removed += amount_to_remove
+
+	if(amount_removed)
+		desired_temperature *= 1/amount_removed
+	else
+		desired_temperature = T0C
+
+	world.log << desired_temperature
 
 	for(var/k in found_recipe.results)
 		var/v = found_recipe.results[k]
-		add_reagent(k,portions_to_make * v,FALSE)
-
-	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
-		var/obj/item/A = new found_recipe.result(get_turf(src))
-		if(A.reagents)
-			transfer_reagents_to(A.reagents,A.reagents.volume_current)
+		add_reagent(k,portions_to_make * v,desired_temperature,FALSE)
 
 	update_container()
 
+	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
+		world.log << "Owner: [owner], Result: [found_recipe.result]"
+		var/obj/item/A = new found_recipe.result(get_turf(owner))
+		if(A.reagents)
+			transfer_reagents_to(A.reagents,volume_current,FALSE)
+
+			A.reagents.update_container()
+			update_container()
+
+
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE)
+/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = T0C + 20, var/should_update = TRUE)
 
 	if(!all_reagents[reagent_id])
 		LOG_ERROR("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
@@ -181,6 +252,9 @@
 	if(amount == 0)
 		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
 		return 0
+
+	var/previous_amount = stored_reagents[reagent_id] ? stored_reagents[reagent_id] : 0
+	var/previous_temp = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : 0
 
 	if(volume_current + amount > volume_max)
 		amount = volume_max - volume_current
@@ -192,6 +266,11 @@
 		stored_reagents[reagent_id] += amount
 	else
 		stored_reagents[reagent_id] = amount
+
+	if(stored_reagents_temperature[reagent_id])
+		stored_reagents_temperature[reagent_id] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_id])
+	else
+		stored_reagents_temperature[reagent_id] = temperature
 
 	process_recipes()
 

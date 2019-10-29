@@ -1,16 +1,16 @@
-#define PLANE_PARALAX -6
+#define PLANE_PARALAX -7
 
-#define PLANE_FLOOR -5
+#define PLANE_FLOOR -6
 
-#define PLANE_WALL -4
+#define PLANE_WALL -5
 
-#define PLANE_OBJ -3
+#define PLANE_OBJ -4
 
-#define PLANE_MOB -2
+#define PLANE_MOB -3
+
+#define PLANE_EFFECT -2
 
 #define PLANE_TREE -1
-
-#define PLANE_EFFECT 0
 
 #define PLANE_DARKNESS 0
 

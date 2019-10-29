@@ -22,6 +22,8 @@
 	desired_light_power = 1
 	desired_light_color = "#110D21"
 
+	ambient_temperature = T0C - 20
+
 /area/world/mountain/exterior/village
 	name = "village"
 	icon_state = "safe"

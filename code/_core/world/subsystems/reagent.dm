@@ -2,10 +2,24 @@ var/global/list/all_reagents = list()
 
 var/global/list/all_reagent_recipes = list()
 
+var/global/list/reagent_container/all_reagent_containers = list()
+
 /subsystem/reagent/
 	name = "Reagent Subsystem"
 	desc = "Store all the reagents."
 	priority = SS_ORDER_PRELOAD
+	tick_rate = SECONDS_TO_TICKS(1)
+
+/subsystem/reagent/on_life()
+
+	for(var/reagent_container/R in all_reagent_containers)
+
+		if(R.flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT)
+			continue
+
+		R.process_temperature()
+
+	return TRUE
 
 /subsystem/reagent/Initialize()
 

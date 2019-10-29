@@ -5,8 +5,8 @@
 
 	priority = 1
 
-	max_size = -1
-	max_weight = -1
+	max_size = SIZE_8
+	max_weight = WEIGHT_8
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CRAFTING
 
@@ -15,6 +15,9 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
+	item_blacklist = list(
+		/obj/item/crafting/
+	)
 
 //A
 /obj/hud/inventory/crafting/slotA1

@@ -9,6 +9,20 @@
 
 	reagents = /reagent_container/food/
 
+
+/obj/item/container/food/update_icon()
+
+	var/matrix/M = matrix()
+	var/scale_math = max(0.1,reagents.volume_current/reagents.volume_max)
+	M.Scale(scale_math)
+	transform = M
+
+	return ..()
+
+
+/obj/item/container/food/get_examine_text(var/mob/examiner)
+	return ..() + div("notice",reagents.get_contents_english())
+
 /obj/item/container/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(get_dist(caller,object) > 1)

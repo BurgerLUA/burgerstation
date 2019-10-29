@@ -3,12 +3,12 @@
 	duration = 3
 	mouse_opacity = 0
 	alpha = 255
-	layer = LAYER_EFFECT
-
+	plane = PLANE_EFFECT
 
 obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/atom/old_location,var/obj/item/desired_object,var/desired_animation_type = "pickup")
 
 	appearance = desired_object.appearance
+	plane = initial(plane)
 
 	var/target_dir = get_dir(get_turf(old_location),get_turf(desired_location))
 

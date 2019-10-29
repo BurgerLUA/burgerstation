@@ -11,6 +11,11 @@ obj/item/clothing/back/storage/backpack/bluespace
 
 	weight = WEIGHT_4
 
+	container_blacklist = list(
+		/obj/item/clothing/back/storage/backpack/bluespace,
+		/obj/item/clothing/back/storage/satchel/bluespace
+	)
+
 
 obj/item/clothing/back/storage/satchel/bluespace
 	name = "satchel of holding"
@@ -20,5 +25,12 @@ obj/item/clothing/back/storage/satchel/bluespace
 
 	dynamic_inventory_count = MAX_INVENTORY_X
 	container_held_slots = MAX_INVENTORY_X*0.5
+	container_max_size = 100 //Can hold anything, almost.
 
 	weight = WEIGHT_4
+
+	container_blacklist = list(
+		/obj/item/clothing/back/storage/backpack/bluespace,
+		/obj/item/clothing/back/storage/satchel/bluespace
+	)
+

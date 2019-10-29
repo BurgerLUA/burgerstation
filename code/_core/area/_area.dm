@@ -43,6 +43,8 @@
 
 	var/weather = WEATHER_NONE //Optional weather
 
+	var/ambient_temperature = T0C + 20
+
 /area/destroy()
 	if(players_inside)
 		players_inside.Cut()

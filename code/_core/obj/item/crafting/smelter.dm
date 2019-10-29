@@ -1,5 +1,6 @@
 /obj/item/crafting/smelter
 	name = "portable smelter"
+	desc = "Smelt ores! Also cooks!"
 	icon = 'icons/obj/items/ore.dmi'
 	icon_state = "smelter"
 
@@ -12,6 +13,3 @@
 	)
 
 	crafting_id = "smelter"
-
-
-

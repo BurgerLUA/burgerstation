@@ -3,4 +3,6 @@
 	desc = "FOOD!"
 	desc_extended = "Can hold up to 50u of reagents."
 
-	volume_max = 50
+	volume_max = 30
+
+	should_update_owner = TRUE

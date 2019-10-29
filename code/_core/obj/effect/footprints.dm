@@ -2,7 +2,8 @@
 	name = "footprints"
 	icon = 'icons/obj/effects/footprints.dmi'
 	icon_state = "human"
-	layer = LAYER_MOB
+	layer = LAYER_FLOOR_DECAL
+	plane = PLANE_OBJ
 	mouse_opacity = 1
 
 /obj/effect/footprint/New(var/newloc,var/desired_dir = 0)

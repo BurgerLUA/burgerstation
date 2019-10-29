@@ -31,6 +31,8 @@
 	var/icon = ""
 	var/icon_state = ""
 
+	var/transfer_reagents = FALSE
+
 /recipe/proc/check_recipe(var/list/item_table,var/obj/item/crafting/crafting_table)
 
 	/*

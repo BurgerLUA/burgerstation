@@ -80,15 +80,20 @@
 
 		var/list/recipe_check = R.check_recipe(item_table,src)
 		if(length(recipe_check)) //We can craft
+
+			var/obj/item/I3 = new R.product(caller.loc)
+			product_slot.add_held_object(I3,caller,FALSE,TRUE)
+
 			for(var/obj/item/I in recipe_check)
 				if(is_inventory(I.loc))
 					var/obj/hud/inventory/I2 = I.loc
 					I2.remove_object(I,get_turf(caller))
+				if(R.transfer_reagents && I.reagents && I3.reagents)
+					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current)
+
 				qdel(I)
 
-			var/obj/item/I = new R.product(caller.loc)
-			product_slot.add_held_object(I,caller,FALSE,TRUE)
-			return I
+			return I3
 
 	caller.to_chat(span("notice","You fail to craft anything..."))
 	return FALSE

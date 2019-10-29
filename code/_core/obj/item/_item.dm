@@ -224,9 +224,9 @@
 			inventories[i].max_size = container_max_size
 		if(container_max_weight)
 			inventories[i].max_weight = container_max_weight
-		if(container_blacklist)
+		if(container_blacklist && length(container_blacklist))
 			inventories[i].item_blacklist = container_blacklist
-		if(container_whitelist)
+		if(container_whitelist && length(container_whitelist))
 			inventories[i].item_whitelist = container_whitelist
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
@@ -239,9 +239,9 @@
 			D.max_size = container_max_size
 		if(container_max_weight)
 			D.max_weight = container_max_weight
-		if(container_blacklist)
+		if(container_blacklist && length(container_blacklist))
 			D.item_blacklist = container_blacklist
-		if(container_whitelist)
+		if(container_whitelist && length(container_whitelist))
 			D.item_whitelist = container_whitelist
 		inventories += D
 

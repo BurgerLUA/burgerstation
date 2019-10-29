@@ -417,6 +417,7 @@
 		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
 		WC.appearance = weapon.appearance
 		WC.mouse_opacity = 0
+		WC.plane = initial(WC.plane)
 
 		var/offset_x = get_offset_x(victim,attacker)
 		var/offset_y = get_offset_y(victim,attacker)

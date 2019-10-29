@@ -393,7 +393,7 @@
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
-	if(I.loc && I.loc == I)
+	if(loc && loc == I)
 		return FALSE
 
 	if(I.delete_on_drop)
@@ -447,7 +447,7 @@
 
 /obj/hud/inventory/proc/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
-	if(I.loc && I.loc == I)
+	if(loc && loc == I)
 		return FALSE
 
 	if(parent_inventory)
