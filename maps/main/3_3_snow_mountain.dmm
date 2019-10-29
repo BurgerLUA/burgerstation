@@ -80,11 +80,9 @@
 "bB" = (/obj/structure/interactive/lighting/tube{icon_state = "tube"; dir = 8},/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/shop,/obj/item/clothing/mask/gas,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
 "bC" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/shop,/obj/item/storage/shoebox/black,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
 "bD" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/hardsuit/syndie,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
-"bE" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/shop,/obj/item/storage/briefcase/syndicate/autoshotgun,/obj/item/storage/briefcase/syndicate/pistol,/obj/item/storage/briefcase/syndicate/rifle,/obj/item/storage/briefcase/syndicate/smg,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
+"bE" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/shop,/obj/item/storage/briefcase/syndicate/autoshotgun,/obj/item/storage/briefcase/syndicate/pistol,/obj/item/storage/briefcase/syndicate/rifle,/obj/item/storage/briefcase/syndicate/smg,/obj/item/clothing/overwear/armor/hardsuit/syndie/advanced,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
 "bF" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/shop,/obj/item/clothing/glasses/sun/ABOMB,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
-"bG" = (/obj/item/clothing/overwear/armor/hardsuit/syndie,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
-"bH" = (/obj/item/clothing/overwear/armor/hardsuit/syndie/advanced,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
-"bI" = (/obj/item/clothing/overwear/armor/hardsuit/syndie/elite,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
+"bG" = (/obj/item/clothing/overwear/armor/hardsuit/syndie/elite,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
 
 (1,1,1) = {"
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
@@ -212,7 +210,7 @@ ajajajajakajajajafajajajajakajafajajajajapapapapajajajafajajajajakajafakakakabab
 afajajakakajajajajajajajajajajajajajaeajapapapapajajajajajajajajakafakajajababbibibrbrbrbrbrbrbrbrbrbrbrbrbrbiababajajajajajakakafajajakajakakajajajajajajajakakavavatababababababababababababbibjbjbhbhbhbhbjbiabababababapapapapapapaOaOapapaOaOapaOapapaOaOaO
 ajajajakajajabababababababajajaeajajajajapapapapajajajabababajajakakajajabababbibrbrbxbwbvbybDbzbFbsbrbububrbiabababajajaeajakakajajajakakakakajafajajajaeajajajatatababababababababababababbibibibhbhbhbhbhbjbibiababababapapapaOaOaOaOaqapapaoaOaOaOaOapaOaOaO
 ababajajababababababababababajajajabababapapapababababababajajajafajajababababbibrbtbfbfbfbfbfbfbfbfbubfbAbrbiababababajajajakajajajajakakakakajajajajajajajajajaJababababababababababababbibibibibhbhbhbhbhbjbibibkababapapapaOaOaOaOapapapapapapaOaOaOaOaOaOaO
-ababababababababababababababajababababababababababababababababababababababababbibrbBbfbfbGbHbIbfbfbfbEbfbfbrbiababababababajajajajafajakakakakajajajajajajajajababababababababababababababbibibibibjbhbhbhbjbibibibkbkabapapaOaOaOaOaOapaOaOaOaOapapaOaOaOaOaOaO
+ababababababababababababababajababababababababababababababababababababababababbibrbBbfbfbfbfbGbfbfbfbEbfbfbrbiababababababajajajajafajakakakakajajajajajajajajababababababababababababababbibibibibjbhbhbhbjbibibibkbkabapapaOaOaOaOaOapaOaOaOaOapapaOaOaOaOaOaO
 abababababababababababababababababababababababababababababababababababababababbibrbCbfbfbfbfbfbfbfbfbrbububrbiababababababababababababababababababababababababababababababababababababababbibibibibhbhbhbhbjbibibibkbkbkapaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaO
 abababababababababababababababababababababababababababababababababababababababbibrbrbfbfbfbfbfbfbfbfbfbfbAbrbiababababababababababababababababababababababababababababababababababababababbibibibibjbhbhbhbibibibibkbkbkaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOaO
 "}

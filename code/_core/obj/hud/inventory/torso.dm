@@ -76,7 +76,7 @@
 	name = "overwear belt slot"
 	id = BODY_TORSO_OB
 	screen_loc = "CENTER-4,BOTTOM"
-	worn_slots = 1
+	held_slots = 1
 
 	item_slot = SLOT_TORSO_OB
 

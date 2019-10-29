@@ -59,6 +59,6 @@
 	id = BODY_SPECIAL
 	screen_loc = "CENTER+4,BOTTOM"
 	item_slot = SLOT_SPECIAL
-	worn_slots = 1
+	held_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
