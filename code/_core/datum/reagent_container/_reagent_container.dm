@@ -107,6 +107,9 @@
 	else
 		average_temperature = min(area_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
 
+	for(var/r_id in stored_reagents_temperature)
+		stored_reagents_temperature[r_id] = average_temperature
+
 	return TRUE
 
 
@@ -243,7 +246,7 @@
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = T0C + 20, var/should_update = TRUE)
+/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE)
 
 	if(!all_reagents[reagent_id])
 		LOG_ERROR("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
@@ -252,6 +255,13 @@
 	if(amount == 0)
 		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
 		return 0
+
+	if(temperature == TNULL)
+		if(owner)
+			var/area/A = get_area(owner)
+			temperature = A.ambient_temperature
+		else
+			temperature = T0C + 20
 
 	var/previous_amount = stored_reagents[reagent_id] ? stored_reagents[reagent_id] : 0
 	var/previous_temp = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : 0

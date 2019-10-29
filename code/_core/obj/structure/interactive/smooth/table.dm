@@ -34,7 +34,7 @@ obj/structure/smooth/table/reinforced
 
 
 obj/structure/smooth/table/reinforced/dark
-	color = "#AAAAAA"
+	color = "#999999"
 
 
 obj/structure/smooth/table/brass

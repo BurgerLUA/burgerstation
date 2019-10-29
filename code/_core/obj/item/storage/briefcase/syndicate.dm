@@ -79,3 +79,18 @@
 		M.on_spawn()
 		M.update_icon()
 		inventories[i].add_held_object(M,bypass_checks = TRUE)
+
+
+/obj/item/storage/briefcase/syndicate/revoler
+	name = "syndicate revolver pack"
+	desc = "For all your pistol needs."
+	container_max_size = 2
+	dynamic_inventory_count = 5
+
+/obj/item/storage/briefcase/syndicate/revoler/on_spawn()
+	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/revolver/traitor_357(src.loc),bypass_checks = TRUE)
+	for(var/i=2,i<=dynamic_inventory_count,i++)
+		var/obj/item/magazine/M = new /obj/item/magazine/clip/revolver/bullet_357(src.loc)
+		M.on_spawn()
+		M.update_icon()
+		inventories[i].add_held_object(M,bypass_checks = TRUE)

@@ -15,19 +15,11 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 15,
-		HEAT = 0,
-		COLD = 20,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_E,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
+		MAGIC = ARMOR_D,
+		COLD = ARMOR_D,
 	)
 
 /obj/item/clothing/uniform/jumpsuit/grey
@@ -44,3 +36,18 @@
 	color_primary = "#FF0000"
 	color_secondary = "#FF0000"
 	color_tertiary = "#A0A0A0"
+
+/obj/item/clothing/uniform/jumpsuit/dark
+	name = "reinforced dark jumpsuit"
+
+	color_primary = "#404040"
+	color_secondary = "#404040"
+	color_tertiary = "#404040"
+
+	defense_rating = list(
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_E,
+		COLD = ARMOR_C,
+	)

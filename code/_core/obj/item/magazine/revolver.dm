@@ -50,3 +50,19 @@
 /obj/item/magazine/clip/revolver/bullet_22/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/revolver_22(src)
+
+
+/obj/item/magazine/clip/revolver/bullet_357
+	name = "\improper .357 speedloader"
+	bullet_type = ".357"
+	icon = 'icons/obj/items/magazine/revolver/357.dmi'
+	icon_state = "357"
+	bullet_count_max = 6
+
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/revolver/traitor_357
+	)
+
+/obj/item/magazine/clip/revolver/bullet_357/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new /obj/item/bullet/revolver_357(src)

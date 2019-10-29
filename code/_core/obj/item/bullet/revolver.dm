@@ -11,8 +11,21 @@
 	damage_type = ".38"
 
 
+/obj/item/bullet/revolver_357
+	name = "\improper .357 bullet"
+	desc = "For revolvers that require .357 ammo."
+	id = ".357"
+	icon = 'icons/obj/items/bullet/357.dmi'
+
+	damage_type = ".357"
+
+	item_count_max = 6
+	item_count_max_icon = 6
+
+	projectile = /obj/projectile/bullet/revolver/
+
 /obj/item/bullet/revolver_44
-	name = "\improper .44 magnum"
+	name = "\improper .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo."
 	id = ".44"
 	icon = 'icons/obj/items/bullet/44.dmi'
@@ -25,7 +38,7 @@
 	projectile = /obj/projectile/bullet/revolver/
 
 /obj/item/bullet/revolver_44/surplus
-	name = "\improper surplus .44 magnum"
+	name = "\improper surplus .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo. Surplus ammo."
 	id = ".44"
 	icon = 'icons/obj/items/bullet/44_surplus.dmi'

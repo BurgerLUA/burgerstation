@@ -232,9 +232,36 @@
 	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
 	rarity = RARITY_MYTHICAL
 
-/obj/item/clothing/overwear/armor/hardsuit/syndie1
+
+/obj/item/clothing/overwear/armor/hardsuit/syndie
 	name = "mauler hardsuit mk1"
-	icon = 'icons/obj/items/clothing/suit/syndie1.dmi'
+	icon = 'icons/obj/items/clothing/suit/syndie_basic.dmi'
+	rarity = RARITY_UNCOMMON
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_E,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_S,
+		HEAT = ARMOR_C,
+		COLD = ARMOR_B,
+		BOMB = ARMOR_D,
+		BIO = ARMOR_B,
+		RAD = ARMOR_D
+	)
+
+	size = SIZE_7
+	weight = WEIGHT_7
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie)
+
+	slowdown_mul_worn = 1.2
+
+/obj/item/clothing/overwear/armor/hardsuit/syndie/advanced
+	name = "mauler hardsuit mk2"
+	icon = 'icons/obj/items/clothing/suit/syndie_advanced.dmi'
+	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = ARMOR_B,
@@ -252,13 +279,14 @@
 	size = SIZE_6
 	weight = WEIGHT_6
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie1)
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced)
 
 	slowdown_mul_worn = 1.2
 
-/obj/item/clothing/overwear/armor/hardsuit/syndie2
-	name = "mauler hardsuit mk2"
-	icon = 'icons/obj/items/clothing/suit/syndie2.dmi'
+/obj/item/clothing/overwear/armor/hardsuit/syndie/elite
+	name = "mauler hardsuit mk3"
+	icon = 'icons/obj/items/clothing/suit/syndie_elite.dmi'
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = ARMOR_B,
@@ -273,11 +301,11 @@
 		RAD = ARMOR_D
 	)
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie2)
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)
 
 	size = SIZE_6
 	weight = WEIGHT_5
-	slowdown_mul_worn = 1.1
+	slowdown_mul_worn = 1
 
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "white magnus armor"

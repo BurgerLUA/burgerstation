@@ -68,11 +68,31 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
-
-/obj/item/clothing/head/helmet/hardsuit/syndie1
+/obj/item/clothing/head/helmet/hardsuit/syndie
 	name = "mauler helmet mk1"
-	icon = 'icons/obj/items/clothing/hats/syndie1.dmi'
-	rarity = RARITY_MYTHICAL
+	icon = 'icons/obj/items/clothing/hats/syndie_basic.dmi'
+	rarity = RARITY_UNCOMMON
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_A,
+		HEAT = ARMOR_B,
+		COLD = ARMOR_A,
+		BOMB = ARMOR_B,
+		BIO = ARMOR_B,
+		RAD = ARMOR_D
+	)
+
+	size = SIZE_4
+	weight = WEIGHT_5
+
+/obj/item/clothing/head/helmet/hardsuit/syndie/advanced
+	name = "mauler helmet mk2"
+	icon = 'icons/obj/items/clothing/hats/syndie_advanced.dmi'
+	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = ARMOR_B,
@@ -90,9 +110,9 @@
 	size = SIZE_3
 	weight = WEIGHT_4
 
-/obj/item/clothing/head/helmet/hardsuit/syndie2
-	name = "mauler helmet mk2"
-	icon = 'icons/obj/items/clothing/hats/syndie2.dmi'
+/obj/item/clothing/head/helmet/hardsuit/syndie/elite
+	name = "mauler helmet mk3"
+	icon = 'icons/obj/items/clothing/hats/syndie_elite.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
@@ -110,3 +130,5 @@
 
 	size = SIZE_3
 	weight = WEIGHT_4
+
+	slowdown_mul_worn = 0.75
