@@ -12,7 +12,7 @@
 		"dough_wheat_grain" = 1
 	)
 
-	result = /obj/item/container/food/raw/dough
+	result = /obj/item/container/food/dynamic/bread
 
 /reagent_recipe/dough/flour
 
@@ -40,4 +40,56 @@
 
 	results = list(
 		"dough_flour_white" = 5
+	)
+
+
+/reagent_recipe/bread/
+
+	name = "wheat grain bread"
+	id = "bread_wheat_grain"
+
+	required_reagents = list(
+		"dough_wheat_grain" = 1
+	)
+
+	required_temperature_min = list(
+		"dough_wheat_grain" = 475
+	)
+
+	results = list(
+		"bread_wheat_grain" = 1
+	)
+
+/reagent_recipe/bread/flour
+
+	name = "whole wheat flour bread"
+	id = "bread_flour"
+
+	required_reagents = list(
+		"dough_flour" = 1
+	)
+
+	required_temperature_min = list(
+		"dough_flour" = 475
+	)
+
+	results = list(
+		"bread_flour" = 1
+	)
+
+/reagent_recipe/bread/flour/processed
+
+	name = "white flour bread"
+	id = "bread_flour_white"
+
+	required_reagents = list(
+		"dough_flour_white" = 1,
+	)
+
+	required_temperature_min = list(
+		"dough_flour_white" = 475
+	)
+
+	results = list(
+		"bread_flour_white" = 1
 	)

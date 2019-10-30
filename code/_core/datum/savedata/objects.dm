@@ -31,7 +31,7 @@
 		if(object_data["reagents"] && length(object_data["reagents"]))
 			for(var/r_id in object_data["reagents"])
 				var/volume = object_data["reagents"][r_id]
-				I.reagents.add_reagent(r_id,volume,FALSE)
+				I.reagents.add_reagent(r_id,volume,TNULL,FALSE)
 			I.reagents.update_container()
 
 	if(is_clothing(O))
@@ -50,7 +50,7 @@
 		if(object_data["reagents_2"] && length(object_data["reagents_2"]))
 			for(var/r_id in object_data["reagents_2"])
 				var/volume = object_data["reagents_2"][r_id]
-				P.reagents_2.add_reagent(r_id,volume,FALSE)
+				P.reagents_2.add_reagent(r_id,volume,TNULL,FALSE)
 			P.reagents_2.update_container()
 
 	if(is_scroll(O))

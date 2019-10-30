@@ -22,12 +22,3 @@
 	desc = "Smelt steel and coal into iron ingots."
 	required_items = list("ingot_iron","ore_carbon")
 	product = /obj/item/ingot/steel
-
-/recipe/smelter/bread
-	name = "cook bread"
-	id = "cook_bread"
-	desc = "Cook bread with this."
-	required_items = list("dough")
-	product = /obj/item/container/food/bread
-
-	transfer_reagents = TRUE

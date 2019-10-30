@@ -27,6 +27,9 @@
 	var/container_blacklist = list()
 	var/container_whitelist = list()
 
+	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature
+	var/container_temperature_mod = 1 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
+
 	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
 
 	icon_state = "inventory"
@@ -228,6 +231,10 @@
 			inventories[i].item_blacklist = container_blacklist
 		if(container_whitelist && length(container_whitelist))
 			inventories[i].item_whitelist = container_whitelist
+		if(container_temperature)
+			inventories[i].inventory_temperature = container_temperature
+		if(container_temperature_mod)
+			inventories[i].inventory_temperature_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new(src)
@@ -243,6 +250,11 @@
 			D.item_blacklist = container_blacklist
 		if(container_whitelist && length(container_whitelist))
 			D.item_whitelist = container_whitelist
+		if(container_temperature)
+			D.inventory_temperature = container_temperature
+		if(container_temperature_mod)
+			D.inventory_temperature_mod = container_temperature_mod
+
 		inventories += D
 
 	return ..()

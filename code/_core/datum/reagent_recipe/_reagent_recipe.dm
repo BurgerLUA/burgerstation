@@ -8,3 +8,7 @@
 	var/list/results = list()
 
 	var/atom/result
+
+	var/list/required_temperature_min = list()
+
+	var/list/required_temperature_max = list()

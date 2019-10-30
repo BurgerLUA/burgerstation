@@ -110,8 +110,6 @@
 		SKILL_RANGED = 0
 	)
 
-	var/attack_delay = 4
-
 	var/use_blamed_stats = FALSE
 
 	var/throw_mul = 1

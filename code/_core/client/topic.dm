@@ -1,5 +1,14 @@
 /client/Topic(href,href_list,hsrc)
 
+	world.log << usr
+
+	if(!usr || usr != mob)
+		return
+
+	if(findtext(href,"<script",1,0))
+		world.log <<  "Attempted use of scripts within a topic call, by [src]."
+		return
+
 	/*
 	if(next_allowed_topic > curtime)
 		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - curtime] second\s!"))

@@ -3,7 +3,7 @@
 	desc = "Edible reagent"
 	desc_extended = "Edible."
 
-	var/bite_size = 10 //How many reagents to remove per bite?
+	var/bite_size = 5 //How many reagents to remove per bite?
 	var/bite_count = 0 //How many times someone has taken a bite from this.
 	var/consume_verb = "take a bite out of"
 
@@ -13,7 +13,7 @@
 /obj/item/container/food/update_icon()
 
 	var/matrix/M = matrix()
-	var/scale_math = max(0.1,reagents.volume_current/reagents.volume_max)
+	var/scale_math = max(0.5 + (reagents.volume_current/reagents.volume_max)*0.5)
 	M.Scale(scale_math)
 	transform = M
 
@@ -65,6 +65,20 @@
 		if(!A.labeled_organs[BODY_STOMACH])
 			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
 			return FALSE
+
+		var/final_flavor_text = reagents.get_flavor()
+
+		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= curtime || A.last_flavor != final_flavor_text) )
+			A.last_flavor = final_flavor_text
+			A.last_flavor_time = curtime
+			final_flavor_text = "You taste [final_flavor_text]."
+		else
+			final_flavor_text = null
+
+		consumer.to_chat(span("notice","You [consume_verb] \the [src.name]."))
+
+		if(final_flavor_text)
+			consumer.to_chat(span("notice",final_flavor_text))
 
 		bite_count += 1
 

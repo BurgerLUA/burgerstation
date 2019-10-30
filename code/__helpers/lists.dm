@@ -265,3 +265,31 @@ proc/InsertionSort(list/L)
 			return i
 
 	return FALSE
+
+
+/proc/get_best_key_assoc(var/list/L,var/highest = TRUE)
+
+	var/initialized = FALSE
+	var/best_key
+	var/best_value
+
+	for(var/k in L)
+		var/v = L[k]
+		if(!initialized)
+			best_key = k
+			best_value = v
+			initialized = TRUE
+			continue
+
+		if(highest)
+			if(v > best_value)
+				best_key = k
+				best_value = v
+				continue
+		else
+			if(v < best_value)
+				best_key = k
+				best_value = v
+				continue
+
+	return best_key

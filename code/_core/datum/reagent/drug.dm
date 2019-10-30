@@ -10,3 +10,5 @@
 	id = "liberty_dust"
 	desc = "It's like space cocaine."
 	color = "#FFFFFF"
+
+	flavor = "hookers"

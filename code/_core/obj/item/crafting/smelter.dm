@@ -4,6 +4,9 @@
 	icon = 'icons/obj/items/ore.dmi'
 	icon_state = "smelter"
 
+	container_temperature = 800 - (T0C + 20)
+	container_temperature_mod = 2
+
 	inventories = list(
 		/obj/hud/inventory/crafting/slotB1,
 		/obj/hud/inventory/crafting/slotB2,

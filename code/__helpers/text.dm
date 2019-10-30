@@ -93,5 +93,13 @@
 	return ascii2text(text2ascii(string, pos))
 
 
+/proc/has_prefix(var/haystack,var/needle)
+
+	if(length(needle) > length(haystack))
+		return FALSE
+
+	return copytext(haystack,1,length(needle)+1) == needle
+
+
 #define datum2text(x) "[x.name]([x.type])"
 #define atom2text(x) "[x.name]([x.type])([x.x][x.y])"

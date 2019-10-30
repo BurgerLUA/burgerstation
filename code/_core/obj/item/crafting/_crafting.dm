@@ -93,6 +93,8 @@
 
 				qdel(I)
 
+			R.on_create(caller,src,I3)
+
 			return I3
 
 	caller.to_chat(span("notice","You fail to craft anything..."))

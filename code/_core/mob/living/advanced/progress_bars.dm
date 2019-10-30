@@ -15,7 +15,6 @@
 			return TRUE
 		if("feed_self")
 			var/obj/item/container/food/F = callback_list["object"]
-			src.to_chat(span("notice","You [F.consume_verb] \the [F]."))
 			F.consume(src)
 			return TRUE
 		if("feed_other")

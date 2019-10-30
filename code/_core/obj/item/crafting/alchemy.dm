@@ -4,8 +4,8 @@
 	icon_state = "alchemy"
 
 	inventories = list(
-
 		/obj/hud/inventory/crafting/slotB1,
+		/obj/hud/inventory/crafting/slotB2,
 		/obj/hud/inventory/crafting/slotB3,
 
 		/obj/hud/inventory/crafting/result
@@ -15,58 +15,64 @@
 
 /obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)
 
-	var/obj/hud/inventory/crafting/result/product_slot
+	var/obj/item/container/C //Final slot container.
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
-		if(R.get_top_held_object())
-			caller.to_chat(span("notice","Remove the already completed item in the product slot before doing this!"))
-			return FALSE
-		else
-			product_slot = R
+		var/obj/item/top_object = R.get_top_held_object()
+		if(is_container(top_object))
+			C = top_object
+			break
+
+	if(!C)
+		caller.to_chat(span("notice","You're missing a valid container in the product slot!"))
+		return FALSE
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
-	if(!item_table["b3"] || !is_container(item_table["b3"]))
-		caller.to_chat(span("notice","You're missing a container in the right slot!"))
+	var/success = FALSE
+
+	for(var/i=1,i<=3,i++)
+
+		var/obj/item/I = item_table["b[i]"]
+
+		if(!I)
+			continue
+
+		var/should_delete = FALSE
+
+		var/list/reagents_list = list()
+
+		if(I.alchemy_reagents && length(I.alchemy_reagents))
+			for(var/r_id in I.alchemy_reagents)
+				if(reagents_list[r_id])
+					reagents_list[r_id] += I.alchemy_reagents[r_id]
+				else
+					reagents_list[r_id] = I.alchemy_reagents[r_id]
+			should_delete = TRUE
+
+		if(!length(reagents_list) && !(I.reagents && I.reagents.volume_current))
+			caller.to_chat(span("notice","\The [I.name] contains no suitable reagents!"))
+			continue
+
+		for(var/k in reagents_list)
+			var/v = reagents_list[k]
+			C.reagents.add_reagent(k,v,TNULL,FALSE)
+
+		if(I.reagents)
+			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE)
+
+		success = TRUE
+		if(should_delete)
+			qdel(I)
+		else if(I.reagents)
+			I.reagents.update_container()
+
+
+	if(!success)
+		caller.to_chat(span("notice","There are no valid items to process!"))
 		return FALSE
-
-	if(!item_table["b1"] || !is_item(item_table["b1"]))
-		caller.to_chat(span("notice","You're missing a valid item in the left slot!"))
-		return FALSE
-
-	var/obj/item/I = item_table["b1"]
-
-	var/list/reagents_list = I.reagents ? I.reagents.stored_reagents.Copy() : list()
-
-	/* PRE FUCKERY
-	if(I.reagents && I.reagents.stored_reagents)
-		for(var/r_id in I.reagents.stored_reagents)
-			var/volume = reagents.stored_reagents[R_id]
-			reagents_list[r_id] = volume
-	*/
-
-	if(I.alchemy_reagents)
-		for(var/r_id in I.alchemy_reagents)
-			if(reagents_list[r_id])
-				reagents_list[r_id] += I.alchemy_reagents[r_id]
-			else
-				reagents_list[r_id] = I.alchemy_reagents[r_id]
-
-	if(!length(reagents_list))
-		caller.to_chat(span("notice","\The [I.name] contains no suitable reagents!"))
-		return FALSE
-
-	var/obj/item/container/C = item_table["b3"]
-
-	for(var/k in reagents_list)
-		var/v = reagents_list[k]
-		C.reagents.add_reagent(k,v,FALSE)
 
 	C.reagents.update_container()
-
-	C.transfer_item(product_slot)
-
-	qdel(I)
 
 	return TRUE
 

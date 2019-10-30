@@ -71,6 +71,10 @@
 
 	var/force_spawn = FALSE
 
+
+	var/last_flavor = ""
+	var/last_flavor_time = 0
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

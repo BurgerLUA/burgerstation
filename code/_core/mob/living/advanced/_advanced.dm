@@ -81,6 +81,9 @@
 	var/capacity = 0
 	var/max_capacity = 1
 
+	attack_delay = 2
+	attack_delay_max = 6
+
 /mob/living/advanced/destroy()
 
 	for(var/obj/item/organ/O in organs)

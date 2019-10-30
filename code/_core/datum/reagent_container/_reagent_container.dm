@@ -91,6 +91,12 @@
 
 	var/area/A = get_area(owner)
 	var/area_temperature = A.ambient_temperature
+	var/area_temperature_mod = AIR_TEMPERATURE_MOD
+
+	if(is_inventory(owner.loc))
+		var/obj/hud/inventory/I = owner.loc
+		area_temperature += I.inventory_temperature
+		area_temperature_mod *= I.inventory_temperature_mod
 
 	if(area_temperature == average_temperature)
 		return TRUE
@@ -109,6 +115,8 @@
 
 	for(var/r_id in stored_reagents_temperature)
 		stored_reagents_temperature[r_id] = average_temperature
+
+	process_recipes()
 
 	return TRUE
 
@@ -167,9 +175,11 @@
 /reagent_container/proc/process_recipes()
 
 	var/list/c_id_to_volume = list() //What is in the reagent container, but in a nice id = volume form
+	var/list/c_id_to_temperature = list()
 
 	for(var/reagent_id in stored_reagents)
 		c_id_to_volume[reagent_id] = stored_reagents[reagent_id]
+		c_id_to_temperature[reagent_id] = stored_reagents_temperature[reagent_id]
 
 	var/reagent_recipe/found_recipe = null
 
@@ -186,6 +196,15 @@
 			if(!c_id_to_volume[reagent_id] || c_id_to_volume[reagent_id] < recipe.required_reagents[reagent_id]) //if our container doesn't have what is required, then lets fuck off.
 				good_recipe = FALSE
 				break
+
+			if(recipe.required_temperature_min[reagent_id] && c_id_to_temperature[reagent_id] < recipe.required_temperature_min[reagent_id])
+				good_recipe = FALSE
+				break
+
+			if(recipe.required_temperature_max[reagent_id] && c_id_to_temperature[reagent_id] > recipe.required_temperature_max[reagent_id])
+				good_recipe = FALSE
+				break
+
 
 		if(!good_recipe) //This recipe doesn't work. Onto the next recipe.
 			continue
@@ -211,38 +230,32 @@
 
 		portions_to_make = min(portions_to_make,math_to_do)
 
-	var/desired_temperature = 0
 	var/amount_removed = 0
+
+	var/desired_temperature = average_temperature
 
 	for(var/k in found_recipe.required_reagents)
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
+		world.log << "Clearing [amount_to_remove] [k] from \the [owner.name]."
 		remove_reagent(k,amount_to_remove,FALSE)
-		desired_temperature += amount_to_remove*all_reagents[k].temperature_mod
 		amount_removed += amount_to_remove
 
-	if(amount_removed)
-		desired_temperature *= 1/amount_removed
-	else
-		desired_temperature = T0C
-
-	world.log << desired_temperature
+	update_container()
 
 	for(var/k in found_recipe.results)
-		var/v = found_recipe.results[k]
-		add_reagent(k,portions_to_make * v,desired_temperature,FALSE)
+		var/v = found_recipe.results[k] * portions_to_make
+		add_reagent(k,v,desired_temperature,FALSE)
+		world.log << "Adding [v] [k] to \the [owner.name]."
 
 	update_container()
 
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
-		world.log << "Owner: [owner], Result: [found_recipe.result]"
-		var/obj/item/A = new found_recipe.result(get_turf(owner))
-		if(A.reagents)
-			transfer_reagents_to(A.reagents,volume_current,FALSE)
-
-			A.reagents.update_container()
-			update_container()
-
+		while(volume_current > 0)
+			var/obj/item/A = new found_recipe.result(get_turf(owner))
+			if(!A.reagents)
+				break
+			transfer_reagents_to(A.reagents,min(A.reagents.volume_max,volume_current))
 
 	return TRUE
 
@@ -277,10 +290,11 @@
 	else
 		stored_reagents[reagent_id] = amount
 
-	if(stored_reagents_temperature[reagent_id])
-		stored_reagents_temperature[reagent_id] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_id])
-	else
-		stored_reagents_temperature[reagent_id] = temperature
+	if(amount > 0)
+		if(stored_reagents_temperature[reagent_id] && stored_reagents[reagent_id])
+			stored_reagents_temperature[reagent_id] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_id])
+		else
+			stored_reagents_temperature[reagent_id] = temperature
 
 	process_recipes()
 
@@ -290,10 +304,11 @@
 	return amount
 
 /reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE)
-	return -add_reagent(reagent_id,-amount,should_update)
+	return -add_reagent(reagent_id,-amount,TNULL,should_update)
 
 /reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0) //Transfer a single reagent by id.
-	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount))
+	var/old_temperature = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : T0C + 20
+	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount),old_temperature)
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE) //Transfer all the reagents.
 
@@ -312,7 +327,9 @@
 	for(var/r_id in stored_reagents)
 		var/volume = stored_reagents[r_id]
 		var/ratio = volume / old_volume
-		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,FALSE)
+		var/temp = stored_reagents_temperature[r_id]
+
+		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,temp,FALSE)
 		remove_reagent(r_id,amount_transfered,FALSE)
 		total_amount_transfered += amount_transfered
 
@@ -321,3 +338,40 @@
 		target_container.update_container()
 
 	return total_amount_transfered
+
+
+
+/reagent_container/proc/get_flavor()
+
+	var/list/flavor_profile = list()
+
+	var/total_flavor = 0
+
+	for(var/r_id in stored_reagents)
+		var/reagent/R = all_reagents[r_id]
+		flavor_profile[R.flavor] += R.flavor_strength
+		total_flavor += R.flavor_strength
+
+	InsertionSort(flavor_profile)
+
+	var/list/english_flavor_profile = list()
+
+	for(var/i=1,i<=min(3,length(flavor_profile)),i++)
+		var/k = flavor_profile[i]
+		var/v = flavor_profile[k] / total_flavor
+		var/flavor_text
+		switch(v)
+			if(0 to 0.25)
+				flavor_text = "a hint of [k]"
+			if(0.25 to 0.5)
+				flavor_text = "a little bit of [k]"
+			if(0.5 to 1)
+				flavor_text = k
+			if(1 to 2)
+				flavor_text = "a strong amount of [k]"
+			if(2 to INFINITY)
+				flavor_text = "an overwhelming amount of [k]"
+
+		english_flavor_profile += flavor_text
+
+	return english_list(english_flavor_profile)

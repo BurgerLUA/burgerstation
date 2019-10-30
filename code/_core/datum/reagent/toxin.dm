@@ -33,6 +33,8 @@
 
 	damage_per_unit = 15
 
+	flavor = "mushroom"
+
 
 /reagent/toxin/fly_amanita_toxin
 	name = "fly amanita toxin"
@@ -40,3 +42,5 @@
 	desc = "An moderately lethal toxin."
 
 	damage_per_unit = 4
+
+	flavor = "mushroom"

@@ -61,12 +61,9 @@
 		if(is_mob(blamed))
 			var/mob/M = blamed
 			M.to_chat(span("notice","You can't attack that!"))
-
-		//LOG_DEBUG("No object to damage or object to damage with.")
 		return FALSE
 
 	if(!attacker.can_attack(victim,object_to_damage_with,params))
-		//LOG_DEBUG("Cannot attack.")
 		return FALSE
 
 	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
@@ -78,7 +75,10 @@
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
 		return FALSE
 
-	object_to_damage_with.attack_last = curtime
+	attacker.attack_last = curtime
+
+	if(attacker != object_to_damage_with)
+		object_to_damage_with.attack_last = curtime
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE

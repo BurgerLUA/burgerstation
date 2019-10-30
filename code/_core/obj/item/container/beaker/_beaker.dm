@@ -65,8 +65,8 @@
 		return TRUE
 
 	if(object.reagents && object.allow_beaker_transfer)
-		var/transfer_amount = reagents.transfer_reagents_to(object.reagents,10)
-		caller.to_chat(span("notice","You transfer [transfer_amount] units of liquid to \the [object]."))
+		var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount)
+		caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
 		return TRUE
 
 	return ..()
@@ -83,6 +83,20 @@
 		if(!A.labeled_organs[BODY_STOMACH])
 			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
 			return FALSE
+
+		var/final_flavor_text = reagents.get_flavor()
+
+		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= curtime || A.last_flavor != final_flavor_text) )
+			A.last_flavor = final_flavor_text
+			A.last_flavor_time = curtime
+			final_flavor_text = "You taste [final_flavor_text]."
+		else
+			final_flavor_text = null
+
+		consumer.to_chat(span("notice","You [consume_verb] \the [src.name]."))
+
+		if(final_flavor_text)
+			consumer.to_chat(span("notice",final_flavor_text))
 
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
 		return reagents.transfer_reagents_to(S.reagents,Clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))

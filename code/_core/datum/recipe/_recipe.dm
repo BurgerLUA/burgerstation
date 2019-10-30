@@ -33,14 +33,11 @@
 
 	var/transfer_reagents = FALSE
 
-/recipe/proc/check_recipe(var/list/item_table,var/obj/item/crafting/crafting_table)
+/recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
 
-	/*
-	if(do_debug)
-		LOG_DEBUG("[crafting_table.crafting_id] == [recipe_type]")
-		for(var/k in item_table)
-			LOG_DEBUG("[k]: [item_table[k]]")
-	*/
+	return TRUE
+
+/recipe/proc/check_recipe(var/list/item_table,var/obj/item/crafting/crafting_table)
 
 	if(crafting_table.crafting_id != recipe_type)
 		return list()
