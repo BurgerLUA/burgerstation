@@ -298,13 +298,6 @@
 
 		display_hit_message(attacker,victim,weapon,hit_object)
 
-		if(is_crit)
-			do_critical_hit(attacker,victim,weapon,hit_object,total_damage_dealt)
-
-		victim.on_damage_received(hit_object,attacker,total_damage_dealt)
-		if(victim != hit_object)
-			hit_object.on_damage_received(hit_object,attacker,total_damage_dealt)
-
 		if(is_living(victim))
 			var/mob/living/L = victim
 			L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]\s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
@@ -312,11 +305,6 @@
 		if(is_living(blamed) && victim.health.health_max && blamed != victim) //TODO: Seperate log for blamed.
 			var/mob/living/L = blamed
 			L.to_chat(span("notice","Dealt <b>[round(total_damage_dealt,0.1)]</b> damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
-
-		hit_object.health.update_health(total_damage_dealt,attacker)
-
-		if(victim != hit_object && victim.health)
-			victim.health.update_health(total_damage_dealt,attacker)
 
 		if(is_living(attacker) && victim && attacker != victim)
 			var/mob/living/A = attacker
@@ -359,6 +347,18 @@
 				attack_log_format["critical"] = (PV.health.health_current - total_damage_dealt < 0) || PV.status & FLAG_STATUS_CRIT
 				attack_log_format["lethal"] = PV.health.health_current - total_damage_dealt <= min(-50,PV.health.health_max*-0.25)
 				PV.attack_logs += list(attack_log_format)
+
+		if(is_crit)
+			do_critical_hit(attacker,victim,weapon,hit_object,total_damage_dealt)
+
+		hit_object.health.update_health(total_damage_dealt,attacker)
+
+		if(victim != hit_object && victim.health)
+			victim.health.update_health(total_damage_dealt,attacker)
+
+		victim.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
+		if(victim != hit_object)
+			hit_object.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 

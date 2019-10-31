@@ -59,3 +59,13 @@
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
 	view_punch = 8
+
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
+	name = ".45 tactical pistol"
+	icon = 'icons/obj/items/weapons/ranged/45pistol2.dmi'
+	shoot_delay = 2
+	bullet_type = ".45"
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+
+	view_punch = 6

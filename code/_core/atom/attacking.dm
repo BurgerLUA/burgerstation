@@ -6,7 +6,7 @@
 
 	return attack_delay
 
-/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/damage_amount)
+/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 	return TRUE
 
 /atom/proc/change_victim(var/atom/attacker)
@@ -16,6 +16,8 @@
 	return FALSE
 
 /atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+
+	world.log << "ATTACK"
 
 	if(!attacker)
 		attacker = src
@@ -69,6 +71,8 @@
 	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
 		return FALSE
 
+	world.log << "WORK PLEASE"
+
 	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
 
 	if(!DT)
@@ -87,6 +91,8 @@
 
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker)
 
+	world.log << "DAMAGE?"
+
 	return TRUE
 
 /atom/proc/get_object_to_damage(var/atom/attacker,params) //Which object should the attacker damage?
@@ -100,7 +106,7 @@
 	if(!mouse_opacity)
 		return FALSE
 
-	if(victim && is_valid(victim))
+	if(victim && is_valid(victim) && is_living(victim))
 
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)

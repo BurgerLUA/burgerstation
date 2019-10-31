@@ -7,7 +7,8 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/autopistol,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
+		/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
 	)
 
 /obj/item/magazine/pistol_45/on_spawn()

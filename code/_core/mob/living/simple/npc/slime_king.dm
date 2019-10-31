@@ -26,7 +26,7 @@
 	boss = TRUE
 	force_spawn = TRUE
 
-/mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/damage_amount)
+/mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 
 	. = ..()
 

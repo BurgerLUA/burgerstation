@@ -49,8 +49,8 @@
 	update_stats()
 
 	health_current = health_max
-	stamina_current = health_max
-	mana_current = health_max
+	stamina_current = stamina_max
+	mana_current = mana_max
 
 	update_health(update_hud = FALSE)
 

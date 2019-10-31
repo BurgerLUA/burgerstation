@@ -9,13 +9,18 @@
 
 	reagents = /reagent_container/food/
 
+	var/scale_sprite = TRUE
+
 
 /obj/item/container/food/update_icon()
 
-	var/matrix/M = matrix()
-	var/scale_math = max(0.5 + (reagents.volume_current/reagents.volume_max)*0.5)
-	M.Scale(scale_math)
-	transform = M
+	if(scale_sprite)
+		var/matrix/M = matrix()
+		var/scale_math = max(0.5 + (reagents.volume_current/reagents.volume_max)*0.5)
+		M.Scale(scale_math)
+		transform = M
+	else
+		transform = matrix()
 
 	return ..()
 

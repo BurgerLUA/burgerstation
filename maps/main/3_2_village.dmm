@@ -182,6 +182,7 @@
 "dz" = (/turf/simulated/floor/colored/grass,/area/world/forest/interior/village/shop/debug)
 "dA" = (/turf/simulated/floor/wood/rich,/area/world/forest/exterior/village)
 "dB" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
+"dC" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/magazine/smg_22,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "dD" = (/obj/structure/interactive/chair/stool,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/bar)
 "dE" = (/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
 "dF" = (/obj/structure/interactive/lighting/fireplace/fire04,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/shop/debug)
@@ -227,6 +228,7 @@
 "et" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/world/forest/exterior/village)
 "eu" = (/mob/living/simple/npc/crab,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/plains)
 "ev" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side,/area/world/forest/exterior/village)
+"ew" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/magazine/bull,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "ex" = (/obj/item/weapon/ranged/laser/chronogun,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/world/forest/exterior/village)
 "ey" = (/turf/simulated/wall/rock,/area/world/forest/interior/cave/desert)
 "ez" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
@@ -327,8 +329,8 @@ eOeOeOeOeOagagageOagagbNbNbNagagagagagagagagagagagagagagagagagagafafafafafacajaj
 eOeOeOeOeOeOagagagbNbNbNbNagagageOeOeOeOagagagagagagagagafafafafafafacajajajajacafafafafafafagagagagagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbFbKbKbLbLbLbLenbKbKbKbLbLbLbFbxbDaBbZbXbXbXbXbXbZcNdUeqclclclclbmbmbmbmbmbmbmbmbmbmbmaHaJaHbmbmbmbmbmbmbmbm
 eOeOeOeOeOagagagbNbNbNbNagageOeOeOeOeOeOeOeOeOagagafafafafafafafacacajajacafafafafafafagagagagagagaGagagagavabdqdqdqabanbwdsdsdsbwandodudududobibxbDbibHbHbHbHbHbIbIbIbHbIbIbIbHaBbxbDbibGcAcFdKcFcAbGaBbxbDcabdbgbgbgbmbmbgbgbgbmbmbmbmaHaHaJaHaHbmbmbmbmbmbmbm
 eOeOeOeOeOeOagagbNbNagagageOeOeOeOeOeOeOeOeOafafafafacacajajajajacafafafafafafagagagagagagagagagagagagagafavabdqdqdqabbibwdsdsdsbwandodudududobibxbDbibHeNeNeNbMccaTcubPcLcqbabIaBbxbDbibZbXcJcJcJbXbZaBbxbDanbdbgbgbgbmbmbgbgbgbmbmbmaHaJaJaJaJaJaHbmbmbmbmbmbm
-eOeOeOeOeOeOeOagagagageOeOeOeOeOeOeOeOafafafafacacajajajajafafafafafafafagagagagagagagagagagagagaZagbNbNafavababdvababbibwbwdwbwbwandododxdodobibxbDaBbHeNeNcbbWeNeNeNeNeNeNeNbIaBbxbDbibZbXcJcJcJbXbZbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaHaJaJaJaJaJaHaHbmbmbmbmbm
-eOeOeOeOeOeOeOagageOeOeOeOeOeOeOafafafacacacacacacafafafafafafagagagagagagagagagagagagagagagagagagbNavavavavanbiananbibibibiananananbibianbibicBbxbDbibHbWbWaebWeNeNeNeNeNeNeNbIbibxbDbibGcFcJcJcJcFbGbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
+eOeOeOeOeOeOeOagagagageOeOeOeOeOeOeOeOafafafafacacajajajajafafafafafafafagagagagagagagagagagagagaZagbNbNafavababdvababbibwbwdwbwbwandododxdodobibxbDaBbHeNeNcbdCeNeNeNeNeNeNeNbIaBbxbDbibZbXcJcJcJbXbZbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaHaJaJaJaJaJaHaHbmbmbmbmbm
+eOeOeOeOeOeOeOagageOeOeOeOeOeOeOafafafacacacacacacafafafafafafagagagagagagagagagagagagagagagagagagbNavavavavanbiananbibibibiananananbibianbibicBbxbDbibHbWbWaeeweNeNeNeNeNeNeNbIbibxbDbibGcFcJcJcJcFbGbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOagagageOeOeOeOeOafafacacacafafafafafafafagagagagagagagagagagagagagagagagaZagagagagagagbNeQaiavavaiananananananananananbrbsbsbsbsbsbsbBbDbibHcGeNeNeNeNeNcWaEeNeNcdbHcBbxbDaBbZdJcJcJcJcRbZbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOaGagagagacacacafacacacafafafafafafagagagagagaZagagagagagagagagagagbNbNbNagagagagagagbNafeQaiavavaiananananaiaiaiaiaiaibxbBbCbCbCbCbCbBbDbibIbTeNeNeNeNeNctcweNeNbObIbibxbDaBbZdPcJcJcJcDbZaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOaceOeOeOeOacacacacacacacacafafaGagagagagagagagagagagagagagagagagaZbNbNbNbNbNbNbNagagagaZagafafananaiaiaiaiaiaiaiaiaiaianananbxbDbibibibicHbxbDbibIbVeNeNeNeNeNeNeNeNeNcEbIbibxbDaBbGdQcJcJcJdNbGaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaOaJaJaJaHbmbmbmbmbm

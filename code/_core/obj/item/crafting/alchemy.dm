@@ -62,7 +62,7 @@
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE)
 
 		success = TRUE
-		if(should_delete)
+		if(should_delete || !is_beaker(I))
 			qdel(I)
 		else if(I.reagents)
 			I.reagents.update_container()

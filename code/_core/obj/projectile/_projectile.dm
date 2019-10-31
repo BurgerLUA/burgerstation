@@ -82,8 +82,19 @@
 	last_loc_x = x
 	last_loc_y = y
 
-	//pixel_x = vel_x
-	//pixel_y = vel_y
+	var/normal_x = vel_x
+	var/normal_y = vel_y
+
+
+	if(normal_x && normal_y)
+		normal_x *= 1/max(abs(normal_x),abs(normal_y))
+		normal_y *= 1/max(abs(normal_x),abs(normal_y))
+
+	pixel_x = normal_x * TILE_SIZE
+	pixel_y = normal_y * TILE_SIZE
+
+	pixel_x_float = normal_x * TILE_SIZE
+	pixel_y_float = normal_y * TILE_SIZE
 
 	shoot_x = desired_shoot_x
 	shoot_y = desired_shoot_y

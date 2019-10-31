@@ -6,7 +6,7 @@
 		return
 
 	if(findtext(href,"<script",1,0))
-		world.log <<  "Attempted use of scripts within a topic call, by [src]."
+		LOG_ADMIN("Attempted use of scripts within a topic call, by [src].")
 		return
 
 	/*
