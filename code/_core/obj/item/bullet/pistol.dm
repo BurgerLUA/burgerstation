@@ -10,6 +10,8 @@
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "10mm_auto"
 
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+
 /obj/item/bullet/pistol_10mm/surplus
 	name = "\improper surplus 10mm auto round"
 	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
@@ -18,6 +20,7 @@
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "10mm_auto_surplus"
 
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY*SURPLUS_PENALTY
 
 /obj/item/bullet/pistol_50ae/
 	name = "\improper .50 action express"
@@ -31,6 +34,7 @@
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = ".50ae"
 
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
 
 /obj/item/bullet/pistol_9mm/
 	name = "\improper 9mm round"
@@ -44,6 +48,8 @@
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "9mm"
 
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+
 /obj/item/bullet/pistol_45/
 	name = "\improper .45 bullet"
 	desc = "For pistols and smgs that requre .45 ammo."
@@ -52,6 +58,8 @@
 
 	projectile = /obj/projectile/bullet/smg
 	damage_type = ".45"
+
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
 
 
 /obj/item/bullet/pistol_45/surplus
@@ -62,3 +70,5 @@
 
 	projectile = /obj/projectile/bullet/smg
 	damage_type = ".45_surplus"
+
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY

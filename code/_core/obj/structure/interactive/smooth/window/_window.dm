@@ -17,6 +17,10 @@
 	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'
 	icon_state = "window"
 
+/obj/structure/smooth/window/reinforced/plasma
+	name = "phoron reinforced window"
+	color = "#FF7FB6"
+
 /obj/structure/smooth/window/tinted
 	name = "tinted window"
 	desc = "Don't see through this."

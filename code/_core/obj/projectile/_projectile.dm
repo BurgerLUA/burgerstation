@@ -50,6 +50,8 @@
 
 	var/damage_multiplier = 1
 
+	var/obj/effect/temp/muzzleflash/muzzleflash_effect
+
 /obj/projectile/destroy()
 	owner = null
 	weapon = null
@@ -82,19 +84,27 @@
 	last_loc_x = x
 	last_loc_y = y
 
-	var/normal_x = vel_x
-	var/normal_y = vel_y
+	var/normal_x = desired_vel_x
+	var/normal_y = desired_vel_y
 
+	if(vel_x || vel_y)
+		normal_x *= 1/max(abs(vel_x),abs(vel_y))
+		normal_y *= 1/max(abs(vel_x),abs(vel_y))
 
-	if(normal_x && normal_y)
-		normal_x *= 1/max(abs(normal_x),abs(normal_y))
-		normal_y *= 1/max(abs(normal_x),abs(normal_y))
+	var/bullet_offset = floor(TILE_SIZE*0.5)
 
-	pixel_x = normal_x * TILE_SIZE
-	pixel_y = normal_y * TILE_SIZE
+	if(muzzleflash_effect)
+		var/obj/effect/temp/muzzleflash/M = new muzzleflash_effect(src.loc)
+		M.pixel_x = normal_x * bullet_offset
+		M.pixel_y = normal_y * bullet_offset
+		var/new_angle = arctan(vel_x,vel_y) - 90
+		M.transform = turn(M.transform,-new_angle)
 
-	pixel_x_float = normal_x * TILE_SIZE
-	pixel_y_float = normal_y * TILE_SIZE
+	pixel_x = normal_x * bullet_offset
+	pixel_y = normal_y * bullet_offset
+
+	pixel_x_float = normal_x * bullet_offset
+	pixel_y_float = normal_y * bullet_offset
 
 	shoot_x = desired_shoot_x
 	shoot_y = desired_shoot_y

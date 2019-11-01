@@ -13,6 +13,8 @@
 	projectile = /obj/projectile/bullet/bolt
 	damage_type = "bolt_metal"
 
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+
 /obj/item/bullet/bolt/on_spawn()
 	item_count_current = 3
 	update_icon()

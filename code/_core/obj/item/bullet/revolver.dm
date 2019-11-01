@@ -10,6 +10,8 @@
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = ".38"
 
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+
 
 /obj/item/bullet/revolver_357
 	name = "\improper .357 bullet"
@@ -24,6 +26,8 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+
 /obj/item/bullet/revolver_44
 	name = "\improper .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo."
@@ -36,6 +40,8 @@
 	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
+
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
 
 /obj/item/bullet/revolver_44/surplus
 	name = "\improper surplus .44 magnum bullet"
@@ -50,6 +56,7 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
 /obj/item/bullet/revolver_22
 	name = "\improper .22 LR"
@@ -64,12 +71,16 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+
 /obj/item/bullet/revolver_22/surplus
 	name = "\improper .22 LR surplus"
 	damage_type = ".22_surplus"
 
 	item_count_max = 6
 	item_count_max_icon = 6
+
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
 
 /obj/item/bullet/revolver_22/surplus/on_spawn()
 	item_count_current = 6

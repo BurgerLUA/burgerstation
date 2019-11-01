@@ -3,6 +3,8 @@
 	impact_effect_turf = /obj/effect/temp/impact/bullet
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
+	muzzleflash_effect = /obj/effect/temp/muzzleflash/
+
 /obj/projectile/bullet/revolver
 	name = "revolver bullet"
 	icon = 'icons/obj/projectiles/bullet.dmi'

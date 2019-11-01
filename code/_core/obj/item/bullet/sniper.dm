@@ -10,5 +10,5 @@
 	projectile = /obj/projectile/bullet/sniper
 	damage_type = ".50"
 
-
+	bullet_speed = BULLET_SPEED_SNIPER
 

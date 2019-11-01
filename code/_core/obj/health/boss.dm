@@ -6,7 +6,7 @@
 	icon = 'icons/hud/boss_bar.dmi'
 	icon_state = "frame"
 
-	screen_loc = "CENTER,TOP-0.5"
+	screen_loc = "CENTER-0.5,TOP-1.5"
 
 	var/bar_color = "#ffffff"
 	var/min = 0

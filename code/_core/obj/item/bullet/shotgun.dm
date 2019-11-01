@@ -7,6 +7,8 @@
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
 
+	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE
+
 /obj/item/bullet/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -27,6 +29,8 @@
 
 	damage_type = "12_slug"
 
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+
 /obj/item/bullet/shotgun/buckshot
 	name = "\improper 12 gauge buckshot shell"
 	desc = ""
@@ -39,3 +43,5 @@
 	projectile = /obj/projectile/bullet/shotgun_pellet
 
 	damage_type = "12_buckshot"
+
+	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE

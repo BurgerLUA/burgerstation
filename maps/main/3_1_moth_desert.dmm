@@ -20,7 +20,7 @@
 "t" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/overwear/armor/cult/old,/obj/item/clothing/overwear/armor/knight/magnus/red,/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop02)
 "u" = (/turf/simulated/wall/brick/sand,/area/world/desert/exterior/village/shop03)
 "v" = (/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
-"w" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
+"w" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/powercell,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
 "x" = (/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop03)
 "y" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/magazine/pistol,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
 "z" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/ranged/magic/scroll/fireball/amount_3,/obj/item/weapon/ranged/magic/staff/fire,/obj/item/weapon/ranged/magic/tome/fireball,/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop02)
@@ -32,23 +32,27 @@
 "F" = (/turf/simulated/floor/colored/sand/desert,/area/world/desert/cave)
 "G" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/magazine/smg_22,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
 "H" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/magazine/bull,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop01)
+"I" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/container/beaker/bottle/large/water,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop02)
+"J" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/turf/simulated/floor/asteroid,/area/world/desert/exterior/village/shop02)
+"K" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/storage/bags/chemistry,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop02)
+"L" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/storage/bags/mining,/turf/simulated/floor/colored/sand/desert,/area/world/desert/exterior/village/shop03)
 
 (1,1,1) = {"
 jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjeeejjjjjjjjjjjjjjjjccccccccccccccj
 jjjjjjkkjjjjjjjjkkkjkkjjjjkkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjllllljjeeejjeeeeejjjjjjjjjccccccccccccccj
 jkkkkkkkjjjjkkkkkkkkkkjjjkkkkjjjjjjddddddjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjdddjjjjjeejlyAmleeeeeeeeeeeeejjjjjjjjccccccccccccccj
-jjkkkkkkjjjkkkkkkkkkkkkjkkkkkjjjjdddffffdddddjjjjjddddjjjjjjjjjjjjjjjjjdddddddddjjeeeejloooleeeeeeeeeeeeeejjjjjjcccccccccccccccj
-jjkkkkkjjjjkkkkkkkkkkkkkkkkkkjjdddffffffffffddddggddddddjjjjjjjjjjjjjfffffddddddddeeeeelGoopeeeeeennneeeeeejjjjjcccccccccccccccj
-jjkkkkjjjjkkkkkkkkkkkkkkkkkkjjjdfffffffffffffdddggdddddddjjjjjjjjjjffffffffffdddddeejjelHopleeeeeqqqqqeeeeeejjjacccccccccccccccj
-jjkkkkjjjjkkkkkjkkkkjkkkkkjjjdddffggggggggffffddggdfffddddjjjjjjjffffffffffffffdddejjjeooppleeeenqrssseeenneejccccccccccccccccjj
-jjkkkkjjjkkkkkjjjkkjjjkkkjjjddffffgdddfddgfffffdggffffffdddjjjjfffffffffffffffffddjjjeeeeeeeeeennrrszqeennneeeccccccccccccccccjj
+jjkkkkkkjjjkkkkkkkkkkkkjkkkkkjjjjdddffffdddddjjjjjddddjjjjjjjjjjjjjjjjjdddddddddjjeeeejloooleeeeeqqqqqeeeejjjjjjcccccccccccccccj
+jjkkkkkjjjjkkkkkkkkkkkkkkkkkkjjdddffffffffffddddggddddddjjjjjjjjjjjjjfffffddddddddeeeeelGoopeeeeeqKIJseeeeejjjjjcccccccccccccccj
+jjkkkkjjjjkkkkkkkkkkkkkkkkkkjjjdfffffffffffffdddggdddddddjjjjjjjjjjffffffffffdddddeejjelHopleeeeerrrrseeeeeejjjacccccccccccccccj
+jjkkkkjjjjkkkkkjkkkkjkkkkkjjjdddffggggggggffffddggdfffddddjjjjjjjffffffffffffffdddejjjeooppleeeenrrrrreeenneejccccccccccccccccjj
+jjkkkkjjjkkkkkjjjkkjjjkkkjjjddffffgdddfddgfffffdggffffffdddjjjjfffffffffffffffffddjjjeeeeeeeeeennrrrzqeennneeeccccccccccccccccjj
 jjkkkkkjkkkkkjjjjjjjjkkkjjjddfffffgdddffdgfffffffffffffffdddjffffffffffffffffffffdddeeeeeeeeeeennrrsBqeennnneeccccccccccccccccjj
 jjjkkkkjkkkkkkjjjjjjkkkkjjddffffffgddffddgffffffffffffffffffffffffffffffffffffffffddeeeeenneeeeenrsstqeennnneeccccccccccccccccjj
 jjjjkkkkkkkkkkkkkjjjjkkjjddfffffffgdfffddgfffffffffffffffffffffffffffffffffffffffffdeeeennnneeeeeqqqqqeennnneeccccccccccccccccjj
 jjjjjkkkkkkkkkkkkkkjjjjjddffffffffggfffdggffffffffffffffffffffffffffffffffffffffffffeeeeeennneeeenneeeeeenneeeccccccccccccccccjj
 jjjjjkkkkkkkkkkkkkkjjjjddffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdeeeeeeennneeeeeeeeeeeeeeeeccccccccccccccccjj
 jjjjjkkjjjjkkkkkFFFkkjjdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdjjjjeeeeeeeeeeeeenuuuuuuneccccccccccccccccjj
-jjjkkkjjjjjjkkkkkFFFkkddfffffffffffffffffffffffffffffffffffffffffffffffdddddfffffffdddjjjjeeeeeeeeeeenvwEDCveeccccccccccccccccjj
+jjjkkkjjjjjjkkkkkFFFkkddfffffffffffffffffffffffffffffffffffffffffffffffdddddfffffffdddjjjjeeeeeeeeeeenvwEDCLeeccccccccccccccccjj
 jjjkkkkjjjjkkkkjkkFFFffffffffffffffffffffffffffdggffffffffffffffffddddddddddddddfffffdddjjjjjeeeeeeeenvvvxxxeeccccccccccccccccjj
 jjkkkkkjjjkkkkkjjjkFfffffffdddffffffffffffffffddggffffffffffffffddddddddddddddjjjffffffdddjjjjjeeeeeeeuvvvvxeeccccccccccccccccjj
 jjjkkkkjjjkkkkjjjjjddffffddddddfffffffffffffffddggffffffffffffddddddddddddddjjjjfffffffffdddjjjjjjejeeuuuuuxeeccccccccccccccccjj
