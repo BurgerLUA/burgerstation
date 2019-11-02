@@ -19,3 +19,7 @@
 			qdel(I)
 
 	return TRUE
+
+
+/obj/item/proc/update_inventory() //When this object's inventory was updated.
+	return TRUE

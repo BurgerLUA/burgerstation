@@ -51,10 +51,9 @@
 
 			qdel(src)
 		else if(icon_state == "bun_whole")
-			var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
-			B.cooked_icon_state = "bun_top"
+			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
 			reagents.transfer_reagents_to(B.reagents,reagents.volume_current/2)
-			cooked_icon_state = "bun_bottom"
+			cooked_icon_state = "bun_top"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into two halves.")

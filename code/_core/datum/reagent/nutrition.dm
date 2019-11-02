@@ -44,7 +44,7 @@
 
 	flavor = "gross dry oat flour"
 
-/reagent/core/nutrition/wheat_grain/flour/processe
+/reagent/core/nutrition/wheat_grain/flour/processed
 	name = "white flour"
 	id = "flour_white"
 	desc = "Finely processed white flour for use in baking."

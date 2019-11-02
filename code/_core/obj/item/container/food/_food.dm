@@ -11,6 +11,8 @@
 
 	var/scale_sprite = TRUE
 
+	var/remove_on_no_reagents = TRUE
+
 
 /obj/item/container/food/update_icon()
 
@@ -57,12 +59,18 @@
 
 	return TRUE
 
+
+/obj/item/container/food/proc/get_reagents_to_eat() //Should only be called when it's about to be eaten.
+	return reagents
+
 /obj/item/container/food/proc/consume(var/mob/living/consumer)
 
-	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
+	if(remove_on_no_reagents && (!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0))
 		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
 		qdel(src)
 		return FALSE
+
+	var/reagent_container/reagents_to_consume = get_reagents_to_eat()
 
 	if(is_advanced(consumer))
 		var/mob/living/advanced/A = consumer
@@ -71,7 +79,7 @@
 			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
 			return FALSE
 
-		var/final_flavor_text = reagents.get_flavor()
+		var/final_flavor_text = reagents_to_consume.get_flavor()
 
 		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= curtime || A.last_flavor != final_flavor_text) )
 			A.last_flavor = final_flavor_text
@@ -88,9 +96,9 @@
 		bite_count += 1
 
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
-		var/returning = reagents.transfer_reagents_to(S.reagents,bite_size)
+		var/returning = reagents_to_consume.transfer_reagents_to(S.reagents,bite_size)
 
-		if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
+		if(remove_on_no_reagents && (!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0))
 			consumer.to_chat(span("notice","You finish eating \the [src.name]."))
 			qdel(src)
 
@@ -100,7 +108,8 @@
 		bite_count += 1
 		var/returning = reagents.transfer_reagents_to(consumer.reagents,bite_size)
 
-		if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
+		if(remove_on_no_reagents && (!reagents_to_consume || !length(reagents_to_consume.stored_reagents) || reagents_to_consume.volume_current <= 0))
+			consumer.to_chat(span("notice","You finish eating \the [src.name]."))
 			qdel(src)
 
 		return returning

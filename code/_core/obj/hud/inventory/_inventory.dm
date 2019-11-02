@@ -389,10 +389,9 @@
 	else if(src.loc)
 		name = "[src.loc.name] inventory"
 
-	/* TODO: IMPORTANT, IS THIS NEEDED?
-	if(owner)
-		owner.update_icon()
-	*/
+	if(src.loc && is_item(src.loc))
+		var/obj/item/I = src.loc
+		I.update_inventory()
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 

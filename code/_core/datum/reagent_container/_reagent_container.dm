@@ -54,6 +54,9 @@
 	if(!volume_current)
 		return
 
+	if(!owner)
+		return
+
 	for(var/r_id in stored_reagents)
 
 		if(!flags_metabolism)
@@ -66,7 +69,6 @@
 
 
 		var/reagent/R = all_reagents[r_id]
-
 
 		var/atom/owner_to_use = owner
 
@@ -166,7 +168,7 @@
 		color = "#FFFFFF"
 		average_temperature = T0C+20
 
-	if(should_update_owner)
+	if(owner && should_update_owner)
 		owner.update_icon()
 
 	return TRUE
@@ -234,17 +236,21 @@
 
 	var/desired_temperature = average_temperature
 
+	world.log << "We're going to be making [portions_to_make] portions."
+
 	for(var/k in found_recipe.required_reagents)
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
-		remove_reagent(k,amount_to_remove,FALSE)
+		remove_reagent(k,amount_to_remove,FALSE,FALSE)
 		amount_removed += amount_to_remove
+		world.log << "Removing: [k] [amount_to_remove]"
 
 	update_container()
 
 	for(var/k in found_recipe.results)
 		var/v = found_recipe.results[k] * portions_to_make
-		add_reagent(k,v,desired_temperature,FALSE)
+		add_reagent(k,v,desired_temperature,FALSE,FALSE)
+		world.log << "Adding: [k] [v]"
 
 	update_container()
 
@@ -253,11 +259,11 @@
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			if(!A.reagents)
 				break
-			transfer_reagents_to(A.reagents,min(A.reagents.volume_max,volume_current))
+			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current))
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE)
+/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
 
 	if(!all_reagents[reagent_id])
 		LOG_ERROR("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
@@ -294,27 +300,28 @@
 		else
 			stored_reagents_temperature[reagent_id] = temperature
 
-	process_recipes()
+	if(check_recipes)
+		process_recipes()
 
 	if(should_update)
 		update_container()
 
 	return amount
 
-/reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE)
-	return -add_reagent(reagent_id,-amount,TNULL,should_update)
+/reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
+	return -add_reagent(reagent_id,-amount,TNULL,should_update,check_recipes)
 
-/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0) //Transfer a single reagent by id.
+/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE) //Transfer a single reagent by id.
 	var/old_temperature = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : T0C + 20
-	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount),old_temperature)
+	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount,should_update,check_recipes),old_temperature,should_update,check_recipes)
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE) //Transfer all the reagents.
 
 	if(amount == 0)
 		return FALSE
 
 	if(amount < 0)
-		return -target_container.transfer_reagents_to(src,-amount,should_update)
+		return -target_container.transfer_reagents_to(src,-amount,should_update,check_recipes)
 
 	amount = min(amount,volume_current)
 
@@ -327,9 +334,13 @@
 		var/ratio = volume / old_volume
 		var/temp = stored_reagents_temperature[r_id]
 
-		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,temp,FALSE)
+		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,temp,FALSE,FALSE)
 		remove_reagent(r_id,amount_transfered,FALSE)
 		total_amount_transfered += amount_transfered
+
+	if(check_recipes)
+		src.process_recipes()
+		target_container.process_recipes()
 
 	if(should_update)
 		src.update_container()
