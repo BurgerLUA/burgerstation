@@ -148,3 +148,58 @@
 
 	flavor = "mushroom"
 
+
+
+//Fat
+/reagent/core/nutrition/fat/
+	name = "fat"
+	id = "fat"
+	desc = "Nutrition and flavor from fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 0.8 NUT_FACTOR
+
+	flavor = "fat"
+
+/reagent/core/nutrition/fat/cow
+	name = "cow's fat"
+	id = "fat_cow"
+	desc = "Nutrition and flavor from cow's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 0.8 NUT_FACTOR
+
+	flavor = "fat"
+
+//Meat
+/reagent/core/nutrition/meat/
+	name = "raw meat"
+	id = "raw_meat"
+	desc = "Nutrition and flavor from raw meat."
+	color = "#EA4147"
+
+	nutrition_amount = 0.4 NUT_FACTOR
+
+	flavor = "raw meat"
+
+/reagent/core/nutrition/meat/cow
+	name = "raw cow's meat"
+	id = "raw_meat_cow"
+	desc = "Nutrition and flavor from raw cow's meat."
+	color = "#EA4147"
+
+	nutrition_amount = 0.5 NUT_FACTOR
+
+	flavor = "raw meat"
+
+/reagent/core/nutrition/meat/cow/cooked
+	name = "cooked cow's meat"
+	id = "cooked_meat_cow"
+	desc = "Nutrition and flavor from cooked cow's meat."
+	color = "#96463C"
+
+	nutrition_amount = 0.7 NUT_FACTOR
+
+	flavor = "beef"
+
+

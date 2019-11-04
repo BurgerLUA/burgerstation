@@ -236,21 +236,17 @@
 
 	var/desired_temperature = average_temperature
 
-	world.log << "We're going to be making [portions_to_make] portions."
-
 	for(var/k in found_recipe.required_reagents)
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
 		remove_reagent(k,amount_to_remove,FALSE,FALSE)
 		amount_removed += amount_to_remove
-		world.log << "Removing: [k] [amount_to_remove]"
 
 	update_container()
 
 	for(var/k in found_recipe.results)
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE)
-		world.log << "Adding: [k] [v]"
 
 	update_container()
 

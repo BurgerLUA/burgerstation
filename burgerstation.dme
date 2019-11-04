@@ -619,6 +619,7 @@
 #include "code\_core\obj\item\container\food\bread.dm"
 #include "code\_core\obj\item\container\food\burgers.dm"
 #include "code\_core\obj\item\container\food\dynamic.dm"
+#include "code\_core\obj\item\container\food\meat.dm"
 #include "code\_core\obj\item\container\food\plants.dm"
 #include "code\_core\obj\item\container\food\raw.dm"
 #include "code\_core\obj\item\container\food\sandwich\_sandwich.dm"

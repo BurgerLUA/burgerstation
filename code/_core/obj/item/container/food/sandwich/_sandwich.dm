@@ -78,3 +78,8 @@
 /obj/item/container/food/sandwich/burger
 	name = "burger"
 	icon_state = "bun_bottom"
+
+
+/obj/item/container/food/sandwich/bread
+	name = "sandwich"
+	icon_state = "bun_bottom"

@@ -93,3 +93,21 @@
 	results = list(
 		"bread_flour_white" = 1
 	)
+
+//Meat
+/reagent_recipe/meat/cow
+
+	name = "cooked cow's meat"
+	id = "cooked_meat_cow"
+
+	required_reagents = list(
+		"raw_meat_cow" = 1
+	)
+
+	required_temperature_min = list(
+		"raw_meat_cow" = 400
+	)
+
+	results = list(
+		"cooked_meat_cow" = 1
+	)
