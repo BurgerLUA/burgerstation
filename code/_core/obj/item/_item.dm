@@ -18,6 +18,7 @@
 	var/slowdown_mul_held = 1 //Slow down multiplier. High values means more slower.
 	var/slowdown_mul_worn = 1
 
+	var/pixel_height = 2 //The z size of this, in pixels. Use for sandwiches and burgers.
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0

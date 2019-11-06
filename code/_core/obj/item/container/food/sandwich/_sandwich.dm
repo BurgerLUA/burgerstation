@@ -51,7 +51,11 @@
 	var/icon/I = new/icon(icon,icon_state)
 	I.Blend(reagents.color,ICON_MULTIPLY)
 
-	overlays.Cut()
+	for(var/image/IM in overlays)
+		overlays -= IM
+		qdel(I)
+
+	overlays.Cut() //Just in case.
 
 	var/offset_y = -2
 
@@ -60,9 +64,11 @@
 		var/obj/item/IT = IN.get_top_held_object()
 		if(!IT)
 			continue
-		IT.pixel_y = offset_y
-		overlays += IT
-		offset_y += 4
+		var/image/IM = new/image(IT.icon,IT.icon_state)
+		IM.pixel_y = offset_y
+		IM.color = IT.color
+		overlays += IM
+		offset_y += IT.pixel_height
 
 	icon = I
 

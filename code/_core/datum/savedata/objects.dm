@@ -82,6 +82,19 @@
 		if(object_data["charge_current"])
 			P.charge_current = object_data["charge_current"]
 
+	if(istype(O,/obj/item/container/food/dynamic))
+		var/obj/item/container/food/dynamic/D = O
+		D.icon_state = object_data["icon_state"]
+
+	if(istype(O,/obj/item/container/food/dynamic/bread))
+		var/obj/item/container/food/dynamic/bread/B = O
+		B.cooked_icon_state = object_data["cooked_icon_state"]
+		B.raw_icon_state = object_data["raw_icon_state"]
+
+	if(istype(O,/obj/item/container/food/dynamic/meat))
+		var/obj/item/container/food/dynamic/meat/M = O
+		object_data["last_cooked"] = M.last_cooked
+
 	if(is_bullet_gun(O))
 		var/obj/item/weapon/ranged/bullet/BG = O
 
@@ -209,6 +222,19 @@
 			returning_list["reagents"] = list()
 			for(var/r_id in IT.reagents.stored_reagents)
 				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+
+	if(istype(I,/obj/item/container/food/dynamic))
+		var/obj/item/container/food/dynamic/D = I
+		returning_list["icon_state"] = D.icon_state
+
+	if(istype(I,/obj/item/container/food/dynamic/bread))
+		var/obj/item/container/food/dynamic/bread/B = I
+		returning_list["cooked_icon_state"] = B.cooked_icon_state
+		returning_list["raw_icon_state"] = B.raw_icon_state
+
+	if(istype(I,/obj/item/container/food/dynamic/meat))
+		var/obj/item/container/food/dynamic/meat/M = I
+		returning_list["last_cooked"] = M.last_cooked
 
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I

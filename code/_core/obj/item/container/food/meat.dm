@@ -23,6 +23,7 @@
 	else if(icon_state == "meatball")
 		icon_state = "patty"
 		caller.to_chat("You reshape \the [src.name] into a patty.")
+		pixel_height = 2
 		update_icon()
 
 	update_icon()
@@ -35,7 +36,6 @@
 		if(reagents.volume_current <= 5)
 			icon_state = "bacon"
 		else if(reagents.volume_current <= 10)
-			world.log << "OKAY: [icon_state]"
 			icon_state = "cutlet"
 
 	var/total_raw = 0
@@ -92,7 +92,6 @@
 			I4.Blend(rgb(0,0,0,200),ICON_MULTIPLY)
 			I3.Blend(I4,ICON_ADD)
 			I.Blend(I3,ICON_OVERLAY)
-
 
 	icon = I
 
