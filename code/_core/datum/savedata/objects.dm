@@ -34,6 +34,10 @@
 				I.reagents.add_reagent(r_id,volume,TNULL,FALSE)
 			I.reagents.update_container()
 
+	if(is_food(O))
+		var/obj/item/container/food/F = O
+		F.original_volume = object_data["original_volume"]
+
 	if(is_clothing(O))
 		var/obj/item/clothing/C = O
 		if(C.polymorphic)
@@ -222,6 +226,10 @@
 			returning_list["reagents"] = list()
 			for(var/r_id in IT.reagents.stored_reagents)
 				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+
+	if(is_food(I))
+		var/obj/item/container/food/F = I
+		returning_list["original_volume"] = F.original_volume
 
 	if(istype(I,/obj/item/container/food/dynamic))
 		var/obj/item/container/food/dynamic/D = I

@@ -16,7 +16,7 @@
 
 /obj/item/container/food/sandwich/on_spawn()
 	reagents.add_reagent("bread_flour_white",5)
-
+	return ..()
 
 /obj/item/container/food/sandwich/get_reagents_to_eat()
 

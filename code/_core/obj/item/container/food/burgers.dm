@@ -13,6 +13,7 @@
 
 /obj/item/container/food/burger/ham/on_spawn()
 	reagents.add_reagent("bicaridine",50)
+	return ..()
 
 /*
 

@@ -50,26 +50,21 @@
 
 	for(var/reagent_id in reagents.stored_reagents)
 		var/amount = reagents.stored_reagents[reagent_id]
-
 		if(has_prefix(reagent_id,"cooked_meat_"))
 			total_cooked += amount
 			if(!best_meat || amount > best_meat_volume)
 				best_meat = reagent_id
 				best_meat_volume = amount
-
 		else if(has_prefix(reagent_id,"raw_meat_"))
 			total_raw += amount
 			if(!best_meat || amount > best_meat_volume)
 				best_meat = reagent_id
 				best_meat_volume = amount
-
 		else if(has_prefix(reagent_id,"fat_"))
 			total_fat += amount
 			if(!best_fat || amount > best_fat_volume)
 				best_fat = reagent_id
 				best_fat_volume = amount
-
-
 
 	if(!best_meat)
 		return ..()
@@ -179,15 +174,19 @@
 /obj/item/container/food/dynamic/meat/raw/on_spawn()
 	reagents.add_reagent("raw_meat_cow",15)
 	reagents.add_reagent("fat_cow",5)
+	return ..()
 
 /obj/item/container/food/dynamic/meat/cooked/on_spawn()
 	reagents.add_reagent("cooked_meat_cow",15)
 	reagents.add_reagent("fat_cow",5)
+	return ..()
 
 /obj/item/container/food/dynamic/meat/cooked/cutlet/on_spawn()
 	reagents.add_reagent("cooked_meat_cow",7)
 	reagents.add_reagent("fat_cow",3)
+	return ..()
 
 /obj/item/container/food/dynamic/meat/cooked/bacon/on_spawn()
 	reagents.add_reagent("cooked_meat_cow",3)
 	reagents.add_reagent("fat_cow",2)
+	return ..()

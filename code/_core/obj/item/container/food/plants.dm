@@ -19,7 +19,7 @@
 
 /obj/item/container/food/plant/nitrogen_flower/on_spawn()
 	reagents.add_reagent("nitrogen",10)
-
+	return ..()
 
 /obj/item/container/food/plant/oxygen_fruit
 	name = "oxygen fruit"
@@ -27,6 +27,7 @@
 
 /obj/item/container/food/plant/oxygen_fruit/on_spawn()
 	reagents.add_reagent("oxygen",10)
+	return ..()
 
 /obj/item/container/food/plant/wheat
 	name = "wheat"
@@ -34,6 +35,7 @@
 
 /obj/item/container/food/plant/wheat/on_spawn()
 	reagents.add_reagent("wheat_grain",10)
+	return ..()
 
 
 /obj/item/container/food/plant/sugarcane
@@ -42,3 +44,4 @@
 
 /obj/item/container/food/plant/sugarcane/on_spawn()
 	reagents.add_reagent("sugarcane",10)
+	return ..()

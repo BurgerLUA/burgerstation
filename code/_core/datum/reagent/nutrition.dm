@@ -203,3 +203,23 @@
 	flavor = "beef"
 
 
+
+/reagent/core/nutrition/meat/chicken
+	name = "raw chicken"
+	id = "raw_chicken"
+	desc = "Nutrition and flavor from raw chicken."
+	color = "#E2A5BB"
+
+	nutrition_amount = 0.6 NUT_FACTOR
+
+	flavor = "raw meat"
+
+/reagent/core/nutrition/meat/chicken/cooked
+	name = "cooked chicken"
+	id = "cooked_chicken"
+	desc = "Nutrition and flavor from cooked chicken."
+	color = "#F2DCD1"
+
+	nutrition_amount = 0.8 NUT_FACTOR
+
+	flavor = "beef"

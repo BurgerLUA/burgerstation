@@ -71,3 +71,21 @@
 	loot_count = 1
 
 	chance_none = 90
+
+
+/loot/chicken/
+	name = "chicken loot"
+	id = "chicken"
+	loot_table = list(
+		/obj/item/container/food/dynamic/chicken/raw = 100
+	)
+	loot_count = 3
+
+
+/loot/cow/
+	name = "cow loot"
+	id = "cow"
+	loot_table = list(
+		/obj/item/container/food/dynamic/meat/raw = 100
+	)
+	loot_count = 5

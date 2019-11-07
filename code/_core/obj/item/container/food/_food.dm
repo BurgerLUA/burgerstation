@@ -13,12 +13,18 @@
 
 	var/remove_on_no_reagents = TRUE
 
+	var/original_volume = 0
+
+/obj/item/container/food/on_spawn()
+	original_volume = reagents.volume_current
+	update_icon()
+	return
 
 /obj/item/container/food/update_icon()
 
 	if(scale_sprite)
 		var/matrix/M = matrix()
-		var/scale_math = max(0.5 + (reagents.volume_current/reagents.volume_max)*0.5)
+		var/scale_math = max(0.5 + (original_volume/reagents.volume_max)*0.5)
 		M.Scale(scale_math)
 		transform = M
 	else

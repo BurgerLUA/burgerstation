@@ -123,7 +123,7 @@
 	return TRUE
 
 
-/reagent_container/proc/update_container()
+/reagent_container/proc/update_container(var/update_owner = TRUE)
 
 	var/red = 0
 	var/green = 0
@@ -168,7 +168,7 @@
 		color = "#FFFFFF"
 		average_temperature = T0C+20
 
-	if(owner && should_update_owner)
+	if(owner && should_update_owner && update_owner)
 		owner.update_icon()
 
 	return TRUE
@@ -242,20 +242,21 @@
 		remove_reagent(k,amount_to_remove,FALSE,FALSE)
 		amount_removed += amount_to_remove
 
-	update_container()
+	update_container(FALSE)
 
 	for(var/k in found_recipe.results)
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE)
 
-	update_container()
-
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
+		update_container(FALSE)
 		while(volume_current > 0)
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			if(!A.reagents)
 				break
 			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current))
+	else
+		update_container()
 
 	return TRUE
 

@@ -3,6 +3,7 @@
 	icon_state = "chicken_white"
 	damage_type = "chicken_peck"
 	class = "chicken"
+	loot_drop = "chicken"
 
 /mob/living/simple/npc/passive/chicken/post_death()
 	..()

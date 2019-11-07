@@ -2,6 +2,7 @@
 	name = "cow"
 	icon_state = "cow"
 	class = "cow"
+	loot_drop = "cow"
 
 /mob/living/simple/npc/passive/cow/post_death()
 	..()
