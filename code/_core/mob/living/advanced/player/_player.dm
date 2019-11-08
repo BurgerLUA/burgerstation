@@ -73,6 +73,15 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	all_players += src
 
+	if(mobdata)
+		var/list/known_wishgranters = mobdata.loaded_data["known_wishgranters"]
+		for(var/wishgranter_id in known_wishgranters)
+			var/obj/structure/interactive/localmachine/snowflake/wishgranter/W = all_wishgranters[wishgranter_id]
+			if(W)
+				W.set_icon_state_mob(src,"wishgranter_on")
+			else
+				mobdata.loaded_data["known_wishgranters"] -= wishgranter_id
+
 	return .
 
 /mob/living/advanced/player/setup_name()

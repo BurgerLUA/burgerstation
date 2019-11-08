@@ -46,6 +46,8 @@
 
 	flavor = "blood"
 
+	metabolism_blood = 0
+
 /reagent/core/water //Found through organic things
 	name = "Water"
 	id = "water"

@@ -32,7 +32,7 @@
 "aF" = (/obj/structure/scenery/pinetrees,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior/village)
 "aG" = (/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/dirt/snow,/area/world/mountain/exterior/village)
 "aH" = (/obj/structure/scenery/snow_bush,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior/village)
-"aI" = (/obj/structure/interactive/wishgranter/normal/northern_heights,/turf/simulated/floor/colored/dirt/snow,/area/world/mountain/exterior/village)
+"aI" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/colored/dirt/snow,/area/world/mountain/exterior/village)
 "aJ" = (/obj/structure/interactive/lighting/streetlamp/snow,/turf/simulated/floor/colored/snow,/area/world/mountain/exterior/village)
 "aK" = (/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)
 "aL" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/brown,/area/world/mountain/interior/shop/gunstore)

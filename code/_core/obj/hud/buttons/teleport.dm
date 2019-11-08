@@ -1,8 +1,9 @@
 /obj/hud/button/teleport/
-	flags = FLAGS_HUD_TELEPORT
-
 	alpha = 0
 	mouse_opacity = 0
+	flags = FLAGS_HUD_TELEPORT | FLAGS_HUD_SPECIAL
+
+	essential = TRUE
 
 /obj/hud/button/teleport/teleport_here
 
@@ -24,7 +25,7 @@
 		var/mob/living/advanced/A = owner
 
 		if(A.known_wishgranters && length(A.known_wishgranters))
-			var/list/known_locations = A.known_wishgranters
+			var/list/known_locations = A.known_wishgranters - "main"
 			icon_state = known_locations[map_number]
 			name = known_locations[map_number]
 
@@ -42,13 +43,12 @@
 
 		var/turf/desired_turf = get_turf(all_wishgranters[icon_state])
 		desired_turf = get_step(desired_turf,SOUTH)
-
 		var/list/callback_list = list()
 		callback_list["start_turf"] = get_turf(P)
 		callback_list["end_turf"] = desired_turf
 		if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(3),callback_list))
 			P.to_chat(span("notice","You begin walking into the light..."))
-			P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL,speed=1)
+			P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_NONE,speed=1)
 
 	return ..()
 
@@ -57,7 +57,7 @@
 
 /obj/hud/button/teleport/teleport_here/proc/cycle_map(var/mob/living/advanced/A,var/desired_direction = EAST)
 
-	var/list/known_locations = A.known_wishgranters
+	var/list/known_locations = A.known_wishgranters - "main"
 
 	if(!known_locations || !length(known_locations))
 		return FALSE

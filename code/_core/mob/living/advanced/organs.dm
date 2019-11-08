@@ -29,10 +29,14 @@
 
 	if(sex == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
 		for(var/key in S.spawning_organs_female)
-			add_organ(S.spawning_organs_female[key])
+			var/obj/item/organ/O = add_organ(S.spawning_organs_female[key])
+			if(O.reagents)
+				O.reagents.add_reagent("blood",floor(O.reagents.volume_max*0.5))
 	else
 		for(var/key in S.spawning_organs_male)
-			add_organ(S.spawning_organs_male[key])
+			var/obj/item/organ/O = add_organ(S.spawning_organs_male[key])
+			if(O.reagents)
+				O.reagents.add_reagent("blood",floor(O.reagents.volume_max*0.5))
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 

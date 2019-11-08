@@ -48,7 +48,7 @@
 "aV" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/wood/boat/starting,/area/world/forest/exterior/village/ship/singleplayer)
 "aW" = (/turf/simulated/floor/chasm,/area/world/burgerstation/interior/nothing)
 "aX" = (/turf/simulated/floor/basalt,/area/world/burgerstation/interior/nothing)
-"aY" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/basalt,/area/world/burgerstation/interior/nothing)
+"aY" = (/obj/structure/interactive/wishgranter/normal/main,/turf/simulated/floor/basalt,/area/world/burgerstation/interior/nothing)
 "aZ" = (/obj/structure/interactive/lighting/bonfire/on/intense,/turf/simulated/floor/basalt,/area/world/burgerstation/interior/nothing)
 "ba" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/world/burgerstation/exterior)
 "bb" = (/turf/simulated/floor/space/transit,/area/world/burgerstation/exterior/space)

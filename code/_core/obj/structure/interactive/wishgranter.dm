@@ -86,30 +86,6 @@ obj/structure/interactive/wishgranter/normal/New(var/desired_loc)
 
 	return ..()
 
-/*
-obj/structure/interactive/wishgranter/normal/clicked_on_by_object(caller,object,location,control,params)
-
-	if(!is_player(caller))
-		return FALSE
-
-	var/mob/living/advanced/player/P = caller
-
-	if(!P.client)
-		return FALSE
-
-	if(P.spam_protection_command > 0)
-		P.spam_protection_command += 2
-		P.to_chat(span("warning","Spam Protection: You must wait [ceiling(P.spam_protection_command,1)] second\s before using this!"))
-		return FALSE
-
-	P.spam_protection_command += 10
-
-	var/savedata/client/mob/U = P.client.savedata
-	U.loaded_data["last_save"] = src.id
-	U.save_current_character()
-
-	return TRUE
-*/
 
 obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 

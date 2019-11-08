@@ -12,6 +12,9 @@
 		if("teleport")
 			var/atom/A = callback_list["end_turf"]
 			src.force_move(A)
+			src.set_dir(SOUTH)
+			src.pixel_y = TILE_SIZE
+			animate(src,pixel_y = 0,time=10)
 			return TRUE
 		if("feed_self")
 			var/obj/item/container/food/F = callback_list["object"]

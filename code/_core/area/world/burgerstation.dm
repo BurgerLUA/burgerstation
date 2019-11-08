@@ -19,6 +19,7 @@
 /area/world/burgerstation/interior/nothing
 	name = "nothing"
 	singleplayer = TRUE
+	assoc_wishgranter = "main"
 
 
 /area/world/burgerstation/exterior

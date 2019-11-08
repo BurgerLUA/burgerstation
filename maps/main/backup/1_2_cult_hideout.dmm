@@ -21,7 +21,7 @@
 "u" = (/turf/simulated/floor/basalt,/area/world/cult/exterior/safe)
 "v" = (/turf/simulated/wall/rock/basalt,/area/world/cult/exterior/safe)
 "w" = (/turf/simulated/floor/colored/grass,/area/world/cult/exterior/safe)
-"x" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/colored/grass,/area/world/cult/exterior/safe)
+"x" = (/obj/structure/interactive/wishgranter/normal/cult_hideout,/turf/simulated/floor/colored/grass,/area/world/cult/exterior/safe)
 "y" = (/turf/simulated/floor/colored/grass,/area/world/cult/interior/safe)
 "z" = (/obj/structure/smooth/table/wood/poor,/turf/simulated/floor/colored/grass,/area/world/cult/interior/safe)
 "A" = (/obj/structure/smooth/table/wood/poor,/turf/simulated/floor/cult,/area/world/cult/interior/safe)

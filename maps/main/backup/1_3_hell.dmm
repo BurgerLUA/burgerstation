@@ -33,7 +33,7 @@
 "G" = (/obj/structure/smooth/table/reinforced/dark,/obj/structure/interactive/lighting/tube,/turf/simulated/floor/tile/dark,/area/world/lava/lab)
 "H" = (/obj/structure/interactive/grille,/obj/structure/smooth/window/reinforced,/turf/simulated/floor/plating,/area/world/lava/lab)
 "I" = (/turf/simulated/floor/colored/necro_grass,/area/world/lava/safezone)
-"J" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/colored/necro_grass,/area/world/lava/safezone)
+"J" = (/obj/structure/interactive/wishgranter/normal/hell,/turf/simulated/floor/colored/necro_grass,/area/world/lava/safezone)
 "K" = (/turf/simulated/floor/colored/ash/rocky,/area/world/lava/safezone)
 "L" = (/turf/simulated/floor/colored/ash/rocky,/area/world/lava/exterior)
 "M" = (/turf/simulated/wall/wood/boat,/area/world/lava/interior/chapel)
@@ -42,7 +42,7 @@
 "P" = (/turf/simulated/wall/rock/basalt,/area/world/lava/exterior/chapel)
 "Q" = (/turf/simulated/floor/colored/ash/dark,/area/world/lava/exterior/chapel)
 "R" = (/turf/simulated/floor/colored/necro_grass,/area/world/lava/exterior/chapel)
-"S" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/colored/necro_grass,/area/world/lava/exterior/chapel)
+"S" = (/obj/structure/interactive/wishgranter/normal/hell/chapel,/turf/simulated/floor/colored/necro_grass,/area/world/lava/exterior/chapel)
 "T" = (/turf/simulated/floor/carpet,/area/world/lava/interior/chapel)
 "U" = (/turf/simulated/floor/colored/ash/dark,/area/world/lava/interior/chapel)
 

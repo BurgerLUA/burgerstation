@@ -111,6 +111,11 @@
 		health.Initialize()
 	return .
 
+
+/obj/item/organ/on_spawn()
+	if(reagents)
+		reagents.add_reagent("blood",floor(reagents.volume_max/2))
+
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 
 	if(inventories)
@@ -183,26 +188,24 @@
 	if(!T)
 		return .
 
-	var/obj/effect/temp/impact/blood/B = new(T,SECONDS_TO_DECISECONDS(60),"#FF0000")
-	B.transform.Scale(0.1,0.1)
+	if(reagents)
+		create_blood_effect(T,attacker,src,damage_dealt,reagents.color)
+
+/proc/create_blood_effect(var/turf/T,var/atom/attacker,var/atom/victim,var/damage_dealt,var/blood_color = "#FF0000")
 
 	var/offset_x = (T.x - attacker.x)
 	var/offset_y = (T.y - attacker.y)
 
+	world.log << "X: [offset_x], Y: [offset_y]"
+
 	if(!offset_x && !offset_y)
-		offset_x = rand(-1,1)
+		offset_x = pick(-1,1)
+		offset_y = pick(-1,1)
 
-	var/total_offset = abs(offset_x) + abs(offset_y)
+	var/norm_offset = max(abs(offset_x),abs(offset_y),1)
 
-	if(total_offset)
-		offset_x = offset_x/total_offset
-		offset_y = offset_y/total_offset
-		offset_x *= TILE_SIZE
-		offset_y *= TILE_SIZE
-	else
-		offset_x = 0
-		offset_y = 0
+	offset_x = (offset_x/norm_offset) * TILE_SIZE
+	offset_y = (offset_y/norm_offset) * TILE_SIZE
 
-	animate(B,pixel_x = offset_x,pixel_y = offset_y, transform = null, time = 2)
-
-	return .
+	for(var/i=1,i<=max(1,round(damage_dealt/5)),i++)
+		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x + rand(-TILE_SIZE,TILE_SIZE),offset_y + rand(-TILE_SIZE,TILE_SIZE))

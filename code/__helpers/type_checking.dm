@@ -74,7 +74,7 @@
 	return istype(A,/obj/item/organ)
 
 /proc/is_wishgranter(var/atom/A)
-	return istype(A,/obj/structure/interactive/wishgranter)
+	return istype(A,/obj/structure/interactive/localmachine/snowflake/wishgranter/)
 
 proc/is_weapon(var/atom/A)
 	return istype(A,/obj/item/weapon/)

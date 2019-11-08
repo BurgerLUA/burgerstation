@@ -13,7 +13,7 @@
 "am" = (/mob/living/simple/npc/passive/cow,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "an" = (/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "ao" = (/mob/living/simple/npc/passive/chicken,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
-"ap" = (/obj/structure/interactive/wishgranter/normal/village,/obj/marker/mob_blocker,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
+"ap" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/obj/marker/mob_blocker,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "aq" = (/mob/living/simple/npc/passive/chicken/black,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "ar" = (/mob/living/simple/npc/passive/chicken,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "as" = (/mob/living/simple/npc/passive/cow,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)

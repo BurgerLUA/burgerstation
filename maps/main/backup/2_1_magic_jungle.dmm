@@ -17,7 +17,7 @@
 "q" = (/obj/structure/scenery/jungle_grass,/obj/structure/scenery/jungle_grass,/turf/simulated/floor/colored/jungle_grass,/area/world/jungle/exterior)
 "r" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/world/jungle/exterior)
 "s" = (/obj/structure/scenery/rocks,/turf/simulated/floor/basalt,/area/world/jungle/exterior)
-"t" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/colored/jungle_grass,/area/world/jungle/village)
+"t" = (/obj/structure/interactive/wishgranter/normal/jungle,/turf/simulated/floor/colored/jungle_grass,/area/world/jungle/village)
 "u" = (/obj/structure/scenery/jungle_rock,/turf/simulated/floor/colored/dirt/jungle,/area/world/jungle/exterior)
 "v" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/jungle_grass,/area/world/jungle/exterior)
 "w" = (/turf/simulated/wall/rock,/area/world/jungle/cave)

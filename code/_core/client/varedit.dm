@@ -62,6 +62,9 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 
 proc/is_assoc_list(var/list/L) //Credit to SpaceManiac for providing this
 
+	if(!istype(L,/list/))
+		return FALSE
+
 	for(var/k in L)
 		if (!isnum(k) && !isnull(L["[k]"]))
 			return TRUE

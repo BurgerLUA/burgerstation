@@ -45,7 +45,7 @@
 #define ENABLE_LORE FALSE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
 #define ENABLE_MOB TRUE
