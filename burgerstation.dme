@@ -16,6 +16,7 @@
 // BEGIN_INCLUDE
 #include "code\__defines\_config.dm"
 #include "code\__defines\_config_damage.dm"
+#include "code\__defines\_config_ticks.dm"
 #include "code\__defines\attacking.dm"
 #include "code\__defines\attributes.dm"
 #include "code\__defines\bodyparts.dm"
@@ -81,6 +82,7 @@
 #include "code\__helpers\damagetype.dm"
 #include "code\__helpers\direction.dm"
 #include "code\__helpers\dview.dm"
+#include "code\__helpers\footstep.dm"
 #include "code\__helpers\garbage.dm"
 #include "code\__helpers\health.dm"
 #include "code\__helpers\html.dm"
@@ -120,6 +122,7 @@
 #include "code\_core\atom\icon.dm"
 #include "code\_core\atom\interaction.dm"
 #include "code\_core\atom\listening.dm"
+#include "code\_core\atom\sound.dm"
 #include "code\_core\atom\visuals.dm"
 #include "code\_core\atom\moveable\_movable.dm"
 #include "code\_core\atom\moveable\direction.dm"

@@ -14,3 +14,7 @@
 	pickup(new /obj/item/weapon/ranged/magic/tome/lightning(src.loc),TRUE)
 
 	return .
+
+/mob/living/advanced/player/debug/on_life()
+	move_dir = pick(DIRECTIONS_ALL)
+	return ..()

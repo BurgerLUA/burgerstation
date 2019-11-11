@@ -53,6 +53,8 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 	created_sound.environment = environment
 	created_sound.status = 0
 	created_sound.volume = volume
+	created_sound.status = SOUND_STREAM
+
 	hearer << created_sound
 
 proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
@@ -69,16 +71,17 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.environment = ENVIRONMENT_NONE
 	created_sound.status = 0
 	created_sound.volume = volume
+	created_sound.status = SOUND_STREAM
 
-	hearer.mob << created_sound
+	hearer << created_sound
 	hearer.current_music_track = music_track_id
 	hearer.next_music_track = curtime + T.length
 
 	return created_sound
 
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0)
-	var/sound/created_sound = sound(sound_path)
 
+	var/sound/created_sound = sound(sound_path)
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
 	created_sound.pan = pan
@@ -86,6 +89,8 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.echo = echo
 	created_sound.environment = environment
 	created_sound.status = 0
+	created_sound.wait = 0
+	created_sound.channel = 0
 
 	if(loop)
 		active_sounds[created_sound] = -1
@@ -96,6 +101,9 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		hearers = all_mobs_with_clients
 
 	for(var/mob/M in hearers)
+
+		CHECK_TICK
+
 		if(!M.client || !M.client.settings)
 			continue
 
@@ -107,19 +115,16 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		switch(channel)
 			if(SOUND_CHANNEL_MUSIC)
 				volume *= M.client.settings.loaded_data["volume_music"] / 100
-				created_sound.channel = SOUND_CHANNEL_MUSIC
+				created_sound.channel = channel
 			if(SOUND_CHANNEL_AMBIENT)
 				volume *= M.client.settings.loaded_data["volume_ambient"] / 100
-				created_sound.channel = SOUND_CHANNEL_AMBIENT
+				created_sound.channel = channel
 			if(SOUND_CHANNEL_FOOTSTEPS)
-				created_sound.channel = 0
 				volume *= M.client.settings.loaded_data["volume_footsteps"] / 100
 			if(SOUND_CHANNEL_UI)
-				created_sound.channel = 0
 				volume *= M.client.settings.loaded_data["volume_ui"] / 100
 			if(SOUND_CHANNEL_FX)
 				volume *= M.client.settings.loaded_data["volume_fx"] / 100
-				created_sound.channel = 0
 
 		var/local_volume = volume
 

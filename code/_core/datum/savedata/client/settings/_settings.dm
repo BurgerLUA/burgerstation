@@ -7,7 +7,10 @@
 		"volume_ambient" = 50,
 		"volume_music" = 70,
 		"volume_footsteps" = 50,
-		"fps_client" = FPS_CLIENT
+		"fps_client" = FPS_CLIENT,
+		"hud_colors" = list(
+			"#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871"
+		)
 	)
 
 /savedata/client/settings/get_file(var/file_id)
@@ -25,11 +28,7 @@
 		text2file(json_encode(loaded_data),full_path)
 
 	var/file_contents = file2text(full_path)
-	loaded_data = json_decode(file_contents)
-
-
-	//Some settings need to be applied here.
-
+	loaded_data |= json_decode(file_contents)
 	if(loaded_data["fps_client"])
 		new_owner.fps = loaded_data["fps_client"]
 

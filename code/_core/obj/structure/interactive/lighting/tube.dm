@@ -9,7 +9,7 @@
 	desired_light_color = "#FFFFAA"
 
 	layer = LAYER_LARGE_OBJ
-	plane = PLANE_TREE
+	plane = PLANE_WALL_ATTACHMENTS
 
 /obj/structure/interactive/lighting/tube/off
 	desired_light_power = 0

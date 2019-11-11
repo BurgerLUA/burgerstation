@@ -67,8 +67,10 @@
 		if(!volume)
 			continue
 
-
 		var/reagent/R = all_reagents[r_id]
+
+		if(!(flags_metabolism & R.flags_metabolism))
+			continue
 
 		var/atom/owner_to_use = owner
 
@@ -78,7 +80,10 @@
 		if(!owner_to_use)
 			continue
 
-		remove_reagent(r_id,R.metabolize(owner_to_use,src,volume),FALSE)
+		var/metabolize_amount = R.metabolize(owner_to_use,src,volume)
+
+		if(metabolize_amount)
+			remove_reagent(r_id,metabolize_amount,FALSE)
 
 	update_container()
 

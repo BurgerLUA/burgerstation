@@ -12,8 +12,6 @@
 
 	mouse_opacity = 0
 
-	var/mob/living/owner
-
 /obj/hud/screen_blood/New(var/desired_loc,var/desired_direction=NORTHWEST)
 
 	if(is_living(desired_loc))
@@ -38,7 +36,6 @@
 				screen_loc = "CENTER-2,CENTER-2"
 
 	..()
-
 
 /obj/hud/screen_blood/proc/update_stats()
 

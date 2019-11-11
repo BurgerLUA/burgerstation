@@ -1,6 +1,6 @@
 /obj/hud/progress_bar
 	name = "progress bar"
-	icon = 'icons/hud/inventory.dmi'
+	icon = 'icons/hud/new.dmi'
 	icon_state = "progress"
 
 	layer = LAYER_HUD

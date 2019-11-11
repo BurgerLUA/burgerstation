@@ -1,6 +1,8 @@
-#define PLANE_PARALAX -7
+#define PLANE_PARALAX -8
 
-#define PLANE_FLOOR -6
+#define PLANE_FLOOR -7
+
+#define PLANE_WALL_ATTACHMENTS -6
 
 #define PLANE_WALL -5
 

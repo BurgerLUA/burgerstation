@@ -2,5 +2,8 @@
 	name = "fake player"
 
 
-/mob/living/advanced/player/fake/Initialize()
+/mob/living/advanced/player/fake/on_life()
+
+
+
 	return ..()

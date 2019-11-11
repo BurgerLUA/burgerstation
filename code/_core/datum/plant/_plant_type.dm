@@ -87,3 +87,21 @@
 	reagents = list(
 		radium = 1,
 	)
+
+/plant_type/tomato
+	name = "tomato plant"
+	desc = "A classic red tomato plant."
+	id = "tomato"
+	icon_count = 5
+	reagents = list(
+		tomato_paste = 1,
+	)
+
+/plant_type/cabbage
+	name = "cabbage patch"
+	desc = "A patch that grows cabbage"
+	id = "cabbage"
+	icon_count = 0
+	reagents = list(
+		cabbage = 1,
+	)

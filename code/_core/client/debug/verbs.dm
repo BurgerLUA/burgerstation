@@ -31,11 +31,6 @@ client/verb/debug_active_subsystems()
 	for(var/subsystem/subsystem in active_subsystems)
 		src << subsystem.name
 
-client/verb/debug_movement()
-	set category = "Debug"
-
-	src << mob.move_dir
-
 client/verb/debug_organs()
 	set category = "Debug"
 	var/mob/living/advanced/A = mob

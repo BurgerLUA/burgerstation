@@ -21,6 +21,11 @@ obj/structure/interactive/door
 	var/close_time = 10
 
 	var/locked = FALSE
+	var/allow_manual_open = TRUE
+	var/allow_manual_close = TRUE
+
+	var/open_sound = null
+	var/close_sound = null
 
 obj/structure/interactive/door/New()
 	. = ..()
@@ -60,18 +65,26 @@ obj/structure/interactive/door/update_icon()
 
 
 obj/structure/interactive/door/proc/open()
+	if(open_sound)
+		play(open_sound)
+		world.log << "The open sound is: [open_sound]."
 	door_state = DOOR_STATE_OPENING
 	update_icon()
 	spawn(open_time)
 		door_state = DOOR_STATE_OPENED
 		update_icon()
 
+
 obj/structure/interactive/door/proc/close()
+	if(close_sound)
+		play(close_sound)
 	door_state = DOOR_STATE_CLOSING
 	update_icon()
 	spawn(close_time)
 		door_state = DOOR_STATE_CLOSED
 		update_icon()
+
+
 
 
 obj/structure/interactive/door/clicked_on_by_object(caller,object,location,control,params)
@@ -81,9 +94,9 @@ obj/structure/interactive/door/clicked_on_by_object(caller,object,location,contr
 	if(!is_mob(caller))
 		return FALSE
 
-	if(door_state == DOOR_STATE_OPENED)
+	if(door_state == DOOR_STATE_OPENED && allow_manual_close)
 		close()
-	else if(door_state == DOOR_STATE_CLOSED)
+	else if(door_state == DOOR_STATE_CLOSED && allow_manual_open)
 		open()
 
 	return TRUE

@@ -81,14 +81,6 @@
 #define DEFAULT_SKILL_ALLOCATION 190
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
-#define LIFE_TICK 1 //Deciseconds per life tick interval.
-#define LIFE_TICK_SLOW 4 //Deciseconds per slow life tick interval.
-#define LIFE_TICKS_PER_SLOW_LIFE_TICKS (LIFE_TICK_SLOW / LIFE_TICK)
-
-
-
-#define PROJECTILE_TICK 1 //Ticks per project tick interval
-
 #define SPRINT_STAMINA_LOSS 1
 
 #define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
@@ -116,3 +108,6 @@
 
 
 #define AIR_TEMPERATURE_MOD 0.5 //How much the air has an impact on reagent temperature.
+
+
+#define DEFAULT_COLORS list("#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871")

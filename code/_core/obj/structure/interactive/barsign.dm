@@ -16,3 +16,15 @@ obj/structure/interactive/bar_sign/chemistry
 	name = "The Chem Lab"
 	desc = "The only thing that won't explode is your wallet!"
 	icon_state = "chemistry"
+
+
+obj/structure/interactive/bar_sign/traitor
+	name = "Traitor Joe's"
+	desc = "For all your traitor needs!"
+	icon_state = "traitor"
+
+
+obj/structure/interactive/bar_sign/dan
+	name = "Discount Dan's"
+	desc = "Stay awhile, and listen!"
+	icon_state = "dan"

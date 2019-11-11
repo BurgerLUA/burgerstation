@@ -37,7 +37,7 @@
 
 	potency = 20
 	yield = 2
-	growth_speed = 3
+	growth_speed = 2
 	growth_min = 0
 
 /obj/structure/interactive/plant/chanterelle
@@ -45,7 +45,7 @@
 
 	potency = 20
 	yield = 2
-	growth_speed = 3
+	growth_speed = 4
 	growth_min = 0
 
 
@@ -54,7 +54,7 @@
 
 	potency = 20
 	yield = 2
-	growth_speed = 3
+	growth_speed = 1
 	growth_min = 0
 
 /obj/structure/interactive/plant/fly_amanita
@@ -62,7 +62,7 @@
 
 	potency = 20
 	yield = 2
-	growth_speed = 3
+	growth_speed = 4
 	growth_min = 0
 
 /obj/structure/interactive/plant/glowshroom
@@ -70,5 +70,23 @@
 
 	potency = 20
 	yield = 2
-	growth_speed = 3
+	growth_speed = 2
+	growth_min = 0
+
+
+/obj/structure/interactive/plant/tomato
+	id = "tomato"
+
+	potency = 20
+	yield = 7
+	growth_speed = 4
+	growth_min = 75
+
+
+/obj/structure/interactive/plant/cabbage
+	id = "cabbage"
+
+	potency = 10
+	yield = 1
+	growth_speed = 5
 	growth_min = 0

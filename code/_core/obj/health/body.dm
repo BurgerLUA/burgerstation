@@ -3,7 +3,7 @@
 	desc = "Health for your limbs."
 	id = "body"
 
-	icon = 'icons/obj/health/base.dmi'
+	icon = 'icons/hud/new.dmi'
 	icon_state = "body_full"
 
 	screen_loc = "RIGHT,BOTTOM+2.2"

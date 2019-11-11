@@ -204,23 +204,27 @@ mob/living/advanced/proc/handle_regen()
 
 	for(var/obj/item/organ/O in organs)
 
+		CHECK_TICK
+
+		if(O.reagents)
+			O.reagents.metabolize()
+
 		if(!O.health)
 			continue
 
+		for(var/wound/W in O.health.wounds)
+			CHECK_TICK
+			W.on_life()
+
 		//Soft damage to hard damage.
 		for(var/damage_type in O.health.damage_soft)
+			CHECK_TICK
 			var/damage_amount = Clamp(O.health.damage_soft[damage_type],damage_min,damage_max)
 			if(damage_amount)
 				O.health.damage[damage_type] = max(0,O.health.damage[damage_type] + damage_amount)
 				O.health.damage_soft[damage_type] -= damage_amount
 				O.health.update_health()
 				should_update_health = TRUE
-
-		for(var/wound/W in O.health.wounds)
-			W.on_life()
-
-		if(O.reagents)
-			O.reagents.metabolize()
 
 	if(should_update_health)
 		health.update_health(update_hud=FALSE)

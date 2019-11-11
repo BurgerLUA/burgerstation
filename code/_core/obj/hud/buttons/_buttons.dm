@@ -2,10 +2,8 @@
 	name = "button"
 	desc = "This button does something, I think."
 
-	icon = 'icons/hud/inventory.dmi'
+	icon = 'icons/hud/new.dmi'
 	icon_state = "slot"
-
-	var/mob/owner //The mob that owns this button
 
 	var/is_static = TRUE //Is the button anchored?
 

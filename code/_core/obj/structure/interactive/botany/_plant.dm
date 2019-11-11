@@ -8,7 +8,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	id = null
 
 	var/growth = 0 //Increases by growth_speed every 10 seconds.
-	var/growth_min = 100 //This is set AFTER harvesting.
+	var/growth_min = 0 //This is set AFTER harvesting.
 	var/growth_max = 100 //The growth value when this plant is considered grown, but has no produce grown on it.
 	var/growth_produce_max = 120 //The growth value when this plant is considered grown, and has produce on it.
 

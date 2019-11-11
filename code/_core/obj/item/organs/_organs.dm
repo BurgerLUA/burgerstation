@@ -111,11 +111,6 @@
 		health.Initialize()
 	return .
 
-
-/obj/item/organ/on_spawn()
-	if(reagents)
-		reagents.add_reagent("blood",floor(reagents.volume_max/2))
-
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 
 	if(inventories)
@@ -208,4 +203,4 @@
 	offset_y = (offset_y/norm_offset) * TILE_SIZE
 
 	for(var/i=1,i<=max(1,round(damage_dealt/5)),i++)
-		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x + rand(-TILE_SIZE,TILE_SIZE),offset_y + rand(-TILE_SIZE,TILE_SIZE))
+		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)

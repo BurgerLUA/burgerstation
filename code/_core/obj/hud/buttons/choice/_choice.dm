@@ -11,6 +11,8 @@
 
 	var/choice/linked_choice
 
+	user_colors = FALSE
+
 /obj/hud/button/choice/destroy()
 	linked_choice = null
 	return ..()

@@ -11,6 +11,8 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
+	user_colors = FALSE //Custom code here.
+
 /obj/hud/button/health/bar/
 	var/bar_color = "#ffffff"
 	var/min = 0
@@ -69,6 +71,8 @@
 		bar_changing.Crop(start_x_changing,start_y_changing,end_x_changing,end_y_changing)
 		bar_changing.Crop(1,1,32,32)
 		bar_changing.Shift(NORTH,end_y)
+
+		swap_colors(base)
 
 		base.Blend(bar_changing,ICON_OVERLAY)
 
