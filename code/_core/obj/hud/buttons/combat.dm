@@ -59,6 +59,8 @@
 		list(16,16)
 	)
 
+	user_colors = FALSE
+
 /obj/hud/button/targeting/update_icon()
 
 	icon = initial(icon)
@@ -76,9 +78,9 @@
 
 	var/list/preset_overlay = new /icon(icon,"targeting_preset_[mode]")
 	base_icon.Blend(preset_overlay,ICON_OVERLAY)
+	swap_colors(base_icon)
 	base_icon.Blend(left_overlay,ICON_OVERLAY)
 	base_icon.Blend(right_overlay,ICON_OVERLAY)
-
 	icon = base_icon
 
 	..()

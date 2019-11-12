@@ -39,14 +39,14 @@
 	return TRUE
 
 /obj/structure/interactive/localmachine/snowflake/airlock/proc/open_for(var/mob/M)
-	mob_to_door_state[M] = DOOR_STATE_OPENING
+	mob_to_door_state[M] = DOOR_STATE_OPENING_01
 	set_icon_state_mob(M,"opening")
 	spawn(open_time)
 		mob_to_door_state[M] = DOOR_STATE_OPENED
 		set_icon_state_mob(M,"open")
 
 /obj/structure/interactive/localmachine/snowflake/airlock/proc/close_for(var/mob/M)
-	mob_to_door_state[M] = DOOR_STATE_CLOSING
+	mob_to_door_state[M] = DOOR_STATE_CLOSING_01
 	set_icon_state_mob(M,"closing")
 	spawn(close_time)
 		mob_to_door_state[M] = DOOR_STATE_CLOSED
@@ -55,7 +55,7 @@
 /obj/structure/interactive/localmachine/snowflake/airlock/proc/bolt_for(var/mob/M)
 
 	if(mob_to_door_state[M] == DOOR_STATE_OPENED)
-		mob_to_door_state[M] = DOOR_STATE_CLOSING
+		mob_to_door_state[M] = DOOR_STATE_CLOSING_01
 		set_icon_state_mob(M,"closing")
 
 		spawn(close_time)
@@ -78,7 +78,7 @@
 	if(mob_to_door_state[M] == DOOR_STATE_CLOSED)
 		open_for(M)
 		return FALSE
-	else if(mob_to_door_state[M] == DOOR_STATE_OPENING)
+	else if(mob_to_door_state[M] == DOOR_STATE_OPENING_01)
 		return FALSE
 
 	return ..()

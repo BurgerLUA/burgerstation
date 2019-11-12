@@ -1,8 +1,11 @@
 #define DOOR_STATE_OPENED 1
-#define DOOR_STATE_OPENING 2
-#define DOOR_STATE_CLOSED 3
-#define DOOR_STATE_CLOSING 4
-#define DOOR_STATE_LOCKED 5 //Only used for singleplayer airlocks
+#define DOOR_STATE_OPENING_01 2
+#define DOOR_STATE_OPENING_02 3
+#define DOOR_STATE_CLOSED 4
+#define DOOR_STATE_CLOSING_01 5
+#define DOOR_STATE_CLOSING_02 6
+#define DOOR_STATE_LOCKED 7 //Only used for singleplayer airlocks
+#define DOOR_STATE_START_OPENING 8 //Only used for airlocks
 
 
 obj/structure/interactive/door
@@ -35,14 +38,14 @@ obj/structure/interactive/door/New()
 obj/structure/interactive/door/update_icon()
 	..()
 	switch(door_state)
-		if(DOOR_STATE_OPENING)
+		if(DOOR_STATE_OPENING_01)
 			icon_state = "[initial(icon_state)]opening"
 			desc = "The door is opening."
 			set_opacity(0)
 			collision_flags = FLAG_COLLISION_REAL
 			collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-		if(DOOR_STATE_CLOSING)
+		if(DOOR_STATE_CLOSING_01)
 			icon_state = "[initial(icon_state)]closing"
 			desc = "The door is closing."
 			set_opacity(0)
@@ -68,7 +71,7 @@ obj/structure/interactive/door/proc/open()
 	if(open_sound)
 		play(open_sound)
 		world.log << "The open sound is: [open_sound]."
-	door_state = DOOR_STATE_OPENING
+	door_state = DOOR_STATE_OPENING_01
 	update_icon()
 	spawn(open_time)
 		door_state = DOOR_STATE_OPENED
@@ -78,7 +81,7 @@ obj/structure/interactive/door/proc/open()
 obj/structure/interactive/door/proc/close()
 	if(close_sound)
 		play(close_sound)
-	door_state = DOOR_STATE_CLOSING
+	door_state = DOOR_STATE_CLOSING_01
 	update_icon()
 	spawn(close_time)
 		door_state = DOOR_STATE_CLOSED

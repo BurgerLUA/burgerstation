@@ -9,7 +9,7 @@
 		"volume_footsteps" = 50,
 		"fps_client" = FPS_CLIENT,
 		"hud_colors" = list(
-			"#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871"
+			"#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871","#FE0000"
 		)
 	)
 
