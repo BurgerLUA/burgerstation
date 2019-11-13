@@ -14,6 +14,8 @@
 
 	var/atom/stored_object
 
+	user_colors = FALSE
+
 /obj/hud/click_and_drag/destroy()
 	stored_object = null
 	return ..()

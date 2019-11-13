@@ -1,4 +1,4 @@
-/obj/item/magazine/gryojet
+/obj/item/magazine/gyrojet
 	name = "\improper 20mm gyrojet magazine"
 	bullet_type = "7.62"
 	icon = 'icons/obj/items/magazine/gyrojet.dmi'
@@ -10,12 +10,12 @@
 		/obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle
 	)
 
-/obj/item/magazine/gryojet/on_spawn()
+/obj/item/magazine/gyrojet/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/gyrojet(src)
 	update_icon()
 
-/obj/item/magazine/gryojet/update_icon()
+/obj/item/magazine/gyrojet/update_icon()
 	if(length(stored_bullets))
 		icon_state = "[initial(icon_state)]_1"
 	else

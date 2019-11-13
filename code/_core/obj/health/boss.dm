@@ -22,6 +22,8 @@
 	alpha = 0
 	mouse_opacity = 0
 
+	user_colors = FALSE
+
 /obj/hud/button/boss_health/destroy()
 	target_boss = null
 	return ..()

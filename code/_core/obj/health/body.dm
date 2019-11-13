@@ -10,6 +10,8 @@
 
 	flags = FLAGS_HUD_MOB
 
+	user_colors = FALSE
+
 /obj/hud/button/health/body/update_icon() //Wait, isn't this a clone of something? TODO HEALTH
 
 	icon = initial(icon)

@@ -56,3 +56,12 @@
 
 	flavor = "water"
 	flavor_strength = 0.1
+
+/reagent/core/potassium
+	name = "potassium"
+	id = "potassium"
+	desc = "Bananas?"
+	color = "#FFFFFF"
+
+	flavor = "banana"
+	flavor_strength = 2

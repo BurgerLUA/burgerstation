@@ -110,4 +110,4 @@
 #define AIR_TEMPERATURE_MOD 0.5 //How much the air has an impact on reagent temperature.
 
 
-#define DEFAULT_COLORS list("#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871")
+#define DEFAULT_COLORS list("#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871","#FE0000")

@@ -253,6 +253,9 @@
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE)
 
+
+	found_recipe.on_react(src,portions_to_make)
+
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(FALSE)
 		while(volume_current > 0)
@@ -340,13 +343,13 @@
 		remove_reagent(r_id,amount_transfered,FALSE)
 		total_amount_transfered += amount_transfered
 
-	if(check_recipes)
-		src.process_recipes()
-		target_container.process_recipes()
-
 	if(should_update)
 		src.update_container()
 		target_container.update_container()
+
+	if(check_recipes)
+		src.process_recipes()
+		target_container.process_recipes()
 
 	return total_amount_transfered
 

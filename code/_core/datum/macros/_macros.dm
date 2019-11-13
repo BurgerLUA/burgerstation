@@ -49,7 +49,7 @@
 			var/mob/living/advanced/A = owner.mob
 			for(var/obj/hud/button/slot/B in A.buttons)
 				if(B.id == text_num)
-					B.trigger(owner.mob)
+					B.activate_button(owner.mob)
 
 	else
 		switch(command)

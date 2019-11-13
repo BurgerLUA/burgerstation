@@ -12,6 +12,8 @@
 
 	mouse_opacity = 0
 
+	user_colors = FALSE
+
 /obj/hud/screen_blood/New(var/desired_loc,var/desired_direction=NORTHWEST)
 
 	if(is_living(desired_loc))

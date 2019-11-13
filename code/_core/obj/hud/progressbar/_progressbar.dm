@@ -15,6 +15,8 @@
 
 	mouse_opacity = 0
 
+	user_colors = FALSE
+
 /obj/hud/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time,var/new_callback_list = list())
 
 	if(is_mob(new_loc))
@@ -32,6 +34,8 @@
 	end_time = new_end_time
 	callback_list = new_callback_list
 
+	update_icon()
+
 	..()
 
 /obj/hud/progress_bar/update_icon()
@@ -39,6 +43,8 @@
 	icon = initial(icon)
 
 	var/icon/I = new /icon(icon,icon_state)
+	swap_colors(I)
+
 	var/icon/O = new /icon(icon,"progress_bar")
 	var/time_normalized = end_time - start_time
 	var/time_left = end_time - curtime

@@ -18,3 +18,5 @@
 	var/is_fading = FALSE
 	var/fade_out = FALSE
 	var/client
+
+	user_colors = FALSE

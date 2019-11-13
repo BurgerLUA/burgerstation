@@ -4,6 +4,8 @@
 
 	screen_loc = "CENTER-1,CENTER-1+2"
 
+	user_colors = FALSE
+
 
 /obj/hud/button/question/skip_tutorial
 	name = "Skip Tutorial?"

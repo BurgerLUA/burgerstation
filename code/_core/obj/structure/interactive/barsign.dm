@@ -28,3 +28,9 @@ obj/structure/interactive/bar_sign/dan
 	name = "Discount Dan's"
 	desc = "Stay awhile, and listen!"
 	icon_state = "dan"
+
+
+obj/structure/interactive/bar_sign/narsie
+	name = "Nar-sie Bistro"
+	desc = "\[Cult Noises\]"
+	icon_state = "cult"

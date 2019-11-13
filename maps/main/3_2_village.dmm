@@ -284,6 +284,8 @@
 "fx" = (/obj/structure/interactive/plant/fly_amanita,/turf/simulated/floor/cave_dirt,/area/world/forest/exterior/plains)
 "fy" = (/obj/structure/interactive/plant/fly_amanita,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/spider)
 "fz" = (/obj/item/clothing/feet/socks/programmer,/obj/item/weapon/ranged/bullet/magazine/assault_rifle,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 1},/area/world/forest/exterior/village)
+"fA" = (/obj/structure/interactive/shop,/obj/item/container/beaker/large/potassium,/turf/simulated/floor/cobblestone,/area/world/forest/exterior/village)
+"fB" = (/obj/structure/interactive/shop,/turf/simulated/floor/cobblestone/side,/area/world/forest/exterior/village)
 "fC" = (/obj/structure/scenery/grass,/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/crafting/smelter,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "fD" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/container/beaker/bottle/large/water,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "fE" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/crafting/alchemy,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
@@ -291,6 +293,7 @@
 "fG" = (/mob/living/simple/npc/slime/green,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
 "fH" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/container/beaker/large,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "fI" = (/mob/living/simple/npc/bear,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
+"fJ" = (/obj/structure/interactive/shop,/obj/item/container/beaker/large/water,/turf/simulated/floor/cobblestone,/area/world/forest/exterior/village)
 "fK" = (/obj/structure/scenery/grass,/obj/structure/interactive/lighting/streetlamp,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
 "fL" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/lighting/candle,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "fM" = (/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/cave)
@@ -343,7 +346,7 @@ acacacacacacacacacacacacacafafafagagagagagagagagagagagagagagagagagagbNbNbNbNbNbN
 acacacacacacacacacacacacacagagagagagagagagagagagaZagagagaZagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagbNeQaiavavaiananbibibibibibibibibxbDbiegekepbibxbDaBcQcQcQcQcQbrbsbtcQcQcQcQcQaBbxbDaBbGbGbGdLbGbGbGaBbxbDananbgbgbgbmbmbgbgaYfkfkbuaJaJaJaHaJaJaJaJbmbmbmbmbm
 acacacacacacacacacacagagagagagagagagagagaZagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagbNavavavavaiandhdhdhdhdhdhdhdhbibxbDbicSancSbibxbDbjcQcQcQcQbFbxbBbDbFcQcQcQcQbFbxbDbFcQcQaBancQcQerbFbxbDananbgbgbgbmbmbgbgaYfkfkbuaJaJaJaJaJaJaJaJbmbmbmbmbm
 eOeOacacacacacacacacagagagagagagaZagagagagagaZagagagagagagagagaZagbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNagagbNbNafavanandhdidididididGdhbibxbBbsaFfzbsbsbBbBbsbsbsbsbsbsbBbBbBbsbsbsbsbsbsbBbBbsbsbsbsbsbsbsetbsbBbDananbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
-eOeOeOajajajajajajeOagagagaZagagagagagagagagagagagaZagagaZagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagbNavanandhdjdjdjdjdjdjdhbicTbCbCbCbCbBbBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCevbCbCcVcabdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
+eOeOeOajajajajajajeOagagagaZagagagagagagagagagagagaZagagaZagagagagagbNbNbNbNbNbNbNbNbNbNbNbNbNbNagaZagagbNavanandhdjdjdjdjdjdjdhbicTbCbCbCbCfAfJfBfBfBbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCbCevbCbCcVcabdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOajajeOeOagagagagagagagagaZagagagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdjdjdkdjdjdjdhbkaBaBaBaBbFbxbDcBaScIaSdFdCdEaSdCdEgabibidydycXdydydydyaBbidydycXdydydydyananbdbgbgbgbgbgbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOeOeOeOagagagagagagagagagagagagaZagagagagagagagagagagagagagagagbNbNbNbNbNbNbNbNbNbNbNagagagagagavanandhdGexexexexexdhdhdhdhdhdhanbxbDbiaSeBdHdHeXeYdHfddHgabibidydAdAcYdAdAdybibidydAdAcYdAdAdyananbdbdbdbmbmbmbmbmbmbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOeOagagagagagagagaZagagagagagagagagagagagaZagagagaZagagagaZagagaZagbNbNbNbNbNbNbNbNagagagagagagavanandhdDdDdDdDdDdDdjdldjdjdjdhanbxbDanaSePdHdHdHdHdHfcfOgabibidydAdAcZcZdAdybibidydAdAcZcZdAdyanbdbdbdbdbmbmbmbmbmbmbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm

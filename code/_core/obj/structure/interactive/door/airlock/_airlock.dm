@@ -26,7 +26,7 @@
 
 	if(door_state == DOOR_STATE_OPENED)
 		opened_time += 1
-	else
+	else if (door_state == DOOR_STATE_CLOSED)
 		opened_time = 0
 
 	if(door_state == DOOR_STATE_OPENED && opened_time >= 100)
@@ -45,6 +45,9 @@
 	return TRUE
 
 obj/structure/interactive/door/airlock/open()
+
+	if(door_state != DOOR_STATE_CLOSED)
+		return FALSE
 
 	spawn()
 
@@ -69,10 +72,13 @@ obj/structure/interactive/door/airlock/open()
 		door_state = DOOR_STATE_OPENED
 		update_icon()
 
-		if(thinks)
+		if(thinks && !(src in all_thinkers))
 			all_thinkers += src
 
 obj/structure/interactive/door/airlock/close()
+
+	if(door_state != DOOR_STATE_OPENED)
+		return FALSE
 
 	spawn()
 
@@ -84,16 +90,35 @@ obj/structure/interactive/door/airlock/close()
 
 		sleep(close_time_01)
 
-		door_state = DOOR_STATE_CLOSING_02
-		update_icon()
+		var/found_living = FALSE
+		for(var/mob/living/L in loc.contents)
+			if(L)
+				found_living = TRUE
+				break
 
-		sleep(close_time_02)
+		if(found_living)
+			door_state = DOOR_STATE_OPENING_02
+			update_icon()
 
-		door_state = DOOR_STATE_CLOSED
-		update_icon()
+			sleep(open_time_02)
 
-		if(thinks)
-			all_thinkers -= src
+			door_state = DOOR_STATE_OPENED
+			update_icon()
+
+			if(thinks && !(src in all_thinkers))
+				all_thinkers += src
+
+		else
+			door_state = DOOR_STATE_CLOSING_02
+			update_icon()
+
+			sleep(close_time_02)
+
+			door_state = DOOR_STATE_CLOSED
+			update_icon()
+
+			if(thinks && !(src in all_thinkers))
+				all_thinkers -= src
 
 /obj/structure/interactive/door/airlock/update_icon()
 

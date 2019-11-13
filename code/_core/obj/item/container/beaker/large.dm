@@ -14,3 +14,9 @@
 
 /obj/item/container/beaker/large/dylovene/on_spawn()
 	reagents.add_reagent("dylovene",reagents.volume_max)
+
+/obj/item/container/beaker/large/water/on_spawn()
+	reagents.add_reagent("water",reagents.volume_max)
+
+/obj/item/container/beaker/large/potassium/on_spawn()
+	reagents.add_reagent("potassium",reagents.volume_max)

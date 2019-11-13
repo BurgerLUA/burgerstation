@@ -25,7 +25,7 @@
 	else
 		color = "#FFFFFF"
 
-/obj/hud/button/slot/proc/trigger(var/mob/living/advanced/caller)
+/obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
 	if(!stored_item)
 		return FALSE

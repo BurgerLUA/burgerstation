@@ -24,12 +24,10 @@
 	if(owner && owner.client)
 		color_scheme = owner.client.settings.loaded_data["hud_colors"]
 
-	world.log << length(color_scheme)
-
 	I.SwapColor(rgb(255,0,0),color_scheme[1])
 	I.SwapColor(rgb(0,255,0),color_scheme[2])
 	I.SwapColor(rgb(0,0,255),color_scheme[3])
 
 	I.SwapColor(rgb(255,255,0),color_scheme[4])
 	I.SwapColor(rgb(255,0,255),color_scheme[5])
-	//I.SwapColor(rgb(0,255,255),color_scheme[6])
+	I.SwapColor(rgb(0,255,255),color_scheme[6])
