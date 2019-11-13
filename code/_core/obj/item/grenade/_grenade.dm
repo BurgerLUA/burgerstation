@@ -12,7 +12,24 @@
 
 	var/max_containers = 2
 
-	var/open = FALSE
+	var/open = TRUE
+
+/obj/item/grenade/New(var/desired_loc)
+	. = ..()
+	update_icon()
+	return .
+
+
+/obj/item/grenade/update_icon()
+
+	if(length(stored_containers) && stored_trigger)
+		icon_state = "chem"
+	else if(length(stored_containers) || stored_trigger)
+		icon_state = "chem_assembly"
+	else
+		icon_state = "chem_casing"
+
+	return ..()
 
 /obj/item/grenade/click_self(var/atom/caller)
 
@@ -32,7 +49,9 @@
 			if(length(stored_containers))
 				var/obj/item/container/beaker/selected_beaker = stored_containers[length(stored_containers)]
 				if(I.add_held_object(selected_beaker))
+					caller.to_chat(span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
 					stored_containers -= selected_beaker
+					update_icon()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
 
@@ -40,7 +59,9 @@
 
 			if(stored_trigger)
 				if(I.add_held_object(stored_trigger))
+					caller.to_chat(span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 					stored_trigger = null
+					update_icon()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
 
@@ -49,18 +70,26 @@
 		else if(is_beaker(object))
 			if(length(stored_containers) < max_containers)
 				var/obj/item/container/beaker/B = object
+				B.drop_item(src)
 				B.force_move(src)
 				stored_containers += B
+				caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
+				update_icon()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
+
+
 
 			return TRUE
 
 		else if(is_trigger(object))
 			if(!stored_trigger)
 				var/obj/item/trigger/T = object
+				T.drop_item(src)
 				T.force_move(src)
 				stored_trigger = T
+				caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
+				update_icon()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
 

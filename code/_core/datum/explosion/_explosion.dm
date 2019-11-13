@@ -5,15 +5,16 @@
 
 	var/step_num = 1
 
+	var/atom/owner
 
-/explosion/New(var/turf/desired_loc,var/desired_range = 4)
+/explosion/New(var/turf/desired_loc,var/desired_range = 4,var/atom/desired_owner)
 
 	. = ..()
 
 	explosion_data = new/list(desired_range+1)
 
 	spawn()
-		for(var/turf/T in range(desired_range,desired_loc))
+		for(var/turf/T in view(desired_range,desired_loc))
 			var/distance = get_dist(T,desired_loc) + 1
 			if(distance <= 0)
 				distance = 1
@@ -48,5 +49,5 @@
 	return TRUE
 
 
-proc/explode(var/turf/desired_turf,var/desired_range)
-	new/explosion(desired_turf,desired_range)
+proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner)
+	new/explosion(desired_turf,desired_range,desired_owner)

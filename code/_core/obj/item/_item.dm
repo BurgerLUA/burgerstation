@@ -91,12 +91,16 @@
 	var/worn_pixel_x = 0
 	var/worn_pixel_y = 0
 
+	var/mob/living/last_interacted
+
 /obj/item/destroy()
 
 	for(var/obj/hud/inventory/I in inventories)
 		qdel(I)
 
 	inventories.Cut()
+
+	last_interacted = null
 
 	return ..()
 
@@ -322,6 +326,7 @@ obj/item/proc/do_automatic(caller,object,location,params)
 
 	if(new_location)
 		update_lighting_for_owner(new_location)
+		last_interacted = new_location.owner
 
 	return TRUE
 

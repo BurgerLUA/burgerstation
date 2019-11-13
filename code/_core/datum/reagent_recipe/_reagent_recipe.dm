@@ -15,5 +15,4 @@
 
 
 /reagent_recipe/proc/on_react(var/reagent_container/container,var/magnitude)
-	world.log << magnitude
 	return TRUE

@@ -37,8 +37,6 @@
 	var/move_mod = 2
 	var/move_mod_button = 0
 
-	var/karma = 0
-
 	see_invisible = INVISIBILITY_DEFAULT
 	invisibility = INVISIBILITY_MOBS
 

@@ -18,7 +18,7 @@
 	var/weight_fat = 60 + strength*0.3 - intelligence*0.2 - agility*0.5 - willpower*0.1 - wisdom*0.1 - dexterity*0.1 - endurance*0.5
 	var/weight_total = weight_fat + weight_muscle
 	var/height = 140 + strength*0.1 + agility*0.1 + fortitude*0.2 + vitality*0.05
-	var/masculinity = strength*0.75 + endurance*0.25 - intelligence*0.5 - agility*0.25 - dexterity*0.1 + (50 - karma)*0.5   //Negative values are feminine.
+	var/masculinity = strength*0.75 + endurance*0.25 - intelligence*0.5 - agility*0.25 - dexterity*0.1 //Negative values are feminine.
 
 	//Sexism and stereotypes ahoy
 	if(gender == MALE)

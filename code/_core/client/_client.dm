@@ -29,12 +29,6 @@ var/global/list/all_clients = list()
 
 	var/swap_mouse = FALSE
 
-	//var/image/lighting
-
-	//lazy_eye = 5
-
-	var/karma = 1000
-
 	perspective = EYE_PERSPECTIVE
 
 	var/current_music_track //Id of music track that last played.

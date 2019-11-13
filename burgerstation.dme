@@ -391,7 +391,6 @@
 #include "code\_core\mob\living\health.dm"
 #include "code\_core\mob\living\icon.dm"
 #include "code\_core\mob\living\interaction.dm"
-#include "code\_core\mob\living\karma.dm"
 #include "code\_core\mob\living\life.dm"
 #include "code\_core\mob\living\movement.dm"
 #include "code\_core\mob\living\on_attacked.dm"

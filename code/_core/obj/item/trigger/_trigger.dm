@@ -5,9 +5,14 @@
 /obj/item/trigger/timer
 	name = "timer"
 	icon_state = "timer"
-	var/time_set = 5
-	var/time_left = 0
+
+	var/time_set = 50
+	var/time_min = 0
+	var/time_max = 300
+
 	var/active = FALSE
+
+	var/spam_fix_time = 0
 
 /obj/item/trigger/timer/click_self(var/mob/caller)
 	trigger(caller,-1,-1)
@@ -15,7 +20,6 @@
 
 /obj/item/trigger/timer/trigger(var/atom/source,var/signal_freq,var/signal_code)
 
-	time_left = time_set
 	if(!(src in all_thinkers))
 		all_thinkers += src
 
@@ -27,14 +31,13 @@
 	. = ..()
 
 	if(active)
-		time_left--
-		var/turf/T = get_turf(src)
-		T.visible_message(span("warning","The grenade beeps, \"[time_left]\""))
-		if(time_left <= 0)
+		time_set -= 1
+		if(time_set <= 0)
 			if(loc)
 				loc.trigger(src,-1,-1)
 			active = FALSE
 			thinks = FALSE
+			time_set = 0
 			return FALSE
 
 	return .
@@ -44,13 +47,24 @@
 
 	var/fixed_delta = round(Clamp(delta_y,-1,1))
 
-	if(time_set > 15)
+	if(time_set >= 15)
 		fixed_delta = round(fixed_delta*5,5)
-	else if(time_set > 60)
+	else if(time_set >= 60)
 		fixed_delta = round(fixed_delta*10,10)
-	else if(time_set > 120)
+	else if(time_set >= 120)
 		fixed_delta = round(fixed_delta*10,30)
 
-	time_set = Clamp(time_set + fixed_delta,1,60)
+	var/old_time_set = time_set
+
+	time_set = Clamp(time_set + fixed_delta,time_min,time_max)
+
+	if(old_time_set == time_set)
+		caller.to_chat(span("notice","The timer can't seem to go any [time_set == time_min ? "lower" : "higher"]."))
+	else if(spam_fix_time <= curtime)
+		caller.to_chat(span("notice","You change \the [src.name]'s time to [time_set] deciseconds..."))
+	else
+		caller.to_chat(span("notice","...[time_set] deciseconds..."))
+
+	spam_fix_time = curtime + 20
 
 	return TRUE

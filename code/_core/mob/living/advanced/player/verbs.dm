@@ -5,4 +5,4 @@ client/verb/language_convert()
 
 
 mob/living/advanced/verb/make_explosion()
-	explode(src.loc,10)
+	explode(src.loc,10,src)
