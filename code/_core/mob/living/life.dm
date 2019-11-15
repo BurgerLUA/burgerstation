@@ -74,16 +74,6 @@
 /mob/living/proc/post_death()
 	return TRUE
 
-/mob/living/proc/on_life_AI()
-
-	if(!ai || !initialized || status & FLAG_STATUS_DEAD)
-		return FALSE
-
-	ai.on_life()
-	handle_movement(DECISECONDS_TO_TICKS(LIFE_TICK))
-
-	return TRUE
-
 /mob/living/proc/on_stunned()
 	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground!")
 	return TRUE

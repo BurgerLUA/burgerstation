@@ -27,6 +27,10 @@
 
 	. = ..()
 
+	if(stored_slimes <= 1)
+		var/obj/item/slime_core/SC = new(src.loc)
+		SC.color = slime_color
+
 	for(var/i=1,i<=stored_slimes-1,i++)
 		var/mob/living/simple/npc/slime/S = new(get_turf(src))
 		S.slime_color = slime_color

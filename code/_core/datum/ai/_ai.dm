@@ -44,11 +44,14 @@
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
 /ai/destroy()
+	if(owner)
+		owner.ai = null
 	owner = null
 	objective_move = null
 	objective_attack = null
 	objective_defend = null
 	start_turf = null
+	all_living_ai -= src
 	return ..()
 
 /ai/New(var/mob/living/desired_owner)
@@ -70,10 +73,20 @@
 /ai/proc/on_life()
 
 	if(!enabled)
-		return TRUE
+		return FALSE
+
+	if(!owner)
+		qdel(src)
+		return FALSE
+
+	if(!owner.initialized)
+		return FALSE
+
+	if(owner.status & FLAG_STATUS_DEAD)
+		return FALSE
 
 	if(!is_turf(owner.loc))
-		return TRUE
+		return FALSE
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
@@ -82,6 +95,8 @@
 	movement_ticks += 1
 	if(movement_ticks >= movement_delay)
 		handle_movement()
+	if(owner)
+		owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
 
 	attack_ticks += 1
 	if(attack_ticks >= attack_delay)

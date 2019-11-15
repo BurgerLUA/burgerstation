@@ -878,6 +878,7 @@
 #include "code\_core\world\life.dm"
 #include "code\_core\world\rebooting.dm"
 #include "code\_core\world\subsystems\_subsystems.dm"
+#include "code\_core\world\subsystems\ai.dm"
 #include "code\_core\world\subsystems\areas.dm"
 #include "code\_core\world\subsystems\attributes.dm"
 #include "code\_core\world\subsystems\badnames.dm"

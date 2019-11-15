@@ -4,16 +4,16 @@ obj/item/slime_core
 	color = "#FFFFFF"
 	icon = 'icons/mob/living/simple/slimes_new.dmi'
 	icon_state = "slime_core"
-	alpha = 200
+	alpha = 125
 
 obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
+	object = object.defer_click_on_object()
 
 	if(is_item(object))
 		var/obj/item/I = object
-		I.dye_self(caller,src,color,alpha/255)
-		return TRUE
+		if(I.dye_self(caller,src,color,alpha/255))
+			return TRUE
 
 	return ..()
 

@@ -96,8 +96,9 @@
 
 	skills.Cut()
 
-	qdel(ai)
-	ai = null
+	if(ai)
+		qdel(ai)
+		ai = null
 
 	if(screen_blood)
 		for(var/obj/hud/screen_blood/S in screen_blood)
