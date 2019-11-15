@@ -41,14 +41,17 @@
 
 /obj/item/currency/Crossed(var/atom/movable/O)
 
-	if(!is_player(O))
-		return ..()
+	if(is_player(O))
+		var/mob/living/advanced/player/P = O
+		P.adjust_currency(value)
+		value = 0
+		qdel(src)
 
-	var/mob/living/advanced/player/P = O
-
-	P.adjust_currency(value)
-	value = 0
-	qdel(src)
+	if(is_currency(O))
+		var/obj/item/currency/C = O
+		C.value += value
+		value = 0 //Just in case
+		qdel(src)
 
 	return ..()
 

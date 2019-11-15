@@ -1,8 +1,8 @@
-/obj/item/trigger
+/obj/item/trigger_mechanism
 	name = "trigger assembly"
 	icon = 'icons/obj/items/trigger.dmi'
 
-/obj/item/trigger/timer
+/obj/item/trigger_mechanism/timer
 	name = "timer"
 	icon_state = "timer"
 
@@ -14,11 +14,11 @@
 
 	var/spam_fix_time = 0
 
-/obj/item/trigger/timer/click_self(var/mob/caller)
-	trigger(caller,-1,-1)
+/obj/item/trigger_mechanism/timer/click_self(var/mob/caller)
+	trigger(caller,src,-1,-1)
 	return TRUE
 
-/obj/item/trigger/timer/trigger(var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/trigger_mechanism/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(!(src in all_thinkers))
 		all_thinkers += src
@@ -26,7 +26,9 @@
 	thinks = TRUE
 	active = TRUE
 
-/obj/item/trigger/timer/think()
+	return ..()
+
+/obj/item/trigger_mechanism/timer/think()
 
 	. = ..()
 
@@ -34,7 +36,7 @@
 		time_set -= 1
 		if(time_set <= 0)
 			if(loc)
-				loc.trigger(src,-1,-1)
+				loc.trigger(last_interacted,src,-1,-1)
 			active = FALSE
 			thinks = FALSE
 			time_set = 0
@@ -43,7 +45,7 @@
 	return .
 
 
-/obj/item/trigger/timer/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/trigger_mechanism/timer/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = round(Clamp(delta_y,-1,1))
 

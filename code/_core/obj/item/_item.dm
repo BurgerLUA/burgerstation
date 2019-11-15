@@ -91,7 +91,7 @@
 	var/worn_pixel_x = 0
 	var/worn_pixel_y = 0
 
-	var/mob/living/last_interacted
+	var/atom/last_interacted
 
 /obj/item/destroy()
 
@@ -103,7 +103,6 @@
 	last_interacted = null
 
 	return ..()
-
 
 /obj/item/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 	return FALSE

@@ -179,7 +179,11 @@
 	return TRUE
 
 
-/reagent_container/proc/process_recipes()
+/reagent_container/proc/process_recipes(var/mob/caller)
+
+	if(!caller && is_item(src.owner))
+		var/obj/item/I = src.owner
+		caller = I.last_interacted
 
 	var/list/c_id_to_volume = list() //What is in the reagent container, but in a nice id = volume form
 	var/list/c_id_to_temperature = list()
@@ -253,8 +257,7 @@
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE)
 
-
-	found_recipe.on_react(src,portions_to_make)
+	found_recipe.on_react(caller,src,portions_to_make)
 
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(FALSE)

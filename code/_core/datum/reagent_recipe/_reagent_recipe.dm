@@ -14,5 +14,5 @@
 	var/list/required_temperature_max = list()
 
 
-/reagent_recipe/proc/on_react(var/reagent_container/container,var/magnitude)
+/reagent_recipe/proc/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
 	return TRUE

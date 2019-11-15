@@ -106,3 +106,12 @@
 			return FALSE
 
 	return ..()
+
+
+/turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+
+	for(var/atom/A in contents)
+		CHECK_TICK
+		A.act_explode(owner,source,epicenter,magnitude)
+
+	return ..()

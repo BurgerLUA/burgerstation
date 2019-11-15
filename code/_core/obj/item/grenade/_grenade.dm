@@ -6,7 +6,7 @@
 	icon_state = "chem"
 
 	var/list/obj/item/container/beaker/stored_containers = list()
-	var/obj/item/trigger/stored_trigger
+	var/obj/item/trigger_mechanism/stored_trigger
 
 	reagents = /reagent_container/grenade
 
@@ -35,6 +35,8 @@
 
 	if(stored_trigger)
 		stored_trigger.click_self(caller)
+
+	last_interacted = caller
 
 	return TRUE
 
@@ -84,7 +86,7 @@
 
 		else if(is_trigger(object))
 			if(!stored_trigger)
-				var/obj/item/trigger/T = object
+				var/obj/item/trigger_mechanism/T = object
 				T.drop_item(src)
 				T.force_move(src)
 				stored_trigger = T
@@ -98,13 +100,13 @@
 	return ..()
 
 
-/obj/item/grenade/trigger(var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	for(var/obj/item/container/beaker/B in stored_containers)
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE)
 		B.reagents.update_container()
 
 	src.reagents.update_container()
-	src.reagents.process_recipes()
+	src.reagents.process_recipes(caller)
 
-	return TRUE
+	return ..()

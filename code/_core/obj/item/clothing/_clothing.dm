@@ -9,8 +9,13 @@
 	color = "#FFFFFF"
 
 	var/color_primary = "#FF0000"
+	var/color_primary_desc = "primary"
+
 	var/color_secondary = "#00FF00"
+	var/color_secondary_desc = "secondary"
+
 	var/color_tertiary = "#0000FF"
+	var/color_tertiary_desc = "tertiary"
 
 	icon_state = "inventory"
 	icon_state_worn = "worn"
@@ -81,6 +86,9 @@
 
 	if(!polymorphic)
 		return ..()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
 
 	var/icon/I1 = new /icon(icon,"[icon_state]_primary")
 	var/icon/I2 = new /icon(icon,"[icon_state]_secondary")

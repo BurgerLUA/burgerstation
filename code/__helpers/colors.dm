@@ -5,7 +5,7 @@
 	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
 /proc/random_color()
-	return rgb(rand(1,255),rand(1,255),rand(1,255))
+	return rgb(rand(0,255),rand(0,255),rand(0,255))
 
 /*
 /proc/hex2num(hex)
@@ -229,3 +229,11 @@
 		if(alpha > 255) alpha = 255
 		. += TO_HEX_DIGIT(alpha >> 4)
 		. += TO_HEX_DIGIT(alpha)
+
+
+/proc/blend_colors(var/color_01,var/color_02,var/power = 0.5)
+	power = Clamp(power,0,1)
+	var/new_red = GetRedPart(color_01)*(1-power) + GetRedPart(color_02)*power
+	var/new_green = GetGreenPart(color_01)*(1-power) + GetGreenPart(color_02)*power
+	var/new_blue = GetBluePart(color_01)*(1-power) + GetBluePart(color_02)*power
+	return rgb(new_red,new_green,new_blue)

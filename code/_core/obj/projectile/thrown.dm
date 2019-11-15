@@ -21,7 +21,7 @@
 			animate(A,pixel_x = 0, pixel_y = 0, time = max(1, 10 * steps_allowed ? (1/steps_allowed) : 10 ))
 			if(is_living(A))
 				var/mob/living/L = A
-				var/guessed_velocity = Clamp(10*steps_allowed*(1 - steps_current/steps_allowed),10,40)
+				var/guessed_velocity = steps_allowed ? Clamp(10*steps_allowed*(1 - steps_current/steps_allowed),10,40) : 10
 				L.add_stun(guessed_velocity)
 				L.add_paralyze(guessed_velocity*0.5)
 				//HEALTH TODO: APPLY DAMAGE

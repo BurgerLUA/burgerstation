@@ -22,6 +22,14 @@
 		COLD = ARMOR_D,
 	)
 
+	color_primary = "#FFFFFF"
+	color_secondary = "#FFFFFF"
+	color_tertiary = "#FFFFFF"
+
+	color_primary_desc = "shirt"
+	color_secondary_desc = "pants"
+	color_tertiary_desc = "tie"
+
 /obj/item/clothing/uniform/jumpsuit/grey
 	color_primary = "#A0A0A0"
 	color_secondary = "#A0A0A0"

@@ -20,8 +20,7 @@
 
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(get_dist(caller,object) > 1)
-		return FALSE
+	INTERACT_CHECK
 
 	if(!is_advanced(object) || !is_advanced(caller))
 		return ..()

@@ -496,3 +496,7 @@ mob/living/advanced/Login()
 	if(right_hand)
 		return right_hand.get_top_held_object()
 	return null
+
+
+
+/mob/living/advanced/proc/damage_all_external_organs()

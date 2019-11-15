@@ -38,7 +38,7 @@
 	return istype(A,/mob/living/)
 
 /proc/is_trigger(var/atom/A)
-	return istype(A,/obj/item/trigger/)
+	return istype(A,/obj/item/trigger_mechanism/)
 
 /proc/is_observer(var/atom/A)
 	return istype(A,/mob/abstract/observer/)
