@@ -64,7 +64,6 @@
 	var/mob/living/advanced/player/P = new(src.loc,client)
 	P.mobdata = mobdata
 	P.Initialize()
-	qdel(src)
 
 /mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Quickload"

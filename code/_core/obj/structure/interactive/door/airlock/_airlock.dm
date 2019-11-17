@@ -3,7 +3,7 @@
 	desc = "a powered airlock"
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
-	var/filler = "glass"
+	var/filler = "fill"
 
 	var/base_color = "#FFFFFF"
 	var/fill_color = "#FFFFFF"
@@ -21,6 +21,8 @@
 
 	open_sound = 'sounds/machines/airlock/open.ogg'
 	close_sound = 'sounds/machines/airlock/close.ogg'
+
+	var/no_access = FALSE
 
 /obj/structure/interactive/door/airlock/think()
 
@@ -49,7 +51,18 @@ obj/structure/interactive/door/airlock/open()
 	if(door_state != DOOR_STATE_CLOSED)
 		return FALSE
 
+	if(door_state == DOOR_STATE_DENY)
+		return FALSE
+
 	spawn()
+
+		if(no_access)
+			door_state = DOOR_STATE_DENY
+			update_icon()
+			sleep(10)
+			door_state = DOOR_STATE_CLOSED
+			update_icon()
+			return
 
 		if(open_sound)
 			play(open_sound)
@@ -121,6 +134,10 @@ obj/structure/interactive/door/airlock/close()
 				all_thinkers -= src
 
 /obj/structure/interactive/door/airlock/update_icon()
+
+	if(color && color != "#FFFFFF")
+		base_color = color
+		color = "#FFFFFF"
 
 	icon = initial(icon)
 
@@ -212,14 +229,15 @@ obj/structure/interactive/door/airlock/close()
 				desired_color = "#00FF00"
 			if(DOOR_STATE_CLOSING_01)
 				desired_color = "#FFFF00"
-			if(DOOR_STATE_CLOSING_02)
+			if(DOOR_STATE_CLOSING_02,DOOR_STATE_DENY)
 				desired_color = "#FF0000"
 
 	var/light_state = "[icon_state]_light"
 
-	if(door_state == DOOR_STATE_START_OPENING)
+	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY)
 		light_state = "light_special_static"
 
+	world.log << light_state
 
 	var/icon/light_icon = new /icon(icon,light_state)
 	light_icon.Blend(desired_color,ICON_MULTIPLY)
@@ -253,3 +271,5 @@ obj/structure/interactive/door/airlock/close()
 /obj/structure/interactive/door/airlock/glass/no_manual_close
 	allow_manual_close = FALSE
 
+/obj/structure/interactive/door/airlock/glass/no_access
+	no_access = TRUE

@@ -46,9 +46,7 @@
 
 		qdel(src)
 
-
 	return TRUE
-
 
 /obj/item/container/pill/update_icon()
 

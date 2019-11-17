@@ -12,7 +12,3 @@ var/global/list/ai/all_living_ai = list()
 		AI.on_life()
 
 	return TRUE
-
-
-
-

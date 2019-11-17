@@ -70,6 +70,8 @@
 
 	start_turf = get_turf(owner)
 
+	all_living_ai += src
+
 /ai/proc/on_life()
 
 	if(!enabled)

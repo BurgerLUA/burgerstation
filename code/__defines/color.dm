@@ -1,0 +1,1 @@
+#define COLOR_CARGO "#BB9042"

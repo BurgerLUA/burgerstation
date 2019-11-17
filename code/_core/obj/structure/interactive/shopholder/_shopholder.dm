@@ -81,8 +81,8 @@
 
 		var/obj/item/new_item = new stored_item.type(get_turf(A))
 		new_item.on_spawn()
-		A.pickup(new_item,click_flags & LEFT_HAND)
 		new_item.update_icon()
+		A.pickup(new_item,click_flags & LEFT_HAND)
 		A.to_chat(span("notice","You successfully purchase \the [new_item] for [item_cost] crystal\s."))
 
 	else

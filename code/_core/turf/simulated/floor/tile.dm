@@ -39,3 +39,6 @@
 
 /turf/simulated/floor/tile/bananium
 	icon_state = "bananium"
+
+/turf/simulated/floor/tile/cargo
+	color = COLOR_CARGO

@@ -6,6 +6,7 @@
 #define DOOR_STATE_CLOSING_02 6
 #define DOOR_STATE_LOCKED 7 //Only used for singleplayer airlocks
 #define DOOR_STATE_START_OPENING 8 //Only used for airlocks
+#define DOOR_STATE_DENY 9 //Only used for airlocks
 
 
 obj/structure/interactive/door

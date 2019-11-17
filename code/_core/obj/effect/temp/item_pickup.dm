@@ -42,7 +42,7 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 			animate(src,transform=M,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 
 	spawn(duration)
-		desired_object.alpha = 255
+		desired_object.alpha = initial(desired_object.alpha)
 		qdel(src)
 
 	return TRUE
