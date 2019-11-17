@@ -2,9 +2,9 @@
 
 #define PLANE_FLOOR -7
 
-#define PLANE_WALL_ATTACHMENTS -6
+#define PLANE_WALL -6
 
-#define PLANE_WALL -5
+#define PLANE_WALL_ATTACHMENTS -5
 
 #define PLANE_OBJ -4
 

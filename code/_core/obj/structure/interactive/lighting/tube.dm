@@ -20,8 +20,22 @@
 	return
 
 /obj/structure/interactive/lighting/tube/New()
-	..()
+
+	. = ..()
+
+	switch(dir)
+		if(NORTH)
+			pixel_y = 1
+		if(SOUTH)
+			pixel_y = -1
+		if(EAST)
+			pixel_x = 1
+		if(WEST)
+			pixel_x = -1
+
 	update_icon()
+
+	return .
 
 /obj/structure/interactive/lighting/tube/update_icon()
 

@@ -42,3 +42,18 @@
 
 /turf/simulated/floor/tile/cargo
 	color = COLOR_CARGO
+
+
+/turf/simulated/floor/tile/smooth
+	real_icon = 'icons/turf/floor/tile_smooth.dmi'
+	real_icon_state = "floor"
+
+	corner_icons = TRUE
+	corner_category = "tile"
+
+
+/turf/simulated/floor/tile/smooth/grey
+	color = "#999999"
+
+/turf/simulated/floor/tile/smooth/cargo
+	color = COLOR_CARGO

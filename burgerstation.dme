@@ -862,6 +862,7 @@
 #include "code\_core\turf\simulated\wall\boss.dm"
 #include "code\_core\turf\simulated\wall\brick.dm"
 #include "code\_core\turf\simulated\wall\clockwork.dm"
+#include "code\_core\turf\simulated\wall\colored_metal.dm"
 #include "code\_core\turf\simulated\wall\cult.dm"
 #include "code\_core\turf\simulated\wall\diona.dm"
 #include "code\_core\turf\simulated\wall\fake_glass.dm"

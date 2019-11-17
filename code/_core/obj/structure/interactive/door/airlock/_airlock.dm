@@ -54,6 +54,9 @@ obj/structure/interactive/door/airlock/open()
 	if(door_state == DOOR_STATE_DENY)
 		return FALSE
 
+	if(locked)
+		return FALSE
+
 	spawn()
 
 		if(no_access)
@@ -227,14 +230,14 @@ obj/structure/interactive/door/airlock/close()
 		switch(door_state)
 			if(DOOR_STATE_OPENING_01,DOOR_STATE_OPENING_02,DOOR_STATE_START_OPENING)
 				desired_color = "#00FF00"
-			if(DOOR_STATE_CLOSING_01)
+			if(DOOR_STATE_CLOSING_01,DOOR_STATE_CLOSING_02)
 				desired_color = "#FFFF00"
-			if(DOOR_STATE_CLOSING_02,DOOR_STATE_DENY)
+			if(DOOR_STATE_DENY)
 				desired_color = "#FF0000"
 
 	var/light_state = "[icon_state]_light"
 
-	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY)
+	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY || desired_color)
 		light_state = "light_special_static"
 
 	world.log << light_state
