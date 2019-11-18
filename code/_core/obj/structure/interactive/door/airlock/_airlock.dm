@@ -237,10 +237,8 @@ obj/structure/interactive/door/airlock/close()
 
 	var/light_state = "[icon_state]_light"
 
-	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY || desired_color)
+	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY || locked)
 		light_state = "light_special_static"
-
-	world.log << light_state
 
 	var/icon/light_icon = new /icon(icon,light_state)
 	light_icon.Blend(desired_color,ICON_MULTIPLY)

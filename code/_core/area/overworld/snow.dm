@@ -36,5 +36,5 @@
 	icon_state = "rain"
 	icon = 'icons/area/weather.dmi'
 	invisibility = 0
-	color = "#429FCE"
+	color = COLOR_RAIN
 	alpha = 100

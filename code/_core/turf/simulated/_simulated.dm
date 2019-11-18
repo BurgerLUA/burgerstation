@@ -11,6 +11,8 @@
 
 	var/fade = FALSE
 
+	var/tile = FALSE //Set to true if this is a tile.
+
 /turf/simulated/Initialize()
 	. = ..()
 	update_icon()
@@ -59,31 +61,32 @@
 	var/sw = ""
 	var/se = ""
 
-	if(calc_list["north"])
-		ne += "n"
-		nw += "n"
-	if(calc_list["south"])
-		se += "s"
-		sw += "s"
+	if(!tile)
+		if(calc_list["north"])
+			ne += "n"
+			nw += "n"
+		if(calc_list["south"])
+			se += "s"
+			sw += "s"
 
-	if(calc_list["east"])
-		ne += "e"
-		se += "e"
-	if(calc_list["west"])
-		nw += "w"
-		sw += "w"
+		if(calc_list["east"])
+			ne += "e"
+			se += "e"
+		if(calc_list["west"])
+			nw += "w"
+			sw += "w"
 
-	if(nw == "nw" && calc_list["northwest"])
-		nw = "f"
+		if(nw == "nw" && calc_list["northwest"])
+			nw = "f"
 
-	if(ne == "ne" && calc_list["northeast"])
-		ne = "f"
+		if(ne == "ne" && calc_list["northeast"])
+			ne = "f"
 
-	if(sw == "sw" && calc_list["southwest"])
-		sw = "f"
+		if(sw == "sw" && calc_list["southwest"])
+			sw = "f"
 
-	if(se == "se" && calc_list["southeast"])
-		se = "f"
+		if(se == "se" && calc_list["southeast"])
+			se = "f"
 
 	if(!ne) ne = "i"
 	if(!nw) nw = "i"

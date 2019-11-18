@@ -5,6 +5,10 @@
 
 	polymorphic = TRUE
 
+	color_primary = "#FFFFFF"
+	color_secondary = "#FFFFFF"
+	color_tertiary = "#FFFFFF"
+
 	defense_rating = list(
 		BLADE = 5,
 		BLUNT = 5,
@@ -24,8 +28,3 @@
 	no_initial_blend = TRUE
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
-
-/obj/item/clothing/uniform/skirt/white
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"

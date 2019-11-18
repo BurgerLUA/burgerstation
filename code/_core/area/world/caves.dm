@@ -21,7 +21,7 @@
 
 	desired_light_range = 2
 	desired_light_power = 1
-	desired_light_color = "#528200"
+	desired_light_color = COLOR_DIONA_GREEN_DARK
 
 /area/world/caves/exterior
 	name = "cave exterior"

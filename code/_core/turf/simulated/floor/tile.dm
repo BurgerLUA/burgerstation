@@ -43,6 +43,23 @@
 /turf/simulated/floor/tile/cargo
 	color = COLOR_CARGO
 
+/turf/simulated/floor/tile/command
+	color = COLOR_COMMAND
+
+/turf/simulated/floor/tile/overlapping
+	real_icon = 'icons/turf/floor/tile_smooth_overlap.dmi'
+	real_icon_state = "floor"
+
+	corner_icons = TRUE
+	corner_category = "tile_over"
+
+	tile = TRUE
+
+/turf/simulated/floor/tile/overlapping/grey
+	color = "#999999"
+
+/turf/simulated/floor/tile/overlapping/dark
+	color = "#444444"
 
 /turf/simulated/floor/tile/smooth
 	real_icon = 'icons/turf/floor/tile_smooth.dmi'

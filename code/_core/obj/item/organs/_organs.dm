@@ -191,8 +191,6 @@
 	var/offset_x = (T.x - attacker.x)
 	var/offset_y = (T.y - attacker.y)
 
-	world.log << "X: [offset_x], Y: [offset_y]"
-
 	if(!offset_x && !offset_y)
 		offset_x = pick(-1,1)
 		offset_y = pick(-1,1)

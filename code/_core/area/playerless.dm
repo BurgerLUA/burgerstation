@@ -20,7 +20,7 @@
 
 	desired_light_range = 4
 	desired_light_power = 1
-	desired_light_color = "#CCD9E8"
+	desired_light_color = COLOR_SPACE_LIGHT
 
 /area/singleplayer/exterior/river_lights
 
@@ -32,7 +32,7 @@
 
 	desired_light_range = 4
 	desired_light_power = 1
-	desired_light_color = "#1E6489"
+	desired_light_color = COLOR_RIVER_LIGHT
 
 /area/singleplayer/interior
 	icon_state = "one_alt"

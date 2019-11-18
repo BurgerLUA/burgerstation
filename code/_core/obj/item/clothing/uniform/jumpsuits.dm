@@ -2,7 +2,7 @@
 	name = "jumpsuit"
 	desc = "A nice jumpsuit."
 
-	icon = 'icons/obj/items/clothing/uniforms/poly_suit.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/poly_suit_new.dmi'
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
@@ -28,7 +28,7 @@
 
 	color_primary_desc = "shirt"
 	color_secondary_desc = "pants"
-	color_tertiary_desc = "tie"
+	color_tertiary_desc = "shoulders"
 
 /obj/item/clothing/uniform/jumpsuit/grey
 	color_primary = "#A0A0A0"

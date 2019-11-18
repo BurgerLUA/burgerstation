@@ -13,3 +13,10 @@ obj/structure/smooth/wall
 
 obj/structure/smooth/wall/wood
 	color = "#4C3323"
+
+
+
+obj/structure/smooth/wall/brick
+	name = "stone wall"
+	icon = 'icons/obj/structure/smooth/stone.dmi'
+	corner_category = "stone_wall"

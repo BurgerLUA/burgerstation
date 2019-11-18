@@ -36,4 +36,15 @@
 
 	desired_light_range = 2
 	desired_light_power = 1
-	desired_light_color = "#CCD9E8"
+	desired_light_color = COLOR_SPACE_LIGHT
+
+
+/area/world/burgerstation/interior/fire
+	name = "oh god oh fuck"
+
+	sunlight_freq = 3
+
+	desired_light_range = 8
+	desired_light_power = 1
+	desired_light_color = COLOR_ORANGE
+

@@ -46,6 +46,8 @@
 		I.Blend(I2,ICON_OVERLAY)
 		x_pos_mod -= 5
 
+	swap_colors(I)
+
 	icon = I
 
 /obj/hud/button/cash_money/proc/update_stats(var/new_value=0)

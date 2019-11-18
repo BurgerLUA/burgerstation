@@ -1,7 +1,7 @@
-/subsystem/weather
-	name = "Weather and Climate Subsystem"
+/subsystem/area
+	name = "Area Subsystem"
 	desc = "Manages the icon states of areas, aka weather and climate."
-	priority = SS_ORDER_WEATHER
+	priority = SS_ORDER_AREAS
 	tick_rate = SECONDS_TO_TICKS(600) //Weather is 10 minute intervals
 	var/list/area/world/areas_rain = list()
 	var/list/area/world/areas_snow = list()
@@ -9,7 +9,7 @@
 	var/is_raining = FALSE
 	var/is_snowing = FALSE
 
-/subsystem/weather/Initialize()
+/subsystem/area/Initialize()
 
 	if(!ENABLE_WEATHERGEN)
 		return
@@ -30,7 +30,7 @@
 
 	LOG_SERVER("Initialized [area_count] areas.")
 
-/subsystem/weather/on_life()
+/subsystem/area/on_life()
 
 	if(prob(is_raining ? 25 : 75))
 		is_raining = !is_raining
@@ -42,7 +42,7 @@
 
 	return TRUE
 
-/subsystem/weather/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/world/affected_areas)
+/subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/world/affected_areas)
 	for(var/area/world/A in affected_areas)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'

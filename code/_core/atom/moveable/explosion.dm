@@ -14,8 +14,6 @@ mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/mag
 
 	throw_self(owner,null,null,null,x_mod*magnitude*3,y_mod*magnitude*3)
 
-	world.log << magnitude
-
 	return ..()
 
 

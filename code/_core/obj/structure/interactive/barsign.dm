@@ -34,3 +34,9 @@ obj/structure/interactive/bar_sign/narsie
 	name = "Nar-sie Bistro"
 	desc = "\[Cult Noises\]"
 	icon_state = "cult"
+
+
+obj/structure/interactive/bar_sign/dye
+	name = "DIE LAB"
+	desc = "When you want to look fabulous when killing people."
+	icon_state = "dying"

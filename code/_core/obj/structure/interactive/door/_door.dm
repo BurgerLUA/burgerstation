@@ -71,7 +71,6 @@ obj/structure/interactive/door/update_icon()
 obj/structure/interactive/door/proc/open()
 	if(open_sound)
 		play(open_sound)
-		world.log << "The open sound is: [open_sound]."
 	door_state = DOOR_STATE_OPENING_01
 	update_icon()
 	spawn(open_time)

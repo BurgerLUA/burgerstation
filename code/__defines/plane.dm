@@ -4,15 +4,15 @@
 
 #define PLANE_WALL -6
 
-#define PLANE_WALL_ATTACHMENTS -5
+#define PLANE_OBJ -5
 
-#define PLANE_OBJ -4
+#define PLANE_MOB -4
 
-#define PLANE_MOB -3
+#define PLANE_EFFECT -3
 
-#define PLANE_EFFECT -2
+#define PLANE_TREE -2
 
-#define PLANE_TREE -1
+#define PLANE_WALL_ATTACHMENTS -1
 
 #define PLANE_DARKNESS 0
 

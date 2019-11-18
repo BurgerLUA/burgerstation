@@ -907,6 +907,7 @@
 #include "code\_core\world\subsystems\loot.dm"
 #include "code\_core\world\subsystems\menus.dm"
 #include "code\_core\world\subsystems\name_subsystem.dm"
+#include "code\_core\world\subsystems\objs.dm"
 #include "code\_core\world\subsystems\outfits.dm"
 #include "code\_core\world\subsystems\prefix.dm"
 #include "code\_core\world\subsystems\progress_bars.dm"
