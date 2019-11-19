@@ -93,6 +93,8 @@
 
 	var/atom/last_interacted
 
+	var/dyeable = FALSE
+
 /obj/item/destroy()
 
 	for(var/obj/hud/inventory/I in inventories)

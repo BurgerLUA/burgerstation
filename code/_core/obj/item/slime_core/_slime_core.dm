@@ -12,7 +12,8 @@ obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,locati
 
 	if(is_item(object))
 		var/obj/item/I = object
-		if(I.dye_self(caller,src,color,alpha/255))
+		world.log << alpha/255
+		if(I.dye_self(caller,src,src.color,alpha/255))
 			return TRUE
 
 	return ..()

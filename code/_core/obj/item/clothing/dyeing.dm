@@ -1,10 +1,9 @@
 /obj/item/clothing/dye_self(var/mob/caller,var/obj/item/D,var/dye_color,var/dye_strength=0.5)
 
-	INTERACT_CHECK
-
 	if(!polymorphic)
-		caller.to_chat(span("notice","\The [src.name] cannot be dyed."))
-		return FALSE
+		return ..()
+
+	INTERACT_CHECK
 
 	if(!dye_color)
 		caller.to_chat(span("notice","\The [D.name] cannot be used to dye \the [src]."))
