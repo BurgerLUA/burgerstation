@@ -1,7 +1,7 @@
 //Game Options
 
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
-#define FPS_SERVER 40
+#define FPS_SERVER 60
 
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
@@ -17,7 +17,7 @@
 #define MIN_ZOOM 1
 
 #define ZOOM_RANGE 7
-#define VIEW_RANGE 14
+#define VIEW_RANGE 11
 
 #define SOUND_RANGE 18
 

@@ -2,7 +2,7 @@
 	name = "slot button"
 	desc = "Slot button for quick actions."
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
-	icon_state = "1"
+	icon_state = "square_trim"
 	screen_loc = "LEFT,TOP"
 	alpha = 100
 
@@ -17,13 +17,18 @@
 	return ..()
 
 /obj/hud/button/slot/update_icon()
-	..()
+
+	.= ..()
+
 	overlays.Cut()
 	overlays += stored_item
+
 	if(active)
 		color = "#00FF00"
 	else
 		color = "#FFFFFF"
+
+	return .
 
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
@@ -83,50 +88,50 @@
 
 /obj/hud/button/slot/A
 	id = "1"
-	icon_state = "1"
+	maptext = "1"
 	screen_loc = "LEFT,TOP"
 
 /obj/hud/button/slot/B
 	id = "2"
-	icon_state = "2"
+	maptext = "2"
 	screen_loc = "LEFT+1,TOP"
 
 /obj/hud/button/slot/C
 	id = "3"
-	icon_state = "3"
+	maptext = "3"
 	screen_loc = "LEFT+2,TOP"
 
 /obj/hud/button/slot/D
 	id = "4"
-	icon_state = "4"
+	maptext = "4"
 	screen_loc = "LEFT+3,TOP"
 
 /obj/hud/button/slot/E
 	id = "5"
-	icon_state = "5"
+	maptext = "5"
 	screen_loc = "LEFT+4,TOP"
 
 /obj/hud/button/slot/F
 	id = "6"
-	icon_state = "6"
+	maptext = "6"
 	screen_loc = "LEFT+5,TOP"
 
 /obj/hud/button/slot/G
 	id = "7"
-	icon_state = "7"
+	maptext = "7"
 	screen_loc = "LEFT+6,TOP"
 
 /obj/hud/button/slot/H
 	id = "8"
-	icon_state = "8"
+	maptext = "8"
 	screen_loc = "LEFT+7,TOP"
 
 /obj/hud/button/slot/I
 	id = "96"
-	icon_state = "9"
+	maptext = "9"
 	screen_loc = "LEFT+8,TOP"
 
 /obj/hud/button/slot/J
 	id = "0"
-	icon_state = "0"
+	maptext = "0"
 	screen_loc = "LEFT+9,TOP"

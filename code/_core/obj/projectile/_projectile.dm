@@ -136,22 +136,23 @@
 
 /obj/projectile/proc/update_projectile()
 
-	steps_current += 1
-
 	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
-	if(steps_allowed && steps_allowed <= steps_current && current_loc)
-		on_hit(current_loc)
-		return FALSE
-
-	if(lifetime <= start_time && current_loc)
-		on_hit(current_loc)
-		return FALSE
 
 	var/current_loc_x = x + floor( ((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE)
 	var/current_loc_y = y + floor( ((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE)
 
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
+
+		if(lifetime <= start_time && current_loc)
+			on_hit(current_loc)
+			return FALSE
+
+		steps_current += 1
+
+		if(steps_allowed && steps_allowed <= steps_current && current_loc)
+			on_hit(current_loc)
+			return FALSE
 
 		for(var/mob/MO in contents)
 			if(MO.client)
@@ -185,6 +186,9 @@
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
+
+	last_loc_x = current_loc_x
+	last_loc_y = current_loc_y
 
 /obj/projectile/proc/do_turf_collide(var/turf/old_turf,var/turf/new_turf)
 

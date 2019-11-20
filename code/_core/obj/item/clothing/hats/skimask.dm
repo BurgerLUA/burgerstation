@@ -1,4 +1,4 @@
-/obj/item/clothing/head/skimask
+/obj/item/clothing/head/hood/skimask
 	name = "ski mask"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	icon_state = "inventory"

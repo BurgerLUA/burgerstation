@@ -332,8 +332,16 @@
 					var/mob/living/L = victim
 					var/strength_mod = floor( (brute_damage_dealt/max(victim.health.health_max,1))*throw_mul )
 					if(strength_mod >= 1)
-						var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*min(8*strength_mod,31),offset_y*min(8*strength_mod,31))
-						P.steps_allowed = Clamp(4 * strength_mod,2,ceiling(VIEW_RANGE*0.75))
+						var/steps_mod = min(ceiling(VIEW_RANGE*0.75),ceiling(4 * strength_mod))
+						world.log << steps_mod
+						if(steps_mod > 2)
+							var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*min(6*strength_mod,31),offset_y*min(6*strength_mod,31))
+							P.steps_allowed = steps_mod
+						else
+							var/move_dir = get_dir(A,L)
+							L.glide_size = TILE_SIZE*0.5
+							L.Move(get_step(A,move_dir),move_dir)
+
 
 		if(is_player(blamed) && is_player(victim))
 			var/mob/living/advanced/player/PA = blamed

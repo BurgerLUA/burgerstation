@@ -579,6 +579,7 @@
 #include "code\_core\obj\item\clothing\hands\gloves\colored.dm"
 #include "code\_core\obj\item\clothing\hands\gloves\tutorial.dm"
 #include "code\_core\obj\item\clothing\hats\_hats.dm"
+#include "code\_core\obj\item\clothing\hats\bandana.dm"
 #include "code\_core\obj\item\clothing\hats\beaver.dm"
 #include "code\_core\obj\item\clothing\hats\cult.dm"
 #include "code\_core\obj\item\clothing\hats\ert.dm"

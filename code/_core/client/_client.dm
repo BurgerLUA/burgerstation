@@ -273,6 +273,9 @@ var/global/list/all_clients = list()
 
 			var/list/screen_loc_list = splittext(screen_loc,",")
 
+			if(!length(screen_loc_list))
+				return ..()
+
 			var/x_list = splittext(screen_loc_list[1],":")
 			var/y_list = splittext(screen_loc_list[2],":")
 
@@ -282,16 +285,19 @@ var/global/list/all_clients = list()
 			var/y_full = text2num(y_list[1])
 			var/y_partial = text2num(y_list[2])
 
-			x_partial -= 16
-			y_partial -= 16
+			x_full = max(1,x_full)
+			y_full = max(1,y_full)
 
-			if(x_partial < 0)
+			x_partial -= TILE_SIZE*0.5
+			y_partial -= TILE_SIZE*0.5
+
+			if(x_partial < 0 && x_full > 1)
 				x_full -= 1
-				x_partial += 32
+				x_partial += TILE_SIZE-1
 
-			if(y_partial < 0)
+			if(y_partial < 0 && y_full > 1)
 				y_full -= 1
-				y_partial += 32
+				y_partial += TILE_SIZE-1
 
 			click_and_drag_icon.screen_loc = "[x_full]:[x_partial],[y_full]:[y_partial]"
 

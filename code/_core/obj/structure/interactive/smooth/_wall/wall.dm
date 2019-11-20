@@ -10,6 +10,8 @@ obj/structure/smooth/wall
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+	plane = PLANE_WALL
+
 
 obj/structure/smooth/wall/wood
 	color = "#4C3323"

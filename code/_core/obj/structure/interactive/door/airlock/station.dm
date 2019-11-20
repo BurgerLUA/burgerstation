@@ -8,6 +8,7 @@
 	no_access = TRUE
 
 /obj/structure/interactive/door/airlock/station/cargo/glass
+	fill_color = "#FFFFFF"
 	filler = "glass"
 
 /obj/structure/interactive/door/airlock/station/command
@@ -17,6 +18,11 @@
 
 /obj/structure/interactive/door/airlock/station/command/no_access
 	no_access = TRUE
+
+/obj/structure/interactive/door/airlock/station/command/glass
+	fill_color = "#FFFFFF"
+	filler = "glass"
+
 
 /obj/structure/interactive/door/airlock/station/security
 	name = "security airlock"
