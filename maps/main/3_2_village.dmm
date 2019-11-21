@@ -255,8 +255,8 @@
 "eU" = (/mob/living/simple/npc/slime/blue,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/cave/open)
 "eV" = (/mob/living/simple/npc/spacecarp/leader,/turf/simulated/floor/river,/area/world/forest/exterior/river)
 "eW" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/plains)
-"eX" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/uniform/chemist,/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
-"eY" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/overwear/coat/chemist,/obj/structure/interactive/lighting/tube{dir = 1; icon_state = "tube_light"},/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
+"eX" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/uniform/jumpsuit/chemist,/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
+"eY" = (/obj/structure/smooth/table,/obj/structure/interactive/shop,/obj/item/clothing/overwear/coat/labcoat/chemist,/obj/structure/interactive/lighting/tube{dir = 1; icon_state = "tube_light"},/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
 "eZ" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/clothing/neck/cape/hide,/obj/item/clothing/neck/cloak/brown,/obj/item/clothing/neck/mantle/brown,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
 "fa" = (/obj/structure/interactive/plant/wheat,/turf/simulated/floor/colored/dirt/soil,/area/world/forest/exterior/village)
 "fb" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/container/food/plant/wheat,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
@@ -270,7 +270,7 @@
 "fj" = (/turf/simulated/floor/river,/area/world/forest/exterior/river)
 "fk" = (/obj/structure/interactive/plank/wood,/turf/simulated/floor/river/walkable,/area/world/forest/exterior/village/river)
 "fl" = (/obj/structure/smooth/table/wood/poor,/obj/structure/interactive/shop,/obj/item/weapon/melee/pickaxe,/turf/simulated/floor/colored/dirt,/area/world/forest/interior/village/shop/farm)
-"fm" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/clothing/head/hood/skimask,/obj/item/clothing/head/hood/bandana,/obj/item/clothing/neck/cape,/obj/item/clothing/neck/cloak,/obj/item/clothing/neck/mantle,/obj/item/clothing/neck/tie,/turf/simulated/floor/tile/orange,/area/world/forest/interior/village/house/c)
+"fm" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/clothing/head/hood/skimask,/obj/item/clothing/head/hood/bandana,/obj/item/clothing/neck/cape,/obj/item/clothing/neck/cloak,/obj/item/clothing/neck/mantle,/obj/item/clothing/neck/tie,/obj/item/clothing/overwear/coat/labcoat,/turf/simulated/floor/tile/orange,/area/world/forest/interior/village/house/c)
 "fn" = (/turf/simulated/wall/rock,/area/world/forest/exterior/village)
 "fo" = (/obj/structure/smooth/table,/obj/structure/interactive/lighting/tube/color/turf,/obj/structure/interactive/shop,/obj/item/slime_core/black,/turf/simulated/floor/tile/purple,/area/world/forest/interior/village/house/c)
 "fp" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/storage/bags/pills/bicaridine,/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
@@ -380,8 +380,8 @@ eOeOeOeOeOeOagagagagagagagagagagagagagagagagagagagagagagagagagagagagaZagagagagag
 eOeOeOeOeOeOeOagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagbNbNbNbNagagagagagagagagagagagagagafafafagagagagagagagagaZagbNbNbNbNbNagagagbNbNbNbNbNbNbNbNbNbNbNagagaaeOeOeOeoafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eOeOeOeOeOeOeOeOagagagagagagagagagaZagagagagagagagagaZagagagagagagagagagagaZagagagagaGagagagagagagbNagagagagagaGagagagagagagagagafafafagagagagagagagagagbNbNbNbNbNbNagagagagbNbNbNbNbNbNbNbNbNbNagagageOeOeOeOeoafcococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eOeOeOeOajatateOeOagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagafafafebagagagagagagagagbNbNbNbNbNbNagagagagagagbNbNbNbNbNbNbNbNagagagaaeOeOeOeoafcocococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-eOeOajeOadadadadeOeOaGagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagafafafagagagagagagagagagbNbNbNbNbNbNagagagaZagagagagbNbNbNbNbNagagagagageOeOeOeOeocococococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
-ajajajajadacacadadeOeOagagagagagagagagagagagagagagagagagagagagagagagaGaGaGagagagagagagagagagagagagagagagagagagagagagebagagafafafagagagagagagagagagbNbNbNbNbNbNagagagagagagagagagagagagagagagagagagageOeOeOeoafcocococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+eOeOajeOadadadadeOeOaGagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagafafafagagagagagagagagagbNbNbNbNbNbNagagagaZagagagagbNbNbNbNbNagagagageOeOeOeOeOeocococococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+ajajajajadacacadadeOeOagagagagagagagagagagagagagagagagagagagagagagagaGaGaGagagagagagagagagagagagagagagagagagagagagagebagagafafafagagagagagagagagagbNbNbNbNbNbNagagagagagagagagagagagagagagagagagageOeOeOeOeoafcocococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 ajajajacacacesacadadeOagagagebafafafafafafafafafafafagagagagebafafaGaGaGaGaGagagafafagagagagebagagagagagagagafafafafafafafafafafagagagagagagagagagbNbNbNbNagagagagagagagageAeAagageAagagagagagagagageOeOeoafcocococococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 ajajacacacacacacacacacacafafafafafafafafafafafafafafafafafafafafafafaGaGaGaGafafafafafafafafafafafafafafafafafafafafafafafafbNbNagbNagagagagagagaZagagagagagageAeAeAeAeAeAeAeAeAeAeAeAeAagagagagagagagafafcococococococpfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
 eDeDacacacesacesacacacafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafbNbNbNbNbNbNbNbNfKbNbNbNbNagagagagagagagagagagagageAeAeAeAeAeAeAeAeAeAeAeAeAeAagagagagagagagafcocococococococofjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj

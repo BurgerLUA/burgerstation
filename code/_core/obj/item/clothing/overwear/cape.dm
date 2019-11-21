@@ -17,6 +17,12 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
+	color_primary = "#FFFFFF"
+	color_secondary = "#FFFFFF"
+	color_tertiary = "#FFFFFF"
+
+	polymorphic = TRUE
+
 /obj/item/clothing/neck/cape/hunter
 	name = "hunter's cape"
 	color_primary = "#700100"

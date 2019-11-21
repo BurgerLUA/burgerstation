@@ -170,10 +170,10 @@
 
 
 /obj/structure/interactive/localmachine/item/clothing/black_shoe_left
-	stored_item = /obj/item/clothing/feet/shoes/black/left
+	stored_item = /obj/item/clothing/feet/shoes/colored/black/left
 
 /obj/structure/interactive/localmachine/item/clothing/black_shoe_right
-	stored_item = /obj/item/clothing/feet/shoes/black
+	stored_item = /obj/item/clothing/feet/shoes/colored/black
 
 /obj/structure/interactive/localmachine/item/clothing/gloves
 	stored_item = /obj/item/clothing/hands/gloves/colored

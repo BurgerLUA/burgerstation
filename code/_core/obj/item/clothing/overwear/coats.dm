@@ -77,24 +77,3 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
-
-
-
-/obj/item/clothing/overwear/coat/chemist
-	name = "chemist's labcoat"
-	icon = 'icons/obj/items/clothing/suit/chemist.dmi'
-
-	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_E,
-		MAGIC = ARMOR_B,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_C,
-		BOMB = ARMOR_C,
-		BIO = ARMOR_B
-	)
-
-	size = SIZE_3
-	weight = WEIGHT_2

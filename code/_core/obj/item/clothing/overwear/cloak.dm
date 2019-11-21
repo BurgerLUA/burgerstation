@@ -12,7 +12,6 @@
 	)
 
 
-
 /obj/item/clothing/neck/cloak/green
 	color = "#002200"
 

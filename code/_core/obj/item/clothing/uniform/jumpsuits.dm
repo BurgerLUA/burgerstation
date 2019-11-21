@@ -46,7 +46,7 @@
 	color_tertiary = "#A0A0A0"
 
 /obj/item/clothing/uniform/jumpsuit/dark
-	name = "reinforced dark jumpsuit"
+	name = "reinforced jumpsuit"
 
 	color_primary = "#404040"
 	color_secondary = "#404040"
@@ -59,3 +59,9 @@
 		MAGIC = ARMOR_E,
 		COLD = ARMOR_C,
 	)
+
+
+/obj/item/clothing/uniform/jumpsuit/chemist
+	color_primary = "#FFFFFF"
+	color_secondary = "#FFFFFF"
+	color_tertiary = "#FF6A00"
