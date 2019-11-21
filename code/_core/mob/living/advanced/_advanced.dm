@@ -171,13 +171,11 @@
 
 	var/dropped_objects = list()
 
-	for(var/v in inventory)
-		var/obj/hud/inventory/O = v
-		if(is_item(O.loc))
+	for(var/obj/hud/inventory/organs/O in inventory)
+		if(exclude_containers && is_item(O.loc))
 			var/obj/item/I = O.loc
 			if(I.is_container)
 				continue
-
 		dropped_objects += O.drop_all_objects(get_turf(src),exclude_soulbound)
 
 	return dropped_objects

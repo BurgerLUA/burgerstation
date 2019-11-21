@@ -1,3 +1,7 @@
+var/global/list/turf_icon_cache = list()
+var/global/saved_icons = 0
+
+
 /turf/simulated/
 
 	var/real_icon
@@ -100,21 +104,31 @@
 		plane = PLANE_ALWAYS_VISIBLE
 		return FALSE
 
-	var/icon/I = new /icon(icon,"1-[nw]")
-	//I.Blend(NW,ICON_OVERLAY)
+	var/full_icon_string = "[type]_[ne][nw][se][sw]"
 
-	var/icon/NE = new /icon(icon,"2-[ne]")
-	I.Blend(NE,ICON_OVERLAY)
+	var/icon/I
 
-	var/icon/SW = new /icon(icon,"3-[sw]")
-	I.Blend(SW,ICON_OVERLAY)
+	if(turf_icon_cache[full_icon_string])
+		I = turf_icon_cache[full_icon_string]
+		icon = I
+		saved_icons++
+	else
+		I = new /icon(icon,"1-[nw]")
 
-	var/icon/SE = new /icon(icon,"4-[se]")
-	I.Blend(SE,ICON_OVERLAY)
+		var/icon/NE = new /icon(icon,"2-[ne]")
+		I.Blend(NE,ICON_OVERLAY)
 
-	if(fade)
-		var/icon/A = new /icon(icon,"fade")
-		I.Blend(A,ICON_MULTIPLY)
+		var/icon/SW = new /icon(icon,"3-[sw]")
+		I.Blend(SW,ICON_OVERLAY)
+
+		var/icon/SE = new /icon(icon,"4-[se]")
+		I.Blend(SE,ICON_OVERLAY)
+
+		if(fade)
+			var/icon/A = new /icon(icon,"fade")
+			I.Blend(A,ICON_MULTIPLY)
+
+		turf_icon_cache[full_icon_string] = I
 
 	icon = I
 	pixel_x = (32 - I.Width())/2

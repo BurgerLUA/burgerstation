@@ -32,6 +32,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
 	if(. && is_advanced(owner))
@@ -62,6 +64,8 @@
 	essential = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+
+	drop_on_death = TRUE
 
 /obj/hud/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()

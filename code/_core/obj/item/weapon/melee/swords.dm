@@ -36,9 +36,17 @@
 
 	attack_delay = 8
 
+/obj/item/weapon/melee/sword/claymore/cult
+	name = "cultist sword"
+	icon = 'icons/obj/items/weapons/melee/swords/cult.dmi'
+	desc = "Looking at this really makes you want to go on an EVIL crusade."
+	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe, now cursed with Nar'sie's magic."
+
+	damage_type = "sword_claymore_cult"
+
+
 /obj/item/weapon/melee/sword/claymore/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
-
 
 /obj/item/weapon/melee/spear
 	name = "steel spear"

@@ -5,7 +5,7 @@
 	desc = "Lizards like wearing this for some reason."
 	desc_extended = "A very poorly maintained mantle made from various animal hides and hairs."
 
-	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	protected_limbs = list(BODY_TORSO)
 

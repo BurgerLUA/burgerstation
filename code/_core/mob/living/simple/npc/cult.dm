@@ -11,8 +11,12 @@
 
 	stun_angle = 90
 
-	damage_type = "slime_pounce"
+	damage_type = "sword_claymore_cult"
 
+/mob/living/simple/npc/cult/cultist/post_death()
+	..()
+	icon_state = "[initial(icon_state)]_dead"
+	update_icon()
 
 /mob/living/simple/npc/cult/behemoth
 	name = "behemoth"

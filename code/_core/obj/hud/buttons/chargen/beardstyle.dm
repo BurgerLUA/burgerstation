@@ -137,19 +137,19 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=1,var/desired_co
 	return TRUE
 
 /obj/hud/button/chargen/beardstyle/slot01
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER-2,CENTER+3"
 
 /obj/hud/button/chargen/beardstyle/slot02
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER-1,CENTER+3"
 
 /obj/hud/button/chargen/beardstyle/slot03
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER+1,CENTER+3"
 
 /obj/hud/button/chargen/beardstyle/slot04
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER+2,CENTER+3"
 
 

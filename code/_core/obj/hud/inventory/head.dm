@@ -56,9 +56,12 @@
 
 /obj/hud/inventory/organs/special
 	name = "special slot"
+	icon_state = "square_trim"
 	id = BODY_SPECIAL
 	screen_loc = "CENTER+4,BOTTOM"
 	item_slot = SLOT_SPECIAL
 	held_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+
+	drop_on_death = TRUE

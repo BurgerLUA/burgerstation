@@ -62,6 +62,7 @@
 
 /obj/hud/inventory/organs/torso_b
 	name = "back slot"
+	icon_state = "square_trim"
 	id = BODY_TORSO_B
 	screen_loc = "CENTER-3,BOTTOM"
 	worn_slots = 1
@@ -72,8 +73,11 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/organs/torso_ob
 	name = "overwear belt slot"
+	icon_state = "square_trim"
 	id = BODY_TORSO_OB
 	screen_loc = "CENTER-4,BOTTOM"
 	held_slots = 1
@@ -83,3 +87,5 @@
 	essential = TRUE
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+
+	drop_on_death = TRUE

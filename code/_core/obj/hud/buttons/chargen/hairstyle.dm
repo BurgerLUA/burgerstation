@@ -136,19 +136,19 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	return TRUE
 
 /obj/hud/button/chargen/hairstyle/slot01
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER-2,CENTER+4"
 
 /obj/hud/button/chargen/hairstyle/slot02
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER-1,CENTER+4"
 
 /obj/hud/button/chargen/hairstyle/slot03
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER+1,CENTER+4"
 
 /obj/hud/button/chargen/hairstyle/slot04
-	icon_state = "square_round_small"
+	icon_state = "square_trim"
 	screen_loc = "CENTER+2,CENTER+4"
 
 

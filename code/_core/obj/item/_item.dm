@@ -319,7 +319,7 @@ obj/item/proc/do_automatic(caller,object,location,params)
 		for(var/obj/hud/inventory/I in inventories)
 			I.update_owner(new_location.owner)
 
-	if(old_location && new_location)
+	if(old_location && new_location && !is_inventory(old_location))
 		var/turf/OL = get_turf(old_location)
 		var/turf/NL = get_turf(new_location)
 		if(OL != NL)
@@ -345,13 +345,11 @@ obj/item/proc/do_automatic(caller,object,location,params)
 	if(light)
 		light.update(src)
 
-
-	if(old_inventory && new_loc)
+	if(old_inventory && new_loc && !is_inventory(new_loc))
 		var/turf/OL = get_turf(old_inventory)
 		var/turf/NL = get_turf(new_loc)
 		if(OL != NL)
 			new/obj/effect/temp/item_pickup(NL,2,OL,src,"drop")
-
 
 	update_lighting_for_owner(old_inventory)
 

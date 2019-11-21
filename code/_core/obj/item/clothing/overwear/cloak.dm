@@ -2,7 +2,7 @@
 	name = "cloak"
 	icon = 'icons/obj/items/clothing/suit/cloak.dmi'
 	desc_extended = "A simple cloak. Wear your colors proudly."
-	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -10,6 +10,8 @@
 		MAGIC = ARMOR_E,
 		COLD = ARMOR_D,
 	)
+
+
 
 /obj/item/clothing/neck/cloak/green
 	color = "#002200"

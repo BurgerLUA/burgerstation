@@ -15,6 +15,8 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
+
 /obj/item/clothing/neck/cape/hunter
 	name = "hunter's cape"
 	color_primary = "#700100"

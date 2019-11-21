@@ -1,5 +1,6 @@
 /obj/hud/inventory/organs/groin_o
 	name = "belt slot"
+	icon_state = "square_trim"
 	id = BODY_GROIN_O
 	screen_loc = "CENTER-2,BOTTOM"
 	worn_slots = 1
@@ -10,6 +11,7 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
 
 /obj/hud/inventory/organs/groin //Underwear + Pants
 	name = "pants slot"

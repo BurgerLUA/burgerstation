@@ -17,4 +17,4 @@
 		turf_count++
 
 	LOG_SERVER("Initialized [turf_count] turfs.")
-
+	LOG_SERVER("Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")

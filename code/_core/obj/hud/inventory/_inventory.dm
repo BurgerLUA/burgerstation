@@ -71,6 +71,8 @@
 	var/should_add_held = TRUE
 	var/should_add_worn = TRUE
 
+	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
+
 /obj/hud/inventory/destroy()
 
 	for(var/obj/item/I in held_objects)

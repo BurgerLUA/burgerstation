@@ -25,3 +25,7 @@ obj/item/slime_core/green
 
 obj/item/slime_core/blue
 	color = "#0000FF"
+
+obj/item/slime_core/black
+	color = "#000000"
+

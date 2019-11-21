@@ -92,7 +92,9 @@ mob/living/advanced/proc/handle_regen()
 	var/list/obj/item/dropped_items = list()
 
 	for(var/obj/hud/inventory/I in inventory)
-		dropped_items += I.drop_held_objects(src.loc,exclude_soulbound = TRUE)
+		if(!I.drop_on_death)
+			continue
+		dropped_items += I.drop_all_objects(src.loc,exclude_soulbound = TRUE)
 
 	for(var/obj/item/I in dropped_items)
 		C.add_to_inventory(src,I,FALSE)

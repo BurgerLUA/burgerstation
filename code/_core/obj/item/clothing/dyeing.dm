@@ -6,8 +6,7 @@
 	INTERACT_CHECK
 
 	if(!dye_color)
-		caller.to_chat(span("notice","\The [D.name] cannot be used to dye \the [src]."))
-		return FALSE
+		dye_color = "#FFFFFF"
 
 	var/choice = input("What do you want to dye?","Dye Selection") in list(color_primary_desc,color_secondary_desc,color_tertiary_desc,"Cancel")
 

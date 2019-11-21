@@ -17,6 +17,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/pocket/pocket01
 	name = "left lower pocket"
 	id = "pocket01"

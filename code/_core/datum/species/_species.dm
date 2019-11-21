@@ -39,8 +39,8 @@
 	var/list/obj/hud/button/spawning_buttons = list(
 		// /obj/hud/button/drop,
 		// /obj/hud/button/drop/left,
-		/obj/hud/button/resist,
-		/obj/hud/button/resist_auto,
+		// /obj/hud/button/resist,
+		// /obj/hud/button/resist_auto,
 		/obj/hud/button/hide_show_inventory,
 		/obj/hud/button/move,
 		/obj/hud/button/targeting,
