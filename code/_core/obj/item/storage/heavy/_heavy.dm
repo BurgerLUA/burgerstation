@@ -4,9 +4,9 @@
 	icon = 'icons/obj/items/storage/crates.dmi'
 	icon_state = "crate"
 
-	size = 100
+	size = 1000
 
-	container_max_size = 99
+	container_max_size = 999
 
 	dynamic_inventory_count = 12
 
