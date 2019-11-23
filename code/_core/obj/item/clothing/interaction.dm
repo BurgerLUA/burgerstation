@@ -9,7 +9,7 @@
 
 /obj/item/clothing/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
+	if(is_inventory(object) && is_inventory(src.loc))
 
 		if(delete_on_drop)
 			qdel(src)

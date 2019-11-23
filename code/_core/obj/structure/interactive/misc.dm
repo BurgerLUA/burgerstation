@@ -73,6 +73,9 @@ obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/crosser)
 	if(is_advanced(crosser))
 		var/mob/living/advanced/A = crosser
 		if(!A.appearance_changed)
+			A.add_chargen_buttons()
+			A.handle_hairstyle_chargen(-1)
+			A.handle_beardstyle_chargen(-1)
 			A.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
 		else
 			A.to_chat(span("thought","No. I look beautiful! I don't need to change anything!"))
@@ -83,9 +86,10 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/crosser)
 	if(is_advanced(crosser))
 		var/mob/living/advanced/A = crosser
 		if(!A.appearance_changed)
-			A.show_hud(FALSE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=1)
+			//A.show_hud(FALSE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=1)
 			A.to_chat(span("thought","There. I look perfect!"))
 			A.used_mirror = TRUE
+			A.remove_chargen_buttons()
 
 	return ..()
 

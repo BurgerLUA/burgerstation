@@ -4,7 +4,7 @@
 	id = "human"
 	flags_species = SPECIES_HUMAN
 
-	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
+	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	default_color_eye = "#000000"
 	default_color_skin = "#e0b19d"

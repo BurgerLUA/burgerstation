@@ -1,6 +1,18 @@
-mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_color) //This needs to be called when the buttons are made visible.
+mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_color) //This needs to be called when the buttons are made visible.
 
 	var/species/S = all_species[species]
+
+	if(hair_num == -1)
+		if(labeled_organs[BODY_HAIR_HEAD])
+			var/obj/item/organ/O = labeled_organs[BODY_HAIR_HEAD]
+			if(O.additional_blends["hair_head"])
+				var/icon_blend/IB = O.additional_blends["hair_head"]
+				var/found_value = S.all_hair_head.Find(IB.icon_state)
+				if(found_value)
+					hair_num = found_value
+				else
+					hair_num = 1
+				desired_color = IB.color
 
 	var/choice01 = hair_num - 2
 	var/choice02 = hair_num - 1
@@ -61,6 +73,10 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 
 	screen_loc = "CENTER+3,CENTER+4"
 
+	user_colors = TRUE
+
+	chargen_flags = CHARGEN_HAIR
+
 /obj/hud/button/chargen/change_hairstyle/main/update_owner(var/mob/desired_owner)
 	. = ..()
 	if(. && is_advanced(desired_owner))
@@ -90,11 +106,15 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	var/hair_num = 0
 	var/hair_color = "#000000"
 
+	chargen_flags = CHARGEN_HAIR
+
 /obj/hud/button/chargen/hairstyle/update_icon()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
+	var/icon/I = new/icon(icon,icon_state)
+	swap_colors(I)
 
 	if(!is_advanced(owner))
 		return ..()
@@ -102,18 +122,17 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=1,var/desired_col
 	var/mob/living/advanced/A = owner
 	var/species/S = all_species[A.species]
 
-
 	if(hair_num >= 1 && hair_num <= length(S.all_hair_head))
 		var/hair_icon = S.all_hair_head[hair_num]
 		if(hair_icon)
-			var/icon/I = new/icon(icon,icon_state)
 			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
 			var/icon/I3 = new/icon(S.default_icon_hair,hair_icon)
 			I3.Blend(hair_color,ICON_MULTIPLY)
 			I2.Blend(I3,ICON_OVERLAY)
 			I2.Shift(SOUTH,9)
 			I.Blend(I2,ICON_OVERLAY)
-			icon = I
+
+	icon = I
 
 	..()
 

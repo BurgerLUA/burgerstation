@@ -4,7 +4,7 @@
 	id = "cyborg"
 	flags_species = SPECIES_CYBORG
 
-	flags_chargen = CHARGEN_NONE
+	flags_chargen = CHARGEN_EYE
 
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#FFFFFF"

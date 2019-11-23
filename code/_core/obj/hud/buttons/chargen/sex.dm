@@ -1,6 +1,10 @@
 /obj/hud/button/chargen/sex/
-	icon_state = "square_round"
+	name = "change sex"
+	icon_state = "change_sex"
 	screen_loc = "CENTER-2,CENTER+0"
+	user_colors = TRUE
+
+	chargen_flags = CHARGEN_SEX
 
 /obj/hud/button/chargen/sex/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

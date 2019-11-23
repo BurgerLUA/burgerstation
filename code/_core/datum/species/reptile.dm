@@ -4,7 +4,7 @@
 	id = "reptile"
 	flags_species = SPECIES_REPTILE_FERAL
 
-	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_EYE | CHARGEN_COLOR_HAIR | CHARGEN_STYLE_HAIR | CHARGEN_SEX
+	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	default_icon_hair = 'icons/mob/living/advanced/hair/reptile_hair_head.dmi'
 	default_icon_state_hair = "bald"

@@ -43,8 +43,9 @@
 
 /obj/item/clothing/feet/shoes/colored/black
 	color_primary = "#FFFFFF"
-	color_secondary = "#A8A8A8"
-	color_tertiary = "#262626"
+	color_secondary = "#262626"
+	color_tertiary = "#A8A8A8"
+
 
 /obj/item/clothing/feet/shoes/colored/black/left
 	name = "left shoe"

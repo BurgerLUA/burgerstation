@@ -1,17 +1,24 @@
 /obj/hud/button/chargen/species/
-	icon_state = "square_round"
+	name = "change species"
+	icon_state = "change_species"
 	screen_loc = "CENTER+2,CENTER+0"
+
+	user_colors = TRUE
+
+	chargen_flags = CHARGEN_NONE
 
 /obj/hud/button/chargen/species/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 
-		var/species_choice = input("What species do you wish to change to?") in list("Human","Lizard")
+		var/species_choice = input("What species do you wish to change to?") in list("Human","Lizard","Cyborg","Diona")
 
 		var/list/choice_to_species = list(
 			"Human" = "human",
-			"Lizard" = "reptile_advanced"
+			"Lizard" = "reptile_advanced",
+			"Cyborg" = "cyborg",
+			"Diona" = "diona"
 		)
 
 		var/choice = input("Are you sure you want to change your species to [species_choice]? Your appearance will reset to that species' default.","Species Change") in list("Yes","No")

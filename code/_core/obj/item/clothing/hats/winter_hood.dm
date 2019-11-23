@@ -18,3 +18,13 @@
 
 	size = SIZE_2
 	weight = WEIGHT_1
+
+
+/obj/item/clothing/head/hood/hoodie
+	name = "hoodie hood"
+	icon = 'icons/obj/items/clothing/hats/hoodie.dmi'
+
+	size = SIZE_2
+	weight = WEIGHT_1
+
+	dyeable = FALSE

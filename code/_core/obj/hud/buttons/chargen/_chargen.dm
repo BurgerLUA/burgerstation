@@ -34,3 +34,5 @@ var/global/list/obj/hud/button/chargen_buttons = list(
 	flags = FLAGS_HUD_CHARGEN
 
 	user_colors = FALSE
+
+	var/chargen_flags = CHARGEN_NONE

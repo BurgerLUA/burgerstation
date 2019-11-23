@@ -4,7 +4,7 @@
 	id = "diona"
 	flags_species = SPECIES_DIONA
 
-	flags_chargen = CHARGEN_COLOR_SKIN | CHARGEN_COLOR_DETAIL | CHARGEN_COLOR_GLOW
+	flags_chargen = CHARGEN_SKIN | CHARGEN_DETAIL | CHARGEN_GLOW
 
 	default_color_eye = "#88FF88"
 	default_color_skin = "#BC9D58"

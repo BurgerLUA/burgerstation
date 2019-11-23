@@ -25,6 +25,8 @@
 	color_secondary_desc = "shoulder stripes"
 	color_tertiary_desc = "waist stripe"
 
+	polymorphic = TRUE
+
 
 /obj/item/clothing/overwear/coat/labcoat/chemist
 	color_primary = "#FFFFFF"

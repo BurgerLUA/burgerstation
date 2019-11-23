@@ -33,17 +33,17 @@
 /obj/item/clothing/uniform/jumpsuit/grey
 	color_primary = "#A0A0A0"
 	color_secondary = "#A0A0A0"
-	color_tertiary = "#FFFFFF"
+	color_tertiary = "#A0A0A0"
 
 /obj/item/clothing/uniform/jumpsuit/red
 	color_primary = "#FF0000"
 	color_secondary = "#FF0000"
-	color_tertiary = "#A0A0A0"
+	color_tertiary = "#FF0000"
 
 /obj/item/clothing/uniform/jumpsuit/blue
 	color_primary = "#FF0000"
 	color_secondary = "#FF0000"
-	color_tertiary = "#A0A0A0"
+	color_tertiary = "#FF0000"
 
 /obj/item/clothing/uniform/jumpsuit/dark
 	name = "reinforced jumpsuit"

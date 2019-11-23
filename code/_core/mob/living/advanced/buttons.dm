@@ -7,13 +7,19 @@
 		B.update_owner(src)
 
 /mob/living/advanced/proc/add_chargen_buttons()
+
+	var/species/S = all_species[species]
+
 	for(var/v in chargen_buttons)
-		var/obj/hud/button/B = new v
-		B.update_owner(src)
+		var/obj/hud/button/chargen/B = v
+		var/chargen_flags = initial(B.chargen_flags)
+		if(!chargen_flags || (chargen_flags & S.flags_chargen))
+			B = new v
+			B.update_owner(src)
 
 /mob/living/advanced/proc/remove_chargen_buttons()
-	for(var/obj/hud/button/B  in buttons)
-		if(B in chargen_buttons)
+	for(var/obj/hud/button/chargen/B in buttons)
+		if(B.type in chargen_buttons)
 			B.update_owner(null)
 
 //Inventory

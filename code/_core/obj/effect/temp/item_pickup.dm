@@ -30,12 +30,15 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 	src.pixel_x = x_offset
 	src.pixel_y = y_offset
 
+	world.log << desired_animation_type
+
 	switch(desired_animation_type)
 		if("pickup")
 			var/matrix/M = matrix()
 			M.Scale(0,0)
 			animate(src,transform=M,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 		if("drop")
+			desired_object.alpha = 0
 			var/matrix/M = matrix()
 			src.transform *= 0
 			animate(src,transform=M,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)

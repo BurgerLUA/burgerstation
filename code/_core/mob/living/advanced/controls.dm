@@ -27,9 +27,6 @@ mob/living/advanced/on_right_up(object,location,control,params)  //THIS ONLY WOR
 
 	return FALSE
 
-
-
-
 //A down is just a press.
 mob/living/advanced/on_left_down(object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
 
@@ -39,7 +36,8 @@ mob/living/advanced/on_left_down(object,location,control,params) //THIS ONLY WOR
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(quick_mode)
+	if(quick_mode && !right_hand.get_top_held_object())
+
 		for(var/obj/hud/button/slot/B in buttons)
 			if(B.id == quick_mode)
 				if(!B.stored_item || !B.stored_item.quick_function_type == FLAG_QUICK_TOGGLE)
@@ -73,7 +71,8 @@ mob/living/advanced/on_right_down(object,location,control,params)  //THIS ONLY W
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(quick_mode)
+	if(quick_mode && !left_hand.get_top_held_object())
+
 		for(var/obj/hud/button/slot/B in buttons)
 			if(B.id == quick_mode)
 				if(!B.stored_item || !B.stored_item.quick_function_type == FLAG_QUICK_TOGGLE)
@@ -90,7 +89,6 @@ mob/living/advanced/on_right_down(object,location,control,params)  //THIS ONLY W
 
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT
 		return FALSE
-
 
 	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))

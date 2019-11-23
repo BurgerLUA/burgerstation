@@ -3,7 +3,6 @@
 	spawn()
 
 		Initialize()
-		add_chargen_buttons()
 		chargen = TRUE
 		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
 		handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")

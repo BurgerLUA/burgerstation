@@ -24,6 +24,7 @@
 		A.to_chat(span("thought","I should put some clothes on before I leave for work!"))
 		return TRUE
 
+	/*
 	A.movement_flags = 0x0
 	var/choice = start_choice(A,/choice/skip_tutorial/)
 
@@ -33,6 +34,9 @@
 		play_the_fucking_tutorial(A)
 
 	A.movement_flags = 0x0
+	*/
+
+	play_the_fucking_game(A)
 
 	return TRUE
 

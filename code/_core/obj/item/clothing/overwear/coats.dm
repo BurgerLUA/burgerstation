@@ -77,3 +77,19 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
+
+
+/obj/item/clothing/overwear/coat/hoodie
+	name = "hoodie"
+	icon = 'icons/obj/items/clothing/suit/hoodie.dmi'
+
+	additional_clothing = list(/obj/item/clothing/head/hood/hoodie)
+
+	dyeable = TRUE
+
+	size = SIZE_3
+	weight = WEIGHT_3
+
+
+/obj/item/clothing/overwear/coat/hoodie/black
+	color = "#404040"
