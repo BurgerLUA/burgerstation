@@ -1,6 +1,5 @@
 /obj/trigger/
 	name = "trigger"
-	desc = "This triggers something."
 	invisibility = 101
 
 /obj/trigger/Crossed(var/atom/crosser)

@@ -52,7 +52,7 @@
 		"the village"
 	)
 	dialogue_options["the mayor"] = list(
-		"He's the uh... self proclaimed 'leader' of #1. He's been here longer than any of us and knows quite a bit about this place and the #2. You can find him on the surface... somewhere. He moves around a lot. I think #3 might help you find him if you ask nicely.",
+		"He's the uh... self-proclaimed 'leader' of #1. He's been here longer than any of us and knows quite a bit about this place and the #2. You can find him on the surface... somewhere. He moves around a lot. I think #3 might help you find him if you ask nicely.",
 		"the village",
 		"cultists",
 		"the bartender"

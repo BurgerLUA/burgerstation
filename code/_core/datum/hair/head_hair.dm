@@ -87,7 +87,6 @@
 /hair/head/unathi_frills
 	name = "unathi frills"
 	id = "unathi_frills"
-	desc = "LIGGERS"
 	icon_state = "hair_unathi_frills"
 	species = SPECIES_REPTILE_FERAL | SPECIES_REPTILE_ADVANCED
 

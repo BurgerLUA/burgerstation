@@ -20,9 +20,12 @@
 
 	if(owner && owner.health)
 		owner.health.adjust_stamina(nutrition_amount)
+		owner.health.adjust_mana(nutrition_amount)
+		/*
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			A.heal_all_organs(nutrition_amount,nutrition_amount,nutrition_amount,nutrition_amount)
+		*/
 
 
 	return .

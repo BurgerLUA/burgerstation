@@ -1,3 +1,8 @@
+/reagent/medicine/
+	metabolism_stomach = 0.25 //How many units of the reagent to metabolize per second.
+	metabolism_blood = 1 //How many units of the reagent to metabolize per second.
+	metabolism_skin = 1 //How many units of the reagent to metabolize per second.
+
 /reagent/medicine/bicaridine
 	name = "Bicaridine"
 	id = "bicaridine"
@@ -15,7 +20,7 @@
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_brute_loss(-.*HEALING_C*0.5)
+		owner.health.adjust_brute_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/kelotane
@@ -35,7 +40,7 @@
 /reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_burn_loss(-.*HEALING_C*0.5)
+		owner.health.adjust_burn_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/dylovene
@@ -55,7 +60,7 @@
 /reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_tox_loss(-.*HEALING_C*0.5)
+		owner.health.adjust_tox_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/dexalin
@@ -75,7 +80,7 @@
 /reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_oxy_loss(-.*HEALING_C*0.5)
+		owner.health.adjust_oxy_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/tricordrazine
@@ -89,17 +94,17 @@
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_brute_loss(-.*HEALING_D*0.33)
-		owner.health.adjust_burn_loss(-.*HEALING_D*0.33)
-		owner.health.adjust_tox_loss(-.*HEALING_D*0.33)
+		owner.health.adjust_brute_loss(-.*HEALING_E)
+		owner.health.adjust_burn_loss(-.*HEALING_E)
+		owner.health.adjust_tox_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_brute_loss(-.*HEALING_D*0.33*0.5)
-		owner.health.adjust_burn_loss(-.*HEALING_D*0.33*0.5)
-		owner.health.adjust_tox_loss(-.*HEALING_D*0.33*0.5)
+		owner.health.adjust_brute_loss(-.*HEALING_E)
+		owner.health.adjust_burn_loss(-.*HEALING_E)
+		owner.health.adjust_tox_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/omnizine
@@ -114,17 +119,17 @@
 /reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_brute_loss(-.*HEALING_D*0.25)
-		owner.health.adjust_burn_loss(-.*HEALING_D*0.25)
-		owner.health.adjust_tox_loss(-.*HEALING_D*0.25)
-		owner.health.adjust_oxy_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_brute_loss(-.*HEALING_E)
+		owner.health.adjust_burn_loss(-.*HEALING_E)
+		owner.health.adjust_tox_loss(-.*HEALING_E)
+		owner.health.adjust_oxy_loss(-.*HEALING_E)
 	return .
 
 /reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
-		owner.health.adjust_brute_loss(-.*HEALING_D*0.25)
-		owner.health.adjust_burn_loss(-.*HEALING_D*0.25)
-		owner.health.adjust_tox_loss(-.*HEALING_D*0.25)
-		owner.health.adjust_oxy_loss(-.*HEALING_D*0.25)
+		owner.health.adjust_brute_loss(-.*HEALING_E)
+		owner.health.adjust_burn_loss(-.*HEALING_E)
+		owner.health.adjust_tox_loss(-.*HEALING_E)
+		owner.health.adjust_oxy_loss(-.*HEALING_E)
 	return .

@@ -1,6 +1,5 @@
 /mob/living/advanced/npc/unique/marwani
 	name = "Ilaeza Marwani"
-	desc = "Fucking liggers."
 	species = "reptile_advanced"
 	sex = FEMALE
 	gender = FEMALE

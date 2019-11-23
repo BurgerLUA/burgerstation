@@ -1,6 +1,5 @@
 /mob/living/advanced/npc/unique/hunter
 	name = "Bar-Shaleez"
-	desc = "Fucking liggers."
 	species = "reptile_advanced"
 	sex = FEMALE
 	gender = FEMALE

@@ -6,6 +6,11 @@
 
 	var/list/dialogue_options = list()
 
+	dialogue_options["hello"] = list(
+		"Hello, is there something you wish to discuss? If not, you should go see #1 if you haven't already.",
+		"the mayor"
+	)
+
 	dialogue_options["the mayor"] = list(
 		"Have you talked to him yet? He should be here somewhere... have you tried checking #1?",
 		"the bar"
@@ -20,7 +25,5 @@
 	dialogue_options["bluespace crystals"] = list(
 		"Bluespace crystals are the currency of this realm. You use them to trade for goods and services at the shops here."
 	)
-
-
 
 	return dialogue_options

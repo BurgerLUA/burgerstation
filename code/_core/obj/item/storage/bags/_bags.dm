@@ -67,16 +67,18 @@
 /obj/item/storage/bags/pills/bicaridine/on_spawn()
 	for(var/i=1,i<=20,i++)
 		var/obj/item/container/pill/bicaridine/P = new(src.loc)
+		P.on_spawn()
 		inventories[1].add_held_object(P,bypass_checks = TRUE)
 
 
 /obj/item/storage/bags/pills/kelotane
-	name = "bicaridine pill bottle"
+	name = "kelotane pill bottle"
 	desc = "Contains 20 20u kelotane pills."
 
 /obj/item/storage/bags/pills/kelotane/on_spawn()
 	for(var/i=1,i<=20,i++)
 		var/obj/item/container/pill/kelotane/P = new(src.loc)
+		P.on_spawn()
 		inventories[1].add_held_object(P,bypass_checks = TRUE)
 
 
@@ -87,4 +89,5 @@
 /obj/item/storage/bags/pills/dylovene/on_spawn()
 	for(var/i=1,i<=20,i++)
 		var/obj/item/container/pill/dylovene/P = new(src.loc)
+		P.on_spawn()
 		inventories[1].add_held_object(P,bypass_checks = TRUE)

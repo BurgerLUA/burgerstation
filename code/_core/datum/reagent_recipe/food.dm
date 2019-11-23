@@ -111,3 +111,20 @@
 	results = list(
 		"cooked_meat_cow" = 1
 	)
+
+/reagent_recipe/meat/chicken
+
+	name = "cooked chicken's meat"
+	id = "cooked_chicken"
+
+	required_reagents = list(
+		"raw_chicken" = 1
+	)
+
+	required_temperature_min = list(
+		"raw_chicken" = 400
+	)
+
+	results = list(
+		"cooked_chicken" = 1
+	)
