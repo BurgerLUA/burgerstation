@@ -27,11 +27,16 @@
 	for(var/list/attack_log in attack_logs)
 		if(attack_log["lethal"])
 			var/mob/living/advanced/player/P = attack_log["attacker"]
-			people_who_killed += P
-			people_who_killed_names += P.name
+			if(!(P in people_who_killed))
+				people_who_killed += P
+				people_who_killed_names += P.name
 
 		if(!attack_log["lethal"] && attack_log["critical"])
-			people_who_contributed += attack_log["attacker"]
+			if(!(attack_log["attacker"] in people_who_contributed))
+				people_who_contributed += attack_log["attacker"]
+
+	if(!length(people_who_killed))
+		people_who_killed = people_who_contributed
 
 	var/date = get_date()
 	var/time = get_time()
@@ -62,8 +67,24 @@
 
 /proc/punish_player(var/mob/living/advanced/player/P)
 
-	var/punishment_level = -P.mobdata.loaded_data["karma"]
-	world.log << punishment_level
+	var/karma_difference = abs(P.karma - initial(P.karma))
+
+	var/punishment_level = Clamp(ceiling(karma_difference/1000),3,50)
+
+	world.log << "The punishment level is: [punishment_level]."
+
+	var/list/turf/valid_turfs = list()
+
+	for(var/turf/simulated/floor/F in range(5,P))
+		valid_turfs += F
+
+	for(var/i=1,i<=min(punishment_level,10),i++)
+		var/mob/living/simple/npc/silicon/squats/S = new(pick(valid_turfs),null,punishment_level)
+		S.Initialize()
+		if(S.ai)
+			var/ai/simple/karma_borg/KB_AI = S.ai
+			KB_AI.true_target = P
+
 	return TRUE
 
 /proc/do_karma_event(var/mob/living/advanced/player/attacker,var/mob/living/advanced/player/victim,var/karma_gain = 0)
@@ -71,8 +92,9 @@
 	var/old_victim_justice_broken = victim.mobdata.loaded_data["justice_broken"]
 	victim.mobdata.loaded_data["justice_broken"] = 0
 
-	victim.mobdata.loaded_data["karma"] -= karma_gain*0.5
-	attacker.mobdata.loaded_data["karma"] += karma_gain
+	attacker.karma += karma_gain
+
+	world.log << "New karma: [attacker.karma]."
 
 	//The player killed someone evil
 	if(karma_gain > 0)
@@ -119,12 +141,15 @@
 
 		switch(attacker.mobdata.loaded_data["justice_broken"])
 			if(1)
-				attacker.to_chat(span("karma","Fool. You will pay for that..."))
+				attacker.to_chat(span("karma","Fool. You will pay for that!"))
 				return TRUE
 			if(2)
-				attacker.to_chat(span("karma","You wish to be punished again? So be it. Continue on this path and there will be nothing but darkness awaiting you."))
+				attacker.to_chat(span("karma","Fool. You will pay for that..."))
 				return TRUE
 			if(3)
+				attacker.to_chat(span("karma","You wish to be punished again? So be it. Continue on this path and there will be nothing but darkness awaiting you."))
+				return TRUE
+			if(4)
 				attacker.to_chat(span("karma","You have made an enemy out of me. Repent and regain my favor, or I shall send nothing but more death your way."))
 				attacker.mobdata.loaded_data["justice_served"] = 0
 				return TRUE
@@ -143,9 +168,8 @@
 	if(!attacker.mobdata || !victim.mobdata)
 		return 0
 
-	var/attacker_karma = attacker.mobdata.loaded_data["karma"]
-	var/victim_karma = victim.mobdata.loaded_data["karma"]
-
+	var/attacker_karma = attacker.karma
+	var/victim_karma = victim.karma
 	var/gained_karma = 0
 
 	if(victim_karma <= 0 && attacker_karma <= 0) //We're both shit.

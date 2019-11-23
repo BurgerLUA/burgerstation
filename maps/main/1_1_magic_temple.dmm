@@ -33,6 +33,8 @@
 "G" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/turf/simulated/floor/cave_dirt,/area/world/jungle/cave/clockwork_cave)
 "H" = (/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 8},/obj/effect/fake_lighting/gradient/black{icon_state = "gradient"; dir = 1},/turf/simulated/floor/light/reebe,/area/world/temple01/exterior)
 "I" = (/obj/structure/interactive/lighting/bonfire/on,/turf/simulated/floor/cave_dirt,/area/world/jungle/cave)
+"J" = (/obj/structure/wip,/turf/simulated/floor/cave_dirt,/area/world/jungle/cave)
+"K" = (/obj/structure/scenery/rocks,/obj/structure/wip,/turf/simulated/floor/cave_dirt,/area/world/jungle/cave)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaayyhhhhhhhhhhhhhhhhhhhhhyyy
@@ -144,7 +146,7 @@ aeffffffffffffffffffffffffffffffffffffffffffxuuuuuuuxuuuuuuuxuuuuuuuxuuuuuuuxuuu
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffxuuuvuuuxuuuvuuuxuuuvuuuxuuuvuuuxuuuvuuuxfffffffffffffffgatttDEEEEEEEEDtttDEEEEEEEDt
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffxuuuuuuuxuuuuuuuxuuuuuuuxuuuuuuuxuuuuuuuxfffffffffffffffgatttDEEEEEEEEDtttDEEEEEEEDt
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffxuuuuuuuxuuuuuuuxuuuuuuuxuuuuuuuxuuuuuuuxfffffffffffffffgatttttEEEEEEEDttttEEEEEEEDt
-aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffsuuuuuuusuuuuuuusuuuuuuusuuuuuuusuuuuuuusfffffffffffffffgatttttDEEEEEEEtttttEEEEEEtt
+aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffsuuuuuuusuuuuuuusuuuuuuusuuuuuuusuuuuuuusfffffffffffffffgatttttKEJEJEJEtttttEEEEEEtt
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffsssxxxsssssxxxsssssxxxsssssxxxsssssxxxsssfffffffffffffffgatttttDEEEEEEEEtttttDDEEEtt
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffszzzsfffszzzsfffszzzsfffszzzsfffszzzsfffffffffffffffffgattttttEEEEEEEEDDtttttDDttt
 aaaaaaaaaaaaaaaaaaaaaaffffffffffffffffffffffffsssssfffsssssfffsssssfffsssssfffsssssfffffffffffffffffgattttttEEEEEEEEEEEttttttttt

@@ -344,12 +344,13 @@ obj/item/proc/do_automatic(caller,object,location,params)
 
 	if(light)
 		light.update(src)
-
+	/*
 	if(old_inventory && new_loc)
 		var/turf/OL = get_turf(old_inventory)
 		var/turf/NL = get_turf(new_loc)
 		if(OL != NL)
 			new/obj/effect/temp/item_pickup(NL,2,OL,src,is_inventory(new_loc) ? "transfer" : "drop")
+	*/
 
 	update_lighting_for_owner(old_inventory)
 

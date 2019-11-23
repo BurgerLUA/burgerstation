@@ -16,6 +16,23 @@
 	icon_state = "village"
 	var/map_number = 1
 
+	user_colors = FALSE
+
+
+/obj/hud/button/teleport/teleport_here/update_icon()
+
+	icon = initial(icon)
+
+	var/icon/I = new/icon(icon,"base")
+	swap_colors(I)
+	var/icon/I2 = new/icon(icon,icon_state)
+
+	I.Blend(I2,ICON_OVERLAY)
+
+	icon = I
+
+	return ..()
+
 /obj/hud/button/teleport/teleport_here/update_owner(var/mob/desired_owner)
 
 	. = ..()
@@ -27,6 +44,7 @@
 		if(A.known_wishgranters && length(A.known_wishgranters))
 			var/list/known_locations = A.known_wishgranters - "main"
 			icon_state = known_locations[map_number]
+			update_icon()
 			name = known_locations[map_number]
 
 	return .
@@ -68,6 +86,7 @@
 
 	icon_state = known_locations[map_number]
 	name = known_locations[map_number]
+	update_icon()
 
 	return ..()
 

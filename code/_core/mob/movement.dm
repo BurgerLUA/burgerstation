@@ -25,21 +25,19 @@
 	if(movement_flags & MOVEMENT_RUNNING && can_sprint())
 		move_mod += 10
 	else if(movement_flags & MOVEMENT_WALKING && can_walk())
-		move_mod -= 10
+		move_mod -= 1
 
 	move_mod += move_mod_button
 
-	move_mod = Clamp(move_mod,0,3)
+	move_mod = Clamp(move_mod,1,3)
 
 	switch(move_mod)
-		if(0)
-			. *= 4
 		if(1)
-			. *= 2
+			. *= walk_delay_mul
 		if(2)
-			. *= 1.5
+			. *= jog_delay_mul
 		if(3)
-			. *= 1
+			. *= sprint_delay_mul
 
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)

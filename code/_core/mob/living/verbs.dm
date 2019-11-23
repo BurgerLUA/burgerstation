@@ -7,6 +7,7 @@
 	if(response == "Yes")
 		death()
 
+/*
 /mob/living/verb/test_damage()
 	set category = "Debug"
 	set name = "Test Damage"
@@ -28,3 +29,4 @@ mob/living/verb/get_gud()
 		S.set_level(50)
 
 	to_chat("All skills and attributes set to 50.")
+*/

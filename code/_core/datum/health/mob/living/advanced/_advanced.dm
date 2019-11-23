@@ -51,7 +51,7 @@
 		A.update_health_element_icons(stamina=TRUE)
 
 	if(stamina_current <= 0)
-		A.add_fatigue(600)
+		A.add_fatigue(100)
 
 	return value
 

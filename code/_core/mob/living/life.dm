@@ -75,7 +75,7 @@
 	return TRUE
 
 /mob/living/proc/on_stunned()
-	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground!")
+	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground! You're stunned!")
 	return TRUE
 
 /mob/living/proc/on_unstunned()
@@ -83,7 +83,7 @@
 	return TRUE
 
 /mob/living/proc/on_paralyzed()
-	src.visible_message("\The [src.name] collapses!","You can't move your limbs!")
+	src.visible_message("\The [src.name] freezes up and collapses!","You can't move your limbs! You're paralyzed!")
 	return TRUE
 
 /mob/living/proc/on_unparalyzed()
@@ -91,7 +91,7 @@
 	return TRUE
 
 /mob/living/proc/on_fatigued()
-	src.visible_message("\The [src.name] blacks out!","You black out!")
+	src.visible_message("\The [src.name] collapses!","You collapse from exhaustion! You're fatigued!")
 	return TRUE
 
 /mob/living/proc/on_unfatigued()
@@ -105,7 +105,7 @@
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
-	if(status & FLAG_STATUS_PARALYZE || status & FLAG_STATUE_FATIGUE)
+	if(status & FLAG_STATUS_PARALYZE)
 		return FALSE
 
 	return ..()
@@ -116,7 +116,7 @@
 	if(status & FLAG_STATUS_DEAD)
 		return FALSE
 
-	if(status & FLAG_STATUS_PARALYZE || status & FLAG_STATUE_FATIGUE)
+	if(status & FLAG_STATUS_PARALYZE)
 		return FALSE
 
 	return ..()

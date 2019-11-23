@@ -27,6 +27,7 @@
 
 	if(length(href_list))
 
+		/*
 		if(href_list["chat_examine"])
 			var/datum/actual_reference = locate(href_list["chat_examine"])
 
@@ -35,8 +36,9 @@
 
 			else if(is_atom(actual_reference))
 				world.log << "ATOM MENU"
+		*/
 
-
+		/*
 		if(href_list["var_edit_ref"])
 			var/datum/actual_reference = locate(href_list["var_edit_ref"])
 			if(actual_reference)
@@ -63,6 +65,7 @@
 
 						if(new_value)
 							change_variable(actual_reference,actual_key,new_value)
+		*/
 
 
 		if(href_list["done_loading"])

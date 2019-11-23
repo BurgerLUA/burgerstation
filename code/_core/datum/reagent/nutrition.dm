@@ -9,7 +9,7 @@
 
 	metabolism_stomach = NUT_AMOUNT
 
-	var/nutrition_amount = 1 NUT_FACTOR //How much stamina to restore per unit.
+	var/nutrition_amount = 1 NUT_FACTOR //How much health, stamina, and mana to restore per tick.
 	//1 NUT FACTOR means it restores 1 per second.
 
 	var/keywords = "none"
@@ -20,6 +20,10 @@
 
 	if(owner && owner.health)
 		owner.health.adjust_stamina(nutrition_amount)
+		if(is_advanced(owner))
+			var/mob/living/advanced/A = owner
+			A.heal_all_organs(nutrition_amount,nutrition_amount,nutrition_amount,nutrition_amount)
+
 
 	return .
 

@@ -89,3 +89,6 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
+
+	max_size = SIZE_2
+	max_weight = WEIGHT_3

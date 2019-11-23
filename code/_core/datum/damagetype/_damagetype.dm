@@ -347,13 +347,14 @@
 			var/mob/living/advanced/player/PA = blamed
 			var/mob/living/advanced/player/PV = victim
 			if(!(PV.status & FLAG_STATUS_DEAD))
+				var/victim_health_final = PV.health.get_overall_health()
 				var/list/attack_log_format = list()
 				attack_log_format["attacker"] = PA
 				attack_log_format["attacker_ckey"] = PA.ckey
 				attack_log_format["time"] = curtime
 				attack_log_format["damage"] = total_damage_dealt
-				attack_log_format["critical"] = (PV.health.health_current - total_damage_dealt < 0) || PV.status & FLAG_STATUS_CRIT
-				attack_log_format["lethal"] = PV.health.health_current - total_damage_dealt <= min(-50,PV.health.health_max*-0.25)
+				attack_log_format["critical"] = (victim_health_final - total_damage_dealt < 0) || PV.status & FLAG_STATUS_CRIT
+				attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
 				PV.attack_logs += list(attack_log_format)
 
 		if(is_crit)

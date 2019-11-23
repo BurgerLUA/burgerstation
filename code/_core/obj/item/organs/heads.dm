@@ -10,8 +10,7 @@
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,
 		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses,
-		/obj/hud/inventory/organs/special
+		/obj/hud/inventory/organs/glasses
 	)
 
 	attach_flag = BODY_TORSO

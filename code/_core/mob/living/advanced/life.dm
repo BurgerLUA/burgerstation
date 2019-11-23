@@ -135,7 +135,7 @@ mob/living/advanced/proc/handle_regen()
 /mob/living/advanced/handle_status_effects()
 	. = ..()
 
-	if(. && health && status & FLAG_STATUS_CRIT && health.health_current >= health.health_max*0.1)
+	if(. && health && status & FLAG_STATUS_CRIT && health.health_current > 0)
 		set_hard_crit(FALSE)
 
 	return .
@@ -145,6 +145,10 @@ mob/living/advanced/proc/handle_regen()
 	if(hard_crit_enabled)
 		status |= FLAG_STATUS_CRIT
 		stun_time = -1
+		for(var/k in health.damage_soft)
+			var/v = health.damage_soft[k]
+			health.damage_soft[k] = min(0,v)
+
 	else
 		status &= ~FLAG_STATUS_CRIT
 		stun_time = 5

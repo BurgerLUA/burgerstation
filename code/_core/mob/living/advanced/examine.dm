@@ -19,7 +19,7 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 
 	if(is_player(src) && survival_skill > 10) //I know this is shitcode but whatever
 		var/mob/living/advanced/player/P = src
-		var/karma_levels = P.mobdata.loaded_data["karma"]
+		var/karma_levels = P.karma
 		if(survival_skill > 25)
 			. += div("examine_description_long","Karma: [karma_levels]")
 		else

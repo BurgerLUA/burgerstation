@@ -54,6 +54,7 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+/*
 /obj/hud/inventory/organs/special
 	name = "special slot"
 	icon_state = "square_trim"
@@ -65,3 +66,4 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
+*/

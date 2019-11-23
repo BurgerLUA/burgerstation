@@ -24,6 +24,7 @@ var/list/ref_id_to_warning = list()
 
 	return TRUE
 
+/*
 client/verb/print_garbage()
 
 	if(!length(ref_id_to_warning))
@@ -39,3 +40,4 @@ client/verb/print_garbage()
 		final_text += "<br>[var_edit_text]([o_type]) = ~[warning_count] seconds"
 
 	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
+*/
