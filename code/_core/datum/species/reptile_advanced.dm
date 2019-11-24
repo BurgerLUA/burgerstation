@@ -1,5 +1,4 @@
 /species/reptile/advanced
-
 	name = "Advanced Reptile"
 	desc = "Fucking furries. Advanced."
 	id = "reptile_advanced"

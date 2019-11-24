@@ -333,7 +333,6 @@
 					var/strength_mod = floor( (brute_damage_dealt/max(victim.health.health_max,1))*throw_mul )
 					if(strength_mod >= 1)
 						var/steps_mod = min(ceiling(VIEW_RANGE*0.75),ceiling(4 * strength_mod))
-						world.log << steps_mod
 						if(steps_mod > 2)
 							var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*min(6*strength_mod,31),offset_y*min(6*strength_mod,31))
 							P.steps_allowed = steps_mod

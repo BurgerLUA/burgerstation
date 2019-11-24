@@ -251,8 +251,16 @@ mob/living/advanced/Login()
 	remove_chargen_buttons()
 
 	remove_all_organs()
+	organs.Cut()
+	labeled_organs.Cut()
 
 	species = desired_species
+
+	var/species/S = all_species[species]
+
+	if(S.genderless)
+		sex = MALE
+		gender = MALE
 
 	add_species_organs()
 	add_species_colors()
@@ -269,8 +277,6 @@ mob/living/advanced/Login()
 		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 		for(var/obj/hud/button/hide_show_inventory/B in buttons)
 			B.update_icon()
-
-	var/species/S = all_species[species]
 
 	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair)
 	handle_beardstyle_chargen(1,S.default_color_hair)
@@ -393,8 +399,10 @@ mob/living/advanced/Login()
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
+		/*
 		if(soul_bound && ckey)
 			C.soul_bound = ckey
+		*/
 
 	return TRUE
 

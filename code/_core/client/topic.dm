@@ -1,7 +1,5 @@
 /client/Topic(href,href_list,hsrc)
 
-	world.log << usr
-
 	if(!usr || usr != mob)
 		return
 

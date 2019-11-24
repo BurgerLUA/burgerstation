@@ -16,186 +16,155 @@
 	)
 
 	dialogue_options["Diamond with Flaw"] = list(
-		"Oh, you are new. I do not believe we have met. I am Diamond with Flaw; a #1. The villagers call me #2, for some reason. I suppose you're here to know more about the #3? Your #4 Or perhaps offer #5?",
+		"Oh, you are new. I do not believe we have met. I am Diamond with Flaw; a #1. The villagers call me #2, for some reason. I suppose you're here to know more about the #3? Your #4?",
 		"dionae",
 		"the mayor",
-		"realm",
-		"immortality",
-		"assistance"
+		"the realm",
+		"immortality"
 	)
 
-	dialogue_options["assistance"] = list(
-		"We're looking for someone capable of leaving the safety of #1 and investigating a few... #2. Are you interested?",
-		"the village",
-		"disturbances"
+	if(P.species == "diona")
+		dialogue_options["dionae"] = list(
+			"It is always good to see a fellow dionae around.",
+		)
+	else
+		dialogue_options["dionae"] = list(
+			"We are dionae, yes. We are a collection of #1, smaller lifeforms, to form one #2.",
+			"nymph",
+			"gestalt"
+		)
+
+	dialogue_options["nymph"] = list(
+		"We #1 are made up of a collection of several nymphs to form a #2. We are a coalition of thoughts and decisions and actions... a collective if you will.",
+		"dionae",
+		"gestalt"
 	)
 
-	dialogue_options["disturbances"] = list(
-		"We fear that the safety of those in the realm may be at risk. I shall not go into too much detail, as I do not #1 you quite yet, but we have discovered a credible threat to the realm and possibly beyond it.\n\
-		In short, we believe that the #2 are up to something in #3 to the west. We would like you to investigate on our behalf and find out what they're up to. Report your #4 back to me, and only me, when you are done.",
-		"trust",
-		"cultists",
-		"the caves",
-		"findings on the disturbances"
-	)
-
-	dialogue_options["dionae"] = list(
-		"We are dionae, yes. We are a collection of nymphs to form one gestalt./nAre you interested in #1?",
-		"becoming a dionae"
-	)
-
-	dialogue_options["becoming a dionae"] = list(
-		"Most organic lifeforms become a part of a diona by soul absorbtion through assimilation, however given your #1 it would be a pointless task. There are #2, but I cannot speak of them.",
-		"immortality",
-		"other ways of becoming a diona"
+	dialogue_options["gestalt"] = list(
+		"What you see before you is a gestalt; a biped of #1s sharing thoughts and decisions together as one collective.",
+		"nymph"
 	)
 
 	dialogue_options["immortality"] = list(
-		"Yes, you are immortal now. Technically. You do not feel #1, and #2 is meaningless to you.",
+		"Yes, you are immortal now. Technically. You do not feel #1, you cannot age naturally, and #2 is meaningless to you. You can still die, but you will be #3 in a way.",
 		"pain",
-		"death"
+		"death",
+		"reborn"
 	)
 
 	dialogue_options["pain"] = list(
-		"Oh, I mean physical pain. You can still feel mental or emotional pain. This wouldn't make a good realm to torture souls if they couldn't be tortured. \
-		Some see this as a drawback, as it means they don't know if their body is injured. I've seen people collapse in the village, not realising that their bones were broken from an earlier fight."
+		"You feel pain like us #1 do; not at all. The pain you would normally feel is replaced by a dull signal, that tells your brain casually that your body may be injured. \
+		It wasn't always like this, though. In #2, you felt pain like you would in the real world, but I believe #3 somehow changed this.",
+		"dionae",
+		"the beginning",
+		"The Old Man"
 	)
 
 	dialogue_options["death"] = list(
-		"It is the most accurate term to describe what happens to you when your body gives up. When that happens, your soul is removed from your body, and placed in a new one.\
-		As #1 should have explained to you, you will lose all material possessions upon this death.",
-		"Ilaeza Marwani"
+		"It is the most accurate term to describe what happens to you when your body gives up. Unfortunately you will be #1 again when it happens.",
+		"reborn"
 	)
 
-	dialogue_options["other ways of becoming a diona"] = list(
-		"I do not #1 you to speak about this. Perhaps offer your #2 first, and I can tell you the secrets of this.",
-		"trust",
-		"assistance"
+	dialogue_options["reborn"] = list(
+		"When your soul cannot be sustained by your body, it leaves your body... only to be captured again and transfered into a copy of your physical form. \
+		This process is done near #1 scattered around #2.",
+		"wishgranter",
+		"the realm"
 	)
 
-	dialogue_options["realm"] = list(
-		"#1 was wise to bring you to me. I was here during #2. I know everything there is to #3.",
+	dialogue_options["the realm"] = list(
+		"#1 was wise to bring you to me to teach you of this. I was one of the few here during #2. I know our history more than anyone else here... except for #3. Well, assuming they're still here.",
 		"Ilaeza Marwani",
 		"the beginning",
-		"the rule"
+		"The Old Man"
 	)
 
 	dialogue_options["the beginning"] = list(
-		"Oh, it was quite horrible. People would fight endlessly as #1 did not exist at that time. \
+		"Oh, it was quite horrible. Everything was a wasteland of endless grey ash and bluespace skies. There were... roaming souls that you'd meet on ocassion. \
+		Most were driven mad by the lack of material objects, and would try their best to rob the other souls of their possessions by combat.NEWLINE\
 		It wasn't until #2 came and reshaped the land and the very people in it. He organized most of the lost souls into rebuilding and farming. \
-		He gave his followers weapons to fight those who did not believe his goals.",
-		"the old man"
+		He gave his followers weapons to fight those who did not believe his goals, and that protection mostly convinced those to rise together.",
+		"The Old Man"
 	)
 
-	dialogue_options["the old man"] = list(
-		"Ah, yes. A mysterious fellow. Not much is known about him, save for his exploits in #1. He disappeared after some time after. Many believe he found #2.",
+	dialogue_options["The Old Man"] = list(
+		"Ah, yes. The Old Man. Not much is known about him, save for his exploits in #1. He disappeared after some time after. Many believe he found #2 after he estabilished #3.",
 		"the beginning",
 		"a way out"
 	)
 
 	dialogue_options["a way out"] = list(
-		"Leaving the realm is something many of us have been trying to figure out. Most of us do this in secret in fear or some of the less desirable inhabitants following us into the next life. We believe that #1 secretly found a way out as he spoke of this quite a bit before disappearing. \
-		However, this is not something I wish to discuss with you.",
-		"the old man",
+		"Leaving this place is something many of us have been trying to figure out, including #1. \
+		For nearly 500 years, I have been exchanging letters with #1 on a daily basis, sharing my findings with him and him doing the same. \
+		We both needed to leave the realm, but for different, non-conflicting reasons. We both trusted eachother but... he stopped. \
+		For an entire 2 weeks I recieved no letters from them. Initially I thought that perhaps he grew distrustful of me... but then it came.NEWLINENEWLINE\
+		#2.",
+		"The Old Man",
+		"the final message"
 	)
 
-	dialogue_options["the rule"] = list(
-		"It is simple. Do not go around #1 unless you wish to invoke #2.",
-		"killing humans",
-		"wraith of Nar-sie"
-	)
-
-	dialogue_options["wraith of Nar-sie"] = list(
-		"If you are fond of #1, you will be punished by #2. Strange #3 will confront you and attempt to kill you. We wish to put an #4 not because of this, but rather because of the #5.",
-		"killing humans",
-		"death",
-		"assassins",
-		"end to the rule",
-		"exceptions to the rule"
-	)
-
-	dialogue_options["assassins"] = list(
-		"I have not seen them as I do not kill humans, and I am part of the #1. Perhaps they do not exist, and are just a myth. There is only one way to find out.",
-		"exceptions to the rule"
-	)
-
-	dialogue_options["killing humans"] = list(
-		"Yes, humans. You can kill #1, the #2, or #3 as much as you want, just do not kill humans. There are some #4, however, which we are concerned about.",
-		"reptile people",
+	dialogue_options["the final message"] = list(
+		"I found it. Instructions will follow.\"NEWLINE\
+		That was the final message. After a month of silence, those were the words he wrote to break it.\
+		I tasked the entire village to look absolutely everywhere for these instructions... I told them to look to the seas... to look to the skies... to the very ground they stood on. \
+		To report anything and anything that looked unusual...NEWLINE\
+		... But there was nothing. The instructions did not arrive, and if it did, we missed it entirely.NEWLINE\
+		I was quite distraught over this event. I am a #1; we can live for several thousands of years, physically, but mentally we become... something else entirely. \
+		We begin to lose ourselves if we do not return to #2 after experiencing a truely unique event. \
+		I believe that I am starting to lose myself after visiting this place, and my time is running short before I finally succumb to #3.\
+		This matter needs to be resolved. I want you to resolve this matter. I am assigning you this #4 as I have to others.NEWLINENEWLINE\
+		I need you to save me from myself, and find a way out. That is your #4, if you choose to accept it.",
 		"diona",
-		"creatures",
-		"exceptions to the rule"
+		"the singularity",
+		"gestalt sickness",
+		"task"
 	)
 
-	dialogue_options["creatures"] = list(
-		"Oh, yes. There are other lifeforms stuck here. Most are quite hostile and angry that they are here."
+	dialogue_options["task"] = list(
+		"It is no easy task. You have only but a small bread crumb trail to follow: #1. Speak to them about #2. They will understand.",
+		"The Courier",
+		"the final message"
 	)
 
-	dialogue_options["reptile people"] = list(
-		"Yes, the reptile woman you met earlier, #1, was one of them. They have many names. Unathi. Soghun. In order to #2 they have refered to themselves as 'the reptile people.'",
-		"Ilaeza Marwani",
-		"appease the humans"
+	dialogue_options["The Courier"] = list(
+		"They are a lizardperson who goes by the name of #1. You can find them lingering near #2.",
+		"Bar Shaleez",
+		"the main gate"
 	)
 
-	dialogue_options["Ilaeza Marwani"] = list(
-		"Ah, yes. She is the caretaker of the village. I do not believe that she is doing it to be kind, but in order to #1 as she is one of the #2.",
-		"appease the humans",
-		"exceptions to the rule"
-	)
+	if(known_options["the final message"])
+		dialogue_options["Bar Shaleez"] = list(
+			"They go by \"#1\" given their occupation. They organize deliveries involving messages of great importance. \
+			I do not know their methods; they never leave the village... yet... somehow their messages arrive to their recipients through letter.",
+			"The Courier")
+	else
+		dialogue_options["Bar Shaleez"] = list("I do know know of who you speak of.")
 
-	dialogue_options["appease the humans"] = list(
-		"The reptile people wish to appear more tolerable to the humans. They do not mention the culture or workings of their past life to anyone but themselves. It is a shame, but it is with good reason that they do this. They are one of #1.",
-		"exceptions to the rule"
-	)
 
-	dialogue_options["exceptions to the rule"] = list(
-		"For some strange reason, #1 only applies to #2. An organic can kill the #3 or #4 as much as they want without invoking #5. It does not matter if you kill in #6 either, even as a human. Many of us believe that this is an injustice, so we wish to put an #7.",
-		"the rule",
-		"killing humans",
-		"reptile people",
-		"diona",
-		"wraith of Nar-sie",
-		"self defense",
-		"end of the rule"
-	)
+	dialogue_options["the singularity"] = list("It is home for #1. In the end of our lives, we then go on a voyage in space, searching for the singularity to finally become one. \
+		I must make this journey, however I cannot as I am stuck in this place.")
 
-	dialogue_options["end of the rule"] = list(
-		"We believe that we can bring an end to #1. This rule was not put in by #2, but by something else. Perhaps #3. Perhaps the #4. We do not know, and I shall speak no further of this until you earn my #4.",
-		"the rule",
-		"Nar-sie",
-		"the old man",
-		"trust"
-	)
+	dialogue_options["gestalt sickness"] = list("I do not wish to speak of this, please. This is a personal matter.")
 
-	dialogue_options["self defense"] = list(
-		"Eventually you will reach a point in your journey where someone may wish to kill you out of sport or neccesity. Unfortunately, #1 prevents you from #2 in self defense as it will #3. \
-		This can be prevented by knocking the human out instead or avoiding all conflict together by staying in areas where you feel #4.",
-		"the rule",
-		"killing humans",
-		"wraith of Nar-sie",
-		"pacfism"
-	)
-
-	dialogue_options["pacifism"] = list(
-		"Pacifsm protects most of the villagers that wish not to be harmed in the few #1 in this realm. It is the feeling you get when you are near a #2.",
-		"settlements",
+	dialogue_options["the main gate"] = list(
+		"The main gate is located south of the #1 in the village. It is also close to #2's entrance.",
 		"wishgranter",
+		"the bar"
 	)
 
-	dialogue_options["wishgranter"] = list(
-		"Wishgranters are ressurection points for spirits trapped in this realm. This one in #1 is where new souls come in.",
-		"the village"
-	)
-
-	dialogue_options["cultists"] = list(
-		"They are the servants of #1. They are tasked with bringing as much suffering to the souls in this realm as possible. Do not trust them.",
-		"Nar-sie"
-	)
-	dialogue_options["Nar-sie"] = list(
-		"Nar-sie is the dark lord who looks over this realm. Allegedly. Other than the #1 and hearsay, there is no evidence of Nar-sie's influence here. Yet.",
-		"cultists"
-	)
-
+	if(known_options["The Old Man"])
+		dialogue_options["wishgranter"] = list(
+		"One of the creations of #1. In #2, #3 would cause you to be #4 in a random location in the ash. \
+		The wishgranter acts as some sort of soul anchor that forces you to be reborn on the wishgranter's doorstep.",
+		"The Old Man",
+		"the beginning",
+		"death",
+		"reborn"
+		)
+	else
+		dialogue_options["wishgranter"] = list(
+			"Ah, I do not know much about them. I just know that when others die, they tend to end up back outside the wishgranter."
+		)
 
 	return dialogue_options
 

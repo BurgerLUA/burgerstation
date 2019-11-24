@@ -14,7 +14,7 @@
 		"organs" = list(),
 		"skills" = list(),
 		"attributes" = list(),
-		"currency" = 0,
+		"currency" = 1000,
 		"karma" = 10000,
 		"justice_broken" = 0,
 		"justice_served" = 0,

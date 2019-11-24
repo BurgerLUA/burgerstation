@@ -183,8 +183,12 @@
 	if(!T)
 		return .
 
+	/*
 	if(reagents)
 		create_blood_effect(T,attacker,src,damage_dealt,reagents.color)
+	*/
+
+	create_blood_effect(T,attacker,src,damage_dealt)
 
 /proc/create_blood_effect(var/turf/T,var/atom/attacker,var/atom/victim,var/damage_dealt,var/blood_color = "#FF0000")
 

@@ -32,6 +32,10 @@
 	if(!P.client)
 		return FALSE
 
+	if(!id)
+		P.to_chat(span("notice","This wishgranter doesn't seem to work..."))
+		return FALSE
+
 	var/savedata/client/mob/U = P.mobdata
 
 	if(!(id in U.loaded_data["known_wishgranters"]))

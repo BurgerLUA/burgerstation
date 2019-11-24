@@ -1,5 +1,5 @@
 /dialogue/npc/barshaleez/
-	name = "Bar-Shaleez"
+	name = "Bar Shaleez"
 	id = "bar_shaleez_dialogue"
 
 /dialogue/npc/barshaleez/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
@@ -7,108 +7,133 @@
 	var/list/dialogue_options = list()
 
 	dialogue_options["hello"] = list(
-		"Yes, I'm talking to you, nerd. Are you trying to #1?",
-		"leave the village"
+		"Hm? Need something?"
 	)
 
-
-	if(!known_options["_given_money"])
-		dialogue_options["leave the village"] = list(
-			"HA. Good luck. There are plenty of people like you out there waiting for you to make a mistake and kill you, regardless of how much you beg for your life. \
-			You should know this, yes? Have you not spoken to #1? Go find him, and buy yourself some better clothes.NEWLINE\
-			(100 #2 have been added to your inventory.)",
-			"the mayor",
-			"bluespace crystals",
-			"_given_money"
-		)
-	else
-		dialogue_options["leave the village"] = list(
-			"HA. Good luck. There are plenty of people like you out there waiting for you to make a mistake and kill you, regardless of how much you beg for your life. \
-			You should know this, yes? Have you not spoken to #1? Go find him, and buy yourself some better clothes.",
-			"the mayor",
-			"bluespace crystals",
-			"_given_money"
-		)
-
-	dialogue_options["bluespace crystals"] = list(
-		"What? Those things? Oh, they're what you use for currency here. They're magical, special gems that have some arbitrary value to them, for some reason. You probably guessed it, but it was #1 who introduced the idea of a standardized currency here.",
-		"the mayor"
+	dialogue_options["the final message"] = list(
+		"So #1 felt the need to disclose my identity to a fresh soul, eh? I guess they're getting really desperate now. Not even that thot #2 knows who I am.NEWLINE\
+		Well whatever. I suppose he wants me to help you locate #3?",
+		"the mayor",
+		"Ilaeza Marwani",
+		"The Middleman"
 	)
 
-	if(known_options["getting into"])
-		dialogue_options["the mayor"] = list(
-			"If you really want to talk to him about what you're #1, go find him. Somewhere. He likes to hide out in a cave to the northeast of the village. \
-			I honestly wouldn't be suprised if he's with the #2 given the amount of time he spents up there."
-		)
-	else if(known_options["Diamond with Flaw"])
-		dialogue_options["the mayor"] = list(
-			"I can tell you talked to him. He leaves a certain... impression on people. Gives people that look on their face. You probably don't know what you're #1, yes?",
-			"getting into"
-		)
-	else
-		dialogue_options["the mayor"] = list(
-			"I knew it. You never did talk to him! Well that is no matter. They are a little weird and we could use people like you who don't give a lizard's patootie about important things. \
-			You're here to have fun, yes? Well fun can really only be had if you know what you're #1, yes?",
-			"getting into"
+	dialogue_options["The Middleman"] = list("He's the one I relay all my messages to whenever I need to send a message to #1. \
+		The Middleman knows the physical #2 at all times, so if anyone knows what happened to the old man, it would be him.",
+		"The Old Man",
+		"location of The Old Man"
+	)
+
+	if(known_options["The Middleman"])
+
+		dialogue_options["Ilaeza Marwani"] = list(
+			"Ignore them, if you know what's best for you. They may help you with other things, but with respect to #1, the know nothing.",
+			"The Old Man"
 		)
 
-	if(known_options["the rule"])
-		dialogue_options["getting into"] = list(
-			"This isn't like your previous life where you're protected by shitcurity or the AI. Out here, anyone can kill you for any reason whatsoever and you can do the same to them.. \
-			On a normal day, #1 probably told you about #2, or not. Depends what mood they're in. Long story short, if you want to kill people, just be prepared to #3, if there are any even to begin with.",
+		dialogue_options["Bar Shaleez"] = list(
+			"Yes, I'm #1. I am responsible for most of the communication outside the village.",
+			"The Courier"
+		)
+
+		dialogue_options["The Old Man"] = list(
+			"I'm not a fan of history, especially here, but apparantly the man was responsible for making things better here. \
+			Hard to believe that things were worse than this. #1 really wants to find the #2, though, and with good reason.",
 			"the mayor",
-			"the rule",
-			"face the consequences"
+			"location of The Old Man"
 		)
+
+		dialogue_options["Diamond With Flaw"] = list(
+			"He's #1. I don't like calling him that, but that is what everyone else calls him. He was the one responsible for enforcing #2 which is why he's called that.",
+			"the laws"
+		)
+
+		dialogue_options["the mayor"] = list(
+			"I prefer using his real name, #1, rather than his assigned name.",
+			"Diamond with Flaw"
+		)
+
+		dialogue_options["The Courier"] = list(
+			"That is me, yes. It is a title passed down from person to person after a certain time of service. Please call me #1 instead as I wish to keep my occupation secret.",
+			"Bar Shaleez"
+		)
+
+		dialogue_options["the laws"] = list(
+			"While #1 was still around, he would send #2 laws, or rules, that were then communicated to me so #3 could recieve and enforce those rules. \
+			Things have changed since then, and others have took up the duty after #4 started to succumb to #5.",
+			"The Old Man",
+			"The Middleman",
+			"Diamond with Flaw",
+			"Diamond with Flaw",
+			"gestalt sickness"
+		)
+
+		dialogue_options["gestalt sickness"] = list(
+			"#1 doesn't like to talk about it. It's an illness that drives a #2 to insanity. I haven't seen what happens when it occurs, and I don't even know if it's actually real.",
+			"Diamond with Flaw",
+			"gestalt"
+		)
+
+		dialogue_options["location of The Old Man"] = list(
+			"You are not the first to ask me of this and you will not be the last. I've told #1 and others the same thing I'm telling you now: I cannot tell you this.NEWLINE\
+			In order to know the location of #2, you must first know the #3. \
+			Sharing any information related to #4 is explicitly forbidden and one of the reasons why they are still functional today.NEWLINE\
+			Return back to #5. Tell him for the last time that I refuse to share this information with you or anyone else in this village. \
+			While Diamond is a close friend, the safety of #6 is more important than his #7.",
+			"Diamond with Flaw",
+			"The Old Man",
+			"location of The Middleman",
+			"The Middleman",
+			"Diamond with Flaw",
+			"The Middleman",
+			"gestalt sickness"
+		)
+
 	else
-		dialogue_options["getting into"] = list(
-			"This isn't like your previous life where you're protected by shitcurity or the AI. Out here, anyone can kill you for any reason whatsoever and you can do the same to them. \
-			On a normal day, #1 probably told you this, or not. Depends what mood they're in. Long story short, if you want to kill people, just be prepared to #2, if there are any even to begin with.",
-			"the mayor",
-			"face the consequences"
+
+		dialogue_options["Ilaeza Marwani"] = list(
+			"Yeah, that's not me. You're looking for the other green lizard who hangs out around here. You'll find them near the #1.",
+			"wishgranter"
 		)
 
-	var/protected_text
+		dialogue_options["Bar Shaleez"] = list(
+			"Yep. That's me. Bar Shaleez. I'm just loitering here, so don't mind me."
+		)
 
-	switch(protected_species)
-		if(RULE_HUMAN)
-			protected_text = "humans"
+		if(known_options["the final message"])
 
-	if(known_options["wraith of Nar-sie"])
-		if(protected_text == "humans")
-			dialogue_options["the rule"] = list(
-				"Diamond told you about the rule? Well they probably gave you a very basic understanding of it. It doesn't quite work like you think it does. \
-				You're not allowed to kill GOOD humans. You can kill evil humans, but just not good humans... which is odd for this realm, yes, but that's just how it goes. \
-				Good humans are basically humans who do not harm people for the sake of harming people. These are ones who do not go out of there way to kill people. \
-				The evil ones, on the other hand, are. They're the ones who kill humans regardless if those people need killing."
+			dialogue_options["The Old Man"] = list(
+				"Eh? Who sent you?."
 			)
+
+			dialogue_options["Diamond with Flaw"] = list(
+				"Oh. I see now. He wants me to talk about #1, yes?",
+				"the final message"
+			)
+
+			dialogue_options["the mayor"] = list(
+				"The mayor? You mean #1, right?",
+				"Diamond with Flaw"
+			)
+
+			dialogue_options["The Courier"] = list(
+				"What? I don't know what you're talking about. Who sent you?"
+			)
+
 		else
-			//WIP. This is for a future update after it's released.
-			dialogue_options["the rule"] = list(
-				"Diamond told you about the rule? Well they're wrong. They've been living in that cave for so long they've missed quite a bit of changes to this realm. \
-				They likely told you that you shouldn't go around killing humans, yes? If so, yes. They're wrong."
+			dialogue_options["Diamond with Flaw"] = list(
+				"Who? Sorry. Don't know who that is."
 			)
 
-	else
-		dialogue_options["the rule"] = list(
-			"The rule is this: Don't kill non-evil [protected_text]."
-		)
+			dialogue_options["the mayor"] = list(
+				"Do I look like a tour guide? Go bother #1.",
+				"Ilaeza Marwani"
+			)
+
+			dialogue_options["The Old Man"] = list(
+				"Eh? That's just a myth."
+			)
 
 
-	dialogue_options["face the consequences"] = list(
-		"If you wrong someone by death, there is a chance you'll answer to us; #1. \
-		Regardless of what sentient species you kill, we'll likely find out and put a bounty on your head we have people watching eveywhere, so don't try to avoid us.",
-		"The Bounty Hunters"
-	)
-
-	dialogue_options["Bounty Hunters"] = list(
-		"We're an organization meant to be a counterbalance to the amount of shitters that come in this realm to fuck people up for the sake of fucking people up. \
-		We're not zealots in a sense where we want total peace, we just hate kids who ruin other's attempt at an escape from this realm. We're always looking for members to #1.",
-		"join the Bounty Hunters"
-	)
-
-	dialogue_options["join the Bounty Hunters"] = list(
-		"You wish to join the Bounty Hunters? Uh... no. Not yet, anyways. Prove your use to us, and we'll approach you."
-	)
 
 	return dialogue_options

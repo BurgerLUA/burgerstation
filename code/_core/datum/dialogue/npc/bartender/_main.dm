@@ -7,92 +7,61 @@
 	var/list/dialogue_options = list()
 
 	dialogue_options["hello"] = list(
-		"#1 at your service. Want a #2? You look like you could use some #3.",
+		"#1 at your service. Want a #2? You look like you could use one.",
 		"Miss Flanagan",
-		"drink",
-		"humanity"
+		"water"
 	)
 
-	dialogue_options["drink"] = list(
-		"Yeah, we provide drink. The #1 and #2 is free. I trade #3 for #4. What do you want?",
-		"beer",
-		"water",
-		"the good stuff",
-		"trinkets"
-	)
-
-	dialogue_options["beer"] = list(
-		"Limit is one per customer per hour. Enjoy."
+	dialogue_options["Miss Flanagan"] = list(
+		"Yep, that's me. Your one and only bartender. I sell #1 to anyone whos asks.",
+		"water"
 	)
 
 	dialogue_options["water"] = list(
-		"Limit is one per customer per hour. Enjoy."
+		"Yeah, all we have is water here. I don't have enough supplies to make alcohol here cause the #1 keeps forgeting, so you're going to have to deal with it. All you need is some #2 to buy it.",
+		"the mayor",
+		"telecrystals"
+	)
+	if(known_options["secret Syndicate hiding place"])
+		dialogue_options["the mayor"] = list(
+			"The mayor? Was in here for a bit. Said they went to go talk with #1 before I could tell them about the asshole in the back.",
+			"Shopkeeper Eric"
+		)
+	else
+		dialogue_options["the mayor"] = list(
+			"The mayor? Was in here for a bit. Said they went to go talk with #1. They might be there.",
+			"Shopkeeper Eric"
+		)
+
+	dialogue_options["telecrystals"] = list(
+		"Oh, you're new here, right? Well instead of using credits or gold or whatever it is now, we use telecrystals in order to trade for #1. #2 used to use them in the real world to teleport goods so I guess that works here too.",
+		"goods and services",
+		"The Syndicate"
 	)
 
-	dialogue_options["the good stuff"] = list(
-		"Whiskey. Vodka. Cognac. The good stuff. If you have #1, I'll #2 you for them.",
-		"trinkets",
-		"barter"
+	dialogue_options["The Syndicate"] = list("They're anti-capitalist assassins or something. I don't pay much attention to them, to be honest. Other villagers can tell you about how they have a #1 or something, but it's not really a secret.",
+		"secret Syndicate hiding place"
 	)
 
-	dialogue_options["trinkets"] = list(
-		"I long for earth 1970-1990s aesthetic. If you have any, I'd be happy to #1.",
-		"barter"
-	)
-
-	dialogue_options["the mayor"] = list(
-		"The mayor? Was in here for a bit. They drank water while #1 drank some whiskey. Left shortly after.",
-		"the banker"
-	)
-
-	dialogue_options["the banker"] = list(
-		"Yeah. '#1' is their name. Everyone just calls them the banker. Easier that way.",
-		"Sir Biggus Buckingham"
-	)
-
-	dialogue_options["Sir Biggus Buckingham"] = list(
-		"Only cyborg in the village. Works in #1. Can't miss them.",
-		"the bank"
-	)
-
-	dialogue_options["the bank"] = list(
-		"It's the big building in the center of #1. East of that #2. In #3 section.",
-		"the village",
-		"wishgranter",
-		"the upper class"
-	)
-
-	dialogue_options["the village"] = list(
-		"We manage here. I mean we don't have a good food supply, but the cheap beer and water helps give us #1.",
-		"humanity"
-	)
-
-	dialogue_options["humanity"] = list(
-		"Yeah, apparantly #1, #2, and #3 helps us with keeping our humanity. Prevents us from going feral or somethin'. Could be a load of shit, I can't really complain because it makes people #4 with me so...",
-		"food",
-		"drink",
-		"trinkets"
-	)
-
-	dialogue_options["food"] = list(
-		"We don't sell food here. In fact, #1 hasn't been able to grow anything for quite a while now. I'm sure #2 could tell you more, he knows most about our history.",
-		"the village",
+	dialogue_options["secret Syndicate hiding place"] = list(
+		"Yeah, some asshole setup shop right next to my bar in the back. They sell overpriced Syndicate goods that only idiots buy. I tried telling #1 about it but he doesn't seem to care.",
 		"the mayor"
 	)
 
-	dialogue_options["upper class"] = list(
-		"It's the rich looking houses to the east. They have the most wealth due because of worker exploit- Oh Jesus, I'm starting to sound like #1.",
-		"Vlad"
+	dialogue_options["goods and services"] = list(
+		"I sell fresh #1 here. Others in this land tend to sell other things here. For example, the #2 sells general goods. Who would've thought?",
+		"water",
+		"general store"
 	)
 
-	dialogue_options["lower class"] = list(
-		"It's the dark brown worn out houses. West side of #1. Just north of here.",
-		"the village"
+	dialogue_options["Shopkeeper Eric"] = list(
+		"Yeah. 'Shopkeeper Eric' is their name. Obviously fake. He owns the #1 in the center of the village.",
+		"general store"
 	)
 
-	dialogue_options["Vlad"] = list(
-		"Yeah, name is Vlad Checknov-something. Lives in #1 section of the city. He could tell you more about this class bullshit. He gives everyone an earfull.",
-		"the lower class"
+	dialogue_options["general store"] = list(
+		"Yeah #1 sells general goods there. It's in the center of the village. You can't miss it.",
+		"Shopkeeper Eric"
 	)
 
 	return dialogue_options

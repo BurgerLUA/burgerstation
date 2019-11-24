@@ -8,3 +8,7 @@
 	ignore_other_slots = TRUE
 
 	dyeable = TRUE
+
+
+/obj/item/clothing/head/hood/bandana/red
+	color = "#880000"

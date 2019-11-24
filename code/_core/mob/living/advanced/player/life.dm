@@ -44,22 +44,19 @@
 	if(last_words && length(people_who_killed) && people_who_killed[1] && people_who_killed[1] != src)
 		SS_Soapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
 
-	for(var/mob/living/advanced/player/P in people_who_killed)
+	if(ENABLE_KARMA)
+		for(var/mob/living/advanced/player/P in people_who_killed)
 
-		if(!P.client || !P.mobdata) //Something something exploitable something something
-			continue
+			if(!P.client || !P.mobdata) //Something something exploitable something something
+				continue
 
-		var/karma_gain = calculate_karma_gain_for_attacker(P,src)
+			var/karma_gain = calculate_karma_gain_for_attacker(P,src)
 
-		world.log << "Karma Gain: [karma_gain]."
+			if(karma_gain > 0)
+				karma_gain *= 1/length(people_who_killed)
 
-		if(karma_gain > 0)
-			karma_gain *= 1/length(people_who_killed)
-
-		if(do_karma_event(P,src,karma_gain))
-			punish_player(P)
-
-		world.log << "[P] killed [src]."
+			if(do_karma_event(P,src,karma_gain))
+				punish_player(P)
 
 	attack_logs = list()
 
@@ -70,8 +67,6 @@
 	var/karma_difference = abs(P.karma - initial(P.karma))
 
 	var/punishment_level = Clamp(ceiling(karma_difference/1000),3,50)
-
-	world.log << "The punishment level is: [punishment_level]."
 
 	var/list/turf/valid_turfs = list()
 
@@ -93,8 +88,6 @@
 	victim.mobdata.loaded_data["justice_broken"] = 0
 
 	attacker.karma += karma_gain
-
-	world.log << "New karma: [attacker.karma]."
 
 	//The player killed someone evil
 	if(karma_gain > 0)

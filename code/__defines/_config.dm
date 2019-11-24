@@ -3,6 +3,8 @@
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 60
 
+#define SHUTDOWN_SUBSYSTEM_ON_ERROR FALSE
+
 #define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 #define WORLD_SIZE 512 //This shouldn't be touched unless you know what you're doing
@@ -50,13 +52,17 @@
 //Makes compiling faster FALSE disabled
 #define ENABLE_MOB TRUE
 #define ENABLE_AI TRUE
-#define ENABLE_MAPLOAD FALSE
+#define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_TURFGEN TRUE
 #define ENABLE_CHARGEN TRUE
 
-#define ENABLE_XP TRUE
+#define ENABLE_WIKIBOT FALSE
+
+#define ENABLE_KARMA FALSE
+
+#define ENABLE_XP FALSE
 #define LEVEL_CAP 100
 
 #define ITEM_DELETION_TIME_DROPPED 3000

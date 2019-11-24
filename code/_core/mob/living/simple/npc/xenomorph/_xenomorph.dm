@@ -30,7 +30,7 @@
 
 	ai = /ai/simple/xenomorph_queen
 	damage_type = "xenomorph_queen"
-	class = "xenomorph_queen"
+	class = "xenomorph"
 
 	boss = TRUE
 	force_spawn = TRUE

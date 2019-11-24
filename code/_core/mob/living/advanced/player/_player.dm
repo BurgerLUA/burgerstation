@@ -32,7 +32,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/list/attack_logs = list()
 
-	var/currency = 0
+	var/currency = 1000
 
 	var/savedata/client/mob/mobdata
 

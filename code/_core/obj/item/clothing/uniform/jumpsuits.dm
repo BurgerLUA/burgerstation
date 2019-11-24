@@ -65,3 +65,9 @@
 	color_primary = "#FFFFFF"
 	color_secondary = "#FFFFFF"
 	color_tertiary = "#FF6A00"
+
+
+/obj/item/clothing/uniform/jumpsuit/bartender
+	color_primary = "#FFFFFF"
+	color_secondary = "#404040"
+	color_tertiary = "#FFFFFF"

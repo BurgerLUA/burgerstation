@@ -11,6 +11,8 @@
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
+	loot_drop_in_corpse = TRUE
+
 /mob/living/advanced/npc/defer_click_on_object()
 
 	if(dialogue_id)

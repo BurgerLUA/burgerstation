@@ -30,8 +30,6 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 	src.pixel_x = x_offset
 	src.pixel_y = y_offset
 
-	world.log << desired_animation_type
-
 	switch(desired_animation_type)
 		if("pickup")
 			var/matrix/M = matrix()

@@ -8,3 +8,12 @@
 
 	density = 0
 	plane = PLANE_WALL
+
+
+/obj/structure/wip/main
+	name = "oh god oh fuck"
+	desc = "muh immersion"
+	icon = 'icons/meme.dmi'
+	icon_state = "unga"
+
+	plane = PLANE_ALWAYS_VISIBLE

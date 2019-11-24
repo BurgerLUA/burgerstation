@@ -10,7 +10,6 @@ obj/effect/temp/blood/drip/
 	name = "blood drip"
 	icon_state = "drip"
 
-
 obj/effect/temp/blood/drip/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
 
 	color = desired_color

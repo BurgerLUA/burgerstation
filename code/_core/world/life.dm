@@ -57,8 +57,9 @@
 					else
 						S.next_run = ticks + S.tick_rate
 			catch(var/exception/e)
-				LOG_ERROR("[v["name"]]: [e] on [e.file]:[e.line]! Disabling subsystem!")
-				active_subsystems -= list(v)
+				LOG_ERROR("[v["name"]]: [e] on [e.file]:[e.line]!")
+				if(SHUTDOWN_SUBSYSTEM_ON_ERROR)
+					active_subsystems -= list(v)
 
 		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1
