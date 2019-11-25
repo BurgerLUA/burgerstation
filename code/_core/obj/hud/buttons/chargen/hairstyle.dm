@@ -53,7 +53,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_icon = S.all_hair_head[choice_main]
+	var/hair_icon = S.all_hair_head[Clamp(choice_main,1,length(S.all_hair_head))]
 
 	if(desired_color)
 		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)

@@ -8,7 +8,7 @@
 		handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
 		handle_beardstyle_chargen(1,"#000000")
 
-		stop_sound('sounds/music/menu/lobby.ogg',list(src))
+		stop_music_track(client)
 
 		if(ENABLE_LORE)
 

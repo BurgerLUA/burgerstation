@@ -5,7 +5,7 @@
 
 	icon = null
 
-	var/mob/living/advanced/owner
+	var/mob/owner
 
 	mouse_opacity = 0
 

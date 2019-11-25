@@ -236,7 +236,7 @@ mob/living/advanced/proc/handle_regen()
 				O.health.update_health()
 				should_update_health = TRUE
 
-	if(should_update_health)
+	if(health && should_update_health)
 		health.update_health(update_hud=FALSE)
 		update_health_element_icons(TRUE,FALSE,FALSE)
 

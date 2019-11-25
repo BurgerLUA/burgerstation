@@ -69,6 +69,8 @@
 
 	var/last_words = ""
 
+	var/list/stored_chat_text = list() //experiment
+
 /mob/destroy()
 
 	if(client)
@@ -77,6 +79,8 @@
 	key = null // required to GC
 	buttons.Cut()
 	health_elements.Cut()
+	if(stored_chat_text)
+		stored_chat_text.Cut()
 
 	all_mobs -= src
 	all_mobs_with_clients -= src

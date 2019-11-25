@@ -5,7 +5,7 @@
 		"volume_master" = 70,
 		"volume_fx" = 70,
 		"volume_ambient" = 50,
-		"volume_music" = 70,
+		"volume_music" = 50,
 		"volume_footsteps" = 50,
 		"fps_client" = FPS_CLIENT,
 		"hud_colors" = list(

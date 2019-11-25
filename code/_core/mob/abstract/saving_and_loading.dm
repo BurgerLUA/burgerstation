@@ -25,8 +25,10 @@
 			return FALSE
 
 		if(U.create_new_character(U.get_next_character_id()))
-			var/mob/living/advanced/player/P = new(pick(chargen_spawnpoints),client)
+			var/atom/desired_spawn = pick(chargen_spawnpoints)
+			var/mob/living/advanced/player/P = new(desired_spawn,client)
 			P.mobdata = U
+			P.force_move(desired_spawn)
 			P.start_chargen()
 			return TRUE
 		else
@@ -59,7 +61,7 @@
 	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])
 	C.save_slot = name_to_choice[choice]
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_sound('sounds/music/menu/lobby.ogg',list(src))
+	stop_music_track(C)
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
 	P.mobdata = mobdata
@@ -82,7 +84,7 @@
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	C.save_slot = file_num
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_sound('sounds/music/menu/lobby.ogg',list(src))
+	stop_music_track(C)
 
 	var/mob/living/advanced/player/P = new(src.loc,client)
 	P.mobdata = mobdata

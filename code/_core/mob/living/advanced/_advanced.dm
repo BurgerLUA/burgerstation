@@ -73,8 +73,6 @@
 
 	var/list/known_wishgranters = list() //ID based.
 
-	var/list/stored_chat_text = list() //experiment
-
 	health = /health/mob/living/advanced
 
 	//Read only values. Don't change these.
@@ -93,7 +91,6 @@
 	labeled_organs.Cut()
 
 	inventory.Cut()
-	stored_chat_text.Cut()
 	overlays_assoc.Cut()
 
 	qdel(click_and_drag_icon)
@@ -222,7 +219,6 @@ mob/living/advanced/Login()
 	if(client)
 		add_species_buttons()
 		add_species_health_elements()
-		//chat_text = new(src)
 
 	. = ..()
 

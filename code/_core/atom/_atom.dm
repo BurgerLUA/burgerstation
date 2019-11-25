@@ -136,6 +136,9 @@
 		var/area/A1 = get_area(attacker)
 		var/area/A2 = get_area(src)
 
+		if(!(A1 && A2))
+			return FALSE
+
 		if(A1.safe != A2.safe)
 			return FALSE
 

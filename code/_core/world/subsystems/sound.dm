@@ -65,12 +65,17 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	if(!T)
 		return FALSE
 
+	var/volume_mod = 50
+
+	if(hearer.settings && hearer.settings.loaded_data)
+		volume_mod = hearer.settings.loaded_data["volume_music"]
+
 	var/sound/created_sound = sound(T.path)
 	created_sound.channel = SOUND_CHANNEL_MUSIC
 	created_sound.priority = 0
 	created_sound.environment = ENVIRONMENT_NONE
 	created_sound.status = 0
-	created_sound.volume = volume
+	created_sound.volume = volume * (volume_mod/100)
 	created_sound.status = SOUND_STREAM
 
 	hearer << created_sound
@@ -110,23 +115,21 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
-		volume *= M.client.settings.loaded_data["volume_master"] / 100
+		var/local_volume = volume
+
+		local_volume *= M.client.settings.loaded_data["volume_master"] / 100
 
 		switch(channel)
 			if(SOUND_CHANNEL_MUSIC)
-				volume *= M.client.settings.loaded_data["volume_music"] / 100
-				created_sound.channel = channel
+				local_volume *= M.client.settings.loaded_data["volume_music"] / 100
 			if(SOUND_CHANNEL_AMBIENT)
-				volume *= M.client.settings.loaded_data["volume_ambient"] / 100
-				created_sound.channel = channel
+				local_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
 			if(SOUND_CHANNEL_FOOTSTEPS)
-				volume *= M.client.settings.loaded_data["volume_footsteps"] / 100
+				local_volume *= M.client.settings.loaded_data["volume_footsteps"] / 100
 			if(SOUND_CHANNEL_UI)
-				volume *= M.client.settings.loaded_data["volume_ui"] / 100
+				local_volume *= M.client.settings.loaded_data["volume_ui"] / 100
 			if(SOUND_CHANNEL_FX)
-				volume *= M.client.settings.loaded_data["volume_fx"] / 100
-
-		var/local_volume = volume
+				local_volume *= M.client.settings.loaded_data["volume_fx"] / 100
 
 		if(created_sound.z >= 0)
 			var/turf/mob_turf = get_turf(M)

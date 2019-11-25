@@ -262,7 +262,7 @@
 
 	var/area/A = get_area(new_turf)
 
-	if(A && A.safe && dialogue_id && P && P.owner && is_player(P.owner))
+	if(A && A.safe && dialogue_id && P && P.owner && is_player(P.owner)) //Honestly it's a bad idea to have projectiles in safezones. Players can bait NPCs into shooting stray bullets into people who are AFK/Busy.
 		return FALSE
 
 	return ..()
@@ -271,7 +271,7 @@
 
 	var/area/A = get_area(new_turf)
 
-	if(A && A.safe) //Honestly it's a bad idea to have projectiles in safezones. Players can bait NPCs into shooting stray bullets into people who are AFK/Busy.
+	if(A && A.safe)
 		return FALSE
 
 	return ..()

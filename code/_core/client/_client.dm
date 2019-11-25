@@ -51,9 +51,14 @@ var/global/list/all_clients = list()
 
 /client/Del() // Can't have destroy.
 
-	known_inventory.Cut()
-	known_buttons.Cut()
-	known_health_elements.Cut()
+	if(known_inventory)
+		known_inventory.Cut()
+
+	if(known_buttons)
+		known_buttons.Cut()
+
+	if(known_health_elements)
+		known_health_elements.Cut()
 
 	last_location = null
 	last_object = null
@@ -122,9 +127,9 @@ var/global/list/all_clients = list()
 	make_ghost(locate(VIEW_RANGE,VIEW_RANGE,1))
 
 	if(world_state == STATE_RUNNING)
-		play_sound('sounds/music/menu/lobby.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
+		play_music_track("lobby", src)
 	else
-		play_sound('sounds/music/menu/loading.ogg',list(src.mob),list(src.mob.x,src.mob.y,src.mob.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
+		play_music_track("loading", src)
 
 	if(!connection_data)
 		connection_data = new(src)

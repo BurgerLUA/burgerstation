@@ -18,6 +18,7 @@
 	var/obj/item/I = pickweight(loot_table)
 	I = new I(spawn_loc)
 	I.on_spawn()
+	queue_delete(I,ITEM_DELETION_TIME_NEW)
 
 	return I
 
@@ -57,4 +58,7 @@ loot/proc/spawn_loot_corpse(var/turf/T)
 		C.add_to_inventory(null,I,FALSE)
 
 	C.prune_inventory()
+
+	queue_delete(C,ITEM_DELETION_TIME_NEW)
+
 	return C

@@ -1,6 +1,7 @@
 /mob/living/simple/npc/passive/cow
 	name = "cow"
 	icon_state = "cow"
+	damage_type = "cow_headbutt"
 	class = "cow"
 	loot_drop = "cow"
 

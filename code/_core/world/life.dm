@@ -44,7 +44,7 @@
 	else if(length(lobby_positions))
 		for(var/mob/abstract/observer/O in all_mobs_with_clients)
 			O.force_move(pick(lobby_positions))
-			play_sound('sounds/music/menu/lobby.ogg',list(O),list(O.x,O.y,O.z),loop=1,channel=SOUND_CHANNEL_MUSIC)
+			play_music_track("lobby", O.client)
 
 	spawn while(TRUE)
 		for(var/list/v in active_subsystems)

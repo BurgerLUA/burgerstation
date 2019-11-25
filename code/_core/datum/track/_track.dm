@@ -21,6 +21,13 @@
 	path = 'sounds/music/world/village_intro.ogg'
 	length = 1*60 + 50
 
+/track/lobby
+	name = "Lobby"
+	desc = "Lobby music."
+	id = "lobby"
+	path = 'sounds/music/menu/lobby.ogg'
+	length = 1*60 + 55
+
 /track/snowfall
 	name = "Snowfall"
 	desc = "Snowy Mountains soundtrack."

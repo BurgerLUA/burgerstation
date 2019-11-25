@@ -22,11 +22,20 @@
 
 /client/proc/clear_mob(var/mob/M) //This is called in mob destroy
 
-	known_inventory.Cut()
-	known_buttons.Cut()
-	known_health_elements.Cut()
-	screen.Cut()
-	images.Cut()
+	if(known_inventory)
+		known_inventory.Cut()
+
+	if(known_buttons)
+		known_buttons.Cut()
+
+	if(known_health_elements)
+		known_health_elements.Cut()
+
+	if(screen)
+		screen.Cut()
+
+	if(images)
+		images.Cut()
 
 	if(!M)
 		return FALSE

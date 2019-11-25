@@ -74,7 +74,7 @@ obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
 
 	var/atom/defer_self = src.defer_click_on_object() //We could be holding an object.
 
-	if(defer_self.dropped_on_by_object(caller,object))
+	if(src != defer_self && defer_self.dropped_on_by_object(caller,object))
 		return TRUE
 
 	return ..()

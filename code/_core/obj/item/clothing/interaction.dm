@@ -15,8 +15,9 @@
 			qdel(src)
 			return TRUE
 
-		if(is_advanced(caller))
-			//var/mob/living/advanced/A = caller
+		var/obj/hud/inventory/I = src.loc
+
+		if(is_advanced(caller) && (src in I.worn_objects))
 			if(equip_additional_clothing(caller,object,location,control,params))
 				return TRUE
 

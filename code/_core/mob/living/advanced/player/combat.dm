@@ -2,7 +2,7 @@
 
 	if(is_player(victim) && victim != src)
 		var/area/A = get_area(src)
-		if(A && A.safe)
+		if(A && (A.safe || A.singleplayer))
 			return FALSE
 
 	return ..()
@@ -12,7 +12,7 @@
 
 	if(is_player(attacker))
 		var/area/A = get_area(src)
-		if(A && A.safe)
+		if(A && (A.safe || A.singleplayer))
 			return FALSE
 
 	return ..()

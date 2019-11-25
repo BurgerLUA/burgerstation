@@ -13,8 +13,8 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = TRUE
 
 	name = "Burgerstation 13"
-	//hub = "Exadv1.spacestation13"
-	//hub_password = "kMZy3U5jJHSiBQjr"
+	hub = "Exadv1.spacestation13"
+	hub_password = "kMZy3U5jJHSiBQjr"
 
 	cache_lifespan = 0
 

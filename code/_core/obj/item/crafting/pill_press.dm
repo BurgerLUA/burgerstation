@@ -43,11 +43,11 @@
 	var/obj/item/container/beaker/I2 = item_table["b3"]
 	var/is_double = I1 && I2
 
-	if(I1 && !I1.reagents.volume_current)
+	if(I1 && (!I1.reagents || !I1.reagents.volume_current))
 		caller.to_chat(span("notice","There is no matter in the left slot to make a pill from!"))
 		return FALSE
 
-	if(I2 && !I2.reagents.volume_current)
+	if(I2 && (!I2.reagents || !I2.reagents.volume_current))
 		caller.to_chat(span("notice","There is no matter in the right slot to make a double pill from!"))
 		return FALSE
 

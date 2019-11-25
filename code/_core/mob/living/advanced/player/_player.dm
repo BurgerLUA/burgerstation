@@ -87,7 +87,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	return .
 
 /mob/living/advanced/player/setup_name()
-	name = "[real_name]"
+	name = "[real_name] ([client ? client : "NO CKEY"])"
 
 /mob/living/advanced/player/destroy()
 	if(area && area.players_inside)

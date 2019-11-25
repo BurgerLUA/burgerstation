@@ -40,7 +40,7 @@
 #define ATTACK_ANIMATION_LENGTH 1
 #define DODGE_ANIMATION_LENGTH 4
 
-#define SHOP_RESTOCK_COUNTDOWN 300
+#define SHOP_RESTOCK_COUNTDOWN 120
 
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
