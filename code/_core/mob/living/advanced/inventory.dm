@@ -7,9 +7,10 @@
 		right_hand = I
 
 	inventory += I
+
 	if(client)
 		client.screen += I
-	update_inventory()
+		client.known_inventory += I
 
 /mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
 
@@ -20,9 +21,16 @@
 		right_hand = null
 
 	inventory -= I
+
 	if(client)
 		client.screen -= I
-	update_inventory()
+		client.known_inventory -= I
+
+/mob/living/advanced/proc/remove_all_inventory()
+
+	for(var/obj/hud/inventory/I in inventory)
+		remove_inventory(I)
+
 
 /mob/living/advanced/proc/restore_inventory()
 	if(!client)
@@ -31,11 +39,6 @@
 	for(var/obj/hud/inventory/I in inventory)
 		client.screen += I
 
-	update_inventory()
-
-/mob/living/advanced/proc/update_inventory()
-	if(client)
-		client.known_inventory = inventory
 
 /mob/living/advanced/proc/open_inventory(var/obj/hud/inventory/I)
 	active_inventory = I

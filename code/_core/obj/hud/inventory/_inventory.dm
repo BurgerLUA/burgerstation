@@ -75,6 +75,10 @@
 
 /obj/hud/inventory/destroy()
 
+	show(FALSE,0)
+
+	remove_from_owner()
+
 	for(var/obj/item/I in held_objects)
 		qdel(I)
 	held_objects.Cut()
@@ -83,7 +87,7 @@
 		qdel(I)
 	worn_objects.Cut()
 
-	update_owner(null)
+	owner = null
 
 	parent_inventory = null
 	child_inventory = null
@@ -183,22 +187,34 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
-	if(owner == desired_owner)
-		return FALSE
+/obj/hud/inventory/proc/remove_from_owner()
 
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.remove_inventory(src)
 
-	if(desired_owner && is_advanced(desired_owner))
+	return TRUE
+
+/obj/hud/inventory/proc/add_to_owner(var/mob/desired_owner)
+
+	if(desired_owner)
 		owner = desired_owner
 
 	if(owner && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		owner = A
 		A.add_inventory(src)
+
+	return TRUE
+
+/obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
+
+	if(owner == desired_owner)
+		return FALSE
+
+	remove_from_owner()
+	add_to_owner(desired_owner)
 
 	return TRUE
 

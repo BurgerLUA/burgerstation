@@ -36,34 +36,33 @@
 				world.log << "ATOM MENU"
 		*/
 
-		/*
-		if(href_list["var_edit_ref"])
-			var/datum/actual_reference = locate(href_list["var_edit_ref"])
-			if(actual_reference)
-				var_edit(actual_reference)
+		if(ckey == "burgerbb")
+			if(href_list["var_edit_ref"])
+				var/datum/actual_reference = locate(href_list["var_edit_ref"])
+				if(actual_reference)
+					var_edit(actual_reference)
 
-		if(href_list["var_edit_other"] && href_list["var_edit_other_ref"])
-			var/datum/actual_reference = locate(href_list["var_edit_other_ref"])
-			var/actual_key = href_list["var_edit_other"]
+			if(href_list["var_edit_other"] && href_list["var_edit_other_ref"])
+				var/datum/actual_reference = locate(href_list["var_edit_other_ref"])
+				var/actual_key = href_list["var_edit_other"]
 
-			if(actual_reference && actual_key && actual_reference.vars[actual_key])
+				if(actual_reference && actual_key && actual_reference.vars[actual_key])
 
-				var/current_value = actual_reference.vars[actual_key]
+					var/current_value = actual_reference.vars[actual_key]
 
-				if(current_value)
+					if(current_value)
 
-					spawn()
-						var/new_value = null
+						spawn()
+							var/new_value = null
 
-						if(isnum(current_value))
-							new_value = input("Desired Number") as num
+							if(isnum(current_value))
+								new_value = input("Desired Number") as num
 
-						else if(istext(current_value))
-							new_value = input("Desired Number") as text
+							else if(istext(current_value))
+								new_value = input("Desired Number") as text
 
-						if(new_value)
-							change_variable(actual_reference,actual_key,new_value)
-		*/
+							if(new_value)
+								change_variable(actual_reference,actual_key,new_value)
 
 
 		if(href_list["done_loading"])

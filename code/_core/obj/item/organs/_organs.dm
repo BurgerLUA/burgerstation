@@ -128,7 +128,7 @@
 	if(T)
 		if(is_advanced(src.loc))
 			var/mob/living/advanced/A = src.loc
-			A.remove_organ(src,FALSE,FALSE)
+			A.remove_organ(src,FALSE)
 		src.force_move(T)
 
 	update_icon()
@@ -144,7 +144,7 @@
 
 	if(is_advanced(src.loc))
 		A = src.loc
-		A.remove_organ(src,TRUE,FALSE)
+		A.remove_organ(src,FALSE)
 
 	unattach_from_parent(T)
 	unattach_children(T)

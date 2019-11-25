@@ -22,6 +22,13 @@
 		if(B.type in chargen_buttons)
 			B.update_owner(null)
 
+
+
+/mob/living/advanced/proc/remove_all_buttons()
+	for(var/obj/hud/button/chargen/B in buttons)
+		B.update_owner(null)
+
+
 //Inventory
 /mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
 	show_inventory(!draw_inventory,show_flags_whitelist,show_flags_blacklist,speed)

@@ -84,11 +84,8 @@
 
 /mob/living/advanced/destroy()
 
-	for(var/obj/item/organ/O in organs)
-		qdel(O)
-
-	organs.Cut()
-	labeled_organs.Cut()
+	remove_all_organs()
+	remove_all_buttons()
 
 	inventory.Cut()
 	overlays_assoc.Cut()
@@ -199,26 +196,16 @@ mob/living/advanced/Login()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 
-
-
-//Not needed
-
-/*
-/mob/living/advanced/adjust_fatigue_loss(var/value)
-	return heal_all_organs(0,0,0,0,-value)
-*/
-
 /mob/living/advanced/proc/apply_mob_parts()
 	add_species_organs()
 	add_species_colors()
+	if(client)
+		add_species_buttons()
+		add_species_health_elements()
 
 /mob/living/advanced/Initialize()
 
 	apply_mob_parts()
-
-	if(client)
-		add_species_buttons()
-		add_species_health_elements()
 
 	. = ..()
 
@@ -229,112 +216,6 @@ mob/living/advanced/Login()
 	update_slowdown_mul()
 
 	return
-
-/mob/living/advanced/proc/perform_specieschange(var/desired_species,var/keep_clothes,var/chargen)
-
-	if(!desired_species)
-		return FALSE
-
-	var/list/kept_clothes = list()
-
-	if(!keep_clothes)
-		for(var/obj/hud/inventory/I in inventory)
-			I.remove_all_objects()
-	else
-		for(var/obj/hud/inventory/I in inventory)
-			kept_clothes += I.drop_all_objects()
-
-	remove_chargen_buttons()
-
-	remove_all_organs()
-	organs.Cut()
-	labeled_organs.Cut()
-
-	species = desired_species
-
-	var/species/S = all_species[species]
-
-	if(S.genderless)
-		sex = MALE
-		gender = MALE
-
-	add_species_organs()
-	add_species_colors()
-	update_all_blends()
-
-	update_icon()
-	update_health_element_icons(TRUE,TRUE,TRUE)
-
-	if(chargen)
-		add_chargen_buttons()
-		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
-		show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=0)
-	else
-		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
-		for(var/obj/hud/button/hide_show_inventory/B in buttons)
-			B.update_icon()
-
-	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair)
-	handle_beardstyle_chargen(1,S.default_color_hair)
-
-	if(keep_clothes)
-		for(var/obj/item/I in kept_clothes)
-			add_worn_item(I)
-	else
-		if(sex == MALE)
-			add_outfit("new_male",TRUE)
-		else
-			add_outfit("new_female",TRUE)
-
-/mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes,var/chargen)
-
-	if(sex == desired_sex)
-		return FALSE
-
-	sex = desired_sex
-	gender = desired_sex
-
-	var/list/kept_clothes = list()
-
-	if(!keep_clothes)
-		for(var/obj/hud/inventory/I in inventory)
-			I.remove_all_objects()
-	else
-		for(var/obj/hud/inventory/I in inventory)
-			kept_clothes += I.drop_all_objects()
-
-	remove_all_organs()
-	add_species_organs()
-	add_species_colors()
-	update_all_blends()
-
-	update_icon()
-	update_health_element_icons(TRUE,TRUE,TRUE)
-
-	if(chargen)
-		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
-		show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
-	else
-		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
-		for(var/obj/hud/button/hide_show_inventory/B in buttons)
-			B.update_icon()
-
-	var/species/S = all_species[species]
-
-	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair)
-	handle_beardstyle_chargen(1,S.default_color_hair)
-	//Blends are updated in the above two procs
-
-	if(keep_clothes)
-		for(var/obj/item/I in kept_clothes)
-			add_worn_item(I)
-	else
-		if(sex == MALE)
-			add_outfit("new_male",TRUE)
-		else
-			add_outfit("new_female",TRUE)
-
-	return TRUE
 
 /mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //BEHOLD: SHITCODE.
 

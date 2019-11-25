@@ -2,6 +2,9 @@ client/verb/var_edit(var/object as anything in view())
 	set name = "Variable Edit"
 	set category = "Debug"
 
+	if(ckey != "burgerbb")
+		return FALSE
+
 	if(!object)
 		return FALSE
 
@@ -75,6 +78,9 @@ client/verb/change_variable(var/datum/object as anything in view(), var/desired_
 
 	set name = "Change Variable"
 	set category = "Debug"
+
+	if(ckey != "burgerbb")
+		return FALSE
 
 	if(desired_varable_value && istext(desired_varable_value))
 		desired_varable_value = sanitize(desired_varable_value)

@@ -140,6 +140,7 @@
 #include "code\_core\client\life.dm"
 #include "code\_core\client\mob.dm"
 #include "code\_core\client\topic.dm"
+#include "code\_core\client\varedit.dm"
 #include "code\_core\client\zoom.dm"
 #include "code\_core\client\chat\_chat.dm"
 #include "code\_core\client\chat\formatting.dm"

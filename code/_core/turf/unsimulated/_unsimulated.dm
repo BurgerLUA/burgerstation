@@ -5,6 +5,14 @@
 
 	dynamic_lighting = FALSE
 
+	density_north = TRUE
+	density_south = TRUE
+	density_east  = TRUE
+	density_west  = TRUE
+	density_up    = TRUE
+	density_down  = TRUE
+	allow_bullet_pass = FALSE
+
 /turf/unsimulated/space
 	name = "space"
 	icon = 'icons/turf/space/space.dmi'
