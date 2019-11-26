@@ -1,6 +1,6 @@
 /obj/hud/inventory/organs/groin_o
 	name = "belt slot"
-	icon_state = "square_trim"
+	icon_state = "slot_groin_o"
 	id = BODY_GROIN_O
 	screen_loc = "CENTER-2,BOTTOM"
 	worn_slots = 1
@@ -15,6 +15,7 @@
 
 /obj/hud/inventory/organs/groin //Underwear + Pants
 	name = "pants slot"
+	icon_state = "slot_groin"
 	id = BODY_GROIN
 	screen_loc = "LEFT+1,BOTTOM+1"
 	worn_slots = 2

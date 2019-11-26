@@ -1,10 +1,10 @@
 /obj/hud/inventory/pocket
 	name = "pocket"
 	id = "pocket"
+	icon_state = "slot_pocket"
 	screen_loc = "CENTER,BOTTOM+3"
 	worn_slots = 0
 	held_slots = 1
-	icon_state = "square_trim"
 	max_size = SIZE_2
 	max_weight = WEIGHT_3
 	//should_draw = FALSE

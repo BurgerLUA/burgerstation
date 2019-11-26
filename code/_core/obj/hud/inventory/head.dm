@@ -1,5 +1,6 @@
 /obj/hud/inventory/organs/head
 	name = "head slot"
+	icon_state = "slot_head"
 	id = BODY_HEAD
 	screen_loc = "LEFT,BOTTOM+3"
 	item_slot = SLOT_HEAD
@@ -9,6 +10,7 @@
 
 /obj/hud/inventory/organs/neck
 	name = "neck slot"
+	icon_state = "slot_neck"
 	id = BODY_NECK
 	screen_loc = "LEFT+2,BOTTOM+2"
 	item_slot = SLOT_NECK
@@ -18,6 +20,7 @@
 
 /obj/hud/inventory/organs/face
 	name = "face slot"
+	icon_state = "slot_face"
 	id = BODY_FACE
 	screen_loc = "LEFT+1,BOTTOM+3"
 	item_slot = SLOT_FACE
@@ -47,6 +50,7 @@
 
 /obj/hud/inventory/organs/glasses
 	name = "glasses slot"
+	icon_state = "slot_glasses"
 	id = BODY_EYES
 	screen_loc = "LEFT+2,BOTTOM+3"
 	item_slot = SLOT_GLASSES

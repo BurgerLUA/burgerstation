@@ -1,5 +1,6 @@
 /obj/hud/inventory/organs/left_foot
 	name = "left foot slot"
+	icon_state = "slot_foot_left"
 	id = BODY_FOOT_LEFT
 	screen_loc = "LEFT+2,BOTTOM"
 	click_flags = LEFT_FOOT
@@ -31,6 +32,7 @@
 
 /obj/hud/inventory/organs/right_foot
 	name = "right foot slot"
+	icon_state = "slot_foot_right"
 	id = BODY_FOOT_RIGHT
 	screen_loc = "LEFT+1,BOTTOM"
 	click_flags = RIGHT_FOOT

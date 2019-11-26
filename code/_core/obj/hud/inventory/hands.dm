@@ -1,6 +1,7 @@
 //Gloves
 /obj/hud/inventory/organs/left_hand_worn
 	name = "left glove"
+	icon_state = "slot_hand_left"
 	id = BODY_HAND_LEFT + "_worn"
 	screen_loc = "LEFT+2,BOTTOM+1"
 	item_slot = SLOT_HAND_LEFT
@@ -10,6 +11,7 @@
 
 /obj/hud/inventory/organs/right_hand_worn
 	name = "right glove"
+	icon_state = "slot_hand_right"
 	id = BODY_HAND_RIGHT + "_worn"
 	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT

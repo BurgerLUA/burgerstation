@@ -1,5 +1,6 @@
 /obj/hud/inventory/organs/torso //Undershirt + Shirt
 	name = "torso slot"
+	icon_state = "slot_torso"
 	id = BODY_TORSO
 	screen_loc = "LEFT+1,BOTTOM+2"
 	worn_slots = 2
@@ -31,6 +32,7 @@
 
 /obj/hud/inventory/organs/torso_o
 	name = "coat slot"
+	icon_state = "slot_torso_o"
 	id = BODY_TORSO_O
 	screen_loc = "LEFT,BOTTOM+2"
 	worn_slots = 2
@@ -62,7 +64,7 @@
 
 /obj/hud/inventory/organs/torso_b
 	name = "back slot"
-	icon_state = "square_trim"
+	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
 	screen_loc = "CENTER-3,BOTTOM"
 	worn_slots = 1
@@ -77,7 +79,7 @@
 
 /obj/hud/inventory/organs/torso_ob
 	name = "overwear belt slot"
-	icon_state = "square_trim"
+	icon_state = "slot_torso_ob"
 	id = BODY_TORSO_OB
 	screen_loc = "CENTER-4,BOTTOM"
 	held_slots = 1
