@@ -90,6 +90,7 @@
 
 
 /mob/living/advanced/proc/post_perform_change(var/keep_clothes,var/chargen,var/list/kept_clothes = list())
+
 	apply_mob_parts()
 
 	update_all_blends()

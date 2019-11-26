@@ -20,7 +20,8 @@ var/list/qdel_refs_to_type = list()
 			object.qdel_attempts += 1
 			if(object.qdel_attempts >= 2)
 				object.qdel_warning = TRUE
-				LOG_ERROR("WARNING: Object of type [object.type](Name: [object.name], ID:[object.id]) was queued for delete [object.qdel_attempts] times!")
+				if(WARN_ON_DUPLICATE_QDEL)
+					LOG_ERROR("WARNING: Object of type [object.type](Name: [object.name], ID:[object.id]) was queued for delete [object.qdel_attempts] times!")
 
 		if(!object.qdeleting)
 			object.qdeleting = TRUE

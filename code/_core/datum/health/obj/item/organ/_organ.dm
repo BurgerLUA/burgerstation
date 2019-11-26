@@ -9,7 +9,7 @@
 	var/obj/item/organ/O = owner
 	var/mob/living/advanced/A = owner.loc
 
-	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY))
+	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY)*2)
 	//stamina_max = O.stamina_base + A.get_attribute_power(ATTRIBUTE_AGILITY)*400
 	//mana_max = O.mana_base + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*400
 
@@ -37,14 +37,16 @@
 
 		for(var/damage_type in O.visual_wounds)
 			var/last_amount = O.visual_wounds[damage_type]
-			var/current_amount = floor((get_loss(damage_type)/health_max)*5)
-
+			var/current_amount = Clamp(ceiling((get_loss(damage_type)/health_max*0.5)*3),0,3)
 			if(last_amount != current_amount)
-				O.change_blend("damage_[damage_type]", desired_icon_state = "[current_amount]")
+				var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
+				world.log << desired_icon_state
+				O.change_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
+				O.visual_wounds[damage_type] = current_amount
 				should_update = TRUE
 
 		if(should_update)
-			A.update_overlay(src)
+			A.update_overlay(O)
 
 	return .
 

@@ -3,17 +3,17 @@
 	id = "null_rod"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_D,
-		HOLY = DAMAGE_B
+		BLUNT = DAMAGE_C,
+		HOLY = DAMAGE_F
 	)
 
 	attack_damage_penetration = list(
 		BLUNT = ARMOR_D,
-		HOLY = ARMOR_A
+		HOLY = ARMOR_B
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
+		ATTRIBUTE_STRENGTH = CLASS_D,
 		ATTRIBUTE_DEXTERITY = CLASS_D
 	)
 

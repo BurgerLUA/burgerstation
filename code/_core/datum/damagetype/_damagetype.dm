@@ -277,7 +277,7 @@
 
 		do_attack_animation(attacker,victim,weapon,hit_object,is_crit)
 
-		if(!attacker || !victim || !weapon || !hit_object)
+		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health)
 			return FALSE
 
 		var/brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0

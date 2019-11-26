@@ -4,7 +4,7 @@
 
 	attack_damage_base = list(
 		BLUNT = DAMAGE_C,
-		HOLY = DAMAGE_B
+		HOLY = DAMAGE_F
 	)
 
 	attack_damage_penetration = list(
@@ -13,7 +13,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
+		ATTRIBUTE_STRENGTH = CLASS_C,
 		ATTRIBUTE_DEXTERITY = CLASS_C
 	)
 

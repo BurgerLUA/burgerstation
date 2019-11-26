@@ -3,14 +3,14 @@
 	id = "null_dagger"
 
 	attack_damage_base = list(
-		BLADE = DAMAGE_C,
+		BLADE = DAMAGE_D,
 		PIERCE = DAMAGE_D,
-		HOLY = DAMAGE_B
+		HOLY = DAMAGE_F
 	)
 
 	attack_damage_penetration = list(
 		PIERCE = ARMOR_D,
-		HOLY = ARMOR_S
+		HOLY = ARMOR_C
 	)
 
 	attribute_stats = list(

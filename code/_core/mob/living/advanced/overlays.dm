@@ -29,16 +29,14 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != A)
 			continue
-		update_overlay_direct(O)
+		update_overlay_direct(O,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends)
 		return TRUE
 
 	return FALSE
 
 mob/living/advanced/proc/update_all_blends()
 	for(var/obj/overlay/O in overlays_assoc)
-		remove_overlay_image(O)
-		O.update_icon()
-		add_overlay_image(O)
+		update_overlay_direct(O)
 
 mob/living/advanced/proc/add_overlay_image(var/obj/overlay/O)
 	var/image/I = new /image(O.icon)

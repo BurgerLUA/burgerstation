@@ -1,13 +1,14 @@
 /obj/item/organ/
 	name = "ORGAN"
 	desc = "An organ."
+	id = null
 
 	icon = 'icons/mob/living/advanced/species/human.dmi'
 	icon_state = null
 	var/has_dropped_icon = FALSE
 	var/has_dropped_icon_underlay = FALSE
 
-	var/damage_icon = 'icons/mob/living/advanced/overlays/damage_organs.dmi'
+	var/damage_icon = 'icons/mob/living/advanced/overlays/damage/organic.dmi'
 
 	var/flags_organ = FLAG_ORGAN_NONE
 
@@ -98,8 +99,7 @@
 
 	if(enable_wounds)
 		for(var/damagetype in visual_wounds)
-			var/damage_value = visual_wounds[damagetype]
-			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_icon_state = "[damage_value]", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_MASK | ICON_BLEND_OVERLAY)
+			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_icon_state = "none", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_layer = LAYER_MOB_INJURY)
 
 	return ..()
 

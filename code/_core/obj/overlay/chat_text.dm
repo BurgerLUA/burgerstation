@@ -10,13 +10,17 @@
 	mouse_opacity = 0
 
 /obj/chat_text/destroy()
-	owner.stored_chat_text -= src
-	owner = null
+
+	if(owner)
+		owner.stored_chat_text -= src
+		owner = null
+
 	return ..()
 
 /obj/chat_text/New(var/atom/desired_loc,var/desired_text)
 
-	if(is_advanced(desired_loc))
+	if(is_mob(desired_loc))
+
 		owner = desired_loc
 
 		for(var/obj/chat_text/CT in owner.stored_chat_text)
