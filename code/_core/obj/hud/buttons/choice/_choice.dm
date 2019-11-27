@@ -13,7 +13,7 @@
 
 	user_colors = FALSE
 
-/obj/hud/button/choice/destroy()
+/obj/hud/button/choice/Destroy()
 	linked_choice = null
 	return ..()
 

@@ -9,7 +9,7 @@
 
 	mouse_opacity = 0
 
-/obj/chat_text/destroy()
+/obj/chat_text/Destroy()
 
 	if(owner)
 		owner.stored_chat_text -= src

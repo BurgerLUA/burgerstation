@@ -8,7 +8,7 @@
 
 	var/list/valid_turfs = list()
 
-/event/meteors/destroy()
+/event/meteors/Destroy()
 	valid_turfs.Cut()
 	return ..()
 

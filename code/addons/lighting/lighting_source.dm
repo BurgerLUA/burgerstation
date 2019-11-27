@@ -45,7 +45,7 @@
 	var/needs_update = LIGHTING_NO_UPDATE
 
 // Kill ourselves.
-/datum/light_source/destroy()
+/datum/light_source/Destroy()
 
 	SSlighting.total_lighting_sources--
 

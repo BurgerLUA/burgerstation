@@ -43,7 +43,7 @@
 
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
-/ai/destroy()
+/ai/Destroy()
 	if(owner)
 		owner.ai = null
 	owner = null

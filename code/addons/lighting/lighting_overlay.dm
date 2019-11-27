@@ -25,7 +25,7 @@
 	needs_update = TRUE
 	SSlighting.overlay_queue += src
 
-/atom/movable/lighting_overlay/destroy()
+/atom/movable/lighting_overlay/Destroy()
 
 	SSlighting.total_lighting_overlays -= 1
 

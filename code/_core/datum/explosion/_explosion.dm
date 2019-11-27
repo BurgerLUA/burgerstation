@@ -35,7 +35,7 @@
 	return .
 
 
-/explosion/destroy()
+/explosion/Destroy()
 	active_explosions -= src
 	return ..()
 

@@ -25,7 +25,7 @@
 
 	var/mob/living/owner
 
-/experience/destroy()
+/experience/Destroy()
 	owner = null
 	return ..()
 

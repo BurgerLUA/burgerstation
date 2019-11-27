@@ -12,7 +12,7 @@
 
 	var/active = FALSE
 
-/obj/hud/button/slot/destroy()
+/obj/hud/button/slot/Destroy()
 	stored_item = null
 	return ..()
 

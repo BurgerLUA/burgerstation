@@ -3,7 +3,7 @@
 	var/list/pressed_list
 	var/client/owner
 
-/button_tracker/destroy()
+/button_tracker/Destroy()
 	pressed_list.Cut()
 	owner = null
 	return ..()

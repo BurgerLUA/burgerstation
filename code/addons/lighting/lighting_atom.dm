@@ -72,7 +72,7 @@
 			light = new /datum/light_source(src)
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
-/atom/movable/destroy()
+/atom/movable/Destroy()
 
 	var/turf/T = loc
 

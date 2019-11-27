@@ -45,7 +45,7 @@
 
 	var/ambient_temperature = T0C + 20
 
-/area/destroy()
+/area/Destroy()
 	if(players_inside)
 		players_inside.Cut()
 	return ..()

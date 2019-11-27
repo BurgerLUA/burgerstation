@@ -12,7 +12,7 @@
 
 	requires_bullets = TRUE
 
-/obj/item/weapon/ranged/bullet/destroy()
+/obj/item/weapon/ranged/bullet/Destroy()
 
 	qdel(chambered_bullet)
 	chambered_bullet = null

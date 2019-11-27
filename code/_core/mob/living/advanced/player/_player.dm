@@ -94,7 +94,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 /mob/living/advanced/player/setup_name()
 	name = "[real_name] ([client ? client : "NO CKEY"])"
 
-/mob/living/advanced/player/destroy()
+/mob/living/advanced/player/Destroy()
 	if(area && area.players_inside)
 		area.players_inside -= src
 	all_players -= src

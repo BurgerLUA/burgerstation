@@ -71,7 +71,7 @@
 
 	var/list/stored_chat_text = list() //experiment
 
-/mob/destroy()
+/mob/Destroy()
 
 	if(client)
 		client.clear_mob(src)

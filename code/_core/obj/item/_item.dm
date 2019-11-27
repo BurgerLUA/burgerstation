@@ -95,7 +95,7 @@
 
 	var/dyeable = FALSE
 
-/obj/item/destroy()
+/obj/item/Destroy()
 
 	for(var/obj/hud/inventory/I in inventories)
 		qdel(I)

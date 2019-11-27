@@ -29,7 +29,7 @@
 		"L" = "looc"
 	)
 
-/macros/destroy()
+/macros/Destroy()
 	owner = null
 	return ..()
 

@@ -174,7 +174,7 @@ var/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 2, 1)
 				Ov.needs_update = TRUE
 				SSlighting.overlay_queue += Ov
 
-/datum/lighting_corner/destroy()
+/datum/lighting_corner/Destroy()
 
 	LOG_ERROR("Some fuck deleted a lighting corner.")
 

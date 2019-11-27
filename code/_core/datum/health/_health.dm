@@ -54,7 +54,7 @@
 
 	update_health(update_hud = FALSE)
 
-/health/destroy()
+/health/Destroy()
 
 	for(var/wound/W in wounds)
 		qdel(W)

@@ -25,7 +25,7 @@
 		area = get_area(src)
 	return .
 
-/atom/movable/destroy()
+/atom/movable/Destroy()
 	area = null
 	force_move(null)
 	return ..()

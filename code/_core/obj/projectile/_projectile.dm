@@ -52,7 +52,7 @@
 
 	var/obj/effect/temp/muzzleflash/muzzleflash_effect
 
-/obj/projectile/destroy()
+/obj/projectile/Destroy()
 	owner = null
 	weapon = null
 	blamed = null

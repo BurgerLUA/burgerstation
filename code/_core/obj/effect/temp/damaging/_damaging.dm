@@ -10,7 +10,7 @@ obj/effect/temp/hazard
 
 	var/cross_hazard = TRUE
 
-obj/effect/temp/hazard/destroy()
+obj/effect/temp/hazard/Destroy()
 	owner = null
 	return ..()
 

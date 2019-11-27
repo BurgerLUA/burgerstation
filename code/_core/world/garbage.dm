@@ -8,7 +8,7 @@ var/list/qdel_refs_to_type = list()
 	var/desc_extended
 	var/qdeleting = FALSE
 
-/datum/proc/destroy()
+/datum/proc/Destroy()
 	tag = null // required to GC
 	return TRUE
 
@@ -27,7 +27,7 @@ var/list/qdel_refs_to_type = list()
 			object.qdeleting = TRUE
 			qdel_refs_to_type["\ref[object]"] = object.type
 
-			if(!object.destroy())
+			if(!object.Destroy())
 				LOG_ERROR("WARNING! Object of type [object.type] did not have a proper destroy call!")
 
 			return TRUE

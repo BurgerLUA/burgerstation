@@ -16,7 +16,7 @@
 
 	user_colors = FALSE
 
-/obj/hud/click_and_drag/destroy()
+/obj/hud/click_and_drag/Destroy()
 	stored_object = null
 	return ..()
 

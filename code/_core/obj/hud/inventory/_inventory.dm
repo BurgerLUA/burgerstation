@@ -73,7 +73,7 @@
 
 	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
 
-/obj/hud/inventory/destroy()
+/obj/hud/inventory/Destroy()
 
 	show(FALSE,0)
 

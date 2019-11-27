@@ -20,7 +20,7 @@
 
 	mouse_opacity = 1
 
-/obj/hud/button/destroy()
+/obj/hud/button/Destroy()
 	owner = null
 	return ..()
 

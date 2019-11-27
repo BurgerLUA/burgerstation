@@ -10,7 +10,7 @@
 
 	var/obj/item/crafting/stored_crafting_table
 
-/obj/hud/button/crafting/destroy()
+/obj/hud/button/crafting/Destroy()
 	stored_crafting_table = null
 	return ..()
 

@@ -24,7 +24,7 @@
 
 	user_colors = FALSE
 
-/obj/hud/button/boss_health/destroy()
+/obj/hud/button/boss_health/Destroy()
 	target_boss = null
 	return ..()
 

@@ -28,7 +28,7 @@
 
 	return ..()
 
-/choice/destroy()
+/choice/Destroy()
 
 	for(var/obj/hud/button/B in stored_buttons)
 		B.update_owner(null)

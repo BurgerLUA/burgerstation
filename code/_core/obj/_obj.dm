@@ -7,7 +7,7 @@
 
 	var/should_save = TRUE
 
-/obj/destroy()
+/obj/Destroy()
 	if(loc)
 		drop_item()
 	loc = null

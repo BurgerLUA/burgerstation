@@ -74,7 +74,7 @@
 	attack_delay = 2
 	attack_delay_max = 6
 
-/mob/living/advanced/destroy()
+/mob/living/advanced/Destroy()
 
 	remove_all_organs()
 	remove_all_buttons()

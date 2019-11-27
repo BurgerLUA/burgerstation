@@ -55,7 +55,7 @@
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
-/atom/destroy()
+/atom/Destroy()
 
 	for(var/blend_id in additional_blends)
 		var/icon_blend/IB = additional_blends[blend_id]

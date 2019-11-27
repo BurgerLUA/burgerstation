@@ -56,7 +56,7 @@
 
 	icon = I
 
-/obj/hud/progress_bar/destroy()
+/obj/hud/progress_bar/Destroy()
 
 	if(is_mob(loc))
 		var/mob/M = loc

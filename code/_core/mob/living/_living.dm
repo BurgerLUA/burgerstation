@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/mob/living/destroy()
+/mob/living/Destroy()
 
 	factions.Cut()
 

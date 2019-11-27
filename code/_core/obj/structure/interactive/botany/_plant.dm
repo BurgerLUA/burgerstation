@@ -28,7 +28,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	update_icon()
 	return .
 
-/obj/structure/interactive/plant/destroy()
+/obj/structure/interactive/plant/Destroy()
 	all_plants -= src
 	return ..()
 

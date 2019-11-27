@@ -10,4 +10,4 @@
 
 
 
-/datum/status/destroy()
+/datum/status/Destroy()

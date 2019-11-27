@@ -38,7 +38,7 @@
 		has_opaque_atom = TRUE
 	..()
 
-/turf/destroy()
+/turf/Destroy()
 	if(old_living)
 		old_living.Cut()
 	return ..()

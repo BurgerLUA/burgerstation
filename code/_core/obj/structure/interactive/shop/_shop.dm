@@ -12,7 +12,7 @@
 	icon = 'icons/obj/structure/shop.dmi'
 	icon_state = "debug"
 
-/obj/structure/interactive/shop/destroy()
+/obj/structure/interactive/shop/Destroy()
 
 	all_shops -= src
 

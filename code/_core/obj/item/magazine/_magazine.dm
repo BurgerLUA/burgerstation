@@ -7,7 +7,7 @@
 
 	var/list/weapon_whitelist = list() //What guns can fit this object?
 
-/obj/item/magazine/destroy()
+/obj/item/magazine/Destroy()
 
 	for(var/obj/item/bullet/B in stored_bullets)
 		qdel(B)

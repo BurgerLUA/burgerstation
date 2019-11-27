@@ -2,7 +2,7 @@
 	var/client/owner
 	var/bot_controlled = FALSE
 
-/savedata/client/destroy()
+/savedata/client/Destroy()
 	owner = null
 	return ..()
 

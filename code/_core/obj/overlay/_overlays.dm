@@ -15,7 +15,7 @@
 
 	var/no_update = FALSE
 
-/obj/overlay/destroy()
+/obj/overlay/Destroy()
 	attached_object = null
 	return ..()
 

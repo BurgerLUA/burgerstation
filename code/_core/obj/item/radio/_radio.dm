@@ -57,7 +57,7 @@ var/global/list/obj/item/radio/all_radios = list()
 	all_radios += src
 	return ..()
 
-/obj/item/radio/destroy()
+/obj/item/radio/Destroy()
 	all_radios -= src
 	return ..()
 

@@ -23,7 +23,7 @@
 	var/mob/living/victim //The victim of the wound.
 	var/obj/item/organ/location //The location of the wound, if any.
 
-/wound/destroy()
+/wound/Destroy()
 	weapon = null
 	inflictor = null
 	victim = null
