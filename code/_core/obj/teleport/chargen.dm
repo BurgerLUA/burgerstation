@@ -28,7 +28,9 @@
 	A.movement_flags = 0x0
 	var/choice = start_choice(A,/choice/skip_tutorial/)
 
-	if(choice == "yes")
+	if(choice == "cancel")
+		return TRUE
+	else if(choice == "yes")
 		play_the_fucking_game(A)
 	else
 		play_the_fucking_tutorial(A)

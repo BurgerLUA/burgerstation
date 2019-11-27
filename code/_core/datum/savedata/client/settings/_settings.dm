@@ -23,7 +23,7 @@
 
 /savedata/client/settings/New(var/client/new_owner)
 
-	..()
+	. = ..()
 
 	owner = new_owner
 
@@ -37,6 +37,8 @@
 	if(loaded_data["fps_client"])
 		new_owner.fps = loaded_data["fps_client"]
 
+	return .
+
 /savedata/client/settings/proc/change_setting(var/setting_id,var/setting_value)
 	loaded_data[setting_id] = setting_value
 	save()
@@ -44,5 +46,6 @@
 
 /savedata/client/settings/proc/save()
 	var/full_path = "[get_folder(owner.ckey)][get_file()]"
+	owner.mob.to_chat(span("notice","Your settings have been saved."))
 	fdel(full_path)
 	text2file(json_encode(loaded_data),full_path)

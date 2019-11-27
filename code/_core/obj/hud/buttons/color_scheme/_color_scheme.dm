@@ -61,6 +61,11 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 	A.remove_color_scheme_buttons()
 
+	if(!A.client || !A.client.settings)
+		return ..()
+
+	A.client.settings.save()
+
 	return ..()
 
 

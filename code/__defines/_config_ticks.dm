@@ -3,4 +3,5 @@
 #define LIFE_TICKS_PER_SLOW_LIFE_TICKS (LIFE_TICK_SLOW / LIFE_TICK)
 #define AI_TICK 1
 
-#define PROJECTILE_TICK 1 //Ticks per project tick interval
+#define PROJECTILE_TICK 1 //Ticks per projectile tick interval
+#define STATUS_TICK 1 //Ticks per status effect interval

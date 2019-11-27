@@ -37,4 +37,11 @@
 	icon_state = "no"
 	screen_loc = "CENTER-2,CENTER"
 
+/obj/hud/button/choice/cancel
+	name = "cancel"
+	id = "cancel"
+	icon_state = "cancel"
+	screen_loc = "CENTER,CENTER-2"
+
+
 
