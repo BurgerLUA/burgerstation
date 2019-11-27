@@ -7,21 +7,21 @@
 	if(!is_advanced(triggerer))
 		return FALSE
 
-	var/mob/living/advanced/A = triggerer
+	var/mob/living/advanced/player/P = triggerer
 
-	if(!A.client)
+	if(!P.client)
 		return FALSE
 
-	if(!A.used_mirror)
-		A.to_chat(span("thought","I'm not going out like this!"))
+	if(!(P.mobdata && P.mobdata.loaded_data && P.mobdata.loaded_data["tutorial"] == 2))
+		P.to_chat(span("thought","I should really fix my hair in the mirror before heading out."))
 		return TRUE
 
-	if(!A.found_job)
-		A.to_chat(span("thought","I should probably check my emails and then put some clothes on before I leave."))
+	if(!length(P.worn_objects))
+		P.to_chat(span("thought","I'm not going out naked like this!"))
 		return TRUE
 
-	if(!A.clothing_changed)
-		A.to_chat(span("thought","I should put some clothes on before I leave for work!"))
+	if(!("Burgerstation" in P.mobdata.loaded_data["known_topics"]))
+		P.to_chat(span("thought","I should probably check my emails before I leave."))
 		return TRUE
 
 	/*
@@ -36,12 +36,12 @@
 	A.movement_flags = 0x0
 	*/
 
-	play_the_fucking_game(A)
+	play_the_fucking_game(P)
 
 	return TRUE
 
 
-
+/*
 /obj/trigger/leave_bathroom
 	name = "leave bathroom"
 	invisibility = 101
@@ -75,6 +75,7 @@
 		A.appearance_changed = TRUE
 
 	return ..()
+*/
 
 
 /proc/play_the_fucking_tutorial(var/mob/living/advanced/A)

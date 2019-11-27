@@ -7,7 +7,9 @@
 /savedata/client/mob/reset_data()
 	loaded_data = list(
 		"name" = "Urist McRobust",
-		"tutorial" = 1,
+		"x" = 0,
+		"y" = 0,
+		"tutorial" = 1, //1 = first time loading, 2 = modified appearance, 3 = station
 		"id" = "none",
 		"last_saved_date" = 0,
 		"last_saved_time" = 0,
@@ -19,7 +21,7 @@
 		"justice_broken" = 0,
 		"justice_served" = 0,
 		"justice_reward_claimed" = 0,
-		"last_save" = "village",
+		"last_save" = null,
 		"known_topics" = list(),
 		"known_wishgranters" = list()
 	)

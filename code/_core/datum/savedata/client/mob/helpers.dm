@@ -113,6 +113,8 @@
 	loaded_data["karma"] = A.karma
 	loaded_data["currency"] = A.currency
 	loaded_data["known_wishgranters"] = A.known_wishgranters
+	loaded_data["x"] = owner.mob.x
+	loaded_data["y"] = owner.mob.y
 
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)
@@ -133,8 +135,6 @@
 		var/experience/attribute/B = A.attributes[id]
 		final_attribute_list[id] = B.experience
 	loaded_data["attributes"] = final_attribute_list
-
-	loaded_data["tutorial"] = 0
 
 	if(write_json_data_to_id(owner.save_slot,loaded_data))
 		owner.to_chat(span("notice","Sucessfully saved character [A.name]."))
@@ -172,6 +172,14 @@
 		var/experience/attribute/S = A.get_attribute(id)
 		S.Initialize(xp)
 
-	A.force_move(all_wishgranters[loaded_data["last_save"]])
+	if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
+		A.force_move(all_wishgranters[loaded_data["last_save"]])
+	else
+		var/turf/T = locate(loaded_data["x"],loaded_data["y"],1)
+		if(T)
+			A.force_move(T)
+		else
+			A.force_move(pick(all_wishgranters))
+
 	A.update_icon()
 	step(A,SOUTH)

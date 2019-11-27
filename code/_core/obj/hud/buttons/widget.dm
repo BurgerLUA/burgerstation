@@ -4,7 +4,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAGS_HUD_WIDGET
 
 	mouse_opacity = 1
 
@@ -53,5 +53,25 @@
 	if(is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		P.logout()
+
+	return ..()
+
+/obj/hud/button/widget/change_theme
+
+	icon_state = "change_theme"
+
+	screen_loc = "RIGHT,TOP"
+
+/obj/hud/button/widget/change_theme/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(!is_player(caller))
+		return ..()
+
+	var/mob/living/advanced/player/P = caller
+
+	if(/obj/hud/button/close_color_scheme in P.buttons)
+		return ..()
+
+	P.add_color_scheme_buttons()
 
 	return ..()

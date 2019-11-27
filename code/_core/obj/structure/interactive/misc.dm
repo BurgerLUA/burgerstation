@@ -23,34 +23,13 @@ obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,objec
 
 	var/mob/living/advanced/A = caller
 
-	if(!A.underwear_added)
+	if(A.sex == MALE)
+		A.add_outfit("new_male",TRUE)
+	else
+		A.add_outfit("new_female",TRUE)
 
-		if(A.sex == MALE)
-			A.add_outfit("new_male",TRUE)
-		else
-			A.add_outfit("new_female",TRUE)
+	A.add_outfit("assistant",TRUE)
 
-		A.underwear_added = TRUE
-
-		if(!A.appearance_changed)
-			A.to_chat(span("thought","Now that I have underwear on, I should see if I have a case of bedhead in the bathroom mirror."))
-			return TRUE
-
-		if(!A.job_changed)
-			A.to_chat(span("thought","Now that I have underwear on, I should probably check my emails on my computer for job offers before fully dressing."))
-			return TRUE
-
-	if(!A.found_job)
-		A.to_chat(span("thought","I should probably check my emails first to see what job offers I have before fully dressing."))
-		return TRUE
-
-	if(!A.clothing_changed)
-		A.add_outfit("assistant",TRUE)
-		A.to_chat(span("thought","I'm ready for work now. I should probably head out before I miss the next shuttle."))
-		A.clothing_changed = TRUE
-		return TRUE
-
-	A.to_chat(span("thought","I look as good as I can right now. I should catch the shuttle before I miss it."))
 
 	return TRUE
 
@@ -70,26 +49,22 @@ obj/structure/interactive/misc/mirror
 
 
 obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/crosser)
-	if(is_advanced(crosser))
-		var/mob/living/advanced/A = crosser
-		if(!A.appearance_changed)
-			A.add_chargen_buttons()
-			A.handle_hairstyle_chargen(-1)
-			A.handle_beardstyle_chargen(-1)
-			A.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
-		else
-			A.to_chat(span("thought","No. I look beautiful! I don't need to change anything!"))
+	if(is_player(crosser))
+		var/mob/living/advanced/player/P = crosser
+		P.add_chargen_buttons()
+		P.handle_hairstyle_chargen(-1)
+		P.handle_beardstyle_chargen(-1)
+		P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
 
 	return ..()
 
 obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/crosser)
 	if(is_advanced(crosser))
-		var/mob/living/advanced/A = crosser
-		if(!A.appearance_changed)
-			//A.show_hud(FALSE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=1)
-			A.to_chat(span("thought","There. I look perfect!"))
-			A.used_mirror = TRUE
-			A.remove_chargen_buttons()
+		var/mob/living/advanced/player/P = crosser
+		P.to_chat(span("thought","There. I look perfect!"))
+		P.remove_chargen_buttons()
+		if(P.mobdata.loaded_data["tutorial"] == 1)
+			P.mobdata.loaded_data["tutorial"] = 2
 
 	return ..()
 

@@ -58,10 +58,6 @@ obj/structure/interactive/computer/console/old/chargen_job/clicked_on_by_object(
 
 	var/mob/living/advanced/player/P = caller
 
-	if(!P.appearance_changed)
-		P.to_chat(span("thought","I should probably give myself a long, semi-motivational look in the mirror before I start my day."))
-		return TRUE
-
 	P.dialogue_target_id = "chargen_computer"
 	open_menu(P,"dialogue")
 

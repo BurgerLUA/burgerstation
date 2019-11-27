@@ -520,6 +520,7 @@
 #include "code\_core\obj\hud\buttons\chargen\sex.dm"
 #include "code\_core\obj\hud\buttons\chargen\species.dm"
 #include "code\_core\obj\hud\buttons\choice\_choice.dm"
+#include "code\_core\obj\hud\buttons\color_scheme\_color_scheme.dm"
 #include "code\_core\obj\hud\inventory\_inventory.dm"
 #include "code\_core\obj\hud\inventory\crafting.dm"
 #include "code\_core\obj\hud\inventory\dynamic.dm"

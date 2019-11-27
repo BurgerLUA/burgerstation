@@ -34,14 +34,6 @@
 
 	var/automatic_ticks = 0
 
-	var/chargen = FALSE //In the chargen area
-	var/appearance_changed = FALSE
-	var/job_changed = FALSE
-	var/clothing_changed = FALSE
-	var/underwear_added = FALSE
-	var/used_mirror = FALSE
-	var/found_job = FALSE
-
 	var/obj/hud/inventory/active_inventory
 
 	var/health_regen_delay = 0
@@ -153,13 +145,6 @@
 	click_and_drag_icon	= new(src)
 
 	return .
-
-/mob/living/advanced/Logout()
-
-	if(chargen)
-		qdel(src)
-
-	return ..()
 
 /mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
 

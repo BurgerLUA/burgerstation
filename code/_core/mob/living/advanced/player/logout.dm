@@ -9,12 +9,25 @@ mob/living/advanced/player/verb/logout()
 
 	var/area/A = get_area(src)
 
-	if(A && A.safe && A.assoc_wishgranter && client)
+	if(mobdata && mobdata.loaded_data && mobdata.loaded_data["tutorial"] == 1)
+		var/question = input("Are you sure you want to quit? All unsaved progress will be lost.") in list("Yes","No")
+		if(question == "Yes")
+			make_ghost()
+			return TRUE
+	if(mobdata && mobdata.loaded_data && mobdata.loaded_data["tutorial"] == 2)
+		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
+		if(question == "Yes")
+			save(null)
+			make_ghost()
+			return TRUE
+	else if(A && A.safe && A.assoc_wishgranter && client)
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && A && A.safe && client)
 			save(A.assoc_wishgranter)
 			make_ghost()
 			return TRUE
+	else
+		src.to_chat(span("danger","You cannot save and quit here! Find an area with a suitable wishgranter first!"))
 
 	return FALSE
 

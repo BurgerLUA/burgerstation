@@ -159,8 +159,8 @@
 				O.set_icon_state_mob(P,"paper_normal")
 
 		if("*Burgerstation")
-			P.found_job = TRUE
-			P.to_chat(span("thought","My shift starts in one hour! I should get into uniform, then catch the next shuttle!"))
+			P.mobdata.loaded_data["known_topics"] += "Burgerstation"
+			P.to_chat(span("thought","My shift starts in one hour! I should check if I'm ready, then catch the next shuttle!"))
 
 
 	return .

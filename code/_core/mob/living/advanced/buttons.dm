@@ -6,6 +6,16 @@
 		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
+/mob/living/advanced/proc/add_color_scheme_buttons()
+	for(var/v in color_scheme_buttons)
+		var/obj/hud/button/B = new v
+		B.update_owner(src)
+
+/mob/living/advanced/proc/remove_color_scheme_buttons()
+	for(var/obj/hud/button/B in buttons)
+		if(B.type in color_scheme_buttons)
+			B.update_owner(null)
+
 /mob/living/advanced/proc/add_chargen_buttons()
 
 	var/species/S = all_species[species]
@@ -21,8 +31,6 @@
 	for(var/obj/hud/button/chargen/B in buttons)
 		if(B.type in chargen_buttons)
 			B.update_owner(null)
-
-
 
 /mob/living/advanced/proc/remove_all_buttons()
 	for(var/obj/hud/button/chargen/B in buttons)

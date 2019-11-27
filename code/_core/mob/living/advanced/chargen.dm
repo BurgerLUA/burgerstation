@@ -3,8 +3,7 @@
 	spawn()
 
 		Initialize()
-		chargen = TRUE
-		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
+		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET,speed=0)
 		//show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 		handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
 		handle_beardstyle_chargen(1,"#000000")

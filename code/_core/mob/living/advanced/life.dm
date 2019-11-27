@@ -2,9 +2,6 @@
 
 	. = ..()
 
-	if(chargen)
-		return .
-
 	if(talk_duration)
 		talk_duration = max(0,talk_duration-LIFE_TICK)
 		if(talk_duration <= 0)

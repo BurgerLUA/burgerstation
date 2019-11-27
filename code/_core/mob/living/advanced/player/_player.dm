@@ -63,7 +63,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/apply_mob_parts()
 
-	if(!mobdata || mobdata.loaded_data["tutorial"])
+	if(!mobdata || mobdata.loaded_data["tutorial"] == 1)
 		return ..()
 
 	mobdata.apply_data_to_mob(src)
