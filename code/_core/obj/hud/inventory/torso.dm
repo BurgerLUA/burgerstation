@@ -94,3 +94,5 @@
 
 	max_size = SIZE_2
 	max_weight = WEIGHT_3
+
+	drag_to_take = FALSE

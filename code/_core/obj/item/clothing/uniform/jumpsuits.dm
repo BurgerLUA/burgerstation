@@ -41,9 +41,9 @@
 	color_tertiary = "#FF0000"
 
 /obj/item/clothing/uniform/jumpsuit/blue
-	color_primary = "#FF0000"
-	color_secondary = "#FF0000"
-	color_tertiary = "#FF0000"
+	color_primary = "#0000FF"
+	color_secondary = "#0000FF"
+	color_tertiary = "#0000FF"
 
 /obj/item/clothing/uniform/jumpsuit/dark
 	name = "reinforced jumpsuit"

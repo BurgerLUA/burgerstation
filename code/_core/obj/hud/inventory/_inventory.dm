@@ -41,7 +41,6 @@
 	var/flags = FLAGS_HUD_INVENTORY
 
 	var/should_draw = TRUE //Should the item's held icon be displayed?
-	var/reverse_draw = FALSE //Should the worn state and the held state be swapped?
 
 	var/drag_to_take = TRUE //You must click and drag to take the object inside.
 

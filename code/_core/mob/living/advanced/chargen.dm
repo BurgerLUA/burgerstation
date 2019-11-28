@@ -119,3 +119,5 @@
 			add_outfit("new_male",TRUE)
 		else
 			add_outfit("new_female",TRUE)
+
+		add_outfit("assistant",TRUE)

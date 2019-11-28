@@ -21,7 +21,7 @@
 
 
 
-/obj/item/magazine/smg_22
+/obj/item/magazine/smg_22/
 	name = "\improper .22 smg magazine"
 	bullet_type = ".22"
 	icon = 'icons/obj/items/magazine/22smg.dmi'
@@ -37,6 +37,15 @@
 	..()
 
 /obj/item/magazine/smg_22/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new /obj/item/bullet/revolver_22(src)
+	update_icon()
+
+
+/obj/item/magazine/smg_22/surplus
+	name = "\improper surplus .22 smg magazine"
+
+/obj/item/magazine/smg_22/surplus/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/revolver_22/surplus(src)
 	update_icon()

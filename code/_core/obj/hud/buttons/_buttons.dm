@@ -39,7 +39,7 @@
 	if(owner == desired_owner)
 		return FALSE
 
-	if(owner && desired_owner != null)
+	if(owner && !desired_owner)
 		owner.remove_button(src)
 
 	if(desired_owner)

@@ -43,6 +43,9 @@
 
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
+	var/frustration = 0
+	var/frustration_threshold = 10 //Above this means they'll try to find a new target.
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -162,12 +165,18 @@
 
 /ai/proc/handle_objectives()
 
-	if(objective_attack && !can_see_enemy(objective_attack))
-		objective_attack = null
+	if(objective_attack)
+		if(!can_see_enemy(objective_attack))
+			objective_attack = null
+			frustration = 0
+		if(get_dist(owner,objective_attack) > attack_distance + 1)
+			frustration ++
+	else
+		frustration = 0
 
-	if(!objective_attack)
+	if(!objective_attack || frustration > frustration_threshold)
+
 		var/list/possible_targets = get_possible_targets()
-
 		var/atom/best_target
 		var/best_score = 0
 
@@ -177,9 +186,9 @@
 				best_target = L
 				best_score = local_score
 
-		if(best_target)
-			objective_attack = best_target
+		if(best_target && best_target != objective_attack)
 			hostile_message()
+			objective_attack = best_target
 
 	objective_ticks = 0
 

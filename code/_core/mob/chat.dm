@@ -38,7 +38,7 @@
 		var/mob/living/advanced/A = src
 		A.end_typing()
 
-	spam_protection_say += max(0.25,lentext(text_to_say)*0.01)
+	spam_protection_say += max(0.25,length(text_to_say)*0.01)
 
 	return TRUE
 

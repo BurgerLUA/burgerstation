@@ -15,7 +15,6 @@
 
 /mob/living/advanced/player/pre_death()
 	. = ..()
-	world.log << "OH SHIT DYING."
 	save()
 	return .
 

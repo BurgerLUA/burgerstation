@@ -11,6 +11,12 @@
 
 	var/bullet_block_chance = 0 //Chance to block bullets.
 
+/obj/structure/proc/on_active(var/mob/living/advanced/player/P)
+	return TRUE
+
+/obj/structure/proc/on_inactive(var/mob/living/advanced/player/P)
+	return TRUE
+
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	var/projectile_dir = get_dir(old_turf,new_turf)

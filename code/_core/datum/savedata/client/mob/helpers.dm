@@ -164,13 +164,19 @@
 	for(var/id in loaded_data["skills"])
 		var/xp = loaded_data["skills"][id]
 		var/experience/skill/S = A.get_skill(id)
-		S.Initialize(xp)
+		if(S)
+			S.Initialize(xp)
+		else
+			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
 	//Attributes
 	for(var/id in loaded_data["attributes"])
 		var/xp = loaded_data["attributes"][id]
 		var/experience/attribute/S = A.get_attribute(id)
-		S.Initialize(xp)
+		if(S)
+			S.Initialize(xp)
+		else
+			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
 	if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
 		A.force_move(all_wishgranters[loaded_data["last_save"]])

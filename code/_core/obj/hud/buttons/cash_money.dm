@@ -10,11 +10,6 @@
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
 
-/obj/hud/button/cash_money/New(var/desired_loc)
-	alpha = 0
-	mouse_opacity = 0
-	return ..()
-
 /obj/hud/button/cash_money/update_owner(var/mob/desired_owner)
 	. = ..()
 	if(. && is_player(owner))
@@ -64,12 +59,10 @@
 
 /obj/hud/button/toggle_cash_money
 	name = "toggle telecrystal display"
-	screen_loc = "RIGHT,CENTER"
+	screen_loc = "RIGHT-1,CENTER"
 	icon_state = "telecrystal"
 
 	flags = FLAGS_HUD_MOB
-
-
 
 /obj/hud/button/toggle_cash_money/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

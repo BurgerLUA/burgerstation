@@ -61,6 +61,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/karma = 10000
 
+	var/obj/structure/active_structure
+
 /mob/living/advanced/player/apply_mob_parts()
 
 	if(!mobdata || mobdata.loaded_data["tutorial"] == 1)
@@ -111,12 +113,15 @@ mob/living/advanced/player/on_life_client()
 
 	. = ..()
 
-	if(. && dialogue_target_id)
-		dialogue_target_id = null
-		close_menu(src,"dialogue")
-
-
 	if(.)
+
+		if(dialogue_target_id)
+			dialogue_target_id = null
+			close_menu(src,"dialogue")
+
+		if(active_structure && get_dist(src,active_structure) > 1)
+			set_structure_unactive()
+
 		for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
 			if(!L.ai)
 				continue

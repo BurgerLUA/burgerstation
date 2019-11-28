@@ -80,7 +80,7 @@
 	desc = "Wait is that chambered in .22?"
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
-	shoot_delay = 1
+	shoot_delay = 2
 	view_punch = 2
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 
