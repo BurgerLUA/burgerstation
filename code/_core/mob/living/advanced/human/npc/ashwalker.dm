@@ -18,11 +18,14 @@
 
 /mob/living/advanced/npc/ashwalker/New(loc,desired_client,desired_level_multiplier)
 
-	level_multiplier = rand(90,150)/100
 	gender = pick(MALE,FEMALE)
 	sex = gender //oh god oh fuck what have i done
 
-	return ..()
+	. = ..()
+
+	level_multiplier *= rand(90,150)/100
+
+	return .
 
 
 /mob/living/advanced/npc/ashwalker/Initialize()

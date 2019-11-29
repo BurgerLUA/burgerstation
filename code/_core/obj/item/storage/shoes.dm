@@ -53,3 +53,16 @@
 	var/obj/item/clothing/feet/shoes/colored/left/S2 = new(src.loc)
 	inventories[1].add_held_object(S1,bypass_checks = TRUE)
 	inventories[2].add_held_object(S2,bypass_checks = TRUE)
+
+
+
+/obj/item/storage/shoebox/clown/
+	name = "clown shoebox"
+	desc = "Contains a pair of shoes which can be dyed."
+
+/obj/item/storage/shoebox/clown/on_spawn()
+	var/obj/item/clothing/feet/shoes/clown/S1 = new(src.loc)
+	var/obj/item/clothing/feet/shoes/clown/left/S2 = new(src.loc)
+	inventories[1].add_held_object(S1,bypass_checks = TRUE)
+	inventories[2].add_held_object(S2,bypass_checks = TRUE)
+

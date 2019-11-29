@@ -1,19 +1,8 @@
-//#define get_area(A) (get_step(A, 0).loc) //This helper is so fucking weird.
-
-// #define get_turf(A) (get_step(A, 0)) //This helper is so fucking weird.
-
 /proc/get_turf(A)
 	return get_step(A,0)
 
 /proc/get_area(A)
-
-	if(is_movable(A))
-		var/atom/movable/M = A
-		if(M.area)
-			return M.area
-
 	var/turf/T = get_turf(A)
-
 	return T ? T.loc : null
 
 /proc/get_dist_advanced(var/atom/A1,var/atom/A2)

@@ -107,9 +107,17 @@
 	name = "nanotrasen shop"
 	id = "nanotrasen_shop"
 
+/area/world/forest/interior/village/shop/dye
+	name = "Dye Lab"
+	id = "dye_lab"
+
 /area/world/forest/interior/village/shop/chemist
 	name = "Chem Lab"
 	id = "chem_lab"
+
+/area/world/forest/interior/village/shop/security
+	name = "The Harmbaton"
+	id = "security"
 
 /area/world/forest/interior/village/shop/chapel
 	name = "chapel shop"

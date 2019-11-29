@@ -8,7 +8,7 @@
 	bullet_speed = 31
 	shoot_delay = 4
 
-	automatic = TRUE
+	automatic = FALSE
 
 	bullet_color = "#FF0000"
 

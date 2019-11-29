@@ -22,6 +22,9 @@ var/global/list/all_hazards = list()
 
 /subsystem/hazard/on_life()
 
+	if(!ENABLE_HAZARDS)
+		return FALSE
+
 	spawn()
 
 		for(var/area/A in all_areas_with_hazards)

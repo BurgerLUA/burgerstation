@@ -79,7 +79,7 @@
 
 	if(P.currency >= associated_item.value && P.spend_currency(associated_item.value)) //Just in case
 		spawn()
-			var/obj/item/new_item = new associated_item.type(get_turf(src))
+			var/obj/item/new_item = new associated_item.type(get_turf(caller))
 			new_item.on_spawn()
 			new_item.update_icon()
 			new_item.transfer_item(I)

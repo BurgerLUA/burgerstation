@@ -19,5 +19,5 @@
 /mob/living/simple/npc/spacecarp/leader
 	name = "alpha space carp"
 	class = "carp"
-	level_multiplier = 2
+	level_multiplier = 1.25
 

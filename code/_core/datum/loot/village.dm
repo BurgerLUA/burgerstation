@@ -20,8 +20,7 @@
 		/obj/item/soulgem/rare = 25,
 		/obj/item/clothing/head/hat/wizard/blue = 10,
 		/obj/item/weapon/ranged/magic/tome/lightning = 10,
-		/obj/item/soapstone/blue = 5,
-		/obj/item/color/crayon/blue = 5
+		/obj/item/soapstone/blue = 5
 	)
 
 	loot_count = 3
@@ -39,8 +38,7 @@
 	id = "crab"
 	desc = "Loot for crabs."
 	loot_table = list(
-		/obj/item/clothing/glasses/sun = 5,
-		/obj/item/color/crayon/orange = 5,
+		/obj/item/clothing/glasses/sun = 5
 
 	)
 	chance_none = 75

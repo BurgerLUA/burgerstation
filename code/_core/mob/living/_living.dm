@@ -71,9 +71,24 @@
 
 	var/force_spawn = FALSE
 
-
 	var/last_flavor = ""
 	var/last_flavor_time = 0
+
+	var/list/armor_base = list(
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0
+	)
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
@@ -143,6 +158,7 @@
 	initialize_skills()
 
 	if(health)
+		health.armor_base = armor_base
 		health.Initialize()
 
 	if(client)

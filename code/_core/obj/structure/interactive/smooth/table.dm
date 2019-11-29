@@ -12,6 +12,8 @@ obj/structure/smooth/table
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
+obj/structure/smooth/table/dark
+	color = "#999999"
 
 obj/structure/smooth/table/wood
 	name = "wood table"
@@ -35,6 +37,10 @@ obj/structure/smooth/table/reinforced
 
 obj/structure/smooth/table/reinforced/dark
 	color = "#999999"
+
+obj/structure/smooth/table/reinforced/yellow
+	color = "#FFFF00"
+
 
 
 obj/structure/smooth/table/brass

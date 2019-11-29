@@ -44,23 +44,27 @@
 
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
-#define ENABLE_LORE FALSE
+
 
 //Basically debug mode
 #define ENABLE_INSTALOAD TRUE
 
 //Makes compiling faster FALSE disabled
-#define ENABLE_MOB TRUE
-#define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD FALSE
-#define ENABLE_LIGHTING FALSE
-#define ENABLE_WEATHERGEN TRUE
+#define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
+
 #define ENABLE_CHARGEN TRUE
 
-#define ENABLE_WIKIBOT FALSE
+#define ENABLE_MOB TRUE
+#define ENABLE_AI TRUE
 
+#define ENABLE_WEATHERGEN TRUE
+#define ENABLE_HAZARDS FALSE
+
+#define ENABLE_LORE FALSE
 #define ENABLE_KARMA FALSE
+#define ENABLE_WIKIBOT FALSE
 
 #define ENABLE_XP FALSE
 #define LEVEL_CAP 100
@@ -90,8 +94,6 @@
 #define DEFAULT_ATTRIBUTE_ALLOCATION 130
 
 #define SPRINT_STAMINA_LOSS 1
-
-#define ARMOR_CAP 1000 //How much armor you're allowed to have in total.
 
 #define MAX_INVENTORY_X 8
 

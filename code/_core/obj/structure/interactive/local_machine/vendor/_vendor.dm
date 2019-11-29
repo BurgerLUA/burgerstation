@@ -19,6 +19,7 @@
 	for(var/obj/item/I in T.contents)
 		stored_objects += I
 		I.force_move(src)
+		I.update_icon()
 
 	return ..()
 

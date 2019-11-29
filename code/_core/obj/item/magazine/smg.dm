@@ -19,6 +19,13 @@
 		stored_bullets += new /obj/item/bullet/pistol_45/(src)
 	update_icon()
 
+/obj/item/magazine/smg_45/surplus
+	name = "\improper surplus .45 smg magazine"
+
+/obj/item/magazine/smg_45/surplus/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new /obj/item/bullet/pistol_45/surplus(src)
+	update_icon()
 
 
 /obj/item/magazine/smg_22/

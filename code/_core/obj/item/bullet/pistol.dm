@@ -72,3 +72,15 @@
 	damage_type = ".45_surplus"
 
 	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
+
+
+/obj/item/bullet/pistol_45/rubber
+	name = "\improper rubber .45 bullet"
+	desc = "For pistols and smgs that requre .45 ammo. For less-than-lethal takedowns."
+	id = ".45"
+	icon = 'icons/obj/items/bullet/45_rubber.dmi'
+
+	projectile = /obj/projectile/bullet/shotgun_pellet
+	damage_type = ".45_rubber"
+
+	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE

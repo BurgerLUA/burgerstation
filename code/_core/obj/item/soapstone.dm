@@ -17,6 +17,9 @@
 /obj/item/soapstone/red
 	stone_color = "#880000"
 
+/obj/item/soapstone/yellow
+	stone_color = "#888800"
+
 /obj/item/soapstone/blue
 	stone_color = "#0094FF"
 

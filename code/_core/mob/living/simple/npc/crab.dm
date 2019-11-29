@@ -11,6 +11,22 @@
 
 	loot_drop = "crab"
 
+	armor_base = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_C,
+		LASER = -ARMOR_C,
+		MAGIC = -ARMOR_C,
+		HEAT = -ARMOR_D,
+		COLD = -ARMOR_D,
+		BOMB = -ARMOR_D,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = ARMOR_C
+	)
+
 /mob/living/simple/npc/crab/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -30,20 +46,38 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 750
+	health_base = 500
 
 	ai = /ai/simple/king_crab
 
-	class = "crab"
+	class = "crab_king"
 	loot_drop = "crab"
-
-	level_multiplier = 20
 
 	object_size = 1
 
 	boss = TRUE
 	force_spawn = TRUE
 	boss_music = "crab"
+
+	damage_type = "crab_claw_king"
+
+	armor_base = list(
+		BLADE = ARMOR_S,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_S,
+		LASER = ARMOR_C,
+		MAGIC = ARMOR_C,
+		HEAT = -ARMOR_D,
+		COLD = -ARMOR_D,
+		BOMB = -ARMOR_D,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = ARMOR_A
+	)
+
+
 
 /mob/living/simple/npc/crab/king/Cross(atom/movable/O)
 
@@ -56,15 +90,18 @@
 	return 0
 
 /mob/living/simple/npc/crab/king/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+
+	. = ..()
+
 	switch(DT.get_attack_type())
 		if(ATTACK_TYPE_MELEE)
-			return 0
+			return .
 
 		if(ATTACK_TYPE_RANGED)
-			return 90
+			return . + 90
 
 		if(ATTACK_TYPE_MAGIC)
-			return 75
+			return . + 75
 
-	return 0
+	return .
 

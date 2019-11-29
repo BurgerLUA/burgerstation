@@ -28,6 +28,11 @@
 	name = "security airlock"
 	color = "#253982"
 
+/obj/structure/interactive/door/airlock/station/security/shop
+	name = "security airlock"
+	color = "#994444"
+	allow_manual_close = FALSE
+
 /obj/structure/interactive/door/airlock/station/security/no_access
 	no_access = TRUE
 

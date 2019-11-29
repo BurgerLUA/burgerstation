@@ -8,6 +8,10 @@
 
 /mob/living/proc/get_skill_power(var/id)
 	var/experience/skill/S = get_skill(id)
+	if(!S)
+		LOG_ERROR("WARNING: INVALID SKILL FOR [src]: [id]!")
+		return 0.5
+
 	return S.get_power()
 
 /mob/living/proc/set_skill_level(var/id,var/desired_level)

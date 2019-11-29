@@ -54,7 +54,7 @@
 	name = ".45 private security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
 	bullet_speed = 28
-	shoot_delay = 3
+	shoot_delay = 4
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 

@@ -14,19 +14,19 @@
 
 /obj/item/color/crayon/blue
 	name = "blue crayon"
-	color = "#0000FF"
+	selected_color = "#0000FF"
 
 /obj/item/color/crayon/red
 	name = "red crayon"
-	color = "#FF0000"
+	selected_color = "#FF0000"
 
 /obj/item/color/crayon/orange
 	name = "orange crayon"
-	color = "#FF8800"
+	selected_color = "#FF8800"
 
 /obj/item/color/crayon/brown
 	name = "brown crayon"
-	color = "#7F4A00"
+	selected_color = "#7F4A00"
 
 /obj/item/color/crayon/dev
 	name = "dev crayon"
@@ -34,7 +34,7 @@
 
 /obj/item/color/crayon/green
 	name = "green crayon"
-	color = "#00FF00"
+	selected_color = "#00FF00"
 
 /obj/item/color/crayon/dev/get_selected_color(var/mob/caller)
 	return input(caller,"What would you like the color to be?","Choose a color","#FFFFFF")

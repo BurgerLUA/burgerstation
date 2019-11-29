@@ -21,7 +21,6 @@
 	desc = "Seems smarter and deadlier than normal crabs."
 
 	radius_find_enemy = 10
-	attack_distance = 2
 
 	objective_delay = 4
 	attack_delay = 1

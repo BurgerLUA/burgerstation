@@ -1,11 +1,8 @@
 obj/structure/interactive/bar_sign
 	name = "bar sign"
 	desc = "Come on in!"
-
 	icon = 'icons/obj/structure/store_signs.dmi'
 	icon_state = null
-
-
 
 obj/structure/interactive/bar_sign/assistant
 	name = "The Greytide"
@@ -40,3 +37,14 @@ obj/structure/interactive/bar_sign/dye
 	name = "DIE LAB"
 	desc = "When you want to look fabulous when killing people."
 	icon_state = "dying"
+
+
+obj/structure/interactive/bar_sign/security
+	name = "The Harm Baton"
+	desc = "SHITSEC"
+	icon_state = "security"
+
+obj/structure/interactive/bar_sign/clown
+	name = "HONKed'n and LOADED"
+	desc = "HONK"
+	icon_state = "clown"

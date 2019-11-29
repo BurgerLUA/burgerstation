@@ -18,7 +18,7 @@
 	view_punch = 4
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
-	return 0
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

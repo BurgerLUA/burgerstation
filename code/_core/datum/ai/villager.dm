@@ -20,9 +20,10 @@
 	if(!is_turf(owner.loc))
 		return TRUE
 
-	movement_ticks += 1
-	if(movement_ticks >= movement_delay)
-		handle_movement()
+	if(!stationary)
+		movement_ticks += 1
+		if(movement_ticks >= movement_delay)
+			handle_movement()
 
 	return TRUE
 
@@ -87,3 +88,7 @@
 		owner.move_dir = pick(valid_directions)
 
 	movement_ticks = 0
+
+
+/ai/villager/stationary
+	stationary = TRUE

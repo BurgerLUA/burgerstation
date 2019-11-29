@@ -12,3 +12,11 @@
 
 	bullet_speed = BULLET_SPEED_SNIPER
 
+
+/obj/item/bullet/sniper_50/surplus
+	name = "\improper surplus .50 sniper round"
+	desc = "For sniper rifles that require .50 ammo. This is surplus."
+	icon = 'icons/obj/items/bullet/50_surplus.dmi'
+	damage_type = ".50_surplus"
+
+	bullet_speed = BULLET_SPEED_SNIPER * SURPLUS_PENALTY

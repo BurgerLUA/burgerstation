@@ -1,10 +1,10 @@
 obj/item/clothing/back/storage/satchel/
-	name = "grey backpack"
-	icon = 'icons/obj/items/clothing/back/backpack/grey.dmi'
+	name = "grey satchel"
+	icon = 'icons/obj/items/clothing/back/satchel/grey.dmi'
 
 	dynamic_inventory_count = MAX_INVENTORY_X*2
 
-	size = MAX_INVENTORY_X*2*3
-	container_max_size = 3
+	size = MAX_INVENTORY_X*2*SIZE_4
+	container_max_size = SIZE_4
 
 	weight = WEIGHT_2

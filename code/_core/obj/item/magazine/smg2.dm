@@ -1,5 +1,5 @@
 /obj/item/magazine/smg_9mm
-	name = "\improper 9mm smg magazine"
+	name = "\improper 9mm PDW magazine"
 	bullet_type = "9mm"
 	icon = 'icons/obj/items/magazine/9mmsmg.dmi'
 	icon_state = "9mmt"

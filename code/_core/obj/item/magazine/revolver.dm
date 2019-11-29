@@ -76,3 +76,12 @@
 /obj/item/magazine/clip/revolver/bullet_357/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new /obj/item/bullet/revolver_357(src)
+
+
+/obj/item/magazine/clip/revolver/bullet_357/surplus
+	name = "\improper surplus .357 speedloader"
+
+
+/obj/item/magazine/clip/revolver/bullet_357/surplus/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new /obj/item/bullet/revolver_357/surplus(src)

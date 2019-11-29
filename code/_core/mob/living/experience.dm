@@ -8,8 +8,7 @@
 	for(var/v in all_attributes)
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
-		var/mod = (max(0,desired_level - A.default_level)/max(1,ATTRIBUTE_STARTING_PRIMARY-A.default_level))*level_multiplier
-		A.Initialize(A.level_to_xp(Clamp(desired_level + mod,1,100)))
+		A.Initialize(A.level_to_xp(Clamp(desired_level*level_multiplier,1,100)))
 		attributes[A.id] = A
 
 /mob/living/proc/initialize_skills()
@@ -19,8 +18,7 @@
 	for(var/v in all_skills)
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
-		var/mod = (max(0,desired_level - S.default_level)/max(1,SKILL_STARTING_PRIMARY-S.default_level))*level_multiplier
-		S.Initialize(S.level_to_xp(Clamp(desired_level + mod,1,100)))
+		S.Initialize(S.level_to_xp(Clamp(desired_level*level_multiplier,1,100)))
 		skills[S.id] = S
 
 /mob/living/proc/update_level()

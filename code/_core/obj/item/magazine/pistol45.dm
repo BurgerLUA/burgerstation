@@ -31,3 +31,10 @@
 
 
 
+/obj/item/magazine/pistol_45/rubber
+	name = "\improper rubber .45 pistol magazine"
+
+/obj/item/magazine/pistol_45/rubber/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new /obj/item/bullet/pistol_45/rubber(src)
+	update_icon()

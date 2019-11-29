@@ -28,6 +28,15 @@
 
 	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
 
+/obj/item/bullet/revolver_357/surplus
+	name = "\improper .357 surplus bullet"
+	desc = "For revolvers that require .357 ammo. Surplus round."
+
+	icon = 'icons/obj/items/bullet/357_surplus.dmi'
+	damage_type = ".357_surplus"
+
+	bullet_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
+
 /obj/item/bullet/revolver_44
 	name = "\improper .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo."

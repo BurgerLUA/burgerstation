@@ -1,5 +1,5 @@
 /obj/item/storage/glovebox/
-	name = "glovebox"
+	name = "white glovebox"
 	desc = "Contains a matching pair of gloves."
 	icon_state = "glovebox"
 
@@ -9,6 +9,12 @@
 	container_max_size = 1
 
 	dynamic_inventory_count = 2
+
+/obj/item/storage/glovebox/on_spawn()
+	var/obj/item/clothing/hands/gloves/colored/G1 = new(src.loc)
+	var/obj/item/clothing/hands/gloves/colored/left/G2 = new(src.loc)
+	inventories[1].add_held_object(G1,bypass_checks = TRUE)
+	inventories[2].add_held_object(G2,bypass_checks = TRUE)
 
 /obj/item/storage/glovebox/yellow/
 	name = "insulated glovebox"

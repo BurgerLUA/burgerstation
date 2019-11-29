@@ -42,7 +42,7 @@
 	icon_state = "inventory"
 
 	bullet_speed = 26
-	shoot_delay = 3
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -69,7 +69,7 @@
 	name = ".45 tactical syndicate submachine gun"
 	icon = 'icons/obj/items/weapons/ranged/c20r.dmi'
 	icon_state = "inventory"
-	shoot_delay = 1.5
+	shoot_delay = 3
 	view_punch = 4
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 
@@ -80,7 +80,7 @@
 	desc = "Wait is that chambered in .22?"
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
-	shoot_delay = 2
+	shoot_delay = 1
 	view_punch = 2
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 

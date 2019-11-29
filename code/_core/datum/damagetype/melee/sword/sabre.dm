@@ -26,7 +26,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_S
+		SKILL_MELEE = SKILL_S
 	)
 
 	skill_damage = list(

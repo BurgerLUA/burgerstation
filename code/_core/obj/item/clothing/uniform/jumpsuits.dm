@@ -60,6 +60,10 @@
 		COLD = ARMOR_C,
 	)
 
+/obj/item/clothing/uniform/jumpsuit/dark/security
+	color_primary = "#404040"
+	color_secondary = "#994444"
+	color_tertiary = "#994444"
 
 /obj/item/clothing/uniform/jumpsuit/chemist
 	color_primary = "#FFFFFF"

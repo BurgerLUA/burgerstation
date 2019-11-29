@@ -38,10 +38,25 @@
 
 	projectile_count = 8
 	base_spread = 0.1
-	bullet_speed = 16
 
 	projectile = /obj/projectile/bullet/shotgun_pellet
 
 	damage_type = "12_buckshot"
 
 	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+
+/obj/item/bullet/shotgun/rubber_balls
+	name = "\improper 12 gauge rubber balls"
+	desc = ""
+	icon_state = "rubber"
+
+	projectile_count = 8
+	base_spread = 0.15
+
+	projectile = /obj/projectile/bullet/shotgun_pellet
+
+	damage_type = "12_rubber"
+
+	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE
+
