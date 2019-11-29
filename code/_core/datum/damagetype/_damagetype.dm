@@ -239,10 +239,15 @@
 			var/defense_rating_victim = L.health.get_defense(attacker,hit_object)
 
 			for(var/damage_type in damage_to_deal)
+
+				var/victim_defense = defense_rating_victim[damage_type]
+				if(victim_defense > 0)
+					victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
+
 				var/old_damage_amount = damage_to_deal[damage_type]
-				var/defense_amount = Clamp(defense_rating_victim[damage_type] - attack_damage_penetration[damage_type],0,100)
-				var/new_damage_amount = Clamp(old_damage_amount - defense_amount,1,old_damage_amount)
-				damage_blocked += old_damage_amount - new_damage_amount
+				var/new_damage_amount = calculate_armor(old_damage_amount,victim_defense)
+
+				damage_blocked += max(0,old_damage_amount - new_damage_amount)
 				damage_to_deal[damage_type] = new_damage_amount
 
 		var/brute_damage_to_deal = 0

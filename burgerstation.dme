@@ -586,6 +586,7 @@
 #include "code\_core\obj\item\clothing\hats\_hats.dm"
 #include "code\_core\obj\item\clothing\hats\bandana.dm"
 #include "code\_core\obj\item\clothing\hats\beaver.dm"
+#include "code\_core\obj\item\clothing\hats\cat.dm"
 #include "code\_core\obj\item\clothing\hats\cult.dm"
 #include "code\_core\obj\item\clothing\hats\ert.dm"
 #include "code\_core\obj\item\clothing\hats\helmet.dm"

@@ -15,6 +15,7 @@
 /area/world/burgerstation/interior/home
 	name = "home"
 	singleplayer = TRUE
+	safe = TRUE
 
 /area/world/burgerstation/interior/nothing
 	name = "nothing"

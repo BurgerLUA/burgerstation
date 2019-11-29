@@ -204,5 +204,5 @@
 	offset_x = (offset_x/norm_offset) * TILE_SIZE
 	offset_y = (offset_y/norm_offset) * TILE_SIZE
 
-	for(var/i=1,i<=max(1,round(damage_dealt/5)),i++)
+	for(var/i=1,i<=Clamp(round(damage_dealt/5),1,5),i++)
 		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)
