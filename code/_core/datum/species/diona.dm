@@ -25,5 +25,12 @@
 		BODY_ARM_RIGHT = /obj/item/organ/arm/diona,
 		BODY_ARM_LEFT = /obj/item/organ/arm/diona/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand/diona,
-		BODY_HAND_LEFT = /obj/item/organ/hand/diona/left
+		BODY_HAND_LEFT = /obj/item/organ/hand/diona/left,
+
+		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_LUNGS = /obj/item/organ/internal/lungs,
+		BODY_STOMACH = /obj/item/organ/internal/stomach,
+		BODY_LIVER = /obj/item/organ/internal/liver,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)

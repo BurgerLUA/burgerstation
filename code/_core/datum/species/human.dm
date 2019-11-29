@@ -55,12 +55,10 @@
 		BODY_EAR_RIGHT = /obj/item/organ/ear,
 		BODY_EAR_LEFT = /obj/item/organ/ear/left,
 
-		/*
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_LUNGS = /obj/item/organ/internal/lungs,
 		BODY_STOMACH = /obj/item/organ/internal/stomach,
 		BODY_LIVER = /obj/item/organ/internal/liver,
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
-		*/
 	)

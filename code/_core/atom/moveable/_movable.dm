@@ -23,6 +23,7 @@
 	. = ..()
 	if(loc)
 		area = get_area(src)
+		area.Entered(src,null)
 	return .
 
 /atom/movable/Destroy()

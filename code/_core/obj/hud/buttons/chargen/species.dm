@@ -17,8 +17,8 @@
 		var/list/choice_to_species = list(
 			"Human" = "human",
 			"Lizard" = "reptile_advanced",
-			"Cyborg" = "cyborg",
-			"Diona" = "diona"
+			"Cyborg" = "cyborg"
+			//"Diona" = "diona"
 		)
 
 		var/choice = input("Are you sure you want to change your species to [species_choice]? Your appearance will reset to that species' default.","Species Change") in list("Yes","No")

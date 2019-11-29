@@ -33,7 +33,7 @@
 			B.update_owner(null)
 
 /mob/living/advanced/proc/remove_all_buttons()
-	for(var/obj/hud/button/chargen/B in buttons)
+	for(var/obj/hud/button/B in buttons)
 		B.update_owner(null)
 
 
