@@ -5,6 +5,8 @@
 
 	desired_light_color = "#FFFFFF"
 
+	footstep_id = "default"
+
 /turf/simulated/floor/cult/New(var/desired_loc)
 
 	icon_state = "floor[rand(1,4)]"

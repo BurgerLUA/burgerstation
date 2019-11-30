@@ -5,10 +5,4 @@
 	corner_icons = TRUE
 	corner_category = "carpet"
 
-	footstep_sounds = list(
-		'sounds/effects/footsteps/carpet1.ogg',
-		'sounds/effects/footsteps/carpet2.ogg',
-		'sounds/effects/footsteps/carpet3.ogg',
-		'sounds/effects/footsteps/carpet4.ogg',
-		'sounds/effects/footsteps/carpet5.ogg'
-	)
+	footstep_id = "carpet"

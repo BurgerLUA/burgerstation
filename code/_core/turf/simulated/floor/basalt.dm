@@ -12,6 +12,8 @@
 
 	layer = LAYER_FLOOR_LARGE + 0.2
 
+	footstep_id = "concrete"
+
 /turf/simulated/floor/basalt/New(var/desired_loc)
 	if(prob(10))
 		icon_state = "basalt[rand(2,4)]"

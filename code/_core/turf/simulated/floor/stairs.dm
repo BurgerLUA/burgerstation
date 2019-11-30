@@ -5,13 +5,7 @@
 
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
-	footstep_sounds = list(
-		'sounds/effects/footsteps/wood1.ogg',
-		'sounds/effects/footsteps/wood2.ogg',
-		'sounds/effects/footsteps/wood3.ogg',
-		'sounds/effects/footsteps/wood4.ogg',
-		'sounds/effects/footsteps/wood5.ogg'
-	)
+	footstep_id = "wood"
 
 /turf/simulated/floor/stair/wood/rich
 	color = "#A05120"

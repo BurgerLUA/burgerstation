@@ -28,6 +28,10 @@
 	var/draw_blood = FALSE
 	var/draw_weapon = FALSE
 
+	var/dodge_chance_mul = 1 //Higher values means more likely to block.
+	var/block_chance_mul = 1
+	var/parry_chance_mul = 1
+
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	var/list/attack_damage_base = list(
 		BLADE = 0,
@@ -117,7 +121,6 @@
 	var/crit_multiplier = 2
 	var/crit_chance = 5
 	var/crit_chance_max = 10
-
 
 	var/list/wound_types = list(
 		/wound/bruise/ = 1,

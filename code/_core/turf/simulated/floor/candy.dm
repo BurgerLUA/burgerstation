@@ -17,6 +17,8 @@
 	desired_light_range = DEFAULT_RANGE_AMBIENT
 	desired_light_color = "#FFFFFF"
 
+	footstep_id = "snow"
+
 /turf/simulated/floor/candy_cane/
 	name = "candy cane bridge"
 
@@ -35,3 +37,5 @@
 	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
 	desired_light_range = DEFAULT_RANGE_AMBIENT
 	desired_light_color = "#FFFFFF"
+
+	footstep_id = "default"

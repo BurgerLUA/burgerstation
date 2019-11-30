@@ -4,6 +4,8 @@
 	icon = 'icons/turf/floor/tile.dmi'
 	icon_state = "white"
 
+	footstep_id = "default"
+
 /turf/simulated/floor/tile/grey
 	color = "#999999"
 

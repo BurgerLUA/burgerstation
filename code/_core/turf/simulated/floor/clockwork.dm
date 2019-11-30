@@ -3,6 +3,8 @@
 	icon = 'icons/turf/floor/clockwork.dmi'
 	icon_state = "floor1"
 
+	footstep_id = "catwalk"
+
 /turf/simulated/floor/clockwork/alt1/
 	icon_state = "floor2"
 

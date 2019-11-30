@@ -7,6 +7,8 @@
 	desired_light_range = 2
 	desired_light_color = "#9FD733"
 
+	footstep_id = "default"
+
 /turf/simulated/floor/diona/New()
 	icon_state = "[rand(1,4)]"
 	..()

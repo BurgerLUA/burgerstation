@@ -4,14 +4,7 @@
 	icon_state = "cobble_center"
 	color = "#888888"
 
-	footstep_sounds = list(
-		'sounds/effects/footsteps/carpet1.ogg',
-		'sounds/effects/footsteps/carpet2.ogg',
-		'sounds/effects/footsteps/carpet3.ogg',
-		'sounds/effects/footsteps/carpet4.ogg',
-		'sounds/effects/footsteps/carpet5.ogg'
-	)
-
+	footstep_id = "concrete"
 
 /turf/simulated/floor/cobblestone/side
 	icon_state = "cobble_side"

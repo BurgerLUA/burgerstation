@@ -132,7 +132,7 @@
 	return 0
 
 /atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	var/base_chance = get_block_chance(attacker,weapon,target,DT)
+	var/base_chance = get_block_chance(attacker,weapon,target,DT) * DT.block_chance_mul
 	if(!prob(base_chance))
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)
@@ -149,7 +149,7 @@
 	return TRUE
 
 /atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
-	var/base_chance = get_parry_chance(attacker,weapon,target)
+	var/base_chance = get_parry_chance(attacker,weapon,target) * DT.parry_chance_mul
 	if(!prob(base_chance))
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)
@@ -169,7 +169,7 @@
 	return TRUE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	var/base_chance = get_dodge_chance(attacker,weapon,target,DT)
+	var/base_chance = get_dodge_chance(attacker,weapon,target,DT) * DT.dodge_chance_mul
 	if(!prob(base_chance))
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)

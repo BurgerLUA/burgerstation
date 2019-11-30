@@ -92,10 +92,7 @@
 	id = "village"
 	icon_state = "safe"
 	safe = TRUE
-	tracks = list(
-		"village"
-	)
-
+	tracks = TRACKS_VILLAGE
 
 /area/world/forest/interior/village/shop
 	name = "shop"

@@ -47,36 +47,17 @@
 	if(max == 0)
 		return
 
-	icon = null
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+	overlays.Cut()
 
-	var/icon/base = new/icon(initial(icon),icon_state = icon_state)
-	var/icon/bar = new/icon(initial(icon),icon_state = "bar")
-	var/start_x = 1
-	var/end_x = 32
-	var/start_y = 1
-	var/end_y = 1 + floor(Clamp((current+min(0,overflow))/max,0,1)*29) //TODO: There is something wrong with this causing the icon to spaz out.
+	var/math = floor( (current/max)*28 )
 
-	bar.Blend(bar_color,ICON_MULTIPLY)
-	bar.Crop(start_x,start_y,end_x,end_y)
+	var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
+	bar.color = bar_color
+	overlays += bar
 
-	base.Blend(bar,ICON_OVERLAY)
 
-	if(overflow < 0)
-		var/icon/bar_changing = new/icon(initial(icon),icon_state = "bar")
-		var/start_x_changing = 1
-		var/end_x_changing = 32
-		var/start_y_changing = end_y
-		var/end_y_changing = end_y + floor(Clamp(-overflow/max,0,1)*28)
-
-		bar_changing.Crop(start_x_changing,start_y_changing,end_x_changing,end_y_changing)
-		bar_changing.Crop(1,1,32,32)
-		bar_changing.Shift(NORTH,end_y)
-
-		swap_colors(base)
-
-		base.Blend(bar_changing,ICON_OVERLAY)
-
-	icon = base
 
 	..()
 

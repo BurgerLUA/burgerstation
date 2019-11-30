@@ -4,6 +4,8 @@
 	icon = 'icons/turf/floor/plating.dmi'
 	icon_state = "empty"
 
+	footstep_id = "plating"
+
 /turf/simulated/floor/plating/snow
 	name = "plating"
 

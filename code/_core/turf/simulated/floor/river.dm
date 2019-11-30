@@ -10,9 +10,13 @@
 	desired_light_range = 8
 	desired_light_color = "#AAAAFF"
 
+	footstep_id = "water"
+
 /turf/simulated/floor/river/walkable
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
+	footstep_id = "wood"
 
 
 /turf/simulated/floor/river/chocolate

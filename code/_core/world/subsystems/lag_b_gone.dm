@@ -13,7 +13,7 @@ var/global/lag_b_gone = 0
 	if(world.tick_usage >= 75)
 		lag_b_gone = min(lag_b_gone + 1,10)
 	else if (world.tick_usage < 25)
-		lag_b_gone = max(lag_b_gone - 1,0)
+		lag_b_gone = max(lag_b_gone - 0.05,0)
 
 	if(lag_b_gone && !was_active)
 		broadcast_to_clients("Lag-B-Gone is now active.")

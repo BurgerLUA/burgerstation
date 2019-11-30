@@ -95,7 +95,7 @@
 
 /mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
-	var/base_chance = get_block_chance(attacker,weapon,target,DT)
+	var/base_chance = get_block_chance(attacker,weapon,target,DT) * DT.block_chance_mul
 
 	if(!prob(min(base_chance,BLOCK_CHANCE_MAX)))
 		return FALSE
@@ -119,7 +119,7 @@
 
 /mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
 
-	var/base_chance = get_parry_chance(attacker,weapon,target)
+	var/base_chance = get_parry_chance(attacker,weapon,target) * DT.parry_chance_mul
 
 	var/obj/item/I_L = get_held_left()
 	var/obj/item/I_R = get_held_right()
@@ -175,7 +175,7 @@
 
 /mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
-	var/base_chance = get_dodge_chance(attacker,weapon,target,DT)
+	var/base_chance = get_dodge_chance(attacker,weapon,target,DT) * DT.dodge_chance_mul
 
 	if(!prob(base_chance))
 		return FALSE

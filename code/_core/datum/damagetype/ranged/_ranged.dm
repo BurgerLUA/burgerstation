@@ -36,6 +36,10 @@
 		SKILL_RANGED = SKILL_A
 	)
 
+	block_chance_mul = 0.5
+	dodge_chance_mul = 0.25
+	parry_chance_mul = 0.25
+
 /damagetype/ranged/get_attack_type()
 	return ATTACK_TYPE_RANGED
 

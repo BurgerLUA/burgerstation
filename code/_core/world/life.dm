@@ -57,7 +57,7 @@
 					else
 						S.next_run = ticks + S.tick_rate
 			catch(var/exception/e)
-				LOG_ERROR("[v["name"]]: [e] on [e.file]:[e.line]!")
+				LOG_ERROR("[v["name"]]: [e] on [e.file]:[e.line]!<br>[e.desc]")
 				if(SHUTDOWN_SUBSYSTEM_ON_ERROR)
 					active_subsystems -= list(v)
 

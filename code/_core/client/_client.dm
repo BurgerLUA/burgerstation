@@ -317,7 +317,7 @@ var/global/list/all_clients = list()
 
 /client/MouseMove(object,location,control,params)
 
-	if(is_zoomed)
+	if(is_zoomed && (curtime % 3) )
 
 		var/list/params_list = params2list(params)
 		var/list/screen_loc = parse_screen_loc(params_list["screen-loc"])

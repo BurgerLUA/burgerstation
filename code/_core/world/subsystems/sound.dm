@@ -41,9 +41,15 @@ proc/stop_music_track(var/client/hearer)
 	created_sound.status = SOUND_MUTE
 	created_sound.channel = SOUND_CHANNEL_MUSIC
 	hearer << created_sound
+	hearer.next_music_track = 0
 
 proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
 	var/sound/created_sound = sound(sound_path)
+
+	if(!created_sound)
+		LOG_ERROR("Warning! Invalid sound: [sound_path].")
+		return FALSE
+
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
 	created_sound.pan = pan
@@ -63,7 +69,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	var/track/T = all_tracks[music_track_id]
 	if(!T)
-		LOG_ERROR("WARNING: INVALID MUSIC TRACK: [music_track_id].")
+		CRASH("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 		return FALSE
 
 	var/volume_mod = 50
@@ -72,6 +78,11 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		volume_mod = hearer.settings.loaded_data["volume_music"]
 
 	var/sound/created_sound = sound(T.path)
+
+	if(!created_sound)
+		LOG_ERROR("Warning! Invalid sound: [T.path].")
+		return FALSE
+
 	created_sound.channel = SOUND_CHANNEL_MUSIC
 	created_sound.priority = 0
 	created_sound.environment = ENVIRONMENT_NONE
@@ -81,7 +92,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	hearer << created_sound
 	hearer.current_music_track = music_track_id
-	hearer.next_music_track = curtime + T.length
+	hearer.next_music_track = curtime + SECONDS_TO_DECISECONDS(T.length)
 
 	return created_sound
 
@@ -91,6 +102,11 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		return FALSE
 
 	var/sound/created_sound = sound(sound_path)
+
+	if(!created_sound)
+		LOG_ERROR("Warning! Invalid sound: [sound_path].")
+		return FALSE
+
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
 	created_sound.pan = pan

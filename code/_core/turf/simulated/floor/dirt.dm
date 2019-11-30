@@ -10,3 +10,5 @@
 	corner_category = "dirt"
 
 	layer = LAYER_FLOOR
+
+	footstep_id = "asteroid"

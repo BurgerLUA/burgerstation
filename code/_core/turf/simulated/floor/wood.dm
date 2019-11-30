@@ -3,13 +3,7 @@
 	icon = 'icons/turf/floor/wood.dmi'
 	icon_state = "wood"
 
-	footstep_sounds = list(
-		'sounds/effects/footsteps/wood1.ogg',
-		'sounds/effects/footsteps/wood2.ogg',
-		'sounds/effects/footsteps/wood3.ogg',
-		'sounds/effects/footsteps/wood4.ogg',
-		'sounds/effects/footsteps/wood5.ogg'
-	)
+	footstep_id = "wood"
 
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"

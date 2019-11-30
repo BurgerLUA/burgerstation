@@ -12,3 +12,5 @@
 
 	corner_icons = TRUE
 	corner_category = "xenomorph"
+
+	footstep_id = "concrete"
