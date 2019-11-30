@@ -4,6 +4,8 @@
 
 	assoc_wishgranter = "northern_heights"
 
+	tracks = TRACKS_MOUNTAIN
+
 /area/world/mountain/interior
 	name = "interior"
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR

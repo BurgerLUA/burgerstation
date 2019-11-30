@@ -1,0 +1,5 @@
+#define TRACKS_FOREST list("dawn","endgame","from_the_dirt","game_over","meteor_recovery","meteor_storm","revolver","rise_and_fall","village_hype")
+#define TRACKS_CAVE list("crystal_whispers","russian_heavy","slow_light")
+#define TRACKS_LAVA list("cursed_lava","lavaland")
+#define TRACKS_MOUNTAIN list("death_to_life","ender","rising_bells","snow_fall")
+#define TRACKS_VILLAGE list("piano_depression","sorrow_keys")

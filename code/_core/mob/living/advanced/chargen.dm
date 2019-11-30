@@ -12,7 +12,7 @@
 
 		if(ENABLE_LORE)
 
-			play_sound('sounds/music/menu/space.ogg',list(src),list(src.x,src.y,src.z),channel = SOUND_CHANNEL_MUSIC)
+			play_music_track("space_wayfarer",src.client)
 
 			client.allow_zoom_controls = FALSE
 			client.update_zoom(2)

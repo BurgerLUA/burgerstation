@@ -3,6 +3,11 @@ client/verb/var_edit(var/object as anything in view())
 	set category = "Debug"
 
 	if(ckey != "burgerbb")
+		to_chat("You cannot use this.")
+		return FALSE
+
+	if(!ENABLE_VAREDIT)
+		to_chat("Varedit is disabled.")
 		return FALSE
 
 	if(!object)
@@ -28,7 +33,6 @@ client/verb/var_edit(var/object as anything in view())
 
 
 proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
-
 
 	if(!value)
 		return "NULL"
@@ -80,6 +84,11 @@ client/verb/change_variable(var/datum/object as anything in view(), var/desired_
 	set category = "Debug"
 
 	if(ckey != "burgerbb")
+		to_chat("You cannot use this.")
+		return FALSE
+
+	if(!ENABLE_VAREDIT)
+		to_chat("Varedit is disabled.")
 		return FALSE
 
 	if(desired_varable_value && istext(desired_varable_value))

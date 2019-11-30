@@ -130,7 +130,7 @@
 			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,SECONDS_TO_DECISECONDS(1))
 			P.sight |= SEE_THRU
 			. = ..()
-			play_music_track("intro",P.client)
+			play_music_track("village_intro",P.client)
 			P.client.disable_controls = TRUE
 			P.move_dir = NORTH
 

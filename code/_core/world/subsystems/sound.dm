@@ -63,6 +63,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	var/track/T = all_tracks[music_track_id]
 	if(!T)
+		LOG_ERROR("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 		return FALSE
 
 	var/volume_mod = 50
@@ -86,6 +87,9 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0)
 
+	if(!sound_path)
+		return FALSE
+
 	var/sound/created_sound = sound(sound_path)
 	created_sound.frequency = pitch
 	created_sound.repeat = loop
@@ -108,6 +112,10 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	for(var/mob/M in hearers)
 
 		CHECK_TICK
+
+		if(!created_sound)
+			LOG_ERROR("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
+			break
 
 		if(!M.client || !M.client.settings)
 			continue

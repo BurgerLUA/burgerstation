@@ -8,7 +8,7 @@
 	map_color_b = rgb(25,25,200,255)
 	map_color_a = rgb(0,0,0,255)
 
-	tracks = list("village","rise","downwards")
+	tracks = TRACKS_FOREST
 
 	assoc_wishgranter = "village"
 
@@ -69,9 +69,7 @@
 	id = "village"
 	icon_state = "safe"
 	safe = TRUE
-	tracks = list(
-		"village"
-	)
+	tracks = TRACKS_VILLAGE
 
 /area/world/forest/exterior/village/ship
 	icon_state = "pink"

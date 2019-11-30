@@ -127,7 +127,7 @@ var/global/list/all_clients = list()
 	make_ghost(locate(VIEW_RANGE,VIEW_RANGE,1))
 
 	if(world_state == STATE_RUNNING)
-		play_music_track("lobby", src)
+		play_music_track("intro", src)
 	else
 		play_music_track("loading", src)
 

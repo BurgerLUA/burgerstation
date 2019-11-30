@@ -1,7 +1,8 @@
 /area/world/lava //1,3; 1,4; 2,3
 	name = "lavaland"
 	id = "lavaland"
-	tracks = ("lava")
+
+	tracks = TRACKS_LAVA
 
 /area/world/lava/exterior
 	name = "lavaland exterior"
