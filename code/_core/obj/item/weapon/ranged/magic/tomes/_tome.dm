@@ -62,6 +62,7 @@
 
 	A.update_health_element_icons(mana=TRUE)
 
+/*
 /obj/item/weapon/ranged/magic/tome/do_automatic(var/mob/caller,var/atom/object,location,params)
 
 	if(!automatic || (object && object.plane >= PLANE_HUD) || !is_advanced(caller))
@@ -79,6 +80,7 @@
 	A.update_health_element_icons(mana=TRUE)
 
 	return TRUE
+*/
 
 /obj/item/weapon/ranged/magic/tome/on_mouse_up(var/mob/caller,var/atom/object,location,control,params,var/secret_bypass=FALSE)
 

@@ -67,6 +67,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
+
 	if(next_shoot_time > curtime)
 		return FALSE
 
@@ -82,9 +83,9 @@
 
 	if(wield_only && !wielded)
 		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
-		return TRUE
+		return ..()
 
-	if(!automatic && shoot(caller,object,location,params))
+	if(shoot(caller,object,location,params))
 		return TRUE
 
 	return ..()
@@ -93,11 +94,10 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
 
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
-	caller.to_chat(span("danger","*click click*"))
+	caller.to_chat(span("danger","*click*"))
 	var/area/A = get_area(caller.loc)
-
 	if(length(empty_sounds))
-		play_sound(pick(empty_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound(pick(empty_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment,volume = 50)
 
 	return FALSE
 
@@ -112,13 +112,16 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		M.attack_turn = curtime + M.attack_turn_delay
 
 	if(!can_owner_shoot(caller))
+		world.log << "can_owner_shoot"
 		return FALSE
 
 	if(!object.x && !object.y && !object.z)
+		world.log << "object"
 		return FALSE
 
 	if(!can_gun_shoot(caller))
-		return TRUE
+		world.log << "can_gun_shoot"
+		return FALSE
 
 	next_shoot_time = curtime + shoot_delay
 
@@ -185,6 +188,15 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
+
+
+	if(automatic)
+		spawn(next_shoot_time - curtime + 1)
+			if(is_advanced(caller))
+				var/mob/living/advanced/A = caller
+				world.log << "[A.attack_flags]"
+				if( (A.right_item = src && A.attack_flags & ATTACK_HELD_RIGHT) || (A.left_item = src && A.attack_flags & ATTACK_HELD_LEFT))
+					shoot(caller,object,location,params,damage_multiplier)
 
 	return TRUE
 
@@ -259,11 +271,3 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		return list(normx,normy)
 
 	return list(0,0)
-
-obj/item/weapon/ranged/do_automatic(var/mob/caller,var/atom/object,location,params)
-
-	if(!automatic || (object && object.plane >= PLANE_HUD))
-		return TRUE
-
-	return shoot(caller,object,location,params)
-

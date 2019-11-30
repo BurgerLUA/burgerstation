@@ -5,7 +5,7 @@
 
 	shoot_delay = 1
 
-	automatic = TRUE
+	automatic = FALSE
 
 	bullet_count_max = 1 //One in the chamber
 

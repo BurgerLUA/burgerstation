@@ -160,29 +160,3 @@ mob/living/advanced/on_left_click(object,location,control,params) //THIS ONLY WO
 
 /mob/living/advanced/proc/get_right_hand()
 	return right_hand && length(right_hand.held_objects) ? right_hand.held_objects[1] : null
-
-/mob/living/advanced/proc/do_automatic_left()
-
-	if(!client) //Non-clients shouldn't use this.
-		return FALSE
-
-	if(!can_use_controls(client.last_object,client.last_location,null,client.last_params))
-		return FALSE
-
-	if(left_item)
-		return left_item.do_automatic(src,client.last_object,client.last_location,client.last_params)
-
-	return FALSE
-
-/mob/living/advanced/proc/do_automatic_right()
-
-	if(!client) //Non-clients shouldn't use this.
-		return FALSE
-
-	if(!can_use_controls(client.last_object,client.last_location,null,client.last_params))
-		return FALSE
-
-	if(right_item)
-		return right_item.do_automatic(src,client.last_object,client.last_location,client.last_params)
-
-	return FALSE

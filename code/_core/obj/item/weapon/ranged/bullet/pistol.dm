@@ -60,6 +60,8 @@
 
 	view_punch = 8
 
+	automatic = FALSE
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
 	name = ".45 tactical pistol"
@@ -69,3 +71,20 @@
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
 	view_punch = 6
+
+
+/*
+/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+	. = ..()
+
+	if(. && automatic)
+		spawn( (next_shoot_time - curtime) + 1)
+			if(is_advanced(caller))
+				var/mob/living/advanced/A = caller
+				world.log << "[A.attack_flags]"
+				if( (A.right_item = src && A.attack_flags & ATTACK_HELD_RIGHT) || (A.left_item = src && A.attack_flags & ATTACK_HELD_LEFT))
+					shoot(caller,object,location,params,damage_multiplier)
+
+	return .
+*/

@@ -12,6 +12,13 @@
 
 	requires_bullets = TRUE
 
+	empty_sounds = list(
+		'sounds/weapons/empty1.ogg',
+		'sounds/weapons/empty2.ogg',
+		'sounds/weapons/empty3.ogg',
+		'sounds/weapons/empty4.ogg'
+	)
+
 /obj/item/weapon/ranged/bullet/Destroy()
 
 	qdel(chambered_bullet)

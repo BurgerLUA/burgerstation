@@ -293,10 +293,6 @@
 	var/damage_type_text = get_damage_type_text(examiner)
 	return "[name_text][desc_text][rarity_text][physical_text][desc_extended_text][damage_type_text]"
 
-
-obj/item/proc/do_automatic(caller,object,location,params)
-	return TRUE
-
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
 
 	var/obj/hud/inventory/I = inventory_override || src.loc
