@@ -82,7 +82,6 @@
 		spawn( (next_shoot_time - curtime) + 1)
 			if(is_advanced(caller))
 				var/mob/living/advanced/A = caller
-				world.log << "[A.attack_flags]"
 				if( (A.right_item = src && A.attack_flags & ATTACK_HELD_RIGHT) || (A.left_item = src && A.attack_flags & ATTACK_HELD_LEFT))
 					shoot(caller,object,location,params,damage_multiplier)
 

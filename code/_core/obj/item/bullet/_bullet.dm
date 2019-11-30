@@ -19,6 +19,9 @@
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
 	var/bullet_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 
+	var/jam_chance = 0 //Chance to not eject when spent.
+	var/misfire_chance = 0 //Chance not to shoot when shot.
+
 /obj/item/bullet/proc/get_ammo_count()
 	return item_count_current
 
@@ -54,6 +57,8 @@
 /obj/item/bullet/proc/spend_bullet()
 
 	if(!is_spent)
+		if(misfire_chance && prob(misfire_chance))
+			return FALSE
 		is_spent = TRUE
 		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 		return src

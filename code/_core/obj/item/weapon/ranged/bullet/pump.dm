@@ -15,7 +15,7 @@
 
 	caller.to_chat(span("notice","You [action_name] \the [src]."))
 
-	eject_chambered_bullet(get_turf(src))
+	eject_chambered_bullet(caller,get_turf(src))
 
 	if(stored_bullets[1])
 		var/obj/item/bullet/B = stored_bullets[1]

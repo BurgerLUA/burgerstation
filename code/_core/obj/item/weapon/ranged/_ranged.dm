@@ -112,15 +112,12 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		M.attack_turn = curtime + M.attack_turn_delay
 
 	if(!can_owner_shoot(caller))
-		world.log << "can_owner_shoot"
 		return FALSE
 
 	if(!object.x && !object.y && !object.z)
-		world.log << "object"
 		return FALSE
 
 	if(!can_gun_shoot(caller))
-		world.log << "can_gun_shoot"
 		return FALSE
 
 	next_shoot_time = curtime + shoot_delay
@@ -194,7 +191,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		spawn(next_shoot_time - curtime + 1)
 			if(is_advanced(caller))
 				var/mob/living/advanced/A = caller
-				world.log << "[A.attack_flags]"
 				if( (A.right_item = src && A.attack_flags & ATTACK_HELD_RIGHT) || (A.left_item = src && A.attack_flags & ATTACK_HELD_LEFT))
 					shoot(caller,object,location,params,damage_multiplier)
 

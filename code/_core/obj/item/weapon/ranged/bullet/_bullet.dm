@@ -19,6 +19,8 @@
 		'sounds/weapons/empty4.ogg'
 	)
 
+	var/jammed = FALSE
+
 /obj/item/weapon/ranged/bullet/Destroy()
 
 	qdel(chambered_bullet)
@@ -36,12 +38,21 @@
 	return chambered_bullet ? chambered_bullet.damage_type : damage_type
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc)
 
 	if(!chambered_bullet)
 		return FALSE
 
 	var/obj/item/bullet/B = chambered_bullet
+
+	if(jammed)
+		caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		jammed = FALSE
+	else if(B.jam_chance && prob(B.jam_chance))
+		caller.to_chat(span("danger","\The [src.name] jams!"))
+		jammed = TRUE
+		return FALSE
+
 	B.force_move(new_loc)
 	B.update_icon()
 

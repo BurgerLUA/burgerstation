@@ -22,6 +22,9 @@
 
 	bullet_speed = BULLET_SPEED_PISTOL_HEAVY*SURPLUS_PENALTY
 
+	misfire_chance = 5
+	jam_chance = 5
+
 /obj/item/bullet/pistol_50ae/
 	name = "\improper .50 action express"
 	desc = "For pistols that require .50ae."
@@ -50,6 +53,18 @@
 
 	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
 
+/obj/item/bullet/pistol_9mm/surplus
+	name = "surplus 9mm round"
+	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo. This one was mass produced."
+	icon = 'icons/obj/items/bullet/9mm_surplus.dmi'
+
+	damage_type = "9mm_surplus"
+
+	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
+
+	misfire_chance = 5
+	jam_chance = 5
+
 /obj/item/bullet/pistol_45/
 	name = "\improper .45 bullet"
 	desc = "For pistols and smgs that requre .45 ammo."
@@ -73,6 +88,9 @@
 
 	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
 
+	misfire_chance = 5
+	jam_chance = 5
+
 
 /obj/item/bullet/pistol_45/rubber
 	name = "\improper rubber .45 bullet"
@@ -84,3 +102,5 @@
 	damage_type = ".45_rubber"
 
 	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+	jam_chance = 10 //Rubber bullets are infamous for not having enough power to move the slide all the way back.

@@ -34,7 +34,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
 
-	eject_chambered_bullet(caller.loc)
+	eject_chambered_bullet(caller,caller.loc)
 	load_new_bullet_from_magazine()
 
 	var/area/A = get_area(caller.loc)
@@ -80,7 +80,7 @@
 	. = ..()
 
 	if(.)
-		eject_chambered_bullet(get_turf(src))
+		eject_chambered_bullet(caller,get_turf(src))
 		load_new_bullet_from_magazine()
 
 	return .

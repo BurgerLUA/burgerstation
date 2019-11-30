@@ -37,6 +37,8 @@
 
 	bullet_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
+	misfire_chance = 3
+
 /obj/item/bullet/revolver_44
 	name = "\improper .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo."
@@ -67,6 +69,8 @@
 
 	bullet_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
+	misfire_chance = 3
+
 /obj/item/bullet/revolver_22
 	name = "\improper .22 LR"
 	desc = "For revolvers that require .22 LR ammo."
@@ -90,6 +94,8 @@
 	item_count_max_icon = 6
 
 	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
+
+	misfire_chance = 3
 
 /obj/item/bullet/revolver_22/surplus/on_spawn()
 	item_count_current = 6
