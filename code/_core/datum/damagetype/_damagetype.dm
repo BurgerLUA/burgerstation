@@ -236,8 +236,6 @@
 
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(L.status & FLAG_STATUS_IMMORTAL)
-				return 0
 
 			var/defense_rating_victim = L.health.get_defense(attacker,hit_object)
 
@@ -353,7 +351,7 @@
 		if(is_player(blamed) && is_player(victim))
 			var/mob/living/advanced/player/PA = blamed
 			var/mob/living/advanced/player/PV = victim
-			if(!(PV.status & FLAG_STATUS_DEAD))
+			if(!PV.dead)
 				var/victim_health_final = PV.health.get_overall_health()
 				var/list/attack_log_format = list()
 				attack_log_format["attacker"] = PA
@@ -463,14 +461,14 @@
 
 		var/matrix/attack_matrix = matrix()
 
-		if(L.should_be_knocked_down)
+		if(L.horizontal)
 			attack_matrix = turn(attack_matrix,L.stun_angle)
 
 		attack_matrix.Translate(pixel_x_offset,pixel_y_offset)
 
 		animate(L, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
-		if(L.should_be_knocked_down)
+		if(L.horizontal)
 			animate(transform = turn(matrix(), L.stun_angle), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 		else
 			animate(transform = matrix(), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)

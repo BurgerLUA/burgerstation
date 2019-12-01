@@ -1,24 +1,19 @@
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(paralyze_time != 0)
-		return FALSE
-
-	if(sleep_time != 0)
-		return FALSE
-
-	if(fatigue_time != 0)
-		return FALSE
-
-	if(status & FLAG_STATUS_DEAD)
-		return FALSE
-
 	if(is_sneaking)
 		on_sneak()
 
 	return ..()
 
 /mob/living/handle_movement(var/adjust_delay = 1)
+
+	if(dead)
+		return FALSE
+
 	if(status & FLAG_STATUS_PARALYZE)
+		return FALSE
+
+	if(status & FLAG_STATUS_SLEEP)
 		return FALSE
 
 	return ..()
@@ -27,6 +22,9 @@
 	. = ..()
 
 	if(status & FLAG_STATUS_STUN)
+		. *= 3
+
+	if(status & FLAG_STATUS_FATIGUE)
 		. *= 3
 
 	if(is_sneaking)

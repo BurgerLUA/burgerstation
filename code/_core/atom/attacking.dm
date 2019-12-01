@@ -122,7 +122,7 @@
 /atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	return 0
 
-/atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
 	return 0
 
 /atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)

@@ -1,0 +1,1 @@
+#define HEALTH_THRESHOLD_DEAD -50

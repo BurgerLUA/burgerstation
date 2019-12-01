@@ -222,7 +222,7 @@
 
 	if(hit_atom != target_atom && is_living(hit_atom))
 		var/mob/living/L = hit_atom
-		if(L.status & FLAG_STATUS_DEAD || L.status & FLAG_STATUS_STUN)
+		if(L.horizontal)
 			return FALSE
 
 	if(damage_type && all_damage_types[damage_type])

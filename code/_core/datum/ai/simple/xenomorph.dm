@@ -18,7 +18,7 @@
 	var/mob/living/simple/npc/xenomorph/pack_leader/leader
 
 /ai/simple/xenomorph/proc/is_valid_leader(var/mob/living/simple/npc/spacecarp/leader/L)
-	return !(L.status & FLAG_STATUS_DEAD)
+	return !(L.dead)
 
 /ai/simple/xenomorph/proc/get_leader()
 	for(var/mob/living/simple/npc/xenomorph/pack_leader/L in view(radius_find_enemy,owner))

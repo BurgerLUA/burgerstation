@@ -65,7 +65,7 @@
 
 	var/allow_experience_gains = FALSE
 
-	var/should_be_knocked_down = FALSE
+	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
 
 	health = /health/mob/living/
 
@@ -89,6 +89,8 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+
+	var/dead = FALSE
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))

@@ -63,7 +63,7 @@
 	var/sadness = (my_rgb[3]/255) + sadness_mod
 	var/face_state = "none"
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		icon_state = "death"
 	else if(stored_slimes > 1)
 		icon_state = "large"

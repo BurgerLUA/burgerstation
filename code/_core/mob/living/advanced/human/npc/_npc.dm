@@ -41,4 +41,4 @@
 	return 0
 
 /mob/living/advanced/npc/can_be_grabbed()
-	return status & FLAG_STATUS_DEAD
+	return horizontal

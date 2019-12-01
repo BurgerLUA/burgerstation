@@ -10,7 +10,7 @@
 
 /mob/living/simple/npc/turret/port/proc/open()
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
 	if(state != 0)
@@ -27,7 +27,7 @@
 
 /mob/living/simple/npc/turret/port/proc/close()
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
 	if(state != 2)
@@ -52,7 +52,7 @@
 	var/desired_cover_state
 	var/desired_gun_state
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		desired_cover_state = "openTurretCover"
 		desired_gun_state = "broken"
 	else

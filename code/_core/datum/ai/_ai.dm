@@ -87,7 +87,7 @@
 	if(!owner.initialized)
 		return FALSE
 
-	if(owner.status & FLAG_STATUS_DEAD)
+	if(owner.dead)
 		return FALSE
 
 	if(!is_turf(owner.loc))
@@ -197,7 +197,7 @@
 
 /ai/proc/should_attack_mob(var/mob/living/L)
 
-	if(L.status & FLAG_STATUS_DEAD)
+	if(L.dead)
 		return FALSE
 
 	var/area/A = get_area(L)

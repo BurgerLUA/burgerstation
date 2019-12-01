@@ -44,7 +44,7 @@
 	if(!value)
 		return 0
 
-	if(A.fatigue_time > 0)
+	if(A.status & FLAG_STATUS_FATIGUE)
 		return 0
 
 	if(adjust_stamina(-value))
@@ -68,13 +68,20 @@ health/mob/living/advanced/update_stats()
 	stamina_max = A.stamina_base + endurance*400
 	mana_max = A.mana_base + A.get_attribute_power(ATTRIBUTE_WISDOM)*400
 
-	if(A.status & FLAG_STATUS_CRIT)
-		health_regeneration = health_max * (0.01 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*0.02)
+	if(A.status & FLAG_STATUS_CRIT || A.status & FLAG_STATUS_SLEEP)
+		health_regeneration = health_max * (0.01 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*0.025)
 	else
 		health_regeneration = health_max * (0.002 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*0.005)
 
-	stamina_regeneration = stamina_max * (0.02 + endurance*0.03)
-	mana_regeneration = mana_max * (0.01 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.02)
+	if(A.status & FLAG_STATUS_FATIGUE || A.status & FLAG_STATUS_SLEEP)
+		stamina_regeneration = stamina_max * (0.1 + endurance*0.15)
+	else
+		stamina_regeneration = stamina_max * (0.02 + endurance*0.03)
+
+	if(A.status & FLAG_STATUS_SLEEP)
+		mana_regeneration = mana_max * (0.05 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.1)
+	else
+		mana_regeneration = mana_max * (0.01 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.02)
 
 	A.update_health_element_icons(TRUE,TRUE,TRUE)
 
