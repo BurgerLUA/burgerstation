@@ -6,8 +6,14 @@
 	if(stun_time > max_value)
 		return FALSE
 
-	if(stun_time < max_value)
-		stun_time = min(max_value,stun_time + value)
+	if(stun_time >= max_value)
+		return FALSE
+
+	stun_time = min(max_value,stun_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,stun_time,"STUNNED!")
+
+	check_status_effects()
 
 	return TRUE
 
@@ -19,12 +25,18 @@
 	if(paralyze_time > max_value)
 		return FALSE
 
-	if(paralyze_time < max_value)
-		paralyze_time = min(max_value,paralyze_time + value)
+	if(paralyze_time >= max_value)
+		return FALSE
+
+	paralyze_time = min(max_value,paralyze_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,paralyze_time,"PARALYZED!")
+
+	check_status_effects()
 
 	return TRUE
 
-/mob/living/proc/add_fatigue(var/value,var/max_value = 600)
+/mob/living/proc/add_fatigue(var/value,var/max_value = 300)
 
 	if(fatigue_time == -1)
 		return FALSE
@@ -32,8 +44,14 @@
 	if(fatigue_time > max_value)
 		return FALSE
 
-	if(fatigue_time < max_value)
-		fatigue_time = min(max_value,fatigue_time + value)
+	if(fatigue_time >= max_value)
+		return FALSE
+
+	fatigue_time = min(max_value,fatigue_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,paralyze_time,"FATIGUED!")
+
+	check_status_effects()
 
 	return TRUE
 

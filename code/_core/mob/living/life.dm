@@ -1,16 +1,8 @@
 /mob/living/proc/add_status(var/status_type)
-
 	status |= status_type
-
-	if(!(src in all_living_with_status))
-		all_living_with_status += all_living_with_status
 
 /mob/living/proc/remove_status(var/status_type)
-
-	status |= status_type
-
-	if( (src in all_living_with_status) && !status )
-		all_living_with_status -= all_living_with_status
+	status &= ~status_type
 
 /mob/living/proc/death()
 
@@ -39,7 +31,6 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	add_stun(2)
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
@@ -143,65 +134,73 @@
 
 	return ..()
 
-/mob/living/proc/handle_status_effects()
 
-	if(is_turf(src.loc))
+/mob/living/proc/check_status_effects()
 
-		var/desired_horizontal = FALSE
+	//Fatigue
+	if(!(status & FLAG_STATUS_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
+		add_status(FLAG_STATUS_FATIGUE)
+		on_fatigued()
 
-		if(status & FLAG_STATUS_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
-			status &= ~FLAG_STATUS_FATIGUE
-			on_unfatigued()
+	if(status & FLAG_STATUS_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
+		remove_status(FLAG_STATUS_FATIGUE)
+		on_unfatigued()
 
-		if(!(status & FLAG_STATUS_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
-			status |= FLAG_STATUS_FATIGUE
-			on_fatigued()
+	//Stun
+	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
+		add_status(FLAG_STATUS_STUN)
+		on_stunned()
 
-		if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
-			status &= ~FLAG_STATUS_STUN
-			on_unstunned()
+	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
+		remove_status(FLAG_STATUS_STUN)
+		on_unstunned()
 
-		if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
-			status |= FLAG_STATUS_STUN
-			on_stunned()
+	//Paralyze
+	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
+		add_status(FLAG_STATUS_PARALYZE)
+		on_paralyzed()
 
-		if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
-			status &= ~FLAG_STATUS_PARALYZE
-			on_unparalyzed()
+	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
+		remove_status(FLAG_STATUS_PARALYZE)
+		on_unparalyzed()
 
-		if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
-			status |= FLAG_STATUS_PARALYZE
-			on_paralyzed()
+	//Final Checks
+	if(status && !(src in all_living_with_status))
+		all_living_with_status += src
 
-		if(stun_time != -1)
-			stun_time = max(0,stun_time - LIFE_TICK)
+	if(!status && (src in all_living_with_status))
+		all_living_with_status -= src
 
-		if(paralyze_time != -1)
-			paralyze_time = max(0,paralyze_time - LIFE_TICK)
+	return TRUE
 
-		if(health && fatigue_time != -1)
-			if(health.stamina_current == health.stamina_max*0.25)
-				fatigue_time = 0
-			else
-				fatigue_time = max(0,fatigue_time - LIFE_TICK)
+/mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 
-		if(sleep_time != -1)
-			sleep_time = max(0,sleep_time - LIFE_TICK)
+	var/desired_horizontal = FALSE
 
-		if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP)
-			desired_horizontal = TRUE
+	if(stun_time != -1)
+		stun_time = max(0,stun_time - amount_to_remove)
 
-		if(desired_horizontal != horizontal)
-			if(desired_horizontal) //KNOCK DOWN
-				animate(src,transform = turn(matrix(), stun_angle), time = 1)
-			else //GET UP
-				animate(src,transform = matrix(), time = 1)
-			horizontal = desired_horizontal
+	if(paralyze_time != -1)
+		paralyze_time = max(0,paralyze_time - amount_to_remove)
 
-	if(dead)
-		return FALSE
+	if(sleep_time != -1)
+		sleep_time = max(0,sleep_time - amount_to_remove)
 
-	handle_health_buffer()
+	if(health && fatigue_time != -1)
+		if(health.stamina_current == health.stamina_max*0.25)
+			fatigue_time = 0
+		else
+			fatigue_time = max(0,fatigue_time - amount_to_remove)
+
+	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP)
+		desired_horizontal = TRUE
+
+	if(desired_horizontal != horizontal)
+		if(desired_horizontal) //KNOCK DOWN
+			animate(src,transform = turn(matrix(), stun_angle), time = 1)
+		else //GET UP
+			animate(src,transform = matrix(), time = 1)
+		horizontal = desired_horizontal
 
 	return TRUE
 
@@ -215,6 +214,8 @@
 		return FALSE
 
 	update_alpha(handle_alpha())
+
+	handle_health_buffer()
 
 	return TRUE
 

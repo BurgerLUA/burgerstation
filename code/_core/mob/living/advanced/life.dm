@@ -104,13 +104,12 @@ mob/living/advanced/proc/handle_regen()
 
 	return TRUE
 
-/mob/living/advanced/handle_status_effects()
-	. = ..()
+/mob/living/advanced/check_status_effects()
 
-	if(. && health && status & FLAG_STATUS_CRIT && health.health_current > 0)
+	if(. && health && health.health_current > 0 && status & FLAG_STATUS_CRIT)
 		set_hard_crit(FALSE)
 
-	return .
+	return ..()
 
 /mob/living/advanced/proc/set_hard_crit(var/hard_crit_enabled = TRUE)
 

@@ -145,6 +145,7 @@
 #include "code\_core\client\zoom.dm"
 #include "code\_core\client\chat\_chat.dm"
 #include "code\_core\client\chat\formatting.dm"
+#include "code\_core\client\debug\status.dm"
 #include "code\_core\client\verbs\visuals.dm"
 #include "code\_core\client\verbs\volume.dm"
 #include "code\_core\datum\_datum.dm"

@@ -183,9 +183,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier)
 
-
 	heat_current = min(heat_max, heat_current + heat_per_shot)
-
 
 	if(automatic)
 		spawn(next_shoot_time - curtime + 1)
