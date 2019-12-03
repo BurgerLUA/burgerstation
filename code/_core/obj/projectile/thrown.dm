@@ -25,8 +25,10 @@
 			if(is_living(A))
 				var/mob/living/L = A
 				var/guessed_velocity = Clamp(10*steps*(1 - steps_current/steps),10,40)
-				L.add_stun(guessed_velocity)
-				L.add_paralyze(guessed_velocity*0.5)
+				if(!L.dead)
+					L.add_stun(10 + guessed_velocity)
+
+				//L.add_paralyze(guessed_velocity*0.5)
 				//HEALTH TODO: APPLY DAMAGE
 		else
 			A.force_move(hit_atom)

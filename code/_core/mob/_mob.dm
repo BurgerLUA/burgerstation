@@ -37,6 +37,7 @@
 	*/
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drop_zone = TRUE
 
 	var/move_mod = 2
 	var/move_mod_button = 0

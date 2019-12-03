@@ -7,14 +7,25 @@
 
 	<body>
 		<table width=100% height=0%>
+			<tr height=0px>
+				<td id='title' width=100px>
+					Title
+				</td>
+				<td width=100% align='center' >
+	
+				</td>
+				<td align='right' width=100px>
+					<button onclick="close_page()" align='center'>X</button>
+				</td>
+			</tr>
 			<tr>
-				<td id='prev' width=30px>
+				<td align='left' id='prev'>
 					PREVIOUS PAGE HERE
 				</td>
-				<td id='title' align='center' width=100%>
-					Title
+				<td id='page_number' align='center'>
+					Page Number
 				</td>	
-				<td id='next' width=30px>
+				<td align='right' id='next'>
 					NEXT PAGE HERE
 				</td>				
 			</tr>
@@ -44,19 +55,26 @@
 			document.getElementById("title").innerHTML = desired_title
 			
 			if(desired_page == 1) {
-				document.getElementById("prev").innerHTML = "Previous Page"
+				document.getElementById("prev").innerHTML = "<button disabled>&larr;</button>"
 			}
 			else {
-				document.getElementById("prev").innerHTML = "<a onclick=\"change_page(" + (desired_page-1) + ")\">Previous Page</a>"
+				document.getElementById("prev").innerHTML = "<button onclick=\"change_page(" + (desired_page-1) + ")\">&larr;</button>"
 			}
 			
 			if(desired_page == desired_page_max) {
-				document.getElementById("next").innerHTML = "Next Page"
+				document.getElementById("next").innerHTML = "<button disabled>&rarr;</button>"
 			}
 			else {
-				document.getElementById("next").innerHTML = "<a onclick=\"change_page(" + (desired_page+1) + ")\">Next Page</a>"
-			}		
+				document.getElementById("next").innerHTML = "<button onclick=\"change_page(" + (desired_page+1) + ")\">&rarr;</button>"
+			}	
+
+			document.getElementById("page_number").innerHTML = "(" + desired_page + "/" + desired_page_max + ")"
 			
+		}
+		
+		function close_page() {
+			var desired_location = "byond://?src="+global_reference+";close=1"
+			window.location = desired_location
 		}
 
 		function change_page(desired_page) {

@@ -379,12 +379,13 @@ window "map"
 		zoom = 1
 	elem "paper"
 		type = BROWSER
-		pos = 60,40
-		size = 680x680
+		pos = 100,40
+		size = 600x680
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
 		is-visible = false
+		border = sunken
 		saved-params = ""
 		auto-format = false
 	elem "dialogue"

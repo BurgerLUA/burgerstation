@@ -52,7 +52,7 @@
 		else if(health_mod >= 1)
 			color_mod = good_color
 		else
-			color_mod = blend_colors(bad_color,good_color,health_mod*0.5)
+			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
 
 		IO.Blend(color_mod,ICON_MULTIPLY)
 		I.Blend(IO,ICON_OVERLAY)

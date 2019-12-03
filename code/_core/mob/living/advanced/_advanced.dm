@@ -211,9 +211,8 @@ mob/living/advanced/Login()
 	var/list/desired_heal_amounts = list(
 		BRUTE = brute,
 		BURN = burn,
-		TOX = tox,
-		OXY = oxy
-	) //Fatigue not included here. Organs are told to directly deal fatigue damage to the owner.
+		TOX = tox
+	) //Fatigue and Oxy not included here. Organs are told to directly deal fatigue damage to the owner.
 
 	var/list/damaged_organs = list()
 
