@@ -5,7 +5,7 @@
 	projectile = /obj/projectile/bullet/laser
 	damage_type = "laser_rifle"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 4
 
 	automatic = FALSE
@@ -49,7 +49,7 @@
 	bullet_color = "#FFFF00"
 	damage_type = "laser_rifle_hardlight"
 
-	bullet_speed = 26
+	projectile_speed = 26
 	shoot_delay = 8
 
 	charge_cost = 2000
@@ -61,7 +61,7 @@
 	bullet_color = "#00FF00"
 	damage_type = "laser_rifle_xray"
 
-	bullet_speed = 20
+	projectile_speed = 20
 	shoot_delay = 6
 
 	charge_cost = 2000

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/crossbow.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 20
 
 	automatic = FALSE

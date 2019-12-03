@@ -305,6 +305,8 @@ window "main"
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
+		outer-size = 816x878
+		inner-size = 800x819
 	elem "button_chat"
 		type = BUTTON
 		pos = 720,780
@@ -360,6 +362,8 @@ window "map"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 814x814
+		inner-size = 800x800
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -373,7 +377,7 @@ window "map"
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 32
 		zoom = 1
-	elem "popup"
+	elem "paper"
 		type = BROWSER
 		pos = 60,40
 		size = 680x680

@@ -4,7 +4,7 @@
 	desc_extended = "A severely butchered .45 security pistol forced into a gruesome automatic variant."
 
 	icon = 'icons/obj/items/weapons/ranged/45pistolauto.dmi'
-	bullet_speed = 28
+	projectile_speed = 28
 	shoot_delay = 3
 	bullet_type = ".45"
 

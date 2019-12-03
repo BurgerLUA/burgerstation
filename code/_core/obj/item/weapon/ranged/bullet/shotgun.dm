@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 16
+	projectile_speed = 16
 	shoot_delay = 2
 
 	automatic = FALSE

@@ -1,19 +1,28 @@
 /macros/
 	var/client/owner
 	var/list/macros = list(
+
 		"W" = NORTH,
 		"D" = EAST,
 		"S" = SOUTH,
 		"A" = WEST,
-		"T" = "say",
-		"E" = "grab",
+
+		"UP" = NORTH,
+		"RIGHT" = EAST,
+		"DOWN" = SOUTH,
+		"LEFT" = WEST,
+
 		"Shift" = "sprint",
 		"Alt" = "walk",
 		"Ctrl" = "crouch",
+
+		"E" = "grab",
 		"R" = "throw",
 		"Q" = "drop",
-		"Space" = "kick",
 		"C" = "quick_self",
+		"Z" = "zoom",
+		"Space" = "kick",
+
 		"1" = "bind_1",
 		"2" = "bind_2",
 		"3" = "bind_3",
@@ -24,7 +33,8 @@
 		"8" = "bind_8",
 		"9" = "bind_9",
 		"0" = "bind_0",
-		"Z" = "zoom",
+
+		"T" = "say",
 		"O" = "ooc",
 		"L" = "looc"
 	)

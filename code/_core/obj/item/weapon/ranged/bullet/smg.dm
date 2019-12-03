@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 20
+	projectile_speed = 20
 	shoot_delay = 3
 
 	automatic = TRUE
@@ -41,7 +41,7 @@
 	icon = 'icons/obj/items/weapons/ranged/smg2.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 26
+	projectile_speed = 26
 	shoot_delay = 2
 
 	automatic = TRUE

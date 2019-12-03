@@ -57,10 +57,10 @@
 	if(!owner)
 		return
 
-	for(var/r_id in stored_reagents)
+	if(!flags_metabolism)
+		return
 
-		if(!flags_metabolism)
-			continue
+	for(var/r_id in stored_reagents)
 
 		var/volume = stored_reagents[r_id]
 
@@ -76,9 +76,6 @@
 
 		if(owner && is_organ(owner) && owner.loc && flags_metabolism & REAGENT_METABOLISM_INGEST)
 			owner_to_use = owner.loc
-
-		if(!owner_to_use)
-			continue
 
 		var/metabolize_amount = R.metabolize(owner_to_use,src,volume)
 

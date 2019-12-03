@@ -5,7 +5,7 @@
 	projectile = /obj/projectile/bullet/laser
 	damage_type = "chronogun"
 
-	bullet_speed = 8
+	projectile_speed = 8
 	shoot_delay = 20
 
 	automatic = FALSE

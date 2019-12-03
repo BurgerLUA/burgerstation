@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/magic/scroll/
-	var/scroll_count = 1
+
 	open = FALSE
 	damage_type = null //TODO: Paper cut
 
@@ -12,6 +12,7 @@
 
 	automatic = FALSE
 
+	var/scroll_count = 1
 
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
 	shoot(caller,object,location,params)
@@ -97,7 +98,7 @@
 	damage_type = "magic_fireball"
 
 	shoot_delay = 10
-	bullet_speed = 16
+	projectile_speed = 16
 
 	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 

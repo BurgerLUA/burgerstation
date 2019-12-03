@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 2
 
 	automatic = TRUE

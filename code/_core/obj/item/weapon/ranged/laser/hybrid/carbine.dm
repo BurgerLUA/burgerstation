@@ -11,7 +11,7 @@
 	shoot_sounds_kill = list('sounds/weapons/laser_carbine/kill.ogg')
 	shoot_sounds_stun = list('sounds/weapons/laser_carbine/stun.ogg')
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 4
 
 	automatic = TRUE

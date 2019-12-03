@@ -7,10 +7,6 @@
 
 	has_quick_function = TRUE
 
-	var/power_gain = 5
-	var/power_current = 0
-	var/power_max = 100
-
 /obj/item/weapon/ranged/magic/tome/quick(var/mob/caller as mob,var/atom/object,location,params)
 	if(!automatic)
 		shoot(caller,object,location,params)
@@ -18,12 +14,12 @@
 
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(var/mob/living/caster)
 
-	if(!is_advanced(caster))
+	if(!is_player(caster))
 		return cost_mana * NPC_MANA_COST_MULTIPLIER
 
-	var/mob/living/advanced/A = caster
+	var/mob/living/advanced/player/P = caster
 
-	return cost_mana * (1 - (A.get_skill_level(associated_skill)/200))
+	return cost_mana * (1 - (P.get_skill_level(associated_skill)/200))
 
 /obj/item/weapon/ranged/magic/tome/get_owner()
 
@@ -33,6 +29,13 @@
 
 	return null
 
+/obj/item/weapon/ranged/magic/tome/can_gun_shoot(var/mob/caller)
+
+	if(get_ammo_count() < 1)
+		return FALSE
+
+	return ..()
+
 /obj/item/weapon/ranged/magic/tome/get_ammo_count()
 
 	var/mob/living/owner = get_owner()
@@ -40,7 +43,7 @@
 	if(!owner.health)
 		return 1
 
-	var/actual_mana_cost = get_mana_cost()
+	var/actual_mana_cost = get_mana_cost(owner)
 
 	if(!actual_mana_cost)
 		return 1
@@ -57,10 +60,17 @@
 	if(!A.health)
 		return ..()
 
+	var/mana_cost = get_mana_cost(A)
+
 	if(!automatic)
-		A.health.adjust_mana(-get_mana_cost())
+		A.health.adjust_mana(-mana_cost)
 
 	A.update_health_element_icons(mana=TRUE)
+
+	A.mana_regen_delay = max(A.mana_regen_delay,30)
+
+	return null
+
 
 /*
 /obj/item/weapon/ranged/magic/tome/do_automatic(var/mob/caller,var/atom/object,location,params)
@@ -82,6 +92,7 @@
 	return TRUE
 */
 
+/*
 /obj/item/weapon/ranged/magic/tome/on_mouse_up(var/mob/caller,var/atom/object,location,control,params,var/secret_bypass=FALSE)
 
 	if(!automatic || !is_advanced(caller))
@@ -100,3 +111,4 @@
 	power_current = 0
 
 	return TRUE
+*/

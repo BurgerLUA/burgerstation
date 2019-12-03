@@ -63,6 +63,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/obj/structure/active_structure
 
+	var/obj/item/paper/active_paper
+
 /mob/living/advanced/player/apply_mob_parts()
 
 	if(!mobdata || mobdata.loaded_data["tutorial"] == 1)

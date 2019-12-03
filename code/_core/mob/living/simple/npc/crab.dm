@@ -57,7 +57,7 @@
 
 	boss = TRUE
 	force_spawn = TRUE
-	boss_music = "crab"
+	boss_music = "crab_rave"
 
 	damage_type = "crab_claw_king"
 

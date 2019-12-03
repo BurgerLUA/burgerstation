@@ -37,11 +37,22 @@
 
 		var/icon/IO = new/icon(icon,O.hud_id)
 		var/health_mod = O.health.health_current / O.health.health_max
-		var/color_mod = "#FFFFFF"
+
+		var/good_color = "#00FF00"
+		var/bad_color = "#FF0000"
+		var/color_mod = "#000000" //Final color
+
+		if(owner && owner.client)
+			var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
+			good_color = color_scheme[3]
+			bad_color = color_scheme[6]
+
 		if(health_mod <= 0)
-			color_mod = "#666666"
+			color_mod = "#303030"
+		else if(health_mod >= 1)
+			color_mod = good_color
 		else
-			color_mod = rgb(93 + (1-health_mod)*(255-93),150 * health_mod,160 * health_mod)
+			color_mod = blend_colors(bad_color,good_color,health_mod*0.5)
 
 		IO.Blend(color_mod,ICON_MULTIPLY)
 		I.Blend(IO,ICON_OVERLAY)

@@ -10,7 +10,7 @@
 	projectile = /obj/projectile/bullet/sniper
 	damage_type = ".50"
 
-	bullet_speed = BULLET_SPEED_SNIPER
+	projectile_speed = BULLET_SPEED_SNIPER
 
 
 /obj/item/bullet/sniper_50/surplus
@@ -19,4 +19,6 @@
 	icon = 'icons/obj/items/bullet/50_surplus.dmi'
 	damage_type = ".50_surplus"
 
-	bullet_speed = BULLET_SPEED_SNIPER * SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_SNIPER * SURPLUS_PENALTY
+
+	misfire_chance = 1

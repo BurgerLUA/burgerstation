@@ -12,7 +12,7 @@
 
 	shoot_sounds = list('sounds/weapons/magic/summon.ogg')
 
-	bullet_speed = 3
+	projectile_speed = 3
 
 /obj/item/weapon/ranged/magic/tome/holy_warrior/get_static_spread() //Base spread
 	return 0

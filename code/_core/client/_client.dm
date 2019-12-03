@@ -136,6 +136,7 @@ var/global/list/all_clients = list()
 
 	world.update_status()
 	broadcast_to_clients("[ckey] has joined the game.")
+	update_window()
 
 /client/proc/welcome()
 	src << "<title>Welcome to Burgerstation 13</title>"

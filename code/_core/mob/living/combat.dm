@@ -17,6 +17,26 @@
 
 	return TRUE
 
+/mob/living/proc/add_sleep(var/value,var/max_value = 40)
+
+	if(sleep_time == -1)
+		return FALSE
+
+	if(sleep_time > max_value)
+		return FALSE
+
+	if(sleep_time >= max_value)
+		return FALSE
+
+	sleep_time = min(max_value,sleep_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,sleep_time,"SNOOZED!")
+
+	check_status_effects()
+
+	return TRUE
+
+
 /mob/living/proc/add_paralyze(var/value,var/max_value = 40)
 
 	if(paralyze_time == -1)

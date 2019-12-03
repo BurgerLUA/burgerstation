@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/pistol.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 20
+	projectile_speed = 20
 	shoot_delay = 2
 
 	automatic = FALSE
@@ -43,7 +43,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle
 	name = ".50AE gold eagle"
 	icon = 'icons/obj/items/weapons/ranged/deagle.dmi'
-	bullet_speed = 28
+	projectile_speed = 28
 	shoot_delay = 4
 	bullet_type = ".50ae"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
@@ -53,7 +53,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
 	name = ".45 private security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
-	bullet_speed = 28
+	projectile_speed = 28
 	shoot_delay = 4
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')

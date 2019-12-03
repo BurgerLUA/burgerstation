@@ -4,16 +4,14 @@
 	id = "none"
 
 	icon = 'icons/obj/health/base.dmi'
-	icon_state = "base"
 
 	screen_loc = "CENTER,CENTER"
 
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-	user_colors = FALSE //Custom code here.
-
 /obj/hud/button/health/bar/
+	icon_state = "base"
 	var/bar_color = "#ffffff"
 	var/min = 0
 	var/max = 100

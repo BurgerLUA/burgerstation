@@ -12,7 +12,7 @@
 
 	shoot_sounds = list('sounds/weapons/magic/heal.ogg')
 
-	bullet_speed = 1
+	projectile_speed = 1
 
 /obj/item/weapon/ranged/magic/tome/heal/get_static_spread() //Base spread
 	return 0

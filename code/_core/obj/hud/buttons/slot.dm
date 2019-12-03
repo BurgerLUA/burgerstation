@@ -80,7 +80,7 @@
 		return TRUE
 
 	stored_item = object
-	A.to_chat(span("notice","\The [I.name] was bound to slot [icon_state]."))
+	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
 	animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	update_icon()
 
