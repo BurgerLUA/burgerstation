@@ -20,6 +20,8 @@
 
 	pump_sound = 'sounds/weapons/gun_slide3.ogg'
 
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 /obj/item/weapon/ranged/bullet/pump/hunting_rifle/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.01

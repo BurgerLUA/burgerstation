@@ -23,6 +23,8 @@
 
 	view_punch = 12
 
+	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 /obj/item/weapon/ranged/bullet/pump/combat_shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 

@@ -17,6 +17,8 @@
 
 	view_punch = 12
 
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
 /obj/item/weapon/ranged/bullet/magazine/autoshotgun/get_static_spread() //Base spread
 	return 0.05
 

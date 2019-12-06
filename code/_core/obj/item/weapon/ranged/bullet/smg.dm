@@ -20,6 +20,8 @@
 
 	view_punch = 6
 
+	slowdown_mul_held = HELD_SLOWDOWN_SMG
+
 /obj/item/weapon/ranged/bullet/magazine/smg/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

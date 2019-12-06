@@ -17,6 +17,8 @@
 
 	view_punch = 8
 
+	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread() //Base spread
 	return 0.01
 

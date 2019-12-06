@@ -22,6 +22,7 @@
 
 	view_punch = 4
 
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
 
 /obj/item/weapon/ranged/bullet/magazine/lmg/update_icon()
 

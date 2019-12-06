@@ -19,6 +19,8 @@
 
 	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
 
+	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
+
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread
 	return 0.2
 

@@ -22,6 +22,8 @@
 
 	cock_sound = 'sounds/weapons/gun_slide1.ogg'
 
+	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)

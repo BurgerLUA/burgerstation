@@ -25,6 +25,8 @@
 
 	view_punch = 4
 
+	slowdown_mul_held = HELD_SLOWDOWN_CROSSBOW
+
 /obj/item/weapon/ranged/bullet/crossbow/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 

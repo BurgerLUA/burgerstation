@@ -15,6 +15,8 @@
 
 	view_punch = 2
 
+	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/get_static_spread() //Base spread
 	return 0
 
@@ -41,6 +43,8 @@
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 
 	view_punch = 4
+
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle/get_static_spread() //Base spread
 	return 0

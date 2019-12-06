@@ -17,6 +17,8 @@
 
 	view_punch = 4
 
+	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
 	return 0.01
 

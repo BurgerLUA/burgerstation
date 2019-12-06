@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle
-	name = "\improper 5.56mm assault rifle"
+	name = "\improper 5.56mm Mauler assault rifle"
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
@@ -17,6 +17,8 @@
 	can_wield = TRUE
 
 	view_punch = 6
+
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
 	if(!wielded)

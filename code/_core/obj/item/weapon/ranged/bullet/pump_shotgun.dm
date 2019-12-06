@@ -16,6 +16,8 @@
 
 	view_punch = 12
 
+	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
+
 /obj/item/weapon/ranged/bullet/pump/pump_shotgun/get_static_spread() //Base spread
 	return 0.03
 

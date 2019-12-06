@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/traitor_357
-	name = "\improper .357 traitor special"
+	name = "\improper .357 Traditore"
 	desc = "For all your traitor needs!"
 	icon = 'icons/obj/items/weapons/ranged/357.dmi'
 	icon_state = "inventory"
