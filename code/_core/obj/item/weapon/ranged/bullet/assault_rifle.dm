@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle
-	name = "\improper 7.62mm assault rifle"
+	name = "\improper 5.56mm assault rifle"
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
@@ -10,7 +10,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "7.62"
+	bullet_type = "5.56mm"
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 

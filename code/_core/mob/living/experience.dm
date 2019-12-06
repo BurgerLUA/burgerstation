@@ -60,10 +60,10 @@
 
 	switch(E.id)
 		if(ATTRIBUTE_DEXTERITY,ATTRIBUTE_AGILITY)
-			add_attribute_xp(ATTRIBUTE_ENDURANCE,1)
+			add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
 		if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE)
-			add_attribute_xp(ATTRIBUTE_VITALITY,1)
+			add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)
 		if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER)
-			add_attribute_xp(ATTRIBUTE_WISDOM,1)
+			add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
 
 	return TRUE

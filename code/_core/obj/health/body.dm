@@ -78,28 +78,29 @@
 			if(!O.hud_id)
 				continue
 
-			var/list/type_count = list()
-
-			for(var/wound/W in O.health.wounds)
-				type_count[W.id] += 1
-
 			var/list/wound_information = list()
 
-			for(var/k in type_count)
-				var/word_to_use = ""
-				switch(type_count[k])
-					if(1)
-						word_to_use = "a"
-					if(2)
-						word_to_use = "a couple of"
-					if(3)
-						word_to_use = "a few"
-					else
-						word_to_use = "several"
+			if(ENABLE_WOUNDS)
+				var/list/type_count = list()
 
-				var/plural = type_count[k] > 1 ? "s" : ""
+				for(var/wound/W in O.health.wounds)
+					type_count[W.id] += 1
 
-				wound_information += "[word_to_use] [k][plural]"
+				for(var/k in type_count)
+					var/word_to_use = ""
+					switch(type_count[k])
+						if(1)
+							word_to_use = "a"
+						if(2)
+							word_to_use = "a couple of"
+						if(3)
+							word_to_use = "a few"
+						else
+							word_to_use = "several"
+
+					var/plural = type_count[k] > 1 ? "s" : ""
+
+					wound_information += "[word_to_use] [k][plural]"
 
 			var/list/damage_desc = list()
 
@@ -120,6 +121,8 @@
 
 			var/is_injured = length(damage_desc) || length(wound_information)
 
-			returning += div(is_injured ? "warning" : "notice","Your [O.name] is [english_list(damage_desc,nothing_text="healthy")] ([O.health.health_current]/[O.health.health_max]). It has [english_list(wound_information,nothing_text = "no visible wounds")].")
+			var/wound_text = ENABLE_WOUNDS ? " It has [english_list(wound_information,nothing_text = "no visible wounds")]." : ""
+
+			returning += div(is_injured ? "warning" : "notice","Your [O.name] is [english_list(damage_desc,nothing_text="healthy")] ([O.health.health_current]/[O.health.health_max]).[wound_text]")
 
 	return returning

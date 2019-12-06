@@ -39,6 +39,3 @@
 
 /mob/living/advanced/npc/get_xp_multiplier()
 	return 0
-
-/mob/living/advanced/npc/can_be_grabbed()
-	return horizontal

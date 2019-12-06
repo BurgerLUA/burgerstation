@@ -191,9 +191,10 @@ mob/living/advanced/proc/handle_regen()
 		if(!O.health)
 			continue
 
-		for(var/wound/W in O.health.wounds)
-			CHECK_TICK
-			W.on_life()
+		if(ENABLE_WOUNDS)
+			for(var/wound/W in O.health.wounds)
+				CHECK_TICK
+				W.on_life()
 
 		//Soft damage to hard damage.
 		for(var/damage_type in O.health.damage_soft)

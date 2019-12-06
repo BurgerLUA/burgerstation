@@ -1,31 +1,32 @@
-/damagetype/ranged/bullet/revolver_22
-	name = ".22 bullet"
-	id = ".22"
+/damagetype/ranged/bullet/pistol_50
+	name = ".50 pistol"
+	id = ".50_pistol"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_D,
-		BLUNT = DAMAGE_D
+		BLUNT = DAMAGE_B,
+		PIERCE = DAMAGE_D
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_C
 	)
 
-/damagetype/ranged/bullet/revolver_22/surplus
-	name = ".22 surplus bullet"
-	id = ".22_surplus"
+
+/damagetype/ranged/bullet/pistol_50/surplus
+	name = ".50 pistol surplus"
+	id = ".50_pistol_surplus"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_E,
-		BLUNT = DAMAGE_E
+		BLUNT = DAMAGE_B,
+		PIERCE = DAMAGE_D
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_F,
-		BLUNT = ARMOR_F
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E
 	)

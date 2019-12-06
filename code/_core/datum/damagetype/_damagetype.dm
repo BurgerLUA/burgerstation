@@ -300,7 +300,9 @@
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 		do_attack_sound(attacker,victim,weapon,hit_object)
-		do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
+
+		if(ENABLE_WOUNDS)
+			do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 		display_hit_message(attacker,victim,weapon,hit_object)
 
@@ -373,6 +375,14 @@
 		victim.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
 		if(victim != hit_object)
 			hit_object.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
+
+		post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
+
+/damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	return TRUE
+
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 

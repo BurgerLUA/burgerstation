@@ -1,3 +1,51 @@
+/mob/living/proc/add_stagger(var/value,var/max_value = 40,var/atom/inflictor)
+
+	if(stagger_time == -1)
+		return FALSE
+
+	if(stagger_time > max_value)
+		return FALSE
+
+	if(stagger_time >= max_value)
+		return FALSE
+
+	stagger_time = min(max_value,stagger_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,stagger_time,"STAGGERED!")
+
+	if(inflictor)
+		var/desired_move_dir = get_dir(inflictor,src)
+		var/old_dir = src.dir
+		var/result = src.Move(get_step(src,desired_move_dir),desired_move_dir)
+		src.dir = old_dir
+		if(!result)
+			src.move_delay = value
+
+			var/move_x = 0
+			var/move_y = 0
+
+			if(desired_move_dir & NORTH)
+				move_y += TILE_SIZE
+
+			if(desired_move_dir & SOUTH)
+				move_y -= TILE_SIZE
+
+			if(desired_move_dir & EAST)
+				move_x += TILE_SIZE
+
+			if(desired_move_dir & WEST)
+				move_x -= TILE_SIZE
+
+			animate(src,pixel_x = move_x, pixel_y = move_y,time = 1)
+			spawn(1)
+				add_stun(value)
+				animate(src,pixel_x = 0, pixel_y = 0,time = max(0,stagger_time - 1))
+
+	check_status_effects()
+
+	return TRUE
+
+
 /mob/living/proc/add_stun(var/value,var/max_value = 40)
 
 	if(stun_time == -1)
@@ -16,6 +64,7 @@
 	check_status_effects()
 
 	return TRUE
+
 
 /mob/living/proc/add_sleep(var/value,var/max_value = 40)
 
@@ -56,6 +105,7 @@
 
 	return TRUE
 
+
 /mob/living/proc/add_fatigue(var/value,var/max_value = 300)
 
 	if(fatigue_time == -1)
@@ -74,6 +124,7 @@
 	check_status_effects()
 
 	return TRUE
+
 
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 	if(status)
@@ -118,3 +169,7 @@
 	create_blood_effect(T,attacker,src,damage_dealt,"#FF0000")
 
 	return .
+
+
+/mob/living/can_be_grabbed()
+	return status

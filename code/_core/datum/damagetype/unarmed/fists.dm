@@ -16,11 +16,11 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_B,
+		BLUNT = ARMOR_C,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
+		ATTRIBUTE_STRENGTH = CLASS_C,
 		ATTRIBUTE_DEXTERITY = CLASS_C
 	)
 
@@ -30,7 +30,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_B
+		SKILL_UNARMED = CLASS_C
 	)
 
 	skill_damage = list(
@@ -38,5 +38,16 @@
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_B
+		SKILL_UNARMED = SKILL_C
 	)
+
+
+/damagetype/unarmed/fists/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	. = ..()
+
+	if(. && is_living(victim))
+		var/mob/living/L = victim
+		L.add_stagger(10,inflictor = attacker)
+
+	return .

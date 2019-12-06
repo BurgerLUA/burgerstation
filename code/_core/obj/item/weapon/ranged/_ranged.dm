@@ -107,6 +107,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		return FALSE
 
 	caller.face_atom(object)
+
 	if(is_mob(caller))
 		var/mob/M = caller
 		M.attack_turn = curtime + M.attack_turn_delay

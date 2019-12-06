@@ -8,7 +8,7 @@
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/pistol
-	damage_type = "10mm_auto"
+	damage_type = "10mm"
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
@@ -18,7 +18,7 @@
 	icon = 'icons/obj/items/bullet/10mm_surplus.dmi'
 
 	projectile = /obj/projectile/bullet/pistol
-	damage_type = "10mm_auto_surplus"
+	damage_type = "10mm_surplus"
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY*SURPLUS_PENALTY
 
@@ -27,7 +27,7 @@
 /obj/item/bullet/pistol_50ae/
 	name = "\improper .50 action express"
 	desc = "For pistols that require .50ae."
-	id = ".50ae"
+	id = ".50"
 	icon = 'icons/obj/items/bullet/50ae.dmi'
 
 	item_count_max = 5

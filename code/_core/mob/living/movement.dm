@@ -16,6 +16,9 @@
 	if(status & FLAG_STATUS_SLEEP)
 		return FALSE
 
+	if(status & FLAG_STATUS_STAGGER)
+		return FALSE
+
 	return ..()
 
 /mob/living/get_movement_delay()

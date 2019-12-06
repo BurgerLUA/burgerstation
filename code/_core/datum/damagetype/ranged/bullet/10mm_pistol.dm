@@ -1,11 +1,11 @@
 /damagetype/ranged/bullet/pistol_10mm
-	name = "10mm auto bullet"
-	id = "10mm_auto"
+	name = "10mm pistol"
+	id = "10mm"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_B,
-		PIERCE = DAMAGE_D
+		BLUNT = DAMAGE_D,
+		PIERCE = DAMAGE_C
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -15,14 +15,14 @@
 	)
 
 
-/damagetype/ranged/bullet/pistol_10mm
-	name = "10mm auto surplus"
-	id = "10mm_auto_surplus"
+/damagetype/ranged/bullet/pistol_10mm/surplus
+	name = "10mm pistol surplus"
+	id = "10mm_surplus"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_C,
-		PIERCE = DAMAGE_E
+		BLUNT = DAMAGE_D,
+		PIERCE = DAMAGE_C
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

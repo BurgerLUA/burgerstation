@@ -14,13 +14,12 @@
 		if(P == src)
 			continue
 		if(P.id == src.id)
-			var/list/turf/valid_turfs = list()
-			for(var/turf/simulated/floor/T in orange(1,P))
-				valid_turfs += T
-			O.force_move(pick(valid_turfs))
+			var/turf/T = get_step(P,O.move_dir)
+			O.force_move(T)
+			O.move_delay = 10
 			if(is_living(O))
 				var/mob/living/L = O
-				L.add_stun(10)
+				L.add_paralyze(10)
 			break
 
 	return ..()

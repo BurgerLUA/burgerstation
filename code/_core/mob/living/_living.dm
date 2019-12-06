@@ -15,10 +15,11 @@
 
 	var/status = 0 //Negative status
 
-	var/stun_time = 0 //Deciseconds of stun. Stun is being knocked down.
-	var/sleep_time = 0 //Decieconds of sleep Sleep is being knocke down and blind.
-	var/paralyze_time = 0 //Decieconds of paralyze. Paralyze is being unable to move.
-	var/fatigue_time = 0 //Deciseconds of fatigue.
+	var/stun_time = 0
+	var/sleep_time = 0
+	var/paralyze_time = 0
+	var/fatigue_time = 0
+	var/stagger_time = 0
 
 	var/first_life = TRUE
 

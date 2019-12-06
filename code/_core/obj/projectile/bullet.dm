@@ -15,7 +15,7 @@
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_massive"
 
-/obj/projectile/bullet/revolver_44
+/obj/projectile/bullet/revolver_large
 	name = "revolver bullet"
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_large"

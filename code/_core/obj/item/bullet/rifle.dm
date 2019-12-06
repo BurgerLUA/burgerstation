@@ -36,3 +36,13 @@
 	damage_type = "5.56"
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
+
+
+/obj/item/bullet/rifle_556/surplus
+	name = "\improper 5.56mm surplus bullet"
+	desc = "For rifles and machineguns that requre 5.56mm"
+	icon = 'icons/obj/items/bullet/556_surplus.dmi'
+
+	damage_type = "5.56_surplus"
+
+	projectile_speed = BULLET_SPEED_RIFLE_LIGHT * SURPLUS_PENALTY

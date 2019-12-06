@@ -81,6 +81,13 @@
 /mob/living/proc/post_death()
 	return TRUE
 
+/mob/living/proc/on_staggered()
+	src.visible_message("\The [src.name] reels backwards!","You reel backwards!")
+	return TRUE
+
+/mob/living/proc/on_unstaggered()
+	return TRUE
+
 /mob/living/proc/on_stunned()
 	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground! You're stunned!")
 	return TRUE
@@ -118,6 +125,9 @@
 	if(status & FLAG_STATUS_SLEEP)
 		return FALSE
 
+	if(status & FLAG_STATUS_STAGGER)
+		return FALSE
+
 	return ..()
 
 
@@ -130,6 +140,9 @@
 		return FALSE
 
 	if(status & FLAG_STATUS_SLEEP)
+		return FALSE
+
+	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
 	return ..()
@@ -154,6 +167,16 @@
 	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
 		remove_status(FLAG_STATUS_STUN)
 		on_unstunned()
+
+	//Stagger
+	if(!(status & FLAG_STATUS_STAGGER) && (stagger_time > 0 || stagger_time == -1))
+		add_status(FLAG_STATUS_STAGGER)
+		on_staggered()
+
+	if(status & FLAG_STATUS_STAGGER && stagger_time <= 0 && stagger_time != -1)
+		remove_status(FLAG_STATUS_STAGGER)
+		on_unstaggered()
+
 
 	//Paralyze
 	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
@@ -183,6 +206,9 @@
 	if(paralyze_time != -1)
 		paralyze_time = max(0,paralyze_time - amount_to_remove)
 
+	if(stagger_time != -1)
+		stagger_time = max(0,stagger_time - amount_to_remove)
+
 	if(sleep_time != -1)
 		sleep_time = max(0,sleep_time - amount_to_remove)
 
@@ -192,14 +218,14 @@
 		else
 			fatigue_time = max(0,fatigue_time - amount_to_remove)
 
-	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP)
+	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP || status & FLAG_STATUS_CRIT)
 		desired_horizontal = TRUE
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN
 			animate(src,transform = turn(matrix(), stun_angle), time = 1)
 		else //GET UP
-			animate(src,transform = matrix(), time = 1)
+			animate(src,transform = matrix(), time = 2)
 		horizontal = desired_horizontal
 
 	return TRUE

@@ -10,19 +10,19 @@
 #define DAMAGE_F 0
 #define DAMAGE_E 5
 #define DAMAGE_D 10
-#define DAMAGE_C 15
-#define DAMAGE_B 25
-#define DAMAGE_A 50
+#define DAMAGE_C 25
+#define DAMAGE_B 50
+#define DAMAGE_A 75
 #define DAMAGE_S 100
 #define DAMAGE_X 1000
 
 #define ARMOR_F 0
 #define ARMOR_E 5
 #define ARMOR_D 10
-#define ARMOR_C 15
-#define ARMOR_B 25
-#define ARMOR_A 50
-#define ARMOR_S 75
+#define ARMOR_C 25
+#define ARMOR_B 50
+#define ARMOR_A 75
+#define ARMOR_S 90
 #define ARMOR_X 1000
 
 #define CLASS_F 0
