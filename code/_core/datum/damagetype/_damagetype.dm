@@ -286,11 +286,26 @@
 		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health)
 			return FALSE
 
-		var/brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0
-		var/burn_damage_dealt = burn_damage_to_deal ? hit_object.health.adjust_burn_loss(burn_damage_to_deal) : 0
-		var/tox_damage_dealt = tox_damage_to_deal ? hit_object.health.adjust_tox_loss(tox_damage_to_deal) : 0
-		var/oxy_damage_dealt = oxy_damage_to_deal ? hit_object.health.adjust_oxy_loss(oxy_damage_to_deal) : 0
-		var/fatigue_damage_dealt = fatigue_damage_to_deal ? hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal) : 0
+		var/brute_damage_dealt = 0
+		var/burn_damage_dealt = 0
+		var/tox_damage_dealt = 0
+		var/oxy_damage_dealt = 0
+		var/fatigue_damage_dealt = 0
+
+
+
+		if(victim.immortal || hit_object.immortal)
+			brute_damage_dealt = brute_damage_to_deal
+			burn_damage_dealt = burn_damage_to_deal
+			tox_damage_dealt = tox_damage_to_deal
+			oxy_damage_dealt = oxy_damage_to_deal
+			fatigue_damage_dealt = fatigue_damage_to_deal
+		else
+			brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0
+			burn_damage_dealt = burn_damage_to_deal ? hit_object.health.adjust_burn_loss(burn_damage_to_deal) : 0
+			tox_damage_dealt = tox_damage_to_deal ? hit_object.health.adjust_tox_loss(tox_damage_to_deal) : 0
+			oxy_damage_dealt = oxy_damage_to_deal ? hit_object.health.adjust_oxy_loss(oxy_damage_to_deal) : 0
+			fatigue_damage_dealt = fatigue_damage_to_deal ? hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal) : 0
 
 		var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt + fatigue_damage_dealt
 

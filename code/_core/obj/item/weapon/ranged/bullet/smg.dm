@@ -22,6 +22,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SMG
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/magazine/smg/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
@@ -82,7 +85,7 @@
 	desc = "Wait is that chambered in .22?"
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
-	shoot_delay = 1
+	shoot_delay = 2
 	view_punch = 2
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 

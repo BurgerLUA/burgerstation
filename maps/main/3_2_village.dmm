@@ -12,17 +12,15 @@
 "al" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "am" = (/mob/living/simple/npc/passive/cow,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "an" = (/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
-"ao" = (/mob/living/simple/npc/passive/chicken,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
+"ao" = (/obj/structure/scenery/rocks,/mob/living/advanced/npc/dummy,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "ap" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/obj/marker/mob_blocker,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
-"aq" = (/mob/living/simple/npc/passive/chicken/black,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
-"ar" = (/mob/living/simple/npc/passive/chicken,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
+"aq" = (/obj/structure/scenery/rocks,/mob/living/advanced/npc/dummy/armor,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "as" = (/obj/structure/interactive/lighting/streetlamp/jungle/dark,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/village/cave)
 "at" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/world/forest/exterior/plains)
 "au" = (/obj/structure/interactive/vendor/ammo,/obj/item/magazine/pistol_45/surplus,/obj/item/magazine/clip/revolver/bullet_44/surplus,/obj/item/magazine/smg_22/surplus,/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "av" = (/turf/simulated/wall/metal/rusted,/area/world/forest/exterior/village)
 "aw" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/river,/area/world/forest/exterior/village/ship)
 "ax" = (/obj/structure/smooth/wall/wood,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
-"ay" = (/mob/living/simple/npc/passive/chicken/brown,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "az" = (/turf/simulated/floor/colored/dirt/cave,/area/world/forest/interior/village/cave)
 "aA" = (/turf/simulated/wall/wood/brown,/area/world/forest/interior/village/shop/farm)
 "aB" = (/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
@@ -143,12 +141,10 @@
 "cM" = (/obj/structure/scenery/grass,/obj/marker/mob_blocker,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cN" = (/obj/marker/mob_blocker,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cO" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
-"cP" = (/mob/living/simple/npc/passive/chicken/black,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cQ" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cR" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/shop,/obj/item/clothing/mask/god,/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/chapel)
 "cS" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cT" = (/turf/simulated/floor/cobblestone/corner{icon_state = "cobble_corner"; dir = 8},/area/world/forest/exterior/village)
-"cU" = (/mob/living/simple/npc/passive/chicken/brown,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "cV" = (/turf/simulated/floor/cobblestone/corner{icon_state = "cobble_corner"; dir = 4},/area/world/forest/exterior/village)
 "cW" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/clothing/back/storage/backpack,/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)
 "cX" = (/turf/simulated/wall/wood/rich,/area/world/forest/interior/village/house/c)
@@ -326,9 +322,9 @@
 (1,1,1) = {"
 eOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOememememfFfMfMfMfMfMfMfMfMfMfMfMfFemememememememememememememememememememememememememememememememememdZdZdcazbeazazazazazazazazazdZemememememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOeOeOeOeOeOacadadadadadadadadeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOeOemememfFfFfMfMfMfMfMfMfMfNfMfMfMdcdcdcazememdcdcdcazazazaiememakakakakemememememememakakakemememememdZdcazazbebeazazazazazazazasemememememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
-eOeOeOeOeOeOeOadadadadacafafafacacacaceOeOeOeOeOagagagagagagagageOeOeOeOeOeOeOemememfFfMfNfMfMfFfFfFfFfFfFfFemememdcdcdcazemememememakakakakaiaiaialakakakakakalaiamaiakememememdZdcbebeazdcazdbcdazazazazdZdZememememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
-eOeOeOeOeOajatadafaDafafafafafafafafafafagagagagagagagagagagagagagagageOeOeOeOaGememfFfFfFfFfFfFemememememememememememememememememaiaiananananananalaoaoaqararalaianaiakakememememasdZdcazdcdcazazazazazazazdZdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
-eOeOeOeOajatadacafafafafaDafafagagagagagagagagagagagagagagagagagagagagagagagagagememememememememememememavavavfnanaiaiaiaiaiaiaiaiaiaianananananbifLcPaBcUanayalanaBanececakememememdZdZazazazdcazdfdfazazazazdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
+eOeOeOeOeOeOeOadadadadacafafafacacacaceOeOeOeOeOagagagagagagagageOeOeOeOeOeOeOemememfFfMfNfMfMfFfFfFfFfFfFfFemememdcdcdcazemememememakakakakaiaiaialaqakaoakaoalaiamaiakememememdZdcbebeazdcazdbcdazazazazdZdZememememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
+eOeOeOeOeOajatadafaDafafafafafafafafafafagagagagagagagagagagagagagagageOeOeOeOaGememfFfFfFfFfFfFemememememememememememememememememaiaiananananananalakakanananalaianaiakakememememasdZdcazdcdcazazazazazazazdZdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
+eOeOeOeOajatadacafafafafaDafafagagagagagagagagagagagagagagagagagagagagagagagagagememememememememememememavavavfnanaiaiaiaiaiaiaiaiaiaianananananbifLananaBananalanaBanececakememememdZdZazazazdcazdfdfazazazazdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOatadacacaMafaNafagagagagagagagagagagagagagagagagagagagaZagagagagagagagagagagemememememememagememavavavananaAaAaAaAaAaAaAaAaLaLaLaLaLaLbiaBaBaBaBaBananaxanbiaBaiecececememememdZdZbeazazdfdfdfdfazazazdcemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOatacacafafafafagagagagagagagagagagagagagagaZagagagagagagagagagagagagagaZagagagagemememagagagagemavavavananaAaCaIaKaIaIaIaAbbeIcCeZdMaLbiaBbibiaBaBbianaxanaBaBanamaiececememememememdZazdfdfdfdfazazasemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm
 eOeOeOeOadacacafbJafagfhfhfhagagagagacacacagagagagagagagagagagagagbNbNbNbNagagagagagagagagagagagagagagagagavanananaAaCaIaIaIaIaIaAdMdMdMdMeGaLanaBaBbiaBaBaBanananamaBaBanananaialememememememdZazdfdfdfdfazdZemememembmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbm

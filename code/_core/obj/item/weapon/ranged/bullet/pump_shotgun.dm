@@ -18,6 +18,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/pump/pump_shotgun/get_static_spread() //Base spread
 	return 0.03
 

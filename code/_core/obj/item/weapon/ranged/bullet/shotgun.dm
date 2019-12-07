@@ -21,6 +21,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread
 	return 0.2
 

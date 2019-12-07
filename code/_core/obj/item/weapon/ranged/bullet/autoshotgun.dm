@@ -19,6 +19,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
+	size = SIZE_4
+	weight = WEIGHT_4
+
 /obj/item/weapon/ranged/bullet/magazine/autoshotgun/get_static_spread() //Base spread
 	return 0.05
 

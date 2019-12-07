@@ -22,6 +22,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
 
+	size = SIZE_4
+	weight = WEIGHT_5
+
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper/get_static_spread() //Base spread
 	return 0
 

@@ -18,6 +18,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/magazine/autopistol/update_icon()
 
 	icon = initial(icon)

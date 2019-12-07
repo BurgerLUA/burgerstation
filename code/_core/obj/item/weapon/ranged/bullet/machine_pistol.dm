@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/sabre.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -20,3 +20,6 @@
 	cock_sound = 'sounds/weapons/gun_slide1.ogg'
 
 	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
+	size = SIZE_2
+	weight = WEIGHT_3

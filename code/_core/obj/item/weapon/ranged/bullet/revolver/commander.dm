@@ -15,6 +15,12 @@
 	shoot_sounds = list('sounds/weapons/revolver_heavy/shoot.ogg')
 
 	view_punch = 10
+
+	size = SIZE_2
+	weight = WEIGHT_3
+
+	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 /obj/item/weapon/ranged/bullet/revolver/commander/get_static_spread() //Base spread
 	return 0.05
 

@@ -17,15 +17,14 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
 
+	size = SIZE_2
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/get_static_spread() //Base spread
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.3 - (0.3 * L.get_skill_power(SKILL_RANGED))
-
-
-
-
 
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle
 	name = "\improper 20mm gyrorifle"
@@ -45,6 +44,9 @@
 	view_punch = 4
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
+	size = SIZE_4
+	weight = WEIGHT_5
 
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle/get_static_spread() //Base spread
 	return 0

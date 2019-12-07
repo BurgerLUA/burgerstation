@@ -25,6 +25,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
 
+	size = SIZE_4
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/pump/combat_shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 

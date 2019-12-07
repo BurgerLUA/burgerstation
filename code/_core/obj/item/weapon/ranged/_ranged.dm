@@ -74,7 +74,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/think()
-	if(next_shoot_time + min(10,shoot_delay) < curtime)
+	if(next_shoot_time + min(10,shoot_delay*2) < curtime)
 		heat_current = max(heat_current-1,0)
 
 	return ..()

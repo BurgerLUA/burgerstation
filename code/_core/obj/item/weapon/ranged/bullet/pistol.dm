@@ -3,7 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/pistol.dmi'
 	icon_state = "inventory"
 
-	projectile_speed = 20
 	shoot_delay = 2
 
 	automatic = FALSE
@@ -18,11 +17,18 @@
 
 	override_icon_state = TRUE
 
-	view_punch = 6
+	view_punch = 8
 
 	cock_sound = 'sounds/weapons/gun_slide1.ogg'
 
 	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
+	size = SIZE_1
+	weight = WEIGHT_2
+
+	heat_per_shot = 0.05
+	heat_current = 0
+	heat_max = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
@@ -37,7 +43,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_static_spread() //Base spread
-	return 0
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
@@ -52,6 +58,9 @@
 
 	view_punch = 12
 
+	size = SIZE_2
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
 	name = ".45 private security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
@@ -64,6 +73,8 @@
 
 	automatic = FALSE
 
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
 	name = ".45 tactical pistol"
@@ -74,6 +85,8 @@
 
 	view_punch = 6
 
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /*
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)

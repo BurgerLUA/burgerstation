@@ -20,6 +20,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
+	size = SIZE_4
+	weight = WEIGHT_4
+
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.2

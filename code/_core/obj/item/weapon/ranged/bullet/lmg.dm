@@ -24,6 +24,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
 
+	size = SIZE_5
+	weight = WEIGHT_5
+
 /obj/item/weapon/ranged/bullet/magazine/lmg/update_icon()
 
 	var/modifier = "[wielded ? "_wielded" : ""][open ? "_open" : ""][stored_magazine ? "_1" : ""]"

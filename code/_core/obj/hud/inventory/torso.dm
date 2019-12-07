@@ -92,7 +92,7 @@
 
 	drop_on_death = TRUE
 
-	max_size = SIZE_2
-	max_weight = WEIGHT_3
+	max_size = SIZE_4
+	max_weight = 1000
 
 	drag_to_take = FALSE

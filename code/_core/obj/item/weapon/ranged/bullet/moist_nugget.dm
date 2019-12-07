@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/bolt_action.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -21,6 +21,9 @@
 	pump_sound = 'sounds/weapons/gun_slide3.ogg'
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
+	size = SIZE_5
+	weight = WEIGHT_4
 
 /obj/item/weapon/ranged/bullet/pump/hunting_rifle/get_static_spread() //Base spread
 	if(!wielded)

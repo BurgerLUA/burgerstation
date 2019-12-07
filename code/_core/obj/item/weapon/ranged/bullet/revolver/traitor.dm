@@ -16,6 +16,11 @@
 
 	view_punch = 12
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
+	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
 	return 0.01
 
