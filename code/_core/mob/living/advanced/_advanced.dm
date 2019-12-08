@@ -106,7 +106,11 @@
 		capacity += I.weight
 
 	for(var/obj/item/I in held_objects)
-		slow_mul *= I.slowdown_mul_held
+		if(is_inventory(I.loc))
+			var/obj/hud/inventory/I2 = I.loc
+			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
+				slow_mul *= I.slowdown_mul_held
+
 		capacity += I.weight
 
 	max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
