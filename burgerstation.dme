@@ -957,6 +957,7 @@
 #include "code\_core\world\subsystems\spawning.dm"
 #include "code\_core\world\subsystems\species.dm"
 #include "code\_core\world\subsystems\spellcrafting.dm"
+#include "code\_core\world\subsystems\squad.dm"
 #include "code\_core\world\subsystems\status.dm"
 #include "code\_core\world\subsystems\thinking.dm"
 #include "code\_core\world\subsystems\tracks.dm"

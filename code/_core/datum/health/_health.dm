@@ -197,7 +197,7 @@
 	if(!is_living(owner))
 		return ..()
 
-	return armor_base
+	return armor_base.Copy()
 
 
 /health/proc/adjust_mana(var/adjust_value)

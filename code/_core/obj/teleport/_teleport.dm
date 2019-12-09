@@ -147,7 +147,7 @@
 				)
 
 				var/step_num = 1
-				while(TRUE)
+				while(P.client)
 
 					var/speed = 1
 

@@ -93,7 +93,8 @@ health/mob/living/advanced/update_stats()
 
 	var/mob/living/advanced/A = owner
 
-	var/returning_value = ..()
+	var/list/returning_value = ..()
+
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
 

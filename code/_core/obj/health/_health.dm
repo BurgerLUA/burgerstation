@@ -45,8 +45,6 @@
 	if(max == 0)
 		return
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
 	overlays.Cut()
 
 	var/math = floor( (current/max)*28 )
@@ -54,9 +52,6 @@
 	var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
 	bar.color = bar_color
 	overlays += bar
-
-
-
 	..()
 
 /obj/hud/button/health/bar/hp

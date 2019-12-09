@@ -101,6 +101,11 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	name = "[real_name] ([client ? client : "NO CKEY"])"
 
 /mob/living/advanced/player/Destroy()
+
+	if(current_squad)
+		current_squad.remove_member(src)
+		current_squad = null
+
 	if(area && area.players_inside)
 		area.players_inside -= src
 	all_players -= src
@@ -110,8 +115,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	return ..()
 
 mob/living/advanced/player/on_life_client()
-	..()
+	. = ..()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
+	return .
 
 /mob/living/advanced/player/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
