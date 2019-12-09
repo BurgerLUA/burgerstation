@@ -55,6 +55,19 @@
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
 
+/obj/item/clothing/feet/shoes/colored/blacker
+	color_primary = "#262626"
+	color_secondary = "#A8A8A8"
+	color_tertiary = "#262626"
+
+/obj/item/clothing/feet/shoes/colored/blacker/left
+	name = "left shoe"
+	icon_state = "inventory_left"
+	icon_state_worn = "worn_left"
+
+	item_slot = SLOT_FOOT_LEFT
+	protected_limbs = list(BODY_FOOT_LEFT)
+
 
 /obj/item/clothing/feet/shoes/colored/brown
 	color_primary = "#A05726"

@@ -27,12 +27,24 @@
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
 
 
+/obj/item/clothing/feet/socks/knee
+	name = "knee socks"
+	icon = 'icons/obj/items/clothing/socks/knee.dmi'
+	polymorphic = TRUE
 
-/obj/item/clothing/feet/socks/programmer
+/obj/item/clothing/feet/socks/knee/scottish
+	color_primary = "#53512A"
+	color_secondary = "#32321B"
+	color_tertiary = "#53512A"
+
+/obj/item/clothing/feet/socks/programmer/
 	name = "programmer sock"
 	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
-
 	polymorphic = TRUE
+
+/obj/item/clothing/feet/socks/programmer/pink
+	name = "programmer sock"
+
 	color_primary = "#FFFFFF"
 	color_secondary = "#EE9AA8"
 	color_tertiary = "#FFFFFF"
@@ -40,7 +52,6 @@
 /obj/item/clothing/feet/socks/programmer/bee
 	name = "bee stockings"
 
-	polymorphic = TRUE
 	color_primary = "#1E1E1E"
 	color_secondary = "#FFD819"
 	color_tertiary = "#1E1E1E"

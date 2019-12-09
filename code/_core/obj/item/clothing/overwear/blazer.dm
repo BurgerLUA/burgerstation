@@ -10,13 +10,15 @@
 	is_container = TRUE
 	dynamic_inventory_count = 1
 
-	container_max_size = 2
-	container_max_weight = 4
+	container_max_size = SIZE_2
 
 	size = SIZE_2
 	weight = WEIGHT_2
 
 	defense_rating = list(
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
 		MAGIC = ARMOR_D,
-		COLD = ARMOR_D,
+		COLD = ARMOR_C
 	)

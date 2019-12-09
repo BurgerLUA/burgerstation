@@ -12,7 +12,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_E,
 		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_B,
 		LASER = ARMOR_E,
 		MAGIC = -ARMOR_C,
 		COLD = ARMOR_C
@@ -115,7 +115,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_B,
 		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_E,
 		LASER = ARMOR_C,
 		MAGIC = -ARMOR_S,
 		HEAT = -ARMOR_A,
@@ -151,7 +151,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_S,
 		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_D,
 		LASER = ARMOR_C,
 		MAGIC = -ARMOR_S,
 		HEAT = -ARMOR_S,
@@ -213,7 +213,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_S,
 		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_B,
+		PIERCE = ARMOR_D,
 		LASER = -ARMOR_C,
 		MAGIC = -ARMOR_S,
 		HEAT = -ARMOR_S,
@@ -291,7 +291,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_B,
 		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_D,
 		LASER = ARMOR_B,
 		MAGIC = -ARMOR_S,
 		HEAT = ARMOR_C,

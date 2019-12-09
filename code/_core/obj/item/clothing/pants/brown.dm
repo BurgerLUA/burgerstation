@@ -16,3 +16,26 @@
 
 	size = SIZE_2
 	weight = WEIGHT_2
+
+
+/obj/item/clothing/pants/kilt
+	name = "kilt"
+	icon = 'icons/obj/items/clothing/pants/kilt.dmi'
+
+	desc = "THERE CAN ONLY BE ONE."
+	desc_extended = "A very tough and fashionable kilt. Needs to be held up by a kilt belt."
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_E,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_E
+	)
+
+	size = SIZE_2
+	weight = WEIGHT_2
+
+/obj/item/clothing/pants/kilt/green
+	color = "#003714"
