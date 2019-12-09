@@ -16,7 +16,7 @@
 	var/mana_current = -1
 	var/mana_regeneration = -1
 
-	var/damage_multiplier = 1 //How much damage, multiplied, does this atom recieve?
+	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
 	var/damage_soft_total = 0
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)

@@ -27,7 +27,7 @@
 #define TALK_RANGE VIEW_RANGE
 #define YELL_RANGE VIEW_RANGE*1.5
 
-#define RADIO_RANGE 3 //Can only recieve radio messages in this distance
+#define RADIO_RANGE 3 //Can only receive radio messages in this distance
 #define RADIO_WHISPER_RANGE 1
 #define RADIO_TALK_RANGE 4
 #define RADIO_YELL_RANGE 8
