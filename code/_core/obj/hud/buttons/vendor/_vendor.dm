@@ -24,12 +24,7 @@
 	. = ..()
 
 	overlays.Cut()
-
-	var/image/I = new /image(associated_item.icon)
-	I.appearance = associated_item.appearance
-	I.plane = PLANE_HUD_OBJ
-	I.pixel_y = 4
-	overlays += I
+	overlays += associated_item
 
 	var/amount = associated_item.value
 

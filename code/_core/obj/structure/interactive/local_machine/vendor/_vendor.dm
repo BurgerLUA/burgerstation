@@ -17,9 +17,12 @@
 	var/turf/T = get_turf(src)
 
 	for(var/obj/item/I in T.contents)
+		I.on_spawn()
 		stored_objects += I
 		I.force_move(src)
 		I.update_icon()
+		I.plane = PLANE_HUD_OBJ
+		I.pixel_y = 4
 
 	return ..()
 

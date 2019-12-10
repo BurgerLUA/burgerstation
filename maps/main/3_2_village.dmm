@@ -15,7 +15,7 @@
 "ao" = (/obj/structure/scenery/rocks,/mob/living/advanced/npc/dummy,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
 "ap" = (/obj/structure/interactive/localmachine/snowflake/wishgranter,/obj/marker/mob_blocker,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "aq" = (/obj/structure/scenery/rocks,/mob/living/advanced/npc/dummy/armor,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/village)
-"ar" = (/obj/structure/interactive/vendor/ammo,/obj/item/container/food/dynamic/cheese/block,/obj/item/container/food/dynamic/cheese/wheel,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
+"ar" = (/obj/structure/interactive/vendor/ammo,/obj/item/container/cheese_mold,/obj/item/container/cheese_mold/block,/obj/item/container/beaker/bottle/large/milk,/obj/item/container/beaker/bottle/large/enzymes,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/village)
 "as" = (/obj/structure/interactive/lighting/streetlamp/jungle/dark,/turf/simulated/floor/cave_dirt,/area/world/forest/interior/village/cave)
 "at" = (/obj/structure/scenery/rocks,/turf/simulated/floor/cave_dirt,/area/world/forest/exterior/plains)
 "au" = (/obj/structure/interactive/vendor/ammo,/obj/item/magazine/pistol_45/surplus,/obj/item/magazine/clip/revolver/bullet_44/surplus,/obj/item/magazine/smg_22/surplus,/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/turf/simulated/floor/tile/grey,/area/world/forest/interior/village/shop/nanotrasen)

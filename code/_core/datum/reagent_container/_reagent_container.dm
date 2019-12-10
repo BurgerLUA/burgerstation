@@ -316,6 +316,14 @@
 /reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
 	return -add_reagent(reagent_id,-amount,TNULL,should_update,check_recipes)
 
+/reagent_container/proc/remove_all_reagents()
+
+	stored_reagents.Cut()
+	stored_reagents_temperature.Cut()
+	update_container()
+
+	return TRUE
+
 /reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE) //Transfer a single reagent by id.
 	var/old_temperature = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : T0C + 20
 	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount,should_update,check_recipes),old_temperature,should_update,check_recipes)

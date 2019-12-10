@@ -261,10 +261,10 @@
 			A.update_slowdown_mul()
 			update_held_icon(I)
 
-	update_overlays()
-	update_stats()
 
+	update_stats()
 	I.on_pickup(old_location,src)
+	update_overlays()
 
 	return TRUE
 

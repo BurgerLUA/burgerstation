@@ -154,6 +154,17 @@
 
 	flavor = "mushroom"
 
+//Milk
+/reagent/core/nutrition/milk/
+	name = "cow's milk"
+	id = "milk_cow"
+	desc = "Nutrition and flavor from cow's milk."
+	color = "#FFFFFF"
+
+	nutrition_amount = 0.8 NUT_FACTOR
+
+	flavor = "milk"
+
 //Cheese
 /reagent/core/nutrition/cheese/
 	name = "processed cheese"
@@ -216,8 +227,6 @@
 	nutrition_amount = 0.7 NUT_FACTOR
 
 	flavor = "beef"
-
-
 
 /reagent/core/nutrition/meat/chicken
 	name = "raw chicken"

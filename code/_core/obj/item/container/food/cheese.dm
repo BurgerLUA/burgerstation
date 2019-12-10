@@ -14,11 +14,12 @@
 
 	scale_sprite = FALSE
 
+	reagents = /reagent_container/food/cheese
+
 /obj/item/container/food/dynamic/cheese/on_spawn()
 	created_date = get_date()
 	created_time = get_time()
 	return ..()
-
 
 /obj/item/container/food/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 

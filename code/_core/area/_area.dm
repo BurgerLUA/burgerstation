@@ -45,6 +45,8 @@
 
 	var/ambient_temperature = T0C + 20
 
+	var/cheese_type = "processed_cheese"
+
 /area/Destroy()
 	if(players_inside)
 		players_inside.Cut()
