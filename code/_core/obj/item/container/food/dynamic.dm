@@ -31,7 +31,7 @@
 		var/pieces = floor(original_volume/10)
 
 		if(has_prefix(icon_state,"dough"))
-			if(pieces <= 0 || original_volume < pieces)
+			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
 					L.to_chat("There isn't enough dough to cut!")
@@ -121,10 +121,11 @@
 			best_bread_reagent_id = reagent_id
 			best_bread_reagent_amount = amount
 
-	cooked_percent = total_bread / (total_dough + total_bread)
-
+	if(total_dough + total_bread)
+		cooked_percent = total_bread / (total_dough + total_bread)
 
 	if(cooked_percent > 0.5) //It's bread
+
 		switch(wetness)
 			if(-INFINITY to -20)
 				wetness_prefix = "dry"
@@ -137,6 +138,7 @@
 			name = "[wetness_prefix] mystery bread"
 
 	else //It's dough
+
 		switch(wetness)
 			if(-INFINITY to -10)
 				wetness_prefix = "dry"
@@ -150,10 +152,9 @@
 
 	if(reagents.volume_current <= 10 && cooked_icon_state == "bread")
 		cooked_icon_state = "bun_whole"
+		raw_icon_state = "dough_ball_small"
 
 	icon_state = cooked_percent > 0.5 ? cooked_icon_state : raw_icon_state
 	color = reagents.color
-
-	scale_sprite = (icon_state == "dough_ball")
 
 	return ..()

@@ -21,6 +21,8 @@
 	var/flavor = "nothing"
 	var/flavor_strength = 1
 
+	var/processed_reagent
+
 /reagent/proc/metabolize(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 
 	var/container_flags_metabolism = container.flags_metabolism
