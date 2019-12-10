@@ -340,13 +340,14 @@
 
 	if(light)
 		light.update(src)
-	/*
+
+	world.log << "OKAY BOOMER [src.pixel_x] and [src.pixel_y]."
+
 	if(old_inventory && new_loc)
 		var/turf/OL = get_turf(old_inventory)
 		var/turf/NL = get_turf(new_loc)
 		if(OL != NL)
-			new/obj/effect/temp/item_pickup(NL,2,OL,src,is_inventory(new_loc) ? "transfer" : "drop")
-	*/
+			new/obj/effect/temp/item_pickup(NL,2,OL,src,is_turf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
 

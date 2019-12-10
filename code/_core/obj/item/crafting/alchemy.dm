@@ -74,9 +74,7 @@
 	for(var/reagent_id in C.reagents.stored_reagents)
 		var/reagent_amount = C.reagents.stored_reagents[reagent_id]
 		var/reagent/R = all_reagents[reagent_id]
-		world.log << reagent_id
 		if(R.processed_reagent)
-			world.log << "IS BEING CONVERTED TO [R.processed_reagent]"
 			var/temperature = C.reagents.average_temperature
 			C.reagents.remove_reagent(reagent_id,reagent_amount,FALSE)
 			C.reagents.add_reagent(R.processed_reagent,reagent_amount,temperature,FALSE,FALSE)

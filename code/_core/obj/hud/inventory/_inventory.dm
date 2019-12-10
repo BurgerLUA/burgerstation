@@ -380,7 +380,7 @@
 	for(var/obj/item/I in held_objects)
 		qdel(remove_object(I))
 
-/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc) //Removes the object from both worn and held objects, just in case.
+/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0) //Removes the object from both worn and held objects, just in case.
 
 	var/was_removed = FALSE
 
@@ -400,14 +400,16 @@
 
 	if(was_removed)
 		I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
+		I.pixel_x = pixel_x_offset
+		I.pixel_y = pixel_y_offset
 		I.plane = initial(I.plane)
+		I.on_drop(src,drop_loc)
 		update_overlays()
 		update_stats()
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			A.remove_overlay(I)
 		queue_delete(I,ITEM_DELETION_TIME_DROPPED)
-		I.on_drop(src,drop_loc)
 		if(owner)
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))

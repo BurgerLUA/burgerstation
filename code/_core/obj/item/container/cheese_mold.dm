@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/container/cheese_mold.dmi'
 	icon_state = "wheel"
 
-	reagents = /reagent_container/food/cheese
+	reagents = /reagent_container/cheese_mold
 
 	allow_beaker_transfer = TRUE
 
@@ -23,6 +23,8 @@
 
 /obj/item/container/cheese_mold/proc/make_cheese()
 
+	var/turf/T = get_turf(src)
+
 	var/original_temperature = reagents.average_temperature
 
 	var/total_non_enzyme_volume = 0
@@ -33,12 +35,13 @@
 		var/reagent_volume = reagents.stored_reagents[reagent_id]
 		total_non_enzyme_volume += reagent_volume
 
-	var/obj/item/container/food/dynamic/cheese/C = new(src.loc)
+	var/obj/item/container/food/dynamic/cheese/C = new(T)
 	C.icon_state = icon_state
 	for(var/reagent_id in cheese_mix)
 		var/reagent_volume = (cheese_mix[reagent_id]/CHEESE_PROCESS_TIME)*total_non_enzyme_volume
 		C.reagents.add_reagent(reagent_id,reagent_volume,original_temperature,FALSE,FALSE)
 
+	T.visible_message("The cheese finishes molding!")
 
 	C.reagents.update_container()
 
@@ -53,12 +56,10 @@
 
 	return TRUE
 
-
 /obj/item/container/cheese_mold/think()
 
 	if(is_turf(loc))
 		process_count++
-		world.log << process_count
 		var/area/A = get_area(src)
 		if(cheese_mix[A.cheese_type])
 			cheese_mix[A.cheese_type] += 1
@@ -83,22 +84,19 @@
 
 /obj/item/container/cheese_mold/update_icon()
 
-	var/has_milk = FALSE
-	var/has_enzymes = FALSE
+	if(allow_beaker_transfer)
 
-	if(!thinks)
+		var/milk_count = 0
+		var/enzyme_count = 0
+
 		for(var/reagent_id in reagents.stored_reagents)
-			//var/reagent_volume = reagents.stored_reagents[reagent_id]
+			var/reagent_volume = reagents.stored_reagents[reagent_id]
 			if(has_prefix(reagent_id,"milk"))
-				has_milk = TRUE
-
+				milk_count += reagent_volume
 			else if(has_prefix(reagent_id,"enzyme"))
-				has_enzymes = TRUE
+				enzyme_count += reagent_volume
 
-			if(has_milk && has_enzymes)
-				break
-
-		if(has_milk && has_enzymes)
+		if(milk_count >= 40 && enzyme_count >= 10)
 			thinks = TRUE
 			allow_beaker_transfer = FALSE
 			var/turf/T = get_turf(src)

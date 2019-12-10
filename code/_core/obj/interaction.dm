@@ -8,12 +8,12 @@
 /obj/proc/is_held()
 	return istype(src.loc,/obj/hud/inventory)
 
-/obj/proc/drop_item(var/turf/new_location)
+/obj/proc/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		if(!new_location)
 			new_location = get_turf(I.owner)
-		return I.remove_object(src,new_location)
+		return I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset)
 
 	return FALSE
 

@@ -37,7 +37,7 @@
 
 	return ..()
 
-/obj/hud/inventory/dynamic/remove_object(var/obj/item/I,var/turf/drop_loc)
+/obj/hud/inventory/dynamic/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0)
 
 	. = ..()
 
