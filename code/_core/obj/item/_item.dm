@@ -341,8 +341,6 @@
 	if(light)
 		light.update(src)
 
-	world.log << "OKAY BOOMER [src.pixel_x] and [src.pixel_y]."
-
 	if(old_inventory && new_loc)
 		var/turf/OL = get_turf(old_inventory)
 		var/turf/NL = get_turf(new_loc)
