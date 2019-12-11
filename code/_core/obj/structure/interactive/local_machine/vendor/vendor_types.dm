@@ -48,3 +48,7 @@
 /obj/structure/interactive/vendor/syndicate
 	name = "syndicate vendor"
 	icon_state = "syndi"
+
+/obj/structure/interactive/vendor/hydroponics/nutri
+	name = "garden vendor"
+	icon_state = "nutri"

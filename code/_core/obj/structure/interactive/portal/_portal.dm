@@ -27,3 +27,7 @@
 
 /obj/structure/interactive/portal/clown
 	id = "clown"
+
+
+/obj/structure/interactive/portal/coderbus
+	id = "coderbus"

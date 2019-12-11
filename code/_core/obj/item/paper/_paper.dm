@@ -7,7 +7,7 @@
 
 	var/last_page = 1
 
-	var/list/data = list("cum","shit","fuck","cocks")
+	var/list/data = list("There is nothing here.")
 
 /obj/item/paper/click_self(var/mob/caller,location,control,params)
 

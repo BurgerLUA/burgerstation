@@ -11,6 +11,11 @@
 
 	health_base = 200
 
+/mob/living/simple/npc/bear/post_death()
+	..()
+	icon_state = "[initial(icon_state)]_dead"
+	update_icon()
+
 /mob/living/simple/npc/bear/snow
 	name = "snow bear"
 	icon_state = "white"

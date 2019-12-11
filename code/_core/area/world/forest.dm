@@ -122,13 +122,17 @@
 	name = "farm shop"
 	id = "farm_shop"
 
-/area/world/forest/interior/village/shop/alley
-	name = "alley shop"
-	id = "alley_shop"
+/area/world/forest/interior/village/shop/bar
+	name = "bar shop"
+	id = "bar_shop"
 
 /area/world/forest/interior/village/shop/debug
 	name = "debug shop"
 	id = "debug_shop"
+
+/area/world/forest/interior/village/shop/syndicate
+	name = "syndicate shop"
+	id = "syndicate_shop"
 
 
 /area/world/forest/interior/village/ship

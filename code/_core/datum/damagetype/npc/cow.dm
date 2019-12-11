@@ -1,4 +1,4 @@
-/damagetype/npc/crab
+/damagetype/npc/cow
 	name = "Cow Headbutt"
 	id = "cow_headbutt"
 	desc = "The headbutt of a cow."

@@ -62,7 +62,7 @@
 	weight = WEIGHT_3
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
-	name = ".45 private security pistol"
+	name = ".45 security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
 	projectile_speed = 28
 	shoot_delay = 4
@@ -77,7 +77,7 @@
 	weight = WEIGHT_2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
-	name = ".45 tactical pistol"
+	name = ".45 military pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol2.dmi'
 	shoot_delay = 2
 	bullet_type = ".45"
@@ -88,17 +88,18 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
-/*
-/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
-	. = ..()
+/obj/item/weapon/ranged/bullet/magazine/pistol/mercenary
+	name = ".357 mercenary pistol"
+	icon = 'icons/obj/items/weapons/ranged/357pistol.dmi'
+	projectile_speed = 28
+	shoot_delay = 4
+	bullet_type = ".45"
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
-	if(. && automatic)
-		spawn( (next_shoot_time - curtime) + 1)
-			if(is_advanced(caller))
-				var/mob/living/advanced/A = caller
-				if( (A.right_item = src && A.attack_flags & ATTACK_HELD_RIGHT) || (A.left_item = src && A.attack_flags & ATTACK_HELD_LEFT))
-					shoot(caller,object,location,params,damage_multiplier)
+	view_punch = 8
 
-	return .
-*/
+	automatic = FALSE
+
+	size = SIZE_2
+	weight = WEIGHT_2
