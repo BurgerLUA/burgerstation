@@ -20,6 +20,7 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_brute_loss(-.*HEALING_C)
+		owner.health.update_health()
 
 	return .
 
@@ -27,6 +28,7 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_brute_loss(-.*HEALING_D)
+		owner.health.update_health()
 
 	return .
 
@@ -39,6 +41,7 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_brute_loss(-.*HEALING_B)
+		owner.health.update_health()
 
 	return .
 
@@ -46,6 +49,7 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_brute_loss(-.*HEALING_C)
+		owner.health.update_health()
 
 	return .
 
@@ -61,12 +65,14 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_burn_loss(-.*HEALING_C)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_burn_loss(-.*HEALING_D)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/dylovene
@@ -81,12 +87,14 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_tox_loss(-.*HEALING_C)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_tox_loss(-.*HEALING_D)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/dexalin
@@ -101,12 +109,14 @@
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_oxy_loss(-.*HEALING_C)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
 	if(owner && owner.health)
 		owner.health.adjust_oxy_loss(-.*HEALING_D)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/tricordrazine
@@ -126,6 +136,7 @@
 		owner.health.adjust_brute_loss(-.*HEALING_D)
 		owner.health.adjust_burn_loss(-.*HEALING_D)
 		owner.health.adjust_tox_loss(-.*HEALING_D)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
@@ -134,6 +145,7 @@
 		owner.health.adjust_brute_loss(-.*HEALING_E)
 		owner.health.adjust_burn_loss(-.*HEALING_E)
 		owner.health.adjust_tox_loss(-.*HEALING_E)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/omnizine
@@ -155,6 +167,7 @@
 		owner.health.adjust_burn_loss(-.*HEALING_D)
 		owner.health.adjust_tox_loss(-.*HEALING_D)
 		owner.health.adjust_oxy_loss(-.*HEALING_D)
+		owner.health.update_health()
 	return .
 
 /reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
@@ -164,4 +177,5 @@
 		owner.health.adjust_burn_loss(-.*HEALING_E)
 		owner.health.adjust_tox_loss(-.*HEALING_E)
 		owner.health.adjust_oxy_loss(-.*HEALING_E)
+		owner.health.update_health()
 	return .

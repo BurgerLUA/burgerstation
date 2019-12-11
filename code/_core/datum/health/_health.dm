@@ -17,10 +17,8 @@
 	var/mana_regeneration = -1
 
 	var/damage_multiplier = 1 //How much damage, multiplied, does this atom receive?
-	var/damage_soft_total = 0
 
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
-	var/list/damage_soft = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
 	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0) //How much to subtract damage
 	var/list/wound/wounds = list()
 
@@ -134,15 +132,6 @@
 
 	return returning_value
 
-/health/proc/get_total_loss_soft(var/include_fatigue = TRUE)
-	var/returning_value = 0
-	for(var/damage_type in damage_soft)
-		if(!include_fatigue && damage_type == FATIGUE)
-			continue
-		returning_value += damage_soft[damage_type]
-
-	return returning_value
-
 //Retrieving
 /health/proc/get_brute_loss()
 	return damage[BRUTE]
@@ -164,7 +153,6 @@
 
 /health/proc/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE) //Update the health values.
 	health_current = get_overall_health()
-	damage_soft_total = get_total_loss_soft()
 
 /health/proc/adjust_loss(var/type=BRUTE,var/amount)
 	if(!amount)

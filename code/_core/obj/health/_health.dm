@@ -16,7 +16,6 @@
 	var/min = 0
 	var/max = 100
 	var/current = 0
-	var/overflow = 0
 
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
 	update_icon()
@@ -77,7 +76,6 @@
 	min = 0
 	max = floor(M.health.health_max)
 	current = floor(M.health.health_current)
-	overflow = -M.health.damage_soft_total
 	return ..()
 
 /obj/hud/button/health/bar/sp
@@ -103,7 +101,6 @@
 	min = 0
 	max = floor(M.health.stamina_max)
 	current = floor(M.health.stamina_current)
-	overflow = M.stamina_regen_buffer
 	return ..()
 
 /obj/hud/button/health/bar/mp
@@ -129,5 +126,4 @@
 	min = 0
 	max = floor(M.health.mana_max)
 	current = floor(M.health.mana_current)
-	overflow = M.mana_regen_buffer
 	..()

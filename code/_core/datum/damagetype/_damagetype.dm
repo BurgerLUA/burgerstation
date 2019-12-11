@@ -284,8 +284,6 @@
 					fatigue_damage_to_deal += damage_amount
 
 		var/is_crit = get_critical_hit_condition(attacker,victim,weapon,hit_object)
-
-
 		if(is_crit)
 			var/final_crit_multiplier = do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal)
 			brute_damage_to_deal *= final_crit_multiplier

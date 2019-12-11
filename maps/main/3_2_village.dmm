@@ -179,7 +179,7 @@
 "dw" = (/obj/structure/interactive/door/airlock/station/security/shop,/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/shop/security)
 "dx" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/security)
 "dy" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/turf/simulated/floor/wood/brown,/area/world/forest/interior/village/shop/bar)
-"dz" = (/obj/structure/smooth/window/shuttle/end_02{icon_state = "end_02"; dir = 1},/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chemist)
+"dz" = (/obj/structure/smooth/window/shuttle/end_02{icon_state = "end_02"; dir = 1},/obj/structure/interactive/grille,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chemist)
 "dA" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/rich,/area/world/forest/interior/village/house)
 "dB" = (/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
 "dC" = (/obj/structure/interactive/vendor/chemistry/wardrobe,/obj/item/clothing/overwear/coat/labcoat/chemist,/obj/item/clothing/uniform/jumpsuit/chemist,/obj/item/storage/bags/chemistry,/obj/item/clothing/mask/gas,/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
@@ -192,7 +192,7 @@
 "dJ" = (/turf/simulated/floor/tile/red,/area/world/forest/interior/village/shop/security)
 "dK" = (/turf/simulated/floor/tile/dark,/area/world/forest/interior/village/shop/security)
 "dL" = (/obj/structure/interactive/vendor/security/wardrobe,/obj/item/clothing/glasses/sun,/obj/item/clothing/head/helmet/security/tactical_helmet,/obj/item/clothing/head/hood/skimask/black,/obj/item/clothing/overwear/armor/medium_armor/security,/obj/item/clothing/uniform/jumpsuit/dark/security,/obj/item/storage/shoebox/jackboot,/obj/item/storage/glovebox/padded,/obj/item/clothing/back/storage/satchel,/obj/item/clothing/overwear/armor/medium_armor/security,/turf/simulated/floor/tile/red,/area/world/forest/interior/village/shop/security)
-"dM" = (/obj/structure/smooth/window/shuttle,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chemist)
+"dM" = (/obj/structure/smooth/window/shuttle,/obj/structure/interactive/grille,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chemist)
 "dN" = (/mob/living/advanced/npc/unique/chemist,/turf/simulated/floor/tile,/area/world/forest/interior/village/shop/chemist)
 "dO" = (/turf/simulated/floor/cave_dirt,/area/world/forest/interior/cave/open)
 "dP" = (/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/weapon/ranged/bullet/revolver/detective,/turf/simulated/floor/tile/red,/area/world/forest/interior/village/shop/security)
@@ -221,7 +221,7 @@
 "em" = (/turf/simulated/wall/rock,/area/world/forest/interior/village/cave)
 "en" = (/obj/structure/interactive/bar_sign/dan,/turf/simulated/wall/wood/brown,/area/world/forest/interior/village/shop/bar)
 "eo" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt,/area/world/forest/exterior/plains)
-"ep" = (/obj/structure/smooth/window/shuttle/end_02,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chemist)
+"ep" = (/obj/structure/smooth/window/shuttle/end_02,/obj/structure/interactive/grille,/turf/simulated/floor/plating,/area/world/forest/interior/village/shop/chemist)
 "eq" = (/obj/marker/mob_blocker,/turf/simulated/floor/cobblestone/side{icon_state = "cobble_side"; dir = 4},/area/world/forest/exterior/village)
 "er" = (/obj/structure/scenery/flowers,/obj/marker/mob_blocker,/turf/simulated/floor/colored/grass,/area/world/forest/exterior/village)
 "es" = (/mob/living/simple/npc/cult/cultist,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
@@ -345,10 +345,10 @@ eOeOeOeOeOeOageOeOeOagagbNbNagagagagagagagagagagagagagaZagagagagagagafafafafafac
 eOeOeOeOeOagagageOagagbNbNbNagagagagagagagagagagagagagagagagagagafafafafafacajajajacacafafafafagagbNagafafavbcananananaianbibibibibibianbifEbxbDanananananaBaBaBaBbibiaBaBaBbibiaBaBaBaBfHfHbWbWbWfHftaBbxbDbdbdbdbdbmbmbmbmbmbmbmbmbmbmbmaHaHaHbmbmbmbmbmbmbmbm
 eOeOeOeOeOagagagagbNbNbNbNagagageOeOeOeOagagagagagagagagafafafafafafacajajajajacafafafafafafagagagbNagagafavbcefanbibibiananbibibibiananbifEbxbDananaBaBaBaBaBbibibibiaBaBaBaBbibjaBaBaBftftbWcqbWftfJcNdUeqclclclclbmbmbmbmbmbmbmbmbmbmbmaHaJaHbmbmbmbmbmbmbmbm
 eOeOeOeOeOagagagbNbNbNbNagageOeOeOeOeOeOeOeOeOagagafafafafafafafacacajajacafafafafafafagagagagagagagagbNafavbcbcbibjaBaBbiancQcQaBbiefbcbcfEbxbDaBaBaBaBaBaBbibibibibibiaBaBaBaBaBaBaBbibWbWbWctbWbWbWaBbxbDcabdbgbgbgbmbmbgbgbgbmbmbmbmaHaHaJaHaHbmbmbmbmbmbmbm
-eOeOeOeOeOeOagagbNbNagagageOeOeOeOeOeOeOeOeOafafafafacacajajajajacafafafafafafagagagagagbNbNbNagagagagagafavbcbccQaBaBaBbiancQaBaBaBbcbcbcfEbxbDcEcEcEcEcEcEcFcFcEbibibibiaBaBaBaBaBaBbicucccccccccccuaBbxbDanbdbgbgbgbmbmbgbgbgbmbmbmaHaJaJaJaJaJaHbmbmbmbmbmbm
+eOeOeOeOeOeOagagbNbNagagageOeOeOeOeOeOeOeOeOafafafafacacajajajajacafafafafafafagagagagagbNbNbNagagagagagafavbcbccQaBaBaBbiancQaBaBaBbcbcbcfEbxbDcEcEcEcEcEcEcFcFcEbibibibiaBaBaBaBaBaBbicucCcccccccCcuaBbxbDanbdbgbgbgbmbmbgbgbgbmbmbmaHaJaJaJaJaJaHbmbmbmbmbmbm
 eOeOeOeOeOeOeOagagagageOeOeOeOeOeOeOeOafafafafacacajajajajafafafafafafafagagagagagagagagagbNbNagaZagagafafavbcbcbMaBbjcQcQananaBbjaBbcbcbcfEbxbDcEcIcIcIcJeZeYeXcFbibibibiaBaBbjaBaBaBbicucccccccccccubibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaHaJaJaJaJaJaHaHbmbmbmbmbm
 eOeOeOeOeOeOeOagageOeOeOeOeOeOeOafafafacacacacacacafafafafafafagagagagagagagagagagagagagagagbNagagagafafajavfAfAfAfAfAfAfAfAanfAfAfAfAfEfEfEbxbDcEcIcIcKcLcIcIfzcFcBbibibibibiaBaBbibicBbWcAcCcDcCcAbWbibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaHaJaJaJaHbmbmbmbmbm
-eOeOeOeOeOeOagagageOeOeOeOeOafafacacacafafafafafafafagagagagagagagagagagagagagagagagaZagagagagagagafafajajbHanananbibibibibiananananananancabxbDcEcLcLfacLcIcIfDcFcQbrbsbsbsbsbsbsbsbtbicucCcGcGcGcCcubibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
+eOeOeOeOeOeOagagageOeOeOeOeOafafacacacafafafafafafafagagagagagagagagagagagagagagagagaZagagagagagagafafajajbHanananbibibibibiananananananancabxbDcEcLcLfacLcIcIfDcFcQbrbsbsbsbsbsbsbsbtbicucccGcGcGcccubibxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOeOeOeOaGagagagacajatafacacacafafafafafafagagagagagaZagagagagagagagagagagbNbNbNagagagagagagagafafajajecececaiaibibibibibibibibibibibibibxbDcEfpcIcIcIcIcIfqcEcQbxbBbCbCbCbCbCbBbDbicucMcGcGcGcccuaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaJaJaJaJaHbmbmbmbmbm
 eOeOeOateOeOeOeOacacacacacacacacafafaGagagagagagagagagagagagagagagagagaZbNbNbNbNbNbNbNagagagaZagagbNafajajececececaiaibibibibibibibibibibibibxbDcFfbcIcIcIcIcIfmcFcQbxbDbibibibigdbxbDbibWcPcGcGcGcRbWaBbxbDanbdbgbgbgbmbmbgbgbgbmbmaHaJaJaJaOaJaJaJaHbmbmbmbmbm
 eOeOatateOeOatajacacacacacacafafafagagagagagagagagagagagagagagagaZagagbNbNbNbNbNbNbNbNbNbNagagagagagafafajbHananaiaiaibibibibibibibibibibibibxbDcFfccIcIcIcIcIfocFcQbxbDbibXcNbXbibxbDaBcucUcGcGcGcWcuaBbxbDcabdbgbgbgbmbmbgbgbgbmbmaHaJaJaJbnaJaJaJaHbmbmbmbmbm

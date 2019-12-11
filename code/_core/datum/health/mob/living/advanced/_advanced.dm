@@ -125,17 +125,3 @@ health/mob/living/advanced/update_stats()
 		. += O.health.get_total_loss()
 
 	return .
-
-/health/mob/living/advanced/get_total_loss_soft()
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	for(var/obj/item/organ/O in A.organs)
-		if(!O.health)
-			continue
-		. += O.health.get_total_loss_soft()
-
-	return .

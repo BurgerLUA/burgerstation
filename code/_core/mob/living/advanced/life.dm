@@ -2,15 +2,20 @@
 
 	. = ..()
 
-	if(talk_duration)
-		talk_duration = max(0,talk_duration-LIFE_TICK)
-		if(talk_duration <= 0)
-			talk_type = 0
-			update_icon()
+	if(.)
+		if(talk_duration)
+			talk_duration = max(0,talk_duration-LIFE_TICK)
+			if(talk_duration <= 0)
+				talk_type = 0
+				update_icon()
+
+		handle_organs()
 
 	return .
 
 mob/living/advanced/proc/handle_regen()
+
+	return FALSE
 
 	if(!health)
 		return FALSE
@@ -52,8 +57,6 @@ mob/living/advanced/proc/handle_regen()
 
 	if(.)
 		handle_regen()
-		handle_organs()
-		update_icon(TRUE)
 
 	return .
 
@@ -115,10 +118,6 @@ mob/living/advanced/proc/handle_regen()
 
 	if(hard_crit_enabled)
 		status |= FLAG_STATUS_CRIT
-		for(var/k in health.damage_soft)
-			var/v = health.damage_soft[k]
-			health.damage_soft[k] = min(0,v)
-
 	else
 		status &= ~FLAG_STATUS_CRIT
 
@@ -176,11 +175,6 @@ mob/living/advanced/proc/handle_regen()
 	if(!health)
 		return FALSE
 
-	var/should_update_health = FALSE
-
-	var/damage_min = -2*(10/LIFE_TICK_SLOW)
-	var/damage_max = health.health_max*0.1*(10/LIFE_TICK_SLOW)
-
 	for(var/obj/item/organ/O in organs)
 
 		CHECK_TICK
@@ -195,19 +189,5 @@ mob/living/advanced/proc/handle_regen()
 			for(var/wound/W in O.health.wounds)
 				CHECK_TICK
 				W.on_life()
-
-		//Soft damage to hard damage.
-		for(var/damage_type in O.health.damage_soft)
-			CHECK_TICK
-			var/damage_amount = Clamp(O.health.damage_soft[damage_type],damage_min,damage_max)
-			if(damage_amount)
-				O.health.damage[damage_type] = max(0,O.health.damage[damage_type] + damage_amount)
-				O.health.damage_soft[damage_type] -= damage_amount
-				O.health.update_health()
-				should_update_health = TRUE
-
-	if(health && should_update_health)
-		health.update_health(update_hud=FALSE)
-		update_health_element_icons(TRUE,FALSE,FALSE)
 
 	return TRUE
