@@ -20,6 +20,7 @@
 	var/paralyze_time = 0
 	var/fatigue_time = 0
 	var/stagger_time = 0
+	var/crit_time = 0
 
 	var/first_life = TRUE
 

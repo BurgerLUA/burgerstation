@@ -24,7 +24,7 @@ mob/living/advanced/proc/handle_regen()
 	var/mana_adjust = 0
 	var/stamina_adjust = 0
 
-	if((health_regen_delay <= 0 || status & FLAG_STATUS_CRIT || status & FLAG_STATUS_SLEEP) && health.health_current < health.health_max)
+	if((health_regen_delay <= 0 || health.health_current <= 0 || status & FLAG_STATUS_SLEEP) && health.health_current < health.health_max)
 		var/heal_amount = health.health_regeneration*LIFE_TICK_SLOW*0.1
 		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount,heal_amount,0)
 		if(health_adjust)
@@ -107,36 +107,12 @@ mob/living/advanced/proc/handle_regen()
 
 	return TRUE
 
-/mob/living/advanced/check_status_effects()
-
-	if(. && health && health.health_current > 0 && status & FLAG_STATUS_CRIT)
-		set_hard_crit(FALSE)
-
-	return ..()
-
-/mob/living/advanced/proc/set_hard_crit(var/hard_crit_enabled = TRUE)
-
-	if(hard_crit_enabled)
-		status |= FLAG_STATUS_CRIT
-	else
-		status &= ~FLAG_STATUS_CRIT
-
-	return TRUE
-
 /mob/living/advanced/check_death()
 
 	if(!health)
 		return FALSE
 
-	if(health.health_current <= min(-50,health.health_max*-0.25))
-		return TRUE
-
-	if(health.health_current <= 0)
-		if(has_hard_crit)
-			if(!(status & FLAG_STATUS_CRIT))
-				set_hard_crit(TRUE)
-			return FALSE
-
+	if(health.health_current <= -100)
 		return TRUE
 
 	return FALSE

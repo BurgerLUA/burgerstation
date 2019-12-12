@@ -12,5 +12,6 @@ var/list/all_living_with_status = list()
 		CHECK_TICK
 		L.check_status_effects()
 		L.handle_status_effects()
+		world.log << L
 
 	return TRUE

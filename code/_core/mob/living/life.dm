@@ -25,7 +25,6 @@
 
 	dead = TRUE
 
-
 	if(ai)
 		ai = null
 	movement_flags = 0x0
@@ -82,18 +81,18 @@
 	return TRUE
 
 /mob/living/proc/on_staggered()
-	src.visible_message("\The [src.name] reels backwards!","You reel backwards!")
+	src.visible_message("\The [src.name] reels backwards!","You reel backwards from the staggering impact!")
 	return TRUE
 
 /mob/living/proc/on_unstaggered()
 	return TRUE
 
 /mob/living/proc/on_stunned()
-	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground! You're stunned!")
+	src.visible_message("\The [src.name] gets knocked down!","You get knocked down! You're stunned!")
 	return TRUE
 
 /mob/living/proc/on_unstunned()
-	src.visible_message("\The [src.name] gets up!","You force yourself on your feet!")
+	src.visible_message("\The [src.name] gets back up!","You force yourself on your feet!")
 	return TRUE
 
 /mob/living/proc/on_paralyzed()
@@ -101,7 +100,7 @@
 	return TRUE
 
 /mob/living/proc/on_unparalyzed()
-	src.visible_message("\The [src.name] shakes themselves up","You regain control of your limbs!")
+	src.visible_message("\The [src.name] unfreezes!","You regain control of your limbs!")
 	return TRUE
 
 /mob/living/proc/on_fatigued()
@@ -111,8 +110,19 @@
 /mob/living/proc/on_unfatigued()
 	if(health)
 		health.stamina_current = health.stamina_max
-		src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
+	src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
 	return TRUE
+
+/mob/living/proc/on_crit()
+	src.visible_message("\The [src.name] falls unconscious!","You lose consciousness!")
+	return TRUE
+
+/mob/living/proc/on_uncrit()
+	src.visible_message("\The [src.name] regains consciousness!","You gain consciousness!")
+	return TRUE
+
+
+
 
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
@@ -150,6 +160,15 @@
 
 /mob/living/proc/check_status_effects()
 
+	//Crit
+	if(!(status & FLAG_STATUS_CRIT) && (crit_time > 0 || crit_time == -1))
+		add_status(FLAG_STATUS_CRIT)
+		on_crit()
+
+	if(status & FLAG_STATUS_CRIT && crit_time <= 0 && crit_time != -1)
+		remove_status(FLAG_STATUS_CRIT)
+		on_uncrit()
+
 	//Fatigue
 	if(!(status & FLAG_STATUS_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
 		add_status(FLAG_STATUS_FATIGUE)
@@ -177,7 +196,6 @@
 		remove_status(FLAG_STATUS_STAGGER)
 		on_unstaggered()
 
-
 	//Paralyze
 	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
 		add_status(FLAG_STATUS_PARALYZE)
@@ -192,31 +210,42 @@
 		all_living_with_status += src
 
 	if(!status && (src in all_living_with_status))
+		handle_horizontal()
 		all_living_with_status -= src
 
 	return TRUE
 
 /mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 
+	if(amount_to_remove)
+		if(crit_time != -1)
+			crit_time = max(0,crit_time - amount_to_remove)
+
+		if(stun_time != -1)
+			stun_time = max(0,stun_time - amount_to_remove)
+
+		if(paralyze_time != -1)
+			paralyze_time = max(0,paralyze_time - amount_to_remove)
+
+		if(stagger_time != -1)
+			stagger_time = max(0,stagger_time - amount_to_remove)
+
+		if(sleep_time != -1)
+			sleep_time = max(0,sleep_time - amount_to_remove)
+
+		if(health && fatigue_time != -1)
+			if(health.stamina_current == health.stamina_max*0.25)
+				fatigue_time = 0
+			else
+				fatigue_time = max(0,fatigue_time - amount_to_remove)
+
+	handle_horizontal()
+
+	return TRUE
+
+/mob/living/proc/handle_horizontal()
+
 	var/desired_horizontal = FALSE
-
-	if(stun_time != -1)
-		stun_time = max(0,stun_time - amount_to_remove)
-
-	if(paralyze_time != -1)
-		paralyze_time = max(0,paralyze_time - amount_to_remove)
-
-	if(stagger_time != -1)
-		stagger_time = max(0,stagger_time - amount_to_remove)
-
-	if(sleep_time != -1)
-		sleep_time = max(0,sleep_time - amount_to_remove)
-
-	if(health && fatigue_time != -1)
-		if(health.stamina_current == health.stamina_max*0.25)
-			fatigue_time = 0
-		else
-			fatigue_time = max(0,fatigue_time - amount_to_remove)
 
 	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP || status & FLAG_STATUS_CRIT)
 		desired_horizontal = TRUE
@@ -227,9 +256,6 @@
 		else //GET UP
 			animate(src,transform = matrix(), time = 2)
 		horizontal = desired_horizontal
-
-	return TRUE
-
 
 /mob/living/proc/on_life()
 

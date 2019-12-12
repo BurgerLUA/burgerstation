@@ -476,6 +476,7 @@
 #include "code\_core\mob\living\advanced\player\movement.dm"
 #include "code\_core\mob\living\advanced\player\squad.dm"
 #include "code\_core\mob\living\advanced\player\structure.dm"
+#include "code\_core\mob\living\advanced\player\verbs.dm"
 #include "code\_core\mob\living\simple\_simple.dm"
 #include "code\_core\mob\living\simple\npc\_npc.dm"
 #include "code\_core\mob\living\simple\npc\ash_drake.dm"

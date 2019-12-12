@@ -57,17 +57,15 @@
 
 	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()
-
 		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay),0.1)
 		glide_size = step_size/move_delay
-
 		Move(get_step(src,passengers[1].move_dir),passengers[1].move_dir)
-
 		return TRUE
-	else
-		if(adjust_delay)
-			move_delay = move_delay - adjust_delay
-		return FALSE
+
+	if(adjust_delay)
+		move_delay = move_delay - adjust_delay
+
+	return FALSE
 
 /obj/vehicle/Entered(atom/movable/Obj,atom/OldLoc)
 

@@ -51,9 +51,6 @@
 	if(stun_time == -1)
 		return FALSE
 
-	if(stun_time > max_value)
-		return FALSE
-
 	if(stun_time >= max_value)
 		return FALSE
 
@@ -69,9 +66,6 @@
 /mob/living/proc/add_sleep(var/value,var/max_value = 40)
 
 	if(sleep_time == -1)
-		return FALSE
-
-	if(sleep_time > max_value)
 		return FALSE
 
 	if(sleep_time >= max_value)
@@ -91,9 +85,6 @@
 	if(paralyze_time == -1)
 		return FALSE
 
-	if(paralyze_time > max_value)
-		return FALSE
-
 	if(paralyze_time >= max_value)
 		return FALSE
 
@@ -111,19 +102,40 @@
 	if(fatigue_time == -1)
 		return FALSE
 
-	if(fatigue_time > max_value)
-		return FALSE
-
 	if(fatigue_time >= max_value)
 		return FALSE
 
 	fatigue_time = min(max_value,fatigue_time + value)
 
-	new/obj/effect/temp/damage_number(src.loc,paralyze_time,"FATIGUED!")
+	new/obj/effect/temp/damage_number(src.loc,fatigue_time,"FATIGUED!")
 
 	check_status_effects()
 
 	return TRUE
+
+/mob/living/proc/set_crit()
+	crit_time = -1
+	check_status_effects()
+	return TRUE
+
+/mob/living/proc/unset_crit()
+	crit_time = 0
+	check_status_effects()
+	return TRUE
+
+/mob/living/proc/add_crit(var/value,var/max_value=300)
+
+	if(crit_time == -1)
+		return FALSE
+
+	if(crit_time >= max_value)
+		return FALSE
+
+	crit_time = min(max_value,crit_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,crit_time,"CRITICAL!")
+
+	check_status_effects()
 
 
 /mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

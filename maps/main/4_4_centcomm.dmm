@@ -21,7 +21,7 @@
 "au" = (/obj/structure/interactive/localmachine/snowflake/airlock,/turf/simulated/floor/tile,/area/world/burgerstation/interior/home)
 "av" = (/turf/simulated/wall/bananium,/area/world/clown_planet/interior/safe/shop)
 "aw" = (/turf/simulated/floor/carpet,/area/world/burgerstation/interior/home)
-"ax" = (/obj/structure/interactive/localmachine/snowflake/hint/click{pixel_y = 64},/mob/living/advanced/player/debug,/turf/simulated/floor/carpet,/area/world/burgerstation/interior/home)
+"ax" = (/obj/structure/interactive/localmachine/snowflake/hint/click{pixel_y = 64},/turf/simulated/floor/carpet,/area/world/burgerstation/interior/home)
 "ay" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/lighting/tube{dir = 4; icon_state = "tube_light"},/turf/simulated/floor/tile/overlapping/grey,/area/world/burgerstation/interior/home)
 "az" = (/obj/structure/smooth/table/wood,/obj/structure/interactive/computer/console/old/chargen_job,/turf/simulated/floor/tile/overlapping/grey,/area/world/burgerstation/interior/home)
 "aA" = (/obj/structure/interactive/misc/curtain_open,/obj/structure/interactive/misc/shower{icon_state = "shower"; dir = 1},/turf/simulated/floor/tile,/area/world/burgerstation/interior/home)

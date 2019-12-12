@@ -19,7 +19,7 @@ mob/living/advanced/get_movement_delay()
 
 	. = ..()
 
-	if(status & FLAG_STATUS_CRIT)
+	if(health && health.health_current <= 0)
 		. *= 2
 
 	. *= slowdown_mul
