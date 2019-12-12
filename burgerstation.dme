@@ -424,7 +424,6 @@
 #include "code\_core\mob\living\interaction.dm"
 #include "code\_core\mob\living\life.dm"
 #include "code\_core\mob\living\movement.dm"
-#include "code\_core\mob\living\on_attacked.dm"
 #include "code\_core\mob\living\skills.dm"
 #include "code\_core\mob\living\verbs.dm"
 #include "code\_core\mob\living\advanced\_advanced.dm"

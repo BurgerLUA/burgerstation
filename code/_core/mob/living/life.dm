@@ -121,9 +121,6 @@
 	src.visible_message("\The [src.name] regains consciousness!","You gain consciousness!")
 	return TRUE
 
-
-
-
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
 	if(dead)
@@ -136,6 +133,10 @@
 		return FALSE
 
 	if(status & FLAG_STATUS_STAGGER)
+		return FALSE
+
+
+	if(status & FLAG_STATUS_CRIT)
 		return FALSE
 
 	return ..()

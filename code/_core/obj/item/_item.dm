@@ -112,6 +112,9 @@
 /obj/item/can_be_attacked(var/atom/attacker)
 	return FALSE
 
+/obj/item/can_be_grabbed(var/atom/grabber)
+	return is_turf(src.loc)
+
 /obj/item/click_self(caller,location,control,params)
 
 	if(!length(inventories))

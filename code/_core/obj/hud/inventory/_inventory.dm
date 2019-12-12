@@ -137,7 +137,6 @@
 	else
 		color = initial(color)
 
-
 	for(var/obj/item/I in held_objects)
 		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
 		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
@@ -162,6 +161,11 @@
 
 		overlays += I
 
+	if(grabbed_object)
+		var/image/I = new/image(grabbed_object.icon,grabbed_object.icon_state)
+		I.appearance = grabbed_object.appearance
+		I.plane = PLANE_HUD_OBJ
+		overlays += I
 
 /obj/hud/inventory/update_icon()
 
