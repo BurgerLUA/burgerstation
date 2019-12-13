@@ -14,7 +14,7 @@
 
 		"Shift" = "sprint",
 		"Alt" = "walk",
-		"Ctrl" = "grab",
+		"Ctrl" = "crouch",
 
 		"E" = "grab",
 		"R" = "throw",

@@ -11,7 +11,7 @@
 
 	bullet_type = "9mm"
 
-	shoot_sounds = list('sounds/weapons/auto_shotgun/fire.ogg')
+	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 
 	can_wield = FALSE
 

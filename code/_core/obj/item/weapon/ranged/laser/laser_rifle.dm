@@ -21,6 +21,8 @@
 
 	view_punch = 6
 
+	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
+
 /obj/item/weapon/ranged/laser/rifle/New(var/desired_loc)
 	. = ..()
 	update_icon()

@@ -15,8 +15,6 @@
 
 mob/living/advanced/proc/handle_regen()
 
-	return FALSE
-
 	if(!health)
 		return FALSE
 
@@ -26,19 +24,22 @@ mob/living/advanced/proc/handle_regen()
 
 	if((health_regen_delay <= 0 || health.health_current <= 0 || status & FLAG_STATUS_SLEEP) && health.health_current < health.health_max)
 		var/heal_amount = health.health_regeneration*LIFE_TICK_SLOW*0.1
-		health_adjust = heal_all_organs(heal_amount,heal_amount,heal_amount,heal_amount,heal_amount,0)
+		health_regen_buffer += heal_amount
+		health_adjust = heal_amount
 		if(health_adjust)
 			add_attribute_xp(ATTRIBUTE_VITALITY,health_adjust)
 
 	if((stamina_regen_delay <= 0 || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP) && health.stamina_current < health.stamina_max)
 		var/heal_amount = health.stamina_regeneration*LIFE_TICK_SLOW*0.1
-		stamina_adjust = health.adjust_stamina(heal_amount)
+		stamina_regen_buffer += heal_amount
+		stamina_adjust = heal_amount
 		if(stamina_adjust)
 			add_attribute_xp(ATTRIBUTE_ENDURANCE,stamina_adjust)
 
 	if((mana_regen_delay <= 0 || status & FLAG_STATUS_SLEEP) && health.mana_current < health.mana_max)
 		var/heal_amount = health.mana_regeneration*LIFE_TICK_SLOW*0.1
-		mana_adjust = health.adjust_mana(heal_amount)
+		mana_regen_buffer += heal_amount
+		mana_adjust = heal_amount
 		if(mana_adjust)
 			add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust)
 

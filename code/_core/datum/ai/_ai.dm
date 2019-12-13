@@ -178,7 +178,7 @@
 /ai/proc/handle_objectives()
 
 	if(objective_attack)
-		if(!can_see_enemy(objective_attack))
+		if(!can_see_enemy(objective_attack) || !should_attack_mob(objective_attack))
 			set_objective(null)
 			frustration = 0
 		if(get_dist(owner,objective_attack) > attack_distance + 1)

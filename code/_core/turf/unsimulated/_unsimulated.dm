@@ -17,7 +17,7 @@
 	name = "space"
 	icon = 'icons/turf/space/space.dmi'
 	icon_state = "1"
-	opacity = 1
+	opacity = 0
 	var/generate = TRUE
 
 /turf/unsimulated/space/New()
@@ -33,7 +33,7 @@
 	name = "deep space"
 	icon = 'icons/turf/space/space.dmi'
 	icon_state = "space"
-	opacity = 0
+	opacity = 1
 	generate = FALSE
 
 /turf/unsimulated/abyss
@@ -46,4 +46,4 @@
 	name = "abyss"
 	icon = 'icons/turf/space/void.dmi'
 	icon_state = "void"
-	opacity = 0
+	opacity = 1

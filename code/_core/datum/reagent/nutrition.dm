@@ -21,7 +21,7 @@
 	if(owner && owner.health)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			A.heal_all_organs(nutrition_amount,nutrition_amount,nutrition_amount,nutrition_amount)
+			A.heal_all_organs(.*nutrition_amount,.*nutrition_amount,.*nutrition_amount,.*nutrition_amount)
 
 	return .
 

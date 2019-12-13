@@ -40,14 +40,3 @@
 	skill_xp_per_damage = list(
 		SKILL_UNARMED = SKILL_C
 	)
-
-
-/damagetype/unarmed/fists/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-
-	. = ..()
-
-	if(. && is_living(victim))
-		var/mob/living/L = victim
-		L.add_stagger(10,inflictor = attacker)
-
-	return .

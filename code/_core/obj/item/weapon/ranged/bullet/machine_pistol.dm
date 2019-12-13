@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/sabre.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2
+	shoot_delay = 1
 
 	automatic = FALSE
 
@@ -23,3 +23,5 @@
 
 	size = SIZE_2
 	weight = WEIGHT_3
+
+	automatic = TRUE

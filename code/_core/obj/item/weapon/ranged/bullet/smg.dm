@@ -71,14 +71,12 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical
-	name = ".45 tactical syndicate submachine gun"
+	name = ".45 silent syndicate submachine gun"
 	icon = 'icons/obj/items/weapons/ranged/c20r.dmi'
 	icon_state = "inventory"
 	shoot_delay = 3
 	view_punch = 4
-	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
-
-
+	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 
 /obj/item/weapon/ranged/bullet/magazine/bull
 	name = ".22 bull submachine gun"

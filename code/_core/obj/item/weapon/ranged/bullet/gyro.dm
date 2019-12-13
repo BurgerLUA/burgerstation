@@ -11,7 +11,7 @@
 
 	bullet_type = "gyrojet"
 
-	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
+	shoot_sounds = list('sounds/weapons/gyrojet/shoot.ogg')
 
 	view_punch = 2
 

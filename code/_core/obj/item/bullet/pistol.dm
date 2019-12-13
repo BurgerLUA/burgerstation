@@ -34,7 +34,7 @@
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/revolver/
-	damage_type = ".50ae"
+	damage_type = ".50_pistol"
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
