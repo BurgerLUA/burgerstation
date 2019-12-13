@@ -68,7 +68,7 @@ mob/living/advanced/proc/handle_regen()
 	var/list/obj/item/dropped_items = list()
 
 	for(var/obj/hud/inventory/I in inventory)
-		if(!I.drop_on_death)
+		if(is_player(src) && !I.drop_on_death)
 			continue
 		dropped_items += I.drop_all_objects(src.loc,exclude_soulbound = TRUE)
 
@@ -88,6 +88,8 @@ mob/living/advanced/proc/handle_regen()
 	if(health && desired_loc && loot_drop && is_item(desired_loc))
 		var/obj/item/I = desired_loc
 		var/loot/L = all_loot[loot_drop]
+		if(!L)
+			return FALSE
 		L.spawn_loot_container(desired_loc)
 
 		var/obj/item/currency/C = new(src.loc)
@@ -123,23 +125,23 @@ mob/living/advanced/proc/handle_regen()
 	if(!health)
 		return FALSE
 
-	var/regened_health = FALSE
-	var/regened_stamina = FALSE
-	var/regened_mana = FALSE
+	var/regened_health = 0
+	var/regened_stamina = 0
+	var/regened_mana = 0
 
 	if(health_regen_buffer)
 		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		heal_all_organs(health_to_regen,health_to_regen,health_to_regen,health_to_regen)
+		regened_health = heal_all_organs(health_to_regen,health_to_regen,health_to_regen,health_to_regen)
 		health_regen_buffer -= health_to_regen
 
 	if(stamina_regen_buffer)
 		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
-		health.adjust_stamina(stamina_to_regen)
+		regened_stamina = health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
 
 	if(mana_regen_buffer)
 		var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
-		health.adjust_mana(mana_to_regen)
+		regened_mana = health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 
 	if(regened_health || regened_stamina || regened_mana)

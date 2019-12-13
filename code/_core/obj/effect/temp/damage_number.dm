@@ -4,7 +4,7 @@ obj/effect/temp/damage_number
 	duration = 10
 	icon = null
 	mouse_opacity = 0
-	plane = PLANE_CHAT
+	plane = PLANE_HUD_CHAT
 
 	//maptext_x = TILE_SIZE*1.5
 	//maptext_y = TILE_SIZE*1.5

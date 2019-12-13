@@ -206,6 +206,8 @@
 	if(ai)
 		name = "[name] (lvl. [level])"
 
+	return TRUE
+
 
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)

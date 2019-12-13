@@ -9,6 +9,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/organs/right_hand_worn
 	name = "right glove"
 	icon_state = "slot_hand_right"
@@ -18,6 +20,8 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
+	drop_on_death = TRUE
 
 //Holding
 /obj/hud/inventory/organs/left_hand_held

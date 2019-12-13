@@ -297,15 +297,11 @@ mob/living/proc/on_life_slow()
 
 		if(health_regen_buffer)
 			var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-			if(is_advanced(src)) //Don't @ me
-				var/mob/living/advanced/A = src
-				A.heal_all_organs(health_to_regen,health_to_regen,health_to_regen,health_to_regen)
-			else
-				health.adjust_brute_loss(health_to_regen)
-				health.adjust_burn_loss(health_to_regen)
-				health.adjust_tox_loss(health_to_regen)
-				health.adjust_oxy_loss(health_to_regen)
-				health_regen_buffer -= health_to_regen
+			health.adjust_brute_loss(health_to_regen)
+			health.adjust_burn_loss(health_to_regen)
+			health.adjust_tox_loss(health_to_regen)
+			health.adjust_oxy_loss(health_to_regen)
+			health_regen_buffer -= health_to_regen
 
 		if(stamina_regen_buffer)
 			var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)

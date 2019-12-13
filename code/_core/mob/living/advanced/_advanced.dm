@@ -265,10 +265,8 @@ mob/living/advanced/Login()
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
-		/*
-		if(soul_bound && ckey)
-			C.soul_bound = ckey
-		*/
+		if(C.additional_clothing)
+			C.equip_additional_clothing(src)
 
 	return TRUE
 

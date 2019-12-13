@@ -4,13 +4,22 @@
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
 	icon_state = "square_trim"
 	screen_loc = "LEFT,TOP"
-	alpha = 100
+	alpha = 200
 
 	flags = FLAGS_HUD_MOB
 
 	var/obj/item/stored_item
 
 	var/active = FALSE
+
+	plane = PLANE_HUD
+
+	mouse_over_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drop_pointer = MOUSE_ACTIVE_POINTER
+	mouse_drop_zone = 1
+
+	mouse_opacity = 2
 
 /obj/hud/button/slot/Destroy()
 	stored_item = null
@@ -21,7 +30,11 @@
 	.= ..()
 
 	overlays.Cut()
-	overlays += stored_item
+	if(stored_item)
+		var/image/I = new/image(stored_item.icon,stored_item.icon_state)
+		I.appearance = stored_item.appearance
+		I.plane = PLANE_HUD_OBJ
+		overlays += I
 
 	if(active)
 		color = "#00FF00"
@@ -51,6 +64,13 @@
 		caller.quick_mode = active ? id : null
 		update_icon()
 
+	if(active)
+		for(var/obj/hud/button/slot/S in owner.buttons)
+			if(S == src)
+				continue
+			S.active = FALSE
+			S.update_icon()
+
 	return TRUE
 
 /obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
@@ -58,8 +78,16 @@
 		A.to_chat(span("notice","\The [stored_item.name] was unbound from slot [icon_state]."))
 		stored_item = null
 		update_icon()
-		animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
+		//animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
+
+/obj/hud/button/slot/dropped_on_by_object(var/atom/caller,var/atom/object)
+
+	if(stored_item)
+		stored_item.dropped_on_by_object(caller,object)
+		return TRUE
+
+	return clicked_on_by_object(caller,object)
 
 /obj/hud/button/slot/clicked_on_by_object(caller,object,location,control,params)
 
@@ -81,7 +109,7 @@
 
 	stored_item = object
 	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
-	animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
+	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	update_icon()
 
 	return ..()

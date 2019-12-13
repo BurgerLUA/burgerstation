@@ -1,7 +1,7 @@
 /obj/chat_text
 	name = "overlay"
 	desc = "overlay object"
-	plane = PLANE_CHAT
+	plane = PLANE_HUD_CHAT
 
 	icon = null
 

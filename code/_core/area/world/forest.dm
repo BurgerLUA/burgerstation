@@ -24,7 +24,8 @@
 
 	desired_light_range = 7
 	desired_light_power = 1
-	desired_light_color = "#847B52"
+	desired_light_color = "#3F3B28"
+	//desired_light_color = "#847B52"
 
 
 /area/world/forest/exterior/river

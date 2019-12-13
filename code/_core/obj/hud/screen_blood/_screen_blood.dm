@@ -6,7 +6,7 @@
 	icon_state = "corner"
 
 	layer = LAYER_SCREEN_BLOOD
-	plane = PLANE_INJURY
+	plane = PLANE_HUD_DAMAGE
 
 	screen_loc = "CENTER-4.5,CENTER-4.5"
 

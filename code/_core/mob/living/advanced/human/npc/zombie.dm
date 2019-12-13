@@ -28,7 +28,7 @@
 	. = ..()
 
 	change_organ_visual("skin", desired_color = "#5D7F00")
-	change_organ_visual("hair_head", desired_color = "#111111")
+	change_organ_visual("hair_head", desired_icon_state = "hair_a", desired_color = "#111111")
 	change_organ_visual("eye", desired_color = "#FF0000")
 
 	update_all_blends()
