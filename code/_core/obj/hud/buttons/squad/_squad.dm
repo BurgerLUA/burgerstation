@@ -6,6 +6,9 @@
 	icon_state = "squad"
 	screen_loc = "LEFT,TOP-2"
 
+	flags = FLAGS_HUD_MOB
+
+	alpha = 100
 
 /obj/hud/button/squad/main/update_icon()
 

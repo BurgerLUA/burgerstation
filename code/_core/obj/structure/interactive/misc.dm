@@ -23,6 +23,9 @@ obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,objec
 
 	var/mob/living/advanced/A = caller
 
+	if(length(A.worn_objects))
+		return TRUE
+
 	if(A.sex == MALE)
 		A.add_outfit("new_male",TRUE)
 	else

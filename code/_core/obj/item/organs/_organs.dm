@@ -79,9 +79,11 @@
 
 /obj/item/organ/help(var/atom/caller,var/atom/object,var/list/params)
 
+	/*
 	if(src.loc && is_advanced(src.loc))
 		caller.visible_message(span("notice","\The [src.loc.name] touches \the [object.name] with their [src.name]."))
 		return TRUE
+	*/
 
 	return ..()
 

@@ -56,7 +56,6 @@
 
 	return TRUE
 
-
 /obj/hud/button/toggle_cash_money
 	name = "toggle telecrystal display"
 	screen_loc = "RIGHT-1,CENTER"
@@ -64,20 +63,24 @@
 
 	flags = FLAGS_HUD_MOB
 
+	mouse_opacity = 1
+
 /obj/hud/button/toggle_cash_money/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE
 
+	if(screen_loc == "RIGHT,CENTER")
+		screen_loc = "RIGHT-1,CENTER" //Visible
+	else
+		screen_loc = "RIGHT,CENTER" //Hidden
+
 	var/mob/living/advanced/A = caller
 
-	for(var/obj/hud/button/cash_money/B in A.buttons)
-		animate(B,alpha = B.alpha ? 0 : 255, time = B.alpha ? 1 : 4)
-		B.mouse_opacity = B.alpha ? 1 : 0
+	var/is_visible = screen_loc == "RIGHT-1,CENTER"
 
-	if(screen_loc == "RIGHT,CENTER")
-		screen_loc = "RIGHT-1,CENTER"
-	else
-		screen_loc = "RIGHT,CENTER"
+	for(var/obj/hud/button/cash_money/B in A.buttons)
+		animate(B,alpha = is_visible ? 255 : 0, time = is_visible ? 4 : 1)
+		B.mouse_opacity = is_visible
 
 	return ..()
