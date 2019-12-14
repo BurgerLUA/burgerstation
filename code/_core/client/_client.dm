@@ -239,9 +239,10 @@ var/global/list/all_clients = list()
 
 	if(is_advanced(mob))
 		var/mob/living/advanced/A = mob
-		var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
-		click_and_drag_icon.stored_object = null
-		click_and_drag_icon.alpha = 0
+		if(A.click_and_drag_icon)
+			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
+			click_and_drag_icon.stored_object = null
+			click_and_drag_icon.alpha = 0
 
 	..()
 

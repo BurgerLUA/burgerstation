@@ -1,5 +1,3 @@
-
-
 /track/death_to_life
 	name = "Death to Life"
 	id = "death_to_life"
@@ -12,7 +10,7 @@
 	path = 'sounds/music/ender.ogg'
 	length = 1*60 + 55
 
-/track/rise_and_fall
+/track/rising_bells
 	name = "Rising Bells"
 	id = "rising_bells"
 	path = 'sounds/music/rising_bells.ogg'

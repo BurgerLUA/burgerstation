@@ -30,16 +30,17 @@
 	if(loaded_data["fps_client"])
 		new_owner.fps = loaded_data["fps_client"]
 
-	for(var/obj/hud/button/B in owner.mob.buttons)
-		B.update_icon()
+	if(owner.mob)
+		for(var/obj/hud/button/B in owner.mob.buttons)
+			B.update_icon()
 
-	for(var/obj/hud/button/B in owner.mob.health_elements)
-		B.update_icon()
+		for(var/obj/hud/button/B in owner.mob.health_elements)
+			B.update_icon()
 
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner.mob
-		for(var/obj/hud/inventory/I in A.inventory)
-			I.update_icon()
+		if(is_advanced(owner))
+			var/mob/living/advanced/A = owner.mob
+			for(var/obj/hud/inventory/I in A.inventory)
+				I.update_icon()
 
 	owner.update_window()
 
