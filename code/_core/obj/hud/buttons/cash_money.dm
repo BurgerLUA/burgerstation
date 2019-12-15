@@ -10,6 +10,8 @@
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
 
+	maptext_x = -2
+
 /obj/hud/button/cash_money/update_owner(var/mob/desired_owner)
 	. = ..()
 	if(. && is_player(owner))
@@ -27,6 +29,10 @@
 
 	amount = round(amount)
 
+	maptext = "<div align='right'>[amount]</div>"
+
+
+	/*
 	var/x_pos_mod = 32 - 8
 
 	var/num_to_text = num2text(amount)
@@ -40,6 +46,7 @@
 		I2.Shift(SOUTH,3)
 		I.Blend(I2,ICON_OVERLAY)
 		x_pos_mod -= 5
+	*/
 
 	swap_colors(I)
 

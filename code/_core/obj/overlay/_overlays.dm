@@ -32,7 +32,7 @@
 		if(no_initial)
 			I = ICON_INVISIBLE
 		else
-			I = new /icon(initial_icon,initial_icon_state)
+			I = new/icon(initial_icon,initial_icon_state)
 
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
@@ -41,14 +41,14 @@
 				layer = IB.layer
 
 			if(IB.special_type & ICON_BLEND_MASK)
-				var/icon/OI = new (IB.icon,IB.icon_state)
-				var/icon/MI = new (initial_icon,initial_icon_state)
+				var/icon/OI = new/icon(IB.icon,IB.icon_state)
+				var/icon/MI = new/icon(initial_icon,initial_icon_state)
 				MI.Blend("#FFFFFF",ICON_ADD)
 				MI.Blend(OI,ICON_MULTIPLY)
 				I.Blend(MI,ICON_OVERLAY)
 
 			else if(IB.special_type & ICON_BLEND_OVERLAY)
-				var/icon/OI = new (IB.icon,IB.icon_state)
+				var/icon/OI = new/icon(IB.icon,IB.icon_state)
 				OI.Blend(IB.color,ICON_MULTIPLY)
 				I.Blend(OI,ICON_OVERLAY)
 

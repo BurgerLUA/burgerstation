@@ -18,8 +18,8 @@
 #define MAX_ZOOM 4 //This is for z-zoom.
 #define MIN_ZOOM 1
 
-#define ZOOM_RANGE 7
-#define VIEW_RANGE 11
+#define ZOOM_RANGE 8
+#define VIEW_RANGE 10
 
 #define SOUND_RANGE 18
 
@@ -45,6 +45,9 @@
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
 
+
+#define WEATHER_ADD_CHANCE 40
+#define WEATHER_REMOVE_CHANCE 20
 
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE

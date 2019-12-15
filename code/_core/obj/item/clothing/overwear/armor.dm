@@ -307,6 +307,31 @@
 	weight = WEIGHT_5
 	slowdown_mul_worn = 1
 
+/obj/item/clothing/overwear/armor/hardsuit/mining
+	name = "mining hardsuit"
+	icon = 'icons/obj/items/clothing/suit/hardsuit_mining.dmi'
+	rarity = RARITY_UNCOMMON
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_A,
+		HEAT = ARMOR_B,
+		COLD = ARMOR_C,
+		BOMB = ARMOR_E,
+		BIO = ARMOR_C,
+		RAD = ARMOR_D
+	)
+
+	size = SIZE_7
+	weight = WEIGHT_7
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/mining)
+
+	slowdown_mul_worn = 1.2
+
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "white magnus armor"
 	icon = 'icons/obj/items/clothing/suit/magnus.dmi'

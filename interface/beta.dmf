@@ -345,7 +345,7 @@ window "main"
 		left = "map"
 		right = "control"
 		is-vert = true
-		splitter = 75
+		splitter = 70
 
 window "map"
 	elem "map"

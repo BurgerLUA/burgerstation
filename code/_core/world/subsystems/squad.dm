@@ -2,8 +2,9 @@
 	name = "Squad Subsystem"
 	desc = "Manages Squads"
 	priority = SS_ORDER_PRELOAD
+	tick_rate = SECONDS_TO_TICKS(1)
 
-/subsystem/spellcrafing/Initialize()
+/subsystem/squad/Initialize()
 
 	var/squad/red_team = new
 	red_team.name = "Red Squad"
@@ -20,5 +21,13 @@
 	var/squad/green_team = new
 	green_team.name = "Green Squad"
 	green_team.never_delete = TRUE
+
+	return TRUE
+
+/subsystem/squad/on_life()
+
+	for(var/squad/S in all_squads)
+		for(var/mob/living/advanced/player/M in all_squads.members)
+			M.update_squad_buttons()
 
 	return TRUE

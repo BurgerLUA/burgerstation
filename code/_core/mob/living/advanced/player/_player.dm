@@ -72,7 +72,11 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(!mobdata || mobdata.loaded_data["tutorial"] == 1)
 		return ..()
 
-	mobdata.apply_data_to_mob(src)
+	var/tutorial_level = mobdata.loaded_data["tutorial"]
+
+	world.log << "TUTORIAL: [tutorial_level]"
+
+	mobdata.apply_data_to_mob(src,!tutorial_level)
 
 	if(client)
 		add_species_buttons()

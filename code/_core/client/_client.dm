@@ -49,6 +49,22 @@ var/global/list/all_clients = list()
 
 	var/allow_zoom_controls = TRUE
 
+	var/ping = 0
+	var/ping_id = 0
+
+//Ping verb by Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
+/client/verb/ping(time as num)
+	set instant = 1
+	set hidden = 1
+	set waitfor = 0
+
+	ping = (world.time+world.tick_lag*world.tick_usage/100)-time
+	var/lping = (ping_id+1)%10000000
+	ping_id = lping
+	sleep(1)
+	if(ping_id==lping)
+		winset(src,null,"command=ping+[world.time+world.tick_lag*world.tick_usage/100]")
+
 /client/Del() // Can't have destroy.
 
 	if(known_inventory)

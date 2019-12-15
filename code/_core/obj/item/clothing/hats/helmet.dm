@@ -132,3 +132,16 @@
 	weight = WEIGHT_4
 
 	slowdown_mul_worn = 0.75
+
+
+/obj/item/clothing/head/helmet/hardsuit/mining
+	name = "mining hardsuit helmet"
+	icon = 'icons/obj/items/clothing/hats/hardsuit_mining.dmi'
+	rarity = RARITY_UNCOMMON
+
+	defense_rating = list(
+
+	)
+
+	size = SIZE_3
+	weight = WEIGHT_4

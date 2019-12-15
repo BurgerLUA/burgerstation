@@ -135,10 +135,6 @@
 	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
-
-	if(status & FLAG_STATUS_CRIT)
-		return FALSE
-
 	return ..()
 
 

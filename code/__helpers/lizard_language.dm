@@ -3,33 +3,15 @@ var/global/language_seed = 1337
 /proc/convert_langage_to_lizard(var/text)
 
 	var/list/vowels = list(
-		"a",
-		"e",
-		"i",
-		"o"
+		"a","e","i","o"
 	)
 
 	var/list/consonants = list( //And consonants pairs.
-		"w",
-		"e",
-		"r",
-		"t",
-		"y",
-		"p",
-		"s",
-		"d",
-		"f",
-		"g",
-		"h",
-		"j",
-		"k",
-		"l",
-		"z",
-		"x",
-		"c",
-		"v",
-		"b",
-		"n",
+		"w","e","r","t",
+		"y","p","s","d",
+		"f","g","h","j",
+		"k","l","z","x",
+		"c","v","b","n",
 		"m"
 	)
 
