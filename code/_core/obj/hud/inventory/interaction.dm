@@ -9,6 +9,10 @@
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
+			if(!highest)
+				I.drop_item(get_turf(caller))
+				return TRUE
+
 			vel_x *= 1/highest
 			vel_y *= 1/highest
 

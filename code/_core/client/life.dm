@@ -11,6 +11,9 @@
 
 		queued_chat_messages.Cut(1,2)
 
+
+	ping()
+
 	if(mob)
 
 		mob.on_life_client()

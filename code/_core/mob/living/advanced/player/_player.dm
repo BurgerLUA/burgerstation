@@ -74,8 +74,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/tutorial_level = mobdata.loaded_data["tutorial"]
 
-	world.log << "TUTORIAL: [tutorial_level]"
-
 	mobdata.apply_data_to_mob(src,!tutorial_level)
 
 	if(client)

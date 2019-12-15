@@ -21,6 +21,6 @@
 	if(!M.client)
 		return FALSE
 
-	maptext = "<div align='right'>[M.client.ping]ms</div>"
+	maptext = "<div align='right'>[ceiling(M.client.ping - world.time)]ms</div>"
 
 	return ..()

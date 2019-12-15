@@ -340,10 +340,11 @@
 
 		if(is_living(attacker) && victim && attacker != victim)
 			var/mob/living/A = attacker
-			for(var/skill in skill_xp_per_damage)
-				var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
-				if(xp_to_give > 0)
-					A.add_skill_xp(skill,xp_to_give)
+			if(A.client)
+				for(var/skill in skill_xp_per_damage)
+					var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
+					if(xp_to_give > 0)
+						A.add_skill_xp(skill,xp_to_give)
 
 		if(is_player(blamed) && is_player(victim))
 			var/mob/living/advanced/player/PA = blamed

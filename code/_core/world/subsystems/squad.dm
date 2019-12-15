@@ -27,7 +27,7 @@
 /subsystem/squad/on_life()
 
 	for(var/squad/S in all_squads)
-		for(var/mob/living/advanced/player/M in all_squads.members)
+		for(var/mob/living/advanced/player/M in S.members)
 			M.update_squad_buttons()
 
 	return TRUE

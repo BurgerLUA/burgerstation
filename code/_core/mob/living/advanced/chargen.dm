@@ -99,7 +99,7 @@
 	if(chargen)
 		add_chargen_buttons()
 		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
-		show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+		show_hud(TRUE,FLAGS_HUD_CHARGEN|FLAGS_HUD_WIDGET,FLAGS_HUD_SPECIAL,speed=3)
 	else
 		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 		for(var/obj/hud/button/hide_show_inventory/B in buttons)

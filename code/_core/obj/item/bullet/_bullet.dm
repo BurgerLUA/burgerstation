@@ -30,6 +30,16 @@
 	update_icon()
 	return .
 
+/obj/item/bullet/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+	. = ..()
+	update_icon()
+	return .
+
+/obj/item/bullet/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+	. = ..()
+	update_icon()
+	return .
+
 /obj/item/bullet/update_icon()
 
 	if(!is_spent)
@@ -39,6 +49,11 @@
 		if(item_count_current <= 1 && is_turf(src.loc))
 			pixel_x = rand(-8,8)
 			pixel_y = rand(-8,8)
+
+	if(is_inventory(loc))
+		maptext = "[item_count_current]"
+	else
+		maptext = null
 
 	..()
 
@@ -61,9 +76,22 @@
 			return FALSE
 		is_spent = TRUE
 		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
+		item_count_max = -1
 		return src
 
 	return FALSE
+
+/obj/item/bullet/Crossed(var/atom/movable/O)
+
+	if(is_bullet(O))
+		var/obj/item/bullet/B = O
+		if(!B.qdeleting && B.damage_type == src.damage_type && B.is_spent && src.is_spent)
+			B.item_count_current += item_count_current
+			item_count_current = 0 //Just in case
+			B.update_icon()
+			qdel(src)
+
+	return ..()
 
 /obj/item/bullet/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet/transfer_target,location,control,params,var/display_message = TRUE)
 

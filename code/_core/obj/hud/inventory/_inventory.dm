@@ -392,14 +392,16 @@
 		held_objects -= I
 		if(owner && is_advanced(owner) && should_add_held)
 			var/mob/living/advanced/A = owner
-			A.held_objects -= I
+			if(A.held_objects)
+				A.held_objects -= I
 		was_removed = TRUE
 
 	if(I in worn_objects)
 		worn_objects -= I
 		if(owner && is_advanced(owner) && should_add_worn)
 			var/mob/living/advanced/A = owner
-			A.worn_objects -= I
+			if(A.worn_objects)
+				A.worn_objects -= I
 		was_removed = TRUE
 
 	if(was_removed)

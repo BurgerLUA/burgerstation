@@ -14,9 +14,15 @@
 
 	var/list/labeled_overlays = list()
 
+/obj/hud/button/health/body/Destroy()
+	labeled_overlays.Cut()
+	return ..()
+
 /obj/hud/button/health/body/update_owner(var/mob/desired_owner)
 
 	. = ..()
+
+	labeled_overlays = list()
 
 	if(.)
 
@@ -68,7 +74,17 @@
 		var/image/I = labeled_overlays[o_id]
 		var/obj/item/organ/O = A.labeled_organs[o_id]
 
-		world.log << "Ah yeah: [O.name]."
+		if(!O.health)
+			labeled_overlays -= o_id
+			continue
+
+		if(!O.hud_id)
+			labeled_overlays -= o_id
+			continue
+
+		if(!O.health.health_max)
+			labeled_overlays -= o_id
+			continue
 
 		var/health_mod = O.health.health_current / O.health.health_max
 

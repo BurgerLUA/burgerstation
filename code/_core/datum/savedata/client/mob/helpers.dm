@@ -178,8 +178,6 @@
 		else
 			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
-	world.log << "TELEPORT: [do_teleport]"
-
 	if(do_teleport)
 		if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
 			A.force_move(all_wishgranters[loaded_data["last_save"]])

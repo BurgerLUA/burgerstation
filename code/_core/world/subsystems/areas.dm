@@ -22,7 +22,6 @@
 	for(var/area/world/A in world)
 		A.Initialize()
 		area_count += 1
-		world.log << "[A.type]: [A.weather]"
 
 		if(A.weather)
 			A.invisibility = 0

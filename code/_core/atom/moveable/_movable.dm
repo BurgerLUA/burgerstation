@@ -65,7 +65,9 @@
 
 	if(loc)
 		loc.Entered(src, old_loc)
-		for(var/atom/movable/AM in loc)
+		for(var/atom/movable/AM in loc.contents)
+			if(AM == src)
+				continue
 			AM.Crossed(src)
 
 	return TRUE
