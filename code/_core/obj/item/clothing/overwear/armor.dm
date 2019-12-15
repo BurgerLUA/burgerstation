@@ -12,7 +12,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_E,
 		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_B,
 		LASER = ARMOR_E,
 		MAGIC = -ARMOR_C,
 		COLD = ARMOR_C
@@ -115,7 +115,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_B,
 		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_E,
 		LASER = ARMOR_C,
 		MAGIC = -ARMOR_S,
 		HEAT = -ARMOR_A,
@@ -151,7 +151,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_S,
 		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_D,
 		LASER = ARMOR_C,
 		MAGIC = -ARMOR_S,
 		HEAT = -ARMOR_S,
@@ -213,7 +213,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_S,
 		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_B,
+		PIERCE = ARMOR_D,
 		LASER = -ARMOR_C,
 		MAGIC = -ARMOR_S,
 		HEAT = -ARMOR_S,
@@ -291,7 +291,7 @@
 	defense_rating = list(
 		BLADE = ARMOR_B,
 		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_C,
+		PIERCE = ARMOR_D,
 		LASER = ARMOR_B,
 		MAGIC = -ARMOR_S,
 		HEAT = ARMOR_C,
@@ -306,6 +306,31 @@
 	size = SIZE_6
 	weight = WEIGHT_5
 	slowdown_mul_worn = 1
+
+/obj/item/clothing/overwear/armor/hardsuit/mining
+	name = "mining hardsuit"
+	icon = 'icons/obj/items/clothing/suit/hardsuit_mining.dmi'
+	rarity = RARITY_UNCOMMON
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_A,
+		HEAT = ARMOR_B,
+		COLD = ARMOR_C,
+		BOMB = ARMOR_E,
+		BIO = ARMOR_C,
+		RAD = ARMOR_D
+	)
+
+	size = SIZE_7
+	weight = WEIGHT_7
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/mining)
+
+	slowdown_mul_worn = 1.2
 
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "white magnus armor"

@@ -7,31 +7,26 @@
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
 
-	size = 8
+	size = SIZE_2*6
 
 	is_container = TRUE
-	dynamic_inventory_count = 4
 
-	container_max_weight = 8
-	container_max_size = 2
+	dynamic_inventory_count = 6
+	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 10,
-		PIERCE = 30,
-		LASER = 0,
-		MAGIC = -25,
-		HEAT = 0,
-		COLD = 10,
-		BOMB = 10,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_D,
+		MAGIC = -ARMOR_D,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_E
 	)
 
 	weight = WEIGHT_4
+
+	protected_limbs = list(BODY_TORSO)
 
 /obj/item/clothing/overwear/armor/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
@@ -40,3 +35,26 @@
 		return TRUE
 
 	return ..()
+
+
+
+/obj/item/clothing/overwear/armor/vest/sleeveless_leather_jacket
+	name = "sleeveless leather jacket"
+	icon = 'icons/obj/items/clothing/suit/leather_jacket_sleeveless.dmi'
+	rarity = RARITY_COMMON
+	desc = "For when you need pockets but not many."
+
+	size = SIZE_2*4
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_2
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
+		LASER = -ARMOR_E,
+		MAGIC = ARMOR_E,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_C
+	)
