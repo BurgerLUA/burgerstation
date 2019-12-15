@@ -1,7 +1,7 @@
 /mob/living/simple/npc/ash_drake
 	name = "ash drake"
 	id = "ash_drake"
-	icon = 'icons/mob/living/simple/ashdrake.dmi'
+	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
 	damage_type = "ash_drake_claw"
 	class = "ash_drake"
@@ -12,7 +12,7 @@
 
 	stun_angle = 0
 
-	health_base = 1000
+	health_base = 2000
 
 	var/boss_state = 0
 	//0 = walking
@@ -128,6 +128,10 @@
 
 
 
+/mob/living/simple/npc/ash_drake/post_death()
+	..()
+	icon_state = "dead"
+	update_icon()
 
 
 
