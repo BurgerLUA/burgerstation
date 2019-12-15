@@ -396,7 +396,6 @@
 #include "code\_core\datum\spellcraft\modifer\_modifier.dm"
 #include "code\_core\datum\spellcraft\modifer\cult.dm"
 #include "code\_core\datum\squad\_squad.dm"
-#include "code\_core\datum\status_effect\_status_effect.dm"
 #include "code\_core\datum\track\_track.dm"
 #include "code\_core\datum\track\boss.dm"
 #include "code\_core\datum\track\cave.dm"

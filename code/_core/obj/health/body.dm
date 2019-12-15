@@ -4,7 +4,7 @@
 	id = "body"
 
 	icon = 'icons/hud/new.dmi'
-	icon_state = "body_full"
+	icon_state = "invisible"
 
 	screen_loc = "RIGHT,BOTTOM+2.2"
 
@@ -12,30 +12,64 @@
 
 	user_colors = FALSE
 
+	var/list/labeled_overlays = list()
+
+/obj/hud/button/health/body/update_owner(var/mob/desired_owner)
+
+	. = ..()
+
+	if(.)
+
+		if(!is_advanced(owner))
+			return FALSE
+
+		var/mob/living/advanced/A = owner
+
+		overlays.Cut()
+
+		for(var/o_id in A.labeled_organs)
+
+			var/obj/item/organ/O = A.labeled_organs[o_id]
+
+			if(!O.health)
+				continue
+
+			if(!O.hud_id)
+				continue
+
+			if(!O.health.health_max)
+				continue
+
+			var/image/I = new/image(icon,O.hud_id)
+			I.color = "#FF0000"
+			labeled_overlays[o_id] = I
+			overlays += I
+
+
+		update_icon()
+
+	return .
+
+
+
 /obj/hud/button/health/body/update_icon() //Wait, isn't this a clone of something? TODO HEALTH
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+	..()
 
 	if(!is_advanced(owner))
 		return FALSE
 
 	var/mob/living/advanced/A = owner
 
-	var/icon/I = new/icon(icon,icon_state)
+	overlays.Cut()
 
-	for(var/obj/item/organ/O in A.organs)
+	for(var/o_id in labeled_overlays)
 
-		if(!O.health)
-			continue
+		var/image/I = labeled_overlays[o_id]
+		var/obj/item/organ/O = A.labeled_organs[o_id]
 
-		if(!O.hud_id)
-			continue
+		world.log << "Ah yeah: [O.name]."
 
-		if(!O.health.health_max)
-			continue
-
-		var/icon/IO = new/icon(icon,O.hud_id)
 		var/health_mod = O.health.health_current / O.health.health_max
 
 		var/good_color = "#00FF00"
@@ -54,11 +88,9 @@
 		else
 			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
 
-		IO.Blend(color_mod,ICON_MULTIPLY)
-		I.Blend(IO,ICON_OVERLAY)
-
-	icon = I
-
+		I.color = color_mod
+		labeled_overlays[o_id] = I
+		overlays += I
 
 /obj/hud/button/health/body/get_examine_text(var/mob/examiner)
 
