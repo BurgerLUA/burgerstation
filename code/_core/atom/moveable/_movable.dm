@@ -38,7 +38,6 @@
 
 	if(move_dir && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()
-
 		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = step_size/move_delay
 
@@ -66,7 +65,9 @@
 
 	if(loc)
 		loc.Entered(src, old_loc)
-		for(var/atom/movable/AM in loc)
+		for(var/atom/movable/AM in loc.contents)
+			if(AM == src)
+				continue
 			AM.Crossed(src)
 
 	return TRUE

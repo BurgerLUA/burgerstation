@@ -30,10 +30,10 @@
 			var/datum/actual_reference = locate(href_list["chat_examine"])
 
 			if(is_client(actual_reference))
-				world.log << "CLIENT MENU"
+
 
 			else if(is_atom(actual_reference))
-				world.log << "ATOM MENU"
+
 		*/
 
 		if(ckey == "burgerbb")

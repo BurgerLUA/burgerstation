@@ -46,6 +46,8 @@
 	var/frustration = 0
 	var/frustration_threshold = 10 //Above this means they'll try to find a new target.
 
+	var/list/attackers = list()
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -55,6 +57,7 @@
 	objective_defend = null
 	start_turf = null
 	all_living_ai -= src
+	attackers.Cut()
 	return ..()
 
 /ai/New(var/mob/living/desired_owner)
@@ -87,7 +90,7 @@
 	if(!owner.initialized)
 		return FALSE
 
-	if(owner.status & FLAG_STATUS_DEAD)
+	if(owner.dead)
 		return FALSE
 
 	if(!is_turf(owner.loc))
@@ -163,11 +166,20 @@
 /ai/proc/hostile_message()
 	return FALSE
 
+/ai/proc/set_objective(var/mob/living/L)
+
+	if(objective_attack && objective_attack in attackers)
+		attackers -= objective_attack
+
+	objective_attack = L
+
+	return TRUE
+
 /ai/proc/handle_objectives()
 
 	if(objective_attack)
-		if(!can_see_enemy(objective_attack))
-			objective_attack = null
+		if(!can_see_enemy(objective_attack) || !should_attack_mob(objective_attack))
+			set_objective(null)
 			frustration = 0
 		if(get_dist(owner,objective_attack) > attack_distance + 1)
 			frustration ++
@@ -188,7 +200,7 @@
 
 		if(best_target && best_target != objective_attack)
 			hostile_message()
-			objective_attack = best_target
+			set_objective(best_target)
 
 	objective_ticks = 0
 
@@ -197,7 +209,7 @@
 
 /ai/proc/should_attack_mob(var/mob/living/L)
 
-	if(L.status & FLAG_STATUS_DEAD)
+	if(L.dead)
 		return FALSE
 
 	var/area/A = get_area(L)
@@ -229,15 +241,17 @@
 	return (L in possible_targets)
 
 /ai/proc/get_possible_targets()
-	var/list/possible_targets = list()
+
+	var/list/possible_targets = attackers.Copy()
 	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
 		if(should_attack_mob(P))
 			possible_targets += P
 
 	return possible_targets
 
+/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 
+	if(!(attacker in attackers))
+		attackers += attacker
 
-
-
-
+	return TRUE

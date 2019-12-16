@@ -19,7 +19,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
+		ATTRIBUTE_STRENGTH = CLASS_D,
 		ATTRIBUTE_DEXTERITY = CLASS_D
 	)
 

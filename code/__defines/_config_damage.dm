@@ -5,7 +5,7 @@
 #define HEALING_B 10
 #define HEALING_A 15
 #define HEALING_S 20
-#define HEALING_X 1000
+#define HEALING_X 50
 
 #define DAMAGE_F 0
 #define DAMAGE_E 5
@@ -13,16 +13,16 @@
 #define DAMAGE_C 15
 #define DAMAGE_B 25
 #define DAMAGE_A 50
-#define DAMAGE_S 100
-#define DAMAGE_X 1000
+#define DAMAGE_S 75
+#define DAMAGE_X 100
 
 #define ARMOR_F 0
 #define ARMOR_E 5
 #define ARMOR_D 10
-#define ARMOR_C 15
-#define ARMOR_B 25
-#define ARMOR_A 50
-#define ARMOR_S 75
+#define ARMOR_C 25
+#define ARMOR_B 50
+#define ARMOR_A 75
+#define ARMOR_S 90
 #define ARMOR_X 1000
 
 #define CLASS_F 0
@@ -65,7 +65,7 @@
 #define WEIGHT_8 100
 #define WEIGHT_X 1000
 
-#define BULLET_SPEED_MAX                  TILE_SIZE-1
+#define BULLET_SPEED_MAX                  (TILE_SIZE-1)*0.80
 #define BULLET_SPEED_SNIPER               BULLET_SPEED_MAX * 0.9
 #define BULLET_SPEED_RIFLE_HEAVY          BULLET_SPEED_MAX * 0.8
 #define BULLET_SPEED_RIFLE_LIGHT          BULLET_SPEED_MAX * 0.7

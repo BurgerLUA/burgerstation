@@ -1,22 +1,27 @@
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle
-	name = "\improper 7.62mm assault rifle"
+	name = "\improper 5.56mm Mauler assault rifle"
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 2
 
 	automatic = TRUE
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "7.62"
+	bullet_type = "5.56mm"
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 
 	can_wield = TRUE
 
 	view_punch = 6
+
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
+	size = SIZE_4
+	weight = WEIGHT_4
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
 	if(!wielded)

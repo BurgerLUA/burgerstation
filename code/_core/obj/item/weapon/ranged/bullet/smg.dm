@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 20
+	projectile_speed = 20
 	shoot_delay = 3
 
 	automatic = TRUE
@@ -19,6 +19,11 @@
 	override_icon_state = TRUE
 
 	view_punch = 6
+
+	slowdown_mul_held = HELD_SLOWDOWN_SMG
+
+	size = SIZE_3
+	weight = WEIGHT_3
 
 /obj/item/weapon/ranged/bullet/magazine/smg/update_icon()
 	if(stored_magazine)
@@ -41,7 +46,7 @@
 	icon = 'icons/obj/items/weapons/ranged/smg2.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 26
+	projectile_speed = 26
 	shoot_delay = 2
 
 	automatic = TRUE
@@ -66,21 +71,19 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical
-	name = ".45 tactical syndicate submachine gun"
+	name = ".45 silent syndicate submachine gun"
 	icon = 'icons/obj/items/weapons/ranged/c20r.dmi'
 	icon_state = "inventory"
 	shoot_delay = 3
 	view_punch = 4
-	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
-
-
+	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 
 /obj/item/weapon/ranged/bullet/magazine/bull
 	name = ".22 bull submachine gun"
 	desc = "Wait is that chambered in .22?"
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
-	shoot_delay = 1
+	shoot_delay = 2
 	view_punch = 2
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 

@@ -97,7 +97,7 @@
 		"Leaving this place is something many of us have been trying to figure out, including #1. \
 		For nearly 500 years, I have been exchanging letters with #1 on a daily basis, sharing my findings with him and him doing the same. \
 		We both needed to leave the realm, but for different, non-conflicting reasons. We both trusted eachother but... he stopped. \
-		For an entire 2 weeks I recieved no letters from them. Initially I thought that perhaps he grew distrustful of me... but then it came.NEWLINENEWLINE\
+		For an entire 2 weeks I received no letters from them. Initially I thought that perhaps he grew distrustful of me... but then it came.NEWLINENEWLINE\
 		#2.",
 		"The Old Man",
 		"the final message"

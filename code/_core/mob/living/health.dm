@@ -68,4 +68,7 @@
 	if(damage_amount >= 0)
 		new/obj/effect/temp/damage_number(src.loc,60,damage_amount)
 
+	if(ai)
+		ai.on_damage_received(atom_damaged,attacker,damage_table,damage_amount)
+
 	return .

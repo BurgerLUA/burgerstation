@@ -67,10 +67,17 @@
 		else if(I.reagents)
 			I.reagents.update_container()
 
-
 	if(!success)
 		caller.to_chat(span("notice","There are no valid items to process!"))
 		return FALSE
+
+	for(var/reagent_id in C.reagents.stored_reagents)
+		var/reagent_amount = C.reagents.stored_reagents[reagent_id]
+		var/reagent/R = all_reagents[reagent_id]
+		if(R.processed_reagent)
+			var/temperature = C.reagents.average_temperature
+			C.reagents.remove_reagent(reagent_id,reagent_amount,FALSE)
+			C.reagents.add_reagent(R.processed_reagent,reagent_amount,temperature,FALSE,FALSE)
 
 	C.reagents.update_container()
 

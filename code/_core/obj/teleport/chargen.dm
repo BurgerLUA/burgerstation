@@ -107,7 +107,7 @@
 		return TRUE
 
 	spawn(0)
-		A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,1)
+		A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,1)
 		var/obj/hud/button/skip/SB = new(A)
 		SB.update_owner(A)
 		A.sight |= SEE_THRU

@@ -4,21 +4,18 @@
 	id = "none"
 
 	icon = 'icons/obj/health/base.dmi'
-	icon_state = "base"
 
 	screen_loc = "CENTER,CENTER"
 
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
-	user_colors = FALSE //Custom code here.
-
 /obj/hud/button/health/bar/
+	icon_state = "base"
 	var/bar_color = "#ffffff"
 	var/min = 0
 	var/max = 100
 	var/current = 0
-	var/overflow = 0
 
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
 	update_icon()
@@ -47,8 +44,6 @@
 	if(max == 0)
 		return
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
 	overlays.Cut()
 
 	var/math = floor( (current/max)*28 )
@@ -56,9 +51,6 @@
 	var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
 	bar.color = bar_color
 	overlays += bar
-
-
-
 	..()
 
 /obj/hud/button/health/bar/hp
@@ -84,7 +76,6 @@
 	min = 0
 	max = floor(M.health.health_max)
 	current = floor(M.health.health_current)
-	overflow = -M.health.damage_soft_total
 	return ..()
 
 /obj/hud/button/health/bar/sp
@@ -110,7 +101,6 @@
 	min = 0
 	max = floor(M.health.stamina_max)
 	current = floor(M.health.stamina_current)
-	overflow = M.stamina_regen_buffer
 	return ..()
 
 /obj/hud/button/health/bar/mp
@@ -136,5 +126,4 @@
 	min = 0
 	max = floor(M.health.mana_max)
 	current = floor(M.health.mana_current)
-	overflow = M.mana_regen_buffer
 	..()

@@ -16,7 +16,15 @@
 
 
 mob/living/advanced/get_movement_delay()
-	return ..() * slowdown_mul
+
+	. = ..()
+
+	if(health && health.health_current <= 0)
+		. *= 2
+
+	. *= slowdown_mul
+
+	return .
 
 /mob/living/advanced/toggle_sneak(var/on = TRUE)
 

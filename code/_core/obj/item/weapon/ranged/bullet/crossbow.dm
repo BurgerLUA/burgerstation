@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/crossbow.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 20
 
 	automatic = FALSE
@@ -24,6 +24,11 @@
 	slot_icons = TRUE
 
 	view_punch = 4
+
+	slowdown_mul_held = HELD_SLOWDOWN_CROSSBOW
+
+	size = SIZE_4
+	weight = WEIGHT_3
 
 /obj/item/weapon/ranged/bullet/crossbow/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE

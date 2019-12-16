@@ -1,2 +1,2 @@
 proc/calculate_armor(var/damage_dealt,var/armor_rating)
-	return max(1,(damage_dealt - armor_rating*0.1) * max(0.5,1 - armor_rating/(100+damage_dealt)))
+	return ceiling(max(1,(damage_dealt - armor_rating*0.1) * max(0.5,1 - armor_rating/(100+damage_dealt))))

@@ -1,6 +1,12 @@
+/mob/living/proc/add_status(var/status_type)
+	status |= status_type
+
+/mob/living/proc/remove_status(var/status_type)
+	status &= ~status_type
+
 /mob/living/proc/death()
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
 	pre_death()
@@ -17,13 +23,13 @@
 	if(client)
 		client.make_ghost(get_turf(src))
 
-	status |= FLAG_STATUS_DEAD
+	dead = TRUE
+
 	if(ai)
 		ai = null
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	add_stun(2)
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
@@ -57,7 +63,7 @@
 	return FALSE
 
 /mob/living/proc/resurrect()
-	status &= ~FLAG_STATUS_DEAD
+	dead = FALSE
 	layer = initial(layer)
 	stun_time = 0
 	paralyze_time = 0
@@ -74,12 +80,19 @@
 /mob/living/proc/post_death()
 	return TRUE
 
+/mob/living/proc/on_staggered()
+	src.visible_message("\The [src.name] reels backwards!","You reel backwards from the staggering impact!")
+	return TRUE
+
+/mob/living/proc/on_unstaggered()
+	return TRUE
+
 /mob/living/proc/on_stunned()
-	src.visible_message("\The [src.name] gets knocked to the ground!","You get knocked to the ground! You're stunned!")
+	src.visible_message("\The [src.name] gets knocked down!","You get knocked down! You're stunned!")
 	return TRUE
 
 /mob/living/proc/on_unstunned()
-	src.visible_message("\The [src.name] gets up!","You force yourself on your feet!")
+	src.visible_message("\The [src.name] gets back up!","You force yourself on your feet!")
 	return TRUE
 
 /mob/living/proc/on_paralyzed()
@@ -87,7 +100,7 @@
 	return TRUE
 
 /mob/living/proc/on_unparalyzed()
-	src.visible_message("\The [src.name] shakes themselves up","You regain control of your limbs!")
+	src.visible_message("\The [src.name] unfreezes!","You regain control of your limbs!")
 	return TRUE
 
 /mob/living/proc/on_fatigued()
@@ -97,15 +110,29 @@
 /mob/living/proc/on_unfatigued()
 	if(health)
 		health.stamina_current = health.stamina_max
-		src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
+	src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
+	return TRUE
+
+/mob/living/proc/on_crit()
+	src.visible_message("\The [src.name] falls unconscious!","You lose consciousness!")
+	return TRUE
+
+/mob/living/proc/on_uncrit()
+	src.visible_message("\The [src.name] regains consciousness!","You gain consciousness!")
 	return TRUE
 
 /mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
 	if(status & FLAG_STATUS_PARALYZE)
+		return FALSE
+
+	if(status & FLAG_STATUS_SLEEP)
+		return FALSE
+
+	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
 	return ..()
@@ -113,89 +140,131 @@
 
 /mob/living/can_use_controls(object,location,control,params)
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
 	if(status & FLAG_STATUS_PARALYZE)
 		return FALSE
 
+	if(status & FLAG_STATUS_SLEEP)
+		return FALSE
+
+	if(status & FLAG_STATUS_STAGGER)
+		return FALSE
+
 	return ..()
 
-/mob/living/proc/handle_status_effects()
 
-	if(is_turf(src.loc))
+/mob/living/proc/check_status_effects()
 
-		var/desired_should_be_knocked_down = FALSE
+	//Crit
+	if(!(status & FLAG_STATUS_CRIT) && (crit_time > 0 || crit_time == -1))
+		add_status(FLAG_STATUS_CRIT)
+		on_crit()
 
-		if(status & FLAG_STATUE_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
-			status &= ~FLAG_STATUE_FATIGUE
-			on_unfatigued()
+	if(status & FLAG_STATUS_CRIT && crit_time <= 0 && crit_time != -1)
+		remove_status(FLAG_STATUS_CRIT)
+		on_uncrit()
 
-		if(!(status & FLAG_STATUE_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
-			status |= FLAG_STATUE_FATIGUE
-			on_fatigued()
+	//Fatigue
+	if(!(status & FLAG_STATUS_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
+		add_status(FLAG_STATUS_FATIGUE)
+		on_fatigued()
 
-		if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
-			status &= ~FLAG_STATUS_STUN
-			on_unstunned()
+	if(status & FLAG_STATUS_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
+		remove_status(FLAG_STATUS_FATIGUE)
+		on_unfatigued()
 
-		if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
-			status |= FLAG_STATUS_STUN
-			on_stunned()
+	//Stun
+	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
+		add_status(FLAG_STATUS_STUN)
+		on_stunned()
 
-		if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
-			status &= ~FLAG_STATUS_PARALYZE
-			on_unparalyzed()
+	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
+		remove_status(FLAG_STATUS_STUN)
+		on_unstunned()
 
-		if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
-			status |= FLAG_STATUS_PARALYZE
-			on_paralyzed()
+	//Stagger
+	if(!(status & FLAG_STATUS_STAGGER) && (stagger_time > 0 || stagger_time == -1))
+		add_status(FLAG_STATUS_STAGGER)
+		on_staggered()
 
-		if(stun_time != -1)
-			stun_time = max(0,stun_time - LIFE_TICK)
+	if(status & FLAG_STATUS_STAGGER && stagger_time <= 0 && stagger_time != -1)
+		remove_status(FLAG_STATUS_STAGGER)
+		on_unstaggered()
 
-		if(paralyze_time != -1)
-			paralyze_time = max(0,paralyze_time - LIFE_TICK)
+	//Paralyze
+	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
+		add_status(FLAG_STATUS_PARALYZE)
+		on_paralyzed()
 
-		if(health && fatigue_time != -1)
-			if(health.stamina_current == health.stamina_max)
-				fatigue_time = 0
-			else
-				fatigue_time = max(0,fatigue_time - LIFE_TICK)
+	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
+		remove_status(FLAG_STATUS_PARALYZE)
+		on_unparalyzed()
 
-		if(sleep_time != -1)
-			sleep_time = max(0,sleep_time - LIFE_TICK)
+	//Final Checks
+	if(status && !(src in all_living_with_status))
+		all_living_with_status += src
 
-		if(stun_time || paralyze_time || fatigue_time || sleep_time || status & FLAG_STATUS_DEAD)
-			desired_should_be_knocked_down = TRUE
-
-		if(desired_should_be_knocked_down != should_be_knocked_down)
-			if(desired_should_be_knocked_down) //KNOCK DOWN
-				animate(src,transform = turn(matrix(), stun_angle), time = 1)
-			else //GET UP
-				animate(src,transform = matrix(), time = 1)
-			should_be_knocked_down = desired_should_be_knocked_down
-
-		if(status & FLAG_STATUS_DEAD)
-			return FALSE
-
-
-
-	handle_health_buffer()
+	if(!status && (src in all_living_with_status))
+		handle_horizontal()
+		all_living_with_status -= src
 
 	return TRUE
 
+/mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
+
+	if(amount_to_remove)
+		if(crit_time != -1)
+			crit_time = max(0,crit_time - amount_to_remove)
+
+		if(stun_time != -1)
+			stun_time = max(0,stun_time - amount_to_remove)
+
+		if(paralyze_time != -1)
+			paralyze_time = max(0,paralyze_time - amount_to_remove)
+
+		if(stagger_time != -1)
+			stagger_time = max(0,stagger_time - amount_to_remove)
+
+		if(sleep_time != -1)
+			sleep_time = max(0,sleep_time - amount_to_remove)
+
+		if(health && fatigue_time != -1)
+			if(health.stamina_current == health.stamina_max*0.25)
+				fatigue_time = 0
+			else
+				fatigue_time = max(0,fatigue_time - amount_to_remove)
+
+	handle_horizontal()
+
+	return TRUE
+
+/mob/living/proc/handle_horizontal()
+
+	var/desired_horizontal = FALSE
+
+	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP || status & FLAG_STATUS_CRIT)
+		desired_horizontal = TRUE
+
+	if(desired_horizontal != horizontal)
+		if(desired_horizontal) //KNOCK DOWN
+			animate(src,transform = turn(matrix(), stun_angle), time = 1)
+		else //GET UP
+			animate(src,transform = matrix(), time = 2)
+		horizontal = desired_horizontal
 
 /mob/living/proc/on_life()
 
 	if(!initialized)
 		return FALSE
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
-	handle_status_effects()
 	update_alpha(handle_alpha())
+
+	handle_health_buffer()
 
 	return TRUE
 
@@ -204,7 +273,7 @@ mob/living/proc/on_life_slow()
 	if(!initialized)
 		return FALSE
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		return FALSE
 
 	return TRUE
@@ -224,7 +293,10 @@ mob/living/proc/on_life_slow()
 
 		if(health_regen_buffer)
 			var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-			health.adjust_tox_loss(-health_to_regen)
+			health.adjust_brute_loss(health_to_regen)
+			health.adjust_burn_loss(health_to_regen)
+			health.adjust_tox_loss(health_to_regen)
+			health.adjust_oxy_loss(health_to_regen)
 			health_regen_buffer -= health_to_regen
 
 		if(stamina_regen_buffer)

@@ -3,8 +3,8 @@
 	icon = 'icons/obj/items/weapons/ranged/lmg.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 26
-	shoot_delay = 3
+	projectile_speed = 26
+	shoot_delay = 2
 
 	automatic = TRUE
 
@@ -22,6 +22,10 @@
 
 	view_punch = 4
 
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
+
+	size = SIZE_5
+	weight = WEIGHT_5
 
 /obj/item/weapon/ranged/bullet/magazine/lmg/update_icon()
 

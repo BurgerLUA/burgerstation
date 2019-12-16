@@ -127,7 +127,7 @@
 		var/mob/living/advanced/player/P = triggerer
 
 		if(P.client)
-			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,SECONDS_TO_DECISECONDS(1))
+			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,SECONDS_TO_DECISECONDS(1))
 			P.sight |= SEE_THRU
 			. = ..()
 			play_music_track("village_intro",P.client)
@@ -147,7 +147,7 @@
 				)
 
 				var/step_num = 1
-				while(TRUE)
+				while(P.client)
 
 					var/speed = 1
 

@@ -106,7 +106,11 @@
 		capacity += I.weight
 
 	for(var/obj/item/I in held_objects)
-		slow_mul *= I.slowdown_mul_held
+		if(is_inventory(I.loc))
+			var/obj/hud/inventory/I2 = I.loc
+			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
+				slow_mul *= I.slowdown_mul_held
+
 		capacity += I.weight
 
 	max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
@@ -211,9 +215,8 @@ mob/living/advanced/Login()
 	var/list/desired_heal_amounts = list(
 		BRUTE = brute,
 		BURN = burn,
-		TOX = tox,
-		OXY = oxy
-	) //Fatigue not included here. Organs are told to directly deal fatigue damage to the owner.
+		TOX = tox
+	) //Fatigue and Oxy not included here. Organs are told to directly deal fatigue damage to the owner.
 
 	var/list/damaged_organs = list()
 
@@ -262,10 +265,8 @@ mob/living/advanced/Login()
 	for(var/key in spawning_outfit.spawning_clothes)
 		var/obj/item/clothing/C = new key(get_turf(src))
 		add_worn_item(C)
-		/*
-		if(soul_bound && ckey)
-			C.soul_bound = ckey
-		*/
+		if(C.additional_clothing)
+			C.equip_additional_clothing(src)
 
 	return TRUE
 
@@ -368,7 +369,3 @@ mob/living/advanced/Login()
 	if(right_hand)
 		return right_hand.get_top_held_object()
 	return null
-
-
-
-/mob/living/advanced/proc/damage_all_external_organs()

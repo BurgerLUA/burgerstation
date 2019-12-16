@@ -25,7 +25,7 @@
 
 /mob/living/simple/npc/turret/update_icon()
 
-	if(status & FLAG_STATUS_DEAD)
+	if(dead)
 		icon_state = "syndie_broken"
 		return
 

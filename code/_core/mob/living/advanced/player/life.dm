@@ -101,7 +101,7 @@
 		var/bonus_text = "Continue killing those who defy the natural order, and you shall be rewarded."
 
 		if(attacker_justice_served == 5 && attacker_justice_reward < 5)
-			bonus_text = "You've done well for yourself. Speak to the one who calles themselves Bar-Shaleez to recieve a reward..."
+			bonus_text = "You've done well for yourself. Speak to the one who calles themselves Bar-Shaleez to receive a reward..."
 		else if(attacker_justice_served == 10 && attacker_justice_reward < 10)
 			bonus_text = "You carry out my will quite efficiently for a mortal. Bar-Shaleez will have a reward waiting for you."
 		else if(attacker_justice_served == 15 && attacker_justice_reward < 15)

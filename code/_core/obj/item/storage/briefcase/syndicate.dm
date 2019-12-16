@@ -46,7 +46,7 @@
 /obj/item/storage/briefcase/syndicate/rifle/on_spawn()
 	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src.loc),bypass_checks = TRUE)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/rifle_762(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/rifle_556(src.loc)
 		M.on_spawn()
 		M.update_icon()
 		inventories[i].add_held_object(M,bypass_checks = TRUE)

@@ -28,7 +28,7 @@
 
 /ai/summon/should_attack_mob(var/mob/living/L)
 
-	if(L.status & FLAG_STATUS_DEAD)
+	if(L.dead)
 		return FALSE
 
 	for(var/id in owner.factions)

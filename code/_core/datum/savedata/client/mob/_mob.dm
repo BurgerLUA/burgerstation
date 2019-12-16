@@ -23,7 +23,7 @@
 		"justice_reward_claimed" = 0,
 		"last_save" = null,
 		"known_topics" = list(),
-		"known_wishgranters" = list()
+		"known_wishgranters" = list("village","main")
 	)
 
 /savedata/client/mob/New(var/client/new_owner)

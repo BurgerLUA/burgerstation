@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/magic/staff
-	cost_charge = 10
-	total_charge = 1000
+	var/cost_charge = 100
+	var/total_charge = 1000
 
 /obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller)
 
@@ -35,7 +35,7 @@
 	cost_charge = 100
 	total_charge = 2500
 
-	bullet_speed = 16
+	projectile_speed = 16
 	shoot_delay = SECONDS_TO_DECISECONDS(2)
 
 	icon = 'icons/obj/items/weapons/ranged/magic/fire.dmi'
@@ -66,7 +66,7 @@
 
 	shoot_delay = 20
 
-	bullet_speed = 4
+	projectile_speed = 4
 
 	bullet_count = 9
 
@@ -94,7 +94,7 @@
 	cost_charge = 100
 	total_charge = 1000
 
-	bullet_speed = 20
+	projectile_speed = 20
 	bullet_count = 1
 
 	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
@@ -113,7 +113,7 @@
 	cost_charge = 100
 	total_charge = 1000
 
-	bullet_speed = 31
+	projectile_speed = 31
 	bullet_count = 1
 
 	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'

@@ -5,7 +5,7 @@
 	projectile = /obj/projectile/bullet/laser
 	damage_type = "laser_carbine_kill"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 5
 
 	automatic = FALSE

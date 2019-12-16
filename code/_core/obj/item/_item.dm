@@ -112,6 +112,9 @@
 /obj/item/can_be_attacked(var/atom/attacker)
 	return FALSE
 
+/obj/item/can_be_grabbed(var/atom/grabber)
+	return is_turf(src.loc)
+
 /obj/item/click_self(caller,location,control,params)
 
 	if(!length(inventories))
@@ -290,7 +293,7 @@
 	var/physical_text = div("weightsize","Size: [size] | Weight: [weight]")
 	var/desc_text = div("examine_description","\"[src.desc]\"")
 	var/desc_extended_text = div("examine_description_long",src.desc_extended)
-	var/damage_type_text = get_damage_type_text(examiner)
+	var/damage_type_text = is_living(examiner) ? get_damage_type_text(examiner) : ""
 	return "[name_text][desc_text][rarity_text][physical_text][desc_extended_text][damage_type_text]"
 
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
@@ -340,13 +343,12 @@
 
 	if(light)
 		light.update(src)
-	/*
+
 	if(old_inventory && new_loc)
 		var/turf/OL = get_turf(old_inventory)
 		var/turf/NL = get_turf(new_loc)
 		if(OL != NL)
-			new/obj/effect/temp/item_pickup(NL,2,OL,src,is_inventory(new_loc) ? "transfer" : "drop")
-	*/
+			new/obj/effect/temp/item_pickup(NL,2,OL,src,is_turf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
 

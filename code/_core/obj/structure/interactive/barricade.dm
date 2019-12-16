@@ -13,12 +13,15 @@ obj/structure/interactive/barricade
 	density_east  = FALSE
 	density_west  = FALSE
 
-	bullet_block_chance = 60
+	bullet_block_chance = 80
 
 obj/structure/interactive/barricade/New(var/desired_loc)
 	. = ..()
 	update_icon()
 	return .
+
+obj/structure/interactive/barricade/can_be_attacked(var/atom/attacker)
+	return TRUE
 
 obj/structure/interactive/barricade/update_icon()
 

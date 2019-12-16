@@ -1,4 +1,4 @@
-/damagetype/npc/crab
+/damagetype/npc/cow
 	name = "Cow Headbutt"
 	id = "cow_headbutt"
 	desc = "The headbutt of a cow."
@@ -7,7 +7,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_C,
+		BLUNT = DAMAGE_D,
 	)
 
 	attack_damage_penetration = list(
@@ -15,8 +15,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_STRENGTH = CLASS_D,
+		ATTRIBUTE_DEXTERITY = CLASS_E
 	)
 
 	attribute_damage = list(

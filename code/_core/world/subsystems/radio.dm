@@ -13,7 +13,7 @@ var/global/list/all_unprocessed_radio_data = list()
 			continue
 		for(var/data_key in all_unprocessed_radio_data)
 			var/data_value = all_unprocessed_radio_data[data_key]
-			R.recieve_data(data_value)
+			R.receive_data(data_value)
 
 	all_unprocessed_radio_data.Cut()
 

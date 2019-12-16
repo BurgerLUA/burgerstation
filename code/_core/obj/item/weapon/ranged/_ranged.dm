@@ -6,7 +6,7 @@
 	var/shoot_delay = 4 //In deciseconds
 	var/next_shoot_time = 0
 
-	var/bullet_speed = 31 //Fallback value
+	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value
 	damage_type = "gun_butt"
@@ -74,7 +74,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/think()
-	if(next_shoot_time + min(10,shoot_delay) < curtime)
+	if(next_shoot_time + min(10,shoot_delay*2) < curtime)
 		heat_current = max(heat_current-1,0)
 
 	return ..()
@@ -107,6 +107,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		return FALSE
 
 	caller.face_atom(object)
+
 	if(is_mob(caller))
 		var/mob/M = caller
 		M.attack_turn = curtime + M.attack_turn_delay
@@ -127,7 +128,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/damage_type_to_use = damage_type
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread = 0
-	var/bullet_speed_to_use = bullet_speed
+	var/projectile_speed_to_use = projectile_speed
 
 	var/obj/item/bullet/spent_bullet = handle_ammo(caller)
 
@@ -142,13 +143,13 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			bullet_count_to_use = spent_bullet.projectile_count
 		if(spent_bullet.base_spread)
 			bullet_spread = spent_bullet.base_spread
-		if(spent_bullet.bullet_speed)
-			bullet_speed_to_use = spent_bullet.bullet_speed
+		if(spent_bullet.projectile_speed)
+			projectile_speed_to_use = spent_bullet.projectile_speed
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
 
-	bullet_speed_to_use = min(bullet_speed_to_use,31)
+	projectile_speed_to_use = min(projectile_speed_to_use,31)
 
 	update_icon()
 
@@ -181,11 +182,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 		var/view_punch_time = shoot_delay
 
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,bullet_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier)
-
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
-
 
 	if(automatic)
 		spawn(next_shoot_time - curtime + 1)
@@ -196,7 +195,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/bullet_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1)
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
@@ -227,7 +226,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			var/turf/T = get_turf(caller)
 
-			bullet_speed_to_use = min(bullet_speed_to_use,TILE_SIZE-1)
+			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
 			if(i == ceiling(bullet_count_to_use/2,1) && is_player(caller) && view_punch && view_punch_time > 1)
 				var/mob/living/advanced/player/P = caller
@@ -236,7 +235,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					animate(C,pixel_x = -normx*view_punch, pixel_y = -normy*view_punch, time = (view_punch_time-1)*0.5)
 					animate(C,pixel_x = 0, pixel_y = 0, time = view_punch_time-1)
 
-			new projectile_to_use(T,caller,src,normx * bullet_speed_to_use,normy * bullet_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier)
+			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier)
 
 			/* NO. BAD IDEA.
 			if(get_dist(caller,target) <= 1 && is_mob(target))

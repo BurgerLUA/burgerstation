@@ -41,6 +41,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/organs/torso_o/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
@@ -92,7 +94,7 @@
 
 	drop_on_death = TRUE
 
-	max_size = SIZE_2
-	max_weight = WEIGHT_3
+	max_size = SIZE_4
+	max_weight = 1000
 
 	drag_to_take = FALSE

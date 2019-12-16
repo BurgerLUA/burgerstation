@@ -9,7 +9,7 @@
 
 	metabolism_stomach = NUT_AMOUNT
 
-	var/nutrition_amount = 1 NUT_FACTOR //How much health, stamina, and mana to restore per tick.
+	var/nutrition_amount = 1 NUT_FACTOR //How much health to restore per tick.
 	//1 NUT FACTOR means it restores 1 per second.
 
 	var/keywords = "none"
@@ -19,14 +19,9 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_stamina(nutrition_amount)
-		owner.health.adjust_mana(nutrition_amount)
-		/*
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			A.heal_all_organs(nutrition_amount,nutrition_amount,nutrition_amount,nutrition_amount)
-		*/
-
+			A.heal_all_organs(.*nutrition_amount,.*nutrition_amount,.*nutrition_amount,.*nutrition_amount)
 
 	return .
 
@@ -41,6 +36,8 @@
 
 	flavor = "gross oats"
 
+	processed_reagent = "flour_whole_wheat"
+
 /reagent/core/nutrition/wheat_grain/flour
 	name = "whole wheat flour"
 	id = "flour_whole_wheat"
@@ -50,6 +47,8 @@
 	nutrition_amount = 0.2 NUT_FACTOR
 
 	flavor = "gross dry oat flour"
+
+	processed_reagent = "flour_white"
 
 /reagent/core/nutrition/wheat_grain/flour/processed
 	name = "white flour"
@@ -155,7 +154,27 @@
 
 	flavor = "mushroom"
 
+//Milk
+/reagent/core/nutrition/milk/
+	name = "cow's milk"
+	id = "milk_cow"
+	desc = "Nutrition and flavor from cow's milk."
+	color = "#FFFFFF"
 
+	nutrition_amount = 0.8 NUT_FACTOR
+
+	flavor = "milk"
+
+//Cheese
+/reagent/core/nutrition/cheese/
+	name = "processed cheese"
+	id = "processed_cheese"
+	desc = "Nutrition and flavor from processed cheese."
+	color = "#FFC237"
+
+	nutrition_amount = 0.8 NUT_FACTOR
+
+	flavor = "processed cheese"
 
 //Fat
 /reagent/core/nutrition/fat/
@@ -208,8 +227,6 @@
 	nutrition_amount = 0.7 NUT_FACTOR
 
 	flavor = "beef"
-
-
 
 /reagent/core/nutrition/meat/chicken
 	name = "raw chicken"

@@ -18,8 +18,8 @@
 #define MAX_ZOOM 4 //This is for z-zoom.
 #define MIN_ZOOM 1
 
-#define ZOOM_RANGE 7
-#define VIEW_RANGE 11
+#define ZOOM_RANGE 8
+#define VIEW_RANGE 10
 
 #define SOUND_RANGE 18
 
@@ -27,7 +27,7 @@
 #define TALK_RANGE VIEW_RANGE
 #define YELL_RANGE VIEW_RANGE*1.5
 
-#define RADIO_RANGE 3 //Can only recieve radio messages in this distance
+#define RADIO_RANGE 3 //Can only receive radio messages in this distance
 #define RADIO_WHISPER_RANGE 1
 #define RADIO_TALK_RANGE 4
 #define RADIO_YELL_RANGE 8
@@ -46,8 +46,11 @@
 
 
 
+#define WEATHER_ADD_CHANCE 40
+#define WEATHER_REMOVE_CHANCE 20
+
 //Basically debug mode
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 
 //Makes compiling faster FALSE disabled
 #define ENABLE_MAPLOAD FALSE
@@ -61,12 +64,13 @@
 
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_HAZARDS FALSE
+#define ENABLE_WOUNDS FALSE
 
 #define ENABLE_LORE FALSE
 #define ENABLE_KARMA FALSE
 #define ENABLE_WIKIBOT FALSE
 
-#define ENABLE_VAREDIT TRUE
+#define ENABLE_VAREDIT FALSE
 
 #define ENABLE_XP FALSE
 #define LEVEL_CAP 100

@@ -19,7 +19,7 @@
 
 
 /ai/simple/carp/proc/is_valid_leader(var/mob/living/simple/npc/spacecarp/leader/L)
-	return !(L.status & FLAG_STATUS_DEAD)
+	return !(L.dead)
 
 /ai/simple/carp/proc/get_leader()
 	for(var/mob/living/simple/npc/spacecarp/leader/L in view(radius_find_enemy,owner))

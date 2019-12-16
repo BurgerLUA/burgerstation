@@ -12,13 +12,12 @@
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 
-		var/species_choice = input("What species do you wish to change to?") in list("Human","Lizard","Cyborg","Diona")
+		var/species_choice = input("What species do you wish to change to?") in list("Human","Lizard","Cyborg")
 
 		var/list/choice_to_species = list(
 			"Human" = "human",
 			"Lizard" = "reptile_advanced",
 			"Cyborg" = "cyborg"
-			//"Diona" = "diona"
 		)
 
 		var/choice = input("Are you sure you want to change your species to [species_choice]? Your appearance will reset to that species' default.","Species Change") in list("Yes","No")

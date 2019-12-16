@@ -30,7 +30,7 @@
 	bullet_count_max = 6
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/mateba,
+		/obj/item/weapon/ranged/bullet/revolver/commander,
 		/obj/item/weapon/ranged/bullet/revolver/deckhard
 	)
 

@@ -41,4 +41,4 @@
 		SKILL_UNARMED = SKILL_A
 	)
 
-	throw_mul = 2
+	throw_mul = 1

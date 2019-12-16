@@ -52,6 +52,8 @@
 
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
+	var/immortal = FALSE
+
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 

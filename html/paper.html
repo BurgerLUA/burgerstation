@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<table width=100% height=0%>
+			<tr height=0px>
+				<td id='title' width=100px>
+					Title
+				</td>
+				<td width=100% align='center' >
+	
+				</td>
+				<td align='right' width=100px>
+					<button onclick="close_page()" align='center'>X</button>
+				</td>
+			</tr>
+			<tr>
+				<td align='left' id='prev'>
+					PREVIOUS PAGE HERE
+				</td>
+				<td id='page_number' align='center'>
+					Page Number
+				</td>	
+				<td align='right' id='next'>
+					NEXT PAGE HERE
+				</td>				
+			</tr>
+		</table>
+		<hr>
+		<div id='text'>
+			Content
+		</div>
+
+	</body>
+
+	<script>
+		var global_reference
+	
+		function set_reference(reference) {
+			global_reference = reference
+		}
+		
+		function done_loading() {
+			var desired_location = "byond://?done_loading=paper"
+			window.location = desired_location
+		}
+
+		function set_text(desired_text,desired_title,desired_page,desired_page_max) {
+
+			document.getElementById("text").innerHTML = desired_text
+			document.getElementById("title").innerHTML = desired_title
+			
+			if(desired_page == 1) {
+				document.getElementById("prev").innerHTML = "<button disabled>&larr;</button>"
+			}
+			else {
+				document.getElementById("prev").innerHTML = "<button onclick=\"change_page(" + (desired_page-1) + ")\">&larr;</button>"
+			}
+			
+			if(desired_page == desired_page_max) {
+				document.getElementById("next").innerHTML = "<button disabled>&rarr;</button>"
+			}
+			else {
+				document.getElementById("next").innerHTML = "<button onclick=\"change_page(" + (desired_page+1) + ")\">&rarr;</button>"
+			}	
+
+			document.getElementById("page_number").innerHTML = "(" + desired_page + "/" + desired_page_max + ")"
+			
+		}
+		
+		function close_page() {
+			var desired_location = "byond://?src="+global_reference+";close=1"
+			window.location = desired_location
+		}
+
+		function change_page(desired_page) {
+			var desired_location = "byond://?src="+global_reference+";change_page="+desired_page
+			window.location = desired_location
+		}
+
+		done_loading()
+
+	</script>
+	
+</html>

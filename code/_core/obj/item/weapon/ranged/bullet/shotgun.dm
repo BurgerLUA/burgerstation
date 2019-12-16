@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 16
+	projectile_speed = 16
 	shoot_delay = 2
 
 	automatic = FALSE
@@ -18,6 +18,11 @@
 	view_punch = 12
 
 	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
+
+	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
+
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread
 	return 0.2

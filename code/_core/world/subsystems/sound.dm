@@ -131,7 +131,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 		if(!created_sound)
 			LOG_ERROR("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
-			break
+			return FALSE
 
 		if(!M.client || !M.client.settings)
 			continue

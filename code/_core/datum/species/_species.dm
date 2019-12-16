@@ -69,7 +69,11 @@
 
 		/obj/hud/button/teleport/teleport_here,
 		/obj/hud/button/teleport/cycle/right,
-		/obj/hud/button/teleport/cycle/left
+		/obj/hud/button/teleport/cycle/left,
+
+		/obj/hud/button/squad/main,
+
+		/obj/hud/button/ping
 
 	)
 

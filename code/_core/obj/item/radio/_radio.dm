@@ -6,7 +6,7 @@ var/global/list/obj/item/radio/all_radios = list()
 	icon = 'icons/obj/items/radio.dmi'
 
 	var/frequency = RADIO_FREQ_COMMON //The frequency of the radio.
-	var/receiving = TRUE //Whether or not the radio can recieve messages.
+	var/receiving = TRUE //Whether or not the radio can receive messages.
 	var/broadcasting = FALSE //Whether or not the radio can broadcast messages without having to press the button.
 
 	var/frequency_min = RADIO_FREQ_COMMON
@@ -20,7 +20,7 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	broadcasting = !broadcasting
 
-	caller.to_chat(span("notice","You toggle the reciever to [broadcasting ? "always broadcast." : "only broadcast when pressed."]"))
+	caller.to_chat(span("notice","You toggle the receiver to [broadcasting ? "always broadcast." : "only broadcast when pressed."]"))
 
 	return TRUE
 
@@ -94,7 +94,7 @@ list(
 
 	return TRUE
 
-/obj/item/radio/proc/recieve_data(var/list/data = list())
+/obj/item/radio/proc/receive_data(var/list/data = list())
 
 	if(!length(data))
 		return FALSE

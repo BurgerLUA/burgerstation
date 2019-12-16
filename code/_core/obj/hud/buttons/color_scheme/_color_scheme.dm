@@ -14,6 +14,22 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	icon_state = "close_inventory"
 	screen_loc = "CENTER+3.5,CENTER+2"
 
+/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(!is_advanced(caller))
+		return ..()
+
+	var/mob/living/advanced/A = caller
+
+	A.remove_color_scheme_buttons()
+
+	if(!A.client || !A.client.settings)
+		return ..()
+
+	A.client.settings.save()
+
+	return ..()
+
 /obj/hud/button/default_color_scheme
 	name = "close color scheme"
 	icon_state = "default"
@@ -34,8 +50,13 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	for(var/obj/hud/button/B in A.buttons)
 		B.update_icon()
 
+	for(var/obj/hud/button/B in A.health_elements)
+		B.update_icon()
+
 	for(var/obj/hud/inventory/I in A.inventory)
 		I.update_icon()
+
+	A.client.update_window()
 
 	return ..()
 
@@ -51,23 +72,6 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	user_colors = FALSE
 
 	var/color_id = 1
-
-/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
-	if(!is_advanced(caller))
-		return ..()
-
-	var/mob/living/advanced/A = caller
-
-	A.remove_color_scheme_buttons()
-
-	if(!A.client || !A.client.settings)
-		return ..()
-
-	A.client.settings.save()
-
-	return ..()
-
 
 /obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -87,8 +91,13 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 		for(var/obj/hud/button/B in A.buttons)
 			B.update_icon()
 
+		for(var/obj/hud/button/B in A.health_elements)
+			B.update_icon()
+
 		for(var/obj/hud/inventory/I in A.inventory)
 			I.update_icon()
+
+		A.client.update_window()
 
 	return ..()
 

@@ -14,6 +14,8 @@
 			continue
 		additional_clothing_stored += C
 
+	return TRUE
+
 
 /obj/item/clothing/proc/delete_additonal_clothing()
 

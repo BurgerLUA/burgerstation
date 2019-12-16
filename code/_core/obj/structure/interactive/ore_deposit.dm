@@ -102,12 +102,12 @@
 	icon_state = "deposit_silver"
 	stored_ore = /obj/item/ore/silver
 
-/obj/structure/interactive/ore_deposit/carbon
+/obj/structure/interactive/ore_deposit/carbon //Found near the ocean.
 	name = "coal deposit"
 	icon_state = "deposit_coal"
 	stored_ore = /obj/item/ore/carbon
 
-/obj/structure/interactive/ore_deposit/aluminum
+/obj/structure/interactive/ore_deposit/aluminum //Found in surface.
 	name = "aluminum deposit"
 	color = "#C4C4C4"
 	stored_ore = /obj/item/ore/aluminum

@@ -10,7 +10,7 @@
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "gyrojet"
 
-	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE
+	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	misfire_chance = 5
 

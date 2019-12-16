@@ -59,7 +59,7 @@
 		)
 
 		dialogue_options["the laws"] = list(
-			"While #1 was still around, he would send #2 laws, or rules, that were then communicated to me so #3 could recieve and enforce those rules. \
+			"While #1 was still around, he would send #2 laws, or rules, that were then communicated to me so #3 could receive and enforce those rules. \
 			Things have changed since then, and others have took up the duty after #4 started to succumb to #5.",
 			"The Old Man",
 			"The Middleman",

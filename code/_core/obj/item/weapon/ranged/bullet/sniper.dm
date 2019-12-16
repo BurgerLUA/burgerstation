@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/heavy_sniper.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 31
+	projectile_speed = 31
 	shoot_delay = 20
 
 	automatic = FALSE
@@ -19,6 +19,11 @@
 	wield_only = TRUE
 
 	view_punch = 32
+
+	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
+
+	size = SIZE_4
+	weight = WEIGHT_5
 
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper/get_static_spread() //Base spread
 	return 0

@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/autopistol
-	name = ".45 private security autopistol"
+	name = ".45 private autopistol"
 	desc = "What the fuck is this thing?"
 	desc_extended = "A severely butchered .45 security pistol forced into a gruesome automatic variant."
 
 	icon = 'icons/obj/items/weapons/ranged/45pistolauto.dmi'
-	bullet_speed = 28
+	projectile_speed = 28
 	shoot_delay = 3
 	bullet_type = ".45"
 
@@ -15,6 +15,11 @@
 	override_icon_state = TRUE
 
 	automatic = TRUE
+
+	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
+	size = SIZE_3
+	weight = WEIGHT_3
 
 /obj/item/weapon/ranged/bullet/magazine/autopistol/update_icon()
 

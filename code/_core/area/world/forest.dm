@@ -24,7 +24,8 @@
 
 	desired_light_range = 7
 	desired_light_power = 1
-	desired_light_color = "#847B52"
+	desired_light_color = "#3F3B28"
+	//desired_light_color = "#847B52"
 
 
 /area/world/forest/exterior/river
@@ -122,13 +123,17 @@
 	name = "farm shop"
 	id = "farm_shop"
 
-/area/world/forest/interior/village/shop/alley
-	name = "alley shop"
-	id = "alley_shop"
+/area/world/forest/interior/village/shop/bar
+	name = "bar shop"
+	id = "bar_shop"
 
 /area/world/forest/interior/village/shop/debug
 	name = "debug shop"
 	id = "debug_shop"
+
+/area/world/forest/interior/village/shop/syndicate
+	name = "syndicate shop"
+	id = "syndicate_shop"
 
 
 /area/world/forest/interior/village/ship

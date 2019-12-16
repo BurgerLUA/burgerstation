@@ -45,54 +45,50 @@
 		if(should_update)
 			A.update_overlay(O)
 
+		if(O.loc && O.loc.health)
+			O.loc.health.update_health()
+
 	return .
 
 /health/obj/item/organ/adjust_brute_loss(var/value)
-	if(value > 0 && is_advanced(owner.loc))
+
+	. = ..()
+
+	if(. > 0 && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
-	if(is_player(owner.loc) && value > 0)
-		damage_soft[BRUTE] += value
-	else
-		return ..()
 
-	return value
+	return .
 
 /health/obj/item/organ/adjust_tox_loss(var/value)
-	if(value > 0 && is_advanced(owner.loc))
+
+	. = ..()
+
+	if(. > 0 && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(owner.loc) && value > 0)
-		damage_soft[TOX] += value
-	else
-		return ..()
-
-	return value
+	return .
 
 /health/obj/item/organ/adjust_oxy_loss(var/value)
-	if(value > 0 && is_advanced(owner.loc))
+
+	. = ..()
+
+	if(. > 0 && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(owner.loc) && value > 0)
-		damage_soft[OXY] += value
-	else
-		return ..()
-
-	return value
+	return .
 
 /health/obj/item/organ/adjust_burn_loss(var/value)
-	if(value > 0 && is_advanced(owner.loc))
+
+	. = ..()
+
+	if(. > 0 && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
-	if(is_player(owner.loc) && value > 0)
-		damage_soft[BURN] += value
-	else
-		return ..()
-
-	return value
+	return .
 
 /health/obj/item/organ/adjust_fatigue_loss(var/value)
 	if(!owner.loc || !is_advanced(owner.loc))

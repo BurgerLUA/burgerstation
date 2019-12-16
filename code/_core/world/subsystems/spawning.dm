@@ -48,7 +48,7 @@
 		return do_spawn(M)
 
 	var/mob/living/L = M.mob_stored
-	if( (L.status & FLAG_STATUS_DEAD) || L.qdeleting)
+	if( L.dead || L.qdeleting)
 		if(!M.time_of_death)
 			M.time_of_death = curtime
 

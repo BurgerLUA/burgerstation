@@ -6,7 +6,7 @@
 	icon_state = "blank"
 
 	layer = LAYER_AREA
-	plane = PLANE_MAP_TEXT
+	plane = PLANE_HUD_TEXT
 
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 

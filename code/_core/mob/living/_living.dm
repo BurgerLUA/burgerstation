@@ -15,10 +15,12 @@
 
 	var/status = 0 //Negative status
 
-	var/stun_time = 0 //Deciseconds of stun. Stun is being knocked down.
-	var/sleep_time = 0 //Decieconds of sleep Sleep is being knocke down and blind.
-	var/paralyze_time = 0 //Decieconds of paralyze. Paralyze is being unable to move.
-	var/fatigue_time = 0 //Deciseconds of fatigue.
+	var/stun_time = 0
+	var/sleep_time = 0
+	var/paralyze_time = 0
+	var/fatigue_time = 0
+	var/stagger_time = 0
+	var/crit_time = 0
 
 	var/first_life = TRUE
 
@@ -65,7 +67,7 @@
 
 	var/allow_experience_gains = FALSE
 
-	var/should_be_knocked_down = FALSE
+	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
 
 	health = /health/mob/living/
 
@@ -89,6 +91,8 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+
+	var/dead = FALSE
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
@@ -201,6 +205,8 @@
 /mob/living/proc/setup_name()
 	if(ai)
 		name = "[name] (lvl. [level])"
+
+	return TRUE
 
 
 /mob/living/proc/initialize_factions()

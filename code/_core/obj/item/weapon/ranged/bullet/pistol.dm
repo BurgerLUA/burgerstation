@@ -3,7 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/pistol.dmi'
 	icon_state = "inventory"
 
-	bullet_speed = 20
 	shoot_delay = 2
 
 	automatic = FALSE
@@ -18,9 +17,18 @@
 
 	override_icon_state = TRUE
 
-	view_punch = 6
+	view_punch = 8
 
 	cock_sound = 'sounds/weapons/gun_slide1.ogg'
+
+	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
+	size = SIZE_1
+	weight = WEIGHT_2
+
+	heat_per_shot = 0.05
+	heat_current = 0
+	heat_max = 0.2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
@@ -35,7 +43,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_static_spread() //Base spread
-	return 0
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
@@ -43,17 +51,20 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle
 	name = ".50AE gold eagle"
 	icon = 'icons/obj/items/weapons/ranged/deagle.dmi'
-	bullet_speed = 28
+	projectile_speed = 28
 	shoot_delay = 4
 	bullet_type = ".50ae"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
 
 	view_punch = 12
 
+	size = SIZE_2
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol
-	name = ".45 private security pistol"
+	name = ".45 security pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol.dmi'
-	bullet_speed = 28
+	projectile_speed = 28
 	shoot_delay = 4
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
@@ -62,9 +73,11 @@
 
 	automatic = FALSE
 
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
-	name = ".45 tactical pistol"
+	name = ".45 military pistol"
 	icon = 'icons/obj/items/weapons/ranged/45pistol2.dmi'
 	shoot_delay = 2
 	bullet_type = ".45"
@@ -72,18 +85,21 @@
 
 	view_punch = 6
 
+	size = SIZE_2
+	weight = WEIGHT_2
 
-/*
-/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
-	. = ..()
+/obj/item/weapon/ranged/bullet/magazine/pistol/mercenary
+	name = ".357 mercenary pistol"
+	icon = 'icons/obj/items/weapons/ranged/357pistol.dmi'
+	projectile_speed = 28
+	shoot_delay = 4
+	bullet_type = ".45"
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
-	if(. && automatic)
-		spawn( (next_shoot_time - curtime) + 1)
-			if(is_advanced(caller))
-				var/mob/living/advanced/A = caller
-				if( (A.right_item = src && A.attack_flags & ATTACK_HELD_RIGHT) || (A.left_item = src && A.attack_flags & ATTACK_HELD_LEFT))
-					shoot(caller,object,location,params,damage_multiplier)
+	view_punch = 8
 
-	return .
-*/
+	automatic = FALSE
+
+	size = SIZE_2
+	weight = WEIGHT_2

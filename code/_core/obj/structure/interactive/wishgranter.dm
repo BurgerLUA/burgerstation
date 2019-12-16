@@ -109,7 +109,7 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 	callback_list["end_turf"] = desired_turf
 	if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(3),callback_list))
 		P.to_chat(span("notice","You begin walking into the light..."))
-		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL,speed=1)
+		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,speed=1)
 
 	return TRUE
 
@@ -122,7 +122,7 @@ obj/structure/interactive/wishgranter/normal/Uncrossed(var/atom/crosser)
 	var/mob/living/advanced/player/P = crosser
 
 	if(main)
-		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL,speed=1)
+		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,speed=1)
 
 	return TRUE
 

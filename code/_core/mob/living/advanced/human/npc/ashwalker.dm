@@ -59,12 +59,12 @@
 
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"
-	level_multiplier = 2
+	level_multiplier = 1.25
 	spear_chance = 100
 
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
-	level_multiplier = 3
+	level_multiplier = 1.5
 	outfit_to_use = "ashwalker_warrior"
 	spear_chance = 100
 	shield_chance = 50

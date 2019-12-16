@@ -5,6 +5,8 @@
 
 	var/pump_sound = 'sounds/weapons/shotgun_pump.ogg'
 
+	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
+
 /obj/item/weapon/ranged/bullet/pump/get_damage_type()
 	return stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
 

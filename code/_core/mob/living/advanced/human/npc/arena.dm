@@ -1,7 +1,6 @@
 /mob/living/advanced/npc/arena_guard
 	name = "arena guard"
 	ai = /ai/ranged/immobile/
-	status = FLAG_STATUS_IMMORTAL
 
 /mob/living/advanced/npc/arena_guard/Initialize()
 	. = ..()

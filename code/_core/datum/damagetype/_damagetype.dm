@@ -172,9 +172,20 @@
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
 	return TRUE
 
-/damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+
+	var/best_damage_type = null
+	var/best_damage_type_amount = 0
+
+	for(var/damage_type in damage_to_deal)
+		var/damage_amount = damage_to_deal[damage_type]
+		if(!best_damage_type || damage_amount > best_damage_type_amount)
+			best_damage_type = damage_type
+			best_damage_type_amount = damage_amount
+
 	hit_object.visible_message(span("danger","Critical hit!"))
-	return TRUE
+
+	return crit_multiplier
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
@@ -236,8 +247,6 @@
 
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(L.status & FLAG_STATUS_IMMORTAL)
-				return 0
 
 			var/defense_rating_victim = L.health.get_defense(attacker,hit_object)
 
@@ -275,24 +284,37 @@
 					fatigue_damage_to_deal += damage_amount
 
 		var/is_crit = get_critical_hit_condition(attacker,victim,weapon,hit_object)
-
 		if(is_crit)
-			brute_damage_to_deal *= crit_multiplier
-			burn_damage_to_deal *= crit_multiplier
-			tox_damage_to_deal *= crit_multiplier
-			oxy_damage_to_deal *= crit_multiplier
-			fatigue_damage_to_deal *= crit_multiplier
+			var/final_crit_multiplier = do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal)
+			brute_damage_to_deal *= final_crit_multiplier
+			burn_damage_to_deal *= final_crit_multiplier
+			tox_damage_to_deal *= final_crit_multiplier
+			oxy_damage_to_deal *= final_crit_multiplier
+			fatigue_damage_to_deal *= final_crit_multiplier
 
 		do_attack_animation(attacker,victim,weapon,hit_object,is_crit)
 
 		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health)
 			return FALSE
 
-		var/brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0
-		var/burn_damage_dealt = burn_damage_to_deal ? hit_object.health.adjust_burn_loss(burn_damage_to_deal) : 0
-		var/tox_damage_dealt = tox_damage_to_deal ? hit_object.health.adjust_tox_loss(tox_damage_to_deal) : 0
-		var/oxy_damage_dealt = oxy_damage_to_deal ? hit_object.health.adjust_oxy_loss(oxy_damage_to_deal) : 0
-		var/fatigue_damage_dealt = fatigue_damage_to_deal ? hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal) : 0
+		var/brute_damage_dealt = 0
+		var/burn_damage_dealt = 0
+		var/tox_damage_dealt = 0
+		var/oxy_damage_dealt = 0
+		var/fatigue_damage_dealt = 0
+
+		if(victim.immortal || hit_object.immortal)
+			brute_damage_dealt = brute_damage_to_deal
+			burn_damage_dealt = burn_damage_to_deal
+			tox_damage_dealt = tox_damage_to_deal
+			oxy_damage_dealt = oxy_damage_to_deal
+			fatigue_damage_dealt = fatigue_damage_to_deal
+		else
+			brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0
+			burn_damage_dealt = burn_damage_to_deal ? hit_object.health.adjust_burn_loss(burn_damage_to_deal) : 0
+			tox_damage_dealt = tox_damage_to_deal ? hit_object.health.adjust_tox_loss(tox_damage_to_deal) : 0
+			oxy_damage_dealt = oxy_damage_to_deal ? hit_object.health.adjust_oxy_loss(oxy_damage_to_deal) : 0
+			fatigue_damage_dealt = fatigue_damage_to_deal ? hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal) : 0
 
 		var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt + fatigue_damage_dealt
 
@@ -302,7 +324,9 @@
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 		do_attack_sound(attacker,victim,weapon,hit_object)
-		do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
+
+		if(ENABLE_WOUNDS)
+			do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 		display_hit_message(attacker,victim,weapon,hit_object)
 
@@ -316,56 +340,25 @@
 
 		if(is_living(attacker) && victim && attacker != victim)
 			var/mob/living/A = attacker
-			for(var/skill in skill_xp_per_damage)
-				var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
-				if(xp_to_give > 0)
-					A.add_skill_xp(skill,xp_to_give)
-
-			if(victim.health && brute_damage_dealt > victim.health.health_max*0.5)
-
-				var/offset_x = victim.x - attacker.x
-				var/offset_y = victim.y - attacker.y
-
-				var/maxum = max(abs(offset_x),abs(offset_y))
-
-				if(maxum == 0)
-					offset_x = pick(-1,1)
-					offset_y = pick(-1,1)
-					maxum = max(offset_x,offset_y)
-
-				offset_x *= 1/maxum
-				offset_y *= 1/maxum
-
-				if(is_living(victim))
-					var/mob/living/L = victim
-					var/strength_mod = floor( (brute_damage_dealt/max(victim.health.health_max,1))*throw_mul )
-					if(strength_mod >= 1)
-						var/steps_mod = min(ceiling(VIEW_RANGE*0.75),ceiling(4 * strength_mod))
-						if(steps_mod > 2)
-							var/obj/projectile/P = L.throw_self(attacker,null,16,16,offset_x*min(6*strength_mod,31),offset_y*min(6*strength_mod,31))
-							P.steps_allowed = steps_mod
-						else
-							var/move_dir = get_dir(A,L)
-							L.glide_size = TILE_SIZE*0.5
-							L.Move(get_step(A,move_dir),move_dir)
-
+			if(A.client)
+				for(var/skill in skill_xp_per_damage)
+					var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
+					if(xp_to_give > 0)
+						A.add_skill_xp(skill,xp_to_give)
 
 		if(is_player(blamed) && is_player(victim))
 			var/mob/living/advanced/player/PA = blamed
 			var/mob/living/advanced/player/PV = victim
-			if(!(PV.status & FLAG_STATUS_DEAD))
+			if(!PV.dead)
 				var/victim_health_final = PV.health.get_overall_health()
 				var/list/attack_log_format = list()
 				attack_log_format["attacker"] = PA
 				attack_log_format["attacker_ckey"] = PA.ckey
 				attack_log_format["time"] = curtime
 				attack_log_format["damage"] = total_damage_dealt
-				attack_log_format["critical"] = (victim_health_final - total_damage_dealt < 0) || PV.status & FLAG_STATUS_CRIT
+				attack_log_format["critical"] = victim_health_final - total_damage_dealt < 0
 				attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
 				PV.attack_logs += list(attack_log_format)
-
-		if(is_crit)
-			do_critical_hit(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 		hit_object.health.update_health(total_damage_dealt,attacker)
 
@@ -375,6 +368,14 @@
 		victim.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
 		if(victim != hit_object)
 			hit_object.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
+
+		post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
+
+/damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	return TRUE
+
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 
@@ -463,14 +464,14 @@
 
 		var/matrix/attack_matrix = matrix()
 
-		if(L.should_be_knocked_down)
+		if(L.horizontal)
 			attack_matrix = turn(attack_matrix,L.stun_angle)
 
 		attack_matrix.Translate(pixel_x_offset,pixel_y_offset)
 
 		animate(L, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
 
-		if(L.should_be_knocked_down)
+		if(L.horizontal)
 			animate(transform = turn(matrix(), L.stun_angle), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 		else
 			animate(transform = matrix(), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)

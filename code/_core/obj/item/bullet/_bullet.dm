@@ -15,17 +15,30 @@
 
 	var/obj/projectile/projectile //The projectile to create when the bullet is fired. Optional. Overrides the gun's settings.
 	var/list/shoot_sounds //The shoots sounds to create when the bullet is fired. Optional. Overrides the gun's settings.
-	var/base_spread = 0 //The added spread of this type of bullet. Optional. Adds to the gun's settings.
+	var/base_spread = 0 //The additional spread of this type of bullet. Optional. Adds to the gun's settings.
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
-	var/bullet_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
+	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
+
+	maptext_x = 2
+	maptext_y = 2
 
 /obj/item/bullet/proc/get_ammo_count()
 	return item_count_current
 
 /obj/item/bullet/New(var/desired_loc)
+	. = ..()
+	update_icon()
+	return .
+
+/obj/item/bullet/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+	. = ..()
+	update_icon()
+	return .
+
+/obj/item/bullet/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 	. = ..()
 	update_icon()
 	return .
@@ -39,6 +52,11 @@
 		if(item_count_current <= 1 && is_turf(src.loc))
 			pixel_x = rand(-8,8)
 			pixel_y = rand(-8,8)
+
+	if(is_inventory(loc))
+		maptext = "[item_count_current]"
+	else
+		maptext = null
 
 	..()
 
@@ -61,9 +79,22 @@
 			return FALSE
 		is_spent = TRUE
 		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
+		item_count_max = -1
 		return src
 
 	return FALSE
+
+/obj/item/bullet/Crossed(var/atom/movable/O)
+
+	if(is_bullet(O))
+		var/obj/item/bullet/B = O
+		if(!B.qdeleting && B.damage_type == src.damage_type && B.is_spent && src.is_spent)
+			B.item_count_current += item_count_current
+			item_count_current = 0 //Just in case
+			B.update_icon()
+			qdel(src)
+
+	return ..()
 
 /obj/item/bullet/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet/transfer_target,location,control,params,var/display_message = TRUE)
 

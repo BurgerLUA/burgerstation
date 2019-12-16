@@ -48,3 +48,8 @@ obj/structure/interactive/bar_sign/clown
 	name = "HONKed'n and LOADED"
 	desc = "HONK"
 	icon_state = "clown"
+
+obj/structure/interactive/bar_sign/debug
+	name = "Coderbus"
+	desc = "Wait what?"
+	icon_state = "thecoderbus"

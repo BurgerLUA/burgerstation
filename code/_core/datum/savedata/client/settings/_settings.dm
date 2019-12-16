@@ -8,14 +8,7 @@
 		"volume_music" = 50,
 		"volume_footsteps" = 50,
 		"fps_client" = FPS_CLIENT,
-		"hud_colors" = list(
-			"#3D5E80",
-			"#48728B",
-			"#5D96A0",
-			"#FFFFFF",
-			"#335871",
-			"#FE0000"
-		)
+		"hud_colors" = DEFAULT_COLORS
 	)
 
 /savedata/client/settings/get_file(var/file_id)
@@ -33,9 +26,23 @@
 		text2file(json_encode(loaded_data),full_path)
 
 	var/file_contents = file2text(full_path)
-	loaded_data |= json_decode(file_contents)
+	loaded_data = json_decode(file_contents)
 	if(loaded_data["fps_client"])
 		new_owner.fps = loaded_data["fps_client"]
+
+	if(owner.mob)
+		for(var/obj/hud/button/B in owner.mob.buttons)
+			B.update_icon()
+
+		for(var/obj/hud/button/B in owner.mob.health_elements)
+			B.update_icon()
+
+		if(is_advanced(owner))
+			var/mob/living/advanced/A = owner.mob
+			for(var/obj/hud/inventory/I in A.inventory)
+				I.update_icon()
+
+	owner.update_window()
 
 	return .
 

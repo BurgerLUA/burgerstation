@@ -1,6 +1,6 @@
 /obj/hud/progress_bar
 	name = "progress bar"
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/progress.dmi'
 	icon_state = "progress"
 
 	layer = LAYER_HUD
@@ -13,7 +13,7 @@
 
 	var/list/callback_list
 
-	mouse_opacity = 0
+	var/last_num = -1
 
 	user_colors = FALSE
 
@@ -34,27 +34,21 @@
 	end_time = new_end_time
 	callback_list = new_callback_list
 
+	var/icon/I = new(icon,"progress")
+	swap_colors(I)
+	underlays += I
+
 	update_icon()
 
 	..()
 
 /obj/hud/progress_bar/update_icon()
 
-	icon = initial(icon)
+	var/desired_num = floor( (1 - ((end_time - curtime)/(end_time - start_time)))*26 )
 
-	var/icon/I = new /icon(icon,icon_state)
-	swap_colors(I)
+	icon_state = "bar_[desired_num]"
 
-	var/icon/O = new /icon(icon,"progress_bar")
-	var/time_normalized = end_time - start_time
-	var/time_left = end_time - curtime
-	var/time_mul = 1 - (time_left/time_normalized)
-	var/x_offset = 4
-
-	O.Crop(0,0,x_offset + (TILE_SIZE-x_offset)*time_mul,TILE_SIZE)
-	I.Blend(O,ICON_OVERLAY)
-
-	icon = I
+	return ..()
 
 /obj/hud/progress_bar/Destroy()
 

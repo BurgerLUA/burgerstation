@@ -7,19 +7,25 @@
 
 	var/obj/item/stored_objects = list()
 
-	density_north = FALSE
-	density_south = FALSE
-	density_east  = FALSE
-	density_west  = FALSE
+	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
+	density_north = TRUE
+	density_south = TRUE
+	density_east  = TRUE
+	density_west  = TRUE
 
 /obj/structure/interactive/vendor/Initialize()
 
 	var/turf/T = get_turf(src)
 
 	for(var/obj/item/I in T.contents)
+		I.on_spawn()
 		stored_objects += I
 		I.force_move(src)
 		I.update_icon()
+		I.plane = PLANE_HUD_OBJ
+		I.pixel_y = 4
 
 	return ..()
 

@@ -10,7 +10,7 @@
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = ".38"
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 
 /obj/item/bullet/revolver_357
@@ -26,7 +26,7 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 /obj/item/bullet/revolver_357/surplus
 	name = "\improper .357 surplus bullet"
@@ -35,9 +35,9 @@
 	icon = 'icons/obj/items/bullet/357_surplus.dmi'
 	damage_type = ".357_surplus"
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
-	misfire_chance = 3
+	misfire_chance = 1
 
 /obj/item/bullet/revolver_44
 	name = "\improper .44 magnum bullet"
@@ -52,7 +52,7 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 /obj/item/bullet/revolver_44/surplus
 	name = "\improper surplus .44 magnum bullet"
@@ -67,9 +67,9 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
-	misfire_chance = 3
+	misfire_chance = 1
 
 /obj/item/bullet/revolver_22
 	name = "\improper .22 LR"
@@ -84,7 +84,7 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 /obj/item/bullet/revolver_22/surplus
 	name = "\improper .22 LR surplus"
@@ -93,9 +93,9 @@
 	item_count_max = 6
 	item_count_max_icon = 6
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
 
-	misfire_chance = 3
+	misfire_chance = 1
 
 /obj/item/bullet/revolver_22/surplus/on_spawn()
 	item_count_current = 6

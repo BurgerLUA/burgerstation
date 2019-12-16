@@ -12,21 +12,24 @@ var/global/list/all_progress_bars = list()
 		var/failed_first_turf = length(P.callback_list) && P.callback_list["start_turf"]  && P.callback_list["start_turf"] != get_turf(P.loc)
 		var/failed_second_turf = length(P.callback_list) && P.callback_list["target_start_turf"] && P.callback_list["target"]  && P.callback_list["target_start_turf"] != get_turf(P.callback_list["target"])
 
-		if(failed_first_turf || failed_second_turf)
+		if(failed_first_turf || failed_second_turf || !P.loc)
 			all_progress_bars -= P
-			P.loc.on_progress_bar_failed(P.id,P.callback_list)
-			P.loc.doing_progress = FALSE
+			if(P.loc)
+				P.loc.on_progress_bar_failed(P.id,P.callback_list)
+				P.loc.doing_progress = FALSE
 			animate(P,alpha=0,time=5)
 			queue_delete(P,10)
 			continue
+
 		if(P.end_time < curtime)
 			all_progress_bars -= P
 			P.loc.doing_progress = FALSE
 			animate(P,alpha=0,time=5)
 			P.loc.on_progress_bar_completed(P.id,P.callback_list)
 			queue_delete(P,10)
-		else
-			P.update_icon()
+			continue
+
+		P.update_icon()
 
 	return TRUE
 

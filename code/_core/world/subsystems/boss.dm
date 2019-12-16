@@ -10,7 +10,7 @@ var/global/list/tracked_bosses = list()
 
 	for(var/k in tracked_bosses)
 		var/mob/living/L = tracked_bosses[k]
-		if(L.status & FLAG_STATUS_DEAD)
+		if(L.dead)
 			for(var/mob/living/advanced/P in L.players_fighting_boss)
 				L.remove_player_from_boss(P)
 			continue

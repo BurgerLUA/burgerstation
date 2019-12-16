@@ -1,12 +1,3 @@
-#define FLAG_PERMISSION_NONE 0x0
-#define FLAG_PERMISSION_GAMEMASTER 0x1
-#define FLAG_PERMISSION_DEVELOPER 0x2
-#define FLAG_PERMISSION_MODERATOR 0x4
-
-#define FLAG_PERMISSION_HOST 0xFFFFFF //Everything
-
-
-
 /*
 /role/
 	name = "Roll Name"

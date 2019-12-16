@@ -8,6 +8,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/organs/neck
 	name = "neck slot"
 	icon_state = "slot_neck"
@@ -18,6 +20,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+	drop_on_death = TRUE
+
 /obj/hud/inventory/organs/face
 	name = "face slot"
 	icon_state = "slot_face"
@@ -27,6 +31,8 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
+	drop_on_death = TRUE
 
 /*
 /obj/hud/inventory/organs/left_ear
@@ -57,6 +63,8 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
+	drop_on_death = TRUE
 
 /*
 /obj/hud/inventory/organs/special

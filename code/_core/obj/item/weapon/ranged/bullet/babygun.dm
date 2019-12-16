@@ -18,6 +18,11 @@
 
 	view_punch = 4
 
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_SMALL
+
+	size = SIZE_4
+	weight = WEIGHT_2
+
 /obj/item/weapon/ranged/bullet/pump/babygun/get_static_spread() //Base spread
 	return 0
 

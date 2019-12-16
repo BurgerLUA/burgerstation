@@ -141,7 +141,7 @@
 	else
 		owner.to_chat(span("warning","Save failed. Please contact the server owner."))
 
-/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A)
+/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE)
 
 	//Name
 	A.real_name = loaded_data["name"]
@@ -178,14 +178,16 @@
 		else
 			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
-	if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
-		A.force_move(all_wishgranters[loaded_data["last_save"]])
-	else
-		var/turf/T = locate(loaded_data["x"],loaded_data["y"],1)
-		if(T)
-			A.force_move(T)
+	if(do_teleport)
+		if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
+			A.force_move(all_wishgranters[loaded_data["last_save"]])
 		else
-			A.force_move(pick(all_wishgranters))
+			var/turf/T = locate(loaded_data["x"],loaded_data["y"],1)
+			if(T)
+				A.force_move(T)
+			else
+				A.force_move(all_wishgranters[pick(all_wishgranters)])
+
+		step(A,SOUTH)
 
 	A.update_icon()
-	step(A,SOUTH)

@@ -137,7 +137,6 @@
 	else
 		color = initial(color)
 
-
 	for(var/obj/item/I in held_objects)
 		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
 		I.pixel_y = initial(I.pixel_y) + y_offset_initial + total_pixel_y*TILE_SIZE
@@ -162,6 +161,11 @@
 
 		overlays += I
 
+	if(grabbed_object)
+		var/image/I = new/image(grabbed_object.icon,grabbed_object.icon_state)
+		I.appearance = grabbed_object.appearance
+		I.plane = PLANE_HUD_OBJ
+		overlays += I
 
 /obj/hud/inventory/update_icon()
 
@@ -261,10 +265,10 @@
 			A.update_slowdown_mul()
 			update_held_icon(I)
 
-	update_overlays()
-	update_stats()
 
+	update_stats()
 	I.on_pickup(old_location,src)
+	update_overlays()
 
 	return TRUE
 
@@ -380,7 +384,7 @@
 	for(var/obj/item/I in held_objects)
 		qdel(remove_object(I))
 
-/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc) //Removes the object from both worn and held objects, just in case.
+/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0) //Removes the object from both worn and held objects, just in case.
 
 	var/was_removed = FALSE
 
@@ -388,26 +392,30 @@
 		held_objects -= I
 		if(owner && is_advanced(owner) && should_add_held)
 			var/mob/living/advanced/A = owner
-			A.held_objects -= I
+			if(A.held_objects)
+				A.held_objects -= I
 		was_removed = TRUE
 
 	if(I in worn_objects)
 		worn_objects -= I
 		if(owner && is_advanced(owner) && should_add_worn)
 			var/mob/living/advanced/A = owner
-			A.worn_objects -= I
+			if(A.worn_objects)
+				A.worn_objects -= I
 		was_removed = TRUE
 
 	if(was_removed)
 		I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
+		I.pixel_x = pixel_x_offset
+		I.pixel_y = pixel_y_offset
 		I.plane = initial(I.plane)
+		I.on_drop(src,drop_loc)
 		update_overlays()
 		update_stats()
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			A.remove_overlay(I)
 		queue_delete(I,ITEM_DELETION_TIME_DROPPED)
-		I.on_drop(src,drop_loc)
 		if(owner)
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))

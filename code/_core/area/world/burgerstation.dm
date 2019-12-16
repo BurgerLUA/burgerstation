@@ -49,3 +49,15 @@
 	desired_light_power = 1
 	desired_light_color = COLOR_ORANGE
 
+/area/world/burgerstation/interior/shop/
+	name = "Coderbus"
+	id = "coderbus"
+	safe = TRUE
+	icon_state = "shop"
+
+	sunlight_freq = 3
+
+	desired_light_range = 3
+	desired_light_power = 1
+	desired_light_color = "#1E6489"
+

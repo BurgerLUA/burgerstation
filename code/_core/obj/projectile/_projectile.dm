@@ -197,21 +197,20 @@
 	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
 
 	if(collide_with_turf)
-		on_hit(collide_with_turf)
-		return TRUE
+		return on_hit(collide_with_turf)
 
 	for(var/atom/A in new_turf.contents)
-		var/atom/collide_with_atom = A.projectile_should_collide(src,new_turf,old_turf)
-		if(!collide_with_atom)
+		if(!hit_atom(A))
 			continue
 
-		if(hit_atom(A))
-			on_hit(A)
-			return TRUE
+		var/atom/collide_atom = A.projectile_should_collide(src,new_turf,old_turf)
+		if(!collide_atom)
+			continue
+
+		return on_hit(collide_atom)
 
 	if(hit_target_turf && new_turf == target_turf)
-		on_hit(current_loc)
-		return TRUE
+		return on_hit(current_loc)
 
 	return FALSE
 
@@ -220,9 +219,10 @@
 	if(!hit_atom.can_be_attacked(owner))
 		return FALSE
 
+
 	if(hit_atom != target_atom && is_living(hit_atom))
 		var/mob/living/L = hit_atom
-		if(L.status & FLAG_STATUS_DEAD || L.status & FLAG_STATUS_STUN)
+		if(L.horizontal)
 			return FALSE
 
 	if(damage_type && all_damage_types[damage_type])

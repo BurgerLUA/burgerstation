@@ -18,3 +18,10 @@
 	view_punch = 6
 
 	cock_sound = 'sounds/weapons/gun_slide1.ogg'
+
+	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
+
+	size = SIZE_2
+	weight = WEIGHT_3
+
+	automatic = TRUE

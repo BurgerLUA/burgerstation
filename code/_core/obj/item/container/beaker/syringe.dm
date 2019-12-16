@@ -26,7 +26,7 @@
 	update_icon()
 	return .
 
-/obj/item/container/syringe/drop_item(var/atom/desired_loc)
+/obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
 	. = ..()
 	update_icon()
 	return .

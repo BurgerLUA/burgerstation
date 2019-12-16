@@ -57,10 +57,10 @@
 	if(!owner)
 		return
 
-	for(var/r_id in stored_reagents)
+	if(!flags_metabolism)
+		return
 
-		if(!flags_metabolism)
-			continue
+	for(var/r_id in stored_reagents)
 
 		var/volume = stored_reagents[r_id]
 
@@ -76,9 +76,6 @@
 
 		if(owner && is_organ(owner) && owner.loc && flags_metabolism & REAGENT_METABOLISM_INGEST)
 			owner_to_use = owner.loc
-
-		if(!owner_to_use)
-			continue
 
 		var/metabolize_amount = R.metabolize(owner_to_use,src,volume)
 
@@ -318,6 +315,14 @@
 
 /reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
 	return -add_reagent(reagent_id,-amount,TNULL,should_update,check_recipes)
+
+/reagent_container/proc/remove_all_reagents()
+
+	stored_reagents.Cut()
+	stored_reagents_temperature.Cut()
+	update_container()
+
+	return TRUE
 
 /reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE) //Transfer a single reagent by id.
 	var/old_temperature = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : T0C + 20

@@ -8,9 +8,9 @@
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/pistol
-	damage_type = "10mm_auto"
+	damage_type = "10mm"
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 /obj/item/bullet/pistol_10mm/surplus
 	name = "\improper surplus 10mm auto round"
@@ -18,26 +18,25 @@
 	icon = 'icons/obj/items/bullet/10mm_surplus.dmi'
 
 	projectile = /obj/projectile/bullet/pistol
-	damage_type = "10mm_auto_surplus"
+	damage_type = "10mm_surplus"
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY*SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY*SURPLUS_PENALTY
 
-	misfire_chance = 5
-	jam_chance = 5
+	misfire_chance = 1
 
 /obj/item/bullet/pistol_50ae/
 	name = "\improper .50 action express"
 	desc = "For pistols that require .50ae."
-	id = ".50ae"
+	id = ".50"
 	icon = 'icons/obj/items/bullet/50ae.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/revolver/
-	damage_type = ".50ae"
+	damage_type = ".50_pistol"
 
-	bullet_speed = BULLET_SPEED_PISTOL_HEAVY
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 /obj/item/bullet/pistol_9mm/
 	name = "\improper 9mm round"
@@ -51,7 +50,7 @@
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "9mm"
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 /obj/item/bullet/pistol_9mm/surplus
 	name = "surplus 9mm round"
@@ -60,10 +59,9 @@
 
 	damage_type = "9mm_surplus"
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
 
-	misfire_chance = 5
-	jam_chance = 5
+	misfire_chance = 1
 
 /obj/item/bullet/pistol_45/
 	name = "\improper .45 bullet"
@@ -74,7 +72,7 @@
 	projectile = /obj/projectile/bullet/smg
 	damage_type = ".45"
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 
 /obj/item/bullet/pistol_45/surplus
@@ -86,10 +84,9 @@
 	projectile = /obj/projectile/bullet/smg
 	damage_type = ".45_surplus"
 
-	bullet_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
 
-	misfire_chance = 5
-	jam_chance = 5
+	misfire_chance = 1
 
 
 /obj/item/bullet/pistol_45/rubber
@@ -101,6 +98,6 @@
 	projectile = /obj/projectile/bullet/shotgun_pellet
 	damage_type = ".45_rubber"
 
-	bullet_speed = BULLET_SPEED_LARGE_PROJECTILE
+	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
-	jam_chance = 10 //Rubber bullets are infamous for not having enough power to move the slide all the way back.
+	jam_chance = 2 //Rubber bullets are infamous for not having enough power to move the slide all the way back.

@@ -9,6 +9,10 @@
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
+			if(!highest)
+				I.drop_item(get_turf(caller))
+				return TRUE
+
 			vel_x *= 1/highest
 			vel_y *= 1/highest
 
@@ -16,7 +20,7 @@
 			vel_y *= 28
 
 			I.drop_item(get_turf(caller))
-			I.throw_self(caller,get_turf(object),params[PARAM_ICON_X],params[PARAM_ICON_Y],vel_x,vel_y)
+			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y)
 
 		return TRUE
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
@@ -25,7 +29,7 @@
 		var/turf/desired_turf = object ? get_turf(object) : null
 
 		if(desired_turf && get_dist(caller_turf,desired_turf) <= 1)
-			return drop_item(desired_turf)
+			return drop_item(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 
 		return drop_item()
 
@@ -82,12 +86,12 @@ obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc
 
-obj/hud/inventory/drop_item(var/turf/new_location)
+obj/hud/inventory/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
 
 	if(!length(src.held_objects))
 		return FALSE
 
-	return get_top_held_object().drop_item(new_location)
+	return get_top_held_object().drop_item(new_location,pixel_x_offset,pixel_y_offset)
 
 /obj/hud/inventory/defer_click_on_object()
 

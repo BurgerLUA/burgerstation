@@ -27,21 +27,25 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 	if(target_dir & WEST)
 		x_offset = 32
 
-	src.pixel_x = x_offset
-	src.pixel_y = y_offset
+	pixel_x = x_offset
+	pixel_y = y_offset
 
 	switch(desired_animation_type)
 		if("pickup")
+			pixel_x += desired_object.pixel_x
+			pixel_y += desired_object.pixel_y
 			var/matrix/M = matrix()
 			M.Scale(0,0)
 			animate(src,transform=M,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 		if("drop")
+			var/original_x = desired_object.pixel_x
+			var/original_y = desired_object.pixel_y
 			desired_object.alpha = 0
 			var/matrix/M = matrix()
 			src.transform *= 0
-			animate(src,transform=M,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
+			animate(src,transform=M, pixel_x=original_x, pixel_y = original_y, time = duration,easing=SINE_EASING)
 		if("transfer")
-			animate(pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
+			animate(src,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 
 	spawn(duration)
 		desired_object.alpha = initial(desired_object.alpha)
