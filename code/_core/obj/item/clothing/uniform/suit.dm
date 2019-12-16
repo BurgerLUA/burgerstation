@@ -21,7 +21,7 @@
 
 
 // maybe eventually perhaps i'll make this stuff colorable. that eventually is definitely not now.
-/obj/item/clothing/overwear/coat/suit/red
+/obj/item/clothing/uniform/suit/red
 	name = "red suit"
 	icon = 'icons/obj/items/clothing/suit/suit_red.dmi'
 
@@ -29,7 +29,7 @@
 	desc_extended = "It's like a suit, but red."
 
 
-/obj/item/clothing/overwear/coat/suit/green
+/obj/item/clothing/uniform/suit/green
 	name = "green suit"
 	icon = 'icons/obj/items/clothing/suit/suit_green.dmi'
 
@@ -37,22 +37,21 @@
 	desc_extended = "It's like a suit, but green."
 
 
-/obj/item/clothing/overwear/coat/suit/brown
+/obj/item/clothing/uniform/suit/brown
 	name = "brown suit"
 	icon = 'icons/obj/items/clothing/suit/suit_brown.dmi'
 
 	desc = "A red suit."
 	desc_extended = "It's like a suit, but brown."
 
-
-/obj/item/clothing/overwear/coat/suit/black
+/obj/item/clothing/uniform/suit/black
 	name = "black suit"
 	icon = 'icons/obj/items/clothing/suit/suit_black.dmi'
 
 	desc = "A black suit."
 	desc_extended = "It's a suit. What more is there to say?"
 
-/obj/item/clothing/overwear/coat/suit/pinstripe
+/obj/item/clothing/uniform/suit/pinstripe
 	name = "pinstripe suit"
 	icon = 'icons/obj/items/clothing/suit/pinstripe.dmi'
 

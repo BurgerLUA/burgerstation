@@ -95,9 +95,10 @@
 			return TRUE
 
 		var/list/callback_list = list()
-		callback_list["object"] = I
-		callback_list["deposit"] = src
+		callback_list["target"] = I
+		callback_list["target_start_turf"] = get_turf(I)
 		callback_list["start_turf"] = get_turf(A)
+		callback_list["ore"] = src
 		add_progress_bar(A,"mine_ore",I.tool_time,callback_list)
 
 	return TRUE

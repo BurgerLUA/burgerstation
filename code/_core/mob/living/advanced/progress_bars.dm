@@ -43,7 +43,7 @@
 
 			return TRUE
 		if("mine_ore")
-			var/obj/structure/interactive/ore_deposit/OD = callback_list["deposit"]
+			var/obj/structure/interactive/ore_deposit/OD = callback_list["ore"]
 			OD.mine(src)
 			return TRUE
 

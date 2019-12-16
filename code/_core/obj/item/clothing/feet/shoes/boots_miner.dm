@@ -1,4 +1,4 @@
-/obj/item/clothing/feet/shoes/boots_miner
+/obj/item/clothing/feet/shoes/miner
 	name = "right mining boot"
 	rarity = RARITY_UNCOMMON
 	icon_state = "inventory_right"
@@ -19,7 +19,7 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
-/obj/item/clothing/feet/shoes/boots_miner/left
+/obj/item/clothing/feet/shoes/miner/left
 	name = "left mining boot"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
