@@ -22,6 +22,41 @@
 	return ..()
 
 
+/obj/structure/interactive/ore_deposit/proc/mine(var/mob/caller)
+
+	if(uses_current <= 0)
+		if(caller)
+			caller.to_chat(span("notice","This ore vein is depleted!."))
+		return TRUE
+
+	var/obj/item/ore/O = new stored_ore(get_turf(src))
+
+	var/move_direction = get_dir(src,caller)
+
+	var/animation_offset_x = 0
+	var/animation_offset_y = 0
+
+	if(move_direction & NORTH)
+		animation_offset_y -= 32
+
+	if(move_direction & SOUTH)
+		animation_offset_y += 32
+
+	if(move_direction & EAST)
+		animation_offset_x -= 32
+
+	if(move_direction & WEST)
+		animation_offset_x += 32
+
+	O.pixel_x = animation_offset_x
+	O.pixel_y = animation_offset_y
+
+	animate(O, pixel_x = rand(-16,16), pixel_y=rand(-16,16), time = 1)
+
+	uses_current -= 1
+	update_icon()
+
+
 /obj/structure/interactive/ore_deposit/update_icon()
 
 	if(uses_current)
@@ -62,7 +97,6 @@
 		var/list/callback_list = list()
 		callback_list["object"] = I
 		callback_list["deposit"] = src
-		callback_list["ore"] = stored_ore
 		callback_list["start_turf"] = get_turf(A)
 		add_progress_bar(A,"mine_ore",I.tool_time,callback_list)
 
