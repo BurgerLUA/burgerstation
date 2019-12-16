@@ -26,6 +26,4 @@
 		if(!new_inventory.can_wear_object(src,TRUE))
 			return FALSE
 
-	drop_item()
-
 	return new_inventory.add_object(src)

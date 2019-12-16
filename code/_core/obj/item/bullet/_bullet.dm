@@ -22,6 +22,9 @@
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
 
+	maptext_x = 2
+	maptext_y = 2
+
 /obj/item/bullet/proc/get_ammo_count()
 	return item_count_current
 

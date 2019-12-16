@@ -40,6 +40,10 @@
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "pellet"
 
+/obj/projectile/bullet/shotgun_pellet/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1)
+	icon_state = "pellets_[rand(1,4)]"
+	return ..()
+
 /obj/projectile/bullet/shotgun_slug
 	name = "shotgun slug"
 	icon = 'icons/obj/projectiles/bullet.dmi'
