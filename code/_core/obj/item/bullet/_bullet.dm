@@ -15,7 +15,7 @@
 
 	var/obj/projectile/projectile //The projectile to create when the bullet is fired. Optional. Overrides the gun's settings.
 	var/list/shoot_sounds //The shoots sounds to create when the bullet is fired. Optional. Overrides the gun's settings.
-	var/base_spread = 0 //The added spread of this type of bullet. Optional. Adds to the gun's settings.
+	var/base_spread = 0 //The additional spread of this type of bullet. Optional. Adds to the gun's settings.
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
 	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 
