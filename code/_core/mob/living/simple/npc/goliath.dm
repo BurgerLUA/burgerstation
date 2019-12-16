@@ -1,6 +1,6 @@
 /mob/living/simple/npc/goliath
 	name = "goliath"
-	icon = 'icons/mob/living/simple/goliath.dmi'
+	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'
 	icon_state = "goliath"
 	damage_type = "goliath_claw"
 	class = "goliath"
@@ -35,4 +35,3 @@
 		new/obj/effect/temp/hazard/tentacle/(get_turf(desired_target),desired_owner = src)
 		sleep(10)
 		icon_state = initial(icon_state)
-
