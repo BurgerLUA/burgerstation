@@ -848,7 +848,6 @@
 #include "code\_core\obj\structure\interactive\botany\plant.dm"
 #include "code\_core\obj\structure\interactive\computer\_computer.dm"
 #include "code\_core\obj\structure\interactive\constructed\engine.dm"
-#include "code\_core\obj\structure\interactive\containers\_containers.dm"
 #include "code\_core\obj\structure\interactive\door\_door.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\_airlock.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\brass.dm"

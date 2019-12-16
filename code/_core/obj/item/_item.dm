@@ -95,6 +95,8 @@
 
 	var/dyeable = FALSE
 
+	var/mob/living/advanced/inventory_user
+
 /obj/item/Destroy()
 
 	for(var/obj/hud/inventory/I in inventories)
@@ -120,19 +122,26 @@
 	if(!length(inventories))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	if(inventory_user && is_advanced(inventory_user))
+		var/mob/living/advanced/A = inventory_user
+		for(var/obj/hud/inventory/I in A.inventory)
+			if(I in inventories)
+				continue
+			if(!(I.flags & FLAGS_HUD_CONTAINER))
+				continue
+			I.alpha = 0
+			I.mouse_opacity = 0
 
-	for(var/obj/hud/inventory/I in A.inventory)
-		if(I in inventories)
-			continue
-		if(!(I.flags & FLAGS_HUD_CONTAINER))
-			continue
-		I.alpha = 0
-		I.mouse_opacity = 0
+		for(var/obj/hud/button/close_inventory/B in A.buttons)
+			B.alpha = 0
+			B.mouse_opacity = 0
+
+	var/mob/living/advanced/A = caller
+	var/turf/T = get_turf(src)
+	var/area/A2 = get_area(T)
 
 	var/opening = FALSE
-
-	var/should_center = length(inventories) <= 8
+	var/should_center = length(inventories) <= MAX_INVENTORY_X
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/I = inventories[i]
@@ -153,12 +162,6 @@
 			opening = FALSE
 
 	if(opening)
-		for(var/obj/hud/button/close_inventory/B in A.buttons)
-			B.alpha = 0
-			B.mouse_opacity = 0
-
-		var/turf/T = get_turf(src)
-		var/area/A2 = get_area(T)
 		play_sound(pick(inventory_sounds),all_mobs_with_clients,vector(T.x,T.y,T.z),environment = A2.sound_environment, channel = SOUND_CHANNEL_FX)
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
