@@ -15,6 +15,13 @@
 
 	var/obj/item/associated_item
 
+	mouse_opacity = 2
+
+/obj/hud/button/vendor/get_examine_text(var/mob/caller)
+	if(associated_item)
+		return associated_item.get_examine_text(caller)
+	return ..()
+
 /obj/hud/button/vendor/Destroy()
 	associated_item = null
 	return ..()
@@ -55,6 +62,8 @@
 	maptext_width = 96*2
 	maptext_x = 2
 	maptext_y = 1
+
+	name = associated_item.name
 
 	return .
 

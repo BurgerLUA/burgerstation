@@ -124,14 +124,6 @@
 
 	if(inventory_user && is_advanced(inventory_user))
 		var/mob/living/advanced/A = inventory_user
-		for(var/obj/hud/inventory/I in A.inventory)
-			if(I in inventories)
-				continue
-			if(!(I.flags & FLAGS_HUD_CONTAINER))
-				continue
-			I.alpha = 0
-			I.mouse_opacity = 0
-
 		for(var/obj/hud/button/close_inventory/B in A.buttons)
 			B.alpha = 0
 			B.mouse_opacity = 0
@@ -142,6 +134,19 @@
 
 	var/opening = FALSE
 	var/should_center = length(inventories) <= MAX_INVENTORY_X
+
+	for(var/obj/hud/inventory/I in A.inventory)
+		if(I in inventories)
+			continue
+		if(!(I.flags & FLAGS_HUD_CONTAINER))
+			continue
+		I.alpha = 0
+		I.mouse_opacity = 0
+
+	if(inventory_user != A)
+		for(var/obj/hud/button/close_inventory/B in A.buttons)
+			B.alpha = 0
+			B.mouse_opacity = 0
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/I = inventories[i]
@@ -179,6 +184,8 @@
 			B.mouse_opacity = 0
 
 		break
+
+	inventory_user = caller
 
 	return TRUE
 
