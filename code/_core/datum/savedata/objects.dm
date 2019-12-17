@@ -135,11 +135,13 @@
 	if(is_magazine(O))
 		var/obj/item/magazine/M = O
 		if(object_data["stored_bullets"])
-			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
-				var/b_type = object_data["stored_bullets"][i]
-				var/obj/item/bullet/B = new b_type(M)
-				B.update_icon()
-				M.stored_bullets += B
+			for(var/k in object_data["stored_bullets"])
+				var/v = object_data["stored_bullets"][k]
+				for(var/i=1,i<=v,i++)
+					var/obj/item/bullet/B = new k(M)
+					B.update_icon()
+					M.stored_bullets += B
+
 
 	O.force_move(loc)
 	O.update_icon()
@@ -313,10 +315,10 @@
 	if(is_magazine(I))
 		var/obj/item/magazine/M = I
 		if(length(M.stored_bullets))
-			returning_list["stored_bullets"] = new/list(length(M.stored_bullets))
+			returning_list["stored_bullets"] = list()
 			for(var/i=1,i<=length(M.stored_bullets),i++)
 				var/obj/item/bullet/B = M.stored_bullets[i]
-				if(B) returning_list["stored_bullets"][i] = B.type
+				if(B) returning_list["stored_bullets"][B.type] += 1
 
 	return returning_list
 

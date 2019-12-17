@@ -1,4 +1,4 @@
-"aa" = (/obj/structure/interactive/vendor/mining,/obj/item/storage/bags/mining,/obj/item/weapon/melee/pickaxe,/obj/item/clothing/back/storage/backpack/explorer,/obj/item/storage/shoebox/miner,/obj/item/clothing/overwear/armor/explorer_suit,/turf/simulated/floor/wood/dock,/area/world/forest/interior/village/shop/farm)
+"aa" = (/obj/structure/interactive/vendor/mining,/obj/item/storage/bags/mining,/obj/item/weapon/melee/pickaxe,/obj/item/clothing/back/storage/backpack/explorer,/obj/item/storage/shoebox/miner,/obj/item/clothing/overwear/armor/explorer_suit,/obj/item/clothing/uniform/miner,/turf/simulated/floor/wood/dock,/area/world/forest/interior/village/shop/farm)
 "ab" = (/turf/simulated/wall/dark,/area/world/forest/interior/village/shop/dye)
 "ac" = (/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
 "ad" = (/obj/structure/scenery/rocks,/turf/simulated/floor/colored/dirt/cave,/area/world/forest/exterior/plains)
