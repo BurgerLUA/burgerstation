@@ -1,0 +1,1 @@
+#define exists(x) !isnull(x)

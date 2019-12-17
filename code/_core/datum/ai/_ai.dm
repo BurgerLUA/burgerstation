@@ -214,6 +214,7 @@
 
 	var/area/A = get_area(L)
 	var/area/starting_area = get_area(start_turf)
+
 	if(A && A.safe && !starting_area.safe)
 		return FALSE
 
@@ -224,10 +225,7 @@
 		return FALSE
 
 	if(simple)
-		if(L.client)
-			return TRUE
-		else
-			return FALSE
+		return exists(L.client)
 
 	for(var/id in owner.factions)
 		var/faction/F = owner.factions[id]
