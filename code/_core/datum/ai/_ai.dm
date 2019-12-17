@@ -243,6 +243,10 @@
 /ai/proc/get_possible_targets()
 
 	var/list/possible_targets = attackers.Copy()
+
+	if(!radius_find_enemy)
+		possible_targets
+
 	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
 		if(should_attack_mob(P))
 			possible_targets += P

@@ -2,7 +2,7 @@
 	name = "Passive AI"
 	desc = "Does not attack unless provoked. Usually very slow."
 
-	radius_find_enemy = 3
+	radius_find_enemy = 0
 
 	objective_delay = 20
 	attack_delay = 1
