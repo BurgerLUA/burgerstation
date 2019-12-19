@@ -137,3 +137,14 @@
 		'sounds/effects/footsteps/gravel4.ogg',
 		'sounds/effects/footsteps/gravel5.ogg'
 	)
+
+/footstep/sand
+	name = "sand"
+	id = "sand"
+	footstep_sounds = list(
+		'sounds/effects/footsteps/sand1.ogg',
+		'sounds/effects/footsteps/sand2.ogg',
+		'sounds/effects/footsteps/sand3.ogg',
+		'sounds/effects/footsteps/sand4.ogg',
+		'sounds/effects/footsteps/sand5.ogg'
+	)
