@@ -126,3 +126,14 @@
 	has_footprints = TRUE
 	footprint_color = "#FFFFFF"
 	footprint_alpha = 255
+
+/footstep/gravel
+	name = "gravel"
+	id = "gravel"
+	footstep_sounds = list(
+		'sounds/effects/footsteps/gravel1.ogg',
+		'sounds/effects/footsteps/gravel2.ogg',
+		'sounds/effects/footsteps/gravel3.ogg',
+		'sounds/effects/footsteps/gravel4.ogg',
+		'sounds/effects/footsteps/gravel5.ogg'
+	)
