@@ -3,3 +3,9 @@ UI Sounds obtained from: http://raisedbeaches.com/octave/
 Sprites taken from AuroraStation, Baystation, /tg/station, Citadel Station.
 
 Lighting taking from EuropaStation.
+
+Gravel footsteps taken from
+https://www.fesliyanstudios.com/royalty-free-sound-effects-download/footsteps-on-gravel-131
+
+Sand footsteps taken from
+https://freesound.org/people/Dymewiz/sounds/114390/
