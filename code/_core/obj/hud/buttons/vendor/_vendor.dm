@@ -15,7 +15,7 @@
 
 	var/obj/item/associated_item
 
-	mouse_opacity = 2
+	mouse_opacity = 1
 
 /obj/hud/button/vendor/get_examine_text(var/mob/caller)
 	if(associated_item)

@@ -17,6 +17,8 @@
 
 	allow_beaker_transfer = TRUE
 
+	var/overide_icon = FALSE
+
 /obj/item/container/beaker/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
@@ -108,15 +110,16 @@
 
 /obj/item/container/beaker/update_icon()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+	if(!overide_icon)
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
-	var/icon/I = new/icon(icon,icon_state)
-	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
+		var/icon/I = new/icon(icon,icon_state)
+		var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
 
-	I2.Blend(reagents.color,ICON_MULTIPLY)
-	I.Blend(I2,ICON_UNDERLAY)
+		I2.Blend(reagents.color,ICON_MULTIPLY)
+		I.Blend(I2,ICON_UNDERLAY)
 
-	icon = I
+		icon = I
 
 	..()

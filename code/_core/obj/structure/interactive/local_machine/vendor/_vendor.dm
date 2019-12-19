@@ -29,7 +29,6 @@
 
 	return ..()
 
-
 /obj/structure/interactive/vendor/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	INTERACT_CHECK
@@ -39,7 +38,10 @@
 
 	var/mob/living/advanced/player/P = caller
 
-	P.set_structure_active(src)
+	if(P.active_structure == src)
+		P.set_structure_unactive()
+	else
+		P.set_structure_active(src)
 
 	return ..()
 
@@ -52,7 +54,7 @@
 		var/obj/item/I = stored_objects[i]
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
-		V.screen_loc = "CENTER-4,CENTER-0.5-[vending_size*0.5]+[i]"
+		V.screen_loc = "CENTER+2,CENTER-0.5-[vending_size*0.5]+[i]"
 		V.update_owner(A)
 		V.update_icon()
 

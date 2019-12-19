@@ -56,3 +56,8 @@
 /obj/structure/interactive/vendor/mining
 	name = "mining vendor"
 	icon_state = "mining"
+
+
+/obj/structure/interactive/vendor/soda
+	name = "soda vendor"
+	icon_state = "soda"
