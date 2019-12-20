@@ -31,8 +31,7 @@
 //Cannot move.
 //Moves 1 step away from the stagger source.
 
+#define FLAG_STATUS_CONFUSED 0x20
 
 
-
-
-#define FLAG_STATUS_CRIT 0x20
+#define FLAG_STATUS_CRIT 0x40

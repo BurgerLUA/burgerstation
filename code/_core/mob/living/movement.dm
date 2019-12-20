@@ -19,6 +19,9 @@
 	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
+	if(status & FLAG_STATUS_CONFUSED)
+		move_dir = pick(DIRECTIONS_ALL)
+
 	return ..()
 
 /mob/living/get_movement_delay()

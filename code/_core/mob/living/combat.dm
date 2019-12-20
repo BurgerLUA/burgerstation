@@ -113,6 +113,22 @@
 
 	return TRUE
 
+/mob/living/proc/add_confusion(var/value,var/max_value = 100)
+
+	if(confuse_time == -1)
+		return FALSE
+
+	if(confuse_time >= max_value)
+		return FALSE
+
+	confuse_time = min(max_value,confuse_time + value)
+
+	new/obj/effect/temp/damage_number(src.loc,confuse_time,"CONFUSED!")
+
+	check_status_effects()
+
+	return TRUE
+
 /mob/living/proc/set_crit()
 	crit_time = -1
 	check_status_effects()

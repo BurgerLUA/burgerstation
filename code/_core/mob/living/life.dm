@@ -103,6 +103,14 @@
 	src.visible_message("\The [src.name] unfreezes!","You regain control of your limbs!")
 	return TRUE
 
+/mob/living/proc/on_confused()
+	src.visible_message("\The [src.name] looks confused!","You can't think straight!")
+	return TRUE
+
+/mob/living/proc/on_unconfused()
+	src.visible_message("\The [src.name] snaps out of it!","You snap out of it!")
+	return TRUE
+
 /mob/living/proc/on_fatigued()
 	src.visible_message("\The [src.name] collapses!","You collapse from exhaustion! You're fatigued!")
 	return TRUE
@@ -201,6 +209,15 @@
 	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
 		remove_status(FLAG_STATUS_PARALYZE)
 		on_unparalyzed()
+
+	//Confuse
+	if(!(status & FLAG_STATUS_CONFUSED) && (confuse_time > 0 || confuse_time == -1))
+		add_status(FLAG_STATUS_CONFUSED)
+		on_confused()
+
+	if(status & FLAG_STATUS_CONFUSED && confuse_time <= 0 && confuse_time != -1)
+		remove_status(FLAG_STATUS_CONFUSED)
+		on_unconfused()
 
 	//Final Checks
 	if(status && !(src in all_living_with_status))
