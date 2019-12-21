@@ -137,6 +137,7 @@
 		return FALSE
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
+	new/obj/effect/temp/impact/combat/block(get_turf(target))
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

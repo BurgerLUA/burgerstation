@@ -29,3 +29,6 @@ obj/effect/temp/impact/combat/kick
 
 obj/effect/temp/impact/combat/disarm
 	icon_state = "disarm"
+
+obj/effect/temp/impact/combat/block
+	icon_state = "shield"

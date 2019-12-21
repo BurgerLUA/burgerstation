@@ -44,7 +44,7 @@ var/global/saved_icons = 0
 	. = ..()
 
 	if(damage_amount >= 0)
-		new/obj/effect/temp/damage_number(src.loc,60,damage_amount)
+		new/obj/effect/temp/damage_number(src,60,damage_amount)
 
 	return .
 

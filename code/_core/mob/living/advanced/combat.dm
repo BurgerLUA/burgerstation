@@ -102,6 +102,7 @@
 
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	DT.do_attack_animation(attacker,src,weapon,target)
+	new/obj/effect/temp/impact/combat/block(get_turf(target))
 
 	var/area/A = get_area(src)
 	if(A && istype(A))
