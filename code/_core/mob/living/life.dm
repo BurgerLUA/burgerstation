@@ -247,6 +247,9 @@
 		if(sleep_time != -1)
 			sleep_time = max(0,sleep_time - amount_to_remove)
 
+		if(confuse_time != -1)
+			confuse_time = max(0,confuse_time - amount_to_remove)
+
 		if(health && fatigue_time != -1)
 			if(health.stamina_current == health.stamina_max*0.25)
 				fatigue_time = 0

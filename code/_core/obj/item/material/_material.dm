@@ -21,7 +21,7 @@
 	name = "steel sheets"
 	desc = "The basic building material."
 	crafting_id = "sheet_steel"
-	color = "#A0A0A0"
+	color = COLOR_STEEL
 
 /obj/item/material/steel/spawn_50/on_spawn()
 	item_count_current = 50

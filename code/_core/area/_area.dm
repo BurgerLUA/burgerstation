@@ -47,6 +47,8 @@
 
 	var/cheese_type = "processed_cheese"
 
+	var/turf/destruction_turf //The destruction turf of the area, if any.
+
 /area/Destroy()
 	if(players_inside)
 		players_inside.Cut()

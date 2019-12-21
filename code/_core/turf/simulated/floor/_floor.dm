@@ -7,6 +7,21 @@
 
 	var/footstep_id = "default"
 
+/turf/simulated/floor/New(var/desired_loc)
+
+	if(!destruction_turf)
+		if(!is_floor(desired_loc))
+			var/turf/simulated/floor/T = desired_loc
+			if(T.type != src.type)
+				destruction_turf = T.type
+
+		else if(loc && isarea(loc))
+			var/area/A = loc
+			if(A.destruction_turf != src.type)
+				destruction_turf = A.destruction_turf
+
+	return ..()
+
 /turf/simulated/floor/is_safe_teleport()
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE

@@ -1,5 +1,5 @@
 /turf/simulated/floor/cave_dirt/
-	name = "dirt"
+	name = "hard dirt"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "dirt"

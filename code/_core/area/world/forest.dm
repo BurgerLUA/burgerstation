@@ -12,6 +12,8 @@
 
 	assoc_wishgranter = "village"
 
+	destruction_turf = /turf/simulated/floor/cave_dirt/
+
 /area/world/forest/interior
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
 	icon_state = "green"

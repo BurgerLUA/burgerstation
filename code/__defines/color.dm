@@ -13,3 +13,7 @@
 
 #define COLOR_CARGO "#BB9042"
 #define COLOR_COMMAND "#2C566E"
+
+
+
+#define COLOR_STEEL "#444444"

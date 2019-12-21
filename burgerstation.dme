@@ -313,6 +313,7 @@
 #include "code\_core\datum\health\mob\living\advanced\_advanced.dm"
 #include "code\_core\datum\health\obj\item\misc.dm"
 #include "code\_core\datum\health\obj\item\organ\_organ.dm"
+#include "code\_core\datum\health\turf\_turf.dm"
 #include "code\_core\datum\karma_penalty\_karma_penalty.dm"
 #include "code\_core\datum\loot\_loot.dm"
 #include "code\_core\datum\loot\ashwalker.dm"

@@ -384,7 +384,7 @@
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
-	if(victim.health && victim.health.health_max)
+	if(victim.health && victim.health.health_max && is_movable(victim))
 
 		var/multiplier = TILE_SIZE * (damage_dealt / victim.health.health_max) * 2
 		multiplier = Clamp(multiplier,0,TILE_SIZE*0.25)

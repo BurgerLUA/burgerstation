@@ -17,8 +17,62 @@ var/global/saved_icons = 0
 
 	var/tile = FALSE //Set to true if this is a tile.
 
+	var/turf/destruction_turf
+	health = null
+	health_base = 100
+
+/turf/simulated/New(var/desired_loc)
+	var/area/A = loc
+	if(!A.safe && destruction_turf)
+		health = /health/turf/
+	return ..()
+
+/turf/simulated/can_be_attacked(var/atom/attacker)
+
+	if(!health)
+		return FALSE
+
+	var/area/A = get_area(src)
+	if(A.safe)
+		return FALSE
+
+	return TRUE
+
+
+/turf/simulated/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+
+	. = ..()
+
+	if(damage_amount >= 0)
+		new/obj/effect/temp/damage_number(src.loc,60,damage_amount)
+
+	return .
+
+/turf/simulated/proc/on_destruction(var/damage = FALSE)
+
+	if(!destruction_turf)
+		LOG_ERROR("ERROR! [src.type] called on_destruction without having a destruction turf!")
+		return FALSE
+
+	pixel_x = 0
+	pixel_y = 0
+
+	new destruction_turf(src)
+
+	spawn()
+		for(var/direction in DIRECTIONS_ALL)
+			var/turf/T = get_step(src,direction)
+			if(T && is_simulated(T))
+				T.update_icon()
+
+		Initialize()
+
+	return TRUE
+
 /turf/simulated/Initialize()
 	. = ..()
+	if(health)
+		health.Initialize()
 	update_icon()
 	return .
 

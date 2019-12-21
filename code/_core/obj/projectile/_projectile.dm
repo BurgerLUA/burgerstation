@@ -197,9 +197,11 @@
 	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
 
 	if(collide_with_turf)
+		hit_atom(collide_with_turf)
 		return on_hit(collide_with_turf)
 
 	for(var/atom/A in new_turf.contents)
+
 		if(!hit_atom(A))
 			continue
 
@@ -219,10 +221,9 @@
 	if(!hit_atom.can_be_attacked(owner))
 		return FALSE
 
-
 	if(hit_atom != target_atom && is_living(hit_atom))
 		var/mob/living/L = hit_atom
-		if(L.horizontal)
+		if(L.dead || L.horizontal)
 			return FALSE
 
 	if(damage_type && all_damage_types[damage_type])

@@ -6,6 +6,10 @@
 
 	footstep_id = "plating"
 
+/turf/simulated/floor/plating/indestructable
+	destruction_turf = null
+	health = null
+
 /turf/simulated/floor/plating/snow
 	name = "plating"
 

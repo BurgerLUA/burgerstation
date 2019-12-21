@@ -28,7 +28,7 @@ obj/item/ingot/update_icon()
 
 /obj/item/ingot/steel //Iron + Carbon
 	name = "steel ingot"
-	ingot_color = "#A0A0A0"
+	ingot_color = COLOR_STEEL
 	crafting_id = "ingot_steel"
 
 /obj/item/ingot/plastisteel //Plasma + Steel

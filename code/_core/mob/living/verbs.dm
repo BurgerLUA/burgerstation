@@ -30,3 +30,11 @@ mob/living/verb/get_gud()
 
 	to_chat("All skills and attributes set to 50.")
 */
+
+
+
+/mob/living/verb/test_confusion()
+	set category = "Debug"
+	set name = "Test Confusion"
+
+	add_confusion(30)

@@ -5,6 +5,7 @@
 	corner_icons = TRUE
 	corner_category = "metal"
 
+	destruction_turf = /turf/simulated/floor/plating
 
 /turf/simulated/wall/metal/rusted
 	name = "metal wall"
@@ -12,7 +13,6 @@
 	icon_state = "wall"
 	corner_icons = TRUE
 	corner_category = "metal"
-
 
 /turf/simulated/wall/metal/reinforced
 	name = "reinforced metal wall"
