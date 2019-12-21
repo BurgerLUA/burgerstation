@@ -2,13 +2,13 @@
 	name = "turf health"
 
 	armor_base = list(  //Base armor for the mob.
-		BLADE = ARMOR_C,
-		BLUNT = 0,
-		PIERCE = ARMOR_C,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_C,
+		BLADE = ARMOR_X,
+		BLUNT = ARMOR_X,
+		PIERCE = ARMOR_X,
+		LASER = ARMOR_X,
+		MAGIC = ARMOR_X,
+		HEAT = ARMOR_X,
+		COLD = ARMOR_X,
 		BOMB = 0,
 		BIO = ARMOR_X,
 		RAD = ARMOR_X,
@@ -24,7 +24,7 @@
 
 	if(health_current <= 0 && is_simulated(owner))
 		var/turf/simulated/T = owner
-		T.on_destruction(TRUE)
+		T.on_destruction(attacker,TRUE)
 
 	return .
 

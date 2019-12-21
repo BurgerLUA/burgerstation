@@ -28,6 +28,8 @@
 
 	footstep_id = "grass"
 
+	destruction_turf = /turf/simulated/floor/colored/dirt
+
 /*
 /turf/simulated/floor/colored/grass/New(loc)
 	var/desired_lightness = 104
@@ -136,6 +138,8 @@
 
 	footstep_id = "asteroid"
 
+	destruction_turf = /turf/simulated/floor/colored/dirt/soil
+
 /turf/simulated/floor/colored/dirt/cave
 	name = "dirt"
 	color = "#493C2F"
@@ -143,6 +147,8 @@
 
 	desired_light_color = "#FFE8D1"
 	layer = LAYER_FLOOR_LARGE
+
+	destruction_turf = /turf/simulated/floor/cave_dirt/
 
 /turf/simulated/floor/colored/dirt/snow
 	name = "frosty dirt"
@@ -160,6 +166,8 @@
 	desired_light_color = "#3D2414"
 	corner_category = "soil"
 	layer = LAYER_FLOOR_LARGE + 0.02
+
+	destruction_turf = /turf/simulated/floor/colored/dirt/cave
 
 /turf/simulated/floor/colored/dirt/cake
 	name = "cake"

@@ -97,11 +97,13 @@
 		var/obj/effect/temp/muzzleflash/M = new muzzleflash_effect(src.loc)
 		M.pixel_x = normal_x * bullet_offset
 		M.pixel_y = normal_y * bullet_offset
+		M.pixel_z = desired_owner.pixel_z
 		var/new_angle = arctan(vel_x,vel_y) - 90
 		M.transform = turn(M.transform,-new_angle)
 
 	pixel_x = normal_x * bullet_offset
 	pixel_y = normal_y * bullet_offset
+	pixel_z = desired_owner.pixel_z
 
 	pixel_x_float = normal_x * bullet_offset
 	pixel_y_float = normal_y * bullet_offset

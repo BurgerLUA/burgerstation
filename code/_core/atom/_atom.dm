@@ -57,6 +57,9 @@
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
+/atom/proc/on_destruction(var/atom/caller,var/damage = FALSE) //Called when destructed by tools or damage.
+	return TRUE
+
 /atom/Destroy()
 
 	for(var/blend_id in additional_blends)

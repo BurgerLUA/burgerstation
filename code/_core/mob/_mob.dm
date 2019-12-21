@@ -72,6 +72,8 @@
 
 	var/list/stored_chat_text = list() //experiment
 
+	pixel_z = MOB_HEIGHT_OFFSET
+
 /mob/Destroy()
 
 	if(client)

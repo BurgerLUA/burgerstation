@@ -7,6 +7,8 @@
 
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 
+#define MOB_HEIGHT_OFFSET TILE_SIZE*0.25
+
 #define BADWORDS "text/badwords.txt"
 #define BADNAMES "text/badnames.txt"
 

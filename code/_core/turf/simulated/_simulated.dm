@@ -57,7 +57,7 @@ var/global/saved_icons = 0
 
 	return .
 
-/turf/simulated/proc/on_destruction(var/damage = FALSE)
+/turf/simulated/on_destruction(var/atom/caller,var/damage = FALSE)
 
 	if(!destruction_turf)
 		LOG_ERROR("ERROR! [src.type] called on_destruction without having a destruction turf!")
@@ -76,7 +76,7 @@ var/global/saved_icons = 0
 
 		Initialize()
 
-	return TRUE
+	return ..()
 
 /turf/simulated/Initialize()
 	. = ..()
