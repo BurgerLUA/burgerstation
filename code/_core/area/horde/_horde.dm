@@ -1,0 +1,2 @@
+/area/horde
+	name = "main"

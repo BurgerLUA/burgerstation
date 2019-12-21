@@ -15,11 +15,3 @@
 
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-/turf/simulated/wall/New(var/desired_loc)
-
-	if(!destruction_turf && is_simulated(desired_loc))
-		var/turf/simulated/T = desired_loc
-		destruction_turf = T.type
-
-	return ..()

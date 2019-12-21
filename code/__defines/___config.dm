@@ -5,10 +5,7 @@
 
 #define SHUTDOWN_SUBSYSTEM_ON_ERROR FALSE
 
-#define MAP_DIRECTORY "maps/main/" //This shouldn't be touched unless you know what you're doing
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
-#define WORLD_SIZE 512 //This shouldn't be touched unless you know what you're doing
-#define WORLD_SIZE_SEGMENT 128 //This shouldn't be touched unless you know what you're doing
 
 #define BADWORDS "text/badwords.txt"
 #define BADNAMES "text/badnames.txt"
@@ -43,8 +40,6 @@
 #define SHOP_RESTOCK_COUNTDOWN 120
 
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
-
-
 
 #define WEATHER_ADD_CHANCE 40
 #define WEATHER_REMOVE_CHANCE 20

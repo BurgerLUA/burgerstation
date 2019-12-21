@@ -21,10 +21,19 @@ var/global/saved_icons = 0
 	health = null
 	health_base = 100
 
-/turf/simulated/New(var/desired_loc)
+/turf/simulated/New(var/atom/desired_loc)
+
 	var/area/A = loc
-	if(!A.safe && destruction_turf)
-		health = /health/turf/
+	if(!A.safe)
+		if(!destruction_turf)
+			if(desired_loc && desired_loc.type != src.type && is_floor(desired_loc))
+				destruction_turf = desired_loc.type
+			else if(A.destruction_turf != src.type)
+				destruction_turf = A.destruction_turf
+
+		if(destruction_turf)
+			health = /health/turf/
+
 	return ..()
 
 /turf/simulated/can_be_attacked(var/atom/attacker)
@@ -43,7 +52,7 @@ var/global/saved_icons = 0
 
 	. = ..()
 
-	if(damage_amount >= 0)
+	if(destruction_turf && damage_amount >= 0)
 		new/obj/effect/temp/damage_number(src,60,damage_amount)
 
 	return .

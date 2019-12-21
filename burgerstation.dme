@@ -14,7 +14,8 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "code\__defines\_config.dm"
+#include "code\__defines\___config.dm"
+#include "code\__defines\__config_rpg.dm"
 #include "code\__defines\_config_damage.dm"
 #include "code\__defines\_config_slowdown.dm"
 #include "code\__defines\_config_ticks.dm"
@@ -105,6 +106,7 @@
 #include "code\__helpers\type_checking.dm"
 #include "code\__helpers\world.dm"
 #include "code\_core\area\_area.dm"
+#include "code\_core\area\horde\_horde.dm"
 #include "code\_core\area\world\_world.dm"
 #include "code\_core\area\world\abyss.dm"
 #include "code\_core\area\world\burgerstation.dm"
