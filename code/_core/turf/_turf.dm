@@ -23,24 +23,25 @@
 
 	var/turf/destroy_turf //The turf that is placed when this one is destroyed, if any.
 
-/*
-/turf/Initialize()
-	..()
-	area = src.loc //TODO: Remove this, and make sure it's safe to remove.
-*/
-
 /turf/proc/is_safe_teleport()
 	return FALSE
 
+/*
 /turf/New(loc)
 
 	if(opacity)
 		has_opaque_atom = TRUE
+
 	..()
+*/
 
 /turf/Destroy()
+
 	if(old_living)
 		old_living.Cut()
+
+	destroy_turf = null
+
 	return ..()
 
 /turf/change_victim(var/atom/attacker)

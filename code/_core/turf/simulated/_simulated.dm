@@ -23,7 +23,13 @@ var/global/saved_icons = 0
 
 /turf/simulated/New(var/atom/desired_loc)
 
+	if(real_icon)
+		icon = real_icon
+	if(real_icon_state)
+		icon_state = real_icon_state
+
 	var/area/A = loc
+
 	if(!A.safe)
 		if(!destruction_turf)
 			if(desired_loc && desired_loc.type != src.type && is_floor(desired_loc))
@@ -34,7 +40,19 @@ var/global/saved_icons = 0
 		if(destruction_turf)
 			health = /health/turf/
 
+	desired_light_power *= A.area_light_power
+
 	return ..()
+
+/turf/simulated/proc/update_edges()
+
+	for(var/direction in DIRECTIONS_ALL)
+		var/turf/T = get_step(src,direction)
+		if(T && is_simulated(T))
+			T.update_icon()
+
+	return TRUE
+
 
 /turf/simulated/can_be_attacked(var/atom/attacker)
 
@@ -68,13 +86,8 @@ var/global/saved_icons = 0
 
 	new destruction_turf(src)
 
-	spawn()
-		for(var/direction in DIRECTIONS_ALL)
-			var/turf/T = get_step(src,direction)
-			if(T && is_simulated(T))
-				T.update_icon()
-
-		Initialize()
+	update_edges()
+	Initialize()
 
 	return ..()
 
@@ -84,17 +97,6 @@ var/global/saved_icons = 0
 		health.Initialize()
 	update_icon()
 	return .
-
-/turf/simulated/New(loc)
-	if(real_icon)
-		icon = real_icon
-	if(real_icon_state)
-		icon_state = real_icon_state
-
-	var/area/A = src.loc
-	desired_light_power *= A.area_light_power
-
-	..()
 
 /turf/simulated/update_icon()
 
@@ -160,12 +162,14 @@ var/global/saved_icons = 0
 	if(!se) se = "i"
 	if(!sw) sw = "i"
 
+	/*
 	if(opacity && "[nw][ne][sw][se]" == "ffff")
 		dynamic_lighting = FALSE
 		icon = 'icons/debug/turfs.dmi'
 		icon_state = "black"
 		plane = PLANE_ALWAYS_VISIBLE
 		return FALSE
+	*/
 
 	var/full_icon_string = "[type]_[ne][nw][se][sw]"
 

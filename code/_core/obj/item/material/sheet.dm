@@ -12,6 +12,8 @@
 
 	crafting_id = "glitch"
 
+	material_id = "steel"
+
 /obj/item/material/sheet/steel
 	name = "steel sheets"
 	desc = "The basic building material."

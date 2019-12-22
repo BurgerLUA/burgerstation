@@ -6,9 +6,8 @@
 
 	footstep_id = "plating"
 
-/turf/simulated/floor/plating/indestructable
-	destruction_turf = null
-	health = null
+	var/material_id = "steel"
+	color = COLOR_STEEL
 
 /turf/simulated/floor/plating/snow
 	name = "plating"

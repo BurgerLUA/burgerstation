@@ -69,7 +69,7 @@ var/global/subsystem/lighting/SSlighting
 	. = 0
 	for (var/thing in Z_ALL_TURFS(zlevel))
 		var/turf/T = thing
-		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
 

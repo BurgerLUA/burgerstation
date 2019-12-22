@@ -116,6 +116,7 @@
 
 // If an opaque movable atom moves around we need to potentially update visibility.
 /turf/Entered(atom/movable/Obj, atom/OldLoc)
+
 	. = ..()
 
 	if (Obj && Obj.opacity && !has_opaque_atom)
@@ -128,6 +129,7 @@
 #endif
 
 /turf/Exited(atom/movable/Obj, atom/newloc)
+
 	. = ..()
 
 	if (Obj && Obj.opacity)

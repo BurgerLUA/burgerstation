@@ -87,17 +87,19 @@
 
 // Should always be used to change the opacity of an atom.
 // It notifies (potentially) affected light sources so they can update (if needed).
-/atom/set_opacity(var/new_opacity)
-	. = ..()
-	if (new_opacity == opacity)
-		return
+/atom/proc/set_opacity(var/new_opacity)
+
+	if(new_opacity == opacity)
+		return FALSE
 
 	opacity = new_opacity
-	var/turf/T = loc
-	if (!isturf(T))
+
+	if (!isturf(loc))
 		return
 
-	if (new_opacity == TRUE)
+	var/turf/T = loc
+
+	if (new_opacity) //We're opaque for sure.
 		T.has_opaque_atom = TRUE
 		T.reconsider_lights()
 #ifdef AO_USE_LIGHTING_OPACITY
@@ -108,6 +110,9 @@
 		T.recalc_atom_opacity()
 		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
+
+
+	return TRUE
 
 /atom/movable/Move()
 

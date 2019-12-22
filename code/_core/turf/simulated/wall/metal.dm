@@ -8,18 +8,24 @@
 	destruction_turf = /turf/simulated/floor/plating
 
 	color = COLOR_STEEL
+	var/material_id = "steel"
 
 /turf/simulated/wall/metal/on_destruction(var/atom/caller,var/damage = FALSE)
 
 	. = ..()
 
-	new /obj/structure/interactive/girder(src)
+	var/obj/structure/interactive/construction/girder/G = new(src)
+	G.material_id = material_id
+	G.color = color
 
 	for(var/i=1,i<=4,i++)
 
 		var/desired_dir = get_dir(src,caller)
 		var/turf/desired_turf = get_step(src,desired_dir)
-		var/obj/item/material/sheet/steel/S = new(desired_turf)
+
+		var/obj/item/material/sheet/S = new(desired_turf)
+		S.material_id = material_id
+		S.color = color
 
 		var/offset_x = 0
 		var/offset_y = 0

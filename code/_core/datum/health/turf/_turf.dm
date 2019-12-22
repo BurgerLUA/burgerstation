@@ -1,6 +1,7 @@
 /health/turf/
 	name = "turf health"
 
+	/*
 	armor_base = list(  //Base armor for the mob.
 		BLADE = ARMOR_X,
 		BLUNT = ARMOR_X,
@@ -16,6 +17,7 @@
 		DARK = ARMOR_X,
 		FATIGUE = ARMOR_X
 	)
+	*/
 
 
 /health/turf/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
