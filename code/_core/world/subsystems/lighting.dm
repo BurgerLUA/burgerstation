@@ -6,6 +6,7 @@ var/global/subsystem/lighting/SSlighting
 	desc = "Controls lighting."
 	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)
 	priority = SS_ORDER_LIGHTING
+	var/initialized = FALSE
 
 	var/total_lighting_overlays = 0
 	var/total_lighting_sources = 0
@@ -51,6 +52,8 @@ var/global/subsystem/lighting/SSlighting
 		LOG_DEBUG("Initialized [processed_lights] lights.")
 		LOG_DEBUG("Initialized [processed_corners] corners.")
 		LOG_DEBUG("Initialized [processed_overlays] overlays.")
+
+		initialized = TRUE
 
 	return TRUE
 

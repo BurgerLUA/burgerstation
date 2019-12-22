@@ -21,7 +21,16 @@
 
 	var/list/mob/living/old_living //List of mobs that used to be on this turf.
 
-	var/turf/destroy_turf //The turf that is placed when this one is destroyed, if any.
+	var/material_id
+
+/turf/proc/update_edges()
+
+	for(var/direction in DIRECTIONS_ALL)
+		var/turf/T = get_step(src,direction)
+		if(T && is_simulated(T))
+			T.update_icon()
+
+	return TRUE
 
 /turf/proc/is_safe_teleport()
 	return FALSE
@@ -39,8 +48,6 @@
 
 	if(old_living)
 		old_living.Cut()
-
-	destroy_turf = null
 
 	return ..()
 

@@ -82,11 +82,10 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 			return TRUE
 
 		if(S.item_count_current >= 4)
-			var/turf/simulated/floor/plating/P = new(src.loc)
-			P.color = color
-			P.material_id = material_id
-			P.Initialize()
-			P.update_edges()
+			var/turf/T = src.loc
+			T.change_turf(/turf/simulated/floor/plating/,TRUE)
+			T.color = color
+			T.material_id = material_id
 			S.item_count_current -= 4
 			S.update_icon()
 			caller.to_chat("You place \the plating.")
@@ -116,15 +115,13 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 			return TRUE
 
 		if(S.item_count_current >= 4)
-			var/turf/simulated/wall/metal/M = new(src.loc)
-			M.material_id = material_id
-			M.color = color
-			M.Initialize()
-			M.update_edges()
+			var/turf/T = src.loc
+			T.change_turf(/turf/simulated/wall/metal/)
+			T.material_id = material_id
+			T.color = color
 			S.item_count_current -= 4
 			S.update_icon()
 			caller.to_chat("You place \the metal wall.")
-			M.reconsider_lights()
 			qdel(src)
 			return TRUE
 

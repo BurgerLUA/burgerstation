@@ -44,16 +44,6 @@ var/global/saved_icons = 0
 
 	return ..()
 
-/turf/simulated/proc/update_edges()
-
-	for(var/direction in DIRECTIONS_ALL)
-		var/turf/T = get_step(src,direction)
-		if(T && is_simulated(T))
-			T.update_icon()
-
-	return TRUE
-
-
 /turf/simulated/can_be_attacked(var/atom/attacker)
 
 	if(!health)
@@ -84,7 +74,7 @@ var/global/saved_icons = 0
 	pixel_x = 0
 	pixel_y = 0
 
-	new destruction_turf(src)
+	change_turf(destruction_turf)
 
 	update_edges()
 	Initialize()

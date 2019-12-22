@@ -8,7 +8,7 @@
 	destruction_turf = /turf/simulated/floor/plating
 
 	color = COLOR_STEEL
-	var/material_id = "steel"
+	material_id = "steel"
 
 /turf/simulated/wall/metal/on_destruction(var/atom/caller,var/damage = FALSE)
 

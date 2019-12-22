@@ -6,8 +6,8 @@
 
 	footstep_id = "plating"
 
-	var/material_id = "steel"
 	color = COLOR_STEEL
+	material_id = "steel"
 
 /turf/simulated/floor/plating/snow
 	name = "plating"
