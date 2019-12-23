@@ -40,6 +40,20 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 	time_list += "[seconds] second\s"
 	seconds -= second_value
 
-
 	return time_list
+
+/proc/get_clock_time(var/seconds)
+
+	var/minute_value = floor(seconds/60)
+	var/second_value = seconds - minute_value*60
+
+	var/minute_text = "[minute_value]"
+	if(minute_value < 10)
+		minute_text = "0[minute_text]"
+
+	var/second_text = "[second_value]"
+	if(second_value < 10)
+		second_text = "0[second_value]"
+
+	return "[minute_text]:[second_text]"
 

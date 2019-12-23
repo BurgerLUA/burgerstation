@@ -1,5 +1,10 @@
 var/global/list/obj/hud/button/message/all_hud_messages = list()
 
+/proc/set_message(var/desired_text,var/instant = FALSE)
+	for(var/obj/hud/button/message/M in all_hud_messages)
+		M.set_text(desired_text,instant)
+
+	return TRUE
 
 /obj/hud/button/message/
 	name = "hud message"
@@ -25,13 +30,18 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	all_hud_messages -= src
 	return ..()
 
-/obj/hud/button/message/proc/set_text(var/desired_text)
+/obj/hud/button/message/proc/set_text(var/desired_text,var/instant = FALSE)
 
-	alpha = 0
-	maptext = "<center><font size='3'>[desired_text]</font></center>"
-
-	animate(src,alpha=255,time=40)
-	spawn(100) animate(src,alpha=0,time=40)
+	if(!desired_text)
+		alpha = 0
+	else if(instant)
+		alpha = 255
+		maptext = "<center><font size='3'>[desired_text]</font></center>"
+	else
+		alpha = 0
+		maptext = "<center><font size='3'>[desired_text]</font></center>"
+		animate(src,alpha=255,time=40)
+		spawn(100) animate(src,alpha=0,time=40)
 
 	return TRUE
 
