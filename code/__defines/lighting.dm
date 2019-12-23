@@ -14,7 +14,7 @@
 #define LIGHTING_BLOCKED_FACTOR 0.5	// How much the range of a directional light will be reduced while facing a wall.
 
 // If defined, instant updates will be used whenever server load permits. Otherwise queued updates are always used.
-#define USE_INTELLIGENT_LIGHTING_UPDATES
+//#define USE_INTELLIGENT_LIGHTING_UPDATES
 
 #define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && T:dynamic_lighting && T:loc:dynamic_lighting)
 // mostly identical to above, but doesn't make sure T is valid first. Should only be used by lighting code.

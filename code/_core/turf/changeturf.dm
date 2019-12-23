@@ -11,7 +11,6 @@
 
 	var/turf/W = new N(src)
 	W.Initialize()
-
 	. = W
 
 	recalc_atom_opacity()

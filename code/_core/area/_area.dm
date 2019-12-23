@@ -49,9 +49,16 @@
 
 	var/turf/destruction_turf //The destruction turf of the area, if any.
 
+	var/list/turf/sunlight_turfs = list()
+	var/dynamic_sunlight_enabled = FALSE
+
 /area/Destroy()
 	if(players_inside)
 		players_inside.Cut()
+
+	if(sunlight_turfs)
+		sunlight_turfs.Cut()
+
 	return ..()
 
 /area/New()
@@ -59,6 +66,9 @@
 
 	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
 		all_areas_with_hazards += src
+
+	if(dynamic_sunlight_enabled)
+		all_areas_with_dynamic_sunlight += src
 
 	return .
 
@@ -86,6 +96,9 @@
 		return FALSE
 
 	T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
+
+	if(dynamic_sunlight_enabled)
+		sunlight_turfs += T
 
 	return TRUE
 

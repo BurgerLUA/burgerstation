@@ -71,17 +71,17 @@ var/global/subsystem/lighting/SSlighting
 /subsystem/lighting/proc/CreateLobjForZ(zlevel)
 	. = 0
 	for (var/thing in Z_ALL_TURFS(zlevel))
+		CHECK_TICK
 		var/turf/T = thing
 		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
 
-		CHECK_TICK
-
 
 /subsystem/lighting/proc/InitializeLightingAtoms(list/atoms)
 	. = 0
 	for (var/turf/T in atoms)
+		CHECK_TICK
 		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
@@ -91,56 +91,47 @@ var/global/subsystem/lighting/SSlighting
 	if(!ENABLE_LIGHTING)
 		return TRUE
 
-	var/list/curr_lights = light_queue
-	var/list/curr_corners = corner_queue
-	var/list/curr_overlays = overlay_queue
+	spawn()
+		var/list/curr_lights = light_queue
+		var/list/curr_corners = corner_queue
+		var/list/curr_overlays = overlay_queue
 
-	while (lq_idex <= curr_lights.len)
-		var/datum/light_source/L = curr_lights[lq_idex++]
+		while (lq_idex <= curr_lights.len)
+			var/datum/light_source/L = curr_lights[lq_idex++]
+			if (L.needs_update != LIGHTING_NO_UPDATE)
+				total_ss_updates += 1
+				L.update_corners()
+				L.needs_update = LIGHTING_NO_UPDATE
+				processed_lights++
+			sleep(-1)
 
-		if (L.needs_update != LIGHTING_NO_UPDATE)
-			total_ss_updates += 1
-			L.update_corners()
+		if (lq_idex > 1)
+			curr_lights.Cut(1, lq_idex)
+			lq_idex = 1
 
-			L.needs_update = LIGHTING_NO_UPDATE
+		while (cq_idex <= curr_corners.len)
+			var/datum/lighting_corner/C = curr_corners[cq_idex++]
+			if (C.needs_update)
+				C.update_overlays()
+				C.needs_update = FALSE
+				processed_corners++
+			sleep(-1)
 
-			processed_lights++
+		if (cq_idex > 1)
+			curr_corners.Cut(1, cq_idex)
+			cq_idex = 1
 
-		CHECK_TICK
+		while (oq_idex <= curr_overlays.len)
+			var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex++]
 
-	if (lq_idex > 1)
-		curr_lights.Cut(1, lq_idex)
-		lq_idex = 1
+			if (!O.qdeleting && O.needs_update)
+				O.update_overlay()
+				O.needs_update = FALSE
+				processed_overlays++
+			sleep(-1)
 
-	while (cq_idex <= curr_corners.len)
-		var/datum/lighting_corner/C = curr_corners[cq_idex++]
-
-		if (C.needs_update)
-			C.update_overlays()
-
-			C.needs_update = FALSE
-
-			processed_corners++
-
-		CHECK_TICK
-
-	if (cq_idex > 1)
-		curr_corners.Cut(1, cq_idex)
-		cq_idex = 1
-
-	while (oq_idex <= curr_overlays.len)
-		var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex++]
-
-		if (!O.qdeleting && O.needs_update)
-			O.update_overlay()
-			O.needs_update = FALSE
-
-			processed_overlays++
-
-		CHECK_TICK
-
-	if (oq_idex > 1)
-		curr_overlays.Cut(1, oq_idex)
-		oq_idex = 1
+		if (oq_idex > 1)
+			curr_overlays.Cut(1, oq_idex)
+			oq_idex = 1
 
 	return TRUE

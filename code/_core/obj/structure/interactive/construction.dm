@@ -5,6 +5,9 @@
 	var/material_id = "steel"
 	color = COLOR_STEEL
 
+
+//obj/structure/interactive/construction/on_destruction(var/mob/caller,
+
 obj/structure/interactive/construction/frame
 	name = "frame"
 	desc = "A metal frame."
@@ -15,6 +18,12 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 	INTERACT_CHECK
 
 	var/atom/A = object.defer_click_on_object()
+
+	if(is_item(A))
+		var/obj/item/I = A
+		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			src.on_destruction(caller)
+			return TRUE
 
 	if(istype(A,/obj/item/material/rod/))
 		var/obj/item/material/rod/R = A
@@ -35,7 +44,7 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 		caller.to_chat("You don't have enough material to build a lattice!")
 		return TRUE
 
-	else if(istype(A,/obj/item/material/sheet/))
+	if(istype(A,/obj/item/material/sheet/))
 		if(!istype(src.loc,/turf/simulated/floor/plating/))
 			caller.to_chat("You need to build plating before you can build a girder!")
 			return TRUE
@@ -71,7 +80,32 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 
 	var/atom/A = object.defer_click_on_object()
 
-	if(istype(A,/obj/item/material/sheet/))
+	if(is_item(A))
+		var/obj/item/I = A
+		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			src.on_destruction(caller)
+			return TRUE
+
+	if(istype(A,/obj/item/material/rod/))
+		var/obj/item/material/rod/R = A
+		if(R.material_id != material_id)
+			caller.to_chat("You don't have the correct material for this!")
+			return TRUE
+
+		if(R.item_count_current >= 4)
+			var/obj/structure/interactive/construction/grille/G = new(src.loc)
+			G.material_id = material_id
+			G.color = color
+			R.item_count_current -= 4
+			R.update_icon()
+			caller.to_chat("You place \the [G.name].")
+			qdel(src)
+			return TRUE
+
+		caller.to_chat("You don't have enough material to build a lattice!")
+		return TRUE
+
+	else if(istype(A,/obj/item/material/sheet/))
 		var/obj/item/material/sheet/S = A
 		if(S.material_id != material_id)
 			caller.to_chat("You don't have the correct material for this!")
@@ -129,8 +163,6 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 		return TRUE
 
 	return ..()
-
-
 
 obj/structure/interactive/construction/grille
 	name = "grille"

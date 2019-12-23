@@ -73,7 +73,9 @@
 
 		/obj/hud/button/squad/main,
 
-		/obj/hud/button/ping
+		/obj/hud/button/ping,
+
+		/obj/hud/button/message/
 
 	)
 
