@@ -17,6 +17,7 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",get_flavortext())
 
+	/*
 	if(is_player(src) && survival_skill > 10) //I know this is shitcode but whatever
 		var/mob/living/advanced/player/P = src
 		var/karma_levels = P.karma
@@ -24,6 +25,7 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 			. += div("examine_description_long","Karma: [karma_levels]")
 		else
 			. += div("examine_description_long","Karma: [karma_levels >= 0 ? "In good standing" : "In poor standing"]")
+	*/
 
 	if(survival_skill > 50)
 		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")

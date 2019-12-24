@@ -32,7 +32,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/list/attack_logs = list()
 
-	var/currency = 1000
+	var/currency = 0
 
 	var/savedata/client/mob/mobdata
 
@@ -59,22 +59,18 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	allow_experience_gains = TRUE
 
-	var/karma = 10000
-
 	var/obj/structure/active_structure
 
 	var/obj/item/paper/active_paper
 
 	var/squad/current_squad
 
-/mob/living/advanced/player/apply_mob_parts()
+/mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE)
 
-	if(!mobdata || mobdata.loaded_data["tutorial"] == 1)
+	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
 		return ..()
 
-	var/tutorial_level = mobdata.loaded_data["tutorial"]
-
-	mobdata.apply_data_to_mob(src,!tutorial_level)
+	mobdata.apply_data_to_mob(src,teleport)
 
 	if(client)
 		add_species_buttons()
@@ -88,6 +84,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	all_players += src
 
+	/*
 	if(mobdata)
 		var/list/known_wishgranters = mobdata.loaded_data["known_wishgranters"]
 		for(var/wishgranter_id in known_wishgranters)
@@ -96,6 +93,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 				W.set_icon_state_mob(src,"wishgranter_on")
 			else
 				mobdata.loaded_data["known_wishgranters"] -= wishgranter_id
+	*/
 
 	return .
 

@@ -36,6 +36,8 @@ var/global/subsystem/horde/SShorde
 		state = HORDE_STATE_BUILDING
 		round_time = 0
 		round_time_next = 60
+		for(var/obj/structure/interactive/gateway/G in all_gateways)
+			G.enable(TRUE)
 
 	if(state == HORDE_STATE_BUILDING)
 		var/time_to_display = round_time_next - round_time
@@ -51,8 +53,12 @@ var/global/subsystem/horde/SShorde
 			set_message("Round [current_round]")
 			message_displayed = TRUE
 		if(round_time > 10)
-			var/penis = TRUE
-			//Spawn enemies
+			world.log << "Span enemies."
+
+
+
+
+
 
 	return TRUE
 

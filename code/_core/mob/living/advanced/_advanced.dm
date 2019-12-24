@@ -194,7 +194,7 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Initialize()
 
-	apply_mob_parts()
+	apply_mob_parts(TRUE)
 
 	. = ..()
 

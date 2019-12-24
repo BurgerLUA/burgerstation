@@ -18,9 +18,9 @@ var/global/world_state = STATE_STARTING
 
 	cache_lifespan = 0
 
-	maxx = WORLD_SIZE
-	maxy = WORLD_SIZE
-	maxz = 1
+	//maxx = WORLD_SIZE
+	//maxy = WORLD_SIZE
+	//maxz = 1
 
 	turf = /turf/unsimulated/
 

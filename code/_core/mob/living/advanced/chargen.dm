@@ -3,7 +3,7 @@
 	spawn()
 
 		Initialize()
-		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET,speed=0)
+		//show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET,speed=0)
 		//show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 		handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
 		handle_beardstyle_chargen(1,"#000000")
@@ -70,27 +70,25 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/pre_perform_change(var/keep_clothes)
+/mob/living/advanced/proc/pre_perform_change(var/keep_items)
 
 
-	var/list/kept_clothes = list()
+	var/list/kept_items = list()
 
-	if(!keep_clothes)
-		for(var/obj/hud/inventory/I in inventory)
-			I.remove_all_objects()
+	if(keep_items)
+		kept_items = drop_all_items(FALSE,TRUE)
 	else
 		for(var/obj/hud/inventory/I in inventory)
-			kept_clothes += I.drop_all_objects()
+			I.remove_all_objects()
 
 	remove_all_organs()
 	remove_all_buttons()
 
-	return kept_clothes
+	return kept_items
 
+/mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
 
-/mob/living/advanced/proc/post_perform_change(var/keep_clothes,var/chargen,var/list/kept_clothes = list())
-
-	apply_mob_parts()
+	apply_mob_parts(FALSE,TRUE)
 
 	update_all_blends()
 	update_icon()
@@ -98,12 +96,10 @@
 
 	if(chargen)
 		add_chargen_buttons()
-		show_hud(FALSE,FLAGS_HUD_ALL,speed=0)
-		show_hud(TRUE,FLAGS_HUD_CHARGEN|FLAGS_HUD_WIDGET,FLAGS_HUD_SPECIAL,speed=3)
-	else
-		show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
-		for(var/obj/hud/button/hide_show_inventory/B in buttons)
-			B.update_icon()
+
+	show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
+	for(var/obj/hud/button/hide_show_inventory/B in buttons)
+		B.update_icon()
 
 	var/species/S = all_species[species]
 
@@ -111,9 +107,8 @@
 	handle_beardstyle_chargen(1,S.default_color_hair)
 	//Blends are updated in the above two procs
 
-	if(keep_clothes)
-		for(var/obj/item/I in kept_clothes)
-			add_worn_item(I)
+	if(keep_items)
+		equip_objects_in_list(kept_items)
 	else
 		if(sex == MALE)
 			add_outfit("new_male",TRUE)

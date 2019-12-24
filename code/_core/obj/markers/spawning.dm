@@ -19,12 +19,12 @@
 	icon_state = "window_grille"
 
 /obj/marker/spawning/window/do_spawn(var/turf/T)
-	new/obj/structure/interactive/grille(T)
+	new/obj/structure/interactive/construction/grille(T)
 	new/obj/structure/smooth/window(T)
 
 /obj/marker/spawning/window/reinforced/
 	icon_state = "window_grille_reinforced"
 
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
-	new/obj/structure/interactive/grille(T)
+	new/obj/structure/interactive/construction/grille(T)
 	new/obj/structure/smooth/window/reinforced(T)

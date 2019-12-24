@@ -25,7 +25,7 @@
 			return FALSE
 
 		if(U.create_new_character(U.get_next_character_id()))
-			var/atom/desired_spawn = pick(chargen_spawnpoints)
+			var/turf/desired_spawn = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(desired_spawn,client)
 			P.mobdata = U
 			P.force_move(desired_spawn)

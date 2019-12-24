@@ -43,7 +43,7 @@
 
 	else if(length(lobby_positions))
 		for(var/mob/abstract/observer/O in all_mobs_with_clients)
-			O.force_move(pick(lobby_positions))
+			O.force_move(get_turf(pick(lobby_positions)))
 			play_music_track("intro", O.client)
 
 	spawn while(TRUE)

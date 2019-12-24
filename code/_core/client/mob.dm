@@ -1,4 +1,4 @@
-/client/proc/make_ghost(var/desired_loc)
+/client/proc/make_ghost(var/turf/desired_loc)
 	var/mob/abstract/observer/O = new(desired_loc,src)
 	O.Initialize()
 	O.force_move(desired_loc)

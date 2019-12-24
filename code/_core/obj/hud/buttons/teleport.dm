@@ -51,7 +51,6 @@
 
 /obj/hud/button/teleport/teleport_here/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-
 	if(icon_state && all_wishgranters[icon_state] && is_player(caller))
 
 		var/mob/living/advanced/player/P = caller

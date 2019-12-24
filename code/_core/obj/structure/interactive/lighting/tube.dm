@@ -68,8 +68,8 @@
 	desired_light_range = 8
 
 /obj/structure/interactive/lighting/tube/stronger
-	desired_light_power = 0.8
-	desired_light_range = 4
+	desired_light_power = 0.5
+	desired_light_range = 16
 
 
 /obj/structure/interactive/lighting/tube/color

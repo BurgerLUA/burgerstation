@@ -110,11 +110,7 @@
 	//Basic Information
 	loaded_data["name"] = A.real_name
 	loaded_data["id"] = owner.save_slot
-	loaded_data["karma"] = A.karma
 	loaded_data["currency"] = A.currency
-	loaded_data["known_wishgranters"] = A.known_wishgranters
-	loaded_data["x"] = owner.mob.x
-	loaded_data["y"] = owner.mob.y
 
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)
@@ -145,9 +141,7 @@
 
 	//Name
 	A.real_name = loaded_data["name"]
-	A.karma = loaded_data["karma"]
 	A.currency = loaded_data["currency"]
-	A.known_wishgranters = loaded_data["known_wishgranters"]
 
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special
@@ -179,14 +173,18 @@
 			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
 	if(do_teleport)
+		/*
 		if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
-			A.force_move(all_wishgranters[loaded_data["last_save"]])
+			A.force_move(get_turf(all_wishgranters[loaded_data["last_save"]]))
 		else
+
 			var/turf/T = locate(loaded_data["x"],loaded_data["y"],1)
 			if(T)
 				A.force_move(T)
 			else
-				A.force_move(all_wishgranters[pick(all_wishgranters)])
+		*/
+
+		A.force_move(get_turf(pick(lobby_spawnpoints)))
 
 		step(A,SOUTH)
 

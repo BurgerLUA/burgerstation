@@ -7,23 +7,14 @@
 /savedata/client/mob/reset_data()
 	loaded_data = list(
 		"name" = "Urist McRobust",
-		"x" = 0,
-		"y" = 0,
-		"tutorial" = 1, //1 = first time loading, 2 = modified appearance, 3 = station
 		"id" = "none",
 		"last_saved_date" = 0,
 		"last_saved_time" = 0,
 		"organs" = list(),
 		"skills" = list(),
 		"attributes" = list(),
-		"currency" = 1000,
-		"karma" = 10000,
-		"justice_broken" = 0,
-		"justice_served" = 0,
-		"justice_reward_claimed" = 0,
-		"last_save" = null,
-		"known_topics" = list(),
-		"known_wishgranters" = list("village","main")
+		"currency" = 0,
+		"known_topics" = list()
 	)
 
 /savedata/client/mob/New(var/client/new_owner)
@@ -34,9 +25,9 @@
 
 	if(owner)
 		if(!has_files())
-			owner << "Welcome to Burgerstation!"
+			owner << "Welcome!"
 		else
-			owner << "Welcome back to Burgerstation!"
+			owner << "Welcome back!"
 			loaded_data = load_most_recent_character()
 			owner.save_slot = loaded_data["id"]
 

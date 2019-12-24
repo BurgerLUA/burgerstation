@@ -66,9 +66,6 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/crosser)
 		var/mob/living/advanced/player/P = crosser
 		P.to_chat(span("thought","There. I look perfect!"))
 		P.remove_chargen_buttons()
-		if(P.mobdata.loaded_data["tutorial"] == 1)
-			P.mobdata.loaded_data["tutorial"] = 2
-
 	return ..()
 
 obj/structure/interactive/misc/curtain_open

@@ -6,6 +6,8 @@
 
 	footstep_id = "default"
 
+	layer = LAYER_FLOOR
+
 /turf/simulated/floor/tile/grey
 	color = "#999999"
 
@@ -57,12 +59,18 @@
 
 	tile = TRUE
 
+	layer = LAYER_FLOOR + 0.01
+
 /turf/simulated/floor/tile/overlapping/grey
 	color = "#999999"
+
+	layer = LAYER_FLOOR + 0.02
 
 /turf/simulated/floor/tile/overlapping/dark
 	color = "#444444"
 
+	layer = LAYER_FLOOR + 0.03
+/*
 /turf/simulated/floor/tile/smooth
 	real_icon = 'icons/turf/floor/tile_smooth.dmi'
 	real_icon_state = "floor"
@@ -76,3 +84,4 @@
 
 /turf/simulated/floor/tile/smooth/cargo
 	color = COLOR_CARGO
+*/

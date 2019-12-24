@@ -31,7 +31,7 @@
 				//L.add_paralyze(guessed_velocity*0.5)
 				//HEALTH TODO: APPLY DAMAGE
 		else
-			A.force_move(hit_atom)
+			A.force_move(get_turf(hit_atom))
 
 
 	return .
