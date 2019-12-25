@@ -132,3 +132,49 @@
 	return TRUE
 */
 
+
+
+/atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0)
+
+	if(!NewLoc)
+		return FALSE
+
+	if(!loc)
+		return FALSE
+
+	var/atom/OldLoc = loc
+
+	if(!OldLoc.Exit(src))
+		Bump(OldLoc)
+		return FALSE
+
+	for(var/atom/movable/M in OldLoc.contents)
+		if(!M.Uncross(src))
+			Bump(M)
+			return FALSE
+
+	if(!NewLoc.Enter(src))
+		Bump(NewLoc)
+		return FALSE
+
+	for(var/atom/movable/M in NewLoc.contents)
+		if(!M.Cross(src))
+			Bump(M)
+			return FALSE
+
+	OldLoc.Exited(src,NewLoc)
+	for(var/atom/A in OldLoc.contents)
+		A.Uncrossed(src)
+
+	NewLoc.Entered(src,OldLoc)
+	for(var/atom/A in NewLoc.contents)
+		A.Crossed(src)
+
+	step_x += desired_step_x
+	step_y += desired_step_y
+	loc = NewLoc
+
+	if(Dir)
+		set_dir(Dir)
+
+	return TRUE

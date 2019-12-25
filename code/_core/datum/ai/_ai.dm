@@ -48,6 +48,10 @@
 
 	var/list/attackers = list()
 
+	var/kick_chance = 10
+
+	var/attack_on_block = FALSE
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -115,7 +119,7 @@
 /ai/proc/attack_message()
 	return TRUE
 
-/ai/proc/do_attack()
+/ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
 
 	owner.move_dir = 0
 
@@ -130,19 +134,19 @@
 		"alt" = 0
 	)
 
-	if(prob(left_click_chance))
+	if(left_click)
 		params["left"] = TRUE
-		owner.on_left_down(objective_attack,null,null,params)
+		owner.on_left_down(target,null,null,params)
 	else
 		params["right"] = TRUE
-		owner.on_right_down(objective_attack,null,null,params)
+		owner.on_right_down(target,null,null,params)
 
 	return TRUE
 
 /ai/proc/handle_attacking()
 
 	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
-		do_attack(objective_attack)
+		do_attack(objective_attack,prob(left_click_chance))
 
 	attack_ticks = 0
 
@@ -234,6 +238,11 @@
 
 	return FALSE
 
+
+/ai/proc/attack(var/atom/desired_target)
+
+	return TRUE
+
 /ai/proc/can_see_enemy(var/mob/living/L)
 	var/list/possible_targets = get_possible_targets()
 	return (L in possible_targets)
@@ -257,3 +266,10 @@
 		attackers += attacker
 
 	return TRUE
+
+/ai/proc/Bump(var/atom/obstacle)
+
+	if(attack_on_block)
+		do_attack(obstacle,prob(left_click_chance))
+
+	return FALSE

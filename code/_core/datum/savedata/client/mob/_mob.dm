@@ -10,6 +10,7 @@
 		"id" = "none",
 		"last_saved_date" = 0,
 		"last_saved_time" = 0,
+		"species" = "human",
 		"organs" = list(),
 		"skills" = list(),
 		"attributes" = list(),

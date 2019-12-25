@@ -7,6 +7,7 @@
 		//show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 		handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
 		handle_beardstyle_chargen(1,"#000000")
+		add_outfit("new")
 
 		stop_music_track(client)
 
@@ -88,7 +89,7 @@
 
 /mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
 
-	apply_mob_parts(FALSE,TRUE)
+	apply_mob_parts(FALSE,FALSE)
 
 	update_all_blends()
 	update_icon()

@@ -9,3 +9,5 @@
 	movement_delay = 10
 
 	target_distribution_y = list(16,16,32,32,32,32,32) //BRAINS
+
+	attack_on_block = TRUE

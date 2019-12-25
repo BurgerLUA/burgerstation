@@ -39,7 +39,7 @@
 	desired_light_power = 0
 	desired_light_color = 0
 
-	var/assoc_wishgranter //The wishgranter ID this is area is associated with, if any.
+	//var/assoc_wishgranter //The wishgranter ID this is area is associated with, if any.
 
 	var/weather = WEATHER_NONE //Optional weather
 
@@ -67,8 +67,10 @@
 	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
 		all_areas_with_hazards += src
 
+	/*
 	if(dynamic_sunlight_enabled)
 		all_areas_with_dynamic_sunlight += src
+	*/
 
 	return .
 
@@ -131,7 +133,7 @@
 			if(M.client)
 				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
 					play_ambient_sound(ambient_sound,enterer,environment = sound_environment,loop = TRUE)
-
+			/*
 			if(is_player(enterer) && enterer.area)
 				var/mob/living/advanced/player/P = M
 				if(enterer.area.safe && !src.safe) //Leaving a safezone
@@ -142,6 +144,7 @@
 						var/savedata/client/mob/U = P.mobdata
 						U.loaded_data["last_save"] = assoc_wishgranter
 						U.save_current_character()
+			*/
 
 		enterer.area = src
 

@@ -5,14 +5,21 @@
 	weight = WEIGHT_0
 
 /obj/item/clothing/underbottom/underwear/boxers
-	name = "heart boxers"
-	icon = 'icons/obj/items/clothing/underwear/heart_boxers.dmi'
+	name = "boxers"
+	icon = 'icons/obj/items/clothing/underwear/boxers.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
 		MAGIC = ARMOR_D,
 		COLD = ARMOR_D,
 	)
+
+/obj/item/clothing/underbottom/underwear/boxers/random/on_spawn()
+	color = random_color()
+
+/obj/item/clothing/underbottom/underwear/boxers/heart
+	name = "heart boxers"
+	icon = 'icons/obj/items/clothing/underwear/heart_boxers.dmi'
 
 /obj/item/clothing/underbottom/underwear/long_johns
 	name = "long johns"

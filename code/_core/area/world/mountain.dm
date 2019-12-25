@@ -2,7 +2,7 @@
 	name = "snowy mountain"
 	id = "mountain"
 
-	assoc_wishgranter = "northern_heights"
+	//assoc_wishgranter = "northern_heights"
 
 	tracks = TRACKS_MOUNTAIN
 

@@ -15,8 +15,7 @@
 	simple = TRUE
 	stationary = FALSE
 
-	var/kick_chance = 10
-
+/*
 /ai/advanced/handle_attacking()
 
 	var/is_left_click = prob(left_click_chance)
@@ -59,5 +58,5 @@
 		owner.attack_flags &= ~ATTACK_KICK
 
 
-
 	attack_ticks = 0
+*/

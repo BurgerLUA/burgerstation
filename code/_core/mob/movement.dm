@@ -45,7 +45,9 @@
 	return .
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+
 	. = ..()
+
 	if(.)
 		switch(move_mod)
 			if(1)

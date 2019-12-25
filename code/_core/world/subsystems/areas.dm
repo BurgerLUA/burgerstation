@@ -4,9 +4,9 @@
 	priority = SS_ORDER_AREAS
 	tick_rate = SECONDS_TO_TICKS(600) //Weather is 10 minute intervals
 
-	var/list/area/world/areas_rain = list()
-	var/list/area/world/areas_snow = list()
-	var/list/area/world/areas_sandstorm = list()
+	var/list/area/areas_rain = list()
+	var/list/area/areas_snow = list()
+	var/list/area/areas_sandstorm = list()
 
 	var/is_raining = TRUE
 	var/is_snowing = TRUE
@@ -19,7 +19,7 @@
 
 	var/area_count = 0
 
-	for(var/area/world/A in world)
+	for(var/area/A in world)
 		A.Initialize()
 		area_count += 1
 
@@ -60,7 +60,7 @@
 	return TRUE
 
 /subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/world/affected_areas)
-	for(var/area/world/A in affected_areas)
+	for(var/area/A in affected_areas)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'
 			A.icon_state = weather_type

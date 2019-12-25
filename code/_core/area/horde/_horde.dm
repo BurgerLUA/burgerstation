@@ -20,7 +20,7 @@
 	icon_state = "safe2"
 	singleplayer = TRUE
 
-/area/horde/sky
+/area/horde/exterior
 	name = "Sky"
 	icon_state = "green"
 
@@ -30,7 +30,6 @@
 	desired_light_range = 6
 	desired_light_power = 1
 	desired_light_color = "#3F3B28"
-
 
 /area/horde/roof
 	name = "Roof"

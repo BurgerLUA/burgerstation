@@ -15,9 +15,17 @@ var/global/subsystem/horde/SShorde
 	var/round_time_next = 0 //In seconds.
 	var/state = HORDE_STATE_PRELOAD
 	var/current_round = 1
+
+	var/max_enemies = 10
+	var/enemies_to_spawn = 0
 	var/enemies_spawned = 0
 
 	var/message_displayed = FALSE
+
+
+/subsystem/horde/proc/get_enemies_to_spawn()
+	return TRUE
+
 
 /subsystem/horde/New()
 	. = ..()
@@ -54,11 +62,6 @@ var/global/subsystem/horde/SShorde
 			message_displayed = TRUE
 		if(round_time > 10)
 			world.log << "Span enemies."
-
-
-
-
-
 
 	return TRUE
 

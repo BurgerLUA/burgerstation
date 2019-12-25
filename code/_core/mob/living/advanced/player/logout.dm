@@ -20,10 +20,10 @@ mob/living/advanced/player/verb/logout()
 			save(null)
 			make_ghost()
 			return TRUE
-	else if(A && A.safe && A.assoc_wishgranter && client)
+	else if(A && A.safe && client)
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && A && A.safe && client)
-			save(A.assoc_wishgranter)
+			save()
 			make_ghost()
 			return TRUE
 	else
@@ -52,7 +52,7 @@ mob/living/advanced/player/verb/logout()
 
 	return TRUE
 
-
+/*
 /mob/living/advanced/player/Logout()
 
 	if(!qdeleting) //Only do this if you're not being deleted.
@@ -66,3 +66,4 @@ mob/living/advanced/player/verb/logout()
 				qdel(src)
 
 	return ..()
+*/

@@ -4,7 +4,7 @@
 
 	ambient_temperature = T0C + 40
 
-	assoc_wishgranter = "desert"
+	//assoc_wishgranter = "desert"
 
 /area/world/desert/exterior/
 

@@ -1,11 +1,13 @@
 
 /mob/living/advanced/player/on_life()
 
+	/*
 	if(area && !area.safe)
 		var/was_protected = spawn_protection > 0
 		spawn_protection =  max(0,spawn_protection - LIFE_TICK)
 		if(!spawn_protection && was_protected)
 			src.to_chat(span("notice","Your spawn protection has worn off."))
+	*/
 
 	if(logout_time && logout_time >= curtime + SECONDS_TO_DECISECONDS(MINUTES_TO_SECONDS(60))) //Timeout
 		logout_time = 0

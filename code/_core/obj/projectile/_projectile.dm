@@ -263,19 +263,28 @@
 
 /mob/living/advanced/npc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	var/area/A = get_area(new_turf)
-
-	if(A && A.safe && dialogue_id && P && P.owner && is_player(P.owner)) //Honestly it's a bad idea to have projectiles in safezones. Players can bait NPCs into shooting stray bullets into people who are AFK/Busy.
+	if(dialogue_id)
 		return FALSE
+
+	if(P && P.owner && is_player(P.owner))
+		if(!FRIENDLY_FIRE)
+			return FALSE
+
+		var/area/A = get_area(new_turf)
+		if(A && A.safe)
+			return FALSE
 
 	return ..()
 
 /mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	var/area/A = get_area(new_turf)
+	if(P && P.owner && is_player(P.owner))
+		if(!FRIENDLY_FIRE)
+			return FALSE
 
-	if(A && A.safe)
-		return FALSE
+		var/area/A = get_area(new_turf)
+		if(A && A.safe)
+			return FALSE
 
 	return ..()
 

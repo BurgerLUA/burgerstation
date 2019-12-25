@@ -26,7 +26,6 @@
 /obj/item/clothing/feet/socks/white
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
 
-
 /obj/item/clothing/feet/socks/knee
 	name = "knee socks"
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'

@@ -3,7 +3,6 @@
 	icon = 'icons/debug/mobs.dmi'
 	icon_state = ""
 	layer = LAYER_MOB
-	var/enable_AI = FALSE
 
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0

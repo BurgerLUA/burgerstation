@@ -9,6 +9,7 @@
 
 	var/class = "default"
 
+	var/enable_AI = FALSE
 	var/ai/ai
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER

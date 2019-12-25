@@ -49,6 +49,7 @@ mob/living/advanced/get_movement_delay()
 
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+
 	. = ..()
 
 	if(.)

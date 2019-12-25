@@ -10,7 +10,7 @@
 
 	tracks = TRACKS_FOREST
 
-	assoc_wishgranter = "village"
+	//assoc_wishgranter = "village"
 
 	destruction_turf = /turf/simulated/floor/cave_dirt/
 

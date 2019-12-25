@@ -51,4 +51,5 @@
 		COLD = ARMOR_D
 	)
 
-
+/obj/item/clothing/undertop/underwear/shirt/random/on_spawn()
+	color = random_color()
