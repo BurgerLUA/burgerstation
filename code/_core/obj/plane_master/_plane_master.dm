@@ -42,7 +42,7 @@
 	return .
 
 
-//DARKNESS
+//TREES
 /obj/plane_master/trees
 	plane = PLANE_TREE
 	mouse_opacity = 1

@@ -10,6 +10,7 @@ obj/structure/interactive/bed
 
 	layer = LAYER_BELOW_MOB
 
+	var/opened_time = 0
 
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
@@ -146,7 +147,7 @@ obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,object
 
 	. = ..()
 
-	if(.)
+	if(. && door_state == SLEEPER_OPENED)
 		close()
 
 	return .
@@ -168,8 +169,9 @@ obj/structure/interactive/bed/sleeper/proc/open()
 	update_icon()
 	spawn(open_time)
 		door_state = SLEEPER_OPENED
+		opened_time = 0
 		update_icon()
-		start_thinking(src)
+	start_thinking(src)
 
 obj/structure/interactive/bed/sleeper/proc/close()
 	if(close_sound)
@@ -178,8 +180,25 @@ obj/structure/interactive/bed/sleeper/proc/close()
 	update_icon()
 	spawn(close_time)
 		door_state = SLEEPER_CLOSED
+		opened_time = 0
 		update_icon()
-		stop_thinking(src)
+	stop_thinking(src)
+
+obj/structure/interactive/bed/sleeper/think()
+
+	if(buckled)
+		return TRUE
+
+	for(var/mob/living/L in loc.contents)
+		return TRUE
+
+	if(door_state == SLEEPER_OPENED && opened_time >= 100)
+		close()
+		return FALSE
+
+	opened_time++
+
+	return TRUE
 
 obj/structure/interactive/bed/sleeper/update_icon()
 
@@ -210,6 +229,12 @@ obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
 	secondary_color = "#00FF00"
+
+var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = list()
+
+obj/structure/interactive/bed/sleeper/cryo/New(var/desired_loc)
+	cryo_spawnpoints += src
+	return ..()
 
 obj/structure/interactive/bed/sleeper/medical
 	name = "medical sleeper"

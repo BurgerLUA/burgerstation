@@ -186,8 +186,8 @@
 			else
 		*/
 
-		A.force_move(get_turf(pick(lobby_spawnpoints)))
-
-		step(A,SOUTH)
+		var/obj/structure/interactive/bed/sleeper/cryo/C = pick(cryo_spawnpoints)
+		A.force_move(get_turf(C))
+		C.buckle(A,silent=TRUE)
 
 	A.update_icon()

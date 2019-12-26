@@ -7,7 +7,7 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //DEPCRECATED
+	density = FALSE //DEPCRECATED. Should always be set to false!
 
 	var/health_base = 1
 	var/mana_base = 1

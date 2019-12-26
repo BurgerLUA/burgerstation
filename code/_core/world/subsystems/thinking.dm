@@ -7,10 +7,9 @@ var/global/list/atom/all_thinkers = list()
 	tick_rate = DECISECONDS_TO_TICKS(1)
 
 /subsystem/thinking/on_life()
-
 	for(var/atom/A in all_thinkers)
 		if(!A.think())
-			all_thinkers -= A
+			stop_thinking(A)
 
 	return TRUE
 
@@ -19,9 +18,12 @@ var/global/list/atom/all_thinkers = list()
 	if(!(A in all_thinkers))
 		all_thinkers += A
 
+	return TRUE
 
 /proc/stop_thinking(var/atom/A)
 	A.thinks = FALSE
 	if(A in all_thinkers)
 		all_thinkers -= A
+
+	return TRUE
 

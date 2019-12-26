@@ -85,7 +85,7 @@ obj/structure/interactive/door/airlock/open()
 
 		door_state = DOOR_STATE_OPENED
 		update_icon()
-		stop_thinking(src)
+		start_thinking(src)
 
 obj/structure/interactive/door/airlock/close()
 
