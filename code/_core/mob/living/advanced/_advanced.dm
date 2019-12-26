@@ -44,7 +44,7 @@
 
 	var/quick_mode = null
 
-	stun_angle = 90
+	stun_angle = -90
 
 	random_spawn_dir = FALSE
 

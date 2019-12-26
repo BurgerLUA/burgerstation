@@ -11,10 +11,41 @@
 
 	var/bullet_block_chance = 0 //Chance to block bullets.
 
+	var/mob/living/buckled
+
 /obj/structure/proc/on_active(var/mob/living/advanced/player/P)
 	return TRUE
 
 /obj/structure/proc/on_inactive(var/mob/living/advanced/player/P)
+	return TRUE
+
+/obj/structure/proc/buckle(var/mob/living/victim,var/mob/caller,var/silent = FALSE)
+
+	if(!silent)
+		if(!caller || caller == victim)
+			victim.visible_message("\The [caller.name] buckles themselves to \the [src.name].")
+		else
+			victim.visible_message("\The [caller.name] buckles \the [victim.name] into \the [src.name].")
+
+	buckled = victim
+	buckled.buckled_object = src
+
+	return TRUE
+
+/obj/structure/proc/unbuckle(var/mob/caller,var/silent=FALSE)
+
+	if(!buckled)
+		return FALSE
+
+	if(!silent)
+		if(!caller || caller == buckled)
+			buckled.visible_message("\The [buckled.name] unbuckles themselves from \the [src.name].")
+		else
+			buckled.visible_message("\The [buckled.name] is unbuckled from \the [src.name] by \the [caller.name].")
+
+	buckled.buckled_object = null
+	buckled = null
+
 	return TRUE
 
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)

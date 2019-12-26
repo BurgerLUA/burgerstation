@@ -12,8 +12,6 @@
 
 	allow_beaker_transfer = TRUE
 
-	thinks = FALSE
-
 	var/list/cheese_mix = list()
 	var/process_count = 0
 
@@ -48,11 +46,9 @@
 	reagents.remove_all_reagents()
 
 	process_count = 0
-	thinks = FALSE
 	allow_beaker_transfer = TRUE
 	cheese_mix.Cut()
-	if(src in all_thinkers)
-		all_thinkers -= src
+	stop_thinking()
 
 	return TRUE
 
@@ -97,12 +93,10 @@
 				enzyme_count += reagent_volume
 
 		if(milk_count >= 40 && enzyme_count >= 10)
-			thinks = TRUE
 			allow_beaker_transfer = FALSE
 			var/turf/T = get_turf(src)
 			T.visible_message("The milk starts to curdle!")
-			if(!(src in all_thinkers))
-				all_thinkers += src
+			start_thinking()
 
 	overlays.Cut()
 

@@ -13,3 +13,15 @@ var/global/list/atom/all_thinkers = list()
 			all_thinkers -= A
 
 	return TRUE
+
+/proc/start_thinking(var/atom/A)
+	A.thinks = TRUE
+	if(!(A in all_thinkers))
+		all_thinkers += A
+
+
+/proc/stop_thinking(var/atom/A)
+	A.thinks = FALSE
+	if(A in all_thinkers)
+		all_thinkers -= A
+

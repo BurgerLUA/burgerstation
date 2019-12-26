@@ -15,8 +15,6 @@
 	var/close_time_01 = 8
 	var/close_time_02 = 8
 
-	thinks = TRUE
-
 	var/opened_time = 0
 
 	open_sound = 'sounds/machines/airlock/open.ogg'
@@ -87,9 +85,7 @@ obj/structure/interactive/door/airlock/open()
 
 		door_state = DOOR_STATE_OPENED
 		update_icon()
-
-		if(thinks && !(src in all_thinkers))
-			all_thinkers += src
+		stop_thinking(src)
 
 obj/structure/interactive/door/airlock/close()
 
@@ -120,9 +116,7 @@ obj/structure/interactive/door/airlock/close()
 
 			door_state = DOOR_STATE_OPENED
 			update_icon()
-
-			if(thinks && !(src in all_thinkers))
-				all_thinkers += src
+			start_thinking(src)
 
 		else
 			door_state = DOOR_STATE_CLOSING_02
@@ -132,9 +126,7 @@ obj/structure/interactive/door/airlock/close()
 
 			door_state = DOOR_STATE_CLOSED
 			update_icon()
-
-			if(thinks && !(src in all_thinkers))
-				all_thinkers -= src
+			stop_thinking(src)
 
 /obj/structure/interactive/door/airlock/update_icon()
 

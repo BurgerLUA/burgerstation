@@ -25,8 +25,6 @@
 
 	var/list/empty_sounds = list()
 
-	thinks = TRUE
-
 	//Dynamic accuracy.
 	var/heat_per_shot = 0.05
 	var/heat_current = 0
@@ -74,10 +72,13 @@
 	return TRUE
 
 /obj/item/weapon/ranged/think()
+
 	if(next_shoot_time + min(10,shoot_delay*2) < curtime)
 		heat_current = max(heat_current-1,0)
 
-	return ..()
+	. = ..()
+
+	return . && heat_current > 0
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -185,6 +186,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
+	start_thinking()
 
 	if(automatic)
 		spawn(next_shoot_time - curtime + 1)

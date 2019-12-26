@@ -5,12 +5,35 @@ obj/structure/interactive/bed
 	icon_state = "bed"
 	var/secondary_color = "#FF0000"
 
-	var/mob/living/occupant
-
 	var/pixel_offset_x = 0
 	var/pixel_offset_y = 0
 
 	layer = LAYER_BELOW_MOB
+
+
+/obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+
+	. = ..()
+
+	if(.)
+		victim.sleep_time = -1
+		victim.check_status_effects()
+		victim.pixel_x = pixel_offset_x
+		victim.pixel_y = pixel_offset_y
+
+	return .
+
+/obj/structure/interactive/bed/unbuckle(var/mob/caller,var/silent=FALSE)
+
+	var/mob/living/L = buckled
+
+	. = ..()
+
+	if(.)
+		L.sleep_time = 0
+		L.check_status_effects()
+		animate(L,pixel_x = initial(L.pixel_x), pixel_y = initial(L.pixel_y),time = 5)
+	return .
 
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -18,25 +41,15 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,locatio
 
 	if(is_living(caller))
 
-		if(caller == occupant)
-			occupant.to_chat("You unbuckle yourself from \the [src.name].")
-			occupant.sleep_time = 0
-			occupant.check_status_effects()
-			occupant.pixel_x = initial(occupant.pixel_x)
-			occupant.pixel_y = initial(occupant.pixel_y)
-			occupant = null
+		if(buckled)
+			if(buckled == caller)
+				return ..()
+			unbuckle(caller)
 			return TRUE
 
-		var/mob/living/L = caller
-		if(L.loc == src.loc)
-			occupant = L
-			occupant.sleep_time = -1
-			occupant.check_status_effects()
-			occupant.pixel_x = pixel_offset_x
-			occupant.pixel_y = pixel_offset_y
-			occupant.to_chat("You buckle yourself to \the [src.name].")
+		for(var/mob/living/L in loc.contents)
+			buckle(L,caller)
 			return TRUE
-
 
 	return ..()
 
@@ -91,10 +104,10 @@ obj/structure/interactive/bed/sleeper
 	var/open_sound
 	var/close_sound
 
-	var/open_time = 7
-	var/close_time = 7
+	var/open_time = 10
+	var/close_time = 10
 
-	pixel_offset_x = 11
+	pixel_offset_x = 8
 	layer = LAYER_ABOVE_MOB
 	plane = PLANE_MOB
 
@@ -115,19 +128,38 @@ obj/structure/interactive/bed/sleeper/Initialize()
 
 	return ..()
 
+obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-obj/structure/interactive/bed/sleeper/clicked_on_by_object(caller,object,location,control,params)
+	. = ..()
 
-	INTERACT_CHECK
+	if(!.)
+		if(door_state == SLEEPER_CLOSED)
+			open()
+		else if(door_state == SLEEPER_OPENED)
+			close()
+
+		return TRUE
+
+	return .
+
+/obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+
+	. = ..()
+
+	if(.)
+		close()
+
+	return .
+
+obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE)
 
 	if(door_state == SLEEPER_CLOSED)
 		open()
-		return TRUE
-	else if(door_state == SLEEPER_OPENED)
-		close()
-		return ..()
+		return FALSE
+	else if(door_state != SLEEPER_OPENED)
+		return FALSE
 
-	return TRUE
+	return ..()
 
 obj/structure/interactive/bed/sleeper/proc/open()
 	if(open_sound)
@@ -137,6 +169,7 @@ obj/structure/interactive/bed/sleeper/proc/open()
 	spawn(open_time)
 		door_state = SLEEPER_OPENED
 		update_icon()
+		start_thinking(src)
 
 obj/structure/interactive/bed/sleeper/proc/close()
 	if(close_sound)
@@ -146,6 +179,7 @@ obj/structure/interactive/bed/sleeper/proc/close()
 	spawn(close_time)
 		door_state = SLEEPER_CLOSED
 		update_icon()
+		stop_thinking(src)
 
 obj/structure/interactive/bed/sleeper/update_icon()
 

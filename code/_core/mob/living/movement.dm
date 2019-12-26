@@ -13,14 +13,20 @@
 	if(status & FLAG_STATUS_PARALYZE)
 		return FALSE
 
-	if(status & FLAG_STATUS_SLEEP)
-		return FALSE
-
 	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
 	if(status & FLAG_STATUS_CONFUSED)
 		move_dir = pick(DIRECTIONS_ALL)
+
+	if(move_dir)
+		if(buckled_object && !buckled_object.unbuckle(src))
+			return FALSE
+
+		if(status & FLAG_STATUS_SLEEP)
+			sleep_time = 0
+			check_status_effects()
+			return FALSE
 
 	return ..()
 

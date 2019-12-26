@@ -87,8 +87,7 @@
 
 	health = null
 
-	if(thinks)
-		all_thinkers -= src
+	stop_thinking(src)
 
 	for(var/atom/A in contents)
 		qdel(A)
@@ -116,9 +115,6 @@
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-	if(thinks)
-		all_thinkers += src
 
 	if(reagents)
 		reagents = new reagents(src)
@@ -159,7 +155,7 @@
 	return TRUE
 
 /atom/proc/think()
-	return TRUE //Return false to remove from thinking.
+	return thinks
 
 /turf/Exit(atom/movable/O, atom/newloc)
 

@@ -19,13 +19,8 @@
 	return TRUE
 
 /obj/item/trigger_mechanism/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
-
-	if(!(src in all_thinkers))
-		all_thinkers += src
-
-	thinks = TRUE
+	start_thinking(src)
 	active = TRUE
-
 	return ..()
 
 /obj/item/trigger_mechanism/timer/think()
@@ -38,7 +33,6 @@
 			if(loc)
 				loc.trigger(last_interacted,src,-1,-1)
 			active = FALSE
-			thinks = FALSE
 			time_set = 0
 			return FALSE
 
