@@ -30,6 +30,11 @@
 	color_secondary_desc = "pants"
 	color_tertiary_desc = "shoulders"
 
+/obj/item/clothing/uniform/jumpsuit/random/on_spawn()
+	color_primary = random_color()
+	color_secondary = random_color()
+	color_tertiary = random_color()
+
 /obj/item/clothing/uniform/jumpsuit/grey
 	color_primary = "#A0A0A0"
 	color_secondary = "#A0A0A0"

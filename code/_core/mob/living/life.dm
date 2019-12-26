@@ -121,6 +121,16 @@
 	src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
 	return TRUE
 
+
+/mob/living/proc/on_sleeped()
+	src.visible_message("\The [src.name] lies down for a nap...","You lie down for a nap...")
+	return TRUE
+
+/mob/living/proc/on_unsleeped()
+	src.visible_message(span("warning","\The [src.name] wakes up from their slumber","You wake up from your slumber."))
+	return TRUE
+
+
 /mob/living/proc/on_crit()
 	src.visible_message("\The [src.name] falls unconscious!","You lose consciousness!")
 	return TRUE
@@ -182,6 +192,15 @@
 	if(status & FLAG_STATUS_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
 		remove_status(FLAG_STATUS_FATIGUE)
 		on_unfatigued()
+
+	//Sleep
+	if(!(status & FLAG_STATUS_SLEEP) && (sleep_time > 0 || sleep_time == -1))
+		add_status(FLAG_STATUS_SLEEP)
+		on_sleeped()
+
+	if(status & FLAG_STATUS_SLEEP && sleep_time <= 0 && sleep_time != -1)
+		remove_status(FLAG_STATUS_SLEEP)
+		on_unsleeped()
 
 	//Stun
 	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))

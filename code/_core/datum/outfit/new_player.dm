@@ -6,7 +6,7 @@
 		/obj/item/clothing/undertop/underwear/shirt/random,
 		/obj/item/clothing/feet/socks/white,
 		/obj/item/clothing/feet/socks/white,
-		/obj/item/clothing/uniform/jumpsuit/grey,
+		/obj/item/clothing/uniform/jumpsuit/random,
 		/obj/item/clothing/feet/shoes/colored/black,
 		/obj/item/clothing/feet/shoes/colored/black/left
 	)
