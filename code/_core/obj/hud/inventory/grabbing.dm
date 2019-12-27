@@ -44,7 +44,7 @@
 		return FALSE
 
 	if(length(held_objects))
-		caller.to_chat(span("notice","You cannot grab this with objects already in your hand!"))
+		caller.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE
 
 	caller.to_chat(span("notice","You grab \the [object]."))

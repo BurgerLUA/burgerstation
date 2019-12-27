@@ -25,6 +25,9 @@
 		return TRUE
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 
+		if(grabbed_object)
+			return release_object(caller)
+
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
 

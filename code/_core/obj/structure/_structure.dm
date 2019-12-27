@@ -67,14 +67,11 @@
 
 	return FALSE
 
-/obj/structure/Cross(var/atom/movable/O)
+/obj/structure/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
 	if(O.collision_flags & src.collision_flags)
 
-		var/turf/old_loc = get_turf(O)
-		var/turf/new_loc = get_turf(src)
-
-		var/direction = get_dir(old_loc,new_loc)
+		var/direction = get_dir(OldLoc,NewLoc)
 
 		if((direction & NORTH) && density_south)
 			return FALSE
@@ -90,13 +87,11 @@
 
 	return TRUE
 
-/obj/structure/Uncross(var/atom/movable/O,var/new_loc)
+/obj/structure/Uncross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
-	if(O.collision_flags & src.collision_flags && !(density_south && density_north && density_west && density_east) )
+	if(O.collision_flags & src.collision_flags)
 
-		var/turf/old_loc = get_turf(O)
-
-		var/direction = get_dir(old_loc,new_loc)
+		var/direction = get_dir(OldLoc,NewLoc)
 
 		if((direction & NORTH) && density_north)
 			return FALSE
@@ -109,6 +104,5 @@
 
 		if((direction & WEST) && density_west)
 			return FALSE
-
 
 	return TRUE

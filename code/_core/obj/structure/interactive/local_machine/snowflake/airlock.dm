@@ -65,7 +65,7 @@
 		mob_to_door_state[M] = DOOR_STATE_LOCKED
 		set_icon_state_mob(M,"closed")
 
-/obj/structure/interactive/localmachine/snowflake/airlock/Cross(var/atom/movable/O)
+/obj/structure/interactive/localmachine/snowflake/airlock/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
 	if(!is_mob(O))
 		return ..()

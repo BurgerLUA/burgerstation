@@ -19,6 +19,11 @@
 
 	var/damage_type_thrown = "thrown" //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
 
+	var/change_dir_on_move = FALSE
+
+/atom/movable/can_be_grabbed(var/atom/grabber)
+	return !anchored
+
 /atom/movable/Initialize()
 	. = ..()
 	if(loc)
@@ -72,69 +77,24 @@
 
 	return TRUE
 
-/atom/movable/Bump(var/atom/obstacle)
+/atom/movable/Bump(var/atom/obstacle,var/Dir=0)
+
+	if(Dir && is_movable(obstacle))
+		var/atom/movable/M = obstacle
+		if(!M.anchored)
+			M.move_delay = src.move_delay
+			M.glide_size = src.glide_size
+			world.log << "It's \the [M.name]."
+
+			M.Move(get_step(M,Dir),Dir)
+			return TRUE
+
 	return FALSE
-
-/*
-/atom/movable/proc/can_bump(var/atom/bumper)
-	return FALSE
-*/
-
-/* EXAMPLE CODE
-/atom/movable/Move(var/atom/new_loc,var/desired_dir=0,var/desired_step_x=0,var/desired_step_y=0)
-
-	var/atom/old_loc = src.loc
-	if(!desired_dir)
-		desired_dir = get_dir(old_loc,new_loc)
-
-	if(!new_loc)
-		new_loc = get_step(src,desired_dir)
-
-	if(!old_loc.Exit(src,desired_dir)) //Can we exit the current tile we're on?
-		return FALSE
-
-	for(var/atom/A in old_loc.contents)
-		if(A.Uncross(src)) //Can we uncross this object?
-			continue
-
-		if(is_movable(A))
-			var/atom/movable/M = A
-			if(M.Bump(src,desired_dir))
-				continue
-
-		return FALSE
-
-	if(!new_loc.Enter(src,desired_dir)) //Can we enter the current tile we're on?
-		return FALSE
-
-	for(var/atom/A in new_loc.contents)
-		if(A.Cross(src)) //Can we cross this object?
-			continue
-
-		if(is_movable(A))
-			var/atom/movable/M = A
-			if(M.Bump(src,desired_dir))
-				continue
-
-		return FALSE
-
-	step_x += desired_step_x
-	step_y += desired_step_y
-
-	old_loc.Exited()
-	for(var/atom/A in old_loc.contents)
-		A.Uncrossed(src)
-
-	new_loc.Entered()
-	for(var/atom/A in new_loc.contents)
-		A.Crossed(src)
-
-	return TRUE
-*/
-
-
 
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0)
+
+	if(change_dir_on_move && Dir)
+		set_dir(Dir)
 
 	if(!NewLoc)
 		return FALSE
@@ -149,32 +109,37 @@
 		return FALSE
 
 	for(var/atom/movable/M in OldLoc.contents)
-		if(!M.Uncross(src))
-			Bump(M)
+		if(M == src)
+			continue
+		if(!M.Uncross(src,NewLoc,OldLoc))
+			Bump(M,Dir)
 			return FALSE
 
 	if(!NewLoc.Enter(src))
-		Bump(NewLoc)
+		Bump(NewLoc,Dir)
 		return FALSE
 
 	for(var/atom/movable/M in NewLoc.contents)
-		if(!M.Cross(src))
-			Bump(M)
+		if(M == src)
+			continue
+		if(!M.Cross(src,NewLoc,OldLoc))
+			Bump(M,Dir)
 			return FALSE
 
 	OldLoc.Exited(src,NewLoc)
 	for(var/atom/A in OldLoc.contents)
-		A.Uncrossed(src)
+		if(A == src)
+			continue
+		A.Uncrossed(src,NewLoc,OldLoc)
 
 	NewLoc.Entered(src,OldLoc)
 	for(var/atom/A in NewLoc.contents)
-		A.Crossed(src)
+		if(A == src)
+			continue
+		A.Crossed(src,NewLoc,OldLoc)
 
 	step_x += desired_step_x
 	step_y += desired_step_y
 	loc = NewLoc
-
-	if(Dir)
-		set_dir(Dir)
 
 	return TRUE

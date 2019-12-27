@@ -12,7 +12,7 @@
 
 /client/MouseWheel(object,delta_x,delta_y,location,control,params)
 
-	if(mob && mob.movement_flags & MOVEMENT_CROUCHING && allow_zoom_controls)
+	if(mob && (mob.attack_flags & ATTACK_GRAB) && allow_zoom_controls)
 		var/change_in_screen = delta_y > 1 ? 1 : -1
 		update_zoom(zoom_level + change_in_screen)
 		return TRUE

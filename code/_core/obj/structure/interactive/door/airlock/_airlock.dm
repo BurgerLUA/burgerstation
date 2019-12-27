@@ -247,7 +247,7 @@ obj/structure/interactive/door/airlock/close()
 	icon = base_icon
 
 
-/obj/structure/interactive/door/airlock/Cross(var/atom/movable/A)
+/obj/structure/interactive/door/airlock/Cross(var/atom/movable/A,var/atom/NewLoc,var/atom/OldLoc)
 
 	. = ..()
 

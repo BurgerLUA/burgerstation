@@ -6,7 +6,7 @@
 
 /obj/item/clothing/underbottom/underwear/boxers
 	name = "boxers"
-	icon = 'icons/obj/items/clothing/underwear/boxers.dmi'
+	icon = 'icons/obj/items/clothing/underwear/boxers_new.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(

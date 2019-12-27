@@ -127,6 +127,8 @@ obj/structure/interactive/bed/sleeper/Initialize()
 	I.color = base_color
 	underlays += I
 
+	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
+
 	return ..()
 
 obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,object,location,control,params)

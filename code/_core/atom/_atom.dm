@@ -122,6 +122,8 @@
 	if(health)
 		health = new health(src)
 
+	set_dir(dir)
+
 	return .
 
 /atom/proc/defer_click_on_object()
@@ -157,10 +159,12 @@
 /atom/proc/think()
 	return thinks
 
+/*
 /turf/Exit(atom/movable/O, atom/newloc)
 
 	for(var/atom/A in contents)
-		if(!A.Uncross(O,newloc))
+		if(!A.Uncross(O,newloc,loc))
 			return 0
 
 	return 1
+*/

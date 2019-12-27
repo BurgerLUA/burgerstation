@@ -73,6 +73,8 @@
 
 	pixel_z = MOB_HEIGHT_OFFSET
 
+	change_dir_on_move = TRUE
+
 /mob/Destroy()
 
 	if(client)

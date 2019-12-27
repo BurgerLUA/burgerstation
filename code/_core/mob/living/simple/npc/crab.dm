@@ -79,7 +79,7 @@
 
 
 
-/mob/living/simple/npc/crab/king/Cross(atom/movable/O)
+/mob/living/simple/npc/crab/king/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
 	if(istype(O,/mob/living/simple/npc/crab/))
 		return TRUE
