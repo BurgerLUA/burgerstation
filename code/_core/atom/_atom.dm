@@ -147,9 +147,6 @@
 
 	return TRUE
 
-/atom/proc/can_be_grabbed(var/atom/grabber)
-	return FALSE
-
 /atom/proc/on_progress_bar_completed(var/id,var/list/callback_list)
 	return TRUE
 

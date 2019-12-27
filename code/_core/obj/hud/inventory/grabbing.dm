@@ -18,7 +18,7 @@
 		spawn()
 			if(left_hand && left_hand.grabbed_object)
 				var/turf/back_turf = get_step(src,turn(move_dir, 180))
-				var/distance = get_dist(src,left_hand.grabbed_object) > 1
+				var/distance = get_dist(src,left_hand.grabbed_object)
 				if(distance > 2)
 					left_hand.release_object(src)
 				else if(distance > 1)
@@ -37,24 +37,31 @@
 	return .
 
 
-/obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/movable/object,location,control,params)
 
-	if(!object.can_be_grabbed(caller))
+	if(!is_movable(object) || !object.can_be_grabbed(caller))
 		caller.to_chat(span("notice","You cannot grab this!"))
 		return FALSE
 
-	if(length(held_objects))
+	if(length(held_objects) || grabbed_object)
 		caller.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE
 
-	caller.to_chat(span("notice","You grab \the [object]."))
+	if(object.grabber)
+		caller.to_chat(span("notice","\The [object.grabber.name] is already grabbing this!"))
+		return FALSE
+
+	caller.to_chat(span("notice","You grab \the [object.name]."))
 	grabbed_object = object
+	grabbed_object.grabber = src.owner
 	update_overlays()
 
 	return TRUE
 
 /obj/hud/inventory/proc/release_object(var/mob/caller as mob)
-	caller.to_chat(span("notice","You release \the [grabbed_object]."))
+	if(caller)
+		caller.to_chat(span("notice","You release \the [grabbed_object.name]."))
+	grabbed_object.grabber = null
 	grabbed_object = null
 	update_overlays()
 	return TRUE

@@ -74,6 +74,8 @@
 
 /obj/hud/inventory/Destroy()
 
+	release_object()
+
 	show(FALSE,0)
 
 	remove_from_owner()

@@ -21,7 +21,9 @@
 
 	var/change_dir_on_move = FALSE
 
-/atom/movable/can_be_grabbed(var/atom/grabber)
+	var/mob/living/grabber
+
+/atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 
 /atom/movable/Initialize()
@@ -33,6 +35,7 @@
 
 /atom/movable/Destroy()
 	area = null
+	grabber = null
 	force_move(null)
 	return ..()
 
