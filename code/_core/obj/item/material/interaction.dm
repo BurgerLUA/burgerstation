@@ -1,10 +1,15 @@
 /obj/item/material/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	if(object == src)
+		return ..()
+
 	INTERACT_CHECK
 
 	if(is_inventory(object))
 		var/obj/hud/inventory/I = object
 		var/obj/item/material/M = new src.type(get_turf(src))
+		M.material_id = material_id
+		M.color = color
 		M.update_icon()
 		M.transfer_item(I)
 		src.item_count_current -= 1

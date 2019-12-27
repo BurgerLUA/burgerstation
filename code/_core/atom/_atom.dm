@@ -156,12 +156,9 @@
 /atom/proc/think()
 	return thinks
 
-/*
-/turf/Exit(atom/movable/O, atom/newloc)
 
-	for(var/atom/A in contents)
-		if(!A.Uncross(O,newloc,loc))
-			return 0
+/atom/Enter(var/atom/movable/enterer,var/atom/oldloc)
+	return TRUE
 
-	return 1
-*/
+/atom/Exit(var/atom/movable/exiter,var/atom/newloc)
+	return TRUE
