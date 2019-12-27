@@ -84,10 +84,9 @@
 
 	if(Dir && is_movable(obstacle))
 		var/atom/movable/M = obstacle
-		if(!M.anchored)
+		if(!M.anchored && !M.grabber)
 			M.move_delay = src.move_delay
 			M.glide_size = src.glide_size
-			world.log << "It's \the [M.name]."
 
 			M.Move(get_step(M,Dir),Dir)
 			return TRUE

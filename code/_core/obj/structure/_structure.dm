@@ -85,6 +85,18 @@
 		if((direction & WEST) && density_east)
 			return FALSE
 
+		if(is_structure(O)) //Prevents infinite loops.
+			var/obj/structure/S = O
+			if(density_north && S.density_north)
+				return FALSE
+			if(density_south && S.density_south)
+				return FALSE
+			if(density_east && S.density_east)
+				return FALSE
+			if(density_west && S.density_west)
+				return FALSE
+
+
 	return TRUE
 
 /obj/structure/Uncross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)

@@ -23,7 +23,8 @@
 					left_hand.release_object(src)
 				else if(distance > 1)
 					left_hand.grabbed_object.glide_size = glide_size
-					left_hand.grabbed_object.Move(back_turf,Dir)
+					if(!left_hand.grabbed_object.Move(back_turf,Dir))
+						left_hand.release_object(src)
 
 			if(right_hand && right_hand.grabbed_object)
 				var/turf/back_turf = get_step(src,turn(move_dir, 180))
@@ -32,7 +33,8 @@
 					right_hand.release_object(src)
 				else if(distance > 1)
 					right_hand.grabbed_object.glide_size = glide_size
-					right_hand.grabbed_object.Move(back_turf,Dir)
+					if(!right_hand.grabbed_object.Move(back_turf,Dir))
+						right_hand.release_object(src)
 
 	return .
 
