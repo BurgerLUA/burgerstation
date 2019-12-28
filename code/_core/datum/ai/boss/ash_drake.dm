@@ -1,6 +1,4 @@
 /ai/boss/ash_drake/
-	name = "Ash Drake AI"
-	desc = "The artist formally known as ash drake."
 
 	var/failed_attack_frames = 0
 	var/mob/living/simple/npc/ash_drake/owner_as_ash_drake

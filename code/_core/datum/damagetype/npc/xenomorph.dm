@@ -1,7 +1,6 @@
 /damagetype/npc/xenomorph
 	name = "Xenomorph Claw"
 	id = "xenomorph"
-	desc = "The claw of a xenomorph."
 	attack_verbs = list("claw","scratch","maul")
 	weapon_name = "claws"
 
@@ -47,7 +46,6 @@
 /damagetype/npc/xenomorph/queen
 	name = "Xenomorph Poisoned Claws"
 	id = "xenomorph_queen"
-	desc = "The claw of a xenomorph queen."
 	attack_verbs = list("claw","scratch","maul")
 	weapon_name = "poisonous claws"
 

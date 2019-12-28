@@ -1,6 +1,5 @@
 /damagetype/sword/
 	name = "sword"
-	desc = "Live and die by it."
 
 	impact_sounds = list(
 		'sounds/weapons/blade/hit_light.ogg',

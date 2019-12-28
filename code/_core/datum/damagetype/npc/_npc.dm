@@ -1,6 +1,5 @@
 /damagetype/npc/
 	name = "NPC"
-	desc = "Damage from NPCs."
 
 	skill_xp_per_damage = list()
 

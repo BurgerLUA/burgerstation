@@ -1,7 +1,4 @@
 /ai/villager
-	name = "Passive AI"
-	desc = "Does not attack unless provoked. Usually very slow."
-
 	roaming_distance = 3
 
 	objective_delay = 20

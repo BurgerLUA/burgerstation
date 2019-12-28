@@ -1,6 +1,4 @@
 /ai/advanced/horde
-	name = "Advanced"
-	desc = "AI for advanced mob types."
 
 	radius_find_enemy = 8
 

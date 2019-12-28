@@ -1,13 +1,6 @@
 var/list/qdel_refs_to_type = list()
 
 //Credit to Kachnov for this garbage collection code.
-/datum/
-	var/name
-	var/id
-	var/desc
-	var/desc_extended
-	var/qdeleting = FALSE
-
 /datum/proc/Destroy()
 	tag = null // required to GC
 	return TRUE

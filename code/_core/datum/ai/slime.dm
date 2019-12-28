@@ -1,5 +1,4 @@
 /ai/slime/
-	name = "Slime AI"
 	radius_find_enemy = 12
 
 	target_distribution_y = list(0,0,0,0,4,8)

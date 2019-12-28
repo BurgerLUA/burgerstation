@@ -1,6 +1,4 @@
 /ai/simple/crab
-	name = "Aggressive Crab"
-	desc = "Seems smarter and deadlier than normal crabs."
 
 	radius_find_enemy = 12
 	attack_distance = 1
@@ -17,8 +15,6 @@
 	simple = TRUE
 
 /ai/simple/king_crab
-	name = "King Crab"
-	desc = "Seems smarter and deadlier than normal crabs."
 
 	radius_find_enemy = 10
 

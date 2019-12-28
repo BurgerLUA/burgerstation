@@ -5,13 +5,14 @@
 	var/material_id = "steel"
 	color = COLOR_STEEL
 
-
-//obj/structure/interactive/construction/on_destruction(var/mob/caller,
+	health = /health/construction/
 
 obj/structure/interactive/construction/frame
 	name = "frame"
 	desc = "A metal frame."
 	icon_state = "frame"
+
+	health_base = 25
 
 obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -74,6 +75,8 @@ obj/structure/interactive/construction/lattice
 	desc = "A metal lattice."
 	icon_state = "lattice"
 
+	health_base = 50
+
 obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -131,10 +134,51 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 
 	return ..()
 
-obj/structure/interactive/construction/girder
+/obj/structure/interactive/construction/girder
 	name = "girder"
 	desc = "A metal girder."
 	icon_state = "girder"
+
+	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	health_base = 100
+
+/obj/structure/interactive/construction/girder/on_destruction(var/atom/caller,var/damage = FALSE)
+
+	for(var/i=1,i<=2,i++)
+
+		var/desired_dir = get_dir(src,caller)
+		var/turf/desired_turf = get_step(src,desired_dir)
+
+		var/obj/item/material/sheet/S = new(desired_turf)
+		S.material_id = material_id
+		S.color = color
+
+		var/offset_x = 0
+		var/offset_y = 0
+
+		if(desired_dir & NORTH)
+			offset_y -= TILE_SIZE
+
+		if(desired_dir & SOUTH)
+			offset_y += TILE_SIZE
+
+		if(desired_dir & EAST)
+			offset_x -= TILE_SIZE
+
+		if(desired_dir & WEST)
+			offset_x += TILE_SIZE
+
+		S.pixel_x = offset_x
+		S.pixel_y = offset_y
+
+		animate(S,pixel_x = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5), pixel_y = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),time=5)
+
+	qdel(src)
+
+	return TRUE
+
 
 obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -168,3 +212,15 @@ obj/structure/interactive/construction/grille
 	name = "grille"
 	desc = "A metal grille."
 	icon_state = "grille"
+
+	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	health_base = 75
+
+obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+
+	if(istype(O,/obj/structure/smooth/window/))
+		return TRUE
+
+	return ..()

@@ -108,7 +108,7 @@
 	handle_beardstyle_chargen(1,S.default_color_hair)
 	//Blends are updated in the above two procs
 
-	if(keep_items)
+	if(length(kept_items))
 		equip_objects_in_list(kept_items)
 	else
 		if(sex == MALE)

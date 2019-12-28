@@ -1,6 +1,5 @@
 /damagetype/npc/holy_warrior
 	name = "Holy Warrior Damage"
-	desc = "The touch of a holy warrior."
 	id = "holy_warrior"
 	attack_verbs = list("smite","punish","strike")
 	weapon_name = "right foot"

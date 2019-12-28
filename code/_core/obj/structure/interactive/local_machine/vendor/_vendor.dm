@@ -6,6 +6,7 @@
 	desc_extended = "You can use this to purchase things that are always in stock."
 
 	var/obj/item/stored_objects = list()
+	var/obj/item/stored_types = list()
 
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -48,13 +49,22 @@
 
 /obj/structure/interactive/vendor/proc/show_buttons_to(var/mob/living/advanced/A)
 
-	var/vending_size = length(stored_objects)
+	var/stored_objects_length = length(stored_objects)
+	var/stored_types_length = length(stored_types)
 
-	for(var/i=1,i<=vending_size,i++)
+	for(var/i=1,i<=stored_objects_length,i++)
 		var/obj/item/I = stored_objects[i]
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
-		V.screen_loc = "CENTER+2,CENTER-0.5-[vending_size*0.5]+[i]"
+		V.screen_loc = "CENTER+2,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i]"
+		V.update_owner(A)
+		V.update_icon()
+
+	for(var/i=1,i<=stored_types_length,i++)
+		var/obj/item/I = stored_types[i]
+		var/obj/hud/button/vendor/V = new
+		V.associated_item = I
+		V.screen_loc = "CENTER+2,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i+stored_objects_length]"
 		V.update_owner(A)
 		V.update_icon()
 

@@ -17,3 +17,5 @@
 
 
 #define COLOR_STEEL "#444444"
+#define COLOR_GLASS "#D9FFFF"
+#define COLOR_PLASTEEL "#A0A0A0"

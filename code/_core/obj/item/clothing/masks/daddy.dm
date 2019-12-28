@@ -17,3 +17,13 @@
 	weight = -15
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
+
+
+/atom/get_examine_text(var/mob/examiner)
+
+	var/obj/faketype = type
+	world.log << "IT IS TIME FOR [initial(faketype.name)]."
+	world.log << "Hi, my name is [name]."
+	world.log << "Hi, my initial name is [initial(name)]."
+
+	return ..()

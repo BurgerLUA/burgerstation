@@ -1,7 +1,6 @@
 /damagetype/npc/crab
 	name = "Crab Claw"
 	id = "crab_claw"
-	desc = "The claw of a crab"
 	attack_verbs = list("pinch","snip")
 	weapon_name = "claw"
 
@@ -43,7 +42,6 @@
 /damagetype/npc/crab/king
 	name = "King Crab Claw"
 	id = "crab_claw_king"
-	desc = "The claw of a king crab"
 	attack_verbs = list("pinch","snip")
 	weapon_name = "claw"
 

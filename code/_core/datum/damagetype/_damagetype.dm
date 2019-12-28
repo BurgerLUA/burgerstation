@@ -1,7 +1,6 @@
 /damagetype/
 	name = "Damage type."
 	id = null
-	desc = "The type of damage dealt and all it's information."
 
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")

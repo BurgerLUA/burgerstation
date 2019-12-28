@@ -105,6 +105,9 @@
 
 	return TRUE
 
+/mob/living/Bump(var/atom/obstacle,var/Dir=0)
+	return FALSE
+
 /mob/living/Destroy()
 
 	factions.Cut()

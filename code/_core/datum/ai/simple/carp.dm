@@ -1,6 +1,4 @@
 /ai/simple/carp
-	name = "Carp"
-	desc = "AI for carp. They like to hunt in packs."
 
 	radius_find_enemy = 12
 

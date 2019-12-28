@@ -1,5 +1,4 @@
 /ai/advanced/ranged/
-	name = "Advanced Ranged AI"
 
 	left_click_chance = 100
 

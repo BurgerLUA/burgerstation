@@ -1,6 +1,4 @@
 /ai/advanced/zombie
-	name = "Zombie"
-	desc = "AI for zombies. They are meant for new players to get used to combat."
 
 	radius_find_enemy = 6
 

@@ -82,8 +82,6 @@
 
 /atom/movable/Bump(var/atom/obstacle,var/Dir=0)
 
-	world.log << "[src] bump [obstacle] for dir: [Dir]."
-
 	if(Dir && is_movable(obstacle))
 		var/atom/movable/M = obstacle
 		if(!M.anchored && !M.grabber)
@@ -108,8 +106,7 @@
 
 	var/atom/OldLoc = loc
 
-	if(!OldLoc.Exit(src))
-		world.log << "Cannot exit."
+	if(!OldLoc.Exit(src,NewLoc))
 		Bump(OldLoc,Dir)
 		return FALSE
 
@@ -120,8 +117,7 @@
 			Bump(M,Dir)
 			return FALSE
 
-	if(!NewLoc.Enter(src))
-		world.log << "Cannot enter."
+	if(!NewLoc.Enter(src,OldLoc))
 		Bump(NewLoc,Dir)
 		return FALSE
 

@@ -2,8 +2,8 @@
 /experience/
 	name = "Base Experience Tracker"
 	id = null
-	desc = "This is the base experience tracker. You shouldn't have this."
-	desc_extended = "Extended description for that wall of text."
+	var/desc = "This is the base experience tracker. You shouldn't have this."
+	var/desc_extended = "Extended description for that wall of text."
 
 	var/experience = 0
 

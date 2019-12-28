@@ -7,11 +7,10 @@
 /proc/scale(value,min,max)
 	return (value - min) / (max - min)
 
-
 /proc/rand_precise(var/min,var/max)
 	return rand(min*100,max*100) / 100
 
-/*
+#if DM_VERSION < 513
 /proc/arctan(x,y)
 	if(!x && !y)
 		return 0
@@ -19,7 +18,7 @@
 	var/a = arccos(x/sqrt(x*x+y*y))
 
 	return (y>=0) ? (a):(-a)
-*/
+#endif
 
 
 // Clamps (duh) a number between 2 other numbers.

@@ -10,7 +10,7 @@
 
 	weight = WEIGHT_2
 
-	crafting_id = "glitch"
+	crafting_id = "sheet_steel"
 
 	material_id = "steel"
 

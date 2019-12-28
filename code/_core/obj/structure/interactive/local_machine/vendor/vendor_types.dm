@@ -61,3 +61,9 @@
 /obj/structure/interactive/vendor/soda
 	name = "soda vendor"
 	icon_state = "soda"
+
+/obj/structure/interactive/vendor/autolocker
+	name = "autolocker vendor"
+	icon_state = "gear"
+
+	stored_types = list(/obj/item/clothing/mask/emoji)

@@ -1,7 +1,6 @@
 /damagetype/npc/chicken
 	name = "Chicken Damage"
 	id = "chicken_peck"
-	desc = "The peck of a checken."
 	attack_verbs = list("pecks","claws","kicks")
 	weapon_name = "beak"
 

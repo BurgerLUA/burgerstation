@@ -21,6 +21,9 @@ var/global/saved_icons = 0
 	health = null
 	health_base = 100
 
+	var/reinforced_material_id
+	var/reinforced_color
+
 /turf/simulated/New(var/atom/desired_loc)
 
 	if(real_icon)
@@ -167,7 +170,6 @@ var/global/saved_icons = 0
 
 	if(turf_icon_cache[full_icon_string])
 		I = turf_icon_cache[full_icon_string]
-		icon = I
 		saved_icons++
 	else
 		I = new /icon(icon,"1-[nw]")
@@ -191,3 +193,9 @@ var/global/saved_icons = 0
 	pixel_x = (32 - I.Width())/2
 	pixel_y = (32 - I.Height())/2
 	layer = initial(layer) + 0.1
+
+	if(reinforced_material_id)
+		overlays.Cut()
+		var/image/I2 = new/image(initial(icon),"ref")
+		//I.color = reinforced_color
+		overlays += I2

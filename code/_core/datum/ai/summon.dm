@@ -1,5 +1,4 @@
 /ai/summon/
-	name = "Summon AI"
 
 /ai/summon/handle_movement()
 

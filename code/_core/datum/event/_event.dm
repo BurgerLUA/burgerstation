@@ -1,6 +1,5 @@
 /event/
 	name = "event name"
-	desc = "event desc"
 	id = null
 
 	var/probability = 0 //Relative probability of this event occuring.

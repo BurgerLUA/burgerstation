@@ -1,7 +1,6 @@
 /damagetype/npc/slime
 	name = "Slime Pounce"
 	id = "slime_pounce"
-	desc = "The pounce of a slime"
 	attack_verbs = list("blob","pounce","absorb","slime")
 	weapon_name = "slime"
 

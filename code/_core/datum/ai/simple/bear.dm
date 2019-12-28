@@ -1,6 +1,4 @@
 /ai/simple/bear
-	name = "Bear"
-	desc = "AI for bears. They're exceptionally hostile when approached, and can roam around."
 
 	radius_find_enemy = 6
 

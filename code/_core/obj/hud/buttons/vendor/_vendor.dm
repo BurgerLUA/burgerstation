@@ -31,9 +31,14 @@
 	. = ..()
 
 	overlays.Cut()
-	overlays += associated_item
 
-	var/amount = associated_item.value
+	if(ispath(associated_item))
+		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
+		overlays += IM
+	else
+		overlays += associated_item
+
+	var/amount = initial(associated_item.value)
 
 	var/num_to_text = num2text(amount)
 	var/the_length = length(num_to_text)
@@ -58,12 +63,12 @@
 	I4.pixel_x = 35
 	overlays += I4
 
-	maptext = associated_item.name
+	maptext = initial(associated_item.name)
 	maptext_width = 96*2
 	maptext_x = 2
 	maptext_y = 1
 
-	name = associated_item.name
+	name = initial(associated_item.name)
 
 	return .
 
@@ -74,6 +79,7 @@
 
 	var/mob/living/advanced/player/P = caller
 	var/atom/defer_object = object.defer_click_on_object()
+	var/item_value = initial(associated_item.value)
 
 	if(!is_inventory(defer_object))
 		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
@@ -81,12 +87,16 @@
 
 	var/obj/hud/inventory/I = defer_object
 
-	if(P.currency >= associated_item.value && P.spend_currency(associated_item.value)) //Just in case
+	if(P.currency >= item_value && P.spend_currency(item_value)) //Just in case
 		spawn()
-			var/obj/item/new_item = new associated_item.type(get_turf(caller))
+			var/obj/item/new_item
+			if(ispath(associated_item))
+				new_item = new associated_item(get_turf(caller))
+			else
+				new_item = new associated_item.type(get_turf(caller))
 			new_item.on_spawn()
 			new_item.update_icon()
 			new_item.transfer_item(I)
-			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [associated_item.value] telecrystal\s."))
+			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [item_value] telecrystal\s."))
 
 	return ..()

@@ -10,12 +10,12 @@
 	map_color_a = rgb(0,0,0,255)
 
 
-/area/horde/lobby
+/area/horde/station
 	name = "Lobby"
 	icon_state = "safe"
 	safe = TRUE
 
-/area/horde/lobby/bathroom
+/area/horde/station/bathroom
 	name = "Bathroom"
 	icon_state = "safe2"
 	singleplayer = TRUE

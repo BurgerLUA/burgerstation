@@ -1,6 +1,4 @@
 /ai/advanced/daddy
-	name = "Daddy"
-	desc = "AI for daddy."
 
 	radius_find_enemy = VIEW_RANGE*2
 

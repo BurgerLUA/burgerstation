@@ -43,3 +43,9 @@
 
 /obj/structure/interactive/door/airlock/station/maintenance/no_access
 	no_access = TRUE
+
+
+/obj/structure/interactive/door/airlock/station/external
+	name = "security airlock"
+	color = "#A70000"
+	fill_color = "#FFB200"

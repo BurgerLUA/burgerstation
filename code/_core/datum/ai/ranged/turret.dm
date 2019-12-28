@@ -1,5 +1,4 @@
 /ai/ranged/immobile/turret
-	name = "Turret AI"
 	radius_find_enemy = VIEW_RANGE
 	attack_delay = 8
 

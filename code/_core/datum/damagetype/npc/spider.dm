@@ -1,7 +1,6 @@
 /damagetype/npc/spider
 	name = "Spider Damage"
 	id = "spider"
-	desc = "The bite of a spider"
 	attack_verbs = list("bite","chomp","scratch")
 	weapon_name = "fangs"
 

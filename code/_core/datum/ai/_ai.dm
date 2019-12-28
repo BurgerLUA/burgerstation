@@ -1,6 +1,4 @@
 /ai/
-	name = "Default AI"
-	desc = "The AI."
 
 	var/mob/living/owner
 

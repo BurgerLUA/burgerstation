@@ -1,7 +1,6 @@
 /damagetype/npc/bear
 	name = "Bear claw"
 	id = "bear_claw"
-	desc = "The claw of a bear"
 	attack_verbs = list("slash","maul")
 	weapon_name = "claw"
 

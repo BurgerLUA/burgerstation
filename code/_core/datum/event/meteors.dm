@@ -1,6 +1,5 @@
 /event/meteors
-	name = "event name"
-	desc = "event desc"
+	name = "Meteor Storm"
 	id = "meteors"
 
 	probability = 10

@@ -1,7 +1,6 @@
 /damagetype/npc/cultist
 	name = "Cultist Damage"
 	id = "cultist"
-	desc = "The blade of a cultist."
 	attack_verbs = list("slash","stab")
 	weapon_name = "dark blade"
 
@@ -52,7 +51,6 @@
 /damagetype/npc/harvester
 	name = "Harvester Damage"
 	id = "harvester"
-	desc = "The attack of a harvester."
 	attack_verbs = list("slash","pummel")
 	weapon_name = "dark claws"
 
@@ -101,7 +99,6 @@
 /damagetype/npc/behemoth
 	name = "Behemoth Damage"
 	id = "behemoth"
-	desc = "The attack of a behemoth."
 	attack_verbs = list("slam","slap","pummel")
 	weapon_name = "dark fists"
 

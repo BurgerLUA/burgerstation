@@ -1,6 +1,4 @@
 /ai/simple/cultist/
-	name = "Cultist AI"
-	desc = "Unpredictable and savage"
 
 /ai/simple/cultist/handle_movement()
 
@@ -33,8 +31,6 @@
 	owner.say(pick(possible_responses))
 
 /ai/simple/behemoth/
-	name = "Behemoth AI"
-	desc = "Tanky."
 
 	stationary = TRUE
 

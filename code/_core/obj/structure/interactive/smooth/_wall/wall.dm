@@ -12,11 +12,8 @@ obj/structure/smooth/wall
 
 	plane = PLANE_WALL
 
-
 obj/structure/smooth/wall/wood
 	color = "#4C3323"
-
-
 
 obj/structure/smooth/wall/brick
 	name = "stone wall"

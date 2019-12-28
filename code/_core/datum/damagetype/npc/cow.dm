@@ -1,7 +1,6 @@
 /damagetype/npc/cow
 	name = "Cow Headbutt"
 	id = "cow_headbutt"
-	desc = "The headbutt of a cow."
 	attack_verbs = list("headbutt")
 	weapon_name = "head"
 

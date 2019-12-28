@@ -1,9 +1,9 @@
 /atom/
-
 	name = "atom"
 	desc = "What the fuck is this?"
-	desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
-	id = null
+
+	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
+	var/id = null
 
 	plane = PLANE_OBJ
 
@@ -155,7 +155,6 @@
 
 /atom/proc/think()
 	return thinks
-
 
 /atom/Enter(var/atom/movable/enterer,var/atom/oldloc)
 	return TRUE

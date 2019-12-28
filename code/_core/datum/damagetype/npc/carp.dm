@@ -1,7 +1,6 @@
 /damagetype/npc/carp
 	name = "Carp Bite"
 	id = "carp_bite"
-	desc = "The bite of a carp."
 	attack_verbs = list("chomp","bit")
 	weapon_name = "teeth"
 

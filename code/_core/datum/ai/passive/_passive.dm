@@ -1,6 +1,4 @@
 /ai/passive
-	name = "Passive AI"
-	desc = "Does not attack unless provoked. Usually very slow."
 
 	radius_find_enemy = 0
 

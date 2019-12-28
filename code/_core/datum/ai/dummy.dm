@@ -1,7 +1,4 @@
 /ai/dummy/
-	name = "Dummy AI"
-	desc = "Does not attack. Moves back to starting position when it can."
-
 	objective_delay = 10
 	attack_delay = 10
 	movement_delay = 10

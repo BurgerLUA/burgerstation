@@ -12,7 +12,6 @@
 
 	layer = LAYER_OBJ_WINDOW
 
-
 /obj/structure/smooth/window/reinforced
 	name = "reinforced window"
 	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'

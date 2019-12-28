@@ -3,7 +3,7 @@
 
 /dialogue/
 	name = "Dialogue"
-	id = null
+	var/id = null
 	//* means hidden
 
 /dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

@@ -74,7 +74,8 @@
 
 /obj/hud/inventory/Destroy()
 
-	release_object()
+	if(grabbed_object)
+		release_object()
 
 	show(FALSE,0)
 
