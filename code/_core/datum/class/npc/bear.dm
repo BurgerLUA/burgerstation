@@ -1,6 +1,4 @@
 /class/bear
-	name = "Bear"
-	desc = "Unbearable"
 	id = "bear"
 
 	//Limits:

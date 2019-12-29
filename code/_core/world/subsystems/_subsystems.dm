@@ -1,6 +1,6 @@
 /subsystem/
-	name = "Base Subsystem"
-	desc = "Subsystem for base functions. You shouldn't be seeing this."
+	var/name = "Base Subsystem"
+	var/desc = "Subsystem for base functions. You shouldn't be seeing this."
 
 	var/tick_rate = 0 //Tick delay for the subsystem, in frames. Set to 0 if you don't want it to run.
 	var/priority = 0 //High number = runs later

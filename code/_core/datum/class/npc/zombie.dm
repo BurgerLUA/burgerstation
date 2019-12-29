@@ -1,6 +1,4 @@
 /class/zombie
-	name = "Zombie"
-	desc = "For learning how to fight."
 	id = "zombie"
 
 	//Limits:

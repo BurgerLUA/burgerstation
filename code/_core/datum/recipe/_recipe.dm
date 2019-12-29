@@ -1,9 +1,9 @@
 /recipe/
-	name = "recipe"
+	var/name = "recipe"
 	var/recipe_type = ""
-	id = null
-	desc = "A recipe."
-	desc_extended = "Recipe information."
+	var/id = null
+	var/desc = "A recipe."
+	var/desc_extended = "Recipe information."
 
 	var/do_debug = FALSE
 

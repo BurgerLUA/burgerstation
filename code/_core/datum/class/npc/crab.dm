@@ -1,6 +1,4 @@
 /class/crab
-	name = "Crab"
-	desc = "CRAB PEOPLE."
 	id = "crab"
 
 	//Limits:
@@ -56,8 +54,6 @@
 
 
 /class/crab/king
-	name = "King Crab"
-	desc = "CRAB PEOPLE."
 	id = "crab_king"
 
 	//Limits:

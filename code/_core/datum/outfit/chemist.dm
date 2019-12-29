@@ -1,7 +1,5 @@
 /outfit/chemist
-	name = "Chemist's Uniform"
 	id = "chemist"
-	desc = "The chemist's uniform."
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/uniform/chemist,

@@ -1,6 +1,4 @@
 /ai/simple/spider
-	name = "Spider"
-	desc = "Spider bites and whatnot."
 
 	radius_find_enemy = 8
 

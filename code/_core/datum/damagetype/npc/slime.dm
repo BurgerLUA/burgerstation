@@ -1,8 +1,7 @@
 /damagetype/npc/slime
-	name = "Slime Pounce"
+	name = "slime touch"
 	id = "slime_pounce"
 	attack_verbs = list("blob","pounce","absorb","slime")
-	weapon_name = "slime"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

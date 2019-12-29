@@ -1,5 +1,4 @@
 /explosion/
-	name = "Explosion Tracker"
 
 	var/list/explosion_data = list()
 

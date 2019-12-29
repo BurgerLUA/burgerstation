@@ -1,7 +1,5 @@
 /outfit/cult
-	name = "Cultist's Outfit"
 	id = "cult"
-	desc = "Uniform for Cultists."
 	spawning_clothes = list(
 
 		/obj/item/clothing/uniform/jumpsuit/red,

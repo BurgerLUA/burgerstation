@@ -1,7 +1,8 @@
 /species/
-	name = "BLANK SPECIES"
-	desc = "OH MY GOD"
-	id = null
+	var/name = "Species Name"
+	var/desc = "Short species description."
+	var/desc_extended = "Extended species description."
+	var/id = null
 
 	var/flags_species = SPECIES_NONE
 

@@ -1,6 +1,4 @@
 /ai/simple/xenomorph //Space carp clone
-	name = "Xenomorph"
-	desc = "AI for xenomorph. They like to hunt in packs."
 
 	radius_find_enemy = VIEW_RANGE
 
@@ -58,7 +56,6 @@
 	return ..()
 
 /ai/simple/xenomorph/pack_leader
-	name = "Xenomorph Pack Leader"
 
 	radius_find_enemy = VIEW_RANGE * 2
 
@@ -67,8 +64,6 @@
 	movement_delay = 1
 
 /ai/simple/xenomorph_queen
-	name = "Xenomorph Queen"
-	desc = "AI for xenomorph queen."
 
 	radius_find_enemy = VIEW_RANGE * 2
 

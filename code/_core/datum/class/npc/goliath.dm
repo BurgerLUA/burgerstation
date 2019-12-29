@@ -1,6 +1,4 @@
 /class/goliath
-	name = "Goliath"
-	desc = "This is a template. You shouldn't see this."
 	id = "goliath"
 
 	//Limits:

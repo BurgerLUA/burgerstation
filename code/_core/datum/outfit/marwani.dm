@@ -1,7 +1,5 @@
 /outfit/marwani
-	name = "Marwani's Uniform"
 	id = "marwani_outfit"
-	desc = "Uniform for Marwani."
 	spawning_clothes = list(
 		/obj/item/clothing/glasses/prescription,
 

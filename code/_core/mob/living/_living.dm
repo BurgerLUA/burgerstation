@@ -110,7 +110,7 @@
 
 /mob/living/Destroy()
 
-	factions.Cut()
+	//factions.Cut()
 
 	for(var/experience/E in attributes)
 		qdel(E)
@@ -161,7 +161,7 @@
 
 	attributes = list()
 	skills = list()
-	factions = list()
+	//factions = list()
 	health_elements = list()
 	players_fighting_boss = list()
 
@@ -196,7 +196,7 @@
 
 /mob/living/Initialize()
 
-	initialize_factions()
+	//initialize_factions()
 	update_level()
 	. = ..()
 	setup_name()
@@ -215,7 +215,8 @@
 
 	return TRUE
 
-
+/*
 /mob/living/proc/initialize_factions()
 	for(var/k in starting_factions)
 		factions[k] = all_factions[k]
+*/

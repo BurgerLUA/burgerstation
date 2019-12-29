@@ -1,5 +1,4 @@
 /savedata/client/mob
-	name = "Mob Save Data"
 
 /savedata/client/mob/get_folder(var/folder_id)
 	return replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)

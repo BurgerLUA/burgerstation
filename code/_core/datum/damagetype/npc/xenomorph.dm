@@ -1,8 +1,7 @@
 /damagetype/npc/xenomorph
-	name = "Xenomorph Claw"
+	name = "xenomorph claw"
 	id = "xenomorph"
 	attack_verbs = list("claw","scratch","maul")
-	weapon_name = "claws"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -44,10 +43,9 @@
 	)
 
 /damagetype/npc/xenomorph/queen
-	name = "Xenomorph Poisoned Claws"
+	name = "queen xenomorph poison claw"
 	id = "xenomorph_queen"
 	attack_verbs = list("claw","scratch","maul")
-	weapon_name = "poisonous claws"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

@@ -1,7 +1,7 @@
 /track/
-	name = "Music Track"
-	desc = "A track for music."
-	id = null
+	var/name = "Track Name"
+	var/desc = "Music Track Description"
+	var/id = null
 
 	var/length //In seconds
 	var/path

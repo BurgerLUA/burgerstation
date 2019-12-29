@@ -1,5 +1,4 @@
 /outfit/new_player
-	name = "New Player's Uniform"
 	id = "new"
 	spawning_clothes = list(
 		/obj/item/clothing/underbottom/underwear/boxers/random,

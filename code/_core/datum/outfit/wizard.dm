@@ -1,7 +1,5 @@
 /outfit/wizard
-	name = "Wizard's Outfit"
 	id = "wizard"
-	desc = "Uniform for Wizards."
 	spawning_clothes = list(
 		/obj/item/clothing/head/hat/wizard/blue,
 
@@ -15,9 +13,7 @@
 	)
 
 /outfit/wizard/evil
-	name = "Evil Wizard's Outfit"
 	id = "wizard_evil"
-	desc = "Uniform for EVIL Wizards."
 
 	spawning_clothes = list(
 		/obj/item/clothing/head/hat/wizard/red,

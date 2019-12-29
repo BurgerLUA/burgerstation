@@ -8,9 +8,9 @@
 var/global/list/squad/all_squads = list()
 
 /squad/
-	name = "Squad Name"
-	desc = "Squad description."
-	desc_extended = "Squad long description."
+	var/name = "Squad Name"
+	var/desc = "Squad description."
+	var/desc_extended = "Squad long description."
 	var/access = SQUAD_INVITE_ONLY
 
 	var/mob/living/advanced/player/leader = null

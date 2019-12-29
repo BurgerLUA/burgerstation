@@ -1,6 +1,4 @@
 /class/npc/robust
-	name = "Robust"
-	desc = "Max everything."
 	id = "robust"
 
 	//Limits:

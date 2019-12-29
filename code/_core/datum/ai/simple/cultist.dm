@@ -35,8 +35,6 @@
 	stationary = TRUE
 
 /ai/simple/artificer/
-	name = "Artificer AI"
-	desc = "Cautious."
 	var/spawned_mobs = 0
 
 	attack_delay = 10
@@ -64,5 +62,3 @@
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 
 /ai/simple/harvester/
-	name = "Harvester AI"
-	desc = "Eager."

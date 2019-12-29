@@ -1,6 +1,4 @@
 /class/daddy
-	name = "Daddy"
-	desc = "THE LEGEND NEVER DIES."
 	id = "daddy"
 
 	//Limits:

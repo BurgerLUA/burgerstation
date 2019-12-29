@@ -1,14 +1,10 @@
 /hazard/
-	name = "Hazard"
-	desc = "A dangerous area-based hazard."
-	id = null
+	var/id = null
 
 /hazard/proc/process_player_tick(var/mob/living/advanced/player/P)
 	return TRUE
 
 /hazard/cold
-	name = "Cold Hazard"
-	desc = "A general cold hazard."
 	id = "cold"
 
 	var/base_damage = 0.5 // PER TARGETABLE LIMB. REMEMBER, THERE ARE 11 TARGETABLE LIMBS.

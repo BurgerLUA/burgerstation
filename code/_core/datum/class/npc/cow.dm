@@ -1,5 +1,4 @@
 /class/cow
-	name = "Cow"
 	id = "cow"
 
 	//Limits:

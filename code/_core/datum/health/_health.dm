@@ -1,7 +1,5 @@
 /health/
 
-	name = "health tracker"
-
 	var/atom/owner // The owner of this health object
 
 	var/health_max = -1
@@ -54,10 +52,12 @@
 
 /health/Destroy()
 
+	/*
 	for(var/wound/W in wounds)
 		qdel(W)
 
 	wounds.Cut()
+	*/
 
 	owner = null
 

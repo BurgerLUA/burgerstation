@@ -1,6 +1,4 @@
 /reagent_container/beaker
-	name = "Beaker"
-	desc = "Beaker!"
 
 	volume_max = 60
 

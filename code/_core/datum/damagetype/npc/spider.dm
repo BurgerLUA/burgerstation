@@ -1,8 +1,7 @@
 /damagetype/npc/spider
-	name = "Spider Damage"
+	name = "spider fang"
 	id = "spider"
 	attack_verbs = list("bite","chomp","scratch")
-	weapon_name = "fangs"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

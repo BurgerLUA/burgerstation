@@ -30,6 +30,7 @@
 	if(L.dead)
 		return FALSE
 
+	/*
 	for(var/id in owner.factions)
 		var/faction/F = owner.factions[id]
 		if(F && F.is_hostile_to_mob(L))
@@ -39,5 +40,6 @@
 		var/faction/F = L.factions[id]
 		if(F && F.is_hostile_to_mob(owner))
 			return TRUE
+	*/
 
 	return FALSE

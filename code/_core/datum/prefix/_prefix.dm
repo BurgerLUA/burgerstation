@@ -4,13 +4,6 @@
 #define FLAG_PREFIX_MELEE 0x2
 #define FLAG_PREFIX_MAGIC 0x4
 
-#define RARITY_BROKEN "broken"
-#define RARITY_COMMON "common"
-#define RARITY_UNCOMMON "uncommon"
-#define RARITY_RARE "rare"
-#define RARITY_MYTHICAL "mythical"
-#define RARITY_LEGENDARY "legendary"
-
 /prefix/
 	name = "Prefix Template"
 	id = null

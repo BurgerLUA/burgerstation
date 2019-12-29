@@ -1,6 +1,4 @@
 /ai/simple/goliath
-	name = "Goliath"
-	desc = "AI for Goliath. Allows for the tentacle attack too."
 
 	radius_find_enemy = 6
 

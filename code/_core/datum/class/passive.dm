@@ -1,5 +1,4 @@
 /class/npc/passive
-	name = "Passive Class"
 	id = "passive"
 
 	//Limits:

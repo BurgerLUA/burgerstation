@@ -1,7 +1,7 @@
 /reagent_recipe/
-	name = "reagent recipe"
-	desc = "A recipe for a reagent."
-	id = null
+	var/name = "reagent recipe"
+	var/desc = "A recipe for a reagent."
+	var/id = null
 
 	var/list/required_reagents = list()
 

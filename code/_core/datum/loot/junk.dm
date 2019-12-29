@@ -1,6 +1,4 @@
 /loot/junk/
-	name = "Junk"
-	desc = "Loot you find in starting areas."
 	id = "junk"
 
 	loot_table = list(
@@ -11,9 +9,7 @@
 
 
 /loot/money/
-	name = "money loot"
 	id = "money"
-	desc = "General low-level money loot."
 	loot_table = list(
 		/obj/item/currency/{value=1} = 100,
 		/obj/item/currency/{value=2} = 50,

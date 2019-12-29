@@ -1,5 +1,4 @@
 /class/bull
-	name = "Bull"
 	id = "bull"
 
 	attributes = list(

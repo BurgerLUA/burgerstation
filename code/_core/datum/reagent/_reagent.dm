@@ -1,9 +1,10 @@
 
 
 /reagent/
-	name = "Reagent"
-	desc = "The basic description of the reagent."
-	desc_extended = "The extended description of the reagent, usually a detailed note of its effects."
+	var/name = "Reagent"
+	var/desc = "The basic description of the reagent."
+	var/desc_extended = "The extended description of the reagent, usually a detailed note of its effects."
+	var/id = null
 
 	var/color = "#FFFFFF" //Reagent's color.
 

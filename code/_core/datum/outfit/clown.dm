@@ -1,7 +1,5 @@
 /outfit/clown
-	name = "Clown Uniform"
 	id = "clown"
-	desc = "Uniform for Clowns"
 	spawning_clothes = list(
 		/obj/item/clothing/mask/gas/clown,
 		/obj/item/clothing/uniform/clown,

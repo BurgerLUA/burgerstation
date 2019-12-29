@@ -1,5 +1,4 @@
 /outfit/dummy_armor
-	name = "Armored Dummy's Outfit"
 	id = "dummy_armor"
 	spawning_clothes = list(
 		/obj/item/clothing/hands/gloves/colored/yellow,

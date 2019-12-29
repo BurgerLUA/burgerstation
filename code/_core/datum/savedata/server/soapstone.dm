@@ -1,5 +1,4 @@
 /savedata/server/soapstone
-	name = "Soapstone Save Data"
 
 /savedata/server/soapstone/get_file(var/folder_id)
 	return SOAPSTONE_FILE_FORMAT

@@ -229,10 +229,12 @@
 	if(simple)
 		return exists(L.client)
 
+	/*
 	for(var/id in owner.factions)
 		var/faction/F = owner.factions[id]
 		if(F.is_hostile_to_mob(L))
 			return TRUE
+	*/
 
 	return FALSE
 

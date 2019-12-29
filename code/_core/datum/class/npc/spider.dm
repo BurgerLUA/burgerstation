@@ -1,6 +1,4 @@
 /class/spider
-	name = "Spider"
-	desc = "For Spider."
 	id = "spider"
 
 	//Limits:

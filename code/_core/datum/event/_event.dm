@@ -1,6 +1,6 @@
 /event/
-	name = "event name"
-	id = null
+	var/name = "event name"
+	var/id = null
 
 	var/probability = 0 //Relative probability of this event occuring.
 	var/duration = 0 //In deciseconds

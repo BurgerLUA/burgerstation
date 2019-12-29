@@ -1,7 +1,5 @@
 /menu/paper/
-	name = "Paper"
 	id = "paper"
-
 	file = 'html/paper.html'
 
 /menu/paper/open(var/user)

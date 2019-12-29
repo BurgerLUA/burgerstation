@@ -1,7 +1,5 @@
 /loot/
-	name = "random loot"
-	desc = "Loot is spawned."
-	id = null
+	var/id = null
 
 	var/list/loot_table = list()
 	var/loot_count = 1 //Only works on spawn_loot_turf

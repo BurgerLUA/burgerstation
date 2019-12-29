@@ -1,5 +1,4 @@
 /savedata/client/connection_history
-	name = "Connection History"
 
 /savedata/client/connection_history/reset_data()
 	loaded_data = list(

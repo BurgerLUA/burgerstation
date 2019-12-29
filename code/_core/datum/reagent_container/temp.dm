@@ -1,5 +1,4 @@
 /reagent_container/temp
-	name = "temp reagent container"
 
 	volume_max = 1000
 

@@ -1,7 +1,4 @@
 /reagent_container/
-	name = "Reagent Container"
-	desc = "The basic description of the reagent container."
-	desc_extended = "The extended description of the reagent container, usually a detailed note of how much it can hold."
 
 	var/list/stored_reagents = list()
 	var/list/stored_reagents_temperature = list()

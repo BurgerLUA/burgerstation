@@ -1,10 +1,8 @@
 //Feet
 /damagetype/unarmed/feet/
-	name = "Foot"
+	name = "foot"
 	id = "foot"
-	desc = "Your foot"
 	attack_verbs = list("kick")
-	weapon_name = "foot"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

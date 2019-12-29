@@ -2,7 +2,7 @@
 //NameOfTopic_"Dialogue #1 #2 #3"_Link1Topic_Link2Topic_Link3Topic
 
 /dialogue/
-	name = "Dialogue"
+	var/name = "Dialogue"
 	var/id = null
 	//* means hidden
 

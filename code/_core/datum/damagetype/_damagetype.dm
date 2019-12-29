@@ -1,6 +1,6 @@
 /damagetype/
-	name = "Damage type."
-	id = null
+	var/name = "Damage type."
+	var/id = null
 
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
@@ -121,9 +121,11 @@
 	var/crit_chance = 5
 	var/crit_chance_max = 10
 
+	/*
 	var/list/wound_types = list(
 		/wound/bruise/ = 1,
 	)
+	*/
 
 /damagetype/proc/get_crit_chance(var/mob/living/L)
 	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION) + L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)
@@ -321,8 +323,10 @@
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 		do_attack_sound(attacker,victim,weapon,hit_object)
 
+/*
 		if(ENABLE_WOUNDS)
 			do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
+*/
 
 		display_hit_message(attacker,victim,weapon,hit_object)
 
@@ -534,15 +538,6 @@
 	)
 
 /*
-/damagetype/proc/get_attack_delay(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		return floor(attack_delay * (2 - L.get_attribute_power(ATTRIBUTE_DEXTERITY)))
-
-	return attack_delay
-*/
-
 /damagetype/proc/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 
 	if(damage_dealt <= 0)
@@ -562,3 +557,4 @@
 	var/wound/W = pickweight(wound_types)
 
 	return new W(victim,hit_object,attacker,weapon,damage_dealt)
+*/

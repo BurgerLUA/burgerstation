@@ -1,6 +1,6 @@
 /faction/
-	name = "Faction"
-	desc = "The faction's description."
+	var/name = "Faction"
+	var/desc = "The faction's description."
 	id = "default"
 
 	var/priority = 0 //A higher value = overrides lower values

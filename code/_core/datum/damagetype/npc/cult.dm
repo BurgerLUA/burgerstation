@@ -1,8 +1,7 @@
 /damagetype/npc/cultist
-	name = "Cultist Damage"
+	name = "dark blade"
 	id = "cultist"
 	attack_verbs = list("slash","stab")
-	weapon_name = "dark blade"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -49,10 +48,9 @@
 	)
 
 /damagetype/npc/harvester
-	name = "Harvester Damage"
+	name = "harvester strike"
 	id = "harvester"
 	attack_verbs = list("slash","pummel")
-	weapon_name = "dark claws"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -97,10 +95,9 @@
 	)
 
 /damagetype/npc/behemoth
-	name = "Behemoth Damage"
+	name = "behemoth strike"
 	id = "behemoth"
 	attack_verbs = list("slam","slap","pummel")
-	weapon_name = "dark fists"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

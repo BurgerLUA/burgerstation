@@ -1,8 +1,7 @@
 /damagetype/npc/holy_warrior
-	name = "Holy Warrior Damage"
+	name = "holy warrior"
 	id = "holy_warrior"
 	attack_verbs = list("smite","punish","strike")
-	weapon_name = "right foot"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

@@ -1,5 +1,4 @@
 /menu/dialogue/
-	name = "Dialogue Menu"
 	id = "dialogue"
 
 	file = 'html/dialogue.html'

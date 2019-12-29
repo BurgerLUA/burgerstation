@@ -1,6 +1,4 @@
 /class/wizard
-	name = "The Wizard"
-	desc = "This is a template. You shouldn't see this."
 	id = "wizard"
 
 	//Limits:

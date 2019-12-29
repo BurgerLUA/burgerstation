@@ -1,7 +1,5 @@
 /choice/
-	name = "Choice Name"
-	desc = "Choice description."
-	id = null
+	var/id = null
 
 	var/question = "skip_tutorial"
 	var/list/options = list("yes","no")

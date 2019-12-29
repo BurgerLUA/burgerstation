@@ -1,5 +1,4 @@
 /class/marwani
-	name = "Marwani's Class"
 	id = "marwani"
 
 	//Limits:

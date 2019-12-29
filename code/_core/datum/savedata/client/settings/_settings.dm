@@ -1,6 +1,4 @@
 /savedata/client/settings
-	name = "Client Settings"
-	desc = "The settings the client has"
 	loaded_data = list(
 		"volume_master" = 70,
 		"volume_fx" = 70,

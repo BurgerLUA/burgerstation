@@ -1,5 +1,4 @@
 /outfit/farmer
-	name = "Farmer's Uniform"
 	id = "farmer_outfit"
 	spawning_clothes = list(
 		/obj/item/clothing/feet/socks/white,

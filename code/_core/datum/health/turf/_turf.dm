@@ -1,5 +1,4 @@
 /health/turf/
-	name = "turf health"
 
 	/*
 	armor_base = list(  //Base armor for the mob.

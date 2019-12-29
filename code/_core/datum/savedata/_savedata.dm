@@ -1,8 +1,4 @@
 /savedata/
-	name = "savedata"
-	desc = "Data for a user."
-	id = null
-
 	var/list/loaded_data = list()
 
 /savedata/proc/reset_data()

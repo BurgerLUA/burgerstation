@@ -1,10 +1,8 @@
 //Fists
 /damagetype/unarmed/fists/
-	name = "Fist"
+	name = "fist"
 	id = "fist"
-	desc = "Your human fist."
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
-	weapon_name = "fist"
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 

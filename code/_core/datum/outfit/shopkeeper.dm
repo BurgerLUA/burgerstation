@@ -1,7 +1,5 @@
 /outfit/shopkeeper
-	name = "Shopkeeper's Uniform"
 	id = "shopkeeper_outfit"
-	desc = "Uniform for the Shopkeeper."
 	spawning_clothes = list(
 		/obj/item/clothing/back/storage/backpack,
 		/obj/item/clothing/belt/storage,

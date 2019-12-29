@@ -1,0 +1,6 @@
+#define RARITY_BROKEN "broken"
+#define RARITY_COMMON "common"
+#define RARITY_UNCOMMON "uncommon"
+#define RARITY_RARE "rare"
+#define RARITY_MYTHICAL "mythical"
+#define RARITY_LEGENDARY "legendary"

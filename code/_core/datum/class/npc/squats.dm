@@ -1,5 +1,4 @@
 /class/npc/squats
-	name = "SQUATS Class"
 	id = "squats"
 
 	attributes = list(

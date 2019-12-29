@@ -1,6 +1,4 @@
 /class/carp
-	name = "Carp"
-	desc = "BITES."
 	id = "carp"
 
 	//Limits:

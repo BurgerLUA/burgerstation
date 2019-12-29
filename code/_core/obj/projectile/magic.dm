@@ -23,6 +23,7 @@
 	icon = 'icons/obj/projectiles/holy.dmi'
 	icon_state = "lightning"
 
+/*
 /obj/projectile/bullet/holy_summon
 	name = "holy summon"
 	icon = 'icons/obj/projectiles/holy.dmi'
@@ -31,6 +32,7 @@
 	hit_target_turf = TRUE
 
 	lifetime = SECONDS_TO_DECISECONDS(2)
+
 
 /obj/projectile/bullet/holy_summon/post_on_hit(var/atom/hit_atom)
 	var/mob/living/simple/npc/summon/holy_warrior/H = new(previous_loc,null,owner,SECONDS_TO_DECISECONDS(60))
@@ -43,7 +45,7 @@
 
 	lifetime = SECONDS_TO_DECISECONDS(1)
 
-/* MAKE THIS BETTER
+
 /obj/projectile/bullet/mass_heal/post_on_hit(var/atom/hit_atom)
 	for(var/mob/living/L in range(3,hit_atom))
 		L.to_chat(span("notice","You are hit with a soothing energy..."))

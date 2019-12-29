@@ -31,9 +31,9 @@
 
 /obj/hud/inventory/dynamic/New(var/desired_loc)
 
-	if(desired_loc && is_datum(desired_loc))
-		var/datum/D = desired_loc
-		name = "inventory space of [D.name]"
+	if(desired_loc && is_atom(desired_loc))
+		var/atom/A = desired_loc
+		name = "inventory space of [A.name]"
 
 	return ..()
 

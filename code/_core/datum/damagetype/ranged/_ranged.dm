@@ -1,7 +1,6 @@
 
 /damagetype/ranged/
 	name = "ranged weapon"
-	desc = "Shot with a ranged weapon."
 	allow_parry_counter = FALSE
 
 	draw_blood = TRUE

@@ -1,5 +1,4 @@
 /outfit/bartender
-	name = "Bartender's Outfit"
 	id  = "bartender"
 	spawning_clothes = list(
 		/obj/item/clothing/uniform/jumpsuit/bartender,

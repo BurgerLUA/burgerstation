@@ -1,6 +1,4 @@
 /class/xenomorph
-	name = "Xenomorph"
-	desc = "This is a template. You shouldn't see this."
 	id = "xenomorph"
 
 	//Limits:

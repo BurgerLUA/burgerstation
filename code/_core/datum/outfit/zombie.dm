@@ -1,5 +1,4 @@
 /outfit/zombie/winter
-	name = "Winter Zombie's Outfit"
 	id = "zombie_winter"
 	spawning_clothes = list(
 		/obj/item/clothing/pants/brown,
@@ -10,7 +9,6 @@
 	)
 
 /outfit/zombie/desert
-	name = "Mummy's Outfit"
 	id = "zombie_desert"
 	spawning_clothes = list(
 		/obj/item/clothing/mask/mummy,

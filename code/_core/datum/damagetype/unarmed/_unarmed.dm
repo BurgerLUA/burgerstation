@@ -1,10 +1,8 @@
 /damagetype/unarmed/
 	name = "Body"
-	desc = "Your body deals damage."
-
 	draw_blood = TRUE
 
-
+/*
 /damagetype/unarmed/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 
 	if(is_organ(hit_object))
@@ -15,3 +13,4 @@
 		return TRUE
 
 	return FALSE
+*/

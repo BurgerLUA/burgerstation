@@ -3,6 +3,7 @@
 #define ICON_BLEND_OVERLAY 0x4
 
 /icon_blend/
+	var/id
 	var/icon
 	var/icon_state
 	var/color

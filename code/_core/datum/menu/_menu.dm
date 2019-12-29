@@ -1,6 +1,5 @@
 /menu/
-	name = "Menu"
-	id = null
+	var/id = null
 
 	var/file
 	var/list/resources = list()

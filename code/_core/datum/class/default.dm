@@ -1,6 +1,4 @@
 /class/npc/default
-	name = "Default Class"
-	desc = "What people initially start out with."
 	id = "default"
 
 	//Limits:

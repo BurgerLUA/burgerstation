@@ -1,7 +1,7 @@
 /plant_type/
-	name = "plant name"
-	desc = "plant description"
-	id = null
+	var/name = "plant name"
+	var/desc = "plant description"
+	var/id = null
 	var/icon_count = 1
 	var/harvest_icon = 'icons/obj/items/consumable/food/plants.dmi'
 	var/list/reagents = list()

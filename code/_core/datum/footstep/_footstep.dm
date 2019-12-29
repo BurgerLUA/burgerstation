@@ -1,6 +1,5 @@
 /footstep/
-	name = "foostep"
-	id = null
+	var/id = null
 
 	var/list/footstep_sounds = list()
 

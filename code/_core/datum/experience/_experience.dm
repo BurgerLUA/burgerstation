@@ -1,7 +1,7 @@
 // https://www.desmos.com/calculator/lg5zticzca
 /experience/
-	name = "Base Experience Tracker"
-	id = null
+	var/name = "Base Experience Tracker"
+	var/id = null
 	var/desc = "This is the base experience tracker. You shouldn't have this."
 	var/desc_extended = "Extended description for that wall of text."
 
