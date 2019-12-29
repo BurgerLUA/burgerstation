@@ -322,12 +322,12 @@
 
 	return returning_list
 
-/savedata/proc/generate_blend_data(var/atom/A)
+/savedata/proc/generate_blend_data(var/obj/O)
 
 	var/list/returning_list = list()
-	for(var/id in A.additional_blends)
+	for(var/id in O.additional_blends)
 
-		var/icon_blend/IB = A.additional_blends[id]
+		var/icon_blend/IB = O.additional_blends[id]
 
 		if(IB.should_save)
 			returning_list[id] = list()

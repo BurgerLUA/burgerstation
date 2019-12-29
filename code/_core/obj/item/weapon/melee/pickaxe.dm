@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/pickaxe
+/obj/item/weapon/melee/tool/pickaxe
 	name = "steel pickaxe"
 	desc = "Useful for lobotomies."
 	icon = 'icons/obj/items/weapons/melee/clubs/pickaxe_steel.dmi'

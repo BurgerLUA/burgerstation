@@ -21,8 +21,6 @@
 
 	var/initialized = FALSE
 
-	var/list/additional_blends
-
 	var/override_icon = FALSE
 
 	var/doing_progress = FALSE
@@ -61,13 +59,6 @@
 	return TRUE
 
 /atom/Destroy()
-
-	for(var/blend_id in additional_blends)
-		var/icon_blend/IB = additional_blends[blend_id]
-		qdel(IB)
-
-	if(additional_blends)
-		additional_blends.Cut()
 
 	for(var/datum/O in underlays)
 		qdel(O)

@@ -1,4 +1,4 @@
-/savedata/client/mob/proc/apply_blend_data(var/atom/A, var/list/blend_data)
+/savedata/client/mob/proc/apply_blend_data(var/obj/O, var/list/blend_data)
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
 		var/desired_id = value_or_null(blend_list,"id")
@@ -7,7 +7,7 @@
 		var/desired_color = value_or_null(blend_list,"color")
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
-		A.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,1)
+		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,1)
 
 /savedata/client/mob/proc/get_proper_id_from_filepath(var/file_string)
 	var/file_name = get_filename(file_string)

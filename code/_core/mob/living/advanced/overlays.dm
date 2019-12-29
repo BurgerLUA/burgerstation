@@ -1,19 +1,19 @@
-mob/living/advanced/proc/add_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
+mob/living/advanced/proc/add_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
 	var/obj/overlay/O = new /obj/overlay
-	O.attached_object = A
-	O.initial_icon = desired_icon ? desired_icon : A.icon
-	O.initial_icon_state = desired_icon_state ? desired_icon_state : A.icon_state
-	O.layer = desired_layer ? desired_layer : A.layer
+	O.attached_object = object
+	O.initial_icon = desired_icon ? desired_icon : object.icon
+	O.initial_icon_state = desired_icon_state ? desired_icon_state : object.icon_state
+	O.layer = desired_layer ? desired_layer : object.layer
 	O.plane = src.plane
-	O.icon = desired_icon ? desired_icon : A.icon
-	O.icon_state = desired_icon_state ? desired_icon_state : A.icon_state
-	O.color = desired_color ? desired_color : A.color
+	O.icon = desired_icon ? desired_icon : object.icon
+	O.icon_state = desired_icon_state ? desired_icon_state : object.icon_state
+	O.color = desired_color ? desired_color : object.color
 	O.never_blend = desired_never_blend
 	O.no_initial = desired_no_initial
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
 	if(!desired_never_blend)
-		O.additional_blends = desired_additional_blends ? desired_additional_blends : A.additional_blends
+		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
 	O.update_icon()
 	add_overlay_image(O)
 

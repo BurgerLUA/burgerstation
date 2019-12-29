@@ -14,6 +14,22 @@
 
 	material_id = "steel"
 
+
+/obj/item/material/sheet/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			var/obj/item/material/rod/R = new(get_turf(src))
+			R.material_id = material_id
+			R.crafting_id = crafting_id
+			R.item_count_current = 4
+			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
+			item_count_current--
+			update_icon()
+
+	return ..()
+
 /obj/item/material/sheet/steel
 	name = "steel sheets"
 	desc = "The basic building material."

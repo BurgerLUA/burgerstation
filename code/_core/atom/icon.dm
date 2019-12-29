@@ -1,10 +1,10 @@
 /atom/proc/update_icon()
 	//icon = new_icon
 
-/atom/proc/initialize_blends()
+/obj/proc/initialize_blends()
 	return TRUE
 
-/atom/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save,var/desired_layer)
+/obj/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save,var/desired_layer)
 	if(blend_exists(desired_id))
 		change_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,desired_layer)
 		return additional_blends[desired_id]
@@ -15,7 +15,7 @@
 		additional_blends[desired_id] = IB
 		return IB
 
-/atom/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
+/obj/proc/change_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 
 	if(!additional_blends[desired_id])
 		return FALSE
@@ -43,7 +43,7 @@
 
 	return TRUE
 
-/atom/proc/blend_exists(var/desired_id)
+/obj/proc/blend_exists(var/desired_id)
 	if(!additional_blends)
 		return FALSE
 	return additional_blends[desired_id]
