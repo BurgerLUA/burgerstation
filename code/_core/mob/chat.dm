@@ -4,6 +4,14 @@
 		to_chat(span("warning","You are out of breath! Please wait [spam_protection_say - 1] seconds before speaking again!"))
 		return FALSE
 
+	spam_protection_say_tick = min(spam_protection_say_tick+2,5)
+
+	if(spam_protection_say_tick > 2)
+		to_chat(span("warning","You can't talk this fast!"))
+		return FALSE
+
+	spam_protection_say_tick = min(spam_protection_say_tick+1,10)
+
 	if(is_advanced(src))
 		var/mob/living/advanced/A = src
 		A.start_typing()
@@ -39,6 +47,7 @@
 		A.end_typing()
 
 	spam_protection_say += max(0.25,length(text_to_say)*0.01)
+
 
 	return TRUE
 

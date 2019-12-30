@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "disk"
 
-	var/list/disk_data = null
+	var/list/data = null
 
 	var/frame_color = "#FF0000"
 	var/writing_color = "#FFFFFF"
@@ -40,8 +40,9 @@
 
 /obj/item/disk/rcd/metal_wall
 	name = "rcd data disk (steel wall)"
-	disk_data = list(
+	data = list(
 		"name" = "steel_wall.turf",
+		"effect" = /obj/effect/temp/construction/wall,
 		"object" = /turf/simulated/wall/metal,
 		"cost" = 1000
 	)

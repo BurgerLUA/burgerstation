@@ -56,15 +56,6 @@
 	update_icon()
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-
-	/*
-	world.log << "Mag object was: [object]"
-
-	object = object.defer_click_on_object()
-
-	world.log << "Mag object now: [object]"
-	*/
-
 	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
 		eject_magazine(caller,object)
 		return TRUE

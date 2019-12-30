@@ -1,6 +1,6 @@
 /turf/proc/change_turf(var/turf/N, var/force_lighting_update = 0) //Stolen from /vg/
 
-	if (!N)
+	if(!N)
 		return FALSE
 
 	var/old_opacity = opacity

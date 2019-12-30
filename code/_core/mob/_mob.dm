@@ -53,6 +53,7 @@
 	//Increases by a certain amount every time you speak in IC.
 	//Measured in seconds.
 	//Reduces by 1 every second
+	var/spam_protection_say_tick = 0
 
 	var/skip_cutscene = FALSE //For cutscene skipping.
 

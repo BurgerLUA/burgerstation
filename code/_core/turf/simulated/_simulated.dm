@@ -24,6 +24,19 @@ var/global/saved_icons = 0
 	var/reinforced_material_id
 	var/reinforced_color
 
+
+/turf/proc/is_occupied()
+
+	for(var/atom/movable/A in contents)
+		if(istype(A,/obj/effect/temp/construction/))
+			return A
+		if(is_living(A))
+			return A
+		if(is_structure(A))
+			return A
+
+	return FALSE
+
 /turf/simulated/New(var/atom/desired_loc)
 
 	if(real_icon)
