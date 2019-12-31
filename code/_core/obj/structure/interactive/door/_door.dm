@@ -38,7 +38,7 @@ obj/structure/interactive/door
 obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)
-		var/obj/item/trigger_mechanism/signaller/S = new(src)
+		var/obj/item/device/signaller/S = new(src)
 		S.name = "[name] [S.name]"
 		S.frequency_current = radio_frequency
 		S.signal_current = radio_signal
@@ -114,12 +114,16 @@ obj/structure/interactive/door/proc/close()
 
 
 
-obj/structure/interactive/door/clicked_on_by_object(caller,object,location,control,params)
+obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	INTERACT_CHECK
 
-	if(!is_mob(caller))
+	if(!is_living(caller))
 		return FALSE
+
+	var/atom/A = check_interactables(caller,object,location,control,params)
+	if(A && A.clicked_on_by_object(caller,object,location,control,params))
+		return TRUE
 
 	if(door_state == DOOR_STATE_OPENED && allow_manual_close)
 		close()

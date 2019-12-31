@@ -1,6 +1,6 @@
-var/obj/item/trigger_mechanism/signaller/all_signalers = list()
+var/obj/item/device/signaller/all_signalers = list()
 
-/obj/item/trigger_mechanism/signaller
+/obj/item/device/signaller
 	name = "signaller"
 	icon_state = "signaller"
 
@@ -16,28 +16,28 @@ var/obj/item/trigger_mechanism/signaller/all_signalers = list()
 
 	var/mode = FALSE
 
-/obj/item/trigger_mechanism/signaller/door
+/obj/item/device/signaller/door
 	frequency_current = RADIO_FREQ_DOOR
 	signal_current = 1
 
-/obj/item/trigger_mechanism/signaller/New(var/desired_loc)
+/obj/item/device/signaller/New(var/desired_loc)
 	all_signalers += src
 	return ..()
 
-/obj/item/trigger_mechanism/signaller/Destroy()
+/obj/item/device/signaller/Destroy()
 	all_signalers -= src
 	return ..()
 
-/obj/item/trigger_mechanism/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 	trigger(attacker,src,-1,-1)
 	return TRUE
 
-/obj/item/trigger_mechanism/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	world.log << "[src.name].trigger([caller],[source],[signal_freq],[signal_code])"
 
 	if(signal_freq == -1 && signal_code == -1)
-		for(var/obj/item/trigger_mechanism/signaller/S in all_signalers)
+		for(var/obj/item/device/signaller/S in all_signalers)
 			if(S == src)
 				continue
 			S.trigger(caller,src,frequency_current,signal_current)
@@ -52,13 +52,13 @@ var/obj/item/trigger_mechanism/signaller/all_signalers = list()
 
 	return TRUE
 
-/obj/item/trigger_mechanism/signaller/click_self(var/mob/caller)
+/obj/item/device/signaller/click_self(var/mob/caller)
 	mode = !mode
 	caller.to_chat("You change the mode to [mode ? "frequency" : "signal"].")
 	spam_fix_time = 0
 	return TRUE
 
-/obj/item/trigger_mechanism/signaller/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/signaller/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = delta_y ? 1 : -1
 

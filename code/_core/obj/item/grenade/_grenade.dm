@@ -6,7 +6,7 @@
 	icon_state = "chem"
 
 	var/list/obj/item/container/beaker/stored_containers = list()
-	var/obj/item/trigger_mechanism/stored_trigger
+	var/obj/item/device/stored_trigger
 
 	reagents = /reagent_container/grenade
 
@@ -86,7 +86,7 @@
 
 		else if(is_trigger(object))
 			if(!stored_trigger)
-				var/obj/item/trigger_mechanism/T = object
+				var/obj/item/device/T = object
 				T.drop_item(src)
 				T.force_move(src)
 				stored_trigger = T

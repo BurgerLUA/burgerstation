@@ -59,3 +59,7 @@
 	spawn_signaller = TRUE
 	radio_frequency = RADIO_FREQ_DOOR
 	radio_signal = 1
+
+/obj/structure/interactive/door/airlock/station/private/New(var/desired_loc)
+	new /obj/item/device/keypad(src)
+	return ..()

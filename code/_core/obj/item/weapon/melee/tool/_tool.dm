@@ -25,6 +25,19 @@
 
 	flags_tool = FLAG_TOOL_MULTITOOL
 
+/obj/item/weapon/melee/tool/multitool/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(istype(object,/obj/structure/interactive/))
+		var/obj/structure/interactive/I = object
+		var/atom/movable/A = I.check_interactables(caller,src,location,control,params)
+		if(A)
+			A.force_move(get_turf(caller))
+			caller.to_chat("You successfully remove \the [A] from \the [I].")
+		return TRUE
+
+	return ..()
+
+
 /obj/item/weapon/melee/tool/screwdriver
 	name = "screwdriver"
 	icon = 'icons/obj/items/weapons/melee/tools/screwdriver.dmi'

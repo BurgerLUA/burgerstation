@@ -4,11 +4,31 @@ obj/structure/interactive/
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
 
-obj/structure/interactive/clicked_on_by_object(var/mob/caller,object,location,control,params)
+obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/object,location,control,params)
 
-	for(var/obj/item/trigger_mechanism/T in contents)
-		if(!T.interactable)
+	var/list/valid_interactables = list()
+
+	var/has_multitool = FALSE
+
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
+			has_multitool = TRUE
+
+	for(var/obj/item/device/T in contents)
+		if(!has_multitool && !T.interactable)
 			continue
-		return T.clicked_on_by_object(caller,object,location,control,params)
+		valid_interactables += T
 
-	return ..()
+	var/valid_length = length(valid_interactables)
+	if(!valid_length)
+		return FALSE
+
+	var/obj/item/device/T
+
+	if(valid_length == 1)
+		T = valid_interactables[1]
+	else
+		T = input(caller,"Which device do you wish to interact with?","Device Interaction") in valid_interactables
+
+	return T

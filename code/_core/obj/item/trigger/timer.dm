@@ -1,4 +1,4 @@
-/obj/item/trigger_mechanism/timer
+/obj/item/device/timer
 	name = "timer"
 	icon_state = "timer"
 
@@ -10,16 +10,16 @@
 
 	var/spam_fix_time = 0
 
-/obj/item/trigger_mechanism/timer/click_self(var/mob/caller)
+/obj/item/device/timer/click_self(var/mob/caller)
 	trigger(caller,src,-1,-1)
 	return TRUE
 
-/obj/item/trigger_mechanism/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	start_thinking(src)
 	active = TRUE
 	return ..()
 
-/obj/item/trigger_mechanism/timer/think()
+/obj/item/device/timer/think()
 	. = ..()
 	if(active)
 		time_set -= 1
@@ -31,7 +31,7 @@
 			return FALSE
 	return .
 
-/obj/item/trigger_mechanism/timer/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/timer/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = delta_y ? 1 : -1
 

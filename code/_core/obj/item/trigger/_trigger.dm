@@ -1,4 +1,4 @@
-/obj/item/trigger_mechanism
+/obj/item/device
 	name = "trigger assembly"
 	icon = 'icons/obj/items/trigger.dmi'
 
