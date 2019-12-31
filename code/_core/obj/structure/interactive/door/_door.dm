@@ -31,9 +31,24 @@ obj/structure/interactive/door
 	var/open_sound = null
 	var/close_sound = null
 
-obj/structure/interactive/door/New()
+	var/spawn_signaller = FALSE
+	var/radio_frequency = RADIO_FREQ_DOOR
+	var/radio_signal = 20
+
+obj/structure/interactive/door/New(var/desired_loc)
+
+	if(spawn_signaller)
+		var/obj/item/trigger_mechanism/signaller/S = new(src)
+		S.name = "[name] [S.name]"
+		S.frequency_current = radio_frequency
+		S.signal_current = radio_signal
+		door_state = DOOR_STATE_CLOSED
+		locked = TRUE
+
 	. = ..()
+
 	update_icon()
+
 	return .
 
 obj/structure/interactive/door/update_icon()
@@ -87,6 +102,15 @@ obj/structure/interactive/door/proc/close()
 		door_state = DOOR_STATE_CLOSED
 		update_icon()
 
+/obj/structure/interactive/door/airlock/proc/unlock()
+	locked = FALSE
+	update_icon()
+	return TRUE
+
+/obj/structure/interactive/door/airlock/proc/lock()
+	locked = TRUE
+	update_icon()
+	return TRUE
 
 
 

@@ -1,5 +1,8 @@
 /client/verb/ooc(var/text_to_say as text)
 
+	if(check_spam(src))
+		return FALSE
+
 	if(!text_to_say)
 		text_to_say = input("What would you like to say?")
 

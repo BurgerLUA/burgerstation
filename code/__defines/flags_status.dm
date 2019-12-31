@@ -32,6 +32,9 @@
 //Moves 1 step away from the stagger source.
 
 #define FLAG_STATUS_CONFUSED 0x20
+//Random movement.
 
 
 #define FLAG_STATUS_CRIT 0x40
+//Cannot dodge, parry, block, and you have a 100% chance to be hit.
+//Move very slow.

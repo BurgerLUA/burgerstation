@@ -1,6 +1,11 @@
-#define RADIO_FREQ_MAX 189.9
-#define RADIO_FREQ_MIN 110.1
 
+#define RADIO_FREQ_MIN 110.1
+#define RADIO_FREQ_MAX 189.9
+
+
+
+
+#define RADIO_FREQ_DOOR 180.9
 
 
 #define RADIO_FREQ_COMMON 145.9

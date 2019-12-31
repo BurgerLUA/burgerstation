@@ -49,3 +49,13 @@
 	name = "security airlock"
 	color = "#A70000"
 	fill_color = "#FFB200"
+
+/obj/structure/interactive/door/airlock/station/private
+	name = "private airlock"
+	filler = "fill"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
+
+	spawn_signaller = TRUE
+	radio_frequency = RADIO_FREQ_DOOR
+	radio_signal = 1

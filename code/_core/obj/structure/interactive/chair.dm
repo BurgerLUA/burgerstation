@@ -4,6 +4,18 @@ obj/structure/interactive/chair
 	icon = 'icons/obj/structure/chairs.dmi'
 	icon_state = "chair"
 
+obj/structure/interactive/chair/set_dir(var/desired_dir)
+
+	. = ..()
+
+	if(.)
+		if(dir == NORTH)
+			plane = PLANE_MOB
+		else
+			plane = initial(plane)
+
+	return .
+
 obj/structure/interactive/chair/Crossed(var/atom/movable/O)
 
 	. = ..()

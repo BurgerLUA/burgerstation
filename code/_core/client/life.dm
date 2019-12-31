@@ -1,5 +1,7 @@
 /client/proc/on_life()
 
+	spam_protection_chat = max(0,spam_protection_chat-1)
+
 	if(queued_chat_messages && length(queued_chat_messages) && queued_chat_messages[1])
 
 		var/list/queued_message = queued_chat_messages[1]
@@ -10,7 +12,6 @@
 			src << output(text,target)
 
 		queued_chat_messages.Cut(1,2)
-
 
 	ping()
 

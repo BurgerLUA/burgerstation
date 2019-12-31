@@ -42,6 +42,7 @@ obj/structure/interactive/computer/console/laptop
 obj/structure/interactive/computer/console/old
 	name = "old computer"
 	icon_state = "oldcomp"
+	pixel_y = 10
 
 
 obj/structure/interactive/computer/console/old/chargen_job

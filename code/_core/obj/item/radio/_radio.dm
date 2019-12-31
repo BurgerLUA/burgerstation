@@ -36,7 +36,7 @@ var/global/list/obj/item/radio/all_radios = list()
 
 /obj/item/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
 
-	var/fixed_delta = round(Clamp(delta_y,-1,1))
+	var/fixed_delta = delta_y ? 1 : -1
 
 	var/old_frequency = frequency
 

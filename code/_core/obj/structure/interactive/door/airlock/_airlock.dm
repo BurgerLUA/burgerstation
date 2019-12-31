@@ -22,6 +22,17 @@
 
 	var/no_access = FALSE
 
+/obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+
+	if(door_state == DOOR_STATE_CLOSED)
+		open(TRUE)
+		world.log << "Opening [src]!"
+	else if(door_state == DOOR_STATE_OPENED)
+		close(TRUE)
+		world.log << "Closing [src]!"
+
+	return TRUE
+
 /obj/structure/interactive/door/airlock/think()
 
 	if(door_state == DOOR_STATE_OPENED)
@@ -44,7 +55,10 @@
 
 	return TRUE
 
-obj/structure/interactive/door/airlock/open()
+obj/structure/interactive/door/airlock/open(var/unlock = FALSE)
+
+	if(unlock && locked)
+		unlock()
 
 	if(door_state != DOOR_STATE_CLOSED)
 		return FALSE
@@ -87,7 +101,7 @@ obj/structure/interactive/door/airlock/open()
 		update_icon()
 		start_thinking(src)
 
-obj/structure/interactive/door/airlock/close()
+obj/structure/interactive/door/airlock/close(var/lock = FALSE)
 
 	if(door_state != DOOR_STATE_OPENED)
 		return FALSE
@@ -127,6 +141,8 @@ obj/structure/interactive/door/airlock/close()
 			door_state = DOOR_STATE_CLOSED
 			update_icon()
 			stop_thinking(src)
+			if(lock)
+				lock()
 
 /obj/structure/interactive/door/airlock/update_icon()
 

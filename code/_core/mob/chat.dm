@@ -1,16 +1,23 @@
+/proc/check_spam(var/client/C)
+
+	C.spam_protection_chat = min(C.spam_protection_chat+2,5)
+
+	if(C.spam_protection_chat > 2)
+		C.to_chat(span("warning","You can't talk this fast!"))
+		return TRUE
+
+	C.spam_protection_chat = min(C.spam_protection_chat+1,10)
+
+	return FALSE
+
 /mob/verb/say(var/text_to_say as text)
 
 	if(spam_protection_say >= 1 && src.client)
 		to_chat(span("warning","You are out of breath! Please wait [spam_protection_say - 1] seconds before speaking again!"))
 		return FALSE
 
-	spam_protection_say_tick = min(spam_protection_say_tick+2,5)
-
-	if(spam_protection_say_tick > 2)
-		to_chat(span("warning","You can't talk this fast!"))
+	if(client && check_spam(client))
 		return FALSE
-
-	spam_protection_say_tick = min(spam_protection_say_tick+1,10)
 
 	if(is_advanced(src))
 		var/mob/living/advanced/A = src
@@ -54,11 +61,14 @@
 /mob/verb/emote(var/emote_id as text)
 	//do stuff
 
-
 /mob/verb/whisper(var/text_to_say as text)
 	//do stuff
 
 /mob/verb/looc(var/text_to_say as text)
+
+	if(client && check_spam(client))
+		return FALSE
+
 	display_message(src,src,text_to_say,TEXT_LOOC)
 
 /mob/proc/to_chat(var/text,var/chat_type = CHAT_TYPE_INFO)

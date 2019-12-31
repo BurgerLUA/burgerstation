@@ -52,6 +52,8 @@ var/global/list/all_clients = list()
 	var/ping = 0
 	var/ping_id = 0
 
+	var/spam_protection_chat = 0 //Prevents users from spamming every tick.
+
 //Ping verb by Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
 /client/verb/ping(time as num)
 	set instant = 1
