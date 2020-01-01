@@ -12,6 +12,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	class = "default"
 
 	var/dialogue_target_id
+	var/atom/dialogue_target
 
 	invisibility = INVISIBILITY_PLAYERS
 
@@ -65,6 +66,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/squad/current_squad
 
+	var/geared_up
+
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE)
 
 	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
@@ -101,6 +104,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	name = "[real_name] ([client ? client : "NO CKEY"])"
 
 /mob/living/advanced/player/Destroy()
+
+	dialogue_target = null
 
 	if(current_squad)
 		current_squad.remove_member(src)

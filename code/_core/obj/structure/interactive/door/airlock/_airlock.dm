@@ -25,11 +25,12 @@
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(door_state == DOOR_STATE_CLOSED)
-		open(TRUE)
-		world.log << "Opening [src]!"
+		if(locked)
+			open(TRUE)
+		else
+			lock()
 	else if(door_state == DOOR_STATE_OPENED)
 		close(TRUE)
-		world.log << "Closing [src]!"
 
 	return TRUE
 
@@ -43,7 +44,7 @@
 	if(door_state == DOOR_STATE_OPENED && opened_time >= 100)
 
 		var/has_living = FALSE
-		for(var/mob/living/L in contents)
+		for(var/mob/living/L in loc.contents)
 			has_living = TRUE
 			break
 
@@ -123,6 +124,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE)
 				break
 
 		if(found_living)
+			opened_time = 0
 			door_state = DOOR_STATE_OPENING_02
 			update_icon()
 

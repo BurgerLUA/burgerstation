@@ -80,3 +80,8 @@
 	color_primary = "#FFFFFF"
 	color_secondary = "#404040"
 	color_tertiary = "#FFFFFF"
+
+/obj/item/clothing/uniform/jumpsuit/medical_doctor
+	color_primary = "#FFFFFF"
+	color_secondary = "#FFFFFF"
+	color_tertiary = COLOR_MEDICAL

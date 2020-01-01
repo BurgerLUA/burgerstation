@@ -31,6 +31,7 @@
 
 	if(dialogue_id && is_player(caller))
 		var/mob/living/advanced/player/P = caller
+		P.dialogue_target = src
 		P.dialogue_target_id = dialogue_id
 		open_menu(P,"dialogue")
 		return TRUE

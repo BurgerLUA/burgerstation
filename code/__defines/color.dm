@@ -13,9 +13,12 @@
 
 #define COLOR_CARGO "#BB9042"
 #define COLOR_COMMAND "#2C566E"
+#define COLOR_MEDICAL "#0094FF"
 
 
 
 #define COLOR_STEEL "#444444"
 #define COLOR_GLASS "#D9FFFF"
 #define COLOR_PLASTEEL "#A0A0A0"
+
+

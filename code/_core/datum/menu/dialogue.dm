@@ -26,7 +26,7 @@
 		D.add_stored_topics_if_exist(P)
 		run_function(usr,"set_name","'[D.name]'")
 	else
-		LOG_ERROR("ALERT: [user] cannot access dialgoue ID [P.dialogue_target_id]!")
+		LOG_ERROR("ALERT: [user] cannot access dialogue ID [P.dialogue_target_id]!")
 
 /menu/dialogue/close(var/user)
 	winset(user, "map.dialogue","is-visible=false")

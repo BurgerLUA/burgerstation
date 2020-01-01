@@ -45,12 +45,12 @@ obj/structure/interactive/computer/console/old
 	pixel_y = 10
 
 
-obj/structure/interactive/computer/console/old/chargen_job
+obj/structure/interactive/computer/console/old/chargen
 	name = "\improper IMB piece of shit"
 	computer_type = "library"
 	keyboard_type = ""
 
-obj/structure/interactive/computer/console/old/chargen_job/clicked_on_by_object(caller,object,location,control,params)
+obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_player(caller))
 		return TRUE
@@ -69,3 +69,26 @@ obj/structure/interactive/computer/console/medical
 	name = "medical console"
 	computer_type = "medcomp"
 	keyboard_type = "med_key"
+
+
+obj/structure/interactive/computer/console/old/station_job
+	name = "job selection computer"
+	computer_type = "library"
+	keyboard_type = ""
+	var/door_code = 0
+	var/unit_number = 0
+
+obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(caller,object,location,control,params)
+
+	if(!is_player(caller))
+		return TRUE
+
+	INTERACT_CHECK
+
+	var/mob/living/advanced/player/P = caller
+
+	P.dialogue_target = src
+	P.dialogue_target_id = "job_computer"
+	open_menu(P,"dialogue")
+
+	return TRUE
