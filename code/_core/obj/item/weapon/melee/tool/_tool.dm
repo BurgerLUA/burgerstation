@@ -32,11 +32,10 @@
 		var/atom/movable/A = I.check_interactables(caller,src,location,control,params)
 		if(A)
 			A.force_move(get_turf(caller))
-			caller.to_chat("You successfully remove \the [A] from \the [I].")
+			caller.to_chat("You successfully remove \the [A.name] from \the [I.name] with \the [src.name].")
 		return TRUE
 
 	return ..()
-
 
 /obj/item/weapon/melee/tool/screwdriver
 	name = "screwdriver"

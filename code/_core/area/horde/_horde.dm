@@ -15,6 +15,9 @@
 	icon_state = "safe"
 	safe = TRUE
 
+/area/horde/station/cryo
+	name = "crew cabin"
+
 /area/horde/station/bathroom
 	name = "Bathroom"
 	icon_state = "safe2"

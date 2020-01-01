@@ -50,4 +50,12 @@ var/global/dmm_suite/dmm_suite
 
 		maps_loaded++
 
+	var/prefabs_loaded = 0
+
+	for(var/obj/marker/map/M in world)
+		dmm_suite.read_map(M.map_file,M.x,M.y,M.z)
+		prefabs_loaded++
+
+	LOG_SERVER("Loaded [prefabs_loaded] prefabs.")
 	LOG_SERVER("Loaded [maps_loaded] maps.")
+

@@ -112,8 +112,6 @@ obj/structure/interactive/door/proc/close()
 	update_icon()
 	return TRUE
 
-
-
 obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	INTERACT_CHECK
