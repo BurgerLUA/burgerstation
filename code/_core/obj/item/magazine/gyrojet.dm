@@ -10,10 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle
 	)
 
-/obj/item/magazine/gyrojet/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/gyrojet(src)
-	update_icon()
+	ammo = /obj/item/bullet/gyrojet
 
 /obj/item/magazine/gyrojet/update_icon()
 	if(length(stored_bullets))

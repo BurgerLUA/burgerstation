@@ -66,4 +66,6 @@
 	name = "autolocker vendor"
 	icon_state = "gear"
 
-	stored_types = list(/obj/item/clothing/mask/emoji)
+	stored_types = list(
+		/obj/item/clothing/back/storage/dufflebag/loadout/medical
+	)

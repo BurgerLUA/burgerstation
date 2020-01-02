@@ -64,30 +64,30 @@
 	name = "bicaridine pill bottle"
 	desc = "Contains 20 20u bicaridine pills."
 
-/obj/item/storage/bags/pills/bicaridine/on_spawn()
+/obj/item/storage/bags/pills/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		var/obj/item/container/pill/bicaridine/P = new(src.loc)
+		var/obj/item/container/pill/bicaridine/P = new(src)
 		P.on_spawn()
-		inventories[1].add_held_object(P,bypass_checks = TRUE)
+	return ..()
 
 
 /obj/item/storage/bags/pills/kelotane
 	name = "kelotane pill bottle"
 	desc = "Contains 20 20u kelotane pills."
 
-/obj/item/storage/bags/pills/kelotane/on_spawn()
+/obj/item/storage/bags/pills/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		var/obj/item/container/pill/kelotane/P = new(src.loc)
+		var/obj/item/container/pill/kelotane/P = new(src)
 		P.on_spawn()
-		inventories[1].add_held_object(P,bypass_checks = TRUE)
+	return ..()
 
 
 /obj/item/storage/bags/pills/dylovene
 	name = "dylovene pill bottle"
 	desc = "Contains 20 20u dylovene pills."
 
-/obj/item/storage/bags/pills/dylovene/on_spawn()
+/obj/item/storage/bags/pills/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		var/obj/item/container/pill/dylovene/P = new(src.loc)
+		var/obj/item/container/pill/dylovene/P = new(src)
 		P.on_spawn()
-		inventories[1].add_held_object(P,bypass_checks = TRUE)
+	return ..()

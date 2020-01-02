@@ -11,10 +11,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special
 	)
 
-/obj/item/magazine/pistol_45/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_45(src)
-	update_icon()
+	ammo = /obj/item/bullet/pistol_45
 
 /obj/item/magazine/pistol_45/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
@@ -24,17 +21,9 @@
 /obj/item/magazine/pistol_45/surplus
 	name = "\improper surplus .45 pistol magazine"
 
-/obj/item/magazine/pistol_45/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_45/surplus(src)
-	update_icon()
-
-
+	ammo = /obj/item/bullet/pistol_45/surplus
 
 /obj/item/magazine/pistol_45/rubber
 	name = "\improper rubber .45 pistol magazine"
 
-/obj/item/magazine/pistol_45/rubber/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_45/rubber(src)
-	update_icon()
+	ammo = /obj/item/bullet/pistol_45/rubber

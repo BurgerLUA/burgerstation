@@ -17,8 +17,7 @@
 
 /obj/item/container/food/on_spawn()
 	original_volume = reagents.volume_current
-	update_icon()
-	return
+	return ..()
 
 /obj/item/container/food/update_icon()
 

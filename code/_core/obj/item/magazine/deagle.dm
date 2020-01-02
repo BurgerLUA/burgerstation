@@ -9,10 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle
 	)
 
-/obj/item/magazine/pistol_50ae/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_50ae(src)
-	update_icon()
+	ammo = /obj/item/bullet/pistol_50ae
 
 /obj/item/magazine/pistol_50ae/update_icon()
 	if(length(stored_bullets))

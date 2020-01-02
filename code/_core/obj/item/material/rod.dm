@@ -51,11 +51,14 @@
 /obj/item/material/rod/steel/spawn_50/on_spawn()
 	item_count_current = 50
 	update_icon()
+	return ..()
 
 /obj/item/material/rod/steel/spawn_25/on_spawn()
 	item_count_current = 25
 	update_icon()
+	return ..()
 
 /obj/item/material/rod/steel/spawn_10/on_spawn()
 	item_count_current = 10
 	update_icon()
+	return ..()

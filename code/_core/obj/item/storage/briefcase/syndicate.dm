@@ -15,13 +15,13 @@
 	container_max_size = 4
 	dynamic_inventory_count = 3
 
-/obj/item/storage/briefcase/syndicate/sniper/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/heavy_sniper(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/syndicate/sniper/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/heavy_sniper(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/sniper_50(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/sniper_50(src)
 		M.on_spawn()
 		M.update_icon()
-		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()
 
 /obj/item/storage/briefcase/syndicate/smg
 	name = "syndicate smg pack"
@@ -29,13 +29,13 @@
 	container_max_size = 3
 	dynamic_inventory_count = 4
 
-/obj/item/storage/briefcase/syndicate/smg/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/smg(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/syndicate/smg/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/smg(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/smg_45(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/smg_45(src)
 		M.on_spawn()
 		M.update_icon()
-		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()
 
 /obj/item/storage/briefcase/syndicate/rifle
 	name = "syndicate assault rifle pack"
@@ -43,13 +43,13 @@
 	container_max_size = 3
 	dynamic_inventory_count = 4
 
-/obj/item/storage/briefcase/syndicate/rifle/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/syndicate/rifle/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/rifle_556(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/rifle_556(src)
 		M.on_spawn()
 		M.update_icon()
-		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()
 
 /obj/item/storage/briefcase/syndicate/pistol
 	name = "syndicate pistol pack"
@@ -57,13 +57,14 @@
 	container_max_size = 2
 	dynamic_inventory_count = 6
 
-/obj/item/storage/briefcase/syndicate/pistol/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/pistol(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/syndicate/pistol/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/pistol(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/pistol_10mm(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/pistol_10mm(src)
 		M.on_spawn()
 		M.update_icon()
 		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()
 
 
 /obj/item/storage/briefcase/syndicate/autoshotgun
@@ -72,13 +73,13 @@
 	container_max_size = 3
 	dynamic_inventory_count = 3
 
-/obj/item/storage/briefcase/syndicate/autoshotgun/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/autoshotgun(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/syndicate/autoshotgun/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/autoshotgun(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/shotgun_auto(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/shotgun_auto(src)
 		M.on_spawn()
 		M.update_icon()
-		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()
 
 
 /obj/item/storage/briefcase/syndicate/revoler
@@ -87,10 +88,10 @@
 	container_max_size = 2
 	dynamic_inventory_count = 5
 
-/obj/item/storage/briefcase/syndicate/revoler/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/revolver/traitor_357(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/syndicate/revoler/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/revolver/traitor_357(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/clip/revolver/bullet_357(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/clip/revolver/bullet_357(src)
 		M.on_spawn()
 		M.update_icon()
-		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()

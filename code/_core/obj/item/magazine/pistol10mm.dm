@@ -9,10 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol
 	)
 
-/obj/item/magazine/pistol_10mm/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_10mm(src)
-	update_icon()
+	ammo = /obj/item/bullet/pistol_10mm
 
 /obj/item/magazine/pistol_10mm/update_icon()
 	if(length(stored_bullets))
@@ -26,8 +23,4 @@
 /obj/item/magazine/pistol_10mm/surplus
 	name = "\improper surplus 10mm auto pistol magazine"
 
-
-/obj/item/magazine/pistol_10mm/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_10mm/surplus(src)
-	update_icon()
+	ammo = /obj/item/bullet/pistol_10mm/surplus

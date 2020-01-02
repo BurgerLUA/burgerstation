@@ -17,7 +17,7 @@
 
 /obj/item/bullet/bolt/on_spawn()
 	item_count_current = 3
-	update_icon()
+	return ..()
 
 
 /obj/item/bullet/bolt/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)

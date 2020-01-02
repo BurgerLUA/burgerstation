@@ -20,4 +20,6 @@
 
 
 /obj/item/clothing/back/storage/dufflebag/loadout/medical/fill_inventory()
-	new obj/item/clothing/uniform/jumpsuit/medical_doctor(src.loc)
+	new /obj/item/clothing/uniform/jumpsuit/medical_doctor(src)
+	new /obj/item/storage/shoebox/colored(src)
+	return ..()

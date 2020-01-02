@@ -18,9 +18,7 @@
 		/obj/item/weapon/ranged/bullet/revolver/detective
 	)
 
-/obj/item/magazine/clip/revolver/bullet_38/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_38(src)
+	ammo = /obj/item/bullet/revolver_38
 
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 magnum speedloader"
@@ -34,19 +32,11 @@
 		/obj/item/weapon/ranged/bullet/revolver/deckhard
 	)
 
-/obj/item/magazine/clip/revolver/bullet_44/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_44(src)
+	ammo = /obj/item/bullet/revolver_44
 
 /obj/item/magazine/clip/revolver/bullet_44/surplus/
 	name = "\improper surplus .44 magnum speedloader"
-
-/obj/item/magazine/clip/revolver/bullet_44/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_44/surplus(src)
-
-
-
+	ammo = /obj/item/bullet/revolver_44/surplus
 
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
@@ -57,10 +47,7 @@
 
 	weapon_whitelist = list()
 
-/obj/item/magazine/clip/revolver/bullet_22/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_22(src)
-
+	ammo = /obj/item/bullet/revolver_22
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
@@ -73,15 +60,8 @@
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357
 	)
 
-/obj/item/magazine/clip/revolver/bullet_357/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_357(src)
-
+	ammo = /obj/item/bullet/revolver_357
 
 /obj/item/magazine/clip/revolver/bullet_357/surplus
 	name = "\improper surplus .357 speedloader"
-
-
-/obj/item/magazine/clip/revolver/bullet_357/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/revolver_357/surplus(src)
+	ammo = /obj/item/bullet/revolver_357/surplus

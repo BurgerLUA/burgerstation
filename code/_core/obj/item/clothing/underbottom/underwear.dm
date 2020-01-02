@@ -16,6 +16,7 @@
 
 /obj/item/clothing/underbottom/underwear/boxers/random/on_spawn()
 	color = random_color()
+	return ..()
 
 /obj/item/clothing/underbottom/underwear/boxers/heart
 	name = "heart boxers"

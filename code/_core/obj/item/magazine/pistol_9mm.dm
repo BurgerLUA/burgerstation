@@ -9,10 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/machine
 	)
 
-/obj/item/magazine/pistol_9mm/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_9mm(src)
-	update_icon()
+	ammo = /obj/item/bullet/pistol_9mm
 
 /obj/item/magazine/pistol_9mm/update_icon()
 	if(length(stored_bullets))

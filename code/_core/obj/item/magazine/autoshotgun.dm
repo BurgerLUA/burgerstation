@@ -9,11 +9,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/autoshotgun
 	)
 
+	ammo = /obj/item/bullet/shotgun/slug
+
 /obj/item/magazine/shotgun_auto/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 	..()
-
-/obj/item/magazine/shotgun_auto/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/shotgun/buckshot(src)
-	update_icon()

@@ -99,3 +99,4 @@
 
 /obj/item/bullet/revolver_22/surplus/on_spawn()
 	item_count_current = 6
+	return ..()

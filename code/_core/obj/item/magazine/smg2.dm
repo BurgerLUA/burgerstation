@@ -9,21 +9,13 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw
 	)
 
+	ammo = /obj/item/bullet/pistol_9mm
 
 /obj/item/magazine/smg_9mm/update_icon()
 	icon_state = "[initial(icon_state)]-[round(length(stored_bullets),4)]"
 	..()
 
-/obj/item/magazine/smg_9mm/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_9mm(src)
-	update_icon()
-
-
 /obj/item/magazine/smg_9mm/surplus
 	name = "surplus 9mm PDW magazine"
+	ammo = /obj/item/bullet/pistol_9mm/surplus
 
-/obj/item/magazine/smg_9mm/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/pistol_9mm/surplus(src)
-	update_icon()

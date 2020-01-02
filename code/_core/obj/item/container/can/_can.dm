@@ -41,9 +41,8 @@
 	desc = R.desc
 	icon_state = best_reagent
 	desc_extended = "An alluminum can that is said to contain delicious beverage. This one contains [R.name]."
-	update_icon()
 
-	return TRUE
+	return ..()
 
 /obj/item/container/beaker/can/cola/on_spawn()
 	reagents.add_reagent("cola",reagents.volume_max)

@@ -14,6 +14,7 @@
 
 /obj/item/bullet/shotgun/on_spawn()
 	item_count_current = 4
+	return ..()
 
 /obj/item/bullet/shotgun/slug
 	name = "\improper 12 gauge slug"

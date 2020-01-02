@@ -17,10 +17,10 @@
 	container_max_size = 2
 	dynamic_inventory_count = 6
 
-/obj/item/storage/briefcase/deagle/on_spawn()
-	inventories[1].add_held_object(new /obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle(src.loc),bypass_checks = TRUE)
+/obj/item/storage/briefcase/deagle/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle(src)
 	for(var/i=2,i<=6,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/pistol_50ae(src.loc)
+		var/obj/item/magazine/M = new /obj/item/magazine/pistol_50ae(src)
 		M.on_spawn()
 		M.update_icon()
-		inventories[i].add_held_object(M,bypass_checks = TRUE)
+	return ..()

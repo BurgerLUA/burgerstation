@@ -7,6 +7,14 @@
 
 	var/list/weapon_whitelist = list() //What guns can fit this object?
 
+	var/ammo
+
+/obj/item/magazine/on_spawn()
+	for(var/i=1, i <= bullet_count_max, i++)
+		stored_bullets += new ammo(src)
+	update_icon()
+	return ..()
+
 /obj/item/magazine/Destroy()
 
 	for(var/obj/item/bullet/B in stored_bullets)

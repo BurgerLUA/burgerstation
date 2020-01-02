@@ -9,10 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/assault_rifle
 	)
 
-/obj/item/magazine/rifle_556/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/rifle_556(src)
-	update_icon()
+	ammo = /obj/item/bullet/rifle_556
 
 /obj/item/magazine/rifle_556/update_icon()
 	if(length(stored_bullets))
@@ -25,7 +22,4 @@
 /obj/item/magazine/rifle_556/surplus
 	name = "\improper surplus 5.56mm magazine"
 
-/obj/item/magazine/rifle_556/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/rifle_556/surplus(src)
-	update_icon()
+	ammo = /obj/item/bullet/rifle_556/surplus

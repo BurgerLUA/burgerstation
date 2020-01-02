@@ -23,5 +23,5 @@
 	loc = null
 	return ..()
 
-/obj/proc/on_spawn() //When the object is spawned by a spawnpoint
-	return
+/obj/proc/on_spawn() //When the object is spawned on the map and not loaded.
+	return TRUE

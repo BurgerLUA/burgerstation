@@ -9,10 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/heavy_sniper
 	)
 
-/obj/item/magazine/sniper_50/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/sniper_50(src)
-	update_icon()
+	ammo = /obj/item/bullet/sniper_50
 
 /obj/item/magazine/sniper_50/update_icon()
 	if(length(stored_bullets))
@@ -22,14 +19,6 @@
 
 	..()
 
-
-
 /obj/item/magazine/sniper_50/surplus
 	name = "\improper surplus .50 magazine"
-
-
-
-/obj/item/magazine/sniper_50/surplus/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/sniper_50/surplus(src)
-	update_icon()
+	ammo = /obj/item/bullet/sniper_50/surplus

@@ -104,3 +104,4 @@
 
 /obj/item/weapon/ranged/magic/scroll/fireball/amount_3/on_spawn()
 	scroll_count = 5
+	return ..()

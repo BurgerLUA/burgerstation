@@ -15,6 +15,7 @@
 
 /obj/item/bullet/rifle_762/on_spawn()
 	item_count_current = 5
+	return ..()
 
 
 /obj/item/bullet/rifle_762/surplus

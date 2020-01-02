@@ -8,6 +8,7 @@
 
 /obj/item/powercell/on_spawn()
 	charge_current = charge_max
+	return ..()
 
 /obj/item/powercell/update_icon()
 

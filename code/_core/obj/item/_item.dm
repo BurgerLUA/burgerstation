@@ -213,7 +213,7 @@
 
 	return ..()
 
-/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE) //We add the object to this item's inventory.
+/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE
@@ -222,7 +222,7 @@
 
 	if(object != src)
 		for(var/obj/hud/inventory/I in inventories)
-			if(I.add_object(object,FALSE))
+			if(I.add_object(object,FALSE,bypass))
 				added = TRUE
 				break
 

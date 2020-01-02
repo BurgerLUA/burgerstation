@@ -13,6 +13,7 @@
 
 /obj/item/weapon/melee/tool/rcd/on_spawn()
 	matter_current = matter_max
+	return ..()
 
 /obj/item/weapon/melee/tool/rcd/proc/add_matter(var/matter_amount)
 	matter_current = min(matter_current + matter_amount,matter_max)

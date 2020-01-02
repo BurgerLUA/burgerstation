@@ -14,9 +14,9 @@
 	container_max_size = 6
 	container_held_slots = 6
 
-/obj/item/storage/ammo/bullet_22/on_spawn()
+/obj/item/storage/ammo/bullet_22/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
 		var/obj/item/bullet/B = new /obj/item/bullet/revolver_22/surplus(src)
 		B.on_spawn()
 		B.update_icon()
-		add_to_inventory(null,B,FALSE)
+	return ..()

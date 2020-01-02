@@ -741,7 +741,6 @@
 #include "code\_core\obj\item\soulgems\_soulgem.dm"
 #include "code\_core\obj\item\storage\_storage.dm"
 #include "code\_core\obj\item\storage\ammo.dm"
-#include "code\_core\obj\item\storage\food.dm"
 #include "code\_core\obj\item\storage\gloves.dm"
 #include "code\_core\obj\item\storage\pouch.dm"
 #include "code\_core\obj\item\storage\shoes.dm"

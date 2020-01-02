@@ -50,15 +50,6 @@
 	..()
 	initialize_blends()
 
-/obj/item/clothing/on_spawn()
-
-	. = ..()
-
-	if(polymorphic)
-		update_icon()
-
-	return .
-
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
 	if(polymorphic)

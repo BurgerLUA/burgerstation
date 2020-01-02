@@ -23,3 +23,16 @@
 
 /obj/item/proc/update_inventory() //When this object's inventory was updated.
 	return TRUE
+
+/obj/item/on_spawn()
+	if(length(inventories))
+		fill_inventory()
+	return ..()
+
+/obj/item/proc/fill_inventory()
+
+	for(var/obj/item/I in contents)
+		I.on_spawn()
+		add_to_inventory(null,I,FALSE)
+
+	return TRUE

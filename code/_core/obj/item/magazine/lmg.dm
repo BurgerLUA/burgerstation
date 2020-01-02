@@ -9,10 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/lmg
 	)
 
-/obj/item/magazine/lmg_556/on_spawn()
-	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new /obj/item/bullet/rifle_556(src)
-	update_icon()
+	ammo = /obj/item/bullet/rifle_556
 
 /obj/item/magazine/lmg_556/update_icon()
 	icon_state = "[initial(icon_state)]_[round(length(stored_bullets),10)]"
