@@ -11,6 +11,9 @@
 /turf/simulated/floor/tile/grey
 	color = "#999999"
 
+/turf/simulated/floor/tile/grey/single
+	icon_state = "white_single"
+
 /turf/simulated/floor/tile/dark
 	color = "#444444"
 

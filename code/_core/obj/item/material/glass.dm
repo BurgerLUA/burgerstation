@@ -19,3 +19,9 @@
 	desc = "The basic building material."
 	crafting_id = "glass_normal"
 	color = COLOR_GLASS
+
+
+/obj/item/material/glass/normal/spawn_50/on_spawn()
+	item_count_current = 50
+	update_icon()
+	return ..()

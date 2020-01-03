@@ -10,7 +10,7 @@
 
 	INTERACT_CHECK
 
-	var/entered_code = input("Please enter the correct keycode.","Keycode") as num
+	var/entered_code = input("Please enter the correct keycode ([code]).","Keycode") as num
 
 	INTERACT_CHECK
 

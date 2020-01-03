@@ -43,6 +43,9 @@
 		/obj/item/storage/bags/pills,
 	)
 
+/obj/item/storage/bags/chemistry/filled/fill_inventory()
+
+
 /obj/item/storage/bags/pills
 	name = "pill bottle"
 	desc_extended = "A pill bottle that can hold up to 30 pills."

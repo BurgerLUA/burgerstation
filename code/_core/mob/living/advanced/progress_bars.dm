@@ -46,6 +46,12 @@
 			var/obj/structure/interactive/ore_deposit/OD = callback_list["ore"]
 			OD.mine(src)
 			return TRUE
+		if("medicine")
+			var/obj/item/container/medicine/M = callback_list["object"]
+			var/obj/item/organ/O = callback_list["target"]
+			M.treat_organ(src,O)
+			return TRUE
+
 
 	..()
 

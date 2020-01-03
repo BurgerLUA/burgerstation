@@ -15,6 +15,26 @@
 	name = "engineering vendor"
 	icon_state = "engivend"
 
+/obj/structure/interactive/vendor/engineering/tool
+	name = "tool vendor"
+	icon_state = "tool"
+	stored_types = list(
+		/obj/item/weapon/melee/tool/crowbar,
+		/obj/item/weapon/melee/tool/multitool,
+		/obj/item/weapon/melee/tool/screwdriver,
+		/obj/item/weapon/melee/tool/wirecutters,
+		/obj/item/weapon/melee/tool/wrench
+	)
+
+
+/obj/structure/interactive/vendor/engineering/material
+	name = "material vendor"
+	stored_types = list(
+		/obj/item/material/sheet/steel/spawn_50,
+		/obj/item/material/glass/normal/spawn_50
+
+	)
+
 /obj/structure/interactive/vendor/robotics
 	name = "robotics vendor"
 	icon_state = "robotics"

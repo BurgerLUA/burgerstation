@@ -22,4 +22,7 @@
 /obj/item/clothing/back/storage/dufflebag/loadout/medical/fill_inventory()
 	new /obj/item/clothing/uniform/jumpsuit/medical_doctor(src)
 	new /obj/item/storage/shoebox/colored(src)
+	new /obj/item/clothing/overwear/coat/labcoat/medical(src)
+	new /obj/item/clothing/belt/storage/medical/filled(src)
+	new /obj/item/storage/bags/chemistry(src)
 	return ..()

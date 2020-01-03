@@ -49,6 +49,13 @@
 	reinforced_material_id = "plasteel"
 	reinforced_color = COLOR_PLASTEEL
 
+/turf/simulated/wall/metal/reinforced/hull
+	name = "adamantium-carbon reinforced plasteel wall"
+	reinforced_material_id = "adamantium-carbon"
+	color = "#48482B"
+	reinforced_color = "#00FF00"
+
+
 /*
 /turf/simulated/wall/metal/reinforced/rusted
 	name = "reinforced metal wall"

@@ -32,3 +32,8 @@
 	color_primary = "#FFFFFF"
 	color_secondary = "#FF6A00"
 	color_tertiary = "#FFFFFF"
+
+/obj/item/clothing/overwear/coat/labcoat/medical
+	color_primary = "#FFFFFF"
+	color_secondary = COLOR_MEDICAL
+	color_tertiary = "#FFFFFF"

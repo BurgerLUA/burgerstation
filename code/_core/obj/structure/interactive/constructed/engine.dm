@@ -33,3 +33,12 @@ obj/structure/shuttle_engine/wall_diagonal_1
 obj/structure/shuttle_engine/wall_diagonal_2
 	icon_state = "wall_diagonal_2"
 	corner_category = "shuttle"
+
+
+obj/structure/shuttle_engine/large
+	icon = 'icons/obj/structure/2x2_engine.dmi'
+	icon_state = "large_engine"
+
+obj/structure/shuttle_engine/huge
+	icon = 'icons/obj/structure/3x3_engine.dmi'
+	icon_state = "huge_engine"

@@ -227,6 +227,17 @@ obj/structure/interactive/bed/sleeper/update_icon()
 
 	icon = I
 
+obj/structure/interactive/bed/sleeper/backup
+	name = "spare hypersleep chamber"
+	base_color = "#AAAAAA"
+	secondary_color = "#00FF00"
+
+var/global/list/obj/structure/interactive/bed/sleeper/backup/backup_spawnpoints = list()
+
+obj/structure/interactive/bed/sleeper/backup/New(var/desired_loc)
+	backup_spawnpoints += src
+	return ..()
+
 obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"

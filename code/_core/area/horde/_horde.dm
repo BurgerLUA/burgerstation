@@ -10,6 +10,11 @@
 	map_color_a = rgb(0,0,0,255)
 
 
+/area/horde/space
+	name = "space"
+	icon_state = "green"
+
+
 /area/horde/station
 	name = "Lobby"
 	icon_state = "safe"
