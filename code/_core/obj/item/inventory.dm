@@ -33,6 +33,6 @@
 
 	for(var/obj/item/I in contents)
 		I.on_spawn()
-		add_to_inventory(null,I,FALSE)
+		add_to_inventory(null,I,FALSE,TRUE)
 
 	return TRUE

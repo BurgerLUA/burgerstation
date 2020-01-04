@@ -101,7 +101,18 @@ obj/hud/inventory/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pix
 	if(length(held_objects))
 		return get_top_held_object()
 
-	if(length(worn_objects))
+	var/worn_length = length(worn_objects)
+
+	if(worn_length)
+		if(worn_length > 1)
+			var/obj/item/I = worn_objects[worn_length]
+			if(I.is_container)
+				return I
+			var/obj/item/I2 = worn_objects[worn_length-1]
+			if(I2.is_container)
+				return I2
+			return I
+
 		return get_top_worn_object()
 
 	return src

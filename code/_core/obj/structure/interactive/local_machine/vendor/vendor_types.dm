@@ -82,10 +82,31 @@
 	name = "soda vendor"
 	icon_state = "soda"
 
+var/global/list/equipped_players = list()
+
 /obj/structure/interactive/vendor/autolocker
 	name = "autolocker vendor"
 	icon_state = "gear"
 
 	stored_types = list(
-		/obj/item/clothing/back/storage/dufflebag/loadout/medical
+		/obj/item/clothing/back/storage/dufflebag/loadout/medical,
+		/obj/item/clothing/back/storage/backpack/loadout/security,
+		/obj/item/clothing/back/storage/backpack/explorer/loadout/miner,
+		/obj/item/clothing/back/storage/dufflebag/loadout/pmc
 	)
+
+	is_free = TRUE
+	free_text = "choose"
+
+/obj/structure/interactive/vendor/autolocker/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+	. = ..()
+	if(. && P && (P in equipped_players))
+		P.to_chat(span("notice","You already selected your equipment!"))
+		return FALSE
+	return .
+
+/obj/structure/interactive/vendor/autolocker/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+	. = ..()
+	if(. && P && !(P in equipped_players))
+		equipped_players += P
+	return .

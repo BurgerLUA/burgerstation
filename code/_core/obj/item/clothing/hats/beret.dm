@@ -14,3 +14,6 @@
 
 /obj/item/clothing/head/hat/beret/red
 	color = "#800000"
+
+/obj/item/clothing/head/hat/beret/black
+	color = "#404040"

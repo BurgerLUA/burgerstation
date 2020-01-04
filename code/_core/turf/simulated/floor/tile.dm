@@ -2,7 +2,7 @@
 	name = "tile floor"
 
 	icon = 'icons/turf/floor/tile.dmi'
-	icon_state = "white"
+	icon_state = "white_multi"
 
 	footstep_id = "default"
 
@@ -13,6 +13,12 @@
 
 /turf/simulated/floor/tile/grey/single
 	icon_state = "white_single"
+
+/turf/simulated/floor/tile/grey/horizontal
+	icon_state = "white_half_horz"
+
+/turf/simulated/floor/tile/grey/vertical
+	icon_state = "white_half_vert"
 
 /turf/simulated/floor/tile/dark
 	color = "#444444"

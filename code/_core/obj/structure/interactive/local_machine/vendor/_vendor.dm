@@ -5,8 +5,8 @@
 	icon_state = "generic"
 	desc_extended = "You can use this to purchase things that are always in stock."
 
-	var/obj/item/stored_objects = list()
-	var/obj/item/stored_types = list()
+	var/list/obj/item/stored_objects = list()
+	var/list/obj/item/stored_types = list()
 
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -16,9 +16,59 @@
 	density_east  = TRUE
 	density_west  = TRUE
 
+	var/is_free = FALSE
+	var/free_text = "free"
+
+	var/force_spawn_stored_types = FALSE
+
+/obj/structure/interactive/vendor/Destroy()
+	stored_types.Cut()
+	stored_objects.Cut()
+	return ..()
+
+/obj/structure/interactive/vendor/proc/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+
+	if(!is_free && P && P.currency < item_value && !P.spend_currency(item_value))
+		P.to_chat(span("notice","You don't have enough telecrystals to buy this!"))
+		return FALSE
+
+	if(I && length(I.held_objects))
+		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
+		return FALSE
+
+	return TRUE
+
+
+/obj/structure/interactive/vendor/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+
+	if(!can_purchase_item(P,associated_item,item_value,I))
+		return FALSE
+
+	var/obj/item/new_item
+	if(ispath(associated_item))
+		new_item = new associated_item(get_turf(src))
+	else
+		new_item = new associated_item.type(get_turf(src))
+	new_item.on_spawn()
+	new_item.update_icon()
+	if(P)
+		if(item_value)
+			P.to_chat(span("notice","You have purchased \the [new_item.name] for [item_value] telecrystal\s."))
+		else
+			P.to_chat(span("notice","You vend \the [new_item.name]."))
+	if(I)
+		new_item.transfer_item(I)
+
+	return TRUE
+
 /obj/structure/interactive/vendor/Initialize()
 
 	var/turf/T = get_turf(src)
+
+	if(force_spawn_stored_types)
+		for(var/obj/item/I in stored_types)
+			new I(src)
+		stored_types.Cut()
 
 	for(var/obj/item/I in T.contents)
 		I.on_spawn()
@@ -46,7 +96,6 @@
 
 	return ..()
 
-
 /obj/structure/interactive/vendor/proc/show_buttons_to(var/mob/living/advanced/A)
 
 	var/stored_objects_length = length(stored_objects)
@@ -56,6 +105,7 @@
 		var/obj/item/I = stored_objects[i]
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
+		V.associated_vendor = src
 		V.screen_loc = "CENTER+2,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i]"
 		V.update_owner(A)
 		V.update_icon()
@@ -64,6 +114,7 @@
 		var/obj/item/I = stored_types[i]
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
+		V.associated_vendor = src
 		V.screen_loc = "CENTER+2,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i+stored_objects_length]"
 		V.update_owner(A)
 		V.update_icon()

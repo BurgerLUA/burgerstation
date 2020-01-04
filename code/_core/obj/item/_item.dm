@@ -222,7 +222,10 @@
 
 	if(object != src)
 		for(var/obj/hud/inventory/I in inventories)
-			if(I.add_object(object,FALSE,bypass))
+			if(bypass && length(I.held_objects))
+				continue
+
+			if(I.add_object(object,FALSE))
 				added = TRUE
 				break
 

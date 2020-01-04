@@ -107,6 +107,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	dialogue_target = null
 
+	if(src in equipped_players)
+		equipped_players -= src
+
 	if(current_squad)
 		current_squad.remove_member(src)
 		current_squad = null

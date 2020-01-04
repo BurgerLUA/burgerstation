@@ -14,6 +14,7 @@
 	maptext = "ITEM NAME HERE"
 
 	var/obj/item/associated_item
+	var/obj/structure/interactive/vendor/associated_vendor
 
 	mouse_opacity = 1
 
@@ -34,8 +35,11 @@
 
 	if(ispath(associated_item))
 		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
+		IM.color = initial(associated_item.color)
+		IM.pixel_y = 4
 		overlays += IM
 	else
+		associated_item.pixel_y = 4
 		overlays += associated_item
 
 	var/amount = initial(associated_item.value)
@@ -45,18 +49,26 @@
 
 	var/icon/I2 = ICON_INVISIBLE
 
-	var/icon/I3 = new/icon('icons/hud/numbers.dmi',"T")
-	I3.Shift(EAST,1)
-	I2.Blend(I3,ICON_OVERLAY)
-	var/x_pos_mod = 11
+	if(!(associated_vendor && associated_vendor.is_free))
+		var/icon/I3 = new/icon('icons/hud/numbers.dmi',"T")
+		I3.Shift(EAST,1)
+		I2.Blend(I3,ICON_OVERLAY)
 
-	for(var/i=1,i<=the_length,i++)
-		var/letter = copytext(num_to_text,i,i+1)
-		var/icon/I4 = new/icon('icons/hud/numbers.dmi',letter)
+	var/x_pos_mod = 9
+
+	if(associated_vendor && associated_vendor.is_free && associated_vendor.free_text)
+		var/icon/I4 = new/icon('icons/hud/numbers.dmi',associated_vendor.free_text)
 		I4.Shift(EAST,x_pos_mod)
 		I4.Shift(SOUTH,2)
 		I2.Blend(I4,ICON_OVERLAY)
-		x_pos_mod += 5
+	else
+		for(var/i=1,i<=the_length,i++)
+			var/letter = copytext(num_to_text,i,i+1)
+			var/icon/I4 = new/icon('icons/hud/numbers.dmi',letter)
+			I4.Shift(EAST,x_pos_mod)
+			I4.Shift(SOUTH,2)
+			I2.Blend(I4,ICON_OVERLAY)
+			x_pos_mod += 5
 
 	var/image/I4 = new/image(I2)
 	I4.pixel_y = -4
@@ -86,17 +98,6 @@
 		return TRUE
 
 	var/obj/hud/inventory/I = defer_object
-
-	if(P.currency >= item_value && P.spend_currency(item_value)) //Just in case
-		spawn()
-			var/obj/item/new_item
-			if(ispath(associated_item))
-				new_item = new associated_item(get_turf(caller))
-			else
-				new_item = new associated_item.type(get_turf(caller))
-			new_item.on_spawn()
-			new_item.update_icon()
-			new_item.transfer_item(I)
-			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [item_value] telecrystal\s."))
+	associated_vendor.purchase_item(caller,associated_item,item_value,I)
 
 	return ..()
