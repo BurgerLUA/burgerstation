@@ -2,7 +2,7 @@
 	name = "\improper PMC fatigues"
 
 	color_primary = "#FFFFFF"
-	color_secondary = "#303030"
+	color_secondary = "#FFFFFF"
 	color_tertiary = "#303030"
 
 	defense_rating = list(

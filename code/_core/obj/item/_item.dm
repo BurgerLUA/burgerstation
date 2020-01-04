@@ -225,7 +225,7 @@
 			if(bypass && length(I.held_objects))
 				continue
 
-			if(I.add_object(object,FALSE))
+			if(I.add_object(object,FALSE,bypass))
 				added = TRUE
 				break
 

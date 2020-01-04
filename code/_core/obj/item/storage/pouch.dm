@@ -1,15 +1,13 @@
 /obj/item/storage/pouch //For boxes and such, not backpacks.
 	name = "small pouch"
 	desc = "Simple pounches"
+	icon = 'icons/obj/items/storage/pouches_new.dmi'
 
-	icon_state = "pouch_small1"
-	icon = 'icons/obj/items/storage/pouches.dmi'
-
-	size = 2
+	size = SIZE_2
 
 	is_container = TRUE
 
-	container_max_size = 2
+	container_max_size = SIZE_2
 	dynamic_inventory_count = 1
 
 	inventory_bypass = list(
@@ -19,46 +17,31 @@
 
 /obj/item/storage/pouch/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object))
-		click_self(caller,location,control,params)
+	world.log << "[src].clicked_on_by_object([caller],[object])"
+
+	if(is_inventory(object) && object.loc == caller && istype(object,/obj/hud/inventory/pocket/) && click_self(caller,location,control,params))
 		return TRUE
 
 	return ..()
 
-/obj/item/storage/pouch/small2
-	name = "small double pouch"
-	icon_state = "pouch_small2"
-	size = 4
+/obj/item/storage/pouch/single
+	name = "single pouch"
+	icon_state = "single"
+	size = SIZE_2*2
 	dynamic_inventory_count = 2
 
-/obj/item/storage/pouch/small3
-	name = "small triple pouch"
-	icon_state = "pouch_small3"
-	size = 6
-	dynamic_inventory_count = 3
-
-/obj/item/storage/pouch/small4
-	name = "small quadruple pouch"
-	icon_state = "pouch_small4"
-	size = 8
+/obj/item/storage/pouch/double
+	name = "double pouch"
+	icon_state = "double"
+	size = SIZE_2*4
 	dynamic_inventory_count = 4
 
-/obj/item/storage/pouch/large1
-	name = "large pouch"
-
-	container_max_size = 4
-	container_max_weight = 10
-
-	icon_state = "pouch_large1"
-	size = 4
-	dynamic_inventory_count = 1
-	container_held_slots = 4
+/obj/item/storage/pouch/double/black
+	color = "#404040"
 
 
-/obj/item/storage/pouch/bluespace
-	name = "bluespace pouch"
-	icon_state = "pouch_bluespace"
-	size = 4
-	dynamic_inventory_count = 4
-	container_held_slots = 10
-	container_max_size = 100
+/obj/item/storage/pouch/triple
+	name = "triple pouch"
+	icon_state = "triple"
+	size = SIZE_2*6
+	dynamic_inventory_count = 6

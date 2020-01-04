@@ -72,19 +72,16 @@
 
 	return ..()
 
-obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
+/obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
 
-	if(is_item(object))
+	. = ..()
+
+	if(!. && is_item(object))
 		var/obj/item/object_as_item = object
 		if(object_as_item.transfer_item(src))
 			return TRUE
 
-	var/atom/defer_self = src.defer_click_on_object() //We could be holding an object.
-
-	if(src != defer_self && defer_self.dropped_on_by_object(caller,object))
-		return TRUE
-
-	return ..()
+	return .
 
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc

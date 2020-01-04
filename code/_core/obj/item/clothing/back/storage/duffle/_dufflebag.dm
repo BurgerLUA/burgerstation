@@ -42,4 +42,7 @@
 	new /obj/item/clothing/head/helmet/security/tactical_helmet(src)
 	new /obj/item/clothing/head/hood/skimask/black(src)
 	new /obj/item/clothing/overwear/armor/vest(src)
+	new /obj/item/storage/pouch/double/black(src)
+	new /obj/item/storage/pouch/double/black(src)
+	new /obj/item/clothing/belt/storage/colored/black(src)
 	return ..()

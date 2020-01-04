@@ -86,6 +86,9 @@
 	if(object && object.dropped_on_by_object(caller,src))
 		return TRUE
 
+	if(click_on_object(caller,object))
+		return TRUE
+
 	return FALSE
 
 /atom/proc/dropped_on_by_object(var/atom/caller,var/atom/object)
@@ -118,3 +121,4 @@
 
 /atom/proc/set_color(var/desired_color,var/desired_substype)
 	color = desired_color
+	return TRUE

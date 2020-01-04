@@ -592,6 +592,7 @@
 #include "code\_core\obj\item\clothing\belt\kilt.dm"
 #include "code\_core\obj\item\clothing\belt\skull_codpiece.dm"
 #include "code\_core\obj\item\clothing\belt\utility.dm"
+#include "code\_core\obj\item\clothing\belt\white.dm"
 #include "code\_core\obj\item\clothing\feet\_feet.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\_shoes.dm"
 #include "code\_core\obj\item\clothing\feet\shoes\boots.dm"
