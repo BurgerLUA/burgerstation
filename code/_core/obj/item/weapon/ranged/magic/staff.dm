@@ -13,7 +13,7 @@
 /obj/item/weapon/ranged/magic/staff/get_examine_text(var/mob/caller)
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
-/obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller,var/bullet_position=1)
 
 	var/charge_to_remove = cost_charge
 

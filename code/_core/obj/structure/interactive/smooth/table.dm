@@ -12,6 +12,18 @@ obj/structure/smooth/table
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
+obj/structure/smooth/rack
+	name = "table"
+	desc = "What does it do?"
+	icon = 'icons/obj/structure/rack.dmi'
+	icon_state = "rack"
+
+	corner_category = "rack"
+	corner_icons = FALSE
+
+obj/structure/smooth/rack/black
+	color = COLOR_BLACK
+
 obj/structure/smooth/table/dark
 	color = "#999999"
 

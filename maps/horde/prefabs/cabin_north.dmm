@@ -6,11 +6,12 @@
 "f" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area/horde/station/cryo)
 "g" = (/obj/structure/interactive/vendor/autolocker,/turf/simulated/floor/tile/grey,/area/horde/station/cryo)
 "h" = (/obj/structure/interactive/door/airlock/station/private,/turf/simulated/floor/tile/grey,/area/horde/station/cryo)
+"i" = (/obj/structure/interactive/computer/wall/dorms,/turf/simulated/wall/metal,/area/horde/station/cryo)
 
 (1,1,1) = {"
 aaaaa
 abcda
 aecfa
 agcca
-aahaa
+aahia
 "}

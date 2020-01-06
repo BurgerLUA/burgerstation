@@ -51,7 +51,7 @@
 	return owner && actual_mana_cost ? floor(owner.health.mana_current / actual_mana_cost) : 0
 
 
-/obj/item/weapon/ranged/magic/tome/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/tome/handle_ammo(var/mob/caller,var/bullet_position=1)
 
 	if(!is_advanced(caller))
 		return ..()

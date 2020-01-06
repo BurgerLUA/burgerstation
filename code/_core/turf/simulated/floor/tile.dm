@@ -9,7 +9,7 @@
 	layer = LAYER_FLOOR
 
 /turf/simulated/floor/tile/grey
-	color = "#999999"
+	color = COLOR_GREY
 
 /turf/simulated/floor/tile/grey/single
 	icon_state = "white_single"
@@ -21,10 +21,10 @@
 	icon_state = "white_half_vert"
 
 /turf/simulated/floor/tile/dark
-	color = "#444444"
+	color = COLOR_STEEL
 
 /turf/simulated/floor/tile/red
-	color = "#994444"
+	color = COLOR_RED
 
 /turf/simulated/floor/tile/blue
 	color = "#444499"
@@ -44,8 +44,14 @@
 /turf/simulated/floor/tile/yellow
 	color = "#FFFF44"
 
+/turf/simulated/floor/tile/engineering
+	color = COLOR_ENGINEERING
+
 /turf/simulated/floor/tile/cyan
 	color = "#44FF99"
+
+/turf/simulated/floor/tile/medical
+	color = COLOR_MEDICAL
 
 /turf/simulated/floor/tile/coldroom
 	color = "#DBF9F9"

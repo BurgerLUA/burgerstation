@@ -84,7 +84,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller as mob,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
 	scroll_count -= 1
 	update_icon()
 

@@ -12,4 +12,4 @@
 	worn_layer = LAYER_MOB_CLOTHING_BEFORE_EYE
 
 /obj/item/clothing/head/hood/skimask/black
-	color = "#404040"
+	color = COLOR_BLACK

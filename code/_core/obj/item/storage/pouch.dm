@@ -30,6 +30,9 @@
 	size = SIZE_2*2
 	dynamic_inventory_count = 2
 
+/obj/item/storage/pouch/single/black
+	color = COLOR_BLACK
+
 /obj/item/storage/pouch/double
 	name = "double pouch"
 	icon_state = "double"
@@ -37,7 +40,7 @@
 	dynamic_inventory_count = 4
 
 /obj/item/storage/pouch/double/black
-	color = "#404040"
+	color = COLOR_BLACK
 
 
 /obj/item/storage/pouch/triple

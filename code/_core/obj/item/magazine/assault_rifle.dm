@@ -6,7 +6,8 @@
 	bullet_count_max = 30
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/assault_rifle
+		/obj/item/weapon/ranged/bullet/magazine/assault_rifle,
+		/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup
 	)
 
 	ammo = /obj/item/bullet/rifle_556
@@ -21,5 +22,4 @@
 
 /obj/item/magazine/rifle_556/surplus
 	name = "\improper surplus 5.56mm magazine"
-
 	ammo = /obj/item/bullet/rifle_556/surplus

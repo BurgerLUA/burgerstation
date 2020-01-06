@@ -26,11 +26,12 @@
 
 /obj/structure/interactive/door/airlock/station/security
 	name = "security airlock"
-	color = "#253982"
+	color = COLOR_RED
+	fill_color = COLOR_STEEL
 
 /obj/structure/interactive/door/airlock/station/security/shop
 	name = "security airlock"
-	color = "#994444"
+	color = COLOR_RED
 	allow_manual_close = FALSE
 
 /obj/structure/interactive/door/airlock/station/security/no_access
@@ -56,3 +57,40 @@
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
 	locked = TRUE
+
+/obj/structure/interactive/door/airlock/station/engineering
+	name = "security airlock"
+	color = COLOR_ENGINEERING
+	fill_color = COLOR_GREY
+
+/obj/structure/interactive/door/airlock/station/medical
+	name = "medical airlock"
+	color = COLOR_MEDICAL
+	filler = "glass"
+	fill_color = COLOR_WHITE
+
+
+/obj/structure/interactive/door/airlock/station/chemistry
+	name = "medical airlock"
+	color = COLOR_ORANGE
+	filler = "glass"
+	fill_color = COLOR_WHITE
+
+
+/obj/structure/interactive/door/airlock/station/glass
+	name = "public airlock"
+	color = COLOR_WHITE
+	filler = "glass"
+
+
+/obj/structure/interactive/door/airlock/station/bathroom
+	name = "restroom airlock"
+
+/obj/structure/interactive/door/airlock/station/bathroom/male
+	name = "male restroom airlock"
+
+/obj/structure/interactive/door/airlock/station/bathroom/female
+	name = "female restroom airlock"
+
+/obj/structure/interactive/door/airlock/station/bathroom/toilet
+	name = "toilet airlock"

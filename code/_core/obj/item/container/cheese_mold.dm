@@ -96,7 +96,7 @@
 			allow_beaker_transfer = FALSE
 			var/turf/T = get_turf(src)
 			T.visible_message("The milk starts to curdle!")
-			start_thinking()
+			start_thinking(src)
 
 	overlays.Cut()
 

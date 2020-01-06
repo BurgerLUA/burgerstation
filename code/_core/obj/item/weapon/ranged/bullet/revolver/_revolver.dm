@@ -39,7 +39,7 @@
 /obj/item/weapon/ranged/bullet/revolver/get_ammo_count()
 	return get_real_length(stored_bullets)
 
-/obj/item/weapon/ranged/bullet/revolver/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/handle_ammo(var/mob/caller,var/bullet_position=1)
 	var/obj/item/bullet/B = spend_stored_bullet(current_chamber)
 	rotate_cylinder(1)
 	return B

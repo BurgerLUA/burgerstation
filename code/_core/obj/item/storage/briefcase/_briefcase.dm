@@ -18,7 +18,7 @@
 	dynamic_inventory_count = 6
 
 /obj/item/storage/briefcase/deagle/fill_inventory()
-	new /obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle(src)
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold(src)
 	for(var/i=2,i<=6,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/pistol_50ae(src)
 		M.on_spawn()

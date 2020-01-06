@@ -5,4 +5,4 @@
 	desc_extended = "Stores a robust amount of items that can easily and quickly be accessed."
 
 /obj/item/clothing/belt/storage/colored/black
-	color = "#404040"
+	color = COLOR_BLACK

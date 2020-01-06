@@ -14,3 +14,8 @@
 /obj/item/magazine/lmg_556/update_icon()
 	icon_state = "[initial(icon_state)]_[round(length(stored_bullets),10)]"
 	..()
+
+
+/obj/item/magazine/lmg_556/surplus
+	name = "\improper surplus 5.56mm lmg magazine"
+	ammo = /obj/item/bullet/rifle_556/surplus

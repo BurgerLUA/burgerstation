@@ -23,7 +23,7 @@ obj/item/ingot/update_icon()
 
 /obj/item/ingot/iron //Iron
 	name = "iron ingot"
-	ingot_color = "#404040"
+	ingot_color = COLOR_BLACK
 	crafting_id = "ingot_iron"
 
 /obj/item/ingot/steel //Iron + Carbon

@@ -48,9 +48,22 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/gold_eagle
-	name = ".50AE gold eagle"
+/obj/item/weapon/ranged/bullet/magazine/pistol/deagle
+	name = ".50AE deagle"
 	icon = 'icons/obj/items/weapons/ranged/deagle.dmi'
+	projectile_speed = 28
+	shoot_delay = 4
+	bullet_type = ".50ae"
+	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
+
+	view_punch = 12
+
+	size = SIZE_2
+	weight = WEIGHT_3
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold
+	name = ".50AE gold deagle"
+	icon = 'icons/obj/items/weapons/ranged/deagle_gold.dmi'
 	projectile_speed = 28
 	shoot_delay = 4
 	bullet_type = ".50ae"
@@ -93,6 +106,22 @@
 	name = ".357 mercenary pistol"
 	icon = 'icons/obj/items/weapons/ranged/357pistol.dmi'
 	projectile_speed = 28
+	shoot_delay = 4
+	bullet_type = ".45"
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+
+	view_punch = 8
+
+	automatic = FALSE
+
+	size = SIZE_2
+	weight = WEIGHT_2
+
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/silenced
+	name = "8mm silenced pistol"
+	icon = 'icons/obj/items/weapons/ranged/8mmpistol.dmi'
+	projectile_speed = 16
 	shoot_delay = 4
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')

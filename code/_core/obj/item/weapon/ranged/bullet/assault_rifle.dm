@@ -3,7 +3,6 @@
 	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
 	icon_state = "inventory"
 
-	projectile_speed = 31
 	shoot_delay = 2
 
 	automatic = TRUE
@@ -30,3 +29,24 @@
 
 /obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+
+
+/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup
+	name = "\improper 5.56mm bullpup assault rifle"
+	icon = 'icons/obj/items/weapons/ranged/rifle.dmi'
+	icon_state = "inventory"
+
+	shoot_delay = 1.5
+
+	view_punch = 7
+
+	size = SIZE_3
+	weight = WEIGHT_4
+
+	can_wield = FALSE
+
+/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup/get_static_spread() //Base spread
+	return 0.05
+
+/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

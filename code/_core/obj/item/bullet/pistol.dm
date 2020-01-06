@@ -101,3 +101,17 @@
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	jam_chance = 2 //Rubber bullets are infamous for not having enough power to move the slide all the way back.
+
+
+/obj/item/bullet/pistol_8mm
+	name = "\improper 8mm bullet"
+	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
+	id = "8mm"
+	icon = 'icons/obj/items/bullet/8mm.dmi'
+
+	projectile = /obj/projectile/bullet/shotgun_pellet
+	damage_type = ".45_rubber"
+
+	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+	jam_chance = 2 //Rubber bullets are infamous for not having enough power to move the slide all the way back.

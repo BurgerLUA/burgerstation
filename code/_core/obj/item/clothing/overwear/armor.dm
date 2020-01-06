@@ -443,7 +443,7 @@
 
 /obj/item/clothing/overwear/armor/medium_armor/security
 	name = "medium security armor"
-	color = "#404040"
+	color = COLOR_BLACK
 
 	defense_rating = list(
 		BLADE = ARMOR_C,

@@ -3,14 +3,29 @@ obj/structure/interactive/computer
 	desc = "Beep boop."
 	icon = 'icons/obj/structure/computer.dmi'
 
+	var/on = TRUE
+	var/computer_light_color = "#00FF00"
+
+obj/structure/interactive/computer/update_icon()
+	. = ..()
+
+	if(on)
+		set_light(6,0.5,computer_light_color)
+	else
+		set_light(FALSE)
+
+	return .
+
 obj/structure/interactive/computer/console
 	name = "computer console"
 	var/computer_type = "generic"
 	var/keyboard_type = "generic_key"
 
+
+
 	icon_state = "computer"
 
-	var/on = TRUE
+
 
 obj/structure/interactive/computer/console/New(var/desired_loc)
 	. = ..()
@@ -18,6 +33,8 @@ obj/structure/interactive/computer/console/New(var/desired_loc)
 	return .
 
 obj/structure/interactive/computer/console/update_icon()
+
+	. = ..()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
@@ -33,6 +50,8 @@ obj/structure/interactive/computer/console/update_icon()
 		I.Blend(I3,ICON_OVERLAY)
 
 	icon = I
+
+	return .
 
 obj/structure/interactive/computer/console/laptop
 	name = "personal laptop"

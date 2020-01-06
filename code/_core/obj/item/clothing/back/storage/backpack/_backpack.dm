@@ -11,7 +11,7 @@
 
 /obj/item/clothing/back/storage/backpack/loadout/security
 	name = "security backpack"
-	color = "#404040"
+	color = COLOR_BLACK
 
 /obj/item/clothing/back/storage/backpack/loadout/security/fill_inventory()
 	new /obj/item/clothing/uniform/jumpsuit/dark/security(src)
@@ -20,6 +20,9 @@
 	new /obj/item/clothing/hands/gloves/colored/padded/black(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
 	new /obj/item/clothing/glasses/sun(src)
-	new /obj/item/clothing/head/hat/beret/black(src)
-	new /obj/item/clothing/neck/cloak/red(src)
 	new /obj/item/clothing/overwear/armor/medium_armor/security(src)
+	new /obj/item/clothing/head/helmet/security/tactical_helmet(src)
+	new /obj/item/clothing/belt/storage/colored/black(src)
+	new /obj/item/storage/pouch/single/black(src)
+	new /obj/item/storage/pouch/single/black(src)
+	return ..()

@@ -26,7 +26,7 @@
 	name = "Silicon"
 	id = "silicon"
 	desc = "What most lifeforms do things with."
-	color = "#404040"
+	color = COLOR_BLACK
 
 	flavor = "dildos"
 

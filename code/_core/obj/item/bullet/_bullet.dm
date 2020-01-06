@@ -109,12 +109,12 @@
 		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))
 		return FALSE
 
-	if(transfer_target.item_count_max <= transfer_target.get_ammo_count())
+	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count())
+	if(!bullets_to_add)
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
 	var/transfered_bullets = 0
-	var/bullets_to_add = min(item_count_current,transfer_target.item_count_max - transfer_target.get_ammo_count())
 	for(var/i=1,i<=bullets_to_add,i++)
 		transfer_target.item_count_current += 1
 		item_count_current -= 1

@@ -1,5 +1,5 @@
 /obj/item/magazine/shotgun_auto
-	name = "\improper 12 gauge autoshotgun magazine"
+	name = "\improper 12 gauge AS-12 magazine"
 	bullet_type = "shotgun"
 	icon = 'icons/obj/items/magazine/auto_shotgun.dmi'
 	icon_state = "auto"

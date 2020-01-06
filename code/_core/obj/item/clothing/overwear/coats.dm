@@ -92,4 +92,4 @@
 
 
 /obj/item/clothing/overwear/coat/hoodie/black
-	color = "#404040"
+	color = COLOR_BLACK

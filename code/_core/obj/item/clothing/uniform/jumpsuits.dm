@@ -54,9 +54,9 @@
 /obj/item/clothing/uniform/jumpsuit/dark
 	name = "reinforced jumpsuit"
 
-	color_primary = "#404040"
-	color_secondary = "#404040"
-	color_tertiary = "#404040"
+	color_primary = COLOR_BLACK
+	color_secondary = COLOR_BLACK
+	color_tertiary = COLOR_BLACK
 
 	defense_rating = list(
 		BLADE = ARMOR_D,
@@ -67,7 +67,7 @@
 	)
 
 /obj/item/clothing/uniform/jumpsuit/dark/security
-	color_primary = "#404040"
+	color_primary = COLOR_BLACK
 	color_secondary = "#994444"
 	color_tertiary = "#994444"
 
@@ -79,7 +79,7 @@
 
 /obj/item/clothing/uniform/jumpsuit/bartender
 	color_primary = "#FFFFFF"
-	color_secondary = "#404040"
+	color_secondary = COLOR_BLACK
 	color_tertiary = "#FFFFFF"
 
 /obj/item/clothing/uniform/jumpsuit/medical_doctor
