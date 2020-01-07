@@ -1,8 +1,8 @@
 /obj/structure/
 	name = "structure"
 	desc = "Some kind of strange structure."
-	collision_flags = FLAG_COLLISION_REAL
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_NONE
 	anchored = 1
 
 	var/density_north = TRUE
@@ -10,7 +10,7 @@
 	var/density_east  = TRUE
 	var/density_west  = TRUE
 
-	var/bullet_block_chance = 0 //Chance to block bullets.
+	var/bullet_block_chance = 100 //Chance to block bullets, assuming that the object is solid.
 
 	var/mob/living/buckled
 
@@ -65,6 +65,9 @@
 	if(prob(max(0,100-bullet_block_chance)))
 		return FALSE
 
+	if(!..())
+		return FALSE
+
 	if((projectile_dir & NORTH) && src.density_south)
 		return src
 	else if((projectile_dir & SOUTH) && src.density_north)
@@ -75,7 +78,7 @@
 	else if((projectile_dir & WEST) && src.density_east)
 		return src
 
-	return FALSE
+	return src
 
 /obj/structure/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 

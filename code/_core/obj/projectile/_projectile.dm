@@ -202,11 +202,6 @@
 
 	for(var/atom/movable/A in new_turf.contents)
 
-		/*
-		if(!hit_atom(A))
-			continue
-		*/
-
 		var/atom/collide_atom = A.projectile_should_collide(src,new_turf,old_turf)
 		if(!collide_atom)
 			continue
@@ -254,7 +249,7 @@
 	if(P.owner == src)
 		return FALSE
 
-	if(P.collision_bullet_flags & src.collision_bullet_flags)
+	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
 		return FALSE
 
 	return src
