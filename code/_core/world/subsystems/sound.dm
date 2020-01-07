@@ -96,7 +96,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return created_sound
 
-/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,0), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,-1), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0)
 
 	if(!sound_path)
 		return FALSE
@@ -119,7 +119,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	if(loop)
 		active_sounds[created_sound] = -1
-	else if(duration)
+	else if(duration > 0)
 		active_sounds[created_sound] = duration
 
 	if(!hearers)
@@ -155,15 +155,18 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 			if(SOUND_CHANNEL_FX)
 				local_volume *= M.client.settings.loaded_data["volume_fx"] / 100
 
-		if(created_sound.z >= 0)
-			var/turf/mob_turf = get_turf(M)
-			created_sound.x = pos[1] - mob_turf.x
-			created_sound.y = pos[2] - mob_turf.y
-			created_sound.z = pos[3] - mob_turf.z
+		if(pos[3] >= 0)
+			created_sound.x = pos[1] - M.x
+			created_sound.y = pos[2] - M.y
+			created_sound.z = pos[3] - M.z
 
 			if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
 				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5))
 				local_volume = (local_volume - distance*0.25)*max(0,SOUND_RANGE - distance)/SOUND_RANGE
+		else
+			created_sound.x = M.x
+			created_sound.y = M.y
+			created_sound.z = M.z
 
 		if(local_volume <= 0)
 			continue

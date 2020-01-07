@@ -230,6 +230,8 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
+	world.log << "do_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])"
+
 	if(is_advanced(weapon))
 		CRASH("Advanced should never be a weapon!")
 		return FALSE
@@ -371,11 +373,10 @@
 
 		post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-
-/damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-
 	return TRUE
 
+/damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+	return TRUE
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 

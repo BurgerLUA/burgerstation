@@ -4,8 +4,8 @@
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "tube_light"
 
-	desired_light_power = 0.4
-	desired_light_range = 6
+	desired_light_power = 0.25
+	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
 
 	layer = LAYER_LARGE_OBJ

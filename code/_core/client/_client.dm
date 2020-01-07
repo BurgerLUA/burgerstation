@@ -21,7 +21,7 @@ var/global/list/all_clients = list()
 	var/savedata/client/settings/settings
 
 	var/save_slot //The character slot that the client wishes to overwrite.
-	var/list/last_params = list()
+	var/list/last_params
 	var/atom/last_object
 	var/atom/last_location
 

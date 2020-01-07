@@ -72,7 +72,7 @@
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
 // Anything pixelshifted 16px or more will be considered on the next tile.
 #define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : ((PX >= 16 ? EAST : (PX <= -16 ? WEST : 0)))) | (!PY ? 0 : (PY >= 16 ? NORTH : (PY <= -16 ? SOUTH : 0))))
-#define UPDATE_APPROXIMATE_PIXEL_TURF var/px = top_atom.light_offset_x || top_atom.pixel_x; var/py = top_atom.light_offset_y || top_atom.pixel_y; var/_mask = GET_APPROXIMATE_PIXEL_DIR(px, py); pixel_turf = _mask ? (get_step(source_turf, _mask) || source_turf) : source_turf
+#define UPDATE_APPROXIMATE_PIXEL_TURF var/px = top_atom.light_offset_x; var/py = top_atom.light_offset_y; var/_mask = GET_APPROXIMATE_PIXEL_DIR(px, py); pixel_turf = _mask ? (get_step(source_turf, _mask) || source_turf) : source_turf
 
 /datum/light_source/New(atom/owner, atom/top)
 	SSlighting.total_lighting_sources++

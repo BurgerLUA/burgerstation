@@ -19,6 +19,7 @@
 	name = "Lobby"
 	icon_state = "safe"
 	safe = TRUE
+	station = TRUE
 
 /area/horde/station/cryo
 	name = "crew cabin"

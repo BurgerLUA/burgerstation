@@ -15,6 +15,7 @@
 
 	var/safe = FALSE //Enable or disable shooting people.
 	var/singleplayer = FALSE //Set to true if you don't want players to see other players in this area.
+	var/station = FALSE //Is this a station area where people can hear station announcements?
 
 	var/map_color_r = rgb(255,0,0,255)
 	var/map_color_g = rgb(0,255,0,255)

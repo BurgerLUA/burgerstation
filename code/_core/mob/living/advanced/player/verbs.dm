@@ -1,24 +1,2 @@
-/*
-mob/living/advanced/player/verb/heal_self()
-	set name = "Heal Self"
-	set category = "Cheat"
-
-	for(var/obj/item/organ/O in organs)
-		O.health.adjust_brute_loss(-5)
-		//O.health.adjust_burn_loss(-1000)
-		//O.health.adjust_tox_loss(-1000)
-		//O.health.adjust_oxy_loss(-1000)
-		O.health.update_health()
-
-
-mob/living/advanced/player/verb/damage_self()
-	set name = "Damage Self"
-	set category = "Cheat"
-
-	for(var/obj/item/organ/O in organs)
-		O.health.adjust_brute_loss(5)
-		//O.health.adjust_burn_loss(10)
-		//O.health.adjust_tox_loss(10)
-		//O.health.adjust_oxy_loss(10)
-		O.health.update_health()
-*/
+mob/living/advanced/player/verb/announce_test()
+	announce("Central Command Update","Fuck you.","Jayson Gibson. You have an actual, literal fucking dent in your skull. I was on station for literally one minute, and just got to my office (HoP) before you came in and arrested me for being in the HoP office. I asked you to check the manifest, but you decided we should stand there for ten minutes before you left me naked and handcuffed in a hallway that had no air. You have no business playing a head role, because you have genuine, real-life brain damage, you unbelievable retard.")

@@ -118,12 +118,10 @@ body {
 	font-size: 150%;
 	color: blue;
 }
-
 .green{
 	font-size: 150%;
 	color: green;
 }
-
 .yellow{
 	font-size: 150%;
 	color: yellow;
@@ -132,5 +130,14 @@ body {
 	font-size: 12px;
 	color:red;
 	font-family: Courier, Monaco, monospace;
+}
+.announcement{
+	font-size: 150%;
+}
+.announcement h1{
+	color:red;
+}
+.announcement span{
+	color:red;
 }
 "}

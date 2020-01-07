@@ -1,7 +1,8 @@
 /obj/structure/
 	name = "structure"
 	desc = "Some kind of strange structure."
-	collision_flags = FLAG_COLLISION_NONE
+	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	anchored = 1
 
 	var/density_north = TRUE
@@ -12,6 +13,15 @@
 	var/bullet_block_chance = 0 //Chance to block bullets.
 
 	var/mob/living/buckled
+
+/obj/structure/New(var/desired_loc)
+
+	. = ..()
+
+	if(desired_light_range && desired_light_power && desired_light_color)
+		set_light(desired_light_range,desired_light_power,desired_light_color)
+
+	return .
 
 /obj/structure/proc/on_active(var/mob/living/advanced/player/P)
 	return TRUE

@@ -79,7 +79,7 @@
 // Used to get a scaled lumcount.
 /turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	if (!lighting_overlay)
-		return 0.5
+		return (minlum + maxlum)/2
 
 	var/totallums = 0
 	for (var/datum/lighting_corner/L in corners)

@@ -194,18 +194,18 @@
 
 /obj/projectile/proc/do_turf_collide(var/turf/old_turf,var/turf/new_turf)
 
-	//new /obj/effect/temp/tile(new_turf,20) DEBUG
-
 	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
 
 	if(collide_with_turf)
 		hit_atom(collide_with_turf)
 		return on_hit(collide_with_turf)
 
-	for(var/atom/A in new_turf.contents)
+	for(var/atom/movable/A in new_turf.contents)
 
+		/*
 		if(!hit_atom(A))
 			continue
+		*/
 
 		var/atom/collide_atom = A.projectile_should_collide(src,new_turf,old_turf)
 		if(!collide_atom)
@@ -240,7 +240,6 @@
 			if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
 			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
-
 			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
@@ -255,7 +254,7 @@
 	if(P.owner == src)
 		return FALSE
 
-	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
+	if(P.collision_bullet_flags & src.collision_bullet_flags)
 		return FALSE
 
 	return src

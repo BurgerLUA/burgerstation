@@ -10,7 +10,7 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	name = "hud message"
 	desc = ""
 	icon_state = "invisible"
-	screen_loc = "CENTER,CENTER+2"
+	screen_loc = "CENTER,TOP-2"
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
 
@@ -36,10 +36,10 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 		alpha = 0
 	else if(instant)
 		alpha = 255
-		maptext = "<center><font size='3'>[desired_text]</font></center>"
+		maptext = "<center><font size='2'>[desired_text]</font></center>"
 	else
 		alpha = 0
-		maptext = "<center><font size='3'>[desired_text]</font></center>"
+		maptext = "<center><font size='2'>[desired_text]</font></center>"
 		animate(src,alpha=255,time=40)
 		spawn(100) animate(src,alpha=0,time=40)
 
