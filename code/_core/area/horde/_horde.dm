@@ -18,8 +18,8 @@
 /area/horde/station
 	name = "Lobby"
 	icon_state = "safe"
-	safe = TRUE
-	station = TRUE
+	safe = FALSE
+	station = FALSE
 
 /area/horde/station/cryo
 	name = "crew cabin"

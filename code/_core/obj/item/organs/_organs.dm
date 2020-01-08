@@ -109,8 +109,6 @@
 	. = ..()
 	attached_organs = list()
 	initialize_blends()
-	if(health)
-		health.Initialize()
 	return .
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)

@@ -34,17 +34,12 @@ var/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
-	world.log << "[src.name].trigger([caller],[source],[signal_freq],[signal_code])"
-
 	if(signal_freq == -1 && signal_code == -1)
 		for(var/obj/item/device/signaller/S in all_signalers)
 			if(S == src)
 				continue
 			S.trigger(caller,src,frequency_current,signal_current)
 		return TRUE
-
-	world.log << "[signal_freq] == [frequency_current]: [signal_freq == frequency_current]"
-	world.log << "[signal_code] == [signal_current]: [signal_code == signal_current]"
 
 	if(loc && signal_freq == frequency_current && signal_code == signal_current)
 		loc.trigger(caller,src,-1,-1)

@@ -86,8 +86,7 @@ var/global/subsystem/horde/SShorde
 		if(!message_displayed)
 			set_message("Round [current_round]")
 			message_displayed = TRUE
-		if(round_time > 10)
-			world.log << "Span enemies."
+		//if(round_time > 10)
 
 	return TRUE
 

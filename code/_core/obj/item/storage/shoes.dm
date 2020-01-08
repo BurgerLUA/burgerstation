@@ -44,7 +44,6 @@
 /obj/item/storage/shoebox/colored/fill_inventory()
 	new /obj/item/clothing/feet/shoes/colored(src)
 	new /obj/item/clothing/feet/shoes/colored/left(src)
-	world.log << "CUM"
 	return ..()
 
 /obj/item/storage/shoebox/clown/

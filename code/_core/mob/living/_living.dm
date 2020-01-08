@@ -154,8 +154,6 @@
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
-	. = ..()
-
 	if(desired_level_multiplier)
 		level_multiplier *= desired_level_multiplier
 
@@ -168,9 +166,10 @@
 	initialize_attributes()
 	initialize_skills()
 
+	. = ..()
+
 	if(health)
 		health.armor_base = armor_base
-		health.Initialize()
 
 	if(client)
 		client.update_stats = TRUE

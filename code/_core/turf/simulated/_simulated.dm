@@ -99,8 +99,6 @@ var/global/saved_icons = 0
 
 /turf/simulated/Initialize()
 	. = ..()
-	if(health)
-		health.Initialize()
 	update_icon()
 	return .
 

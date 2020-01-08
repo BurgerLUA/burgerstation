@@ -112,6 +112,7 @@
 
 	if(health)
 		health = new health(src)
+		health.Initialize()
 
 	set_dir(dir)
 

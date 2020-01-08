@@ -214,7 +214,7 @@ obj/structure/interactive/construction/grille
 	icon_state = "grille"
 
 	collision_flags = FLAG_COLLISION_REAL
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	health_base = 75
 

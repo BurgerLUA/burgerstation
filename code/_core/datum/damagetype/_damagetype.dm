@@ -230,8 +230,6 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
-	world.log << "do_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])"
-
 	if(is_advanced(weapon))
 		CRASH("Advanced should never be a weapon!")
 		return FALSE
@@ -386,6 +384,9 @@
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
 	if(victim.health && victim.health.health_max && is_movable(victim))
+		var/atom/movable/A = victim
+		if(A.anchored)
+			return
 
 		var/multiplier = TILE_SIZE * (damage_dealt / victim.health.health_max) * 2
 		multiplier = Clamp(multiplier,0,TILE_SIZE*0.25)

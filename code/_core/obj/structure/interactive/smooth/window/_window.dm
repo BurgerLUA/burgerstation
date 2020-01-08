@@ -12,6 +12,10 @@
 
 	layer = LAYER_OBJ_WINDOW
 
+	health = /health/construction/glass
+
+	health_base = 100
+
 /obj/structure/smooth/window/reinforced
 	name = "reinforced window"
 	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'

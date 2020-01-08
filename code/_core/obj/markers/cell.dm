@@ -29,17 +29,12 @@ var/global/cell_unit_number = 0
 			if(istype(A,/obj/structure/interactive/computer/console/old/station_job/))
 				var/obj/structure/interactive/computer/console/old/station_job/SJ = A
 				SJ.door_code = door_code
-				//world.log << "SJ DOOR CODE: [SJ.door_code]"
 				SJ.unit_number = unit_number
 			if(istype(A,/obj/structure/interactive/door/airlock/station/private))
 				var/obj/structure/interactive/door/airlock/station/private/P = A
 				P.name = "crew cabin #[unit_number]"
 				var/obj/item/device/keypad/K = new(P)
 				K.code = door_code
-				//world.log << "K DOOR CODE: [K.code]"
-
-
-
 
 /obj/marker/map/cell/north
 	map_file = 'maps/horde/prefabs/cabin_north.dmm'

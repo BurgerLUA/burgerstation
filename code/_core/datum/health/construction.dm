@@ -30,3 +30,21 @@
 	return .
 
 
+/health/construction/glass
+
+
+/health/construction/glass/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
+
+	. = ..()
+
+	owner.overlays.Cut()
+
+	var/damage_number = 3 - floor((health_current/health_max)*3)
+
+	if(damage_number > 0)
+		var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
+		owner.overlays += I
+
+	return .
+
+/health/construction/glass/reinforced

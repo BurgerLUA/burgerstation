@@ -197,7 +197,6 @@
 	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
 
 	if(collide_with_turf)
-		hit_atom(collide_with_turf)
 		return on_hit(collide_with_turf)
 
 	for(var/atom/movable/A in new_turf.contents)
@@ -241,80 +240,14 @@
 
 	return TRUE
 
-/atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-
-	if(P == src)
-		return FALSE
-
-	if(P.owner == src)
-		return FALSE
-
-	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
-		return FALSE
-
-	return src
-
-
-/mob/living/advanced/npc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-
-	if(dialogue_id)
-		return FALSE
-
-	if(P && P.owner && is_player(P.owner))
-		if(!FRIENDLY_FIRE)
-			return FALSE
-
-		var/area/A = get_area(new_turf)
-		if(A && A.safe)
-			return FALSE
-
-	return ..()
-
-/mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-
-	if(P && P.owner && is_player(P.owner))
-		if(!FRIENDLY_FIRE)
-			return FALSE
-
-		var/area/A = get_area(new_turf)
-		if(A && A.safe)
-			return FALSE
-
-	return ..()
-
-/turf/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-
-	if(P.vel_y > 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_north)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_south)
-			return new_turf
-	else if(P.vel_y < 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_south)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_north)
-			return new_turf
-	if(P.vel_x > 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_east)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_west)
-			return new_turf
-	else if(P.vel_x < 0)
-		if(!old_turf.allow_bullet_pass && old_turf.density_west)
-			return old_turf
-		if(!new_turf.allow_bullet_pass && new_turf.density_east)
-			return new_turf
-
-	return FALSE
-
-/obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-	return FALSE
-
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
-	all_projectiles -= src
-	post_on_hit(hit_atom)
-	qdel(src)
-	return TRUE
+	if(hit_atom(hit_atom))
+		all_projectiles -= src
+		post_on_hit(hit_atom)
+		qdel(src)
+		return TRUE
+
+	return FALSE
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 
