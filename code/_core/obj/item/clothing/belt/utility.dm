@@ -20,6 +20,18 @@
 		PIERCE = ARMOR_D
 	)
 
+/obj/item/clothing/belt/storage/tool/full
+	name = "toolbelt"
+
+/obj/item/clothing/belt/storage/tool/filled/fill_inventory()
+	new /obj/item/weapon/melee/tool/crowbar(src)
+	new /obj/item/weapon/melee/tool/multitool(src)
+	new /obj/item/weapon/melee/tool/pickaxe(src)
+	new /obj/item/weapon/melee/tool/screwdriver(src)
+	new /obj/item/weapon/melee/tool/wirecutters(src)
+	new /obj/item/weapon/melee/tool/wrench(src)
+	return ..()
+
 /obj/item/clothing/belt/storage/medical
 	name = "medical belt"
 	icon = 'icons/obj/items/clothing/belts/medical.dmi'

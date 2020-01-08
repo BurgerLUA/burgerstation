@@ -29,7 +29,9 @@
 
 	return FALSE
 
-/atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object. This is called first.
+
+	world.log << "[src].click_on_object([caller],[object])"
 
 	if(!object || !caller)
 		return FALSE
@@ -43,13 +45,10 @@
 	if(src != defer_self && defer_self.click_on_object(caller,defer_object,location,control,params))
 		return TRUE
 
-	if(src != defer_self && object.clicked_on_by_object(caller,defer_self,location,control,params))
-		return TRUE
-
 	if(object.clicked_on_by_object(caller,src,location,control,params))
 		return TRUE
 
-	defer_self.attack(caller,defer_object,params) //Nothing works? Just fucking hit them. Solves most problems!
+	defer_self.attack(caller,defer_object,params)
 
 	return TRUE
 
@@ -86,8 +85,10 @@
 	if(object && object.dropped_on_by_object(caller,src))
 		return TRUE
 
+	/* ADDING THIS CAUSES ISSUES.
 	if(click_on_object(caller,object))
 		return TRUE
+	*/
 
 	return FALSE
 

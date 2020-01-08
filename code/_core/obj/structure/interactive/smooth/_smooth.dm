@@ -96,5 +96,5 @@ obj/structure/smooth/update_icon()
 	if(TRUE || reinforced_material_id)
 		overlays.Cut()
 		var/image/I2 = new/image(initial(icon),"ref")
-		I2.alpha = 100
+		I2.alpha = 50
 		overlays += I2

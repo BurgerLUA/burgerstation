@@ -44,6 +44,8 @@
 			F.material_id = material_id
 			F.color = color
 			caller.to_chat("You place \the [F.name].")
+			item_count_current -= 2
+			update_icon()
 			return TRUE
 
 	return ..()

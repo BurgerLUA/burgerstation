@@ -206,6 +206,24 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 		caller.to_chat("You don't have enough material to build a wall!")
 		return TRUE
 
+
+	if(istype(A,/obj/item/material/glass/))
+		var/obj/item/material/glass/G = A
+		if(G.item_count_current <= 4)
+			var/obj/structure/smooth/window/W = new(src.loc)
+			W.material_id = G.material_id
+			W.color = G.color
+			for(var/obj/structure/smooth/window/W2 in range(2,src))
+				W2.update_icon()
+			G.item_count_current -= 4
+			caller.to_chat("You place \the glass.")
+			G.update_icon()
+			return TRUE
+
+		caller.to_chat("You don't have enough glass sheets to make a window!")
+		return TRUE
+
+
 	return ..()
 
 obj/structure/interactive/construction/grille
@@ -218,9 +236,45 @@ obj/structure/interactive/construction/grille
 
 	health_base = 75
 
+
 obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
 	if(istype(O,/obj/structure/smooth/window/))
 		return TRUE
 
 	return ..()
+
+/obj/structure/interactive/construction/grille/on_destruction(var/atom/caller,var/damage = FALSE)
+
+	var/desired_dir = get_dir(src,caller)
+	var/turf/desired_turf = get_step(src,desired_dir)
+
+	for(var/i=1,i<=4,i++)
+
+		var/obj/item/material/rod/S = new(desired_turf)
+		S.material_id = material_id
+		S.color = color
+
+		var/offset_x = 0
+		var/offset_y = 0
+
+		if(desired_dir & NORTH)
+			offset_y -= TILE_SIZE
+
+		if(desired_dir & SOUTH)
+			offset_y += TILE_SIZE
+
+		if(desired_dir & EAST)
+			offset_x -= TILE_SIZE
+
+		if(desired_dir & WEST)
+			offset_x += TILE_SIZE
+
+		S.pixel_x = offset_x
+		S.pixel_y = offset_y
+
+		animate(S,pixel_x = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5), pixel_y = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),time=5)
+
+	qdel(src)
+
+	return TRUE

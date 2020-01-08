@@ -52,13 +52,12 @@ mob/living/advanced/on_left_down(object,location,control,params) //THIS ONLY WOR
 				B.stored_item.quick(src,location,control,params)
 				return TRUE
 
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
-		return FALSE
-
-	for(var/obj/hud/inventory/I in inventory)
-		if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
-			I.click_on_object(src,object,location,control,params)
-			return TRUE
+	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
+		for(var/obj/hud/inventory/I in inventory)
+			if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
+				world.log << "Right Click"
+				I.click_on_object(src,object,location,control,params)
+				return TRUE
 
 	return FALSE
 
@@ -87,13 +86,12 @@ mob/living/advanced/on_right_down(object,location,control,params)  //THIS ONLY W
 				B.stored_item.quick(src,location,control,params)
 				return TRUE
 
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
-		return FALSE
-
-	for(var/obj/hud/inventory/I in inventory)
-		if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
-			I.click_on_object(src,object,location,control,params)
-			return TRUE
+	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
+		for(var/obj/hud/inventory/I in inventory)
+			if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
+				world.log << "Left Click"
+				I.click_on_object(src,object,location,control,params)
+				return TRUE
 
 	return FALSE
 
@@ -107,13 +105,12 @@ mob/living/advanced/on_right_click(object,location,control,params)  //THIS ONLY 
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
-		return FALSE
-
-	for(var/obj/hud/inventory/I in inventory)
-		if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
-			I.click_on_object(src,object,location,control,params)
-			return TRUE
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+		for(var/obj/hud/inventory/I in inventory)
+			if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
+				world.log << "Right Click"
+				I.click_on_object(src,object,location,control,params)
+				return TRUE
 
 	return FALSE
 
@@ -123,15 +120,15 @@ mob/living/advanced/on_left_click(object,location,control,params) //THIS ONLY WO
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
-		return FALSE
-
-	for(var/obj/hud/inventory/I in inventory)
-		if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
-			I.click_on_object(src,object,location,control,params)
-			return TRUE
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+		for(var/obj/hud/inventory/I in inventory)
+			if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
+				world.log << "Left Click"
+				I.click_on_object(src,object,location,control,params)
+				return TRUE
 
 	return FALSE
+
 
 /mob/living/advanced/on_left_drop(var/atom/src_object,over_object,src_location,over_location,src_control,over_control,aug)
 

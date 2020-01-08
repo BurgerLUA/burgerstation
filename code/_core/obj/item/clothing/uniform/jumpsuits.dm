@@ -86,3 +86,8 @@
 	color_primary = "#FFFFFF"
 	color_secondary = "#FFFFFF"
 	color_tertiary = COLOR_MEDICAL
+
+/obj/item/clothing/uniform/jumpsuit/engineering
+	color_primary = COLOR_ENGINEERING
+	color_secondary = COLOR_ENGINEERING
+	color_tertiary = COLOR_ORANGE

@@ -56,3 +56,24 @@
 	new /obj/item/magazine/rifle_556/surplus(src)
 
 	return ..()
+
+
+/obj/item/clothing/back/storage/dufflebag/loadout/engineering
+	name = "engineering dufflebag"
+	color = "#FFFFFF"
+
+/obj/item/clothing/back/storage/dufflebag/loadout/engineering/fill_inventory()
+	new /obj/item/clothing/uniform/jumpsuit/engineering(src)
+	new /obj/item/clothing/feet/shoes/black_boots(src)
+	new /obj/item/clothing/feet/shoes/black_boots/left(src)
+	new /obj/item/clothing/hands/gloves/colored/yellow(src)
+	new /obj/item/clothing/hands/gloves/colored/yellow/left(src)
+	new /obj/item/clothing/belt/storage/tool/filled(src)
+	new /obj/item/material/sheet/steel/spawn_50(src)
+	new /obj/item/material/sheet/steel/spawn_50(src)
+	new /obj/item/material/rod/steel/spawn_50(src)
+	new /obj/item/material/glass/normal/spawn_50(src)
+	new /obj/item/weapon/melee/tool/rcd(src)
+	new /obj/item/matter_cartridge(src)
+	new /obj/item/matter_cartridge(src)
+	return ..()
