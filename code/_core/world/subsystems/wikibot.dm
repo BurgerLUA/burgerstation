@@ -29,20 +29,6 @@ var/subsystem/wikibot/SSWikibot
 	text2file(json_encode(wikibot_list),WIKIBOT)
 	return TRUE
 
-/*
-/client/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
-	set category = "Debug"
-	set name = "Add New Wikibot Entry"
-
-	if(!wikibot_question || !wikibot_answer)
-		return FALSE
-
-	var/list/new_question_keys = splittext(wikibot_question," ")
-
-	if(SSWikibot)
-		SSWikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
-*/
-
 /subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)
 
 	spawn()

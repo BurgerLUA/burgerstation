@@ -112,7 +112,7 @@
 
 	if(get_dist(src,caller) > interact_distance)
 		if(enable_message)
-			caller.to_chat("You're too far away!")
+			caller.to_chat(span("notice","You're too far away to interact with \the [src.name]!"))
 		return FALSE
 
 	return TRUE

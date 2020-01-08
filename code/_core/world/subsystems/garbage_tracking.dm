@@ -24,20 +24,4 @@ var/list/ref_id_to_warning = list()
 
 	return TRUE
 
-/*
-client/verb/print_garbage()
 
-	if(!length(ref_id_to_warning))
-		to_chat("Nothing has been found in the garbage warning system.")
-		return TRUE
-
-	var/final_text = "<h1>Found [length(ref_id_to_warning)] objects that refuse to be deleted.</h1>"
-
-	for(var/ref_id in ref_id_to_warning)
-		var/warning_count = ref_id_to_warning[ref_id]
-		var/o_type = qdel_refs_to_type[ref_id]
-		var/var_edit_text = "<a href=?var_edit_ref=[ref_id]>[ref_id]</a>"
-		final_text += "<br>[var_edit_text]([o_type]) = ~[warning_count] seconds"
-
-	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
-*/

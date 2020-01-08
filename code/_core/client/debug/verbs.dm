@@ -100,36 +100,3 @@ client/verb/debug_attributes()
 	for(var/id in L.attributes)
 		var/experience/attribute/A = L.attributes[id]
 		src << "[id] = [A.get_current_level()]"
-
-/*
-client/verb/debug_animations()
-	set category = "Debug"
-
-	src << "Found [length(mob.animations)] animations."
-*/
-
-/*
-client/verb/debug_random()
-	set category = "Debug"
-
-	var/list/stored_values = list(0,0,0,0,0,0,0,0,0,0)
-
-	for(var/i=1,i<=1000,i++)
-		var/random_value = burger_rand_seed(1,10,i)
-		stored_values[random_value] = stored_values[random_value] + 1
-
-	src << "Random Filling Test:"
-	for(var/i=1,i<=length(stored_values),i++)
-		src << "[i]: [stored_values[i]] out of [1000/10]."
-
-
-	src << "Random Randomness Test:"
-	for(var/i=1,i<=10,i++)
-		src << burger_rand_seed(1,1000,curtime + i,src)
-*/
-
-
-/client/verb/debug_buttons()
-	set category = "Debug"
-	src << "Found [length(known_buttons)] known buttons."
-

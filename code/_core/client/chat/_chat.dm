@@ -1,18 +1,3 @@
-/client/verb/ooc(var/text_to_say as text)
-
-	if(check_spam(src))
-		return FALSE
-
-	if(!text_to_say)
-		text_to_say = input("What would you like to say?")
-
-	if(last_ooc+10 >= curtime)
-		src.to_chat(span("warning","You're using OOC too fast!"))
-		return FALSE
-
-	display_message(src,src,text_to_say,TEXT_OOC)
-	last_ooc = curtime
-
 /*
 /proc/broadcast(var/text_to_say as text, var/text_type = TEXT_OOC)
 	for(var/mob/object in world)

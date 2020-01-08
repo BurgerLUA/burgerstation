@@ -1,3 +1,18 @@
+/client/verb/ooc(var/text_to_say as text)
+
+	if(check_spam(src))
+		return FALSE
+
+	if(!text_to_say)
+		text_to_say = input("What would you like to say?")
+
+	if(last_ooc+10 >= curtime)
+		src.to_chat(span("warning","You're using OOC too fast!"))
+		return FALSE
+
+	display_message(src,src,text_to_say,TEXT_OOC)
+	last_ooc = curtime
+
 /client/proc/to_chat(var/text,var/chat_type)
 
 	text = "<div class='message'>[text]</div>"
@@ -27,3 +42,11 @@
 	queued_chat_messages.Add(list(list("text" = text,"output_target_list" = output_target_list)))
 
 	return TRUE
+
+
+/client/verb/pm(var/message as text)
+
+	var/client/C = input("Who would you like to message?","Desired Client") in all_clients
+
+	to_chat(format_speech(src,src,message,TEXT_PM),CHAT_TYPE_PM)
+	C.to_chat(format_speech(src,src,message,TEXT_PM),CHAT_TYPE_PM)

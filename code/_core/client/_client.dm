@@ -157,13 +157,14 @@ var/global/list/all_clients = list()
 	update_window()
 
 /client/proc/welcome()
-	src << "<title>Welcome to Burgerstation 13</title>"
-	src << "This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed."
-	src << "If you wish to join the discord, please do so here: https://discord.gg/yEaV92a"
+	to_chat("<title>Welcome to Burgerstation 13</title><p>This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed. If you wish to join the discord, please do so here: https://discord.gg/yEaV92a</p>")
+	return TRUE
 
+/*
 /client/Command(command as command_text)
 	mob.say(command)
 	return TRUE
+*/
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE
@@ -182,9 +183,9 @@ var/global/list/all_clients = list()
 	set category = "Preferences"
 	swap_mouse = !swap_mouse
 	if(swap_mouse)
-		to_chat("Right clicking will now activate the object in your right hand, and vice versa.")
+		to_chat(span("ui notice","Right clicking will now activate the object in your right hand, and vice versa."))
 	else
-		to_chat("Left clicking will now activate the object in your right hand, and vice versa.")
+		to_chat(span("ui notice","Left clicking will now activate the object in your right hand, and vice versa."))
 
 /client/proc/get_click_flags(aug,var/check_swap = FALSE)
 
