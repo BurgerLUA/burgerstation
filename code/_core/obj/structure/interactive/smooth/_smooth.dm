@@ -1,7 +1,11 @@
 obj/structure/smooth/
-	name = "table"
+	name = "smooth jazz"
 	desc = "What does it do?"
 	icon_state = "table"
+
+	var/material_id = "glass"
+	var/reinforced_material_id = null
+	var/reinforced_color = "#FFFFFF"
 
 obj/structure/smooth/Initialize()
 	. = ..()
@@ -9,6 +13,9 @@ obj/structure/smooth/Initialize()
 	return .
 
 obj/structure/smooth/update_icon()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
 
 	if(!corner_icons)
 		return ..()
@@ -85,3 +92,9 @@ obj/structure/smooth/update_icon()
 	pixel_x = (32 - I.Width())/2
 	pixel_y = (32 - I.Height())/2
 	layer = initial(layer) + 0.1
+
+	if(TRUE || reinforced_material_id)
+		overlays.Cut()
+		var/image/I2 = new/image(initial(icon),"ref")
+		I2.alpha = 100
+		overlays += I2

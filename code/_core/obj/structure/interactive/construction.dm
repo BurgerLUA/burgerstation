@@ -146,10 +146,10 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 
 /obj/structure/interactive/construction/girder/on_destruction(var/atom/caller,var/damage = FALSE)
 
-	for(var/i=1,i<=2,i++)
+	var/desired_dir = get_dir(src,caller)
+	var/turf/desired_turf = get_step(src,desired_dir)
 
-		var/desired_dir = get_dir(src,caller)
-		var/turf/desired_turf = get_step(src,desired_dir)
+	for(var/i=1,i<=2,i++)
 
 		var/obj/item/material/sheet/S = new(desired_turf)
 		S.material_id = material_id

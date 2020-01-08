@@ -727,6 +727,7 @@
 #include "code\_core\obj\item\material\icon.dm"
 #include "code\_core\obj\item\material\interaction.dm"
 #include "code\_core\obj\item\material\rod.dm"
+#include "code\_core\obj\item\material\shard.dm"
 #include "code\_core\obj\item\material\sheet.dm"
 #include "code\_core\obj\item\ore\_ore.dm"
 #include "code\_core\obj\item\organs\_organs.dm"

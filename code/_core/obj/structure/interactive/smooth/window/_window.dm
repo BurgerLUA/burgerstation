@@ -1,8 +1,11 @@
 /obj/structure/smooth/window
-	name = "window"
+	name = "glass window"
 	desc = "See through this."
-	icon = 'icons/obj/structure/smooth/window/normal.dmi'
+	icon = 'icons/obj/structure/smooth/window/normal_new.dmi'
 	icon_state = "window"
+
+	alpha = 255
+	color = "#7FAFCB"
 
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
@@ -16,10 +19,47 @@
 
 	health_base = 100
 
+/obj/structure/smooth/window/on_destruction(var/atom/caller,var/damage = FALSE)
+
+	var/desired_dir = get_dir(src,caller)
+	var/turf/desired_turf = get_step(src,desired_dir)
+
+	for(var/i=1,i<=rand(2,4),i++)
+		var/obj/item/material/shard/S = new(desired_turf)
+		S.material_id = material_id
+		S.color = color
+
+		var/offset_x = 0
+		var/offset_y = 0
+
+		if(desired_dir & NORTH)
+			offset_y -= TILE_SIZE
+
+		if(desired_dir & SOUTH)
+			offset_y += TILE_SIZE
+
+		if(desired_dir & EAST)
+			offset_x -= TILE_SIZE
+
+		if(desired_dir & WEST)
+			offset_x += TILE_SIZE
+
+		S.pixel_x = offset_x
+		S.pixel_y = offset_y
+
+		animate(S,pixel_x = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5), pixel_y = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),time=5)
+
+
+	qdel(src)
+	return TRUE
+
 /obj/structure/smooth/window/reinforced
-	name = "reinforced window"
+	name = "steel reinforced glass window"
 	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'
 	icon_state = "window"
+
+	reinforced_material_id = "steel"
+	reinforced_color = COLOR_STEEL
 
 /obj/structure/smooth/window/reinforced/plasma
 	name = "phoron reinforced window"

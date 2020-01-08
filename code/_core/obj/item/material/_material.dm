@@ -2,7 +2,7 @@
 	name = "glitch"
 	desc = "I am error."
 	icon = 'icons/obj/items/material.dmi'
-	icon_state = "sheet"
+	icon_state = "shard_1"
 
 	var/material_id = "glitch"
 
@@ -13,3 +13,5 @@
 	weight = 0.2
 
 	crafting_id = "glitch"
+
+

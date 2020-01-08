@@ -18,6 +18,8 @@
 	)
 	*/
 
+	var/old_damage_number = 0
+
 
 /health/construction/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
 
@@ -37,13 +39,22 @@
 
 	. = ..()
 
-	owner.overlays.Cut()
+	if(owner)
 
-	var/damage_number = 3 - floor((health_current/health_max)*3)
+		var/damage_number = 3 - floor((health_current/health_max)*3)
 
-	if(damage_number > 0)
-		var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
-		owner.overlays += I
+		if(old_damage_number != damage_number)
+
+			if(length(owner.overlays))
+				owner.overlays.Cut()
+
+			owner.update_icon()
+
+			if(damage_number > 0)
+				var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
+				owner.overlays += I
+
+			old_damage_number = damage_number
 
 	return .
 
