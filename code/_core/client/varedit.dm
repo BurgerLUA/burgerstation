@@ -5,7 +5,7 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 
 	if(is_datum(value))
 		var/datum/VD = value
-		return "<a href=?var_edit_ref=\ref[VD]>[VD]</a> (<i>[VD.type]</i>)"
+		return "<a href='?var_edit_ref=\ref[VD]'>[VD]</a> (<i>[VD.type]</i>)"
 
 	if(is_list(value))
 
@@ -30,7 +30,7 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 	if(!key)
 		return value
 
-	return "<a href=?var_edit_other=[key];var_edit_other_ref=\ref[D]>[value]</a>"
+	return "<a href='?var_edit_other=[key];var_edit_other_ref=\ref[D]'>[value]</a>"
 
 
 proc/is_assoc_list(var/list/L) //Credit to SpaceManiac for providing this

@@ -113,11 +113,10 @@
 	loaded_data["currency"] = A.currency
 	loaded_data["species"] = A.species
 
-	var/list/final_organ_list = list()
+	loaded_data["organs"] = null
 	for(var/id in A.labeled_organs)
 		var/obj/item/organ/O = A.labeled_organs[id]
-		final_organ_list[id] = get_item_data(O,save_inventory)
-	loaded_data["organs"] = final_organ_list
+		loaded_data["organs"][id] = get_item_data(O,save_inventory)
 
 	//Skills
 	var/list/final_skill_list = list()

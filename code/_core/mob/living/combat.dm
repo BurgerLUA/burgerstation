@@ -200,4 +200,4 @@
 
 
 /mob/living/can_be_grabbed()
-	return status
+	return dead || status
