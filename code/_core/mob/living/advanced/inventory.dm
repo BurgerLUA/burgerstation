@@ -45,3 +45,15 @@
 /mob/living/advanced/proc/open_inventory(var/obj/hud/inventory/I)
 	active_inventory = I
 
+
+/mob/living/advanced/proc/drop_held_objects(var/turf/T)
+
+	var/list/returning_list = list()
+
+	if(left_hand)
+		returning_list += left_hand.drop_held_objects(T)
+
+	if(right_hand)
+		returning_list += right_hand.drop_held_objects(T)
+
+	return returning_list

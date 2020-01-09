@@ -63,6 +63,8 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/pre_death()
 
+	/*
+
 	var/obj/item/storage/heavy/corpse/C = new(src.loc)
 
 	var/list/obj/item/dropped_items = list()
@@ -80,6 +82,8 @@ mob/living/advanced/proc/handle_regen()
 	C.prune_inventory()
 
 	queue_delete(C,3000)
+
+	*/
 
 	return TRUE
 
@@ -104,9 +108,13 @@ mob/living/advanced/proc/handle_regen()
 
 	. = ..()
 
+	/*
+
 	new/obj/effect/temp/death(get_turf(src))
 
 	qdel(src)
+
+	*/
 
 	return TRUE
 

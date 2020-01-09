@@ -101,5 +101,15 @@
 	return copytext(haystack,1,length(needle)+1) == needle
 
 
+/proc/get_pronoun(var/mob/M)
+	switch(M.gender)
+		if(MALE)
+			return "he"
+		if(FEMALE)
+			return "she"
+
+	return "they"
+
+
 #define datum2text(x) "[x.name]([x.type])"
 #define atom2text(x) "[x.name]([x.type])([x.x][x.y])"

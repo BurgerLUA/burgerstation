@@ -143,7 +143,6 @@
 					P.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
 					if(assoc_wishgranter)
 						var/savedata/client/mob/U = P.mobdata
-						U.loaded_data["last_save"] = assoc_wishgranter
 						U.save_current_character()
 			*/
 

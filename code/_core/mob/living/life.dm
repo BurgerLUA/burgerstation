@@ -33,9 +33,9 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	queue_delete(src,300)
-
 	layer = LAYER_MOB_DEAD
+
+	handle_horizontal()
 
 	post_death()
 

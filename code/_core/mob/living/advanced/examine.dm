@@ -1,6 +1,5 @@
 mob/living/advanced/get_examine_text(var/mob/examiner)
 
-
 	var/survival_skill = 1
 
 	if(examiner == src || is_observer(examiner))
@@ -17,15 +16,13 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",get_flavortext())
 
-	/*
-	if(is_player(src) && survival_skill > 10) //I know this is shitcode but whatever
-		var/mob/living/advanced/player/P = src
-		var/karma_levels = P.karma
-		if(survival_skill > 25)
-			. += div("examine_description_long","Karma: [karma_levels]")
-		else
-			. += div("examine_description_long","Karma: [karma_levels >= 0 ? "In good standing" : "In poor standing"]")
-	*/
+	var/pronoun = capitalize(get_pronoun(src))
+
+	for(var/obj/item/I in worn_objects)
+		. += div("notice"," \icon[I] [pronoun] is wearing \the [I.name] on their [I.loc.loc.name].")
+
+	for(var/obj/item/I in held_objects)
+		. += div("notice"," \icon[I] [pronoun] is holding \the [I.name] in their [I.loc.loc.name].")
 
 	if(survival_skill > 50)
 		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")

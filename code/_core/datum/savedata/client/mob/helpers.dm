@@ -94,7 +94,7 @@
 
 	return TRUE
 
-/savedata/client/mob/proc/save_current_character()
+/savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE)
 
 	if(!owner)
 		return FALSE
@@ -116,7 +116,7 @@
 	var/list/final_organ_list = list()
 	for(var/id in A.labeled_organs)
 		var/obj/item/organ/O = A.labeled_organs[id]
-		final_organ_list[id] = get_item_data(O)
+		final_organ_list[id] = get_item_data(O,save_inventory)
 	loaded_data["organs"] = final_organ_list
 
 	//Skills
@@ -175,17 +175,6 @@
 			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
 	if(do_teleport)
-		/*
-		if(loaded_data["last_save"] && all_wishgranters[loaded_data["last_save"]])
-			A.force_move(get_turf(all_wishgranters[loaded_data["last_save"]]))
-		else
-
-			var/turf/T = locate(loaded_data["x"],loaded_data["y"],1)
-			if(T)
-				A.force_move(T)
-			else
-		*/
-
 		var/obj/structure/interactive/bed/sleeper/cryo/C = pick(cryo_spawnpoints)
 		A.force_move(get_turf(C))
 		C.buckle(A,silent=TRUE)

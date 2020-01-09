@@ -196,7 +196,7 @@
 
 	return FALSE
 
-/savedata/proc/get_item_data(var/obj/I)
+/savedata/proc/get_item_data(var/obj/I,var/save_inventory = TRUE)
 
 	if(!I || !I.should_save)
 		return list()
@@ -213,7 +213,7 @@
 
 	if(is_item(I))
 		var/obj/item/IT = I
-		if(length(IT.inventories))
+		if(save_inventory && length(IT.inventories))
 			returning_list["inventories"] = new/list(length(IT.inventories))
 			for(var/i=1,i<=length(IT.inventories),i++)
 				var/obj/hud/inventory/IN = IT.inventories[i]

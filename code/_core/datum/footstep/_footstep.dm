@@ -15,6 +15,9 @@
 	var/mob/living/L = caller
 	var/area/A = T.loc
 
+	if(L.dead && L.horizontal)
+		return FALSE
+
 	if(left_foot)
 		if(footstep_sounds && length(footstep_sounds))
 			var/footstep_sound = pick(footstep_sounds)

@@ -1,13 +1,5 @@
 /mob/living/advanced/player/add_stun(var/value,var/max_value = 40)
-
-	var/turf/T = get_turf(src)
-
-	if(left_hand)
-		left_hand.drop_held_objects(T)
-
-	if(right_hand)
-		right_hand.drop_held_objects(T)
-
+	drop_held_objects(src.loc)
 	return ..()
 
 /mob/living/advanced/player/can_attack(var/atom/victim,var/atom/weapon,var/params)
@@ -20,7 +12,6 @@
 			return FALSE
 
 	return ..()
-
 
 /mob/living/advanced/player/can_be_attacked(var/atom/attacker)
 

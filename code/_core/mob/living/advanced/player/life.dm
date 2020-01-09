@@ -17,7 +17,8 @@
 
 /mob/living/advanced/player/pre_death()
 	. = ..()
-	save()
+	drop_held_objects(src.loc)
+	save(FALSE)
 	return .
 
 /mob/living/advanced/player/post_death()
@@ -40,12 +41,14 @@
 	if(!length(people_who_killed))
 		people_who_killed = people_who_contributed
 
+	/*
 	var/date = get_date()
 	var/time = get_time()
 
+
 	if(last_words && length(people_who_killed) && people_who_killed[1] && people_who_killed[1] != src)
 		SS_Soapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
-
+	*/
 
 	/*
 	if(ENABLE_KARMA)

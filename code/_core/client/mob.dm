@@ -10,6 +10,8 @@
 
 	if(delete_last_mob)
 		qdel(mob)
+	else
+		clear_mob(mob)
 
 	M.client = src
 	M.ckey = src.ckey

@@ -1,7 +1,6 @@
 /obj/item/organ/tail
 	name = "tail"
 	break_threshold = 0
-	//health_max = 30
 	id = BODY_TAIL
 
 	attach_flag = BODY_GROIN

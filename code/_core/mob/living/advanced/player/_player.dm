@@ -105,6 +105,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/Destroy()
 
+	CRASH("NO")
+
 	dialogue_target = null
 
 	if(src in equipped_players)
