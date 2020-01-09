@@ -37,7 +37,7 @@
 	var/icon_state_held_left = "held_left"
 	var/icon_state_held_right = "held_right"
 	var/icon_state_worn = "worn"
-	var/icon_state_held_single
+	//var/icon_state_held_single
 
 	var/worn_layer = 0
 

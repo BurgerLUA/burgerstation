@@ -95,6 +95,7 @@
 	driving = null
 	return ..()
 
+/* HERE LIES A FAILED PROJECT
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
 	. = ..()
@@ -139,6 +140,7 @@
 			update_overlay(right_item, desired_icon = initial(right_item.icon), desired_icon_state = right_item.icon_state_held_single, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
 
 	return .
+*/
 
 /mob/living/advanced/proc/update_slowdown_mul()
 

@@ -794,7 +794,6 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\lmg.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\machine_pistol.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine.dm"
-#include "code\_core\obj\item\weapon\ranged\bullet\meme.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\moist_nugget.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\pistol.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\pump.dm"

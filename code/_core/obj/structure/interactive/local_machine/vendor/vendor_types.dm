@@ -93,8 +93,7 @@ var/global/list/equipped_players = list()
 		/obj/item/clothing/back/storage/backpack/loadout/security,
 		/obj/item/clothing/back/storage/backpack/explorer/loadout/miner,
 		/obj/item/clothing/back/storage/dufflebag/loadout/pmc,
-		/obj/item/clothing/back/storage/dufflebag/loadout/engineering,
-		/obj/item/weapon/ranged/meme
+		/obj/item/clothing/back/storage/dufflebag/loadout/engineering
 	)
 
 	is_free = TRUE
