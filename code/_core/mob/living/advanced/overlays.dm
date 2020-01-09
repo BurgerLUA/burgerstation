@@ -24,12 +24,12 @@ mob/living/advanced/proc/remove_overlay(var/atom/A)
 		remove_overlay_image(O)
 		qdel(O)
 
-mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends)
+mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0)
 
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != A)
 			continue
-		update_overlay_direct(O,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends)
+		update_overlay_direct(O,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends,desired_pixel_x,desired_pixel_y)
 		return TRUE
 
 	return FALSE
@@ -50,7 +50,7 @@ mob/living/advanced/proc/remove_overlay_image(var/obj/overlay/O)
 	overlays_assoc -= O
 	qdel(I)
 
-mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends)
+mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0)
 
 	remove_overlay_image(O)
 
@@ -58,13 +58,17 @@ mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_lay
 		O.layer = desired_layer
 	if(desired_icon)
 		O.icon = desired_icon
+		O.initial_icon = desired_icon
 	if(desired_icon_state)
 		O.icon_state = desired_icon_state
+		O.initial_icon_state = desired_icon_state
 	if(desired_color)
 		O.color = desired_color
 	if(desired_additional_blends)
 		O.additional_blends = desired_additional_blends
 
+	O.pixel_x = desired_pixel_x
+	O.pixel_y = desired_pixel_y
 	O.update_icon()
 
 	add_overlay_image(O)

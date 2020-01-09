@@ -1,6 +1,10 @@
-/atom/proc/set_dir(var/desired_direction)
-	//animate(src,time = 1, dir = desired_direction, flags = ANIMATION_LINEAR_TRANSFORM)
+/atom/proc/set_dir(var/desired_direction,var/force = FALSE)
+
+	if(!force && dir == desired_direction)
+		return FALSE
+
 	dir = desired_direction
+
 	return TRUE
 
 /atom/proc/face_atom(var/atom/A)

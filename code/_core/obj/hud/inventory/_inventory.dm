@@ -193,7 +193,6 @@
 
 	return TRUE
 
-
 /obj/hud/inventory/proc/remove_from_owner()
 
 	if(is_advanced(owner))

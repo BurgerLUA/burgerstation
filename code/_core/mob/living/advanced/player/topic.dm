@@ -1,7 +1,5 @@
 /mob/living/advanced/player/Topic(href,href_list[],hsrc)
 
-	world.log << href
-
 	if(length(href_list) && href_list["take"])
 		var/obj/item/I = locate(href_list["take"])
 		if(I && istype(I) && !I.qdeleting)
@@ -18,7 +16,5 @@
 				to_chat(span("notice","You're too far away!"))
 		else
 			to_chat(span("notice","Invalid item!"))
-
-
 
 	return ..()
