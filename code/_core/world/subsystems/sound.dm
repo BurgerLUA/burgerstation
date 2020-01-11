@@ -96,7 +96,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return created_sound
 
-/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,-1), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0)
+/proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,-1), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0, var/range_min=1, var/range_max = SOUND_RANGE)
 
 	if(!sound_path)
 		return FALSE
@@ -141,6 +141,20 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 		var/local_volume = volume
 
+		if(pos[3] >= 0)
+			created_sound.x = pos[1] - M.x
+			created_sound.y = pos[2] - M.y
+			created_sound.z = pos[3] - M.z
+			if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
+				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
+				local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
+				if(local_volume <= 0)
+					continue
+		else
+			created_sound.x = M.x
+			created_sound.y = M.y
+			created_sound.z = M.z
+
 		local_volume *= M.client.settings.loaded_data["volume_master"] / 100
 
 		switch(channel)
@@ -154,19 +168,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 				local_volume *= M.client.settings.loaded_data["volume_ui"] / 100
 			if(SOUND_CHANNEL_FX)
 				local_volume *= M.client.settings.loaded_data["volume_fx"] / 100
-
-		if(pos[3] >= 0)
-			created_sound.x = pos[1] - M.x
-			created_sound.y = pos[2] - M.y
-			created_sound.z = pos[3] - M.z
-
-			if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
-				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5))
-				local_volume = (local_volume - distance*0.25)*max(0,SOUND_RANGE - distance)/SOUND_RANGE
-		else
-			created_sound.x = M.x
-			created_sound.y = M.y
-			created_sound.z = M.z
 
 		if(local_volume <= 0)
 			continue

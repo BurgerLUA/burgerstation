@@ -23,6 +23,8 @@
 
 	var/mob/living/grabber
 
+	var/allow_shuttle_move = TRUE
+
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 

@@ -46,10 +46,10 @@
 #define WEATHER_REMOVE_CHANCE 20
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster FALSE disabled
-#define ENABLE_MAPLOAD FALSE
+#define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
 

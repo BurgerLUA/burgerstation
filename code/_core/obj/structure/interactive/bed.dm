@@ -258,3 +258,8 @@ obj/structure/interactive/bed/sleeper/syndicate
 	name = "syndicate sleeper"
 	base_color = "#303030"
 	secondary_color = "#7F0000"
+
+obj/structure/interactive/bed/sleeper/chef
+	name = "chef sleeper"
+	base_color = "#AAAAAA"
+	secondary_color = "#00FF00"

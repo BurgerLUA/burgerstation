@@ -7,7 +7,7 @@
 
 	remove_overlay(O)
 	organs -= O
-	labeled_organs -= O
+	labeled_organs -= O.id
 
 	if(do_delete)
 		qdel(O)

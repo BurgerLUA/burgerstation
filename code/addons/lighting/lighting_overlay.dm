@@ -16,6 +16,8 @@
 	transform = matrix(TILE_SIZE / 32, 0, (TILE_SIZE - 32) / 2, 0, TILE_SIZE / 32, (TILE_SIZE - 32) / 2)
 	#endif
 
+	allow_shuttle_move = FALSE
+
 /atom/movable/lighting_overlay/New()
 
 	var/turf/T         = loc // If this runtimes atleast we'll know what's creating overlays in things that aren't turfs.

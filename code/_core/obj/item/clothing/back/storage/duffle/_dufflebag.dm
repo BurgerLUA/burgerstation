@@ -60,7 +60,7 @@
 
 /obj/item/clothing/back/storage/dufflebag/loadout/engineering
 	name = "engineering dufflebag"
-	color = "#FFFFFF"
+	color = COLOR_ENGINEERING
 
 /obj/item/clothing/back/storage/dufflebag/loadout/engineering/fill_inventory()
 	new /obj/item/clothing/uniform/jumpsuit/engineering(src)

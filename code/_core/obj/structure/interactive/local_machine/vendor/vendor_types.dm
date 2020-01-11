@@ -82,6 +82,19 @@
 	name = "soda vendor"
 	icon_state = "soda"
 
+/obj/structure/interactive/vendor/soda/full
+	force_spawn_stored_types = TRUE
+	stored_types = list(
+		/obj/item/container/beaker/can/cola,
+		/obj/item/container/beaker/can/dr_gibb,
+		/obj/item/container/beaker/can/grape_soda,
+		/obj/item/container/beaker/can/grey_bull,
+		/obj/item/container/beaker/can/iced_tea,
+		/obj/item/container/beaker/can/mountain_wind,
+		/obj/item/container/beaker/can/orange_soda,
+		/obj/item/container/beaker/can/space_up
+	)
+
 var/global/list/equipped_players = list()
 
 /obj/structure/interactive/vendor/autolocker
