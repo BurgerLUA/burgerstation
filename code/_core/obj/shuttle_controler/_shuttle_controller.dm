@@ -6,8 +6,6 @@
 #define SHUTTLE_STATE_LANDED "landed" //We have landed.
 #define SHUTTLE_STATE_WAITING "waiting" //We have enough people to launch, now we wait just for more, just in case.
 
-
-
 var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller
@@ -26,15 +24,15 @@ var/global/list/all_shuttle_controlers = list()
 	var/transit_bluespace
 	var/transit_end
 
-	var/default_transit_time = 600
+	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME
+	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME
 
 /obj/shuttle_controller/New(var/desired_loc)
 	all_shuttle_controlers += src
 	return ..()
 
 /obj/shuttle_controller/Initialize()
-	spawn(20)
-		set_doors(TRUE,TRUE)
+	set_doors(TRUE,TRUE)
 	return ..()
 
 /obj/shuttle_controller/proc/signal_landing(var/area/transit/landing_area)
@@ -75,7 +73,6 @@ var/global/list/all_shuttle_controlers = list()
 		if(!exposed_to_space && open)
 			S.open(!lock,TRUE)
 		else
-			world.log << "Closing [S.name]."
 			S.close(lock,TRUE)
 
 		if(!exposed_to_space)
@@ -95,12 +92,12 @@ var/global/list/all_shuttle_controlers = list()
 	time++
 
 	if(state == SHUTTLE_STATE_WAITING)
-		if(time < 100)
+		if(time < default_waiting_time)
 			return TRUE
 		launch()
 
 	if(state == SHUTTLE_STATE_LAUNCHING)
-		if(time < 60)
+		if(time < 60) //Needs to be hardcoded as this is based on sound.
 			return TRUE
 		transit(transit_source,transit_bluespace)
 		play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
@@ -116,7 +113,7 @@ var/global/list/all_shuttle_controlers = list()
 		time = 0
 
 	if(state == SHUTTLE_STATE_LANDING)
-		if(time < 20)
+		if(time < 20) //Needs to be hardcoded as this is based on sound.
 			return TRUE
 		transit(transit_bluespace,transit_target)
 		set_doors(TRUE,TRUE)
