@@ -56,9 +56,9 @@
 
 	return TRUE
 
-obj/structure/interactive/door/airlock/open(var/unlock = FALSE)
+obj/structure/interactive/door/airlock/open(var/unlock = FALSE, var/force = FALSE)
 
-	if(unlock && locked)
+	if(locked && (unlock || force))
 		unlock()
 
 	if(door_state != DOOR_STATE_CLOSED)
@@ -72,7 +72,7 @@ obj/structure/interactive/door/airlock/open(var/unlock = FALSE)
 
 	spawn()
 
-		if(no_access)
+		if(!force && no_access)
 			door_state = DOOR_STATE_DENY
 			update_icon()
 			sleep(10)
@@ -102,9 +102,19 @@ obj/structure/interactive/door/airlock/open(var/unlock = FALSE)
 		update_icon()
 		start_thinking(src)
 
-obj/structure/interactive/door/airlock/close(var/lock = FALSE)
+		if(force && !unlock)
+			lock()
 
-	if(door_state != DOOR_STATE_OPENED)
+	return TRUE
+
+obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE)
+
+	if(locked && !force)
+		return FALSE
+
+	if(door_state != DOOR_STATE_OPENED || door_state == DOOR_STATE_DENY)
+		if(lock)
+			lock()
 		return FALSE
 
 	spawn()
@@ -234,7 +244,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE)
 	base_icon.Blend(panel_icon,ICON_OVERLAY)
 
 	var/desired_color = "#FFFFFF"
-	if(locked)
+	if(locked && door_state == DOOR_STATE_CLOSED)
 		desired_color = "#FF0000"
 	else
 		switch(door_state)
@@ -247,7 +257,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE)
 
 	var/light_state = "[icon_state]_light"
 
-	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY || locked)
+	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY || locked && door_state == DOOR_STATE_CLOSED )
 		light_state = "light_special_static"
 
 	if(desired_color == "#FFFFFF")

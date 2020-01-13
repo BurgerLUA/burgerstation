@@ -22,7 +22,6 @@
 
 #define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))
 
-// If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \
 	list            \
 	(               \
@@ -30,7 +29,7 @@
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
-		0, 0, 0, 1  \
+		0, 0, 0, 0.95  \
 	)               \
 
 // Helpers so we can (more easily) control the colour matrices.

@@ -1,4 +1,3 @@
-
 /obj/marker/shuttle
 	name = "shuttle position"
 	icon = 'icons/obj/markers/markers.dmi'

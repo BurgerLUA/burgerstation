@@ -12,7 +12,7 @@
 "l" = (/turf/simulated/floor/plating,/area/transit/cargo/ship)
 "m" = (/turf/unsimulated/void,/area)
 "n" = (/turf/simulated/floor/plating,/area/horde/spawnpoint)
-"o" = (/turf/simulated/floor/space,/area/horde/ship/cryo)
+"o" = (/turf/simulated/floor/space,/area/horde/station/cryo)
 "p" = (/obj/structure/shuttle_engine,/turf/simulated/floor/plating,/area/transit/cargo/ship)
 "q" = (/obj/structure/shuttle_engine/propulsion{icon_state = "propulsion"; dir = 4},/turf/simulated/floor/plating,/area/transit/cargo/ship)
 "r" = (/obj/shuttle_controller,/turf/simulated/floor/plating,/area/transit/cargo/ship)

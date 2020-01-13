@@ -35,14 +35,15 @@
 /turf/proc/is_safe_teleport()
 	return FALSE
 
-/*
+
 /turf/New(loc)
+
+	. = ..()
 
 	if(opacity)
 		has_opaque_atom = TRUE
 
-	..()
-*/
+	return .
 
 /turf/Destroy()
 

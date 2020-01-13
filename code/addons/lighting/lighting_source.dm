@@ -405,7 +405,7 @@
 
 					Tcorners[i] = new /datum/lighting_corner(T, LIGHTING_CORNER_DIAGONAL[i], i)
 
-			if (!T.has_opaque_atom)
+			if(!T.has_opaque_atom)
 				for (var/v in 1 to 4)
 					var/val = Tcorners[v]
 					if (val)

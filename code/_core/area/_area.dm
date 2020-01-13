@@ -22,6 +22,10 @@
 	var/map_color_b = rgb(0,0,255,255)
 	var/map_color_a = rgb(0,0,0,255)
 
+	var/dynamic_lighting_overlay_color = FALSE
+	var/list/lighting_overlay_color_day = LIGHTING_BASE_MATRIX
+	var/list/lighting_overlay_color_night = LIGHTING_BASE_MATRIX
+
 	var/ambient_sound
 	var/list/random_sounds = list()
 	var/list/tracks = list()
@@ -51,7 +55,19 @@
 	var/turf/destruction_turf //The destruction turf of the area, if any.
 
 	var/list/turf/sunlight_turfs = list()
-	var/dynamic_sunlight_enabled = FALSE
+
+
+/area/New()
+	. = ..()
+
+	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
+		all_areas_with_hazards += src
+
+	if(dynamic_lighting_overlay_color)
+		all_areas_with_dynamic_lighting_overlay_color += src
+
+	return .
+
 
 /area/Destroy()
 	if(players_inside)
@@ -62,18 +78,13 @@
 
 	return ..()
 
-/area/New()
-	. = ..()
+/area/proc/update_lighting_overlay_color(var/desired_color)
 
-	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
-		all_areas_with_hazards += src
+	for(var/turf/T in contents)
+		if(T.lighting_overlay)
+			T.lighting_overlay.color = desired_color
 
-	/*
-	if(dynamic_sunlight_enabled)
-		all_areas_with_dynamic_sunlight += src
-	*/
-
-	return .
+	return TRUE
 
 /area/Initialize()
 
@@ -99,9 +110,6 @@
 		return FALSE
 
 	T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
-
-	if(dynamic_sunlight_enabled)
-		sunlight_turfs += T
 
 	return TRUE
 

@@ -31,8 +31,6 @@
 
 /atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object. This is called first.
 
-	world.log << "[src].click_on_object([caller],[object])"
-
 	if(!object || !caller)
 		return FALSE
 

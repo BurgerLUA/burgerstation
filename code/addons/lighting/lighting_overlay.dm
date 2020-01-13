@@ -24,6 +24,9 @@
 	T.lighting_overlay = src
 	T.luminosity       = 0
 
+	var/area/A = T.loc
+	color = A.lighting_overlay_color_day
+
 	needs_update = TRUE
 	SSlighting.overlay_queue += src
 

@@ -1,7 +1,5 @@
 /client/Topic(href,href_list,hsrc)
 
-	world.log << "Okay: [usr] and [mob] and [hsrc]"
-
 	if(!usr || usr != mob)
 		return
 

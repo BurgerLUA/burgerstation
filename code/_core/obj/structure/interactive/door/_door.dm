@@ -102,12 +102,12 @@ obj/structure/interactive/door/proc/close()
 		door_state = DOOR_STATE_CLOSED
 		update_icon()
 
-/obj/structure/interactive/door/airlock/proc/unlock()
+/obj/structure/interactive/door/proc/unlock()
 	locked = FALSE
 	update_icon()
 	return TRUE
 
-/obj/structure/interactive/door/airlock/proc/lock()
+/obj/structure/interactive/door/proc/lock()
 	locked = TRUE
 	update_icon()
 	return TRUE
