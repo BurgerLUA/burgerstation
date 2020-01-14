@@ -236,6 +236,11 @@ obj/structure/interactive/construction/grille
 
 	health_base = 75
 
+obj/structure/interactive/construction/grille/plasteel
+	name = "plasteel grille"
+	desc = "A plasteel grille."
+	color = COLOR_PLASTEEL
+	material_id = "plasteel"
 
 obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 

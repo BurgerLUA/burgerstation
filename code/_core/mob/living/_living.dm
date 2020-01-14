@@ -98,6 +98,8 @@
 
 	var/obj/structure/buckled_object
 
+	reagents = /reagent_container/living
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

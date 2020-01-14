@@ -20,6 +20,10 @@
 
 	reagents = /reagent_container/medicine
 
+	var/override_icon_state = FALSE
+
+
+
 /obj/item/container/medicine/New(var/desired_loc)
 
 	. = ..()
@@ -30,8 +34,11 @@
 	return .
 
 /obj/item/container/medicine/update_icon()
-	icon = initial(icon)
-	icon_state = "[initial(icon_state)]_[Clamp(item_count_current,1,icon_state_max)]"
+
+	if(!override_icon_state)
+		icon = initial(icon)
+		icon_state = "[initial(icon_state)]_[Clamp(item_count_current,1,icon_state_max)]"
+
 	return ..()
 
 /obj/item/container/medicine/proc/treat_organ(var/mob/caller,var/obj/item/organ/O)

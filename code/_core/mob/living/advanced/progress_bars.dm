@@ -32,12 +32,17 @@
 			var/obj/item/container/syringe/S = callback_list["object"]
 			var/is_injecting = callback_list["injecting"]
 			var/verb_to_use = is_injecting ? "inject" : "draw blood from"
-			if(is_injecting)
-				S.reagents.transfer_reagents_to(O.reagents,S.inject_amount)
-			else
-				O.reagents.transfer_reagents_to(S.reagents,S.draw_amount)
+			var/mob/living/L = O.loc
+			if(!L || !istype(L) || !L.reagents)
+				src.to_chat(span("notice","There is nothing to inject!"))
+				return TRUE
 
-			src.to_chat(span("notice","You [verb_to_use] \the [O.name] with your [S.name]."))
+			if(is_injecting)
+				S.reagents.transfer_reagents_to(L.reagents,S.inject_amount)
+			else
+				L.reagents.transfer_reagents_to(S.reagents,S.draw_amount)
+
+			src.to_chat(span("notice","You [verb_to_use] \the [L.name] with your [S.name]."))
 
 			S.update_icon()
 

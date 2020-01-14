@@ -7,6 +7,7 @@
 /subsystem/shuttle/on_life()
 
 	for(var/obj/shuttle_controller/SC in all_shuttle_controlers)
+		SC.time++
 		SC.on_shuttle_think()
 
 	return TRUE

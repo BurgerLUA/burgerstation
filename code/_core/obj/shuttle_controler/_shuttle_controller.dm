@@ -17,6 +17,8 @@ var/global/list/all_shuttle_controlers = list()
 	var/time = 0
 	var/transit_time = 0
 
+	var/display
+
 	var/transit_source
 	var/transit_target
 
@@ -89,39 +91,42 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/on_shuttle_think()
 
-	time++
-
 	if(state == SHUTTLE_STATE_WAITING)
-		if(time < default_waiting_time)
-			return TRUE
-		launch()
+		display = get_clock_time(floor((default_waiting_time - time)/10))
+		if(time >= default_waiting_time)
+			launch()
 
 	if(state == SHUTTLE_STATE_LAUNCHING)
-		if(time < 60) //Needs to be hardcoded as this is based on sound.
-			return TRUE
-		transit(transit_source,transit_bluespace)
-		play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+		display = "Launch"
+		if(time >= 60) //Needs to be hardcoded as this is based on sound.
+			transit(transit_source,transit_bluespace)
+			play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 
-		state = SHUTTLE_STATE_TRANSIT
-		time = 0
+			state = SHUTTLE_STATE_TRANSIT
+			time = 0
 
 	if(state == SHUTTLE_STATE_TRANSIT)
-		if(time < transit_time)
-			return TRUE
-		state = SHUTTLE_STATE_LANDING
-		signal_landing(transit_areas[transit_target])
-		time = 0
+		display = get_clock_time(floor((transit_time - time)/10))
+		if(time >= transit_time)
+			state = SHUTTLE_STATE_LANDING
+			signal_landing(transit_areas[transit_target])
+			time = 0
 
 	if(state == SHUTTLE_STATE_LANDING)
-		if(time < 20) //Needs to be hardcoded as this is based on sound.
-			return TRUE
-		transit(transit_bluespace,transit_target)
-		set_doors(TRUE,TRUE)
-		play_sound('sounds/effects/shuttle/hyperspace_end.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-		state = SHUTTLE_STATE_LANDED
-		time = 0
-		transit_source = null
-		transit_target = null
+		display = "Landing"
+		if(time >= 20) //Needs to be hardcoded as this is based on sound.
+			transit(transit_bluespace,transit_target)
+			set_doors(TRUE,TRUE)
+			play_sound('sounds/effects/shuttle/hyperspace_end.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			state = SHUTTLE_STATE_LANDED
+			time = 0
+			transit_source = null
+			transit_target = null
+
+	var/area/A = get_area(src)
+
+	for(var/obj/structure/interactive/status_display/SD in A.contents)
+		SD.set_text(display)
 
 	return TRUE
 

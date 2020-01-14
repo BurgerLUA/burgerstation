@@ -31,7 +31,7 @@
 	var/enable_detail = FALSE
 	var/enable_wounds = FALSE
 
-	reagents = /reagent_container/limb/
+	reagents = /reagent_container/limb
 
 	var/hud_id
 
@@ -53,7 +53,7 @@
 
 	health_base = 200
 
-	health = /health/obj/item/organ/
+	health = /health/obj/item/organ
 
 /obj/item/organ/Destroy()
 	attached_organ = null

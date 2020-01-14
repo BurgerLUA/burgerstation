@@ -33,6 +33,8 @@
 
 	health_base = 50
 
+	reagents = /reagent_container/limb/head
+
 /obj/item/organ/head/initialize_blends()
 	..()
 	add_blend("blush", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/species/human.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE)

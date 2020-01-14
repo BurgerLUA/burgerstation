@@ -55,15 +55,19 @@
 
 /obj/structure/smooth/window/reinforced
 	name = "steel reinforced glass window"
-	icon = 'icons/obj/structure/smooth/window/reinforced.dmi'
-	icon_state = "window"
+	color = "#6A91A8"
 
 	reinforced_material_id = "steel"
 	reinforced_color = COLOR_STEEL
 
 /obj/structure/smooth/window/reinforced/plasma
-	name = "phoron reinforced window"
-	color = "#FF7FB6"
+	name = "plasteel reinforced phoron-silicate window"
+	color = "#E423C9"
+
+	reinforced_material_id = "plasteel"
+	reinforced_color = COLOR_PLASTEEL
+
+	health = null
 
 /obj/structure/smooth/window/tinted
 	name = "tinted window"
@@ -94,6 +98,7 @@
 	icon = 'icons/obj/structure/smooth/window/shuttle.dmi'
 	icon_state = "window"
 	corner_category = "shuttle"
+	color = "#FFFFFF"
 
 /obj/structure/smooth/window/shuttle/middle
 	icon_state = "single"

@@ -179,3 +179,41 @@
 		owner.health.adjust_oxy_loss(-.*HEALING_E)
 		owner.health.update_health()
 	return .
+
+
+/reagent/medicine/silver_sulfadiazine
+	name = "Silver Sulfadiazine"
+	id = "silver_sulfadiazine"
+	desc = "Heals burn damage. Only works when applied to skin."
+	desc_extended = ""
+	color = "#E8BEED"
+
+	flavor = "bitter silver"
+
+	metabolism_skin = METABOLISM_SKIN
+
+/reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+	. = ..()
+	if(owner && owner.health)
+		owner.health.adjust_burn_loss(-.*HEALING_B)
+		owner.health.update_health()
+	return .
+
+
+/reagent/medicine/styptic_powder
+	name = "Styptic Powder"
+	id = "styptic_powder"
+	desc = "Heals brute damage. Only works when applied to skin."
+	desc_extended = ""
+	color = "#FFC9DD"
+
+	flavor = "baby powder"
+
+	metabolism_skin = METABOLISM_SKIN
+
+/reagent/medicine/styptic_powder/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+	. = ..()
+	if(owner && owner.health)
+		owner.health.adjust_brute_loss(-.*HEALING_B)
+		owner.health.update_health()
+	return .

@@ -44,6 +44,6 @@
 	new /obj/item/container/syringe(src)
 	new /obj/item/container/medicine/bandage/advanced(src)
 	new /obj/item/container/medicine/ointment/advanced(src)
-	new /obj/item/container/medicine/trauma_kit(src)
-	new /obj/item/container/medicine/burn_kit(src)
+	new /obj/item/container/spray/silver_sulfadiazine(src)
+	new /obj/item/container/spray/styptic_powder(src)
 	return ..()

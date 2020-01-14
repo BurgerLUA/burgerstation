@@ -30,11 +30,29 @@
 	treatment_time = 50
 	heal_brute = 50
 
+/obj/item/container/medicine/trauma_kit/advanced
+	name = "trauma kit"
+	icon_state = "traumakit"
+	treatment_time = 50
+	heal_brute = 50
+
+/obj/item/container/medicine/trauma_kit/advanced
+	name = "bicaridine infused trauma kit"
+
+/obj/item/container/medicine/trauma_kit/advanced/on_spawn()
+	reagents.add_reagent("bicaridine",50)
+
 /obj/item/container/medicine/burn_kit
 	name = "burn kit"
 	icon_state = "burnkit"
 	treatment_time = 50
 	heal_burn = 50
 
+/obj/item/container/medicine/burn_kit/advanced
+	name = "kelotane infused burn kit"
+
+/obj/item/container/medicine/burn_kit/advanced/on_spawn()
+	reagents.add_reagent("kelotane",50)
+	return ..()
 
 

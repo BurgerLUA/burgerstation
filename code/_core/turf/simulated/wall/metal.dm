@@ -54,6 +54,7 @@
 	reinforced_material_id = "adamantium-carbon"
 	color = "#48482B"
 	reinforced_color = "#00FF00"
+	health = null
 
 
 /*

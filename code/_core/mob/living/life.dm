@@ -239,6 +239,9 @@
 	if(dead)
 		return FALSE
 
+	if(reagents)
+		reagents.metabolize()
+
 	update_alpha(handle_alpha())
 
 	handle_health_buffer()

@@ -93,8 +93,9 @@ obj/structure/smooth/update_icon()
 	pixel_y = (32 - I.Height())/2
 	layer = initial(layer) + 0.1
 
-	if(TRUE || reinforced_material_id)
+	if(reinforced_material_id)
 		overlays.Cut()
 		var/image/I2 = new/image(initial(icon),"ref")
-		I2.alpha = 50
+		I2.color = "#888888"
+		I2.alpha = 200
 		overlays += I2

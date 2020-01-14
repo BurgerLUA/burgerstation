@@ -16,6 +16,8 @@
 
 	var/should_update_owner = FALSE //Should a change in reagents update the owner?
 
+	var/debug = FALSE
+
 /reagent_container/Destroy()
 	owner = null
 	all_reagent_containers -= src

@@ -74,7 +74,7 @@
 
 		var/obj/item/organ/O = A.get_object_to_damage(caller,params)
 
-		if(!O.reagents)
+		if(!O || !O.reagents)
 			return FALSE
 
 		var/area/A3 = get_area(object)

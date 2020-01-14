@@ -28,3 +28,11 @@
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
 	new/obj/structure/interactive/construction/grille(T)
 	new/obj/structure/smooth/window/reinforced(T)
+
+
+/obj/marker/spawning/window/extra/
+	icon_state = "window_grille_extra"
+
+/obj/marker/spawning/window/extra/do_spawn(var/turf/T)
+	new/obj/structure/interactive/construction/grille/plasteel(T)
+	new/obj/structure/smooth/window/reinforced/plasma(T)
