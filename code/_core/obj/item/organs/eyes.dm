@@ -14,6 +14,9 @@
 
 	enable_wounds = TRUE
 
+	var/vision_mod = FLAG_VISION_NONE
+	var/sight_mod = SEE_SELF | SEE_BLACKNESS
+
 
 /obj/item/organ/eye/initialize_blends()
 	add_blend("eye", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)

@@ -100,6 +100,8 @@
 
 	reagents = /reagent_container/living
 
+	var/image/medical_hud_image
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object
@@ -146,6 +148,9 @@
 
 	players_fighting_boss.Cut()
 
+	qdel(medical_hud_image)
+	medical_hud_image = null
+
 	return ..()
 
 /mob/living/proc/get_brute_color()
@@ -167,6 +172,11 @@
 
 	initialize_attributes()
 	initialize_skills()
+
+	medical_hud_image = new/image('icons/hud/medihud.dmi',"0")
+	medical_hud_image.loc = src
+	medical_hud_image.layer = PLANE_HUD_VISION
+	medical_hud_image.pixel_y = 4
 
 	. = ..()
 

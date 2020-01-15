@@ -1,17 +1,24 @@
 /subsystem/client/
 	name = "Client Subsystem"
 	desc = "Controls how clients behave."
-	tick_rate = 1
+	tick_rate = CLIENT_TICK
 	priority = SS_ORDER_PRELOAD
+
+	var/advanced_ticks = 0
 
 /subsystem/client/on_life()
 
-	set background = TRUE
+	var/do_slow = advanced_ticks >= CLIENT_TICKS_PER_SLOW_CLIENT_TICKS
 
 	for(var/client/C in all_clients)
+		CHECK_TICK
 		C.on_life()
+		if(do_slow)
+			C.on_life_slow()
 
-	for(var/mob/living/advanced/player/debug/D in all_mobs)
-		D.on_life_client()
+	if(do_slow)
+		advanced_ticks = 0
+	else
+		advanced_ticks += 1
 
 	return TRUE

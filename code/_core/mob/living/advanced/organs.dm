@@ -16,11 +16,13 @@
 	for(var/obj/item/organ/O in organs)
 		remove_organ(O,TRUE)
 
+/*
 /mob/living/advanced/proc/update_all_organs()
 	labeled_organs = list()
 	for(var/obj/item/organ/O in organs)
 		if(O.id)
 			labeled_organs[O.id] = O
+*/
 
 /mob/living/advanced/proc/add_species_organs()
 

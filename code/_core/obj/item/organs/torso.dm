@@ -72,3 +72,8 @@
 	name = "advanced cyborg torso"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	desc = "An organ."
+
+/obj/item/organ/torso/beefman
+	name = "beefman torso"
+	icon = 'icons/mob/living/advanced/species/beefman.dmi'
+	desc = "An organ."

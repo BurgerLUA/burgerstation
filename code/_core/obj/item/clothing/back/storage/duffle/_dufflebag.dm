@@ -25,11 +25,8 @@
 	new /obj/item/clothing/overwear/coat/labcoat/medical(src)
 	new /obj/item/clothing/belt/storage/medical/filled(src)
 	new /obj/item/storage/bags/chemistry(src)
+	new /obj/item/clothing/glasses/medical_hud(src)
 	new /obj/item/container/medicine/trauma_kit(src)
-	new /obj/item/container/medicine/trauma_kit(src)
-	new /obj/item/container/medicine/trauma_kit(src)
-	new /obj/item/container/medicine/burn_kit(src)
-	new /obj/item/container/medicine/burn_kit(src)
 	new /obj/item/container/medicine/burn_kit(src)
 	return ..()
 

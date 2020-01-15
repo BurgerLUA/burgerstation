@@ -95,6 +95,20 @@
 	driving = null
 	return ..()
 
+/mob/living/advanced/update_eyes()
+
+	. = ..()
+
+	for(var/obj/item/organ/eye/E in labeled_organs)
+		sight |= E.sight_mod
+		vision |= E.vision_mod
+
+	for(var/obj/item/clothing/glasses/G in worn_objects)
+		sight |= G.sight_mod
+		vision |= G.vision_mod
+
+	return .
+
 /* HERE LIES A FAILED PROJECT
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 

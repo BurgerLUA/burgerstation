@@ -13,10 +13,11 @@
 
 	var/icon_count = 7
 
-	var/inject_amount = 5
+	var/inject_amount = 15
 	var/draw_amount = 15
 
 	var/injecting = FALSE
+
 
 /obj/item/container/syringe/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
@@ -93,16 +94,16 @@
 		callback_list["object"] = src
 		callback_list["start_turf"] = get_turf(src)
 		callback_list["injecting"] = injecting
-		add_progress_bar(caller,"inject",10 + inject_amount*5,callback_list)
+		add_progress_bar(caller,"inject",10,callback_list)
 		return TRUE
 
 	if(object.reagents)
 
 		if(injecting)
-			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,inject_amount)
+			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,5)
 			caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
 		else
-			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,draw_amount)
+			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,5)
 			caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
 
 		return TRUE

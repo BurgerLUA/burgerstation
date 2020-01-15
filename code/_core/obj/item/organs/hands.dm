@@ -172,3 +172,32 @@
 
 	target_bounds_y_min = 11
 	target_bounds_y_max = 14
+
+
+//Beefman
+/obj/item/organ/hand/beefman
+	name = "right beef hand"
+	icon = 'icons/mob/living/advanced/species/beefman.dmi'
+	inventories = list(
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
+	)
+
+/obj/item/organ/hand/beefman/left
+	name = "left beef hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14

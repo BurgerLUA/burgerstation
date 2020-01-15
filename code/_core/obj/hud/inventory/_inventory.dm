@@ -310,6 +310,7 @@
 			A.worn_objects += I
 			A.update_slowdown_mul()
 			A.update_protection()
+			A.update_eyes()
 			update_worn_icon(I)
 
 	return TRUE
@@ -423,6 +424,9 @@
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner
 				A.update_slowdown_mul()
+				A.update_protection()
+				A.update_eyes()
+				world.log << "Yeah"
 
 	return I
 

@@ -28,7 +28,9 @@
 
 	see_invisible = INVISIBILITY_LIGHTING
 
-	sight = SEE_SELF | SEE_BLACKNESS
+	sight = 0x0
+
+	var/vision = 0x0
 
 	/*
 	var/list/quests/all_quests = list()
@@ -74,6 +76,11 @@
 	pixel_z = MOB_HEIGHT_OFFSET
 
 	change_dir_on_move = TRUE
+
+/mob/proc/update_eyes()
+	vision = 0x0
+	sight = (SEE_SELF | SEE_BLACKNESS)
+	return TRUE
 
 /mob/Destroy()
 
@@ -177,6 +184,8 @@
 		*/
 
 	force_move(src.loc)
+
+	update_eyes()
 
 	return .
 

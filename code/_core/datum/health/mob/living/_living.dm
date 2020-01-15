@@ -14,6 +14,18 @@
 		L.update_health_element_icons(health=TRUE)
 		L.update_boss_health()
 
+	if(L.medical_hud_image)
+		var/health_icon_state
+
+		if(L.dead)
+			health_icon_state = "dead"
+		else if (L.status & FLAG_STATUS_CRIT)
+			health_icon_state = "crit"
+		else
+			health_icon_state = "[Clamp(floor( (health_current/health_max)*23 ),0,23)]"
+
+		L.medical_hud_image.icon_state = health_icon_state
+
 	return .
 
 /health/mob/living/update_stats()

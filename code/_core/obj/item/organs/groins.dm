@@ -64,3 +64,9 @@
 /obj/item/organ/groin/cyborg
 	name = "cyborg groin"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+
+
+//Beefman
+/obj/item/organ/groin/beefman
+	name = "beef groin"
+	icon = 'icons/mob/living/advanced/species/beefman.dmi'

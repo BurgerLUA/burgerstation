@@ -110,3 +110,17 @@
 		/obj/hud/inventory/organs/face,
 		/obj/hud/inventory/organs/glasses
 	)
+
+
+//cyborg
+/obj/item/organ/head/beefman
+	name = "beef head"
+	icon = 'icons/mob/living/advanced/species/beefman.dmi'
+	desc = "An organ."
+
+	inventories = list(
+		/obj/hud/inventory/organs/head,
+		/obj/hud/inventory/organs/neck,
+		/obj/hud/inventory/organs/face,
+		/obj/hud/inventory/organs/glasses
+	)

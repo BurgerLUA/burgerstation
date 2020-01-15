@@ -6,3 +6,4 @@
 #define SPECIES_DIONA 0x8
 #define SPECIES_CYBORG 0x10
 #define SPECIES_DUMMY 0x20
+#define SPECIES_BEEF 0x40

@@ -121,3 +121,21 @@
 
 	target_bounds_y_min = 4
 	target_bounds_y_max = 8
+
+
+/obj/item/organ/leg/beefman
+	name = "right beef leg"
+	icon = 'icons/mob/living/advanced/species/beefman.dmi'
+
+/obj/item/organ/leg/beefman/left
+	name = "left beef leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8

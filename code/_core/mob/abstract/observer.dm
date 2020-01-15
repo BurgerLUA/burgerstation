@@ -46,13 +46,20 @@
 
 	name = "ghost of [ckey]"
 
-	sight |= SEE_THRU
-
 	for(var/v in spawning_buttons)
 		var/obj/hud/button/B = new v
 		B.update_owner(src)
 
 	to_chat(span("notice","Please load a character or create a new character to play using the buttons below."))
+
+	return .
+
+
+/mob/abstract/observer/update_eyes()
+
+	. = ..()
+
+	sight |= SEE_THRU
 
 	return .
 
