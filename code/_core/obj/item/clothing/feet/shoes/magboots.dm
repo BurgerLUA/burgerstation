@@ -1,11 +1,11 @@
-/obj/item/clothing/feet/shoes/black_boots
-	name = "right black boot"
+/obj/item/clothing/feet/shoes/magboot
+	name = "right magboot"
 	rarity = RARITY_UNCOMMON
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	icon = 'icons/obj/items/clothing/shoes/boots.dmi'
+	icon = 'icons/obj/items/clothing/shoes/magboots.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)
@@ -24,11 +24,15 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
-/obj/item/clothing/feet/shoes/black_boots/left
-	name = "left black boot"
+	slowdown_mul_worn = 1.1
+
+/obj/item/clothing/feet/shoes/magboot/left
+	name = "left magboot"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
+
+	slowdown_mul_worn = 1.1
 

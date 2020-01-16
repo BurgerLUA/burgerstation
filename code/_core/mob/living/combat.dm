@@ -129,6 +129,20 @@
 
 	return TRUE
 
+/mob/living/proc/add_adrenaline(var/value,var/max_value = 40)
+
+	if(adrenaline_time == -1)
+		return FALSE
+
+	if(adrenaline_time >= max_value)
+		return FALSE
+
+	adrenaline_time = min(max_value,adrenaline_time + value)
+
+	check_status_effects()
+
+	return TRUE
+
 /mob/living/proc/set_crit()
 	crit_time = -1
 	check_status_effects()

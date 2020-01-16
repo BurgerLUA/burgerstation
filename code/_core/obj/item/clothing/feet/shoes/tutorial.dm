@@ -3,6 +3,7 @@
 	rarity = RARITY_MYTHICAL
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
+	worn_layer = LAYER_MOB_CLOTHING_BELT
 
 	icon = 'icons/obj/items/clothing/shoes/tutorial_shoes.dmi'
 

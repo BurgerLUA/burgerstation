@@ -84,13 +84,23 @@
 		P.on_spawn()
 	return ..()
 
-
 /obj/item/storage/bags/pills/dylovene
 	name = "dylovene pill bottle"
 	desc = "Contains 20 20u dylovene pills."
 
 /obj/item/storage/bags/pills/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
+		var/obj/item/container/pill/dylovene/P = new(src)
+		P.on_spawn()
+	return ..()
+
+
+/obj/item/storage/bags/pills/dylovene_small
+	name = "dylovene pill bottle"
+	desc = "Contains 10 20u dylovene pills."
+
+/obj/item/storage/bags/pills/dylovene/fill_inventory()
+	for(var/i=1,i<=10,i++)
 		var/obj/item/container/pill/dylovene/P = new(src)
 		P.on_spawn()
 	return ..()

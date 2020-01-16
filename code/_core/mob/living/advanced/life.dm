@@ -54,6 +54,7 @@ mob/living/advanced/proc/handle_regen()
 
 /mob/living/advanced/on_life_slow()
 
+
 	. = ..()
 
 	if(.)
@@ -123,10 +124,10 @@ mob/living/advanced/proc/handle_regen()
 	if(!health)
 		return FALSE
 
-	if(health.health_current <= -100)
-		return TRUE
+	if(status & FLAG_STATUS_ADRENALINE)
+		return health.health_current <= -200
 
-	return FALSE
+	return health.health_current <= -100
 
 /mob/living/advanced/handle_health_buffer()
 
@@ -163,20 +164,7 @@ mob/living/advanced/proc/handle_regen()
 		return FALSE
 
 	for(var/obj/item/organ/O in organs)
-
 		CHECK_TICK
-
-		if(O.reagents)
-			O.reagents.metabolize()
-
-		if(!O.health)
-			continue
-
-		/*
-		if(ENABLE_WOUNDS)
-			for(var/wound/W in O.health.wounds)
-				CHECK_TICK
-				W.on_life()
-		*/
+		O.on_life()
 
 	return TRUE

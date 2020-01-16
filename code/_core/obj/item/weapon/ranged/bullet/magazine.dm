@@ -25,6 +25,8 @@
 
 	var/cock_sound = 'sounds/weapons/generic_close.ogg'
 
+	var/requires_cock_each_shot = FALSE
+
 /obj/item/weapon/ranged/bullet/magazine/New()
 
 	if(stored_magazine)
@@ -78,6 +80,7 @@
 
 	if(.)
 		eject_chambered_bullet(caller,get_turf(src))
-		load_new_bullet_from_magazine()
+		if(!requires_cock_each_shot)
+			load_new_bullet_from_magazine()
 
 	return .

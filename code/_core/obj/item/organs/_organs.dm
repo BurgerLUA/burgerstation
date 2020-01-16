@@ -206,3 +206,8 @@
 
 	for(var/i=1,i<=Clamp(round(damage_dealt/5),1,5),i++)
 		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)
+
+/obj/item/organ/proc/on_life()
+	if(reagents)
+		reagents.metabolize()
+	return TRUE

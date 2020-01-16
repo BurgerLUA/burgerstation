@@ -55,8 +55,13 @@
 
 /mob/living/proc/check_death()
 
-	if(health && health.health_current <= 0)
-		return TRUE
+	if(!health)
+		return FALSE
+
+	if(status & FLAG_STATUS_ADRENALINE)
+		return health.health_current <= -100
+
+	return health.health_current <= 0
 
 	return FALSE
 

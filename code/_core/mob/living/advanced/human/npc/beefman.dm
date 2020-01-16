@@ -16,8 +16,6 @@
 
 	return .
 
-
-
 /mob/living/advanced/npc/borgman
 	name = "borgman"
 	enable_AI = TRUE

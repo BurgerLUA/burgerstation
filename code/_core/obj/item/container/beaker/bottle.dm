@@ -27,3 +27,11 @@
 /obj/item/container/beaker/bottle/kelotane/on_spawn()
 	reagents.add_reagent("kelotane",reagents.volume_max)
 	return ..()
+
+
+/obj/item/container/beaker/bottle/epinephrine
+	name = "bottle of epinephrine"
+
+/obj/item/container/beaker/bottle/epinephrine/on_spawn()
+	reagents.add_reagent("epinephrine",reagents.volume_max)
+	return ..()

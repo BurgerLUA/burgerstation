@@ -38,3 +38,8 @@
 #define FLAG_STATUS_CRIT 0x40
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Move very slow.
+
+#define FLAG_STATUS_ADRENALINE 0x80
+//Prevents death by reducing the death threshold relative the the current value.
+//Move faster.
+

@@ -102,11 +102,11 @@ var/global/list/equipped_players = list()
 	icon_state = "gear"
 
 	stored_types = list(
-		/obj/item/clothing/back/storage/dufflebag/loadout/medical,
+		/obj/item/clothing/back/storage/backpack/medical/loadout/medical,
 		/obj/item/clothing/back/storage/backpack/loadout/security,
 		/obj/item/clothing/back/storage/backpack/explorer/loadout/miner,
 		/obj/item/clothing/back/storage/dufflebag/loadout/pmc,
-		/obj/item/clothing/back/storage/dufflebag/loadout/engineering
+		/obj/item/clothing/back/storage/dufflebag/engineering/loadout
 	)
 
 	is_free = TRUE

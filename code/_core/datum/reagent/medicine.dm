@@ -1,12 +1,23 @@
 #define METABOLISM_STOMACH 0.75
 #define METABOLISM_BLOOD 1
 #define METABOLISM_SKIN 10
-
+#define OVERDOSE_THRESHOLD_MEDICINE 30
 
 /reagent/medicine/
 	metabolism_stomach = METABOLISM_STOMACH //How many units of the reagent to metabolize per second.
 	metabolism_blood = METABOLISM_BLOOD //How many units of the reagent to metabolize per second.
 	metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
+	overdose_threshold = OVERDOSE_THRESHOLD_MEDICINE
+
+/reagent/medicine/on_overdose(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
+
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_tox_loss(metabolism_amount)
+		owner.health.update_health()
+
+	return .
 
 /reagent/medicine/bicaridine
 	name = "Bicaridine"
@@ -216,4 +227,33 @@
 	if(owner && owner.health)
 		owner.health.adjust_brute_loss(-.*HEALING_B)
 		owner.health.update_health()
+	return .
+
+/reagent/medicine/epinephrine
+	name = "epinephrine"
+	id = "epinephrine"
+	desc = "Prevents people from dying by increasing the amount of damage one must take before succumbing to death."
+	desc_extended = ""
+	color = "#FFFFFF"
+	flavor = "bandaids"
+
+	metabolism_blood = METABOLISM_BLOOD*0.25
+	metabolism_stomach = METABOLISM_BLOOD*0.25
+
+/reagent/medicine/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.add_adrenaline(.*50)
+
+	return .
+
+/reagent/medicine/epinephrine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.add_adrenaline(.*40)
+
 	return .

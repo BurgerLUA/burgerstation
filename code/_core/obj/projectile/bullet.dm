@@ -53,3 +53,8 @@
 	name = "crossbow bolt"
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "bolt"
+
+/obj/projectile/bullet/syringe
+	name = "launched syringe"
+	icon = 'icons/obj/projectiles/bolt.dmi'
+	icon_state = "syringe"

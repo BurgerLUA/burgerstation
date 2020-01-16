@@ -39,6 +39,14 @@
 	src.visible_message(span("warning","\The [src.name] wakes up!","You wake up feeling [health && health.health_current < health.health_max ? "refreshed... sort of." : "refreshed!"]"))
 	return TRUE
 
+/mob/living/proc/on_adrenaline()
+	src.to_chat("You feel a rush of energy!")
+	return TRUE
+
+/mob/living/proc/on_unadrenaline()
+	src.to_chat("The rush of energy disappears.")
+	return TRUE
+
 /mob/living/proc/on_sleeped()
 	//src.visible_message("\The [src.name] lies down for a nap...","You lie down for a nap...")
 	return TRUE

@@ -124,7 +124,7 @@
 	projectile_speed = 16
 	shoot_delay = 4
 	bullet_type = ".45"
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 
 	view_punch = 8
 

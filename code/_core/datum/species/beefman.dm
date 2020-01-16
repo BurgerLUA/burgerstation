@@ -26,6 +26,8 @@
 		BODY_ARM_LEFT = /obj/item/organ/arm/beefman/left,
 		BODY_HAND_RIGHT = /obj/item/organ/hand/beefman,
 		BODY_HAND_LEFT = /obj/item/organ/hand/beefman/left,
+		BODY_EYE_RIGHT = /obj/item/organ/eye/beefman,
+		BODY_EYE_LEFT = /obj/item/organ/eye/beefman/left,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_LUNGS = /obj/item/organ/internal/lungs,

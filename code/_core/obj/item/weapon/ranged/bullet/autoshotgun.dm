@@ -22,6 +22,8 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	requires_cock_each_shot = TRUE
+
 /obj/item/weapon/ranged/bullet/magazine/autoshotgun/get_static_spread() //Base spread
 	return 0.05
 

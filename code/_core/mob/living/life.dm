@@ -176,6 +176,15 @@
 		remove_status(FLAG_STATUS_CONFUSED)
 		on_unconfused()
 
+	//Adrenaline
+	if(!(status & FLAG_STATUS_ADRENALINE) && (adrenaline_time > 0 || adrenaline_time == -1))
+		add_status(FLAG_STATUS_ADRENALINE)
+		on_adrenaline()
+
+	if(status & FLAG_STATUS_ADRENALINE && adrenaline_time <= 0 && adrenaline_time != -1)
+		remove_status(FLAG_STATUS_ADRENALINE)
+		on_adrenaline()
+
 	//Final Checks
 	if(status && !(src in all_living_with_status))
 		all_living_with_status += src
@@ -206,6 +215,9 @@
 
 		if(confuse_time != -1)
 			confuse_time = max(0,confuse_time - amount_to_remove)
+
+		if(adrenaline_time != -1)
+			adrenaline_time = max(0,adrenaline_time - amount_to_remove)
 
 		if(health && fatigue_time != -1)
 			if(health.stamina_current == health.stamina_max*0.25)

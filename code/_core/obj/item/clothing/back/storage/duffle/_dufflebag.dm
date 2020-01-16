@@ -9,29 +9,6 @@
 
 	weight = WEIGHT_4
 
-
-/obj/item/clothing/back/storage/dufflebag/loadout/
-
-
-
-/obj/item/clothing/back/storage/dufflebag/loadout/medical
-	name = "medical doctor dufflebag"
-	color = "#FFFFFF"
-
-/obj/item/clothing/back/storage/dufflebag/loadout/medical/fill_inventory()
-	new /obj/item/clothing/uniform/jumpsuit/medical_doctor(src)
-	new /obj/item/clothing/hands/gloves/colored(src)
-	new /obj/item/clothing/hands/gloves/colored/left(src)
-	new /obj/item/clothing/overwear/coat/labcoat/medical(src)
-	new /obj/item/clothing/belt/storage/medical/filled(src)
-	new /obj/item/storage/bags/chemistry(src)
-	new /obj/item/clothing/glasses/medical_hud(src)
-	new /obj/item/container/medicine/trauma_kit(src)
-	new /obj/item/container/medicine/burn_kit(src)
-	return ..()
-
-
-
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
 	name = "PMC dufflebag"
 	color = COLOR_BLACK
@@ -61,16 +38,14 @@
 	return ..()
 
 
-/obj/item/clothing/back/storage/dufflebag/loadout/engineering
+/obj/item/clothing/back/storage/dufflebag/engineering
 	name = "engineering dufflebag"
-	color = COLOR_ENGINEERING
+	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'
 
-/obj/item/clothing/back/storage/dufflebag/loadout/engineering/fill_inventory()
+
+/obj/item/clothing/back/storage/dufflebag/engineering/loadout/fill_inventory()
 	new /obj/item/clothing/uniform/jumpsuit/engineering(src)
-	new /obj/item/clothing/feet/shoes/black_boots(src)
-	new /obj/item/clothing/feet/shoes/black_boots/left(src)
-	new /obj/item/clothing/hands/gloves/colored/yellow(src)
-	new /obj/item/clothing/hands/gloves/colored/yellow/left(src)
+	new /obj/item/clothing/overwear/armor/hardsuit/engineering(src)
 	new /obj/item/clothing/belt/storage/tool/filled(src)
 	new /obj/item/material/sheet/steel/spawn_50(src)
 	new /obj/item/material/sheet/steel/spawn_50(src)

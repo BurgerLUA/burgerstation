@@ -23,6 +23,7 @@
 	var/stagger_time = 0
 	var/crit_time = 0
 	var/confuse_time = 0
+	var/adrenaline_time = 0
 
 	var/first_life = TRUE
 
