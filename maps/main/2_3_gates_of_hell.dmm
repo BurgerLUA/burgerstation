@@ -25,7 +25,7 @@
 "y" = (/turf/simulated/wall/ice,/area/world/mountain/exterior)
 "z" = (/turf/simulated/floor/chasm,/area/world/lava/exterior)
 "A" = (/turf/simulated/wall/rock/snow,/area/world/mountain/exterior)
-"B" = (/obj/structure/interactive/grille,/obj/structure/smooth/window/reinforced,/turf/simulated/floor/plating,/area/world/lava/lab)
+"B" = (/obj/structure/smooth/window/reinforced,/turf/simulated/floor/plating,/area/world/lava/lab)
 "C" = (/turf/simulated/wall/rock/snow,/area/world/mountain/interior/temple)
 "D" = (/turf/simulated/wall/rock,/area/world/mountain/exterior)
 "E" = (/turf/simulated/floor/ice,/area/world/mountain/exterior)

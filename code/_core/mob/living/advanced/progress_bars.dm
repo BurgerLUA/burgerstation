@@ -2,7 +2,7 @@
 
 	switch(id)
 		if("enter_vehicle")
-			var/obj/vehicle/V = callback_list["vehicle"]
+			var/mob/living/vehicle/V = callback_list["vehicle"]
 			src.Move(V)
 			return TRUE
 		if("loot_object")

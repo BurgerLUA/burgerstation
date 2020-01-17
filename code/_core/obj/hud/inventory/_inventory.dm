@@ -225,10 +225,10 @@
 
 /obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass=FALSE) //Prioritize wearing it, then holding it.
 
-	if((bypass || I.can_be_worn()) && add_worn_object(I,messages,bypass))
+	if((bypass || (!I.unremovable && I.can_be_worn())) && add_worn_object(I,messages,bypass))
 		return TRUE
 
-	if((bypass || I.can_be_held()) && add_held_object(I,messages,bypass))
+	if((bypass || (!I.unremovable && I.can_be_held())) && add_held_object(I,messages,bypass))
 		return TRUE
 
 	return FALSE

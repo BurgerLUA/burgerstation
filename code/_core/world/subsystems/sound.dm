@@ -139,21 +139,23 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
+		var/turf/T = get_turf(M)
+
 		var/local_volume = volume
 
 		if(pos[3] >= 0)
-			created_sound.x = pos[1] - M.x
-			created_sound.y = pos[2] - M.y
-			created_sound.z = pos[3] - M.z
+			created_sound.x = pos[1] - T.x
+			created_sound.y = pos[2] - T.y
+			created_sound.z = pos[3] - T.z
 			if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
 				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
 				local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
 				if(local_volume <= 0)
 					continue
 		else
-			created_sound.x = M.x
-			created_sound.y = M.y
-			created_sound.z = M.z
+			created_sound.x = 0
+			created_sound.y = 0
+			created_sound.z = 0
 
 		local_volume *= M.client.settings.loaded_data["volume_master"] / 100
 

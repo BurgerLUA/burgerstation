@@ -1,4 +1,4 @@
-/obj/vehicle/
+/mob/living/vehicle/
 	name = "Vehicle"
 	desc = "A large vehicle that holds a driver"
 
@@ -15,17 +15,27 @@
 
 	var/list/obj/item/equipment
 
-/obj/vehicle/proc/attach_equipment(var/obj/item/I)
+/mob/living/vehicle/proc/attach_equipment(var/obj/item/I)
+	if(I in equipment)
+		return FALSE
 	equipment += I
 	I.force_move(src)
+	I.unremovable = TRUE
 
-/obj/vehicle/New(var/desired_loc)
+/mob/living/vehicle/proc/unattach_equipment(var/obj/item/I)
+	if(!(I in equipment))
+		return FALSE
+	equipment -= I
+	I.force_move(get_turf(src))
+	I.unremovable = initial(I.unremovable)
+
+/mob/living/vehicle/New(var/desired_loc)
 	..()
 	passengers = list()
 	equipment = list()
 	update_icon()
 
-/obj/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE
@@ -43,7 +53,7 @@
 
 	return TRUE
 
-/obj/vehicle/Enter(atom/movable/O, atom/oldloc) //When we try to enter the vehicle.
+/mob/living/vehicle/Enter(atom/movable/O, atom/oldloc) //When we try to enter the vehicle.
 
 	if(!is_advanced(O))
 		return FALSE
@@ -53,7 +63,7 @@
 
 	return ..()
 
-/obj/vehicle/handle_movement(var/adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
+/mob/living/vehicle/handle_movement(var/adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
 
 	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()
@@ -67,7 +77,7 @@
 
 	return FALSE
 
-/obj/vehicle/Entered(atom/movable/Obj,atom/OldLoc)
+/mob/living/vehicle/Entered(atom/movable/Obj,atom/OldLoc)
 
 	if(!is_advanced(Obj))
 		return ..()
@@ -81,10 +91,10 @@
 
 	return ..()
 
-/obj/vehicle/Exit(atom/movable/O, atom/newloc) //When we try to exit the vehicle.
+/mob/living/vehicle/Exit(atom/movable/O, atom/newloc) //When we try to exit the vehicle.
 	return FALSE
 
-/obj/vehicle/Exited(atom/movable/Obj, atom/newloc)
+/mob/living/vehicle/Exited(atom/movable/Obj, atom/newloc)
 	if(!is_advanced(Obj))
 		return ..()
 
@@ -98,7 +108,7 @@
 	return ..()
 
 
-/obj/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
+/mob/living/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
 
 	if(!is_living(caller) || get_dist(caller,src) > 1)
 		return ..()
@@ -110,7 +120,7 @@
 
 	return TRUE
 
-/obj/vehicle/drop_on_object(caller,object) //Exit the vehicle.
+/mob/living/vehicle/drop_on_object(caller,object) //Exit the vehicle.
 
 	if(!length(passengers) || !passengers[1] || !is_living(passengers[1]) || !get_turf(object) || get_dist(src,object) > 1)
 		return ..()

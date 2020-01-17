@@ -8,10 +8,10 @@
 	projectile_speed = 31
 	shoot_delay = 2
 
-	automatic = FALSE
+	automatic = TRUE
 
 	charge_max = 1
 	charge_current = 1
 	charge_cost = 0
 
-	//shoot_sounds = list('sounds/weapon/ranged/pew.ogg')
+	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')

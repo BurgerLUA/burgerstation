@@ -31,10 +31,10 @@
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
 
-		if(desired_turf && get_dist(caller_turf,desired_turf) <= 1)
-			return drop_item(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
+		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
+			return drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 
-		return drop_item()
+		return drop_item_from_inventory()
 
 	else if(grabbed_object && grabbed_object == object)
 		return release_object(caller,object,location,control,params)
@@ -86,7 +86,7 @@
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc
 
-obj/hud/inventory/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
+obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
 
 	if(!length(src.held_objects))
 		return FALSE

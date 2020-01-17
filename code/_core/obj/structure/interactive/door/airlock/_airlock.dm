@@ -169,14 +169,8 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "opening_01"
-			collision_flags = FLAG_COLLISION_REAL
-			switch(filler)
-				if("glass")
-					collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
-					set_opacity(0)
-				else
-					collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-					set_opacity(1)
+			collision_flags = FLAG_COLLISION_NONE
+			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 		if(DOOR_STATE_OPENING_02)
 			icon_state = "opening_02"
@@ -286,7 +280,6 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 		opened_time = 0
 
 	return .
-
 
 /obj/structure/interactive/door/airlock/glass
 	filler = "glass"

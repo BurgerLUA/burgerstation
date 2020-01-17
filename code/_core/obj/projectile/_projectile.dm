@@ -93,20 +93,20 @@
 
 	var/bullet_offset = floor(TILE_SIZE*0.5)
 
+	pixel_x = desired_owner.pixel_x + (normal_x * bullet_offset)
+	pixel_y = desired_owner.pixel_y + (normal_y * bullet_offset)
+	pixel_z = desired_owner.pixel_z
+
 	if(muzzleflash_effect)
 		var/obj/effect/temp/muzzleflash/M = new muzzleflash_effect(src.loc)
-		M.pixel_x = normal_x * bullet_offset
-		M.pixel_y = normal_y * bullet_offset
-		M.pixel_z = desired_owner.pixel_z
+		M.pixel_x = pixel_x
+		M.pixel_y = pixel_y
+		M.pixel_z = pixel_z
 		var/new_angle = arctan(vel_x,vel_y) - 90
 		M.transform = turn(M.transform,-new_angle)
 
-	pixel_x = normal_x * bullet_offset
-	pixel_y = normal_y * bullet_offset
-	pixel_z = desired_owner.pixel_z
-
-	pixel_x_float = normal_x * bullet_offset
-	pixel_y_float = normal_y * bullet_offset
+	pixel_x_float = pixel_x
+	pixel_y_float = pixel_y
 
 	shoot_x = desired_shoot_x
 	shoot_y = desired_shoot_y

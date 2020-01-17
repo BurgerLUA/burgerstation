@@ -44,7 +44,7 @@
 
 	var/skill_power = get_attribute_power(ATTRIBUTE_AGILITY)
 
-	. *= 1 + (1 - skill_power)
+	. *= (2 - skill_power)
 
 	return .
 

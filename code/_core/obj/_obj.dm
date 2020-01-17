@@ -18,8 +18,6 @@
 	if(additional_blends)
 		additional_blends.Cut()
 
-	if(loc)
-		drop_item()
 	loc = null
 	return ..()
 

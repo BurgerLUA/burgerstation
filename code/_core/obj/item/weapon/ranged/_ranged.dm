@@ -190,11 +190,16 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	if(automatic)
 		spawn(next_shoot_time - curtime)
+			var/mob/living/advanced/player/P
 			if(is_player(caller))
-				var/mob/living/advanced/player/P = caller
-				if(P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
-					next_shoot_time = 0 //This is needed.
-					shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier)
+				P = caller
+			else if(istype(caller,/mob/living/vehicle/))
+				var/mob/living/vehicle/V = caller
+				if(length(V.passengers) && is_player(V.passengers[1]))
+					P = V.passengers[1]
+			if(P && P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
+				next_shoot_time = 0 //This is needed.
+				shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier)
 
 	return TRUE
 

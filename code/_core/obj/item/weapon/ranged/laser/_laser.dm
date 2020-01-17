@@ -5,6 +5,8 @@
 
 	bullet_color = "#FF0000"
 
+	var/mech_only = FALSE
+
 /obj/item/weapon/ranged/laser/get_ammo_count()
 	return floor(charge_current/charge_cost)
 

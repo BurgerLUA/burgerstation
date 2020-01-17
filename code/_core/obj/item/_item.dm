@@ -98,6 +98,8 @@
 
 	var/mob/living/advanced/inventory_user
 
+	var/unremovable = FALSE //Set to true if it cannot be moved around inventories.
+
 /obj/item/Destroy()
 
 	for(var/obj/hud/inventory/I in inventories)
@@ -106,6 +108,9 @@
 	inventories.Cut()
 
 	last_interacted = null
+
+	if(loc)
+		drop_item()
 
 	return ..()
 

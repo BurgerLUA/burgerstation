@@ -40,7 +40,7 @@
 	var/stamina_regen_delay = 0
 	var/mana_regen_delay = 0
 
-	var/obj/vehicle/driving
+	var/mob/living/vehicle/driving
 
 	var/quick_mode = null
 

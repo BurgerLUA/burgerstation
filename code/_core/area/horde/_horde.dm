@@ -25,7 +25,6 @@
 	safe = FALSE
 	station = FALSE
 
-
 /area/horde/station
 	name = "Station"
 	icon_state = "safe"
@@ -41,10 +40,6 @@
 	icon_state = "safe2"
 	singleplayer = TRUE
 
-/area/horde/exterior
-	name = "Sky"
-	icon_state = "green"
-
 /area/horde/roof
 	name = "Roof"
 	icon_state = "red"
@@ -52,3 +47,12 @@
 /area/horde/spawnpoint
 	name = "Spawn"
 	icon_state = "blue"
+
+/area/horde/land/exterior
+	name = "Exterior"
+	icon_state = "green"
+
+/area/horde/land/cave
+	name = "Cave"
+	icon_state = "red"
+

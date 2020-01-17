@@ -4,8 +4,8 @@
 	id = BODY_FOOT_LEFT
 	screen_loc = "LEFT+2,BOTTOM"
 	click_flags = LEFT_FOOT
-	item_slot = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
-	worn_slots = 2
+	item_slot = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U | SLOT_FOOT_LEFT_O
+	worn_slots = 3
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -19,11 +19,19 @@
 			if(messages)
 				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
 			return FALSE
+		if(I.item_slot & SLOT_FOOT_LEFT && I2.item_slot & SLOT_FOOT_LEFT_O)
+			if(messages)
+				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
+			return FALSE
 		if(I.item_slot & SLOT_FOOT_LEFT_U && I2.item_slot & SLOT_FOOT_LEFT_U)
 			if(messages)
 				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
 			return FALSE
 		if(I.item_slot & SLOT_FOOT_LEFT && I2.item_slot & SLOT_FOOT_LEFT)
+			if(messages)
+				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
+			return FALSE
+		if(I.item_slot & SLOT_FOOT_LEFT_O && I2.item_slot & SLOT_FOOT_LEFT_O)
 			if(messages)
 				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
 			return FALSE
@@ -36,8 +44,8 @@
 	id = BODY_FOOT_RIGHT
 	screen_loc = "LEFT+1,BOTTOM"
 	click_flags = RIGHT_FOOT
-	item_slot = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U
-	worn_slots = 2
+	item_slot = SLOT_FOOT_RIGHT | SLOT_FOOT_RIGHT_U | SLOT_FOOT_RIGHT_O
+	worn_slots = 3
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -51,11 +59,19 @@
 			if(messages)
 				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
 			return FALSE
+		if(I.item_slot & SLOT_FOOT_RIGHT && I2.item_slot & SLOT_FOOT_RIGHT_O)
+			if(messages)
+				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
+			return FALSE
 		if(I.item_slot & SLOT_FOOT_RIGHT_U && I2.item_slot & SLOT_FOOT_RIGHT_U)
 			if(messages)
 				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
 			return FALSE
 		if(I.item_slot & SLOT_FOOT_RIGHT && I2.item_slot & SLOT_FOOT_RIGHT)
+			if(messages)
+				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
+			return FALSE
+		if(I.item_slot & SLOT_FOOT_RIGHT_O && I2.item_slot & SLOT_FOOT_RIGHT_O)
 			if(messages)
 				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
 			return FALSE
