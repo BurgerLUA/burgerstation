@@ -8,7 +8,7 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	weight = WEIGHT_1
+	weight = 0.2
 
 	crafting_id = "glass"
 	material_id = "glass"

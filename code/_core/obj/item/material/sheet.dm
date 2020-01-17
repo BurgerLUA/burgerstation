@@ -8,7 +8,7 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	weight = WEIGHT_2
+	weight = 0.4
 
 	crafting_id = "sheet_steel"
 

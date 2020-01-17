@@ -11,14 +11,16 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_A,
+		BLADE = ARMOR_D,
+		BLUNT = ARMOR_C,
+		PIERCE = ARMOR_D,
+		LASER = ARMOR_E,
+		MAGIC = ARMOR_B,
 		HEAT = ARMOR_A,
 		COLD = ARMOR_A,
-		BIO = ARMOR_E,
-		FATIGUE = ARMOR_A
+		BOMB = ARMOR_E,
+		BIO = ARMOR_D,
+		RAD = ARMOR_B
 	)
 
 	protection_cold = list(
