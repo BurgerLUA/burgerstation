@@ -1,4 +1,4 @@
-/turf/proc/change_turf(var/turf/N, var/force_lighting_update = 0) //Stolen from /vg/
+/turf/proc/change_turf(var/turf/N, var/force_lighting_update = FALSE, var/force_edges_update = FALSE) //Stolen from /vg/
 
 	if(!N)
 		return FALSE
@@ -25,7 +25,9 @@
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
-
-	update_edges()
+	if(force_edges_update)
+		update_edges()
+	else
+		queue_update_edges(src)
 
 	return .

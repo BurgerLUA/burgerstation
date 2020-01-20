@@ -90,7 +90,7 @@ var/global/saved_icons = 0
 	pixel_x = 0
 	pixel_y = 0
 
-	change_turf(destruction_turf)
+	change_turf(destruction_turf,)
 
 	update_edges()
 	Initialize()

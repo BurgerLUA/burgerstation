@@ -68,6 +68,7 @@
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/trees/plane_master_tree
 	var/obj/plane_master/render_target/plane_master_render_target
+	var/obj/plane_master/shuttle/plane_master_shuttle
 
 	var/last_words = ""
 
@@ -76,6 +77,8 @@
 	pixel_z = MOB_HEIGHT_OFFSET
 
 	change_dir_on_move = TRUE
+
+	var/view = VIEW_RANGE
 
 /mob/proc/update_eyes()
 	vision = 0x0
@@ -111,6 +114,9 @@
 	qdel(plane_master_tree)
 	plane_master_tree = null
 
+	qdel(plane_master_shuttle)
+	plane_master_shuttle = null
+
 	return ..()
 
 /mob/proc/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
@@ -132,6 +138,8 @@
 	if(src.client)
 
 		var/client/C = src.client
+
+		C.view = view
 
 		for(var/obj/structure/interactive/localmachine/L in local_machines)
 			L.update_for_mob(src)
@@ -165,6 +173,10 @@
 		if(!plane_master_tree)
 			plane_master_tree = new
 			C.screen += plane_master_tree
+
+		if(!plane_master_shuttle)
+			plane_master_shuttle = new
+			C.screen += plane_master_shuttle
 
 		/*
 		if(!plane_master_render_target)

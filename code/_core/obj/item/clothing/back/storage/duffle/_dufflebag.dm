@@ -28,13 +28,9 @@
 	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup(src)
 	new /obj/item/magazine/rifle_556/surplus(src)
 	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-
+	new /obj/item/pinpointer/custom(src)
+	new /obj/item/pinpointer/crew(src)
+	new /obj/item/pinpointer/landmark(src)
 	return ..()
 
 

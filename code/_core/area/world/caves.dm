@@ -5,7 +5,7 @@
 
 /area/world/caves/interior
 	name = "cave interior"
-	icon_state = "blue"
+	icon_state = "orange"
 	area_light_power = DEFAULT_BRIGHTNESS_MUL_INTERIOR
 
 /area/world/caves/interior/safe

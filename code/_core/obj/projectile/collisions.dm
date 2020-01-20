@@ -22,24 +22,14 @@
 	if(dialogue_id)
 		return FALSE
 
-	if(P && P.owner && is_player(P.owner))
-		if(!FRIENDLY_FIRE)
-			return FALSE
-
-		var/area/A = get_area(new_turf)
-		if(A && A.safe)
-			return FALSE
-
 	return ..()
 
 /mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	if(P && P.owner && is_player(P.owner))
-		if(!FRIENDLY_FIRE)
-			return FALSE
-
-		var/area/A = get_area(new_turf)
-		if(A && A.safe)
+	if(P && P.iff_tag && P.owner && is_advanced(P.owner))
+		var/mob/living/advanced/A = P.owner
+		var/obj/item/organ/internal/implant/hand/left/iff/SI = locate() in A.organs
+		if(SI.iff_tag == P.iff_tag)
 			return FALSE
 
 	return ..()

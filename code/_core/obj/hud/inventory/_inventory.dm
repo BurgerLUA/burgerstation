@@ -426,7 +426,6 @@
 				A.update_slowdown_mul()
 				A.update_protection()
 				A.update_eyes()
-				world.log << "Yeah"
 
 	return I
 

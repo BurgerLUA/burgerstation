@@ -52,3 +52,12 @@
 	. = ..()
 	filters += filter(type="drop_shadow", x=4, y=4, size=6, offset=0, color=rgb(0,0,0))
 	return .
+
+//SHUTTLE
+/obj/plane_master/shuttle
+	plane = PLANE_SHUTTLE
+
+/obj/plane_master/shuttle/New(var/desired_loc)
+	. = ..()
+	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
+	return .

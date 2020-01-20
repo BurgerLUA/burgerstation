@@ -36,6 +36,12 @@
 
 	var/requires_bullets = FALSE
 
+	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
+
+/obj/item/weapon/ranged/New(var/desired_loc)
+	firing_pin = new firing_pin(src)
+	return ..()
+
 /obj/item/weapon/ranged/proc/get_heat_spread()
 	return heat_current
 
@@ -85,6 +91,9 @@
 	if(wield_only && !wielded)
 		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()
+
+	if(!firing_pin || !firing_pin.can_shoot(caller,src))
+		return FALSE
 
 	if(shoot(caller,object,location,params))
 		return TRUE
@@ -183,10 +192,13 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 		var/view_punch_time = shoot_delay
 
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)
+
+	if(firing_pin)
+		firing_pin.on_shoot(caller,src)
 
 	if(automatic)
 		spawn(next_shoot_time - curtime)

@@ -52,6 +52,8 @@
 
 	var/obj/effect/temp/muzzleflash/muzzleflash_effect
 
+	var/iff_tag
+
 /obj/projectile/Destroy()
 	owner = null
 	weapon = null
@@ -64,7 +66,7 @@
 	all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -123,6 +125,9 @@
 		blamed = owner
 
 	damage_multiplier = desired_damage_multiplier
+
+	if(desired_iff)
+		iff_tag = desired_iff
 
 	. = ..()
 
@@ -216,6 +221,9 @@
 
 	if(!hit_atom.can_be_attacked(owner))
 		return FALSE
+
+	world.log << "HIT ATOM: [hit_atom]"
+	world.log << "TARGET ATOM: [target_atom]"
 
 	if(hit_atom != target_atom && is_living(hit_atom))
 		var/mob/living/L = hit_atom

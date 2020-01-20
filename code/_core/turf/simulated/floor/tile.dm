@@ -26,14 +26,17 @@
 /turf/simulated/floor/tile/red
 	color = COLOR_RED
 
+#define COLOR_BLUE "#444499"
+#define COLOR_PURPLE "#994499"
+
 /turf/simulated/floor/tile/blue
-	color = "#444499"
+	color = COLOR_BLUE
 
 /turf/simulated/floor/tile/green
 	color = "#449944"
 
 /turf/simulated/floor/tile/purple
-	color = "#994499"
+	color = COLOR_PURPLE
 
 /turf/simulated/floor/tile/orange
 	color = "#FF9944"

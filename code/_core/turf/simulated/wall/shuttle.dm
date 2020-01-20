@@ -4,3 +4,4 @@
 	icon_state = "wall"
 	corner_category = "shuttle"
 	corner_icons = TRUE
+	plane = PLANE_SHUTTLE

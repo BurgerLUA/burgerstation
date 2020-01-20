@@ -11,6 +11,8 @@ var/global/list/all_shuttle_controlers = list()
 /obj/shuttle_controller
 	name = "shuttle controller"
 	desc = "Controls what happens when the shuttle moves."
+	icon = 'icons/obj/shuttle.dmi'
+	icon_state = "shuttle"
 	invisibility = 101
 
 	var/state = SHUTTLE_STATE_LANDED

@@ -6,16 +6,6 @@
 	transit_bluespace = "arrivals_shuttle_bluespace"
 	transit_end = "arrivals_shuttle_station"
 
-/obj/shuttle_controller/cargo
-	name = "cargo shuttle controler"
-	desc = "Controls the cargo shuttle."
-
-	transit_start = "cargo_shuttle_station"
-	transit_bluespace = "cargo_shuttle_bluespace"
-	transit_end = "cargo_shuttle_planet"
-
-
-
 /obj/shuttle_controller/arrivals/on_shuttle_think()
 
 	if(state == SHUTTLE_STATE_LANDED)
@@ -32,3 +22,43 @@
 					time = 0
 
 	return ..()
+
+/obj/shuttle_controller/cargo
+	name = "cargo shuttle controler"
+	desc = "Controls the cargo shuttle."
+
+	transit_start = "cargo_shuttle_station"
+	transit_bluespace = "cargo_shuttle_bluespace"
+	transit_end = "cargo_shuttle_planet"
+
+/obj/shuttle_controller/alpha
+	name = "alpha shuttle controler"
+	desc = "Controls the alpha shuttle."
+
+	transit_start = "alpha_shuttle_station"
+	transit_bluespace = "alpha_shuttle_bluespace"
+	transit_end = "alpha_shuttle_landing"
+
+/obj/shuttle_controller/bravo
+	name = "bravo shuttle controler"
+	desc = "Controls the bravo shuttle."
+
+	transit_start = "bravo_shuttle_station"
+	transit_bluespace = "bravo_shuttle_bluespace"
+	transit_end = "bravo_shuttle_landing"
+
+/obj/shuttle_controller/charlie
+	name = "charlie shuttle controler"
+	desc = "Controls the charlie shuttle."
+
+	transit_start = "charlie_shuttle_station"
+	transit_bluespace = "charlie_shuttle_bluespace"
+	transit_end = "charlie_shuttle_landing"
+
+/obj/shuttle_controller/delta
+	name = "delta shuttle controler"
+	desc = "Controls the delta shuttle."
+
+	transit_start = "delta_shuttle_station"
+	transit_bluespace = "delta_shuttle_bluespace"
+	transit_end = "delta_shuttle_landing"

@@ -28,3 +28,10 @@
 
 	icon = 'icons/turf/floor/plating.dmi'
 	icon_state = "circuit_blue"
+
+
+/turf/simulated/floor/plating/shuttle
+	name = "shuttle plating"
+	icon = 'icons/turf/floor/shuttle.dmi'
+	icon_state = "plating"
+	plane = PLANE_SHUTTLE

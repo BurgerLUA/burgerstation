@@ -144,7 +144,7 @@ var/global/list/all_clients = list()
 		return ..()
 
 	welcome()
-	make_ghost(locate(VIEW_RANGE,VIEW_RANGE,1))
+	make_ghost(locate(VIEW_RANGE_GHOST,VIEW_RANGE_GHOST,1))
 
 	if(world_state == STATE_RUNNING)
 		play_music_track("intro", src)

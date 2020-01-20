@@ -99,6 +99,7 @@
 	icon_state = "window"
 	corner_category = "shuttle"
 	color = "#FFFFFF"
+	plane = PLANE_SHUTTLE
 
 /obj/structure/smooth/window/shuttle/middle
 	icon_state = "single"

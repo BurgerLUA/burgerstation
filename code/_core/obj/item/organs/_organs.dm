@@ -60,6 +60,10 @@
 	attached_organs.Cut()
 	return ..()
 
+/obj/item/organ/proc/attach_to(var/obj/item/organ/O)
+	attached_organ = O
+	O.attached_organs += src
+
 /obj/item/organ/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 
 	if(src.loc && !is_turf(src.loc))

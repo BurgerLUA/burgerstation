@@ -54,7 +54,3 @@
 		add_overlay(O,desired_layer = O.worn_layer)
 
 	return O
-
-/obj/item/organ/proc/attach_to(var/obj/item/organ/O)
-	attached_organ = O
-	O.attached_organs += src

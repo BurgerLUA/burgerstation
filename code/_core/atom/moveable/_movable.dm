@@ -25,6 +25,8 @@
 
 	var/allow_shuttle_move = TRUE
 
+	var/rotation_mod = 1
+
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 
