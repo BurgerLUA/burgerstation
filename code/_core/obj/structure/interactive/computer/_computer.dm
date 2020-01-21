@@ -2,7 +2,7 @@ obj/structure/interactive/computer
 	name = "computer"
 	desc = "Beep boop."
 	icon = 'icons/obj/structure/computer.dmi'
-	var/on = FALSE
+	var/on = TRUE
 
 obj/structure/interactive/computer/console
 	name = "computer console"
@@ -73,6 +73,37 @@ obj/structure/interactive/computer/console/medical
 	name = "medical console"
 	computer_type = "medcomp"
 	keyboard_type = "med_key"
+
+obj/structure/interactive/computer/console/flight
+	name = "flight control console"
+	computer_type = "syndishuttle"
+	keyboard_type = "syndie_key"
+
+obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(!is_advanced(caller))
+		return ..()
+
+	var/selection = input("Are you sure you wish to launch this shuttle?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
+
+	if(selection == "Yes")
+		var/obj/shuttle_controller/SC = locate() in get_area(src)
+		if(SC)
+			if(SC.state == SHUTTLE_STATE_LANDED)
+				SC.state = SHUTTLE_STATE_WAITING
+				SC.time = 0
+				caller.to_chat("You prepare the shuttle for launch.")
+			else
+				caller.to_chat("ERROR: Shuttle already in transit.")
+		else
+			caller.to_chat("ERROR: No shuttle controller found!")
+
+	return TRUE
+
+
+
+
+
 
 
 obj/structure/interactive/computer/console/old/station_job

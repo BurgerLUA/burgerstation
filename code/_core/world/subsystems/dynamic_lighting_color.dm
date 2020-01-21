@@ -14,6 +14,7 @@ var/global/time_of_day = DAY
 		var/desired_color = (time_of_day == DAY) ?  A.lighting_overlay_color_day : A.lighting_overlay_color_night
 
 		for(var/turf/T in A.contents)
+			CHECK_TICK
 			if(!T.lighting_overlay)
 				continue
 			T.lighting_overlay.color = desired_color

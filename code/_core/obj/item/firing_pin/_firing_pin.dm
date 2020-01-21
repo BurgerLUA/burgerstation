@@ -28,13 +28,12 @@
 		return FALSE
 
 	var/mob/living/advanced/A = caller
-	var/obj/item/organ/internal/implant/hand/left/iff/SI = locate() in A.organs
 
-	if(!SI)
+	if(!A.iff_tag)
 		caller.to_chat("The firing pin doesn't detect your IFF signature and refuses to fire!")
 		return FALSE
 
-	if(SI.iff_tag != iff_tag)
+	if(A.iff_tag != iff_tag)
 		caller.to_chat("The firing pin doesn't recognize your IFF signature and refuses to fire!")
 		return FALSE
 

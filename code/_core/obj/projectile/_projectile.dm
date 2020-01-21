@@ -81,6 +81,7 @@
 
 	all_projectiles += src
 
+	current_loc = loc
 	previous_loc = loc
 
 	last_loc_x = x
@@ -143,46 +144,55 @@
 
 /obj/projectile/proc/update_projectile()
 
-	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
+	if(!is_turf(src.loc))
+		on_hit(src.loc,TRUE)
+		return FALSE
 
+	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
 	var/current_loc_x = x + floor( ((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE)
 	var/current_loc_y = y + floor( ((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE)
 
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 
-		if(lifetime <= start_time && current_loc)
-			on_hit(current_loc)
-			return FALSE
+		current_loc = locate(current_loc_x,current_loc_y,z)
 
 		steps_current += 1
-
-		if(steps_allowed && steps_allowed <= steps_current && current_loc)
-			on_hit(current_loc)
-			return FALSE
-
 		for(var/mob/MO in contents)
 			if(MO.client)
 				animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
-		current_loc = locate(current_loc_x,current_loc_y,z)
+		if(!current_loc || !previous_loc)
+			on_hit(src.loc,TRUE)
+			return FALSE
+
+		if(hit_target_turf && current_loc == target_turf)
+			on_hit(current_loc)
+			return FALSE
+
+		if(steps_allowed && steps_allowed <= steps_current)
+			on_hit(current_loc,TRUE)
+			return FALSE
+
+		if(lifetime <= start_time)
+			on_hit(current_loc,TRUE)
+			return FALSE
+
 		if(!is_turf(previous_loc))
-			on_hit(previous_loc)
-			return
+			on_hit(previous_loc,TRUE)
+			return FALSE
 
-		if(!is_turf(src.loc))
-			on_hit(src.loc)
-			return
+		var/atom/collide_with_turf = current_loc.projectile_should_collide(src,current_loc,previous_loc)
+		if(collide_with_turf)
+			on_hit(collide_with_turf)
+			return FALSE
 
-		var/turf/new_turf = current_loc
-		var/turf/old_turf = previous_loc
-
-		if(!previous_loc || !current_loc)
-			on_hit(src)
-			return
-
-		if(do_turf_collide(old_turf,new_turf))
-			return
+		for(var/atom/movable/A in current_loc.contents)
+			var/atom/collide_atom = A.projectile_should_collide(src,current_loc,previous_loc)
+			if(!collide_atom)
+				continue
+			on_hit(collide_atom)
+			return FALSE
 
 	if(current_loc)
 		previous_loc = current_loc
@@ -197,41 +207,12 @@
 	last_loc_x = current_loc_x
 	last_loc_y = current_loc_y
 
-/obj/projectile/proc/do_turf_collide(var/turf/old_turf,var/turf/new_turf)
+	return TRUE
 
-	var/atom/collide_with_turf = new_turf.projectile_should_collide(src,new_turf,old_turf)
-
-	if(collide_with_turf)
-		return on_hit(collide_with_turf)
-
-	for(var/atom/movable/A in new_turf.contents)
-
-		var/atom/collide_atom = A.projectile_should_collide(src,new_turf,old_turf)
-		if(!collide_atom)
-			continue
-
-		return on_hit(collide_atom)
-
-	if(hit_target_turf && new_turf == target_turf)
-		return on_hit(current_loc)
-
-	return FALSE
-
-/obj/projectile/proc/hit_atom(var/atom/hit_atom) //Return true to delete the projectile
-
-	if(!hit_atom.can_be_attacked(owner))
-		return FALSE
-
-	world.log << "HIT ATOM: [hit_atom]"
-	world.log << "TARGET ATOM: [target_atom]"
-
-	if(hit_atom != target_atom && is_living(hit_atom))
-		var/mob/living/L = hit_atom
-		if(L.dead || L.horizontal)
-			return FALSE
+/obj/projectile/proc/damage_atom(var/atom/hit_atom) //Return true to delete the projectile
 
 	if(damage_type && all_damage_types[damage_type])
-		if(owner && !owner.qdeleting)
+		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner))
 			var/damagetype/DT = all_damage_types[damage_type]
 
 			var/list/params = list()
@@ -246,16 +227,12 @@
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 
-	return TRUE
-
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
-	if(hit_atom(hit_atom))
-		all_projectiles -= src
-		post_on_hit(hit_atom)
-		qdel(src)
-		return TRUE
-
-	return FALSE
+	damage_atom(hit_atom)
+	all_projectiles -= src
+	post_on_hit(hit_atom)
+	qdel(src)
+	return TRUE
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 

@@ -63,8 +63,10 @@
 	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
 		all_areas_with_hazards += src
 
+	/*
 	if(dynamic_lighting_overlay_color)
 		all_areas_with_dynamic_lighting_overlay_color += src
+	*/
 
 	return .
 

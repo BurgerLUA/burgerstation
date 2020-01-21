@@ -11,6 +11,7 @@
 	P.pixel_x_float = src.pixel_x
 	P.pixel_y_float = src.pixel_y
 	P.lifetime = SECONDS_TO_DECISECONDS(1)
+	P.collision_bullet_flags = src.collision_bullet_flags
 	src.force_move(P) //Move it to contents.
 	return P
 

@@ -74,6 +74,8 @@
 	attack_delay = 2
 	attack_delay_max = 6
 
+	var/iff_tag
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

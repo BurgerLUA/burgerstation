@@ -99,6 +99,9 @@
 
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0)
 
+	if(istype(src.loc,/obj/projectile))
+		return FALSE
+
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 

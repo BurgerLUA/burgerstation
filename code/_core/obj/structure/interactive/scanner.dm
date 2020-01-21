@@ -14,7 +14,7 @@
 
 	if(is_advanced(M))
 		var/mob/living/advanced/A = M
-		if(!locate(/obj/item/organ/internal/implant/hand/left/iff) in A.organs)
+		if(!A.iff_tag)
 			A.to_chat("The barrier prevents you from moving!")
 			A.to_chat("[src.name] beeps, \"IFF implant not detected. Please move to the front desk to recieve your IFF implant.\"")
 			return FALSE

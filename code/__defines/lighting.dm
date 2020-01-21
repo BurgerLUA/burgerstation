@@ -29,7 +29,7 @@
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
-		0, 0, 0, 0.95  \
+		0, 0, 0, 0.85  \
 	)               \
 
 // Helpers so we can (more easily) control the colour matrices.

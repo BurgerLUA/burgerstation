@@ -162,7 +162,7 @@
 /obj/item/organ/foot/beefman
 	name = "right beef foot"
 
-	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 

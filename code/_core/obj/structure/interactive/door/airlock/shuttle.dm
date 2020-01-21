@@ -2,7 +2,7 @@
 	name = "shuttle airlock"
 	filler = "fill"
 
-	no_access = TRUE
+	no_access = FALSE
 
 	plane = PLANE_SHUTTLE
 

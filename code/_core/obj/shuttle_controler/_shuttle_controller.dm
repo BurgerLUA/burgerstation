@@ -144,15 +144,42 @@ var/global/list/all_shuttle_controlers = list()
 	var/ending_cord_x = ending_transit.x
 	var/ending_cord_y = ending_transit.y
 
+	var/transit_throw_x = 0
+	var/transit_throw_y = 0
+
+	var/reverse = ending_transit_id != transit_bluespace
+
+	switch(src.dir)
+		if(NORTH)
+			transit_throw_y += reverse ? 1 : -1
+		if(EAST)
+			transit_throw_x += reverse ? 1 : -1
+		if(SOUTH)
+			transit_throw_y -= reverse ? 1 : -1
+		if(WEST)
+			transit_throw_x -= reverse ? 1 : -1
+
+	var/list/atom/movable/objects_to_throw = list()
+
 	for(var/turf/T in starting_transit)
+		CHECK_TICK
 		var/offset_x = T.x - starting_cord_x
 		var/offset_y = T.y - starting_cord_y
 		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, 1)
 		replacing_turf.change_turf(T.type)
 		for(var/atom/movable/M in T.contents)
+			CHECK_TICK
 			if(!M.allow_shuttle_move)
 				continue
+			M.move_delay = SECONDS_TO_TICKS(3)
 			M.force_move(replacing_turf)
+			if(!M.anchored)
+				objects_to_throw += M
 		T.change_turf(/turf/simulated/floor/plating)
+
+	/*
+	for(var/atom/movable/M in objects_to_throw)
+		M.throw_self(M,null,null,null,transit_throw_x*16,transit_throw_y*16)
+	*/
 
 	return TRUE

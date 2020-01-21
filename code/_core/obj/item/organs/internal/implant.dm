@@ -13,9 +13,9 @@
 var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list()
 
 /obj/item/organ/internal/implant/hand/left/iff
-	name = "deluxe NanoTrasen utility implant"
+	name = "\improper NanoTrasen IFF implant"
 	desc = "Prevents friendly fire and collects your personal information."
-	desc_extended = "A special implant based on the civilian model that prevents the user from being targeted with weapons registered to the NanoTrasen Firearms Database. Like the civilian counterpart, it also tracks movement and sents vitals data to nearby devices. Due to religious concenrs, it can only be implanted in the left hand."
+	desc_extended = "A special integrated friend or foe implant based on the civilian model that prevents the user from being targeted with weapons registered to the NanoTrasen Firearms Database. Like the civilian counterpart, it also tracks movement and sents vitals data to nearby devices. Due to religious concenrs, it can only be implanted in the left hand."
 	var/registered_name = "none"
 	var/registered_id = "none"
 	var/registered_squad = "none"
@@ -45,6 +45,14 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list()
 		L.to_chat("\The [src.name] in your [attached_organ.name] beeps.")
 
 	return TRUE
+
+/obj/item/organ/internal/implant/hand/left/iff/on_organ_add(var/mob/living/advanced/new_owner)
+	new_owner.iff_tag = iff_tag
+	return ..()
+
+/obj/item/organ/internal/implant/hand/left/iff/on_organ_remove(var/mob/living/advanced/old_owner)
+	old_owner.iff_tag = null
+	return ..()
 
 /obj/item/organ/internal/implant/torso
 	name = "torso implant"

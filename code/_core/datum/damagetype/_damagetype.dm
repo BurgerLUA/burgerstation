@@ -230,10 +230,6 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
-	if(is_advanced(weapon))
-		CRASH("Advanced should never be a weapon!")
-		return FALSE
-
 	spawn()
 
 		if(!attacker || !victim || !weapon || !hit_object)

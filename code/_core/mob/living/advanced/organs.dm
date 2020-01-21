@@ -12,6 +12,8 @@
 	if(do_delete)
 		qdel(O)
 
+	O.on_organ_remove(src)
+
 /mob/living/advanced/proc/remove_all_organs()
 	for(var/obj/item/organ/O in organs)
 		remove_organ(O,TRUE)
@@ -52,5 +54,7 @@
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
 	else
 		add_overlay(O,desired_layer = O.worn_layer)
+
+	O.on_organ_add(src)
 
 	return O
