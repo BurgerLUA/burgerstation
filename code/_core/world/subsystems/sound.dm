@@ -141,6 +141,9 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 		var/turf/T = get_turf(M)
 
+		if(!T)
+			continue
+
 		var/local_volume = volume
 
 		if(pos[3] >= 0)

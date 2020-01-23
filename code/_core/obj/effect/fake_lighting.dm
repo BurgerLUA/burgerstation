@@ -12,3 +12,8 @@
 
 /obj/effect/fake_lighting/solid/black
 	color = "#000000"
+
+
+/obj/effect/fake_lighting/gradient/large
+	icon = 'icons/obj/effects/grad_large.dmi'
+	icon_state = "2x2"

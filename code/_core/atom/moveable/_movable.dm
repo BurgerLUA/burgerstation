@@ -72,7 +72,6 @@
 		loc.Exited(src, new_loc)
 
 	var/atom/old_loc = loc
-
 	loc = new_loc
 
 	if(loc)
@@ -113,10 +112,12 @@
 
 	var/atom/OldLoc = loc
 
+	//TRY: Exit the turf.
 	if(!OldLoc.Exit(src,NewLoc))
 		Bump(OldLoc,Dir)
 		return FALSE
 
+	//TRY: Exit the contents.
 	for(var/atom/movable/M in OldLoc.contents)
 		if(M == src)
 			continue
@@ -124,10 +125,12 @@
 			Bump(M,Dir)
 			return FALSE
 
+	//TRY: Enter the contents.
 	if(!NewLoc.Enter(src,OldLoc))
 		Bump(NewLoc,Dir)
 		return FALSE
 
+	//TRY: Enter the contents.
 	for(var/atom/movable/M in NewLoc.contents)
 		if(M == src)
 			continue
@@ -135,20 +138,26 @@
 			Bump(M,Dir)
 			return FALSE
 
+	//DO: Exited the turf.
 	OldLoc.Exited(src,NewLoc)
+
+	//DO: Exited the contents.
 	for(var/atom/A in OldLoc.contents)
 		if(A == src)
 			continue
 		A.Uncrossed(src,NewLoc,OldLoc)
 
+	step_x += desired_step_x
+	step_y += desired_step_y
+	loc = NewLoc
+
+	//DO: Entered the turf.
 	NewLoc.Entered(src,OldLoc)
+
+	//DO: Enter the contents.
 	for(var/atom/A in NewLoc.contents)
 		if(A == src)
 			continue
 		A.Crossed(src,NewLoc,OldLoc)
-
-	step_x += desired_step_x
-	step_y += desired_step_y
-	loc = NewLoc
 
 	return TRUE

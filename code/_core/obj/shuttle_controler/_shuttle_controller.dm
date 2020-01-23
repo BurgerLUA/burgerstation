@@ -31,6 +31,8 @@ var/global/list/all_shuttle_controlers = list()
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME
 
+	anchored = TRUE
+
 /obj/shuttle_controller/New(var/desired_loc)
 	all_shuttle_controlers += src
 	return ..()
@@ -177,9 +179,7 @@ var/global/list/all_shuttle_controlers = list()
 				objects_to_throw += M
 		T.change_turf(/turf/simulated/floor/plating)
 
-	/*
 	for(var/atom/movable/M in objects_to_throw)
 		M.throw_self(M,null,null,null,transit_throw_x*16,transit_throw_y*16)
-	*/
 
 	return TRUE

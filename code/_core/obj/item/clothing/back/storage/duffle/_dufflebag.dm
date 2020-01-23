@@ -14,6 +14,9 @@
 	color = COLOR_BLACK
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
+	new /obj/item/radio(src)
+	new /obj/item/pinpointer/custom(src)
+	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/clothing/uniform/jumpsuit/pmc(src)
 	new /obj/item/clothing/feet/shoes/black_boots(src)
 	new /obj/item/clothing/feet/shoes/black_boots/left(src)
@@ -21,16 +24,11 @@
 	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
 	new /obj/item/clothing/head/hood/skimask/black(src)
 	new /obj/item/clothing/overwear/armor/bulletproof(src)
-	new /obj/item/storage/pouch/double/black(src)
-	new /obj/item/storage/pouch/double/black(src)
+	new /obj/item/storage/pouch/double/black/filled(src)
+	new /obj/item/storage/pouch/double/black/filled(src)
 	new /obj/item/clothing/head/hat/beret(src)
-	new /obj/item/clothing/belt/storage/colored/black(src)
-	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/pinpointer/custom(src)
-	new /obj/item/pinpointer/crew(src)
-	new /obj/item/pinpointer/landmark(src)
+	new /obj/item/clothing/belt/storage/colored/black/filled(src)
+	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src)
 	return ..()
 
 
@@ -40,6 +38,9 @@
 
 
 /obj/item/clothing/back/storage/dufflebag/engineering/loadout/fill_inventory()
+	new /obj/item/radio(src)
+	new /obj/item/pinpointer/custom(src)
+	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/clothing/uniform/jumpsuit/engineering(src)
 	new /obj/item/clothing/overwear/armor/hardsuit/engineering(src)
 	new /obj/item/clothing/belt/storage/tool/filled(src)

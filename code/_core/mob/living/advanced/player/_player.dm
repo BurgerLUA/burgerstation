@@ -60,6 +60,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	allow_experience_gains = TRUE
 
+	var/obj/item/device/active_device
+
 	var/obj/structure/active_structure
 
 	var/obj/item/paper/active_paper
@@ -105,8 +107,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/Destroy()
 
-	CRASH("NO")
-
 	dialogue_target = null
 
 	if(src in equipped_players)
@@ -141,6 +141,9 @@ mob/living/advanced/player/on_life_client()
 
 		if(active_structure && get_dist(src,active_structure) > 1)
 			set_structure_unactive()
+
+		if(active_device && get_dist(src,active_device) > 1)
+			set_device_unactive()
 
 		for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
 			if(!L.ai)

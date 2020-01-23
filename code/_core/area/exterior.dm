@@ -14,4 +14,3 @@
 /area/exterior/river
 	name = "river"
 	icon_state = "river"
-

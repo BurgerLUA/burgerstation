@@ -7,11 +7,9 @@
 		return FALSE
 
 	if(!src.collision_bullet_flags)
-		world.log << "No collison bullet flags for the atom: [src]. [src.collision_bullet_flags]."
 		return FALSE
 
 	if(!(P.collision_bullet_flags && P.collision_bullet_flags & src.collision_bullet_flags))
-		world.log << "No collison bullet flags for the bullet: [P]."
 		return FALSE
 
 	return src
@@ -63,11 +61,6 @@
 			return old_turf
 		if(!new_turf.allow_bullet_pass && new_turf.density_east)
 			return new_turf
-
-	world.log << "TURF DATA FOR: [src]."
-	world.log << "[new_turf.density_north][new_turf.density_east][new_turf.density_south][new_turf.density_west]"
-
-	return FALSE
 
 /obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return FALSE

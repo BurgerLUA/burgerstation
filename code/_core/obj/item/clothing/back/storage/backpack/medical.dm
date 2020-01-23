@@ -9,6 +9,10 @@ obj/item/clothing/back/storage/backpack/medical
 	color = "#FFFFFF"
 
 /obj/item/clothing/back/storage/backpack/medical/loadout/medical/fill_inventory()
+	new /obj/item/radio(src)
+	new /obj/item/pinpointer/custom(src)
+	new /obj/item/pinpointer/landmark(src)
+	new /obj/item/pinpointer/crew(src)
 	new /obj/item/clothing/uniform/jumpsuit/medical_doctor(src)
 	new /obj/item/clothing/hands/gloves/colored(src)
 	new /obj/item/clothing/hands/gloves/colored/left(src)

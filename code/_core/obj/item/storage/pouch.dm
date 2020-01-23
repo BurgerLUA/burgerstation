@@ -38,6 +38,13 @@
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
 
+/obj/item/storage/pouch/double/black/filled/fill_inventory()
+	new /obj/item/magazine/rifle_556/surplus(src)
+	new /obj/item/magazine/rifle_556/surplus(src)
+	new /obj/item/magazine/rifle_556/surplus(src)
+	new /obj/item/magazine/rifle_556/surplus(src)
+	return ..()
+
 /obj/item/storage/pouch/triple
 	name = "triple pouch"
 	icon_state = "triple"

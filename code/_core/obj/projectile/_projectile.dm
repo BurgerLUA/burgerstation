@@ -7,9 +7,6 @@
 	var/pixel_x_float = 0
 	var/pixel_y_float = 0
 
-	var/imaginary_x = 0
-	var/imaginary_y = 0
-
 	var/atom/owner //Who is the one who shot the weapon?
 	var/atom/weapon //What weapon did the projectile come from?
 	var/atom/blamed //Who should we blame for the damage?
@@ -54,6 +51,8 @@
 
 	var/iff_tag
 
+	anchored = TRUE
+
 /obj/projectile/Destroy()
 	owner = null
 	weapon = null
@@ -75,9 +74,6 @@
 
 	vel_x = desired_vel_x
 	vel_y = desired_vel_y
-
-	imaginary_x = x
-	imaginary_y = y
 
 	all_projectiles += src
 

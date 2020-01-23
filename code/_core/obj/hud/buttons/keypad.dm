@@ -3,6 +3,21 @@
 
 	var/stored_keypad = 0
 
+	flags = FLAGS_HUD_SPECIAL
+
+/obj/hud/button/keypad/close
+	name = "close keypad"
+	icon_state = "close_inventory"
+	screen_loc = "CENTER+3,CENTER+2"
+
+/obj/hud/button/keypad/close/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		P.set_device_unactive()
+
+	return ..()
+
 /obj/hud/button/keypad/top
 	icon_state = "keypad_top"
 	screen_loc = "CENTER+2,CENTER+2"
@@ -52,8 +67,6 @@
 		K.stored_keypad = stored_keypad
 		K.update_icon()
 
-	world.log << stored_keypad
-
 	return ..()
 
 /obj/hud/button/keypad/bottom
@@ -94,10 +107,15 @@
 
 	else if(number_selected == -2)
 		//Submit
-		return TRUE
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			if(P.active_device)
+				P.active_device.trigger(caller,src,-1,stored_keypad)
+
+		return ..()
 
 	else if(number_selected == -100)
-		//Nothing
+		//Pressed Nothing
 		return TRUE
 
 	else if(stored_keypad > 999)
@@ -109,7 +127,5 @@
 	for(var/obj/hud/button/keypad/K in caller.buttons)
 		K.stored_keypad = stored_keypad
 		K.update_icon()
-
-	world.log << stored_keypad
 
 	return ..()

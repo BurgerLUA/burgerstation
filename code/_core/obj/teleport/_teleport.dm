@@ -2,9 +2,10 @@
 	name = "trigger"
 	invisibility = 101
 
-/obj/trigger/Crossed(var/atom/crosser)
-	..()
-	on_trigger(crosser)
+/obj/trigger/Crossed(var/atom/movable/O)
+	. = ..()
+	on_trigger(O)
+	return .
 
 /obj/trigger/proc/on_trigger(var/atom/triggerer)
 	return TRUE
@@ -55,10 +56,12 @@
 	if(!is_living(triggerer))
 		return FALSE
 
-	if(!(triggerer.dir & dir_restriction))
+	if(!(triggerer.move_dir & dir_restriction))
 		return FALSE
 
-	triggerer.force_move(locate(x + x_move, y + y_move,z))
+	var/turf/T = locate(src.x + x_move, y + src.y_move,z)
+
+	triggerer.force_move(T)
 
 /obj/trigger/jumploc/north
 	x_move = 0
