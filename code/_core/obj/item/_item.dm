@@ -100,6 +100,9 @@
 
 	var/unremovable = FALSE //Set to true if it cannot be moved around inventories.
 
+	var/wielded = FALSE
+	var/can_wield = FALSE
+
 /obj/item/Destroy()
 
 	for(var/obj/hud/inventory/I in inventories)

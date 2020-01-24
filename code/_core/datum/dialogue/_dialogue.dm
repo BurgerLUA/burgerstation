@@ -10,7 +10,6 @@
 	var/list/dialogue_options = list()
 	return dialogue_options
 
-
 /dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
 
 	var/menu/M = get_menu("dialogue")
