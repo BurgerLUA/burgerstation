@@ -1,6 +1,6 @@
-"a" = (/turf/simulated/bluespace,/area/horde/space/bluespace)
+"a" = (/turf/simulated/bluespace,/area/space)
 "b" = (/turf/unsimulated,/area/transit/arrivals_shuttle/bluespace)
-"c" = (/turf/unsimulated,/area/horde/space/bluespace)
+"c" = (/turf/unsimulated,/area/space)
 "d" = (/turf/unsimulated,/area/transit/dropship/alpha/bluespace)
 "e" = (/turf/unsimulated,/area/transit/dropship/charlie/bluespace)
 "f" = (/turf/unsimulated,/area/transit/dropship/delta/bluespace)

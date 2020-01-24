@@ -29,6 +29,7 @@
 	new /obj/item/clothing/head/hat/beret(src)
 	new /obj/item/clothing/belt/storage/colored/black/filled(src)
 	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src)
+	new /obj/item/paper/firearms(src)
 	return ..()
 
 

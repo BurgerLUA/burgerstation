@@ -59,7 +59,7 @@
 
 	return TRUE
 
-/subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/world/affected_areas)
+/subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/affected_areas)
 	for(var/area/A in affected_areas)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'

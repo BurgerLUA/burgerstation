@@ -7,7 +7,7 @@
 
 	var/last_page = 1
 
-	var/list/data = list("There is nothing here.")
+	var/list/data = list("There is nothing here.","Oh god oh fuck.")
 
 /obj/item/paper/click_self(var/mob/caller,location,control,params)
 
@@ -36,4 +36,10 @@
 			close_menu(P,"paper")
 			P.active_paper = null
 
+	return ..()
+
+
+/obj/item/paper/firearms/on_spawn()
+	name = "book: A Guide to Firearms"
+	data = all_paper_data["a guide to firearms"]
 	return ..()

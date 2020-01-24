@@ -56,6 +56,9 @@
 	name = "\improper Cafe"
 	icon_state = "cafe"
 
+/area/interior/ship/dorm
+	name = "\improper Dorm"
+	icon_state = "dorm"
 
 /area/interior/ship/cloning
 	name = "\improper Cloning"

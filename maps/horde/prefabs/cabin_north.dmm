@@ -1,12 +1,12 @@
-"a" = (/turf/simulated/wall/metal,/area/horde/ship/cryo)
-"b" = (/obj/structure/interactive/bed/sleeper/cryo,/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"c" = (/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"d" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/computer/console/old/station_job,/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"e" = (/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"f" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"g" = (/obj/structure/interactive/vendor/autolocker,/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"h" = (/obj/structure/interactive/door/airlock/station/private,/turf/simulated/floor/tile/grey,/area/horde/ship/cryo)
-"i" = (/obj/structure/interactive/computer/wall/dorms,/turf/simulated/wall/metal,/area/horde/ship/cryo)
+"a" = (/turf/simulated/wall/metal,/area/interior/ship/dorm)
+"b" = (/obj/structure/interactive/bed/sleeper/cryo,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"c" = (/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"d" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/computer/console/old/station_job,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"e" = (/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"f" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"g" = (/obj/structure/interactive/vendor/autolocker,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"h" = (/obj/structure/interactive/door/airlock/station/private,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"i" = (/obj/structure/interactive/computer/wall/dorms,/turf/simulated/wall/metal,/area/interior/ship/dorm)
 
 (1,1,1) = {"
 aaaaa
