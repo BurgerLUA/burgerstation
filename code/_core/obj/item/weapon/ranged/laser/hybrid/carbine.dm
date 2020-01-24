@@ -12,9 +12,10 @@
 	shoot_sounds_stun = list('sounds/weapons/laser_carbine/stun.ogg')
 
 	projectile_speed = 31
-	shoot_delay = 4
+	shoot_delay = 1
 
 	automatic = TRUE
+	max_bursts = 3
 
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE

@@ -33,6 +33,9 @@
 	id = "5.56"
 	icon = 'icons/obj/items/bullet/556.dmi'
 
+	item_count_max = 5
+	item_count_max_icon = 5
+
 	projectile = /obj/projectile/bullet/rifle
 	damage_type = "5.56"
 

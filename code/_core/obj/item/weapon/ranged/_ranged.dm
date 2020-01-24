@@ -3,6 +3,8 @@
 	var/list/shoot_sounds = list()
 
 	var/automatic = FALSE
+	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
+	var/current_bursts = 0
 	var/shoot_delay = 4 //In deciseconds
 	var/next_shoot_time = 0
 
@@ -38,6 +40,8 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
+
+
 /obj/item/weapon/ranged/New(var/desired_loc)
 	firing_pin = new firing_pin(src)
 	return ..()
@@ -72,6 +76,9 @@
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
 
+	if(!firing_pin || !firing_pin.can_shoot(caller,src))
+		return FALSE
+
 	if(next_shoot_time > curtime)
 		return FALSE
 
@@ -91,9 +98,6 @@
 	if(wield_only && !wielded)
 		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()
-
-	if(!firing_pin || !firing_pin.can_shoot(caller,src))
-		return FALSE
 
 	if(shoot(caller,object,location,params))
 		return TRUE
@@ -203,15 +207,25 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(automatic)
 		spawn(next_shoot_time - curtime)
 			var/mob/living/advanced/player/P
+
 			if(is_player(caller))
 				P = caller
 			else if(istype(caller,/mob/living/vehicle/))
 				var/mob/living/vehicle/V = caller
 				if(length(V.passengers) && is_player(V.passengers[1]))
 					P = V.passengers[1]
+
 			if(P && P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
 				next_shoot_time = 0 //This is needed.
-				shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier)
+				if(current_bursts < max_bursts)
+					shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier)
+					current_bursts += 1
+				else
+					current_bursts = 0
+			else
+				current_bursts = 0
+
+
 
 	return TRUE
 

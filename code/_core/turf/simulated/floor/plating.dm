@@ -31,7 +31,7 @@
 
 
 /turf/simulated/floor/plating/shuttle
-	name = "shuttle plating"
+	name = "reinforced plating"
 	icon = 'icons/turf/floor/shuttle.dmi'
 	icon_state = "plating"
 	plane = PLANE_SHUTTLE

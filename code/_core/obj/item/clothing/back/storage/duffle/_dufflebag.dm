@@ -10,7 +10,7 @@
 	weight = WEIGHT_4
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
-	name = "PMC dufflebag"
+	name = "\improper PMC dufflebag"
 	color = COLOR_BLACK
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
@@ -24,19 +24,17 @@
 	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
 	new /obj/item/clothing/head/hood/skimask/black(src)
 	new /obj/item/clothing/overwear/armor/bulletproof(src)
-	new /obj/item/storage/pouch/double/black/filled(src)
-	new /obj/item/storage/pouch/double/black/filled(src)
+	new /obj/item/storage/pouch/double/black/filled/rifle_556(src)
+	new /obj/item/storage/pouch/double/black/filled/rifle_556(src)
 	new /obj/item/clothing/head/hat/beret(src)
-	new /obj/item/clothing/belt/storage/colored/black/filled(src)
+	new /obj/item/clothing/belt/storage/colored/black/filled/pmc(src)
 	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src)
 	new /obj/item/paper/firearms(src)
 	return ..()
 
-
 /obj/item/clothing/back/storage/dufflebag/engineering
 	name = "engineering dufflebag"
 	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'
-
 
 /obj/item/clothing/back/storage/dufflebag/engineering/loadout/fill_inventory()
 	new /obj/item/radio(src)

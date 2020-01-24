@@ -38,11 +38,18 @@
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
 
-/obj/item/storage/pouch/double/black/filled/fill_inventory()
+/obj/item/storage/pouch/double/black/filled/rifle_556/fill_inventory()
 	new /obj/item/magazine/rifle_556/surplus(src)
 	new /obj/item/magazine/rifle_556/surplus(src)
 	new /obj/item/magazine/rifle_556/surplus(src)
 	new /obj/item/magazine/rifle_556/surplus(src)
+	return ..()
+
+/obj/item/storage/pouch/double/black/filled/cell/fill_inventory()
+	new /obj/item/powercell/advanced(src)
+	new /obj/item/powercell/advanced(src)
+	new /obj/item/powercell/advanced(src)
+	new /obj/item/powercell/advanced(src)
 	return ..()
 
 /obj/item/storage/pouch/triple

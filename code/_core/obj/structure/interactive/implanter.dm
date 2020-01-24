@@ -10,6 +10,7 @@
 	var/obj/item/organ/internal/stored_implant
 
 	var/removes_existing = FALSE
+	var/should_save = FALSE
 
 /obj/structure/interactive/hand_implanter/New(var/desired_loc)
 	. = ..()
