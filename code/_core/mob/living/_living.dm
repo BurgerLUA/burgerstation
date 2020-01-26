@@ -113,7 +113,13 @@
 	return TRUE
 
 /mob/living/Bump(var/atom/obstacle,var/Dir=0)
-	return FALSE
+
+	. = ..()
+
+	if(ai)
+		ai.Bump(obstacle)
+
+	return .
 
 /mob/living/Destroy()
 

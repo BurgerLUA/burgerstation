@@ -14,6 +14,7 @@
 	. =..()
 
 	for(var/atom/movable/A in src.contents)
+		A.set_dir(dir)
 		if(!is_floor(hit_atom))
 			A.force_move(previous_loc)
 			A.pixel_x = vel_x
@@ -27,11 +28,12 @@
 				var/guessed_velocity = Clamp(10*steps*(1 - steps_current/steps),10,40)
 				if(!L.dead)
 					L.add_stun(10 + guessed_velocity)
-
-				//L.add_paralyze(guessed_velocity*0.5)
-				//HEALTH TODO: APPLY DAMAGE
 		else
 			A.force_move(get_turf(hit_atom))
+			if(is_living(A))
+				var/mob/living/L = A
+				if(!L.dead)
+					L.add_stun(10)
 
 
 	return .

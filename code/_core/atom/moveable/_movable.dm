@@ -21,7 +21,7 @@
 
 	var/change_dir_on_move = FALSE
 
-	var/mob/living/grabber
+	var/obj/hud/inventory/grabbing_hand
 
 	var/allow_shuttle_move = TRUE
 
@@ -43,7 +43,7 @@
 
 /atom/movable/Destroy()
 	area = null
-	grabber = null
+	grabbing_hand = null
 	force_move(null)
 	return ..()
 
@@ -92,16 +92,16 @@
 
 	if(Dir && is_movable(obstacle))
 		var/atom/movable/M = obstacle
-		if(!M.anchored && !M.grabber)
-			M.move_delay = src.move_delay
+		if(!M.anchored && (!grabbing_hand || obstacle != grabbing_hand.owner))
+			//M.move_delay = src.move_delay
 			M.glide_size = src.glide_size
-
-			M.Move(get_step(M,Dir),Dir)
-			return TRUE
+			return M.Move(get_step(M,Dir),Dir)
 
 	return FALSE
 
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+
+	var/real_dir = get_dir(loc,NewLoc)
 
 	if(istype(src.loc,/obj/projectile))
 		return FALSE
@@ -118,29 +118,25 @@
 	var/atom/OldLoc = loc
 
 	//TRY: Exit the turf.
-	if(!OldLoc.Exit(src,NewLoc))
-		Bump(OldLoc,Dir)
+	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
 		return FALSE
 
 	//TRY: Exit the contents.
 	for(var/atom/movable/M in OldLoc.contents)
 		if(M == src)
 			continue
-		if(!M.Uncross(src,NewLoc,OldLoc))
-			Bump(M,Dir)
+		if(!M.Uncross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
 			return FALSE
 
 	//TRY: Enter the contents.
-	if(!NewLoc.Enter(src,OldLoc))
-		Bump(NewLoc,Dir)
+	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
 		return FALSE
 
 	//TRY: Enter the contents.
 	for(var/atom/movable/M in NewLoc.contents)
 		if(M == src)
 			continue
-		if(!M.Cross(src,NewLoc,OldLoc))
-			Bump(M,Dir)
+		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
 			return FALSE
 
 	//DO: Exited the turf.
@@ -157,22 +153,23 @@
 			continue
 		A.Uncrossed(src,NewLoc,OldLoc)
 
-	step_x += desired_step_x
-	step_y += desired_step_y
-	loc = NewLoc
+	if(loc == OldLoc)
+		step_x += desired_step_x
+		step_y += desired_step_y
+		loc = NewLoc
 
-	//DO: Entered the turf.
-	NewLoc.Entered(src,OldLoc)
+		//DO: Entered the turf.
+		NewLoc.Entered(src,OldLoc)
 
-	//DO: Make a footstep sound.
-	if(!silent && has_footsteps && NewLoc.footstep_id && all_footsteps[NewLoc.footstep_id])
-		var/footstep/F = all_footsteps[NewLoc.footstep_id]
-		F.on_step(NewLoc,src,FALSE)
+		//DO: Make a footstep sound.
+		if(!silent && has_footsteps && NewLoc.footstep_id && all_footsteps[NewLoc.footstep_id])
+			var/footstep/F = all_footsteps[NewLoc.footstep_id]
+			F.on_step(NewLoc,src,FALSE)
 
-	//DO: Enter the contents.
-	for(var/atom/A in NewLoc.contents)
-		if(A == src)
-			continue
-		A.Crossed(src,NewLoc,OldLoc)
+		//DO: Enter the contents.
+		for(var/atom/A in NewLoc.contents)
+			if(A == src)
+				continue
+			A.Crossed(src,NewLoc,OldLoc)
 
 	return TRUE

@@ -4,7 +4,7 @@
 		quick_equip(caller)
 		return TRUE
 
-	return FALSE
+	return ..()
 
 
 /obj/item/clothing/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)

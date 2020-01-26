@@ -1,16 +1,18 @@
 "a" = (/turf/simulated/wall/metal,/area)
 "b" = (/obj/structure/interactive/computer/wall/dorms{icon_state = "dorm_available"; dir = 1},/turf/simulated/wall/metal,/area)
-"c" = (/obj/structure/interactive/door/airlock/station/private,/turf/simulated/floor/tile/grey,/area)
+"c" = (/obj/structure/interactive/door/airlock/station/private,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area)
 "d" = (/turf/simulated/floor/tile/grey,/area)
 "e" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/computer/console/old/station_job,/turf/simulated/floor/tile/grey,/area)
 "f" = (/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/turf/simulated/floor/tile/grey,/area)
 "g" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area)
 "h" = (/obj/structure/interactive/bed/sleeper/cryo,/turf/simulated/floor/tile/grey,/area)
 "i" = (/obj/structure/interactive/vendor/autolocker,/turf/simulated/floor/tile/grey,/area)
+"j" = (/obj/structure/interactive/disposals/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 4},/turf/simulated/floor/tile/grey,/area)
+"k" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/tile/grey,/area)
 
 (1,1,1) = {"
 abcaa
-addea
+ajkea
 afdga
 ahdia
 aaaaa

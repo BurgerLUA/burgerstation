@@ -7,6 +7,7 @@
 	footstep_id = "default"
 
 	layer = LAYER_FLOOR
+	plane = PLANE_TILE
 
 /turf/simulated/floor/tile/grey
 	color = COLOR_GREY

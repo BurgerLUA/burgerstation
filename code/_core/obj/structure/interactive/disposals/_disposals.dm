@@ -59,6 +59,7 @@
 	var/connects_dir = FALSE
 	var/connects_up = FALSE
 	var/connects_down = FALSE
+	var/junction_angle = 0
 
 	anchored = TRUE
 
@@ -93,9 +94,13 @@
 		disposals_container.Initialize()
 
 	M.force_move(disposals_container)
+	M.glide_size = M.step_size / DECISECONDS_TO_TICKS(1)
 	return TRUE
 
 /obj/structure/interactive/disposals/proc/get_connection_dir()
+
+	if(!connects_dir)
+		return 0x0
 
 	var/src_connections = 0x0
 
@@ -110,17 +115,22 @@
 
 	. = list()
 
-	if(connects_dir)
+	if(junction_angle)
+		var/turf/T = get_step(src,dir)
+		var/obj/structure/interactive/disposals/D = locate() in T.contents
+		if(D && (D.get_connection_dir() & turn(dir,180)) )
+			. += D
+
+	else if(connects_dir)
 		for(var/desired_dir in DIRECTIONS_CARDINAL)
 			if(!(src_connection_dir & desired_dir))
 				continue
 			var/turf/T = get_step(src,desired_dir)
-			var/obj/structure/interactive/disposals/D = locate() in T.contents
-			if(!D)
-				continue
-			world.log << "Found pipe!"
-			if(D.get_connection_dir() & turn(desired_dir,180))
-				. += D
+			for(var/obj/structure/interactive/disposals/D in T.contents)
+				if(D.get_connection_dir() & turn(desired_dir,180))
+					. += D
+				else if(D.junction_angle && src_connection_dir & turn(D.dir,-D.junction_angle))
+					. += D
 
 	if(connects_up || connects_down)
 		for(var/obj/structure/interactive/disposals/D in loc.contents)
@@ -131,86 +141,16 @@
 
 	return .
 
-/obj/structure/interactive/disposals/pipe
-	name = "disposals pipe"
-	icon_state = "pipe"
-	double_sided = TRUE
-	connects_dir = TRUE
-
 /obj/structure/interactive/disposals/clicked_on_by_object(caller,object,location,control,params)
 
 	color = "#0000FF"
 
-	var/list/valid_connections = get_connections()
-
-	world.log << "Valid: [length(valid_connections)]"
-
-	for(var/obj/structure/interactive/disposals/P in valid_connections)
-		P.color = "#00FF00"
+	for(var/obj/structure/interactive/disposals/D in get_connections())
+		D.color = "#00FF00"
 		spawn(10)
-			P.color = "#FFFFFF"
+			D.color = "#FFFFFF"
 
 	spawn(10)
 		color = "#FFFFFF"
-
-/obj/structure/interactive/disposals/pipe/ending
-	name = "connector pipe"
-	double_sided = FALSE
-	icon_state = "pipe-t"
-	connects_up = TRUE
-
-/obj/structure/interactive/disposals/inlet
-	name = "disposals inlet"
-	icon_state = "intake"
-	connects_down = TRUE
-
-	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	density_north = FALSE
-	density_south = FALSE
-	density_east  = FALSE
-	density_west  = FALSE
-
-/obj/structure/interactive/disposals/inlet/set_dir(var/desired_dir,var/force = FALSE)
-
-	. = ..()
-
-	if(.)
-		density_north = !(dir & NORTH)
-		density_east = !(dir & EAST)
-		density_south = !(dir & SOUTH)
-		density_west = !(dir & WEST)
-		color = "#00FF00"
-	else
-		color = "#FF0000"
-
-	return .
-
-/obj/structure/interactive/disposals/inlet/Crossed(var/atom/movable/O)
-	enter_pipe(O)
-	return ..()
-
-/obj/structure/interactive/disposals/outlet
-	name = "disposals outlet"
-	icon_state = "outlet"
-	connects_down = TRUE
-
-	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	density_north = TRUE
-	density_south = TRUE
-	density_east  = TRUE
-	density_west  = TRUE
-
-/obj/structure/interactive/disposals/outlet/on_container_enter(var/obj/disposals_container/C)
-
-	var/list/throw_offset = direction_to_pixel_offset(dir)
-
-	for(var/atom/movable/M in C.contents)
-		M.throw_self(src,null,null,null,throw_offset[1]*10,throw_offset[2]*10)
-
-	qdel(C)
 
 	return ..()

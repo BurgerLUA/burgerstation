@@ -11,6 +11,10 @@
 /obj/structure/interactive/conveyor/shuttle
 	plane = PLANE_SHUTTLE
 
+/obj/structure/interactive/conveyor/shuttle/inverted
+	icon_state = "conveyor_inverted"
+	reversed = TRUE
+
 /obj/structure/interactive/conveyor/inverted
 	icon_state = "conveyor_inverted"
 	reversed = TRUE
@@ -67,10 +71,11 @@
 	var/turf/desired_turf = get_step(src,desired_dir)
 
 	for(var/atom/movable/M in loc.contents)
-		if(M.anchored || M.next_conveyor > curtime)
+		if(M.anchored || M.next_conveyor > curtime || M.move_delay > (is_living(M) ? -1 : 0) || M.grabbing_hand)
 			continue
+		M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
 		M.Move(desired_turf,silent=TRUE)
-		M.next_conveyor = curtime + 1
+		M.next_conveyor = curtime + 8
 		break
 
 	return TRUE

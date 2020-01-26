@@ -3,6 +3,16 @@
 	icon = 'icons/obj/structure/supermatter.dmi'
 	icon_state = "supermatter"
 
+	collision_flags = FLAG_COLLISION_WALKING
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	density_north = TRUE
+	density_south = TRUE
+	density_east  = TRUE
+	density_west  = TRUE
+
+/obj/structure/interactive/supermatter/unachored
+	anchored = FALSE
 
 /obj/structure/interactive/radiation_collector
 	name = "radiation collector"

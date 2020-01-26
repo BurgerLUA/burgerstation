@@ -92,12 +92,3 @@
 
 	return ..()
 */
-
-/mob/living/Bump(var/atom/A)
-
-	. = ..()
-
-	if(ai)
-		ai.Bump(A)
-
-	return .

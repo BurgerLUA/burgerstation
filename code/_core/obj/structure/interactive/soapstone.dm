@@ -31,7 +31,6 @@ obj/structure/interactive/soapstone_message/New(var/desired_loc,var/desired_dir,
 	update_icon()
 
 obj/structure/interactive/soapstone_message/update_icon()
-
 	if(icon_state == "death")
 		name = "cursed message"
 		alpha = 255
