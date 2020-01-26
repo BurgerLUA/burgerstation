@@ -10,7 +10,7 @@
 
 	change_dir_on_move = FALSE
 
-/obj/structure/smooth/window/directional/set_dir(var/desired_dir)
+/obj/structure/smooth/window/directional/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
 

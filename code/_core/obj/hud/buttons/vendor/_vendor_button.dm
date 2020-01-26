@@ -75,12 +75,14 @@
 	I4.pixel_x = 35
 	overlays += I4
 
-	maptext = initial(associated_item.name)
+	var/desired_name = initial(associated_item.vendor_name) ? initial(associated_item.vendor_name) : initial(associated_item.name)
+
+	maptext = desired_name
 	maptext_width = 96*2
 	maptext_x = 2
 	maptext_y = 1
 
-	name = initial(associated_item.name)
+	name = desired_name
 
 	return .
 

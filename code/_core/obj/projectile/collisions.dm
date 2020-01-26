@@ -6,7 +6,7 @@
 	if(P.owner == src)
 		return FALSE
 
-	if(!src.collision_bullet_flags)
+	if(!src.collision_bullet_flags || !P.collision_bullet_flags)
 		return FALSE
 
 	if(!(P.collision_bullet_flags && P.collision_bullet_flags & src.collision_bullet_flags))
@@ -72,7 +72,7 @@
 	if(prob(max(0,100-bullet_block_chance)))
 		return FALSE
 
-	if(!..())
+	if(!..()) //REMEMBER, THIS EXISTS.
 		return FALSE
 
 	if((projectile_dir & NORTH) && src.density_south)

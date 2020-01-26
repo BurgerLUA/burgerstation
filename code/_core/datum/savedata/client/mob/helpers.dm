@@ -176,8 +176,12 @@
 			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
 
 	if(do_teleport)
-		var/obj/structure/interactive/bed/sleeper/cryo/C = pick(cryo_spawnpoints)
-		A.force_move(get_turf(C))
-		C.buckle(A,silent=TRUE)
+		var/obj/marker/dev/D = locate() in world
+		if(D)
+			A.force_move(get_turf(D))
+		else
+			var/obj/structure/interactive/bed/sleeper/cryo/C = pick(cryo_spawnpoints)
+			A.force_move(get_turf(C))
+			C.buckle(A,silent=TRUE)
 
 	A.update_icon()

@@ -4,11 +4,16 @@
 	icon_state = "cell_basic"
 
 	var/charge_current = 0
-	var/charge_max = 10000
+	var/charge_max = CELL_SIZE_BASIC
+
+	size = SIZE_1
+	weight = WEIGHT_2
 
 /obj/item/powercell/on_spawn()
 	charge_current = charge_max
-	return ..()
+	. = ..()
+	update_icon()
+	return .
 
 /obj/item/powercell/update_icon()
 
@@ -59,9 +64,15 @@
 /obj/item/powercell/advanced
 	name = "advanced power cell"
 	icon_state = "cell_advanced"
-	charge_max = 20000
+	charge_max = CELL_SIZE_ADVANCED
+
+	size = SIZE_2
+	weight = WEIGHT_3
 
 /obj/item/powercell/industrial
 	name = "industrial power cell"
 	icon_state = "cell_industrial"
-	charge_max = 50000
+	charge_max = CELL_SIZE_INDUSTRIAL
+
+	size = SIZE_3
+	weight = WEIGHT_4

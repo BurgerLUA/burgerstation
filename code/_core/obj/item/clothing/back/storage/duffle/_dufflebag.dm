@@ -10,8 +10,8 @@
 	weight = WEIGHT_4
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
-	name = "\improper PMC dufflebag"
 	color = COLOR_BLACK
+	vendor_name = "\improper Rilfeman's Kit"
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
 	new /obj/item/radio(src)

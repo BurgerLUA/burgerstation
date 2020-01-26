@@ -27,6 +27,10 @@
 
 	var/rotation_mod = 1
 
+	var/next_conveyor = 0 //For conveyors.
+
+	var/has_footsteps = FALSE
+
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 
@@ -76,10 +80,11 @@
 
 	if(loc)
 		loc.Entered(src, old_loc)
-		for(var/atom/movable/AM in loc.contents)
-			if(AM == src)
-				continue
-			AM.Crossed(src)
+		if(loc)
+			for(var/atom/movable/AM in loc.contents)
+				if(AM == src)
+					continue
+				AM.Crossed(src)
 
 	return TRUE
 
@@ -96,7 +101,7 @@
 
 	return FALSE
 
-/atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0)
+/atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	if(istype(src.loc,/obj/projectile))
 		return FALSE
@@ -141,6 +146,11 @@
 	//DO: Exited the turf.
 	OldLoc.Exited(src,NewLoc)
 
+	//DO: Make a footstep sound.
+	if(!silent && has_footsteps && OldLoc.footstep_id && all_footsteps[OldLoc.footstep_id])
+		var/footstep/F = all_footsteps[OldLoc.footstep_id]
+		F.on_step(OldLoc,src,TRUE)
+
 	//DO: Exited the contents.
 	for(var/atom/A in OldLoc.contents)
 		if(A == src)
@@ -153,6 +163,11 @@
 
 	//DO: Entered the turf.
 	NewLoc.Entered(src,OldLoc)
+
+	//DO: Make a footstep sound.
+	if(!silent && has_footsteps && NewLoc.footstep_id && all_footsteps[NewLoc.footstep_id])
+		var/footstep/F = all_footsteps[NewLoc.footstep_id]
+		F.on_step(NewLoc,src,FALSE)
 
 	//DO: Enter the contents.
 	for(var/atom/A in NewLoc.contents)

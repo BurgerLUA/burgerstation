@@ -48,7 +48,6 @@
 
 	random_spawn_dir = FALSE
 
-	has_footsteps = TRUE
 	has_footprints = TRUE
 
 	var/slowdown_mul = 1

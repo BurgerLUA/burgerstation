@@ -7,6 +7,14 @@
 
 	var/mech_only = FALSE
 
+/obj/item/weapon/ranged/laser/New(var/desired_loc)
+	charge_cost = floor(charge_cost)
+	return ..()
+
+/obj/item/weapon/ranged/laser/on_spawn()
+	charge_current = charge_max
+	return ..()
+
 /obj/item/weapon/ranged/laser/get_ammo_count()
 	return floor(charge_current/charge_cost)
 
@@ -22,6 +30,5 @@
 	if(charge_current - charge_cost < 0)
 		handle_empty(caller)
 		return FALSE
-
 
 	return TRUE

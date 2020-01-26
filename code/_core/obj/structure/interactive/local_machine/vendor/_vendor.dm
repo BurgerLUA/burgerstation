@@ -106,7 +106,7 @@
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "CENTER+2,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i]"
+		V.screen_loc = "CENTER-3,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i]"
 		V.update_owner(A)
 		V.update_icon()
 
@@ -115,7 +115,7 @@
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "CENTER+2,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i+stored_objects_length]"
+		V.screen_loc = "CENTER-3,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i+stored_objects_length]"
 		V.update_owner(A)
 		V.update_icon()
 

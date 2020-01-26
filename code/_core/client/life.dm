@@ -51,5 +51,8 @@
 			if(mob.vision & FLAG_VISION_MEDICAL && L.medical_hud_image)
 				stored_hud_images += L.medical_hud_image
 				images += L.medical_hud_image
+			if(mob.vision & FLAG_VISION_SECURITY && L.security_hud_image)
+				stored_hud_images += L.security_hud_image
+				images += L.security_hud_image
 
 	return TRUE

@@ -12,9 +12,9 @@
 
 	bullet_color = "#00FFFF"
 
-	charge_max = 20000
-	charge_current = 20000
-	charge_cost = 2000
+	charge_max = CELL_SIZE_ADVANCED
+	charge_current = CELL_SIZE_ADVANCED
+	charge_cost = CELL_SIZE_ADVANCED / 30
 
 	view_punch = 15
 
@@ -24,6 +24,9 @@
 
 /obj/item/weapon/ranged/laser/freezegun/update_icon()
 
-	icon_state = "inventory_[floor((charge_current/charge_max)*4)]"
+	if(charge_cost < charge_current)
+		icon_state = "inventory_0"
+	else
+		icon_state = "inventory_[floor((charge_current/charge_max)*4)]"
 
 	return ..()

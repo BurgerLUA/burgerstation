@@ -15,9 +15,9 @@
 	override_icon_state = TRUE
 	override_icon_state_held = FALSE //TODO: FIX THIS
 
-	charge_max = 70000
-	charge_current = 70000
-	charge_cost = 1000
+	charge_max = CELL_SIZE_ADVANCED
+	charge_current = CELL_SIZE_ADVANCED
+	charge_cost = CELL_SIZE_ADVANCED / 40
 
 	view_punch = 6
 

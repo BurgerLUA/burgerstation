@@ -4,7 +4,7 @@ obj/structure/interactive/chair
 	icon = 'icons/obj/structure/chairs.dmi'
 	icon_state = "chair"
 
-obj/structure/interactive/chair/set_dir(var/desired_dir)
+obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
 

@@ -2,6 +2,7 @@
 	name = "decal"
 	plane = PLANE_FLOOR
 	mouse_opacity = 0
+	anchored = TRUE
 
 /obj/decal/directions
 	icon = 'icons/obj/decal/station_markers.dmi'

@@ -20,9 +20,9 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	charge_max = 30000
-	charge_current = 30000
-	charge_cost = 500
+	charge_max = CELL_SIZE_ADVANCED
+	charge_current = CELL_SIZE_ADVANCED
+	charge_cost = CELL_SIZE_ADVANCED / 60
 
 	view_punch = 6
 
@@ -38,7 +38,7 @@
 		icon_state = "[icon_state]_stun"
 		icon_state_held = "[icon_state_held]_stun"
 
-	var/charge_mod = ceiling((charge_current/charge_max)*4,1)
+	var/charge_mod = charge_current >= charge_cost ? ceiling((charge_current/charge_max)*4,1) : 0
 
 	icon_state = "[icon_state]_[charge_mod]"
 	icon_state_held = "[icon_state_held]_[charge_mod]"
@@ -46,3 +46,9 @@
 	icon_state_held_left = "[icon_state_held]_left"
 
 	return ..()
+
+/obj/item/weapon/ranged/laser/hybrid/carbine/get_static_spread() //Base spread
+	return 0.05
+
+/obj/item/weapon/ranged/laser/hybrid/carbine/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

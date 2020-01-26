@@ -106,7 +106,7 @@
 
 	return TRUE
 
-/atom/movable/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+/atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	. = ..()
 
@@ -132,7 +132,8 @@
 	return .
 
 
-/atom/set_dir(var/desired_direction)
+/atom/set_dir(var/desired_dir,var/force = FALSE)
+
 
 	. = ..()
 

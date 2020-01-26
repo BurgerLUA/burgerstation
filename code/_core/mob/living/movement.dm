@@ -1,4 +1,4 @@
-/mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+/mob/living/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	if(is_sneaking)
 		on_sneak()

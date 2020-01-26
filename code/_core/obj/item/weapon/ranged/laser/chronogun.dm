@@ -12,9 +12,9 @@
 
 	bullet_color = "#0000FF"
 
-	charge_max = 20000
-	charge_current = 20000
-	charge_cost = 10000
+	charge_max = CELL_SIZE_ADVANCED
+	charge_current = CELL_SIZE_ADVANCED
+	charge_cost = CELL_SIZE_ADVANCED / 5
 
 	view_punch = 31
 

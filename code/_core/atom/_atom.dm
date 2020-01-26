@@ -52,6 +52,8 @@
 
 	var/immortal = FALSE
 
+	var/footstep_id //The sound the object makes when something enters or exits it.
+
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
@@ -114,7 +116,7 @@
 		health = new health(src)
 		health.Initialize()
 
-	set_dir(dir)
+	set_dir(dir,TRUE)
 
 	return .
 

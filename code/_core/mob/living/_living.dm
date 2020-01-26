@@ -59,7 +59,6 @@
 	var/respawn_time = 300 //In deciseconds
 	var/random_spawn_dir = TRUE
 
-	var/has_footsteps = FALSE
 	var/has_footprints = FALSE
 	var/list/footstep_override
 
@@ -102,6 +101,9 @@
 	reagents = /reagent_container/living
 
 	var/image/medical_hud_image
+	var/image/security_hud_image
+
+	has_footsteps = TRUE
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
@@ -152,6 +154,9 @@
 	qdel(medical_hud_image)
 	medical_hud_image = null
 
+	qdel(security_hud_image)
+	security_hud_image = null
+
 	return ..()
 
 /mob/living/proc/get_brute_color()
@@ -178,6 +183,10 @@
 	medical_hud_image.loc = src
 	medical_hud_image.layer = PLANE_HUD_VISION
 	medical_hud_image.pixel_y = 4
+
+	security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
+	security_hud_image.loc = src
+	security_hud_image.layer = PLANE_HUD_VISION
 
 	. = ..()
 

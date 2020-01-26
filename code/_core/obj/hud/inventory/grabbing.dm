@@ -10,7 +10,7 @@
 */
 
 
-/mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+/mob/living/advanced/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	. = ..()
 
