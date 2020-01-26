@@ -54,6 +54,8 @@
 
 	var/footstep_id //The sound the object makes when something enters or exits it.
 
+	var/ignore_incoming_collisons = FALSE
+
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 
@@ -92,7 +94,7 @@
 
 /atom/Cross(var/atom/A)
 
-	if(src.collision_flags & A.collision_flags)
+	if(!ignore_incoming_collisons && src.collision_flags & A.collision_flags)
 		return FALSE
 
 	return ..()

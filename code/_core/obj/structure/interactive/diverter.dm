@@ -54,4 +54,4 @@
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one measures the density of the object."
 
 /obj/structure/interactive/diverter/density/should_push(var/atom/movable/M)
-	return M.collision_flags != FLAG_COLLISION_NONE
+	return !M.ignore_incoming_collisons && M.collision_flags != FLAG_COLLISION_NONE

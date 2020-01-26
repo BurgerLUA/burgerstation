@@ -280,8 +280,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/diffx = desired_x - caller_fake_x
 	var/diffy = desired_y - caller_fake_y
 	var/distance = sqrt(diffx ** 2 + diffy ** 2)
-	var/inaccuracy_x = rand(-distance*accuracy,distance*accuracy)
-	var/inaccuracy_y = rand(-distance*accuracy,distance*accuracy)
+	var/inaccuracy_x = rand_precise(-distance*accuracy,distance*accuracy)
+	var/inaccuracy_y = rand_precise(-distance*accuracy,distance*accuracy)
 
 	diffx += inaccuracy_x
 	diffy += inaccuracy_y

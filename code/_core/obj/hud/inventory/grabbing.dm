@@ -38,7 +38,7 @@
 						left_hand.release_object(src)
 
 			if(right_hand && right_hand.grabbed_object)
-				var/turf/back_turf = get_step(src,turn(move_dir, 180))
+				var/distance = get_dist(src,right_hand.grabbed_object)
 				if(distance > 2)
 					right_hand.release_object(src)
 				else if(distance > 1)

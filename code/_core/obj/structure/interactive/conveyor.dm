@@ -70,12 +70,20 @@
 
 	var/turf/desired_turf = get_step(src,desired_dir)
 
-	for(var/atom/movable/M in loc.contents)
-		if(M.anchored || M.next_conveyor > curtime || M.move_delay > (is_living(M) ? -1 : 0) || M.grabbing_hand)
-			continue
-		M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
-		M.Move(desired_turf,silent=TRUE)
-		M.next_conveyor = curtime + 8
-		break
+	if(desired_turf)
+		var/obj/structure/interactive/conveyor/C = locate() in desired_turf.contents
+		if(C)
+			for(var/atom/movable/M in desired_turf.contents)
+				if(M.anchored || M.grabbing_hand)
+					continue
+				return TRUE
+
+		for(var/atom/movable/M in loc.contents)
+			if(M.anchored || M.next_conveyor > curtime || M.move_delay > (is_living(M) ? -1 : 0) || M.grabbing_hand)
+				continue
+			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
+			M.Move(desired_turf,silent=TRUE)
+			M.next_conveyor = curtime + 8
+			break
 
 	return TRUE

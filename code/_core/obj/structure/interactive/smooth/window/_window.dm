@@ -8,7 +8,7 @@
 	color = "#7FAFCB"
 
 	collision_flags = FLAG_COLLISION_REAL
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_WINDOW
 
 	corner_category = "window"
 	corner_icons = TRUE

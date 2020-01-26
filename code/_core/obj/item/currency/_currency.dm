@@ -77,3 +77,7 @@
 	qdel(src)
 
 	return TRUE
+
+
+/obj/item/currency/lots/New(var/desired_loc)
+	return ..(desired_loc,10000)

@@ -41,6 +41,8 @@
 	var/icon_state_worn = "worn"
 	//var/icon_state_held_single
 
+	collision_flags = FLAG_COLLISION_ITEM
+
 	var/worn_layer = 0
 
 	var/item_slot = SLOT_NONE
@@ -104,6 +106,8 @@
 
 	var/wielded = FALSE
 	var/can_wield = FALSE
+
+	ignore_incoming_collisons = TRUE
 
 /obj/item/Destroy()
 
