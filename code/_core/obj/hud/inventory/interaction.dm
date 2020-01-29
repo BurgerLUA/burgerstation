@@ -19,8 +19,8 @@
 			vel_x *= 1/highest
 			vel_y *= 1/highest
 
-			vel_x *= 28
-			vel_y *= 28
+			vel_x *= 12
+			vel_y *= 12
 
 			I.drop_item(get_turf(caller))
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y)

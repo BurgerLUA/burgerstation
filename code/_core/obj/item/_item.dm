@@ -9,6 +9,8 @@
 	var/size = SIZE_1
 	var/weight = WEIGHT_1
 
+	var/list/material = list()
+
 	var/value = 1 //Value in whatever currency this world uses. Used for buying and selling items.
 
 	var/delete_on_drop = FALSE
@@ -108,6 +110,8 @@
 	var/can_wield = FALSE
 
 	ignore_incoming_collisons = TRUE
+
+	anchored = FALSE
 
 /obj/item/Destroy()
 

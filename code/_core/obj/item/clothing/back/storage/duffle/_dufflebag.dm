@@ -46,7 +46,7 @@
 	new /obj/item/material/sheet/steel/spawn_50(src)
 	new /obj/item/material/sheet/steel/spawn_50(src)
 	new /obj/item/material/rod/steel/spawn_50(src)
-	new /obj/item/material/glass/normal/spawn_50(src)
+	new /obj/item/material/sheet/glass/spawn_50(src)
 	new /obj/item/weapon/melee/tool/rcd(src)
 	new /obj/item/matter_cartridge(src)
 	new /obj/item/matter_cartridge(src)

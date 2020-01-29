@@ -55,3 +55,10 @@
 
 /obj/structure/interactive/diverter/density/should_push(var/atom/movable/M)
 	return !M.ignore_incoming_collisons && M.collision_flags != FLAG_COLLISION_NONE
+
+/obj/structure/interactive/diverter/material
+	name = "airjet diverter (material)"
+	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object is a raw material."
+
+/obj/structure/interactive/diverter/material/should_push(var/atom/movable/M)
+	return istype(M,/obj/item/material/) && !istype(M,/obj/item/material/shard)

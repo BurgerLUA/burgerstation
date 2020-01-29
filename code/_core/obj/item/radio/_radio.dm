@@ -16,6 +16,12 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	var/radio_sound = 'sounds/items/radio.ogg'
 
+	material = list(
+		"steel" = 10000,
+		"iron" = 5000,
+		"glass" = 20000
+	)
+
 /obj/item/radio/click_self(var/mob/caller,location,control,params)
 
 	broadcasting = !broadcasting

@@ -13,8 +13,8 @@
 	container_max_weight = 100
 	container_held_slots = 10
 	container_whitelist = list(
-		/obj/item/ore/,
-		/obj/item/ingot/
+		/obj/item/material/ore,
+		/obj/item/material/ingot
 	)
 
 /obj/item/storage/bags/mining/bluespace

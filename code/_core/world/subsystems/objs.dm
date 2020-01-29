@@ -10,6 +10,8 @@
 	var/obj_count = 0
 
 	for(var/obj/O in world)
+		if(O.initialized)
+			continue
 		O.Initialize()
 		obj_count++
 

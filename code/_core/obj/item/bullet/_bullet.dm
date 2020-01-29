@@ -53,11 +53,6 @@
 			pixel_x = rand(-8,8)
 			pixel_y = rand(-8,8)
 
-	if(is_inventory(loc))
-		maptext = "[item_count_current]"
-	else
-		maptext = null
-
 	..()
 
 /obj/item/bullet/get_examine_text(var/mob/examiner)

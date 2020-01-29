@@ -80,6 +80,8 @@
 
 	var/view = VIEW_RANGE
 
+	anchored = FALSE
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = (SEE_SELF | SEE_BLACKNESS | SEE_TURFS)

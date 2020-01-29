@@ -7,6 +7,10 @@
 
 	var/turf/placing_turf
 
+	var/list/stored_material = list()
+
+	plane = PLANE_WALL_ATTACHMENTS
+
 /obj/structure/interactive/recycler/New(var/desired_loc)
 
 	var/image/I1b = new/image(icon,"grinder_bottom")
@@ -35,13 +39,25 @@
 
 	if(is_item(O))
 		var/obj/item/I = O
+		for(var/material_type in I.material)
+			stored_material[material_type] += I.material[material_type]
+		process_material()
+	qdel(O)
+
+	return TRUE
 
 
-		qdel(O)
-	else
-		O.force_move(placing_turf)
+/obj/structure/interactive/recycler/proc/process_material()
 
-
-
+	for(var/material_type in stored_material)
+		var/material_value = stored_material[material_type]
+		var/material_to_make = floor(material_value/1000)
+		if(material_to_make < 1)
+			continue
+		stored_material[material_type] -= material_to_make*1000
+		var/obj/item/material/trash_cube/S = new(placing_turf)
+		S.item_count_current = material_to_make
+		S.material_id = material_type
+		S.update_icon()
 
 	return TRUE

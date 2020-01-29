@@ -207,17 +207,17 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 		return TRUE
 
 
-	if(istype(A,/obj/item/material/glass/))
-		var/obj/item/material/glass/G = A
-		if(G.item_count_current <= 4)
+	if(istype(A,/obj/item/material/sheet/))
+		var/obj/item/material/sheet/S = A
+		if(has_prefix(S.material_id,"glass") && S.item_count_current <= 4)
 			var/obj/structure/smooth/window/W = new(src.loc)
-			W.material_id = G.material_id
-			W.color = G.color
+			W.material_id = S.material_id
+			W.color = S.color
 			for(var/obj/structure/smooth/window/W2 in range(2,src))
 				W2.update_icon()
-			G.item_count_current -= 4
-			caller.to_chat("You place \the glass.")
-			G.update_icon()
+			S.item_count_current -= 4
+			caller.to_chat("You place \the [W].")
+			S.update_icon()
 			return TRUE
 
 		caller.to_chat("You don't have enough glass sheets to make a window!")

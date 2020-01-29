@@ -3,7 +3,7 @@
 	desc = "MINECRAFT."
 	icon = 'icons/obj/structure/ore.dmi'
 	icon_state = "deposit"
-	var/obj/item/ore/stored_ore //We don't need to spawn this yet.
+	var/material_id
 	var/chance_delete = 0
 
 	var/uses_current = 0
@@ -29,7 +29,9 @@
 			caller.to_chat(span("notice","This ore vein is depleted!."))
 		return TRUE
 
-	var/obj/item/ore/O = new stored_ore(get_turf(src))
+	var/obj/item/material/ore/O = new(get_turf(src))
+	O.material_id = src.material_id
+	O.on_spawn()
 
 	var/move_direction = get_dir(src,caller)
 
@@ -107,47 +109,47 @@
 /obj/structure/interactive/ore_deposit/iron
 	name = "iron deposit"
 	icon_state = "deposit_iron"
-	stored_ore = /obj/item/ore/iron
+	material_id = "iron"
 
 /obj/structure/interactive/ore_deposit/copper
 	name = "copper deposit"
 	color = "#E28446"
-	stored_ore = /obj/item/ore/copper
+	material_id = "copper"
 
 
 /obj/structure/interactive/ore_deposit/tin
 	name = "tin deposit"
 	color = "#E2E2E2"
-	stored_ore = /obj/item/ore/tin
+	material_id = "tin"
 
 
 /obj/structure/interactive/ore_deposit/zinc
 	name = "zinc deposit"
 	color = "#E8E8EF"
-	stored_ore = /obj/item/ore/zinc
+	material_id = "zinc"
 
 
 /obj/structure/interactive/ore_deposit/gold
 	name = "gold deposit"
 	icon_state = "deposit_gold"
-	stored_ore = /obj/item/ore/gold
+	material_id = "gold"
 
 /obj/structure/interactive/ore_deposit/silver
 	name = "silver deposit"
 	icon_state = "deposit_silver"
-	stored_ore = /obj/item/ore/silver
+	material_id = "silver"
 
 /obj/structure/interactive/ore_deposit/carbon //Found near the ocean.
 	name = "coal deposit"
 	icon_state = "deposit_coal"
-	stored_ore = /obj/item/ore/carbon
+	material_id = "carbon"
 
 /obj/structure/interactive/ore_deposit/aluminum //Found in surface.
 	name = "aluminum deposit"
 	color = "#C4C4C4"
-	stored_ore = /obj/item/ore/aluminum
+	material_id = "aluminum"
 
 /obj/structure/interactive/ore_deposit/plasma
 	name = "phoron plasma deposit"
 	icon_state = "deposit_phoron"
-	stored_ore = /obj/item/ore/plasma
+	material_id = "plasma"

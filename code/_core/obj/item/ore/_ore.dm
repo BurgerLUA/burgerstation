@@ -109,7 +109,6 @@ obj/item/ore/magnesium
 	desc = "Commonly found in caves."
 	ore_color = COLOR_BLACK
 
-
 obj/item/ore/plasma
 	name = "phoron plasma ore"
 	id = "plasma"

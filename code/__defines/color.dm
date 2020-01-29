@@ -19,8 +19,9 @@
 #define COLOR_ENGINEERING "#D8A538"
 #define COLOR_SCIENCE "#A300FF"
 
+//Materials
 #define COLOR_STEEL "#444444"
 #define COLOR_GLASS "#D9FFFF"
 #define COLOR_PLASTEEL "#A0A0A0"
-
+#define COLOR_IRON "#282828"
 

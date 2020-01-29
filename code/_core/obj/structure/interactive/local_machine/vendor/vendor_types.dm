@@ -31,7 +31,7 @@
 	name = "material vendor"
 	stored_types = list(
 		/obj/item/material/sheet/steel/spawn_50,
-		/obj/item/material/glass/normal/spawn_50
+		/obj/item/material/sheet/glass/spawn_50
 
 	)
 

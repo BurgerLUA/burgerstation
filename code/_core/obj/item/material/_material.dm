@@ -10,8 +10,9 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	weight = 0.2
+	crafting_id = "material"
 
-	crafting_id = "glitch"
-
-
+/obj/item/material/on_spawn()
+	. = ..()
+	update_icon()
+	return .

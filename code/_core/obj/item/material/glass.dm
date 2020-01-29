@@ -11,13 +11,11 @@
 	weight = 0.2
 
 	crafting_id = "glass"
-	material_id = "glass"
 
 /obj/item/material/glass/normal
 	name = "glass sheets"
 	desc = "The basic building material."
-	material_id = "glass_normal"
-	color = COLOR_GLASS
+	material_id = "glass"
 
 /obj/item/material/glass/normal/spawn_50/on_spawn()
 	item_count_current = 50
