@@ -8,6 +8,4 @@
 	item_count_max = 6
 	item_count_max_icon = 6
 
-	weight = 4
-
 	crafting_id = "ingot"

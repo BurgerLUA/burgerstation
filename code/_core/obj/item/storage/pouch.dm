@@ -72,6 +72,43 @@
 	new /obj/item/magazine/syringe_gun(src)
 	return ..()
 
+
+/obj/item/storage/pouch/triple/brown
+	name = "brown pouch"
+	color = "#683B1D"
+
+/obj/item/storage/pouch/triple/brown/filled/pdw/fill_inventory()
+	new /obj/item/magazine/smg_9mm(src)
+	new /obj/item/magazine/smg_9mm(src)
+	new /obj/item/magazine/smg_9mm(src)
+	new /obj/item/magazine/smg_9mm(src)
+	new /obj/item/magazine/smg_9mm(src)
+	new /obj/item/magazine/smg_9mm(src)
+	return ..()
+
+/obj/item/storage/pouch/triple/brown/filled/buckshot/fill_inventory()
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	new /obj/item/bullet/shotgun/buckshot(src)
+	return ..()
+
+/obj/item/storage/pouch/triple/brown/filled/slug/fill_inventory()
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	new /obj/item/bullet/shotgun/slug(src)
+	return ..()
+
+
 /obj/item/storage/pouch/double/lifesaver
 	name = "lifesaver pouch"
 	icon_state = "lifesaver"

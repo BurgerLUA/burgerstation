@@ -46,22 +46,21 @@
 	icon = 'icons/obj/items/weapons/ranged/smg2.dmi'
 	icon_state = "inventory"
 
-	projectile_speed = 26
-	shoot_delay = 2
-
 	automatic = TRUE
+	can_wield = FALSE
+
+	shoot_delay = 1
+	max_bursts = 5
+	view_punch = 4
 
 	bullet_count_max = 1 //One in the chamber
-
 	bullet_type = "9mm"
 
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 
-	can_wield = FALSE
-
 	override_icon_state = TRUE
 
-	view_punch = 4
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
 	return 0.1

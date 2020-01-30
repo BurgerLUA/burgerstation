@@ -241,7 +241,7 @@
 
 	if(object != src)
 		for(var/obj/hud/inventory/I in inventories)
-			if(bypass && length(I.held_objects))
+			if(bypass && length(I.held_objects) >= I.held_slots)
 				continue
 
 			if(I.add_object(object,FALSE,bypass))

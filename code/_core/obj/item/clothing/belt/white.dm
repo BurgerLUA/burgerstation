@@ -29,3 +29,17 @@
 	new /obj/item/container/medicine/bandage(src)
 	new /obj/item/container/medicine/ointment(src)
 	return ..()
+
+
+/obj/item/clothing/belt/storage/colored/brown
+	color = "#683B1D"
+
+/obj/item/clothing/belt/storage/colored/brown/filled/miner/fill_inventory()
+	new /obj/item/weapon/melee/tool/pickaxe(src)
+	new /obj/item/weapon/ranged/bullet/revolver/traitor_357(src)
+	new /obj/item/magazine/clip/revolver/bullet_357(src)
+	new /obj/item/magazine/clip/revolver/bullet_357(src)
+	new /obj/item/magazine/clip/revolver/bullet_357(src)
+	new /obj/item/container/medicine/bandage(src)
+	new /obj/item/container/medicine/ointment(src)
+	return ..()

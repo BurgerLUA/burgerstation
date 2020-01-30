@@ -19,6 +19,7 @@
 			var/obj/item/material/rod/R = new(get_turf(src))
 			R.material_id = material_id
 			R.item_count_current = 4
+			R.update_icon()
 			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
 			item_count_current--
 			update_icon()

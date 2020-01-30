@@ -50,4 +50,8 @@
 	new /obj/item/weapon/melee/tool/rcd(src)
 	new /obj/item/matter_cartridge(src)
 	new /obj/item/matter_cartridge(src)
+	new /obj/item/matter_cartridge(src)
+	new /obj/item/storage/pouch/triple/brown/filled/pdw(src)
+	new /obj/item/storage/pouch/triple/brown/filled/pdw(src)
+	new /obj/item/weapon/ranged/bullet/magazine/smg/pdw(src)
 	return ..()

@@ -12,14 +12,7 @@
 
 	crafting_id = "rod"
 
-/obj/item/material/rod/steel
-	name = "steel rod"
-	desc = "The basic building material."
-	crafting_id = "rod_steel"
-	color = COLOR_STEEL
-	material_id = "steel"
-
-/obj/item/material/rod/steel/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/material/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 
@@ -49,6 +42,13 @@
 			return TRUE
 
 	return ..()
+
+/obj/item/material/rod/steel
+	name = "steel rod"
+	desc = "The basic building material."
+	crafting_id = "rod_steel"
+	color = COLOR_STEEL
+	material_id = "steel"
 
 /obj/item/material/rod/steel/spawn_50/on_spawn()
 	item_count_current = 50

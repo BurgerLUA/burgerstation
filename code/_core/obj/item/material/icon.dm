@@ -1,6 +1,6 @@
 /obj/item/material/update_icon()
 	var/material/M = all_materials[material_id]
-	weight = M.weight_per_unit*item_count_current*weight
+	weight = M.weight_per_unit*item_count_current*initial(weight)
 	color = M.color
 	crafting_id = "[initial(crafting_id)]_[material_id]"
 	return ..()
