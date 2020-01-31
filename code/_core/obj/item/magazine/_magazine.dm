@@ -9,6 +9,9 @@
 
 	var/ammo
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new ammo(src)

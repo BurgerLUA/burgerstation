@@ -51,6 +51,11 @@
 	color_secondary = "#0000FF"
 	color_tertiary = "#0000FF"
 
+/obj/item/clothing/uniform/jumpsuit/science
+	color_primary = "#38525F"
+	color_secondary = "#38525F"
+	color_tertiary = "#38525F"
+
 /obj/item/clothing/uniform/jumpsuit/dark
 	name = "reinforced jumpsuit"
 

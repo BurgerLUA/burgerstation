@@ -3,6 +3,9 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
+	var/damage_type_on
+	var/damage_type_off
+
 /obj/item/weapon/melee/energy/click_self(var/atom/caller)
 	enabled = !enabled
 	update_icon()
@@ -19,10 +22,12 @@
 		icon_state = "[initial(icon_state)]_on"
 		icon_state_held_left = "[initial(icon_state_held_left)]_on"
 		icon_state_held_right = "[initial(icon_state_held_right)]_on"
+		damage_type = "[initial(damage_type)]_on"
 	else
 		icon_state = initial(icon_state)
 		icon_state_held_left = initial(icon_state_held_left)
 		icon_state_held_right = initial(icon_state_held_right)
+		damage_type = initial(damage_type)
 
 	update_held_icon()
 
@@ -32,7 +37,7 @@
 	name = "energy sword"
 	desc = "A blade made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
-	damage_type = "sword_energy_off"
+	damage_type = "sword_energy"
 
 	block_mul = list(
 		ATTACK_TYPE_MELEE = 1,
@@ -54,10 +59,8 @@
 	var/area/A = get_area(caller.loc)
 	if(enabled)
 		play_sound('sounds/weapons/energy/energy_on.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		damage_type = "sword_energy_on"
 	else
 		play_sound('sounds/weapons/energy/energy_off.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		damage_type = "sword_energy_off"
 	return .
 
 /obj/item/weapon/melee/energy/sword/blue
@@ -101,3 +104,9 @@
 
 /obj/item/weapon/melee/energy/shield/yellow
 	color = "#FFFF00"
+
+/obj/item/weapon/melee/energy/sword/katana
+	name = "energy katana"
+	icon = 'icons/obj/items/weapons/melee/laser/katana.dmi'
+	damage_type = "energy_katana"
+	color = "#FFFFFF"

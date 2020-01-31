@@ -35,3 +35,26 @@
 
 	size = SIZE_2
 	weight = WEIGHT_1
+
+
+/obj/item/clothing/mask/gas/mining
+	name = "advanced gas mask"
+	icon = 'obj/items/clothing/masks/mining.dmi'
+	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
+	desc = "Oxygen not included."
+	desc_extended = "An advanced gas mask. Filters out most forms of gas."
+	rarity = RARITY_RARE
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		HEAT = ARMOR_B,
+		COLD = ARMOR_E,
+		BOMB = ARMOR_E,
+		BIO = ARMOR_S,
+		RAD = ARMOR_C
+	)
+
+	size = SIZE_2
+	weight = WEIGHT_3

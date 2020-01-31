@@ -19,6 +19,10 @@
 
 	flags_tool = FLAG_TOOL_CROWBAR
 
+/obj/item/weapon/melee/tool/crowbar/red
+	name = "red crowbar"
+	icon = 'icons/obj/items/weapons/melee/tools/crowbar_red.dmi'
+
 /obj/item/weapon/melee/tool/multitool
 	name = "multitool"
 	icon = 'icons/obj/items/weapons/melee/tools/multitool.dmi'

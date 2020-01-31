@@ -217,13 +217,13 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			if(P && P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
 				next_shoot_time = 0 //This is needed.
-				if(current_bursts < (max_bursts-1) && shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier))
+				if((max_bursts <= 0 || current_bursts < (max_bursts-1)) && shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier))
 					current_bursts += 1
-				else
+				else if(max_bursts > 0)
 					next_shoot_time = curtime + shoot_delay*current_bursts
 					current_bursts = 0
 
-			else
+			else if(max_bursts > 0)
 				next_shoot_time = curtime + shoot_delay*current_bursts
 				current_bursts = 0
 

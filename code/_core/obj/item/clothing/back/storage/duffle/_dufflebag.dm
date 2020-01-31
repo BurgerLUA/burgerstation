@@ -55,3 +55,8 @@
 	new /obj/item/storage/pouch/triple/brown/filled/pdw(src)
 	new /obj/item/weapon/ranged/bullet/magazine/smg/pdw(src)
 	return ..()
+
+
+/obj/item/clothing/back/storage/dufflebag/engineering
+	name = "engineering dufflebag"
+	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'

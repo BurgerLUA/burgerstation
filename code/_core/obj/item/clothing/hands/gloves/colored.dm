@@ -33,7 +33,7 @@
 
 /obj/item/clothing/hands/gloves/colored/black
 	name = "right combat glove"
-	color = "#AAAAAA"
+	color = "#404040"
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -55,9 +55,7 @@
 
 /obj/item/clothing/hands/gloves/colored/black/left
 	name = "left combat glove"
-	color = "#AAAAAA"
-
-	name = "left glove"
+	color = "#404040"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

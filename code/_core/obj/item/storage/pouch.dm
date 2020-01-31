@@ -73,6 +73,21 @@
 	return ..()
 
 
+/obj/item/storage/pouch/triple/black/
+	color = COLOR_BLACK
+
+/obj/item/storage/pouch/triple/black/filled/stealth
+	name = "stealth pouch"
+
+/obj/item/storage/pouch/triple/black/filled/stealth/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/silenced(src)
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/silenced(src)
+	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
+	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
+	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
+	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
+	return ..()
+
 /obj/item/storage/pouch/triple/brown
 	name = "brown pouch"
 	color = "#683B1D"
@@ -106,6 +121,15 @@
 	new /obj/item/bullet/shotgun/slug(src)
 	new /obj/item/bullet/shotgun/slug(src)
 	new /obj/item/bullet/shotgun/slug(src)
+	return ..()
+
+/obj/item/storage/pouch/triple/brown/filled/pistol/fill_inventory()
+	new /obj/item/magazine/pistol_9mm_2(src)
+	new /obj/item/magazine/pistol_9mm_2(src)
+	new /obj/item/magazine/pistol_9mm_2(src)
+	new /obj/item/magazine/pistol_9mm_2(src)
+	new /obj/item/magazine/pistol_9mm_2(src)
+	new /obj/item/magazine/pistol_9mm_2(src)
 	return ..()
 
 

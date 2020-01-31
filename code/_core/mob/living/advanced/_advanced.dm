@@ -75,6 +75,10 @@
 
 	var/iff_tag
 
+	var/update_hidden_limbs = FALSE
+	var/list/tracked_hidden_limbs
+	var/list/tracked_hidden_limb_clothing
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -82,6 +86,8 @@
 
 	inventory.Cut()
 	overlays_assoc.Cut()
+	tracked_hidden_limbs.Cut()
+	tracked_hidden_limb_clothing.Cut()
 
 	qdel(click_and_drag_icon)
 	click_and_drag_icon = null
@@ -205,6 +211,8 @@
 	worn_objects = list()
 	labeled_organs = list()
 	overlays_assoc = list()
+	tracked_hidden_limbs = list()
+	tracked_hidden_limb_clothing = list()
 
 	. = ..()
 

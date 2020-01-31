@@ -39,9 +39,55 @@
 		SKILL_BLOCK = SKILL_D
 	)
 
-/damagetype/melee/club/shield/energy
+/damagetype/melee/club/shield/energy_on
 	name = "energy shield"
-	id = "shield_energy"
+	id = "shield_energy_on"
+
+	//impact_sounds = list('sounds/weapon/melee/saberon.ogg')
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = DAMAGE_E,
+		LASER = DAMAGE_E,
+		FATIGUE = DAMAGE_D
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = ARMOR_F,
+		LASER = ARMOR_F,
+		FATIGUE = ARMOR_F
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = CLASS_D,
+		ATTRIBUTE_AGILITY = CLASS_E
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_AGILITY = LASER
+	)
+
+	skill_stats = list(
+		SKILL_MELEE = CLASS_D,
+		SKILL_BLOCK = CLASS_C,
+	)
+
+	skill_damage = list(
+		SKILL_MELEE = LASER,
+		SKILL_BLOCK = FATIGUE,
+	)
+
+	skill_xp_per_damage = list(
+		SKILL_MELEE = SKILL_D,
+		SKILL_BLOCK = SKILL_D
+	)
+
+
+/damagetype/melee/club/shield/energy_off
+	name = "energy shield"
+	id = "shield_energy_off"
 
 	//impact_sounds = list('sounds/weapon/melee/saberon.ogg')
 

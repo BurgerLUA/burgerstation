@@ -13,7 +13,7 @@
 	crafting_id = "sheet"
 
 /obj/item/material/sheet/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	if(material_id != "glass" && is_item(object))
+	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
 			var/obj/item/material/rod/R = new(get_turf(src))

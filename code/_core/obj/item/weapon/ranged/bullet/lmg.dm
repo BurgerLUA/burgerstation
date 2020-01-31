@@ -3,8 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/lmg.dmi'
 	icon_state = "inventory"
 
-	projectile_speed = 26
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -20,11 +19,11 @@
 
 	override_icon_state_held = TRUE
 
-	view_punch = 4
+	view_punch = 8
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
 
-	size = SIZE_5
+	size = SIZE_4
 	weight = WEIGHT_5
 
 /obj/item/weapon/ranged/bullet/magazine/lmg/update_icon()
@@ -36,7 +35,8 @@
 
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[initial(icon_state)][open ? "_open" : ""]_[round(length(M.stored_bullets),10)]"
+		var/math_mod = (length(M.stored_bullets)/M.bullet_count_max)*5
+		icon_state = "[initial(icon_state)][open ? "_open" : ""]_[ceiling(math_mod)]"
 	else
 		icon_state = "[initial(icon_state)][open ? "_open" : ""]"
 

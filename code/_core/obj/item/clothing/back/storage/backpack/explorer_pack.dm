@@ -5,7 +5,7 @@ obj/item/clothing/back/storage/backpack/explorer
 	dynamic_inventory_count = MAX_INVENTORY_X*2
 
 	size = MAX_INVENTORY_X*2*SIZE_2
-	container_max_size = SIZE_2
+	container_max_size = SIZE_4
 
 	weight = WEIGHT_1
 
@@ -22,12 +22,12 @@ obj/item/clothing/back/storage/backpack/explorer/loadout/miner/fill_inventory()
 	new /obj/item/clothing/feet/shoes/miner/left(src)
 	new /obj/item/clothing/hands/gloves/colored/black(src)
 	new /obj/item/clothing/hands/gloves/colored/black/left(src)
-	new /obj/item/storage/bags/mining(src)
 	new /obj/item/clothing/overwear/armor/explorer_suit(src)
-	new /obj/item/weapon/ranged/bullet/pump/combat_shotgun(src)
 	new /obj/item/clothing/belt/storage/colored/brown/filled/miner(src)
-	new /obj/item/storage/pouch/triple/brown/filled/buckshot(src)
-	new /obj/item/storage/pouch/triple/brown/filled/slug(src)
-	new /obj/item/storage/ammo/buckshot(src)
-	new /obj/item/storage/ammo/buckshot(src)
+	new /obj/item/clothing/mask/gas/mining(src)
+	new /obj/item/weapon/ranged/bullet/magazine/lmg(src)
+	new /obj/item/magazine/lmg_556/surplus(src)
+	new /obj/item/magazine/lmg_556/surplus(src)
+	new /obj/item/magazine/lmg_556/surplus(src)
+	new /obj/item/magazine/lmg_556/surplus(src)
 	return ..()

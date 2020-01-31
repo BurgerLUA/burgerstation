@@ -17,6 +17,15 @@ mob/living/advanced/proc/add_overlay(var/obj/object,var/desired_layer,var/desire
 	O.update_icon()
 	add_overlay_image(O)
 
+mob/living/advanced/proc/show_overlay(var/obj/object,var/show=TRUE)
+
+	for(var/obj/overlay/O in overlays_assoc)
+		if(O.attached_object != object)
+			continue
+		O.alpha = show ? 255 : 0
+
+	return TRUE
+
 mob/living/advanced/proc/remove_overlay(var/atom/A)
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != A)

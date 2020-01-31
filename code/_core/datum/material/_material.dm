@@ -20,20 +20,62 @@
 
 	icon_state_sheet = "glass"
 
-/material/metal
+	icon_state_ore = "ore_sand"
 
-/material/metal/steel
+/material/steel
 	name = "steel"
 	id = "steel"
 	color = COLOR_STEEL
 
-/material/metal/iron
+/material/iron
 	name = "iron"
 	id = "iron"
 	color = COLOR_IRON
 	icon_state_ore = "ore_iron"
 
-/material/metal/plaststeel
+/material/phoron
+	name = "phoron"
+	id = "phoron"
+	color = COLOR_PHORON
+	icon_state_ore = "ore_phoron"
+
+/material/carbon
+	name = "carbon"
+	id = "carbon"
+	color = COLOR_CARBON
+	icon_state_ore = "ore_coal"
+
+/material/gold
+	name = "gold"
+	id = "gold"
+	color = COLOR_GOLD
+	icon_state_ore = "ore_gold"
+
+/material/diamond
+	name = "diamond"
+	id = "diamond"
+	color = COLOR_DIAMOND
+	icon_state_ore = "ore_diamond"
+
+/material/silver
+	name = "silver"
+	id = "silver"
+	color = COLOR_SILVER
+	icon_state_ore = "ore_silver"
+
+/material/uranium
+	name = "uranium"
+	id = "uranium"
+	color = COLOR_URANIUM
+	icon_state_ore = "ore_uranium"
+
+/material/titanium
+	name = "titanium"
+	id = "titanium"
+	color = COLOR_TITANIUM
+	icon_state_ore = "ore_titanium"
+
+/material/plaststeel
 	name = "plaststeel"
 	id = "plaststeel"
 	color = COLOR_PLASTEEL

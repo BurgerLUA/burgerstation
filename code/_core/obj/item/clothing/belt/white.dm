@@ -17,7 +17,10 @@
 	new /obj/item/container/medicine/ointment(src)
 	return ..()
 
-
+/obj/item/clothing/belt/storage/colored/black/filled/stealth/fill_inventory()
+	new /obj/item/container/medicine/bandage(src)
+	new /obj/item/container/medicine/ointment(src)
+	return ..()
 
 /obj/item/clothing/belt/storage/colored/black/filled/security/fill_inventory()
 	new /obj/item/weapon/ranged/bullet/revolver/detective(src)
@@ -36,10 +39,20 @@
 
 /obj/item/clothing/belt/storage/colored/brown/filled/miner/fill_inventory()
 	new /obj/item/weapon/melee/tool/pickaxe(src)
+	new /obj/item/storage/bags/mining(src)
 	new /obj/item/weapon/ranged/bullet/revolver/traitor_357(src)
 	new /obj/item/magazine/clip/revolver/bullet_357(src)
 	new /obj/item/magazine/clip/revolver/bullet_357(src)
 	new /obj/item/magazine/clip/revolver/bullet_357(src)
 	new /obj/item/container/medicine/bandage(src)
 	new /obj/item/container/medicine/ointment(src)
+	return ..()
+
+
+/obj/item/clothing/belt/storage/colored/orange
+	color = "#FF6A00"
+
+
+/obj/item/clothing/belt/storage/colored/orange/filled/scientist/fill_inventory()
+	new /obj/item/weapon/melee/tool/crowbar/red(src)
 	return ..()
