@@ -311,6 +311,7 @@
 			A.update_slowdown_mul()
 			A.update_protection()
 			A.update_eyes()
+			A.update_hair()
 			update_worn_icon(I)
 
 	return TRUE
@@ -389,6 +390,9 @@
 
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0) //Removes the object from both worn and held objects, just in case.
 
+	var/was_worn = FALSE
+	//var/was_held = FALSE
+
 	var/was_removed = FALSE
 
 	if(I in held_objects)
@@ -398,6 +402,8 @@
 			if(A.held_objects)
 				A.held_objects -= I
 		was_removed = TRUE
+		//was_held = TRUE
+
 
 	if(I in worn_objects)
 		worn_objects -= I
@@ -406,6 +412,7 @@
 			if(A.worn_objects)
 				A.worn_objects -= I
 		was_removed = TRUE
+		was_worn = TRUE
 
 	if(was_removed)
 		I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
@@ -426,6 +433,8 @@
 				A.update_slowdown_mul()
 				A.update_protection()
 				A.update_eyes()
+				if(was_worn)
+					A.update_hair()
 
 	return I
 

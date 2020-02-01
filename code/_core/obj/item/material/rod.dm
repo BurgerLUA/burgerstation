@@ -19,7 +19,7 @@
 	if(is_floor(object))
 		var/turf/simulated/floor/T = object
 		var/area/A = T.loc
-		if(A.safe || A.singleplayer)
+		if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
 			caller.to_chat("You cannot build here!")
 			return TRUE
 

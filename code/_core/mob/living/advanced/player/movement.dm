@@ -4,7 +4,7 @@
 		if(!PLAYER_COLLISIONS)
 			return TRUE
 
-		if(area && (area.safe || area.singleplayer))
+		if(area && area.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return TRUE
 
 	return ..()

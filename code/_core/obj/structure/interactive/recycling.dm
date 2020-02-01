@@ -37,11 +37,16 @@
 
 /obj/structure/interactive/recycler/proc/recycle(var/atom/movable/O)
 
+	if(ismob(O))
+		O.force_move(placing_turf)
+		return FALSE
+
 	if(is_item(O))
 		var/obj/item/I = O
 		for(var/material_type in I.material)
 			stored_material[material_type] += I.material[material_type]
 		process_material()
+
 	qdel(O)
 
 	return TRUE

@@ -82,7 +82,7 @@
 
 		var/verb_to_use = injecting ? "inject" : "draw blood from"
 
-		if(caller != object && A3.safe)
+		if(caller != object && A3.flags_area & FLAGS_AREA_NO_DAMAGE)
 			caller.to_chat(span("notice","For some reason you can't bring yourself to [verb_to_use] \the [object]..."))
 			return FALSE
 

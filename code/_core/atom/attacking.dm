@@ -105,7 +105,7 @@
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)
 
-		if(A1.safe != A2.safe)
+		if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return FALSE
 
 	if(attack_last + get_attack_delay(src) > curtime)

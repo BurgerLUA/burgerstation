@@ -8,7 +8,7 @@
 		if(!FRIENDLY_FIRE)
 			return FALSE
 		var/area/A = get_area(src)
-		if(A && (A.safe || A.singleplayer))
+		if(A && A.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return FALSE
 
 	return ..()
@@ -19,7 +19,7 @@
 		if(!FRIENDLY_FIRE)
 			return FALSE
 		var/area/A = get_area(src)
-		if(A && (A.safe || A.singleplayer))
+		if(A && A.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return FALSE
 
 	return ..()

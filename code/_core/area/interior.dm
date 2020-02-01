@@ -11,18 +11,17 @@
 /area/interior/station
 	name = "Central Command"
 	icon_state = "centcomm"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 
 /area/interior/station/singleplayer
 	name = "Home"
 	icon_state = "solo"
-	singleplayer = TRUE
-	safe = TRUE
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SINGLEPLAYER
 
 /area/interior/ship
 	name = "\improper NSS Burger"
 	icon_state = "ship"
-	station = TRUE
-	safe = TRUE
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS
 
 /area/interior/ship/hall
 	name = "\improper Hallway"
@@ -59,11 +58,11 @@
 /area/interior/ship/dorm
 	name = "\improper Dorm"
 	icon_state = "dorm"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_SAVEZONE
 
 /area/interior/ship/cloning
 	name = "\improper Cloning"
 	icon_state = "clone"
-
 
 /area/interior/ship/cryo
 	name = "\improper Cryogenic Storage"

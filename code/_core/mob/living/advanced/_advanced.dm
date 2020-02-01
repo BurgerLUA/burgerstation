@@ -102,6 +102,26 @@
 	driving = null
 	return ..()
 
+/mob/living/advanced/proc/update_hair()
+
+	var/obj/item/organ/hair/H = labeled_organs[BODY_HAIR_HEAD]
+
+	if(!istype(H))
+		return FALSE
+
+	var/hide_hair = FALSE
+
+	for(var/obj/item/clothing/C in worn_objects)
+		if(C.hide_hair)
+			hide_hair = TRUE
+			break
+
+	world.log << "Should hide: [hide_hair]"
+	show_overlay(H,!hide_hair)
+
+	return TRUE
+
+
 /mob/living/advanced/update_eyes()
 
 	. = ..()

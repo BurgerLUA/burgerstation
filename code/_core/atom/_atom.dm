@@ -138,7 +138,7 @@
 		if(!(A1 && A2))
 			return FALSE
 
-		if(A1.safe != A2.safe)
+		if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return FALSE
 
 	return TRUE

@@ -23,7 +23,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/last_track_time = -1
 
-	var/spawn_protection = 0
+	//var/spawn_protection = 0
 
 	respawn = FALSE
 

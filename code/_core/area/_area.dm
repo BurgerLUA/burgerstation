@@ -13,10 +13,6 @@
 
 	var/sound_environment = ENVIRONMENT_GENERIC
 
-	var/safe = FALSE //Enable or disable shooting people.
-	var/singleplayer = FALSE //Set to true if you don't want players to see other players in this area.
-	var/station = FALSE //Is this a station area where people can hear station announcements?
-
 	var/map_color_r = rgb(255,0,0,255)
 	var/map_color_g = rgb(0,255,0,255)
 	var/map_color_b = rgb(0,0,255,255)
@@ -60,7 +56,7 @@
 /area/New()
 	. = ..()
 
-	if(hazard && !safe) //Safezones shouldn't have hazards, no matter what.
+	if(hazard)
 		all_areas_with_hazards += src
 
 	/*
@@ -121,8 +117,10 @@
 
 		var/mob/living/advanced/player/P = enterer
 
+		/*
 		if(safe)
 			P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
+		*/
 
 		if(!players_inside)
 			players_inside = list()
@@ -130,7 +128,7 @@
 		if(!(enterer in players_inside))
 			players_inside += enterer
 
-		if(singleplayer)
+		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = INVISIBILITY_NO_PLAYERS
 
 	if(is_mob(enterer))
@@ -168,7 +166,7 @@
 		var/mob/living/advanced/player/P = exiter
 		if(players_inside)
 			players_inside -= exiter
-		if(singleplayer)
+		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = initial(P.see_invisible)
 
 	return TRUE

@@ -46,7 +46,7 @@ var/global/saved_icons = 0
 
 	var/area/A = loc
 
-	if(!A.safe)
+	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
 		if(!destruction_turf)
 			if(desired_loc && desired_loc.type != src.type && is_floor(desired_loc))
 				destruction_turf = desired_loc.type
@@ -66,7 +66,7 @@ var/global/saved_icons = 0
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.safe)
+	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
 		return FALSE
 
 	return TRUE

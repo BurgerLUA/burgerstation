@@ -1,3 +1,13 @@
+mob/living/advanced/player/proc/can_save(var/area/A)
+	if(!client)
+		return FALSE
+
+	if(!A || !(A.flags_area & FLAGS_AREA_SAVEZONE))
+		return FALSE
+
+	var/obj/structure/interactive/bed/sleeper/S = locate() in get_turf(src).contents
+	return S && istype(S) && S.buckled
+
 mob/living/advanced/player/verb/logout()
 
 	set name = "Save and Quit"
@@ -20,11 +30,12 @@ mob/living/advanced/player/verb/logout()
 			save(null)
 			make_ghost()
 			return TRUE
-	else if(A && A.safe && client)
+	else if(can_save(A))
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
-		if(question == "Yes" && A && A.safe && client)
+		if(question == "Yes" && can_save(A))
 			save()
 			make_ghost()
+			qdel(src)
 			return TRUE
 	else
 		src.to_chat(span("danger","You cannot save and quit here! Find an area with a suitable wishgranter first!"))

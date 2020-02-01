@@ -45,7 +45,7 @@
 		var/mob/living/advanced/A2 = object
 		var/area/A3 = get_area(object)
 
-		if(A1 != A2 && A3.safe)
+		if(A1 != A2 && A3.flags_area & FLAGS_AREA_NO_DAMAGE)
 			A1.to_chat(span("notice","For some reason you can't bring yourself to feed [A2] the delicious [src.name]..."))
 			return FALSE
 

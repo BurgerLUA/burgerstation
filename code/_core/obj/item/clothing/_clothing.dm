@@ -37,7 +37,7 @@
 	)
 
 	var/list/protected_limbs = list()
-	var/list/hide_limbs = list()
+	var/hide_hair = FALSE
 
 	var/list/protection_cold = list()
 	var/list/protection_heat = list()

@@ -217,7 +217,7 @@
 	var/area/A = get_area(L)
 	var/area/starting_area = get_area(start_turf)
 
-	if(A && A.safe && !starting_area.safe)
+	if(A && A.flags_area & FLAGS_AREA_NO_DAMAGE && !starting_area.flags_area & FLAGS_AREA_NO_DAMAGE)
 		return FALSE
 
 	if(!true_sight && L.is_sneaking)

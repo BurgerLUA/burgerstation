@@ -12,6 +12,9 @@
 /obj/disposals_container/Destroy()
 
 	for(var/atom/movable/M in contents)
+		if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
+			M.force_move(get_turf(src))
+			continue
 		var/list/offset = direction_to_pixel_offset(pick(DIRECTIONS_ALL))
 		M.throw_self(M,null,null,null,offset[1]*10,offset[2]*10)
 

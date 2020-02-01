@@ -94,7 +94,7 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 
 	if(text_type == TEXT_TALK || text_type == TEXT_YELL)
 		var/area/A = get_area(source)
-		if(A && !A.singleplayer)
+		if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
 			new/obj/chat_text(source,text_to_say)
 
 

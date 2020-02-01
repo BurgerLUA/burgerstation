@@ -9,7 +9,9 @@
 
 	dyeable = TRUE
 
-	worn_layer = LAYER_MOB_CLOTHING_BEFORE_EYE
+	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER
+
+	hide_hair = TRUE
 
 /obj/item/clothing/head/hood/skimask/black
 	color = COLOR_BLACK

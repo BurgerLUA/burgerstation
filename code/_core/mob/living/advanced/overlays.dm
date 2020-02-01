@@ -19,10 +19,11 @@ mob/living/advanced/proc/add_overlay(var/obj/object,var/desired_layer,var/desire
 
 mob/living/advanced/proc/show_overlay(var/obj/object,var/show=TRUE)
 
+
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != object)
 			continue
-		O.alpha = show ? 255 : 0
+		update_overlay_direct(O,desired_alpha= show ? 255 : 0)
 
 	return TRUE
 
@@ -59,7 +60,7 @@ mob/living/advanced/proc/remove_overlay_image(var/obj/overlay/O)
 	overlays_assoc -= O
 	qdel(I)
 
-mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0)
+mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255)
 
 	remove_overlay_image(O)
 
@@ -78,6 +79,7 @@ mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_lay
 
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
+	O.alpha = desired_alpha
 	O.update_icon()
 
 	add_overlay_image(O)

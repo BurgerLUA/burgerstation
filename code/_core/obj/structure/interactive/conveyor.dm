@@ -74,12 +74,12 @@
 		var/obj/structure/interactive/conveyor/C = locate() in desired_turf.contents
 		if(C)
 			for(var/atom/movable/M in desired_turf.contents)
-				if(M.anchored || M.grabbing_hand)
+				if(M.anchored || M.grabbing_hand || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 					continue
 				return TRUE
 
 		for(var/atom/movable/M in loc.contents)
-			if(M.anchored || M.next_conveyor > curtime || (is_living(M) && M.move_delay > -1) || M.grabbing_hand)
+			if(M.anchored || M.grabbing_hand || M.next_conveyor > curtime || (is_living(M) && M.move_delay > -1))
 				continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
 			M.Move(desired_turf,silent=TRUE)
