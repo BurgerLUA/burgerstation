@@ -76,6 +76,10 @@
 			for(var/atom/movable/M in desired_turf.contents)
 				if(M.anchored || M.grabbing_hand || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 					continue
+				if(istype(M,/obj/structure/interactive/crate))
+					var/obj/structure/interactive/crate/C2 = M
+					if(C2.open)
+						continue
 				return TRUE
 
 		for(var/atom/movable/M in loc.contents)

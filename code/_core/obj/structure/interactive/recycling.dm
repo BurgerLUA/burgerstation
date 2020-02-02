@@ -35,19 +35,23 @@
 	recycle(O)
 	return ..()
 
-/obj/structure/interactive/recycler/proc/recycle(var/atom/movable/O)
-
-	if(ismob(O))
-		O.force_move(placing_turf)
-		return FALSE
+/obj/structure/interactive/recycler/proc/recycle(var/atom/movable/O,var/process = TRUE)
 
 	if(is_item(O))
 		var/obj/item/I = O
 		for(var/material_type in I.material)
 			stored_material[material_type] += I.material[material_type]
-		process_material()
 
-	qdel(O)
+		for(var/obj/item/I2 in I.contents) //Non-items will be deleted anyways.
+			recycle(I2,FALSE)
+
+		if(process)
+			process_material()
+
+		qdel(O)
+
+	else
+		O.force_move(placing_turf)
 
 	return TRUE
 

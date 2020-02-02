@@ -9,7 +9,7 @@
 	var/size = SIZE_1
 	var/weight = WEIGHT_1
 
-	var/list/material = list()
+	var/list/material = list() //Stored materials
 
 	var/value = 1 //Value in whatever currency this world uses. Used for buying and selling items.
 
