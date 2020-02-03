@@ -44,9 +44,9 @@
 	dynamic_inventory_count = 4
 
 /obj/item/storage/briefcase/syndicate/rifle/fill_inventory()
-	new /obj/item/weapon/ranged/bullet/magazine/assault_rifle(src)
+	new /obj/item/weapon/ranged/bullet/magazine/rifle(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
-		var/obj/item/magazine/M = new /obj/item/magazine/rifle_556(src)
+		var/obj/item/magazine/M = new /obj/item/magazine/rifle_223(src)
 		M.on_spawn()
 		M.update_icon()
 	return ..()

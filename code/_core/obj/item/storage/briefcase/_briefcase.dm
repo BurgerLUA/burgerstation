@@ -11,7 +11,7 @@
 
 /obj/item/storage/briefcase/deagle
 	name = "golden eagle collector's kit"
-	desc = "A gold plated .50ae eagle handcannon. AMURICA."
+	desc = "A gold plated .50 eagle handcannon. AMURICA."
 	icon_state = "briefcase_deagle"
 
 	container_max_size = 2

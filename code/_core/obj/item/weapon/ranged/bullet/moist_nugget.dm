@@ -1,8 +1,10 @@
 /obj/item/weapon/ranged/bullet/pump/hunting_rifle
-	name = "\improper 7.62mm hunting rifle"
-	desc = "Originally Russian, now exploited and sold by proud Space Americans for use in space hunting."
-	icon = 'icons/obj/items/weapons/ranged/bolt_action.dmi'
+	name = "\improper 7.62mm Hunting Rifle"
+	desc = "COMRADE."
+	desc_extended = "Originally Russian, now exploited and used by the syndicate for use in space hunting and space liberation."
+	icon = 'icons/obj/items/weapons/ranged/rifle/hunting.dmi'
 	icon_state = "inventory"
+	value = 40
 
 	shoot_delay = 2
 

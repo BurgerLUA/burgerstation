@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/laser/freezegun
 	name = "freeze ray"
-	icon = 'icons/obj/items/weapons/ranged/freezegun.dmi'
+	icon = 'icons/obj/items/weapons/ranged/laser/freezegun.dmi'
 
 	projectile = /obj/projectile/bullet/laser
 	damage_type = "freezegun"

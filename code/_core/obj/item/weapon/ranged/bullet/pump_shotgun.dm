@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/pump/pump_shotgun
-	name = "12 gauge pump shotgun"
+	name = "12g Civilian Shotgun"
 	desc = "A classic pump action shotgun with the stock and barrel shortened."
-	icon = 'icons/obj/items/weapons/ranged/basic_shotgun.dmi'
+	icon = 'icons/obj/items/weapons/ranged/shotgun/regular.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 4

@@ -1,9 +1,10 @@
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle
-	name = "\improper 5.56mm Mauler assault rifle"
-	desc = "The only rifle you'll ever need."
-	desc_extended = "The Mauler 5.56mm assault rifle is THE assault rifle for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
-	icon = 'icons/obj/items/weapons/ranged/machine.dmi'
+/obj/item/weapon/ranged/bullet/magazine/rifle
+	name = "\improper .223 MMR"
+	desc = "Vanilla, but still powerful."
+	desc_extended = "The .223 Mauler Marksman Rifle is THE assault rifle for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
+	icon = 'icons/obj/items/weapons/ranged/rifle/223.dmi'
 	icon_state = "inventory"
+	value = 80
 
 	shoot_delay = 1
 
@@ -11,7 +12,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "5.56mm"
+	bullet_type = ".223"
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 
@@ -24,31 +25,10 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.3
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
-
-
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup
-	name = "\improper 5.56mm bullpup assault rifle"
-	icon = 'icons/obj/items/weapons/ranged/rifle.dmi'
-	icon_state = "inventory"
-
-	shoot_delay = 1.5
-
-	view_punch = 7
-
-	size = SIZE_3
-	weight = WEIGHT_4
-
-	can_wield = FALSE
-
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup/get_static_spread() //Base spread
-	return 0.05
-
-/obj/item/weapon/ranged/bullet/magazine/assault_rifle/bullpup/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

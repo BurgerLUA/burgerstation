@@ -26,7 +26,7 @@
 
 /obj/item/bullet/pistol_50ae/
 	name = "\improper .50 action express"
-	desc = "For pistols that require .50ae."
+	desc = "For pistols that require .50."
 	id = ".50"
 	icon = 'icons/obj/items/bullet/50ae.dmi'
 
@@ -35,6 +35,20 @@
 
 	projectile = /obj/projectile/bullet/revolver/
 	damage_type = ".50_pistol"
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+/obj/item/bullet/pistol_12mm/
+	name = "\improper 12.7mm round"
+	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo."
+	id = "12.7mm"
+	icon = 'icons/obj/items/bullet/12mm.dmi'
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	projectile = /obj/projectile/bullet/revolver
+	damage_type = "12.7mm"
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 

@@ -6,8 +6,7 @@
 	bullet_count_max = 4
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/gyrojet,
-		/obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle
+		/obj/item/weapon/ranged/bullet/magazine/gyrojet
 	)
 
 	ammo = /obj/item/bullet/gyrojet

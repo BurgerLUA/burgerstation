@@ -1,15 +1,18 @@
 /obj/item/weapon/ranged/bullet/magazine/lmg
-	name = "\improper 5.56mm large machinegun"
-	icon = 'icons/obj/items/weapons/ranged/lmg.dmi'
+	name = "\improper .223 LMG"
+	desc = "Atatatatatatata."
+	desc_extended = "The .223 Calibre Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time."
+	icon = 'icons/obj/items/weapons/ranged/rifle/lmg.dmi'
 	icon_state = "inventory"
+	value = 200
 
-	shoot_delay = 3
+	shoot_delay = 2
 
 	automatic = TRUE
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "5.56"
+	bullet_type = ".223"
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 

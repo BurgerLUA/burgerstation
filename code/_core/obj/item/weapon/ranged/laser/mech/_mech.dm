@@ -60,7 +60,7 @@
 	charge_cost = 500
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = "5.56"
+	damage_type = ".223"
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 

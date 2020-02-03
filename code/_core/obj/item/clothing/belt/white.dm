@@ -9,7 +9,7 @@
 
 
 /obj/item/clothing/belt/storage/colored/black/filled/pmc/fill_inventory()
-	new /obj/item/weapon/ranged/bullet/magazine/pistol/secpistol/special(src)
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod(src)
 	new /obj/item/magazine/pistol_45(src)
 	new /obj/item/magazine/pistol_45(src)
 	new /obj/item/magazine/pistol_45(src)

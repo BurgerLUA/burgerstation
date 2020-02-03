@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/commander
 	name = "\improper .44 Commander Autorevolver"
 	desc = "Semi-automatic!"
-	icon = 'icons/obj/items/weapons/ranged/commander.dmi'
+	icon = 'icons/obj/items/weapons/ranged/revolver/44.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 5

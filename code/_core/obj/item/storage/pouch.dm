@@ -38,11 +38,11 @@
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
 
-/obj/item/storage/pouch/double/black/filled/rifle_556/fill_inventory()
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
-	new /obj/item/magazine/rifle_556/surplus(src)
+/obj/item/storage/pouch/double/black/filled/rifle_223/fill_inventory()
+	new /obj/item/magazine/rifle_223/surplus(src)
+	new /obj/item/magazine/rifle_223/surplus(src)
+	new /obj/item/magazine/rifle_223/surplus(src)
+	new /obj/item/magazine/rifle_223/surplus(src)
 	return ..()
 
 /obj/item/storage/pouch/double/black/filled/cell/fill_inventory()
@@ -124,12 +124,12 @@
 	return ..()
 
 /obj/item/storage/pouch/triple/brown/filled/pistol/fill_inventory()
-	new /obj/item/magazine/pistol_9mm_2(src)
-	new /obj/item/magazine/pistol_9mm_2(src)
-	new /obj/item/magazine/pistol_9mm_2(src)
-	new /obj/item/magazine/pistol_9mm_2(src)
-	new /obj/item/magazine/pistol_9mm_2(src)
-	new /obj/item/magazine/pistol_9mm_2(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
 	return ..()
 
 

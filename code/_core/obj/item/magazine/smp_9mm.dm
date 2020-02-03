@@ -1,6 +1,6 @@
 /obj/item/magazine/smp_9mm
 	name = "\improper 9mm smp magazine"
-	bullet_type = ".50ae"
+	bullet_type = ".50"
 	icon = 'icons/obj/items/magazine/9mmsmp.dmi'
 	icon_state = "smp"
 	bullet_count_max = 27

@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/laser/hybrid/carbine
 	name = "hybrid laser carbine"
-	icon = 'icons/obj/items/weapons/ranged/carbine.dmi'
+	icon = 'icons/obj/items/weapons/ranged/laser/carbine.dmi'
 
 	projectile_kill = /obj/projectile/bullet/laser/
 	projectile_stun = /obj/projectile/bullet/laser/

@@ -1,6 +1,6 @@
-/damagetype/ranged/bullet/rifle_556
-	name = "5.56mm rifle"
-	id = "5.56"
+/damagetype/ranged/bullet/rifle_223
+	name = ".223 rifle"
+	id = ".223"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -14,9 +14,9 @@
 		PIERCE = ARMOR_C
 	)
 
-/damagetype/ranged/bullet/rifle_556/surplus
-	name = "5.56mm rifle surplus"
-	id = "5.56_surplus"
+/damagetype/ranged/bullet/rifle_223/surplus
+	name = ".223 rifle surplus"
+	id = ".223_surplus"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

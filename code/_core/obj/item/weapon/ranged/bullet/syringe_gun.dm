@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/syringe_rifle
 	name = "\improper syringe rifle"
-	icon = 'icons/obj/items/weapons/ranged/syringe_rifle.dmi'
+	icon = 'icons/obj/items/weapons/ranged/misc/syringe.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 8

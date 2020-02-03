@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/laser/recharging/captain
 	name = "captain's laser pistol"
-	icon = 'icons/obj/items/weapons/ranged/captain_laser.dmi'
+	icon = 'icons/obj/items/weapons/ranged/laser/captain.dmi'
 
 	projectile = /obj/projectile/bullet/laser
 	damage_type = "laser_carbine_kill"

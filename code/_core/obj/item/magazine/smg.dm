@@ -23,14 +23,14 @@
 
 
 /obj/item/magazine/smg_22/
-	name = "\improper .22 smg magazine"
+	name = "\improper .22LR smg magazine"
 	bullet_type = ".22"
 	icon = 'icons/obj/items/magazine/22smg.dmi'
 	icon_state = "22"
 	bullet_count_max = 28*2
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/bull
+		/obj/item/weapon/ranged/bullet/magazine/wasp
 	)
 
 	ammo = /obj/item/bullet/revolver_22

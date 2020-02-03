@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg
 	name = ".45 bullpup submachine gun"
-	icon = 'icons/obj/items/weapons/ranged/smg.dmi'
+	icon = 'icons/obj/items/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 20
@@ -42,8 +42,8 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw
-	name = "\improper 9mm PDW"
-	icon = 'icons/obj/items/weapons/ranged/smg2.dmi'
+	name = "\improper .25 PDW"
+	icon = 'icons/obj/items/weapons/ranged/smg/25.dmi'
 	icon_state = "inventory"
 
 	automatic = TRUE
@@ -54,7 +54,7 @@
 	view_punch = 4
 
 	bullet_count_max = 1 //One in the chamber
-	bullet_type = "9mm"
+	bullet_type = ".25"
 
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 
@@ -70,15 +70,15 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical
-	name = ".45 silent syndicate submachine gun"
-	icon = 'icons/obj/items/weapons/ranged/c20r.dmi'
+	name = "8mm silent syndicate submachine gun"
+	icon = 'icons/obj/items/weapons/ranged/smg/8mm.dmi'
 	icon_state = "inventory"
 	shoot_delay = 3
 	view_punch = 4
 	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 
-/obj/item/weapon/ranged/bullet/magazine/bull
-	name = ".22 bull submachine gun"
+/obj/item/weapon/ranged/bullet/magazine/wasp
+	name = ".22LR Wasp SMG"
 	desc = "Wait is that chambered in .22?"
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
@@ -89,7 +89,7 @@
 	override_icon_state = TRUE
 	automatic = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/bull/update_icon()
+/obj/item/weapon/ranged/bullet/magazine/wasp/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
 		icon_state = "[initial(icon_state)]_[ceiling(length(M.stored_bullets)/2,4)]"
@@ -98,8 +98,8 @@
 
 	..()
 
-/obj/item/weapon/ranged/bullet/magazine/bull/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/wasp/get_static_spread() //Base spread
 	return 0.05
 
-/obj/item/weapon/ranged/bullet/magazine/bull/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/wasp/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

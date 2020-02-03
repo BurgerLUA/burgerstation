@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/heavy_sniper
-	name = "\improper .50 AT sniper rifle"
+	name = "\improper .50 BFSR"
 	desc = "For when you want to be an asshole at an extended range."
-	icon = 'icons/obj/items/weapons/ranged/heavy_sniper.dmi'
+	icon = 'icons/obj/items/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 31

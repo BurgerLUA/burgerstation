@@ -27,26 +27,26 @@
 
 	misfire_chance = 1
 
-/obj/item/bullet/rifle_556
-	name = "\improper 5.56mm bullet"
-	desc = "For rifles and machineguns that requre 5.56mm"
-	id = "5.56"
-	icon = 'icons/obj/items/bullet/556.dmi'
+/obj/item/bullet/rifle_223
+	name = "\improper .223 rifle bullet"
+	desc = "For rifles and machineguns that requre .223."
+	id = ".223"
+	icon = 'icons/obj/items/bullet/223.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = "5.56"
+	damage_type = ".223"
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
 
-/obj/item/bullet/rifle_556/surplus
-	name = "\improper 5.56mm surplus bullet"
-	desc = "For rifles and machineguns that requre 5.56mm"
-	icon = 'icons/obj/items/bullet/556_surplus.dmi'
+/obj/item/bullet/rifle_223/surplus
+	name = "\improper surplus .223 rifle bullet"
+	desc = "For rifles and machineguns that requre .223"
+	icon = 'icons/obj/items/bullet/223_surplus.dmi'
 
-	damage_type = "5.56_surplus"
+	damage_type = "223_surplus"
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT * SURPLUS_PENALTY

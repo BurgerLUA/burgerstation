@@ -1,7 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/gyrojet
-	name = "\improper 20mm gyropistol"
-	icon = 'icons/obj/items/weapons/ranged/gyrojet_pistol.dmi'
+	name = "\improper 20mm GyroPistol"
+	desc = "Overdesigned and a little overpowered."
+	desc = "A prototype syndicate pistol that uses minature rockets as projectiles."
+	icon = 'icons/obj/items/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
+	value = 140
 
 	shoot_delay = 8
 
@@ -26,6 +29,7 @@
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.3 - (0.3 * L.get_skill_power(SKILL_RANGED))
 
+/*
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle
 	name = "\improper 20mm gyrorifle"
 	icon = 'icons/obj/items/weapons/ranged/gyrojet_rifle.dmi'
@@ -53,3 +57,4 @@
 
 /obj/item/weapon/ranged/bullet/magazine/gyrojet/rifle/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.2 - (0.2 * L.get_skill_power(SKILL_RANGED))
+*/
