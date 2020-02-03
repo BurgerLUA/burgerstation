@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/recharging/captain
+/obj/item/weapon/ranged/energy/recharging/captain
 	name = "captain's laser pistol"
 	icon = 'icons/obj/items/weapons/ranged/laser/captain.dmi'
 
@@ -20,7 +20,7 @@
 
 	view_punch = 4
 
-/obj/item/weapon/ranged/laser/recharging/captain/update_icon()
+/obj/item/weapon/ranged/energy/recharging/captain/update_icon()
 
 	icon_state = initial(icon_state)
 	icon = initial(icon)

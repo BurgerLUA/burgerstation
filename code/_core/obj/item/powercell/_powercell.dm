@@ -39,7 +39,7 @@
 		return FALSE
 
 	if(is_laser_gun(object) && is_living(caller))
-		var/obj/item/weapon/ranged/laser/L = object
+		var/obj/item/weapon/ranged/energy/L = object
 		var/mob/living/L2 = caller
 		var/amount_to_restore = min(charge_current,L.charge_max - L.charge_current)
 

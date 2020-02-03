@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/hybrid
+/obj/item/weapon/ranged/energy/hybrid
 	var/mode = 0
 	//0 = stun
 	//1 = kill
@@ -15,7 +15,7 @@
 	var/list/shoot_sounds_kill = list()
 	var/list/shoot_sounds_stun = list()
 
-/obj/item/weapon/ranged/laser/hybrid/New(var/desired_loc)
+/obj/item/weapon/ranged/energy/hybrid/New(var/desired_loc)
 	. = ..()
 
 	//Set to stun.
@@ -29,7 +29,7 @@
 
 	return .
 
-/obj/item/weapon/ranged/laser/hybrid/click_self(var/mob/caller)
+/obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller)
 
 	mode = !mode
 	caller.to_chat(span("notice","You switch \the [src] to [mode ? "kill" : "stun"]."))

@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/rifle
+/obj/item/weapon/ranged/energy/rifle
 	name = "laser rifle"
 	icon = 'icons/obj/items/weapons/ranged/modular_laser.dmi'
 
@@ -23,12 +23,12 @@
 
 	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
 
-/obj/item/weapon/ranged/laser/rifle/New(var/desired_loc)
+/obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
 	update_icon()
 	return .
 
-/obj/item/weapon/ranged/laser/rifle/update_icon()
+/obj/item/weapon/ranged/energy/rifle/update_icon()
 
 	var/ammo_string = "ammo[floor( (charge_current/charge_max)*7 )]"
 
@@ -46,7 +46,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/laser/rifle/hardlight
+/obj/item/weapon/ranged/energy/rifle/hardlight
 	name = "hardlight laser rifle"
 	bullet_color = "#FFFF00"
 	damage_type = "laser_rifle_hardlight"
@@ -58,7 +58,7 @@
 
 	view_punch = 8
 
-/obj/item/weapon/ranged/laser/rifle/xray
+/obj/item/weapon/ranged/energy/rifle/xray
 	name = "xray laser rifle"
 	bullet_color = "#00FF00"
 	damage_type = "laser_rifle_xray"

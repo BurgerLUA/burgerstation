@@ -1,5 +1,5 @@
-/damagetype/ranged/bullet/rifle_762
-	name = "7.62mm rifle"
+/damagetype/ranged/bullet/sniper_762
+	name = "7.62mm sniper"
 	id = "7.62"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -14,8 +14,8 @@
 		PIERCE = ARMOR_A
 	)
 
-/damagetype/ranged/bullet/rifle_762/surplus
-	name = "7.62mm rifle surplus"
+/damagetype/ranged/bullet/sniper_762/surplus
+	name = "7.62mm sniper surplus"
 	id = "7.62_surplus"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

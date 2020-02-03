@@ -56,7 +56,7 @@
 	return istype(A,/obj/item/weapon/ranged/bullet/)
 
 /proc/is_laser_gun(var/atom/A)
-	return istype(A,/obj/item/weapon/ranged/laser/)
+	return istype(A,/obj/item/weapon/ranged/energy/)
 
 /proc/is_magazine_gun(var/atom/A)
 	return istype(A,/obj/item/weapon/ranged/bullet/magazine/)

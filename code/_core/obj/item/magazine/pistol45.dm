@@ -8,8 +8,8 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/military,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/military/mod
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
 	)
 
 	ammo = /obj/item/bullet/pistol_45

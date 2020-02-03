@@ -4,7 +4,7 @@
 
 /mob/living/advanced/npc/arena_guard/Initialize()
 	. = ..()
-	var/obj/item/weapon/W1 = new /obj/item/weapon/ranged/laser/unlimited(src.loc)
+	var/obj/item/weapon/W1 = new /obj/item/weapon/ranged/energy/unlimited(src.loc)
 	pickup(W1)
 	return .
 

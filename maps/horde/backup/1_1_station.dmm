@@ -567,7 +567,7 @@
 "lr" = (/obj/decal/directions/security{icon_state = "right"; dir = 1},/obj/decal/directions/engineering{icon_state = "right"; dir = 1},/obj/decal/directions/med{icon_state = "right"; dir = 1},/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/interior/ship/hall/dorms)
 "lt" = (/obj/structure/interactive/conveyor/inverted{icon_state = "conveyor_inverted"; dir = 10},/turf/simulated/floor/plating,/area/interior/ship/hall/dorms)
 "lu" = (/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 4},/turf/simulated/floor/plating,/area/interior/ship/hall/dorms)
-"lA" = (/obj/structure/smooth/rack,/obj/structure/interactive/shop,/obj/item/magazine/rifle_556,/turf/simulated/floor/tile/overlapping/dark,/area/interior/ship/engineering)
+"lA" = (/obj/structure/smooth/rack,/obj/structure/interactive/shop,/obj/item/magazine/rifle_223,/turf/simulated/floor/tile/overlapping/dark,/area/interior/ship/engineering)
 "lB" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/transit/dropship/charlie/station)
 "lC" = (/turf/simulated/wall/metal/reinforced,/area/interior/ship/medical)
 "lG" = (/obj/structure/interactive/conveyor/shuttle{icon_state = "conveyor"; dir = 4},/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/transit/dropship/charlie/station)

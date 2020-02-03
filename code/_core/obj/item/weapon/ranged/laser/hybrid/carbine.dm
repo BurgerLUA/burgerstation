@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/hybrid/carbine
+/obj/item/weapon/ranged/energy/hybrid/carbine
 	name = "hybrid laser carbine"
 	icon = 'icons/obj/items/weapons/ranged/laser/carbine.dmi'
 
@@ -26,7 +26,7 @@
 
 	view_punch = 6
 
-/obj/item/weapon/ranged/laser/hybrid/carbine/update_icon()
+/obj/item/weapon/ranged/energy/hybrid/carbine/update_icon()
 
 	icon_state = initial(icon_state)
 	var/icon_state_held = "held"
@@ -47,8 +47,8 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/laser/hybrid/carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/energy/hybrid/carbine/get_static_spread() //Base spread
 	return 0.05
 
-/obj/item/weapon/ranged/laser/hybrid/carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/hybrid/carbine/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

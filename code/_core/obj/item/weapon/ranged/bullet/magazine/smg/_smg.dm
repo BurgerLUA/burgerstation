@@ -1,0 +1,1 @@
+/obj/item/weapon/ranged/bullet/magazine/smg/

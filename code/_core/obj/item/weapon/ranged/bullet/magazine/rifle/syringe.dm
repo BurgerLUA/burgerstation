@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/bullet/magazine/syringe_rifle
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe
 	name = "\improper syringe rifle"
 	icon = 'icons/obj/items/weapons/ranged/misc/syringe.dmi'
 	icon_state = "inventory"
@@ -26,7 +26,7 @@
 
 	requires_cock_each_shot = TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/syringe_rifle/update_icon()
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
 		var/stored_bullets = length(M.stored_bullets)
@@ -39,8 +39,8 @@
 
 	..()
 
-/obj/item/weapon/ranged/bullet/magazine/syringe_rifle/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_static_spread() //Base spread
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/syringe_rifle/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))

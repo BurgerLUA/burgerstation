@@ -25,7 +25,7 @@
 	new /obj/item/clothing/belt/storage/colored/black/filled/security/(src)
 	new /obj/item/storage/pouch/double/black/filled/cell(src)
 	new /obj/item/storage/pouch/double/black/filled/cell(src)
-	new /obj/item/weapon/ranged/laser/hybrid/carbine(src)
+	new /obj/item/weapon/ranged/energy/hybrid/carbine(src)
 	new /obj/item/powercell/industrial(src)
 	new /obj/item/powercell/industrial(src)
 	return ..()

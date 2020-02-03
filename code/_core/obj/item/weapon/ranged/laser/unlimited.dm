@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/unlimited
+/obj/item/weapon/ranged/energy/unlimited
 	name = "nut gun"
 	icon = 'icons/obj/items/weapons/ranged/laser.dmi'
 

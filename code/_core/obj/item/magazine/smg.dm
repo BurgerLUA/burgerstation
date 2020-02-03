@@ -30,7 +30,7 @@
 	bullet_count_max = 28*2
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/wasp
+		/obj/item/weapon/ranged/bullet/magazine/smg/wasp
 	)
 
 	ammo = /obj/item/bullet/revolver_22

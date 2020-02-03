@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/bullet/magazine/smp
+/obj/item/weapon/ranged/bullet/magazine/smg/handheld
 	name = "\improper 9mm SMP"
 	icon = 'icons/obj/items/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
@@ -22,8 +22,8 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
-/obj/item/weapon/ranged/bullet/magazine/smp/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread() //Base spread
 	return 0.03
 
-/obj/item/weapon/ranged/bullet/magazine/smp/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))

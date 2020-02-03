@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/freezegun
+/obj/item/weapon/ranged/energy/freezegun
 	name = "freeze ray"
 	icon = 'icons/obj/items/weapons/ranged/laser/freezegun.dmi'
 
@@ -22,7 +22,7 @@
 
 	override_icon_state = TRUE
 
-/obj/item/weapon/ranged/laser/freezegun/update_icon()
+/obj/item/weapon/ranged/energy/freezegun/update_icon()
 
 	if(charge_cost < charge_current)
 		icon_state = "inventory_0"

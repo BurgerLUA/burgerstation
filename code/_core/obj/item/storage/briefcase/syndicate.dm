@@ -16,7 +16,7 @@
 	dynamic_inventory_count = 3
 
 /obj/item/storage/briefcase/syndicate/sniper/fill_inventory()
-	new /obj/item/weapon/ranged/bullet/magazine/heavy_sniper(src)
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/sniper_50(src)
 		M.on_spawn()
@@ -74,7 +74,7 @@
 	dynamic_inventory_count = 3
 
 /obj/item/storage/briefcase/syndicate/autoshotgun/fill_inventory()
-	new /obj/item/weapon/ranged/bullet/magazine/autoshotgun(src)
+	new /obj/item/weapon/ranged/bullet/magazine/shotgun/bull(src)
 	for(var/i=2,i<=dynamic_inventory_count,i++)
 		var/obj/item/magazine/M = new /obj/item/magazine/shotgun_auto(src)
 		M.on_spawn()

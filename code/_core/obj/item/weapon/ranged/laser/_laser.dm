@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser
+/obj/item/weapon/ranged/energy
 	var/charge_max = 1000
 	var/charge_current = 1000
 	var/charge_cost = 100
@@ -7,22 +7,22 @@
 
 	var/mech_only = FALSE
 
-/obj/item/weapon/ranged/laser/New(var/desired_loc)
+/obj/item/weapon/ranged/energy/New(var/desired_loc)
 	charge_cost = floor(charge_cost)
 	return ..()
 
-/obj/item/weapon/ranged/laser/on_spawn()
+/obj/item/weapon/ranged/energy/on_spawn()
 	charge_current = charge_max
 	return ..()
 
-/obj/item/weapon/ranged/laser/get_ammo_count()
+/obj/item/weapon/ranged/energy/get_ammo_count()
 	return floor(charge_current/charge_cost)
 
-/obj/item/weapon/ranged/laser/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/energy/handle_ammo(var/mob/caller,var/bullet_position=1)
 	charge_current -= charge_cost
 	return null
 
-/obj/item/weapon/ranged/laser/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/energy/can_gun_shoot(var/mob/caller)
 
 	if(!..())
 		return FALSE

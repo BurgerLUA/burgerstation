@@ -22,6 +22,6 @@ obj/item/clothing/back/storage/backpack/medical
 	new /obj/item/clothing/glasses/medical_hud(src)
 	new /obj/item/storage/pouch/double/lifesaver/filled(src)
 	new /obj/item/storage/pouch/double/lifesaver/filled(src)
-	new /obj/item/weapon/ranged/bullet/magazine/syringe_rifle(src)
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/syringe(src)
 	new /obj/item/storage/pouch/triple/syringe/filled(src)
 	return ..()

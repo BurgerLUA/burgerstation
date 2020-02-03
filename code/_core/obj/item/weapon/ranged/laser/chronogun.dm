@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/chronogun
+/obj/item/weapon/ranged/energy/chronogun
 	name = "chrono gun"
 	icon = 'icons/obj/items/weapons/ranged/laser/chronogun.dmi'
 

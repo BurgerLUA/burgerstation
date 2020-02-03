@@ -59,7 +59,7 @@
 	return ..()
 
 /mob/living/simple/npc/turret/laser
-	stored_weapon = /obj/item/weapon/ranged/laser/unlimited
+	stored_weapon = /obj/item/weapon/ranged/energy/unlimited
 
 /mob/living/simple/npc/turret/port/laser
-	stored_weapon = /obj/item/weapon/ranged/laser/unlimited
+	stored_weapon = /obj/item/weapon/ranged/energy/unlimited

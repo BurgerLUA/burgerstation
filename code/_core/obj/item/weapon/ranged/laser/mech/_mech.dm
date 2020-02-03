@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/laser/mech
+/obj/item/weapon/ranged/energy/mech
 	name = "mech gun"
 	icon = 'icons/obj/vehicles/mech_equipment.dmi'
 
@@ -19,14 +19,14 @@
 
 	mech_only = TRUE
 
-/obj/item/weapon/ranged/laser/mech/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
 
 	if(!istype(caller,/mob/living/vehicle/))
 		return FALSE
 
 	return ..()
 
-/obj/item/weapon/ranged/laser/mech/smg/mk1
+/obj/item/weapon/ranged/energy/mech/smg/mk1
 	name = "mk1 machine gun"
 	icon_state = "bullet_mk1"
 	bullet_color = "#FFFFFF"
@@ -46,7 +46,7 @@
 
 	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
 
-/obj/item/weapon/ranged/laser/mech/smg/mk2
+/obj/item/weapon/ranged/energy/mech/smg/mk2
 	name = "mk2 machine gun"
 	icon_state = "bullet_mk2"
 	bullet_color = "#FFFFFF"
@@ -66,7 +66,7 @@
 
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 
-/obj/item/weapon/ranged/laser/mech/smg/mk3
+/obj/item/weapon/ranged/energy/mech/smg/mk3
 	name = "mk3 machine gun"
 	icon_state = "bullet_mk3"
 	bullet_color = "#FFFFFF"

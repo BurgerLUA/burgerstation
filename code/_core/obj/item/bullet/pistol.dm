@@ -118,7 +118,7 @@
 
 
 /obj/item/bullet/pistol_8mm
-	name = "\improper 8mm bullet"
+	name = "\improper 8mm pistol bullet"
 	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
 	id = "8mm"
 	icon = 'icons/obj/items/bullet/8mm.dmi'
@@ -130,7 +130,7 @@
 
 
 /obj/item/bullet/pistol_8mm/hollowpoint
-	name = "\improper 8mm bullet"
+	name = "\improper hollowpoint 8mm pistol bullet"
 	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small. It's hollowpoint for extra punch, but poor penetration. Critical hits on headshots."
 	id = "8mm"
 	icon = 'icons/obj/items/bullet/8mm_hollowpoint.dmi'
@@ -139,3 +139,15 @@
 	damage_type = "8mm_hp"
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+
+/obj/item/bullet/pistol_40
+	name = "\improper .40 pistol bullet"
+	desc = "For pistols that requre .40 ammo."
+	id = ".40"
+	icon = 'icons/obj/items/bullet/40.dmi'
+
+	projectile = /obj/projectile/bullet/pistol
+	damage_type = ".40"
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT

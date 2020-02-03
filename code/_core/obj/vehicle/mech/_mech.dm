@@ -42,10 +42,10 @@
 
 /mob/living/vehicle/mech/ripley/full/New(var/desired_loc)
 	..()
-	var/obj/item/weapon/ranged/laser/unlimited/U1 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/unlimited/U1 = new(src.loc)
 	attach_equipment(U1)
 
-	var/obj/item/weapon/ranged/laser/unlimited/U2 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/unlimited/U2 = new(src.loc)
 	attach_equipment(U2)
 
 
@@ -79,9 +79,9 @@
 
 /mob/living/vehicle/mech/gygax/equipped/New(var/desired_loc)
 	..()
-	var/obj/item/weapon/ranged/laser/mech/smg/mk1/U1 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
 	attach_equipment(U1)
-	var/obj/item/weapon/ranged/laser/mech/smg/mk2/U2 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/mk2/U2 = new(src.loc)
 	attach_equipment(U2)
 
 
@@ -115,7 +115,7 @@
 
 /mob/living/vehicle/mech/durand/equipped/New(var/desired_loc)
 	..()
-	var/obj/item/weapon/ranged/laser/mech/smg/mk2/U1 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/mk2/U1 = new(src.loc)
 	attach_equipment(U1)
-	var/obj/item/weapon/ranged/laser/mech/smg/mk3/U2 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/mk3/U2 = new(src.loc)
 	attach_equipment(U2)

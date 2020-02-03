@@ -1,7 +1,7 @@
-/obj/item/weapon/ranged/bullet/magazine/lmg
-	name = "\improper .223 LMG"
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg
+	name = "\improper 5.56mm LMG"
 	desc = "Atatatatatatata."
-	desc_extended = "The .223 Calibre Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time."
+	desc_extended = "The 5.56mm Calibre Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time."
 	icon = 'icons/obj/items/weapons/ranged/rifle/lmg.dmi'
 	icon_state = "inventory"
 	value = 200
@@ -12,7 +12,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = ".223"
+	bullet_type = "5.56"
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 
@@ -29,7 +29,7 @@
 	size = SIZE_4
 	weight = WEIGHT_5
 
-/obj/item/weapon/ranged/bullet/magazine/lmg/update_icon()
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()
 
 	var/modifier = "[wielded ? "_wielded" : ""][open ? "_open" : ""][stored_magazine ? "_1" : ""]"
 
@@ -47,10 +47,10 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/lmg/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.2
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/lmg/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
