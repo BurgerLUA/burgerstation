@@ -60,51 +60,71 @@
 	return TRUE
 
 
-/obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,object) > 1)
+	if(get_dist(caller,target) > 1)
+		caller.to_chat("You're too far away!")
 		return FALSE
 
-	if(is_advanced(object) && is_advanced(caller))
-		var/mob/living/advanced/A = object
-		var/mob/living/advanced/A2 = caller
-		var/list/new_x_y = A2.get_current_target_cords(params)
+	if(!target || !target.reagents)
+		caller.to_chat("You can't target this!")
+		return FALSE
 
+	var/area/A = get_area(target)
+	if(caller != target && A.flags_area & FLAGS_AREA_NO_DAMAGE) //TODO: IFF.
+		return FALSE
+
+	return TRUE
+
+
+/obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
+		object = A.get_object_to_damage(caller,params)
 
-		var/obj/item/organ/O = A.get_object_to_damage(caller,params)
+	if(can_inject(caller,object))
 
-		if(!O || !O.reagents)
-			return FALSE
+		var/real_object_name = object.name
 
-		var/area/A3 = get_area(object)
+		if(is_organ(object) && is_living(object.loc))
+			real_object_name = "[object.loc.name]'s [object.name]"
 
-		var/verb_to_use = injecting ? "inject" : "draw blood from"
+		var/transfer_amount = 0
+		if(injecting)
+			transfer_amount = inject_amount
+			caller.visible_message("\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!")
+		else
+			caller.visible_message("\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!")
+			transfer_amount = -draw_amount
 
-		if(caller != object && A3.flags_area & FLAGS_AREA_NO_DAMAGE)
-			caller.to_chat(span("notice","For some reason you can't bring yourself to [verb_to_use] \the [object]..."))
-			return FALSE
+		if(is_organ(object) && is_living(object.loc))
+			var/mob/living/L = object.loc
+			L.to_chat("You feel a tiny prick.")
+		else if(is_living(object))
+			var/mob/living/L = object
+			L.to_chat("You feel a tiny prick.")
 
-		caller.to_chat(span("notice","You begin to [verb_to_use] \the [src.name] into [caller == object ? "your" : "\the [object]'s"] [O.name]."))
+		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(3),.proc/inject,caller,object,transfer_amount)
+		PROGRESS_BAR_CONDITIONS(caller,.proc/can_inject,caller,object)
 
-		var/list/callback_list = list()
-		callback_list["target"] = O
-		callback_list["target_start_turf"] = get_turf(O)
-		callback_list["object"] = src
-		callback_list["start_turf"] = get_turf(src)
-		callback_list["injecting"] = injecting
-		add_progress_bar(caller,"inject",10,callback_list)
-		return TRUE
+
+	return TRUE
+
+/obj/item/container/syringe/proc/inject(var/mob/caller,var/atom/object,var/amount=5)
 
 	if(object.reagents)
-
-		if(injecting)
-			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,5)
-			caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
-		else
-			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,5)
-			caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
+		if(amount > 0)
+			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount)
+			if(transfer_amount)
+				caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
+		else if(amount < 0)
+			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount)
+			if(transfer_amount)
+				caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
 
 		return TRUE
 

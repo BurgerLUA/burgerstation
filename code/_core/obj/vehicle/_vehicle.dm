@@ -107,16 +107,30 @@
 
 	return ..()
 
+/mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
+
+	if(length(passengers) >= passengers_max)
+		caller.to_chat("\The [src.name] is full!")
+		return FALSE
+
+	if(!is_advanced(caller))
+		caller.to_chat("You can't get inside \the [src.name]!")
+		return FALSE
+
+	if(get_dist(src,caller) > 1)
+		caller.to_chat("You're too far away!")
+		return FALSE
+
+	return TRUE
+
 
 /mob/living/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
 
-	if(!is_living(caller) || get_dist(caller,src) > 1)
-		return ..()
+	if(!can_enter_vehicle(caller))
+		return FALSE
 
-	var/list/callback_list = list()
-	callback_list["vehicle"] = src
-	callback_list["start_turf"] = get_turf(caller)
-	add_progress_bar(caller,"enter_vehicle",10,callback_list)
+	PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(3),caller./Move,src)
+	PROGRESS_BAR_CONDITIONS(caller,.proc/can_enter_vehicle,caller)
 
 	return TRUE
 

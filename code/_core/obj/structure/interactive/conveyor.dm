@@ -40,8 +40,6 @@
 	else
 		icon_state = "[icon_state]_off"
 
-	world.log << "The state is: [icon_state]."
-
 	return ..()
 
 /obj/structure/interactive/conveyor/proc/enable()

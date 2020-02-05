@@ -37,30 +37,12 @@
 
 /obj/item/container/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(get_dist(caller,object) > 1)
-		return FALSE
-
-	if(!is_advanced(object) || !is_advanced(caller))
+	if(!is_living(object))
 		return ..()
 
-	var/mob/living/advanced/A1 = caller
-	var/mob/living/advanced/A2 = object
-
-	if(A1 == A2)
-		var/list/callback_list = list()
-		callback_list["object"] = src
-		if(add_progress_bar(A1,"feed_self",SECONDS_TO_DECISECONDS(1),callback_list))
-			A1.to_chat(span("notice","You start to [consume_verb] \the [src]..."))
-
-	else
-		var/list/callback_list = list()
-		callback_list["target"] = A2
-		callback_list["target_start_turf"] = get_turf(A2)
-		callback_list["object"] = src
-		callback_list["start_turf"] = get_turf(src)
-
-		if(add_progress_bar(A1,"feed_other",SECONDS_TO_DECISECONDS(3),callback_list))
-			A1.to_chat(span("notice","You force \the [src] to [consume_verb] \the [A2]..."))
+	if(can_consume(caller,object))
+		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,.proc/can_consume,caller,object)
 
 	return TRUE
 
@@ -68,55 +50,67 @@
 /obj/item/container/food/proc/get_reagents_to_eat() //Should only be called when it's about to be eaten.
 	return reagents
 
-/obj/item/container/food/proc/consume(var/mob/living/consumer)
+/obj/item/container/food/proc/can_consume(var/mob/caller,var/mob/living/consumer)
+
+	if(get_dist(caller,consumer) > 1)
+		caller.to_chat("You're too far away from \the [consumer.name]!")
+		return FALSE
+
+	if(get_dist(src,consumer) > 1)
+		caller.to_chat("You're too far away from \the [src.name]!")
+		return FALSE
 
 	if(remove_on_no_reagents && (!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0))
-		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
+		if(caller == consumer)
+			consumer.to_chat(span("warning","There is nothing left of \the [src.name] to [consume_verb]!"))
+		else
+			caller.to_chat(span("warning","There is nothing left of \the [src.name] for \the [consumer.name] to [consume_verb]!"))
 		qdel(src)
 		return FALSE
 
-	var/reagent_container/reagents_to_consume = get_reagents_to_eat()
-
 	if(is_advanced(consumer))
 		var/mob/living/advanced/A = consumer
-
 		if(!A.labeled_organs[BODY_STOMACH])
 			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
 			return FALSE
 
-		var/final_flavor_text = reagents_to_consume.get_flavor()
+	return TRUE
 
-		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= curtime || A.last_flavor != final_flavor_text) )
-			A.last_flavor = final_flavor_text
-			A.last_flavor_time = curtime
-			final_flavor_text = "You taste [final_flavor_text]."
-		else
-			final_flavor_text = null
 
-		consumer.to_chat(span("notice","You [consume_verb] \the [src.name]."))
 
-		if(final_flavor_text)
-			consumer.to_chat(span("notice",final_flavor_text))
 
-		bite_count += 1
+/obj/item/container/food/proc/consume(var/mob/caller,var/mob/living/consumer)
 
-		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
-		var/returning = reagents_to_consume.transfer_reagents_to(S.reagents,bite_size)
+	var/reagent_container/reagents_to_consume = get_reagents_to_eat()
 
-		if(remove_on_no_reagents && (!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0))
-			consumer.to_chat(span("notice","You finish eating \the [src.name]."))
-			qdel(src)
+	var/final_flavor_text = reagents_to_consume.get_flavor()
 
-		return returning
-
+	if(final_flavor_text && (consumer.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= curtime || consumer.last_flavor != final_flavor_text) )
+		consumer.last_flavor = final_flavor_text
+		consumer.last_flavor_time = curtime
+		final_flavor_text = "You taste [final_flavor_text]."
 	else
-		bite_count += 1
-		var/returning = reagents.transfer_reagents_to(consumer.reagents,bite_size)
+		final_flavor_text = null
 
-		if(remove_on_no_reagents && (!reagents_to_consume || !length(reagents_to_consume.stored_reagents) || reagents_to_consume.volume_current <= 0))
-			consumer.to_chat(span("notice","You finish eating \the [src.name]."))
-			qdel(src)
+	consumer.to_chat(span("notice","You [consume_verb] \the [src.name]."))
 
-		return returning
+	if(final_flavor_text)
+		consumer.to_chat(span("notice",final_flavor_text))
 
-	return 0
+	bite_count += 1
+
+
+	var/reagent_container/reagents_to_transfer_to
+
+	if(is_advanced(consumer))
+		var/mob/living/advanced/A = consumer
+		if(A.labeled_organs[BODY_STOMACH] && A.labeled_organs[BODY_STOMACH].reagents)
+			reagents_to_transfer_to = A.labeled_organs[BODY_STOMACH].reagents
+
+	var/returning = reagents_to_consume.transfer_reagents_to(reagents_to_transfer_to,bite_size)
+
+	if(remove_on_no_reagents && (!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0))
+		consumer.to_chat(span("notice","You finish eating \the [src.name]."))
+		qdel(src)
+
+	return returning

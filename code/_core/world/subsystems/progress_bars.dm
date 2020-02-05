@@ -33,6 +33,7 @@ var/global/list/all_progress_bars = list()
 
 	return TRUE
 
+
 /proc/add_progress_bar(var/atom/A,var/desired_id,var/duration,var/list/callback_list)
 
 	if(A.doing_progress)

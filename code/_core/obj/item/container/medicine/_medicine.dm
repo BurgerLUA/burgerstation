@@ -41,25 +41,25 @@
 
 	return ..()
 
-/obj/item/container/medicine/proc/treat_organ(var/mob/caller,var/obj/item/organ/O)
+/obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
 
 	if(heal_brute)
-		O.health.adjust_brute_loss(-heal_brute)
+		A.health.adjust_brute_loss(-heal_brute)
 
 	if(heal_burn)
-		O.health.adjust_burn_loss(-heal_burn)
+		A.health.adjust_burn_loss(-heal_burn)
 
 	if(heal_brute || heal_burn)
-		O.health.update_health()
+		A.health.update_health()
 
 	var/reagent_transfer = ceiling((1/item_count_max)*reagents.volume_current)
-	reagents.transfer_reagents_to(O.reagents,reagent_transfer)
+	reagents.transfer_reagents_to(A.reagents,reagent_transfer)
 	reagents.volume_max = item_count_current*10
 
-	if(caller == O.loc)
-		caller.visible_message("\The [caller.name] bandages their [O.name].")
+	if(caller == A.loc)
+		caller.visible_message("\The [caller.name] bandages their [A.name].")
 	else
-		caller.visible_message("\The [caller.name] bandages \the [O.loc.name]'s [O.name].")
+		caller.visible_message("\The [caller.name] bandages \the [A.loc.name]'s [A.name].")
 
 	item_count_current--
 
@@ -70,25 +70,24 @@
 
 	return TRUE
 
-/obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/medicine/proc/can_treat(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,object) > 1)
+	if(get_dist(caller,target) > 1)
+		caller.to_chat("You're too far away!")
 		return FALSE
 
-	if(is_advanced(object) && is_advanced(caller))
-		var/mob/living/advanced/victim = object
-		var/mob/living/advanced/attacker = caller
-		var/obj/item/organ/O = victim.get_object_to_damage(attacker,params)
+	if(!target || !target.health)
+		caller.to_chat("You cannot treat this!")
+		return FALSE
 
-		if(!O || !O.health)
-			return TRUE
 
-		caller.to_chat(span("notice","You begin to [verb_to_use] [caller == object ? "your" : "\the [object]'s"] [O.name] with \the [src.name]."))
+	return TRUE
 
-		var/list/callback_list = list()
-		callback_list["target"] = O
-		callback_list["target_start_turf"] = get_turf(O)
-		callback_list["object"] = src
-		callback_list["start_turf"] = get_turf(src)
-		add_progress_bar(attacker,"medicine",treatment_time,callback_list)
-		return TRUE
+/obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	object = object.get_object_to_damage(caller,params)
+
+	if(can_treat(caller,object))
+		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+
+	return TRUE

@@ -116,7 +116,6 @@
 			hide_hair = TRUE
 			break
 
-	world.log << "Should hide: [hide_hair]"
 	show_overlay(H,!hide_hair)
 
 	return TRUE

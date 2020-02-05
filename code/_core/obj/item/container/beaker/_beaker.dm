@@ -34,46 +34,33 @@
 
 	return TRUE
 
-/obj/item/container/beaker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/beaker/proc/can_feed(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,object) > 1)
+	if(get_dist(caller,target) > 1)
 		return FALSE
 
-	if(is_advanced(caller) && is_advanced(object))
-
-		var/mob/living/advanced/A1 = caller
-		var/mob/living/advanced/A2 = object
-		var/area/A3 = get_area(object)
-
-		if(A1 != A2 && A3.flags_area & FLAGS_AREA_NO_DAMAGE)
-			A1.to_chat(span("notice","For some reason you can't bring yourself to feed [A2] the delicious [src.name]..."))
+	if(caller != target && is_living(target))
+		var/area/A = get_area(target)
+		if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+			caller.to_chat(span("notice","For some reason you can't bring yourself to feed [target] the delicious [src.name]..."))
 			return FALSE
 
-		if(A1 == A2)
-			var/list/callback_list = list()
-			callback_list["object"] = src
-			if(add_progress_bar(A1,"feed_self",transfer_amount,callback_list))
-				A1.to_chat(span("notice","You start to [consume_verb] \the [src]..."))
-		else
-			var/list/callback_list = list()
-			callback_list["target"] = A2
-			callback_list["target_start_turf"] = get_turf(A2)
-			callback_list["object"] = src
-			callback_list["start_turf"] = get_turf(src)
+	return TRUE
 
-			if(add_progress_bar(A1,"feed_other",transfer_amount*3,callback_list))
-				A1.to_chat(span("notice","You force \the [src] to [consume_verb] \the [A2]..."))
+/obj/item/container/beaker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-		return TRUE
+	if(can_feed(caller,object))
+		if(is_living(object))
+			PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
+			PROGRESS_BAR_CONDITIONS(caller,.proc/can_feed,caller,object)
 
-	if(object.reagents && object.allow_beaker_transfer)
-		var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount)
-		caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
-		return TRUE
+		else if(object.reagents && object.allow_beaker_transfer)
+			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount)
+			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
 
-	return ..()
+	return TRUE
 
-/obj/item/container/beaker/proc/consume(var/mob/living/consumer)
+/obj/item/container/beaker/proc/consume(var/mob/caller,var/mob/living/consumer)
 
 	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
 		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))

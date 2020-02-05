@@ -17,7 +17,7 @@
 
 	user_colors = FALSE
 
-/obj/hud/progress_bar/New(var/atom/new_loc,var/new_id,var/new_start_time,var/new_end_time,var/new_callback_list = list())
+/obj/hud/progress_bar/New(var/atom/new_loc,var/start_time = 1,var/end_time = 1)
 
 	if(is_mob(new_loc))
 		screen_loc = "CENTER,CENTER+1"
@@ -28,11 +28,6 @@
 	else
 		pixel_y = TILE_SIZE
 		loc = new_loc.loc
-
-	id = new_id
-	start_time = new_start_time
-	end_time = new_end_time
-	callback_list = new_callback_list
 
 	var/icon/I = new(icon,"progress")
 	swap_colors(I)

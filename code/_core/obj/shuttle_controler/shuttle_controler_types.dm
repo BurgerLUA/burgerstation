@@ -58,7 +58,6 @@
 /obj/shuttle_controller/charlie/transit(var/starting_transit_id,var/ending_transit_id)
 
 	if(ending_transit_id != "charlie_shuttle_station")
-		world.log << "SHUTTING DOWN"
 		var/area/A = get_area(src)
 		for(var/obj/structure/interactive/ore_storage/OS in A.contents)
 			stop_thinking(OS)
@@ -68,7 +67,6 @@
 
 	if(.)
 		if(ending_transit_id == "charlie_shuttle_station")
-			world.log << "STARTING UP"
 			var/area/A = get_area(src)
 			for(var/obj/structure/interactive/ore_storage/OS in A.contents)
 				start_thinking(OS)

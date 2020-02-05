@@ -73,35 +73,41 @@
 
 	return ..()
 
+/obj/structure/interactive/ore_deposit/proc/can_mine_ore(var/mob/caller,var/atom/object)
+
+	if(get_dist(src,caller) > 1)
+		caller.to_chat("You're too far away to mine ore!")
+		return FALSE
+
+	if(uses_current <= 0)
+		caller.to_chat(span("notice","This ore vein is depleted!."))
+		return TRUE
+
+	if(!is_item(object))
+		caller.to_chat(span("notice","You need a mining tool in order to mine \the [src.name]."))
+		return TRUE
+
+	var/obj/item/I = object
+
+	if(!(I.flags_tool & FLAG_TOOL_PICKAXE))
+		caller.to_chat(span("notice","You need a mining tool in order to mine \the [src.name]."))
+		return FALSE
+
+	return TRUE
+
+/obj/structure/interactive/ore_deposit/proc/mine_ore(var/atom/caller)
+
+	return TRUE
+
 /obj/structure/interactive/ore_deposit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	object = object.defer_click_on_object()
 
-		if(uses_current <= 0)
-			A.to_chat(span("notice","This ore vein is depleted!."))
-			return TRUE
-
-		object = object.defer_click_on_object()
-
-		if(!is_item(object))
-			A.to_chat(span("notice","You need a mining tool in order to mine \the [src.name]."))
-			return TRUE
-
-		var/obj/item/I = object
-
-		if(!(I.flags_tool & FLAG_TOOL_PICKAXE))
-			A.to_chat(span("notice","You need a mining tool in order to mine \the [src.name]."))
-			return TRUE
-
-		var/list/callback_list = list()
-		callback_list["target"] = I
-		callback_list["target_start_turf"] = get_turf(I)
-		callback_list["start_turf"] = get_turf(A)
-		callback_list["ore"] = src
-		add_progress_bar(A,"mine_ore",I.tool_time,callback_list)
+	if(can_mine_ore(caller,object))
+		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(3),.proc/mine_ore,caller)
+		PROGRESS_BAR_CONDITIONS(caller,.proc/can_mine_ore,caller,object)
 
 	return TRUE
 
