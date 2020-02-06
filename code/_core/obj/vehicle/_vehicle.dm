@@ -129,8 +129,8 @@
 	if(!can_enter_vehicle(caller))
 		return FALSE
 
-	PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(3),caller./Move,src)
-	PROGRESS_BAR_CONDITIONS(caller,.proc/can_enter_vehicle,caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),caller./Move,src)
+	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_vehicle,caller)
 
 	return TRUE
 

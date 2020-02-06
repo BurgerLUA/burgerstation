@@ -106,8 +106,8 @@
 	object = object.defer_click_on_object()
 
 	if(can_mine_ore(caller,object))
-		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(3),.proc/mine_ore,caller)
-		PROGRESS_BAR_CONDITIONS(caller,.proc/can_mine_ore,caller,object)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/mine_ore,caller)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_mine_ore,caller,object)
 
 	return TRUE
 

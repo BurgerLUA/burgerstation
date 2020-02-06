@@ -51,8 +51,8 @@
 
 	if(can_feed(caller,object))
 		if(is_living(object))
-			PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
-			PROGRESS_BAR_CONDITIONS(caller,.proc/can_feed,caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
+			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
 
 		else if(object.reagents && object.allow_beaker_transfer)
 			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount)

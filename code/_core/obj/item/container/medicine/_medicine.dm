@@ -88,6 +88,6 @@
 	object = object.get_object_to_damage(caller,params)
 
 	if(can_treat(caller,object))
-		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
 
 	return TRUE

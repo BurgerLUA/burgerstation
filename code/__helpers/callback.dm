@@ -1,2 +1,2 @@
-#define PROGRESS_BAR(desired_owner,desired_time,desired_proc,arguments...) SSprogressbars.add_progress_bar(desired_owner,desired_time,desired_proc,arguments)
-#define PROGRESS_BAR_CONDITIONS(desired_owner,desired_proc,arguments...) SSprogressbars.add_progress_bar_conditions(desired_owner,desired_proc,arguments)
+#define PROGRESS_BAR(desired_owner,desired_src,desired_time,desired_proc,arguments...) SSprogressbars.add_progress_bar(desired_owner,desired_src,desired_time,desired_proc,arguments)
+#define PROGRESS_BAR_CONDITIONS(desired_owner,desired_src,desired_proc,arguments...) SSprogressbars.add_progress_bar_conditions(desired_owner,desired_src,desired_proc,arguments)

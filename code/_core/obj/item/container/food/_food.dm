@@ -41,8 +41,8 @@
 		return ..()
 
 	if(can_consume(caller,object))
-		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,.proc/can_consume,caller,object)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_consume,caller,object)
 
 	return TRUE
 

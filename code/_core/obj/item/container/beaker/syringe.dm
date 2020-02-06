@@ -14,7 +14,7 @@
 	var/icon_count = 7
 
 	var/inject_amount = 15
-	var/draw_amount = 15
+	var/draw_amount = 5
 
 	var/injecting = FALSE
 
@@ -70,23 +70,27 @@
 		caller.to_chat("You can't target this!")
 		return FALSE
 
-	var/area/A = get_area(target)
-	if(caller != target && A.flags_area & FLAGS_AREA_NO_DAMAGE) //TODO: IFF.
-		return FALSE
-
 	return TRUE
 
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		object = A.get_object_to_damage(caller,params)
+		object = object.get_object_to_damage(caller,params)
 
-	if(can_inject(caller,object))
+	world.log << "The object is [object.type]."
+
+	if(istype(object,/obj/item/container/))
+		inject(caller,object,injecting ? inject_amount : -draw_amount)
+		return TRUE
+
+	else if(can_inject(caller,object))
 
 		var/real_object_name = object.name
 
@@ -101,16 +105,8 @@
 			caller.visible_message("\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!")
 			transfer_amount = -draw_amount
 
-		if(is_organ(object) && is_living(object.loc))
-			var/mob/living/L = object.loc
-			L.to_chat("You feel a tiny prick.")
-		else if(is_living(object))
-			var/mob/living/L = object
-			L.to_chat("You feel a tiny prick.")
-
-		PROGRESS_BAR(caller,SECONDS_TO_DECISECONDS(3),.proc/inject,caller,object,transfer_amount)
-		PROGRESS_BAR_CONDITIONS(caller,.proc/can_inject,caller,object)
-
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/inject,caller,object,transfer_amount)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,object)
 
 	return TRUE
 
@@ -121,11 +117,19 @@
 			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount)
 			if(transfer_amount)
 				caller.to_chat(span("notice","You inject [transfer_amount] units of liquid into \the [object]."))
+				return TRUE
+
 		else if(amount < 0)
 			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount)
 			if(transfer_amount)
 				caller.to_chat(span("notice","You draw [transfer_amount] units of liquid from \the [object]."))
+				return TRUE
 
-		return TRUE
+	if(is_organ(object) && is_living(object.loc))
+		var/mob/living/L = object.loc
+		L.to_chat("You feel a tiny prick.")
+	else if(is_living(object))
+		var/mob/living/L = object
+		L.to_chat("You feel a tiny prick.")
 
-	return ..()
+	return FALSE

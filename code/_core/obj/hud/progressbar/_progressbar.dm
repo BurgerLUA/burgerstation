@@ -9,15 +9,16 @@
 	var/bar_color = "#ffffff"
 
 	var/start_time = 0
-	var/end_time = 0
-
-	var/list/callback_list
+	var/end_time = 1
 
 	var/last_num = -1
 
 	user_colors = FALSE
 
-/obj/hud/progress_bar/New(var/atom/new_loc,var/start_time = 1,var/end_time = 1)
+/obj/hud/progress_bar/New(var/atom/new_loc,var/desired_start_time = 0,var/desired_end_time = 1)
+
+	start_time = desired_start_time
+	end_time = desired_end_time
 
 	if(is_mob(new_loc))
 		screen_loc = "CENTER,CENTER+1"
@@ -39,6 +40,9 @@
 
 /obj/hud/progress_bar/update_icon()
 
+	if(end_time - start_time <= 0)
+		return ..()
+
 	var/desired_num = floor( (1 - ((end_time - curtime)/(end_time - start_time)))*26 )
 
 	icon_state = "bar_[desired_num]"
@@ -51,7 +55,5 @@
 		var/mob/M = loc
 		if(M.client)
 			M.client.screen -= src
-
-	callback_list.Cut()
 
 	return ..()
