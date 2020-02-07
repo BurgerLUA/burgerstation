@@ -75,8 +75,6 @@ var/global/subsystem/horde/SShorde
 		if(time_to_display >= 0)
 			set_message("Build Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
-		for(var/obj/structure/interactive/gateway/G in all_gateways)
-			G.enable(TRUE)
 		state = HORDE_STATE_FIGHTING
 		round_time = 0
 		round_time_next = 0

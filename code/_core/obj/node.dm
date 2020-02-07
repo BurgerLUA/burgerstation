@@ -32,6 +32,10 @@
 	level_height = desired_height
 	map = desired_map
 
+
+	world.log << desired_width
+	world.log << desired_height
+
 	initialize_search_nodes()
 
 /pathfinder/proc/heuristic(var/obj/node/point_a,var/obj/node/point_b)
@@ -45,7 +49,7 @@
 		for(var/y=1,y<=level_height,y++)
 			var/node_search/NS = search_nodes[x][y]
 
-			if(!NS)
+			if(NS == null)
 				continue
 
 			NS.in_open_list = FALSE
@@ -77,11 +81,11 @@
 		closed_list.Add(parent_tile)
 		parent_tile = parent_tile.parent
 
-	var/list/final_path = list()
+	var/list/Vector2D/final_path = list()
 
 	for(var/i=length(closed_list),i>=1,i--)
 		var/node_search/NS = closed_list[i]
-		final_path.Add(list(NS.pos.x,NS.pos.y))
+		final_path.Add(new/Vector2D(NS.pos.x,NS.pos.y))
 
 	return final_path
 
@@ -114,7 +118,7 @@
 		for(var/i=1,i<=length(current_node.neighbors),i++)
 			var/node_search/neighbor = current_node.neighbors[i]
 
-			if(neighbor == null | neighbor.is_dense)
+			if(neighbor == null || !neighbor.is_dense)
 				continue
 
 			var/distance_traveled = current_node.distance_traveled + 1
@@ -140,8 +144,12 @@
 	return null
 
 /pathfinder/proc/initialize_search_nodes()
+
 	set background = TRUE
 	search_nodes = new/list(level_width,level_height)
+
+	world.log << "Length of x: [length(search_nodes)]."
+	world.log << "Length of y: [length(search_nodes[1])]."
 
 	for(var/x=1,x<=level_width,x++)
 		for(var/y=1,y<=level_height,y++)
@@ -157,7 +165,7 @@
 		for(var/y=1,y<=level_height,y++)
 			var/node_search/NS = search_nodes[x][y]
 
-			if(!NS || !NS.is_dense)
+			if(NS == null || !NS.is_dense)
 				continue
 
 			var/list/obj/node/neighbors = list(
@@ -180,4 +188,21 @@
 
 				NS.neighbors[i] = neighbor
 
+/pathfinder/proc/simplify_vectors(var/list/Vector2D/path)
 
+	world.log << "The simplyify is [length(path)]."
+
+
+	var/list/Vector2D/new_path = list()
+	for(var/i=1 to length(path))
+		if(i == length(path))
+			continue
+		var/Vector2D/v1 = path[i]
+		var/Vector2D/v2 = path[i+1]
+		if((v2.x == v1.x + 1 && v2.y == v1.y + 1) /*Northeast*/ || (v2.x == v1.x - 1 && v2.y == v1.y + 1) /*Northwest*/ || (v2.x == v1.x - 1 && v2.y == v1.y - 1) /*Southwest*/ || (v2.x == v1.x + 1 && v2.y == v1.y - 1) /*Southeast*/)
+			new_path.Add(v2) // Skip the first one and move diagonally to the next one.
+			continue
+
+		new_path.Add(v1)
+
+	return new_path

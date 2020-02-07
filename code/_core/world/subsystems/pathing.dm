@@ -1,4 +1,4 @@
-var/global/pathfinder/pathfinder[] = list()
+var/global/pathfinder/pathfinder = list()
 
 /subsystem/pathing/
 	name = "Pathing Subsystem"
@@ -8,6 +8,6 @@ var/global/pathfinder/pathfinder[] = list()
 /subsystem/pathing/Initialize()
 
 	LOG_SERVER("Node graph out of date. Rebuilding...")
-	pathfinder["[1]"] = new/pathfinder(world.maxx, world.maxy, 1)
+	pathfinder = new/pathfinder(world.maxx, world.maxy, 1)
 
 	return TRUE

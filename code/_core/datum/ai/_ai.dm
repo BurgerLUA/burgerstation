@@ -50,6 +50,9 @@
 
 	var/attack_on_block = FALSE
 
+	var/list/Vector2D/current_path = list()
+	var/atom/desired_destination
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -148,7 +151,33 @@
 
 	attack_ticks = 0
 
+/*
+/ai/proc/set_path_to(var/atom/desired_location)
+	desired_destination = desired_location
+	current_path.Cut()
+	current_path = pathfinder.simplify_vectors(pathfinder.find_path(new/obj/node(locate(owner.x,owner.y,owner.z)), new/obj/node(locate(desired_destination.x,desired_destination.y,desired_destination.z))))
+	world.log << "The new path is: [length(current_path)]."
+	frustration = 0
+	enabled = TRUE
+*/
+
 /ai/proc/handle_movement()
+
+	/*
+	if(length(current_path))
+
+
+		if(frustration >= frustration_threshold)
+			set_path_to(desired_destination)
+
+		var/Vector2D/next_path = current_path[1]
+
+		if(next_path.x == owner.x && next_path.y == owner.y)
+			current_path.Cut(1,2)
+			next_path = current_path[1]
+
+		owner.move_dir = get_dir(owner,locate(next_path.x,next_path.y,1))
+	*/
 
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) > attack_distance)
@@ -269,7 +298,8 @@
 
 /ai/proc/Bump(var/atom/obstacle)
 
-	if(attack_on_block)
-		do_attack(obstacle,prob(left_click_chance))
+	if(attack_on_block && !do_attack(obstacle,prob(left_click_chance)))
+		frustration++
+
 
 	return FALSE
