@@ -25,6 +25,9 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	heat_per_shot = 0.09
+	heat_max = 0.2
+
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_static_spread() //Base spread
 	return 0.05
 

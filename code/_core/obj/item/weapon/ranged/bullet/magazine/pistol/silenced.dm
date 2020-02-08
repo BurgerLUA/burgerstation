@@ -14,3 +14,6 @@
 
 	size = SIZE_2
 	weight = WEIGHT_2
+
+	heat_per_shot = 0.005
+	heat_max = 0.1

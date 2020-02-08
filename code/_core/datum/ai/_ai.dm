@@ -154,14 +154,12 @@
 			world.log << "The item is [A.left_item] and it is ranged: [is_ranged_gun(A.left_item)]."
 			if(A.left_item && is_ranged_gun(A.left_item))
 				var/obj/item/weapon/ranged/R = A.left_item
-				world.log << "HEAT: [R.heat_current]"
-				if(R.heat_current > 0)
+				if(R.heat_current > R.automatic ? 0.05 : 0)
 					return TRUE
 		else
 			if(A.right_item && is_ranged_gun(A.right_item))
 				var/obj/item/weapon/ranged/R = A.right_item
-				world.log << "HEAT: [R.heat_current]"
-				if(R.heat_current > 0)
+				if(R.heat_current > R.automatic ? 0.05 : 0)
 					return TRUE
 
 	if(left_click)

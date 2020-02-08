@@ -22,8 +22,11 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
+	heat_per_shot = 0.03
+	heat_max = 0.3
+
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread() //Base spread
-	return 0.03
+	return 0.04
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

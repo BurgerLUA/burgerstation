@@ -17,7 +17,7 @@
 
 	return FALSE
 
-
+/*
 /obj/item/proc/transfer_item(var/obj/hud/inventory/new_inventory)
 
 	if(new_inventory.held_slots >= 1)
@@ -28,6 +28,7 @@
 			return FALSE
 
 	return new_inventory.add_object(src)
+*/
 
 
 

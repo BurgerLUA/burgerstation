@@ -10,6 +10,9 @@
 	override_icon_state = TRUE
 	automatic = TRUE
 
+	heat_per_shot = 0.01
+	heat_max = 0.06
+
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
@@ -20,7 +23,7 @@
 	..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp/get_static_spread() //Base spread
-	return 0.05
+	return 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))

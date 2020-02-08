@@ -64,6 +64,8 @@
 
 	..()
 
+PENIS
+/*
 /obj/item/clothing/transfer_item(var/obj/hud/inventory/new_inventory)
 
 	. = ..()
@@ -72,6 +74,7 @@
 		delete_additonal_clothing()
 
 	return .
+*/
 
 
 /obj/item/clothing/update_icon()

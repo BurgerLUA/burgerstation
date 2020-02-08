@@ -25,10 +25,13 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	heat_per_shot = 0.05
+	heat_max = 0.3
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.3
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return 0.02 - (0.02 * L.get_skill_power(SKILL_RANGED))

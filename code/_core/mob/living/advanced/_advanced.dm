@@ -441,15 +441,15 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
 
 	if(left_hand && right_hand)
-		if(left)
-			return I.transfer_item(left_hand)
-		else
-			return I.transfer_item(right_hand)
+		if(left && left_hand.add_object(I))
+			return TRUE
+		if(!left && right_hand.add_object(I))
+			return TRUE
 	else
 		if(left_hand)
-			return I.transfer_item(left_hand)
+			return left_hand.add_object(I)
 		else if(right_hand)
-			return I.transfer_item(right_hand)
+			return right_hand.add_object(I)
 
 	return FALSE
 

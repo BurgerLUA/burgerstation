@@ -72,7 +72,7 @@
 	var/old_item_name = src.name
 	var/obj/item/I2 = split_stack()
 	caller.to_chat("You split \the stack of [old_item_name]. The new stack now has [I2.item_count_current].")
-	I2.transfer_item(I)
+	I.add_object(I2)
 	return TRUE
 
 /*

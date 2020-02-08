@@ -28,3 +28,6 @@
 	weight = WEIGHT_3
 
 	automatic = TRUE
+
+	heat_per_shot = 0.04
+	heat_max = 0.2

@@ -14,6 +14,15 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	heat_per_shot = 0.03
+	heat_max = 0.1
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
+	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
 	name = ".40 Civil Defense Pistol MOD"
 	icon = 'icons/obj/items/weapons/ranged/pistol/40_2.dmi'
@@ -27,6 +36,9 @@
 
 	size = SIZE_2
 	weight = WEIGHT_1
+
+	heat_per_shot = 0.01
+	heat_max = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread() //Base spread
 	return 0

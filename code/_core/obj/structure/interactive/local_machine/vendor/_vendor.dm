@@ -57,7 +57,7 @@
 		else
 			P.to_chat(span("notice","You vend \the [new_item.name]."))
 	if(I)
-		new_item.transfer_item(I)
+		I.add_object(new_item)
 
 	return TRUE
 

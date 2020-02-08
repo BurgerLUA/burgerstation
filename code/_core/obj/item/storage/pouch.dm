@@ -11,13 +11,13 @@
 	dynamic_inventory_count = 1
 
 	inventory_bypass = list(
-		/obj/hud/inventory/pocket/pocket01,
-		/obj/hud/inventory/pocket/pocket02
+		/obj/hud/inventory/organs/groin/pocket/right,
+		/obj/hud/inventory/organs/groin/pocket/left
 	)
 
 /obj/item/storage/pouch/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && object.loc == caller && istype(object,/obj/hud/inventory/pocket/) && click_self(caller,location,control,params))
+	if(is_inventory(object) && object.loc == caller && istype(object,/obj/hud/inventory/organs/groin/pocket/) && click_self(caller,location,control,params))
 		return TRUE
 
 	return ..()

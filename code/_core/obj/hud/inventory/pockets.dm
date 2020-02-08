@@ -1,4 +1,4 @@
-/obj/hud/inventory/pocket
+/obj/hud/inventory/organs/groin/pocket
 	name = "pocket"
 	id = "pocket"
 	icon_state = "slot_pocket"
@@ -18,12 +18,12 @@
 
 	drop_on_death = TRUE
 
-/obj/hud/inventory/pocket/pocket01
+/obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"
 	screen_loc = "CENTER+2,BOTTOM"
 
-/obj/hud/inventory/pocket/pocket02
+/obj/hud/inventory/organs/groin/pocket/left
 	name = "right lower pocket"
 	id = "pocket02"
 	screen_loc = "CENTER+3,BOTTOM"

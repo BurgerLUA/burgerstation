@@ -23,6 +23,9 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
+	heat_per_shot = 0.02
+	heat_max = 0.1
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread() //Base spread
 	return 0
 

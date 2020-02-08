@@ -16,6 +16,9 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
+	heat_per_shot = 0.04
+	heat_max = 0.2
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
 	name = ".45 Tactical Pistol MOD"
 	desc = "It's like a Silver Eagle except not."
@@ -30,3 +33,6 @@
 
 	size = SIZE_2
 	weight = WEIGHT_3
+
+	heat_per_shot = 0.03
+	heat_max = 0.15

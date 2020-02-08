@@ -26,6 +26,9 @@
 	size = SIZE_4
 	weight = WEIGHT_5
 
+	heat_per_shot = 0.1
+	heat_max = 0.1
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread() //Base spread
 	return 0
 

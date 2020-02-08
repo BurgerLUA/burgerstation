@@ -17,10 +17,11 @@
 
 	override_icon_state = TRUE
 
-
+	heat_per_shot = 0.01
+	heat_max = 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
-	return 0.1
+	return 0.04
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))

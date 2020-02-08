@@ -55,6 +55,7 @@
 
 	return ..()
 
+/*
 /obj/item/currency/transfer_item(var/obj/hud/inventory/new_inventory)
 
 	if(new_inventory && new_inventory.owner && is_player(new_inventory.owner))
@@ -65,6 +66,7 @@
 		return TRUE
 
 	return ..()
+*/
 
 /obj/item/currency/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

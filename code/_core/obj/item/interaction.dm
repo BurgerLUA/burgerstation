@@ -78,7 +78,8 @@
 			return TRUE
 
 		if(is_inventory(object))
-			src.transfer_item(object)
+			var/obj/hud/inventory/I = object
+			I.add_object(src)
 			return TRUE
 
 		if(is_item(object)) //Add to the inventory

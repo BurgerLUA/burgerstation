@@ -67,7 +67,7 @@
 	if(product_container)
 		product_container.add_to_inventory(caller,P,TRUE)
 	else
-		P.transfer_item(product_slot)
+		product_slot.add_object(P)
 
 
 

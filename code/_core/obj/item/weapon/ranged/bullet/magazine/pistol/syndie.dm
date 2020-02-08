@@ -28,5 +28,4 @@
 	weight = WEIGHT_2
 
 	heat_per_shot = 0.05
-	heat_current = 0
 	heat_max = 0.2

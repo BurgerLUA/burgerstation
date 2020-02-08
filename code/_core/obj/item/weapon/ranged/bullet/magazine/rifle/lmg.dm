@@ -29,6 +29,9 @@
 	size = SIZE_4
 	weight = WEIGHT_5
 
+	heat_per_shot = 0.05
+	heat_max = 0.3
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()
 
 	var/modifier = "[wielded ? "_wielded" : ""][open ? "_open" : ""][stored_magazine ? "_1" : ""]"

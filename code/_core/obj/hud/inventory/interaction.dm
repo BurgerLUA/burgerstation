@@ -62,23 +62,23 @@
 		var/obj/hud/inventory/object_as_inventory = object
 		var/obj/item/defer_self_as_item = defer_self
 		if(object_as_inventory.held_slots > 1 || object_as_inventory.worn_slots > 1) //The inventory we're clicking on can hold more than one object per slot.
-			defer_self_as_item.transfer_item(object_as_inventory)
+			object_as_inventory.add_object(defer_self_as_item)
 			return TRUE
 
 	if(src == defer_self && is_item(defer_object) && get_dist(caller,defer_object) <= 1) //We're clicking on an item with an empty hand, and it is in range.
 		var/obj/item/defer_object_as_item = defer_object
 		if(is_inventory(object)) //The item in question is in another inventory.
 			var/obj/hud/inventory/object_as_inventory = object
-			if(!defer_object_as_item.is_container && !object_as_inventory.drag_to_take && defer_object_as_item.transfer_item(src))
+			if(!defer_object_as_item.is_container && !object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
 				return TRUE
-		else if (!defer_object_as_item.anchored && defer_object_as_item.transfer_item(src))
+		else if (!defer_object_as_item.anchored && src.add_object(defer_object_as_item))
 			return TRUE
 
 	if(is_item(defer_self))
 		var/obj/item/defer_self_as_item = defer_self
 		if(is_inventory(defer_object)) //We have an item in hand and the object we're clicking on is a blank inventory
 			var/obj/hud/inventory/defer_object_as_inventory = defer_object
-			if(get_dist(defer_self_as_item,defer_object_as_inventory) <= 1 && defer_self_as_item.transfer_item(defer_object_as_inventory))
+			if(get_dist(defer_self_as_item,defer_object_as_inventory) <= 1 && defer_object_as_inventory.add_object(defer_self_as_item))
 				return TRUE
 
 	return ..()
@@ -89,7 +89,7 @@
 
 	if(!. && is_item(object))
 		var/obj/item/object_as_item = object
-		if(object_as_item.transfer_item(src))
+		if(src.add_object(object_as_item))
 			return TRUE
 
 	return .

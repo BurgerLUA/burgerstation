@@ -25,6 +25,9 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
+	heat_per_shot = 0.04
+	heat_max = 0.4
+
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
@@ -35,7 +38,7 @@
 	..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_static_spread() //Base spread
-	return 0.1
+	return 0.03
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.02 - (0.02 * L.get_skill_power(SKILL_RANGED))

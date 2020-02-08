@@ -22,10 +22,10 @@
 /obj/item/container/syringe/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/syringe/transfer_item(var/obj/hud/inventory/new_inventory)
-	. = ..()
+/obj/item/container/syringe/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
 	update_icon()
-	return .
+	return ..()
+
 
 /obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
 	. = ..()

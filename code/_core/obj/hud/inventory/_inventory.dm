@@ -235,17 +235,10 @@
 
 /obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
 
-	if(!I)
-		LOG_ERROR("Tried to add a null item to [src]!")
-		return FALSE
-
-	if(!is_item(I))
+	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
 	var/atom/old_location = I.loc
-
-	if(!bypass_checks && !can_hold_object(I,messages))
-		return FALSE
 
 	if(is_inventory(I.loc))
 		var/obj/hud/inventory/I2 = I.loc
@@ -256,9 +249,9 @@
 	undelete(I)
 
 	I.force_move(src)
-
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
+
 	if(owner)
 		I.update_owner(owner)
 		if(should_add_held && is_advanced(owner))
@@ -266,7 +259,6 @@
 			A.held_objects += I
 			A.update_slowdown_mul()
 			update_held_icon(I)
-
 
 	update_stats()
 	I.on_pickup(old_location,src)
@@ -290,6 +282,8 @@
 				A.to_chat(span("notice","\The [C] prevents you from wearing \the [I]!"))
 			return FALSE
 
+	var/atom/old_location = I.loc
+
 	if(is_inventory(I.loc))
 		var/obj/hud/inventory/I2 = I.loc
 		if(I2 == src)
@@ -299,13 +293,11 @@
 	undelete(I)
 
 	I.force_move(src)
-
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
-	update_overlays()
-	update_stats()
+
 	if(owner)
-		I.update_owner(A)
+		I.update_owner(owner)
 		if(should_add_worn)
 			A.worn_objects += I
 			A.update_slowdown_mul()
@@ -313,6 +305,10 @@
 			A.update_eyes()
 			A.update_hair()
 			update_worn_icon(I)
+
+	update_stats()
+	I.on_pickup(old_location,src)
+	update_overlays()
 
 	return TRUE
 

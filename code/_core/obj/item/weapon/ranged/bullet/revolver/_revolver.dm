@@ -67,7 +67,7 @@
 		if(last_value)
 			var/obj/item/bullet/B = eject_stored_bullet(caller,last_value,get_turf(src))
 			if(B)
-				B.transfer_item(I)
+				I.add_object(B)
 
 		return TRUE
 

@@ -37,7 +37,7 @@
 			continue
 
 	if(best_inventory)
-		return src.transfer_item(best_inventory)
+		return best_inventory.add_object(src)
 
 	return FALSE
 

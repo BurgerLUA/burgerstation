@@ -4,7 +4,6 @@
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/items/weapons/ranged/pistol/50.dmi'
 	value = 170
-	projectile_speed = 28
 	shoot_delay = 4
 	bullet_type = ".50"
 	shoot_sounds = list('sounds/weapons/deagle/shoot.ogg')
@@ -13,6 +12,9 @@
 
 	size = SIZE_2
 	weight = WEIGHT_3
+
+	heat_per_shot = 0.1
+	heat_max = 0.3
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold
 	name = ".50 Gold Eagle"
