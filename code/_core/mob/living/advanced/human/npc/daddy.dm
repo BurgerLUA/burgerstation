@@ -19,9 +19,9 @@
 	add_outfit("daddy")
 
 	var/obj/item/weapon/melee/zweihander/W = new(src.loc)
-	pickup(W,FALSE)
+	put_in_hands(W,FALSE)
 
 	var/obj/item/weapon/melee/shield/S = new(src.loc)
-	pickup(S,TRUE)
+	put_in_hands(S,TRUE)
 
 	return .

@@ -35,7 +35,7 @@
 	add_outfit(outfit_to_use)
 
 	if(spear_chance)
-		pickup(new /obj/item/weapon/melee/spear(src.loc),FALSE)
+		put_in_hands(new /obj/item/weapon/melee/spear(src.loc),FALSE)
 
 	return .
 

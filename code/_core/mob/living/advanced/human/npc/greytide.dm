@@ -26,6 +26,6 @@
 	var/picked_weapon = pick(possible_weapons)
 
 	var/obj/item/weapon/W = new picked_weapon(src.loc)
-	pickup(W)
+	put_in_hands(W)
 
 	return .

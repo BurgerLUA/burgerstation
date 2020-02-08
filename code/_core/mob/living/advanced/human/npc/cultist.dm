@@ -13,7 +13,7 @@
 	. = ..()
 
 	add_outfit("clown")
-	pickup(new /obj/item/weapon/ranged/magic/staff/chaos(src.loc),FALSE)
+	put_in_hands(new /obj/item/weapon/ranged/magic/staff/chaos(src.loc),FALSE)
 
 	return .
 
@@ -42,7 +42,7 @@
 
 	add_outfit("cult")
 
-	pickup(new /obj/item/weapon/ranged/magic/staff/basic(src.loc),FALSE)
-	pickup(new /obj/item/weapon/ranged/magic/tome/lightning(src.loc),TRUE)
+	put_in_hands(new /obj/item/weapon/ranged/magic/staff/basic(src.loc),FALSE)
+	put_in_hands(new /obj/item/weapon/ranged/magic/tome/lightning(src.loc),TRUE)
 
 	return .

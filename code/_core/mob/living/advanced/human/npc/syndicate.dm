@@ -63,7 +63,7 @@
 	W.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 	W.stored_magazine = weapon_to_magazine[W.type]
 	W.on_spawn()
-	pickup(W)
+	put_in_hands(W)
 	if(W.can_wield)
 		W.wield(src,W.loc == left_hand ? right_hand : left_hand)
 	name = W.name

@@ -143,12 +143,6 @@
 
 	return TRUE
 
-/atom/proc/on_progress_bar_completed(var/id,var/list/callback_list)
-	return TRUE
-
-/atom/proc/on_progress_bar_failed(var/id,var/list/callback_list)
-	return TRUE
-
 /atom/proc/think()
 	return thinks
 

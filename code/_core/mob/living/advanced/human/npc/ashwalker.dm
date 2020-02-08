@@ -50,10 +50,10 @@
 
 
 	if(prob(shield_chance))
-		pickup(new /obj/item/weapon/melee/shield(src.loc),TRUE)
+		put_in_hands(new /obj/item/weapon/melee/shield(src.loc),TRUE)
 
 	if(spear_chance)
-		pickup(new /obj/item/weapon/melee/spear(src.loc),FALSE)
+		put_in_hands(new /obj/item/weapon/melee/spear(src.loc),FALSE)
 
 	return .
 

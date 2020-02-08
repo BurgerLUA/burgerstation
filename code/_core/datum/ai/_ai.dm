@@ -150,15 +150,18 @@
 
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		if(left_click)
+		if(!left_click)
+			world.log << "The item is [A.left_item] and it is ranged: [is_ranged_gun(A.left_item)]."
 			if(A.left_item && is_ranged_gun(A.left_item))
 				var/obj/item/weapon/ranged/R = A.left_item
-				if(R.heat_current > rand_precise(0,0.05))
+				world.log << "HEAT: [R.heat_current]"
+				if(R.heat_current > 0)
 					return TRUE
 		else
 			if(A.right_item && is_ranged_gun(A.right_item))
 				var/obj/item/weapon/ranged/R = A.right_item
-				if(R.heat_current > rand_precise(0,0.05))
+				world.log << "HEAT: [R.heat_current]"
+				if(R.heat_current > 0)
 					return TRUE
 
 	if(left_click)
@@ -192,7 +195,7 @@
 		if(target_distance > attack_distance_max)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
-			owner.move_dir = 0
+			owner.move_dir = 0x0
 
 	else if(current_path && length(current_path))
 

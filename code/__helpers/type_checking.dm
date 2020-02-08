@@ -124,9 +124,6 @@ proc/is_dynamic_inventory(var/atom/A)
 /proc/is_slime(var/atom/A)
 	return istype(A,/mob/living/simple/npc/slime/)
 
-/proc/is_turret(var/atom/A)
-	return istype(A,/mob/living/simple/npc/turret/)
-
 /proc/is_unique(var/atom/A)
 	return istype(A,/mob/living/advanced/npc/unique/)
 
