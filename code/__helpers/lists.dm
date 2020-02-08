@@ -332,3 +332,15 @@ proc/InsertionSort(list/L)
 	for(var/x in text2list(text, delimiter))
 		num_list += text2num(x)
 	return num_list
+
+//Credit goes to AJX.
+/proc/sort_by_closest(var/list/L,var/atom/target)
+	var/atom/A
+	var/atom/B
+
+	for(var/r=1,r<length(L),r++)
+		for(var/i=1,i<length(L),i++)
+			A = L[i]
+			B = L[i+1]
+			if(get_dist_real(target,A) > get_dist_real(target,B))
+				L.Swap(i,i+1)

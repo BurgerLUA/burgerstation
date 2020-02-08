@@ -202,9 +202,14 @@
 
 	max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
 
-	var/carry_mod = 1 + (max(0,capacity/max_capacity))**2
+	var/carry_mod = 1 + (max(0,(capacity/max_capacity) - 0.5))**2
 
-	slowdown_mul = Clamp(slow_mul * carry_mod,0.75,4)
+	if(ai)
+		slowdown_mul = 1
+	else
+		slowdown_mul = Clamp(slow_mul * carry_mod,0.75,4)
+
+	return TRUE
 
 /mob/living/advanced/proc/do_type(var/type_type)
 	talk_type = type_type

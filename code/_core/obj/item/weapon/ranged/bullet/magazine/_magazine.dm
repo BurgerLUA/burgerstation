@@ -27,10 +27,13 @@
 
 	var/requires_cock_each_shot = FALSE
 
-/obj/item/weapon/ranged/bullet/magazine/New()
+/obj/item/weapon/ranged/bullet/magazine/on_spawn()
 
 	if(stored_magazine)
-		stored_magazine = new(src)
+		stored_magazine = new stored_magazine(src)
+		stored_magazine.on_spawn()
+		open = FALSE
+		update_icon()
 
 	return ..()
 

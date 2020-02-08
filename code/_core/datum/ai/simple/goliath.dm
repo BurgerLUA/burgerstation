@@ -26,7 +26,7 @@
 /ai/simple/goliath/handle_attacking()
 
 	if(objective_attack)
-		if(get_dist(owner,objective_attack) <= attack_distance)
+		if(get_dist(owner,objective_attack) <= attack_distance_max)
 			return ..()
 		else if(tentacle_attack_ticks < 15)
 			tentacle_attack_ticks++

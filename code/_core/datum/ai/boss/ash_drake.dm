@@ -8,8 +8,6 @@
 	var/fly_delay = SECONDS_TO_DECISECONDS(5)
 	var/fireball_delay = SECONDS_TO_DECISECONDS(3)
 
-	attack_distance = 1
-
 /ai/boss/ash_drake/New(var/mob/living/desired_owner)
 	owner_as_ash_drake = desired_owner
 	return ..()
@@ -28,7 +26,7 @@
 			var/fly_chance = max(0,distance*10 - 50) + max(0,failed_attack_frames - 50)
 			var/shoot_chance = max(0,distance*10 - 25) + max(0,failed_attack_frames - 25)
 
-			if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance))
+			if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max))
 				failed_attack_frames = 0
 				return ..()
 			else if(fly_delay <= 0 && prob(fly_chance))
@@ -52,7 +50,7 @@
 		owner.move_dir = 0
 		return FALSE
 
-	if(objective_attack && (owner_as_ash_drake.boss_state || get_dist(owner,objective_attack) > attack_distance))
+	if(objective_attack && (owner_as_ash_drake.boss_state || get_dist(owner,objective_attack) > attack_distance_max))
 		owner.move_dir = get_dir(owner,objective_attack)
 	else
 		owner.move_dir = 0

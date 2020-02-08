@@ -16,12 +16,8 @@
 /obj/item/firing_pin/mechanical
 	name = "mechanical firing pin"
 
-/obj/item/firing_pin/electronic/nanotrasen
-	name = "electronic nanotrasen firing pin"
-	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. Also has a safety feature to prevent accidental discharge on the NSS Eos."
-	iff_tag = "NanoTrasen"
 
-/obj/item/firing_pin/electronic/nanotrasen/can_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon)
 
 	if(!is_advanced(caller))
 		caller.to_chat("The firing pin doesn't detect your IFF signature and refuses to fire!")
@@ -38,3 +34,16 @@
 		return FALSE
 
 	return ..()
+
+/obj/item/firing_pin/electronic/iff/nanotrasen
+	name = "electronic nanotrasen firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. Also has a safety feature to prevent accidental discharge on the NSS Eos."
+	iff_tag = "NanoTrasen"
+
+
+
+
+/obj/item/firing_pin/electronic/iff/syndicate
+	name = "syndicate firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. Also has a safety feature to prevent accidental discharge on the NSS Eos."
+	iff_tag = "Syndicate"

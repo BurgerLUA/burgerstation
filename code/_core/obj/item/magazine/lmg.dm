@@ -2,7 +2,7 @@
 	name = "\improper 5.56 lmg magazine"
 	bullet_type = "5.56"
 	icon = 'icons/obj/items/magazine/223_lmg.dmi'
-	icon_state = "556"
+	icon_state = "223"
 	bullet_count_max = 60
 
 	weapon_whitelist = list(

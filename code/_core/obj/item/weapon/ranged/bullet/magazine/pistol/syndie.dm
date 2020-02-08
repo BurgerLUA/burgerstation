@@ -18,8 +18,6 @@
 
 	can_wield = FALSE
 
-	override_icon_state = TRUE
-
 	view_punch = 8
 
 	cock_sound = 'sounds/weapons/gun_slide1.ogg'

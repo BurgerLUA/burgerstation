@@ -43,7 +43,7 @@
 	return TRUE
 
 /obj/item/implanter/IFF
-		stored_implant = /obj/item/organ/internal/implant/hand/left/iff
+		stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
 
 /obj/item/implanter/od_purge
 		stored_implant = /obj/item/organ/internal/implant/torso/od_purge

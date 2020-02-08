@@ -49,4 +49,4 @@
 	return TRUE
 
 /obj/structure/interactive/hand_implanter/IFF
-	stored_implant = /obj/item/organ/internal/implant/hand/left/iff
+	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen

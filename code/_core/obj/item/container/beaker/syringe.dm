@@ -84,8 +84,6 @@
 		params[PARAM_ICON_Y] = new_x_y[2]
 		object = object.get_object_to_damage(caller,params)
 
-	world.log << "The object is [object.type]."
-
 	if(istype(object,/obj/item/container/))
 		inject(caller,object,injecting ? inject_amount : -draw_amount)
 		return TRUE

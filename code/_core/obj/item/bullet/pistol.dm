@@ -77,6 +77,21 @@
 
 	misfire_chance = 1
 
+/obj/item/bullet/pistol_40/
+	name = "\improper .40 bullet"
+	desc = "For pistols, revolvers, and smgs that require .40 ammo."
+	id = ".40"
+	icon = 'icons/obj/items/bullet/40.dmi'
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	projectile = /obj/projectile/bullet/pistol
+	damage_type = ".40"
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+
 /obj/item/bullet/pistol_45/
 	name = "\improper .45 bullet"
 	desc = "For pistols and smgs that requre .45 ammo."

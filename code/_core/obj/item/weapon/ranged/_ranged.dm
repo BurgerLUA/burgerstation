@@ -38,11 +38,9 @@
 
 	var/requires_bullets = FALSE
 
-	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
+	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
-
-
-/obj/item/weapon/ranged/New(var/desired_loc)
+/obj/item/weapon/ranged/on_spawn()
 	firing_pin = new firing_pin(src)
 	return ..()
 

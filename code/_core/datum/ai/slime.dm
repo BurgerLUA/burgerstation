@@ -15,8 +15,6 @@
 
 	roaming_distance = 32
 
-	attack_distance = 1
-
 /ai/slime/proc/can_absorb_slime(var/mob/living/simple/npc/slime/S)
 
 	var/mob/living/simple/npc/slime/self = owner

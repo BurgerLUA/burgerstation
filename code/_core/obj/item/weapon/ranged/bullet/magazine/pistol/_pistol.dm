@@ -1,4 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/
+	override_icon_state = TRUE
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
@@ -11,7 +12,13 @@
 	if(!stored_magazine)
 		icon_state = "[icon_state]_open"
 
-	return ..()
+	world.log << "First Icon state: [icon_state]."
+
+	. = ..()
+
+	world.log << "Second Icon state: [icon_state]."
+
+	return .
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_static_spread() //Base spread
 	return 0.01

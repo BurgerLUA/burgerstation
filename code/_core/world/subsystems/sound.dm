@@ -96,6 +96,8 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return created_sound
 
+var/global/channel_hack = 100
+
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,-1), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0, var/range_min=1, var/range_max = SOUND_RANGE)
 
 	if(!sound_path)
@@ -115,7 +117,10 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.environment = environment
 	created_sound.status = 0
 	created_sound.wait = 0
-	created_sound.channel = 0
+	created_sound.channel = channel_hack
+	channel_hack++
+	if(channel_hack > 1024)
+		channel_hack = 100
 
 	if(loop)
 		active_sounds[created_sound] = -1

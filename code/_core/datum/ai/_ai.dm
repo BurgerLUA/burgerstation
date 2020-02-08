@@ -33,7 +33,8 @@
 
 	var/roaming_distance = 5
 
-	var/attack_distance = 1
+	var/attack_distance_min = 0
+	var/attack_distance_max = 1
 
 	var/enabled = FALSE
 
@@ -50,8 +51,11 @@
 
 	var/attack_on_block = FALSE
 
+	var/path_steps = 1
 	var/list/Vector2D/current_path = list()
-	var/atom/desired_destination
+
+	var/distance_target_min = 1
+	var/distance_target_max = 1
 
 /ai/Destroy()
 	if(owner)
@@ -82,6 +86,15 @@
 	start_turf = get_turf(owner)
 
 	all_living_ai += src
+
+/ai/proc/set_path(var/list/Vector2D/desired_path = list())
+	enabled = TRUE
+	path_steps = 1
+	current_path = desired_path
+	frustration = 0
+	owner.move_dir = 0
+	start_turf = get_turf(owner)
+	return TRUE
 
 /ai/proc/on_life()
 
@@ -146,46 +159,51 @@
 
 /ai/proc/handle_attacking()
 
-	if(objective_attack && get_dist(owner,objective_attack) <= attack_distance)
+	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max)
+		world.log << "ATTACK!"
 		do_attack(objective_attack,prob(left_click_chance))
 
 	attack_ticks = 0
 
-/*
-/ai/proc/set_path_to(var/atom/desired_location)
-	desired_destination = desired_location
-	current_path.Cut()
-	current_path = pathfinder.simplify_vectors(pathfinder.find_path(new/obj/node(locate(owner.x,owner.y,owner.z)), new/obj/node(locate(desired_destination.x,desired_destination.y,desired_destination.z))))
-	world.log << "The new path is: [length(current_path)]."
-	frustration = 0
-	enabled = TRUE
-*/
-
 /ai/proc/handle_movement()
 
-	/*
-	if(length(current_path))
-
-
-		if(frustration >= frustration_threshold)
-			set_path_to(desired_destination)
-
-		var/Vector2D/next_path = current_path[1]
-
-		if(next_path.x == owner.x && next_path.y == owner.y)
-			current_path.Cut(1,2)
-			next_path = current_path[1]
-
-		owner.move_dir = get_dir(owner,locate(next_path.x,next_path.y,1))
-	*/
+	owner.movement_flags = 0x0
 
 	if(objective_attack)
-		if(get_dist(owner,objective_attack) > attack_distance)
+
+		owner.movement_flags |= MOVEMENT_RUNNING
+
+		var/target_distance = get_dist(owner,objective_attack)
+
+		if(target_distance < attack_distance_min)
+			owner.move_dir = get_dir(objective_attack,owner)
+		if(target_distance > attack_distance_max)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
 			owner.move_dir = 0
 
-	else if(get_dist(owner,start_turf) >= roaming_distance)
+	else if(current_path && length(current_path))
+
+		owner.movement_flags |= MOVEMENT_RUNNING
+
+		if(frustration > frustration_threshold)
+			path_steps--
+			if(path_steps < 1)
+				path_steps = 3
+
+		if(path_steps <= length(current_path))
+			var/Vector2D/desired_node = current_path[path_steps]
+			if(desired_node.x == owner.x && desired_node.y == owner.y)
+				path_steps++
+				owner.move_dir = 0
+			else
+				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,1))
+
+		else
+			set_path(null)
+			owner.move_dir = 0
+
+	else if(roaming_distance && get_dist(owner,start_turf) >= roaming_distance)
 		owner.move_dir = get_dir(owner,start_turf)
 	else if(stationary)
 		owner.move_dir = 0
@@ -212,7 +230,7 @@
 		if(!can_see_enemy(objective_attack) || !should_attack_mob(objective_attack))
 			set_objective(null)
 			frustration = 0
-		if(get_dist(owner,objective_attack) > attack_distance + 1)
+		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
 			frustration ++
 	else
 		frustration = 0

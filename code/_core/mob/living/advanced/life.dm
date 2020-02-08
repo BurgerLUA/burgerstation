@@ -109,13 +109,8 @@ mob/living/advanced/proc/handle_regen()
 
 	. = ..()
 
-	/*
-
-	new/obj/effect/temp/death(get_turf(src))
-
-	qdel(src)
-
-	*/
+	for(var/obj/item/I in held_objects)
+		I.drop_item(src.loc)
 
 	return TRUE
 

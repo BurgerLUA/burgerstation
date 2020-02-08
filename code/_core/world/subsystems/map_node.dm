@@ -1,19 +1,24 @@
 /subsystem/map_node/
 	name = "Map Node Subsystem"
 	desc = "Generates Map Nodes."
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_OBJS
 
 /subsystem/map_node/Initialize()
 
 	LOG_SERVER("Node graph out of date. Rebuilding...")
 
+	new /mob/abstract/node_checker(locate(1,1,1))
+
 	var/map_nodes = 0
-	var/adjacent_nodes = 0
+	var/adjacent_map_nodes = 0
 
+	var/i=0
 	for(var/obj/map_node/M in all_map_nodes)
-		M.initialize_node()
-		adjacent_nodes += length(M.adjacent_nodes)
-		map_nodes += 1
+		i++
+		if(M.initialize_node())
+			map_nodes += 1
+			adjacent_map_nodes += length(M.adjacent_map_nodes)
+		LOG_SERVER("Percent done: [floor(100*i/length(all_map_nodes))]%")
 
-	LOG_SERVER("Initialized [map_nodes] map nodes with [adjacent_nodes] total adjacent nodes.")
+	LOG_SERVER("Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
 

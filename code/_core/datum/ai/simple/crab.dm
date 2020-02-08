@@ -1,7 +1,6 @@
 /ai/simple/crab
 
 	radius_find_enemy = 12
-	attack_distance = 1
 
 	objective_delay = 10
 	attack_delay = 1

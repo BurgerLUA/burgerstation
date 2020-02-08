@@ -124,12 +124,12 @@
 	return ..()
 
 /obj/item/storage/pouch/triple/brown/filled/pistol/fill_inventory()
-	new /obj/item/magazine/pistol_12mm(src)
-	new /obj/item/magazine/pistol_12mm(src)
-	new /obj/item/magazine/pistol_12mm(src)
-	new /obj/item/magazine/pistol_12mm(src)
-	new /obj/item/magazine/pistol_12mm(src)
-	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_40(src)
+	new /obj/item/magazine/pistol_40(src)
+	new /obj/item/magazine/pistol_40(src)
+	new /obj/item/magazine/pistol_40(src)
+	new /obj/item/magazine/pistol_40(src)
+	new /obj/item/magazine/pistol_40(src)
 	return ..()
 
 

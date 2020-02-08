@@ -19,7 +19,6 @@
 				best_distance = calc1
 			if(calc2 < best_distance)
 				best_distance = calc1
-
 		else if(L1.move_delay > 0)
 			var/calc = get_dist(L1.old_turf,L2)
 			if(calc < best_distance)
@@ -33,3 +32,6 @@
 	best_distance -= ( (A1.object_size-1) + (A2.object_size-1) )
 
 	return best_distance
+
+/proc/get_dist_real(var/atom/A1,var/atom/A2)
+	return sqrt( ((A1.x - A2.x)**2) + ((A1.y - A2.y)**2) )

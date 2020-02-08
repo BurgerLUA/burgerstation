@@ -1,12 +1,22 @@
 mob/living/advanced/player/proc/can_save(var/area/A)
+
 	if(!client)
 		return FALSE
 
 	if(!A || !(A.flags_area & FLAGS_AREA_SAVEZONE))
+		src.to_chat(span("danger","You cannot save and quit here! Find a suitable zone to rest first!"))
 		return FALSE
 
-	var/obj/structure/interactive/bed/sleeper/S = locate() in get_turf(src).contents
-	return S && istype(S) && S.buckled
+	var/obj/structure/interactive/bed/sleeper/S = locate() in src.loc.contents
+	if(!S)
+		src.to_chat(span("danger","Find a sleeper and lie down on it first!"))
+		return FALSE
+
+	if(!S.buckled)
+		src.to_chat(span("danger","Lay down on the bed first!"))
+		return FALSE
+
+	return TRUE
 
 mob/living/advanced/player/verb/logout()
 
@@ -37,8 +47,6 @@ mob/living/advanced/player/verb/logout()
 			make_ghost()
 			qdel(src)
 			return TRUE
-	else
-		src.to_chat(span("danger","You cannot save and quit here! Find an area with a suitable wishgranter first!"))
 
 	return FALSE
 
