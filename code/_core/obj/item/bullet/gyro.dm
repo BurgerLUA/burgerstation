@@ -17,13 +17,3 @@
 /obj/item/bullet/gyrojet/surplus
 	name = "\improper surplus 20mm gyrorocket"
 	misfire_chance = 20
-
-/*
-/obj/item/bullet/gyrojet/spend_bullet()
-
-	. = ..()
-
-	invisible = 100
-
-	return .
-*/

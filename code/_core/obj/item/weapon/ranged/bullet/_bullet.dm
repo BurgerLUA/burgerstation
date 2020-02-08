@@ -60,23 +60,23 @@
 
 	return B
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc)
 
 	for(var/obj/item/bullet/B in stored_bullets)
-		eject_stored_bullet(B,new_loc)
+		eject_stored_bullet(caller,B,new_loc)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc)
 
 	for(var/obj/item/bullet/B in stored_bullets)
 		if(!B.is_spent)
 			continue
-		eject_stored_bullet(B,new_loc)
+		eject_stored_bullet(caller,B,new_loc)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/obj/item/bullet/bullet_to_remove,var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet/bullet_to_remove,var/new_loc)
 
 	if(!(bullet_to_remove in stored_bullets))
 		return FALSE
@@ -88,24 +88,24 @@
 
 	return bullet_to_remove
 
-/obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet()
+/obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet(var/mob/caller)
 
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
 
-	return chambered_bullet.spend_bullet()
+	return chambered_bullet.spend_bullet(caller,is_npc(caller))
 
-/obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/bullet_position = 1)
+/obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
 
 	if(length(stored_bullets) && stored_bullets[bullet_position]) //Spend a bullet
 		var/obj/item/bullet/B = stored_bullets[bullet_position]
-		B = B.spend_bullet()
+		B = B.spend_bullet(caller,is_npc(caller))
 		return B
 
 	return FALSE
 
 /obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
-	return spend_chambered_bullet()
+	return spend_chambered_bullet(caller)
 
 /obj/item/weapon/ranged/bullet/New()
 	. = ..()

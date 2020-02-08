@@ -67,13 +67,15 @@
 
 	return .
 
-/obj/item/bullet/proc/spend_bullet()
+/obj/item/bullet/proc/spend_bullet(var/mob/caller,var/ai_cheat = FALSE)
+
+	if(ai_cheat)
+		return src
 
 	if(!is_spent)
 		if(misfire_chance && prob(misfire_chance))
 			return FALSE
 		is_spent = TRUE
-		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 		item_count_max = -1
 		return src
 

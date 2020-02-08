@@ -148,6 +148,19 @@
 		"alt" = 0
 	)
 
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(left_click)
+			if(A.left_item && is_ranged_gun(A.left_item))
+				var/obj/item/weapon/ranged/R = A.left_item
+				if(R.heat_current > rand_precise(0,0.05))
+					return TRUE
+		else
+			if(A.right_item && is_ranged_gun(A.right_item))
+				var/obj/item/weapon/ranged/R = A.right_item
+				if(R.heat_current > rand_precise(0,0.05))
+					return TRUE
+
 	if(left_click)
 		params["left"] = TRUE
 		owner.on_left_down(target,null,null,params)
@@ -160,7 +173,6 @@
 /ai/proc/handle_attacking()
 
 	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max)
-		world.log << "ATTACK!"
 		do_attack(objective_attack,prob(left_click_chance))
 
 	attack_ticks = 0

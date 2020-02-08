@@ -58,7 +58,6 @@ var/global/list/stored_paths = list()
 /obj/map_node/proc/find_path(var/obj/map_node/desired_node,var/obj/map_node/list/checked_nodes = list(),var/obj/map_node/list/current_path=list())
 
 	if(stored_paths["\ref[src],\ref[desired_node]"])
-		world.log << "WEW. OPTIMIZED!"
 		return stored_paths["\ref[src],\ref[desired_node]"]
 
 	var/is_first = !length(checked_nodes) && !length(current_path)

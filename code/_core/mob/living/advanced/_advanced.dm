@@ -73,8 +73,6 @@
 	attack_delay = 2
 	attack_delay_max = 6
 
-	var/iff_tag
-
 	var/update_hidden_limbs = FALSE
 	var/list/tracked_hidden_limbs
 	var/list/tracked_hidden_limb_clothing

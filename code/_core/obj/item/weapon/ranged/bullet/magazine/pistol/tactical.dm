@@ -5,7 +5,7 @@
 	value = 30
 
 	icon = 'icons/obj/items/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 2
+	shoot_delay = 3
 	bullet_type = ".45"
 	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
 

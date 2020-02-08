@@ -12,13 +12,7 @@
 	if(!stored_magazine)
 		icon_state = "[icon_state]_open"
 
-	world.log << "First Icon state: [icon_state]."
-
-	. = ..()
-
-	world.log << "Second Icon state: [icon_state]."
-
-	return .
+	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_static_spread() //Base spread
 	return 0.01

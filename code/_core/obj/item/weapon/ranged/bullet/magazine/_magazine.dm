@@ -40,7 +40,7 @@
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
 
 	eject_chambered_bullet(caller,caller.loc)
-	load_new_bullet_from_magazine()
+	load_new_bullet_from_magazine(caller)
 
 	var/area/A = get_area(caller.loc)
 	play_sound(cock_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
@@ -67,7 +67,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine()
+/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)
 	if(stored_magazine && length(stored_magazine.stored_bullets) && stored_magazine.stored_bullets[1] && !chambered_bullet)
 		var/obj/item/bullet/B = stored_magazine.stored_bullets[1]
 		stored_magazine.stored_bullets -= B
@@ -81,9 +81,9 @@
 
 	. = ..()
 
-	if(.)
+	if(. && !is_npc(caller))
 		eject_chambered_bullet(caller,get_turf(src))
 		if(!requires_cock_each_shot)
-			load_new_bullet_from_magazine()
+			load_new_bullet_from_magazine(caller)
 
 	return .

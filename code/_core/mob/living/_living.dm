@@ -12,6 +12,8 @@
 	var/enable_AI = FALSE
 	var/ai/ai
 
+	var/iff_tag
+
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
 	var/status = 0 //Negative status
