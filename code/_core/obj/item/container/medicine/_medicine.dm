@@ -51,6 +51,8 @@
 
 	if(heal_brute || heal_burn)
 		A.health.update_health()
+		if(is_organ(A) && A.loc.health)
+			A.loc.health.update_health()
 
 	var/reagent_transfer = ceiling((1/item_count_max)*reagents.volume_current)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer)

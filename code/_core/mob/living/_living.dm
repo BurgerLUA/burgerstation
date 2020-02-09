@@ -104,6 +104,7 @@
 
 	var/image/medical_hud_image
 	var/image/security_hud_image
+	var/image/medical_hud_image_advanced
 
 	has_footsteps = TRUE
 
@@ -165,6 +166,9 @@
 	qdel(security_hud_image)
 	security_hud_image = null
 
+	qdel(medical_hud_image_advanced)
+	medical_hud_image_advanced = null
+
 	return ..()
 
 /mob/living/proc/get_brute_color()
@@ -195,6 +199,10 @@
 	security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 	security_hud_image.loc = src
 	security_hud_image.layer = PLANE_HUD_VISION
+
+	medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
+	medical_hud_image_advanced.loc = src
+	medical_hud_image_advanced.layer = PLANE_HUD_VISION
 
 	. = ..()
 

@@ -92,6 +92,39 @@
 	damage[FATIGUE] = value
 	return value
 
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy)
+
+	var/total_loss = 0
+
+	if(brute)
+		brute -= (brute > 0 ? resistance[BRUTE] : 0)
+		brute -= min(0,damage[BRUTE] + brute)
+		damage[BRUTE] += brute
+		total_loss += brute
+
+	if(burn)
+		burn -= (burn > 0 ? resistance[BURN] : 0)
+		burn -= min(0,damage[BURN] + burn)
+		damage[BURN] += burn
+		total_loss += burn
+
+	if(tox)
+		tox -= (tox > 0 ? resistance[TOX] : 0)
+		tox -= min(0,damage[TOX] + tox)
+		damage[TOX] += tox
+		total_loss += tox
+
+	if(oxy)
+		oxy -= (oxy > 0 ? resistance[OXY] : 0)
+		oxy -= min(0,damage[OXY] + oxy)
+		damage[OXY] += oxy
+		total_loss += oxy
+
+	if(total_loss)
+		update_health()
+
+	return total_loss
+
 //Adding/Subtracting
 /health/proc/adjust_brute_loss(var/value)
 	value -= (value > 0 ? resistance[BRUTE] : 0)

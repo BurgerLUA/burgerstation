@@ -296,56 +296,7 @@ mob/living/advanced/Login()
 	update_all_blends()
 	update_slowdown_mul()
 
-
 	return
-
-/mob/living/advanced/proc/heal_all_organs(var/brute,var/burn,var/tox,var/oxy) //BEHOLD: SHITCODE.
-
-	if(!health)
-		return 0
-
-	var/list/desired_heal_amounts = list(
-		BRUTE = brute,
-		BURN = burn,
-		TOX = tox
-	) //Fatigue and Oxy not included here. Organs are told to directly deal fatigue damage to the owner.
-
-	var/list/damaged_organs = list()
-
-	var/list/damage_totals = list()
-
-	for(var/organ_id in labeled_organs)
-		var/obj/item/organ/O = labeled_organs[organ_id]
-		if(!O.health)
-			continue
-		for(var/damage_type in O.health.damage)
-			var/damage_amount =  O.health.damage[damage_type]
-			if(!damage_amount || damage_amount < 0)
-				continue
-			if(!damaged_organs[organ_id])
-				damaged_organs[organ_id] = list()
-			damaged_organs[organ_id][damage_type] += damage_amount
-			damage_totals[damage_type] += damage_amount
-
-	var/total_healed = 0
-
-	for(var/organ_id in damaged_organs)
-		var/obj/item/organ/O = labeled_organs[organ_id]
-		if(!O.health)
-			continue
-		for(var/damage_type in damaged_organs[organ_id])
-			var/damage_amount_of_type = damaged_organs[organ_id][damage_type]
-			var/heal_amount_of_type = desired_heal_amounts[damage_type]
-			var/total_damage_of_type = damage_totals[damage_type]
-			if(damage_amount_of_type <= 0 || heal_amount_of_type <= 0 || total_damage_of_type <= 0)
-				continue
-			total_healed -= O.health.adjust_loss(damage_type,(damage_amount_of_type / total_damage_of_type) * -heal_amount_of_type)
-		O.health.update_health()
-
-	if(total_healed)
-		health.update_health(-total_healed,src)
-
-	return total_healed
 
 /mob/living/advanced/proc/add_outfit(var/outfit_id,var/soul_bound=FALSE)
 

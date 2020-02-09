@@ -1,3 +1,6 @@
+
+
+
 /health/obj/item/organ/update_stats()
 
 	if(!is_organ(owner))
@@ -45,8 +48,23 @@
 		if(should_update)
 			A.update_overlay(O)
 
+
+		world.log << "ORGAN HEALTH UPDATE."
+		/*
 		if(O.loc && O.loc.health)
 			O.loc.health.update_health()
+		*/
+
+	return .
+
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy)
+
+	. = ..()
+
+	if(. && is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		A.health_regen_delay = max(A.health_regen_delay,300)
+		A.health.update_health()
 
 	return .
 

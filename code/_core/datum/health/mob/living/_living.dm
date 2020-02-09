@@ -26,6 +26,10 @@
 
 		L.medical_hud_image.icon_state = health_icon_state
 
+	if(L.medical_hud_image_advanced)
+		L.medical_hud_image_advanced.icon_state = "[damage[TOX] > 0][damage[BURN] > 0][damage[BRUTE] > 0]"
+		world.log << "The state is: [L.medical_hud_image_advanced.icon_state]."
+
 	return .
 
 /health/mob/living/update_stats()

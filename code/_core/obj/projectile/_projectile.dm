@@ -50,6 +50,7 @@
 	var/obj/effect/temp/muzzleflash/muzzleflash_effect
 
 	var/iff_tag
+	var/ignore_iff = FALSE //Set to true if you want it to ignore IFF collision checking.
 
 	anchored = TRUE
 

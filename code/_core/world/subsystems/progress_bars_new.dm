@@ -3,7 +3,7 @@ var/global/subsystem/progress_bars/SSprogressbars
 /subsystem/progress_bars/
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
-	tick_rate = DECISECONDS_TO_TICKS(0.1)
+	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 
 	var/list/all_progress_bars = list()

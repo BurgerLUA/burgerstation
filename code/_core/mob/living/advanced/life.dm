@@ -133,9 +133,10 @@ mob/living/advanced/proc/handle_regen()
 	var/regened_stamina = 0
 	var/regened_mana = 0
 
-	if(health_regen_buffer)
+	if(health_regen_buffer && health)
 		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		regened_health = heal_all_organs(health_to_regen,health_to_regen,health_to_regen,health_to_regen)
+		world.log << "CUM."
+		regened_health = -health.adjust_loss_smart(brute=-health_to_regen,burn=-health_to_regen,oxy=-health_to_regen,tox=-health_to_regen)
 		health_regen_buffer -= health_to_regen
 
 	if(stamina_regen_buffer)
