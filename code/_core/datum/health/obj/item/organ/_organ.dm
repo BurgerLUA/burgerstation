@@ -22,38 +22,36 @@
 
 	. = ..()
 
-	if(!health_max)
-		return .
+	if(. && owner.initialized)
 
-	if(!is_organ(owner))
-		return .
+		if(!health_max)
+			return .
 
-	var/obj/item/organ/O = owner
+		if(!is_organ(owner))
+			return .
 
-	if(O.enable_wounds && O.loc && is_advanced(O.loc))
+		var/obj/item/organ/O = owner
 
-		var/mob/living/advanced/A = O.loc
+		if(O.enable_wounds && O.loc && is_advanced(O.loc))
 
-		var/should_update = FALSE
+			var/mob/living/advanced/A = O.loc
 
-		for(var/damage_type in O.visual_wounds)
-			var/last_amount = O.visual_wounds[damage_type]
-			var/current_amount = Clamp(ceiling((get_loss(damage_type)/health_max*0.5)*3),0,3)
-			if(last_amount != current_amount)
-				var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
-				O.change_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
-				O.visual_wounds[damage_type] = current_amount
-				should_update = TRUE
+			var/should_update = FALSE
 
-		if(should_update)
-			A.update_overlay(O)
+			for(var/damage_type in O.visual_wounds)
+				var/last_amount = O.visual_wounds[damage_type]
+				var/current_amount = Clamp(ceiling((get_loss(damage_type)/health_max*0.5)*3),0,3)
+				if(last_amount != current_amount)
+					var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
+					O.change_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
+					O.visual_wounds[damage_type] = current_amount
+					should_update = TRUE
 
+			if(should_update)
+				A.update_overlay(O)
 
-		world.log << "ORGAN HEALTH UPDATE."
-		/*
-		if(O.loc && O.loc.health)
-			O.loc.health.update_health()
-		*/
+			A.health_regen_delay = max(A.health_regen_delay,300)
+			world.log << "ORGAN HEALTH UPDATE."
 
 	return .
 

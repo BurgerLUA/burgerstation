@@ -25,7 +25,7 @@
 
 	. = ..()
 
-	if(health_current <= 0)
+	if(. && health_current <= 0)
 		var/obj/structure/interactive/construction/C = owner
 		C.on_destruction(attacker,TRUE)
 
@@ -39,7 +39,7 @@
 
 	. = ..()
 
-	if(owner)
+	if(. && owner)
 
 		var/damage_number = 3 - floor((health_current/health_max)*3)
 

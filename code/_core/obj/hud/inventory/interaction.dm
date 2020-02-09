@@ -47,13 +47,14 @@
 		else if(object != src && is_inventory(object) && defer_object != object && is_item(defer_object))
 			var/obj/item/I = defer_object //Object that we're clicking on.
 			var/obj/hud/inventory/I2 = object //Inventory that we're clicking on.
-			I.wielded = !I.wielded
-			src.parent_inventory = I.wielded ? I2 : null
-			I2.child_inventory = I.wielded ? src : null
-			caller.to_chat(span("notice","You [I.wielded ? "brace" : "release"] \the [I] with your [src.loc.name]."))
-			update_icon()
-			I.update_icon()
-			return TRUE
+			if((I in I2.held_objects))
+				I.wielded = !I.wielded
+				src.parent_inventory = I.wielded ? I2 : null
+				I2.child_inventory = I.wielded ? src : null
+				caller.to_chat(span("notice","You [I.wielded ? "brace" : "release"] \the [I] with your [src.loc.name]."))
+				update_icon()
+				I.update_icon()
+				return TRUE
 
 	if((caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE

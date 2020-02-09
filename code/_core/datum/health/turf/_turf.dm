@@ -23,7 +23,7 @@
 
 	. = ..()
 
-	if(health_current <= 0 && is_simulated(owner))
+	if(. && health_current <= 0 && is_simulated(owner))
 		var/turf/simulated/T = owner
 		T.on_destruction(attacker,TRUE)
 

@@ -186,6 +186,7 @@
 
 /health/proc/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE) //Update the health values.
 	health_current = get_overall_health()
+	return TRUE
 
 /health/proc/adjust_loss(var/type=BRUTE,var/amount)
 	if(!amount)

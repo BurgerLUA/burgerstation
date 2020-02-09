@@ -166,16 +166,16 @@ health/mob/living/advanced/update_stats()
 		for(var/damage_type in damage)
 			damage[damage_type] += O.health.damage[damage_type]
 
-
 	world.log << "Brute:[damage[BRUTE]] Burn:[damage[BURN]]"
 
 	. = ..()
 
-	if(health_current <= 0 && !A.crit_time)
-		A.set_crit()
+	if(.)
+		if(health_current <= 0 && !A.crit_time)
+			A.set_crit()
 
-	else if(health_current > 0 && A.crit_time)
-		A.unset_crit()
+		else if(health_current > 0 && A.crit_time)
+			A.unset_crit()
 
 	return .
 

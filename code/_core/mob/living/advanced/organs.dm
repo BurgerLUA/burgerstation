@@ -59,6 +59,8 @@
 	labeled_organs[O.id] = O
 	O.update_owner(src) //This updates inventories.
 
+	O.Initialize()
+
 	if(is_tail(O))
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
