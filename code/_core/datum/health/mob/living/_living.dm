@@ -11,7 +11,7 @@
 		L.death()
 
 	if(update_hud)
-		L.update_health_element_icons(health=TRUE)
+		L.update_health_element_icons(health=TRUE,update_body=TRUE)
 		L.update_boss_health()
 
 	if(L.medical_hud_image)
@@ -41,6 +41,6 @@
 	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_AGILITY)*400
 	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WILLPOWER)*400
 
-	L.update_health_element_icons(TRUE,TRUE,TRUE)
+	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
 	return TRUE

@@ -22,8 +22,6 @@
 
 	. = ..()
 
-	labeled_overlays = list()
-
 	if(.)
 
 		if(!is_advanced(owner))
@@ -32,10 +30,15 @@
 		var/mob/living/advanced/A = owner
 
 		overlays.Cut()
+		labeled_overlays.Cut()
 
 		for(var/o_id in A.labeled_organs)
 
 			var/obj/item/organ/O = A.labeled_organs[o_id]
+
+			if(!O)
+				LOG_ERROR("Body error! Line 41 of health/body.dm!")
+				continue
 
 			if(!O.health)
 				continue
@@ -50,7 +53,6 @@
 			I.color = "#FF0000"
 			labeled_overlays[o_id] = I
 			overlays += I
-
 
 		update_icon()
 
@@ -73,6 +75,10 @@
 
 		var/image/I = labeled_overlays[o_id]
 		var/obj/item/organ/O = A.labeled_organs[o_id]
+
+		if(!O)
+			labeled_overlays -= o_id
+			continue
 
 		if(!O.health)
 			labeled_overlays -= o_id

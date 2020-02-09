@@ -305,6 +305,6 @@ mob/living/proc/on_life_slow()
 			health.update_health(health_regen_buffer,FALSE)
 
 		if(health_regen_buffer || stamina_regen_buffer || mana_regen_buffer)
-			update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0)
+			update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0,TRUE)
 
 	return TRUE

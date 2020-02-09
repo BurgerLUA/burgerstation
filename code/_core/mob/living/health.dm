@@ -41,17 +41,11 @@
 		var/obj/hud/button/health/M = health_elements["mana"]
 		M.update_stats(src)
 
-	return TRUE
-
-/mob/living/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
-
-	. = ..()
-
-	if(. && length(screen_blood))
+	if(length(screen_blood))
 		for(var/obj/hud/screen_blood/SB in screen_blood)
 			SB.update_stats()
 
-	return
+	return TRUE
 
 /mob/living/proc/check_death()
 

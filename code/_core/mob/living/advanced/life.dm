@@ -44,7 +44,7 @@ mob/living/advanced/proc/handle_regen()
 			add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust)
 
 	if(health_adjust || stamina_adjust || mana_adjust)
-		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust)
+		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust,TRUE)
 
 	health_regen_delay = max(0,health_regen_delay - LIFE_TICK_SLOW)
 	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK_SLOW)
@@ -149,7 +149,7 @@ mob/living/advanced/proc/handle_regen()
 		mana_regen_buffer -= mana_to_regen
 
 	if(regened_health || regened_stamina || regened_mana)
-		update_health_element_icons(regened_health,regened_stamina,regened_mana)
+		update_health_element_icons(regened_health,regened_stamina,regened_mana,TRUE)
 
 	return TRUE
 

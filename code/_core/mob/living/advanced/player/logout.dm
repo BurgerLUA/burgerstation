@@ -61,12 +61,8 @@ mob/living/advanced/player/verb/logout()
 	return TRUE
 
 /mob/living/advanced/player/proc/save(var/save_inventory = TRUE)
-
 	var/savedata/client/mob/U = mobdata
-
-
 	U.save_current_character(save_inventory)
-
 	return TRUE
 
 /*

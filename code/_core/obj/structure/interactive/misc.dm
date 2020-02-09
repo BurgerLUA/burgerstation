@@ -64,9 +64,8 @@ obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/crosser)
 obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/crosser)
 	if(is_advanced(crosser))
 		var/mob/living/advanced/player/P = crosser
-		P.to_chat(span("thought","There. I look perfect!"))
 		P.remove_chargen_buttons()
-		P.save()
+		//P.save()
 	return ..()
 
 obj/structure/interactive/misc/curtain_open

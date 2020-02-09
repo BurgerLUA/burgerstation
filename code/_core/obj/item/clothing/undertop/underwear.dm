@@ -43,6 +43,10 @@
 /obj/item/clothing/undertop/underwear/bra/brown
 	color = "#603A20"
 
+/obj/item/clothing/undertop/underwear/bra/random/on_spawn()
+	color = random_color()
+	return ..()
+
 /obj/item/clothing/undertop/underwear/shirt
 	icon = 'icons/obj/items/clothing/underwear/undershirt.dmi'
 

@@ -15,7 +15,7 @@
 		var/choice = input("Are you sure you want to change your sex to [desired_sex == MALE ? "male" : "female"]? Your appearance will reset to default.","Sex Change") in list("Yes","No")
 
 		if(choice == "Yes")
-			A.perform_sexchange(desired_sex,TRUE,TRUE)
+			A.perform_sexchange(desired_sex,FALSE,TRUE)
 
 	return TRUE
 

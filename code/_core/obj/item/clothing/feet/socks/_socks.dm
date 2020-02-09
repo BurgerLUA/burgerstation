@@ -31,6 +31,11 @@
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'
 	polymorphic = TRUE
 
+/obj/item/clothing/feet/socks/knee/white
+	color_primary = "#FFFFFF"
+	color_secondary = "#FFFFFF"
+	color_tertiary = "#FFFFFF"
+
 /obj/item/clothing/feet/socks/knee/scottish
 	color_primary = "#53512A"
 	color_secondary = "#32321B"

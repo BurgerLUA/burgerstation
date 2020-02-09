@@ -5,20 +5,23 @@
 
 /subsystem/map_node/Initialize()
 
-	LOG_SERVER("Node graph out of date. Rebuilding...")
+	if(ENABLE_AI)
 
-	new /mob/abstract/node_checker(locate(1,1,1))
+		LOG_SERVER("Node graph out of date. Rebuilding...")
 
-	var/map_nodes = 0
-	var/adjacent_map_nodes = 0
+		new /mob/abstract/node_checker(locate(1,1,1))
 
-	var/i=0
-	for(var/obj/map_node/M in all_map_nodes)
-		i++
-		if(M.initialize_node())
-			map_nodes += 1
-			adjacent_map_nodes += length(M.adjacent_map_nodes)
-		LOG_SERVER("Percent done: [floor(100*i/length(all_map_nodes))]%")
+		var/map_nodes = 0
+		var/adjacent_map_nodes = 0
 
-	LOG_SERVER("Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
+		var/i=0
+		for(var/obj/map_node/M in all_map_nodes)
+			i++
+			if(M.initialize_node())
+				map_nodes += 1
+				adjacent_map_nodes += length(M.adjacent_map_nodes)
+			LOG_SERVER("Percent done: [floor(100*i/length(all_map_nodes))]%")
 
+		LOG_SERVER("Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
+
+	return TRUE

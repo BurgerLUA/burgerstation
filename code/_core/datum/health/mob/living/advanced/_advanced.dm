@@ -83,7 +83,7 @@ health/mob/living/advanced/update_stats()
 	else
 		mana_regeneration = mana_max * (0.01 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.02)
 
-	A.update_health_element_icons(TRUE,TRUE,TRUE)
+	A.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
 
 /health/mob/living/advanced/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)

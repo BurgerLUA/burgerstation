@@ -15,8 +15,11 @@
 	O.on_organ_remove(src)
 
 /mob/living/advanced/proc/remove_all_organs()
+
 	for(var/obj/item/organ/O in organs)
 		remove_organ(O,TRUE)
+	world.log << "Removing all organs..."
+
 
 /*
 /mob/living/advanced/proc/update_all_organs()
@@ -47,6 +50,7 @@
 
 	organs += O
 	labeled_organs[O.id] = O
+	world.log << "labeled_organs\[[O.id]\] = [O.type]"
 	O.update_owner(src)
 
 	if(is_tail(O))

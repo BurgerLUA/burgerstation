@@ -1,16 +1,15 @@
 /mob/living/advanced/proc/start_chargen()
 
-	spawn()
+	Initialize()
+	//show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
+	default_appearance()
+	if(sex == MALE)
+		add_outfit("new_male",TRUE)
+	else
+		add_outfit("new_female",TRUE)
+	stop_music_track(client)
 
-		Initialize()
-		//show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET,speed=0)
-		//show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
-		handle_hairstyle_chargen(sex == MALE ? 2 : 16,"#000000")
-		handle_beardstyle_chargen(1,"#000000")
-		add_outfit("new")
-
-		stop_music_track(client)
-
+	/*
 		if(ENABLE_LORE)
 
 			play_music_track("space_wayfarer",src.client)
@@ -40,6 +39,7 @@
 
 			stun_time = 20
 			paralyze_time = 20
+	*/
 
 
 
@@ -87,26 +87,21 @@
 
 	return kept_items
 
-/mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
-
-	apply_mob_parts(FALSE,FALSE)
-
+/mob/living/advanced/proc/default_appearance()
+	var/species/S = all_species[species]
+	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
+	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
+	handle_skincolor_chargen(S.default_color_skin,FALSE)
+	handle_eyecolor_chargen(S.default_color_eye,FALSE)
 	update_all_blends()
-	update_icon()
-	update_health_element_icons(TRUE,TRUE,TRUE)
+
+/mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
 
 	if(chargen)
 		add_chargen_buttons()
 
-	show_inventory(TRUE,FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
-	for(var/obj/hud/button/hide_show_inventory/B in buttons)
-		B.update_icon()
-
-	var/species/S = all_species[species]
-
-	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair)
-	handle_beardstyle_chargen(1,S.default_color_hair)
-	//Blends are updated in the above two procs
+	apply_mob_parts(FALSE,FALSE)
+	default_appearance()
 
 	if(length(kept_items))
 		equip_objects_in_list(kept_items)
@@ -116,4 +111,11 @@
 		else
 			add_outfit("new_female",TRUE)
 
-		add_outfit("assistant",TRUE)
+	for(var/obj/hud/button/hide_show_inventory/B in buttons)
+		B.update_icon()
+
+	update_icon()
+	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+
+
+

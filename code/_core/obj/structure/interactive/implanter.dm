@@ -43,6 +43,9 @@
 	var/obj/item/organ/internal/implant/added_implant = A.add_organ(stored_implant)
 	if(added_implant)
 		caller.to_chat("You implant \the [added_implant.name] into your [added_implant.attached_organ.name].")
+		if(should_save_on_implant && is_player(A))
+			var/mob/living/advanced/player/P = A
+			P.save()
 	else
 		caller.to_chat("There was an error adding your implant.")
 
@@ -50,3 +53,7 @@
 
 /obj/structure/interactive/hand_implanter/IFF
 	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
+
+/obj/structure/interactive/hand_implanter/IFF/save
+	should_save_on_implant = TRUE
+	removes_existing = TRUE

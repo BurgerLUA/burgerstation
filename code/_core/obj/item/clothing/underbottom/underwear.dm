@@ -56,6 +56,10 @@
 /obj/item/clothing/underbottom/underwear/panty/red
 	color = "#C60000"
 
+/obj/item/clothing/underbottom/underwear/panty/random/on_spawn()
+	color = random_color()
+	return ..()
+
 /obj/item/clothing/underbottom/underwear/loincloth
 	name = "loincloth"
 	icon = 'icons/obj/items/clothing/underwear/loincloth.dmi'

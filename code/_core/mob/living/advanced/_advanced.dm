@@ -291,7 +291,7 @@ mob/living/advanced/Login()
 	. = ..()
 
 	if(client)
-		update_health_element_icons(TRUE,TRUE,TRUE)
+		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
 	update_all_blends()
 	update_slowdown_mul()

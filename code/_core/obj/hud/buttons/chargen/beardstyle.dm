@@ -1,4 +1,4 @@
-mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_color) //This needs to be called when the buttons are made visible.
+mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_color,var/update_blends = TRUE) //This needs to be called when the buttons are made visible.
 
 	var/species/S = all_species[species]
 
@@ -60,7 +60,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	else
 		change_organ_visual("hair_face", desired_icon = S.default_icon_face, desired_icon_state = hair_icon)
 
-	update_all_blends()
+	if(update_blends) update_all_blends()
 
 	return TRUE
 

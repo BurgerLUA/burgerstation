@@ -28,3 +28,10 @@
 	no_initial_blend = TRUE
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
+
+
+/obj/item/clothing/uniform/skirt/random/on_spawn()
+	color_primary = random_color()
+	color_secondary = random_color()
+	color_tertiary = random_color()
+	return ..()
