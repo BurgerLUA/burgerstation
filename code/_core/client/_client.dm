@@ -49,25 +49,18 @@ var/global/list/all_clients = list()
 
 	var/allow_zoom_controls = TRUE
 
-	var/ping = 0
-	var/ping_id = 0
+	var/ping_num = 0
 
 	var/spam_protection_chat = 0 //Prevents users from spamming every tick.
 
 	var/list/stored_hud_images = list() //For MediHUDs
 
-//Ping verb by Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
-/client/verb/ping(time as num)
-	set instant = 1
-	set hidden = 1
-	set waitfor = 0
+//Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
+/client/verb/ping()
+	winset(src,null,"command=pong+[world.time]")
 
-	ping = (world.time+world.tick_lag*world.tick_usage/100)-time
-	var/lping = (ping_id+1)%10000000
-	ping_id = lping
-	sleep(1)
-	if(ping_id==lping)
-		winset(src,null,"command=ping+[world.time+world.tick_lag*world.tick_usage/100]")
+/client/verb/pong(var/time as num)
+	ping_num = world.time - time
 
 /client/Del() // Can't have destroy.
 

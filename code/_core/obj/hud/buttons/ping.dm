@@ -7,9 +7,11 @@
 
 	screen_loc = "RIGHT,TOP:10"
 
-	thinks = TRUE
-
 	maptext_x = -2
+
+/obj/hud/button/ping/New(var/desired_loc)
+	start_thinking(src)
+	return ..()
 
 /obj/hud/button/ping/think()
 
@@ -21,6 +23,6 @@
 	if(!M.client)
 		return FALSE
 
-	maptext = "<div align='right'>[ceiling(M.client.ping - world.time)]ms</div>"
+	maptext = "<div align='right'>[ceiling(M.client.ping_num)]ms</div>"
 
-	return ..()
+	return TRUE
