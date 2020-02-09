@@ -19,7 +19,7 @@
 
 
 /obj/item/organ/eye/initialize_blends()
-	add_blend("eye", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
+	add_blend("eye", desired_color = "#000000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE)
 
 /obj/item/organ/eye/left
 	name = "left eye"
@@ -32,12 +32,10 @@
 	name = "right reptile eye"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
-
 /obj/item/organ/eye/reptile/left
 	name = "left reptile eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
-
 
 //Reptile Advanced
 /obj/item/organ/eye/reptile_advanced

@@ -151,7 +151,6 @@
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		if(!left_click)
-			world.log << "The item is [A.left_item] and it is ranged: [is_ranged_gun(A.left_item)]."
 			if(A.left_item && is_ranged_gun(A.left_item))
 				var/obj/item/weapon/ranged/R = A.left_item
 				if(R.heat_current > R.automatic ? 0.05 : 0)

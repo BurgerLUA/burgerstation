@@ -18,7 +18,6 @@
 
 	for(var/obj/item/organ/O in organs)
 		remove_organ(O,TRUE)
-	world.log << "Removing all organs..."
 
 
 /*
@@ -33,12 +32,20 @@
 
 	var/species/S = all_species[species]
 
+	var/initially_disabled = FALSE
+	if(client)
+		initially_disabled = client.disable_controls
+		client.disable_controls = TRUE
 	if(sex == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
 		for(var/key in S.spawning_organs_female)
 			add_organ(S.spawning_organs_female[key])
+			sleep(TICK_LAG)
 	else
 		for(var/key in S.spawning_organs_male)
 			add_organ(S.spawning_organs_male[key])
+			sleep(TICK_LAG)
+	if(client && !initially_disabled)
+		client.disable_controls = FALSE
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 
@@ -50,8 +57,7 @@
 
 	organs += O
 	labeled_organs[O.id] = O
-	world.log << "labeled_organs\[[O.id]\] = [O.type]"
-	O.update_owner(src)
+	O.update_owner(src) //This updates inventories.
 
 	if(is_tail(O))
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")

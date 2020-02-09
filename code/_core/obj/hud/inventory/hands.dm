@@ -45,7 +45,6 @@
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.left_item = I.defer_click_on_object()
-		world.log << "HELLO: [A.left_item]."
 
 	return .
 
