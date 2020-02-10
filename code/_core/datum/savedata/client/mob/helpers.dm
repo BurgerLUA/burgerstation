@@ -112,6 +112,8 @@
 	loaded_data["id"] = owner.save_slot
 	loaded_data["currency"] = A.currency
 	loaded_data["species"] = A.species
+	loaded_data["gender"] = A.gender
+	loaded_data["sex"] = A.sex
 
 	var/final_organ_list = list()
 	for(var/id in A.labeled_organs)
@@ -143,6 +145,8 @@
 
 	//Name
 	A.real_name = loaded_data["name"]
+	A.sex = loaded_data["sex"]
+	A.gender = loaded_data["gender"]
 	A.currency = loaded_data["currency"]
 	A.species = loaded_data["species"]
 
