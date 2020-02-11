@@ -331,6 +331,4 @@
 	if(attack_on_block && !do_attack(obstacle,prob(left_click_chance)))
 		frustration++
 
-	world.log << "Bump."
-
 	return FALSE

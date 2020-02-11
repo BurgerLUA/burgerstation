@@ -207,7 +207,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_B)
+		owner.health.adjust_loss_smart(burn=.*-HEALING_B)
 
 	return .
 
@@ -224,10 +224,11 @@
 	metabolism_skin = METABOLISM_SKIN
 
 /reagent/medicine/styptic_powder/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-HEALING_B)
+		owner.health.adjust_loss_smart(brute=.*-HEALING_B)
 
 	return .
 

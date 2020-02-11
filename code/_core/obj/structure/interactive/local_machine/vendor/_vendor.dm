@@ -120,12 +120,15 @@
 		V.update_icon()
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "CENTER,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]"
+	CV.screen_loc = "CENTER,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]-1"
 	CV.update_owner(A)
 	CV.update_icon()
 
 /obj/structure/interactive/vendor/proc/hide_buttons_from(var/mob/living/advanced/A)
 	for(var/obj/hud/button/vendor/V in A.buttons)
+		V.update_owner(null)
+
+	for(var/obj/hud/button/close_vendor/V in A.buttons)
 		V.update_owner(null)
 
 /obj/structure/interactive/vendor/on_active(var/mob/living/advanced/player/P)

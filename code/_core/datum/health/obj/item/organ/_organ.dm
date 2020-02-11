@@ -30,11 +30,8 @@
 		var/obj/item/organ/O = owner
 
 		if(O.enable_wounds && O.loc && is_advanced(O.loc))
-
 			var/mob/living/advanced/A = O.loc
-
 			var/should_update = FALSE
-
 			for(var/damage_type in O.visual_wounds)
 				var/last_amount = O.visual_wounds[damage_type]
 				var/current_amount = Clamp(ceiling((get_loss(damage_type)/health_max*0.5)*3),0,3)
@@ -47,12 +44,9 @@
 			if(should_update)
 				A.update_overlay(O)
 
-			A.health_regen_delay = max(A.health_regen_delay,300)
-			world.log << "ORGAN HEALTH UPDATE."
-
 	return .
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/should_update_owner=TRUE)
 
 	if(tox || oxy)
 		if(owner.loc && is_advanced(owner.loc))
@@ -65,10 +59,12 @@
 
 	. += ..(brute,burn,tox,oxy)
 
-	if(. && is_advanced(owner.loc))
+	if(. && should_update_owner && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 		A.health.update_health()
+		if(. > 0)
+			A.health_regen_delay = max(A.health_regen_delay,300)
 
 	return .
 

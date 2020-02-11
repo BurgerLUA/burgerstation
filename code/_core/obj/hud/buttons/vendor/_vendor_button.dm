@@ -122,11 +122,9 @@
 	if(!is_player(caller))
 		return TRUE
 
-	var/mob/living/advanced/player/P = caller
-	P.set_structure_unactive()
-
 	. = ..()
 
-	update_owner(null)
+	var/mob/living/advanced/player/P = caller
+	P.set_structure_unactive()
 
 	return .

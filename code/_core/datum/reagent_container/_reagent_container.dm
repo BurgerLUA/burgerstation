@@ -83,7 +83,6 @@
 
 	update_container()
 
-
 /reagent_container/proc/process_temperature()
 
 	if(!owner)
