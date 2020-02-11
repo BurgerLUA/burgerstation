@@ -18,3 +18,9 @@
 /mob/living/advanced/player/debug/on_life()
 	move_dir = pick(DIRECTIONS_ALL)
 	return ..()
+
+
+
+/mob/living/advanced/player/verb/reddit()
+	if(health)
+		health.adjust_loss_smart(10,10,10,10)

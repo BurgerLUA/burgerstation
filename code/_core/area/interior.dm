@@ -10,7 +10,7 @@
 
 /area/interior/station
 	name = "Central Command"
-	icon_state = "centcomm"
+	icon_state = "cmd"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 
 /area/interior/station/singleplayer
@@ -95,10 +95,6 @@
 /area/interior/ship/hanger
 	name = "\improper Hanger"
 	icon_state = "hanger"
-
-/area/interior/command
-	name = "\improper Command"
-	icon_state = "cmd"
 
 /area/interior/ship/maint
 	name = "\improper Maint"

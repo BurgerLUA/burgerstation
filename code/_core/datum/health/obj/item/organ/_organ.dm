@@ -1,6 +1,3 @@
-
-
-
 /health/obj/item/organ/update_stats()
 
 	if(!is_organ(owner))
@@ -57,7 +54,16 @@
 
 /health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy)
 
-	. = ..()
+	if(tox || oxy)
+		if(owner.loc && is_advanced(owner.loc))
+			var/mob/living/advanced/A = owner.loc
+			if(A.health)
+				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy)
+		tox = 0
+		oxy = 0
+
+
+	. += ..(brute,burn,tox,oxy)
 
 	if(. && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
@@ -76,26 +82,6 @@
 
 	return .
 
-/health/obj/item/organ/adjust_tox_loss(var/value)
-
-	. = ..()
-
-	if(. > 0 && is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-
-	return .
-
-/health/obj/item/organ/adjust_oxy_loss(var/value)
-
-	. = ..()
-
-	if(. > 0 && is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-
-	return .
-
 /health/obj/item/organ/adjust_burn_loss(var/value)
 
 	. = ..()
@@ -105,6 +91,28 @@
 		A.health_regen_delay = max(A.health_regen_delay,300)
 
 	return .
+
+/health/obj/item/organ/adjust_tox_loss(var/value)
+	if(!owner.loc || !is_advanced(owner.loc))
+		return 0
+
+	var/mob/living/advanced/A = owner.loc
+
+	if(!A.health)
+		return FALSE
+
+	return A.health.adjust_tox_loss(value)
+
+/health/obj/item/organ/adjust_oxy_loss(var/value)
+	if(!owner.loc || !is_advanced(owner.loc))
+		return 0
+
+	var/mob/living/advanced/A = owner.loc
+
+	if(!A.health)
+		return FALSE
+
+	return A.health.adjust_oxy_loss(value)
 
 /health/obj/item/organ/adjust_fatigue_loss(var/value)
 	if(!owner.loc || !is_advanced(owner.loc))

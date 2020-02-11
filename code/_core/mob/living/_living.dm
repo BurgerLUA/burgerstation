@@ -5,6 +5,8 @@
 	var/list/faction/factions
 	var/list/starting_factions = list()
 
+	movement_delay = DECISECONDS_TO_TICKS(2)
+
 	icon_state = "directional"
 
 	var/class = "default"

@@ -4,6 +4,7 @@
 	double_sided = TRUE
 	connects_dir = TRUE
 	layer = LAYER_GROUND_SCENERY
+	under_tile = TRUE
 
 /obj/structure/interactive/disposals/pipe/New(var/desired_loc)
 	//plane = PLANE_FLOOR_OBJECTS

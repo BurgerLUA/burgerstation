@@ -106,7 +106,7 @@
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "CENTER-3,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i]"
+		V.screen_loc = "CENTER-3,CENTER-[(stored_objects_length+stored_types_length+1)*0.5]+[i]"
 		V.update_owner(A)
 		V.update_icon()
 
@@ -115,9 +115,14 @@
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "CENTER-3,CENTER-0.5-[(stored_objects_length+stored_types_length)*0.5]+[i+stored_objects_length]"
+		V.screen_loc = "CENTER-3,CENTER-[(stored_objects_length+stored_types_length+1)*0.5]+[i+stored_objects_length]"
 		V.update_owner(A)
 		V.update_icon()
+
+	var/obj/hud/button/close_vendor/CV = new
+	CV.screen_loc = "CENTER,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]"
+	CV.update_owner(A)
+	CV.update_icon()
 
 /obj/structure/interactive/vendor/proc/hide_buttons_from(var/mob/living/advanced/A)
 	for(var/obj/hud/button/vendor/V in A.buttons)

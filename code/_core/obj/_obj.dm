@@ -9,6 +9,8 @@
 
 	var/should_save = TRUE
 
+	var/under_tile = FALSE
+
 /obj/Destroy()
 
 	for(var/blend_id in additional_blends)

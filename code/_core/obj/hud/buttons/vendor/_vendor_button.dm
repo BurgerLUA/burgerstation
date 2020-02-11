@@ -103,3 +103,30 @@
 	associated_vendor.purchase_item(caller,associated_item,item_value,I)
 
 	return ..()
+
+
+
+
+
+/obj/hud/button/close_vendor
+	name = "close vendor"
+	icon_state = "close_inventory"
+	screen_loc = "CENTER,CENTER"
+
+	essential = TRUE
+
+	flags = FLAGS_HUD_SPECIAL
+
+/obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(!is_player(caller))
+		return TRUE
+
+	var/mob/living/advanced/player/P = caller
+	P.set_structure_unactive()
+
+	. = ..()
+
+	update_owner(null)
+
+	return .

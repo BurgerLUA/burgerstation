@@ -15,10 +15,16 @@
 				total_damage = O.health.adjust_loss_smart(brute=brute > 0 ? brute : 0,burn=burn > 0 ? burn : 0)
 
 	if(tox)
-		total_damage += adjust_tox_loss(tox)
+		tox -= (tox > 0 ? resistance[TOX] : 0)
+		tox -= min(0,damage[TOX] + tox)
+		damage[TOX] += tox
+		total_damage += tox
 
 	if(oxy)
-		total_damage += adjust_oxy_loss(tox)
+		oxy -= (oxy > 0 ? resistance[OXY] : 0)
+		oxy -= min(0,damage[OXY] + oxy)
+		damage[OXY] += oxy
+		total_damage += oxy
 
 	if(brute < 0 || burn < 0) //Heal damage
 		var/list/desired_heal_amounts = list(
@@ -156,17 +162,13 @@ health/mob/living/advanced/update_stats()
 		return ..()
 
 	var/mob/living/advanced/A = owner
-
-	for(var/damage_type in damage)
-		damage[damage_type] = 0
-
+	damage[BRUTE] = 0
+	damage[BURN] = 0
 	for(var/obj/item/organ/O in A.organs)
 		if(!O.health)
 			continue
-		for(var/damage_type in damage)
-			damage[damage_type] += O.health.damage[damage_type]
-
-	world.log << "Brute:[damage[BRUTE]] Burn:[damage[BURN]]"
+		damage[BRUTE] += O.health.damage[BRUTE]
+		damage[BURN] += O.health.damage[BURN]
 
 	. = ..()
 

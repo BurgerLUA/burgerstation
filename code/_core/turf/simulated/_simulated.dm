@@ -24,6 +24,8 @@ var/global/saved_icons = 0
 	var/reinforced_material_id
 	var/reinforced_color
 
+	var/exposed = TRUE //Are pipes and other hidden objects visible?
+
 
 /turf/proc/is_occupied()
 
@@ -98,6 +100,7 @@ var/global/saved_icons = 0
 	return ..()
 
 /turf/simulated/Initialize()
+	set_exposed(exposed,!exposed)
 	. = ..()
 	update_icon()
 	return .
@@ -210,3 +213,18 @@ var/global/saved_icons = 0
 		var/image/I2 = new/image(initial(icon),"ref")
 		//I.color = reinforced_color
 		overlays += I2
+
+/turf/simulated/proc/set_exposed(var/desired_exposed = FALSE,var/force=FALSE)
+
+	if(desired_exposed == exposed && !force)
+		return FALSE
+
+	for(var/obj/O in contents)
+		if(!O.under_tile)
+			continue
+		if(desired_exposed)
+			O.invisibility = 0
+		else
+			O.invisibility = 101
+
+	return TRUE

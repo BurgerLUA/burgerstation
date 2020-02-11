@@ -11,6 +11,8 @@
 
 	layer = LAYER_FLOOR_LARGE - 0.01
 
+	exposed = TRUE
+
 /turf/simulated/floor/plating/snow
 	name = "plating"
 

@@ -14,4 +14,4 @@ var/global/list/all_footsteps = list()
 			F = new k
 			all_footsteps[id] = F
 
-	LOG_SERVER("Initialized [length(all_footsteps)] factions.")
+	LOG_SERVER("Initialized [length(all_footsteps)] footstep types.")

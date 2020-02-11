@@ -29,5 +29,5 @@
 
 	automatic = TRUE
 
-	heat_per_shot = 0.04
-	heat_max = 0.2
+	heat_per_shot = 0.1
+	heat_max = 0.3

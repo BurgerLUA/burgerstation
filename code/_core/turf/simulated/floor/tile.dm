@@ -9,6 +9,10 @@
 	layer = LAYER_FLOOR
 	plane = PLANE_TILE
 
+	exposed = FALSE
+
+	destruction_turf = /turf/simulated/floor/plating
+
 /turf/simulated/floor/tile/grey
 	color = COLOR_GREY
 

@@ -1,5 +1,5 @@
 //A down is just a press.
-mob/living/advanced/on_left_up(object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
+mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
 
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
@@ -12,7 +12,7 @@ mob/living/advanced/on_left_up(object,location,control,params) //THIS ONLY WORKS
 	return FALSE
 
 //A down is just a press.
-mob/living/advanced/on_right_up(object,location,control,params)  //THIS ONLY WORKS ON NON-INVENTORIES
+mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS ONLY WORKS ON NON-INVENTORIES
 
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
@@ -28,7 +28,7 @@ mob/living/advanced/on_right_up(object,location,control,params)  //THIS ONLY WOR
 	return FALSE
 
 //A down is just a press.
-mob/living/advanced/on_left_down(object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
+mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
 
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
@@ -55,13 +55,16 @@ mob/living/advanced/on_left_down(object,location,control,params) //THIS ONLY WOR
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		for(var/obj/hud/inventory/I in inventory)
 			if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
-				I.click_on_object(src,object,location,control,params)
+				if(is_button(object))
+					object.clicked_on_by_object(src,I,location,control,params)
+				else
+					I.click_on_object(src,object,location,control,params)
 				return TRUE
 
 	return FALSE
 
 //A down is just a press.
-mob/living/advanced/on_right_down(object,location,control,params)  //THIS ONLY WORKS ON NON-INVENTORIES
+mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //THIS ONLY WORKS ON NON-INVENTORIES
 
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
@@ -88,14 +91,17 @@ mob/living/advanced/on_right_down(object,location,control,params)  //THIS ONLY W
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		for(var/obj/hud/inventory/I in inventory)
 			if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
-				I.click_on_object(src,object,location,control,params)
+				if(is_button(object))
+					object.clicked_on_by_object(src,I,location,control,params)
+				else
+					I.click_on_object(src,object,location,control,params)
 				return TRUE
 
 	return FALSE
 
 
 //A click is a press AND release.
-mob/living/advanced/on_right_click(object,location,control,params)  //THIS ONLY WORKS ON INVENTORIES
+mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //THIS ONLY WORKS ON INVENTORIES
 
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
@@ -112,7 +118,7 @@ mob/living/advanced/on_right_click(object,location,control,params)  //THIS ONLY 
 	return FALSE
 
 //A click is a press AND release.
-mob/living/advanced/on_left_click(object,location,control,params) //THIS ONLY WORKS ON INVENTORIES
+mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THIS ONLY WORKS ON INVENTORIES
 
 	if(!can_use_controls(object,location,control,params))
 		return FALSE

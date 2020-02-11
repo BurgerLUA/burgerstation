@@ -244,6 +244,7 @@
 #include "code\_core\datum\damagetype\ranged\bullet\bolt.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\gyrojet.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_10mm.dm"
+#include "code\_core\datum\damagetype\ranged\bullet\pistol_12mm.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_40.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_45.dm"
 #include "code\_core\datum\damagetype\ranged\bullet\pistol_50.dm"

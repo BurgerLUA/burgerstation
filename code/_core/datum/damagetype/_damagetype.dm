@@ -291,26 +291,13 @@
 		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health)
 			return FALSE
 
-		var/brute_damage_dealt = 0
-		var/burn_damage_dealt = 0
-		var/tox_damage_dealt = 0
-		var/oxy_damage_dealt = 0
-		var/fatigue_damage_dealt = 0
+		var/total_damage_dealt = 0
 
 		if(victim.immortal || hit_object.immortal)
-			brute_damage_dealt = brute_damage_to_deal
-			burn_damage_dealt = burn_damage_to_deal
-			tox_damage_dealt = tox_damage_to_deal
-			oxy_damage_dealt = oxy_damage_to_deal
-			fatigue_damage_dealt = fatigue_damage_to_deal
+			total_damage_dealt += brute_damage_to_deal + burn_damage_to_deal + tox_damage_to_deal + oxy_damage_to_deal
 		else
-			brute_damage_dealt = brute_damage_to_deal ? hit_object.health.adjust_brute_loss(brute_damage_to_deal) : 0
-			burn_damage_dealt = burn_damage_to_deal ? hit_object.health.adjust_burn_loss(burn_damage_to_deal) : 0
-			tox_damage_dealt = tox_damage_to_deal ? hit_object.health.adjust_tox_loss(tox_damage_to_deal) : 0
-			oxy_damage_dealt = oxy_damage_to_deal ? hit_object.health.adjust_oxy_loss(oxy_damage_to_deal) : 0
-			fatigue_damage_dealt = fatigue_damage_to_deal ? hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal) : 0
-
-		var/total_damage_dealt =  brute_damage_dealt + burn_damage_dealt + tox_damage_dealt + oxy_damage_dealt + fatigue_damage_dealt
+			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=brute_damage_to_deal,burn=burn_damage_to_deal,tox=tox_damage_to_deal,oxy=oxy_damage_to_deal)
+			hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal)
 
 		if(!total_damage_dealt)
 			display_glance_message(attacker,victim,weapon,hit_object)
@@ -318,12 +305,6 @@
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 		do_attack_sound(attacker,victim,weapon,hit_object)
-
-/*
-		if(ENABLE_WOUNDS)
-			do_wound(attacker,victim,weapon,hit_object,total_damage_dealt)
-*/
-
 		display_hit_message(attacker,victim,weapon,hit_object)
 
 		if(is_living(victim))
@@ -356,10 +337,10 @@
 				attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
 				PV.attack_logs += list(attack_log_format)
 
-		hit_object.health.update_health(total_damage_dealt,attacker)
+		//hit_object.health.update_health(total_damage_dealt,attacker)
 
-		if(victim != hit_object && victim.health)
-			victim.health.update_health(total_damage_dealt,attacker)
+		//if(victim != hit_object && victim.health)
+		//	victim.health.update_health(total_damage_dealt,attacker)
 
 		victim.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
 		if(victim != hit_object)
