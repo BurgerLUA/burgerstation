@@ -9,11 +9,12 @@
 "i" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "j" = (/obj/structure/interactive/bed/sleeper/cryo,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "k" = (/obj/structure/interactive/vendor/autolocker,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"l" = (/obj/structure/interactive/intercom{icon_state = "intercom"; dir = 8},/turf/simulated/wall/metal,/area/interior/ship/dorm)
 
 (1,1,1) = {"
 abcaa
 adefa
-aghia
+aghil
 ajhka
 aaaaa
 "}

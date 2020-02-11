@@ -912,6 +912,7 @@
 #include "code\_core\obj\structure\interactive\fakedoor.dm"
 #include "code\_core\obj\structure\interactive\ground_ore_deposit.dm"
 #include "code\_core\obj\structure\interactive\implanter.dm"
+#include "code\_core\obj\structure\interactive\intercom.dm"
 #include "code\_core\obj\structure\interactive\misc.dm"
 #include "code\_core\obj\structure\interactive\ore_box.dm"
 #include "code\_core\obj\structure\interactive\ore_deposit.dm"

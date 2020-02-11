@@ -9,11 +9,12 @@
 "i" = (/obj/structure/interactive/computer/wall/dorms,/turf/simulated/wall/metal,/area/interior/ship/dorm)
 "j" = (/obj/structure/interactive/disposals/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 8},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "k" = (/obj/structure/interactive/door/airlock/station/private,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"m" = (/obj/structure/interactive/intercom{icon_state = "intercom"; dir = 8},/turf/simulated/wall/metal,/area/interior/ship/dorm)
 
 (1,1,1) = {"
 aaaaa
 abcda
-aecfa
+aecfm
 aghja
 aakia
 "}

@@ -1,13 +1,4 @@
-obj/structure/interactive/computer/wall
-	name = "wall computer"
-	desc = "Compute walls!"
-	desc_extended = "It has no program and refuses to work."
-
-	icon = 'icons/obj/structure/computer_wall.dmi'
-	//icon_state = "dorm_available"
-
-obj/structure/interactive/computer/wall/Initialize(var/desired_loc)
-
+/atom/movable/proc/setup_dir_offsets()
 	var/x_offset = 0
 	var/y_offset = 0
 
@@ -33,6 +24,16 @@ obj/structure/interactive/computer/wall/Initialize(var/desired_loc)
 
 	loc = locate(x+x_offset,y+y_offset,z) //Legitimately don't know why force_move or get_step doesn't work here. Even in initialize.
 
+obj/structure/interactive/computer/wall
+	name = "wall computer"
+	desc = "Compute walls!"
+	desc_extended = "It has no program and refuses to work."
+
+	icon = 'icons/obj/structure/computer_wall.dmi'
+	//icon_state = "dorm_available"
+
+obj/structure/interactive/computer/wall/Initialize(var/desired_loc)
+	setup_dir_offsets()
 	return ..(loc) //thanks, i hate it
 
 obj/structure/interactive/computer/wall/dorms
