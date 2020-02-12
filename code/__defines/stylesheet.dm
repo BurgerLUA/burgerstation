@@ -22,10 +22,6 @@ body {
 	color: cyan;
 	font-weight: bold;
 }
-.radio{
-	color: #24A800;
-	font-weight: bold;
-}
 .bot{
 	color: #921FAA;
 	font-weight: bold;
@@ -135,9 +131,30 @@ body {
 	font-size: 150%;
 }
 .announcement h1{
-	color:red;
+	color: red;
 }
 .announcement span{
-	color:red;
+	color: red;
+}
+.radio_unknown {
+	color: black;
+}
+.radio_common {
+	color: #24A800;
+}
+.radio_alpha {
+	color: #7F0000;
+}
+.radio_bravo {
+	color: #BC5B00;
+}
+.radio_charlie {
+	color: #6200BF;
+}
+.radio_delta {
+	color: #00007F;
+}
+.radio {
+	font-weight: bold;
 }
 "}

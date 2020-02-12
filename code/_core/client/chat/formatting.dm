@@ -2,7 +2,7 @@
 /var/icon/chat_icons = new('icons/hud/chat_icon.dmi')
 
 
-proc/format_speech(var/atom/speaker,var/atom/source,var/text,var/talk_type)
+proc/format_speech(var/atom/speaker,var/atom/source,var/text,var/talk_type,var/frequency=RADIO_FREQ_COMMON)
 
 	var/html = "ERROR"
 	switch(talk_type)
@@ -21,7 +21,8 @@ proc/format_speech(var/atom/speaker,var/atom/source,var/text,var/talk_type)
 		if(TEXT_BOT)
 			html = "[format_speaker(speaker,source,"BOT")]: [span("bot",text)]"
 		if(TEXT_RADIO)
-			html = "[format_speaker(speaker,source)] says, &#34;[span("say",text)]&#34;"
+			var/radio_class = "radio_[lowertext(frequency_to_name(frequency))]"
+			html = span(radio_class,"[format_speaker(speaker,source,null,frequency)] says, &#34;[span("say",text)]&#34;")
 		if(TEXT_PM)
 			html = "[format_speaker(speaker,source,"PM_OTHER")]: [span("pm_other",text)]"
 		if(TEXT_PM_ADMIN_IN)
@@ -31,52 +32,19 @@ proc/format_speech(var/atom/speaker,var/atom/source,var/text,var/talk_type)
 
 	return html
 
-
-proc/frequency_to_text(var/frequency)
-
-	var/channel_name = frequency
-	var/channel_class = "radio"
-
-	switch(frequency)
-		if(RADIO_FREQ_COMMON)
-			channel_name = "Common"
-			channel_class = "radio common"
-		if(RADIO_FREQ_SHIP)
-			channel_name = "ShipComm"
-			channel_class = "radio ship"
-		if(RADIO_FREQ_ALPHA)
-			channel_name = "Alpha"
-			channel_class = "radio alpha"
-		if(RADIO_FREQ_BRAVO)
-			channel_name = "Bravo"
-			channel_class = "radio bravo"
-		if(RADIO_FREQ_CHARLIE)
-			channel_name = "Charlie"
-			channel_class = "radio charlie"
-		if(RADIO_FREQ_DELTA)
-			channel_name = "Delta"
-			channel_class = "radio delta"
-
-	return list(channel_name,channel_class)
-
-proc/format_speaker(var/atom/speaker,var/atom/source,var/tag)
+proc/format_speaker(var/atom/speaker,var/atom/source,var/tag,var/frequency=RADIO_FREQ_COMMON)
 
 	var/append = ""
 
 	if(is_radio(source))
-		var/obj/item/radio/R = source
-		var/list/frequency_data = frequency_to_text(R.frequency)
-		append += "<span class='[frequency_data[2]]'>"
-		append += "<img src='\ref[source.icon]' iconstate='[source.icon_state]' width=10px, height=10px></img>([frequency_data[1]])"
+		append += "<img src='\ref[source.icon]' iconstate='[source.icon_state]' width=10px, height=10px></img>([frequency_to_name(frequency)])"
+		tag += " radio"
 
 	else if(!istext(source))
 		append += "<a class='name' href='?chat_examine=\ref[speaker]'><img src='\ref[chat_icons.icon]' iconstate='info'></img></a>"
 
 	if(tag)
+		tag = trim(tag)
 		append += "<img src='\ref[chat_tags.icon]' iconstate='[tag]' class='chat_tag' alt='[tag]'></img>"
 
-	if(is_radio(source))
-		append += "</span>"
-
-
-	return span(tag,trim("[append] [speaker]"))
+	return span(tag,trim("[append]\The [speaker.name]"))

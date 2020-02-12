@@ -782,6 +782,7 @@
 #include "code\_core\obj\item\paper\_paper.dm"
 #include "code\_core\obj\item\powercell\_powercell.dm"
 #include "code\_core\obj\item\radio\_radio.dm"
+#include "code\_core\obj\item\radio\radio_types.dm"
 #include "code\_core\obj\item\slime_core\_slime_core.dm"
 #include "code\_core\obj\item\soulgems\_soulgem.dm"
 #include "code\_core\obj\item\storage\_storage.dm"

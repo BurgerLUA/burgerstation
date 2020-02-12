@@ -2,6 +2,15 @@
 	name = "ammo vendor"
 	icon_state = "liberationstation"
 
+/obj/structure/interactive/vendor/ammo/pistol
+	name = "pistol ammo vendor"
+
+/obj/structure/interactive/vendor/ammo/auto
+	name = "smg and rifle ammo vendor"
+
+/obj/structure/interactive/vendor/ammo/shotgun
+	name = "shotgun ammo vendor"
+
 /obj/structure/interactive/vendor/clothes
 	name = "clothes vendor"
 	icon_state = "clothes"

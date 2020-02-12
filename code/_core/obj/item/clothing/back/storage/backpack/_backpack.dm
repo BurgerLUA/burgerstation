@@ -29,3 +29,7 @@
 	new /obj/item/powercell/industrial(src)
 	new /obj/item/powercell/industrial(src)
 	return ..()
+
+
+/obj/item/clothing/back/storage/backpack/grey
+	color = COLOR_GREY

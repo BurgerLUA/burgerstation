@@ -37,15 +37,34 @@
 //In use.
 
 #define RADIO_FREQ_MIN 110.1
-#define RADIO_FREQ_MAX 189.9
+
+#define RADIO_FREQ_ALPHA    145.1
+#define RADIO_FREQ_BRAVO    145.3
+#define RADIO_FREQ_CHARLIE  145.5
+#define RADIO_FREQ_DELTA    145.7
+#define RADIO_FREQ_COMMON   145.9
+
+#define RADIO_FREQ_SHIP     146.1
 
 #define RADIO_FREQ_DOOR 180.9
 
+#define RADIO_FREQ_MAX 189.9
 
 
-#define RADIO_FREQ_COMMON   145.9
-#define RADIO_FREQ_SHIP     RADIO_FREQ_COMMON + (0.2*1)
-#define RADIO_FREQ_ALPHA    RADIO_FREQ_COMMON + (0.2*2)
-#define RADIO_FREQ_BRAVO    RADIO_FREQ_COMMON + (0.2*3)
-#define RADIO_FREQ_CHARLIE  RADIO_FREQ_COMMON + (0.2*4)
-#define RADIO_FREQ_DELTA    RADIO_FREQ_COMMON + (0.2*5)
+/proc/frequency_to_name(var/frequency)
+	switch(frequency)
+		if(RADIO_FREQ_ALPHA)
+			return "Alpha"
+		if(RADIO_FREQ_BRAVO)
+			return "Bravo"
+		if(RADIO_FREQ_CHARLIE)
+			return "Charlie"
+		if(RADIO_FREQ_DELTA)
+			return "Delta"
+		if(RADIO_FREQ_COMMON)
+			return "Common"
+		if(RADIO_FREQ_SHIP)
+			return "ShipComm"
+
+
+	return "Unknown"

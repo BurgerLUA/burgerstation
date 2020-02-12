@@ -25,8 +25,8 @@ obj/structure/smooth/rack
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-obj/structure/smooth/rack/black
-	color = COLOR_BLACK
+obj/structure/smooth/rack/grey
+	color = COLOR_GREY
 
 obj/structure/smooth/rack/steel
 	color = COLOR_STEEL

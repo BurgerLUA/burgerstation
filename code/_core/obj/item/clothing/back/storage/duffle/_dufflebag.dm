@@ -13,6 +13,9 @@
 	color = COLOR_BLACK
 	vendor_name = "\improper Rilfeman's Kit"
 
+/obj/item/clothing/back/storage/dufflebag/grey
+	color = COLOR_GREY
+
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
 	new /obj/item/radio(src)
 	new /obj/item/pinpointer/custom(src)
