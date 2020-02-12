@@ -16,3 +16,19 @@
 	. = ..()
 	update_icon()
 	return .
+
+
+/obj/item/material/Crossed(var/atom/movable/O)
+
+	if(!istype(O,/obj/item/material))
+		return ..()
+
+	var/obj/item/material/M = O
+	if(M.crafting_id != src.crafting_id)
+		return ..()
+
+	if(M.item_count_max >= M.item_count_current)
+		return ..()
+
+	src.transfer_stacks_to(M)
+	return TRUE

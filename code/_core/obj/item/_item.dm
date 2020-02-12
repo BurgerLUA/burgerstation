@@ -317,3 +317,11 @@
 		I.update_held_icon(src)
 
 	return TRUE
+
+
+/obj/item/Cross(var/atom/movable/O)
+
+	if(istype(O,/obj/item/))
+		return TRUE
+
+	return ..()

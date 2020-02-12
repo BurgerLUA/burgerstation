@@ -11,6 +11,16 @@
 
 	var/open = FALSE
 
+/obj/structure/interactive/crate/Cross(var/atom/movable/O)
+
+	if(istype(O,/obj/structure/interactive/crate))
+		return FALSE
+
+	return open
+
+/obj/structure/interactive/crate/Uncross(var/atom/movable/O)
+	return open
+
 /obj/structure/interactive/crate/open
 	open = TRUE
 
@@ -22,11 +32,8 @@
 	return ..()
 
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
 	INTERACT_CHECK
-
 	toggle(caller)
-
 	return ..()
 
 /obj/structure/interactive/crate/Initialize()
@@ -68,7 +75,7 @@
 	for(var/atom/movable/M in crate_contents)
 		crate_contents -= M
 		M.force_move(src.loc)
-		animate(M,pixel_x = initial(M.pixel_x) + rand(-16,16),pixel_y = initial(M.pixel_y) + rand(-16,16),time = 4)
+		//animate(M,pixel_x = initial(M.pixel_x) + rand(-16,16),pixel_y = initial(M.pixel_y) + rand(-16,16),time = 4)
 
 	open = TRUE
 

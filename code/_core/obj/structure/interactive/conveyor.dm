@@ -66,19 +66,22 @@
 		if(desired_dir in DIRECTIONS_INTERCARDINAL)
 			desired_dir = turn(desired_dir,-45)
 
-	var/turf/desired_turf = get_step(src,desired_dir)
+	var/turf/desired_turf = get_step(src,desired_dir) //The turf where we're going
 
-	if(desired_turf && length(loc.contents) > 1)
-		var/obj/structure/interactive/conveyor/C = locate() in desired_turf.contents
-		if(C)
-			for(var/atom/movable/M in desired_turf.contents)
-				if(M.anchored || M.grabbing_hand || M.collision_flags & FLAG_COLLISION_ETHEREAL)
+	if(desired_turf)
+
+		/*
+		for(var/atom/movable/M in desired_turf.contents) //The contents of the turf where we are going.
+			if(M.anchored || M.grabbing_hand || M.collision_flags & FLAG_COLLISION_ETHEREAL)
+				continue
+			if(istype(M,/obj/structure/interactive/crate))
+				var/obj/structure/interactive/crate/C = M
+				if(C.open)
 					continue
-				if(istype(M,/obj/structure/interactive/crate))
-					var/obj/structure/interactive/crate/C2 = M
-					if(C2.open)
-						continue
-				return TRUE
+
+			world.log << "The blocker is: [M]."
+			return TRUE
+		*/
 
 		for(var/atom/movable/M in loc.contents)
 			if(M.anchored || M.grabbing_hand || M.next_conveyor > curtime || (is_living(M) && M.move_delay > -1))
