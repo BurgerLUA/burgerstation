@@ -567,6 +567,7 @@
 #include "code\_core\obj\hud\screen_blood\_screen_blood.dm"
 #include "code\_core\obj\item\_item.dm"
 #include "code\_core\obj\item\combat.dm"
+#include "code\_core\obj\item\defib.dm"
 #include "code\_core\obj\item\dying.dm"
 #include "code\_core\obj\item\hand_tele.dm"
 #include "code\_core\obj\item\interaction.dm"

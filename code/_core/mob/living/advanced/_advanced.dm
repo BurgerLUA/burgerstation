@@ -392,10 +392,12 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
 
 	if(left_hand && right_hand)
-		if(left && left_hand.add_object(I))
-			return TRUE
-		if(!left && right_hand.add_object(I))
-			return TRUE
+		if(left && left_hand.can_hold_object(I,FALSE))
+			world.log << "Add to left."
+			return left_hand.add_object(I)
+		if(!left && right_hand.can_hold_object(I,FALSE))
+			world.log << "Add to right."
+			return right_hand.add_object(I)
 	else
 		if(left_hand)
 			return left_hand.add_object(I)

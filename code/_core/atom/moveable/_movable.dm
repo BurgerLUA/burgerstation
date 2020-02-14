@@ -31,6 +31,8 @@
 
 	var/has_footsteps = FALSE
 
+	var/throwable = TRUE
+
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 
