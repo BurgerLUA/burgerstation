@@ -5,7 +5,7 @@
 	damage_type = "goliath_claw"
 	class = "goliath"
 
-	ai = /ai/simple/goliath
+	ai = /ai/goliath
 
 	stun_angle = 0
 

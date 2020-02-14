@@ -4,7 +4,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/advanced/ranged/wizard
+	ai = /ai/advanced/ranged/
 	class = "wizard"
 
 	loot_drop = "wizard"

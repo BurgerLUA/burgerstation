@@ -19,6 +19,15 @@
 /obj/structure/interactive/vendor/medicine
 	name = "medicine vendor"
 	icon_state = "med"
+	stored_types = list(
+		/obj/item/container/medicine/bandage,
+		/obj/item/container/medicine/ointment,
+		/obj/item/container/medicine/trauma_kit,
+		/obj/item/container/medicine/burn_kit,
+		/obj/item/container/spray/silver_sulfadiazine,
+		/obj/item/container/spray/styptic_powder,
+		/obj/item/container/syringe/epinephrine
+	)
 
 /obj/structure/interactive/vendor/engineering
 	name = "engineering vendor"

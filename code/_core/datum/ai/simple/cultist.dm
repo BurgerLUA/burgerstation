@@ -1,6 +1,6 @@
-/ai/simple/cultist/
+/ai/cultist/
 
-/ai/simple/cultist/handle_movement()
+/ai/cultist/handle_movement()
 
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) > 1)
@@ -15,7 +15,7 @@
 	else
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 
-/ai/simple/cultist/hostile_message()
+/ai/cultist/hostile_message()
 
 	var/list/possible_responses = list(
 		"Hail Nar'sie!",
@@ -30,16 +30,16 @@
 
 	owner.say(pick(possible_responses))
 
-/ai/simple/behemoth/
+/ai/behemoth/
 
 	stationary = TRUE
 
-/ai/simple/artificer/
+/ai/artificer/
 	var/spawned_mobs = 0
 
 	attack_delay = 10
 
-/ai/simple/artificer/handle_attacking()
+/ai/artificer/handle_attacking()
 
 	if(objective_attack && spawned_mobs < 5)
 		new /mob/living/simple/npc/cult/harvester(owner.loc)
@@ -47,7 +47,7 @@
 
 	return ..()
 
-/ai/simple/artificer/handle_movement()
+/ai/artificer/handle_movement()
 
 	if(objective_attack)
 		if(get_dist(objective_attack,owner) <= 6)

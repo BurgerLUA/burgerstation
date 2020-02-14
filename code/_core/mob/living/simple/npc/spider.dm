@@ -5,7 +5,7 @@
 
 	damage_type = "spider"
 
-	ai = /ai/simple/spider
+	ai = /ai/simple/
 
 	class = "spider"
 

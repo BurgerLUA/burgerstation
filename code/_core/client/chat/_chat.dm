@@ -20,9 +20,11 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 	if(!text_to_say)
 		return FALSE
 
+	var/turf/source_turf = get_turf(source)
+
 	switch(text_type)
 		if(TEXT_RADIO)
-			for(var/mob/M in range(RADIO_RANGE,source))
+			for(var/mob/M in range(RADIO_RANGE,source_turf))
 				if(!M.client)
 					continue
 				M.to_chat(format_speech(speaker,source,text_to_say,text_type,frequency),CHAT_TYPE_RADIO)
@@ -34,14 +36,14 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				C.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/mob/M in range(WHISPER_RANGE,source))
+				for(var/mob/M in range(WHISPER_RANGE,source_turf))
 					if(!M.client)
 						continue
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 					sleep(-1)
 
 				for(var/obj/item/radio/R in all_radios)
-					if(!R.broadcasting || get_dist(source,R) > RADIO_WHISPER_RANGE)
+					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
 					sleep(-1)
@@ -52,14 +54,14 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				C.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/mob/M in range(TALK_RANGE,source))
+				for(var/mob/M in range(TALK_RANGE,source_turf))
 					if(!M.client)
 						continue
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 					sleep(-1)
 
 				for(var/obj/item/radio/R in all_radios)
-					if(!R.broadcasting || get_dist(source,R) > RADIO_TALK_RANGE)
+					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
 					sleep(-1)
@@ -70,20 +72,20 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				C.to_chat("You cannot talk like this!")
 				return
 			else
-				for(var/mob/M in range(YELL_RANGE,source))
+				for(var/mob/M in range(YELL_RANGE,source_turf))
 					if(!M.client)
 						continue
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 					sleep(-1)
 
 				for(var/obj/item/radio/R in all_radios)
-					if(!R.broadcasting || get_dist(source,R) > RADIO_YELL_RANGE)
+					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
 					sleep(-1)
 
 		if(TEXT_LOOC)
-			for(var/mob/M in range(YELL_RANGE,source))
+			for(var/mob/M in range(YELL_RANGE,source_turf))
 				if(!M.client)
 					continue
 				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_LOOC)

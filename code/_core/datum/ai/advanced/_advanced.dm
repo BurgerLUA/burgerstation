@@ -13,48 +13,22 @@
 	simple = TRUE
 	stationary = FALSE
 
-/*
-/ai/advanced/handle_attacking()
 
-	var/is_left_click = prob(left_click_chance)
-	var/weapon_distance = 1
+/ai/advanced/can_attack(var/atom/target,var/left_click=FALSE)
 
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
+	if(!is_advanced(owner))
+		return ..()
 
-		var/obj/item/weapon_to_use = is_left_click ? A.get_held_right() : A.get_held_right()
+	var/mob/living/advanced/A = owner
+	if(!left_click)
+		if(A.left_item && is_ranged_gun(A.left_item))
+			var/obj/item/weapon/ranged/R = A.left_item
+			if(R.heat_current > R.automatic ? 0.05 : 0)
+				return TRUE
+	else
+		if(A.right_item && is_ranged_gun(A.right_item))
+			var/obj/item/weapon/ranged/R = A.right_item
+			if(R.heat_current > R.automatic ? 0.05 : 0)
+				return TRUE
 
-		if(is_ranged_gun(weapon_to_use))
-			weapon_distance = 100
-		else if(is_melee(weapon_to_use))
-			weapon_distance = 1
-
-	if(objective_attack && get_dist(owner,objective_attack) <= weapon_distance)
-		owner.move_dir = 0
-		var/list/params = list(
-			PARAM_ICON_X = num2text(pick(0,16,16,16,32)),
-			PARAM_ICON_Y = num2text(pick(target_distribution_y)),
-			"left" = 0,
-			"right" = 0,
-			"middle" = 0,
-			"ctrl" = 0,
-			"shift" = 0,
-			"alt" = 0
-		)
-
-		if(get_dist(owner,objective_attack) <= 1 && prob(kick_chance))
-			owner.attack_flags |= ATTACK_KICK
-
-		if(is_left_click)
-			params["left"] = TRUE
-			owner.on_left_down(objective_attack,owner,null,params)
-		else
-			params["right"] = TRUE
-			owner.on_right_down(objective_attack,owner,null,params)
-
-
-		owner.attack_flags &= ~ATTACK_KICK
-
-
-	attack_ticks = 0
-*/
+	return FALSE

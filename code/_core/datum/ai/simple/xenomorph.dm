@@ -1,4 +1,4 @@
-/ai/simple/xenomorph //Space carp clone
+/ai/xenomorph //Space carp clone
 
 	radius_find_enemy = VIEW_RANGE
 
@@ -15,10 +15,10 @@
 
 	var/mob/living/simple/npc/xenomorph/pack_leader/leader
 
-/ai/simple/xenomorph/proc/is_valid_leader(var/mob/living/simple/npc/spacecarp/leader/L)
+/ai/xenomorph/proc/is_valid_leader(var/mob/living/simple/npc/spacecarp/leader/L)
 	return !(L.dead)
 
-/ai/simple/xenomorph/proc/get_leader()
+/ai/xenomorph/proc/get_leader()
 	for(var/mob/living/simple/npc/xenomorph/pack_leader/L in view(radius_find_enemy,owner))
 		if(owner == L)
 			continue
@@ -27,10 +27,10 @@
 
 	return null
 
-/ai/simple/xenomorph/hostile_message()
+/ai/xenomorph/hostile_message()
 	owner.say("HISSSSSSSSSSSS!")
 
-/ai/simple/xenomorph/handle_objectives()
+/ai/xenomorph/handle_objectives()
 
 	if(!leader || !is_valid_leader(leader))
 		var/mob/living/simple/npc/xenomorph/pack_leader/L = get_leader()
@@ -39,7 +39,7 @@
 
 	return ..()
 
-/ai/simple/xenomorph/handle_movement()
+/ai/xenomorph/handle_movement()
 
 	if(!objective_attack && leader)
 		if(get_dist(leader,owner) < 2)
@@ -55,7 +55,7 @@
 
 	return ..()
 
-/ai/simple/xenomorph/pack_leader
+/ai/xenomorph/pack_leader
 
 	radius_find_enemy = VIEW_RANGE * 2
 
@@ -63,7 +63,7 @@
 	attack_delay = 1
 	movement_delay = 1
 
-/ai/simple/xenomorph_queen
+/ai/xenomorph_queen
 
 	radius_find_enemy = VIEW_RANGE * 2
 

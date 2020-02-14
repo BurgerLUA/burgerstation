@@ -5,7 +5,7 @@
 	damage_type = "bear_claw"
 	class = "bear"
 
-	ai = /ai/simple/bear
+	ai = /ai/
 
 	stun_angle = 90
 

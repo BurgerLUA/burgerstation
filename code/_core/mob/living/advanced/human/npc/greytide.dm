@@ -4,7 +4,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/advanced/ashwalker
+	ai = /ai/advanced/
 	class = "ashwalker"
 
 /mob/living/advanced/npc/greytide/Initialize()

@@ -116,21 +116,29 @@
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
+		objective_ticks = 0
 		handle_objectives()
 
 	movement_ticks += 1
 	if(movement_ticks >= movement_delay)
+		movement_ticks = 0
 		handle_movement()
+
 	if(owner)
 		owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
 
 	attack_ticks += 1
 	if(attack_ticks >= attack_delay)
+		attack_ticks = 0
 		handle_attacking()
+
 
 	return TRUE
 
 /ai/proc/attack_message()
+	return TRUE
+
+/ai/proc/can_attack(var/atom/target,var/left_click=FALSE)
 	return TRUE
 
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
@@ -147,19 +155,6 @@
 		"shift" = 0,
 		"alt" = 0
 	)
-
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(!left_click)
-			if(A.left_item && is_ranged_gun(A.left_item))
-				var/obj/item/weapon/ranged/R = A.left_item
-				if(R.heat_current > R.automatic ? 0.05 : 0)
-					return TRUE
-		else
-			if(A.right_item && is_ranged_gun(A.right_item))
-				var/obj/item/weapon/ranged/R = A.right_item
-				if(R.heat_current > R.automatic ? 0.05 : 0)
-					return TRUE
 
 	if(left_click)
 		params["left"] = TRUE
@@ -221,8 +216,6 @@
 		owner.move_dir = 0
 	else
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
-
-	movement_ticks = 0
 
 /ai/proc/hostile_message()
 	return FALSE
@@ -288,19 +281,7 @@
 	if(simple)
 		return exists(L.client)
 
-	/*
-	for(var/id in owner.factions)
-		var/faction/F = owner.factions[id]
-		if(F.is_hostile_to_mob(L))
-			return TRUE
-	*/
-
 	return FALSE
-
-
-/ai/proc/attack(var/atom/desired_target)
-
-	return TRUE
 
 /ai/proc/can_see_enemy(var/mob/living/L)
 	var/list/possible_targets = get_possible_targets()

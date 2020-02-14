@@ -10,7 +10,7 @@
 
 	dynamic_inventory_count = 2
 
-/obj/item/storage/glovebox/fill_inventory()
+/obj/item/storage/glovebox/white/fill_inventory()
 	new /obj/item/clothing/hands/gloves/colored(src.loc)
 	new /obj/item/clothing/hands/gloves/colored/left(src.loc)
 	return ..()

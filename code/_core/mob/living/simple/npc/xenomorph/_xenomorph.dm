@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/simple/alien.dmi'
 	icon_state = "alien"
 
-	ai = /ai/simple/xenomorph
+	ai = /ai/xenomorph
 	damage_type = "xenomorph"
 	class = "xenomorph"
 	health_base = 100
@@ -15,7 +15,7 @@
 	update_icon()
 
 /mob/living/simple/npc/xenomorph/pack_leader
-	ai = /ai/simple/xenomorph/pack_leader
+	ai = /ai/xenomorph/pack_leader
 	health_base = 100
 
 	level_multiplier = 1.25
@@ -28,7 +28,7 @@
 	pixel_x = -16
 	health_base = 100
 
-	ai = /ai/simple/xenomorph_queen
+	ai = /ai/xenomorph_queen
 	damage_type = "xenomorph_queen"
 	class = "xenomorph"
 

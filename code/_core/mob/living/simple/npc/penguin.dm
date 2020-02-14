@@ -5,7 +5,7 @@
 	damage_type = "crab_claw"
 	class = "crab"
 
-	ai = /ai/simple/crab/
+	ai = /ai/
 
 	armor_base = list(
 		BLADE = 0,

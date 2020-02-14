@@ -18,7 +18,6 @@
 
 	var/injecting = FALSE
 
-
 /obj/item/container/syringe/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
@@ -133,3 +132,7 @@
 		L.to_chat("You feel a tiny prick.")
 
 	return FALSE
+
+/obj/item/container/syringe/epinephrine/on_spawn()
+	reagents.add_reagent("epinephrine",reagents.volume_max)
+	return ..()

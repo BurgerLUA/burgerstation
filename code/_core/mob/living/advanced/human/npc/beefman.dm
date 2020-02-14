@@ -4,7 +4,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/advanced/ashwalker
+	ai = /ai/advanced/
 	species = "beefman"
 	class = "ashwalker"
 
@@ -22,7 +22,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/advanced/ashwalker
+	ai = /ai/advanced/
 	species = "cyborg"
 	class = "ashwalker"
 

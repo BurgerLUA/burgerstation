@@ -26,7 +26,7 @@
 
 	color_primary = "#FFFFFF"
 	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"
+	color_tertiary = "#A8A8A8"
 
 	color_primary_desc = "shirt"
 	color_secondary_desc = "pants"

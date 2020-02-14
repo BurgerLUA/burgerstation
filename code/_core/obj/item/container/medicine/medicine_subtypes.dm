@@ -55,4 +55,25 @@
 	reagents.add_reagent("kelotane",50)
 	return ..()
 
+/obj/item/container/medicine/patch
+	name = "medical patch"
+	icon_state = "patch"
+	treatment_time = 5
+	item_count_current = 3
+	item_count_max = 3
 
+/obj/item/container/medicine/patch/brute
+	name = "brute patch"
+	heal_brute = 25
+	icon_state = "patch_brute"
+
+/obj/item/container/medicine/patch/brute/on_spawn()
+	reagents.add_reagent("styptic_powder",30)
+
+/obj/item/container/medicine/patch/burn
+	name = "burn patch"
+	heal_brute = 25
+	icon_state = "patch_burn"
+
+/obj/item/container/medicine/patch/burn/on_spawn()
+	reagents.add_reagent("silver_sulfadiazine",30)

@@ -1,4 +1,4 @@
-/ai/simple/goliath
+/ai/goliath
 
 	radius_find_enemy = 6
 
@@ -17,13 +17,13 @@
 
 	var/tentacle_attack_ticks = 0
 
-/ai/simple/goliath/New(var/mob/living/desired_owner)
+/ai/goliath/New(var/mob/living/desired_owner)
 
 	owner_as_goliath = desired_owner
 
 	return ..()
 
-/ai/simple/goliath/handle_attacking()
+/ai/goliath/handle_attacking()
 
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) <= attack_distance_max)

@@ -3,7 +3,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/advanced/zombie
+	ai = /ai/advanced/
 	class = "zombie"
 
 	species = "human"

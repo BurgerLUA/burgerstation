@@ -6,7 +6,7 @@
 	icon = 'icons/mob/living/simple/slime_king.dmi'
 	icon_state = "king"
 
-	ai = /ai/simple/king_crab
+	ai = /ai/
 
 	can_attack_while_moving = TRUE
 

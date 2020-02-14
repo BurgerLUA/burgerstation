@@ -9,6 +9,6 @@
 
 	health_base = 100
 
-	ai = /ai/simple/bear
+	ai = /ai/
 	class = "bear"
 	damage_type = "bear_claw"

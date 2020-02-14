@@ -5,7 +5,7 @@
 	damage_type = "crab_claw"
 	class = "crab"
 
-	ai = /ai/simple/crab/
+	ai = /ai/
 
 	stun_angle = 180
 
@@ -48,7 +48,7 @@
 
 	health_base = 500
 
-	ai = /ai/simple/king_crab
+	ai = /ai/
 
 	class = "crab_king"
 	loot_drop = "crab"

@@ -8,7 +8,7 @@
 	sex = MALE
 	gender = MALE
 	class = "robust"
-	ai = /ai/advanced/ashwalker
+	ai = /ai/advanced/
 
 /mob/living/advanced/npc/unique/robust/Initialize()
 	. = ..()
