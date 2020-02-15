@@ -63,29 +63,6 @@ mob/living/advanced/proc/handle_regen()
 	return .
 
 /mob/living/advanced/pre_death()
-
-	/*
-
-	var/obj/item/storage/heavy/corpse/C = new(src.loc)
-
-	var/list/obj/item/dropped_items = list()
-
-	for(var/obj/hud/inventory/I in inventory)
-		if(is_player(src) && !I.drop_on_death)
-			continue
-		dropped_items += I.drop_all_objects(src.loc,exclude_soulbound = TRUE)
-
-	for(var/obj/item/I in dropped_items)
-		C.add_to_inventory(src,I,FALSE)
-
-	do_loot_drop(C)
-
-	C.prune_inventory()
-
-	queue_delete(C,3000)
-
-	*/
-
 	return TRUE
 
 /mob/living/advanced/do_loot_drop(var/atom/desired_loc)
@@ -135,7 +112,6 @@ mob/living/advanced/proc/handle_regen()
 
 	if(health_regen_buffer && health)
 		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-		world.log << "CUM."
 		regened_health = -health.adjust_loss_smart(brute=-health_to_regen,burn=-health_to_regen,oxy=-health_to_regen,tox=-health_to_regen)
 		health_regen_buffer -= health_to_regen
 

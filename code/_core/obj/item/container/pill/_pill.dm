@@ -48,6 +48,11 @@
 
 	return TRUE
 
+/obj/item/container/pill/on_spawn()
+	. = ..()
+	update_icon()
+	return .
+
 /obj/item/container/pill/update_icon()
 
 	icon = initial(icon)

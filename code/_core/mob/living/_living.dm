@@ -224,7 +224,7 @@
 		screen_blood += new /obj/hud/screen_blood(src,NORTHEAST)
 		screen_blood += new /obj/hud/screen_blood(src,SOUTHEAST)
 		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
-		//screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
+		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
 
 	all_living += src
 

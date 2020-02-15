@@ -25,7 +25,7 @@
 
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
-/reagent/proc/metabolize(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/proc/metabolize(var/atom/originial_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 
 	var/container_flags_metabolism = container.flags_metabolism
 
@@ -40,8 +40,8 @@
 	if(starting_volume >= 0 && container_flags_metabolism & REAGENT_METABOLISM_SKIN)
 		total_metabolized += on_metabolize_skin(owner,container,starting_volume)
 
-	if(overdose_threshold && overdose_threshold >= starting_volume)
-		total_metabolized += on_overdose(owner,container,starting_volume,total_metabolized)
+	if(overdose_threshold && starting_volume >= overdose_threshold)
+		total_metabolized += on_overdose(originial_owner,owner,container,starting_volume,total_metabolized)
 
 	return total_metabolized
 
@@ -54,5 +54,5 @@
 /reagent/proc/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	return metabolism_skin
 
-/reagent/proc/on_overdose(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
-	return 0
+/reagent/proc/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
+	return metabolism_amount

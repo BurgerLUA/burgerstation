@@ -9,12 +9,12 @@
 	metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
 	overdose_threshold = OVERDOSE_THRESHOLD_MEDICINE
 
-/reagent/medicine/on_overdose(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
+/reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
 
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.)
+	if(original_owner && original_owner.health)
+		original_owner.health.adjust_loss_smart(tox=.)
 
 	return .
 
@@ -229,6 +229,7 @@
 
 	if(owner && owner.health)
 		owner.health.adjust_loss_smart(brute=.*-HEALING_B)
+
 
 	return .
 

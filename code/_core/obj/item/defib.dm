@@ -24,12 +24,49 @@
 	return ..()
 
 
+/obj/item/defib/proc/on_paddle(var/mob/caller)
+
+	if(!paddle_left.placed_target_ref || !paddle_right.placed_target_ref || paddle_left.placed_target_ref != paddle_right.placed_target_ref)
+		return FALSE
+
+	var/mob/living/target = locate(paddle_left.placed_target_ref)
+	if(!target)
+		return FALSE
+
+	caller.visible_message("\The [caller.name] charges up \the [src.name]...","You charge up \the [src.name]...")
+
+	PROGRESS_BAR(caller,src,20,.proc/defib_target,caller,target)
+	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
+
+	return TRUE
+
+/obj/item/defib/proc/can_defib_target(var/mob/caller,var/mob/living/target)
+
+	if(get_dist(caller,target) > 1)
+		caller.to_chat("You're too far away!")
+		return FALSE
+
+	return TRUE
+
+/obj/item/defib/proc/defib_target(var/mob/caller,var/mob/living/target)
+
+	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
+
+
+	if(target.check_death())
+		target.visible_message("Nothing happens!")
+		return FALSE
+
+	target.revive()
+	caller.visible_message("\The [target.name] jolts to life!")
+
+	return TRUE
+
 /obj/item/defib/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object) && is_inventory(src.loc) && is_advanced(caller))
 		var/obj/hud/inventory/I = src.loc
 		var/obj/hud/inventory/I2 = object
-		//var/mob/living/advanced/A = caller
 		if(src in I.worn_objects)
 			if(paddle_left in src.contents)
 				I2.add_held_object(paddle_left)
@@ -40,11 +77,11 @@
 
 	return ..()
 
-
 /obj/item/defib_paddle
 	name = "defibrillator paddle"
 	icon = 'icons/obj/items/defib_paddle.dmi'
 	var/obj/item/defib/linked_defib
+	var/placed_target_ref //While refs can be replaced by other objects, placing the last paddle with check if it's a valid ref.
 
 	throwable = FALSE
 
@@ -54,6 +91,12 @@
 		drop_item(get_turf(src))
 		return TRUE
 
+	if(is_living(object))
+		caller.visible_message("\The [caller.name] places \a [src.name] on [object.name]'s chest...","You place \the [src.name] on \the [object.name]'s chest...")
+		placed_target_ref = "\ref[object]"
+		linked_defib.on_paddle(caller)
+		return TRUE
+
 	return ..()
 
 /obj/item/defib_paddle/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
@@ -61,6 +104,7 @@
 	. = ..()
 
 	if(. && linked_defib)
+		placed_target_ref = null
 		src.force_move(linked_defib)
 
 	return .

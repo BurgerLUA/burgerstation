@@ -76,7 +76,7 @@
 		if(owner && is_organ(owner) && owner.loc && flags_metabolism & REAGENT_METABOLISM_INGEST)
 			owner_to_use = owner.loc
 
-		var/metabolize_amount = R.metabolize(owner_to_use,src,volume)
+		var/metabolize_amount = R.metabolize(owner,owner_to_use,src,volume)
 
 		if(metabolize_amount)
 			remove_reagent(r_id,metabolize_amount,FALSE)

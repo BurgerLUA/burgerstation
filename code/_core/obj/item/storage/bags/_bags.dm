@@ -69,8 +69,7 @@
 
 /obj/item/storage/bags/pills/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		var/obj/item/container/pill/bicaridine/P = new(src)
-		P.on_spawn()
+		new /obj/item/container/pill/bicaridine(src)
 	return ..()
 
 /obj/item/storage/bags/pills/bicaridine_small
@@ -79,8 +78,7 @@
 
 /obj/item/storage/bags/pills/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		var/obj/item/container/pill/bicaridine/P = new(src)
-		P.on_spawn()
+		new /obj/item/container/pill/bicaridine(src)
 	return ..()
 
 /obj/item/storage/bags/pills/kelotane
@@ -89,8 +87,7 @@
 
 /obj/item/storage/bags/pills/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		var/obj/item/container/pill/kelotane/P = new(src)
-		P.on_spawn()
+		new /obj/item/container/pill/kelotane(src)
 	return ..()
 
 /obj/item/storage/bags/pills/kelotane_small
@@ -99,8 +96,7 @@
 
 /obj/item/storage/bags/pills/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		var/obj/item/container/pill/kelotane/P = new(src)
-		P.on_spawn()
+		new /obj/item/container/pill/kelotane(src)
 	return ..()
 
 /obj/item/storage/bags/pills/dylovene
@@ -109,10 +105,8 @@
 
 /obj/item/storage/bags/pills/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		var/obj/item/container/pill/dylovene/P = new(src)
-		P.on_spawn()
+		new /obj/item/container/pill/dylovene(src)
 	return ..()
-
 
 /obj/item/storage/bags/pills/dylovene_small
 	name = "dylovene pill bottle"
@@ -120,6 +114,5 @@
 
 /obj/item/storage/bags/pills/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		var/obj/item/container/pill/dylovene/P = new(src)
-		P.on_spawn()
+		new /obj/item/container/pill/dylovene(src)
 	return ..()

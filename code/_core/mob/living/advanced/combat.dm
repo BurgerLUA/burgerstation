@@ -1,4 +1,4 @@
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/list/params = list())
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/list/params = list(),var/accurate=FALSE)
 
 	if(!length(params))
 		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
@@ -6,7 +6,7 @@
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
-	if(is_living(attacker) && attacker != src)
+	if(!accurate && is_living(attacker) && attacker != src)
 		var/mob/living/L = attacker
 		var/inaccuracy = (1 - L.get_attribute_power(ATTRIBUTE_DEXTERITY))*16
 		x_attack = Clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)

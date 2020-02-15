@@ -42,8 +42,6 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	var/fixed_delta = delta_y > 0 ? 1 : -1
 
-	world.log << fixed_delta
-
 	var/old_frequency = frequency
 
 	frequency = Clamp(frequency + fixed_delta*0.2,frequency_min,frequency_max)

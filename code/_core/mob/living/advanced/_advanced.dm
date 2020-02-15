@@ -393,10 +393,8 @@ mob/living/advanced/Login()
 
 	if(left_hand && right_hand)
 		if(left && left_hand.can_hold_object(I,FALSE))
-			world.log << "Add to left."
 			return left_hand.add_object(I)
 		if(!left && right_hand.can_hold_object(I,FALSE))
-			world.log << "Add to right."
 			return right_hand.add_object(I)
 	else
 		if(left_hand)

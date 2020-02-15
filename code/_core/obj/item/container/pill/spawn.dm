@@ -3,7 +3,6 @@
 
 /obj/item/container/pill/bicaridine/on_spawn()
 	reagents.add_reagent("bicaridine",20)
-	reagents.add_reagent("sugar",10)
 	return ..()
 
 /obj/item/container/pill/kelotane
@@ -11,7 +10,6 @@
 
 /obj/item/container/pill/kelotane/on_spawn()
 	reagents.add_reagent("kelotane",20)
-	reagents.add_reagent("sugar",10)
 	return ..()
 
 /obj/item/container/pill/dylovene
@@ -19,5 +17,4 @@
 
 /obj/item/container/pill/dylovene/on_spawn()
 	reagents.add_reagent("dylovene",20)
-	reagents.add_reagent("sugar",10)
 	return ..()

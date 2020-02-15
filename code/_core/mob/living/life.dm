@@ -20,8 +20,13 @@
 
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
+	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
+	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved!."))
+
+	/*
 	if(client)
 		client.make_ghost(get_turf(src))
+	*/
 
 	dead = TRUE
 
@@ -62,11 +67,17 @@
 
 	return FALSE
 
-/mob/living/proc/resurrect()
+/mob/living/proc/revive()
 	dead = FALSE
 	layer = initial(layer)
+	collision_flags = initial(collision_flags)
+	collision_bullet_flags = initial(collision_bullet_flags)
 	stun_time = 0
 	paralyze_time = 0
+	return TRUE
+
+/mob/living/proc/resurrect()
+	revive()
 	if(health)
 		health.health_current = health.health_max
 		health.update_health()

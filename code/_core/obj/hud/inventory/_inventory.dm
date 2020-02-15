@@ -421,7 +421,6 @@
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			A.remove_overlay(I)
-		queue_delete(I,ITEM_DELETION_TIME_DROPPED)
 		if(owner)
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))

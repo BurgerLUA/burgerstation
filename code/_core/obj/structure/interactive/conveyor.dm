@@ -69,26 +69,16 @@
 	var/turf/desired_turf = get_step(src,desired_dir) //The turf where we're going
 
 	if(desired_turf)
-
-		/*
-		for(var/atom/movable/M in desired_turf.contents) //The contents of the turf where we are going.
-			if(M.anchored || M.grabbing_hand || M.collision_flags & FLAG_COLLISION_ETHEREAL)
-				continue
-			if(istype(M,/obj/structure/interactive/crate))
-				var/obj/structure/interactive/crate/C = M
-				if(C.open)
-					continue
-
-			world.log << "The blocker is: [M]."
-			return TRUE
-		*/
-
+		var/conveyor_limit = 5
 		for(var/atom/movable/M in loc.contents)
+			if(conveyor_limit <= 0)
+				break
 			if(M.anchored || M.grabbing_hand || M.next_conveyor > curtime || (is_living(M) && M.move_delay > -1))
 				continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
 			M.Move(desired_turf,silent=TRUE)
 			M.next_conveyor = curtime + 8
+			conveyor_limit--
 			break
 
 	return TRUE
