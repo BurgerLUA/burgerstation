@@ -21,6 +21,8 @@
 	size = SIZE_1
 	weight = WEIGHT_1
 
+	value = 15
+
 /obj/item/clothing/feet/shoes/brown/left
 	name = "left leather shoe"
 	icon_state = "inventory_left"

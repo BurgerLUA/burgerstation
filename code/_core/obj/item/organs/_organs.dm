@@ -55,6 +55,8 @@
 
 	health = /health/obj/item/organ
 
+	value = 100
+
 /obj/item/organ/Destroy()
 	attached_organ = null
 	attached_organs.Cut()
@@ -226,3 +228,44 @@ obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/old_owner)
 	return TRUE
+
+
+obj/item/organ/proc/get_damage_description()
+
+	if(!health)
+		return list()
+
+	var/list/damage_desc = list()
+
+	switch(health.damage[BRUTE])
+		if(5 to 15)
+			damage_desc += "bruised"
+		if(15 to 25)
+			damage_desc += "battered"
+		if(25 to 50)
+			damage_desc += "crushed"
+		if(50 to INFINITY)
+			damage_desc += "mangled"
+
+	switch(health.damage[BURN])
+		if(5 to 15)
+			damage_desc += "blistered"
+		if(15 to 25)
+			damage_desc += "burned"
+		if(25 to 50)
+			damage_desc += "scorched"
+		if(50 to INFINITY)
+			damage_desc += "charred"
+
+	/*
+	if(health.damage[OXY])
+		damage_desc += "pale"
+
+	if(health.damage[TOX])
+		damage_desc += "sickly"
+
+	if(health.damage[FATIGUE])
+		damage_desc += "limp"
+	*/
+
+	return damage_desc

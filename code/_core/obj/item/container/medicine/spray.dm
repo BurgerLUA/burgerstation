@@ -11,6 +11,8 @@
 
 	reagents = /reagent_container/medical_spray
 
+	value = 10
+
 /obj/item/container/spray/update_icon()
 
 	icon = initial(icon)

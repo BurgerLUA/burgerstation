@@ -16,6 +16,8 @@
 	size = SIZE_3
 	weight = WEIGHT_2
 
+	value = 10
+
 /obj/item/clothing/overwear/coat/wizard
 	name = "wizard's robes"
 	icon = 'icons/obj/items/clothing/suit/wizard.dmi'
@@ -30,6 +32,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_2
+
+	value = 30
 
 /obj/item/clothing/overwear/coat/wizard/red
 	color = "#FF0000"
@@ -51,6 +55,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_2
+
+	value = 30
 
 /obj/item/clothing/overwear/coat/winter
 	name = "winter coat"
@@ -78,6 +84,8 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
+	value = 20
+
 
 /obj/item/clothing/overwear/coat/hoodie
 	name = "hoodie"
@@ -90,6 +98,10 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
+	value = 40
+
 
 /obj/item/clothing/overwear/coat/hoodie/black
 	color = COLOR_BLACK
+
+	value = 20

@@ -4,6 +4,8 @@
 
 	var/interactable = FALSE
 
+	value = 10
+
 /obj/item/device/proc/on_active()
 	return TRUE
 

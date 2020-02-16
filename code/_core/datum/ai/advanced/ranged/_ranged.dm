@@ -13,7 +13,7 @@
 		else if(get_dist(owner,objective_attack) <= distance_target_min)
 			owner.move_dir = get_dir(objective_attack,owner)
 		else
-			owner.move_dir = 0
+			owner.move_dir = pick(list(0,0,0,0,turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90)))
 
 	else if(get_dist(owner,start_turf) >= 5)
 		owner.move_dir = get_dir(owner,start_turf)

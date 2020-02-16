@@ -20,6 +20,8 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	value = 40
+
 
 /obj/item/clothing/mask/gas/clown
 	name = "clown mask"
@@ -35,6 +37,8 @@
 
 	size = SIZE_2
 	weight = WEIGHT_1
+
+	value = 100
 
 
 /obj/item/clothing/mask/gas/mining
@@ -58,3 +62,5 @@
 
 	size = SIZE_2
 	weight = WEIGHT_3
+
+	value = 50

@@ -30,6 +30,8 @@
 	color_secondary_desc = "pants"
 	color_tertiary_desc = "shoulders"
 
+	value = 10
+
 /obj/item/clothing/uniform/jumpsuit/random/on_spawn()
 	color_primary = random_color()
 	color_secondary = random_color()
@@ -70,6 +72,8 @@
 		MAGIC = ARMOR_E,
 		COLD = ARMOR_C,
 	)
+
+	value = 30
 
 /obj/item/clothing/uniform/jumpsuit/dark/security
 	color_primary = COLOR_BLACK

@@ -21,3 +21,5 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+
+	value = 180

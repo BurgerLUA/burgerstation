@@ -28,6 +28,8 @@
 
 	protected_limbs = list(BODY_TORSO)
 
+	value = 30
+
 /obj/item/clothing/overwear/armor/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
@@ -58,3 +60,5 @@
 		HEAT = ARMOR_E,
 		COLD = ARMOR_C
 	)
+
+	value = 30

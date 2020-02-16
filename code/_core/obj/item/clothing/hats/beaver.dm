@@ -12,6 +12,8 @@
 	size = SIZE_2
 	weight = WEIGHT_1
 
+	value = 5
+
 /obj/item/clothing/head/hat/wizard
 	name = "wizard hat"
 	icon = 'icons/obj/items/clothing/hats/wizard.dmi'
@@ -26,6 +28,8 @@
 
 	size = SIZE_2
 	weight = WEIGHT_1
+
+	value = 20
 
 /obj/item/clothing/head/hat/wizard/blue
 	color = "#0065FF"

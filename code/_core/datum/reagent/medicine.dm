@@ -1,6 +1,6 @@
-#define METABOLISM_STOMACH 0.75
-#define METABOLISM_BLOOD 1
-#define METABOLISM_SKIN 10
+#define METABOLISM_BLOOD 0.2
+#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.75
+#define METABOLISM_SKIN METABOLISM_BLOOD * 10
 #define OVERDOSE_THRESHOLD_MEDICINE 30
 
 /reagent/medicine/
@@ -25,6 +25,8 @@
 	color = "#FF0000"
 
 	flavor = "bandaids"
+
+	value = 100
 
 /reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
@@ -201,7 +203,7 @@
 
 	flavor = "bitter silver"
 
-	metabolism_skin = METABOLISM_SKIN
+	metabolism_skin = METABOLISM_STOMACH
 
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
@@ -211,6 +213,15 @@
 
 	return .
 
+/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0)
+
+	. = ..()
+
+	if(container.owner && container.owner.health)
+		container.owner.health.adjust_loss_smart(burn=.*-HEALING_D)
+		container.remove_reagent(id,. * 0.5)
+
+	return .
 
 /reagent/medicine/styptic_powder
 	name = "Styptic Powder"
@@ -221,7 +232,18 @@
 
 	flavor = "baby powder"
 
-	metabolism_skin = METABOLISM_SKIN
+	metabolism_skin = METABOLISM_STOMACH
+
+
+/reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0)
+
+	. = ..()
+
+	if(container.owner && container.owner.health)
+		container.owner.health.adjust_loss_smart(brute=.*-HEALING_D)
+		container.remove_reagent(id,. * 0.5)
+
+	return .
 
 /reagent/medicine/styptic_powder/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 
@@ -229,7 +251,6 @@
 
 	if(owner && owner.health)
 		owner.health.adjust_loss_smart(brute=.*-HEALING_B)
-
 
 	return .
 
@@ -241,8 +262,8 @@
 	color = "#FFFFFF"
 	flavor = "bandaids"
 
-	metabolism_blood = METABOLISM_BLOOD*0.25
-	metabolism_stomach = METABOLISM_BLOOD*0.25
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
 
 /reagent/medicine/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()

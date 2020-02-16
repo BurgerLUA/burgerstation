@@ -5,3 +5,5 @@
 
 	protected_limbs = list(BODY_TORSO)
 
+	value = 5
+

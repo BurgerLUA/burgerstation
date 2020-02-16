@@ -25,6 +25,9 @@
 	maptext_x = 2
 	maptext_y = 2
 
+	size = 0.01
+	weight = 0.01
+
 /obj/item/bullet/proc/get_ammo_count()
 	return item_count_current
 
@@ -52,6 +55,9 @@
 		if(item_count_current <= 1 && is_turf(src.loc))
 			pixel_x = rand(-8,8)
 			pixel_y = rand(-8,8)
+
+	size = initial(size)*item_count_current
+	weight = initial(weight)*item_count_current
 
 	..()
 

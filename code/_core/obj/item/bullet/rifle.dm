@@ -12,6 +12,10 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
+	size = 0.04
+	weight = 0.04
+
+	value = 6
 
 /obj/item/bullet/sniper_762/on_spawn()
 	item_count_current = 5
@@ -40,6 +44,11 @@
 	damage_type = ".223"
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
+
+	size = 0.03
+	weight = 0.03
+
+	value = 4
 
 
 /obj/item/bullet/rifle_223/surplus

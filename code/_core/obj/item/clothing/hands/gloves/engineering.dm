@@ -30,6 +30,8 @@
 	size = SIZE_1
 	weight = WEIGHT_1
 
+	value = 100
+
 /obj/item/clothing/hands/gloves/engineering/left
 	name = "left engineering glove"
 	color = "#FFFF00"

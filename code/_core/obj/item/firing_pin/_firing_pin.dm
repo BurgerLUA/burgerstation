@@ -4,6 +4,8 @@
 	desc_extended = "Acts as a trigger mechanism for the gun. Controls who can fire the gun, what can trigger the gun, when can the gun be fired, where the gun can be fired, why the gun can be fired, and how the gun should be fired. This also controls the IFF settings for the gun."
 	var/iff_tag = null
 
+	value = 10
+
 /obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon)
 	return TRUE
 

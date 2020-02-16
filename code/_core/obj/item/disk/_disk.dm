@@ -9,6 +9,8 @@
 	var/writing_color = "#FFFFFF"
 	var/metal_color = "#FFFFFF"
 
+	value = 20
+
 /obj/item/disk/New(var/desired_loc)
 	. = ..()
 	update_icon()

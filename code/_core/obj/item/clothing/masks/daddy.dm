@@ -17,3 +17,5 @@
 	weight = -15
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
+
+	value = 200

@@ -6,6 +6,8 @@
 
 	reagents = /reagent_container/beaker/potion/
 
+	value = 3
+
 
 /obj/item/container/beaker/bottle/bicaridine
 	name = "bottle of bicaridine"

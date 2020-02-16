@@ -15,6 +15,8 @@
 	var/list/cheese_mix = list()
 	var/process_count = 0
 
+	value = 10
+
 
 /obj/item/container/cheese_mold/block
 	icon_state = "block"

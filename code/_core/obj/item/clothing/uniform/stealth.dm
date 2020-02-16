@@ -17,3 +17,5 @@
 		COLD = ARMOR_D,
 		BOMB = ARMOR_D
 	)
+
+	value = 60

@@ -64,6 +64,7 @@
 
 	caller.to_chat(span("notice","You grab \the [object.name]."))
 	grabbed_object = object
+	animate(grabbed_object,pixel_x = initial(grabbed_object.pixel_x), pixel_y = initial(grabbed_object.pixel_y), time = SECONDS_TO_DECISECONDS(1))
 	grabbed_object.grabbing_hand = src
 	update_overlays()
 

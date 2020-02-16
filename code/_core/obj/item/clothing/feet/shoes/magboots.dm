@@ -26,6 +26,8 @@
 
 	slowdown_mul_worn = 1.1
 
+	value = 80
+
 /obj/item/clothing/feet/shoes/magboot/left
 	name = "left magboot"
 	icon_state = "inventory_left"

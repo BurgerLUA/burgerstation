@@ -17,6 +17,8 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	value = 10
+
 
 /obj/item/clothing/pants/kilt
 	name = "kilt"
@@ -36,6 +38,8 @@
 
 	size = SIZE_2
 	weight = WEIGHT_2
+
+	value = 15
 
 /obj/item/clothing/pants/kilt/green
 	color = "#003714"

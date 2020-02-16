@@ -9,6 +9,8 @@
 
 	dyeable = TRUE
 
+	value = 5
+
 
 /obj/item/clothing/head/hood/bandana/red
 	color = "#880000"

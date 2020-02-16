@@ -15,10 +15,14 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
+	size = 0.5
+	weight = 1
+
+	value = 3
+
 /obj/item/bullet/bolt/on_spawn()
 	item_count_current = 3
 	return ..()
-
 
 /obj/item/bullet/bolt/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE

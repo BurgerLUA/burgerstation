@@ -17,3 +17,5 @@
 		BOMB = ARMOR_C,
 		BIO = ARMOR_B
 	)
+
+	value = 20

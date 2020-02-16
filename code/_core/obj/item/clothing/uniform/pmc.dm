@@ -12,3 +12,5 @@
 		MAGIC = ARMOR_E,
 		COLD = ARMOR_C,
 	)
+
+	value = 30

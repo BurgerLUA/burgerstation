@@ -13,5 +13,7 @@
 
 	hide_hair = TRUE
 
+	value = 10
+
 /obj/item/clothing/head/hood/skimask/black
 	color = COLOR_BLACK

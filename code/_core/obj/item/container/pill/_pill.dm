@@ -15,6 +15,8 @@
 
 	var/reagent_container/reagents_2
 
+	value = 1
+
 /obj/item/container/pill/get_examine_text(var/mob/examiner)
 	return ..() + div("notice","There is a marking that reads \"[marking]\" on the pill.")
 

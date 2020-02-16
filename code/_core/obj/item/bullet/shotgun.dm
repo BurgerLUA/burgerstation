@@ -9,6 +9,9 @@
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
+	size = 0.04
+	weight = 0.04
+
 /obj/item/bullet/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -32,6 +35,11 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
+	size = 0.04
+	weight = 0.04
+
+	value = 6
+
 /obj/item/bullet/shotgun/buckshot
 	name = "\improper 12 gauge buckshot shell"
 	desc = ""
@@ -45,6 +53,11 @@
 	damage_type = "12_buckshot"
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+	size = 0.04
+	weight = 0.04
+
+	value = 6
 
 
 /obj/item/bullet/shotgun/rubber_balls
@@ -60,4 +73,9 @@
 	damage_type = "12_rubber"
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
+
+	size = 0.04
+	weight = 0.04
+
+	value = 6
 

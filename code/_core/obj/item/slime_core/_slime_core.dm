@@ -6,6 +6,8 @@ obj/item/slime_core
 	icon_state = "slime_core"
 	alpha = 125
 
+	value = 5
+
 obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object()

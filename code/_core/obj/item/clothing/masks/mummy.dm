@@ -14,3 +14,5 @@
 		HOLY = ARMOR_C,
 		DARK = ARMOR_C
 	)
+
+	value = 5

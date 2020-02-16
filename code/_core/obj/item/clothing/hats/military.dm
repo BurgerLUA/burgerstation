@@ -16,6 +16,8 @@
 	size = SIZE_3
 	weight = WEIGHT_2
 
+	value = 40
+
 /obj/item/clothing/head/helmet/security/tactical_helmet2
 	name = "tactical military helmet"
 	icon = 'icons/obj/items/clothing/hats/tacticool2.dmi'
@@ -33,3 +35,5 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
+
+	value = 90

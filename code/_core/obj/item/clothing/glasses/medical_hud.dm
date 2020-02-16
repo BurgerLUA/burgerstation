@@ -7,6 +7,8 @@
 
 	vision_mod = FLAG_VISION_MEDICAL
 
+	value = 10
+
 /obj/item/clothing/glasses/medical_hud/advanced
 	name = "advanced medical hud"
 	rarity = RARITY_RARE
@@ -14,6 +16,8 @@
 	desc_extended = "A medical heads up display eyepiece that analyzes the health of nearby living beings and displays them on the screen. This one also displays the type of injury, if any."
 	icon = 'icons/obj/items/clothing/glasses/medical_hud.dmi'
 	vision_mod = FLAG_VISION_MEDICAL | FLAG_VISION_MEDICAL_ADVANCED
+
+	value = 30
 
 /obj/item/clothing/glasses/security_hud
 	name = "security hud"
@@ -23,3 +27,5 @@
 	icon = 'icons/obj/items/clothing/glasses/security_hud.dmi'
 
 	vision_mod = FLAG_VISION_SECURITY
+
+	value = 10

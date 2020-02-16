@@ -5,6 +5,7 @@
 	var/desc = "The basic description of the reagent."
 	var/desc_extended = "The extended description of the reagent, usually a detailed note of its effects."
 	var/id = null
+	var/value = 0 //Value per unit.
 
 	var/color = "#FFFFFF" //Reagent's color.
 
@@ -24,6 +25,9 @@
 	var/processed_reagent
 
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
+
+/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0)
+	return amount_added
 
 /reagent/proc/metabolize(var/atom/originial_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 

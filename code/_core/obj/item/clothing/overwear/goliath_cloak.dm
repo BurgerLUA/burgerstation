@@ -1,4 +1,4 @@
-/obj/item/clothing/neck/cloak/goliath
+/obj/item/clothing/neck/cape/goliath
 	name = "goliath cloak"
 	icon = 'icons/obj/items/clothing/suit/goliath_cloak.dmi'
 	desc_extended = "A cloak made from goliath hide."
@@ -12,3 +12,5 @@
 		PIERCE = ARMOR_E
 	)
 	additional_clothing = list(/obj/item/clothing/head/helmet/attached/goliath_cloak)
+
+	value = 200

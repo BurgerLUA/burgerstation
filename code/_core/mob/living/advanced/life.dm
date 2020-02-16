@@ -97,7 +97,8 @@ mob/living/advanced/proc/handle_regen()
 		return FALSE
 
 	if(status & FLAG_STATUS_ADRENALINE)
-		return health.health_current <= -200
+		var/health_added = adrenaline_time < 0 ? 100 : max(adrenaline_time,200)
+		return health.health_current <= -health_added
 
 	return health.health_current <= -100
 

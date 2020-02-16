@@ -14,6 +14,8 @@
 	size = SIZE_3
 	weight = WEIGHT_4
 
+	value = 160
+
 
 /obj/item/clothing/head/helmet/knight/red
 	name = "red knight helmet"
@@ -68,6 +70,8 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	value = 200
+
 /obj/item/clothing/head/helmet/hardsuit/syndie
 	name = "mauler helmet mk1"
 	icon = 'icons/obj/items/clothing/hats/syndie_basic.dmi'
@@ -89,6 +93,8 @@
 	size = SIZE_4
 	weight = WEIGHT_5
 
+	value = 50
+
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
 	icon = 'icons/obj/items/clothing/hats/syndie_advanced.dmi'
@@ -109,6 +115,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_4
+
+	value = 80
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
@@ -133,6 +141,7 @@
 
 	slowdown_mul_worn = 0.75
 
+	value = 150
 
 /obj/item/clothing/head/helmet/hardsuit/mining
 	name = "mining hardsuit helmet"
@@ -145,3 +154,5 @@
 
 	size = SIZE_3
 	weight = WEIGHT_4
+
+	value = 40

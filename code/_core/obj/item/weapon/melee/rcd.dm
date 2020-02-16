@@ -11,6 +11,8 @@
 	var/matter_current = 0
 	var/matter_max = 10000
 
+	value = 50
+
 /obj/item/weapon/melee/tool/rcd/on_spawn()
 	matter_current = matter_max
 	return ..()

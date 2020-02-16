@@ -4,3 +4,5 @@
 	item_slot = SLOT_GROIN_U
 
 	protected_limbs = list(BODY_GROIN)
+
+	value = 5

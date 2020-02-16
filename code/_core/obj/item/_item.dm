@@ -11,7 +11,7 @@
 
 	var/list/material = list() //Stored materials
 
-	var/value = 1 //Value in whatever currency this world uses. Used for buying and selling items.
+	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
 
 	var/delete_on_drop = FALSE
 

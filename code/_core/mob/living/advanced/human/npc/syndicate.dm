@@ -4,7 +4,7 @@
 	starting_factions = list(
 		FACTION_PLAYER_HOSTILE
 	)
-	ai = /ai/ranged/
+	ai = /ai/advanced/ranged
 	class = "syndicate"
 
 	var/list/possible_outfits = list(

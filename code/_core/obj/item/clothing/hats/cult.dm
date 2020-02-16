@@ -18,6 +18,7 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	value = 20
 
 /obj/item/clothing/head/hood/cult/old
 
@@ -39,6 +40,8 @@
 	size = SIZE_2
 	weight = WEIGHT_1
 
+	value = 100
+
 /obj/item/clothing/head/helmet/cult
 
 	name = "hardened cult hood"
@@ -58,6 +61,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
+
+	value = 40
 
 
 

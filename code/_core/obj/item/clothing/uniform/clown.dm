@@ -14,6 +14,8 @@
 		FATIGUE = -ARMOR_S
 	)
 
+	value = 100
+
 /obj/item/clothing/uniform/clown/purple
 	name = "purple clown uniform"
 	icon_state = "inventory_purple"

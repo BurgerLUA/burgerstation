@@ -20,3 +20,5 @@
 	)
 
 	crafting_id = "workbench"
+
+	value = 25

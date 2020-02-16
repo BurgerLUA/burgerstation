@@ -14,6 +14,8 @@
 
 	var/open = TRUE
 
+	value = 15
+
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
 	update_icon()

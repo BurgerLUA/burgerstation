@@ -42,4 +42,18 @@
 
 	LOG_DEBUG("Checked the class of [good_class + bad_class + null_class] living types, with [good_class] being good, [bad_class] being bad, and [null_class] being null.")
 
+	var/good_values = 0
+	var/bad_values = 0
+
+	for(var/v in subtypesof(/obj/item/))
+		var/obj/item/I = v
+		var/value = initial(I.value)
+		if(value >= 0)
+			good_values++
+		else
+			bad_values++
+			LOG_ERROR("WARNING: Item type [I] has missing value!")
+
+	LOG_DEBUG("Checked the values of [good_values + bad_values] items, with [good_values] being good, and [bad_values] being bad.")
+
 	return TRUE

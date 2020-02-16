@@ -22,6 +22,8 @@
 	size = SIZE_0
 	weight = WEIGHT_0
 
+	value = 3
+
 
 /obj/item/clothing/feet/socks/white
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
@@ -30,6 +32,8 @@
 	name = "knee socks"
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'
 	polymorphic = TRUE
+
+	value = 5
 
 /obj/item/clothing/feet/socks/knee/white
 	color_primary = "#FFFFFF"
@@ -41,19 +45,20 @@
 	color_secondary = "#32321B"
 	color_tertiary = "#53512A"
 
-/obj/item/clothing/feet/socks/programmer/
-	name = "programmer sock"
+/obj/item/clothing/feet/socks/stockings/
+	name = "thigh high sock"
 	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
 	polymorphic = TRUE
+	value = 10
 
-/obj/item/clothing/feet/socks/programmer/pink
+/obj/item/clothing/feet/socks/stockings/pink
 	name = "programmer sock"
 
 	color_primary = "#FFFFFF"
 	color_secondary = "#EE9AA8"
 	color_tertiary = "#FFFFFF"
 
-/obj/item/clothing/feet/socks/programmer/bee
+/obj/item/clothing/feet/socks/stockings/bee
 	name = "bee stockings"
 
 	color_primary = "#1E1E1E"

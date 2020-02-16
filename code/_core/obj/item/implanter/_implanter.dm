@@ -6,6 +6,8 @@
 
 	var/obj/item/organ/internal/stored_implant
 
+	value = 50
+
 /obj/item/implanter/New(var/desired_loc)
 	. = ..()
 	if(stored_implant)

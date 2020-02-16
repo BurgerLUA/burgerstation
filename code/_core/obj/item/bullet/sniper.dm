@@ -12,6 +12,10 @@
 
 	projectile_speed = BULLET_SPEED_SNIPER
 
+	size = 0.1
+	weight = 0.1
+
+	value = 15
 
 /obj/item/bullet/sniper_50/surplus
 	name = "\improper surplus .50 sniper round"
@@ -22,3 +26,6 @@
 	projectile_speed = BULLET_SPEED_SNIPER * SURPLUS_PENALTY
 
 	misfire_chance = 1
+
+	size = 0.1
+	weight = 0.1

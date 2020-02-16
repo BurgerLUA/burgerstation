@@ -5,3 +5,5 @@
 	icon_count = 9
 
 	reagents = /reagent_container/beaker/vial/
+
+	value = 3

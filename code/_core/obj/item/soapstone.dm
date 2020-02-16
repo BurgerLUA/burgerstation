@@ -7,6 +7,8 @@
 	var/cooldown = 0
 	var/stone_color = "#FFFFFF"
 
+	value = 100
+
 /obj/item/soapstone/New(var/desired_loc)
 	update_icon()
 	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stone_color)

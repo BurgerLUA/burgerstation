@@ -8,7 +8,7 @@
 
 	dynamic_inventory_count = MAX_INVENTORY_X
 
-	size = SIZE_3
+	size = MAX_INVENTORY_X*SIZE_1
 
 	container_max_size = SIZE_2
 
@@ -19,6 +19,12 @@
 		BLUNT = ARMOR_E,
 		PIERCE = ARMOR_D
 	)
+
+	rarity = RARITY_UNCOMMON
+
+	value = 10
+
+
 
 /obj/item/clothing/belt/storage/tool/full
 	name = "toolbelt"

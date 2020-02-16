@@ -7,17 +7,23 @@
 
 	flags_tool = FLAG_TOOL_WIRECUTTER
 
+	value = 3
+
 /obj/item/weapon/melee/tool/wrench
 	name = "wrench"
 	icon = 'icons/obj/items/weapons/melee/tools/wrench.dmi'
 
 	flags_tool = FLAG_TOOL_WRENCH
 
+	value = 5
+
 /obj/item/weapon/melee/tool/crowbar
 	name = "crowbar"
 	icon = 'icons/obj/items/weapons/melee/tools/crowbar.dmi'
 
 	flags_tool = FLAG_TOOL_CROWBAR
+
+	value = 5
 
 /obj/item/weapon/melee/tool/crowbar/red
 	name = "red crowbar"
@@ -28,6 +34,8 @@
 	icon = 'icons/obj/items/weapons/melee/tools/multitool.dmi'
 
 	flags_tool = FLAG_TOOL_MULTITOOL
+
+	value = 10
 
 /obj/item/weapon/melee/tool/multitool/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -45,4 +53,34 @@
 	name = "screwdriver"
 	icon = 'icons/obj/items/weapons/melee/tools/screwdriver.dmi'
 
+	value = 5
+
 	flags_tool = FLAG_TOOL_SCREWDRIVER
+
+/obj/item/weapon/melee/tool/pickaxe
+	name = "steel pickaxe"
+	desc = "Useful for lobotomies."
+	icon = 'icons/obj/items/weapons/melee/clubs/pickaxe_steel.dmi'
+
+	block_mul = list(
+		ATTACK_TYPE_MELEE = 0.5,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 1
+	)
+
+	parry_mul = list(
+		ATTACK_TYPE_MELEE = 0.5,
+		ATTACK_TYPE_RANGED = 0,
+		ATTACK_TYPE_MAGIC = 0
+	)
+
+	damage_type = "pickaxe"
+
+	flags_tool = FLAG_TOOL_PICKAXE
+
+	tool_time = SECONDS_TO_DECISECONDS(2)
+
+	attack_delay = 10
+	attack_delay_max = 15
+
+	value = 10

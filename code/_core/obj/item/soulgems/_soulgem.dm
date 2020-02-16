@@ -8,6 +8,8 @@
 	var/total_charge = 0
 	//TODO: Make these enchant things.
 
+	value = 60
+
 /obj/item/soulgem/get_examine_text(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 

@@ -10,24 +10,19 @@
 	color_tertiary = "#FFFFFF"
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 25,
-		HEAT = 10,
-		COLD = -20,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BLADE = ARMOR_E,
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E,
+		MAGIC = ARMOR_D,
+		COLD = -ARMOR_D,
+		HEAT = ARMOR_D
 	)
 
 	no_initial_blend = TRUE
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
+
+	value = 10
 
 
 /obj/item/clothing/uniform/skirt/random/on_spawn()

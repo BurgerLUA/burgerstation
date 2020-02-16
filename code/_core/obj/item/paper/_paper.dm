@@ -9,6 +9,8 @@
 
 	var/list/data = list("There is nothing here.","Oh god oh fuck.")
 
+	value = 1
+
 /obj/item/paper/click_self(var/mob/caller,location,control,params)
 
 	if(!is_player(caller))

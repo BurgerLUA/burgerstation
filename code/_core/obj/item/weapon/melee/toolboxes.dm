@@ -7,6 +7,8 @@
 	attack_delay = 5
 	attack_delay_max = 10
 
+	value = 10
+
 /obj/item/weapon/melee/toolbox/fill_inventory()
 	new /obj/item/weapon/melee/tool/wrench(src)
 	new /obj/item/weapon/melee/tool/screwdriver(src)

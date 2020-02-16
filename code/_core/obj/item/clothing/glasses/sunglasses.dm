@@ -11,6 +11,8 @@
 		DARK = -ARMOR_A
 	)
 
+	value = 10
+
 
 /obj/item/clothing/glasses/sun/ABOMB
 	name = "\improper A.B.O.M.B. glasses"
@@ -22,3 +24,5 @@
 		DARK = -ARMOR_A,
 		BOMB = ARMOR_A
 	)
+
+	value = 50

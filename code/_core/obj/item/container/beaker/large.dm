@@ -6,6 +6,8 @@
 
 	reagents = /reagent_container/beaker/large
 
+	value = 10
+
 /obj/item/container/beaker/large/bicaridine/on_spawn()
 	reagents.add_reagent("bicaridine",reagents.volume_max)
 	return ..()

@@ -19,6 +19,8 @@
 
 	var/overide_icon = FALSE
 
+	value = 5
+
 /obj/item/container/beaker/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 

@@ -17,6 +17,8 @@
 	attack_delay = 5
 	attack_delay_max = 12
 
+	value = 40
+
 /obj/item/weapon/melee/sword/sabre/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -36,6 +38,8 @@
 
 	attack_delay = 8
 
+	value = 30
+
 /obj/item/weapon/melee/sword/claymore/cult
 	name = "cultist sword"
 	icon = 'icons/obj/items/weapons/melee/swords/cult.dmi'
@@ -43,6 +47,8 @@
 	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe, now cursed with Nar'sie's magic."
 
 	damage_type = "sword_claymore_cult"
+
+	value = 50
 
 
 /obj/item/weapon/melee/sword/claymore/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
@@ -59,6 +65,8 @@
 	attack_delay = 5
 	attack_delay_max = 12
 
+	value = 10
+
 /obj/item/weapon/melee/zweihander
 	name = "chaos zweihander"
 	rarity = RARITY_LEGENDARY
@@ -68,3 +76,5 @@
 
 	attack_delay = 10
 	attack_delay_max = 30
+
+	value = 120

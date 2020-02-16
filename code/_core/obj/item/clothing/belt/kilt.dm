@@ -19,3 +19,6 @@
 		BLUNT = ARMOR_D,
 		PIERCE = ARMOR_C
 	)
+
+	rarity = RARITY_UNCOMMON
+	value = 20

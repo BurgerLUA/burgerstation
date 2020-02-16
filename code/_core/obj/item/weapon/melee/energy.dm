@@ -54,6 +54,8 @@
 	attack_delay = 4
 	attack_delay_max = 8
 
+	value = 80
+
 /obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
 	. = ..()
 	var/area/A = get_area(caller.loc)
@@ -92,6 +94,8 @@
 		ATTACK_TYPE_RANGED = 0,
 		ATTACK_TYPE_MAGIC = 0
 	)
+
+	value = 60
 
 /obj/item/weapon/melee/energy/shield/blue
 	color = "#0000FF"

@@ -13,6 +13,8 @@
 
 	crafting_id = "pill_press"
 
+	value = 40
+
 /obj/item/crafting/pill_press/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/hud/inventory/crafting/result/product_slot

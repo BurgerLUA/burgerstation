@@ -3,6 +3,7 @@ obj/item/clothing/back/wings/angel
 	desc = "Proof of divinity."
 	desc_extended = "A pair of absolutely divine angel wings. Significantly reduces carry weight at the cost of reduced armor to the entire body. Has excellent protection against dark attacks."
 	icon = 'icons/obj/items/clothing/back/wings/angel.dmi'
+	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
 		BLADE = -ARMOR_C,
@@ -18,3 +19,5 @@ obj/item/clothing/back/wings/angel
 		HOLY = -ARMOR_S,
 		DARK = ARMOR_S
 	)
+
+	value = 1000

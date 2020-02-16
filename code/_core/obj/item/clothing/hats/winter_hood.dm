@@ -19,6 +19,8 @@
 	size = SIZE_2
 	weight = WEIGHT_1
 
+	value = 10
+
 
 /obj/item/clothing/head/hood/hoodie
 	name = "hoodie hood"
@@ -28,3 +30,5 @@
 	weight = WEIGHT_1
 
 	dyeable = FALSE
+
+	value = 10

@@ -11,6 +11,8 @@
 		COLD = ARMOR_D,
 	)
 
+	value = 5
+
 
 /obj/item/clothing/neck/cloak/green
 	color = "#002200"

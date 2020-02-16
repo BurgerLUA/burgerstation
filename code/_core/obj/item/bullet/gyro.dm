@@ -14,6 +14,11 @@
 
 	misfire_chance = 5
 
+	size = 0.1
+	weight = 0.5
+
+	value = 10
+
 /obj/item/bullet/gyrojet/surplus
 	name = "\improper surplus 20mm gyrorocket"
 	misfire_chance = 20

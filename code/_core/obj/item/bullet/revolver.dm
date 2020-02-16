@@ -12,6 +12,10 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
+	size = 0.02
+	weight = 0.02
+
+	value = 3
 
 /obj/item/bullet/revolver_357
 	name = "\improper .357 bullet"
@@ -27,6 +31,11 @@
 	projectile = /obj/projectile/bullet/revolver/
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.03
+	weight = 0.03
+
+	value = 3
 
 /obj/item/bullet/revolver_357/surplus
 	name = "\improper .357 surplus bullet"
@@ -53,6 +62,11 @@
 	projectile = /obj/projectile/bullet/revolver/
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.035
+	weight = 0.035
+
+	value = 4
 
 /obj/item/bullet/revolver_44/surplus
 	name = "\improper surplus .44 magnum bullet"
@@ -85,6 +99,11 @@
 	projectile = /obj/projectile/bullet/revolver/
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	size = 0.01
+	weight = 0.01
+
+	value = 1
 
 /obj/item/bullet/revolver_22/surplus
 	name = "\improper .22 LR surplus"

@@ -18,6 +18,8 @@
 
 	var/injecting = FALSE
 
+	value = 15
+
 /obj/item/container/syringe/get_examine_text(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 

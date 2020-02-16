@@ -12,6 +12,8 @@
 	size = SIZE_2
 	weight = WEIGHT_1
 
+	value = 5
+
 /obj/item/clothing/head/hat/beret/red
 	color = "#800000"
 

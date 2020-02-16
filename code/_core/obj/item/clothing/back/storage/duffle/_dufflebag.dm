@@ -1,13 +1,16 @@
 /obj/item/clothing/back/storage/dufflebag/
 	name = "dufflebag"
 	icon = 'icons/obj/items/clothing/back/dufflebag/white.dmi'
+	rarity = RARITY_COMMON
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
 
-	size = MAX_INVENTORY_X*3*SIZE_4
+	size = MAX_INVENTORY_X*3*SIZE_3
 	container_max_size = SIZE_4
 
 	weight = WEIGHT_4
+
+	value = 20
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
 	color = COLOR_BLACK

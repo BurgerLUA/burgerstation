@@ -22,3 +22,5 @@
 
 	size = SIZE_3*2
 	weight = WEIGHT_3
+
+	value = 15

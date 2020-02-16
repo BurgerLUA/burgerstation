@@ -20,6 +20,8 @@
 	attack_delay = 6
 	attack_delay_max = 10
 
+	value = 30
+
 
 /obj/item/weapon/melee/null_rod/staff
 	name = "null staff"

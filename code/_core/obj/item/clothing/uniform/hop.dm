@@ -23,4 +23,5 @@
 		FATIGUE = 0
 	)
 
+	value = 150
 

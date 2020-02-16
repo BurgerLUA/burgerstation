@@ -20,6 +20,8 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	value = 30
+
 /obj/item/clothing/feet/shoes/miner/left
 	name = "left mining boot"
 	icon_state = "inventory_left"

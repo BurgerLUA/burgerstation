@@ -30,6 +30,8 @@
 	attack_delay = 5
 	attack_delay_max = 10
 
+	value = 5
+
 /obj/item/weapon/melee/torch/click_self(var/atom/caller)
 	enabled = !enabled
 	update_icon()

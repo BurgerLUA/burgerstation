@@ -32,6 +32,9 @@
 	var/heat_current = 0
 	var/heat_max = 0.2
 
+	var/movement_spread_base = 0.1
+	var/movement_spread_mul = 0.2
+
 	var/bullet_color = "#FFFFFF"
 
 	var/view_punch = 0
@@ -54,13 +57,7 @@
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
-
-	if(L.move_delay >= -2)
-		return 0.2
-
-	var/returning = Clamp(0.2 + 0.1*(TICKS_TO_SECONDS(L.move_delay)),0,0.1)
-	return returning
-
+	return Clamp(movement_spread_base + movement_spread_mul*(TICKS_TO_SECONDS(L.move_delay)),0,movement_spread_base)
 
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited

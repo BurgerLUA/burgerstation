@@ -73,7 +73,8 @@
 	collision_flags = initial(collision_flags)
 	collision_bullet_flags = initial(collision_bullet_flags)
 	stun_time = 0
-	paralyze_time = 0
+	paralyze_time = 10
+	check_status_effects()
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -194,7 +195,7 @@
 
 	if(status & FLAG_STATUS_ADRENALINE && adrenaline_time <= 0 && adrenaline_time != -1)
 		remove_status(FLAG_STATUS_ADRENALINE)
-		on_adrenaline()
+		on_unadrenaline()
 
 	//Final Checks
 	if(status && !(src in all_living_with_status))

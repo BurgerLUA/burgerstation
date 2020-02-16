@@ -15,6 +15,8 @@
 
 	overide_icon = TRUE
 
+	value = 1
+
 /obj/item/container/beaker/can/click_self(var/mob/caller,location,control,params)
 
 	if(open)

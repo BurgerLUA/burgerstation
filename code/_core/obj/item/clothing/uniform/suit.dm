@@ -19,6 +19,8 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	value = 100
+
 
 // maybe eventually perhaps i'll make this stuff colorable. that eventually is definitely not now.
 /obj/item/clothing/uniform/suit/red

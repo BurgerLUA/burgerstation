@@ -13,6 +13,8 @@
 	size = SIZE_3
 	weight = WEIGHT_4
 
+	value = 40
+
 /obj/item/clothing/head/helmet/attached/goliath_cloak
 	name = "goliath cloak hood"
 	icon = 'icons/obj/items/clothing/hats/goliath_cloak.dmi'
@@ -28,6 +30,8 @@
 	size = SIZE_3
 	weight = WEIGHT_4
 
+	value = 60
+
 /obj/item/clothing/head/helmet/attached/drake_armor
 	name = "ash drake helmet"
 	icon = 'icons/obj/items/clothing/hats/drake_helmet.dmi'
@@ -42,3 +46,5 @@
 
 	size = SIZE_3
 	weight = WEIGHT_4
+
+	value = 120

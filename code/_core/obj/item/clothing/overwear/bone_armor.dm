@@ -16,3 +16,5 @@
 
 	size = SIZE_6
 	weight = WEIGHT_4
+
+	value = 300

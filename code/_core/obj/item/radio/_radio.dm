@@ -26,6 +26,8 @@ var/global/list/obj/item/radio/all_radios = list()
 		"glass" = 20000
 	)
 
+	value = 5
+
 /obj/item/radio/click_self(var/mob/caller,location,control,params)
 	broadcasting = !broadcasting
 	caller.to_chat(span("notice","You toggle the receiver to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))

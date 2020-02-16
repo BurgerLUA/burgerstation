@@ -27,6 +27,8 @@
 
 	polymorphic = TRUE
 
+	value = 10
+
 
 /obj/item/clothing/overwear/coat/labcoat/chemist
 	color_primary = "#FFFFFF"

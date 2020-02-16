@@ -18,6 +18,8 @@
 	size = SIZE_2
 	weight = WEIGHT_1
 
+	value = 120
+
 /obj/item/clothing/head/hat/hos
 	name = "\improper Head of Security's hat"
 	icon = 'icons/obj/items/clothing/hats/hos.dmi'
@@ -36,3 +38,5 @@
 
 	size = SIZE_2
 	weight = WEIGHT_1
+
+	value = 170

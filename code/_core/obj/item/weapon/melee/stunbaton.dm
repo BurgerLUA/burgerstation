@@ -21,6 +21,8 @@
 	attack_delay = 5
 	attack_delay_max = 10
 
+	value = 20
+
 /obj/item/weapon/melee/energy/stunbaton/click_self(var/atom/caller)
 	. = ..()
 	var/area/A = get_area(caller.loc)

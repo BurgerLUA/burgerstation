@@ -9,6 +9,9 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	item_slot = SLOT_TORSO_B
+	slot_icons = TRUE
+
+	value = 110
 
 /obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
@@ -50,8 +53,9 @@
 
 /obj/item/defib/proc/defib_target(var/mob/caller,var/mob/living/target)
 
-	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
+	target.add_adrenaline(300)
 
+	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
 
 	if(target.check_death())
 		target.visible_message("Nothing happens!")
@@ -84,6 +88,8 @@
 	var/placed_target_ref //While refs can be replaced by other objects, placing the last paddle with check if it's a valid ref.
 
 	throwable = FALSE
+
+	value = 10
 
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

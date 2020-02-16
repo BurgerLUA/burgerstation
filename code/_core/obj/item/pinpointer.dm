@@ -10,6 +10,8 @@
 
 	var/scan_mode = FALSE
 
+	value = 10
+
 /obj/item/pinpointer/New(var/desired_loc)
 
 	var/image/I = new/image(initial(icon),initial(icon_state))
@@ -56,6 +58,8 @@
 	name = "custom pinpointer"
 	icon_state = "yellow"
 
+	value = 30
+
 /obj/item/pinpointer/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(scan_mode && object)
@@ -85,6 +89,8 @@
 	name = "crew pinpointer"
 	icon_state = "blue"
 
+	value = 20
+
 /obj/item/pinpointer/crew/click_self(var/mob/caller)
 
 	var/list/possible_crew = list()
@@ -113,6 +119,8 @@
 /obj/item/pinpointer/landmark/
 	name = "landmark pinpointer"
 	icon_state = "green"
+
+	value = 10
 
 /obj/item/pinpointer/landmark/click_self(var/mob/caller)
 

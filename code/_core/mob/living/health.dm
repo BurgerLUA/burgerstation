@@ -53,12 +53,10 @@
 		return FALSE
 
 	if(status & FLAG_STATUS_ADRENALINE)
-		return health.health_current <= -100
+		var/health_added = adrenaline_time < 0 ? 100 : max(adrenaline_time/2,100)
+		return health.health_current <= -health_added
 
 	return health.health_current <= 0
-
-	return FALSE
-
 
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 

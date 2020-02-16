@@ -296,6 +296,8 @@
 		stored_reagents[reagent_id] += amount
 	else
 		stored_reagents[reagent_id] = amount
+		var/reagent/R = all_reagents[reagent_id]
+		R.on_add(src,amount)
 
 	if(amount > 0)
 		if(stored_reagents_temperature[reagent_id] && stored_reagents[reagent_id])

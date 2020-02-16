@@ -12,3 +12,6 @@
 		PIERCE = ARMOR_C,
 		HEAT = ARMOR_D
 	)
+
+	rarity = RARITY_UNCOMMON
+	value = 40

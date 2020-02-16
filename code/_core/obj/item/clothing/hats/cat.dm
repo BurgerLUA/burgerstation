@@ -39,3 +39,5 @@
 	color_tertiary_desc = null
 
 	worn_layer = LAYER_MOB_HAIR_HEAD + 0.01
+
+	value = 200

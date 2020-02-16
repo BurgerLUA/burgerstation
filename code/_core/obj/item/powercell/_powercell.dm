@@ -9,6 +9,8 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
+	value = 5
+
 /obj/item/powercell/on_spawn()
 	charge_current = charge_max
 	. = ..()
@@ -69,6 +71,8 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
+	value = 15
+
 /obj/item/powercell/industrial
 	name = "industrial power cell"
 	icon_state = "cell_industrial"
@@ -76,3 +80,5 @@
 
 	size = SIZE_3
 	weight = WEIGHT_4
+
+	value = 25

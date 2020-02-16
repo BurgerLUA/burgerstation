@@ -60,8 +60,10 @@
 
 	var/obj/item/desired_item = pickweight(stored_items)
 	current_item = new desired_item(src)
+	current_item.on_spawn()
+	current_item.update_icon()
 
-	var/original_item_cost = current_item.value
+	var/original_item_cost = current_item.calculate_value()
 	var/new_item_cost = original_item_cost
 	var/new_quantity = 0
 
@@ -90,10 +92,7 @@
 	current_item_cost = round(new_item_cost,min(original_item_cost,5))
 	current_item_quantity = round(new_quantity,1)
 
-	current_item.on_spawn()
-	current_item.update_icon()
 	update_icon()
-
 
 /obj/structure/interactive/shop/get_examine_text(var/mob/examiner)
 
@@ -103,7 +102,7 @@
 		var/list/contents = current_item.inventory_to_list()
 		returning_text += div("notice","It contains: [english_list(contents)]")
 
-	returning_text += div("notice","This item is being sold for [current_item_cost] crystals.") + div("notice","There is currently [current_item_quantity] of this item left.")
+	returning_text += div("notice","This item is being sold for [current_item_cost] credits.") + div("notice","There is currently [current_item_quantity] of this item left.")
 
 	return returning_text
 
@@ -133,6 +132,7 @@
 			var/obj/item/new_item = new current_item.type(get_turf(src))
 			new_item.on_spawn()
 			new_item.update_icon()
+			new_item.calculate_value()
 			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [current_item_cost] telecrystal\s."))
 			if(current_item_quantity <= 0)

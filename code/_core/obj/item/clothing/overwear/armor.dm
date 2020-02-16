@@ -21,6 +21,8 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	value = 50
+
 /obj/item/clothing/overwear/armor/cult
 	name = "cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult.dmi'
@@ -43,6 +45,8 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	value = 200
+
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult_old.dmi'
@@ -62,6 +66,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
+
+	value = 300
 
 /obj/item/clothing/overwear/armor/cult/hard
 	name = "hardened cult robes"
@@ -83,6 +89,8 @@
 	size = SIZE_5
 	weight = WEIGHT_5
 
+	value = 300
+
 /obj/item/clothing/overwear/armor/tutorial
 	name = "tutorial armor"
 	icon = 'icons/obj/items/clothing/suit/tutorial_dress.dmi'
@@ -102,6 +110,8 @@
 
 	size = SIZE_4
 	weight = WEIGHT_4
+
+	value = 200
 
 /obj/item/clothing/overwear/armor/knight
 	name = "heavy knight armor"
@@ -126,6 +136,8 @@
 	size = SIZE_6
 	weight = WEIGHT_6
 	slowdown_mul_worn = 1.3
+
+	value = 150
 
 /obj/item/clothing/overwear/armor/knight/red
 	name = "red heavy knight armor"
@@ -183,6 +195,8 @@
 	size = SIZE_5
 	weight = WEIGHT_4
 
+	value = 200
+
 /obj/item/clothing/overwear/armor/knight/battlemage
 	name = "battlemage armor"
 	icon = 'icons/obj/items/clothing/suit/knight_battlemage.dmi'
@@ -203,6 +217,8 @@
 
 	size = SIZE_6
 	weight = WEIGHT_6
+
+	value = 300
 
 /obj/item/clothing/overwear/armor/knight/daddy
 	name = "giant father's armor"
@@ -258,6 +274,8 @@
 
 	slowdown_mul_worn = 1.2
 
+	value = 120
+
 /obj/item/clothing/overwear/armor/hardsuit/syndie/advanced
 	name = "mauler hardsuit mk2"
 	icon = 'icons/obj/items/clothing/suit/syndie_advanced.dmi'
@@ -283,6 +301,8 @@
 
 	slowdown_mul_worn = 1.2
 
+	value = 180
+
 /obj/item/clothing/overwear/armor/hardsuit/syndie/elite
 	name = "mauler hardsuit mk3"
 	icon = 'icons/obj/items/clothing/suit/syndie_elite.dmi'
@@ -306,6 +326,8 @@
 	size = SIZE_6
 	weight = WEIGHT_5
 	slowdown_mul_worn = 1
+
+	value = 360
 
 /obj/item/clothing/overwear/armor/hardsuit/mining
 	name = "mining hardsuit"
@@ -332,6 +354,8 @@
 
 	slowdown_mul_worn = 1.2
 
+	value = 80
+
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "white magnus armor"
 	icon = 'icons/obj/items/clothing/suit/magnus.dmi'
@@ -353,6 +377,8 @@
 
 	size = SIZE_5
 	weight = WEIGHT_5
+
+	value = 300
 
 /obj/item/clothing/overwear/armor/knight/magnus/red
 	name = "red magnus armor"
@@ -389,6 +415,8 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
+	value = 200
+
 /obj/item/clothing/overwear/armor/molded_armor
 	name = "light armor"
 	icon = 'icons/obj/items/clothing/suit/mod_chest_armor.dmi'
@@ -407,6 +435,8 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
+	value = 15
+
 /obj/item/clothing/overwear/armor/molded_armor/security
 	name = "light security armor"
 	color = "#111111"
@@ -423,9 +453,13 @@
 	size = SIZE_3
 	weight = WEIGHT_4
 
+	value = 20
+
 /obj/item/clothing/overwear/armor/medium_armor
 	name = "medium armor"
 	icon = 'icons/obj/items/clothing/suit/medium_chest_armor.dmi'
+
+	value = 30
 
 /obj/item/clothing/overwear/armor/medium_armor/leather
 	name = "medium leather armor"
@@ -440,6 +474,8 @@
 
 	size = SIZE_4
 	weight = WEIGHT_4
+
+	value = 30
 
 /obj/item/clothing/overwear/armor/medium_armor/security
 	name = "medium security armor"
@@ -456,10 +492,14 @@
 	size = SIZE_4
 	weight = WEIGHT_5
 
+	value = 50
+
 /obj/item/clothing/overwear/armor/gladiator
 	name = "gladiator armor"
 	icon = 'icons/obj/items/clothing/suit/gladiator.dmi'
 	rarity = RARITY_UNCOMMON
+
+	value = 40
 
 /obj/item/clothing/overwear/armor/gladiator/brass
 	name = "bronze gladiator armor"

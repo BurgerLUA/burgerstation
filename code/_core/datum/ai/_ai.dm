@@ -168,7 +168,9 @@
 /ai/proc/handle_attacking()
 
 	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max)
-		do_attack(objective_attack,prob(left_click_chance))
+		var/is_left_click = prob(left_click_chance)
+		if(can_attack(objective_attack,is_left_click))
+			do_attack(objective_attack,is_left_click)
 
 	attack_ticks = 0
 

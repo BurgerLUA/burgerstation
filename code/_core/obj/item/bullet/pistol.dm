@@ -12,6 +12,11 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
+	size = 0.02
+	weight = 0.02
+
+	value = 3
+
 /obj/item/bullet/pistol_10mm/surplus
 	name = "\improper surplus 10mm auto round"
 	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
@@ -38,6 +43,11 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
+	size = 0.025
+	weight = 0.025
+
+	value = 4
+
 /obj/item/bullet/pistol_12mm/
 	name = "\improper 12.7mm round"
 	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo."
@@ -51,6 +61,11 @@
 	damage_type = "12.7mm"
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.025
+	weight = 0.025
+
+	value = 4
 
 /obj/item/bullet/pistol_9mm/
 	name = "\improper 9mm round"
@@ -66,6 +81,11 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
+	size = 0.01
+	weight = 0.01
+
+	value = 1
+
 /obj/item/bullet/pistol_9mm/surplus
 	name = "surplus 9mm round"
 	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo. This one was mass produced."
@@ -76,6 +96,9 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
 
 	misfire_chance = 1
+
+	size = 0.01
+	weight = 0.01
 
 /obj/item/bullet/pistol_40/
 	name = "\improper .40 bullet"
@@ -91,6 +114,10 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
+	size = 0.01
+	weight = 0.01
+
+	value = 1
 
 /obj/item/bullet/pistol_45/
 	name = "\improper .45 bullet"
@@ -98,11 +125,18 @@
 	id = ".45"
 	icon = 'icons/obj/items/bullet/45.dmi'
 
+	item_count_max = 5
+	item_count_max_icon = 5
+
 	projectile = /obj/projectile/bullet/smg
 	damage_type = ".45"
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
+	size = 0.015
+	weight = 0.015
+
+	value = 2
 
 /obj/item/bullet/pistol_45/surplus
 	name = "\improper surplus .45 bullet"
@@ -138,11 +172,18 @@
 	id = "8mm"
 	icon = 'icons/obj/items/bullet/8mm.dmi'
 
+	item_count_max = 5
+	item_count_max_icon = 5
+
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "8mm"
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
+	size = 0.01
+	weight = 0.01
+
+	value = 2
 
 /obj/item/bullet/pistol_8mm/hollowpoint
 	name = "\improper hollowpoint 8mm pistol bullet"
@@ -154,15 +195,3 @@
 	damage_type = "8mm_hp"
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
-
-
-/obj/item/bullet/pistol_40
-	name = "\improper .40 pistol bullet"
-	desc = "For pistols that requre .40 ammo."
-	id = ".40"
-	icon = 'icons/obj/items/bullet/40.dmi'
-
-	projectile = /obj/projectile/bullet/pistol
-	damage_type = ".40"
-
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT

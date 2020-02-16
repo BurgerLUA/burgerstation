@@ -21,6 +21,8 @@
 	size = SIZE_3
 	weight = WEIGHT_2
 
+	value = 5
+
 
 /obj/item/clothing/neck/mantle/purple
 	color = "#1A1D29"
@@ -37,5 +39,7 @@
 
 	desc = "For eating ass."
 	desc_extended = "A near pristine bib."
+
+	value = 50
 
 

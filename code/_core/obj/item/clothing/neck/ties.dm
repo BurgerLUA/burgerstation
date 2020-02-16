@@ -14,6 +14,8 @@
 	size = SIZE_1
 	weight = WEIGHT_0
 
+	value = 5
+
 /obj/item/clothing/neck/tie/red
 	color = "#FF0000"
 

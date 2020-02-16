@@ -129,7 +129,7 @@
 
 	return TRUE
 
-/mob/living/proc/add_adrenaline(var/value,var/max_value = 40)
+/mob/living/proc/add_adrenaline(var/value,var/max_value = 600)
 
 	if(adrenaline_time == -1)
 		return FALSE

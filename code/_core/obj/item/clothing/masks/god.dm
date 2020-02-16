@@ -23,3 +23,5 @@
 	worn_pixel_y = -8
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
+
+	value = 1000

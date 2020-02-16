@@ -24,6 +24,8 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
+	value = 100
+
 
 /obj/item/clothing/feet/shoes/tutorial/left
 	name = "left tutorial boot"

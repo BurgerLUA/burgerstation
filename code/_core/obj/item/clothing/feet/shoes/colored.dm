@@ -32,6 +32,8 @@
 	color_secondary_desc = "pants"
 	color_tertiary_desc = "shoulders"
 
+	value = 10
+
 /obj/item/clothing/feet/shoes/colored/left
 	name = "left shoe"
 	icon_state = "inventory_left"

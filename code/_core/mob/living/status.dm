@@ -41,10 +41,14 @@
 
 /mob/living/proc/on_adrenaline()
 	src.to_chat("You feel a rush of energy!")
+	spawn while(status & FLAG_STATUS_ADRENALINE)
+		animate(src,pixel_x = rand(-1,1),pixel_y = rand(-1,1),time = 1)
+		sleep(1)
 	return TRUE
 
 /mob/living/proc/on_unadrenaline()
 	src.to_chat("The rush of energy disappears.")
+	animate(src,pixel_x = 0,pixel_y = 0,time = 1)
 	return TRUE
 
 /mob/living/proc/on_sleeped()

@@ -23,6 +23,8 @@
 
 	polymorphic = TRUE
 
+	value = 20
+
 /obj/item/clothing/neck/cape/hunter
 	name = "hunter's cape"
 	color_primary = "#700100"
@@ -40,6 +42,8 @@
 
 	rarity = RARITY_MYTHICAL
 
+	value = 40
+
 /obj/item/clothing/neck/cape/hide
 	name = "hide cape"
 	color_primary = "#703B18"
@@ -55,4 +59,6 @@
 	)
 
 	rarity = RARITY_UNCOMMON
+
+	value = 30
 

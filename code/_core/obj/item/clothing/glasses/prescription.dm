@@ -13,6 +13,8 @@
 		MAGIC = ARMOR_A
 	)
 
+	value = 40
+
 
 /obj/item/clothing/glasses/prescription/blue
 	name = "blue prescription glasses"

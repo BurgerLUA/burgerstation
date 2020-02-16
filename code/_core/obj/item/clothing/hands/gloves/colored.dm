@@ -23,6 +23,8 @@
 	size = SIZE_1
 	weight = WEIGHT_0
 
+	value = 20
+
 /obj/item/clothing/hands/gloves/colored/left
 	name = "left white glove"
 	icon_state = "inventory_left"
@@ -90,6 +92,8 @@
 	size = SIZE_1
 	weight = WEIGHT_1
 
+	value = 60
+
 /obj/item/clothing/hands/gloves/colored/yellow/left
 	name = "left insulted glove"
 	color = "#FFFF00"
@@ -103,6 +107,8 @@
 	protection_cold = list(
 		BODY_HAND_RIGHT = 2
 	)
+
+	value = 40
 
 /obj/item/clothing/hands/gloves/colored/padded
 	name = "padded glove"

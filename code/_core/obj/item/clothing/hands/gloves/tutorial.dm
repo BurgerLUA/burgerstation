@@ -21,6 +21,8 @@
 	size = SIZE_0
 	weight = WEIGHT_0
 
+	value = 120
+
 /obj/item/clothing/hands/gloves/tutorial/left
 	name = "left tutorial glove"
 	icon_state = "inventory_left"
