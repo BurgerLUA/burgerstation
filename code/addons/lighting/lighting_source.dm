@@ -1,7 +1,7 @@
 // This is where the fun begins.
 // These are the main datums that emit light.
 
-/datum/light_source
+/light_source
 
 	var/atom/top_atom        // The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
 	var/atom/source_atom     // The atom that we belong to.
@@ -37,7 +37,7 @@
 	var/tmp/test_y_offset   // How much the Y coord should be offset due to direction.
 	var/tmp/facing_opaque = FALSE
 
-	var/list/datum/lighting_corner/effect_str     // List used to store how much we're affecting corners.
+	var/list/lighting_corner/effect_str     // List used to store how much we're affecting corners.
 	var/list/turf/affecting_turfs
 
 	var/applied = FALSE // Whether we have applied our light yet or not.
@@ -45,7 +45,7 @@
 	var/needs_update = LIGHTING_NO_UPDATE
 
 // Kill ourselves.
-/datum/light_source/Destroy()
+/light_source/Destroy()
 
 	SSlighting.total_lighting_sources--
 
@@ -74,7 +74,7 @@
 #define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : ((PX >= 16 ? EAST : (PX <= -16 ? WEST : 0)))) | (!PY ? 0 : (PY >= 16 ? NORTH : (PY <= -16 ? SOUTH : 0))))
 #define UPDATE_APPROXIMATE_PIXEL_TURF var/px = top_atom.light_offset_x; var/py = top_atom.light_offset_y; var/_mask = GET_APPROXIMATE_PIXEL_DIR(px, py); pixel_turf = _mask ? (get_step(source_turf, _mask) || source_turf) : source_turf
 
-/datum/light_source/New(atom/owner, atom/top)
+/light_source/New(atom/owner, atom/top)
 	SSlighting.total_lighting_sources++
 	source_atom = owner // Set our new owner.
 
@@ -125,7 +125,7 @@
 #endif
 
 // This proc will cause the light source to update the top atom, and add itself to the update queue.
-/datum/light_source/proc/update(atom/new_top_atom)
+/light_source/proc/update(atom/new_top_atom)
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)
 		if(top_atom != source_atom) // Remove ourselves from the light sources of that top atom.
@@ -139,15 +139,15 @@
 	INTELLIGENT_UPDATE(LIGHTING_CHECK_UPDATE)
 
 // Will force an update without checking if it's actually needed.
-/datum/light_source/proc/force_update()
+/light_source/proc/force_update()
 	INTELLIGENT_UPDATE(LIGHTING_FORCE_UPDATE)
 
 // Will cause the light source to recalculate turfs that were removed or added to visibility only.
-/datum/light_source/proc/vis_update()
+/light_source/proc/vis_update()
 	INTELLIGENT_UPDATE(LIGHTING_VIS_UPDATE)
 
 // Decompile the hexadecimal colour into lumcounts of each perspective.
-/datum/light_source/proc/parse_light_color()
+/light_source/proc/parse_light_color()
 	if (light_color)
 		lum_r = GetRedPart   (light_color) / 255
 		lum_g = GetGreenPart (light_color) / 255
@@ -163,7 +163,7 @@
 #define MINMAX(NUM) ((NUM) < 0 ? -round(-(NUM)) : round(NUM))
 #define ARBITRARY_NUMBER 10
 
-/datum/light_source/proc/regenerate_angle(ndir)
+/light_source/proc/regenerate_angle(ndir)
 	old_direction = ndir
 
 	var/turf/front = get_step(source_turf, old_direction)
@@ -240,7 +240,7 @@
 #undef POLAR_TO_CART_Y
 #undef MINMAX
 
-/datum/light_source/proc/remove_lum(now = FALSE)
+/light_source/proc/remove_lum(now = FALSE)
 	applied = FALSE
 
 	var/thing
@@ -251,14 +251,14 @@
 	affecting_turfs = null
 
 	for (thing in effect_str)
-		var/datum/lighting_corner/C = thing
+		var/lighting_corner/C = thing
 		REMOVE_CORNER(C,now)
 
 		LAZYREMOVE(C.affecting, src)
 
 	effect_str = null
 
-/datum/light_source/proc/recalc_corner(datum/lighting_corner/C, now = FALSE)
+/light_source/proc/recalc_corner(var/lighting_corner/C, now = FALSE)
 	LAZYINITLIST(effect_str)
 	if (effect_str[C]) // Already have one.
 		REMOVE_CORNER(C,now)
@@ -275,7 +275,7 @@
 
 	UNSETEMPTY(effect_str)
 
-/datum/light_source/proc/update_corners(now = FALSE)
+/light_source/proc/update_corners(now = FALSE)
 	var/update = FALSE
 
 	if (!source_atom || source_atom.qdeleting)
@@ -366,10 +366,10 @@
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
 		return	// No change.
 
-	var/list/datum/lighting_corner/corners = list()
+	var/list/lighting_corner/corners = list()
 	var/list/turf/turfs                    = list()
 	var/thing
-	var/datum/lighting_corner/C
+	var/lighting_corner/C
 	var/turf/T
 	var/list/Tcorners
 	var/Sx = pixel_turf.x	// these are used by APPLY_CORNER_BY_HEIGHT
@@ -403,7 +403,7 @@
 					if (Tcorners[i])
 						continue
 
-					Tcorners[i] = new /datum/lighting_corner(T, LIGHTING_CORNER_DIAGONAL[i], i)
+					Tcorners[i] = new /lighting_corner(T, LIGHTING_CORNER_DIAGONAL[i], i)
 
 			if(!T.has_opaque_atom)
 				for (var/v in 1 to 4)

@@ -1,4 +1,4 @@
-/var/datum/lighting_corner/dummy/dummy_lighting_corner = new
+/var/lighting_corner/dummy/dummy_lighting_corner = new
 // Because we can control each corner of every lighting overlay.
 // And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).
 // For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
@@ -9,7 +9,7 @@
 // This is the reverse of the above - the position in the array is a dir. Update this if the above changes.
 var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 2, 1)
 
-/datum/lighting_corner
+/lighting_corner
 	// t1 through t4 are our masters, in no particular order.
 	// They are split into vars like this in the interest of reducing memory usage.
 	// tX is the turf itself, tXi is the index of this corner in that turf's corners list.
@@ -22,7 +22,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/turf/t4
 	var/t4i
 
-	var/list/datum/light_source/affecting // Light sources affecting us.
+	var/list/light_source/affecting // Light sources affecting us.
 	var/active                            = FALSE  // TRUE if one of our masters has dynamic lighting.
 
 	var/x = 0
@@ -46,7 +46,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/cache_b  = LIGHTING_SOFT_THRESHOLD
 	var/cache_mx = 0
 
-/datum/lighting_corner/New(turf/new_turf, diagonal, oi)
+/lighting_corner/New(turf/new_turf, diagonal, oi)
 	SSlighting.lighting_corners += src
 
 	t1 = new_turf
@@ -102,7 +102,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 #define OVERLAY_PRESENT(T) (T && T.lighting_overlay)
 
-/datum/lighting_corner/proc/update_active()
+/lighting_corner/proc/update_active()
 	active = FALSE
 
 	if (OVERLAY_PRESENT(t1) || OVERLAY_PRESENT(t2) || OVERLAY_PRESENT(t3) || OVERLAY_PRESENT(t4))
@@ -111,7 +111,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 #undef OVERLAY_PRESENT
 
 // God that was a mess, now to do the rest of the corner code! Hooray!
-/datum/lighting_corner/proc/update_lumcount(delta_r, delta_g, delta_b, now = FALSE)
+/lighting_corner/proc/update_lumcount(delta_r, delta_g, delta_b, now = FALSE)
 	if (!(delta_r + delta_g + delta_b))
 		return
 
@@ -133,7 +133,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	else
 		update_overlays(TRUE)
 
-/datum/lighting_corner/proc/update_overlays(now = FALSE)
+/lighting_corner/proc/update_overlays(now = FALSE)
 
 	var/lr = apparent_r
 	var/lg = apparent_g
@@ -174,7 +174,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 				Ov.needs_update = TRUE
 				SSlighting.overlay_queue += Ov
 
-/datum/lighting_corner/Destroy()
+/lighting_corner/Destroy()
 
 	LOG_ERROR("Some fuck deleted a lighting corner.")
 
@@ -182,5 +182,5 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 	return ..()
 
-/datum/lighting_corner/dummy/New()
+/lighting_corner/dummy/New()
 	return

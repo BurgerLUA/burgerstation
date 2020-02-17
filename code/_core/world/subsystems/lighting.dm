@@ -97,7 +97,7 @@ var/global/subsystem/lighting/SSlighting
 		var/list/curr_overlays = overlay_queue
 
 		while (lq_idex <= curr_lights.len)
-			var/datum/light_source/L = curr_lights[lq_idex++]
+			var/light_source/L = curr_lights[lq_idex++]
 			if (L.needs_update != LIGHTING_NO_UPDATE)
 				total_ss_updates += 1
 				L.update_corners()
@@ -110,7 +110,7 @@ var/global/subsystem/lighting/SSlighting
 			lq_idex = 1
 
 		while (cq_idex <= curr_corners.len)
-			var/datum/lighting_corner/C = curr_corners[cq_idex++]
+			var/lighting_corner/C = curr_corners[cq_idex++]
 			if (C.needs_update)
 				C.update_overlays()
 				C.needs_update = FALSE

@@ -4,21 +4,21 @@
 
 	var/tmp/lighting_corners_initialised = FALSE
 
-	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
+	var/tmp/list/light_source/affecting_lights       // List of light sources affecting this turf.
 	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
-	var/tmp/list/datum/lighting_corner/corners
+	var/tmp/list/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
 
 // Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
 /turf/proc/reconsider_lights()
-	var/datum/light_source/L
+	var/light_source/L
 	for (var/thing in affecting_lights)
 		L = thing
 		L.vis_update()
 
 // Forces a lighting update. Reconsider lights is preferred when possible.
 /turf/proc/force_update_lights()
-	var/datum/light_source/L
+	var/light_source/L
 	for (var/thing in affecting_lights)
 		L = thing
 		L.force_update()
@@ -32,7 +32,7 @@
 		qdel(lighting_overlay, TRUE)
 		lighting_overlay = null
 
-	for (var/datum/lighting_corner/C in corners)
+	for (var/lighting_corner/C in corners)
 		C.update_active()
 
 // Builds a lighting overlay for us, but only if our area is dynamic.
@@ -46,10 +46,10 @@
 
 		new /atom/movable/lighting_overlay(src)
 
-		for (var/datum/lighting_corner/C in corners)
+		for (var/lighting_corner/C in corners)
 			if (!C.active) // We would activate the corner, calculate the lighting for it.
 				for (var/L in C.affecting)
-					var/datum/light_source/S = L
+					var/light_source/S = L
 					S.recalc_corner(C, TRUE)
 
 				C.active = TRUE
@@ -63,7 +63,7 @@
 	var/lum_g
 	var/lum_b
 
-	for (var/datum/lighting_corner/L in corners)
+	for (var/lighting_corner/L in corners)
 		lum_r += L.apparent_r
 		lum_g += L.apparent_g
 		lum_b += L.apparent_b
@@ -82,7 +82,7 @@
 		return (minlum + maxlum)/2
 
 	var/totallums = 0
-	for (var/datum/lighting_corner/L in corners)
+	for (var/lighting_corner/L in corners)
 		totallums += L.apparent_r + L.apparent_b + L.apparent_g
 
 	totallums /= 12 // 4 corners, each with 3 channels, get the average.
@@ -153,4 +153,4 @@
 		if (corners[i]) // Already have a corner on this direction.
 			continue
 
-		corners[i] = new/datum/lighting_corner(src, LIGHTING_CORNER_DIAGONAL[i], i)
+		corners[i] = new/lighting_corner(src, LIGHTING_CORNER_DIAGONAL[i], i)

@@ -17,7 +17,7 @@
 	var/light_offset_x
 	var/light_offset_y
 
-	var/tmp/datum/light_source/light // Our light source. Don't fuck with this directly unless you have a good reason!
+	var/tmp/light_source/light // Our light source. Don't fuck with this directly unless you have a good reason!
 	var/tmp/list/light_sources       // Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
 
 // Nonesensical value for l_color default, so we can detect if it gets set to null.
@@ -61,7 +61,7 @@
 		if (light)
 			light.update()
 		else
-			light = new /datum/light_source(src)
+			light = new /light_source(src)
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
 /atom/movable/Destroy()
@@ -111,7 +111,7 @@
 	. = ..()
 
 	if (. && light_sources)
-		var/datum/light_source/L
+		var/light_source/L
 		var/thing
 		for (thing in light_sources)
 			L = thing
@@ -123,7 +123,7 @@
 
 	. = ..()
 
-	var/datum/light_source/L
+	var/light_source/L
 	var/thing
 	for (thing in light_sources)
 		L = thing
@@ -137,7 +137,7 @@
 
 	. = ..()
 
-	var/datum/light_source/L
+	var/light_source/L
 	var/thing
 	for (thing in light_sources)
 		L = thing

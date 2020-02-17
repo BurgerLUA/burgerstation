@@ -58,10 +58,10 @@
 
 	// See LIGHTING_CORNER_DIAGONAL in lighting_corner.dm for why these values are what they are.
 	var/list/corners = T.corners
-	var/datum/lighting_corner/cr = dummy_lighting_corner
-	var/datum/lighting_corner/cg = dummy_lighting_corner
-	var/datum/lighting_corner/cb = dummy_lighting_corner
-	var/datum/lighting_corner/ca = dummy_lighting_corner
+	var/lighting_corner/cr = dummy_lighting_corner
+	var/lighting_corner/cg = dummy_lighting_corner
+	var/lighting_corner/cb = dummy_lighting_corner
+	var/lighting_corner/ca = dummy_lighting_corner
 	if (corners)
 		cr = corners[3] || dummy_lighting_corner
 		cg = corners[2] || dummy_lighting_corner
