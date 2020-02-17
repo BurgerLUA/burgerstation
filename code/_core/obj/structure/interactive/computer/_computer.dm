@@ -100,11 +100,35 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	return TRUE
 
+obj/structure/interactive/computer/console/remote_flight
+	name = "remote flight control console"
+	computer_type = "syndishuttle"
+	keyboard_type = "syndie_key"
 
+	var/obj/shuttle_controller/desired_shuttle_controller
 
+obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	if(!is_advanced(caller))
+		return ..()
 
+	var/selection = input("Are you sure you wish to launch this shuttle?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
 
+	if(selection == "Yes")
+		var/obj/shuttle_controller/SC = locate(desired_shuttle_controller) in world
+		if(SC)
+			if(SC.state == SHUTTLE_STATE_LANDED)
+				SC.state = SHUTTLE_STATE_WAITING
+				SC.time = 0
+				caller.to_chat("You prepare the shuttle for launch.")
+			else
+				caller.to_chat("ERROR: Shuttle already in transit.")
+		else
+			caller.to_chat("ERROR: No shuttle controller found!")
+
+obj/structure/interactive/computer/console/remote_flight/cargo
+	name = "remote cargo shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/cargo
 
 obj/structure/interactive/computer/console/old/station_job
 	name = "job selection computer"
@@ -127,3 +151,20 @@ obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(
 	open_menu(P,"dialogue")
 
 	return TRUE
+
+
+obj/structure/interactive/computer/console/remote_flight/alpha
+	name = "remote alpha shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/alpha
+
+obj/structure/interactive/computer/console/remote_flight/bravo
+	name = "remote bravo shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/bravo
+
+obj/structure/interactive/computer/console/remote_flight/charlie
+	name = "remote charlie shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/charlie
+
+obj/structure/interactive/computer/console/remote_flight/delta
+	name = "remote delta shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/delta

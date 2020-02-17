@@ -82,6 +82,12 @@
 	desired_light_range = 3
 
 
+/obj/structure/interactive/lighting/tube/syndicate
+	color = "#FFBABA"
+	color_frame = "#666666"
+	desired_light_power = 0.25
+	desired_light_range = 7
+
 /obj/structure/interactive/lighting/tube/color/turf/Initialize()
 
 	if(loc)

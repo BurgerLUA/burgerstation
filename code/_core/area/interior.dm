@@ -8,6 +8,10 @@
 	name = "cave"
 	icon_state = "cave"
 
+/area/interior/syndicate_base
+	name = "syndicate base"
+	icon_state = "syndie"
+
 /area/interior/station
 	name = "Central Command"
 	icon_state = "cmd"

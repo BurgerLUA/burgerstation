@@ -182,6 +182,8 @@ var/global/list/all_shuttle_controlers = list()
 	for(var/atom/movable/M in objects_to_throw)
 		if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 			continue
+		if(locate(/obj/structure/interactive/chair) in M.loc.contents)
+			continue
 		M.throw_self(M,null,null,null,transit_throw_x*16,transit_throw_y*16)
 
 	return TRUE

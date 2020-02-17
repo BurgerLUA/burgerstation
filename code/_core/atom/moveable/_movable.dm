@@ -33,6 +33,8 @@
 
 	var/throwable = TRUE
 
+	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
+
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 
@@ -127,7 +129,7 @@
 	for(var/atom/movable/M in OldLoc.contents)
 		if(M == src)
 			continue
-		if(!M.Uncross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
+		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
 			return FALSE
 
 	//TRY: Enter the contents.

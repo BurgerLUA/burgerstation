@@ -70,3 +70,13 @@
 	W.click_self(src)
 
 	return .
+
+
+/mob/living/advanced/npc/syndicate/double
+	level_multiplier = 2
+
+/mob/living/advanced/npc/syndicate/triple
+	level_multiplier = 3
+
+/mob/living/advanced/npc/syndicate/quadruple
+	level_multiplier = 3

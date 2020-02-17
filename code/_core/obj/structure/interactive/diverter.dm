@@ -13,6 +13,10 @@
 	density_east  = FALSE
 	density_west  = FALSE
 
+	var/think_timer = 0
+
+	var/list/atom/movable/tracked_movables = list()
+
 /obj/structure/interactive/diverter/Initialize()
 
 	icon_state = "diverter_on"
@@ -28,10 +32,29 @@
 /obj/structure/interactive/diverter/proc/should_push(var/atom/movable/M)
 	return TRUE
 
+/obj/structure/interactive/diverter/think()
+
+	for(var/k in tracked_movables)
+		var/v = tracked_movables[k]
+		if(v > curtime)
+			continue
+		var/atom/movable/M = k
+		if(!M.anchored && !M.grabbing_hand && should_push(M) && M.loc == src.loc)
+			M.Move(get_step(src,dir),silent = TRUE)
+		tracked_movables -= k
+
+	think_timer--
+
+	return think_timer
+
 /obj/structure/interactive/diverter/Crossed(var/atom/movable/M,var/atom/NewLoc,var/atom/OldLoc)
 
-	if(!M.anchored && !M.grabbing_hand && should_push(M))
-		M.Move(get_step(src,dir),silent = TRUE)
+	tracked_movables[M] = curtime + 4
+
+	if(!think_timer)
+		start_thinking(src)
+
+	think_timer = 10
 
 	return ..()
 

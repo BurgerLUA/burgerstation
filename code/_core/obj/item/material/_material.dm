@@ -12,10 +12,16 @@
 
 	crafting_id = "material"
 
+	value = 1
+
 /obj/item/material/on_spawn()
 	. = ..()
 	update_icon()
 	return .
+
+/obj/item/material/get_base_value()
+	var/material/M = all_materials[material_id]
+	return ..() * M.value_per_unit
 
 
 /obj/item/material/Crossed(var/atom/movable/O)

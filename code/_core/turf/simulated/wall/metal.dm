@@ -56,6 +56,9 @@
 	reinforced_color = "#00FF00"
 	health = null
 
+/turf/simulated/wall/metal/reinforced/syndicate
+	color = COLOR_IRON
+	reinforced_color = "#FF0000"
 
 /*
 /turf/simulated/wall/metal/reinforced/rusted

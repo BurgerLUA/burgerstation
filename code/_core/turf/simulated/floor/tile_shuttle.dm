@@ -18,4 +18,4 @@
 
 
 /turf/simulated/floor/tile/shuttle/black
-	color = "#111111"
+	color = COLOR_IRON
