@@ -1,4 +1,4 @@
-var/list/rift_markers = list()
+var/global/list/rift_markers = list()
 
 /obj/marker/rift_location
 	name = "rift location"

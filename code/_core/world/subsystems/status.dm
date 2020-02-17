@@ -1,4 +1,4 @@
-var/list/all_living_with_status = list()
+var/global/list/all_living_with_status = list()
 
 /subsystem/status/
 	name = "Status Effect Subsystem"

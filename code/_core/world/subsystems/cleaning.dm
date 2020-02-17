@@ -1,4 +1,4 @@
-var/list/objects_to_delete = list()
+var/global/list/objects_to_delete = list()
 
 /subsystem/delete/
 	name = "Cleanup Subsystem"

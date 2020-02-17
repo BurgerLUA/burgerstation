@@ -5,6 +5,10 @@
 	icon = 'icons/obj/structure/radio.dmi'
 	icon_state = "intercom"
 
+	desired_light_range = 1
+	desired_light_power = 1
+	desired_light_color = "#00FF00"
+
 	var/obj/item/radio/stored_radio = null
 
 /obj/structure/interactive/intercom/New(var/desired_loc)

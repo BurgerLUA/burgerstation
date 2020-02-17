@@ -1,4 +1,4 @@
-var/list/qdel_refs_to_type = list()
+var/global/list/qdel_refs_to_type = list()
 
 //Credit to Kachnov for this garbage collection code.
 /datum/proc/Destroy()

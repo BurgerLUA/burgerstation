@@ -4,7 +4,7 @@
 	treatment_time = 10
 	heal_brute = 10
 
-	value = 10
+	value = 1
 
 /obj/item/container/medicine/bandage/advanced
 	name = "bicaridine soaked bandages"
@@ -19,7 +19,7 @@
 	treatment_time = 30
 	heal_burn = 10
 
-	value = 10
+	value = 1
 
 /obj/item/container/medicine/ointment
 	name = "kelotane infused ointment"
@@ -34,7 +34,7 @@
 	treatment_time = 50
 	heal_brute = 50
 
-	value = 20
+	value = 3
 
 /obj/item/container/medicine/trauma_kit/advanced
 	name = "trauma kit"
@@ -54,7 +54,7 @@
 	treatment_time = 50
 	heal_burn = 50
 
-	value = 20
+	value = 3
 
 /obj/item/container/medicine/burn_kit/advanced
 	name = "kelotane infused burn kit"
@@ -70,24 +70,18 @@
 	item_count_current = 3
 	item_count_max = 3
 
-	value = 5
+	value = 1
 
 /obj/item/container/medicine/patch/brute
 	name = "brute patch (Styptic Powder)"
-	heal_brute = 25
 	icon_state = "patch_brute"
-
-	value = 10
 
 /obj/item/container/medicine/patch/brute/on_spawn()
 	reagents.add_reagent("styptic_powder",30)
 
 /obj/item/container/medicine/patch/burn
 	name = "burn patch (Silver Sulfadiazine)"
-	heal_brute = 25
 	icon_state = "patch_burn"
-
-	value = 10
 
 /obj/item/container/medicine/patch/burn/on_spawn()
 	reagents.add_reagent("silver_sulfadiazine",30)

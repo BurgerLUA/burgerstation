@@ -1,4 +1,4 @@
-var/list/ref_id_to_warning = list()
+var/global/list/ref_id_to_warning = list()
 
 /subsystem/garbage_tracking/
 	name = "Garbage Subsystem"

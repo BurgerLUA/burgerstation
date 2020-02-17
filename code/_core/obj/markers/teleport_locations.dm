@@ -1,4 +1,4 @@
-var/list/teleport_locations = list()
+var/global/list/teleport_locations = list()
 
 /obj/marker/teleport_location
 	name = "teleport location"

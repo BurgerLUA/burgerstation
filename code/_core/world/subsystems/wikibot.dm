@@ -1,6 +1,6 @@
 var/global/list/wikibot_list = list()
 
-var/subsystem/wikibot/SSWikibot
+var/global/subsystem/wikibot/SSWikibot
 
 /subsystem/wikibot/
 	name = "Wikibot Subsystem"

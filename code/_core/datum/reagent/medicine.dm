@@ -9,6 +9,8 @@
 	metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
 	overdose_threshold = OVERDOSE_THRESHOLD_MEDICINE
 
+	value = 0.1
+
 /reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
 
 	. = ..()
@@ -25,8 +27,6 @@
 	color = "#FF0000"
 
 	flavor = "bandaids"
-
-	value = 100
 
 /reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()

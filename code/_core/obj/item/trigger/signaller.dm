@@ -1,4 +1,4 @@
-var/obj/item/device/signaller/all_signalers = list()
+var/global/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller
 	name = "signaller"

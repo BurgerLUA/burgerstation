@@ -7,7 +7,7 @@
 /var/list/LIGHTING_CORNER_DIAGONAL = list(NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST)
 
 // This is the reverse of the above - the position in the array is a dir. Update this if the above changes.
-var/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 2, 1)
+var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 2, 1)
 
 /datum/lighting_corner
 	// t1 through t4 are our masters, in no particular order.
