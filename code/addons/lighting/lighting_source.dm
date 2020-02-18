@@ -412,6 +412,7 @@
 						corners[val] = 0
 
 		turfs += T
+		sleep(-1)
 
 	END_FOR_DVIEW
 
@@ -439,6 +440,7 @@
 				continue
 
 			APPLY_CORNER_BY_HEIGHT(now)
+			sleep(-1)
 	else
 		L = corners - effect_str
 		for (thing in L)
@@ -449,6 +451,7 @@
 				continue
 
 			APPLY_CORNER_BY_HEIGHT(now)
+			sleep(-1)
 
 		for (thing in corners - L)
 			C = thing
@@ -457,6 +460,7 @@
 				continue
 
 			APPLY_CORNER_BY_HEIGHT(now)
+			sleep(-1)
 
 	L = effect_str - corners
 	for (thing in L)

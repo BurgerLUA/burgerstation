@@ -49,7 +49,15 @@
 
 	if(dir==SOUTH) //Master screen blood
 		color = "#FFFFFF"
-		alpha = Clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
+
+		var/mob/living/L = owner
+
+		if(L.dead)
+			alpha = 255
+			maptext = "You have died."
+		else
+			alpha = Clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
+			maptext = null
 
 		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
 			var/client/C = owner.client

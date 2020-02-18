@@ -10,5 +10,5 @@
 	id = "syndicate_shuttle_bluespace"
 
 /area/transit/syndicate/planet
-	name = "syndicate shuttle - station"
-	id = "syndicate_shuttle_station"
+	name = "syndicate shuttle - planet"
+	id = "syndicate_shuttle_planet"

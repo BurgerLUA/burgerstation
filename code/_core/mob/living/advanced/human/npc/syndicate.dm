@@ -35,6 +35,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = /obj/item/magazine/smg_45
 	)
 
+/mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
+	return FALSE
+
 /mob/living/advanced/npc/syndicate/Initialize()
 
 	. = ..()
@@ -66,7 +69,6 @@
 	put_in_hands(W)
 	if(W.can_wield)
 		W.wield(src,W.loc == left_hand ? right_hand : left_hand)
-	name = W.name
 	W.click_self(src)
 
 	return .

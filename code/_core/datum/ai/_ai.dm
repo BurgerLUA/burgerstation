@@ -189,7 +189,7 @@
 		if(target_distance > attack_distance_max)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
-			owner.move_dir = 0x0
+			owner.move_dir = pick(list(0,0,0,0,turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90)))
 
 	else if(current_path && length(current_path))
 
@@ -282,6 +282,8 @@
 
 	if(simple)
 		return exists(L.client)
+	else
+		return L.iff_tag != owner.iff_tag
 
 	return FALSE
 

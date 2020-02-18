@@ -75,14 +75,6 @@
 	transit_bluespace = "delta_shuttle_bluespace"
 	transit_end = "delta_shuttle_landing"
 
-/obj/shuttle_controller/syndicate
-	name = "syndicate shuttle controler"
-	desc = "Controls the syndicate shuttle."
-
-	transit_start = "syndicate_shuttle_centcomm"
-	transit_bluespace = "syndicate_shuttle_bluespace"
-	transit_end = "syndicate_shuttle_station"
-
 
 /obj/shuttle_controller/cargo
 	name = "cargo shuttle controler"

@@ -1,4 +1,5 @@
 
+
 /class/syndicate
 	id = "syndicate"
 

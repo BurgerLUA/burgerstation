@@ -175,14 +175,15 @@ var/global/list/all_shuttle_controlers = list()
 				continue
 			M.move_delay = SECONDS_TO_TICKS(3)
 			M.force_move(replacing_turf)
-			if(!M.anchored)
-				objects_to_throw += M
+			objects_to_throw += M
 		T.change_turf(/turf/simulated/floor/plating)
 
 	for(var/atom/movable/M in objects_to_throw)
 		if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 			continue
-		if(locate(/obj/structure/interactive/chair) in M.loc.contents)
+		if(istype(M,/obj/structure/))
+			continue
+		if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 			continue
 		M.throw_self(M,null,null,null,transit_throw_x*16,transit_throw_y*16)
 

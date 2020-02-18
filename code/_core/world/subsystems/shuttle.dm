@@ -8,6 +8,8 @@
 
 	for(var/obj/shuttle_controller/SC in all_shuttle_controlers)
 		SC.time++
-		SC.on_shuttle_think()
+		if(!SC.on_shuttle_think())
+			LOG_ERROR("Shutting down controller for [SC]!")
+			all_shuttle_controlers -= SC
 
 	return TRUE

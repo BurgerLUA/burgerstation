@@ -30,12 +30,30 @@
 	var/obj/item/material/ore/O = new(src.loc)
 	O.material_id = src.material_id
 	O.on_spawn()
-	O.Move(get_step(src,SOUTH))
+	src.ore_score--
+	update_icon()
+	for(var/obj/structure/interactive/ore_box/OB in range(1,src))
+		O.force_move(OB)
+		return TRUE
+	//ELSE
+	O.force_move(get_step(src,pick(DIRECTIONS_ALL)))
 	src.ore_score--
 	update_icon()
 	return TRUE
 
+
+/obj/structure/interactive/ground_ore_deposit/get_examine_text(var/mob/examiner)
+
+	. = ..()
+
+	. += div("notice","The meter detects an ore concentration of [ore_score]%.")
+
+	return .
+
 /obj/structure/interactive/ground_ore_deposit/update_icon()
+	if(ore_score <= 0)
+		qdel(src)
+		return TRUE
 	var/color_mod = (Clamp(ore_score,0,100)/100)*255
 	color = rgb(255 - color_mod,color_mod,0)
 	return ..()
@@ -46,6 +64,30 @@
 
 /obj/structure/interactive/ground_ore_deposit/map/iron
 	material_id = "iron"
+
+/obj/structure/interactive/ground_ore_deposit/map/carbon
+	material_id = "carbon"
+
+/obj/structure/interactive/ground_ore_deposit/map/random/New(var/desired_loc)
+
+	var/list/possible_materials = list(
+		"iron" = 100,
+		"phoron" = 10,
+		"carbon" = 50,
+		"gold" = 20,
+		"silver" = 30,
+		"diamond" = 5,
+		"uranium" = 30,
+		"titanium" = 20
+	)
+
+	var/material_to_choose = pickweight(possible_materials)
+
+	material_id = material_to_choose
+	ore_score *= possible_materials[material_to_choose]/100
+
+	return ..()
+
 
 
 

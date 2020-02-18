@@ -24,3 +24,12 @@
 		return TRUE
 
 	return ..()
+
+
+/obj/structure/interactive/ore_box/get_examine_text(var/mob/examiner)
+
+	. = ..()
+
+	. += div("notice","The counter shows [length(contents)] objects inside.")
+
+	return .
