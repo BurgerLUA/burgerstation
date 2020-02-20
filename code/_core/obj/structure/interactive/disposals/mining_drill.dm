@@ -11,6 +11,11 @@
 
 	collision_flags = FLAG_COLLISION_REAL
 
+
+/obj/structure/interactive/mining_drill/Initialize()
+	SShorde.possible_horde_targets += src
+	return ..()
+
 /obj/structure/interactive/mining_drill/update_icon()
 
 	if(thinks)

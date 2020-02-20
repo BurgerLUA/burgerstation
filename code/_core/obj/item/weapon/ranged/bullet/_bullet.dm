@@ -119,9 +119,19 @@
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return chambered_bullet ? 1 : 0
 
-/obj/item/weapon/ranged/bullet/proc/insert_bullet(var/obj/item/bullet/B,var/mob/caller)
+/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet/B)
 
-	var/should_chamber = bullet_count_max <= 0
+	if(chambered_bullet)
+		caller.to_chat(span("notice","There is already a chambered bullet inside \the [src.name]!"))
+		return FALSE
+
+	if(bullet_type != B.id)
+		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src.name]!"))
+		return FALSE
+
+	return TRUE
+
+/obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet/B)
 
 	if(!open)
 		caller.to_chat(span("notice","You must open \the [src.name] first before loading it!"))
@@ -131,29 +141,8 @@
 		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src.name]!"))
 		return FALSE
 
-	if(should_chamber && chambered_bullet)
-		caller.to_chat(span("notice","There is already a chambered bullet inside \the [src.name]!"))
-		return FALSE
-
-	if(!should_chamber && bullet_count_max <= get_ammo_count())
+	if(get_real_length(stored_bullets) >= length(stored_bullets))
 		caller.to_chat(span("notice","You can't fit any more bullets into \the [src.name]!"))
 		return FALSE
 
-	if(should_chamber)
-		B.force_move(src)
-		chambered_bullet = B
-		return B
-
-	return B.transfer_src_to_gun_stored_bullets(caller,src)
-
-
-/obj/item/weapon/ranged/bullet/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	object = object.defer_click_on_object()
-
-	if(is_bullet(object))
-		var/obj/item/bullet/B = object
-		insert_bullet(B,caller)
-		return TRUE
-
-	return ..()
+	return TRUE

@@ -107,6 +107,15 @@ obj/structure/interactive/computer/console/remote_flight
 
 	var/obj/shuttle_controller/desired_shuttle_controller
 
+obj/structure/interactive/computer/console/remote_flight/Initialize()
+
+	var/list/z_level = get_z_level(src)
+
+	if(z_level[1] == 1 && z_level[2] == 2)
+		SShorde.possible_horde_targets += src
+
+	return ..()
+
 obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))

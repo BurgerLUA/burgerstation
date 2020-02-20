@@ -307,6 +307,9 @@
 		do_attack_sound(attacker,victim,weapon,hit_object)
 		display_hit_message(attacker,victim,weapon,hit_object)
 
+		if(!victim || !victim.health)
+			return TRUE
+
 		if(is_living(victim))
 			var/mob/living/L = victim
 			L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]\s attack" : "[attacker.name]\s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
@@ -315,7 +318,7 @@
 			var/mob/living/L = blamed
 			L.to_chat(span("notice","Dealt <b>[round(total_damage_dealt,0.1)]</b> damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
-		if(is_living(attacker) && victim && attacker != victim)
+		if(is_living(attacker) && attacker != victim)
 			var/mob/living/A = attacker
 			if(A.client)
 				for(var/skill in skill_xp_per_damage)

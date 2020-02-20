@@ -163,47 +163,31 @@
 
 	return TRUE
 
-/obj/item/bullet/proc/transfer_src_to_gun_stored_bullets(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/transfer_target,location,control,params,var/display_message = TRUE)
+/obj/item/bullet/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/display_message = TRUE)
 
-	var/transfered_bullets = 0
-	var/transfer_self = FALSE
-
-	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count(),transfer_target.insert_limit)
-
-	if(!bullets_to_add)
-		LOG_ERROR("Warning! Something went wrong when trying to insert \the [src.name] into [transfer_target.name]!")
-		return FALSE
-
-	for(var/i=1,i<=bullets_to_add,i++)
-		transfered_bullets += 1
-		if(item_count_current == 1)
-			transfer_self = TRUE
-			break
-		var/obj/item/bullet/B = new src.type(transfer_target)
-		var/first_missing = get_first_missing_value(transfer_target.stored_bullets)
-		if(!first_missing)
-			break
-
-		transfer_target.stored_bullets[first_missing] = B
+	if(W.can_load_chamber(caller,src))
+		var/obj/item/bullet/B = new src.type(W)
+		W.chambered_bullet += B
 		item_count_current -= 1
-
-	if(display_message)
-		caller.to_chat(span("notice","You insert [transfered_bullets] [src.name]\s into \the [transfer_target]."))
-
-	if(transfer_self)
-		src.drop_item(transfer_target)
-		var/first_missing = get_first_missing_value(transfer_target.stored_bullets)
-		transfer_target.stored_bullets[first_missing] = src
-		update_icon()
-		transfer_target.update_icon()
-	else
-		transfer_target.update_icon()
 		if(item_count_current <= 0)
 			qdel(src)
 		else
 			update_icon()
+		return TRUE
 
-	return TRUE
+	else if(W.can_load_stored(caller,src))
+		var/obj/item/bullet/B = new src.type(W)
+		W.stored_bullets += B
+		item_count_current -= 1
+		if(item_count_current <= 0)
+			qdel(src)
+		else
+			update_icon()
+		return TRUE
+
+	caller.to_chat("You can't load \the [src.name] into \the [W.name]!")
+
+	return FALSE
 
 /obj/item/bullet/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -219,11 +203,9 @@
 		transfer_src_to_magazine(caller,M,location,control,params)
 		return TRUE
 
-	/*
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		transfer_src_to_gun(caller,G,location,control,params)
 		return TRUE
-	*/
 
 	return ..()

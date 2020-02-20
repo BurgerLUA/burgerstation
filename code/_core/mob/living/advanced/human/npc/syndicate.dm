@@ -36,7 +36,16 @@
 	)
 
 /mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
-	return FALSE
+
+	if(istype(src,Obstacle) || istype(Obstacle,src))
+		return TRUE
+
+	return ..()
+
+
+/mob/living/advanced/npc/syndicate/post_death()
+	SShorde.on_killed_syndicate()
+	return ..()
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
@@ -62,6 +71,7 @@
 
 	var/picked_weapon = pick(possible_weapons)
 
+	/*
 	var/obj/item/weapon/ranged/bullet/magazine/W = new picked_weapon(src.loc)
 	W.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 	W.stored_magazine = weapon_to_magazine[W.type]
@@ -70,6 +80,7 @@
 	if(W.can_wield)
 		W.wield(src,W.loc == left_hand ? right_hand : left_hand)
 	W.click_self(src)
+	*/
 
 	return .
 

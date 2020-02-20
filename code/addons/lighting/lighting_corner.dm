@@ -173,6 +173,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 			else if (!Ov.needs_update)
 				Ov.needs_update = TRUE
 				SSlighting.overlay_queue += Ov
+		sleep(-1)
 
 /lighting_corner/Destroy()
 

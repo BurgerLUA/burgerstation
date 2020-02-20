@@ -14,6 +14,9 @@
 
 	user_colors = FALSE
 
+	maptext_height = 160
+	maptext_width = 160
+
 /obj/hud/screen_blood/New(var/desired_loc,var/desired_direction=NORTHWEST)
 
 	if(is_living(desired_loc))
@@ -54,7 +57,7 @@
 
 		if(L.dead)
 			alpha = 255
-			maptext = "You have died."
+			maptext = "<center>You have died.</center>"
 		else
 			alpha = Clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
 			maptext = null

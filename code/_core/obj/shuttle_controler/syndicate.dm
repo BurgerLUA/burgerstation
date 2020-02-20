@@ -58,14 +58,11 @@
 				world.log << "NO VALID SPOTS!"
 				return .
 
-			for(var/i=1,i<=5-length(found_syndicate),i++)
+			spawn for(var/i=1,i<=5-length(found_syndicate),i++)
 				var/turf/T = pick(valid_spots)
 				valid_spots -= T
 				var/mob/living/advanced/npc/syndicate/S = new(T)
 				S.Initialize()
-				if(i==1)
-					for(var/mob/abstract/observer/O in world)
-						O.force_move(T)
 				sleep(-1)
 
 
