@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman
 	name = "\improper .223 MMR"
+	bullet_type = ".223"
 	desc = "Vanilla, but still powerful."
 	desc_extended = "The .223 Mauler Marksman Rifle is THE assault rifle for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/items/weapons/ranged/rifle/223.dmi'
@@ -12,7 +13,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = ".223"
+
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 

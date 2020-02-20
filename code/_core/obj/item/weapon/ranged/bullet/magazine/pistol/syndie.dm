@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie
 	name = "10mm Stechkin Pistol"
+	bullet_type = "10"
 	desc = "The traitor's second best friend."
 	desc_extended = "The standard Syndicate pistol. The compactness of the gun makes it useful in assassinations as well as a holdout weapon."
 	icon = 'icons/obj/items/weapons/ranged/pistol/10mm.dmi'
@@ -11,8 +12,6 @@
 	automatic = FALSE
 
 	bullet_count_max = 1 //One in the chamber
-
-	bullet_type = "10mm_auto"
 
 	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
 

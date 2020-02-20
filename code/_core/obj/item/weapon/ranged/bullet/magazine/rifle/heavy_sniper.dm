@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
 	name = "\improper .50 BFR Sniper"
+	bullet_type = ".50"
 	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
@@ -11,8 +12,6 @@
 	automatic = FALSE
 
 	bullet_count_max = 1 //One in the chamber
-
-	bullet_type = ".50"
 
 	shoot_sounds = list('sounds/weapons/sniper_heavy/heavy_sniper.ogg')
 

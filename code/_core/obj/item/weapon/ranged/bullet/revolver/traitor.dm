@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/revolver/traitor_357
-	name = "\improper .357 Traditore"
+	name = "\improper .357 Traditore Revolver"
+	bullet_type = ".357"
 	desc = "For all your traitor needs!"
 	icon = 'icons/obj/items/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
@@ -10,7 +11,7 @@
 
 	bullet_count_max = 6
 
-	bullet_type = ".357"
+
 
 	shoot_sounds = list('sounds/weapons/traitor/fire.ogg')
 

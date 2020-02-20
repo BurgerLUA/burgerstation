@@ -1,6 +1,6 @@
 /obj/item/magazine/gyrojet
 	name = "\improper 20mm gyrojet magazine"
-	bullet_type = "7.62"
+	bullet_type = "gyrojet"
 	icon = 'icons/obj/items/magazine/gyrojet.dmi'
 	icon_state = "gyrojet"
 	bullet_count_max = 4

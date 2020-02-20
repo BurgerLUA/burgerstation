@@ -16,7 +16,7 @@
 
 /obj/item/storage/ammo/bullet_22/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		var/obj/item/bullet/B = new /obj/item/bullet/revolver_22/surplus(src)
+		var/obj/item/bullet/B = new /obj/item/bullet/revolver_22(src)
 		B.on_spawn()
 		B.update_icon()
 	return ..()

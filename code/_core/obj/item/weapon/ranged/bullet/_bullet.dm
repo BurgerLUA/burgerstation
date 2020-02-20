@@ -126,6 +126,8 @@
 		return FALSE
 
 	if(bullet_type != B.id)
+		world.log << "Bullet type: [bullet_type]."
+		world.log << "B.id: [B.id]."
 		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src.name]!"))
 		return FALSE
 

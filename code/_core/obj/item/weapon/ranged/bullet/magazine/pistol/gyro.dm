@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet
 	name = "\improper 20mm GyroPistol"
+	bullet_type = "gyrojet"
 	desc = "Overdesigned and a little overpowered."
 	desc = "A prototype syndicate pistol that uses minature rockets as projectiles."
 	icon = 'icons/obj/items/weapons/ranged/pistol/gyrojet.dmi'
@@ -11,8 +12,6 @@
 	automatic = TRUE
 
 	bullet_count_max = 1 //One in the chamber
-
-	bullet_type = "gyrojet"
 
 	shoot_sounds = list('sounds/weapons/gyrojet/shoot.ogg')
 

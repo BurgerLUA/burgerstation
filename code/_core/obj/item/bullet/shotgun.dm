@@ -4,6 +4,10 @@
 	item_count_max = 4
 	item_count_max_icon = 4
 
+	id = "bullet"
+	bullet_diameter = 18.5
+	bullet_length = 18.5
+
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
 

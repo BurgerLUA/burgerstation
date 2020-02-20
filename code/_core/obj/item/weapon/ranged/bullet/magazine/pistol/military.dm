@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
 	name = ".40 Civil Defense Pistol"
+	bullet_type = ".40"
 	desc = "Even more tactical than the tactical pistol."
 	desc_extended = "A military grade pistol amazingly chambered in .40. It shoots significantly faster than its tactical counterpart."
 	value = 70

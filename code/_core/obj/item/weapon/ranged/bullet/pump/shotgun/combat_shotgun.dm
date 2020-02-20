@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat
 	name = "12g Combat Shotgun"
+	bullet_type = "shotgun"
 	desc = "Reliable, cheap, and strong."
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
 	icon = 'icons/obj/items/weapons/ranged/shotgun/combat.dmi'
@@ -12,7 +13,7 @@
 
 	bullet_count_max = 8
 
-	bullet_type = "shotgun"
+
 
 	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
 

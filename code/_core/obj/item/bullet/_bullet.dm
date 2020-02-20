@@ -2,9 +2,12 @@
 	name = "bullet"
 	desc = "Try not to bite it."
 	desc_extended = "Bullets can be put in guns with the matching ammo type. Some bullets are very rare and should only be used when needed."
-	id = "bullet"
-	var/is_spent = FALSE
+
 	icon_state = "bullet"
+
+	id = "bullet"
+	var/bullet_length = -1
+	var/bullet_diameter = -1
 
 	item_count_max_icon = 1
 	item_count_max = 1
@@ -13,6 +16,7 @@
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 
+	var/is_spent = FALSE
 	var/obj/projectile/projectile //The projectile to create when the bullet is fired. Optional. Overrides the gun's settings.
 	var/list/shoot_sounds //The shoots sounds to create when the bullet is fired. Optional. Overrides the gun's settings.
 	var/base_spread = 0 //The additional spread of this type of bullet. Optional. Adds to the gun's settings.

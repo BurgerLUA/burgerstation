@@ -18,7 +18,7 @@
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 	..()
 
-
+/*
 /obj/item/magazine/pistol_45/surplus
 	name = "\improper surplus .45 pistol magazine"
 
@@ -28,3 +28,4 @@
 	name = "\improper rubber .45 pistol magazine"
 
 	ammo = /obj/item/bullet/pistol_45/rubber
+*/

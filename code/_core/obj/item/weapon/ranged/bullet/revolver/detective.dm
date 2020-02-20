@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/revolver/detective
 	name = "\improper .38 Special revolver"
+	bullet_type = ".38"
 	desc = "The detective's trusty sidearm. Uses .38 revolver rounds."
 	icon = 'icons/obj/items/weapons/ranged/revolver.dmi'
 	icon_state = "inventory"
@@ -11,7 +12,7 @@
 
 	bullet_count_max = 6
 
-	bullet_type = ".38"
+
 
 	shoot_sounds = list('sounds/weapons/revolver_light/revolver.ogg')
 

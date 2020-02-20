@@ -1,8 +1,11 @@
 /obj/item/bullet/revolver_38
-	name = "\improper .38 special bullet"
+	name = "\improper .38 revolver cartridge"
 	desc = "For revolvers that require .38 ammo."
-	id = ".38"
 	icon = 'icons/obj/items/bullet/38.dmi'
+
+	id = "bullet"
+	bullet_diameter = 9
+	bullet_length = 29
 
 	item_count_max = 6
 	item_count_max_icon = 6
@@ -18,10 +21,13 @@
 	value = 3
 
 /obj/item/bullet/revolver_357
-	name = "\improper .357 bullet"
+	name = "\improper .357 revolver cartridge"
 	desc = "For revolvers that require .357 ammo."
-	id = ".357"
 	icon = 'icons/obj/items/bullet/357.dmi'
+
+	id = "bullet"
+	bullet_diameter = 9
+	bullet_length = 33
 
 	damage_type = ".357"
 
@@ -37,6 +43,7 @@
 
 	value = 3
 
+/*
 /obj/item/bullet/revolver_357/surplus
 	name = "\improper .357 surplus bullet"
 	desc = "For revolvers that require .357 ammo. Surplus round."
@@ -47,12 +54,17 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
 	misfire_chance = 1
+*/
 
 /obj/item/bullet/revolver_44
-	name = "\improper .44 magnum bullet"
+	name = "\improper .44 revolver cartridge"
 	desc = "For revolvers that require .44 magnum ammo."
-	id = ".44"
 	icon = 'icons/obj/items/bullet/44.dmi'
+
+
+	id = "bullet"
+	bullet_diameter = 10.9
+	bullet_length = 29
 
 	damage_type = ".44"
 
@@ -68,6 +80,7 @@
 
 	value = 4
 
+/*
 /obj/item/bullet/revolver_44/surplus
 	name = "\improper surplus .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo. Surplus ammo."
@@ -84,12 +97,18 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
 
 	misfire_chance = 1
+*/
 
 /obj/item/bullet/revolver_22
-	name = "\improper .22 LR"
-	desc = "For revolvers that require .22 LR ammo."
-	id = ".22"
+	name = "\improper .22 pistol cartridge"
+	desc = "For pistols and revolvers that require .22 ammo."
 	icon = 'icons/obj/items/bullet/22.dmi'
+
+	id = "bullet"
+	bullet_diameter = 5.6
+	bullet_length = 17.7
+
+
 
 	damage_type = ".22"
 
@@ -105,6 +124,7 @@
 
 	value = 1
 
+/*
 /obj/item/bullet/revolver_22/surplus
 	name = "\improper .22 LR surplus"
 	damage_type = ".22_surplus"
@@ -119,3 +139,4 @@
 /obj/item/bullet/revolver_22/surplus/on_spawn()
 	item_count_current = 6
 	return ..()
+*/

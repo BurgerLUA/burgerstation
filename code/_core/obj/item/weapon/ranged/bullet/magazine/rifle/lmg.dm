@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg
 	name = "\improper 5.56mm LMG"
+	bullet_type = ".223"
 	desc = "Atatatatatatata."
 	desc_extended = "The 5.56mm Calibre Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time."
 	icon = 'icons/obj/items/weapons/ranged/rifle/lmg.dmi'
@@ -12,7 +13,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "5.56"
+
 
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 

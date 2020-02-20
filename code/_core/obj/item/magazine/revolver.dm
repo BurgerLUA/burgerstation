@@ -34,9 +34,11 @@
 
 	ammo = /obj/item/bullet/revolver_44
 
+/*
 /obj/item/magazine/clip/revolver/bullet_44/surplus/
 	name = "\improper surplus .44 magnum speedloader"
 	ammo = /obj/item/bullet/revolver_44/surplus
+*/
 
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
@@ -62,6 +64,8 @@
 
 	ammo = /obj/item/bullet/revolver_357
 
+/*
 /obj/item/magazine/clip/revolver/bullet_357/surplus
 	name = "\improper surplus .357 speedloader"
 	ammo = /obj/item/bullet/revolver_357/surplus
+*/

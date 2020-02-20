@@ -18,7 +18,8 @@
 		icon_state = "[initial(icon_state)]"
 
 	..()
-
+/*
 /obj/item/magazine/rifle_223/surplus
 	name = "\improper surplus .223 magazine"
 	ammo = /obj/item/bullet/rifle_223/surplus
+*/

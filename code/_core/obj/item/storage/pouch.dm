@@ -39,10 +39,10 @@
 	color = COLOR_BLACK
 
 /obj/item/storage/pouch/double/black/filled/rifle_223/fill_inventory()
-	new /obj/item/magazine/rifle_223/surplus(src)
-	new /obj/item/magazine/rifle_223/surplus(src)
-	new /obj/item/magazine/rifle_223/surplus(src)
-	new /obj/item/magazine/rifle_223/surplus(src)
+	new /obj/item/magazine/rifle_223(src)
+	new /obj/item/magazine/rifle_223(src)
+	new /obj/item/magazine/rifle_223(src)
+	new /obj/item/magazine/rifle_223(src)
 	return ..()
 
 /obj/item/storage/pouch/double/black/filled/cell/fill_inventory()
@@ -76,6 +76,7 @@
 /obj/item/storage/pouch/triple/black/
 	color = COLOR_BLACK
 
+/*
 /obj/item/storage/pouch/triple/black/filled/stealth
 	name = "stealth pouch"
 
@@ -87,6 +88,7 @@
 	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
 	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
 	return ..()
+*/
 
 /obj/item/storage/pouch/triple/brown
 	name = "brown pouch"

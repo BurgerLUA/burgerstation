@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw
 	name = "\improper .25 PDW"
+	bullet_type = ".25"
 	icon = 'icons/obj/items/weapons/ranged/smg/25.dmi'
 	icon_state = "inventory"
 
@@ -11,7 +12,7 @@
 	view_punch = 4
 
 	bullet_count_max = 1 //One in the chamber
-	bullet_type = ".25"
+
 
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 

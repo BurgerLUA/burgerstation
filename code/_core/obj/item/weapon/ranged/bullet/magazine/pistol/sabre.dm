@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
 	name = "\improper 12.7mm Sabre Pistol"
+	bullet_type = "12.7"
 	desc = "12.7mm Sabre Pistol"
 	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
 	icon = 'icons/obj/items/weapons/ranged/pistol/12mm.dmi'
@@ -12,7 +13,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "12.7mm"
+
 
 	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
 

@@ -1,11 +1,14 @@
 /obj/item/bullet/gyrojet/
 	name = "\improper 20mm gyrorocket"
 	desc = "For pistols and rifles that require gyrojet rounds. Even well made rounds are known for their high misfire chance."
-	id = "gyrojet"
 	icon = 'icons/obj/items/bullet/gyrojet.dmi'
 
 	item_count_max = 4
 	item_count_max_icon = 4
+
+	id = "rocket"
+	bullet_length = 50
+	bullet_diameter = 20
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "gyrojet"

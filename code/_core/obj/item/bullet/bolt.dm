@@ -1,11 +1,14 @@
 /obj/item/bullet/bolt
 	name = "crossbow bolt"
 	desc = "A crudely designed bolt meant for crossbows."
-	id = "bolt"
 	icon = 'icons/obj/items/bullet/bolt.dmi'
 	item_count_max = 6
 	item_count_max_icon = 6
 	icon_state = "bolt"
+
+	id = "bolt"
+	bullet_length = -1
+	bullet_diameter = -1
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O

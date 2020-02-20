@@ -1,6 +1,6 @@
 /obj/item/magazine/pistol_10mm
 	name = "\improper 10mm auto pistol magazine"
-	bullet_type = "10mm_auto"
+	bullet_type = "10mm"
 	icon = 'icons/obj/items/magazine/10mmpistol.dmi'
 	icon_state = "10mmpistol"
 	bullet_count_max = 8
@@ -19,8 +19,9 @@
 
 	..()
 
-
+/*
 /obj/item/magazine/pistol_10mm/surplus
 	name = "\improper surplus 10mm auto pistol magazine"
 
 	ammo = /obj/item/bullet/pistol_10mm/surplus
+*/

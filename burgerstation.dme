@@ -580,7 +580,6 @@
 #include "code\_core\obj\item\value.dm"
 #include "code\_core\obj\item\bullet\_bullet.dm"
 #include "code\_core\obj\item\bullet\bolt.dm"
-#include "code\_core\obj\item\bullet\debug.dm"
 #include "code\_core\obj\item\bullet\gyro.dm"
 #include "code\_core\obj\item\bullet\pistol.dm"
 #include "code\_core\obj\item\bullet\revolver.dm"

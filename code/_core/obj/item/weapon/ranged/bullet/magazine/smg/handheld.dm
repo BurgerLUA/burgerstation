@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld
 	name = "\improper 9mm SMP"
+	bullet_type = "9"
 	icon = 'icons/obj/items/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
 
@@ -9,7 +10,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "9mm"
+
 
 	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 

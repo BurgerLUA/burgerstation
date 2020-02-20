@@ -15,7 +15,9 @@
 	icon_state = "[initial(icon_state)]-[round(length(stored_bullets),4)]"
 	..()
 
+/*
 /obj/item/magazine/smg_22/surplus
 	name = "surplus .22 PDW magazine"
 	ammo = /obj/item/bullet/revolver_22/surplus
 
+*/

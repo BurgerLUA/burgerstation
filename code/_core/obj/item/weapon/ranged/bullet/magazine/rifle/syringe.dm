@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe
 	name = "\improper syringe rifle"
+	bullet_type = "syringe_gun"
 	icon = 'icons/obj/items/weapons/ranged/misc/syringe.dmi'
 	icon_state = "inventory"
 
@@ -9,7 +10,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "syringe_gun"
+
 
 	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 

@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
 	name = ".45 bullpup submachine gun"
+	bullet_type = ".45"
 	icon = 'icons/obj/items/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 
@@ -10,7 +11,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = ".45"
+
 
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 

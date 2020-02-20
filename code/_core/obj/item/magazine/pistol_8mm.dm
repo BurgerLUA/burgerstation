@@ -1,6 +1,6 @@
 /obj/item/magazine/pistol_8mm
 	name = "\improper 8mm pistol magazine"
-	bullet_type = "8mm"
+	bullet_type = "8"
 	icon = 'icons/obj/items/magazine/8mmpistol.dmi'
 	icon_state = "8mm"
 	bullet_count_max = 4
@@ -18,7 +18,8 @@
 		icon_state = "[initial(icon_state)]_0"
 
 	..()
-
+/*
 /obj/item/magazine/pistol_8mm/hollowpoint
 	name = "\improper 8mm hollow point pistol magazine"
 	ammo = /obj/item/bullet/pistol_8mm/hollowpoint
+*/

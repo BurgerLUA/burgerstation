@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull
 	name = "\improper 12g BS"
+	bullet_type = "shotgun"
 	desc = "\"BS\" is literally and figuratively the last thing that goes through someone's mind when they see this."
 	desc_extended = "The 12 Gauge Bull Shotgun is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bull\" for its bullpup design as well as the fact that it kicks like one too."
 	icon = 'icons/obj/items/weapons/ranged/shotgun/auto.dmi'
@@ -12,7 +13,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "shotgun"
+
 
 	shoot_sounds = list('sounds/weapons/auto_shotgun/fire.ogg')
 

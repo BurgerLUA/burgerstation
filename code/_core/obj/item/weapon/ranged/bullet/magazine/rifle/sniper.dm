@@ -1,5 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper
 	name = "\improper 7.62mm Sniper Rifle"
+	bullet_type = "7.62"
 	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/rifle/762.dmi'
 	icon_state = "inventory"
@@ -12,7 +13,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-	bullet_type = "7.62"
+
 
 	shoot_sounds = list('sounds/weapons/sniper_heavy/heavy_sniper.ogg')
 
