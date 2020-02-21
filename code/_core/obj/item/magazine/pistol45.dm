@@ -12,7 +12,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
 	)
 
-	ammo = /obj/item/bullet/pistol_45
+	ammo = /obj/item/bullet_cartridge/pistol_45
 
 /obj/item/magazine/pistol_45/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
@@ -22,10 +22,10 @@
 /obj/item/magazine/pistol_45/surplus
 	name = "\improper surplus .45 pistol magazine"
 
-	ammo = /obj/item/bullet/pistol_45/surplus
+	ammo = /obj/item/bullet_cartridge/pistol_45/surplus
 
 /obj/item/magazine/pistol_45/rubber
 	name = "\improper rubber .45 pistol magazine"
 
-	ammo = /obj/item/bullet/pistol_45/rubber
+	ammo = /obj/item/bullet_cartridge/pistol_45/rubber
 */

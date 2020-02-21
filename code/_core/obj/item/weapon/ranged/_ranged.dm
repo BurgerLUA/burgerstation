@@ -139,7 +139,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/bullet_spread = 0
 	var/projectile_speed_to_use = projectile_speed
 
-	var/obj/item/bullet/spent_bullet = handle_ammo(caller)
+	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
 	if(spent_bullet)
 		if(spent_bullet.projectile)

@@ -1,4 +1,4 @@
-/obj/item/bullet/revolver_38
+/obj/item/bullet_cartridge/revolver_38
 	name = "\improper .38 revolver cartridge"
 	desc = "For revolvers that require .38 ammo."
 	icon = 'icons/obj/items/bullet/38.dmi'
@@ -20,7 +20,7 @@
 
 	value = 3
 
-/obj/item/bullet/revolver_357
+/obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
 	desc = "For revolvers that require .357 ammo."
 	icon = 'icons/obj/items/bullet/357.dmi'
@@ -44,7 +44,7 @@
 	value = 3
 
 /*
-/obj/item/bullet/revolver_357/surplus
+/obj/item/bullet_cartridge/revolver_357/surplus
 	name = "\improper .357 surplus bullet"
 	desc = "For revolvers that require .357 ammo. Surplus round."
 
@@ -56,7 +56,7 @@
 	misfire_chance = 1
 */
 
-/obj/item/bullet/revolver_44
+/obj/item/bullet_cartridge/revolver_44
 	name = "\improper .44 revolver cartridge"
 	desc = "For revolvers that require .44 magnum ammo."
 	icon = 'icons/obj/items/bullet/44.dmi'
@@ -81,7 +81,7 @@
 	value = 4
 
 /*
-/obj/item/bullet/revolver_44/surplus
+/obj/item/bullet_cartridge/revolver_44/surplus
 	name = "\improper surplus .44 magnum bullet"
 	desc = "For revolvers that require .44 magnum ammo. Surplus ammo."
 	id = ".44"
@@ -99,7 +99,7 @@
 	misfire_chance = 1
 */
 
-/obj/item/bullet/pistol_22
+/obj/item/bullet_cartridge/pistol_22
 	name = "\improper .22 pistol cartridge"
 	desc = "For pistols and revolvers that require .22 ammo."
 	icon = 'icons/obj/items/bullet/22.dmi'
@@ -125,7 +125,7 @@
 	value = 1
 
 /*
-/obj/item/bullet/revolver_22/surplus
+/obj/item/bullet_cartridge/revolver_22/surplus
 	name = "\improper .22 LR surplus"
 	damage_type = ".22_surplus"
 
@@ -136,7 +136,7 @@
 
 	misfire_chance = 1
 
-/obj/item/bullet/revolver_22/surplus/on_spawn()
+/obj/item/bullet_cartridge/revolver_22/surplus/on_spawn()
 	item_count_current = 6
 	return ..()
 */

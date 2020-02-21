@@ -1,4 +1,4 @@
-/obj/item/bullet/gyrojet/
+/obj/item/bullet_cartridge/gyrojet/
 	name = "\improper 20mm gyrorocket"
 	desc = "For pistols and rifles that require gyrojet rounds. Even well made rounds are known for their high misfire chance."
 	icon = 'icons/obj/items/bullet/gyrojet.dmi'
@@ -22,6 +22,6 @@
 
 	value = 10
 
-/obj/item/bullet/gyrojet/surplus
+/obj/item/bullet_cartridge/gyrojet/surplus
 	name = "\improper surplus 20mm gyrorocket"
 	misfire_chance = 20

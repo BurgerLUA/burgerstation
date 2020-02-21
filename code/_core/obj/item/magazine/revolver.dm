@@ -18,7 +18,7 @@
 		/obj/item/weapon/ranged/bullet/revolver/detective
 	)
 
-	ammo = /obj/item/bullet/revolver_38
+	ammo = /obj/item/bullet_cartridge/revolver_38
 
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 magnum speedloader"
@@ -32,12 +32,12 @@
 		/obj/item/weapon/ranged/bullet/revolver/deckhard
 	)
 
-	ammo = /obj/item/bullet/revolver_44
+	ammo = /obj/item/bullet_cartridge/revolver_44
 
 /*
 /obj/item/magazine/clip/revolver/bullet_44/surplus/
 	name = "\improper surplus .44 magnum speedloader"
-	ammo = /obj/item/bullet/revolver_44/surplus
+	ammo = /obj/item/bullet_cartridge/revolver_44/surplus
 */
 
 /obj/item/magazine/clip/revolver/bullet_22
@@ -49,7 +49,7 @@
 
 	weapon_whitelist = list()
 
-	ammo = /obj/item/bullet/pistol_22
+	ammo = /obj/item/bullet_cartridge/pistol_22
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
@@ -62,10 +62,10 @@
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357
 	)
 
-	ammo = /obj/item/bullet/revolver_357
+	ammo = /obj/item/bullet_cartridge/revolver_357
 
 /*
 /obj/item/magazine/clip/revolver/bullet_357/surplus
 	name = "\improper surplus .357 speedloader"
-	ammo = /obj/item/bullet/revolver_357/surplus
+	ammo = /obj/item/bullet_cartridge/revolver_357/surplus
 */

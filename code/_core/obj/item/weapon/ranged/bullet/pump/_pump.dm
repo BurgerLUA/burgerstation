@@ -20,7 +20,7 @@
 	eject_chambered_bullet(caller,get_turf(src))
 
 	if(stored_bullets[1])
-		var/obj/item/bullet/B = stored_bullets[1]
+		var/obj/item/bullet_cartridge/B = stored_bullets[1]
 		stored_bullets -= B
 		chambered_bullet = B
 		stored_bullets += null

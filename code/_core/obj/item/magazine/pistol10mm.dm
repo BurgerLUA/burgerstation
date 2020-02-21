@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie
 	)
 
-	ammo = /obj/item/bullet/pistol_10mm
+	ammo = /obj/item/bullet_cartridge/pistol_10mm
 
 /obj/item/magazine/pistol_10mm/update_icon()
 	if(length(stored_bullets))
@@ -23,5 +23,5 @@
 /obj/item/magazine/pistol_10mm/surplus
 	name = "\improper surplus 10mm auto pistol magazine"
 
-	ammo = /obj/item/bullet/pistol_10mm/surplus
+	ammo = /obj/item/bullet_cartridge/pistol_10mm/surplus
 */

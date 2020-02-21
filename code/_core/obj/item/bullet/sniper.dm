@@ -1,4 +1,4 @@
-/obj/item/bullet/sniper_50/
+/obj/item/bullet_cartridge/sniper_50/
 	name = "\improper .50 sniper round"
 	desc = "For sniper rifles that require .50 ammo."
 	id = ".50"
@@ -21,7 +21,7 @@
 
 	value = 15
 
-/obj/item/bullet/sniper_50/surplus
+/obj/item/bullet_cartridge/sniper_50/surplus
 	name = "\improper surplus .50 sniper round"
 	desc = "For sniper rifles that require .50 ammo. This is surplus."
 	icon = 'icons/obj/items/bullet/50_surplus.dmi'

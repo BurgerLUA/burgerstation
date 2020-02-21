@@ -65,7 +65,7 @@
 	return istype(A,/obj/item/magazine/)
 
 /proc/is_bullet(var/atom/A)
-	return istype(A,/obj/item/bullet/)
+	return istype(A,/obj/item/bullet_cartridge/)
 
 /proc/is_movable(var/atom/A)
 	return istype(A,/atom/movable/)

@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull
 	)
 
-	ammo = /obj/item/bullet/shotgun/slug
+	ammo = /obj/item/bullet_cartridge/shotgun/slug
 
 /obj/item/magazine/shotgun_auto/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"

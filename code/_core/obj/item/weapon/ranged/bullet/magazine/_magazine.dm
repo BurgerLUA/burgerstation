@@ -69,7 +69,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)
 	if(stored_magazine && length(stored_magazine.stored_bullets) && stored_magazine.stored_bullets[1] && !chambered_bullet)
-		var/obj/item/bullet/B = stored_magazine.stored_bullets[1]
+		var/obj/item/bullet_cartridge/B = stored_magazine.stored_bullets[1]
 		stored_magazine.stored_bullets -= B
 		B.force_move(src)
 		chambered_bullet = B

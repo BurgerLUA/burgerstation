@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle,
 	)
 
-	ammo = /obj/item/bullet/rifle_223
+	ammo = /obj/item/bullet_cartridge/rifle_223
 
 /obj/item/magazine/rifle_223/update_icon()
 	if(length(stored_bullets))
@@ -21,5 +21,5 @@
 /*
 /obj/item/magazine/rifle_223/surplus
 	name = "\improper surplus .223 magazine"
-	ammo = /obj/item/bullet/rifle_223/surplus
+	ammo = /obj/item/bullet_cartridge/rifle_223/surplus
 */

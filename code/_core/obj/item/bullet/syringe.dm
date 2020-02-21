@@ -1,4 +1,4 @@
-/obj/item/bullet/syringe_gun/
+/obj/item/bullet_cartridge/syringe_gun/
 	name = "\improper syringe gun round"
 	desc = "For weapons that take special syringe rounds"
 	icon = 'icons/obj/items/bullet/syringe_gun.dmi'

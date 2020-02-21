@@ -40,7 +40,7 @@
 	return get_real_length(stored_bullets)
 
 /obj/item/weapon/ranged/bullet/revolver/handle_ammo(var/mob/caller,var/bullet_position=1)
-	var/obj/item/bullet/B = spend_stored_bullet(caller,current_chamber)
+	var/obj/item/bullet_cartridge/B = spend_stored_bullet(caller,current_chamber)
 	rotate_cylinder(1)
 	return B
 
@@ -65,7 +65,7 @@
 		var/last_value = get_last_value(stored_bullets)
 
 		if(last_value)
-			var/obj/item/bullet/B = eject_stored_bullet(caller,last_value,get_turf(src))
+			var/obj/item/bullet_cartridge/B = eject_stored_bullet(caller,last_value,get_turf(src))
 			if(B)
 				I.add_object(B)
 

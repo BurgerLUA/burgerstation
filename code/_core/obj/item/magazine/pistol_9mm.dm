@@ -9,7 +9,7 @@
 
 	)
 
-	ammo = /obj/item/bullet/pistol_9mm
+	ammo = /obj/item/bullet_cartridge/pistol_9mm
 
 /obj/item/magazine/pistol_9mm/update_icon()
 	if(length(stored_bullets))

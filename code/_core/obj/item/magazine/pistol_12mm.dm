@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
 	)
 
-	ammo = /obj/item/bullet/pistol_12mm
+	ammo = /obj/item/bullet_cartridge/pistol_12mm
 
 /obj/item/magazine/pistol_12mm/update_icon()
 	if(length(stored_bullets))

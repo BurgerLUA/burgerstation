@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet
 	)
 
-	ammo = /obj/item/bullet/gyrojet
+	ammo = /obj/item/bullet_cartridge/gyrojet
 
 /obj/item/magazine/gyrojet/update_icon()
 	if(length(stored_bullets))

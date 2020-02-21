@@ -1,4 +1,4 @@
-/obj/item/bullet/ //NOT TO BE CONFUSED WITH PROJECTILES.
+/obj/item/bullet_cartridge/ //NOT TO BE CONFUSED WITH PROJECTILES.
 	name = "bullet"
 	desc = "Try not to bite it."
 	desc_extended = "Bullets can be put in guns with the matching ammo type. Some bullets are very rare and should only be used when needed."
@@ -32,25 +32,25 @@
 	size = 0.01
 	weight = 0.01
 
-/obj/item/bullet/proc/get_ammo_count()
+/obj/item/bullet_cartridge/proc/get_ammo_count()
 	return item_count_current
 
-/obj/item/bullet/New(var/desired_loc)
+/obj/item/bullet_cartridge/New(var/desired_loc)
 	. = ..()
 	update_icon()
 	return .
 
-/obj/item/bullet/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 	. = ..()
 	update_icon()
 	return .
 
-/obj/item/bullet/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/bullet_cartridge/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 	. = ..()
 	update_icon()
 	return .
 
-/obj/item/bullet/update_icon()
+/obj/item/bullet_cartridge/update_icon()
 
 	if(!is_spent)
 		icon_state = "[initial(icon_state)]_[min(item_count_max_icon,item_count_current)]"
@@ -65,7 +65,7 @@
 
 	..()
 
-/obj/item/bullet/get_examine_text(var/mob/examiner)
+/obj/item/bullet_cartridge/get_examine_text(var/mob/examiner)
 
 	. = ..()
 
@@ -77,7 +77,7 @@
 
 	return .
 
-/obj/item/bullet/proc/spend_bullet(var/mob/caller,var/ai_cheat = FALSE)
+/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/ai_cheat = FALSE)
 
 	if(ai_cheat)
 		return src
@@ -91,10 +91,10 @@
 
 	return FALSE
 
-/obj/item/bullet/Crossed(var/atom/movable/O)
+/obj/item/bullet_cartridge/Crossed(var/atom/movable/O)
 
 	if(is_bullet(O))
-		var/obj/item/bullet/B = O
+		var/obj/item/bullet_cartridge/B = O
 		if(!B.qdeleting && B.damage_type == src.damage_type && B.is_spent && src.is_spent)
 			B.item_count_current += item_count_current
 			item_count_current = 0 //Just in case
@@ -103,7 +103,7 @@
 
 	return ..()
 
-/obj/item/bullet/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet/transfer_target,location,control,params,var/display_message = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/display_message = TRUE)
 
 	if(src.is_spent)
 		caller.to_chat(span("notice","The bullet is spent!"))
@@ -136,7 +136,7 @@
 
 	return TRUE
 
-/obj/item/bullet/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/display_message = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/display_message = TRUE)
 
 	if(src.is_spent)
 		caller.to_chat(span("notice","The bullet is spent!"))
@@ -153,7 +153,7 @@
 	var/transfered_bullets = 0
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
 	for(var/i=1,i<=bullets_to_add,i++)
-		var/obj/item/bullet/B = new src.type(transfer_target)
+		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
 		transfer_target.stored_bullets += B
 		item_count_current -= 1
 		transfered_bullets += 1
@@ -167,10 +167,10 @@
 
 	return TRUE
 
-/obj/item/bullet/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/display_message = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/display_message = TRUE)
 
 	if(W.can_load_chamber(caller,src))
-		var/obj/item/bullet/B = new src.type(W)
+		var/obj/item/bullet_cartridge/B = new src.type(W)
 		W.chambered_bullet += B
 		item_count_current -= 1
 		if(item_count_current <= 0)
@@ -180,7 +180,7 @@
 		return TRUE
 
 	else if(W.can_load_stored(caller,src))
-		var/obj/item/bullet/B = new src.type(W)
+		var/obj/item/bullet_cartridge/B = new src.type(W)
 		W.stored_bullets += B
 		item_count_current -= 1
 		if(item_count_current <= 0)
@@ -193,12 +193,12 @@
 
 	return FALSE
 
-/obj/item/bullet/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object()
 
 	if(is_bullet(object))
-		var/obj/item/bullet/B = object
+		var/obj/item/bullet_cartridge/B = object
 		B.transfer_src_to_bullet(caller,src,location,control,params)
 		return TRUE
 

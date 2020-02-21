@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet
 
-	var/obj/item/bullet/chambered_bullet //One in the chamber
-	var/list/obj/item/bullet/stored_bullets //This is a fixed list, so be careful.
+	var/obj/item/bullet_cartridge/chambered_bullet //One in the chamber
+	var/list/obj/item/bullet_cartridge/stored_bullets //This is a fixed list, so be careful.
 
 	var/bullet_count_max = 0 //How many bullets can this store on top of the chambered bullet
 
@@ -35,7 +35,7 @@
 	chambered_bullet = null
 
 	if(stored_bullets) //Sometimes this doesn't exist.
-		for(var/obj/item/bullet/B in stored_bullets)
+		for(var/obj/item/bullet_cartridge/B in stored_bullets)
 			qdel(B)
 
 		stored_bullets.Cut()
@@ -51,7 +51,7 @@
 	if(!chambered_bullet)
 		return FALSE
 
-	var/obj/item/bullet/B = chambered_bullet
+	var/obj/item/bullet_cartridge/B = chambered_bullet
 
 	if(jammed)
 		caller.to_chat(span("notice","You unjam \the [src.name]!"))
@@ -70,21 +70,21 @@
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc)
 
-	for(var/obj/item/bullet/B in stored_bullets)
+	for(var/obj/item/bullet_cartridge/B in stored_bullets)
 		eject_stored_bullet(caller,B,new_loc)
 
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc)
 
-	for(var/obj/item/bullet/B in stored_bullets)
+	for(var/obj/item/bullet_cartridge/B in stored_bullets)
 		if(!B.is_spent)
 			continue
 		eject_stored_bullet(caller,B,new_loc)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet/bullet_to_remove,var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc)
 
 	if(!(bullet_to_remove in stored_bullets))
 		return FALSE
@@ -106,7 +106,7 @@
 /obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
 
 	if(length(stored_bullets) && stored_bullets[bullet_position]) //Spend a bullet
-		var/obj/item/bullet/B = stored_bullets[bullet_position]
+		var/obj/item/bullet_cartridge/B = stored_bullets[bullet_position]
 		B = B.spend_bullet(caller,is_npc(caller))
 		return B
 
@@ -127,7 +127,7 @@
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return chambered_bullet ? 1 : 0
 
-/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet/B)
+/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
 
 	if(chambered_bullet)
 		caller.to_chat(span("notice","There is already a chambered bullet inside \the [src.name]!"))
@@ -151,7 +151,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet/B)
+/obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet_cartridge/B)
 
 	if(!open)
 		caller.to_chat(span("notice","You must open \the [src.name] first before loading it!"))

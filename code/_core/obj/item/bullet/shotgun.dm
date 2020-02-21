@@ -1,4 +1,4 @@
-/obj/item/bullet/shotgun/
+/obj/item/bullet_cartridge/shotgun/
 	id = "shotgun"
 	icon = 'icons/obj/items/bullet/shotgun.dmi'
 	item_count_max = 4
@@ -16,14 +16,14 @@
 	size = 0.04
 	weight = 0.04
 
-/obj/item/bullet/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/bullet_cartridge/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-/obj/item/bullet/shotgun/on_spawn()
+/obj/item/bullet_cartridge/shotgun/on_spawn()
 	item_count_current = 4
 	return ..()
 
-/obj/item/bullet/shotgun/slug
+/obj/item/bullet_cartridge/shotgun/slug
 	name = "\improper 12 gauge slug"
 	desc = ""
 	icon_state = "slug"
@@ -44,7 +44,7 @@
 
 	value = 6
 
-/obj/item/bullet/shotgun/buckshot
+/obj/item/bullet_cartridge/shotgun/buckshot
 	name = "\improper 12 gauge buckshot shell"
 	desc = ""
 	icon_state = "buckshot"
@@ -64,7 +64,7 @@
 	value = 6
 
 
-/obj/item/bullet/shotgun/rubber_balls
+/obj/item/bullet_cartridge/shotgun/rubber_balls
 	name = "\improper 12 gauge rubber balls"
 	desc = ""
 	icon_state = "rubber"

@@ -1,4 +1,4 @@
-/obj/item/bullet/pistol_10mm/
+/obj/item/bullet_cartridge/pistol_10mm/
 	name = "\improper 10mm pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require 10mm auto ammo."
 	icon = 'icons/obj/items/bullet/10mm.dmi'
@@ -21,7 +21,7 @@
 	value = 3
 
 /*
-/obj/item/bullet/pistol_10mm/surplus
+/obj/item/bullet_cartridge/pistol_10mm/surplus
 	name = "\improper surplus 10mm pistol cartridge"
 	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
 	icon = 'icons/obj/items/bullet/10mm_surplus.dmi'
@@ -34,7 +34,7 @@
 	misfire_chance = 1
 */
 
-/obj/item/bullet/pistol_50/
+/obj/item/bullet_cartridge/pistol_50/
 	name = "\improper .50 pistol cartridge"
 	desc = "For pistols that require .50."
 	icon = 'icons/obj/items/bullet/50ae.dmi'
@@ -57,7 +57,7 @@
 
 	value = 4
 
-/obj/item/bullet/pistol_12mm/
+/obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
 	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo."
 	icon = 'icons/obj/items/bullet/12mm.dmi'
@@ -79,7 +79,7 @@
 
 	value = 4
 
-/obj/item/bullet/pistol_9mm/
+/obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo."
 	icon = 'icons/obj/items/bullet/9mm.dmi'
@@ -103,7 +103,7 @@
 	value = 1
 
 /*
-/obj/item/bullet/pistol_9mm/surplus
+/obj/item/bullet_cartridge/pistol_9mm/surplus
 	name = "surplus 9mm round"
 	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo. This one was mass produced."
 	icon = 'icons/obj/items/bullet/9mm_surplus.dmi'
@@ -118,7 +118,7 @@
 	weight = 0.01
 */
 
-/obj/item/bullet/pistol_40/
+/obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require .40 ammo."
 	icon = 'icons/obj/items/bullet/40.dmi'
@@ -141,7 +141,7 @@
 
 	value = 1
 
-/obj/item/bullet/pistol_45/
+/obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"
 	desc = "For pistols and smgs that requre .45 ammo."
 	icon = 'icons/obj/items/bullet/45.dmi'
@@ -164,7 +164,7 @@
 	value = 2
 
 /*
-/obj/item/bullet/pistol_45/surplus
+/obj/item/bullet_cartridge/pistol_45/surplus
 	name = "\improper surplus .45 bullet"
 	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
 	id = ".45"
@@ -178,7 +178,7 @@
 	misfire_chance = 1
 
 
-/obj/item/bullet/pistol_45/rubber
+/obj/item/bullet_cartridge/pistol_45/rubber
 	name = "\improper rubber .45 bullet"
 	desc = "For pistols and smgs that requre .45 ammo. For less-than-lethal takedowns."
 	id = ".45"
@@ -192,7 +192,7 @@
 	jam_chance = 2 //Rubber bullets are infamous for not having enough power to move the slide all the way back.
 */
 
-/obj/item/bullet/pistol_8mm //TODO: REWORK
+/obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
 	name = "\improper 8mm pistol bullet"
 	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
 	icon = 'icons/obj/items/bullet/8mm.dmi'
@@ -215,7 +215,7 @@
 	value = 2
 
 /*
-/obj/item/bullet/pistol_8mm/hollowpoint
+/obj/item/bullet_cartridge/pistol_8mm/hollowpoint
 	name = "\improper hollowpoint 8mm pistol bullet"
 	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small. It's hollowpoint for extra punch, but poor penetration. Critical hits on headshots."
 	icon = 'icons/obj/items/bullet/8mm_hollowpoint.dmi'

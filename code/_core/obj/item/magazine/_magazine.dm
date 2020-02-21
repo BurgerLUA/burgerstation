@@ -3,7 +3,7 @@
 	var/bullet_type
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	var/bullet_count_max = 30 //How many bullets can this store
-	var/list/obj/item/bullet/stored_bullets
+	var/list/obj/item/bullet_cartridge/stored_bullets
 
 	var/list/weapon_whitelist = list() //What guns can fit this object?
 
@@ -30,7 +30,7 @@
 
 /obj/item/magazine/Destroy()
 
-	for(var/obj/item/bullet/B in stored_bullets)
+	for(var/obj/item/bullet_cartridge/B in stored_bullets)
 		qdel(B)
 
 	stored_bullets.Cut()
@@ -57,7 +57,7 @@
 
 	if(is_inventory(object) && length(stored_bullets))
 		var/obj/hud/inventory/I = object
-		var/obj/item/bullet/B = stored_bullets[length(stored_bullets)]
+		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
 		if(I.add_held_object(B))
 			B.update_icon()
 			stored_bullets -= B
@@ -105,7 +105,7 @@
 	var/len = length(stored_bullets)
 
 	if(len && stored_bullets[len])
-		var/obj/item/bullet/B = stored_bullets[len]
+		var/obj/item/bullet_cartridge/B = stored_bullets[len]
 		returning_text += B.get_damage_type_text(A)
 
 	return returning_text

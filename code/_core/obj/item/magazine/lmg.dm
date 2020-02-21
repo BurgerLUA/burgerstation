@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg
 	)
 
-	ammo = /obj/item/bullet/rifle_223/syndicate
+	ammo = /obj/item/bullet_cartridge/rifle_223/syndicate
 
 	size = SIZE_3
 	weight = WEIGHT_3

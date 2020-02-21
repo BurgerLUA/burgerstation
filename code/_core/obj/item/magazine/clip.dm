@@ -20,7 +20,7 @@
 
 	var/insert_count = 0
 
-	for(var/obj/item/bullet/B in stored_bullets)
+	for(var/obj/item/bullet_cartridge/B in stored_bullets)
 
 		var/target_point = get_first_missing_value(G.stored_bullets)
 		if(target_point == 0)

@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld
 	)
 
-	ammo = /obj/item/bullet/pistol_9mm
+	ammo = /obj/item/bullet_cartridge/pistol_9mm
 
 /obj/item/magazine/smp_9mm/update_icon()
 
@@ -24,5 +24,5 @@
 /obj/item/magazine/smp_9mm/surplus
 	name = "surplus 9mm smp magazine"
 
-	ammo = /obj/item/bullet/pistol_9mm/surplus
+	ammo = /obj/item/bullet_cartridge/pistol_9mm/surplus
 */

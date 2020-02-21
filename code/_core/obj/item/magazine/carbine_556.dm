@@ -16,7 +16,7 @@
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
 
-	ammo = /obj/item/bullet/rifle_223
+	ammo = /obj/item/bullet_cartridge/rifle_223
 
 /obj/item/magazine/carbine_556/update_icon()
 	icon_state = "[initial(icon_state)]_[round(length(stored_bullets))]"

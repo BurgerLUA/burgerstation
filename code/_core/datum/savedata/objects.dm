@@ -104,7 +104,7 @@
 
 		if(object_data["chambered_bullet"])
 			var/b_type = object_data["chambered_bullet"]
-			var/obj/item/bullet/B = new b_type(BG)
+			var/obj/item/bullet_cartridge/B = new b_type(BG)
 			if(B)
 				B.update_icon()
 				BG.chambered_bullet = B
@@ -113,7 +113,7 @@
 			for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
 				var/b_type = object_data["stored_bullets"][i]
 				if(b_type)
-					var/obj/item/bullet/B = new b_type(BG)
+					var/obj/item/bullet_cartridge/B = new b_type(BG)
 					if(B)
 						B.update_icon()
 						BG.stored_bullets[i] = B
@@ -127,7 +127,7 @@
 		var/obj/item/weapon/ranged/bullet/pump/P = O
 		if(object_data["stored_chamber"])
 			var/b_type = object_data["stored_chamber"]
-			var/obj/item/bullet/B = new b_type(P)
+			var/obj/item/bullet_cartridge/B = new b_type(P)
 			B.update_icon()
 			P.stored_chamber += B
 */
@@ -138,7 +138,7 @@
 			for(var/k in object_data["stored_bullets"])
 				var/v = object_data["stored_bullets"][k]
 				for(var/i=1,i<=v,i++)
-					var/obj/item/bullet/B = new k(M)
+					var/obj/item/bullet_cartridge/B = new k(M)
 					B.update_icon()
 					M.stored_bullets += B
 
@@ -296,7 +296,7 @@
 		if(length(BG.stored_bullets))
 			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
 			for(var/i=1,i<=length(BG.stored_bullets),i++)
-				var/obj/item/bullet/B = BG.stored_bullets[i]
+				var/obj/item/bullet_cartridge/B = BG.stored_bullets[i]
 				if(B) returning_list["stored_bullets"][i] = B.type
 
 
@@ -317,7 +317,7 @@
 		if(length(M.stored_bullets))
 			returning_list["stored_bullets"] = list()
 			for(var/i=1,i<=length(M.stored_bullets),i++)
-				var/obj/item/bullet/B = M.stored_bullets[i]
+				var/obj/item/bullet_cartridge/B = M.stored_bullets[i]
 				if(B) returning_list["stored_bullets"][B.type] += 1
 
 	return returning_list

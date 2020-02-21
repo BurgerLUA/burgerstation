@@ -10,7 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
 	)
 
-	ammo = /obj/item/bullet/pistol_40
+	ammo = /obj/item/bullet_cartridge/pistol_40
 
 /obj/item/magazine/pistol_40/update_icon()
 	if(length(stored_bullets))

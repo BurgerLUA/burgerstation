@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,
 	)
 
-	ammo = /obj/item/bullet/syringe_gun/
+	ammo = /obj/item/bullet_cartridge/syringe_gun/
 
 /obj/item/magazine/syringe_gun/update_icon()
 	icon_state = "[length(stored_bullets)]"
