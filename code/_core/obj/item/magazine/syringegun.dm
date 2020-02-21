@@ -1,6 +1,5 @@
 /obj/item/magazine/syringe_gun
 	name = "\improper syringe gun magazine"
-	bullet_type = "syringe_gun"
 	icon = 'icons/obj/items/magazine/syringegun.dmi'
 	icon_state = "syringe"
 	bullet_count_max = 8

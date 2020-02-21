@@ -38,15 +38,12 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
-
 	eject_chambered_bullet(caller,caller.loc)
 	load_new_bullet_from_magazine(caller)
-
 	var/area/A = get_area(caller.loc)
 	play_sound(cock_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	update_icon()
 	return TRUE
-
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
 	var/area/A = get_area(caller)
@@ -64,16 +61,16 @@
 	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
 		eject_magazine(caller,object)
 		return TRUE
-
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)
 	if(stored_magazine && length(stored_magazine.stored_bullets) && stored_magazine.stored_bullets[1] && !chambered_bullet)
 		var/obj/item/bullet_cartridge/B = stored_magazine.stored_bullets[1]
-		stored_magazine.stored_bullets -= B
-		B.force_move(src)
-		chambered_bullet = B
-		return TRUE
+		if(can_load_chamber(null,B))
+			stored_magazine.stored_bullets -= B
+			B.force_move(src)
+			chambered_bullet = B
+			return TRUE
 
 	return FALSE
 

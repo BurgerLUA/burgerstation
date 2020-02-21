@@ -1,6 +1,5 @@
 /obj/item/magazine/gyrojet
 	name = "\improper 20mm gyrojet magazine"
-	bullet_type = "gyrojet"
 	icon = 'icons/obj/items/magazine/gyrojet.dmi'
 	icon_state = "gyrojet"
 	bullet_count_max = 4
@@ -10,6 +9,14 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/gyrojet
+
+	bullet_length_min = 48
+	bullet_length_best = 50
+	bullet_length_max = 52
+
+	bullet_diameter_min = 19
+	bullet_diameter_best = 20
+	bullet_diameter_max = 21
 
 /obj/item/magazine/gyrojet/update_icon()
 	if(length(stored_bullets))

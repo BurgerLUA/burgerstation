@@ -1,6 +1,5 @@
 /obj/item/magazine/
 	name = "weapon magazine"
-	var/bullet_type
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	var/bullet_count_max = 30 //How many bullets can this store
 	var/list/obj/item/bullet_cartridge/stored_bullets
@@ -50,6 +49,35 @@
 
 /obj/item/magazine/proc/get_ammo_count()
 	return length(stored_bullets)
+
+
+/obj/item/magazine/proc/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+
+	if(B.is_spent)
+		caller?.to_chat(span("notice","The bullet is spent!"))
+		return FALSE
+
+	if(src.bullet_count_max <= src.get_ammo_count())
+		caller?.to_chat(span("notice","The magazine is full."))
+		return FALSE
+
+	if(B.bullet_length < bullet_length_min)
+		caller?.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_length > bullet_length_max)
+		caller?.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_diameter < bullet_diameter_min)
+		caller?.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_diameter > bullet_diameter_max)
+		caller?.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
+		return FALSE
+
+	return TRUE
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

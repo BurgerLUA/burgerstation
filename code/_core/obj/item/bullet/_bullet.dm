@@ -138,16 +138,7 @@
 
 /obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/display_message = TRUE)
 
-	if(src.is_spent)
-		caller.to_chat(span("notice","The bullet is spent!"))
-		return FALSE
-
-	if(id != transfer_target.bullet_type)
-		caller.to_chat(span("notice","You can't insert this type of bullet into this magazine."))
-		return FALSE
-
-	if(transfer_target.bullet_count_max <= transfer_target.get_ammo_count())
-		caller.to_chat(span("notice","The magazine is full."))
+	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
 
 	var/transfered_bullets = 0
@@ -177,6 +168,7 @@
 			qdel(src)
 		else
 			update_icon()
+		W.update_icon()
 		return TRUE
 
 	else if(W.can_load_stored(caller,src))
@@ -187,6 +179,7 @@
 			qdel(src)
 		else
 			update_icon()
+		W.update_icon()
 		return TRUE
 
 	caller.to_chat("You can't load \the [src.name] into \the [W.name]!")
@@ -210,6 +203,10 @@
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		transfer_src_to_gun(caller,G,location,control,params)
+		if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
+			var/obj/item/weapon/ranged/bullet/magazine/M = G
+			var/area/A = get_area(caller.loc)
+			play_sound(M.cock_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		return TRUE
 
 	return ..()

@@ -1,4 +1,4 @@
-/obj/item/magazine/carbine_556
+/obj/item/magazine/rifle_556
 	name = "\improper 5.56 carbine magazine"
 	icon = 'icons/obj/items/magazine/556_carbine.dmi'
 	icon_state = "556"
@@ -18,6 +18,6 @@
 
 	ammo = /obj/item/bullet_cartridge/rifle_223
 
-/obj/item/magazine/carbine_556/update_icon()
+/obj/item/magazine/rifle_556/update_icon()
 	icon_state = "[initial(icon_state)]_[round(length(stored_bullets))]"
 	..()

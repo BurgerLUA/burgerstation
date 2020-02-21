@@ -1,6 +1,5 @@
 /obj/item/magazine/pistol_12mm
 	name = "\improper 12.7mm pistol magazine"
-	bullet_type = "12.7"
 	icon = 'icons/obj/items/magazine/12mm_pistol.dmi'
 	icon_state = "12mm"
 	bullet_count_max = 8
@@ -10,6 +9,14 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_12mm
+
+	bullet_length_min = 27
+	bullet_length_best = 33
+	bullet_length_max = 34
+
+	bullet_diameter_min = 12
+	bullet_diameter_best = 12.7
+	bullet_diameter_max = 13
 
 /obj/item/magazine/pistol_12mm/update_icon()
 	if(length(stored_bullets))

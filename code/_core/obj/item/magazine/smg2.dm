@@ -1,6 +1,5 @@
 /obj/item/magazine/smg_22
 	name = "\improper .22 PDW magazine"
-	bullet_type = ".22"
 	icon = 'icons/obj/items/magazine/9mmsmg.dmi'
 	icon_state = "9mmt"
 	bullet_count_max = 20

@@ -8,9 +8,15 @@
 	class = "syndicate"
 
 	var/list/possible_outfits = list(
-		"syndicate_hardsuit" = 100,
-		"syndicate_hardsuit_advanced" = 25,
-		"syndicate_hardsuit_elite" = 10
+		"syndicate_hardsuit" = 200,
+		"syndicate_hardsuit_advanced" = 10,
+		"syndicate_hardsuit_elite" = 5
+	)
+
+	var/outfit_to_level = list(
+		"syndicate_hardsuit" = 1,
+		"syndicate_hardsuit_advanced" = 2,
+		"syndicate_hardsuit_elite" = 3
 	)
 
 	var/list/possible_weapons = list(
@@ -47,6 +53,9 @@
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
+	var/outfit_to_use = pickweight(possible_outfits)
+	level_multiplier *= outfit_to_level[outfit_to_use]
+
 	. = ..()
 
 	var/species/S = all_species[species]
@@ -65,7 +74,7 @@
 
 	update_all_blends()
 
-	add_outfit(pickweight(possible_outfits))
+	add_outfit(outfit_to_use)
 
 	var/picked_weapon = pick(possible_weapons)
 

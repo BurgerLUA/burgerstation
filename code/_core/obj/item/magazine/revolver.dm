@@ -9,7 +9,6 @@
 
 /obj/item/magazine/clip/revolver/bullet_38
 	name = "\improper .38 speedloader"
-	bullet_type = ".38"
 	icon = 'icons/obj/items/magazine/revolver/38.dmi'
 	icon_state = "38"
 	bullet_count_max = 6
@@ -22,7 +21,6 @@
 
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 magnum speedloader"
-	bullet_type = ".44"
 	icon = 'icons/obj/items/magazine/revolver/44.dmi'
 	icon_state = "44"
 	bullet_count_max = 6
@@ -42,7 +40,6 @@
 
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
-	bullet_type = ".22"
 	icon = 'icons/obj/items/magazine/revolver/22.dmi'
 	icon_state = "22"
 	bullet_count_max = 6
@@ -53,7 +50,6 @@
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
-	bullet_type = ".357"
 	icon = 'icons/obj/items/magazine/revolver/357.dmi'
 	icon_state = "357"
 	bullet_count_max = 6

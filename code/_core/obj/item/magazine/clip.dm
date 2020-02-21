@@ -1,6 +1,5 @@
 /obj/item/magazine/clip/
 	name = "weapon clip"
-	bullet_type = "none"
 	desc = "IT'S NOT A MAGAZINE. IT'S A CLIP."
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

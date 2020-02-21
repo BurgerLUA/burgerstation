@@ -508,7 +508,7 @@
 "jN" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/tile/dark,/area/interior/ship/hanger)
 "jO" = (/obj/decal/hazard,/obj/structure/interactive/disposals/pipe/ending,/obj/structure/interactive/disposals/chute,/turf/simulated/floor/plating,/area/interior/ship/hanger)
 "jP" = (/turf/simulated/wall/metal/reinforced,/area/interior/ship/hanger)
-"jQ" = (/obj/structure/interactive/vendor/ammo/pistol,/obj/item/magazine/pistol_40,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_50ae,/turf/simulated/floor/tile/red,/area/interior/ship/armory)
+"jQ" = (/obj/structure/interactive/vendor/ammo/pistol,/obj/item/magazine/pistol_40,/obj/item/magazine/pistol_45,/turf/simulated/floor/tile/red,/area/interior/ship/armory)
 "jR" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/shop,/obj/item/storage/shoebox/miner,/turf/simulated/floor/tile/red,/area/interior/ship/armory)
 "jS" = (/obj/structure/interactive/conveyor/shuttle/inverted{icon_state = "conveyor_inverted"; dir = 5},/turf/simulated/floor/tile/shuttle/engineering,/area/transit/dropship/bravo/station)
 "jT" = (/obj/structure/interactive/door/airlock/shuttle,/obj/structure/interactive/conveyor/shuttle{icon_state = "conveyor"; dir = 8},/turf/simulated/floor/tile/shuttle,/area/transit/dropship/bravo/station)

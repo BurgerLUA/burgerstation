@@ -130,23 +130,23 @@
 /obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
 
 	if(chambered_bullet)
-		caller.to_chat(span("notice","There is already a chambered bullet inside \the [src.name]!"))
+		caller?.to_chat(span("notice","There is already a chambered bullet inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_length < bullet_length_min)
-		caller.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_length > bullet_length_max)
-		caller.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_diameter < bullet_diameter_min)
-		caller.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_diameter > bullet_diameter_max)
-		caller.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
 		return FALSE
 
 	return TRUE
@@ -154,27 +154,27 @@
 /obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet_cartridge/B)
 
 	if(!open)
-		caller.to_chat(span("notice","You must open \the [src.name] first before loading it!"))
+		caller?.to_chat(span("notice","You must open \the [src.name] first before loading it!"))
 		return FALSE
 
 	if(B.bullet_length < bullet_length_min)
-		caller.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_length > bullet_length_max)
-		caller.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_diameter < bullet_diameter_min)
-		caller.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_diameter > bullet_diameter_max)
-		caller.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
+		caller?.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(get_real_length(stored_bullets) >= length(stored_bullets))
-		caller.to_chat(span("notice","You can't fit any more bullets into \the [src.name]!"))
+		caller?.to_chat(span("notice","You can't fit any more bullets into \the [src.name]!"))
 		return FALSE
 
 	return TRUE
