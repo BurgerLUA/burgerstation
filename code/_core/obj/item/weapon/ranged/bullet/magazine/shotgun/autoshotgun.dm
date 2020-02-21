@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull
 	name = "\improper 12g BS"
-	bullet_type = "shotgun"
 	desc = "\"BS\" is literally and figuratively the last thing that goes through someone's mind when they see this."
 	desc_extended = "The 12 Gauge Bull Shotgun is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bull\" for its bullpup design as well as the fact that it kicks like one too."
 	icon = 'icons/obj/items/weapons/ranged/shotgun/auto.dmi'
@@ -12,8 +11,6 @@
 	automatic = FALSE
 
 	bullet_count_max = 1 //One in the chamber
-
-
 
 	shoot_sounds = list('sounds/weapons/auto_shotgun/fire.ogg')
 
@@ -28,6 +25,14 @@
 
 	heat_per_shot = 0.09
 	heat_max = 0.2
+
+	bullet_length_min = 18
+	bullet_length_best = 18.5
+	bullet_length_max = 19
+
+	bullet_diameter_min = 18
+	bullet_diameter_best = 18.5
+	bullet_diameter_max = 19
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_static_spread() //Base spread
 	return 0.05

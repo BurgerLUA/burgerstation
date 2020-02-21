@@ -12,7 +12,7 @@
 
 	ammo = /obj/item/bullet/pistol_50
 
-/obj/item/magazine/pistol_50ae/update_icon()
+/obj/item/magazine/pistol_50/update_icon()
 	if(length(stored_bullets))
 		icon_state = "[initial(icon_state)]_1"
 	else

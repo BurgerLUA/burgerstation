@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld
 	name = "\improper 9mm SMP"
-	bullet_type = "9"
 	icon = 'icons/obj/items/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
 
@@ -25,6 +24,14 @@
 
 	heat_per_shot = 0.03
 	heat_max = 0.3
+
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread() //Base spread
 	return 0.04

@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
 	name = ".40 Civil Defense Pistol"
-	bullet_type = ".40"
 	desc = "Even more tactical than the tactical pistol."
 	desc_extended = "A military grade pistol amazingly chambered in .40. It shoots significantly faster than its tactical counterpart."
 	value = 70
@@ -17,6 +16,14 @@
 
 	heat_per_shot = 0.03
 	heat_max = 0.1
+
+	bullet_length_min = 21
+	bullet_length_best = 22
+	bullet_length_max = 23
+
+	bullet_diameter_min = 9.8
+	bullet_diameter_best = 10
+	bullet_diameter_max = 11.2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
 	return 0

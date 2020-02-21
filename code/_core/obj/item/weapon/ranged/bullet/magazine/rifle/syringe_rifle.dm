@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe
 	name = "\improper syringe rifle"
-	bullet_type = "syringe_gun"
 	icon = 'icons/obj/items/weapons/ranged/misc/syringe.dmi'
 	icon_state = "inventory"
 
@@ -29,6 +28,14 @@
 
 	heat_per_shot = 0.01
 	heat_max = 0.05
+
+	bullet_length_min = 18.5
+	bullet_length_best = 18.5
+	bullet_length_max = 18.5
+
+	bullet_diameter_min = 18.5
+	bullet_diameter_best = 18.5
+	bullet_diameter_max = 18.5
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)

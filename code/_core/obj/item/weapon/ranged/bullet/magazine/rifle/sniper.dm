@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper
 	name = "\improper 7.62mm Sniper Rifle"
-	bullet_type = "7.62"
 	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/rifle/762.dmi'
 	icon_state = "inventory"
@@ -30,6 +29,13 @@
 	heat_per_shot = 0.07
 	heat_max = 0.3
 
+	bullet_length_min = 46
+	bullet_length_best = 51
+	bullet_length_max = 52
+
+	bullet_diameter_min = 7.6
+	bullet_diameter_best = 7.62
+	bullet_diameter_max = 7.7
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_static_spread() //Base spread
 	return 0

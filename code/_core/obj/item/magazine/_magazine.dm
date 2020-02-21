@@ -1,6 +1,6 @@
 /obj/item/magazine/
 	name = "weapon magazine"
-	var/bullet_type = "none"
+	var/bullet_type
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	var/bullet_count_max = 30 //How many bullets can this store
 	var/list/obj/item/bullet/stored_bullets
@@ -13,6 +13,14 @@
 	weight = WEIGHT_2
 
 	value = 10
+
+	var/bullet_length_min = -1
+	var/bullet_length_best = -1
+	var/bullet_length_max = -1
+
+	var/bullet_diameter_min = -1
+	var/bullet_diameter_best = -1
+	var/bullet_diameter_max = -1
 
 /obj/item/magazine/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)

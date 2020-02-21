@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/pump/rifle/hunting
 	name = "\improper 7.62mm Hunting Rifle"
-	bullet_type = "7.62"
 	desc = "COMRADE."
 	desc_extended = "Originally Russian, now exploited and used by the syndicate for use in space hunting and space liberation."
 	icon = 'icons/obj/items/weapons/ranged/rifle/hunting.dmi'

@@ -7,9 +7,8 @@
 	item_count_max_icon = 5
 
 	id = "bullet"
-	bullet_diameter = 10
+	bullet_diameter = 10.17
 	bullet_length = 32
-
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type = "10mm"
@@ -69,7 +68,6 @@
 	id = "bullet"
 	bullet_diameter = 12.7
 	bullet_length = 33
-
 
 	projectile = /obj/projectile/bullet/revolver
 	damage_type = "12.7mm"

@@ -10,10 +10,13 @@
 	if(!is_bullet_gun(object))
 		return ..()
 
+
 	var/obj/item/weapon/ranged/bullet/G = object
+/*
 	if(bullet_type != G.bullet_type)
 		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 		return TRUE
+*/
 
 	var/insert_count = 0
 

@@ -20,8 +20,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = 1,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg = 1,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = 1,
-		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = 1,
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = 1
+		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = 1
 	)
 
 	var/list/weapon_to_magazine = list(
@@ -31,8 +30,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = /obj/item/magazine/sniper_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg = /obj/item/magazine/lmg_556,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = /obj/item/magazine/shotgun_auto,
-		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = /obj/item/magazine/smp_9mm,
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical = /obj/item/magazine/smg_45
+		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = /obj/item/magazine/smp_9mm
 	)
 
 /mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)

@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman
-	name = "\improper .223 MMR"
-	bullet_type = ".223"
+	name = "\improper .223 Marksman Rifle"
 	desc = "Vanilla, but still powerful."
 	desc_extended = "The .223 Mauler Marksman Rifle is THE assault rifle for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/items/weapons/ranged/rifle/223.dmi'
@@ -28,6 +27,14 @@
 
 	heat_per_shot = 0.05
 	heat_max = 0.3
+
+	bullet_length_min = 40
+	bullet_length_best = 45
+	bullet_length_max = 46
+
+	bullet_diameter_min = 5.5
+	bullet_diameter_best = 5.56
+	bullet_diameter_max = 5.6
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread() //Base spread
 	if(!wielded)

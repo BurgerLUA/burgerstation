@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
-	name = ".45 bullpup submachine gun"
-	bullet_type = ".45"
+	name = ".45 C-20r submachine gun"
 	icon = 'icons/obj/items/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 
@@ -10,8 +9,6 @@
 	automatic = TRUE
 
 	bullet_count_max = 1 //One in the chamber
-
-
 
 	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
 
@@ -28,6 +25,14 @@
 
 	heat_per_shot = 0.04
 	heat_max = 0.4
+
+	bullet_length_min = 20
+	bullet_length_best = 23
+	bullet_length_max = 24
+
+	bullet_diameter_min = 11
+	bullet_diameter_best = 11.43
+	bullet_diameter_max = 12
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 	if(stored_magazine)

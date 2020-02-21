@@ -1,7 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp
 	name = ".22LR Wasp SMG"
 	desc = "Wait is that chambered in .22?"
-	bullet_type = ".22"
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
 	shoot_delay = 2

@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg
 	name = "\improper 5.56mm LMG"
-	bullet_type = ".223"
 	desc = "Atatatatatatata."
 	desc_extended = "The 5.56mm Calibre Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time."
 	icon = 'icons/obj/items/weapons/ranged/rifle/lmg.dmi'
@@ -32,6 +31,14 @@
 
 	heat_per_shot = 0.05
 	heat_max = 0.3
+
+	bullet_length_min = 40
+	bullet_length_best = 45
+	bullet_length_max = 46
+
+	bullet_diameter_min = 5.5
+	bullet_diameter_best = 5.56
+	bullet_diameter_max = 5.6
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()
 

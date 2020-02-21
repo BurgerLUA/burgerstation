@@ -3,7 +3,6 @@
 	var/obj/item/bullet/chambered_bullet //One in the chamber
 	var/list/obj/item/bullet/stored_bullets //This is a fixed list, so be careful.
 
-	var/bullet_type = "none"
 	var/bullet_count_max = 0 //How many bullets can this store on top of the chambered bullet
 
 	var/icon_state_open = "inventory"
@@ -20,6 +19,15 @@
 	)
 
 	var/jammed = FALSE
+
+	var/bullet_length_min = -1
+	var/bullet_length_best = -1
+	var/bullet_length_max = -1
+
+	var/bullet_diameter_min = -1
+	var/bullet_diameter_best = -1
+	var/bullet_diameter_max = -1
+
 
 /obj/item/weapon/ranged/bullet/Destroy()
 
@@ -125,10 +133,20 @@
 		caller.to_chat(span("notice","There is already a chambered bullet inside \the [src.name]!"))
 		return FALSE
 
-	if(bullet_type != B.id)
-		world.log << "Bullet type: [bullet_type]."
-		world.log << "B.id: [B.id]."
-		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src.name]!"))
+	if(B.bullet_length < bullet_length_min)
+		caller.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_length > bullet_length_max)
+		caller.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_diameter < bullet_diameter_min)
+		caller.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_diameter > bullet_diameter_max)
+		caller.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
 		return FALSE
 
 	return TRUE
@@ -139,8 +157,20 @@
 		caller.to_chat(span("notice","You must open \the [src.name] first before loading it!"))
 		return FALSE
 
-	if(bullet_type != B.id)
-		caller.to_chat(span("notice","You can't insert this type of bullet into \the [src.name]!"))
+	if(B.bullet_length < bullet_length_min)
+		caller.to_chat(span("notice","\The [B.name] is too short to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_length > bullet_length_max)
+		caller.to_chat(span("notice","\The [B.name] is too long to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_diameter < bullet_diameter_min)
+		caller.to_chat(span("notice","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(B.bullet_diameter > bullet_diameter_max)
+		caller.to_chat(span("notice","\The [B.name] is too wide to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(get_real_length(stored_bullets) >= length(stored_bullets))

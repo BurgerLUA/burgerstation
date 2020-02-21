@@ -9,7 +9,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw
 	)
 
-	ammo = /obj/item/bullet/revolver_22
+	ammo = /obj/item/bullet/pistol_22
 
 /obj/item/magazine/smg_22/update_icon()
 	icon_state = "[initial(icon_state)]-[round(length(stored_bullets),4)]"

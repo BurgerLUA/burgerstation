@@ -99,7 +99,7 @@
 	misfire_chance = 1
 */
 
-/obj/item/bullet/revolver_22
+/obj/item/bullet/pistol_22
 	name = "\improper .22 pistol cartridge"
 	desc = "For pistols and revolvers that require .22 ammo."
 	icon = 'icons/obj/items/bullet/22.dmi'

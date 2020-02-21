@@ -49,7 +49,7 @@
 
 	weapon_whitelist = list()
 
-	ammo = /obj/item/bullet/revolver_22
+	ammo = /obj/item/bullet/pistol_22
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"

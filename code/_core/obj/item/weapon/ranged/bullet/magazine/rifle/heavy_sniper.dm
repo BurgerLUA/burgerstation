@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
 	name = "\improper .50 BFR Sniper"
-	bullet_type = ".50"
 	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
@@ -27,6 +26,14 @@
 
 	heat_per_shot = 0.1
 	heat_max = 0.1
+
+	bullet_length_min = 90
+	bullet_length_best = 99
+	bullet_length_max = 105
+
+	bullet_diameter_min = 12.5
+	bullet_diameter_best = 12.7
+	bullet_diameter_max = 13
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread() //Base spread
 	return 0

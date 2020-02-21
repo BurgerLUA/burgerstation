@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/commander
 	name = "\improper .44 Commander Autorevolver"
-	bullet_type = ".44"
 	desc = "Semi-automatic!"
 	icon = 'icons/obj/items/weapons/ranged/revolver/44.dmi'
 	icon_state = "inventory"

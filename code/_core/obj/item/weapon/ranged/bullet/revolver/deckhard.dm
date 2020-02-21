@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/deckhard
 	name = "\improper .44 space detective revolver"
-	bullet_type = ".44"
 	desc = "A sidearm commonly used by space police. Uses .44 rounds."
 	icon = 'icons/obj/items/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"

@@ -6,8 +6,7 @@
 	bullet_count_max = 24
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg,
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical
+		/obj/item/weapon/ranged/bullet/magazine/smg
 	)
 
 	ammo = /obj/item/bullet/pistol_45
@@ -35,7 +34,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/wasp
 	)
 
-	ammo = /obj/item/bullet/revolver_22
+	ammo = /obj/item/bullet/pistol_22
 
 /obj/item/magazine/smg_22/update_icon()
 	icon_state = "[initial(icon_state)]-[ceiling(length(stored_bullets)/2,2)]"
