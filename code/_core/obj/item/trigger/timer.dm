@@ -48,11 +48,11 @@
 
 	if(old_time_set == time_set)
 		caller.to_chat(span("notice","\The [src.name] can't seem to go any [time_set == time_min ? "lower" : "higher"]."))
-	else if(spam_fix_time <= curtime)
+	else if(spam_fix_time <= world.time)
 		caller.to_chat(span("notice","You change \the [src.name]'s time to [time_set] deciseconds..."))
 	else
 		caller.to_chat(span("notice","...[time_set] deciseconds..."))
 
-	spam_fix_time = curtime + 20
+	spam_fix_time = world.time + 20
 
 	return TRUE

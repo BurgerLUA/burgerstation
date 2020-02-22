@@ -61,6 +61,5 @@
 				if(SHUTDOWN_SUBSYSTEM_ON_ERROR)
 					active_subsystems -= list(v)
 
-		curtime = round(curtime + TICK_LAG,TICK_LAG)
 		ticks += 1
 		sleep(TICK_LAG + lag_b_gone*0.1*TICK_LAG)

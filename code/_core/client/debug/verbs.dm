@@ -21,9 +21,9 @@
 	for(var/listed_macro in macros.macros)
 		src << "[listed_macro] [macros.macros[listed_macro]]"
 
-/client/verb/debug_curtime()
+/client/verb/debug_worldtime()
 	set category = "Debug"
-	src << curtime
+	src << world.time
 
 client/verb/debug_active_subsystems()
 	set category = "Debug"

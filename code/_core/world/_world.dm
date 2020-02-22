@@ -1,5 +1,4 @@
 var/global/list/active_subsystems
-var/global/curtime = 0
 var/global/ticks = 0
 var/global/rollovers = 0
 
@@ -35,8 +34,8 @@ var/global/world_state = STATE_STARTING
 	var/server_link = "https://discord.gg/yEaV92a"
 	var/github_name = "Space Station 13 Code <b>FROM SCRATCH</b>"
 
-	var/minutes = floor(curtime / 600) % 60
-	var/hours = floor(curtime / 12000)
+	var/minutes = floor(world.time / 600)
+	var/hours = floor(world.time / 36000)
 
 	if(minutes < 10)
 		minutes = "0[minutes]"

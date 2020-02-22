@@ -15,7 +15,7 @@ var/global/list/objects_to_delete = list()
 			continue
 
 		var/time_to_delete = objects_to_delete[object_to_delete]
-		if(time_to_delete > curtime)
+		if(time_to_delete > world.time)
 			continue
 
 		objects_to_delete -= object_to_delete
@@ -25,7 +25,7 @@ var/global/list/objects_to_delete = list()
 	return TRUE
 
 proc/queue_delete(var/object_to_delete,var/delete_in = 1)
-	objects_to_delete[object_to_delete] = curtime + delete_in
+	objects_to_delete[object_to_delete] = world.time + delete_in
 
 proc/undelete(var/datum/object_to_delete)
 

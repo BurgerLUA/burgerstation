@@ -5,7 +5,7 @@
 	var/recharge_rate = 100
 
 /obj/item/weapon/ranged/energy/recharging/think()
-	if(next_shoot_time + 1 <= curtime)
+	if(next_shoot_time + 1 <= world.time)
 		charge_current = min(charge_current + recharge_rate,charge_max)
 		update_icon()
 

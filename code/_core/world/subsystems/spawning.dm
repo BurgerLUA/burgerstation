@@ -50,9 +50,9 @@
 	var/mob/living/L = M.mob_stored
 	if( L.dead || L.qdeleting)
 		if(!M.time_of_death)
-			M.time_of_death = curtime
+			M.time_of_death = world.time
 
-		if(M.time_of_death + M.time_to_respawn <= curtime)
+		if(M.time_of_death + M.time_to_respawn <= world.time)
 			M.time_of_death = null
 			return do_spawn(M)
 
@@ -65,7 +65,7 @@
 	if(!M.force_spawn)
 		for(var/mob/living/advanced/player/P in range(spawning_turf,VIEW_RANGE))
 			if(P && is_valid(P))
-				M.time_of_death = curtime
+				M.time_of_death = world.time
 				return FALSE
 
 	var/path = M.mob_type

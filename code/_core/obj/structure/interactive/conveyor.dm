@@ -73,11 +73,11 @@
 		for(var/atom/movable/M in loc.contents)
 			if(conveyor_limit <= 0)
 				break
-			if(M.anchored || M.grabbing_hand || M.next_conveyor > curtime || (is_living(M) && M.move_delay > -1))
+			if(M.anchored || M.grabbing_hand || M.next_conveyor > world.time || (is_living(M) && M.move_delay > -1))
 				continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
 			M.Move(desired_turf,silent=TRUE)
-			M.next_conveyor = curtime + 8
+			M.next_conveyor = world.time + 8
 			conveyor_limit--
 			break
 
