@@ -20,7 +20,7 @@
 		new_list["subsystem"] = S
 		active_subsystems += list(new_list)
 
-	active_subsystems = sortByKey(active_subsystems,"priority")
+	active_subsystems = sortTim(active_subsystems, /proc/cmp_subsystem_priority)
 
 	LOG_SERVER("[length(active_subsystems)] SUBSYSTEMS LOADED")
 

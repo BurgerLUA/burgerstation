@@ -374,7 +374,7 @@
 		flavor_profile[R.flavor] += R.flavor_strength
 		total_flavor += R.flavor_strength
 
-	InsertionSort(flavor_profile)
+	flavor_profile = sortList(flavor_profile, /proc/cmp_numeric_dsc, TRUE)
 
 	var/list/english_flavor_profile = list()
 
