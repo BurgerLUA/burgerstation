@@ -9,7 +9,7 @@ var/global/list/map_2_zlevel = list()
 
 /subsystem/maps/Initialize()
 	var/list/map_files = flist(MAP_DIRECTORY)
-	ls_quicksort(map_files)
+	map_files = sortList(map_files)
 	for(var/i=1,i<=length(map_files),i++)
 		map_2_zlevel[map_files[i]] = i
 
