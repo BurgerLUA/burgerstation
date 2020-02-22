@@ -20,9 +20,9 @@
 			cur_acc[i] = "n"
 
 		for(var/line in song.lines)
-			for(var/beat in text2list(lowertext(line), ","))
-				var/list/notes = text2list(beat, "/")
-				for(var/note in text2list(notes[1], "-"))
+			for(var/beat in jointext(lowertext(line), ","))
+				var/list/notes = jointext(beat, "/")
+				for(var/note in jointext(notes[1], "-"))
 					if(!playing || !anchored)//If the piano is playing, or is loose
 						playing = 0
 						return
