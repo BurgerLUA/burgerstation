@@ -65,38 +65,6 @@
 
 	return best_key
 
-
-//ListSort by Kuraudo
-/proc/ls_quicksort(list/L, start=1, end=L.len)
-	if(start < end)
-		var/q = ls_partition(L, start, end)
-		ls_quicksort(L, start, q-1)
-		ls_quicksort(L, q+1, end)
-
-/proc/ls_partition(list/L, p, r)
-	var/pivot
-	var/m = (p + r) * 0.5
-	if(L[p] > L[m])
-		L.Swap(p, m)
-	if(L[p] > L[r])
-		L.Swap(p, r)
-	if(L[m] > L[r])
-		L.Swap(m, r)
-	pivot = r-1
-	if(r-p > 2)
-		r--
-		L.Swap(m, pivot)
-		for()
-			while(L[++p] < L[pivot]);
-			while(L[--r] > L[pivot]);
-			if(p < r)
-				L.Swap(p, r)
-			else
-				break
-		L.Swap(p, pivot)
-		return p
-	else return m
-
 //for sorting clients or mobs by ckey
 /proc/sortKey(list/L, order=1)
 	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
