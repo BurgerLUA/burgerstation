@@ -94,6 +94,13 @@
 
 	return ..()
 
+
+/obj/item/magazine/proc/get_magazine_insert_sound()
+	return length(stored_bullets) ? 'sounds/weapons/gun/general/magazine_remove_full.ogg' : 'sounds/weapons/gun/general/magazine_remove_empty.ogg'
+
+/obj/item/magazine/proc/get_magazine_eject_sound()
+	return length(stored_bullets) ? 'sounds/weapons/gun/general/magazine_insert_full.ogg' : 'sounds/weapons/gun/general/magazine_insert_empty.ogg'
+
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(istype(src,/obj/item/magazine/clip))
@@ -117,7 +124,7 @@
 	G.stored_magazine = src
 	G.open = FALSE
 	var/area/A = get_area(caller)
-	play_sound(pick(G.mag_insert_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(get_magazine_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	G.update_icon()
 
 	return TRUE

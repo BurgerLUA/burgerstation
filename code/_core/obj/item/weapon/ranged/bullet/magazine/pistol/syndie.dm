@@ -18,8 +18,6 @@
 
 	view_punch = 8
 
-	cock_sound = 'sounds/weapons/gun_slide1.ogg'
-
 	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
 
 	size = SIZE_1

@@ -24,7 +24,7 @@
 	open = !open
 
 	if(open)
-		eject_stored_bullets_spent(caller,get_turf(src))
+		eject_stored_bullets_spent(caller,get_turf(src),TRUE)
 		caller.to_chat(span("notice","You open \the [src]. It contains [get_ammo_count()] bullet\s."))
 	else
 		caller.to_chat(span("notice","You close \the [src]."))

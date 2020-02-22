@@ -46,7 +46,7 @@
 	return chambered_bullet ? chambered_bullet.damage_type : damage_type
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc,var/play_sound=FALSE)
 
 	if(!chambered_bullet)
 		return FALSE
@@ -63,28 +63,15 @@
 
 	B.force_move(new_loc)
 	B.update_icon()
+	if(play_sound)
+		var/area/A = get_area(caller)
+		play_sound(chambered_bullet.get_bullet_eject_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 	chambered_bullet = null
 
 	return B
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc)
-
-	for(var/obj/item/bullet_cartridge/B in stored_bullets)
-		eject_stored_bullet(caller,B,new_loc)
-
-	return TRUE
-
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc)
-
-	for(var/obj/item/bullet_cartridge/B in stored_bullets)
-		if(!B.is_spent)
-			continue
-		eject_stored_bullet(caller,B,new_loc)
-
-	return TRUE
-
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc,var/play_sound=FALSE)
 
 	if(!(bullet_to_remove in stored_bullets))
 		return FALSE
@@ -93,8 +80,28 @@
 	bullet_to_remove.force_move(new_loc)
 	bullet_to_remove.update_icon()
 	stored_bullets += null
+	if(play_sound)
+		var/area/A = get_area(caller)
+		play_sound(bullet_to_remove.get_bullet_eject_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
 	return bullet_to_remove
+
+
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+
+	for(var/obj/item/bullet_cartridge/B in stored_bullets)
+		eject_stored_bullet(caller,B,new_loc,play_sound)
+
+	return TRUE
+
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+
+	for(var/obj/item/bullet_cartridge/B in stored_bullets)
+		if(!B.is_spent)
+			continue
+		eject_stored_bullet(caller,B,new_loc,play_sound)
+
+	return TRUE
 
 /obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet(var/mob/caller)
 

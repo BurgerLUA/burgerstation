@@ -32,6 +32,12 @@
 	size = 0.01
 	weight = 0.01
 
+/obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
+	return 'sounds/weapons/gun/general/mag_bullet_remove.ogg'
+
+/obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
+	return 'sounds/weapons/gun/general/mag_bullet_insert.ogg'
+
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return item_count_current
 
@@ -206,7 +212,7 @@
 		if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = G
 			var/area/A = get_area(caller.loc)
-			play_sound(M.cock_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			play_sound(M.get_cock_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		return TRUE
 
 	return ..()

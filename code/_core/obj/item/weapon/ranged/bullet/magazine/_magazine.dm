@@ -3,29 +3,10 @@
 
 	var/obj/item/magazine/stored_magazine //You can use one or the other.
 
-	var/list/mag_remove_sounds = list(
-		'sounds/weapons/mag_remove1.ogg',
-		'sounds/weapons/mag_remove2.ogg',
-		'sounds/weapons/mag_remove3.ogg',
-		'sounds/weapons/mag_remove4.ogg',
-		'sounds/weapons/mag_remove5.ogg'
-	)
-
-	var/list/mag_insert_sounds = list(
-		'sounds/weapons/mag_insert1.ogg',
-		'sounds/weapons/mag_insert2.ogg',
-		'sounds/weapons/mag_insert3.ogg',
-		'sounds/weapons/mag_insert4.ogg',
-		'sounds/weapons/mag_insert5.ogg',
-		'sounds/weapons/mag_insert6.ogg',
-		'sounds/weapons/mag_insert7.ogg',
-		'sounds/weapons/mag_insert8.ogg',
-		'sounds/weapons/mag_insert9.ogg'
-	)
-
-	var/cock_sound = 'sounds/weapons/generic_close.ogg'
-
 	var/requires_cock_each_shot = FALSE
+
+/obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound()
+	return 'sounds/weapons/gun/general/slide_lock_1.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/on_spawn()
 
@@ -38,16 +19,16 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
-	eject_chambered_bullet(caller,caller.loc)
+	eject_chambered_bullet(caller,caller.loc,TRUE)
 	load_new_bullet_from_magazine(caller)
 	var/area/A = get_area(caller.loc)
-	play_sound(cock_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(get_cock_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	update_icon()
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
 	var/area/A = get_area(caller)
-	play_sound(pick(mag_remove_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(stored_magazine.get_magazine_eject_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	stored_magazine.force_move(caller.loc)
 	if(object)
 		var/obj/hud/inventory/offhand_slot = object
@@ -79,7 +60,7 @@
 	. = ..()
 
 	if(. && !is_npc(caller))
-		eject_chambered_bullet(caller,get_turf(src))
+		eject_chambered_bullet(caller,get_turf(src),TRUE)
 		if(!requires_cock_each_shot)
 			load_new_bullet_from_magazine(caller)
 
