@@ -56,12 +56,12 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	if(old_frequency == frequency)
 		caller.to_chat("The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"].")
-	else if(spam_fix_time <= curtime)
+	else if(spam_fix_time <= world.time)
 		caller.to_chat("You change \the [src.name]'s frequency to [frequency] kHz[freq]...")
 	else
 		caller.to_chat("...[frequency] kHz[freq]...")
 
-	spam_fix_time = curtime + 20
+	spam_fix_time = world.time + 20
 
 	return TRUE
 

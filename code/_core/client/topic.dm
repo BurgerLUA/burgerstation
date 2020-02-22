@@ -8,8 +8,8 @@
 		return
 
 	/*
-	if(next_allowed_topic > curtime)
-		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - curtime] second\s!"))
+	if(next_allowed_topic > world.time)
+		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - world.time] second\s!"))
 		return FALSE
 	*/
 
@@ -70,6 +70,6 @@
 
 	. = ..()
 
-	next_allowed_topic = curtime + 1
+	next_allowed_topic = world.time + 1
 
 	return .

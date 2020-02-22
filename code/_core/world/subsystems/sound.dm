@@ -92,7 +92,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	hearer << created_sound
 	hearer.current_music_track = music_track_id
-	hearer.next_music_track = curtime + SECONDS_TO_DECISECONDS(T.length)
+	hearer.next_music_track = world.time + SECONDS_TO_DECISECONDS(T.length)
 
 	return created_sound
 

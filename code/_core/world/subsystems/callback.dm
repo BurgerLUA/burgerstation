@@ -20,7 +20,7 @@ var/global/subsystem/callback/SScallback
 
 	for(var/callback_id in src.all_callbacks)
 		var/callback_value = src.all_callbacks[callback_id]
-		if(callback_value["time"] > curtime)
+		if(callback_value["time"] > world.time)
 			continue
 		call(callback_value["proc"])(arglist(callback_value["args"]))
 		src.all_callbacks -= callback_id
@@ -31,6 +31,6 @@ var/global/subsystem/callback/SScallback
 	all_callbacks[desired_id] = list(
 		"proc" = desired_proc,
 		"args" = args.Copy(4),
-		"time" = curtime + desired_time
+		"time" = world.time + desired_time
 	)
 	return TRUE

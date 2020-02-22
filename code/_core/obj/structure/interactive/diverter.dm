@@ -36,7 +36,7 @@
 
 	for(var/k in tracked_movables)
 		var/v = tracked_movables[k]
-		if(v > curtime)
+		if(v > world.time)
 			continue
 		var/atom/movable/M = k
 		if(!M.anchored && !M.grabbing_hand && should_push(M) && M.loc == src.loc)
@@ -49,7 +49,7 @@
 
 /obj/structure/interactive/diverter/Crossed(var/atom/movable/M,var/atom/NewLoc,var/atom/OldLoc)
 
-	tracked_movables[M] = curtime + 4
+	tracked_movables[M] = world.time + 4
 
 	if(!think_timer)
 		start_thinking(src)

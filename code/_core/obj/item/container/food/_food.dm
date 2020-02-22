@@ -85,9 +85,9 @@
 
 	var/final_flavor_text = reagents_to_consume.get_flavor()
 
-	if(final_flavor_text && (consumer.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= curtime || consumer.last_flavor != final_flavor_text) )
+	if(final_flavor_text && (consumer.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || consumer.last_flavor != final_flavor_text) )
 		consumer.last_flavor = final_flavor_text
-		consumer.last_flavor_time = curtime
+		consumer.last_flavor_time = world.time
 		final_flavor_text = "You taste [final_flavor_text]."
 	else
 		final_flavor_text = null
