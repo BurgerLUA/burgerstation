@@ -5,8 +5,14 @@
 
 	var/requires_cock_each_shot = FALSE
 
-/obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound()
-	return 'sounds/weapons/gun/general/slide_lock_1.ogg'
+/obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
+	switch(direction)
+		if("both")
+			return 'sounds/weapons/gun/general/bolt_rack.ogg'
+		if("forward")
+			return 'sounds/weapons/gun/general/bolt_drop.ogg'
+		if("back")
+			return 'sounds/weapons/gun/general/slide_lock_1.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/on_spawn()
 
@@ -19,11 +25,20 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
-	eject_chambered_bullet(caller,caller.loc,TRUE)
-	load_new_bullet_from_magazine(caller)
+
+	var/cock_type // = "flacid"
+
+	if(eject_chambered_bullet(caller,caller.loc,TRUE))
+		cock_type = "back"
+
+	if(load_new_bullet_from_magazine(caller))
+		cock_type = cock_type == "back" ? "both" : "forward"
+
 	var/area/A = get_area(caller.loc)
-	play_sound(get_cock_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-	update_icon()
+	if(cock_type)
+		play_sound(get_cock_sound(cock_type),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		update_icon()
+
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
