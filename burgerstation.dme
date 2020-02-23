@@ -904,6 +904,7 @@
 #include "code\_core\obj\structure\interactive\cryo.dm"
 #include "code\_core\obj\structure\interactive\diverter.dm"
 #include "code\_core\obj\structure\interactive\fakedoor.dm"
+#include "code\_core\obj\structure\interactive\fence.dm"
 #include "code\_core\obj\structure\interactive\ground_ore_deposit.dm"
 #include "code\_core\obj\structure\interactive\implanter.dm"
 #include "code\_core\obj\structure\interactive\intercom.dm"

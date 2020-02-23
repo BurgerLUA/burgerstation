@@ -12,7 +12,6 @@ obj/structure/smooth/table
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-
 obj/structure/smooth/rack
 	name = "table"
 	desc = "What does it do?"

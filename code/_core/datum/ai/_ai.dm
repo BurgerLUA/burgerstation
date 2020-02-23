@@ -22,7 +22,7 @@
 
 	var/turf/start_turf
 
-	var/simple = TRUE
+	var/only_attack_players = FALSE
 
 	var/sync_movement_delay = TRUE
 	var/sync_attack_delay = FALSE
@@ -280,7 +280,7 @@
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
 		return FALSE
 
-	if(simple)
+	if(only_attack_players)
 		return exists(L.client)
 	else
 		return L.iff_tag != owner.iff_tag
