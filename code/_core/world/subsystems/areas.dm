@@ -1,4 +1,4 @@
-/subsystem/area
+SUBSYSTEM_DEF(area)
 	name = "Area Subsystem"
 	desc = "Manages the icon states of areas, aka weather and climate."
 	priority = SS_ORDER_AREAS

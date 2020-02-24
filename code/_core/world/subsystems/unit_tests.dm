@@ -1,4 +1,4 @@
-/subsystem/unit_test/
+SUBSYSTEM_DEF(unit_test)
 	name = "Unit Test"
 	desc = "Basically a unit test."
 	priority = SS_ORDER_LAST

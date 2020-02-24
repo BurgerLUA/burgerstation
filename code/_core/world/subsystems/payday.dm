@@ -1,6 +1,6 @@
 var/global/stored_payday = 0
 
-/subsystem/payday/
+SUBSYSTEM_DEF(payday)
 	name = "Payday Subsystem"
 	desc = "How people get paid."
 	priority = SS_ORDER_LAST

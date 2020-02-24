@@ -1,6 +1,6 @@
 var/global/list/plant_type/all_plant_types = list()
 
-/subsystem/botany/
+SUBSYSTEM_DEF(botany)
 	name = "Botany Subsystem"
 	desc = "Handle botany related matters."
 	tick_rate = SECONDS_TO_TICKS(4)

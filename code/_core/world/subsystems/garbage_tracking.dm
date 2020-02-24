@@ -1,6 +1,6 @@
 var/global/list/ref_id_to_warning = list()
 
-/subsystem/garbage_tracking/
+SUBSYSTEM_DEF(garbage_tracking)
 	name = "Garbage Subsystem"
 	desc = "Powered by raw shitcode."
 	priority = SS_ORDER_PRELOAD

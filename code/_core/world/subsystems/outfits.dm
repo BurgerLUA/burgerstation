@@ -1,6 +1,6 @@
 var/global/list/all_outfits = list()
 
-/subsystem/outfits/
+SUBSYSTEM_DEF(outfits)
 	name = "Outfit Subsystem"
 	desc = "Store all the outfits."
 	priority = SS_ORDER_PRELOAD

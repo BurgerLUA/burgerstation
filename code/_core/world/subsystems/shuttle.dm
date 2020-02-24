@@ -1,4 +1,4 @@
-/subsystem/shuttle/
+SUBSYSTEM_DEF(shuttle)
 	name = "Shuttle Subsystem"
 	desc = "Controls shuttles and shuttle timers."
 	tick_rate = DECISECONDS_TO_TICKS(1)

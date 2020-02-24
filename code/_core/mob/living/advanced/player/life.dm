@@ -47,7 +47,7 @@
 
 
 	if(last_words && length(people_who_killed) && people_who_killed[1] && people_who_killed[1] != src)
-		SS_Soapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
+		SSsoapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
 	*/
 
 	/*

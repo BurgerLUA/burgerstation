@@ -1,6 +1,6 @@
 var/global/list/all_classes = list()
 
-/subsystem/classes/
+SUBSYSTEM_DEF(classes)
 	name = "Class Subsystem"
 	desc = "Stores all the known classes in a list."
 	priority = SS_ORDER_PRELOAD

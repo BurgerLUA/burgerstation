@@ -1,4 +1,4 @@
-/subsystem/spawning/
+SUBSYSTEM_DEF(spawning)
 	name = "Spawning Subsystem"
 	desc = "Controls the spawning of all mob-based spawnpoints on the map."
 	priority = SS_ORDER_SPAWNING

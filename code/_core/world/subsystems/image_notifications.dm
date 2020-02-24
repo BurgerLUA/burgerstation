@@ -1,6 +1,6 @@
 var/global/list/all_notifications = list()
 
-/subsystem/image_notifications/
+SUBSYSTEM_DEF(image_notifications)
 	name = "Image Notifications"
 	desc = "Handles animations of pop-up image notifications."
 	tick_rate = DECISECONDS_TO_TICKS(1)

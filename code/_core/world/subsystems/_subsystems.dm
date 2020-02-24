@@ -6,15 +6,15 @@
 	var/priority = 0 //High number = runs later
 	var/next_run = 0 //When the subsystem should run next
 
-/subsystem/New()
-	..()
-	//What to do when this subsystem is spawned
+//What to do when this subsystem is spawned
+/subsystem/proc/PreInit()
 
+//When this subsystem runs for the first time.
 /subsystem/proc/Initialize()
-	//When this subsystem runs for the first time.
 
+//When this subsystem runs. Returning true means that this always runs, false means it doesn't run.
 /subsystem/proc/on_life()
-	//When this subsystem runs. Returning true means that this always runs, false means it doesn't run.
 	return FALSE
 
-
+//When the old subsystem hangs and we gotta replace it with a new one.
+/subsystem/proc/Recover()

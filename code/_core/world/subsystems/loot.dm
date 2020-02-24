@@ -1,6 +1,6 @@
 var/global/list/all_loot = list()
 
-/subsystem/loot/
+SUBSYSTEM_DEF(loot)
 	name = "Loot Subsystem"
 	desc = "Yes."
 	priority = SS_ORDER_PRELOAD

@@ -1,6 +1,6 @@
 var/global/list/all_progress_bars = list()
 
-/subsystem/progress_bars/
+SUBSYSTEM_DEF(progress_bars)
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
 	tick_rate = DECISECONDS_TO_TICKS(1)

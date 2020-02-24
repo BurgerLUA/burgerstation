@@ -8,7 +8,7 @@
 
 /var/lighting_processing            = TRUE
 
-/subsystem/lighting/
+SUBSYSTEM_DEF(lighting)
 	name = "Lighting Subsystem"
 	desc = "Controls the lighting."
 	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)

@@ -1,6 +1,6 @@
 var/global/list/all_factions = list()
 
-/subsystem/faction/
+SUBSYSTEM_DEF(faction)
 	name = "Faction Subsystem"
 	desc = "Store all the factions."
 	priority = SS_ORDER_PRELOAD
