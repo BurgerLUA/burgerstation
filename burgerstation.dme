@@ -49,7 +49,6 @@
 #include "code\__defines\karma.dm"
 #include "code\__defines\layering.dm"
 #include "code\__defines\lighting.dm"
-#include "code\__defines\logging.dm"
 #include "code\__defines\movement.dm"
 #include "code\__defines\params.dm"
 #include "code\__defines\permissions.dm"

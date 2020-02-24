@@ -6,7 +6,7 @@
 
 	icon = 'icons/obj/items/weapons/ranged/pistol/45.dmi'
 	shoot_delay = 3
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/45/shoot.ogg')
 
 	view_punch = 6
 
@@ -29,11 +29,14 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
 	name = ".45 Tac Pistol MOD"
 	desc = "It's like a Silver Eagle except not."
-	desc_extended = "A heavier variant of the .45 Tactical Pistol. This one contains much more materials to reduce spread and recoil, however it has a slower cycle rate."
+	desc_extended = "The feeding ramp is polished to a mirror sheen. The slide's been reinforced. And the interlock with the frame is tightened for added precision. \
+	The sight system is original, too. The thumb safety is extended to make it easier on the finger. A long-type trigger with non-slip grooves. A ring hammer... \
+	The base of the trigger guard's been filed down for a higher grip. And not only that, nearly every part of this gun has been expertly crafted and customized. \
+	Where'd you get something like this?"
 	value = 50
 	icon = 'icons/obj/items/weapons/ranged/pistol/45_2.dmi'
 	shoot_delay = 3
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/45/shoot_mod.ogg')
 
 	view_punch = 3
 

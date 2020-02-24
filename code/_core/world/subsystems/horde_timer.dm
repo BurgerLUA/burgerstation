@@ -47,10 +47,6 @@ var/global/subsystem/horde/SShorde
 
 	return TRUE
 
-/subsystem/horde/proc/get_enemies_to_spawn()
-	return TRUE
-
-
 /subsystem/horde/New()
 	. = ..()
 	SShorde = src
@@ -167,8 +163,6 @@ var/global/subsystem/horde/SShorde
 					for(var/mob/abstract/observer/O in world)
 						O.force_move(T)
 					wave_to_spawn--
-
-
 
 	return TRUE
 

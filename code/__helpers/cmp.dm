@@ -39,7 +39,7 @@
 	return sorttext(b.name, a.name)
 
 /proc/cmp_subsystem_priority(subsystem/a, subsystem/b)
-	return a.priority - b.priority
+	return cmp_numeric_asc(a.priority,b.priority)
 
 /proc/cmp_list_data_priority(list/A, list/B)
 	return A["priority"] - B["priority"]

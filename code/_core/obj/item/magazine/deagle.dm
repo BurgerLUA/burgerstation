@@ -6,7 +6,7 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_50

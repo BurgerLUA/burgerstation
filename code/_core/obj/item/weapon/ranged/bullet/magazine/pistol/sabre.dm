@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
-	name = "\improper 12.7mm Sabre Pistol"
+	name = "\improper 12.7mm Sabre"
 	desc = "12.7mm Sabre Pistol"
 	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
 	icon = 'icons/obj/items/weapons/ranged/pistol/12mm.dmi'
@@ -12,9 +12,7 @@
 
 	bullet_count_max = 1 //One in the chamber
 
-
-
-	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/12/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -24,8 +22,6 @@
 
 	size = SIZE_2
 	weight = WEIGHT_3
-
-	automatic = TRUE
 
 	heat_per_shot = 0.1
 	heat_max = 0.3
@@ -38,3 +34,21 @@
 	bullet_diameter_min = 12
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod
+	name = "\improper 12.7mm Sabre MOD"
+	icon = 'icons/obj/items/weapons/ranged/pistol/12mm_mod.dmi'
+	desc_extended = "A modded variant very powerful semiautomatic pistol commonly used by the most elite high ranking Syndicate Operatives. \
+	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through other means."
+
+	shoot_delay = 1
+	heat_per_shot = 0.25
+	heat_max = 0.2
+	view_punch = 4
+
+	value = 500
+
+	shoot_sounds = list('sounds/weapons/12/shoot_mod.ogg')
+
+	automatic = TRUE
+	max_bursts = 3
