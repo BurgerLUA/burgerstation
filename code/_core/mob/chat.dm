@@ -24,11 +24,11 @@
 		A.start_typing()
 
 	if(!text_to_say)
-		text_to_say = input("What would you like to say?")
+		text_to_say = input("What would you like to say?") as text|null
 
 	text_to_say = police_input(text_to_say)
 
-	if(text_to_say && length(text_to_say))
+	if(length(text_to_say))
 		var/first_character = copytext(text_to_say,1,2)
 		if(first_character == "/" || first_character == "!")
 			if(src.client)

@@ -63,7 +63,7 @@
 			O.on_spawn()
 		return TRUE
 
-	var/selection = input("Spawn object.","Spawn object") in valid_objects
+	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
 
 	if(selection)
 		var/datum/A = selection
@@ -116,17 +116,17 @@
 	for(var/k in L.attributes)
 		valid_choices += k
 
-	var/chosen_attribute = input("Which attribute do you wish to modify?","Modify Attribute") in valid_choices
+	var/chosen_attribute = input("Which attribute do you wish to modify?","Modify Attribute") as null|anything in valid_choices
 
 	if(!chosen_attribute)
 		return
 
-	var/chosen_value = input("Which value do you wish to set [chosen_attribute] to?","Modify Attribute")
+	var/chosen_value = input("Which value do you wish to set [chosen_attribute] to?","Modify Attribute") as num|null
 
 	if(!chosen_value)
 		return
 
-	chosen_value = text2num(chosen_value)
+	chosen_value = chosen_value
 
 	L.set_attribute_level(chosen_attribute,chosen_value)
 
@@ -147,17 +147,17 @@
 	for(var/k in L.skills)
 		valid_choices += k
 
-	var/chosen_skill = input("Which skill do you wish to modify?","Modify Skill") in valid_choices
+	var/chosen_skill = input("Which skill do you wish to modify?","Modify Skill") as null|anything in valid_choices
 
 	if(!chosen_skill)
 		return
 
-	var/chosen_value = input("Which value do you wish to set [chosen_skill] to?","Modify Skill")
+	var/chosen_value = input("Which value do you wish to set [chosen_skill] to?","Modify Skill") as num|null
 
 	if(!chosen_value)
 		return
 
-	chosen_value = text2num(chosen_value)
+	chosen_value = chosen_value
 
 	L.set_skill_level(chosen_skill,chosen_value)
 

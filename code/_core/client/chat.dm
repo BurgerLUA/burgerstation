@@ -4,7 +4,9 @@
 		return FALSE
 
 	if(!text_to_say)
-		text_to_say = input("What would you like to say?")
+		text_to_say = input("What would you like to say?") as text|null
+		if(!text_to_say)
+			return
 
 	if(last_ooc+10 >= world.time)
 		src.to_chat(span("warning","You're using OOC too fast!"))
@@ -46,7 +48,9 @@
 
 /client/verb/pm(var/message as text)
 
-	var/client/C = input("Who would you like to message?","Desired Client") in all_clients
+	var/client/C = input("Who would you like to message?","Desired Client") as null|anything in all_clients
+	if(!C)
+		return
 
 	to_chat(format_speech(src,src,message,TEXT_PM),CHAT_TYPE_PM)
 	C.to_chat(format_speech(src,src,message,TEXT_PM),CHAT_TYPE_PM)

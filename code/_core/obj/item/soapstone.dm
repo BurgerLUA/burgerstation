@@ -54,7 +54,7 @@
 		caller.to_chat(span("notice","There is already a message here."))
 		return TRUE
 
-	var/input_text = sanitize(input("What would you like the message to say?"))
+	var/input_text = sanitize(input("What would you like the message to say?") as text|null)
 
 	if(!input_text)
 		return TRUE

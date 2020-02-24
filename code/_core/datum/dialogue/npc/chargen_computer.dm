@@ -131,7 +131,9 @@
 
 	switch(topic)
 		if("*login name")
-			var/desired_name = input("Please enter your legal name. Make sure your name is correct and isn't misspeeled.","Login Name") as text
+			var/desired_name = input("Please enter your legal name. Make sure your name is correct and isn't misspelled.","Login Name") as text|null
+			if(!desired_name)
+				return
 			desired_name = police_input(desired_name, max_length = 32, capitalize = TRUE)
 			var/confirm01 = input("Your name is \"[desired_name]\". Is this correct?","Login Name") in list("Wait, no.","Yes.")
 			if(confirm01 == "Wait, no.")

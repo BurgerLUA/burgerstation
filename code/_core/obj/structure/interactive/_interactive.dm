@@ -29,6 +29,6 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 	if(valid_length == 1)
 		T = valid_interactables[1]
 	else
-		T = input(caller,"Which device do you wish to interact with?","Device Interaction") in valid_interactables
+		T = input(caller,"Which device do you wish to interact with?","Device Interaction") as null|anything in valid_interactables
 
 	return T

@@ -98,14 +98,12 @@
 	for(var/mob/living/advanced/player/P in all_mobs_with_clients)
 		possible_crew[P.name] = P
 
-	possible_crew["Cancel"] = "Cancel"
-
 	scan_mode = TRUE
 	update_icon()
 
-	var/choice = input("Who do you want to track?","Crew Pinpointer Tracking","Cancel") in possible_crew
+	var/choice = input("Who do you want to track?","Crew Pinpointer Tracking",null) as null|anything in possible_crew
 
-	if(choice && choice != "Cancel")
+	if(choice)
 		var/mob/living/advanced/player/P = possible_crew[choice]
 		tracked_atom = P
 	else
@@ -135,15 +133,12 @@
 			continue
 		possible_landmarks[L.name] = L
 
-	possible_landmarks["Cancel"] = "Cancel"
-
-
 	scan_mode = TRUE
 	update_icon()
 
-	var/choice = input("Who do you want to track?","Landmark Pinpointer Tracking","Cancel") in possible_landmarks
+	var/choice = input("Who do you want to track?","Landmark Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
 
-	if(choice && choice != "Cancel")
+	if(choice)
 		var/obj/marker/landmark/L = possible_landmarks[choice]
 		tracked_atom = L
 	else

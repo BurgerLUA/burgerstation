@@ -12,7 +12,9 @@
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 
-		var/species_choice = input("What species do you wish to change to?") in list("Human","Lizard","Cyborg")
+		var/species_choice = input("What species do you wish to change to?") as null|anything in list("Human","Lizard","Cyborg")
+		if(!species_choice)
+			return TRUE
 
 		var/list/choice_to_species = list(
 			"Human" = "human",

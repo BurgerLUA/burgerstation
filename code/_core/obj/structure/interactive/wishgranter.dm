@@ -131,7 +131,9 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 	if(is_player(crosser))
 		var/mob/living/advanced/player/P = crosser
 		if(P.client)
-			var/choice = input("Which Wishgranter would you like to teleport to?","Teleport Destination") in all_wishgranters
+			var/choice = input("Which Wishgranter would you like to teleport to?","Teleport Destination") as anything|null in all_wishgranters
+			if(!choice)
+				return
 			var/list/callback_list = list()
 			callback_list["start_turf"] = get_turf(P)
 			callback_list["end_turf"] = all_wishgranters[choice]

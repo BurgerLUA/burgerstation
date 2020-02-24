@@ -8,11 +8,11 @@
 	if(!dye_color)
 		dye_color = "#FFFFFF"
 
-	var/choice = input("What do you want to dye?","Dye Selection") in list(color_primary_desc,color_secondary_desc,color_tertiary_desc,"Cancel")
+	var/choice = input("What do you want to dye?","Dye Selection") as null|anything in list(color_primary_desc,color_secondary_desc,color_tertiary_desc)
 
 	INTERACT_CHECK
 
-	if(!choice || choice == "Cancel")
+	if(!choice)
 		caller.to_chat(span("notice","You decide not to dye \the [src.name]."))
 		return FALSE
 

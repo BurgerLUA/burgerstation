@@ -83,7 +83,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	if(!A.client || !A.client.settings || !A.client.settings.loaded_data)
 		return ..()
 
-	var/desired_color = input("Skin Color","Skin Color",A.client.settings.loaded_data["hud_colors"][color_id]) as color
+	var/desired_color = input("Skin Color","Skin Color",A.client.settings.loaded_data["hud_colors"][color_id]) as color|null
 
 	if(desired_color)
 		A.client.settings.loaded_data["hud_colors"][color_id] = desired_color
