@@ -56,10 +56,10 @@
 						var/new_value = null
 
 						if(isnum(current_value))
-							new_value = input("Desired Number") as num
+							new_value = input("Desired Number") as num|null
 
 						else if(istext(current_value))
-							new_value = input("Desired Number") as text
+							new_value = input("Desired Number") as text|null
 
 						if(new_value)
 							change_variable(actual_reference,actual_key,new_value)
