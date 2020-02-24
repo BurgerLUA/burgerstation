@@ -2,7 +2,7 @@ var/global/list/all_events = list()
 var/global/list/all_events_prob = list()
 var/global/list/all_events_active = list()
 
-/subsystem/events/
+SUBSYSTEM_DEF(events)
 	name = "Event Subsystem"
 	desc = "Stores all the known dialogue in a list."
 	priority = SS_ORDER_NORMAL

@@ -98,8 +98,8 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_OOC)
 				sleep(-1)
 
-			if(SSWikibot && ENABLE_WIKIBOT)
-				SSWikibot.process_string(source,text_to_say)
+			if(SSwikibot && ENABLE_WIKIBOT)
+				SSwikibot.process_string(source,text_to_say)
 
 	if(text_type == TEXT_TALK || text_type == TEXT_YELL)
 		var/area/A = get_area(source)

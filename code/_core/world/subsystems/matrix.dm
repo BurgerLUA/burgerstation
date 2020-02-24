@@ -8,7 +8,7 @@ Format:
 	data.matrix
 */
 
-/subsystem/matrix/
+SUBSYSTEM_DEF(matrix)
 	name = "Mob Subsystem"
 	desc = "Controls matrix based animations."
 	tick_rate = 1

@@ -1,6 +1,4 @@
-var/global/subsystem/progress_bars/SSprogressbars
-
-/subsystem/progress_bars/
+SUBSYSTEM_DEF(progressbars)
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
 	tick_rate = DECISECONDS_TO_TICKS(1)
@@ -8,11 +6,7 @@ var/global/subsystem/progress_bars/SSprogressbars
 
 	var/list/all_progress_bars = list()
 
-/subsystem/progress_bars/Initialize()
-	SSprogressbars = src
-	return TRUE
-
-/subsystem/progress_bars/on_life()
+/subsystem/progressbars/on_life()
 
 	for(var/k in all_progress_bars)
 		var/atom/A = k
@@ -48,7 +42,7 @@ var/global/subsystem/progress_bars/SSprogressbars
 
 	return TRUE
 
-/subsystem/progress_bars/proc/add_progress_bar(var/atom/owner,var/atom/object,var/desired_time,var/desired_proc,...)
+/subsystem/progressbars/proc/add_progress_bar(var/atom/owner,var/atom/object,var/desired_time,var/desired_proc,...)
 
 	if(all_progress_bars[owner])
 		if(is_mob(owner))
@@ -66,7 +60,7 @@ var/global/subsystem/progress_bars/SSprogressbars
 
 	return TRUE
 
-/subsystem/progress_bars/proc/add_progress_bar_conditions(var/atom/owner,var/atom/object,var/desired_proc,...)
+/subsystem/progressbars/proc/add_progress_bar_conditions(var/atom/owner,var/atom/object,var/desired_proc,...)
 
 	if(!all_progress_bars[owner])
 		return FALSE

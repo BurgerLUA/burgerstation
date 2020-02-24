@@ -2,7 +2,7 @@ var/global/list/spellcraft/buff/all_buffs = list()
 var/global/list/spellcraft/buff/all_effects = list()
 var/global/list/spellcraft/buff/all_modifiers = list()
 
-/subsystem/spellcrafing/
+SUBSYSTEM_DEF(spellcrafing)
 	name = "Spellcrafting Subsystem"
 	desc = "Stores all the known spellcrafting subystems in a list."
 	priority = SS_ORDER_PRELOAD

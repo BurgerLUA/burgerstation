@@ -7,8 +7,8 @@
 
 	var/list/new_question_keys = splittext(wikibot_question," ")
 
-	if(SSWikibot)
-		SSWikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
+	if(SSwikibot)
+		SSwikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
 
 /commands/debug/verb/print_garbage()
 

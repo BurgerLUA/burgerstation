@@ -2,7 +2,7 @@
 
 var/global/list/map_2_zlevel = list()
 
-/subsystem/maps/
+SUBSYSTEM_DEF(maps)
 	name = "Maps Subsystem"
 	desc = ""
 	priority = SS_ORDER_MAPS

@@ -1,4 +1,4 @@
-/subsystem/map_node/
+SUBSYSTEM_DEF(map_node)
 	name = "Map Node Subsystem"
 	desc = "Generates Map Nodes."
 	priority = SS_ORDER_OBJS

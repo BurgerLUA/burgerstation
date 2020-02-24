@@ -1,4 +1,4 @@
-/subsystem/squad/
+SUBSYSTEM_DEF(squad)
 	name = "Squad Subsystem"
 	desc = "Manages Squads"
 	priority = SS_ORDER_PRELOAD

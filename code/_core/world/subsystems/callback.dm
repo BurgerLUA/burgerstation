@@ -1,17 +1,11 @@
 #define CALLBACK(desired_id,desired_time,desired_proc,arguments...) SScallback.add_callback(desired_id,desired_time,desired_proc,arguments)
 
-var/global/subsystem/callback/SScallback
-
-/subsystem/callback/
+SUBSYSTEM_DEF(callback)
 	name = "Callback Subsystem"
 	desc = "Controls callbacks."
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 	var/list/all_callbacks = list()
-
-/subsystem/callback/New(var/desired_loc)
-	SScallback = src
-	return ..()
 
 /subsystem/callback/Initialize()
 	return TRUE

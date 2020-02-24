@@ -1,7 +1,4 @@
-
-var/global/subsystem/lighting/SSlighting
-
-/subsystem/lighting/
+SUBSYSTEM_DEF(lighting)
 	name = "Lighting Subsystem"
 	desc = "Controls lighting."
 	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)
@@ -30,11 +27,6 @@ var/global/subsystem/lighting/SSlighting
 	var/force_queued = TRUE
 	var/force_override = FALSE	// For admins.
 #endif
-
-/subsystem/lighting/New()
-	. = ..()
-	SSlighting = src
-	return .
 
 /subsystem/lighting/Initialize()
 

@@ -1,6 +1,6 @@
 var/global/list/active_explosions = list()
 
-/subsystem/explosion/
+SUBSYSTEM_DEF(explosion)
 	name = "Explosion Subsystem"
 	desc = "Processes explosions."
 	priority = SS_ORDER_NORMAL

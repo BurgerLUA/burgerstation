@@ -1,7 +1,7 @@
 var/global/list/area/all_areas_with_hazards = list()
 var/global/list/all_hazards = list()
 
-/subsystem/hazard/
+SUBSYSTEM_DEF(hazard)
 	name = "Enviromental Hazard Subsystem"
 	desc = "Controls hazards, like extreme cold or extreme heat."
 	tick_rate = SECONDS_TO_TICKS(10)

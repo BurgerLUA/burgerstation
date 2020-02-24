@@ -1,6 +1,6 @@
 var/list/obj/structure/interactive/localmachine/snowflake/wishgranter/all_wishgranters = list()
 
-/subsystem/wishgranter/
+SUBSYSTEM_DEF(wishgranter)
 	name = "Wishgranter Subsystem"
 	desc = "Yes."
 	priority = SS_ORDER_NORMAL

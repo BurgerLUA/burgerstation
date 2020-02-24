@@ -1,6 +1,6 @@
 var/global/list/loot/all_prefixes = list()
 
-/subsystem/prefix/
+SUBSYSTEM_DEF(prefix)
 	name = "Prefix Subsystem"
 	desc = "Yes."
 	priority = SS_ORDER_PRELOAD

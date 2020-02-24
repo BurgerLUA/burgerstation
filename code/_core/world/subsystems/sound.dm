@@ -1,6 +1,6 @@
 var/global/list/active_sounds = list()
 
-/subsystem/sound/
+SUBSYSTEM_DEF(sound)
 	name = "Sound Subsystem"
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_PRELOAD

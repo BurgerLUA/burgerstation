@@ -1,6 +1,6 @@
 var/global/list/all_dialogue = list()
 
-/subsystem/dialogue/
+SUBSYSTEM_DEF(dialogue)
 	name = "Dialogue Subsystem"
 	desc = "Stores all the known dialogue in a list."
 	priority = SS_ORDER_PRELOAD

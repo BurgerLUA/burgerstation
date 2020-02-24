@@ -1,6 +1,6 @@
 var/global/list/objects_to_delete = list()
 
-/subsystem/delete/
+SUBSYSTEM_DEF(delete)
 	name = "Cleanup Subsystem"
 	desc = "Cleans up things that need to be deleted."
 	priority = SS_ORDER_DELETE

@@ -1,6 +1,6 @@
 var/global/list/tracked_bosses = list()
 
-/subsystem/bosses/
+SUBSYSTEM_DEF(bosses)
 	name = "Boss Subsystem"
 	desc = "Tracks which players are bossfighting someone."
 	tick_rate = SECONDS_TO_TICKS(4)

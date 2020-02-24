@@ -1,6 +1,6 @@
 var/global/list/all_recipes = list()
 
-/subsystem/recipe/
+SUBSYSTEM_DEF(recipe)
 	name = "Recipe Subsystem"
 	desc = "Store all the recipes."
 	priority = SS_ORDER_PRELOAD

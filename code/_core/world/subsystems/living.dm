@@ -1,6 +1,6 @@
 var/global/list/all_living = list()
 
-/subsystem/living/
+SUBSYSTEM_DEF(living)
 	name = "Living Subsystem"
 	desc = "Controls the life of mobs."
 	tick_rate = DECISECONDS_TO_TICKS(LIFE_TICK)
