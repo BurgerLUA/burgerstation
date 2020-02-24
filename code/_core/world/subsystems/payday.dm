@@ -9,12 +9,12 @@ SUBSYSTEM_DEF(payday)
 	var/next_payday = -1
 
 /subsystem/payday/Initialize()
-	next_payday = curtime + SECONDS_TO_DECISECONDS(10)
+	next_payday = world.time + SECONDS_TO_DECISECONDS(10)
 	return TRUE
 
 /subsystem/payday/on_life()
 
-	if(next_payday > 0 && curtime >= next_payday)
+	if(next_payday > 0 && world.time >= next_payday)
 
 		stored_payday *= 0.25 //Prevents gaming the system.
 
@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(payday)
 			else
 				P.to_chat(span("payday","Hazard Pay! You have earned 200 credits for your efforts."))
 
-		next_payday = curtime + SECONDS_TO_DECISECONDS(600)
+		next_payday = world.time + SECONDS_TO_DECISECONDS(600)
 
 		stored_payday = 0
 

@@ -45,9 +45,6 @@ SUBSYSTEM_DEF(horde)
 
 	return TRUE
 
-/subsystem/horde/proc/get_enemies_to_spawn()
-	return TRUE
-
 /subsystem/horde/on_life()
 
 	round_time++
@@ -159,8 +156,6 @@ SUBSYSTEM_DEF(horde)
 					for(var/mob/abstract/observer/O in world)
 						O.force_move(T)
 					wave_to_spawn--
-
-
 
 	return TRUE
 

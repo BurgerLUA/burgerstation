@@ -25,7 +25,8 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
-		var/desired_color = input("Skin Color","Skin Color",skin_color) as color
-		A.handle_skincolor_chargen(desired_color)
+		var/desired_color = input("Skin Color","Skin Color",skin_color) as color|null
+		if(desired_color)
+			A.handle_skincolor_chargen(desired_color)
 
 	return TRUE

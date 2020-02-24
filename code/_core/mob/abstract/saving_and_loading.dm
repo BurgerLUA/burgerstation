@@ -53,9 +53,9 @@
 		var/name = "[filenum]: [local_loaded_data["name"]]"
 		name_to_choice[name] = filenum
 
-	var/choice = input("Choose a character to load.") in name_to_choice
+	var/choice = input("Choose a character to load.") as null|anything in name_to_choice
 
-	if(!is_valid(src))
+	if(!choice || !is_valid(src))
 		return FALSE
 
 	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])

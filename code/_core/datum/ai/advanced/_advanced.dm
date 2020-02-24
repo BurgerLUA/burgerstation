@@ -10,7 +10,6 @@
 
 	sync_movement_delay = TRUE
 	sync_attack_delay = FALSE
-	simple = FALSE
 	stationary = FALSE
 
 	var/ranged_attack_cooldown = 0

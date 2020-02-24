@@ -8,8 +8,8 @@
 		return
 
 	/*
-	if(next_allowed_topic > curtime)
-		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - curtime] second\s!"))
+	if(next_allowed_topic > world.time)
+		to_chat(span("danger","You're sending information too fast! Please wait [next_allowed_topic - world.time] second\s!"))
 		return FALSE
 	*/
 
@@ -56,10 +56,10 @@
 						var/new_value = null
 
 						if(isnum(current_value))
-							new_value = input("Desired Number") as num
+							new_value = input("Desired Number") as num|null
 
 						else if(istext(current_value))
-							new_value = input("Desired Number") as text
+							new_value = input("Desired Number") as text|null
 
 						if(new_value)
 							change_variable(actual_reference,actual_key,new_value)
@@ -70,6 +70,6 @@
 
 	. = ..()
 
-	next_allowed_topic = curtime + 1
+	next_allowed_topic = world.time + 1
 
 	return .

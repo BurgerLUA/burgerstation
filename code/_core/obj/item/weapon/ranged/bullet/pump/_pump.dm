@@ -12,7 +12,7 @@
 
 /obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller)
 
-	if(next_shoot_time > curtime + 1)
+	if(next_shoot_time > world.time + 1)
 		return TRUE
 
 	caller.to_chat(span("notice","You [action_name] \the [src]."))
@@ -29,7 +29,7 @@
 	play_sound(pump_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	update_icon()
 
-	next_shoot_time = curtime + 1
+	next_shoot_time = world.time + 1
 
 	return TRUE
 

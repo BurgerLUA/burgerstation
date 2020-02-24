@@ -74,14 +74,14 @@
 	if(!firing_pin || !firing_pin.can_shoot(caller,src))
 		return FALSE
 
-	if(next_shoot_time > curtime)
+	if(next_shoot_time > world.time)
 		return FALSE
 
 	return TRUE
 
 /obj/item/weapon/ranged/think()
 
-	if(next_shoot_time + min(10,shoot_delay*2) < curtime)
+	if(next_shoot_time + min(10,shoot_delay*2) < world.time)
 		heat_current = max(heat_current-1,0)
 
 	. = ..()
@@ -119,7 +119,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	if(is_mob(caller))
 		var/mob/M = caller
-		M.attack_turn = curtime + M.attack_turn_delay
+		M.attack_turn = world.time + M.attack_turn_delay
 
 	if(!can_owner_shoot(caller))
 		return FALSE
@@ -130,7 +130,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(!can_gun_shoot(caller))
 		return FALSE
 
-	next_shoot_time = curtime + shoot_delay
+	next_shoot_time = world.time + shoot_delay
 
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
@@ -140,6 +140,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/projectile_speed_to_use = projectile_speed
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
+
+	world.log << "The spent bullet is: [spent_bullet]."
 
 	if(spent_bullet)
 		if(spent_bullet.projectile)
@@ -200,7 +202,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		firing_pin.on_shoot(caller,src)
 
 	if(automatic)
-		spawn(next_shoot_time - curtime)
+		spawn(next_shoot_time - world.time)
 			var/mob/living/advanced/player/P
 
 			if(is_player(caller))
@@ -215,11 +217,11 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 				if((max_bursts <= 0 || current_bursts < (max_bursts-1)) && shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier))
 					current_bursts += 1
 				else if(max_bursts > 0)
-					next_shoot_time = curtime + shoot_delay*current_bursts
+					next_shoot_time = world.time + shoot_delay*current_bursts
 					current_bursts = 0
 
 			else if(max_bursts > 0)
-				next_shoot_time = curtime + shoot_delay*current_bursts
+				next_shoot_time = world.time + shoot_delay*current_bursts
 				current_bursts = 0
 
 	return TRUE

@@ -42,9 +42,7 @@
 				var/name_format = "[S.name] ([length(S.members)]/[SQUAD_MEMBERS_MAX])"
 				squad_table[name_format] = S
 
-			squad_table["Cancel"] = "Cancel"
-
-			var/answer = input("Which squad would you like to join?","Squad Selection","Cancel") in squad_table
+			var/answer = input("Which squad would you like to join?","Squad Selection",null) as null|anything in squad_table
 
 			if(!P)
 				return FALSE
@@ -71,7 +69,7 @@
 
 /obj/hud/button/squad/main/proc/new_squad(var/mob/living/advanced/player/P)
 	while(P.client)
-		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation","[P.real_name]'s Squad")
+		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation",null) as text|null
 
 		if(squad_name == "Cancel" || squad_name == "Create New Squad")
 			P.to_chat("You cheeky bastard.")

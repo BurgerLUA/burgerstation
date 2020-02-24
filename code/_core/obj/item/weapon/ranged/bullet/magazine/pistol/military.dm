@@ -5,7 +5,7 @@
 	value = 70
 	icon = 'icons/obj/items/weapons/ranged/pistol/40.dmi'
 	shoot_delay = 2
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/40/shoot.ogg')
 
 	view_punch = 7
 
@@ -36,7 +36,7 @@
 	icon = 'icons/obj/items/weapons/ranged/pistol/40_2.dmi'
 	desc_extended = "A modified variant of the .40 Military Pistol. The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 110
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sounds/weapons/40/shoot_mod.ogg')
 
 	view_punch = 5
 

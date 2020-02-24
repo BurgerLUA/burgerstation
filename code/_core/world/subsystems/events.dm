@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(events)
 /subsystem/events/on_life()
 
 	for(var/event/E in all_events_active)
-		if(E.end_time <= curtime)
+		if(E.end_time <= world.time)
 			E.on_end()
 			all_events_active -= E
 		else
@@ -49,8 +49,8 @@ SUBSYSTEM_DEF(events)
 	E.on_start()
 	if(E.duration)
 		all_events_active += E
-		E.start_time = curtime
-		E.end_time = curtime + E.duration
+		E.start_time = world.time
+		E.end_time = world.time + E.duration
 
 	return E
 

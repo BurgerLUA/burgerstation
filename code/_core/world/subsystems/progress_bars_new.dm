@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(progressbars)
 		var/list/progress_list = all_progress_bars[k]
 		var/obj/hud/progress_bar/P = progress_list["progress_bar"]
 
-		if(progress_list["time"] < curtime)
+		if(progress_list["time"] < world.time)
 			if(progress_list["src"])
 				call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
 			else
@@ -54,8 +54,8 @@ SUBSYSTEM_DEF(progressbars)
 		"src" = object,
 		"proc" = desired_proc,
 		"args" = args.Copy(5),
-		"time" = curtime + desired_time,
-		"progress_bar" = new /obj/hud/progress_bar(owner,curtime,curtime + desired_time)
+		"time" = world.time + desired_time,
+		"progress_bar" = new /obj/hud/progress_bar(owner, world.time, world.time + desired_time)
 	)
 
 	return TRUE

@@ -111,10 +111,6 @@
 
 /obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/display_message = TRUE)
 
-	if(src.is_spent)
-		caller.to_chat(span("notice","The bullet is spent!"))
-		return FALSE
-
 	if(src == transfer_target)
 		return FALSE //TODO: THIS USED TO BE TRUE, TEST BULLETS TO SEE IF THIS SHOULD BE TRUE
 
@@ -151,6 +147,7 @@
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
 	for(var/i=1,i<=bullets_to_add,i++)
 		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
+		B.is_spent = is_spent
 		transfer_target.stored_bullets += B
 		item_count_current -= 1
 		transfered_bullets += 1
@@ -168,6 +165,7 @@
 
 	if(W.can_load_chamber(caller,src))
 		var/obj/item/bullet_cartridge/B = new src.type(W)
+		B.is_spent = is_spent
 		W.chambered_bullet += B
 		item_count_current -= 1
 		if(item_count_current <= 0)
@@ -179,6 +177,7 @@
 
 	else if(W.can_load_stored(caller,src))
 		var/obj/item/bullet_cartridge/B = new src.type(W)
+		B.is_spent = is_spent
 		W.stored_bullets += B
 		item_count_current -= 1
 		if(item_count_current <= 0)
@@ -204,15 +203,18 @@
 	if(is_magazine(object))
 		var/obj/item/magazine/M = object
 		transfer_src_to_magazine(caller,M,location,control,params)
+		var/area/A = get_area(caller.loc)
+		play_sound(get_bullet_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		return TRUE
 
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		transfer_src_to_gun(caller,G,location,control,params)
+		var/area/A = get_area(caller.loc)
+		play_sound(get_bullet_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = G
-			var/area/A = get_area(caller.loc)
-			play_sound(M.get_cock_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			play_sound(M.get_cock_sound("forward"),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		return TRUE
 
 	return ..()

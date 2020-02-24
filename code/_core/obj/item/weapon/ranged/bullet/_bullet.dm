@@ -108,14 +108,16 @@
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
 
+	world.log << "The chambered bullet is: [chambered_bullet.is_spent]"
+
 	return chambered_bullet.spend_bullet(caller,is_npc(caller))
 
 /obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
 
 	if(length(stored_bullets) && stored_bullets[bullet_position]) //Spend a bullet
 		var/obj/item/bullet_cartridge/B = stored_bullets[bullet_position]
-		B = B.spend_bullet(caller,is_npc(caller))
-		return B
+		return B.spend_bullet(caller,is_npc(caller))
+
 
 	return FALSE
 

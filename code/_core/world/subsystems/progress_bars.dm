@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(progress_bars)
 			queue_delete(P,10)
 			continue
 
-		if(P.end_time < curtime)
+		if(P.end_time < world.time)
 			all_progress_bars -= P
 			P.loc.doing_progress = FALSE
 			animate(P,alpha=0,time=5)
@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(progress_bars)
 			L.to_chat(span("notice","You're already busy with a task!"))
 		return FALSE
 
-	var/obj/hud/progress_bar/P = new(A,desired_id,curtime,curtime + duration,callback_list)
+	var/obj/hud/progress_bar/P = new(A, desired_id, world.time, world.time + duration, callback_list)
 	all_progress_bars += P
 	A.doing_progress = TRUE
 	return TRUE
