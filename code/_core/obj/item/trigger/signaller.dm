@@ -62,7 +62,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 		frequency_current = Clamp(frequency_current + 0.2*fixed_delta,frequency_min,frequency_max)
 		if(old_frequency == frequency_current)
 			caller.to_chat(span("notice","\The [src.name]'s frequency can't seem to go any [frequency_current == frequency_min ? "lower" : "higher"]."))
-		else if(spam_fix_time <= curtime)
+		else if(spam_fix_time <= world.time)
 			caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency_current] kHz..."))
 		else
 			caller.to_chat(span("notice","...[frequency_current] kHz..."))
@@ -71,11 +71,11 @@ var/global/obj/item/device/signaller/all_signalers = list()
 		signal_current = Clamp(signal_current + 1*fixed_delta,signal_min,signal_max)
 		if(old_signal == signal_current)
 			caller.to_chat(span("notice","\The [src.name]'s signal can't seem to go any [signal_current == signal_min ? "lower" : "higher"]."))
-		else if(spam_fix_time <= curtime)
+		else if(spam_fix_time <= world.time)
 			caller.to_chat(span("notice","You change \the [src.name]'s signal to [signal_current]..."))
 		else
 			caller.to_chat(span("notice","...[signal_current]..."))
 
-	spam_fix_time = curtime + 20
+	spam_fix_time = world.time + 20
 
 	return TRUE

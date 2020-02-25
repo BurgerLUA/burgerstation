@@ -38,11 +38,11 @@
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
 
-/obj/item/storage/pouch/double/black/filled/rifle_223/fill_inventory()
-	new /obj/item/magazine/rifle_223(src)
-	new /obj/item/magazine/rifle_223(src)
-	new /obj/item/magazine/rifle_223(src)
-	new /obj/item/magazine/rifle_223(src)
+/obj/item/storage/pouch/double/black/filled/rifle_308/fill_inventory()
+	new /obj/item/magazine/rifle_308(src)
+	new /obj/item/magazine/rifle_308(src)
+	new /obj/item/magazine/rifle_308(src)
+	new /obj/item/magazine/rifle_308(src)
 	return ..()
 
 /obj/item/storage/pouch/double/black/filled/cell/fill_inventory()

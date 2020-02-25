@@ -5,7 +5,8 @@
 	bullet_count_max = 8
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm

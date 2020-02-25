@@ -1,5 +1,3 @@
-var/global/subsystem/horde/SShorde
-
 #define HORDE_STATE_PRELOAD "preload"
 #define HORDE_STATE_WAITING "waiting"
 #define HORDE_STATE_GEARING "gearing"
@@ -8,7 +6,7 @@ var/global/subsystem/horde/SShorde
 #define HORDE_STATE_FIGHTING "fighting"
 #define HORDE_STATE_BREAK "break"
 
-/subsystem/horde/
+SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
 	desc = "Handles hordes and whatnot."
 	priority = SS_ORDER_LAST
@@ -46,15 +44,6 @@ var/global/subsystem/horde/SShorde
 	killed_syndicate_round = 0
 
 	return TRUE
-
-/subsystem/horde/proc/get_enemies_to_spawn()
-	return TRUE
-
-
-/subsystem/horde/New()
-	. = ..()
-	SShorde = src
-	return .
 
 /subsystem/horde/on_life()
 
@@ -167,8 +156,6 @@ var/global/subsystem/horde/SShorde
 					for(var/mob/abstract/observer/O in world)
 						O.force_move(T)
 					wave_to_spawn--
-
-
 
 	return TRUE
 

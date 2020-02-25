@@ -1,7 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/
 	override_icon_state = TRUE
 
-
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)
@@ -19,3 +18,12 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/get_cock_sound(var/direction="both")
+	switch(direction)
+		if("both")
+			return 'sounds/weapons/gun/pistol/rack.ogg'
+		if("forward")
+			return 'sounds/weapons/gun/pistol/slide_drop.ogg'
+		if("back")
+			return 'sounds/weapons/gun/pistol/slide_lock.ogg'

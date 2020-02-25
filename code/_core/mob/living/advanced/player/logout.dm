@@ -70,7 +70,7 @@ mob/living/advanced/player/verb/logout()
 
 	if(!qdeleting) //Only do this if you're not being deleted.
 
-		logout_time = curtime
+		logout_time = world.time
 
 		if(loc)
 			var/area/A = get_area(src)

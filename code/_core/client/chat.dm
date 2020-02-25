@@ -8,12 +8,12 @@
 		if(!text_to_say)
 			return
 
-	if(last_ooc+10 >= curtime)
+	if(last_ooc+10 >= world.time)
 		src.to_chat(span("warning","You're using OOC too fast!"))
 		return FALSE
 
 	display_message(src,src,text_to_say,TEXT_OOC)
-	last_ooc = curtime
+	last_ooc = world.time
 
 /client/proc/to_chat(var/text,var/chat_type)
 

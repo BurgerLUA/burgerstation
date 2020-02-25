@@ -1,6 +1,6 @@
 var/global/pathfinder/pathfinder = list()
 
-/subsystem/pathing/
+SUBSYSTEM_DEF(pathing)
 	name = "Pathing Subsystem"
 	desc = "Handle pathing related matters."
 	priority = SS_ORDER_LAST

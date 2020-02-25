@@ -1,6 +1,6 @@
 var/global/list/all_materials = list()
 
-/subsystem/materials/
+SUBSYSTEM_DEF(materials)
 	name = "Material Subsystem"
 	desc = "Stores material data."
 	priority = SS_ORDER_PRELOAD

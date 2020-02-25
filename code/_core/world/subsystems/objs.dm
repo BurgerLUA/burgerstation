@@ -1,4 +1,4 @@
-/subsystem/obj/
+SUBSYSTEM_DEF(obj)
 	name = "Objs Subsystem"
 	desc = "Initialize objs after they are made."
 	priority = SS_ORDER_OBJS

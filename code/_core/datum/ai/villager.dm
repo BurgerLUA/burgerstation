@@ -7,7 +7,6 @@
 
 	target_distribution_y = list(32)
 
-	simple = TRUE
 	sync_movement_delay = TRUE
 	stationary = FALSE
 

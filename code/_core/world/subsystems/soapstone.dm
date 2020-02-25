@@ -1,6 +1,4 @@
-var/global/subsystem/soapstone/SS_Soapstone
-
-/subsystem/soapstone/
+SUBSYSTEM_DEF(soapstone)
 	name = "Soapstone Subsystem"
 	desc = "Subsystem dedicated to loading and saving soapstone messages."
 	priority = SS_ORDER_NORMAL
@@ -8,7 +6,6 @@ var/global/subsystem/soapstone/SS_Soapstone
 	var/savedata/server/soapstone/save_soapstone
 
 /subsystem/soapstone/Initialize()
-	SS_Soapstone = src
 	save_soapstone = new
 	save_soapstone.quick_load()
 

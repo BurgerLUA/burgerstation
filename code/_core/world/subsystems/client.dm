@@ -1,4 +1,4 @@
-/subsystem/client/
+SUBSYSTEM_DEF(client)
 	name = "Client Subsystem"
 	desc = "Controls how clients behave."
 	tick_rate = CLIENT_TICK

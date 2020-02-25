@@ -1,6 +1,6 @@
 var/global/list/all_tracks = list()
 
-/subsystem/tracks/
+SUBSYSTEM_DEF(tracks)
 	name = "Track Subsystem"
 	desc = "Stores all the known musical tracks in a list."
 	priority = SS_ORDER_PRELOAD

@@ -32,6 +32,10 @@
 
 	var/species/S = all_species[species]
 
+	if(!S)
+		LOG_ERROR("WARNING: INVALID SPECIES: [species].")
+		return FALSE
+
 	var/initially_disabled = FALSE
 	if(client)
 		initially_disabled = client.disable_controls

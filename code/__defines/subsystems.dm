@@ -1,3 +1,11 @@
+#define NEW_SS_GLOBAL(varname) if(varname != src){if(istype(varname)){Recover();qdel(varname);}varname = src;}
+
+#define SUBSYSTEM_DEF(X) var/global/subsystem/##X/SS##X;\
+/subsystem/##X/New(){\
+	NEW_SS_GLOBAL(SS##X);\
+	PreInit();\
+}\
+/subsystem/##X
 
 #define SS_ORDER_PRELOAD 1
 #define SS_ORDER_DMM 2

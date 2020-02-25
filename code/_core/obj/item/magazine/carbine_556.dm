@@ -1,11 +1,12 @@
-/obj/item/magazine/rifle_556
-	name = "\improper 5.56 carbine magazine"
-	icon = 'icons/obj/items/magazine/556_carbine.dmi'
+/obj/item/magazine/carbine_223
+	name = "\improper .223 carbine magazine"
+	icon = 'icons/obj/items/magazine/223_carbine.dmi'
 	icon_state = "556"
 	bullet_count_max = 21
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	)
 
 	bullet_length_min = 40
@@ -18,6 +19,6 @@
 
 	ammo = /obj/item/bullet_cartridge/rifle_223
 
-/obj/item/magazine/rifle_556/update_icon()
+/obj/item/magazine/carbine_223/update_icon()
 	icon_state = "[initial(icon_state)]_[round(length(stored_bullets))]"
 	..()

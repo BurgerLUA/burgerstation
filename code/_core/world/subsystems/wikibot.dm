@@ -1,15 +1,9 @@
 var/global/list/wikibot_list = list()
 
-var/global/subsystem/wikibot/SSWikibot
-
-/subsystem/wikibot/
+SUBSYSTEM_DEF(wikibot)
 	name = "Wikibot Subsystem"
 	desc = "A 'bot' that answers questions."
 	priority = SS_ORDER_PRELOAD
-
-/subsystem/wikibot/New()
-	SSWikibot = src
-	return ..()
 
 /subsystem/wikibot/Initialize()
 

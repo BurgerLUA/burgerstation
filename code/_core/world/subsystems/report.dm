@@ -1,4 +1,4 @@
-/subsystem/report/
+SUBSYSTEM_DEF(report)
 	name = "Report Subsystem"
 	desc = "Constrols statistics to display"
 	tick_rate = SECONDS_TO_TICKS(5)

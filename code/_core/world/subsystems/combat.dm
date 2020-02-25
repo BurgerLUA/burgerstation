@@ -1,4 +1,4 @@
-/subsystem/combat/
+SUBSYSTEM_DEF(combat)
 	name = "Combat Subsystem"
 	desc = "Controls combat related stuff."
 	tick_rate = 1

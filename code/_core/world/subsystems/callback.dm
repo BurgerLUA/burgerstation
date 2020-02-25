@@ -1,17 +1,11 @@
 #define CALLBACK(desired_id,desired_time,desired_proc,arguments...) SScallback.add_callback(desired_id,desired_time,desired_proc,arguments)
 
-var/global/subsystem/callback/SScallback
-
-/subsystem/callback/
+SUBSYSTEM_DEF(callback)
 	name = "Callback Subsystem"
 	desc = "Controls callbacks."
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 	var/list/all_callbacks = list()
-
-/subsystem/callback/New(var/desired_loc)
-	SScallback = src
-	return ..()
 
 /subsystem/callback/Initialize()
 	return TRUE
@@ -20,7 +14,7 @@ var/global/subsystem/callback/SScallback
 
 	for(var/callback_id in src.all_callbacks)
 		var/callback_value = src.all_callbacks[callback_id]
-		if(callback_value["time"] > curtime)
+		if(callback_value["time"] > world.time)
 			continue
 		call(callback_value["proc"])(arglist(callback_value["args"]))
 		src.all_callbacks -= callback_id
@@ -31,6 +25,6 @@ var/global/subsystem/callback/SScallback
 	all_callbacks[desired_id] = list(
 		"proc" = desired_proc,
 		"args" = args.Copy(4),
-		"time" = curtime + desired_time
+		"time" = world.time + desired_time
 	)
 	return TRUE

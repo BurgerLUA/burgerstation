@@ -1,6 +1,6 @@
 var/global/list/obj/structure/interactive/shop/all_shops = list()
 
-/subsystem/shop/
+SUBSYSTEM_DEF(shop)
 	name = "Shop Subsystem"
 	desc = "Controls shops."
 	tick_rate = SECONDS_TO_TICKS(1)

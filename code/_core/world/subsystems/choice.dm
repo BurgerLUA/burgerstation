@@ -1,7 +1,7 @@
 var/global/list/choice_button_id_to_button = list()
 var/global/list/question_button_id_to_button = list()
 
-/subsystem/choices/
+SUBSYSTEM_DEF(choices)
 	name = "Choice Subsystem"
 	desc = "Controls the choices people make."
 	tick_rate = DECISECONDS_TO_TICKS(1)

@@ -1,6 +1,6 @@
-/obj/item/bullet_cartridge/sniper_762
-	name = "\improper 7.62mm rifle bullet"
-	desc = "For rifles that require 7.62mm"
+/obj/item/bullet_cartridge/rifle_308
+	name = "\improper .308 rifle bullet"
+	desc = "For rifles that require .308."
 	icon = 'icons/obj/items/bullet/762.dmi'
 
 	id = "bullet"
@@ -20,20 +20,22 @@
 
 	value = 6
 
-/obj/item/bullet_cartridge/sniper_762/on_spawn()
+/obj/item/bullet_cartridge/rifle_308/on_spawn()
 	item_count_current = 5
 	return ..()
 
-/*
-/obj/item/bullet_cartridge/sniper_762/surplus
-	name = "\improper 7.62mm surplus bullet"
-	damage_type = "7.62_surplus"
-	icon = 'icons/obj/items/bullet/762_surplus.dmi'
 
-	projectile_speed = BULLET_SPEED_RIFLE_HEAVY * SURPLUS_PENALTY
 
-	misfire_chance = 1
-*/
+
+/obj/item/bullet_cartridge/rifle_308/syndicate
+	name = "\improper 7.62mm rifle bullet"
+	desc = "For rifles that require 7.62mm"
+	icon = 'icons/obj/items/bullet/762.dmi'
+
+
+
+
+
 
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"

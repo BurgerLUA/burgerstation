@@ -230,85 +230,43 @@
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
-	spawn()
+	spawn
 
-		if(!attacker || !victim || !weapon || !hit_object)
-			return FALSE
-
-		if(!hit_object.health || !victim.health)
+		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health || !victim.health)
 			return FALSE
 
 		var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
+		var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0)
 
 		var/damage_blocked = 0
-
 		var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
-
 		for(var/damage_type in damage_to_deal)
-
 			var/victim_defense = defense_rating_victim[damage_type]
 			if(victim_defense > 0)
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-
 			var/old_damage_amount = damage_to_deal[damage_type]
 			var/new_damage_amount = calculate_armor(old_damage_amount,victim_defense)
-
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)
 			damage_to_deal[damage_type] = new_damage_amount
 
-		var/brute_damage_to_deal = 0
-		var/burn_damage_to_deal = 0
-		var/tox_damage_to_deal = 0
-		var/oxy_damage_to_deal = 0
-		var/fatigue_damage_to_deal = 0
-
+		var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 		for(var/damage_type in damage_to_deal)
 			var/damage_amount = damage_to_deal[damage_type]
 			var/real_damage_type = attack_damage_conversion[damage_type]
-			switch(real_damage_type)
-				if(BRUTE)
-					brute_damage_to_deal += damage_amount
-				if(BURN)
-					burn_damage_to_deal += damage_amount
-				if(TOX)
-					tox_damage_to_deal += damage_amount
-				if(OXY)
-					oxy_damage_to_deal += damage_amount
-				if(FATIGUE)
-					fatigue_damage_to_deal += damage_amount
+			damage_to_deal_main[real_damage_type] += damage_amount * critical_hit_multiplier
 
-		var/is_crit = get_critical_hit_condition(attacker,victim,weapon,hit_object)
-		if(is_crit)
-			var/final_crit_multiplier = do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal)
-			brute_damage_to_deal *= final_crit_multiplier
-			burn_damage_to_deal *= final_crit_multiplier
-			tox_damage_to_deal *= final_crit_multiplier
-			oxy_damage_to_deal *= final_crit_multiplier
-			fatigue_damage_to_deal *= final_crit_multiplier
-
-		do_attack_animation(attacker,victim,weapon,hit_object,is_crit)
-
-		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health)
-			return FALSE
+		do_attack_animation(attacker,victim,weapon,hit_object,critical_hit_multiplier > 1)
 
 		var/total_damage_dealt = 0
-
 		if(victim.immortal || hit_object.immortal)
-			total_damage_dealt += brute_damage_to_deal + burn_damage_to_deal + tox_damage_to_deal + oxy_damage_to_deal
+			for(var/damage_type in damage_to_deal_main)
+				total_damage_dealt += damage_type[damage_to_deal_main]
 		else
-			hit_object.health.adjust_fatigue_loss(fatigue_damage_to_deal)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=brute_damage_to_deal,burn=burn_damage_to_deal,tox=tox_damage_to_deal,oxy=oxy_damage_to_deal)
-
-		if(!total_damage_dealt)
-			display_glance_message(attacker,victim,weapon,hit_object)
-			return total_damage_dealt
+			hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
+			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 		do_attack_sound(attacker,victim,weapon,hit_object)
-		display_hit_message(attacker,victim,weapon,hit_object)
-
-		if(!victim || !victim.health)
-			return TRUE
 
 		if(is_living(victim))
 			var/mob/living/L = victim
@@ -318,13 +276,11 @@
 			var/mob/living/L = blamed
 			L.to_chat(span("notice","Dealt <b>[round(total_damage_dealt,0.1)]</b> damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\s [hit_object.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
-		if(is_living(attacker) && attacker != victim)
-			var/mob/living/A = attacker
-			if(A.client)
-				for(var/skill in skill_xp_per_damage)
-					var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
-					if(xp_to_give > 0)
-						A.add_skill_xp(skill,xp_to_give)
+		if(!total_damage_dealt)
+			display_glance_message(attacker,victim,weapon,hit_object)
+			return total_damage_dealt
+		else
+			display_hit_message(attacker,victim,weapon,hit_object)
 
 		if(is_player(blamed) && is_player(victim))
 			var/mob/living/advanced/player/PA = blamed
@@ -334,17 +290,25 @@
 				var/list/attack_log_format = list()
 				attack_log_format["attacker"] = PA
 				attack_log_format["attacker_ckey"] = PA.ckey
-				attack_log_format["time"] = curtime
+				attack_log_format["time"] = world.time
 				attack_log_format["damage"] = total_damage_dealt
 				attack_log_format["critical"] = victim_health_final - total_damage_dealt < 0
 				attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
 				PV.attack_logs += list(attack_log_format)
 
+		if(is_living(attacker) && attacker != victim && total_damage_dealt)
+			var/mob/living/A = attacker
+			if(A.client)
+				for(var/skill in skill_xp_per_damage)
+					var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
+					if(xp_to_give > 0)
+						A.add_skill_xp(skill,xp_to_give)
+
+		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
 		victim.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
 		if(victim != hit_object)
 			hit_object.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
-
-		post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
 	return TRUE
 
@@ -507,7 +471,6 @@
 		return span("danger","\The [attacker.name] [pick(attack_verbs)]s \the [victim.name]'s [hit_object.name] with \the [get_weapon_name(weapon)]... but it has no effect!")
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-
 	attacker.visible_message(\
 		get_glance_message_3rd(attacker,victim,weapon,hit_object),\
 		get_glance_message_1st(attacker,victim,weapon,hit_object),\

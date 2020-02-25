@@ -62,7 +62,7 @@
 	var/date = get_date()
 	var/time = get_time()
 
-	SS_Soapstone.create_new_soapstone(T,get_dir(caller,object),stone_color,caller.name,caller.ckey,input_text,date,time)
+	SSsoapstone.create_new_soapstone(T,get_dir(caller,object),stone_color,caller.name,caller.ckey,input_text,date,time)
 
 	caller.visible_message(\
 		span("notice","\The [caller] writes a message with the soapstone."),\

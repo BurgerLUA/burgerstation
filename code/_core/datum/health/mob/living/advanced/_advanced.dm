@@ -1,4 +1,4 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy)
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
 
 	var/total_damage = 0
 
@@ -68,9 +68,9 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[TOX] || heal_list[OXY])
-				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],should_update_owner=FALSE)
+				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],update=FALSE)
 
-	if(total_damage)
+	if(total_damage && update)
 		update_health(total_damage)
 
 	return total_damage

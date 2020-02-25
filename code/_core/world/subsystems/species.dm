@@ -1,6 +1,6 @@
 var/global/list/all_species = list()
 
-/subsystem/chargen/
+SUBSYSTEM_DEF(chargen)
 	name = "Chargen Subsystem"
 	desc = "Basically allows the chargen system not to be dumb."
 	priority = SS_ORDER_PRELOAD

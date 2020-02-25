@@ -1,6 +1,6 @@
 var/global/list/all_living_with_status = list()
 
-/subsystem/status/
+SUBSYSTEM_DEF(status)
 	name = "Status Effect Subsystem"
 	desc = "Controls the status effects of mobs."
 	tick_rate = DECISECONDS_TO_TICKS(1)

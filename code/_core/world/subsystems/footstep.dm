@@ -1,6 +1,6 @@
 var/global/list/all_footsteps = list()
 
-/subsystem/footstep/
+SUBSYSTEM_DEF(footstep)
 	name = "Footstep Subsystem"
 	desc = "Store all the footstep effects."
 	priority = SS_ORDER_PRELOAD

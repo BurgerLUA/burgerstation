@@ -9,7 +9,7 @@
 			src.to_chat(span("notice","Your spawn protection has worn off."))
 	*/
 
-	if(logout_time && logout_time >= curtime + SECONDS_TO_DECISECONDS(MINUTES_TO_SECONDS(60))) //Timeout
+	if(logout_time && logout_time >= world.time + SECONDS_TO_DECISECONDS(MINUTES_TO_SECONDS(60))) //Timeout
 		logout_time = 0
 		qdel(src)
 
@@ -47,7 +47,7 @@
 
 
 	if(last_words && length(people_who_killed) && people_who_killed[1] && people_who_killed[1] != src)
-		SS_Soapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
+		SSsoapstone.create_new_soapstone(get_turf(src),SOUTH,"#000000",src.real_name,src.ckey,last_words,date,time)
 	*/
 
 	/*

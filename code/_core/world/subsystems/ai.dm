@@ -1,6 +1,6 @@
 var/global/list/ai/all_living_ai = list()
 
-/subsystem/ai/
+SUBSYSTEM_DEF(ai)
 	name = "AI Subsystem"
 	desc = "Controls the AI of mobs."
 	tick_rate = DECISECONDS_TO_TICKS(AI_TICK)

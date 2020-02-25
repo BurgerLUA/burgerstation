@@ -7,7 +7,6 @@
 	attack_delay = 1
 	movement_delay = 1
 
-	simple = TRUE
 	sync_movement_delay = TRUE
 	sync_attack_delay = TRUE
 

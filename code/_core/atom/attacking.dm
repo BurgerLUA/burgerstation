@@ -7,6 +7,10 @@
 	return attack_delay
 
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+
+	if(health)
+		health.update_health(damage_amount,attacker)
+
 	return TRUE
 
 /atom/proc/change_victim(var/atom/attacker)
@@ -75,10 +79,10 @@
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
 		return FALSE
 
-	attacker.attack_last = curtime
+	attacker.attack_last = world.time
 
 	if(attacker != object_to_damage_with)
-		object_to_damage_with.attack_last = curtime
+		object_to_damage_with.attack_last = world.time
 
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
@@ -108,10 +112,10 @@
 		if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return FALSE
 
-	if(attack_last + get_attack_delay(src) > curtime)
+	if(attack_last + get_attack_delay(src) > world.time)
 		return FALSE
 
-	if(weapon && weapon.attack_last + weapon.get_attack_delay(src) > curtime)
+	if(weapon && weapon.attack_last + weapon.get_attack_delay(src) > world.time)
 		return FALSE
 
 	if(victim && !victim.can_be_attacked(src,weapon,params))

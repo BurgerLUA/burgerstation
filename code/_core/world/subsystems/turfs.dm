@@ -1,6 +1,4 @@
-var/global/subsystem/turfs/SSturfs
-
-/subsystem/turfs/
+SUBSYSTEM_DEF(turfs)
 	name = "Turfs Subsystem"
 	desc = "Initialize Turfs after they are made."
 	priority = SS_ORDER_TURFS
@@ -8,10 +6,6 @@ var/global/subsystem/turfs/SSturfs
 
 
 	var/list/queued_edges = list()
-
-/subsystem/turfs/New(var/desired_loc)
-	SSturfs = src
-	return ..()
 
 /subsystem/turfs/Initialize()
 

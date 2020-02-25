@@ -1,6 +1,6 @@
 var/global/lag_b_gone = 0
 
-/subsystem/lag_b_gone/
+SUBSYSTEM_DEF(lag_b_gone)
 	name = "Lag-B-Gone Subsystem"
 	desc = "Controls how fast everything runs. Slows down subsystems if they lag."
 	tick_rate = SECONDS_TO_TICKS(1)

@@ -1,6 +1,6 @@
 var/global/list/obj/projectile/all_projectiles = list()
 
-/subsystem/projectile/
+SUBSYSTEM_DEF(projectile)
 	name = "Projectile Subsystem"
 	desc = "Controls projectiles."
 	tick_rate = PROJECTILE_TICK

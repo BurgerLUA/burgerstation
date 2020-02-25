@@ -8,7 +8,15 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper
 	)
 
-	ammo = /obj/item/bullet_cartridge/sniper_762
+	ammo = /obj/item/bullet_cartridge/rifle_308/syndicate
+
+	bullet_length_min = 46
+	bullet_length_best = 51
+	bullet_length_max = 52
+
+	bullet_diameter_min = 7.6
+	bullet_diameter_best = 7.62
+	bullet_diameter_max = 7.7
 
 /obj/item/magazine/sniper_762/update_icon()
 	if(length(stored_bullets))

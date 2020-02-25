@@ -10,7 +10,6 @@
 
 	sync_attack_delay = TRUE
 	sync_movement_delay = TRUE
-	simple = TRUE
 	stationary = FALSE
 
 	var/mob/living/simple/npc/goliath/owner_as_goliath

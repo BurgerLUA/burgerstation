@@ -1,6 +1,6 @@
 var/global/list/all_unprocessed_radio_data = list()
 
-/subsystem/radio/
+SUBSYSTEM_DEF(radio)
 	name = "Radio Subsystem"
 	desc = "Controls radios."
 	tick_rate = SECONDS_TO_TICKS(1)
