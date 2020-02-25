@@ -1,18 +1,18 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull
-	name = "\improper 12g BS"
-	desc = "\"BS\" is literally and figuratively the last thing that goes through someone's mind when they see this."
-	desc_extended = "The 12 Gauge Bull Shotgun is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bull\" for its bullpup design as well as the fact that it kicks like one too."
+	name = "\improper 12g Double Action"
+	desc = "For when you want to clear a room."
+	desc_extended = "The 12 Gauge Double Action is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bull\" for its bullpup design as well as the fact that it kicks like one too."
 	icon = 'icons/obj/items/weapons/ranged/shotgun/auto.dmi'
 	icon_state = "inventory"
 	value = 210
 
-	shoot_delay = 4
+	shoot_delay = 3
 
 	automatic = FALSE
 
 	bullet_count_max = 1 //One in the chamber
 
-	shoot_sounds = list('sounds/weapons/auto_shotgun/fire.ogg')
+	shoot_sounds = list('sounds/weapons/12gauge/shoot.ogg')
 
 	can_wield = FALSE
 

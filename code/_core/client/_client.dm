@@ -55,6 +55,9 @@ var/global/list/all_clients = list()
 
 	var/list/stored_hud_images = list() //For MediHUDs
 
+	var/mouse_down_x = 0
+	var/mouse_down_y = 0
+
 //Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
 /client/verb/ping()
 	winset(src,null,"command=pong+[world.time]")
@@ -199,9 +202,14 @@ var/global/list/all_clients = list()
 
 /client/MouseDown(var/atom/object,location,control,params)
 
+	var/list/aug = params2list(params)
+
+	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
+	mouse_down_x = screen_loc[1]
+	mouse_down_y = screen_loc[2]
+
 	store_new_params(object,location,params)
 
-	var/list/aug = params2list(params)
 	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
@@ -266,6 +274,11 @@ var/global/list/all_clients = list()
 		return
 
 	var/list/aug = params2list(params)
+
+	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
+	if(abs(mouse_down_x-screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
+		return FALSE
+
 	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(click_flags & CLICK_LEFT)
@@ -280,6 +293,13 @@ var/global/list/all_clients = list()
 	..()
 
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
+
+	var/list/aug = params2list(params)
+
+	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
+	if(abs(mouse_down_x-screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
+		return FALSE
+
 	store_new_params(over_object,over_location,params)
 
 	if(is_advanced(mob) && is_inventory(src_object))
@@ -290,9 +310,7 @@ var/global/list/all_clients = list()
 		if(!is_inventory(object))
 			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
 
-			var/screen_loc = params_list["screen-loc"]
-
-			var/list/screen_loc_list = splittext(screen_loc,",")
+			var/list/screen_loc_list = splittext(params_list["screen-loc"],",")
 
 			if(!length(screen_loc_list))
 				return ..()

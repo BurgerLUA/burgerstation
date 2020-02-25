@@ -50,18 +50,15 @@
 
 /obj/item/click_on_object(var/mob/caller,object,location,control,params)
 
-	if(object == src)
+	if(object == src || !is_item(object) || !src.loc)
 		return ..()
 
-	if(is_item(object))
-		var/obj/item/I = object
-		if(I.can_transfer_stacks_to(src))
-			var/old_loc_name = I.loc.name
-			var/stacks_transfered = I.transfer_stacks_to(src)
-			caller.to_chat("You transfer [stacks_transfered] [src.name] from \the [old_loc_name] to \the [src.loc.name].")
-			return TRUE
-
-	return ..()
+	var/obj/item/I = object
+	if(I.can_transfer_stacks_to(src))
+		var/old_loc_name = I.loc.name
+		var/stacks_transfered = I.transfer_stacks_to(src)
+		caller.to_chat("You transfer [stacks_transfered] [src.name] from \the [old_loc_name] to \the [src.loc.name].")
+		return TRUE
 
 /obj/item/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

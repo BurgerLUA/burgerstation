@@ -1,4 +1,4 @@
-//A down is just a press.
+//An up is after a press.
 mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS ONLY WORKS ON NON-INVENTORIES.
 
 	if(!can_use_controls(object,location,control,params))
@@ -7,11 +7,12 @@ mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS O
 	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
 			I.on_mouse_up(src,object,location,control,params)
+			world.log << "[I].on_mouse_up([src],[object])"
 			return TRUE
 
 	return FALSE
 
-//A down is just a press.
+//An up is after a press.
 mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS ONLY WORKS ON NON-INVENTORIES
 
 	if(!can_use_controls(object,location,control,params))
@@ -23,6 +24,7 @@ mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS
 	for(var/obj/hud/inventory/I in inventory)
 		if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
 			I.on_mouse_up(src,object,location,control,params)
+			world.log << "[I].on_mouse_up([src],[object])"
 			return TRUE
 
 	return FALSE
@@ -113,6 +115,7 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 		for(var/obj/hud/inventory/I in inventory)
 			if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
 				I.click_on_object(src,object,location,control,params)
+				world.log << "[I].click_on_object([src],[object])"
 				return TRUE
 
 	return FALSE
@@ -127,6 +130,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 		for(var/obj/hud/inventory/I in inventory)
 			if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
 				I.click_on_object(src,object,location,control,params)
+				world.log << "[I].click_on_object([src],[object])"
 				return TRUE
 
 	return FALSE
@@ -139,7 +143,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 	if(!.)
 		return .
 
-	if(src_object) src_object.drop_on_object(src,over_object)
+	if(src_object && over_object) src_object.drop_on_object(src,over_object)
 
 	return .
 
@@ -150,7 +154,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 	if(!.)
 		return .
 
-	if(src_object) src_object.drop_on_object(src,over_object)
+	if(src_object && over_object) src_object.drop_on_object(src,over_object)
 
 	return .
 

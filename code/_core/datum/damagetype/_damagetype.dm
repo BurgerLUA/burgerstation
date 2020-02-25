@@ -304,11 +304,11 @@
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 
+		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
 		victim.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
 		if(victim != hit_object)
 			hit_object.on_damage_received(hit_object,attacker,damage_to_deal,total_damage_dealt)
-
-		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
 	return TRUE
 
