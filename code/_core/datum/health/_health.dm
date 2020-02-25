@@ -92,7 +92,7 @@
 	damage[FATIGUE] = value
 	return value
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy)
+/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
 
 	var/total_loss = 0
 
@@ -120,7 +120,7 @@
 		damage[OXY] += oxy
 		total_loss += oxy
 
-	if(total_loss)
+	if(update && total_loss)
 		update_health()
 
 	return total_loss

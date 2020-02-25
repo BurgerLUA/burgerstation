@@ -47,7 +47,7 @@
 		else if(object != src && is_inventory(object) && defer_object != object && is_item(defer_object))
 			var/obj/item/I = defer_object //Object that we're clicking on.
 			var/obj/hud/inventory/I2 = object //Inventory that we're clicking on.
-			if((I in I2.held_objects))
+			if(I.can_wield && (I in I2.held_objects))
 				I.wielded = !I.wielded
 				src.parent_inventory = I.wielded ? I2 : null
 				I2.child_inventory = I.wielded ? src : null

@@ -66,34 +66,6 @@
 /obj/item/weapon/click_self(var/mob/caller)
 	return TRUE
 
-/obj/item/weapon/proc/wield(var/mob/caller,var/obj/hud/inventory/offhand_slot)
-
-	var/obj/hud/inventory/main_slot = src.loc
-
-	wielded = !wielded
-
-	if(wielded)
-		offhand_slot.parent_inventory = main_slot
-		main_slot.child_inventory = offhand_slot
-		offhand_slot.update_icon()
-	else
-		main_slot.child_inventory = null
-		offhand_slot.parent_inventory = null
-		offhand_slot.update_icon()
-
-	caller.to_chat(span("notice","You hold \the [src] with [wielded ? "two hands" : "one hand"]."))
-	update_icon()
-	return TRUE
-
-
-/obj/item/weapon/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-
-	if(can_wield && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && caller.movement_flags & MOVEMENT_CROUCHING)
-		wield(caller,object)
-
-
-	return ..()
-
 /obj/item/weapon/on_drop(var/obj/hud/inventory/I)
 	wielded = FALSE
 	if(I.child_inventory)

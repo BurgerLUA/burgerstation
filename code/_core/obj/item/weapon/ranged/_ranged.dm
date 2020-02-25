@@ -141,8 +141,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
-	world.log << "The spent bullet is: [spent_bullet]."
-
 	if(spent_bullet)
 		if(spent_bullet.projectile)
 			projectile_to_use = spent_bullet.projectile

@@ -6,4 +6,4 @@
 
 
 /proc/log_subsystem(var/subsystem_id,var/log_text)
-	world.log << "<span class='subsystem'><b><u>[subsystem_id]:</u></b>[log_text]</span>"
+	world.log << "<span class='subsystem'><b><u>[subsystem_id]:</u></b> [log_text]</span>"

@@ -46,7 +46,7 @@
 
 	return .
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/should_update_owner=TRUE)
+/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
 
 	if(tox || oxy)
 		if(owner.loc && is_advanced(owner.loc))
@@ -59,7 +59,7 @@
 
 	. += ..(brute,burn,tox,oxy)
 
-	if(. && should_update_owner && is_advanced(owner.loc))
+	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		A.health_regen_delay = max(A.health_regen_delay,300)
 		A.health.update_health()
