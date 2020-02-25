@@ -41,20 +41,18 @@
 
 /ai/slime/get_possible_targets()
 
-	var/list/possible_targets = list()
+	. = list()
 
 	var/mob/living/simple/npc/slime/self = owner
 
 	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
 		if(should_attack_mob(P))
-			possible_targets += P
+			.[P] = TRUE
 
-	if(!length(possible_targets) && self.stored_slimes < self.stored_slimes_max)
+	if(!length(.) && self.stored_slimes < self.stored_slimes_max)
 		for(var/mob/living/simple/npc/slime/S in view(radius_find_enemy,owner))
 			if(can_absorb_slime(S))
-				possible_targets += S
-
-	return possible_targets
+				.[S] = TRUE
 
 /ai/slime/do_attack(var/atom/atom_to_attack)
 

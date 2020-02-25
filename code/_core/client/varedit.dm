@@ -31,15 +31,3 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 		return value
 
 	return "<a href='?var_edit_other=[key];var_edit_other_ref=\ref[D]'>[value]</a>"
-
-
-proc/is_assoc_list(var/list/L) //Credit to SpaceManiac for providing this
-
-	if(!istype(L,/list/))
-		return FALSE
-
-	for(var/k in L)
-		if (!isnum(k) && !isnull(L["[k]"]))
-			return TRUE
-
-	return FALSE

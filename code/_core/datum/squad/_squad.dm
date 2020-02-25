@@ -37,7 +37,7 @@ var/global/list/squad/all_squads = list()
 
 /squad/proc/add_member(var/mob/living/advanced/player/P)
 
-	if(P in members)
+	if(members[P])
 		return FALSE
 
 	if(length(members) > SQUAD_MEMBERS_MAX)
@@ -49,7 +49,7 @@ var/global/list/squad/all_squads = list()
 	if(P.current_squad)
 		P.current_squad.remove_member(P)
 
-	members += P
+	members[P] = TRUE
 
 	P.set_squad(src)
 
@@ -59,7 +59,7 @@ var/global/list/squad/all_squads = list()
 
 /squad/proc/remove_member(var/mob/living/advanced/player/P)
 
-	if(!(P in members))
+	if(!members[P])
 		return FALSE
 
 	if(P == leader)
@@ -78,7 +78,7 @@ var/global/list/squad/all_squads = list()
 
 /squad/proc/set_leader(var/mob/living/advanced/player/P)
 
-	if(!(P in members))
+	if(!members[P])
 		return FALSE
 
 	if(leader)

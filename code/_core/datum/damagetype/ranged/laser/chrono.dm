@@ -22,7 +22,7 @@
 
 /damagetype/ranged/laser/chronogun/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	if(lowertext(victim.name) in all_badnames)
+	if(SSbadnames.all_badnames[lowertext(victim.name)])
 		return TRUE
 
 	return FALSE
