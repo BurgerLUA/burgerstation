@@ -13,14 +13,14 @@
 
 /obj/structure/interactive/localmachine/snowflake/hint/Crossed(var/atom/crosser)
 
-	if(is_mob(crosser))
+	if(ismob(crosser))
 		set_icon_state_mob(crosser,icon_state_enter)
 
 	return ..()
 
 /obj/structure/interactive/localmachine/snowflake/hint/Uncrossed(var/atom/crosser)
 
-	if(is_mob(crosser))
+	if(ismob(crosser))
 		set_icon_state_mob(crosser,icon_state_exit)
 
 	return ..()

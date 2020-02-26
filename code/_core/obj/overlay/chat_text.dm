@@ -19,7 +19,7 @@
 
 /obj/chat_text/New(var/atom/desired_loc,var/desired_text)
 
-	if(is_mob(desired_loc))
+	if(ismob(desired_loc))
 
 		owner = desired_loc
 

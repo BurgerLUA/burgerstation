@@ -54,7 +54,7 @@
 
 /turf/change_victim(var/atom/attacker)
 	for(var/v in contents)
-		if(is_mob(v) && attacker != v)
+		if(ismob(v) && attacker != v)
 			return v
 
 	if(old_living)

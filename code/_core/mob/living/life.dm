@@ -51,7 +51,7 @@
 	if(desired_loc && loot_drop && health)
 		var/loot/L = all_loot[loot_drop]
 
-		if(!is_turf(desired_loc))
+		if(!isturf(desired_loc))
 			return FALSE
 
 		if(loot_drop_in_corpse)

@@ -51,7 +51,7 @@
 
 /obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/movable/object,location,control,params)
 
-	if(!is_movable(object) || !object.can_be_grabbed(caller))
+	if(!ismovable(object) || !object.can_be_grabbed(caller))
 		caller.to_chat(span("notice","You cannot grab this!"))
 		return FALSE
 

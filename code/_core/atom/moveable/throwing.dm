@@ -1,6 +1,6 @@
 /atom/movable/proc/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
 	if(!throwable)
-		if(is_mob(thrower))
+		if(ismob(thrower))
 			var/mob/M = thrower
 			M.to_chat("You cannot throw this.")
 		return FALSE

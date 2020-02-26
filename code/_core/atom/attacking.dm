@@ -62,7 +62,7 @@
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)
 
 	if(!object_to_damage || !object_to_damage_with)
-		if(is_mob(blamed))
+		if(ismob(blamed))
 			var/mob/M = blamed
 			M.to_chat(span("notice","You can't attack that!"))
 		return FALSE

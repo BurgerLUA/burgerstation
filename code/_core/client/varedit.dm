@@ -7,7 +7,7 @@ proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
 		var/datum/VD = value
 		return "<a href='?var_edit_ref=\ref[VD]'>[VD]</a> (<i>[VD.type]</i>)"
 
-	if(is_list(value))
+	if(islist(value))
 
 		if(length(value) == 0)
 			return "list()"

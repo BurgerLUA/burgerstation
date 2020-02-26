@@ -141,7 +141,7 @@
 
 /obj/projectile/proc/update_projectile()
 
-	if(!is_turf(src.loc))
+	if(!isturf(src.loc))
 		on_hit(src.loc,TRUE)
 		return FALSE
 
@@ -172,7 +172,7 @@
 			on_hit(current_loc,TRUE)
 			return FALSE
 
-		if(!is_turf(previous_loc))
+		if(!isturf(previous_loc))
 			on_hit(previous_loc,TRUE)
 			return FALSE
 
@@ -240,10 +240,10 @@
 			MO.client.pixel_y = vel_y
 			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
 
-	if(impact_effect_turf && is_turf(hit_atom))
+	if(impact_effect_turf && isturf(hit_atom))
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
 
-	else if(impact_effect_movable && is_movable(hit_atom))
+	else if(impact_effect_movable && ismovable(hit_atom))
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
 
 	return TRUE

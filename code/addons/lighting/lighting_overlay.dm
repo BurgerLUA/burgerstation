@@ -98,7 +98,7 @@
 		color = null
 	else
 		icon_state = LIGHTING_BASE_ICON_STATE
-		if (is_list(color))
+		if (islist(color))
 			var/list/c_list = color
 			c_list[CL_MATRIX_RR] = rr
 			c_list[CL_MATRIX_RG] = rg

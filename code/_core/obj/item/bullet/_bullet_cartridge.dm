@@ -62,7 +62,7 @@
 		icon_state = "[initial(icon_state)]_[min(item_count_max_icon,item_count_current)]"
 	else
 		icon_state = "[initial(icon_state)]_spent"
-		if(item_count_current <= 1 && is_turf(src.loc))
+		if(item_count_current <= 1 && isturf(src.loc))
 			pixel_x = rand(-8,8)
 			pixel_y = rand(-8,8)
 

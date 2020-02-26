@@ -117,7 +117,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	caller.face_atom(object)
 
-	if(is_mob(caller))
+	if(ismob(caller))
 		var/mob/M = caller
 		M.attack_turn = world.time + M.attack_turn_delay
 

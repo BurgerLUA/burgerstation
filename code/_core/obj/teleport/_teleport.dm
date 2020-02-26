@@ -93,7 +93,7 @@
 
 /obj/trigger/jumplevel/on_trigger(var/atom/movable/triggerer)
 
-	if(!is_mob(triggerer))
+	if(!ismob(triggerer))
 		return FALSE
 
 	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))
@@ -111,7 +111,7 @@
 
 /obj/trigger/jumpmarker/on_trigger(var/atom/movable/triggerer)
 
-	if(!is_mob(triggerer))
+	if(!ismob(triggerer))
 		return FALSE
 
 	if(dir_restriction != 0 && !(triggerer.dir & dir_restriction))

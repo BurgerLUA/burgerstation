@@ -22,7 +22,7 @@
 
 /obj/hud/click_and_drag/New(var/desired_loc)
 
-	if(is_mob(desired_loc))
+	if(ismob(desired_loc))
 		screen_loc = "CENTER,CENTER"
 		loc = desired_loc
 		var/mob/ME = desired_loc

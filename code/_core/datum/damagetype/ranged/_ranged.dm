@@ -63,7 +63,7 @@
 
 /damagetype/ranged/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	if(!is_mob(victim))
+	if(!ismob(victim))
 		return FALSE
 
 	victim.visible_message(\
@@ -74,7 +74,7 @@
 
 /damagetype/ranged/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
 
-	if(!is_mob(victim))
+	if(!ismob(victim))
 		return FALSE
 
 	victim.visible_message(\

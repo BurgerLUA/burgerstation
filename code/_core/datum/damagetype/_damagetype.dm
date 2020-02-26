@@ -322,7 +322,7 @@
 
 	hit_object.do_impact_effect(attacker,weapon,src,damage_dealt)
 
-	if(victim.health && victim.health.health_max && is_movable(victim))
+	if(victim.health && victim.health.health_max && ismovable(victim))
 		var/atom/movable/A = victim
 		if(A.anchored)
 			return
