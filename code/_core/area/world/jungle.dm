@@ -17,7 +17,7 @@
 
 	if(istype(T,/turf/simulated/floor/river))
 
-		if( (T.x % floor(sunlight_freq*0.75)) || (T.y % floor(sunlight_freq*0.75)) )
+		if( (T.x % FLOOR(sunlight_freq*0.75, 1)) || (T.y % FLOOR(sunlight_freq*0.75, 1)) )
 			return FALSE
 
 		T.set_light(sunlight_freq+1,desired_light_power,"#213A68")
@@ -25,7 +25,7 @@
 
 	else if(istype(T,/turf/simulated/floor/lava/))
 
-		if( (T.x % floor(sunlight_freq*0.5)) || (T.y % floor(sunlight_freq*0.5)) )
+		if( (T.x % FLOOR(sunlight_freq*0.5, 1)) || (T.y % FLOOR(sunlight_freq*0.5, 1)) )
 			return FALSE
 
 		T.set_light(sunlight_freq+1,desired_light_power,"#CE631C")

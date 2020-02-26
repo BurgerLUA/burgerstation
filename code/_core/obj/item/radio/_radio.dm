@@ -46,7 +46,7 @@ var/global/list/obj/item/radio/all_radios = list()
 
 	var/old_frequency = frequency
 
-	frequency = Clamp(frequency + fixed_delta*0.2,frequency_min,frequency_max)
+	frequency = clamp(frequency + fixed_delta*0.2,frequency_min,frequency_max)
 
 	var/frequency_string = frequency_to_name(frequency)
 	if(frequency_string == "Unknown")

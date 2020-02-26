@@ -27,6 +27,6 @@
 	if(charge_cost < charge_current)
 		icon_state = "inventory_0"
 	else
-		icon_state = "inventory_[floor((charge_current/charge_max)*4)]"
+		icon_state = "inventory_[FLOOR((charge_current/charge_max) * 4, 1)]"
 
 	return ..()

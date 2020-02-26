@@ -53,7 +53,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_icon = S.all_hair_head[Clamp(choice_main,1,length(S.all_hair_head))]
+	var/hair_icon = S.all_hair_head[clamp(choice_main,1,length(S.all_hair_head))]
 
 	if(desired_color)
 		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)
@@ -90,7 +90,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/species/S = all_species[A.species]
-		hair_num = Clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_head))
+		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_head))
 		A.handle_hairstyle_chargen(hair_num)
 
 	return TRUE

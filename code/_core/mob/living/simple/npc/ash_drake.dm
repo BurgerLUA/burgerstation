@@ -107,7 +107,7 @@
 	for(var/turf/simulated/floor/T in range(4,src))
 		valid_floors += T
 
-	var/amount_multiplier = floor(10 + (1 - (health.health_current/health.health_max))*20)
+	var/amount_multiplier = FLOOR(10 + (1 - (health.health_current/health.health_max))*20, 1)
 
 	for(var/i=1,i<=amount_multiplier,i++)
 		var/turf/T = pick(valid_floors)

@@ -11,7 +11,7 @@
 			good_inventory_count += 1
 
 
-	var/delete_until = good_inventory_count < 8 ? good_inventory_count : ceiling(good_inventory_count,8)
+	var/delete_until = good_inventory_count < 8 ? good_inventory_count : CEILING(good_inventory_count,8)
 
 	for(var/obj/hud/inventory/dynamic/I in bad_inventories)
 		if(I.slot_num > delete_until)

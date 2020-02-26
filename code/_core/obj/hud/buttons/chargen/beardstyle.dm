@@ -53,7 +53,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	for(var/obj/hud/button/chargen/change_beardstyle/B in buttons)
 		B.hair_num = hair_num
 
-	var/hair_icon = S.all_hair_face[Clamp(choice_main,1,length(S.all_hair_face))]
+	var/hair_icon = S.all_hair_face[clamp(choice_main,1,length(S.all_hair_face))]
 
 	if(desired_color)
 		change_organ_visual("hair_face", desired_icon = S.default_icon_face, desired_icon_state = hair_icon, desired_color = desired_color)
@@ -82,7 +82,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/species/S = all_species[A.species]
-		hair_num = Clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_face))
+		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_face))
 		A.handle_beardstyle_chargen(hair_num)
 
 	return TRUE

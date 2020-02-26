@@ -45,7 +45,7 @@
 	bullet_diameter_max = 6
 
 /obj/item/magazine/smg_22/update_icon()
-	icon_state = "[initial(icon_state)]-[ceiling(length(stored_bullets),2)]"
+	icon_state = "[initial(icon_state)]-[CEILING(length(stored_bullets),2)]"
 	..()
 */
 

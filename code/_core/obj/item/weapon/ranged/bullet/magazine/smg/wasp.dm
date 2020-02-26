@@ -16,7 +16,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[initial(icon_state)]_[ceiling(length(M.stored_bullets)/2,4)]"
+		icon_state = "[initial(icon_state)]_[CEILING(length(M.stored_bullets)/2,4)]"
 	else
 		icon_state = initial(icon_state)
 

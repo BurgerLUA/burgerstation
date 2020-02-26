@@ -13,7 +13,7 @@
 
 /obj/item/magazine/pistol_9mm/update_icon()
 	if(length(stored_bullets))
-		icon_state = "[initial(icon_state)]_[ceiling(length(stored_bullets)/2)]"
+		icon_state = "[initial(icon_state)]_[CEILING(length(stored_bullets)/2, 1)]"
 	else
 		icon_state = "[initial(icon_state)]"
 

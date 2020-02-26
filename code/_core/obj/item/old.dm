@@ -36,7 +36,7 @@
 					grade = "E"
 
 			if(grade)
-				attribute_damage_list += "[capitalize(k)]: [grade] ([floor(E.get_current_level()*v)] [DT.attribute_damage[k]])"
+				attribute_damage_list += "[capitalize(k)]: [grade] ([FLOOR(E.get_current_level()*v, 1)] [DT.attribute_damage[k]])"
 
 		for(var/k in DT.skill_stats)
 			var/v = DT.skill_stats[k]
@@ -57,7 +57,7 @@
 					grade = "E"
 
 			if(grade)
-				skill_damage_list += "[capitalize(k)]: [grade] ([floor(E.get_current_level()*v)] [DT.skill_damage[k]])"
+				skill_damage_list += "[capitalize(k)]: [grade] ([FLOOR(E.get_current_level()*v, 1)] [DT.skill_damage[k]])"
 
 		var/combat_rating = DT.get_rating()
 

@@ -33,8 +33,8 @@ var/global/world_state = STATE_STARTING
 	var/server_link = "https://discord.gg/yEaV92a"
 	var/github_name = "Space Station 13 Code <b>FROM SCRATCH</b>"
 
-	var/minutes = floor(world.time / 600)
-	var/hours = floor(world.time / 36000)
+	var/minutes = FLOOR(world.time / 600, 1)
+	var/hours = FLOOR(world.time / 36000, 1)
 
 	if(minutes < 10)
 		minutes = "0[minutes]"

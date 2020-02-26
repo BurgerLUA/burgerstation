@@ -36,7 +36,7 @@
 		if(should_center)
 			I.screen_loc = "CENTER+[i]-[(length(inventories)+1)/2],BOTTOM+1.25"
 		else
-			I.screen_loc = "CENTER+[-MAX_INVENTORY_X*0.5 + i - 0.5 - floor((i-1)/MAX_INVENTORY_X)*MAX_INVENTORY_X],BOTTOM+[1.25 + floor((i-1)/MAX_INVENTORY_X)]"
+			I.screen_loc = "CENTER+[-MAX_INVENTORY_X*0.5 + i - 0.5 - FLOOR((i-1)/MAX_INVENTORY_X, 1)*MAX_INVENTORY_X],BOTTOM+[1.25 + FLOOR((i-1)/MAX_INVENTORY_X, 1)]"
 
 		if(opening || !I.alpha)
 			animate(I,alpha=255,time=4)

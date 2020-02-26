@@ -24,7 +24,7 @@
 			else if (L.status & FLAG_STATUS_CRIT)
 				health_icon_state = "crit"
 			else
-				health_icon_state = "[Clamp(floor( (health_current/health_max)*23 ),0,23)]"
+				health_icon_state = "[clamp(FLOOR((health_current/health_max)*23, 1),0,23)]"
 
 			L.medical_hud_image.icon_state = health_icon_state
 

@@ -46,7 +46,7 @@
 
 	overlays.Cut()
 
-	var/math = floor( (current/max)*28 )
+	var/math = FLOOR((current/max) * 28, 1)
 
 	var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
 	bar.color = bar_color
@@ -74,8 +74,8 @@
 		return FALSE
 
 	min = 0
-	max = floor(M.health.health_max)
-	current = floor(M.health.health_current)
+	max = FLOOR(M.health.health_max, 1)
+	current = FLOOR(M.health.health_current, 1)
 	return ..()
 
 /obj/hud/button/health/bar/sp
@@ -99,8 +99,8 @@
 		return ..()
 
 	min = 0
-	max = floor(M.health.stamina_max)
-	current = floor(M.health.stamina_current)
+	max = FLOOR(M.health.stamina_max, 1)
+	current = FLOOR(M.health.stamina_current, 1)
 	return ..()
 
 /obj/hud/button/health/bar/mp
@@ -124,6 +124,6 @@
 		return ..()
 
 	min = 0
-	max = floor(M.health.mana_max)
-	current = floor(M.health.mana_current)
+	max = FLOOR(M.health.mana_max, 1)
+	current = FLOOR(M.health.mana_current, 1)
 	..()

@@ -57,7 +57,7 @@
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
-	return Clamp(movement_spread_base + movement_spread_mul*(TICKS_TO_SECONDS(L.move_delay)),0,movement_spread_base)
+	return clamp(movement_spread_base + movement_spread_mul*(TICKS_TO_SECONDS(L.move_delay)),0,movement_spread_base)
 
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited
@@ -187,7 +187,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			accuracy_loss += (get_skill_spread(L) + get_movement_spread(L))
 
 
-		accuracy_loss = Clamp(accuracy_loss,0,0.5)
+		accuracy_loss = clamp(accuracy_loss,0,0.5)
 
 		var/view_punch_time = shoot_delay
 
@@ -257,7 +257,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
-			if(i == ceiling(bullet_count_to_use/2,1) && is_player(caller) && view_punch && view_punch_time > 1)
+			if(i == CEILING(bullet_count_to_use/2,1) && is_player(caller) && view_punch && view_punch_time > 1)
 				var/mob/living/advanced/player/P = caller
 				if(P.client)
 					var/client/C = P.client
@@ -275,8 +275,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/diffx = desired_x - caller_fake_x
 	var/diffy = desired_y - caller_fake_y
 	var/distance = sqrt(diffx ** 2 + diffy ** 2)
-	var/inaccuracy_x = rand_precise(-distance*accuracy,distance*accuracy)
-	var/inaccuracy_y = rand_precise(-distance*accuracy,distance*accuracy)
+	var/inaccuracy_x = RAND_PRECISE(-distance*accuracy,distance*accuracy)
+	var/inaccuracy_y = RAND_PRECISE(-distance*accuracy,distance*accuracy)
 
 	diffx += inaccuracy_x
 	diffy += inaccuracy_y

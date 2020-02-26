@@ -81,13 +81,13 @@
 
 	switch(new_quantity)
 		if(0 to 10)
-			new_item_cost *= rand_precise(1,2)
+			new_item_cost *= RAND_PRECISE(1,2)
 		if(10 to 25)
-			new_item_cost *= rand_precise(1,1.75)
+			new_item_cost *= RAND_PRECISE(1,1.75)
 		if(25 to 50)
-			new_item_cost *= rand_precise(1,1.5)
+			new_item_cost *= RAND_PRECISE(1,1.5)
 		if(50 to INFINITY)
-			new_item_cost *= rand_precise(1,1.25)
+			new_item_cost *= RAND_PRECISE(1,1.25)
 
 	current_item_cost = round(new_item_cost,min(original_item_cost,5))
 	current_item_quantity = round(new_quantity,1)

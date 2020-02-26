@@ -26,7 +26,7 @@
 	icon = initial(icon)
 
 	var/icon/I = new/icon(icon,icon_state)
-	var/icon/I2 = new/icon(icon,"charge[floor((charge_current/charge_max)*4)]")
+	var/icon/I2 = new/icon(icon,"charge[FLOOR((charge_current/charge_max) * 4, 1)]")
 
 	I.Blend(I2,ICON_OVERLAY)
 

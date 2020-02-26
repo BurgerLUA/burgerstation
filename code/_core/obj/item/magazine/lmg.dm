@@ -23,5 +23,5 @@
 
 /obj/item/magazine/lmg_556/update_icon()
 	var/math_mod = (length(stored_bullets) / bullet_count_max) * 11
-	icon_state = "[initial(icon_state)]_[ceiling(math_mod)]"
+	icon_state = "[initial(icon_state)]_[CEILING(math_mod, 1)]"
 	..()

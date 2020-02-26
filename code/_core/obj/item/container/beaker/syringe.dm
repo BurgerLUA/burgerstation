@@ -38,7 +38,7 @@
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
-	var/num_state = ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
+	var/num_state = CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
 
 	var/icon/I = icon(icon,"[icon_state]_[num_state]")
 	var/icon/I2 = icon(icon,"liquid")

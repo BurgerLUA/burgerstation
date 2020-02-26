@@ -34,7 +34,7 @@
 			var/should_update = FALSE
 			for(var/damage_type in O.visual_wounds)
 				var/last_amount = O.visual_wounds[damage_type]
-				var/current_amount = Clamp(ceiling((get_loss(damage_type)/health_max*0.5)*3),0,3)
+				var/current_amount = clamp(CEILING((get_loss(damage_type)/health_max*0.5)*3, 1),0,3)
 				if(last_amount != current_amount)
 					var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
 					O.change_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
