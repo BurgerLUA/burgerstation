@@ -2,11 +2,12 @@ SUBSYSTEM_DEF(area)
 	name = "Area Subsystem"
 	desc = "Manages the icon states of areas, aka weather and climate."
 	priority = SS_ORDER_AREAS
-	tick_rate = SECONDS_TO_TICKS(600) //Weather is 10 minute intervals
+	tick_rate = SECONDS_TO_TICKS(300)
 
 	var/list/area/areas_rain = list()
 	var/list/area/areas_snow = list()
 	var/list/area/areas_sandstorm = list()
+	var/list/area/areas_ambient = list()
 
 	var/is_raining = TRUE
 	var/is_snowing = TRUE
@@ -22,7 +23,8 @@ SUBSYSTEM_DEF(area)
 	for(var/area/A in world)
 		A.Initialize()
 		area_count += 1
-
+		if(length(A.random_sounds))
+			areas_ambient += A
 		if(A.weather)
 			A.invisibility = 0
 			A.alpha = 0
@@ -56,6 +58,16 @@ SUBSYSTEM_DEF(area)
 	if(prob(is_sandstorming ? WEATHER_REMOVE_CHANCE : WEATHER_ADD_CHANCE))
 		is_sandstorming = !is_sandstorming
 		set_weather(WEATHER_SANDSTORM,is_sandstorming,areas_sandstorm)
+
+	for(var/area/A in areas_ambient)
+		var/sound_to_play = pick(A.random_sounds)
+		var/list/valid_players = list()
+		for(var/mob/living/advanced/player/P in A.contents)
+			if(!P.client)
+				continue
+			valid_players += P
+		if(length(valid_players))
+			play_random_ambient_sound(sound_to_play,valid_players)
 
 	return TRUE
 

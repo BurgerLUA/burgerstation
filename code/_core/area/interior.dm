@@ -27,6 +27,22 @@
 	icon_state = "ship"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS
 
+	ambient_sound = 'sounds/ambient/station_loop.ogg'
+	random_sounds = list(
+		'sounds/ambient/station_1.ogg',
+		'sounds/ambient/station_2.ogg',
+		'sounds/ambient/station_3.ogg',
+		'sounds/ambient/station_4.ogg',
+		'sounds/ambient/station_5.ogg',
+		'sounds/ambient/station_6.ogg',
+		'sounds/ambient/station_7.ogg',
+		'sounds/ambient/station_8.ogg',
+		'sounds/ambient/station_9.ogg',
+		'sounds/ambient/station_10.ogg',
+		'sounds/ambient/station_11.ogg',
+		'sounds/ambient/station_12.ogg'
+	)
+
 /area/interior/ship/hall
 	name = "\improper Hallway"
 	icon_state = "hall"

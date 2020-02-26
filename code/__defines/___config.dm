@@ -44,7 +44,7 @@
 #define NPC_MANA_COST_MULTIPLIER 0.1 //NPCS cast spells for less. We skyrim now.
 
 #define WEATHER_ADD_CHANCE 40
-#define WEATHER_REMOVE_CHANCE 20
+#define WEATHER_REMOVE_CHANCE 10
 
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE

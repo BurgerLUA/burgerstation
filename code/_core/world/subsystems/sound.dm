@@ -43,7 +43,8 @@ proc/stop_music_track(var/client/hearer)
 	hearer << created_sound
 	hearer.next_music_track = 0
 
-proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
+proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
+
 	var/sound/created_sound = sound(sound_path)
 
 	if(!created_sound)
@@ -57,11 +58,39 @@ proc/play_ambient_sound(var/sound_path,var/atom/hearer,var/volume=1,var/pitch=1,
 	created_sound.priority = 0
 	created_sound.echo = echo
 	created_sound.environment = environment
-	created_sound.status = 0
-	created_sound.volume = volume
 	created_sound.status = SOUND_STREAM
 
-	hearer << created_sound
+	for(var/atom/A in hearers)
+		var/final_volume = volume
+		if(is_mob(A))
+			var/mob/M = A
+			final_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
+		created_sound.volume = final_volume
+		A << created_sound
+
+proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
+	var/sound/created_sound = sound(sound_path)
+
+	if(!created_sound)
+		LOG_ERROR("Warning! Invalid sound: [sound_path].")
+		return FALSE
+
+	created_sound.frequency = pitch
+	created_sound.repeat = loop
+	created_sound.pan = pan
+	created_sound.channel = SOUND_CHANNEL_AMBIENT_RANDOM
+	created_sound.priority = 0
+	created_sound.echo = echo
+	created_sound.environment = environment
+	created_sound.status = SOUND_STREAM
+
+	for(var/atom/A in hearers)
+		var/final_volume = volume
+		if(is_mob(A))
+			var/mob/M = A
+			final_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
+		created_sound.volume = final_volume
+		A << created_sound
 
 proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
