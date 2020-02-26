@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
 	desc = "Handles hordes and whatnot."
 	priority = SS_ORDER_LAST
-	tick_rate = 1 //SECONDS_TO_TICKS(1)
+	tick_rate = SECONDS_TO_TICKS(1)
 	var/round_time = 0 //In seconds.
 	var/round_time_next = 0 //In seconds.
 	var/state = HORDE_STATE_PRELOAD

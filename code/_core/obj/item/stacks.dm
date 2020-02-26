@@ -51,7 +51,7 @@
 
 /obj/item/click_on_object(var/mob/caller,object,location,control,params)
 
-	if(object == src || !is_item(object) || !src.loc)
+	if(object == src || !is_item(object) || !src.loc || get_dist(src,object) > 1)
 		return ..()
 
 	var/obj/item/I = object
@@ -63,7 +63,7 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc))
+	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()
 
 	var/obj/hud/inventory/I = object

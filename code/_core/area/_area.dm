@@ -137,12 +137,12 @@
 			play_music_track(pick(tracks),M.client)
 
 	if(enterer.area != src)
-		if(is_mob(enterer))
+		if(is_mob(enterer) && !is_observer(enterer))
 			var/mob/M = enterer
 			if(M.client)
 				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
 					play_ambient_sound(ambient_sound,list(enterer),environment = sound_environment,loop = TRUE)
-					world.log << "Playing ambient!"
+					world.log << "Playing ambient sound [ambient_sound]!"
 			/*
 			if(is_player(enterer) && enterer.area)
 				var/mob/living/advanced/player/P = M
