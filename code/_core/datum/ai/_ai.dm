@@ -224,7 +224,7 @@
 
 /ai/proc/set_objective(var/mob/living/L)
 
-	if(objective_attack && objective_attack in attackers)
+	if(objective_attack && attackers[objective_attack])
 		attackers -= objective_attack
 
 	objective_attack = L
@@ -289,25 +289,23 @@
 
 /ai/proc/can_see_enemy(var/mob/living/L)
 	var/list/possible_targets = get_possible_targets()
-	return (L in possible_targets)
+	return possible_targets[L]
 
 /ai/proc/get_possible_targets()
 
-	var/list/possible_targets = attackers.Copy()
+	. = attackers.Copy()
 
 	if(radius_find_enemy <= 0)
-		return possible_targets
+		return
 
 	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
 		if(should_attack_mob(P))
-			possible_targets += P
-
-	return possible_targets
+			.[P] = TRUE
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 
-	if(!(attacker in attackers))
-		attackers += attacker
+	if(!attackers[attacker])
+		attackers[attacker] = TRUE
 
 	return TRUE
 

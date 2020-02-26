@@ -2,22 +2,22 @@ var/global/language_seed = 1337
 
 /proc/convert_langage_to_lizard(var/text)
 
-	var/list/vowels = list(
+	var/static/list/vowels = make_associative(list(
 		"a","e","i","o"
-	)
+	))
 
-	var/list/consonants = list( //And consonants pairs.
+	var/static/list/consonants = make_associative(list( //And consonants pairs.
 		"w","e","r","t",
 		"y","p","s","d",
 		"f","g","h","j",
 		"k","l","z","x",
 		"c","v","b","n",
 		"m"
-	)
+	))
 
 	var/new_sentence = ""
 
-	for(var/i=1,i<=length(text),i++)
+	for(var/i in 1 to length(text))
 		var/letter = getCharacter(text,i)
 		var/was_upper = letter == uppertext(letter)
 		letter = lowertext(letter)
@@ -39,7 +39,7 @@ var/global/language_seed = 1337
 			var/this_character = consonants[1 + (desired_index % length(consonants))]
 			if(previous_character == this_character)
 				continue
-			else if(previous_character in consonants)
+			else if(consonants[previous_character])
 				var/addition = vowels[1 + (desired_index % length(vowels))]
 				if(was_upper)
 					addition = uppertext(addition)

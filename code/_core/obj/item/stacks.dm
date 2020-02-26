@@ -5,12 +5,13 @@
 
 /proc/copy(var/atom/A)
 
-	var/list/denyvar = list("client","key","loc","x","y","z","type","locs","parent_type","verbs","vars")
+	var/static/list/denyvar = make_associative(list("client","key","loc","x","y","z","type","locs","parent_type","verbs","vars"))
 
 	var/atom/N = new A.type(A.loc)
 
 	for(var/i in A.vars)
-		if(i in denyvar) continue
+		if(denyvar[i])
+			continue
 		try
 			N.vars[i] = A.vars[i]
 		catch()

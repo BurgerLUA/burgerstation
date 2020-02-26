@@ -75,11 +75,11 @@
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
 /proc/periodize(var/t as text)
-	var/last_char = copytext(t,length(t),length(t)+1)
+	var/last_char = t[length(t)]
 
-	var/list/valid_ends = list(".",",","?","!")
+	var/static/list/valid_ends = make_associative(list(".",",","?","!"))
 
-	if(!(last_char in valid_ends))
+	if(!valid_ends[last_char])
 		t += "."
 
 	return t
