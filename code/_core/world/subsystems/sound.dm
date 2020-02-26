@@ -34,6 +34,10 @@ proc/stop_ambient_sounds(var/atom/hearer)
 	created_sound.status = SOUND_MUTE
 	created_sound.channel = SOUND_CHANNEL_AMBIENT
 	hearer << created_sound
+	if(is_mob(hearer))
+		var/mob/M = hearer
+		if(M.client)
+			M.client.current_ambient_sound = null
 
 proc/stop_music_track(var/client/hearer)
 	var/sound/created_sound = sound()
@@ -64,7 +68,11 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 		var/final_volume = volume
 		if(is_mob(A))
 			var/mob/M = A
-			final_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
+			if(M.client)
+				if(M.client.current_ambient_sound == sound_path)
+					continue
+				M.client.current_ambient_sound = sound_path
+			final_volume = M.client.settings.loaded_data["volume_ambient"]
 		created_sound.volume = final_volume
 		A << created_sound
 
@@ -88,7 +96,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 		var/final_volume = volume
 		if(is_mob(A))
 			var/mob/M = A
-			final_volume *= M.client.settings.loaded_data["volume_ambient"] / 100
+			final_volume = M.client.settings.loaded_data["volume_ambient"]
 		created_sound.volume = final_volume
 		A << created_sound
 

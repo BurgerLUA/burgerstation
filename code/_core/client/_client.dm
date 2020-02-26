@@ -34,6 +34,8 @@ var/global/list/all_clients = list()
 	var/current_music_track //Id of music track that last played.
 	var/next_music_track = 0 //When the next music track should be triggered.
 
+	var/current_ambient_sound
+
 	var/disable_controls = FALSE
 
 	var/is_zoomed = FALSE
