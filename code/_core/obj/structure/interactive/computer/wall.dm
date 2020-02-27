@@ -29,20 +29,43 @@ obj/structure/interactive/computer/wall
 	desc = "Compute walls!"
 	desc_extended = "It has no program and refuses to work."
 
-	icon = 'icons/obj/structure/computer_wall.dmi'
-	//icon_state = "dorm_available"
+	icon_state = "computer_wall"
+	var/computer_type = "generic"
+	var/keyboard_type = "generic_key"
 
 obj/structure/interactive/computer/wall/Initialize(var/desired_loc)
 	setup_dir_offsets()
+	update_icon()
 	return ..(loc) //thanks, i hate it
+
+obj/structure/interactive/computer/wall/update_icon()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	var/icon/I = new/icon(icon,icon_state)
+
+	if(computer_type && on)
+		var/icon/I2 = new/icon(icon,computer_type)
+		I.Blend(I2,ICON_OVERLAY)
+
+	if(keyboard_type)
+		var/icon/I3 = new/icon(icon,keyboard_type)
+		I.Blend(I3,ICON_OVERLAY)
+
+	icon = I
+
+	return ..()
+
 
 obj/structure/interactive/computer/wall/dorms
 	name = "dorms computer"
 	desc = "Registration of dorms."
 	desc_extended = "A computer intended to register dorms."
 
-	icon_state = "dorm_available"
-
 	desired_light_range = 1
 	desired_light_power = 1
 	desired_light_color = "#00FF00"
+
+
+

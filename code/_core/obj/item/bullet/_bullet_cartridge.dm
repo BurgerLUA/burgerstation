@@ -178,14 +178,20 @@
 	else if(W.can_load_stored(caller,src))
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
-		W.stored_bullets += B
-		item_count_current -= 1
-		if(item_count_current <= 0)
-			qdel(src)
-		else
-			update_icon()
-		W.update_icon()
-		return TRUE
+		var/valid_slot = 0
+		for(var/i=1,i<=length(W.stored_bullets),i++)
+			if(!W.stored_bullets[i])
+				valid_slot = i
+				break
+		if(valid_slot)
+			W.stored_bullets[valid_slot] = B
+			item_count_current -= 1
+			if(item_count_current <= 0)
+				qdel(src)
+			else
+				update_icon()
+			W.update_icon()
+			return TRUE
 
 	caller.to_chat("You can't load \the [src.name] into \the [W.name]!")
 
