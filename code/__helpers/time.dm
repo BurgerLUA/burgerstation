@@ -24,19 +24,19 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 
 	var/time_list = list()
 
-	var/day_value = floor(seconds/(60*60*24))
+	var/day_value = FLOOR(seconds/(60*60*24), 1)
 	time_list += "[day_value] day\s"
 	seconds -= day_value*60*60*24
 
-	var/hour_value = floor(seconds/(60*60))
+	var/hour_value = FLOOR(seconds/(60*60), 1)
 	time_list += "[hour_value] hour\s"
 	seconds -= hour_value*60*60
 
-	var/minute_value = floor(seconds/60)
+	var/minute_value = FLOOR(seconds/60, 1)
 	time_list += "[minute_value] minute\s"
 	seconds -= minute_value*60
 
-	var/second_value = floor(seconds)
+	var/second_value = FLOOR(seconds, 1)
 	time_list += "[seconds] second\s"
 	seconds -= second_value
 
@@ -44,7 +44,7 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 
 /proc/get_clock_time(var/seconds)
 
-	var/minute_value = floor(seconds/60)
+	var/minute_value = FLOOR(seconds/60, 1)
 	var/second_value = seconds - minute_value*60
 
 	var/minute_text = "[minute_value]"

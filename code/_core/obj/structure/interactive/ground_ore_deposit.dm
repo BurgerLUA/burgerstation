@@ -19,7 +19,7 @@
 			if(prob(50 + ore_score))
 				var/obj/structure/interactive/ground_ore_deposit/GOD = new(T)
 				GOD.material_id = material_id
-				GOD.ore_score = ore_score * rand_precise(0.1,0.75)
+				GOD.ore_score = ore_score * RAND_PRECISE(0.1,0.75)
 				GOD.Initialize()
 
 	update_icon()
@@ -54,7 +54,7 @@
 	if(ore_score <= 0)
 		qdel(src)
 		return TRUE
-	var/color_mod = (Clamp(ore_score,0,100)/100)*255
+	var/color_mod = (clamp(ore_score,0,100)/100)*255
 	color = rgb(255 - color_mod,color_mod,0)
 	return ..()
 

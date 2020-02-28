@@ -111,7 +111,7 @@
 		var/obj/hud/button/skip/SB = new(A)
 		SB.update_owner(A)
 		A.sight |= SEE_THRU
-		C.pixel_y = floor(TILE_SIZE*-VIEW_RANGE*2)
+		C.pixel_y = FLOOR(TILE_SIZE*-VIEW_RANGE*2, 1)
 
 		if(show_disclaimer)
 			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(46),fade_in = FALSE)

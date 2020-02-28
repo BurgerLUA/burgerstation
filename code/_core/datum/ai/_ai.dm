@@ -74,10 +74,10 @@
 	owner = desired_owner
 
 	if(sync_attack_delay)
-		attack_delay = ceiling(desired_owner.get_attack_delay()/LIFE_TICK,1)
+		attack_delay = CEILING(desired_owner.get_attack_delay()/LIFE_TICK,1)
 
 	if(sync_movement_delay)
-		movement_delay = ceiling(TICKS_TO_DECISECONDS(owner.get_movement_delay())/LIFE_TICK,1)
+		movement_delay = CEILING(TICKS_TO_DECISECONDS(owner.get_movement_delay())/LIFE_TICK,1)
 
 	attack_ticks = rand(0,attack_delay)
 	movement_ticks = rand(0,movement_delay)

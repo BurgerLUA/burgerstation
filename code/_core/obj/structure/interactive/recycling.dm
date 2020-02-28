@@ -60,7 +60,7 @@
 
 	for(var/material_type in stored_material)
 		var/material_value = stored_material[material_type]
-		var/material_to_make = floor(material_value/1000)
+		var/material_to_make = FLOOR(material_value/1000, 1)
 		if(material_to_make < 1)
 			continue
 		stored_material[material_type] -= material_to_make*1000

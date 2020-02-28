@@ -28,8 +28,8 @@
 			M.force_move(src.loc)
 			continue
 
-		var/diff_x = throw_offset[1] + rand_precise(-throw_accuracy,throw_accuracy)
-		var/diff_y = throw_offset[2] + rand_precise(-throw_accuracy,throw_accuracy)
+		var/diff_x = throw_offset[1] + RAND_PRECISE(-throw_accuracy,throw_accuracy)
+		var/diff_y = throw_offset[2] + RAND_PRECISE(-throw_accuracy,throw_accuracy)
 
 		var/highest = max(abs(diff_x),abs(diff_y))
 

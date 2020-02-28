@@ -2,7 +2,7 @@
 	set category = "Visual"
 	set name = "Maximum FPS"
 	var/old_fps = src.fps
-	desired_fps = Clamp(desired_fps,30,60)
+	desired_fps = clamp(desired_fps,30,60)
 	src.fps = desired_fps
 	settings.change_setting("fps_client",desired_fps)
 	to_chat(span("notice","Your FPS was changed from [old_fps] to [desired_fps]."))

@@ -33,7 +33,7 @@
 		animate(src,pixel_y = 0, alpha = 255, time = 5)
 		force_move(get_turf(desired_loc))
 
-		maptext_width = TILE_SIZE*ceiling(VIEW_RANGE*0.75,2)
+		maptext_width = TILE_SIZE*CEILING(VIEW_RANGE*0.75,2)
 		maptext_x = -(maptext_width-TILE_SIZE)*0.5
 		maptext_y = TILE_SIZE*0.75
 

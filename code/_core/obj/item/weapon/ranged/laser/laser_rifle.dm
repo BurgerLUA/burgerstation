@@ -30,7 +30,7 @@
 
 /obj/item/weapon/ranged/energy/rifle/update_icon()
 
-	var/ammo_string = "ammo[floor( (charge_current/charge_max)*7 )]"
+	var/ammo_string = "ammo[FLOOR((charge_current/charge_max) * 7, 1)]"
 
 	var/icon/I = new/icon(initial(icon),initial(icon_state))
 	var/icon/I2 = new/icon(initial(icon),ammo_string)

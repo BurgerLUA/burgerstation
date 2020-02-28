@@ -54,7 +54,7 @@
 
 /obj/hud/button/cash_money/proc/update_stats(var/new_value=0)
 
-	new_value = Clamp(new_value,0,99999)
+	new_value = clamp(new_value,0,99999)
 
 	if(amount != new_value)
 		amount = new_value

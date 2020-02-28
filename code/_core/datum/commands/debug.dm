@@ -92,7 +92,7 @@
 
 		valid_floors += F
 
-	number_to_create = Clamp(number_to_create,1,100)
+	number_to_create = clamp(number_to_create,1,100)
 
 	for(var/i=1,i<=number_to_create,i++)
 		var/turf/T = pick(valid_floors)

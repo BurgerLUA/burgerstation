@@ -21,7 +21,7 @@
 	var/icon/I = new/icon(icon,icon_state)
 	I.Blend(base_color,ICON_MULTIPLY)
 
-	var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
+	var/icon/I2 = new/icon(icon,"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
 	I2.Blend(reagents.color,ICON_MULTIPLY)
 
 	var/icon/I3 = new/icon(icon,"glass")

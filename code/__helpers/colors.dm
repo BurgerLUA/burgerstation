@@ -232,7 +232,7 @@
 
 
 /proc/blend_colors(var/color_01,var/color_02,var/power = 0.5)
-	power = Clamp(power,0,1)
+	power = clamp(power,0,1)
 	var/new_red = GetRedPart(color_01)*(1-power) + GetRedPart(color_02)*power
 	var/new_green = GetGreenPart(color_01)*(1-power) + GetGreenPart(color_02)*power
 	var/new_blue = GetBluePart(color_01)*(1-power) + GetBluePart(color_02)*power

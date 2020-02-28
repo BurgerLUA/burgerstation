@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(payday)
 			valid_players += P
 
 		for(var/mob/living/advanced/player/P in valid_players)
-			var/bonus_to_give = Clamp(floor(stored_payday/length(valid_players)),0,400)
+			var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,400)
 			P.adjust_currency( 200 + bonus_to_give )
 			if(bonus_to_give)
 				P.to_chat(span("payday","Hazard Pay! You have earned 200 credits and a [bonus_to_give] credit bonus from cargo deliveries!"))

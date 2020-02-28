@@ -23,7 +23,7 @@
 	icon_state = initial(icon_state)
 
 	var/icon/I = new/icon(icon,icon_state)
-	var/charge_number = floor((charge_current/charge_max)*7)
+	var/charge_number = FLOOR((charge_current/charge_max) * 7, 1)
 	var/desired_icon = "charge_[charge_number]"
 	var/icon/I2 = new/icon(icon,desired_icon)
 

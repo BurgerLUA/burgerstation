@@ -90,10 +90,10 @@
 			consumer.to_chat(span("notice",final_flavor_text))
 
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
-		return reagents.transfer_reagents_to(S.reagents,Clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
+		return reagents.transfer_reagents_to(S.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
 
 	else
-		return reagents.transfer_reagents_to(consumer.reagents,Clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
+		return reagents.transfer_reagents_to(consumer.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
 
 	return 0
 
@@ -104,7 +104,7 @@
 		icon_state = initial(icon_state)
 
 		var/icon/I = new/icon(icon,icon_state)
-		var/icon/I2 = new/icon(icon,"liquid_[ceiling(Clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
+		var/icon/I2 = new/icon(icon,"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
 
 		I2.Blend(reagents.color,ICON_MULTIPLY)
 		I.Blend(I2,ICON_UNDERLAY)

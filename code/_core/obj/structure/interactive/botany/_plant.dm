@@ -33,7 +33,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	return ..()
 
 /obj/structure/interactive/plant/proc/on_life()
-	growth += floor(growth_speed * (rand(75,125)/100))
+	growth += FLOOR(growth_speed * (rand(75,125)/100), 1)
 	update_icon()
 	return TRUE
 
@@ -46,7 +46,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	if(growth >= growth_produce_max)
 		icon_state = "[id]_grown"
 	else
-		icon_state = "[id]_[floor((min(growth,growth_max)/growth_max)*associated_plant.icon_count)]"
+		icon_state = "[id]_[FLOOR((min(growth,growth_max)/growth_max)*associated_plant.icon_count, 1)]"
 
 /obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/caller)
 

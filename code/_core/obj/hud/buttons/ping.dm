@@ -23,6 +23,6 @@
 	if(!M.client)
 		return FALSE
 
-	maptext = "<div align='right'>[ceiling(M.client.ping_num)]ms</div>"
+	maptext = "<div align='right'>[CEILING(M.client.ping_num, 1)]ms</div>"
 
 	return TRUE
