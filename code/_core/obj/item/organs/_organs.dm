@@ -69,7 +69,7 @@
 
 /obj/item/organ/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 
-	if(src.loc && !is_turf(src.loc))
+	if(src.loc && !isturf(src.loc))
 		return src.loc.get_miss_chance(attacker,weapon,target) + base_miss_chance
 
 	return ..()

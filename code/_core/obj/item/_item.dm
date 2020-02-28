@@ -132,7 +132,7 @@
 	return FALSE
 
 /obj/item/can_be_grabbed(var/atom/grabber)
-	return is_turf(src.loc)
+	return isturf(src.loc)
 
 /obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //We add the object to this item's inventory.
 
@@ -283,7 +283,7 @@
 		var/turf/OL = get_turf(old_inventory)
 		var/turf/NL = get_turf(new_loc)
 		if(OL != NL)
-			new/obj/effect/temp/item_pickup(NL,2,OL,src,is_turf(new_loc) ? "drop" : "transfer")
+			new/obj/effect/temp/item_pickup(NL,2,OL,src,isturf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
 

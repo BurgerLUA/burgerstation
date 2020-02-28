@@ -131,13 +131,13 @@
 		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = INVISIBILITY_NO_PLAYERS
 
-	if(is_mob(enterer))
+	if(ismob(enterer))
 		var/mob/M = enterer
 		if(M.client && length(tracks) && (!M.client.next_music_track || M.client.next_music_track <= world.time))
 			play_music_track(pick(tracks),M.client)
 
 	if(enterer.area != src)
-		if(is_mob(enterer) && !is_observer(enterer))
+		if(ismob(enterer) && !is_observer(enterer))
 			var/mob/M = enterer
 			if(M.client)
 				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))

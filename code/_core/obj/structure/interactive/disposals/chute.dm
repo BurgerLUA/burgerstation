@@ -26,7 +26,7 @@
 
 /obj/structure/interactive/disposals/chute/drop_on_object(var/atom/caller,var/atom/object)
 
-	if(is_movable(object) && caller == object)
+	if(ismovable(object) && caller == object)
 		enter_pipe(object)
 		return TRUE
 

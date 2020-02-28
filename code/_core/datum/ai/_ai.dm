@@ -111,7 +111,7 @@
 	if(owner.dead)
 		return FALSE
 
-	if(!is_turf(owner.loc))
+	if(!isturf(owner.loc))
 		return FALSE
 
 	objective_ticks += 1

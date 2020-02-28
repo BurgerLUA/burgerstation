@@ -20,7 +20,7 @@
 	start_time = desired_start_time
 	end_time = desired_end_time
 
-	if(is_mob(new_loc))
+	if(ismob(new_loc))
 		screen_loc = "CENTER,CENTER+1"
 		loc = new_loc
 		var/mob/M = new_loc
@@ -51,7 +51,7 @@
 
 /obj/hud/progress_bar/Destroy()
 
-	if(is_mob(loc))
+	if(ismob(loc))
 		var/mob/M = loc
 		if(M.client)
 			M.client.screen -= src

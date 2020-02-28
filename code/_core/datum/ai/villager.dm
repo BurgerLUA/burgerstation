@@ -13,7 +13,7 @@
 
 /ai/villager/on_life()
 
-	if(!is_turf(owner.loc))
+	if(!isturf(owner.loc))
 		return TRUE
 
 	if(!stationary)
@@ -52,7 +52,7 @@
 		valid_directions -= NORTH
 	else
 		for(var/atom/A in N.contents)
-			if(is_mob(A) || is_mob_blocker(A))
+			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= NORTH
 				break
 
@@ -60,7 +60,7 @@
 		valid_directions -= EAST
 	else
 		for(var/atom/A in E.contents)
-			if(is_mob(A) || is_mob_blocker(A))
+			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= EAST
 				break
 
@@ -68,7 +68,7 @@
 		valid_directions -= SOUTH
 	else
 		for(var/atom/A in S.contents)
-			if(is_mob(A) || is_mob_blocker(A))
+			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= SOUTH
 				break
 
@@ -76,7 +76,7 @@
 		valid_directions -= WEST
 	else
 		for(var/atom/A in W.contents)
-			if(is_mob(A) || is_mob_blocker(A))
+			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= WEST
 				break
 

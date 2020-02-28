@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(spawning)
 
 		var/turf/simulated/T = get_turf(L)
 
-		if(!is_turf(T))
+		if(!isturf(T))
 			LOG_ERROR("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and has a mob spawnpoint on it.")
 			continue
 

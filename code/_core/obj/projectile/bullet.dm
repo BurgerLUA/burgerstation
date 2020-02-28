@@ -71,7 +71,7 @@
 			params[PARAM_ICON_X] = shoot_x
 			params[PARAM_ICON_Y] = shoot_y
 			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
-			if(is_movable(object_to_damage))
+			if(ismovable(object_to_damage))
 				var/atom/movable/M = object_to_damage
 				if(M.reagents)
 					M.reagents.add_reagent(reagent_to_add,volume_to_add)

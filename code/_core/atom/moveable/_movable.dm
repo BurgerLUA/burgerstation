@@ -94,7 +94,7 @@
 
 /atom/movable/Bump(var/atom/obstacle,var/Dir=0)
 
-	if(Dir && is_movable(obstacle))
+	if(Dir && ismovable(obstacle))
 		var/atom/movable/M = obstacle
 		if(!M.anchored && (!grabbing_hand || obstacle != grabbing_hand.owner))
 			//M.move_delay = src.move_delay

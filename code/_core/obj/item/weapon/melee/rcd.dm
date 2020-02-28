@@ -39,7 +39,7 @@
 
 /obj/item/weapon/melee/tool/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(!is_turf(object))
+	if(!isturf(object))
 		object = get_turf(object)
 
 	if(object && get_dist(caller,object) <= rcd_range)

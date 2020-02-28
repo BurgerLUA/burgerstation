@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(progressbars)
 /subsystem/progressbars/proc/add_progress_bar(var/atom/owner,var/atom/object,var/desired_time,var/desired_proc,...)
 
 	if(all_progress_bars[owner])
-		if(is_mob(owner))
+		if(ismob(owner))
 			var/mob/M = owner
 			M.to_chat(span("notice","You're already busy with a task!"))
 		return FALSE

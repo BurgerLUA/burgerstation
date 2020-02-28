@@ -20,7 +20,7 @@
 
 /obj/structure/interactive/localmachine/snowflake/airlock/clicked_on_by_object(caller,object,location,control,params)
 
-	if(!is_mob(caller))
+	if(!ismob(caller))
 		return TRUE
 
 	INTERACT_CHECK
@@ -67,7 +67,7 @@
 
 /obj/structure/interactive/localmachine/snowflake/airlock/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
-	if(!is_mob(O))
+	if(!ismob(O))
 		return ..()
 
 	var/mob/M = O

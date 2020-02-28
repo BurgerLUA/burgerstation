@@ -15,7 +15,7 @@
 
 /obj/hud/button/ping/think()
 
-	if(!is_mob(owner))
+	if(!ismob(owner))
 		return FALSE
 
 	var/mob/M = owner
