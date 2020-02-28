@@ -69,6 +69,10 @@
 	filler = "glass"
 	fill_color = COLOR_WHITE
 
+/obj/structure/interactive/door/airlock/station/general
+	name = "general airlock"
+	color = "#626262"
+	fill_color = "#83A35D"
 
 /obj/structure/interactive/door/airlock/station/chemistry
 	name = "medical airlock"

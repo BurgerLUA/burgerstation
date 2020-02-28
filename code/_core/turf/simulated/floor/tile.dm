@@ -28,6 +28,9 @@
 /turf/simulated/floor/tile/dark
 	color = COLOR_STEEL
 
+/turf/simulated/floor/tile/dark/ish
+	color = "#616060"
+
 /turf/simulated/floor/tile/red
 	color = COLOR_RED
 
