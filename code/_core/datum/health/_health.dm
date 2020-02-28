@@ -225,7 +225,7 @@
 /health/proc/adjust_mana(var/adjust_value)
 
 	var/old_value = mana_current
-	var/new_value = Clamp(mana_current + adjust_value,0,mana_max)
+	var/new_value = clamp(mana_current + adjust_value,0,mana_max)
 
 	if(old_value != new_value)
 		mana_current = new_value
@@ -235,7 +235,7 @@
 
 /health/proc/adjust_stamina(var/adjust_value)
 	var/old_value = stamina_current
-	var/new_value = Clamp(stamina_current + adjust_value,0,stamina_max)
+	var/new_value = clamp(stamina_current + adjust_value,0,stamina_max)
 
 	if(old_value != new_value)
 		stamina_current = new_value

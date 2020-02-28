@@ -28,7 +28,7 @@
 
 		var/original_volume = reagents.volume_current
 
-		var/pieces = floor(original_volume/10)
+		var/pieces = FLOOR(original_volume/10, 1)
 
 		if(has_prefix(icon_state,"dough"))
 			if(pieces <= 1 || original_volume < pieces)

@@ -18,11 +18,11 @@
 	if(value <= 10)
 		icon_state = "[value]"
 	else if(value <= 100)
-		icon_state = "[floor(value/10)*10]"
+		icon_state = "[FLOOR(value/10, 1)*10]"
 	else if(value <= 1000)
-		icon_state = "[floor(value/100)*100]"
+		icon_state = "[FLOOR(value/100, 1)*100]"
 	else if(value <= 5000)
-		icon_state = "[floor(value/1000)*1000]"
+		icon_state = "[FLOOR(value/1000, 1)*1000]"
 	else
 		icon_state = "5000"
 

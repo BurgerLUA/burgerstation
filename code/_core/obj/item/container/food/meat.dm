@@ -104,7 +104,7 @@
 
 		if(has_prefix(icon_state,"meat_"))
 			//Make cutlets.
-			var/pieces = floor(original_volume/10)
+			var/pieces = FLOOR(original_volume/10, 1)
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
@@ -124,7 +124,7 @@
 
 		else if(has_prefix(icon_state,"cutlet"))
 			//Make bacon.
-			var/pieces = floor(original_volume/5)
+			var/pieces = FLOOR(original_volume/5, 1)
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
@@ -149,7 +149,7 @@
 
 		if(has_prefix(icon_state,"meat"))
 			//Make ground beef.
-			var/pieces = floor(original_volume/10)
+			var/pieces = FLOOR(original_volume/10, 1)
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker

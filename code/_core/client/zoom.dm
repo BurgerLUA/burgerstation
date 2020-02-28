@@ -5,7 +5,7 @@
 	else if(desired_zoom_level < 0)
 		desired_zoom_level = initial(zoom_level)
 
-	zoom_level = Clamp(desired_zoom_level,MIN_ZOOM,MAX_ZOOM)
+	zoom_level = clamp(desired_zoom_level,MIN_ZOOM,MAX_ZOOM)
 
 	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE];zoom-mode=normal")
 

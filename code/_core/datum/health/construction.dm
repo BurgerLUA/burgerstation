@@ -41,7 +41,7 @@
 
 	if(. && owner)
 
-		var/damage_number = 3 - floor((health_current/health_max)*3)
+		var/damage_number = 3 - FLOOR((health_current/health_max)*3, 1)
 
 		if(old_damage_number != damage_number)
 

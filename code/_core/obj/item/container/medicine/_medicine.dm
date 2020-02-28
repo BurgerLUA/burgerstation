@@ -37,7 +37,7 @@
 
 	if(!override_icon_state)
 		icon = initial(icon)
-		icon_state = "[initial(icon_state)]_[Clamp(item_count_current,1,icon_state_max)]"
+		icon_state = "[initial(icon_state)]_[clamp(item_count_current,1,icon_state_max)]"
 
 	return ..()
 
@@ -54,7 +54,7 @@
 		if(is_organ(A) && A.loc.health)
 			A.loc.health.update_health()
 
-	var/reagent_transfer = ceiling((1/item_count_max)*reagents.volume_current)
+	var/reagent_transfer = CEILING((1/item_count_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer)
 	reagents.volume_max = item_count_current*10
 

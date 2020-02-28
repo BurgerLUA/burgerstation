@@ -300,7 +300,7 @@
 			var/mob/living/A = attacker
 			if(A.client)
 				for(var/skill in skill_xp_per_damage)
-					var/xp_to_give = floor(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier())
+					var/xp_to_give = FLOOR(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 
@@ -328,7 +328,7 @@
 			return
 
 		var/multiplier = TILE_SIZE * (damage_dealt / victim.health.health_max) * 2
-		multiplier = Clamp(multiplier,0,TILE_SIZE*0.25)
+		multiplier = clamp(multiplier,0,TILE_SIZE*0.25)
 
 		var/attack_direction = get_dir(attacker,victim)
 		var/offset_x = 0

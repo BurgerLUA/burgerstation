@@ -205,7 +205,7 @@
 	if(ai)
 		slowdown_mul = 1
 	else
-		slowdown_mul = Clamp(slow_mul * carry_mod,0.75,4)
+		slowdown_mul = clamp(slow_mul * carry_mod,0.75,4)
 
 	return TRUE
 

@@ -91,7 +91,7 @@
 		normal_x *= 1/max(abs(vel_x),abs(vel_y))
 		normal_y *= 1/max(abs(vel_x),abs(vel_y))
 
-	var/bullet_offset = floor(TILE_SIZE*0.5)
+	var/bullet_offset = FLOOR(TILE_SIZE * 0.5, 1)
 
 	pixel_x = desired_owner.pixel_x + (normal_x * bullet_offset)
 	pixel_y = desired_owner.pixel_y + (normal_y * bullet_offset)
@@ -147,8 +147,8 @@
 
 	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
-	var/current_loc_x = x + floor( ((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE)
-	var/current_loc_y = y + floor( ((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE)
+	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1)
+	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 

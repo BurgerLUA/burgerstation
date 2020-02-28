@@ -31,7 +31,7 @@
 
 /obj/item/weapon/melee/tool/rcd/update_icon()
 	overlays.Cut()
-	var/charge_level = matter_current == 0 ? 0 : floor(1+(matter_current/matter_max)*9)
+	var/charge_level = matter_current == 0 ? 0 : FLOOR(1+(matter_current/matter_max)*9, 1)
 	if(charge_level)
 		var/image/I = new/image(initial(icon),"charge_[charge_level]")
 		overlays += I

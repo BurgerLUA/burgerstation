@@ -7,6 +7,10 @@
 /area/interior/cave
 	name = "cave"
 	icon_state = "cave"
+	random_sounds = list(
+		'sounds/ambient/cave_1.ogg',
+		'sounds/ambient/cave_2.ogg',
+	)
 
 /area/interior/syndicate_base
 	name = "syndicate base"
@@ -119,3 +123,8 @@
 /area/interior/ship/maint
 	name = "\improper Maint"
 	icon_state = "maint"
+	ambient_sound = 'sounds/ambient/vents_loop.ogg'
+
+	random_sounds = list(
+		'sounds/ambient/maintenance.ogg'
+	)

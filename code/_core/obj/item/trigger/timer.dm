@@ -44,7 +44,7 @@
 
 	var/old_time_set = time_set
 
-	time_set = Clamp(time_set + fixed_delta,time_min,time_max)
+	time_set = clamp(time_set + fixed_delta,time_min,time_max)
 
 	if(old_time_set == time_set)
 		caller.to_chat(span("notice","\The [src.name] can't seem to go any [time_set == time_min ? "lower" : "higher"]."))

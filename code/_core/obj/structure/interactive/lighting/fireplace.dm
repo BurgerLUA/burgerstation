@@ -23,7 +23,7 @@
 	if(desired_light_range <= 0)
 		return ..()
 
-	var/light_mod = Clamp(round(desired_light_range-1),0,4)
+	var/light_mod = clamp(round(desired_light_range-1),0,4)
 	var/icon/I = new /icon(icon,icon_state)
 	var/icon/F = new /icon(icon,"fireplace_fire[light_mod]")
 

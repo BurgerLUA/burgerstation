@@ -60,7 +60,7 @@
 			L.spawn_loot_turf(desired_loc)
 
 		var/obj/item/currency/C = new(src.loc)
-		C.value = 1 + floor(health.health_max/10)
+		C.value = 1 + FLOOR(health.health_max/10, 1)
 		C.update_icon()
 		step_rand(C)
 		return TRUE
@@ -285,7 +285,7 @@ mob/living/proc/on_life_slow()
 /mob/living/proc/handle_alpha()
 
 	if(is_sneaking)
-		var/desired_alpha = floor(10 + (1-stealth_mod)*100)
+		var/desired_alpha = FLOOR(10 + (1-stealth_mod)*100, 1)
 		return desired_alpha
 
 	return 255
@@ -296,7 +296,7 @@ mob/living/proc/on_life_slow()
 	if(health)
 
 		if(health_regen_buffer)
-			var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+			var/health_to_regen = clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 			health.adjust_brute_loss(health_to_regen)
 			health.adjust_burn_loss(health_to_regen)
 			health.adjust_tox_loss(health_to_regen)
@@ -304,12 +304,12 @@ mob/living/proc/on_life_slow()
 			health_regen_buffer -= health_to_regen
 
 		if(stamina_regen_buffer)
-			var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
+			var/stamina_to_regen = clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
 			health.adjust_stamina(stamina_to_regen)
 			stamina_regen_buffer -= stamina_to_regen
 
 		if(mana_regen_buffer)
-			var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
+			var/mana_to_regen = clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
 			health.adjust_mana(mana_to_regen)
 			mana_regen_buffer -= mana_to_regen
 

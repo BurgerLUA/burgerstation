@@ -39,16 +39,16 @@
 	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
-	return Clamp(floor( (xp ** (1/experience_power) ) / experience_multiplier),1,max_level)
+	return clamp(FLOOR((xp ** (1/experience_power)) / experience_multiplier, 1),1,max_level)
 
 /experience/proc/level_to_xp(var/level) //Convert level to xp
-	level = Clamp(level,1,max_level)
-	return ceiling( (level*experience_multiplier) ** experience_power,1)
+	level = clamp(level,1,max_level)
+	return CEILING((level*experience_multiplier) ** experience_power,1)
 
 /experience/proc/set_level(var/level)
 	if(!ENABLE_XP)
 		return FALSE
-	experience = level_to_xp(Clamp(level,1,max_level))
+	experience = level_to_xp(clamp(level,1,max_level))
 	return experience
 
 /experience/proc/get_current_level()

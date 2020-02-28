@@ -20,7 +20,7 @@
 		if(is_living(A))
 			var/mob/living/L = A
 			var/steps = max(1,steps_allowed)
-			var/guessed_velocity = Clamp(10*steps*(1 - steps_current/steps),10,40)
+			var/guessed_velocity = clamp(10*steps*(1 - steps_current/steps),10,40)
 			if(did_move)
 				guessed_velocity *= 0.5
 			if(!L.dead)
@@ -45,7 +45,7 @@
 			animate(A,pixel_x = 0, pixel_y = 0, time = 10 * (1/steps) )
 			if(is_living(A))
 				var/mob/living/L = A
-				var/guessed_velocity = Clamp(10*steps*(1 - steps_current/steps),10,40)
+				var/guessed_velocity = clamp(10*steps*(1 - steps_current/steps),10,40)
 				if(!L.dead)
 					L.add_stun(10 + guessed_velocity)
 		else

@@ -8,7 +8,7 @@
 	for(var/v in all_attributes)
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
-		A.Initialize(A.level_to_xp(Clamp(desired_level*level_multiplier,1,100)))
+		A.Initialize(A.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		attributes[A.id] = A
 
 /mob/living/proc/initialize_skills()
@@ -18,7 +18,7 @@
 	for(var/v in all_skills)
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
-		S.Initialize(S.level_to_xp(Clamp(desired_level*level_multiplier,1,100)))
+		S.Initialize(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
 		skills[S.id] = S
 
 /mob/living/proc/update_level()
@@ -50,7 +50,7 @@
 
 	var/old_level = level
 
-	level = Clamp(floor(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1)),1,200)
+	level = clamp(FLOOR(1 + (total_attribute_mod*0.75 + total_skill_mod*0.25)*(LEVEL_CAP-1), 1),1,200)
 
 	return (old_level != 0 && old_level < level)
 

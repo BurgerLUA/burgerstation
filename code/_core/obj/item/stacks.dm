@@ -20,7 +20,7 @@
 	return N
 
 /obj/item/proc/transfer_stacks_to(var/obj/item/I)
-	var/stacks_to_take = Clamp(I.item_count_max - I.item_count_current,0,item_count_current)
+	var/stacks_to_take = clamp(I.item_count_max - I.item_count_current,0,item_count_current)
 	if(!stacks_to_take) //We're full!
 		return TRUE
 	item_count_current -= stacks_to_take
@@ -36,7 +36,7 @@
 
 /obj/item/proc/split_stack()
 
-	var/stacks_to_take = floor(item_count_current/2)
+	var/stacks_to_take = FLOOR(item_count_current/2, 1)
 	if(!stacks_to_take)
 		return FALSE
 
@@ -51,7 +51,7 @@
 
 /obj/item/click_on_object(var/mob/caller,object,location,control,params)
 
-	if(object == src || !is_item(object) || !src.loc)
+	if(object == src || !is_item(object) || !src.loc || get_dist(src,object) > 1)
 		return ..()
 
 	var/obj/item/I = object
@@ -63,7 +63,7 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc))
+	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()
 
 	var/obj/hud/inventory/I = object

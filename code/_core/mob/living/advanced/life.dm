@@ -75,7 +75,7 @@ mob/living/advanced/proc/handle_regen()
 		L.spawn_loot_container(desired_loc)
 
 		var/obj/item/currency/C = new(src.loc)
-		C.value = 1 + floor(health.health_max/10)
+		C.value = 1 + FLOOR(health.health_max/10, 1)
 		C.update_icon()
 		I.add_to_inventory(null,C,FALSE)
 		return TRUE
@@ -112,17 +112,17 @@ mob/living/advanced/proc/handle_regen()
 	var/regened_mana = 0
 
 	if(health_regen_buffer && health)
-		var/health_to_regen = Clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		var/health_to_regen = clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
 		regened_health = -health.adjust_loss_smart(brute=-health_to_regen,burn=-health_to_regen,oxy=-health_to_regen,tox=-health_to_regen)
 		health_regen_buffer -= health_to_regen
 
 	if(stamina_regen_buffer)
-		var/stamina_to_regen = Clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
+		var/stamina_to_regen = clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
 		regened_stamina = health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
 
 	if(mana_regen_buffer)
-		var/mana_to_regen = Clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
+		var/mana_to_regen = clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
 		regened_mana = health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 

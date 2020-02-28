@@ -33,6 +33,10 @@ obj/structure/interactive/chair/stool
 	name = "stool"
 	icon_state = "stool"
 
+obj/structure/interactive/chair/stool/bar
+	name = "bar stool"
+	icon_state = "bar"
+
 
 obj/structure/interactive/chair/wood
 	name = "wooden chair"

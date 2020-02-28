@@ -27,6 +27,19 @@ obj/structure/smooth/rack
 obj/structure/smooth/rack/grey
 	color = COLOR_GREY
 
+obj/structure/smooth/table/fancy
+	name = "fancy table"
+	icon = 'icons/obj/structure/smooth/table/fancy.dmi'
+	pixel_y = -1
+
+	corner_category = "table_fancy"
+
+obj/structure/smooth/table/glass
+	name = "glass table"
+	icon = 'icons/obj/structure/smooth/table/glass.dmi'
+
+	corner_category = "table_glass"
+
 obj/structure/smooth/rack/steel
 	color = COLOR_STEEL
 

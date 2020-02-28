@@ -26,7 +26,7 @@
 	var/original_volume = reagents.volume_current
 
 	if(icon_state == "wheel")
-		var/pieces = floor(original_volume/10)
+		var/pieces = FLOOR(original_volume/10, 1)
 		if(pieces <= 1 || original_volume < pieces)
 			if(is_living(attacker))
 				var/mob/living/L = attacker
@@ -48,7 +48,7 @@
 	else if(has_prefix(icon_state,"block"))
 
 		if(original_volume > 10)
-			var/pieces = floor(original_volume/10)
+			var/pieces = FLOOR(original_volume/10, 1)
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
@@ -95,7 +95,7 @@
 		if(reagents.volume_current > 10)
 			icon_state = "block"
 		else
-			icon_state = "block_slice_[ceiling(reagents.volume_current)]"
+			icon_state = "block_slice_[CEILING(reagents.volume_current, 1)]"
 
 	color = reagents.color
 

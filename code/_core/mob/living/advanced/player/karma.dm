@@ -2,7 +2,7 @@
 
 	var/karma_difference = abs(P.karma - initial(P.karma))
 
-	var/punishment_level = Clamp(ceiling(karma_difference/1000),3,50)
+	var/punishment_level = clamp(CEILING(karma_difference/1000, 1),3,50)
 
 	var/list/turf/valid_turfs = list()
 
@@ -102,7 +102,7 @@
 	var/gained_karma = 0
 
 	if(victim_karma <= 0 && attacker_karma <= 0) //We're both shit.
-		gained_karma = Clamp(-victim_karma*0.5 + attacker_karma,0,1000)
+		gained_karma = clamp(-victim_karma*0.5 + attacker_karma,0,1000)
 	else if(victim_karma > 0 && attacker_karma <= 0) //The victim is good but the attacker is shit.
 		gained_karma = min(-1000,-victim_karma*0.25)
 	else if (victim_karma <= 0 && attacker_karma > 0) //The victim is shit but the attacker is good.

@@ -90,7 +90,7 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list()
 					continue
 				reagent_volume *= 0.5
 				has_purged = TRUE
-				A.reagents.stored_reagents[reagent_id] = floor(reagent_volume)
+				A.reagents.stored_reagents[reagent_id] = FLOOR(reagent_volume, 1)
 			if(has_purged)
 				A.to_chat(span("notice","Your [src.name] beeps..."))
 

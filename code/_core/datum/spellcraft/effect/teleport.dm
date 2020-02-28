@@ -18,8 +18,8 @@
 	var/offset_y = cos(hsv[1])
 	var/strength = hsv[3]*0.01*WORLD_SIZE_SEGMENT*0.5 - WORLD_SIZE_SEGMENT
 
-	final_x += floor(offset_x*strength)
-	final_y += floor(offset_y*strength)
+	final_x += FLOOR(offset_x*strength, 1)
+	final_y += FLOOR(offset_y*strength, 1)
 
 	var/turf/selected_turf = locate(final_x,final_y,1)
 

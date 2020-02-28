@@ -59,16 +59,16 @@
 			alpha = 255
 			maptext = "<center>You have died.</center>"
 		else
-			alpha = Clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
+			alpha = clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
 			maptext = null
 
 		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
 			var/client/C = owner.client
 
 			var/health_loss = 1 - health/max_health
-			var/greyscale_amount = Clamp(( (health_loss**2) - 0.6)*3,0,0.9)
+			var/greyscale_amount = clamp(( (health_loss**2) - 0.6)*3,0,0.9)
 
-			var/light_mod = Clamp(0.5 + health/max_health,0.5,1)
+			var/light_mod = clamp(0.5 + health/max_health,0.5,1)
 			var/a = (1 - greyscale_amount)*light_mod
 			var/b = greyscale_amount*light_mod
 

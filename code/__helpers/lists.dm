@@ -40,7 +40,7 @@
 		for(var/T in types)
 			L[T] = TRUE
 		return L
-	else if(islist(path))
+	else if(is_list(path))
 		var/list/pathlist = path
 		var/list/L = list()
 		if(ignore_root_path)
@@ -315,7 +315,7 @@
 
 /proc/is_assoc_list(var/list/L) //Credit to SpaceManiac for providing this
 
-	if(!islist(L))
+	if(!is_list(L))
 		return FALSE
 
 	for(var/k in L)

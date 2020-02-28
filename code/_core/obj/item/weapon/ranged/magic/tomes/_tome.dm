@@ -48,7 +48,7 @@
 	if(!actual_mana_cost)
 		return 1
 
-	return owner && actual_mana_cost ? floor(owner.health.mana_current / actual_mana_cost) : 0
+	return owner && actual_mana_cost ? FLOOR(owner.health.mana_current / actual_mana_cost, 1) : 0
 
 
 /obj/item/weapon/ranged/magic/tome/handle_ammo(var/mob/caller,var/bullet_position=1)
@@ -80,7 +80,7 @@
 
 	var/mob/living/advanced/A = caller
 
-	power_current = Clamp(power_current + power_gain,0,power_max)
+	power_current = clamp(power_current + power_gain,0,power_max)
 
 	A.mana_regen_delay = max(A.mana_regen_delay,30)
 
@@ -100,7 +100,7 @@
 
 	var/mob/living/advanced/A = caller
 
-	var/damage_mod = Clamp(power_current/power_max,0,1)
+	var/damage_mod = clamp(power_current/power_max,0,1)
 
 	if(object && object.plane < PLANE_HUD && damage_mod >= 0.25)
 		shoot(caller,object,location,params,damage_mod)

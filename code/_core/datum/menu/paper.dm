@@ -46,7 +46,7 @@
 		var/mob/living/advanced/player/P = usr
 
 		if(href_list["change_page"])
-			var/desired_page = Clamp(text2num(href_list["change_page"]),1,length(P.active_paper.data))
+			var/desired_page = clamp(text2num(href_list["change_page"]),1,length(P.active_paper.data))
 			set_text(P,P.active_paper.data[desired_page],P.active_paper.name,desired_page,length(P.active_paper.data))
 
 		if(href_list["close"])

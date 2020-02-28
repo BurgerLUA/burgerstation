@@ -28,7 +28,6 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-
 /obj/item/weapon/ranged/bullet/Destroy()
 
 	qdel(chambered_bullet)
@@ -125,7 +124,7 @@
 /obj/item/weapon/ranged/bullet/New()
 	. = ..()
 
-	if(bullet_count_max)
+	if(bullet_count_max > 0)
 		stored_bullets = new/list(bullet_count_max)
 
 	update_icon()

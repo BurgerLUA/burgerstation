@@ -21,9 +21,12 @@
 
 	if(stored_bullets[1])
 		var/obj/item/bullet_cartridge/B = stored_bullets[1]
-		stored_bullets -= B
-		chambered_bullet = B
-		stored_bullets += null
+		if(B)
+			chambered_bullet = B
+			stored_bullets.Cut(1,2)
+			stored_bullets += null
+		else
+			world.log << "NO BULLET"
 
 	var/area/A = get_area(caller.loc)
 	play_sound(pump_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
@@ -35,3 +38,7 @@
 
 /obj/item/weapon/ranged/bullet/pump/get_ammo_count()
 	return get_real_length(stored_bullets)
+
+
+/obj/item/weapon/ranged/bullet/pump/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
+	return FALSE

@@ -96,7 +96,7 @@ var/global/list/all_shuttle_controlers = list()
 /obj/shuttle_controller/proc/on_shuttle_think()
 
 	if(state == SHUTTLE_STATE_WAITING)
-		display = get_clock_time(floor((default_waiting_time - time)/10))
+		display = get_clock_time(FLOOR((default_waiting_time - time)/10, 1))
 		if(time >= default_waiting_time)
 			launch()
 
@@ -110,7 +110,7 @@ var/global/list/all_shuttle_controlers = list()
 			time = 0
 
 	if(state == SHUTTLE_STATE_TRANSIT)
-		display = get_clock_time(floor((transit_time - time)/10))
+		display = get_clock_time(FLOOR((transit_time - time)/10, 1))
 		if(time >= transit_time)
 			state = SHUTTLE_STATE_LANDING
 			signal_landing(transit_areas[transit_target])

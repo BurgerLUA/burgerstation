@@ -1,6 +1,6 @@
 /obj/decal/
 	name = "decal"
-	plane = PLANE_FLOOR
+	plane = PLANE_TILE
 	mouse_opacity = 0
 	anchored = TRUE
 

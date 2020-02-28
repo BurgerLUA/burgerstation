@@ -29,7 +29,7 @@
 
 	move_mod += move_mod_button
 
-	move_mod = Clamp(move_mod,1,3)
+	move_mod = clamp(move_mod,1,3)
 
 	switch(move_mod)
 		if(1)

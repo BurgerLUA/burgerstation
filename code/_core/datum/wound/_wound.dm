@@ -50,7 +50,7 @@
 	return .
 
 /wound/proc/get_infection_modifier()
-	return Clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
+	return clamp( (infection_level_max*0.5 - infection_level)/infection_level_max, -1, 1)
 
 /wound/proc/on_life()
 
@@ -61,9 +61,9 @@
 	heal_level += life_tick_mod*(bleed_level*0.25)*(1/300)*(1 - infection_mod)
 	bleed_level += life_tick_mod*(1/300)*(infection_level - heal_level)
 
-	infection_level = Clamp(infection_level,0,infection_level_max)
-	heal_level = Clamp(heal_level,0,heal_level_max)
-	bleed_level = Clamp(bleed_level,0,bleed_level_max)
+	infection_level = clamp(infection_level,0,infection_level_max)
+	heal_level = clamp(heal_level,0,heal_level_max)
+	bleed_level = clamp(bleed_level,0,bleed_level_max)
 
 /wound/proc/update_name()
 	//Format should be "Bleeding Fresh Infected Large Wound"
@@ -88,20 +88,20 @@
 	return returning
 
 /wound/proc/get_severity_name()
-	return severity_reference[ceiling(Clamp(severity_level,1,length(severity_reference)),1)]
+	return severity_reference[CEILING(clamp(severity_level,1,length(severity_reference)),1)]
 
 /wound/proc/get_infection_name()
-	var/infection_stage = floor(Clamp(infection_level,1,length(infection_reference)))
+	var/infection_stage = FLOOR(clamp(infection_level,1,length(infection_reference)), 1)
 	return infection_reference[infection_stage]
 
 /wound/proc/get_bleed()
 	return min(bleed_level,severity_level)
 
 /wound/proc/get_bleed_name()
-	return bleed_reference[ceiling(Clamp(bleed_level,1,length(bleed_reference)),1)]
+	return bleed_reference[CEILING(clamp(bleed_level,1,length(bleed_reference)),1)]
 
 /wound/proc/get_heal_name()
-	return heal_reference[ceiling(Clamp(heal_level,1,length(heal_reference)),1)]
+	return heal_reference[CEILING(clamp(heal_level,1,length(heal_reference)),1)]
 
 /wound/proc/get_pain()
 	return (1+severity_level)*(1+(infection_level/infection_level_max))*(1+(bleed_level/bleed_level_max))

@@ -128,7 +128,7 @@
 	maptext = tracked_mob.name
 
 	if(tracked_mob && tracked_mob.health)
-		var/desired_num = floor( (tracked_mob.health.health_current/tracked_mob.health.health_max)*26 )
+		var/desired_num = FLOOR((tracked_mob.health.health_current/tracked_mob.health.health_max) * 26, 1)
 		icon_state = "bar_[desired_num]"
 
 	return ..()

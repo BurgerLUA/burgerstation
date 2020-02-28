@@ -50,7 +50,7 @@
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
 		var/math_mod = (length(M.stored_bullets)/M.bullet_count_max)*5
-		icon_state = "[initial(icon_state)][open ? "_open" : ""]_[ceiling(math_mod)]"
+		icon_state = "[initial(icon_state)][open ? "_open" : ""]_[CEILING(math_mod, 1)]"
 	else
 		icon_state = "[initial(icon_state)][open ? "_open" : ""]"
 
