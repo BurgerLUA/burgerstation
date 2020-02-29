@@ -1,7 +1,6 @@
-/obj/structure/interactive/disposals/inlet
+/obj/structure/interactive/disposals/machine/inlet
 	name = "disposals inlet"
 	icon_state = "intake"
-	connects_down = TRUE
 
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
@@ -13,7 +12,7 @@
 
 	plane = PLANE_OBJ
 
-/obj/structure/interactive/disposals/inlet/set_dir(var/desired_dir,var/force = FALSE)
+/obj/structure/interactive/disposals/machine/inlet/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
 
@@ -25,6 +24,6 @@
 
 	return .
 
-/obj/structure/interactive/disposals/inlet/Crossed(var/atom/movable/O)
+/obj/structure/interactive/disposals/machine/inlet/Crossed(var/atom/movable/O)
 	enter_pipe(O)
 	return ..()

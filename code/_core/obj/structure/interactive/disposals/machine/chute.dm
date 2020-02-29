@@ -1,8 +1,6 @@
-/obj/structure/interactive/disposals/chute
+/obj/structure/interactive/disposals/machine/chute
 	name = "disposals chute"
 	icon_state = "disposal"
-
-	connects_down = TRUE
 
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
@@ -14,7 +12,7 @@
 
 	plane = PLANE_OBJ
 
-/obj/structure/interactive/disposals/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -24,7 +22,7 @@
 	return ..()
 
 
-/obj/structure/interactive/disposals/chute/drop_on_object(var/atom/caller,var/atom/object)
+/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object)
 
 	if(ismovable(object) && caller == object)
 		enter_pipe(object)

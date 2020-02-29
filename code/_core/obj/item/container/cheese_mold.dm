@@ -50,7 +50,7 @@
 	process_count = 0
 	allow_beaker_transfer = TRUE
 	cheese_mix.Cut()
-	stop_thinking()
+	stop_thinking(src)
 
 	return TRUE
 

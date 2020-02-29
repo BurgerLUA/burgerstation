@@ -4,6 +4,9 @@
 
 #define DIRECTIONS_CARDINAL_BIT NORTH | EAST | SOUTH | WEST
 
+#define DOWN 16
+#define UP 32
+
 
 proc/direction_to_text(var/dir)
 	switch(dir)
@@ -23,3 +26,9 @@ proc/direction_to_text(var/dir)
 			return "east"
 		if(WEST)
 			return "west"
+		if(UP)
+			return "UP"
+		if(DOWN)
+			return "DOWN"
+		if(0)
+			return "center"

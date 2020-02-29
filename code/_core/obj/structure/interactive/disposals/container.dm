@@ -19,17 +19,13 @@
 		var/list/offset = direction_to_pixel_offset(pick(DIRECTIONS_ALL))
 		M.throw_self(M,null,null,null,offset[1]*10,offset[2]*10)
 
-	if(last_pipe && last_pipe.disposals_container == src)
-		last_pipe.disposals_container = null
-
-	if(istype(src.loc,/obj/structure/interactive/disposals/))
-		var/obj/structure/interactive/disposals/D = src.loc
-		if(D.disposals_container == src)
-			D.disposals_container = null
-
-	last_pipe = null
-
 	return ..()
+
+
+/obj/disposals_container/proc/move_to_pipe(var/obj/structure/interactive/disposals/D)
+	last_pipe = loc
+	src.force_move(D)
+	return TRUE
 
 /obj/disposals_container/think()
 
@@ -40,29 +36,46 @@
 
 	var/obj/structure/interactive/disposals/D = loc
 
-	if(sorting_tag != "none")
-		for(var/obj/structure/interactive/disposals/P in D.connected_pipes)
-			if(D.connected_pipes[P] != sorting_tag)
+	//Check which part of the pipe to move OUT of.
+	var/list/connected_pipes = D.get_connections()
+	//print_list("Connected Pipes",connected_pipes)
+
+	world.log << "Starting check for [D.name] ([D.type])."
+	for(var/dir_string in connected_pipes)
+		world.log << "STEP 1: Checking connected_pipes [dir_string]..."
+		var/dir_number = text2num(dir_string)
+		if(!isnum(dir_number))
+			LOG_ERROR("NOT A NUMBER!")
+			continue
+		var/passcode = connected_pipes[dir_string]
+		if(!passcode)
+			LOG_ERROR("YOU CAN'T GET OUT THAT WAY!")
+			continue
+		if(D.sorting_tag)
+			if(!istext(passcode))
+				LOG_ERROR("WRONG PASSCODE!")
 				continue
-			if(P.disposals_container)
+			if(passcode != sorting_tag)
+				LOG_ERROR("WRONG PASSCODE!")
 				continue
-			D.disposals_container = null
-			src.last_pipe = D
-			src.force_move(P)
-			P.disposals_container = src
-			P.on_container_enter(src)
+		var/turf/found_turf = get_step(src,dir_number)
+		for(var/obj/structure/interactive/disposals/D2 in found_turf)
+			world.log << "STEP 2: Checking connected_pipes_2 [dir_string]..."
+			if(D2 == D)
+				LOG_ERROR("SAME PIPE!")
+				continue
+			if(last_pipe == D2)
+				LOG_ERROR("SAME PIPE AS LAST!")
+				continue
+			var/list/connected_pipes_2 = D2.get_connections()
+			var/desired_dir = turn(dir_number,180)
+			if(isnull(connected_pipes_2["[desired_dir]"]))
+				LOG_ERROR("CAN'T PHYSICALLY CONNECT TO THIS, AS IT DOESN'T HAVE A [direction_to_text(desired_dir)]([desired_dir]) CONNECTION")
+				continue
+			world.log << "STEP: 3 Moving to [dir_number]."
+			move_to_pipe(D2)
 			return TRUE
 
-	for(var/obj/structure/interactive/disposals/P in D.connected_pipes) //I want to move to P.
-		if(P == src.last_pipe)
-			continue
-		if(P.disposals_container)
-			continue
-		D.disposals_container = null
-		src.last_pipe = D
-		src.force_move(P)
-		P.disposals_container = src
-		P.on_container_enter(src)
-		return TRUE
+	stop_thinking(src)
 
 	return FALSE
