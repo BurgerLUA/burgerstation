@@ -13,13 +13,17 @@
 
 
 /obj/structure/interactive/disposals/update_icon()
-	name = "[initial(name)] ([sorting_tab_label])"
+
+	if(sorting_tab_label)
+		name = "[initial(name)] ([sorting_tab_label])"
+	else
+		name = initial(name)
+
 	return ..()
 
 /obj/structure/interactive/disposals/proc/enter_pipe(var/atom/movable/M)
 
 	if(istype(M,/obj/disposals_container/))
-		LOG_ERROR("OH NO.")
 		return FALSE
 
 	var/obj/disposals_container/disposals_container = new(src)

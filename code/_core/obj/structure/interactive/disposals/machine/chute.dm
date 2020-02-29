@@ -5,27 +5,47 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	density_north = FALSE
-	density_south = FALSE
-	density_east  = FALSE
-	density_west  = FALSE
+	density_north = TRUE
+	density_south = TRUE
+	density_east  = TRUE
+	density_west  = TRUE
 
-	plane = PLANE_OBJ
+	var/disposals_countdown = SECONDS_TO_DECISECONDS(10)
+
+/obj/structure/interactive/disposals/machine/chute/think()
+
+	if(disposals_countdown <= 0)
+		var/obj/disposals_container/disposals_container = new(src)
+		disposals_container.Initialize()
+		disposals_container.sorting_tag = "disposals"
+		for(var/atom/movable/M in contents)
+			M.force_move(disposals_container)
+		stop_thinking(src)
+		disposals_countdown = initial(disposals_countdown)
+		flick("disposal-flush",src)
+
+	disposals_countdown--
+
+	return TRUE
+
+/obj/structure/interactive/disposals/machine/chute/Crossed(var/atom/movable/O)
+	O.force_move(src)
+	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
 	if(is_item(object))
 		var/obj/item/I = object
 		I.drop_item(get_turf(src))
-		enter_pipe(I)
-
 	return ..()
-
 
 /obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object)
 
-	if(ismovable(object) && caller == object)
-		enter_pipe(object)
+	INTERACT_CHECK
+
+	if(ismob(object) && caller == object)
+		var/mob/M = object
+		M.force_move(src)
+		start_thinking(src)
 		return TRUE
 
 	return ..()
