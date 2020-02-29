@@ -6,6 +6,11 @@
 
 	anchored = TRUE
 
+/obj/structure/interactive/disposals/Initialize()
+	. = ..()
+	update_icon()
+	return .
+
 
 /obj/structure/interactive/disposals/update_icon()
 	name = "[initial(name)] ([sorting_tab_label])"

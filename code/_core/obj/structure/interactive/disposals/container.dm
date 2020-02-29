@@ -42,25 +42,27 @@
 
 	world.log << "Starting check for [D.name] ([D.type])."
 	for(var/dir_string in connected_pipes)
-		world.log << "STEP 1: Checking connected_pipes [dir_string]..."
 		var/dir_number = text2num(dir_string)
 		if(!isnum(dir_number))
 			LOG_ERROR("NOT A NUMBER!")
 			continue
+		world.log << "STEP 1: Checking connected_pipe [direction_to_text(dir_number)]..."
 		var/passcode = connected_pipes[dir_string]
 		if(!passcode)
 			LOG_ERROR("YOU CAN'T GET OUT THAT WAY!")
 			continue
-		if(D.sorting_tag)
-			if(!istext(passcode))
-				LOG_ERROR("WRONG PASSCODE!")
-				continue
-			if(passcode != sorting_tag)
-				LOG_ERROR("WRONG PASSCODE!")
-				continue
-		var/turf/found_turf = get_step(src,dir_number)
+
+		if(istext(passcode) && passcode != sorting_tag)
+			LOG_ERROR("Wrong passcode.")
+			continue
+
+		if(sorting_tag && sorting_tag == D.sorting_tag && (!istext(passcode) || passcode != sorting_tag))
+			LOG_ERROR("NO, GO THROUGH THAT DOOR INSTEAD!")
+			continue
+
+		var/turf/found_turf = get_step(src,dir_number) //GOING INTO THIS PIPE!
 		for(var/obj/structure/interactive/disposals/D2 in found_turf)
-			world.log << "STEP 2: Checking connected_pipes_2 [dir_string]..."
+			world.log << "STEP 2: Checking connected_pipes_2 [direction_to_text(dir_number)]..."
 			if(D2 == D)
 				LOG_ERROR("SAME PIPE!")
 				continue
@@ -68,7 +70,7 @@
 				LOG_ERROR("SAME PIPE AS LAST!")
 				continue
 			var/list/connected_pipes_2 = D2.get_connections()
-			var/desired_dir = turn(dir_number,180)
+			var/desired_dir = dir_number ? turn(dir_number,180) : 0
 			if(isnull(connected_pipes_2["[desired_dir]"]))
 				LOG_ERROR("CAN'T PHYSICALLY CONNECT TO THIS, AS IT DOESN'T HAVE A [direction_to_text(desired_dir)]([desired_dir]) CONNECTION")
 				continue

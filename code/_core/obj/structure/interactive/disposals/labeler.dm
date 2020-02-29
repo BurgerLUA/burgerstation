@@ -7,6 +7,7 @@
 	if(istype(A,/obj/disposals_container/))
 		var/obj/disposals_container/C = A
 		C.sorting_tag = sorting_tab_label
+		world.log << "LABELED CONTAINER!"
 
 	return ..()
 

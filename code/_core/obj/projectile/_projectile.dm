@@ -182,6 +182,8 @@
 			return FALSE
 
 		for(var/atom/movable/A in current_loc.contents)
+			if(A == desired_owner || A == desired_weapon)
+				continue
 			var/atom/collide_atom = A.projectile_should_collide(src,current_loc,previous_loc)
 			if(!collide_atom)
 				continue
