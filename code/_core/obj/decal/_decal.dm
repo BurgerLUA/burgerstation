@@ -3,6 +3,8 @@
 	plane = PLANE_TILE
 	mouse_opacity = 0
 	anchored = TRUE
+	plane = PLANE_TILE
+	layer = LAYER_FLOOR_DECAL
 
 /obj/decal/directions
 	icon = 'icons/obj/decal/station_markers.dmi'

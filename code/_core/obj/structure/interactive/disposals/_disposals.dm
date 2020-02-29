@@ -1,57 +1,3 @@
-#define BOTH_ANGLES(x) list(x.dir,turn(x.dir,180)
-
-/obj/disposals_container
-	name = "disposals container"
-	desc = "If you are seeing this, then something went wrong."
-	var/obj/structure/interactive/disposals/last_pipe
-
-/obj/disposals_container/Initialize()
-	start_thinking(src)
-	return ..()
-
-/obj/disposals_container/Destroy()
-
-	for(var/atom/movable/M in contents)
-		if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
-			M.force_move(get_turf(src))
-			continue
-		var/list/offset = direction_to_pixel_offset(pick(DIRECTIONS_ALL))
-		M.throw_self(M,null,null,null,offset[1]*10,offset[2]*10)
-
-	if(last_pipe && last_pipe.disposals_container == src)
-		last_pipe.disposals_container = null
-
-	if(istype(src.loc,/obj/structure/interactive/disposals/))
-		var/obj/structure/interactive/disposals/D = src.loc
-		if(D.disposals_container == src)
-			D.disposals_container = null
-
-	last_pipe = null
-
-	return ..()
-
-/obj/disposals_container/think()
-
-	if(!istype(loc,/obj/structure/interactive/disposals/))
-		LOG_ERROR("WARNING: Disposal Container wasn't located in a pipe!")
-		qdel(src)
-		return FALSE
-
-	var/obj/structure/interactive/disposals/D = loc
-	for(var/obj/structure/interactive/disposals/P in D.connected_pipes) //I want to move to P.
-		if(P == src.last_pipe)
-			continue
-		if(P.disposals_container)
-			continue
-		D.disposals_container = null
-		src.last_pipe = D
-		src.force_move(P)
-		P.disposals_container = src
-		P.on_container_enter(src)
-		return TRUE
-
-	return FALSE
-
 /obj/structure/interactive/disposals/
 	icon = 'icons/obj/structure/disposals.dmi'
 	var/obj/disposals_container/disposals_container
@@ -63,10 +9,21 @@
 	var/connects_up = FALSE
 	var/connects_down = FALSE
 	var/junction_angle = 0
+	var/sorting_tag = null //Give it a sorting tag if this is also a junction.
+	var/sorting_tab_label = null //If this goes into the pipe, give it a label if any.
 
 	anchored = TRUE
 
+
+/obj/structure/interactive/disposals/update_icon()
+	name = "[initial(name)] ([sorting_tab_label])"
+	return ..()
+
 /obj/structure/interactive/disposals/proc/on_container_enter(var/obj/disposals_container/C)
+
+	if(sorting_tab_label && sorting_tab_label != "none")
+		C.sorting_tag = sorting_tab_label
+
 	return TRUE
 
 /obj/structure/interactive/disposals/Destroy()
@@ -122,25 +79,25 @@
 		var/turf/T = get_step(src,dir)
 		var/obj/structure/interactive/disposals/D = locate() in T.contents
 		if(D && (D.get_connection_dir() & turn(dir,180)) )
-			. += D
+			.[D] = sorting_tag ? sorting_tag : "none"
 
-	else if(connects_dir)
+	if(connects_dir)
 		for(var/desired_dir in DIRECTIONS_CARDINAL)
 			if(!(src_connection_dir & desired_dir))
 				continue
 			var/turf/T = get_step(src,desired_dir)
 			for(var/obj/structure/interactive/disposals/D in T.contents)
 				if(D.get_connection_dir() & turn(desired_dir,180))
-					. += D
+					.[D] = TRUE
 				else if(D.junction_angle && src_connection_dir & turn(D.dir,-D.junction_angle))
-					. += D
+					.[D] = TRUE
 
 	if(connects_up || connects_down)
 		for(var/obj/structure/interactive/disposals/D in loc.contents)
 			if(D == src)
 				continue
 			if( (src.connects_up && D.connects_down) || (src.connects_down && D.connects_up) )
-				. += D
+				.[D] = TRUE
 
 	return .
 

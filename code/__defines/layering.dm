@@ -6,6 +6,7 @@
 #define LAYER_GROUND_SCENERY 2
 
 #define LAYER_WALL 3
+#define LAYER_WALL_DECAL 3.1
 
 #define LAYER_TABLE 4
 

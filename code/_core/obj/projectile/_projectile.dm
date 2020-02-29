@@ -102,7 +102,7 @@
 		M.pixel_x = pixel_x
 		M.pixel_y = pixel_y
 		M.pixel_z = pixel_z
-		var/new_angle = arctan(vel_x,vel_y) - 90
+		var/new_angle = ATAN2(vel_x,vel_y) - 90
 		M.transform = turn(M.transform,-new_angle)
 
 	pixel_x_float = pixel_x
@@ -135,7 +135,7 @@
 
 /obj/projectile/update_icon()
 	var/icon/I = icon(icon,icon_state = icon_state)
-	var/new_angle = arctan(vel_x,vel_y) - 90
+	var/new_angle = ATAN2(vel_x,vel_y) - 90
 	I.Turn(-new_angle)
 	icon = I
 

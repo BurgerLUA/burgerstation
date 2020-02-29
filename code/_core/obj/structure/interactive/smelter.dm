@@ -5,6 +5,8 @@
 
 	plane = PLANE_WALL_ATTACHMENTS
 
+	pixel_y = 2
+
 /obj/structure/interactive/smelter/Initialize()
 
 	pixel_y = 6
