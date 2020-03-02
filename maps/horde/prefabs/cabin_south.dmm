@@ -1,7 +1,7 @@
 "a" = (/turf/simulated/wall/metal,/area/interior/ship/dorm)
 "b" = (/obj/structure/interactive/computer/wall/dorms{icon_state = "dorm_available"; dir = 1},/turf/simulated/wall/metal,/area/interior/ship/dorm)
 "c" = (/obj/structure/interactive/door/airlock/station/private,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
-"d" = (/obj/structure/interactive/disposals/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 4},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"d" = (/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 4},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "e" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "f" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/computer/console/old/station_job,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "g" = (/obj/structure/interactive/lighting/tube{icon_state = "tube_light"; dir = 8},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)

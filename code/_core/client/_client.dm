@@ -7,6 +7,7 @@ var/global/list/all_clients = list()
 	var/button_tracker/button_tracker
 	var/macros/macros
 
+	//control_freak = CONTROL_FREAK_ALL //Just for now as I don't want people's binds to get messed up
 	fps = FPS_CLIENT
 	preload_rsc = 2
 

@@ -184,7 +184,7 @@
 		if(D)
 			A.force_move(get_turf(D))
 		else
-			var/obj/structure/interactive/bed/sleeper/cryo/C = pick(cryo_spawnpoints)
+			var/obj/structure/interactive/bed/sleeper/C = length(cryo_spawnpoints) ? pick(cryo_spawnpoints) : pick(backup_spawnpoints)
 			A.force_move(get_turf(C))
 			C.buckle(A,silent=TRUE)
 

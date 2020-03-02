@@ -19,6 +19,7 @@
 		"R" = "throw",
 		"Q" = "drop",
 		"C" = "quick_self",
+		"E" = "quick_holder",
 		"Z" = "zoom",
 		"Space" = "kick",
 
@@ -91,6 +92,8 @@
 				owner.mob.attack_flags |= ATTACK_GRAB
 			if("quick_self")
 				owner.mob.attack_flags |= ATTACK_SELF
+			if("quick_holder")
+				owner.mob.attack_flags |= ATTACK_OWNER
 			if("zoom")
 				owner.is_zoomed = TRUE
 
@@ -121,6 +124,8 @@
 				owner.mob.attack_flags &= ~ATTACK_GRAB
 			if("quick_self")
 				owner.mob.attack_flags &= ~ATTACK_SELF
+			if("quick_holder")
+				owner.mob.attack_flags &= ~ATTACK_OWNER
 			if("zoom")
 				owner.is_zoomed = FALSE
 				owner.pixel_x = 0

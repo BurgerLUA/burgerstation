@@ -10,6 +10,9 @@
 	start_thinking(src)
 	return ..()
 
+/obj/disposals_container/Exit(atom/movable/O, atom/newloc)
+	return FALSE //NO ESCAPE
+
 /obj/disposals_container/Destroy()
 
 	for(var/atom/movable/M in contents)

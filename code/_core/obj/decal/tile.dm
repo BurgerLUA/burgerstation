@@ -18,3 +18,6 @@
 /obj/decal/tile/cross/pink
 	color = "#AF6868"
 
+
+/obj/decal/tile/cross/medical
+	color = COLOR_MEDICAL

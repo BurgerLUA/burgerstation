@@ -146,6 +146,8 @@ dmm_suite
 				topTurf.underlays.Add(underlay)
 
 		loadModel(atomPath, list/attributes, list/strings, xcrd, ycrd, zcrd)
+			if(copytext(atomPath,-1) == "/")
+				atomPath = copytext(atomPath,1,-1)
 			// Cancel if atomPath is a placeholder (DMM_IGNORE flags used to write file)
 			if(ispath(atomPath, /dmm_suite/clear_turf) || ispath(atomPath, /dmm_suite/clear_area))
 				return

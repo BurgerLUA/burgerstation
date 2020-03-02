@@ -7,7 +7,7 @@
 "g" = (/obj/structure/interactive/vendor/autolocker,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "h" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 6},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "i" = (/obj/structure/interactive/computer/wall/dorms,/turf/simulated/wall/metal,/area/interior/ship/dorm)
-"j" = (/obj/structure/interactive/disposals/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 8},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"j" = (/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 8},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "k" = (/obj/structure/interactive/door/airlock/station/private,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 "m" = (/obj/structure/interactive/intercom{icon_state = "intercom"; dir = 8},/turf/simulated/wall/metal,/area/interior/ship/dorm)
 

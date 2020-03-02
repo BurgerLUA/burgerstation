@@ -14,6 +14,8 @@ var/global/cell_unit_number = 0
 	icon = 'icons/obj/markers/prefab_5x5.dmi'
 	var/door_code = 0
 	var/unit_number = 1
+	var/map_size_x = 5
+	var/map_size_y = 5
 
 
 /obj/marker/map/cell/post_map_load()
@@ -23,7 +25,7 @@ var/global/cell_unit_number = 0
 	door_code = rand(1111,9999)
 
 	var/turf/T1 = locate(x,y,z)
-	var/turf/T2 = locate(x+5,y+5,z)
+	var/turf/T2 = locate(x+map_size_x,y+map_size_y,z)
 	for(var/turf/T in block(T1,T2))
 		for(var/atom/A in T.contents)
 			if(istype(A,/obj/structure/interactive/computer/console/old/station_job/))
@@ -43,3 +45,33 @@ var/global/cell_unit_number = 0
 /obj/marker/map/cell/south
 	map_file = 'maps/horde/prefabs/cabin_south.dmm'
 	icon_state = "cell_south"
+
+
+/obj/marker/map/cell/north/double
+	map_file = 'maps/horde/prefabs/cabin_double_north.dmm'
+	icon = 'icons/obj/markers/prefab_6x5.dmi'
+	icon_state = "cell_north"
+	map_size_x = 6
+	map_size_y = 5
+
+
+/obj/marker/map/cell/south/double
+	map_file = 'maps/horde/prefabs/cabin_double_north.dmm'
+	icon = 'icons/obj/markers/prefab_6x5.dmi'
+	icon_state = "cell_south"
+	map_size_x = 6
+	map_size_y = 5
+
+/obj/marker/map/cell/east
+	map_file = 'maps/horde/prefabs/cabin_quadruple_east.dmm'
+	icon = 'icons/obj/markers/prefab_10x5.dmi'
+	icon_state = "cell_east"
+	map_size_x = 10
+	map_size_y = 5
+
+/obj/marker/map/cell/west
+	map_file = 'maps/horde/prefabs/cabin_quadruple_west.dmm'
+	icon = 'icons/obj/markers/prefab_10x5.dmi'
+	icon_state = "cell_west"
+	map_size_x = 10
+	map_size_y = 5

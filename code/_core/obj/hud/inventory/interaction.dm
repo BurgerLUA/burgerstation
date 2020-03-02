@@ -56,6 +56,13 @@
 				I.update_icon()
 				return TRUE
 
+	if(caller.attack_flags & ATTACK_OWNER)
+		if(defer_self != src)
+			defer_self.click_on_object(caller,caller,location,control,params)
+		else if(object != src)
+			object.click_on_object(caller,caller,location,control,params)
+		return TRUE
+
 	if((caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 

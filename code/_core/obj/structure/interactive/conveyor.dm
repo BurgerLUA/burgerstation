@@ -68,6 +68,13 @@
 
 	var/turf/desired_turf = get_step(src,desired_dir) //The turf where we're going
 
+	var/obj/structure/interactive/limiter/L = locate() in desired_turf.contents
+
+	if(L)
+		var/obj/item/I = locate() in desired_turf.contents
+		if(I)
+			return TRUE
+
 	if(desired_turf)
 		var/conveyor_limit = 5
 		for(var/atom/movable/M in loc.contents)

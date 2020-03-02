@@ -74,15 +74,17 @@
 
 	if(is_container)
 
-		if(is_inventory(src.loc) && !is_dynamic_inventory(src.loc) && is_inventory(object) && is_advanced(caller) && length(inventories) && get_dist(caller,src) <= 1 && click_self(caller,location,control,params)) //Open the inventory
-			return TRUE
-
-		if(is_inventory(object))
+		if(is_inventory(object)) //We're being clicked on by an inventory.
+			INTERACT_CHECK
 			var/obj/hud/inventory/I = object
+			if(is_inventory(src.loc) && !is_dynamic_inventory(src.loc))
+				click_self(caller)
+				return TRUE
 			I.add_object(src)
 			return TRUE
 
-		if(is_item(object)) //Add to the inventory
+		if(is_item(object)) //We're being clicked on by an object.
+			INTERACT_CHECK
 			add_to_inventory(caller,object,TRUE)
 			return TRUE
 

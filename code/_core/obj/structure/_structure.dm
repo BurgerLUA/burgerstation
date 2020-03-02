@@ -97,6 +97,9 @@
 
 		var/direction = get_dir(OldLoc,NewLoc)
 
+		if(density_north && density_south && density_east && density_west) //Just in case.
+			return TRUE
+
 		if((direction & NORTH) && density_north)
 			return FALSE
 

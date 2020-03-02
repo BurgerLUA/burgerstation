@@ -11,7 +11,6 @@
 	update_icon()
 	return .
 
-
 /obj/structure/interactive/disposals/update_icon()
 
 	if(sorting_tab_label)
