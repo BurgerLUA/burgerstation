@@ -36,3 +36,5 @@ var/global/list/obj/hud/button/chargen_buttons = list(
 	user_colors = FALSE
 
 	var/chargen_flags = CHARGEN_NONE
+
+	has_quick_function = FALSE

@@ -5,6 +5,8 @@
 
 	flags = FLAGS_HUD_SPECIAL
 
+	has_quick_function = FALSE
+
 /obj/hud/button/keypad/close
 	name = "close keypad"
 	icon_state = "close_inventory"

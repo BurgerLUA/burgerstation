@@ -6,6 +6,8 @@
 
 	user_colors = FALSE
 
+	has_quick_function = FALSE
+
 
 /obj/hud/button/question/skip_tutorial
 	name = "Skip Tutorial?"

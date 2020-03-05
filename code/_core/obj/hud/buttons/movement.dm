@@ -59,3 +59,25 @@
 	update_icon()
 
 	return ..()
+
+/obj/hud/button/rest
+	name = "rest"
+	desc = "No sleeping on the job!"
+	desc_extended = "Press to toggle laying down."
+	icon_state = "rest"
+	screen_loc = "RIGHT-1,BOTTOM+1"
+
+	flags = FLAGS_HUD_MOB
+
+/obj/hud/button/rest/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		world.log << "Rest time: [L.rest_time]."
+		if(L.rest_time >= 0)
+			L.rest_time = -5
+		else if(L.rest_time == -1)
+			L.rest_time = 0
+		L.check_status_effects()
+
+	return ..()

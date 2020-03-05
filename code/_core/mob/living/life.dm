@@ -143,6 +143,15 @@
 		remove_status(FLAG_STATUS_FATIGUE)
 		on_unfatigued()
 
+	//Rest
+	if(!(status & FLAG_STATUS_REST) && (rest_time > 0 || rest_time <= -1))
+		add_status(FLAG_STATUS_REST)
+		on_rest()
+
+	if(status & FLAG_STATUS_REST && rest_time <= 0 && rest_time > -1)
+		remove_status(FLAG_STATUS_REST)
+		on_unrest()
+
 	//Sleep
 	if(!(status & FLAG_STATUS_SLEEP) && (sleep_time > 0 || sleep_time == -1))
 		add_status(FLAG_STATUS_SLEEP)
@@ -213,6 +222,12 @@
 		if(crit_time != -1)
 			crit_time = max(0,crit_time - amount_to_remove)
 
+		if(rest_time != -1)
+			if(rest_time > 0)
+				rest_time = max(0,rest_time - amount_to_remove)
+			else
+				rest_time = min(-1,rest_time + amount_to_remove)
+
 		if(stun_time != -1)
 			stun_time = max(0,stun_time - amount_to_remove)
 
@@ -245,7 +260,7 @@
 
 	var/desired_horizontal = FALSE
 
-	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP || status & FLAG_STATUS_CRIT)
+	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP || status & FLAG_STATUS_CRIT || status & FLAG_STATUS_REST)
 		desired_horizontal = TRUE
 
 	if(desired_horizontal != horizontal)

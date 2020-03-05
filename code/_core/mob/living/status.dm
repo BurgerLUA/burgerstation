@@ -5,6 +5,12 @@
 /mob/living/proc/on_unstaggered()
 	return TRUE
 
+/mob/living/proc/on_rest()
+	return TRUE
+
+/mob/living/proc/on_unrest()
+	return TRUE
+
 /mob/living/proc/on_stunned()
 	src.visible_message("\The [src.name] gets knocked down!","You get knocked down! You're stunned!")
 	return TRUE

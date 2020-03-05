@@ -8,7 +8,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-	var/obj/item/stored_item
+	var/atom/stored_atom
 
 	var/active = FALSE
 
@@ -21,8 +21,10 @@
 
 	mouse_opacity = 2
 
+	has_quick_function = FALSE
+
 /obj/hud/button/slot/Destroy()
-	stored_item = null
+	stored_atom = null
 	return ..()
 
 /obj/hud/button/slot/update_icon()
@@ -30,9 +32,9 @@
 	.= ..()
 
 	overlays.Cut()
-	if(stored_item)
-		var/image/I = new/image(stored_item.icon,stored_item.icon_state)
-		I.appearance = stored_item.appearance
+	if(stored_atom)
+		var/image/I = new/image(stored_atom.icon,stored_atom.icon_state)
+		I.appearance = stored_atom.appearance
 		I.plane = PLANE_HUD_OBJ
 		overlays += I
 
@@ -45,15 +47,12 @@
 
 /obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
 
-	if(!stored_item)
-		return FALSE
-
-	if(!is_valid(stored_item))
+	if(stored_atom && stored_atom.qdeleting)
 		clear_object(caller)
 		return FALSE
 
-	if(stored_item.quick_function_type == FLAG_QUICK_INSTANT)
-		stored_item.quick(caller)
+	if(stored_atom && stored_atom.quick_function_type == FLAG_QUICK_INSTANT)
+		stored_atom.quick(caller)
 		caller.quick_mode = 0
 		spawn()
 			color = "#00FF00"
@@ -74,45 +73,53 @@
 	return TRUE
 
 /obj/hud/button/slot/proc/clear_object(var/mob/living/advanced/A)
-	if(stored_item)
-		A.to_chat(span("notice","\The [stored_item.name] was unbound from slot [icon_state]."))
-		stored_item = null
+	if(stored_atom)
+		A.to_chat(span("notice","\The [stored_atom.name] was unbound from slot [icon_state]."))
+		stored_atom = null
 		update_icon()
 		//animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
 
 /obj/hud/button/slot/dropped_on_by_object(var/atom/caller,var/atom/object)
 
-	if(stored_item)
-		stored_item.dropped_on_by_object(caller,object)
+	if(stored_atom)
+		stored_atom.dropped_on_by_object(caller,object)
 		return TRUE
 
 	return clicked_on_by_object(caller,object)
 
 /obj/hud/button/slot/clicked_on_by_object(caller,object,location,control,params)
+	//store_atom(caller,object,location,control,params)
+	clear_object(caller)
+	return ..()
+
+/obj/hud/button/slot/proc/store_atom(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()
 
 	var/mob/living/advanced/A = caller
 
-	clear_object(A)
-
-	if(!is_item(object))
+	if(!is_atom(object))
 		return ..()
 
-	var/obj/item/I = object
+	var/atom/I = object
 
 	if(!I.has_quick_function)
 		A.to_chat(span("notice","\The [I.name] doesn't have a quick bind function."))
 		return TRUE
 
-	stored_item = object
+	clear_object(A)
+	world.log << "CLEARING IN STORE ATOM!"
+
+	stored_atom = object
 	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
 	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
+	active = FALSE
 	update_icon()
 
-	return ..()
+
+	return TRUE
 
 /obj/hud/button/slot/A
 	id = "1"

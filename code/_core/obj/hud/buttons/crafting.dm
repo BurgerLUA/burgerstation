@@ -10,6 +10,8 @@
 
 	var/obj/item/crafting/stored_crafting_table
 
+	has_quick_function = FALSE
+
 /obj/hud/button/crafting/Destroy()
 	stored_crafting_table = null
 	return ..()

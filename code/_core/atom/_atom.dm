@@ -56,6 +56,11 @@
 
 	var/ignore_incoming_collisons = FALSE
 
+	var/has_quick_function = FALSE
+	var/quick_function_type =  FLAG_QUICK_INSTANT
+	//FLAG_QUICK_INSTANT
+	//FLAG_QUICK_TOGGLE
+
 /atom/proc/should_smooth_with(var/atom/A)
 	return (A.corner_category == corner_category) || (is_unsimulated(A))
 

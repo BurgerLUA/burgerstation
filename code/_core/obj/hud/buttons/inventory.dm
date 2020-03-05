@@ -8,6 +8,8 @@
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL
 
+	has_quick_function = FALSE
+
 /obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
@@ -67,6 +69,8 @@
 	screen_loc = "LEFT,BOTTOM"
 
 	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY
+
+	has_quick_function = FALSE
 
 /obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

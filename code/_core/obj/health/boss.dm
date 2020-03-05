@@ -24,6 +24,8 @@
 
 	user_colors = FALSE
 
+	has_quick_function = FALSE
+
 /obj/hud/button/boss_health/Destroy()
 	target_boss = null
 	return ..()

@@ -6,6 +6,8 @@
 
 	flags = FLAGS_HUD_MOB
 
+	has_quick_function = FALSE
+
 /obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_observer(caller))
@@ -27,6 +29,8 @@
 	screen_loc = "CENTER+0.5,BOTTOM"
 
 	flags = FLAGS_HUD_MOB
+
+	has_quick_function = FALSE
 
 /obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(!is_observer(caller))

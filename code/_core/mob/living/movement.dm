@@ -39,6 +39,9 @@
 	if(status & FLAG_STATUS_FATIGUE)
 		. *= 3
 
+	if(status & FLAG_STATUS_REST)
+		. *= 3
+
 	if(is_sneaking)
 		. *= (2 - stealth_mod*0.5)
 

@@ -43,3 +43,6 @@
 //Prevents death by reducing the death threshold relative the the current value.
 //Move faster.
 
+#define FLAG_STATUS_REST 0x100
+//Move delay multiplied by 4.
+//Cannot dodge, parry, block, and you have a 100% chance to be hit.

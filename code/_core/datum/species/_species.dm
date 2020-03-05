@@ -76,7 +76,9 @@
 
 		/obj/hud/button/ping,
 
-		/obj/hud/button/message/
+		/obj/hud/button/message,
+
+		/obj/hud/button/rest
 
 	)
 

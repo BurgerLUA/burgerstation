@@ -10,6 +10,8 @@
 
 	icon = 'icons/hud/widget.dmi'
 
+	has_quick_function = FALSE
+
 /obj/hud/button/widget/experience
 	icon_state = "experience"
 

@@ -38,21 +38,9 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(quick_mode && !right_hand.get_top_held_object())
+	if(quick_mode && !right_hand.get_top_held_object() && handle_quick(object,location,control,params))
+		return TRUE
 
-		for(var/obj/hud/button/slot/B in buttons)
-			if(B.id == quick_mode)
-				if(!B.stored_item || !B.stored_item.quick_function_type == FLAG_QUICK_TOGGLE)
-					break
-				if(!is_inventory(B.stored_item.loc))
-					B.clear_object(src)
-					break
-				var/obj/hud/inventory/I = B.stored_item.loc
-				if(I.owner != src)
-					B.clear_object(src)
-					break
-				B.stored_item.quick(src,location,control,params)
-				return TRUE
 
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		for(var/obj/hud/inventory/I in inventory)
@@ -65,6 +53,33 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 
 	return FALSE
 
+mob/living/advanced/proc/handle_quick(var/atom/object,location,control,params)
+
+	for(var/obj/hud/button/slot/B in buttons)
+		if(B.id == quick_mode)
+			if(!B.stored_atom && is_button(object))
+				B.store_atom(src,object,location,control,params)
+				break
+			if(!B.stored_atom || !B.stored_atom.quick_function_type == FLAG_QUICK_TOGGLE)
+				break
+			if(is_inventory(B.stored_atom.loc))
+				var/obj/hud/inventory/I = B.stored_atom.loc
+				if(I.owner != src)
+					B.clear_object(src)
+					world.log << "THE FUCK?"
+					break
+			else if(!is_button(B.stored_atom))
+				world.log << "CLEARING HERE!"
+				B.clear_object(src)
+				break
+
+			B.stored_atom.quick(src,location,control,params)
+			return TRUE
+
+	return TRUE
+
+
+
 //A down is just a press.
 mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //THIS ONLY WORKS ON NON-INVENTORIES
 
@@ -74,21 +89,8 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(quick_mode && !left_hand.get_top_held_object())
-
-		for(var/obj/hud/button/slot/B in buttons)
-			if(B.id == quick_mode)
-				if(!B.stored_item || !B.stored_item.quick_function_type == FLAG_QUICK_TOGGLE)
-					break
-				if(!is_inventory(B.stored_item.loc))
-					B.clear_object(src)
-					break
-				var/obj/hud/inventory/I = B.stored_item.loc
-				if(I.owner != src)
-					B.clear_object(src)
-					break
-				B.stored_item.quick(src,location,control,params)
-				return TRUE
+	if(quick_mode && !left_hand.get_top_held_object() && handle_quick(object,location,control,params))
+		return TRUE
 
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		for(var/obj/hud/inventory/I in inventory)

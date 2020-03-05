@@ -15,6 +15,7 @@
 
 	var/list/obj/item/held_objects //Items that are held, and not worn.
 	var/list/obj/item/worn_objects //Items that are worn, and not held.
+	var/atom/movable/grabbed_object
 
 	var/held_slots = 1 //How many items this object can hold.
 	var/max_weight = -1 //Maximum weight this inventory object can hold. -1 basically means it can't hold anything.
@@ -47,7 +48,7 @@
 	var/obj/hud/inventory/parent_inventory //Basically one massive defer to this inventory.
 	var/obj/hud/inventory/child_inventory
 
-	var/atom/movable/grabbed_object
+
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER

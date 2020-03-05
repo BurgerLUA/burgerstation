@@ -21,6 +21,8 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 
 	mouse_opacity = 0
 
+	has_quick_function = FALSE
+
 /obj/hud/button/message/New(var/desired_loc)
 	alpha = 0
 	all_hud_messages += src

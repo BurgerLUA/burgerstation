@@ -37,7 +37,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
 	name = "10mm Stechkin MOD"
-	icon = 'icons/obj/items/weapons/ranged/pistol/10mm_mod.dmi'
+	icon = 'icons/obj/items/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
 	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is less compact, it comes with a suppressor."
 

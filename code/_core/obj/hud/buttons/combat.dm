@@ -130,39 +130,48 @@
 	name = "intent"
 	desc = "harm intent or bust"
 	desc_extended = "Where you press determines where you attack."
-	icon_state = "intent_help"
+	icon_state = "intent"
 	screen_loc = "RIGHT-1,BOTTOM"
 
 	flags = FLAGS_HUD_MOB
 
-	var/help_intent = 0 //By default, everyone is a dick.
+	var/intent = INTENT_HELP
 
 /obj/hud/button/intent/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!params[PARAM_ICON_Y])
+	if(params[PARAM_ICON_X] == null || !params[PARAM_ICON_Y] == null)
 		return
 
+	var/x_click = text2num(params[PARAM_ICON_X])
 	var/y_click = text2num(params[PARAM_ICON_Y])
 
 	if(y_click >= 16)
-		help_intent = 1
+		if(x_click >= 16)
+			intent = INTENT_DISARM
+		else
+			intent = INTENT_HELP
 	else
-		help_intent = 0
+		if(x_click >= 16)
+			intent = INTENT_GRAB
+		else
+			intent = INTENT_HARM
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		L.intent = help_intent ? INTENT_HELP : INTENT_HARM
+		L.intent = intent
 
 	update_icon()
 
 	return ..()
 
 /obj/hud/button/intent/update_icon()
-	if(help_intent)
-		icon_state = "intent_help"
-	else
-		icon_state = "intent_harm"
-	..()
+
+	. = ..()
+	overlays.Cut()
+	var/icon/I = new/icon(initial(icon),"[initial(icon_state)]_[intent]")
+	overlays += I
+
+	return .
 
 /obj/hud/button/defense
 	name = "defense toggles"

@@ -14,6 +14,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	icon_state = "close_inventory"
 	screen_loc = "CENTER+3.5,CENTER+2"
 
+	has_quick_function = FALSE
+
 /obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
@@ -34,6 +36,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	name = "close color scheme"
 	icon_state = "default"
 	screen_loc = "CENTER-3.5,CENTER+2"
+
+	has_quick_function = FALSE
 
 /obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -72,6 +76,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	user_colors = FALSE
 
 	var/color_id = 1
+
+	has_quick_function = FALSE
 
 /obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

@@ -20,6 +20,21 @@
 
 	mouse_opacity = 1
 
+	has_quick_function = TRUE
+	quick_function_type =  FLAG_QUICK_INSTANT
+
+/obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
+
+	if(alpha == 0)
+		return FALSE
+
+	if(mouse_opacity == 0)
+		return FALSE
+
+	src.clicked_on_by_object(caller,null,location,control,params)
+
+	return TRUE
+
 /obj/hud/button/Destroy()
 	owner = null
 	return ..()

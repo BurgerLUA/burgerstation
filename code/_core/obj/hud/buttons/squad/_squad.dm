@@ -10,6 +10,8 @@
 
 	alpha = 100
 
+	has_quick_function = FALSE
+
 /obj/hud/button/squad/main/update_icon()
 
 	if(owner && is_player(owner))

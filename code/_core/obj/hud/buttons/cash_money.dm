@@ -72,6 +72,8 @@
 
 	mouse_opacity = 1
 
+	has_quick_function = FALSE
+
 /obj/hud/button/toggle_cash_money/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))

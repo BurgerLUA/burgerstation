@@ -8,7 +8,10 @@
 	plane = PLANE_WALL_ATTACHMENTS
 
 /obj/structure/interactive/plastic_flaps/Cross(atom/movable/O)
+
 	if(is_living(O))
-		return FALSE
+		var/mob/living/L = O
+		if(!L.horizontal)
+			return FALSE
 
 	return ..()

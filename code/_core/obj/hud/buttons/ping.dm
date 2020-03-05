@@ -9,6 +9,8 @@
 
 	maptext_x = -2
 
+	has_quick_function = FALSE
+
 /obj/hud/button/ping/New(var/desired_loc)
 	start_thinking(src)
 	return ..()

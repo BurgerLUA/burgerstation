@@ -18,6 +18,8 @@
 
 	mouse_opacity = 1
 
+	has_quick_function = FALSE
+
 /obj/hud/button/vendor/get_examine_text(var/mob/caller)
 	if(associated_item)
 		return associated_item.get_examine_text(caller)
@@ -116,6 +118,8 @@
 	essential = TRUE
 
 	flags = FLAGS_HUD_SPECIAL
+
+	has_quick_function = FALSE
 
 /obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

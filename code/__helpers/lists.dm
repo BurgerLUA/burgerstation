@@ -1,27 +1,27 @@
 #define ADD_SORTED(list, A, cmp_proc) if(!list.len) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
 
-/proc/subtypesof(prototype)
+/proc/subtypesof(var/prototype)
 	return (typesof(prototype) - prototype)
 
 //Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')
 #define is_type_in_typecache(A, L) (A && length(L) && L[(ispath(A) ? A : A:type)])
 
 //returns a new list with only atoms that are in typecache L
-/proc/typecache_filter_list(list/atoms, list/typecache)
+/proc/typecache_filter_list(var/list/atoms, var/list/typecache)
 	. = list()
 	for(var/thing in atoms)
 		var/atom/A = thing
 		if (typecache[A.type])
 			. += A
 
-/proc/typecache_filter_list_reverse(list/atoms, list/typecache)
+/proc/typecache_filter_list_reverse(var/list/atoms, var/list/typecache)
 	. = list()
 	for(var/thing in atoms)
 		var/atom/A = thing
 		if(!typecache[A.type])
 			. += A
 
-/proc/typecache_filter_multi_list_exclusion(list/atoms, list/typecache_include, list/typecache_exclude)
+/proc/typecache_filter_multi_list_exclusion(var/list/atoms, var/list/typecache_include, var/list/typecache_exclude)
 	. = list()
 	for(var/thing in atoms)
 		var/atom/A = thing
@@ -29,7 +29,7 @@
 			. += A
 
 //Like typesof() or subtypesof(), but returns a typecache instead of a list
-/proc/typecacheof(path, ignore_root_path, only_root_path = FALSE)
+/proc/typecacheof(var/path, var/ignore_root_path, var/only_root_path = FALSE)
 	if(ispath(path))
 		var/list/types = list()
 		if(only_root_path)
@@ -56,13 +56,13 @@
 						L[T] = TRUE
 		return L
 
-/proc/listclearnulls(list/L)
+/proc/listclearnulls(var/list/L)
 	var/start_len = L.len
 	var/list/N = new(start_len)
 	L -= N
 	return L.len < start_len
 
-/proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "", quote = "" )
+/proc/english_list(var/list/input, var/nothing_text = "nothing", var/and_text = " and ", var/comma_text = ", ", var/final_comma_text = "", var/quote = "" )
 	var/total = input.len
 	if (!total)
 		return "[nothing_text]"
@@ -83,7 +83,7 @@
 		return "[output][and_text][quote][input[index]][quote]"
 
 
-/proc/pickweight(list/L) //Credit to Nanako for most of this code.
+/proc/pickweight(var/list/L) //Credit to Nanako for most of this code.
 	var/total = 0
 	var/item
 	for (item in L)
@@ -119,19 +119,19 @@
 	return best_key
 
 //for sorting clients or mobs by ckey
-/proc/sortKey(list/L, order=1)
+/proc/sortKey(var/list/L, var/order=1)
 	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
 
-/proc/sortList(list/L, cmp=/proc/cmp_text_asc)
+/proc/sortList(var/list/L, var/cmp=/proc/cmp_text_asc)
 	return sortTim(L.Copy(), cmp)
 
 //uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sortNames(var/list/L, order=1)
+/proc/sortNames(var/list/L, var/order=1)
 	return sortTim(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
 
 //Move a single element from position fromIndex within a list, to position toIndex
 //This will preserve associations ~Carnie
-/proc/moveElement(list/L, fromIndex, toIndex)
+/proc/moveElement(var/list/L, var/fromIndex, var/toIndex)
 	if(fromIndex > toIndex)
 		++fromIndex
 	else
@@ -145,7 +145,7 @@
 //Move elements [fromIndex,fromIndex+len) to [toIndex,toIndex+len)
 //This will preserve associations and is much faster than copying to a new list
 //or checking for associative lists and manually copying elements ~Carnie
-/proc/moveRange(list/L, fromIndex, toIndex, len=1)
+/proc/moveRange(var/list/L, var/fromIndex, var/toIndex, var/len=1)
 	var/distance = abs(toIndex - fromIndex)
 	if(len > distance)	//there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going
 		if(fromIndex < toIndex)
@@ -171,7 +171,7 @@
 //Move elements from [fromIndex, fromIndex+len) to [toIndex, toIndex+len)
 //Move any elements being overwritten by the move to the now-empty elements, preserving order
 //Note: if the two ranges overlap, only the destination order will be preserved fully, since some elements will be within both ranges ~Carnie
-/proc/swapRange(list/L, fromIndex, toIndex, len=1)
+/proc/swapRange(var/list/L, var/fromIndex, var/toIndex, var/len=1)
 	var/distance = abs(toIndex - fromIndex)
 	if(len > distance)	//there is an overlap, therefore swapping each element will require more swaps than inserting new elements
 		if(fromIndex < toIndex)
@@ -193,7 +193,7 @@
 			L.Swap(fromIndex++, toIndex++)
 
 //replaces reverseList ~Carnie
-/proc/reverseRange(list/L, start=1, end=0)
+/proc/reverseRange(var/list/L, var/start=1, var/end=0)
 	if(L.len)
 		start = start % L.len
 		end = end % (L.len+1)
@@ -212,7 +212,7 @@
 // Use ADD_SORTED(list, A, cmp_proc)
 
 // Return the index using dichotomic search
-/proc/FindElementIndex(atom/A, list/L, cmp)
+/proc/FindElementIndex(var/atom/A, var/list/L, var/cmp)
 	var/i = 1
 	var/j = L.len
 	var/mid
@@ -295,7 +295,7 @@
 
 	return best_key
 
-/proc/text2numlist(text, delimiter="\n") //Stolen from Aurora
+/proc/text2numlist(var/text, var/delimiter="\n") //Stolen from Aurora
 	var/list/num_list = list()
 	for(var/x in jointext(text, delimiter))
 		num_list += text2num(x)
@@ -324,12 +324,12 @@
 
 	return FALSE
 
-/proc/make_associative(list/flat_list)
+/proc/make_associative(var/list/flat_list)
 	. = list()
 	for(var/thing in flat_list)
 		.[thing] = TRUE
 
-/proc/assoc_list_strip_value(list/input)
+/proc/assoc_list_strip_value(var/list/input)
 	var/list/ret = list()
 	for(var/key in input)
 		ret += key

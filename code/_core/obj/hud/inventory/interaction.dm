@@ -56,6 +56,15 @@
 				I.update_icon()
 				return TRUE
 
+	if(defer_self == grabbed_object)
+		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
+			var/desired_move_dir = get_dir(grabbed_object,object)
+			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir),desired_move_dir)
+			if(get_dist(caller,grabbed_object) > 1)
+				release_object()
+
+		return TRUE
+
 	if(caller.attack_flags & ATTACK_OWNER)
 		if(defer_self != src)
 			defer_self.click_on_object(caller,caller,location,control,params)
@@ -130,6 +139,9 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 			return I
 
 		return get_top_worn_object()
+
+	if(grabbed_object)
+		return grabbed_object
 
 	return src
 
