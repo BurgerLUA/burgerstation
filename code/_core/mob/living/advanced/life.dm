@@ -5,9 +5,9 @@
 	if(.)
 		if(talk_duration)
 			talk_duration = max(0,talk_duration-LIFE_TICK)
-			if(talk_duration <= 0)
-				talk_type = 0
-				update_icon()
+			if(talk_duration <= 0 && !is_typing)
+				animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
+
 
 		handle_organs()
 

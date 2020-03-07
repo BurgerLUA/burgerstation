@@ -12,17 +12,31 @@
 
 	return TRUE
 
+
+/mob/living/advanced/say(var/text_to_say as text)
+
+
+	start_typing()
+
+	. = ..()
+
+	end_typing()
+
+	if(.)
+		do_type(TALK_TYPE_EXCLAIMATION)
+
+	return .
+
 /mob/verb/say(var/text_to_say as text)
+
+	if(!text_to_say)
+		text_to_say = input("What would you like to say?","Say") as text|null
 
 	if(!text_to_say)
 		return FALSE
 
 	if(client && !check_spam(client))
 		return FALSE
-
-	if(is_advanced(src))
-		var/mob/living/advanced/A = src
-		A.start_typing()
 
 	text_to_say = police_input(text_to_say)
 
@@ -43,6 +57,7 @@
 					continue
 				var/final_command = trim(copytext(text_to_say,2,0))
 				visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
+				display_message(src,src,final_command,TEXT_WHISPER)
 				R.send_data(list("speaker" = src, "source" = src, "message" = final_command))
 				break
 		else if(client && client.macros && first_character == "." && length(text_to_say) >= 4)
@@ -56,17 +71,11 @@
 							continue
 						var/final_command = trim(copytext(text_to_say,4,0))
 						visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
+						display_message(src,src,final_command,TEXT_WHISPER)
 						R.send_data(list("speaker" = src, "source" = src, "message" = final_command, "frequency" = desired_frequency))
 						break
 		else
 			display_message(src,src,text_to_say,TEXT_TALK)
-			if(is_advanced(src))
-				var/mob/living/advanced/A = src
-				A.do_type(TALK_TYPE_EXCLAIMATION)
-
-	if(is_advanced(src))
-		var/mob/living/advanced/A = src
-		A.end_typing()
 
 	return TRUE
 

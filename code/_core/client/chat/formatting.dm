@@ -34,7 +34,6 @@ proc/format_speech(var/datum/speaker,var/datum/source,var/text,var/talk_type,var
 
 proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=RADIO_FREQ_COMMON)
 
-
 	var/speaker_text = "<a class='name' href='?chat_examine=\ref[speaker]'>\The [speaker]</a>"
 	var/source_text = ""
 	var/tag_text = ""
@@ -51,7 +50,7 @@ proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=RAD
 	if(tag)
 		tag = trim(tag)
 		tag_text += "<img src='\ref[chat_tags.icon]' iconstate='[tag]' class='chat_tag' alt='[tag]'/>"
-		. = span(tag,"[tag_text] [.]")
+		. = span(tag,"[tag_text][.]")
 
 	return .
 

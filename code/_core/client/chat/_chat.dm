@@ -85,14 +85,20 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				sleep(-1)
 
 		if(TEXT_OOC)
-			for(var/mob/M in world)
-				if(!M.client)
+			for(var/client/C in all_clients)
+				if(!C.mob)
 					continue
-				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_OOC)
+				C.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_OOC)
 				sleep(-1)
 
 			if(SSwikibot && ENABLE_WIKIBOT)
 				SSwikibot.process_string(source,text_to_say)
+
+		if(TEXT_GHOST)
+			for(var/client/C in all_clients)
+				if(!C.mob || !is_observer(C.mob))
+					continue
+				C.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
 
 	if(text_type == TEXT_TALK || text_type == TEXT_YELL)
 		var/area/A = get_area(source)

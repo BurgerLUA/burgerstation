@@ -77,6 +77,8 @@
 	var/list/tracked_hidden_limbs
 	var/list/tracked_hidden_limb_clothing
 
+	var/obj/overlay/chat_overlay
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -89,6 +91,9 @@
 
 	qdel(click_and_drag_icon)
 	click_and_drag_icon = null
+
+	qdel(chat_overlay)
+	chat_overlay = null
 
 	held_objects = null
 	worn_objects = null
@@ -209,19 +214,6 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/do_type(var/type_type)
-	talk_type = type_type
-	talk_duration = SECONDS_TO_DECISECONDS(6)
-	update_icon()
-
-/mob/living/advanced/proc/start_typing()
-	is_typing = TRUE
-	update_icon()
-
-/mob/living/advanced/proc/end_typing()
-	is_typing = FALSE
-	update_icon()
-
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
 	icon = 'icons/invisible.dmi'
@@ -239,6 +231,11 @@
 	. = ..()
 
 	click_and_drag_icon	= new(src)
+
+	chat_overlay = new(src.loc)
+	chat_overlay.layer = LAYER_EFFECT
+	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
+	chat_overlay.alpha = 0
 
 	return .
 

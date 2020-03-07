@@ -109,10 +109,6 @@
 		owner.mob.move_dir &= ~command
 	else
 		switch(command)
-			/*
-			if("say")
-				spawn owner.mob.say()
-			*/
 			if("sprint")
 				owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 			if("walk")
@@ -135,11 +131,8 @@
 				owner.is_zoomed = FALSE
 				owner.pixel_x = 0
 				owner.pixel_y = 0
-				//animate(owner,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(1))
-			/*
-			if("ooc")
-				spawn owner.ooc()
-			*/
+			if("say")
+				spawn owner.mob.say()
 			else
 				winset(owner, null, "command='[command]'")
 
