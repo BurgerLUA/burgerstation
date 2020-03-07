@@ -1,4 +1,4 @@
-/*
+
 /role/
 	name = "Roll Name"
 	desc = "Roll Description"
@@ -55,4 +55,3 @@
 	desc = "Hosts have all the power."
 	protection = 100
 	permissions = FLAG_PERMISSION_HOST | FLAG_PERMISSION_ADMIN | FLAG_PERMISSION_MODERATOR | FLAG_PERMISSION_DEVELOPER | FLAG_PERMISSION_GAMEMASTER
-*/

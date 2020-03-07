@@ -23,6 +23,9 @@
 		"Z" = "zoom",
 		"Space" = "kick",
 
+		"G" = "cycle-intent-clockwise",
+		"F" = "cycle-intent-counter-clockwise",
+
 		"1" = "bind_1",
 		"2" = "bind_2",
 		"3" = "bind_3",
@@ -106,8 +109,10 @@
 		owner.mob.move_dir &= ~command
 	else
 		switch(command)
+			/*
 			if("say")
 				spawn owner.mob.say()
+			*/
 			if("sprint")
 				owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 			if("walk")
@@ -131,8 +136,11 @@
 				owner.pixel_x = 0
 				owner.pixel_y = 0
 				//animate(owner,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(1))
+			/*
 			if("ooc")
 				spawn owner.ooc()
-
+			*/
+			else
+				winset(owner, null, "command='[command]'")
 
 	return TRUE

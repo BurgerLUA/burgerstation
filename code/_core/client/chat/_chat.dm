@@ -8,13 +8,6 @@
 	for(var/client/C in all_clients)
 		C.to_chat(text_to_say,TEXT_OOC)
 
-/proc/broadcast_to_role(var/text_to_say as text, var/text_type = TEXT_OOC, var/desired_role = FLAG_PERMISSION_NONE)
-	for(var/client/C in all_clients)
-		var/savedata/client/roles/R = C.roles
-		var/actual_role = R.loaded_data["role"]
-		if(actual_role & desired_role)
-			C.to_chat(text_to_say,TEXT_OOC)
-
 proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_type as num,var/frequency=RADIO_FREQ_COMMON)
 
 	if(!text_to_say)

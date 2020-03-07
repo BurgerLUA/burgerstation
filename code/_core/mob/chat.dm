@@ -1,32 +1,34 @@
-/proc/check_spam(var/client/C)
+/proc/check_spam(var/client/C,var/text_to_check)
 
-	C.spam_protection_chat = min(C.spam_protection_chat+2,5)
+	if(!text_to_check)
+		C.spam_protection_chat = min(C.spam_protection_chat+2,5)
 
 	if(C.spam_protection_chat > 2)
 		C.to_chat(span("warning","You can't talk this fast!"))
-		return TRUE
+		return FALSE
 
-	C.spam_protection_chat = min(C.spam_protection_chat+1,10)
+	if(text_to_check)
+		C.spam_protection_chat = min(C.spam_protection_chat+1+(length(text_to_check)*0.01),10)
 
-	return FALSE
+	return TRUE
 
 /mob/verb/say(var/text_to_say as text)
 
-	if(spam_protection_say >= 1 && src.client)
-		to_chat(span("warning","You are out of breath! Please wait [spam_protection_say - 1] seconds before speaking again!"))
+	if(!text_to_say)
 		return FALSE
 
-	if(client && check_spam(client))
+	if(client && !check_spam(client))
 		return FALSE
 
 	if(is_advanced(src))
 		var/mob/living/advanced/A = src
 		A.start_typing()
 
-	if(!text_to_say)
-		text_to_say = input("What would you like to say?") as text|null
-
 	text_to_say = police_input(text_to_say)
+
+	if(client && !check_spam(client,text_to_say))
+		to_chat(span("warning","You are out of breath!"))
+		return FALSE
 
 	if(length(text_to_say))
 		var/first_character = copytext(text_to_say,1,2)
@@ -66,9 +68,6 @@
 		var/mob/living/advanced/A = src
 		A.end_typing()
 
-	spam_protection_say += max(0.25,length(text_to_say)*0.01)
-
-
 	return TRUE
 
 /mob/verb/emote(var/emote_id as text)
@@ -79,7 +78,15 @@
 
 /mob/verb/looc(var/text_to_say as text)
 
-	if(client && check_spam(client))
+	if(client && !check_spam(client))
+		return FALSE
+
+	if(!text_to_say)
+		return FALSE
+
+	text_to_say = police_input(text_to_say)
+
+	if(client && !check_spam(client,text_to_say))
 		return FALSE
 
 	display_message(src,src,text_to_say,TEXT_LOOC)

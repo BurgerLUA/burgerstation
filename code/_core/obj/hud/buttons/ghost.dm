@@ -10,6 +10,8 @@
 
 /obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	. = ..()
+
 	if(!is_observer(caller))
 		return TRUE
 
@@ -20,7 +22,7 @@
 	var/mob/abstract/observer/O = caller
 	O.new_character()
 
-	return ..()
+	return .
 
 /obj/hud/button/load_character/
 	name = "load an existing character"
@@ -33,6 +35,9 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	. = ..()
+
 	if(!is_observer(caller))
 		return TRUE
 	if(world_state != STATE_RUNNING)
@@ -42,4 +47,4 @@
 	var/mob/abstract/observer/O = caller
 	O.load_character()
 
-	return ..()
+	return .

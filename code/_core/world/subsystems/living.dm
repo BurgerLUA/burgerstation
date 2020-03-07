@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(living)
 /subsystem/living/Initialize()
 
 	for(var/mob/living/L in all_living)
+		CHECK_TICK
 		if(ENABLE_MOB)
 			L.Initialize()
 		else

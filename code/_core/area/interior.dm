@@ -88,6 +88,10 @@
 	name = "\improper Cloning"
 	icon_state = "clone"
 
+/area/interior/ship/science
+	name = "\improper Science"
+	icon_state = "science"
+
 /area/interior/ship/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "cryo"

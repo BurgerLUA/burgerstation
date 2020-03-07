@@ -18,14 +18,15 @@
 
 	active_subsystems = sortTim(active_subsystems, /proc/cmp_subsystem_priority)
 
-	log_subsystem("Subsystem Controller","[length(active_subsystems)] SUBSYSTEMS LOADED")
+	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems loaded.")
 
 	var/benchmark = world.timeofday
 
 	for(var/subsystem/S in active_subsystems)
 		var/local_benchmark = world.timeofday
+		log_subsystem(S.name,"Initializing...")
 		S.Initialize()
-		log_subsystem(S.name,"Initialization: Took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds.")
+		log_subsystem(S.name,"Initialization took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds.")
 
 	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds.")
 

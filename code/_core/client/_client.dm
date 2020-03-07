@@ -62,8 +62,9 @@ var/global/list/all_clients = list()
 	var/mouse_down_y = 0
 
 //Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
+
 /client/verb/ping()
-	winset(src,null,"command=pong+[world.time]")
+	//winset(src,null,"command=pong+[world.time]")
 
 /client/verb/pong(var/time as num)
 	ping_num = world.time - time
@@ -85,17 +86,11 @@ var/global/list/all_clients = list()
 	qdel(connection_data)
 	connection_data = null
 
-	qdel(roles)
-	roles = null
-
 	qdel(settings)
 	settings = null
 
 	qdel(macros)
 	macros = null
-
-	qdel(roles)
-	roles = null
 
 	clear_mob(mob)
 
@@ -124,9 +119,6 @@ var/global/list/all_clients = list()
 
 	if(!macros) //TODO: LOADING SYSTEM OF CUSTOM MACROS
 		macros = new(src)
-
-	if(!roles)
-		roles = new(src)
 
 	if(!settings)
 		settings = new(src)

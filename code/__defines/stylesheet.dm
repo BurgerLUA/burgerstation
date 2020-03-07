@@ -3,8 +3,10 @@ img{
 	margin:0;
 	padding:0;
 }
-a:link{
+a,a:link,a:visited,a:hover,a:focus,a:active{
 	font-color: inherit;
+	text-decoration: none;
+	font-weight: bold;
 }
 body {
 	font-family: Verdana, sans-serif;
@@ -19,7 +21,7 @@ body {
 	font-weight: bold;
 }
 .looc{
-	color: cyan;
+	color: #46B2B2;
 	font-weight: bold;
 }
 .bot{

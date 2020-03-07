@@ -12,7 +12,7 @@
 //When this subsystem runs for the first time.
 /subsystem/proc/Initialize()
 
-//When this subsystem runs. Returning true means that this always runs, false means it doesn't run.
+//When this subsystem runs. Returning true means that it will run again, false means it will never run again.
 /subsystem/proc/on_life()
 	return FALSE
 

@@ -48,8 +48,6 @@
 	var/obj/hud/inventory/parent_inventory //Basically one massive defer to this inventory.
 	var/obj/hud/inventory/child_inventory
 
-
-
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_pointer = MOUSE_ACTIVE_POINTER

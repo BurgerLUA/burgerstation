@@ -1,21 +1,23 @@
 /client/verb/ooc(var/text_to_say as text)
 
-	if(check_spam(src))
+	if(!text_to_say)
 		return FALSE
 
-	if(!text_to_say)
-		text_to_say = input("What would you like to say?") as text|null
-		if(!text_to_say)
-			return
+	if(!check_spam(src))
+		return FALSE
 
-	if(last_ooc+10 >= world.time)
-		src.to_chat(span("warning","You're using OOC too fast!"))
+	text_to_say = police_input(text_to_say)
+
+	if(!check_spam(src,text_to_say))
 		return FALSE
 
 	display_message(src,src,text_to_say,TEXT_OOC)
-	last_ooc = world.time
+
 
 /client/proc/to_chat(var/text,var/chat_type)
+
+	if(!text || !chat_type)
+		return FALSE
 
 	text = "<div class='message'>[text]</div>"
 
@@ -46,11 +48,20 @@
 	return TRUE
 
 
-/client/verb/pm(var/message as text)
+/client/verb/pm(var/client/C as null|anything in all_clients, var/text_to_say as text)
 
-	var/client/C = input("Who would you like to message?","Desired Client") as null|anything in all_clients
-	if(!C)
-		return
+	if(!text_to_say || !C)
+		return FALSE
 
-	to_chat(format_speech(src,src,message,TEXT_PM),CHAT_TYPE_PM)
-	C.to_chat(format_speech(src,src,message,TEXT_PM),CHAT_TYPE_PM)
+	if(!check_spam(src))
+		return FALSE
+
+	text_to_say = police_input(text_to_say)
+
+	if(!check_spam(src,text_to_say))
+		return FALSE
+
+	to_chat(format_speech(src,src,text_to_say,TEXT_PM),CHAT_TYPE_PM)
+	C.to_chat(format_speech(src,src,text_to_say,TEXT_PM),CHAT_TYPE_PM)
+
+	return TRUE

@@ -6,3 +6,47 @@
 
 	if(response == "Yes")
 		death()
+
+
+/mob/living/verb/cycle_intent_clockwise()
+	set name = "Cycle Intent Clockwise"
+	set category = "In Character"
+	set hidden = TRUE
+
+	switch(intent)
+		if(INTENT_HELP)
+			intent = INTENT_DISARM
+		if(INTENT_DISARM)
+			intent = INTENT_GRAB
+		if(INTENT_GRAB)
+			intent = INTENT_HARM
+		if(INTENT_HARM)
+			intent = INTENT_HELP
+
+	src << intent
+
+	for(var/obj/hud/button/intent/B in buttons)
+		B.update_icon()
+		B.active = (B.intent == intent)
+		B.update_overlay()
+
+
+/mob/living/verb/cycle_intent_counter_clockwise()
+	set name = "Cycle Intent Counter-Clockwise"
+	set category = "In Character"
+	set hidden = TRUE
+
+	switch(intent)
+		if(INTENT_HELP)
+			intent = INTENT_HARM
+		if(INTENT_DISARM)
+			intent = INTENT_HELP
+		if(INTENT_GRAB)
+			intent = INTENT_DISARM
+		if(INTENT_HARM)
+			intent = INTENT_GRAB
+
+	for(var/obj/hud/button/intent/B in buttons)
+		B.update_icon()
+		B.active = (B.intent == intent)
+		B.update_overlay()

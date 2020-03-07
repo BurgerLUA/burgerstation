@@ -1,8 +1,8 @@
-proc/get_date()
-	return time2text(world.realtime,"YYMMDD") //Just don't play this game around 2100
+proc/get_date(var/time = world.realtime)
+	return time2text(time,"YYMMDD") //Just don't play this game around 2100
 
-proc/get_time()
-	return time2text(world.realtime,"hhmmss")
+proc/get_time(var/time = world.realtime)
+	return time2text(time,"hhmmss")
 
 proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 
@@ -40,7 +40,7 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 	time_list += "[seconds] second\s"
 	seconds -= second_value
 
-	return time_list
+	return english_list(time_list)
 
 /proc/get_clock_time(var/seconds)
 
