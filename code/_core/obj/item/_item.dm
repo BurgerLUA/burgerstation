@@ -223,7 +223,7 @@
 	var/physical_text = div("weightsize","Size: [size] | Weight: [weight]")
 	var/desc_text = div("examine_description","\"[src.desc]\"")
 	var/desc_extended_text = div("examine_description_long",src.desc_extended)
-	var/damage_type_text = is_living(examiner) ? get_damage_type_text(examiner) : ""
+	var/damage_type_text = "" //is_living(examiner) ? get_damage_type_text(examiner) : ""
 	return "[name_text][desc_text][rarity_text][value_text][physical_text][desc_extended_text][damage_type_text]"
 
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)

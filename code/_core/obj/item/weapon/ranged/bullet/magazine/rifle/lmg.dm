@@ -10,10 +10,6 @@
 
 	automatic = TRUE
 
-	bullet_count_max = 1 //One in the chamber
-
-
-
 	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
 
 	can_wield = TRUE

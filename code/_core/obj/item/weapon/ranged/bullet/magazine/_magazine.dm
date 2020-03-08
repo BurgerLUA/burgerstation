@@ -5,6 +5,8 @@
 
 	var/requires_cock_each_shot = FALSE
 
+	stored_bullets = null
+
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)
 		if("both")
@@ -34,8 +36,8 @@
 	if(load_new_bullet_from_magazine(caller))
 		cock_type = cock_type == "back" ? "both" : "forward"
 
-	var/area/A = get_area(caller.loc)
 	if(cock_type)
+		var/area/A = get_area(caller.loc)
 		play_sound(get_cock_sound(cock_type),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		update_icon()
 

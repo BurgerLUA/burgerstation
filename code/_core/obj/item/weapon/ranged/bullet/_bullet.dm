@@ -3,7 +3,7 @@
 	var/obj/item/bullet_cartridge/chambered_bullet //One in the chamber
 	var/list/obj/item/bullet_cartridge/stored_bullets //This is a fixed list, so be careful.
 
-	var/bullet_count_max = 0 //How many bullets can this store on top of the chambered bullet
+	var/bullet_count_max = 0 //How many bullets can this store on top of the chambered bullet?
 
 	var/icon_state_open = "inventory"
 
@@ -27,6 +27,15 @@
 	var/bullet_diameter_min = -1
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
+
+/obj/item/weapon/ranged/bullet/get_examine_text(var/mob/examiner)
+
+	. = ..()
+
+	if(chambered_bullet)
+		. += div("notice","There is a bullet loaded in the chamber.")
+
+	return .
 
 /obj/item/weapon/ranged/bullet/Destroy()
 
@@ -126,6 +135,8 @@
 
 	if(bullet_count_max > 0)
 		stored_bullets = new/list(bullet_count_max)
+	else
+		stored_bullets = null
 
 	update_icon()
 	return .
@@ -158,6 +169,9 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet_cartridge/B)
+
+	if(!stored_bullets || !length(stored_bullets))
+		return FALSE
 
 	if(!open)
 		caller?.to_chat(span("notice","You must open \the [src.name] first before loading it!"))

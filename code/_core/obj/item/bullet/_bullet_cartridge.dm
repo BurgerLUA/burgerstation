@@ -164,6 +164,7 @@
 /obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/display_message = TRUE)
 
 	if(W.can_load_chamber(caller,src))
+		world.log << "CAN LOAD CHAMBERED!"
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		W.chambered_bullet += B
@@ -175,7 +176,8 @@
 		W.update_icon()
 		return TRUE
 
-	else if(W.can_load_stored(caller,src))
+	if(W.can_load_stored(caller,src))
+		world.log << "CAN LOAD STORED!"
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		var/valid_slot = 0
@@ -215,12 +217,12 @@
 
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
-		transfer_src_to_gun(caller,G,location,control,params)
-		var/area/A = get_area(caller.loc)
-		play_sound(get_bullet_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
-			var/obj/item/weapon/ranged/bullet/magazine/M = G
-			play_sound(M.get_cock_sound("forward"),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		return TRUE
+		if(transfer_src_to_gun(caller,G,location,control,params))
+			var/area/A = get_area(caller.loc)
+			play_sound(get_bullet_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
+				var/obj/item/weapon/ranged/bullet/magazine/M = G
+				play_sound(M.get_cock_sound("forward"),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			return TRUE
 
 	return ..()

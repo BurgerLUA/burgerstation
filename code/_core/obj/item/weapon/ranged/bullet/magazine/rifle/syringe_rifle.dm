@@ -7,10 +7,6 @@
 
 	automatic = FALSE
 
-	bullet_count_max = 1 //One in the chamber
-
-
-
 	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
 
 	can_wield = FALSE

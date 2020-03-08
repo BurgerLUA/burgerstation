@@ -10,8 +10,6 @@
 
 	automatic = FALSE
 
-	bullet_count_max = 1 //One in the chamber
-
 	shoot_sounds = list('sounds/weapons/12/shoot.ogg')
 
 	can_wield = FALSE

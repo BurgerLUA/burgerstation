@@ -88,3 +88,9 @@
 
 /obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
+
+
+/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+	. = ..()
+	delete_additonal_clothing()
+	return .

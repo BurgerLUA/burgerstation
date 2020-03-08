@@ -7,7 +7,7 @@ obj/item/proc/get_parry_mul(var/attack_type)
 
 /obj/item/proc/get_damage_type_text(var/mob/living/L)
 
-	var/returning = ""
+	. = ""
 
 	var/damagetype_id = get_damage_type()
 
@@ -46,9 +46,9 @@ obj/item/proc/get_parry_mul(var/attack_type)
 	for(var/k in damage_type_list)
 		var/v = damage_type_list[k]
 		var/armor_pen_value = DT.attack_damage_penetration[k]
-		returning += div("notice","[capitalize(k)]: [v][armor_pen_value ? " ([armor_pen_value] Armor Penetration)" : "" ]")
+		. += div("notice","[capitalize(k)]: [v][armor_pen_value ? " ([armor_pen_value] Armor Penetration)" : "" ]")
 
-	returning += div("notice bold","Total Damage: [total_damage]")
+	. += div("notice bold","Total Damage: [total_damage]")
 
 	if(length(affected_list))
 		var/list/final_list = list()
@@ -57,11 +57,11 @@ obj/item/proc/get_parry_mul(var/attack_type)
 			var/v = affected_list[k]
 			final_list += "[capitalize(k)] (x[v])"
 
-		returning += div("notice","Affected by: [english_list(final_list)].")
+		. += div("notice","Affected by: [english_list(final_list)].")
 	else
-		returning += div("notice","Damage not affected by skills or attributes.")
+		. += div("notice","Damage not affected by skills or attributes.")
 
-	return returning
+	return .
 
 /*
 /obj/item/proc/get_damage_type_text(var/mob/living/L)

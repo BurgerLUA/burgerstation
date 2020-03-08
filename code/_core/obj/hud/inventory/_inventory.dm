@@ -124,7 +124,7 @@
 	if(A && A != src)
 		return A.get_examine_text(examiner)
 	else
-		return ..()
+		return A.loc.get_examine_text(examiner)
 
 /obj/hud/inventory/proc/update_overlays()
 
