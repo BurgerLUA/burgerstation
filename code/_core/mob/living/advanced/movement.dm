@@ -47,18 +47,6 @@ mob/living/advanced/get_movement_delay()
 
 	return ..()
 
-
-/mob/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
-
-	. = ..()
-
-	if(.)
-		for(var/obj/chat_text/CT in stored_chat_text)
-			CT.glide_size = src.glide_size
-			CT.force_move(src.loc)
-
-	return .
-
 /mob/living/advanced/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	. = ..()

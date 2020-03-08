@@ -72,7 +72,7 @@
 	if(prob(max(0,100-bullet_block_chance)))
 		return FALSE
 
-	if(!..()) //REMEMBER, THIS EXISTS.
+	if(!..()) //REMEMBER, THIS NEEDS TO BE HERE.
 		return FALSE
 
 	if((projectile_dir & NORTH) && src.density_south)

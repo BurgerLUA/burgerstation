@@ -36,9 +36,8 @@
 	attack_flags = 0x0
 
 	collision_flags = FLAG_COLLISION_NONE
-	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	layer = LAYER_MOB_DEAD
+	plane = PLANE_OBJ
 
 	handle_horizontal()
 
@@ -69,7 +68,7 @@
 
 /mob/living/proc/revive()
 	dead = FALSE
-	layer = initial(layer)
+	plane = initial(plane)
 	collision_flags = initial(collision_flags)
 	collision_bullet_flags = initial(collision_bullet_flags)
 	stun_time = 0

@@ -49,6 +49,11 @@
 	. = ..()
 
 	if(.)
+
+		for(var/obj/chat_text/CT in stored_chat_text)
+			CT.glide_size = src.glide_size
+			CT.force_move(src.loc)
+
 		switch(move_mod)
 			if(1)
 				on_walk()

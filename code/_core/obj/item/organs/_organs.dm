@@ -198,8 +198,9 @@
 		create_blood_effect(T,attacker,src,damage_dealt,reagents.color)
 	*/
 
-	create_blood_effect(T,attacker,src,damage_dealt)
+	//create_blood_effect(T,attacker,src,damage_dealt)
 
+/*
 /proc/create_blood_effect(var/turf/T,var/atom/attacker,var/atom/victim,var/damage_dealt,var/blood_color = "#FF0000")
 
 	var/offset_x = (T.x - attacker.x)
@@ -216,6 +217,7 @@
 
 	for(var/i=1,i<=clamp(round(damage_dealt/5),1,5),i++)
 		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)
+*/
 
 /obj/item/organ/proc/on_life()
 	if(reagents)

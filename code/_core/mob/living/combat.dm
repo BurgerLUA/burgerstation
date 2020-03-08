@@ -208,7 +208,7 @@
 	if(!T)
 		return .
 
-	create_blood_effect(T,attacker,src,damage_dealt,"#FF0000")
+	//create_blood_effect(T,attacker,src,damage_dealt,"#FF0000")
 
 	return .
 

@@ -1,6 +1,7 @@
 /mob/
 	name = "MOB ERROR"
 	icon = 'icons/debug/mobs.dmi'
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | KEEP_TOGETHER
 	icon_state = ""
 	layer = LAYER_MOB
 

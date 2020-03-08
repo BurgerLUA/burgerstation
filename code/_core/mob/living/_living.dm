@@ -247,6 +247,8 @@
 				B.target_boss = src
 				B.update_stats()
 
+	reagents.add_reagent("blood",500)
+
 	return .
 
 /mob/living/proc/setup_name()

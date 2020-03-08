@@ -1,3 +1,8 @@
+#define ALERT_LEVEL_NONE 0 //No threats detected.
+#define ALERT_LEVEL_NOISE 1 //We heard or saw something strange that requires further investigation. Probably not a hostile, though.
+#define ALERT_LEVEL_CAUTION 2 //We heard or saw something strange that is more than likely a hostile.
+#define ALERT_LEVEL_ALERT 3 //We are currently engaged with hostiles.
+
 /ai/
 
 	var/mob/living/owner
@@ -29,8 +34,6 @@
 
 	var/stationary = TRUE
 
-	var/true_sight = FALSE
-
 	var/roaming_distance = 5
 
 	var/attack_distance_min = 0
@@ -56,6 +59,10 @@
 
 	var/distance_target_min = 1
 	var/distance_target_max = 1
+
+	var/true_sight = FALSE //Set to true if it can see invisible enemies.
+	var/use_vision = FALSE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this is affected by alert level.
+	var/alert_level = ALERT_LEVEL_NONE //Alert level system
 
 /ai/Destroy()
 	if(owner)
@@ -180,7 +187,7 @@
 
 	if(objective_attack)
 
-		owner.movement_flags |= MOVEMENT_RUNNING
+		owner.movement_flags = MOVEMENT_RUNNING
 
 		var/target_distance = get_dist(owner,objective_attack)
 
@@ -193,7 +200,7 @@
 
 	else if(current_path && length(current_path))
 
-		owner.movement_flags |= MOVEMENT_RUNNING
+		owner.movement_flags = MOVEMENT_NORMAL
 
 		if(frustration > frustration_threshold)
 			path_steps--
@@ -213,11 +220,15 @@
 			owner.move_dir = 0
 
 	else if(roaming_distance && get_dist(owner,start_turf) >= roaming_distance)
+		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,start_turf)
-	else if(stationary)
-		owner.move_dir = 0
-	else
+	else if(alert_level == ALERT_LEVEL_CAUTION)
+		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
+	else
+		owner.movement_flags = MOVEMENT_NORMAL
+		owner.move_dir = 0
+
 
 /ai/proc/hostile_message()
 	return FALSE
@@ -229,12 +240,20 @@
 
 	objective_attack = L
 
+	if(L)
+		set_alert_level(ALERT_LEVEL_ALERT)
+		owner.set_dir(get_dir(owner,L))
+	else
+		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
+
 	return TRUE
 
 /ai/proc/handle_objectives()
 
+	var/list/possible_targets = get_possible_targets()
+
 	if(objective_attack)
-		if(!can_see_enemy(objective_attack) || !should_attack_mob(objective_attack))
+		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
 			set_objective(null)
 			frustration = 0
 		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
@@ -244,7 +263,6 @@
 
 	if(!objective_attack || frustration > frustration_threshold)
 
-		var/list/possible_targets = get_possible_targets()
 		var/atom/best_target
 		var/best_score = 0
 
@@ -287,31 +305,66 @@
 
 	return FALSE
 
-/ai/proc/can_see_enemy(var/mob/living/L)
-	var/list/possible_targets = get_possible_targets()
-	return possible_targets[L]
-
 /ai/proc/get_possible_targets()
 
 	. = attackers.Copy()
 
 	if(radius_find_enemy <= 0)
-		return
+		return .
 
 	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
-		if(should_attack_mob(P))
-			.[P] = TRUE
+		if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
+			continue
+		if(!should_attack_mob(P))
+			continue
+
+		.[P] = TRUE
+
+	return .
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 
 	if(!attackers[attacker])
 		attackers[attacker] = TRUE
 
+	set_alert_level(ALERT_LEVEL_ALERT)
+
 	return TRUE
 
 /ai/proc/Bump(var/atom/obstacle)
+
+	if(is_player(obstacle))
+		set_alert_level(ALERT_LEVEL_CAUTION)
 
 	if(attack_on_block && !do_attack(obstacle,prob(left_click_chance)))
 		frustration++
 
 	return FALSE
+
+/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE)
+
+	var/old_alert_level = alert_level
+
+	if(can_lower)
+		alert_level = desired_alert_level
+	else
+		alert_level = max(desired_alert_level,alert_level)
+
+	if(old_alert_level != alert_level)
+		on_alert_level_changed(old_alert_level,alert_level)
+
+	return TRUE
+
+
+/ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
+
+	if(new_alert_level == ALERT_LEVEL_ALERT)
+		new /obj/effect/temp/alert/exclaim(owner.loc)
+
+	else if(new_alert_level == ALERT_LEVEL_CAUTION)
+		new /obj/effect/temp/alert/question(owner.loc)
+
+	owner.move_dir = 0
+	movement_ticks = movement_delay - DECISECONDS_TO_TICKS(1)
+
+	return TRUE

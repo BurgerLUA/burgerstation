@@ -82,12 +82,27 @@ mob/living/advanced/proc/handle_regen()
 
 	return FALSE
 
+mob/living/advanced/revive()
+	. = ..()
+
+	for(var/k in overlays_assoc)
+		var/obj/overlay/O = k
+		O.plane = plane
+	update_all_blends()
+
+	return .
+
 /mob/living/advanced/post_death()
 
 	. = ..()
 
 	for(var/obj/item/I in held_objects)
 		I.drop_item(src.loc)
+
+	for(var/k in overlays_assoc)
+		var/obj/overlay/O = k
+		O.plane = plane
+	update_all_blends()
 
 	return TRUE
 

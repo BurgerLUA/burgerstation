@@ -23,6 +23,7 @@
 //MOBS
 /obj/plane_master/mobs
 	plane = PLANE_MOB
+	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE | KEEP_TOGETHER
 
 /obj/plane_master/mobs/New(var/desired_loc)
 	. = ..()

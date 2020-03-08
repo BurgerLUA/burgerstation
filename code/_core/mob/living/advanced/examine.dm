@@ -58,5 +58,13 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 
 		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
 
+	if(reagents)
+		var/list/reagent_contents = list()
+		for(var/k in reagents.stored_reagents)
+			var/v = reagents.stored_reagents[k]
+			reagent_contents += "[k] ([v]u)"
+		. += div("notice","Reagent volume is [reagents.volume_current]/[reagents.volume_max] containing [english_list(reagent_contents)].")
+
+	. += div("notice","Plane is now: [plane].")
 
 	return .

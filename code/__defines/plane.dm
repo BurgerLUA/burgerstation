@@ -1,14 +1,16 @@
-#define PLANE_PARALAX -10
+#define PLANE_PARALAX -11
 
-#define PLANE_FLOOR -9
+#define PLANE_FLOOR -10
 
-#define PLANE_FLOOR_OBJECTS -8 //Pipes and wires.
+#define PLANE_FLOOR_OBJECTS -9 //Pipes and wires.
 
-#define PLANE_TILE -7
+#define PLANE_TILE -8
 
-#define PLANE_WALL -6
+#define PLANE_WALL -7
 
-#define PLANE_SHUTTLE -5
+#define PLANE_SHUTTLE -6
+
+#define PLANE_BLOOD -5
 
 #define PLANE_OBJ -4
 
