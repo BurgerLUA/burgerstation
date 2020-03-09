@@ -11,7 +11,7 @@
 	var/mob/living/objective_attack
 	var/mob/living/objective_defend
 
-	var/radius_find_enemy = 8
+	var/radius_find_enemy = VIEW_RANGE
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -292,8 +292,10 @@
 	if(A && A.flags_area & FLAGS_AREA_NO_DAMAGE && !starting_area.flags_area & FLAGS_AREA_NO_DAMAGE)
 		return FALSE
 
+/*
 	if(!true_sight && L.is_sneaking)
 		return FALSE
+*/
 
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
 		return FALSE

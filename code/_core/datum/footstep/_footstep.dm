@@ -35,7 +35,12 @@
 				var/footstep_volume = 50 * (L.move_mod-0.5)
 				if(L.is_sneaking)
 					footstep_volume *= 0.5
-				play_sound(footstep_sound,get_mobs_in_range(L,3) - L,vector(L.x,L.y,L.z),environment = A.sound_environment,volume = footstep_volume, invisibility_check = L.invisibility, channel = SOUND_CHANNEL_FOOTSTEPS,alert = ALERT_LEVEL_NOISE)
+
+				var/alert = ALERT_LEVEL_NONE
+				if(is_player(caller))
+					alert = ALERT_LEVEL_NOISE
+
+				play_sound(footstep_sound,get_mobs_in_range(L,3) - L,vector(L.x,L.y,L.z),environment = A.sound_environment,volume = footstep_volume, invisibility_check = L.invisibility, channel = SOUND_CHANNEL_FOOTSTEPS, alert = alert)
 				play_sound(footstep_sound,list(L),vector(L.x,L.y,L.z),environment = A.sound_environment,volume = footstep_volume)
 
 			if(has_footprints && L.has_footprints)

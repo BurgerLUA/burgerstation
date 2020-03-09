@@ -8,15 +8,17 @@
 	class = "syndicate"
 
 	var/list/possible_outfits = list(
-		"syndicate_hardsuit" = 200,
-		"syndicate_hardsuit_advanced" = 10,
-		"syndicate_hardsuit_elite" = 5
+		"syndicate_soldier" = 200,
+		"syndicate_hardsuit" = 10,
+		"syndicate_hardsuit_advanced" = 5,
+		"syndicate_hardsuit_elite" = 3
 	)
 
 	var/outfit_to_level = list(
-		"syndicate_hardsuit" = 1,
-		"syndicate_hardsuit_advanced" = 2,
-		"syndicate_hardsuit_elite" = 3
+		"syndicate_soldier" = 1,
+		"syndicate_hardsuit" = 2,
+		"syndicate_hardsuit_advanced" = 4,
+		"syndicate_hardsuit_elite" = 8
 	)
 
 	var/list/possible_weapons = list(

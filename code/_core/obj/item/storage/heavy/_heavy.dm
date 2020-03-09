@@ -1,8 +1,6 @@
 /obj/item/storage/heavy
 	name = "heavy storage"
 	desc = "I don't think anyone can pick this up."
-	icon = 'icons/obj/items/storage/crates.dmi'
-	icon_state = "crate"
 
 	size = 1000
 

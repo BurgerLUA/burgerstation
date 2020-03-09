@@ -232,10 +232,12 @@ var/global/channel_hack = 100
 
 		if(alert && is_living(M) && prob(created_sound.volume*2))
 			var/mob/living/L = M
-			L.ai.set_alert_level(alert)
-			if(L.ai && L.ai.alert_level != ALERT_LEVEL_ALERT)
-				var/turf/T2 = locate(pos[1],pos[2],pos[3])
-				M.set_dir(get_dir(M,T2))
+			if(L.ai)
+				L.ai.set_alert_level(alert)
+				if(L.ai.alert_level != ALERT_LEVEL_ALERT)
+					var/turf/T2 = locate(pos[1],pos[2],pos[3])
+					T2.color = "#FF0000"
+					M.set_dir(get_dir(M,T2))
 
 		if(M.client)
 			M << created_sound

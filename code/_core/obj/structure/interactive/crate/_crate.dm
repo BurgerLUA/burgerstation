@@ -30,13 +30,10 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/open
-	open = TRUE
-
 /obj/structure/interactive/crate/update_icon()
 	icon_state = initial(icon_state)
 	if(open)
-		icon_state = "[icon_state]open"
+		icon_state = "[icon_state]_open"
 
 	return ..()
 

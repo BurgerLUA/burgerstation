@@ -51,6 +51,7 @@
 
 //Makes compiling faster FALSE disabled
 
+#define ENABLE_BULLET_CASINGS FALSE
 #define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING FALSE

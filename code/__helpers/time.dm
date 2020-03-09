@@ -42,18 +42,34 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 
 	return english_list(time_list)
 
-/proc/get_clock_time(var/seconds)
 
-	var/minute_value = FLOOR(seconds/60, 1)
-	var/second_value = seconds - minute_value*60
+#define FORMAT_HOUR 0x1
+#define FORMAT_MINUTE 0x2
+#define FORMAT_SECOND 0x4
+
+/proc/get_clock_time(var/seconds,var/format_type = FORMAT_MINUTE | FORMAT_SECOND)
+
+	var/hour_value = FLOOR(seconds/3600,1)
+	var/minute_value = FLOOR(seconds/60, 1) % 60
+	var/second_value = seconds % 60
 
 	var/minute_text = "[minute_value]"
-	if(minute_value < 10)
+	if(minute_value < 10 && format_type & FORMAT_HOUR)
 		minute_text = "0[minute_text]"
 
 	var/second_text = "[second_value]"
 	if(second_value < 10)
 		second_text = "0[second_value]"
 
-	return "[minute_text]:[second_text]"
+	. = list()
 
+	if(format_type & FORMAT_HOUR || hour_value)
+		. += "[hour_value]"
+
+	if(format_type & FORMAT_MINUTE || minute_value)
+		. += "[minute_text]"
+
+	if(format_type & FORMAT_SECOND)
+		. += "[second_text]"
+
+	return english_list(.,"0:00",":",":")

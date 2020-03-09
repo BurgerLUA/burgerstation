@@ -19,7 +19,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*nutrition_amount,burn=.*nutrition_amount,tox=.*nutrition_amount,oxy=.*nutrition_amount)
+		owner.health.adjust_loss_smart(brute=-.*nutrition_amount,burn=-.*nutrition_amount,tox=-.*nutrition_amount,oxy=-.*nutrition_amount)
 
 	return .
 
