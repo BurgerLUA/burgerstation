@@ -19,6 +19,14 @@
 
 	ammo = /obj/item/bullet_cartridge/revolver_38
 
+	bullet_length_min = 10
+	bullet_length_best = 29
+	bullet_length_max = 30
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
+
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 magnum speedloader"
 	icon = 'icons/obj/items/magazine/revolver/44.dmi'
@@ -31,6 +39,16 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_44
+
+	bullet_length_min = 10
+	bullet_length_best = 29
+	bullet_length_max = 30
+
+	bullet_diameter_min = 10
+	bullet_diameter_best = 10.9
+	bullet_diameter_max = 11
+
+
 
 /*
 /obj/item/magazine/clip/revolver/bullet_44/surplus/
@@ -59,6 +77,14 @@
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_357
+
+	bullet_length_min = 20
+	bullet_length_best = 33
+	bullet_length_max = 35
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
 
 /*
 /obj/item/magazine/clip/revolver/bullet_357/surplus

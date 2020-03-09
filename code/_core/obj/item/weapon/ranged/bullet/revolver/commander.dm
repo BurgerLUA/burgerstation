@@ -10,8 +10,6 @@
 
 	bullet_count_max = 6
 
-
-
 	shoot_sounds = list('sounds/weapons/revolver_heavy/shoot.ogg')
 
 	view_punch = 10
@@ -20,6 +18,14 @@
 	weight = WEIGHT_3
 
 	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
+
+	bullet_length_min = 10
+	bullet_length_best = 29
+	bullet_length_max = 30
+
+	bullet_diameter_min = 10
+	bullet_diameter_best = 10.9
+	bullet_diameter_max = 11
 
 /obj/item/weapon/ranged/bullet/revolver/commander/get_static_spread() //Base spread
 	return 0.05

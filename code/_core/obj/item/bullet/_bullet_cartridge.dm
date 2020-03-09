@@ -212,17 +212,17 @@
 		var/obj/item/magazine/M = object
 		transfer_src_to_magazine(caller,M,location,control,params)
 		var/area/A = get_area(caller.loc)
-		play_sound(get_bullet_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound(get_bullet_insert_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		return TRUE
 
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		if(transfer_src_to_gun(caller,G,location,control,params))
 			var/area/A = get_area(caller.loc)
-			play_sound(get_bullet_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			play_sound(get_bullet_insert_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
-				play_sound(M.get_cock_sound("forward"),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+				play_sound(M.get_cock_sound("forward"),get_mobs_in_range(caller,6),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 			return TRUE
 
 	return ..()

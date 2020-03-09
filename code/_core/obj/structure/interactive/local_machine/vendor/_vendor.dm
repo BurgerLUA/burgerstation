@@ -1,4 +1,4 @@
-/obj/structure/interactive/vendor/
+/obj/structure/interactive/vending/
 	name = "vending machine"
 	desc = "Vends things!"
 	icon = 'icons/obj/structure/vending.dmi'
@@ -21,12 +21,12 @@
 
 	var/force_spawn_stored_types = FALSE
 
-/obj/structure/interactive/vendor/Destroy()
+/obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
 	return ..()
 
-/obj/structure/interactive/vendor/proc/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+/obj/structure/interactive/vending/proc/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
 	if(!is_free && P && P.currency < item_value && !P.spend_currency(item_value))
 		P.to_chat(span("notice","You don't have enough telecrystals to buy this!"))
@@ -39,7 +39,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/vendor/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
 	if(!can_purchase_item(P,associated_item,item_value,I))
 		return FALSE
@@ -61,13 +61,13 @@
 
 	return TRUE
 
-/obj/structure/interactive/vendor/Initialize()
+/obj/structure/interactive/vending/Initialize()
 
 	var/turf/T = get_turf(src)
 
 	if(force_spawn_stored_types)
-		for(var/obj/item/I in stored_types)
-			new I(src)
+		for(var/I in stored_types)
+			new I(src.loc)
 		stored_types.Cut()
 
 	for(var/obj/item/I in T.contents)
@@ -80,7 +80,7 @@
 
 	return ..()
 
-/obj/structure/interactive/vendor/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	INTERACT_CHECK
 
@@ -96,7 +96,7 @@
 
 	return ..()
 
-/obj/structure/interactive/vendor/proc/show_buttons_to(var/mob/living/advanced/A)
+/obj/structure/interactive/vending/proc/show_buttons_to(var/mob/living/advanced/A)
 
 	var/stored_objects_length = length(stored_objects)
 	var/stored_types_length = length(stored_types)
@@ -124,17 +124,17 @@
 	CV.update_owner(A)
 	CV.update_icon()
 
-/obj/structure/interactive/vendor/proc/hide_buttons_from(var/mob/living/advanced/A)
+/obj/structure/interactive/vending/proc/hide_buttons_from(var/mob/living/advanced/A)
 	for(var/obj/hud/button/vendor/V in A.buttons)
 		V.update_owner(null)
 
 	for(var/obj/hud/button/close_vendor/V in A.buttons)
 		V.update_owner(null)
 
-/obj/structure/interactive/vendor/on_active(var/mob/living/advanced/player/P)
+/obj/structure/interactive/vending/on_active(var/mob/living/advanced/player/P)
 	show_buttons_to(P)
 	return ..()
 
-/obj/structure/interactive/vendor/on_inactive(var/mob/living/advanced/player/P)
+/obj/structure/interactive/vending/on_inactive(var/mob/living/advanced/player/P)
 	hide_buttons_from(P)
 	return ..()

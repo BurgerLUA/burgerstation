@@ -38,14 +38,14 @@
 
 	if(cock_type)
 		var/area/A = get_area(caller.loc)
-		play_sound(get_cock_sound(cock_type),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound(get_cock_sound(cock_type),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 		update_icon()
 
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
 	var/area/A = get_area(caller)
-	play_sound(stored_magazine.get_magazine_eject_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(stored_magazine.get_magazine_eject_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	stored_magazine.force_move(caller.loc)
 	if(object)
 		var/obj/hud/inventory/offhand_slot = object

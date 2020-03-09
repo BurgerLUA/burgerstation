@@ -88,7 +88,6 @@
 #include "code\__helpers\damagetype.dm"
 #include "code\__helpers\direction.dm"
 #include "code\__helpers\dview.dm"
-#include "code\__helpers\footstep.dm"
 #include "code\__helpers\garbage.dm"
 #include "code\__helpers\general.dm"
 #include "code\__helpers\health.dm"

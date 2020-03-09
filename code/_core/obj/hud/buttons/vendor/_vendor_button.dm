@@ -14,7 +14,7 @@
 	maptext = "ITEM NAME HERE"
 
 	var/obj/item/associated_item
-	var/obj/structure/interactive/vendor/associated_vendor
+	var/obj/structure/interactive/vending/associated_vendor
 
 	mouse_opacity = 1
 
@@ -56,7 +56,7 @@
 		I3.Shift(EAST,1)
 		I2.Blend(I3,ICON_OVERLAY)
 
-	var/x_pos_mod = 9
+	var/x_pos_mod = 13
 
 	if(associated_vendor && associated_vendor.is_free && associated_vendor.free_text)
 		var/icon/I4 = new/icon('icons/hud/numbers.dmi',associated_vendor.free_text)
@@ -77,7 +77,12 @@
 	I4.pixel_x = 35
 	overlays += I4
 
-	var/desired_name = initial(associated_item.vendor_name) ? initial(associated_item.vendor_name) : initial(associated_item.name)
+	var/desired_name
+
+	if(!ispath(associated_item))
+		desired_name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
+	else
+		desired_name = initial(associated_item.vendor_name) ? initial(associated_item.vendor_name) : initial(associated_item.name)
 
 	maptext = desired_name
 	maptext_width = 96*2

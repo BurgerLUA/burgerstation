@@ -21,6 +21,14 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
 
+	bullet_length_min = 20
+	bullet_length_best = 33
+	bullet_length_max = 35
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
+
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
 	return 0.01
 

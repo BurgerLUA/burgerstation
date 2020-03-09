@@ -29,7 +29,7 @@
 			world.log << "NO BULLET"
 
 	var/area/A = get_area(caller.loc)
-	play_sound(pump_sound,all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(pump_sound,get_mobs_in_range(caller),vector(caller.x,caller.y,caller.z),environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
 	update_icon()
 
 	next_shoot_time = world.time + 1

@@ -106,7 +106,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click*"))
 	var/area/A = get_area(caller.loc)
 	if(length(empty_sounds))
-		play_sound(pick(empty_sounds),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment,volume = 50)
+		play_sound(pick(empty_sounds),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment,volume = 50,alert = ALERT_LEVEL_NOISE)
 
 	return FALSE
 
@@ -167,7 +167,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/area/A = get_area(caller)
 
 		if(length(shoot_sounds))
-			play_sound(pick(shoot_sounds_to_use),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+			play_sound(pick(shoot_sounds_to_use),get_mobs_in_range(caller),vector(caller.x,caller.y,caller.z),environment = A.sound_environment,alert = ALERT_LEVEL_CAUTION)
 
 		if(!params || !length(params))
 			params = list()

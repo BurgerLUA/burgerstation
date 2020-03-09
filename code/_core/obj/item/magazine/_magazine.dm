@@ -124,7 +124,7 @@
 	G.stored_magazine = src
 	G.open = FALSE
 	var/area/A = get_area(caller)
-	play_sound(get_magazine_insert_sound(),all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+	play_sound(get_magazine_insert_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 	G.update_icon()
 
 	return TRUE

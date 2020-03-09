@@ -138,7 +138,7 @@
 "cH" = (/obj/structure/smooth/table,/turf/simulated/floor/tile/dark,/area/interior/ship)
 "cI" = (/obj/structure/smooth/table/glass,/turf/simulated/floor/tile/dark,/area/interior/ship)
 "cJ" = (/obj/structure/smooth/table/wood,/turf/simulated/floor/tile/dark,/area/interior/ship)
-"cK" = (/obj/structure/interactive/vending/medicine,/turf/simulated/floor/tile,/area/interior/ship/medical)
+"cK" = (/obj/structure/interactive/vendor/medicine,/turf/simulated/floor/tile,/area/interior/ship/medical)
 "cL" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/tile/grey/single,/area/interior/ship/hall/north)
 "cM" = (/obj/structure/interactive/lighting/tube{dir = 1; icon_state = "tube_light"},/turf/simulated/floor/tile/dark,/area/interior/ship)
 "cN" = (/obj/structure/interactive/door/airlock/station/general,/obj/structure/interactive/door/fire,/turf/simulated/floor/tile/dark,/area/interior/ship)
@@ -471,7 +471,7 @@
 "jc" = (/turf/simulated/floor/plating,/area/interior/ship/maint)
 "jd" = (/obj/structure/smooth/table/reinforced,/obj/decal/tile/cross/grey,/obj/item/container/beaker/glass,/turf/simulated/floor/tile,/area/interior/ship)
 "je" = (/obj/structure/interactive/disposals/pipe/labeler{sorting_tab_label = "engineering"},/turf/simulated/floor/plating,/area/interior/ship/maint)
-"jf" = (/obj/structure/interactive/vending/soda/full,/turf/simulated/floor/tile/dark/ish,/area/interior/ship)
+"jf" = (/obj/structure/interactive/vendor/soda/full,/turf/simulated/floor/tile/dark/ish,/area/interior/ship)
 "jg" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/grey,/area/interior/ship/cryo)
 "jh" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/plating,/area/interior/ship/maint)
 "ji" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/turf/simulated/floor/plating,/area/interior/ship/maint)
@@ -537,7 +537,7 @@
 "kq" = (/obj/structure/interactive/door/airlock/station/glass,/obj/structure/interactive/door/fire,/turf/simulated/floor/tile,/area/interior/ship/science)
 "kr" = (/obj/structure/interactive/door/airlock/station/glass,/obj/structure/interactive/door/fire,/turf/simulated/floor/tile/purple,/area/interior/ship/science)
 "ks" = (/turf/simulated/wall/metal/reinforced/hull,/area/interior/ship/science)
-"kt" = (/obj/structure/interactive/vending/soda/full,/turf/simulated/floor/tile/dark,/area/interior/ship/armory)
+"kt" = (/obj/structure/interactive/vendor/soda/full,/turf/simulated/floor/tile/dark,/area/interior/ship/armory)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

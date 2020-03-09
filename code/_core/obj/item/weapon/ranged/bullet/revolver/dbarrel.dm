@@ -11,8 +11,6 @@
 
 	bullet_count_max = 2
 
-
-
 	insert_limit = 2
 
 	view_punch = 12
@@ -23,6 +21,14 @@
 
 	size = SIZE_2
 	weight = WEIGHT_2
+
+	bullet_length_min = 18
+	bullet_length_best = 18.5
+	bullet_length_max = 19
+
+	bullet_diameter_min = 18
+	bullet_diameter_best = 18.5
+	bullet_diameter_max = 19
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread
 	return 0.2

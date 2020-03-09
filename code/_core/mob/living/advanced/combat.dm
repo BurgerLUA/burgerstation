@@ -109,7 +109,7 @@
 
 	var/area/A = get_area(src)
 	if(A && istype(A))
-		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment)
+		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

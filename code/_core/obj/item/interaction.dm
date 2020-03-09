@@ -48,7 +48,7 @@
 			opening = FALSE
 
 	if(opening)
-		play_sound(pick(inventory_sounds),all_mobs_with_clients,vector(T.x,T.y,T.z),environment = A2.sound_environment, channel = SOUND_CHANNEL_FX)
+		play_sound(pick(inventory_sounds),get_mobs_in_range(T,3),vector(T.x,T.y,T.z),environment = A2.sound_environment, channel = SOUND_CHANNEL_FX)
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
 

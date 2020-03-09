@@ -18,3 +18,7 @@
 
 /reagent_container/beaker/vial/
 	volume_max = 15
+
+
+/reagent_container/beaker/glass
+	volume_max = 30

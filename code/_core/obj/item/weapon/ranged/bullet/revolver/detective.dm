@@ -22,6 +22,14 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
+	bullet_length_min = 10
+	bullet_length_best = 29
+	bullet_length_max = 30
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
+
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
 	return 0.01
 

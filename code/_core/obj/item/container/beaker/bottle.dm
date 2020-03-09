@@ -37,3 +37,15 @@
 /obj/item/container/beaker/bottle/epinephrine/on_spawn()
 	reagents.add_reagent("epinephrine",reagents.volume_max)
 	return ..()
+
+
+
+/obj/item/container/beaker/glass
+	name = "drinking glass"
+	icon = 'icons/obj/items/container/cup/glass.dmi'
+	icon_state = "cup"
+	icon_count = 15
+
+	reagents = /reagent_container/beaker/glass/
+
+	value = 1

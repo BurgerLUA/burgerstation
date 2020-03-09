@@ -3,7 +3,13 @@
 	if(is_sneaking)
 		on_sneak()
 
-	return ..()
+	. = ..()
+
+	if(stored_alert_effect)
+		stored_alert_effect.glide_size = src.glide_size
+		stored_alert_effect.force_move(src.loc)
+
+	return .
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 

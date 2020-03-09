@@ -102,7 +102,7 @@ list(
 
 	var/turf/current_turf = get_turf(src)
 
-	play_sound(radio_sound,all_mobs_with_clients,vector(current_turf.x,current_turf.y,current_turf.z))
+	play_sound(radio_sound,get_mobs_in_range(current_turf,8),vector(current_turf.x,current_turf.y,current_turf.z),alert = ALERT_LEVEL_NOISE)
 
 	return TRUE
 

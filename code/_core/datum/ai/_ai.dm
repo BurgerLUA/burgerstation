@@ -352,17 +352,24 @@
 
 	if(old_alert_level != alert_level)
 		on_alert_level_changed(old_alert_level,alert_level)
+		return TRUE
 
-	return TRUE
-
+	return FALSE
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
 
+	if(owner.stored_alert_effect)
+		qdel(owner.stored_alert_effect)
+		owner.stored_alert_effect = null
+
 	if(new_alert_level == ALERT_LEVEL_ALERT)
-		new /obj/effect/temp/alert/exclaim(owner.loc)
+		owner.stored_alert_effect = new /obj/effect/temp/alert/exclaim(owner.loc)
 
 	else if(new_alert_level == ALERT_LEVEL_CAUTION)
-		new /obj/effect/temp/alert/question(owner.loc)
+		owner.stored_alert_effect = new /obj/effect/temp/alert/question(owner.loc)
+
+	else if(new_alert_level == ALERT_LEVEL_NOISE)
+		owner.stored_alert_effect = new /obj/effect/temp/alert/huh(owner.loc)
 
 	owner.move_dir = 0
 	movement_ticks = movement_delay - DECISECONDS_TO_TICKS(1)

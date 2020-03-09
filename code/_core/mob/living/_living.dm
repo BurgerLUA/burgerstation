@@ -111,6 +111,8 @@
 
 	has_footsteps = TRUE
 
+	var/obj/effect/temp/alert/stored_alert_effect //For AI
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object
@@ -171,6 +173,9 @@
 
 	qdel(medical_hud_image_advanced)
 	medical_hud_image_advanced = null
+
+	qdel(stored_alert_effect)
+	stored_alert_effect = null
 
 	return ..()
 

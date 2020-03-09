@@ -60,9 +60,9 @@
 	. = ..()
 	var/area/A = get_area(caller.loc)
 	if(enabled)
-		play_sound('sounds/weapons/energy/energy_on.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound('sounds/weapons/energy/energy_on.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment,alert = ALERT_LEVEL_CAUTION)
 	else
-		play_sound('sounds/weapons/energy/energy_off.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound('sounds/weapons/energy/energy_off.ogg',all_mobs_with_clients,vector(caller.x,caller.y,caller.z),environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
 	return .
 
 /obj/item/weapon/melee/energy/sword/blue

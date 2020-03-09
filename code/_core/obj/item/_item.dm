@@ -20,7 +20,7 @@
 	var/slowdown_mul_held = 1 //Slow down multiplier. High values means more slower.
 	var/slowdown_mul_worn = 1
 
-	var/pixel_height = 2 //The z size of this, in pixels. Use for sandwiches and burgers.
+	var/pixel_height = 2 //The z size of this, in pixels. Used for sandwiches and burgers.
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0
@@ -30,7 +30,7 @@
 	var/container_blacklist = list()
 	var/container_whitelist = list()
 
-	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature
+	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod = 1 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
 
 	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
@@ -216,15 +216,32 @@
 		I.update_icon()
 	return .
 
+/*
 /obj/item/get_examine_text(var/mob/examiner)
 	var/name_text = div("examine_title",src.name)
 	var/rarity_text = div("rarity [rarity]",capitalize(rarity))
-	var/value_text = div("rarity common","Value: [calculate_value(TRUE)].")
+	var/value_text = div("rarity [rarity]","Value: [calculate_value(TRUE)].")
 	var/physical_text = div("weightsize","Size: [size] | Weight: [weight]")
 	var/desc_text = div("examine_description","\"[src.desc]\"")
 	var/desc_extended_text = div("examine_description_long",src.desc_extended)
 	var/damage_type_text = "" //is_living(examiner) ? get_damage_type_text(examiner) : ""
 	return "[name_text][desc_text][rarity_text][value_text][physical_text][desc_extended_text][damage_type_text]"
+*/
+
+/obj/item/get_examine_text(var/mob/examiner)
+	. = div("examine_title","\icon[src] [src.name]")
+	. += div("rarity [rarity]",capitalize(rarity))
+	. += div("rarity","Value: [calculate_value(TRUE)].")
+	. += div("weightsize","Size: [size] | Weight: [weight]")
+	. += div("examine_description","\"[src.desc]\"")
+	. += div("examine_description_long",src.desc_extended)
+	/*
+	if(is_living(examiner))
+		. += get_damage_type_text(examiner)
+	*/
+
+	return .
+
 
 /obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
 
