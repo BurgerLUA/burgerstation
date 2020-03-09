@@ -777,7 +777,6 @@
 #include "code\_core\obj\item\organs\eyes.dm"
 #include "code\_core\obj\item\organs\feet.dm"
 #include "code\_core\obj\item\organs\groins.dm"
-#include "code\_core\obj\item\organs\hair.dm"
 #include "code\_core\obj\item\organs\hands.dm"
 #include "code\_core\obj\item\organs\heads.dm"
 #include "code\_core\obj\item\organs\legs.dm"

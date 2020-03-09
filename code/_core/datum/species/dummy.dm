@@ -13,7 +13,6 @@
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,
 		BODY_HEAD = /obj/item/organ/head,
-		BODY_HAIR_HEAD = /obj/item/organ/hair,
 		BODY_GROIN = /obj/item/organ/groin,
 		BODY_LEG_RIGHT = /obj/item/organ/leg,
 		BODY_LEG_LEFT = /obj/item/organ/leg/left,
@@ -28,7 +27,6 @@
 	spawning_organs_female = list(
 		BODY_TORSO = /obj/item/organ/torso/female,
 		BODY_HEAD = /obj/item/organ/head/female,
-		BODY_HAIR_HEAD = /obj/item/organ/hair,
 		BODY_GROIN = /obj/item/organ/groin/female,
 		BODY_LEG_RIGHT = /obj/item/organ/leg,
 		BODY_LEG_LEFT = /obj/item/organ/leg/left,

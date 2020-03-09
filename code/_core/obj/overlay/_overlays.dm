@@ -24,6 +24,8 @@
 	if(no_update)
 		return
 
+	overlays.Cut()
+
 	name = "[attached_object.name] overlay"
 
 	if(length(additional_blends) && !never_blend)
@@ -47,10 +49,10 @@
 			*/
 
 			if(IB.special_type & ICON_BLEND_OVERLAY)
-				var/icon/OI = new/icon(IB.icon,IB.icon_state)
-
-				OI.Blend(IB.color,ICON_MULTIPLY)
-				I.Blend(OI,ICON_OVERLAY)
+				var/image/OI = new/image(IB.icon,IB.icon_state)
+				OI.color = IB.color
+				OI.layer = IB.layer
+				overlays += OI
 
 			if(IB.special_type & ICON_BLEND_COLOR)
 				I.Blend(IB.color,ICON_MULTIPLY)

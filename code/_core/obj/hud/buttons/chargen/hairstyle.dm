@@ -3,8 +3,8 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	var/species/S = all_species[species]
 
 	if(hair_num == -1)
-		if(labeled_organs[BODY_HAIR_HEAD])
-			var/obj/item/organ/O = labeled_organs[BODY_HAIR_HEAD]
+		if(labeled_organs[BODY_HEAD])
+			var/obj/item/organ/head/O = labeled_organs[BODY_HEAD]
 			if(O.additional_blends["hair_head"])
 				var/icon_blend/IB = O.additional_blends["hair_head"]
 				var/found_value = S.all_hair_head.Find(IB.icon_state)

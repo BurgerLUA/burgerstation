@@ -37,7 +37,7 @@
 
 #define BODY_TAIL "tail"
 
-#define BODY_HAIR_HEAD "hair_head"
+//#define BODY_HAIR_HEAD "hair_head"
 
 #define BODY_SPECIAL "special"
 
