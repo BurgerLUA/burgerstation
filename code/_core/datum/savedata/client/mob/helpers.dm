@@ -7,7 +7,8 @@
 		var/desired_color = value_or_null(blend_list,"color")
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
-		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,1)
+		var/desired_layer = value_or_null(blend_list,"layer")
+		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
 
 /savedata/client/mob/proc/get_proper_id_from_filepath(var/file_string)
 	var/file_name = get_filename(file_string)

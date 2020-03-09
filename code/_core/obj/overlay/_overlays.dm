@@ -37,18 +37,18 @@
 		for(var/id in additional_blends)
 			var/icon_blend/IB = additional_blends[id]
 
-			if(IB.layer)
-				layer = IB.layer
-
+			/* UNUSED
 			if(IB.special_type & ICON_BLEND_MASK)
 				var/icon/OI = new/icon(IB.icon,IB.icon_state)
 				var/icon/MI = new/icon(initial_icon,initial_icon_state)
 				MI.Blend("#FFFFFF",ICON_ADD)
 				MI.Blend(OI,ICON_MULTIPLY)
 				I.Blend(MI,ICON_OVERLAY)
+			*/
 
-			else if(IB.special_type & ICON_BLEND_OVERLAY)
+			if(IB.special_type & ICON_BLEND_OVERLAY)
 				var/icon/OI = new/icon(IB.icon,IB.icon_state)
+
 				OI.Blend(IB.color,ICON_MULTIPLY)
 				I.Blend(OI,ICON_OVERLAY)
 
@@ -59,3 +59,5 @@
 	else
 		icon = initial_icon
 		icon_state = initial_icon_state
+
+	name = "[attached_object.name] (overlay)"

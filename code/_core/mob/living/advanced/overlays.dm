@@ -48,6 +48,16 @@ mob/living/advanced/proc/update_all_blends()
 	for(var/obj/overlay/O in overlays_assoc)
 		update_overlay_direct(O)
 
+mob/living/advanced/player/verb/debug_blends()
+	for(var/obj/overlay/O in overlays_assoc)
+		world.log << "[O.name]: [O.layer]"
+		if(length(O.additional_blends))
+			world.log << "ADDITIONAL BLENDS:"
+			for(var/id in O.additional_blends)
+				world.log << "[id]: [O.additional_blends[id].layer]"
+
+
+
 mob/living/advanced/proc/add_overlay_image(var/obj/overlay/O)
 	var/image/I = new /image(O.icon)
 	I.appearance = O.appearance
