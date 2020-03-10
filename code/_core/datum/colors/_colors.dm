@@ -1,3 +1,4 @@
+#define ICON_BLEND_NONE 0x0
 #define ICON_BLEND_COLOR 0x1
 #define ICON_BLEND_MASK 0x2
 #define ICON_BLEND_OVERLAY 0x4

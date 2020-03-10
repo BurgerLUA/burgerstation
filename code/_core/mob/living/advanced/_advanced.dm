@@ -280,6 +280,7 @@ mob/living/advanced/Login()
 	if(client)
 		add_species_buttons()
 		add_species_health_elements()
+	return TRUE
 
 /mob/living/advanced/Initialize()
 
@@ -348,7 +349,8 @@ mob/living/advanced/Login()
 	for(var/obj/item/organ/O in organs)
 		if(!length(O.additional_blends))
 			continue
-		O.change_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
+		if(O.additional_blends[desired_id])
+			O.add_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
 
 /mob/living/advanced/proc/update_gender()
 	remove_all_organs()

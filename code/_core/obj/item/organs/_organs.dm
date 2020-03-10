@@ -169,14 +169,19 @@
 
 /obj/item/organ/update_icon()
 
+	/*
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
 	var/is_attached_to = is_advanced(src.loc)
 	if(!is_attached_to && has_dropped_icon)
-		icon_state = "[initial(icon_state)]_inventory"
+		icon_state = "[icon_state]_inventory"
 		if(has_dropped_icon_underlay)
 			var/icon/I = new /icon(icon,icon_state)
 			var/icon/U = new /icon(icon,"[icon_state]_underlay")
 			I.Blend(U,ICON_UNDERLAY)
 			icon = I
+	*/
 
 	return ..()
 

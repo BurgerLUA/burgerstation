@@ -1,15 +1,3 @@
-/savedata/client/mob/proc/apply_blend_data(var/obj/O, var/list/blend_data)
-	for(var/id in blend_data)
-		var/list/blend_list = blend_data[id]
-		var/desired_id = value_or_null(blend_list,"id")
-		var/desired_icon = value_or_null(blend_list,"icon")
-		var/desired_icon_state = value_or_null(blend_list,"icon_state")
-		var/desired_color = value_or_null(blend_list,"color")
-		var/desired_blend = value_or_null(blend_list,"blend")
-		var/desired_type = value_or_null(blend_list,"type")
-		var/desired_layer = value_or_null(blend_list,"layer")
-		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
-
 /savedata/client/mob/proc/get_proper_id_from_filepath(var/file_string)
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
@@ -191,3 +179,26 @@
 
 	if(update_blends)
 		A.update_all_blends()
+	else
+		A.update_all_blends() //butts
+
+	world.log << "THE BLENDS ARE UPDATED HERE!"
+
+/savedata/client/mob/proc/apply_blend_data(var/obj/O, var/list/blend_data)
+	for(var/id in blend_data)
+		var/list/blend_list = blend_data[id]
+		var/desired_id = value_or_null(blend_list,"id")
+		var/desired_icon = value_or_null(blend_list,"icon")
+		if(desired_icon)
+			desired_icon = file(desired_icon)
+		var/desired_icon_state = value_or_null(blend_list,"icon_state")
+		var/desired_color = value_or_null(blend_list,"color")
+		var/desired_blend = value_or_null(blend_list,"blend")
+		var/desired_type = value_or_null(blend_list,"type")
+		var/desired_layer = value_or_null(blend_list,"layer")
+		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
+
+/mob/living/advanced/verb/debug_overlays()
+	world.log << "Found [length(overlays)] overlays."
+	for(var/O in overlays)
+		world.log << "Overlay: [O]."

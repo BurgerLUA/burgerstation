@@ -92,5 +92,8 @@
 	var/mob/living/advanced/player/P = new(T,src)
 	P.mobdata = U
 	P.Initialize()
+	//sP.handle_hairstyle_chargen(-1,update_blends=FALSE)
+	//P.handle_beardstyle_chargen(-1,update_blends=FALSE)
+	//P.update_all_blends()
 
 	return P
