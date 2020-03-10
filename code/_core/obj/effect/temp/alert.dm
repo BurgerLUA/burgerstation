@@ -2,7 +2,7 @@ obj/effect/temp/alert
 	name = "alert indicator"
 	icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 
-obj/effect/temp/New(var/desired_location,var/desired_time)
+obj/effect/temp/alert/New(var/desired_location,var/desired_time)
 	. = ..()
 	alpha = 0
 	transform *= 0.5

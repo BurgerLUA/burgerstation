@@ -73,7 +73,6 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		world.log << "Rest time: [L.rest_time]."
 		if(L.rest_time >= 0)
 			L.rest_time = -5
 		else if(L.rest_time == -1)

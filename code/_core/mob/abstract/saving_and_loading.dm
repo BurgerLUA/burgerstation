@@ -25,10 +25,10 @@
 			return FALSE
 
 		if(U.create_new_character(U.get_next_character_id()))
-			var/turf/desired_spawn = get_turf(pick(chargen_spawnpoints))
-			var/mob/living/advanced/player/P = new(desired_spawn,client)
+			var/turf/T = get_turf(pick(chargen_spawnpoints))
+			var/mob/living/advanced/player/P = new(T,client)
 			P.mobdata = U
-			P.force_move(desired_spawn)
+			P.force_move(T)
 			P.start_chargen()
 			return TRUE
 		else
@@ -58,14 +58,8 @@
 	if(!choice || !is_valid(src))
 		return FALSE
 
-	U.loaded_data = U.load_json_data_from_id(name_to_choice[choice])
-	C.save_slot = name_to_choice[choice]
-	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_music_track(C)
-
-	var/mob/living/advanced/player/P = new(src.loc,client)
-	P.mobdata = mobdata
-	P.Initialize()
+	var/file_num = name_to_choice[choice]
+	return C.load(U,file_num)
 
 /mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Quickload"
@@ -81,12 +75,22 @@
 		return FALSE
 
 	var/file_num = U.get_proper_id_from_filename(files[1])
-	U.loaded_data = U.load_json_data_from_id(file_num)
-	C.save_slot = file_num
-	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_music_track(C)
+	return C.load(U,file_num)
 
-	var/mob/living/advanced/player/P = new(src.loc,client)
-	P.mobdata = mobdata
+/client/proc/load(var/savedata/client/mob/U,var/file_num)
+
+	U.loaded_data = U.load_json_data_from_id(file_num)
+	src.save_slot = file_num
+	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
+	stop_music_track(src)
+
+	var/turf/T = mob.loc
+	world.log << "The loc is: [T]."
+
+	qdel(src.mob)
+
+	var/mob/living/advanced/player/P = new(T,src)
+	P.mobdata = U
 	P.Initialize()
-	qdel(src)
+
+	return P

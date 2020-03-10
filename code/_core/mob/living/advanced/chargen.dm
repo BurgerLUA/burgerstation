@@ -100,7 +100,7 @@
 	if(chargen)
 		add_chargen_buttons()
 
-	apply_mob_parts(FALSE,FALSE)
+	apply_mob_parts(FALSE,FALSE,FALSE)
 	default_appearance()
 
 	if(length(kept_items))
@@ -114,7 +114,7 @@
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
 		B.update_icon()
 
-	update_icon()
+	update_all_blends()
 	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 	show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 

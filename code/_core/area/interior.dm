@@ -95,6 +95,7 @@
 /area/interior/ship/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "cryo"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_SAVEZONE
 
 /area/interior/ship/dock/arrivals
 	name = "\improper Arrivals Dock"

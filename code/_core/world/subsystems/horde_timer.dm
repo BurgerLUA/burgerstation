@@ -152,7 +152,7 @@ SUBSYSTEM_DEF(horde)
 					var/mob/living/advanced/npc/syndicate/S = new(T)
 					S.Initialize()
 					S.ai.set_path(found_path)
-					world.log << "SPAWNING ENEMY!"
+
 					for(var/mob/abstract/observer/O in world)
 						O.force_move(T)
 					wave_to_spawn--

@@ -34,6 +34,10 @@
 				I.reagents.add_reagent(r_id,volume,TNULL,FALSE)
 			I.reagents.update_container()
 
+	if(istype(O,/obj/item/weapon/ranged/))
+		var/obj/item/weapon/ranged/R = O
+		R.firing_pin = load_and_create_object(object_data["firing_pin"],R)
+
 	if(is_food(O))
 		var/obj/item/container/food/F = O
 		F.original_volume = object_data["original_volume"]
@@ -142,6 +146,10 @@
 					B.update_icon()
 					M.stored_bullets += B
 
+	if(istype(O,/obj/item/firing_pin/))
+		var/obj/item/firing_pin/FP = O
+		if(object_data["iff_tag"])
+			FP.iff_tag = object_data["iff_tag"]
 
 	O.force_move(loc)
 	O.update_icon()
@@ -228,6 +236,10 @@
 			returning_list["reagents"] = list()
 			for(var/r_id in IT.reagents.stored_reagents)
 				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+
+	if(istype(I,/obj/item/weapon/ranged/))
+		var/obj/item/weapon/ranged/RW = I
+		returning_list["firing_pin"] = RW.firing_pin.type
 
 	if(is_food(I))
 		var/obj/item/container/food/F = I
@@ -320,6 +332,10 @@
 				var/obj/item/bullet_cartridge/B = M.stored_bullets[i]
 				if(B) returning_list["stored_bullets"][B.type] += 1
 
+	if(istype(I,/obj/item/firing_pin/))
+		var/obj/item/firing_pin/FP = I
+		returning_list["iff_tag"] = FP.iff_tag
+
 	return returning_list
 
 /savedata/proc/generate_blend_data(var/obj/O)
@@ -351,5 +367,8 @@
 
 		if(IB.special_type)
 			returning_list[id]["special_type"] = IB.special_type
+
+		if(IB.layer)
+			returning_list[id]["layer"] = IB.layer
 
 	return returning_list

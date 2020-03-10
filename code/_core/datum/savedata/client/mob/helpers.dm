@@ -142,7 +142,7 @@
 	else
 		owner.to_chat(span("warning","Save failed. Please contact the server owner."))
 
-/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE)
+/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE,var/update_blends=TRUE)
 
 	//Name
 	A.real_name = loaded_data["name"]
@@ -189,4 +189,5 @@
 			A.force_move(get_turf(C))
 			C.buckle(A,silent=TRUE)
 
-	A.update_icon()
+	if(update_blends)
+		A.update_all_blends()

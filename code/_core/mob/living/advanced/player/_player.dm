@@ -33,7 +33,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/list/attack_logs = list()
 
-	var/currency = 0
+	var/currency = 1000
 
 	var/savedata/client/mob/mobdata
 
@@ -70,12 +70,12 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/geared_up
 
-/mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE)
+/mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 
 	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
 		return ..()
 
-	mobdata.apply_data_to_mob(src,teleport)
+	mobdata.apply_data_to_mob(src,teleport,update_blends)
 
 	if(client)
 		add_species_buttons()
@@ -84,22 +84,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	return TRUE
 
 /mob/living/advanced/player/Initialize()
-
 	. = ..()
-
 	all_players += src
-
-	/*
-	if(mobdata)
-		var/list/known_wishgranters = mobdata.loaded_data["known_wishgranters"]
-		for(var/wishgranter_id in known_wishgranters)
-			var/obj/structure/interactive/localmachine/snowflake/wishgranter/W = all_wishgranters[wishgranter_id]
-			if(W)
-				W.set_icon_state_mob(src,"wishgranter_on")
-			else
-				mobdata.loaded_data["known_wishgranters"] -= wishgranter_id
-	*/
-
 	return .
 
 /mob/living/advanced/player/setup_name()

@@ -110,7 +110,6 @@
 		return TRUE
 
 	clear_object(A)
-	world.log << "CLEARING IN STORE ATOM!"
 
 	stored_atom = object
 	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))

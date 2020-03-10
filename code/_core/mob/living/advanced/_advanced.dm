@@ -274,7 +274,7 @@ mob/living/advanced/Login()
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 
-/mob/living/advanced/proc/apply_mob_parts()
+/mob/living/advanced/proc/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 	add_species_organs()
 	add_species_colors()
 	if(client)
@@ -283,17 +283,16 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Initialize()
 
-	apply_mob_parts(TRUE)
+	apply_mob_parts(TRUE,TRUE,TRUE)
 
 	. = ..()
 
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
-	update_all_blends()
 	update_slowdown_mul()
 
-	return
+	return .
 
 /mob/living/advanced/proc/add_outfit(var/outfit_id,var/soul_bound=FALSE)
 
@@ -336,8 +335,8 @@ mob/living/advanced/Login()
 		change_organ_visual("eye", desired_color = S.default_color_eye)
 
 	if(S.default_color_hair && S.default_icon_hair && S.default_icon_state_hair)
-		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = S.default_icon_state_hair, desired_color = S.default_color_hair)
-		change_organ_visual("hair_face", desired_color = S.default_color_hair)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = S.default_icon_state_hair, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
+		change_organ_visual("hair_face", desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
 
 	if(S.default_color_detail)
 		change_organ_visual("skin_detail", desired_color = S.default_color_detail)

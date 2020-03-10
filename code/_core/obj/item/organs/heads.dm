@@ -1,7 +1,7 @@
 /obj/item/organ/head
 	name = "head"
 	id = BODY_HEAD
-	desc = "An organ."
+	desc = "So no head?"
 	icon_state = BODY_HEAD_MALE
 	worn_layer = LAYER_MOB_HEAD
 	break_threshold = 25
@@ -36,16 +36,13 @@
 	reagents = /reagent_container/limb/head
 
 /obj/item/organ/head/initialize_blends()
-	..()
 	add_blend("blush", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/species/human.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 	add_blend("lips", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/species/human.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-	add_blend("hair_head", desired_color = "#000000", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi', desired_icon_state = "hair_a", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = LAYER_MOB_HAIR_HEAD)
-	add_blend("hair_face", desired_color = "#000000", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = LAYER_MOB_HAIR_HEAD)
-
-
+	add_blend("hair_head", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi', desired_icon_state = "hair_b", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = LAYER_MOB_HAIR_HEAD)
+	add_blend("hair_face", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = LAYER_MOB_HAIR_HEAD)
+	return ..()
 
 /obj/item/organ/head/female
-	desc = "A head. Female variant"
 	icon_state = BODY_HEAD_FEMALE
 
 //Reptile

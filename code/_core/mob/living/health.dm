@@ -67,8 +67,6 @@
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	world.log << "Total Bleed: [total_bleed_damage]."
-
 	if(total_bleed_damage && prob(total_bleed_damage))
 		var/offset_x = (src.x - attacker.x)
 		var/offset_y = (src.y - attacker.y)
@@ -80,8 +78,6 @@
 		var/norm_offset = max(abs(offset_x),abs(offset_y),1)
 		offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
 		offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
-
-		world.log << "X: [offset_x], Y: [offset_y]."
 
 		for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,5),i++)
 			var/obj/blood/splatter/S = new(src.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",offset_x,offset_y)

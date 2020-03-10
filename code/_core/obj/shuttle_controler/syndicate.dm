@@ -26,9 +26,6 @@
 
 	if(.)
 
-		world.log << "Starting: [starting_transit_id]."
-		world.log << "Ending: [ending_transit_id]."
-
 		if(starting_transit_id == "syndicate_shuttle_centcomm" && ending_transit_id == "syndicate_shuttle_bluespace")
 
 			world.log << "RUNNING PART 1"

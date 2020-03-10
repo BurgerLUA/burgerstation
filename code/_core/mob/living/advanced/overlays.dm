@@ -44,17 +44,19 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 
 	return FALSE
 
+var/global/meme_count = 0
+
 mob/living/advanced/proc/update_all_blends()
 	for(var/obj/overlay/O in overlays_assoc)
 		update_overlay_direct(O)
 
 mob/living/advanced/player/verb/debug_blends()
 	for(var/obj/overlay/O in overlays_assoc)
-		world.log << "[O.name]: [O.layer]"
+		src << "[O.name]: [O.layer]"
 		if(length(O.additional_blends))
-			world.log << "ADDITIONAL BLENDS:"
+			src<< "    Additional Blends:"
 			for(var/id in O.additional_blends)
-				world.log << "[id]: [O.additional_blends[id].layer]"
+				src << "        [id]: [O.additional_blends[id].layer] [O.additional_blends[id].icon] [O.additional_blends[id].icon_state]"
 
 
 

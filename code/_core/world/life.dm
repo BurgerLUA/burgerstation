@@ -34,7 +34,7 @@
 
 	if(ENABLE_INSTALOAD)
 		for(var/mob/abstract/observer/O in all_mobs_with_clients)
-			if(!O.load_most_recent_character() && ENABLE_CHARGEN)
+			if(!O.load_most_recent_character())
 				O.new_character()
 
 	else if(length(lobby_positions))

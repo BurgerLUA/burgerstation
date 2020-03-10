@@ -4,10 +4,12 @@ mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS O
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-	for(var/obj/hud/inventory/I in inventory)
-		if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
-			I.on_mouse_up(src,object,location,control,params)
-			world.log << "[I].on_mouse_up([src],[object])"
+
+	if(src.attack_flags & ATTACK_KICK)
+
+	else
+		if(right_hand)
+			right_hand.on_mouse_up(src,object,location,control,params)
 			return TRUE
 
 	return FALSE
@@ -21,10 +23,11 @@ mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT
 		return FALSE
 
-	for(var/obj/hud/inventory/I in inventory)
-		if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
-			I.on_mouse_up(src,object,location,control,params)
-			world.log << "[I].on_mouse_up([src],[object])"
+	if(src.attack_flags & ATTACK_KICK)
+
+	else
+		if(left_hand)
+			left_hand.on_mouse_up(src,object,location,control,params)
 			return TRUE
 
 	return FALSE
@@ -41,43 +44,20 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	if(quick_mode && !right_hand.get_top_held_object() && handle_quick(object,location,control,params))
 		return TRUE
 
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+		return TRUE
 
-	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
-		for(var/obj/hud/inventory/I in inventory)
-			if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
-				if(is_button(object))
-					object.clicked_on_by_object(src,I,location,control,params)
-				else
-					I.click_on_object(src,object,location,control,params)
-				return TRUE
+	if(src.attack_flags & ATTACK_KICK)
 
-	return FALSE
-
-mob/living/advanced/proc/handle_quick(var/atom/object,location,control,params)
-
-	for(var/obj/hud/button/slot/B in buttons)
-		if(B.id == quick_mode)
-			if(!B.stored_atom && is_button(object))
-				B.store_atom(src,object,location,control,params)
-				break
-			if(!B.stored_atom || !B.stored_atom.quick_function_type == FLAG_QUICK_TOGGLE)
-				break
-			if(is_inventory(B.stored_atom.loc))
-				var/obj/hud/inventory/I = B.stored_atom.loc
-				if(I.owner != src)
-					B.clear_object(src)
-					world.log << "THE FUCK?"
-					break
-			else if(!is_button(B.stored_atom))
-				world.log << "CLEARING HERE!"
-				B.clear_object(src)
-				break
-
-			B.stored_atom.quick(src,location,control,params)
+	else
+		if(right_hand)
+			if(is_button(object))
+				object.clicked_on_by_object(src,right_hand,location,control,params)
+			else
+				right_hand.click_on_object(src,object,location,control,params)
 			return TRUE
 
-	return TRUE
-
+	return FALSE
 
 
 //A down is just a press.
@@ -92,14 +72,39 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 	if(quick_mode && !left_hand.get_top_held_object() && handle_quick(object,location,control,params))
 		return TRUE
 
+	if(is_inventory(object)) //THIS IS VERY IMPORTANT
+		return TRUE
+
+
+	if(src.attack_flags & ATTACK_KICK)
+
+	else
+		if(left_hand)
+			if(is_button(object))
+				object.clicked_on_by_object(src,left_hand,location,control,params)
+			else
+				left_hand.click_on_object(src,object,location,control,params)
+			return TRUE
+
+	return FALSE
+
+
+//A click is a press AND release.
+mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THIS ONLY WORKS ON INVENTORIES
+
+	if(!can_use_controls(object,location,control,params))
+		return FALSE
+
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
-		for(var/obj/hud/inventory/I in inventory)
-			if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
-				if(is_button(object))
-					object.clicked_on_by_object(src,I,location,control,params)
-				else
-					I.click_on_object(src,object,location,control,params)
-				return TRUE
+		return FALSE
+
+
+	if(src.attack_flags & ATTACK_KICK)
+
+	else
+		if(right_hand)
+			right_hand.click_on_object(src,object,location,control,params)
+			return TRUE
 
 	return FALSE
 
@@ -113,27 +118,15 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	if(driving)
 		return driving.click_on_object(src,object,location,control,params)
 
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
-		for(var/obj/hud/inventory/I in inventory)
-			if((I.click_flags & LEFT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & LEFT_FOOT))
-				I.click_on_object(src,object,location,control,params)
-				world.log << "[I].click_on_object([src],[object])"
-				return TRUE
+	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
+		return TRUE
 
-	return FALSE
+	if(src.attack_flags & ATTACK_KICK)
 
-//A click is a press AND release.
-mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THIS ONLY WORKS ON INVENTORIES
-
-	if(!can_use_controls(object,location,control,params))
-		return FALSE
-
-	if(is_inventory(object)) //THIS IS VERY IMPORTANT
-		for(var/obj/hud/inventory/I in inventory)
-			if((I.click_flags & RIGHT_HAND && !(src.attack_flags & ATTACK_KICK)) || (src.attack_flags & ATTACK_KICK && I.click_flags & RIGHT_FOOT))
-				I.click_on_object(src,object,location,control,params)
-				world.log << "[I].click_on_object([src],[object])"
-				return TRUE
+	else
+		if(left_hand)
+			left_hand.click_on_object(src,object,location,control,params)
+			return TRUE
 
 	return FALSE
 
@@ -160,8 +153,27 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 
 	return .
 
-/mob/living/advanced/proc/get_left_hand()
-	return left_hand && length(left_hand.held_objects) ? left_hand.held_objects[1] : null
 
-/mob/living/advanced/proc/get_right_hand()
-	return right_hand && length(right_hand.held_objects) ? right_hand.held_objects[1] : null
+mob/living/advanced/proc/handle_quick(var/atom/object,location,control,params)
+
+	for(var/obj/hud/button/slot/B in buttons)
+		if(B.id == quick_mode)
+			if(!B.stored_atom && is_button(object))
+				B.store_atom(src,object,location,control,params)
+				break
+			if(!B.stored_atom || !B.stored_atom.quick_function_type == FLAG_QUICK_TOGGLE)
+				break
+			if(is_inventory(B.stored_atom.loc))
+				var/obj/hud/inventory/I = B.stored_atom.loc
+				if(I.owner != src)
+					B.clear_object(src)
+					world.log << "THE FUCK?"
+					break
+			else if(!is_button(B.stored_atom))
+				B.clear_object(src)
+				break
+
+			B.stored_atom.quick(src,location,control,params)
+			return TRUE
+
+	return TRUE

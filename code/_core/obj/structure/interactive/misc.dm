@@ -55,8 +55,9 @@ obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/crosser)
 	if(is_player(crosser))
 		var/mob/living/advanced/player/P = crosser
 		P.add_chargen_buttons()
-		P.handle_hairstyle_chargen(-1)
-		P.handle_beardstyle_chargen(-1)
+		P.handle_hairstyle_chargen(-1,update_blends=FALSE)
+		P.handle_beardstyle_chargen(-1,update_blends=FALSE)
+		P.update_all_blends()
 		P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
 
 	return ..()

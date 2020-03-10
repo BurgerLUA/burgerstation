@@ -11,7 +11,7 @@
 	var/mob/living/objective_attack
 	var/mob/living/objective_defend
 
-	var/radius_find_enemy = VIEW_RANGE
+	var/radius_find_enemy = VIEW_RANGE + ZOOM_RANGE
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -63,6 +63,7 @@
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.
 	var/use_vision = FALSE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this is affected by alert level.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
+	var/alert_time = 600 //Deciseconds
 
 /ai/Destroy()
 	if(owner)
@@ -139,6 +140,11 @@
 		attack_ticks = 0
 		handle_attacking()
 
+	if(alert_level && alert_level <= ALERT_LEVEL_CAUTION)
+		alert_time -= LIFE_TICK
+		if(alert_time <= 0)
+			alert_time = initial(alert_time)
+			alert_level -= 1
 
 	return TRUE
 
@@ -181,6 +187,10 @@
 
 	attack_ticks = 0
 
+
+/ai/proc/set_move_objective(var/atom/desired_objective)
+	objective_move = desired_objective
+
 /ai/proc/handle_movement()
 
 	owner.movement_flags = 0x0
@@ -198,6 +208,18 @@
 		else
 			owner.move_dir = pick(list(0,0,0,0,turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90)))
 
+	else if(objective_move)
+		if(frustration > frustration_threshold)
+			set_move_objective(null)
+			owner.movement_flags = MOVEMENT_NORMAL
+			owner.move_dir = 0x0
+		else if(get_dist(owner,objective_move) > 1)
+			owner.movement_flags = MOVEMENT_NORMAL
+			owner.move_dir = get_dir(owner,objective_move)
+		else
+			set_move_objective(null)
+			owner.movement_flags = MOVEMENT_NORMAL
+			owner.move_dir = 0x0
 	else if(current_path && length(current_path))
 
 		owner.movement_flags = MOVEMENT_NORMAL
@@ -235,6 +257,8 @@
 
 /ai/proc/set_objective(var/mob/living/L)
 
+	var/atom/old_attack = objective_attack
+
 	if(objective_attack && attackers[objective_attack])
 		attackers -= objective_attack
 
@@ -243,8 +267,11 @@
 	if(L)
 		set_alert_level(ALERT_LEVEL_ALERT)
 		owner.set_dir(get_dir(owner,L))
-	else
+	else if(old_attack && !old_attack.qdeleting)
 		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
+		set_move_objective(old_attack)
+	else
+		set_alert_level(ALERT_LEVEL_NOISE,TRUE)
 
 	return TRUE
 
@@ -359,6 +386,8 @@
 	return FALSE
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
+
+	enabled = TRUE
 
 	if(owner.stored_alert_effect)
 		qdel(owner.stored_alert_effect)

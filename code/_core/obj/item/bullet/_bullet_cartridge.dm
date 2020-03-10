@@ -164,7 +164,6 @@
 /obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/display_message = TRUE)
 
 	if(W.can_load_chamber(caller,src))
-		world.log << "CAN LOAD CHAMBERED!"
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		W.chambered_bullet += B
@@ -177,7 +176,6 @@
 		return TRUE
 
 	if(W.can_load_stored(caller,src))
-		world.log << "CAN LOAD STORED!"
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		var/valid_slot = 0
