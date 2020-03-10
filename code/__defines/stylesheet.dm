@@ -2,6 +2,8 @@
 img{
 	margin:0;
 	padding:0;
+	width: 64px;
+	height: 64px;
 }
 a,a:link,a:visited,a:hover,a:focus,a:active{
 	font-color: inherit;

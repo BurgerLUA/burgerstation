@@ -22,12 +22,6 @@
 
 	return best_data
 
-/savedata/client/mob/proc/check_if_no_characters()
-	if(has_files())
-		return FALSE
-	else
-		return create_new_character("01")
-
 /savedata/client/mob/proc/get_next_character_id()
 
 	var/list/file_numbers = list()

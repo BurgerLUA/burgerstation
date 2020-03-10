@@ -44,17 +44,8 @@
 	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
 		if(isturf(object.loc))
 			return grab_object(caller,object,location,control,params)
-		else if(object != src && is_inventory(object) && defer_object != object && is_item(defer_object))
-			var/obj/item/I = defer_object //Object that we're clicking on.
-			var/obj/hud/inventory/I2 = object //Inventory that we're clicking on.
-			if(I.can_wield && (I in I2.held_objects))
-				I.wielded = !I.wielded
-				src.parent_inventory = I.wielded ? I2 : null
-				I2.child_inventory = I.wielded ? src : null
-				caller.to_chat(span("notice","You [I.wielded ? "brace" : "release"] \the [I] with your [src.loc.name]."))
-				update_icon()
-				I.update_icon()
-				return TRUE
+		else
+			return wield_object(caller,defer_object)
 
 	if(defer_self == grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
@@ -62,7 +53,6 @@
 			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir),desired_move_dir)
 			if(get_dist(caller,grabbed_object) > 1)
 				release_object()
-
 		return TRUE
 
 	if(caller.attack_flags & ATTACK_OWNER)
@@ -99,6 +89,24 @@
 				return TRUE
 
 	return ..()
+
+/obj/hud/inventory/proc/wield_object(var/mob/caller,var/obj/item/item_to_wield)
+
+	if(!is_item(item_to_wield) || !item_to_wield.can_wield)
+		return FALSE
+
+	if(!is_inventory(item_to_wield.loc) || item_to_wield.loc == src)
+		return FALSE
+
+	var/obj/hud/inventory/holding = item_to_wield.loc
+	item_to_wield.wielded = !item_to_wield.wielded
+	src.parent_inventory = item_to_wield.wielded ? holding : null
+	holding.child_inventory = item_to_wield.wielded ? src : null
+	if(caller)
+		caller.to_chat(span("notice","You [item_to_wield.wielded ? "brace" : "release"] \the [item_to_wield] with your [src.loc.name]."))
+	update_icon()
+	item_to_wield.update_icon() //This will also update the inventory.
+	return TRUE
 
 /obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
 

@@ -16,10 +16,10 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 	var/pronoun = capitalize(get_pronoun(src))
 
 	for(var/obj/item/I in worn_objects)
-		. += div("notice"," \icon[I] [pronoun] is wearing \the [I.name] on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
+		. += div("notice"," \icon[I] [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
 
 	for(var/obj/item/I in held_objects)
-		. += div("notice"," \icon[I] [pronoun] is holding \the [I.name] in their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
+		. += div("notice"," \icon[I] [pronoun] is holding \the <b>[I.name]</b> in their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
 
 	if(survival_skill > 50)
 		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")

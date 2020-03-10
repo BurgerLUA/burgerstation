@@ -8,6 +8,8 @@
 
 #define MOB_HEIGHT_OFFSET 0
 
+#define GARBAGE_LOGS_PATH "data/server/garbage_logs.txt"
+
 #define BADWORDS "text/badwords.txt"
 #define BADNAMES "text/badnames.txt"
 

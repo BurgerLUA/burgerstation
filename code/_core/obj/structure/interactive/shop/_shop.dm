@@ -3,106 +3,60 @@
 	name = "ITEM NAME HERE"
 	desc = "NOT IMPORTANT."
 
-	var/list/stored_items = list()
-
-	var/obj/item/current_item
-	var/current_item_cost
-	var/current_item_quantity
+	var/obj/item/stored_item
+	var/stored_item_cost
 
 	icon = 'icons/obj/structure/shop.dmi'
 	icon_state = "debug"
 
 /obj/structure/interactive/shop/Destroy()
 
-	all_shops -= src
-
-	stored_items.Cut()
-
-	qdel(current_item)
-	current_item = null
-
+	qdel(stored_item)
+	stored_item = null
 
 	return ..()
 
-/obj/structure/interactive/shop/Initialize()
+/obj/structure/interactive/shop/proc/initialize_shop()
 
 	. = ..()
 
-	var/turf/T = get_turf(src)
+	var/list/possible_items = list()
+	for(var/obj/item/I in loc.contents)
+		possible_items += I
 
-	if(T)
-		for(var/obj/item/I in T.contents)
-			stored_items += I.type
-			qdel(I)
-
-	if(!length(stored_items))
+	if(!length(possible_items))
 		qdel(src)
 		return FALSE
+
+	stored_item = pick(possible_items)
+	stored_item.force_move(src)
+	possible_items -= stored_item
+
+	for(var/obj/item/I in possible_items)
+		qdel(I)
+
+	stored_item_cost = stored_item.calculate_value()
+
+	update_icon()
 
 	return .
 
 /obj/structure/interactive/shop/update_icon()
-	if(current_item)
-		appearance = current_item.appearance
+	if(stored_item)
+		appearance = stored_item.appearance
 		mouse_opacity = 2
-		name = "[current_item.name] - [current_item_cost] crystals"
+		name = "[stored_item.name] - [stored_item_cost] credits"
 	..()
-
-/obj/structure/interactive/shop/proc/restock()
-
-	if(current_item)
-		qdel(current_item)
-		current_item = null
-
-	if(!length(stored_items))
-		LOG_ERROR("Warning: shop at [x],[y] has no items to sell. Please delete it.")
-		return FALSE
-
-	var/obj/item/desired_item = pickweight(stored_items)
-	current_item = new desired_item(src)
-	current_item.on_spawn()
-	current_item.update_icon()
-
-	var/original_item_cost = current_item.calculate_value()
-	var/new_item_cost = original_item_cost
-	var/new_quantity = 0
-
-	switch(new_item_cost)
-		if(0 to 100)
-			new_quantity = rand(75,150)
-		if(100 to 250)
-			new_quantity = rand(50,125)
-		if(250 to 500)
-			new_quantity = rand(25,100)
-		if(500 to 1000)
-			new_quantity = rand(10,50)
-		if(1000 to INFINITY)
-			new_quantity = rand(3,10)
-
-	switch(new_quantity)
-		if(0 to 10)
-			new_item_cost *= RAND_PRECISE(1,2)
-		if(10 to 25)
-			new_item_cost *= RAND_PRECISE(1,1.75)
-		if(25 to 50)
-			new_item_cost *= RAND_PRECISE(1,1.5)
-		if(50 to INFINITY)
-			new_item_cost *= RAND_PRECISE(1,1.25)
-
-	current_item_cost = round(new_item_cost,min(original_item_cost,5))
-	current_item_quantity = round(new_quantity,1)
-
-	update_icon()
 
 /obj/structure/interactive/shop/get_examine_text(var/mob/examiner)
 
-	var/returning_text = current_item.get_examine_text(examiner)
+	var/returning_text = stored_item.get_examine_text(examiner)
 
-	if(current_item.is_container)
-		var/list/contents = current_item.inventory_to_list()
+	if(stored_item.is_container)
+		var/list/contents = stored_item.inventory_to_list()
 		returning_text += div("notice","It contains: [english_list(contents)]")
 
-	returning_text += div("notice","This item is being sold for [current_item_cost] credits.") + div("notice","There is currently [current_item_quantity] of this item left.")
+	returning_text += div("notice","This item is being sold for [stored_item_cost] credits.")
 
 	return returning_text
 
@@ -116,30 +70,23 @@
 	var/mob/living/advanced/player/P = caller
 	var/atom/defer_object = object.defer_click_on_object()
 
-	if(current_item_quantity <= 0)
-		P.to_chat(span("notice","This item is out of stock! Come back another time!"))
-		return TRUE
-
 	if(!is_inventory(defer_object))
 		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
 		return TRUE
 
 	var/obj/hud/inventory/I = defer_object
 
-	if(P.currency >= current_item_cost && P.spend_currency(current_item_cost)) //Just in case
+	if(P.currency >= stored_item_cost && P.spend_currency(stored_item_cost)) //Just in case
 		spawn()
-			current_item_quantity -= 1
-			var/obj/item/new_item = new current_item.type(get_turf(src))
+			var/obj/item/new_item = new stored_item.type(get_turf(src))
 			new_item.on_spawn()
 			new_item.update_icon()
 			new_item.calculate_value()
 			I.add_object(new_item,TRUE)
-			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [current_item_cost] telecrystal\s."))
-			if(current_item_quantity <= 0)
-				update_icon()
+			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))
 
 		return TRUE
 
-	P.to_chat(span("notice","You don't have enough telecrystals ([current_item_cost] TC) to buy this!"))
+	P.to_chat(span("notice","You don't have enough credits ([stored_item_cost] credits) to buy this!"))
 
 	return TRUE

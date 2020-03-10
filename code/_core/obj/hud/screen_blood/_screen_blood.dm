@@ -56,7 +56,7 @@
 		var/mob/living/L = owner
 
 		if(L.dead)
-			alpha = 255
+			alpha = 200
 			maptext = "<center>You have died.</center>"
 		else
 			alpha = clamp(100 - (100*(1/0.4))*(health/max_health),0,100)

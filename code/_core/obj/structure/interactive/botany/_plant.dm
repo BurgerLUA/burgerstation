@@ -102,7 +102,6 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			P.original_volume = P.reagents.volume_current
 			P.update_icon()
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
-			queue_delete(P,ITEM_DELETION_TIME_NEW)
 
 		caller.to_chat(span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
 

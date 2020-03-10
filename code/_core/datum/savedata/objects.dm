@@ -238,8 +238,8 @@
 				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
 
 	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/RW = I
-		returning_list["firing_pin"] = RW.firing_pin.type
+		var/obj/item/weapon/ranged/R = I
+		returning_list["firing_pin"] = get_item_data(R.firing_pin)
 
 	if(is_food(I))
 		var/obj/item/container/food/F = I

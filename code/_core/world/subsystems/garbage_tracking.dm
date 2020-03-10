@@ -3,8 +3,12 @@ var/global/list/ref_id_to_warning = list()
 SUBSYSTEM_DEF(garbage_tracking)
 	name = "Garbage Subsystem"
 	desc = "Powered by raw shitcode."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	tick_rate = SECONDS_TO_TICKS(10)
+
+/subsystem/garbage_tracking/Initialize()
+	fdel(GARBAGE_LOGS_PATH)
+	return TRUE
 
 /subsystem/garbage_tracking/on_life()
 

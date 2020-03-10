@@ -346,7 +346,6 @@
 			continue
 		if(!should_attack_mob(P))
 			continue
-
 		.[P] = TRUE
 
 	return .
