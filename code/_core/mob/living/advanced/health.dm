@@ -16,3 +16,15 @@
 		B.update_stats()
 
 	return .
+
+
+
+/mob/living/advanced/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+
+	. = ..()
+
+	if(damage_amount > 0)
+		health_regen_delay = max(health_regen_delay,600)
+
+
+	return .

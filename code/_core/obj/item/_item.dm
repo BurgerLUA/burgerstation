@@ -229,7 +229,8 @@
 */
 
 /obj/item/get_examine_text(var/mob/examiner)
-	. = div("examine_title","\icon[src] [src.name]")
+	var/object_icon = "<img src='\ref[src.icon]' class='examine_icon_main'/>"
+	. = div("examine_title","[object_icon][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [calculate_value(TRUE)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")

@@ -59,6 +59,8 @@
 
 	var/damage_layer = LAYER_MOB_INJURY
 
+	var/bleeding = FALSE
+
 /obj/item/organ/Destroy()
 	attached_organ = null
 	attached_organs.Cut()
@@ -185,52 +187,17 @@
 
 	return ..()
 
-/obj/item/organ/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
-
-	. = ..()
-
-	if(!DT.draw_blood)
-		return .
-
-	if(!attacker)
-		return .
-
-	var/turf/T = get_turf(src)
-
-	if(!T)
-		return .
-
-	/*
-	if(reagents)
-		create_blood_effect(T,attacker,src,damage_dealt,reagents.color)
-	*/
-
-	//create_blood_effect(T,attacker,src,damage_dealt)
-
-/*
-/proc/create_blood_effect(var/turf/T,var/atom/attacker,var/atom/victim,var/damage_dealt,var/blood_color = "#FF0000")
-
-	var/offset_x = (T.x - attacker.x)
-	var/offset_y = (T.y - attacker.y)
-
-	if(!offset_x && !offset_y)
-		offset_x = pick(-1,1)
-		offset_y = pick(-1,1)
-
-	var/norm_offset = max(abs(offset_x),abs(offset_y),1)
-
-	offset_x = (offset_x/norm_offset) * TILE_SIZE
-	offset_y = (offset_y/norm_offset) * TILE_SIZE
-
-	for(var/i=1,i<=clamp(round(damage_dealt/5),1,5),i++)
-		new/obj/effect/temp/blood/drip(T,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)
-*/
-
 /obj/item/organ/proc/on_life()
 	if(reagents)
 		reagents.metabolize()
-	return TRUE
 
+	if(bleeding && is_advanced(src.loc) && prob(20))
+		var/mob/living/advanced/A = src.loc
+		if(A.reagents.volume_current)
+			var/obj/blood/drip/D = new(A.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
+			A.reagents.transfer_reagents_to(D.reagents,1)
+
+	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 	return TRUE
@@ -265,6 +232,9 @@ obj/item/organ/proc/get_damage_description()
 			damage_desc += "scorched"
 		if(50 to INFINITY)
 			damage_desc += "charred"
+
+	if(bleeding)
+		damage_desc += "<b>bleeding</b>"
 
 	/*
 	if(health.damage[OXY])

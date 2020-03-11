@@ -4,6 +4,13 @@
 
 /obj/structure/interactive/vending/ammo/pistol
 	name = "pistol ammo vendor"
+	stored_types = list(
+		/obj/item/magazine/pistol_40,
+		/obj/item/magazine/pistol_45,
+		/obj/item/magazine/pistol_50,
+		/obj/item/magazine/clip/revolver/bullet_38,
+		/obj/item/magazine/clip/revolver/bullet_44
+	)
 
 /obj/structure/interactive/vending/ammo/auto
 	name = "smg and rifle ammo vendor"

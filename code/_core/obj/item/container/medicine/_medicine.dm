@@ -8,6 +8,7 @@
 
 	var/heal_brute = 0
 	var/heal_burn = 0
+	var/heal_bleeding = FALSE
 
 	var/verb_to_use = "treat"
 
@@ -42,6 +43,10 @@
 	return ..()
 
 /obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
+
+	if(heal_bleeding && is_organ(A))
+		var/obj/item/organ/O = A
+		O.bleeding = FALSE
 
 	if(heal_brute)
 		A.health.adjust_brute_loss(-heal_brute)

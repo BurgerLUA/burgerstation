@@ -40,6 +40,9 @@
 					O.add_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
 					O.visual_wounds[damage_type] = current_amount
 					should_update = TRUE
+					if(damage_type == BRUTE && current_amount == 0)
+						O.bleeding = FALSE
+
 
 			if(should_update)
 				A.update_overlay(O)
@@ -53,6 +56,7 @@
 			var/mob/living/advanced/A = owner.loc
 			if(A.health)
 				. += A.health.adjust_loss_smart(tox=tox,oxy=oxy)
+
 		tox = 0
 		oxy = 0
 
@@ -61,30 +65,7 @@
 
 	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
 		A.health.update_health()
-		if(. > 0)
-			A.health_regen_delay = max(A.health_regen_delay,300)
-
-	return .
-
-/health/obj/item/organ/adjust_brute_loss(var/value)
-
-	. = ..()
-
-	if(. > 0 && is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
-
-	return .
-
-/health/obj/item/organ/adjust_burn_loss(var/value)
-
-	. = ..()
-
-	if(. > 0 && is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		A.health_regen_delay = max(A.health_regen_delay,300)
 
 	return .
 

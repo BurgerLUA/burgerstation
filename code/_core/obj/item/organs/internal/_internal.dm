@@ -77,6 +77,49 @@
 
 	reagents = /reagent_container/heart
 
+	var/heart_rate = 60 //Resting, Measured in beats per minute
+
+	var/heart_ticks = 0
+
+/obj/item/organ/internal/heart/on_life()
+
+	. = ..()
+
+	if(is_advanced(src.loc))
+
+		var/mob/living/advanced/A = src.loc
+
+		if(A.dead)
+			heart_rate = 0
+			return .
+
+		var/health_percent = A.health.health_current / A.health.health_max
+		var/stamina_percent = A.health.stamina_current / A.health.stamina_max
+		var/blood_count = A.reagents.get_reagent_count("blood")
+
+		heart_ticks += LIFE_TICK
+
+		heart_rate = initial(heart_rate)
+		heart_rate *= (blood_count/BLOOD_LEVEL_DEFAULT)
+		if(health_percent > 0.5)
+			heart_rate *= (2 - health_percent)
+		else
+			heart_rate *= health_percent
+		switch(stamina_percent)
+			if(0 to 0.25)
+				heart_rate *= 3
+			if(0.25 to 0.5)
+				heart_rate *= 2.5
+			if(0.5 to 0.99)
+				heart_rate *= 2
+
+		if(heart_rate && heart_ticks >= ((1/heart_rate)*60)*10)
+			if(health_percent >= 0.5 && blood_count <= BLOOD_LEVEL_DEFAULT)
+				A.reagents.add_reagent("blood",0.1)
+			heart_ticks = 0
+
+	return .
+
 
 
 

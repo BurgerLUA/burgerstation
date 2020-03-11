@@ -8,10 +8,13 @@ var/global/list/qdel_refs_to_type = list()
 /proc/qdel(var/datum/object)
 
 	if(is_datum(object))
+
 		/*
-		if(!istype(object,/image/))
-			text2file("Deleting object [object] of type [object.type].",GARBAGE_LOGS_PATH)
+		if(istype(object,/atom/))
+			var/atom/A = object
+			text2file("Deleting object [A]([A.x])([A.y])([A.z]) of type [A.type].",GARBAGE_LOGS_PATH)
 		*/
+
 		if(!object.qdel_warning)
 			object.qdel_attempts += 1
 			if(object.qdel_attempts >= 2)

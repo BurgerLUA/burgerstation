@@ -16,10 +16,12 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 	var/pronoun = capitalize(get_pronoun(src))
 
 	for(var/obj/item/I in worn_objects)
-		. += div("notice"," \icon[I] [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
+		var/object_icon = "<img src='\ref[I.icon]' class='examine_icon'/>"
+		. += div("notice"," [object_icon] [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
 
 	for(var/obj/item/I in held_objects)
-		. += div("notice"," \icon[I] [pronoun] is holding \the <b>[I.name]</b> in their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
+		var/object_icon = "<img src='\ref[I.icon]' class='examine_icon'/>"
+		. += div("notice"," [object_icon] [pronoun] is holding \the <b>[I.name]</b> in their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
 
 	if(survival_skill > 50)
 		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
@@ -65,6 +67,6 @@ mob/living/advanced/get_examine_text(var/mob/examiner)
 			reagent_contents += "[k] ([v]u)"
 		. += div("notice","Reagent volume is [reagents.volume_current]/[reagents.volume_max] containing [english_list(reagent_contents)].")
 
-	. += div("notice","Plane is now: [plane].")
+	. += div("notice","Regen Delay is now: [health_regen_delay].")
 
 	return .

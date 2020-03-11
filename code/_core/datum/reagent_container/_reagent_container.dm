@@ -361,7 +361,8 @@
 
 	return total_amount_transfered
 
-
+/reagent_container/proc/get_reagent_count(var/reagent_id)
+	return stored_reagents[reagent_id] ? stored_reagents[reagent_id] : 0
 
 /reagent_container/proc/get_flavor()
 

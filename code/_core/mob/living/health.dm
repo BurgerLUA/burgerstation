@@ -83,6 +83,13 @@
 			var/obj/blood/splatter/S = new(src.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",offset_x,offset_y)
 			reagents.transfer_reagents_to(S.reagents,10)
 
+		world.log << "atom damaged: [atom_damaged]."
+
+		if(is_organ(atom_damaged))
+			var/obj/item/organ/O = atom_damaged
+			O.bleeding = TRUE
+			world.log << "The [O.name] is now bleeding!"
+
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,damage_table,damage_amount)
 

@@ -3,6 +3,7 @@
 	icon_state = "brutepack"
 	treatment_time = 10
 	heal_brute = 10
+	heal_bleeding = TRUE
 
 	value = 1
 
@@ -33,6 +34,7 @@
 	icon_state = "traumakit"
 	treatment_time = 50
 	heal_brute = 50
+	heal_bleeding = TRUE
 
 	value = 3
 

@@ -1,9 +1,15 @@
 #define STYLESHEET {"
-img{
+img.examine_icon_main{
 	margin:0;
 	padding:0;
-	width: 64px;
-	height: 64px;
+	width: 32px;
+	height: 32px;
+}
+img.examine_icon{
+	margin:0;
+	padding:0;
+	width: 16px;
+	height: 16px;
 }
 a,a:link,a:visited,a:hover,a:focus,a:active{
 	font-color: inherit;

@@ -252,7 +252,7 @@
 				B.target_boss = src
 				B.update_stats()
 
-	reagents.add_reagent("blood",500)
+	reagents.add_reagent("blood",BLOOD_LEVEL_DEFAULT)
 
 	return .
 

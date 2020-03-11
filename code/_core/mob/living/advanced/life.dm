@@ -22,12 +22,17 @@ mob/living/advanced/proc/handle_regen()
 	var/mana_adjust = 0
 	var/stamina_adjust = 0
 
+	health_regen_delay = max(0,health_regen_delay - LIFE_TICK_SLOW)
+	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK_SLOW)
+	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK_SLOW)
+
 	if((health_regen_delay <= 0 || health.health_current <= 0 || status & FLAG_STATUS_SLEEP) && health.health_current < health.health_max)
 		var/heal_amount = health.health_regeneration*LIFE_TICK_SLOW*0.1
 		health_regen_buffer += heal_amount
 		health_adjust = heal_amount
 		if(health_adjust)
 			add_attribute_xp(ATTRIBUTE_VITALITY,health_adjust)
+		health_regen_delay = max(health_regen_delay,10)
 
 	if((stamina_regen_delay <= 0 || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP) && health.stamina_current < health.stamina_max)
 		var/heal_amount = health.stamina_regeneration*LIFE_TICK_SLOW*0.1
@@ -45,10 +50,6 @@ mob/living/advanced/proc/handle_regen()
 
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust,TRUE)
-
-	health_regen_delay = max(0,health_regen_delay - LIFE_TICK_SLOW)
-	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK_SLOW)
-	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK_SLOW)
 
 	return TRUE
 
