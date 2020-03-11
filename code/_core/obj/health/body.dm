@@ -115,42 +115,4 @@
 		overlays += I
 
 /obj/hud/button/health/body/get_examine_text(var/mob/examiner)
-
-	. = ..()
-
-	var/returning = ""
-
-	if(is_advanced(examiner))
-
-		var/mob/living/advanced/A = examiner
-
-		for(var/obj/item/organ/O in A.organs)
-
-			if(!O.health)
-				continue
-
-			if(!O.hud_id)
-				continue
-
-			var/list/damage_desc = list()
-
-			if(O.health.damage[BRUTE])
-				damage_desc += "bruised"
-
-			if(O.health.damage[BURN])
-				damage_desc += "burned"
-
-			if(O.health.damage[OXY])
-				damage_desc += "pale"
-
-			if(O.health.damage[TOX])
-				damage_desc += "sickly"
-
-			if(O.health.damage[FATIGUE])
-				damage_desc += "limp"
-
-			var/is_injured = length(damage_desc)
-
-			returning += div(is_injured ? "warning" : "notice","Your [O.name] is [english_list(damage_desc,nothing_text="healthy")] ([O.health.health_current]/[O.health.health_max]).")
-
-	return returning
+	return examiner.get_examine_text(examiner)

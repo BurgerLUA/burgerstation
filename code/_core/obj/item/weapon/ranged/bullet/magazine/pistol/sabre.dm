@@ -33,6 +33,12 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread() //Base spread
+	return 0.01
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.04 - (0.04 * L.get_skill_power(SKILL_RANGED))
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod
 	name = "\improper 12.7mm Sabre MOD"
 	icon = 'icons/obj/items/weapons/ranged/pistol/12mm_mod.dmi'

@@ -20,5 +20,5 @@
 	ammo = /obj/item/bullet_cartridge/rifle_223
 
 /obj/item/magazine/carbine_223/update_icon()
-	icon_state = "[initial(icon_state)]_[round(length(stored_bullets))]"
+	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 	..()

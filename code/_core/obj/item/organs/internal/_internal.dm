@@ -95,12 +95,12 @@
 
 		var/health_percent = A.health.health_current / A.health.health_max
 		var/stamina_percent = A.health.stamina_current / A.health.stamina_max
-		var/blood_count = A.reagents.get_reagent_count("blood")
+		var/blood_percent = A.reagents.get_reagent_count("blood") / BLOOD_LEVEL_DEFAULT
 
 		heart_ticks += LIFE_TICK
 
 		heart_rate = initial(heart_rate)
-		heart_rate *= (blood_count/BLOOD_LEVEL_DEFAULT)
+		heart_rate *= (blood_percent)
 		if(health_percent > 0.5)
 			heart_rate *= (2 - health_percent)
 		else
@@ -114,8 +114,15 @@
 				heart_rate *= 2
 
 		if(heart_rate && heart_ticks >= ((1/heart_rate)*60)*10)
-			if(health_percent >= 0.5 && blood_count <= BLOOD_LEVEL_DEFAULT)
+			if(health_percent >= 0.5 && blood_percent < 1)
 				A.reagents.add_reagent("blood",0.1)
+			var/desired_oxyloss = FLOOR(100 * (1-blood_percent),1)
+			var/current_oxyloss = FLOOR(A.health.get_oxy_loss(),1)
+			if(desired_oxyloss > current_oxyloss)
+				A.health.adjust_oxy_loss(1)
+			else if (desired_oxyloss < current_oxyloss)
+				A.health.adjust_oxy_loss(-1)
+			A << current_oxyloss
 			heart_ticks = 0
 
 	return .

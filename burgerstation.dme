@@ -590,6 +590,8 @@
 #include "code\_core\obj\item\soapstone.dm"
 #include "code\_core\obj\item\stacks.dm"
 #include "code\_core\obj\item\value.dm"
+#include "code\_core\obj\item\analyzer\_analyzer.dm"
+#include "code\_core\obj\item\analyzer\health.dm"
 #include "code\_core\obj\item\bullet\_bullet_cartridge.dm"
 #include "code\_core\obj\item\bullet\bolt.dm"
 #include "code\_core\obj\item\bullet\gyro.dm"

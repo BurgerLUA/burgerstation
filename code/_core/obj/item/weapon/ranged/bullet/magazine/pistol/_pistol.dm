@@ -17,7 +17,10 @@
 	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/get_movement_spread(var/mob/living/L)
+	return ..() * 0.5
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_cock_sound(var/direction="both")
 	switch(direction)

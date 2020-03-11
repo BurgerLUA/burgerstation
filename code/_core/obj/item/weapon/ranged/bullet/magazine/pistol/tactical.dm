@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
-	name = ".45 Tac Pistol"
+	name = ".45 1911 Pistol"
 	desc = "No rubber rounds here; it's all lethal."
 	desc_extended = "A common pistol used by moderern police forces as well as some private military corporations."
 	value = 30
@@ -26,8 +26,14 @@
 	bullet_diameter_best = 11.43
 	bullet_diameter_max = 12
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread() //Base spread
+	return 0.01
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
-	name = ".45 Tac Pistol MOD"
+	name = ".45 1911 Pistol MOD"
 	desc = "It's like a Silver Eagle except not."
 	desc_extended = "The feeding ramp is polished to a mirror sheen. The slide's been reinforced. And the interlock with the frame is tightened for added precision. \
 	The sight system is original, too. The thumb safety is extended to make it easier on the finger. A long-type trigger with non-slip grooves. A ring hammer... \

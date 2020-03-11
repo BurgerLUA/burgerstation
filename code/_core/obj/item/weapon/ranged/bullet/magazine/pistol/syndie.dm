@@ -32,6 +32,11 @@
 	bullet_diameter_best = 10.17
 	bullet_diameter_max = 11
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_static_spread() //Base spread
+	return 0.01
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
 	name = "10mm Stechkin MOD"

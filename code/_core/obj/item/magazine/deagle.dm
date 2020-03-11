@@ -1,7 +1,7 @@
 /obj/item/magazine/pistol_50
 	name = "\improper .50 pistol magazine"
 	icon = 'icons/obj/items/magazine/50aepistol.dmi'
-	icon_state = "50aepistol"
+	icon_state = "50ae"
 	bullet_count_max = 7
 
 	weapon_whitelist = list(
@@ -20,9 +20,5 @@
 	bullet_diameter_max = 13
 
 /obj/item/magazine/pistol_50/update_icon()
-	if(length(stored_bullets))
-		icon_state = "[initial(icon_state)]_1"
-	else
-		icon_state = "[initial(icon_state)]"
-
+	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 	..()

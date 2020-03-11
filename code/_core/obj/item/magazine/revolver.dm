@@ -1,11 +1,5 @@
 /obj/item/magazine/clip/revolver/update_icon()
-	var/number = length(stored_bullets)
-	if(number == 0)
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]_[number]"
-
-	..()
+	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 
 /obj/item/magazine/clip/revolver/bullet_38
 	name = "\improper .38 speedloader"

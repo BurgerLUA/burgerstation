@@ -23,6 +23,6 @@
 	if(length(stored_bullets))
 		icon_state = "[initial(icon_state)]_1"
 	else
-		icon_state = "[initial(icon_state)]"
+		icon_state = "[initial(icon_state)]_0"
 
 	..()

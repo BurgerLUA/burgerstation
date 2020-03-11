@@ -26,7 +26,7 @@
 	bullet_diameter_max = 11.2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
-	return 0
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))

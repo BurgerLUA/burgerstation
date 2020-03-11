@@ -17,7 +17,7 @@
 
 	return ..()
 
-/obj/chat_text/New(var/atom/desired_loc,var/desired_text)
+/obj/chat_text/New(var/atom/desired_loc,var/desired_text,var/bypass_length=FALSE)
 
 	if(ismob(desired_loc))
 
@@ -37,7 +37,7 @@
 		maptext_x = -(maptext_width-TILE_SIZE)*0.5
 		maptext_y = TILE_SIZE*0.75
 
-		if(length(desired_text) >= 52) //52 is a magic number because reasons.
+		if(!bypass_length && length(desired_text) >= 52) //52 is a magic number because reasons.
 			desired_text = copytext(desired_text,1,52) + "..."
 
 		maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>[html_decode(desired_text)]</font></center>"
