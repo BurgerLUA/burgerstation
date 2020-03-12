@@ -20,10 +20,9 @@
 
 	spawn()
 		for(var/turf/T in view(desired_range,desired_loc))
-			var/distance = get_dist(T,desired_loc) + 1
+			var/distance = get_dist(T,desired_loc)
 			if(distance <= 0)
 				distance = 1
-
 			if(!explosion_data[distance])
 				explosion_data[distance] = list()
 			explosion_data[distance] += T

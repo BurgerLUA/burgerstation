@@ -16,11 +16,28 @@
 
 	value = 15
 
+/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+	. = ..()
+	world.log << "[owner],[source]"
+	qdel(src)
+	return .
+
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
 	update_icon()
 	return .
 
+/obj/item/grenade/on_spawn()
+	. = ..()
+
+	for(var/obj/item/I in stored_containers)
+		I.on_spawn()
+
+	stored_trigger.on_spawn()
+
+	update_icon()
+
+	return .
 
 /obj/item/grenade/update_icon()
 
@@ -111,4 +128,16 @@
 	src.reagents.update_container()
 	src.reagents.process_recipes(caller)
 
+	return ..()
+
+/obj/item/grenade/timed/on_spawn()
+	stored_trigger = new /obj/item/device/timer(src)
+	return ..()
+
+/obj/item/grenade/timed/explosive/
+	name = "timed explosive grenade"
+
+/obj/item/grenade/timed/explosive/on_spawn()
+	stored_containers += new /obj/item/container/beaker/large/water(src)
+	stored_containers += new /obj/item/container/beaker/large/potassium(src)
 	return ..()
