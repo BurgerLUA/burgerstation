@@ -6,14 +6,7 @@
 	icon_state = "3"
 
 /obj/explosion_particle/New(var/desired_loc)
-
 	. = ..()
-
-	spawn(3)
-		icon_state = "2"
-		sleep(2)
-		icon_state = "1"
-		sleep(2)
-		qdel(src)
-
+	animate(src,alpha=0,time=5)
+	queue_delete(src,10)
 	return .

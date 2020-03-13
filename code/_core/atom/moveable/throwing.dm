@@ -1,4 +1,5 @@
 /atom/movable/proc/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
+
 	if(!throwable)
 		if(ismob(thrower))
 			var/mob/M = thrower
@@ -11,7 +12,9 @@
 	P.pixel_y = src.pixel_y
 	P.pixel_x_float = src.pixel_x
 	P.pixel_y_float = src.pixel_y
-	P.lifetime = SECONDS_TO_DECISECONDS(1)
+
+	var/max = max(abs(vel_x),abs(vel_y))
+	P.lifetime = (max/TILE_SIZE)*5
 	src.force_move(P) //Move it to contents.
 	return P
 

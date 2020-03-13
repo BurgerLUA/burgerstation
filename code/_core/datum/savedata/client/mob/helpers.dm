@@ -176,8 +176,6 @@
 	else
 		A.update_all_blends() //butts
 
-	world.log << "THE BLENDS ARE UPDATED HERE!"
-
 /savedata/client/mob/proc/apply_blend_data(var/obj/O, var/list/blend_data)
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
@@ -193,6 +191,6 @@
 		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
 
 /mob/living/advanced/verb/debug_overlays()
-	world.log << "Found [length(overlays)] overlays."
+	src << "Found [length(overlays)] overlays."
 	for(var/O in overlays)
-		world.log << "Overlay: [O]."
+		src << "Overlay: [O]."

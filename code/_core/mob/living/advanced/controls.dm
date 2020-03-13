@@ -167,7 +167,6 @@ mob/living/advanced/proc/handle_quick(var/atom/object,location,control,params)
 				var/obj/hud/inventory/I = B.stored_atom.loc
 				if(I.owner != src)
 					B.clear_object(src)
-					world.log << "THE FUCK?"
 					break
 			else if(!is_button(B.stored_atom))
 				B.clear_object(src)

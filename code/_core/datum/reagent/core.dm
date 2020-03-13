@@ -6,6 +6,14 @@
 
 	flavor = "coal"
 
+/reagent/core/iron //Found while mining iron ore deposits
+	name = "Iron"
+	id = "iron"
+	desc = "What most lifeforms build weapons out of."
+	color = COLOR_IRON
+
+	flavor = "iron"
+
 /reagent/core/oxygen //Found in the snow biome as a magic plant
 	name = "Liquid Oxygen"
 	id = "oxygen"

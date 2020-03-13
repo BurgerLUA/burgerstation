@@ -85,7 +85,6 @@
 	stop_music_track(src)
 
 	var/turf/T = mob.loc
-	world.log << "The loc is: [T]."
 
 	qdel(src.mob)
 

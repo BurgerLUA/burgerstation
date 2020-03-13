@@ -73,10 +73,11 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		if(L.rest_time >= 0)
-			L.rest_time = -5
+		if(L.rest_time == 0)
+			L.rest_time = -1
+			L.check_status_effects()
 		else if(L.rest_time == -1)
-			L.rest_time = 0
-		L.check_status_effects()
+			L.rest_time = 5
+			L.check_status_effects()
 
 	return ..()

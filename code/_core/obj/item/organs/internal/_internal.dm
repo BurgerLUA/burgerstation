@@ -122,7 +122,6 @@
 				A.health.adjust_oxy_loss(1)
 			else if (desired_oxyloss < current_oxyloss)
 				A.health.adjust_oxy_loss(-1)
-			A << current_oxyloss
 			heart_ticks = 0
 
 	return .

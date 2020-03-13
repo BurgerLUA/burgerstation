@@ -143,11 +143,11 @@
 		on_unfatigued()
 
 	//Rest
-	if(!(status & FLAG_STATUS_REST) && (rest_time > 0 || rest_time <= -1))
+	if(!(status & FLAG_STATUS_REST) && (rest_time > 0 || rest_time == -1))
 		add_status(FLAG_STATUS_REST)
 		on_rest()
 
-	if(status & FLAG_STATUS_REST && rest_time <= 0 && rest_time > -1)
+	if(status & FLAG_STATUS_REST && rest_time <= 0 && rest_time != -1)
 		remove_status(FLAG_STATUS_REST)
 		on_unrest()
 
@@ -222,10 +222,7 @@
 			crit_time = max(0,crit_time - amount_to_remove)
 
 		if(rest_time != -1)
-			if(rest_time > 0)
-				rest_time = max(0,rest_time - amount_to_remove)
-			else
-				rest_time = min(-1,rest_time + amount_to_remove)
+			rest_time = max(0,rest_time - amount_to_remove)
 
 		if(stun_time != -1)
 			stun_time = max(0,stun_time - amount_to_remove)

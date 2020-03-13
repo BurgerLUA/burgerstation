@@ -17,10 +17,25 @@
 	value = 15
 
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
-	. = ..()
-	world.log << "[owner],[source]"
-	qdel(src)
+
+	if(source == src)
+		qdel(src)
+	else
+		trigger(owner,source,-1,-1)
+
 	return .
+
+/obj/item/grenade/Destroy()
+
+	for(var/obj/item/I in stored_containers)
+		qdel(I)
+	stored_containers.Cut()
+
+	if(stored_trigger)
+		qdel(stored_trigger)
+	stored_trigger = null
+
+	return ..()
 
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
@@ -138,6 +153,6 @@
 	name = "timed explosive grenade"
 
 /obj/item/grenade/timed/explosive/on_spawn()
-	stored_containers += new /obj/item/container/beaker/large/water(src)
-	stored_containers += new /obj/item/container/beaker/large/potassium(src)
+	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)
+	stored_containers += new /obj/item/container/beaker/large/grenade_potassium(src)
 	return ..()
