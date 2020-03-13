@@ -253,7 +253,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			var/normx = new_x/highest
 			var/normy = new_y/highest
 
-			var/turf/T = get_turf(caller)
+			var/turf/T = get_turf(src)
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 

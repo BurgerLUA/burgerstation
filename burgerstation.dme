@@ -203,6 +203,7 @@
 #include "code\_core\datum\commands\debug.dm"
 #include "code\_core\datum\damagetype\_damagetype.dm"
 #include "code\_core\datum\damagetype\default.dm"
+#include "code\_core\datum\damagetype\explosion.dm"
 #include "code\_core\datum\damagetype\melee\_melee.dm"
 #include "code\_core\datum\damagetype\melee\flashlight.dm"
 #include "code\_core\datum\damagetype\melee\spear.dm"

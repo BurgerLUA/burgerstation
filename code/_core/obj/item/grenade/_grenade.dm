@@ -43,6 +43,7 @@
 	return .
 
 /obj/item/grenade/on_spawn()
+
 	. = ..()
 
 	for(var/obj/item/I in stored_containers)
