@@ -18,16 +18,3 @@
 			. += R.value*reagent_volume
 
 	return .
-
-
-/obj/item/calculate_value()
-
-	. = ..()
-
-	for(var/obj/hud/inventory/I in inventories)
-		for(var/obj/item/I2 in I.worn_objects)
-			. += I2.calculate_value()
-		for(var/obj/item/I2 in I.held_objects)
-			. += I2.calculate_value()
-
-	return .

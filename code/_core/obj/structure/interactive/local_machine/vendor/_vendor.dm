@@ -19,7 +19,7 @@
 	var/is_free = FALSE
 	var/free_text = "free"
 
-	var/force_spawn_stored_types = FALSE
+	var/force_spawn_stored_types = TRUE
 
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()

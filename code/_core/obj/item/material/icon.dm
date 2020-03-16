@@ -9,16 +9,19 @@
 
 /obj/item/material/sheet/update_icon()
 	var/material/M = all_materials[material_id]
+	name = "[M.name] sheet"
 	icon_state = "[M.icon_state_sheet]_[min(CEILING(item_count_current,1),item_count_max_icon)]"
 	return ..()
 
 /obj/item/material/rod/update_icon()
 	var/material/M = all_materials[material_id]
+	name = "[M.name] rod"
 	icon_state = "[M.icon_state_rod]_[min(CEILING(item_count_current,1),item_count_max_icon)]"
 	return ..()
 
 /obj/item/material/ingot/update_icon()
 	var/material/M = all_materials[material_id]
+	name = "[M.name] ingot"
 	icon_state = "[M.icon_state_ingot]_[min(CEILING(item_count_current,1),item_count_max_icon)]"
 	return ..()
 

@@ -4,11 +4,11 @@
 	icon_state = "inventory"
 
 	projectile_speed = 20
-	shoot_delay = 3
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
+	shoot_sounds = list('sounds/weapons/45/shoot_silenced.ogg')
 
 	can_wield = FALSE
 
@@ -21,8 +21,8 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
-	heat_per_shot = 0.04
-	heat_max = 0.4
+	heat_per_shot = 0.01
+	heat_max = 0.1
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -31,6 +31,8 @@
 	bullet_diameter_min = 11
 	bullet_diameter_best = 11.43
 	bullet_diameter_max = 12
+
+	value = 150
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 	if(stored_magazine)

@@ -31,6 +31,7 @@
 
 	size = 0.01
 	weight = 0.01
+	value = 0.1
 
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
 	return 'sounds/weapons/gun/general/mag_bullet_remove.ogg'

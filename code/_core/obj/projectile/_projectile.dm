@@ -157,27 +157,33 @@
 		steps_current += 1
 
 		if(!current_loc || !previous_loc)
+			damage_atom(src.loc)
 			on_hit(src.loc,TRUE)
 			return FALSE
 
 		if(hit_target_turf && current_loc == target_turf)
+			damage_atom(current_loc)
 			on_hit(current_loc)
 			return FALSE
 
 		if(steps_allowed && steps_allowed <= steps_current)
+			damage_atom(current_loc)
 			on_hit(current_loc,TRUE)
 			return FALSE
 
 		if(lifetime <= start_time)
+			damage_atom(current_loc)
 			on_hit(current_loc,TRUE)
 			return FALSE
 
 		if(!isturf(previous_loc))
+			damage_atom(previous_loc)
 			on_hit(previous_loc,TRUE)
 			return FALSE
 
 		var/atom/collide_with_turf = current_loc.projectile_should_collide(src,current_loc,previous_loc)
 		if(collide_with_turf)
+			damage_atom(collide_with_turf)
 			on_hit(collide_with_turf)
 			return FALSE
 
@@ -186,6 +192,8 @@
 				continue
 			var/atom/collide_atom = A.projectile_should_collide(src,current_loc,previous_loc)
 			if(!collide_atom)
+				continue
+			if(!damage_atom(collide_atom))
 				continue
 			on_hit(collide_atom)
 			return FALSE
@@ -227,8 +235,9 @@
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 
+	return TRUE
+
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
-	damage_atom(hit_atom)
 	all_projectiles -= src
 	post_on_hit(hit_atom)
 	qdel(src)

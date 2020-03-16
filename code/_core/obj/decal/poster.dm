@@ -6,17 +6,19 @@
 	plane = PLANE_WALL
 	layer = LAYER_WALL_DECAL
 
-/obj/decal/poster/New(var/desired_loc)
+/obj/decal/poster/Initialize()
 	setup_dir_offsets(src)
 	dir = SOUTH
-	return ..(loc)
+	return ..()
 
-/obj/decal/poster/nanotrasen/New(var/desired_loc) //Random positive poster.
+/obj/decal/poster/nanotrasen/Initialize() //Random positive poster.
 	. = ..()
 	icon_state = "poster[rand(1,35)]_legit"
+
+	world.log << "[icon_state] [dir]."
 	return .
 
-/obj/decal/poster/syndicate/New(var/desired_loc) //Random negative poster.
+/obj/decal/poster/syndicate/Initialize() //Random negative poster.
 	. = ..()
 	icon_state = "poster[rand(1,44)]"
 	return .

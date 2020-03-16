@@ -8,22 +8,22 @@
 #define HEALING_X 50
 
 #define DAMAGE_F 0
-#define DAMAGE_E 5
-#define DAMAGE_D 10
-#define DAMAGE_C 15
-#define DAMAGE_B 25
-#define DAMAGE_A 50
-#define DAMAGE_S 75
-#define DAMAGE_X 100
+#define DAMAGE_E 4
+#define DAMAGE_D 8
+#define DAMAGE_C 12
+#define DAMAGE_B 20
+#define DAMAGE_A 25
+#define DAMAGE_S 30
+#define DAMAGE_X 200
 
 #define ARMOR_F 0
-#define ARMOR_E 5
-#define ARMOR_D 10
-#define ARMOR_C 25
-#define ARMOR_B 50
-#define ARMOR_A 75
-#define ARMOR_S 90
-#define ARMOR_X 1000
+#define ARMOR_E 10
+#define ARMOR_D 25
+#define ARMOR_C 50
+#define ARMOR_B 75
+#define ARMOR_A 90
+#define ARMOR_S 100
+#define ARMOR_X 200
 
 #define CLASS_F 0
 #define CLASS_E 0.1
@@ -43,15 +43,16 @@
 #define SKILL_S 0.75
 #define SKILL_X 1
 
-#define SIZE_0 1
-#define SIZE_1 2
-#define SIZE_2 3
-#define SIZE_3 4
-#define SIZE_4 5
-#define SIZE_5 6
-#define SIZE_6 7
-#define SIZE_7 8
-#define SIZE_8 9
+#define SIZE_0 0.5
+#define SIZE_1 1
+#define SIZE_2 2
+#define SIZE_3 3
+#define SIZE_4 4
+#define SIZE_5 5
+#define SIZE_6 6
+#define SIZE_7 7
+#define SIZE_8 8
+#define SIZE_9 10
 #define SIZE_X 100
 
 #define WEIGHT_0 0.5

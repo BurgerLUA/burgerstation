@@ -30,6 +30,7 @@
 
 	stored_item = pick(possible_items)
 	stored_item.force_move(src)
+	stored_item.on_spawn()
 	possible_items -= stored_item
 
 	for(var/obj/item/I in possible_items)
@@ -43,6 +44,7 @@
 
 /obj/structure/interactive/shop/update_icon()
 	if(stored_item)
+		stored_item.update_icon()
 		appearance = stored_item.appearance
 		mouse_opacity = 2
 		name = "[stored_item.name] - [stored_item_cost] credits"
@@ -81,7 +83,6 @@
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
 			new_item.on_spawn()
 			new_item.update_icon()
-			new_item.calculate_value()
 			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))
 

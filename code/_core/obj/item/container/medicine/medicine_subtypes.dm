@@ -22,7 +22,7 @@
 
 	value = 1
 
-/obj/item/container/medicine/ointment
+/obj/item/container/medicine/ointment/advanced
 	name = "kelotane infused ointment"
 
 /obj/item/container/medicine/ointment/advanced/on_spawn()
@@ -49,6 +49,7 @@
 
 /obj/item/container/medicine/trauma_kit/advanced/on_spawn()
 	reagents.add_reagent("bicaridine",50)
+	return ..()
 
 /obj/item/container/medicine/burn_kit
 	name = "burn kit"

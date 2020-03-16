@@ -29,6 +29,8 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
+	value = 80
+
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
 	return 0.01
 

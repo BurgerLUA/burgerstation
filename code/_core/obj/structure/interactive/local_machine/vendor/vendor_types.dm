@@ -19,8 +19,7 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/sniper_50,
-		/obj/item/magazine/syringe_gun
+		/obj/item/magazine/sniper_50
 	)
 
 /obj/structure/interactive/vending/ammo/shotgun
@@ -52,6 +51,10 @@
 	name = "tool vendor"
 	icon_state = "tool"
 	stored_types = list(
+		/obj/item/weapon/melee/toolbox/blue,
+		/obj/item/weapon/melee/toolbox/red,
+		/obj/item/weapon/melee/toolbox/green,
+		/obj/item/weapon/melee/toolbox/yellow,
 		/obj/item/weapon/melee/tool/crowbar,
 		/obj/item/weapon/melee/tool/multitool,
 		/obj/item/weapon/melee/tool/screwdriver,

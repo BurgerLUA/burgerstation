@@ -232,7 +232,7 @@
 	var/object_icon = "<img src='\ref[src.icon]' class='examine_icon_main'/>"
 	. = div("examine_title","[object_icon][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-	. += div("rarity","Value: [calculate_value(TRUE)].")
+	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)

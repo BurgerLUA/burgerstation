@@ -13,12 +13,14 @@
 
 /obj/structure/interactive/crate/Cross(var/atom/movable/O)
 
+	if(istype(O,/obj/structure/interactive/crate))
+		return FALSE
+
 	if(open)
 		return TRUE
 
 	if(!(O.collision_flags && FLAG_COLLISION_ETHEREAL))
-		if(istype(O,/obj/structure/interactive/crate))
-			return FALSE
+		return TRUE
 
 	return ..()
 

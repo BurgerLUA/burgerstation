@@ -22,9 +22,6 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
 
-	size = SIZE_4
-	weight = WEIGHT_5
-
 	heat_per_shot = 0.05
 	heat_max = 0.3
 
@@ -35,6 +32,11 @@
 	bullet_diameter_min = 5.5
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
+
+	size = SIZE_4
+	weight = WEIGHT_5
+
+	value = 400
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()
 

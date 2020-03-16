@@ -13,7 +13,7 @@
 
 	var/on = TRUE
 
-	color = "#FFFFAA"
+	color = COLOR_LIGHT
 	var/color_frame = "#888888"
 
 	rotation_mod = -1

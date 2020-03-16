@@ -71,6 +71,8 @@
 
 	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
 
+	var/allow_quick_equip = TRUE
+
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)

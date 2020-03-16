@@ -30,6 +30,10 @@
 	var/adrenaline_time = 0
 	var/rest_time = 0
 
+	var/charge_block = 0
+	var/charge_parry = 0
+	var/charge_dodge = 0
+
 	var/first_life = TRUE
 
 	var/health_regen_buffer = 0

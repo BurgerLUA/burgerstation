@@ -37,8 +37,8 @@
 /turf/simulated/floor/tile/red
 	color = COLOR_RED
 
-#define COLOR_BLUE "#444499"
-#define COLOR_PURPLE "#994499"
+/turf/simulated/floor/tile/security
+	color = COLOR_SECURITY
 
 /turf/simulated/floor/tile/blue
 	color = COLOR_BLUE
@@ -90,15 +90,22 @@
 
 	layer = LAYER_FLOOR + 0.01
 
+/turf/simulated/floor/tile/overlapping/engineering
+	color = COLOR_ENGINEERING
+	layer = LAYER_FLOOR + 0.02
+
 /turf/simulated/floor/tile/overlapping/grey
 	color = "#999999"
-
-	layer = LAYER_FLOOR + 0.02
+	layer = LAYER_FLOOR + 0.03
 
 /turf/simulated/floor/tile/overlapping/dark
 	color = "#444444"
+	layer = LAYER_FLOOR + 0.04
 
-	layer = LAYER_FLOOR + 0.03
+
+
+
+
 /*
 /turf/simulated/floor/tile/smooth
 	real_icon = 'icons/turf/floor/tile_smooth.dmi'
@@ -114,3 +121,10 @@
 /turf/simulated/floor/tile/smooth/cargo
 	color = COLOR_CARGO
 */
+
+/turf/simulated/floor/tile/detail
+	icon_state = "white_multi_detail"
+
+
+/turf/simulated/floor/tile/detail/tint
+	color = "#B0B5B4"

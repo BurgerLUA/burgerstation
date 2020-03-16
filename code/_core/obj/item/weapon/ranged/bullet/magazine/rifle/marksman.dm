@@ -32,6 +32,8 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
+	value = 150
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.3
@@ -47,6 +49,11 @@
 
 	heat_per_shot = 0.1
 	heat_max = 0.3
+
+	size = SIZE_3
+	weight = WEIGHT_3
+
+	value = 200
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod/get_static_spread() //Base spread
 	if(!wielded)

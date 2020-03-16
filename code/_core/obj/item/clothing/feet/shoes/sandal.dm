@@ -18,6 +18,8 @@
 
 	value = 5
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/feet/shoes/sandal/left
 	name = "left sandal"
 	icon_state = "inventory_left"

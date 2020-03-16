@@ -21,7 +21,7 @@
 	has_quick_function = FALSE
 
 /obj/hud/button/vendor/get_examine_text(var/mob/caller)
-	if(associated_item)
+	if(associated_item && !ispath(associated_item))
 		return associated_item.get_examine_text(caller)
 	return ..()
 
@@ -44,7 +44,12 @@
 		associated_item.pixel_y = 4
 		overlays += associated_item
 
-	var/amount = initial(associated_item.value)
+	var/amount = 0
+
+	if(!ispath(associated_item))
+		amount = associated_item.calculate_value()
+	else
+		amount = initial(associated_item.value)
 
 	var/num_to_text = num2text(amount)
 	var/the_length = length(num_to_text)
@@ -82,7 +87,7 @@
 	if(!ispath(associated_item))
 		desired_name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
 	else
-		desired_name = initial(associated_item.vendor_name) ? initial(associated_item.vendor_name) : initial(associated_item.name)
+		desired_name = initial(associated_item.vendor_name) ? initial(associated_item.vendor_name) : associated_item.name
 
 	maptext = desired_name
 	maptext_width = 96*2

@@ -18,7 +18,7 @@
 	size = 0.02
 	weight = 0.02
 
-	value = 3
+	value = 0.3
 
 /*
 /obj/item/bullet_cartridge/pistol_10mm/surplus
@@ -55,7 +55,7 @@
 	size = 0.025
 	weight = 0.025
 
-	value = 4
+	value = 0.4
 
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
@@ -77,7 +77,7 @@
 	size = 0.025
 	weight = 0.025
 
-	value = 4
+	value = 0.4
 
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
@@ -100,7 +100,7 @@
 	size = 0.01
 	weight = 0.01
 
-	value = 1
+	value = 0.1
 
 /*
 /obj/item/bullet_cartridge/pistol_9mm/surplus
@@ -139,7 +139,7 @@
 	size = 0.01
 	weight = 0.01
 
-	value = 1
+	value = 0.1
 
 /obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"
@@ -161,7 +161,7 @@
 	size = 0.015
 	weight = 0.015
 
-	value = 2
+	value = 0.2
 
 /*
 /obj/item/bullet_cartridge/pistol_45/surplus
@@ -212,7 +212,7 @@
 	size = 0.01
 	weight = 0.01
 
-	value = 2
+	value = 0.2
 
 /*
 /obj/item/bullet_cartridge/pistol_8mm/hollowpoint

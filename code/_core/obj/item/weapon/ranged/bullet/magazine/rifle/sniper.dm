@@ -33,6 +33,11 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
+	size = SIZE_4
+	weight = WEIGHT_5
+
+	value = 400
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_static_spread() //Base spread
 	return 0
 

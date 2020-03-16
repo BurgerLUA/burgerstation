@@ -5,7 +5,7 @@
 	bullet_count_max = 24
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/smg
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_45

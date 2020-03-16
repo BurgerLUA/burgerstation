@@ -34,6 +34,8 @@
 
 	value = 10
 
+	slowdown_mul_worn = 0.95
+
 /obj/item/clothing/feet/shoes/colored/left
 	name = "left shoe"
 	icon_state = "inventory_left"

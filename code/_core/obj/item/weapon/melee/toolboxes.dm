@@ -24,3 +24,6 @@
 
 /obj/item/weapon/melee/toolbox/blue
 	color = "#0000FF"
+
+/obj/item/weapon/melee/toolbox/yellow
+	color = "#FFFF00"

@@ -44,19 +44,19 @@
 	color_tertiary = "#A0A0A0"
 
 /obj/item/clothing/uniform/jumpsuit/red
-	color_primary = "#FF0000"
-	color_secondary = "#FF0000"
-	color_tertiary = "#FF0000"
+	color_primary = COLOR_RED
+	color_secondary = COLOR_RED
+	color_tertiary = COLOR_RED
 
 /obj/item/clothing/uniform/jumpsuit/blue
-	color_primary = "#0000FF"
-	color_secondary = "#0000FF"
-	color_tertiary = "#0000FF"
+	color_primary = COLOR_BLUE
+	color_secondary = COLOR_BLUE
+	color_tertiary = COLOR_BLUE
 
 /obj/item/clothing/uniform/jumpsuit/science
-	color_primary = "#38525F"
-	color_secondary = "#38525F"
-	color_tertiary = "#38525F"
+	color_primary = COLOR_WHITE
+	color_secondary = COLOR_WHITE
+	color_tertiary = COLOR_SCIENCE
 
 /obj/item/clothing/uniform/jumpsuit/dark
 	name = "reinforced jumpsuit"
@@ -76,27 +76,27 @@
 	value = 30
 
 /obj/item/clothing/uniform/jumpsuit/dark/security
-	color_primary = COLOR_BLACK
-	color_secondary = "#994444"
-	color_tertiary = "#994444"
+	color_primary = "#ADBEDA"
+	color_secondary = "#586B8B"
+	color_tertiary = "#ADBEDA"
 
 /obj/item/clothing/uniform/jumpsuit/chemist
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FF6A00"
+	color_primary = COLOR_WHITE
+	color_secondary = COLOR_WHITE
+	color_tertiary = COLOR_CHEMISTRY
 
 
 /obj/item/clothing/uniform/jumpsuit/bartender
-	color_primary = "#FFFFFF"
+	color_primary = COLOR_WHITE
 	color_secondary = COLOR_BLACK
-	color_tertiary = "#FFFFFF"
+	color_tertiary = COLOR_WHITE
 
 /obj/item/clothing/uniform/jumpsuit/medical_doctor
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
+	color_primary = COLOR_WHITE
+	color_secondary = COLOR_WHITE
 	color_tertiary = COLOR_MEDICAL
 
 /obj/item/clothing/uniform/jumpsuit/engineering
-	color_primary = COLOR_ENGINEERING
+	color_primary = COLOR_ENGINEERING_BRIGHT
 	color_secondary = COLOR_ENGINEERING
 	color_tertiary = COLOR_ORANGE

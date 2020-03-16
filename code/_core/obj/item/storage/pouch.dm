@@ -3,7 +3,8 @@
 	desc = "Simple pounches"
 	icon = 'icons/obj/items/storage/pouches_new.dmi'
 
-	size = SIZE_3
+	size = SIZE_2
+	weight = WEIGHT_2
 
 	is_container = TRUE
 
@@ -14,6 +15,13 @@
 		/obj/hud/inventory/organs/groin/pocket/right,
 		/obj/hud/inventory/organs/groin/pocket/left
 	)
+
+/obj/item/storage/pouch/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(caller == object && is_advanced(caller) && quick_equip(caller))
+		return TRUE
+
+	return ..()
 
 /obj/item/storage/pouch/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
@@ -26,6 +34,8 @@
 	name = "single pouch"
 	icon_state = "single"
 	dynamic_inventory_count = 2
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /obj/item/storage/pouch/single/black
 	color = COLOR_BLACK
@@ -34,15 +44,27 @@
 	name = "double pouch"
 	icon_state = "double"
 	dynamic_inventory_count = 4
+	size = SIZE_4
+	weight = WEIGHT_3
 
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
+
+/obj/item/storage/pouch/double/brown
+	color = COLOR_BROWN
 
 /obj/item/storage/pouch/double/black/filled/rifle_308/fill_inventory()
 	new /obj/item/magazine/rifle_308(src)
 	new /obj/item/magazine/rifle_308(src)
 	new /obj/item/magazine/rifle_308(src)
 	new /obj/item/magazine/rifle_308(src)
+	return ..()
+
+/obj/item/storage/pouch/double/black/filled/carbine_223/fill_inventory()
+	new /obj/item/magazine/carbine_223(src)
+	new /obj/item/magazine/carbine_223(src)
+	new /obj/item/magazine/carbine_223(src)
+	new /obj/item/magazine/carbine_223(src)
 	return ..()
 
 /obj/item/storage/pouch/double/black/filled/cell/fill_inventory()
@@ -56,6 +78,8 @@
 	name = "triple pouch"
 	icon_state = "triple"
 	dynamic_inventory_count = 6
+	size = SIZE_6
+	weight = WEIGHT_4
 
 /obj/item/storage/pouch/triple/syringe/
 	name = "syringe gun pouch"
@@ -92,7 +116,7 @@
 
 /obj/item/storage/pouch/triple/brown
 	name = "brown pouch"
-	color = "#683B1D"
+	color = COLOR_BROWN
 
 /obj/item/storage/pouch/triple/brown/filled/pdw/fill_inventory()
 	new /obj/item/magazine/smg_22(src)

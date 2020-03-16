@@ -32,3 +32,13 @@
 	new /obj/item/clothing/hands/gloves/colored/padded/black(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
 	return ..()
+
+
+/obj/item/storage/glovebox/brown_padded/
+	name = "brown padded glovebox"
+	desc = "Contains 2 padded brown gloves. Perfect for work conditions."
+
+/obj/item/storage/glovebox/brown_padded/fill_inventory()
+	new /obj/item/clothing/hands/gloves/colored/padded/brown(src)
+	new /obj/item/clothing/hands/gloves/colored/padded/brown/left(src)
+	return ..()

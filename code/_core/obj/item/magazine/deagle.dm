@@ -21,4 +21,4 @@
 
 /obj/item/magazine/pistol_50/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
-	..()
+	return ..()

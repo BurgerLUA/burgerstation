@@ -30,6 +30,8 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
+	value = 60
+
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread() //Base spread
 	return 0.01
 

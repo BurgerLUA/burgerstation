@@ -40,6 +40,8 @@
 
 	drop_on_death = TRUE
 
+	allow_quick_equip = FALSE
+
 /obj/hud/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
 	if(. && is_advanced(owner))
@@ -72,6 +74,8 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
+
+	allow_quick_equip = FALSE
 
 /obj/hud/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()

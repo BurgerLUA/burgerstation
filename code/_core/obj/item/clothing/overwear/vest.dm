@@ -30,6 +30,15 @@
 
 	value = 30
 
+/obj/item/clothing/overwear/armor/vest/colored
+	name = "colored vest"
+	icon = 'icons/obj/items/clothing/suit/white_vest.dmi'
+
+/obj/item/clothing/overwear/armor/vest/colored/brown
+	name = "industrial vest"
+	color = COLOR_BROWN_LIGHT
+
+
 /obj/item/clothing/overwear/armor/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object))

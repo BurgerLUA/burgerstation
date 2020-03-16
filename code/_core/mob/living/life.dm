@@ -281,7 +281,31 @@
 
 	handle_health_buffer()
 
+	handle_charges()
+
 	return TRUE
+
+/mob/living/proc/handle_charges()
+
+	var/dodge_power = src.get_skill_power(SKILL_DODGE)
+	var/block_power = src.get_skill_power(SKILL_BLOCK)
+	var/parry_power = src.get_skill_power(SKILL_PARRY)
+
+	var/old_dodge = charge_dodge
+	var/old_block = charge_block
+	var/old_parry= charge_parry
+
+	charge_dodge = min(charge_dodge + 10*dodge_power,FLOOR(dodge_power*500,100))
+	charge_block = min(charge_block + 10*block_power,FLOOR(block_power*500,100))
+	charge_parry = min(charge_parry + 10*parry_power,FLOOR(parry_power*500,100))
+
+	if(old_dodge != charge_dodge || old_block != charge_block || !old_parry != charge_parry)
+		for(var/obj/hud/button/evade/B in buttons)
+			B.update_overlay()
+
+		return TRUE
+
+	return FALSE
 
 mob/living/proc/on_life_slow()
 

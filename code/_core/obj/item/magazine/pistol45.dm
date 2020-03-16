@@ -21,7 +21,7 @@
 
 /obj/item/magazine/pistol_45/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
-	..()
+	return ..()
 
 /*
 /obj/item/magazine/pistol_45/surplus

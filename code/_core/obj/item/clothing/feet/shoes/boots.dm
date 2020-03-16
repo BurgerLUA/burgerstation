@@ -26,6 +26,8 @@
 
 	value = 20
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/feet/shoes/black_boots/left
 	name = "left black boot"
 	icon_state = "inventory_left"

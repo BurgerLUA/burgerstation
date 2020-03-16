@@ -25,8 +25,22 @@
 	bullet_diameter_best = 5.6
 	bullet_diameter_max = 6
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
+	value = 110
+
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
 	return 0.04
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
+
+/obj/item/weapon/ranged/bullet/magazine/smg/pdw/update_icon()
+	if(stored_magazine)
+		var/obj/item/magazine/M = stored_magazine
+		icon_state = "[initial(icon_state)]_[round(length(M.stored_bullets),4)]"
+	else
+		icon_state = initial(icon_state)
+
+	..()

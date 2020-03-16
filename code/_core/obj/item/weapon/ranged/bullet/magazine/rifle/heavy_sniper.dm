@@ -19,9 +19,6 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
 
-	size = SIZE_4
-	weight = WEIGHT_5
-
 	heat_per_shot = 0.1
 	heat_max = 0.1
 
@@ -32,6 +29,11 @@
 	bullet_diameter_min = 12.5
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
+
+	size = SIZE_4
+	weight = WEIGHT_5
+
+	value = 500
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread() //Base spread
 	return 0

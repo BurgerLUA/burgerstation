@@ -30,6 +30,8 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
+	value = 50
+
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
 	return 0.01
 

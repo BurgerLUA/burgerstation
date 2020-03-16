@@ -20,9 +20,5 @@
 	bullet_diameter_max = 11.2
 
 /obj/item/magazine/pistol_40/update_icon()
-	if(length(stored_bullets))
-		icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
-	else
-		icon_state = "[initial(icon_state)]"
-
-	..()
+	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
+	return ..()

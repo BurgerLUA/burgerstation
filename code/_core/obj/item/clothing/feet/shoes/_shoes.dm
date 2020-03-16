@@ -7,4 +7,4 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_SHOES
 
-	slowdown_mul_worn = 0.9
+	slowdown_mul_worn = 1

@@ -19,6 +19,8 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
+	value = 80
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread() //Base spread
 	return 0.03
 

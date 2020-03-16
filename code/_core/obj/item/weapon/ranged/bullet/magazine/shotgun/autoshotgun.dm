@@ -32,6 +32,8 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
+	value = 300
+
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_static_spread() //Base spread
 	return 0.05
 

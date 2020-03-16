@@ -22,6 +22,8 @@
 
 	value = 30
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/feet/shoes/miner/left
 	name = "left mining boot"
 	icon_state = "inventory_left"

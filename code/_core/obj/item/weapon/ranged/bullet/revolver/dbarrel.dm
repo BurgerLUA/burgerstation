@@ -30,6 +30,8 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
+	value = 60
+
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread
 	return 0.2
 

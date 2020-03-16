@@ -18,7 +18,7 @@
 	size = 0.02
 	weight = 0.02
 
-	value = 3
+	value = 0.3
 
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
@@ -41,7 +41,7 @@
 	size = 0.03
 	weight = 0.03
 
-	value = 3
+	value = 0.3
 
 /*
 /obj/item/bullet_cartridge/revolver_357/surplus
@@ -78,7 +78,7 @@
 	size = 0.035
 	weight = 0.035
 
-	value = 4
+	value = 0.4
 
 /*
 /obj/item/bullet_cartridge/revolver_44/surplus
@@ -122,7 +122,7 @@
 	size = 0.01
 	weight = 0.01
 
-	value = 1
+	value = 0.1
 
 /*
 /obj/item/bullet_cartridge/revolver_22/surplus

@@ -15,7 +15,7 @@
 	var/value_per_unit = 1
 
 /material/glass/
-	name = "steel"
+	name = "glass"
 	id = "glass"
 	color = COLOR_GLASS
 

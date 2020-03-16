@@ -21,6 +21,11 @@
 
 	override_icon_state = TRUE
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
+	value = 100
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 
 	icon_state = initial(icon_state)
@@ -47,3 +52,8 @@
 	icon = 'icons/obj/items/weapons/ranged/rifle/223_mod.dmi'
 	heat_per_shot = 0.01
 	heat_max = 0.1
+
+	size = SIZE_2
+	weight = WEIGHT_2
+
+	value = 120

@@ -28,6 +28,8 @@
 
 	value = 100
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/feet/shoes/engineering/left
 	name = "left engineering boot"
 	icon_state = "inventory_left"

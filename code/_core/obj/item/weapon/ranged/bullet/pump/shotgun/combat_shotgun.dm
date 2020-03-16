@@ -30,6 +30,8 @@
 	size = SIZE_4
 	weight = WEIGHT_3
 
+	value = 130
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
@@ -65,6 +67,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_2
+
+	value = 150
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread() //Base spread
 	return 0.05

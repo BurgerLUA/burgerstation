@@ -26,7 +26,7 @@
 
 /obj/structure/interactive/door/airlock/station/security
 	name = "security airlock"
-	color = COLOR_RED
+	color = COLOR_SECURITY
 	fill_color = COLOR_STEEL
 
 /obj/structure/interactive/door/airlock/station/security/shop
@@ -59,9 +59,10 @@
 	locked = TRUE
 
 /obj/structure/interactive/door/airlock/station/engineering
-	name = "security airlock"
+	name = "engineering airlock"
 	color = COLOR_ENGINEERING
-	fill_color = COLOR_GREY
+	filler = "glass"
+	fill_color = COLOR_WHITE
 
 /obj/structure/interactive/door/airlock/station/medical
 	name = "medical airlock"

@@ -15,11 +15,13 @@
 	new /obj/item/magazine/pistol_45(src)
 	new /obj/item/container/medicine/bandage(src)
 	new /obj/item/container/medicine/ointment(src)
+	new /obj/item/grenade/timed/explosive/(src)
+	new /obj/item/grenade/timed/explosive/(src)
 	return ..()
 
 /obj/item/clothing/belt/storage/colored/black/filled/stealth/fill_inventory()
-	new /obj/item/container/medicine/bandage(src)
-	new /obj/item/container/medicine/ointment(src)
+	new /obj/item/container/medicine/bandage/advanced(src)
+	new /obj/item/container/medicine/ointment/advanced(src)
 	return ..()
 
 /obj/item/clothing/belt/storage/colored/black/filled/security/fill_inventory()
@@ -33,9 +35,8 @@
 	new /obj/item/container/medicine/ointment(src)
 	return ..()
 
-
 /obj/item/clothing/belt/storage/colored/brown
-	color = "#683B1D"
+	color = COLOR_BROWN
 
 /obj/item/clothing/belt/storage/colored/brown/filled/miner/fill_inventory()
 	new /obj/item/weapon/melee/tool/pickaxe(src)

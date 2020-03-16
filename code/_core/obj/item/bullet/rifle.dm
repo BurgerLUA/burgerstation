@@ -18,7 +18,7 @@
 	size = 0.04
 	weight = 0.04
 
-	value = 6
+	value = 0.6
 
 /obj/item/bullet_cartridge/rifle_308/on_spawn()
 	item_count_current = 5
@@ -57,7 +57,7 @@
 	size = 0.03
 	weight = 0.03
 
-	value = 4
+	value = 0.4
 
 /*
 /obj/item/bullet_cartridge/rifle_223/surplus

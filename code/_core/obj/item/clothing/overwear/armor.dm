@@ -439,7 +439,7 @@
 
 /obj/item/clothing/overwear/armor/molded_armor/security
 	name = "light security armor"
-	color = "#111111"
+	color = COLOR_BLACK
 
 	defense_rating = list(
 		BLADE = ARMOR_C,
@@ -454,6 +454,10 @@
 	weight = WEIGHT_4
 
 	value = 20
+
+/obj/item/clothing/overwear/armor/molded_armor/security/nanotrasen
+	name = "\improper NanoTrasen Private Security armor"
+	color = COLOR_NANOTRASEN
 
 /obj/item/clothing/overwear/armor/medium_armor
 	name = "medium armor"

@@ -4,7 +4,7 @@
 	desc_extended = "A military grade pistol amazingly chambered in .40. It shoots significantly faster than its tactical counterpart."
 	value = 70
 	icon = 'icons/obj/items/weapons/ranged/pistol/40.dmi'
-	shoot_delay = 2
+	shoot_delay = 1.5
 	shoot_sounds = list('sounds/weapons/40/shoot.ogg')
 
 	view_punch = 7
@@ -37,6 +37,7 @@
 	desc_extended = "A modified variant of the .40 Military Pistol. The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 110
 	shoot_sounds = list('sounds/weapons/40/shoot_mod.ogg')
+	shoot_delay = 1
 
 	view_punch = 5
 

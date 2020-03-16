@@ -15,6 +15,7 @@
 
 	size = 0.04
 	weight = 0.04
+	value = 0.6
 
 /obj/item/bullet_cartridge/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
@@ -41,8 +42,7 @@
 
 	size = 0.04
 	weight = 0.04
-
-	value = 6
+	value = 0.6
 
 /obj/item/bullet_cartridge/shotgun/buckshot
 	name = "\improper 12 gauge buckshot shell"
@@ -50,7 +50,7 @@
 	icon_state = "buckshot"
 
 	projectile_count = 8
-	base_spread = 0.1
+	base_spread = 0.03
 
 	projectile = /obj/projectile/bullet/shotgun_pellet
 
@@ -60,8 +60,7 @@
 
 	size = 0.04
 	weight = 0.04
-
-	value = 6
+	value = 0.6
 
 
 /obj/item/bullet_cartridge/shotgun/rubber_balls

@@ -160,3 +160,20 @@
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
 	)
+
+
+
+/obj/item/clothing/hands/gloves/colored/padded/brown
+	color = COLOR_BROWN
+
+/obj/item/clothing/hands/gloves/colored/padded/brown/left
+	name = "left padded glove"
+	icon_state = "inventory_left"
+	icon_state_worn = "worn_left"
+
+	item_slot = SLOT_HAND_LEFT
+	protected_limbs = list(BODY_HAND_LEFT)
+
+	protection_cold = list(
+		BODY_HAND_LEFT = 3
+	)

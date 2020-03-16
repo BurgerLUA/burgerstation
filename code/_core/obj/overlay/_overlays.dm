@@ -29,6 +29,11 @@
 	name = "[attached_object.name] overlay"
 
 	if(length(additional_blends) && !never_blend)
+
+		//Sort blends by layer.
+
+		additional_blends = sortTim(additional_blends,/proc/cmp_icon_blend_layer, TRUE)
+
 		var/icon/I
 
 		if(no_initial)

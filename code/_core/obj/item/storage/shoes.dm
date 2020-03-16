@@ -65,5 +65,13 @@
 	return ..()
 
 
+/obj/item/storage/shoebox/workboot/
+	name = "workboot shoebox"
+	desc = "Contains a pair of workboots."
+
+/obj/item/storage/shoebox/workboot/fill_inventory()
+	new /obj/item/clothing/feet/shoes/workboot(src)
+	new /obj/item/clothing/feet/shoes/workboot/left(src)
+	return ..()
 
 

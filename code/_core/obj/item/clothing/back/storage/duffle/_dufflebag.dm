@@ -13,11 +13,14 @@
 	value = 20
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
-	color = COLOR_BLACK
-	vendor_name = "\improper Rilfeman's Kit"
+	color = COLOR_WHITE
+	vendor_name = "\improper New Recruit's Kit"
 
 /obj/item/clothing/back/storage/dufflebag/grey
 	color = COLOR_GREY
+
+/obj/item/clothing/back/storage/dufflebag/black
+	color = COLOR_BLACK
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
 	new /obj/item/radio(src)
@@ -28,13 +31,17 @@
 	new /obj/item/clothing/feet/shoes/black_boots/left(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/black(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
-	new /obj/item/clothing/head/hood/skimask/black(src)
-	new /obj/item/clothing/overwear/armor/bulletproof(src)
-	new /obj/item/storage/pouch/double/black/filled/rifle_308(src)
-	new /obj/item/storage/pouch/double/black/filled/rifle_308(src)
 	new /obj/item/clothing/head/hat/beret(src)
+	new /obj/item/clothing/overwear/armor/molded_armor/security(src)
+
+	new /obj/item/storage/pouch/double/black/filled/carbine_223(src)
+	new /obj/item/storage/pouch/double/black/filled/carbine_223(src)
+
 	new /obj/item/clothing/belt/storage/colored/black/filled/pmc(src)
-	new /obj/item/weapon/ranged/bullet/magazine/rifle(src)
+
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/carbine(src)
+
+
 	new /obj/item/paper/firearms(src)
 	return ..()
 

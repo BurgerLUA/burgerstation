@@ -33,6 +33,11 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 18.5
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
+	value = 150
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

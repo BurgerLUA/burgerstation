@@ -18,6 +18,8 @@
 
 	drop_on_death = TRUE
 
+	priority = 1000
+
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"

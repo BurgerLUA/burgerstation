@@ -38,3 +38,6 @@
 
 /obj/item/clothing/back/storage/backpack/grey
 	color = COLOR_GREY
+
+/obj/item/clothing/back/storage/backpack/black
+	color = COLOR_BLACK

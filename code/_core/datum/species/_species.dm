@@ -81,7 +81,11 @@
 
 		/obj/hud/button/message,
 
-		/obj/hud/button/rest
+		/obj/hud/button/rest,
+
+		/obj/hud/button/evade/block,
+		/obj/hud/button/evade/dodge,
+		/obj/hud/button/evade/parry
 
 	)
 

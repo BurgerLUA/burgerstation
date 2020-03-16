@@ -19,7 +19,7 @@
 	size = 0.1
 	weight = 0.1
 
-	value = 15
+	value = 0.15
 
 /obj/item/bullet_cartridge/sniper_50/surplus
 	name = "\improper surplus .50 sniper round"

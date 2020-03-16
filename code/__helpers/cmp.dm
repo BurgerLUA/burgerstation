@@ -41,6 +41,12 @@
 /proc/cmp_subsystem_priority(subsystem/a, subsystem/b)
 	return cmp_numeric_asc(a.priority,b.priority)
 
+/proc/cmp_layer(atom/a, atom/b)
+	return cmp_numeric_asc(a.layer,b.layer)
+
+/proc/cmp_icon_blend_layer(icon_blend/a, icon_blend/b)
+	return cmp_numeric_dsc(a.layer,b.layer)
+
 /proc/cmp_list_data_priority(list/A, list/B)
 	return A["priority"] - B["priority"]
 

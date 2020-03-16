@@ -1,9 +1,9 @@
 /obj/item/clothing/uniform/jumpsuit/pmc
-	name = "\improper PMC fatigues"
+	name = "\improper NanoTrasen Private Security fatigues"
 
 	color_primary = "#FFFFFF"
 	color_secondary = "#FFFFFF"
-	color_tertiary = "#303030"
+	color_tertiary = COLOR_NANOTRASEN
 
 	defense_rating = list(
 		BLADE = ARMOR_D,

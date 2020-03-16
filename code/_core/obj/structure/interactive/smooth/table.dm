@@ -10,7 +10,7 @@ obj/structure/smooth/table
 	layer = LAYER_TABLE
 
 	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 obj/structure/smooth/rack
 	name = "table"
@@ -22,7 +22,7 @@ obj/structure/smooth/rack
 	corner_icons = FALSE
 
 	collision_flags = FLAG_COLLISION_WALKING
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 obj/structure/smooth/rack/grey
 	color = COLOR_GREY
