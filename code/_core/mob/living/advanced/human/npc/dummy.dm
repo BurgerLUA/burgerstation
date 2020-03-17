@@ -6,6 +6,8 @@
 
 	immortal = TRUE
 
+	spawn_blood = FALSE
+
 /mob/living/advanced/npc/dummy/Initialize()
 
 	. = ..()

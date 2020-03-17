@@ -17,3 +17,6 @@
 /turf/simulated/floor/space/transit/update_icon()
 	icon_state = "speedspace_ew_[rand(1,15)]"
 	return
+
+/turf/simulated/floor/space/is_space()
+	return TRUE

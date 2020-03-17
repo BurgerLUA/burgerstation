@@ -19,7 +19,6 @@
 
 	health_base = 100
 
-
 /obj/structure/can_be_attacked(var/atom/attacker)
 
 	var/area/A = get_area(src)

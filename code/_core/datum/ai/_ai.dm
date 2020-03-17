@@ -60,6 +60,7 @@
 	var/distance_target_min = 1
 	var/distance_target_max = 1
 
+	var/use_alerts = TRUE
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.
 	var/use_vision = FALSE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this is affected by alert level.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
@@ -370,6 +371,9 @@
 	return FALSE
 
 /ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE)
+
+	if(!use_alerts)
+		return FALSE
 
 	var/old_alert_level = alert_level
 

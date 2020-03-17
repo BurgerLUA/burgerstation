@@ -3,6 +3,7 @@ var/global/list/area/transit/transit_areas = list()
 /area/transit
 	name = "transit"
 	icon_state = "shuttle"
+	is_space = TRUE
 
 /area/transit/New(var/desired_loc)
 	transit_areas[id] = src

@@ -47,10 +47,10 @@ obj/structure/interactive/barricade/update_icon()
 	icon_state = initial(icon_state)
 
 	var/image/above = new/image(icon,"[icon_state]_above")
-	above.layer = LAYER_ABOVE_MOB
+	above.layer = LAYER_MOB_ABOVE
 
 	var/image/below = new/image(icon,"[icon_state]_below")
-	below.layer = LAYER_BELOW_MOB
+	below.layer = LAYER_MOB_BELOW
 
 	icon = ICON_INVISIBLE
 	overlays += below

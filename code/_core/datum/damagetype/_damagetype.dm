@@ -260,7 +260,7 @@
 		var/total_damage_dealt = 0
 		if(victim.immortal || hit_object.immortal)
 			for(var/damage_type in damage_to_deal_main)
-				total_damage_dealt += damage_type[damage_to_deal_main]
+				total_damage_dealt += damage_to_deal_main[damage_type]
 		else
 			hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
 			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)

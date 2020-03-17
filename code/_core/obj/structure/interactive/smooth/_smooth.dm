@@ -91,7 +91,6 @@ obj/structure/smooth/update_icon()
 	icon = I
 	pixel_x = (32 - I.Width())/2
 	pixel_y = (32 - I.Height())/2
-	layer = initial(layer) + 0.1
 
 	if(reinforced_material_id)
 		overlays.Cut()

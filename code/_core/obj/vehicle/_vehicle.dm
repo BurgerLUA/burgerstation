@@ -11,7 +11,7 @@
 	opacity = 0
 	anchored = 0
 
-	layer = LAYER_OBJ_VEHICLE
+	layer = LAYER_MOB_BELOW
 
 	var/list/obj/item/equipment
 

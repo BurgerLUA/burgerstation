@@ -105,6 +105,8 @@
 
 	var/dead = FALSE
 
+	var/spawn_blood = "blood"
+
 	var/obj/structure/buckled_object
 
 	reagents = /reagent_container/living
@@ -256,7 +258,8 @@
 				B.target_boss = src
 				B.update_stats()
 
-	reagents.add_reagent("blood",BLOOD_LEVEL_DEFAULT)
+	if(spawn_blood)
+		reagents.add_reagent(spawn_blood,BLOOD_LEVEL_DEFAULT)
 
 	return .
 

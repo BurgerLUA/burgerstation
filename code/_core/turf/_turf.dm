@@ -23,6 +23,9 @@
 
 	var/material_id
 
+/turf/proc/is_space()
+	return FALSE
+
 /turf/proc/update_edges()
 
 	for(var/direction in DIRECTIONS_ALL)
@@ -34,7 +37,6 @@
 
 /turf/proc/is_safe_teleport()
 	return FALSE
-
 
 /turf/New(loc)
 

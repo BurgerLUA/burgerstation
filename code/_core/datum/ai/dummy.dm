@@ -5,6 +5,7 @@
 
 	sync_movement_delay = TRUE
 	stationary = FALSE
+	use_alerts = FALSE
 
 /ai/dummy/handle_objectives()
 	return FALSE

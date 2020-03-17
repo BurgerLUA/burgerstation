@@ -1,3 +1,6 @@
+var/global/list/all_areas = list()
+
+
 /area/
 	name = "AREA ERROR"
 	id = null
@@ -52,6 +55,8 @@
 
 	var/list/turf/sunlight_turfs = list()
 
+	var/is_space = FALSE
+
 
 /area/New()
 	. = ..()
@@ -63,6 +68,10 @@
 	if(dynamic_lighting_overlay_color)
 		all_areas_with_dynamic_lighting_overlay_color += src
 	*/
+
+	if(!all_areas[type])
+		all_areas[type] = src
+		LOG_DEBUG("Adding [type] to area list.")
 
 	return .
 

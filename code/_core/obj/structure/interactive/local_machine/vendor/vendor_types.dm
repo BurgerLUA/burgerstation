@@ -118,6 +118,10 @@
 	name = "soda vendor"
 	icon_state = "soda"
 
+/obj/structure/interactive/vending/soda/New(var/desired_loc)
+	icon_state = pick("soda","sodablue","sodablack","sodapurple","sodaorange")
+	return ..()
+
 /obj/structure/interactive/vending/soda/full
 	force_spawn_stored_types = TRUE
 	stored_types = list(
@@ -162,3 +166,25 @@ var/global/list/equipped_players = list()
 	if(. && P && !(P in equipped_players))
 		equipped_players += P
 	return .
+
+
+
+/obj/structure/interactive/vending/junk
+	name = "soda vendor"
+	icon_state = "snack"
+
+/obj/structure/interactive/vending/junk/New(var/desired_loc)
+	icon_state = pick("snack","snackblue","snackorange","snackgreen","snackteal")
+	return ..()
+
+/obj/structure/interactive/vending/junk/full
+	force_spawn_stored_types = TRUE
+	stored_types = list(
+		/obj/item/container/food/package/junkfood/cake,
+		/obj/item/container/food/package/junkfood/candy,
+		/obj/item/container/food/package/junkfood/cheese_chips,
+		/obj/item/container/food/package/junkfood/chips,
+		/obj/item/container/food/package/junkfood/jerky,
+		/obj/item/container/food/package/junkfood/rasins,
+		/obj/item/container/food/package/junkfood/syndicate
+	)

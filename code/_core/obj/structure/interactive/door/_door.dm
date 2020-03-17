@@ -35,6 +35,8 @@ obj/structure/interactive/door
 	var/radio_frequency = RADIO_FREQ_DOOR
 	var/radio_signal = 20
 
+	layer = LAYER_OBJ_DOOR_CLOSED
+
 obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)
@@ -60,6 +62,7 @@ obj/structure/interactive/door/update_icon()
 			set_opacity(0)
 			collision_flags = FLAG_COLLISION_REAL
 			collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+			layer = LAYER_OBJ_DOOR_CLOSED
 
 		if(DOOR_STATE_CLOSING_01)
 			icon_state = "[initial(icon_state)]closing"
@@ -67,6 +70,7 @@ obj/structure/interactive/door/update_icon()
 			set_opacity(0)
 			collision_flags = FLAG_COLLISION_NONE
 			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			layer = LAYER_OBJ_DOOR_CLOSED
 
 		if(DOOR_STATE_OPENED)
 			icon_state = "[initial(icon_state)]open"
@@ -74,6 +78,7 @@ obj/structure/interactive/door/update_icon()
 			set_opacity(0)
 			collision_flags = FLAG_COLLISION_NONE
 			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			layer = LAYER_OBJ_DOOR_OPEN
 
 		if(DOOR_STATE_CLOSED)
 			icon_state = initial(icon_state)
@@ -81,7 +86,16 @@ obj/structure/interactive/door/update_icon()
 			set_opacity(initial(opacity))
 			collision_flags = FLAG_COLLISION_REAL
 			collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+			layer = LAYER_OBJ_DOOR_CLOSED
 
+obj/structure/interactive/door/proc/toggle()
+	if(door_state == DOOR_STATE_OPENED)
+		close()
+		return TRUE
+	else if(door_state == DOOR_STATE_CLOSED)
+		open()
+		return TRUE
+	return FALSE
 
 obj/structure/interactive/door/proc/open()
 	if(open_sound)

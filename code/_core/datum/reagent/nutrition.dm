@@ -245,3 +245,86 @@
 	nutrition_amount = 0.8 NUT_FACTOR
 
 	flavor = "beef"
+
+
+/reagent/core/nutrition/junk/
+	name = "junk food"
+	id = null
+	desc = "Nutrition and flavor from junk food."
+	color = "#AAAAAA"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "grease"
+
+
+/reagent/core/nutrition/junk/chips
+	name = "chips"
+	id = "chips"
+	desc = "Nutrition and flavor from chips."
+	color = "#FFDE7C"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "chips"
+
+/reagent/core/nutrition/junk/chocolate
+	name = "low quality milk chocolate"
+	id = "low_chocolate"
+	desc = "Nutrition and flavor from low quality chocolate."
+	color = "#68452A"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "bland chocolate"
+
+/reagent/core/nutrition/junk/jerky
+	name = "soy jerky"
+	id = "soy_jerky"
+	desc = "Nutrition and flavor from soy jerky."
+	color = "#683013"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "soy meat"
+
+/reagent/core/nutrition/junk/raisins
+	name = "dried sweet raisins"
+	id = "junk_raisins"
+	desc = "Nutrition and flavor from dried sweet raisins."
+	color = "#470068"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "sour raisins"
+
+/reagent/core/nutrition/junk/cake
+	name = "yellow cake"
+	id = "yellow_cake"
+	desc = "Nutrition and flavor from yellow cake."
+	color = "#FFE97C"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "bland overmoist cake"
+
+
+/reagent/core/nutrition/junk/cream_filling
+	name = "sugar cream filling"
+	id = "cream_filling"
+	desc = "Nutrition and flavor from cream filling cake."
+	color = "#E1FFFF"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "sugary cream filling"
+
+/reagent/core/nutrition/junk/cheese_powder
+	name = "cheese powder"
+	id = "cheese_powder"
+	desc = "Nutrition and flavor from cheese powder."
+	color = "#FF6A00"
+
+	nutrition_amount = 0.2 NUT_FACTOR
+
+	flavor = "cheese powder"

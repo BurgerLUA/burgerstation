@@ -160,8 +160,8 @@ dmm_suite
 			// Begin Instanciation
 			// Handle Areas (not created every time)
 			var /atom/instance
-			if(ispath(atomPath, /area))
-				instance = locate(atomPath)
+			if(ispath(atomPath, /area) && all_areas[atomPath])
+				instance = all_areas[atomPath]
 				instance.contents.Add(locate(xcrd, ycrd, zcrd))
 				location.dmm_preloader = null
 			// Handle Underlay Turfs
@@ -169,7 +169,7 @@ dmm_suite
 				instance = atomPath // Skip to preloader manual loading.
 				preloader.load(instance)
 			// Handle Turfs & Movable Atoms
-			else// if(ispath(atomPath, /turf))
+			else if(ispath(atomPath))
 				instance = new atomPath(location)
 			// Handle cases where Atom/New was redifined without calling Super()
 			if(preloader && instance) // Atom could delete itself in New()

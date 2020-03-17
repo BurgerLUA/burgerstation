@@ -8,7 +8,7 @@
 	desired_light_range = 4
 	desired_light_color = "#FFFFB5"
 
-	layer = LAYER_ABOVE_MOB
+	layer = LAYER_MOB_ABOVE
 
 	plane = PLANE_MOB
 

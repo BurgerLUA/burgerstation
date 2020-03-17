@@ -156,3 +156,35 @@
 
 /atom/Exit(var/atom/movable/exiter,var/atom/newloc)
 	return TRUE
+
+
+/atom/proc/get_touching_space(var/intercardinal = FALSE)
+
+	. = 0x0
+
+	var/turf/T = get_turf(src)
+	for(var/dir in (intercardinal ? DIRECTIONS_ALL : DIRECTIONS_CARDINAL))
+		var/turf/T2 = get_step(T,dir)
+		var/area/A = T2.loc
+		if(A.is_space)
+			. |= dir
+
+	return .
+
+
+/atom/proc/get_best_touching_space()
+
+	var/turf/T = get_turf(src)
+	for(var/dir in list(NORTH,SOUTH,EAST,WEST))
+		var/turf/T2 = get_step(T,dir)
+		var/area/A = T2.loc
+		if(A.is_space)
+			return dir
+
+	for(var/dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
+		var/turf/T2 = get_step(T,dir)
+		var/area/A = T2.loc
+		if(A.is_space)
+			return dir
+
+	return 0x0

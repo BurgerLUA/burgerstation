@@ -14,8 +14,6 @@
 /obj/decal/poster/nanotrasen/Initialize() //Random positive poster.
 	. = ..()
 	icon_state = "poster[rand(1,35)]_legit"
-
-	world.log << "[icon_state] [dir]."
 	return .
 
 /obj/decal/poster/syndicate/Initialize() //Random negative poster.

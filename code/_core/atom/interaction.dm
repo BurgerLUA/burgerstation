@@ -105,7 +105,7 @@
 
 /atom/proc/get_examine_text(var/mob/examiner)
 	var/object_icon = "<img src='\ref[src.icon]' class='examine_icon_main'/>"
-	return div("examine_title","[object_icon][src.name]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long",src.desc_extended)
+	return div("examine_title","[object_icon][src.name] [layer]") + div("examine_description","\"[src.desc]\"") + div("examine_description_long",src.desc_extended)
 
 /atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)
 

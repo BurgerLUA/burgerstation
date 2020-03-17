@@ -11,6 +11,8 @@
 	desired_light_power = 1
 	desired_light_color = "#1A3E4C"
 
+	is_space = TRUE
+
 /area/space/bluespace
 	name = "bluespace"
 	icon_state=  "bluespess"

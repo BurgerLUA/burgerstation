@@ -8,8 +8,7 @@ obj/structure/interactive/bed
 	var/pixel_offset_x = 0
 	var/pixel_offset_y = 0
 
-	layer = LAYER_BELOW_MOB
-
+	layer = LAYER_MOB_BELOW
 	var/opened_time = 0
 
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
@@ -109,7 +108,7 @@ obj/structure/interactive/bed/sleeper
 	var/close_time = 10
 
 	pixel_offset_x = 8
-	layer = LAYER_ABOVE_MOB
+	layer = LAYER_MOB_ABOVE
 	plane = PLANE_MOB
 
 	collision_flags = FLAG_COLLISION_REAL
@@ -123,7 +122,7 @@ obj/structure/interactive/bed/sleeper
 obj/structure/interactive/bed/sleeper/Initialize()
 
 	var/image/I = new/image(icon,icon_state)
-	I.layer = LAYER_BELOW_MOB
+	I.layer = LAYER_MOB_BELOW
 	I.color = base_color
 	underlays += I
 

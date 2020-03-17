@@ -121,6 +121,10 @@
 	name = "\improper Armory"
 	icon_state = "arm"
 
+/area/interior/ship/shooting_range
+	name = "\improper Shooting Range"
+	icon_state = "shooting_range"
+
 /area/interior/ship/hanger
 	name = "\improper Hanger"
 	icon_state = "hanger"
