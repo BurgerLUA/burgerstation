@@ -40,7 +40,9 @@
 		return drop_item_from_inventory()
 
 	else if(grabbed_object && grabbed_object == object)
-		return release_object(caller,object,location,control,params)
+		grabbed_object.set_dir(turn(grabbed_object.dir,90))
+		caller.to_chat(span("notice","You rotate \the [grabbed_object.name] clockwise."))
+		return TRUE
 	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
 		if(isturf(object.loc))
 			return grab_object(caller,object,location,control,params)

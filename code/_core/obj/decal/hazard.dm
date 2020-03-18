@@ -3,6 +3,7 @@
 	icon = 'icons/obj/decal/hazard.dmi'
 	icon_state = "line"
 	color = "#FFD800"
+	alpha = 200
 
 /obj/decal/hazard/corner
 	icon_state = "corner"

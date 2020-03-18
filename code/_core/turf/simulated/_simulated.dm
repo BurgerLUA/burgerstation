@@ -126,12 +126,6 @@ var/global/saved_icons = 0
 			calc_list[dir_to_text] = TRUE
 			continue
 
-		for(var/obj/structure/O in T.contents)
-			if(!should_smooth_with(O))
-				continue
-			calc_list[dir_to_text] = TRUE
-			break
-
 	var/ne = ""
 	var/nw = ""
 	var/sw = ""
@@ -152,17 +146,17 @@ var/global/saved_icons = 0
 			nw += "w"
 			sw += "w"
 
-		if(nw == "nw" && calc_list["northwest"])
-			nw = "f"
+	if(nw == "nw" && calc_list["northwest"])
+		nw = "f"
 
-		if(ne == "ne" && calc_list["northeast"])
-			ne = "f"
+	if(ne == "ne" && calc_list["northeast"])
+		ne = "f"
 
-		if(sw == "sw" && calc_list["southwest"])
-			sw = "f"
+	if(sw == "sw" && calc_list["southwest"])
+		sw = "f"
 
-		if(se == "se" && calc_list["southeast"])
-			se = "f"
+	if(se == "se" && calc_list["southeast"])
+		se = "f"
 
 	if(!ne) ne = "i"
 	if(!nw) nw = "i"

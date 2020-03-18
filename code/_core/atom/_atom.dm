@@ -61,8 +61,21 @@
 	//FLAG_QUICK_INSTANT
 	//FLAG_QUICK_TOGGLE
 
-/atom/proc/should_smooth_with(var/atom/A)
-	return (A.corner_category == corner_category) || (is_unsimulated(A))
+
+/obj/structure/should_smooth_with(var/turf/T)
+
+	for(var/obj/structure/O in T.contents)
+		if(O.corner_category != corner_category)
+			continue
+		return TRUE
+
+	return FALSE
+
+/atom/proc/should_smooth_with(var/turf/T)
+	return FALSE
+
+/turf/should_smooth_with(var/turf/T)
+	return (T.corner_category == corner_category)
 
 /atom/proc/on_destruction(var/atom/caller,var/damage = FALSE) //Called when destructed by tools or damage.
 	return TRUE

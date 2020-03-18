@@ -119,7 +119,7 @@ var/global/list/all_shuttle_controlers = list()
 			launch()
 
 	if(state == SHUTTLE_STATE_LAUNCHING)
-		display = "Launch"
+		display = "IGNT"
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			transit(transit_source,transit_bluespace)
 			play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
@@ -128,14 +128,14 @@ var/global/list/all_shuttle_controlers = list()
 			time = 0
 
 	if(state == SHUTTLE_STATE_TRANSIT)
-		display = "Transit\n[get_clock_time(FLOOR((transit_time - time), 1))]"
+		display = "Flight\n[get_clock_time(FLOOR((transit_time - time), 1))]"
 		if(time >= transit_time)
 			state = SHUTTLE_STATE_LANDING
 			signal_landing(transit_areas[transit_target])
 			time = 0
 
 	if(state == SHUTTLE_STATE_LANDING)
-		display = "Landing"
+		display = "Land"
 		if(time >= 2) //Needs to be hardcoded as this is based on sound.
 			transit(transit_bluespace,transit_target)
 			set_doors(TRUE,TRUE)

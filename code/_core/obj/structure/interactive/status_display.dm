@@ -21,8 +21,11 @@ obj/structure/interactive/status_display/update_icon()
 	var/image/I2 = new(icon,"frame")
 	I2.color = frame_color
 
+	var/image/I3 = new(icon,"reflection")
+
 	underlays += I
 	overlays += I2
+	overlays += I3
 
 
 obj/structure/interactive/status_display/New(var/desired_loc)

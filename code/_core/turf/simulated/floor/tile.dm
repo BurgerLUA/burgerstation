@@ -89,9 +89,17 @@
 	corner_icons = TRUE
 	corner_category = "tile_over"
 
-	tile = TRUE
-
 	layer = LAYER_FLOOR + 0.01
+
+/turf/simulated/floor/tile/overlapping/should_smooth_with(var/turf/T)
+
+	if(!istype(T,/turf/simulated/floor/tile/))
+		return TRUE //This means it won't overlay with reinforced plates and whatnot, only tiles.
+
+	if(T.icon_state == "white_single")
+		return TRUE
+
+	return ..()
 
 /turf/simulated/floor/tile/overlapping/engineering
 	color = COLOR_ENGINEERING

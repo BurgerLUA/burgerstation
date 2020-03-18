@@ -27,8 +27,8 @@ proc/direction_to_text(var/dir)
 		if(WEST)
 			return "west"
 		if(UP)
-			return "UP"
+			return "up"
 		if(DOWN)
-			return "DOWN"
+			return "down"
 		if(0)
 			return "center"
