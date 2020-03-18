@@ -3,6 +3,7 @@
 	icon = 'icons/obj/decal/tile.dmi'
 	icon_state = "tile"
 	mouse_opacity = 0
+	alpha = 220
 
 /obj/decal/tile/corner
 	icon_state = "corner"

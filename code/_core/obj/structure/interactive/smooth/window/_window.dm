@@ -1,11 +1,11 @@
 /obj/structure/smooth/window
 	name = "glass window"
 	desc = "See through this."
-	icon = 'icons/obj/structure/smooth/window/normal_new.dmi'
+	icon = 'icons/obj/structure/smooth/window/normal_new_new.dmi'
 	icon_state = "window"
 
-	alpha = 255
-	color = "#7FAFCB"
+	alpha = 200
+	color = "#6E9CAD"
 
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_WINDOW
@@ -63,7 +63,7 @@
 
 /obj/structure/smooth/window/reinforced
 	name = "steel reinforced glass window"
-	color = "#6A91A8"
+	color = "#6E9CAD"
 
 	reinforced_material_id = "steel"
 	reinforced_color = COLOR_STEEL
