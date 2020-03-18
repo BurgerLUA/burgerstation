@@ -85,3 +85,11 @@
 
 /obj/structure/interactive/diverter/material/should_push(var/atom/movable/M)
 	return istype(M,/obj/item/material/) && !istype(M,/obj/item/material/shard)
+
+
+/obj/structure/interactive/diverter/living
+	name = "airjet diverter (living)"
+	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object is a person or a creature, alive or dead."
+
+/obj/structure/interactive/diverter/living/should_push(var/atom/movable/M)
+	return is_living(M)

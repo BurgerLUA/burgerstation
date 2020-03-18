@@ -6,7 +6,7 @@
 	var/active = TRUE
 	var/reversed = FALSE
 
-	layer = LAYER_GROUND_SCENERY
+	layer = LAYER_GROUND_CONVERYOR
 
 /obj/structure/interactive/conveyor/shuttle
 	plane = PLANE_SHUTTLE

@@ -1,6 +1,7 @@
 /obj/structure/interactive/disposals/pipe/labeler
 	name = "labeler pipe"
 	icon_state = "pipe-l"
+	layer = LAYER_GROUND_PIPE
 
 /obj/structure/interactive/disposals/pipe/labeler/Entered(var/atom/A,var/oldloc)
 
