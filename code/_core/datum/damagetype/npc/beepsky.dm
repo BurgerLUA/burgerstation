@@ -30,8 +30,9 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		world.log << L.horizontal
-		if(L.horizontal)
+		if(!L.horizontal)
+			L.add_stagger(30,inflictor = attacker)
+		else
 			var/list/possible_teleport_turfs = list()
 			for(var/turf/T in range(12,attacker))
 				if(!T.is_safe_teleport())

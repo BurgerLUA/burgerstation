@@ -54,6 +54,12 @@
 /proc/GetBluePart(var/hexadecimal)
 	return hex2num(copytext(hexadecimal, 6))
 
+/proc/GetColorParts(var/hexadecimal)
+
+
+
+
+
 //Below code is credit of Lummox JR
 #define TO_HEX_DIGIT(n) ascii2text((n&15) + ((n&15)<10 ? 48 : 87))
 

@@ -61,6 +61,8 @@
 	transit_bluespace = "cargo_shuttle_bluespace"
 	transit_end = "cargo_shuttle_planet"
 
+	status_id = "cargo"
+
 
 /obj/shuttle_controller/cargo/transit(var/starting_transit_id,var/ending_transit_id)
 

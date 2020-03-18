@@ -33,6 +33,8 @@ var/global/list/all_shuttle_controlers = list()
 
 	anchored = TRUE
 
+	var/status_id
+
 /obj/shuttle_controller/New(var/desired_loc)
 	all_shuttle_controlers += src
 	return ..()
@@ -112,7 +114,7 @@ var/global/list/all_shuttle_controlers = list()
 /obj/shuttle_controller/proc/on_shuttle_think()
 
 	if(state == SHUTTLE_STATE_WAITING)
-		display = get_clock_time(FLOOR(max(default_waiting_time - time), 1))
+		display = "Prep\n[get_clock_time(FLOOR((default_waiting_time - time), 1))]"
 		if(time >= default_waiting_time)
 			launch()
 
@@ -126,7 +128,7 @@ var/global/list/all_shuttle_controlers = list()
 			time = 0
 
 	if(state == SHUTTLE_STATE_TRANSIT)
-		display = get_clock_time(FLOOR((transit_time - time), 1))
+		display = "Transit\n[get_clock_time(FLOOR((transit_time - time), 1))]"
 		if(time >= transit_time)
 			state = SHUTTLE_STATE_LANDING
 			signal_landing(transit_areas[transit_target])
@@ -147,6 +149,9 @@ var/global/list/all_shuttle_controlers = list()
 
 	for(var/obj/structure/interactive/status_display/SD in A.contents)
 		SD.set_text(display)
+
+	if(status_id)
+		set_status_display(status_id,display)
 
 	return TRUE
 

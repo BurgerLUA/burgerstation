@@ -10,6 +10,8 @@
 
 	var/list/griefers = list()
 
+	status_id = "arrivals"
+
 /obj/shuttle_controller/arrivals/Initialize()
 	. = ..()
 	linked_beepsky = locate() in get_area(src)

@@ -12,6 +12,9 @@
 
 /ai/doorman/handle_movement()
 
+	if(!beepsky_marker)
+		beepsky_marker = locate() in owner.loc.loc.contents
+
 	if(frustration > frustration_threshold)
 		owner.force_move(beepsky_marker.loc)
 		frustration = 0
@@ -30,9 +33,6 @@
 	return TRUE
 
 /ai/doorman/handle_objectives()
-
-	if(!beepsky_marker)
-		beepsky_marker = locate() in owner.loc.loc.contents
 
 	if(!objective_attack && length(attackers))
 		var/mob/living/chosen_target = pick(attackers)
