@@ -4,6 +4,7 @@ obj/structure/shuttle_engine
 	icon_state = "router"
 	plane = PLANE_SHUTTLE
 
+	collision_flags = FLAG_COLLISION_REAL
 
 obj/structure/shuttle_engine/burst
 	icon_state = "burst_s"

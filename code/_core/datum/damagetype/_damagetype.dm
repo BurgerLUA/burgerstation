@@ -262,7 +262,7 @@
 			for(var/damage_type in damage_to_deal_main)
 				total_damage_dealt += damage_to_deal_main[damage_type]
 		else
-			hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
+			total_damage_dealt += hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
 			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
@@ -278,31 +278,31 @@
 
 		if(!total_damage_dealt)
 			display_glance_message(attacker,victim,weapon,hit_object)
-			return total_damage_dealt
 		else
+
 			display_hit_message(attacker,victim,weapon,hit_object)
 
-		if(is_player(blamed) && is_player(victim))
-			var/mob/living/advanced/player/PA = blamed
-			var/mob/living/advanced/player/PV = victim
-			if(!PV.dead)
-				var/victim_health_final = PV.health.get_overall_health()
-				var/list/attack_log_format = list()
-				attack_log_format["attacker"] = PA
-				attack_log_format["attacker_ckey"] = PA.ckey
-				attack_log_format["time"] = world.time
-				attack_log_format["damage"] = total_damage_dealt
-				attack_log_format["critical"] = victim_health_final - total_damage_dealt < 0
-				attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
-				PV.attack_logs += list(attack_log_format)
+			if(is_player(blamed) && is_player(victim))
+				var/mob/living/advanced/player/PA = blamed
+				var/mob/living/advanced/player/PV = victim
+				if(!PV.dead)
+					var/victim_health_final = PV.health.get_overall_health()
+					var/list/attack_log_format = list()
+					attack_log_format["attacker"] = PA
+					attack_log_format["attacker_ckey"] = PA.ckey
+					attack_log_format["time"] = world.time
+					attack_log_format["damage"] = total_damage_dealt
+					attack_log_format["critical"] = victim_health_final - total_damage_dealt < 0
+					attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
+					PV.attack_logs += list(attack_log_format)
 
-		if(is_living(attacker) && attacker != victim && total_damage_dealt)
-			var/mob/living/A = attacker
-			if(A.client)
-				for(var/skill in skill_xp_per_damage)
-					var/xp_to_give = FLOOR(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
-					if(xp_to_give > 0)
-						A.add_skill_xp(skill,xp_to_give)
+			if(is_living(attacker) && attacker != victim && total_damage_dealt)
+				var/mob/living/A = attacker
+				if(A.client)
+					for(var/skill in skill_xp_per_damage)
+						var/xp_to_give = FLOOR(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						if(xp_to_give > 0)
+							A.add_skill_xp(skill,xp_to_give)
 
 		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 

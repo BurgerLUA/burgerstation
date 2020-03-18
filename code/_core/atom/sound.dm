@@ -1,4 +1,4 @@
-/atom/proc/play(var/sound_to_play,var/volume=100,var/pitch=1,var/loop=0,var/duration=0,var/pan=0,var/channel=SOUND_CHANNEL_FX,var/priority=0,var/echo=0,var/invisibility_check=0)
+/atom/proc/play(var/sound_to_play,var/volume=50,var/pitch=1,var/loop=0,var/duration=0,var/pan=0,var/channel=SOUND_CHANNEL_FX,var/priority=0,var/echo=0,var/invisibility_check=0)
 
 	var/environment = ENVIRONMENT_NONE
 

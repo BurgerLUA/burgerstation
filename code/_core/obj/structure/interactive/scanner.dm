@@ -37,3 +37,22 @@
 			return FALSE
 
 	return ..()
+
+/obj/structure/interactive/scanner/living
+	name = "door safety scanner"
+	desc = "Don't block the doors!"
+	desc_extended = "A general proximity scanner that detects whether or not a person is present in the tile."
+	icon_state = "door"
+
+	plane = PLANE_WALL_ATTACHMENTS
+
+/obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+
+	for(var/mob/living/L in loc.contents)
+		source.trigger(L,src,signal_freq,signal_code)
+		flick("door_bad",src)
+		return FALSE
+
+	flick("door_good",src)
+
+	return TRUE

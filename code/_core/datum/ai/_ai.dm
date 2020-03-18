@@ -258,6 +258,9 @@
 
 /ai/proc/set_objective(var/mob/living/L)
 
+	if(L == owner)
+		return FALSE
+
 	var/atom/old_attack = objective_attack
 
 	if(objective_attack && attackers[objective_attack])
@@ -304,7 +307,7 @@
 			hostile_message()
 			set_objective(best_target)
 
-	objective_ticks = 0
+	return TRUE
 
 /ai/proc/get_attack_score(var/mob/living/L)
 	return -get_dist(L.loc,owner.loc)

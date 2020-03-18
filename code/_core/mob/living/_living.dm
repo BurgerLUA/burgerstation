@@ -274,3 +274,16 @@
 	for(var/k in starting_factions)
 		factions[k] = all_factions[k]
 */
+
+/mob/living/proc/set_iff_tag(var/desired_iff_tag,var/force=FALSE)
+
+	if(!force && desired_iff_tag == iff_tag)
+		return FALSE
+
+	iff_tag = desired_iff_tag
+
+	if(security_hud_image)
+		security_hud_image.icon_state = iff_tag ? iff_tag : "unknown"
+		world.log << "Updating iff tag to [security_hud_image.icon_state]."
+
+	return TRUE

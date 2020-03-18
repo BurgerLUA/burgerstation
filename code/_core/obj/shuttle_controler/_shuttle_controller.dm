@@ -47,12 +47,13 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/launch(var/desired_transit_time) //In deciseconds
 
+	if(!set_doors(FALSE,TRUE))
+		return FALSE
+
 	if(!default_transit_time)
 		default_transit_time = default_transit_time
 
 	desired_transit_time = max(30,desired_transit_time)
-
-	set_doors(FALSE,TRUE)
 	play_sound('sounds/effects/shuttle/hyperspace_begin.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
@@ -67,8 +68,15 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE)
 
+	. = TRUE
+
 	var/area/A = get_area(src)
 	for(var/obj/structure/interactive/door/airlock/shuttle/S in A.contents)
+		var/doorstuck = FALSE
+		var/obj/structure/interactive/scanner/living/S1 = locate() in S.loc.contents
+		if(S1 && !S1.trigger(null,src,-1,-1))
+			. = FALSE
+			continue
 
 		var/exposed_to_space = FALSE
 		for(var/direction in DIRECTIONS_CARDINAL)
@@ -76,14 +84,14 @@ var/global/list/all_shuttle_controlers = list()
 			if(istype(T.loc,/area/space/))
 				exposed_to_space = TRUE
 
-		if(!exposed_to_space && open)
-			S.open(!lock,TRUE)
-		else
-			S.close(lock,TRUE)
-
 		if(!exposed_to_space)
 			for(var/direction in DIRECTIONS_CARDINAL)
 				var/turf/T = get_step(S,direction)
+				var/obj/structure/interactive/scanner/living/S2 = locate() in T.contents
+				if(S2 && !S2.trigger(null,src,-1,-1))
+					. = FALSE
+					doorstuck = TRUE
+					continue
 				var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
 				if(AL && !istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
 					if(open)
@@ -91,18 +99,26 @@ var/global/list/all_shuttle_controlers = list()
 					else
 						AL.close(lock,TRUE)
 
-	return TRUE
+		if(!doorstuck)
+			if(!exposed_to_space && open)
+				S.open(!lock,TRUE)
+			else
+				S.close(lock,TRUE)
+
+
+
+	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()
 
 	if(state == SHUTTLE_STATE_WAITING)
-		display = get_clock_time(FLOOR((default_waiting_time - time)/10, 1))
+		display = get_clock_time(FLOOR(max(default_waiting_time - time), 1))
 		if(time >= default_waiting_time)
 			launch()
 
 	if(state == SHUTTLE_STATE_LAUNCHING)
 		display = "Launch"
-		if(time >= 60) //Needs to be hardcoded as this is based on sound.
+		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			transit(transit_source,transit_bluespace)
 			play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 
@@ -110,7 +126,7 @@ var/global/list/all_shuttle_controlers = list()
 			time = 0
 
 	if(state == SHUTTLE_STATE_TRANSIT)
-		display = get_clock_time(FLOOR((transit_time - time)/10, 1))
+		display = get_clock_time(FLOOR((transit_time - time), 1))
 		if(time >= transit_time)
 			state = SHUTTLE_STATE_LANDING
 			signal_landing(transit_areas[transit_target])
@@ -118,7 +134,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	if(state == SHUTTLE_STATE_LANDING)
 		display = "Landing"
-		if(time >= 20) //Needs to be hardcoded as this is based on sound.
+		if(time >= 2) //Needs to be hardcoded as this is based on sound.
 			transit(transit_bluespace,transit_target)
 			set_doors(TRUE,TRUE)
 			play_sound('sounds/effects/shuttle/hyperspace_end.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)

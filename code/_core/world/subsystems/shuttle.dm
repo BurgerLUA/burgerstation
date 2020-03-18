@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(shuttle)
 	name = "Shuttle Subsystem"
 	desc = "Controls shuttles and shuttle timers."
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = SECONDS_TO_TICKS(1)
 	priority = SS_ORDER_NORMAL
 
 /subsystem/shuttle/on_life()

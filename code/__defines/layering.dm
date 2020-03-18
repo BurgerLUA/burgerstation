@@ -22,8 +22,9 @@
 #define LAYER_MOB_BELOW        LAYER_MOB - 0.1
 #define LAYER_MOB              8
 #define LAYER_MOB_DAMAGE       LAYER_MOB + 0.1
-#define LAYER_MOB_CLOTHING     LAYER_MOB + 0.2
-#define LAYER_MOB_ABOVE        LAYER_MOB + 0.3
+#define LAYER_MOB_CLOTHING     9
+
+#define LAYER_MOB_ABOVE        10
 
 #define LAYER_PROJECTILE 13
 

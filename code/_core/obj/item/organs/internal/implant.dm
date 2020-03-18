@@ -60,11 +60,11 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list()
 	return TRUE
 
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_add(var/mob/living/advanced/new_owner)
-	new_owner.iff_tag = iff_tag
+	new_owner.set_iff_tag(iff_tag)
 	return ..()
 
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.iff_tag = null
+	old_owner.set_iff_tag(null)
 	return ..()
 
 /obj/item/organ/internal/implant/torso

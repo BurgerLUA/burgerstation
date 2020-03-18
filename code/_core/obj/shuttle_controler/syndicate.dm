@@ -13,7 +13,7 @@
 
 	if(state == SHUTTLE_STATE_LANDED)
 		display = "Landed"
-		if(time >= 100)
+		if(time >= SHUTTLE_DEFAULT_IDLE_TIME)
 			state = SHUTTLE_STATE_WAITING
 			time = 0
 

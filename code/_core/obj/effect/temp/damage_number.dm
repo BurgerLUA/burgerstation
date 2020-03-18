@@ -18,8 +18,6 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 
 	. = ..()
 
-	loc.color = "#FF0000"
-
 	if(duration)
 		var/desired_color = "#FFFFFF"
 		var/desired_size = 1
@@ -30,7 +28,7 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 			desired_color = rgb(255,damage_color_math,damage_color_math)
 
 		maptext = "<center><font size='[desired_size]' color='[desired_color]'>[desired_value]</text></center>"
-		//animate(src,pixel_x = 0,pixel_y=0,time=duration)
+		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),pixel_y=initial(pixel_y)+rand(TILE_SIZE*0.5,TILE_SIZE*0.5),time=duration)
 		spawn(duration - 5)
 			animate(src,alpha=0,time = 5)
 
