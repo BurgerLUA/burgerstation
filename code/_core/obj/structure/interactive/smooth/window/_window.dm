@@ -62,11 +62,11 @@
 	return TRUE
 
 /obj/structure/smooth/window/reinforced
-	name = "steel reinforced glass window"
+	name = "aluminum reinforced glass window"
 	color = "#6E9CAD"
 
-	reinforced_material_id = "steel"
-	reinforced_color = COLOR_STEEL
+	reinforced_material_id = "aluminum"
+	reinforced_color = COLOR_ALUMINUM
 
 /obj/structure/smooth/window/reinforced/plasma
 	name = "plasteel reinforced phoron-silicate window"

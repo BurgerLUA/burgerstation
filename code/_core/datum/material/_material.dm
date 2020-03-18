@@ -32,6 +32,12 @@
 
 	value_per_unit = 2
 
+/material/aluminum
+	name = "aluminum"
+	id = "aluminum"
+	color = COLOR_ALUMINUM
+	value_per_unit = 3
+
 /material/iron
 	name = "iron"
 	id = "iron"

@@ -95,6 +95,6 @@ obj/structure/smooth/update_icon()
 	if(reinforced_material_id)
 		overlays.Cut()
 		var/image/I2 = new/image(initial(icon),"ref")
-		I2.color = "#888888"
+		I2.color = reinforced_color
 		I2.alpha = 200
 		overlays += I2

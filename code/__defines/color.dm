@@ -28,6 +28,7 @@
 
 //Materials
 #define COLOR_STEEL "#444444"
+#define COLOR_ALUMINUM "#C0C0C0"
 #define COLOR_GLASS "#D9FFFF"
 #define COLOR_PLASTEEL "#A0A0A0"
 #define COLOR_IRON "#282828"
