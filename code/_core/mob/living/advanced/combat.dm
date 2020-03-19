@@ -109,82 +109,6 @@
 
 	return .
 
-/*
-/mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_item)
-
-	if(attacker == src)
-		return FALSE
-
-	charge_block -= 100
-
-	DT.display_miss_message(attacker,src,weapon,target,"blocked")
-	DT.do_attack_animation(attacker,src,weapon,target)
-	new/obj/effect/temp/impact/combat/block(get_turf(target))
-
-	var/area/A = get_area(src)
-	if(A && istype(A))
-		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		L.to_chat(span("notice","\The [src.name] blocks your attack!"),CHAT_TYPE_COMBAT)
-
-	src.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
-
-	add_skill_xp(SKILL_BLOCK,1)
-
-	return TRUE
-
-/mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/parrying_item,var/allow_parry_counter)
-
-	if(attacker == src)
-		return FALSE
-
-	charge_parry -= 100
-
-	DT.do_attack_animation(attacker,src,weapon,target)
-	DT.display_miss_message(attacker,src,weapon,target,"parried by [src]'s [parrying_item]")
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		L.to_chat(span("notice","\The [src.name] parries your attack with their [parrying_item.name]!"),CHAT_TYPE_COMBAT)
-
-	src.to_chat(span("warning","You parry \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name] with your [parrying_item.name]!"),CHAT_TYPE_COMBAT)
-
-	if(allow_parry_counter && parrying_item)
-		parrying_item.attack(src,attacker)
-
-	add_skill_xp(SKILL_PARRY,1)
-
-	return TRUE
-*/
-
-/mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-
-	if(attacker == src)
-		return FALSE
-
-	charge_dodge -= 100
-
-	var/pixel_x_offset = prob(50) ? -8 : 8
-	var/pixel_y_offset = prob(50) ? -8 : 8
-
-	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = DODGE_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
-	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = DODGE_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
-
-	DT.display_miss_message(attacker,src,weapon,target,"dodged by \the [src]")
-	DT.do_miss_sound(attacker,src,weapon,target)
-	DT.do_attack_animation(attacker,src,weapon,target)
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
-
-	src.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
-
-	add_skill_xp(SKILL_DODGE,1)
-	return TRUE
-
 /mob/living/advanced/proc/update_protection()
 
 	protection_cold = TARGETABLE_LIMBS_KV
@@ -208,3 +132,34 @@
 				protection_pressure[k] += v
 
 	return TRUE
+
+
+/mob/living/advanced/player/proc/get_defence_key()
+	if(attack_flags & ATTACK_BLOCK)
+		return "block"
+	else if(movement_flags & MOVEMENT_RUNNING)
+		return "dodge"
+	else if(attack_flags & ATTACK_ALT)
+		return "parry"
+	return "none"
+
+/mob/living/advanced/player/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
+
+	if(get_defence_key() != "parry")
+		return null
+
+	return ..()
+
+/mob/living/advanced/player/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(get_defence_key() != "dodge")
+		return null
+
+	return ..()
+
+/mob/living/advanced/player/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(get_defence_key() != "block")
+		return null
+
+	return ..()

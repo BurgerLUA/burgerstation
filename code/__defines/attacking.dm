@@ -1,6 +1,6 @@
 #define ATTACK_THROW 0x1
 #define ATTACK_DROP 0x2
-#define ATTACK_KICK 0x4
+#define ATTACK_BLOCK 0x4
 #define ATTACK_HELD_LEFT 0x8
 #define ATTACK_HELD_RIGHT 0x10
 #define ATTACK_GRAB 0x20

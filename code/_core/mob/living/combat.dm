@@ -167,8 +167,10 @@
 
 	check_status_effects()
 
-
 /mob/living/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
+
+	if(ai && prob(25))
+		return null
 
 	if(charge_parry < 100 || !parry_active)
 		return null
@@ -178,17 +180,24 @@
 
 	return src
 
+
 /mob/living/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(ai && prob(25))
+		return null
 
 	if(charge_dodge < 100 || !dodge_active)
 		return null
 
 	if(status || dead)
-		return 0
+		return null
 
 	return src
 
 /mob/living/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(ai && prob(25))
+		return null
 
 	if(charge_block < 100 || !block_active)
 		return null
@@ -209,27 +218,6 @@
 
 /mob/living/can_be_grabbed()
 	return dead || status
-
-
-
-/mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-
-	DT.do_attack_animation(attacker,src,weapon,target)
-	DT.display_miss_message(attacker,src,weapon,target,"dodged")
-
-	charge_dodge -= 100
-	handle_charges(0)
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
-
-	if(is_living(src)) //YES, I KNOW
-		var/mob/living/L = src
-		L.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
-
-	return TRUE
-
 
 
 /mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_atom)
@@ -286,5 +274,29 @@
 
 	if(is_player(src))
 		add_skill_xp(SKILL_PARRY,1)
+
+	return TRUE
+
+
+/mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+
+	DT.display_miss_message(attacker,src,weapon,target,"dodged")
+	DT.do_miss_sound(attacker,src,weapon,target)
+	DT.do_attack_animation(attacker,src,weapon,target)
+
+	var/pixel_x_offset = pick(-8,8)
+	var/pixel_y_offset = pick(-8,8)
+
+	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = DODGE_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
+	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = DODGE_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
+
+	src.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
+	if(is_player(src))
+		add_skill_xp(SKILL_DODGE,1)
 
 	return TRUE

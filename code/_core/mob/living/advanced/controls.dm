@@ -5,7 +5,7 @@ mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS O
 		return FALSE
 
 
-	if(src.attack_flags & ATTACK_KICK)
+	if(src.attack_flags & ATTACK_BLOCK)
 
 	else
 		if(right_hand)
@@ -23,7 +23,7 @@ mob/living/advanced/on_right_up(var/atom/object,location,control,params)  //THIS
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT
 		return FALSE
 
-	if(src.attack_flags & ATTACK_KICK)
+	if(src.attack_flags & ATTACK_BLOCK)
 
 	else
 		if(left_hand)
@@ -47,7 +47,7 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	if(is_inventory(object)) //THIS IS VERY IMPORTANT
 		return TRUE
 
-	if(src.attack_flags & ATTACK_KICK)
+	if(src.attack_flags & ATTACK_BLOCK)
 
 	else
 		if(right_hand)
@@ -76,7 +76,7 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 		return TRUE
 
 
-	if(src.attack_flags & ATTACK_KICK)
+	if(src.attack_flags & ATTACK_BLOCK)
 
 	else
 		if(left_hand)
@@ -99,7 +99,7 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 		return FALSE
 
 
-	if(src.attack_flags & ATTACK_KICK)
+	if(src.attack_flags & ATTACK_BLOCK)
 
 	else
 		if(right_hand)
@@ -121,7 +121,7 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	if(!is_inventory(object)) //THIS IS VERY IMPORTANT
 		return TRUE
 
-	if(src.attack_flags & ATTACK_KICK)
+	if(src.attack_flags & ATTACK_BLOCK)
 
 	else
 		if(left_hand)
