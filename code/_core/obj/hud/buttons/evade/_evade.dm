@@ -6,13 +6,10 @@
 	screen_loc = "RIGHT-2,BOTTOM+1"
 	flags = FLAGS_HUD_MOB
 
-	var/active = FALSE
-
 /obj/hud/button/evade/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	. = ..()
 
-	active = !active
 	update_overlay()
 
 	return .
@@ -27,6 +24,9 @@
 	update_overlay()
 
 	return .
+
+/obj/hud/button/evade/proc/is_active()
+	return FALSE
 
 /obj/hud/button/evade/proc/update_overlay()
 
@@ -50,7 +50,7 @@
 	desc = "[charge_level] and [charge_icon]"
 
 	var/image/I = new/image(initial(icon),"[icon_state]_[charge_icon]")
-	I.alpha = active ? 255 : 175
+	I.alpha = is_active(L) ? 255 : 175
 
 	overlays += I
 
@@ -65,6 +65,9 @@
 /obj/hud/button/evade/block/get_charge_level(var/mob/living/caller)
 	return caller.charge_block
 
+/obj/hud/button/evade/block/is_active(var/mob/living/L)
+	return L.block_active
+
 
 /obj/hud/button/evade/parry
 	name = "parry"
@@ -75,6 +78,9 @@
 /obj/hud/button/evade/parry/get_charge_level(var/mob/living/caller)
 	return caller.charge_parry
 
+/obj/hud/button/evade/parry/is_active(var/mob/living/L)
+	return L.parry_active
+
 /obj/hud/button/evade/dodge
 	name = "dodge"
 	desc = "Easily blocked!"
@@ -83,6 +89,9 @@
 
 /obj/hud/button/evade/dodge/get_charge_level(var/mob/living/caller)
 	return caller.charge_dodge
+
+/obj/hud/button/evade/dodge/is_active(var/mob/living/L)
+	return L.dodge_active
 
 
 

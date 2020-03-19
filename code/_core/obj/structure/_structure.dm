@@ -14,6 +14,8 @@
 
 	var/mob/living/buckled
 
+	can_rotate = TRUE
+
 /obj/structure/New(var/desired_loc)
 
 	. = ..()

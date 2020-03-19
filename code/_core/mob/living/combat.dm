@@ -168,50 +168,123 @@
 	check_status_effects()
 
 
-/mob/living/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/mob/living/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
+
+	if(charge_parry < 100 || !parry_active)
+		return null
+
+	if(status || dead)
+		return null
+
+	return src
+
+/mob/living/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(charge_dodge < 100 || !dodge_active)
+		return null
+
 	if(status || dead)
 		return 0
-	var/base_chance = get_skill_power(SKILL_PARRY)*50 + get_luck_calc(src,0.25,attacker,-0.25)
-	return base_chance
 
-/mob/living/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	return src
+
+/mob/living/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(charge_block < 100 || !block_active)
+		return null
+
 	if(status || dead)
-		return 0
-	var/base_chance = get_skill_power(SKILL_DODGE)*50 + get_luck_calc(src,0.25,attacker,-0.25)
-	return base_chance
+		return null
 
-/mob/living/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	if(status || dead)
-		return 0
-	var/base_chance = get_skill_power(SKILL_BLOCK)*50 + get_luck_calc(src,0.25,attacker,-0.25)
-	return base_chance
+	return src
 
-/mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //TODO: DELETE THIS
+
 	if(status || dead)
 		var/distance = get_dist(attacker,src)
-		if(distance <= max(weapon.attack_range,attacker.attack_range))
-			return 0
-		else
+		if(distance > max(weapon.attack_range,attacker.attack_range))
 			return 50 + distance*10
+
 	return 0
-
-
-/mob/living/do_impact_effect(var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/damage_dealt)
-
-	. = ..()
-
-	if(!DT.draw_blood)
-		return .
-
-	var/turf/T = get_turf(src)
-
-	if(!T)
-		return .
-
-	//create_blood_effect(T,attacker,src,damage_dealt,"#FF0000")
-
-	return .
-
 
 /mob/living/can_be_grabbed()
 	return dead || status
+
+
+
+/mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+
+	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"dodged")
+
+	charge_dodge -= 100
+	handle_charges(0)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
+	return TRUE
+
+
+
+/mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_atom)
+
+	var/name_check = blocking_atom == src ? "" : " with \the [blocking_atom.name]"
+
+	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"blocked[name_check]")
+	new/obj/effect/temp/impact/combat/block(get_turf(target))
+
+	var/area/A = get_area(src)
+	if(A && istype(A))
+		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
+
+	charge_block -= 100
+	handle_charges(0)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] blocks your attack[name_check]!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name][name_check]!"),CHAT_TYPE_COMBAT)
+
+	if(is_player(src))
+		add_skill_xp(SKILL_BLOCK,1)
+
+	return TRUE
+
+
+/mob/living/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/parry_atom)
+
+	var/name_check = parry_atom == src ? "" : " with \the [parry_atom.name]"
+
+	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"parried[name_check]")
+	new/obj/effect/temp/impact/combat/block(get_turf(target))
+	new/obj/effect/temp/impact/combat/disarm(get_turf(attacker))
+
+	charge_parry -= 100
+	handle_charges(0)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] parries your attack[name_check]!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You parry \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name][name_check]!"),CHAT_TYPE_COMBAT)
+
+	if(get_dist(src,attacker) <= 1)
+		parry_atom.attack(src,attacker)
+
+	if(is_player(src))
+		add_skill_xp(SKILL_PARRY,1)
+
+	return TRUE

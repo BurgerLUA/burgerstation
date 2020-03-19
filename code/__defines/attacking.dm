@@ -6,6 +6,7 @@
 #define ATTACK_GRAB 0x20
 #define ATTACK_SELF 0x40
 #define ATTACK_OWNER 0x80
+#define ATTACK_ALT 0x100
 
 #define DODGE_MISS 0x1
 #define DODGE_BLOCK 0x2

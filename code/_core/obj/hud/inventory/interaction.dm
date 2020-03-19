@@ -3,7 +3,19 @@
 	var/atom/defer_self = src.defer_click_on_object() //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object() //The object we're clicking on could be something else.
 
-	if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
+	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
+		var/atom/movable/M = defer_object
+		if(!M.anchored && M.can_rotate)
+			var/rotation = -90
+			if(click_flags & LEFT_HAND)
+				rotation = 90
+
+
+
+			M.set_dir(turn(M.dir,rotation))
+			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
+		return TRUE
+	else if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = src.defer_click_on_object()
 		if(is_item(object_to_throw))
@@ -40,14 +52,15 @@
 		return drop_item_from_inventory()
 
 	else if(grabbed_object && grabbed_object == object)
-		grabbed_object.set_dir(turn(grabbed_object.dir,90))
-		caller.to_chat(span("notice","You rotate \the [grabbed_object.name] clockwise."))
-		return TRUE
+		return release_object(caller)
 	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
 		if(isturf(object.loc))
 			return grab_object(caller,object,location,control,params)
 		else
 			return wield_object(caller,defer_object)
+
+
+
 
 	if(defer_self == grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))

@@ -6,18 +6,6 @@
 
 	var/enabled = FALSE
 
-	block_mul = list(
-		ATTACK_TYPE_MELEE = 1,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
-
-	parry_mul = list(
-		ATTACK_TYPE_MELEE = 1,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
-
 	damage_type = "torch"
 
 	override_icon_state = TRUE
@@ -62,18 +50,6 @@
 	desc = "Can't live without it!"
 	icon = 'icons/obj/items/weapons/melee/clubs/flashlight.dmi'
 	damage_type = "flashlight_off"
-
-	block_mul = list(
-		ATTACK_TYPE_MELEE = 1,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
-
-	parry_mul = list(
-		ATTACK_TYPE_MELEE = 1,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
 
 	damage_type = "flashlight"
 

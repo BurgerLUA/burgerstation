@@ -13,18 +13,6 @@
 	var/bullet_count = 1 //Fallback value
 	damage_type = "gun_butt"
 
-	block_mul = list(
-		ATTACK_TYPE_MELEE = 0.5,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
-
-	parry_mul = list(
-		ATTACK_TYPE_MELEE = 0,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
-
 	var/list/empty_sounds = list()
 
 	//Dynamic accuracy.

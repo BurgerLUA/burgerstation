@@ -63,45 +63,59 @@
 
 	return attack_left[attack_mode]
 
-/mob/living/advanced/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/advanced/can_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	. = ..()
 
-	var/obj/item/I_L = get_held_left(DT.get_attack_type())
-	var/obj/item/I_R = get_held_right(DT.get_attack_type())
+	if(!.)
+		return null
 
-	var/left_block_mul = 0
-	var/right_block_mul = 0
+	var/obj/item/IL = get_held_left(DT.get_attack_type())
+	var/obj/item/IR = get_held_right(DT.get_attack_type())
 
-	if(I_L)
-		left_block_mul = I_L.get_block_mul(DT.get_attack_type())
+	var/list/possible_blocks = list()
 
-	if(I_R)
-		right_block_mul = I_R.get_block_mul(DT.get_attack_type())
+	if(IL && IL.can_block(attacker,weapon,target,DT))
+		possible_blocks += IL
 
-	if(left_block_mul && right_block_mul)
-		if(left_block_mul > right_block_mul)
-			. *= left_block_mul
-		else
-			. *= right_block_mul
-	else if(left_block_mul)
-		. *= left_block_mul
-	else if(right_block_mul)
-		. *= right_block_mul
-	else
-		. *= 0.5 + get_skill_power(SKILL_UNARMED)*0.5
+	if(IR && IR.can_block(attacker,weapon,target,DT))
+		possible_blocks += IL
+
+	if(length(possible_blocks))
+		return pick(possible_blocks)
 
 	return .
 
-/mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/mob/living/advanced/can_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+
+	. = ..()
+
+	if(!.)
+		return null
+
+	var/obj/item/IL = get_held_left(DT.get_attack_type())
+	var/obj/item/IR = get_held_right(DT.get_attack_type())
+
+	var/list/possible_parry = list()
+
+	if(IL && IL.can_parry(attacker,weapon,target,DT))
+		possible_parry += IL
+
+	if(IR && IR.can_parry(attacker,weapon,target,DT))
+		possible_parry += IL
+
+	if(length(possible_parry))
+		return pick(possible_parry)
+
+	return .
+
+/*
+/mob/living/advanced/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_item)
 
 	if(attacker == src)
 		return FALSE
 
-	var/base_chance = get_block_chance(attacker,weapon,target,DT) * DT.block_chance_mul
-
-	if(!prob(min(base_chance,BLOCK_CHANCE_MAX)))
-		return FALSE
+	charge_block -= 100
 
 	DT.display_miss_message(attacker,src,weapon,target,"blocked")
 	DT.do_attack_animation(attacker,src,weapon,target)
@@ -117,52 +131,16 @@
 
 	src.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
 
-	add_skill_xp(SKILL_BLOCK,max(1,(100-base_chance)/1))
+	add_skill_xp(SKILL_BLOCK,1)
 
 	return TRUE
 
-/mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
+/mob/living/advanced/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/parrying_item,var/allow_parry_counter)
 
 	if(attacker == src)
 		return FALSE
 
-	var/base_chance = get_parry_chance(attacker,weapon,target) * DT.parry_chance_mul
-
-	var/obj/item/I_L = get_held_left()
-	var/obj/item/I_R = get_held_right()
-
-	var/left_parry_mul = 0
-	var/right_parry_mul = 0
-
-	var/obj/item/parrying_item
-
-	if(I_L)
-		left_parry_mul = I_L.get_parry_mul(DT.get_attack_type())
-
-	if(I_R)
-		right_parry_mul = I_R.get_parry_mul(DT.get_attack_type())
-
-	if(left_parry_mul && right_parry_mul)
-		if(left_parry_mul > right_parry_mul)
-			parrying_item = I_L
-			base_chance *= left_parry_mul
-		else
-			parrying_item = I_R
-			base_chance *= right_parry_mul
-	else if(left_parry_mul)
-		parrying_item = I_L
-		base_chance *= left_parry_mul
-	else if(right_parry_mul)
-		parrying_item = I_R
-		base_chance *= right_parry_mul
-	else
-		base_chance = 0
-
-	if(!prob(min(base_chance,PARRY_CHANCE_MAX)))
-		return FALSE
-
-	if(!parrying_item.click_on_object(src,attacker))
-		return FALSE
+	charge_parry -= 100
 
 	DT.do_attack_animation(attacker,src,weapon,target)
 	DT.display_miss_message(attacker,src,weapon,target,"parried by [src]'s [parrying_item]")
@@ -176,19 +154,17 @@
 	if(allow_parry_counter && parrying_item)
 		parrying_item.attack(src,attacker)
 
-	add_skill_xp(SKILL_PARRY,max(1,(100-base_chance)/1))
+	add_skill_xp(SKILL_PARRY,1)
 
 	return TRUE
+*/
 
 /mob/living/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	if(attacker == src)
 		return FALSE
 
-	var/base_chance = get_dodge_chance(attacker,weapon,target,DT) * DT.dodge_chance_mul
-
-	if(!prob(base_chance))
-		return FALSE
+	charge_dodge -= 100
 
 	var/pixel_x_offset = prob(50) ? -8 : 8
 	var/pixel_y_offset = prob(50) ? -8 : 8
@@ -206,7 +182,7 @@
 
 	src.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
 
-	add_skill_xp(SKILL_DODGE,max(1,(100-base_chance)/1))
+	add_skill_xp(SKILL_DODGE,1)
 	return TRUE
 
 /mob/living/advanced/proc/update_protection()

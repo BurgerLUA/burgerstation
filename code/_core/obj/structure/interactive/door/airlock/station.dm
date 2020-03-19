@@ -29,6 +29,10 @@
 	color = COLOR_SECURITY
 	fill_color = COLOR_STEEL
 
+/obj/structure/interactive/door/airlock/station/security/glass
+	fill_color = "#FFFFFF"
+	filler = "glass"
+
 /obj/structure/interactive/door/airlock/station/security/shop
 	name = "security airlock"
 	color = COLOR_RED

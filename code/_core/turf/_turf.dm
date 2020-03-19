@@ -126,3 +126,13 @@
 		A.act_explode(owner,source,epicenter,magnitude)
 
 	return ..()
+
+
+/turf/dropped_on_by_object(var/atom/caller,var/atom/object)
+
+	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
+		var/obj/structure/S = object
+		S.force_move(src)
+		return TRUE
+
+	return ..()

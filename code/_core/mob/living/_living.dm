@@ -30,9 +30,13 @@
 	var/adrenaline_time = 0
 	var/rest_time = 0
 
-	var/charge_block = 0
-	var/charge_parry = 0
-	var/charge_dodge = 0
+	var/charge_block = 500
+	var/charge_parry = 500
+	var/charge_dodge = 500
+
+	var/block_active = TRUE
+	var/parry_active = TRUE
+	var/dodge_active = TRUE
 
 	var/first_life = TRUE
 
@@ -46,7 +50,7 @@
 	var/is_sneaking = FALSE
 	var/stealth_mod = 0
 
-	var/intent = INTENT_HARM
+	var/intent = INTENT_HELP
 
 	var/level = 0
 
@@ -118,6 +122,8 @@
 	has_footsteps = TRUE
 
 	var/obj/effect/temp/alert/stored_alert_effect //For AI
+
+	var/table_count = 0
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))

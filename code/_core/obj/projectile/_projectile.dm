@@ -228,9 +228,19 @@
 			params[PARAM_ICON_Y] = shoot_y
 
 			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params)
-			if(hit_atom.perform_block(owner,weapon,object_to_damage,DT)) return TRUE
-			if(hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+
 			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
+
+
+			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
+			if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+
+			var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
+			if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom)) return TRUE
+
+			var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
+			if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
+
 			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")

@@ -12,7 +12,55 @@ obj/structure/smooth/table
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-obj/structure/smooth/rack
+
+obj/structure/smooth/table/dropped_on_by_object(var/atom/caller,var/atom/object)
+
+	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
+		var/obj/structure/S = object
+		S.force_move(src.loc)
+		return TRUE
+
+	return ..()
+
+obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+
+	if(is_living(O))
+		var/mob/living/L = O
+		var/obj/structure/smooth/table/T = locate() in OldLoc.contents
+		if(T)
+			return TRUE
+
+		if(L.table_count >= 3)
+			L.table_count = 0
+			return TRUE
+
+		L.table_count++
+
+		return FALSE
+
+	return ..()
+
+/obj/structure/smooth/table/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(is_living(O))
+		var/mob/living/L = O
+		var/obj/structure/smooth/table/T = locate() in old_loc.contents
+		if(!T)
+			animate(L,pixel_z = 10,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
+			L.move_delay += DECISECONDS_TO_TICKS(10)
+
+	return ..()
+
+/obj/structure/smooth/table/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(is_living(O))
+		var/mob/living/L = O
+		var/obj/structure/smooth/table/T = locate() in new_loc.contents
+		if(!T)
+			animate(L,pixel_z = 0,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
+			L.move_delay += DECISECONDS_TO_TICKS(5)
+
+	return ..()
+
+obj/structure/smooth/table/rack
 	name = "table"
 	desc = "What does it do?"
 	icon = 'icons/obj/structure/rack.dmi'
@@ -24,8 +72,11 @@ obj/structure/smooth/rack
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-obj/structure/smooth/rack/grey
+obj/structure/smooth/table/rack/grey
 	color = COLOR_GREY
+
+obj/structure/smooth/table/rack/steel
+	color = COLOR_STEEL
 
 obj/structure/smooth/table/fancy
 	name = "fancy table"
@@ -39,9 +90,6 @@ obj/structure/smooth/table/glass
 	icon = 'icons/obj/structure/smooth/table/glass.dmi'
 
 	corner_category = "table_glass"
-
-obj/structure/smooth/rack/steel
-	color = COLOR_STEEL
 
 obj/structure/smooth/table/dark
 	color = "#999999"

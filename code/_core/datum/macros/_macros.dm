@@ -82,7 +82,7 @@
 			if("sprint")
 				owner.mob.movement_flags |= MOVEMENT_RUNNING
 			if("walk")
-				owner.mob.movement_flags |= MOVEMENT_WALKING
+				owner.mob.attack_flags |= ATTACK_ALT
 			if("crouch")
 				owner.mob.movement_flags |= MOVEMENT_CROUCHING
 			if("throw")
@@ -112,7 +112,7 @@
 			if("sprint")
 				owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 			if("walk")
-				owner.mob.movement_flags &= ~MOVEMENT_WALKING
+				owner.mob.attack_flags &= ~ATTACK_ALT
 			if("crouch")
 				owner.mob.movement_flags &= ~MOVEMENT_CROUCHING
 			if("throw")

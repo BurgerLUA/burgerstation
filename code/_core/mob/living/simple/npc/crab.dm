@@ -85,23 +85,3 @@
 		return TRUE
 
 	return ..()
-
-/mob/living/simple/npc/crab/king/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	return 0
-
-/mob/living/simple/npc/crab/king/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-
-	. = ..()
-
-	switch(DT.get_attack_type())
-		if(ATTACK_TYPE_MELEE)
-			return .
-
-		if(ATTACK_TYPE_RANGED)
-			return . + 90
-
-		if(ATTACK_TYPE_MAGIC)
-			return . + 75
-
-	return .
-

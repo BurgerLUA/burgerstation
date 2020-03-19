@@ -74,9 +74,3 @@
 		I.child_inventory = null
 	update_icon()
 	return ..()
-
-/obj/item/weapon/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
-	return FALSE
-
-/obj/item/weapon/proc/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
-	return FALSE

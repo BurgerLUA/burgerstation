@@ -12,10 +12,10 @@
 	return TRUE
 
 /obj/item/weapon/melee/energy/can_parry()
-	return enabled
+	return enabled ? src : null
 
 /obj/item/weapon/melee/energy/can_block()
-	return enabled
+	return enabled ? src : null
 
 /obj/item/weapon/melee/energy/update_icon()
 	if(enabled)
@@ -38,18 +38,6 @@
 	desc = "A blade made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
 	damage_type = "sword_energy"
-
-	block_mul = list(
-		ATTACK_TYPE_MELEE = 1,
-		ATTACK_TYPE_RANGED = 1,
-		ATTACK_TYPE_MAGIC = 1
-	)
-
-	parry_mul = list(
-		ATTACK_TYPE_MELEE = 1,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
 
 	attack_delay = 4
 	attack_delay_max = 8
@@ -82,18 +70,6 @@
 	desc = "A shield made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/shield.dmi'
 	damage_type = "shield_energy"
-
-	block_mul = list(
-		ATTACK_TYPE_MELEE = 3,
-		ATTACK_TYPE_RANGED = 3,
-		ATTACK_TYPE_MAGIC = 3
-	)
-
-	parry_mul = list(
-		ATTACK_TYPE_MELEE = 0,
-		ATTACK_TYPE_RANGED = 0,
-		ATTACK_TYPE_MAGIC = 0
-	)
 
 	value = 60
 

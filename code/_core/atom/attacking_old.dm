@@ -84,27 +84,10 @@
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_last = world.time
 
-
-
-	if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
-
-
-	var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
-	if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
-
-	var/atom/blocking_atom = victim.can_block(attacker,object_to_damage_with,object_to_damage,DT)
-	if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom)) return FALSE
-
-	var/atom/parrying_atom = victim.can_parry(attacker,object_to_damage_with,object_to_damage,DT)
-	if(parrying_atom && victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,parrying_atom)) return FALSE
-
-
-	/*
 	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
 	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
 	if(victim.perform_parry(blamed,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
 	if(victim.perform_dodge(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
-	*/
 
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker)
 
@@ -140,23 +123,75 @@
 
 	return TRUE
 
+/atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+	return 0
+
 /atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
 	return 0
 
-/atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
-	return null
+/atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	return 0
 
-/atom/proc/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
+/atom/proc/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	return 0
 
-/atom/proc/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-	return null
+/atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+	if(attacker == src)
+		return FALSE
+	var/base_chance = get_block_chance(attacker,weapon,target,DT) * DT.block_chance_mul
+	if(!prob(base_chance))
+		return FALSE
+	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"blocked")
+	new/obj/effect/temp/impact/combat/block(get_turf(target))
 
-/atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_item)
-	return FALSE
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] blocks your attack!"),CHAT_TYPE_COMBAT)
 
-/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/parrying_item)
-	return FALSE
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
+	return TRUE
+
+/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
+	if(attacker == src)
+		return FALSE
+	var/base_chance = get_parry_chance(attacker,weapon,target) * DT.parry_chance_mul
+	if(!prob(base_chance))
+		return FALSE
+	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"parried")
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] parries your attack!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You parry \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
+	if(allow_parry_counter)
+		src.attack(src,attacker)
+
+	return TRUE
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-	return FALSE
+	if(attacker == src)
+		return FALSE
+	var/base_chance = get_dodge_chance(attacker,weapon,target,DT) * DT.dodge_chance_mul
+	if(!prob(base_chance))
+		return FALSE
+	DT.do_attack_animation(attacker,src,weapon,target)
+	DT.display_miss_message(attacker,src,weapon,target,"dodged")
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.to_chat(span("notice","\The [src.name] dodges your attack!"),CHAT_TYPE_COMBAT)
+
+	if(is_living(src)) //YES, I KNOW
+		var/mob/living/L = src
+		L.to_chat(span("warning","You dodge \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name]!"),CHAT_TYPE_COMBAT)
+
+	return TRUE

@@ -26,6 +26,7 @@
 	var/allow_shuttle_move = TRUE
 
 	var/rotation_mod = 1
+	var/can_rotate = FALSE
 
 	var/next_conveyor = 0 //For conveyors.
 
@@ -54,9 +55,17 @@
 /atom/movable/proc/get_movement_delay()
 	return movement_delay
 
+
+/proc/is_valid_dir(var/direction)
+
+	if(!direction || (direction & EAST && direction & WEST) || (direction & NORTH && direction & SOUTH))
+		return FALSE
+
+	return TRUE
+
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
 
-	if(move_dir && move_delay <= 0)
+	if(move_dir && is_valid_dir(move_dir) && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()
 		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = step_size/move_delay
@@ -94,9 +103,10 @@
 
 /atom/movable/Bump(var/atom/obstacle,var/Dir=0)
 
-	if(Dir && ismovable(obstacle))
+	if(Dir && ismovable(obstacle) && src.loc != obstacle)
 		var/atom/movable/M = obstacle
 		if(!M.anchored && (!grabbing_hand || obstacle != grabbing_hand.owner))
+			src << "The loc: [src.loc]."
 			//M.move_delay = src.move_delay
 			M.glide_size = src.glide_size
 			return M.Move(get_step(M,Dir),Dir)

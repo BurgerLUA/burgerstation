@@ -11,6 +11,16 @@
 
 	var/open = FALSE
 
+/obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
+
+	. = ..()
+
+	if(!open)
+		open(null)
+		return TRUE
+
+	return .
+
 /obj/structure/interactive/crate/Cross(var/atom/movable/O)
 
 	if(istype(O,/obj/structure/interactive/crate))

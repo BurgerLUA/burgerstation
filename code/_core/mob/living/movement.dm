@@ -9,6 +9,9 @@
 		stored_alert_effect.glide_size = src.glide_size
 		stored_alert_effect.force_move(src.loc)
 
+	if(.)
+		table_count = 0
+
 	return .
 
 /mob/living/handle_movement(var/adjust_delay = 1)
