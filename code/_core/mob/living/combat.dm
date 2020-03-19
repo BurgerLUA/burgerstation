@@ -172,7 +172,7 @@
 	if(ai && prob(25))
 		return null
 
-	if(charge_parry < 100 || !parry_active)
+	if(charge_parry < 100)
 		return null
 
 	if(status || dead)
@@ -186,7 +186,7 @@
 	if(ai && prob(25))
 		return null
 
-	if(charge_dodge < 100 || !dodge_active)
+	if(charge_dodge < 100)
 		return null
 
 	if(status || dead)
@@ -199,7 +199,7 @@
 	if(ai && prob(25))
 		return null
 
-	if(charge_block < 100 || !block_active)
+	if(charge_block < 100)
 		return null
 
 	if(status || dead)
@@ -286,9 +286,11 @@
 
 	var/pixel_x_offset = pick(-8,8)
 	var/pixel_y_offset = pick(-8,8)
-
 	animate(src, pixel_x = src.pixel_x + pixel_x_offset, pixel_y = src.pixel_y + pixel_y_offset, time = DODGE_ANIMATION_LENGTH * 0.5, flags = ANIMATION_LINEAR_TRANSFORM)
 	animate(pixel_x = src.pixel_x - pixel_x_offset, pixel_y = src.pixel_y - pixel_y_offset, time = DODGE_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+
+	charge_dodge -= 100
+	handle_charges(0)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

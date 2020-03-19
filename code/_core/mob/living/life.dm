@@ -295,9 +295,9 @@
 	var/old_block = charge_block
 	var/old_parry = charge_parry
 
-	charge_dodge = min(charge_dodge + 10*dodge_power,FLOOR(dodge_power*500,100))
-	charge_block = min(charge_block + 10*block_power,FLOOR(block_power*500,100))
-	charge_parry = min(charge_parry + 10*parry_power,FLOOR(parry_power*500,100))
+	charge_dodge = min(charge_dodge + 10*dodge_power,CEILING(dodge_power*500,100))
+	charge_block = min(charge_block + 10*block_power,CEILING(block_power*500,100))
+	charge_parry = min(charge_parry + 10*parry_power,CEILING(parry_power*500,100))
 
 	if(!charge_gain || old_dodge != charge_dodge || old_block != charge_block || !old_parry != charge_parry)
 		for(var/obj/hud/button/evade/B in buttons)

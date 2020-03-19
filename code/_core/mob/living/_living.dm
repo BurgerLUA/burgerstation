@@ -34,10 +34,6 @@
 	var/charge_parry = 500
 	var/charge_dodge = 500
 
-	var/block_active = TRUE
-	var/parry_active = TRUE
-	var/dodge_active = TRUE
-
 	var/first_life = TRUE
 
 	var/health_regen_buffer = 0
