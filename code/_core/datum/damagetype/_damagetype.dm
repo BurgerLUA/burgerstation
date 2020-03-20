@@ -17,19 +17,16 @@
 	)
 
 	var/allow_parry = TRUE
-	var/allow_parry_counter = TRUE
 	var/allow_miss = TRUE
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
 
+	var/block_coefficient = 0.25 //The block co-efficient. High values means it penetrates armor easier.
+
 	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
-	var/draw_blood = FALSE
-	var/draw_weapon = FALSE
-
-	var/dodge_chance_mul = 1 //Higher values means more likely to block.
-	var/block_chance_mul = 1
-	var/parry_chance_mul = 1
+	var/draw_blood = FALSE //This weapon can cause bleed.
+	var/draw_weapon = FALSE //This should display the weapon attack animation when it does damage.
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	var/list/attack_damage_base = list(
@@ -143,9 +140,6 @@
 	if(!allow_parry)
 		combat_rating *= 1.1
 
-	if(allow_parry_counter)
-		combat_rating *= 1.1
-
 	if(!allow_block)
 		combat_rating *= 1.1
 
@@ -247,7 +241,7 @@
 			var/old_damage_amount = damage_to_deal[damage_type]
 			var/new_damage_amount = calculate_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)
-			damage_to_deal[damage_type] = new_damage_amount
+			damage_to_deal[damage_type] = max(0,new_damage_amount)
 
 		var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 		for(var/damage_type in damage_to_deal)

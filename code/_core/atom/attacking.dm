@@ -84,29 +84,37 @@
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_last = world.time
 
+	var/damage_multiplier = 1
+
+	if(DT.allow_miss)
+		if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
 
 
-	if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
+	if(is_living(victim))
+		var/mob/living/V = victim
+		if(DT.allow_dodge)
+			var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
+			if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT))
+				return FALSE
 
+		if(DT.allow_parry)
+			var/atom/parrying_atom = victim.can_parry(attacker,object_to_damage_with,object_to_damage,DT)
+			if(parrying_atom && victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,parrying_atom))
+				return FALSE
 
-	var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
-	if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT)) return FALSE
+		if(DT.allow_block)
+			var/atom/blocking_atom = victim.can_block(attacker,object_to_damage_with,object_to_damage,DT)
+			if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom))
+				if(is_item(blocking_atom) && !is_organ(blocking_atom))
+					var/obj/item/I = blocking_atom
+					damage_multiplier *= min(DT.block_coefficient/(V.get_skill_power(SKILL_BLOCK)*I.block_power),1)
+				else
+					damage_multiplier *= min(DT.block_coefficient/(V.get_skill_power(SKILL_UNARMED)*0.5 + V.get_skill_power(SKILL_BLOCK)*0.5),1)
 
-	var/atom/blocking_atom = victim.can_block(attacker,object_to_damage_with,object_to_damage,DT)
-	if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom)) return FALSE
+	if(damage_multiplier <= 0)
+		return FALSE
 
-	var/atom/parrying_atom = victim.can_parry(attacker,object_to_damage_with,object_to_damage,DT)
-	if(parrying_atom && victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,parrying_atom)) return FALSE
-
-
-	/*
-	if(DT.perform_miss(blamed,victim,object_to_damage_with,object_to_damage)) return FALSE
-	if(victim.perform_block(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
-	if(victim.perform_parry(blamed,object_to_damage_with,object_to_damage,DT,DT.allow_parry_counter)) return FALSE
-	if(victim.perform_dodge(blamed,object_to_damage_with,object_to_damage,DT)) return FALSE
-	*/
-
-	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker)
+	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker,damage_multiplier)
 
 	return TRUE
 
@@ -143,7 +151,7 @@
 /atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
 	return 0
 
-/atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT,var/allow_parry_counter)
+/atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 	return null
 
 /atom/proc/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)

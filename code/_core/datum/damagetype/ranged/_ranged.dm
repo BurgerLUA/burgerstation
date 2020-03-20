@@ -1,7 +1,6 @@
 
 /damagetype/ranged/
 	name = "ranged weapon"
-	allow_parry_counter = FALSE
 
 	draw_blood = TRUE
 
@@ -34,10 +33,6 @@
 	skill_xp_per_damage = list(
 		SKILL_RANGED = SKILL_A
 	)
-
-	block_chance_mul = 0.5
-	dodge_chance_mul = 0.25
-	parry_chance_mul = 0.25
 
 /damagetype/ranged/get_attack_type()
 	return ATTACK_TYPE_RANGED
