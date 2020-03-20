@@ -19,8 +19,6 @@
 	var/is_free = FALSE
 	var/free_text = "free"
 
-	var/force_spawn_stored_types = TRUE
-
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
@@ -28,7 +26,7 @@
 
 /obj/structure/interactive/vending/proc/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
-	if(!is_free && P && P.currency < item_value && !P.spend_currency(item_value))
+	if(!is_free && P && P.currency < item_value)
 		P.to_chat(span("notice","You don't have enough telecrystals to buy this!"))
 		return FALSE
 
@@ -44,11 +42,10 @@
 	if(!can_purchase_item(P,associated_item,item_value,I))
 		return FALSE
 
+	P.spend_currency(item_value)
+
 	var/obj/item/new_item
-	if(ispath(associated_item))
-		new_item = new associated_item(get_turf(src))
-	else
-		new_item = new associated_item.type(get_turf(src))
+	new_item = new associated_item.type(get_turf(src))
 	new_item.on_spawn()
 	new_item.update_icon()
 	if(P)
@@ -65,10 +62,9 @@
 
 	var/turf/T = get_turf(src)
 
-	if(force_spawn_stored_types)
-		for(var/I in stored_types)
-			new I(src.loc)
-		stored_types.Cut()
+	for(var/I in stored_types)
+		new I(src.loc)
+	stored_types.Cut()
 
 	for(var/obj/item/I in T.contents)
 		I.on_spawn()
@@ -107,15 +103,6 @@
 		V.associated_item = I
 		V.associated_vendor = src
 		V.screen_loc = "CENTER-3,CENTER-[(stored_objects_length+stored_types_length+1)*0.5]+[i]"
-		V.update_owner(A)
-		V.update_icon()
-
-	for(var/i=1,i<=stored_types_length,i++)
-		var/obj/item/I = stored_types[i]
-		var/obj/hud/button/vendor/V = new
-		V.associated_item = I
-		V.associated_vendor = src
-		V.screen_loc = "CENTER-3,CENTER-[(stored_objects_length+stored_types_length+1)*0.5]+[i+stored_objects_length]"
 		V.update_owner(A)
 		V.update_icon()
 

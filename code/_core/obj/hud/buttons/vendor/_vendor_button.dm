@@ -44,14 +44,8 @@
 		associated_item.pixel_y = 4
 		overlays += associated_item
 
-	var/amount = 0
-
-	if(!ispath(associated_item))
-		amount = associated_item.calculate_value()
-	else
-		amount = initial(associated_item.value)
-
-	var/num_to_text = num2text(amount)
+	var/sale_amount = CEILING(associated_item.calculate_value(),1)
+	var/num_to_text = num2text(sale_amount)
 	var/the_length = length(num_to_text)
 
 	var/icon/I2 = ICON_INVISIBLE
@@ -105,7 +99,7 @@
 
 	var/mob/living/advanced/player/P = caller
 	var/atom/defer_object = object.defer_click_on_object()
-	var/item_value = initial(associated_item.value)*initial(associated_item.item_count_current)
+	var/item_value = CELING(associated_item.calculate_value(),1)
 
 	if(!is_inventory(defer_object))
 		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))

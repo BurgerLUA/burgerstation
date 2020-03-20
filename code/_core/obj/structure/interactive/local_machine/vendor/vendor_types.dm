@@ -123,7 +123,6 @@
 	return ..()
 
 /obj/structure/interactive/vending/soda/full
-	force_spawn_stored_types = TRUE
 	stored_types = list(
 		/obj/item/container/beaker/can/cola,
 		/obj/item/container/beaker/can/dr_gibb,
@@ -178,7 +177,6 @@ var/global/list/equipped_players = list()
 	return ..()
 
 /obj/structure/interactive/vending/junk/full
-	force_spawn_stored_types = TRUE
 	stored_types = list(
 		/obj/item/container/food/package/junkfood/cake,
 		/obj/item/container/food/package/junkfood/candy,
