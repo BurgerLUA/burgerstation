@@ -99,7 +99,7 @@
 
 	var/mob/living/advanced/player/P = caller
 	var/atom/defer_object = object.defer_click_on_object()
-	var/item_value = CELING(associated_item.calculate_value(),1)
+	var/item_value = CEILING(associated_item.calculate_value(),1)
 
 	if(!is_inventory(defer_object))
 		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
