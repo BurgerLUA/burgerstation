@@ -206,17 +206,17 @@
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	attacker.visible_message(\
-		get_attack_message_3rd(attacker,victim,weapon,hit_object),\
-		get_attack_message_1st(attacker,victim,weapon,hit_object),\
-		get_attack_message_sound(attacker,victim,weapon,hit_object)\
+		span("warning", get_attack_message_3rd(attacker,victim,weapon,hit_object)),\
+		span("danger",  get_attack_message_1st(attacker,victim,weapon,hit_object)),\
+		span("warning", get_attack_message_sound(attacker,victim,weapon,hit_object))\
 	)
 
 /damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
 
 	attacker.visible_message(\
-		replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text),\
-		replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text),\
-		replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text)\
+		span("warning", replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
+		span("danger",  replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
+		span("warning", replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text))\
 	)
 
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)

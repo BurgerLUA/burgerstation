@@ -10,17 +10,6 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C
-	)
-
-
-/damagetype/ranged/bullet/revolver_357/surplus
-	name = ".357 revolver surplus"
-	id = ".357_surplus"
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D
+		BLUNT = ARMOR_E,
+		PIERCE = ARMOR_E
 	)
