@@ -24,6 +24,12 @@
 
 /obj/structure/interactive/vending/ammo/shotgun
 	name = "shotgun ammo vendor"
+	stored_types = list(
+		/obj/item/bullet_cartridge/shotgun/buckshot,
+		/obj/item/bullet_cartridge/shotgun/slug,
+		/obj/item/storage/ammo/buckshot,
+		/obj/item/storage/ammo/slug
+	)
 
 /obj/structure/interactive/vending/clothes
 	name = "clothes vendor"

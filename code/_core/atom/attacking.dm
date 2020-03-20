@@ -89,27 +89,21 @@
 	if(DT.allow_miss)
 		if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
 
+	if(DT.allow_dodge)
+		var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
+		if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT))
+			return FALSE
 
-	if(is_living(victim))
-		var/mob/living/V = victim
-		if(DT.allow_dodge)
-			var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
-			if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT))
-				return FALSE
+	if(DT.allow_parry)
+		var/atom/parrying_atom = victim.can_parry(attacker,object_to_damage_with,object_to_damage,DT)
+		if(parrying_atom && victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,parrying_atom))
+			return FALSE
 
-		if(DT.allow_parry)
-			var/atom/parrying_atom = victim.can_parry(attacker,object_to_damage_with,object_to_damage,DT)
-			if(parrying_atom && victim.perform_parry(attacker,object_to_damage_with,object_to_damage,DT,parrying_atom))
-				return FALSE
-
-		if(DT.allow_block)
-			var/atom/blocking_atom = victim.can_block(attacker,object_to_damage_with,object_to_damage,DT)
-			if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom))
-				if(is_item(blocking_atom) && !is_organ(blocking_atom))
-					var/obj/item/I = blocking_atom
-					damage_multiplier *= min(DT.block_coefficient/(V.get_skill_power(SKILL_BLOCK)*I.block_power),1)
-				else
-					damage_multiplier *= min(DT.block_coefficient/(V.get_skill_power(SKILL_UNARMED)*0.5 + V.get_skill_power(SKILL_BLOCK)*0.5),1)
+	if(DT.allow_block)
+		var/atom/blocking_atom = victim.can_block(attacker,object_to_damage_with,object_to_damage,DT)
+		if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom))
+			damage_multiplier *= 0.75
+			damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(victim,attacker,object_to_damage_with,object_to_damage,DT) - DT.get_block_power_penetration(attacker,victim,object_to_damage_with,object_to_damage,blocking_atom),0,1)
 
 	if(damage_multiplier <= 0)
 		return FALSE
@@ -117,6 +111,9 @@
 	DT.do_damage(attacker,victim,object_to_damage_with,object_to_damage,attacker,damage_multiplier)
 
 	return TRUE
+
+/atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
+	return 0.5
 
 /atom/proc/get_object_to_damage(var/atom/attacker,params) //Which object should the attacker damage?
 	return src

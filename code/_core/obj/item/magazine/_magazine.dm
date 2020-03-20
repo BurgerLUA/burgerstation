@@ -11,7 +11,7 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
-	value = 10
+	value = 4
 
 	var/bullet_length_min = -1
 	var/bullet_length_best = -1

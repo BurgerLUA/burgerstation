@@ -1,8 +1,8 @@
 /obj/item/bullet_cartridge/shotgun/
 	id = "shotgun"
 	icon = 'icons/obj/items/bullet/shotgun.dmi'
-	item_count_max = 4
-	item_count_max_icon = 4
+	item_count_max = 5
+	item_count_max_icon = 5
 
 	id = "bullet"
 	bullet_diameter = 18.5
@@ -21,7 +21,7 @@
 	return TRUE
 
 /obj/item/bullet_cartridge/shotgun/on_spawn()
-	item_count_current = 4
+	item_count_current = 5
 	return ..()
 
 /obj/item/bullet_cartridge/shotgun/slug

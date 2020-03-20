@@ -34,9 +34,13 @@
 		SKILL_RANGED = SKILL_A
 	)
 
+	allow_parry = FALSE
+
+/damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return 0.5
+
 /damagetype/ranged/get_attack_type()
 	return ATTACK_TYPE_RANGED
-
 
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 	return

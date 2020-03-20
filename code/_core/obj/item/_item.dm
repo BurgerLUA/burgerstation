@@ -96,6 +96,18 @@
 
 	var/block_power = 0.5 //Higher values means it blocks more. Normal weapons should have 1, while stronger items should have between 2-5
 
+/obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(istype(DT,/damagetype/unarmed/))
+		return src
+
+	if(is_living(victim))
+		var/mob/living/V = victim
+		if(istype(DT,/damagetype/ranged/))
+			return (V.get_skill_power(SKILL_BLOCK)) >= 0.75 ? src : null
+
+	return src
+
 /obj/item/Destroy()
 
 	for(var/obj/hud/inventory/I in inventories)
@@ -226,10 +238,10 @@
 	. += div("weightsize","Size: [size] | Weight: [weight]")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
-	/*
-	if(is_living(examiner))
-		. += get_damage_type_text(examiner)
-	*/
+
+	if(is_living(examiner) && damage_type && all_damage_types[damage_type])
+		var/damagetype/DT = all_damage_types[damage_type]
+		. += div("damage",DT.get_examine_text(examiner))
 
 	return .
 

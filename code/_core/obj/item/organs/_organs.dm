@@ -248,3 +248,26 @@ obj/item/organ/proc/get_damage_description()
 	*/
 
 	return damage_desc
+
+/obj/item/organ/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
+
+	if(is_living(victim))
+		var/mob/living/V = victim
+		if(istype(DT,/damagetype/unarmed/))
+			return V.get_skill_power(SKILL_UNARMED) * V.get_skill_power(SKILL_BLOCK)
+		return V.get_skill_power(SKILL_UNARMED) * V.get_skill_power(SKILL_BLOCK) * 0.75
+
+	return ..()
+
+/obj/item/organ/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(istype(DT,/damagetype/unarmed/))
+		return src
+
+	if(is_living(victim))
+		var/mob/living/V = victim
+		if(istype(DT,/damagetype/ranged/))
+			return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_BLOCK)) >= 0.75 ? src : null
+		return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_BLOCK)) >= 0.25 ? src : null
+
+	return null

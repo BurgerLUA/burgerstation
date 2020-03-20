@@ -231,24 +231,20 @@
 
 			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
 
-			if(is_living(hit_atom))
-				var/mob/living/V = hit_atom
-				var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
-				if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
+			if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 
-				var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
-				if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
+			var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
+			if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
 
-				if(DT.allow_block)
-					var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
-					if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom))
-						if(is_item(blocking_atom) && !is_organ(blocking_atom))
-							var/obj/item/I = blocking_atom
-							damage_multiplier *= min(DT.block_coefficient/(V.get_skill_power(SKILL_BLOCK)*I.block_power),1)
-						else
-							damage_multiplier *= min(DT.block_coefficient/(V.get_skill_power(SKILL_UNARMED)*0.5 + V.get_skill_power(SKILL_BLOCK)*0.5),1)
+			if(DT.allow_block)
+				var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
+				if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom))
+					damage_multiplier *= 0.75
+					damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(hit_atom,owner,weapon,object_to_damage,DT) - DT.get_block_power_penetration(owner,hit_atom,weapon,object_to_damage,blocking_atom),0,1)
 
-			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+			if(damage_multiplier > 0)
+				DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
 

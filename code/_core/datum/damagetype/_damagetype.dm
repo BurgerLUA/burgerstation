@@ -124,6 +124,17 @@
 	)
 	*/
 
+/damagetype/proc/get_examine_text(var/mob/caller)
+
+	. = "<table>"
+	. += "<tr><th>Damage type</th><th>Damage value</th><th>Skill modifier</th></tr>"
+	for(var/damage_type in attack_damage_base)
+		var/damage_value = attack_damage_base[damage_type]
+		. += "<tr><td>[damage_type]</td><td>[damage_value]</td><td>Penis</td></tr>"
+	. += "</table>"
+
+	return .
+
 /damagetype/proc/get_crit_chance(var/mob/living/L)
 	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION) + L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)
 
@@ -412,6 +423,9 @@
 			animate(transform = matrix(), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)
 
 	sleep(ATTACK_ANIMATION_LENGTH)
+
+/damagetype/proc/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return 0
 
 /damagetype/proc/get_weapon_name(var/atom/backup)
 	if(weapon_name)

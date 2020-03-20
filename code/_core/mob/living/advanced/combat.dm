@@ -70,21 +70,27 @@
 	if(!.)
 		return null
 
-	var/obj/item/IL = get_held_left(DT.get_attack_type())
-	var/obj/item/IR = get_held_right(DT.get_attack_type())
-
 	var/list/possible_blocks = list()
 
+	var/obj/item/IL = get_held_left(DT.get_attack_type())
 	if(IL && IL.can_block(attacker,weapon,target,DT))
 		possible_blocks += IL
 
+	var/obj/item/IR = get_held_right(DT.get_attack_type())
 	if(IR && IR.can_block(attacker,weapon,target,DT))
-		possible_blocks += IL
+		possible_blocks += IR
+
+	if(!length(possible_blocks))
+		if(left_hand && left_hand.loc && left_hand.loc.can_block(attacker,weapon,target,DT))
+			possible_blocks += left_hand.loc
+
+		if(right_hand && right_hand.loc && right_hand.loc.can_block(attacker,weapon,target,DT))
+			possible_blocks += right_hand.loc
 
 	if(length(possible_blocks))
 		return pick(possible_blocks)
 
-	return .
+	return null
 
 /mob/living/advanced/can_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
