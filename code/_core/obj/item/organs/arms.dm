@@ -16,7 +16,7 @@
 	target_bounds_x_min = 8
 	target_bounds_x_max = 11
 
-	target_bounds_y_min = 9
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22
 
 	base_miss_chance = 10
@@ -34,7 +34,7 @@
 	target_bounds_x_min = 21
 	target_bounds_x_max = 24
 
-	target_bounds_y_min = 14
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22
 
 //Reptile Feral
@@ -52,7 +52,7 @@
 	target_bounds_x_min = 21
 	target_bounds_x_max = 24
 
-	target_bounds_y_min = 14
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22
 
 //Reptile Advanced
@@ -70,7 +70,7 @@
 	target_bounds_x_min = 21
 	target_bounds_x_max = 24
 
-	target_bounds_y_min = 9
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22
 
 //Diona
@@ -90,7 +90,7 @@
 	target_bounds_x_min = 21
 	target_bounds_x_max = 24
 
-	target_bounds_y_min = 9
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22
 
 //Cyborg
@@ -108,7 +108,7 @@
 	target_bounds_x_min = 21
 	target_bounds_x_max = 24
 
-	target_bounds_y_min = 9
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22
 
 
@@ -128,5 +128,5 @@
 	target_bounds_x_min = 21
 	target_bounds_x_max = 24
 
-	target_bounds_y_min = 9
+	target_bounds_y_min = 15
 	target_bounds_y_max = 22

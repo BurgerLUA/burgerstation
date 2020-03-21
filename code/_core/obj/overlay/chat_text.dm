@@ -1,4 +1,4 @@
-/obj/chat_text
+/obj/effect/chat_text
 	name = "overlay"
 	desc = "overlay object"
 	plane = PLANE_HUD_CHAT
@@ -9,7 +9,7 @@
 
 	mouse_opacity = 0
 
-/obj/chat_text/Destroy()
+/obj/effect/chat_text/Destroy()
 
 	if(owner)
 		owner.stored_chat_text -= src
@@ -17,13 +17,13 @@
 
 	return ..()
 
-/obj/chat_text/New(var/atom/desired_loc,var/desired_text,var/bypass_length=FALSE)
+/obj/effect/chat_text/New(var/atom/desired_loc,var/desired_text,var/bypass_length=FALSE)
 
 	if(ismob(desired_loc))
 
 		owner = desired_loc
 
-		for(var/obj/chat_text/CT in owner.stored_chat_text)
+		for(var/obj/effect/chat_text/CT in owner.stored_chat_text)
 			animate(CT,pixel_y = CT.pixel_y + 8,time = 5)
 
 		owner.stored_chat_text += src

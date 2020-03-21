@@ -1,4 +1,4 @@
-/obj/blood/
+/obj/decal/blood/
 	name = "blood"
 	icon = 'icons/obj/effects/blood_impact.dmi'
 	layer = LAYER_GROUND_SCENERY
@@ -9,11 +9,11 @@
 
 	var/animate_position = FALSE
 
-/obj/blood/update_icon()
+/obj/decal/blood/update_icon()
 	color = reagents.color
 	return ..()
 
-obj/blood/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
+/obj/decal/blood/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
 
 	color = desired_color
 
@@ -27,17 +27,17 @@ obj/blood/New(var/desired_location,var/desired_time,var/desired_color,var/desire
 
 	return ..()
 
-/obj/blood/drip
+/obj/decal/blood/drip
 	name = "blood drip"
 	icon_state = "drip"
 	animate_position = FALSE
 
-/obj/blood/splatter/
+/obj/decal/blood/splatter/
 	name = "blood splatter"
 	icon_state = "1"
 	animate_position = TRUE
 
-/obj/blood/splatter/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
+/obj/decal/blood/splatter/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "[rand(1,12)]"
 	return ..()
 

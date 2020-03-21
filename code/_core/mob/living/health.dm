@@ -82,7 +82,7 @@
 			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
 			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,5),i++)
-				var/obj/blood/splatter/S = new(src.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",offset_x,offset_y)
+				var/obj/decal/blood/splatter/S = new(src.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",offset_x,offset_y)
 				reagents.transfer_reagents_to(S.reagents,10)
 
 		if(is_organ(atom_damaged))

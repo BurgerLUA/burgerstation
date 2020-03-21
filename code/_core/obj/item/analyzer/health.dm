@@ -16,7 +16,7 @@
 
 		. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
 
-		new/obj/chat_text(target,.,TRUE)
+		new/obj/effect/chat_text(target,.,TRUE)
 		caller.to_chat(.)
 
 		next_scan = world.time + SECONDS_TO_DECISECONDS(4)

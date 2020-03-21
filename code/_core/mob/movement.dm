@@ -50,7 +50,7 @@
 
 	if(.)
 
-		for(var/obj/chat_text/CT in stored_chat_text)
+		for(var/obj/effect/chat_text/CT in stored_chat_text)
 			CT.glide_size = src.glide_size
 			CT.force_move(src.loc)
 

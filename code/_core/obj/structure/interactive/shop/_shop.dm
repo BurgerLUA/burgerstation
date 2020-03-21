@@ -48,6 +48,26 @@
 		appearance = stored_item.appearance
 		mouse_opacity = 2
 		name = "[stored_item.name] - [stored_item_cost] credits"
+
+	overlays.Cut()
+	underlays.Cut()
+
+	var/image/U = new/image(icon,icon_state)
+	U.pixel_x = 2
+	U.pixel_y = 4
+	var/image/O = new/image(icon,icon_state)
+	O.pixel_x = -2
+	O.pixel_y = -4
+
+	underlays += U
+	overlays += O
+
+	if(locate(/obj/structure/smooth/table/) in src.loc.contents)
+		pixel_y = 4
+	else
+		pixel_y = 0
+
+
 	..()
 
 /obj/structure/interactive/shop/get_examine_text(var/mob/examiner)

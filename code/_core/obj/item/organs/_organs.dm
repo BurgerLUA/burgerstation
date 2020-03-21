@@ -194,7 +194,7 @@
 	if(bleeding && is_advanced(src.loc) && prob(20))
 		var/mob/living/advanced/A = src.loc
 		if(A.reagents.volume_current)
-			var/obj/blood/drip/D = new(A.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
+			var/obj/decal/blood/drip/D = new(A.loc,SECONDS_TO_DECISECONDS(60),"#FF0000",rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
 			A.reagents.transfer_reagents_to(D.reagents,1)
 
 	return TRUE

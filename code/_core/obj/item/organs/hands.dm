@@ -25,7 +25,7 @@
 	target_bounds_x_max = 11
 
 	target_bounds_y_min = 11
-	target_bounds_y_max = 14
+	target_bounds_y_max = 15
 
 	base_miss_chance = 20
 

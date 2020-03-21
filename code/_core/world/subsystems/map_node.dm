@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(map_node)
 		var/map_nodes = 0
 		var/adjacent_map_nodes = 0
 
-		for(var/obj/map_node/M in all_map_nodes)
+		for(var/obj/marker/map_node/M in all_map_nodes)
 			if(M.initialize_node())
 				map_nodes += 1
 				adjacent_map_nodes += length(M.adjacent_map_nodes)

@@ -1,5 +1,5 @@
 // Dummy mob.
-/mob/dview
+/mob/abstract/dview
 	// Can't make it invisible enough.
 	invisibility = 101
 	alpha        = 0

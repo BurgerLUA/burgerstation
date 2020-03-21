@@ -98,11 +98,11 @@ SUBSYSTEM_DEF(horde)
 			enemies_to_spawn = 15 + (current_round * 5)
 			spawned_enemies_round = enemies_to_spawn
 			var/obj/marker/landmark/B = locate(pick("Bravo","Village"))
-			var/obj/map_node/N_end = find_closest_node(B)
+			var/obj/marker/map_node/N_end = find_closest_node(B)
 			for(var/mob/living/advanced/npc/syndicate/S in world)
-				var/obj/map_node/N_start = find_closest_node(S)
+				var/obj/marker/map_node/N_start = find_closest_node(S)
 				if(N_start)
-					var/obj/map_node/list/found_path = N_start.find_path(N_end)
+					var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 					if(found_path)
 						S.ai.set_path(found_path)
 						continue
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(horde)
 				sleep(-1)
 				continue
 
-			var/obj/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
+			var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
 			if(!N_start)
 				sleep(-1)
 				continue
@@ -137,12 +137,12 @@ SUBSYSTEM_DEF(horde)
 					sleep(-1)
 					continue
 
-				var/obj/map_node/N_end = find_closest_node(get_turf(chosen_target))
+				var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
 				if(!N_end)
 					sleep(-1)
 					continue
 
-				var/obj/map_node/list/found_path = N_start.find_path(N_end)
+				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 				if(!found_path)
 					sleep(-1)
 					continue

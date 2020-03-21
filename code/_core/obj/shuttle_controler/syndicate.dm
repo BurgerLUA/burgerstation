@@ -75,7 +75,7 @@
 				world.log << "There is no Bravo Landing Zone!"
 				return .
 
-			var/obj/map_node/N_end = find_closest_node(B)
+			var/obj/marker/map_node/N_end = find_closest_node(B)
 
 			if(!N_end)
 				world.log << "There is no N_end!"
@@ -87,12 +87,12 @@
 				if(!L.ai)
 					continue
 
-				var/obj/map_node/N_start = find_closest_node(L)
+				var/obj/marker/map_node/N_start = find_closest_node(L)
 				if(!N_start)
 					world.log << "NO START!"
 					continue
 
-				var/obj/map_node/list/found_path = N_start.find_path(N_end)
+				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 
 				if(!found_path || !length(found_path))
 					world.log << "NO FOUND PATH!"

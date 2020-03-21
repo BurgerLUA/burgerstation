@@ -42,7 +42,7 @@
 		// /obj/hud/button/resist_auto,
 		/obj/hud/button/hide_show_inventory,
 		/obj/hud/button/move,
-		/obj/hud/button/targeting,
+		/obj/hud/button/targeting_new,
 		/obj/hud/button/intent/harm,
 		/obj/hud/button/intent/help,
 		/obj/hud/button/intent/disarm,
