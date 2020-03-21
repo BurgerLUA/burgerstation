@@ -103,6 +103,6 @@
 
 	if(is_living(victim))
 		var/mob/living/V = victim
-		return V.get_skill_power(SKILL_BLOCK)
+		return 0.25 + V.get_skill_power(SKILL_BLOCK)
 
 	return ..()

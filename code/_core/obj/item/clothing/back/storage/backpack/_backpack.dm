@@ -41,3 +41,7 @@
 
 /obj/item/clothing/back/storage/backpack/black
 	color = COLOR_BLACK
+
+
+/obj/item/clothing/back/storage/backpack/black/loadout/security/
+

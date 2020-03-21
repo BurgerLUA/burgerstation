@@ -1,3 +1,14 @@
+As of March 22nd, 2020, this licence only applies to any and all files and folders located in the following directories of this project, unless stated otherwise.
+/data/
+/fonts/
+/html/
+/icons/
+/interface/
+/maps/
+/scripts/
+/settings/
+/sounds/
+
 GNU AFFERO GENERAL PUBLIC LICENSE
 Version 3, 19 November 2007
 
