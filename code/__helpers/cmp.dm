@@ -34,7 +34,7 @@
 
 /proc/cmp_ckey_dsc(client/a, client/b)
 	return sorttext(a.ckey, b.ckey)
-
+//This is an example comment
 /proc/cmp_subsystem_display(subsystem/a, subsystem/b)
 	return sorttext(b.name, a.name)
 

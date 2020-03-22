@@ -5,22 +5,25 @@
 Code: 
   - code/**/*
   
-Icon
-  - code/**/*
+Icon:
+  - icons/**/*
   
-Sound
+Sound:
   - sounds/**/*
   
-Interface
+Map:
+  - maps/**/*
+  
+Interface:
   - html/**/*
   - interface/**/*
   - scripts/**/*
   
-Data
+DO NOT MERGE:
   - data/**/*
   - settings/**/*
   - config/**/*
   
-Github
+Github:
   - .git/**/*
   - .github/**/*
