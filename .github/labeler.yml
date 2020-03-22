@@ -5,22 +5,22 @@
 Code: 
   - code/**/*
   
-Icon
+Icon:
   - code/**/*
   
-Sound
+Sound:
   - sounds/**/*
   
-Interface
+Interface:
   - html/**/*
   - interface/**/*
   - scripts/**/*
   
-Data
+Data:
   - data/**/*
   - settings/**/*
   - config/**/*
   
-Github
+Github:
   - .git/**/*
   - .github/**/*
