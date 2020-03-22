@@ -7,7 +7,6 @@
 
 	target_distribution_y = list(8,8,8,8,16,32)
 
-	sync_attack_delay = TRUE
 	stationary = FALSE
 
 	var/mob/living/simple/npc/goliath/owner_as_goliath

@@ -1,22 +1,25 @@
 /ai/advanced/
 
-	radius_find_enemy = 8
+	radius_find_enemy = VIEW_RANGE + ZOOM_RANGE
 
 	objective_delay = 10
 	attack_delay = 1
 
 	target_distribution_y = list(0,8,8,16,16,16,32,32,32,32,64,64,64)
 
-	sync_attack_delay = FALSE
 	stationary = FALSE
 
-	var/ranged_attack_cooldown = 0
+	//var/ranged_attack_cooldown = 0
 
 	var/checked_weapons = FALSE
 
 	var/obj/hud/inventory/old_left_hand_inventory
 	var/obj/hud/inventory/old_right_hand_inventory
 	var/obj/item/weapon/objective_weapon
+
+
+	var/attack_delay_left
+	var/attack_delay_right
 
 /ai/advanced/Destroy()
 	old_left_hand_inventory = null
@@ -36,12 +39,16 @@
 	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6)
 		var/list/possible_weapons = list()
 		for(var/obj/item/weapon/W in view(6,A))
+			if(istype(W,/obj/item/weapon/ranged/))
+				var/obj/item/weapon/ranged/R = W
+				if(!R.firing_pin || R.firing_pin != A.iff_tag)
+					continue
 			if(istype(W,/obj/item/weapon/ranged/bullet/))
 				var/obj/item/weapon/ranged/bullet/B = W
 				if(!B.chambered_bullet)
-					break
+					continue
 			if(!isturf(W.loc))
-				break
+				continue
 			possible_weapons[W] = (6 + 1) - get_dist(A,W.loc)
 		if(!length(possible_weapons))
 			return FALSE
@@ -67,6 +74,43 @@
 	return ..()
 
 
+/ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
+
+	if(!is_advanced(owner))
+		return ..()
+
+	var/mob/living/advanced/A = owner
+
+	var/atom/defer_right = A.right_hand?.defer_click_on_object()
+	var/atom/defer_left = A.left_hand?.defer_click_on_object()
+
+	var/list/params = list(
+		PARAM_ICON_X = num2text(pick(target_distribution_x)),
+		PARAM_ICON_Y = num2text(pick(target_distribution_y)),
+		"left" = 0,
+		"right" = 0,
+		"middle" = 0,
+		"ctrl" = 0,
+		"shift" = 0,
+		"alt" = 0
+	)
+
+	if(!defer_right || !owner.can_attack(target,defer_right,params))
+		defer_right = null
+		left_click = FALSE
+
+	if(!defer_left || !owner.can_attack(target,defer_left,params))
+		defer_left = null
+		left_click = TRUE
+
+	if(!defer_right && !defer_left)
+		return FALSE
+
+	var/atom/attacking_atom = left_click ? defer_right : defer_left
+	return attacking_atom.click_on_object(owner,target,null,null,params)
+
+
+/*
 /ai/advanced/can_attack(var/atom/target,var/left_click=FALSE)
 
 	ranged_attack_cooldown = max(0,ranged_attack_cooldown - 1)
@@ -94,6 +138,7 @@
 
 	return R.heat_current <= heat_limit
 
+
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
 	. = ..()
@@ -102,6 +147,7 @@
 		ranged_attack_cooldown = pick(TRUE,FALSE,FALSE,FALSE,FALSE) ? rand(10,20) : 0
 
 	return .
+*/
 
 
 /ai/advanced/handle_attacking()

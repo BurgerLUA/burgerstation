@@ -209,11 +209,11 @@ var/global/list/all_clients = list()
 
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT
-		mob.on_left_down(object,location,control,aug)
+		return mob.on_left_down(object,location,control,aug)
 
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags |= ATTACK_HELD_RIGHT
-		mob.on_right_down(object,location,control,aug)
+		return mob.on_right_down(object,location,control,aug)
 
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)

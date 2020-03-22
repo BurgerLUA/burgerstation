@@ -6,7 +6,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	sync_attack_delay = TRUE
 
 	stationary = FALSE
 

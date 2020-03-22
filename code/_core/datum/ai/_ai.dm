@@ -10,7 +10,7 @@
 	var/atom/objective_move
 	var/mob/living/objective_attack
 
-	var/radius_find_enemy = VIEW_RANGE + ZOOM_RANGE
+	var/radius_find_enemy = VIEW_RANGE
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -25,8 +25,6 @@
 	var/turf/start_turf
 
 	var/only_attack_players = FALSE
-
-	var/sync_attack_delay = FALSE
 
 	var/stationary = TRUE
 
@@ -82,9 +80,6 @@
 
 	owner = desired_owner
 
-	if(sync_attack_delay)
-		attack_delay = CEILING(desired_owner.get_attack_delay()/LIFE_TICK,1)
-
 	attack_ticks = rand(0,attack_delay)
 	objective_ticks = rand(0,objective_delay)
 
@@ -121,13 +116,13 @@
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
-		objective_ticks = 0
 		handle_objectives()
+		objective_ticks = 0
 
 	attack_ticks += 1
 	if(attack_ticks >= attack_delay)
-		attack_ticks = 0
 		handle_attacking()
+		attack_ticks = 0
 
 	if(alert_level && alert_level <= ALERT_LEVEL_CAUTION)
 		alert_time -= LIFE_TICK
@@ -175,6 +170,7 @@
 		var/is_left_click = prob(left_click_chance)
 		if(can_attack(objective_attack,is_left_click))
 			do_attack(objective_attack,is_left_click)
+
 
 /ai/proc/set_move_objective(var/atom/desired_objective)
 	objective_move = desired_objective

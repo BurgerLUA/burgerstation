@@ -49,13 +49,11 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 
 	if(src.attack_flags & ATTACK_BLOCK)
 
-	else
-		if(right_hand)
-			if(is_button(object))
-				object.clicked_on_by_object(src,right_hand,location,control,params)
-			else
-				right_hand.click_on_object(src,object,location,control,params)
-			return TRUE
+	else if(right_hand)
+		if(is_button(object))
+			return object.clicked_on_by_object(src,right_hand,location,control,params)
+		return right_hand.click_on_object(src,object,location,control,params)
+
 
 	return FALSE
 
@@ -78,13 +76,10 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 
 	if(src.attack_flags & ATTACK_BLOCK)
 
-	else
-		if(left_hand)
-			if(is_button(object))
-				object.clicked_on_by_object(src,left_hand,location,control,params)
-			else
-				left_hand.click_on_object(src,object,location,control,params)
-			return TRUE
+	else if(left_hand)
+		if(is_button(object))
+			return object.clicked_on_by_object(src,left_hand,location,control,params)
+		return left_hand.click_on_object(src,object,location,control,params)
 
 	return FALSE
 
@@ -101,10 +96,9 @@ mob/living/advanced/on_left_click(var/atom/object,location,control,params) //THI
 
 	if(src.attack_flags & ATTACK_BLOCK)
 
-	else
-		if(right_hand)
-			right_hand.click_on_object(src,object,location,control,params)
-			return TRUE
+	else if(right_hand)
+		return right_hand.click_on_object(src,object,location,control,params)
+
 
 	return FALSE
 
@@ -123,10 +117,8 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 
 	if(src.attack_flags & ATTACK_BLOCK)
 
-	else
-		if(left_hand)
-			left_hand.click_on_object(src,object,location,control,params)
-			return TRUE
+	else if(left_hand)
+		return left_hand.click_on_object(src,object,location,control,params)
 
 	return FALSE
 

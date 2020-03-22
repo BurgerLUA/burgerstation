@@ -8,7 +8,6 @@
 	target_distribution_y = list(4,4,4,16,32,32,32)
 
 	stationary = FALSE
-	sync_attack_delay = TRUE
 
 	var/mob/living/simple/npc/xenomorph/pack_leader/leader
 

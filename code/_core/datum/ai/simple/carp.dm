@@ -7,7 +7,6 @@
 
 	target_distribution_y = list(4,4,4,16,32,32,32)
 
-	sync_attack_delay = TRUE
 	stationary = FALSE
 
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader
