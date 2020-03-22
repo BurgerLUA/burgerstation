@@ -105,6 +105,12 @@
 	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
+	if(status & FLAG_STATUS_FATIGUE)
+		return FALSE
+
+	if(status & FLAG_STATUS_STUN)
+		return FALSE
+
 	return ..()
 
 
@@ -117,6 +123,9 @@
 		return FALSE
 
 	if(status & FLAG_STATUS_STAGGER)
+		return FALSE
+
+	if(status & FLAG_STATUS_STUN)
 		return FALSE
 
 	return ..()

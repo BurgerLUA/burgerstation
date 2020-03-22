@@ -33,13 +33,9 @@ SUBSYSTEM_DEF(horde)
 	killed_syndicate_total++
 	killed_syndicate_round++
 
-	world.log << "Killed [killed_syndicate_round] enemies this round."
-	world.log << "Killed [killed_syndicate_total] enemies this shift."
-
 	if(killed_syndicate_round >= spawned_enemies_round)
 		current_round++
 		message_displayed = FALSE
-		world.log << "NEW ROUND: [current_round]."
 
 	killed_syndicate_round = 0
 

@@ -99,7 +99,7 @@
 /obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
 	if(istype(DT,/damagetype/unarmed/))
-		return src
+		return null
 
 	if(is_living(victim))
 		var/mob/living/V = victim
@@ -107,6 +107,19 @@
 			return (V.get_skill_power(SKILL_BLOCK)) >= 0.75 ? src : null
 
 	return src
+
+/obj/item/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(istype(DT,/damagetype/unarmed/))
+		return null
+
+	if(is_living(victim))
+		var/mob/living/V = victim
+		if(istype(DT,/damagetype/ranged/))
+			return (V.get_skill_power(SKILL_PARRY)) >= 0.75 ? src : null
+
+	return src
+
 
 /obj/item/Destroy()
 

@@ -98,6 +98,18 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 
 	return FALSE
 
+
+obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,location,params)
+
+	. = shoot_delay
+
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		if(A.ai)
+			. *= heat_current > max(0,(1 - (get_dist(caller,target) * 0.01)) * heat_max) ? 4 : 1
+
+	return .
+
 obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!object)
@@ -118,7 +130,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(!can_gun_shoot(caller))
 		return FALSE
 
-	next_shoot_time = world.time + shoot_delay
+	next_shoot_time = world.time + get_shoot_delay(caller,object,location,params)
 
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds

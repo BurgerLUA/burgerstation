@@ -40,8 +40,6 @@
 					continue
 				possible_teleport_turfs += T
 
-			world.log << "Found [length(possible_teleport_turfs)] turfs."
-
 			if(length(possible_teleport_turfs))
 				L.force_move(pick(possible_teleport_turfs))
 

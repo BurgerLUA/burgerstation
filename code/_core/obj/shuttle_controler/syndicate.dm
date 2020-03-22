@@ -28,8 +28,6 @@
 
 		if(starting_transit_id == "syndicate_shuttle_centcomm" && ending_transit_id == "syndicate_shuttle_bluespace")
 
-			world.log << "RUNNING PART 1"
-
 			var/area/A = get_area(src)
 			var/list/mob/living/mobs_to_delete = list()
 			var/list/mob/living/found_syndicate = list()
@@ -64,8 +62,6 @@
 
 
 		if(starting_transit_id == "syndicate_shuttle_bluespace" && ending_transit_id == "syndicate_shuttle_planet")
-
-			world.log << "RUNNING PART 2"
 
 			var/area/A = get_area(src)
 

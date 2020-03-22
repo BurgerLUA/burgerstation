@@ -271,3 +271,17 @@ obj/item/organ/proc/get_damage_description()
 		return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_BLOCK)) >= 0.25 ? src : null
 
 	return null
+
+
+/obj/item/organ/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
+
+	if(istype(DT,/damagetype/unarmed/))
+		return src
+
+	if(is_living(victim))
+		var/mob/living/V = victim
+		if(istype(DT,/damagetype/ranged/))
+			return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_PARRY)) >= 0.75 ? src : null
+		return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_PARRY)) >= 0.25 ? src : null
+
+	return null

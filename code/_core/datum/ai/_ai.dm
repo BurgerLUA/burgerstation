@@ -65,6 +65,8 @@
 	var/alert_time = 600 //Deciseconds
 	var/sidestep_next = FALSE
 
+	var/ignore_immortal = FALSE
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -184,13 +186,12 @@
 			owner.move_dir = get_dir(objective_attack,owner)
 		if(target_distance > attack_distance_max)
 			owner.move_dir = get_dir(owner,objective_attack)
-		else
-			owner.move_dir = pick(list(0,0,0,0,turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90)))
+		else if(prob(target_distance <= 1 ? 25 : 5))
+			owner.move_dir = pick(turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90))
 		return TRUE
 	return FALSE
 
-
-ai/proc/handle_movement_move_objective()
+/ai/proc/handle_movement_move_objective()
 	if(objective_move)
 		if(get_dist(owner,objective_move) > 1)
 			owner.movement_flags = MOVEMENT_NORMAL
@@ -352,6 +353,9 @@ ai/proc/handle_movement_move_objective()
 	if(!true_sight && L.is_sneaking)
 		return FALSE
 */
+
+	if(L.immortal && !ignore_immortal)
+		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
 		return FALSE

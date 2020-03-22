@@ -38,11 +38,9 @@
 			best_distance_organ = O
 
 	if(best_organ)
-		world.log << "It is the best organ."
 		return best_organ
 
 	if(best_distance_organ)
-		world.log << "It is a distance organ."
 		return best_distance_organ
 
 	LOG_ERROR("WARNING: Did not correctly run damage on [src] when [attacker] attacked!")

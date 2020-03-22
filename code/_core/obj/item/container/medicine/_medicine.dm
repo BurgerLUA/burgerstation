@@ -87,7 +87,6 @@
 		caller.to_chat("You cannot treat this!")
 		return FALSE
 
-
 	return TRUE
 
 /obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -99,7 +98,8 @@
 		params[PARAM_ICON_Y] = new_x_y[2]
 		object = object.get_object_to_damage(caller,params,TRUE)
 
-	if(can_treat(caller,object))
+	if(!is_inventory(object) && can_treat(caller,object))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+		return TRUE
 
-	return TRUE
+	return ..()

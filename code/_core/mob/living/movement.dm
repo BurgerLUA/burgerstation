@@ -25,6 +25,9 @@
 	if(status & FLAG_STATUS_STAGGER)
 		return FALSE
 
+	if(status & FLAG_STATUS_STUN)
+		return FALSE
+
 	if(status & FLAG_STATUS_CONFUSED)
 		move_dir = pick(DIRECTIONS_ALL)
 
@@ -32,7 +35,7 @@
 		if(buckled_object && !buckled_object.unbuckle(src))
 			return FALSE
 
-		if(status & FLAG_STATUS_SLEEP)
+		if(sleep_time == -1)
 			sleep_time = 0
 			check_status_effects()
 			return FALSE
@@ -41,9 +44,6 @@
 
 /mob/living/get_movement_delay()
 	. = ..()
-
-	if(status & FLAG_STATUS_STUN)
-		. *= 3
 
 	if(status & FLAG_STATUS_FATIGUE)
 		. *= 3

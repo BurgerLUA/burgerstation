@@ -234,8 +234,9 @@
 			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
 			if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
 
-			var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
-			if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
+			if(DT.allow_parry)
+				var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
+				if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
 
 			if(DT.allow_block)
 				var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)

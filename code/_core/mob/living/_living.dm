@@ -286,6 +286,5 @@
 
 	if(security_hud_image)
 		security_hud_image.icon_state = iff_tag ? iff_tag : "unknown"
-		world.log << "Updating iff tag to [security_hud_image.icon_state]."
 
 	return TRUE
