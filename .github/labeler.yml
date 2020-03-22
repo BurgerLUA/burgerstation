@@ -11,12 +11,15 @@ Icon:
 Sound:
   - sounds/**/*
   
+Map:
+  - maps/**/*
+  
 Interface:
   - html/**/*
   - interface/**/*
   - scripts/**/*
   
-Data:
+DO NOT MERGE:
   - data/**/*
   - settings/**/*
   - config/**/*
