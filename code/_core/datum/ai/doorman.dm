@@ -15,9 +15,9 @@
 	if(!beepsky_marker)
 		beepsky_marker = locate() in owner.loc.loc.contents
 
-	if(frustration > frustration_threshold)
+	if(frustration_move > frustration_threshold)
 		owner.force_move(beepsky_marker.loc)
-		frustration = 0
+		frustration_move = 0
 
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) > 1)

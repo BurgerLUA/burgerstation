@@ -38,8 +38,9 @@
 
 			animate(src,pixel_x = move_x, pixel_y = move_y,time = 1)
 			spawn(1)
-				add_stun(value)
-				animate(src,pixel_x = 0, pixel_y = 0,time = max(0,stagger_time - 1))
+				var/stun_time = max(value,10)
+				add_stun(stun_time)
+				animate(src,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
 	check_status_effects()
 

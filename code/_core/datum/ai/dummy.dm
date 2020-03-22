@@ -1,9 +1,7 @@
 /ai/dummy/
 	objective_delay = 10
 	attack_delay = 10
-	movement_delay = 10
 
-	sync_movement_delay = TRUE
 	stationary = FALSE
 	use_alerts = FALSE
 

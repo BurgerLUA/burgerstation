@@ -1,7 +1,7 @@
 obj/effect/temp/damage_number
 	name = "damage number"
 	desc = "We a JRPG now!"
-	duration = 10
+	duration = 20
 	icon = null
 	mouse_opacity = 0
 	plane = PLANE_HUD_CHAT
@@ -28,7 +28,7 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 			desired_color = rgb(255,damage_color_math,damage_color_math)
 
 		maptext = "<center><font size='[desired_size]' color='[desired_color]'>[desired_value]</text></center>"
-		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),pixel_y=initial(pixel_y)+rand(TILE_SIZE*0.5,TILE_SIZE*0.5),time=duration)
+		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=duration*0.5,easing = CIRCULAR_EASING | EASE_OUT)
 		spawn(duration - 5)
 			animate(src,alpha=0,time = 5)
 

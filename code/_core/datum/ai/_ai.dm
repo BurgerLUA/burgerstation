@@ -9,18 +9,15 @@
 
 	var/atom/objective_move
 	var/mob/living/objective_attack
-	var/mob/living/objective_defend
 
 	var/radius_find_enemy = VIEW_RANGE + ZOOM_RANGE
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
-	var/movement_ticks = 0
 
 	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 tick in between
 	var/objective_delay = 3
 	var/attack_delay = 0
-	var/movement_delay = 0
 
 	var/list/target_distribution_x = list(0,16,16,16,32)
 	var/list/target_distribution_y = list(16,16,16,8,8,32,32)
@@ -29,7 +26,6 @@
 
 	var/only_attack_players = FALSE
 
-	var/sync_movement_delay = TRUE
 	var/sync_attack_delay = FALSE
 
 	var/stationary = TRUE
@@ -45,7 +41,11 @@
 
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
-	var/frustration = 0
+	var/frustration_attack = 0
+	var/frustration_move = 0
+
+
+
 	var/frustration_threshold = 10 //Above this means they'll try to find a new target.
 
 	var/list/attackers = list()
@@ -65,6 +65,7 @@
 	var/use_vision = FALSE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this is affected by alert level.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
 	var/alert_time = 600 //Deciseconds
+	var/sidestep_next = FALSE
 
 /ai/Destroy()
 	if(owner)
@@ -72,7 +73,6 @@
 	owner = null
 	objective_move = null
 	objective_attack = null
-	objective_defend = null
 	start_turf = null
 	all_living_ai -= src
 	attackers.Cut()
@@ -85,11 +85,7 @@
 	if(sync_attack_delay)
 		attack_delay = CEILING(desired_owner.get_attack_delay()/LIFE_TICK,1)
 
-	if(sync_movement_delay)
-		movement_delay = CEILING(TICKS_TO_DECISECONDS(owner.get_movement_delay())/LIFE_TICK,1)
-
 	attack_ticks = rand(0,attack_delay)
-	movement_ticks = rand(0,movement_delay)
 	objective_ticks = rand(0,objective_delay)
 
 	start_turf = get_turf(owner)
@@ -100,7 +96,7 @@
 	enabled = TRUE
 	path_steps = 1
 	current_path = desired_path
-	frustration = 0
+	frustration_move = 0
 	owner.move_dir = 0
 	start_turf = get_turf(owner)
 	return TRUE
@@ -128,14 +124,6 @@
 		objective_ticks = 0
 		handle_objectives()
 
-	movement_ticks += 1
-	if(movement_ticks >= movement_delay)
-		movement_ticks = 0
-		handle_movement()
-
-	if(owner)
-		owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
-
 	attack_ticks += 1
 	if(attack_ticks >= attack_delay)
 		attack_ticks = 0
@@ -146,6 +134,8 @@
 		if(alert_time <= 0)
 			alert_time = initial(alert_time)
 			alert_level -= 1
+
+	owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
 
 	return TRUE
 
@@ -186,50 +176,39 @@
 		if(can_attack(objective_attack,is_left_click))
 			do_attack(objective_attack,is_left_click)
 
-	attack_ticks = 0
-
-
 /ai/proc/set_move_objective(var/atom/desired_objective)
 	objective_move = desired_objective
+	return TRUE
 
-/ai/proc/handle_movement()
-
-	owner.movement_flags = 0x0
-
+/ai/proc/handle_movement_attack_objective()
 	if(objective_attack)
-
 		owner.movement_flags = MOVEMENT_RUNNING
-
 		var/target_distance = get_dist(owner,objective_attack)
-
 		if(target_distance < attack_distance_min)
 			owner.move_dir = get_dir(objective_attack,owner)
 		if(target_distance > attack_distance_max)
 			owner.move_dir = get_dir(owner,objective_attack)
 		else
 			owner.move_dir = pick(list(0,0,0,0,turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90)))
+		return TRUE
+	return FALSE
 
-	else if(objective_move)
-		if(frustration > frustration_threshold)
-			set_move_objective(null)
-			owner.movement_flags = MOVEMENT_NORMAL
-			owner.move_dir = 0x0
-		else if(get_dist(owner,objective_move) > 1)
+
+ai/proc/handle_movement_move_objective()
+	if(objective_move)
+		if(get_dist(owner,objective_move) > 1)
 			owner.movement_flags = MOVEMENT_NORMAL
 			owner.move_dir = get_dir(owner,objective_move)
 		else
 			set_move_objective(null)
 			owner.movement_flags = MOVEMENT_NORMAL
 			owner.move_dir = 0x0
-	else if(current_path && length(current_path))
+		return TRUE
+	return FALSE
 
+/ai/proc/handle_movement_path()
+	if(current_path && length(current_path))
 		owner.movement_flags = MOVEMENT_NORMAL
-
-		if(frustration > frustration_threshold)
-			path_steps--
-			if(path_steps < 1)
-				path_steps = 3
-
 		if(path_steps <= length(current_path))
 			var/Vector2D/desired_node = current_path[path_steps]
 			if(desired_node.x == owner.x && desired_node.y == owner.y)
@@ -237,20 +216,70 @@
 				owner.move_dir = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,1))
-
 		else
 			set_path(null)
 			owner.move_dir = 0
+		return TRUE
+	return FALSE
 
-	else if(roaming_distance && get_dist(owner,start_turf) >= roaming_distance)
+/ai/proc/handle_movement_frustration()
+	if(frustration_move > frustration_threshold)
+		path_steps--
+		if(path_steps < 1)
+			path_steps = 3
+		set_move_objective(null)
+		frustration_move = 0
+		return TRUE
+
+	return FALSE
+
+/ai/proc/handle_movement_roaming()
+	if(roaming_distance && get_dist(owner,start_turf) >= roaming_distance)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,start_turf)
-	else if(alert_level == ALERT_LEVEL_CAUTION)
+		return TRUE
+	return FALSE
+
+/ai/proc/handle_movement_alert()
+	if(alert_level == ALERT_LEVEL_CAUTION)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
-	else
-		owner.movement_flags = MOVEMENT_NORMAL
-		owner.move_dir = 0
+		return TRUE
+	return FALSE
+
+/ai/proc/handle_movement_sidestep()
+
+	if(sidestep_next)
+		owner.move_dir = turn(owner.dir,pick(-90,90))
+		sidestep_next = FALSE
+
+	return FALSE
+
+
+/ai/proc/handle_movement()
+
+	if(handle_movement_sidestep())
+		return TRUE
+
+	if(handle_movement_frustration())
+		return TRUE
+
+	if(handle_movement_attack_objective())
+		return TRUE
+
+	if(handle_movement_move_objective())
+		return TRUE
+
+	if(handle_movement_alert())
+		return TRUE
+
+	if(handle_movement_path())
+		return TRUE
+
+	if(handle_movement_roaming())
+		return TRUE
+
+	return FALSE
 
 
 /ai/proc/hostile_message()
@@ -267,6 +296,7 @@
 		attackers -= objective_attack
 
 	objective_attack = L
+	frustration_attack = 0
 
 	if(L)
 		set_alert_level(ALERT_LEVEL_ALERT)
@@ -286,13 +316,10 @@
 	if(objective_attack)
 		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
 			set_objective(null)
-			frustration = 0
 		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
-			frustration ++
-	else
-		frustration = 0
+			frustration_attack++
 
-	if(!objective_attack || frustration > frustration_threshold)
+	if(!objective_attack || frustration_attack > frustration_threshold)
 
 		var/atom/best_target
 		var/best_score = 0
@@ -306,6 +333,8 @@
 		if(best_target && best_target != objective_attack)
 			hostile_message()
 			set_objective(best_target)
+
+		frustration_attack = 0
 
 	return TRUE
 
@@ -334,7 +363,7 @@
 	if(only_attack_players)
 		return exists(L.client)
 	else
-		return L.iff_tag != owner.iff_tag
+		return !owner.iff_tag || L.iff_tag != owner.iff_tag
 
 	return FALSE
 
@@ -345,12 +374,20 @@
 	if(radius_find_enemy <= 0)
 		return .
 
-	for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
-		if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
-			continue
-		if(!should_attack_mob(P))
-			continue
-		.[P] = TRUE
+	if(only_attack_players)
+		for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
+			if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
+				continue
+			if(!should_attack_mob(P))
+				continue
+			.[P] = TRUE
+	else
+		for(var/mob/living/L in view(radius_find_enemy,owner))
+			if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))
+				continue
+			if(!should_attack_mob(L))
+				continue
+			.[L] = TRUE
 
 	return .
 
@@ -369,7 +406,8 @@
 		set_alert_level(ALERT_LEVEL_CAUTION)
 
 	if(attack_on_block && !do_attack(obstacle,prob(left_click_chance)))
-		frustration++
+		frustration_move++
+		sidestep_next = TRUE
 
 	return FALSE
 
@@ -409,6 +447,5 @@
 		owner.stored_alert_effect = new /obj/effect/temp/alert/huh(owner.loc)
 
 	owner.move_dir = 0
-	movement_ticks = movement_delay - DECISECONDS_TO_TICKS(1)
 
 	return TRUE

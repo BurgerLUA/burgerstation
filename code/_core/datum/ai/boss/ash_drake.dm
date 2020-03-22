@@ -54,5 +54,3 @@
 		owner.move_dir = get_dir(owner,objective_attack)
 	else
 		owner.move_dir = 0
-
-	movement_ticks = 0

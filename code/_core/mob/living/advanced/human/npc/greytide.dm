@@ -17,15 +17,4 @@
 
 	add_outfit("shopkeeper_outfit")
 
-	var/list/possible_weapons = list(
-		/obj/item/weapon/melee/toolbox/red,
-		/obj/item/weapon/melee/toolbox/green,
-		/obj/item/weapon/melee/toolbox/blue
-	)
-
-	var/picked_weapon = pick(possible_weapons)
-
-	var/obj/item/weapon/W = new picked_weapon(src.loc)
-	put_in_hands(W)
-
 	return .

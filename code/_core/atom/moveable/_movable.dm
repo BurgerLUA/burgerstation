@@ -63,6 +63,16 @@
 
 	return TRUE
 
+
+/mob/living/handle_movement(var/adjust_delay = 1)
+
+	if(move_delay <= 0 && ai)
+		movement_flags = MOVEMENT_NORMAL
+		move_dir = 0x0
+		ai.handle_movement()
+
+	return ..()
+
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
 
 	if(move_dir && is_valid_dir(move_dir) && move_delay <= 0)
@@ -71,7 +81,6 @@
 		glide_size = step_size/move_delay
 
 		var/move_result = Move(get_step(src,move_dir),move_dir)
-
 		if(move_result == 0 && (move_dir in DIRECTIONS_INTERCARDINAL))
 			for(var/new_dir in DIRECTIONS_CARDINAL)
 				if((new_dir & move_dir) && Move(get_step(src,new_dir),new_dir))

@@ -34,6 +34,15 @@
 
 	health_base = 25
 
+/obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.intent != INTENT_HARM)
+			return "[damage_type]_[L.intent]"
+
+	return ..()
+
 /obj/item/organ/hand/left
 	name = "left hand"
 	id = BODY_HAND_LEFT

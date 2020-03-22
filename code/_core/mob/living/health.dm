@@ -63,7 +63,7 @@
 	. = ..()
 
 	if(damage_amount >= 0)
-		new/obj/effect/temp/damage_number(src.loc,60,damage_amount)
+		new/obj/effect/temp/damage_number(src.loc,null,damage_amount)
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 

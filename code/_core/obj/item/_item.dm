@@ -321,9 +321,6 @@
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE
 
-/obj/item/proc/get_damage_type() //Information purposes only.
-	return damage_type
-
 /obj/item/proc/update_held_icon()
 
 	if(is_inventory(src.loc))

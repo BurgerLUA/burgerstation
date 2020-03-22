@@ -73,10 +73,13 @@
 	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
 		return FALSE
 
-	var/damagetype/DT = all_damage_types[object_to_damage_with.damage_type]
+	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim,object_to_damage)
+	if(!desired_damage_type)
+		return FALSE
 
+	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!DT)
-		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [object_to_damage_with.damage_type] not existing!")
+		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [desired_damage_type] not existing!")
 		return FALSE
 
 	attacker.attack_last = world.time
@@ -165,3 +168,6 @@
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return FALSE
+
+/atom/proc/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+	return damage_type

@@ -306,7 +306,7 @@ mob/living/advanced/Login()
 		var/obj/item/clothing/C = new key(get_turf(src))
 		C.on_spawn()
 		add_worn_item(C)
-		if(C.additional_clothing)
+		if(istype(C) && C.additional_clothing)
 			C.equip_additional_clothing(src)
 
 	return TRUE

@@ -79,7 +79,7 @@ var/global/saved_icons = 0
 	. = ..()
 
 	if(destruction_turf && damage_amount >= 0)
-		new/obj/effect/temp/damage_number(src,60,damage_amount)
+		new/obj/effect/temp/damage_number(src,null,damage_amount)
 
 	return .
 

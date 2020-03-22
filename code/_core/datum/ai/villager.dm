@@ -3,11 +3,9 @@
 
 	objective_delay = 20
 	attack_delay = 1000
-	movement_delay = SECONDS_TO_DECISECONDS(5)
 
 	target_distribution_y = list(32)
 
-	sync_movement_delay = TRUE
 	stationary = FALSE
 
 
@@ -15,11 +13,6 @@
 
 	if(!isturf(owner.loc))
 		return TRUE
-
-	if(!stationary)
-		movement_ticks += 1
-		if(movement_ticks >= movement_delay)
-			handle_movement()
 
 	return TRUE
 
@@ -34,7 +27,6 @@
 	for(var/mob/living/advanced/player/P in oview(owner,3))
 		if(P)
 			owner.set_dir(get_dir(owner,P))
-			movement_ticks = 0
 			return TRUE
 
 	if(prob(70))
@@ -83,7 +75,6 @@
 	if(length(valid_directions))
 		owner.move_dir = pick(valid_directions)
 
-	movement_ticks = 0
 
 
 /ai/villager/stationary

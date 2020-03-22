@@ -4,12 +4,10 @@
 
 	objective_delay = 10
 	attack_delay = 1
-	movement_delay = 1
 
 	target_distribution_y = list(4,4,4,16,32,32,32)
 
 	sync_attack_delay = TRUE
-	sync_movement_delay = TRUE
 	stationary = FALSE
 
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader
