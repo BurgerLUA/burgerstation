@@ -8,13 +8,13 @@
 
 	if(!accurate && is_living(attacker) && attacker != src)
 		var/mob/living/L = attacker
-		var/inaccuracy = (1 - L.get_attribute_power(ATTRIBUTE_DEXTERITY))*16
+		var/inaccuracy = (1 - L.get_attribute_power(ATTRIBUTE_DEXTERITY))*8
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
-	var/best_distance = INFINITY
+	//var/best_distance = INFINITY
 	var/obj/item/organ/best_organ
-	var/obj/item/organ/best_distance_organ
+	//var/obj/item/organ/best_distance_organ
 
 	for(var/obj/item/organ/O in src.organs)
 
@@ -25,6 +25,7 @@
 			best_organ = O
 			break
 
+		/*
 		var/center_x = (O.target_bounds_x_min + O.target_bounds_x_max) / 2
 		var/center_y = (O.target_bounds_y_min + O.target_bounds_y_max) / 2
 
@@ -36,14 +37,15 @@
 		if(!best_distance_organ || distance < best_distance)
 			best_distance = distance
 			best_distance_organ = O
+		*/
 
 	if(best_organ)
 		return best_organ
 
-	if(best_distance_organ)
-		return best_distance_organ
+	//if(best_distance_organ)
+	//	return best_distance_organ
 
-	LOG_ERROR("WARNING: Did not correctly run damage on [src] when [attacker] attacked!")
+	return FALSE
 
 	return ..()
 

@@ -61,10 +61,7 @@
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)
 
-	if(!object_to_damage || !object_to_damage_with)
-		if(ismob(blamed))
-			var/mob/M = blamed
-			M.to_chat(span("notice","You can't attack that!"))
+	if(!object_to_damage_with)
 		return FALSE
 
 	if(!attacker.can_attack(victim,object_to_damage_with,params))
@@ -82,6 +79,10 @@
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [desired_damage_type] not existing!")
 		return FALSE
 
+	if(!object_to_damage)
+		DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
+		return FALSE
+
 	attacker.attack_next = world.time + get_attack_delay(attacker)
 
 	if(attacker != object_to_damage_with)
@@ -89,7 +90,7 @@
 
 	var/damage_multiplier = 1
 
-	if(DT.allow_miss)
+	if(DT.allow_miss && DT.should_miss(attacker,victim,object_to_damage_with,object_to_damage))
 		if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
 
 	if(DT.allow_dodge)

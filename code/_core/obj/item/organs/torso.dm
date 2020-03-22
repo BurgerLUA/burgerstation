@@ -19,10 +19,10 @@
 
 	can_be_targeted = TRUE
 
-	target_bounds_x_min = 12
-	target_bounds_x_max = 20
+	target_bounds_x_min = 11
+	target_bounds_x_max = 21
 
-	target_bounds_y_min = 14
+	target_bounds_y_min = 12
 	target_bounds_y_max = 22
 
 	health_base = 100

@@ -170,9 +170,10 @@
 /damagetype/proc/get_attack_type()
 	return ATTACK_TYPE_MELEE
 
+/damagetype/proc/should_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	return prob(victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance())
+
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	if(!prob(victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance()))
-		return FALSE
 	do_attack_animation(attacker,victim,weapon,hit_object)
 	do_miss_sound(attacker,victim,weapon,hit_object)
 	display_miss_message(attacker,victim,weapon,hit_object,"avoided")
@@ -213,22 +214,6 @@
 		new_attack_damage[k] *= hit_object.health.damage_multiplier*damage_multiplier
 
 	return new_attack_damage
-
-/damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-
-	attacker.visible_message(\
-		span("warning", get_attack_message_3rd(attacker,victim,weapon,hit_object)),\
-		span("danger",  get_attack_message_1st(attacker,victim,weapon,hit_object)),\
-		span("warning", get_attack_message_sound(attacker,victim,weapon,hit_object))\
-	)
-
-/damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
-
-	attacker.visible_message(\
-		span("warning", replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
-		span("danger",  replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
-		span("warning", replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text))\
-	)
 
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return is_living(attacker) && prob(get_crit_chance(attacker))
@@ -430,16 +415,17 @@
 /damagetype/proc/get_weapon_name(var/atom/backup)
 	if(weapon_name)
 		return weapon_name
-	else
+	if(backup)
 		return backup.name
+	return "weapon"
 
 /damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	var/victim_text = victim == hit_object ? "[hit_object.name]" : "[victim.name]'s [hit_object.name]"
+	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "[victim.name]'s [hit_object.name]" : victim
 	var/attacker_text = attacker == weapon ? "[get_weapon_name(weapon)]" : "[attacker.name]'s [get_weapon_name(weapon)]"
 	return "\The [attacker.name] [pick(attack_verbs)]s \the [victim_text] with \the [attacker_text]."
 
 /damagetype/proc/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	var/victim_text = victim == hit_object ? "[hit_object.name]" : "[victim.name]'s [hit_object.name]"
+	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "[victim.name]'s [hit_object.name]" : victim
 	var/attacker_text = "with your [get_weapon_name(weapon)]"
 	return "You [pick(attack_verbs)] \the [victim_text] [attacker_text]."
 
@@ -466,7 +452,24 @@
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	attacker.visible_message(\
-		get_glance_message_3rd(attacker,victim,weapon,hit_object),\
-		get_glance_message_1st(attacker,victim,weapon,hit_object),\
-		get_glance_message_sound(attacker,victim,weapon,hit_object)\
+		span("warning",get_glance_message_3rd(attacker,victim,weapon,hit_object)),\
+		span("warning",get_glance_message_1st(attacker,victim,weapon,hit_object)),\
+		span("warning",get_glance_message_sound(attacker,victim,weapon,hit_object))\
 	)
+	return TRUE
+
+/damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	attacker.visible_message(\
+		span("warning", get_attack_message_3rd(attacker,victim,weapon,hit_object)),\
+		span("danger",  get_attack_message_1st(attacker,victim,weapon,hit_object)),\
+		span("warning", get_attack_message_sound(attacker,victim,weapon,hit_object))\
+	)
+	return TRUE
+
+/damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+	attacker.visible_message(\
+		span("warning", replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
+		span("danger",  replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
+		span("warning", replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text))\
+	)
+	return TRUE
