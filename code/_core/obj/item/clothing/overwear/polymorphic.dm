@@ -5,7 +5,7 @@
 
 	rarity = RARITY_COMMON
 
-	polymorphic = TRUE
+
 
 	no_initial_blend = TRUE
 

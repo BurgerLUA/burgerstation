@@ -6,7 +6,7 @@
 
 	color = "#FFFFFF"
 
-	var/polymorphic = FALSE
+	var/
 
 	var/list/polymorphs = list()
 
@@ -46,7 +46,7 @@
 
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
-	if(polymorphic)
+	if(length(polymorphs))
 		if(!desired_icon_state)
 			desired_icon_state = icon_state_worn
 		var/icon/initial_icon = initial(icon)
@@ -59,13 +59,13 @@
 
 /obj/item/clothing/update_icon()
 
-	if(!polymorphic)
+	if(!length(polymorphs))
 		return ..()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
-	var/icon/I = new/icon(icon,icon_state)
+	var/icon/I = ICON_INVISIBLE
 
 	for(var/polymorph_name in polymorphs)
 		var/polymorph_color = polymorphs[polymorph_name]

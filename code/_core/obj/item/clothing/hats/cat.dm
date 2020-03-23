@@ -26,7 +26,7 @@
 	size = SIZE_2
 	weight = WEIGHT_5
 
-	polymorphic = TRUE
+
 
 	no_initial_blend = TRUE
 

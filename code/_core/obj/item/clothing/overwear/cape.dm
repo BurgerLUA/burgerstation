@@ -1,7 +1,7 @@
 /obj/item/clothing/neck/cape
 	name = "cape"
 	icon = 'icons/obj/items/clothing/suit/cape.dmi'
-	polymorphic = TRUE
+
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -22,7 +22,7 @@
 		"fade" = "#FFFFFF",
 		"lining" = "#FFFFFF"
 	)
-	polymorphic = TRUE
+
 
 	value = 20
 

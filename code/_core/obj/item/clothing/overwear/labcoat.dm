@@ -17,7 +17,7 @@
 	size = SIZE_3
 	weight = WEIGHT_2
 
-	polymorphic = TRUE
+
 	polymorphs = list(
 		"base" = "#FFFFFF",
 		"shoulder" = "#FFFFFF",

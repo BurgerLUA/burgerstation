@@ -31,7 +31,7 @@
 /obj/item/clothing/feet/socks/knee
 	name = "knee socks"
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'
-	polymorphic = TRUE
+
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
@@ -58,7 +58,7 @@
 /obj/item/clothing/feet/socks/stockings/
 	name = "thigh high sock"
 	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
-	polymorphic = TRUE
+
 	value = 10
 
 /obj/item/clothing/feet/socks/stockings/pink

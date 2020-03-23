@@ -26,7 +26,7 @@
 	)
 
 
-	polymorphic = TRUE
+
 
 	no_initial_blend = TRUE
 

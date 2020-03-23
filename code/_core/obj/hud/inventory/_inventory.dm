@@ -329,7 +329,7 @@
 
 	if(is_clothing(item_to_update))
 		var/obj/item/clothing/C = item_to_update
-		if(C.polymorphic)
+		if(length(C.polymorphs))
 			C.initialize_blends(desired_icon_state)
 
 	if(is_wings(item_to_update))
@@ -338,6 +338,8 @@
 		A.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
 	else
 		A.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+
+	return TRUE
 
 /obj/hud/inventory/proc/drop_worn_objects(var/turf/T,var/exclude_soulbound=FALSE)
 	var/list/dropped_objects = list()

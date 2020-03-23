@@ -22,7 +22,7 @@
 	size = SIZE_1
 	weight = WEIGHT_1
 
-	polymorphic = TRUE
+
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
