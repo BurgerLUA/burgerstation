@@ -34,7 +34,6 @@
 
 			for(var/mob/living/L in A.contents)
 				if(!L.dead && L.client)
-					world.log << "FOUND LIVING WITH CLIENT. RETURNING."
 					return .
 				if(L.iff_tag == "Syndicate")
 					found_syndicate += L

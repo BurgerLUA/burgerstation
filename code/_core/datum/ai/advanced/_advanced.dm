@@ -102,11 +102,6 @@
 		return FALSE
 
 	var/atom/attacking_atom = left_click ? defer_left_click : defer_right_click
-
-
-	world.log << "Attack time: [attacking_atom.attack_next - world.time]."
-
-
 	return attacking_atom.click_on_object(owner,target,null,null,params)
 
 

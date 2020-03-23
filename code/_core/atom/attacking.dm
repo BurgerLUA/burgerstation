@@ -66,25 +66,27 @@
 	if(!object_to_damage_with)
 		return FALSE
 
-	if(!attacker.can_attack(victim,object_to_damage_with,params))
+	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
 		return FALSE
 
-	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
+	if(!attacker.can_attack(victim,object_to_damage_with,params))
 		return FALSE
 
 	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim,object_to_damage)
 	if(!desired_damage_type)
 		return FALSE
 
-	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
-
-	if(attacker != object_to_damage_with)
-		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)
-
 	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!DT)
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [desired_damage_type] not existing!")
+		attacker.attack_next = world.time + 10
+		object_to_damage_with.attack_next = world.time + 10
 		return FALSE
+
+	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
+
+	if(attacker != object_to_damage_with)
+		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
 
 	if(!object_to_damage)
 		DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
@@ -132,21 +134,21 @@
 	if(!mouse_opacity)
 		return FALSE
 
+	/* TODO: Loyalty Implant
 	if(victim && is_valid(victim) && is_living(victim))
-
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)
-
 		if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
 			return FALSE
+	*/
 
 	if(attack_next > world.time)
 		return FALSE
 
-	if(!weapon || weapon.attack_next > world.time)
+	if(weapon && weapon.attack_next > world.time)
 		return FALSE
 
-	if(!victim || !victim.can_be_attacked(src,weapon,params))
+	if(victim && victim.can_be_attacked(src,weapon,params))
 		return FALSE
 
 	return TRUE

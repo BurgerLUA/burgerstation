@@ -21,6 +21,8 @@
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
 
+	var/attack_delay_mod = 1
+
 	var/block_coefficient = 0.25 //The block co-efficient. High values means it penetrates armor easier.
 
 	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
@@ -420,12 +422,12 @@
 	return "weapon"
 
 /damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "[victim.name]'s [hit_object.name]" : victim
-	var/attacker_text = attacker == weapon ? "[get_weapon_name(weapon)]" : "[attacker.name]'s [get_weapon_name(weapon)]"
+	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "their [hit_object.name]" : victim
+	var/attacker_text = attacker == weapon ? "[get_weapon_name(weapon)]" : "their [get_weapon_name(weapon)]"
 	return "\The [attacker.name] [pick(attack_verbs)]s \the [victim_text] with \the [attacker_text]."
 
 /damagetype/proc/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "[victim.name]'s [hit_object.name]" : victim
+	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "their [hit_object.name]" : victim
 	var/attacker_text = "with your [get_weapon_name(weapon)]"
 	return "You [pick(attack_verbs)] \the [victim_text] [attacker_text]."
 

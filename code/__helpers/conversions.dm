@@ -12,7 +12,7 @@
 //Returns an integer given a hex input, supports negative values "-ff"
 //skips preceding invalid characters
 //breaks when hittin invalid characters thereafter
-// If safe=TRUE, returns null on incorrect input strings instead of CRASHing
+// If safe=TRUE, returns null on incorrect input strings instead of crashing
 /proc/hex2num(hex, safe=FALSE)
 	. = 0
 	var/place = 1
@@ -492,7 +492,7 @@
 	return r
 
 // Decodes hex to raw byte string.
-// If safe=TRUE, returns null on incorrect input strings instead of CRASHing
+// If safe=TRUE, returns null on incorrect input strings instead of crashing
 /proc/hextostr(str, safe=FALSE)
 	if(!istext(str)||!str)
 		return
