@@ -17,25 +17,26 @@
 	size = SIZE_3
 	weight = WEIGHT_2
 
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"
-
-	color_primary_desc = "main"
-	color_secondary_desc = "shoulder stripes"
-	color_tertiary_desc = "waist stripe"
-
 	polymorphic = TRUE
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"shoulder" = "#FFFFFF",
+		"waist" = "#FFFFFF"
+	)
 
 	value = 10
 
 
 /obj/item/clothing/overwear/coat/labcoat/chemist
-	color_primary = "#FFFFFF"
-	color_secondary = "#FF6A00"
-	color_tertiary = "#FFFFFF"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"shoulder" = "#FFFFFF",
+		"waist" = "#FFFFFF"
+	)
 
 /obj/item/clothing/overwear/coat/labcoat/medical
-	color_primary = "#FFFFFF"
-	color_secondary = COLOR_MEDICAL
-	color_tertiary = "#FFFFFF"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"shoulder" = "#FFFFFF",
+		"waist" = "#FFFFFF"
+	)

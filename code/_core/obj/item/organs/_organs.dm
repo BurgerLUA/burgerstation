@@ -166,7 +166,7 @@
 	if(A) //A might've gotten removed here
 		A.update_icon()
 
-	//new /obj/effect/gibs/random/(T,"#FF0000",color_secondary) TODO COLOR
+	//new /obj/effect/gibs/random/(T,"#FF0000","secondary") TODO COLOR
 	qdel(src)
 
 /obj/item/organ/update_icon()

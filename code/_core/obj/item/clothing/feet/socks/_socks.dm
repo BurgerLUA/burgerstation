@@ -33,17 +33,27 @@
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'
 	polymorphic = TRUE
 
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"stripe" = "#FFFFFF",
+		"top" = "#FFFFFF"
+	)
+
 	value = 5
 
 /obj/item/clothing/feet/socks/knee/white
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"stripe" = "#FFFFFF",
+		"top" = "#FFFFFF"
+	)
 
 /obj/item/clothing/feet/socks/knee/scottish
-	color_primary = "#53512A"
-	color_secondary = "#32321B"
-	color_tertiary = "#53512A"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"stripe" = "#FFFFFF",
+		"top" = "#FFFFFF"
+	)
 
 /obj/item/clothing/feet/socks/stockings/
 	name = "thigh high sock"
@@ -54,13 +64,17 @@
 /obj/item/clothing/feet/socks/stockings/pink
 	name = "programmer sock"
 
-	color_primary = "#FFFFFF"
-	color_secondary = "#EE9AA8"
-	color_tertiary = "#FFFFFF"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"stripe" = "#FFFFFF",
+		"top" = "#FFFFFF"
+	)
 
 /obj/item/clothing/feet/socks/stockings/bee
 	name = "bee stockings"
 
-	color_primary = "#1E1E1E"
-	color_secondary = "#FFD819"
-	color_tertiary = "#1E1E1E"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"stripe" = "#FFFFFF",
+		"top" = "#FFFFFF"
+	)

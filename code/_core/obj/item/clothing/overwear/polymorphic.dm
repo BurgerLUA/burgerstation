@@ -25,17 +25,17 @@
 		COLD = ARMOR_C
 	)
 
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"
-
-	color_primary_desc = "coat"
-	color_secondary_desc = "sleeves"
-	color_tertiary_desc = "buttons"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"sleeve" = "#FFFFFF",
+		"buttons" = "#FFFFFF"
+	)
 
 	value = 30
 
 /obj/item/clothing/overwear/coat/polymorphic/shaleez
-	color_primary = COLOR_SHALEEZ_RED
-	color_secondary = COLOR_WHITE
-	color_tertiary = COLOR_GOLD
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"sleeve" = "#FFFFFF",
+		"buttons" = "#FFFFFF"
+	)

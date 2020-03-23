@@ -41,7 +41,6 @@ obj/item/clothing/back/storage/satchel/bluespace/loadout/science/fill_inventory(
 	new /obj/item/radio(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/pinpointer/custom(src)
-	new /obj/item/clothing/uniform/jumpsuit/science(src)
 	new /obj/item/clothing/glasses/prescription/blue(src)
 	new /obj/item/clothing/overwear/armor/hardsuit/science(src)
 	new /obj/item/clothing/belt/storage/colored/orange/filled/scientist(src)

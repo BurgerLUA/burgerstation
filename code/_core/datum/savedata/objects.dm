@@ -42,12 +42,9 @@
 		var/obj/item/container/food/F = O
 		F.original_volume = object_data["original_volume"]
 
-	if(is_clothing(O))
+	if(is_clothing(O) && length(object_data["polymorphs"]))
 		var/obj/item/clothing/C = O
-		if(C.polymorphic)
-			C.color_primary = object_data["color_primary"]
-			C.color_secondary = object_data["color_secondary"]
-			C.color_tertiary = object_data["color_tertiary"]
+		C.polymorphs = object_data["polymorphs"]
 
 	if(is_pill(O))
 		var/obj/item/container/pill/P = O
@@ -260,10 +257,8 @@
 
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
-		if(C.polymorphic)
-			returning_list["color_primary"] = C.color_primary
-			returning_list["color_secondary"] = C.color_secondary
-			returning_list["color_tertiary"] = C.color_tertiary
+		if(length(C.polymorphs))
+			returning_list["polymorphs"] = C.polymorphs
 
 	if(is_pill(I))
 		var/obj/item/container/pill/P = I

@@ -2,8 +2,6 @@
 	id = "cult"
 	spawning_items = list(
 
-		/obj/item/clothing/uniform/jumpsuit/red,
-
 		/obj/item/clothing/head/hood/cult,
 		/obj/item/clothing/overwear/armor/cult,
 

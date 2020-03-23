@@ -8,6 +8,5 @@
 		/obj/item/clothing/glasses/sun,
 		/obj/item/clothing/hands/gloves/colored/yellow,
 		/obj/item/clothing/hands/gloves/colored/yellow/left,
-		/obj/item/clothing/mask/gas,
-		/obj/item/clothing/uniform/jumpsuit/grey
+		/obj/item/clothing/mask/gas
 	)

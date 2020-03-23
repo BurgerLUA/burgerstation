@@ -18,13 +18,13 @@
 
 	value = 40
 
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"
 
-	color_primary_desc = "base helmet"
-	color_secondary_desc = "ear protection"
-	color_tertiary_desc = "helmet stripe"
+	polymorphs = list(
+		"helmet" = "#FFFFFF",
+		"ears" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
+	)
+
 
 	polymorphic = TRUE
 
@@ -32,23 +32,30 @@
 
 
 /obj/item/clothing/head/helmet/polymorphic/test
-	color_primary = "#FF0000"
-	color_secondary = "#00FF00"
-	color_tertiary = "#0000FF"
+	polymorphs = list(
+		"helmet" = "#FFFFFF",
+		"ears" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
+	)
 
 
 /obj/item/clothing/head/helmet/polymorphic/security
-	color_primary = COLOR_BLACK
-	color_secondary = COLOR_SECURITY
-	color_tertiary = COLOR_SECURITY
+	polymorphs = list(
+		"helmet" = "#FFFFFF",
+		"ears" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
+	)
 
 /obj/item/clothing/head/helmet/polymorphic/engineering
-	color_primary = COLOR_ENGINEERING
-	color_secondary = COLOR_BROWN
-	color_tertiary = COLOR_ORANGE
-
+	polymorphs = list(
+		"helmet" = "#FFFFFF",
+		"ears" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
+	)
 
 /obj/item/clothing/head/helmet/polymorphic/medical
-	color_primary = COLOR_WHITE
-	color_secondary = COLOR_MEDICAL
-	color_tertiary = COLOR_MEDICAL
+	polymorphs = list(
+		"helmet" = "#FFFFFF",
+		"ears" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
+	)

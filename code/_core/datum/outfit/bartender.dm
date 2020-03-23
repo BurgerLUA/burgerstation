@@ -1,7 +1,6 @@
 /loadout/bartender
 	id  = "bartender"
 	spawning_items = list(
-		/obj/item/clothing/uniform/jumpsuit/bartender,
 		/obj/item/clothing/feet/shoes/colored/black,
 		/obj/item/clothing/feet/shoes/colored/black/left,
 		/obj/item/clothing/neck/tie/red,

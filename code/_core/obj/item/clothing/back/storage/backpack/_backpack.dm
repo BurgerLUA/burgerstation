@@ -19,7 +19,6 @@
 	vendor_name = "\improper Laser Carbine Kit (Security)"
 
 /obj/item/clothing/back/storage/backpack/loadout/security/fill_inventory()
-	new /obj/item/clothing/uniform/jumpsuit/dark/security(src)
 	new /obj/item/clothing/feet/shoes/black_boots(src)
 	new /obj/item/clothing/feet/shoes/black_boots/left(src)
 	new /obj/item/clothing/hands/gloves/colored/padded/black(src)

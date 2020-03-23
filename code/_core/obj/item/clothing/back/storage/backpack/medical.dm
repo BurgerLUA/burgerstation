@@ -15,7 +15,6 @@ obj/item/clothing/back/storage/backpack/medical
 	new /obj/item/pinpointer/custom(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/pinpointer/crew(src)
-	new /obj/item/clothing/uniform/jumpsuit/medical_doctor(src)
 	new /obj/item/clothing/feet/shoes/colored(src)
 	new /obj/item/clothing/feet/shoes/colored/left(src)
 	new /obj/item/clothing/hands/gloves/colored(src)

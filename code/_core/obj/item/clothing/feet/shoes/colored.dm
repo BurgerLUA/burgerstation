@@ -24,13 +24,11 @@
 
 	polymorphic = TRUE
 
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#A8A8A8"
-
-	color_primary_desc = "shirt"
-	color_secondary_desc = "pants"
-	color_tertiary_desc = "shoulders"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"toe" = "#FFFFFF",
+		"sole" = "#A8A8A8"
+	)
 
 	value = 10
 
@@ -46,9 +44,11 @@
 
 
 /obj/item/clothing/feet/shoes/colored/black
-	color_primary = "#FFFFFF"
-	color_secondary = "#262626"
-	color_tertiary = "#A8A8A8"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"toe" = "#FFFFFF",
+		"sole" = "#A8A8A8"
+	)
 
 
 /obj/item/clothing/feet/shoes/colored/black/left
@@ -60,9 +60,11 @@
 	protected_limbs = list(BODY_FOOT_LEFT)
 
 /obj/item/clothing/feet/shoes/colored/blacker
-	color_primary = "#262626"
-	color_secondary = "#0F0F0F"
-	color_tertiary = "#0F0F0F"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"toe" = "#FFFFFF",
+		"sole" = "#A8A8A8"
+	)
 
 /obj/item/clothing/feet/shoes/colored/blacker/left
 	name = "left shoe"
@@ -74,9 +76,11 @@
 
 
 /obj/item/clothing/feet/shoes/colored/brown
-	color_primary = "#A05726"
-	color_secondary = "#A05726"
-	color_tertiary = "#A05726"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"toe" = "#FFFFFF",
+		"sole" = "#A8A8A8"
+	)
 
 /obj/item/clothing/feet/shoes/colored/brown/left
 	name = "left shoe"

@@ -30,13 +30,10 @@
 
 	no_initial_blend = TRUE
 
-	color_primary = "#FFFFFF"
-	color_secondary = "#FFFFFF"
-	color_tertiary = "#FFFFFF"
-
-	color_primary_desc = "cat ears"
-	color_secondary_desc = null
-	color_tertiary_desc = null
+	polymorphs = list(
+		"outer" = "#FFFFFF",
+		"inner" = "#FF8888"
+	)
 
 	worn_layer = LAYER_MOB_HAIR_HEAD + 0.01
 
