@@ -46,3 +46,9 @@
 	color_primary = COLOR_ENGINEERING
 	color_secondary = COLOR_BROWN
 	color_tertiary = COLOR_ORANGE
+
+
+/obj/item/clothing/head/helmet/polymorphic/medical
+	color_primary = COLOR_WHITE
+	color_secondary = COLOR_MEDICAL
+	color_tertiary = COLOR_MEDICAL

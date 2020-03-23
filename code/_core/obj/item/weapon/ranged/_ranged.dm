@@ -53,7 +53,6 @@
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller)
 
 	if(!caller.can_attack(null,src))
-		caller << "Caller can't attack."
 		return FALSE
 
 	return TRUE
@@ -65,7 +64,6 @@
 		return FALSE
 
 	if(next_shoot_time > world.time)
-		caller << "Shoot time!"
 		return FALSE
 
 	return TRUE
@@ -114,8 +112,6 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,loca
 	return .
 
 obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
-
-	caller << "We're going to shoot."
 
 	if(!object)
 		return FALSE

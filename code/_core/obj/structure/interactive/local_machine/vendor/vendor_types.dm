@@ -36,7 +36,12 @@
 	icon_state = "clothes"
 
 
-/obj/structure/interactive/vending/medicine
+/obj/structure/interactive/vending/medical/
+	name = "medicine vendor"
+	icon_state = "med"
+
+
+/obj/structure/interactive/vending/medical/medicine
 	name = "medicine vendor"
 	icon_state = "med"
 	stored_types = list(
@@ -46,7 +51,25 @@
 		/obj/item/container/medicine/burn_kit,
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
-		/obj/item/container/syringe/epinephrine
+		/obj/item/container/syringe/epinephrine,
+		/obj/item/storage/bags/pills/kelotane_small,
+		/obj/item/storage/bags/pills/dylovene_small,
+		/obj/item/storage/bags/pills/bicaridine_small
+	)
+
+/obj/structure/interactive/vending/medical/chemistry
+	name = "chemistry vendor"
+	icon_state = "chem"
+	stored_types = list(
+		/obj/item/container/beaker/bottle/bicaridine,
+		/obj/item/container/beaker/bottle/dylovene,
+		/obj/item/container/beaker/bottle/epinephrine,
+		/obj/item/container/beaker/bottle/kelotane,
+		/obj/item/storage/bags/pills,
+		/obj/item/container/syringe,
+		/obj/item/container/beaker/vial,
+		/obj/item/container/beaker,
+		/obj/item/container/beaker/large
 	)
 
 /obj/structure/interactive/vending/engineering

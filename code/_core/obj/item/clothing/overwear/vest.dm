@@ -38,6 +38,10 @@
 	name = "industrial vest"
 	color = COLOR_BROWN_LIGHT
 
+/obj/item/clothing/overwear/armor/vest/colored/medical
+	name = "medical vest"
+	color = COLOR_WHITE
+
 
 /obj/item/clothing/overwear/armor/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 

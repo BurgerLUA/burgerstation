@@ -324,6 +324,9 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
+	add_nutrition(-(LIFE_TICK_SLOW/10)*0.15,FALSE)
+	add_hydration(-(LIFE_TICK_SLOW/10)*0.15)
+
 	return TRUE
 
 /mob/living/proc/handle_alpha()

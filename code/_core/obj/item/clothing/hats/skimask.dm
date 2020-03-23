@@ -17,3 +17,7 @@
 
 /obj/item/clothing/head/hood/skimask/black
 	color = COLOR_BLACK
+
+/obj/item/clothing/head/hood/skimask/medical
+	name = "medical full face mask"
+	color = COLOR_MEDICAL

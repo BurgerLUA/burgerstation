@@ -34,6 +34,9 @@
 	var/charge_parry = 500
 	var/charge_dodge = 500
 
+	var/nutrition = 1000
+	var/hydration = 1000
+
 	var/first_life = TRUE
 
 	var/health_regen_buffer = 0

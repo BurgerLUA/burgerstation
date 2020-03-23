@@ -1,6 +1,7 @@
 /mob/living/advanced
 
 	name = "lost soul"
+	var/real_name
 
 	var/species = "human"
 
@@ -215,6 +216,8 @@
 	return TRUE
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
+
+	real_name = name
 
 	icon = 'icons/invisible.dmi'
 	icon_state = "0"

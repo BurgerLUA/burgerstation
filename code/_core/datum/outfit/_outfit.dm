@@ -9,10 +9,6 @@
 
 	I.on_spawn()
 
-	if(is_organ(I))
-		A.add_organ(I)
-		return TRUE
-
 	if(!I.quick_equip(A))
 		qdel(I)
 		return FALSE

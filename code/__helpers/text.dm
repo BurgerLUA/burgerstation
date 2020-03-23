@@ -1,5 +1,8 @@
 #define ICON_TO_TEXT(icon,icon_state) <img class='icon' src=\ref[icon] ICONSTATE='[icon_state]'>
 
+/proc/deunderscore(var/text)
+	return replacetextEx(text,"_"," ")
+
 /proc/police_input(var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
 
 	/*

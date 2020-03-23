@@ -3,20 +3,12 @@
 	desc = "THIS IS CLOTHING."
 	worn_layer = LAYER_MOB_CLOTHING
 	var/flags_clothing = FLAG_CLOTHING_NONE
-	color = "#ffffff"
-
-	var/polymorphic = FALSE
 
 	color = "#FFFFFF"
 
-	var/color_primary = "#FF0000"
-	var/color_primary_desc = "primary"
+	var/polymorphic = FALSE
 
-	var/color_secondary = "#00FF00"
-	var/color_secondary_desc = "secondary"
-
-	var/color_tertiary = "#0000FF"
-	var/color_tertiary_desc = "tertiary"
+	var/list/polymorphs = list()
 
 	icon_state = "inventory"
 	icon_state_worn = "worn"
@@ -58,9 +50,9 @@
 		if(!desired_icon_state)
 			desired_icon_state = icon_state_worn
 		var/icon/initial_icon = initial(icon)
-		add_blend("outfit_primary", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_primary", desired_color = color_primary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-		add_blend("outfit_secondary", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_secondary", desired_color = color_secondary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-		add_blend("outfit_tertiary", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_tertiary", desired_color = color_tertiary, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		for(var/polymorph_name in polymorphs)
+			var/polymorph_color = polymorphs[polymorph_name]
+			add_blend("outfit_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 		update_icon()
 
 	..()
@@ -73,17 +65,15 @@
 	icon = initial(icon)
 	icon_state = initial(icon_state)
 
-	var/icon/I1 = new /icon(icon,"[icon_state]_primary")
-	var/icon/I2 = new /icon(icon,"[icon_state]_secondary")
-	var/icon/I3 = new /icon(icon,"[icon_state]_tertiary")
-	I1.Blend(color_primary,ICON_MULTIPLY)
-	I2.Blend(color_secondary,ICON_MULTIPLY)
-	I3.Blend(color_tertiary,ICON_MULTIPLY)
+	var/icon/I = new/icon(icon,icon_state)
 
-	I1.Blend(I2,ICON_OVERLAY)
-	I1.Blend(I3,ICON_OVERLAY)
+	for(var/polymorph_name in polymorphs)
+		var/polymorph_color = polymorphs[polymorph_name]
+		var/icon/I2 = new /icon(icon,"[icon_state]_[polymorph_name]")
+		I2.Blend(polymorph_color,ICON_MULTIPLY)
+		I.Blend(I2,ICON_OVERLAY)
 
-	icon = I1
+	icon = I
 
 	return ..()
 

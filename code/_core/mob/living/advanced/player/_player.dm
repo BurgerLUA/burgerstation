@@ -2,7 +2,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/
 	name = "lost soul"
-	var/real_name = "lost soul"
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 

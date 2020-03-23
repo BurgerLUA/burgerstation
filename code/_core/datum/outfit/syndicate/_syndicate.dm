@@ -23,6 +23,7 @@
 		/obj/item/clothing/head/helmet/security/tactical_helmet2,
 		/obj/item/clothing/head/hood/skimask/black,
 		/obj/item/clothing/glasses/sun
+
 	)
 
 /loadout/syndicate/hardsuit

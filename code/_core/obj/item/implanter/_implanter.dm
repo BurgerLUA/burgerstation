@@ -1,18 +1,31 @@
 /obj/item/implanter
 	name = "autoimplanter"
 	desc = "Breast implants when?"
-	desc = "A handheld chip implanter that allows you to self-insert implant chips, and sometimes even organs, into your skin and bones. Just scan the target area and press the button. Cannot be used to implant those other than the user."
+	desc_extended = "A handheld chip implanter that allows you to self-insert implant chips, and sometimes even organs, into your skin and bones. Just scan the target area and press the button. Cannot be used to implant those other than the user."
 	var/removes_existing = FALSE
 
 	var/obj/item/organ/internal/stored_implant
 
+	icon = 'icons/obj/items/implanter.dmi'
+	icon_state = "implanter"
+
 	value = 50
+
+
+/obj/item/implanter/update_icon()
+
+	icon_state = initial(icon_state)
+
+	if(stored_implant)
+		icon_state = "[icon_state]_1"
+
+	return ..()
 
 /obj/item/implanter/New(var/desired_loc)
 	. = ..()
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
-
+	update_icon()
 	return .
 
 /obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -41,6 +54,8 @@
 		caller.to_chat("You implant \the [added_implant.name] into your [added_implant.attached_organ.name].")
 		name = initial(name)
 		stored_implant = null
+
+	update_icon()
 
 	return TRUE
 

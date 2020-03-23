@@ -5,12 +5,45 @@
 	icon_state = "lungs"
 	attach_flag = BODY_TORSO
 
-/obj/item/organ/internal/implant/hand/left
+/obj/item/organ/internal/implant/head/
 	name = "head implant"
 	id = "implant_head"
+	attach_flag = BODY_HEAD
+
+/obj/item/organ/internal/implant/head/loyalty
+	var/registered_name = "none"
+	var/registered_id = "none"
+	var/registered_squad = "none"
+	var/loyalty_tag = "NanoTrasen"
+
+/obj/item/organ/internal/implant/head/loyalty/proc/register()
+	if(loc.loc && is_advanced(loc.loc))
+		var/mob/living/advanced/A = loc.loc
+		registered_name = A.real_name
+		registered_id = md5("\ref[src]")
+		return TRUE
+
+	return FALSE
+
+
+/obj/item/organ/internal/implant/head/loyalty/nanotrasen
+	name = "loyalty implant"
+	desc = "Do you swear loyalty? No? Well that doesn't matter."
+	desc_extended = "A state of the art NanoTrasen Loyalty Implant Tracker, or NT-LIT, as the cool kids call it. This implant prevents the user from doing most forms of physical harm to those who also have the same loyalty implant model, and vice versa. Note that technology isn't advanced enough to stop other sources of harm, but NanoTrasen doesn't want you to know about that."
+	loyalty_tag = "NanoTrasen"
+
+/obj/item/organ/internal/implant/head/loyalty/syndicate
+	name = "freedom implant"
+	desc = "An implant that gives you FREEDOM."
+	desc_extended = "A highly illegal Syndicate Freedom Implant specifically designed to override and replace any other NanoTrasen Loyalty Implants. This implant prevents the user from doing harm to those who also have the same freedom implant model, and vice versa."
+	loyalty_tag = "Syndicate"
+
+/obj/item/organ/internal/implant/hand/left
+	name = "left hand implant"
+	id = "implant_hand_left"
 	attach_flag = BODY_HAND_LEFT
 
-var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list()
+var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list() //For future use in tracking.
 
 /obj/item/organ/internal/implant/hand/left/iff
 	name = "\improper NanoTrasen IFF implant"
@@ -21,6 +54,15 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list()
 	var/registered_squad = "none"
 	var/iff_tag = "NanoTrasen"
 
+/obj/item/organ/internal/implant/hand/left/iff/proc/register()
+
+	if(loc.loc && is_advanced(loc.loc))
+		var/mob/living/advanced/A = loc.loc
+		registered_name = A.real_name
+		registered_id = md5("\ref[src]")
+		return TRUE
+
+	return FALSE
 
 /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
 	name = "\improper NanoTrasen IFF implant"
