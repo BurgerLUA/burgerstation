@@ -1,6 +1,6 @@
 /outfit/farmer
 	id = "farmer_outfit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/feet/socks/white,
 		/obj/item/clothing/feet/socks/white,
 		/obj/item/clothing/feet/shoes/sandal,

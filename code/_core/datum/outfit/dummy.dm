@@ -1,9 +1,11 @@
 /outfit/dummy_armor
 	id = "dummy_armor"
-	spawning_clothes = list(
-		/obj/item/clothing/hands/gloves/colored/yellow,
-		/obj/item/clothing/hands/gloves/colored/yellow/left,
+	spawning_items = list(
+		/obj/item/clothing/shirt/syndicate,
 		/obj/item/clothing/head/helmet/security/tactical_helmet,
 		/obj/item/clothing/overwear/armor/bulletproof,
-		/obj/item/clothing/underbottom/underwear/loincloth/brown
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle
+
 	)

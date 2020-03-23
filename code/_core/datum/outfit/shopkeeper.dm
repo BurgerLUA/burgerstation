@@ -1,6 +1,6 @@
 /outfit/shopkeeper
 	id = "shopkeeper_outfit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/back/storage/backpack,
 		/obj/item/clothing/belt/storage,
 		/obj/item/clothing/feet/shoes/colored/black,

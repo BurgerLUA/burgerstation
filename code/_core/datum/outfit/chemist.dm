@@ -1,6 +1,6 @@
 /outfit/chemist
 	id = "chemist"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/uniform/chemist,
 		/obj/item/clothing/overwear/coat/labcoat/chemist,

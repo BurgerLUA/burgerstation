@@ -298,27 +298,25 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/add_outfit(var/outfit_id,var/soul_bound=FALSE)
 
 	var/outfit/spawning_outfit = all_outfits[outfit_id]
-
 	if(!spawning_outfit)
 		return FALSE
 
-	for(var/key in spawning_outfit.spawning_clothes)
-		var/obj/item/clothing/C = new key(get_turf(src))
-		C.on_spawn()
-		add_worn_item(C)
-		if(istype(C) && C.additional_clothing)
-			C.equip_additional_clothing(src)
+	var/list/items_to_add = spawning_outfit.get_spawning_items()
+
+	for(var/key in items_to_add)
+		var/obj/item/I = new key(get_turf(src))
+		if(I) spawning_outfit.on_add(src,I)
 
 	return TRUE
 
-/mob/living/advanced/proc/add_worn_item(var/obj/item/clothing/C)
+/mob/living/advanced/proc/add_worn_item(var/obj/item/C)
 	for(var/obj/hud/inventory/I in inventory)
 		if(I.add_worn_object(C,FALSE))
 			return TRUE
 
 	return FALSE
 
-/mob/living/advanced/proc/remove_worn_item(var/obj/item/clothing/C)
+/mob/living/advanced/proc/remove_worn_item(var/obj/item/C)
 	for(var/obj/hud/inventory/I in inventory)
 		if(I.remove_object(C))
 			return TRUE

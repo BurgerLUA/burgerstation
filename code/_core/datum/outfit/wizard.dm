@@ -1,6 +1,6 @@
 /outfit/wizard
 	id = "wizard"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/head/hat/wizard/blue,
 
 		/obj/item/clothing/pants/brown,
@@ -15,7 +15,7 @@
 /outfit/wizard/evil
 	id = "wizard_evil"
 
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/head/hat/wizard/red,
 
 		/obj/item/clothing/pants/brown,

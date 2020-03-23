@@ -1,6 +1,6 @@
 /outfit/syndicate/
 	id = "syndicate"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/syndicate,
@@ -11,7 +11,7 @@
 
 /outfit/syndicate/soldier
 	id = "syndicate_soldier"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/syndicate,
@@ -27,7 +27,7 @@
 
 /outfit/syndicate/hardsuit
 	id = "syndicate_hardsuit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/syndicate,
@@ -39,7 +39,7 @@
 
 /outfit/syndicate/hardsuit/advanced
 	id = "syndicate_hardsuit_advanced"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/syndicate,
@@ -51,7 +51,7 @@
 
 /outfit/syndicate/hardsuit/elite
 	id = "syndicate_hardsuit_elite"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/syndicate,

@@ -1,6 +1,6 @@
 /outfit/marwani
 	id = "marwani_outfit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/glasses/prescription,
 
 		/obj/item/clothing/overwear/armor/tutorial,

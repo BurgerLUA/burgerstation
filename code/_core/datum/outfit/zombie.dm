@@ -1,6 +1,6 @@
 /outfit/zombie/winter
 	id = "zombie_winter"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/pants/brown,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/overwear/coat/winter,
@@ -10,7 +10,7 @@
 
 /outfit/zombie/desert
 	id = "zombie_desert"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/mask/mummy,
 		/obj/item/clothing/uniform/mummy
 	)

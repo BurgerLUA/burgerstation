@@ -1,6 +1,6 @@
 /outfit/cult
 	id = "cult"
-	spawning_clothes = list(
+	spawning_items = list(
 
 		/obj/item/clothing/uniform/jumpsuit/red,
 

@@ -1,6 +1,6 @@
 /outfit/hop
 	id = "hop_outfit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/head/hat/hop,
 		/obj/item/clothing/uniform/hop,
 		/obj/item/clothing/glasses/sun,
@@ -13,7 +13,7 @@
 
 /outfit/ce
 	id = "ce_outfit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/uniform/ce,
 		/obj/item/clothing/hands/gloves/colored/yellow,
 		/obj/item/clothing/hands/gloves/colored/yellow/left,
@@ -23,7 +23,7 @@
 
 /outfit/hos
 	id = "hos_outfit"
-	spawning_clothes = list(
+	spawning_items = list(
 		/obj/item/clothing/head/hat/hos,
 		/obj/item/clothing/uniform/hos,
 		/obj/item/clothing/glasses/sun,
