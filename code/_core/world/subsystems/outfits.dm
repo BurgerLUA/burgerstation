@@ -1,16 +1,16 @@
-var/global/list/all_outfits = list()
+var/global/list/all_loadouts = list()
 
-SUBSYSTEM_DEF(outfits)
-	name = "Outfit Subsystem"
-	desc = "Store all the outfits."
+SUBSYSTEM_DEF(loadouts)
+	name = "NPC Loadout Subsystem"
+	desc = "Store all the NPC loadouts."
 	priority = SS_ORDER_PRELOAD
 
-/subsystem/outfits/Initialize()
-	for(var/v in subtypesof(/outfit/))
-		var/outfit/O = new v
+/subsystem/loadouts/Initialize()
+	for(var/v in subtypesof(/loadout/))
+		var/loadout/O = new v
 		if(O.id)
-			all_outfits[O.id] = O
+			all_loadouts[O.id] = O
 		else
 			qdel(O)
 
-	LOG_SERVER("Initialized [length(all_outfits)] outfits.")
+	LOG_SERVER("Initialized [length(all_loadouts)] outfits.")

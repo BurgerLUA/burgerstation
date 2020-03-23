@@ -28,6 +28,6 @@
 
 	. = ..()
 
-	add_outfit("dummy_armor")
+	equip_loadout("dummy_armor")
 
 	return .

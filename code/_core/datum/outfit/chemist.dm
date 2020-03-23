@@ -1,4 +1,4 @@
-/outfit/chemist
+/loadout/chemist
 	id = "chemist"
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,

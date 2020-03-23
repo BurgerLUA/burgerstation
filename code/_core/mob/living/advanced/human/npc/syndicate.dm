@@ -14,7 +14,7 @@
 		"syndicate_hardsuit_elite" = 3
 	)
 
-	var/outfit_to_level = list(
+	var/loadout_to_level = list(
 		"syndicate_soldier" = 1,
 		"syndicate_hardsuit" = 2,
 		"syndicate_hardsuit_advanced" = 4,
@@ -55,8 +55,8 @@
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
-	var/outfit_to_use = pickweight(possible_outfits)
-	level_multiplier *= outfit_to_level[outfit_to_use]
+	var/loadout_to_use = pickweight(possible_outfits)
+	level_multiplier *= loadout_to_level[loadout_to_use]
 
 	. = ..()
 
@@ -76,7 +76,7 @@
 
 	update_all_blends()
 
-	add_outfit(outfit_to_use)
+	equip_loadout(loadout_to_use)
 
 	for(var/i=1,i<=2,i++)
 		var/picked_weapon = pick(possible_weapons)

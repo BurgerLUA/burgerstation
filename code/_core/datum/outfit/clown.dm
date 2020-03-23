@@ -1,4 +1,4 @@
-/outfit/clown
+/loadout/clown
 	id = "clown"
 	spawning_items = list(
 		/obj/item/clothing/mask/gas/clown,

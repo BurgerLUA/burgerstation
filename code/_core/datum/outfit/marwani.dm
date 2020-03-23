@@ -1,4 +1,4 @@
-/outfit/marwani
+/loadout/marwani
 	id = "marwani_outfit"
 	spawning_items = list(
 		/obj/item/clothing/glasses/prescription,

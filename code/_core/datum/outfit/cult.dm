@@ -1,4 +1,4 @@
-/outfit/cult
+/loadout/cult
 	id = "cult"
 	spawning_items = list(
 

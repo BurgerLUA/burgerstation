@@ -1,4 +1,4 @@
-/outfit/hop
+/loadout/hop
 	id = "hop_outfit"
 	spawning_items = list(
 		/obj/item/clothing/head/hat/hop,
@@ -11,7 +11,7 @@
 	)
 
 
-/outfit/ce
+/loadout/ce
 	id = "ce_outfit"
 	spawning_items = list(
 		/obj/item/clothing/uniform/ce,
@@ -21,7 +21,7 @@
 	)
 
 
-/outfit/hos
+/loadout/hos
 	id = "hos_outfit"
 	spawning_items = list(
 		/obj/item/clothing/head/hat/hos,

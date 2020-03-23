@@ -12,7 +12,7 @@
 
 	. = ..()
 
-	add_outfit("clown")
+	equip_loadout("clown")
 	put_in_hands(new /obj/item/weapon/ranged/magic/staff/chaos(src.loc),FALSE)
 
 	return .
@@ -40,7 +40,7 @@
 
 	. = ..()
 
-	add_outfit("cult")
+	equip_loadout("cult")
 
 	put_in_hands(new /obj/item/weapon/ranged/magic/staff/basic(src.loc),FALSE)
 	put_in_hands(new /obj/item/weapon/ranged/magic/tome/lightning(src.loc),TRUE)

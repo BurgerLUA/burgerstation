@@ -1,4 +1,4 @@
-/outfit/new_player/male
+/loadout/new_player/male
 	id = "new_male"
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
@@ -10,7 +10,7 @@
 		/obj/item/clothing/feet/shoes/colored/black/left
 	)
 
-/outfit/new_player/female
+/loadout/new_player/female
 	id = "new_female"
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/panty,

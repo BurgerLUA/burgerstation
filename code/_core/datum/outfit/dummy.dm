@@ -1,4 +1,4 @@
-/outfit/dummy_armor
+/loadout/dummy_armor
 	id = "dummy_armor"
 	spawning_items = list(
 		/obj/item/clothing/shirt/syndicate,

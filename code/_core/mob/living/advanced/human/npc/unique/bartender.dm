@@ -11,6 +11,6 @@
 	change_organ_visual("skin", desired_color = "#E0BCAA")
 	change_organ_visual("hair_head", desired_color = "#C45927", desired_icon_state = "hair_drillhair")
 	update_all_blends()
-	add_outfit("bartender")
+	equip_loadout("bartender")
 
 	return .

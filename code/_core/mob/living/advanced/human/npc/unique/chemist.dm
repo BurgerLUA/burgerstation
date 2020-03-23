@@ -10,5 +10,5 @@
 	change_organ_visual("skin", desired_color = "#EFC9BD")
 	change_organ_visual("hair_head", desired_color = "#FFFFFF", desired_icon_state = "none")
 	update_all_blends()
-	add_outfit("chemist")
+	equip_loadout("chemist")
 	return .

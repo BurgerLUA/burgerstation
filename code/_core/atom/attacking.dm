@@ -1,4 +1,4 @@
-/atom/proc/get_attack_delay(var/mob/user)
+/atom/proc/get_attack_delay(var/mob/user) //Return deciseconds.
 
 	if(is_living(user))
 		var/mob/living/L = user
@@ -83,7 +83,7 @@
 		DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
 		return FALSE
 
-	attacker.attack_next = world.time + get_attack_delay(attacker)
+	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
 
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)
@@ -141,10 +141,10 @@
 	if(attack_next > world.time)
 		return FALSE
 
-	if(weapon && weapon.attack_next > world.time)
+	if(!weapon || weapon.attack_next > world.time)
 		return FALSE
 
-	if(victim && !victim.can_be_attacked(src,weapon,params))
+	if(!victim || !victim.can_be_attacked(src,weapon,params))
 		return FALSE
 
 	return TRUE

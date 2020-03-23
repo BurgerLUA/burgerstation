@@ -295,9 +295,9 @@ mob/living/advanced/Login()
 
 	return .
 
-/mob/living/advanced/proc/add_outfit(var/outfit_id,var/soul_bound=FALSE)
+/mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 
-	var/outfit/spawning_outfit = all_outfits[outfit_id]
+	var/loadout/spawning_outfit = all_loadouts[loadout_id]
 	if(!spawning_outfit)
 		return FALSE
 

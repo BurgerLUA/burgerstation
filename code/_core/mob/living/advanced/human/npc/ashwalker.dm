@@ -10,7 +10,7 @@
 
 	loot_drop_in_corpse = TRUE
 
-	var/outfit_to_use = "ashwalker"
+	var/loadout_to_use = "ashwalker"
 	var/shield_chance = 0
 	var/spear_chance = 25
 
@@ -35,7 +35,7 @@
 	var/skin_color = sex == MALE ? rgb(rand(75,120),rand(75,120),rand(75,120)) : rgb(rand(120,200),rand(120,200),rand(120,200))
 
 	if(sex == FEMALE)
-		outfit_to_use = outfit_to_use + "_female"
+		loadout_to_use = loadout_to_use + "_female"
 
 	var/rand_col = rand(50,200)
 	var/horn_color =  sex == MALE ? pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)) : skin_color
@@ -46,7 +46,7 @@
 	change_organ_visual("hair_head", desired_color = horn_color, desired_icon_state = horns_to_use)
 
 	update_all_blends()
-	add_outfit(outfit_to_use)
+	equip_loadout(loadout_to_use)
 
 
 	if(prob(shield_chance))
@@ -65,7 +65,7 @@
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
 	level_multiplier = 1.5
-	outfit_to_use = "ashwalker_warrior"
+	loadout_to_use = "ashwalker_warrior"
 	spear_chance = 100
 	shield_chance = 50
 

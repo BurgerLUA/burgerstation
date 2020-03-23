@@ -1,4 +1,4 @@
-/outfit/zombie/winter
+/loadout/zombie/winter
 	id = "zombie_winter"
 	spawning_items = list(
 		/obj/item/clothing/pants/brown,
@@ -8,7 +8,7 @@
 		/obj/item/clothing/feet/shoes/winter/left
 	)
 
-/outfit/zombie/desert
+/loadout/zombie/desert
 	id = "zombie_desert"
 	spawning_items = list(
 		/obj/item/clothing/mask/mummy,

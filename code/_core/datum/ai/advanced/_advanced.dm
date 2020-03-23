@@ -13,17 +13,12 @@
 
 	var/checked_weapons = FALSE
 
-	var/obj/hud/inventory/old_left_hand_inventory
-	var/obj/hud/inventory/old_right_hand_inventory
 	var/obj/item/weapon/objective_weapon
-
 
 	var/attack_delay_left
 	var/attack_delay_right
 
 /ai/advanced/Destroy()
-	old_left_hand_inventory = null
-	old_right_hand_inventory = null
 	objective_weapon = null
 	return ..()
 
@@ -150,14 +145,14 @@
 */
 
 
-/ai/advanced/handle_attacking()
+/ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
 
 	if(!is_advanced(owner))
 		return ..()
 
 	var/mob/living/advanced/A = owner
 
-	if(objective_attack)
+	if(new_alert_level == ALERT_LEVEL_ALERT || new_alert_level == ALERT_LEVEL_CAUTION)
 		if(!A.left_item && !A.right_item)
 			var/list/possible_weapons = list()
 			for(var/obj/item/weapon/W in A.worn_objects)
@@ -167,20 +162,25 @@
 			if(length(possible_weapons))
 				var/obj/item/weapon/W = pickweight(possible_weapons)
 				if(A.right_hand)
-					old_right_hand_inventory = W.loc
 					A.right_hand.add_held_object(W,FALSE)
 				else if(A.left_hand)
-					old_left_hand_inventory = W.loc
 					A.left_hand.add_held_object(W,FALSE)
 				W.click_self(A)
 	else
-		if(old_right_hand_inventory && A.right_item)
-			old_right_hand_inventory.add_worn_object(A.right_item,FALSE)
-			old_right_hand_inventory = null
+		if(A.right_item)
+			A.right_item.quick_equip(A)
 
-		if(old_left_hand_inventory && A.left_item)
-			old_left_hand_inventory.add_worn_object(A.left_item,FALSE)
-			old_left_hand_inventory = null
+		if(A.left_item)
+			A.left_item.quick_equip(A)
+
+	return ..()
+
+/ai/advanced/handle_attacking()
+
+	if(!is_advanced(owner))
+		return ..()
+
+	var/mob/living/advanced/A = owner
 
 	distance_target_min = 1
 	distance_target_max = 1

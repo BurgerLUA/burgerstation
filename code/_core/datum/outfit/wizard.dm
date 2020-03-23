@@ -1,4 +1,4 @@
-/outfit/wizard
+/loadout/wizard
 	id = "wizard"
 	spawning_items = list(
 		/obj/item/clothing/head/hat/wizard/blue,
@@ -12,7 +12,7 @@
 		/obj/item/clothing/feet/shoes/sandal/left
 	)
 
-/outfit/wizard/evil
+/loadout/wizard/evil
 	id = "wizard_evil"
 
 	spawning_items = list(

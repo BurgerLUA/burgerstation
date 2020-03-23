@@ -10,7 +10,7 @@
 
 	loot_drop_in_corpse = TRUE
 
-	var/outfit_to_use = "zombie"
+	var/loadout_to_use = "zombie"
 	var/spear_chance = 0
 
 	loot_drop = "zombie"
@@ -32,7 +32,7 @@
 	change_organ_visual("eye", desired_color = "#FF0000")
 
 	update_all_blends()
-	add_outfit(outfit_to_use)
+	equip_loadout(loadout_to_use)
 
 	if(spear_chance)
 		put_in_hands(new /obj/item/weapon/melee/spear(src.loc),FALSE)
@@ -41,13 +41,13 @@
 
 
 /mob/living/advanced/npc/zombie/winter
-	outfit_to_use = "zombie_winter"
+	loadout_to_use = "zombie_winter"
 	loot_drop = "zombie"
 	spear_chance = 100
 	level_multiplier = 1.5
 
 /mob/living/advanced/npc/zombie/desert
-	outfit_to_use = "zombie_desert"
+	loadout_to_use = "zombie_desert"
 	loot_drop = "zombie"
 	spear_chance = 0
 	level_multiplier = 2

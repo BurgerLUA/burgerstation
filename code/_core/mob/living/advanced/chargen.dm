@@ -4,9 +4,9 @@
 	show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 	default_appearance()
 	if(sex == MALE)
-		add_outfit("new_male",TRUE)
+		equip_loadout("new_male",TRUE)
 	else
-		add_outfit("new_female",TRUE)
+		equip_loadout("new_female",TRUE)
 	stop_music_track(client)
 
 	/*
@@ -107,9 +107,9 @@
 		equip_objects_in_list(kept_items)
 	else
 		if(sex == MALE)
-			add_outfit("new_male",TRUE)
+			equip_loadout("new_male",TRUE)
 		else
-			add_outfit("new_female",TRUE)
+			equip_loadout("new_female",TRUE)
 
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
 		B.update_icon()

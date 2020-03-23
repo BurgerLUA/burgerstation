@@ -16,7 +16,7 @@
 
 	. = ..()
 
-	add_outfit("daddy")
+	equip_loadout("daddy")
 
 	var/obj/item/weapon/melee/zweihander/W = new(src.loc)
 	put_in_hands(W,FALSE)

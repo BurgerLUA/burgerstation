@@ -1,4 +1,4 @@
-/outfit/farmer
+/loadout/farmer
 	id = "farmer_outfit"
 	spawning_items = list(
 		/obj/item/clothing/feet/socks/white,

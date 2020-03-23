@@ -1,4 +1,4 @@
-/outfit/shopkeeper
+/loadout/shopkeeper
 	id = "shopkeeper_outfit"
 	spawning_items = list(
 		/obj/item/clothing/back/storage/backpack,

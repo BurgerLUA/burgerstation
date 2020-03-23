@@ -27,11 +27,11 @@ obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,objec
 		return TRUE
 
 	if(A.sex == MALE)
-		A.add_outfit("new_male",TRUE)
+		A.equip_loadout("new_male",TRUE)
 	else
-		A.add_outfit("new_female",TRUE)
+		A.equip_loadout("new_female",TRUE)
 
-	A.add_outfit("assistant",TRUE)
+	A.equip_loadout("assistant",TRUE)
 
 
 	return TRUE

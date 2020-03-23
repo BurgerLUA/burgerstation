@@ -1,11 +1,11 @@
-/outfit/ashwalker
+/loadout/ashwalker
 	id = "ashwalker"
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/brown,
 		/obj/item/clothing/neck/cloak/brown
 	)
 
-/outfit/ashwalker/female
+/loadout/ashwalker/female
 	id = "ashwalker_female"
 	spawning_items = list(
 		/obj/item/clothing/undertop/underwear/bra/strapless/brown,
@@ -14,7 +14,7 @@
 	)
 
 
-/outfit/ashwalker/warrior
+/loadout/ashwalker/warrior
 	id = "ashwalker_warrior"
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/red,
@@ -22,7 +22,7 @@
 		/obj/item/clothing/neck/cloak/red
 	)
 
-/outfit/ashwalker/warrior/female
+/loadout/ashwalker/warrior/female
 	id = "ashwalker_warrior_female"
 	spawning_items = list(
 		/obj/item/clothing/undertop/underwear/bra/alt/red,

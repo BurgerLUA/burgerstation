@@ -386,7 +386,7 @@
 	if(attacker.dir & WEST)
 		pixel_x_offset += -punch_distance
 
-	var/weapon_attack_delay = weapon && attacker ? weapon.get_attack_delay(attacker) : ATTACK_ANIMATION_LENGTH * 2
+	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? attacker.attack_next - world.time : ATTACK_ANIMATION_LENGTH * 2
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

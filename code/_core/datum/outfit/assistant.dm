@@ -1,4 +1,4 @@
-/outfit/assistant
+/loadout/assistant
 	id = "assistant"
 	spawning_items = list(
 		/obj/item/clothing/uniform/jumpsuit/grey,

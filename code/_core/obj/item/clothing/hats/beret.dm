@@ -14,8 +14,8 @@
 
 	value = 5
 
-/obj/item/clothing/head/hat/beret/red
-	color = "#800000"
+/obj/item/clothing/head/hat/beret/shaleez
+	color = COLOR_SHALEEZ_RED
 
 /obj/item/clothing/head/hat/beret/black
 	color = COLOR_BLACK

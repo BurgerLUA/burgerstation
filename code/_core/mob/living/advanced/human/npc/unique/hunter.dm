@@ -10,7 +10,8 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	change_organ_visual("skin", desired_color = "#779922")
+	change_organ_visual("eyes", desired_color = "#EAC300")
 	change_organ_visual("hair_head", desired_color = "#779922", desired_icon_state = "frills_short")
 	update_all_blends()
-	add_outfit("hunter_outfit")
+	equip_loadout("shaleez_outfit")
 	return .
