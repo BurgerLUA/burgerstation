@@ -76,8 +76,8 @@
 
 	var/mob/living/advanced/A = owner
 
-	var/atom/defer_right = A.right_hand?.defer_click_on_object()
-	var/atom/defer_left = A.left_hand?.defer_click_on_object()
+	var/atom/defer_right_click = A.left_hand?.defer_click_on_object()
+	var/atom/defer_left_click = A.right_hand?.defer_click_on_object()
 
 	var/list/params = list(
 		PARAM_ICON_X = num2text(pick(target_distribution_x)),
@@ -90,18 +90,23 @@
 		"alt" = 0
 	)
 
-	if(!defer_right || !owner.can_attack(target,defer_right,params))
-		defer_right = null
-		left_click = FALSE
-
-	if(!defer_left || !owner.can_attack(target,defer_left,params))
-		defer_left = null
+	if(!defer_right_click || !owner.can_attack(target,defer_right_click,params))
+		defer_right_click = null
 		left_click = TRUE
 
-	if(!defer_right && !defer_left)
+	if(!defer_left_click || !owner.can_attack(target,defer_left_click,params))
+		defer_left_click = null
+		left_click = FALSE
+
+	if(!defer_right_click && !defer_left_click)
 		return FALSE
 
-	var/atom/attacking_atom = left_click ? defer_right : defer_left
+	var/atom/attacking_atom = left_click ? defer_left_click : defer_right_click
+
+
+	world.log << "Attack time: [attacking_atom.attack_next - world.time]."
+
+
 	return attacking_atom.click_on_object(owner,target,null,null,params)
 
 

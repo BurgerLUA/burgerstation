@@ -2,6 +2,8 @@
 
 	if(is_living(user))
 		var/mob/living/L = user
+		if(attack_delay_max < attack_delay)
+			attack_delay_max = attack_delay
 		return attack_delay + (attack_delay_max - attack_delay)*(1-L.get_attribute_power(ATTRIBUTE_DEXTERITY))
 
 	return attack_delay
@@ -74,6 +76,11 @@
 	if(!desired_damage_type)
 		return FALSE
 
+	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
+
+	if(attacker != object_to_damage_with)
+		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)
+
 	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!DT)
 		LOG_ERROR("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [desired_damage_type] not existing!")
@@ -82,11 +89,6 @@
 	if(!object_to_damage)
 		DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
 		return FALSE
-
-	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
-
-	if(attacker != object_to_damage_with)
-		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)
 
 	var/damage_multiplier = 1
 

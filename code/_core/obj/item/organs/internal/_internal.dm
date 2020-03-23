@@ -116,12 +116,12 @@
 		if(heart_rate && heart_ticks >= ((1/heart_rate)*60)*10)
 			if(health_percent >= 0.5 && blood_percent < 1)
 				A.reagents.add_reagent("blood",0.1)
-			var/desired_oxyloss = FLOOR(100 * (1-blood_percent),1)
+			var/desired_oxyloss = FLOOR(A.health.health_max * 2 * (1-blood_percent),1)
 			var/current_oxyloss = FLOOR(A.health.get_oxy_loss(),1)
 			if(desired_oxyloss > current_oxyloss)
-				A.health.adjust_oxy_loss(1)
+				A.health.adjust_loss_smart(oxy=1)
 			else if (desired_oxyloss < current_oxyloss)
-				A.health.adjust_oxy_loss(-1)
+				A.health.adjust_loss_smart(oxy=-1)
 			heart_ticks = 0
 
 	return .
