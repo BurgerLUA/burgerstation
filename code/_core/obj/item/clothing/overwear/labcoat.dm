@@ -19,9 +19,7 @@
 
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"shoulder" = "#FFFFFF",
-		"waist" = "#FFFFFF"
+		"base" = "#FFFFFF"
 	)
 
 	value = 10
@@ -30,13 +28,10 @@
 /obj/item/clothing/overwear/coat/labcoat/chemist
 	polymorphs = list(
 		"base" = "#FFFFFF",
-		"shoulder" = "#FFFFFF",
-		"waist" = "#FFFFFF"
+		"shoulder" = COLOR_ORANGE
 	)
 
 /obj/item/clothing/overwear/coat/labcoat/medical
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"shoulder" = "#FFFFFF",
-		"waist" = "#FFFFFF"
+		"base" = COLOR_MEDICAL
 	)

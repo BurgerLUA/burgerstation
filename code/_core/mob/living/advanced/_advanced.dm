@@ -108,7 +108,7 @@
 
 /mob/living/advanced/proc/update_hair()
 
-	var/obj/item/organ/head/H = labeled_organs[BODY_HEAD]
+	var/obj/item/organ/head/H = labeled_organs[BODY_HAIR_HEAD]
 
 	if(!istype(H))
 		return FALSE

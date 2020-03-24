@@ -27,7 +27,7 @@
 	name = "cult robes"
 	icon = 'icons/obj/items/clothing/suit/cult.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
-	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	rarity = RARITY_UNCOMMON
 
@@ -117,7 +117,7 @@
 	name = "heavy knight armor"
 	icon = 'icons/obj/items/clothing/suit/knight_blank.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
-	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_UNCOMMON
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
@@ -245,7 +245,7 @@
 /obj/item/clothing/overwear/armor/hardsuit/
 	name = "hardsuit"
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT)
-	worn_layer = LAYER_MOB_CLOTHING_OVER_MOB
+	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_MYTHICAL
 
 

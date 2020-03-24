@@ -15,6 +15,7 @@
 	var/ai/ai
 
 	var/iff_tag
+	var/loyalty_tag
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
@@ -289,5 +290,15 @@
 
 	if(security_hud_image)
 		security_hud_image.icon_state = iff_tag ? iff_tag : "unknown"
+
+	return TRUE
+
+
+/mob/living/proc/set_loyalty_tag(var/desired_loyalty_tag,var/force=FALSE)
+
+	if(!force && desired_loyalty_tag == loyalty_tag)
+		return FALSE
+
+	loyalty_tag = desired_loyalty_tag
 
 	return TRUE

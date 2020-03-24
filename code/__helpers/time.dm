@@ -49,6 +49,9 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 
 /proc/get_clock_time(var/seconds,var/format_type = FORMAT_MINUTE | FORMAT_SECOND)
 
+	if(seconds < 0)
+		seconds = 0
+
 	var/hour_value = FLOOR(seconds/3600,1)
 	var/minute_value = FLOOR(seconds/60, 1) % 60
 	var/second_value = seconds % 60

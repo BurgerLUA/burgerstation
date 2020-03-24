@@ -146,9 +146,13 @@
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.
 	return 0
 
+
 /atom/proc/can_be_attacked(var/atom/attacker)
 
-	if(attacker && is_valid(attacker))
+	if(!src.health)
+		return FALSE
+
+	if(!BYPASS_AREA_NO_DAMAGE && attacker && is_valid(attacker))
 
 		var/area/A1 = get_area(attacker)
 		var/area/A2 = get_area(src)
@@ -160,6 +164,7 @@
 			return FALSE
 
 	return TRUE
+
 
 /atom/proc/think()
 	return thinks

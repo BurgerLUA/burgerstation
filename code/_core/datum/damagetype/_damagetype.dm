@@ -361,16 +361,10 @@
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 
+	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? attacker.attack_next - world.time : ATTACK_ANIMATION_LENGTH * 2
+
 	if(draw_weapon)
-		var/obj/effect/temp/impact/weapon_clone/WC = new(get_turf(attacker))
-		WC.appearance = weapon.appearance
-		WC.mouse_opacity = 0
-		WC.plane = initial(WC.plane)
-
-		var/offset_x = get_offset_x(victim,attacker)
-		var/offset_y = get_offset_y(victim,attacker)
-
-		animate(WC,pixel_x = offset_x, pixel_y = offset_y,time = ATTACK_ANIMATION_LENGTH)
+		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),weapon_attack_delay*0.5,victim,attacker,weapon)
 
 	var/pixel_x_offset = 0
 	var/pixel_y_offset = 0
@@ -388,7 +382,7 @@
 	if(attacker.dir & WEST)
 		pixel_x_offset += -punch_distance
 
-	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? attacker.attack_next - world.time : ATTACK_ANIMATION_LENGTH * 2
+
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

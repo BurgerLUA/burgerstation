@@ -148,7 +148,7 @@
 	if(weapon && weapon.attack_next > world.time)
 		return FALSE
 
-	if(victim && victim.can_be_attacked(src,weapon,params))
+	if(victim && !victim.can_be_attacked(src,weapon,params))
 		return FALSE
 
 	return TRUE

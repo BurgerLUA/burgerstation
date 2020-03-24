@@ -20,9 +20,6 @@ obj/structure/interactive/barricade/New(var/desired_loc)
 	update_icon()
 	return .
 
-obj/structure/interactive/barricade/can_be_attacked(var/atom/attacker)
-	return TRUE
-
 obj/structure/interactive/barricade/update_icon()
 
 	if(dir == NORTH)

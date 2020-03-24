@@ -33,3 +33,22 @@
 		"shirt" = COLOR_WHITE,
 		"shoulders" = COLOR_BLACK
 	)
+
+/obj/item/clothing/shirt/normal/security
+	name = "security shirt"
+	polymorphs = list(
+		"shirt" = COLOR_SECURITY_LIGHT,
+	)
+
+/obj/item/clothing/shirt/normal/engineering
+	name = "engineering shirt"
+	polymorphs = list(
+		"shirt" = COLOR_ENGINEERING,
+		"shoulders" = COLOR_VISIBLE_GREEN
+	)
+
+/obj/item/clothing/shirt/normal/medical
+	name = "medical shirt"
+	polymorphs = list(
+		"shirt" = COLOR_MEDICAL_LIGHT
+	)

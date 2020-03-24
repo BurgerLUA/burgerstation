@@ -12,7 +12,6 @@
 		COLD = ARMOR_C,
 	)
 
-
 	polymorphs = list(
 		"blouse" = COLOR_WHITE
 	)

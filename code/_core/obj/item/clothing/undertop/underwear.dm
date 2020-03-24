@@ -55,6 +55,10 @@
 		COLD = ARMOR_D
 	)
 
+/obj/item/clothing/undertop/underwear/shirt/security
+	name = "security undershirt"
+	color = COLOR_BLACK
+
 /obj/item/clothing/undertop/underwear/shirt/random/on_spawn()
 	color = random_color()
 	return ..()

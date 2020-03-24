@@ -218,7 +218,7 @@
 	return 0
 
 /mob/living/can_be_grabbed()
-	return dead || status
+	return dead || status > 0
 
 
 /mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_atom)
@@ -303,3 +303,10 @@
 		add_skill_xp(SKILL_DODGE,1)
 
 	return TRUE
+
+/mob/living/can_be_attacked(var/atom/attacker)
+	if(src.loyalty_tag && attacker && is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.loyalty_tag == src.loyalty_tag)
+			return FALSE
+	return ..()

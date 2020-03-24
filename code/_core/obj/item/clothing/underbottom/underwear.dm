@@ -18,6 +18,19 @@
 	color = random_color()
 	return ..()
 
+/obj/item/clothing/underbottom/underwear/boxers/security
+	name = "security boxers"
+	color = COLOR_SECURITY
+
+
+/obj/item/clothing/underbottom/underwear/boxers/engineering
+	name = "engineering boxers"
+	color = COLOR_ENGINEERING
+
+/obj/item/clothing/underbottom/underwear/boxers/medical
+	name = "medical boxers"
+	color = COLOR_MEDICAL
+
 /obj/item/clothing/underbottom/underwear/boxers/heart
 	name = "heart boxers"
 	icon = 'icons/obj/items/clothing/underwear/heart_boxers.dmi'

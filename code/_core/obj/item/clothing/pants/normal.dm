@@ -43,3 +43,22 @@
 	polymorphs = list(
 		"chaps" = COLOR_WHITE
 	)
+
+/obj/item/clothing/pants/normal/security
+	name = "security pants"
+	polymorphs = list(
+		"pants" = COLOR_SECURITY_DARK
+	)
+
+/obj/item/clothing/pants/normal/engineering
+	name = "security pants"
+	polymorphs = list(
+		"pants" = COLOR_ENGINEERING,
+		"stripes" = COLOR_VISIBLE_GREEN
+	)
+
+/obj/item/clothing/pants/normal/medical
+	name = "medical pants"
+	polymorphs = list(
+		"pants" = COLOR_MEDICAL_LIGHT
+	)

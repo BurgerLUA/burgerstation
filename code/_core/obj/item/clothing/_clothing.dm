@@ -1,7 +1,7 @@
 /obj/item/clothing
 	name = "CLOTHING"
 	desc = "THIS IS CLOTHING."
-	worn_layer = LAYER_MOB_CLOTHING
+	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
 	color = "#FFFFFF"

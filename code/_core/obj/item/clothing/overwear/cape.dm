@@ -18,9 +18,9 @@
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"fade" = "#FFFFFF",
-		"lining" = "#FFFFFF"
+		"base" = COLOR_WHITE,
+		"design" = COLOR_WHITE,
+		"trim" = COLOR_WHITE
 	)
 
 
@@ -30,9 +30,9 @@
 	name = "hunter's cape"
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"fade" = "#FFFFFF",
-		"lining" = "#FFFFFF"
+		"base" = COLOR_SHALEEZ_RED,
+		"design" = COLOR_RED_DARK,
+		"trim" = COLOR_SHALEEZ_RED
 	)
 
 	defense_rating = list(
@@ -51,9 +51,9 @@
 /obj/item/clothing/neck/cape/hide
 	name = "hide cape"
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"fade" = "#FFFFFF",
-		"lining" = "#FFFFFF"
+		"base" = COLOR_BROWN,
+		"design" = COLOR_BROWN,
+		"trim" = COLOR_BROWN
 	)
 
 	defense_rating = list(

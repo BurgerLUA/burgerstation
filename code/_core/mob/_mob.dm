@@ -120,13 +120,6 @@
 /mob/proc/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	return TRUE
 
-/mob/can_attack(var/atom/victim,var/atom/weapon,var/params)
-
-	if(!can_attack_while_moving && move_delay > 0)
-		return FALSE
-
-	return ..()
-
 /mob/Initialize()
 
 	//set_light(VIEW_RANGE*0.25,0.25,"#FFFFFF")

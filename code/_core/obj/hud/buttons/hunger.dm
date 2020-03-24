@@ -1,7 +1,7 @@
 /obj/hud/button/hunger
 	name = "hunger and thirst"
 	desc = "Keep both of these up!"
-	desc_extended = "A tracker for your current hunger and thirst levels. These can be replenished by eating."
+	desc_extended = "A tracker for your current hunger and thirst levels. These can be replenished by eating and drinking, respectively."
 
 	icon = 'icons/hud/hunger.dmi'
 	icon_state = "thirst_bar_0"
@@ -11,7 +11,9 @@
 	var/stored_hunger = -1
 	var/stored_thirst = -1
 
-	screen_loc = "RIGHT,CENTER+1"
+	screen_loc = "RIGHT:-4,BOTTOM+3.2"
+
+	flags = FLAGS_HUD_MOB
 
 
 /obj/hud/button/hunger/update_owner()

@@ -72,6 +72,20 @@
 		/obj/item/container/beaker/large
 	)
 
+/obj/structure/interactive/vending/medical/wardrobe
+	name = "medical wardrobe vendor"
+	icon_state = "medidrobe"
+	stored_types = list(
+		/obj/item/clothing/feet/socks/white,
+		/obj/item/clothing/underbottom/underwear/boxers/medical,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/shirt/normal/medical,
+		/obj/item/clothing/pants/normal/medical,
+		/obj/item/clothing/overwear/coat/labcoat/medical
+	)
+
+
+
 /obj/structure/interactive/vending/engineering
 	name = "engineering vendor"
 	icon_state = "engivend"
@@ -94,11 +108,24 @@
 
 /obj/structure/interactive/vending/engineering/material
 	name = "material vendor"
+	icon_state = "engivend"
 	stored_types = list(
 		/obj/item/material/sheet/steel/spawn_50,
 		/obj/item/material/sheet/glass/spawn_50
 
 	)
+
+/obj/structure/interactive/vending/engineering/engidrobe
+	name = "engineering clothing vendor"
+	icon_state = "engidrobe"
+	stored_types = list(
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/underbottom/underwear/boxers/engineering,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/pants/normal/engineering,
+		/obj/item/clothing/shirt/normal/engineering
+	)
+
 
 /obj/structure/interactive/vending/robotics
 	name = "robotics vendor"
@@ -115,6 +142,14 @@
 /obj/structure/interactive/vending/security/wardrobe
 	name = "security wardrobe vendor"
 	icon_state = "secdrobe"
+
+	stored_types = list(
+		/obj/item/clothing/feet/socks/knee/white,
+		/obj/item/clothing/underbottom/underwear/boxers/security,
+		/obj/item/clothing/undertop/underwear/shirt/security,
+		/obj/item/clothing/pants/normal/security,
+		/obj/item/clothing/shirt/normal/security
+	)
 
 
 /obj/structure/interactive/vending/chemistry/wardrobe

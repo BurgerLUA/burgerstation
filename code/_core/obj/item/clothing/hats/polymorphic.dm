@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/polymorphic
-	name = "police helmet"
+	name = "protective helmet"
 	icon = 'icons/obj/items/clothing/hats/security_new.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
@@ -18,44 +18,32 @@
 
 	value = 40
 
-
 	polymorphs = list(
-		"helmet" = "#FFFFFF",
+		"base" = "#FFFFFF",
 		"ears" = "#FFFFFF",
 		"stripe" = "#FFFFFF"
 	)
-
-
-
 
 	no_initial_blend = TRUE
 
 
-/obj/item/clothing/head/helmet/polymorphic/test
-	polymorphs = list(
-		"helmet" = "#FFFFFF",
-		"ears" = "#FFFFFF",
-		"stripe" = "#FFFFFF"
-	)
-
-
 /obj/item/clothing/head/helmet/polymorphic/security
 	polymorphs = list(
-		"helmet" = "#FFFFFF",
-		"ears" = "#FFFFFF",
-		"stripe" = "#FFFFFF"
+		"base" = COLOR_BLACK,
+		"ears" = COLOR_SECURITY,
+		"stripe" = COLOR_SECURITY
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/engineering
 	polymorphs = list(
-		"helmet" = "#FFFFFF",
+		"base" = "#FFFFFF",
 		"ears" = "#FFFFFF",
 		"stripe" = "#FFFFFF"
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/medical
 	polymorphs = list(
-		"helmet" = "#FFFFFF",
+		"base" = "#FFFFFF",
 		"ears" = "#FFFFFF",
 		"stripe" = "#FFFFFF"
 	)

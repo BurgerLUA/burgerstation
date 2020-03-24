@@ -26,16 +26,14 @@
 	)
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"sleeve" = "#FFFFFF",
-		"buttons" = "#FFFFFF"
+		"base" = "#FFFFFF"
 	)
 
 	value = 30
 
 /obj/item/clothing/overwear/coat/polymorphic/shaleez
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"sleeve" = "#FFFFFF",
-		"buttons" = "#FFFFFF"
+		"base" = COLOR_SHALEEZ_RED,
+		"sleeve" = COLOR_WHITE,
+		"buttons" = COLOR_GOLD
 	)

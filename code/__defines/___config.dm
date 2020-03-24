@@ -19,7 +19,7 @@
 #define MIN_ZOOM 1
 
 #define ZOOM_RANGE 8
-#define VIEW_RANGE 10
+#define VIEW_RANGE 9
 #define VIEW_RANGE_GHOST 16
 
 #define SOUND_RANGE 18
@@ -47,6 +47,8 @@
 
 #define WEATHER_ADD_CHANCE 40
 #define WEATHER_REMOVE_CHANCE 10
+
+#define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
 #define ENABLE_INSTALOAD FALSE

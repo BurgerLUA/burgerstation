@@ -62,18 +62,6 @@ var/global/saved_icons = 0
 
 	return ..()
 
-/turf/simulated/can_be_attacked(var/atom/attacker)
-
-	if(!health)
-		return FALSE
-
-	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
-		return FALSE
-
-	return TRUE
-
-
 /turf/simulated/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 
 	. = ..()

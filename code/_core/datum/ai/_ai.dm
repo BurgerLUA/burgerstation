@@ -140,7 +140,7 @@
 	return TRUE
 
 /ai/proc/can_attack(var/atom/target,var/left_click=FALSE)
-	return TRUE
+	return target.can_be_attacked(owner)
 
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
 
@@ -294,6 +294,8 @@
 	objective_attack = L
 	frustration_attack = 0
 
+	owner.intent = objective_attack ? INTENT_HARM : INTENT_HELP
+
 	if(L)
 		set_alert_level(ALERT_LEVEL_ALERT)
 		owner.set_dir(get_dir(owner,L))
@@ -342,16 +344,21 @@
 	if(L.dead)
 		return FALSE
 
-	var/area/A = get_area(L)
-	var/area/starting_area = get_area(start_turf)
+	//var/area/A = get_area(L)
+	//var/area/starting_area = get_area(start_turf)
 
+	/* //TODO: Loyalty implant
 	if(A && A.flags_area & FLAGS_AREA_NO_DAMAGE && !starting_area.flags_area & FLAGS_AREA_NO_DAMAGE)
 		return FALSE
+	*/
 
 /*
 	if(!true_sight && L.is_sneaking)
 		return FALSE
 */
+
+	if(!can_attack(L))
+		return FALSE
 
 	if(L.immortal && !ignore_immortal)
 		return FALSE

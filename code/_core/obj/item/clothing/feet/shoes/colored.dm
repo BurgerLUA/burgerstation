@@ -25,9 +25,9 @@
 
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"toe" = "#FFFFFF",
-		"sole" = "#A8A8A8"
+		"base" = COLOR_WHITE,
+		"ankle" = COLOR_WHITE,
+		"sole" = COLOR_GREY_LIGHT
 	)
 
 	value = 10
@@ -45,9 +45,9 @@
 
 /obj/item/clothing/feet/shoes/colored/black
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"toe" = "#FFFFFF",
-		"sole" = "#A8A8A8"
+		"base" = COLOR_WHITE,
+		"ankle" = COLOR_BLACK,
+		"sole" = COLOR_GREY_LIGHT
 	)
 
 
@@ -61,9 +61,9 @@
 
 /obj/item/clothing/feet/shoes/colored/blacker
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"toe" = "#FFFFFF",
-		"sole" = "#A8A8A8"
+		"base" = COLOR_BLACK,
+		"ankle" = COLOR_BLACK,
+		"sole" = COLOR_GREY_LIGHT
 	)
 
 /obj/item/clothing/feet/shoes/colored/blacker/left
@@ -77,9 +77,9 @@
 
 /obj/item/clothing/feet/shoes/colored/brown
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"toe" = "#FFFFFF",
-		"sole" = "#A8A8A8"
+		"base" = COLOR_BROWN_LIGHT,
+		"ankle" = COLOR_BROWN_LIGHT,
+		"sole" = COLOR_BROWN
 	)
 
 /obj/item/clothing/feet/shoes/colored/brown/left

@@ -29,30 +29,23 @@
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
 
 /obj/item/clothing/feet/socks/knee
-	name = "knee socks"
+	name = "high socks"
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'
-
-
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"stripe" = "#FFFFFF",
-		"top" = "#FFFFFF"
+		"sock" = COLOR_WHITE
 	)
 
 	value = 5
 
 /obj/item/clothing/feet/socks/knee/white
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"stripe" = "#FFFFFF",
-		"top" = "#FFFFFF"
+		"sock" = COLOR_WHITE
 	)
 
 /obj/item/clothing/feet/socks/knee/scottish
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"stripe" = "#FFFFFF",
-		"top" = "#FFFFFF"
+		"sock" = "#53512A",
+		"stripes" = "#32321B"
 	)
 
 /obj/item/clothing/feet/socks/stockings/
@@ -65,16 +58,14 @@
 	name = "programmer sock"
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"stripe" = "#FFFFFF",
-		"top" = "#FFFFFF"
+		"sock" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
 	)
 
 /obj/item/clothing/feet/socks/stockings/bee
 	name = "bee stockings"
 
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"stripe" = "#FFFFFF",
-		"top" = "#FFFFFF"
+		"sock" = "#FFFFFF",
+		"stripe" = "#FFFFFF"
 	)
