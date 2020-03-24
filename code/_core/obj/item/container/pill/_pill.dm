@@ -7,7 +7,6 @@
 
 	desc_extended = "Hope you remember what the pill is."
 
-	var/marking = "A"
 	var/double = FALSE
 
 	size = SIZE_0
@@ -16,9 +15,6 @@
 	var/reagent_container/reagents_2
 
 	value = 1
-
-/obj/item/container/pill/get_examine_text(var/mob/examiner)
-	return ..() + div("notice","There is a marking that reads \"[marking]\" on the pill.")
 
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

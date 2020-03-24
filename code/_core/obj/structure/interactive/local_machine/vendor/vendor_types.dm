@@ -250,3 +250,16 @@ var/global/list/equipped_players = list()
 		/obj/item/container/food/package/junkfood/rasins,
 		/obj/item/container/food/package/junkfood/syndicate
 	)
+
+
+/obj/structure/interactive/vending/smart_fridge
+	name = "smart fridge"
+	icon_state = "smartfridge"
+
+/obj/structure/interactive/vending/smart_fridge/chemistry
+	name = "chemistry smart fridge"
+	stored_types = list(
+		/obj/item/container/pill/bicaridine,
+		/obj/item/container/pill/dylovene,
+		/obj/item/container/pill/kelotane
+	)

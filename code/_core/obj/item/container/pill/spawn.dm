@@ -1,19 +1,19 @@
 /obj/item/container/pill/bicaridine
-	marking = "B 20"
+	name = "bicaridine pill (20u)"
 
 /obj/item/container/pill/bicaridine/on_spawn()
 	reagents.add_reagent("bicaridine",20)
 	return ..()
 
 /obj/item/container/pill/kelotane
-	marking = "K 20"
+	name = "kelotane pill (20u)"
 
 /obj/item/container/pill/kelotane/on_spawn()
 	reagents.add_reagent("kelotane",20)
 	return ..()
 
 /obj/item/container/pill/dylovene
-	marking = "D 20"
+	name = "dylovene pill (20u)"
 
 /obj/item/container/pill/dylovene/on_spawn()
 	reagents.add_reagent("dylovene",20)
