@@ -4,6 +4,7 @@
 
 /obj/hud/button/research/
 	flags = FLAGS_HUD_SPECIAL
+	has_quick_function = FALSE
 
 
 /obj/hud/button/research/info
@@ -14,13 +15,28 @@
 
 /obj/hud/button/research/info/time
 	name = "time left"
-	screen_loc = "RIGHT,TOP"
+	screen_loc = "LEFT,TOP"
 	maptext = "<center>Time:<br>0:00</center>"
 
 /obj/hud/button/research/info/score
 	name = "score"
-	screen_loc = "LEFT,TOP"
+	screen_loc = "LEFT,TOP-1"
 	maptext = "<center>Score:<br>0</center>"
+
+/obj/hud/button/research/info/text
+	name = "text"
+	screen_loc = "CENTER,CENTER"
+	icon_state = "none"
+	maptext = "Start!"
+
+	maptext_x = -(TILE_SIZE*VIEW_RANGE) + 16
+	maptext_width = TILE_SIZE*VIEW_RANGE*2
+	maptext_height = TILE_SIZE*VIEW_RANGE
+	maptext = "<center><font size=10>START!</font></center>"
+
+	mouse_opacity = 0
+
+	layer = 100 //I don't give a fuck.
 
 /obj/hud/button/research/board
 	name = "research"
@@ -41,18 +57,25 @@
 
 	var/obj/hud/button/research/info/time/linked_time
 	var/obj/hud/button/research/info/score/linked_score
+	var/obj/hud/button/research/info/text/linked_text
 
 /obj/hud/button/research/board/think()
 	if(linked_time)
 		linked_time.maptext = "<center>Time:<br>[get_clock_time(CEILING(time_left/10,1))]</center>"
+		if(time_left <= 0)
+			linked_text.maptext = "<center><font size=10>TIMES UP!</font></center>"
+
 	time_left--
 	return ..()
 
 /obj/hud/button/research/board/proc/add_points(var/points_to_add)
 	points += points_to_add
-	time_left += points_to_add*20
+	time_left += (points_to_add)*10
 	if(linked_score)
 		linked_score.maptext = "<center>Score:<br>[points]</center>"
+	if(linked_text)
+		linked_text.maptext = "<center><font size=[10 + points_to_add]>+[points_to_add]!</font></center>"
+
 	return TRUE
 
 /obj/hud/button/research/board/Destroy()
@@ -71,6 +94,9 @@
 
 	qdel(linked_score)
 	linked_score = null
+
+	qdel(linked_text)
+	linked_text = null
 
 	return ..()
 
@@ -101,49 +127,16 @@
 		linked_score = new
 		linked_score.update_owner(desired_owner)
 
+	if(linked_text)
+		linked_text.update_owner(desired_owner)
+		if(desired_owner == null)
+			qdel(linked_text)
+			linked_text = null
+	else if(desired_owner != null)
+		linked_text = new
+		linked_text.update_owner(desired_owner)
+
 	return .
-
-
-/mob/living/proc/toggle_research_game(var/allow_disable=TRUE,var/allow_enable = TRUE)
-
-	var/obj/hud/button/research/board/B
-
-	for(var/obj/hud/button/research/board/F in buttons)
-		B = F
-		break
-
-	if(B && allow_disable)
-		clear_research_pieces()
-		B.update_owner(null)
-		show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,1)
-		client.view = VIEW_RANGE
-	else if(!B && allow_enable)
-		show_hud(FALSE,FLAGS_HUD_MOB,FLAGS_HUD_NONE,1)
-		B = new
-		B.update_owner(src)
-		client.view = (RESEARCH_BOARD_SIZE+1)/2
-		for(var/x_pos=1,x_pos<=RESEARCH_BOARD_SIZE,x_pos++)
-			for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)
-				var/obj/hud/button/research/piece/P = new
-				P.update_owner(src)
-				P.x_p = x_pos
-				P.y_p = y_pos
-				B.pieces[x_pos][y_pos] = P
-				P.linked_board = B
-				P.update_icon()
-				var/matrix/M = matrix()
-				P.transform.Scale(0.1,0.1)
-				animate(P,transform = M,time = 10,easing = ELASTIC_EASING)
-				P.update_piece()
-		for(var/x_pos=1,x_pos<=RESEARCH_BOARD_SIZE,x_pos++)
-			for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)
-				var/obj/hud/button/research/piece/P = B.pieces[x_pos][y_pos]
-				P.check_clear(TRUE)
-
-
-/mob/living/proc/clear_research_pieces()
-	for(var/obj/hud/button/research/piece/P in buttons)
-		P.update_owner(null)
 
 /obj/hud/button/research/piece
 	name = "research piece"
@@ -284,6 +277,9 @@
 	if(turning)
 		return FALSE
 
+	if(linked_board.time_left <= 0)
+		return FALSE
+
 	. = ..()
 
 	turning = TRUE
@@ -302,7 +298,7 @@
 	turning = FALSE
 	update_piece()
 
-	var/points = check_clear()
+	var/points = check_clear() ** 3
 	if(points)
 		for(var/i=1,i<=max(1,(points-1)*2),i++)
 			var/obj/hud/button/research/piece/P = pick(linked_board.cleared_pieces)

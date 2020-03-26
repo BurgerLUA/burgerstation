@@ -42,7 +42,7 @@
 /atom/movable/Initialize()
 	. = ..()
 	if(loc)
-		area = get_area(src)
+		area = get_area(loc)
 		area.Entered(src,null)
 	return .
 

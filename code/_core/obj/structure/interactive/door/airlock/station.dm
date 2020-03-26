@@ -91,6 +91,11 @@
 	color = COLOR_WHITE
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/office
+	name = "office airlock"
+	color = "#DD924E"
+	filler = "glass"
+	fill_color = "#AF6D33"
 
 /obj/structure/interactive/door/airlock/station/bathroom
 	name = "restroom airlock"
