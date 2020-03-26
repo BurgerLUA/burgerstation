@@ -1,7 +1,7 @@
 /mob/living/advanced/proc/start_chargen()
 
 	Initialize()
-	show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
+	//show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 	default_appearance()
 	if(sex == MALE)
 		equip_loadout("new_male",TRUE)

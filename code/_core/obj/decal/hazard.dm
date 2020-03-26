@@ -16,3 +16,20 @@
 
 /obj/decal/hazard/full
 	icon_state = "full"
+
+
+/obj/decal/hazard/black
+	icon = 'icons/obj/decal/hazard_full.dmi'
+
+
+/obj/decal/hazard/black/corner
+	icon_state = "corner"
+
+/obj/decal/hazard/black/end
+	icon_state = "end"
+
+/obj/decal/hazard/black/box
+	icon_state = "box"
+
+/obj/decal/hazard/black/full
+	icon_state = "full"

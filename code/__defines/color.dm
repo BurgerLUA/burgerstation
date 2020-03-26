@@ -3,11 +3,20 @@
 #define COLOR_GREY "#999999"
 #define COLOR_GREY_LIGHT "#A8A8A8"
 #define COLOR_BLACK "#404040"
-#define COLOR_ORANGE "#D38F28"
+
 #define COLOR_RED "#994444"
-#define COLOR_RED_DARK "#490000"
+#define COLOR_GREEN "#449944"
 #define COLOR_BLUE "#444499"
+
+#define COLOR_YELLOW "#999944"
 #define COLOR_PURPLE "#994499"
+#define COLOR_CYAN "#449999"
+
+
+#define COLOR_RED_DARK "#490000"
+
+#define COLOR_ORANGE "#D38F28"
+
 #define COLOR_BROWN "#644D37"
 #define COLOR_BROWN_LIGHT "#896A4C"
 
@@ -18,7 +27,7 @@
 #define COLOR_RAIN "#429FCE"
 #define COLOR_DIONA_GREEN_DARK "#528200"
 #define COLOR_SHALEEZ_RED "#700100"
-#define COLOR_NANOTRASEN "#3046D8"
+#define COLOR_NANOTRASEN "#10436B"
 #define COLOR_VISIBLE_GREEN "#B6FF00"
 
 //Department Colors
@@ -54,4 +63,4 @@
 
 
 
-#define COLOR_LIGHT "#FFFFAA"
+#define COLOR_LIGHT "#F0FFCD" //"#FFFFAA"

@@ -557,6 +557,7 @@
 #include "code\_core\obj\hud\buttons\movement.dm"
 #include "code\_core\obj\hud\buttons\new_targeting.dm"
 #include "code\_core\obj\hud\buttons\ping.dm"
+#include "code\_core\obj\hud\buttons\research_game.dm"
 #include "code\_core\obj\hud\buttons\skip.dm"
 #include "code\_core\obj\hud\buttons\slot.dm"
 #include "code\_core\obj\hud\buttons\widget.dm"

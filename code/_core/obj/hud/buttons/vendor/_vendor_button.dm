@@ -86,7 +86,7 @@
 	maptext = desired_name
 	maptext_width = 96*2
 	maptext_x = 2
-	maptext_y = 1
+	maptext_y = 2
 
 	name = desired_name
 

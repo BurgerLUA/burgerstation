@@ -46,6 +46,9 @@
 /turf/simulated/floor/tile/blue
 	color = COLOR_BLUE
 
+/turf/simulated/floor/tile/nanotrasen
+	color = COLOR_NANOTRASEN
+
 /turf/simulated/floor/tile/green
 	color = "#449944"
 

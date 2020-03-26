@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "tube_light"
 
-	desired_light_power = 0.25
+	desired_light_power = 0.3
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
 
@@ -13,7 +13,7 @@
 
 	var/on = TRUE
 
-	color = "#FFFFAA"
+	color = COLOR_LIGHT
 	var/color_frame = "#888888"
 
 	rotation_mod = -1

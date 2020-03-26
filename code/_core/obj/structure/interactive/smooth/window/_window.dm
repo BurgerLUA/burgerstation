@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structure/smooth/window/normal_new_new.dmi'
 	icon_state = "window"
 
-	alpha = 200
+	alpha = 150
 	color = "#6E9CAD"
 
 	collision_flags = FLAG_COLLISION_REAL

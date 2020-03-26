@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(horde)
 	if(state == HORDE_STATE_WAITING)
 		var/time_to_display = round_time_next - round_time
 		if(time_to_display >= 0)
-			set_message("Round starts in: [get_clock_time(time_to_display)]",TRUE)
+			//set_message("Round starts in: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
 		state = HORDE_STATE_GEARING
 		round_time = 0

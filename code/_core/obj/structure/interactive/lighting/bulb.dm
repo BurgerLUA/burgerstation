@@ -18,7 +18,7 @@
 
 	rotation_mod = -1
 
-/obj/structure/interactive/lighting/tube/New()
+/obj/structure/interactive/lighting/bulb/New()
 
 	. = ..()
 
@@ -34,12 +34,12 @@
 
 	return .
 
-/obj/structure/interactive/lighting/tube/Initialize()
+/obj/structure/interactive/lighting/bulb/Initialize()
 	. = ..()
 	update_icon()
 	return .
 
-/obj/structure/interactive/lighting/tube/update_icon()
+/obj/structure/interactive/lighting/bulb/update_icon()
 
 	if(color)
 		desired_light_color = color

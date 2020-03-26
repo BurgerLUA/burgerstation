@@ -41,6 +41,11 @@ obj/structure/interactive/misc/toilet
 	name = "toilet"
 	icon_state = "toilet"
 
+obj/structure/interactive/misc/urinal
+	name = "urinal"
+	icon_state = "urinal"
+
+
 
 obj/structure/interactive/misc/shower
 	name = "shower"
