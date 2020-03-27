@@ -3,7 +3,7 @@
 #define SUBSYSTEM_DEF(X) var/global/subsystem/##X/SS##X;\
 /subsystem/##X/New(){\
 	NEW_SS_GLOBAL(SS##X);\
-	PreInit();\
+	PreInitialize();\
 }\
 /subsystem/##X
 

@@ -16,7 +16,7 @@
 
 	if(disposals_countdown <= 0)
 		var/obj/disposals_container/disposals_container = new(src)
-		disposals_container.Initialize()
+		INITIALIZE(disposals_container)
 		disposals_container.sorting_tag = "disposals"
 		for(var/atom/movable/M in contents)
 			M.force_move(disposals_container)

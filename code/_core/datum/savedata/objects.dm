@@ -1,7 +1,7 @@
 /savedata/proc/load_and_create_object(var/list/object_data,var/loc)
 
 	if(!object_data)
-		LOG_ERROR("Tried to create an object with a blank object_data list!")
+		log_error("Tried to create an object with a blank object_data list!")
 		return FALSE
 
 	var/o_type = object_data["type"]
@@ -10,7 +10,7 @@
 	try
 		O = new o_type(loc)
 	catch
-		LOG_ERROR("ERROR: [o_type] does not exist in code!")
+		log_error("ERROR: [o_type] does not exist in code!")
 		return FALSE
 
 	//General Information

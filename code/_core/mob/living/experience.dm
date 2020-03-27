@@ -42,7 +42,7 @@
 			total_skills += 1
 
 	if(!total_skills || !total_attributes)
-		LOG_ERROR("ERROR: FOUND [total_skills] SKILLS AND [total_attributes] ATTRIBUTES.")
+		log_error("ERROR: FOUND [total_skills] SKILLS AND [total_attributes] ATTRIBUTES.")
 		return FALSE
 
 	total_attribute_mod = total_attribute_mod/total_attributes

@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/obj/shuttle_controller/SC in all_shuttle_controlers)
 		SC.time++
 		if(!SC.on_shuttle_think())
-			LOG_ERROR("Shutting down controller for [SC]!")
+			log_error("Shutting down controller for [SC] as on_shuttle_think returned FALSE!")
 			all_shuttle_controlers -= SC
 
 	return TRUE

@@ -10,4 +10,4 @@ SUBSYSTEM_DEF(dialogue)
 		var/dialogue/D = new A
 		all_dialogue[D.id] = D
 
-	LOG_SERVER("Initialized [length(all_dialogue)] dialogues.")
+	log_subsystem(name,"Initialized [length(all_dialogue)] dialogues.")

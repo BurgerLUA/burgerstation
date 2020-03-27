@@ -287,9 +287,9 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Initialize()
 
-	apply_mob_parts(TRUE,TRUE,TRUE)
-
 	. = ..()
+
+	apply_mob_parts(TRUE,TRUE,TRUE)
 
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)

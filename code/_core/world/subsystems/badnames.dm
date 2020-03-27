@@ -13,6 +13,6 @@ SUBSYSTEM_DEF(badnames)
 
 	all_badnames = make_associative(splittext(badnames,"\n"))
 
-	LOG_SERVER("Found [length(all_badnames)] bad names.")
+	log_subsystem(name,"Found [length(all_badnames)] bad names.")
 
 	return TRUE

@@ -12,4 +12,4 @@ SUBSYSTEM_DEF(menus)
 		if(M.id)
 			all_menus[M.id] = M
 
-	LOG_SERVER("Initialized [length(all_menus)] menus.")
+	log_subsystem(name,"Initialized [length(all_menus)] menus.")

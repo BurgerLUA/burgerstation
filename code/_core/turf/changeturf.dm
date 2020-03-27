@@ -10,7 +10,7 @@
 	var/old_corners = corners
 
 	var/turf/W = new N(src)
-	W.Initialize()
+	INITIALIZE(W)
 	. = W
 
 	recalc_atom_opacity()

@@ -10,4 +10,4 @@ SUBSYSTEM_DEF(loot)
 		var/loot/L = new v
 		all_loot[L.id] = L
 
-	LOG_SERVER("Initialized [length(all_loot)] loot tables.")
+	log_subsystem(name,"Initialized [length(all_loot)] loot tables.")

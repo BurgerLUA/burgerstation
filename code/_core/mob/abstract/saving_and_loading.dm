@@ -7,7 +7,7 @@
 		var/savedata/client/mob/U = mobdata
 
 		if(!U)
-			LOG_ERROR("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
+			log_error("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
 			return FALSE
 
 		to_chat(U.get_next_character_id())
@@ -21,7 +21,7 @@
 		var/savedata/client/mob/U = mobdata
 
 		if(!U)
-			LOG_ERROR("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
+			log_error("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
 			return FALSE
 
 		if(U.create_new_character(U.get_next_character_id()))
@@ -32,7 +32,7 @@
 			P.start_chargen()
 			return TRUE
 		else
-			LOG_ERROR("Something went wrong!")
+			log_error("Something went wrong!")
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Existing Character"
@@ -84,13 +84,13 @@
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
 	stop_music_track(src)
 
-	var/turf/T = mob.loc
+	var/turf/T = mob.loc ? mob.loc : locate(1,1,1)
 
 	qdel(src.mob)
 
 	var/mob/living/advanced/player/P = new(T,src)
 	P.mobdata = U
-	P.Initialize()
+	INITIALIZE(P)
 	//sP.handle_hairstyle_chargen(-1,update_blends=FALSE)
 	//P.handle_beardstyle_chargen(-1,update_blends=FALSE)
 	//P.update_all_blends()

@@ -36,12 +36,12 @@
 	reagents.add_reagent("salt",5)
 	return ..()
 
-/obj/item/container/food/package/junkfood/rasins
+/obj/item/container/food/package/junkfood/raisins
 	name = "4no raisins"
 	icon_state = "raisins"
 
-/obj/item/container/food/package/junkfood/rasins/on_spawn()
-	reagents.add_reagent("raisins",10)
+/obj/item/container/food/package/junkfood/raisins/on_spawn()
+	reagents.add_reagent("junk_raisins",10)
 	reagents.add_reagent("salt",5)
 	reagents.add_reagent("sugar",5)
 	return ..()

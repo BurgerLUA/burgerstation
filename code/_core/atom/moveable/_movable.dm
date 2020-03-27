@@ -43,7 +43,11 @@
 	. = ..()
 	if(loc)
 		area = get_area(loc)
-		area.Entered(src,null)
+		if(area)
+			area.Entered(src,null)
+		else
+			log_error("WARNING: For some reason, [src.name]([src.type]) didn't have an area to initialize in! (Loc: [loc.name]([loc.type].)")
+
 	return .
 
 /atom/movable/Destroy()

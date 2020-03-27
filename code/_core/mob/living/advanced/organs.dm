@@ -33,7 +33,7 @@
 	var/species/S = all_species[species]
 
 	if(!S)
-		LOG_ERROR("WARNING: INVALID SPECIES: [species].")
+		log_error("WARNING: INVALID SPECIES: [species].")
 		return FALSE
 
 	var/initially_disabled = FALSE
@@ -63,7 +63,7 @@
 	labeled_organs[O.id] = O
 	O.update_owner(src) //This updates inventories.
 
-	O.Initialize()
+	INITIALIZE(O)
 
 	if(is_tail(O))
 		add_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")

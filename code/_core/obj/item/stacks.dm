@@ -15,7 +15,7 @@
 		try
 			N.vars[i] = A.vars[i]
 		catch()
-			LOG_ERROR("Cannot write var [i]!")
+			log_error("Cannot write var [i]!")
 
 	return N
 

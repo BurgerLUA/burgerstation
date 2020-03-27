@@ -14,4 +14,6 @@ SUBSYSTEM_DEF(materials)
 			M = new k
 			all_materials[id] = M
 
+	log_subsystem(name,"Initialized [length(all_materials)] material types.")
+
 	return TRUE

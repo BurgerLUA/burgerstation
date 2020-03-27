@@ -11,10 +11,9 @@ SUBSYSTEM_DEF(wikibot)
 
 	if(wikibot_file)
 		wikibot_list = json_decode(wikibot_file)
-
-		LOG_SERVER("Found [length(wikibot_list)] wikibot question/answer keys.")
+		log_subsystem(name,"Found [length(wikibot_list)] wikibot question/answer keys.")
 	else
-		LOG_SERVER("Found no wikibot question/answer keys. Creating new one...")
+		log_subsystem(name,"Found no wikibot question/answer keys. Creating new one...")
 		add_new_wikibot_key(list("what","is","wikibot"),"Wikibot is a bot-controlled OOC helper that helps answer commonly asked questions.")
 
 /subsystem/wikibot/proc/add_new_wikibot_key(var/list/keywords,var/answer)

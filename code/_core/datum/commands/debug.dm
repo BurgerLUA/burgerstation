@@ -97,7 +97,7 @@
 	for(var/i=1,i<=number_to_create,i++)
 		var/turf/T = pick(valid_floors)
 		var/mob/living/advanced/player/debug/P = new(T)
-		P.Initialize()
+		INITIALIZE(P)
 		step(P,pick(NORTH,EAST,SOUTH,WEST))
 
 

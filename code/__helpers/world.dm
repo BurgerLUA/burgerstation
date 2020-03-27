@@ -19,3 +19,7 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	return (atom_a.y*TILE_SIZE + atom_a.pixel_y - initial(atom_a.pixel_y)) - (atom_b.y*TILE_SIZE + atom_b.pixel_y - initial(atom_b.pixel_y))
 
 #define is_valid(A) (!A.qdeleting && A.loc != null)
+
+
+
+#define INITIALIZE(A) (A.initialized ? log_error("WARNING: [A]([A.type]) was initialized more than once!") : A.Initialize())

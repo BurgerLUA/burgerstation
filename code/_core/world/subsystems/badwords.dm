@@ -11,6 +11,6 @@ SUBSYSTEM_DEF(badwords)
 
 	all_badwords = splittext(badwords,"\n")
 
-	LOG_SERVER("Found [length(all_badwords)] bad words.")
+	log_subsystem(name,"Found [length(all_badwords)] bad words.")
 
 	return TRUE

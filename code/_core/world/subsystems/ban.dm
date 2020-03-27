@@ -14,8 +14,6 @@ SUBSYSTEM_DEF(ban)
 
 	var/list/admins = list("burgerbb")
 
-	var/initialized = FALSE
-
 /subsystem/ban/Initialize()
 
 	if(fexists(ADMINLIST_DIR))
@@ -84,13 +82,13 @@ SUBSYSTEM_DEF(ban)
 	if(bans_computer_changed)
 		text2file(json_encode(bans_computer_ids),BANLIST_COMPUTER_DIR)
 
-	LOG_DEBUG("Tracking [length(bans_keys)] banned ckeys.")
-	LOG_DEBUG("Tracking [length(bans_address)] banned ip addresses.")
-	LOG_DEBUG("Tracking [length(bans_computer_ids)] banned computer ids.")
+	log_subsystem(name,"Tracking [length(bans_keys)] banned ckeys.")
+	log_subsystem(name,"Tracking [length(bans_address)] banned ip addresses.")
+	log_subsystem(name,"Tracking [length(bans_computer_ids)] banned computer ids.")
 
-	LOG_DEBUG("Unbanned [length(bans_keys_changed)] ckeys due to time.")
-	LOG_DEBUG("Unbanned [length(bans_address_changed)] ip addresses due to time.")
-	LOG_DEBUG("Unbanned [length(bans_computer_changed)] computer ids due to time.")
+	log_subsystem(name,"Unbanned [length(bans_keys_changed)] ckeys due to time.")
+	log_subsystem(name,"Unbanned [length(bans_address_changed)] ip addresses due to time.")
+	log_subsystem(name,"Unbanned [length(bans_computer_changed)] computer ids due to time.")
 
 	initialized = TRUE
 

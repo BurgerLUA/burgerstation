@@ -73,3 +73,13 @@
 
 	flavor = "banana"
 	flavor_strength = 2
+
+
+/reagent/core/salt
+	name = "salt"
+	id = "salt"
+	desc = "Down here, everything is salt."
+	color = "#FFFFFF"
+
+	flavor = "salt"
+	flavor_strength = 4

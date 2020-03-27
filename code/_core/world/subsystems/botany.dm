@@ -22,4 +22,6 @@ SUBSYSTEM_DEF(botany)
 			P = new k
 			all_plant_types[p_id] = P
 
+	log_subsystem(name,"Found [length(all_plant_types)] plant types.")
+
 	return TRUE

@@ -13,4 +13,4 @@ SUBSYSTEM_DEF(loadouts)
 		else
 			qdel(O)
 
-	LOG_SERVER("Initialized [length(all_loadouts)] outfits.")
+	log_subsystem(name,"Initialized [length(all_loadouts)] outfits.")

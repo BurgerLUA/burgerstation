@@ -23,7 +23,7 @@
 			var/obj/effect/footprint/emboss/exit/F = new(T,L.dir,TRUE,TRUE)
 			F.color = footprint_color
 			F.alpha = footprint_alpha
-			F.Initialize()
+			INITIALIZE(F)
 			animate(F,alpha=0,time=FOOTPRINT_FADE_TIME,easing=QUAD_EASING)
 			queue_delete(F,FOOTPRINT_FADE_TIME)
 	else
@@ -47,7 +47,7 @@
 				var/obj/effect/footprint/emboss/F = new(T,L.dir,TRUE,TRUE)
 				F.color = footprint_color
 				F.alpha = footprint_alpha
-				F.Initialize()
+				INITIALIZE(F)
 				animate(F,alpha=0,time=FOOTPRINT_FADE_TIME,easing=QUAD_EASING)
 				queue_delete(F,FOOTPRINT_FADE_TIME)
 

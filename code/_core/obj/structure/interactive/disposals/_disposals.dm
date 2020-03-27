@@ -26,7 +26,7 @@
 		return FALSE
 
 	var/obj/disposals_container/disposals_container = new(src)
-	disposals_container.Initialize()
+	INITIALIZE(disposals_container)
 
 	M.force_move(disposals_container)
 	M.glide_size = M.step_size / DECISECONDS_TO_TICKS(1)

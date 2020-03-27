@@ -247,7 +247,7 @@ var/global/list/equipped_players = list()
 		/obj/item/container/food/package/junkfood/cheese_chips,
 		/obj/item/container/food/package/junkfood/chips,
 		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/rasins,
+		/obj/item/container/food/package/junkfood/raisins,
 		/obj/item/container/food/package/junkfood/syndicate
 	)
 

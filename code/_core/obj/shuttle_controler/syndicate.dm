@@ -56,7 +56,7 @@
 				var/turf/T = pick(valid_spots)
 				valid_spots -= T
 				var/mob/living/advanced/npc/syndicate/S = new(T)
-				S.Initialize()
+				INITIALIZE(S)
 				sleep(-1)
 
 

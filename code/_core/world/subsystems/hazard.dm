@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(hazard)
 			H = new k
 			all_hazards[id] = H
 
-	LOG_DEBUG("Initialized [length(all_hazards)] hazards.")
+	log_subsystem(name,"Initialized [length(all_hazards)] hazards.")
 
 	return TRUE
 

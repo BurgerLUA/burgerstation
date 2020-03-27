@@ -15,11 +15,8 @@
 	return TRUE
 
 
-
-
 /obj/marker/spawning/window/
 	icon_state = "window_grille"
-
 
 /obj/marker/spawning/window/proc/setup_airlock()
 
@@ -28,7 +25,6 @@
 		return FALSE
 
 	var/obj/structure/interactive/door/alarm/D = new(src.loc)
-	D.Initialize()
 
 	//This forces it to be one of 4 directions.
 	if(touching_space & NORTH)
@@ -42,13 +38,11 @@
 
 	return D
 
-/obj/marker/spawning/window/Initialize()
-	setup_airlock()
-	return ..()
 
 /obj/marker/spawning/window/do_spawn(var/turf/T)
 	new/obj/structure/interactive/construction/grille(T)
 	new/obj/structure/smooth/window(T)
+	setup_airlock()
 
 /obj/marker/spawning/window/reinforced/
 	icon_state = "window_grille_reinforced"
@@ -56,6 +50,7 @@
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
 	new/obj/structure/interactive/construction/grille(T)
 	new/obj/structure/smooth/window/reinforced(T)
+	setup_airlock()
 
 /obj/marker/spawning/window/extra/
 	icon_state = "window_grille_extra"
@@ -63,6 +58,7 @@
 /obj/marker/spawning/window/extra/do_spawn(var/turf/T)
 	new/obj/structure/interactive/construction/grille/plasteel(T)
 	new/obj/structure/smooth/window/reinforced/plasma(T)
+	setup_airlock()
 
 /client/verb/trigger_airlocks()
 	var/alarm_count = 0

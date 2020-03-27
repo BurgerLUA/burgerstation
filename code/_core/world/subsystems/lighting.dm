@@ -3,7 +3,6 @@ SUBSYSTEM_DEF(lighting)
 	desc = "Controls lighting."
 	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)
 	priority = SS_ORDER_LIGHTING
-	var/initialized = FALSE
 
 	var/total_lighting_overlays = 0
 	var/total_lighting_sources = 0
@@ -41,9 +40,9 @@ SUBSYSTEM_DEF(lighting)
 
 		on_life()
 
-		LOG_DEBUG("Initialized [processed_lights] lights.")
-		LOG_DEBUG("Initialized [processed_corners] corners.")
-		LOG_DEBUG("Initialized [processed_overlays] overlays.")
+		log_subsystem(name,"Initialized [processed_lights] lights.")
+		log_subsystem(name,"Initialized [processed_corners] corners.")
+		log_subsystem(name,"Initialized [processed_overlays] overlays.")
 
 		initialized = TRUE
 

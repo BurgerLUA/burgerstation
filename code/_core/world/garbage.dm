@@ -21,7 +21,7 @@ var/global/list/qdel_refs_to_type = list()
 				object.qdel_warning = TRUE
 				if(WARN_ON_DUPLICATE_QDEL)
 					var/warning_message = "Datum of type [object.type] was queued for delete [object.qdel_attempts] times!"
-					LOG_ERROR(warning_message)
+					log_error(warning_message)
 					text2file(warning_message,GARBAGE_LOGS_PATH)
 
 		if(!object.qdeleting)
@@ -29,7 +29,7 @@ var/global/list/qdel_refs_to_type = list()
 			qdel_refs_to_type["\ref[object]"] = object.type
 			if(!object.Destroy())
 				var/warning_message = "Datum of type [object.type] did not have a proper destroy call!"
-				LOG_ERROR(warning_message)
+				log_error(warning_message)
 				text2file(warning_message,GARBAGE_LOGS_PATH)
 
 			return TRUE

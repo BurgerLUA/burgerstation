@@ -177,7 +177,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 /lighting_corner/Destroy()
 
-	LOG_ERROR("Some fuck deleted a lighting corner.")
+	log_error("Some fuck deleted a lighting corner.")
 
 	SSlighting.lighting_corners -= src
 

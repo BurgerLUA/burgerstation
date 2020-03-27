@@ -19,8 +19,6 @@
 
 	var/attack_range = 1 //If it's a melee weapon, it needs a range. TODO: MOVE TO ITEM
 
-	var/initialized = FALSE
-
 	var/override_icon = FALSE
 
 	var/doing_progress = FALSE
@@ -117,10 +115,6 @@
 
 	return ..()
 
-/atom/proc/Initialize()
-	initialized = TRUE
-	return TRUE
-
 /atom/New()
 
 	. = ..()
@@ -134,7 +128,7 @@
 
 	if(health)
 		health = new health(src)
-		health.Initialize()
+		INITIALIZE(health)
 
 	set_dir(dir,TRUE)
 

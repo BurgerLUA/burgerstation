@@ -1,12 +1,17 @@
 #define LOG_SERVER(x) world.log << x
 #define LOG_DEBUG(x) world.log << x
-#define LOG_ERROR(x) world.log << "<span class='error'>[x]</span>"
 #define LOG_ADMIN(x) world.log << x
 #define LOG_BYOND_ERROR(x) world.log << "<span class='error'>[x]</span>"
 
 
+/proc/log_error(var/log_text)
+ 	world.log << "<span class='error'>[log_text]</span>"
+
 /proc/log_subsystem(var/subsystem_id,var/log_text)
 	world.log << "<span class='subsystem'><b><u>[subsystem_id]:</u></b> [log_text]</span>"
+
+/proc/log_unit_test(var/subsystem_id,var/log_text)
+	world.log << "<span class='unittest'><b><u>[subsystem_id]:</u></b> [log_text]</span>"
 
 /proc/print_list(var/list_name,var/list/L)
 	LOG_DEBUG("Printing list '[list_name]' of length [length(L)]:")

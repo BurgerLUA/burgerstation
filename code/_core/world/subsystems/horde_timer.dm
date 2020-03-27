@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(horde)
 				while(wave_to_spawn)
 					var/turf/T = get_step(chosen_spawn,pick(DIRECTIONS_ALL))
 					var/mob/living/advanced/npc/syndicate/S = new(T)
-					S.Initialize()
+					INITIALIZE(S)
 					S.ai.set_path(found_path)
 
 					for(var/mob/abstract/observer/O in world)

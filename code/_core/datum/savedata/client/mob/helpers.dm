@@ -48,7 +48,7 @@
 	var/data = file2text(filename)
 
 	if(!data)
-		LOG_ERROR("FATAL ERROR: NO DATA FOUND FOR [filename] for [bot_controlled ? "BOT" : owner.ckey].")
+		log_error("FATAL ERROR: NO DATA FOUND FOR [filename] for [bot_controlled ? "BOT" : owner.ckey].")
 		return FALSE
 
 	return json_decode(data)
@@ -151,7 +151,7 @@
 		if(S)
 			S.Initialize(xp)
 		else
-			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
+			log_error("Warning! Skill of ID [id] is invalid!")
 
 	//Attributes
 	for(var/id in loaded_data["attributes"])
@@ -160,7 +160,7 @@
 		if(S)
 			S.Initialize(xp)
 		else
-			LOG_ERROR("Warning! Skill of ID [id] is invalid!")
+			log_error("Warning! Skill of ID [id] is invalid!")
 
 	if(do_teleport)
 		var/obj/marker/dev/D = locate() in world

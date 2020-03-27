@@ -10,9 +10,7 @@ SUBSYSTEM_DEF(obj)
 	var/obj_count = 0
 
 	for(var/obj/O in world)
-		if(O.initialized)
-			continue
-		O.Initialize()
+		INITIALIZE(O)
 		obj_count++
 
-	LOG_SERVER("Initialized [obj_count] objects.")
+	log_subsystem(name,"Initialized [obj_count] objects in world.")

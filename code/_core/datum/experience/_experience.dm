@@ -33,7 +33,7 @@
 	owner = M
 	return ..()
 
-/experience/proc/Initialize(var/desired_xp)
+/experience/Initialize(var/desired_xp)
 	experience = desired_xp
 	last_level = xp_to_level(experience)
 	return TRUE

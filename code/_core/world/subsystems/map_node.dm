@@ -19,6 +19,6 @@ SUBSYSTEM_DEF(map_node)
 				map_nodes += 1
 				adjacent_map_nodes += length(M.adjacent_map_nodes)
 
-		LOG_SERVER("Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
+		log_subsystem(name,"Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
 
 	return TRUE

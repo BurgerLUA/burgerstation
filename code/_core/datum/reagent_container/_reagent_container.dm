@@ -269,11 +269,11 @@
 /reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
 
 	if(!all_reagents[reagent_id])
-		LOG_ERROR("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
+		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
 		return 0
 
 	if(amount == 0)
-		LOG_ERROR("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
+		log_error("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
 		return 0
 
 	if(temperature == TNULL)

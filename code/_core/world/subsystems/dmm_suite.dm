@@ -57,6 +57,6 @@ SUBSYSTEM_DEF(dmm_suite)
 		M.post_map_load()
 		prefabs_loaded++
 
-	LOG_SERVER("Loaded [prefabs_loaded] prefabs.")
-	LOG_SERVER("Loaded [maps_loaded] maps.")
+	log_subsystem(name,"Loaded [prefabs_loaded] prefabs.")
+	log_subsystem(name,"Loaded [maps_loaded] maps.")
 

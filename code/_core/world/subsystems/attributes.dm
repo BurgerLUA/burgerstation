@@ -9,4 +9,4 @@ SUBSYSTEM_DEF(attributes)
 	for(var/A in subtypesof(/experience/attribute/))
 		all_attributes += A
 
-	LOG_SERVER("Initialized [length(all_attributes)] attributes.")
+	log_subsystem(name,"Initialized [length(all_attributes)] attributes.")

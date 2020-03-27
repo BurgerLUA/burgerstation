@@ -11,4 +11,4 @@ SUBSYSTEM_DEF(shop)
 		S.initialize_shop()
 		total_shops++
 
-	LOG_SERVER("Initialized [length(total_shops)] shops.")
+	log_subsystem(name,"Initialized [length(total_shops)] shops.")

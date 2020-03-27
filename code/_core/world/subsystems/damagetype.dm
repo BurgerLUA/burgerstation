@@ -13,6 +13,6 @@ SUBSYSTEM_DEF(damagetype)
 		else
 			qdel(D)
 
-	LOG_SERVER("Initialized [length(all_damage_types)] damage types.")
+	log_subsystem(name,"Initialized [length(all_damage_types)] damage types.")
 
 

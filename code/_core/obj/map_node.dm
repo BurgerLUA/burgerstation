@@ -49,7 +49,7 @@ var/global/mob/abstract/node_checker
 		found = TRUE
 
 	if(!found)
-		LOG_ERROR("WARNING: Node at [src.x], [src.y], [src.z] is invalid!")
+		log_error("WARNING: Node at [src.x], [src.y], [src.z] is invalid!")
 
 	return found
 

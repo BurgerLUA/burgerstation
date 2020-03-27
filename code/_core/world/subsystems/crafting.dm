@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(recipe)
 		else
 			qdel(R)
 
-	LOG_SERVER("Initialized [length(all_recipes)] recipes.")
+	log_subsystem(name,"Initialized [length(all_recipes)] recipes.")
 
 
 /proc/generate_crafting_table(var/mob/living/advanced/caller,var/obj/item/crafting/C)

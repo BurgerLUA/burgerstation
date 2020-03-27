@@ -27,7 +27,7 @@
 	if (lighting_overlay)
 		if (lighting_overlay.loc != src)
 			var/turf/badT = lighting_overlay.loc
-			LOG_ERROR("Lighting overlay variable on turf at ([x],[y],[z]) is insane, lighting overlay actually located at ([badT.x],[badT.y],[badT.z])!")
+			log_error("Lighting overlay variable on turf at ([x],[y],[z]) is insane, lighting overlay actually located at ([badT.x],[badT.y],[badT.z])!")
 
 		qdel(lighting_overlay, TRUE)
 		lighting_overlay = null

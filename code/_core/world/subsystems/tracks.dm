@@ -10,4 +10,4 @@ SUBSYSTEM_DEF(tracks)
 		var/track/T = new k
 		all_tracks[T.id] = T
 
-	LOG_SERVER("Initialized [length(all_tracks)] music tracks.")
+	log_subsystem(name,"Initialized [length(all_tracks)] music tracks.")

@@ -9,4 +9,4 @@ SUBSYSTEM_DEF(skills)
 	for(var/A in subtypesof(/experience/skill/))
 		all_skills += A
 
-	LOG_SERVER("Initialized [length(all_skills)] skills.")
+	log_subsystem(name,"Initialized [length(all_skills)] skills.")

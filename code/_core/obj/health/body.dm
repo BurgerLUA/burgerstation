@@ -37,7 +37,7 @@
 			var/obj/item/organ/O = A.labeled_organs[o_id]
 
 			if(!O)
-				LOG_ERROR("Body error! Line 41 of health/body.dm!")
+				log_error("Body error! Line 41 of health/body.dm!")
 				continue
 
 			if(!O.health)

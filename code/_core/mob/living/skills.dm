@@ -9,7 +9,7 @@
 /mob/living/proc/get_skill_power(var/id)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
-		LOG_ERROR("WARNING: INVALID SKILL FOR [src]: [id]!")
+		log_error("WARNING: INVALID SKILL FOR [src]: [id]!")
 		return 0.5
 
 	return S.get_power()

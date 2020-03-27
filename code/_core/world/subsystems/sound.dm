@@ -52,7 +52,7 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 	var/sound/created_sound = sound(sound_path)
 
 	if(!created_sound)
-		LOG_ERROR("Warning! Invalid sound: [sound_path].")
+		log_error("Warning! Invalid sound: [sound_path].")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -80,7 +80,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 	var/sound/created_sound = sound(sound_path)
 
 	if(!created_sound)
-		LOG_ERROR("Warning! Invalid sound: [sound_path].")
+		log_error("Warning! Invalid sound: [sound_path].")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -117,7 +117,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	var/sound/created_sound = sound(T.path)
 
 	if(!created_sound)
-		LOG_ERROR("Warning! Invalid sound: [T.path].")
+		log_error("Warning! Invalid sound: [T.path].")
 		return FALSE
 
 	created_sound.channel = SOUND_CHANNEL_MUSIC
@@ -154,7 +154,7 @@ var/global/channel_hack = 100
 	var/sound/created_sound = sound(sound_path)
 
 	if(!created_sound)
-		LOG_ERROR("Warning! Invalid sound: [sound_path].")
+		log_error("Warning! Invalid sound: [sound_path].")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -183,7 +183,7 @@ var/global/channel_hack = 100
 		CHECK_TICK
 
 		if(!created_sound)
-			LOG_ERROR("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
+			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
 			return FALSE
 
 		if(invisibility_check && M.see_invisible < invisibility_check)

@@ -17,11 +17,11 @@ SUBSYSTEM_DEF(turfs)
 	var/turf_count = 0
 
 	for(var/turf/simulated/S in world)
-		S.Initialize()
+		INITIALIZE(S)
 		turf_count++
 
-	LOG_SERVER("Initialized [turf_count] turfs.")
-	LOG_SERVER("Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
+	log_subsystem(name,"Initialized [turf_count] turfs.")
+	log_subsystem(name,"Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
 
 /subsystem/turfs/on_life()
 

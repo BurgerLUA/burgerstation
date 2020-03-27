@@ -40,7 +40,7 @@
 	owner = desired_owner
 	return ..()
 
-/health/proc/Initialize()
+/health/Initialize()
 
 	update_stats()
 

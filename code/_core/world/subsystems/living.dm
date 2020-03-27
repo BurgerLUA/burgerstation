@@ -13,11 +13,11 @@ SUBSYSTEM_DEF(living)
 	for(var/mob/living/L in all_living)
 		CHECK_TICK
 		if(ENABLE_MOB)
-			L.Initialize()
+			INITIALIZE(L)
 		else
 			qdel(L)
 
-	LOG_SERVER("Initialized [length(all_living)] living beings.")
+	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 
 /subsystem/living/on_life()
 

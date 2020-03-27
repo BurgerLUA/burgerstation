@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(reagent)
 			R = new k
 			all_reagents[id] = R
 
-	LOG_SERVER("Initialized [length(all_reagents)] reagents.")
+	log_subsystem(name,"Initialized [length(all_reagents)] reagents.")
 
 	for(var/k in subtypesof(/reagent_recipe/))
 		var/reagent_recipe/R = k
@@ -39,4 +39,4 @@ SUBSYSTEM_DEF(reagent)
 			R = new k
 			all_reagent_recipes[id] = new k
 
-	LOG_SERVER("Initialized [length(all_reagent_recipes)] reagent recipes.")
+	log_subsystem(name,"Initialized [length(all_reagent_recipes)] reagent recipes.")

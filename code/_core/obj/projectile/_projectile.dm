@@ -253,7 +253,7 @@
 			if(damage_multiplier > 0)
 				DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
-		LOG_ERROR("Warning: [damage_type] is an invalid damagetype!.")
+		log_error("Warning: [damage_type] is an invalid damagetype!.")
 
 	return TRUE
 

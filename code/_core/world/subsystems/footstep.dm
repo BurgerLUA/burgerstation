@@ -14,4 +14,4 @@ SUBSYSTEM_DEF(footstep)
 			F = new k
 			all_footsteps[id] = F
 
-	LOG_SERVER("Initialized [length(all_footsteps)] footstep types.")
+	log_subsystem(name,"Initialized [length(all_footsteps)] footstep types.")

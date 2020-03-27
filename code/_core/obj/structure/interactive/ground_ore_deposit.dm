@@ -8,7 +8,9 @@
 	plane = PLANE_OBJ
 	layer = LAYER_FLOOR_DECAL
 
-/obj/structure/interactive/ground_ore_deposit/Initialize()
+
+
+/obj/structure/interactive/ground_ore_deposit/New(var/desired_loc)
 
 	. = ..()
 
@@ -20,7 +22,6 @@
 				var/obj/structure/interactive/ground_ore_deposit/GOD = new(T)
 				GOD.material_id = material_id
 				GOD.ore_score = ore_score * RAND_PRECISE(0.1,0.75)
-				GOD.Initialize()
 
 	update_icon()
 

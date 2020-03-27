@@ -25,5 +25,5 @@ SUBSYSTEM_DEF(paper)
 			var/loaded_data = file2text(initial_directory + book_directory + page_directory)
 			all_paper_data[title] += loaded_data
 
-	LOG_SERVER("Found [found_books] books.")
-	LOG_SERVER("Found [found_pages] pages.")
+	log_subsystem(name,"Found [found_books] books.")
+	log_subsystem(name,"Found [found_pages] pages.")

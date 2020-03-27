@@ -25,7 +25,7 @@
 	for(var/subsystem/S in active_subsystems)
 		var/local_benchmark = world.timeofday
 		log_subsystem(S.name,"Initializing...")
-		S.Initialize()
+		INITIALIZE(S)
 		log_subsystem(S.name,"Initialization took [DECISECONDS_TO_SECONDS((world.timeofday - local_benchmark))] seconds.")
 
 	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds.")
@@ -52,7 +52,7 @@
 					else
 						S.next_run = ticks + S.tick_rate
 			catch(var/exception/e)
-				LOG_ERROR("[S]: [e] on [e.file]:[e.line]!<br>[e.desc]")
+				log_error("[S]: [e] on [e.file]:[e.line]!<br>[e.desc]")
 				if(SHUTDOWN_SUBSYSTEM_ON_ERROR)
 					active_subsystems -= S
 

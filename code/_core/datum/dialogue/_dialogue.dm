@@ -35,7 +35,7 @@
 	var/list/chosen_dialogue = dialogue_options[topic]
 
 	if(!length(chosen_dialogue))
-		LOG_ERROR("ERROR: [P] cannot access chosen topic [topic]!")
+		log_error("ERROR: [P] cannot access chosen topic [topic]!")
 		return FALSE
 
 	var/dialogue = chosen_dialogue[1]

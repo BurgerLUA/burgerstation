@@ -43,6 +43,6 @@
 		S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
 		S.color = src.color
 		S.slime_color = src.color
-		S.Initialize()
+		INITIALIZE(S)
 
 	return .

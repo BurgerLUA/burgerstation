@@ -10,4 +10,4 @@ SUBSYSTEM_DEF(classes)
 		var/class/C = new A
 		all_classes[C.id] = C
 
-	LOG_SERVER("Initialized [length(all_classes)] classes.")
+	log_subsystem(name,"Initialized [length(all_classes)] classes.")

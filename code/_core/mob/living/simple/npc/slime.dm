@@ -35,7 +35,7 @@
 		var/mob/living/simple/npc/slime/S = new(get_turf(src))
 		S.slime_color = slime_color
 		S.stored_slimes = 1
-		S.Initialize()
+		INITIALIZE(S)
 
 		var/xvel = rand(-1,1)
 		var/yvel = rand(-1,1)

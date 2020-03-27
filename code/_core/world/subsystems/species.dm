@@ -37,4 +37,4 @@ SUBSYSTEM_DEF(chargen)
 
 
 
-	LOG_SERVER("Initialized [length(all_species)] species.")
+	log_subsystem(name,"Initialized [length(all_species)] species.")
