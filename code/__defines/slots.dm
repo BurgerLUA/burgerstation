@@ -12,7 +12,7 @@
 #define SLOT_HEAD         0x40 //Helmets/Hats
 #define SLOT_FACE         0x80 //Masks
 #define SLOT_EAR          0x100//Headsets
-#define SLOT_GLASSES      0x200 //Glasses
+#define SLOT_EYES      0x200 //Glasses
 #define SLOT_NECK         0x400 //Neck
 
 #define SLOT_GROIN        0x800    //Pants

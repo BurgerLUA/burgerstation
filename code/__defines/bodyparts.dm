@@ -32,6 +32,7 @@
 #define BODY_EYE_LEFT "eye_l"
 #define BODY_EYE_RIGHT "eye_r"
 
+#define BODY_EARS "ears"
 #define BODY_EAR_LEFT "ear_l"
 #define BODY_EAR_RIGHT "ear_r"
 

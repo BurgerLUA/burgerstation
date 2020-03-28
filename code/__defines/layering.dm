@@ -65,10 +65,10 @@
 #define LAYER_MOB_CLOTHING_EAR         LAYER_MOB + 0.24
 #define LAYER_MOB_GROIN                LAYER_MOB + 0.25
 
-#define LAYER_MOB_CLOTHING_UNDERWEAR   LAYER_MOB + 0.31
-#define LAYER_MOB_ARMS                 LAYER_MOB + 0.32
-#define LAYER_MOB_LEGS                 LAYER_MOB + 0.33
-#define LAYER_MOB_FEET                 LAYER_MOB + 0.34
+#define LAYER_MOB_ARMS                 LAYER_MOB + 0.31
+#define LAYER_MOB_LEGS                 LAYER_MOB + 0.32
+#define LAYER_MOB_FEET                 LAYER_MOB + 0.33
+#define LAYER_MOB_CLOTHING_UNDERWEAR   LAYER_MOB + 0.34
 #define LAYER_MOB_CLOTHING_SOCKS       LAYER_MOB + 0.35
 
 #define LAYER_MOB_CLOTHING_SHOES       LAYER_MOB + 0.41

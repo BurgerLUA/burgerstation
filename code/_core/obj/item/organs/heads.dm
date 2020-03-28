@@ -10,7 +10,7 @@
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,
 		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses
+		/obj/hud/inventory/organs/ear
 	)
 
 	attach_flag = BODY_TORSO
@@ -48,13 +48,6 @@
 	name = "reptile head"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	desc = "An organ."
-
-	inventories = list(
-		/obj/hud/inventory/organs/head,
-		/obj/hud/inventory/organs/neck,
-		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses
-	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
 /obj/item/organ/head/reptile/female
@@ -65,13 +58,6 @@
 	name = "advanced reptile head"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	desc = "An organ."
-
-	inventories = list(
-		/obj/hud/inventory/organs/head,
-		/obj/hud/inventory/organs/neck,
-		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses
-	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
 /obj/item/organ/head/reptile_advanced/female
@@ -84,13 +70,6 @@
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
 	icon_state = BODY_HEAD
 	desc = "An organ."
-
-	inventories = list(
-		/obj/hud/inventory/organs/head,
-		/obj/hud/inventory/organs/neck,
-		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses
-	)
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
 	enable_glow = TRUE
@@ -103,23 +82,9 @@
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	desc = "An organ."
 
-	inventories = list(
-		/obj/hud/inventory/organs/head,
-		/obj/hud/inventory/organs/neck,
-		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses
-	)
 
-
-//cyborg
+//beef
 /obj/item/organ/head/beefman
 	name = "beef head"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	desc = "An organ."
-
-	inventories = list(
-		/obj/hud/inventory/organs/head,
-		/obj/hud/inventory/organs/neck,
-		/obj/hud/inventory/organs/face,
-		/obj/hud/inventory/organs/glasses
-	)
