@@ -1,7 +1,6 @@
 var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/
-	name = "lost soul"
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
@@ -88,7 +87,13 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	return .
 
 /mob/living/advanced/player/setup_name()
+
+	if(real_name == "humanoid")
+		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+
 	name = "[real_name] ([client ? client : "NO CKEY"])"
+
+	return TRUE
 
 /mob/living/advanced/player/Destroy()
 

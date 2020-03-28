@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(chargen)
 
 					S.all_hair_head += v
 
-				LOG_SERVER("Initialized [length(S.all_hair_head)] species hairstyles for [S.name].")
+				log_subsystem(name,"Initialized [length(S.all_hair_head)] species hairstyles for [S.name].")
 
 			if(S.default_icon_face)
 				for(var/v in icon_states(S.default_icon_face))
@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(chargen)
 
 					S.all_hair_face += v
 
-				LOG_SERVER("Initialized [length(S.all_hair_face)] species beardstyles for [S.name].")
+				log_subsystem(name,"Initialized [length(S.all_hair_face)] species beardstyles for [S.name].")
 
 
 

@@ -270,9 +270,7 @@
 	return .
 
 /mob/living/proc/setup_name()
-	if(ai)
-		name = "[name] (lvl. [level])"
-
+	name = CHECK_NAME(name)
 	return TRUE
 
 /*

@@ -1,6 +1,6 @@
 /mob/living/advanced
 
-	name = "lost soul"
+	name = "humanoid"
 	var/real_name
 
 	var/species = "human"
@@ -287,9 +287,9 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Initialize()
 
-	. = ..()
-
 	apply_mob_parts(TRUE,TRUE,TRUE)
+
+	. = ..()
 
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
@@ -297,6 +297,14 @@ mob/living/advanced/Login()
 	update_slowdown_mul()
 
 	return .
+
+/mob/living/advanced/setup_name()
+
+	if(name == "humanoid") //Not unique.
+		name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+		real_name = name
+
+	return TRUE
 
 /mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 

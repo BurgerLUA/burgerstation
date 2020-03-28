@@ -143,7 +143,8 @@
 	if(linked_board.time_left <= 0)
 		return FALSE
 
-	. = ..()
+	if(!linked_board.game_initialized)
+		return FALSE
 
 	turning = TRUE
 
@@ -163,18 +164,19 @@
 
 	var/points = check_clear() ** 3
 	if(points)
-		if(length(linked_board.cleared_pieces))
-			for(var/i=1,i<=max(1,(points-1)*2),i++)
-				var/obj/hud/button/research/piece/P = pick(linked_board.cleared_pieces)
-				if(!P)
-					break
-				P.restore_piece()
+		for(var/i=1,i<=max(1,(points-1)*2),i++)
+			if(!length(linked_board.cleared_pieces))
+				break
+			var/obj/hud/button/research/piece/P = pick(linked_board.cleared_pieces)
+			if(!P)
+				break
+			P.restore_piece()
 		linked_board.add_points(points)
 		var/obj/hud/button/research/info/effect/E = new
 		E.update_owner(owner)
 		E.do_effect(src,points)
 
-	return .
+	return TRUE
 
 /obj/hud/button/research/piece/MouseEntered(location,control,params)
 	var/image/I = new/image(icon,"border")

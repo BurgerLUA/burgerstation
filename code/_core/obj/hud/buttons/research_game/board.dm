@@ -18,6 +18,7 @@
 	var/obj/hud/button/research/info/time/linked_time
 	var/obj/hud/button/research/info/score/linked_score
 	var/obj/hud/button/research/info/text/linked_text
+	var/obj/hud/button/research/info/quit/linked_quit
 
 	var/game_initialized = FALSE
 	var/init_x = 1
@@ -61,6 +62,7 @@
 			if(time_left <= 0)
 				linked_text.alpha = 255
 				linked_text.maptext = "<center><font size=10>TIMES UP!</font><br>Final Score: [points].</center>"
+				SSresearch.add_quadrants_score(owner,points)
 				return FALSE
 
 	return .
@@ -98,12 +100,14 @@
 	qdel(linked_text)
 	linked_text = null
 
+	qdel(linked_quit)
+	linked_quit = null
+
 	return ..()
 
 /obj/hud/button/research/board/update_owner(var/desired_owner)
 
 	. = ..()
-
 
 	if(linked_time)
 		linked_time.update_owner(desired_owner)
@@ -132,23 +136,16 @@
 		linked_text = new
 		linked_text.update_owner(desired_owner)
 
+	if(linked_quit)
+		linked_quit.update_owner(desired_owner)
+		if(desired_owner == null)
+			qdel(linked_quit)
+			linked_quit = null
+	else if(desired_owner != null)
+		linked_quit = new
+		linked_quit.update_owner(desired_owner)
+
 	if(desired_owner)
-		/*
-		for(var/x_pos=1,x_pos<=RESEARCH_BOARD_SIZE,x_pos++)
-			for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)
-				var/obj/hud/button/research/piece/P = new
-				P.update_owner(desired_owner)
-				P.x_p = x_pos
-				P.y_p = y_pos
-				src.pieces[x_pos][y_pos] = P
-				P.linked_board = src
-		for(var/x_pos=1,x_pos<=RESEARCH_BOARD_SIZE,x_pos++)
-			for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)
-				var/obj/hud/button/research/piece/P = src.pieces[x_pos][y_pos]
-				P.initialize_colors()
-				P.update_icon()
-				P.update_piece()
-		*/
 		start_thinking(src)
 	else
 		stop_thinking(src)

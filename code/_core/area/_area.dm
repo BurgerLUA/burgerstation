@@ -71,7 +71,6 @@ var/global/list/all_areas = list()
 
 	if(!all_areas[type])
 		all_areas[type] = src
-		LOG_DEBUG("Adding [type] to area list.")
 
 	return .
 

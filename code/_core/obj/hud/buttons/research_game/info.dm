@@ -1,7 +1,7 @@
 /obj/hud/button/research/info
 	name = "info"
 	icon = 'icons/hud/new.dmi'
-	icon_state = "square_round"
+	icon_state = "none"
 	maptext = "<center>Info</center>"
 
 /obj/hud/button/research/info/time
@@ -22,8 +22,26 @@
 	maptext = "<center>+1</center>"
 	layer = 99
 
+/obj/hud/button/research/info/quit
+	name = "quit button"
+	screen_loc = "TOP,RIGHT"
+	icon_state = "square_round_small"
+	maptext = "<center>Quit</center>"
+	layer = 99
+	mouse_opacity = 1
+
+/obj/hud/button/research/info/quit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(!is_living(caller))
+		return ..()
+
+	var/mob/living/L = caller
+	L.toggle_research_game(TRUE,FALSE)
+
+	return TRUE
+
 /obj/hud/button/research/info/effect/proc/do_effect(var/obj/hud/button/research/piece/P,var/points_given)
-	maptext = "<center><font size=[min(5,points_given)]>+[points_given]</font></center>"
+	maptext = "<center><font size=2>+[points_given]</font></center>"
 	screen_loc = P.screen_loc
 	var/direction = pick(-1,1)
 	animate(src,maptext_x = direction*TILE_SIZE*2, maptext_y = RESEARCH_BOARD_SIZE*TILE_SIZE, easing = QUAD_EASING | EASE_OUT, time = 5*RESEARCH_BOARD_SIZE)
