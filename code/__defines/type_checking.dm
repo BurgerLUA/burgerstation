@@ -104,7 +104,7 @@
 
 #define is_container(A) istype(A, /obj/item/container)
 
-#define is_radio(A) istype(A, /obj/item/radio)
+#define is_radio(A) istype(A, /obj/item/device/radio)
 
 #define is_wings(A) istype(A, /obj/item/clothing/back/wings)
 

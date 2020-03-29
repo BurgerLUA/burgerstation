@@ -13,6 +13,7 @@
 
 	var/points = 0
 
+	var/level = 1
 	var/time_left = 600
 
 	var/obj/hud/button/research/info/time/linked_time
@@ -52,7 +53,7 @@
 		time_left--
 
 		if(linked_time)
-			linked_time.maptext = "<center>Time:<br>[get_clock_time(CEILING(time_left/10,1))]</center>"
+			linked_time.maptext = "<center>Level:<br>[level]<br>Time:<br>[get_clock_time(CEILING(time_left/10,1))]</center>"
 			if(time_left <= 100)
 				linked_time.color = "#FF0000"
 				if(time_left <= 50 && !(time_left % 2))
@@ -61,7 +62,12 @@
 				linked_time.color = "#FFFFFF"
 			if(time_left <= 0)
 				linked_text.alpha = 255
-				linked_text.maptext = "<center><font size=10>TIMES UP!</font><br>Final Score: [points].</center>"
+
+				var/highscore = "HIGH SCORES:"
+				for(var/list/v in SSresearch.quadrant_high_scores)
+					highscore += "<br>[v[1]]:&nbsp;&nbsp;[v[2]]"
+
+				linked_text.maptext = "<center><font size=10>TIMES UP!</font><br>Final Score: [points].<br><br><br>[highscore]</center>"
 				SSresearch.add_quadrants_score(owner,points)
 				return FALSE
 
@@ -149,11 +155,5 @@
 		start_thinking(src)
 	else
 		stop_thinking(src)
-
-
-
-
-
-
 
 	return .

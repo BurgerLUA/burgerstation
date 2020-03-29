@@ -52,7 +52,7 @@
 				var/final_command = trim(copytext(text_to_say,2,0))
 				winset(C, null, "command='[final_command]'")
 		else if(first_character == ";")
-			for(var/obj/item/radio/R in all_radios)
+			for(var/obj/item/device/radio/R in all_radios)
 				if(get_turf(R) != get_turf(src))
 					continue
 				var/final_command = trim(copytext(text_to_say,2,0))
@@ -66,7 +66,7 @@
 				var/second_character = copytext(text_to_say,2,3)
 				if(client.macros.radio_keys[second_character])
 					var/desired_frequency = client.macros.radio_keys[second_character]
-					for(var/obj/item/radio/R in all_radios)
+					for(var/obj/item/device/radio/R in all_radios)
 						if(get_turf(R) != get_turf(src))
 							continue
 						var/final_command = trim(copytext(text_to_say,4,0))

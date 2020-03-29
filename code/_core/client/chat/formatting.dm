@@ -42,7 +42,7 @@ proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=RAD
 		var/atom/A = source
 		source_text += "<img src='\ref[A.icon]' iconstate='[A.icon_state]' width='10px' height='10px'/>"
 		if(is_radio(source))
-			source_text += "([frequency_to_name(frequency)])"
+			source_text += "([frequency_to_name(frequency)]) "
 			tag += " radio"
 
 	. = trim("[source_text][speaker_text]")
@@ -62,7 +62,7 @@ proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=RAD
 	. = ""
 
 	if(is_radio(source))
-		var/obj/item/radio/R = source
+		var/obj/item/device/radio/R = source
 		. += "<img src='\ref[R.icon]' iconstate='[R.icon_state]' width=10px, height=10px></img>([frequency_to_name(frequency)])"
 		tag += " radio"
 	else

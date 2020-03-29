@@ -69,6 +69,7 @@
 /obj/hud/inventory/organs/ear
 	name = "ear slot"
 	id = BODY_EARS
+	icon_state = "slot_ears"
 	screen_loc = "LEFT+2,BOTTOM+3"
 	item_slot = SLOT_EAR
 	worn_slots = 1

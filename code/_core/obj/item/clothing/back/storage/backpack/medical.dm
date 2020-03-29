@@ -11,7 +11,7 @@ obj/item/clothing/back/storage/backpack/medical
 	color = "#FFFFFF"
 
 /obj/item/clothing/back/storage/backpack/medical/loadout/medical/fill_inventory()
-	new /obj/item/radio/nanotrasen(src)
+	new /obj/item/device/radio/nanotrasen(src)
 	new /obj/item/pinpointer/custom(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/pinpointer/crew(src)

@@ -19,7 +19,7 @@ obj/item/clothing/back/storage/backpack/explorer/loadout
 
 
 obj/item/clothing/back/storage/backpack/explorer/loadout/miner/fill_inventory()
-	new /obj/item/radio(src)
+	new /obj/item/device/radio(src)
 	new /obj/item/pinpointer/custom(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/clothing/uniform/miner(src)

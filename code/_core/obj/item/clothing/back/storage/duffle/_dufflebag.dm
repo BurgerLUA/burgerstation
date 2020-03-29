@@ -23,7 +23,7 @@
 	color = COLOR_BLACK
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
-	new /obj/item/radio(src)
+	new /obj/item/device/radio(src)
 	new /obj/item/pinpointer/custom(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/clothing/feet/shoes/black_boots(src)
@@ -49,7 +49,7 @@
 	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'
 
 /obj/item/clothing/back/storage/dufflebag/engineering/loadout/fill_inventory()
-	new /obj/item/radio(src)
+	new /obj/item/device/radio(src)
 	new /obj/item/pinpointer/custom(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/clothing/overwear/armor/hardsuit/engineering(src)

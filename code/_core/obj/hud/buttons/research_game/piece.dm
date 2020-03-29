@@ -105,9 +105,6 @@
 	update_icon()
 	times_cleared++
 	linked_board.cleared_pieces += src
-
-
-
 	return TRUE
 
 /obj/hud/button/research/piece/proc/restore_piece()
@@ -162,9 +159,9 @@
 	turning = FALSE
 	update_piece()
 
-	var/points = check_clear() ** 3
+	var/points = check_clear() ** 2
 	if(points)
-		for(var/i=1,i<=max(1,(points-1)*2),i++)
+		for(var/i=1,i<=points - 1,i++)
 			if(!length(linked_board.cleared_pieces))
 				break
 			var/obj/hud/button/research/piece/P = pick(linked_board.cleared_pieces)
@@ -175,6 +172,7 @@
 		var/obj/hud/button/research/info/effect/E = new
 		E.update_owner(owner)
 		E.do_effect(src,points)
+
 
 	return TRUE
 

@@ -9,7 +9,7 @@
 	desired_light_power = 1
 	desired_light_color = "#00FF00"
 
-	var/obj/item/radio/stored_radio = null
+	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
 /obj/structure/interactive/intercom/New(var/desired_loc)
 	stored_radio = new(src)
