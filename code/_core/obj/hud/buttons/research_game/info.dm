@@ -10,9 +10,15 @@
 	screen_loc = "LEFT,TOP"
 	maptext = "<center>Time:<br>1:00</center>"
 
+/obj/hud/button/research/info/level
+	name = "current level"
+	icon_state = "none"
+	screen_loc = "LEFT,TOP-1"
+	maptext = "<center>Level:<br>1</center>"
+
 /obj/hud/button/research/info/score
 	name = "score"
-	screen_loc = "LEFT,TOP-1"
+	screen_loc = "LEFT,TOP-2"
 	maptext = "<center>Score:<br>0</center>"
 
 /obj/hud/button/research/info/effect

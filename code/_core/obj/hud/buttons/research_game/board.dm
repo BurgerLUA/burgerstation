@@ -18,6 +18,7 @@
 
 	var/obj/hud/button/research/info/time/linked_time
 	var/obj/hud/button/research/info/score/linked_score
+	var/obj/hud/button/research/info/level/linked_level
 	var/obj/hud/button/research/info/text/linked_text
 	var/obj/hud/button/research/info/quit/linked_quit
 
@@ -53,7 +54,7 @@
 		time_left--
 
 		if(linked_time)
-			linked_time.maptext = "<center>Level:<br>[level]<br>Time:<br>[get_clock_time(CEILING(time_left/10,1))]</center>"
+			linked_time.maptext = "<center>Time:<br>[get_clock_time(CEILING(time_left/10,1))]</center>"
 			if(time_left <= 100)
 				linked_time.color = "#FF0000"
 				if(time_left <= 50 && !(time_left % 2))
@@ -74,15 +75,23 @@
 	return .
 
 /obj/hud/button/research/board/proc/add_points(var/points_to_add)
-	points += points_to_add
+	level = 1 + FLOOR(points/20,1)
 	time_left += (points_to_add)*10
+	if(points_to_add >= 2)
+		time_left = max(time_left,30)
+	points += points_to_add*(1 + FLOOR(level/3,1))
+	if(linked_level)
+		linked_level.maptext = "<center>Level:<br>[level]</center>"
 	if(linked_score)
 		linked_score.maptext = "<center>Score:<br>[points]</center>"
 		if(points_to_add > 2)
 			linked_text.alpha = 255
 			linked_text.maptext = "<center><font size=5>Well done!</font></center>"
+			play_sound('sounds/ui/friendly.ogg',list(owner),vector(owner.x,owner.y,owner.z),environment = ENVIRONMENT_GENERIC)
 			spawn(20)
 				animate(linked_text,alpha=0,time = 10)
+
+
 
 	return TRUE
 
@@ -123,6 +132,15 @@
 	else if(desired_owner != null)
 		linked_time = new
 		linked_time.update_owner(desired_owner)
+
+	if(linked_level)
+		linked_level.update_owner(desired_owner)
+		if(desired_owner == null)
+			qdel(linked_level)
+			linked_level = null
+	else if(desired_owner != null)
+		linked_level = new
+		linked_level.update_owner(desired_owner)
 
 	if(linked_score)
 		linked_score.update_owner(desired_owner)

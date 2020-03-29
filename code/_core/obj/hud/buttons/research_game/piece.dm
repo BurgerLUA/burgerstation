@@ -24,8 +24,6 @@
 
 	var/obj/hud/button/research/board/linked_board
 
-	var/times_cleared = 0
-
 /obj/hud/button/research/piece/Destroy()
 
 	if(linked_board)
@@ -103,15 +101,24 @@
 	color_04 = COLOR_BLACK
 	update_piece()
 	update_icon()
-	times_cleared++
 	linked_board.cleared_pieces += src
 	return TRUE
 
 /obj/hud/button/research/piece/proc/restore_piece()
-	color_01 = times_cleared >= 1 ? pick(RESEARCH_POSSIBLE_COLORS_BONUS) : pick(RESEARCH_POSSIBLE_COLORS)
-	color_02 = times_cleared >= 2 ? pick(RESEARCH_POSSIBLE_COLORS_BONUS) : pick(RESEARCH_POSSIBLE_COLORS)
-	color_03 = times_cleared >= 3 ? pick(RESEARCH_POSSIBLE_COLORS_BONUS) : pick(RESEARCH_POSSIBLE_COLORS)
-	color_04 = times_cleared >= 4 ? pick(RESEARCH_POSSIBLE_COLORS_BONUS) : pick(RESEARCH_POSSIBLE_COLORS)
+
+	var/list/possible_colors = RESEARCH_POSSIBLE_COLORS
+	var/level = linked_board.level
+	if(level >= 3)
+		possible_colors += COLOR_YELLOW
+	if(level >= 5)
+		possible_colors += COLOR_CYAN
+	if(level >= 10)
+		possible_colors += COLOR_PURPLE
+
+	color_01 = pick(possible_colors)
+	color_02 = pick(possible_colors)
+	color_03 = pick(possible_colors)
+	color_04 = pick(possible_colors)
 	update_piece()
 	update_icon()
 	linked_board.cleared_pieces -= src
@@ -154,6 +161,7 @@
 		desired_dir = -90
 	M.Turn(desired_dir)
 	animate(src,transform = M,time = 5, easing = ELASTIC_EASING)
+	play_sound('sounds/ui/game/rotate_piece.ogg',list(caller),vector(caller.x,caller.y,caller.z),environment = ENVIRONMENT_GENERIC)
 	sleep(3)
 	fake_dir += desired_dir
 	turning = FALSE
@@ -161,7 +169,8 @@
 
 	var/points = check_clear() ** 2
 	if(points)
-		for(var/i=1,i<=points - 1,i++)
+		play_sound('sounds/ui/game/score_piece.ogg',list(caller),vector(caller.x,caller.y,caller.z),environment = ENVIRONMENT_GENERIC)
+		for(var/i=1,i<=points,i++)
 			if(!length(linked_board.cleared_pieces))
 				break
 			var/obj/hud/button/research/piece/P = pick(linked_board.cleared_pieces)
@@ -172,7 +181,6 @@
 		var/obj/hud/button/research/info/effect/E = new
 		E.update_owner(owner)
 		E.do_effect(src,points)
-
 
 	return TRUE
 

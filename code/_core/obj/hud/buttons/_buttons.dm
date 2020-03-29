@@ -68,5 +68,5 @@
 
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	play_sound('sounds/ui/tap-muted.ogg',list(caller),vector(caller.x,caller.y,caller.z),environment = ENVIRONMENT_GENERIC)
+	play_sound('sounds/ui/tap-simple.ogg',list(caller),vector(caller.x,caller.y,caller.z),environment = ENVIRONMENT_GENERIC)
 	return TRUE
