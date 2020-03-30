@@ -255,8 +255,9 @@
 
 	//initialize_factions()
 	update_level()
-	. = ..()
 	setup_name()
+
+	. = ..()
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))

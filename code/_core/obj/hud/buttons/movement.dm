@@ -65,7 +65,7 @@
 	desc = "No sleeping on the job!"
 	desc_extended = "Press to toggle laying down."
 	icon_state = "rest"
-	screen_loc = "RIGHT-1,BOTTOM+1"
+	screen_loc = "RIGHT,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 

@@ -6,9 +6,7 @@
 	icon = 'icons/hud/new.dmi'
 	icon_state = "invisible"
 
-	screen_loc = "RIGHT,BOTTOM+2.2"
-
-	flags = FLAGS_HUD_MOB
+	screen_loc = "RIGHT,CENTER-2"
 
 	user_colors = FALSE
 

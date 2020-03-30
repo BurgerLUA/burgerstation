@@ -1,4 +1,7 @@
 var/global/list/obj/hud/button/chargen_buttons = list(
+
+	/obj/hud/button/chargen/change_name,
+
 	/obj/hud/button/chargen/hairstyle/main,
 	/obj/hud/button/chargen/hairstyle/slot01,
 	/obj/hud/button/chargen/hairstyle/slot02,

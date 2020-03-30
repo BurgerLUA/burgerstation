@@ -3,7 +3,7 @@
 	desc = ""
 	desc_extended = ""
 	icon_state = "template"
-	screen_loc = "RIGHT-2,BOTTOM+1"
+	screen_loc = "RIGHT-3,BOTTOM"
 	flags = FLAGS_HUD_MOB
 
 /obj/hud/button/evade/clicked_on_by_object(var/mob/caller,object,location,control,params)

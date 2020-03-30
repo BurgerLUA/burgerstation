@@ -29,3 +29,9 @@
 		"skirt" = COLOR_WHITE,
 		"stripes" = COLOR_BLACK
 	)
+
+/obj/item/clothing/pants/skirt/grey
+	name = "assistant skirt"
+	polymorphs = list(
+		"skirt" = COLOR_GREY
+	)

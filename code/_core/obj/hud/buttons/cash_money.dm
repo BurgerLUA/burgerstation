@@ -4,7 +4,7 @@
 
 	var/amount = 0
 
-	screen_loc = "RIGHT,CENTER"
+	screen_loc = "RIGHT,TOP-1"
 
 	icon_state = "currency"
 
@@ -65,7 +65,7 @@
 
 /obj/hud/button/toggle_cash_money
 	name = "toggle telecrystal display"
-	screen_loc = "RIGHT-1,CENTER"
+	screen_loc = "RIGHT-1,TOP-1"
 	icon_state = "telecrystal"
 
 	flags = FLAGS_HUD_MOB

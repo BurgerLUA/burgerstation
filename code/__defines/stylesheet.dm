@@ -40,6 +40,11 @@ body {
 	color: blue;
 	font-style: italic;
 }
+.debug_message{
+	color:blue;
+	font-weight: bold;
+	font-size: 16px;
+}
 .warning{
 	color: red;
 	font-style: italic;

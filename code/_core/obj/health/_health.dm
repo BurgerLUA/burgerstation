@@ -10,6 +10,8 @@
 	layer = LAYER_HUD
 	plane = PLANE_HUD
 
+	flags = FLAGS_HUD_MOB
+
 /obj/hud/button/health/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(owner && caller.client)
 		caller.client.examine(owner)
@@ -66,7 +68,7 @@
 	min = 0
 	bar_color = "#ff0000"
 
-	screen_loc = "RIGHT-0.25,BOTTOM+1.1"
+	screen_loc = "RIGHT-0.25,CENTER-1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -91,7 +93,7 @@
 	min = 0
 	bar_color = "#00ff00"
 
-	screen_loc = "RIGHT,BOTTOM+1.1"
+	screen_loc = "RIGHT,CENTER-1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -116,7 +118,7 @@
 	min = 0
 	bar_color = "#0000ff"
 
-	screen_loc = "RIGHT+0.25,BOTTOM+1.1"
+	screen_loc = "RIGHT+0.25,CENTER-1"
 
 	flags = FLAGS_HUD_MOB
 

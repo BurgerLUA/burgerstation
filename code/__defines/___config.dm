@@ -19,7 +19,7 @@
 #define MIN_ZOOM 1
 
 #define ZOOM_RANGE 8
-#define VIEW_RANGE 10
+#define VIEW_RANGE 11
 #define VIEW_RANGE_GHOST 16
 
 #define SOUND_RANGE 18

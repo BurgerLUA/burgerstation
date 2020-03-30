@@ -62,3 +62,9 @@
 	polymorphs = list(
 		"pants" = COLOR_MEDICAL_LIGHT
 	)
+
+/obj/item/clothing/pants/normal/grey
+	name = "assistant pants"
+	polymorphs = list(
+		"pants" = COLOR_GREY
+	)

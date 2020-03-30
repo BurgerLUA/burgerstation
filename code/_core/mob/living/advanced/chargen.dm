@@ -116,7 +116,7 @@
 
 	update_all_blends()
 	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
-	show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
+	//show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 
 
 
