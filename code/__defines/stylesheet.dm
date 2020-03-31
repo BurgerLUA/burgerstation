@@ -43,7 +43,7 @@ body {
 .debug_message{
 	color:blue;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 10px;
 }
 .warning{
 	color: red;

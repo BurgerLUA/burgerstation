@@ -22,8 +22,8 @@
 
 		/obj/item/clothing/overwear/coat/wizard/red,
 
-		/obj/item/clothing/feet/socks/white,
-		/obj/item/clothing/feet/socks/white,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/feet/socks/knee,
 
 		/obj/item/clothing/feet/shoes/sandal,
 		/obj/item/clothing/feet/shoes/sandal/left

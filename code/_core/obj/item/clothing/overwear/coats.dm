@@ -104,4 +104,5 @@
 /obj/item/clothing/overwear/coat/hoodie/black
 	color = COLOR_BLACK
 
-	value = 20
+/obj/item/clothing/overwear/coat/hoodie/grey
+	color = COLOR_GREY

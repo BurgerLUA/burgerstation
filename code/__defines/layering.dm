@@ -54,26 +54,26 @@
 #define LAYER_MOB_TORSO                LAYER_MOB + 0.05
 
 #define LAYER_MOB_CLOTHING_UNDERSHIRT  LAYER_MOB + 0.11
-#define LAYER_MOB_CLOTHING_NECK_UNDER  LAYER_MOB + 0.12
-#define LAYER_MOB_HEAD                 LAYER_MOB + 0.13
-#define LAYER_MOB_EAR                  LAYER_MOB + 0.14
-#define LAYER_MOB_EYE                  LAYER_MOB + 0.15
+#define LAYER_MOB_HEAD                 LAYER_MOB + 0.12
+#define LAYER_MOB_EAR                  LAYER_MOB + 0.13
+#define LAYER_MOB_EYE                  LAYER_MOB + 0.14
+#define LAYER_MOB_MASK                 LAYER_MOB + 0.15
 
-#define LAYER_MOB_MASK                 LAYER_MOB + 0.21
-#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.22
-#define LAYER_MOB_CLOTHING_EYE         LAYER_MOB + 0.23
-#define LAYER_MOB_CLOTHING_EAR         LAYER_MOB + 0.24
-#define LAYER_MOB_GROIN                LAYER_MOB + 0.25
+#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.21
+#define LAYER_MOB_CLOTHING_EYE         LAYER_MOB + 0.22
+#define LAYER_MOB_CLOTHING_EAR         LAYER_MOB + 0.23
+#define LAYER_MOB_GROIN                LAYER_MOB + 0.24
+#define LAYER_MOB_ARMS                 LAYER_MOB + 0.25
 
-#define LAYER_MOB_ARMS                 LAYER_MOB + 0.31
-#define LAYER_MOB_LEGS                 LAYER_MOB + 0.32
-#define LAYER_MOB_FEET                 LAYER_MOB + 0.33
-#define LAYER_MOB_CLOTHING_UNDERWEAR   LAYER_MOB + 0.34
-#define LAYER_MOB_CLOTHING_SOCKS       LAYER_MOB + 0.35
+#define LAYER_MOB_LEGS                 LAYER_MOB + 0.31
+#define LAYER_MOB_FEET                 LAYER_MOB + 0.32
+#define LAYER_MOB_CLOTHING_UNDERWEAR   LAYER_MOB + 0.32
+#define LAYER_MOB_CLOTHING_SOCKS       LAYER_MOB + 0.34
+#define LAYER_MOB_CLOTHING_SHOES       LAYER_MOB + 0.35
 
-#define LAYER_MOB_CLOTHING_SHOES       LAYER_MOB + 0.41
-#define LAYER_MOB_CLOTHING_PANTS       LAYER_MOB + 0.42
-#define LAYER_MOB_CLOTHING_UNIFORM     LAYER_MOB + 0.43
+#define LAYER_MOB_CLOTHING_PANTS       LAYER_MOB + 0.41
+#define LAYER_MOB_CLOTHING_UNIFORM     LAYER_MOB + 0.42
+#define LAYER_MOB_CLOTHING_NECK_UNDER  LAYER_MOB + 0.43
 #define LAYER_MOB_CLOTHING_BELT        LAYER_MOB + 0.44
 #define LAYER_MOB_CLOTHING_ARMOR       LAYER_MOB + 0.45
 

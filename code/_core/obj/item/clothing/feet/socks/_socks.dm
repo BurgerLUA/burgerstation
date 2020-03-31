@@ -24,12 +24,13 @@
 
 	value = 3
 
-
-/obj/item/clothing/feet/socks/white
+/obj/item/clothing/feet/socks/ankle
+	name = "ankle high socks"
 	icon = 'icons/obj/items/clothing/socks/normal.dmi'
+	polymorphs = null
 
 /obj/item/clothing/feet/socks/knee
-	name = "high socks"
+	name = "knee high socks"
 	icon = 'icons/obj/items/clothing/socks/knee.dmi'
 	polymorphs = list(
 		"sock" = COLOR_WHITE
@@ -42,30 +43,46 @@
 		"sock" = COLOR_WHITE
 	)
 
-/obj/item/clothing/feet/socks/knee/scottish
+/obj/item/clothing/feet/socks/knee/striped
+	polymorphs = list(
+		"sock" = COLOR_WHITE,
+		"stripes" = COLOR_GREY
+	)
+
+/obj/item/clothing/feet/socks/knee/striped/scottish
 	polymorphs = list(
 		"sock" = "#53512A",
 		"stripes" = "#32321B"
 	)
 
-/obj/item/clothing/feet/socks/stockings/
+/obj/item/clothing/feet/socks/thigh/
 	name = "thigh high sock"
 	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
 
 	value = 10
 
-/obj/item/clothing/feet/socks/stockings/pink
+	polymorphs = list(
+		"sock" = COLOR_WHITE
+	)
+
+/obj/item/clothing/feet/socks/thigh/striped/
+	polymorphs = list(
+		"sock" = COLOR_WHITE,
+		"stripes" = COLOR_GREY
+	)
+
+/obj/item/clothing/feet/socks/thigh/striped/pink
 	name = "programmer sock"
 
 	polymorphs = list(
 		"sock" = "#FFFFFF",
-		"stripe" = "#FFFFFF"
+		"stripes" = "#FFFFFF"
 	)
 
-/obj/item/clothing/feet/socks/stockings/bee
+/obj/item/clothing/feet/socks/thigh/striped/bee
 	name = "bee stockings"
 
 	polymorphs = list(
 		"sock" = "#FFFFFF",
-		"stripe" = "#FFFFFF"
+		"stripes" = "#FFFFFF"
 	)

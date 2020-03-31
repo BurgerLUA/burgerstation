@@ -12,6 +12,9 @@
 
 	var/force_corner = FALSE
 
+/obj/structure/smooth/window/directional/anchored
+	anchored = TRUE
+
 /obj/structure/smooth/window/directional/Initialize()
 
 	if(dir in DIRECTIONS_INTERCARDINAL)

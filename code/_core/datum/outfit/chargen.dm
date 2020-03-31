@@ -3,8 +3,8 @@
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/feet/socks/white,
-		/obj/item/clothing/feet/socks/white
+		/obj/item/clothing/feet/socks/ankle,
+		/obj/item/clothing/feet/socks/ankle
 	)
 
 /loadout/new_character_female
@@ -12,8 +12,8 @@
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/panty,
 		/obj/item/clothing/undertop/underwear/bra,
-		/obj/item/clothing/feet/socks/white,
-		/obj/item/clothing/feet/socks/white
+		/obj/item/clothing/feet/socks/ankle,
+		/obj/item/clothing/feet/socks/ankle
 	)
 
 

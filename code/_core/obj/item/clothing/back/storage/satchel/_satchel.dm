@@ -35,3 +35,11 @@
 	new /obj/item/hand_teleporter(src)
 
 	return ..()
+
+
+/obj/item/clothing/back/storage/satchel/loadout/new_player/fill_inventory()
+	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/storage/emergency(src)
+	new /obj/item/pinpointer/landmark(src)
+	new /obj/item/clothing/overwear/coat/hoodie/grey(src)
+	return ..()

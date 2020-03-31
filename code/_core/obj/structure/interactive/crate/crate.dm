@@ -6,6 +6,9 @@
 	icon = 'icons/obj/structure/closet.dmi'
 	icon_state = "closet"
 
+/obj/structure/interactive/crate/closet/anchored
+	anchored = TRUE
+
 /obj/structure/interactive/crate/engineering
 	icon_state = "engineering"
 

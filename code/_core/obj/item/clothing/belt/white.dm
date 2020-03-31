@@ -7,6 +7,8 @@
 /obj/item/clothing/belt/storage/colored/black
 	color = COLOR_BLACK
 
+/obj/item/clothing/belt/storage/colored/grey
+	color = COLOR_GREY
 
 /obj/item/clothing/belt/storage/colored/black/filled/pmc/fill_inventory()
 	new /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod(src)

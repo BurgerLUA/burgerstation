@@ -35,6 +35,68 @@
 	name = "clothes vendor"
 	icon_state = "clothes"
 
+/obj/structure/interactive/vending/clothes/dye
+	name = "dye vendor"
+	icon_state = "dye"
+	stored_types = list(
+		/obj/item/slime_core/red,
+		/obj/item/slime_core/green,
+		/obj/item/slime_core/blue,
+		/obj/item/slime_core/black/weak,
+		/obj/item/slime_core/white/weak,
+		/obj/item/slime_core/white/strong
+	)
+
+/obj/structure/interactive/vending/clothes/shirt
+	name = "shirt vendor"
+	icon_state = "shirt"
+	stored_types = list(
+		/obj/item/clothing/shirt/normal,
+		/obj/item/clothing/shirt/normal/striped,
+		/obj/item/clothing/shirt/normal/uniform,
+		/obj/item/clothing/shirt/blouse,
+		/obj/item/clothing/shirt/blouse/frill,
+		/obj/item/clothing/shirt/blouse/uniform,
+		/obj/item/clothing/undertop/underwear/shirt
+	)
+
+
+/obj/structure/interactive/vending/clothes/underwear
+	name = "underwear vendor"
+	icon_state = "underwear"
+	stored_types = list(
+		/obj/item/clothing/feet/socks,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/feet/socks/knee/striped,
+		/obj/item/clothing/feet/socks/thigh,
+		/obj/item/clothing/feet/socks/thigh/striped,
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/underbottom/underwear/panty,
+		//obj/item/clothing/underbottom/underwear/thong, NOPE
+		/obj/item/clothing/undertop/underwear/bra,
+		/obj/item/clothing/undertop/underwear/bra/sport
+	)
+
+
+/obj/structure/interactive/vending/clothes/pants
+	name = "pants vendor"
+	icon_state = "pants"
+	stored_types = list(
+		/obj/item/clothing/pants/normal,
+		/obj/item/clothing/pants/normal/chaps,
+		/obj/item/clothing/pants/normal/striped,
+		/obj/item/clothing/pants/skirt,
+		/obj/item/clothing/pants/skirt/striped
+	)
+
+/obj/structure/interactive/vending/clothes/shoes
+	name = "shoes vendor"
+	icon_state = "shoe"
+	stored_types = list(
+		/obj/item/storage/shoebox/black,
+		/obj/item/storage/shoebox/colored,
+		/obj/item/storage/shoebox/jackboot
+	)
 
 /obj/structure/interactive/vending/medical/
 	name = "medicine vendor"
@@ -76,7 +138,6 @@
 	name = "medical wardrobe vendor"
 	icon_state = "medidrobe"
 	stored_types = list(
-		/obj/item/clothing/feet/socks/white,
 		/obj/item/clothing/underbottom/underwear/boxers/medical,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/medical,

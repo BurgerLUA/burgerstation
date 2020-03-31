@@ -25,7 +25,7 @@
 		var/choice = input("Are you sure you want to change your species to [species_choice]? Your appearance will reset to that species' default.","Species Change") in list("Yes","No")
 
 		if(choice == "Yes")
-			A.perform_specieschange(choice_to_species[species_choice],FALSE,TRUE)
+			A.perform_specieschange(choice_to_species[species_choice],TRUE,TRUE)
 
 	return TRUE
 

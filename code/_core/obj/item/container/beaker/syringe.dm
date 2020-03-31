@@ -135,6 +135,9 @@
 
 	return FALSE
 
+/obj/item/container/syringe/epinephrine/
+	name = "syringe (epinephrine)"
+
 /obj/item/container/syringe/epinephrine/on_spawn()
 	reagents.add_reagent("epinephrine",reagents.volume_max)
 	return ..()

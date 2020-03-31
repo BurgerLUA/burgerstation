@@ -73,6 +73,18 @@
 	color = random_color()
 	return ..()
 
+/obj/item/clothing/underbottom/underwear/thong
+	name = "thong"
+	icon = 'icons/obj/items/clothing/underwear/thong.dmi'
+	color = COLOR_WHITE
+	defense_rating = list(
+		BLADE = -ARMOR_E,
+		BLUNT = -ARMOR_E,
+		PIERCE = -ARMOR_E,
+		MAGIC = ARMOR_C,
+		COLD = ARMOR_E,
+	)
+
 /obj/item/clothing/underbottom/underwear/loincloth
 	name = "loincloth"
 	icon = 'icons/obj/items/clothing/underwear/loincloth.dmi'

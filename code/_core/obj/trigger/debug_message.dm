@@ -15,14 +15,20 @@
 	mouse_opacity = 1
 
 /obj/trigger/debug_message/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	Crossed(caller)
+	if(is_player(caller))
+		display_message_to(caller)
 	return TRUE
+
+/obj/trigger/debug_message/proc/display_message_to(var/mob/living/advanced/player/P)
+	P.known_debug_messages[id] = TRUE
+	return P.to_chat(span("debug_message",message))
 
 /obj/trigger/debug_message/Crossed(var/atom/movable/O)
 	if(is_player(O) && id)
 		var/mob/living/advanced/player/P = O
 		if(!P.known_debug_messages[id])
-			P.to_chat(span("debug_message",message))
+			display_message_to(P)
+
 	return ..()
 
 /obj/trigger/debug_message/greeting
@@ -123,3 +129,16 @@
 	message = "This is the Delta shuttle. The Delta shuttle is meant for the best of the best, but we all know that this won't always be true. The Delta shuttle is meant for special \
 	operatives wishing to explore the more north regions in harsh conditions in order to find artifacts and other objects for Research. The Delta shuttle lands to the north in the \
 	Mountains."
+
+
+/obj/trigger/debug_message/dyes
+	id = "dyes"
+	message = "In the future, all finacial transactions are made using a three factor authorization system consisting of facial recognition, fingerprint hash, and a DNA hash. \
+	This has the benifit of being more secure as well as no need for physical items that can get misplaced or stolen. Currency is persistent across shifts, and is saved on a per \
+	character basis. For these vendors, you can buy clothing or dyes to customize your character in the starting area. Note that you do not have infinite credits, so shop wisely!"
+
+
+/obj/trigger/debug_message/giftshop
+	id = "giftshop"
+	message = "This is the gift shop. The gift shop currently sells very useful items that can help new players guide themselves around the station. It is strongly recommended \
+	that anyone new to the station heads inside and buys some pinpointers."

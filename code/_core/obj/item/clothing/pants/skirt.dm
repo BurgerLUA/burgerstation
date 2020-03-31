@@ -23,7 +23,7 @@
 
 	value = 10
 
-/obj/item/clothing/pants/normal/striped
+/obj/item/clothing/pants/skirt/striped
 	name = "striped skirt"
 	polymorphs = list(
 		"skirt" = COLOR_WHITE,
