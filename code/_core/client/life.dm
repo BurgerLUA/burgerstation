@@ -27,6 +27,7 @@
 	if(!mob)
 		return TRUE
 
+	/*
 	if(is_player(mob))
 		if(inactivity > SECONDS_TO_DECISECONDS(660) && inactivity_warning_stage == 2)
 			var/mob/living/advanced/player/P = mob
@@ -41,6 +42,7 @@
 			inactivity_warning_stage = 1
 		else if(inactivity < SECONDS_TO_DECISECONDS(300))
 			inactivity_warning_stage = 0
+	*/
 
 	for(var/image/I in stored_hud_images)
 		images -= I
