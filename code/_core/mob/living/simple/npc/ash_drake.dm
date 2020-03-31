@@ -24,12 +24,14 @@
 	force_spawn = TRUE
 	boss = TRUE
 
+/*
 /mob/living/simple/npc/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 
 	if(boss_state)
 		return 1000
 
 	return ..()
+*/
 
 /mob/living/simple/npc/ash_drake/proc/fly()
 

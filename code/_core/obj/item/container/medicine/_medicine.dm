@@ -96,7 +96,7 @@
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		object = object.get_object_to_damage(caller,params,TRUE)
+		object = object.get_object_to_damage(caller,params,TRUE,TRUE)
 
 	if(!is_inventory(object) && can_treat(caller,object))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)

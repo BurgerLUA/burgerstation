@@ -172,8 +172,10 @@
 /damagetype/proc/get_attack_type()
 	return ATTACK_TYPE_MELEE
 
+/*
 /damagetype/proc/should_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return prob(victim.get_miss_chance(attacker,weapon,hit_object) + get_miss_chance())
+*/
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	do_attack_animation(attacker,victim,weapon,hit_object)

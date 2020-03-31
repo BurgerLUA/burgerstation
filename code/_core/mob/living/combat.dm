@@ -208,6 +208,7 @@
 
 	return src
 
+/*
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //TODO: DELETE THIS
 
 	if(status || dead)
@@ -216,6 +217,7 @@
 			return 50 + distance*10
 
 	return 0
+*/
 
 /mob/living/can_be_grabbed()
 	return dead || status > 0

@@ -1,4 +1,4 @@
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/list/params = list(),var/accurate=FALSE)
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE)
 
 	if(!length(params))
 		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
@@ -12,9 +12,9 @@
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
-	//var/best_distance = INFINITY
+	var/best_distance = INFINITY
 	var/obj/item/organ/best_organ
-	//var/obj/item/organ/best_distance_organ
+	var/obj/item/organ/best_distance_organ
 
 	for(var/obj/item/organ/O in src.organs)
 
@@ -25,25 +25,25 @@
 			best_organ = O
 			break
 
-		/*
-		var/center_x = (O.target_bounds_x_min + O.target_bounds_x_max) / 2
-		var/center_y = (O.target_bounds_y_min + O.target_bounds_y_max) / 2
+		if(find_closest)
+			var/center_x = (O.target_bounds_x_min + O.target_bounds_x_max) / 2
+			var/center_y = (O.target_bounds_y_min + O.target_bounds_y_max) / 2
 
-		var/distance_x = abs(x_attack - center_x)
-		var/distance_y = abs(y_attack - center_y)
+			var/distance_x = abs(x_attack - center_x)
+			var/distance_y = abs(y_attack - center_y)
 
-		var/distance = sqrt( (distance_x ** 2) + (distance_y ** 2) )
+			var/distance = sqrt( (distance_x ** 2) + (distance_y ** 2) )
 
-		if(!best_distance_organ || distance < best_distance)
-			best_distance = distance
-			best_distance_organ = O
-		*/
+			if(!best_distance_organ || distance < best_distance)
+				best_distance = distance
+				best_distance_organ = O
+
 
 	if(best_organ)
 		return best_organ
 
-	//if(best_distance_organ)
-	//	return best_distance_organ
+	if(best_distance_organ)
+		return best_distance_organ
 
 	return FALSE
 

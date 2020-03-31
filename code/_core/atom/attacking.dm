@@ -37,9 +37,12 @@
 	if(attacker && victim && attacker != victim && !ignore_distance)
 		attacker.face_atom(victim)
 
-	if(attacker && victim && is_living(attacker))
+	var/attacker_is_ai = FALSE
+
+	if(is_living(attacker))
 		var/mob/living/L = attacker
-		if(L.intent == INTENT_HELP && src.help(attacker,victim,params))
+		attacker_is_ai = L.ai
+		if(victim && L.intent == INTENT_HELP && src.help(attacker,victim,params))
 			return TRUE
 
 	if(is_player(attacker))
@@ -61,7 +64,7 @@
 			params[PARAM_ICON_Y] = num2text(attack_y)
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
-	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params)
+	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params,attacker_is_ai,attacker_is_ai)
 
 	if(!object_to_damage_with)
 		return FALSE
@@ -94,8 +97,10 @@
 
 	var/damage_multiplier = 1
 
+	/*
 	if(DT.allow_miss && DT.should_miss(attacker,victim,object_to_damage_with,object_to_damage))
 		if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
+	*/
 
 	if(DT.allow_dodge)
 		var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
@@ -123,7 +128,7 @@
 /atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 0.5
 
-/atom/proc/get_object_to_damage(var/atom/attacker,params) //Which object should the attacker damage?
+/atom/proc/get_object_to_damage(var/atom/attacker,params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
 	return src
 
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
@@ -153,8 +158,10 @@
 
 	return TRUE
 
+/*
 /atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
 	return 0
+*/
 
 /atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 	return null

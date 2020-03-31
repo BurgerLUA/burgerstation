@@ -71,12 +71,14 @@
 	O.attached_organs += src
 	return TRUE
 
+/*
 /obj/item/organ/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 
 	if(src.loc && !isturf(src.loc))
 		return src.loc.get_miss_chance(attacker,weapon,target) + base_miss_chance
 
 	return ..()
+*/
 
 /* HEALTH TODO: FIX THIS
 /obj/item/organ/get_examine_text(var/mob/examiner)

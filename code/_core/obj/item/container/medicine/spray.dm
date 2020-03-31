@@ -48,7 +48,7 @@
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
 
-		var/obj/item/organ/O = victim.get_object_to_damage(attacker,params)
+		var/obj/item/organ/O = victim.get_object_to_damage(attacker,params,TRUE,TRUE)
 
 		if(!O || !O.health || !O.reagents)
 			return TRUE

@@ -59,9 +59,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	allow_experience_gains = TRUE
 
 	var/obj/item/device/active_device
-
 	var/obj/structure/active_structure
-
 	var/obj/item/paper/active_paper
 
 	var/squad/current_squad
@@ -112,6 +110,11 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	qdel(mobdata)
 	mobdata = null
 	attack_logs.Cut()
+
+	active_device = null
+	active_structure = null
+	active_paper = null
+
 	return ..()
 
 mob/living/advanced/player/on_life_client()
