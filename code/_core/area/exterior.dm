@@ -1,4 +1,5 @@
 /area/exterior/
+	flags_area = FLAGS_AREA_ROUND_INFORMATION
 
 /area/exterior/snow
 	name = "snow"

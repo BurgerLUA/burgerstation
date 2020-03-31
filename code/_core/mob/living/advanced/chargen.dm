@@ -77,7 +77,7 @@
 	var/list/kept_items = list()
 
 	if(keep_items)
-		kept_items = drop_all_items(FALSE,TRUE)
+		kept_items = drop_all_items(src,FALSE,TRUE)
 	else
 		for(var/obj/hud/inventory/I in inventory)
 			I.remove_all_objects()

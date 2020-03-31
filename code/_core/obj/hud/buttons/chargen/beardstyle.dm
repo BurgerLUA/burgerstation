@@ -54,7 +54,6 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		B.hair_num = hair_num
 
 	var/hair_icon = S.all_hair_face[clamp(choice_main,1,length(S.all_hair_face))]
-
 	if(desired_color)
 		change_organ_visual("hair_face", desired_icon = S.default_icon_face, desired_icon_state = hair_icon, desired_color = desired_color)
 	else

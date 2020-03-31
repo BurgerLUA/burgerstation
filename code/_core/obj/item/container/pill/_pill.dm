@@ -53,21 +53,22 @@
 
 /obj/item/container/pill/update_icon()
 
+	overlays.Cut()
+
 	icon = initial(icon)
 	icon_state = initial(icon_state)
+	color = null
 
-	var/icon/I
 	if(double)
-		I = new/icon(icon,"[icon_state]_double_left")
-		I.Blend(reagents.color,ICON_MULTIPLY)
-		var/icon/I2 = new/icon(icon,"[icon_state]_double_right")
-		I2.Blend(reagents_2.color,ICON_MULTIPLY)
-		I.Blend(I2,ICON_OVERLAY)
-	else
-		I = new/icon(icon,icon_state)
-		I.Blend(reagents.color,ICON_MULTIPLY)
+		var/image/I = new/image(icon,"[icon_state]_double_left")
+		I.color = reagents.color
+		overlays += I
 
-	icon = I
+		var/image/I2 = new/image(icon,"[icon_state]_double_right")
+		I.color = reagents_2.color
+		overlays += I2
+	else
+		color = reagents.color
 
 	return TRUE
 
@@ -75,7 +76,7 @@
 
 	if(double)
 		reagents_2 = new/reagent_container/pill/half(src)
-		reagents = /reagent_container/pill/half //new is made somewhere else
+		reagents = new/reagent_container/pill/half(src)
 	else
 		reagents = /reagent_container/pill/
 
@@ -83,4 +84,5 @@
 
 
 /obj/item/container/pill/double/ //Yes, this is shitcode.
+	icon_state = "circle"
 	double = TRUE

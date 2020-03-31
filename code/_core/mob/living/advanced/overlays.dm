@@ -50,6 +50,7 @@ mob/living/advanced/proc/update_all_blends()
 	for(var/obj/overlay/O in overlays_assoc)
 		update_overlay_direct(O)
 
+/*
 mob/living/advanced/player/verb/debug_blends()
 	for(var/obj/overlay/O in overlays_assoc)
 		src << "[O.name]: [O.layer]"
@@ -57,7 +58,7 @@ mob/living/advanced/player/verb/debug_blends()
 			src<< "    Additional Blends:"
 			for(var/id in O.additional_blends)
 				src << "        [id]: [O.additional_blends[id].layer] [O.additional_blends[id].icon] [O.additional_blends[id].icon_state]"
-
+*/
 
 
 mob/living/advanced/proc/add_overlay_image(var/obj/overlay/O)

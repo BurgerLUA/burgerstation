@@ -242,7 +242,7 @@
 
 	return .
 
-/mob/living/advanced/proc/drop_all_items(var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
+/mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=FALSE)
 
 	var/dropped_objects = list()
 
@@ -251,7 +251,7 @@
 			var/obj/item/I = O.loc
 			if(I.is_container)
 				continue
-		dropped_objects += O.drop_all_objects(get_turf(src),exclude_soulbound)
+		dropped_objects += O.drop_all_objects(drop_location,exclude_soulbound)
 
 	return dropped_objects
 

@@ -9,6 +9,8 @@
 	icon = 'icons/obj/structure/shop.dmi'
 	icon_state = "debug"
 
+	mouse_opacity = 1
+
 /obj/structure/interactive/shop/Destroy()
 
 	qdel(stored_item)
@@ -46,7 +48,7 @@
 	if(stored_item)
 		stored_item.update_icon()
 		appearance = stored_item.appearance
-		mouse_opacity = 2
+		mouse_opacity = 1
 		name = "[stored_item.name] - [stored_item_cost] credits"
 
 	overlays.Cut()
@@ -72,7 +74,9 @@
 
 /obj/structure/interactive/shop/get_examine_list(var/mob/examiner)
 
-	. = stored_item.get_examine_list(examiner)
+	. = list()
+
+	. += stored_item.get_examine_list(examiner)
 
 	if(stored_item.is_container)
 		var/list/contents = stored_item.inventory_to_list()

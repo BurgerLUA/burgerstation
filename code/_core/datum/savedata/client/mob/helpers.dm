@@ -189,8 +189,9 @@
 		var/desired_type = value_or_null(blend_list,"type")
 		var/desired_layer = value_or_null(blend_list,"layer")
 		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
-
+/*
 /mob/living/advanced/verb/debug_overlays()
 	src << "Found [length(overlays)] overlays."
 	for(var/O in overlays)
 		src << "Overlay: [O]."
+*/

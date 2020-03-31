@@ -1,4 +1,6 @@
 /client/verb/ooc(var/text_to_say as text)
+	set name = "OOC"
+	set category = "Communication"
 
 	if(!text_to_say)
 		return FALSE
@@ -54,6 +56,9 @@
 
 
 /client/verb/pm(var/client/C as null|anything in all_clients, var/text_to_say as text)
+
+	set name = "PM"
+	set category = "Communication"
 
 	if(!text_to_say || !C)
 		return FALSE

@@ -1,5 +1,5 @@
 /mob/living/verb/suicide()
-	set category = "In Character"
+	set category = "Game"
 	set name = "Suicide"
 
 	var/response = input("Are you sure you want to kill yourself?") in list("fuck go back","Yes")
@@ -10,7 +10,7 @@
 
 /mob/living/verb/cycle_intent_clockwise()
 	set name = "Cycle Intent Clockwise"
-	set category = "In Character"
+	set category = "Game"
 	set hidden = TRUE
 
 	switch(intent)
@@ -33,7 +33,7 @@
 
 /mob/living/verb/cycle_intent_counter_clockwise()
 	set name = "Cycle Intent Counter-Clockwise"
-	set category = "In Character"
+	set category = "Game"
 	set hidden = TRUE
 
 	switch(intent)

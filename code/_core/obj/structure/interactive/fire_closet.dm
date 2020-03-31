@@ -3,7 +3,8 @@
 	icon = 'icons/obj/structure/fire_closet.dmi'
 	icon_state = "extinguisher"
 
-/obj/structure/interactive/fire_closet/on_spawn(var/desired_loc)
-	setup_dir_offsets()
+/obj/structure/interactive/fire_closet/Initialize()
+	setup_dir_offsets(src)
+	dir = SOUTH
 	icon_state = "[initial(icon_state)]_closed"
-	return ..(loc)
+	return ..()

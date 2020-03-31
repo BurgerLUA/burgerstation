@@ -1,3 +1,4 @@
+/*
 /mob/abstract/observer/verb/debug_next_character()
 	set name = "Debug Next Character"
 	set category = "Data"
@@ -11,6 +12,7 @@
 			return FALSE
 
 		to_chat(U.get_next_character_id())
+*/
 
 /mob/abstract/observer/verb/new_character()
 	set name = "Create New Character"
@@ -62,7 +64,7 @@
 	return C.load(U,file_num)
 
 /mob/abstract/observer/verb/load_most_recent_character()
-	set name = "Quickload"
+	set name = "Load Most Recent Character"
 	set category = "Data"
 
 	var/client/C = src.client

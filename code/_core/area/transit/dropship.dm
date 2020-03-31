@@ -2,7 +2,6 @@
 	name = "dropship shuttle"
 	id = "cargo_shuttle_planet"
 
-
 /area/transit/dropship/alpha/bluespace
 	id = "alpha_shuttle_bluespace"
 

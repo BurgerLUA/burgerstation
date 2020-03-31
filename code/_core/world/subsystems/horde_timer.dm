@@ -52,10 +52,8 @@ SUBSYSTEM_DEF(horde)
 			return TRUE
 		state = HORDE_STATE_GEARING
 		round_time = 0
-		round_time_next = 600 //600 seconds.
-		announce("Central Command Update","Prepare for Landfall","All crew are ordered to gear up for landfall. Estimated time until portal functionality: 11 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
-		spawn(600) //60 seconds
-			announce("Station Announcement System","Captain's Console","Mission briefing starts in 10 minutes. Please head to the briefing area when you are geared up.",ANNOUNCEMENT_STATION,'sounds/effects/station/attention.ogg')
+		round_time_next = 600
+		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 12 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_GEARING)
 		var/time_to_display = round_time_next - round_time
@@ -65,17 +63,17 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_BRIEFING
 		round_time = 0
 		round_time_next = 120
-		announce("Station Announcement System","Captain's Console","Briefing is starting now.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_BRIEFING)
 		var/time_to_display = round_time_next - round_time
 		if(time_to_display >= 0)
-			set_message("Briefing Period: [get_clock_time(time_to_display)]",TRUE)
+			set_message("Boarding Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
 		state = HORDE_STATE_BUILDING
 		round_time = 0
-		round_time_next = 300
-		announce("Station Announcement System","Captain's Console","The portal is now open. All landfall crew are ordered to enter the portal and establish a base of operations and prepare for enemy invasion.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		round_time_next = 120
+		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_BUILDING)
 		var/time_to_display = round_time_next - round_time
@@ -85,7 +83,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_FIGHTING
 		round_time = 0
 		round_time_next = 0
-		announce("Central Command Update","Hostile Lifeforms","Hostile lifeforms detected. Prepare for combat. ETA until bluespace artillery functionality: Unknown.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Alpha/Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_FIGHTING)
 		if(!message_displayed)

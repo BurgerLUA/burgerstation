@@ -19,7 +19,6 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 	return TRUE
 
 mob/living/advanced/player/verb/logout()
-
 	set name = "Save and Quit"
 	set desc = "Saves and quits your character, returning you to the main menu."
 	set category = "Menu"

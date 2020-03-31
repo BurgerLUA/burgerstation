@@ -11,7 +11,7 @@
 
 	stagger_time = min(max_value,stagger_time + value)
 
-	new/obj/effect/temp/damage_number(src.loc,stagger_time,"STAGGERED!")
+	new/obj/effect/temp/damage_number(src.loc,stagger_time,"STAGGER!")
 
 	if(inflictor)
 		var/desired_move_dir = get_dir(inflictor,src)

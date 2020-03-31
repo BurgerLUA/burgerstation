@@ -4,7 +4,8 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	for(var/obj/hud/button/message/M in all_hud_messages)
 		if(desired_text && M.owner)
 			var/area/A = get_area(M.owner)
-			if(!(A.flags_area & FLAGS_AREA_ANNOUNCEMENTS))
+			if(!(A.flags_area & FLAGS_AREA_ROUND_INFORMATION))
+				M.set_text(null,instant)
 				continue
 		M.set_text(desired_text,instant)
 
@@ -39,7 +40,10 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 /obj/hud/button/message/proc/set_text(var/desired_text,var/instant = FALSE)
 
 	if(!desired_text)
-		alpha = 0
+		if(instant)
+			alpha = 0
+		else
+			animate(src,alpha=0,time=40)
 	else if(instant)
 		alpha = 255
 		maptext = "<center><font size='2'>[desired_text]</font></center>"

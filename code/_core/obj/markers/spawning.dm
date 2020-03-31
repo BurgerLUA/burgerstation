@@ -59,11 +59,3 @@
 	new/obj/structure/interactive/construction/grille/plasteel(T)
 	new/obj/structure/smooth/window/reinforced/plasma(T)
 	setup_airlock()
-
-/client/verb/trigger_airlocks()
-	var/alarm_count = 0
-	for(var/obj/structure/interactive/door/alarm/D in world)
-		D.toggle()
-		alarm_count++
-
-	src << "Found [alarm_count] airlocks."

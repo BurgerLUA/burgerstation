@@ -262,8 +262,8 @@
 	color = "#FFFFFF"
 	flavor = "bandaids"
 
-	metabolism_blood = METABOLISM_BLOOD*0.5
-	metabolism_stomach = METABOLISM_STOMACH*0.5
+	metabolism_blood = 1
+	metabolism_stomach = 1
 
 /reagent/medicine/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 	. = ..()
@@ -279,6 +279,6 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.add_adrenaline(.*40)
+		L.add_adrenaline(.*50)
 
 	return .

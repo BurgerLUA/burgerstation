@@ -1,5 +1,5 @@
 /area/transit/syndicate/
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ROUND_INFORMATION
 
 /area/transit/syndicate/centcomm
 	name = "syndicate shuttle - central command"

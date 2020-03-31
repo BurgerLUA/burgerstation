@@ -29,6 +29,9 @@
 
 /mob/verb/say(var/text_to_say as text)
 
+	set name = "Say"
+	set category = "Communication"
+
 	if(!text_to_say)
 		text_to_say = input("What would you like to say?","Say") as text|null
 
@@ -80,12 +83,17 @@
 	return TRUE
 
 /mob/verb/emote(var/emote_id as text)
+	set hidden = TRUE
 	//do stuff
 
 /mob/verb/whisper(var/text_to_say as text)
+	set hidden = TRUE
 	//do stuff
 
 /mob/verb/looc(var/text_to_say as text)
+
+	set name = "LOOC"
+	set category = "Communication"
 
 	if(client && !check_spam(client))
 		return FALSE

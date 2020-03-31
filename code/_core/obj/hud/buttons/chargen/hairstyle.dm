@@ -2,22 +2,17 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	var/species/S = all_species[species]
 
-
-	if(!labeled_organs[BODY_HAIR_HEAD])
-		return FALSE
-	var/obj/item/organ/head/O = labeled_organs[BODY_HAIR_HEAD]
-
-	if(!O.additional_blends["hair_head"])
-		return FALSE
-	var/icon_blend/IB = O.additional_blends["hair_head"]
-
 	if(hair_num == -1)
-		var/found_value = S.all_hair_head.Find(IB.icon_state)
-		if(found_value)
-			hair_num = found_value
-		else
-			hair_num = 1
-		desired_color = IB.color
+		if(labeled_organs[BODY_HAIR_HEAD])
+			var/obj/item/organ/head/O = labeled_organs[BODY_HAIR_HEAD]
+			if(O.additional_blends["hair_head"])
+				var/icon_blend/IB = O.additional_blends["hair_head"]
+				var/found_value = S.all_hair_head.Find(IB.icon_state)
+				if(found_value)
+					hair_num = found_value
+				else
+					hair_num = 1
+				desired_color = IB.color
 
 	var/choice01 = hair_num - 2
 	var/choice02 = hair_num - 1
@@ -59,7 +54,10 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		B.hair_num = hair_num
 
 	var/hair_icon = S.all_hair_head[clamp(choice_main,1,length(S.all_hair_head))]
-	O.add_blend("hair_head",desired_icon = S.default_icon_hair, desired_icon_state = hair_icon)
+	if(desired_color)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)
+	else
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon)
 
 	if(update_blends) update_all_blends()
 

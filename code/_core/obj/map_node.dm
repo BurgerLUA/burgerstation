@@ -22,6 +22,7 @@ var/global/mob/abstract/node_checker
 	icon = 'icons/obj/node.dmi'
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
+	invisibility = 0
 
 /obj/marker/map_node/New(var/desired_loc)
 	all_map_nodes += src
@@ -141,7 +142,7 @@ client/verb/paint_best_path()
 		i++
 */
 
-
+/*
 client/verb/summon_syndicate()
 
 	var/obj/marker/map_node/N_end = find_closest_node(src.mob,debug = TRUE)
@@ -162,3 +163,4 @@ client/verb/summon_syndicate()
 			continue
 
 		S.ai.set_path(found_path)
+*/

@@ -1,5 +1,8 @@
 /client/verb/fullscreen()
 
+	set name = "Toggle Fullscreen"
+	set category = "Preferences"
+
 	var/is_fullscreen = winget(src, "main", "can-close") == "false"
 	is_fullscreen = !is_fullscreen
 

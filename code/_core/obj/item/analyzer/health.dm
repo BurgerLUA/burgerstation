@@ -9,16 +9,11 @@
 
 	. = ..()
 
-	if(.)
-		if(!is_living(target))
-			caller.to_chat("This is not a valid target!")
-			return FALSE
-
+	if(. && is_living(target))
 		. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
-
 		new/obj/effect/chat_text(target,.,TRUE)
 		caller.to_chat(.)
-
 		next_scan = world.time + SECONDS_TO_DECISECONDS(4)
+		return TRUE
 
-	return .
+	return FALSE

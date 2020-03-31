@@ -11,6 +11,9 @@
 	return TRUE
 
 /obj/item/analyzer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-	on_scan(caller,object)
-	return TRUE
+
+	if(on_scan(caller,object))
+		return TRUE
+
+	return ..()
 

@@ -4,6 +4,7 @@ var/global/list/area/transit/transit_areas = list()
 	name = "transit"
 	icon_state = "shuttle"
 	is_space = TRUE
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_ROUND_INFORMATION
 
 /area/transit/New(var/desired_loc)
 	transit_areas[id] = src

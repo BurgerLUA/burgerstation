@@ -1,5 +1,5 @@
 /client/verb/set_client_fps(var/desired_fps as num)
-	set category = "Visual"
+	set category = "Preferences"
 	set name = "Maximum FPS"
 	var/old_fps = src.fps
 	desired_fps = clamp(desired_fps,30,60)
