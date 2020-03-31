@@ -43,7 +43,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/ground_ore_deposit/get_examine_text(var/mob/examiner)
+/obj/structure/interactive/ground_ore_deposit/get_examine_list(var/mob/examiner)
 
 	. = ..()
 

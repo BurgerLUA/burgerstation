@@ -72,7 +72,7 @@
 
 	..()
 
-/obj/item/bullet_cartridge/get_examine_text(var/mob/examiner)
+/obj/item/bullet_cartridge/get_examine_list(var/mob/examiner)
 
 	. = ..()
 

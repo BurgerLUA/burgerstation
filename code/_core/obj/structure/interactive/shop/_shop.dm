@@ -70,17 +70,17 @@
 
 	..()
 
-/obj/structure/interactive/shop/get_examine_text(var/mob/examiner)
+/obj/structure/interactive/shop/get_examine_list(var/mob/examiner)
 
-	var/returning_text = stored_item.get_examine_text(examiner)
+	. = stored_item.get_examine_list(examiner)
 
 	if(stored_item.is_container)
 		var/list/contents = stored_item.inventory_to_list()
-		returning_text += div("notice","It contains: [english_list(contents)]")
+		. += div("notice","It contains: [english_list(contents)]")
 
-	returning_text += div("notice","This item is being sold for [stored_item_cost] credits.")
+	. += div("notice","This item is being sold for [stored_item_cost] credits.")
 
-	return returning_text
+	return .
 
 /obj/structure/interactive/shop/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 

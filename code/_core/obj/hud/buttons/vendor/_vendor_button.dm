@@ -20,9 +20,9 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/vendor/get_examine_text(var/mob/caller)
+/obj/hud/button/vendor/get_examine_list(var/mob/caller)
 	if(associated_item && !ispath(associated_item))
-		return associated_item.get_examine_text(caller)
+		return associated_item.get_examine_list(caller)
 	return ..()
 
 /obj/hud/button/vendor/Destroy()

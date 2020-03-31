@@ -10,7 +10,7 @@
 
 	value = 60
 
-/obj/item/soulgem/get_examine_text(var/mob/caller)
+/obj/item/soulgem/get_examine_list(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 
 /obj/item/soulgem/update_icon()

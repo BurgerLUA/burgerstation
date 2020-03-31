@@ -31,23 +31,6 @@
 
 	maptext = "<div align='right'>[amount]</div>"
 
-
-	/*
-	var/x_pos_mod = 32 - 8
-
-	var/num_to_text = num2text(amount)
-
-	var/the_length = length(num_to_text)
-
-	for(var/i=the_length,i>=1,i--)
-		var/letter = copytext(num_to_text,i,i+1)
-		var/icon/I2 = new/icon('icons/hud/numbers.dmi',letter)
-		I2.Shift(EAST,x_pos_mod)
-		I2.Shift(SOUTH,3)
-		I.Blend(I2,ICON_OVERLAY)
-		x_pos_mod -= 5
-	*/
-
 	swap_colors(I)
 
 	icon = I
@@ -79,14 +62,14 @@
 	if(!is_advanced(caller))
 		return FALSE
 
-	if(screen_loc == "RIGHT,CENTER")
-		screen_loc = "RIGHT-1,CENTER" //Visible
+	if(screen_loc == "RIGHT,TOP-1")
+		screen_loc = "RIGHT-1,TOP-1" //Visible
 	else
-		screen_loc = "RIGHT,CENTER" //Hidden
+		screen_loc = "RIGHT,TOP-1" //Hidden
 
 	var/mob/living/advanced/A = caller
 
-	var/is_visible = screen_loc == "RIGHT-1,CENTER"
+	var/is_visible = screen_loc == "RIGHT-1,TOP-1"
 
 	for(var/obj/hud/button/cash_money/B in A.buttons)
 		animate(B,alpha = is_visible ? 255 : 0, time = is_visible ? 4 : 1)

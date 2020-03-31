@@ -20,7 +20,7 @@
 
 	value = 15
 
-/obj/item/container/syringe/get_examine_text(var/mob/examiner)
+/obj/item/container/syringe/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/container/syringe/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.

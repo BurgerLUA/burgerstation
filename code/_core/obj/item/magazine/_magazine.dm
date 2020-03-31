@@ -40,7 +40,7 @@
 	..()
 	update_icon()
 
-/obj/item/magazine/get_examine_text(var/mob/examiner)
+/obj/item/magazine/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","It contains [length(stored_bullets)] bullets.")
 
 /obj/item/magazine/New()
@@ -129,18 +129,18 @@
 
 	return TRUE
 
-/obj/item/magazine/get_examine_text(var/mob/examiner)
+/obj/item/magazine/get_examine_list(var/mob/examiner)
 
 	if(!is_advanced(examiner))
 		return ..()
 
 	var/mob/living/advanced/A = examiner
 
-	var/returning_text = ..()
+	. = ..()
 	var/len = length(stored_bullets)
 
 	if(len && stored_bullets[len])
 		var/obj/item/bullet_cartridge/B = stored_bullets[len]
-		returning_text += B.get_damage_type_text(A)
+		. += B.get_damage_type_text(A)
 
-	return returning_text
+	return .

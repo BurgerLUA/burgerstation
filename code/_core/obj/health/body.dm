@@ -112,5 +112,5 @@
 		labeled_overlays[o_id] = I
 		overlays += I
 
-/obj/hud/button/health/body/get_examine_text(var/mob/examiner)
-	return examiner.get_examine_text(examiner)
+/obj/hud/button/health/body/get_examine_list(var/mob/examiner)
+	return examiner.get_examine_list(examiner)

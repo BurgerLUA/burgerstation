@@ -21,7 +21,7 @@
 
 	value = 5
 
-/obj/item/container/beaker/get_examine_text(var/mob/examiner)
+/obj/item/container/beaker/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/container/beaker/click_self(var/mob/caller,location,control,params)

@@ -72,7 +72,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/bar/hp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/bar/hp/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] health.")
 
 /obj/hud/button/health/bar/hp/update_stats(var/mob/living/M)
@@ -97,7 +97,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/bar/sp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/bar/sp/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] stamina.")
 
 /obj/hud/button/health/bar/sp/update_stats(var/mob/living/M)
@@ -122,7 +122,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/health/bar/mp/get_examine_text(var/mob/examiner)
+/obj/hud/button/health/bar/mp/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","You have [current] out of [max] mana.")
 
 /obj/hud/button/health/bar/mp/update_stats(var/mob/living/M)

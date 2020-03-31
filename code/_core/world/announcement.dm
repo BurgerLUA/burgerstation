@@ -10,8 +10,10 @@
 		if(ANNOUNCEMENT_STATION)
 			var/list/valid_players = list()
 			for(var/mob/living/advanced/player/P in all_players)
-				P.to_chat(text_to_send)
-				valid_players += P
+				var/area/A = get_area(P)
+				if(A.flags_area & FLAGS_AREA_ANNOUNCEMENTS)
+					P.to_chat(text_to_send)
+					valid_players += P
 			if(sound_to_play)
 				play_sound(sound_to_play,valid_players)
 

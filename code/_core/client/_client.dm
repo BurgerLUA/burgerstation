@@ -107,7 +107,10 @@ var/global/list/all_clients = list()
 	winset(src,"chat_say.output","style='[STYLESHEET]'")
 
 /client/proc/examine(var/atom/object)
-	src.mob.to_chat(object.get_examine_text(src.mob))
+
+	for(var/v in object.get_examine_list(src.mob))
+		src.mob.to_chat(v)
+
 	return TRUE
 
 /client/New()

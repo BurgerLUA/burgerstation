@@ -45,7 +45,7 @@
 	return FALSE
 
 
-/obj/item/clothing/get_examine_text(var/mob/examiner)
+/obj/item/clothing/get_examine_list(var/mob/examiner)
 
 	if(!is_advanced(examiner))
 		return ..()

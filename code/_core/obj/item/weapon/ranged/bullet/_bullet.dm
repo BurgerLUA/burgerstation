@@ -28,7 +28,7 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-/obj/item/weapon/ranged/bullet/get_examine_text(var/mob/examiner)
+/obj/item/weapon/ranged/bullet/get_examine_list(var/mob/examiner)
 
 	. = ..()
 

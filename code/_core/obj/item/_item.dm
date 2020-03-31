@@ -243,7 +243,7 @@
 	return "[name_text][desc_text][rarity_text][value_text][physical_text][desc_extended_text][damage_type_text]"
 */
 
-/obj/item/get_examine_text(var/mob/examiner)
+/obj/item/get_examine_list(var/mob/examiner)
 	var/object_icon = "<img src='\ref[src.icon]' class='examine_icon_main'/>"
 	. = div("examine_title","[object_icon][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))

@@ -116,7 +116,7 @@
 /obj/hud/inventory/can_be_attacked(var/atom/attacker)
 	return FALSE
 
-/obj/hud/inventory/get_examine_text(var/atom/examiner)
+/obj/hud/inventory/get_examine_list(var/atom/examiner)
 
 	var/atom/A = get_top_held_object()
 
@@ -124,9 +124,9 @@
 		A = get_top_worn_object()
 
 	if(A && A != src)
-		return A.get_examine_text(examiner)
+		return A.get_examine_list(examiner)
 	else
-		return A.loc.get_examine_text(examiner)
+		return A.loc.get_examine_list(examiner)
 
 /obj/hud/inventory/proc/update_overlays()
 

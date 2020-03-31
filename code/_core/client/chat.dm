@@ -19,8 +19,6 @@
 	if(!text || !chat_type)
 		return FALSE
 
-	text = "<div class='message'>[text]</div>"
-
 	var/output_target_list = list()
 
 	if(!(chat_type & CHAT_TYPE_COMBAT))
@@ -43,7 +41,14 @@
 			if(message_data["text"] == text)
 				return FALSE
 
-	queued_chat_messages.Add(list(list("text" = text,"output_target_list" = output_target_list)))
+	queued_chat_messages.Add(
+		list(
+			list(
+				"text" = text,
+				"output_target_list" = output_target_list
+			)
+		)
+	)
 
 	return TRUE
 

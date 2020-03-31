@@ -32,7 +32,7 @@
 	return ..()
 
 
-/obj/item/container/food/get_examine_text(var/mob/examiner)
+/obj/item/container/food/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/container/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

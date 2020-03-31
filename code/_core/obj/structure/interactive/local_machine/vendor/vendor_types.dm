@@ -65,7 +65,7 @@
 	name = "underwear vendor"
 	icon_state = "underwear"
 	stored_types = list(
-		/obj/item/clothing/feet/socks,
+		/obj/item/clothing/feet/socks/ankle,
 		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/feet/socks/knee/striped,
 		/obj/item/clothing/feet/socks/thigh,

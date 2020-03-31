@@ -1,4 +1,6 @@
-mob/living/advanced/get_examine_text(var/mob/examiner)
+mob/living/advanced/get_examine_list(var/mob/examiner)
+
+	. = list()
 
 	var/survival_skill = 1
 
