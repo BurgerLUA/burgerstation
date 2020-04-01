@@ -95,6 +95,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/Destroy()
 
+	if(client)
+		make_ghost(src.loc ? src.loc : locate(1,1,1))
+
 	dialogue_target = null
 
 	if(src in equipped_players)

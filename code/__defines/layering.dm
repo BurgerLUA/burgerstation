@@ -59,7 +59,6 @@
 #define LAYER_MOB_EYE                  LAYER_MOB + 0.14
 #define LAYER_MOB_MASK                 LAYER_MOB + 0.15
 
-#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.21
 #define LAYER_MOB_CLOTHING_EYE         LAYER_MOB + 0.22
 #define LAYER_MOB_CLOTHING_EAR         LAYER_MOB + 0.23
 #define LAYER_MOB_GROIN                LAYER_MOB + 0.24
@@ -90,8 +89,9 @@
 #define LAYER_MOB_CLOTHING_BACK        LAYER_MOB + 0.65
 
 #define LAYER_MOB_HAIR_HEAD            LAYER_MOB + 0.71
-#define LAYER_MOB_CLOTHING_HELMET      LAYER_MOB + 0.72
-#define LAYER_MOB_HELD                 LAYER_MOB + 0.73
+#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.72
+#define LAYER_MOB_CLOTHING_HELMET      LAYER_MOB + 0.73
+#define LAYER_MOB_HELD                 LAYER_MOB + 0.74
 
 
 /*

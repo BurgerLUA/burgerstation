@@ -12,6 +12,11 @@
 
 	footstep_id = "water"
 
+	density_north = TRUE
+	density_east = TRUE
+	density_south = TRUE
+	density_west = TRUE
+
 /turf/simulated/floor/river/walkable
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

@@ -1,9 +1,3 @@
-
-#define ANNOUNCEMENT_STATION "station" //Send to all on the station.
-#define ANNOUNCEMENT_ZOMBIE "zombie" //Send to all zombies.
-#define ANNOUNCEMENT_XENO "xeno" //Send to all xenos
-
-
 /proc/announce(var/announcement_sender = "Unknown", var/announcement_title = "Untitled",var/annoumcent_text = "NULL",var/announcement_type = ANNOUNCEMENT_STATION,var/sound_to_play = null)
 	var/text_to_send = "<div class='announcement [announcement_type]'><h2>[announcement_sender]</h2><h3>[announcement_title]</h3><p>[annoumcent_text]</p></div>"
 	switch(announcement_type)

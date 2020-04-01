@@ -1,5 +1,7 @@
 /obj/structure/interactive/supermatter
 	name = "supermatter crystal"
+	desc = "Looks valuable!"
+	desc_extended = "You should send this to central command as soon as possible!"
 	icon = 'icons/obj/structure/supermatter.dmi'
 	icon_state = "supermatter"
 
@@ -10,6 +12,8 @@
 	density_south = TRUE
 	density_east  = TRUE
 	density_west  = TRUE
+
+	value = 1000
 
 /obj/structure/interactive/supermatter/unachored
 	anchored = FALSE

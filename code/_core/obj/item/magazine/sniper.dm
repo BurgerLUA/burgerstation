@@ -32,6 +32,14 @@
 	icon_state = "50"
 	bullet_count_max = 4
 
+	bullet_length_min = 90
+	bullet_length_best = 99
+	bullet_length_max = 100
+
+	bullet_diameter_min = 12
+	bullet_diameter_best = 12.7
+	bullet_diameter_max = 13
+
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
 	)

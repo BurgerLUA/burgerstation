@@ -63,9 +63,6 @@
 	if(handle_movement_weapon())
 		return TRUE
 
-	if(locate(/obj/structure/interactive/barricade) in owner.loc.contents)
-		return TRUE
-
 	return ..()
 
 

@@ -132,7 +132,8 @@
 
 	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
 		var/obj/structure/S = object
-		S.force_move(src)
-		return TRUE
+		if(!S.anchored)
+			S.Move(src)
+			return TRUE
 
 	return ..()

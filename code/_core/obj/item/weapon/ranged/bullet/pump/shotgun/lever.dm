@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 5
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -23,8 +23,8 @@
 
 	action_name = "work"
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread() //Base spread
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))

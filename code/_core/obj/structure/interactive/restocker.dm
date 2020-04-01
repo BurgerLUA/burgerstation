@@ -36,7 +36,7 @@
 			caller.to_chat("That magazine isn't registered in our system!")
 			return TRUE
 
-		for(var/i=length(M.stored_bullets), i < M.bullet_count_max, i++)
+		for(var/i=1, i <= M.bullet_count_max - length(M.stored_bullets), i++)
 			M.stored_bullets += new M.ammo(M)
 			M.update_icon()
 

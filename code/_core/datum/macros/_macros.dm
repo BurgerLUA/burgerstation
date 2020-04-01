@@ -107,6 +107,8 @@
 
 	if(isnum(command))
 		owner.mob.move_dir &= ~command
+	else if(copytext(command,1,5) == "bind")
+		return TRUE
 	else
 		switch(command)
 			if("sprint")

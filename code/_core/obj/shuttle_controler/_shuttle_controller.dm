@@ -35,12 +35,35 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/status_id
 
+/obj/shuttle_controller/Destroy()
+	all_shuttle_controlers -= src
+	return ..()
+
 /obj/shuttle_controller/New(var/desired_loc)
 	all_shuttle_controlers += src
 	return ..()
 
 /obj/shuttle_controller/Initialize()
+
+	var/area/A1 = transit_areas[transit_start]
+	var/area/A2 = transit_areas[transit_bluespace]
+	var/area/A3 = transit_areas[transit_end]
+
+	if(!A1)
+		log_error("ERROR: Transit shuttle [type] doesn't have a valid transit starting area ([transit_start])!")
+
+	if(!A2)
+		log_error("ERROR: Transit shuttle [type] doesn't have a valid transit bluespace area ([transit_bluespace])!")
+
+	if(!A3)
+		log_error("ERROR: Transit shuttle [type] doesn't have a valid transit ending area ([transit_end])!")
+
+	if(!A1 || !A2 || !A3)
+		qdel(src)
+		return FALSE
+
 	set_doors(TRUE,TRUE)
+
 	return ..()
 
 /obj/shuttle_controller/proc/signal_landing(var/area/transit/landing_area)

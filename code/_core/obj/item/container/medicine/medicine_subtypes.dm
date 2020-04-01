@@ -1,8 +1,8 @@
 /obj/item/container/medicine/bandage
 	name = "bandages"
 	icon_state = "brutepack"
-	treatment_time = 10
-	heal_brute = 10
+	treatment_time = 5
+	heal_brute = 25
 	heal_bleeding = TRUE
 
 	value = 1
@@ -17,8 +17,8 @@
 /obj/item/container/medicine/ointment
 	name = "ointment"
 	icon_state = "ointment"
-	treatment_time = 30
-	heal_burn = 10
+	treatment_time = 1
+	heal_burn = 25
 
 	value = 1
 
@@ -32,17 +32,11 @@
 /obj/item/container/medicine/trauma_kit
 	name = "trauma kit"
 	icon_state = "traumakit"
-	treatment_time = 50
+	treatment_time = 10
 	heal_brute = 50
 	heal_bleeding = TRUE
 
 	value = 3
-
-/obj/item/container/medicine/trauma_kit/advanced
-	name = "trauma kit"
-	icon_state = "traumakit"
-	treatment_time = 50
-	heal_brute = 50
 
 /obj/item/container/medicine/trauma_kit/advanced
 	name = "bicaridine infused trauma kit"
@@ -54,7 +48,7 @@
 /obj/item/container/medicine/burn_kit
 	name = "burn kit"
 	icon_state = "burnkit"
-	treatment_time = 50
+	treatment_time = 10
 	heal_burn = 50
 
 	value = 3

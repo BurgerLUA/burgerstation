@@ -46,6 +46,10 @@
 		var/obj/item/clothing/C = O
 		C.polymorphs = object_data["polymorphs"]
 
+	if(istype(O,/obj/item/clothing/ears/headset) && object_data["stored_radio"])
+		var/obj/item/clothing/ears/headset/H = O
+		H.stored_radio = object_data["stored_radio"]
+
 	if(is_pill(O))
 		var/obj/item/container/pill/P = O
 		if(object_data["double"])

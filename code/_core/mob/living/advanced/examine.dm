@@ -17,13 +17,14 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 
 	var/pronoun = capitalize(get_pronoun(src))
 
-	for(var/obj/item/I in worn_objects)
-		var/object_icon = "<img src='\ref[I.icon]' class='examine_icon'/>"
-		. += div("notice"," [object_icon] [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
+	if(examiner != src)
+		for(var/obj/item/I in worn_objects)
+			var/object_icon = "<img src='\ref[I.icon]' class='examine_icon'/>"
+			. += div("notice"," [object_icon] [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
 
-	for(var/obj/item/I in held_objects)
-		var/object_icon = "<img src='\ref[I.icon]' class='examine_icon'/>"
-		. += div("notice"," [object_icon] [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
+		for(var/obj/item/I in held_objects)
+			var/object_icon = "<img src='\ref[I.icon]' class='examine_icon'/>"
+			. += div("notice"," [object_icon] [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
 
 	if(survival_skill > 50)
 		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
@@ -34,10 +35,10 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 
 	if(health)
 		if(health.damage[TOX] > 10)
-			. += div("warning","[final_pronoun] look a bit sickly.")
+			. += div("warning","[final_pronoun] looks a bit sickly.")
 
 		if(health.damage[OXY] > 10)
-			. += div("warning","[final_pronoun] look a bit pale.")
+			. += div("warning","[final_pronoun] looks a bit pale.")
 
 	for(var/obj/item/organ/O in src.organs)
 		if(!O.health)
@@ -54,7 +55,7 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 		var/number_text = ""
 		if(examiner == src)
 			noun = "Your"
-			number_text = " ([O.health.health_current]/[O.health.health_max])"
+			//number_text = " ([O.health.health_current]/[O.health.health_max])"
 		else if(!is_injured)
 			continue
 		else
@@ -62,13 +63,13 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 
 		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
 
+	/*
 	if(reagents)
 		var/list/reagent_contents = list()
 		for(var/k in reagents.stored_reagents)
 			var/v = reagents.stored_reagents[k]
 			reagent_contents += "[k] ([v]u)"
 		. += div("notice","Reagent volume is [reagents.volume_current]/[reagents.volume_max] containing [english_list(reagent_contents)].")
-
-	. += div("notice","Regen Delay is now: [health_regen_delay].")
+	*/
 
 	return .

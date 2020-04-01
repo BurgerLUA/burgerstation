@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(horde)
 	if(state == HORDE_STATE_BUILDING)
 		var/time_to_display = round_time_next - round_time
 		if(time_to_display >= 0)
-			set_message("Build Period: [get_clock_time(time_to_display)]",TRUE)
+			set_message("Launch Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
 		state = HORDE_STATE_FIGHTING
 		round_time = 0
@@ -93,10 +93,12 @@ SUBSYSTEM_DEF(horde)
 			set_message("Round [current_round]")
 			message_displayed = TRUE
 			enemies_to_spawn = 15 + (current_round * 5)
-			spawned_enemies_round = enemies_to_spawn
+			spawned_enemies_round = enemies_to_spawn*0.75
 			var/obj/marker/landmark/B = locate(pick("Bravo","Village"))
 			var/obj/marker/map_node/N_end = find_closest_node(B)
 			for(var/mob/living/advanced/npc/syndicate/S in world)
+				if(!S.ai)
+					continue
 				var/obj/marker/map_node/N_start = find_closest_node(S)
 				if(N_start)
 					var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)

@@ -26,7 +26,7 @@
 
 	if(.)
 
-		if(starting_transit_id == "syndicate_shuttle_centcomm" && ending_transit_id == "syndicate_shuttle_bluespace")
+		if(SShorde.allow_shuttle_launch && starting_transit_id == "syndicate_shuttle_centcomm" && ending_transit_id == "syndicate_shuttle_bluespace")
 
 			var/area/A = get_area(src)
 			var/list/mob/living/mobs_to_delete = list()

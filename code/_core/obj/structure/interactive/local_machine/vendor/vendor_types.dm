@@ -142,7 +142,8 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,
-		/obj/item/clothing/overwear/coat/labcoat/medical
+		/obj/item/clothing/overwear/coat/labcoat/medical,
+		/obj/item/storage/glovebox/white
 	)
 
 
@@ -209,7 +210,8 @@
 		/obj/item/clothing/underbottom/underwear/boxers/security,
 		/obj/item/clothing/undertop/underwear/shirt/security,
 		/obj/item/clothing/pants/normal/security,
-		/obj/item/clothing/shirt/normal/security
+		/obj/item/clothing/shirt/normal/security,
+		/obj/item/storage/shoebox/jackboot/
 	)
 
 
@@ -221,10 +223,22 @@
 /obj/structure/interactive/vending/clown/
 	name = "clown vendor"
 	icon_state = "games"
+	stored_types = list(
+		/obj/item/grenade/timed/explosive,
+		/obj/item/soapstone/blue,
+		/obj/item/weapon/ranged/magic/tome/fireball
+	)
 
 /obj/structure/interactive/vending/clown/wardrobe
 	name = "clown wardrobe vendor"
 	icon_state = "theater"
+
+	stored_types = list(
+		/obj/item/clothing/mask/gas/clown,
+		/obj/item/clothing/uniform/clown,
+		/obj/item/storage/shoebox/clown
+	)
+
 
 /obj/structure/interactive/vending/syndicate
 	name = "syndicate vendor"

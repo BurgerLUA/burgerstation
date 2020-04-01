@@ -59,8 +59,11 @@
 
 			else if(answer != "Cancel")
 				var/squad/S = squad_table[answer]
-				S.add_member(P)
-				update_icon()
+				if(S)
+					S.add_member(P)
+					update_icon()
+				else
+					caller.to_chat("uh, for some reason that squad doesn't exist. Please tell burger you can't join the squad [answer].")
 
 		else
 			var/answer = input("There aren't any squads available to join. Would you like to create a squad?","Squad Creation","Cancel") in list("Yes","No","Cancel")

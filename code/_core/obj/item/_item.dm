@@ -244,6 +244,7 @@
 */
 
 /obj/item/get_examine_list(var/mob/examiner)
+	. = list()
 	var/object_icon = "<img src='\ref[src.icon]' class='examine_icon_main'/>"
 	. = div("examine_title","[object_icon][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))

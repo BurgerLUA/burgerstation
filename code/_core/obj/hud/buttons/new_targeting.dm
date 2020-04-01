@@ -43,7 +43,7 @@
 
 	var/click_flags = P.client.get_click_flags(params,TRUE)
 
-	if(!(params[PARAM_ICON_X] && params[PARAM_ICON_Y]))
+	if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y])
 		return
 
 	var/x_click = text2num(params[PARAM_ICON_X])

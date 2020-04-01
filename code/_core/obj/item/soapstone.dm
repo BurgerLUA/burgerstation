@@ -70,3 +70,5 @@
 	)
 
 	qdel(src)
+
+	return TRUE
