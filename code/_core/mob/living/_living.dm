@@ -132,15 +132,6 @@
 
 	return TRUE
 
-/mob/living/Bump(var/atom/obstacle,var/Dir=0)
-
-	. = ..()
-
-	if(ai)
-		ai.Bump(obstacle)
-
-	return .
-
 /mob/living/Destroy()
 
 	//factions.Cut()

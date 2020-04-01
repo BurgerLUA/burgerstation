@@ -1,5 +1,9 @@
 var/global/stored_payday = 0
 
+
+#define BASE_PAY 400
+
+
 SUBSYSTEM_DEF(payday)
 	name = "Payday Subsystem"
 	desc = "How people get paid."
@@ -16,7 +20,7 @@ SUBSYSTEM_DEF(payday)
 
 	if(next_payday > 0 && world.time >= next_payday)
 
-		stored_payday *= 0.25 //Prevents gaming the system.
+		stored_payday *= 0.75 //Prevents gaming the system.
 
 		var/list/mob/living/advanced/player/valid_players = list()
 
@@ -26,12 +30,12 @@ SUBSYSTEM_DEF(payday)
 			valid_players += P
 
 		for(var/mob/living/advanced/player/P in valid_players)
-			var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,400)
-			P.adjust_currency( 200 + bonus_to_give )
+			var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,1600)
+			P.adjust_currency( BASE_PAY + bonus_to_give )
 			if(bonus_to_give)
-				P.to_chat(span("payday","Hazard Pay! You have earned 200 credits and a [bonus_to_give] credit bonus from cargo deliveries!"))
+				P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits and a [bonus_to_give] credit bonus from cargo deliveries!"))
 			else
-				P.to_chat(span("payday","Hazard Pay! You have earned 200 credits for your efforts."))
+				P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits for your efforts."))
 
 		next_payday = world.time + SECONDS_TO_DECISECONDS(600)
 

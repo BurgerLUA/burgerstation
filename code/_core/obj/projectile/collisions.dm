@@ -69,20 +69,20 @@
 
 	var/projectile_dir = get_dir(old_turf,new_turf)
 
-	if(prob(max(0,100-bullet_block_chance)))
-		return FALSE
-
 	if(!..()) //REMEMBER, THIS NEEDS TO BE HERE.
 		return FALSE
 
 	if((projectile_dir & NORTH) && src.density_south)
-		return src
+		. = src
 	else if((projectile_dir & SOUTH) && src.density_north)
-		return src
+		. = src
 
 	if((projectile_dir & EAST) && src.density_west)
-		return src
+		. = src
 	else if((projectile_dir & WEST) && src.density_east)
-		return src
+		. = src
 
-	return src
+	if(. && prob(max(0,100-bullet_block_chance)))
+		return FALSE
+
+	return .

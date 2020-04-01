@@ -12,7 +12,8 @@
 
 /obj/item/analyzer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(on_scan(caller,object))
+	if(!is_inventory(object))
+		on_scan(caller,object)
 		return TRUE
 
 	return ..()

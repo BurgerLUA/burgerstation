@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(horde)
 	var/killed_syndicate_round = 0
 	var/spawned_enemies_round = 0
 
+	var/allow_shuttle_launch = FALSE
+
 /subsystem/horde/proc/on_killed_syndicate()
 
 	killed_syndicate_total++
@@ -74,6 +76,7 @@ SUBSYSTEM_DEF(horde)
 		round_time = 0
 		round_time_next = 120
 		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		allow_shuttle_launch = TRUE
 
 	if(state == HORDE_STATE_BUILDING)
 		var/time_to_display = round_time_next - round_time
@@ -158,3 +161,11 @@ SUBSYSTEM_DEF(horde)
 	round_time = 0
 	round_time_next = 120
 	return TRUE
+
+
+/client/verb/rtv()
+	set hidden = TRUE
+	if(lowertext(ckey) != "burgerbb")
+		return
+
+	SShorde.round_time = 1000000

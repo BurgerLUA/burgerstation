@@ -12,7 +12,21 @@
 	if(.)
 		table_count = 0
 
+	if(ai)
+		ai.on_move(.,NewLoc,Dir)
+
 	return .
+
+
+/mob/living/Bump(var/atom/obstacle,var/Dir=0)
+
+	. = ..()
+
+	if(ai)
+		ai.Bump(obstacle)
+
+	return .
+
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 

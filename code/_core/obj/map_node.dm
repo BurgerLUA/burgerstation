@@ -10,6 +10,7 @@ var/global/mob/abstract/node_checker
 	layer = LAYER_GHOST
 	invisibility = 101
 
+
 /mob/abstract/node_checker/New(var/desired_loc)
 	node_checker = src
 	return ..()
@@ -23,6 +24,7 @@ var/global/mob/abstract/node_checker
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
 	invisibility = 0
+	alpha = 0
 
 /obj/marker/map_node/New(var/desired_loc)
 	all_map_nodes += src
@@ -85,7 +87,7 @@ var/global/list/stored_paths = list()
 
 	return null
 
-/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE*2,var/debug = FALSE)
+/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE,var/debug = FALSE)
 
 	var/obj/marker/map_node/best_node = null
 	var/best_distance = INFINITY
@@ -95,7 +97,6 @@ var/global/list/stored_paths = list()
 		if(!best_node || best_distance > N_distance)
 			best_node = N
 			best_distance = N_distance
-
 
 	return best_node
 

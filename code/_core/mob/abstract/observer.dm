@@ -21,8 +21,6 @@
 
 	damage_type = null //Just in case.
 
-	view = VIEW_RANGE_GHOST
-
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE

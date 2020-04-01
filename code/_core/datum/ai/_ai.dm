@@ -41,7 +41,10 @@
 
 	var/frustration_attack = 0
 	var/frustration_move = 0
+	var/frustration_path = 0
 
+	var/turf/path_start_turf
+	var/turf/path_end_turf
 
 
 	var/frustration_threshold = 10 //Above this means they'll try to find a new target.
@@ -76,6 +79,8 @@
 	start_turf = null
 	all_living_ai -= src
 	attackers.Cut()
+	path_start_turf = null
+	path_end_turf = null
 	return ..()
 
 /ai/New(var/mob/living/desired_owner)
@@ -90,12 +95,24 @@
 	all_living_ai += src
 
 /ai/proc/set_path(var/list/Vector2D/desired_path = list())
+
+	if(!desired_path || !length(desired_path))
+		current_path = null
+		path_start_turf = null
+		path_end_turf = null
+		path_steps = null
+		frustration_path = 0
+		return TRUE
+
 	enabled = TRUE
 	path_steps = 1
 	current_path = desired_path
+	frustration_path = 0
 	frustration_move = 0
 	owner.move_dir = 0
-	start_turf = get_turf(owner)
+	path_start_turf = get_turf(owner)
+	var/Vector2D/last_path = desired_path[length(desired_path)]
+	path_end_turf = locate(last_path.x,last_path.y,1)
 	return TRUE
 
 /ai/proc/on_life()
@@ -218,13 +235,29 @@
 		return TRUE
 	return FALSE
 
-/ai/proc/handle_movement_frustration()
-	if(frustration_move > frustration_threshold)
-		path_steps--
-		if(path_steps < 1)
-			path_steps = 3
-		set_move_objective(null)
-		frustration_move = 0
+/ai/proc/handle_movement_path_frustration()
+
+	if(frustration_path > frustration_threshold)
+
+		frustration_path = 0
+
+		var/obj/marker/map_node/N_start = find_closest_node(owner)
+		if(!N_start)
+			set_path(null)
+			return FALSE
+
+		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
+		if(!N_end)
+			set_path(null)
+			return FALSE
+
+		var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
+		if(!found_path)
+			set_path(null)
+			return FALSE
+
+		set_path(found_path)
+
 		return TRUE
 
 	return FALSE
@@ -246,18 +279,41 @@
 /ai/proc/handle_movement_sidestep()
 
 	if(sidestep_next)
-		owner.move_dir = turn(owner.dir,pick(-90,90))
+		if(!owner.move_dir)
+			owner.move_dir = pick(DIRECTIONS_INTERCARDINAL)
+		var/move_cone = pick(45,90)
+		owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))
 		sidestep_next = FALSE
+		if(path_end_turf)
+			frustration_path++
+		return TRUE
+
+	return FALSE
+
+/ai/proc/handle_movement_crowding()
+
+	var/living_count = 0
+	var/turf/T = get_turf(owner)
+	for(var/mob/living/L in T.contents)
+		living_count++
+		if(living_count >= 2)
+			sidestep_next = TRUE
+			return TRUE
 
 	return FALSE
 
 
 /ai/proc/handle_movement()
 
+	owner.movement_flags = MOVEMENT_NORMAL
+
 	if(handle_movement_sidestep())
 		return TRUE
 
-	if(handle_movement_frustration())
+	if(handle_movement_crowding())
+		return TRUE
+
+	if(handle_movement_path_frustration())
 		return TRUE
 
 	if(handle_movement_attack_objective())
@@ -389,6 +445,8 @@
 			.[P] = TRUE
 	else
 		for(var/mob/living/L in view(radius_find_enemy,owner))
+			if(!L.initialized)
+				continue
 			if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))
 				continue
 			if(!should_attack_mob(L))
@@ -406,16 +464,25 @@
 
 	return TRUE
 
+/ai/proc/on_move(var/success,var/atom/NewLoc,Dir=0)
+
+	if(!success)
+		frustration_move++
+		sidestep_next = TRUE
+		if(current_path)
+			frustration_path++
+
+	return TRUE
+
 /ai/proc/Bump(var/atom/obstacle)
 
 	if(is_player(obstacle))
 		set_alert_level(ALERT_LEVEL_CAUTION)
 
-	if(attack_on_block && !do_attack(obstacle,prob(left_click_chance)))
-		frustration_move++
-		sidestep_next = TRUE
+	if(attack_on_block)
+		do_attack(obstacle,prob(left_click_chance))
 
-	return FALSE
+	return TRUE
 
 /ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE)
 

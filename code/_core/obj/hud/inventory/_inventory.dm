@@ -117,16 +117,10 @@
 	return FALSE
 
 /obj/hud/inventory/get_examine_list(var/atom/examiner)
-
 	var/atom/A = get_top_held_object()
-
-	if(!A)
-		A = get_top_worn_object()
-
-	if(A && A != src)
-		return A.get_examine_list(examiner)
-	else
-		return A.loc.get_examine_list(examiner)
+	if(!A) A = get_top_worn_object()
+	if(!A) return FALSE
+	return A.get_examine_list(examiner)
 
 /obj/hud/inventory/proc/update_overlays()
 

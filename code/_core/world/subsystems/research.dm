@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(research)
 	sortList(quadrant_high_scores,/proc/cmp_highscore)
 	quadrant_high_scores = quadrant_high_scores.Copy(1,min(length(quadrant_high_scores),5))
 	text2file(json_encode(quadrant_high_scores),RESEARCH_SCORES_QUADRANTS)
-	var/added_currency = P.adjust_currency(score*3)
+	var/added_currency = P.adjust_currency(score*5)
 	P.to_chat("You were given [added_currency] credits for your research efforts.")
 	return FALSE
 

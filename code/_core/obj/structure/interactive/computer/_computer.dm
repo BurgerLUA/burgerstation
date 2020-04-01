@@ -14,6 +14,14 @@ obj/structure/interactive/computer/console
 	desired_light_power = 0.75
 	desired_light_color = "#00FF00"
 
+	collision_flags = FLAG_COLLISION_REAL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	density_north = TRUE
+	density_south = TRUE
+	density_east  = TRUE
+	density_west  = TRUE
+
 obj/structure/interactive/computer/console/Initialize()
 	. = ..()
 	update_icon()
@@ -84,6 +92,10 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	if(!is_advanced(caller))
 		return ..()
 
+	if(!SShorde.allow_shuttle_launch)
+		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
+		return FALSE
+
 	var/selection = input("Are you sure you wish to launch this shuttle?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
 
 	if(selection == "Yes")
@@ -120,6 +132,10 @@ obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(va
 
 	if(!is_advanced(caller))
 		return ..()
+
+	if(!SShorde.allow_shuttle_launch)
+		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
+		return FALSE
 
 	var/selection = input("Are you sure you wish to launch this shuttle?","Shuttle Control","Cancel") in list("Yes","No","Cancel")
 

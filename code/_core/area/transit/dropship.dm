@@ -7,6 +7,9 @@
 
 /area/transit/dropship/alpha/landing
 	id = "alpha_shuttle_landing"
+	weather = WEATHER_SNOW
+	ambient_temperature = T0C - 20
+	hazard = "cold"
 
 /area/transit/dropship/alpha/station
 	id = "alpha_shuttle_station"
@@ -37,6 +40,9 @@
 
 /area/transit/dropship/delta/landing
 	id = "delta_shuttle_landing"
+	weather = WEATHER_SNOW
+	ambient_temperature = T0C - 20
+	hazard = "cold"
 
 /area/transit/dropship/delta/station
 	id = "delta_shuttle_station"

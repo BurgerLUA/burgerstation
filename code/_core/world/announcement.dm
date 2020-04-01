@@ -5,7 +5,7 @@
 
 
 /proc/announce(var/announcement_sender = "Unknown", var/announcement_title = "Untitled",var/annoumcent_text = "NULL",var/announcement_type = ANNOUNCEMENT_STATION,var/sound_to_play = null)
-	var/text_to_send = "<div class='announcement [announcement_type]'><h1>[announcement_sender]</h1><h2>[announcement_title]</h2><p>[annoumcent_text]</p></div>"
+	var/text_to_send = "<div class='announcement [announcement_type]'><h2>[announcement_sender]</h2><h3>[announcement_title]</h3><p>[annoumcent_text]</p></div>"
 	switch(announcement_type)
 		if(ANNOUNCEMENT_STATION)
 			var/list/valid_players = list()

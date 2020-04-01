@@ -1,32 +1,32 @@
-#define PLANE_PARALAX -11
+#define PLANE_PARALAX -14
 
-#define PLANE_FLOOR -10
+#define PLANE_FLOOR -13
 
-#define PLANE_FLOOR_OBJECTS -9 //Pipes and wires.
+#define PLANE_FLOOR_OBJECTS -12 //Pipes and wires.
 
-#define PLANE_TILE -8
+#define PLANE_TILE -11
 
-#define PLANE_WALL -7
+#define PLANE_WALL -10
 
-#define PLANE_SHUTTLE -6
+#define PLANE_SHUTTLE -9
 
-#define PLANE_BLOOD -5
+#define PLANE_BLOOD -8
 
-#define PLANE_OBJ -4
+#define PLANE_OBJ -7
 
-#define PLANE_MOB -3
+#define PLANE_MOB -6
 
-#define PLANE_TREE -2
+#define PLANE_TREE -5
 
-#define PLANE_EFFECT -1
+#define PLANE_EFFECT -4
+
+#define PLANE_WALL_ATTACHMENTS -3
+
+#define PLANE_AREA -2
+
+#define PLANE_LIGHTING -1
 
 #define PLANE_DARKNESS 0
-
-#define PLANE_WALL_ATTACHMENTS 1
-
-#define PLANE_AREA 2 //Or weather
-
-#define PLANE_LIGHTING 3
 
 #define PLANE_ALWAYS_VISIBLE 4
 
