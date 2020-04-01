@@ -34,6 +34,13 @@
 		"shoulders" = COLOR_BLACK
 	)
 
+/obj/item/clothing/shirt/normal/uniform/nanotrasen
+	name = "nanotrasen uniformed shirt"
+	polymorphs = list(
+		"shirt" = COLOR_NANOTRASEN,
+		"shoulders" = COLOR_WHITE
+	)
+
 /obj/item/clothing/shirt/normal/security
 	name = "security shirt"
 	polymorphs = list(

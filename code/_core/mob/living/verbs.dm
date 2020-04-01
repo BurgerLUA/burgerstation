@@ -1,3 +1,4 @@
+/*
 /mob/living/verb/suicide()
 	set category = "Game"
 	set name = "Suicide"
@@ -6,7 +7,7 @@
 
 	if(response == "Yes")
 		death()
-
+*/
 
 /mob/living/verb/cycle_intent_clockwise()
 	set name = "Cycle Intent Clockwise"
@@ -22,8 +23,6 @@
 			intent = INTENT_HARM
 		if(INTENT_HARM)
 			intent = INTENT_HELP
-
-	src << intent
 
 	for(var/obj/hud/button/intent/B in buttons)
 		B.update_icon()

@@ -60,12 +60,12 @@
 	color = null
 
 	if(double)
-		var/image/I = new/image(icon,"[icon_state]_double_left")
-		I.color = reagents.color
-		overlays += I
+		var/image/I1 = new/image(icon,"[icon_state]_double_left")
+		I1.color = reagents.color
+		overlays += I1
 
 		var/image/I2 = new/image(icon,"[icon_state]_double_right")
-		I.color = reagents_2.color
+		I2.color = reagents_2.color
 		overlays += I2
 	else
 		color = reagents.color

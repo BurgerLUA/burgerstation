@@ -25,9 +25,9 @@
 
 	if(owner)
 		if(!has_files())
-			owner << "Welcome!"
+			owner << "Welcome to Burgerstation!"
 		else
-			owner << "Welcome back!"
+			owner << "Welcome back to Burgerstation!"
 			loaded_data = load_most_recent_character()
 			owner.save_slot = loaded_data["id"]
 

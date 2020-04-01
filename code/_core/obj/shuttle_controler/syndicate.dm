@@ -49,7 +49,7 @@
 				valid_spots += C.loc
 
 			if(!length(valid_spots))
-				world.log << "NO VALID SPOTS!"
+				log_error("Spawn Error: Couldn't find any chairs to spawn syndicate on!")
 				return .
 
 			spawn for(var/i=1,i<=5-length(found_syndicate),i++)
@@ -67,13 +67,13 @@
 			var/obj/marker/landmark/B = locate(pick("Bravo","Village"))
 
 			if(!B || !B.loc)
-				world.log << "There is no Bravo Landing Zone!"
+				log_error("Path Error: Couldn't find a landmark to go to!")
 				return .
 
 			var/obj/marker/map_node/N_end = find_closest_node(B)
 
 			if(!N_end)
-				world.log << "There is no N_end!"
+				log_error("Path Error: Couldn't find closet node to [B]!")
 				return .
 
 			for(var/mob/living/L in A.contents)
@@ -84,13 +84,13 @@
 
 				var/obj/marker/map_node/N_start = find_closest_node(L)
 				if(!N_start)
-					world.log << "NO START!"
+					log_error("Path Error: Couldn't find closet node to [L]!")
 					continue
 
 				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 
 				if(!found_path || !length(found_path))
-					world.log << "NO FOUND PATH!"
+					log_error("Path Error: Couldn't find a path from [L] to [B]!")
 					continue
 
 				L.ai.set_path(found_path)

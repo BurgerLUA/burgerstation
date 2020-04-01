@@ -119,8 +119,6 @@
 	if(Dir && ismovable(obstacle) && src.loc != obstacle)
 		var/atom/movable/M = obstacle
 		if(!M.anchored && (!grabbing_hand || obstacle != grabbing_hand.owner))
-			src << "The loc: [src.loc]."
-			//M.move_delay = src.move_delay
 			M.glide_size = src.glide_size
 			return M.Move(get_step(M,Dir),Dir)
 

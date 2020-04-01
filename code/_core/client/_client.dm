@@ -63,11 +63,13 @@ var/global/list/all_clients = list()
 
 //Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
 
+/*
 /client/verb/ping()
-	//winset(src,null,"command=pong+[world.time]")
+	winset(src,null,"command=pong+[world.time]")
 
 /client/verb/pong(var/time as num)
 	ping_num = world.time - time
+*/
 
 /client/Del() // Can't have destroy.
 
