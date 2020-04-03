@@ -942,6 +942,7 @@
 #include "code\_core\obj\structure\interactive\barricade.dm"
 #include "code\_core\obj\structure\interactive\barsign.dm"
 #include "code\_core\obj\structure\interactive\bed.dm"
+#include "code\_core\obj\structure\interactive\bed_sleeper.dm"
 #include "code\_core\obj\structure\interactive\blocker.dm"
 #include "code\_core\obj\structure\interactive\chair.dm"
 #include "code\_core\obj\structure\interactive\construction.dm"
