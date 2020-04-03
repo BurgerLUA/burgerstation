@@ -44,17 +44,17 @@
 
 /obj/item/bullet_cartridge/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/bullet_cartridge/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/bullet_cartridge/update_icon()
@@ -105,7 +105,7 @@
 		if(!B.qdeleting && B.damage_type == src.damage_type && B.is_spent && src.is_spent)
 			B.item_count_current += item_count_current
 			item_count_current = 0 //Just in case
-			B.update_icon()
+			B.update_sprite()
 			qdel(src)
 
 	return ..()
@@ -131,11 +131,11 @@
 		transfered_bullets += 1
 	if(display_message)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
-	transfer_target.update_icon()
+	transfer_target.update_sprite()
 	if(item_count_current <= 0)
 		qdel(src)
 	else
-		update_icon()
+		update_sprite()
 
 	return TRUE
 
@@ -154,11 +154,11 @@
 		transfered_bullets += 1
 	if(display_message)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target.name]."))
-	transfer_target.update_icon()
+	transfer_target.update_sprite()
 	if(item_count_current <= 0)
 		qdel(src)
 	else
-		update_icon()
+		update_sprite()
 
 	return TRUE
 
@@ -172,8 +172,8 @@
 		if(item_count_current <= 0)
 			qdel(src)
 		else
-			update_icon()
-		W.update_icon()
+			update_sprite()
+		W.update_sprite()
 		return TRUE
 
 	if(W.can_load_stored(caller,src))
@@ -190,8 +190,8 @@
 			if(item_count_current <= 0)
 				qdel(src)
 			else
-				update_icon()
-			W.update_icon()
+				update_sprite()
+			W.update_sprite()
 			return TRUE
 
 	caller.to_chat("You can't load \the [src.name] into \the [W.name]!")

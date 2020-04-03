@@ -90,7 +90,7 @@ var/global/saved_icons = 0
 /turf/simulated/Initialize()
 	set_exposed(exposed,!exposed)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /turf/simulated/update_icon()
@@ -190,11 +190,16 @@ var/global/saved_icons = 0
 	pixel_y = (32 - I.Height())/2
 	layer = initial(layer) + 0.1
 
+/turf/simulated/update_overlays()
+
+	. = ..()
+
 	if(reinforced_material_id)
 		overlays.Cut()
 		var/image/I2 = new/image(initial(icon),"ref")
-		//I.color = reinforced_color
 		overlays += I2
+
+	return .
 
 /turf/simulated/proc/set_exposed(var/desired_exposed = FALSE,var/force=FALSE)
 

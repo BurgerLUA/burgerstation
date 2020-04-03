@@ -31,7 +31,7 @@
 		var/area/A = get_area(src)
 		for(var/obj/structure/interactive/ore_storage/OS in A.contents)
 			stop_thinking(OS)
-			OS.update_icon()
+			OS.update_sprite()
 
 	. = ..()
 
@@ -40,7 +40,7 @@
 		var/area/A = get_area(src)
 		for(var/obj/structure/interactive/ore_storage/OS in A.contents)
 			start_thinking(OS)
-			OS.update_icon()
+			OS.update_sprite()
 
 	return .
 

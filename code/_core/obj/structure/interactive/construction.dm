@@ -37,7 +37,7 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 			L.material_id = material_id
 			L.color = color
 			R.item_count_current -= 2
-			R.update_icon()
+			R.update_sprite()
 			caller.to_chat("You place \the [L.name].")
 			qdel(src)
 			return TRUE
@@ -60,7 +60,7 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 			G.material_id = material_id
 			G.color = color
 			S.item_count_current -= 4
-			S.update_icon()
+			S.update_sprite()
 			caller.to_chat("You place \the [G.name].")
 			qdel(src)
 			return TRUE
@@ -100,7 +100,7 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 			G.material_id = material_id
 			G.color = color
 			R.item_count_current -= 4
-			R.update_icon()
+			R.update_sprite()
 			caller.to_chat("You place \the [G.name].")
 			qdel(src)
 			return TRUE
@@ -124,7 +124,7 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 			T.color = color
 			T.material_id = material_id
 			S.item_count_current -= 4
-			S.update_icon()
+			S.update_sprite()
 			caller.to_chat("You place \the plating.")
 			qdel(src)
 			return TRUE
@@ -198,7 +198,7 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 			T.material_id = material_id
 			T.color = color
 			S.item_count_current -= 4
-			S.update_icon()
+			S.update_sprite()
 			caller.to_chat("You place \the metal wall.")
 			qdel(src)
 			return TRUE
@@ -214,10 +214,10 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 			W.material_id = S.material_id
 			W.color = S.color
 			for(var/obj/structure/smooth/window/W2 in range(2,src))
-				W2.update_icon()
+				W2.update_sprite()
 			S.item_count_current -= 4
 			caller.to_chat("You place \the [W].")
-			S.update_icon()
+			S.update_sprite()
 			return TRUE
 
 		caller.to_chat("You don't have enough glass sheets to make a window!")

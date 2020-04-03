@@ -25,7 +25,7 @@
 
 /obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/weapon/ranged/energy/rifle/update_icon()

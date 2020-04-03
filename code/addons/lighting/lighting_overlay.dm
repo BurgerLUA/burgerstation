@@ -44,7 +44,8 @@
 // This is a macro PURELY so that the if below is actually readable.
 #define ALL_EQUAL ((rr == gr && gr == br && br == ar) && (rg == gg && gg == bg && bg == ag) && (rb == gb && gb == bb && bb == ab))
 
-/atom/movable/lighting_overlay/proc/update_overlay()
+/atom/movable/lighting_overlay/update_overlays()
+
 	var/turf/T = loc
 	if (!isturf(T)) // Erm...
 		if (loc)

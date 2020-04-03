@@ -73,7 +73,7 @@
 	if(item_count_current <= 0)
 		qdel(src)
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 

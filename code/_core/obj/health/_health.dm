@@ -25,7 +25,7 @@
 	var/current = 0
 
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/hud/button/health/update_owner(var/mob/desired_owner)
@@ -46,19 +46,15 @@
 
 	return TRUE
 
-/obj/hud/button/health/bar/update_icon()
+/obj/hud/button/health/bar/update_overlays()
 
-	if(max == 0)
-		return
+	if(max)
+		var/math = FLOOR((current/max) * 28, 1)
+		var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
+		bar.color = bar_color
+		overlays += bar
 
-	overlays.Cut()
-
-	var/math = FLOOR((current/max) * 28, 1)
-
-	var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
-	bar.color = bar_color
-	overlays += bar
-	..()
+	return ..()
 
 /obj/hud/button/health/bar/hp
 	name = "health"

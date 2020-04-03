@@ -70,7 +70,7 @@
 		return FALSE
 
 	B.force_move(new_loc)
-	B.update_icon()
+	B.update_sprite()
 	if(play_sound)
 		var/area/A = get_area(caller)
 		play_sound(chambered_bullet.get_bullet_eject_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
@@ -88,7 +88,7 @@
 
 	stored_bullets -= bullet_to_remove
 	bullet_to_remove.force_move(new_loc)
-	bullet_to_remove.update_icon()
+	bullet_to_remove.update_sprite()
 	stored_bullets += null
 	if(play_sound)
 		var/area/A = get_area(caller)
@@ -142,7 +142,7 @@
 	else
 		stored_bullets = null
 
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/weapon/ranged/bullet/get_ammo_count()

@@ -13,7 +13,7 @@
 
 /obj/item/disk/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/disk/update_icon()

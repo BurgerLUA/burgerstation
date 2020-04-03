@@ -45,7 +45,7 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 	for(var/v in keypad_buttons)
 		var/obj/hud/button/keypad/K = new v
 		K.update_owner(A)
-		K.update_icon()
+		K.update_sprite()
 
 /obj/item/device/keypad/proc/hide_buttons_from(var/mob/living/advanced/A)
 	for(var/obj/hud/button/keypad/K in A.buttons)

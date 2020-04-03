@@ -15,6 +15,6 @@
 
 	color = blend_colors(color ? color : "#FFFFFF",dye_color,dye_strength)
 	caller.to_chat(span("notice","You dye \the [src.name]'s [choice]."))
-	update_icon()
+	update_sprite()
 
 	return FALSE

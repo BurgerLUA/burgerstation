@@ -56,7 +56,7 @@
 	animate(O, pixel_x = rand(-16,16), pixel_y=rand(-16,16), time = 1)
 
 	uses_current -= 1
-	update_icon()
+	update_sprite()
 
 
 /obj/structure/interactive/ore_deposit/update_icon()

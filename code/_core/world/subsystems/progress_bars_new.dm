@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(progressbars)
 				all_progress_bars -= A
 				continue
 
-		P.update_icon()
+		P.update_sprite()
 
 	return TRUE
 

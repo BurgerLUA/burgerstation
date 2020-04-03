@@ -31,7 +31,7 @@
 	for(var/direction in DIRECTIONS_ALL)
 		var/turf/T = get_step(src,direction)
 		if(T && is_simulated(T))
-			T.update_icon()
+			T.update_sprite()
 
 	return TRUE
 

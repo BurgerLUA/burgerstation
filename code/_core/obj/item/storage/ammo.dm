@@ -18,7 +18,7 @@
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
 		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/pistol_22(src)
 		B.on_spawn()
-		B.update_icon()
+		B.update_sprite()
 	return ..()
 
 
@@ -35,7 +35,7 @@
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
 		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/shotgun/slug(src)
 		B.on_spawn()
-		B.update_icon()
+		B.update_sprite()
 	return ..()
 
 /obj/item/storage/ammo/buckshot
@@ -51,5 +51,5 @@
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
 		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/shotgun/buckshot(src)
 		B.on_spawn()
-		B.update_icon()
+		B.update_sprite()
 	return ..()

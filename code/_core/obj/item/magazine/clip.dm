@@ -32,8 +32,8 @@
 
 	if(insert_count)
 		caller.to_chat(span("notice","You insert [insert_count] bullet\s into \the [object]."))
-		G.update_icon()
-		update_icon()
+		G.update_sprite()
+		update_sprite()
 		return TRUE
 	else
 		caller.to_chat(span("notice","You can't insert anything into \the [object] with \the [src]!"))

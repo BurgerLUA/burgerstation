@@ -20,54 +20,38 @@
 
 	. = ..()
 
+	labeled_overlays.Cut()
+
 	if(.)
+		if(is_advanced(owner)) //Initial Creation.
+			var/mob/living/advanced/A = owner
+			for(var/o_id in A.labeled_organs)
+				var/obj/item/organ/O = A.labeled_organs[o_id]
+				if(!O)
+					continue
+				if(!O.health)
+					continue
+				if(!O.hud_id)
+					continue
+				if(!O.health.health_max)
+					continue
+				var/image/I = new/image(icon,O.hud_id)
+				I.color = "#FF0000"
+				labeled_overlays[o_id] = I
+				overlays += I
 
-		if(!is_advanced(owner))
-			return FALSE
-
-		var/mob/living/advanced/A = owner
-
-		overlays.Cut()
-		labeled_overlays.Cut()
-
-		for(var/o_id in A.labeled_organs)
-
-			var/obj/item/organ/O = A.labeled_organs[o_id]
-
-			if(!O)
-				log_error("Body error! Line 41 of health/body.dm!")
-				continue
-
-			if(!O.health)
-				continue
-
-			if(!O.hud_id)
-				continue
-
-			if(!O.health.health_max)
-				continue
-
-			var/image/I = new/image(icon,O.hud_id)
-			I.color = "#FF0000"
-			labeled_overlays[o_id] = I
-			overlays += I
-
-		update_icon()
+		update_sprite()
 
 	return .
 
+/obj/hud/button/health/body/update_overlays()
 
-
-/obj/hud/button/health/body/update_icon() //Wait, isn't this a clone of something? TODO HEALTH
-
-	..()
+	. = ..()
 
 	if(!is_advanced(owner))
-		return FALSE
+		return .
 
 	var/mob/living/advanced/A = owner
-
-	overlays.Cut()
 
 	for(var/o_id in labeled_overlays)
 
@@ -111,6 +95,8 @@
 		I.color = color_mod
 		labeled_overlays[o_id] = I
 		overlays += I
+
+	return .
 
 /obj/hud/button/health/body/get_examine_list(var/mob/examiner)
 	return examiner.get_examine_list(examiner)

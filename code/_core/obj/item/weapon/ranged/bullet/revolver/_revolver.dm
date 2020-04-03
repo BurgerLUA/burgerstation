@@ -32,7 +32,7 @@
 	var/area/A = get_area(caller.loc)
 	play_sound('sounds/weapons/revolver_click2.ogg',get_mobs_in_range(caller),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 

@@ -26,7 +26,7 @@
 
 	. = ..()
 
-	update_overlay()
+	update_overlays()
 
 	return .
 
@@ -66,13 +66,13 @@
 	P.attack_mode = mode
 	P.attack_right = right
 	P.attack_left = left
-	update_overlay()
+	update_overlays()
 
 	return ..()
 
-/obj/hud/button/targeting_new/proc/update_overlay()
+/obj/hud/button/targeting_new/update_overlays()
 
-	overlays.Cut()
+	. = ..()
 
 	var/image/left_overlay = new /image(initial(icon),"targeting_r")
 	left_overlay.pixel_x = left[mode][1] - 16
@@ -85,11 +85,8 @@
 	var/image/preset_overlay = new /image(initial(icon),"target_selection_[mode]")
 	preset_overlay.color = "#00FFFF"
 
-	//var/image/body_overlay = new /image(icon,"body_full")
-
-	//overlays += body_overlay
 	overlays += left_overlay
 	overlays += right_overlay
 	overlays += preset_overlay
 
-	return TRUE
+	return .

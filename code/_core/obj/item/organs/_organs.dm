@@ -147,7 +147,7 @@
 			A.remove_organ(src,FALSE)
 		src.force_move(T)
 
-	update_icon()
+	update_sprite()
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 
 /obj/item/organ/proc/unattach_children(var/turf/T)
@@ -166,7 +166,7 @@
 	unattach_children(T)
 
 	if(A) //A might've gotten removed here
-		A.update_icon()
+		A.update_sprite()
 
 	//new /obj/effect/gibs/random/(T,"#FF0000","secondary") TODO COLOR
 	qdel(src)

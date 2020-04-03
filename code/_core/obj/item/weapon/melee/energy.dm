@@ -8,7 +8,7 @@
 
 /obj/item/weapon/melee/energy/click_self(var/atom/caller)
 	enabled = !enabled
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/item/weapon/melee/energy/can_parry()

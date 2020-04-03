@@ -30,15 +30,15 @@
 
 	if(owner.mob)
 		for(var/obj/hud/button/B in owner.mob.buttons)
-			B.update_icon()
+			B.update_sprite()
 
 		for(var/obj/hud/button/B in owner.mob.health_elements)
-			B.update_icon()
+			B.update_sprite()
 
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner.mob
 			for(var/obj/hud/inventory/I in A.inventory)
-				I.update_icon()
+				I.update_sprite()
 
 	owner.update_window()
 

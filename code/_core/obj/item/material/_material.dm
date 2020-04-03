@@ -16,7 +16,7 @@
 
 /obj/item/material/on_spawn()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/material/get_base_value()

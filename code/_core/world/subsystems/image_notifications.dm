@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(image_notifications)
 	S.icon = icon
 	S.icon_state = icon_state
 	S.screen_loc = "CENTER-4.5,CENTER-4.5"
-	S.update_icon()
+	S.update_sprite()
 	return S
 
 /proc/add_notification(var/client/C,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)

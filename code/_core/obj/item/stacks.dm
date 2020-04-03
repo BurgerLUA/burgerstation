@@ -28,9 +28,9 @@
 	if(item_count_current <= 0)
 		qdel(src)
 	else
-		update_icon()
+		update_sprite()
 
-	I.update_icon()
+	I.update_sprite()
 
 	return stacks_to_take
 
@@ -41,11 +41,11 @@
 		return FALSE
 
 	item_count_current -= stacks_to_take
-	update_icon()
+	update_sprite()
 
 	var/obj/item/I = copy(src)
 	I.item_count_current = stacks_to_take
-	I.update_icon()
+	I.update_sprite()
 
 	return I
 
@@ -84,13 +84,13 @@
 		var/obj/item/I = new src.type(get_turf(src))
 		I.material_id = material_id
 		I.color = color
-		I.update_icon()
+		I.update_sprite()
 		I.transfer_item(I)
 		src.item_count_current -= 1
 		if(src.item_count_current <= 0)
 			qdel(src)
 			return TRUE
-		update_icon()
+		update_sprite()
 		return TRUE
 
 	if(!istype(object,/obj/item/material/))
@@ -110,13 +110,13 @@
 
 	caller.to_chat(span("notice","You transfer [amount_to_transfer] sheet\s between the stacks. You now have [M.item_count_current]."))
 
-	M.update_icon()
+	M.update_sprite()
 
 	if(src.item_count_current <= 0)
 		qdel(src)
 		return TRUE
 
-	src.update_icon()
+	src.update_sprite()
 
 	return TRUE
 */

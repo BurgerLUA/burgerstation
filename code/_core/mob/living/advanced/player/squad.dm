@@ -46,7 +46,7 @@
 
 	for(var/obj/hud/button/squad/member/B in buttons)
 		B.screen_loc = "LEFT,TOP-2.25-[count]"
-		B.update_icon()
+		B.update_sprite()
 		count++
 
 	return TRUE

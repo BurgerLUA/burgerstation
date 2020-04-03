@@ -112,7 +112,7 @@
 			equip_loadout("new_female",TRUE)
 
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
-		B.update_icon()
+		B.update_sprite()
 
 	update_all_blends()
 	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)

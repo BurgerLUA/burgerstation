@@ -24,13 +24,13 @@
 	return ..() + div("notice",reagents.get_contents_english())
 
 /obj/item/container/syringe/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
-	update_icon()
+	update_sprite()
 	return ..()
 
 
 /obj/item/container/syringe/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/container/syringe/update_icon()
@@ -57,7 +57,7 @@
 
 /obj/item/container/syringe/click_self(var/mob/caller,location,control,params)
 	injecting = !injecting
-	update_icon()
+	update_sprite()
 	return TRUE
 
 

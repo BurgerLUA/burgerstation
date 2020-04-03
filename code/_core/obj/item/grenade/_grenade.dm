@@ -39,7 +39,7 @@
 
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/grenade/on_spawn()
@@ -51,7 +51,7 @@
 
 	stored_trigger.on_spawn()
 
-	update_icon()
+	update_sprite()
 
 	return .
 
@@ -88,7 +88,7 @@
 				if(I.add_held_object(selected_beaker))
 					caller.to_chat(span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
 					stored_containers -= selected_beaker
-					update_icon()
+					update_sprite()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
 
@@ -98,7 +98,7 @@
 				if(I.add_held_object(stored_trigger))
 					caller.to_chat(span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 					stored_trigger = null
-					update_icon()
+					update_sprite()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
 
@@ -111,7 +111,7 @@
 				B.force_move(src)
 				stored_containers += B
 				caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
-				update_icon()
+				update_sprite()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
 
@@ -126,7 +126,7 @@
 				T.force_move(src)
 				stored_trigger = T
 				caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
-				update_icon()
+				update_sprite()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
 

@@ -22,7 +22,7 @@
 		stored_magazine = new stored_magazine(src)
 		stored_magazine.on_spawn()
 		open = FALSE
-		update_icon()
+		update_sprite()
 
 	return ..()
 
@@ -39,7 +39,7 @@
 	if(cock_type)
 		var/area/A = get_area(caller.loc)
 		play_sound(get_cock_sound(cock_type),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-		update_icon()
+		update_sprite()
 
 	return TRUE
 
@@ -50,10 +50,10 @@
 	if(object)
 		var/obj/hud/inventory/offhand_slot = object
 		offhand_slot.add_object(stored_magazine)
-	stored_magazine.update_icon()
+	stored_magazine.update_sprite()
 	stored_magazine = null
 	open = TRUE
-	update_icon()
+	update_sprite()
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))

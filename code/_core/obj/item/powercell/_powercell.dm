@@ -14,7 +14,7 @@
 /obj/item/powercell/on_spawn()
 	charge_current = charge_max
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/powercell/update_icon()
@@ -55,8 +55,8 @@
 
 		L.charge_current += amount_to_restore
 		charge_current -= amount_to_restore
-		update_icon()
-		L.update_icon()
+		update_sprite()
+		L.update_sprite()
 		L2.to_chat(span("notice","You recharge \the [object.name] with \the [src.name] [L.charge_current] / [L.charge_max]."))
 
 		return TRUE

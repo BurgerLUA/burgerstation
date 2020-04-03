@@ -49,7 +49,7 @@ obj/structure/interactive/door/New(var/desired_loc)
 
 	. = ..()
 
-	update_icon()
+	update_sprite()
 
 	return .
 
@@ -101,29 +101,29 @@ obj/structure/interactive/door/proc/open()
 	if(open_sound)
 		play(open_sound)
 	door_state = DOOR_STATE_OPENING_01
-	update_icon()
+	update_sprite()
 	spawn(open_time)
 		door_state = DOOR_STATE_OPENED
-		update_icon()
+		update_sprite()
 
 
 obj/structure/interactive/door/proc/close()
 	if(close_sound)
 		play(close_sound)
 	door_state = DOOR_STATE_CLOSING_01
-	update_icon()
+	update_sprite()
 	spawn(close_time)
 		door_state = DOOR_STATE_CLOSED
-		update_icon()
+		update_sprite()
 
 /obj/structure/interactive/door/proc/unlock()
 	locked = FALSE
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/door/proc/lock()
 	locked = TRUE
-	update_icon()
+	update_sprite()
 	return TRUE
 
 obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,object,location,control,params)

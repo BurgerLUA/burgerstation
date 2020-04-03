@@ -53,7 +53,7 @@
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
 			add_blend("outfit_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-		update_icon()
+		update_sprite()
 
 	..()
 

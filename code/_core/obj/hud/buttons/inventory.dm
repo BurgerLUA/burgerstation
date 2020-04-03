@@ -80,7 +80,7 @@
 	var/mob/living/advanced/A = owner
 	A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 
-	update_icon()
+	update_sprite()
 
 	return ..()
 

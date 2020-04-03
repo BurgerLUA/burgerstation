@@ -36,7 +36,7 @@
 
 /obj/structure/interactive/lighting/tube/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/structure/interactive/lighting/tube/update_icon()
@@ -59,20 +59,15 @@
 	F.Blend(desired_light_color,ICON_MULTIPLY)
 	I.Blend(F,ICON_OVERLAY)
 
-	/*
-	if(on)
-		var/icon/L = new /icon(icon,"tube_light")
-		L.Blend(blend_colors("#FFFFFF",desired_light_color,0.75),ICON_MULTIPLY)
-		I.Blend(L,ICON_OVERLAY)
-	*/
+	icon = I
 
-	overlays.Cut()
+/obj/structure/interactive/lighting/tube/update_overlays()
+	. = ..()
 	var/image/IS = new/image(icon,"tube_light")
 	IS.plane = PLANE_LIGHTING
 	IS.layer = 99
 	overlays += IS
-
-	icon = I
+	return .
 
 /obj/structure/interactive/lighting/tube/strong
 	desired_light_power = 0.4

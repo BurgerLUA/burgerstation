@@ -24,7 +24,7 @@
 /obj/item/magazine/on_spawn()
 	for(var/i=1, i <= bullet_count_max, i++)
 		stored_bullets += new ammo(src)
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/item/magazine/Destroy()
@@ -38,7 +38,7 @@
 
 /obj/item/magazine/New()
 	..()
-	update_icon()
+	update_sprite()
 
 /obj/item/magazine/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","It contains [length(stored_bullets)] bullets.")
@@ -87,9 +87,9 @@
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
 		if(I.add_held_object(B))
-			B.update_icon()
+			B.update_sprite()
 			stored_bullets -= B
-		update_icon()
+		update_sprite()
 		return TRUE
 
 	return ..()
@@ -125,7 +125,7 @@
 	G.open = FALSE
 	var/area/A = get_area(caller)
 	play_sound(get_magazine_insert_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
-	G.update_icon()
+	G.update_sprite()
 
 	return TRUE
 

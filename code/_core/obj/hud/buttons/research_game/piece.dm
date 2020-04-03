@@ -100,7 +100,7 @@
 	color_03 = COLOR_BLACK
 	color_04 = COLOR_BLACK
 	update_piece()
-	update_icon()
+	update_sprite()
 	linked_board.cleared_pieces += src
 	return TRUE
 
@@ -120,7 +120,7 @@
 	color_03 = pick(possible_colors)
 	color_04 = pick(possible_colors)
 	update_piece()
-	update_icon()
+	update_sprite()
 	linked_board.cleared_pieces -= src
 	check_clear()
 	return TRUE

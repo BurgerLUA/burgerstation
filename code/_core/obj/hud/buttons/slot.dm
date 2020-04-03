@@ -27,21 +27,26 @@
 	stored_atom = null
 	return ..()
 
-/obj/hud/button/slot/update_icon()
+/obj/hud/button/slot/update_sprite()
 
-	.= ..()
-
-	overlays.Cut()
-	if(stored_atom)
-		var/image/I = new/image(stored_atom.icon,stored_atom.icon_state)
-		I.appearance = stored_atom.appearance
-		I.plane = PLANE_HUD_OBJ
-		overlays += I
+	. = ..()
 
 	if(active)
 		color = "#00FF00"
 	else
 		color = "#FFFFFF"
+
+	return .
+
+/obj/hud/button/slot/update_overlays()
+
+	. = ..()
+
+	if(stored_atom)
+		var/image/I = new/image(stored_atom.icon,stored_atom.icon_state)
+		I.appearance = stored_atom.appearance
+		I.plane = PLANE_HUD_OBJ
+		overlays += I
 
 	return .
 
@@ -61,14 +66,14 @@
 	else
 		active = !active
 		caller.quick_mode = active ? id : null
-		update_icon()
+		update_sprite()
 
 	if(active)
 		for(var/obj/hud/button/slot/S in owner.buttons)
 			if(S == src)
 				continue
 			S.active = FALSE
-			S.update_icon()
+			S.update_sprite()
 
 	return TRUE
 
@@ -76,7 +81,7 @@
 	if(stored_atom)
 		A.to_chat(span("notice","\The [stored_atom.name] was unbound from slot [icon_state]."))
 		stored_atom = null
-		update_icon()
+		update_sprite()
 		//animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
 
@@ -115,7 +120,7 @@
 	A.to_chat(span("notice","\The [I.name] was bound to slot [maptext]."))
 	//animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(1))
 	active = FALSE
-	update_icon()
+	update_sprite()
 
 
 	return TRUE

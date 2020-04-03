@@ -65,7 +65,7 @@
 			M.pixel_y = initial(M.pixel_y)
 			crate_contents += M
 
-	update_icon()
+	update_sprite()
 
 	return ..()
 
@@ -84,7 +84,7 @@
 
 	open = FALSE
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 
@@ -97,6 +97,6 @@
 
 	open = TRUE
 
-	update_icon()
+	update_sprite()
 
 	return TRUE

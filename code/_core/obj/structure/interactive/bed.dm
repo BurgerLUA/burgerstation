@@ -55,18 +55,22 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,locatio
 
 obj/structure/interactive/bed/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 obj/structure/interactive/bed/padded
 	name = "padded bed"
 
 
-obj/structure/interactive/bed/padded/update_icon()
-	overlays.Cut()
+obj/structure/interactive/bed/padded/update_overlays()
+
+	. = ..()
+
 	var/image/sheets = new(icon,"bed_padding")
 	sheets.color = secondary_color
 	overlays += sheets
+
+	return .
 
 /*
 
@@ -167,22 +171,22 @@ obj/structure/interactive/bed/sleeper/proc/open()
 	if(open_sound)
 		play(open_sound)
 	door_state = SLEEPER_OPENING
-	update_icon()
+	update_sprite()
 	spawn(open_time)
 		door_state = SLEEPER_OPENED
 		opened_time = 0
-		update_icon()
+		update_sprite()
 	start_thinking(src)
 
 obj/structure/interactive/bed/sleeper/proc/close()
 	if(close_sound)
 		play(close_sound)
 	door_state = SLEEPER_CLOSING
-	update_icon()
+	update_sprite()
 	spawn(close_time)
 		door_state = SLEEPER_CLOSED
 		opened_time = 0
-		update_icon()
+		update_sprite()
 	stop_thinking(src)
 
 obj/structure/interactive/bed/sleeper/think()

@@ -20,7 +20,7 @@
 
 /mob/living/simple/npc/slime/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /mob/living/simple/npc/slime/post_death()
@@ -48,7 +48,7 @@
 
 	stored_slimes = 0
 
-	update_icon()
+	update_sprite()
 
 	return .
 
@@ -110,7 +110,7 @@
 	var/new_g = (my_rgb[2] + stored_rgb[2]) * 0.5
 	var/new_b = (my_rgb[3] + stored_rgb[3]) * 0.5
 	src.slime_color = rgb(new_r,new_g,new_b)
-	update_icon()
+	update_sprite()
 
 	qdel(desired_slime)
 

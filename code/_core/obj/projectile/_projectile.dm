@@ -129,7 +129,7 @@
 
 	. = ..()
 
-	update_icon()
+	update_sprite()
 
 	return .
 

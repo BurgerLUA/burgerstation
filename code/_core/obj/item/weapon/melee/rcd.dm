@@ -19,23 +19,26 @@
 
 /obj/item/weapon/melee/tool/rcd/proc/add_matter(var/matter_amount)
 	matter_current = min(matter_current + matter_amount,matter_max)
-	update_icon()
+	update_sprite()
 	return matter_current
 
 /obj/item/weapon/melee/tool/rcd/proc/spend_matter(var/matter_to_spend)
 	if(matter_to_spend > matter_current)
 		return FALSE
 	matter_current -= matter_to_spend
-	update_icon()
+	update_sprite()
 	return TRUE
 
-/obj/item/weapon/melee/tool/rcd/update_icon()
-	overlays.Cut()
+/obj/item/weapon/melee/tool/rcd/update_overlays()
+
+	. = ..()
+
 	var/charge_level = matter_current == 0 ? 0 : FLOOR(1+(matter_current/matter_max)*9, 1)
 	if(charge_level)
 		var/image/I = new/image(initial(icon),"charge_[charge_level]")
 		overlays += I
-	return ..()
+
+	return .
 
 /obj/item/weapon/melee/tool/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

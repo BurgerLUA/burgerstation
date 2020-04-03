@@ -20,7 +20,7 @@
 
 /obj/structure/interactive/lighting/floor/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/structure/interactive/lighting/floor/update_icon()

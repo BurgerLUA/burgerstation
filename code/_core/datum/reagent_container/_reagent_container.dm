@@ -169,7 +169,7 @@
 		average_temperature = T0C+20
 
 	if(owner && should_update_owner && update_owner)
-		owner.update_icon()
+		owner.update_sprite()
 
 	return TRUE
 

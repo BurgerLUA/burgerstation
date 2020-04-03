@@ -18,7 +18,7 @@
 		cooked_icon_state = "bread"
 		caller.to_chat("You reshape \the [src.name].")
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 
@@ -41,7 +41,7 @@
 				var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
 				if(raw_icon_state == "dough_flat")
 					B.raw_icon_state = "dough_slice"
-				B.update_icon()
+				B.update_sprite()
 				reagents.transfer_reagents_to(B.reagents,original_volume/pieces)
 				animate(B,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 
@@ -57,8 +57,8 @@
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into two halves.")
-			update_icon()
-			B.update_icon()
+			update_sprite()
+			B.update_sprite()
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
 
@@ -68,7 +68,7 @@
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You flatten \the [src.name].")
-			update_icon()
+			update_sprite()
 
 	return TRUE
 

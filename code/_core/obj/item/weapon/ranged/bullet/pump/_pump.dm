@@ -28,7 +28,7 @@
 
 	var/area/A = get_area(caller.loc)
 	play_sound(pump_sound,get_mobs_in_range(caller),vector(caller.x,caller.y,caller.z),environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
-	update_icon()
+	update_sprite()
 
 	next_shoot_time = world.time + 1
 

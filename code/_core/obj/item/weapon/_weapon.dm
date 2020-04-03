@@ -48,7 +48,7 @@
 			pixel_x = 0
 
 		if(I.owner)
-			I.owner.update_icon()
+			I.owner.update_sprite()
 
 	else
 		pixel_x = 0
@@ -70,7 +70,7 @@
 	wielded = FALSE
 	if(I.child_inventory)
 		I.child_inventory.parent_inventory = null
-		I.child_inventory.update_icon()
+		I.child_inventory.update_sprite()
 		I.child_inventory = null
-	update_icon()
+	update_sprite()
 	return ..()

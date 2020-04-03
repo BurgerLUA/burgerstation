@@ -67,6 +67,6 @@
 		var/obj/item/material/trash_cube/S = new(placing_turf)
 		S.item_count_current = material_to_make
 		S.material_id = material_type
-		S.update_icon()
+		S.update_sprite()
 
 	return TRUE

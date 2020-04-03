@@ -47,7 +47,7 @@
 	var/obj/item/new_item
 	new_item = new associated_item.type(get_turf(src))
 	new_item.on_spawn()
-	new_item.update_icon()
+	new_item.update_sprite()
 	if(P)
 		if(item_value)
 			P.to_chat(span("notice","You have purchased \the [new_item.name] for [item_value] telecrystal\s."))
@@ -70,7 +70,7 @@
 		I.on_spawn()
 		stored_objects += I
 		I.force_move(src)
-		I.update_icon()
+		I.update_sprite()
 		I.plane = PLANE_HUD_OBJ
 		I.pixel_y = 4
 
@@ -104,12 +104,12 @@
 		V.associated_vendor = src
 		V.screen_loc = "CENTER-3,CENTER-[(stored_objects_length+stored_types_length+1)*0.5]+[i]"
 		V.update_owner(A)
-		V.update_icon()
+		V.update_sprite()
 
 	var/obj/hud/button/close_vendor/CV = new
 	CV.screen_loc = "CENTER,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]-1"
 	CV.update_owner(A)
-	CV.update_icon()
+	CV.update_sprite()
 
 /obj/structure/interactive/vending/proc/hide_buttons_from(var/mob/living/advanced/A)
 	for(var/obj/hud/button/vendor/V in A.buttons)

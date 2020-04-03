@@ -8,7 +8,7 @@
 /mob/living/simple/npc/passive/chicken/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
-	update_icon()
+	update_sprite()
 
 /mob/living/simple/npc/passive/chicken/brown
 	name = "brown chicken"

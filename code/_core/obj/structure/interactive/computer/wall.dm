@@ -36,7 +36,7 @@ obj/structure/interactive/computer/wall
 obj/structure/interactive/computer/wall/Initialize(var/desired_loc)
 	setup_dir_offsets()
 	dir = SOUTH
-	update_icon()
+	update_sprite()
 	return ..(loc) //thanks, i hate it
 
 obj/structure/interactive/computer/wall/update_icon()

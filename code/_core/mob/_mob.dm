@@ -144,7 +144,7 @@
 			paralax.color = "#FF0000"
 			paralax.plane = PLANE_PARALAX
 			paralax.screen_loc = "LEFT,BOTTOM"
-			paralax.update_icon()
+			paralax.update_sprite()
 			C.screen += paralax
 		*/
 

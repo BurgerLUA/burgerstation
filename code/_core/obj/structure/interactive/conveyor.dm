@@ -24,7 +24,7 @@
 	if(active)
 		enable()
 	else
-		update_icon()
+		update_sprite()
 
 	return ..()
 
@@ -45,13 +45,13 @@
 /obj/structure/interactive/conveyor/proc/enable()
 	active = TRUE
 	start_thinking(src)
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/conveyor/proc/disable()
 	active = FALSE
 	stop_thinking(src)
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/conveyor/think()

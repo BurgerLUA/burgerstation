@@ -61,7 +61,7 @@
 				var/squad/S = squad_table[answer]
 				if(S)
 					S.add_member(P)
-					update_icon()
+					update_sprite()
 				else
 					caller.to_chat("uh, for some reason that squad doesn't exist. Please tell burger you can't join the squad [answer].")
 
@@ -96,7 +96,7 @@
 		S.name = squad_name
 		S.add_member(P)
 		S.set_leader(P)
-		update_icon()
+		update_sprite()
 		return TRUE
 
 /obj/hud/button/squad/member

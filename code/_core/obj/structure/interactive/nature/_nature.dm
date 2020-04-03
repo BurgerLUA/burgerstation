@@ -117,7 +117,7 @@ obj/structure/scenery/lolipop_tree/New()
 		if(3)
 			top_color = rgb(pick(0,255),pick(0,255),255)
 
-	update_icon()
+	update_sprite()
 
 	return ..()
 

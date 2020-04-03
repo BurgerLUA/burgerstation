@@ -31,7 +31,7 @@
 
 /obj/hud/button/resist_auto/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	owner.auto_resist = !owner.auto_resist
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/hud/button/targeting
@@ -122,7 +122,7 @@
 	P.attack_mode = mode
 	P.attack_right = right
 	P.attack_left = left
-	update_icon()
+	update_sprite()
 
 	return ..()
 
@@ -177,6 +177,6 @@
 		if(1 to 10)
 			enable_block = !enable_block
 
-	update_icon()
+	update_sprite()
 
 	return ..()

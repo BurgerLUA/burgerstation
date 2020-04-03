@@ -65,7 +65,7 @@
 		else
 			caller.visible_message("\The [caller.name] sprays \the [O.loc.name]'s [O.name] with \the [src].")
 
-		update_icon()
+		update_sprite()
 
 		return TRUE
 

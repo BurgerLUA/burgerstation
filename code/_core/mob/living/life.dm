@@ -60,7 +60,7 @@
 
 		var/obj/item/currency/C = new(src.loc)
 		C.value = 1 + FLOOR(health.health_max/10, 1)
-		C.update_icon()
+		C.update_sprite()
 		step_rand(C)
 		return TRUE
 
@@ -311,7 +311,7 @@
 
 	if(!charge_gain || old_dodge != charge_dodge || old_block != charge_block || !old_parry != charge_parry)
 		for(var/obj/hud/button/evade/B in buttons)
-			B.update_overlay()
+			B.update_overlays()
 
 		return TRUE
 

@@ -52,13 +52,13 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	A.client.settings.loaded_data["hud_colors"] = DEFAULT_COLORS
 
 	for(var/obj/hud/button/B in A.buttons)
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/B in A.health_elements)
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/inventory/I in A.inventory)
-		I.update_icon()
+		I.update_sprite()
 
 	A.client.update_window()
 
@@ -95,13 +95,13 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 		A.client.settings.loaded_data["hud_colors"][color_id] = desired_color
 
 		for(var/obj/hud/button/B in A.buttons)
-			B.update_icon()
+			B.update_sprite()
 
 		for(var/obj/hud/button/B in A.health_elements)
-			B.update_icon()
+			B.update_sprite()
 
 		for(var/obj/hud/inventory/I in A.inventory)
-			I.update_icon()
+			I.update_sprite()
 
 		A.client.update_window()
 

@@ -11,9 +11,9 @@
 	desired_light_color = "#00FF00"
 
 
-/obj/structure/interactive/power/apc/update_icon()
+/obj/structure/interactive/power/apc/update_overlays()
 
-	overlays.Cut()
+	. = ..()
 
 	var/image/I1 = new/image(initial(icon),"apc_light")
 	I1.plane = PLANE_LIGHTING
@@ -26,10 +26,10 @@
 	overlays += I1
 	overlays += I2
 
-	return ..()
+	return .
 
 
 /obj/structure/interactive/power/apc/Initialize(var/desired_loc)
 	setup_dir_offsets()
-	update_icon()
+	update_sprite()
 	return ..(loc)

@@ -10,7 +10,7 @@
 
 	. = ..()
 
-	update_overlay()
+	update_overlays()
 
 	return .
 
@@ -21,16 +21,16 @@
 
 	. = ..()
 
-	update_overlay()
+	update_overlays()
 
 	return .
 
-/obj/hud/button/evade/proc/update_overlay()
+/obj/hud/button/evade/update_overlays()
 
-	overlays.Cut()
+	. = ..()
 
 	if(!is_living(owner))
-		return FALSE
+		return .
 
 	var/mob/living/L = owner
 
@@ -51,7 +51,7 @@
 
 	overlays += I
 
-	return TRUE
+	return .
 
 /obj/hud/button/evade/block
 	name = "block"

@@ -42,7 +42,7 @@
 	if(amount != new_value)
 		amount = new_value
 		play_sound('sounds/ui/tap-metallic.ogg',list(owner),vector(owner.x,owner.y,owner.z),environment = ENVIRONMENT_GENERIC)
-		update_icon()
+		update_sprite()
 
 	return TRUE
 

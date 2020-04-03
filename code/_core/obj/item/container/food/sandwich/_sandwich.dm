@@ -51,11 +51,13 @@
 	var/icon/I = new/icon(icon,icon_state)
 	I.Blend(reagents.color,ICON_MULTIPLY)
 
-	for(var/image/IM in overlays)
-		overlays -= IM
-		qdel(I)
+	icon = I
 
-	overlays.Cut() //Just in case.
+	return ..()
+
+/obj/item/container/food/sandwich/update_overlays()
+
+	. = ..()
 
 	var/offset_y = -2
 
@@ -70,14 +72,12 @@
 		overlays += IM
 		offset_y += IT.pixel_height
 
-	icon = I
-
-	return ..()
+	return .
 
 
 /obj/item/container/food/sandwich/update_inventory()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 

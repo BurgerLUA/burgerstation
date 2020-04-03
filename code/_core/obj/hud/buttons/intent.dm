@@ -18,7 +18,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		active = L.intent == intent
-		update_overlay()
+		update_overlays()
 
 	return .
 
@@ -31,19 +31,21 @@
 		var/mob/living/L = caller
 		L.intent = intent
 		for(var/obj/hud/button/intent/I in L.buttons)
-			I.update_icon()
+			I.update_sprite()
 			I.active = (I.intent == L.intent)
-			I.update_overlay()
+			I.update_overlays()
 
 	return .
 
-/obj/hud/button/intent/proc/update_overlay()
-	overlays.Cut()
+/obj/hud/button/intent/update_overlays()
+
+	. = ..()
+
 	if(active)
 		var/icon/I = new/icon(initial(icon),"[icon_state]_active")
 		overlays += I
 
-	return TRUE
+	return .
 
 //The reason why this isn't one button is to support button binds.
 /obj/hud/button/intent/help

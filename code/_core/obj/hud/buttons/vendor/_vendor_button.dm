@@ -29,11 +29,9 @@
 	associated_item = null
 	return ..()
 
-/obj/hud/button/vendor/update_icon()
+/obj/hud/button/vendor/update_overlays()
 
 	. = ..()
-
-	overlays.Cut()
 
 	if(ispath(associated_item))
 		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
@@ -43,6 +41,13 @@
 	else
 		associated_item.pixel_y = 4
 		overlays += associated_item
+
+	return .
+
+/obj/hud/button/vendor/update_icon()
+
+	. = ..()
+
 
 	var/sale_amount = CEILING(associated_item.calculate_value(),1)
 	var/num_to_text = num2text(sale_amount)

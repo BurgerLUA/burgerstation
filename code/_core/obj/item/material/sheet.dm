@@ -19,10 +19,10 @@
 			var/obj/item/material/rod/R = new(get_turf(src))
 			R.material_id = material_id
 			R.item_count_current = 4
-			R.update_icon()
+			R.update_sprite()
 			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
 			item_count_current--
-			update_icon()
+			update_sprite()
 
 	return ..()
 
@@ -31,17 +31,17 @@
 
 /obj/item/material/sheet/steel/spawn_50/on_spawn()
 	item_count_current = 50
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/item/material/sheet/steel/spawn_25/on_spawn()
 	item_count_current = 25
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/item/material/sheet/steel/spawn_10/on_spawn()
 	item_count_current = 10
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/item/material/sheet/glass
@@ -49,5 +49,5 @@
 
 /obj/item/material/sheet/glass/spawn_50/on_spawn()
 	item_count_current = 50
-	update_icon()
+	update_sprite()
 	return ..()

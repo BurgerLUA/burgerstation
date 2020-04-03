@@ -110,7 +110,7 @@
 	held_objects = list()
 	worn_objects = list()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/hud/inventory/can_be_attacked(var/atom/attacker)
@@ -122,9 +122,9 @@
 	if(!A) return FALSE
 	return A.get_examine_list(examiner)
 
-/obj/hud/inventory/proc/update_overlays()
+/obj/hud/inventory/update_overlays()
 
-	overlays.Cut()
+	. = ..()
 
 	var/total_pixel_x = 0
 	var/total_pixel_y = 0
@@ -164,6 +164,8 @@
 		I.appearance = grabbed_object.appearance
 		I.plane = PLANE_HUD_OBJ
 		overlays += I
+
+	return .
 
 /obj/hud/inventory/update_icon()
 

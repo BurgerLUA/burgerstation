@@ -100,11 +100,16 @@
 			T.visible_message("The milk starts to curdle!")
 			start_thinking(src)
 
-	overlays.Cut()
+	return ..()
+
+
+/obj/item/container/cheese_mold/update_overlays()
+
+	. = ..()
 
 	if(reagents.volume_current)
 		var/image/I = new/image(icon,"[icon_state]_fill")
 		I.color = reagents.color
 		overlays += I
 
-	return ..()
+	return .

@@ -58,7 +58,7 @@
 	if(desired_owner)
 		owner = desired_owner
 		owner.add_button(src)
-		update_icon()
+		update_sprite()
 	else
 		qdel(src)
 

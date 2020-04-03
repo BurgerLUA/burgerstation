@@ -38,7 +38,7 @@
 			F.color = color
 			caller.to_chat("You place \the [F.name].")
 			item_count_current -= 2
-			update_icon()
+			update_sprite()
 			return TRUE
 
 	return ..()
@@ -52,15 +52,15 @@
 
 /obj/item/material/rod/steel/spawn_50/on_spawn()
 	item_count_current = 50
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/item/material/rod/steel/spawn_25/on_spawn()
 	item_count_current = 25
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/item/material/rod/steel/spawn_10/on_spawn()
 	item_count_current = 10
-	update_icon()
+	update_sprite()
 	return ..()

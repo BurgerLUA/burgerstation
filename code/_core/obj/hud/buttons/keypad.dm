@@ -67,7 +67,7 @@
 
 	for(var/obj/hud/button/keypad/K in caller.buttons)
 		K.stored_keypad = stored_keypad
-		K.update_icon()
+		K.update_sprite()
 
 	return ..()
 
@@ -128,6 +128,6 @@
 
 	for(var/obj/hud/button/keypad/K in caller.buttons)
 		K.stored_keypad = stored_keypad
-		K.update_icon()
+		K.update_sprite()
 
 	return ..()

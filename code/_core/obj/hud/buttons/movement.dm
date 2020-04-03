@@ -56,7 +56,7 @@
 
 	move_mod_button = caller.move_mod_button
 
-	update_icon()
+	update_sprite()
 
 	return ..()
 

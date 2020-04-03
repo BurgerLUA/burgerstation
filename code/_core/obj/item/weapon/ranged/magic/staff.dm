@@ -22,7 +22,7 @@
 
 	total_charge -= charge_to_remove
 
-	update_icon()
+	update_sprite()
 
 	return FALSE
 
@@ -49,7 +49,7 @@
 
 /obj/item/weapon/ranged/magic/staff/fire/New()
 	..()
-	update_icon()
+	update_sprite()
 
 /obj/item/weapon/ranged/magic/staff/fire/update_icon()
 

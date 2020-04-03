@@ -27,7 +27,7 @@
 
 /obj/structure/interactive/radiation_collector/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 

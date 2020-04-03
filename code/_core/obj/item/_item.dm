@@ -228,7 +228,7 @@
 	. = ..()
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		I.update_icon()
+		I.update_sprite()
 	return .
 
 /*

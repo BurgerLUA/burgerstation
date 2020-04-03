@@ -32,7 +32,7 @@
 			total_charge = 0
 		else
 			caller.to_chat(span("notice","\The [src] is empty!"))
-		update_icon()
+		update_sprite()
 
 		return TRUE
 

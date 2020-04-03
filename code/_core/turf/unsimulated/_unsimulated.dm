@@ -22,7 +22,7 @@
 
 /turf/unsimulated/space/New()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /turf/unsimulated/space/update_icon()

@@ -30,14 +30,14 @@ obj/structure/interactive/atmospherics/air_alarm
 
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 	setup_dir_offsets()
-	update_icon()
+	update_sprite()
 	return ..(loc)
 
 
-obj/structure/interactive/atmospherics/air_alarm/update_icon()
-	overlays.Cut()
+obj/structure/interactive/atmospherics/air_alarm/update_overlays()
+	. = ..()
 	var/image/I = new /image(initial(icon),"air_alarm_light")
 	I.plane = PLANE_LIGHTING
 	I.layer = 99
 	overlays += I
-	return ..()
+	return .

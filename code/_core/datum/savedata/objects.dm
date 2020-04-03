@@ -109,7 +109,7 @@
 			var/b_type = object_data["chambered_bullet"]
 			var/obj/item/bullet_cartridge/B = new b_type(BG)
 			if(B)
-				B.update_icon()
+				B.update_sprite()
 				BG.chambered_bullet = B
 
 		if(object_data["stored_bullets"] && length(object_data["stored_bullets"]))
@@ -118,7 +118,7 @@
 				if(b_type)
 					var/obj/item/bullet_cartridge/B = new b_type(BG)
 					if(B)
-						B.update_icon()
+						B.update_sprite()
 						BG.stored_bullets[i] = B
 
 	if(is_magazine_gun(O))
@@ -131,7 +131,7 @@
 		if(object_data["stored_chamber"])
 			var/b_type = object_data["stored_chamber"]
 			var/obj/item/bullet_cartridge/B = new b_type(P)
-			B.update_icon()
+			B.update_sprite()
 			P.stored_chamber += B
 */
 
@@ -142,7 +142,7 @@
 				var/v = object_data["stored_bullets"][k]
 				for(var/i=1,i<=v,i++)
 					var/obj/item/bullet_cartridge/B = new k(M)
-					B.update_icon()
+					B.update_sprite()
 					M.stored_bullets += B
 
 	if(istype(O,/obj/item/firing_pin/))
@@ -151,7 +151,7 @@
 			FP.iff_tag = object_data["iff_tag"]
 
 	O.force_move(loc)
-	O.update_icon()
+	O.update_sprite()
 
 	return O
 

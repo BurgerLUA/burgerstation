@@ -21,7 +21,7 @@
 /obj/item/weapon/ranged/magic/scroll/click_self(var/mob/caller)
 	open = !open
 	caller.to_chat(span("notice","You [open ? "unravel" : "roll up"] the scroll."))
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/item/weapon/ranged/magic/scroll/can_gun_shoot(var/mob/caller)
@@ -86,7 +86,7 @@
 
 /obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
 	scroll_count -= 1
-	update_icon()
+	update_sprite()
 
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"

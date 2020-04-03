@@ -11,7 +11,7 @@ var/global/list/local_machines = list()
 /obj/structure/interactive/localmachine/New()
 	. = ..()
 	local_machines += src
-	update_icon()
+	update_sprite()
 
 /obj/structure/interactive/localmachine/proc/update_for_mob(var/mob/M)
 

@@ -16,7 +16,7 @@
 	. = ..()
 	icon_state = "ore_storage"
 	start_thinking(src)
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/structure/interactive/ore_storage/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)

@@ -19,7 +19,7 @@
 	attached_object = null
 	return ..()
 
-/obj/overlay/update_icon()
+/obj/overlay/update_sprite() //Custom shit.
 
 	if(no_update)
 		return

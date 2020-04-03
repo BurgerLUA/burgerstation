@@ -22,7 +22,7 @@
 
 /obj/item/weapon/melee/torch/click_self(var/atom/caller)
 	enabled = !enabled
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/item/weapon/melee/torch/update_icon()

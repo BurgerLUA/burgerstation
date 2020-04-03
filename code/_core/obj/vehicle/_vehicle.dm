@@ -33,7 +33,7 @@
 	..()
 	passengers = list()
 	equipment = list()
-	update_icon()
+	update_sprite()
 
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -87,7 +87,7 @@
 	passengers += L
 	if(L.client)
 		L.client.eye = src
-	update_icon()
+	update_sprite()
 
 	return ..()
 
@@ -103,7 +103,7 @@
 	passengers -= L
 	if(L.client)
 		L.client.eye = L
-	update_icon()
+	update_sprite()
 
 	return ..()
 

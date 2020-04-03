@@ -47,10 +47,10 @@
 
 	if(!tracked_atom)
 		icon_state = "null"
-		update_icon()
+		update_sprite()
 		return FALSE
 
-	update_icon()
+	update_sprite()
 
 	return ..()
 
@@ -80,7 +80,7 @@
 	else
 		caller.to_chat(span("notice","You disable scan mode."))
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 
@@ -99,7 +99,7 @@
 		possible_crew[P.name] = P
 
 	scan_mode = TRUE
-	update_icon()
+	update_sprite()
 
 	var/choice = input("Who do you want to track?","Crew Pinpointer Tracking",null) as null|anything in possible_crew
 
@@ -134,7 +134,7 @@
 		possible_landmarks[L.name] = L
 
 	scan_mode = TRUE
-	update_icon()
+	update_sprite()
 
 	var/choice = input("Who do you want to track?","Landmark Pinpointer Tracking","Cancel") as null|anything in possible_landmarks
 

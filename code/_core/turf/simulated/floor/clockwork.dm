@@ -20,7 +20,7 @@
 		icon_state = "floor2"
 	else
 		icon_state = "floor4"
-	update_icon()
+	update_sprite()
 
 /turf/simulated/floor/clockwork/vent
 	name = "clockwork vent"

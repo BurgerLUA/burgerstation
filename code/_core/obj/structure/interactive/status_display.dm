@@ -9,28 +9,29 @@ obj/structure/interactive/status_display
 	maptext_y = -2
 
 obj/structure/interactive/status_display/update_icon()
-
 	icon_state = null
+	return ..()
 
-	overlays.Cut()
-	underlays.Cut()
-
+/obj/structure/interactive/status_display/update_underlays()
+	. = ..()
 	var/image/I = new(icon,"screen")
 	I.color = screen_color
-
-	var/image/I2 = new(icon,"frame")
-	I2.color = frame_color
-
-	var/image/I3 = new(icon,"reflection")
-
 	underlays += I
-	overlays += I2
-	overlays += I3
+	return .
 
+/obj/structure/interactive/status_display/update_overlays()
+	. = ..()
+	var/image/I1 = new(icon,"frame")
+	I1.color = frame_color
+	overlays += I1
+	var/image/I2 = new(icon,"reflection")
+	overlays += I2
+
+	return .
 
 obj/structure/interactive/status_display/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	set_text("Hello")
 	return .
 

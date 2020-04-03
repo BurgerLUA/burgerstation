@@ -13,7 +13,7 @@
 
 /mob/living/vehicle/mech/post_death()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /mob/living/vehicle/mech/get_movement_delay()

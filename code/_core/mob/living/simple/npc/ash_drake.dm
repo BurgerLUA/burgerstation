@@ -47,7 +47,7 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	icon_state = "shadow"
-	update_icon()
+	update_sprite()
 
 /mob/living/simple/npc/ash_drake/proc/land()
 
@@ -62,7 +62,7 @@
 		icon_state = "living"
 		collision_flags = initial(collision_flags)
 		collision_bullet_flags = initial(collision_bullet_flags)
-		update_icon()
+		update_sprite()
 
 		for(var/turf/T in range(2,src))
 			new/obj/effect/temp/impact/combat/smash(T)
@@ -133,7 +133,7 @@
 /mob/living/simple/npc/ash_drake/post_death()
 	..()
 	icon_state = "dead"
-	update_icon()
+	update_sprite()
 
 
 

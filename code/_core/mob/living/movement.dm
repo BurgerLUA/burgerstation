@@ -81,7 +81,7 @@
 		if(B.type == /obj/hud/button/sneak)
 			var/obj/hud/button/sneak/S = B
 			S.sneaking = on
-			S.update_icon()
+			S.update_sprite()
 
 	if(on)
 		stealth_mod = get_skill_power(SKILL_SURVIVAL)

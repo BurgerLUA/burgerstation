@@ -142,7 +142,7 @@
 		if(loaded_data["organs"][id]["inventories"])
 			for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
 				apply_inventory_data(O,loaded_data["organs"][id]["inventories"][i])
-		O.update_icon()
+		O.update_sprite()
 
 	//Skills
 	for(var/id in loaded_data["skills"])

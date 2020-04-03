@@ -36,7 +36,7 @@
 
 /obj/structure/interactive/lighting/bulb/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/structure/interactive/lighting/bulb/update_icon()

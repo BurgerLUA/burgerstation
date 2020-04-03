@@ -20,28 +20,30 @@
 
 	. = ..()
 
+	update_underlays()
 	update_overlays()
 
 	return .
 
 
-/obj/hud/button/hunger/proc/update_overlays()
+/obj/hud/button/hunger/update_underlays()
 
-	underlays.Cut()
+	. = ..()
+
 	var/icon/I = new/icon(initial(icon),"hunger_thirst_background")
 	swap_colors(I)
 	underlays += I
 
-	return TRUE
+	return .
 
-/obj/hud/button/hunger/update_icon()
+/obj/hud/button/hunger/update_overlays()
 
-	overlays.Cut()
-
-	icon = initial(icon)
+	. = ..()
 
 	if(!is_living(owner))
-		return ..()
+		return .
+
+	var/initial_icon = initial(icon)
 
 	var/mob/living/L = owner
 	var/hunger_mod = (L.nutrition/1000)
@@ -49,10 +51,10 @@
 	var/hunger_icon = FLOOR(hunger_mod * 20,1)
 	var/thirst_icon = FLOOR(thirst_mod * 20,1)
 
-	var/image/I_hunger = new/image(icon,"hunger_bar_[hunger_icon]")
+	var/image/I_hunger = new/image(initial_icon,"hunger_bar_[hunger_icon]")
 	I_hunger.color = blend_colors("#FF0000","#00FF00",hunger_mod)
 
-	var/image/I_thirst = new/image(icon,"thirst_bar_[thirst_icon]")
+	var/image/I_thirst = new/image(initial_icon,"thirst_bar_[thirst_icon]")
 	I_thirst.color = blend_colors("#FF0000","#00FF00",thirst_mod)
 
 	overlays += I_hunger
@@ -61,4 +63,4 @@
 	var/icon/I2 = new/icon(icon,"hunger_thirst_detail")
 	overlays += I2
 
-	return ..()
+	return .

@@ -24,7 +24,7 @@ obj/structure/interactive/computer/console
 
 obj/structure/interactive/computer/console/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 obj/structure/interactive/computer/console/update_icon()

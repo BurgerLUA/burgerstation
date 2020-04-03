@@ -24,7 +24,7 @@
 				GOD.ore_score = ore_score * RAND_PRECISE(0.1,0.75)
 				//INITIALIZE(GOD)
 
-	update_icon()
+	update_sprite()
 
 	return .
 
@@ -33,14 +33,14 @@
 	O.material_id = src.material_id
 	O.on_spawn()
 	src.ore_score--
-	update_icon()
+	update_sprite()
 	for(var/obj/structure/interactive/ore_box/OB in range(1,src))
 		O.force_move(OB)
 		return TRUE
 	//ELSE
 	O.force_move(get_step(src,pick(DIRECTIONS_ALL)))
 	src.ore_score--
-	update_icon()
+	update_sprite()
 	return TRUE
 
 

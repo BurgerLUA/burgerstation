@@ -77,7 +77,7 @@ mob/living/advanced/proc/handle_regen()
 
 		var/obj/item/currency/C = new(src.loc)
 		C.value = 1 + FLOOR(health.health_max/10, 1)
-		C.update_icon()
+		C.update_sprite()
 		I.add_to_inventory(null,C,FALSE)
 		return TRUE
 

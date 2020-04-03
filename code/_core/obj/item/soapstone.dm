@@ -10,7 +10,7 @@
 	value = 100
 
 /obj/item/soapstone/New(var/desired_loc)
-	update_icon()
+	update_sprite()
 	filters += filter(type="drop_shadow", x=0, y=0, size=6, offset=0, color=stone_color)
 
 /obj/item/soapstone/orange

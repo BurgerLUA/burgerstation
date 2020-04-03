@@ -24,31 +24,31 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 		B.hair_num = choice01
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/hairstyle/slot02/B in buttons)
 		B.hair_num = choice02
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/hairstyle/main/B in buttons)
 		B.hair_num = choice_main
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/hairstyle/slot03/B in buttons)
 		B.hair_num = choice03
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/hairstyle/slot04/B in buttons)
 		B.hair_num = choice04
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/change_hairstyle/B in buttons)
 		B.hair_num = hair_num

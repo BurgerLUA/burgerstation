@@ -24,31 +24,31 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		B.hair_num = choice01
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/beardstyle/slot02/B in buttons)
 		B.hair_num = choice02
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/beardstyle/main/B in buttons)
 		B.hair_num = choice_main
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/beardstyle/slot03/B in buttons)
 		B.hair_num = choice03
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/beardstyle/slot04/B in buttons)
 		B.hair_num = choice04
 		if(desired_color)
 			B.hair_color = desired_color
-		B.update_icon()
+		B.update_sprite()
 
 	for(var/obj/hud/button/chargen/change_beardstyle/B in buttons)
 		B.hair_num = hair_num

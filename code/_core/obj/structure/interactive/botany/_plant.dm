@@ -25,7 +25,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 /obj/structure/interactive/plant/New(var/desired_loc)
 	all_plants += src
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/structure/interactive/plant/Destroy()
@@ -34,7 +34,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 /obj/structure/interactive/plant/proc/on_life()
 	growth += FLOOR(growth_speed * (rand(75,125)/100), 1)
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/plant/update_icon()
@@ -100,7 +100,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
 			P.reagents.update_container(FALSE)
 			P.original_volume = P.reagents.volume_current
-			P.update_icon()
+			P.update_sprite()
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 
 		caller.to_chat(span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))
@@ -114,7 +114,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 		yield = initial(yield)
 		icon = initial(icon)
 		icon_state = initial(icon_state)
-		update_icon()
+		update_sprite()
 
 	return TRUE
 

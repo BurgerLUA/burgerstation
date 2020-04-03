@@ -11,7 +11,7 @@
 	..()
 	if(desired_value)
 		value = desired_value
-	update_icon()
+	update_sprite()
 
 /obj/item/currency/update_icon()
 
@@ -33,7 +33,7 @@
 /obj/item/currency/proc/adjust_value(var/value_amount)
 	var/value_added = max(value_amount,-value)
 	value += value_added
-	update_icon()
+	update_sprite()
 	if(value<=0)
 		qdel(src)
 

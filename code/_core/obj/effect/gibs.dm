@@ -13,7 +13,7 @@
 	// force_move(desired_loc) TODO: WHY IS THIS HERE
 	blood_color = desired_blood_color
 	flesh_color = desired_flesh_color
-	update_icon()
+	update_sprite()
 	queue_delete(src,600)
 
 /obj/effect/gibs/update_icon()

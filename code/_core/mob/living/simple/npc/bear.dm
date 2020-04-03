@@ -14,7 +14,7 @@
 /mob/living/simple/npc/bear/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
-	update_icon()
+	update_sprite()
 
 /mob/living/simple/npc/bear/snow
 	name = "snow bear"

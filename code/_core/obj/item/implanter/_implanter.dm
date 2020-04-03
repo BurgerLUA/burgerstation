@@ -25,7 +25,7 @@
 	. = ..()
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -55,7 +55,7 @@
 		name = initial(name)
 		stored_implant = null
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 

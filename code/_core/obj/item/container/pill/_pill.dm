@@ -48,16 +48,21 @@
 
 /obj/item/container/pill/on_spawn()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/item/container/pill/update_icon()
 
-	overlays.Cut()
+	if(double)
+		color = null
+	else
+		color = reagents.color
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-	color = null
+	return TRUE
+
+/obj/item/container/pill/update_overlays()
+
+	. = ..()
 
 	if(double)
 		var/image/I1 = new/image(icon,"[icon_state]_double_left")
@@ -67,10 +72,8 @@
 		var/image/I2 = new/image(icon,"[icon_state]_double_right")
 		I2.color = reagents_2.color
 		overlays += I2
-	else
-		color = reagents.color
 
-	return TRUE
+	return .
 
 /obj/item/container/pill/New(var/desired_loc)
 

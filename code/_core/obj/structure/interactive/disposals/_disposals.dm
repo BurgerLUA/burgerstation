@@ -8,7 +8,7 @@
 
 /obj/structure/interactive/disposals/Initialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /obj/structure/interactive/disposals/update_icon()

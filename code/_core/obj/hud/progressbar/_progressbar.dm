@@ -34,7 +34,7 @@
 	swap_colors(I)
 	underlays += I
 
-	update_icon()
+	update_sprite()
 
 	..()
 

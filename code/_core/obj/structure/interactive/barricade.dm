@@ -17,10 +17,13 @@ obj/structure/interactive/barricade
 
 obj/structure/interactive/barricade/New(var/desired_loc)
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
-obj/structure/interactive/barricade/update_icon()
+
+obj/structure/interactive/barricade/update_sprite()
+
+	. = ..()
 
 	if(dir == NORTH)
 		pixel_y = -10
@@ -38,10 +41,11 @@ obj/structure/interactive/barricade/update_icon()
 		pixel_y = -2
 		density_west = TRUE
 
-	overlays.Cut()
+	return .
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+obj/structure/interactive/barricade/update_overlays()
+
+	. = ..()
 
 	var/image/above = new/image(icon,"[icon_state]_above")
 	above.layer = LAYER_MOB_ABOVE
@@ -52,3 +56,5 @@ obj/structure/interactive/barricade/update_icon()
 	icon = ICON_INVISIBLE
 	overlays += below
 	overlays += above
+
+	return .

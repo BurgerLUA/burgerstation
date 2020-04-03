@@ -18,17 +18,17 @@
 	stored_radio.receiving = TRUE
 	return ..()
 
-/obj/structure/interactive/intercom/update_icon()
+/obj/structure/interactive/intercom/update_overlays()
 	. = ..()
-	overlays.Cut()
 	var/image/I = new/image(initial(icon),"intercom_light")
 	I.plane = PLANE_LIGHTING
 	I.layer = 99
 	overlays += I
+	return .
 
 /obj/structure/interactive/intercom/Initialize(var/desired_loc)
 	setup_dir_offsets()
-	update_icon()
+	update_sprite()
 	return ..(loc)
 
 /obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)

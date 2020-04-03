@@ -58,7 +58,7 @@
 		visible_message("\The [src.name] activates itself.")
 	anchored = TRUE
 	start_thinking(src)
-	update_icon()
+	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
@@ -69,7 +69,7 @@
 		visible_message("\The [src.name] turns off on its own.")
 	anchored = FALSE
 	stop_thinking(src)
-	update_icon()
+	update_sprite()
 	return TRUE
 
 
@@ -131,7 +131,7 @@
 	else
 		visible_message("\The [caller.name] unsecures \the [src.name].")
 
-	update_icon()
+	update_sprite()
 
 	return TRUE
 

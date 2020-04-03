@@ -12,7 +12,7 @@
 	desired_light_color = "#FFFFB5"
 
 /obj/structure/interactive/lighting/fireplace/New()
-	update_icon()
+	update_sprite()
 	return ..()
 
 /obj/structure/interactive/lighting/fireplace/update_icon()

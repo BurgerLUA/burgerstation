@@ -1,5 +1,19 @@
+/atom/proc/update_sprite()
+	update_icon()
+	overlays.Cut()
+	update_overlays()
+	underlays.Cut()
+	update_underlays()
+	return TRUE
+
 /atom/proc/update_icon()
-	//icon = new_icon
+	return TRUE
+
+/atom/proc/update_overlays()
+	return TRUE
+
+/atom/proc/update_underlays()
+	return TRUE
 
 /obj/proc/initialize_blends()
 	return TRUE

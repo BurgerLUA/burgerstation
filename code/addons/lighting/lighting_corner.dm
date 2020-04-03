@@ -169,7 +169,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		var/atom/movable/lighting_overlay/Ov
 		if (T && (Ov = T.lighting_overlay))
 			if (now)
-				Ov.update_overlay()
+				Ov.update_overlays()
 			else if (!Ov.needs_update)
 				Ov.needs_update = TRUE
 				SSlighting.overlay_queue += Ov

@@ -18,9 +18,9 @@
 
 	polymorphs[choice] = blend_colors(polymorphs[choice],dye_color,dye_strength)
 	initialize_blends()
-	update_icon()
+	update_sprite()
 
 	caller.to_chat(span("notice","You dye \the [choice]."))
-	update_icon()
+	update_sprite()
 
 	return FALSE

@@ -1,6 +1,6 @@
 /mob/living/advanced/proc/add_inventory(var/obj/hud/inventory/I)
 
-	I.update_icon()
+	I.update_sprite()
 
 	if(I.id == BODY_HAND_LEFT)
 		left_hand = I

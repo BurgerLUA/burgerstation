@@ -25,9 +25,9 @@
 			intent = INTENT_HELP
 
 	for(var/obj/hud/button/intent/B in buttons)
-		B.update_icon()
+		B.update_sprite()
 		B.active = (B.intent == intent)
-		B.update_overlay()
+		B.update_overlays()
 
 
 /mob/living/verb/cycle_intent_counter_clockwise()
@@ -46,6 +46,6 @@
 			intent = INTENT_GRAB
 
 	for(var/obj/hud/button/intent/B in buttons)
-		B.update_icon()
+		B.update_sprite()
 		B.active = (B.intent == intent)
-		B.update_overlay()
+		B.update_overlays()

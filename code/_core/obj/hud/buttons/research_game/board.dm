@@ -38,7 +38,7 @@
 		src.pieces[init_x][init_y] = P
 		P.linked_board = src
 		P.initialize_colors()
-		P.update_icon()
+		P.update_sprite()
 		P.update_piece()
 		init_x++
 		if(init_x > RESEARCH_BOARD_SIZE)

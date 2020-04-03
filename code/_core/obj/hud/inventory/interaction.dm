@@ -115,8 +115,8 @@
 	holding.child_inventory = item_to_wield.wielded ? src : null
 	if(caller)
 		caller.to_chat(span("notice","You [item_to_wield.wielded ? "brace" : "release"] \the [item_to_wield] with your [src.loc.name]."))
-	update_icon()
-	item_to_wield.update_icon() //This will also update the inventory.
+	update_sprite()
+	item_to_wield.update_sprite() //This will also update the inventory.
 	return TRUE
 
 /obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)

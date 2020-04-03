@@ -161,7 +161,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	projectile_speed_to_use = min(projectile_speed_to_use,31)
 
-	update_icon()
+	update_sprite()
 
 	if(projectile_to_use)
 

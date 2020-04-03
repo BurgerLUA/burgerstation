@@ -38,7 +38,7 @@
 
 		for(var/i=1, i <= M.bullet_count_max - length(M.stored_bullets), i++)
 			M.stored_bullets += new M.ammo(M)
-			M.update_icon()
+			M.update_sprite()
 
 		caller.to_chat("\The [M.name] has been restocked.")
 

@@ -26,4 +26,4 @@
 /mob/living/simple/npc/penguin/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
-	update_icon()
+	update_sprite()

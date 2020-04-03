@@ -25,7 +25,7 @@
 	shoot_sounds = shoot_sounds_stun
 	bullet_color = bullet_color_stun
 
-	update_icon()
+	update_sprite()
 
 	return .
 
@@ -45,6 +45,6 @@
 		shoot_sounds = shoot_sounds_stun
 		bullet_color = bullet_color_stun
 
-	update_icon()
+	update_sprite()
 
 	return TRUE

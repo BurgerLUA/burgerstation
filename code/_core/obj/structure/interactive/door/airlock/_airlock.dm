@@ -74,32 +74,32 @@ obj/structure/interactive/door/airlock/open(var/unlock = FALSE, var/force = FALS
 
 		if(!force && no_access)
 			door_state = DOOR_STATE_DENY
-			update_icon()
+			update_sprite()
 			sleep(10)
 			door_state = DOOR_STATE_CLOSED
-			update_icon()
+			update_sprite()
 			return
 
 		if(open_sound)
 			play(open_sound)
 
 		door_state = DOOR_STATE_START_OPENING
-		update_icon()
+		update_sprite()
 
 		sleep(open_wait_time)
 
 		door_state = DOOR_STATE_OPENING_01
-		update_icon()
+		update_sprite()
 
 		sleep(open_time_01)
 
 		door_state = DOOR_STATE_OPENING_02
-		update_icon()
+		update_sprite()
 
 		sleep(open_time_02)
 
 		door_state = DOOR_STATE_OPENED
-		update_icon()
+		update_sprite()
 		start_thinking(src)
 
 		if(force && !unlock)
@@ -123,7 +123,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			play(close_sound)
 
 		door_state = DOOR_STATE_CLOSING_01
-		update_icon()
+		update_sprite()
 
 		sleep(close_time_01)
 
@@ -136,22 +136,22 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 		if(found_living)
 			opened_time = 0
 			door_state = DOOR_STATE_OPENING_02
-			update_icon()
+			update_sprite()
 
 			sleep(open_time_02)
 
 			door_state = DOOR_STATE_OPENED
-			update_icon()
+			update_sprite()
 			start_thinking(src)
 
 		else
 			door_state = DOOR_STATE_CLOSING_02
-			update_icon()
+			update_sprite()
 
 			sleep(close_time_02)
 
 			door_state = DOOR_STATE_CLOSED
-			update_icon()
+			update_sprite()
 			stop_thinking(src)
 			if(lock)
 				lock()

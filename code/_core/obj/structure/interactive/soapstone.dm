@@ -28,7 +28,7 @@ obj/structure/interactive/soapstone_message/New(var/desired_loc,var/desired_dir,
 		icon_state = "death"
 
 	..()
-	update_icon()
+	update_sprite()
 
 obj/structure/interactive/soapstone_message/update_icon()
 	if(icon_state == "death")

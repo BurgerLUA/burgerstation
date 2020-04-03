@@ -64,7 +64,7 @@
 	if(I2)
 		I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount)
 
-	P.update_icon()
+	P.update_sprite()
 
 	if(product_container)
 		product_container.add_to_inventory(caller,P,TRUE)
