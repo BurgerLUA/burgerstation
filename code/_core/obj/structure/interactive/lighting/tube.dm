@@ -67,6 +67,7 @@
 	IS.plane = PLANE_LIGHTING
 	IS.layer = 99
 	overlays += IS
+	world.log << "CUM"
 	return .
 
 /obj/structure/interactive/lighting/tube/strong

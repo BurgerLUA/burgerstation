@@ -441,7 +441,6 @@
 #include "code\_core\mob\living\advanced\movement.dm"
 #include "code\_core\mob\living\advanced\organs.dm"
 #include "code\_core\mob\living\advanced\overlays.dm"
-#include "code\_core\mob\living\advanced\talk.dm"
 #include "code\_core\mob\living\advanced\human\npc\_npc.dm"
 #include "code\_core\mob\living\advanced\human\npc\ashwalker.dm"
 #include "code\_core\mob\living\advanced\human\npc\beefman.dm"
