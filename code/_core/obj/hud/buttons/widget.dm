@@ -26,12 +26,12 @@
 
 	var/mob/living/L = caller
 
-	final_text += div("bold underlined","Attributes")
+	final_text += div("bold underlined","Attributes\n")
 
 	for(var/k in L.attributes)
 		var/experience/attribute/A = L.attributes[k]
 		var/current_level = A.get_current_level()
-		final_text += div("notice","[A.name]: [A.get_current_level(current_level)]")
+		final_text += div("notice","[A.name]: [A.get_current_level(current_level)]\n")
 
 	final_text += div("bold underlined","Skills\n")
 
