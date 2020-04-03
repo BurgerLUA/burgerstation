@@ -14,7 +14,7 @@ var/global/world_state = STATE_STARTING
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
 
-	cache_lifespan = 0
+	cache_lifespan = 5
 
 	//maxx = WORLD_SIZE
 	//maxy = WORLD_SIZE

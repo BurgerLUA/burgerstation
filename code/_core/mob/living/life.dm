@@ -74,13 +74,14 @@
 	stun_time = 0
 	paralyze_time = 10
 	check_status_effects()
+	if(health)
+		health.update_health()
 	return TRUE
 
 /mob/living/proc/resurrect()
-	revive()
 	if(health)
 		health.health_current = health.health_max
-		health.update_health()
+	revive()
 	return TRUE
 
 /mob/living/proc/pre_death()

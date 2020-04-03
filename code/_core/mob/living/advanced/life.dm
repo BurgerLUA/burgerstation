@@ -84,6 +84,7 @@ mob/living/advanced/proc/handle_regen()
 	return FALSE
 
 mob/living/advanced/revive()
+
 	. = ..()
 
 	for(var/k in overlays_assoc)

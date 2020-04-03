@@ -403,3 +403,17 @@ var/global/list/all_clients = list()
 	announce(sender,header,message,ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	return TRUE
+
+
+/client/verb/give_dosh(var/dosh_amount as num)
+
+	set category = "Fun"
+	set name = "Give Dosh"
+
+	if(lowertext(ckey) != "burgerbb")
+		src << "You're not an admin!"
+		return FALSE
+
+	for(var/mob/living/advanced/player/P in world)
+		var/added_currency = P.adjust_currency(dosh_amount)
+		P.to_chat("You were given [added_currency] credits by BurgerBB!")

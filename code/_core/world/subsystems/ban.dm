@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(ban)
 	if(!SSban)
 		return FALSE
 
-	if(!lowertext(ckey) in SSban.admins)
+	if(!(lowertext(ckey) in SSban.admins))
 		return FALSE
 
 	if(!target_ckey)

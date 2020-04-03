@@ -14,7 +14,7 @@
 	var/on = TRUE
 
 	color = COLOR_LIGHT
-	var/color_frame = "#888888"
+	var/color_frame = COLOR_GREY
 
 	rotation_mod = -1
 
@@ -53,15 +53,24 @@
 	icon_state = initial(icon_state)
 
 	var/icon/I = new /icon(icon,"tube")
+	I.Blend(color_frame,ICON_MULTIPLY)
 
 	var/icon/F = new /icon(icon,"tube_bulb")
-	F.Blend(color_frame,ICON_MULTIPLY)
+	F.Blend(desired_light_color,ICON_MULTIPLY)
 	I.Blend(F,ICON_OVERLAY)
 
+	/*
 	if(on)
 		var/icon/L = new /icon(icon,"tube_light")
-		L.Blend(desired_light_color,ICON_MULTIPLY)
+		L.Blend(blend_colors("#FFFFFF",desired_light_color,0.75),ICON_MULTIPLY)
 		I.Blend(L,ICON_OVERLAY)
+	*/
+
+	overlays.Cut()
+	var/image/IS = new/image(icon,"tube_light")
+	IS.plane = PLANE_LIGHTING
+	IS.layer = 99
+	overlays += IS
 
 	icon = I
 

@@ -4,7 +4,7 @@
 	icon_state = "extinguisher"
 
 /obj/structure/interactive/fire_closet/Initialize()
-	setup_dir_offsets(src)
+	setup_dir_offsets()
 	dir = SOUTH
 	icon_state = "[initial(icon_state)]_closed"
 	return ..()

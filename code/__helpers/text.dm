@@ -1,4 +1,4 @@
-#define ICON_TO_TEXT(icon,icon_state) <img class='icon' src=\ref[icon] ICONSTATE='[icon_state]'>
+#define ICON_TO_HTML(icon,icon_state) ("<img class='icon' src=\ref[icon] ICONSTATE='[icon_state]'\>")
 
 /proc/deunderscore(var/text)
 	return replacetextEx(text,"_"," ")

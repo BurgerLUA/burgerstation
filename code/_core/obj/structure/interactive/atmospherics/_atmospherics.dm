@@ -4,7 +4,7 @@ obj/structure/interactive/atmospherics
 obj/structure/interactive/atmospherics/vent
 	name = "vent"
 	icon = 'icons/obj/structure/atmos.dmi'
-	icon_state = "vent_1"
+	icon_state = "vent"
 
 	desired_light_range = 0.5
 	desired_light_power = 1
@@ -13,7 +13,7 @@ obj/structure/interactive/atmospherics/vent
 obj/structure/interactive/atmospherics/scrubber
 	name = "scrubber"
 	icon = 'icons/obj/structure/atmos.dmi'
-	icon_state = "scrubber_1"
+	icon_state = "scrubber"
 
 	desired_light_range = 0.5
 	desired_light_power = 1
@@ -22,7 +22,7 @@ obj/structure/interactive/atmospherics/scrubber
 obj/structure/interactive/atmospherics/air_alarm
 	name = "air alarm"
 	icon = 'icons/obj/structure/atmos.dmi'
-	icon_state = "air_alarm_1"
+	icon_state = "air_alarm"
 
 	desired_light_range = 1
 	desired_light_power = 1
@@ -30,4 +30,14 @@ obj/structure/interactive/atmospherics/air_alarm
 
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 	setup_dir_offsets()
+	update_icon()
 	return ..(loc)
+
+
+obj/structure/interactive/atmospherics/air_alarm/update_icon()
+	overlays.Cut()
+	var/image/I = new /image(initial(icon),"air_alarm_light")
+	I.plane = PLANE_LIGHTING
+	I.layer = 99
+	overlays += I
+	return ..()
