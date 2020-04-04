@@ -17,9 +17,7 @@
 /obj/item/device/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	start_thinking(src)
 	active = TRUE
-	var/turf/T = get_turf(src)
-	var/area/A = T.loc
-	play_sound('sounds/weapons/timer/arm.ogg',src)
+	play('sounds/weapons/timer/arm.ogg',src)
 	return ..()
 
 /obj/item/device/timer/think()
@@ -30,8 +28,7 @@
 		if( (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)
 			var/turf/T = get_turf(src)
 			if(T)
-				var/area/A = T.loc
-				play_sound('sounds/weapons/timer/beep.ogg',src)
+				play('sounds/weapons/timer/beep.ogg',src)
 
 		if(time_set <= 0)
 			if(loc)

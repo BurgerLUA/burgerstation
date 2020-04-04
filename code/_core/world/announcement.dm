@@ -9,5 +9,5 @@
 					P.to_chat(text_to_send)
 					valid_players += P
 			if(sound_to_play)
-				play(sound_to_play,valid_players)
+				play(sound_to_play,valid_players, sound_setting = SOUND_SETTING_UI)
 

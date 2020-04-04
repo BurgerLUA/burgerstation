@@ -37,15 +37,13 @@
 		cock_type = cock_type == "back" ? "both" : "forward"
 
 	if(cock_type)
-		var/area/A = get_area(caller.loc)
-		play_sound(get_cock_sound(cock_type),src)
+		play(get_cock_sound(cock_type),src)
 		update_sprite()
 
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
-	var/area/A = get_area(caller)
-	play_sound(stored_magazine.get_magazine_eject_sound(),src)
+	play(stored_magazine.get_magazine_eject_sound(),src)
 	stored_magazine.force_move(caller.loc)
 	if(object)
 		var/obj/hud/inventory/offhand_slot = object

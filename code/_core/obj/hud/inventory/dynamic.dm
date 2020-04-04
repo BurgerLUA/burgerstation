@@ -42,6 +42,6 @@
 	. = ..()
 
 	if(. && owner && !qdeleting)
-		play_sound(pick(add_sounds),src)
+		play(pick(add_sounds),src)
 
 	return .

@@ -233,7 +233,7 @@
 
 	var/area/A = get_area(src)
 	if(A && istype(A))
-		play_sound('sounds/weapons/generic_block.ogg', src)
+		play('sounds/weapons/generic_block.ogg', src)
 
 	charge_block -= 100
 	handle_charges(0)

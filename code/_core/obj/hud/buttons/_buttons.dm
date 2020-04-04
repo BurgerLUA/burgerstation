@@ -66,5 +66,5 @@
 
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	play_sound('sounds/ui/tap-muted.ogg',caller)
+	play('sounds/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
 	return TRUE

@@ -153,7 +153,11 @@ play('sound',list_of_hearers, atom or vector) to play to that list of hearers at
 */
 
 
-/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/pitch=1, var/loop=1, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0)
+/mob/proc/get_sound_environment()
+	var/area/A = get_area(src)
+	return A.sound_environment
+
+/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0)
 
 	if(!sound_path || !location_or_list)
 		return FALSE
@@ -204,7 +208,8 @@ play('sound',list_of_hearers, atom or vector) to play to that list of hearers at
 
 	for(var/mob/M in hearers)
 
-		CHECK_TICK
+		if(!M.client)
+			continue
 
 		if(!created_sound)
 			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
@@ -217,10 +222,11 @@ play('sound',list_of_hearers, atom or vector) to play to that list of hearers at
 		if(!T)
 			continue
 
-		created_sound.environment = T.loc.environment
+		CHECK_TICK
+
+		created_sound.environment = M.get_sound_environment()
 
 		var/local_volume = volume
-
 		if(length(pos) && pos[3] >= 0)
 			created_sound.x = pos[1] - T.x
 			created_sound.y = pos[2] - T.y
@@ -234,6 +240,7 @@ play('sound',list_of_hearers, atom or vector) to play to that list of hearers at
 			created_sound.x = 0
 			created_sound.y = 0
 			created_sound.z = 0
+			M.to_chat("Local sound!")
 
 		if(M.client && M.client.settings)
 			local_volume *= M.client.settings.loaded_data["volume_master"] / 100

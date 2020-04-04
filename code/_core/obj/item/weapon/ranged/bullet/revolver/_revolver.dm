@@ -29,8 +29,7 @@
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
 
-	var/area/A = get_area(caller.loc)
-	play_sound('sounds/weapons/revolver_click2.ogg',src)
+	play('sounds/weapons/revolver_click2.ogg',src)
 
 	update_sprite()
 

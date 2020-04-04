@@ -108,9 +108,7 @@ list(
 
 	all_unprocessed_radio_data[speaker_ref] = data
 
-	var/turf/current_turf = get_turf(src)
-
-	play_sound(radio_sound,src)
+	play(radio_sound,src)
 
 	return TRUE
 

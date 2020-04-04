@@ -124,6 +124,9 @@
 
 /obj/hud/inventory/update_overlays()
 
+	if(owner)
+		owner.to_chat("Overlays length: [length(overlays)]")
+
 	. = ..()
 
 	var/total_pixel_x = 0
@@ -164,14 +167,6 @@
 		I.appearance = grabbed_object.appearance
 		I.plane = PLANE_HUD_OBJ
 		overlays += I
-
-	return .
-
-/obj/hud/inventory/update_icon()
-
-	. = ..()
-
-	update_overlays()
 
 	return .
 
@@ -259,6 +254,7 @@
 
 	update_stats()
 	I.on_pickup(old_location,src)
+	overlays.Cut()
 	update_overlays()
 
 	return TRUE
@@ -305,6 +301,7 @@
 
 	update_stats()
 	I.on_pickup(old_location,src)
+	overlays.Cut()
 	update_overlays()
 
 	return TRUE
@@ -415,6 +412,7 @@
 		I.pixel_y = pixel_y_offset
 		I.plane = initial(I.plane)
 		I.on_drop(src,drop_loc)
+		overlays.Cut()
 		update_overlays()
 		update_stats()
 		if(owner && is_advanced(owner))

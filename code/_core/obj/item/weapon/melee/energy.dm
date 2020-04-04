@@ -46,11 +46,10 @@
 
 /obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
 	. = ..()
-	var/area/A = get_area(caller.loc)
 	if(enabled)
-		play_sound('sounds/weapons/energy/energy_on.ogg',src)
+		play('sounds/weapons/energy/energy_on.ogg',src)
 	else
-		play_sound('sounds/weapons/energy/energy_off.ogg',src)
+		play('sounds/weapons/energy/energy_off.ogg',src)
 	return .
 
 /obj/item/weapon/melee/energy/sword/blue

@@ -13,7 +13,6 @@
 		return
 
 	var/mob/living/L = caller
-	var/area/A = T.loc
 
 	if(L.dead && L.horizontal)
 		return FALSE
@@ -36,12 +35,8 @@
 				if(L.is_sneaking)
 					footstep_volume *= 0.5
 
-				var/alert = ALERT_LEVEL_NONE
-				if(is_player(caller))
-					alert = ALERT_LEVEL_NOISE
-
-				play_sound(footstep_sound,all_mobs_with_clients - L,vector(L.x,L.y,L.z),volume = footstep_volume)
-				play_sound(footstep_sound,L,volume = footstep_volume)
+				play(footstep_sound,all_mobs_with_clients - L,L,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS)
+				play(footstep_sound,L,L,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS)
 
 			if(has_footprints && L.has_footprints)
 				var/obj/effect/footprint/emboss/F = new(T,L.dir,TRUE,TRUE)

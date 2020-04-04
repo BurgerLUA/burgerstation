@@ -41,7 +41,7 @@
 
 	if(amount != new_value)
 		amount = new_value
-		play_sound('sounds/ui/tap-metallic.ogg',caller)
+		play('sounds/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
 		update_sprite()
 
 	return TRUE

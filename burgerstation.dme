@@ -1136,6 +1136,7 @@
 #include "code\_core\world\subsystems\shuttle.dm"
 #include "code\_core\world\subsystems\skills.dm"
 #include "code\_core\world\subsystems\soapstone.dm"
+#include "code\_core\world\subsystems\sound.dm"
 #include "code\_core\world\subsystems\species.dm"
 #include "code\_core\world\subsystems\squad.dm"
 #include "code\_core\world\subsystems\status.dm"

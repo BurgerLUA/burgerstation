@@ -154,7 +154,7 @@
 			set_topic(P,"*success")
 
 		if("*fart.ogg")
-			play_sound('sounds/ui/rasp.ogg',P)
+			play('sounds/ui/rasp.ogg',P, sound_setting = SOUND_SETTING_UI)
 
 		if("*skill-sheet-forum.pdf")
 			for(var/obj/structure/interactive/localmachine/snowflake/paper/O in range(3,P))

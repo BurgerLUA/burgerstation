@@ -10,8 +10,6 @@
 			B.mouse_opacity = 0
 
 	var/mob/living/advanced/A = caller
-	var/turf/T = get_turf(src)
-	var/area/A2 = get_area(T)
 
 	var/opening = FALSE
 	var/should_center = length(inventories) <= MAX_INVENTORY_X
@@ -48,7 +46,7 @@
 			opening = FALSE
 
 	if(opening)
-		play_sound(pick(inventory_sounds),src)
+		play(pick(inventory_sounds),src)
 
 	for(var/obj/hud/button/close_inventory/B in A.buttons)
 

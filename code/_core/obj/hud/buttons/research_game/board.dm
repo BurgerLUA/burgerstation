@@ -87,7 +87,7 @@
 		if(points_to_add > 2)
 			linked_text.alpha = 255
 			linked_text.maptext = "<center><font size=5>Well done!</font></center>"
-			play_sound('sounds/ui/friendly.ogg',owner)
+			play('sounds/ui/friendly.ogg',owner, sound_setting = SOUND_SETTING_UI)
 			spawn(20)
 				animate(linked_text,alpha=0,time = 10)
 

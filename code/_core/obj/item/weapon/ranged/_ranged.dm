@@ -93,9 +93,8 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click*"))
-	var/area/A = get_area(caller.loc)
 	if(length(empty_sounds))
-		play_sound(pick(empty_sounds),src)
+		play(pick(empty_sounds),src)
 
 	return FALSE
 
@@ -165,10 +164,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	if(projectile_to_use)
 
-		var/area/A = get_area(caller)
-
 		if(length(shoot_sounds))
-			play_sound(pick(shoot_sounds_to_use),src)
+			play(pick(shoot_sounds_to_use),src)
 
 		if(!params || !length(params))
 			params = list()

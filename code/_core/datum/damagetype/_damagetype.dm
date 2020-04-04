@@ -353,13 +353,11 @@
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(impact_sounds))
-		var/area/A = get_area(victim)
-		play_sound(pick(impact_sounds),get_turf(weapon))
+		play(pick(impact_sounds),get_turf(weapon))
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(miss_sounds))
-		var/area/A = get_area(victim)
-		play_sound(pick(miss_sounds),get_turf(weapon))
+		play(pick(miss_sounds),get_turf(weapon))
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 

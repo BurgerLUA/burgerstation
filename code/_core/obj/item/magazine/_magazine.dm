@@ -123,8 +123,7 @@
 	src.force_move(G)
 	G.stored_magazine = src
 	G.open = FALSE
-	var/area/A = get_area(caller)
-	play_sound(get_magazine_insert_sound(),src)
+	play(get_magazine_insert_sound(),src)
 	G.update_sprite()
 
 	return TRUE
