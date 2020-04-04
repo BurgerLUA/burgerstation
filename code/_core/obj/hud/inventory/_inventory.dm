@@ -124,9 +124,6 @@
 
 /obj/hud/inventory/update_overlays()
 
-	if(owner)
-		owner.to_chat("Overlays length: [length(overlays)]")
-
 	. = ..()
 
 	var/total_pixel_x = 0

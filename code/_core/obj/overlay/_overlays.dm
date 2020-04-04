@@ -19,7 +19,23 @@
 	attached_object = null
 	return ..()
 
-/obj/overlay/update_sprite() //Custom shit.
+/obj/overlay/update_sprite()
+	CRASH("ERROR: You should not update_sprite() an overlay!")
+	return FALSE
+
+/obj/overlay/update_overlays()
+	CRASH("ERROR: You should not update_overlays() an overlay!")
+	return FALSE
+
+/obj/overlay/update_icon()
+	CRASH("ERROR: You should not update_icon() an overlay!")
+	return FALSE
+
+/obj/overlay/update_underlays()
+	CRASH("ERROR: You should not update_underlays() an overlay!")
+	return FALSE
+
+/obj/overlay/proc/update() //Custom shit.
 
 	if(no_update)
 		return
@@ -68,3 +84,5 @@
 		icon_state = initial_icon_state
 
 	name = "[attached_object.name] (overlay)"
+
+	return TRUE

@@ -47,9 +47,6 @@
 		else
 			pixel_x = 0
 
-		if(I.owner)
-			I.owner.update_sprite()
-
 	else
 		pixel_x = 0
 

@@ -14,11 +14,10 @@ mob/living/advanced/proc/add_overlay(var/obj/object,var/desired_layer,var/desire
 	O.pixel_y = desired_pixel_y
 	if(!desired_never_blend)
 		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
-	O.update_sprite()
+	O.update()
 	add_overlay_image(O)
 
 mob/living/advanced/proc/show_overlay(var/obj/object,var/show=TRUE)
-
 
 	for(var/obj/overlay/O in overlays_assoc)
 		if(O.attached_object != object)
@@ -93,6 +92,6 @@ mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_lay
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
 	O.alpha = desired_alpha
-	O.update_sprite()
+	O.update()
 
 	add_overlay_image(O)

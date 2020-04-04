@@ -434,6 +434,7 @@
 #include "code\_core\mob\living\advanced\controls.dm"
 #include "code\_core\mob\living\advanced\examine.dm"
 #include "code\_core\mob\living\advanced\health.dm"
+#include "code\_core\mob\living\advanced\icon.dm"
 #include "code\_core\mob\living\advanced\inventory.dm"
 #include "code\_core\mob\living\advanced\life.dm"
 #include "code\_core\mob\living\advanced\lighting.dm"
