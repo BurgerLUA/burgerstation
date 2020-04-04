@@ -22,7 +22,7 @@
 
 /mob/proc/sync_buttons()
 	if(client)
-		client.known_buttons = buttons
+		client.known_buttons = buttons.Copy()
 
 //Health
 /mob/proc/toggle_health(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)

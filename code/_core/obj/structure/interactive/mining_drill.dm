@@ -29,6 +29,8 @@
 
 /obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(thinks)
 		deactivate(caller)
 	else
@@ -119,9 +121,12 @@
 
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!anchored && caller.movement_flags & MOVEMENT_WALKING)
-		caller.to_chat("You rotate \the [src.name].")
-		set_dir(turn(dir,90))
+	if(caller.movement_flags & MOVEMENT_WALKING)
+		if(anchored)
+			caller.to_chat("Unsecure \the [src.name] before rotating it!")
+		else
+			caller.to_chat("You rotate \the [src.name].")
+			set_dir(turn(dir,90))
 		return TRUE
 
 	anchored = !anchored

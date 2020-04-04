@@ -266,11 +266,11 @@
 
 mob/living/advanced/Login()
 	. = ..()
-	if(loc != null)
-		restore_buttons()
-		restore_inventory()
-		restore_health_elements()
-		restore_local_machines()
+	restore_buttons()
+	restore_inventory()
+	restore_health_elements()
+	restore_local_machines()
+	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 	return .
 
 /mob/living/advanced/proc/restore_local_machines()

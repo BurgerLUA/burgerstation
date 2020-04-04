@@ -9,12 +9,13 @@
 		return FALSE
 
 	if(delete_last_mob)
-		qdel(mob)
+		if(mob) qdel(mob)
 	else
-		clear_mob(mob)
+		clear_mob(mob,TRUE)
 
 	M.client = src
 	M.ckey = src.ckey
+	M.ckey_last = src.ckey
 
 	mob = M
 	eye = M
@@ -22,7 +23,7 @@
 
 	all_mobs_with_clients += M
 
-/client/proc/clear_mob(var/mob/M) //This is called in mob destroy
+/client/proc/clear_mob(var/mob/M,var/hard = FALSE) //This is called when the client no longer controls this mob.
 
 	if(known_inventory)
 		known_inventory.Cut()
@@ -44,5 +45,7 @@
 
 	all_mobs_with_clients -= M
 	M.client = null
+	if(hard)
+		M.ckey_last = null
 	if(M == mob)
 		mob = null

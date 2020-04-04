@@ -4,6 +4,8 @@
 	icon_state = ""
 	layer = LAYER_MOB
 
+	var/ckey_last
+
 	var/tmp/movement_flags = 0x0
 	var/tmp/attack_flags = 0x0
 
@@ -77,6 +79,8 @@
 
 	anchored = FALSE
 
+	//step_size = 4
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = (SEE_SELF | SEE_BLACKNESS | SEE_TURFS)
@@ -85,7 +89,7 @@
 /mob/Destroy()
 
 	if(client)
-		client.clear_mob(src)
+		client.clear_mob(src,TRUE)
 
 	key = null // required to GC
 	buttons.Cut()
@@ -119,75 +123,46 @@
 /mob/proc/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	return TRUE
 
-/mob/Initialize()
-
-	//set_light(VIEW_RANGE*0.25,0.25,"#FFFFFF")
+/mob/Login()
 
 	. = ..()
 
-	if(src.client)
+	var/client/C = src.client
 
-		var/client/C = src.client
+	C.view = view
 
-		C.view = view
+	for(var/obj/structure/interactive/localmachine/L in local_machines)
+		L.update_for_mob(src)
 
-		for(var/obj/structure/interactive/localmachine/L in local_machines)
-			L.update_for_mob(src)
+	if(!plane_master_wall)
+		plane_master_wall = new
+	C.screen += plane_master_wall
 
-		/*
-		if(!paralax)
-			paralax = new
-			paralax.name = "unknown"
-			paralax.mouse_opacity = 0
-			paralax.icon = 'icons/hud/screen.dmi'
-			paralax.icon_state = "blank"
-			paralax.color = "#FF0000"
-			paralax.plane = PLANE_PARALAX
-			paralax.screen_loc = "LEFT,BOTTOM"
-			paralax.update_sprite()
-			C.screen += paralax
-		*/
+	if(!plane_master_mob)
+		plane_master_mob = new
+	C.screen += plane_master_mob
 
-		if(!plane_master_wall)
-			plane_master_wall = new
-			C.screen += plane_master_wall
+	if(!plane_master_darkness)
+		plane_master_darkness = new
+	C.screen += plane_master_darkness
 
-		if(!plane_master_mob)
-			plane_master_mob = new
-			C.screen += plane_master_mob
+	if(!plane_master_tree)
+		plane_master_tree = new
+	C.screen += plane_master_tree
 
-		if(!plane_master_darkness)
-			plane_master_darkness = new
-			C.screen += plane_master_darkness
-
-		if(!plane_master_tree)
-			plane_master_tree = new
-			C.screen += plane_master_tree
-
-		if(!plane_master_shuttle)
-			plane_master_shuttle = new
-			C.screen += plane_master_shuttle
-
-		/*
-		if(!plane_master_render_target)
-			plane_master_render_target = new
-			C.screen += plane_master_render_target
-		*/
-
-		/*
-		var/image/I = new/image('icons/obj/effects/light_sprite/192x192.dmi',"")
-		I.pixel_x = 16-(192*0.5)
-		I.pixel_y = 16-(192*0.5)
-		I.blend_mode = BLEND_MULTIPLY
-		I.loc = src
-		I.plane = PLANE_LIGHTING+0.1
-		client.images += I
-		see_in_dark  = 2
-		*/
-
-	force_move(src.loc)
+	if(!plane_master_shuttle)
+		plane_master_shuttle = new
+	C.screen += plane_master_shuttle
 
 	update_eyes()
+
+	return TRUE
+
+/mob/Initialize()
+
+	. = ..()
+
+	force_move(src.loc)
 
 	return .
 

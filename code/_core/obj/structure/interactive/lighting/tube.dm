@@ -63,11 +63,10 @@
 
 /obj/structure/interactive/lighting/tube/update_overlays()
 	. = ..()
-	var/image/IS = new/image(icon,"tube_light")
+	var/image/IS = new/image(initial(icon),"tube_light")
 	IS.plane = PLANE_LIGHTING
 	IS.layer = 99
 	overlays += IS
-	world.log << "CUM"
 	return .
 
 /obj/structure/interactive/lighting/tube/strong

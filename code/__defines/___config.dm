@@ -20,7 +20,6 @@
 
 #define ZOOM_RANGE 8
 #define VIEW_RANGE 11
-#define VIEW_RANGE_GHOST 16
 
 #define SOUND_RANGE 18
 
@@ -56,7 +55,7 @@
 //Makes compiling faster FALSE disabled
 
 #define ENABLE_BULLET_CASINGS FALSE
-#define ENABLE_AI TRUE
+#define ENABLE_AI FALSE
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE

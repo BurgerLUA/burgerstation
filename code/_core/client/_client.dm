@@ -71,7 +71,7 @@ var/global/list/all_clients = list()
 	ping_num = world.time - time
 */
 
-/client/Del() // Can't have destroy.
+/client/Del() //Called when the client disconnects.
 
 	if(known_inventory)
 		known_inventory.Cut()
@@ -136,23 +136,29 @@ var/global/list/all_clients = list()
 
 	update_zoom(-1)
 
-	if(usr)
-		return ..()
+	var/mob/found_mob = null
+	for(var/mob/M in all_mobs)
+		if(M.ckey_last == ckey)
+			found_mob = M
+			break
 
-	welcome()
-	make_ghost(locate(VIEW_RANGE_GHOST,VIEW_RANGE_GHOST,1))
-
-	if(world_state == STATE_RUNNING)
-		play_music_track("intro", src)
+	if(found_mob)
+		control_mob(found_mob)
 	else
-		play_music_track("loading", src)
+		welcome()
+		make_ghost(locate(VIEW_RANGE,VIEW_RANGE,1))
+		if(world_state == STATE_RUNNING)
+			play_music_track("intro", src)
+		else
+			play_music_track("loading", src)
 
 	if(!connection_data)
 		connection_data = new(src)
-
 	world.update_status()
-	broadcast_to_clients("[ckey] has joined the game.")
+	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()
+
+	return mob
 
 /client/proc/welcome()
 	to_chat("<title>Welcome to Burgerstation 13</title><p>This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed. If you wish to join the discord, please do so here: https://discord.gg/yEaV92a</p>")

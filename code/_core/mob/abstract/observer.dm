@@ -72,7 +72,7 @@
 /mob/abstract/observer/verb/spawn_syndicate()
 
 	if(lowertext(ckey) != "burgerbb")
-		src << "You're not an admin!"
+		src.to_chat("You're not an admin!")
 		return FALSE
 
 	var/mob/living/advanced/npc/syndicate/S = new(get_turf(src))

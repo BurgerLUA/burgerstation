@@ -81,13 +81,24 @@
 
 	if(move_dir && is_valid_dir(move_dir) && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()
+		var/atom/desired_loc = get_step(src,move_dir)
+		var/list/step_offsets = list(0,0)
+		if(step_size != 32)
+			step_offsets = direction_to_pixel_offset(move_dir)
+			desired_loc = src.loc
+			final_movement_delay = 0
 		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
-		glide_size = step_size/move_delay
+		glide_size = move_delay ? step_size/move_delay : 1
 
-		var/move_result = Move(get_step(src,move_dir),move_dir)
+		var/move_result = Move(desired_loc,move_dir,step_offsets[1],step_offsets[2])
 		if(move_result == 0 && (move_dir in DIRECTIONS_INTERCARDINAL))
 			for(var/new_dir in DIRECTIONS_CARDINAL)
-				if((new_dir & move_dir) && Move(get_step(src,new_dir),new_dir))
+				var/list/new_step_offsets = list(0,0)
+				var/atom/new_desired_loc = get_step(src,new_dir)
+				if(step_size != 32)
+					new_step_offsets = direction_to_pixel_offset(move_dir)
+					new_desired_loc = src.loc
+				if((new_dir & move_dir) && Move(new_desired_loc,new_dir,new_step_offsets[1],new_step_offsets[2]))
 					return TRUE
 
 		return TRUE
@@ -126,7 +137,27 @@
 
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
-	var/real_dir = get_dir(loc,NewLoc)
+	var/stepped_x = 0
+	var/stepped_y = 0
+
+	//Try Pixel Movement x
+	if(desired_step_x)
+		if(step_x + desired_step_x >= TILE_SIZE)
+			NewLoc = get_step(NewLoc,EAST)
+			stepped_x = TILE_SIZE
+		else if(step_x + desired_step_x < 0)
+			NewLoc = get_step(NewLoc,WEST)
+			stepped_x = -TILE_SIZE
+
+	//Try Pixel Movement y
+	if(desired_step_y)
+		if(step_y + desired_step_y >= TILE_SIZE)
+			NewLoc = get_step(NewLoc,NORTH)
+			stepped_y = TILE_SIZE
+
+		else if(step_y + desired_step_y < 0)
+			NewLoc = get_step(NewLoc,SOUTH)
+			stepped_y = -TILE_SIZE
 
 	if(istype(src.loc,/obj/projectile))
 		return FALSE
@@ -141,6 +172,8 @@
 		return FALSE
 
 	var/atom/OldLoc = loc
+
+	var/real_dir = get_dir(loc,NewLoc)
 
 	//TRY: Exit the turf.
 	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
@@ -164,23 +197,28 @@
 		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
 			return FALSE
 
-	//DO: Exited the turf.
-	OldLoc.Exited(src,NewLoc)
+	if(OldLoc != NewLoc)
+		//DO: Exited the turf.
+		OldLoc.Exited(src,NewLoc)
 
-	//DO: Make a footstep sound.
-	if(!silent && has_footsteps && OldLoc.footstep_id && all_footsteps[OldLoc.footstep_id])
-		var/footstep/F = all_footsteps[OldLoc.footstep_id]
-		F.on_step(OldLoc,src,TRUE)
+		//DO: Make a footstep sound.
+		if(!silent && has_footsteps && OldLoc.footstep_id && all_footsteps[OldLoc.footstep_id])
+			var/footstep/F = all_footsteps[OldLoc.footstep_id]
+			F.on_step(OldLoc,src,TRUE)
 
-	//DO: Exited the contents.
-	for(var/atom/A in OldLoc.contents)
-		if(A == src)
-			continue
-		A.Uncrossed(src,NewLoc,OldLoc)
+		//DO: Exited the contents.
+		for(var/atom/A in OldLoc.contents)
+			if(A == src)
+				continue
+			A.Uncrossed(src,NewLoc,OldLoc)
 
-	if(loc == OldLoc)
-		step_x += desired_step_x
-		step_y += desired_step_y
+	if(desired_step_x)
+		step_x += desired_step_x - stepped_x
+
+	if(desired_step_y)
+		step_y += desired_step_y - stepped_y
+
+	if(loc == OldLoc && loc != NewLoc)
 		loc = NewLoc
 
 		//DO: Entered the turf.

@@ -188,6 +188,12 @@
 /mob/living/proc/get_burn_color()
 	return "#444444"
 
+/mob/living/Login()
+	. = ..()
+	client.update_stats = TRUE
+	client.statpanel = "Skills"
+	return .
+
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
 	if(desired_level_multiplier)
