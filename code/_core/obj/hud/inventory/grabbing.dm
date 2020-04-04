@@ -66,6 +66,7 @@
 	grabbed_object = object
 	animate(grabbed_object,pixel_x = initial(grabbed_object.pixel_x), pixel_y = initial(grabbed_object.pixel_y), time = SECONDS_TO_DECISECONDS(1))
 	grabbed_object.grabbing_hand = src
+	overlays.Cut()
 	update_overlays()
 
 	return TRUE
@@ -75,5 +76,6 @@
 		caller.to_chat(span("notice","You release \the [grabbed_object.name]."))
 	grabbed_object.grabbing_hand = null
 	grabbed_object = null
+	overlays.Cut()
 	update_overlays()
 	return TRUE

@@ -172,6 +172,8 @@
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
+
+	//OVERLAY BUG, NOT THIS.
 	if(!owner || !is_advanced(owner) || !item_to_update)
 		return FALSE
 
@@ -182,6 +184,7 @@
 		A.add_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 	else if(id == BODY_HAND_RIGHT)
 		A.add_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+
 
 	return TRUE
 
