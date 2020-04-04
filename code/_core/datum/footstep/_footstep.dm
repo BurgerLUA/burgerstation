@@ -40,8 +40,8 @@
 				if(is_player(caller))
 					alert = ALERT_LEVEL_NOISE
 
-				play_sound(footstep_sound,get_mobs_in_range(L,is_player(caller) ? 3 : 6) - L,vector(L.x,L.y,L.z),environment = A.sound_environment,volume = footstep_volume, invisibility_check = L.invisibility, channel = SOUND_CHANNEL_FOOTSTEPS, alert = alert)
-				play_sound(footstep_sound,list(L),vector(L.x,L.y,L.z),environment = A.sound_environment,volume = footstep_volume)
+				play_sound(footstep_sound,all_mobs_with_clients - L,vector(L.x,L.y,L.z),volume = footstep_volume)
+				play_sound(footstep_sound,L,volume = footstep_volume)
 
 			if(has_footprints && L.has_footprints)
 				var/obj/effect/footprint/emboss/F = new(T,L.dir,TRUE,TRUE)

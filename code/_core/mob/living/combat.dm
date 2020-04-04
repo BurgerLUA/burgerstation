@@ -233,7 +233,7 @@
 
 	var/area/A = get_area(src)
 	if(A && istype(A))
-		play_sound('sounds/weapons/generic_block.ogg', vector(src.x,src.y,src.z), environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
+		play_sound('sounds/weapons/generic_block.ogg', src)
 
 	charge_block -= 100
 	handle_charges(0)

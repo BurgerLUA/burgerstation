@@ -39,6 +39,6 @@
 	explode(explosion_location,explosion_power,caller,container.owner)
 
 	var/area/A = explosion_location.loc
-	play_sound(pick(explosion_sounds),get_mobs_in_range(explosion_location,VIEW_RANGE+ZOOM_RANGE),vector(explosion_location.x,explosion_location.y,explosion_location.z),clamp(explosion_power*10,25,100),environment = A.sound_environment, alert = ALERT_LEVEL_ALERT)
+	play_sound(pick(explosion_sounds),explosion_location)
 
 	return TRUE

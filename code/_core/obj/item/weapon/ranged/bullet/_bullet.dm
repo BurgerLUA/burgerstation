@@ -73,7 +73,7 @@
 	B.update_sprite()
 	if(play_sound)
 		var/area/A = get_area(caller)
-		play_sound(chambered_bullet.get_bullet_eject_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound(chambered_bullet.get_bullet_eject_sound(),src)
 	if(B.is_spent)
 		qdel(B)
 
@@ -92,7 +92,7 @@
 	stored_bullets += null
 	if(play_sound)
 		var/area/A = get_area(caller)
-		play_sound(bullet_to_remove.get_bullet_eject_sound(),get_mobs_in_range(caller,3),vector(caller.x,caller.y,caller.z),environment = A.sound_environment)
+		play_sound(bullet_to_remove.get_bullet_eject_sound(),src)
 	if(bullet_to_remove.is_spent)
 		qdel(bullet_to_remove)
 

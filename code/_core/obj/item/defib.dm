@@ -39,7 +39,7 @@
 	caller.visible_message("\The [caller.name] charges up \the [src.name]...","You charge up \the [src.name]...")
 
 	var/area/A = get_area(target)
-	play_sound('sounds/items/defib/defib_charge.ogg',get_mobs_in_range(target,VIEW_RANGE),vector(target.x,target.y,target.z),environment = A.sound_environment, alert = ALERT_LEVEL_NOISE)
+	play_sound('sounds/items/defib/defib_charge.ogg',src)
 
 	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
@@ -61,14 +61,14 @@
 	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
 
 	var/area/A = get_area(target)
-	play_sound('sounds/items/defib/defib_zap.ogg',get_mobs_in_range(target,VIEW_RANGE),vector(target.x,target.y,target.z),environment = A.sound_environment, alert = ALERT_LEVEL_NOISE)
+	play_sound('sounds/items/defib/defib_zap.ogg',src)
 
 	if(target.check_death())
 		target.visible_message("Nothing happens!")
-		play_sound('sounds/items/defib/defib_failed.ogg',get_mobs_in_range(target,VIEW_RANGE),vector(target.x,target.y,target.z),environment = A.sound_environment, alert = ALERT_LEVEL_NOISE)
+		play_sound('sounds/items/defib/defib_failed.ogg',src)
 		return FALSE
 
-	play_sound('sounds/items/defib/defib_ready.ogg',get_mobs_in_range(target,VIEW_RANGE),vector(target.x,target.y,target.z),environment = A.sound_environment, alert = ALERT_LEVEL_NOISE)
+	play_sound('sounds/items/defib/defib_ready.ogg',src)
 
 	target.revive()
 	caller.visible_message("\The [target.name] jolts to life!")

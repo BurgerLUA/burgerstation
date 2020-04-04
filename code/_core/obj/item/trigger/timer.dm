@@ -19,7 +19,7 @@
 	active = TRUE
 	var/turf/T = get_turf(src)
 	var/area/A = T.loc
-	play_sound('sounds/weapons/timer/arm.ogg',get_mobs_in_range(T,VIEW_RANGE),list(T.x,T.y,T.z),volume=50, environment = A.sound_environment, alert=ALERT_LEVEL_NOISE)
+	play_sound('sounds/weapons/timer/arm.ogg',src)
 	return ..()
 
 /obj/item/device/timer/think()
@@ -31,7 +31,7 @@
 			var/turf/T = get_turf(src)
 			if(T)
 				var/area/A = T.loc
-				play_sound('sounds/weapons/timer/beep.ogg',get_mobs_in_range(T,VIEW_RANGE),list(T.x,T.y,T.z),volume=50, environment = A.sound_environment, alert=ALERT_LEVEL_NOISE)
+				play_sound('sounds/weapons/timer/beep.ogg',src)
 
 		if(time_set <= 0)
 			if(loc)

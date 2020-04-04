@@ -161,7 +161,7 @@
 		desired_dir = -90
 	M.Turn(desired_dir)
 	animate(src,transform = M,time = 5, easing = ELASTIC_EASING)
-	play_sound('sounds/ui/game/rotate_piece.ogg',list(caller),vector(caller.x,caller.y,caller.z),environment = ENVIRONMENT_GENERIC)
+	play_sound('sounds/ui/game/rotate_piece.ogg',caller)
 	sleep(3)
 	fake_dir += desired_dir
 	turning = FALSE
@@ -169,7 +169,7 @@
 
 	var/points = check_clear() ** 2
 	if(points)
-		play_sound('sounds/ui/game/score_piece.ogg',list(caller),vector(caller.x,caller.y,caller.z),environment = ENVIRONMENT_GENERIC)
+		play_sound('sounds/ui/game/score_piece.ogg',caller)
 		for(var/i=1,i<=points,i++)
 			if(!length(linked_board.cleared_pieces))
 				break

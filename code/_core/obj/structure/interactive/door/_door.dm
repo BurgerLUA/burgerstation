@@ -99,7 +99,7 @@ obj/structure/interactive/door/proc/toggle()
 
 obj/structure/interactive/door/proc/open()
 	if(open_sound)
-		play(open_sound)
+		play(open_sound,src)
 	door_state = DOOR_STATE_OPENING_01
 	update_sprite()
 	spawn(open_time)
@@ -109,7 +109,7 @@ obj/structure/interactive/door/proc/open()
 
 obj/structure/interactive/door/proc/close()
 	if(close_sound)
-		play(close_sound)
+		play(close_sound,src)
 	door_state = DOOR_STATE_CLOSING_01
 	update_sprite()
 	spawn(close_time)

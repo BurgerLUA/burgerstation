@@ -81,7 +81,7 @@ obj/structure/interactive/door/airlock/open(var/unlock = FALSE, var/force = FALS
 			return
 
 		if(open_sound)
-			play(open_sound)
+			play(open_sound,src)
 
 		door_state = DOOR_STATE_START_OPENING
 		update_sprite()
@@ -120,7 +120,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 	spawn()
 
 		if(close_sound)
-			play(close_sound)
+			play(close_sound,src)
 
 		door_state = DOOR_STATE_CLOSING_01
 		update_sprite()

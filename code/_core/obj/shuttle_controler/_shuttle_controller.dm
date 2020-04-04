@@ -79,7 +79,7 @@ var/global/list/all_shuttle_controlers = list()
 		default_transit_time = default_transit_time
 
 	desired_transit_time = max(30,desired_transit_time)
-	play_sound('sounds/effects/shuttle/hyperspace_begin.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+	play_sound('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
 	transit_time = desired_transit_time
@@ -145,7 +145,7 @@ var/global/list/all_shuttle_controlers = list()
 		display = "IGNT"
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			transit(transit_source,transit_bluespace)
-			play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			play_sound('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
@@ -162,7 +162,7 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 2) //Needs to be hardcoded as this is based on sound.
 			transit(transit_bluespace,transit_target)
 			set_doors(TRUE,TRUE)
-			play_sound('sounds/effects/shuttle/hyperspace_end.ogg',all_mobs_with_clients,vector(x,y,z),range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			play_sound('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null

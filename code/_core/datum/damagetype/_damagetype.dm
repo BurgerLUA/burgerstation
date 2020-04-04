@@ -354,12 +354,12 @@
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(impact_sounds))
 		var/area/A = get_area(victim)
-		play_sound(pick(impact_sounds),get_mobs_in_range(victim),vector(victim.x,victim.y,victim.z),environment = A.sound_environment,alert = ALERT_LEVEL_CAUTION)
+		play_sound(pick(impact_sounds),get_turf(weapon))
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(miss_sounds))
 		var/area/A = get_area(victim)
-		play_sound(pick(miss_sounds),get_mobs_in_range(victim),vector(victim.x,victim.y,victim.z),environment = A.sound_environment,alert = ALERT_LEVEL_NOISE)
+		play_sound(pick(miss_sounds),get_turf(weapon))
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 

@@ -83,7 +83,7 @@ obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE)
 
 obj/structure/interactive/bed/sleeper/proc/open()
 	if(open_sound)
-		play(open_sound)
+		play(open_sound,src)
 	door_state = SLEEPER_OPENING
 	update_icon()
 	spawn(open_time)
@@ -95,7 +95,7 @@ obj/structure/interactive/bed/sleeper/proc/open()
 
 obj/structure/interactive/bed/sleeper/proc/close()
 	if(close_sound)
-		play(close_sound)
+		play(close_sound,src)
 	door_state = SLEEPER_CLOSING
 	update_icon()
 	spawn(close_time)
