@@ -8,10 +8,10 @@
 	value = 1
 
 /obj/item/container/medicine/bandage/advanced
-	name = "bicaridine soaked bandages"
+	name = "infused bandages (styptic powder)"
 
 /obj/item/container/medicine/bandage/advanced/on_spawn()
-	reagents.add_reagent("bicaridine",50)
+	reagents.add_reagent("styptic_powder",50)
 	return ..()
 
 /obj/item/container/medicine/ointment
@@ -23,10 +23,10 @@
 	value = 1
 
 /obj/item/container/medicine/ointment/advanced
-	name = "kelotane infused ointment"
+	name = "infused ointment (silver sulfadiazine)"
 
 /obj/item/container/medicine/ointment/advanced/on_spawn()
-	reagents.add_reagent("kelotane",50)
+	reagents.add_reagent("silver_sulfadiazine",50)
 	return ..()
 
 /obj/item/container/medicine/trauma_kit
@@ -39,10 +39,10 @@
 	value = 3
 
 /obj/item/container/medicine/trauma_kit/advanced
-	name = "bicaridine infused trauma kit"
+	name = "infused trauma kit (styptic powder)"
 
 /obj/item/container/medicine/trauma_kit/advanced/on_spawn()
-	reagents.add_reagent("bicaridine",50)
+	reagents.add_reagent("styptic_powder",50)
 	return ..()
 
 /obj/item/container/medicine/burn_kit
@@ -54,10 +54,10 @@
 	value = 3
 
 /obj/item/container/medicine/burn_kit/advanced
-	name = "kelotane infused burn kit"
+	name = "infused burn kit (silver sulfadiazine)"
 
 /obj/item/container/medicine/burn_kit/advanced/on_spawn()
-	reagents.add_reagent("kelotane",50)
+	reagents.add_reagent("silver_sulfadiazine",50)
 	return ..()
 
 /obj/item/container/medicine/patch
