@@ -42,6 +42,10 @@
 
 	return ..()
 
+
+
+
+
 /obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
 
 	if(heal_bleeding && is_organ(A))
@@ -83,8 +87,11 @@
 		caller.to_chat("You're too far away!")
 		return FALSE
 
+	return TRUE
+
+/obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
+
 	if(!target || !target.health)
-		caller.to_chat("You cannot treat this!")
 		return FALSE
 
 	return TRUE
@@ -98,7 +105,9 @@
 		params[PARAM_ICON_Y] = new_x_y[2]
 		object = object.get_object_to_damage(caller,params,TRUE,TRUE)
 
-	if(!is_inventory(object) && can_treat(caller,object))
+	if(can_be_treated(caller,object))
+		if(!can_treat(caller,object))
+			return FALSE
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
 		return TRUE
 

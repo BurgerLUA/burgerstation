@@ -4,16 +4,24 @@
 
 /obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target)
 
+
+	return TRUE
+
+
+/obj/item/analyzer/proc/can_be_scanned(var/mob/caller,var/atom/target)
+	return TRUE
+
+/obj/item/analyzer/proc/can_scan(var/mob/caller,var/atom/target)
 	if(next_scan >= world.time)
 		caller.to_chat("\The [src.name] is recharging, please wait!")
 		return FALSE
-
 	return TRUE
 
 /obj/item/analyzer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(!is_inventory(object))
-		on_scan(caller,object)
+	if(can_be_scanned(caller,object))
+		if(can_scan(caller,object))
+			on_scan(caller,object)
 		return TRUE
 
 	return ..()

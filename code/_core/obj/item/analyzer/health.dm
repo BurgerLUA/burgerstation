@@ -5,15 +5,12 @@
 	icon = 'icons/obj/items/analyzers/health.dmi'
 	icon_state = "inventory"
 
+/obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
+	return is_living(target)
+
 /obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target)
-
-	. = ..()
-
-	if(. && is_living(target))
-		. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
-		new/obj/effect/chat_text(target,.,TRUE)
-		caller.to_chat(.)
-		next_scan = world.time + SECONDS_TO_DECISECONDS(4)
-		return TRUE
-
-	return FALSE
+	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
+	new/obj/effect/chat_text(target,.,TRUE)
+	caller.to_chat(.)
+	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
+	return TRUE
