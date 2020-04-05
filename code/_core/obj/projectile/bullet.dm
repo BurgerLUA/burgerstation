@@ -54,6 +54,11 @@
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "bolt"
 
+/obj/projectile/bullet/tungsten
+	name = "tungsten bolt"
+	icon = 'icons/obj/projectiles/bolt.dmi'
+	icon_state = "tungsten"
+
 /obj/projectile/bullet/syringe
 	name = "launched syringe"
 	icon = 'icons/obj/projectiles/bolt.dmi'

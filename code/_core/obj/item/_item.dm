@@ -224,7 +224,7 @@
 
 	return null
 
-/obj/item/update_icon()
+/obj/item/update_sprite()
 	. = ..()
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc

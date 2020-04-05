@@ -36,9 +36,10 @@
 
 	return ..()
 
-/obj/item/magazine/New()
-	..()
+/obj/item/magazine/Initialize()
+	. = ..()
 	update_sprite()
+	return .
 
 /obj/item/magazine/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","It contains [length(stored_bullets)] bullets.")
@@ -49,7 +50,6 @@
 
 /obj/item/magazine/proc/get_ammo_count()
 	return length(stored_bullets)
-
 
 /obj/item/magazine/proc/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
 
