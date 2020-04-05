@@ -149,7 +149,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 /*
 play('sound',mob) to play to that mob only
 play('sound, atom) to play to all turfs in range of that atom(add args range_min,range_max)
-play('sound',list_of_hearers, atom or vector) to play to that list of hearers at that location
+play('sound',list_of_hearers, turf or vector) to play to that list of hearers at that location
 */
 
 
@@ -171,22 +171,30 @@ play('sound',list_of_hearers, atom or vector) to play to that list of hearers at
 		hearers += location_or_list
 	else if(is_atom(location_or_list))
 		var/atom/A = location_or_list
-		for(var/mob/M in range(range_max,A))
+		var/turf/AT = get_turf(A)
+		for(var/mob/M in range(range_max,AT))
 			hearers += M
 		if(!sound_source)
-			sound_source = location_or_list
+			sound_source = AT
 	else
 		hearers = all_mobs_with_clients
 
 	if(islist(sound_source))
 		pos = sound_source
+	else if(ismob(sound_source))
+		var/mob/M = sound_source
+		if(!M.client)
+			return FALSE
+	else if(sound_source && !isturf(sound_source))
+		CRASH("Error: sound_source ([sound_source]) is not a turf or a list.")
+		return FALSE
 	else if(is_atom(location_or_list))
-		var/atom/A = location_or_list
-		pos = vector(A.x,A.y,A.z)
+		var/turf/T = get_turf(location_or_list)
+		pos = vector(T.x,T.y,T.z)
 
 	var/sound/created_sound = sound(sound_path)
 	if(!created_sound)
-		log_error("Error: Invalid sound: [sound_path].")
+		CRASH("Error: Invalid sound: [sound_path].")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -240,7 +248,6 @@ play('sound',list_of_hearers, atom or vector) to play to that list of hearers at
 			created_sound.x = 0
 			created_sound.y = 0
 			created_sound.z = 0
-			M.to_chat("Local sound!")
 
 		if(M.client && M.client.settings)
 			local_volume *= M.client.settings.loaded_data["volume_master"] / 100
