@@ -49,14 +49,15 @@
 /song/proc/check_hearers()
 
 	if(next_hear_check > world.time)
-		return temp_hearers
+		return
 
 	temp_hearers.Cut()
-	for(var/mob/M in range(SOUND_RANGE*2,get_turf(instrument_atom)))
+	for(var/mob/M in range(SOUND_RANGE,get_turf(instrument_atom)))
 		temp_hearers += M
-	next_hear_check = world.time + SECONDS_TO_DECISECONDS(1)
 
-	return temp_hearers
+	next_hear_check = world.time + SECONDS_TO_DECISECONDS(3)
+
+	return
 
 /song/proc/play_note(var/mob/caller,var/note,var/acc,var/oct)
 
@@ -91,7 +92,7 @@
 
 	check_hearers()
 
-	play(sound_file,temp_hearers,get_turf(instrument_atom),range_min=VIEW_RANGE,range_max=SOUND_RANGE*2)
+	play(sound_file,temp_hearers,get_turf(instrument_atom),range_min=VIEW_RANGE,range_max=SOUND_RANGE)
 
 	return TRUE
 
