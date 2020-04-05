@@ -185,9 +185,13 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		var/mob/M = sound_source
 		if(!M.client)
 			return FALSE
-	else if(sound_source && !isturf(sound_source))
-		CRASH("Error: sound_source ([sound_source]) is not a turf or a list.")
-		return FALSE
+	else if(sound_source)
+		if(isturf(sound_source))
+			var/turf/T = sound_source
+			pos = vector(T.x,T.y,T.z)
+		else
+			log_error("Error: sound_source ([sound_source]) is not a turf or a list so it cannot play.")
+			return FALSE
 	else if(is_atom(location_or_list))
 		var/turf/T = get_turf(location_or_list)
 		pos = vector(T.x,T.y,T.z)
