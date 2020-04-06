@@ -395,6 +395,7 @@
 #include "code\_core\datum\species\reptile.dm"
 #include "code\_core\datum\species\reptile_advanced.dm"
 #include "code\_core\datum\squad\_squad.dm"
+#include "code\_core\datum\stand\_stand.dm"
 #include "code\_core\datum\track\_track.dm"
 #include "code\_core\datum\track\boss.dm"
 #include "code\_core\datum\track\cave.dm"

@@ -1,0 +1,15 @@
+Magician
+Wizard
+Sage
+Solider
+Sycophant
+Philosopher
+Deep
+Heliosphere
+Amber
+Polygon
+Chocolate
+Fury
+Robust
+
+
