@@ -1,11 +1,14 @@
 /atom/proc/set_dir(var/desired_direction,var/force = FALSE)
 
+	if(!desired_direction)
+		return FALSE
+
 	if(!force && dir == desired_direction)
 		return FALSE
 
 	dir = desired_direction
 
-	return TRUE
+	return dir
 
 /atom/proc/face_atom(var/atom/A)
 	return set_dir(get_relative_dir(A))

@@ -39,6 +39,8 @@
 
 /obj/hud/button/intent/update_overlays()
 
+	overlays.Cut()
+
 	. = ..()
 
 	if(active)

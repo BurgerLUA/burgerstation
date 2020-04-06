@@ -13,15 +13,24 @@
 	return TRUE
 
 
-/mob/living/living/say(var/text_to_say as text)
+/mob/living/say(var/text_to_say as text)
 
 	if(dead)
 		to_chat(span("warning","You can't talk while you're dead!"))
 		return FALSE
 
-	return ..()
+	. = ..()
+
+	world.log << "The text is: [lowertext(.)]"
+
+	if(stand && lowertext(stand.name) == lowertext(.))
+		stand.linked_stand.set_active(!stand.linked_stand.is_active)
+
+	return .
 
 /mob/living/advanced/say(var/text_to_say as text)
+
+	world.log << "HEWWO?"
 
 	start_typing()
 
@@ -54,40 +63,42 @@
 		to_chat(span("warning","You are out of breath!"))
 		return FALSE
 
-	if(length(text_to_say))
-		var/first_character = copytext(text_to_say,1,2)
-		if(first_character == "/" || first_character == "!")
-			if(src.client)
-				var/client/C = src.client
-				var/final_command = trim(copytext(text_to_say,2,0))
-				winset(C, null, "command='[final_command]'")
-		else if(first_character == ";")
-			for(var/obj/item/device/radio/R in all_radios)
-				if(get_turf(R) != get_turf(src))
-					continue
-				var/final_command = trim(copytext(text_to_say,2,0))
-				visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
-				display_message(src,src,final_command,TEXT_WHISPER)
-				R.send_data(list("speaker" = src, "source" = src, "message" = final_command))
-				break
-		else if(client && client.macros && first_character == "." && length(text_to_say) >= 4)
-			var/third_character = copytext(text_to_say,3,4)
-			if(third_character == " ")
-				var/second_character = copytext(text_to_say,2,3)
-				if(client.macros.radio_keys[second_character])
-					var/desired_frequency = client.macros.radio_keys[second_character]
-					for(var/obj/item/device/radio/R in all_radios)
-						if(get_turf(R) != get_turf(src))
-							continue
-						var/final_command = trim(copytext(text_to_say,4,0))
-						visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
-						display_message(src,src,final_command,TEXT_WHISPER)
-						R.send_data(list("speaker" = src, "source" = src, "message" = final_command, "frequency" = desired_frequency))
-						break
-		else
-			display_message(src,src,text_to_say,TEXT_TALK)
+	if(!length(text_to_say))
+		return FALSE
 
-	return TRUE
+	var/first_character = copytext(text_to_say,1,2)
+	if(first_character == "/" || first_character == "!")
+		if(src.client)
+			var/client/C = src.client
+			var/final_command = trim(copytext(text_to_say,2,0))
+			winset(C, null, "command='[final_command]'")
+	else if(first_character == ";")
+		for(var/obj/item/device/radio/R in all_radios)
+			if(get_turf(R) != get_turf(src))
+				continue
+			var/final_command = trim(copytext(text_to_say,2,0))
+			visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
+			display_message(src,src,final_command,TEXT_WHISPER)
+			R.send_data(list("speaker" = src, "source" = src, "message" = final_command))
+			break
+	else if(client && client.macros && first_character == "." && length(text_to_say) >= 4)
+		var/third_character = copytext(text_to_say,3,4)
+		if(third_character == " ")
+			var/second_character = copytext(text_to_say,2,3)
+			if(client.macros.radio_keys[second_character])
+				var/desired_frequency = client.macros.radio_keys[second_character]
+				for(var/obj/item/device/radio/R in all_radios)
+					if(get_turf(R) != get_turf(src))
+						continue
+					var/final_command = trim(copytext(text_to_say,4,0))
+					visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
+					display_message(src,src,final_command,TEXT_WHISPER)
+					R.send_data(list("speaker" = src, "source" = src, "message" = final_command, "frequency" = desired_frequency))
+					break
+	else
+		display_message(src,src,text_to_say,TEXT_TALK)
+
+	return text_to_say
 
 /mob/verb/emote(var/emote_id as text)
 	set hidden = TRUE

@@ -20,6 +20,35 @@
 
 	var/stand_cry = "ORA"
 
+	var/mob/living/advanced/stand/linked_stand
+
+/stand/proc/on_move(var/success,var/new_loc,var/new_dir)
+
+	if(success)
+		linked_stand.glide_size = stand_user.glide_size
+		linked_stand.force_move(new_loc)
+		linked_stand.set_dir(new_dir)
+
+	return TRUE
+
+/stand/New(var/desired_owner)
+
+	if(desired_owner)
+		stand_user = desired_owner
+
+	return ..()
+
+/stand/Destroy()
+
+	if(linked_stand)
+		qdel(linked_stand)
+		linked_stand = null
+
+	if(stand_user)
+		stand_user = null
+
+	return ..()
+
 /stand/proc/generate()
 	name = uppertext("[pick(SSname.adjectives)] [pick(SSname.verbs)]")
 
@@ -80,10 +109,17 @@
 	stand_cry = replacetext(stand_cry,"3",pick(VOWELS))
 	stand_cry = uppertext(stand_cry)
 
+	linked_stand = new /mob/living/advanced/stand(stand_user.loc)
+	linked_stand.name = name
+	linked_stand.sex = stand_user.gender
+	linked_stand.gender = stand_user.gender
+	linked_stand.owner = stand_user
+	linked_stand.Initialize()
+
 /stand/proc/display_stand(var/mob/caller)
 	caller.to_chat("ゴ ゴ ゴ ゴ ゴ ゴ ゴ ゴ")
 	caller.to_chat("Stand Name: <b>「[name]」</b>")
-	caller.to_chat("Stand User: [caller.name]")
+	caller.to_chat("Stand User: [stand_user.name]")
 	caller.to_chat("Stand Cry: <b>\"[stand_cry]\"</b>")
 	/*
 	caller.to_chat("Power: [stat_destructive_power]")

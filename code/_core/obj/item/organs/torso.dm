@@ -38,6 +38,14 @@
 	desc = "A torso. Female variant"
 	icon_state = BODY_TORSO_FEMALE
 
+/obj/item/organ/torso/stand
+	name = "stand torso"
+	icon = 'icons/mob/living/advanced/species/stand.dmi'
+	desc = "An organ."
+
+/obj/item/organ/torso/stand/female
+	icon_state = BODY_TORSO_FEMALE
+
 //Reptile
 /obj/item/organ/torso/reptile
 	name = "reptile torso"

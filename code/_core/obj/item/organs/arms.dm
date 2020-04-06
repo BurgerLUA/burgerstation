@@ -42,6 +42,24 @@
 	name = "reptile right arm"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
+//Reptile Feral
+/obj/item/organ/arm/stand
+	name = "stand right arm"
+	icon = 'icons/mob/living/advanced/species/stand.dmi'
+
+/obj/item/organ/arm/stand/left
+	name = "stand left arm"
+	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT
+
+	hud_id = "body_arm_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 15
+	target_bounds_y_max = 22
+
 /obj/item/organ/arm/reptile/left
 	name = "reptile left arm"
 	id = BODY_ARM_LEFT

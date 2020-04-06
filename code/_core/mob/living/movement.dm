@@ -15,6 +15,9 @@
 	if(ai)
 		ai.on_move(.,NewLoc,Dir)
 
+	if(stand)
+		stand.on_move(.,NewLoc,Dir)
+
 	return .
 
 
