@@ -16,13 +16,14 @@
 	var/next_hear_check = 0
 
 
-	var/list/processed_lines[][][]
+	var/list/processed_lines = list()
 
 
 	var/repeat = 0
 
 
-//Stolen from Fulpstation, edited for code quality.
+//Base code stolen from Fulpstation
+//A lot of it has been reworked. About 50% of this code is new.
 
 /song/New(var/desired_loc)
 	instrument_atom = desired_loc
@@ -92,14 +93,13 @@
 
 	check_hearers()
 
-	play(sound_file,temp_hearers,get_turf(instrument_atom),range_min=VIEW_RANGE,range_max=SOUND_RANGE)
+	play(sound_file,temp_hearers,get_turf(instrument_atom),range_min=SOUND_RANGE*0.5,range_max=SOUND_RANGE)
 
 	return TRUE
 
-/song/proc/sanitize_tempo(new_tempo)
-	new_tempo = abs(new_tempo)
-	return max(round(new_tempo, world.tick_lag), world.tick_lag)
-
+/song/proc/sanitize_tempo(var/desired_tempo)
+	desired_tempo = abs(desired_tempo)
+	return max(round(desired_tempo, TICK_LAG), TICK_LAG)
 
 /song/proc/play_song(var/mob/caller)
 
@@ -109,16 +109,12 @@
 		cur_oct[i] = 3
 		cur_acc[i] = "n"
 
-	for(var/line in lines)
-		var/list/beats = splittext(lowertext(line), ",")
-		for(var/beat in beats)
-			var/list/notes = splittext(beat, "/")
-			for(var/note in splittext(notes[1], "-"))
-				if(!is_playing)//If the instrument is playing, or special case
-					temp_hearers = list()
-					return
-				if(!length(note))
-					continue
+	for(var/line_num in processed_lines)
+		var/list/beats = processed_lines[line_num]
+		for(var/beat_num in beats)
+			var/list/notes = beats[beat_num]
+			for(var/note_num in notes)
+				var/note = notes[note_num]
 				var/cur_note = text2ascii(note) - 96
 				if(cur_note < 1 || cur_note > 7)
 					continue
@@ -132,32 +128,53 @@
 					else
 						cur_oct[cur_note] = text2num(ni)
 				play_note(caller, cur_note, cur_acc[cur_note], cur_oct[cur_note])
-			if(notes.len >= 2 && text2num(notes[2]))
-				var/value = sanitize_tempo(tempo / text2num(notes[2]))
-				if(value) sleep(value)
+
+			if(length(notes) >= 2 && text2num(notes["2"]))
+				sleep(sanitize_tempo(tempo / text2num(notes["2"])))
 			else
-				if(tempo) sleep(tempo)
+				sleep(tempo)
 
 	temp_hearers = list()
 	is_playing = FALSE
 	repeat = 0
 
 /song/proc/parse_song(var/mob/caller,var/text)
-	lines = splittext(text, "\n")
-	if(lines.len)
-		if(copytext(lines[1],1,6) == "BPM: ")
-			tempo = sanitize_tempo(600 / text2num(copytext(lines[1],6)))
-			lines.Cut(1,2)
-		else
-			tempo = sanitize_tempo(5) // default 120 BPM
-		if(lines.len > MUSIC_MAXLINES)
-			caller.to_chat("Too many lines!")
-			lines.Cut(MUSIC_MAXLINES + 1)
-		var/linenum = 1
-		for(var/l in lines)
-			if(length(l) > MUSIC_MAXLINECHARS)
-				caller.to_chat("Line [linenum] too long!")
-				lines.Remove(l)
-			else
-				linenum++
+
+	text = lowertext(text)
+	var/list/lines = splittext(text,"\n")
+	if(!lines.len)
+		caller.to_chat("No sound found!")
+		return FALSE
+
+	if(copytext(lines[1],1,6) == "bpm: ")
+		var/BPM = text2num(copytext(lines[1],6))
+		tempo = sanitize_tempo(600 / BPM)
+	else
+		tempo = sanitize_tempo(5) // default 120 BPM
+	lines.Cut(1,2)
+
+	if(length(lines) > MUSIC_MAXLINES)
+		caller.to_chat("Too many lines!")
+		lines.Cut(MUSIC_MAXLINES + 1)
+
+	processed_lines = list()
+	var/linenum = 1
+	for(var/line in lines)
+		if(length(line) > MUSIC_MAXLINECHARS)
+			caller.to_chat("Line [linenum] is too long!")
+			continue
+		processed_lines["[linenum]"] = list()
+		var/list/beats = splittext(line, ",")
+		var/beatnum = 1
+		for(var/beat in beats)
+			processed_lines["[linenum]"]["[beatnum]"] = list()
+			var/notes = splittext(beat, "/")
+			var/notenum = 1
+			for(var/note in splittext(notes[1], "-"))
+				CHECK_TICK
+				processed_lines["[linenum]"]["[beatnum]"]["[notenum]"] = note
+				notenum++
+			beatnum++
+		linenum++
+
 	return TRUE
