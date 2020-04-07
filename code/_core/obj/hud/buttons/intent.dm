@@ -30,7 +30,7 @@
 	intent = desired_intent
 
 	if(stand && stand.linked_stand && stand.linked_stand.ai)
-		stand.linked_stand.ai.enabled = intent == INTENT_HARM
+		stand.linked_stand.ai.enabled = (intent == INTENT_HARM)
 
 	for(var/obj/hud/button/intent/I in buttons)
 		I.update_sprite()

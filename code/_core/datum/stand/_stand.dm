@@ -123,6 +123,9 @@
 	linked_stand.Initialize()
 	linked_stand.equip_loadout("outfit_stand_[rand(1,9)]")
 
+	if(stand_user.ai)
+		stand_user.set_intent(INTENT_HARM)
+
 /stand/proc/display_stand(var/mob/caller)
 	caller.to_chat("ゴ ゴ ゴ ゴ ゴ ゴ ゴ ゴ")
 	caller.to_chat("Stand Name: <b>「[name]」</b>")

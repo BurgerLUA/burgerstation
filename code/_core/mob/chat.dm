@@ -21,16 +21,12 @@
 
 	. = ..()
 
-	world.log << "The text is: [lowertext(.)]"
-
 	if(stand && lowertext(stand.name) == lowertext(.))
 		stand.linked_stand.set_enabled(!stand.linked_stand.enabled)
 
 	return .
 
 /mob/living/advanced/say(var/text_to_say as text)
-
-	world.log << "HEWWO?"
 
 	start_typing()
 

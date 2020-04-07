@@ -20,6 +20,17 @@
 
 	ai = /ai/advanced/stand
 
+	class = "stand"
+
+	var/display_menacing = FALSE
+
+/mob/living/advanced/stand/can_be_attacked(var/atom/attacker)
+
+	if(!enabled)
+		return FALSE
+
+	return ..()
+
 /mob/living/advanced/stand/Destroy()
 	owner = null
 	return ..()
@@ -30,6 +41,18 @@
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 	. = ..()
 	update_offsets()
+	return .
+
+/mob/living/advanced/stand/on_life()
+	. = ..()
+
+
+	if(. && enabled)
+		if(display_menacing)
+			new/obj/effect/temp/menacing(src.loc,20,pixel_x-16,pixel_y+16)
+			display_menacing = FALSE
+		else
+			display_menacing = TRUE
 	return .
 
 /mob/living/advanced/stand/on_life_slow()
@@ -112,4 +135,5 @@
 	if(sex == MALE && prob(25))
 		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
 	update_all_blends()
+	//filters = filter(type="drop_shadow",size=15,color = skin_color)
 	return .

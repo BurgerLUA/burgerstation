@@ -352,7 +352,7 @@
 	objective_attack = L
 	frustration_attack = 0
 
-	owner.set_intent(objective_attack ? INTENT_HARM : INTENT_HELP)
+	owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
 
 	if(L)
 		set_alert_level(ALERT_LEVEL_ALERT)
@@ -398,6 +398,9 @@
 	return -get_dist(L.loc,owner.loc)
 
 /ai/proc/should_attack_mob(var/mob/living/L)
+
+	if(L == owner)
+		return FALSE
 
 	if(L.dead)
 		return FALSE
