@@ -72,6 +72,8 @@
 
 /obj/hud/button/targeting_new/update_overlays()
 
+	overlays.Cut()
+
 	. = ..()
 
 	var/image/left_overlay = new /image(initial(icon),"targeting_r")

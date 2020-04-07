@@ -21,7 +21,7 @@
 
 	. = ..()
 
-	update_overlays()
+	update_sprite()
 
 	return .
 

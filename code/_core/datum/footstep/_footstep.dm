@@ -35,8 +35,8 @@
 				if(L.is_sneaking)
 					footstep_volume *= 0.5
 
-				play(footstep_sound,all_mobs_with_clients - L,L,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS)
-				play(footstep_sound,L,L,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS)
+				play(footstep_sound,all_mobs_with_clients - L,T,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS)
+				play(footstep_sound,L,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS)
 
 			if(has_footprints && L.has_footprints)
 				var/obj/effect/footprint/emboss/F = new(T,L.dir,TRUE,TRUE)

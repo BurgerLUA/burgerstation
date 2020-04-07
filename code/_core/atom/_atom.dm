@@ -60,6 +60,11 @@
 	//FLAG_QUICK_TOGGLE
 
 
+/atom/proc/add_overlay(var/datum/desired_overlay)
+	overlays += desired_overlay
+	if(length(overlays) >= 100)
+		log_error("Warning: Object [src]([src.type]) exceeds 100 overlays!")
+
 /obj/structure/should_smooth_with(var/turf/T)
 
 	for(var/obj/structure/O in T.contents)

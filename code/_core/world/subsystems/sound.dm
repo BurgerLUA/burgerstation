@@ -145,17 +145,16 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	return .
 
+/mob/proc/get_sound_environment()
+	var/area/A = get_area(src)
+	return A.sound_environment
+
 //Example Formats
 /*
 play('sound',mob) to play to that mob only
 play('sound, atom) to play to all turfs in range of that atom(add args range_min,range_max)
 play('sound',list_of_hearers, turf or vector) to play to that list of hearers at that location
 */
-
-
-/mob/proc/get_sound_environment()
-	var/area/A = get_area(src)
-	return A.sound_environment
 
 /proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0)
 
@@ -194,6 +193,8 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 			return FALSE
 	else if(is_atom(location_or_list))
 		var/turf/T = get_turf(location_or_list)
+		if(!T)
+			return FALSE
 		pos = vector(T.x,T.y,T.z)
 
 	var/sound/created_sound = sound(sound_path)

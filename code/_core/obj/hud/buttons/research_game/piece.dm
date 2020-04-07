@@ -241,14 +241,20 @@
 
 	return TRUE
 
-/obj/hud/button/research/piece/update_icon()
-
+/obj/hud/button/research/piece/update_sprite()
+	. = ..()
 	screen_loc = "LEFT+[x_p],BOTTOM+[y_p]"
+	return .
 
+
+/obj/hud/button/research/piece/update_icon()
+	. = ..()
 	icon_state = "piece_static"
+	return .
 
-	underlays.Cut()
+/obj/hud/button/research/piece/update_underlays()
 
+	. = ..()
 	var/image/I1 = new(icon,"1")
 	I1.color = color_01
 	underlays += I1
@@ -265,4 +271,4 @@
 	I4.color = color_04
 	underlays += I4
 
-	return ..()
+	return .
