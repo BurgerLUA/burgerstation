@@ -18,43 +18,52 @@
 
 	var/stand_mode = STAND_MODE_NONE
 
+
 /mob/living/advanced/stand/Destroy()
 	owner = null
 	return ..()
 
 /mob/living/advanced/stand/handle_alpha()
-	return is_active ? 255 : 0
+	return is_active ? 200 : 0
+
+
+/mob/living/advanced/stand/proc/update_offsets()
+	var/desired_x = -4
+	var/desired_y = 4
+	layer = LAYER_MOB_ABOVE
+
+	var/list/vector_2d = direction_to_pixel_offset(dir)
+
+	if(owner)
+		if(!is_active)
+			desired_x = 0
+			desired_y = 0
+		else if(owner.intent == INTENT_HARM)
+			desired_x += vector_2d[1] * 16
+			desired_y += vector_2d[2] * 16
+		else
+			desired_x += vector_2d[1] * -16
+			desired_y += vector_2d[2] * -16
+
+		if(desired_y < 0)
+			layer = LAYER_MOB_ABOVE
+		else
+			layer = LAYER_MOB_BELOW
+	else
+		desired_x = 0
+		desired_y = 0
+
+	animate(src, pixel_x = desired_x, pixel_y = desired_y, time = 1)
+
+	return TRUE
+
 
 
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
 
-	if(force)
-		. = desired_dir
-
-	if(.)
-		var/desired_x = -4
-		var/desired_y = 4
-		layer = LAYER_MOB_ABOVE
-
-		if(owner && is_active)
-			if(. & (owner.intent == INTENT_HARM ? SOUTH : NORTH))
-				desired_y = -16
-				layer = LAYER_MOB_ABOVE
-			else if(. & (owner.intent == INTENT_HARM ? NORTH : SOUTH))
-				desired_y = 16
-				layer = LAYER_MOB_BELOW
-
-			if(. & (owner.intent == INTENT_HARM ? WEST : EAST))
-				desired_x = -16
-			else if(. & (owner.intent == INTENT_HARM ? EAST : WEST))
-				desired_x = 16
-		else
-			desired_x = 0
-			desired_y = 0
-
-		animate(src, pixel_x = desired_x, pixel_y = desired_y, time = 1)
+	update_offsets()
 
 	return .
 
@@ -73,6 +82,8 @@
 		collision_flags = FLAG_COLLISION_NONE
 		immortal = TRUE
 		mouse_opacity = 0
+
+	set_dir(owner.dir,TRUE)
 
 	return TRUE
 
