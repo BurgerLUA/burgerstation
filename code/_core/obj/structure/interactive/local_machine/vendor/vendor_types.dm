@@ -224,9 +224,17 @@
 	name = "clown vendor"
 	icon_state = "games"
 	stored_types = list(
-		/obj/item/grenade/timed/explosive,
-		/obj/item/soapstone/blue,
-		/obj/item/weapon/ranged/magic/tome/fireball
+		/obj/item/instrument/accordion,
+		/obj/item/instrument/banjo,
+		/obj/item/instrument/bikehorn,
+		/obj/item/instrument/eguitar,
+		/obj/item/instrument/glockenspiel,
+		/obj/item/instrument/guitar,
+		/obj/item/instrument/harmonica,
+		/obj/item/instrument/recorder,
+		/obj/item/instrument/saxophone,
+		/obj/item/instrument/trombone,
+		/obj/item/instrument/violin
 	)
 
 /obj/structure/interactive/vending/clown/wardrobe

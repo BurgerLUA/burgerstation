@@ -38,6 +38,12 @@
 
 	..()
 
+/obj/hud/progress_bar/update_sprite()
+	update_icon()
+	update_overlays()
+	update_underlays()
+	return TRUE
+
 /obj/hud/progress_bar/update_icon()
 
 	if(end_time - start_time <= 0)

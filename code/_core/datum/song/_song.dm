@@ -86,7 +86,7 @@
 
 	var/sound_path = "sounds/instruments/[instrument_directory]/[ascii2text(note+64)][acc][oct].ogg"
 	if(!fexists(sound_path))
-		log_error("Error: Sound file [sound_path] does not exist.")
+		//log_error("Error: Sound file [sound_path] does not exist.")
 		return FALSE
 
 	var/sound_file = file(sound_path)
@@ -118,6 +118,10 @@
 				var/cur_note = text2ascii(note) - 96
 				if(cur_note < 1 || cur_note > 7)
 					continue
+				if(!is_playing)
+					temp_hearers = list()
+					repeat = 0
+					return FALSE
 				for(var/i=2 to length(note))
 					var/ni = copytext(note,i,i+1)
 					if(!text2num(ni))

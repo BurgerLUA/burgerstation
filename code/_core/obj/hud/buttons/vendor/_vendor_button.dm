@@ -33,22 +33,6 @@
 
 	. = ..()
 
-	if(ispath(associated_item))
-		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
-		IM.color = initial(associated_item.color)
-		IM.pixel_y = 4
-		add_overlay(IM)
-	else
-		associated_item.pixel_y = 4
-		add_overlay(associated_item)
-
-	return .
-
-/obj/hud/button/vendor/update_icon()
-
-	. = ..()
-
-
 	var/sale_amount = CEILING(associated_item.calculate_value(),1)
 	var/num_to_text = num2text(sale_amount)
 	var/the_length = length(num_to_text)
@@ -80,6 +64,21 @@
 	I4.pixel_y = -4
 	I4.pixel_x = 35
 	add_overlay(I4)
+
+	if(ispath(associated_item))
+		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
+		IM.color = initial(associated_item.color)
+		IM.pixel_y = 4
+		add_overlay(IM)
+	else
+		associated_item.pixel_y = 4
+		add_overlay(associated_item)
+
+	return .
+
+/obj/hud/button/vendor/update_sprite()
+
+	. = ..()
 
 	var/desired_name
 
