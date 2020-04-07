@@ -256,6 +256,7 @@
 	//initialize_factions()
 	update_level()
 	setup_name()
+	set_intent(intent,TRUE)
 
 	. = ..()
 

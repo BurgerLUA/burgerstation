@@ -30,6 +30,9 @@
 
 	. = ..()
 
+	if(force)
+		. = desired_dir
+
 	if(.)
 		var/desired_x = -4
 		var/desired_y = 4

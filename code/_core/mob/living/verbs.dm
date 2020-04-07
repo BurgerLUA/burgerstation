@@ -16,13 +16,13 @@
 
 	switch(intent)
 		if(INTENT_HELP)
-			intent = INTENT_DISARM
+			set_intent(INTENT_DISARM)
 		if(INTENT_DISARM)
-			intent = INTENT_GRAB
+			set_intent(INTENT_GRAB)
 		if(INTENT_GRAB)
-			intent = INTENT_HARM
+			set_intent(INTENT_HARM)
 		if(INTENT_HARM)
-			intent = INTENT_HELP
+			set_intent(INTENT_HELP)
 
 	for(var/obj/hud/button/intent/B in buttons)
 		B.update_sprite()
@@ -37,13 +37,13 @@
 
 	switch(intent)
 		if(INTENT_HELP)
-			intent = INTENT_HARM
+			set_intent(INTENT_HARM)
 		if(INTENT_DISARM)
-			intent = INTENT_HELP
+			set_intent(INTENT_HELP)
 		if(INTENT_GRAB)
-			intent = INTENT_DISARM
+			set_intent(INTENT_DISARM)
 		if(INTENT_HARM)
-			intent = INTENT_GRAB
+			set_intent(INTENT_GRAB)
 
 	for(var/obj/hud/button/intent/B in buttons)
 		B.update_sprite()

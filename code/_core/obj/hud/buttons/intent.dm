@@ -22,6 +22,22 @@
 
 	return .
 
+/mob/living/proc/set_intent(var/desired_intent,var/force)
+
+	if(intent == desired_intent && !force)
+		return FALSE
+
+	intent = desired_intent
+
+	if(stand && stand.linked_stand)
+		stand.linked_stand.set_dir(src.dir,TRUE)
+
+	for(var/obj/hud/button/intent/I in buttons)
+		I.update_sprite()
+		I.active = (I.intent == intent)
+		I.update_overlays()
+
+	return TRUE
 
 /obj/hud/button/intent/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -29,11 +45,7 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		L.intent = intent
-		for(var/obj/hud/button/intent/I in L.buttons)
-			I.update_sprite()
-			I.active = (I.intent == L.intent)
-			I.update_overlays()
+		L.set_intent(intent)
 
 	return .
 

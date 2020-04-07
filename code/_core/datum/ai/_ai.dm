@@ -350,7 +350,7 @@
 	objective_attack = L
 	frustration_attack = 0
 
-	owner.intent = objective_attack ? INTENT_HARM : INTENT_HELP
+	owner.set_intent(objective_attack ? INTENT_HARM : INTENT_HELP)
 
 	if(L)
 		set_alert_level(ALERT_LEVEL_ALERT)
