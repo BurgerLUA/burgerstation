@@ -31,7 +31,8 @@
 	dead = TRUE
 
 	if(ai)
-		ai = null
+		ai.enabled = FALSE
+
 	movement_flags = 0x0
 	attack_flags = 0x0
 
@@ -67,6 +68,8 @@
 	return FALSE
 
 /mob/living/proc/revive()
+	movement_flags = 0x0
+	attack_flags = 0x0
 	dead = FALSE
 	plane = initial(plane)
 	collision_flags = initial(collision_flags)
@@ -76,6 +79,8 @@
 	check_status_effects()
 	if(health)
 		health.update_health()
+	if(ai)
+		ai.enabled = TRUE
 	return TRUE
 
 /mob/living/proc/resurrect()

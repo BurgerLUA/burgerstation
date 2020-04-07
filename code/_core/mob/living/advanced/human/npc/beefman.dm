@@ -7,6 +7,7 @@
 	ai = /ai/advanced/
 	species = "beefman"
 	class = "ashwalker"
+	iff_tag = "beefman"
 
 /mob/living/advanced/npc/beefman/Initialize()
 

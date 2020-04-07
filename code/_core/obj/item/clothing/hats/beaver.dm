@@ -31,6 +31,9 @@
 
 	value = 20
 
+/obj/item/clothing/head/hat/wizard/gold
+	color = COLOR_GOLD
+
 /obj/item/clothing/head/hat/wizard/blue
 	color = "#0065FF"
 

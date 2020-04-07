@@ -63,12 +63,14 @@
 
 	var/use_alerts = TRUE
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.
-	var/use_vision = FALSE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this is affected by alert level.
+	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
 	var/alert_time = 600 //Deciseconds
 	var/sidestep_next = FALSE
 
 	var/ignore_immortal = FALSE
+
+	var/retaliate = TRUE
 
 /ai/Destroy()
 	if(owner)
@@ -400,19 +402,6 @@
 	if(L.dead)
 		return FALSE
 
-	//var/area/A = get_area(L)
-	//var/area/starting_area = get_area(start_turf)
-
-	/* //TODO: Loyalty implant
-	if(A && A.flags_area & FLAGS_AREA_NO_DAMAGE && !starting_area.flags_area & FLAGS_AREA_NO_DAMAGE)
-		return FALSE
-	*/
-
-/*
-	if(!true_sight && L.is_sneaking)
-		return FALSE
-*/
-
 	if(!can_attack(L))
 		return FALSE
 
@@ -431,14 +420,17 @@
 
 /ai/proc/get_possible_targets()
 
-	. = attackers.Copy()
+	if(retaliate)
+		. = attackers.Copy()
+	else
+		. = list()
 
 	if(radius_find_enemy <= 0)
 		return .
 
 	if(only_attack_players)
 		for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
-			if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
+			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
 				continue
 			if(!should_attack_mob(P))
 				continue
@@ -447,7 +439,7 @@
 		for(var/mob/living/L in view(radius_find_enemy,owner))
 			if(!L.initialized)
 				continue
-			if(alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))
+			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))
 				continue
 			if(!should_attack_mob(L))
 				continue

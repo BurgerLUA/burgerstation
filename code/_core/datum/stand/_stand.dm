@@ -112,12 +112,16 @@
 	stand_cry = replacetext(stand_cry,"3",pick(VOWELS))
 	stand_cry = uppertext(stand_cry)
 
+
+
 	linked_stand = new /mob/living/advanced/stand(stand_user.loc)
 	linked_stand.name = name
 	linked_stand.sex = stand_user.gender
 	linked_stand.gender = stand_user.gender
 	linked_stand.owner = stand_user
+	linked_stand.iff_tag = stand_user.iff_tag
 	linked_stand.Initialize()
+	linked_stand.equip_loadout("outfit_stand_[rand(1,9)]")
 
 /stand/proc/display_stand(var/mob/caller)
 	caller.to_chat("ゴ ゴ ゴ ゴ ゴ ゴ ゴ ゴ")

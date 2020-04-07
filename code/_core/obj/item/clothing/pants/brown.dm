@@ -43,3 +43,28 @@
 
 /obj/item/clothing/pants/kilt/green
 	color = "#003714"
+
+
+/obj/item/clothing/pants/cloth
+	name = "cloth"
+	icon = 'icons/obj/items/clothing/pants/cloth.dmi'
+
+	desc = "Modest?"
+	desc_extended = "A basic piece of cloth worn around the torso."
+
+	defense_rating = list(
+		BLADE = ARMOR_C,
+		BLUNT = ARMOR_D,
+		PIERCE = ARMOR_D,
+		MAGIC = ARMOR_E,
+		HEAT = ARMOR_E,
+		COLD = ARMOR_E
+	)
+
+	size = SIZE_2
+	weight = WEIGHT_2
+
+	value = 15
+
+/obj/item/clothing/pants/cloth/black
+	color = COLOR_BLACK

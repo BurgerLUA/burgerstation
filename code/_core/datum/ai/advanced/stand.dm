@@ -2,6 +2,8 @@
 	use_alerts = FALSE
 	ignore_immortal = TRUE
 	radius_find_enemy = VIEW_RANGE
+	use_cone_vision = FALSE
+	retaliate = FALSE
 
 /ai/advanced/stand/handle_movement_roaming()
 	return FALSE

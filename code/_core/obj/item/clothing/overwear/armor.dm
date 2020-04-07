@@ -395,6 +395,9 @@
 	)
 	color = "#7F0000"
 
+/obj/item/clothing/overwear/armor/knight/magnus/gold
+	color = COLOR_GOLD
+
 /obj/item/clothing/overwear/armor/carbon_armor
 	name = "prototype carbon fibre armor"
 	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
