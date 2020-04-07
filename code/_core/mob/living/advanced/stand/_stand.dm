@@ -18,6 +18,7 @@
 
 	var/stand_mode = STAND_MODE_NONE
 
+	ai = /ai/advanced/stand
 
 /mob/living/advanced/stand/Destroy()
 	owner = null
@@ -26,16 +27,32 @@
 /mob/living/advanced/stand/handle_alpha()
 	return is_active ? 200 : 0
 
+/mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
+	. = ..()
+	update_offsets()
+	return .
+
+/mob/living/advanced/stand/on_life_slow()
+	. = ..()
+	update_offsets()
+	return .
 
 /mob/living/advanced/stand/proc/update_offsets()
 	var/desired_x = -4
 	var/desired_y = 4
 	layer = LAYER_MOB_ABOVE
 
-	var/list/vector_2d = direction_to_pixel_offset(dir)
+	var/desired_dir = dir
+
+	/*
+	if(ai && ai.objective_attack)
+		desired_dir = get_dir(src,ai.objective_attack)
+	*/
+
+	var/list/vector_2d = direction_to_pixel_offset(desired_dir)
 
 	if(owner)
-		if(!is_active)
+		if(!is_active || (ai && ai.objective_attack))
 			desired_x = 0
 			desired_y = 0
 		else if(owner.intent == INTENT_HARM)
@@ -53,19 +70,10 @@
 		desired_x = 0
 		desired_y = 0
 
-	animate(src, pixel_x = desired_x, pixel_y = desired_y, time = 1)
+	if(pixel_x != desired_x || pixel_y != desired_y)
+		animate(src, pixel_x = desired_x, pixel_y = desired_y, time = 1)
 
 	return TRUE
-
-
-
-/mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
-
-	. = ..()
-
-	update_offsets()
-
-	return .
 
 /mob/living/advanced/stand/proc/set_active(var/active=FALSE)
 

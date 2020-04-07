@@ -24,7 +24,7 @@
 
 /stand/proc/on_move(var/success,var/new_loc,var/new_dir)
 
-	if(success)
+	if(success && (!linked_stand.ai || !linked_stand.ai.objective_attack))
 		linked_stand.glide_size = stand_user.glide_size
 		linked_stand.force_move(new_loc)
 		linked_stand.set_dir(new_dir)

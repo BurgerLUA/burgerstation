@@ -164,6 +164,7 @@
 #include "code\_core\datum\ai\villager.dm"
 #include "code\_core\datum\ai\advanced\_advanced.dm"
 #include "code\_core\datum\ai\advanced\daddy.dm"
+#include "code\_core\datum\ai\advanced\stand.dm"
 #include "code\_core\datum\ai\advanced\ranged\wizard.dm"
 #include "code\_core\datum\ai\boss\_boss.dm"
 #include "code\_core\datum\ai\boss\ash_drake.dm"
