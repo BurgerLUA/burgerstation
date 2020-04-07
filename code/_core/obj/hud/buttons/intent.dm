@@ -30,6 +30,8 @@
 	intent = desired_intent
 
 	if(stand && stand.linked_stand && stand.linked_stand.ai)
+		if(intent != INTENT_HARM)
+			stand.linked_stand.ai.set_objective(null)
 		stand.linked_stand.ai.enabled = (intent == INTENT_HARM)
 
 	for(var/obj/hud/button/intent/I in buttons)

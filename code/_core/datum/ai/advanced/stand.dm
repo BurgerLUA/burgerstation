@@ -21,11 +21,6 @@
 /ai/advanced/stand/handle_movement_crowding()
 	return FALSE
 
-/ai/advanced/stand/should_attack_mob(var/mob/living/L)
-	if(L.stand && L.stand.linked_stand == owner)
-		return FALSE
-	return ..()
-
 /ai/advanced/stand/set_objective(var/mob/living/L)
 	. = ..()
 	owner.set_dir(owner.dir,TRUE)
@@ -34,6 +29,18 @@
 /ai/advanced/stand/should_attack_mob(var/mob/living/L)
 
 	if(L == owner)
+		return FALSE
+
+	if(L.dead)
+		return FALSE
+
+	if(L.immortal && !ignore_immortal)
+		return FALSE
+
+	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
+		return FALSE
+
+	if(L.stand && L.stand.linked_stand == owner)
 		return FALSE
 
 	if(!can_attack(L))

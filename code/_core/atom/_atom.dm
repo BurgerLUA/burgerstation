@@ -61,9 +61,13 @@
 
 
 /atom/proc/add_overlay(var/datum/desired_overlay)
+
 	overlays += desired_overlay
+
 	if(length(overlays) >= 100)
-		log_error("Warning: Object [src]([src.type]) exceeds 100 overlays!")
+		log_error("Warning: Object [src]([src.type]) exceeds 100 overlays! Cutting...")
+		overlays.Cut()
+
 	return TRUE
 
 /obj/structure/should_smooth_with(var/turf/T)
