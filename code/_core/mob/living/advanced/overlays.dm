@@ -1,4 +1,4 @@
-mob/living/advanced/proc/add_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
+mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
 	var/obj/overlay/O = new /obj/overlay
 	O.attached_object = object
 	O.initial_icon = desired_icon ? desired_icon : object.icon
@@ -15,7 +15,7 @@ mob/living/advanced/proc/add_overlay(var/obj/object,var/desired_layer,var/desire
 	if(!desired_never_blend)
 		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
 	O.update()
-	add_overlay_image(O)
+	add_tracked_overlay_image(O)
 
 mob/living/advanced/proc/show_overlay(var/obj/object,var/show=TRUE)
 
@@ -60,10 +60,10 @@ mob/living/advanced/player/verb/debug_blends()
 */
 
 
-mob/living/advanced/proc/add_overlay_image(var/obj/overlay/O)
+mob/living/advanced/proc/add_tracked_overlay_image(var/obj/overlay/O)
 	var/image/I = new /image(O.icon)
 	I.appearance = O.appearance
-	overlays += I
+	add_overlay(I)
 	overlays_assoc[O] = I
 
 mob/living/advanced/proc/remove_overlay_image(var/obj/overlay/O)
@@ -94,4 +94,4 @@ mob/living/advanced/proc/update_overlay_direct(var/obj/overlay/O,var/desired_lay
 	O.alpha = desired_alpha
 	O.update()
 
-	add_overlay_image(O)
+	add_tracked_overlay_image(O)

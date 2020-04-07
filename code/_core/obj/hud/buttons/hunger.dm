@@ -57,10 +57,10 @@
 	var/image/I_thirst = new/image(initial_icon,"thirst_bar_[thirst_icon]")
 	I_thirst.color = blend_colors("#FF0000","#00FF00",thirst_mod)
 
-	overlays += I_hunger
-	overlays += I_thirst
+	add_overlay(I_hunger)
+	add_overlay(I_thirst)
 
 	var/icon/I2 = new/icon(icon,"hunger_thirst_detail")
-	overlays += I2
+	add_overlay(I2)
 
 	return .

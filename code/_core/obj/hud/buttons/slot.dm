@@ -46,7 +46,7 @@
 		var/image/I = new/image(stored_atom.icon,stored_atom.icon_state)
 		I.appearance = stored_atom.appearance
 		I.plane = PLANE_HUD_OBJ
-		overlays += I
+		add_overlay(I)
 
 	return .
 

@@ -52,7 +52,7 @@
 		var/math = FLOOR((current/max) * 28, 1)
 		var/image/bar = new/image(initial(icon),icon_state = "bar_[math]")
 		bar.color = bar_color
-		overlays += bar
+		add_overlay(bar)
 
 	return ..()
 

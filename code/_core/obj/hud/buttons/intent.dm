@@ -57,7 +57,7 @@
 
 	if(active)
 		var/icon/I = new/icon(initial(icon),"[icon_state]_active")
-		overlays += I
+		add_overlay(I)
 
 	return .
 

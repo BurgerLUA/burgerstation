@@ -186,7 +186,7 @@
 
 /obj/hud/button/research/piece/MouseEntered(location,control,params)
 	var/image/I = new/image(icon,"border")
-	overlays += I
+	add_overlay(I)
 	return ..()
 
 /obj/hud/button/research/piece/MouseExited(location,control,params)

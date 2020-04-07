@@ -67,11 +67,11 @@
 	if(double)
 		var/image/I1 = new/image(icon,"[icon_state]_double_left")
 		I1.color = reagents.color
-		overlays += I1
+		add_overlay(I1)
 
 		var/image/I2 = new/image(icon,"[icon_state]_double_right")
 		I2.color = reagents_2.color
-		overlays += I2
+		add_overlay(I2)
 
 	return .
 

@@ -54,7 +54,7 @@ obj/structure/interactive/barricade/update_overlays()
 	below.layer = LAYER_MOB_BELOW
 
 	icon = ICON_INVISIBLE
-	overlays += below
-	overlays += above
+	add_overlay(below)
+	add_overlay(above)
 
 	return .

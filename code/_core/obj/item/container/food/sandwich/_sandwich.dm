@@ -69,7 +69,7 @@
 		var/image/IM = new/image(IT.icon,IT.icon_state)
 		IM.pixel_y = offset_y
 		IM.color = IT.color
-		overlays += IM
+		add_overlay(IM)
 		offset_y += IT.pixel_height
 
 	return .

@@ -27,6 +27,8 @@
 
 /obj/hud/button/evade/update_overlays()
 
+	overlays.Cut()
+
 	. = ..()
 
 	if(!is_living(owner))
@@ -49,7 +51,7 @@
 	var/image/I = new/image(initial(icon),"[icon_state]_[charge_icon]")
 	I.alpha = charge_level >= 100 ? 255 : charge_level
 
-	overlays += I
+	add_overlay(I)
 
 	return .
 

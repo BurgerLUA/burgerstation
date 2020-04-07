@@ -94,6 +94,6 @@ obj/structure/smooth/update_overlays()
 		var/image/I = new/image(initial(icon),"ref")
 		I.color = reinforced_color
 		I.alpha = 200
-		overlays += I
+		add_overlay(I)
 
 	return .

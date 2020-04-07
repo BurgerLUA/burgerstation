@@ -87,8 +87,8 @@
 	var/image/preset_overlay = new /image(initial(icon),"target_selection_[mode]")
 	preset_overlay.color = "#00FFFF"
 
-	overlays += left_overlay
-	overlays += right_overlay
-	overlays += preset_overlay
+	add_overlay(left_overlay)
+	add_overlay(right_overlay)
+	add_overlay(preset_overlay)
 
 	return .

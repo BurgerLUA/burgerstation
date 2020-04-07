@@ -38,7 +38,7 @@
 				var/image/I = new/image(icon,O.hud_id)
 				I.color = "#FF0000"
 				labeled_overlays[o_id] = I
-				overlays += I
+				add_overlay(I)
 
 		update_sprite()
 
@@ -94,7 +94,7 @@
 
 		I.color = color_mod
 		labeled_overlays[o_id] = I
-		overlays += I
+		add_overlay(I)
 
 	return .
 

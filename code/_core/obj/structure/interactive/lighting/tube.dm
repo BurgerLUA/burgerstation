@@ -66,7 +66,7 @@
 	var/image/IS = new/image(initial(icon),"tube_light")
 	IS.plane = PLANE_LIGHTING
 	IS.layer = 99
-	overlays += IS
+	add_overlay(IS)
 	return .
 
 /obj/structure/interactive/lighting/tube/strong

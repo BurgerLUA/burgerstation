@@ -49,7 +49,7 @@
 	var/image/O = new/image(icon,icon_state)
 	O.pixel_x = -2
 	O.pixel_y = -4
-	overlays += O
+	add_overlay(O)
 	return .
 
 

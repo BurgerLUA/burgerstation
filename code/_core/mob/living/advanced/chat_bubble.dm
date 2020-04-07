@@ -7,7 +7,7 @@
 		else
 			spawned_overlay.icon_state = talk_type
 
-		overlays += spawned_overlay
+		add_overlay(spawned_overlay)
 */
 
 

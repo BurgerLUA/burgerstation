@@ -131,7 +131,7 @@
 
 	if(parent_inventory)
 		color = "#ff0000"
-		overlays += parent_inventory.overlays
+		add_overlay(parent_inventory.overlays)
 	else
 		color = initial(color)
 
@@ -145,7 +145,7 @@
 		if(y_offset_mul)
 			total_pixel_y += I.size*y_offset_mul
 
-		overlays += I
+		add_overlay(I)
 
 	for(var/obj/item/I in worn_objects)
 		I.pixel_x = initial(I.pixel_x) + x_offset_initial + total_pixel_x*TILE_SIZE
@@ -157,13 +157,13 @@
 		if(y_offset_mul)
 			total_pixel_y += I.size*y_offset_mul
 
-		overlays += I
+		add_overlay(I)
 
 	if(grabbed_object)
 		var/image/I = new/image(grabbed_object.icon,grabbed_object.icon_state)
 		I.appearance = grabbed_object.appearance
 		I.plane = PLANE_HUD_OBJ
-		overlays += I
+		add_overlay(I)
 
 	return .
 
@@ -178,9 +178,9 @@
 
 	A.remove_overlay(item_to_update)
 	if(id == BODY_HAND_LEFT)
-		A.add_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+		A.add_tracked_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 	else if(id == BODY_HAND_RIGHT)
-		A.add_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+		A.add_tracked_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
 
 
 	return TRUE
@@ -326,11 +326,11 @@
 			C.initialize_blends(desired_icon_state)
 
 	if(is_wings(item_to_update))
-		A.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
-		A.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
-		A.add_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_tracked_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_tracked_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_tracked_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
 	else
-		A.add_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_tracked_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
 
 	return TRUE
 

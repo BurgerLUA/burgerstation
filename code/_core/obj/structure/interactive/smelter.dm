@@ -17,8 +17,8 @@
 	var/image/I2 = new/image(icon,"furnace_right")
 	I2.pixel_x = TILE_SIZE - 4
 
-	overlays += I1
-	overlays += I2
+	add_overlay(I1)
+	add_overlay(I2)
 
 	return ..()
 

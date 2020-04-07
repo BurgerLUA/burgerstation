@@ -110,6 +110,6 @@
 	if(reagents.volume_current)
 		var/image/I = new/image(icon,"[icon_state]_fill")
 		I.color = reagents.color
-		overlays += I
+		add_overlay(I)
 
 	return .

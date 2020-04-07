@@ -23,7 +23,7 @@
 	var/image/I = new/image(initial(icon),"intercom_light")
 	I.plane = PLANE_LIGHTING
 	I.layer = 99
-	overlays += I
+	add_overlay(I)
 	return .
 
 /obj/structure/interactive/intercom/Initialize(var/desired_loc)

@@ -73,7 +73,7 @@
 				var/image/OI = new/image(IB.icon,IB.icon_state)
 				OI.color = IB.color
 				OI.layer = IB.layer
-				overlays += OI
+				add_overlay(OI)
 
 			if(IB.special_type & ICON_BLEND_COLOR)
 				I.Blend(IB.color,ICON_MULTIPLY)

@@ -37,10 +37,10 @@
 		var/image/IM = new/image(initial(associated_item.icon),initial(associated_item.icon_state))
 		IM.color = initial(associated_item.color)
 		IM.pixel_y = 4
-		overlays += IM
+		add_overlay(IM)
 	else
 		associated_item.pixel_y = 4
-		overlays += associated_item
+		add_overlay(associated_item)
 
 	return .
 
@@ -79,7 +79,7 @@
 	var/image/I4 = new/image(I2)
 	I4.pixel_y = -4
 	I4.pixel_x = 35
-	overlays += I4
+	add_overlay(I4)
 
 	var/desired_name
 

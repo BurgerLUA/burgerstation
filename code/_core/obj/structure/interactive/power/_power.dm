@@ -23,8 +23,8 @@
 	I2.plane = PLANE_LIGHTING
 	I2.layer = 99
 
-	overlays += I1
-	overlays += I2
+	add_overlay(I1)
+	add_overlay(I2)
 
 	return .
 

@@ -39,5 +39,5 @@ obj/structure/interactive/atmospherics/air_alarm/update_overlays()
 	var/image/I = new /image(initial(icon),"air_alarm_light")
 	I.plane = PLANE_LIGHTING
 	I.layer = 99
-	overlays += I
+	add_overlay(I)
 	return .

@@ -66,10 +66,10 @@
 	INITIALIZE(O)
 
 	if(is_tail(O))
-		add_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")
-		add_overlay(O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
+		add_tracked_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")
+		add_tracked_overlay(O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
 	else
-		add_overlay(O,desired_layer = O.worn_layer)
+		add_tracked_overlay(O,desired_layer = O.worn_layer)
 
 	O.on_organ_add(src)
 

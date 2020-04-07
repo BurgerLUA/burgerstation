@@ -54,7 +54,7 @@
 
 			if(damage_number > 0)
 				var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
-				owner.overlays += I
+				owner.add_overlay(I)
 
 			old_damage_number = damage_number
 

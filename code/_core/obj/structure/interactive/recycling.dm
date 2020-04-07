@@ -16,12 +16,12 @@
 	var/image/I1b = new/image(icon,"grinder_bottom")
 	I1b.pixel_x = -TILE_SIZE
 	I1b.pixel_y = 0
-	overlays += I1b
+	add_overlay(I1b)
 
 	var/image/I1 = new/image(icon,"grinder")
 	I1.pixel_x = -TILE_SIZE
 	I1.pixel_y = 6
-	overlays += I1
+	add_overlay(I1)
 
 	pixel_x = TILE_SIZE/2
 

@@ -197,7 +197,7 @@ var/global/saved_icons = 0
 	if(reinforced_material_id)
 		overlays.Cut()
 		var/image/I2 = new/image(initial(icon),"ref")
-		overlays += I2
+		add_overlay(I2)
 
 	return .
 

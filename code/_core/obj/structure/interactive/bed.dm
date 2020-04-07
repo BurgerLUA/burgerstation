@@ -68,7 +68,7 @@ obj/structure/interactive/bed/padded/update_overlays()
 
 	var/image/sheets = new(icon,"bed_padding")
 	sheets.color = secondary_color
-	overlays += sheets
+	add_overlay(sheets)
 
 	return .
 
