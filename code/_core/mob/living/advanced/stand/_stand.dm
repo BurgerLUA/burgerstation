@@ -12,7 +12,7 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
-	var/is_active = FALSE
+	var/enabled = FALSE
 
 	var/mob/living/owner
 
@@ -25,7 +25,7 @@
 	return ..()
 
 /mob/living/advanced/stand/handle_alpha()
-	return is_active ? 200 : 0
+	return enabled ? 200 : 0
 
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 	. = ..()
@@ -52,7 +52,7 @@
 	var/list/vector_2d = direction_to_pixel_offset(desired_dir)
 
 	if(owner)
-		if(!is_active || (ai && ai.objective_attack) || src.loc != owner.loc)
+		if(!enabled || (ai && ai.objective_attack) || src.loc != owner.loc)
 			desired_x = 0
 			desired_y = 0
 		else if(owner.intent == INTENT_HARM)
@@ -75,11 +75,11 @@
 
 	return TRUE
 
-/mob/living/advanced/stand/proc/set_active(var/active=FALSE)
+/mob/living/advanced/stand/proc/set_enabled(var/desired_enable=FALSE)
 
-	is_active = active
+	enabled = desired_enable
 
-	if(is_active)
+	if(enabled)
 		collision_flags = initial(collision_flags)
 		collision_bullet_flags = initial(collision_bullet_flags)
 		force_move(owner.loc)

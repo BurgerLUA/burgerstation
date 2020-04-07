@@ -222,9 +222,24 @@
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return is_living(attacker) && prob(get_crit_chance(attacker))
 
+
+/atom/proc/defer_victim(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
+
+/atom/proc/defer_hit_object(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
+
+
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	spawn
+
+		if(istype(victim,/mob/living/advanced/stand/))
+			var/mob/living/advanced/stand/S = victim
+			victim = S.owner
+			if(is_organ(hit_object) && is_advanced(victim))
+				var/mob/living/advanced/A = victim
+				var/obj/item/organ/O = hit_object
+				if(A.labeled_organs[O.id])
+					hit_object = A.labeled_organs[O.id]
 
 		if(!attacker || !victim || !weapon || !hit_object || !hit_object.health || !victim.health)
 			return FALSE

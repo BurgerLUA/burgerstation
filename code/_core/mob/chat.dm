@@ -24,7 +24,7 @@
 	world.log << "The text is: [lowertext(.)]"
 
 	if(stand && lowertext(stand.name) == lowertext(.))
-		stand.linked_stand.set_active(!stand.linked_stand.is_active)
+		stand.linked_stand.set_enabled(!stand.linked_stand.enabled)
 
 	return .
 
