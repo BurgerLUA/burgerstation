@@ -52,7 +52,7 @@
 	var/list/vector_2d = direction_to_pixel_offset(desired_dir)
 
 	if(owner)
-		if(!is_active || (ai && ai.objective_attack))
+		if(!is_active || (ai && ai.objective_attack) || src.loc != owner.loc)
 			desired_x = 0
 			desired_y = 0
 		else if(owner.intent == INTENT_HARM)
