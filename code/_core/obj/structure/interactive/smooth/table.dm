@@ -41,7 +41,7 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 	return ..()
 
 /obj/structure/smooth/table/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(is_living(O))
+	if(old_loc && is_living(O)) //TODO, WHY NO OLD_LOC?
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in old_loc.contents
 		if(!T)
