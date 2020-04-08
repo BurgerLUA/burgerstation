@@ -96,6 +96,8 @@
 
 	var/block_power = 0.5 //Higher values means it blocks more. Normal weapons should have 1, while stronger items should have between 2-5
 
+	var/allow_beaker_transfer = FALSE
+
 /obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
 	if(istype(DT,/damagetype/unarmed/))

@@ -7,52 +7,36 @@
 
 	plane = PLANE_OBJ
 
-	density = FALSE //DEPCRECATED. Should always be set to false!
+	density = FALSE //DEPCRECATED. Should always be set to FALSE!
 
 	var/health_base = 1
 	var/mana_base = 1
 	var/stamina_base = 1
 
-	var/throw_speed = 8 //How far the object travels in pixels per decisecond, when thrown
-
 	var/damage_type = "default" //The id of the damage type of the weapon, if any.
-
-	var/attack_range = 1 //If it's a melee weapon, it needs a range. TODO: MOVE TO ITEM
-
-	var/override_icon = FALSE
-
-	var/doing_progress = FALSE
 
 	var/collision_flags = FLAG_COLLISION_NONE
 	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	var/interact_distance = 1 //You must be at least this close to interact with this object, and for the object to interact with others.
+	var/object_size = 1 //This-1 is added to attack range.
+	var/attack_range = 1 //If it's a melee weapon, it needs a range.
 
 	var/attack_delay = 5 //The attack delay for an object.
 	var/attack_delay_max = 10 //For living mobs using this object, the maximum attack delay.
 	var/attack_next = -1
 
-	var/allow_beaker_transfer = FALSE
-	var/reagent_container/reagents
-
-	var/object_size = 1 //This-1 is added to attack range.
+	var/reagent_container/reagents //The reagents object. If an object is supposed to hold liquid, give it a reagent_container datum.
+	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
 	var/corner_icons = FALSE
 	var/corner_category = "none"
-
-	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
 	var/immortal = FALSE //Is this object allowed to take damage?
 
 	var/footstep_id //The sound the object makes when something enters or exits it.
 
 	var/ignore_incoming_collisons = FALSE //TODO: Replace with tiny.
-
-	var/has_quick_function = FALSE
-	var/quick_function_type =  FLAG_QUICK_INSTANT
-	//FLAG_QUICK_INSTANT
-	//FLAG_QUICK_TOGGLE
-
 
 /atom/proc/add_overlay(var/datum/desired_overlay)
 

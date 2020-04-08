@@ -56,7 +56,9 @@
 		clear_object(caller)
 		return FALSE
 
-	if(stored_atom && stored_atom.quick_function_type == FLAG_QUICK_INSTANT)
+	var/obj/item/I = stored_atom
+
+	if(istype(I) && I.quick_function_type == FLAG_QUICK_INSTANT)
 		stored_atom.quick(caller)
 		caller.quick_mode = 0
 		spawn()
@@ -108,9 +110,9 @@
 	if(!is_atom(object))
 		return ..()
 
-	var/atom/I = object
+	var/obj/item/I = object
 
-	if(!I.has_quick_function)
+	if(!istype(I) || !I.has_quick_function)
 		A.to_chat(span("notice","\The [I.name] doesn't have a quick bind function."))
 		return TRUE
 

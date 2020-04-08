@@ -153,11 +153,14 @@ mob/living/advanced/proc/handle_quick(var/atom/object,location,control,params)
 			if(!B.stored_atom && is_button(object))
 				B.store_atom(src,object,location,control,params)
 				break
-			if(!B.stored_atom || !B.stored_atom.quick_function_type == FLAG_QUICK_TOGGLE)
+			var/obj/item/I = B.stored_atom
+
+			if(!istype(I)|| !I.quick_function_type == FLAG_QUICK_TOGGLE)
 				break
+
 			if(is_inventory(B.stored_atom.loc))
-				var/obj/hud/inventory/I = B.stored_atom.loc
-				if(I.owner != src)
+				var/obj/hud/inventory/I2 = B.stored_atom.loc
+				if(I2.owner != src)
 					B.clear_object(src)
 					break
 			else if(!is_button(B.stored_atom))
