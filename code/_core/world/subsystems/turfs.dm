@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(turfs)
 		turf_count++
 
 	log_subsystem(name,"Initialized [turf_count] turfs.")
-	log_subsystem(name,"Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
+	//log_subsystem(name,"Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
 
 /subsystem/turfs/on_life()
 
