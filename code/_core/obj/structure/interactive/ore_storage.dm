@@ -5,7 +5,7 @@
 
 /obj/structure/interactive/ore_storage/update_icon()
 
-	if(thinks)
+	if(THINKING(src))
 		icon_state = "ore_storage_1"
 	else
 		icon_state = "ore_storage"

@@ -1,0 +1,1 @@
+#define THINKING(A) (SSthinking.all_thinkers[A])

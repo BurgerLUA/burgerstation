@@ -1,4 +1,3 @@
-
 SUBSYSTEM_DEF(thinking)
 	name = "Think Subsystem"
 	desc = "Any and all objects that think when it is active are handled here."
@@ -14,13 +13,10 @@ SUBSYSTEM_DEF(thinking)
 	return TRUE
 
 /proc/start_thinking(var/atom/A)
-	A.thinks = TRUE
 	SSthinking.all_thinkers[A] = TRUE
-
 	return TRUE
 
 /proc/stop_thinking(var/atom/A)
-	A.thinks = FALSE
 	if(SSthinking.all_thinkers[A])
 		SSthinking.all_thinkers -= A
 

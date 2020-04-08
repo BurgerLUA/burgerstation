@@ -26,17 +26,11 @@
 	var/collision_flags = FLAG_COLLISION_NONE
 	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/interact_distance = 1
-
-	var/command_delay_base = 1 //For things like clicking.
-	var/command_last = 0
+	var/interact_distance = 1 //You must be at least this close to interact with this object, and for the object to interact with others.
 
 	var/attack_delay = 5 //The attack delay for an object.
 	var/attack_delay_max = 10 //For living mobs using this object, the maximum attack delay.
-
 	var/attack_next = -1
-
-	var/thinks = FALSE
 
 	var/allow_beaker_transfer = FALSE
 	var/reagent_container/reagents
@@ -48,11 +42,11 @@
 
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
-	var/immortal = FALSE
+	var/immortal = FALSE //Is this object allowed to take damage?
 
 	var/footstep_id //The sound the object makes when something enters or exits it.
 
-	var/ignore_incoming_collisons = FALSE
+	var/ignore_incoming_collisons = FALSE //TODO: Replace with tiny.
 
 	var/has_quick_function = FALSE
 	var/quick_function_type =  FLAG_QUICK_INSTANT
@@ -171,7 +165,7 @@
 
 
 /atom/proc/think()
-	return thinks
+	return TRUE
 
 /atom/Enter(var/atom/movable/enterer,var/atom/oldloc)
 	return TRUE

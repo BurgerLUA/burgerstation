@@ -18,7 +18,7 @@
 
 /obj/structure/interactive/mining_drill/update_icon()
 
-	if(thinks)
+	if(THINKING(src))
 		icon_state = "mining_drill_active"
 	else if(anchored)
 		icon_state = "mining_drill_braced"
@@ -31,7 +31,7 @@
 
 	INTERACT_CHECK
 
-	if(thinks)
+	if(THINKING(src))
 		deactivate(caller)
 	else
 		activate(caller)
