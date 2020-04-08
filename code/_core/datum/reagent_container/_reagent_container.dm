@@ -328,6 +328,30 @@
 	var/old_temperature = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : T0C + 20
 	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount,should_update,check_recipes),old_temperature,should_update,check_recipes)
 
+/reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE)
+
+	if(amount <= 0)
+		return FALSE
+
+	amount = min(amount,volume_current)
+
+	var/total_amount_removed = 0
+
+	var/old_volume = volume_current
+
+	for(var/r_id in stored_reagents)
+		var/volume = stored_reagents[r_id]
+		var/ratio = volume / old_volume
+		total_amount_removed += remove_reagent(r_id,ratio*amount,FALSE,FALSE)
+
+	if(should_update)
+		src.update_container()
+
+	if(check_recipes)
+		src.process_recipes()
+
+	return total_amount_removed
+
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE) //Transfer all the reagents.
 
 	if(amount == 0)
