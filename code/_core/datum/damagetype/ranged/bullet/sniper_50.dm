@@ -1,5 +1,5 @@
 /damagetype/ranged/bullet/sniper_50
-	name = ".50 rifle"
+	name = "sniper rifle bullet"
 	id = ".50"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

@@ -1,5 +1,5 @@
 /damagetype/ranged/bullet/pistol_50
-	name = ".50 pistol"
+	name = "pistol bullet"
 	id = ".50_pistol"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -16,7 +16,7 @@
 
 
 /damagetype/ranged/bullet/pistol_50/surplus
-	name = ".50 pistol surplus"
+	name = "pistol bullet"
 	id = ".50_pistol_surplus"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

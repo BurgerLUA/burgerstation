@@ -1,5 +1,5 @@
 /damagetype/ranged/bullet/pistol_8mm
-	name = "8mm pistol"
+	name = "pistol bullet"
 	id = "8mm"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -15,7 +15,6 @@
 	)
 
 /damagetype/ranged/bullet/pistol_8mm/hollowpoint
-	name = "8mm pistol"
 	id = "8mm_hollowpoint"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

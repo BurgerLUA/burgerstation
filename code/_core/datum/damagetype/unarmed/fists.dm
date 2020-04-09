@@ -43,13 +43,17 @@
 /damagetype/unarmed/fists/help
 	name = "help fists"
 	id = "fist_help"
-	attack_verbs = list("taps")
+	attack_verbs = list("hug")
+
+	impact_sounds = list(
+		'sounds/weapons/fists/grab.ogg'
+	)
 
 	hit_effect = null
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_E
+		FATIGUE = DAMAGE_F
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -58,25 +62,23 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_DEXTERITY = CLASS_E
+		ATTRIBUTE_STRENGTH = CLASS_C
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = FATIGUE,
-		ATTRIBUTE_DEXTERITY = FATIGUE
+		ATTRIBUTE_STRENGTH = FATIGUE
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_C
+
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = FATIGUE
+
 	)
 
 	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_C
+
 	)
 
 
@@ -133,6 +135,10 @@
 	attack_verbs = list("grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
+
+	impact_sounds = list(
+		'sounds/weapons/fists/grab.ogg'
+	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

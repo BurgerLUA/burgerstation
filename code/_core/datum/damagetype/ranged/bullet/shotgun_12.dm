@@ -1,5 +1,5 @@
 /damagetype/ranged/bullet/shotgun/buckshot
-	name = "12 gauge buckshot pellet"
+	name = "group of buckshot pellets"
 	id = "12_buckshot"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -17,7 +17,7 @@
 	)
 
 /damagetype/ranged/bullet/shotgun/slug
-	name = "12 gauge buckshot slug"
+	name = "shotgun slug"
 	id = "12_slug"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -34,7 +34,7 @@
 
 
 /damagetype/ranged/bullet/shotgun/rubber
-	name = "12 gauge rubber ball"
+	name = "group of rubber pellets"
 	id = "12_rubber"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

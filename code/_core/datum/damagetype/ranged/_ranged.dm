@@ -47,15 +47,15 @@
 
 /damagetype/ranged/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(hit_object == victim)
-		return span("warning","\The [victim] is hit by the [src.name]!")
+		return span("warning","\The [victim] is hit by \the [src.name]!")
 	else
-		return span("warning","\The [victim] is hit by the [src.name] in \the [hit_object]!")
+		return span("warning","\The [victim] is hit in \the [hit_object.name] by the [src.name]!")
 
 /damagetype/ranged/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(hit_object == victim)
-		return span("warning","You are hit by the [src.name]!")
+		return span("danger","You are hit by \the [src.name]!")
 	else
-		return span("warning","You are hit by the [src.name] in \the [hit_object]!")
+		return span("danger","You are hit in \the [hit_object.name] by the [src.name]!")
 
 /damagetype/ranged/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear an impact.")

@@ -233,21 +233,9 @@
 		I.update_sprite()
 	return .
 
-/*
-/obj/item/get_examine_text(var/mob/examiner)
-	var/name_text = div("examine_title",src.name)
-	var/rarity_text = div("rarity [rarity]",capitalize(rarity))
-	var/value_text = div("rarity [rarity]","Value: [calculate_value(TRUE)].")
-	var/physical_text = div("weightsize","Size: [size] | Weight: [weight]")
-	var/desc_text = div("examine_description","\"[src.desc]\"")
-	var/desc_extended_text = div("examine_description_long",src.desc_extended)
-	var/damage_type_text = "" //is_living(examiner) ? get_damage_type_text(examiner) : ""
-	return "[name_text][desc_text][rarity_text][value_text][physical_text][desc_extended_text][damage_type_text]"
-*/
-
 /obj/item/get_examine_list(var/mob/examiner)
 	. = list()
-	. += div("examine_title","[src.name]")
+	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")

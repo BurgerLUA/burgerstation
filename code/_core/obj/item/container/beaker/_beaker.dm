@@ -42,9 +42,9 @@
 		return FALSE
 
 	if(caller != target && is_living(target))
-		var/area/A = get_area(target)
-		if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
-			caller.to_chat(span("notice","For some reason you can't bring yourself to feed [target] the delicious [src.name]..."))
+		var/mob/living/L = target
+		if(L.ckey_last && !L.ckey && !L.dead)
+			caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))
 			return FALSE
 
 	return TRUE

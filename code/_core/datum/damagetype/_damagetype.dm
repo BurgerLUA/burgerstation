@@ -127,15 +127,16 @@
 	*/
 
 /damagetype/proc/get_examine_text(var/mob/caller)
-
+	/*
 	. = "<table>"
 	. += "<tr><th>Damage type</th><th>Damage value</th><th>Skill modifier</th></tr>"
 	for(var/damage_type in attack_damage_base)
 		var/damage_value = attack_damage_base[damage_type]
 		. += "<tr><td>[damage_type]</td><td>[damage_value]</td><td>Penis</td></tr>"
 	. += "</table>"
+	*/
 
-	return .
+	return list()
 
 /damagetype/proc/get_crit_chance(var/mob/living/L)
 	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION) + L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)
@@ -397,8 +398,6 @@
 	if(attacker.dir & WEST)
 		pixel_x_offset += -punch_distance
 
-
-
 	if(is_living(attacker))
 		var/mob/living/L = attacker
 		//M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
@@ -431,14 +430,38 @@
 	return "weapon"
 
 /damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "their [hit_object.name]" : victim
-	var/attacker_text = attacker == weapon ? "[get_weapon_name(weapon)]" : "their [get_weapon_name(weapon)]"
-	return "\The [attacker.name] [pick(attack_verbs)]s \the [victim_text] with \the [attacker_text]."
+
+	var/victim_text
+	var/attacker_text
+
+	if(hit_object && hit_object != victim)
+		victim_text = "\the [victim.name]'s [hit_object.name]"
+	else
+		victim_text = "\the [victim.name]"
+
+	if(weapon && attacker != weapon)
+		attacker_text = " with \the [weapon.name]."
+	else
+		attacker_text = "."
+
+	return "\The [attacker.name] [pick(attack_verbs)]s [victim_text][attacker_text]"
 
 /damagetype/proc/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	var/victim_text = hit_object ? victim == hit_object ? "[hit_object.name]" : "their [hit_object.name]" : victim
-	var/attacker_text = "with your [get_weapon_name(weapon)]"
-	return "You [pick(attack_verbs)] \the [victim_text] [attacker_text]."
+
+	var/victim_text
+	var/attacker_text
+
+	if(hit_object && hit_object != victim)
+		victim_text = "\the [victim.name]'s [hit_object.name]"
+	else
+		victim_text = "\the [victim.name]"
+
+	if(weapon && attacker != weapon)
+		attacker_text = " with your [weapon.name]."
+	else
+		attacker_text = "."
+
+	return "You [pick(attack_verbs)] [victim_text][attacker_text]"
 
 /damagetype/proc/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return "You hear a strong [pick(attack_verbs)]."

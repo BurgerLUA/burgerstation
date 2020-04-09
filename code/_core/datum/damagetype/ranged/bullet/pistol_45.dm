@@ -1,5 +1,5 @@
 /damagetype/ranged/bullet/pistol_45
-	name = ".45 pistol"
+	name = "pistol bullet"
 	id = ".45"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -16,7 +16,6 @@
 
 
 /damagetype/ranged/bullet/pistol_45/surplus
-	name = ".45 pistol surplus"
 	id = ".45_surplus"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -33,7 +32,6 @@
 
 
 /damagetype/ranged/bullet/pistol_45/rubber
-	name = ".45 pistol rubber"
 	id = ".45_rubber"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

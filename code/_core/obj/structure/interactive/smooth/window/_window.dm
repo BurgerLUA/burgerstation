@@ -19,6 +19,14 @@
 
 	health_base = 100
 
+/obj/structure/smooth/window/can_be_attacked(var/atom/attacker)
+
+	var/area/A = get_area(src)
+	if(A.flags_area * FLAGS_AREA_NO_CONSTRUCTION)
+		return FALSE
+
+	return ..()
+
 /obj/structure/smooth/window/on_destruction(var/atom/caller,var/damage = FALSE)
 
 	var/desired_dir = get_dir(src,caller)

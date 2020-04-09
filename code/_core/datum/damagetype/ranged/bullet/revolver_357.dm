@@ -1,5 +1,5 @@
 /damagetype/ranged/bullet/revolver_357
-	name = ".357 revolver"
+	name = "revolver bullet"
 	id = ".357"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

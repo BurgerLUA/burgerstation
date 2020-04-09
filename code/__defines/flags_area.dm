@@ -3,7 +3,7 @@
 #define FLAGS_AREA_SAVEZONE 0x1
 
 
-#define FLAGS_AREA_NO_CONSTRUCTION 0x2
+#define FLAGS_AREA_NO_CONSTRUCTION 0x2 //Objects cannot be constructed or deconstructed, either by tools or damage.
 #define FLAGS_AREA_NO_DAMAGE 0x4
 
 
