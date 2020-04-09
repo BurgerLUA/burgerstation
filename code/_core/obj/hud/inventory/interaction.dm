@@ -123,7 +123,7 @@
 
 	. = ..()
 
-	if(!. && is_item(object))
+	if(!. && is_item(object) && get_dist(caller,object) <= 1)
 		var/obj/item/object_as_item = object
 		if(src.add_object(object_as_item))
 			return TRUE

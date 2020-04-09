@@ -946,6 +946,7 @@
 #include "code\_core\obj\shadow\_shadow.dm"
 #include "code\_core\obj\shuttle_controler\_shuttle_controller.dm"
 #include "code\_core\obj\shuttle_controler\arrivals.dm"
+#include "code\_core\obj\shuttle_controler\cargo.dm"
 #include "code\_core\obj\shuttle_controler\shuttle_controler_types.dm"
 #include "code\_core\obj\shuttle_controler\syndicate.dm"
 #include "code\_core\obj\spawn\_spawn.dm"

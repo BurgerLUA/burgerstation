@@ -13,6 +13,8 @@
 
 	plane = PLANE_HUD
 
+	value = 0
+
 	var/list/obj/item/held_objects //Items that are held, and not worn.
 	var/list/obj/item/worn_objects //Items that are worn, and not held.
 	var/atom/movable/grabbed_object

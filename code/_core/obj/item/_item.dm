@@ -247,8 +247,7 @@
 
 /obj/item/get_examine_list(var/mob/examiner)
 	. = list()
-	var/object_icon = "<img src='\ref[src.icon]' class='examine_icon_main'/>"
-	. = div("examine_title","[object_icon][src.name]")
+	. += div("examine_title","[src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")

@@ -23,6 +23,7 @@
 		stop_thinking(src)
 		disposals_countdown = initial(disposals_countdown)
 		flick("disposal-flush",src)
+		stop_thinking(src)
 
 	disposals_countdown--
 
@@ -30,6 +31,7 @@
 
 /obj/structure/interactive/disposals/machine/chute/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	O.force_move(src)
+	start_thinking(src)
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
