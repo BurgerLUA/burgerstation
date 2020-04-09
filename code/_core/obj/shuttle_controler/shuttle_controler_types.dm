@@ -72,8 +72,10 @@
 		var/area/A = get_area(src)
 		var/total_value = 0
 		for(var/atom/movable/M in A.contents)
-			if(is_player(M))
-				continue
+			if(ismob(M))
+				var/mob/M2 = M
+				if(M2.client || M2.ckey_last)
+					continue
 			var/calculated_value = CEILING(M.calculate_value(),1)
 			if(M.qdeleting || calculated_value <= 0)
 				continue

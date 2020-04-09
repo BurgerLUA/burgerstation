@@ -47,9 +47,9 @@
 
 	return think_timer
 
-/obj/structure/interactive/diverter/Crossed(var/atom/movable/M,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/interactive/diverter/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 
-	tracked_movables[M] = world.time + 4
+	tracked_movables[O] = world.time + 4
 
 	if(!think_timer)
 		start_thinking(src)

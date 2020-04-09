@@ -112,8 +112,6 @@
 	stand_cry = replacetext(stand_cry,"3",pick(VOWELS))
 	stand_cry = uppertext(stand_cry)
 
-
-
 	linked_stand = new /mob/living/advanced/stand(stand_user.loc)
 	linked_stand.name = name
 	linked_stand.sex = stand_user.gender
@@ -143,6 +141,9 @@
 	return TRUE
 
 /mob/living/verb/add_stand()
+
+	if(dead || qdeleting)
+		return FALSE
 
 	if(stand)
 		qdel(stand)

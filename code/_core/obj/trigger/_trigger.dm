@@ -2,7 +2,7 @@
 	name = "trigger"
 	invisibility = 101
 
-/obj/trigger/Crossed(var/atom/movable/O)
+/obj/trigger/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	. = ..()
 	on_trigger(O)
 	return .
@@ -136,21 +136,21 @@
 	..()
 	linked_object = new_linked_object
 
-/obj/trigger/transparency_trigger/Crossed(var/atom/crosser)
+/obj/trigger/transparency_trigger/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	..()
 
-	linked_object.crossed_objects += crosser
+	linked_object.crossed_objects += O
 
-	spawn(0)
+	spawn
 		if(length(linked_object.crossed_objects))
 			animate(linked_object,alpha = 100, time = SECONDS_TO_DECISECONDS(0.7))
 
-/obj/trigger/transparency_trigger/Uncrossed(var/atom/crosser)
+/obj/trigger/transparency_trigger/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	..()
 
-	linked_object.crossed_objects -= crosser
+	linked_object.crossed_objects -= O
 
-	spawn(0)
+	spawn
 		if(!length(linked_object.crossed_objects))
 			animate(linked_object,alpha = 255, time = SECONDS_TO_DECISECONDS(0.7))
 

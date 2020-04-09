@@ -1,0 +1,1 @@
+#define FALLBACK_TURF locate(VIEW_RANGE,VIEW_RANGE,1)

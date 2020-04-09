@@ -56,9 +56,9 @@ obj/structure/interactive/misc/mirror
 	icon_state = "mirror"
 
 
-obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/crosser)
-	if(is_player(crosser))
-		var/mob/living/advanced/player/P = crosser
+obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(is_player(O))
+		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()
 		P.handle_hairstyle_chargen(-1,update_blends=FALSE)
 		P.handle_beardstyle_chargen(-1,update_blends=FALSE)
@@ -67,9 +67,9 @@ obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/crosser)
 
 	return ..()
 
-obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/crosser)
-	if(is_advanced(crosser))
-		var/mob/living/advanced/player/P = crosser
+obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(is_advanced(O))
+		var/mob/living/advanced/player/P = O
 		P.remove_chargen_buttons()
 		//P.save()
 	return ..()

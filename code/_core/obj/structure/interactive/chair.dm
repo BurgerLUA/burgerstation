@@ -16,7 +16,7 @@ obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
 	return .
 
-obj/structure/interactive/chair/Crossed(var/atom/movable/O)
+obj/structure/interactive/chair/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 
 	. = ..()
 

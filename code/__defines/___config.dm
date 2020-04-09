@@ -1,6 +1,7 @@
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 55
+#define FPS_SERVER_MIN 30
 
 #define SHUTDOWN_SUBSYSTEM_ON_ERROR FALSE
 
@@ -77,7 +78,8 @@
 #define ITEM_DELETION_TIME_DROPPED 3000
 #define ITEM_DELETION_TIME_NEW 600
 
-#define WARN_ON_DUPLICATE_QDEL FALSE
+#define WARN_ON_DUPLICATE_QDEL TRUE
+#define CRASH_ON_DUPLICATE_QDEL TRUE
 
 #define CHAT_FONT_SIZE 0.25
 

@@ -40,11 +40,3 @@
 
 /mob/living/advanced/npc/get_xp_multiplier()
 	return 0
-
-
-/mob/living/advanced/check_death()
-
-	if(!health)
-		return FALSE
-
-	return health.health_current <= 0

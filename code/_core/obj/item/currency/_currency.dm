@@ -39,7 +39,7 @@
 
 	return value_added
 
-/obj/item/currency/Crossed(var/atom/movable/O)
+/obj/item/currency/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 
 	if(is_player(O))
 		var/mob/living/advanced/player/P = O

@@ -57,4 +57,4 @@
 					active_subsystems -= S
 
 		ticks += 1
-		sleep(TICK_LAG + lag_b_gone*0.1*TICK_LAG)
+		sleep(tick_lag)

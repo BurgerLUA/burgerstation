@@ -5,7 +5,7 @@
 	icon = 'icons/obj/effects/effects.dmi'
 	icon_state = "anom"
 
-/obj/structure/interactive/portal/Crossed(var/atom/movable/O)
+/obj/structure/interactive/portal/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 
 	if(!id)
 		return ..()

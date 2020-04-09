@@ -52,11 +52,15 @@
 	if(!health)
 		return FALSE
 
+	var/health_added = 0
 	if(status & FLAG_STATUS_ADRENALINE)
-		var/health_added = adrenaline_time < 0 ? 100 : max(adrenaline_time/2,100)
-		return health.health_current <= -health_added
+		health_added = adrenaline_time < 0 ? 100 : max(adrenaline_time,200)
 
-	return health.health_current <= 0
+	if(health.health_current <= death_threshold - health_added)
+		to_chat("Dead because your health ([health.health_current] is less than or equal to [death_threshold - health_added].")
+		return TRUE
+
+	return FALSE
 
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 

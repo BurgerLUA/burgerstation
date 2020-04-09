@@ -50,10 +50,10 @@
 	SSlighting.total_lighting_sources--
 
 	remove_lum()
-	if (source_atom)
+	if(source_atom)
 		LAZYREMOVE(source_atom.light_sources, src)
 
-	if (top_atom)
+	if(top_atom)
 		LAZYREMOVE(top_atom.light_sources, src)
 
 	top_atom = null
@@ -66,8 +66,9 @@
 	if(affecting_turfs)
 		affecting_turfs.Cut()
 
-	return ..()
+	SSlighting.light_queue -= src
 
+	return ..()
 
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
 // Anything pixelshifted 16px or more will be considered on the next tile.
@@ -280,8 +281,20 @@
 /light_source/proc/update_corners(now = FALSE)
 	var/update = FALSE
 
-	if (!source_atom || source_atom.qdeleting)
-		qdel(src)
+	if (!source_atom)
+		if(src.qdeleting)
+			log_error("!source_atom: Attempted to delete light in update_corners(), however the light was already deleted.")
+		else
+			log_error("!source_atom: There existed a light_source within a source_atom that didn't get deleted properly.")
+			qdel(src)
+		return
+
+	if(source_atom.qdeleting)
+		if(src.qdeleting)
+			log_error("source_atom.qdeleting: Attempted to delete light in update_corners(), however the light was already deleted.")
+		else
+			log_error("source_atom.qdeleting: There existed a light_source within a source_atom that didn't get deleted properly.")
+			qdel(src)
 		return
 
 	if (source_atom.light_power != light_power)

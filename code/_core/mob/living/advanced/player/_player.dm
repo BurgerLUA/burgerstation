@@ -40,6 +40,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	health_base = 100
 	stamina_base = 100
 	mana_base = 100
+	death_threshold = -100
 
 	var/attack_mode = 1
 	var/list/attack_left = list(
@@ -96,7 +97,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 /mob/living/advanced/player/Destroy()
 
 	if(client)
-		make_ghost(src.loc ? src.loc : locate(1,1,1))
+		make_ghost(src.loc ? src.loc : FALLBACK_TURF)
 
 	dialogue_target = null
 

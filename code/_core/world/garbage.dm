@@ -8,13 +8,7 @@ var/global/list/qdel_refs_to_type = list()
 /proc/qdel(var/datum/object)
 
 	if(is_datum(object))
-
-		/*
-		if(istype(object,/atom/))
-			var/atom/A = object
-			text2file("Deleting object [A]([A.x])([A.y])([A.z]) of type [A.type].",GARBAGE_LOGS_PATH)
-		*/
-
+		var/do_crash = FALSE
 		if(!object.qdel_warning)
 			object.qdel_attempts += 1
 			if(object.qdel_attempts >= 2)
@@ -23,6 +17,8 @@ var/global/list/qdel_refs_to_type = list()
 					var/warning_message = "Datum of type [object.type] was queued for delete [object.qdel_attempts] times!"
 					log_error(warning_message)
 					text2file(warning_message,GARBAGE_LOGS_PATH)
+					if(CRASH_ON_DUPLICATE_QDEL)
+						do_crash = TRUE
 
 		if(!object.qdeleting)
 			object.qdeleting = TRUE
@@ -31,8 +27,13 @@ var/global/list/qdel_refs_to_type = list()
 				var/warning_message = "Datum of type [object.type] did not have a proper destroy call!"
 				log_error(warning_message)
 				text2file(warning_message,GARBAGE_LOGS_PATH)
-
 			return TRUE
+
+		if(do_crash)
+			CRASH("Datum of type [object.type] was queued for delete [object.qdel_attempts] times!")
+
+
+
 
 
 	return FALSE

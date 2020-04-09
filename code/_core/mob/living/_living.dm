@@ -19,6 +19,8 @@
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
+	var/death_threshold = 0 //If you're below this health, then you're dead.
+
 	var/status = 0 //Negative status
 
 	var/stun_time = 0
@@ -121,7 +123,7 @@
 
 	has_footsteps = TRUE
 
-	var/obj/effect/temp/alert/stored_alert_effect //For AI
+	var/obj/effect/stored_alert_effect //For AI
 
 	var/table_count = 0
 
@@ -182,6 +184,10 @@
 
 	qdel(stored_alert_effect)
 	stored_alert_effect = null
+
+	if(client)
+		log_error("WARNING: [src]([src.type]) deleted itself while there was still a client ([client]) attached!")
+		client.make_ghost(FALLBACK_TURF)
 
 	return ..()
 
@@ -266,7 +272,7 @@
 				B.target_boss = src
 				B.update_stats()
 
-	if(spawn_blood)
+	if(reagents && spawn_blood)
 		reagents.add_reagent(spawn_blood,BLOOD_LEVEL_DEFAULT)
 
 	return .

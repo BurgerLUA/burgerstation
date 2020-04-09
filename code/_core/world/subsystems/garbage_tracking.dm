@@ -1,5 +1,7 @@
 var/global/list/ref_id_to_warning = list()
 
+#define GARBAGE_TIME_WARNING 60 //Time in seconds, to alert the server that an object is having difficulty being deleted.
+
 SUBSYSTEM_DEF(garbage_tracking)
 	name = "Garbage Subsystem"
 	desc = "Powered by raw shitcode."
@@ -22,9 +24,16 @@ SUBSYSTEM_DEF(garbage_tracking)
 				ref_id_to_warning[ref_id] = TICKS_TO_SECONDS(tick_rate)
 			else
 				ref_id_to_warning[ref_id] += TICKS_TO_SECONDS(tick_rate)
+
+			if(!found_datum.qdel_warning_time && ref_id_to_warning[ref_id] >= GARBAGE_TIME_WARNING)
+				text2file("Warning: [found_datum]([found_datum.type]) is taking more than [GARBAGE_TIME_WARNING] seconds to delete!",GARBAGE_LOGS_PATH)
+				found_datum.qdel_warning_time = TRUE
+
 		else
 			ref_id_to_warning -= ref_id
 			qdel_refs_to_type -= ref_id
+
+
 
 	return TRUE
 

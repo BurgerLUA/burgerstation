@@ -24,7 +24,7 @@
 	return ..() * M.value_per_unit
 
 
-/obj/item/material/Crossed(var/atom/movable/O)
+/obj/item/material/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 
 	if(!istype(O,/obj/item/material))
 		return ..()

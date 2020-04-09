@@ -18,11 +18,10 @@
 
 /obj/Destroy()
 
-	for(var/blend_id in additional_blends)
-		var/icon_blend/IB = additional_blends[blend_id]
-		qdel(IB)
-
 	if(additional_blends)
+		for(var/blend_id in additional_blends)
+			var/icon_blend/IB = additional_blends[blend_id]
+			qdel(IB)
 		additional_blends.Cut()
 
 	loc = null

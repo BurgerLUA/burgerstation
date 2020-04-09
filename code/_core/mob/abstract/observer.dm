@@ -63,12 +63,6 @@
 
 	return .
 
-/mob/abstract/observer/Logout()
-	. = ..()
-	qdel(src)
-	return .
-
-
 /mob/abstract/observer/verb/spawn_syndicate()
 
 	if(lowertext(ckey) != "burgerbb")

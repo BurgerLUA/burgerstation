@@ -1,5 +1,3 @@
-var/global/lag_b_gone = 0
-
 SUBSYSTEM_DEF(lag_b_gone)
 	name = "Lag-B-Gone Subsystem"
 	desc = "Controls how fast everything runs. Slows down subsystems if they lag."
@@ -8,17 +6,19 @@ SUBSYSTEM_DEF(lag_b_gone)
 
 	var/was_active = FALSE
 
+	var/fps_decrease = 0
+
 /subsystem/lag_b_gone/on_life()
 
 	if(world.tick_usage >= 75)
-		lag_b_gone = min(lag_b_gone + 1,10)
-	else if (world.tick_usage < 25)
-		lag_b_gone = max(lag_b_gone - 0.05,0)
+		fps_decrease = max(FPS_SERVER_MIN,fps_decrease-1)
+	else if (world.tick_usage <= 25)
+		fps_decrease = min(fps_decrease+1,FPS_SERVER)
 
-	if(lag_b_gone && !was_active)
+	if(fps_decrease < 0 && !was_active)
 		broadcast_to_clients("Lag-B-Gone is now active.")
 		was_active = TRUE
-	else if(!lag_b_gone && was_active)
+	else if(fps_decrease >= 0 && was_active)
 		broadcast_to_clients("Lag-B-Gone is now inactive.")
 		was_active = FALSE
 

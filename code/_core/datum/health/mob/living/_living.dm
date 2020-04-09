@@ -20,7 +20,10 @@
 			var/health_icon_state
 
 			if(L.dead)
-				health_icon_state = "dead"
+				if(L.client)
+					health_icon_state = "revive"
+				else
+					health_icon_state = "dead"
 			else if (L.status & FLAG_STATUS_CRIT)
 				health_icon_state = "crit"
 			else

@@ -23,7 +23,7 @@
 	P.known_debug_messages[id] = TRUE
 	return P.to_chat(span("debug_message",message))
 
-/obj/trigger/debug_message/Crossed(var/atom/movable/O)
+/obj/trigger/debug_message/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	if(is_player(O) && id)
 		var/mob/living/advanced/player/P = O
 		if(!P.known_debug_messages[id])

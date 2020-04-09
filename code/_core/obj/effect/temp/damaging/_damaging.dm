@@ -28,7 +28,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 	return ..()
 
-/obj/effect/temp/hazard/Crossed(atom/movable/O)
+/obj/effect/temp/hazard/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	if(cross_hazard && is_living(O))
 		attack(owner,O,ignore_distance = TRUE)
 

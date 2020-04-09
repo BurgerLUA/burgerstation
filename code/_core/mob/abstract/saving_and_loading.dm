@@ -37,6 +37,7 @@
 			else
 				P.force_move(T)
 			P.start_chargen()
+			qdel(src)
 			return TRUE
 		else
 			log_error("Something went wrong!")
@@ -66,7 +67,10 @@
 		return FALSE
 
 	var/file_num = name_to_choice[choice]
-	return C.load(U,file_num)
+
+	. = C.load(U,file_num)
+	qdel(src)
+	return .
 
 /mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Load Most Recent Character"
@@ -82,7 +86,10 @@
 		return FALSE
 
 	var/file_num = U.get_proper_id_from_filename(files[1])
-	return C.load(U,file_num)
+
+	. = C.load(U,file_num)
+	qdel(src)
+	return .
 
 /client/proc/load(var/savedata/client/mob/U,var/file_num)
 
@@ -91,15 +98,8 @@
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
 	stop_music_track(src)
 
-	var/turf/T = mob.loc ? mob.loc : locate(1,1,1)
-
-	qdel(src.mob)
-
-	var/mob/living/advanced/player/P = new(T,src)
+	var/mob/living/advanced/player/P = new(FALLBACK_TURF,src)
 	P.mobdata = U
 	INITIALIZE(P)
-	//sP.handle_hairstyle_chargen(-1,update_blends=FALSE)
-	//P.handle_beardstyle_chargen(-1,update_blends=FALSE)
-	//P.update_all_blends()
 
 	return P

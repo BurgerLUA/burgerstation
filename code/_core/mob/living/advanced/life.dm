@@ -108,17 +108,6 @@ mob/living/advanced/revive()
 
 	return TRUE
 
-/mob/living/advanced/check_death()
-
-	if(!health)
-		return FALSE
-
-	if(status & FLAG_STATUS_ADRENALINE)
-		var/health_added = adrenaline_time < 0 ? 100 : max(adrenaline_time,200)
-		return health.health_current <= -health_added
-
-	return health.health_current <= -100
-
 /mob/living/advanced/handle_health_buffer()
 
 	if(!health)

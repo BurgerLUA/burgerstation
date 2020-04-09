@@ -146,7 +146,7 @@ var/global/list/all_clients = list()
 		control_mob(found_mob)
 	else
 		welcome()
-		make_ghost(locate(VIEW_RANGE,VIEW_RANGE,1))
+		make_ghost(FALLBACK_TURF)
 		if(world_state == STATE_RUNNING)
 			play_music_track("intro", src)
 		else

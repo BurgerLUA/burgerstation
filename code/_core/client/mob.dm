@@ -1,4 +1,8 @@
 /client/proc/make_ghost(var/turf/desired_loc)
+
+	if(!desired_loc)
+		desired_loc = FALLBACK_TURF
+
 	var/mob/abstract/observer/O = new(desired_loc,src)
 	INITIALIZE(O)
 	O.force_move(desired_loc)

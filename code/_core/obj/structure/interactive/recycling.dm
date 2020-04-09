@@ -31,7 +31,7 @@
 	placing_turf = get_step(src,EAST)
 	return ..()
 
-/obj/structure/interactive/recycler/Crossed(var/atom/movable/O)
+/obj/structure/interactive/recycler/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	recycle(O)
 	return ..()
 

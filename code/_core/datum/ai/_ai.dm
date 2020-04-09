@@ -506,13 +506,13 @@
 		owner.stored_alert_effect = null
 
 	if(new_alert_level == ALERT_LEVEL_ALERT)
-		owner.stored_alert_effect = new /obj/effect/temp/alert/exclaim(owner.loc)
+		owner.stored_alert_effect = new /obj/effect/alert/exclaim(owner)
 
 	else if(new_alert_level == ALERT_LEVEL_CAUTION)
-		owner.stored_alert_effect = new /obj/effect/temp/alert/question(owner.loc)
+		owner.stored_alert_effect = new /obj/effect/alert/question(owner)
 
 	else if(new_alert_level == ALERT_LEVEL_NOISE)
-		owner.stored_alert_effect = new /obj/effect/temp/alert/huh(owner.loc)
+		owner.stored_alert_effect = new /obj/effect/alert/huh(owner)
 
 	owner.move_dir = 0
 
