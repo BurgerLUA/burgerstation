@@ -11,6 +11,8 @@
 
 	var/open = FALSE
 
+	initialize_type = INITIALIZE_LATE
+
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()

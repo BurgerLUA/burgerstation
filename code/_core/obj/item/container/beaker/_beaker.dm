@@ -55,14 +55,14 @@
 		if(is_living(object))
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
-
 		else if(is_item(object) && object.reagents)
 			var/obj/item/I = object
 			if(I.allow_beaker_transfer)
 				var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount)
 				caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
+		return TRUE
 
-	return TRUE
+	return ..()
 
 /obj/item/container/beaker/proc/consume(var/mob/caller,var/mob/living/consumer)
 
@@ -113,4 +113,4 @@
 
 		icon = I
 
-	..()
+	return ..()

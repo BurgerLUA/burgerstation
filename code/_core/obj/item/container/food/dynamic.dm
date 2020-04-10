@@ -25,31 +25,31 @@
 /obj/item/container/food/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
-
 		var/original_volume = reagents.volume_current
-
 		var/pieces = FLOOR(original_volume/10, 1)
-
 		if(has_prefix(icon_state,"dough"))
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
 					L.to_chat("There isn't enough dough to cut!")
 				return FALSE
-
-			for(var/i=1,i<=pieces,i++)
+			for(var/i=1,i<=pieces-1,i++)
 				var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
 				if(raw_icon_state == "dough_flat")
 					B.raw_icon_state = "dough_slice"
 				B.update_sprite()
 				reagents.transfer_reagents_to(B.reagents,original_volume/pieces)
-				animate(B,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+				animate(B,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=5)
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into [pieces] pieces.")
 
-			qdel(src)
+			if(raw_icon_state == "dough_flat")
+				raw_icon_state = "dough_slice"
+			update_sprite()
+			animate(src,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=5)
+
 		else if(icon_state == "bun_whole")
 			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
 			reagents.transfer_reagents_to(B.reagents,reagents.volume_current/2)
@@ -61,7 +61,6 @@
 			B.update_sprite()
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
-
 		if(has_prefix(icon_state,"dough") && raw_icon_state != "dough_flat")
 			raw_icon_state = "dough_flat"
 			cooked_icon_state = "bread_flat"
@@ -75,12 +74,18 @@
 /obj/item/container/food/dynamic/bread/can_be_attacked(var/atom/attacker)
 	return TRUE
 
+
+/obj/item/container/food/dynamic/bread/update_sprite()
+
+	if(reagents)
+		color = reagents.color
+
+	return ..()
+
 /obj/item/container/food/dynamic/bread/update_icon()
 
-	if(!reagents || !reagents.stored_reagents || !length(reagents.stored_reagents))
+	if(!reagents)
 		return ..()
-
-	color = reagents.color
 
 	var/total_dough = 0
 	var/total_bread = 0
@@ -98,26 +103,17 @@
 
 	for(var/reagent_id in reagents.stored_reagents)
 		var/amount = reagents.stored_reagents[reagent_id]
-
 		wetness += all_reagents[reagent_id].liquid*(amount/reagents.volume_current)
-
 		if(has_prefix(reagent_id,"dough_"))
-
 			total_dough += amount
-
 			if(best_dough_reagent_id && best_dough_reagent_amount >= amount)
 				continue
-
 			best_dough_reagent_id = reagent_id
 			best_dough_reagent_amount = amount
-
 		if(has_prefix(reagent_id,"bread_"))
-
 			total_bread += amount
-
 			if(best_bread_reagent_id && best_bread_reagent_amount >= amount)
 				continue
-
 			best_bread_reagent_id = reagent_id
 			best_bread_reagent_amount = amount
 
@@ -155,6 +151,5 @@
 		raw_icon_state = "dough_ball_small"
 
 	icon_state = cooked_percent > 0.5 ? cooked_icon_state : raw_icon_state
-	color = reagents.color
 
-	return ..()
+	return TRUE

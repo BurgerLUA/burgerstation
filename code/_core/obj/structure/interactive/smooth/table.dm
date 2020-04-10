@@ -12,12 +12,37 @@ obj/structure/smooth/table
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+/* Just hold Q lol
+obj/structure/smooth/table/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(!is_living(caller))
+		return ..()
+
+	INTERACT_CHECK
+
+	var/mob/living/L = caller
+
+	if(L.intent == INTENT_HARM)
+		return ..()
+
+	if(is_item(object) && is_inventory(object.loc))
+		var/obj/item/I = object
+		var/obj/hud/inventory/I2 = object.loc
+		if(!params)
+			params = list(PARAM_ICON_X = 16,PARAM_ICON_Y=16)
+		I2.remove_object(I,src.loc,params[PARAM_ICON_X],params[PARAM_ICON_Y])
+		return TRUE
+
+	return ..()
+*/
 
 obj/structure/smooth/table/dropped_on_by_object(var/atom/caller,var/atom/object)
 
-	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
-		var/obj/structure/S = object
-		S.force_move(src.loc)
+	if((is_item(object) || is_structure(object)) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
+		var/obj/O = object
+		if(anchored)
+			return FALSE
+		O.force_move(src.loc)
 		return TRUE
 
 	return ..()

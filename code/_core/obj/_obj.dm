@@ -16,6 +16,8 @@
 	//FLAG_QUICK_INSTANT
 	//FLAG_QUICK_TOGGLE
 
+	var/spawned = FALSE
+
 /obj/Destroy()
 
 	if(additional_blends)
@@ -27,5 +29,6 @@
 	loc = null
 	return ..()
 
-/obj/proc/on_spawn() //When the object is spawned on the map and not loaded.
+/obj/proc/on_spawn() //When the object is spawned on the map or through other generation means.
+	spawned = TRUE
 	return TRUE

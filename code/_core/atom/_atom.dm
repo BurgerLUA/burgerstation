@@ -38,6 +38,8 @@
 
 	var/ignore_incoming_collisons = FALSE //TODO: Replace with tiny.
 
+	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
+
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
 	overlays += desired_overlay

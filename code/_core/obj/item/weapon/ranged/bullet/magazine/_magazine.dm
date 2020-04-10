@@ -20,7 +20,8 @@
 
 	if(stored_magazine)
 		stored_magazine = new stored_magazine(src)
-		stored_magazine.on_spawn()
+		INITIALIZE(stored_magazine)
+		SPAWN(stored_magazine)
 		open = FALSE
 		update_sprite()
 

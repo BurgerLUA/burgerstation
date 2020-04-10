@@ -23,3 +23,6 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 
 
 #define INITIALIZE(A) (A.initialized ? log_error("WARNING: [A]([A.type]) was initialized more than once!") : A.Initialize())
+
+
+#define SPAWN(A) (A.spawned ? log_error("WARNING: [A]([A.type]) was spawned more than once!") : A.on_spawn())

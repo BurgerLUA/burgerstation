@@ -15,7 +15,8 @@
 
 	var/obj/item/I = pickweight(loot_table)
 	I = new I(spawn_loc)
-	I.on_spawn()
+	INITIALIZE(I)
+	SPAWN(I)
 
 	return I
 
@@ -29,7 +30,8 @@
 
 	var/obj/item/I = pickweight(loot_table)
 	I = new I(get_turf(C))
-	I.on_spawn()
+	INITIALIZE(I)
+	SPAWN(I)
 
 	C.add_to_inventory(null,I,FALSE)
 

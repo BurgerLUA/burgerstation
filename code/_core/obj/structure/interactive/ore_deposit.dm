@@ -31,7 +31,8 @@
 
 	var/obj/item/material/ore/O = new(get_turf(src))
 	O.material_id = src.material_id
-	O.on_spawn()
+	INITIALIZE(O)
+	SPAWN(O)
 
 	var/move_direction = get_dir(src,caller)
 

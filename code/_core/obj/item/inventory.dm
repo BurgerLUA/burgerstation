@@ -32,7 +32,8 @@
 /obj/item/proc/fill_inventory()
 
 	for(var/obj/item/I in contents)
-		I.on_spawn()
+		INITIALIZE(I)
+		SPAWN(I)
 		add_to_inventory(null,I,FALSE,TRUE)
 
 	return TRUE

@@ -17,7 +17,8 @@
 /obj/item/storage/ammo/bullet_22/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
 		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/pistol_22(src)
-		B.on_spawn()
+		INITIALIZE(B)
+		SPAWN(B)
 		B.update_sprite()
 	return ..()
 
@@ -33,9 +34,7 @@
 
 /obj/item/storage/ammo/slug/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/shotgun/slug(src)
-		B.on_spawn()
-		B.update_sprite()
+		new /obj/item/bullet_cartridge/shotgun/slug(src)
 	return ..()
 
 /obj/item/storage/ammo/buckshot
@@ -49,7 +48,5 @@
 
 /obj/item/storage/ammo/buckshot/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-		B.on_spawn()
-		B.update_sprite()
+		new /obj/item/bullet_cartridge/shotgun/buckshot(src)
 	return ..()

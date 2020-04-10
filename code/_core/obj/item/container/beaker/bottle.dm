@@ -48,4 +48,14 @@
 
 	reagents = /reagent_container/beaker/bottle/
 
-	value = 1
+	value = 10
+
+/obj/item/container/beaker/bowl
+	name = "glass mixing bowl"
+	icon = 'icons/obj/items/container/cup/bowl.dmi'
+	icon_state = "bowl"
+	icon_count = 23
+
+	reagents = /reagent_container/beaker/large/
+
+	value = 25

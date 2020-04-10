@@ -11,6 +11,8 @@
 
 	mouse_opacity = 1
 
+	initialize_type = INITIALIZE_LATE
+
 /obj/structure/interactive/shop/Destroy()
 
 	qdel(stored_item)
@@ -18,7 +20,7 @@
 
 	return ..()
 
-/obj/structure/interactive/shop/proc/initialize_shop()
+/obj/structure/interactive/shop/Initialize()
 
 	. = ..()
 
@@ -32,7 +34,6 @@
 
 	stored_item = pick(possible_items)
 	stored_item.force_move(src)
-	stored_item.on_spawn()
 	possible_items -= stored_item
 
 	for(var/obj/item/I in possible_items)
@@ -110,7 +111,7 @@
 	if(P.currency >= stored_item_cost && P.spend_currency(stored_item_cost)) //Just in case
 		spawn()
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
-			new_item.on_spawn()
+			SPAWN(new_item)
 			new_item.update_sprite()
 			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))

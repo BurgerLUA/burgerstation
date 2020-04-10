@@ -46,7 +46,8 @@
 
 	var/obj/item/new_item
 	new_item = new associated_item.type(get_turf(src))
-	new_item.on_spawn()
+	INITIALIZE(new_item)
+	SPAWN(new_item)
 	new_item.update_sprite()
 	if(P)
 		if(item_value)
@@ -62,15 +63,15 @@
 
 	var/turf/T = get_turf(src)
 
-	for(var/I in stored_types)
-		new I(src.loc)
+	for(var/S in stored_types)
+		var/obj/item/I = new S(src.loc)
+		INITIALIZE(I)
+		SPAWN(I)
 	stored_types.Cut()
 
 	for(var/obj/item/I in T.contents)
-		I.on_spawn()
 		stored_objects += I
 		I.force_move(src)
-		I.update_sprite()
 		I.plane = PLANE_HUD_OBJ
 		I.pixel_y = 4
 
@@ -112,6 +113,7 @@
 	CV.update_sprite()
 
 /obj/structure/interactive/vending/proc/hide_buttons_from(var/mob/living/advanced/A)
+
 	for(var/obj/hud/button/vendor/V in A.buttons)
 		V.update_owner(null)
 

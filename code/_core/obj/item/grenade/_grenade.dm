@@ -47,9 +47,11 @@
 	. = ..()
 
 	for(var/obj/item/I in stored_containers)
-		I.on_spawn()
+		INITIALIZE(I)
+		SPAWN(I)
 
-	stored_trigger.on_spawn()
+	INITIALIZE(stored_trigger)
+	SPAWN(stored_trigger)
 
 	update_sprite()
 
