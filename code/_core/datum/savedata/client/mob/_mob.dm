@@ -14,7 +14,9 @@
 		"skills" = list(),
 		"attributes" = list(),
 		"currency" = 0,
-		"known_topics" = list()
+		"known_topics" = list(),
+		"nutrition" = 1000,
+		"hydration" = 1000
 	)
 
 /savedata/client/mob/New(var/client/new_owner)

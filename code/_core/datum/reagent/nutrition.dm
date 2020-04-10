@@ -14,12 +14,18 @@
 
 	var/keywords = "none"
 
+	value = 1
+
 /reagent/core/nutrition/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
 
 	. = ..()
 
 	if(owner && owner.health)
 		owner.health.adjust_loss_smart(brute=-.*nutrition_amount,burn=-.*nutrition_amount,tox=-.*nutrition_amount,oxy=-.*nutrition_amount)
+		if(is_living(owner))
+			var/mob/living/L = owner
+			L.add_nutrition(nutrition_amount)
+
 
 	return .
 
@@ -256,6 +262,8 @@
 	nutrition_amount = 0.2 NUT_FACTOR
 
 	flavor = "grease"
+
+	value = 0.2
 
 
 /reagent/core/nutrition/junk/chips

@@ -14,6 +14,17 @@
 
 	flavor = "iron"
 
+/reagent/core/iron/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		if(L.spawn_blood && L.reagents && L.spawn_blood == "blood")
+			L.reagents.add_reagent("blood",.)
+
+	return .
+
 /reagent/core/oxygen //Found in the snow biome as a magic plant
 	name = "Liquid Oxygen"
 	id = "oxygen"

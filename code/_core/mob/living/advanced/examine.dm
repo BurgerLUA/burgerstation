@@ -26,19 +26,28 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 			var/object_icon = ICON_TO_HTML(I.icon,I.icon_state)
 			. += div("notice"," [object_icon] [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
 
-	if(survival_skill > 50)
-		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
-
 	var/final_pronoun = "They"
 	if(examiner == src)
 		final_pronoun = "You"
 
+	if(survival_skill > 50)
+		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
+
 	if(health)
-		if(health.damage[TOX] > 10)
+		if(health.damage[TOX] >= 25)
 			. += div("warning","[final_pronoun] looks a bit sickly.")
 
-		if(health.damage[OXY] > 10)
+		if(health.damage[OXY] >= 25)
 			. += div("warning","[final_pronoun] looks a bit pale.")
+
+	if(status & FLAG_STATUS_CRIT)
+		. += list(div("warning","They do not appear to be breathing."))
+
+	if(dead)
+		if(client)
+			. += list(div("warning","They lay dead and lifeless."))
+		else
+			. += list(div("warning","They lay dead and lifeless, and their soul has departed."))
 
 	for(var/obj/item/organ/O in src.organs)
 		if(!O.health)

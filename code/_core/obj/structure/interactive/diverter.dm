@@ -89,7 +89,22 @@
 
 /obj/structure/interactive/diverter/living
 	name = "airjet diverter (living)"
-	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object is a person or a creature, alive or dead."
+	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object is a living person or a creature."
 
 /obj/structure/interactive/diverter/living/should_push(var/atom/movable/M)
-	return is_living(M)
+
+	if(is_living(M))
+		var/mob/living/L = M
+		if(!L.dead)
+			return TRUE
+
+	return FALSE
+
+
+
+/obj/structure/interactive/diverter/weapon
+	name = "airjet diverter (weapon)"
+	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks if it's a weapon."
+
+/obj/structure/interactive/diverter/weapon/should_push(var/atom/movable/M)
+	return is_weapon(M)

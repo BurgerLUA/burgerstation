@@ -116,3 +116,22 @@
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/dylovene(src)
 	return ..()
+
+
+/obj/item/storage/bags/pills/iron
+	name = "iron pill bottle"
+	desc = "Contains 20 20u iron pills."
+
+/obj/item/storage/bags/pills/iron/fill_inventory()
+	for(var/i=1,i<=20,i++)
+		new /obj/item/container/pill/iron(src)
+	return ..()
+
+/obj/item/storage/bags/pills/iron_small
+	name = "iron pill bottle"
+	desc = "Contains 10 20u iron pills."
+
+/obj/item/storage/bags/pills/iron_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/pill/iron(src)
+	return ..()

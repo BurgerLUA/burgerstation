@@ -4,7 +4,7 @@
 	icon_state = "potion"
 	icon_count = 16
 
-	reagents = /reagent_container/beaker/potion/large
+	reagents = /reagent_container/beaker/bottle/large
 
 
 /obj/item/container/beaker/bottle/large/water

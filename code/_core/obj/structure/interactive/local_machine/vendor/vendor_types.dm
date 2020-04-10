@@ -114,6 +114,7 @@
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/syringe/epinephrine,
+		/obj/item/storage/bags/pills/iron_small,
 		/obj/item/storage/bags/pills/kelotane_small,
 		/obj/item/storage/bags/pills/dylovene_small,
 		/obj/item/storage/bags/pills/bicaridine_small
@@ -345,4 +346,12 @@ var/global/list/equipped_players = list()
 		/obj/item/container/pill/bicaridine,
 		/obj/item/container/pill/dylovene,
 		/obj/item/container/pill/kelotane
+	)
+
+/obj/structure/interactive/vending/dinnerware
+	name = "dinnerware vendor"
+	icon_state = "dinnerware"
+
+	stored_types = list(
+		/obj/item/container/beaker/glass
 	)

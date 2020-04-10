@@ -4,7 +4,7 @@
 	icon_state = "bottle"
 	icon_count = 7
 
-	reagents = /reagent_container/beaker/potion/
+	reagents = /reagent_container/beaker/bottle/
 
 	value = 3
 
@@ -46,6 +46,6 @@
 	icon_state = "cup"
 	icon_count = 15
 
-	reagents = /reagent_container/beaker/glass/
+	reagents = /reagent_container/beaker/bottle/
 
 	value = 1

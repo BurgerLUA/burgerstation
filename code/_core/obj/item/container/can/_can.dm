@@ -7,7 +7,7 @@
 	icon = 'icons/obj/items/container/cup/cans_new.dmi'
 	icon_state = ""
 
-	reagents = /reagent_container/beaker/
+	reagents = /reagent_container/beaker/bottle/
 
 	allow_beaker_transfer = TRUE
 
@@ -61,6 +61,9 @@
 /obj/item/container/beaker/can/iced_tea/on_spawn()
 	reagents.add_reagent("iced_tea",reagents.volume_max)
 	return ..()
+
+/obj/item/container/beaker/can/grey_bull/
+	reagents = /reagent_container/beaker/
 
 /obj/item/container/beaker/can/grey_bull/on_spawn()
 	reagents.add_reagent("grey_bull",reagents.volume_max)

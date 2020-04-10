@@ -8,17 +8,13 @@
 	volume_max = 120
 
 
-/reagent_container/beaker/potion
+/reagent_container/beaker/bottle
 	volume_max = 30
 
 
-/reagent_container/beaker/potion/large
+/reagent_container/beaker/bottle/large
 	volume_max = 180
 
 
 /reagent_container/beaker/vial/
 	volume_max = 15
-
-
-/reagent_container/beaker/glass
-	volume_max = 30

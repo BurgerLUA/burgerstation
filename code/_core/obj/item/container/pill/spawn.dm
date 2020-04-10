@@ -18,3 +18,10 @@
 /obj/item/container/pill/dylovene/on_spawn()
 	reagents.add_reagent("dylovene",20)
 	return ..()
+
+/obj/item/container/pill/iron
+	name = "iron pill (20u)"
+
+/obj/item/container/pill/iron/on_spawn()
+	reagents.add_reagent("iron",20)
+	return ..()

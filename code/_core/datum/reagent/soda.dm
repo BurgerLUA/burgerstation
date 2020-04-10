@@ -4,9 +4,23 @@
 	desc = "Carbonated water."
 	color = "#DDFFFF"
 
-	nutrition_amount = 0.2 NUT_FACTOR
+	nutrition_amount = 0.05 NUT_FACTOR
 
 	flavor = "white noise"
+
+	var/hydration_amount = 0.1 NUT_FACTOR
+
+	value = 0.15
+
+/reagent/core/nutrition/soda/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+
+	. = ..()
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.add_hydration(. * hydration_amount)
+
+	return .
 
 /reagent/core/nutrition/soda/cola
 	name = "\improper Space Cola"
