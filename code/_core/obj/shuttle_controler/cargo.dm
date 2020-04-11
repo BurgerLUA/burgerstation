@@ -14,22 +14,18 @@
 		return TRUE
 
 	if(A.qdeleting)
-		world.log << "Cannot sell the [A] as it is being deleted."
 		return FALSE
 
 	if(ismob(A))
 		var/mob/M = A
 		if(M.client || M.ckey_last)
-			world.log << "Cannot sell the [M] as it contains a client."
 			return FALSE
 
 	if(!(istype(A,/obj/item/) || istype(A,/obj/structure/) || istype(A,/obj/hud/inventory)))
-		world.log << "Cannot sell the [A] as it is not an /obj/item/ or an /obj/structure/, but a [A.type]."
 		return FALSE
 
 	for(var/atom/A2 in A.contents)
 		if(!is_safe_delete(A2))
-			world.log << "A [A2] was found inside [A] so it cannot be deleted."
 			return FALSE
 
 	return TRUE
@@ -41,7 +37,6 @@
 		var/total_value = 0
 		for(var/obj/O in A.contents)
 			if(!is_safe_delete(O))
-				world.log << "Cannot sell \the [O.name]!"
 				continue
 			var/calculated_value = CEILING(O.calculate_value(),1)
 			if(calculated_value <= 0)

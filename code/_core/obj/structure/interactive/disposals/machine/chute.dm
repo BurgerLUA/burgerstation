@@ -40,7 +40,7 @@
 		I.drop_item(get_turf(src))
 	return ..()
 
-/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object)
+/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 

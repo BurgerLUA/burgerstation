@@ -66,7 +66,7 @@
 
 	return FALSE
 
-/atom/proc/drop_on_object(var/atom/caller,var/atom/object)
+/atom/proc/drop_on_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(!object)
 		return FALSE
@@ -74,7 +74,7 @@
 	var/atom/defer_self = src.defer_click_on_object()
 	var/atom/defer_object = object.defer_click_on_object()
 
-	if(src != defer_self && defer_self.drop_on_object(caller,defer_object))
+	if(src != defer_self && defer_self.drop_on_object(caller,defer_object,location,control,params))
 		return TRUE
 
 	if(src != defer_self && object && object.dropped_on_by_object(caller,defer_self))
@@ -82,11 +82,6 @@
 
 	if(object && object.dropped_on_by_object(caller,src))
 		return TRUE
-
-	/* ADDING THIS CAUSES ISSUES.
-	if(click_on_object(caller,object))
-		return TRUE
-	*/
 
 	return FALSE
 

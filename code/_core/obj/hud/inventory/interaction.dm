@@ -120,16 +120,14 @@
 	item_to_wield.update_sprite() //This will also update the inventory.
 	return TRUE
 
-/obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object)
+/obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object,location,control,params) //Object dropped on src
 
-	. = ..()
-
-	if(!. && is_item(object) && get_dist(caller,object) <= 1)
+	if(is_item(object) && get_dist(caller,object) <= 1)
 		var/obj/item/object_as_item = object
 		if(src.add_object(object_as_item))
 			return TRUE
 
-	return .
+	return ..()
 
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
 	return src.loc

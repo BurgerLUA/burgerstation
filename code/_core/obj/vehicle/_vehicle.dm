@@ -134,7 +134,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/drop_on_object(caller,object) //Exit the vehicle.
+/mob/living/vehicle/drop_on_object(caller,object,location,control,params) //Exit the vehicle.
 
 	if(!length(passengers) || !passengers[1] || !is_living(passengers[1]) || !get_turf(object) || get_dist(src,object) > 1)
 		return ..()

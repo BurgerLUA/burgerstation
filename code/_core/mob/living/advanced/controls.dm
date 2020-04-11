@@ -123,25 +123,29 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	return FALSE
 
 
-/mob/living/advanced/on_left_drop(var/atom/src_object,over_object,src_location,over_location,src_control,over_control,aug)
+/mob/living/advanced/on_left_drop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
 	. = ..()
 
 	if(!.)
 		return .
 
-	if(src_object && over_object) src_object.drop_on_object(src,over_object)
+	world.log << "src_object: [src_object.type]"
+	world.log << "over_object: [over_object.type]"
+
+
+	if(src_object && over_object) src_object.drop_on_object(src,over_object,over_location,over_control,params)
 
 	return .
 
-/mob/living/advanced/on_right_drop(var/atom/src_object,over_object,src_location,over_location,src_control,over_control,aug)
+/mob/living/advanced/on_right_drop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
 	. = ..()
 
 	if(!.)
 		return .
 
-	if(src_object && over_object) src_object.drop_on_object(src,over_object)
+	if(src_object && over_object) src_object.drop_on_object(src,over_object,over_location,over_control,params)
 
 	return .
 
