@@ -26,7 +26,7 @@
 			stored_bullets.Cut(1,2)
 			stored_bullets += null
 
-	play(pump_sound,get_mobs_in_range(caller),src)
+	play(pump_sound,get_turf(src))
 	update_sprite()
 
 	next_shoot_time = world.time + 1

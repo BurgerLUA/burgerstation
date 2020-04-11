@@ -88,7 +88,8 @@
 		var/obj/item/defer_object_as_item = defer_object
 		if(is_inventory(object)) //The item in question is inside another inventory.
 			var/obj/hud/inventory/object_as_inventory = object
-			if(!object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
+			//SHITCODE AHOY.
+			if( (!istype(object_as_inventory,/obj/hud/inventory/organs/groin/pocket) && !istype(defer_object_as_item,/obj/item/storage/pouch)) && !object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
 				return TRUE
 		else if (!defer_object_as_item.anchored && src.add_object(defer_object_as_item)) //Pickup the item if it isn't bolted to the ground.
 			return TRUE

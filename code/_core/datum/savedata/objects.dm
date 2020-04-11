@@ -196,15 +196,20 @@
 	if(I)
 		if(inventory_data["held"])
 			for(var/i=1,i<=length(inventory_data["held"]),i++)
-				var/obj/item/I2 = load_and_create_object(inventory_data["held"][i],get_turf(I))
-				if(I2)
-					I.add_held_object(I2,FALSE,TRUE)
-
+				try
+					var/obj/item/I2 = load_and_create_object(inventory_data["held"][i],get_turf(I))
+					if(I2)
+						I.add_held_object(I2,FALSE,TRUE)
+				catch(var/exception/e)
+					log_error("LOADING ERROR: [e] on [e.file]:[e.line]! Couldn't load [inventory_data["held"][i]]!")
 		if(inventory_data["worn"])
 			for(var/i=1,i<=length(inventory_data["worn"]),i++)
-				var/obj/item/I2 = load_and_create_object(inventory_data["worn"][i],get_turf(I))
-				if(I2)
-					I.add_worn_object(I2,FALSE,TRUE)
+				try
+					var/obj/item/I2 = load_and_create_object(inventory_data["worn"][i],get_turf(I))
+					if(I2)
+						I.add_worn_object(I2,FALSE,TRUE)
+				catch(var/exception/e)
+					log_error("LOADING ERROR: [e] on [e.file]:[e.line]! Couldn't load [inventory_data["worn"][i]]!")
 
 		return TRUE
 
@@ -299,11 +304,11 @@
 
 	if(istype(I,/obj/item/radio))
 		var/obj/item/radio/R = I
-		returning_list["stored_radio"] = R.stored_radio
+		returning_list["stored_radio"] = get_item_data(R.stored_radio)
 
 	if(istype(I,/obj/item/clothing/ears/headset))
 		var/obj/item/clothing/ears/headset/R = I
-		returning_list["stored_radio"] = R.stored_radio
+		returning_list["stored_radio"] = get_item_data(R.stored_radio)
 
 	if(is_currency(I))
 		var/obj/item/currency/C = I

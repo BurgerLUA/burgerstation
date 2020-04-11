@@ -8,6 +8,10 @@
 
 /savedata/client/New(var/client/new_owner)
 
+	if(!new_owner)
+		CRASH("FATAL ERROR: Savedata did not have a valid owner!")
+		qdel(src)
+
 	if(new_owner)
 		owner = new_owner
 	else
