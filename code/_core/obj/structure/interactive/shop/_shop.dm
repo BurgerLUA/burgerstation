@@ -81,7 +81,6 @@
 /obj/structure/interactive/shop/get_examine_list(var/mob/examiner)
 
 	. = list()
-
 	. += stored_item.get_examine_list(examiner)
 
 	if(stored_item.is_container)

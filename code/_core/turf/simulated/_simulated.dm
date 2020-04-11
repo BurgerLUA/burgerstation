@@ -26,6 +26,7 @@ var/global/saved_icons = 0
 
 	var/exposed = TRUE //Are pipes and other hidden objects visible?
 
+	var/turf_temperature_mod = 0
 
 /turf/proc/is_occupied()
 

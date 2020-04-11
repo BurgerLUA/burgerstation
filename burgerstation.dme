@@ -1046,6 +1046,7 @@
 #include "code\_core\obj\structure\interactive\power\_power.dm"
 #include "code\_core\obj\structure\interactive\shop\_shop.dm"
 #include "code\_core\obj\structure\interactive\smooth\_smooth.dm"
+#include "code\_core\obj\structure\interactive\smooth\grille.dm"
 #include "code\_core\obj\structure\interactive\smooth\lattice.dm"
 #include "code\_core\obj\structure\interactive\smooth\table.dm"
 #include "code\_core\obj\structure\interactive\smooth\_wall\wall.dm"

@@ -187,9 +187,9 @@
 		if(container_whitelist && length(container_whitelist))
 			inventories[i].item_whitelist = container_whitelist
 		if(container_temperature)
-			inventories[i].inventory_temperature = container_temperature
+			inventories[i].inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
-			inventories[i].inventory_temperature_mod = container_temperature_mod
+			inventories[i].inventory_temperature_mod_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new(src)
@@ -206,9 +206,9 @@
 		if(container_whitelist && length(container_whitelist))
 			D.item_whitelist = container_whitelist
 		if(container_temperature)
-			D.inventory_temperature = container_temperature
+			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
-			D.inventory_temperature_mod = container_temperature_mod
+			D.inventory_temperature_mod_mod = container_temperature_mod
 
 		inventories += D
 
@@ -234,6 +234,7 @@
 	return .
 
 /obj/item/get_examine_list(var/mob/examiner)
+
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
@@ -242,9 +243,11 @@
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
+	/*
 	if(is_living(examiner) && damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
 		. += div("damage",DT.get_examine_text(examiner))
+	*/
 
 	return .
 

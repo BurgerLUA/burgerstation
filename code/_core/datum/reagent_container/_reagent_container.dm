@@ -18,6 +18,8 @@
 
 	var/debug = FALSE
 
+	var/special_temperature_mod = 0
+
 /reagent_container/Destroy()
 	owner = null
 	all_reagent_containers -= src
@@ -91,16 +93,21 @@
 	if(!volume_current)
 		return FALSE
 
-	var/area/A = get_area(owner)
-	var/area_temperature = A.ambient_temperature
-	var/area_temperature_mod = AIR_TEMPERATURE_MOD
+	var/turf/simulated/T = get_turf(owner)
+
+	if(!istype(T))
+		return FALSE
+
+	var/area/A = T.loc
+	var/desired_temperature = A.ambient_temperature + T.turf_temperature_mod + special_temperature_mod
+	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
-		area_temperature += I.inventory_temperature
-		area_temperature_mod *= I.inventory_temperature_mod
+		desired_temperature += I.inventory_temperature_mod
+		desired_temperature_mod *= I.inventory_temperature_mod_mod
 
-	if(area_temperature == average_temperature)
+	if(desired_temperature == average_temperature)
 		return TRUE
 
 	var/temperature_mod = 0
@@ -108,12 +115,12 @@
 	for(var/r_id in stored_reagents)
 		temperature_mod += stored_reagents[r_id] * all_reagents[r_id].temperature_mod
 
-	var/temperature_diff = area_temperature - average_temperature
+	var/temperature_diff = desired_temperature - average_temperature
 
-	if(average_temperature > area_temperature)
-		average_temperature = max(area_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
+	if(average_temperature > desired_temperature)
+		average_temperature = max(desired_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
 	else
-		average_temperature = min(area_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
+		average_temperature = min(desired_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
 
 	for(var/r_id in stored_reagents_temperature)
 		stored_reagents_temperature[r_id] = average_temperature
