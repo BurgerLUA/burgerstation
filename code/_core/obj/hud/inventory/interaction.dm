@@ -88,7 +88,7 @@
 		var/obj/item/defer_object_as_item = defer_object
 		if(is_inventory(object)) //The item in question is inside another inventory.
 			var/obj/hud/inventory/object_as_inventory = object
-			if(!defer_object_as_item.is_container && !object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
+			if(!object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
 				return TRUE
 		else if (!defer_object_as_item.anchored && src.add_object(defer_object_as_item)) //Pickup the item if it isn't bolted to the ground.
 			return TRUE
@@ -122,8 +122,13 @@
 
 /obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object,location,control,params) //Object dropped on src
 
-	if(is_item(object) && get_dist(caller,object) <= 1)
+	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object
+		var/atom/defer_self = src.defer_click_on_object()
+		if(is_item(defer_self))
+			var/obj/item/self_as_item = defer_self
+			self_as_item.dropped_on_by_object(caller,object_as_item,location,control,params)
+			return TRUE
 		if(src.add_object(object_as_item))
 			return TRUE
 

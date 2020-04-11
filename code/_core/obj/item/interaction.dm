@@ -72,7 +72,7 @@
 
 	if(is_container) //We're a container being clicked on.
 		var/atom/defer_object = object.defer_click_on_object()
-		if(is_item(defer_object))
+		if(is_item(defer_object)) //We're clicking on this item with an object.
 			INTERACT_CHECK
 			var/obj/item/I = defer_object
 			src.add_to_inventory(caller,I) //Add that item in our hands to the container's invetory.
@@ -84,6 +84,9 @@
 
 	return 	..()
 
+
+/obj/item/dropped_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+	return clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/drop_on_object(var/atom/caller,var/atom/object,location,control,params) //Src is dragged to object
 

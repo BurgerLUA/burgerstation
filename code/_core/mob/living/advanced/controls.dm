@@ -130,10 +130,6 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	if(!.)
 		return .
 
-	world.log << "src_object: [src_object.type]"
-	world.log << "over_object: [over_object.type]"
-
-
 	if(src_object && over_object) src_object.drop_on_object(src,over_object,over_location,over_control,params)
 
 	return .
