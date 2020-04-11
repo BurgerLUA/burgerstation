@@ -83,13 +83,14 @@
 			object_as_inventory.add_object(defer_self_as_item)
 			return TRUE
 
-	if(src == defer_self && is_item(defer_object) && get_dist(caller,defer_object) <= 1) //We're clicking on an item with an empty hand, and it is in range.
+	//Interacting wtih items in world.
+	if(is_inventory(defer_self) && is_item(defer_object) && get_dist(caller,defer_object) <= 1) //We're clicking on an item with an empty hand, and it is in range.
 		var/obj/item/defer_object_as_item = defer_object
-		if(is_inventory(object)) //The item in question is in another inventory.
+		if(is_inventory(object)) //The item in question is inside another inventory.
 			var/obj/hud/inventory/object_as_inventory = object
 			if(!defer_object_as_item.is_container && !object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
 				return TRUE
-		else if (!defer_object_as_item.anchored && src.add_object(defer_object_as_item))
+		else if (!defer_object_as_item.anchored && src.add_object(defer_object_as_item)) //Pickup the item if it isn't bolted to the ground.
 			return TRUE
 
 	if(is_item(defer_self))

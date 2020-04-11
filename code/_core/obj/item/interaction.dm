@@ -70,23 +70,20 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(is_container)
-
-		if(is_inventory(object)) //We're being clicked on by an inventory.
+	if(is_container) //We're a container being clicked on.
+		var/atom/defer_object = object.defer_click_on_object()
+		if(is_item(defer_object))
 			INTERACT_CHECK
-			var/obj/hud/inventory/I = object
-			if(is_inventory(src.loc) && !is_dynamic_inventory(src.loc))
-				click_self(caller)
-				return TRUE
-			I.add_object(src)
+			var/obj/item/I = defer_object
+			src.add_to_inventory(caller,I) //Add that item in our hands to the container's invetory.
 			return TRUE
-
-		if(is_item(object)) //We're being clicked on by an object.
+		if(is_inventory(src.loc) && !is_dynamic_inventory(src.loc))
 			INTERACT_CHECK
-			add_to_inventory(caller,object,TRUE)
+			click_self(caller) //Open the inventory if we're holding it and we clicked on it with an empty hand.
 			return TRUE
 
 	return 	..()
+
 
 /obj/item/drop_on_object(var/atom/caller,var/atom/object) //Src is dragged to object
 

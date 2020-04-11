@@ -111,16 +111,15 @@
 					L.to_chat("There isn't enough meat to cut!")
 				return FALSE
 
-			for(var/i=1,i<=pieces,i++)
+			for(var/i=1,i<=pieces-1,i++)
 				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
-				animate(M,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=SECONDS_TO_DECISECONDS(1))
+			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=SECONDS_TO_DECISECONDS(1))
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into [pieces] cutlets.")
-
-			qdel(src)
 
 		else if(has_prefix(icon_state,"cutlet"))
 			//Make bacon.
@@ -131,23 +130,23 @@
 					L.to_chat("There isn't enough meat to cut!")
 				return FALSE
 
-			for(var/i=1,i<=pieces,i++)
+			for(var/i=1,i<=pieces-1,i++)
 				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
-				animate(M,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=5)
+			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=5)
+			update_sprite()
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into [pieces] bacon slices.")
-
-			qdel(src)
 
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
 
 		var/original_volume = reagents.volume_current
 
-		if(has_prefix(icon_state,"meat"))
+		if(has_prefix(icon_state,"meat") || has_prefix(icon_state,"cutlet"))
 			//Make ground beef.
 			var/pieces = FLOOR(original_volume/10, 1)
 			if(pieces <= 1 || original_volume < pieces)
@@ -156,17 +155,17 @@
 					L.to_chat("There isn't enough meat to pound!")
 				return FALSE
 
-			for(var/i=1,i<=pieces,i++)
+			src.icon_state = "ground"
+			for(var/i=1,i<=pieces-1,i++)
 				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
 				M.icon_state = "ground"
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
-				animate(M,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y=pixel_y + rand(-4,4),time=5)
+			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y=pixel_y + rand(-4,4),time=5)
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You pound \the [src.name] into [pieces] portion\s of ground beef.")
-
-			qdel(src)
 
 	return TRUE
 

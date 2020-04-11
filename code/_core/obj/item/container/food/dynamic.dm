@@ -33,25 +33,25 @@
 					var/mob/living/L = attacker
 					L.to_chat("There isn't enough dough to cut!")
 				return FALSE
+			if(raw_icon_state == "dough_flat")
+				raw_icon_state = "dough_slice"
 			for(var/i=1,i<=pieces-1,i++)
 				var/obj/item/container/food/dynamic/bread/B = new(get_turf(src))
-				if(raw_icon_state == "dough_flat")
-					B.raw_icon_state = "dough_slice"
+				B.raw_icon_state = raw_icon_state
 				B.update_sprite()
 				reagents.transfer_reagents_to(B.reagents,original_volume/pieces)
-				animate(B,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=5)
+				animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
+			animate(src, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
+			update_sprite()
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You cut \the [src.name] into [pieces] pieces.")
 
-			if(raw_icon_state == "dough_flat")
-				raw_icon_state = "dough_slice"
-			update_sprite()
-			animate(src,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=5)
-
 		else if(icon_state == "bun_whole")
 			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
+			B.pixel_x = pixel_x
+			B.pixel_y = pixel_y + 6
 			reagents.transfer_reagents_to(B.reagents,reagents.volume_current/2)
 			cooked_icon_state = "bun_top"
 			if(is_living(attacker))
