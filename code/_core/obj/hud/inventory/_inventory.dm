@@ -492,7 +492,6 @@
 	if(length(held_objects) >= held_slots)
 		if(messages)
 			owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src.loc.name]."))
-			CRASH("FUCK")
 		return FALSE
 
 	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && (max_size >= 0 || max_weight >= 0))

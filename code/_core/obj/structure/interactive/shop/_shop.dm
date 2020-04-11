@@ -44,7 +44,8 @@
 	stored_item.update_sprite()
 	update_sprite()
 
-	stored_item_cost = stored_item.calculate_value()
+	stored_item_cost = CEILING(stored_item.calculate_value(),1)
+	name = "[stored_item.name] - [stored_item_cost] credits"
 
 	return .
 
@@ -74,10 +75,6 @@
 	return ..()
 
 /obj/structure/interactive/shop/update_sprite()
-
-	if(stored_item)
-		mouse_opacity = 1
-		name = "[stored_item.name] - [stored_item_cost] credits"
 
 	if(locate(/obj/structure/smooth/table/) in src.loc.contents)
 		pixel_y = 4

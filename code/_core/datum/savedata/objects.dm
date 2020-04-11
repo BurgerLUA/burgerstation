@@ -34,6 +34,14 @@
 				I.reagents.add_reagent(r_id,volume,TNULL,FALSE)
 			I.reagents.update_container()
 
+	if(istype(O,/obj/item/radio) && object_data["stored_radio"])
+		var/obj/item/radio/R = O
+		R.stored_radio = load_and_create_object(object_data["stored_radio"],R)
+
+	if(istype(O,/obj/item/clothing/ears/headset) && object_data["stored_radio"])
+		var/obj/item/clothing/ears/headset/R = O
+		R.stored_radio = load_and_create_object(object_data["stored_radio"],R)
+
 	if(istype(O,/obj/item/weapon/ranged/))
 		var/obj/item/weapon/ranged/R = O
 		R.firing_pin = load_and_create_object(object_data["firing_pin"],R)
@@ -288,6 +296,14 @@
 		var/obj/item/powercell/P = I
 		if(P.charge_current)
 			returning_list["charge_current"] = P.charge_current
+
+	if(istype(I,/obj/item/radio))
+		var/obj/item/radio/R = I
+		returning_list["stored_radio"] = R.stored_radio
+
+	if(istype(I,/obj/item/clothing/ears/headset))
+		var/obj/item/clothing/ears/headset/R = I
+		returning_list["stored_radio"] = R.stored_radio
 
 	if(is_currency(I))
 		var/obj/item/currency/C = I

@@ -353,11 +353,14 @@ var/global/list/equipped_players = list()
 	icon_state = "dinnerware"
 
 	stored_types = list(
+		/obj/item/weapon/melee/sword/sabre,
 		/obj/item/container/cheese_mold/block,
 		/obj/item/container/beaker/glass,
 		/obj/item/container/beaker/bowl,
 		/obj/item/container/beaker/bottle/large/enzymes,
 		/obj/item/container/beaker/large/water,
 		/obj/item/container/beaker/food/flour,
-		/obj/item/container/beaker/food/milk
+		/obj/item/container/beaker/food/milk,
+		/obj/item/container/food/dynamic/meat/raw
+
 	)

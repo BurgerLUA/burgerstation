@@ -40,7 +40,7 @@
 			qdel(src)
 			return TRUE
 		else
-			log_error("Something went wrong!")
+			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened.")
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Existing Character"
