@@ -67,11 +67,13 @@
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
 	if(!owner)
+		CRASH("Someone tried to create a character on a savedata that has no owner!")
 		return FALSE
 
 	if(text2num(character_id) > MAX_CHARACTERS)
 		owner.mob.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
-		return FALSE
+		return
+
 	reset_data()
 	owner.save_slot = character_id
 

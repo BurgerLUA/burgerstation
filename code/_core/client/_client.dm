@@ -9,7 +9,7 @@ var/global/list/all_clients = list()
 
 	//control_freak = CONTROL_FREAK_ALL //Just for now as I don't want people's binds to get messed up
 	fps = FPS_CLIENT
-	preload_rsc = 2
+	preload_rsc = 1
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
