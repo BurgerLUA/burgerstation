@@ -39,35 +39,43 @@
 	for(var/obj/item/I in possible_items)
 		qdel(I)
 
-	stored_item_cost = stored_item.calculate_value()
-
+	//INITIALIZE(stored_item)
+	//SPAWN(stored_item)
+	stored_item.update_sprite()
 	update_sprite()
+
+	stored_item_cost = stored_item.calculate_value()
 
 	return .
 
 /obj/structure/interactive/shop/update_overlays()
+
 	. = ..()
+
+	var/image/U = new/image(icon,icon_state)
+	U.appearance = stored_item.appearance
+	U.pixel_x = 2
+	U.pixel_y = 4
+	add_overlay(U)
+
+	var/image/M = new/image(icon,icon_state)
+	M.appearance = stored_item.appearance
+	add_overlay(M)
+
 	var/image/O = new/image(icon,icon_state)
+	O.appearance = stored_item.appearance
 	O.pixel_x = -2
 	O.pixel_y = -4
 	add_overlay(O)
 	return .
 
-
-/obj/structure/interactive/shop/update_underlays()
-	. = ..()
-	var/image/U = new/image(icon,icon_state)
-	U.pixel_x = 2
-	U.pixel_y = 4
-	underlays += U
-	return .
-
+/obj/structure/interactive/shop/update_icon()
+	icon = ICON_INVISIBLE
+	return ..()
 
 /obj/structure/interactive/shop/update_sprite()
 
 	if(stored_item)
-		stored_item.update_sprite()
-		appearance = stored_item.appearance
 		mouse_opacity = 1
 		name = "[stored_item.name] - [stored_item_cost] credits"
 

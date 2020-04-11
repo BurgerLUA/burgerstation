@@ -28,7 +28,7 @@
 			return FALSE
 
 	var/obj/hud/button/squad/member/B = new(null,P)
-	add_button(B)
+	B.update_owner(src)
 
 	return TRUE
 

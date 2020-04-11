@@ -140,7 +140,7 @@
 	caller.to_chat("ゴ ゴ ゴ ゴ ゴ ゴ ゴ ゴ")
 	return TRUE
 
-/mob/living/verb/add_stand()
+/mob/living/proc/add_stand()
 
 	if(dead || qdeleting)
 		return FALSE
@@ -152,5 +152,8 @@
 	stand = new(src)
 	stand.generate()
 	stand.display_stand(src)
+
+	var/obj/hud/button/stand/S = new
+	S.update_owner(src)
 
 	return TRUE

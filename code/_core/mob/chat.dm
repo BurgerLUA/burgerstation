@@ -19,12 +19,7 @@
 		to_chat(span("warning","You can't talk while you're dead!"))
 		return FALSE
 
-	. = ..()
-
-	if(stand && lowertext(stand.name) == lowertext(.))
-		stand.linked_stand.set_enabled(!stand.linked_stand.enabled)
-
-	return .
+	return ..()
 
 /mob/living/advanced/say(var/text_to_say as text)
 

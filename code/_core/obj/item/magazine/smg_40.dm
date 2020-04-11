@@ -10,6 +10,7 @@
 
 	ammo = /obj/item/bullet_cartridge/pistol_40
 
-/obj/item/magazine/smg_45/update_icon()
+/obj/item/magazine/smg_40/update_icon()
 	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*12,1)]"
-	..()
+	world.log << "Icon state: [icon_state]."
+	return ..()

@@ -12,9 +12,9 @@ SUBSYSTEM_DEF(obj)
 	var/list/initialize_late = list()
 
 	for(var/obj/O in world)
-		if(O.initialize_type == INITIALIZE_LATE)
+		if(O.initialize_type == INITIALIZE_EARLY)
 			initialize_early += O
-		else if(O.initialize_type == INITIALIZE_EARLY)
+		else if(O.initialize_type == INITIALIZE_LATE)
 			initialize_late += O
 		else
 			initialize_normal += O

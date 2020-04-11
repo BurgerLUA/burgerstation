@@ -81,3 +81,24 @@
 			L.check_status_effects()
 
 	return ..()
+
+
+/obj/hud/button/stand
+	name = "rest"
+	desc = "No sleeping on the job!"
+	desc_extended = "Press to toggle laying down."
+	icon_state = "rest"
+	screen_loc = "RIGHT-1,BOTTOM+1"
+
+	flags = FLAGS_HUD_MOB
+
+/obj/hud/button/stand/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(L.stand && L.stand.linked_stand)
+			L.stand.linked_stand.set_enabled(!L.stand.linked_stand.enabled)
+		else
+			L.to_chat("You don't have a stand for some reason!")
+
+	return ..()
