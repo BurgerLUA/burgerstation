@@ -129,6 +129,8 @@
 				owner.mob.attack_flags &= ~ATTACK_SELF
 			if("quick_holder")
 				owner.mob.attack_flags &= ~ATTACK_OWNER
+			if("zoom")
+				//Do nothing
 			if("say")
 				spawn owner.mob.say()
 			else
