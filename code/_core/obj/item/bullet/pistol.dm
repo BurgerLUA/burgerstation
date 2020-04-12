@@ -59,7 +59,7 @@
 
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
-	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo."
+	desc = "For pistols, revolvers, and smgs that require 12mm ammo."
 	icon = 'icons/obj/items/bullet/12mm.dmi'
 
 	item_count_max = 5
@@ -81,7 +81,7 @@
 
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
-	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo."
+	desc = "For pistols, revolvers, and smgs that require 9mm ammo."
 	icon = 'icons/obj/items/bullet/9mm.dmi'
 
 	item_count_max = 5

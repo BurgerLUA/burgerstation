@@ -1,6 +1,6 @@
 /obj/structure/smooth/window
 	name = "glass window"
-	desc = "See through this."
+	desc = "A see through window. A few good hits could shatter this."
 	icon = 'icons/obj/structure/smooth/window/normal_new_new.dmi'
 	icon_state = "window"
 

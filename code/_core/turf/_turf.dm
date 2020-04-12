@@ -1,5 +1,6 @@
 /turf/
 	name = "TURF ERROR"
+	desc = "Report to Burger#3948 on discord"
 	icon = 'icons/debug/turfs.dmi'
 	icon_state = ""
 
