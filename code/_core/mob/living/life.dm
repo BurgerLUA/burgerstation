@@ -31,7 +31,8 @@
 	dead = TRUE
 
 	if(stand && stand.linked_stand)
-		stand.linked_stand.set_enabled(!stand.linked_stand.enabled)
+		stand.linked_stand.set_enabled(FALSE)
+		remove_stand()
 
 	if(ai)
 		ai.enabled = FALSE

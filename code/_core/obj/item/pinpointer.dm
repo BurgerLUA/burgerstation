@@ -12,21 +12,21 @@
 
 	value = 10
 
-/obj/item/pinpointer/New(var/desired_loc)
-
-	var/image/I = new/image(initial(icon),initial(icon_state))
-	underlays += I
-
+/obj/item/pinpointer/Initialize()
+	update_sprite()
 	return ..()
+
+/obj/item/pinpointer/update_underlays()
+	if(!length(underlays))
+		var/image/I = new/image(initial(icon),initial(icon_state))
+		underlays += I
+	return TRUE
 
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
 	return ..()
 
-/obj/item/pinpointer/think()
-
-	if(tracked_atom && tracked_atom.qdeleting)
-		tracked_atom = null
+/obj/item/pinpointer/update_icon()
 
 	if(scan_mode)
 		icon_state = "scan"
@@ -47,8 +47,13 @@
 
 	if(!tracked_atom)
 		icon_state = "null"
-		update_sprite()
-		return FALSE
+
+	return ..()
+
+/obj/item/pinpointer/think()
+
+	if(tracked_atom && tracked_atom.qdeleting)
+		tracked_atom = null
 
 	update_sprite()
 
@@ -80,7 +85,7 @@
 	else
 		caller.to_chat(span("notice","You disable scan mode."))
 
-	update_sprite()
+	update_icon()
 
 	return TRUE
 

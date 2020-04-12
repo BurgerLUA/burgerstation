@@ -279,6 +279,7 @@
 	UNSETEMPTY(effect_str)
 
 /light_source/proc/update_corners(now = FALSE)
+
 	var/update = FALSE
 
 	if (!source_atom)
@@ -397,6 +398,8 @@
 
 	FOR_DVIEW(T, CEILING(actual_range,1), source_turf, 0)
 
+		CHECK_TICK
+
 		if (light_angle && !facing_opaque)	// Directional lighting coordinate filter.
 			test_x = T.x - test_x_offset
 			test_y = T.y - test_y_offset
@@ -427,7 +430,6 @@
 						corners[val] = 0
 
 		turfs += T
-		sleep(-1)
 
 	END_FOR_DVIEW
 
@@ -435,7 +437,7 @@
 
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
-	for (thing in L)
+	for(thing in L)
 		T = thing
 		LAZYADD(T.affecting_lights, src)
 
@@ -448,6 +450,7 @@
 	LAZYINITLIST(effect_str)
 	if (needs_update == LIGHTING_VIS_UPDATE)
 		for (thing in corners - effect_str)
+			CHECK_TICK
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
@@ -455,10 +458,10 @@
 				continue
 
 			APPLY_CORNER_BY_HEIGHT(now)
-			sleep(-1)
 	else
 		L = corners - effect_str
 		for (thing in L)
+			CHECK_TICK
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
@@ -466,19 +469,19 @@
 				continue
 
 			APPLY_CORNER_BY_HEIGHT(now)
-			sleep(-1)
 
 		for (thing in corners - L)
+			CHECK_TICK
 			C = thing
 			if (!C.active)
 				effect_str[C] = 0
 				continue
 
 			APPLY_CORNER_BY_HEIGHT(now)
-			sleep(-1)
 
 	L = effect_str - corners
 	for (thing in L)
+		CHECK_TICK
 		C = thing
 		REMOVE_CORNER(C, now)
 		LAZYREMOVE(C.affecting, src)

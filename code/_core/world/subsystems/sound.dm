@@ -221,6 +221,8 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	for(var/mob/M in hearers)
 
+		CHECK_TICK
+
 		if(!M.client)
 			continue
 
@@ -234,8 +236,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		var/turf/T = get_turf(M)
 		if(!T)
 			continue
-
-		CHECK_TICK
 
 		created_sound.environment = M.get_sound_environment()
 

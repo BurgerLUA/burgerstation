@@ -227,10 +227,14 @@
 	return null
 
 /obj/item/update_sprite()
+
 	. = ..()
+
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		I.update_sprite()
+		I.overlays.Cut()
+		I.update_overlays()
+
 	return .
 
 /obj/item/get_examine_list(var/mob/examiner)

@@ -41,6 +41,11 @@
 
 	. = ..()
 
+	if(!client)
+		qdel(src)
+		CRASH("Tired to initialize an observer without a client!")
+		return FALSE
+
 	if(!mobdata)
 		mobdata = new(client)
 

@@ -140,14 +140,16 @@
 	caller.to_chat("ゴ ゴ ゴ ゴ ゴ ゴ ゴ ゴ")
 	return TRUE
 
+/mob/living/proc/remove_stand()
+	qdel(stand)
+	stand = null
+
 /mob/living/proc/add_stand()
 
 	if(dead || qdeleting)
 		return FALSE
 
-	if(stand)
-		qdel(stand)
-		stand = null
+	remove_stand()
 
 	stand = new(src)
 	stand.generate()
