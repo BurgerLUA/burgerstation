@@ -355,21 +355,6 @@ var/global/list/all_clients = list()
 
 	..()
 
-/client/MouseMove(object,location,control,params)
-
-	if(is_zoomed && (world.time % 3) )
-
-		var/list/params_list = params2list(params)
-		var/list/screen_loc = parse_screen_loc(params_list["screen-loc"])
-
-		pixel_x = clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE)
-		pixel_y = clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE)
-
-		if(mob)
-			mob.face_atom(location)
-
-	..()
-
 /client/proc/store_new_params(over_object,over_location,params)
 	var/list/new_params = params2list(params)
 	last_params = new_params

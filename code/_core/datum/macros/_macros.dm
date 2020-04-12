@@ -98,7 +98,7 @@
 			if("quick_holder")
 				owner.mob.attack_flags |= ATTACK_OWNER
 			if("zoom")
-				owner.is_zoomed = TRUE
+				owner.is_zoomed = !owner.is_zoomed
 
 	return TRUE
 
@@ -129,10 +129,6 @@
 				owner.mob.attack_flags &= ~ATTACK_SELF
 			if("quick_holder")
 				owner.mob.attack_flags &= ~ATTACK_OWNER
-			if("zoom")
-				owner.is_zoomed = FALSE
-				owner.pixel_x = 0
-				owner.pixel_y = 0
 			if("say")
 				spawn owner.mob.say()
 			else

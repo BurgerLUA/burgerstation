@@ -18,6 +18,13 @@
 	if(mob)
 		mob.on_life_client()
 
+	if(is_zoomed)
+		var/list/dir_to_pixel = direction_to_pixel_offset(mob.dir)
+		pixel_x += clamp(dir_to_pixel[1]*TILE_SIZE*ZOOM_RANGE - pixel_x,-8,8)
+		pixel_y += clamp(dir_to_pixel[2]*TILE_SIZE*ZOOM_RANGE - pixel_y,-8,8)
+	else
+		pixel_x -= clamp(pixel_x,-12,12)
+		pixel_y -= clamp(pixel_y,-12,12)
 
 	return TRUE
 
@@ -43,5 +50,34 @@
 				stored_hud_images += L.medical_hud_image_advanced
 				images += L.medical_hud_image_advanced
 
+	/*
+	if(is_zoomed)
 
+		var/list/params_list = params2list(last_params)
+		var/list/screen_loc = parse_screen_loc(params_list["screen-loc"])
+
+		animate(
+			src,
+			pixel_x = clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE),
+			pixel_y = clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE),
+			time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW)
+		)
+
+		if(mob)
+			mob.face_atom(last_location)
+	*/
+
+
+	return TRUE
+
+
+/client/proc/set_zoom(var/desired_zoom)
+	is_zoomed = desired_zoom
+	/*
+	if(desired_zoom)
+		var/list/dir_to_pixel = direction_to_pixel_offset(mob.dir)
+		animate(src,pixel_x = dir_to_pixel[1]*TILE_SIZE*VIEW_RANGE, pixel_y = dir_to_pixel[2]*TILE_SIZE*VIEW_RANGE, time = SECONDS_TO_DECISECONDS(1), flags = ANIMATION_LINEAR_TRANSFORM )
+	else
+		animate(src,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(0.5), flags = ANIMATION_LINEAR_TRANSFORM )
+	*/
 	return TRUE

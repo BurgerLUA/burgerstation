@@ -287,10 +287,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	return created_sound
 
-
-
-	return TRUE
-
 /*
 /proc/play_sound(var/sound_path, var/list/atom/hearers = list(), var/list/pos = list(0,0,-1), var/volume=100, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/environment = ENVIRONMENT_NONE, var/invisibility_check = 0, var/range_min=1, var/range_max = SOUND_RANGE, var/alert=0)
 
