@@ -2,6 +2,7 @@
 	name = "OBJ ERROR"
 	icon = 'icons/debug/objs.dmi'
 	icon_state = ""
+	desc = "report to Burger#3948 on discord"
 	layer = LAYER_OBJ
 	plane = PLANE_OBJ
 

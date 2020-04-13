@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman
 	name = "\improper .308 Marksman Rifle"
 	desc = "Vanilla, but still powerful."
-	desc_extended = "The .308 Mauler Marksman Rifle is THE assault rifle for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
+	desc_extended = "The .308 Mauler Marksman Rifle is THE dmr for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/items/weapons/ranged/rifle/308.dmi'
 	icon_state = "inventory"
 	value = 80

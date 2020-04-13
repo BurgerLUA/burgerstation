@@ -1,5 +1,6 @@
 /obj/structure/interactive/ore_box
 	name = "ore box"
+	desc = "A crate for moving and storing ores"
 	icon = 'icons/obj/structure/ore_box.dmi'
 	icon_state = "ore_box"
 
