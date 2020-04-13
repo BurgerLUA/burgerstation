@@ -37,10 +37,15 @@
 			else
 				P.force_move(T)
 			P.start_chargen()
+			P.to_chat(span("notice",
+				"Welcome to Burgerstation! We are currently in Alpha Testing, which meansz that the came is largely incomplete and a \
+				large majority of the game hasn't been coded yet. Please be patient with development, and have fun. If you wish to \
+				experience the main game, please board the shuttle to the north.")
+			)
 			qdel(src)
 			return TRUE
 		else
-			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened.")
+			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened. Rejoining may fix this.")
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Existing Character"

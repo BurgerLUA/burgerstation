@@ -287,7 +287,6 @@
 			log_error("!source_atom: Attempted to delete light in update_corners(), however the light was already deleted.")
 		else
 			log_error("!source_atom: There existed a light_source within a source_atom that didn't get deleted properly.")
-			qdel(src)
 		return
 
 	if(source_atom.qdeleting)
@@ -295,7 +294,6 @@
 			log_error("source_atom.qdeleting: Attempted to delete light in update_corners(), however the light was already deleted.")
 		else
 			log_error("source_atom.qdeleting: There existed a light_source within a source_atom that didn't get deleted properly.")
-			qdel(src)
 		return
 
 	if (source_atom.light_power != light_power)

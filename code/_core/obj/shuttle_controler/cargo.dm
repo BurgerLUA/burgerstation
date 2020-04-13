@@ -8,7 +8,7 @@
 
 	status_id = "cargo"
 
-/obj/shuttle_controller/cargo/proc/is_safe_delete(var/atom/A)
+/proc/is_safe_to_remove(var/atom/A)
 
 	if(istype(A,/obj/overlay/)) //Ignore
 		return TRUE
@@ -16,16 +16,19 @@
 	if(A.qdeleting)
 		return FALSE
 
-	if(ismob(A))
-		var/mob/M = A
-		if(M.client || M.ckey_last)
+	if(ismob(A) && !is_living(A))
+		return FALSE
+
+	if(is_living(A))
+		var/mob/living/L = A
+		if(L.client || (L.ckey_last && !L.dead))
 			return FALSE
 
 	if(!(istype(A,/obj/item/) || istype(A,/obj/structure/) || istype(A,/obj/hud/inventory)))
 		return FALSE
 
 	for(var/atom/A2 in A.contents)
-		if(!is_safe_delete(A2))
+		if(!is_safe_to_remove(A2))
 			return FALSE
 
 	return TRUE
@@ -36,7 +39,7 @@
 		var/area/A = get_area(src)
 		var/total_value = 0
 		for(var/obj/O in A.contents)
-			if(!is_safe_delete(O))
+			if(!is_safe_to_remove(O))
 				continue
 			var/calculated_value = CEILING(O.calculate_value(),1)
 			if(calculated_value <= 0)

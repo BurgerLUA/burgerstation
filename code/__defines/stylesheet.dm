@@ -2,14 +2,10 @@
 img.examine_icon_main{
 	margin:0;
 	padding:0;
-	width: 32px;
-	height: 32px;
 }
 img.examine_icon{
 	margin:0;
 	padding:0;
-	width: 16px;
-	height: 16px;
 }
 a,a:link,a:visited,a:hover,a:focus,a:active{
 	font-color: inherit;
@@ -18,7 +14,7 @@ a,a:link,a:visited,a:hover,a:focus,a:active{
 }
 body {
 	font-family: Verdana, sans-serif;
-	font-size: 8px;
+	font-size: 12px;
 }
 .pm_other{
 	color:#498DB6;
@@ -138,7 +134,6 @@ body {
 	color: yellow;
 }
 .error{
-	font-size: 12px;
 	color:red;
 	font-family: Courier, Monaco, monospace;
 }

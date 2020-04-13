@@ -46,8 +46,8 @@
 	var/initial_icon = initial(icon)
 
 	var/mob/living/L = owner
-	var/hunger_mod = (L.nutrition/1000)
-	var/thirst_mod = (L.hydration/1000)
+	var/hunger_mod = (L.nutrition/1500)
+	var/thirst_mod = (L.hydration/1500)
 	var/hunger_icon = FLOOR(hunger_mod * 20,1)
 	var/thirst_icon = FLOOR(thirst_mod * 20,1)
 

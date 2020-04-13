@@ -20,29 +20,26 @@
 
 	INTERACT_CHECK
 
-	if(!is_advanced(object) || !is_advanced(caller))
+	if(!is_advanced(object))
 		return ..()
 
-	var/mob/living/advanced/A1 = caller
 	var/mob/living/advanced/A2 = object
 
-	if(A1 == A2)
+	if(!A2.labeled_organs[BODY_STOMACH])
+		A2.to_chat(span("warning","You don't know how you can swallow \the [src]!"))
+		return FALSE
 
-		if(!A2.labeled_organs[BODY_STOMACH])
-			A2.to_chat(span("warning","You don't know how you can swallow \the [src]!"))
-			return FALSE
+	var/obj/item/organ/internal/stomach/S = A2.labeled_organs[BODY_STOMACH]
 
-		var/obj/item/organ/internal/stomach/S = A2.labeled_organs[BODY_STOMACH]
+	if(reagents)
+		reagents.transfer_reagents_to(S.reagents,reagents.volume_current)
 
-		if(reagents)
-			reagents.transfer_reagents_to(S.reagents,reagents.volume_current)
+	if(reagents_2)
+		reagents_2.transfer_reagents_to(S.reagents,reagents_2.volume_current)
 
-		if(reagents_2)
-			reagents_2.transfer_reagents_to(S.reagents,reagents_2.volume_current)
+	A2.to_chat(span("notice","You swallow \the [src]."))
 
-		A2.to_chat(span("notice","You swallow \the [src]."))
-
-		qdel(src)
+	qdel(src)
 
 	return TRUE
 

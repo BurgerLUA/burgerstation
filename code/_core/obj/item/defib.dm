@@ -61,7 +61,7 @@
 
 	play('sounds/items/defib/defib_zap.ogg',src)
 
-	if(target.check_death() && !target.client)
+	if(target.check_death() || !target.client)
 		target.visible_message("Nothing happens!")
 		play('sounds/items/defib/defib_failed.ogg',src)
 		return FALSE

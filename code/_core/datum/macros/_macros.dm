@@ -26,16 +26,18 @@
 		"G" = "cycle-intent-clockwise",
 		"F" = "cycle-intent-counter-clockwise",
 
-		"1" = "bind_1",
-		"2" = "bind_2",
-		"3" = "bind_3",
-		"4" = "bind_4",
-		"5" = "bind_5",
-		"6" = "bind_6",
-		"7" = "bind_7",
-		"8" = "bind_8",
-		"9" = "bind_9",
-		"0" = "bind_0",
+		#ifdef ENABLE_SLOTS
+			"1" = "bind_1",
+			"2" = "bind_2",
+			"3" = "bind_3",
+			"4" = "bind_4",
+			"5" = "bind_5",
+			"6" = "bind_6",
+			"7" = "bind_7",
+			"8" = "bind_8",
+			"9" = "bind_9",
+			"0" = "bind_0",
+		#endif
 
 		"T" = "say",
 		"O" = "ooc",

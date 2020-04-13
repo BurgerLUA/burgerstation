@@ -284,6 +284,7 @@
 
 var/global/list/equipped_players = list()
 
+/*
 /obj/structure/interactive/vending/autolocker
 	name = "autolocker vendor"
 	icon_state = "gear"
@@ -313,8 +314,7 @@ var/global/list/equipped_players = list()
 	if(. && P && !(P in equipped_players))
 		equipped_players += P
 	return .
-
-
+*/
 
 /obj/structure/interactive/vending/junk
 	name = "soda vendor"

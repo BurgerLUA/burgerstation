@@ -9,6 +9,10 @@ SUBSYSTEM_DEF(ai)
 /subsystem/ai/on_life()
 
 	for(var/ai/AI in all_living_ai)
+		if(AI && !AI.owner)
+			log_error("WARING! AI of type [AI.type] didn't have an owner!")
+			qdel(AI)
+			continue
 		AI.on_life()
 
 	return TRUE

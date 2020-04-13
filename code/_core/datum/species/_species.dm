@@ -49,16 +49,20 @@
 		/obj/hud/button/intent/grab,
 		/obj/hud/button/sneak,
 		/obj/hud/button/close_inventory,
-		/obj/hud/button/slot/A,
-		/obj/hud/button/slot/B,
-		/obj/hud/button/slot/C,
-		/obj/hud/button/slot/D,
-		/obj/hud/button/slot/E,
-		/obj/hud/button/slot/F,
-		/obj/hud/button/slot/G,
-		/obj/hud/button/slot/H,
-		/obj/hud/button/slot/I,
-		/obj/hud/button/slot/J,
+
+		#ifdef ENABLE_SLOTS
+			/obj/hud/button/slot/A,
+			/obj/hud/button/slot/B,
+			/obj/hud/button/slot/C,
+			/obj/hud/button/slot/D,
+			/obj/hud/button/slot/E,
+			/obj/hud/button/slot/F,
+			/obj/hud/button/slot/G,
+			/obj/hud/button/slot/H,
+			/obj/hud/button/slot/I,
+			/obj/hud/button/slot/J,
+		#endif
+
 		/obj/hud/button/toggle_cash_money,
 		/obj/hud/button/cash_money,
 

@@ -29,9 +29,9 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/update_status()
 
-	var/server_name = "Burgerstation 13 RPG"
+	var/server_name = "Burgerstation 13 \[ALPHA TEST SERVER\]"
 	var/server_link = "https://discord.gg/yEaV92a"
-	var/github_name = "Space Station 13 Code <b>FROM SCRATCH</b>"
+	var/github_name = "Space Station 13 <b>FROM SCRATCH</b>"
 
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
@@ -40,7 +40,7 @@ var/global/world_state = STATE_STARTING
 		minutes = "0[minutes]"
 
 	var/duration = "[hours]:[minutes]"
-	var/map = "Nar'sie's Realm ([WORLD_SIZE]x[WORLD_SIZE]x1)"
+	var/map = "Burgerstation (512x512x1)"
 
 	//Format it.
 	status = "<a href='[server_link]'><b>[server_name]</b></a>] ([github_name])<br><br>"

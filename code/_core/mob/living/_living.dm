@@ -308,3 +308,11 @@
 	loyalty_tag = desired_loyalty_tag
 
 	return TRUE
+
+
+/mob/living/Logout()
+
+	if(health)
+		health.update_health()
+
+	return ..()
