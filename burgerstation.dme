@@ -1148,6 +1148,7 @@
 #include "code\_core\world\subsystems\reagent.dm"
 #include "code\_core\world\subsystems\report.dm"
 #include "code\_core\world\subsystems\research.dm"
+#include "code\_core\world\subsystems\shuttle.dm"
 #include "code\_core\world\subsystems\skills.dm"
 #include "code\_core\world\subsystems\soapstone.dm"
 #include "code\_core\world\subsystems\sound.dm"

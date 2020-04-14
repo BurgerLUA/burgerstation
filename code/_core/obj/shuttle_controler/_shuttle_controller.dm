@@ -190,6 +190,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/ending_cord_x = ending_transit.x
 	var/ending_cord_y = ending_transit.y
+	var/ending_cord_z = ending_transit.z
 
 	var/transit_throw_x = 0
 	var/transit_throw_y = 0
@@ -212,7 +213,7 @@ var/global/list/all_shuttle_controlers = list()
 		CHECK_TICK
 		var/offset_x = T.x - starting_cord_x
 		var/offset_y = T.y - starting_cord_y
-		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, z)
+		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, ending_cord_z)
 		replacing_turf.change_turf(T.type)
 		for(var/atom/movable/M in T.contents)
 			CHECK_TICK
