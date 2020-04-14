@@ -121,8 +121,6 @@ obj/structure/interactive/computer/console/remote_flight
 
 obj/structure/interactive/computer/console/remote_flight/Initialize()
 
-	var/list/z_level = get_z_level(src)
-
 	if(z_level[1] == 1 && z_level[2] == 2)
 		SShorde.possible_horde_targets += src
 

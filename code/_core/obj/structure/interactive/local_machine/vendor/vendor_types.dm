@@ -212,7 +212,8 @@
 		/obj/item/clothing/undertop/underwear/shirt/security,
 		/obj/item/clothing/pants/normal/security,
 		/obj/item/clothing/shirt/normal/security,
-		/obj/item/storage/shoebox/jackboot/
+		/obj/item/storage/shoebox/jackboot/,
+		/obj/item/storage/glovebox/padded/
 	)
 
 

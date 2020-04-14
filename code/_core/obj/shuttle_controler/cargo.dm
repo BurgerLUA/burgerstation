@@ -10,19 +10,18 @@
 
 /proc/is_safe_to_remove(var/atom/A)
 
-	if(istype(A,/obj/overlay/)) //Ignore
+	if(istype(A,/obj/overlay/)) //Ignore overlays.
 		return TRUE
 
 	if(A.qdeleting)
-		return FALSE
-
-	if(ismob(A) && !is_living(A))
 		return FALSE
 
 	if(is_living(A))
 		var/mob/living/L = A
 		if(L.client || (L.ckey_last && !L.dead))
 			return FALSE
+	else if(ismob(A))
+		return FALSE
 
 	if(!(istype(A,/obj/item/) || istype(A,/obj/structure/) || istype(A,/obj/hud/inventory)))
 		return FALSE

@@ -1,5 +1,6 @@
 /obj/structure/interactive/ore_storage
 	name = "ore storage"
+	desc = "A container that stores ores"
 	icon = 'icons/obj/structure/ore_storage.dmi'
 	icon_state = "ore_storage_map"
 

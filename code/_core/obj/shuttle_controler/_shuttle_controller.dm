@@ -90,6 +90,7 @@ var/global/list/all_shuttle_controlers = list()
 	else
 		transit_target = transit_start
 		transit_source = transit_end
+	return TRUE
 
 /obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE)
 
@@ -130,8 +131,6 @@ var/global/list/all_shuttle_controlers = list()
 			else
 				S.close(lock,TRUE)
 
-
-
 	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()
@@ -144,7 +143,8 @@ var/global/list/all_shuttle_controlers = list()
 	if(state == SHUTTLE_STATE_LAUNCHING)
 		display = "IGNT"
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
-			transit(transit_source,transit_bluespace)
+			if(!transit(transit_source,transit_bluespace))
+				return FALSE
 			play('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 
 			state = SHUTTLE_STATE_TRANSIT
@@ -160,7 +160,8 @@ var/global/list/all_shuttle_controlers = list()
 	if(state == SHUTTLE_STATE_LANDING)
 		display = "Land"
 		if(time >= 2) //Needs to be hardcoded as this is based on sound.
-			transit(transit_bluespace,transit_target)
+			if(!transit(transit_bluespace,transit_target))
+				return FALSE
 			set_doors(TRUE,TRUE)
 			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 			state = SHUTTLE_STATE_LANDED

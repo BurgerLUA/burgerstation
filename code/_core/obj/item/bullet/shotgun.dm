@@ -26,7 +26,8 @@
 
 /obj/item/bullet_cartridge/shotgun/slug
 	name = "\improper 12 gauge slug"
-	desc = ""
+	desc = "A slug shell, load it into a shotgun to use."
+	desc_extended = "This shell doesn't spread alot, and only has one projectile."
 	icon_state = "slug"
 
 	projectile_count = 1
@@ -46,7 +47,8 @@
 
 /obj/item/bullet_cartridge/shotgun/buckshot
 	name = "\improper 12 gauge buckshot shell"
-	desc = ""
+	desc = "A buckshot shell, load it into a shotgun to use."
+	desc_extended = "This shell is not very accurate and has many projectiles."
 	icon_state = "buckshot"
 
 	projectile_count = 8
@@ -65,7 +67,8 @@
 
 /obj/item/bullet_cartridge/shotgun/rubber_balls
 	name = "\improper 12 gauge rubber balls"
-	desc = ""
+	desc = "A rubber shot shell, load it into a shotgun to use."
+	desc = "This shell has many rubber balls in it to cause pain but not major injury"
 	icon_state = "rubber"
 
 	projectile_count = 8

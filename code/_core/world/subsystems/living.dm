@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(living)
 	name = "Living Subsystem"
 	desc = "Controls the life of mobs."
 	tick_rate = DECISECONDS_TO_TICKS(LIFE_TICK)
-	priority = SS_ORDER_IMPORTANT
+	priority = SS_ORDER_LIFE
 
 	var/advanced_ticks = 0
 

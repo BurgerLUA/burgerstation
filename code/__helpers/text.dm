@@ -104,6 +104,17 @@
 	return copytext(haystack,1,length(needle)+1) == needle
 
 
+/proc/has_suffix(var/haystack,var/needle)
+
+	if(length(needle) > length(haystack))
+		return FALSE
+
+	var/result = copytext(haystack,-length(needle),0)
+
+	world.log << "The result is: [result]."
+
+	return result == needle
+
 /proc/get_pronoun(var/mob/M)
 	switch(M.gender)
 		if(MALE)

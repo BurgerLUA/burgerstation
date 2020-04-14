@@ -24,9 +24,11 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 /obj/structure/interactive/plant/New(var/desired_loc)
 	all_plants += src
-	. = ..()
+	return ..()
+
+/obj/structure/interactive/plant/Initialize()
 	update_sprite()
-	return .
+	return ..()
 
 /obj/structure/interactive/plant/Destroy()
 	all_plants -= src

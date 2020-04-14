@@ -1,6 +1,6 @@
 obj/structure/smooth/table
 	name = "table"
-	desc = "What does it do?"
+	desc = "A table for placing objects down or taking them"
 	icon = 'icons/obj/structure/smooth/table/normal.dmi'
 	icon_state = "table"
 

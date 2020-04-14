@@ -13,7 +13,6 @@
 #define SS_ORDER_PRELOAD 2
 #define SS_ORDER_DMM 3
 
-
 #define SS_ORDER_AREAS 4
 #define SS_ORDER_TURFS 5
 #define SS_ORDER_OBJS 6
