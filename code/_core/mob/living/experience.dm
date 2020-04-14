@@ -43,6 +43,7 @@
 
 	if(!total_skills || !total_attributes)
 		log_error("ERROR: FOUND [total_skills] SKILLS AND [total_attributes] ATTRIBUTES.")
+		qdel(src)
 		return FALSE
 
 	total_attribute_mod = total_attribute_mod/total_attributes

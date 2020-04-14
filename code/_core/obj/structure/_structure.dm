@@ -18,7 +18,7 @@
 
 	var/light_sprite //The light sprite of the object, if any.
 
-/obj/structure/New(var/desired_loc)
+/obj/structure/Initialize()
 
 	. = ..()
 

@@ -130,11 +130,7 @@
 	var/list/possible_landmarks = list()
 
 	for(var/obj/marker/landmark/L in all_landmarks)
-		var/list/caller_z = get_z_level(caller)
-		var/list/L_z = get_z_level(L)
-		if(L_z[1] != caller_z[1])
-			continue
-		if(L_z[2] != caller_z[2])
+		if(L.z != src.z)
 			continue
 		possible_landmarks[L.name] = L
 

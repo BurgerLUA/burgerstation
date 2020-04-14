@@ -214,9 +214,6 @@
 	health_elements = list()
 	players_fighting_boss = list()
 
-	initialize_attributes()
-	initialize_skills()
-
 	medical_hud_image = new/image('icons/hud/medihud.dmi',"0")
 	medical_hud_image.loc = src
 	medical_hud_image.layer = PLANE_HUD_VISION
@@ -259,7 +256,8 @@
 
 /mob/living/Initialize()
 
-	//initialize_factions()
+	initialize_attributes()
+	initialize_skills()
 	update_level()
 	setup_name()
 	set_intent(intent,TRUE)
