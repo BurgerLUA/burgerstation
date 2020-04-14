@@ -56,7 +56,7 @@
 	var/attack_on_block = FALSE
 
 	var/path_steps = 1
-	var/list/Vector2D/current_path = list()
+	var/list/Vector3D/current_path = list()
 
 	var/distance_target_min = 1
 	var/distance_target_max = 1
@@ -96,7 +96,7 @@
 
 	all_living_ai += src
 
-/ai/proc/set_path(var/list/Vector2D/desired_path = list())
+/ai/proc/set_path(var/list/Vector3D/desired_path = list())
 
 	if(!desired_path || !length(desired_path))
 		current_path = null
@@ -113,8 +113,8 @@
 	frustration_move = 0
 	owner.move_dir = 0
 	path_start_turf = get_turf(owner)
-	var/Vector2D/last_path = desired_path[length(desired_path)]
-	path_end_turf = locate(last_path.x,last_path.y,1)
+	var/Vector3D/last_path = desired_path[length(desired_path)]
+	path_end_turf = locate(last_path.x,last_path.y,last_path.z)
 	return TRUE
 
 /ai/proc/on_life()
@@ -225,12 +225,12 @@
 	if(current_path && length(current_path))
 		owner.movement_flags = MOVEMENT_NORMAL
 		if(path_steps <= length(current_path))
-			var/Vector2D/desired_node = current_path[path_steps]
+			var/Vector3D/desired_node = current_path[path_steps]
 			if(desired_node.x == owner.x && desired_node.y == owner.y)
 				path_steps++
 				owner.move_dir = 0
 			else
-				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,1))
+				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
 		else
 			set_path(null)
 			owner.move_dir = 0

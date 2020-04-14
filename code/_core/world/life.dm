@@ -46,11 +46,13 @@
 		for(var/subsystem/S in active_subsystems)
 			try
 				if(S.next_run <= ticks && S.next_run >= 0)
+					var/start_life = world.timeofday
 					if(!S.tick_rate || !S.on_life())
 						active_subsystems -= S
 						S.next_run = -1
 					else
 						S.next_run = ticks + S.tick_rate
+					S.life_time = world.timeofday - start_life
 			catch(var/exception/e)
 				log_error("[S]: [e] on [e.file]:[e.line]!<br>[e.desc]")
 				if(SHUTDOWN_SUBSYSTEM_ON_ERROR)

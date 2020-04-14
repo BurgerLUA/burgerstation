@@ -19,6 +19,7 @@ SUBSYSTEM_DEF(soapstone)
 	data_to_write["time"] = desired_time
 	data_to_write["x"] = desired_loc.x
 	data_to_write["y"] = desired_loc.y
+	data_to_write["z"] = desired_loc.z
 	data_to_write["dir"] = desired_dir
 	data_to_write["color"] = desired_color
 	save_soapstone.quick_write(data_to_write)

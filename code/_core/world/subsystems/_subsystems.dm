@@ -5,6 +5,7 @@
 	var/tick_rate = 0 //Tick delay for the subsystem, in frames. Set to 0 if you don't want it to run.
 	var/priority = 0 //High number = runs later
 	var/next_run = 0 //When the subsystem should run next
+	var/life_time = 0 //Time it takes for it to complete a life cycle.
 
 //What to do when this subsystem is spawned. It's like New() but not really.
 /subsystem/proc/PreInitialize()

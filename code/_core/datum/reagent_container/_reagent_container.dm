@@ -286,7 +286,10 @@
 	if(temperature == TNULL)
 		if(owner)
 			var/area/A = get_area(owner)
-			temperature = A.ambient_temperature
+			if(A)
+				temperature = A.ambient_temperature
+			else
+				temperature = T0C + 20
 		else
 			temperature = T0C + 20
 

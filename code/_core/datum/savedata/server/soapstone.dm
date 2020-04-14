@@ -9,7 +9,8 @@
 
 	var/x = data_to_write["x"]
 	var/y = data_to_write["y"]
-	var/unique_identifier = "[x]_[y]"
+	var/z = data_to_write["z"]
+	var/unique_identifier = "[x]_[y]_[z]"
 
 	text2file(",\"[unique_identifier]\":" + json_encode(data_to_write),get_file())
 
@@ -28,8 +29,9 @@
 
 		var/x_cord = formatted_data[instance]["x"]
 		var/y_cord = formatted_data[instance]["y"]
+		var/z_cord = formatted_data[instance]["z"]
 
-		var/turf/desired_loc = locate(x_cord,y_cord,1)
+		var/turf/desired_loc = locate(x_cord,y_cord,z_cord)
 
 		var/name = formatted_data[instance]["name"]
 		var/ckey = formatted_data[instance]["ckey"]

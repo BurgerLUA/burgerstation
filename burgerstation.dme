@@ -522,7 +522,6 @@
 #include "code\_core\obj\effect\fake_lighting.dm"
 #include "code\_core\obj\effect\fogwall.dm"
 #include "code\_core\obj\effect\footprints.dm"
-#include "code\_core\obj\effect\gibs.dm"
 #include "code\_core\obj\effect\letters.dm"
 #include "code\_core\obj\effect\muzzleflash.dm"
 #include "code\_core\obj\effect\temp\_temp.dm"
@@ -1149,7 +1148,6 @@
 #include "code\_core\world\subsystems\reagent.dm"
 #include "code\_core\world\subsystems\report.dm"
 #include "code\_core\world\subsystems\research.dm"
-#include "code\_core\world\subsystems\shuttle.dm"
 #include "code\_core\world\subsystems\skills.dm"
 #include "code\_core\world\subsystems\soapstone.dm"
 #include "code\_core\world\subsystems\sound.dm"
@@ -1172,6 +1170,9 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
+#include "maps\horde\01_bluespace.dmm"
+#include "maps\horde\02_burgerstation.dmm"
+#include "maps\horde\03_island.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
