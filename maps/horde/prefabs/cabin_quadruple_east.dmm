@@ -1,118 +1,16 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/obj/structure/smooth/table/reinforced,
-/obj/structure/interactive/computer/console/old/station_job,
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"b" = (
-/turf/simulated/wall/metal,
-/area/interior/ship/dorm)
-"c" = (
-/obj/structure/interactive/bed/sleeper/cryo,
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"d" = (
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"e" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 1
-	},
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"f" = (
-/obj/structure/interactive/door/airlock/station/private,
-/obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 8
-	},
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"g" = (
-/obj/structure/interactive/vendor/autolocker,
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"h" = (
-/obj/structure/interactive/disposals/machine/chute,
-/obj/structure/interactive/disposals/pipe/ending,
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
-"i" = (
-/obj/structure/interactive/disposals/pipe{
-	icon_state = "pipe";
-	dir = 9
-	},
-/turf/simulated/floor/tile/grey,
-/area/interior/ship/dorm)
+"a" = (/obj/structure/smooth/table/reinforced,/obj/structure/interactive/computer/console/old/station_job,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"b" = (/turf/simulated/wall/metal,/area/interior/ship/dorm)
+"c" = (/obj/structure/interactive/bed/sleeper/cryo,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"e" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"f" = (/obj/structure/interactive/door/airlock/station/private,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"g" = (/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"h" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending,/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
+"i" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/tile/grey,/area/interior/ship/dorm)
 
 (1,1,1) = {"
-b
-b
-f
-b
-b
-"}
-(2,1,1) = {"
-b
-h
-i
-c
-b
-"}
-(3,1,1) = {"
-b
-d
-d
-d
-b
-"}
-(4,1,1) = {"
-b
-d
-d
-c
-b
-"}
-(5,1,1) = {"
-b
-d
-d
-g
-b
-"}
-(6,1,1) = {"
-b
-d
-d
-c
-b
-"}
-(7,1,1) = {"
-b
-d
-d
-d
-b
-"}
-(8,1,1) = {"
-b
-g
-d
-d
-b
-"}
-(9,1,1) = {"
-b
-a
-e
-d
-b
-"}
-(10,1,1) = {"
-b
-b
-b
-b
-b
+bbbbbbbbbb
+bhggggggab
+figgggggeb
+bcgcgcgggb
+bbbbbbbbbb
 "}

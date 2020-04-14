@@ -9,6 +9,9 @@ SUBSYSTEM_DEF(maps)
 
 /subsystem/maps/Initialize()
 	var/list/map_files = flist(MAP_DIRECTORY)
+	for(var/file in map_files)
+		if(!has_suffix(".dmm"))
+			map_files -= file
 	map_files = sortList(map_files)
 	for(var/i=1,i<=length(map_files),i++)
 		map_2_zlevel[map_files[i]] = i
