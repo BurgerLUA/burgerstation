@@ -113,17 +113,18 @@ SUBSYSTEM_DEF(horde)
 		enemies_to_spawn -= wave_to_spawn
 		var/list/possible_spawns = all_syndicate_spawns.Copy()
 		spawn while(enemies_to_spawn && length(possible_spawns))
+
+			CHECK_TICK
+
 			var/turf/chosen_spawn = pick(possible_spawns)
 			possible_spawns -= chosen_spawn
 
 			var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
 			if(P)
-				sleep(-1)
 				continue
 
 			var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
 			if(!N_start)
-				sleep(-1)
 				continue
 
 			var/list/possible_targets = possible_horde_targets.Copy()
@@ -131,19 +132,15 @@ SUBSYSTEM_DEF(horde)
 				var/atom/chosen_target = pick(possible_targets)
 				possible_targets -= chosen_target
 
-				var/list/z_level = get_z_level(chosen_target)
-				if(z_level[1] != 1 || z_level[2] != 2)
-					sleep(-1)
+				if(chosen_target.z != 3)
 					continue
 
 				var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
 				if(!N_end)
-					sleep(-1)
 					continue
 
 				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 				if(!found_path)
-					sleep(-1)
 					continue
 
 				while(wave_to_spawn)

@@ -121,7 +121,7 @@ obj/structure/interactive/computer/console/remote_flight
 
 obj/structure/interactive/computer/console/remote_flight/Initialize()
 
-	if(z_level[1] == 1 && z_level[2] == 2)
+	if(src.z == 3)
 		SShorde.possible_horde_targets += src
 
 	return ..()

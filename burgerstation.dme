@@ -112,7 +112,6 @@
 #include "code\__helpers\time.dm"
 #include "code\__helpers\turf.dm"
 #include "code\__helpers\world.dm"
-#include "code\__helpers\zlevel.dm"
 #include "code\__helpers\sorts\__main.dm"
 #include "code\__helpers\sorts\InsertSort.dm"
 #include "code\__helpers\sorts\MergeSort.dm"
@@ -1173,9 +1172,6 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\verbs.dm"
 #include "interface\beta.dmf"
-#include "maps\horde\1_1_burgerstation.dmm"
-#include "maps\horde\1_2_island.dmm"
-#include "maps\horde\2_1_bluespace.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
