@@ -296,6 +296,8 @@ mob/living/advanced/Login()
 
 	update_slowdown_mul()
 
+	setup_name()
+
 	return .
 
 /mob/living/advanced/setup_name()

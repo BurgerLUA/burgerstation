@@ -5,7 +5,8 @@
 
 	var/class/C = all_classes[class]
 
-	for(var/v in all_attributes)
+	for(var/k in SSexperience.all_attributes)
+		var/v = SSexperience.all_attributes[k]
 		var/experience/attribute/A = new v(src)
 		var/desired_level = C.attributes[A.id]
 		A.Initialize(A.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
@@ -15,7 +16,8 @@
 
 	var/class/C = all_classes[class]
 
-	for(var/v in all_skills)
+	for(var/k in SSexperience.all_skills)
+		var/v = SSexperience.all_skills[k]
 		var/experience/skill/S = new v(src)
 		var/desired_level = C.skills[S.id]
 		S.Initialize(S.level_to_xp(clamp(desired_level*level_multiplier,1,100)))
@@ -43,7 +45,6 @@
 
 	if(!total_skills || !total_attributes)
 		log_error("ERROR: FOUND [total_skills] SKILLS AND [total_attributes] ATTRIBUTES.")
-		qdel(src)
 		return FALSE
 
 	total_attribute_mod = total_attribute_mod/total_attributes

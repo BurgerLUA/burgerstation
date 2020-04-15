@@ -166,7 +166,7 @@
 		if(S)
 			S.Initialize(xp)
 		else
-			log_error("Warning! Skill of ID \"[id]\" for [A] is invalid!")
+			log_error("Warning! Attribute of ID \"[id]\" for [A] is invalid!")
 
 	if(do_teleport)
 		var/obj/marker/dev/D = locate() in world

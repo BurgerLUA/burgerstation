@@ -259,7 +259,6 @@
 	initialize_attributes()
 	initialize_skills()
 	update_level()
-	setup_name()
 	set_intent(intent,TRUE)
 
 	. = ..()
@@ -272,6 +271,8 @@
 
 	if(reagents && spawn_blood)
 		reagents.add_reagent(spawn_blood,BLOOD_LEVEL_DEFAULT)
+
+	setup_name()
 
 	return .
 
