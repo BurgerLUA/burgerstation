@@ -10,7 +10,7 @@
 	try
 		O = new o_type(loc)
 	catch
-		log_error("ERROR: [o_type] does not exist in code!")
+		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc], but it does not exist in code!")
 		return FALSE
 
 	//General Information
@@ -53,10 +53,6 @@
 	if(is_clothing(O) && length(object_data["polymorphs"]))
 		var/obj/item/clothing/C = O
 		C.polymorphs = object_data["polymorphs"]
-
-	if(istype(O,/obj/item/clothing/ears/headset) && object_data["stored_radio"])
-		var/obj/item/clothing/ears/headset/H = O
-		H.stored_radio = object_data["stored_radio"]
 
 	if(is_pill(O))
 		var/obj/item/container/pill/P = O
