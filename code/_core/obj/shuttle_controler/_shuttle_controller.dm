@@ -214,7 +214,7 @@ var/global/list/all_shuttle_controlers = list()
 		var/offset_x = T.x - starting_cord_x
 		var/offset_y = T.y - starting_cord_y
 		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, ending_cord_z)
-		replacing_turf.change_turf(T.type)
+		replacing_turf.change_turf(T.type,TRUE,TRUE)
 		for(var/atom/movable/M in T.contents)
 			CHECK_TICK
 			if(!M.allow_shuttle_move)
@@ -222,7 +222,7 @@ var/global/list/all_shuttle_controlers = list()
 			M.move_delay = SECONDS_TO_TICKS(3)
 			M.force_move(replacing_turf)
 			objects_to_throw += M
-		T.change_turf(/turf/simulated/floor/plating)
+		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
 
 	for(var/atom/movable/M in objects_to_throw)
 		if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)

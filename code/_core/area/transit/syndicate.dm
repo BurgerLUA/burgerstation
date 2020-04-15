@@ -8,6 +8,7 @@
 /area/transit/syndicate/bluespace
 	name = "syndicate shuttle - bluespace"
 	id = "syndicate_shuttle_bluespace"
+	transit_turf = /turf/simulated/bluespace/
 
 /area/transit/syndicate/planet
 	name = "syndicate shuttle - planet"

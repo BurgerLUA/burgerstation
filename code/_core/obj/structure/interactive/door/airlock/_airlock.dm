@@ -100,10 +100,13 @@ obj/structure/interactive/door/airlock/open(var/unlock = FALSE, var/force = FALS
 
 		door_state = DOOR_STATE_OPENED
 		update_sprite()
+		opened_time = 0
 		start_thinking(src)
 
 		if(force && !unlock)
 			lock()
+
+
 
 	return TRUE
 
@@ -275,9 +278,6 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 	if(!. && door_state == DOOR_STATE_CLOSED)
 		open()
-
-	if(.)
-		opened_time = 0
 
 	return .
 

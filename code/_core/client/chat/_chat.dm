@@ -18,10 +18,10 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 	switch(text_type)
 		if(TEXT_RADIO)
 			for(var/mob/M in range(RADIO_RANGE,source_turf))
+				CHECK_TICK
 				if(!M.client)
 					continue
 				M.to_chat(format_speech(speaker,source,text_to_say,text_type,frequency),CHAT_TYPE_RADIO)
-				sleep(-1)
 			//We don't send to other radios because that's a fucking terrible idea.
 		if(TEXT_WHISPER)
 			if(istype(source,/client/))
@@ -30,16 +30,17 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				return
 			else
 				for(var/mob/M in range(WHISPER_RANGE,source_turf))
+					CHECK_TICK
 					if(!M.client)
 						continue
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
-					sleep(-1)
 
 				for(var/obj/item/device/radio/R in all_radios)
+					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
-					sleep(-1)
+
 
 		if(TEXT_TALK)
 			if(istype(source,/client/))
@@ -48,16 +49,16 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				return
 			else
 				for(var/mob/M in range(TALK_RANGE,source_turf))
+					CHECK_TICK
 					if(!M.client)
 						continue
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
-					sleep(-1)
 
 				for(var/obj/item/device/radio/R in all_radios)
+					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
-					sleep(-1)
 
 		if(TEXT_YELL)
 			if(istype(source,/client/))
@@ -66,36 +67,38 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				return
 			else
 				for(var/mob/M in range(YELL_RANGE,source_turf))
+					CHECK_TICK
 					if(!M.client)
 						continue
 					M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
-					sleep(-1)
+
 
 				for(var/obj/item/device/radio/R in all_radios)
+					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
 						continue
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
-					sleep(-1)
 
 		if(TEXT_LOOC)
 			for(var/mob/M in range(YELL_RANGE,source_turf))
+				CHECK_TICK
 				if(!M.client)
 					continue
 				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_LOOC)
-				sleep(-1)
 
 		if(TEXT_OOC)
 			for(var/client/C in all_clients)
+				CHECK_TICK
 				if(!C.mob)
 					continue
 				C.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_OOC)
-				sleep(-1)
 
 			if(SSwikibot && ENABLE_WIKIBOT)
 				SSwikibot.process_string(source,text_to_say)
 
 		if(TEXT_GHOST)
 			for(var/client/C in all_clients)
+				CHECK_TICK
 				if(!C.mob || !is_observer(C.mob))
 					continue
 				C.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)

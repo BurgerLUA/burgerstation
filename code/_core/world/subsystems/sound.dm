@@ -240,10 +240,10 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		created_sound.environment = M.get_sound_environment()
 
 		var/local_volume = volume
-		if(length(pos) && pos[3] >= 0)
+		if(length(pos))
 			created_sound.x = pos[1] - T.x
-			created_sound.y = pos[2] - T.y
-			created_sound.z = pos[3] - T.z
+			created_sound.z = pos[2] - T.y
+			created_sound.y = 0
 			if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
 				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
 				local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max

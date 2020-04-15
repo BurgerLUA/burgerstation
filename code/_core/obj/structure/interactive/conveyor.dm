@@ -79,6 +79,8 @@
 	if(desired_turf)
 		var/conveyor_limit = 5
 		for(var/atom/movable/M in loc.contents)
+			if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
+				continue
 			if(conveyor_limit <= 0)
 				break
 			if(M.anchored || M.grabbing_hand || M.next_conveyor > world.time)

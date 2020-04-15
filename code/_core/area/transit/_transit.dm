@@ -5,6 +5,7 @@ var/global/list/area/transit/transit_areas = list()
 	icon_state = "shuttle"
 	is_space = TRUE
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_ROUND_INFORMATION
+	var/turf/transit_turf = /turf/simulated/floor/plating
 
 /area/transit/New(var/desired_loc)
 	transit_areas[id] = src
@@ -17,6 +18,7 @@ var/global/list/area/transit/transit_areas = list()
 /area/transit/cargo/bluespace
 	name = "cargo shuttle"
 	id = "cargo_shuttle_bluespace"
+	transit_turf = /turf/simulated/bluespace/
 
 /area/transit/cargo/planet
 	name = "cargo shuttle"

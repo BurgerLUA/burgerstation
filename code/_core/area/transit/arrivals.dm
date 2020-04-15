@@ -9,6 +9,7 @@
 	name = "arrivals shuttle - bluespace"
 	id = "arrivals_shuttle_bluespace"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
+	transit_turf = /turf/simulated/bluespace/
 
 /area/transit/arrivals_shuttle/station
 	name = "arrivals shuttle - station"
