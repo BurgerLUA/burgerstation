@@ -9,12 +9,10 @@
 			var/rotation = -90
 			if(click_flags & LEFT_HAND)
 				rotation = 90
-
-
-
 			M.set_dir(turn(M.dir,rotation))
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
 		return TRUE
+
 	else if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = src.defer_click_on_object()
@@ -36,28 +34,26 @@
 
 			I.drop_item(get_turf(caller))
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y)
-
 		return TRUE
-	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 
+	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
 		if(grabbed_object)
 			return release_object(caller)
-
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
-
 		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
 			return drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
-
 		return drop_item_from_inventory()
 
 	else if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
+
 	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
 		if(isturf(object.loc))
 			return grab_object(caller,object,location,control,params)
 		else
 			return wield_object(caller,defer_object)
+
 	if(defer_self == grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
@@ -78,11 +74,12 @@
 
 	if(get_dist(defer_self,defer_object) <= 1) //We're able to interact with it.
 		if(is_item(defer_self)) //We have an object in our hands.
-			if(is_inventory(defer_object)) //We're clicking on an empty inventory
-				var/obj/hud/inventory/I = defer_object
-				I.add_object(defer_self)
-				return TRUE
-			else if(is_item(defer_object)) //We're clicking on another object with an item.
+			if(is_inventory(object)) //We're clicking on an inventory
+				var/obj/hud/inventory/object_as_inventory = object
+				if(object_as_inventory.can_hold_object(defer_self,FALSE)) //The inventory has space.
+					object_as_inventory.add_object(defer_self) //Add the object to the inventory
+					return TRUE
+			if(is_item(defer_object)) //We're clicking on another object with an item.
 				return ..()
 		else //We don't have an object in our hands.
 			if(is_item(defer_object)) //We're clicking on an item.
@@ -96,6 +93,20 @@
 				return TRUE
 
 	return ..()
+
+/obj/hud/inventory/drop_on_object(var/atom/caller,var/atom/object,location,control,params) //Src is dragged to object
+
+	if(is_inventory(object))
+		var/obj/hud/inventory/object_as_inventory = object
+		var/obj/item/I = src.get_top_object()
+		if(I)
+			object_as_inventory.add_object(I)
+		return TRUE
+
+	return ..()
+
+
+
 
 /obj/hud/inventory/proc/wield_object(var/mob/caller,var/obj/item/item_to_wield)
 

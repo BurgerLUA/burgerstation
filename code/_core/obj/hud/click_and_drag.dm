@@ -12,7 +12,8 @@
 
 	alpha = 0
 
-	var/atom/stored_object
+	var/obj/item/stored_object
+	var/obj/hud/inventory/stored_inventory
 
 	user_colors = FALSE
 

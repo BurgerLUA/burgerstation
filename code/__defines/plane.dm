@@ -41,3 +41,5 @@
 #define PLANE_HUD_OBJ 104
 
 #define PLANE_HUD_TEXT 105
+
+#define PLANE_HUD_MOUSE 106

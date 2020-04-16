@@ -593,6 +593,7 @@
 #include "code\_core\obj\hud\inventory\hands.dm"
 #include "code\_core\obj\hud\inventory\head.dm"
 #include "code\_core\obj\hud\inventory\interaction.dm"
+#include "code\_core\obj\hud\inventory\mousedrag.dm"
 #include "code\_core\obj\hud\inventory\organs.dm"
 #include "code\_core\obj\hud\inventory\pockets.dm"
 #include "code\_core\obj\hud\inventory\torso.dm"

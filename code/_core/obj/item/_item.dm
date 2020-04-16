@@ -146,6 +146,19 @@
 /obj/item/can_be_grabbed(var/atom/grabber)
 	return isturf(src.loc)
 
+/obj/item/proc/can_add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE)
+
+	if(!length(inventories))
+		return null
+
+	for(var/obj/hud/inventory/I in inventories)
+		if(bypass && length(I.held_objects) >= I.held_slots)
+			continue
+		if(I.can_hold_object(object,enable_messages))
+			return I
+
+	return null
+
 /obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
@@ -154,13 +167,10 @@
 	var/added = FALSE
 
 	if(object != src)
-		for(var/obj/hud/inventory/I in inventories)
-			if(bypass && length(I.held_objects) >= I.held_slots)
-				continue
-
-			if(I.add_object(object,FALSE,bypass))
-				added = TRUE
-				break
+		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,enable_messages,bypass)
+		if(found_inventory)
+			found_inventory.add_object(object,FALSE,bypass)
+			added = TRUE
 
 	if(enable_messages && caller)
 		if(added)
