@@ -88,38 +88,37 @@ SUBSYSTEM_DEF(lighting)
 		var/list/curr_overlays = overlay_queue
 
 		while (lq_idex <= curr_lights.len)
+			CHECK_TICK
 			var/light_source/L = curr_lights[lq_idex++]
 			if (L.needs_update != LIGHTING_NO_UPDATE)
 				total_ss_updates += 1
 				L.update_corners()
 				L.needs_update = LIGHTING_NO_UPDATE
 				processed_lights++
-			sleep(-1)
 
 		if (lq_idex > 1)
 			curr_lights.Cut(1, lq_idex)
 			lq_idex = 1
 
 		while (cq_idex <= curr_corners.len)
+			CHECK_TICK
 			var/lighting_corner/C = curr_corners[cq_idex++]
 			if (C.needs_update)
 				C.update_overlays()
 				C.needs_update = FALSE
 				processed_corners++
-			sleep(-1)
 
 		if (cq_idex > 1)
 			curr_corners.Cut(1, cq_idex)
 			cq_idex = 1
 
 		while (oq_idex <= curr_overlays.len)
+			CHECK_TICK
 			var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex++]
-
 			if (!O.qdeleting && O.needs_update)
 				O.update_overlays()
 				O.needs_update = FALSE
 				processed_overlays++
-			sleep(-1)
 
 		if (oq_idex > 1)
 			curr_overlays.Cut(1, oq_idex)

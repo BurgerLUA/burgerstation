@@ -25,23 +25,16 @@ SUBSYSTEM_DEF(hazard)
 	if(!ENABLE_HAZARDS)
 		return FALSE
 
-	spawn()
-
-		for(var/area/A in all_areas_with_hazards)
-
-			if(!A.hazard || !all_hazards[A.hazard])
-				continue
-
-			var/hazard/H = all_hazards[A.hazard]
-			if(!H)
-				continue
-
-			if(A.players_inside)
-				for(var/mob/living/advanced/player/P in A.players_inside)
-					H.process_player_tick(P)
-					sleep(-1)
-
-			sleep(-1)
+	for(var/area/A in all_areas_with_hazards)
+		if(!A.hazard || !all_hazards[A.hazard])
+			continue
+		var/hazard/H = all_hazards[A.hazard]
+		if(!H)
+			continue
+		if(A.players_inside)
+			for(var/mob/living/advanced/player/P in A.players_inside)
+				CHECK_TICK
+				H.process_player_tick(P)
 
 	return TRUE
 

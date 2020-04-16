@@ -122,6 +122,8 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 
 	for(var/mob/M in all_mobs_with_clients)
 
+		CHECK_TICK
+
 		if(!M.client) //Just in case.
 			continue
 
@@ -164,8 +166,6 @@ proc/display_message(var/atom/speaker, var/atom/source, var/text_to_say as text,
 				M.to_chat(local_third_person_text)
 		else
 			M.to_chat(local_blind_text)
-
-		sleep(-1)
 
 
 

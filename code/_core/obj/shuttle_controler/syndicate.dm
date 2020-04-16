@@ -53,11 +53,11 @@
 				return .
 
 			spawn for(var/i=1,i<=5-length(found_syndicate),i++)
+				CHECK_TICK
 				var/turf/T = pick(valid_spots)
 				valid_spots -= T
 				var/mob/living/advanced/npc/syndicate/S = new(T)
 				INITIALIZE(S)
-				sleep(-1)
 
 
 		if(starting_transit_id == "syndicate_shuttle_bluespace" && ending_transit_id == "syndicate_shuttle_planet")

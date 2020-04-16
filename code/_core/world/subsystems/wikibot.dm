@@ -24,24 +24,22 @@ SUBSYSTEM_DEF(wikibot)
 
 /subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)
 
-	spawn()
-		var/best_score = 0
-		var/best_answer = null
+	var/best_score = 0
+	var/best_answer = null
 
-		for(var/list/wikibot_key in wikibot_list)
-			var/question_keys = wikibot_key["keywords"]
-			var/answer_key = wikibot_key["answer"]
-			var/current_score = 0
+	for(var/list/wikibot_key in wikibot_list)
+		var/question_keys = wikibot_key["keywords"]
+		var/answer_key = wikibot_key["answer"]
+		var/current_score = 0
 
-			for(var/key in question_keys)
-				if(!findtextEx(lowertext(string_to_process),key))
-					continue
-				current_score += 1
+		for(var/key in question_keys)
+			CHECK_TICK
+			if(!findtextEx(lowertext(string_to_process),key))
+				continue
+			current_score += 1
 
-			if(current_score > best_score && current_score >= length(question_keys))
-				best_answer = answer_key
+		if(current_score > best_score && current_score >= length(question_keys))
+			best_answer = answer_key
 
-			sleep(-1)
-
-		if(best_answer)
-			broadcast_to_clients(format_speech("WikiBot","WikiBot","[asker], [best_answer]",TEXT_BOT))
+	if(best_answer)
+		broadcast_to_clients(format_speech("WikiBot","WikiBot","[asker], [best_answer]",TEXT_BOT))

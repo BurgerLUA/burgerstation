@@ -159,6 +159,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 	var/turf/T
 	for (var/i in 1 to 4)
+		CHECK_TICK
 		// this is ugly as fuck, but it's still more legible than doing this with a macro
 		switch (i)
 			if (1) T = t1
@@ -173,7 +174,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 			else if (!Ov.needs_update)
 				Ov.needs_update = TRUE
 				SSlighting.overlay_queue += Ov
-		sleep(-1)
+
 
 /lighting_corner/Destroy()
 
