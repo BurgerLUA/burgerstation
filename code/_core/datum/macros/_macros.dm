@@ -43,6 +43,7 @@
 		"O" = "ooc",
 		"L" = "looc"
 	)
+
 	var/list/radio_keys = list(
 		";" = RADIO_FREQ_COMMON,
 		"g" = RADIO_FREQ_COMMON,
@@ -56,6 +57,12 @@
 		"4" = RADIO_FREQ_DELTA,
 		"d" = RADIO_FREQ_DELTA
 	)
+
+	var/list/language_keys = list(
+		"o" = LANGUAGE_LIZARD
+	)
+
+
 
 /macros/Destroy()
 	owner = null

@@ -1,4 +1,4 @@
-#define ICON_TO_HTML(icon,icon_state) ("<IMG CLASS=icon src=\ref[icon] ICONSTATE='[icon_state]'>")
+#define ICON_TO_HTML(icon,icon_state,width,height) ("<IMG CLASS=icon src=\ref[icon] ICONSTATE='[icon_state]' style='width:[width]px;height:[height]px'>")
 
 /proc/deunderscore(var/text)
 	return replacetextEx(text,"_"," ")
@@ -97,23 +97,14 @@
 
 
 /proc/has_prefix(var/haystack,var/needle)
-
 	if(length(needle) > length(haystack))
 		return FALSE
-
 	return copytext(haystack,1,length(needle)+1) == needle
 
-
 /proc/has_suffix(var/haystack,var/needle)
-
 	if(length(needle) > length(haystack))
 		return FALSE
-
-	var/result = copytext(haystack,-length(needle),0)
-
-	world.log << "The result is: [result]."
-
-	return result == needle
+	return copytext(haystack,-length(needle),0) == needle
 
 /proc/get_pronoun(var/mob/M)
 	switch(M.gender)

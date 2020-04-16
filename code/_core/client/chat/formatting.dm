@@ -40,7 +40,7 @@ proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=RAD
 
 	if(is_atom(source))
 		var/atom/A = source
-		source_text += ICON_TO_HTML(A.icon,A.icon_state)
+		source_text += ICON_TO_HTML(A.icon,A.icon_state,32,32)
 		if(is_radio(source))
 			source_text += "([frequency_to_name(frequency)]) "
 			tag += " radio"
@@ -49,7 +49,7 @@ proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=RAD
 
 	if(tag)
 		tag = trim(tag)
-		tag_text += ICON_TO_HTML(chat_tags.icon,tag)
+		tag_text += ICON_TO_HTML(chat_tags.icon,tag,32,10)
 		. = span(tag,"[tag_text][.]")
 
 	return .

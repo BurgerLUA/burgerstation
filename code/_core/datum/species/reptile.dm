@@ -16,6 +16,15 @@
 	default_color_skin = "#8CA73E"
 	default_color_hair = "#fff0be"
 
+	languages = list(
+		LANGUAGE_BASIC,
+		LANGUAGE_LIZARD
+	)
+
+	accent = list(
+		"s" = "sss"
+	)
+
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/reptile,
 		BODY_HEAD = /obj/item/organ/head/reptile,

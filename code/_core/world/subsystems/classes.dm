@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(classes)
 	priority = SS_ORDER_PRELOAD
 
 /subsystem/classes/Initialize()
+
 	for(var/A in subtypesof(/class/))
 		var/class/C = new A
 		all_classes[C.id] = C

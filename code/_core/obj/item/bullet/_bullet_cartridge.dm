@@ -110,7 +110,7 @@
 
 	return ..()
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/display_message = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/talk = TRUE)
 
 	if(src == transfer_target)
 		return FALSE //TODO: THIS USED TO BE TRUE, TEST BULLETS TO SEE IF THIS SHOULD BE TRUE
@@ -129,7 +129,7 @@
 		transfer_target.item_count_current += 1
 		item_count_current -= 1
 		transfered_bullets += 1
-	if(display_message)
+	if(talk)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
 	transfer_target.update_sprite()
 	if(item_count_current <= 0)
@@ -139,7 +139,7 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/display_message = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/talk = TRUE)
 
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
@@ -152,7 +152,7 @@
 		transfer_target.stored_bullets += B
 		item_count_current -= 1
 		transfered_bullets += 1
-	if(display_message)
+	if(talk)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target.name]."))
 	transfer_target.update_sprite()
 	if(item_count_current <= 0)
@@ -162,7 +162,7 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/display_message = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_gun(var/mob/caller as mob,var/obj/item/weapon/ranged/bullet/W,location,control,params,var/talk = TRUE)
 
 	if(W.can_load_chamber(caller,src))
 		var/obj/item/bullet_cartridge/B = new src.type(W)

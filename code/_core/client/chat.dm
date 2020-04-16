@@ -13,7 +13,7 @@
 	if(!check_spam(src,text_to_say))
 		return FALSE
 
-	display_message(src,src,text_to_say,TEXT_OOC)
+	talk(src,src,text_to_say,TEXT_OOC)
 
 
 /client/proc/to_chat(var/text,var/chat_type)

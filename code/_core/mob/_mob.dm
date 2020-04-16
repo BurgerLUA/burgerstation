@@ -81,6 +81,10 @@
 
 	//step_size = 4
 
+	var/list/known_languages = list(
+		LANGUAGE_BASIC = TRUE
+	)
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = (SEE_SELF | SEE_BLACKNESS | SEE_TURFS)

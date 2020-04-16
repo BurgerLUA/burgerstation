@@ -120,7 +120,7 @@ list(
 	if(data["frequency"] != frequency && !(data["frequency"] in listening_frequencies))
 		return FALSE
 
-	display_message(data["speaker"],src,data["message"],TEXT_RADIO,data["frequency"])
+	talk(data["speaker"],src,data["message"],TEXT_RADIO,data["frequency"])
 
 	return TRUE
 

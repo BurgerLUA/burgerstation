@@ -1,4 +1,8 @@
-/proc/convert_langage_to_lizard(var/text)
+/language/lizard
+	name = "Draconic"
+	id = LANGUAGE_LIZARD
+
+/language/lizard/process_text(var/mob/speaker,var/text)
 
 	var/static/list/vowels = make_associative(list(
 		"a","e","i","o"

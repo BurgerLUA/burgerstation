@@ -10,7 +10,6 @@
 
 	var/default_color_eye = "#FF0000"
 
-
 	var/default_color_skin = "#0000FF"
 	var/default_color_detail = "#FFFFFF"
 	var/default_color_glow = "#FFFFFF"
@@ -30,6 +29,12 @@
 	var/default_hairstyle_chargen_female = 16
 
 	var/genderless = FALSE
+
+	var/list/languages = list(
+		LANGUAGE_BASIC
+	)
+
+	var/list/accent = null
 
 	var/list/obj/item/organ/spawning_organs_male = list()
 
@@ -101,3 +106,14 @@
 		/obj/hud/button/health/bar/mp,
 		/obj/hud/button/health/body
 	)
+
+/species/proc/mod_speech(var/mob/M,var/text,var/intensity=50)
+
+	if(!accent || !length(accent))
+		return text
+
+	for(var/k in accent)
+		var/v = accent[k]
+		text = replacetextEx(text,k,v)
+
+	return text

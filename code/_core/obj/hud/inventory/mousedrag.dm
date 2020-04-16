@@ -3,11 +3,7 @@
 	if(!is_advanced(usr) || !is_inventory(over_object))
 		return ..()
 
-	var/obj/item/I = get_top_held_object()
-	if(!I)
-		I = get_top_worn_object()
-	if(!I)
-		return ..()
+	var/obj/item/I = get_top_object()
 
 	var/mob/living/advanced/A = usr
 

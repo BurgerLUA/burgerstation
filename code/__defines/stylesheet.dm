@@ -1,12 +1,4 @@
 #define STYLESHEET {"
-img.examine_icon_main{
-	margin:0;
-	padding:0;
-}
-img.examine_icon{
-	margin:0;
-	padding:0;
-}
 a,a:link,a:visited,a:hover,a:focus,a:active{
 	font-color: inherit;
 	text-decoration: none;
@@ -14,7 +6,7 @@ a,a:link,a:visited,a:hover,a:focus,a:active{
 }
 body {
 	font-family: Verdana, sans-serif;
-	font-size: 12px;
+	font-size: 10px;
 }
 .pm_other{
 	color:#498DB6;

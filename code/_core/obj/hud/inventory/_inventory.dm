@@ -119,10 +119,10 @@
 	return FALSE
 
 /obj/hud/inventory/get_examine_list(var/atom/examiner)
-	var/atom/A = get_top_held_object()
-	if(!A) A = get_top_worn_object()
-	if(!A) return FALSE
-	return A.get_examine_list(examiner)
+	var/obj/item/I = get_top_object()
+	if(!I)
+		return list()
+	return I.get_examine_list(examiner)
 
 /obj/hud/inventory/update_overlays()
 
@@ -440,18 +440,15 @@
 		total_weight += O.weight
 		total_size += O.size
 
-	if(length(held_objects))
-		var/obj/item/I = get_top_held_object()
+	var/obj/item/I = get_top_object()
+	if(I)
 		name = I.name
-	else if(length(worn_objects))
-		var/obj/item/I = get_top_worn_object()
-		name = I.name
-	else if(src.loc)
-		name = "[src.loc.name] inventory"
+	else
+		name = "inventory"
 
 	if(src.loc && is_item(src.loc))
-		var/obj/item/I = src.loc
-		I.update_inventory()
+		var/obj/item/I2 = src.loc
+		I2.update_inventory()
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 

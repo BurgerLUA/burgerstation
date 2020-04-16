@@ -16,10 +16,10 @@
 
 /obj/trigger/debug_message/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	if(is_player(caller))
-		display_message_to(caller)
+		talk_to(caller)
 	return TRUE
 
-/obj/trigger/debug_message/proc/display_message_to(var/mob/living/advanced/player/P)
+/obj/trigger/debug_message/proc/talk_to(var/mob/living/advanced/player/P)
 	P.known_debug_messages[id] = TRUE
 	return P.to_chat(span("debug_message",message))
 
@@ -27,7 +27,7 @@
 	if(is_player(O) && id)
 		var/mob/living/advanced/player/P = O
 		if(!P.known_debug_messages[id])
-			display_message_to(P)
+			talk_to(P)
 
 	return ..()
 
