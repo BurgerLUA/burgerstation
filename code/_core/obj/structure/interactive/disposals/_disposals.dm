@@ -39,9 +39,3 @@
 /obj/structure/interactive/disposals/proc/get_connections()
 	return list()
 
-/obj/structure/interactive/disposals/clicked_on_by_object(caller,object,location,control,params)
-	var/list/connections = get_connections()
-	print_list_dir("Connections:",connections)
-	return TRUE
-
-

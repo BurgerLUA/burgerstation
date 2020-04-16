@@ -1,3 +1,3 @@
-#define ANNOUNCEMENT_STATION "station" //Send to all on the station.
-#define ANNOUNCEMENT_ZOMBIE "zombie" //Send to all zombies.
-#define ANNOUNCEMENT_XENO "xeno" //Send to all xenos
+#define ANNOUNCEMENT_STATION 0x1 //Send to all on the station.
+#define ANNOUNCEMENT_ZOMBIE 0x2 //Send to all zombies.
+#define ANNOUNCEMENT_XENO 0x4 //Send to all xenos

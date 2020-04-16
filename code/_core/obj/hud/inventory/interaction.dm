@@ -76,29 +76,23 @@
 	if((caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
-	if(is_inventory(object) && is_item(defer_self)) //We're clicking on an inventory with an item.
-		var/obj/hud/inventory/object_as_inventory = object
-		var/obj/item/defer_self_as_item = defer_self
-		if(object_as_inventory.held_slots > 1 || object_as_inventory.worn_slots > 1) //The inventory we're clicking on can hold more than one object per slot.
-			object_as_inventory.add_object(defer_self_as_item)
-			return TRUE
-
-	//Interacting wtih items in world.
-	if(is_inventory(defer_self) && is_item(defer_object) && get_dist(caller,defer_object) <= 1) //We're clicking on an item with an empty hand, and it is in range.
-		var/obj/item/defer_object_as_item = defer_object
-		if(is_inventory(object)) //The item in question is inside another inventory.
-			var/obj/hud/inventory/object_as_inventory = object
-			//SHITCODE AHOY.
-			if( (!istype(object_as_inventory,/obj/hud/inventory/organs/groin/pocket) && !istype(defer_object_as_item,/obj/item/storage/pouch)) && !object_as_inventory.drag_to_take && src.add_object(defer_object_as_item))
+	if(get_dist(defer_self,defer_object) <= 1) //We're able to interact with it.
+		if(is_item(defer_self)) //We have an object in our hands.
+			if(is_inventory(defer_object)) //We're clicking on an empty inventory
+				var/obj/hud/inventory/I = defer_object
+				I.add_object(defer_self)
 				return TRUE
-		else if (!defer_object_as_item.anchored && src.add_object(defer_object_as_item)) //Pickup the item if it isn't bolted to the ground.
-			return TRUE
-
-	if(is_item(defer_self))
-		var/obj/item/defer_self_as_item = defer_self
-		if(is_inventory(defer_object)) //We have an item in hand and the object we're clicking on is a blank inventory
-			var/obj/hud/inventory/defer_object_as_inventory = defer_object
-			if(get_dist(defer_self_as_item,defer_object_as_inventory) <= 1 && defer_object_as_inventory.add_object(defer_self_as_item))
+			else if(is_item(defer_object)) //We're clicking on another object with an item.
+				return ..()
+		else //We don't have an object in our hands.
+			if(is_item(defer_object)) //We're clicking on an item.
+				var/obj/item/I = defer_object
+				if(is_inventory(defer_object.loc)) //The object is in an inventory
+					var/obj/hud/inventory/I2 = defer_object.loc
+					if(I2.drag_to_take || I.is_container)
+						I.click_self(caller)
+						return TRUE
+				src.add_object(defer_object)
 				return TRUE
 
 	return ..()

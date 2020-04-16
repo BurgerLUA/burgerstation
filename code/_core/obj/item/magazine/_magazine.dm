@@ -83,7 +83,7 @@
 
 	object = object.defer_click_on_object()
 
-	if(is_inventory(object) && !istype(src.loc,/obj/hud/inventory/dynamic) && !istype(src.loc,/obj/hud/inventory/organs/groin/pocket) && length(stored_bullets))
+	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
 		if(I.add_held_object(B))

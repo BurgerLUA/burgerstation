@@ -84,6 +84,8 @@
 
 #define is_dynamic_inventory(A) istype(A, /obj/hud/inventory/dynamic)
 
+#define is_pocket(A) istype(A, /obj/hud/inventory/organs/groin/pocket)
+
 #define is_slime(A) istype(A, /mob/living/simple/npc/slime)
 
 #define is_unique(A) istype(A, /mob/living/advanced/npc/unique)

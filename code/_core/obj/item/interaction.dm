@@ -68,6 +68,7 @@
 
 	return TRUE
 
+
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_container) //We're a container being clicked on.
@@ -77,10 +78,12 @@
 			var/obj/item/I = defer_object
 			src.add_to_inventory(caller,I) //Add that item in our hands to the container's invetory.
 			return TRUE
-		if(is_inventory(src.loc) && !is_dynamic_inventory(src.loc))
+		/*
+		if(is_inventory(src.loc) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) )
 			INTERACT_CHECK
 			click_self(caller) //Open the inventory if we're holding it and we clicked on it with an empty hand.
 			return TRUE
+		*/
 
 	return 	..()
 
@@ -103,7 +106,6 @@
 		var/vel_x = object.x - caller.x
 		var/vel_y = object.y - caller.y
 		var/highest = max(abs(vel_x),abs(vel_y))
-
 		if(!highest)
 			src.drop_item(get_turf(caller))
 			return TRUE

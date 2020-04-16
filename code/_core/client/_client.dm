@@ -302,6 +302,7 @@ var/global/list/all_clients = list()
 
 	var/list/aug = params2list(params)
 
+
 	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
 	if(abs(mouse_down_x-screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
 		return FALSE
