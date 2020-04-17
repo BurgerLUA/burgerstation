@@ -271,6 +271,9 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		L.add_adrenaline(.*50)
+		if(L.health.get_oxy_loss() > 50)
+			L.health.set_oxy_loss(50)
+			L.health.update_health()
 
 	return .
 

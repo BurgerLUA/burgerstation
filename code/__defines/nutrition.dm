@@ -1,0 +1,2 @@
+#define NUT_AMOUNT 0.1
+#define NUT_FACTOR / NUT_AMOUNT

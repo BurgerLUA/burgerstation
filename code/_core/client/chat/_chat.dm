@@ -8,12 +8,6 @@
 	for(var/client/C in all_clients)
 		C.to_chat(text_to_say,TEXT_OOC)
 
-
-
-
-
-
-
 proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
 
 	if(!text_to_say)
@@ -212,8 +206,3 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				M.to_chat(local_third_person_text)
 		else
 			M.to_chat(local_blind_text)
-
-
-
-
-

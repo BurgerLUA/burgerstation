@@ -9,12 +9,10 @@
 
 	stationary = FALSE
 
-	//var/ranged_attack_cooldown = 0
-
+	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
 	var/checked_weapons = FALSE
 
 	var/obj/item/weapon/objective_weapon
-
 	var/attack_delay_left
 	var/attack_delay_right
 
@@ -31,7 +29,7 @@
 	if(A.right_item || A.left_item)
 		return FALSE
 
-	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6)
+	if(should_find_weapon && (!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6) )
 		var/list/possible_weapons = list()
 		for(var/obj/item/weapon/W in view(6,A))
 			if(istype(W,/obj/item/weapon/ranged/))

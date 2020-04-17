@@ -4,14 +4,13 @@
 	radius_find_enemy = VIEW_RANGE
 	use_cone_vision = FALSE
 	retaliate = FALSE
+	should_find_weapon = FALSE
 
 /ai/advanced/stand/on_life()
-
 	if(istype(owner,/mob/living/advanced/stand/))
 		var/mob/living/advanced/stand/S = owner
 		if(!S.enabled)
 			return FALSE
-
 	return ..()
 
 
@@ -45,9 +44,6 @@
 
 	if(!can_attack(L))
 		return FALSE
-
-	if(istype(L,/mob/living/advanced/stand/))
-		return TRUE
 
 	if(istype(owner,/mob/living/advanced/stand/))
 		var/mob/living/advanced/stand/S = owner
