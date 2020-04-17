@@ -9,6 +9,7 @@
 #define TEXT_PM 8
 #define TEXT_PM_ADMIN_IN 9
 #define TEXT_PM_ADMIN_OUT 10
+#define TEXT_RAW 11
 
 #define CHAT_TYPE_SAY 0x1
 #define CHAT_TYPE_OOC 0x2

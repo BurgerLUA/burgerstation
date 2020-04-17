@@ -14,7 +14,7 @@
 
 
 
-proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_type as num, var/frequency=RADIO_FREQ_COMMON, var/language = LANGUAGE_BASIC)
+proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
 
 	if(!text_to_say)
 		return FALSE
@@ -26,23 +26,33 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_t
 	var/turf/source_turf = get_turf(source)
 
 	switch(text_type)
-		if(TEXT_RADIO)
-			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency)
-			var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency)
-			for(var/mob/M in range(RADIO_RANGE,source_turf))
+		if(TEXT_RADIO) //People talking into radios.
+			for(var/obj/item/device/radio/R in all_radios)
+				CHECK_TICK
+				if(get_turf(R) != source_turf)
+					continue
+				if(frequency == -1)
+					frequency = R.frequency
+				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
+				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
+				R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = frequency))
+				//speaker.visible_message("\The [speaker.name] talks into \the [R.name].","You talk into \the [R.name].")
+				break
+		if(TEXT_RAW) //People talking out of radios, pretty much.
+			for(var/mob/M in range(TALK_RANGE,source_turf))
 				CHECK_TICK
 				if(!M.client)
 					continue
-				M.to_chat_language(formatted_speech,CHAT_TYPE_RADIO,language,formatted_speech_language)
-			//We don't send to other radios because that's a fucking terrible idea.
+				M.to_chat(text_to_say,CHAT_TYPE_RADIO)
+
 		if(TEXT_WHISPER)
 			if(istype(source,/client/))
 				var/client/C = source
 				C.to_chat("You cannot talk like this!")
 				return
 			else
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency)
+				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
+				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				for(var/mob/M in range(WHISPER_RANGE,source_turf))
 					CHECK_TICK
 					if(!M.client)
@@ -53,7 +63,12 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_t
 					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
 						continue
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
+					var/desired_frequency = frequency
+					if(!desired_frequency)
+						desired_frequency = R.frequency
+					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
+					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 
 
 		if(TEXT_TALK)
@@ -62,8 +77,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_t
 				C.to_chat("You cannot talk like this!")
 				return
 			else
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency)
+				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
+				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				for(var/mob/M in range(TALK_RANGE,source_turf))
 					CHECK_TICK
 					if(!M.client)
@@ -74,7 +89,12 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_t
 					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
 						continue
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
+					var/desired_frequency = frequency
+					if(!desired_frequency)
+						desired_frequency = R.frequency
+					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
+					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 
 		if(TEXT_YELL)
 			if(istype(source,/client/))
@@ -82,8 +102,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_t
 				C.to_chat("You cannot talk like this!")
 				return
 			else
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency)
-				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency)
+				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
+				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				for(var/mob/M in range(YELL_RANGE,source_turf))
 					CHECK_TICK
 					if(!M.client)
@@ -95,31 +115,39 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say as text, var/text_t
 					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
 						continue
-					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say))
+					var/desired_frequency = frequency
+					if(!desired_frequency)
+						desired_frequency = R.frequency
+					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
+					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
+					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
 
 		if(TEXT_LOOC)
+			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/mob/M in range(YELL_RANGE,source_turf))
 				CHECK_TICK
 				if(!M.client)
 					continue
-				M.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_LOOC)
+				M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 
 		if(TEXT_OOC)
+			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/client/C in all_clients)
 				CHECK_TICK
 				if(!C.mob)
 					continue
-				C.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_OOC)
+				C.to_chat(formatted_speech,CHAT_TYPE_OOC)
 
 			if(SSwikibot && ENABLE_WIKIBOT)
 				SSwikibot.process_string(source,text_to_say)
 
 		if(TEXT_GHOST)
+			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/client/C in all_clients)
 				CHECK_TICK
 				if(!C.mob || !is_observer(C.mob))
 					continue
-				C.to_chat(format_speech(speaker,source,text_to_say,text_type),CHAT_TYPE_SAY)
+				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
 
 	if(language == LANGUAGE_BASIC && (text_type == TEXT_TALK || text_type == TEXT_YELL))
 		var/area/A = get_area(source)

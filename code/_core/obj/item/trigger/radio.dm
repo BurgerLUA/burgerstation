@@ -21,6 +21,8 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/radio_sound = 'sounds/items/radio.ogg'
 
+	var/broadcasting_range = VIEW_RANGE
+
 	value = 5
 
 /obj/item/device/radio/click_self(var/mob/caller,location,control,params)
@@ -120,7 +122,13 @@ list(
 	if(data["frequency"] != frequency && !(data["frequency"] in listening_frequencies))
 		return FALSE
 
-	talk(data["speaker"],src,data["message"],TEXT_RADIO,data["frequency"])
+	var/turf/T = get_turf(src)
+	T.desc = data["message"]
+
+	for(var/mob/M in range(broadcasting_range,T))
+		if(!M.client)
+			continue
+		M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
 
 	return TRUE
 

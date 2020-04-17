@@ -111,61 +111,9 @@
 	text_to_say = trim(text_to_say)
 
 	if(frequency_to_use)
-		world.log << "Using frequency [frequency_to_use]."
-		if(talk_type_to_use == TEXT_TALK)
-			talk_type_to_use = TEXT_WHISPER
-		else if(talk_type_to_use == TEXT_YELL)
-			talk_type_to_use = TEXT_TALK
-		talk(src,src,text_to_say,talk_type_to_use, language = language_to_use)
-		for(var/obj/item/device/radio/R in all_radios)
-			if(get_turf(R) != get_turf(src))
-				continue
-			if(frequency_to_use == -1)
-				frequency_to_use = R.frequency
-			visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
-			R.send_data(list("speaker" = src, "source" = src, "message" = text_to_say, "language" = language_to_use, "frequency" = frequency_to_use))
-			break
-	else
-		talk(src,src,text_to_say,talk_type_to_use,language = language_to_use)
+		talk_type_to_use = TEXT_RADIO
 
-	/*
-	//Shitcode ahoy.
-	if(first_character == ";")
-		for(var/obj/item/device/radio/R in all_radios)
-			if(get_turf(R) != get_turf(src))
-				continue
-			visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
-			text_to_say = trim(copytext(text_to_say,2,0))
-			first_character = length(text_to_say) >= 1 ? copytext(text_to_say,1,2) : null
-			var/second_character = length(text_to_say) >= 2 ? copytext(text_to_say,2,3) : null
-			if(first_character == "." && client.macros.language_keys[second_character])
-				text_to_say = trim(copytext(text_to_say,2,0))
-				talk(src,src,text_to_say,TEXT_WHISPER,language = client.macros.language_keys[second_character])
-				R.send_data(list("speaker" = src, "source" = src, "message" = text_to_say, "language" = client.macros.language_keys[second_character]))
-			else
-				talk(src,src,text_to_say,TEXT_WHISPER)
-				R.send_data(list("speaker" = src, "source" = src, "message" = text_to_say))
-			break
-	else if(client && client.macros && first_character == "." && length(text_to_say) >= 4)
-		var/third_character = copytext(text_to_say,3,4)
-		if(third_character == " ")
-			var/second_character = copytext(text_to_say,2,3)
-			if(client.macros.radio_keys[second_character])
-				var/desired_frequency = client.macros.radio_keys[second_character]
-				for(var/obj/item/device/radio/R in all_radios)
-					if(get_turf(R) != get_turf(src))
-						continue
-					text_to_say = trim(copytext(text_to_say,4,0))
-					visible_message(span("notice","\The [src.name] speaks into \the [R.name]."),span("notice","You speak into \the [R.name]."))
-					talk(src,src,text_to_say,TEXT_WHISPER)
-					R.send_data(list("speaker" = src, "source" = src, "message" = text_to_say, "frequency" = desired_frequency))
-					break
-			else if(client.macros.language_keys[second_character])
-				talk(src,src,text_to_say,TEXT_TALK,language = client.macros.language_keys[second_character])
-				return text_to_say
-	else
-		talk(src,src,text_to_say,TEXT_TALK)
-	*/
+	talk(src,src,text_to_say,talk_type_to_use,frequency_to_use,language_to_use)
 
 	return text_to_say
 
