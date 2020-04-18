@@ -18,10 +18,3 @@
 		return FALSE
 
 	return -adjust_currency(-currency_to_spend)
-
-
-/mob/living/advanced/player/verb/give_dosh(var/dosh_amount as num)
-	set category = "Fun"
-	set name = "Give Dosh"
-	var/added_currency = src.adjust_currency(dosh_amount)
-	src.to_chat("You gave yourself [added_currency] credits.")

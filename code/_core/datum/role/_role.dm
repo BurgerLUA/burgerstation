@@ -1,11 +1,19 @@
-
 /role/
-	name = "Roll Name"
-	desc = "Roll Description"
-	id = null
+	var/name = "Roll Name"
+	var/desc = "Roll Description"
+	var/id = null
 
 	var/permissions = FLAG_PERMISSION_NONE
 	var/protection = 0
+	var/list/verbs = list()
+
+/role/proc/add_verbs(var/client/C)
+	C.verbs.Cut()
+	return TRUE
+
+
+
+
 
 /role/user/
 	name = "User"

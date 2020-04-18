@@ -17,14 +17,17 @@
 
 	var/file_contents = file2text(full_path)
 	loaded_data = json_decode(file_contents)
+	update()
 
 /savedata/client/roles/proc/add_role(var/role_to_add)
 	loaded_data["role"] |= role_to_add
+	update()
 	save()
 	return TRUE
 
 /savedata/client/roles/proc/remove_role(var/role_to_add)
 	loaded_data["role"] &= ~role_to_add
+	update()
 	save()
 	return TRUE
 

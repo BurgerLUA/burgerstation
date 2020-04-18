@@ -160,11 +160,3 @@ SUBSYSTEM_DEF(horde)
 	round_time = 0
 	round_time_next = 120
 	return TRUE
-
-
-/client/verb/rtv()
-	set hidden = TRUE
-	if(lowertext(ckey) != "burgerbb")
-		return
-
-	SShorde.round_time = 1000000

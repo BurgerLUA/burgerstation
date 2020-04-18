@@ -18,38 +18,6 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 
 	return TRUE
 
-mob/living/advanced/player/verb/logout()
-	set name = "Save and Quit"
-	set desc = "Saves and quits your character, returning you to the main menu."
-	set category = "Menu"
-
-	if(!loc)
-		return FALSE
-
-	var/area/A = get_area(src)
-
-	if(mobdata && mobdata.loaded_data && mobdata.loaded_data["tutorial"] == 1)
-		var/question = input("Are you sure you want to quit? All unsaved progress will be lost.") in list("Yes","No")
-		if(question == "Yes")
-			make_ghost()
-			return TRUE
-	if(mobdata && mobdata.loaded_data && mobdata.loaded_data["tutorial"] == 2)
-		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
-		if(question == "Yes")
-			save(null)
-			make_ghost()
-			return TRUE
-	else if(can_save(A))
-		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
-		if(question == "Yes" && can_save(A))
-			save()
-			make_ghost()
-			qdel(src)
-			return TRUE
-
-	return FALSE
-
-
 /mob/living/advanced/player/proc/make_ghost(var/turf/T)
 
 	if(!T)

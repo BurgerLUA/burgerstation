@@ -10,6 +10,10 @@
 	if(SSwikibot)
 		SSwikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
 
+/commands/debug/verb/rtv()
+	set hidden = TRUE
+	SShorde.round_time = 1000000
+
 /commands/debug/verb/print_garbage()
 
 	set category = "Debug"
