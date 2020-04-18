@@ -1,6 +1,4 @@
-/command/game/
-
-/command/game/verb/cycle_intent_clockwise()
+/mob/living/verb/cycle_intent_clockwise()
 	set name = "Cycle Intent Clockwise"
 	set category = "Game"
 	set hidden = TRUE
@@ -21,7 +19,7 @@
 		B.update_overlays()
 
 
-/command/game/verb/cycle_intent_counter_clockwise()
+/mob/living/verb/cycle_intent_counter_clockwise()
 	set name = "Cycle Intent Counter-Clockwise"
 	set category = "Game"
 	set hidden = TRUE
@@ -43,7 +41,7 @@
 
 
 //For focusing.
-/command/game/verb/toggle_focus()
+/client/verb/toggle_focus()
 	set name = "Toggle Map Focus"
 	set category = "Game"
 	set hidden = TRUE
@@ -51,14 +49,14 @@
 	winset(src,"map.map","focus=[is_focused ? "false" : "true"]")
 	winset(src,"main.input","focus=[is_focused ? "true" : "false"]")
 
-/command/game/verb/focus_map()
+/client/verb/focus_map()
 	set name = "Focus Map"
 	set category = "Game"
 	set hidden = TRUE
 	winset(src,"map.map","focus=true")
 	winset(src,"main.input","focus=false")
 
-/command/game/verb/focus_input()
+/client/verb/focus_input()
 	set name = "Focus Input"
 	set category = "Game"
 	set hidden = TRUE

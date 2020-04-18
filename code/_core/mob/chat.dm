@@ -12,28 +12,6 @@
 
 	return TRUE
 
-
-/mob/living/say(var/text_to_say as text)
-
-	if(dead)
-		to_chat(span("warning","You can't talk while you're dead!"))
-		return FALSE
-
-	return ..()
-
-/mob/living/advanced/say(var/text_to_say as text)
-
-	start_typing()
-
-	. = ..()
-
-	end_typing()
-
-	if(.)
-		do_type(TALK_TYPE_EXCLAIMATION)
-
-	return .
-
 /mob/proc/mod_speech(var/text)
 	return text
 

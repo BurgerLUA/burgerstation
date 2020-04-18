@@ -1,4 +1,4 @@
-/commands/debug/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
+/client/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
 	set category = "Debug"
 	set name = "Add New Wikibot Entry"
 
@@ -10,11 +10,11 @@
 	if(SSwikibot)
 		SSwikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
 
-/commands/debug/verb/rtv()
+/client/verb/rtv()
 	set hidden = TRUE
 	SShorde.round_time = 1000000
 
-/commands/debug/verb/print_garbage()
+/client/verb/print_garbage()
 
 	set category = "Debug"
 	set name = "Print Debug"
@@ -34,7 +34,7 @@
 	usr << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
 
 
-/commands/debug/verb/spawn_from_path(var/object as text) //TODO: Make this work.
+/client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
 	set name = "Spawn Object"
 	set desc = "Spawn an object."
 	set category = "Debug"
@@ -77,7 +77,8 @@
 			O.on_spawn()
 		return TRUE
 
-/commands/debug/verb/populate_world(var/number_to_create = 5 as num)
+/*
+/mob/verb/populate_world(var/number_to_create = 5 as num)
 
 	set name = "Populate World"
 	set category = "Debug"
@@ -103,10 +104,11 @@
 		var/mob/living/advanced/player/debug/P = new(T)
 		INITIALIZE(P)
 		step(P,pick(NORTH,EAST,SOUTH,WEST))
+*/
 
 
 
-/commands/debug/verb/set_attribute(var/mob/mob as mob)
+/client/verb/set_attribute(var/mob/mob as mob)
 
 	set name = "Set Attribute Level"
 	set category = "Debug"
@@ -137,7 +139,7 @@
 	L << "Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."
 
 
-/commands/debug/verb/set_skill(var/mob/mob as mob)
+/client/verb/set_skill(var/mob/mob as mob)
 
 	set name = "Set Skill Level"
 	set category = "Cheat"
@@ -169,7 +171,7 @@
 
 
 
-/commands/debug/verb/change_variable(var/datum/object as anything in view(), var/desired_varable_key as text, var/desired_varable_value as anything)
+/client/verb/change_variable(var/datum/object as anything in view(), var/desired_varable_key as text, var/desired_varable_value as anything)
 
 	set name = "Change Variable"
 	set category = "Debug"
@@ -181,7 +183,7 @@
 		object.vars[desired_varable_key] = desired_varable_value
 
 
-/commands/debug/verb/var_edit(var/object as anything in view())
+/client/verb/var_edit(var/object as anything in view())
 	set name = "Variable Edit"
 	set category = "Debug"
 

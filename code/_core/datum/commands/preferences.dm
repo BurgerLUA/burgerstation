@@ -1,7 +1,4 @@
-/command/preferences/
-
-
-/command/preferences/verb/fullscreen()
+/client/verb/fullscreen()
 
 	set name = "Toggle Fullscreen"
 	set category = "Preferences"
@@ -22,27 +19,27 @@
 		winset(src,"main","is-maximized=true")
 
 
-/command/preferences/verb/set_volume_master(var/desired_volume as num)
+/client/verb/set_volume_master(var/desired_volume as num)
 	set category = "Preferences"
 	set name = "Volume - Master"
 	settings.change_setting("volume_master",desired_volume)
 
-/command/preferences/verb/set_volume_fx(var/desired_volume as num)
+/client/verb/set_volume_fx(var/desired_volume as num)
 	set category = "Preferences"
 	set name = "Volume - Effects"
 	settings.change_setting("volume_fx",desired_volume)
 
-/command/preferences/verb/set_volume_ambient(var/desired_volume as num)
+/client/verb/set_volume_ambient(var/desired_volume as num)
 	set category = "Preferences"
 	set name = "Volume - Ambient"
 	settings.change_setting("volume_ambient",desired_volume)
 
-/command/preferences/verb/set_volume_music(var/desired_volume as num)
+/client/verb/set_volume_music(var/desired_volume as num)
 	set category = "Preferences"
 	set name = "Volume - Music"
 	settings.change_setting("volume_music",desired_volume)
 
-/command/preferences/verb/set_volume_footsteps(var/desired_volume as num)
+/client/verb/set_volume_footsteps(var/desired_volume as num)
 	set category = "Preferences"
 	set name = "Volume - Footsteps"
 	settings.change_setting("volume_footsteps",desired_volume)

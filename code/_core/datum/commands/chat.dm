@@ -1,8 +1,4 @@
-/command/chat/
-
-
-
-/command/chat/verb/say(var/text_to_say as text)
+/mob/verb/say(var/text_to_say as text)
 
 	set name = "Say"
 	set category = "Communication"
@@ -27,8 +23,8 @@
 
 	var/first_character = copytext(text_to_say,1,2)
 	if(first_character == "/" || first_character == "!") //OOC
-		if(src.client)
-			var/client/C = src.client
+		if(client)
+			var/client/C = client
 			var/final_command = trim(copytext(text_to_say,2,0))
 			winset(C, null, "command='[final_command]'")
 			return text_to_say
@@ -76,15 +72,36 @@
 
 	return text_to_say
 
-/command/chat/verb/emote(var/emote_id as text)
+/mob/living/say(var/text_to_say as text)
+
+	if(dead)
+		to_chat(span("warning","You can't talk while you're dead!"))
+		return FALSE
+
+	return ..()
+
+/mob/living/advanced/say(var/text_to_say as text)
+
+	start_typing()
+
+	. = ..()
+
+	end_typing()
+
+	if(.)
+		do_type(TALK_TYPE_EXCLAIMATION)
+
+	return .
+
+/mob/verb/emote(var/emote_id as text)
 	set hidden = TRUE
 	//do stuff
 
-/command/chat/verb/whisper(var/text_to_say as text)
+/mob/verb/whisper(var/text_to_say as text)
 	set hidden = TRUE
 	//do stuff
 
-/command/chat/verb/looc(var/text_to_say as text)
+/mob/verb/looc(var/text_to_say as text)
 
 	set name = "LOOC"
 	set category = "Communication"

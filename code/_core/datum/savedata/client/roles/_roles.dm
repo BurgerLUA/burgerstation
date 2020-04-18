@@ -35,3 +35,7 @@
 	var/full_path = "[get_folder(owner.ckey)][get_file()]"
 	fdel(full_path)
 	text2file(json_encode(loaded_data),full_path)
+
+
+/savedata/client/roles/proc/update()
+	return TRUE

@@ -1,6 +1,4 @@
-/command/menu/
-
-/command/menu/verb/logout()
+/mob/living/advanced/player/verb/logout()
 	set name = "Save and Quit"
 	set desc = "Saves and quits your character, returning you to the main menu."
 	set category = "Menu"
@@ -31,11 +29,14 @@
 
 	return FALSE
 
-/command/menu/verb/load_most_recent_character()
+/mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Quickload Character"
 	set category = "Menu"
 
-	var/client/C = usr
+	if(!src.client)
+		log_error("Attempted to quickload a character without a client!")
+		return FALSE
+
 	var/savedata/client/mob/U = mobdata
 
 	var/list/files = U.get_files()
@@ -46,16 +47,17 @@
 
 	var/file_num = U.get_proper_id_from_filename(files[1])
 
-	. = C.load(U,file_num)
+	. = src.client.load(U,file_num)
 	qdel(src)
 	return .
 
 
-/command/menu/verb/load_character()
+/mob/abstract/observer/verb/load_character()
 	set name = "Load Character"
 	set category = "Menu"
 
-	var/client/C = usr
+	var/client/C = src.client
+
 	var/savedata/client/mob/U = mobdata
 
 	if(!U.has_files())
@@ -72,7 +74,7 @@
 
 	var/choice = input("Choose a character to load.") as null|anything in name_to_choice
 
-	if(!choice || !is_valid(C))
+	if(!choice || !is_valid(src))
 		return FALSE
 
 	var/file_num = name_to_choice[choice]
@@ -81,8 +83,7 @@
 	qdel(src)
 	return .
 
-
-/command/menu/verb/new_character()
+/mob/abstract/observer/verb/new_character()
 	set name = "New Character"
 	set category = "Data"
 

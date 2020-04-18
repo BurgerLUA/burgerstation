@@ -117,6 +117,8 @@ var/global/list/all_clients = list()
 
 /client/New()
 
+	CLEAR_VERBS(src)
+
 	all_clients += src
 
 	if(!button_tracker)
