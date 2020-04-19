@@ -7,6 +7,7 @@
 	var/next_run = 0 //When the subsystem should run next
 	var/life_time = 0 //Time it takes for it to complete a life cycle.
 
+
 //What to do when this subsystem is spawned. It's like New() but not really.
 /subsystem/proc/PreInitialize()
 

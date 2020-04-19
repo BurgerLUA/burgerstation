@@ -20,6 +20,8 @@
 	open_sound = 'sounds/machines/airlock/open.ogg'
 	close_sound = 'sounds/machines/airlock/close.ogg'
 
+	blocks_air = NORTH | EAST | SOUTH | WEST
+
 	var/no_access = FALSE
 
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
@@ -172,32 +174,32 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "opening_01"
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 
 		if(DOOR_STATE_OPENING_02)
 			icon_state = "opening_02"
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_01)
 			icon_state = "closing_01"
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_02)
 			icon_state = "closing_02"
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID)
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
 					set_opacity(1)
 
 		if(DOOR_STATE_OPENED)
 			icon_state = "open"
 			desc = "The door is open."
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSED)
@@ -205,10 +207,10 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			desc = "The door is closed."
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID)
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = initial(blocks_air))
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
 					set_opacity(1)
 
 		if(DOOR_STATE_START_OPENING)
@@ -217,10 +219,10 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			collision_flags = FLAG_COLLISION_REAL
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID)
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
 					set_opacity(1)
 
 	var/icon/base_icon = new /icon(icon,icon_state)

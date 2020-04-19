@@ -9,26 +9,16 @@
 
 
 proc/direction_to_text(var/dir)
-	switch(dir)
-		if(NORTHWEST)
-			return "northwest"
-		if(NORTHEAST)
-			return "northeast"
-		if(SOUTHWEST)
-			return "southwest"
-		if(SOUTHEAST)
-			return "southeast"
-		if(NORTH)
-			return "north"
-		if(SOUTH)
-			return "south"
-		if(EAST)
-			return "east"
-		if(WEST)
-			return "west"
-		if(UP)
-			return "up"
-		if(DOWN)
-			return "down"
-		if(0)
-			return "center"
+
+	. = list()
+
+	if(dir & NORTH)
+		. += "north"
+	if(dir & SOUTH)
+		. += "south"
+	if(dir &EAST)
+		. += "east"
+	if(dir & WEST)
+		. += "west"
+
+	return english_list(.,"none","-","-")

@@ -45,3 +45,13 @@ obj/structure/interactive/atmospherics/air_alarm/update_overlays()
 	I.layer = 99
 	add_overlay(I)
 	return .
+
+
+obj/structure/interactive/atmospherics/fan
+	name = "fan"
+	icon = 'icons/obj/structure/atmos.dmi'
+	icon_state = "fan_tiny"
+
+	plane = PLANE_TILE
+
+	blocks_air = NORTH | EAST | SOUTH | WEST

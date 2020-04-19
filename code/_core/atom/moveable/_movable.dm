@@ -59,42 +59,37 @@
 		var/turf/simulated/T = get_turf(src)
 		if(T && is_simulated(T))
 			T.blocks_air &= ~blocks_air
-			T.blocks_air = a_dir
+			T.blocks_air |= a_dir
 			QUEUE_AIR_TURF(T)
-
 		blocks_air = a_dir
 		. = TRUE
+	else if(force)
+		var/turf/simulated/T = get_turf(src)
+		T.blocks_air |= blocks_air
+		if(T && is_simulated(T))
+			QUEUE_AIR_TURF(T)
 
 	return .
 
-
-
-
-
-/atom/movable/New(var/desired_loc)
-
-	. = ..()
-
-	if(blocks_air && is_simulated(loc))
-		var/turf/simulated/T = loc
-		T.has_air_blocking_atom |= NORTH | EAST | SOUTH | WEST
-
-	return .
-
-
-
+/atom/movable/get_examine_list(var/mob/examiner)
+	return ..() + div("notice","Air Block Dirs: [direction_to_text(blocks_air)].")
 
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 
 /atom/movable/Initialize()
 	. = ..()
+
 	if(loc)
 		area = get_area(loc)
 		if(area)
 			area.Entered(src,null)
 		else
 			log_error("WARNING: For some reason, [src.name]([src.type]) didn't have an area to initialize in! (Loc: [loc.name]([loc.type].)")
+
+		if(blocks_air && is_simulated(loc))
+			var/turf/simulated/T = loc
+			T.blocks_air |= blocks_air
 
 	return .
 

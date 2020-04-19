@@ -1,1 +1,1 @@
-#define QUEUE_AIR_TURF(t) SSair.queued_atmos_updates += t
+#define QUEUE_AIR_TURF(t) if(SSair && SSair.initialized) SSair.queued_atmos_updates += t

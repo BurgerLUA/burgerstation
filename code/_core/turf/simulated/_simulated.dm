@@ -79,6 +79,10 @@ var/global/saved_icons = 0
 
 	return .
 
+/turf/simulated/get_examine_list(var/mob/examiner)
+	return ..() + div("notice","Air Block Dirs: [direction_to_text(blocks_air)].")
+
+
 /turf/simulated/on_destruction(var/atom/caller,var/damage = FALSE)
 
 	if(!destruction_turf)

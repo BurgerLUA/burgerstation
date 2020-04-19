@@ -19,6 +19,8 @@
 
 	health_base = 100
 
+	blocks_air = NORTH | EAST | SOUTH | WEST
+
 /obj/structure/smooth/window/can_be_attacked(var/atom/attacker)
 
 	var/area/A = get_area(src)
