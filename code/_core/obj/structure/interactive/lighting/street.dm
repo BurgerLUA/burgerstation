@@ -12,13 +12,9 @@
 
 	plane = PLANE_MOB
 
-	density_north = TRUE
-	density_south = TRUE
-	density_east  = TRUE
-	density_west  = TRUE
-
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_dir = NORTH | EAST | SOUTH | WEST
 
 /obj/structure/interactive/lighting/streetlamp/strong
 	desired_light_power = 0.4

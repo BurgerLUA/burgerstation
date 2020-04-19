@@ -8,10 +8,7 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	density_north = FALSE
-	density_south = FALSE
-	density_east  = FALSE
-	density_west  = FALSE
+	collision_dir = 0x0
 
 	var/think_timer = 0
 
@@ -22,10 +19,7 @@
 	icon_state = "diverter_on"
 
 	if(.)
-		density_north = (dir & SOUTH)
-		density_east = (dir & WEST)
-		density_south = (dir & NORTH)
-		density_west = (dir & EAST)
+		collision_dir = turn(dir,180)
 
 	return ..()
 

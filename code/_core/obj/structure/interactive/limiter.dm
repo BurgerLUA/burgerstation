@@ -7,19 +7,11 @@
 
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
-	density_north = FALSE
-	density_south = FALSE
-	density_east  = FALSE
-	density_west  = FALSE
-
+	collision_dir = 0x0
 
 /obj/structure/interactive/limiter/Initialize()
 
 	if(.)
-		density_north = (dir & NORTH)
-		density_east = (dir & EAST)
-		density_south = (dir & SOUTH)
-		density_west = (dir & WEST)
+		collision_dir = dir
 
 	return ..()

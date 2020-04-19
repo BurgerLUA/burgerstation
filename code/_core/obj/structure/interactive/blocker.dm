@@ -8,12 +8,8 @@ obj/structure/interactive/blocker
 obj/structure/interactive/blocker/New(var/desired_loc,var/obj/structure/desired_owned_object)
 
 	owned_object = desired_owned_object
+	collision_dir = owned_object.collision_dir
 
-	update_collisions(owned_object.collision_flags,owned_object.collision_bullet_flags)
-
-	density_north = owned_object.density_north
-	density_south = owned_object.density_south
-	density_east  = owned_object.density_east
-	density_west  = owned_object.density_west
+	update_collisions(owned_object.collision_flags,owned_object.collision_bullet_flags,collision_dir)
 
 	return ..()

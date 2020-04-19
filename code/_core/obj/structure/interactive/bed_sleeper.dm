@@ -29,10 +29,7 @@ obj/structure/interactive/bed/sleeper
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	density_north = TRUE
-	density_south = TRUE
-	density_east  = TRUE
-	density_west  = TRUE
+	collision_dir = NORTH | EAST | SOUTH | WEST
 
 obj/structure/interactive/bed/sleeper/Initialize()
 	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
@@ -123,13 +120,13 @@ obj/structure/interactive/bed/sleeper/think()
 
 obj/structure/interactive/bed/sleeper/proc/check_collisions()
 
-	collision_flags = initial(collision_flags)
-	collision_bullet_flags = initial(collision_flags)
+	var/desired_collision_flags = initial(collision_flags)
+	var/desired_collision_bullet_flags = initial(collision_flags)
 
 	switch(door_state)
 		if(SLEEPER_OPENED)
-			collision_flags = FLAG_COLLISION_NONE
-			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			desired_collision_flags = FLAG_COLLISION_NONE
+			desired_collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 			set_light(FALSE)
 		if(SLEEPER_CLOSED)
 			set_light(2, 0.5, secondary_color)
@@ -138,7 +135,7 @@ obj/structure/interactive/bed/sleeper/proc/check_collisions()
 		if(SLEEPER_CLOSING)
 			set_light(2, 0.25, secondary_color)
 
-	update_collisions(collision_flags,collision_bullet_flags) //Dumb way of doing this but it werks.
+	update_collisions(desired_collision_flags,desired_collision_bullet_flags)
 
 	return TRUE
 

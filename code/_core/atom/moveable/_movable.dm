@@ -39,18 +39,34 @@
 	var/blocks_air = 0x0
 
 
-/atom/movable/proc/update_collisions(var/normal,var/bullet,var/air)
+/atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir)
+
+	. = FALSE
 
 	if(isnum(normal))
 		collision_flags = normal
+		. = TRUE
 
 	if(isnum(bullet))
 		collision_bullet_flags = bullet
+		. = TRUE
 
-	if(isnum(air))
-		blocks_air = air
+	if(isnum(c_dir))
+		collision_dir = c_dir
+		. = TRUE
 
-	return TRUE
+	if(isnum(a_dir))
+		var/turf/simulated/T = get_turf(src)
+		if(T && is_simulated(T))
+			T.blocks_air &= ~blocks_air
+			T.blocks_air = a_dir
+			QUEUE_AIR_TURF(T)
+
+		blocks_air = a_dir
+		. = TRUE
+
+
+	return .
 
 
 

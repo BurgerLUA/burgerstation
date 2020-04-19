@@ -8,10 +8,7 @@ obj/structure/interactive/barricade
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	density_north = FALSE
-	density_south = FALSE
-	density_east  = FALSE
-	density_west  = FALSE
+	collision_dir = 0x0
 
 	bullet_block_chance = 80
 
@@ -25,21 +22,25 @@ obj/structure/interactive/barricade/update_sprite()
 
 	. = ..()
 
+	var/desired_dense = 0x0
+
 	if(dir == NORTH)
 		pixel_y = -10
-		density_north = TRUE
+		desired_dense |= NORTH
 	else if(dir == EAST)
 		pixel_x = 0
 		pixel_y = -2
-		density_east = TRUE
+		desired_dense |= EAST
 	else if(dir == SOUTH)
 		pixel_x = 0
 		pixel_y = 0
-		density_south = TRUE
+		desired_dense |= SOUTH
 	else if(dir == WEST)
 		pixel_x = 0
 		pixel_y = -2
-		density_west = TRUE
+		desired_dense |= WEST
+
+	update_collisions(c_dir = desired_dense)
 
 	return .
 

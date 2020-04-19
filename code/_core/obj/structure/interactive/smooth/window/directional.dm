@@ -48,21 +48,6 @@
 
 	. = ..(desired_dir,force)
 
-	density_north = FALSE
-	density_east = FALSE
-	density_south = FALSE
-	density_west = FALSE
-
-	if(dir & NORTH)
-		density_north = TRUE
-
-	if(dir & EAST)
-		density_east = TRUE
-
-	if(dir & SOUTH)
-		density_south = TRUE
-
-	if(dir & WEST)
-		density_west = TRUE
+	update_collisions(c_dir = dir, a_dir = dir)
 
 	return .

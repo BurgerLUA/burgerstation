@@ -17,10 +17,7 @@ obj/structure/interactive/computer/console
 	collision_flags = FLAG_COLLISION_REAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	density_north = TRUE
-	density_south = TRUE
-	density_east  = TRUE
-	density_west  = TRUE
+	collision_dir = NORTH | EAST | SOUTH | WEST
 
 obj/structure/interactive/computer/console/Initialize()
 	. = ..()

@@ -88,6 +88,7 @@
 #include "code\__defines\world_states.dm"
 #include "code\__globals\_globals.dm"
 #include "code\__helpers\armor.dm"
+#include "code\__helpers\atmos.dm"
 #include "code\__helpers\cmp.dm"
 #include "code\__helpers\colors.dm"
 #include "code\__helpers\conversions.dm"

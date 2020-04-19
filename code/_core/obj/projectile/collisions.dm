@@ -72,14 +72,7 @@
 	if(!..()) //REMEMBER, THIS NEEDS TO BE HERE.
 		return FALSE
 
-	if((projectile_dir & NORTH) && src.density_south)
-		. = src
-	else if((projectile_dir & SOUTH) && src.density_north)
-		. = src
-
-	if((projectile_dir & EAST) && src.density_west)
-		. = src
-	else if((projectile_dir & WEST) && src.density_east)
+	if(projectile_dir & src.collision_dir)
 		. = src
 
 	if(. && prob(max(0,100-bullet_block_chance)))

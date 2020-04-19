@@ -3,12 +3,9 @@
 	desc = "Some kind of strange structure."
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_NONE
-	anchored = 1
+	collision_dir = NORTH | EAST | SOUTH | WEST
 
-	var/density_north = TRUE
-	var/density_south = TRUE
-	var/density_east  = TRUE
-	var/density_west  = TRUE
+	anchored = 1
 
 	var/bullet_block_chance = 100 //Chance to block bullets, assuming that the object is solid.
 
@@ -69,27 +66,12 @@
 
 		var/direction = get_dir(OldLoc,NewLoc)
 
-		if((direction & NORTH) && density_south)
-			return FALSE
-
-		if((direction & SOUTH) && density_north)
-			return FALSE
-
-		if((direction & EAST) && density_west)
-			return FALSE
-
-		if((direction & WEST) && density_east)
+		if(turn(direction,180) & collision_dir)
 			return FALSE
 
 		if(is_structure(O)) //Prevents infinite loops.
 			var/obj/structure/S = O
-			if(density_north && S.density_north)
-				return FALSE
-			if(density_south && S.density_south)
-				return FALSE
-			if(density_east && S.density_east)
-				return FALSE
-			if(density_west && S.density_west)
+			if(collision_dir & S.collision_dir)
 				return FALSE
 
 
@@ -101,19 +83,10 @@
 
 		var/direction = get_dir(OldLoc,NewLoc)
 
-		if(density_north && density_south && density_east && density_west) //Just in case.
-			return TRUE
+		if(collision_dir == (NORTH | SOUTH | EAST | WEST))
+			return TRUE //Prevents people from getting stuck in walls.
 
-		if((direction & NORTH) && density_north)
-			return FALSE
-
-		if((direction & SOUTH) && density_south)
-			return FALSE
-
-		if((direction & EAST) && density_east)
-			return FALSE
-
-		if((direction & WEST) && density_west)
+		if(direction & collision_dir)
 			return FALSE
 
 	return TRUE
