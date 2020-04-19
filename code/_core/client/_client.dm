@@ -172,27 +172,6 @@ var/global/list/all_clients = list()
 	return TRUE
 */
 
-/client/verb/button_press(button as text)
-	set hidden = TRUE
-	set instant = TRUE
-	if(!disable_controls)
-		button_tracker.set_pressed(button)
-
-/client/verb/button_release(button as text)
-	set hidden = TRUE
-	set instant = TRUE
-	if(!disable_controls)
-		button_tracker.set_released(button)
-
-/client/verb/change_click_mode()
-	set name = "Swap Click Mode"
-	set category = "Preferences"
-	swap_mouse = !swap_mouse
-	if(swap_mouse)
-		to_chat(span("ui notice","Right clicking will now activate the object in your right hand, and vice versa."))
-	else
-		to_chat(span("ui notice","Left clicking will now activate the object in your right hand, and vice versa."))
-
 /client/proc/get_click_flags(aug,var/check_swap = FALSE)
 
 	var/returning = 0x0

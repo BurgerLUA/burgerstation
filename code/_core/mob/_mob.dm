@@ -63,7 +63,7 @@
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/darkness/plane_master_darkness
-	var/obj/plane_master/trees/plane_master_tree
+	var/obj/plane_master/objs/plane_master_obj
 	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
 
@@ -116,8 +116,8 @@
 	qdel(plane_master_darkness)
 	plane_master_darkness = null
 
-	qdel(plane_master_tree)
-	plane_master_tree = null
+	qdel(plane_master_obj)
+	plane_master_obj = null
 
 	qdel(plane_master_shuttle)
 	plane_master_shuttle = null
@@ -150,9 +150,9 @@
 		plane_master_darkness = new
 	C.screen += plane_master_darkness
 
-	if(!plane_master_tree)
-		plane_master_tree = new
-	C.screen += plane_master_tree
+	if(!plane_master_obj)
+		plane_master_obj = new
+	C.screen += plane_master_obj
 
 	if(!plane_master_shuttle)
 		plane_master_shuttle = new

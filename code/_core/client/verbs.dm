@@ -10,4 +10,6 @@
 	verbs += /client/verb/toggle_focus
 	verbs += /client/verb/focus_map
 	verbs += /client/verb/focus_input
+	verbs += /client/verb/button_press
+	verbs += /client/verb/button_release
 	return TRUE
