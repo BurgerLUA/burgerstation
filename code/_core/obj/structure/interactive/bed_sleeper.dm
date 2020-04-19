@@ -37,7 +37,7 @@ obj/structure/interactive/bed/sleeper
 obj/structure/interactive/bed/sleeper/Initialize()
 	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
 	update_sprite()
-	update_collisions()
+	check_collisions()
 	return ..()
 
 obj/structure/interactive/bed/sleeper/update_underlays()
@@ -90,7 +90,7 @@ obj/structure/interactive/bed/sleeper/proc/open()
 		door_state = SLEEPER_OPENED
 		opened_time = 0
 		update_icon()
-		update_collisions()
+		check_collisions()
 	start_thinking(src)
 
 obj/structure/interactive/bed/sleeper/proc/close()
@@ -102,7 +102,7 @@ obj/structure/interactive/bed/sleeper/proc/close()
 		door_state = SLEEPER_CLOSED
 		opened_time = 0
 		update_icon()
-		update_collisions()
+		check_collisions()
 	stop_thinking(src)
 
 obj/structure/interactive/bed/sleeper/think()
@@ -121,7 +121,7 @@ obj/structure/interactive/bed/sleeper/think()
 
 	return TRUE
 
-obj/structure/interactive/bed/sleeper/proc/update_collisions()
+obj/structure/interactive/bed/sleeper/proc/check_collisions()
 
 	collision_flags = initial(collision_flags)
 	collision_bullet_flags = initial(collision_flags)
@@ -137,6 +137,8 @@ obj/structure/interactive/bed/sleeper/proc/update_collisions()
 			set_light(2, 0.25, secondary_color)
 		if(SLEEPER_CLOSING)
 			set_light(2, 0.25, secondary_color)
+
+	update_collisions(collision_flags,collision_bullet_flags) //Dumb way of doing this but it werks.
 
 	return TRUE
 

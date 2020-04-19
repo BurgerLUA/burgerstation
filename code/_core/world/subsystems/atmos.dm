@@ -37,14 +37,15 @@ SUBSYSTEM_DEF(air)
 	. = FALSE
 
 	for(var/dir in DIRECTIONS_CARDINAL)
+		if(source_turf.blocks_air & dir)
+			continue
 		var/turf/T = get_step(source_turf,dir)
-		if(!T)
-			continue
-		if(!is_simulated(T))
-			continue
-		if(is_wall(T))
+		if(!T || !is_simulated(T) || is_wall(T))
 			continue
 		var/turf/simulated/target_turf = T
+		if(target_turf.blocks_air & turn(dir,180))
+			continue
+
 		for(var/gas_type in source_turf.air_contents)
 			var/our_volume = source_turf.air_contents[gas_type] ? source_turf.air_contents[gas_type] : 0
 			var/their_volume = target_turf.air_contents[gas_type] ? target_turf.air_contents[gas_type] : 0

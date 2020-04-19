@@ -44,8 +44,7 @@
 	new/obj/effect/temp/ash_drake/swoop_up(src.loc)
 
 	boss_state = 1
-	collision_flags = FLAG_COLLISION_NONE
-	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	icon_state = "shadow"
 	update_sprite()
 
@@ -60,8 +59,7 @@
 		sleep(SECONDS_TO_DECISECONDS(1))
 		boss_state = 0
 		icon_state = "living"
-		collision_flags = initial(collision_flags)
-		collision_bullet_flags = initial(collision_bullet_flags)
+		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 		update_sprite()
 
 		for(var/turf/T in range(2,src))

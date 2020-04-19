@@ -33,6 +33,8 @@ var/global/saved_icons = 0
 		"nitrogen" = 80
 	)
 
+	var/blocks_air = 0x0
+
 /turf/proc/is_occupied()
 
 	for(var/atom/movable/A in contents)

@@ -8,6 +8,7 @@
 	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
 	var/tmp/list/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
+	var/tmp/has_air_blocking_atom = 0x0 //This turf contains an atom that blocks air. takes directions instead of a true/false value.
 
 // Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
 /turf/proc/reconsider_lights()

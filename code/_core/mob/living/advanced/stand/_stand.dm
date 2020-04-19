@@ -103,14 +103,12 @@
 	enabled = desired_enable
 
 	if(enabled)
-		collision_flags = initial(collision_flags)
-		collision_bullet_flags = initial(collision_bullet_flags)
+		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 		force_move(owner.loc)
 		immortal = FALSE
 		mouse_opacity = initial(mouse_opacity)
 	else
-		collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
-		collision_flags = FLAG_COLLISION_NONE
+		update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 		immortal = TRUE
 		mouse_opacity = 0
 

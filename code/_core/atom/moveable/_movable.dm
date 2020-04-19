@@ -36,6 +36,39 @@
 
 	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
 
+	var/blocks_air = 0x0
+
+
+/atom/movable/proc/update_collisions(var/normal,var/bullet,var/air)
+
+	if(isnum(normal))
+		collision_flags = normal
+
+	if(isnum(bullet))
+		collision_bullet_flags = bullet
+
+	if(isnum(air))
+		blocks_air = air
+
+	return TRUE
+
+
+
+
+
+/atom/movable/New(var/desired_loc)
+
+	. = ..()
+
+	if(blocks_air && is_simulated(loc))
+		var/turf/simulated/T = loc
+		T.has_air_blocking_atom |= NORTH | EAST | SOUTH | WEST
+
+	return .
+
+
+
+
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored
 

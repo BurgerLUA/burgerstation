@@ -76,8 +76,7 @@
 	attack_flags = 0x0
 	dead = FALSE
 	plane = initial(plane)
-	collision_flags = initial(collision_flags)
-	collision_bullet_flags = initial(collision_bullet_flags)
+	update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 	stun_time = 0
 	paralyze_time = 10
 	check_status_effects()

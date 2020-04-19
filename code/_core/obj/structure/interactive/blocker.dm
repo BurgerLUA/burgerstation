@@ -9,8 +9,7 @@ obj/structure/interactive/blocker/New(var/desired_loc,var/obj/structure/desired_
 
 	owned_object = desired_owned_object
 
-	collision_flags = owned_object.collision_flags
-	collision_bullet_flags = owned_object.collision_bullet_flags
+	update_collisions(owned_object.collision_flags,owned_object.collision_bullet_flags)
 
 	density_north = owned_object.density_north
 	density_south = owned_object.density_south

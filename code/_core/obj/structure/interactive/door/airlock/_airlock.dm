@@ -172,49 +172,43 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "opening_01"
-			collision_flags = FLAG_COLLISION_NONE
-			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 
 		if(DOOR_STATE_OPENING_02)
 			icon_state = "opening_02"
-			collision_flags = FLAG_COLLISION_NONE
-			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_01)
 			icon_state = "closing_01"
-			collision_flags = FLAG_COLLISION_NONE
-			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_02)
 			icon_state = "closing_02"
-			collision_flags = FLAG_COLLISION_REAL
 			switch(filler)
 				if("glass")
-					collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID)
 					set_opacity(0)
 				else
-					collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
 					set_opacity(1)
 
 		if(DOOR_STATE_OPENED)
 			icon_state = "open"
 			desc = "The door is open."
-			collision_flags = FLAG_COLLISION_NONE
-			collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSED)
 			icon_state = "closed"
 			desc = "The door is closed."
-			collision_flags = FLAG_COLLISION_REAL
 			switch(filler)
 				if("glass")
-					collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID)
 					set_opacity(0)
 				else
-					collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
 					set_opacity(1)
 
 		if(DOOR_STATE_START_OPENING)
@@ -223,10 +217,10 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			collision_flags = FLAG_COLLISION_REAL
 			switch(filler)
 				if("glass")
-					collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID)
 					set_opacity(0)
 				else
-					collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
 					set_opacity(1)
 
 	var/icon/base_icon = new /icon(icon,icon_state)
