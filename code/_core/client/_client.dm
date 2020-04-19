@@ -254,17 +254,19 @@ var/global/list/all_clients = list()
 			click_and_drag_icon.stored_inventory = null
 			click_and_drag_icon.alpha = 0
 
-	..()
+	return ..()
 
 /client/MouseDrop(src_object,over_object,src_location,over_location,src_control,over_control,params)
 
 	if(src_object == over_object)
-		return
+		return FALSE
 
 	var/list/aug = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
-	if(abs(mouse_down_x-screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
+	if(!length(screen_loc))
+		return FALSE
+	if(abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
 		return FALSE
 
 	var/click_flags = get_click_flags(aug,TRUE)
@@ -278,7 +280,7 @@ var/global/list/all_clients = list()
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,aug)
 
-	..()
+	return ..()
 
 /*
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)

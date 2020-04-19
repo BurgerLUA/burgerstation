@@ -28,6 +28,11 @@ var/global/saved_icons = 0
 
 	var/turf_temperature_mod = 0
 
+	var/list/air_contents = list(
+		"oxygen" = 21,
+		"nitrogen" = 80
+	)
+
 /turf/proc/is_occupied()
 
 	for(var/atom/movable/A in contents)

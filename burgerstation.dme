@@ -1128,6 +1128,7 @@
 #include "code\_core\world\subsystems\_subsystems.dm"
 #include "code\_core\world\subsystems\ai.dm"
 #include "code\_core\world\subsystems\areas.dm"
+#include "code\_core\world\subsystems\atmos.dm"
 #include "code\_core\world\subsystems\badnames.dm"
 #include "code\_core\world\subsystems\badwords.dm"
 #include "code\_core\world\subsystems\ban.dm"

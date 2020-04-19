@@ -28,6 +28,8 @@
 #define SS_ORDER_NORMAL 12
 #define SS_ORDER_LIFE 13
 
-#define SS_ORDER_LAST 14
+#define SS_ORDER_LAST 15
 
-#define SS_ORDER_REPORT 15
+#define SS_ORDER_AIR 16
+
+#define SS_ORDER_REPORT 17

@@ -10,6 +10,8 @@ obj/structure/interactive/atmospherics/vent
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
+	plane = PLANE_TILE
+
 obj/structure/interactive/atmospherics/scrubber
 	name = "scrubber"
 	icon = 'icons/obj/structure/atmos.dmi'
@@ -18,6 +20,8 @@ obj/structure/interactive/atmospherics/scrubber
 	desired_light_range = 0.5
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
+
+	plane = PLANE_TILE
 
 obj/structure/interactive/atmospherics/air_alarm
 	name = "air alarm"
