@@ -63,4 +63,4 @@
 
 
 
-#define COLOR_LIGHT "#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"
+#define COLOR_LIGHT "#F8F4C6" //"#F0E8CD" //"#F0DDCD" //"#F0FFCD" //"#FFFFAA"

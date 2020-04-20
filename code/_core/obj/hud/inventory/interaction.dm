@@ -86,7 +86,9 @@
 				var/obj/item/I = defer_object
 				if(is_inventory(defer_object.loc)) //The object is in an inventory
 					var/obj/hud/inventory/I2 = defer_object.loc
-					if(I2.drag_to_take || I.is_container)
+					if(!I.is_container && I2.click_flags) //The object we're clicking on is actually in our other hand and it's not a container
+						return ..()
+					if(I2.drag_to_take || I.is_container) //The object that we're clicking on needs to be dragged in order to be taken, or it's a container.
 						I.click_self(caller)
 						return TRUE
 				src.add_object(defer_object)

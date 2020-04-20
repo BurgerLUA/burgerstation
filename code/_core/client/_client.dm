@@ -282,64 +282,19 @@ var/global/list/all_clients = list()
 
 	return ..()
 
-/*
+
 /client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 
 	var/list/aug = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
-	if(abs(mouse_down_x-screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
+	if(abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) <= 8) //Only store the new params if the movement has changed more than 8 units.
 		return FALSE
 
 	store_new_params(over_object,over_location,params)
 
-	if(is_advanced(mob) && is_inventory(src_object))
-		var/list/params_list = params2list(params)
-		var/mob/living/advanced/A = mob
-		var/atom/object = src_object
-		object = object.defer_click_on_object()
-		if(!is_inventory(object))
-			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
-
-			var/list/screen_loc_list = splittext(params_list["screen-loc"],",")
-
-			if(!length(screen_loc_list))
-				return ..()
-
-			var/x_list = splittext(screen_loc_list[1],":")
-			var/y_list = splittext(screen_loc_list[2],":")
-
-			var/x_full = text2num(x_list[1])
-			var/x_partial = text2num(x_list[2])
-
-			var/y_full = text2num(y_list[1])
-			var/y_partial = text2num(y_list[2])
-
-			x_full = max(1,x_full)
-			y_full = max(1,y_full)
-
-			x_partial -= TILE_SIZE*0.5
-			y_partial -= TILE_SIZE*0.5
-
-			if(x_partial < 0 && x_full > 1)
-				x_full -= 1
-				x_partial += TILE_SIZE-1
-
-			if(y_partial < 0 && y_full > 1)
-				y_full -= 1
-				y_partial += TILE_SIZE-1
-
-			click_and_drag_icon.screen_loc = "[x_full]:[x_partial],[y_full]:[y_partial]"
-
-			if(click_and_drag_icon.stored_object != object)
-				click_and_drag_icon.appearance = object.appearance
-				click_and_drag_icon.stored_object = object
-				click_and_drag_icon.mouse_opacity = 0
-				click_and_drag_icon.alpha = 100
-
-
 	..()
-*/
+
 
 /client/proc/store_new_params(over_object,over_location,params)
 	var/list/new_params = params2list(params)

@@ -209,12 +209,17 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					P = V.passengers[1]
 
 			if(P && P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
-				next_shoot_time = 0 //This is needed.
-				if((max_bursts <= 0 || current_bursts < (max_bursts-1)) && shoot(caller,P.client.last_object,P.client.last_location,P.client.last_params,damage_multiplier))
-					current_bursts += 1
-				else if(max_bursts > 0)
-					next_shoot_time = world.time + shoot_delay*current_bursts
-					current_bursts = 0
+				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
+				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller.x - VIEW_RANGE
+				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller.y - VIEW_RANGE
+				var/turf/T = locate(desired_x,desired_y,caller.z)
+				if(T)
+					next_shoot_time = 0 //This is needed.
+					if((max_bursts <= 0 || current_bursts < (max_bursts-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
+						current_bursts += 1
+					else if(max_bursts > 0)
+						next_shoot_time = world.time + shoot_delay*current_bursts
+						current_bursts = 0
 
 			else if(max_bursts > 0)
 				next_shoot_time = world.time + shoot_delay*current_bursts

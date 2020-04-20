@@ -16,10 +16,10 @@
 			continue
 		P.to_chat(span("notice","<b>\The [src.name] dies!</b>"),CHAT_TYPE_COMBAT)
 
-	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
-
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
+
+	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
 	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved!."))
 
