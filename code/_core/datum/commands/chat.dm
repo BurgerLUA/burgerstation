@@ -1,7 +1,8 @@
 /mob/verb/say(var/text_to_say as text)
+	set hidden = TRUE
+	do_say(text_to_say)
 
-	set name = "Say"
-	set category = "Communication"
+/mob/proc/do_say(var/text_to_say)
 
 	if(!text_to_say)
 		text_to_say = input("What would you like to say?","Say") as text|null
@@ -72,7 +73,7 @@
 
 	return text_to_say
 
-/mob/living/say(var/text_to_say as text)
+/mob/living/do_say(var/text_to_say as text)
 
 	if(dead)
 		to_chat(span("warning","You can't talk while you're dead!"))
@@ -80,7 +81,7 @@
 
 	return ..()
 
-/mob/living/advanced/say(var/text_to_say as text)
+/mob/living/advanced/do_say(var/text_to_say as text)
 
 	start_typing()
 

@@ -9,7 +9,6 @@
 /client/proc/add_inherent_verbs()
 	verbs += /client/verb/ooc
 	verbs += /client/verb/toggle_focus
-	src << "Adding toggle focus!"
 	verbs += /client/verb/focus_map
 	verbs += /client/verb/focus_input
 	verbs += /client/verb/button_press
