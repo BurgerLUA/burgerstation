@@ -1,9 +1,9 @@
 /obj/decal/tile/
 	name = "tile decal"
-	icon = 'icons/obj/decal/tile.dmi'
+	icon = 'icons/obj/decal/tile_new.dmi'
 	icon_state = "tile"
 	mouse_opacity = 0
-	alpha = 220
+	alpha = 255
 
 /obj/decal/tile/nanotrasen
 	color = COLOR_NANOTRASEN

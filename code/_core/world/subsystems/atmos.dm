@@ -15,6 +15,9 @@ SUBSYSTEM_DEF(air)
 
 /subsystem/air/Initialize()
 
+	if(!ENABLE_ATMOS)
+		return FALSE
+
 	var/update_count = 0
 	var/bad_count = 0
 
@@ -32,6 +35,9 @@ SUBSYSTEM_DEF(air)
 	return TRUE
 
 /subsystem/air/proc/update_turf_air(var/turf/simulated/source_turf)
+
+	if(!ENABLE_ATMOS)
+		return FALSE
 
 	. = FALSE
 
@@ -66,6 +72,9 @@ SUBSYSTEM_DEF(air)
 	return .
 
 /subsystem/air/on_life()
+
+	if(!ENABLE_ATMOS)
+		return FALSE
 
 	for(var/k in queued_atmos_updates)
 		CHECK_TICK

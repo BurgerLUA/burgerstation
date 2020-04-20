@@ -23,7 +23,7 @@ obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
 	alpha = 255
 	pixel_x = pick(-32 - 16,32 - 16)
 	pixel_z = TILE_SIZE*VIEW_RANGE
-	animate(src,pixel_x = -16, pixel_z = 0, alpha=255, duration)
+	animate(src,pixel_x = initial(src.pixel_x), pixel_z = initial(src.pixel_z), alpha=255, duration)
 
 
 /obj/effect/temp/ash_drake/target/

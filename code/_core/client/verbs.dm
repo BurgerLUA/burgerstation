@@ -12,5 +12,6 @@
 	verbs += /client/verb/focus_input
 	verbs += /client/verb/button_press
 	verbs += /client/verb/button_release
-	verbs += /client/verb/air_test
+	if(ENABLE_ATMOS)
+		verbs += /client/verb/air_test
 	return TRUE

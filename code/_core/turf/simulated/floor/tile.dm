@@ -76,6 +76,9 @@
 /turf/simulated/floor/tile/coldroom
 	color = "#DBF9F9"
 
+/turf/simulated/floor/tile/tint
+	color = "#B0B5B4"
+
 /turf/simulated/floor/tile/bananium
 	icon_state = "bananium"
 
@@ -135,13 +138,3 @@
 /turf/simulated/floor/tile/smooth/cargo
 	color = COLOR_CARGO
 */
-
-/turf/simulated/floor/tile/detail
-	icon_state = "white_multi_detail"
-
-
-/turf/simulated/floor/tile/detail/tint
-	color = "#B0B5B4"
-
-/turf/simulated/floor/tile/detail/tint/single
-	icon_state = "white_single"

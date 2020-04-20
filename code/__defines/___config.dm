@@ -7,7 +7,7 @@
 
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 
-#define MOB_HEIGHT_OFFSET 0
+#define MOB_HEIGHT_OFFSET 4
 
 #define GARBAGE_LOGS_PATH "data/server/garbage_logs.txt"
 
@@ -60,6 +60,9 @@
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
+
+#define ENABLE_ATMOS FALSE
+
 
 #define ENABLE_MOB TRUE
 #define ENABLE_WEATHERGEN TRUE

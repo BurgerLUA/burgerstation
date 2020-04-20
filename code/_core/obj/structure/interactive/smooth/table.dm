@@ -70,7 +70,7 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in old_loc.contents
 		if(!T)
-			animate(L,pixel_z = 10,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
+			animate(L,pixel_z = initial(L.pixel_z) + 10,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
 			L.move_delay += DECISECONDS_TO_TICKS(10)
 
 	return ..()
@@ -80,7 +80,7 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in new_loc.contents
 		if(!T)
-			animate(L,pixel_z = 0,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
+			animate(L,pixel_z = initial(L.pixel_z),time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
 			L.move_delay += DECISECONDS_TO_TICKS(5)
 
 	return ..()
