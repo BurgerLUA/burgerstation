@@ -42,24 +42,16 @@
 
 //For focusing.
 /client/verb/toggle_focus()
-	set name = "Toggle Map Focus"
-	set category = "Game"
-	set hidden = TRUE
+	src << "This verb was activated."
 	var/is_focused = winget(src, "map.map", "focus") == "true"
 	winset(src,"map.map","focus=[is_focused ? "false" : "true"]")
 	winset(src,"main.input","focus=[is_focused ? "true" : "false"]")
 
 /client/verb/focus_map()
-	set name = "Focus Map"
-	set category = "Game"
-	set hidden = TRUE
 	winset(src,"map.map","focus=true")
 	winset(src,"main.input","focus=false")
 
 /client/verb/focus_input()
-	set name = "Focus Input"
-	set category = "Game"
-	set hidden = TRUE
 	winset(src,"map.map","focus=false")
 	winset(src,"main.input","focus=true")
 

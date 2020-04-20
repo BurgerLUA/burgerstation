@@ -27,6 +27,7 @@
 
 	update_zoom(-1)
 	update_verbs()
+	src.to_chat("You have taken control of [M].")
 
 /client/proc/clear_mob(var/mob/M,var/hard = FALSE) //This is called when the client no longer controls this mob.
 

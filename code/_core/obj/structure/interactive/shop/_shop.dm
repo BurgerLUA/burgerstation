@@ -39,12 +39,14 @@
 	for(var/obj/item/I in possible_items)
 		qdel(I)
 
-	//INITIALIZE(stored_item)
-	//SPAWN(stored_item)
 	stored_item.update_sprite()
 	update_sprite()
 
-	stored_item_cost = CEILING(stored_item.calculate_value(),1)
+	stored_item_cost = max(1,CEILING(stored_item.calculate_value(),1))
+
+	if(stored_item_cost == 1)
+		log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
+
 	name = "[stored_item.name] - [stored_item_cost] credits"
 
 	return .

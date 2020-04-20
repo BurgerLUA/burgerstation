@@ -7,11 +7,14 @@
 	return TRUE
 
 /client/proc/add_inherent_verbs()
+	verbs += /client/verb/ooc
 	verbs += /client/verb/toggle_focus
+	src << "Adding toggle focus!"
 	verbs += /client/verb/focus_map
 	verbs += /client/verb/focus_input
 	verbs += /client/verb/button_press
 	verbs += /client/verb/button_release
+	verbs += /client/verb/fullscreen
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test
 	return TRUE

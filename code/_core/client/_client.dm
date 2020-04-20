@@ -151,8 +151,6 @@ var/global/list/all_clients = list()
 		make_ghost(FALLBACK_TURF)
 		if(world_state == STATE_RUNNING)
 			play_music_track("intro", src)
-		else
-			play_music_track("loading", src)
 
 	if(!connection_data)
 		connection_data = new(src)
