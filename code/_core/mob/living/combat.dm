@@ -178,7 +178,7 @@
 	if(charge_parry < 100)
 		return null
 
-	if(status || dead)
+	if(dead || length(status_effects))
 		return null
 
 	return src
@@ -192,7 +192,7 @@
 	if(charge_dodge < 100)
 		return null
 
-	if(status || dead)
+	if(dead || length(status_effects))
 		return null
 
 	return src
@@ -205,7 +205,7 @@
 	if(charge_block < 100)
 		return null
 
-	if(status || dead)
+	if(dead || length(status_effects))
 		return null
 
 	return src
@@ -222,7 +222,7 @@
 */
 
 /mob/living/can_be_grabbed()
-	return dead || status > 0
+	return dead || length(status_effects)
 
 
 /mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_atom)

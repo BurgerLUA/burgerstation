@@ -1,15 +1,17 @@
-var/global/list/all_living_with_status = list()
-
 SUBSYSTEM_DEF(status)
 	name = "Status Effect Subsystem"
 	desc = "Controls the status effects of mobs."
-	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_IMPORTANT
+	priority = SS_ORDER_PRELOAD
 
-/subsystem/status/on_life()
+	var/list/all_status_effects = list()
 
-	for(var/mob/living/L in all_living_with_status)
-		CHECK_TICK
-		L.handle_status_effects()
+/subsystem/status/Initialize()
+
+	for(var/k in subtypesof(/status_effect/))
+		var/status_effect/S = k
+		var/id = initial(S.id)
+		if(id)
+			S = new k
+			all_status_effects[id] = S
 
 	return TRUE

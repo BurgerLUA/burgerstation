@@ -73,11 +73,10 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		if(L.rest_time == 0)
-			L.add_rest(-1,TRUE)
-		else if(L.rest_time == -1)
-			L.add_rest(5,TRUE)
-			condom
+		if(L.has_status_effect(REST) && L.get_status_effect_duration() == -1)
+			L.add_status_effect(REST,-1,5, force = TRUE)
+		else
+			L.add_status_effect(REST,-1,-1, force = TRUE)
 
 	return ..()
 

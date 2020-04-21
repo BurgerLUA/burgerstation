@@ -21,18 +21,6 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/status = 0 //Negative status
-
-	var/stun_time = 0
-	var/sleep_time = 0
-	var/paralyze_time = 0
-	var/fatigue_time = 0
-	var/stagger_time = 0
-	var/crit_time = 0
-	var/confuse_time = 0
-	var/adrenaline_time = 0
-	var/rest_time = 0
-
 	var/charge_block = 500
 	var/charge_parry = 500
 	var/charge_dodge = 500

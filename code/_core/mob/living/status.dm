@@ -1,54 +1,76 @@
-/mob/living/proc/add_status(var/status_type,var/duration)
-	if(!status_effects[status_type] || duration == -1)
-		status_effects[status_type] = duration
-	else
-		status_effects[status_type] += duration
-	return TRUE
+/mob/living/proc/add_status_effect(var/status_type,var/magnitude,var/duration,var/atom/source,var/force=FALSE,var/stealthy=FALSE)
 
-/mob/living/proc/remove_status(var/status_type)
+	var/status_effect/S = SSstatus.all_status_effects[status_type]
+	if(!S)
+		CRASH("Invalid status effect added! ([status_type])")
+		return FALSE
+
+	. = FALSE
+
+	if(!status_effects[status_type])
+		status_effects[status_type] = list()
+
+	if(!status_effects[status_type]["duration"])
+		status_effects[status_type]["duration"] = duration
+	else
+		if(force)
+			status_effects[status_type]["duration"] = duration
+		else
+			status_effects[status_type]["duration"] += duration
+		. = TRUE
+
+	if(!status_effects[status_type]["magnitude"] || force)
+		status_effects[status_type]["magnitude"] = magnitude
+	else
+		status_effects[status_type]["magnitude"] = max(status_effects[status_type]["magnitude"],magnitude)
+
+	if(.)
+		S.on_effect_added(src,source,status_type,magnitude,duration,stealthy)
+
+
+
+	return .
+
+/mob/living/proc/remove_status_effect(var/status_type)
+	var/status_effect/S = SSstatus.all_status_effects[status_type]
+	if(!S)
+		CRASH("Invalid status effect removed! ([status_type])")
+		return FALSE
+	S.on_effect_removed(src,status_type,status_effects[status_type]["magnitude"],status_effects[status_type]["duration"])
 	status_effects -= status_type
+
+/mob/living/proc/remove_all_status_effects()
+	for(var/status in status_effects)
+		remove_status_effect(status)
 
 /mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 
 	for(var/status in status_effects)
-		if(status_effects[status] == -1)
+		if(status_effects[status]["duration"] == -1)
 			continue
-		if(status_effects[status] <= 0)
-			remove_status(status)
+		if(status_effects[status]["duration"] <= 0)
+			remove_status_effect(status)
 			continue
-		status_effects[status]--
+		status_effects[status]["duration"]--
 
 	handle_horizontal()
 
 	return TRUE
 
 
-/mob/living/proc/has_status_effect(var/status_id)
-	return status_effects[status_type] ? TRUE : FALSE
+/mob/living/proc/has_status_effect(var/status_type,var/and=FALSE) //Accepts lists! Defaults to OR. Set to true if you want AND.
 
-/mob/living/proc/get_status_effect_duration(var/status_id)
+	if(islist(status_type))
+		for(var/v in status_type)
+			if(has_status_effect(v))
+				return TRUE
+			else if(and)
+				return FALSE
+	else
+		return src.status_effects[status_type] ? TRUE : FALSE
+
+/mob/living/proc/get_status_effect_duration(var/status_type)
 	return status_effects[status_type] ? status_effects[status_type]["duration"] : 0
 
-/mob/living/proc/get_status_effect_magnitude(var/status_id)
+/mob/living/proc/get_status_effect_magnitude(var/status_type)
 	return status_effects[status_type] ? status_effects[status_type]["magnitude"] : 0
-
-/mob/living/proc/add_paralyze(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_PARALYZE,duration,force)
-
-/mob/living/proc/add_stun(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_STUN,duration,force)
-
-/mob/living/proc/add_stagger(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_STAGGER,duration,force)
-
-/mob/living/proc/add_adrenaline(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_ADRENALINE,duration,force)
-
-/mob/living/proc/add_crit(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_CRIT,duration,force)
-
-/mob/living/proc/add_rest(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_REST,duration,force)
-
-/mob/living/proc/add_sleep(var/duration,var/force = FALSE)
-	add_status(FLAG_STATUS_SLEEP,duration,force)

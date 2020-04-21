@@ -19,7 +19,7 @@
 /mob/living/simple/npc/goliath/proc/tentacle_attack(var/mob/living/desired_target)
 
 	spawn()
-		add_stun(20)
+		add_status_effect(PARALYZE,20,20,stealthy = TRUE)
 		icon_state = "goliath_attack"
 		sleep(10)
 		var/list/valid_turfs = list()

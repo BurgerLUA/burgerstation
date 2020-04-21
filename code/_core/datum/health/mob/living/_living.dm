@@ -24,7 +24,7 @@
 					health_icon_state = "revive"
 				else
 					health_icon_state = "dead"
-			else if (L.status & FLAG_STATUS_CRIT)
+			else if (L.has_status_effect(CRIT))
 				health_icon_state = "crit"
 			else
 				health_icon_state = "[clamp(FLOOR((health_current/health_max)*23, 1),0,23)]"

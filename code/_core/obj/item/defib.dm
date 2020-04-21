@@ -55,7 +55,7 @@
 
 /obj/item/defib/proc/defib_target(var/mob/caller,var/mob/living/target)
 
-	target.add_adrenaline(300)
+	target.add_status_effect(ADRENALINE,30,30)
 
 	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
 
@@ -70,6 +70,8 @@
 
 	target.revive()
 	caller.visible_message("\The [target.name] jolts to life!")
+
+	target.add_status_effect(ADRENALINE,100,100)
 
 	return TRUE
 

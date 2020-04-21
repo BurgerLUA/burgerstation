@@ -24,7 +24,7 @@
 			if(did_move)
 				guessed_velocity *= 0.5
 			if(!L.dead)
-				L.add_stun(10 + guessed_velocity)
+				L.add_status_effect(STAGGER,10+guessed_velocity,10+guessed_velocity,source=owner)
 
 	return .
 

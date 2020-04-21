@@ -254,34 +254,46 @@
 
 	return .
 
-/reagent/medicine/epinephrine
-	name = "epinephrine"
-	id = "epinephrine"
-	desc = "Prevents people from dying by increasing the amount of damage one must take before succumbing to death."
-	desc_extended = ""
-	color = "#FFFFFF"
-	flavor = "bandaids"
-
+/reagent/medicine/adrenaline
+	name = "adrenaline"
+	id = "adrenaline"
+	desc = "Pure adrenaline. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, as well as a speed bonus."
+	color = "#880000"
+	flavor = "pure speed"
 	metabolism_blood = 1
-	metabolism_stomach = 1
+	var/strength = 100
+	var/duration = 30
 
-/reagent/medicine/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/adrenaline/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+
 	. = ..()
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.add_adrenaline(.*50)
-		if(L.health.get_oxy_loss() > 50)
-			L.health.set_oxy_loss(50)
-			L.health.update_health()
+		L.add_status_effect(ADRENALINE,strength,.*50)
 
 	return .
 
-/reagent/medicine/epinephrine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+
+/reagent/medicine/adrenaline/epinephrine
+	name = "epinephrine"
+	id = "epinephrine"
+	desc = "Used for stabilizing dying patients. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, and also regulating oxyloss."
+	desc_extended = ""
+	color = "#FFFFFF"
+	flavor = "bandaids"
+	strength = 50
+	duration = 50
+
+/reagent/medicine/adrenaline/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+
 	. = ..()
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.add_adrenaline(.*50)
+		if(L.health && L.health.get_oxy_loss() > 100 - strength)
+			L.health.set_oxy_loss(100 - strength)
+			L.health.update_health()
+
 
 	return .

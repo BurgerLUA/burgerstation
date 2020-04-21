@@ -16,7 +16,7 @@ obj/structure/interactive/bed
 	. = ..()
 
 	if(.)
-		victim.add_rest(-1,TRUE)
+		victim.add_status_effect(REST,-1,-1)
 		victim.pixel_x = pixel_offset_x
 		victim.pixel_y = pixel_offset_y
 
@@ -29,7 +29,7 @@ obj/structure/interactive/bed
 	. = ..()
 
 	if(.)
-		L.add_rest(0,TRUE)
+		L.remove_status_effect(REST)
 		animate(L,pixel_x = initial(L.pixel_x), pixel_y = initial(L.pixel_y),time = 5)
 
 	return .

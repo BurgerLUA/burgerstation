@@ -125,7 +125,7 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.add_stagger(1,10,attacker)
+		L.add_status_effect(STAGGER,10,10, source = attacker)
 
 	return ..()
 

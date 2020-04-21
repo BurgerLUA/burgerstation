@@ -19,7 +19,7 @@
 			O.move_delay = 10
 			if(is_living(O))
 				var/mob/living/L = O
-				L.add_paralyze(10)
+				L.add_status_effect(PARALYZE,10,10)
 			break
 
 	return ..()

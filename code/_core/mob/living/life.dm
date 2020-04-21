@@ -70,8 +70,7 @@
 	dead = FALSE
 	plane = initial(plane)
 	update_collisions(initial(collision_flags),initial(collision_bullet_flags))
-	stun_time = 0
-	paralyze_time = 10
+	remove_all_status_effects()
 	if(health)
 		health.update_health()
 	if(ai)
@@ -97,19 +96,7 @@
 	if(dead)
 		return FALSE
 
-	if(status & FLAG_STATUS_PARALYZE)
-		return FALSE
-
-	if(status & FLAG_STATUS_SLEEP)
-		return FALSE
-
-	if(status & FLAG_STATUS_STAGGER)
-		return FALSE
-
-	if(status & FLAG_STATUS_FATIGUE)
-		return FALSE
-
-	if(status & FLAG_STATUS_STUN)
+	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN)))
 		return FALSE
 
 	return ..()
@@ -120,13 +107,7 @@
 	if(dead)
 		return FALSE
 
-	if(status & FLAG_STATUS_PARALYZE)
-		return FALSE
-
-	if(status & FLAG_STATUS_STAGGER)
-		return FALSE
-
-	if(status & FLAG_STATUS_STUN)
+	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
 		return FALSE
 
 	return ..()
@@ -135,84 +116,84 @@
 /mob/living/proc/check_status_effects()
 
 	//Crit
-	if(!(status & FLAG_STATUS_CRIT) && (crit_time > 0 || crit_time == -1))
-		add_status(FLAG_STATUS_CRIT)
+	if(!(status & CRIT) && (crit_time > 0 || crit_time == -1))
+		add_status(CRIT)
 		on_crit()
 
-	if(status & FLAG_STATUS_CRIT && crit_time <= 0 && crit_time != -1)
-		remove_status(FLAG_STATUS_CRIT)
+	if(status & CRIT && crit_time <= 0 && crit_time != -1)
+		remove_status_effect(CRIT)
 		on_uncrit()
 
 	//Fatigue
-	if(!(status & FLAG_STATUS_FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
-		add_status(FLAG_STATUS_FATIGUE)
+	if(!(status & FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
+		add_status(FATIGUE)
 		on_fatigued()
 
-	if(status & FLAG_STATUS_FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
-		remove_status(FLAG_STATUS_FATIGUE)
+	if(status & FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
+		remove_status_effect(FATIGUE)
 		on_unfatigued()
 
 	//Rest
-	if(!(status & FLAG_STATUS_REST) && (rest_time > 0 || rest_time == -1))
-		add_status(FLAG_STATUS_REST)
+	if(!(status & REST) && (rest_time > 0 || rest_time == -1))
+		add_status(REST)
 		on_rest()
 
-	if(status & FLAG_STATUS_REST && rest_time <= 0 && rest_time != -1)
-		remove_status(FLAG_STATUS_REST)
+	if(status & REST && rest_time <= 0 && rest_time != -1)
+		remove_status_effect(REST)
 		on_unrest()
 
 	//Sleep
-	if(!(status & FLAG_STATUS_SLEEP) && (sleep_time > 0 || sleep_time == -1))
-		add_status(FLAG_STATUS_SLEEP)
+	if(!(status & SLEEP) && (sleep_time > 0 || sleep_time == -1))
+		add_status(SLEEP)
 		on_sleeped()
 
-	if(status & FLAG_STATUS_SLEEP && sleep_time <= 0 && sleep_time != -1)
-		remove_status(FLAG_STATUS_SLEEP)
+	if(status & SLEEP && sleep_time <= 0 && sleep_time != -1)
+		remove_status_effect(SLEEP)
 		on_unsleeped()
 
 	//Stun
-	if(!(status & FLAG_STATUS_STUN) && (stun_time > 0 || stun_time == -1))
-		add_status(FLAG_STATUS_STUN)
+	if(!(status & STUN) && (stun_time > 0 || stun_time == -1))
+		add_status(STUN)
 		on_stunned()
 
-	if(status & FLAG_STATUS_STUN && stun_time <= 0 && stun_time != -1)
-		remove_status(FLAG_STATUS_STUN)
+	if(status & STUN && stun_time <= 0 && stun_time != -1)
+		remove_status_effect(STUN)
 		on_unstunned()
 
 	//Stagger
-	if(!(status & FLAG_STATUS_STAGGER) && (stagger_time > 0 || stagger_time == -1))
-		add_status(FLAG_STATUS_STAGGER)
+	if(!(status & STAGGER) && (stagger_time > 0 || stagger_time == -1))
+		add_status(STAGGER)
 		on_staggered()
 
-	if(status & FLAG_STATUS_STAGGER && stagger_time <= 0 && stagger_time != -1)
-		remove_status(FLAG_STATUS_STAGGER)
+	if(status & STAGGER && stagger_time <= 0 && stagger_time != -1)
+		remove_status_effect(STAGGER)
 		on_unstaggered()
 
 	//Paralyze
-	if(!(status & FLAG_STATUS_PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
-		add_status(FLAG_STATUS_PARALYZE)
+	if(!(status & PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
+		add_status(PARALYZE)
 		on_paralyzed()
 
-	if(status & FLAG_STATUS_PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
-		remove_status(FLAG_STATUS_PARALYZE)
+	if(status & PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
+		remove_status_effect(PARALYZE)
 		on_unparalyzed()
 
 	//Confuse
-	if(!(status & FLAG_STATUS_CONFUSED) && (confuse_time > 0 || confuse_time == -1))
-		add_status(FLAG_STATUS_CONFUSED)
+	if(!(status & CONFUSED) && (confuse_time > 0 || confuse_time == -1))
+		add_status(CONFUSED)
 		on_confused()
 
-	if(status & FLAG_STATUS_CONFUSED && confuse_time <= 0 && confuse_time != -1)
-		remove_status(FLAG_STATUS_CONFUSED)
+	if(status & CONFUSED && confuse_time <= 0 && confuse_time != -1)
+		remove_status_effect(CONFUSED)
 		on_unconfused()
 
 	//Adrenaline
-	if(!(status & FLAG_STATUS_ADRENALINE) && (adrenaline_time > 0 || adrenaline_time == -1))
-		add_status(FLAG_STATUS_ADRENALINE)
+	if(!(status & ADRENALINE) && (adrenaline_time > 0 || adrenaline_time == -1))
+		add_status(ADRENALINE)
 		on_adrenaline()
 
-	if(status & FLAG_STATUS_ADRENALINE && adrenaline_time <= 0 && adrenaline_time != -1)
-		remove_status(FLAG_STATUS_ADRENALINE)
+	if(status & ADRENALINE && adrenaline_time <= 0 && adrenaline_time != -1)
+		remove_status_effect(ADRENALINE)
 		on_unadrenaline()
 
 	//Final Checks
@@ -228,10 +209,7 @@
 
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = FALSE
-
-	if(dead || status & FLAG_STATUS_STUN || status & FLAG_STATUS_PARALYZE || status & FLAG_STATUS_FATIGUE || status & FLAG_STATUS_SLEEP || status & FLAG_STATUS_CRIT || status & FLAG_STATUS_REST)
-		desired_horizontal = TRUE
+	var/desired_horizontal = dead || has_status_effect(list(STUN,PARALYZE,FATIGUE,SLEEP,CRIT,REST))
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN

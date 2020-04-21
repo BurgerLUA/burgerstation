@@ -29,7 +29,7 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 		if(!L.horizontal)
-			L.add_stagger(30,inflictor = attacker)
+			L.add_status_effect(STAGGER,30,30,source = attacker)
 		else
 			var/list/possible_teleport_turfs = list()
 			for(var/turf/T in range(12,attacker))

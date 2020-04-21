@@ -36,24 +36,18 @@
 	if(dead)
 		return FALSE
 
-	if(status & FLAG_STATUS_PARALYZE)
+	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
 		return FALSE
 
-	if(status & FLAG_STATUS_STAGGER)
-		return FALSE
-
-	if(status & FLAG_STATUS_STUN)
-		return FALSE
-
-	if(status & FLAG_STATUS_CONFUSED)
+	if(has_status_effect(CONFUSED))
 		move_dir = pick(DIRECTIONS_ALL)
 
 	if(move_dir)
 		if(buckled_object && !buckled_object.unbuckle(src))
 			return FALSE
 
-		if(sleep_time == -1)
-			sleep_time = 0
+		if(get_status_effect_magnitude(SLEEP) == -1)
+			remove_status_effect(SLEEP)
 			return FALSE
 
 	return ..()
@@ -61,10 +55,7 @@
 /mob/living/get_movement_delay()
 	. = ..()
 
-	if(status & FLAG_STATUS_FATIGUE)
-		. *= 3
-
-	if(status & FLAG_STATUS_REST)
+	if(horizontal)
 		. *= 3
 
 	if(is_sneaking)

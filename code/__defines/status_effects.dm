@@ -43,3 +43,6 @@
 #define REST "rest"
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
+
+#define DISARM "disarm"
+//Disarms the target's weapons, if it is an advanced target

@@ -40,7 +40,7 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 		if(health.damage[OXY] >= 25)
 			. += div("warning","[final_pronoun] looks a bit pale.")
 
-	if(has_status_effect(FLAG_STATUS_CRIT))
+	if(has_status_effect(CRIT))
 		. += list(div("warning","They do not appear to be breathing."))
 
 	if(dead)

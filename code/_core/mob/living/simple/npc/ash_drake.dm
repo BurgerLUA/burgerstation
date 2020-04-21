@@ -72,11 +72,9 @@
 			var/is_center = get_dist(src,L) == 0
 
 			step(L,get_dir(src,L))
-			L.add_stun(10 + is_center*30)
-			//L.adjust_brute_loss(20 + is_center*20) HEALTH TODO
+			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)
 
-		if(prob(1000))
-			fire_cross()
+		fire_cross()
 
 
 /mob/living/simple/npc/ash_drake/proc/fire_cross()

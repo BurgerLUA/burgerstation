@@ -114,14 +114,14 @@
 	if(!value)
 		return 0
 
-	if(A.status & FLAG_STATUS_FATIGUE)
+	if(A.has_status_effect(FATIGUE))
 		return 0
 
 	if(adjust_stamina(-value))
 		A.update_health_element_icons(stamina=TRUE)
 
 	if(stamina_current <= 0)
-		A.add_stun(FLAG_STATUS_FATIGUE,100)
+		A.add_status_effect(FATIGUE,value,value)
 
 	return value
 
@@ -143,12 +143,12 @@ health/mob/living/advanced/update_stats()
 	else
 		health_regeneration = health_max * (0.002 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*0.005)
 
-	if(A.status & FLAG_STATUS_FATIGUE || A.status & FLAG_STATUS_SLEEP)
+	if(A.has_status_effect(list(FATIGUE,SLEEP)))
 		stamina_regeneration = stamina_max * (0.1 + endurance*0.15)
 	else
 		stamina_regeneration = stamina_max * (0.02 + endurance*0.03)
 
-	if(A.status & FLAG_STATUS_SLEEP)
+	if(A.has_status_effect(SLEEP))
 		mana_regeneration = mana_max * (0.05 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.1)
 	else
 		mana_regeneration = mana_max * (0.01 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*0.02)
@@ -174,12 +174,10 @@ health/mob/living/advanced/update_stats()
 
 	if(.)
 		if(health_current <= 0 && !A.status_effects[CRIT])
-			A.add_crit(-1,TRUE)
+			A.add_status_effect(CRIT,-1,-1,force = TRUE)
 
 		else if(health_current > 0 && A.status_effects[CRIT])
-			A.add_crit(0,TRUE)
-
-		condom
+			A.remove_status_effect(CRIT)
 
 	return .
 
