@@ -42,7 +42,6 @@
 
 //For focusing.
 /client/verb/toggle_focus()
-	src << "This verb was activated."
 	var/is_focused = winget(src, "map.map", "focus") == "true"
 	winset(src,"map.map","focus=[is_focused ? "false" : "true"]")
 	winset(src,"main.input","focus=[is_focused ? "true" : "false"]")
