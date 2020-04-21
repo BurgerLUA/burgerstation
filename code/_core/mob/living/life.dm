@@ -1,8 +1,14 @@
-/mob/living/proc/add_status(var/status_type)
-	status |= status_type
+/mob/living/proc/add_status(var/status_type,var/duration)
+	if(!status_effects[status_type] || duration == -1)
+		status_effects[status_type] = duration
+	else
+		status_effects[status_type] += duration
+	return TRUE
 
 /mob/living/proc/remove_status(var/status_type)
-	status &= ~status_type
+
+	status_effects -= status_type
+
 
 /mob/living/proc/death()
 

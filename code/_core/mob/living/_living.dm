@@ -129,6 +129,8 @@
 
 	var/stand/stand
 
+	var/list/status_effects = list()
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

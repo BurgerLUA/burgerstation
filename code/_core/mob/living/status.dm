@@ -72,3 +72,12 @@
 /mob/living/proc/on_uncrit()
 	src.visible_message("\The [src.name] regains consciousness!","You gain consciousness!")
 	return TRUE
+
+/mob/living/proc/on_druggy()
+	src.visible_message("\The [src.name] gets a supid look on their face!","You start to see pretty colors...")
+	return TRUE
+
+/mob/living/proc/on_undruggy()
+	src.visible_message("\The [src.name] snaps alert.","You snap out of it.")
+	return TRUE
+

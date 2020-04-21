@@ -50,9 +50,7 @@
 
 	if(.)
 
-		for(var/obj/effect/chat_text/CT in stored_chat_text)
-			CT.glide_size = src.glide_size
-			CT.force_move(src.loc)
+		update_rs_chat()
 
 		switch(move_mod)
 			if(1)
@@ -63,3 +61,9 @@
 				on_sprint()
 
 	return .
+
+
+/mob/proc/update_rs_chat()
+	for(var/obj/effect/chat_text/CT in stored_chat_text)
+		CT.glide_size = src.glide_size
+		CT.force_move(src.loc)
