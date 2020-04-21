@@ -55,7 +55,6 @@
 	winset(src,"map.map","focus=false")
 	winset(src,"main.input","focus=true")
 
-
 /client/verb/button_press(button as text)
 	set hidden = TRUE
 	set instant = TRUE

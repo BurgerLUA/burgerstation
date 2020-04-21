@@ -1,3 +1,3 @@
 Welcome to Burgerstation.
 
-We're under AGPL 3.0.
+See LICENSE-AGPL3 and LICENCE-CC-BY-NC-SA for licensing.
