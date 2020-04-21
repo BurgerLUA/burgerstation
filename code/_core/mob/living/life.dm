@@ -1,15 +1,3 @@
-/mob/living/proc/add_status(var/status_type,var/duration)
-	if(!status_effects[status_type] || duration == -1)
-		status_effects[status_type] = duration
-	else
-		status_effects[status_type] += duration
-	return TRUE
-
-/mob/living/proc/remove_status(var/status_type)
-
-	status_effects -= status_type
-
-
 /mob/living/proc/death()
 
 	if(dead)
@@ -23,7 +11,6 @@
 		P.to_chat(span("notice","<b>\The [src.name] dies!</b>"),CHAT_TYPE_COMBAT)
 
 	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
-
 
 	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
@@ -85,7 +72,6 @@
 	update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 	stun_time = 0
 	paralyze_time = 10
-	check_status_effects()
 	if(health)
 		health.update_health()
 	if(ai)
@@ -145,7 +131,7 @@
 
 	return ..()
 
-
+/*
 /mob/living/proc/check_status_effects()
 
 	//Crit
@@ -238,43 +224,7 @@
 		all_living_with_status -= src
 
 	return TRUE
-
-/mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
-
-	if(amount_to_remove)
-		if(crit_time != -1)
-			crit_time = max(0,crit_time - amount_to_remove)
-
-		if(rest_time != -1)
-			rest_time = max(0,rest_time - amount_to_remove)
-
-		if(stun_time != -1)
-			stun_time = max(0,stun_time - amount_to_remove)
-
-		if(paralyze_time != -1)
-			paralyze_time = max(0,paralyze_time - amount_to_remove)
-
-		if(stagger_time != -1)
-			stagger_time = max(0,stagger_time - amount_to_remove)
-
-		if(sleep_time != -1)
-			sleep_time = max(0,sleep_time - amount_to_remove)
-
-		if(confuse_time != -1)
-			confuse_time = max(0,confuse_time - amount_to_remove)
-
-		if(adrenaline_time != -1)
-			adrenaline_time = max(0,adrenaline_time - amount_to_remove)
-
-		if(health && fatigue_time != -1)
-			if(health.stamina_current == health.stamina_max*0.25)
-				fatigue_time = 0
-			else
-				fatigue_time = max(0,fatigue_time - amount_to_remove)
-
-	handle_horizontal()
-
-	return TRUE
+*/
 
 /mob/living/proc/handle_horizontal()
 

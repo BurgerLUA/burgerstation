@@ -27,7 +27,7 @@
 		var/health_percent = A.health.health_current / A.health.health_max
 		var/stamina_percent = A.health.stamina_current / A.health.stamina_max
 		var/blood_percent = A.reagents.get_reagent_count("blood") / BLOOD_LEVEL_DEFAULT
-		var/is_crit = A.status & FLAG_STATUS_CRIT
+		var/is_crit = A.has_status_effect(CRIT)
 
 		heart_ticks += LIFE_TICK
 		heart_rate = initial(heart_rate)

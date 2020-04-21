@@ -1,3 +1,4 @@
+/*
 /mob/living/proc/add_stagger(var/value,var/max_value = 40,var/atom/inflictor)
 
 	if(stagger_time == -1)
@@ -167,6 +168,7 @@
 	new/obj/effect/temp/damage_number(src.loc,crit_time,"CRITICAL!")
 
 	check_status_effects()
+*/
 
 /mob/living/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 

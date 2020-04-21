@@ -121,7 +121,7 @@
 		A.update_health_element_icons(stamina=TRUE)
 
 	if(stamina_current <= 0)
-		A.add_fatigue(100)
+		A.add_stun(FLAG_STATUS_FATIGUE,100)
 
 	return value
 
@@ -173,11 +173,13 @@ health/mob/living/advanced/update_stats()
 	. = ..()
 
 	if(.)
-		if(health_current <= 0 && !A.crit_time)
-			A.set_crit()
+		if(health_current <= 0 && !A.status_effects[CRIT])
+			A.add_crit(-1,TRUE)
 
-		else if(health_current > 0 && A.crit_time)
-			A.unset_crit()
+		else if(health_current > 0 && A.status_effects[CRIT])
+			A.add_crit(0,TRUE)
+
+		condom
 
 	return .
 

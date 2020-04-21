@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(status)
 
 	for(var/mob/living/L in all_living_with_status)
 		CHECK_TICK
-		L.check_status_effects()
 		L.handle_status_effects()
 
 	return TRUE

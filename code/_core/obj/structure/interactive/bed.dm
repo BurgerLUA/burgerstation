@@ -16,8 +16,7 @@ obj/structure/interactive/bed
 	. = ..()
 
 	if(.)
-		victim.sleep_time = -1
-		victim.check_status_effects()
+		victim.add_rest(-1,TRUE)
 		victim.pixel_x = pixel_offset_x
 		victim.pixel_y = pixel_offset_y
 
@@ -30,9 +29,9 @@ obj/structure/interactive/bed
 	. = ..()
 
 	if(.)
-		L.sleep_time = 0
-		L.check_status_effects()
+		L.add_rest(0,TRUE)
 		animate(L,pixel_x = initial(L.pixel_x), pixel_y = initial(L.pixel_y),time = 5)
+
 	return .
 
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,location,control,params)

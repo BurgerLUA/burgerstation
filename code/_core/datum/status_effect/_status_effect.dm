@@ -3,7 +3,8 @@
 	var/desc //Description of the status effect.
 	var/id //Status effect description
 
-/status_effect/proc/on_effect_added(var/mob/living/owner,var/duration)
+/status_effect/proc/on_effect_added(var/mob/living/owner,var/duration,var/atom/source)
+	new/obj/effect/temp/damage_number(owner.loc,duration,"[uppertext(name)]!")
 	return TRUE
 
 /status_effect/proc/on_effect_removed(var/mob/living/owner,var/duration)
@@ -33,6 +34,26 @@
 	name = "Staggered"
 	desc = "You're staggered!"
 	id = FLAG_STATUS_STAGGER
+
+/status_effect/staggered/on_effect_added(var/mob/living/owner,var/duration,var/atom/source)
+
+	. = ..()
+
+	if(source)
+		var/desired_move_dir = get_dir(source,owner)
+		var/old_dir = owner.dir
+		var/result = owner.Move(get_step(owner,desired_move_dir),desired_move_dir)
+		owner.dir = old_dir
+		if(!result)
+			owner.move_delay = duration
+			var/list/movement = direction_to_pixel_offset(desired_move_dir)
+			animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
+			spawn(1)
+				var/stun_time = max(duration,10)
+				owner.add_stun(stun_time - 1)
+				animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
+
+	return .
 
 /status_effect/confused
 	name = "Confused"

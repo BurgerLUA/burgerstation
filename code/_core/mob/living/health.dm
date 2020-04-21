@@ -53,7 +53,7 @@
 		return FALSE
 
 	var/health_added = 0
-	if(status & FLAG_STATUS_ADRENALINE)
+	if(has_status_effect(FLAG_STATUS_ADRENALINE))
 		health_added = adrenaline_time < 0 ? 100 : max(adrenaline_time,200)
 
 	if(health.health_current <= death_threshold - health_added)

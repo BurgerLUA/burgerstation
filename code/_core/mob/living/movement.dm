@@ -54,7 +54,6 @@
 
 		if(sleep_time == -1)
 			sleep_time = 0
-			check_status_effects()
 			return FALSE
 
 	return ..()

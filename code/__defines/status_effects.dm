@@ -1,48 +1,45 @@
-#define FLAG_STATUS_NONE 0x0
-//All status: Cannot dodge, parry, block, and you have a 100% chance to be hit.
-
-#define FLAG_STATUS_STUN 0x1
+#define STUN "stun"
 //Disarms weapons on stun.
 //Move delay multiplied by 3.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Cannot use items.
 
-#define FLAG_STATUS_SLEEP 0x2
+#define SLEEP "sleep"
 //Health, Stamina, Mana regenerates 5 times faster.
 //Cannot attack or use items.
 //Cannot move.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Taking health damage removes this status effect. (TODO)
 
-#define FLAG_STATUS_PARALYZE 0x4
+#define PARALYZE "paralyze"
 //Cannot attack or use items.
 //Cannot move.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 
-#define FLAG_STATUS_FATIGUE 0x8
+#define FATIGUE "fatigue"
 //Removes initial stamina regeneration delay.
 //Stamina regenrates 5 times faster.
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 
 
-#define FLAG_STATUS_STAGGER 0x10
+#define STAGGER "stagger"
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Cannot move.
 //Moves 1 step away from the stagger source.
 
-#define FLAG_STATUS_CONFUSED 0x20
+#define CONFUSED "confused"
 //Random movement.
 
 
-#define FLAG_STATUS_CRIT 0x40
+#define CRIT "critical"
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Move very slow.
 
-#define FLAG_STATUS_ADRENALINE 0x80
+#define ADRENALINE "adrenaline"
 //Prevents death by reducing the death threshold relative the the current value.
 //Move faster.
 
-#define FLAG_STATUS_REST 0x100
+#define REST "rest"
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
