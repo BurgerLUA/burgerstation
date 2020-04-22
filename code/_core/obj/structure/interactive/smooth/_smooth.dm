@@ -7,6 +7,8 @@ obj/structure/smooth/
 	var/reinforced_material_id = null
 	var/reinforced_color = "#FFFFFF"
 
+	var/debug = FALSE
+
 obj/structure/smooth/Initialize()
 	. = ..()
 	update_sprite()
@@ -51,16 +53,16 @@ obj/structure/smooth/update_icon()
 		nw += "w"
 		sw += "w"
 
-	if(nw == "nw" && calc_list["northwest"])
+	if(nw == "nw" && calc_list["north-west"])
 		nw = "f"
 
-	if(ne == "ne" && calc_list["northeast"])
+	if(ne == "ne" && calc_list["north-east"])
 		ne = "f"
 
-	if(sw == "sw" && calc_list["southwest"])
+	if(sw == "sw" && calc_list["south-west"])
 		sw = "f"
 
-	if(se == "se" && calc_list["southeast"])
+	if(se == "se" && calc_list["south-east"])
 		se = "f"
 
 	if(!ne) ne = "i"

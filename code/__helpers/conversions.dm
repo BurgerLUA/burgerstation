@@ -75,28 +75,6 @@
 		return splittext(trim(file2text(filename)),seperator)
 	return splittext(file2text(filename),seperator)
 
-//Turns a direction into text
-/proc/dir2text(direction)
-	switch(direction)
-		if(1)
-			return "north"
-		if(2)
-			return "south"
-		if(4)
-			return "east"
-		if(8)
-			return "west"
-		if(5)
-			return "northeast"
-		if(6)
-			return "southeast"
-		if(9)
-			return "northwest"
-		if(10)
-			return "southwest"
-		else
-	return
-
 //Turns text into proper directions
 /proc/text2dir(direction)
 	switch(uppertext(direction))
@@ -175,10 +153,6 @@
 			return 225
 		else
 			return null
-
-//Returns the angle in english
-/proc/angle2text(degree)
-	return dir2text(angle2dir(degree))
 
 //Converts a blend_mode constant to one acceptable to icon.Blend()
 /proc/blendMode2iconMode(blend_mode)

@@ -119,14 +119,12 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock)
 
 		if(DOOR_STATE_OPENED)
-			world.log << "We're open now. Start thinking. Lock?: [should_lock]."
 			opened_time = 0
 			start_thinking(src)
 			if(should_lock)
 				lock()
 
 		if(DOOR_STATE_CLOSED)
-			world.log << "We're closed now. Stop thinking."
 			stop_thinking(src)
 			if(should_lock)
 				lock()
