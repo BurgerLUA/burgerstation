@@ -58,108 +58,84 @@
 
 	return TRUE
 
-obj/structure/interactive/door/airlock/open(var/unlock = FALSE, var/force = FALSE)
+obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE)
 
-	if(locked && (unlock || force))
-		unlock()
+	if(!force)
+		if(locked)
+			return FALSE
 
-	if(door_state != DOOR_STATE_CLOSED)
-		return FALSE
+		if(door_state != DOOR_STATE_CLOSED || door_state == DOOR_STATE_DENY)
+			return FALSE
 
-	if(door_state == DOOR_STATE_DENY)
-		return FALSE
-
-	if(locked)
-		return FALSE
-
-	spawn()
-
-		if(!force && no_access)
-			door_state = DOOR_STATE_DENY
-			update_sprite()
-			sleep(10)
-			door_state = DOOR_STATE_CLOSED
-			update_sprite()
-			return
-
-		if(open_sound)
-			play(open_sound,src)
-
-		door_state = DOOR_STATE_START_OPENING
-		update_sprite()
-
-		sleep(open_wait_time)
-
-		door_state = DOOR_STATE_OPENING_01
-		update_sprite()
-
-		sleep(open_time_01)
-
-		door_state = DOOR_STATE_OPENING_02
-		update_sprite()
-
-		sleep(open_time_02)
-
-		door_state = DOOR_STATE_OPENED
-		update_sprite()
-		opened_time = 0
-		start_thinking(src)
-
-		if(force && !unlock)
-			lock()
-
-
-
+	set_door_state(DOOR_STATE_START_OPENING,lock)
 	return TRUE
 
 obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE)
 
-	if(locked && !force)
-		return FALSE
+	if(!force)
+		if(locked)
+			return FALSE
 
-	if(door_state != DOOR_STATE_OPENED || door_state == DOOR_STATE_DENY)
-		if(lock)
-			lock()
-		return FALSE
+		if(door_state != DOOR_STATE_OPENED || door_state == DOOR_STATE_DENY)
+			return FALSE
 
-	spawn()
+	set_door_state(DOOR_STATE_CLOSING_01,lock)
+	return TRUE
 
-		if(close_sound)
-			play(close_sound,src)
+/obj/structure/interactive/door/proc/set_door_state(var/desired_door_state,var/should_lock=FALSE)
+	return TRUE
 
-		door_state = DOOR_STATE_CLOSING_01
-		update_sprite()
+/obj/structure/interactive/door/airlock/set_door_state(var/desired_door_state,var/should_lock=FALSE)
 
-		sleep(close_time_01)
+	door_state = desired_door_state
+	update_sprite()
 
-		var/found_living = FALSE
-		for(var/mob/living/L in loc.contents)
-			if(L)
-				found_living = TRUE
-				break
+	switch(desired_door_state)
+		if(DOOR_STATE_START_OPENING)
+			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,DOOR_STATE_OPENING_01,should_lock)
+			if(open_sound)
+				play(open_sound,src)
 
-		if(found_living)
+		if(DOOR_STATE_OPENING_01)
+			CALLBACK("door_state_\ref[src]",open_time_01,src,.proc/set_door_state,DOOR_STATE_OPENING_02,should_lock)
+
+		if(DOOR_STATE_OPENING_02)
+			CALLBACK("door_state_\ref[src]",open_time_02,src,.proc/set_door_state,DOOR_STATE_OPENED,should_lock)
+
+		if(DOOR_STATE_CLOSING_01)
+			CALLBACK("door_state_\ref[src]",close_time_01,src,.proc/set_door_state,DOOR_STATE_CLOSING_02,should_lock)
+			if(close_sound)
+				play(close_sound,src)
+
+		if(DOOR_STATE_CLOSING_02)
+			var/found_living = FALSE
+			for(var/mob/living/L in loc.contents)
+				if(L)
+					found_living = TRUE
+					break
+			if(found_living)
+				set_door_state(DOOR_STATE_OPENING_02,FALSE)
+			else
+				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock)
+
+		if(DOOR_STATE_OPENED)
+			world.log << "We're open now. Start thinking. Lock?: [should_lock]."
 			opened_time = 0
-			door_state = DOOR_STATE_OPENING_02
-			update_sprite()
-
-			sleep(open_time_02)
-
-			door_state = DOOR_STATE_OPENED
-			update_sprite()
 			start_thinking(src)
-
-		else
-			door_state = DOOR_STATE_CLOSING_02
-			update_sprite()
-
-			sleep(close_time_02)
-
-			door_state = DOOR_STATE_CLOSED
-			update_sprite()
-			stop_thinking(src)
-			if(lock)
+			if(should_lock)
 				lock()
+
+		if(DOOR_STATE_CLOSED)
+			world.log << "We're closed now. Stop thinking."
+			stop_thinking(src)
+			if(should_lock)
+				lock()
+
+	return TRUE
+
+
+
+
 
 /obj/structure/interactive/door/airlock/update_icon()
 
@@ -170,8 +146,6 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 	icon = initial(icon)
 
 	switch(door_state)
-
-
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "opening_01"
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)

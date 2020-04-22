@@ -1,12 +1,12 @@
-#define DOOR_STATE_OPENED 1
-#define DOOR_STATE_OPENING_01 2
-#define DOOR_STATE_OPENING_02 3
-#define DOOR_STATE_CLOSED 4
-#define DOOR_STATE_CLOSING_01 5
-#define DOOR_STATE_CLOSING_02 6
-#define DOOR_STATE_LOCKED 7 //Only used for singleplayer airlocks
-#define DOOR_STATE_START_OPENING 8 //Only used for airlocks
-#define DOOR_STATE_DENY 9 //Only used for airlocks
+#define DOOR_STATE_OPENED "opened"
+#define DOOR_STATE_OPENING_01 "opening_01"
+#define DOOR_STATE_OPENING_02 "opening_02"
+#define DOOR_STATE_CLOSED "closed"
+#define DOOR_STATE_CLOSING_01 "closing_01"
+#define DOOR_STATE_CLOSING_02 "closing_02"
+#define DOOR_STATE_LOCKED "locked" //Only used for singleplayer airlocks
+#define DOOR_STATE_START_OPENING "start_opening" //Only used for airlocks
+#define DOOR_STATE_DENY "denay" //Only used for airlocks
 
 
 obj/structure/interactive/door

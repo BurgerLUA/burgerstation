@@ -1,0 +1,2 @@
+#define CALLBACK(desired_id,desired_time,desired_object,desired_proc,arguments...) SScallback.add_callback(desired_id,desired_time,desired_object,desired_proc,arguments)
+#define CALLBACK_GLOBAL(desired_id,desired_time,desired_proc,arguments...) SScallback.add_callback(desired_id,desired_time,null,desired_proc,arguments)

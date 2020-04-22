@@ -1,5 +1,3 @@
-#define CALLBACK(desired_id,desired_time,desired_proc,arguments...) SScallback.add_callback(desired_id,desired_time,desired_proc,arguments)
-
 SUBSYSTEM_DEF(callback)
 	name = "Callback Subsystem"
 	desc = "Controls callbacks."
@@ -16,15 +14,22 @@ SUBSYSTEM_DEF(callback)
 		var/callback_value = src.all_callbacks[callback_id]
 		if(callback_value["time"] > world.time)
 			continue
-		call(callback_value["proc"])(arglist(callback_value["args"]))
+		var/stored_proc = callback_value["proc"]
+		var/stored_args = callback_value["args"]
+		var/datum/stored_object = callback_value["object"]
 		src.all_callbacks -= callback_id
+		if(stored_object)
+			call(stored_object,stored_proc)(arglist(stored_args))
+		else
+			call(stored_proc)(arglist(stored_args))
 
 	return TRUE
 
-/subsystem/callback/proc/add_callback(var/desired_id,var/desired_time,var/desired_proc,...)
+/subsystem/callback/proc/add_callback(var/desired_id,var/desired_time,var/desired_object,var/desired_proc,...)
 	all_callbacks[desired_id] = list(
+		"object" = desired_object,
 		"proc" = desired_proc,
-		"args" = args.Copy(4),
+		"args" = args.Copy(5),
 		"time" = world.time + desired_time
 	)
 	return TRUE
