@@ -89,12 +89,13 @@ SUBSYSTEM_DEF(lighting)
 
 		while (length(curr_lights) && lq_idex <= length(curr_lights))
 			CHECK_TICK
-			var/light_source/L = curr_lights[lq_idex++]
+			var/light_source/L = curr_lights[lq_idex]
 			if (L.needs_update != LIGHTING_NO_UPDATE)
 				total_ss_updates += 1
 				L.update_corners()
 				L.needs_update = LIGHTING_NO_UPDATE
 				processed_lights++
+			lq_idex++
 
 		if (lq_idex > 1)
 			curr_lights.Cut(1, lq_idex)
@@ -102,11 +103,12 @@ SUBSYSTEM_DEF(lighting)
 
 		while (length(curr_corners) && cq_idex <= length(curr_corners))
 			CHECK_TICK
-			var/lighting_corner/C = curr_corners[cq_idex++]
+			var/lighting_corner/C = curr_corners[cq_idex]
 			if (C.needs_update)
 				C.update_overlays()
 				C.needs_update = FALSE
 				processed_corners++
+			cq_idex++
 
 		if (cq_idex > 1)
 			curr_corners.Cut(1, cq_idex)
@@ -114,11 +116,12 @@ SUBSYSTEM_DEF(lighting)
 
 		while (length(curr_overlays) && oq_idex <= length(curr_overlays))
 			CHECK_TICK
-			var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex++]
+			var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex]
 			if (!O.qdeleting && O.needs_update)
 				O.update_overlays()
 				O.needs_update = FALSE
 				processed_overlays++
+			oq_idex++
 
 		if (oq_idex > 1)
 			curr_overlays.Cut(1, oq_idex)
