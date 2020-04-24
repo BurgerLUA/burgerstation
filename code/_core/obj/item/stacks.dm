@@ -19,20 +19,8 @@
 
 	return N
 
-/obj/item/proc/transfer_stacks_to(var/obj/item/I)
-	var/stacks_to_take = clamp(I.item_count_max - I.item_count_current,0,item_count_current)
-	if(!stacks_to_take) //We're full!
-		return FALSE
-	item_count_current -= stacks_to_take
-	I.item_count_current += stacks_to_take
-	if(item_count_current <= 0)
-		qdel(src)
-	else
-		update_sprite()
-
-	I.update_sprite()
-
-	return stacks_to_take
+/obj/item/proc/transfer_stacks_to(var/obj/item/I,var/amount = src.item_count_current)
+	return I.add_item_count( -src.add_item_count(-amount) )
 
 /obj/item/proc/split_stack()
 
@@ -40,12 +28,9 @@
 	if(!stacks_to_take)
 		return FALSE
 
-	item_count_current -= stacks_to_take
-	update_sprite()
 
 	var/obj/item/I = copy(src)
-	I.item_count_current = stacks_to_take
-	I.update_sprite()
+	transfer_stacks_to(I,stacks_to_take)
 
 	return I
 
@@ -56,10 +41,9 @@
 
 	var/obj/item/I = object
 	if(I.can_transfer_stacks_to(src))
-		var/old_loc_name = I.loc.name
 		var/stacks_transfered = I.transfer_stacks_to(src)
 		if(stacks_transfered)
-			caller.to_chat("You transfer [stacks_transfered] [src.name] from \the [old_loc_name] to \the [src.loc.name].")
+			caller.to_chat("You transfer [stacks_transfered] stacks.")
 			return TRUE
 		else
 			caller.to_chat("\The [I.name] is full!")
@@ -79,51 +63,3 @@
 	caller.to_chat("You split \the stack of [old_item_name]. The new stack now has [I2.item_count_current].")
 	I.add_object(I2)
 	return TRUE
-
-/*
-/obj/item/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
-	if(object == src)
-		return ..()
-
-	if(is_inventory(object))
-		var/obj/hud/inventory/I = object
-		var/obj/item/I = new src.type(get_turf(src))
-		I.material_id = material_id
-		I.color = color
-		I.update_sprite()
-		I.transfer_item(I)
-		src.item_count_current -= 1
-		if(src.item_count_current <= 0)
-			qdel(src)
-			return TRUE
-		update_sprite()
-		return TRUE
-
-	if(!istype(object,/obj/item/material/))
-		return ..()
-
-	var/obj/item/material/M = object
-	if(M.crafting_id != src.crafting_id)
-		return ..()
-
-	var/amount_to_transfer = min(M.item_count_max - M.item_count_current,src.item_count_current)
-
-	if(!amount_to_transfer)
-		return TRUE
-
-	src.item_count_current -= amount_to_transfer
-	M.item_count_current += amount_to_transfer
-
-	caller.to_chat(span("notice","You transfer [amount_to_transfer] sheet\s between the stacks. You now have [M.item_count_current]."))
-
-	M.update_sprite()
-
-	if(src.item_count_current <= 0)
-		qdel(src)
-		return TRUE
-
-	src.update_sprite()
-
-	return TRUE
-*/

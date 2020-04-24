@@ -89,7 +89,7 @@
 	color = COLOR_COMMAND
 
 /turf/simulated/floor/tile/overlapping
-	real_icon = 'icons/turf/floor/tile_debug.dmi'
+	real_icon = 'icons/turf/floor/tile_smooth_overlap.dmi'
 	real_icon_state = "floor"
 
 	corner_icons = TRUE

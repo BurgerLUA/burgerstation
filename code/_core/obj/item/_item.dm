@@ -98,6 +98,16 @@
 
 	var/allow_beaker_transfer = FALSE
 
+/obj/item/proc/add_item_count(var/amount_to_add)
+	var/old_amount = item_count_current
+	item_count_current = clamp(item_count_current + amount_to_add,0,item_count_max)
+	if(item_count_current <= 0)
+		qdel(src)
+	else
+		update_sprite()
+	return item_count_current - old_amount
+
+
 /obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
 	if(istype(DT,/damagetype/unarmed/))

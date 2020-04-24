@@ -235,6 +235,8 @@
 
 	handle_charges()
 
+	handle_status_effects()
+
 	return TRUE
 
 /mob/living/proc/handle_charges(var/charge_gain = 10)

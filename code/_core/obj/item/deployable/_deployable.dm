@@ -13,15 +13,12 @@
 
 /obj/item/deployable/proc/deploy(var/mob/caller,var/turf/T)
 
-	item_count_current--
 	var/obj/structure/S = new structure_to_deploy(T)
 	S.dir = caller.dir
 	INITIALIZE(S)
-
 	caller.visible_message(span("\The [caller.name] deploys \the [S.name]."),span("You deploy \the [S.name]."))
 
-	if(item_count_current <= 0)
-		qdel(src)
+	add_item_count(-1)
 
 	return TRUE
 

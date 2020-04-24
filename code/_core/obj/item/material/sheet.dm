@@ -19,13 +19,13 @@
 	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
-			var/obj/item/material/rod/R = new(get_turf(I))
+			var/obj/item/material/rod/R = new(get_turf(src))
 			R.material_id = material_id
 			R.item_count_current = 4
 			R.update_sprite()
 			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
-			item_count_current--
-			update_sprite()
+			add_item_count(-1)
+			R.Move(get_turf(I))
 
 	return ..()
 

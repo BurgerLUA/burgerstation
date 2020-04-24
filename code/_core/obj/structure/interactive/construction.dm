@@ -36,9 +36,8 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 			var/obj/structure/interactive/construction/lattice/L = new(src.loc)
 			L.material_id = material_id
 			L.color = color
-			R.item_count_current -= 2
-			R.update_sprite()
 			caller.to_chat("You place \the [L.name].")
+			R.add_item_count(-2)
 			qdel(src)
 			return TRUE
 
@@ -59,9 +58,8 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 			var/obj/structure/interactive/construction/girder/G = new(src.loc)
 			G.material_id = material_id
 			G.color = color
-			S.item_count_current -= 4
-			S.update_sprite()
 			caller.to_chat("You place \the [G.name].")
+			S.add_item_count(-4)
 			qdel(src)
 			return TRUE
 
@@ -99,9 +97,8 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 			var/obj/structure/interactive/construction/grille/G = new(src.loc)
 			G.material_id = material_id
 			G.color = color
-			R.item_count_current -= 4
-			R.update_sprite()
 			caller.to_chat("You place \the [G.name].")
+			R.add_item_count(-4)
 			qdel(src)
 			return TRUE
 
@@ -123,9 +120,8 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 			T.change_turf(/turf/simulated/floor/plating/,TRUE)
 			T.color = color
 			T.material_id = material_id
-			S.item_count_current -= 4
-			S.update_sprite()
 			caller.to_chat("You place \the plating.")
+			S.add_item_count(-4)
 			qdel(src)
 			return TRUE
 
@@ -162,37 +158,18 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 			caller.to_chat("You don't have the correct material for this!")
 			return TRUE
 
-		if(S.item_count_current >= 4)
-			var/turf/T = src.loc
-			T.change_turf(/turf/simulated/wall/metal/)
-			T.material_id = material_id
-			T.color = color
-			S.item_count_current -= 4
-			S.update_sprite()
-			caller.to_chat("You place \the metal wall.")
-			qdel(src)
+		if(S.item_count_current < 4)
+			caller.to_chat("You don't have enough material to build a wall!")
 			return TRUE
 
-		caller.to_chat("You don't have enough material to build a wall!")
+		var/turf/T = src.loc
+		T.change_turf(/turf/simulated/wall/metal/)
+		T.material_id = material_id
+		T.color = color
+		caller.to_chat("You place \the metal wall.")
+		S.add_item_count(-4)
+		qdel(src)
 		return TRUE
-
-
-	if(istype(A,/obj/item/material/sheet/))
-		var/obj/item/material/sheet/S = A
-		if(has_prefix(S.material_id,"glass") && S.item_count_current <= 4)
-			var/obj/structure/smooth/window/W = new(src.loc)
-			W.material_id = S.material_id
-			W.color = S.color
-			for(var/obj/structure/smooth/window/W2 in range(2,src))
-				W2.update_sprite()
-			S.item_count_current -= 4
-			caller.to_chat("You place \the [W].")
-			S.update_sprite()
-			return TRUE
-
-		caller.to_chat("You don't have enough glass sheets to make a window!")
-		return TRUE
-
 
 	return ..()
 
@@ -205,6 +182,31 @@ obj/structure/interactive/construction/grille
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	health_base = 75
+
+
+obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+
+	var/atom/A = object.defer_click_on_object()
+
+	if(istype(A,/obj/item/material/sheet/))
+		var/obj/item/material/sheet/S = A
+		if(has_prefix(S.material_id,"glass"))
+			if(!S.item_count_current >= 4)
+				caller.to_chat("You don't have enough glass sheets to make a window!")
+				return TRUE
+			var/obj/structure/smooth/window/W = new(src.loc)
+			W.material_id = S.material_id
+			W.color = S.color
+			for(var/obj/structure/smooth/window/W2 in range(2,src))
+				W2.update_sprite()
+			caller.to_chat("You place \the [W].")
+			S.add_item_count(-4)
+			return TRUE
+
+
+	return ..()
 
 obj/structure/interactive/construction/grille/plasteel
 	name = "plasteel grille"

@@ -72,12 +72,8 @@
 	else
 		caller.visible_message("\The [caller.name] bandages \the [A.loc.name]'s [A.name].")
 
-	item_count_current--
+	add_item_count(-1)
 
-	if(item_count_current <= 0)
-		qdel(src)
-
-	update_sprite()
 
 	return TRUE
 

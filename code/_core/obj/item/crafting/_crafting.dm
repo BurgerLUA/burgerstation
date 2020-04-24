@@ -89,11 +89,7 @@
 					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current)
 					qdel(I)
 				else
-					I.item_count_current--
-					if(I.item_count_current <= 0)
-						qdel(I)
-					else
-						I.update_sprite()
+					I.add_item_count(-1)
 
 			R.on_create(caller,src,I3)
 

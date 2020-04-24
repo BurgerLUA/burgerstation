@@ -150,6 +150,10 @@
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1)
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
+	var/matrix/M = matrix()
+	M.Translate(pixel_x_float,pixel_y_float) //WHY DO I HAVE TO HALF THIS?
+	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 
 		current_loc = locate(current_loc_x,current_loc_y,z)
@@ -200,10 +204,6 @@
 
 	if(current_loc)
 		previous_loc = current_loc
-
-	var/matrix/M = matrix()
-	M.Translate(pixel_x_float,pixel_y_float)
-	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y

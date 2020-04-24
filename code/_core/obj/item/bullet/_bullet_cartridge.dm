@@ -124,11 +124,9 @@
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
-	var/transfered_bullets = 0
-	for(var/i=1,i<=bullets_to_add,i++)
-		transfer_target.item_count_current += 1
-		item_count_current -= 1
-		transfered_bullets += 1
+	var/transfered_bullets = transfer_target.add_item_count(bullets_to_add)
+	transfer_target.add_item_count(-item_count_current)
+
 	if(talk)
 		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
 	transfer_target.update_sprite()
@@ -144,21 +142,15 @@
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
 
-	var/transfered_bullets = 0
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
+	bullets_to_add = add_item_count(bullets_to_add)
 	for(var/i=1,i<=bullets_to_add,i++)
 		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
 		B.is_spent = is_spent
 		transfer_target.stored_bullets += B
-		item_count_current -= 1
-		transfered_bullets += 1
 	if(talk)
-		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target.name]."))
+		caller.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
 	transfer_target.update_sprite()
-	if(item_count_current <= 0)
-		qdel(src)
-	else
-		update_sprite()
 
 	return TRUE
 
@@ -168,11 +160,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		W.chambered_bullet += B
-		item_count_current -= 1
-		if(item_count_current <= 0)
-			qdel(src)
-		else
-			update_sprite()
+		add_item_count(-1)
 		W.update_sprite()
 		return TRUE
 
@@ -187,10 +175,7 @@
 		if(valid_slot)
 			W.stored_bullets[valid_slot] = B
 			item_count_current -= 1
-			if(item_count_current <= 0)
-				qdel(src)
-			else
-				update_sprite()
+			add_item_count(-1)
 			W.update_sprite()
 			return TRUE
 

@@ -73,18 +73,20 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		if(L.has_status_effect(REST) && L.get_status_effect_duration() == -1)
-			L.add_status_effect(REST,-1,5, force = TRUE)
+		if(L.has_status_effect(REST) && L.get_status_effect_duration(REST) == -1)
+			world.log << "COCK AND BALL"
+			L.add_status_effect(REST,100,2, force = TRUE) //
 		else
-			L.add_status_effect(REST,-1,-1, force = TRUE)
+			world.log << "TORTURE"
+			L.add_status_effect(REST,-1,-2, force = TRUE)
 
 	return ..()
 
 
 /obj/hud/button/stand
-	name = "rest"
-	desc = "No sleeping on the job!"
-	desc_extended = "Press to toggle laying down."
+	name = "stand"
+	desc = "Summons and unsummons your stand."
+	desc_extended = "Press to toggle your stand. Put yourself on harm intent to make your stand attack your enemies. Help intent doesn't."
 	icon_state = "stand"
 	screen_loc = "RIGHT-1,BOTTOM+1"
 

@@ -33,7 +33,7 @@
 	if(M.crafting_id != src.crafting_id)
 		return ..()
 
-	if(M.item_count_max >= M.item_count_current)
+	if(M.item_count_max <= M.item_count_current)
 		return ..()
 
 	src.transfer_stacks_to(M)

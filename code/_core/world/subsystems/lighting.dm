@@ -82,49 +82,63 @@ SUBSYSTEM_DEF(lighting)
 	if(!ENABLE_LIGHTING)
 		return TRUE
 
-	spawn()
-		var/list/curr_lights = light_queue
-		var/list/curr_corners = corner_queue
-		var/list/curr_overlays = overlay_queue
+	var/list/curr_lights = light_queue
+	var/list/curr_corners = corner_queue
+	var/list/curr_overlays = overlay_queue
 
-		while (length(curr_lights) && lq_idex <= length(curr_lights))
-			CHECK_TICK
-			var/light_source/L = curr_lights[lq_idex]
-			if (L.needs_update != LIGHTING_NO_UPDATE)
-				total_ss_updates += 1
-				L.update_corners()
-				L.needs_update = LIGHTING_NO_UPDATE
-				processed_lights++
-			lq_idex++
+	if(lq_idex <= 0)
+		log_error("Lighting Error: lq_idex is at [lq_idex].")
 
-		if (lq_idex > 1)
+	while (length(curr_lights) && lq_idex <= length(curr_lights))
+		CHECK_TICK
+		var/light_source/L = curr_lights[lq_idex]
+		if (L.needs_update != LIGHTING_NO_UPDATE)
+			total_ss_updates += 1
+			L.update_corners()
+			L.needs_update = LIGHTING_NO_UPDATE
+			processed_lights++
+		lq_idex++
+
+	if (lq_idex > 1)
+		if(length(curr_lights))
 			curr_lights.Cut(1, lq_idex)
-			lq_idex = 1
+		lq_idex = 1
 
-		while (length(curr_corners) && cq_idex <= length(curr_corners))
-			CHECK_TICK
-			var/lighting_corner/C = curr_corners[cq_idex]
-			if (C.needs_update)
-				C.update_overlays()
-				C.needs_update = FALSE
-				processed_corners++
-			cq_idex++
+	if(cq_idex <= 0)
+		log_error("Lighting Error: cq_idex is at [cq_idex].")
 
-		if (cq_idex > 1)
+	while (length(curr_corners) && cq_idex <= length(curr_corners))
+		CHECK_TICK
+		var/lighting_corner/C = curr_corners[cq_idex]
+		if (C.needs_update)
+			C.update_overlays()
+			C.needs_update = FALSE
+			processed_corners++
+		cq_idex++
+
+	if (cq_idex > 1)
+		if(length(curr_corners))
 			curr_corners.Cut(1, cq_idex)
-			cq_idex = 1
+		cq_idex = 1
 
-		while (length(curr_overlays) && oq_idex <= length(curr_overlays))
-			CHECK_TICK
-			var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex]
-			if (!O.qdeleting && O.needs_update)
-				O.update_overlays()
-				O.needs_update = FALSE
-				processed_overlays++
-			oq_idex++
+	if(oq_idex <= 0)
+		log_error("Lighting Error: oq_idex is at [oq_idex].")
 
-		if (oq_idex > 1)
+	while (length(curr_overlays) && oq_idex <= length(curr_overlays))
+		CHECK_TICK
+		if(oq_idex < 0 || oq_idex > length(curr_overlays))
+			log_error("Lighting Error: List index out of bounds! Data: [length(curr_overlays)], [oq_idex].")
+			break
+		var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex]
+		if (!O.qdeleting && O.needs_update)
+			O.update_overlays()
+			O.needs_update = FALSE
+			processed_overlays++
+		oq_idex++
+
+	if (oq_idex > 1)
+		if(length(curr_overlays))
 			curr_overlays.Cut(1, oq_idex)
-			oq_idex = 1
+		oq_idex = 1
 
 	return TRUE
