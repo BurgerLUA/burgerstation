@@ -14,6 +14,15 @@
 	verbs += /client/verb/button_press
 	verbs += /client/verb/button_release
 	verbs += /client/verb/fullscreen
+	verbs += /client/verb/change_click_mode
+	verbs += /client/verb/set_volume_master
+	verbs += /client/verb/set_volume_fx
+	verbs += /client/verb/set_volume_ambient
+	verbs += /client/verb/set_volume_music
+	verbs += /client/verb/set_volume_footsteps
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test
+	if(ckey == "burgerbb")
+		verbs += /client/verb/add_new_wikibot_entry
+
 	return TRUE

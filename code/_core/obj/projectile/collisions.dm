@@ -6,10 +6,13 @@
 	if(P.owner == src)
 		return FALSE
 
+	if( (collision_bullet_flags & FLAG_COLLISION_SPECIFIC) && P.target_atom == src)
+		return src
+
 	if(!src.collision_bullet_flags || !P.collision_bullet_flags)
 		return FALSE
 
-	if(!(P.collision_bullet_flags && P.collision_bullet_flags & src.collision_bullet_flags))
+	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
 		return FALSE
 
 	return src

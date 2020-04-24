@@ -30,14 +30,6 @@
 			add_overlay(I)
 	return .
 
-/obj/structure/smooth/window/can_be_attacked(var/atom/attacker)
-
-	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
-		return FALSE
-
-	return ..()
-
 /obj/structure/smooth/window/on_destruction(var/atom/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 	queue_update_smooth_edges(src)

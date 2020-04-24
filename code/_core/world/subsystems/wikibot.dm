@@ -22,6 +22,8 @@ SUBSYSTEM_DEF(wikibot)
 	text2file(json_encode(wikibot_list),WIKIBOT)
 	return TRUE
 
+
+
 /subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)
 
 	var/best_score = 0

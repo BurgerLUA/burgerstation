@@ -71,6 +71,8 @@
 
 /atom/Destroy()
 
+	set_light(FALSE)
+
 	for(var/datum/O in underlays)
 		qdel(O)
 	underlays.Cut()

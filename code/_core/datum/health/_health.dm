@@ -92,6 +92,11 @@
 	damage[FATIGUE] = value
 	return value
 
+/health/proc/restore()
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0)
+	update_health(TRUE)
+	return TRUE
+
 /health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/update=TRUE)
 
 	var/total_loss = 0

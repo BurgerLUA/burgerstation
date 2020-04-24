@@ -18,6 +18,26 @@
 
 	rotation_mod = -1
 
+	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+
+	health = /health/construction
+
+	health_base = 10
+
+/obj/structure/interactive/lighting/tube/on_destruction(var/atom/caller,var/damage = FALSE)
+
+	if(desired_light_color)
+		desired_light_color = null
+		if(health)
+			health.restore()
+		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),"glass")
+		update_sprite()
+	else
+		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),"steel")
+		qdel(src)
+
+	return TRUE
+
 /obj/structure/interactive/lighting/tube/New()
 
 	. = ..()
@@ -35,19 +55,18 @@
 	return .
 
 /obj/structure/interactive/lighting/tube/Initialize()
-	. = ..()
-	update_sprite()
-	return .
-
-/obj/structure/interactive/lighting/tube/update_icon()
 
 	if(color)
 		desired_light_color = color
-	else
-		desired_light_color = "#FFFFFF"
+		color = "#FFFFFF"
 
-	if(desired_light_range && desired_light_power && desired_light_color)
-		set_light(desired_light_range,desired_light_power,desired_light_color)
+	. = ..()
+
+	update_sprite()
+
+	return .
+
+/obj/structure/interactive/lighting/tube/update_icon()
 
 	icon = initial(icon)
 	icon_state = initial(icon_state)
@@ -55,18 +74,29 @@
 	var/icon/I = new /icon(icon,"tube")
 	I.Blend(color_frame,ICON_MULTIPLY)
 
-	var/icon/F = new /icon(icon,"tube_bulb")
-	F.Blend(desired_light_color,ICON_MULTIPLY)
-	I.Blend(F,ICON_OVERLAY)
+	if(desired_light_color)
+		world.log << "Light color: [desired_light_color]."
+		var/icon/F = new /icon(icon,"tube_bulb")
+		F.Blend(desired_light_color,ICON_MULTIPLY)
+		I.Blend(F,ICON_OVERLAY)
+		set_light(on ? desired_light_range : 0, on ? desired_light_power : 0, desired_light_color)
+	else
+		set_light(FALSE)
+		world.log << "Setting light to FALSE!"
 
 	icon = I
 
 /obj/structure/interactive/lighting/tube/update_overlays()
+
 	. = ..()
-	var/image/IS = new/image(initial(icon),"tube_light")
-	IS.plane = PLANE_LIGHTING
-	IS.layer = 99
-	add_overlay(IS)
+
+	if(on && desired_light_color)
+		var/image/IS = new/image(initial(icon),"tube_light")
+		IS.plane = PLANE_LIGHTING
+		IS.layer = 99
+		IS.color = desired_light_color
+		add_overlay(IS)
+
 	return .
 
 /obj/structure/interactive/lighting/tube/strong

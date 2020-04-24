@@ -97,3 +97,10 @@
 			return FALSE
 
 	return TRUE
+
+
+/obj/structure/can_be_attacked(var/atom/attacker)
+	var/area/A = get_area(src)
+	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+		return FALSE
+	return ..()
