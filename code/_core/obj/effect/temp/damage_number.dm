@@ -2,6 +2,7 @@ obj/effect/temp/damage_number
 	name = "damage number"
 	desc = "We a JRPG now!"
 	duration = 20
+
 	icon = null
 	mouse_opacity = 0
 	plane = PLANE_HUD_CHAT

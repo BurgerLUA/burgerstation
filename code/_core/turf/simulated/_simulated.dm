@@ -91,28 +91,9 @@ var/global/saved_icons = 0
 		icon_state = real_icon_state
 
 	var/area/A = loc
-
-	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
-		if(!destruction_turf)
-			if(loc && loc.type != src.type && is_floor(loc))
-				destruction_turf = loc.type
-			else if(A.destruction_turf != src.type)
-				destruction_turf = A.destruction_turf
-		if(destruction_turf)
-			health = /health/turf/
-
 	desired_light_power *= A.area_light_power
 
 	return ..()
-
-/turf/simulated/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
-
-	. = ..()
-
-	if(destruction_turf && damage_amount >= 0)
-		new/obj/effect/temp/damage_number(src,null,damage_amount)
-
-	return .
 
 /turf/simulated/get_examine_list(var/mob/examiner)
 	return ..() + div("notice","Air Block Dirs: [direction_to_text(blocks_air)].")
@@ -129,12 +110,21 @@ var/global/saved_icons = 0
 
 	change_turf(destruction_turf,)
 
-	update_edges()
+	queue_update_turf_edges(src)
 	Initialize()
 
 	return ..()
 
 /turf/simulated/Initialize()
+	var/area/A = loc
+	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
+		if(!destruction_turf)
+			if(loc && loc.type != src.type && is_floor(loc))
+				destruction_turf = loc.type
+			else if(A.destruction_turf != src.type)
+				destruction_turf = A.destruction_turf
+		if(destruction_turf)
+			health = /health/turf/
 	set_exposed(exposed,!exposed)
 	. = ..()
 	update_sprite()

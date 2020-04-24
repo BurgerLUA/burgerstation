@@ -96,8 +96,9 @@
 	if(caller == object)
 		return click_self(caller)
 
-	. = ..()
+	return ..()
 
+/* fuck this code
 	if(.)
 		return .
 
@@ -121,3 +122,4 @@
 		return TRUE
 
 	return FALSE
+*/

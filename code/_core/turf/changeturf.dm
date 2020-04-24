@@ -29,7 +29,7 @@
 	if(force_edges_update)
 		update_edges()
 	else
-		queue_update_edges(src)
+		queue_update_turf_edges(src)
 
 	/*
 	if(is_simulated(.))

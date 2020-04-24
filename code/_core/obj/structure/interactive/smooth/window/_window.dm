@@ -21,6 +21,15 @@
 
 	blocks_air = NORTH | EAST | SOUTH | WEST
 
+/obj/structure/smooth/window/update_overlays()
+	. = ..()
+	if(health)
+		var/damage_number = 3 - min(3,FLOOR((health.health_current/health.health_max)*3, 1))
+		if(damage_number > 0)
+			var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
+			add_overlay(I)
+	return .
+
 /obj/structure/smooth/window/can_be_attacked(var/atom/attacker)
 
 	var/area/A = get_area(src)
@@ -31,6 +40,7 @@
 
 /obj/structure/smooth/window/on_destruction(var/atom/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
+	queue_update_smooth_edges(src)
 	qdel(src)
 	return TRUE
 
@@ -71,8 +81,6 @@
 /obj/structure/smooth/window/cult
 	name = "cult window"
 	color = "#7F0000"
-
-
 
 /obj/structure/smooth/window/shuttle
 	name = "shuttle window"

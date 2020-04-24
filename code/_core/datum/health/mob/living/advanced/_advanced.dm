@@ -125,7 +125,7 @@
 
 	return value
 
-health/mob/living/advanced/update_stats()
+health/mob/living/advanced/update_health_stats()
 
 	if(!is_advanced(owner))
 		return 0

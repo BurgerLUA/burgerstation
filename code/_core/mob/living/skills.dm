@@ -9,9 +9,8 @@
 /mob/living/proc/get_skill_power(var/id)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
-		log_error("WARNING: INVALID SKILL FOR [src]: [id]!")
-		return 0.5
-
+		log_error("Warning! Tried getting skill [id], but it didn't exist for [src.name]([src.type])!")
+		return 0.25
 	return S.get_power()
 
 /mob/living/proc/set_skill_level(var/id,var/desired_level)
@@ -37,7 +36,8 @@
 /mob/living/proc/get_attribute_power(var/id)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
-		return 0
+		log_error("Warning! Tried getting attribute [id], but it didn't exist for [src.name]([src.type])!")
+		return 0.25
 	return A.get_power()
 
 /mob/living/proc/set_attribute_level(var/id,var/desired_level)

@@ -1,7 +1,9 @@
 SUBSYSTEM_DEF(obj)
 	name = "Objs Subsystem"
-	desc = "Initialize objs after they are made."
+	desc = "Initialize objs after they are made. Also handles queued object smoothing."
 	priority = SS_ORDER_OBJS
+	tick_rate = DECISECONDS_TO_TICKS(1)
+	var/list/queued_smooth = list()
 
 /subsystem/obj/Initialize()
 
@@ -39,4 +41,21 @@ SUBSYSTEM_DEF(obj)
 
 	log_subsystem(name,"Total: Initialized and spawned [length(initialize_early) + length(initialize_normal) + length(initialize_late)] total objects in world.")
 
+/subsystem/obj/on_life()
 
+	for(var/obj/structure/smooth/S in queued_smooth)
+		S.update_sprite()
+		queued_smooth -= S
+
+	return TRUE
+
+/proc/queue_update_smooth_edges(var/obj/structure/smooth/S)
+
+	SSobj.queued_smooth |= S
+
+	for(var/direction in DIRECTIONS_ALL)
+		var/turf/T = get_step(S,direction)
+		for(var/obj/structure/smooth/S2 in T.contents)
+			SSobj.queued_smooth |= S2
+
+	return TRUE

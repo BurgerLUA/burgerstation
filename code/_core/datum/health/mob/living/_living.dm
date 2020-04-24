@@ -36,7 +36,7 @@
 
 	return .
 
-/health/mob/living/update_stats()
+/health/mob/living/update_health_stats()
 
 	. = ..()
 

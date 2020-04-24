@@ -42,7 +42,7 @@
 
 /health/Initialize()
 
-	update_stats()
+	update_health_stats()
 
 	health_current = health_max
 	stamina_current = stamina_max
@@ -63,7 +63,7 @@
 
 	return ..()
 
-/health/proc/update_stats()
+/health/proc/update_health_stats()
 	health_max = owner.health_base
 	stamina_max = owner.stamina_base
 	mana_max = owner.mana_base

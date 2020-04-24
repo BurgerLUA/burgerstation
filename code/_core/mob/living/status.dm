@@ -37,7 +37,6 @@
 		return FALSE
 	S.on_effect_removed(src,status_type,status_effects[status_type]["magnitude"],status_effects[status_type]["duration"])
 	status_effects -= status_type
-	world.log << "REMOVING STATUS EFFECT: [status_type]"
 	if(!fuck_you)
 		handle_horizontal()
 
@@ -49,7 +48,6 @@
 /mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 
 	for(var/status in status_effects)
-		world.log << "Status: [status]; [status_effects[status]["duration"]]."
 		if(status_effects[status]["duration"] == -1)
 			continue
 		if(status_effects[status]["duration"] == 0)

@@ -74,10 +74,8 @@
 	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.has_status_effect(REST) && L.get_status_effect_duration(REST) == -1)
-			world.log << "COCK AND BALL"
 			L.add_status_effect(REST,100,2, force = TRUE) //
 		else
-			world.log << "TORTURE"
 			L.add_status_effect(REST,-1,-2, force = TRUE)
 
 	return ..()

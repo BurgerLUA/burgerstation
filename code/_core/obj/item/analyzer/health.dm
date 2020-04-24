@@ -4,6 +4,7 @@
 	desc_extended = "A handheld portable health analyzer that prints the target's total recieved damage in an arbitary measurement. It also broadcasts the results of the scan for those who can't bother to read."
 	icon = 'icons/obj/items/analyzers/health.dmi'
 	icon_state = "inventory"
+	value = 50
 
 /obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
 	return is_living(target)

@@ -2,6 +2,7 @@
 	name = "\improper H.E.K. hazard hardsuit"
 	icon = 'icons/obj/items/clothing/suit/hek.dmi'
 	rarity = RARITY_RARE
+	value = 300
 
 	defense_rating = list(
 		BLADE = ARMOR_C,

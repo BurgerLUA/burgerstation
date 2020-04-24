@@ -218,9 +218,6 @@
 
 	. = ..()
 
-	if(health)
-		health.armor_base = armor_base
-
 	if(client)
 		client.update_stats = TRUE
 		client.statpanel = "Skills"
@@ -251,6 +248,9 @@
 	set_intent(intent,TRUE)
 
 	. = ..()
+
+	if(health)
+		health.armor_base = armor_base
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))

@@ -49,7 +49,7 @@ obj/structure/smooth/table/dropped_on_by_object(var/atom/caller,var/atom/object)
 
 obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
-	if(is_living(O))
+	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in OldLoc.contents
 		if(T)
@@ -66,7 +66,7 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 	return ..()
 
 /obj/structure/smooth/table/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(old_loc && is_living(O)) //TODO, WHY NO OLD_LOC?
+	if(old_loc && is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in old_loc.contents
 		if(!T)
@@ -76,7 +76,7 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 	return ..()
 
 /obj/structure/smooth/table/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(is_living(O))
+	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in new_loc.contents
 		if(!T)

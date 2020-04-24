@@ -315,7 +315,6 @@ var/global/list/all_clients = list()
 	set name = "Make Announcement"
 
 	if(lowertext(ckey) != "burgerbb")
-		src << "You're not an admin!"
 		return FALSE
 
 	var/sender = input("Who should the sender be?","Message Sender") as text | null

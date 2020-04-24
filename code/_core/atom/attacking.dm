@@ -13,6 +13,12 @@
 	if(health)
 		health.update_health(damage_amount,attacker)
 
+	if(damage_amount > 0)
+		if(isturf(src))
+			new/obj/effect/temp/damage_number(src,null,damage_amount)
+		else if(isturf(src.loc))
+			new/obj/effect/temp/damage_number(src.loc,null,damage_amount)
+
 	return TRUE
 
 /atom/proc/change_victim(var/atom/attacker)

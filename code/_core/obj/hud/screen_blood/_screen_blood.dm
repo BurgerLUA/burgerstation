@@ -82,7 +82,7 @@
 
 			C.color = desired_color
 
-	else if(dir == SOUTHEAST)
+	else if(dir in DIRECTIONS_INTERCARDINAL)
 		var/max_stamina = owner.health.stamina_max
 		var/stamina = owner.health.stamina_current
 

@@ -40,22 +40,9 @@
 	. = ..()
 
 	if(. && owner)
-
 		var/damage_number = 3 - FLOOR((health_current/health_max)*3, 1)
-
-		//TODO: Replace with update_overlays call
-
 		if(old_damage_number != damage_number)
-
-			if(length(owner.overlays))
-				owner.overlays.Cut()
-
 			owner.update_sprite()
-
-			if(damage_number > 0)
-				var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
-				owner.add_overlay(I)
-
 			old_damage_number = damage_number
 
 	return .

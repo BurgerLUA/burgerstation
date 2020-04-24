@@ -106,6 +106,15 @@
 
 	return ..()
 
+/atom/Initialize()
+
+	if(health)
+		health = new health(src)
+		INITIALIZE(health)
+
+	return ..()
+
+
 /atom/New()
 
 	. = ..()
@@ -116,10 +125,6 @@
 
 	if(reagents && ispath(reagents))
 		reagents = new reagents(src)
-
-	if(health)
-		health = new health(src)
-		INITIALIZE(health)
 
 	set_dir(dir,TRUE)
 

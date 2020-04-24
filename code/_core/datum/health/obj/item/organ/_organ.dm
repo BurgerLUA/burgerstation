@@ -1,4 +1,4 @@
-/health/obj/item/organ/update_stats()
+/health/obj/item/organ/update_health_stats()
 
 	if(!is_organ(owner))
 		return ..()

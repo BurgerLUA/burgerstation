@@ -2,6 +2,7 @@
 	name = "engineering hardsuit"
 	icon = 'icons/obj/items/clothing/suit/engineering_rig.dmi'
 	rarity = RARITY_UNCOMMON
+	value = 200
 
 	defense_rating = list(
 		BLADE = ARMOR_C,

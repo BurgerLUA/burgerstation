@@ -30,7 +30,6 @@ obj/structure/smooth/update_icon()
 		var/turf/T = get_step(src,d)
 		if(!T)
 			continue
-
 		if(should_smooth_with(T))
 			calc_list[dir_to_text] = TRUE
 			continue
@@ -99,3 +98,4 @@ obj/structure/smooth/update_overlays()
 		add_overlay(I)
 
 	return .
+
