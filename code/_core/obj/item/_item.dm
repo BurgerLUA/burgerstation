@@ -254,6 +254,7 @@
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")
+	. += div("examine_description","Crafting ID: [crafting_id ? crafting_id : "none"]")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 

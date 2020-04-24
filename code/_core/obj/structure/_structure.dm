@@ -1,3 +1,8 @@
+#define FLAGS_PLACEMENT_NONE 0x0
+#define FLAGS_PLACEMENT_ALLOW_MULTIPLE 0x1 //Allow multiple of this structure to exist on this turf, always.
+#define FLAGS_PLACEMENT_DIRECTIONAL 0x2 //Allow multiple of this structure to exist on this turf as long as the directions are different.
+
+
 /obj/structure/
 	name = "structure"
 	desc = "Some kind of strange structure."
@@ -14,6 +19,8 @@
 	can_rotate = TRUE
 
 	var/light_sprite //The light sprite of the object, if any.
+
+	var/flags_placement = FLAGS_PLACEMENT_NONE
 
 /obj/structure/Initialize()
 

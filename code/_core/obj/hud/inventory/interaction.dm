@@ -72,15 +72,13 @@
 	if((caller.attack_flags & ATTACK_SELF || defer_self == defer_object) && defer_self.click_self(caller)) //Click on ourself if we're told to click on ourself.
 		return TRUE
 
-	if(get_dist(defer_self,defer_object) <= 1) //We're able to interact with it.
+	if(get_dist(defer_self,defer_object) <= 1) //We're able to interact with the item.
 		if(is_item(defer_self)) //We have an object in our hands.
-			if(is_inventory(object)) //We're clicking on an inventory
+			if(is_inventory(object)) //We're clicking on an inventory. It may or may not have an object.
 				var/obj/hud/inventory/object_as_inventory = object
 				if(object_as_inventory.can_hold_object(defer_self,FALSE)) //The inventory has space.
 					object_as_inventory.add_object(defer_self) //Add the object to the inventory
 					return TRUE
-			if(is_item(defer_object)) //We're clicking on another object with an item.
-				return ..()
 		else //We don't have an object in our hands.
 			if(is_item(defer_object)) //We're clicking on an item.
 				var/obj/item/I = defer_object

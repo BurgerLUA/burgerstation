@@ -145,38 +145,8 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 	health_base = 100
 
 /obj/structure/interactive/construction/girder/on_destruction(var/atom/caller,var/damage = FALSE)
-
-	var/desired_dir = get_dir(src,caller)
-	var/turf/desired_turf = get_step(src,desired_dir)
-
-	for(var/i=1,i<=2,i++)
-
-		var/obj/item/material/sheet/S = new(desired_turf)
-		S.material_id = material_id
-		S.color = color
-
-		var/offset_x = 0
-		var/offset_y = 0
-
-		if(desired_dir & NORTH)
-			offset_y -= TILE_SIZE
-
-		if(desired_dir & SOUTH)
-			offset_y += TILE_SIZE
-
-		if(desired_dir & EAST)
-			offset_x -= TILE_SIZE
-
-		if(desired_dir & WEST)
-			offset_x += TILE_SIZE
-
-		S.pixel_x = offset_x
-		S.pixel_y = offset_y
-
-		animate(S,pixel_x = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5), pixel_y = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),time=5)
-
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	qdel(src)
-
 	return TRUE
 
 
@@ -250,36 +220,6 @@ obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/
 	return ..()
 
 /obj/structure/interactive/construction/grille/on_destruction(var/atom/caller,var/damage = FALSE)
-
-	var/desired_dir = get_dir(src,caller)
-	var/turf/desired_turf = get_step(src,desired_dir)
-
-	for(var/i=1,i<=4,i++)
-
-		var/obj/item/material/rod/S = new(desired_turf)
-		S.material_id = material_id
-		S.color = color
-
-		var/offset_x = 0
-		var/offset_y = 0
-
-		if(desired_dir & NORTH)
-			offset_y -= TILE_SIZE
-
-		if(desired_dir & SOUTH)
-			offset_y += TILE_SIZE
-
-		if(desired_dir & EAST)
-			offset_x -= TILE_SIZE
-
-		if(desired_dir & WEST)
-			offset_x += TILE_SIZE
-
-		S.pixel_x = offset_x
-		S.pixel_y = offset_y
-
-		animate(S,pixel_x = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5), pixel_y = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),time=5)
-
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	qdel(src)
-
 	return TRUE

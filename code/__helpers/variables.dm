@@ -1,0 +1,1 @@
+#define SAFEVAR(obj,variable) ispath(obj) ? initial(obj.##variable) : obj.##variable

@@ -3,9 +3,11 @@
 	if(!is_advanced(usr) || !is_inventory(over_object))
 		return ..()
 
+	var/mob/living/advanced/A = usr
 	var/obj/item/I = get_top_object()
 
-	var/mob/living/advanced/A = usr
+	if(!I || !A)
+		return ..()
 
 	var/obj/hud/inventory/over_inventory = over_object
 	if(A.click_and_drag_icon.stored_object != I)
@@ -23,6 +25,16 @@
 			A.click_and_drag_icon.color = "#00FF00"
 		else
 			A.click_and_drag_icon.color = "#FF0000"
+
+	if(istype(over_inventory,/obj/hud/inventory/crafting/) && I.item_count_current > 1) //WE MINECRAFT NOW.
+		var/obj/item/existing_item = over_inventory.get_top_object()
+		if(!existing_item)
+			I.item_count_current--
+			var/obj/item/I2 = copy(I)
+			I2.item_count_current = 1
+			I2.update_sprite()
+			over_inventory.add_object(I2)
+
 
 	return ..()
 

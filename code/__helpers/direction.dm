@@ -17,3 +17,19 @@ proc/direction_to_pixel_offset(var/dir)
 	)
 
 	return sight_dirs["[sight_dir]"]
+
+
+proc/direction_to_text(var/dir)
+
+	. = list()
+
+	if(dir & NORTH)
+		. += "north"
+	if(dir & SOUTH)
+		. += "south"
+	if(dir &EAST)
+		. += "east"
+	if(dir & WEST)
+		. += "west"
+
+	return english_list(.,"none","-","-")

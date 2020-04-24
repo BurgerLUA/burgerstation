@@ -89,7 +89,7 @@
 	color = COLOR_COMMAND
 
 /turf/simulated/floor/tile/overlapping
-	real_icon = 'icons/turf/floor/tile_smooth_overlap.dmi'
+	real_icon = 'icons/turf/floor/tile_debug.dmi'
 	real_icon_state = "floor"
 
 	corner_icons = TRUE
@@ -102,7 +102,7 @@
 	if(!istype(T,/turf/simulated/floor/tile/))
 		return TRUE //This means it won't overlay with reinforced plates and whatnot, only tiles.
 
-	if(T.icon_state == "white_single")
+	if(T.color == color)
 		return TRUE
 
 	return ..()

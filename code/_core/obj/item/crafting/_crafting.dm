@@ -85,13 +85,15 @@
 			product_slot.add_held_object(I3,caller,FALSE,TRUE)
 
 			for(var/obj/item/I in recipe_check)
-				if(is_inventory(I.loc))
-					var/obj/hud/inventory/I2 = I.loc
-					I2.remove_object(I,get_turf(caller))
 				if(R.transfer_reagents && I.reagents && I3.reagents)
 					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current)
-
-				qdel(I)
+					qdel(I)
+				else
+					I.item_count_current--
+					if(I.item_count_current <= 0)
+						qdel(I)
+					else
+						I.update_sprite()
 
 			R.on_create(caller,src,I3)
 

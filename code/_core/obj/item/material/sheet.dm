@@ -12,11 +12,14 @@
 
 	crafting_id = "sheet"
 
-/obj/item/material/sheet/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/item/material/sheet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
+
 	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
-			var/obj/item/material/rod/R = new(get_turf(src))
+			var/obj/item/material/rod/R = new(get_turf(I))
 			R.material_id = material_id
 			R.item_count_current = 4
 			R.update_sprite()

@@ -1,10 +1,15 @@
-#define HORDE_STATE_PRELOAD "preload"
-#define HORDE_STATE_WAITING "waiting"
-#define HORDE_STATE_GEARING "gearing"
-#define HORDE_STATE_BRIEFING "briefing"
-#define HORDE_STATE_BUILDING "building"
-#define HORDE_STATE_FIGHTING "fighting"
+#define HORDE_STATE_PRELOAD "preload" //We're preloading everything.
+#define HORDE_STATE_WAITING "waiting" //Waiting for round to start.
+#define HORDE_STATE_GEARING "gearing" //Everyone gears up.
+#define HORDE_STATE_BOARDING "boarding" //Everyone boards the shuttles.
+#define HORDE_STATE_LAUNCHING "launching" //Everyone is launching now.
+#define HORDE_STATE_FIGHTING "fighting" //Fighting starts.
 #define HORDE_STATE_BREAK "break"
+
+#define HORDE_DELAY_WAIT 120
+#define HORDE_DELAY_GEARING 300
+#define HORDE_DELAY_BOARDING 120
+#define HORDE_DELAY_LAUNCHING 120
 
 SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
@@ -54,7 +59,7 @@ SUBSYSTEM_DEF(horde)
 			return TRUE
 		state = HORDE_STATE_GEARING
 		round_time = 0
-		round_time_next = 600
+		round_time_next = HORDE_DELAY_GEARING
 		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 12 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_GEARING)
@@ -62,23 +67,23 @@ SUBSYSTEM_DEF(horde)
 		if(time_to_display >= 0)
 			set_message("Loadout Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
-		state = HORDE_STATE_BRIEFING
+		state = HORDE_STATE_BOARDING
 		round_time = 0
-		round_time_next = 120
+		round_time_next = HORDE_DELAY_BOARDING
 		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
-	if(state == HORDE_STATE_BRIEFING)
+	if(state == HORDE_STATE_BOARDING)
 		var/time_to_display = round_time_next - round_time
 		if(time_to_display >= 0)
 			set_message("Boarding Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
-		state = HORDE_STATE_BUILDING
+		state = HORDE_STATE_LAUNCHING
 		round_time = 0
-		round_time_next = 120
+		round_time_next = HORDE_DELAY_LAUNCHING
 		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 		allow_shuttle_launch = TRUE
 
-	if(state == HORDE_STATE_BUILDING)
+	if(state == HORDE_STATE_LAUNCHING)
 		var/time_to_display = round_time_next - round_time
 		if(time_to_display >= 0)
 			set_message("Launch Period: [get_clock_time(time_to_display)]",TRUE)
@@ -158,5 +163,5 @@ SUBSYSTEM_DEF(horde)
 /subsystem/horde/Initialize()
 	state = HORDE_STATE_WAITING
 	round_time = 0
-	round_time_next = 120
+	round_time_next = HORDE_DELAY_WAIT
 	return TRUE

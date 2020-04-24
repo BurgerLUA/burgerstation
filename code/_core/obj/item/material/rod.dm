@@ -16,30 +16,23 @@
 
 	INTERACT_CHECK
 
-	if(is_floor(object))
-		var/turf/simulated/floor/T = object
-		var/area/A = T.loc
-		if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
-			caller.to_chat("You cannot build here!")
+	if(isturf(object))
+		var/turf/T = object
+
+		if(item_count_current < 2)
+			caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))
 			return TRUE
 
-		var/found_bad = FALSE
-		for(var/obj/structure/S in T.contents)
-			found_bad = TRUE
-			break
-
-		if(found_bad)
-			caller.to_chat("There is something already built here!")
+		if(!T.can_construct_on(caller,/obj/structure/interactive/construction/frame/))
 			return TRUE
 
-		if(item_count_current >= 2)
-			var/obj/structure/interactive/construction/frame/F = new(T)
-			F.material_id = material_id
-			F.color = color
-			caller.to_chat("You place \the [F.name].")
-			item_count_current -= 2
-			update_sprite()
-			return TRUE
+		var/obj/structure/interactive/construction/frame/F = new(T)
+		F.material_id = material_id
+		F.color = color
+		caller.to_chat("You place \the [F.name].")
+		item_count_current -= 2
+		update_sprite()
+		return TRUE
 
 	return ..()
 

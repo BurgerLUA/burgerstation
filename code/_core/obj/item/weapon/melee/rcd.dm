@@ -55,9 +55,7 @@
 			caller.to_chat("ERROR: Invalid construction disk!")
 			return TRUE
 
-		var/atom/occupied = T.is_occupied()
-		if(occupied)
-			caller.to_chat("You cannot build anything here! There is a [occupied.name] in the way!")
+		if(ispath(data["object"],/turf/) ? !T.can_construct_on(caller,/obj/structure/interactive/construction/girder/) : !T.can_construct_on(caller,data["object"]))
 			return TRUE
 
 		var/matter_cost = data["cost"]

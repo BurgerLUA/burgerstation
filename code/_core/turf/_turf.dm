@@ -98,7 +98,7 @@
 	..()
 
 /turf/can_be_attacked(var/atom/attacker)
-	return FALSE
+	return health && !ispath(health)
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 

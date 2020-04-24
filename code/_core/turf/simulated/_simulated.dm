@@ -45,7 +45,43 @@ var/global/saved_icons = 0
 		if(is_structure(A))
 			return A
 
+	return null
+
+
+/turf/proc/can_construct_on(var/mob/caller)
+	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
+
+/turf/simulated/floor/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
+
+	if(get_dist(caller,src) > 1)
+		caller.to_chat(span("warning","You're too far away!"))
+		return FALSE
+
+	var/area/A = loc
+	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+		caller.to_chat(span("warning","You cannot deploy im this area!"))
+		return FALSE
+
+	for(var/obj/structure/S in src.contents)
+		if(S.under_tile != SAFEVAR(structure_to_make,under_tile))
+			continue
+		if(istype(S,structure_to_make))
+			var/flags_placement = SAFEVAR(structure_to_make,flags_placement)
+			if(flags_placement & FLAGS_PLACEMENT_ALLOW_MULTIPLE)
+				continue
+			if(flags_placement & FLAGS_PLACEMENT_DIRECTIONAL)
+				if(!(S.dir & caller.dir))
+					continue
+		caller.to_chat(span("warning","There is a structure ([S.name]) here already!"))
+		return FALSE
+
+	return TRUE
+
+/turf/simulated/get_examine_list(var/mob/caller)
+	. = ..()
+	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
+	return .
 
 /turf/simulated/New(var/atom/desired_loc)
 
@@ -58,11 +94,10 @@ var/global/saved_icons = 0
 
 	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
 		if(!destruction_turf)
-			if(desired_loc && desired_loc.type != src.type && is_floor(desired_loc))
-				destruction_turf = desired_loc.type
+			if(loc && loc.type != src.type && is_floor(loc))
+				destruction_turf = loc.type
 			else if(A.destruction_turf != src.type)
 				destruction_turf = A.destruction_turf
-
 		if(destruction_turf)
 			health = /health/turf/
 

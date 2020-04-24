@@ -17,20 +17,10 @@
 	var/obj/structure/interactive/construction/girder/G = new(src)
 	G.material_id = material_id
 	G.color = color
+	INITIALIZE(G)
+	SPAWN(G)
 
-	var/desired_dir = get_dir(src,caller)
-	var/list/offset = direction_to_pixel_offset(desired_dir)
-	var/turf/desired_turf = get_step(src,desired_dir)
-
-	for(var/i=1,i<=4,i++)
-		var/obj/item/material/sheet/S = new(desired_turf)
-		S.material_id = material_id
-		S.color = color
-
-		S.pixel_x = offset[1]*-TILE_SIZE
-		S.pixel_y = offset[2]*-TILE_SIZE
-
-		animate(S,pixel_x = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5), pixel_y = rand(-TILE_SIZE*0.5,TILE_SIZE*0.5),time=5)
+	create_destruction(src,list(/obj/item/material/sheet/ = 4),material_id)
 
 	return .
 

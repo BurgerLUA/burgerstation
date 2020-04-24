@@ -22,7 +22,7 @@
 /obj/item/proc/transfer_stacks_to(var/obj/item/I)
 	var/stacks_to_take = clamp(I.item_count_max - I.item_count_current,0,item_count_current)
 	if(!stacks_to_take) //We're full!
-		return TRUE
+		return FALSE
 	item_count_current -= stacks_to_take
 	I.item_count_current += stacks_to_take
 	if(item_count_current <= 0)
@@ -58,8 +58,15 @@
 	if(I.can_transfer_stacks_to(src))
 		var/old_loc_name = I.loc.name
 		var/stacks_transfered = I.transfer_stacks_to(src)
-		caller.to_chat("You transfer [stacks_transfered] [src.name] from \the [old_loc_name] to \the [src.loc.name].")
-		return TRUE
+		if(stacks_transfered)
+			caller.to_chat("You transfer [stacks_transfered] [src.name] from \the [old_loc_name] to \the [src.loc.name].")
+			return TRUE
+		else
+			caller.to_chat("\The [I.name] is full!")
+			return TRUE
+
+
+	return ..()
 
 /obj/item/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

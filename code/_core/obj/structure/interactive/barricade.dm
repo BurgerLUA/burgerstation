@@ -1,4 +1,4 @@
-obj/structure/interactive/barricade
+/obj/structure/interactive/barricade
 	name = "metal barricade"
 	desc_extended = "Has a 60% chance to block most types of projectiles when a bullet passes it from the outside."
 	icon = 'icons/obj/structure/barricade.dmi'
@@ -12,24 +12,30 @@ obj/structure/interactive/barricade
 
 	bullet_block_chance = 80
 
-obj/structure/interactive/barricade/New(var/desired_loc)
+	health = /health/construction/
+
+	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
+
+	health_base = 300
+
+obj/structure/interactive/barricade/Initialize()
 	. = ..()
 	update_sprite()
 	return .
 
-
-obj/structure/interactive/barricade/update_sprite()
+/obj/structure/interactive/barricade/update_sprite()
 
 	. = ..()
 
 	var/desired_dense = 0x0
 
 	if(dir == NORTH)
-		pixel_y = -10
+		pixel_x = 0
+		pixel_y = 0
 		desired_dense |= NORTH
 	else if(dir == EAST)
 		pixel_x = 0
-		pixel_y = -2
+		pixel_y = 0
 		desired_dense |= EAST
 	else if(dir == SOUTH)
 		pixel_x = 0
@@ -37,14 +43,14 @@ obj/structure/interactive/barricade/update_sprite()
 		desired_dense |= SOUTH
 	else if(dir == WEST)
 		pixel_x = 0
-		pixel_y = -2
+		pixel_y = 0
 		desired_dense |= WEST
 
 	update_collisions(c_dir = desired_dense)
 
 	return .
 
-obj/structure/interactive/barricade/update_overlays()
+/obj/structure/interactive/barricade/update_overlays()
 
 	. = ..()
 

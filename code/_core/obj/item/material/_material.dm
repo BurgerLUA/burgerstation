@@ -20,7 +20,7 @@
 	return .
 
 /obj/item/material/get_base_value()
-	var/material/M = all_materials[material_id]
+	var/material/M = SSmaterials.all_materials[material_id]
 	return ..() * M.value_per_unit
 
 

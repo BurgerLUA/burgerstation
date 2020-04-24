@@ -24,15 +24,18 @@ SUBSYSTEM_DEF(progressbars)
 			continue
 
 		if(progress_list["condition_proc"])
-			var/failed = FALSE
-			if(progress_list["condition_src"])
-				if(!call(progress_list["condition_src"],progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
-					failed = TRUE
-			else
-				if(!call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
-					failed = TRUE
+			var/pass = FALSE
+			try
+				if(progress_list["condition_src"])
+					if(call(progress_list["condition_src"],progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
+						pass = TRUE
+				else
+					if(call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
+						pass = TRUE
+			catch(var/exception/e)
+				log_error("PROGRESS BAR ERROR: [e] on [e.file]:[e.line]!")
 
-			if(failed)
+			if(!pass)
 				animate(P,alpha=0,time=5)
 				queue_delete(P,10)
 				all_progress_bars -= A
