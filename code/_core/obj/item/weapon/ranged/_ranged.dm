@@ -236,8 +236,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
 	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
 
-	var/final_pixel_target_x = rand(-8,8)
-	var/final_pixel_target_y = rand(-8,8)
+	var/final_pixel_target_x = rand(-8,8) //Fallback.
+	var/final_pixel_target_y = rand(-8,8) //Fallback.
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -272,13 +272,42 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag)
 
 
+
+
 /atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
 
+	//desired_x and desired_y is in pixels.
+
+	//This is where the caller is in the world. Pixel coords.
 	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
 	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
 
+	//Distance. In pixels.
 	var/diffx = desired_x - caller_fake_x
 	var/diffy = desired_y - caller_fake_y
+
+	var/new_angle = ATAN2(diffx,diffy)
+	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
+
+	return list(cos(new_angle),sin(new_angle))
+
+
+
+
+/*
+/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
+
+	//desired_x and desired_y is in pixels.
+
+	//This is where the caller is in the world.
+	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
+	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
+
+	//Distance.
+	var/diffx = desired_x - caller_fake_x
+	var/diffy = desired_y - caller_fake_y
+
+
 	var/distance = sqrt(diffx ** 2 + diffy ** 2)
 	var/inaccuracy_x = RAND_PRECISE(-distance*accuracy,distance*accuracy)
 	var/inaccuracy_y = RAND_PRECISE(-distance*accuracy,distance*accuracy)
@@ -291,7 +320,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(highest > 0)
 		var/normx = diffx/highest
 		var/normy = diffy/highest
-
 		return list(normx,normy)
 
 	return list(0,0)
+*/

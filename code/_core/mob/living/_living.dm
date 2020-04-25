@@ -119,6 +119,10 @@
 
 	var/list/status_effects = list()
 
+	acceleration_mod = 0.5
+	acceleration = 25
+	deceleration = 1
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

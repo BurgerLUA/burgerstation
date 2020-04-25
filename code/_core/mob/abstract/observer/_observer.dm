@@ -21,6 +21,10 @@
 
 	damage_type = null //Just in case.
 
+	acceleration_mod = 1.5
+	acceleration = 10
+	deceleration = 5
+
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE

@@ -33,6 +33,11 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
+	if(move_delay <= 0 && ai)
+		movement_flags = MOVEMENT_NORMAL
+		move_dir = 0x0
+		ai.handle_movement()
+
 	if(dead)
 		return FALSE
 
