@@ -245,6 +245,15 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
 
+	if(length(params) && params["screen-loc"])
+		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])
+		target_fake_x = caller.x*TILE_SIZE + screen_loc_parsed[1] - (VIEW_RANGE * TILE_SIZE)
+		target_fake_y = caller.y*TILE_SIZE + screen_loc_parsed[2] - (VIEW_RANGE * TILE_SIZE)
+		if(ismob(caller))
+			var/mob/M = caller
+			target_fake_x += M.client.pixel_x
+			target_fake_y += M.client.pixel_y
+
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
 		var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,i,accuracy_loss)
@@ -279,8 +288,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	//desired_x and desired_y is in pixels.
 
 	//This is where the caller is in the world. Pixel coords.
-	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
-	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
+	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x + 16
+	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y + 16
 
 	//Distance. In pixels.
 	var/diffx = desired_x - caller_fake_x
