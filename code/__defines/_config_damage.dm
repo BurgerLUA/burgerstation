@@ -8,22 +8,22 @@
 #define HEALING_X 50
 
 #define DAMAGE_F 0
-#define DAMAGE_E 4
-#define DAMAGE_D 8
-#define DAMAGE_C 12
-#define DAMAGE_B 20
-#define DAMAGE_A 25
-#define DAMAGE_S 30
-#define DAMAGE_X 200
+#define DAMAGE_E (3*1 + 1)
+#define DAMAGE_D (3*2 + 2)
+#define DAMAGE_C (3*3 + 3)
+#define DAMAGE_B (3*4 + 4)
+#define DAMAGE_A (3*5 + 5)
+#define DAMAGE_S (3*6 + 6)
+#define DAMAGE_X (3*7 + 7)
 
 #define ARMOR_F 0
-#define ARMOR_E 10
-#define ARMOR_D 25
-#define ARMOR_C 50
-#define ARMOR_B 75
-#define ARMOR_A 90
-#define ARMOR_S 100
-#define ARMOR_X 200
+#define ARMOR_E 5
+#define ARMOR_D 10
+#define ARMOR_C 25
+#define ARMOR_B 50
+#define ARMOR_A 75
+#define ARMOR_S 90
+#define ARMOR_X 100
 
 #define CLASS_F 0
 #define CLASS_E 0.1

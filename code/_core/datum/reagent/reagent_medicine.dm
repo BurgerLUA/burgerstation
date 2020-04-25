@@ -295,5 +295,15 @@
 			L.health.set_oxy_loss(100 - strength)
 			L.health.update_health()
 
-
 	return .
+
+/reagent/medicine/adrenaline/epinephrine/on_add(var/reagent_container/container,var/amount_added=0)
+
+	. = ..()
+
+	if(amount_added >= 15 && is_living(container.owner))
+		var/mob/living/L = container.owner
+		if(L.dead && !L.check_death())
+			L.revive()
+			L.visible_message("\The [L.name] jolts to life!")
+			L.add_status_effect(ADRENALINE,100,100)
