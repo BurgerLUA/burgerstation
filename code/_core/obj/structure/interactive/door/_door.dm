@@ -44,6 +44,8 @@ obj/structure/interactive/door/New(var/desired_loc)
 		S.name = "[name] [S.name]"
 		S.frequency_current = radio_frequency
 		S.signal_current = radio_signal
+		INITIALIZE(S)
+		SPAWN(S)
 		door_state = DOOR_STATE_CLOSED
 		locked = TRUE
 

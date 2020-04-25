@@ -37,6 +37,7 @@
 
 	var/obj/item/container/food/dynamic/cheese/C = new(T)
 	C.icon_state = icon_state
+	INITIALIZE(C)
 	for(var/reagent_id in cheese_mix)
 		var/reagent_volume = (cheese_mix[reagent_id]/CHEESE_PROCESS_TIME)*total_non_enzyme_volume
 		C.reagents.add_reagent(reagent_id,reagent_volume,original_temperature,FALSE,FALSE)

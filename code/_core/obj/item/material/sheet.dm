@@ -22,7 +22,8 @@
 			var/obj/item/material/rod/R = new(get_turf(src))
 			R.material_id = material_id
 			R.item_count_current = 4
-			R.update_sprite()
+			INITIALIZE(R)
+			SPAWN(R)
 			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
 			add_item_count(-1)
 			R.Move(get_turf(I))

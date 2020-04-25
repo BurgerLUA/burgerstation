@@ -21,7 +21,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		if(L.spawn_blood && L.reagents && L.spawn_blood == "blood")
-			L.reagents.add_reagent("blood",.)
+			L.reagents.add_reagent("blood",.*2)
 
 	return .
 

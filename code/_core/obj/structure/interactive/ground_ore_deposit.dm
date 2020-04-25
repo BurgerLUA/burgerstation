@@ -22,7 +22,7 @@
 				var/obj/structure/interactive/ground_ore_deposit/GOD = new(T)
 				GOD.material_id = material_id
 				GOD.ore_score = ore_score * RAND_PRECISE(0.1,0.75)
-				//INITIALIZE(GOD)
+				//INITIALIZE(GOD) TODO: FIX, MAKE NEW SUBSYSTEM
 
 	update_sprite()
 
@@ -31,7 +31,8 @@
 /obj/structure/interactive/ground_ore_deposit/proc/mine()
 	var/obj/item/material/ore/O = new(src.loc)
 	O.material_id = src.material_id
-	O.on_spawn()
+	INITIALIZE(O)
+	SPAWN(O)
 	src.ore_score--
 	update_sprite()
 	for(var/obj/structure/interactive/ore_box/OB in range(1,src))

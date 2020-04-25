@@ -36,6 +36,7 @@
 		for(var/i=1,i<=pieces,i++)
 			var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
 			C.icon_state = "wheel"
+			INITIALIZE(C)
 			reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
 			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 
@@ -58,6 +59,7 @@
 			for(var/i=1,i<=pieces,i++)
 				var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
 				C.icon_state = "block"
+				INITIALIZE(C)
 				reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
 				animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 
@@ -75,6 +77,7 @@
 		else
 			var/obj/item/container/food/dynamic/cheese/C = new(get_turf(src))
 			C.icon_state = "block"
+			INITIALIZE(C)
 			reagents.transfer_reagents_to(C.reagents,1)
 			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 			if(is_living(attacker))

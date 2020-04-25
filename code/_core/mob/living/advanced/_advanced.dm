@@ -16,8 +16,6 @@
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
 	var/list/obj/item/held_objects
 
-	var/obj/hud/click_and_drag/click_and_drag_icon
-
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand
 
@@ -89,9 +87,6 @@
 	overlays_assoc.Cut()
 	tracked_hidden_limbs.Cut()
 	tracked_hidden_limb_clothing.Cut()
-
-	qdel(click_and_drag_icon)
-	click_and_drag_icon = null
 
 	qdel(chat_overlay)
 	chat_overlay = null
@@ -233,12 +228,11 @@
 
 	. = ..()
 
-	click_and_drag_icon	= new(src)
-
 	chat_overlay = new(src.loc)
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
 	chat_overlay.alpha = 0
+	//This is initialized somewhere else.
 
 	return .
 

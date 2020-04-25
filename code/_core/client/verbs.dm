@@ -20,6 +20,7 @@
 	verbs += /client/verb/set_volume_ambient
 	verbs += /client/verb/set_volume_music
 	verbs += /client/verb/set_volume_footsteps
+	verbs += /client/verb/ghost
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test
 	if(ckey == "burgerbb")

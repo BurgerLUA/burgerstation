@@ -177,9 +177,9 @@
 	var/added = FALSE
 
 	if(object != src)
-		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,enable_messages,bypass)
+		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,FALSE,bypass)
 		if(found_inventory)
-			found_inventory.add_object(object,FALSE,bypass)
+			found_inventory.add_object(object,enable_messages,bypass)
 			added = TRUE
 
 	if(enable_messages && caller)
@@ -229,7 +229,7 @@
 			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
 			D.inventory_temperature_mod_mod = container_temperature_mod
-
+		//Doesn't need to be initialized as it's done later.
 		inventories += D
 
 	return ..()

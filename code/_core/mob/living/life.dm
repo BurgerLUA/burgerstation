@@ -58,7 +58,7 @@
 
 		var/obj/item/currency/C = new(src.loc)
 		C.value = 1 + FLOOR(health.health_max/10, 1)
-		C.update_sprite()
+		INITIALIZE(C)
 		step_rand(C)
 		return TRUE
 

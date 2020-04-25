@@ -6,11 +6,6 @@
 #define HORDE_STATE_FIGHTING "fighting" //Fighting starts.
 #define HORDE_STATE_BREAK "break"
 
-#define HORDE_DELAY_WAIT 120
-#define HORDE_DELAY_GEARING 300
-#define HORDE_DELAY_BOARDING 120
-#define HORDE_DELAY_LAUNCHING 120
-
 SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
 	desc = "Handles hordes and whatnot."

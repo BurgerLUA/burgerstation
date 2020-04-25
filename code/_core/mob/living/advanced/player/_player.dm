@@ -67,6 +67,14 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/geared_up
 
+	var/obj/hud/click_and_drag/click_and_drag_icon
+
+/mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
+	. = ..()
+	click_and_drag_icon	= new(src)
+	INITIALIZE(click_and_drag_icon)
+	return .
+
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 
 	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
@@ -118,6 +126,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	active_device = null
 	active_structure = null
 	active_paper = null
+
+	qdel(click_and_drag_icon)
+	click_and_drag_icon = null
 
 	return ..()
 

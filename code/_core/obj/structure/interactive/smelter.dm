@@ -32,7 +32,8 @@
 	var/obj/item/material/ingot/S = new(src.loc)
 	S.item_count_current = I.item_count_current
 	S.material_id = I.material_id
-	S.update_sprite()
+	INITIALIZE(S)
+	SPAWN(S)
 	qdel(I)
 
 	return

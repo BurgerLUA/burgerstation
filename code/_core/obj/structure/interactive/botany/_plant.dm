@@ -97,12 +97,13 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			P.potency = potency
 			P.yield = yield
 			P.growth_speed = growth_speed
+			INITIALIZE(P)
+			SPAWN(P)
 			for(var/r_id in associated_plant.reagents)
 				var/r_value = associated_plant.reagents[r_id] * potency
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
 			P.reagents.update_container(FALSE)
 			P.original_volume = P.reagents.volume_current
-			P.update_sprite()
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 
 		caller.to_chat(span("notice","You harvest [yield] [associated_plant.name]\s from \the [src.name]."))

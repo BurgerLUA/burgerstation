@@ -22,7 +22,7 @@
 		status_effects[status_type]["magnitude"] = max(status_effects[status_type]["magnitude"],magnitude)
 
 	if(.)
-		S.on_effect_added(src,source,status_type,magnitude,duration,stealthy)
+		S.on_effect_added(src,source,magnitude,duration,stealthy)
 		handle_horizontal()
 
 

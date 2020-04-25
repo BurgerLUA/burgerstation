@@ -13,8 +13,9 @@
 
 	if(disposals_countdown <= 0)
 		var/obj/disposals_container/disposals_container = new(src)
-		INITIALIZE(disposals_container)
 		disposals_container.sorting_tag = "disposals"
+		INITIALIZE(disposals_container)
+		SPAWN(disposals_container)
 		for(var/atom/movable/M in contents)
 			M.force_move(disposals_container)
 		stop_thinking(src)

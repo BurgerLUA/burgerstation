@@ -37,6 +37,8 @@ var/global/cell_unit_number = 0
 				P.name = "crew cabin #[unit_number]"
 				var/obj/item/device/keypad/K = new(P)
 				K.code = door_code
+				INITIALIZE(K)
+				SPAWN(K)
 
 /obj/marker/map/cell/north
 	map_file = 'maps/horde/prefabs/cabin_north.dmm'

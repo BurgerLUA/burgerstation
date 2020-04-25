@@ -29,6 +29,8 @@
 		var/obj/structure/interactive/construction/frame/F = new(T)
 		F.material_id = material_id
 		F.color = color
+		INITIALIZE(F)
+		SPAWN(F)
 		caller.to_chat("You place \the [F.name].")
 		add_item_count(-2)
 		return TRUE

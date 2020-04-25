@@ -78,12 +78,6 @@
 			var/obj/item/I = defer_object
 			src.add_to_inventory(caller,I) //Add that item in our hands to the container's invetory.
 			return TRUE
-		/*
-		if(is_inventory(src.loc) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) )
-			INTERACT_CHECK
-			click_self(caller) //Open the inventory if we're holding it and we clicked on it with an empty hand.
-			return TRUE
-		*/
 
 	return 	..()
 

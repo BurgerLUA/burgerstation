@@ -190,6 +190,8 @@ var/global/list/all_clients = list()
 	var/list/aug = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
+	if(!screen_loc)
+		return FALSE
 	mouse_down_x = screen_loc[1]
 	mouse_down_y = screen_loc[2]
 
@@ -244,8 +246,8 @@ var/global/list/all_clients = list()
 		mob.on_right_up(object,location,control,aug)
 		mob.attack_flags &= ~ATTACK_HELD_RIGHT
 
-	if(is_advanced(mob))
-		var/mob/living/advanced/A = mob
+	if(is_player(mob))
+		var/mob/living/advanced/player/A = mob
 		if(A.click_and_drag_icon)
 			var/obj/hud/click_and_drag/click_and_drag_icon = A.click_and_drag_icon
 			click_and_drag_icon.stored_object = null
@@ -262,7 +264,7 @@ var/global/list/all_clients = list()
 	var/list/aug = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
-	if(!length(screen_loc))
+	if(!screen_loc)
 		return FALSE
 	if(abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.5)
 		return FALSE
@@ -286,6 +288,8 @@ var/global/list/all_clients = list()
 	var/list/aug = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(aug["screen-loc"])
+	if(!screen_loc)
+		return FALSE
 	if(abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) <= 8) //Only store the new params if the movement has changed more than 8 units.
 		return FALSE
 

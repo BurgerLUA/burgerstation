@@ -76,8 +76,11 @@
 		if(is_item(defer_self)) //We have an object in our hands.
 			if(is_inventory(object)) //We're clicking on an inventory. It may or may not have an object.
 				var/obj/hud/inventory/object_as_inventory = object
+				if(object_as_inventory.can_wear_object(defer_self,FALSE))
+					object_as_inventory.add_worn_object(defer_self) //Add the object to the inventory
+					return TRUE
 				if(object_as_inventory.can_hold_object(defer_self,FALSE)) //The inventory has space.
-					object_as_inventory.add_object(defer_self) //Add the object to the inventory
+					object_as_inventory.add_held_object(defer_self) //Add the object to the inventory
 					return TRUE
 		else //We don't have an object in our hands.
 			if(is_item(defer_object)) //We're clicking on an item.

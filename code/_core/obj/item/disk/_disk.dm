@@ -40,6 +40,12 @@
 	writing_color = "#004A7F"
 	metal_color = "#BBC5C7"
 
+/obj/item/disk/random/New()
+	frame_color = random_color()
+	writing_color = random_color()
+	metal_color = random_color()
+	return ..()
+
 /obj/item/disk/rcd/metal_wall
 	name = "rcd data disk (steel wall)"
 	data = list(
@@ -49,9 +55,12 @@
 		"cost" = 1000
 	)
 
-/obj/item/disk/random/New()
-	frame_color = random_color()
-	writing_color = random_color()
-	metal_color = random_color()
-	return ..()
+/obj/item/disk/rcd/glass_window
+	name = "rcd data disk (glass window)"
+	data = list(
+		"name" = "glass_window.spawner",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/marker/spawning/window/rcd,
+		"cost" = 1000
+	)
 

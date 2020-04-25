@@ -12,5 +12,4 @@ var/global/regex/ScreenLocRegex = regex("(\\d+):(\\d+),(\\d+):(\\d+)")
 
 		return returning
 
-
-	return FALSE
+	return null

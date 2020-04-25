@@ -16,6 +16,7 @@
 
 
 /obj/marker/spawning/window/
+	name = "full window"
 	icon_state = "window_grille"
 
 /obj/marker/spawning/window/proc/setup_airlock()
@@ -25,6 +26,7 @@
 		return FALSE
 
 	var/obj/structure/interactive/door/alarm/D = new(src.loc)
+	//SPAWNING AND INITIALIZE HANDLED AT ROUND START.
 
 	//This forces it to be one of 4 directions.
 	if(touching_space & NORTH)
@@ -43,6 +45,15 @@
 	new/obj/structure/interactive/construction/grille(T)
 	new/obj/structure/smooth/window(T)
 	setup_airlock()
+
+/obj/marker/spawning/window/rcd/do_spawn(var/turf/T)
+	var/obj/structure/interactive/construction/grille/G = new(T)
+	var/obj/structure/smooth/window/W = new(T)
+	INITIALIZE(G)
+	INITIALIZE(W)
+	SPAWN(G)
+	SPAWN(W)
+	queue_update_smooth_edges(W)
 
 /obj/marker/spawning/window/reinforced/
 	icon_state = "window_grille_reinforced"

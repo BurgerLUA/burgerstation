@@ -6,7 +6,8 @@
 
 	metabolism_stomach = NUT_AMOUNT
 
-	var/nutrition_amount = 1 NUT_FACTOR //How much health to restore per tick.
+	var/nutrition_amount = 0 NUT_FACTOR
+	var/hydration_amount = 0 NUT_FACTOR
 	//1 NUT FACTOR means it restores 1 per second.
 
 	var/keywords = "none"
@@ -19,10 +20,11 @@
 
 	if(owner && owner.health)
 		owner.health.adjust_loss_smart(brute=-.*nutrition_amount,burn=-.*nutrition_amount,tox=-.*nutrition_amount,oxy=-.*nutrition_amount)
-		if(is_living(owner))
-			var/mob/living/L = owner
-			L.add_nutrition(nutrition_amount)
 
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.add_nutrition(nutrition_amount)
+		L.add_hydration(hydration_amount)
 
 	return .
 

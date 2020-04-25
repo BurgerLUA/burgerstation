@@ -16,7 +16,7 @@
 
 	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
 
-	health_base = 300
+	health_base = 100
 
 obj/structure/interactive/barricade/Initialize()
 	. = ..()
@@ -65,3 +65,9 @@ obj/structure/interactive/barricade/Initialize()
 	add_overlay(above)
 
 	return .
+
+
+/obj/structure/interactive/barricade/on_destruction(var/atom/caller,var/damage = FALSE)
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),"steel")
+	qdel(src)
+	return TRUE

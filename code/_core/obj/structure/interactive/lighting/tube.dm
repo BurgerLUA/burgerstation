@@ -75,14 +75,12 @@
 	I.Blend(color_frame,ICON_MULTIPLY)
 
 	if(desired_light_color)
-		world.log << "Light color: [desired_light_color]."
 		var/icon/F = new /icon(icon,"tube_bulb")
 		F.Blend(desired_light_color,ICON_MULTIPLY)
 		I.Blend(F,ICON_OVERLAY)
 		set_light(on ? desired_light_range : 0, on ? desired_light_power : 0, desired_light_color)
 	else
 		set_light(FALSE)
-		world.log << "Setting light to FALSE!"
 
 	icon = I
 
