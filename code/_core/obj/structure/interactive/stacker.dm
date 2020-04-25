@@ -26,7 +26,7 @@
 
 	for(var/obj/item/E in contents) //E for existing
 		if(I.can_transfer_stacks_to(E))
-			I.transfer_stacks_to(E)
+			I.transfer_item_count_to(E)
 			if(E.item_count_current == E.item_count_max)
 				E.force_move(src.loc)
 			break

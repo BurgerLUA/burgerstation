@@ -96,7 +96,7 @@
 	desired_disk.force_move(src)
 	rcd_disk = desired_disk
 	if(caller && !silent)
-		caller.to_chat("You insert \the [rcd_disk.name] into \the [src.name].")
+		caller.to_chat("You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD.")
 
 	return old_disk
 

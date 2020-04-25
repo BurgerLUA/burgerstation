@@ -33,13 +33,19 @@
 	if(istype(object,/obj/item/magazine/))
 		var/obj/item/magazine/M = object
 		if(!M.ammo)
-			caller.to_chat("That magazine isn't registered in our system!")
+			caller.to_chat(span("warning","That magazine isn't registered in our system!"))
 			return TRUE
 
-		for(var/i=1, i <= M.bullet_count_max - length(M.stored_bullets), i++)
-			M.stored_bullets += new M.ammo(M)
-			M.update_sprite()
+		var/bullets_to_add = M.bullet_count_max - M.get_ammo_count()
+		if(bullets_to_add <= 0)
+			caller.to_chat(span("warning","\The [M.name] is already full!"))
+			return TRUE
+		var/obj/item/bullet_cartridge/B = new M.ammo(src.loc)
+		INITIALIZE(B)
+		B.add_item_count(bullets_to_add - B.item_count_current,TRUE)
+		B.transfer_src_to_magazine(caller,M,location,control,params)
+		caller.to_chat(span("notice","\The [M.name] has been restocked with [bullets_to_add] bullets."))
 
-		caller.to_chat("\The [M.name] has been restocked.")
+		return TRUE
 
 	return ..()

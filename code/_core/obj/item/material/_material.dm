@@ -36,5 +36,5 @@
 	if(M.item_count_max <= M.item_count_current)
 		return ..()
 
-	src.transfer_stacks_to(M)
+	src.transfer_item_count_to(M)
 	return TRUE

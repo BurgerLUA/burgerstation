@@ -124,16 +124,9 @@
 		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
-	var/transfered_bullets = transfer_target.add_item_count(bullets_to_add)
-	transfer_target.add_item_count(-item_count_current)
-
+	src.transfer_item_count_to(transfer_target,bullets_to_add)
 	if(talk)
-		caller.to_chat(span("notice","You insert [transfered_bullets] bullet\s into \the [transfer_target]."))
-	transfer_target.update_sprite()
-	if(item_count_current <= 0)
-		qdel(src)
-	else
-		update_sprite()
+		caller.to_chat(span("notice","You add [bullets_to_add] bullet\s into \the [transfer_target] pile."))
 
 	return TRUE
 
@@ -143,7 +136,8 @@
 		return FALSE
 
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
-	bullets_to_add = add_item_count(bullets_to_add)
+	add_item_count(-bullets_to_add,TRUE)
+	world.log << "Item count left: [item_count_current]."
 	for(var/i=1,i<=bullets_to_add,i++)
 		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
 		B.is_spent = is_spent
@@ -161,7 +155,6 @@
 		B.is_spent = is_spent
 		W.chambered_bullet += B
 		add_item_count(-1)
-		W.update_sprite()
 		return TRUE
 
 	if(W.can_load_stored(caller,src))
@@ -174,9 +167,7 @@
 				break
 		if(valid_slot)
 			W.stored_bullets[valid_slot] = B
-			item_count_current -= 1
 			add_item_count(-1)
-			W.update_sprite()
 			return TRUE
 
 	caller.to_chat("You can't load \the [src.name] into \the [W.name]!")

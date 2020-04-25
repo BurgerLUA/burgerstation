@@ -28,8 +28,8 @@
 		I2.remove_object(I,get_turf(I2))
 		I.force_move(src)
 		caller.visible_message(
-			span("notice","\The [caller] name inserts \the [I.name] into \the [src.name]."),
-			span("notice","You inserts \the [I.name] into \the [src.name]."),
+			span("notice","\The [caller] name slides in \the [I.name] into \the [src.name]."),
+			span("notice","You slide in \the [I.name] into \the [src.name]."),
 		)
 		return TRUE
 	else if(is_inventory(object))

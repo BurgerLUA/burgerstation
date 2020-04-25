@@ -11,11 +11,6 @@
 
 
 	var/obj/item/weapon/ranged/bullet/G = object
-/*
-	if(bullet_type != G.bullet_type)
-		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
-		return TRUE
-*/
 
 	var/insert_count = 0
 
@@ -31,12 +26,12 @@
 		stored_bullets -= B
 
 	if(insert_count)
-		caller.to_chat(span("notice","You insert [insert_count] bullet\s into \the [object]."))
+		caller.to_chat(span("notice","You load [insert_count] bullet\s into \the [object]."))
 		G.update_sprite()
 		update_sprite()
 		return TRUE
 	else
-		caller.to_chat(span("notice","You can't insert anything into \the [object] with \the [src]!"))
+		caller.to_chat(span("notice","You can't load anything into \the [object] with \the [src]!"))
 
 	return ..()
 

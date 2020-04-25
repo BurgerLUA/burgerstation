@@ -210,7 +210,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			if(P && P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
-				if(!screen_loc)
+				if(!length(screen_loc_parsed))
 					return TRUE
 				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller.x - VIEW_RANGE
 				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller.y - VIEW_RANGE

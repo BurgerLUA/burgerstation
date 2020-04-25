@@ -19,9 +19,6 @@
 
 	return N
 
-/obj/item/proc/transfer_stacks_to(var/obj/item/I,var/amount = src.item_count_current)
-	return I.add_item_count( -src.add_item_count(-amount) )
-
 /obj/item/proc/split_stack()
 
 	var/stacks_to_take = FLOOR(item_count_current/2, 1)
@@ -30,7 +27,7 @@
 
 
 	var/obj/item/I = copy(src)
-	transfer_stacks_to(I,stacks_to_take)
+	src.transfer_item_count_to(I,stacks_to_take)
 
 	return I
 
@@ -41,7 +38,7 @@
 
 	var/obj/item/I = object
 	if(I.can_transfer_stacks_to(src))
-		var/stacks_transfered = I.transfer_stacks_to(src)
+		var/stacks_transfered = I.transfer_item_count_to(src)
 		if(stacks_transfered)
 			caller.to_chat("You transfer [stacks_transfered] stacks.")
 			return TRUE

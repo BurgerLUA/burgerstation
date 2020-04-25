@@ -98,15 +98,34 @@
 
 	var/allow_beaker_transfer = FALSE
 
-/obj/item/proc/add_item_count(var/amount_to_add)
-	var/old_amount = item_count_current
-	item_count_current = clamp(item_count_current + amount_to_add,0,item_count_max)
+/obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
+	if(!amount_to_add)
+		return 0
+	if(amount_to_add < 0)
+		return target.transfer_item_count_to(src,-amount_to_add)
+	amount_to_add = min(amount_to_add,item_count_current,target.item_count_max - target.item_count_current)
+	. = target.add_item_count(amount_to_add,TRUE)
+	src.add_item_count(-amount_to_add,TRUE)
+	return .
+
+/obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
+
+	if(!bypass_checks)
+		if(!amount_to_add)
+			return 0
+		else if(amount_to_add > 0)
+			amount_to_add = min(amount_to_add,item_count_max - item_count_current)
+		else if(amount_to_add < 0)
+			amount_to_add = max(amount_to_add,-item_count_current)
+
+	item_count_current += amount_to_add
+
 	if(item_count_current <= 0)
 		qdel(src)
 	else
 		update_sprite()
-	return item_count_current - old_amount
 
+	return amount_to_add
 
 /obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
