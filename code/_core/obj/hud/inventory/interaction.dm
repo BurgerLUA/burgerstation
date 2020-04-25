@@ -89,9 +89,11 @@
 					var/obj/hud/inventory/I2 = defer_object.loc
 					if(!I.is_container && I2.click_flags) //The object we're clicking on is actually in our other hand and it's not a container
 						return ..()
-					if(I2.drag_to_take || I.is_container) //The object that we're clicking on needs to be dragged in order to be taken, or it's a container.
+					if(I.is_container) //The object that we're clicking on is a container and it should be opened instead.
 						I.click_self(caller)
 						return TRUE
+					if(I2.drag_to_take) //The inventory object is marked as drag to take, so it shouldn't be removed by simply clicking.
+						return ..()
 				src.add_object(defer_object)
 				return TRUE
 
@@ -176,28 +178,6 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 		return grabbed_object
 
 	return src
-
-/*
-/obj/hud/inventory/get_examine_text(var/mob/examiner)
-	. = ..()
-
-	var/list/held_names = list()
-	var/list/worn_names = list()
-
-	for(var/obj/item/I in held_objects)
-		held_names += I.name
-
-	for(var/obj/item/I in worn_objects)
-		worn_names += I.name
-
-	if(length(worn_names))
-		. +=
-
-	if(length(held_names))
-		. +=
-
-	return .
-*/
 
 /obj/hud/inventory/help(var/atom/caller,var/atom/object,var/list/params=list())
 
