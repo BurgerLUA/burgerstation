@@ -7,6 +7,7 @@
 	var/material_id
 	plane = PLANE_OBJ
 	layer = LAYER_FLOOR_DECAL
+	initialize_type = INITIALIZE_LATE
 
 
 
@@ -22,7 +23,8 @@
 				var/obj/structure/interactive/ground_ore_deposit/GOD = new(T)
 				GOD.material_id = material_id
 				GOD.ore_score = ore_score * RAND_PRECISE(0.1,0.75)
-				//INITIALIZE(GOD) TODO: FIX, MAKE NEW SUBSYSTEM
+				GOD.initialize_type = INITIALIZE_NONE
+				INITIALIZE(GOD)
 
 	update_sprite()
 
@@ -38,10 +40,7 @@
 	for(var/obj/structure/interactive/ore_box/OB in range(1,src))
 		O.force_move(OB)
 		return TRUE
-	//ELSE
 	O.force_move(get_step(src,pick(DIRECTIONS_ALL)))
-	src.ore_score--
-	update_sprite()
 	return TRUE
 
 

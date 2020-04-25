@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_early += O
 		else if(O.initialize_type == INITIALIZE_LATE)
 			initialize_late += O
-		else
+		else if(O.initialize_type == INITIALIZE_NORMAL)
 			initialize_normal += O
 
 	for(var/obj/O in initialize_early)

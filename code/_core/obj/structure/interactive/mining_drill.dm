@@ -129,12 +129,17 @@
 			set_dir(turn(dir,90))
 		return TRUE
 
+	var/obj/structure/interactive/mining_drill/MD = locate() in get_step(src,dir)
+	if(MD && MD.anchored)
+		caller.to_chat(span("warning","You need to disable the mining drill first before moving this!"))
+		return TRUE
+
 	anchored = !anchored
 
 	if(anchored)
-		visible_message("\The [caller.name] secures \the [src.name].")
+		caller.visible_message("\The [caller.name] secures \the [src.name].","You secure \the [src.name].")
 	else
-		visible_message("\The [caller.name] unsecures \the [src.name].")
+		caller.visible_message("\The [caller.name] unsecures \the [src.name].","You unsecure \the [src.name].")
 
 	update_sprite()
 
