@@ -104,6 +104,7 @@
 		M.pixel_z = pixel_z
 		var/new_angle = ATAN2(vel_x,vel_y) - 90
 		M.transform = turn(M.transform,-new_angle)
+		INITIALIZE(M)
 
 	pixel_x_float = pixel_x
 	pixel_y_float = pixel_y

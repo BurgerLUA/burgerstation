@@ -55,3 +55,18 @@
 					time = 0
 
 	return ..()
+
+
+/obj/shuttle_controller/arrivals/alpha
+	transit_start = "arrivals_shuttle_centcomm_01"
+	transit_bluespace = "arrivals_shuttle_bluespace_01"
+	transit_end = "arrivals_shuttle_station_01"
+
+	status_id = "arrivals_01"
+
+/obj/shuttle_controller/arrivals/bravo
+	transit_start = "arrivals_shuttle_centcomm_02"
+	transit_bluespace = "arrivals_shuttle_bluespace_02"
+	transit_end = "arrivals_shuttle_station_02"
+
+	status_id = "arrivals_02"

@@ -26,6 +26,12 @@
 
 	return ..()
 
+/obj/item/defib/Initialize()
+	INITIALIZE(paddle_left)
+	SPAWN(paddle_left)
+	INITIALIZE(paddle_right)
+	SPAWN(paddle_right)
+	return ..()
 
 /obj/item/defib/proc/on_paddle(var/mob/caller)
 

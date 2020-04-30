@@ -10,6 +10,8 @@
 
 	if(ispath(stored_radio))
 		stored_radio = new stored_radio(src)
+		INITIALIZE(stored_radio)
+		SPAWN(stored_radio)
 
 	return ..()
 

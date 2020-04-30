@@ -106,11 +106,6 @@
 			else
 				P.force_move(T)
 			P.start_chargen()
-			P.to_chat(span("notice",
-				"Welcome to Burgerstation! We are currently in Alpha Testing, which meansz that the came is largely incomplete and a \
-				large majority of the game hasn't been coded yet. Please be patient with development, and have fun. If you wish to \
-				experience the main game, please board the shuttle to the north.")
-			)
 			qdel(src)
 			return TRUE
 		else

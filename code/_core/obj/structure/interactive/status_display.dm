@@ -60,9 +60,13 @@ obj/structure/interactive/status_display/global_display/Initialize()
 		global_status_displays += src
 	return ..()
 
-/obj/structure/interactive/status_display/global_display/arrivals
-	name = "arrivals status display"
-	status_id = "arrivals"
+/obj/structure/interactive/status_display/global_display/arrivals_01
+	name = "arrivals ship 1 status display"
+	status_id = "arrivals_01"
+
+/obj/structure/interactive/status_display/global_display/arrivals_02
+	name = "arrivals ship 2 status display"
+	status_id = "arrivals_02"
 
 
 /obj/structure/interactive/status_display/global_display/cargo

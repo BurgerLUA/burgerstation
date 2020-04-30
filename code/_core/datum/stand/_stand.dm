@@ -118,7 +118,7 @@
 	linked_stand.gender = stand_user.gender
 	linked_stand.owner = stand_user
 	linked_stand.iff_tag = stand_user.iff_tag
-	linked_stand.Initialize()
+	INITIALIZE(linked_stand)
 	linked_stand.equip_loadout("outfit_stand_[rand(1,9)]")
 
 	if(stand_user.ai)

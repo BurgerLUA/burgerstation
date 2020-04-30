@@ -265,6 +265,7 @@
 		update_container(FALSE)
 		while(volume_current > 0)
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
+			INITIALIZE(A)
 			if(!A.reagents)
 				break
 			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current))

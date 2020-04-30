@@ -68,6 +68,7 @@
 		if(ispath(data["effect"]))
 			var/obj/effect/temp/E = data["effect"]
 			E = new E(T)
+			INITIALIZE(E)
 			E.alpha = 100
 			E.color = "#00FF00"
 			delay_time = E.duration
@@ -79,6 +80,7 @@
 			else
 				var/atom/A = data["object"]
 				A = new A(T)
+				INITIALIZE(A)
 				caller.to_chat("You construct \a [A.name] with \the [src.name].")
 
 		return TRUE

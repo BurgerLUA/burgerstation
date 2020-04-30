@@ -68,6 +68,5 @@
 		S.item_count_current = material_to_make
 		S.material_id = material_type
 		INITIALIZE(S)
-		SPAWN(S)
 
 	return TRUE

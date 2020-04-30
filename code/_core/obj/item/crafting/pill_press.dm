@@ -53,18 +53,16 @@
 		caller.to_chat(span("notice","There is no matter in the right slot to make a double pill from!"))
 		return FALSE
 
-	var/obj/item/container/pill/P
-
-	if(is_double)
-		P = new/obj/item/container/pill/double(get_turf(src))
-	else
-		P = new/obj/item/container/pill(get_turf(src))
+	var/obj/item/container/pill/P = is_double ? /obj/item/container/pill/double : /obj/item/container/pill
+	P = new P(get_turf(src))
+	INITIALIZE(P)
+	SPAWN(P)
 
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount)
 	if(I2)
 		I2.reagents.transfer_reagents_to(P.reagents_2,I2.transfer_amount)
 
-	P.update_sprite()
+
 
 	if(product_container)
 		product_container.add_to_inventory(caller,P,TRUE)

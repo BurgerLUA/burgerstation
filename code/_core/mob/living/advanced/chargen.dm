@@ -9,37 +9,59 @@
 		equip_loadout("new_female",TRUE)
 	stop_music_track(client)
 
-	/*
-		if(ENABLE_LORE)
 
-			play_music_track("space_wayfarer",src.client)
+	if(ENABLE_LORE && client)
 
-			client.allow_zoom_controls = FALSE
-			client.update_zoom(2)
+		var/list/lore = list(
+			"The year is 2520.",
+			"Decades ago, humankind reached a crucial landmark in interstellar space travel technology: safe and reliable faster than light travel.",
+			"All nations, regardless of wealth or prosperity, have access to this miraculous technology. It is now possible for humanity to expand beyond the Sol System.",
+			"We are now in an era where every soul now has the unrestricted ability to travel to and from nearby planets outside their own systems within mere seconds of preperation and travel time.",
+			"However, it was not just sovereign nations benefiting from this discovery; All corporations, even those without prior interest in space exploration, shifted their focus to the near-endless resources of the Universe.",
+			"Corporate entities of all types sought to claim land with this new technology. With new land, came new resources. With new resources, came new wealth. With new wealth, came new corporate wars and Corporate Military Forces.",
+			"A new age of greed plagued mankind as a whole. As the wealth of corporations grew, non-corporate powers dwindled by comparison. Governments could not effectively uphold the law. Space became a new lawless wild west.",
+			"In this wild west, ",
+		)
 
-			stun_time = -1
-			paralyze_time = -1
+		play_music_track("space_wayfarer",src.client)
 
-			add_notification_colored_easy(client,"#000000",200*5 + 10,fade_in = FALSE, fade_out = TRUE)
+		client.disable_controls = TRUE
+		client.update_zoom(2) //200%
 
-			add_notification_easy(client,'icons/hud/discovery.dmi',"intro_1",180,fade_in = TRUE)
-			sleep(200)
+		add_notification_colored_easy(client,"#000000",600 + 10,fade_in = FALSE, fade_out = TRUE)
 
-			add_notification_easy(client,'icons/hud/discovery.dmi',"intro_2",180,fade_in = TRUE)
-			sleep(200)
 
-			add_notification_easy(client,'icons/hud/discovery.dmi',"intro_3",180,fade_in = TRUE)
-			sleep(200)
+		var/obj/hud/screen/S = new()
+		S.icon = 'icons/hud/discovery.dmi' //320x320
+		S.icon_state = "black"
+		S.screen_loc = "CENTER-4.5,CENTER-4.5"
+		S.client = src.client
+		S.maptext = "<font size='4'>A.</font>"
+		S.maptext_width = 320
+		S.maptext_height = 320
+		S.mouse_opacity = 2
+		client.screen += S
 
-			add_notification_easy(client,'icons/hud/discovery.dmi',"intro_4",180,fade_in = TRUE)
-			sleep(200)
+		//SHITCODE AHOY
+		var/cached_text = ""
+		for(var/line in lore)
+			for(var/char in splittext(line,""))
+				cached_text += char
+				S.maptext = "[cached_text]"
+				sleep(world.tick_lag*3)
+			sleep(30)
+			cached_text += "<br><br>"
+			S.maptext = "[cached_text]"
+		sleep(50)
+		animate(S,alpha = 0,time = 100)
+		sleep(100)
 
-			add_notification_easy(client,'icons/hud/discovery.dmi',"intro_5",180,fade_in = TRUE)
-			sleep(200)
 
-			stun_time = 20
-			paralyze_time = 20
-	*/
+		client.screen -= S
+		qdel(S)
+
+		client.disable_controls = FALSE
+
 
 
 

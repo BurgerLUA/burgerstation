@@ -9,6 +9,8 @@
 /obj/item/clothing/ears/headset/on_spawn()
 	if(ispath(stored_radio))
 		stored_radio = new stored_radio(src)
+		INITIALIZE(stored_radio)
+		SPAWN(stored_radio)
 	return ..()
 
 /obj/item/clothing/ears/headset/click_self(var/mob/caller,location,control,params)

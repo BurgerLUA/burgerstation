@@ -78,6 +78,8 @@
 
 	var/obj/overlay/chat_overlay
 
+	value = 250
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -313,7 +315,12 @@ mob/living/advanced/Login()
 
 	for(var/key in items_to_add)
 		var/obj/item/I = new key(get_turf(src))
-		if(I) spawning_outfit.on_add(src,I)
+		if(istype(I))
+			INITIALIZE(I)
+			SPAWN(I)
+			spawning_outfit.on_add(src,I)
+		else
+			log_error("Warning! Tried to spawn object [key] in equip_loadout(), but something went wrong!")
 
 	return TRUE
 

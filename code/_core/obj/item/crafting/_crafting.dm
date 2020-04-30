@@ -82,6 +82,7 @@
 		if(length(recipe_check)) //We can craft
 
 			var/obj/item/I3 = new R.product(caller.loc)
+			INITIALIZE(I3)
 			product_slot.add_held_object(I3,caller,FALSE,TRUE)
 
 			for(var/obj/item/I in recipe_check)

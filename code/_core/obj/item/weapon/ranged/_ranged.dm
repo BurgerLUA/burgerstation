@@ -33,6 +33,8 @@
 
 /obj/item/weapon/ranged/on_spawn()
 	firing_pin = new firing_pin(src)
+	INITIALIZE(firing_pin)
+	SPAWN(firing_pin)
 	return ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()

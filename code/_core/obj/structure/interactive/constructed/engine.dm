@@ -6,6 +6,10 @@ obj/structure/shuttle_engine
 
 	collision_flags = FLAG_COLLISION_REAL
 
+obj/structure/shuttle_engine/heater
+	name = "engine heater"
+	icon_state = "heater"
+
 obj/structure/shuttle_engine/burst
 	icon_state = "burst_s"
 
@@ -15,8 +19,6 @@ obj/structure/shuttle_engine/burst/left
 obj/structure/shuttle_engine/burst/right
 	icon_state = "burst_r"
 
-
-
 obj/structure/shuttle_engine/propulsion
 	icon_state = "propulsion"
 
@@ -25,8 +27,6 @@ obj/structure/shuttle_engine/propulsion/left
 
 obj/structure/shuttle_engine/propulsion/right
 	icon_state = "propulsion_r"
-
-
 
 obj/structure/shuttle_engine/wall_diagonal_1
 	icon_state = "wall_diagonal_1"

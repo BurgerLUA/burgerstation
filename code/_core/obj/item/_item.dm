@@ -214,7 +214,7 @@
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
-
+		//Doesn't need to be initialized as it's done later.
 		if(container_held_slots)
 			inventories[i].held_slots = container_held_slots
 		if(container_max_size)
@@ -232,6 +232,7 @@
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new(src)
+		//Doesn't need to be initialized as it's done later.
 		D.id = "dynamic_[i]"
 		D.slot_num = i
 		if(container_held_slots)
@@ -248,7 +249,6 @@
 			D.inventory_temperature_mod = container_temperature
 		if(container_temperature_mod)
 			D.inventory_temperature_mod_mod = container_temperature_mod
-		//Doesn't need to be initialized as it's done later.
 		inventories += D
 
 	return ..()

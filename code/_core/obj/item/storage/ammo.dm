@@ -16,10 +16,7 @@
 
 /obj/item/storage/ammo/bullet_22/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		var/obj/item/bullet_cartridge/B = new /obj/item/bullet_cartridge/pistol_22(src)
-		INITIALIZE(B)
-		SPAWN(B)
-		B.update_sprite()
+		new /obj/item/bullet_cartridge/pistol_22(src)
 	return ..()
 
 

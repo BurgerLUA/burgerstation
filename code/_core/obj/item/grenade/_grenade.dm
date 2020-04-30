@@ -155,7 +155,7 @@
 /obj/item/grenade/timed/explosive/
 	name = "timed explosive grenade"
 
-/obj/item/grenade/timed/explosive/on_spawn()
+/obj/item/grenade/timed/explosive/fill_inventory()
 	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)
 	stored_containers += new /obj/item/container/beaker/large/grenade_potassium(src)
 	return ..()

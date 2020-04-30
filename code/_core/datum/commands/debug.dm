@@ -62,9 +62,10 @@
 	if(valid_count == 1)
 		var/datum/A = valid_count[1]
 		A = new A(usr.loc)
+		INITIALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
-			O.on_spawn()
+			SPAWN(O)
 		return TRUE
 
 	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
@@ -72,9 +73,10 @@
 	if(selection)
 		var/datum/A = selection
 		A = new A(usr.loc)
+		INITIALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
-			O.on_spawn()
+			SPAWN(O)
 		return TRUE
 
 /*

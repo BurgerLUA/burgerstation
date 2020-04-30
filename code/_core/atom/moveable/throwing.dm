@@ -12,8 +12,7 @@
 	P.pixel_y = src.pixel_y
 	P.pixel_x_float = src.pixel_x
 	P.pixel_y_float = src.pixel_y
-	var/max = max(abs(vel_x),abs(vel_y))
-	P.lifetime = (max/TILE_SIZE)*5
+	P.lifetime = (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*5
 	INITIALIZE(P)
 	src.force_move(P) //Move it to contents.
 	return P

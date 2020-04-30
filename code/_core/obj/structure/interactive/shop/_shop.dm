@@ -117,6 +117,7 @@
 	if(P.currency >= stored_item_cost && P.spend_currency(stored_item_cost)) //Just in case
 		spawn()
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
+			INITIALIZE(new_item)
 			SPAWN(new_item)
 			new_item.update_sprite()
 			I.add_object(new_item,TRUE)

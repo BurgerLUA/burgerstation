@@ -12,7 +12,7 @@
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
 /obj/structure/interactive/intercom/New(var/desired_loc)
-	stored_radio = new(src)
+	stored_radio = new(src) //Initialized somewhere else.
 	stored_radio.anchored = TRUE
 	stored_radio.broadcasting = FALSE
 	stored_radio.receiving = TRUE
@@ -28,6 +28,8 @@
 
 /obj/structure/interactive/intercom/Initialize(var/desired_loc)
 	setup_dir_offsets()
+	INITIALIZE(stored_radio)
+	SPAWN(stored_radio)
 	update_sprite()
 	return ..(loc)
 

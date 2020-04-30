@@ -2,7 +2,8 @@
 
 	if(length(href_list) && href_list["take"])
 		var/obj/item/I = locate(href_list["take"])
-		I.try_strip(src)
+		if(istype(I))
+			I.try_strip(src)
 
 	return ..()
 
