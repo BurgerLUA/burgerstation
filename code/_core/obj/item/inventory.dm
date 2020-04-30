@@ -31,7 +31,7 @@
 
 /obj/item/proc/fill_inventory()
 
-	for(var/obj/item/I in contents)
+	for(var/obj/item/I in contents) //This is the source of a lot of problems. Unironically.
 		INITIALIZE(I)
 		SPAWN(I)
 		add_to_inventory(null,I,FALSE,TRUE)

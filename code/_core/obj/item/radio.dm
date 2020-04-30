@@ -6,13 +6,8 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
-/obj/item/radio/on_spawn()
-
-	if(ispath(stored_radio))
-		stored_radio = new stored_radio(src)
-		INITIALIZE(stored_radio)
-		SPAWN(stored_radio)
-
+/obj/item/radio/fill_inventory()
+	stored_radio = new stored_radio(src)
 	return ..()
 
 /obj/item/radio/click_self(var/mob/caller,location,control,params)

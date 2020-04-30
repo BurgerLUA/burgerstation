@@ -6,10 +6,6 @@
 	return spawning_items.Copy()
 
 /loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I)
-
-	INITIALIZE(I)
-	SPAWN(I)
-
 	if(!I.quick_equip(A))
 		qdel(I)
 		return FALSE

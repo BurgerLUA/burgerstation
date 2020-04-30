@@ -31,8 +31,3 @@
 	I.SwapColor(rgb(255,255,0),color_scheme[4])
 	I.SwapColor(rgb(255,0,255),color_scheme[5])
 	I.SwapColor(rgb(0,255,255),color_scheme[6])
-
-
-/obj/hud/Initialize()
-	log_error("Warning! Hud Object [src.name]([src.type]) was wrongly initialized!")
-	return ..()

@@ -16,21 +16,11 @@
 /obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-/obj/item/defib/New(var/desired_loc)
-
+/obj/item/defib/fill_inventory(var/desired_loc)
 	paddle_left = new /obj/item/defib_paddle(src)
 	paddle_left.linked_defib = src
-
 	paddle_right = new /obj/item/defib_paddle(src)
 	paddle_right.linked_defib = src
-
-	return ..()
-
-/obj/item/defib/Initialize()
-	INITIALIZE(paddle_left)
-	SPAWN(paddle_left)
-	INITIALIZE(paddle_right)
-	SPAWN(paddle_right)
 	return ..()
 
 /obj/item/defib/proc/on_paddle(var/mob/caller)

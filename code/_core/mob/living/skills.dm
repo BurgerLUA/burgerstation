@@ -10,6 +10,7 @@
 	var/experience/skill/S = get_skill(id)
 	if(!S)
 		log_error("Warning! Tried getting skill [id], but it didn't exist for [src.name]([src.type])!")
+		CRASH("Attribute error!")
 		return 0.25
 	return S.get_power()
 
@@ -37,6 +38,7 @@
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
 		log_error("Warning! Tried getting attribute [id], but it didn't exist for [src.name]([src.type])!")
+		CRASH_SAFE("Attribute error")
 		return 0.25
 	return A.get_power()
 
