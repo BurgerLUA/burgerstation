@@ -44,6 +44,11 @@
 
 /turf/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
+	. = ..()
+
+	if(!.)
+		return FALSE
+
 	if(P.vel_y > 0)
 		if(!old_turf.allow_bullet_pass && old_turf.density_north)
 			return old_turf
@@ -64,6 +69,8 @@
 			return old_turf
 		if(!new_turf.allow_bullet_pass && new_turf.density_east)
 			return new_turf
+
+	return FALSE
 
 /obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return FALSE

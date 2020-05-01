@@ -3,7 +3,7 @@
 /area/transit/arrivals_shuttle_01/centcomm
 	name = "arrivals shuttle - central command"
 	id = "arrivals_shuttle_centcomm_01"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION
 
 /area/transit/arrivals_shuttle_01/bluespace
 	name = "arrivals shuttle - bluespace"
@@ -22,7 +22,7 @@
 /area/transit/arrivals_shuttle_02/centcomm
 	name = "arrivals shuttle - central command"
 	id = "arrivals_shuttle_centcomm_02"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION
 
 /area/transit/arrivals_shuttle_02/bluespace
 	name = "arrivals shuttle - bluespace"

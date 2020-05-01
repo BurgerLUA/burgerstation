@@ -4,7 +4,7 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	for(var/obj/hud/button/message/M in all_hud_messages)
 		if(desired_text && M.owner)
 			var/area/A = get_area(M.owner)
-			if(!A || !(A.flags_area & FLAGS_AREA_ROUND_INFORMATION))
+			if(!A || (A.flags_area & FLAGS_AREA_NO_ROUND_INFORMATION))
 				M.set_text(null,instant)
 				continue
 		M.set_text(desired_text,instant)

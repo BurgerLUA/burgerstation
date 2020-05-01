@@ -41,6 +41,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = /obj/item/magazine/smp_9mm
 	)
 
+	var/map_spawn = FALSE
+
 /mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
 
 	if(istype(src,Obstacle) || istype(Obstacle,src))
@@ -95,12 +97,16 @@
 
 	return .
 
+/mob/living/advanced/npc/syndicate/map
+	map_spawn = TRUE
 
-/mob/living/advanced/npc/syndicate/double
+/mob/living/advanced/npc/syndicate/map/double
 	level_multiplier = 2
 
-/mob/living/advanced/npc/syndicate/triple
+/mob/living/advanced/npc/syndicate/map/triple
 	level_multiplier = 3
 
-/mob/living/advanced/npc/syndicate/quadruple
+/mob/living/advanced/npc/syndicate/map/quadruple
 	level_multiplier = 3
+
+

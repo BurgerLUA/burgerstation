@@ -19,7 +19,7 @@
 /area/interior/station
 	name = "Central Command"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION
 
 	ambient_sound = 'sounds/ambient/station_loop.ogg'
 	random_sounds = list(
@@ -45,7 +45,7 @@
 /area/interior/ship
 	name = "\improper NSS Burger"
 	icon_state = "ship"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_ROUND_INFORMATION
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS
 
 	ambient_sound = 'sounds/ambient/station_loop.ogg'
 	random_sounds = list(
@@ -98,7 +98,7 @@
 /area/interior/ship/dorm
 	name = "\improper Dorm"
 	icon_state = "dorm"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_ROUND_INFORMATION | FLAGS_AREA_SAVEZONE
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_SAVEZONE
 
 /area/interior/ship/cloning
 	name = "\improper Cloning"
@@ -111,7 +111,7 @@
 /area/interior/ship/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "cryo"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_ROUND_INFORMATION | FLAGS_AREA_SAVEZONE
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS | FLAGS_AREA_SAVEZONE
 
 /area/interior/ship/dock/arrivals
 	name = "\improper Arrivals Dock"

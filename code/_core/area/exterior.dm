@@ -1,6 +1,4 @@
 /area/exterior/
-	flags_area = FLAGS_AREA_ROUND_INFORMATION
-
 	sunlight_freq = 8
 	desired_light_range = 9
 	desired_light_power = 1
@@ -17,6 +15,10 @@
 	name = "grass"
 	icon_state = "grass"
 	desired_light_color = "#CCB06A"
+
+/area/exterior/grass/village
+	name = "village"
+	icon_state = "village"
 
 /area/exterior/river
 	name = "river"

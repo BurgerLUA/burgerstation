@@ -4,6 +4,7 @@
 #define HORDE_STATE_BOARDING "boarding" //Everyone boards the shuttles.
 #define HORDE_STATE_LAUNCHING "launching" //Everyone is launching now.
 #define HORDE_STATE_FIGHTING "fighting" //Fighting starts.
+#define HORDE_STATE_HIJACK "hijack" //Station is under assault
 #define HORDE_STATE_BREAK "break"
 
 SUBSYSTEM_DEF(horde)
@@ -28,6 +29,8 @@ SUBSYSTEM_DEF(horde)
 	var/killed_syndicate_round = 0
 	var/spawned_enemies_round = 0
 
+	var/next_hijack_check_time = 0
+
 	var/allow_shuttle_launch = FALSE
 
 /subsystem/horde/proc/on_killed_syndicate()
@@ -42,6 +45,21 @@ SUBSYSTEM_DEF(horde)
 	killed_syndicate_round = 0
 
 	return TRUE
+
+/subsystem/horde/proc/check_hijack()
+
+	var/area/exterior/grass/village/A = all_areas[/area/exterior/grass/village/]
+	if(!A)
+		log_error("HORDE MODE: Could not find the village area!")
+		return FALSE
+
+	var/desired_player_count = CEILING(length(all_players) * 0.25,1)
+
+	for(var/mob/living/advanced/player/P in A.contents)
+		desired_player_count -= 1
+
+	return desired_player_count > 0
+
 
 /subsystem/horde/on_life()
 
@@ -92,11 +110,13 @@ SUBSYSTEM_DEF(horde)
 		if(!message_displayed)
 			set_message("Round [current_round]")
 			message_displayed = TRUE
-			enemies_to_spawn = 15 + (current_round * 5)
+			enemies_to_spawn = clamp(15 + (current_round * 5),15,min(50,max(15,length(all_players)*3)))
 			spawned_enemies_round = enemies_to_spawn*0.75
 			var/obj/marker/landmark/B = locate(pick("Bravo","Village"))
 			var/obj/marker/map_node/N_end = find_closest_node(B)
 			for(var/mob/living/advanced/npc/syndicate/S in world)
+				if(S.map_spawn)
+					continue
 				if(!S.ai)
 					continue
 				var/obj/marker/map_node/N_start = find_closest_node(S)
@@ -108,6 +128,15 @@ SUBSYSTEM_DEF(horde)
 				var/mob/living/advanced/player/P = locate() in view(VIEW_RANGE + ZOOM_RANGE,S)
 				if(!P)
 					qdel(S)
+
+		if(next_hijack_check_time <= round_time)
+			if(check_hijack())
+				world.log << "HIJACK!"
+				state = HORDE_STATE_HIJACK
+				round_time = 0
+			else
+				next_hijack_check_time = round_time + 60
+			return TRUE
 
 		var/wave_to_spawn = min(4,enemies_to_spawn)
 		enemies_to_spawn -= wave_to_spawn
@@ -152,6 +181,10 @@ SUBSYSTEM_DEF(horde)
 					for(var/mob/abstract/observer/O in world)
 						O.force_move(T)
 					wave_to_spawn--
+
+	//if(state == HORDE_STATE_HIJACK)
+		//Do stuff
+
 
 	return TRUE
 
