@@ -129,9 +129,9 @@ SUBSYSTEM_DEF(horde)
 				if(!P)
 					qdel(S)
 
-		if(next_hijack_check_time <= round_time)
+		if(ENABLE_HIJACK && next_hijack_check_time <= round_time)
 			if(check_hijack())
-				world.log << "HIJACK!"
+				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 				state = HORDE_STATE_HIJACK
 				round_time = 0
 			else

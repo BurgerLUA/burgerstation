@@ -62,7 +62,7 @@ var/global/list/all_shuttle_controlers = list()
 		qdel(src)
 		return FALSE
 
-	set_doors(TRUE,TRUE)
+	set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 
 	return ..()
 
@@ -72,7 +72,8 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/launch(var/desired_transit_time) //In deciseconds
 
-	if(!set_doors(FALSE,TRUE))
+	if(!set_doors(FALSE,TRUE,TRUE))
+		log_error("Shuttle Controler: Door failure on [src.type]!")
 		return FALSE
 
 	if(!default_transit_time)
@@ -92,7 +93,7 @@ var/global/list/all_shuttle_controlers = list()
 		transit_source = transit_end
 	return TRUE
 
-/obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE)
+/obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE,var/force = FALSE)
 
 	. = TRUE
 
@@ -121,15 +122,15 @@ var/global/list/all_shuttle_controlers = list()
 				var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
 				if(AL && !istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
 					if(open)
-						AL.open(!lock,TRUE)
+						AL.open(lock,force)
 					else
-						AL.close(lock,TRUE)
+						AL.close(lock,force)
 
 		if(!doorstuck)
 			if(!exposed_to_space && open)
-				S.open(!lock,TRUE)
+				S.open(lock,force)
 			else
-				S.close(lock,TRUE)
+				S.close(lock,force)
 
 	return .
 
@@ -162,7 +163,7 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 2) //Needs to be hardcoded as this is based on sound.
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
-			set_doors(TRUE,TRUE)
+			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 			state = SHUTTLE_STATE_LANDED
 			time = 0

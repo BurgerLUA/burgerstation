@@ -23,7 +23,7 @@
 		return FALSE
 
 	var/first_character = copytext(text_to_say,1,2)
-	if(first_character == "/" || first_character == "!") //OOC
+	if(first_character == "/" || first_character == "!") //OOC commands.
 		if(client)
 			var/client/C = client
 			var/final_command = trim(copytext(text_to_say,2,0))
@@ -32,34 +32,52 @@
 
 	text_to_say = mod_speech(text_to_say)
 
-
-
 	var/language_to_use = LANGUAGE_BASIC
 	var/frequency_to_use = null
 	var/talk_type_to_use = TEXT_TALK
 
-	if(first_character == ";" || first_character == "." || first_character == ",")
-		if(client && (first_character == "." || first_character == ","))
-			var/old_first = first_character
-			text_to_say = copytext(text_to_say,2,0)
-			first_character = copytext(text_to_say,1,2)
-			if(old_first == "," && client.macros.language_keys[first_character])
-				language_to_use = client.macros.language_keys[first_character]
+	var/list/available_languages = list()
+	if(client)
+		for(var/letter_key in client.macros.language_keys)
+			var/language_key = client.macros.language_keys[letter_key]
+			if(!known_languages[language_key])
+				continue
+			available_languages[letter_key] = language_key
+	//TODO: MAKE IT SO THAT NPCS CAN USE LANGUAGES HERE.
+
+
+	if(first_character == "." || first_character == ",")
+		var/old_first = first_character
+		text_to_say = copytext(text_to_say,2,0)
+		first_character = copytext(text_to_say,1,2)
+		if(old_first == ",")
+			if(available_languages[first_character])
+				language_to_use = available_languages[first_character]
 				text_to_say = copytext(text_to_say,2,0)
-			else if(old_first == "." && client.macros.radio_keys[first_character])
+			else
+				to_chat(span("warning","You don't know that language!"))
+				return FALSE
+		else if(client && old_first == ".")
+			if(client.macros.radio_keys[first_character])
 				frequency_to_use = client.macros.radio_keys[first_character]
 				text_to_say = copytext(text_to_say,2,0)
-		else if(first_character == ";")
-			frequency_to_use = -1
-			text_to_say = trim(copytext(text_to_say,2,0))
+			else
+				to_chat(span("warning","You don't have that radio key!"))
+				return FALSE
+	else if(first_character == ";") //Common radio.
+		frequency_to_use = -1
+		text_to_say = trim(copytext(text_to_say,2,0))
+		first_character = copytext(text_to_say,1,2)
+		if(client && first_character == ",")
+			text_to_say = copytext(text_to_say,2,0)
 			first_character = copytext(text_to_say,1,2)
-			if(client && (first_character == "," || first_character == "."))
-				text_to_say = copytext(text_to_say,2,0)
-				first_character = copytext(text_to_say,1,2)
-				if(first_character != " ")
-					if(client.macros.language_keys[first_character])
-						language_to_use = client.macros.language_keys[first_character]
-						text_to_say = copytext(text_to_say,2,0)
+			if(first_character != " ")
+				if(available_languages[first_character])
+					language_to_use = available_languages[first_character]
+					text_to_say = copytext(text_to_say,2,0)
+				else
+					to_chat(span("warning","You don't know that language!"))
+					return FALSE
 
 	if(has_suffix(text_to_say,"!"))
 		talk_type_to_use = TEXT_YELL

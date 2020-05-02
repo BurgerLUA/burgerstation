@@ -55,6 +55,9 @@
 	color = "#A70000"
 	fill_color = "#FFB200"
 
+/obj/structure/interactive/door/airlock/station/external/bolted
+	locked = TRUE
+
 /obj/structure/interactive/door/airlock/station/private
 	name = "private airlock"
 	filler = "fill"

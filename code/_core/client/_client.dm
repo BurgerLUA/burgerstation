@@ -20,6 +20,7 @@ var/global/list/all_clients = list()
 	var/savedata/client/connection_history/connection_data
 	var/savedata/client/roles/roles
 	var/savedata/client/settings/settings
+	var/savedata/client/controls/controls
 
 	var/save_slot //The character slot that the client wishes to overwrite.
 	var/list/last_params
@@ -94,6 +95,9 @@ var/global/list/all_clients = list()
 	qdel(macros)
 	macros = null
 
+	qdel(controls)
+	controls = null
+
 	clear_mob(mob)
 
 	all_clients -= src
@@ -126,6 +130,9 @@ var/global/list/all_clients = list()
 
 	if(!macros) //TODO: LOADING SYSTEM OF CUSTOM MACROS
 		macros = new(src)
+
+	if(!controls)
+		controls = new(src)
 
 	if(!settings)
 		settings = new(src)

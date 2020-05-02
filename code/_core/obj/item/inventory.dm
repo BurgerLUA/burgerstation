@@ -25,8 +25,7 @@
 	return TRUE
 
 /obj/item/on_spawn()
-	if(length(inventories))
-		fill_inventory()
+	fill_inventory()
 	return ..()
 
 /obj/item/proc/fill_inventory()

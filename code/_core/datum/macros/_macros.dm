@@ -59,6 +59,7 @@
 	)
 
 	var/list/language_keys = list(
+		"1" = LANGUAGE_BASIC,
 		"o" = LANGUAGE_LIZARD
 	)
 

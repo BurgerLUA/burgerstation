@@ -3,7 +3,7 @@ var/global/icon/chat_icons = new('icons/hud/chat_icon.dmi')
 var/global/icon/chat_language = new('icons/hud/language.dmi')
 
 
-proc/format_speech(var/datum/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
+proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC)
 
 	var/html = "ERROR"
 	switch(talk_type)
@@ -36,14 +36,15 @@ proc/format_speech(var/datum/speaker,var/datum/source,var/text,var/talk_type,var
 
 	return html
 
-proc/format_speaker(var/datum/speaker,var/datum/source,var/tag,var/frequency=-1,var/language = LANGUAGE_BASIC)
+proc/format_speaker(var/speaker,var/source,var/tag,var/frequency=-1,var/language = LANGUAGE_BASIC)
 
-	var/speaker_text = "<a class='name' href='?chat_examine=\ref[speaker]'>\The [speaker]</a>"
+	var/speaker_text = "<a class='name'[is_datum(speaker) ? " href='?chat_examine=\ref[speaker]" : ""]'>\The [speaker]</a>"
 	var/source_text = ""
 	var/tag_text = ""
 
 	if(frequency > 0)
-		source_text += "([frequency_to_name(frequency)]) "
+		var/freq_name = frequency_to_name(frequency)
+		source_text += "([freq_name == "Unknown" ? "[frequency] kHz" : freq_name]) "
 		tag += " radio"
 
 	. = trim("[source_text][speaker_text]")

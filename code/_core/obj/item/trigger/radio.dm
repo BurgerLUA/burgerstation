@@ -74,7 +74,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 /*
 
 list(
-	"speaker" = mob,
+	"speaker" = atom or text,
 	"message" = text,
 	"time" = time as time of day
 	"source" = mob or radio
@@ -103,9 +103,9 @@ list(
 	if(!data["frequency"])
 		data["frequency"] = frequency
 
-	var/speaker_ref = "/ref[data["speaker"]]"
+	var/speaker_ref = is_atom(data["speaker"]) ? "/ref[data["speaker"]]" : null
 
-	if(all_unprocessed_radio_data[speaker_ref])
+	if(speaker_ref && all_unprocessed_radio_data[speaker_ref])
 		return FALSE
 
 	all_unprocessed_radio_data[speaker_ref] = data
@@ -123,8 +123,6 @@ list(
 		return FALSE
 
 	var/turf/T = get_turf(src)
-	T.desc = data["message"]
-
 	for(var/mob/M in range(broadcasting_range,T))
 		if(!M.client)
 			continue

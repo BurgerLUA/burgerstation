@@ -137,7 +137,6 @@
 
 	var/bullets_to_add = min(item_count_current,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
 	add_item_count(-bullets_to_add,TRUE)
-	world.log << "Item count left: [item_count_current]."
 	for(var/i=1,i<=bullets_to_add,i++)
 		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
 		B.is_spent = is_spent

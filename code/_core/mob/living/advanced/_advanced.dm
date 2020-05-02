@@ -319,6 +319,7 @@ mob/living/advanced/Login()
 			INITIALIZE(I)
 			SPAWN(I)
 			spawning_outfit.on_add(src,I)
+			world.log << "Adding [I]!"
 		else
 			log_error("Warning! Tried to spawn object [key] in equip_loadout(), but something went wrong!")
 

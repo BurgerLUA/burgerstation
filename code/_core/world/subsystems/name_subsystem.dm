@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(name)
 /subsystem/name/proc/check_duplicate_name(var/name)
 	if(name_count[name])
 		name_count[name]++
-		return "[name]([name_count[name]])"
+		return "[name] ([name_count[name]])"
 	else
 		name_count[name] = rand(1,999) //One funny thing is that you can tell at least how many of this type exists by starting it at 1, so it's random.
-		return name
+		return "[name] ([name_count[name]])"

@@ -67,6 +67,11 @@ obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE)
 		if(door_state != DOOR_STATE_CLOSED || door_state == DOOR_STATE_DENY)
 			return FALSE
 
+	if(door_state == DOOR_STATE_OPENED)
+		if(!locked && lock)
+			lock()
+		return FALSE
+
 	set_door_state(DOOR_STATE_START_OPENING,lock)
 	return TRUE
 
@@ -78,6 +83,11 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 		if(door_state != DOOR_STATE_OPENED || door_state == DOOR_STATE_DENY)
 			return FALSE
+
+	if(door_state == DOOR_STATE_CLOSED)
+		if(!locked && lock)
+			lock()
+		return FALSE
 
 	set_door_state(DOOR_STATE_CLOSING_01,lock)
 	return TRUE
@@ -119,10 +129,11 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock)
 
 		if(DOOR_STATE_OPENED)
-			opened_time = 0
-			start_thinking(src)
 			if(should_lock)
 				lock()
+			opened_time = 0
+			start_thinking(src)
+
 
 		if(DOOR_STATE_CLOSED)
 			stop_thinking(src)

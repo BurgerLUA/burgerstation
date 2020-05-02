@@ -72,6 +72,7 @@
 
 	var/list/kept_clothes = pre_perform_change(keep_clothes)
 
+	known_languages.Cut()
 	species = desired_species
 	var/species/S = all_species[species]
 	if(S.genderless)

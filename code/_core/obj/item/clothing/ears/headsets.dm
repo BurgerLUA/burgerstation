@@ -7,6 +7,7 @@
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
 /obj/item/clothing/ears/headset/fill_inventory()
+	world.log << "YES, WE'RE CALLED!"
 	stored_radio = new stored_radio(src)
 	return ..()
 

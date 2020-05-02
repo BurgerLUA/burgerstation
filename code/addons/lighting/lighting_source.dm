@@ -47,9 +47,11 @@
 // Kill ourselves.
 /light_source/Destroy()
 
+	SSlighting.light_queue -= src
 	SSlighting.total_lighting_sources--
 
 	remove_lum()
+
 	if(source_atom)
 		LAZYREMOVE(source_atom.light_sources, src)
 
@@ -65,8 +67,6 @@
 		effect_str.Cut()
 	if(affecting_turfs)
 		affecting_turfs.Cut()
-
-	SSlighting.light_queue -= src
 
 	return ..()
 
@@ -179,35 +179,33 @@
 		return
 
 	var/angle = light_angle * 0.5
+
+
+	limit_a_t = angle
+	limit_b_t = -angle
+
+	if(old_direction & NORTH)
+		limit_a_t += 90
+		limit_b_t += 90
+		test_y_offset += 1
+
+	if(old_direction & EAST)
+		limit_a_t += 0
+		limit_b_t += 0
+		test_x_offset += 1
+
+	if(old_direction & SOUTH)
+		limit_a_t -= 90
+		limit_b_t -= 90
+		test_y_offset -= 1
+
+	if(old_direction & WEST)
+		limit_a_t += 180
+		limit_b_t -= 180
+		--test_x_offset
+
+	/*
 	switch (old_direction)
-
-		/* WIP
-		if(NORTHEAST)
-			limit_a_t = angle + 45
-			limit_b_t = -(angle) - 45
-			++test_x_offset
-			++test_y_offset
-
-		if(NORTHWEST)
-			limit_a_t = angle + 135
-			limit_b_t = -(angle) + 135
-			--test_x_offset
-			++test_y_offset
-
-		if(SOUTHEAST)
-			limit_a_t = angle - 45
-			limit_b_t = -(angle) - 45
-			++test_x_offset
-			--test_y_offset
-
-		if(SOUTHWEST)
-			limit_a_t = angle + 90
-			limit_b_t = -(angle) - 135
-			--test_x_offset
-			--test_y_offset
-		*/
-
-
 		if (NORTH)
 			limit_a_t = angle + 90
 			limit_b_t = -(angle) + 90
@@ -227,6 +225,7 @@
 			limit_a_t = angle + 180
 			limit_b_t = -(angle) - 180
 			--test_x_offset
+	*/
 
 	// Convert our angle + range into a vector.
 	limit_a_x = POLAR_TO_CART_X(light_range + ARBITRARY_NUMBER, limit_a_t)
@@ -280,20 +279,21 @@
 
 /light_source/proc/update_corners(now = FALSE)
 
+
 	var/update = FALSE
 
-	if (!source_atom)
-		if(src.qdeleting)
-			log_error("!source_atom: Attempted to delete light in update_corners(), however the light was already deleted.")
-		else
-			log_error("!source_atom: There existed a light_source within a source_atom that didn't get deleted properly.")
+	if(!source_atom)
+		/* This happens normally.
+		if(!src.qdeleting)
+			log_error("LIGHTING: Attempted to update a light in update_corners(), but no source_atom existed!")
+		*/
 		return
 
 	if(source_atom.qdeleting)
-		if(src.qdeleting)
-			log_error("source_atom.qdeleting: Attempted to delete light in update_corners(), however the light was already deleted.")
-		else
-			log_error("source_atom.qdeleting: There existed a light_source within a source_atom that didn't get deleted properly.")
+		/* This happens normally.
+		if(!src.qdeleting)
+			log_error("LIGHTING: Attempted to update a light in update_corners(), but the source_atom ([source_atom.type]) is currently being deleted!")
+		*/
 		return
 
 	if (source_atom.light_power != light_power)
@@ -328,6 +328,7 @@
 		update = TRUE
 
 	if (!source_turf)
+		log_error("LIGHTING: No source_turf existed for update_corners()!")
 		return	// Somehow we've got a light in nullspace, no-op.
 
 	if (light_range && light_power && !applied)
