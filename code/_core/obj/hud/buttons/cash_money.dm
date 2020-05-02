@@ -8,7 +8,7 @@
 
 	icon_state = "currency"
 
-	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
+	flags = FLAGS_HUD_MOB
 
 	maptext_x = -2
 
@@ -47,7 +47,7 @@
 	return TRUE
 
 /obj/hud/button/toggle_cash_money
-	name = "toggle telecrystal display"
+	name = "credits"
 	screen_loc = "RIGHT-1,TOP-1"
 	icon_state = "telecrystal"
 
@@ -56,23 +56,3 @@
 	mouse_opacity = 1
 
 	has_quick_function = FALSE
-
-/obj/hud/button/toggle_cash_money/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
-	if(!is_advanced(caller))
-		return FALSE
-
-	if(screen_loc == "RIGHT,TOP-1")
-		screen_loc = "RIGHT-1,TOP-1" //Visible
-	else
-		screen_loc = "RIGHT,TOP-1" //Hidden
-
-	var/mob/living/advanced/A = caller
-
-	var/is_visible = screen_loc == "RIGHT-1,TOP-1"
-
-	for(var/obj/hud/button/cash_money/B in A.buttons)
-		animate(B,alpha = is_visible ? 255 : 0, time = is_visible ? 4 : 1)
-		B.mouse_opacity = is_visible
-
-	return ..()

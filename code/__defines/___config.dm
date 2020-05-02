@@ -7,7 +7,7 @@
 
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 
-#define MOB_HEIGHT_OFFSET 4
+#define MOB_HEIGHT_OFFSET 2
 
 #define GARBAGE_LOGS_PATH "data/server/garbage_logs.txt"
 
@@ -51,7 +51,7 @@
 #define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster. FALSE means disabled
 
@@ -70,7 +70,7 @@
 #define ENABLE_HAZARDS FALSE
 #define ENABLE_WOUNDS FALSE
 
-#define ENABLE_LORE FALSE
+#define ENABLE_LORE TRUE
 #define ENABLE_KARMA FALSE
 #define ENABLE_WIKIBOT TRUE
 

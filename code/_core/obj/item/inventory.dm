@@ -30,9 +30,14 @@
 
 /obj/item/proc/fill_inventory()
 
-	for(var/obj/item/I in contents) //This is the source of a lot of problems. Unironically.
-		INITIALIZE(I)
-		SPAWN(I)
-		add_to_inventory(null,I,FALSE,TRUE)
+	if(length(inventories))
+		for(var/obj/item/I in contents)
+			if(I.initialized)
+				continue
+			INITIALIZE(I)
+			SPAWN(I)
+			add_to_inventory(null,I,FALSE,TRUE)
 
-	return TRUE
+		return TRUE
+
+	return FALSE

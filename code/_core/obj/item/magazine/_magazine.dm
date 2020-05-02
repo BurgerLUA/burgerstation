@@ -21,10 +21,16 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-/obj/item/magazine/fill_inventory()
+/obj/item/magazine/on_spawn()
+
 	for(var/i=1, i <= bullet_count_max, i++)
-		stored_bullets += new ammo(src)
+		var/obj/item/bullet_cartridge/B = new ammo(src)
+		INITIALIZE(B)
+		SPAWN(B)
+		stored_bullets += B
+
 	update_sprite()
+
 	return ..()
 
 /obj/item/magazine/Destroy()

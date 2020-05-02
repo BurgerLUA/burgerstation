@@ -1,6 +1,8 @@
+#define DEFAULT_NAME "Your name here."
+
 /mob/living/advanced
 
-	name = "humanoid"
+	name = DEFAULT_NAME
 	var/real_name
 
 	var/species = "human"
@@ -299,7 +301,7 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/setup_name()
 
-	if(name == "humanoid") //Not unique.
+	if(name == DEFAULT_NAME) //Not unique.
 		name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 		real_name = name
 
@@ -316,10 +318,7 @@ mob/living/advanced/Login()
 	for(var/key in items_to_add)
 		var/obj/item/I = new key(get_turf(src))
 		if(istype(I))
-			INITIALIZE(I)
-			SPAWN(I)
 			spawning_outfit.on_add(src,I)
-			world.log << "Adding [I]!"
 		else
 			log_error("Warning! Tried to spawn object [key] in equip_loadout(), but something went wrong!")
 

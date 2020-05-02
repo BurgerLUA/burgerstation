@@ -36,10 +36,24 @@
 		log_error("WARNING: INVALID SPECIES: [species].")
 		return FALSE
 
+	var/obj/hud/screen/B
 	var/initially_disabled = FALSE
 	if(client)
 		initially_disabled = client.disable_controls
 		client.disable_controls = TRUE
+		B = new()
+		B.icon = 'icons/hud/discovery.dmi' //320x320
+		B.icon_state = "black"
+		B.screen_loc = "CENTER-4.5,CENTER-4.5"
+		B.client = src.client
+		B.maptext = "<font size='4'>Loading...</font>"
+		B.maptext_width = 320
+		B.maptext_height = 300
+		B.maptext_y = 20
+		B.mouse_opacity = 0
+		B.layer = 99 //I DON'T GIFE A FUKC
+		client.screen += B
+		client.update_zoom(3)
 	if(sex == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
 		for(var/key in S.spawning_organs_female)
 			add_organ(S.spawning_organs_female[key])
@@ -48,8 +62,14 @@
 		for(var/key in S.spawning_organs_male)
 			add_organ(S.spawning_organs_male[key])
 			if(world_state == STATE_RUNNING) sleep(world.tick_lag)
-	if(client && !initially_disabled)
-		client.disable_controls = FALSE
+
+	if(client)
+		if(B)
+			client.screen -= B
+			qdel(B)
+			client.update_zoom(2)
+		if(!initially_disabled)
+			client.disable_controls = FALSE
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 
