@@ -26,6 +26,9 @@
 
 	view_punch = 6
 
+	heat_per_shot = 0.03
+	heat_max = 0.2
+
 /obj/item/weapon/ranged/energy/hybrid/carbine/update_icon()
 
 	icon_state = initial(icon_state)
@@ -48,7 +51,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/get_static_spread() //Base spread
-	return 0.05
+	return 0.03
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.4 * L.get_skill_power(SKILL_RANGED)))

@@ -23,6 +23,15 @@
 
 	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
 
+	heat_per_shot = 0.04
+	heat_max = 0.2
+
+/obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
+	return 0.01
+
+/obj/item/weapon/ranged/energy/rifle/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.02 - (0.3 * L.get_skill_power(SKILL_RANGED)))
+
 /obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
 	update_sprite()

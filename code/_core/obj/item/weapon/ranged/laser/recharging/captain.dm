@@ -20,6 +20,9 @@
 
 	view_punch = 4
 
+	heat_per_shot = 0.07
+	heat_max = 0.2
+
 /obj/item/weapon/ranged/energy/recharging/captain/update_icon()
 
 	icon_state = initial(icon_state)
@@ -33,3 +36,9 @@
 	icon = I
 
 	return ..()
+
+/obj/item/weapon/ranged/energy/recharging/captain/get_static_spread() //Base spread
+	return 0.02
+
+/obj/item/weapon/ranged/energy/recharging/captain/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.03 - (0.6 * L.get_skill_power(SKILL_RANGED)))

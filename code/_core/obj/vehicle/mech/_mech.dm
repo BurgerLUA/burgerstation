@@ -42,17 +42,15 @@
 
 /mob/living/vehicle/mech/ripley/full/New(var/desired_loc)
 	..()
-	var/obj/item/weapon/ranged/energy/unlimited/U1 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
 	INITIALIZE(U1)
 	SPAWN(U1)
 	attach_equipment(U1)
 
-	var/obj/item/weapon/ranged/energy/unlimited/U2 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U2 = new(src.loc)
 	INITIALIZE(U2)
 	SPAWN(U2)
 	attach_equipment(U2)
-
-
 
 /mob/living/vehicle/mech/gygax
 	name = "\improper MK2 Gygax"

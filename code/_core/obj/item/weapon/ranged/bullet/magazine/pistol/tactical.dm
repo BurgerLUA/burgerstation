@@ -15,8 +15,8 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
-	heat_per_shot = 0.04
-	heat_max = 0.2
+	heat_per_shot = 0.015
+	heat_max = 0.05
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -27,10 +27,10 @@
 	bullet_diameter_max = 12
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread() //Base spread
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
 	name = ".45 1911 Pistol MOD"
@@ -49,6 +49,12 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
-	heat_per_shot = 0.03
-	heat_max = 0.15
+	heat_per_shot = 0.01
+	heat_max = 0.025
 
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread() //Base spread
+	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))

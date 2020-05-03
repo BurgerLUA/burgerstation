@@ -12,8 +12,8 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
-	heat_per_shot = 0.05
-	heat_max = 0.2
+	heat_per_shot = 0.01
+	heat_max = 0.05
 
 	bullet_length_min = 30
 	bullet_length_best = 33
@@ -24,10 +24,10 @@
 	bullet_diameter_max = 13
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread() //Base spread
-	return 0
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
 	name = ".50 Gold Eagle"

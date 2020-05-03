@@ -5,7 +5,7 @@
 	icon_state = "inventory"
 
 
-	projectile_speed = 31
+	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 20
 
 	automatic = FALSE
@@ -15,7 +15,7 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = 32
+	view_punch = TILE_SIZE - 1
 
 	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
 

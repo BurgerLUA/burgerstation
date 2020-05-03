@@ -30,10 +30,13 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
+	heat_per_shot = 0.05
+	heat_max = 0.1
+
 	value = 60
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread
 	return 0.2
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.1 - (0.2 * L.get_skill_power(SKILL_RANGED)))

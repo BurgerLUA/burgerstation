@@ -22,8 +22,8 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
 
-	heat_per_shot = 0.05
-	heat_max = 0.3
+	heat_per_shot = 0.03
+	heat_max = 0.15
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -62,4 +62,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.1 - (0.15 * L.get_skill_power(SKILL_RANGED)))

@@ -12,8 +12,6 @@
 
 	bullet_count_max = 8
 
-
-
 	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
@@ -32,16 +30,19 @@
 
 	value = 130
 
+	heat_per_shot = 0.1
+	heat_max = 0.3
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.1
-	return 0.025
+	return 0.03
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.1 - (0.2 * L.get_skill_power(SKILL_RANGED)))
 
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
@@ -74,4 +75,4 @@
 	return 0.05
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.1 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.075 - (0.1 * L.get_skill_power(SKILL_RANGED))

@@ -42,4 +42,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.03 - (0.05 * L.get_skill_power(SKILL_RANGED)))

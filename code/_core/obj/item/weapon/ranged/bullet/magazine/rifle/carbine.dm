@@ -6,9 +6,6 @@
 	view_punch = 4
 	shoot_sounds = list('sounds/weapons/223/shoot.ogg')
 
-	heat_per_shot = 0.005
-	heat_max = 0.05
-
 	bullet_length_min = 40
 	bullet_length_best = 45
 	bullet_length_max = 46
@@ -23,6 +20,9 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
+
+	heat_per_shot = 0.01
+	heat_max = 0.03
 
 	value = 100
 
@@ -39,10 +39,10 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_static_spread() //Base spread
-	return 0.02
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.05 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")
 	return 'sounds/weapons/gun/smg/smg_rack.ogg'
@@ -50,10 +50,16 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = ".223 Carbine MOD"
 	icon = 'icons/obj/items/weapons/ranged/rifle/223_mod.dmi'
-	heat_per_shot = 0.01
-	heat_max = 0.1
+	heat_per_shot = 0.02
+	heat_max = 0.06
 
 	size = SIZE_2
 	weight = WEIGHT_2
 
 	value = 120
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread() //Base spread
+	return 0.05
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))

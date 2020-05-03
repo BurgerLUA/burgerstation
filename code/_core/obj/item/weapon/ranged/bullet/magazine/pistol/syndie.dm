@@ -21,8 +21,8 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
-	heat_per_shot = 0.05
-	heat_max = 0.2
+	heat_per_shot = 0.01
+	heat_max = 0.1
 
 	bullet_length_min = 25
 	bullet_length_best = 32
@@ -33,10 +33,10 @@
 	bullet_diameter_max = 11
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_static_spread() //Base spread
-	return 0.01
+	return 0.0025
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
 	name = "10mm Stechkin MOD"

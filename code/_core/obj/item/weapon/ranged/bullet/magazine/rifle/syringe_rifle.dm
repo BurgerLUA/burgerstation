@@ -23,7 +23,7 @@
 	requires_cock_each_shot = TRUE
 
 	heat_per_shot = 0.01
-	heat_max = 0.05
+	heat_max = 0.03
 
 	bullet_length_min = 18.5
 	bullet_length_best = 18.5
@@ -55,4 +55,4 @@
 	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.04 - (0.04 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 7
+	shoot_delay = 4
 
 	automatic = FALSE
 
@@ -31,8 +31,11 @@
 
 	value = 80
 
+	heat_per_shot = 0.04
+	heat_max = 0.1
+
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
 	return 0.01
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.04 - (0.04 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))

@@ -21,7 +21,7 @@
 	weight = WEIGHT_3
 
 	heat_per_shot = 0.01
-	heat_max = 0.1
+	heat_max = 0.05
 
 	bullet_length_min = 21
 	bullet_length_best = 22
@@ -44,7 +44,7 @@
 	..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_static_spread() //Base spread
-	return 0.04
+	return 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.02 - (0.02 * L.get_skill_power(SKILL_RANGED))
+	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))

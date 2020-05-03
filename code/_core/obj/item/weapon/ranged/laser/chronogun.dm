@@ -19,3 +19,12 @@
 	view_punch = 31
 
 	shoot_sounds = list('sounds/weapons/chronogun/fire.ogg')
+
+	heat_per_shot = 0.1
+	heat_max = 0.2
+
+/obj/item/weapon/ranged/energy/chronogun/get_static_spread() //Base spread
+	return 0.005
+
+/obj/item/weapon/ranged/energy/chronogun/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))

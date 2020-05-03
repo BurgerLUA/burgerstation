@@ -22,6 +22,15 @@
 
 	override_icon_state = TRUE
 
+	heat_per_shot = 0.1
+	heat_max = 0.2
+
+/obj/item/weapon/ranged/energy/freezegun/get_static_spread() //Base spread
+	return 0.003
+
+/obj/item/weapon/ranged/energy/freezegun/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+
 /obj/item/weapon/ranged/energy/freezegun/update_icon()
 
 	if(charge_cost < charge_current)

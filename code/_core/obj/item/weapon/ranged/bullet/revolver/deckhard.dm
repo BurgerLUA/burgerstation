@@ -5,7 +5,7 @@
 	icon_state = "inventory"
 
 	projectile_speed = 31
-	shoot_delay = 8
+	shoot_delay = 6
 
 	automatic = TRUE
 
@@ -30,10 +30,13 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
+	heat_per_shot = 0.04
+	heat_max = 0.1
+
 	value = 60
 
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread() //Base spread
-	return 0.01
+	return 0
 
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.02 - (0.02 * L.get_skill_power(SKILL_RANGED))
+	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
