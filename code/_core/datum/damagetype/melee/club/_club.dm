@@ -1,6 +1,5 @@
 /damagetype/melee/club/
 	name = "blunt object"
-	id = "blunt"
 
 	impact_sounds = list(
 		'sounds/weapons/blunt/metal_smash.ogg',

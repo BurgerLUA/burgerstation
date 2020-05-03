@@ -1,11 +1,10 @@
 /damagetype/ranged/laser/carbine
 	name = "laser carbine kill mode"
-	id = "laser_carbine_kill"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = DAMAGE_C,
-		HEAT = DAMAGE_D
+		HEAT = 10,
+		LASER = 35
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -16,11 +15,10 @@
 
 /damagetype/ranged/laser/carbine/stun
 	name = "laser carbine stun mode"
-	id = "laser_carbine_stun"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = DAMAGE_B
+		FATIGUE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -29,14 +27,12 @@
 	)
 
 /damagetype/ranged/laser/carbine/captain
-
 	name = "captain's laser pistol"
-	id = "laser_captain"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = DAMAGE_C,
-		HEAT = DAMAGE_C
+		HEAT = 10,
+		LASER = 25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

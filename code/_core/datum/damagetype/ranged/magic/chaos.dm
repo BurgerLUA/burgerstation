@@ -1,15 +1,14 @@
 /damagetype/ranged/magic/chaos
 	name = "chaos ball"
-	id = "magic_chaosball"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		MAGIC = DAMAGE_D,
-		DARK = DAMAGE_C
+		MAGIC = 5,
+		DARK = 5
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = CLASS_C
+		ATTRIBUTE_INTELLIGENCE = 30
 	)
 
 	attribute_damage = list(
@@ -17,16 +16,11 @@
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = CLASS_C,
-		SKILL_MAGIC = CLASS_D
+		SKILL_SORCERY = 10,
+		SKILL_MAGIC = 10
 	)
 
 	skill_damage = list(
 		SKILL_SORCERY = DARK,
 		SKILL_MAGIC = MAGIC
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_SORCERY = SKILL_B,
-		SKILL_MAGIC = SKILL_C
 	)

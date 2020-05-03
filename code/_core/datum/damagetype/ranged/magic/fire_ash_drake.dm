@@ -1,19 +1,18 @@
 /damagetype/ranged/magic/fire/ash_drake
 	name = "ash drake's true fire breath"
-	id = "ash_drake_fire"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = DAMAGE_B
+		HEAT = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HEAT = ARMOR_B
+		HEAT = 50
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = CLASS_C
+		ATTRIBUTE_INTELLIGENCE = 25
 	)
 
 	attribute_damage = list(
@@ -21,13 +20,9 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = CLASS_C,
+		SKILL_MAGIC = 25,
 	)
 
 	skill_damage = list(
 		SKILL_MAGIC = HEAT
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MAGIC = SKILL_C
 	)

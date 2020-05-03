@@ -1,7 +1,6 @@
 //Fists
 /damagetype/unarmed/fists/
 	name = "fist"
-	id = "fist"
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -35,14 +34,8 @@
 		SKILL_UNARMED = BLUNT
 	)
 
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_C
-	)
-
-
 /damagetype/unarmed/fists/help
 	name = "help fists"
-	id = "fist_help"
 	attack_verbs = list("hug")
 
 	impact_sounds = list(
@@ -77,14 +70,8 @@
 
 	)
 
-	skill_xp_per_damage = list(
-
-	)
-
-
 /damagetype/unarmed/fists/disarm
 	name = "disarm fists"
-	id = "fist_disarm"
 	attack_verbs = list("shove")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
@@ -117,10 +104,6 @@
 		SKILL_UNARMED = FATIGUE
 	)
 
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_C
-	)
-
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(victim))
@@ -131,7 +114,6 @@
 
 /damagetype/unarmed/fists/grab
 	name = "grab fists"
-	id = "fist_grab"
 	attack_verbs = list("grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
@@ -166,10 +148,6 @@
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_C
 	)
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

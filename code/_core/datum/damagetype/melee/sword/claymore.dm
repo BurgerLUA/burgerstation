@@ -1,82 +1,67 @@
 /damagetype/melee/sword/claymore
 	name = "claymore"
-	id = "sword_claymore"
-
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_C,
-		PIERCE = DAMAGE_D,
+		BLADE = 20,
+		PIERCE = 10,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_C,
-		PIERCE = ARMOR_C,
+		BLADE = 25,
+		PIERCE = 25,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
-		ATTRIBUTE_DEXTERITY = CLASS_D,
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 10,
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = PIERCE
+		ATTRIBUTE_STRENGTH = list(BLADE,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLADE,PIERCE)
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_B
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLADE
+		SKILL_MELEE = list(BLADE,PIERCE)
 	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_B
-	)
-
 
 /damagetype/melee/sword/claymore/cult
 	name = "cult claymore"
-	id = "sword_claymore_cult"
-
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_D,
-		PIERCE = DAMAGE_D,
-		DARK = DAMAGE_C
+		BLADE = 20,
+		PIERCE = 10,
+		UNHOLY = 50
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_D,
-		PIERCE = ARMOR_D,
-		DARK = ARMOR_S
+		BLADE = 25,
+		PIERCE = 25,
+		UNHOLY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_D,
-		ATTRIBUTE_INTELLIGENCE = CLASS_D
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 10,
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = PIERCE,
-		ATTRIBUTE_INTELLIGENCE = DARK
+		ATTRIBUTE_STRENGTH = list(BLADE,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLADE,PIERCE)
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_B
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLADE
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_B
+		SKILL_MELEE = list(BLADE,PIERCE)
 	)

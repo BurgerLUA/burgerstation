@@ -1,13 +1,12 @@
 /damagetype/ranged/laser/chronogun
 	name = "chronogun beam"
-	id = "chronogun"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		MAGIC = DAMAGE_D,
-		COLD = DAMAGE_C,
-		BIO = DAMAGE_D,
-		RAD = DAMAGE_D
+		MAGIC = 10,
+		COLD = 20,
+		BIO = 10,
+		RAD = 30
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

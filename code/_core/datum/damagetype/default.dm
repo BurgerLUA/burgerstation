@@ -1,10 +1,9 @@
 /damagetype/default/
 	name = "default"
-	id = "default"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_C,
+		BLUNT = 10,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -13,7 +12,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_E
+		ATTRIBUTE_STRENGTH = 0.2
 	)
 
 	attribute_damage = list(
@@ -21,13 +20,9 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_E,
+		SKILL_MELEE = 0.1,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_E
 	)

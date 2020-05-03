@@ -1,7 +1,6 @@
 //Feet
 /damagetype/unarmed/feet/
 	name = "foot"
-	id = "foot"
 	attack_verbs = list("kick")
 
 
@@ -33,10 +32,6 @@
 
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT,
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_A
 	)
 
 	throw_mul = 1

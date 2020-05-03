@@ -1,41 +1,26 @@
 /damagetype/npc/spider
 	name = "spider fang"
-	id = "spider"
 	attack_verbs = list("bite","chomp","scratch")
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		PIERCE = DAMAGE_D,
-		BIO = DAMAGE_C
+		PIERCE = 5,
+		BIO = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		PIERCE = ARMOR_C,
-		BIO = ARMOR_B
+		PIERCE = 25,
+		BIO = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_D,
-		ATTRIBUTE_VITALITY = CLASS_D
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_VITALITY = 50
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = PIERCE,
-		ATTRIBUTE_DEXTERITY = PIERCE,
 		ATTRIBUTE_VITALITY = BIO
-	)
-
-	skill_stats = list(
-		SKILL_UNARMED = CLASS_D
-	)
-
-	skill_damage = list(
-		SKILL_UNARMED = PIERCE
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_D
 	)

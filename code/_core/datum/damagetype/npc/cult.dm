@@ -1,55 +1,5 @@
-/damagetype/npc/cultist
-	name = "dark blade"
-	id = "cultist"
-	attack_verbs = list("slash","stab")
-
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	attack_damage_base = list(
-		BLADE = DAMAGE_D,
-		PIERCE = DAMAGE_E,
-		MAGIC = DAMAGE_E,
-		DARK = DAMAGE_C
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLADE = ARMOR_F,
-		PIERCE = ARMOR_F,
-		MAGIC = ARMOR_C,
-		DARK = ARMOR_C
-	)
-
-	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_DEXTERITY = CLASS_C,
-		ATTRIBUTE_INTELLIGENCE = CLASS_A
-	)
-
-	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = BLADE,
-		ATTRIBUTE_INTELLIGENCE = MAGIC
-	)
-
-	skill_stats = list(
-		SKILL_MELEE = CLASS_D,
-		SKILL_PRAYER = CLASS_A
-	)
-
-	skill_damage = list(
-		SKILL_MELEE = BLADE,
-		SKILL_PRAYER = DARK
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_D,
-		SKILL_PRAYER = SKILL_B
-	)
-
 /damagetype/npc/harvester
 	name = "harvester strike"
-	id = "harvester"
 	attack_verbs = list("slash","pummel")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

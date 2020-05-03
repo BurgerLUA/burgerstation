@@ -1,60 +1,43 @@
-/damagetype/flashlight
-	name = "flash light"
-	id = "flashlight"
+/damagetype/melee/club/torch/
+	name = "torch"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_E
+		BLUNT = 10,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_F
+		BLUNT = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_E
+		ATTRIBUTE_STRENGTH = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_E
+		SKILL_MELEE = 10
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLUNT
+		SKILL_MELEE = BLUNT,
 	)
 
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_E
-	)
-
-/damagetype/flashlight/on
-
-	name = "flashlight"
-	id = "flashlight_on"
+/damagetype/melee/club/torch/on
+	name = "torch"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HOLY = DAMAGE_B
+		BLUNT = 10,
+		HEAT = 30
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HOLY = ARMOR_F
+		BLUNT = 0,
+		HEAT = 0
 	)
-
-	attribute_stats = list()
-
-	attribute_damage = list()
-
-	skill_stats = list()
-
-	skill_damage = list()
-
-	skill_xp_per_damage = list()

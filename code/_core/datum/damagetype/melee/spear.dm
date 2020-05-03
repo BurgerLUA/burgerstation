@@ -1,19 +1,19 @@
 /damagetype/melee/spear/
 	name = "spear"
-	id = "spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_B,
-		BLADE = DAMAGE_C
+		PIERCE = 20,
+		BLADE = 10
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = ARMOR_A
+		PIERCE = 25,
+		BLADE = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_C
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
@@ -22,33 +22,30 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_C
+		SKILL_MELEE = 20
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = PIERCE
 	)
 
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_B
-	)
-
 /damagetype/melee/spear/thrown
-	name = "spear"
-	id = "spear_thrown"
+
+	name = "thrown spear"
 
 	attack_damage_base = list(
-		PIERCE = DAMAGE_A,
-		BLADE = DAMAGE_B
+		PIERCE = 40,
+		BLADE = 20
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = ARMOR_S
+		PIERCE = 100,
+		BLADE = 100
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -57,16 +54,11 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_D,
-		SKILL_RANGED = CLASS_B
+		SKILL_MELEE = 10,
+		SKILL_RANGED = 20
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = PIERCE,
 		SKILL_RANGED = PIERCE
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_D,
-		SKILL_RANGED = SKILL_B
 	)

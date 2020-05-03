@@ -1,63 +1,48 @@
 /damagetype/melee/sword/chainsaw
 	name = "chainsaw"
-	id = "chainsaw_off"
-
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_C,
-		PIERCE = DAMAGE_D,
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLADE = ARMOR_D,
-		PIERCE = ARMOR_C,
+		BLADE = 20,
+		BLUNT = 10,
+		PIERCE = 5
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_DEXTERITY = CLASS_E,
+		ATTRIBUTE_STRENGTH = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = PIERCE
+		ATTRIBUTE_STRENGTH = list(BLADE,BLUNT,PIERCE)
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_E
+		SKILL_MELEE = 10
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE
 	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_E
-	)
-
 
 /damagetype/melee/sword/chainsaw/on
 	name = "chainsaw"
-	id = "chainsaw_on"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_B,
-		PIERCE = DAMAGE_D,
+		BLADE = 50,
+		PIERCE = 30,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_C,
-		PIERCE = ARMOR_C
+		BLADE = 50,
+		PIERCE = 50
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_DEXTERITY = CLASS_E,
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 10,
 	)
 
 	attribute_damage = list(
@@ -66,13 +51,9 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_E
+		SKILL_MELEE = 10
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLADE
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_D
+		SKILL_MELEE = PIERCE
 	)

@@ -1,24 +1,23 @@
-/damagetype/melee/club/null_staff
-	name = "null staff"
+/damagetype/melee/dagger/null_dagger
+	name = "null dagger"
 
 	attack_damage_base = list(
-		BLUNT = 10,
+		BLADE = 20,
+		PIERCE = 20,
 		HOLY = 0
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = 20,
+		BLADE = 10,
 		HOLY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 10,
-		ATTRIBUTE_DEXTERITY = 30
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_DEXTERITY = list(BLADE,PIERCE)
 	)
 
 	skill_stats = list(
@@ -27,6 +26,6 @@
 	)
 
 	skill_damage = list(
-		SKILL_MELEE = BLUNT,
+		SKILL_MELEE = list(BLADE,PIERCE),
 		SKILL_PRAYER = HOLY
 	)

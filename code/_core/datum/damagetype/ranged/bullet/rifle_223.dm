@@ -1,11 +1,10 @@
 /damagetype/ranged/bullet/rifle_223
 	name = "rifle bullet"
-	id = ".223"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_D,
-		PIERCE = DAMAGE_C
+		BLUNT = 10,
+		PIERCE = 35
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

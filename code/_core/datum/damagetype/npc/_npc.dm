@@ -1,8 +1,6 @@
 /damagetype/npc/
 	name = "NPC"
 
-	skill_xp_per_damage = list()
-
 	draw_blood = TRUE
 
 /damagetype/npc/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)

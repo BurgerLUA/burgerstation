@@ -1,7 +1,5 @@
 /damagetype/
 	var/name = "Damage type."
-	var/id = null
-
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
@@ -82,6 +80,7 @@
 	)
 
 
+	//Skill modifiers from 0 to 100.
 	var/list/attribute_stats = list(
 		ATTRIBUTE_STRENGTH = CLASS_F,
 		ATTRIBUTE_DEXTERITY = CLASS_F,
@@ -104,12 +103,6 @@
 		SKILL_UNARMED = BLADE,
 		SKILL_MELEE = BLADE,
 		SKILL_RANGED = BLADE
-	)
-
-	var/list/skill_xp_per_damage = list(
-		SKILL_UNARMED = 0,
-		SKILL_MELEE = 0,
-		SKILL_RANGED = 0
 	)
 
 	var/use_blamed_stats = FALSE
@@ -209,11 +202,20 @@
 
 	for(var/attribute in attribute_stats)
 		var/class = attribute_stats[attribute]
-		new_attack_damage[attribute_damage[attribute]] += L.get_attribute_level(attribute) * class
+		if(!islist(attribute_damage[attribute]))
+			new_attack_damage[attribute_damage[attribute]] += FLOOR(L.get_attribute_level(attribute) * class * 0.01,1)
+		else
+			for(var/att in attribute_damage[attribute])
+				new_attack_damage[att] += FLOOR(L.get_attribute_level(attribute) * class * 0.01 * (1/length(attribute_damage[attribute])),1)
+
 
 	for(var/skill in skill_stats)
 		var/class = skill_stats[skill]
-		new_attack_damage[skill_damage[skill]] += L.get_skill_level(skill)* class
+		if(!islist(skill_damage[skill]))
+			new_attack_damage[skill_damage[skill]] += FLOOR(L.get_skill_level(skill) * class * 0.01,1)
+		else
+			for(var/ski in skill_damage[skill])
+				new_attack_damage[ski] += FLOOR(L.get_skill_level(skill) * class * 0.01 * (1/length(skill_damage[skill])),1)
 
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= hit_object.health.damage_multiplier*damage_multiplier
@@ -309,8 +311,8 @@
 			if(is_living(attacker) && attacker != victim && total_damage_dealt)
 				var/mob/living/A = attacker
 				if(A.client)
-					for(var/skill in skill_xp_per_damage)
-						var/xp_to_give = FLOOR(skill_xp_per_damage[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
+					for(var/skill in skill_stats)
+						var/xp_to_give = FLOOR(skill_stats[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
 

@@ -1,38 +1,30 @@
 /damagetype/melee/club/null_rod
 	name = "null rod"
-	id = "null_rod"
 
 	attack_damage_base = list(
-		BLUNT = DAMAGE_C,
-		HOLY = DAMAGE_F
+		BLUNT = 20,
+		HOLY = 0
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_D,
-		HOLY = ARMOR_B
+		BLUNT = 10,
+		HOLY = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_STRENGTH = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_C,
-		SKILL_PRAYER = CLASS_A
+		SKILL_MELEE = 10,
+		SKILL_PRAYER = 50
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT,
 		SKILL_PRAYER = HOLY
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_PRAYER = SKILL_A,
-		SKILL_MELEE = SKILL_C
 	)

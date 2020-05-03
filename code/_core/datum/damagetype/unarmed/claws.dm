@@ -1,30 +1,36 @@
-/damagetype/ranged/magic/fireball
-	name = "fire ball"
+/damagetype/unarmed/claw/
+	name = "claw"
+	attack_verbs = list("claw")
+
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		MAGIC = 10,
-		HEAT = 20
+		BLADE = 10,
+		PIERCE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		MAGIC = 25,
-		HEAT = 25
+		BLADE = 25,
+		PIERCE = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 40
+		ATTRIBUTE_STRENGTH = 50,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = MAGIC
+		ATTRIBUTE_STRENGTH = list(BLADE,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLADE,PIERCE)
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 40
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = MAGIC
+		SKILL_UNARMED = list(BLADE,PIERCE),
 	)
+
+	throw_mul = 1

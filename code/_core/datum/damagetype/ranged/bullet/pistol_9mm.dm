@@ -1,11 +1,10 @@
 /damagetype/ranged/bullet/pistol_9mm
 	name = "pistol bullet"
-	id = "9mm"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_E,
-		PIERCE = DAMAGE_D
+		BLUNT = 15,
+		PIERCE = 30
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

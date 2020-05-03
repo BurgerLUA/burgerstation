@@ -1,86 +1,54 @@
 /damagetype/npc/xenomorph
 	name = "xenomorph claw"
-	id = "xenomorph"
 	attack_verbs = list("claw","scratch","maul")
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_C,
-		BLUNT = DAMAGE_E,
-		PIERCE = DAMAGE_C,
-		FATIGUE = DAMAGE_D
+		BLADE = 15,
+		PIERCE = 5,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
-		FATIGUE = ARMOR_C
+		BLADE = 25,
+		BLUNT = 25,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
-		ATTRIBUTE_DEXTERITY = CLASS_A
+		ATTRIBUTE_STRENGTH = 30,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLADE,
 		ATTRIBUTE_DEXTERITY = PIERCE
-	)
-
-	skill_stats = list(
-		SKILL_UNARMED = CLASS_D
-	)
-
-	skill_damage = list(
-		SKILL_UNARMED = FATIGUE
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_D
 	)
 
 /damagetype/npc/xenomorph/queen
 	name = "queen xenomorph poison claw"
-	id = "xenomorph_queen"
 	attack_verbs = list("claw","scratch","maul")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = DAMAGE_B,
-		BLUNT = DAMAGE_D,
-		PIERCE = DAMAGE_C,
-		BIO = DAMAGE_C
+		BLADE = 20,
+		PIERCE = 10,
+		BIO = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_B,
-		BIO = ARMOR_F
+		BLADE = 50,
+		PIERCE = 50,
+		BIO = 75
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLADE,
 		ATTRIBUTE_DEXTERITY = PIERCE
-	)
-
-	skill_stats = list(
-		SKILL_UNARMED = CLASS_D,
-	)
-
-	skill_damage = list(
-		SKILL_UNARMED = BLUNT
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = SKILL_D
 	)

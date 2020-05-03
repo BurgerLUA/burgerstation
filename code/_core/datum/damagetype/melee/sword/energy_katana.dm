@@ -1,59 +1,48 @@
-/damagetype/sword/energy/katana
-	name = "energy katana"
-	id = "energy_katana_off"
+/damagetype/sword/energy_katana
+	name = "inactive energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_E,
-		FATIGUE = DAMAGE_D
+		BLUNT = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_D,
-		FATIGUE = ARMOR_A
+		BLUNT = 5
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_C
+		ATTRIBUTE_STRENGTH = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_D,
+		SKILL_MELEE = 10,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT
 	)
 
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_D
-	)
-
-
-/damagetype/sword/energy/katana/on
-	name = "energy katana"
-	id = "energy_katana_on"
+/damagetype/sword/energy_katana/on
+	name = "energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = DAMAGE_B
+		LASER = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = ARMOR_B
+		LASER = 50
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_E,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_DEXTERITY = 40
 	)
 
 	attribute_damage = list(
@@ -62,13 +51,9 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = CLASS_D,
+		SKILL_MELEE = 40,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = LASER
-	)
-
-	skill_xp_per_damage = list(
-		SKILL_MELEE = SKILL_D
 	)

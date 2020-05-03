@@ -6,12 +6,10 @@ SUBSYSTEM_DEF(damagetype)
 	priority = SS_ORDER_PRELOAD
 
 /subsystem/damagetype/Initialize()
+
 	for(var/A in subtypesof(/damagetype/))
 		var/damagetype/D = new A
-		if(D.id)
-			all_damage_types[D.id] = D
-		else
-			qdel(D)
+		all_damage_types[D.type] = D
 
 	log_subsystem(name,"Initialized [length(all_damage_types)] damage types.")
 
