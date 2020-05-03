@@ -1,4 +1,4 @@
-/damagetype/sword/
+/damagetype/melee/sword/
 	name = "sword"
 
 	impact_sounds = list(

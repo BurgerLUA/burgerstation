@@ -3,8 +3,8 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	var/damage_type_on
-	var/damage_type_off
+	damage_type = /damagetype/melee/sword/energy
+	var/damage_type_on = /damagetype/melee/sword/energy/on
 
 /obj/item/weapon/melee/energy/click_self(var/atom/caller)
 	enabled = !enabled
@@ -22,7 +22,7 @@
 		icon_state = "[initial(icon_state)]_on"
 		icon_state_held_left = "[initial(icon_state_held_left)]_on"
 		icon_state_held_right = "[initial(icon_state_held_right)]_on"
-		damage_type = "[initial(damage_type)]_on"
+		damage_type = damage_type_on
 	else
 		icon_state = initial(icon_state)
 		icon_state_held_left = initial(icon_state_held_left)
@@ -37,12 +37,14 @@
 	name = "energy sword"
 	desc = "A blade made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
-	damage_type = "sword_energy"
 
 	attack_delay = 4
 	attack_delay_max = 8
 
 	value = 80
+
+	damage_type = /damagetype/melee/sword/energy
+	damage_type_on = /damagetype/melee/sword/energy/on
 
 /obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
 	. = ..()
@@ -68,9 +70,13 @@
 	name = "energy shield"
 	desc = "A shield made out of ENERGY. Please do not sue."
 	icon = 'icons/obj/items/weapons/melee/laser/shield.dmi'
-	damage_type = "shield_energy"
+
+	damage_type = /damagetype/melee/club/shield/energy
+	damage_type_on = /damagetype/melee/club/shield/energy/on
 
 	value = 60
+
+
 
 /obj/item/weapon/melee/energy/shield/blue
 	color = "#0000FF"
@@ -87,5 +93,7 @@
 /obj/item/weapon/melee/energy/sword/katana
 	name = "energy katana"
 	icon = 'icons/obj/items/weapons/melee/laser/katana.dmi'
-	damage_type = "energy_katana"
 	color = "#FFFFFF"
+
+	damage_type = /damagetype/sword/energy_katana
+	damage_type_on = /damagetype/melee/sword/energy_katana/on

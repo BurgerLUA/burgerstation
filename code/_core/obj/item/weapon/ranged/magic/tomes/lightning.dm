@@ -11,7 +11,7 @@
 
 	projectile = /obj/projectile/bullet/lightning_bolt
 
-	damage_type = "magic_lightning"
+	damage_type = /damagetype/ranged/magic/lightning
 
 	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
 

@@ -3,7 +3,7 @@
 	id = "ash_drake"
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
-	damage_type = "ash_drake_claw"
+	damage_type = /damagetype/unarmed/claw/
 	class = "ash_drake"
 
 	pixel_x = -16

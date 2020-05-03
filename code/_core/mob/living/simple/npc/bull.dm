@@ -10,7 +10,7 @@
 
 	ai = /ai/
 	class = "bull"
-	damage_type = "bull_gore"
+	damage_type = /damagetype/npc/bull
 
 /mob/living/simple/npc/bull/post_death()
 	..()

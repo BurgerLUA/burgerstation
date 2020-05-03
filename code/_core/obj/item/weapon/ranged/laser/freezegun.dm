@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/laser/freezegun.dmi'
 
 	projectile = /obj/projectile/bullet/laser
-	damage_type = "freezegun"
+	damage_type = /damagetype/ranged/laser/freezegun
 
 	projectile_speed = 8
 	shoot_delay = 7

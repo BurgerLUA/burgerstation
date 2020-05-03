@@ -27,7 +27,7 @@
 		SKILL_MELEE = BLUNT
 	)
 
-/damagetype/sword/energy_katana/on
+/damagetype/melee/sword/energy_katana/on
 	name = "energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

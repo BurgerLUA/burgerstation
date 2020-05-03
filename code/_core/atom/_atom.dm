@@ -13,7 +13,7 @@
 	var/mana_base = 1
 	var/stamina_base = 1
 
-	var/damage_type = "default" //The id of the damage type of the weapon, if any.
+	var/damage_type = /damagetype/default //The id of the damage type of the weapon, if any.
 
 	var/collision_flags = FLAG_COLLISION_NONE
 	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

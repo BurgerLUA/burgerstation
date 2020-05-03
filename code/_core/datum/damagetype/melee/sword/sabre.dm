@@ -1,4 +1,4 @@
-/damagetype/sword/sabre
+/damagetype/melee/sword/sabre
 	name = "sabre"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

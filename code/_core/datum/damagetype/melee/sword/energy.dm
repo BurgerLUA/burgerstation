@@ -1,4 +1,4 @@
-/damagetype/sword/energy
+/damagetype/melee/sword/energy
 	name = "inactive energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -27,7 +27,7 @@
 		SKILL_MELEE = BLUNT
 	)
 
-/damagetype/sword/energy/on
+/damagetype/melee/sword/energy/on
 	name = "energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

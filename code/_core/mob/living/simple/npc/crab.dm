@@ -2,7 +2,7 @@
 	name = "crab"
 	icon = 'icons/mob/living/simple/crab.dmi'
 	icon_state = "crab"
-	damage_type = "crab_claw"
+	damage_type = /damagetype/npc/crab
 	class = "crab"
 
 	ai = /ai/
@@ -59,7 +59,7 @@
 	force_spawn = TRUE
 	boss_music = "crab_rave"
 
-	damage_type = "crab_claw_king"
+	damage_type = /damagetype/npc/crab/king
 
 	armor_base = list(
 		BLADE = ARMOR_S,

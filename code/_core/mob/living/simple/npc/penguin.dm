@@ -2,7 +2,7 @@
 	name = "penguin"
 	icon = 'icons/mob/living/simple/passive.dmi'
 	icon_state = "penguin"
-	damage_type = "crab_claw"
+	damage_type = /damagetype/unarmed/bite/
 	class = "crab"
 
 	ai = /ai/

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/modular_laser.dmi'
 
 	projectile = /obj/projectile/bullet/laser
-	damage_type = "laser_rifle"
+	damage_type = /damagetype/ranged/laser/rifle
 
 	projectile_speed = 31
 	shoot_delay = 4
@@ -49,7 +49,7 @@
 /obj/item/weapon/ranged/energy/rifle/hardlight
 	name = "hardlight laser rifle"
 	bullet_color = "#FFFF00"
-	damage_type = "laser_rifle_hardlight"
+	damage_type = /damagetype/ranged/laser/rifle/hardlight
 
 	projectile_speed = 26
 	shoot_delay = 8
@@ -61,7 +61,7 @@
 /obj/item/weapon/ranged/energy/rifle/xray
 	name = "xray laser rifle"
 	bullet_color = "#00FF00"
-	damage_type = "laser_rifle_xray"
+	damage_type = /damagetype/ranged/laser/rifle/xray
 
 	projectile_speed = 20
 	shoot_delay = 6

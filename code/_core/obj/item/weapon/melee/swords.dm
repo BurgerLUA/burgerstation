@@ -7,7 +7,7 @@
 
 	icon_state_worn = "worn"
 
-	damage_type = "sword_sabre"
+	damage_type = /damagetype/melee/sword/sabre
 
 	item_slot = SLOT_GROIN_O
 	worn_layer = LAYER_MOB_CLOTHING_BACK
@@ -34,7 +34,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
-	damage_type = "sword_claymore"
+	damage_type = /damagetype/melee/sword/claymore
 
 	attack_delay = 8
 
@@ -46,7 +46,7 @@
 	desc = "Looking at this really makes you want to go on an EVIL crusade."
 	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe, now cursed with Nar'sie's magic."
 
-	damage_type = "sword_claymore_cult"
+	damage_type = /damagetype/melee/sword/claymore/cult
 
 	value = 50
 
@@ -59,8 +59,8 @@
 	desc = "Unga bunga."
 	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/items/weapons/melee/swords/spear.dmi'
-	damage_type = "spear"
-	damage_type_thrown = "spear_thrown"
+	damage_type = /damagetype/melee/spear/
+	damage_type_thrown = /damagetype/melee/spear/thrown
 
 	attack_delay = 5
 	attack_delay_max = 12
@@ -68,11 +68,11 @@
 	value = 10
 
 /obj/item/weapon/melee/zweihander
-	name = "chaos zweihander"
-	rarity = RARITY_LEGENDARY
+	name = "zweihander"
+	rarity = RARITY_MYTHICAL
 	desc = "THE LEGEND."
 	icon = 'icons/obj/items/weapons/melee/swords/zweihander.dmi'
-	damage_type = "sword_chaos_zweihander"
+	damage_type = /damagetype/melee/sword/zweihander
 
 	attack_delay = 10
 	attack_delay_max = 30

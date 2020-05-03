@@ -1,7 +1,7 @@
 // This is where the fun begins.
 // These are the main datums that emit light.
 
-/light_source
+/light_source/
 
 	var/atom/top_atom        // The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
 	var/atom/source_atom     // The atom that we belong to.

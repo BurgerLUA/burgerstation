@@ -2,11 +2,11 @@
 	name = "torch"
 	desc = "Somehow it has unlimited fuel."
 	icon = 'icons/obj/items/weapons/melee/clubs/torch.dmi'
-	damage_type = "torch"
 
 	var/enabled = FALSE
 
-	damage_type = "torch"
+	damage_type = /damagetype/melee/club/torch/
+	var/damage_type_on = /damagetype/melee/club/torch/on
 
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
@@ -28,7 +28,7 @@
 /obj/item/weapon/melee/torch/update_icon()
 
 	if(enabled)
-		damage_type = "[initial(damage_type)]_on"
+		damage_type = damage_type_on
 		icon_state = "[initial(icon_state)]_on"
 		icon_state_held_left = "[initial(icon_state_held_left)]_on"
 		icon_state_held_right = "[initial(icon_state_held_right)]_on"
@@ -49,9 +49,9 @@
 	name = "plastic flashlight"
 	desc = "Can't live without it!"
 	icon = 'icons/obj/items/weapons/melee/clubs/flashlight.dmi'
-	damage_type = "flashlight_off"
 
-	damage_type = "flashlight"
+	damage_type = /damagetype/item/light
+	damage_type_on = /damagetype/item/light
 
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE

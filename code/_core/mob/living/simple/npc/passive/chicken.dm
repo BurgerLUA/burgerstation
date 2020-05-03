@@ -1,7 +1,7 @@
 /mob/living/simple/npc/passive/chicken
 	name = "white chicken"
 	icon_state = "chicken_white"
-	damage_type = "chicken_peck"
+	damage_type = /damagetype/npc/chicken
 	class = "chicken"
 	loot_drop = "chicken"
 

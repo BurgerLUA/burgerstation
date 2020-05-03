@@ -11,4 +11,4 @@
 
 	ai = /ai/
 	class = "bear"
-	damage_type = "bear_claw"
+	damage_type = /damagetype/unarmed/claw/

@@ -5,7 +5,7 @@
 	icon_state = "carp"
 
 	ai = /ai/simple/carp
-	damage_type = "carp_bite"
+	damage_type = /damagetype/unarmed/bite/
 	class = "carp"
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/vehicles/mech_equipment.dmi'
 
 	projectile = /obj/projectile/bullet/laser
-	damage_type = "chronogun"
+	damage_type = /damagetype/ranged/laser/chronogun
 	projectile_speed = 8
 	shoot_delay = 20
 	automatic = FALSE
@@ -40,7 +40,7 @@
 	charge_cost = 250
 
 	projectile = /obj/projectile/bullet/pistol
-	damage_type = "9mm"
+	damage_type = /damagetype/ranged/bullet/pistol_9mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
@@ -60,7 +60,7 @@
 	charge_cost = 500
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = ".223"
+	damage_type = /damagetype/ranged/bullet/rifle_223
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
@@ -80,7 +80,7 @@
 	charge_cost = 1000
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = "7.62"
+	damage_type = /damagetype/ranged/bullet/rifle_762mm
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 

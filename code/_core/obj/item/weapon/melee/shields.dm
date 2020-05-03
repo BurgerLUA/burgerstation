@@ -3,7 +3,7 @@
 	desc = "Carry two of these and be the ultimate asshole."
 	desc_extended = "Good for blocking melee attacks. This buckler doubles your chance of blocking or parrying melee attacks. Can block ranged and melee attacks."
 	icon = 'icons/obj/items/weapons/melee/shield.dmi'
-	damage_type = "shield_wood"
+	damage_type = /damagetype/melee/club/shield
 
 	item_slot = SLOT_TORSO_B
 	worn_layer = LAYER_MOB_CLOTHING_BACK

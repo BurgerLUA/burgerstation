@@ -20,20 +20,6 @@
 
 	value = 0.3
 
-/*
-/obj/item/bullet_cartridge/pistol_10mm/surplus
-	name = "\improper surplus 10mm pistol cartridge"
-	desc = "For pistols and smgs that requre .45 ammo. Cheaply made."
-	icon = 'icons/obj/items/bullet/10mm_surplus.dmi'
-
-	projectile = /obj/projectile/bullet/pistol
-	damage_type = "10mm_surplus"
-
-	projectile_speed = BULLET_SPEED_PISTOL_HEAVY*SURPLUS_PENALTY
-
-	misfire_chance = 1
-*/
-
 /obj/item/bullet_cartridge/pistol_50/
 	name = "\improper .50 pistol cartridge"
 	desc = "For pistols that require .50."
@@ -101,22 +87,6 @@
 	weight = 0.01
 
 	value = 0.1
-
-/*
-/obj/item/bullet_cartridge/pistol_9mm/surplus
-	name = "surplus 9mm round"
-	desc = "For pistols, revolvers, and smgs that require 9mm auto ammo. This one was mass produced."
-	icon = 'icons/obj/items/bullet/9mm_surplus.dmi'
-
-	damage_type = "9mm_surplus"
-
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
-
-	misfire_chance = 1
-
-	size = 0.01
-	weight = 0.01
-*/
 
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"

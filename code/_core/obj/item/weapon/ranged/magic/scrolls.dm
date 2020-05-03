@@ -95,7 +95,7 @@
 
 	projectile = /obj/projectile/bullet/fireball
 
-	damage_type = "magic_fireball"
+	damage_type = /damagetype/ranged/magic/fireball
 
 	shoot_delay = 10
 	projectile_speed = 16

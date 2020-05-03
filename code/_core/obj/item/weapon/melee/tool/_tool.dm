@@ -62,7 +62,7 @@
 	desc = "Useful for lobotomies."
 	icon = 'icons/obj/items/weapons/melee/clubs/pickaxe_steel.dmi'
 
-	damage_type = "pickaxe"
+	damage_type = /damagetype/melee/club/pickaxe/
 
 	flags_tool = FLAG_TOOL_PICKAXE
 

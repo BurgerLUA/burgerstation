@@ -1,4 +1,4 @@
-/damagetype/unarmed/claw/
+/damagetype/unarmed/bite/
 	name = "bite"
 	attack_verbs = list("bite")
 

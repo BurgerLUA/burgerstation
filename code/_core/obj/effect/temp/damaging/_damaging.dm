@@ -52,7 +52,7 @@ obj/effect/temp/hazard/falling_fireball
 	duration = SECONDS_TO_DECISECONDS(2.1)
 	hazard_range = 0
 	hazard_delay = SECONDS_TO_DECISECONDS(2)
-	damage_type = "ash_drake_fireball"
+	damage_type = /damagetype/ranged/magic/fireball/ash_drake
 
 obj/effect/temp/hazard/falling_fireball/New(var/desired_location,var/desired_time,var/desired_owner)
 
@@ -75,7 +75,7 @@ obj/effect/temp/hazard/fire/
 	duration = SECONDS_TO_DECISECONDS(6)
 	hazard_range = 1
 	hazard_delay = SECONDS_TO_DECISECONDS(1)
-	damage_type = "ash_drake_fire"
+	damage_type = /damagetype/ranged/magic/fire/ash_drake
 
 	cross_hazard = TRUE
 
@@ -88,7 +88,7 @@ obj/effect/temp/hazard/tentacle/
 	hazard_delay = 3
 
 	hazard_range = 0
-	damage_type = "goliath_tentacle"
+	damage_type = /damagetype/npc/goliath_tentacle
 	cross_hazard = TRUE
 
 	layer = LAYER_GROUND_SCENERY
@@ -107,7 +107,7 @@ obj/effect/temp/hazard/falling_meteor
 	duration = SECONDS_TO_DECISECONDS(3)
 	hazard_range = 1
 	hazard_delay = SECONDS_TO_DECISECONDS(3)
-	damage_type = "meteor"
+	damage_type = /damagetype/item/heavy
 
 	plane = PLANE_ALWAYS_VISIBLE
 

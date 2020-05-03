@@ -5,7 +5,7 @@
 	icon_state = "alien"
 
 	ai = /ai/xenomorph
-	damage_type = "xenomorph"
+	damage_type = /damagetype/npc/xenomorph
 	class = "xenomorph"
 	health_base = 100
 
@@ -29,7 +29,7 @@
 	health_base = 100
 
 	ai = /ai/xenomorph_queen
-	damage_type = "xenomorph_queen"
+	damage_type = /damagetype/npc/xenomorph/queen
 	class = "xenomorph"
 
 	boss = TRUE

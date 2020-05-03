@@ -11,7 +11,7 @@
 
 	projectile = /obj/projectile/bullet/fireball
 
-	damage_type = "magic_fireball"
+	damage_type = /damagetype/ranged/magic/fireball
 
 	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 

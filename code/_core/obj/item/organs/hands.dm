@@ -11,7 +11,7 @@
 	break_threshold = 15
 	//health_max = 25
 
-	damage_type = "fist"
+	damage_type = /damagetype/unarmed/fists/
 
 	attach_flag = BODY_ARM_RIGHT
 
@@ -38,8 +38,15 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		if(L.intent != INTENT_HARM)
-			return "[damage_type]_[L.intent]"
+		switch(L.intent)
+			if(INTENT_HARM)
+				return prob(75) ? /damagetype/unarmed/fists/ : /damagetype/unarmed/feet/
+			if(INTENT_DISARM)
+				return /damagetype/unarmed/fists/disarm
+			if(INTENT_HELP)
+				return /damagetype/unarmed/fists/help
+			if(INTENT_GRAB)
+				return /damagetype/unarmed/fists/grab
 
 	return ..()
 

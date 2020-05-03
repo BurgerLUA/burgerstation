@@ -42,19 +42,6 @@
 
 	value = 0.3
 
-/*
-/obj/item/bullet_cartridge/revolver_357/surplus
-	name = "\improper .357 surplus bullet"
-	desc = "For revolvers that require .357 ammo. Surplus round."
-
-	icon = 'icons/obj/items/bullet/357_surplus.dmi'
-	damage_type = ".357_surplus"
-
-	projectile_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
-
-	misfire_chance = 1
-*/
-
 /obj/item/bullet_cartridge/revolver_44
 	name = "\improper .44 revolver cartridge"
 	desc = "For revolvers that require .44 magnum ammo."

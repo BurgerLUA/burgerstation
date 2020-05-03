@@ -6,6 +6,6 @@
 
 	ai = /ai/passive
 	class = "passive"
-	damage_type = "passive"
+	damage_type = /damagetype/unarmed/bite/
 
 	collision_flags = FLAG_COLLISION_WALKING
