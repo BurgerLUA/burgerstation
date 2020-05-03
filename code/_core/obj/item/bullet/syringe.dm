@@ -12,7 +12,7 @@
 	item_count_max_icon = 8
 
 	projectile = /obj/projectile/bullet/syringe
-	damage_type = "syringe_gun"
+	damage_type_bullet = /damagetype/ranged/bullet/syringe
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 

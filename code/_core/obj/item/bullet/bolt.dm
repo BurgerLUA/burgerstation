@@ -14,7 +14,7 @@
 	item_slot = SLOT_GROIN_O
 
 	projectile = /obj/projectile/bullet/bolt
-	damage_type = "bolt_metal"
+	bullet_damage_type = /damagetype/ranged/bullet/crossbow_bolt
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 

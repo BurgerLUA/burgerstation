@@ -8,6 +8,7 @@
 	id = "bullet"
 	var/bullet_length = -1
 	var/bullet_diameter = -1
+	var/bullet_damage_type
 
 	item_count_max_icon = 1
 	item_count_max = 1

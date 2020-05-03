@@ -211,6 +211,16 @@
 
 /obj/item/New(var/desired_loc)
 
+	if(!damage_type || damage_type == /damagetype/default/)
+		var/size_mass = size * weight
+		switch(size_mass)
+			if(1 to 5)
+				damage_type = /damagetype/item/light
+			if(5 to 10)
+				damage_type = /damagetype/item/medium
+			if(10 to INFINITY)
+				damage_type = /damagetype/item/heavy
+
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
@@ -385,4 +395,8 @@
 	if(istype(O,/obj/item/))
 		return TRUE
 
+	return ..()
+
+/obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+	last_interacted = caller
 	return ..()

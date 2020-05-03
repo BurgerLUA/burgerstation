@@ -11,7 +11,7 @@
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = "7.62"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_308
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
@@ -31,6 +31,7 @@
 	name = "\improper 7.62mm rifle bullet"
 	desc = "For rifles that require 7.62mm"
 	icon = 'icons/obj/items/bullet/762.dmi'
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 
 
 
@@ -50,7 +51,7 @@
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = ".223"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_223
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
@@ -58,18 +59,6 @@
 	weight = 0.03
 
 	value = 0.4
-
-/*
-/obj/item/bullet_cartridge/rifle_223/surplus
-	name = "\improper surplus .223 rifle bullet"
-	desc = "For rifles and machineguns that requre .223"
-	icon = 'icons/obj/items/bullet/223_surplus.dmi'
-
-	damage_type = "223_surplus"
-
-	projectile_speed = BULLET_SPEED_RIFLE_LIGHT * SURPLUS_PENALTY
-*/
-
 
 /obj/item/bullet_cartridge/rifle_223/syndicate
 	name = "\improper 5.56mm rifle bullet"
@@ -79,6 +68,6 @@
 	item_count_max_icon = 5
 
 	projectile = /obj/projectile/bullet/rifle
-	damage_type = ".223"
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT

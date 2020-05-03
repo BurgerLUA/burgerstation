@@ -36,8 +36,7 @@
 
 
 	projectile = /obj/projectile/bullet/shotgun_slug
-
-	damage_type = "12_slug"
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
@@ -55,33 +54,10 @@
 	base_spread = 0.03
 
 	projectile = /obj/projectile/bullet/shotgun_pellet
-
-	damage_type = "12_buckshot"
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04
 	weight = 0.04
 	value = 0.6
-
-
-/obj/item/bullet_cartridge/shotgun/rubber_balls
-	name = "\improper 12 gauge rubber balls"
-	desc = "A rubber shot shell, load it into a shotgun to use."
-	desc = "This shell has many rubber balls in it to cause pain but not major injury"
-	icon_state = "rubber"
-
-	projectile_count = 8
-	base_spread = 0.15
-
-	projectile = /obj/projectile/bullet/shotgun_pellet
-
-	damage_type = "12_rubber"
-
-	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
-
-	size = 0.04
-	weight = 0.04
-
-	value = 6
-

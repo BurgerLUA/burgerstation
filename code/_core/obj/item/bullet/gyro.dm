@@ -11,7 +11,8 @@
 	bullet_diameter = 20
 
 	projectile = /obj/projectile/bullet/pistol
-	damage_type = "gyrojet"
+	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
+
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 

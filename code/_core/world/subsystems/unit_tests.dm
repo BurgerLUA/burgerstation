@@ -1,4 +1,4 @@
-var/global/run_unit_tests = FALSE
+var/global/run_unit_tests = TRUE
 
 SUBSYSTEM_DEF(unit_test)
 	name = "Unit Test"

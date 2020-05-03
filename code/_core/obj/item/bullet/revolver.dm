@@ -11,7 +11,7 @@
 	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
-	damage_type = ".38"
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_38
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
@@ -29,12 +29,11 @@
 	bullet_diameter = 9
 	bullet_length = 33
 
-	damage_type = ".357"
-
 	item_count_max = 6
 	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_357
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
@@ -66,12 +65,11 @@
 	bullet_diameter = 10.9
 	bullet_length = 29
 
-	damage_type = ".44"
-
 	item_count_max = 6
 	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_44
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
@@ -79,25 +77,6 @@
 	weight = 0.035
 
 	value = 0.4
-
-/*
-/obj/item/bullet_cartridge/revolver_44/surplus
-	name = "\improper surplus .44 magnum bullet"
-	desc = "For revolvers that require .44 magnum ammo. Surplus ammo."
-	id = ".44"
-	icon = 'icons/obj/items/bullet/44_surplus.dmi'
-
-	damage_type = ".44_surplus"
-
-	item_count_max = 6
-	item_count_max_icon = 6
-
-	projectile = /obj/projectile/bullet/revolver/
-
-	projectile_speed = BULLET_SPEED_PISTOL_HEAVY * SURPLUS_PENALTY
-
-	misfire_chance = 1
-*/
 
 /obj/item/bullet_cartridge/pistol_22
 	name = "\improper .22 pistol cartridge"
@@ -108,14 +87,11 @@
 	bullet_diameter = 5.6
 	bullet_length = 17.7
 
-
-
-	damage_type = ".22"
-
 	item_count_max = 6
 	item_count_max_icon = 6
 
 	projectile = /obj/projectile/bullet/revolver/
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_22
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
@@ -123,20 +99,3 @@
 	weight = 0.01
 
 	value = 0.1
-
-/*
-/obj/item/bullet_cartridge/revolver_22/surplus
-	name = "\improper .22 LR surplus"
-	damage_type = ".22_surplus"
-
-	item_count_max = 6
-	item_count_max_icon = 6
-
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT * SURPLUS_PENALTY
-
-	misfire_chance = 1
-
-/obj/item/bullet_cartridge/revolver_22/surplus/on_spawn()
-	item_count_current = 6
-	return ..()
-*/

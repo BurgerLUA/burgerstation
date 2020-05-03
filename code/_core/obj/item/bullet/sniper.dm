@@ -12,7 +12,7 @@
 	item_count_max_icon = 4
 
 	projectile = /obj/projectile/bullet/sniper
-	damage_type = ".50_sniper"
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50
 
 	projectile_speed = BULLET_SPEED_SNIPER
 
@@ -20,16 +20,3 @@
 	weight = 0.1
 
 	value = 0.15
-
-/obj/item/bullet_cartridge/sniper_50/surplus
-	name = "\improper surplus .50 sniper round"
-	desc = "For sniper rifles that require .50 ammo. This is surplus."
-	icon = 'icons/obj/items/bullet/50_surplus.dmi'
-	damage_type = ".50_surplus"
-
-	projectile_speed = BULLET_SPEED_SNIPER * SURPLUS_PENALTY
-
-	misfire_chance = 1
-
-	size = 0.1
-	weight = 0.1
