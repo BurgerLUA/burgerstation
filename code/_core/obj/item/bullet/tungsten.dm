@@ -14,7 +14,7 @@
 	item_slot = SLOT_GROIN_O
 
 	projectile = /obj/projectile/bullet/tungsten
-	damage_type = "bolt_metal"
+	damage_type_bullet = /damagetype/ranged/bullet/crossbow_bolt
 
 	projectile_speed = BULLET_SPEED_MAX
 

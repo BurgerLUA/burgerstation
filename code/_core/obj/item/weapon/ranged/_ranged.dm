@@ -148,8 +148,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			projectile_to_use = spent_bullet.projectile
 		if(spent_bullet.shoot_sounds && length(spent_bullet.shoot_sounds))
 			shoot_sounds_to_use = spent_bullet.shoot_sounds
-		if(spent_bullet.damage_type)
-			damage_type_to_use = spent_bullet.damage_type
+		if(spent_bullet.damage_type_bullet)
+			damage_type_to_use = spent_bullet.damage_type_bullet
 		if(spent_bullet.projectile_count)
 			bullet_count_to_use = spent_bullet.projectile_count
 		if(spent_bullet.base_spread)

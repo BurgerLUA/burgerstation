@@ -8,7 +8,6 @@
 	id = "bullet"
 	var/bullet_length = -1
 	var/bullet_diameter = -1
-	var/bullet_damage_type
 
 	item_count_max_icon = 1
 	item_count_max = 1
@@ -19,6 +18,7 @@
 
 	var/is_spent = FALSE
 	var/obj/projectile/projectile //The projectile to create when the bullet is fired. Optional. Overrides the gun's settings.
+	var/damage_type_bullet
 	var/list/shoot_sounds //The shoots sounds to create when the bullet is fired. Optional. Overrides the gun's settings.
 	var/base_spread = 0 //The additional spread of this type of bullet. Optional. Adds to the gun's settings.
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
