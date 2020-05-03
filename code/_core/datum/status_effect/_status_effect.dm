@@ -3,7 +3,7 @@
 	var/desc //Description of the status effect.
 	var/id //Status effect description
 
-/status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy=FALSE)
+/status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	if(!stealthy)
 		new/obj/effect/temp/damage_number(owner.loc,duration,"[uppertext(name)]!")
@@ -38,9 +38,11 @@
 	desc = "You're staggered!"
 	id = STAGGER
 
-/status_effect/staggered/on_effect_added(var/mob/living/owner,var/magnitude,var/duration,var/atom/source)
+/status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	. = ..()
+
+	world.log << "Source is: [source]."
 
 	if(source)
 		var/desired_move_dir = get_dir(source,owner)
@@ -83,7 +85,7 @@
 	desc = "You're disarmed!"
 	id = DISARM
 
-/status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy=FALSE)
+/status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.drop_held_objects(A.loc)

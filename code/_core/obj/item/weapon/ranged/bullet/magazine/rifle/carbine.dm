@@ -21,8 +21,8 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
-	heat_per_shot = 0.01
-	heat_max = 0.03
+	heat_per_shot = 0.03
+	heat_max = 0.09
 
 	value = 100
 
@@ -50,8 +50,8 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = ".223 Carbine MOD"
 	icon = 'icons/obj/items/weapons/ranged/rifle/223_mod.dmi'
-	heat_per_shot = 0.02
-	heat_max = 0.06
+	heat_per_shot = 0.03
+	heat_max = 0.12
 
 	size = SIZE_2
 	weight = WEIGHT_2

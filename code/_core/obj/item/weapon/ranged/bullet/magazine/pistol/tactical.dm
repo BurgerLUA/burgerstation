@@ -15,8 +15,8 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
-	heat_per_shot = 0.015
-	heat_max = 0.05
+	heat_per_shot = 0.03
+	heat_max = 0.12
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -49,9 +49,8 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
-	heat_per_shot = 0.01
-	heat_max = 0.025
-
+	heat_per_shot = 0.02
+	heat_max = 0.12
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread() //Base spread
 	return 0

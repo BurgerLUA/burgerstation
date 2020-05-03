@@ -42,7 +42,7 @@
 	if(L.stand && L.stand.linked_stand == owner)
 		return FALSE
 
-	if(!can_attack(L))
+	if(!can_ai_attack(L))
 		return FALSE
 
 	if(istype(owner,/mob/living/advanced/stand/))

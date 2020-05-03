@@ -222,45 +222,51 @@
 /obj/projectile/proc/damage_atom(var/atom/hit_atom) //Return true to delete the projectile
 
 	if(damage_type && all_damage_types[damage_type])
-		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner))
-			var/damagetype/DT = all_damage_types[damage_type]
 
-			var/list/params = list()
-			params[PARAM_ICON_X] = shoot_x
-			params[PARAM_ICON_Y] = shoot_y
+		if(!owner && !owner.qdeleting)
+			return TRUE
 
-			var/owner_is_ai = FALSE
-			if(is_living(owner))
-				var/mob/living/L = owner
-				owner_is_ai = L.ai
+		var/damagetype/DT = all_damage_types[damage_type]
 
-			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,owner_is_ai,owner_is_ai)
+		if(!hit_atom.can_be_attacked(owner,weapon,null,DT))
+			return TRUE
 
-			if(!object_to_damage)
-				DT.perform_miss(owner,weapon,object_to_damage)
-				return FALSE
+		var/list/params = list()
+		params[PARAM_ICON_X] = shoot_x
+		params[PARAM_ICON_Y] = shoot_y
 
-			/*
-			if(DT.allow_miss && DT.should_miss(owner,weapon,object_to_damage))
-				if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
-			*/
+		var/owner_is_ai = FALSE
+		if(is_living(owner))
+			var/mob/living/L = owner
+			owner_is_ai = L.ai
 
-			if(DT.allow_dodge)
-				var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
-				if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,owner_is_ai,owner_is_ai)
 
-			if(DT.allow_parry)
-				var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
-				if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
+		if(!object_to_damage)
+			DT.perform_miss(owner,weapon,object_to_damage)
+			return FALSE
 
-			if(DT.allow_block)
-				var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
-				if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom))
-					damage_multiplier *= 0.75
-					damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(hit_atom,owner,weapon,object_to_damage,DT) - DT.get_block_power_penetration(owner,hit_atom,weapon,object_to_damage,blocking_atom),0,1)
+		/*
+		if(DT.allow_miss && DT.should_miss(owner,weapon,object_to_damage))
+			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
+		*/
 
-			if(damage_multiplier > 0)
-				DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+		if(DT.allow_dodge)
+			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
+			if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
+
+		if(DT.allow_parry)
+			var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
+			if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
+
+		if(DT.allow_block)
+			var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
+			if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom))
+				damage_multiplier *= 0.75
+				damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(hit_atom,owner,weapon,object_to_damage,DT) - DT.get_block_power_penetration(owner,hit_atom,weapon,object_to_damage,blocking_atom),0,1)
+
+		if(damage_multiplier > 0)
+			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 

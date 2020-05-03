@@ -54,7 +54,7 @@
 
 /obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller)
 
-	if(!caller.can_attack(null,src))
+	if(!caller.can_attack(null,src,null,null))
 		return FALSE
 
 	return TRUE

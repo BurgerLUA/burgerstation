@@ -113,6 +113,8 @@
 	var/crit_chance = 5
 	var/crit_chance_max = 10
 
+	var/allow_friendly_fire = FALSE
+
 	/*
 	var/list/wound_types = list(
 		/wound/bruise/ = 1,

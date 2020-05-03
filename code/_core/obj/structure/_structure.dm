@@ -99,7 +99,7 @@
 	return TRUE
 
 
-/obj/structure/can_be_attacked(var/atom/attacker)
+/obj/structure/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	var/area/A = get_area(src)
 	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
 		return FALSE

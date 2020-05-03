@@ -158,7 +158,7 @@
 /ai/proc/attack_message()
 	return TRUE
 
-/ai/proc/can_attack(var/atom/target,var/left_click=FALSE)
+/ai/proc/can_ai_attack(var/atom/target,var/left_click=FALSE)
 	return target.can_be_attacked(owner)
 
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
@@ -188,7 +188,7 @@
 /ai/proc/handle_attacking()
 	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max)
 		var/is_left_click = prob(left_click_chance)
-		if(can_attack(objective_attack,is_left_click))
+		if(can_ai_attack(objective_attack,is_left_click))
 			do_attack(objective_attack,is_left_click)
 	return TRUE
 
@@ -405,7 +405,7 @@
 	if(L.dead)
 		return FALSE
 
-	if(!can_attack(L))
+	if(!can_ai_attack(L))
 		return FALSE
 
 	if(L.immortal && !ignore_immortal)

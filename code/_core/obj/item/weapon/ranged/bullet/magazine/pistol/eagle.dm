@@ -4,7 +4,7 @@
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/items/weapons/ranged/pistol/50.dmi'
 	value = 170
-	shoot_delay = 3
+	shoot_delay = 4
 	shoot_sounds = list('sounds/weapons/50/shoot.ogg')
 
 	view_punch = 20
@@ -12,8 +12,8 @@
 	size = SIZE_2
 	weight = WEIGHT_3
 
-	heat_per_shot = 0.01
-	heat_max = 0.05
+	heat_per_shot = 0.06
+	heat_max = 0.3
 
 	bullet_length_min = 30
 	bullet_length_best = 33

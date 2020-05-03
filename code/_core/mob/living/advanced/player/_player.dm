@@ -88,6 +88,11 @@ var/global/list/mob/living/advanced/player/all_players = list()
 		add_species_buttons()
 		add_species_health_elements()
 
+	//BANDAID FIX
+	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in contents
+	if(!L)
+		src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+
 	return TRUE
 
 /mob/living/advanced/player/Initialize()

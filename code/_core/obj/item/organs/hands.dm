@@ -40,7 +40,7 @@
 		var/mob/living/L = attacker
 		switch(L.intent)
 			if(INTENT_HARM)
-				return prob(75) ? /damagetype/unarmed/fists/ : /damagetype/unarmed/feet/
+				return /damagetype/unarmed/fists/
 			if(INTENT_DISARM)
 				return /damagetype/unarmed/fists/disarm
 			if(INTENT_HELP)

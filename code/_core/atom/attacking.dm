@@ -78,9 +78,6 @@
 	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
 		return FALSE
 
-	if(!attacker.can_attack(victim,object_to_damage_with,params))
-		return FALSE
-
 	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim,object_to_damage)
 	if(!desired_damage_type)
 		return FALSE
@@ -90,6 +87,9 @@
 		log_error("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [desired_damage_type] not existing!")
 		attacker.attack_next = world.time + 10
 		object_to_damage_with.attack_next = world.time + 10
+		return FALSE
+
+	if(!attacker.can_attack(victim,object_to_damage_with,params,DT))
 		return FALSE
 
 	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
@@ -140,7 +140,7 @@
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
 	return src
 
-/atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
+/atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(!mouse_opacity)
 		return FALSE
@@ -159,7 +159,7 @@
 	if(weapon && weapon.attack_next > world.time)
 		return FALSE
 
-	if(victim && !victim.can_be_attacked(src,weapon,params))
+	if(victim && !victim.can_be_attacked(src,weapon,params,damage_type))
 		return FALSE
 
 	return TRUE

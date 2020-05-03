@@ -91,7 +91,7 @@
 /mob/living/proc/post_death()
 	return TRUE
 
-/mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params)
+/mob/living/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(dead)
 		return FALSE

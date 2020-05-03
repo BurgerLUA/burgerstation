@@ -20,7 +20,7 @@
 
 	return ..()
 
-/mob/living/advanced/npc/can_be_attacked(var/atom/attacker)
+/mob/living/advanced/npc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(dialogue_id)
 		return FALSE

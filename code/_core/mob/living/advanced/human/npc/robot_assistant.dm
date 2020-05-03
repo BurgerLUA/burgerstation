@@ -11,7 +11,8 @@
 /mob/living/advanced/npc/cyborg_assistant/Initialize()
 
 	. = ..()
-
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	update_all_blends()
 
 	return .
@@ -26,3 +27,7 @@
 	. = ..()
 	equip_loadout("help_desk")
 	return .
+
+
+/mob/living/advanced/npc/cyborg_assistant/debug
+	dialogue_id = null

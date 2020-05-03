@@ -85,11 +85,11 @@
 		"alt" = 0
 	)
 
-	if(!defer_right_click || !owner.can_attack(target,defer_right_click,params))
+	if(!defer_right_click || !owner.can_attack(target,defer_right_click,params,null))
 		defer_right_click = null
 		left_click = TRUE
 
-	if(!defer_left_click || !owner.can_attack(target,defer_left_click,params))
+	if(!defer_left_click || !owner.can_attack(target,defer_left_click,params,null))
 		defer_left_click = null
 		left_click = FALSE
 

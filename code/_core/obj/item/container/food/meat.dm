@@ -11,7 +11,7 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/food/dynamic/meat/can_be_attacked(var/atom/attacker)
+/obj/item/container/food/dynamic/meat/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
 /obj/item/container/food/dynamic/meat/click_self(var/mob/caller,location,control,params)

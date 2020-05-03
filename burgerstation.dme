@@ -497,7 +497,6 @@
 #include "code\_core\mob\living\advanced\human\npc\unique\stand_user.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\crew\_crew.dm"
 #include "code\_core\mob\living\advanced\player\_player.dm"
-#include "code\_core\mob\living\advanced\player\combat.dm"
 #include "code\_core\mob\living\advanced\player\currency.dm"
 #include "code\_core\mob\living\advanced\player\flavortext.dm"
 #include "code\_core\mob\living\advanced\player\life.dm"

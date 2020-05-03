@@ -7,32 +7,34 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = DAMAGE_F,
-		FATIGUE = DAMAGE_F
+		FATIGUE = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_C,
+		BLUNT = 0,
+		FATIGUE = ARMOR_C,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_D,
-		ATTRIBUTE_DEXTERITY = CLASS_E
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = FATIGUE,
+		ATTRIBUTE_DEXTERITY = FATIGUE
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_D
+		SKILL_UNARMED = 40
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BLUNT
+		SKILL_UNARMED = FATIGUE
 	)
+
+	allow_friendly_fire = TRUE
 
 /damagetype/unarmed/fists/help
 	name = "help fists"
@@ -46,7 +48,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_F
+		FATIGUE = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -55,7 +57,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C
+		ATTRIBUTE_STRENGTH = 10
 	)
 
 	attribute_damage = list(
@@ -74,11 +76,15 @@
 	name = "disarm fists"
 	attack_verbs = list("shove")
 
+	impact_sounds = list(
+		'sounds/weapons/fists/grab.ogg'
+	)
+
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_D
+		FATIGUE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -87,8 +93,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_E
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -97,7 +103,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_C
+		SKILL_UNARMED = 20
 	)
 
 	skill_damage = list(
@@ -124,7 +130,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = DAMAGE_E
+		FATIGUE = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -133,8 +139,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_C,
-		ATTRIBUTE_DEXTERITY = CLASS_E
+		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
@@ -143,7 +149,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_C
+		SKILL_UNARMED = 20
 	)
 
 	skill_damage = list(

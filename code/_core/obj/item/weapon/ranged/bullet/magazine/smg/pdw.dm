@@ -14,8 +14,8 @@
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.01
-	heat_max = 0.05
+	heat_per_shot = 0.03
+	heat_max = 0.09
 
 	bullet_length_min = 12
 	bullet_length_best = 17.7

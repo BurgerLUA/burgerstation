@@ -35,10 +35,10 @@
 		return TRUE
 	return ..()
 
-/mob/abstract/observer/can_attack(var/atom/victim,var/atom/weapon,var/params)
+/mob/abstract/observer/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
-/mob/abstract/observer/can_be_attacked(var/atom/attacker)
+/mob/abstract/observer/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
 /mob/abstract/observer/Logout()

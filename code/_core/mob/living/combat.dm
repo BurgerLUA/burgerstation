@@ -308,9 +308,21 @@
 
 	return TRUE
 
-/mob/living/can_be_attacked(var/atom/attacker)
+/mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	world.log << "Checking to see if [src] can be attacked by [attacker]..."
+
 	if(src.loyalty_tag && attacker && is_living(attacker))
 		var/mob/living/L = attacker
+		world.log << "Loyalty tag of attacker: [L.loyalty_tag]."
+		world.log << "Loyalty tag of victim: [src.loyalty_tag]."
 		if(L.loyalty_tag == src.loyalty_tag)
-			return FALSE
+			world.log << "They have the same loyalty tag!"
+			if(!damage_type)
+				world.log << "They can't attack because of no damage type!"
+				return FALSE
+			if(!damage_type.allow_friendly_fire)
+				world.log << "They can't attack because of no friendly fire!"
+				return FALSE
+
 	return ..()

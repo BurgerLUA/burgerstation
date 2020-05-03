@@ -21,8 +21,8 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
-	heat_per_shot = 0.01
-	heat_max = 0.1
+	heat_per_shot = 0.02
+	heat_max = 0.12
 
 	bullet_length_min = 25
 	bullet_length_best = 32

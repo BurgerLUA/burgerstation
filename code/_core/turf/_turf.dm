@@ -97,7 +97,7 @@
 
 	..()
 
-/turf/can_be_attacked(var/atom/attacker)
+/turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return health && !ispath(health)
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)

@@ -86,7 +86,7 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/can_be_attacked(var/atom/attacker)
+/obj/item/container/food/dynamic/cheese/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
 /obj/item/container/food/dynamic/cheese/update_icon()

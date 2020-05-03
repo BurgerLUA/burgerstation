@@ -115,7 +115,7 @@
 	update_sprite()
 	return .
 
-/obj/hud/inventory/can_be_attacked(var/atom/attacker)
+/obj/hud/inventory/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
 /obj/hud/inventory/get_examine_list(var/atom/examiner)
