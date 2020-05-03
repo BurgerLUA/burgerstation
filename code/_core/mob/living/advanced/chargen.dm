@@ -1,7 +1,6 @@
 /mob/living/advanced/proc/start_chargen()
 
 	Initialize()
-	show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 	default_appearance()
 	if(sex == MALE)
 		equip_loadout("new_male",TRUE)
@@ -11,6 +10,8 @@
 
 
 	if(ENABLE_LORE && client)
+
+		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
 
 		var/list/lore = list(
 			"In the year 2320, Humankind has advanced their interstellar space travel technology to allow for safe and reliable faster than light travel.",

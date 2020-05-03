@@ -12,7 +12,7 @@
 	item_count_max_icon = 4
 
 	projectile = /obj/projectile/bullet/sniper
-	damage_type = ".50"
+	damage_type = ".50_sniper"
 
 	projectile_speed = BULLET_SPEED_SNIPER
 

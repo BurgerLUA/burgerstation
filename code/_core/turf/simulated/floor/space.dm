@@ -20,3 +20,14 @@
 
 /turf/simulated/floor/space/is_space()
 	return TRUE
+
+/turf/simulated/floor/space/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(is_player(O))
+		var/mob/living/advanced/player/P = O
+		P.to_chat(span("notice","How did you get here?"))
+		var/obj/marker/failsafe/FS = locate() in world
+		if(FS)
+			O.force_move(FS.loc)
+		else
+			O.force_move(pick(cryo_spawnpoints).loc)
+	return ..()

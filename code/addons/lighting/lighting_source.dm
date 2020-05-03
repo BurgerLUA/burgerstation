@@ -279,21 +279,11 @@
 
 /light_source/proc/update_corners(now = FALSE)
 
-
 	var/update = FALSE
+	var/atom/source_atom = src.source_atom //From /tg/. Prevents it from being cleared mid update.
 
-	if(!source_atom)
-		/* This happens normally.
-		if(!src.qdeleting)
-			log_error("LIGHTING: Attempted to update a light in update_corners(), but no source_atom existed!")
-		*/
-		return
-
-	if(source_atom.qdeleting)
-		/* This happens normally.
-		if(!src.qdeleting)
-			log_error("LIGHTING: Attempted to update a light in update_corners(), but the source_atom ([source_atom.type]) is currently being deleted!")
-		*/
+	if(!source_atom || source_atom.qdeleting)
+		qdel(src)
 		return
 
 	if (source_atom.light_power != light_power)

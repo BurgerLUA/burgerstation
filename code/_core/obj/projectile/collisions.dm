@@ -9,6 +9,9 @@
 	if( (collision_bullet_flags & FLAG_COLLISION_SPECIFIC) && P.target_atom == src)
 		return src
 
+	if(P.collision_flags_special && P.collision_flags_special & collision_flags)
+		return src
+
 	if(!src.collision_bullet_flags || !P.collision_bullet_flags)
 		return FALSE
 

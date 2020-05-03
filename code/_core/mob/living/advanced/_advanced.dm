@@ -317,6 +317,8 @@ mob/living/advanced/Login()
 
 	for(var/key in items_to_add)
 		var/obj/item/I = new key(get_turf(src))
+		INITIALIZE(I)
+		SPAWN(I)
 		if(istype(I))
 			spawning_outfit.on_add(src,I)
 		else

@@ -38,7 +38,10 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 
 proc/format_speaker(var/speaker,var/source,var/tag,var/frequency=-1,var/language = LANGUAGE_BASIC)
 
-	var/speaker_text = "<a class='name'[is_datum(speaker) ? " href='?chat_examine=\ref[speaker]" : ""]'>\The [speaker]</a>"
+	var/speaker_text = "\The [speaker]"
+	if(is_datum(speaker))
+		speaker_text = "<a class='name' href='?chat_examine=\ref[speaker]'>[speaker_text]</a>"
+
 	var/source_text = ""
 	var/tag_text = ""
 

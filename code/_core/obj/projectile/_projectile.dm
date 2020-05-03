@@ -36,6 +36,7 @@
 
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	var/collision_flags_special = FLAG_COLLISION_NONE //If the projectile is actually a throw item.
 
 	var/obj/effect/temp/impact/impact_effect_turf
 	var/obj/effect/temp/impact/impact_effect_movable

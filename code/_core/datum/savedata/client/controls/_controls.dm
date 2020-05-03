@@ -22,13 +22,8 @@
 
 	return .
 
-/savedata/client/controls/proc/change_control(var/control_id,var/control_value)
-	loaded_data[control_id] = control_value
-	save()
-	return TRUE
-
 /savedata/client/controls/proc/save()
 	var/full_path = "[get_folder(owner.ckey)][get_file()]"
-	owner.mob.to_chat(span("notice","Your control scheme has been saved."))
 	fdel(full_path)
-	text2file(json_encode(loaded_data),full_path)
+	text2file(json_encode(owner.macros.macros),full_path)
+	owner.to_chat(span("notice","Your control scheme has been saved."))

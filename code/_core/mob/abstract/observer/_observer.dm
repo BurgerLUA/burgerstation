@@ -41,6 +41,11 @@
 /mob/abstract/observer/can_be_attacked(var/atom/attacker)
 	return FALSE
 
+/mob/abstract/observer/Logout()
+	. = ..()
+	qdel(src)
+	return .
+
 /mob/abstract/observer/Initialize()
 
 	. = ..()

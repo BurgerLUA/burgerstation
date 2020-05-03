@@ -60,17 +60,16 @@
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
-#define ENABLE_HIJACK TRUE
+#define ENABLE_HIJACK FALSE
 
 #define ENABLE_ATMOS FALSE
-
 
 #define ENABLE_MOB TRUE
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_HAZARDS FALSE
 #define ENABLE_WOUNDS FALSE
 
-#define ENABLE_LORE TRUE
+#define ENABLE_LORE FALSE
 #define ENABLE_KARMA FALSE
 #define ENABLE_WIKIBOT TRUE
 
@@ -139,3 +138,28 @@
 #define SHUTTLE_DEFAULT_TRANSIT_TIME 120
 #define SHUTTLE_DEFAULT_WAITING_TIME 30
 #define SHUTTLE_DEFAULT_IDLE_TIME 10
+
+#define DEFAULT_MACROS list( \
+	"W" = "move_up", \
+	"D" = "move_right", \
+	"S" = "move_down", \
+	"A" = "move_left",\
+	"UP" = "move_up", \
+	"RIGHT" = "move_right", \
+	"DOWN" = "move_down", \
+	"LEFT" = "move_left", \
+	"Shift" = "sprint", \
+	"Alt" = "walk", \
+	"Ctrl" = "grab", \
+	"R" = "throw", \
+	"Q" = "drop", \
+	"C" = "quick_self", \
+	"E" = "quick_holder", \
+	"Z" = "zoom", \
+	"Space" = "kick", \
+	"G" = "cycle-intent-clockwise", \
+	"F" = "cycle-intent-counter-clockwise", \
+	"T" = "say", \
+	"O" = "ooc", \
+	"L" = "looc" \
+)

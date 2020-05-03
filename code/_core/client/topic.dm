@@ -24,6 +24,54 @@
 	*/
 
 	if(length(href_list))
+		if(href_list["change_key"])
+			//Changing Macros
+			var/key = href_list["change_key"]
+			if(key == "quit")
+				var/confirm = input("Are you sure you want to quit? All unsaved changes will be lost.","Quit Macro Editor","No") in list("Yes","No","Cancel")
+				if(confirm == "Yes")
+					winset(usr, "browser(edit_macros)","is-visible:false")
+			else if(key == "load")
+				var/confirm = input("Are you sure you want to clear your changes?","Clear Changes","No") in list("Yes","No","Cancel")
+				if(confirm == "Yes")
+					macros.macros = controls.loaded_data
+			else if(key == "save")
+				var/confirm = input("Are you sure you want to save your macros, overwriting saved data?","Save Macros","No") in list("Yes","No","Cancel")
+				if(confirm == "Yes")
+					controls.loaded_data = macros.macros
+					controls.save()
+			else if(key == "reset")
+				var/confirm = input("Are you sure you want to reset your macros?","Reset Macros","No") in list("Yes","No","Cancel")
+				if(confirm == "Yes")
+					macros.macros = DEFAULT_MACROS
+					to_chat(span("notice","Successfully reset macros."))
+			else if(key == "new")
+				var/new_key = input("What would you like the new key to be? Leave blank to cancel.","New Key Bind") as text | null
+				if(new_key)
+					var/new_command = input("What would you like the new command to be? Leave blank to cancel.","New Command Bind") as text | null
+					if(new_command)
+						macros.macros[new_key] = new_command
+						to_chat(span("notice","Successfully added new command '[new_command]' to key '[new_key]'"))
+			else
+				var/new_command = input("What command would you like to bind '[key]' to? Leave blank to cancel.","Change Existing Bind") as text | null
+				if(new_command)
+					macros.macros[key] = new_command
+					to_chat(span("notice","Successfully added '[new_command]' to '[key]'."))
+
+			if(key != "quit")
+				edit_macros()
+
+
+
+
+
+
+
+
+
+
+
+
 
 		/*
 		if(href_list["chat_examine"])
