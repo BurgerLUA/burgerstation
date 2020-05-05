@@ -15,6 +15,11 @@
 
 /proc/print_list(var/list_name,var/list/L)
 	LOG_DEBUG("Printing list '[list_name]' of length [length(L)]:")
+	for(var/i=1,i<=length(L),i++)
+		LOG_DEBUG("[i]: [L[i]]")
+
+/proc/print_assoc_list(var/list_name,var/list/L)
+	LOG_DEBUG("Printing list '[list_name]' of length [length(L)]:")
 	var/i=1
 	for(var/k in L)
 		var/v = L[k]

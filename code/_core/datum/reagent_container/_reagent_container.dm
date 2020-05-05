@@ -50,7 +50,7 @@
 
 	return .
 
-/reagent_container/proc/metabolize()
+/reagent_container/proc/metabolize(var/multiplier=1)
 
 	if(!volume_current)
 		return
@@ -78,7 +78,7 @@
 		if(owner && is_organ(owner) && owner.loc && flags_metabolism & REAGENT_METABOLISM_INGEST)
 			owner_to_use = owner.loc
 
-		var/metabolize_amount = R.metabolize(owner,owner_to_use,src,volume)
+		var/metabolize_amount = R.metabolize(owner,owner_to_use,src,volume,multiplier)
 
 		if(metabolize_amount)
 			remove_reagent(r_id,metabolize_amount,FALSE)
@@ -396,7 +396,7 @@
 
 	return total_amount_transfered
 
-/reagent_container/proc/get_reagent_count(var/reagent_id)
+/reagent_container/proc/get_reagent_volume(var/reagent_id)
 	return stored_reagents[reagent_id] ? stored_reagents[reagent_id] : 0
 
 /reagent_container/proc/get_flavor()

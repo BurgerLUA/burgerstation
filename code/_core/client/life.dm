@@ -67,6 +67,7 @@
 			mob.face_atom(last_location)
 	*/
 
+	update_color_mods()
 
 	return TRUE
 

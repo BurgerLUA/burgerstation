@@ -11,15 +11,21 @@
 		status_effects[status_type] = list()
 		. = TRUE
 
-	if(!status_effects[status_type]["duration"] || magnitude >= status_effects[status_type]["magnitude"] || force)
+	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
 		status_effects[status_type]["duration"] = duration
 	else
-		status_effects[status_type]["duration"] += duration
+		var/mag_mod = magnitude/status_effects[status_type]["magnitude"]
+		if(mag_mod >= 1) //New magnitude is stronger or equal to old
+			status_effects[status_type]["duration"] = duration + (status_effects[status_type]["duration"]/mag_mod)
+		else //New magnitude is weaker than old
+			status_effects[status_type]["duration"] += mag_mod*duration
 
 	if(!status_effects[status_type]["magnitude"] || force)
 		status_effects[status_type]["magnitude"] = magnitude
 	else
 		status_effects[status_type]["magnitude"] = max(status_effects[status_type]["magnitude"],magnitude)
+
+
 
 	if(.)
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
@@ -48,6 +54,8 @@
 /mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 
 	for(var/status in status_effects)
+		var/status_effect/S = SSstatus.all_status_effects[status]
+		S.on_effect_life(src,status_effects[status]["magnitude"],status_effects[status]["duration"])
 		if(status_effects[status]["duration"] == -1)
 			continue
 		if(status_effects[status]["duration"] == 0)

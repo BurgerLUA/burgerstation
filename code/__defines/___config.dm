@@ -51,7 +51,7 @@
 #define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 
 //Makes compiling faster. FALSE means disabled
 
@@ -72,6 +72,7 @@
 #define ENABLE_LORE FALSE
 #define ENABLE_KARMA FALSE
 #define ENABLE_WIKIBOT TRUE
+#define ENABLE_SCREEN_MESSAGES FALSE
 
 //#define ENABLE_SLOTS
 

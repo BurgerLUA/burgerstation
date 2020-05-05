@@ -46,3 +46,7 @@
 
 #define DISARM "disarm"
 //Disarms the target's weapons, if it is an advanced target
+
+
+#define DRUGGY "druggy"
+//Plays visuals

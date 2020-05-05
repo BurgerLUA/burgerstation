@@ -7,13 +7,13 @@ obj/effect/temp/damage_number
 	mouse_opacity = 0
 	plane = PLANE_HUD_CHAT
 
-	pixel_x =  -TILE_SIZE*0.5
-	pixel_y = -TILE_SIZE*0.5
+	pixel_x =  -TILE_SIZE
+	pixel_y = -TILE_SIZE
 
 	maptext_x = 0
 	maptext_y = 0
-	maptext_height = TILE_SIZE*2
-	maptext_width = TILE_SIZE*2
+	maptext_height = TILE_SIZE*3
+	maptext_width = TILE_SIZE*3
 
 obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desired_value)
 
@@ -21,10 +21,10 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 
 	if(duration)
 		var/desired_color = "#FFFFFF"
-		var/desired_size = 1
+		var/desired_size = 0.5
 		if(isnum(desired_value))
 			var/damage_color_math = clamp(255 - (desired_value/100)*255,0,255)
-			desired_size = clamp(desired_value*0.05,0.5,5)
+			desired_size = clamp(desired_value*0.05,0.25,5)
 			desired_color = rgb(255,damage_color_math,damage_color_math)
 
 		maptext = "<center><font size='[desired_size]' color='[desired_color]'>[desired_value]</text></center>"

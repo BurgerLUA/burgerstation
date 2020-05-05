@@ -13,6 +13,9 @@
 /status_effect/proc/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
 	return TRUE
 
+/status_effect/proc/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+	return TRUE
+
 /status_effect/stun
 	name = "Stunned"
 	desc = "You're stunned!"
@@ -92,3 +95,31 @@
 	else
 		stealthy = TRUE
 	return ..(stealthy = stealthy)
+
+
+/status_effect/druggy
+	name = "Druggy"
+	desc = "You're druggy!"
+	id = DRUGGY
+
+/status_effect/druggy/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+
+	if(owner && owner.client)
+		var/power = 1 + clamp(duration*0.1,0,min(5,magnitude*0.1))
+		var/enlightenment_power = magnitude >= 70 ? max(0,power - 4)*0.5 : 0
+		var/list/desired_color_mod = list(
+			power,0,0,0,
+			0,power,0,0,
+			0,0,power,0,
+			0,0,0,1-min(0.9,power*0.33),
+			enlightenment_power,enlightenment_power,enlightenment_power,enlightenment_power
+		)
+		owner.update_eyes()
+		owner.client.add_color_mod("druggy",desired_color_mod)
+
+	return TRUE
+
+/status_effect/druggy/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+	if(owner && owner.client)
+		owner.client.remove_color_mod("druggy")
+	return TRUE

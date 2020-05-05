@@ -25,3 +25,11 @@
 /obj/item/container/pill/iron/on_spawn()
 	reagents.add_reagent("iron",20)
 	return ..()
+
+/obj/item/container/pill/space_drugs
+	name = "space drugs (5u)"
+	icon_state = "circle"
+
+/obj/item/container/pill/space_drugs/on_spawn()
+	reagents.add_reagent("space_drugs",5)
+	return ..()

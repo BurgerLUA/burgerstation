@@ -1,6 +1,10 @@
 var/global/list/obj/hud/button/message/all_hud_messages = list()
 
 /proc/set_message(var/desired_text,var/instant = FALSE)
+
+	if(!ENABLE_SCREEN_MESSAGES)
+		return FALSE
+
 	for(var/obj/hud/button/message/M in all_hud_messages)
 		if(desired_text && M.owner)
 			var/area/A = get_area(M.owner)

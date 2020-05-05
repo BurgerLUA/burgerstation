@@ -14,7 +14,7 @@
 
 	flavor = "iron"
 
-/reagent/core/iron/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/core/iron/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 

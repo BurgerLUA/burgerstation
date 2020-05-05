@@ -11,7 +11,7 @@
 
 	value = 0.1
 
-/reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/metabolism_amount=0)
+/reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 
 	. = ..()
 
@@ -28,7 +28,7 @@
 
 	flavor = "bandaids"
 
-/reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -36,7 +36,7 @@
 
 	return .
 
-/reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -49,7 +49,7 @@
 	id = "bicaridine_plus"
 	color = "#FF0080"
 
-/reagent/medicine/bicaridine_plus/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/bicaridine_plus/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -57,7 +57,7 @@
 
 	return .
 
-/reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -73,7 +73,7 @@
 
 	flavor = "ointment"
 
-/reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -82,7 +82,7 @@
 
 	return .
 
-/reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -98,7 +98,7 @@
 
 	flavor = "sweetness"
 
-/reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -106,7 +106,7 @@
 
 	return .
 
-/reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -122,7 +122,7 @@
 
 	flavor = "bitterness"
 
-/reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -130,7 +130,7 @@
 
 	return .
 
-/reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/dexalin/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -149,7 +149,7 @@
 	metabolism_blood = METABOLISM_BLOOD*0.75
 	metabolism_stomach = METABOLISM_STOMACH*0.75
 
-/reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -157,7 +157,7 @@
 
 	return .
 
-/reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -177,7 +177,7 @@
 	metabolism_blood = METABOLISM_BLOOD*0.5
 	metabolism_stomach = METABOLISM_STOMACH*0.5
 
-/reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -185,7 +185,7 @@
 
 	return .
 
-/reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -205,7 +205,7 @@
 
 	metabolism_skin = METABOLISM_STOMACH
 
-/reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -245,7 +245,7 @@
 
 	return .
 
-/reagent/medicine/styptic_powder/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/styptic_powder/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -264,7 +264,7 @@
 	var/strength = 100
 	var/duration = 30
 
-/reagent/medicine/adrenaline/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/adrenaline/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -285,7 +285,7 @@
 	strength = 50
 	duration = 50
 
-/reagent/medicine/adrenaline/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0)
+/reagent/medicine/adrenaline/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -307,3 +307,7 @@
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
 			L.add_status_effect(ADRENALINE,100,100)
+			. = 100
+
+
+	return .

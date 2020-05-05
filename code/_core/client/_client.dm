@@ -62,6 +62,8 @@ var/global/list/all_clients = list()
 	var/mouse_down_x = 0
 	var/mouse_down_y = 0
 
+	var/list/color_mods = list()
+
 //Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
 
 /*
@@ -120,6 +122,8 @@ var/global/list/all_clients = list()
 	return TRUE
 
 /client/New()
+
+	update_color_mods()
 
 	CLEAR_VERBS(src)
 
