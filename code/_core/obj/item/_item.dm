@@ -289,7 +289,7 @@
 /obj/item/get_examine_list(var/mob/examiner)
 
 	. = list()
-	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
+	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,8,8)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")
@@ -361,6 +361,8 @@
 			new/obj/effect/temp/item_pickup(NL,2,OL,src,isturf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
+
+	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 
 	return TRUE
 

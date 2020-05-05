@@ -60,6 +60,12 @@
 					continue
 				AM.Crossed(src)
 
+	if(old_loc != loc)
+		post_move(old_loc)
+
+	return TRUE
+
+/atom/movable/proc/post_move(var/atom/old_loc)
 	return TRUE
 
 /atom/movable/Bump(var/atom/obstacle,var/Dir=0)

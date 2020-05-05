@@ -19,12 +19,11 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 
 	if(examiner != src)
 		for(var/obj/item/I in worn_objects)
-			var/object_icon = ICON_TO_HTML(I.icon,I.icon_state,32,32)
-			. += div("notice"," [object_icon] [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>)")
+			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>) [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name].")
 
 		for(var/obj/item/I in held_objects)
-			var/object_icon = ICON_TO_HTML(I.icon,I.icon_state,32,32)
-			. += div("notice"," [object_icon] [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.loc.name]. (<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>)")
+
+			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.loc.name].")
 
 	var/final_pronoun = "They"
 	if(examiner == src)

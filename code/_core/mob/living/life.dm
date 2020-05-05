@@ -41,6 +41,8 @@
 
 	post_death()
 
+	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
+
 	return TRUE
 
 /mob/living/proc/do_loot_drop(var/atom/desired_loc)

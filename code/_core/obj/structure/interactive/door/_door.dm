@@ -37,7 +37,7 @@ obj/structure/interactive/door
 
 	layer = LAYER_OBJ_DOOR_CLOSED
 
-obj/structure/interactive/door/New(var/desired_loc)
+/obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)
 		var/obj/item/device/signaller/S = new(src)
@@ -49,10 +49,11 @@ obj/structure/interactive/door/New(var/desired_loc)
 		door_state = DOOR_STATE_CLOSED
 		locked = TRUE
 
+	return ..()
+
+/obj/structure/interactive/door/Initialize()
 	. = ..()
-
 	update_sprite()
-
 	return .
 
 obj/structure/interactive/door/update_icon()

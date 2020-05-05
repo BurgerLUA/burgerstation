@@ -8,6 +8,8 @@
 	desired_light_range = 4
 	desired_light_color = "#CCD9E8"
 
+	plane = PLANE_SPACE
+
 /turf/simulated/floor/space/update_icon()
 	icon_state = "[rand(0,25)]"
 

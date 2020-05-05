@@ -28,7 +28,7 @@
 	id = BODY_FACE
 	screen_loc = "LEFT+1,BOTTOM+3"
 	item_slot = SLOT_FACE | SLOT_EYES
-	worn_slots = 1
+	worn_slots = 2
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -48,7 +48,7 @@
 			if(messages)
 				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
 			return FALSE
-		if(I.item_slot & SLOT_FACE)
+		if(I.item_slot & SLOT_EYES)
 			if(messages)
 				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
 			return FALSE

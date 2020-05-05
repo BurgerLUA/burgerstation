@@ -46,6 +46,8 @@
 
 /mob/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
+	var/atom/old_loc = loc
+
 	. = ..()
 
 	if(.)
@@ -60,6 +62,9 @@
 			if(3)
 				on_sprint()
 
+	if(loc != old_loc)
+		post_move(old_loc)
+
 	return .
 
 
@@ -67,3 +72,4 @@
 	for(var/obj/effect/chat_text/CT in stored_chat_text)
 		CT.glide_size = src.glide_size
 		CT.force_move(src.loc)
+

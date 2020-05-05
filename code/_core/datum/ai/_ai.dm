@@ -11,6 +11,7 @@
 	var/mob/living/objective_attack
 
 	var/radius_find_enemy = VIEW_RANGE
+	var/radius_find_enemy_alert = VIEW_RANGE + ZOOM_RANGE
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -431,15 +432,19 @@
 	if(radius_find_enemy <= 0)
 		return .
 
+	var/range_to_use = radius_find_enemy
+	if(alert_level == ALERT_LEVEL_ALERT)
+		range_to_use = radius_find_enemy_alert
+
 	if(only_attack_players)
-		for(var/mob/living/advanced/player/P in view(radius_find_enemy,owner))
+		for(var/mob/living/advanced/player/P in view(range_to_use,owner))
 			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
 				continue
 			if(!should_attack_mob(P))
 				continue
 			.[P] = TRUE
 	else
-		for(var/mob/living/L in view(radius_find_enemy,owner))
+		for(var/mob/living/L in view(range_to_use,owner))
 			if(!L.initialized)
 				continue
 			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))

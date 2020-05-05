@@ -51,7 +51,7 @@
 #define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster. FALSE means disabled
 
@@ -81,8 +81,8 @@
 #define ENABLE_XP FALSE
 #define LEVEL_CAP 100
 
-#define ITEM_DELETION_TIME_DROPPED 3000
-#define ITEM_DELETION_TIME_NEW 600
+#define ITEM_DELETION_TIME_DROPPED 3000 //5 minutes
+#define ITEM_DELETION_TIME_NEW 600 //60 seconds.
 
 #define WARN_ON_DUPLICATE_QDEL TRUE
 #define CRASH_ON_DUPLICATE_QDEL FALSE

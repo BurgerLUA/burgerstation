@@ -67,6 +67,8 @@
 	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
 
+	var/list/obj/parallax/parallax
+
 	var/last_words = ""
 
 	var/list/stored_chat_text = list() //experiment
@@ -163,15 +165,13 @@
 	return TRUE
 
 /mob/Initialize()
-
 	. = ..()
-
 	force_move(src.loc)
-
 	return .
 
 /mob/New(var/loc/spawning_location,var/client/C)
 
+	parallax = list()
 	buttons = list()
 	health_elements = list()
 
