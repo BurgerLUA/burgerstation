@@ -48,6 +48,8 @@
 	strength = 75
 	duration_mod = 10
 
+	value = 7.5
+
 /reagent/core/drug/space
 	name = "space drugs"
 	id = "space_drugs"
@@ -59,4 +61,5 @@
 	strength = 25
 	duration_mod = 15
 
+	value = 4.5
 

@@ -30,6 +30,7 @@ obj/structure/interactive/door
 
 	var/open_sound = null
 	var/close_sound = null
+	var/deny_sound = null
 
 	var/spawn_signaller = FALSE
 	var/radio_frequency = RADIO_FREQ_DOOR

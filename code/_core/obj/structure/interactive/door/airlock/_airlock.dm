@@ -19,10 +19,21 @@
 
 	open_sound = 'sounds/machines/airlock/open.ogg'
 	close_sound = 'sounds/machines/airlock/close.ogg'
+	deny_sound = 'sounds/machines/airlock/deny.ogg'
 
 	blocks_air = NORTH | EAST | SOUTH | WEST
 
 	var/no_access = FALSE
+
+/obj/structure/interactive/door/airlock/Initialize()
+
+	if(color)
+		base_color = color
+		color = "#FFFFFF"
+	else
+		base_color = "#FFFFFF"
+
+	return ..()
 
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -61,7 +72,8 @@
 obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE)
 
 	if(!force)
-		if(locked)
+		if(locked || no_access)
+			set_door_state(DOOR_STATE_DENY)
 			return FALSE
 
 		if(door_state != DOOR_STATE_CLOSED || door_state == DOOR_STATE_DENY)
@@ -101,6 +113,11 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 	update_sprite()
 
 	switch(desired_door_state)
+		if(DOOR_STATE_DENY)
+			CALLBACK("door_state_\ref[src]",6,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock)
+			if(deny_sound)
+				play(deny_sound,src)
+
 		if(DOOR_STATE_START_OPENING)
 			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,DOOR_STATE_OPENING_01,should_lock)
 			if(open_sound)
@@ -134,7 +151,6 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			opened_time = 0
 			start_thinking(src)
 
-
 		if(DOOR_STATE_CLOSED)
 			stop_thinking(src)
 			if(should_lock)
@@ -147,10 +163,6 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 
 /obj/structure/interactive/door/airlock/update_icon()
-
-	if(color && color != "#FFFFFF")
-		base_color = color
-		color = "#FFFFFF"
 
 	icon = initial(icon)
 
@@ -185,7 +197,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 			set_opacity(0)
 
-		if(DOOR_STATE_CLOSED)
+		if(DOOR_STATE_CLOSED,DOOR_STATE_DENY,DOOR_STATE_START_OPENING)
 			icon_state = "closed"
 			desc = "The door is closed."
 			switch(filler)
@@ -196,54 +208,47 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
 					set_opacity(1)
 
-		if(DOOR_STATE_START_OPENING)
-			icon_state = "closed"
-			desc = "The door is closed."
-			collision_flags = FLAG_COLLISION_REAL
-			switch(filler)
-				if("glass")
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
-					set_opacity(0)
-				else
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
-					set_opacity(1)
-
-	var/icon/base_icon = new /icon(icon,icon_state)
+	var/icon/base_icon = new/icon(icon,icon_state)
+	ASSERT(base_color)
 	base_icon.Blend(base_color,ICON_MULTIPLY)
 
 	if(filler)
 		var/icon/fill_icon = new /icon(icon,"[icon_state]_[filler]")
+		ASSERT(fill_color)
 		fill_icon.Blend(fill_color,ICON_MULTIPLY)
 		base_icon.Blend(fill_icon,ICON_OVERLAY)
 
 	var/icon/panel_icon = new /icon(icon,"[icon_state]_panel")
 	base_icon.Blend(panel_icon,ICON_OVERLAY)
 
-	var/desired_color = "#FFFFFF"
-	if(locked && door_state == DOOR_STATE_CLOSED)
+	var/desired_color
+
+	if(door_state == DOOR_STATE_DENY || (locked && door_state == DOOR_STATE_CLOSED))
 		desired_color = "#FF0000"
 	else
 		switch(door_state)
 			if(DOOR_STATE_OPENING_01,DOOR_STATE_OPENING_02,DOOR_STATE_START_OPENING)
-				desired_color = "#00FF00"
+				desired_color = "#FF0000"
 			if(DOOR_STATE_CLOSING_01,DOOR_STATE_CLOSING_02)
 				desired_color = "#FFFF00"
-			if(DOOR_STATE_DENY)
-				desired_color = "#FF0000"
 
 	var/light_state = "[icon_state]_light"
 
-	if(door_state == DOOR_STATE_START_OPENING || door_state == DOOR_STATE_DENY || locked && door_state == DOOR_STATE_CLOSED )
+	if(door_state == DOOR_STATE_DENY)
+		light_state = "light_special_access"
+
+	if(door_state == DOOR_STATE_START_OPENING || locked && door_state == DOOR_STATE_CLOSED )
 		light_state = "light_special_static"
 
-	if(desired_color == "#FFFFFF")
+	if(!desired_color)
 		set_light(FALSE)
 	else
 		set_light(1,0.75,desired_color)
 
-	var/icon/light_icon = new /icon(icon,light_state)
-	light_icon.Blend(desired_color,ICON_MULTIPLY)
-	base_icon.Blend(light_icon,ICON_OVERLAY)
+	if(desired_color)
+		var/icon/light_icon = new /icon(icon,light_state)
+		light_icon.Blend(desired_color,ICON_MULTIPLY)
+		base_icon.Blend(light_icon,ICON_OVERLAY)
 
 	var/icon/frame_icon = new /icon(icon,"frame")
 	base_icon.Blend(frame_icon,ICON_OVERLAY)

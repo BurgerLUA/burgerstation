@@ -35,7 +35,7 @@
 
 /obj/item/powercell/click_on_object(var/atom/caller,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object(location,control,params)
 
 	if(get_dist(caller,object) > 1)
 		return FALSE

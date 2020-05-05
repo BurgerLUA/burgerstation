@@ -21,7 +21,8 @@
 	verbs += /client/verb/set_volume_music
 	verbs += /client/verb/set_volume_footsteps
 	verbs += /client/verb/ghost
-	verbs += /client/proc/edit_macros
+	verbs += /client/verb/edit_macros
+	verbs += /client/verb/set_fps
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test
 	if(ckey == "burgerbb")

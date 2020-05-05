@@ -87,7 +87,7 @@
 
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object(location,control,params)
 
 	if(is_inventory(object) && !(is_dynamic_inventory(src.loc) || is_pocket(src.loc)) && length(stored_bullets))
 		var/obj/hud/inventory/I = object
@@ -112,7 +112,7 @@
 	if(istype(src,/obj/item/magazine/clip))
 		return FALSE
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object(location,control,params)
 
 	if(!is_bullet_gun(object))
 		return ..()

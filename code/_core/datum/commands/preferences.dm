@@ -52,3 +52,13 @@
 		to_chat(span("ui notice","Right clicking will now activate the object in your right hand, and vice versa."))
 	else
 		to_chat(span("ui notice","Left clicking will now activate the object in your right hand, and vice versa."))
+
+
+/client/verb/set_fps(var/desired_fps as num)
+	set category = "Preferences"
+	set name = "Maximum FPS"
+	var/old_fps = src.fps
+	desired_fps = clamp(desired_fps,30,60)
+	src.fps = desired_fps
+	settings.change_setting("fps_client",desired_fps)
+	to_chat(span("notice","Your FPS was changed from [old_fps] to [desired_fps]."))

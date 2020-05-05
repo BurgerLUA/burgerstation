@@ -104,7 +104,7 @@
 
 	INTERACT_CHECK
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object(location,control,params)
 
 	if(can_mine_ore(caller,object))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/mine_ore,caller)

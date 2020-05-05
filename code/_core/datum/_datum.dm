@@ -10,3 +10,7 @@
 /datum/proc/Initialize()
 	initialized = TRUE
 	return TRUE
+
+
+/datum/proc/is_safe_to_delete()
+	return TRUE

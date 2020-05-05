@@ -18,7 +18,7 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 
 	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object()
+	var/atom/A = object.defer_click_on_object(location,control,params)
 
 	if(is_item(A))
 		var/obj/item/I = A
@@ -83,7 +83,7 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 
 	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object()
+	var/atom/A = object.defer_click_on_object(location,control,params)
 
 	if(is_item(A))
 		var/obj/item/I = A
@@ -156,7 +156,7 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 
 	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object()
+	var/atom/A = object.defer_click_on_object(location,control,params)
 
 	if(istype(A,/obj/item/material/sheet/))
 		var/obj/item/material/sheet/S = A
@@ -194,7 +194,7 @@ obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/calle
 
 	INTERACT_CHECK
 
-	var/atom/A = object.defer_click_on_object()
+	var/atom/A = object.defer_click_on_object(location,control,params)
 
 	if(istype(A,/obj/item/material/sheet/))
 		var/obj/item/material/sheet/S = A

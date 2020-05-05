@@ -35,6 +35,8 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/status_id
 
+	initialize_type = INITIALIZE_LATE
+
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
 	return ..()
@@ -62,9 +64,11 @@ var/global/list/all_shuttle_controlers = list()
 		qdel(src)
 		return FALSE
 
+	. =..()
+
 	set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 
-	return ..()
+	return .
 
 /obj/shuttle_controller/proc/signal_landing(var/area/transit/landing_area)
 	for(var/turf/T in landing_area.contents)

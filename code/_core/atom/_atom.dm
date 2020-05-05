@@ -132,7 +132,7 @@
 
 	return .
 
-/atom/proc/defer_click_on_object()
+/atom/proc/defer_click_on_object(location,control,params)
 	return src
 
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.
@@ -198,3 +198,12 @@
 			return dir
 
 	return 0x0
+
+
+/atom/is_safe_to_delete()
+
+	for(var/atom/A in contents)
+		if(!A.is_safe_to_delete())
+			return FALSE
+
+	return ..()

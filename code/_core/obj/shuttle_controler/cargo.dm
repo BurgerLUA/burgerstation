@@ -8,13 +8,16 @@
 
 	status_id = "cargo"
 
+	default_waiting_time = 10
+	default_transit_time = 10
+
 /obj/shuttle_controller/cargo/transit(var/starting_transit_id,var/ending_transit_id)
 
 	if(ending_transit_id == "cargo_shuttle_planet")
 		var/area/A = get_area(src)
 		var/total_value = 0
 		for(var/obj/O in A.contents)
-			if(!is_safe_to_remove(O))
+			if(!O.is_safe_to_delete())
 				continue
 			var/calculated_value = CEILING(O.calculate_value(),1)
 			if(calculated_value <= 0)

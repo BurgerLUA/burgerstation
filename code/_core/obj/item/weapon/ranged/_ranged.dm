@@ -85,6 +85,8 @@
 		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()
 
+	object = object.defer_click_on_object(location,control,params)
+
 	if(shoot(caller,object,location,params))
 		return TRUE
 
@@ -113,6 +115,8 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,loca
 	return .
 
 obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+	world.log << "We want to shoot: [object]."
 
 	if(!object)
 		return FALSE

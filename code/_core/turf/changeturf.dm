@@ -31,12 +31,4 @@
 	else
 		queue_update_turf_edges(src)
 
-	/*
-	if(is_simulated(.))
-		var/turf/simulated/S = .
-		S.set_exposed(initial(S.exposed))
-	*/
-
-
-
 	return .

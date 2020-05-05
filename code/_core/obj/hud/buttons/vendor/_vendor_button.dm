@@ -102,7 +102,7 @@
 		return ..()
 
 	var/mob/living/advanced/player/P = caller
-	var/atom/defer_object = object.defer_click_on_object()
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 	var/item_value = CEILING(associated_item.calculate_value(),1)
 
 	if(!is_inventory(defer_object))

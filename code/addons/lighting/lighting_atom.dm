@@ -25,6 +25,11 @@
 
 // The proc you should always use to set the light of this atom.
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE)
+
+	if(!isnum(l_range))
+		CRASH_SAFE("Light range set to null!")
+		return
+
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4, which is the lowest value that you can really see.
 
@@ -35,7 +40,6 @@
 		light_range = l_range
 
 	if (l_color != NONSENSICAL_VALUE)
-
 		light_color = l_color
 
 	if (angle != NONSENSICAL_VALUE)
@@ -52,7 +56,8 @@
 // Creates or destroys it if needed, makes it update values, makes sure it's got the correct source turf...
 /atom/proc/update_light()
 
-	if (qdeleting)
+	if(qdeleting)
+		QDEL_NULL(light) //TODO: Does this work?
 		return
 
 	if (!light_power || !light_range) // We won't emit light anyways, destroy the light source.

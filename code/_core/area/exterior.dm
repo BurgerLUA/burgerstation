@@ -9,7 +9,7 @@
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20
 	hazard = "cold"
-	desired_light_color = "#C2C2C2"
+	desired_light_color = "#CCCCCC"
 
 /area/exterior/grass
 	name = "grass"

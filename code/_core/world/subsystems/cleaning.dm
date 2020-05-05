@@ -9,18 +9,18 @@ SUBSYSTEM_DEF(delete)
 /subsystem/delete/on_life()
 
 	for(var/datum/object_to_delete in objects_to_delete)
-
 		if(object_to_delete.qdeleting)
 			objects_to_delete -= object_to_delete
 			continue
-
 		var/time_to_delete = objects_to_delete[object_to_delete]
 		if(time_to_delete > world.time)
 			continue
-
-		if(is_atom(object_to_delete) && !is_safe_to_remove(object_to_delete))
-			objects_to_delete[object_to_delete] = world.time + 300 //Wait another 30 seconds.
-			continue
+		if(is_atom(object_to_delete))
+			var/atom/A = object_to_delete
+			if(!A.is_safe_to_delete())
+				world.log << "Object [object_to_delete.type] not safe to remove!"
+				objects_to_delete[object_to_delete] = world.time + 300 //Wait another 30 seconds.
+				continue
 
 		objects_to_delete -= object_to_delete
 		qdel(object_to_delete)
@@ -29,16 +29,18 @@ SUBSYSTEM_DEF(delete)
 	for(var/datum/object_to_delete in objects_to_delete_safe)
 
 		if(!istype(object_to_delete) || object_to_delete.qdeleting)
-			objects_to_delete -= object_to_delete
+			objects_to_delete_safe -= object_to_delete
 			continue
 
-		var/time_to_delete = objects_to_delete[object_to_delete]
+		var/time_to_delete = objects_to_delete_safe[object_to_delete]
 		if(time_to_delete > world.time)
 			continue
 
-		if(is_atom(object_to_delete) && !is_safe_to_remove(object_to_delete))
-			objects_to_delete[object_to_delete] = world.time + 30
-			continue
+		if(is_atom(object_to_delete))
+			var/atom/A = object_to_delete
+			if(!A.is_safe_to_delete())
+				objects_to_delete_safe[object_to_delete] = world.time + 300
+				continue
 
 		var/should_delete = TRUE
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,get_turf(object_to_delete)))
@@ -47,25 +49,20 @@ SUBSYSTEM_DEF(delete)
 			should_delete = FALSE
 
 		if(!should_delete)
+			objects_to_delete_safe[object_to_delete] = world.time + 300
 			continue
 
-		objects_to_delete -= object_to_delete
+		objects_to_delete_safe -= object_to_delete
 		qdel(object_to_delete)
-
-
-
-
-
-
 
 	return TRUE
 
 proc/queue_delete(var/object_to_delete,var/delete_in = 1,var/safe=FALSE)
 
 	if(safe)
-		SSdelete.objects_to_delete[object_to_delete] = world.time + delete_in
-	else
 		SSdelete.objects_to_delete_safe[object_to_delete] = world.time + delete_in
+	else
+		SSdelete.objects_to_delete[object_to_delete] = world.time + delete_in
 
 	return TRUE
 

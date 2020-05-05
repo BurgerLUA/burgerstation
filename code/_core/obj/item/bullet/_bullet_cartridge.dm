@@ -179,7 +179,7 @@
 
 /obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	object = object.defer_click_on_object()
+	object = object.defer_click_on_object(location,control,params)
 
 	if(is_bullet(object))
 		var/obj/item/bullet_cartridge/B = object

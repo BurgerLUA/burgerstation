@@ -19,7 +19,7 @@ var/global/list/avaliable_commands = list(
 	"looc"
 )
 
-/client/proc/edit_macros()
+/client/verb/edit_macros()
 	set name = "Edit Macros"
 	set category = "Preferences"
 

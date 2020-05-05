@@ -71,9 +71,6 @@
 
 	var/mob/living/advanced/A = owner
 
-	var/atom/defer_right_click = A.left_hand?.defer_click_on_object()
-	var/atom/defer_left_click = A.right_hand?.defer_click_on_object()
-
 	var/list/params = list(
 		PARAM_ICON_X = num2text(pick(target_distribution_x)),
 		PARAM_ICON_Y = num2text(pick(target_distribution_y)),
@@ -84,6 +81,9 @@
 		"shift" = 0,
 		"alt" = 0
 	)
+
+	var/atom/defer_right_click = A.left_hand?.defer_click_on_object(null,null,params)
+	var/atom/defer_left_click = A.right_hand?.defer_click_on_object(null,null,params)
 
 	if(!defer_right_click || !owner.can_attack(target,defer_right_click,params,null))
 		defer_right_click = null

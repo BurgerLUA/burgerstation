@@ -55,7 +55,7 @@
 	if(!object)
 		return TRUE
 
-	var/atom/defer_object = object.defer_click_on_object()
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(open && defer_object && is_inventory(defer_object) && src && src.loc && is_inventory(src.loc)) //The revolver is in an inventory, and you're click on it with your hands.
 

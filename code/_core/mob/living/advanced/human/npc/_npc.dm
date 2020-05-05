@@ -13,7 +13,7 @@
 
 	loot_drop_in_corpse = TRUE
 
-/mob/living/advanced/npc/defer_click_on_object()
+/mob/living/advanced/npc/defer_click_on_object(location,control,params)
 
 	if(dialogue_id)
 		return src

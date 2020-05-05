@@ -89,7 +89,7 @@
 
 /mob/proc/update_eyes()
 	vision = 0x0
-	sight = (SEE_SELF | SEE_BLACKNESS | SEE_TURFS)
+	sight = (SEE_SELF | SEE_BLACKNESS)
 	return TRUE
 
 /mob/Destroy()
@@ -179,5 +179,13 @@
 		C.control_mob(src,FALSE)
 
 	all_mobs += src
+
+	return ..()
+
+
+/mob/is_safe_to_delete()
+
+	if(client || ckey_last)
+		return FALSE
 
 	return ..()

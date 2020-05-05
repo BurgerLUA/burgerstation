@@ -1,7 +1,7 @@
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	var/atom/defer_self = src.defer_click_on_object() //We could be holding an object.
-	var/atom/defer_object = object.defer_click_on_object() //The object we're clicking on could be something else.
+	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
+	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
@@ -15,7 +15,7 @@
 
 	else if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
 		caller.face_atom(object)
-		var/atom/movable/object_to_throw = src.defer_click_on_object()
+		var/atom/movable/object_to_throw = src.defer_click_on_object(location,control,params)
 		if(is_item(object_to_throw))
 			var/obj/item/I = object_to_throw
 			var/vel_x = object.x - caller.x
@@ -135,7 +135,7 @@
 
 	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object
-		var/atom/defer_self = src.defer_click_on_object()
+		var/atom/defer_self = src.defer_click_on_object(location,control,params)
 		if(is_item(defer_self))
 			var/obj/item/self_as_item = defer_self
 			self_as_item.dropped_on_by_object(caller,object_as_item,location,control,params)
@@ -155,7 +155,7 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 	return get_top_held_object().drop_item(new_location,pixel_x_offset,pixel_y_offset)
 
-/obj/hud/inventory/defer_click_on_object()
+/obj/hud/inventory/defer_click_on_object(location,control,params)
 
 	if(length(held_objects))
 		return get_top_held_object()
@@ -181,8 +181,8 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 /obj/hud/inventory/help(var/atom/caller,var/atom/object,var/list/params=list())
 
-	var/atom/defer_self = src.defer_click_on_object() //We could be holding an object.
-	var/atom/defer_object = object.defer_click_on_object() //The object we're clicking on could be something else.
+	var/atom/defer_self = src.defer_click_on_object(null,null,params) //We could be holding an object.
+	var/atom/defer_object = object.defer_click_on_object(null,null,params) //The object we're clicking on could be something else.
 
 	if(defer_self == src)
 		defer_self = get_object_to_damage_with(caller,object,params)

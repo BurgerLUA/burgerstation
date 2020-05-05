@@ -226,6 +226,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		if(!M.client)
 			continue
 
+		if(length(pos) && pos[3] != 0 && pos[3] != M.z) //0 just means that it should play locally
+			continue
+
 		if(!created_sound)
 			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
 			return FALSE
