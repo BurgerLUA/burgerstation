@@ -5,18 +5,18 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
-		LASER = ARMOR_D,
-		MAGIC = -ARMOR_C,
-		BOMB = ARMOR_D
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 10,
+		MAGIC = -50,
+		BOMB = 10
 	)
 
 	size = SIZE_3
 	weight = WEIGHT_2
 
-	value = 40
+	value = 60
 
 /obj/item/clothing/head/helmet/security/tactical_helmet2
 	name = "tactical military helmet"
@@ -25,15 +25,15 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_B,
-		LASER = ARMOR_C,
-		MAGIC = -ARMOR_B,
-		BOMB = ARMOR_C
+		BLADE = 10,
+		BLUNT = 25,
+		PIERCE = 35,
+		LASER = 5,
+		MAGIC = -50,
+		BOMB = 25
 	)
 
 	size = SIZE_3
 	weight = WEIGHT_3
 
-	value = 90
+	value = 120

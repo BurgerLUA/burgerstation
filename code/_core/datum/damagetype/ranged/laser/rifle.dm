@@ -9,8 +9,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		HEAT = ARMOR_C,
-		LASER = ARMOR_C
+		HEAT = 25,
+		LASER = 25
 	)
 
 /damagetype/ranged/laser/rifle/hardlight
@@ -26,10 +26,10 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_S,
-		PIERCE = ARMOR_S,
-		LASER = ARMOR_C,
-		COLD = ARMOR_C
+		BLUNT = 100,
+		PIERCE = 100,
+		LASER = 25,
+		COLD = 25
 	)
 
 /damagetype/ranged/laser/rifle/xray
@@ -44,7 +44,7 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		LASER = ARMOR_S,
-		HEAT = ARMOR_S,
-		RAD = ARMOR_S
+		LASER = 100,
+		HEAT = 100,
+		RAD = 100
 	)

@@ -12,7 +12,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = CLASS_D
+		ATTRIBUTE_INTELLIGENCE = 50
 	)
 
 	attribute_damage = list(
@@ -20,7 +20,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = CLASS_D,
+		SKILL_MAGIC = 50,
 	)
 
 	skill_damage = list(

@@ -15,8 +15,8 @@
 	protected_limbs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT) //TODO: MAKE THIS DYNAMIC
 
 	defense_rating = list(
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_D
+		MAGIC = 10,
+		COLD = 10
 	)
 
 	size = SIZE_0

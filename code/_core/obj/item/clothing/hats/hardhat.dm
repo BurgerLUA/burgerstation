@@ -5,10 +5,10 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_S,
-		PIERCE = ARMOR_D,
-		MAGIC = -ARMOR_D
+		BLADE = 10,
+		BLUNT = 75,
+		PIERCE = 25,
+		MAGIC = -25
 	)
 
 	size = SIZE_2

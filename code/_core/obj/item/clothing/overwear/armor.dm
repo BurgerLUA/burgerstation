@@ -10,12 +10,12 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_B,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_C,
-		COLD = ARMOR_C
+		BLADE = 10,
+		BLUNT = 25,
+		PIERCE = 50,
+		LASER = 10,
+		MAGIC = -25,
+		COLD = 25
 	)
 
 	size = SIZE_4
@@ -32,14 +32,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		LASER = -ARMOR_B,
-		MAGIC = -ARMOR_D,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_C,
-		HOLY = ARMOR_B
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 15,
+		LASER = -50,
+		MAGIC = -15,
+		HEAT = 10,
+		COLD = 25,
+		HOLY = 50
 	)
 
 	size = SIZE_4
@@ -54,14 +54,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		LASER = -ARMOR_A,
-		MAGIC = -ARMOR_C,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_C,
-		HOLY = ARMOR_A
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 15,
+		LASER = -75,
+		MAGIC = -25,
+		HEAT = 10,
+		COLD = 25,
+		HOLY = 75
 	)
 
 	size = SIZE_3
@@ -76,14 +76,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
-		LASER = -ARMOR_A,
-		MAGIC = -ARMOR_A,
-		HEAT = ARMOR_B,
-		COLD = ARMOR_B,
-		HOLY = ARMOR_C,
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = -75,
+		MAGIC = -75,
+		HEAT = 50,
+		COLD = 50,
+		HOLY = 25,
 	)
 
 	size = SIZE_5
@@ -98,14 +98,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_E,
-		MAGIC = ARMOR_D,
-		COLD = -ARMOR_C,
-		HOLY = ARMOR_D,
-		DARK = ARMOR_D
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 15,
+		LASER = 10,
+		MAGIC = 15,
+		COLD = -25,
+		HOLY = 15,
+		DARK = 15
 	)
 
 	size = SIZE_4
@@ -123,14 +123,14 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_C,
-		MAGIC = -ARMOR_S,
-		HEAT = -ARMOR_A,
-		COLD = ARMOR_D,
-		BOMB = ARMOR_D
+		BLADE = 50,
+		BLUNT = 15,
+		PIERCE = 10,
+		LASER = 25,
+		MAGIC = -100,
+		HEAT = -75,
+		COLD = 15,
+		BOMB = 15
 	)
 
 	size = SIZE_6
@@ -161,14 +161,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_S,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_C,
-		MAGIC = -ARMOR_S,
-		HEAT = -ARMOR_S,
-		COLD = ARMOR_D,
-		BOMB = ARMOR_D
+		BLADE = 100,
+		BLUNT = 15,
+		PIERCE = 15,
+		LASER = 25,
+		MAGIC = -100,
+		HEAT = -100,
+		COLD = 15,
+		BOMB = 15
 	)
 
 	size = SIZE_7
@@ -180,16 +180,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_C,
-		HEAT = -ARMOR_D,
-		COLD = ARMOR_B,
-		BOMB = ARMOR_E,
-		HOLY = -ARMOR_A,
-		DARK = ARMOR_A
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 10,
+		LASER = 10,
+		MAGIC = -25,
+		HEAT = -15,
+		COLD = 50,
+		BOMB = 10,
+		HOLY = -75,
+		DARK = 75
 	)
 
 	size = SIZE_5
@@ -203,16 +203,16 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_C,
-		MAGIC = ARMOR_C,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_C,
-		BOMB = ARMOR_E,
-		HOLY = -ARMOR_C,
-		DARK = -ARMOR_C
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 10,
+		LASER = -25,
+		MAGIC = 25,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 10,
+		HOLY = -25,
+		DARK = -25
 	)
 
 	size = SIZE_6
@@ -227,16 +227,16 @@
 	icon = 'icons/obj/items/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
-		BLADE = ARMOR_S,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_D,
-		LASER = -ARMOR_C,
-		MAGIC = -ARMOR_S,
-		HEAT = -ARMOR_S,
-		COLD = ARMOR_D,
-		BOMB = ARMOR_E,
-		HOLY = -ARMOR_C,
-		DARK = -ARMOR_C
+		BLADE = 100,
+		BLUNT = 25,
+		PIERCE = 15,
+		LASER = -25,
+		MAGIC = -100,
+		HEAT = -100,
+		COLD = 15,
+		BOMB = 10,
+		HOLY = -25,
+		DARK = -25
 	)
 
 	size = SIZE_7
@@ -255,16 +255,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_D,
-		MAGIC = -ARMOR_S,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_B,
-		BOMB = ARMOR_D,
-		BIO = ARMOR_B,
-		RAD = ARMOR_D
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 10,
+		LASER = 15,
+		MAGIC = -100,
+		HEAT = 25,
+		COLD = 50,
+		BOMB = 15,
+		BIO = 50,
+		RAD = 15
 	)
 
 	size = SIZE_7
@@ -282,16 +282,16 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_C,
-		MAGIC = -ARMOR_S,
-		HEAT = ARMOR_B,
-		COLD = ARMOR_A,
-		BOMB = ARMOR_C,
-		BIO = ARMOR_A,
-		RAD = ARMOR_C
+		BLADE = 50,
+		BLUNT = 25,
+		PIERCE = 15,
+		LASER = 25,
+		MAGIC = -100,
+		HEAT = 50,
+		COLD = 75,
+		BOMB = 25,
+		BIO = 75,
+		RAD = 25
 	)
 
 	size = SIZE_6
@@ -309,16 +309,16 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_B,
-		MAGIC = -ARMOR_S,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_B,
-		BOMB = ARMOR_D,
-		BIO = ARMOR_C,
-		RAD = ARMOR_D
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 15,
+		LASER = 50,
+		MAGIC = -100,
+		HEAT = 25,
+		COLD = 50,
+		BOMB = 15,
+		BIO = 25,
+		RAD = 15
 	)
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)
@@ -335,16 +335,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_D,
-		MAGIC = -ARMOR_A,
-		HEAT = ARMOR_B,
-		COLD = ARMOR_C,
-		BOMB = ARMOR_E,
-		BIO = ARMOR_C,
-		RAD = ARMOR_D
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 15,
+		LASER = 15,
+		MAGIC = -75,
+		HEAT = 50,
+		COLD = 25,
+		BOMB = 10,
+		BIO = 25,
+		RAD = 15
 	)
 
 	size = SIZE_7
@@ -362,15 +362,15 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_C,
-		MAGIC = ARMOR_C,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_D,
-		HOLY = -ARMOR_C,
-		DARK = ARMOR_C
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 10,
+		LASER = -25,
+		MAGIC = 25,
+		HEAT = 25,
+		COLD = 15,
+		HOLY = -25,
+		DARK = 25
 	)
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
@@ -383,15 +383,15 @@
 /obj/item/clothing/overwear/armor/knight/magnus/red
 	name = "red magnus armor"
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_D,
-		MAGIC = ARMOR_D,
-		HEAT = ARMOR_B,
-		COLD = -ARMOR_C,
-		HOLY = ARMOR_C,
-		DARK = -ARMOR_C
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 10,
+		LASER = -15,
+		MAGIC = 15,
+		HEAT = 50,
+		COLD = -25,
+		HOLY = 25,
+		DARK = -25
 	)
 	color = "#7F0000"
 
@@ -405,12 +405,12 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
-		LASER = ARMOR_S,
-		MAGIC = -ARMOR_S,
-		BOMB = ARMOR_D
+		BLADE = 50,
+		BLUNT = 15,
+		PIERCE = 25,
+		LASER = 100,
+		MAGIC = -100,
+		BOMB = 15
 	)
 
 	size = SIZE_6
@@ -429,10 +429,10 @@
 	color = "#8C4438"
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		COLD = ARMOR_C
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 15,
+		COLD = 25
 	)
 
 	size = SIZE_3
@@ -445,12 +445,12 @@
 	color = COLOR_BLACK
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_D,
-		COLD = ARMOR_D
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 25,
+		LASER = 10,
+		MAGIC = -15,
+		COLD = 15
 	)
 
 	size = SIZE_3
@@ -473,10 +473,10 @@
 	color = "#8C4438"
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
-		COLD = ARMOR_C
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		COLD = 25
 	)
 
 	size = SIZE_4
@@ -489,11 +489,11 @@
 	color = COLOR_BLACK
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_B,
-		MAGIC = -ARMOR_B,
-		COLD = ARMOR_D
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 50,
+		MAGIC = -50,
+		COLD = 15
 	)
 
 	size = SIZE_4
@@ -515,11 +515,11 @@
 	worn_layer = LAYER_MOB_CLOTHING_ARMOR
 
 	defense_rating = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
-		LASER = ARMOR_C,
-		MAGIC = -ARMOR_A
+		BLADE = 50,
+		BLUNT = 15,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = -75
 	)
 
 	size = SIZE_5

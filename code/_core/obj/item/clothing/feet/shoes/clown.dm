@@ -1,6 +1,6 @@
 /obj/item/clothing/feet/shoes/clown
 	name = "right clown shoe"
-	rarity = RARITY_RARE
+	rarity = RARITY_MYTHICAL
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
@@ -10,20 +10,15 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_A,
-		COLD = ARMOR_D,
-		HOLY = ARMOR_A,
-		DARK = ARMOR_A,
-		FATIGUE = -ARMOR_S
+		MAGIC = 50,
+		HOLY = 50,
+		DARK = 50
 	)
 
 	size = SIZE_3
 	weight = WEIGHT_2
 
-	value = 60
+	value = 100
 
 	slowdown_mul_worn = 1.1
 

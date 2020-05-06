@@ -5,8 +5,8 @@
 	desc_extended = "It's a hat."
 
 	defense_rating = list(
-		MAGIC = ARMOR_C,
-		COLD = ARMOR_C
+		MAGIC = 50,
+		COLD = 25
 	)
 
 	size = SIZE_2
@@ -22,8 +22,9 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		MAGIC = ARMOR_B,
-		DARK = ARMOR_A
+		MAGIC = 75,
+		DARK = 50,
+		HOLY = 50
 	)
 
 	size = SIZE_2
@@ -37,17 +38,5 @@
 /obj/item/clothing/head/hat/wizard/blue
 	color = "#0065FF"
 
-	defense_rating = list(
-		MAGIC = ARMOR_A,
-		HOLY = ARMOR_C,
-		DARK = ARMOR_C
-	)
-
 /obj/item/clothing/head/hat/wizard/red
 	color = "#FF0000"
-
-	defense_rating = list(
-		MAGIC = ARMOR_A,
-		HOLY = ARMOR_C,
-		DARK = ARMOR_C
-	)

@@ -9,8 +9,8 @@
 	icon = 'icons/obj/items/clothing/underwear/bra.dmi'
 
 	defense_rating = list(
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_E
+		MAGIC = 15,
+		COLD = 10
 	)
 
 /obj/item/clothing/undertop/underwear/bra/alt
@@ -51,8 +51,8 @@
 	icon = 'icons/obj/items/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_D
+		MAGIC = 15,
+		COLD = 15
 	)
 
 /obj/item/clothing/undertop/underwear/shirt/security

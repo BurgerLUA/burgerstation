@@ -10,8 +10,8 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		MAGIC = ARMOR_B,
-		HEAT = ARMOR_D
+		MAGIC = 50,
+		HEAT = 15
 	)
 
 	size = SIZE_1

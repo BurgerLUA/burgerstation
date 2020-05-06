@@ -7,8 +7,8 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		MAGIC = ARMOR_E,
-		COLD = ARMOR_D,
+		MAGIC = 10,
+		COLD = 15,
 	)
 
 	value = 5

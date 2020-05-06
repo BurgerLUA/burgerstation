@@ -9,6 +9,6 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		COLD = ARMOR_B,
-		LASER = ARMOR_B
+		COLD = 50,
+		LASER = 50
 	)

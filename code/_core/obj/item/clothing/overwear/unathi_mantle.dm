@@ -10,12 +10,12 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_D,
-		HEAT = ARMOR_D,
-		COLD = ARMOR_B,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		MAGIC = 15,
+		HEAT = 15,
+		COLD = 50,
 	)
 
 	size = SIZE_3

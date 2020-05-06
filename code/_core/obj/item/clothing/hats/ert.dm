@@ -5,10 +5,10 @@
 	desc_extended = "A sturdy riot helmet. It is quite outdated."
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		MAGIC = -ARMOR_D
+		BLADE = 10,
+		BLUNT = 20,
+		PIERCE = 10,
+		MAGIC = -25
 	)
 
 	size = SIZE_3

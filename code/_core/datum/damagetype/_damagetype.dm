@@ -81,29 +81,13 @@
 
 
 	//Skill modifiers from 0 to 100.
-	var/list/attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_F,
-		ATTRIBUTE_DEXTERITY = CLASS_F,
-		ATTRIBUTE_INTELLIGENCE = CLASS_F
-	)
+	var/list/attribute_stats = list()
 
-	var/list/attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLADE,
-		ATTRIBUTE_DEXTERITY = BLADE,
-		ATTRIBUTE_INTELLIGENCE = BLADE
-	)
+	var/list/attribute_damage = list()
 
-	var/list/skill_stats = list(
-		SKILL_UNARMED = CLASS_F,
-		SKILL_MELEE = CLASS_F,
-		SKILL_RANGED = CLASS_F
-	)
+	var/list/skill_stats = list()
 
-	var/list/skill_damage = list(
-		SKILL_UNARMED = BLADE,
-		SKILL_MELEE = BLADE,
-		SKILL_RANGED = BLADE
-	)
+	var/list/skill_damage = list()
 
 	var/use_blamed_stats = FALSE
 

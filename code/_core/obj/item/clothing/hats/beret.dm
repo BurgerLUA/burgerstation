@@ -5,8 +5,8 @@
 	desc_extended = "A fashionable beret."
 
 	defense_rating = list(
-		MAGIC = ARMOR_C,
-		COLD = ARMOR_C
+		MAGIC = 25,
+		COLD = 25
 	)
 
 	size = SIZE_2

@@ -11,10 +11,10 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		MAGIC = ARMOR_E,
-		COLD = DAMAGE_E,
-		BIO = DAMAGE_E,
-		RAD = DAMAGE_E
+		MAGIC = 10,
+		COLD = 10,
+		BIO = 10,
+		RAD = 10
 	)
 
 	crit_multiplier = 10

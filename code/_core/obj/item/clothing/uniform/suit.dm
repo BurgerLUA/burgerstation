@@ -9,10 +9,10 @@
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_D,
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_D,
+		BLADE = 15,
+		BLUNT = 15,
+		MAGIC = 15,
+		COLD = 15,
 	)
 
 

@@ -15,13 +15,13 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_D,
-		MAGIC = -ARMOR_D,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_E
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 15,
+		LASER = 15,
+		MAGIC = -15,
+		HEAT = 10,
+		COLD = 10
 	)
 
 	weight = WEIGHT_4
@@ -65,13 +65,13 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_E,
-		MAGIC = ARMOR_E,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_C
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -10,
+		MAGIC = 10,
+		HEAT = 10,
+		COLD = 25
 	)
 
 	value = 30

@@ -16,7 +16,7 @@
 // BEGIN_INCLUDE
 #include "code\__defines\___config.dm"
 #include "code\__defines\__config_horde.dm"
-#include "code\__defines\_config_damage.dm"
+#include "code\__defines\_config_balance.dm"
 #include "code\__defines\_config_slowdown.dm"
 #include "code\__defines\_config_ticks.dm"
 #include "code\__defines\_health_threshold.dm"
@@ -292,7 +292,6 @@
 #include "code\_core\datum\damagetype\unarmed\_unarmed.dm"
 #include "code\_core\datum\damagetype\unarmed\bite.dm"
 #include "code\_core\datum\damagetype\unarmed\claws.dm"
-#include "code\_core\datum\damagetype\unarmed\feet.dm"
 #include "code\_core\datum\damagetype\unarmed\fists.dm"
 #include "code\_core\datum\dialogue\_dialogue.dm"
 #include "code\_core\datum\dialogue\npc\chargen_computer.dm"

@@ -11,9 +11,9 @@
 	weight = WEIGHT_4
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_C,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_C
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 25,
+		LASER = 10,
+		MAGIC = -25
 	)

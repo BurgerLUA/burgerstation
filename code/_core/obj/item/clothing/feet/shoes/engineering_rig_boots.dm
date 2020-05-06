@@ -1,6 +1,6 @@
 /obj/item/clothing/feet/shoes/engineering
 	name = "right engineering boot"
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
@@ -11,16 +11,16 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_C,
-		HEAT = ARMOR_B,
-		COLD = ARMOR_B,
-		BOMB = ARMOR_E,
-		BIO = ARMOR_D,
-		RAD = ARMOR_B
+		BLADE = 20,
+		BLUNT = 50,
+		PIERCE = 20,
+		LASER = 25,
+		MAGIC = -75,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 10,
+		BIO = 50,
+		RAD = 75
 	)
 
 	size = SIZE_2

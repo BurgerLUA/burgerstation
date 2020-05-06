@@ -11,20 +11,20 @@
 
 	loot_drop = "crab"
 
-	armor_base = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_C,
-		LASER = -ARMOR_C,
-		MAGIC = -ARMOR_C,
-		HEAT = -ARMOR_D,
-		COLD = -ARMOR_D,
-		BOMB = -ARMOR_D,
+	damage_base = list(
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = -25,
+		HEAT = -15,
+		COLD = -15,
+		BOMB = -15,
 		BIO = 0,
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = ARMOR_C
+		FATIGUE = 25
 	)
 
 /mob/living/simple/npc/crab/post_death()
@@ -61,20 +61,20 @@
 
 	damage_type = /damagetype/npc/crab/king
 
-	armor_base = list(
-		BLADE = ARMOR_S,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_S,
-		LASER = ARMOR_C,
-		MAGIC = ARMOR_C,
-		HEAT = -ARMOR_D,
-		COLD = -ARMOR_D,
-		BOMB = -ARMOR_D,
+	damage_base = list(
+		BLADE = 100,
+		BLUNT = 25,
+		PIERCE = 100,
+		LASER = 25,
+		MAGIC = 25,
+		HEAT = -15,
+		COLD = -15,
+		BOMB = -15,
 		BIO = 0,
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = ARMOR_A
+		FATIGUE = 75
 	)
 
 

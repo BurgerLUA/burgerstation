@@ -15,9 +15,10 @@
 	weight = WEIGHT_2
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C
+		BLADE = 15,
+		BLUNT = 5,
+		PIERCE = 10,
+		MAGIC = 10
 	)
 
 	rarity = RARITY_UNCOMMON

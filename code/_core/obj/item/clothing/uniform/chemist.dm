@@ -7,15 +7,15 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_E,
-		MAGIC = ARMOR_C,
-		HEAT = ARMOR_D,
-		COLD = ARMOR_D,
-		BOMB = ARMOR_C,
-		BIO = ARMOR_B
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 10,
+		MAGIC = 25,
+		HEAT = 15,
+		COLD = 15,
+		BOMB = 25,
+		BIO = 50
 	)
 
 	value = 20

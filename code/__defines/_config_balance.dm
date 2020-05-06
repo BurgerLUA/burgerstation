@@ -1,0 +1,36 @@
+#define SIZE_0 0.5
+#define SIZE_1 1
+#define SIZE_2 2
+#define SIZE_3 3
+#define SIZE_4 4
+#define SIZE_5 5
+#define SIZE_6 6
+#define SIZE_7 7
+#define SIZE_8 8
+#define SIZE_9 10
+#define SIZE_X 100
+
+#define WEIGHT_0 0.5
+#define WEIGHT_1 1
+#define WEIGHT_2 3
+#define WEIGHT_3 5
+#define WEIGHT_4 10
+#define WEIGHT_5 20
+#define WEIGHT_6 50
+#define WEIGHT_7 75
+#define WEIGHT_8 100
+#define WEIGHT_X 1000
+
+#define BULLET_SPEED_MAX                  (TILE_SIZE-1)*0.80
+#define BULLET_SPEED_SNIPER               BULLET_SPEED_MAX * 0.9
+#define BULLET_SPEED_RIFLE_HEAVY          BULLET_SPEED_MAX * 0.8
+#define BULLET_SPEED_RIFLE_LIGHT          BULLET_SPEED_MAX * 0.7
+#define BULLET_SPEED_PISTOL_HEAVY         BULLET_SPEED_MAX * 0.6
+#define BULLET_SPEED_PISTOL_LIGHT         BULLET_SPEED_MAX * 0.5
+#define BULLET_SPEED_LARGE_PROJECTILE     BULLET_SPEED_MAX * 0.4
+
+#define SURPLUS_PENALTY 0.9
+
+#define CELL_SIZE_BASIC 10000
+#define CELL_SIZE_ADVANCED 25000
+#define CELL_SIZE_INDUSTRIAL 50000

@@ -6,10 +6,10 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/)
 
 	defense_rating = list(
-		HEAT = ARMOR_C,
-		BLUNT = ARMOR_E,
-		BLADE = ARMOR_D,
-		PIERCE = ARMOR_E
+		HEAT = 25,
+		BLUNT = 10,
+		BLADE = 15,
+		PIERCE = 10
 	)
 	additional_clothing = list(/obj/item/clothing/head/helmet/attached/goliath_cloak)
 

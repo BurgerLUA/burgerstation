@@ -6,11 +6,11 @@
 	desc_extended = "A dark brown leather coat. It is quite heavy."
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_C
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 10,
+		MAGIC = 15,
+		COLD = 25
 	)
 
 	size = SIZE_3
@@ -26,8 +26,8 @@
 	desc_extended = "A colorful bathrobe."
 
 	defense_rating = list(
-		MAGIC = ARMOR_A,
-		COLD = ARMOR_C
+		MAGIC = 75,
+		COLD = 25
 	)
 
 	size = SIZE_3
@@ -49,8 +49,8 @@
 	desc_extended = ""
 
 	defense_rating = list(
-		MAGIC = ARMOR_C,
-		DARK = ARMOR_S
+		MAGIC = 25,
+		DARK = 100
 	)
 
 	size = SIZE_3
@@ -63,13 +63,13 @@
 	icon = 'icons/obj/items/clothing/suit/winter_coat.dmi'
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_D,
-		MAGIC = ARMOR_C,
-		HEAT = -ARMOR_A,
-		COLD = ARMOR_A
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -15,
+		MAGIC = 25,
+		HEAT = -75,
+		COLD = 75
 	)
 
 	protection_cold = list(

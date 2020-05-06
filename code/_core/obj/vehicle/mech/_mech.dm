@@ -60,20 +60,20 @@
 
 	pixel_x = -1
 
-	armor_base = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_C,
-		MAGIC = -ARMOR_S,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_C,
-		BOMB = ARMOR_D,
-		BIO = ARMOR_X,
-		RAD = ARMOR_A,
-		HOLY = ARMOR_X,
-		DARK = ARMOR_X,
-		FATIGUE = ARMOR_X
+	damage_base = list(
+		BLADE = 50,
+		BLUNT = 25,
+		PIERCE = 15,
+		LASER = 25,
+		MAGIC = -100,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 15,
+		BIO = INFINITY,
+		RAD = 75,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
 	)
 
 	class = "gygax"
@@ -100,20 +100,20 @@
 
 	pixel_x = -4
 
-	armor_base = list(
-		BLADE = ARMOR_A,
-		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_B,
-		LASER = ARMOR_D,
-		MAGIC = -ARMOR_S,
-		HEAT = ARMOR_D,
-		COLD = ARMOR_D,
-		BOMB = ARMOR_B,
-		BIO = ARMOR_X,
-		RAD = ARMOR_C,
-		HOLY = ARMOR_X,
-		DARK = ARMOR_X,
-		FATIGUE = ARMOR_X
+	damage_base = list(
+		BLADE = 75,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 15,
+		MAGIC = -100,
+		HEAT = 15,
+		COLD = 15,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = 25,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
 	)
 
 	class = "durand"

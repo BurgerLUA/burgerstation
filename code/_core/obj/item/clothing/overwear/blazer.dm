@@ -16,11 +16,11 @@
 	weight = WEIGHT_3
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_C
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 10,
+		MAGIC = 15,
+		COLD = 25
 	)
 
 	value = 10

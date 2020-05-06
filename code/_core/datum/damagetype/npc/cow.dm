@@ -8,7 +8,7 @@
 	)
 
 	attack_damage_penetration = list(
-		BLUNT = ARMOR_D,
+		BLUNT = 15,
 	)
 
 	attribute_stats = list(

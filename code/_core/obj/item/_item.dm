@@ -6,8 +6,8 @@
 
 	var/rarity = RARITY_COMMON
 
-	var/size = SIZE_1
-	var/weight = WEIGHT_1
+	var/size = 1
+	var/weight = 1
 
 	var/list/material = list() //Stored materials
 

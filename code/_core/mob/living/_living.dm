@@ -81,7 +81,7 @@
 	var/last_flavor = ""
 	var/last_flavor_time = 0
 
-	var/list/armor_base = list(
+	var/list/damage_base = list(
 		BLADE = 0,
 		BLUNT = 0,
 		PIERCE = 0,
@@ -254,7 +254,7 @@
 	. = ..()
 
 	if(health)
-		health.armor_base = armor_base
+		health.damage_base = damage_base
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))

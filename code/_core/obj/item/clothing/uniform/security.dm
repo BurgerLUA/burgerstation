@@ -8,11 +8,11 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		MAGIC = -ARMOR_D,
-		HEAT = ARMOR_E
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 15,
+		MAGIC = -15,
+		HEAT = 10
 	)
 
 	value = 10
@@ -28,13 +28,13 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		LASER = -ARMOR_D,
-		MAGIC = -ARMOR_D,
-		COLD = ARMOR_D,
-		BOMB = ARMOR_C
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 15,
+		LASER = -15,
+		MAGIC = -15,
+		COLD = 15,
+		BOMB = 25
 	)
 
 	value = 20
@@ -49,12 +49,12 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		LASER = -ARMOR_D,
-		MAGIC = -ARMOR_D,
-		COLD = ARMOR_D
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 15,
+		LASER = -15,
+		MAGIC = -15,
+		COLD = 15
 	)
 
 	value = 30

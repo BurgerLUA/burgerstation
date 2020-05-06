@@ -1,20 +1,20 @@
 /health/turf/
 
 	/*
-	armor_base = list(  //Base armor for the mob.
-		BLADE = ARMOR_X,
-		BLUNT = ARMOR_X,
-		PIERCE = ARMOR_X,
-		LASER = ARMOR_X,
-		MAGIC = ARMOR_X,
-		HEAT = ARMOR_X,
-		COLD = ARMOR_X,
+	damage_base = list(  //Base armor for the mob.
+		BLADE = INFINITY,
+		BLUNT = INFINITY,
+		PIERCE = INFINITY,
+		LASER = INFINITY,
+		MAGIC = INFINITY,
+		HEAT = INFINITY,
+		COLD = INFINITY,
 		BOMB = 0,
-		BIO = ARMOR_X,
-		RAD = ARMOR_X,
-		HOLY = ARMOR_X,
-		DARK = ARMOR_X,
-		FATIGUE = ARMOR_X
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
 	)
 	*/
 

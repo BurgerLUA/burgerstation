@@ -3,13 +3,13 @@
 	icon = 'icons/obj/items/clothing/hats/winter_hood.dmi'
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_D,
-		MAGIC = ARMOR_C,
-		HEAT = -ARMOR_A,
-		COLD = ARMOR_A
+		BLADE = 5,
+		BLUNT = 0,
+		PIERCE = 5,
+		LASER = -10,
+		MAGIC = 50,
+		HEAT = -25,
+		COLD = 50
 	)
 
 	protection_cold = list(

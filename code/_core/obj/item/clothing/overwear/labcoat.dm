@@ -3,15 +3,15 @@
 	icon = 'icons/obj/items/clothing/suit/labcoat.dmi'
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_E,
-		MAGIC = ARMOR_B,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_C,
-		BOMB = ARMOR_C,
-		BIO = ARMOR_B
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 10,
+		MAGIC = 50,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 25,
+		BIO = 50
 	)
 
 	size = SIZE_3

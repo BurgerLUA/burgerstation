@@ -5,11 +5,11 @@
 	item_slot = SLOT_TORSO
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		MAGIC = ARMOR_E,
-		COLD = ARMOR_C,
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 15,
+		MAGIC = 10,
+		COLD = 25,
 	)
 
 	polymorphs = list(

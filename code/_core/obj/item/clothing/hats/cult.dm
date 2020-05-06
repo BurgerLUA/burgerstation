@@ -5,14 +5,18 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		LASER = -ARMOR_C,
-		MAGIC = ARMOR_D,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_C,
-		HOLY = ARMOR_C
+		BLADE = 5,
+		BLUNT = 10,
+		PIERCE = 5,
+		LASER = -25,
+		MAGIC = 50,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 75,
+		FATIGUE = 0
 	)
 
 	size = SIZE_2
@@ -27,14 +31,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_B,
-		MAGIC = ARMOR_A,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_C,
-		HOLY = ARMOR_A
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -75,
+		MAGIC = 75,
+		HEAT = 25,
+		COLD = 25,
+		HOLY = 100
 	)
 
 	size = SIZE_2
@@ -49,14 +53,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_B,
-		BLUNT = ARMOR_B,
-		PIERCE = ARMOR_C,
-		LASER = -ARMOR_A,
-		MAGIC = -ARMOR_B,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_B,
-		HOLY = ARMOR_D
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 25,
+		LASER = -75,
+		MAGIC = -75,
+		HEAT = 50,
+		COLD = 50,
+		HOLY = 75
 	)
 
 	size = SIZE_3

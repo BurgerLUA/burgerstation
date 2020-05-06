@@ -11,16 +11,18 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
-		HEAT = ARMOR_C
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 15,
+		MAGIC = 10,
+		HEAT = 25,
+		COLD = 10,
 	)
 
 	size = SIZE_2
 	weight = WEIGHT_2
 
-	value = 30
+	value = 50
 
 	slowdown_mul_worn = 1.05
 

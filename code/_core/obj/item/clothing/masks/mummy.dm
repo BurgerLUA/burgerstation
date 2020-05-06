@@ -5,14 +5,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_E,
-		MAGIC = ARMOR_B,
-		HEAT = ARMOR_C,
-		COLD = -ARMOR_D,
-		HOLY = ARMOR_C,
-		DARK = ARMOR_C
+		BLADE = 10,
+		PIERCE = 10,
+		LASER = -10,
+		MAGIC = 50,
+		HEAT = 25,
+		COLD = -15,
+		HOLY = 25,
+		DARK = 25
 	)
 
 	value = 5

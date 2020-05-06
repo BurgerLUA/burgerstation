@@ -32,7 +32,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_C)
+		owner.health.adjust_loss_smart(brute=.*-5)
 
 	return .
 
@@ -40,7 +40,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_D)
+		owner.health.adjust_loss_smart(brute=.*-2.5)
 
 	return .
 
@@ -53,7 +53,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_B)
+		owner.health.adjust_loss_smart(brute=.*-10)
 
 	return .
 
@@ -61,7 +61,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_C)
+		owner.health.adjust_loss_smart(brute=.*-5)
 
 	return .
 
@@ -77,7 +77,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-HEALING_C)
+		owner.health.adjust_loss_smart(burn=.*-5)
 
 
 	return .
@@ -86,7 +86,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-HEALING_D)
+		owner.health.adjust_loss_smart(burn=.*-2.5)
 
 	return .
 
@@ -102,7 +102,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*-HEALING_C)
+		owner.health.adjust_loss_smart(tox=.*-5)
 
 	return .
 
@@ -110,7 +110,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*-HEALING_D)
+		owner.health.adjust_loss_smart(tox=.*-2.5)
 
 	return .
 
@@ -126,7 +126,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-HEALING_C)
+		owner.health.adjust_loss_smart(oxy=.*-5)
 
 	return .
 
@@ -134,7 +134,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-HEALING_D)
+		owner.health.adjust_loss_smart(oxy=.*-2.5)
 
 	return .
 
@@ -153,7 +153,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_D,burn=.*-HEALING_D,tox=.*-HEALING_D)
+		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2)
 
 	return .
 
@@ -161,7 +161,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_E,burn=.*-HEALING_E,tox=.*-HEALING_E)
+		owner.health.adjust_loss_smart(brute=.*-1,burn=.*-1,tox=.*-1)
 
 	return .
 
@@ -181,7 +181,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_D,burn=.*-HEALING_D,tox=.*-HEALING_D,oxy=.*-HEALING_D)
+		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2,oxy=.*-2)
 
 	return .
 
@@ -189,7 +189,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_E,burn=.*-HEALING_E,tox=.*-HEALING_E,oxy=.*-HEALING_E)
+		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2,oxy=.*-2)
 
 	return .
 
@@ -209,7 +209,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-HEALING_B)
+		owner.health.adjust_loss_smart(burn=.*-10)
 
 	return .
 
@@ -218,7 +218,7 @@
 	. = ..()
 
 	if(container.owner && container.owner.health)
-		container.owner.health.adjust_loss_smart(burn=.*-HEALING_D)
+		container.owner.health.adjust_loss_smart(burn=.*-10)
 		container.remove_reagent(id,. * 0.5)
 
 	return .
@@ -240,7 +240,7 @@
 	. = ..()
 
 	if(container.owner && container.owner.health)
-		container.owner.health.adjust_loss_smart(brute=.*-HEALING_D)
+		container.owner.health.adjust_loss_smart(brute=.*-10)
 		container.remove_reagent(id,. * 0.5)
 
 	return .
@@ -250,7 +250,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-HEALING_B)
+		owner.health.adjust_loss_smart(brute=.*-10)
 
 	return .
 

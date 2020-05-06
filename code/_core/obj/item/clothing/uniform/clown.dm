@@ -4,14 +4,14 @@
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_A,
-		COLD = ARMOR_D,
-		HOLY = ARMOR_A,
-		DARK = ARMOR_A,
-		FATIGUE = -ARMOR_S
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 10,
+		MAGIC = 75,
+		COLD = 15,
+		HOLY = 75,
+		DARK = 75,
+		FATIGUE = -100
 	)
 
 	value = 100

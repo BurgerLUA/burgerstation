@@ -1,5 +1,7 @@
 /obj/item/clothing/feet/shoes/colored
 	name = "right shoe"
+	desc = "Good for running!"
+	desc_extended = "A basic running shoe. Doesn't protect much, but it makes you go faster."
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
@@ -11,12 +13,13 @@
 	no_initial_blend = TRUE
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		MAGIC = ARMOR_C,
-		HEAT = ARMOR_D,
-		COLD = ARMOR_D
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
+		MAGIC = 25,
+		HEAT = 5,
+		COLD = 5,
+		FATIGUE = 10
 	)
 
 	size = SIZE_1

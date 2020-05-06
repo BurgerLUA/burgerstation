@@ -11,13 +11,13 @@
 	protected_limbs = list(BODY_HAND_RIGHT)
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		MAGIC = ARMOR_C,
-		HEAT = ARMOR_D,
-		COLD = ARMOR_C,
-		BIO = ARMOR_D
+		BLADE = 5,
+		BLUNT = 0,
+		PIERCE = 5,
+		MAGIC = 25,
+		HEAT = 10,
+		COLD = 10,
+		BIO = 25
 	)
 
 	size = SIZE_1
@@ -39,13 +39,15 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
-		MAGIC = -ARMOR_D,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_D,
-		BIO = ARMOR_E
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 25,
+		LASER = -10,
+		MAGIC = -25,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 0,
+		BIO = 10
 	)
 
 	protection_cold = list(
@@ -75,14 +77,14 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_A,
-		HEAT = ARMOR_A,
-		COLD = ARMOR_A,
-		BIO = ARMOR_E,
-		FATIGUE = ARMOR_A
+		BLADE = 5,
+		PIERCE = 5,
+		LASER = 15,
+		MAGIC = 25,
+		HEAT = 75,
+		COLD = 75,
+		BIO = 10,
+		FATIGUE = 100
 	)
 
 	protection_cold = list(
@@ -116,15 +118,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_E,
-		HEAT = -ARMOR_D,
-		COLD = ARMOR_S,
-		BOMB = ARMOR_D,
-		FATIGUE = ARMOR_D
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
+		HEAT = -10,
+		COLD = 50
 	)
 
 	protection_cold = list(

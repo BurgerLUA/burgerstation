@@ -5,16 +5,16 @@
 	value = 300
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_E,
-		LASER = ARMOR_E,
-		MAGIC = -ARMOR_S,
-		HEAT = ARMOR_C,
-		COLD = ARMOR_C,
-		BOMB = ARMOR_B,
-		BIO = ARMOR_A,
-		RAD = ARMOR_A
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 10,
+		LASER = 10,
+		MAGIC = -100,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 50,
+		BIO = 75,
+		RAD = 75
 	)
 
 	size = SIZE_7

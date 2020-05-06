@@ -5,8 +5,12 @@
 	desc_extended = "An expensive top hat."
 
 	defense_rating = list(
-		BLUNT = ARMOR_E,
-		MAGIC = ARMOR_C
+		BLADE = 10,
+		BLUNT = 0,
+		PIERCE = 5,
+		LASER = 0,
+		MAGIC = 50,
+		COLD = 25
 	)
 
 	size = SIZE_2

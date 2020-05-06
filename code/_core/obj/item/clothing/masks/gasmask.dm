@@ -7,14 +7,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_E,
-		BOMB = ARMOR_E,
-		BIO = ARMOR_S,
-		RAD = ARMOR_D
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		BIO = 100,
+		RAD = 10
 	)
 
 	size = SIZE_2
@@ -30,9 +27,9 @@
 	desc_extended = "A flawless clown mask and wig."
 
 	defense_rating = list(
-		MAGIC = ARMOR_A,
-		HOLY = ARMOR_C,
-		DARK = ARMOR_C
+		MAGIC = 50,
+		HOLY = 50,
+		DARK = -50
 	)
 
 	size = SIZE_2
@@ -50,14 +47,13 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		HEAT = ARMOR_B,
-		COLD = ARMOR_E,
-		BOMB = ARMOR_E,
-		BIO = ARMOR_S,
-		RAD = ARMOR_C
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20,
+		MAGIC = 25,
+		HEAT = 25,
+		BIO = 100,
+		RAD = 25
 	)
 
 	size = SIZE_2

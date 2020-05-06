@@ -6,12 +6,12 @@
 	desc_extended = "The peak of fashion."
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_C,
-		HEAT = ARMOR_D,
-		COLD = ARMOR_C
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 10,
+		MAGIC = 25,
+		HEAT = 15,
+		COLD = 25
 	)
 
 	size = SIZE_2
@@ -28,12 +28,12 @@
 	desc_extended = "A very tough and fashionable kilt. Needs to be held up by a kilt belt."
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		MAGIC = ARMOR_E,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_E
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 15,
+		MAGIC = 10,
+		HEAT = 10,
+		COLD = 10
 	)
 
 	size = SIZE_2
@@ -53,12 +53,12 @@
 	desc_extended = "A basic piece of cloth worn around the torso."
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_D,
-		MAGIC = ARMOR_E,
-		HEAT = ARMOR_E,
-		COLD = ARMOR_E
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 15,
+		MAGIC = 10,
+		HEAT = 10,
+		COLD = 10
 	)
 
 	size = SIZE_2

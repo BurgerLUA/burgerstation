@@ -5,12 +5,12 @@
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_C,
-		LASER = ARMOR_D,
-		MAGIC = -ARMOR_C,
-		BOMB = ARMOR_D
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 25,
+		LASER = 10,
+		MAGIC = -25,
+		BOMB = 10
 	)
 
 	size = SIZE_3

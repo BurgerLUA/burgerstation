@@ -5,14 +5,14 @@
 	additional_clothing = list() // no hood
 
 	defense_rating = list(
-		BLADE = ARMOR_E,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_E,
-		LASER = -ARMOR_E,
-		MAGIC = ARMOR_E,
-		HEAT = -ARMOR_D,
-		COLD = ARMOR_B,
-		BOMB = ARMOR_C
+		BLADE = 10,
+		BLUNT = 15,
+		PIERCE = 10,
+		LASER = -10,
+		MAGIC = 10,
+		HEAT = -15,
+		COLD = 50,
+		BOMB = 25
 	)
 
 	size = SIZE_3

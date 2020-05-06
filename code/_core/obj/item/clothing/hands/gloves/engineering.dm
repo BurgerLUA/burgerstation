@@ -11,16 +11,15 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_C,
-		PIERCE = ARMOR_D,
-		LASER = ARMOR_E,
-		MAGIC = ARMOR_B,
-		HEAT = ARMOR_A,
-		COLD = ARMOR_A,
-		BOMB = ARMOR_E,
-		BIO = ARMOR_D,
-		RAD = ARMOR_B
+		BLADE = 20,
+		BLUNT = 30,
+		PIERCE = 15,
+		LASER = 10,
+		MAGIC = -25,
+		HEAT = 75,
+		COLD = 75,
+		BIO = 25,
+		RAD = 75
 	)
 
 	protection_cold = list(

@@ -10,8 +10,8 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		MAGIC = ARMOR_D,
-		COLD = ARMOR_D,
+		MAGIC = 15,
+		COLD = 15,
 	)
 
 /obj/item/clothing/underbottom/underwear/boxers/random/on_spawn()
@@ -43,9 +43,9 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		MAGIC = ARMOR_D,
-		HEAT = -ARMOR_C,
-		COLD = ARMOR_B,
+		MAGIC = 15,
+		HEAT = -25,
+		COLD = 50,
 	)
 
 /obj/item/clothing/underbottom/underwear/long_johns/grey
@@ -55,8 +55,8 @@
 	icon = 'icons/obj/items/clothing/underwear/panty.dmi'
 
 	defense_rating = list(
-		MAGIC = ARMOR_C,
-		COLD = ARMOR_E,
+		MAGIC = 25,
+		COLD = 10,
 	)
 
 
@@ -78,11 +78,11 @@
 	icon = 'icons/obj/items/clothing/underwear/thong.dmi'
 	color = COLOR_WHITE
 	defense_rating = list(
-		BLADE = -ARMOR_E,
-		BLUNT = -ARMOR_E,
-		PIERCE = -ARMOR_E,
-		MAGIC = ARMOR_C,
-		COLD = ARMOR_E,
+		BLADE = -10,
+		BLUNT = -10,
+		PIERCE = -10,
+		MAGIC = 25,
+		COLD = 10,
 	)
 
 /obj/item/clothing/underbottom/underwear/loincloth
@@ -90,7 +90,7 @@
 	icon = 'icons/obj/items/clothing/underwear/loincloth.dmi'
 
 	defense_rating = list(
-		MAGIC = ARMOR_C
+		MAGIC = 25
 	)
 
 

@@ -6,18 +6,12 @@ obj/item/clothing/back/wings/angel
 	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
-		BLADE = -ARMOR_C,
-		BLUNT = -ARMOR_D,
-		PIERCE = -ARMOR_C,
-		LASER = -ARMOR_C,
-		MAGIC = ARMOR_C,
-		HEAT = -ARMOR_C,
-		COLD = -ARMOR_D,
-		BOMB = -ARMOR_C,
-		BIO = -ARMOR_C,
-		RAD = -ARMOR_C,
-		HOLY = -ARMOR_S,
-		DARK = ARMOR_S
+		BLADE = -25,,
+		LASER = -25,
+		MAGIC = 50,
+		HEAT = -25,
+		HOLY = -50,
+		DARK = 50
 	)
 
 	value = 1000

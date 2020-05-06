@@ -8,11 +8,11 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = ARMOR_C,
-		BLUNT = ARMOR_D,
-		PIERCE = ARMOR_C,
-		HEAT = ARMOR_A,
-		COLD = -ARMOR_D,
+		BLADE = 25,
+		BLUNT = 15,
+		PIERCE = 25,
+		HEAT = 75,
+		COLD = -15,
 	)
 	additional_clothing = list(/obj/item/clothing/head/helmet/attached/explorer_suit)
 

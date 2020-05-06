@@ -7,12 +7,13 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_E,
-		MAGIC = ARMOR_C,
-		HOLY = ARMOR_B,
-		DARK = -ARMOR_A
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 10,
+		MAGIC = 25,
+		HOLY = -50,
+		DARK = 50
 	)
 
 	size = SIZE_1

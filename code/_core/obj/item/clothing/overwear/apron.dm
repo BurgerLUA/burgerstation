@@ -12,12 +12,12 @@
 	container_max_size = SIZE_3
 
 	defense_rating = list(
-		BLADE = ARMOR_D,
-		BLUNT = ARMOR_E,
-		PIERCE = ARMOR_D,
-		MAGIC = ARMOR_E,
-		HEAT = ARMOR_A,
-		COLD = ARMOR_E
+		BLADE = 15,
+		BLUNT = 10,
+		PIERCE = 15,
+		MAGIC = 10,
+		HEAT = 75,
+		COLD = 10
 	)
 
 	size = SIZE_3*2
