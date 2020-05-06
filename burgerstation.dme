@@ -171,7 +171,6 @@
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\ai\_ai.dm"
 #include "code\_core\datum\ai\doorman.dm"
-#include "code\_core\datum\ai\dummy.dm"
 #include "code\_core\datum\ai\ranged.dm"
 #include "code\_core\datum\ai\slime.dm"
 #include "code\_core\datum\ai\villager.dm"

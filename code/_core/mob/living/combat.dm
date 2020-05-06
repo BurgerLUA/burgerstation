@@ -172,13 +172,16 @@
 
 /mob/living/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
-	if(ai && prob(25))
+	if(!client && !ai)
 		return null
 
 	if(charge_parry < 100)
 		return null
 
-	if(dead || length(status_effects))
+	if(dead)
+		return null
+
+	if(ai && (!ai.parry_chance || prob(100-ai.parry_chance)))
 		return null
 
 	return src
@@ -186,26 +189,32 @@
 
 /mob/living/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
-	if(ai && prob(25))
+	if(!client && !ai)
 		return null
 
 	if(charge_dodge < 100)
 		return null
 
-	if(dead || length(status_effects))
+	if(dead)
+		return null
+
+	if(ai && (!ai.dodge_chance || prob(100-ai.dodge_chance)))
 		return null
 
 	return src
 
 /mob/living/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
-	if(ai && prob(25))
+	if(!client && !ai)
 		return null
 
 	if(charge_block < 100)
 		return null
 
-	if(dead || length(status_effects))
+	if(dead)
+		return null
+
+	if(ai && (!ai.block_chance || prob(100-ai.block_chance)))
 		return null
 
 	return src

@@ -381,10 +381,11 @@
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 
-	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? attacker.attack_next - world.time : ATTACK_ANIMATION_LENGTH * 2
+	var/caller_attack_delay = attacker.attack_next - world.time
+	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? caller_attack_delay : ATTACK_ANIMATION_LENGTH * 2
 
 	if(draw_weapon)
-		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),weapon_attack_delay*0.5,victim,attacker,weapon)
+		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),FLOOR(weapon_attack_delay*0.25,1),victim,attacker,weapon)
 
 	var/pixel_x_offset = 0
 	var/pixel_y_offset = 0
@@ -414,14 +415,14 @@
 
 		attack_matrix.Translate(pixel_x_offset,pixel_y_offset)
 
-		animate(L, transform = attack_matrix, time = ATTACK_ANIMATION_LENGTH, flags = ANIMATION_LINEAR_TRANSFORM)
+		animate(L, transform = attack_matrix, time = FLOOR(weapon_attack_delay*0.125,1), flags = ANIMATION_LINEAR_TRANSFORM)
 
 		if(L.horizontal)
-			animate(transform = turn(matrix(), L.stun_angle), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(transform = turn(matrix(), L.stun_angle), time = FLOOR(caller_attack_delay*0.9,1), flags = ANIMATION_LINEAR_TRANSFORM)
 		else
-			animate(transform = matrix(), time = weapon_attack_delay, flags = ANIMATION_LINEAR_TRANSFORM)
+			animate(transform = matrix(), time = FLOOR(caller_attack_delay*0.9,1), flags = ANIMATION_LINEAR_TRANSFORM)
 
-	sleep(ATTACK_ANIMATION_LENGTH)
+	sleep(CEILING(weapon_attack_delay*0.125,1))
 
 /damagetype/proc/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0

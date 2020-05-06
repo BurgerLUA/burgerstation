@@ -18,7 +18,6 @@ SUBSYSTEM_DEF(delete)
 		if(is_atom(object_to_delete))
 			var/atom/A = object_to_delete
 			if(!A.is_safe_to_delete())
-				world.log << "Object [object_to_delete.type] not safe to remove!"
 				objects_to_delete[object_to_delete] = world.time + 300 //Wait another 30 seconds.
 				continue
 

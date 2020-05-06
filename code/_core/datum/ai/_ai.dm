@@ -73,6 +73,10 @@
 
 	var/retaliate = TRUE
 
+	var/block_chance = 25
+	var/parry_chance = 25
+	var/dodge_chance = 25
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null

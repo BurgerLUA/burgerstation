@@ -116,8 +116,6 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,loca
 
 obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
-	world.log << "We want to shoot: [object]."
-
 	if(!object)
 		return FALSE
 

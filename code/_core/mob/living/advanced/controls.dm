@@ -52,7 +52,6 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 	else if(right_hand)
 		if(is_button(object))
 			return object.clicked_on_by_object(src,right_hand,location,control,params)
-		world.log << "CLICK CLICK CLICK!"
 		return right_hand.click_on_object(src,object,location,control,params)
 
 

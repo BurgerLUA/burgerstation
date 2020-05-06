@@ -210,8 +210,6 @@ var/global/list/all_clients = list()
 
 	var/click_flags = get_click_flags(aug,TRUE)
 
-	world.log << "Hello, [object]."
-
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT
 		return mob.on_left_down(object,location,control,aug)

@@ -45,8 +45,6 @@
 
 	. = ..()
 
-	world.log << "Source is: [source]."
-
 	if(source)
 		var/desired_move_dir = get_dir(source,owner)
 		var/old_dir = owner.dir
