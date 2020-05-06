@@ -61,6 +61,8 @@
 
 	var/bleeding = FALSE
 
+	var/health_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
+
 /obj/item/organ/Destroy()
 	attached_organ = null
 	attached_organs.Cut()

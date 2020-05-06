@@ -79,15 +79,17 @@
 
 /mob/living/simple/npc/ash_drake/proc/fire_cross()
 
-	var/starting_x = src.x
-	var/starting_y = src.y
+	var/turf/T = get_turf(src)
+	var/starting_x = T.x
+	var/starting_y = T.y
+	var/starting_z = T.z
 
 	spawn()
 		for(var/i=1,i<=10,i++)
-			var/turf/desired_turf1 = locate(starting_x+i,starting_y,src.z)
-			var/turf/desired_turf2 = locate(starting_x-i,starting_y,src.z)
-			var/turf/desired_turf3 = locate(starting_x,starting_y+i,src.z)
-			var/turf/desired_turf4 = locate(starting_x,starting_y-i,src.z)
+			var/turf/desired_turf1 = locate(starting_x+i,starting_y,starting_z)
+			var/turf/desired_turf2 = locate(starting_x-i,starting_y,starting_z)
+			var/turf/desired_turf3 = locate(starting_x,starting_y+i,starting_z)
+			var/turf/desired_turf4 = locate(starting_x,starting_y-i,starting_z)
 			new/obj/effect/temp/hazard/fire/(desired_turf1)
 			new/obj/effect/temp/hazard/fire/(desired_turf2)
 			new/obj/effect/temp/hazard/fire/(desired_turf3)

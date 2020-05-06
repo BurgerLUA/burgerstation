@@ -20,8 +20,6 @@
 
 	override_icon_state = TRUE
 
-	requires_cock_each_shot = TRUE
-
 	heat_per_shot = 0.01
 	heat_max = 0.03
 

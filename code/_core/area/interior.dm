@@ -153,3 +153,8 @@
 	random_sounds = list(
 		'sounds/ambient/maintenance.ogg'
 	)
+
+/area/interior/ship/pvp
+	name = "ERROR"
+	icon_state = "maint"
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS

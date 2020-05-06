@@ -92,10 +92,12 @@
 		BOMB = 0,
 		BIO = 0,
 		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
+		HOLY = 100,
+		DARK = 100,
 		FATIGUE = 0
 	)
+
+	var/damage_received_multiplier = 1
 
 	var/dead = FALSE
 

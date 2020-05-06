@@ -34,6 +34,8 @@
 
 	health_base = 25
 
+	health_coefficient = 0.5
+
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
 
 	if(is_living(attacker))

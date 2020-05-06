@@ -8,6 +8,10 @@ obj/structure/interactive/objective
 
 	value = 5000
 
+obj/structure/interactive/objective/Initialize()
+	name = "[pick(SSname.adjectives)] artifact of [pick(SSname.verbs)]"
+	return ..()
+
 obj/structure/interactive/objective/Destroy()
 	if(src in SShorde.tracked_objectives)
 		SShorde.next_objective_update = world.time + 100

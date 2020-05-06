@@ -14,14 +14,13 @@
 /obj/parallax/defer_click_on_object(location,control,params)
 
 	if(params && length(params))
+		var/turf/T = get_turf(owner)
 		var/list/screen_loc = parse_screen_loc(params["screen-loc"])
-		var/x_c = FLOOR(owner.x + (screen_loc[1]/TILE_SIZE) - VIEW_RANGE,1)
-		var/y_c = FLOOR(owner.y + (screen_loc[2]/TILE_SIZE) - VIEW_RANGE,1)
-		var/z_c = FLOOR(owner.z,1)
-		var/turf/T = locate(x_c,y_c,z_c)
-		if(T) return T
-
-	CRASH_SAFE("FUCK")
+		var/x_c = FLOOR(T.x + (screen_loc[1]/TILE_SIZE) - VIEW_RANGE,1)
+		var/y_c = FLOOR(T.y + (screen_loc[2]/TILE_SIZE) - VIEW_RANGE,1)
+		var/z_c = FLOOR(T.z,1)
+		var/turf/T2 = locate(x_c,y_c,z_c)
+		if(T2) return T2
 
 	return ..()
 

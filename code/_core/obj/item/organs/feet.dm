@@ -27,6 +27,8 @@
 
 	health_base = 25
 
+	health_coefficient = 0.5
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT

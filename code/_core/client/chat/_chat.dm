@@ -151,7 +151,9 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 /atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
 
-	if(src.x == 0 && src.y == 0 && src.z == 0)
+	var/turf/T = get_turf(src)
+
+	if(!T || (T.x == 0 && T.y == 0 && T.z == 0)) //Void
 		return
 
 	if(!first_person_text)
@@ -167,7 +169,14 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		if(!M.client) //Just in case.
 			continue
 
-		if(get_dist(M,src) > view_range)
+		var/turf/mob_turf = get_turf(M)
+
+		if(mob_turf.z != T.z)
+			continue
+
+		var/distance = get_dist(mob_turf,T)
+
+		if(distance > view_range)
 			continue
 
 		if(M.see_invisible < src.invisibility)
@@ -177,20 +186,15 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		var/local_third_person_text
 		var/local_blind_text
 
-		var/distance = get_dist(M,src)
 		if(M == src)
 			local_first_person_text = span("distance_medium",first_person_text)
 			local_third_person_text = span("distance_medium",third_person_text)
 			local_blind_text = span("distance_medium",blind_text)
-		else if(distance <= 2)
-			local_first_person_text = span("distance_large",first_person_text)
-			local_third_person_text = span("distance_large",third_person_text)
-			local_blind_text = span("distance_large",blind_text)
-		else if(distance <= 4)
+		else if(distance <= view_range*0.75)
 			local_first_person_text = span("distance_medium",first_person_text)
 			local_third_person_text = span("distance_medium",third_person_text)
 			local_blind_text = span("distance_medium",blind_text)
-		else if(distance <= 6)
+		else if(distance <= view_range)
 			local_first_person_text = span("distance_small",first_person_text)
 			local_third_person_text = span("distance_small",third_person_text)
 			local_blind_text = span("distance_small",blind_text)

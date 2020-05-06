@@ -119,6 +119,14 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(!object)
 		return FALSE
 
+	var/turf/object_turf = get_turf(object)
+
+	if(!object_turf)
+		return FALSE
+
+	if(!object_turf.x && !object_turf.y && !object_turf.z)
+		return FALSE
+
 	caller.face_atom(object)
 
 	if(ismob(caller))
@@ -126,9 +134,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		M.attack_turn = world.time + M.attack_turn_delay
 
 	if(!can_owner_shoot(caller))
-		return FALSE
-
-	if(!object.x && !object.y && !object.z)
 		return FALSE
 
 	if(!can_gun_shoot(caller))
@@ -216,8 +221,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
 					return TRUE
-				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller.x - VIEW_RANGE
-				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller.y - VIEW_RANGE
+				var/turf/caller_turf = get_turf(caller)
+				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
+				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller_turf.y - VIEW_RANGE
 				var/turf/T = locate(desired_x,desired_y,caller.z)
 				if(T)
 					next_shoot_time = 0 //This is needed.

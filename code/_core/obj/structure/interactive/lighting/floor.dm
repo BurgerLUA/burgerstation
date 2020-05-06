@@ -73,3 +73,7 @@
 		name = loc.color
 
 	return ..()
+
+/obj/structure/interactive/lighting/floor/syndicate
+	color = "#FFBABA"
+	color_frame = "#666666"

@@ -231,7 +231,8 @@
 		owner.movement_flags = MOVEMENT_NORMAL
 		if(path_steps <= length(current_path))
 			var/Vector3D/desired_node = current_path[path_steps]
-			if(desired_node.x == owner.x && desired_node.y == owner.y)
+			var/turf/T = get_turf(owner)
+			if(desired_node.x == T.x && desired_node.y == T.y)
 				path_steps++
 				owner.move_dir = 0
 			else

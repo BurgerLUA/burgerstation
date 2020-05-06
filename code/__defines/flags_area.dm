@@ -12,3 +12,8 @@
 
 
 #define FLAGS_AREA_NO_ROUND_INFORMATION 0x20
+
+
+
+#define FLAG_AREA_NO_LOYALTY 0x40 //Disable loyalty implants.
+#define FLAG_AREA_NO_IFF 0x80 //Disable IFF.

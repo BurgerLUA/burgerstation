@@ -23,6 +23,8 @@
 
 	health_base = 50
 
+	health_coefficient = 0.75
+
 /obj/item/organ/arm/left
 	name = "left arm"
 	id = BODY_ARM_LEFT

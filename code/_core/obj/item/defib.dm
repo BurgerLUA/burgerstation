@@ -16,7 +16,7 @@
 /obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-/obj/item/defib/fill_inventory(var/desired_loc)
+/obj/item/defib/Initialize(var/desired_loc) //Fill inventory handles the initializations here.
 	paddle_left = new /obj/item/defib_paddle(src)
 	paddle_left.linked_defib = src
 	paddle_right = new /obj/item/defib_paddle(src)

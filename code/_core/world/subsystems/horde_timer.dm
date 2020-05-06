@@ -174,8 +174,9 @@ SUBSYSTEM_DEF(horde)
 			while(length(possible_targets))
 				var/atom/chosen_target = pick(possible_targets)
 				possible_targets -= chosen_target
+				var/turf/target_turf = get_turf(chosen_target)
 
-				if(chosen_target.z != 3)
+				if(target_turf.z != 3)
 					continue
 
 				var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
@@ -234,7 +235,8 @@ SUBSYSTEM_DEF(horde)
 
 	var/objective_text = "Objectives Update:<br>"
 	for(var/obj/O in tracked_objectives)
-		objective_text += "Secure \the [O.name] at ([O.x],[O.y],[O.z]). \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+		var/turf/T = get_turf(O)
+		objective_text += "Secure \the [O.name] at ([T.x],[T.y],[T.z]). \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
 		if(O.qdeleting)
 			completed_objectives++
 			tracked_objectives -= O

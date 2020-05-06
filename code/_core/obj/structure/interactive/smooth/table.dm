@@ -142,6 +142,11 @@ obj/structure/smooth/table/reinforced
 obj/structure/smooth/table/reinforced/dark
 	color = "#999999"
 
+obj/structure/smooth/table/reinforced/dark/pvp
+	name = "table of doom"
+	desc = "<font color='red'><b>WARNING: OTHERS PAST THIS TABLE WILL BE ALLOWED TO KILL YOU AND YOU WILL BE ALLOWED TO KILL THEM.</b></font>"
+	desc_extended = "An absolutely cursed table that disrupts loyalty implant signals, but not IFF, when the user is standing on it. A favorite among those looking for something to prove."
+
 obj/structure/smooth/table/reinforced/yellow
 	color = "#FFFF00"
 
