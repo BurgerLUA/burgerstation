@@ -96,7 +96,9 @@
 		/obj/hud/button/evade/dodge,
 		/obj/hud/button/evade/parry,
 
-		/obj/hud/button/hunger
+		/obj/hud/button/hunger,
+
+		/obj/hud/button/objectives
 
 	)
 

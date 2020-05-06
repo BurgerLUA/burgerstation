@@ -33,6 +33,12 @@ SUBSYSTEM_DEF(horde)
 
 	var/allow_shuttle_launch = FALSE
 
+	var/list/tracked_objectives = list()
+
+	var/next_objective_update = -1
+	var/completed_objectives = 0
+	var/last_update = null
+
 /subsystem/horde/proc/on_killed_syndicate()
 
 	killed_syndicate_total++
@@ -84,6 +90,9 @@ SUBSYSTEM_DEF(horde)
 		round_time = 0
 		round_time_next = HORDE_DELAY_BOARDING
 		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		spawn(100)
+			spawn_objectives()
+
 
 	if(state == HORDE_STATE_BOARDING)
 		var/time_to_display = round_time_next - round_time
@@ -107,6 +116,11 @@ SUBSYSTEM_DEF(horde)
 		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Alpha/Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_FIGHTING)
+
+		if(next_objective_update >= 0 && next_objective_update <= world.time)
+			update_objectives()
+			next_objective_update = -1
+
 		if(!message_displayed)
 			set_message("Round [current_round]")
 			message_displayed = TRUE
@@ -186,6 +200,7 @@ SUBSYSTEM_DEF(horde)
 		//Do stuff
 
 
+
 	return TRUE
 
 /subsystem/horde/Initialize()
@@ -193,3 +208,46 @@ SUBSYSTEM_DEF(horde)
 	round_time = 0
 	round_time_next = HORDE_DELAY_WAIT
 	return TRUE
+
+/subsystem/horde/proc/spawn_objectives()
+
+	var/desired_objectives = min(8,length(possible_objective_spawns))
+
+	world.log << "WE]RE SPAWNING [desired_objectives] OBJECTIVES!"
+
+	for(var/i=1,i<=desired_objectives,i++)
+		var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
+		possible_objective_spawns -= S
+		var/turf/T = get_turf(S)
+		var/obj/structure/interactive/objective/O = new(T)
+		INITIALIZE(O)
+		SPAWN(O)
+		tracked_objectives += O
+
+	update_objectives()
+
+	return TRUE
+
+
+
+/subsystem/horde/proc/update_objectives()
+
+	var/objective_text = "Objectives Update:<br>"
+	for(var/obj/O in tracked_objectives)
+		objective_text += "Secure \the [O.name] at ([O.x],[O.y],[O.z]). \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+		if(O.qdeleting)
+			completed_objectives++
+			tracked_objectives -= O
+
+	last_update = objective_text
+
+	for(var/obj/hud/button/objectives/B in all_objective_buttons)
+		B.set_stored_text(last_update)
+
+	announce(
+		"Central Command Update",
+		"Objectives Update",
+		"[objective_text]",
+		ANNOUNCEMENT_STATION,
+		'sounds/effects/station/new_command_report.ogg'
+	)
