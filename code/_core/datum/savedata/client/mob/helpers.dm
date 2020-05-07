@@ -48,7 +48,7 @@
 	var/data = file2text(filename)
 
 	if(!data)
-		log_error("FATAL ERROR: NO DATA FOUND FOR [filename] for [bot_controlled ? "BOT" : owner.ckey].")
+		log_error("FATAL ERROR: NO DATA FOUND FOR [filename] for [ckey].")
 		return FALSE
 
 	return json_decode(data)
@@ -101,6 +101,7 @@
 	loaded_data["sex"] = A.sex
 	loaded_data["nutrition"] = A.nutrition
 	loaded_data["hydration"] = A.hydration
+	loaded_data["known_languages"] = A.known_languages
 
 	var/final_organ_list = list()
 	for(var/id in A.labeled_organs)
@@ -138,6 +139,13 @@
 	A.species = loaded_data["species"]
 	A.nutrition = loaded_data["nutrition"] ? loaded_data["nutrition"] : 1000
 	A.hydration = loaded_data["hydration"] ? loaded_data["hydration"] : 1000
+
+	if(loaded_data["known_languages"])
+		A.known_languages |= loaded_data["known_languages"]
+
+	if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
+		A.to_chat(span("notice","<h2>You are rewarded 2000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
+		A.adjust_currency(2000)
 
 	//Organs
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special

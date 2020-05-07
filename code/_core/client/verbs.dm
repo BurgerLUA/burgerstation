@@ -28,5 +28,6 @@
 	if(ckey == "burgerbb")
 		verbs += /client/verb/add_new_wikibot_entry
 		verbs += /client/verb/rtv
+		verbs += /client/verb/trigger_shutdown
 
 	return TRUE

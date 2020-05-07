@@ -7,7 +7,7 @@
 
 	ai = /ai/
 
-	damage_base = list(
+	armor_base = list(
 		BLADE = 0,
 		BLUNT = 0,
 		PIERCE = 0,

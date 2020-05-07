@@ -129,13 +129,7 @@ body {
 	color:red;
 	font-family: Courier, Monaco, monospace;
 }
-.announcement{
-	font-size: 150%;
-}
-.announcement h1{
-	color: red;
-}
-.announcement span{
+div.announcement p{
 	color: red;
 }
 .radio_unknown {

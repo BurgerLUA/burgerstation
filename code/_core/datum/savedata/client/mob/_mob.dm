@@ -16,7 +16,8 @@
 		"currency" = 0,
 		"known_topics" = list(),
 		"nutrition" = 1000,
-		"hydration" = 1000
+		"hydration" = 1000,
+		"known_languages" = list()
 	)
 
 /savedata/client/mob/New(var/client/new_owner)
@@ -35,7 +36,7 @@
 
 
 /savedata/client/mob/get_file(var/file_id)
-	var/returning = "[get_folder(owner.ckey)][CHARACTER_FILE_FORMAT]"
+	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"
 	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : owner.ckey)
 	returning = replacetext(returning,"%CID",file_id)
 	return returning

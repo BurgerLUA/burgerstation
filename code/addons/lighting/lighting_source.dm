@@ -184,25 +184,44 @@
 	limit_a_t = angle
 	limit_b_t = -angle
 
-	if(old_direction & NORTH)
-		limit_a_t += 90
-		limit_b_t += 90
-		test_y_offset += 1
+	switch(old_direction)
+		if(NORTH)
+			limit_a_t += 90
+			limit_b_t += 90
+			test_y_offset += 1
+		if(NORTHEAST)
+			limit_a_t += 45
+			limit_b_t += 45
+			test_y_offset += 0.5
+			test_x_offset += 0.5
+		if(EAST)
+			limit_a_t += 0
+			limit_b_t += 0
+			test_x_offset += 1
+		if(SOUTHEAST)
+			limit_a_t -= 45
+			limit_b_t -= 45
+			test_x_offset += 0.5
+			test_y_offset -= 0.5
+		if(SOUTH)
+			limit_a_t -= 90
+			limit_b_t -= 90
+			test_y_offset -= 1
+		if(SOUTHWEST)
+			limit_a_t += 225
+			limit_b_t -= 135
+			test_x_offset -= 0.5
+			test_y_offset -= 0.5
+		if(WEST)
+			limit_a_t += 180
+			limit_b_t -= 180
+			test_x_offset -= 1
+		if(NORTHWEST)
+			limit_a_t += 135
+			limit_b_t -= 225
+			test_x_offset -= 0.5
+			test_y_offset += 0.5
 
-	if(old_direction & EAST)
-		limit_a_t += 0
-		limit_b_t += 0
-		test_x_offset += 1
-
-	if(old_direction & SOUTH)
-		limit_a_t -= 90
-		limit_b_t -= 90
-		test_y_offset -= 1
-
-	if(old_direction & WEST)
-		limit_a_t += 180
-		limit_b_t -= 180
-		--test_x_offset
 
 	/*
 	switch (old_direction)

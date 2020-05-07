@@ -9,6 +9,27 @@
 	class = "xenomorph"
 	health_base = 100
 
+	loyalty_tag = "xeno"
+	iff_tag = "xeno"
+
+	movement_delay = DECISECONDS_TO_TICKS(1)
+
+	armor_base = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = -50,
+		MAGIC = -25,
+		HEAT = -25,
+		COLD = 75,
+		BOMB = -25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = 50,
+		DARK = 100,
+		FATIGUE = 0
+	)
+
 /mob/living/simple/npc/xenomorph/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -26,7 +47,7 @@
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "alien_queen"
 	pixel_x = -16
-	health_base = 100
+	health_base = 400
 
 	ai = /ai/xenomorph_queen
 	damage_type = /damagetype/npc/xenomorph/queen
@@ -34,3 +55,7 @@
 
 	boss = TRUE
 	force_spawn = TRUE
+
+	movement_delay = DECISECONDS_TO_TICKS(6)
+
+	level_multiplier = 4

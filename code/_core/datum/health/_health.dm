@@ -20,7 +20,7 @@
 	var/list/resistance = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0) //How much to subtract damage
 	var/list/wound/wounds = list()
 
-	var/list/damage_base = list(  //Base armor for the mob.
+	var/list/armor_base = list(  //Base armor for the mob.
 		BLADE = 0,
 		BLUNT = 0,
 		PIERCE = 0,
@@ -212,8 +212,8 @@
 
 	var/returning_value = list()
 
-	for(var/damage_type in src.damage_base)
-		var/damage_amount = src.damage_base[damage_type]
+	for(var/damage_type in src.armor_base)
+		var/damage_amount = src.armor_base[damage_type]
 		returning_value[damage_type] = damage_amount
 
 	return returning_value
@@ -224,7 +224,7 @@
 	if(!is_living(owner))
 		return ..()
 
-	return damage_base.Copy()
+	return armor_base.Copy()
 
 
 /health/proc/adjust_mana(var/adjust_value)

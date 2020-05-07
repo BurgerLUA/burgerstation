@@ -210,13 +210,19 @@ SUBSYSTEM_DEF(horde)
 	round_time_next = HORDE_DELAY_WAIT
 	return TRUE
 
+/subsystem/horde/proc/delay_spawn_objectives()
+	next_objective_update = world.time + 30
+	return TRUE
+
 /subsystem/horde/proc/spawn_objectives()
 
-	var/desired_objectives = min(8,length(possible_objective_spawns))
+	var/desired_spawn_objectives = min(4,length(possible_objective_spawns))
+	var/desired_kill_objectives = min(1,length(SSbosses.tracked_bosses))
 
-	world.log << "WE]RE SPAWNING [desired_objectives] OBJECTIVES!"
+	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
+	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")
 
-	for(var/i=1,i<=desired_objectives,i++)
+	for(var/i=1,i<=desired_spawn_objectives,i++)
 		var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
 		possible_objective_spawns -= S
 		var/turf/T = get_turf(S)
@@ -225,21 +231,39 @@ SUBSYSTEM_DEF(horde)
 		SPAWN(O)
 		tracked_objectives += O
 
+	var/list/valid_boss_ids = list()
+
+	for(var/boss_id in SSbosses.tracked_bosses)
+		valid_boss_ids += boss_id
+
+	for(var/i=1, i<=desired_kill_objectives, i++)
+		var/chosen_id = pick(valid_boss_ids)
+		valid_boss_ids -= chosen_id
+		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
+		HOOK_ADD("post_death","objective_death",src,.proc/delay_spawn_objectives)
+		tracked_objectives += L
+
 	update_objectives()
 
 	return TRUE
 
-
-
 /subsystem/horde/proc/update_objectives()
 
 	var/objective_text = "Objectives Update:<br>"
-	for(var/obj/O in tracked_objectives)
-		var/turf/T = get_turf(O)
-		objective_text += "Secure \the [O.name] at ([T.x],[T.y],[T.z]). \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
-		if(O.qdeleting)
-			completed_objectives++
-			tracked_objectives -= O
+	for(var/atom/A in tracked_objectives)
+		var/turf/T = get_turf(A)
+		if(isobj(A))
+			var/obj/O = A
+			objective_text += "Secure \the [O.name] at ([T.x],[T.y],[T.z]). \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			if(O.qdeleting)
+				completed_objectives++
+				tracked_objectives -= O
+		else if(is_living(A))
+			var/mob/living/L = A
+			objective_text += "Kill \the [L.name] at ([T.x],[T.y],[T.z]). \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			if(L.dead)
+				completed_objectives++
+				tracked_objectives -= L
 
 	last_update = objective_text
 

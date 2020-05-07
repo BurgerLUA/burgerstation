@@ -276,9 +276,9 @@ mob/living/advanced/Login()
 		L.update_for_mob(src)
 
 /mob/living/advanced/proc/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
+	add_species_languages()
 	add_species_organs()
 	add_species_colors()
-	add_species_languages()
 	if(client)
 		add_species_buttons()
 		add_species_health_elements()
@@ -341,6 +341,8 @@ mob/living/advanced/Login()
 	return FALSE
 
 /mob/living/advanced/proc/add_species_languages()
+
+	known_languages.Cut()
 
 	var/species/S = all_species[species]
 

@@ -189,7 +189,7 @@
 	return TRUE
 
 /obj/item/pinpointer/artifact/
-	name = "artifact pinpointer"
+	name = "objectives pinpointer"
 	icon_state = "yellow"
 
 	value = 20
@@ -198,11 +198,11 @@
 
 	var/list/possible_artifacts = list()
 
-	for(var/obj/structure/interactive/objective/O in SShorde.tracked_objectives)
-		if(!can_track(O))
+	for(var/atom/A in SShorde.tracked_objectives)
+		if(!can_track(A))
 			continue
-		var/name_mod = "[O.name] ([get_dist(src,O)]m)"
-		possible_artifacts[name_mod] = O
+		var/name_mod = "[A.name] ([get_dist(src,A)]m)"
+		possible_artifacts[name_mod] = A
 
 	if(!length(possible_artifacts))
 		caller.to_chat(span("warning","Can't find anything to track!"))
@@ -211,11 +211,11 @@
 	scan_mode = TRUE
 	update_sprite()
 
-	var/choice = input("What do you want to track?","Artifact Pinpointer Tracking","Cancel") as null|anything in possible_artifacts
+	var/choice = input("What do you want to track?","Objective Pinpointer Tracking","Cancel") as null|anything in possible_artifacts
 
 	if(choice)
-		var/obj/structure/interactive/objective/O = possible_artifacts[choice]
-		tracked_atom = O
+		var/atom/A = possible_artifacts[choice]
+		tracked_atom = A
 	else
 		tracked_atom = null
 

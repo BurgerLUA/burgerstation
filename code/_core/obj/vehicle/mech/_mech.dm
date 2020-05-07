@@ -60,7 +60,7 @@
 
 	pixel_x = -1
 
-	damage_base = list(
+	armor_base = list(
 		BLADE = 50,
 		BLUNT = 25,
 		PIERCE = 15,
@@ -100,7 +100,7 @@
 
 	pixel_x = -4
 
-	damage_base = list(
+	armor_base = list(
 		BLADE = 75,
 		BLUNT = 50,
 		PIERCE = 50,

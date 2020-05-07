@@ -9,8 +9,6 @@
 
 	stun_angle = 90
 
-	health_base = 200
-
 /mob/living/simple/npc/bear/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -20,5 +18,4 @@
 	name = "snow bear"
 	icon_state = "white"
 
-	health_base = 300
-	level_multiplier = 2
+	level_multiplier = 1.25

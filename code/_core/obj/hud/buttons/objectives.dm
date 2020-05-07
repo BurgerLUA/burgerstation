@@ -14,9 +14,11 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	var/stored_text = "Objectives:<br>None"
 
 /obj/hud/button/objectives/proc/set_stored_text(var/desired_text)
+
 	stored_text = desired_text + "<br>"
 	if(maptext)
 		maptext = stored_text
+		animate(src,alpha = 255,time = 1)
 
 /obj/hud/button/objectives/New(var/desired_loc)
 	all_objective_buttons += src
@@ -27,8 +29,8 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	. = ..()
 
 	if(. && SShorde && SShorde.last_update)
-		stored_text = SShorde.last_update
-		maptext = stored_text
+		set_stored_text(SShorde.last_update)
+		//maptext = stored_text
 
 	return .
 

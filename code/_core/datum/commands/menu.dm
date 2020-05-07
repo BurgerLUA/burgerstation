@@ -93,6 +93,7 @@
 
 		if(!U)
 			log_error("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
+			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 01. Rejoining may fix this.")
 			return FALSE
 
 		if(U.create_new_character(U.get_next_character_id()))
@@ -110,4 +111,5 @@
 			qdel(src)
 			return TRUE
 		else
-			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened. Rejoining may fix this.")
+			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this.")
+			log_error("WARNING: [ckey] WAS UNABLE TO CREATE A NEW CHARACTER!")

@@ -1,10 +1,9 @@
-var/global/list/tracked_bosses = list()
-
 SUBSYSTEM_DEF(bosses)
 	name = "Boss Subsystem"
 	desc = "Tracks which players are bossfighting someone."
 	tick_rate = SECONDS_TO_TICKS(4)
 	priority = SS_ORDER_IMPORTANT
+	var/list/tracked_bosses = list()
 
 /subsystem/bosses/on_life()
 

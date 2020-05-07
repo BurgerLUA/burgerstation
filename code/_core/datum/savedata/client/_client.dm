@@ -1,5 +1,6 @@
 /savedata/client/
 	var/client/owner
+	var/ckey
 	var/bot_controlled = FALSE
 
 /savedata/client/Destroy()
@@ -14,8 +15,10 @@
 
 	if(new_owner)
 		owner = new_owner
+		ckey = owner.ckey
 	else
 		bot_controlled = TRUE
+		ckey = "BOT"
 
 	return ..()
 
@@ -23,4 +26,4 @@
 	return replacetext(CKEY_PATH_FORMAT,"%CKEY",folder_id)
 
 /savedata/client/get_files()
-	return flist(get_folder(bot_controlled ? "BOT" : owner.ckey))
+	return flist(get_folder(ckey))

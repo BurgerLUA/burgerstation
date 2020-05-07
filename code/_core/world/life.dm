@@ -42,21 +42,23 @@
 			O.force_move(get_turf(pick(lobby_positions)))
 			play_music_track("intro", O.client)
 
-	spawn while(TRUE)
-		for(var/subsystem/S in active_subsystems)
-			try
-				if(S.next_run <= ticks && S.next_run >= 0)
-					var/start_life = world.timeofday
-					if(!S.tick_rate || !S.on_life())
+	spawn
+		while(world_state == STATE_RUNNING)
+			for(var/subsystem/S in active_subsystems)
+				try
+					if(S.next_run <= ticks && S.next_run >= 0)
+						var/start_life = world.timeofday
+						if(!S.tick_rate || !S.on_life())
+							active_subsystems -= S
+							S.next_run = -1
+						else
+							S.next_run = ticks + S.tick_rate
+						S.life_time = world.timeofday - start_life
+				catch(var/exception/e)
+					log_error("[S]: [e] on [e.file]:[e.line]!<br>[e.desc]")
+					if(SHUTDOWN_SUBSYSTEM_ON_ERROR)
 						active_subsystems -= S
-						S.next_run = -1
-					else
-						S.next_run = ticks + S.tick_rate
-					S.life_time = world.timeofday - start_life
-			catch(var/exception/e)
-				log_error("[S]: [e] on [e.file]:[e.line]!<br>[e.desc]")
-				if(SHUTDOWN_SUBSYSTEM_ON_ERROR)
-					active_subsystems -= S
 
-		ticks += 1
-		sleep(tick_lag)
+			ticks += 1
+			sleep(tick_lag)
+		LOG_SERVER("ALL SUBSYSTEMS HAVE STOPPED.")

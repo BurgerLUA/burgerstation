@@ -4,12 +4,15 @@
 	icon = 'icons/mob/living/simple/sealife.dmi'
 	icon_state = "carp"
 
-	ai = /ai/simple/carp
+	ai = /ai/carp
 	damage_type = /damagetype/unarmed/bite/
 	class = "carp"
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	loyalty_tag = "carp"
+	iff_tag = "carp"
 
 /mob/living/simple/npc/spacecarp/post_death()
 	..()

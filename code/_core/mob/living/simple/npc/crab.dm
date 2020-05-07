@@ -11,7 +11,7 @@
 
 	loot_drop = "crab"
 
-	damage_base = list(
+	armor_base = list(
 		BLADE = 25,
 		BLUNT = 10,
 		PIERCE = 25,
@@ -61,7 +61,7 @@
 
 	damage_type = /damagetype/npc/crab/king
 
-	damage_base = list(
+	armor_base = list(
 		BLADE = 100,
 		BLUNT = 25,
 		PIERCE = 100,
