@@ -1,3 +1,6 @@
+//Here be shitcode.
+//I need to improve this in the future.
+
 #define HORDE_STATE_PRELOAD "preload" //We're preloading everything.
 #define HORDE_STATE_WAITING "waiting" //Waiting for round to start.
 #define HORDE_STATE_GEARING "gearing" //Everyone gears up.
@@ -20,6 +23,7 @@ SUBSYSTEM_DEF(horde)
 	var/max_enemies = 10
 	var/enemies_to_spawn = 0
 	var/enemies_spawned = 0
+	var/list/tracked_enemies = list()
 
 	var/message_displayed = FALSE
 
@@ -35,11 +39,15 @@ SUBSYSTEM_DEF(horde)
 
 	var/list/tracked_objectives = list()
 
-	var/next_objective_update = -1
+	var/objectives_spawned = FALSE
+	var/next_objectives_update = -1
 	var/completed_objectives = 0
 	var/last_update = null
 
-/subsystem/horde/proc/on_killed_syndicate()
+/subsystem/horde/proc/on_killed_syndicate(var/mob/living/L)
+
+	if(!(L in tracked_enemies))
+		return FALSE
 
 	killed_syndicate_total++
 	killed_syndicate_round++
@@ -47,10 +55,12 @@ SUBSYSTEM_DEF(horde)
 	if(killed_syndicate_round >= spawned_enemies_round)
 		current_round++
 		message_displayed = FALSE
+		killed_syndicate_round = 0
 
-	killed_syndicate_round = 0
+	tracked_enemies -= L
 
 	return TRUE
+
 
 /subsystem/horde/proc/check_hijack()
 
@@ -68,6 +78,10 @@ SUBSYSTEM_DEF(horde)
 
 
 /subsystem/horde/on_life()
+
+	if(next_objectives_update > 0 && next_objectives_update <= world.time)
+		update_objectives()
+		next_objectives_update = -1
 
 	round_time++
 
@@ -89,9 +103,8 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_BOARDING
 		round_time = 0
 		round_time_next = HORDE_DELAY_BOARDING
-		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
-		spawn(100)
-			spawn_objectives()
+		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		next_objectives_update = world.time + 100
 
 
 	if(state == HORDE_STATE_BOARDING)
@@ -117,15 +130,11 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_FIGHTING)
 
-		if(next_objective_update >= 0 && next_objective_update <= world.time)
-			update_objectives()
-			next_objective_update = -1
-
 		if(!message_displayed)
+			LOG_DEBUG("Moving to round [current_round].")
 			set_message("Round [current_round]")
 			message_displayed = TRUE
-			enemies_to_spawn = clamp(15 + (current_round * 5),15,min(50,max(15,length(all_players)*3)))
-			spawned_enemies_round = enemies_to_spawn*0.75
+			enemies_to_spawn = clamp(15 + (current_round * 5),15,min(50,max(15,length(all_players)*3))) - length(tracked_enemies)
 			var/obj/marker/landmark/B = locate(pick("Bravo","Village"))
 			var/obj/marker/map_node/N_end = find_closest_node(B)
 			for(var/mob/living/advanced/npc/syndicate/S in world)
@@ -155,7 +164,7 @@ SUBSYSTEM_DEF(horde)
 		var/wave_to_spawn = min(4,enemies_to_spawn)
 		enemies_to_spawn -= wave_to_spawn
 		var/list/possible_spawns = all_syndicate_spawns.Copy()
-		spawn while(enemies_to_spawn && length(possible_spawns))
+		spawn while(wave_to_spawn && length(possible_spawns))
 
 			CHECK_TICK
 
@@ -192,9 +201,7 @@ SUBSYSTEM_DEF(horde)
 					var/mob/living/advanced/npc/syndicate/S = new(T)
 					INITIALIZE(S)
 					S.ai.set_path(found_path)
-
-					for(var/mob/abstract/observer/O in world)
-						O.force_move(T)
+					tracked_enemies += S
 					wave_to_spawn--
 
 	//if(state == HORDE_STATE_HIJACK)
@@ -210,14 +217,10 @@ SUBSYSTEM_DEF(horde)
 	round_time_next = HORDE_DELAY_WAIT
 	return TRUE
 
-/subsystem/horde/proc/delay_spawn_objectives()
-	next_objective_update = world.time + 30
-	return TRUE
-
 /subsystem/horde/proc/spawn_objectives()
 
 	var/desired_spawn_objectives = min(4,length(possible_objective_spawns))
-	var/desired_kill_objectives = min(1,length(SSbosses.tracked_bosses))
+	var/desired_kill_objectives = min(4,length(SSbosses.tracked_bosses))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
 	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")
@@ -240,16 +243,27 @@ SUBSYSTEM_DEF(horde)
 		var/chosen_id = pick(valid_boss_ids)
 		valid_boss_ids -= chosen_id
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
-		HOOK_ADD("post_death","objective_death",src,.proc/delay_spawn_objectives)
+		var/turf/T = get_turf(L)
+		world.log << "Z of [L]: [T.z]."
+		if(T.z != 2)
+			continue
+		HOOK_ADD("post_death","objective_death",L,src,.proc/queue_objectives_update)
 		tracked_objectives += L
 
-	update_objectives()
+	objectives_spawned = TRUE
 
+	return TRUE
+
+/subsystem/horde/proc/queue_objectives_update()
+	next_objectives_update = world.time + 30
 	return TRUE
 
 /subsystem/horde/proc/update_objectives()
 
-	var/objective_text = "Objectives Update:<br>"
+	if(!objectives_spawned)
+		spawn_objectives()
+
+	var/objective_text = ""
 	for(var/atom/A in tracked_objectives)
 		var/turf/T = get_turf(A)
 		if(isobj(A))
@@ -269,7 +283,10 @@ SUBSYSTEM_DEF(horde)
 
 	for(var/obj/hud/button/objectives/B in all_objective_buttons)
 		B.set_stored_text(last_update)
+		if(B.owner)
+			B.owner.to_chat(span("notice","Your objectives have been updated!"))
 
+	world.log << "Trying to announce!"
 	announce(
 		"Central Command Update",
 		"Objectives Update",

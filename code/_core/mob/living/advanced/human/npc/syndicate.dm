@@ -50,9 +50,8 @@
 
 	return ..()
 
-
 /mob/living/advanced/npc/syndicate/post_death()
-	SShorde.on_killed_syndicate()
+	SShorde.on_killed_syndicate(src)
 	return ..()
 
 /mob/living/advanced/npc/syndicate/Initialize()

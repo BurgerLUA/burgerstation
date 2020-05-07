@@ -29,6 +29,7 @@
 
 
 	var/obj/item/I = copy(src)
+	I.item_count_current = 0
 	src.transfer_item_count_to(I,stacks_to_take)
 
 	return I

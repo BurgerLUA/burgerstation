@@ -178,6 +178,6 @@
 				continue
 			A.Crossed(src,NewLoc,OldLoc)
 
-	HOOK_CALL("move")
+	//HOOK_CALL("move")
 
 	return TRUE

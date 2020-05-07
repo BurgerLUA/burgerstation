@@ -50,7 +50,7 @@
 
 /obj/structure/smooth/table/grill/Exited(var/atom/movable/O,var/atom/new_loc)
 	if(O.reagents)
-		O.reagents.special_temperature_mod += temperature_mod_oven
+		O.reagents.special_temperature_mod -= temperature_mod_oven
 	return ..()
 
 /obj/structure/smooth/table/grill/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)

@@ -4,7 +4,7 @@ var/global/list/area/transit/transit_areas = list()
 	name = "transit"
 	icon_state = "shuttle"
 	is_space = TRUE
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_ANNOUNCEMENTS
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 	var/turf/transit_turf = /turf/simulated/floor/plating
 
 /area/transit/New(var/desired_loc)

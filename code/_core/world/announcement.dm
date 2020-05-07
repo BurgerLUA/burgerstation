@@ -16,7 +16,7 @@
 			if(!L.client)
 				continue
 			var/area/A = get_area(L)
-			if(A.flags_area & FLAGS_AREA_ANNOUNCEMENTS)
+			if(!(A.flags_area & FLAGS_AREA_NO_ROUND_INFORMATION))
 				valid_mobs += L
 
 	for(var/mob/M in valid_mobs)

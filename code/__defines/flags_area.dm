@@ -8,12 +8,11 @@
 
 
 #define FLAGS_AREA_SINGLEPLAYER 0x8
-#define FLAGS_AREA_ANNOUNCEMENTS 0x10
 
 
-#define FLAGS_AREA_NO_ROUND_INFORMATION 0x20
+#define FLAGS_AREA_NO_ROUND_INFORMATION 0x10
 
 
 
-#define FLAG_AREA_NO_LOYALTY 0x40 //Disable loyalty implants.
-#define FLAG_AREA_NO_IFF 0x80 //Disable IFF.
+#define FLAG_AREA_NO_LOYALTY 0x20 //Disable loyalty implants.
+#define FLAG_AREA_NO_IFF 0x40 //Disable IFF.

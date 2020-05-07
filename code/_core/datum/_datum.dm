@@ -14,3 +14,11 @@
 
 /datum/proc/is_safe_to_delete()
 	return TRUE
+
+/datum/Destroy()
+
+	if(hooks)
+		hooks.Cut()
+		hooks = null
+
+	return ..()

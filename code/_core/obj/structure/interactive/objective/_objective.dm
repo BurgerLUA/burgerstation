@@ -14,7 +14,7 @@ obj/structure/interactive/objective/Initialize()
 
 obj/structure/interactive/objective/Destroy()
 	if(src in SShorde.tracked_objectives)
-		SShorde.next_objective_update = world.time + 100
+		SShorde.queue_objectives_update()
 	return ..()
 
 obj/structure/interactive/objective/New(var/desired_loc)
