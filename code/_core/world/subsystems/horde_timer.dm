@@ -294,3 +294,16 @@ SUBSYSTEM_DEF(horde)
 		ANNOUNCEMENT_STATION,
 		'sounds/effects/station/new_command_report.ogg'
 	)
+
+
+/subsystem/horde/proc/get_threat_level()
+
+	. = 0
+
+	for(var/mob/living/L in tracked_enemies)
+		if(L.dead)
+			continue
+		var/area/A = get_area(L)
+		if(!A.defend)
+			continue
+		. += 1

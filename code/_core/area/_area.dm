@@ -57,6 +57,8 @@ var/global/list/all_areas = list()
 
 	var/is_space = FALSE
 
+	var/defend = FALSE //Set to true if you're supposed to defend this area.
+
 
 /area/New()
 	. = ..()

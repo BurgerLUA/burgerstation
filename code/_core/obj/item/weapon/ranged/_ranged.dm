@@ -31,6 +31,36 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
+/obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+
+	var/atom/defer_object = object.defer_click_on_object()
+
+	if(is_item(defer_object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
+			if(istype(firing_pin))
+				firing_pin.force_move(get_turf(src))
+				caller.to_chat(span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
+				firing_pin = null
+			else
+				caller.to_chat(span("notice","There is no firing pin inside \the [src.name]!"))
+			return TRUE
+
+		if(istype(I,/obj/item/firing_pin/))
+			if(istype(firing_pin))
+				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
+			else
+				I.drop_item()
+				I.force_move(src)
+				firing_pin = I
+				caller.to_chat(span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
+			return TRUE
+
+	return ..()
+
+
+
+
 /obj/item/weapon/ranged/on_spawn()
 	firing_pin = new firing_pin(src)
 	INITIALIZE(firing_pin)

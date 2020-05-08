@@ -4,6 +4,12 @@
 	name = "roof"
 	icon_state = "roof"
 
+/area/interior/roof/village
+	name = "village roof"
+	icon_state = "roof"
+	defend = TRUE
+
+
 /area/interior/cave
 	name = "cave"
 	icon_state = "cave"

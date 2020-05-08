@@ -19,6 +19,7 @@
 /area/exterior/grass/village
 	name = "village"
 	icon_state = "village"
+	defend = TRUE
 
 /area/exterior/river
 	name = "river"

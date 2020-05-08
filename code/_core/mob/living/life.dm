@@ -225,6 +225,8 @@
 				animate(I,transform = matrix(), time = 2)
 		horizontal = desired_horizontal
 
+	return desired_horizontal
+
 /mob/living/proc/on_life()
 
 	if(!initialized)

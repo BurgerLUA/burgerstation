@@ -9,12 +9,13 @@
 
 	value = 10
 
-/obj/item/weapon/melee/toolbox/fill_inventory()
-	new /obj/item/weapon/melee/tool/wrench(src)
-	new /obj/item/weapon/melee/tool/screwdriver(src)
-	new /obj/item/weapon/melee/tool/crowbar(src)
-	new /obj/item/weapon/melee/tool/wirecutters(src)
-	new /obj/item/weapon/melee/tool/multitool(src)
+	size = SIZE_3
+	weight = WEIGHT_4
+
+	is_container = TRUE
+	container_max_size = SIZE_2
+
+	dynamic_inventory_count = 6
 
 /obj/item/weapon/melee/toolbox/red
 	color = "#FF0000"
