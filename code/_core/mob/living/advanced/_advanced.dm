@@ -45,8 +45,6 @@
 
 	var/quick_mode = null
 
-	stun_angle = -90
-
 	random_spawn_dir = FALSE
 
 	has_footprints = TRUE
@@ -81,6 +79,8 @@
 	var/obj/overlay/chat_overlay
 
 	value = 250
+
+	stun_angle = -90
 
 /mob/living/advanced/Destroy()
 

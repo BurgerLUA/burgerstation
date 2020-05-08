@@ -24,7 +24,7 @@ var/global/mob/abstract/node_checker
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
 	invisibility = 0
-	alpha = 0
+	alpha = 255
 
 /obj/marker/map_node/New(var/desired_loc)
 	all_map_nodes += src

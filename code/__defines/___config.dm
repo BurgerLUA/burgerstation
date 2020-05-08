@@ -24,6 +24,8 @@
 
 #define SOUND_RANGE 18
 
+#define STUN_ANGLE -90
+
 #define WHISPER_RANGE 2
 #define TALK_RANGE VIEW_RANGE
 #define YELL_RANGE VIEW_RANGE*1.5

@@ -28,8 +28,6 @@ SUBSYSTEM_DEF(hook)
 
 	owner.hooks[event_name][identifier] = list(proc_target,proc_to_use)
 
-	world.log << "Adding: [owner].hooks\[[event_name]\]\[[identifier]\] = list([proc_target],[proc_to_use])"
-
 	return TRUE
 
 /subsystem/hook/proc/remove_hook(var/event_name,var/identifier,var/datum/datum_to_use)
@@ -51,8 +49,6 @@ SUBSYSTEM_DEF(hook)
 
 /subsystem/hook/proc/call_hook(var/event_name,var/datum/datum_to_use,var/args)
 
-	world.log << "Calling hook: [event_name]."
-
 	ASSERT(event_name)
 
 	if(!length(datum_to_use.hooks))
@@ -69,8 +65,6 @@ SUBSYSTEM_DEF(hook)
 		var/proc_to_use = list_info[2]
 		call(proc_owner,proc_to_use)(args)
 		total_calls++
-
-	world.log << "Did [total_calls] total calls."
 
 	return total_calls
 

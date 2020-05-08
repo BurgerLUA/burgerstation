@@ -43,6 +43,7 @@ SUBSYSTEM_DEF(horde)
 	var/next_objectives_update = -1
 	var/completed_objectives = 0
 	var/last_update = null
+	var/round_end_time = -1
 
 /subsystem/horde/proc/on_killed_syndicate(var/mob/living/L)
 
@@ -286,7 +287,6 @@ SUBSYSTEM_DEF(horde)
 		if(B.owner)
 			B.owner.to_chat(span("notice","Your objectives have been updated!"))
 
-	world.log << "Trying to announce!"
 	announce(
 		"Central Command Update",
 		"Objectives Update",

@@ -18,8 +18,6 @@
 	change_organ_visual("hair_head", desired_color = "#EFC700", desired_icon_state = "none")
 	update_all_blends()
 
-	world.log << "Our AI is: [ai]."
-
 	return .
 
 

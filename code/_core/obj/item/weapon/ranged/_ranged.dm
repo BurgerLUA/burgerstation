@@ -85,9 +85,10 @@
 		caller.to_chat(span("notice","You can only fire this when wielded! (CTRL+CLICK)"))
 		return ..()
 
-	object = object.defer_click_on_object(location,control,params)
+	if(istype(object,/obj/parallax))
+		object = object.defer_click_on_object(location,control,params)
 
-	if(shoot(caller,object,location,params))
+	if(object.z && shoot(caller,object,location,params))
 		return TRUE
 
 	return ..()

@@ -12,6 +12,7 @@
 
 	var/heart_ticks = 0
 
+/*
 /obj/item/organ/internal/heart/on_life()
 
 	. = ..()
@@ -59,3 +60,4 @@
 			heart_ticks = 0
 
 	return .
+*/
