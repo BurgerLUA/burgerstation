@@ -2,21 +2,20 @@
 	name = "laser"
 	id = "laser"
 	icon = 'icons/obj/projectiles/laser.dmi'
-	icon_state = "laser"
+	icon_state = "normal"
 
 	impact_effect_turf = /obj/effect/temp/impact/bullet/laser
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
-/obj/projectile/bullet/laser/update_icon()
+/obj/projectile/bullet/laser/update_underlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"[icon_state]_outline")
+	I.color = bullet_color
+	underlays += I
 
-	var/icon/I = new/icon(initial(icon),initial(icon_state))
-	I.Blend(bullet_color,ICON_MULTIPLY)
+/obj/projectile/bullet/laser/strong
+	icon_state = "strong"
 
-	var/icon/I2 = new/icon(initial(icon),"core")
-	I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
-
+/obj/projectile/bullet/laser/weak
+	icon_state = "weak"

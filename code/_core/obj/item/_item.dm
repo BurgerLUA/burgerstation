@@ -98,6 +98,8 @@
 
 	var/allow_beaker_transfer = FALSE
 
+	var/list/polymorphs = list()
+
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
 		return 0
@@ -376,6 +378,22 @@
 
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return FALSE
+
+
+/obj/item/update_icon()
+
+	if(length(polymorphs))
+		icon = initial(icon)
+		icon_state = initial(icon_state)
+		var/icon/I = ICON_INVISIBLE
+		for(var/polymorph_name in polymorphs)
+			var/polymorph_color = polymorphs[polymorph_name]
+			var/icon/I2 = new /icon(icon,"[icon_state]_[polymorph_name]")
+			I2.Blend(polymorph_color,ICON_MULTIPLY)
+			I.Blend(I2,ICON_OVERLAY)
+		icon = I
+
+	return ..()
 
 /obj/item/proc/update_held_icon()
 

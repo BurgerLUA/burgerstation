@@ -2,7 +2,7 @@
 	name = "freeze ray"
 	icon = 'icons/obj/items/weapons/ranged/laser/freezegun.dmi'
 
-	projectile = /obj/projectile/bullet/laser
+	projectile = /obj/projectile/bullet/laser/strong
 	damage_type = /damagetype/ranged/laser/freezegun
 
 	projectile_speed = 8

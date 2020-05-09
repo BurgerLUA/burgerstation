@@ -7,8 +7,6 @@
 
 	color = "#FFFFFF"
 
-	var/list/polymorphs = list()
-
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
@@ -51,30 +49,10 @@
 		var/icon/initial_icon = initial(icon)
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
-			add_blend("outfit_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+			add_blend("polymorph_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 		update_sprite()
 
 	..()
-
-/obj/item/clothing/update_icon()
-
-	if(!length(polymorphs))
-		return ..()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	var/icon/I = ICON_INVISIBLE
-
-	for(var/polymorph_name in polymorphs)
-		var/polymorph_color = polymorphs[polymorph_name]
-		var/icon/I2 = new /icon(icon,"[icon_state]_[polymorph_name]")
-		I2.Blend(polymorph_color,ICON_MULTIPLY)
-		I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
 
 /obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE

@@ -16,6 +16,7 @@ mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,va
 		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
 	O.update()
 	add_tracked_overlay_image(O)
+	return O
 
 mob/living/advanced/proc/show_overlay(var/obj/object,var/show=TRUE)
 

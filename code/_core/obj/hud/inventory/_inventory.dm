@@ -171,19 +171,38 @@
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
-
 	//OVERLAY BUG, NOT THIS.
 	if(!owner || !is_advanced(owner) || !item_to_update)
 		return FALSE
 
 	var/mob/living/advanced/A = owner
 
-	A.remove_overlay(item_to_update)
+	var/icon/desired_icon = initial(item_to_update.icon)
+	var/desired_icon_state = null
 	if(id == BODY_HAND_LEFT)
-		A.add_tracked_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_left, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+		desired_icon_state = item_to_update.icon_state_held_left
 	else if(id == BODY_HAND_RIGHT)
-		A.add_tracked_overlay(item_to_update, desired_icon=initial(item_to_update.icon), desired_icon_state=item_to_update.icon_state_held_right, desired_layer = LAYER_MOB_HELD, desired_never_blend = TRUE)
+		desired_icon_state = item_to_update.icon_state_held_right
 
+	if(length(item_to_update.polymorphs))
+		var/icon/I = ICON_INVISIBLE
+		for(var/polymorph_name in item_to_update.polymorphs)
+			var/polymorph_color = item_to_update.polymorphs[polymorph_name]
+			var/icon/I2 = new /icon(desired_icon,"[desired_icon_state]_[polymorph_name]")
+			I2.Blend(polymorph_color,ICON_MULTIPLY)
+			I.Blend(I2,ICON_OVERLAY)
+		desired_icon_state = null
+		desired_icon = I
+
+	A.remove_overlay(item_to_update)
+	A.add_tracked_overlay(
+		item_to_update,
+		desired_icon = desired_icon,
+		desired_icon_state = desired_icon_state,
+		desired_layer = LAYER_MOB_HELD,
+		desired_never_blend = TRUE,
+		desired_color = item_to_update.color
+	)
 
 	return TRUE
 
