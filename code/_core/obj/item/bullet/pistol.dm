@@ -17,7 +17,6 @@
 
 	size = 0.02
 	weight = 0.02
-
 	value = 0.3
 
 /obj/item/bullet_cartridge/pistol_50/
@@ -62,7 +61,6 @@
 
 	size = 0.025
 	weight = 0.025
-
 	value = 0.4
 
 /obj/item/bullet_cartridge/pistol_9mm/
@@ -85,7 +83,6 @@
 
 	size = 0.01
 	weight = 0.01
-
 	value = 0.1
 
 /obj/item/bullet_cartridge/pistol_40/
@@ -108,7 +105,6 @@
 
 	size = 0.01
 	weight = 0.01
-
 	value = 0.1
 
 /obj/item/bullet_cartridge/pistol_45/
@@ -130,7 +126,6 @@
 
 	size = 0.015
 	weight = 0.015
-
 	value = 0.2
 
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
@@ -152,5 +147,4 @@
 
 	size = 0.01
 	weight = 0.01
-
 	value = 0.2

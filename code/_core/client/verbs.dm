@@ -29,5 +29,7 @@
 		verbs += /client/verb/add_new_wikibot_entry
 		verbs += /client/verb/rtv
 		verbs += /client/verb/trigger_shutdown
+		verbs += /client/verb/get_threat_level
+		verbs += /client/verb/get_enemies_to_spawn
 
 	return TRUE

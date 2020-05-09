@@ -26,7 +26,6 @@
 	for(var/i=1, i <= bullet_count_max, i++)
 		var/obj/item/bullet_cartridge/B = new ammo(src)
 		INITIALIZE(B)
-		SPAWN(B)
 		stored_bullets += B
 
 	update_sprite()
@@ -109,43 +108,21 @@
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(istype(src,/obj/item/magazine/clip))
-		return FALSE
-
 	object = object.defer_click_on_object(location,control,params)
 
-	if(!is_bullet_gun(object))
-		return ..()
-
-	var/obj/item/weapon/ranged/bullet/magazine/G = object
-	if(!(G.type in weapon_whitelist))
-		caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
+	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
+		var/obj/item/weapon/ranged/bullet/magazine/G = object
+		if(!(G.type in weapon_whitelist))
+			caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
+			return TRUE
+		if(G.stored_magazine)
+			G.eject_magazine(caller)
+		src.drop_item(G)
+		src.force_move(G)
+		G.stored_magazine = src
+		G.open = FALSE
+		play(get_magazine_insert_sound(),src)
+		G.update_sprite()
 		return TRUE
 
-	if(G.stored_magazine)
-		G.eject_magazine(caller)
-
-	src.drop_item(G)
-	src.force_move(G)
-	G.stored_magazine = src
-	G.open = FALSE
-	play(get_magazine_insert_sound(),src)
-	G.update_sprite()
-
-	return TRUE
-
-/obj/item/magazine/get_examine_list(var/mob/examiner)
-
-	if(!is_advanced(examiner))
-		return ..()
-
-	var/mob/living/advanced/A = examiner
-
-	. = ..()
-	var/len = length(stored_bullets)
-
-	if(len && stored_bullets[len])
-		var/obj/item/bullet_cartridge/B = stored_bullets[len]
-		. += B.get_damage_type_text(A)
-
-	return .
+	return ..()

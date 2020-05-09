@@ -73,6 +73,10 @@
 	growth_speed = 2
 	growth_min = 0
 
+/obj/structure/interactive/plant/glowshroom/Initialize()
+	set_light(2,0.25,"#00FF00")
+	return ..()
+
 
 /obj/structure/interactive/plant/tomato
 	id = "tomato"

@@ -1,11 +1,9 @@
-/mob/living/simple/npc/penguin
+/mob/living/simple/npc/passive/penguin
 	name = "penguin"
 	icon = 'icons/mob/living/simple/passive.dmi'
 	icon_state = "penguin"
 	damage_type = /damagetype/unarmed/bite/
 	class = "crab"
-
-	ai = /ai/
 
 	armor_base = list(
 		BLADE = 0,
@@ -23,7 +21,7 @@
 		FATIGUE = 25
 	)
 
-/mob/living/simple/npc/penguin/post_death()
+/mob/living/simple/npc/passive/penguin/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()

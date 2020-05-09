@@ -89,6 +89,8 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	if(!is_advanced(caller))
 		return ..()
 
+	INTERACT_CHECK
+
 	if(!SShorde.allow_shuttle_launch)
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
 		return FALSE
@@ -127,6 +129,8 @@ obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(va
 
 	if(!is_advanced(caller))
 		return ..()
+
+	INTERACT_CHECK
 
 	if(!SShorde.allow_shuttle_launch)
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))

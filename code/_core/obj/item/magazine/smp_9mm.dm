@@ -10,6 +10,14 @@
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm
 
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
+
 /obj/item/magazine/smp_9mm/update_icon()
 
 	if(length(stored_bullets))

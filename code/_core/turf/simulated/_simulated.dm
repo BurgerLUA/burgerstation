@@ -95,10 +95,6 @@ var/global/saved_icons = 0
 
 	return ..()
 
-/turf/simulated/get_examine_list(var/mob/examiner)
-	return ..() + div("notice","Air Block Dirs: [direction_to_text(blocks_air)].")
-
-
 /turf/simulated/on_destruction(var/atom/caller,var/damage = FALSE)
 
 	if(!destruction_turf)
@@ -138,7 +134,7 @@ var/global/saved_icons = 0
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
-		var/dir_to_text = direction_to_text(d)
+		var/dir_to_text = dir2text(d)
 		var/turf/T = get_step(src,d)
 
 		calc_list[dir_to_text] = FALSE //Default

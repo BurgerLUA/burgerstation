@@ -1,9 +1,6 @@
 /mob/living/advanced/npc/
 	name = "greytide"
 	enable_AI = TRUE
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
 	ai = /ai/
 
 	var/dialogue_id

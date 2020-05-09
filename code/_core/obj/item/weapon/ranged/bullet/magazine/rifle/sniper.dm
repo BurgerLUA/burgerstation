@@ -38,6 +38,8 @@
 
 	value = 400
 
+	ai_heat_sensitivity = 2
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper/get_static_spread() //Base spread
 	return 0
 

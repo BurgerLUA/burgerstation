@@ -3,7 +3,6 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 	var/list/faction/factions
-	var/list/starting_factions = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
@@ -100,6 +99,7 @@
 	var/damage_received_multiplier = 1
 
 	var/dead = FALSE
+	var/time_of_death = -1
 
 	var/spawn_blood = "blood"
 
@@ -282,12 +282,6 @@
 		return FALSE
 	name = CHECK_NAME(name)
 	return TRUE
-
-/*
-/mob/living/proc/initialize_factions()
-	for(var/k in starting_factions)
-		factions[k] = all_factions[k]
-*/
 
 /mob/living/proc/set_iff_tag(var/desired_iff_tag,var/force=FALSE)
 

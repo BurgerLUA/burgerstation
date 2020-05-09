@@ -74,11 +74,11 @@
 	icon_state = "patch_brute"
 
 /obj/item/container/medicine/patch/brute/on_spawn()
-	reagents.add_reagent("styptic_powder",30)
+	reagents.add_reagent("styptic_powder",20)
 
 /obj/item/container/medicine/patch/burn
 	name = "burn patch (Silver Sulfadiazine)"
 	icon_state = "patch_burn"
 
 /obj/item/container/medicine/patch/burn/on_spawn()
-	reagents.add_reagent("silver_sulfadiazine",30)
+	reagents.add_reagent("silver_sulfadiazine",20)

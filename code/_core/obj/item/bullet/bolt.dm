@@ -20,7 +20,6 @@
 
 	size = 0.5
 	weight = 1
-
 	value = 0.5
 
 /obj/item/bullet_cartridge/bolt/on_spawn()

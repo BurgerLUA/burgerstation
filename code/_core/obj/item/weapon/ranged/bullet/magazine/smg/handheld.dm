@@ -31,6 +31,8 @@
 
 	value = 120
 
+	ai_heat_sensitivity = 0.5
+
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread() //Base spread
 	return 0.02
 

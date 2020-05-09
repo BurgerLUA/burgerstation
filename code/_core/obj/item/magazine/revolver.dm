@@ -50,6 +50,7 @@
 	ammo = /obj/item/bullet_cartridge/revolver_44/surplus
 */
 
+/*
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
 	icon = 'icons/obj/items/magazine/revolver/22.dmi'
@@ -59,6 +60,7 @@
 	weapon_whitelist = list()
 
 	ammo = /obj/item/bullet_cartridge/pistol_22
+*/
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"

@@ -47,7 +47,6 @@
 	var/turf/path_start_turf
 	var/turf/path_end_turf
 
-
 	var/frustration_threshold = 10 //Above this means they'll try to find a new target.
 
 	var/list/attackers = list()
@@ -76,6 +75,9 @@
 	var/block_chance = 25
 	var/parry_chance = 25
 	var/dodge_chance = 25
+
+	var/only_attack_enemies = FALSE
+	var/list/enemy_tags = list()
 
 /ai/Destroy()
 	if(owner)
@@ -238,6 +240,7 @@
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
 		else
+			start_turf = get_turf(owner)
 			set_path(null)
 			owner.move_dir = 0
 		return TRUE
@@ -251,16 +254,19 @@
 
 		var/obj/marker/map_node/N_start = find_closest_node(owner)
 		if(!N_start)
+			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path start!")
 			set_path(null)
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
 		if(!N_end)
+			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path end!")
 			set_path(null)
 			return FALSE
 
 		var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 		if(!found_path)
+			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
 			set_path(null)
 			return FALSE
 
@@ -363,11 +369,19 @@
 	if(L)
 		set_alert_level(ALERT_LEVEL_ALERT)
 		owner.set_dir(get_dir(owner,L))
-	else if(old_attack && !old_attack.qdeleting)
+		return TRUE
+
+	if(old_attack && !old_attack.qdeleting)
+		if(is_living(old_attack))
+			var/mob/living/L2 = old_attack
+			if(L2.dead)
+				set_alert_level(ALERT_LEVEL_NONE,TRUE)
+				return TRUE
 		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
 		set_move_objective(old_attack)
-	else
-		set_alert_level(ALERT_LEVEL_NOISE,TRUE)
+		return TRUE
+
+	set_alert_level(ALERT_LEVEL_NOISE,TRUE)
 
 	return TRUE
 
@@ -422,6 +436,8 @@
 
 	if(only_attack_players)
 		return exists(L.client)
+	else if(only_attack_enemies)
+		return L.iff_tag != owner.iff_tag && (L.iff_tag in enemy_tags)
 	else
 		return !owner.iff_tag || L.iff_tag != owner.iff_tag
 

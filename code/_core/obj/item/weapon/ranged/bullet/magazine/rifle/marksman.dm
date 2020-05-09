@@ -34,6 +34,8 @@
 
 	value = 150
 
+	ai_heat_sensitivity = 1.5
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.2

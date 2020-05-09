@@ -22,6 +22,7 @@
 	*/
 
 	dead = TRUE
+	time_of_death = world.time
 
 	if(stand && stand.linked_stand)
 		stand.linked_stand.set_enabled(FALSE)

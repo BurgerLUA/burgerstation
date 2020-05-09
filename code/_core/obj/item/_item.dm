@@ -297,12 +297,6 @@
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
-	/*
-	if(is_living(examiner) && damage_type && all_damage_types[damage_type])
-		var/damagetype/DT = all_damage_types[damage_type]
-		. += div("damage",DT.get_examine_text(examiner))
-	*/
-
 	return .
 
 

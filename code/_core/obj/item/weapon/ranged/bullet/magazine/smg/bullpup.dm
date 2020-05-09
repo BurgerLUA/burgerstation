@@ -35,6 +35,8 @@
 
 	value = 150
 
+	ai_heat_sensitivity = 0.75
+
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

@@ -30,6 +30,8 @@
 
 	value = 110
 
+	ai_heat_sensitivity = 0.5
+
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
 	return 0.02
 

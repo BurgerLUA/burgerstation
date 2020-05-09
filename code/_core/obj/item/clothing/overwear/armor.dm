@@ -468,6 +468,8 @@
 
 	value = 30
 
+	protected_limbs = list(BODY_TORSO,BODY_GROIN)
+
 /obj/item/clothing/overwear/armor/medium_armor/leather
 	name = "medium leather armor"
 	color = "#8C4438"

@@ -145,7 +145,7 @@
 	)
 
 /obj/item/clothing/hands/gloves/colored/padded/black
-	color = "#222222"
+	color = COLOR_BLACK
 
 /obj/item/clothing/hands/gloves/colored/padded/black/left
 	name = "left padded glove"

@@ -8,7 +8,9 @@ var/global/mob/abstract/node_checker
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 	layer = LAYER_GHOST
-	invisibility = 101
+	invisibility = 100
+	see_invisible = 101
+	alpha = 0
 
 
 /mob/abstract/node_checker/New(var/desired_loc)
@@ -23,8 +25,8 @@ var/global/mob/abstract/node_checker
 	icon = 'icons/obj/node.dmi'
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
+	alpha = 0
 	invisibility = 0
-	alpha = 255
 
 /obj/marker/map_node/New(var/desired_loc)
 	all_map_nodes += src

@@ -2,7 +2,7 @@
 	name = "\improper .308 rifle magazine"
 	icon = 'icons/obj/items/magazine/308_rifle.dmi'
 	icon_state = "308"
-	bullet_count_max = 30
+	bullet_count_max = 20
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,

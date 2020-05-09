@@ -1,9 +1,6 @@
 /mob/living/advanced/npc/greytide
 	name = "feral greytider"
 	enable_AI = TRUE
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
 	ai = /ai/advanced/
 	class = "ashwalker"
 

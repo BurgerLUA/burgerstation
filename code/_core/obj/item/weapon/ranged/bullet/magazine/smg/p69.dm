@@ -33,6 +33,8 @@
 
 	value = 300
 
+	ai_heat_sensitivity = 0.5
+
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

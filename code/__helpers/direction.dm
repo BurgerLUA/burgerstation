@@ -19,7 +19,7 @@ proc/direction_to_pixel_offset(var/dir)
 	return sight_dirs["[sight_dir]"]
 
 
-proc/direction_to_text(var/dir)
+proc/dir2text(var/dir)
 
 	. = list()
 

@@ -11,7 +11,7 @@
 
 /obj/shuttle_controller/syndicate/on_shuttle_think()
 
-	if(state == SHUTTLE_STATE_LANDED)
+	if(state == SHUTTLE_STATE_LANDED && SShorde.allow_shuttle_launch)
 		display = "Landed"
 		if(time >= SHUTTLE_DEFAULT_IDLE_TIME)
 			state = SHUTTLE_STATE_WAITING
@@ -26,7 +26,7 @@
 
 	if(.)
 
-		if(SShorde.allow_shuttle_launch && starting_transit_id == "syndicate_shuttle_centcomm" && ending_transit_id == "syndicate_shuttle_bluespace")
+		if(starting_transit_id == "syndicate_shuttle_centcomm" && ending_transit_id == "syndicate_shuttle_bluespace")
 
 			var/area/A = get_area(src)
 			var/list/mob/living/mobs_to_delete = list()
@@ -58,6 +58,7 @@
 				valid_spots -= T
 				var/mob/living/advanced/npc/syndicate/S = new(T)
 				INITIALIZE(S)
+				SShorde.tracked_enemies += S
 
 
 		if(starting_transit_id == "syndicate_shuttle_bluespace" && ending_transit_id == "syndicate_shuttle_planet")
@@ -84,7 +85,7 @@
 
 				var/obj/marker/map_node/N_start = find_closest_node(L)
 				if(!N_start)
-					log_error("Path Error: Couldn't find closet node to [L]!")
+					log_error("Path Error: Couldn't find closet node to [L] from [L.x],[L.y],[L.z]!")
 					continue
 
 				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)

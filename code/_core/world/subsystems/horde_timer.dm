@@ -45,6 +45,9 @@ SUBSYSTEM_DEF(horde)
 	var/last_update = null
 	var/round_end_time = -1
 
+	var/next_threat_update = -1
+	var/last_threat_level_warning = 0
+
 /subsystem/horde/proc/on_killed_syndicate(var/mob/living/L)
 
 	if(!(L in tracked_enemies))
@@ -62,6 +65,12 @@ SUBSYSTEM_DEF(horde)
 
 	return TRUE
 
+/subsystem/horde/proc/get_enemies_to_spawn()
+	. = 15 + (current_round * 2.5)
+	. = min(.,50,length(all_players)*3)
+	. = max(.,15)
+	. -= length(tracked_enemies)
+	return .
 
 /subsystem/horde/proc/check_hijack()
 
@@ -70,7 +79,7 @@ SUBSYSTEM_DEF(horde)
 		log_error("HORDE MODE: Could not find the village area!")
 		return FALSE
 
-	var/desired_player_count = CEILING(length(all_players) * 0.25,1)
+	var/desired_player_count = 1
 
 	for(var/mob/living/advanced/player/P in A.contents)
 		desired_player_count -= 1
@@ -84,6 +93,10 @@ SUBSYSTEM_DEF(horde)
 		update_objectives()
 		next_objectives_update = -1
 
+	if(next_threat_update > 0 && next_threat_update <= world.time)
+		check_threat_level()
+		next_threat_update = world.time + 600
+
 	round_time++
 
 	if(state == HORDE_STATE_WAITING)
@@ -94,7 +107,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_GEARING
 		round_time = 0
 		round_time_next = HORDE_DELAY_GEARING
-		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 12 minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_GEARING)
 		var/time_to_display = round_time_next - round_time
@@ -104,7 +117,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_BOARDING
 		round_time = 0
 		round_time_next = HORDE_DELAY_BOARDING
-		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 		next_objectives_update = world.time + 100
 
 
@@ -128,6 +141,7 @@ SUBSYSTEM_DEF(horde)
 		round_time = 0
 		round_time_next = 0
 		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Alpha/Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		next_threat_update = world.time + 100
 
 	if(state == HORDE_STATE_FIGHTING)
 
@@ -135,20 +149,14 @@ SUBSYSTEM_DEF(horde)
 			LOG_DEBUG("Moving to round [current_round].")
 			set_message("Round [current_round]")
 			message_displayed = TRUE
-			enemies_to_spawn = clamp(15 + (current_round * 5),15,min(50,max(15,length(all_players)*3))) - length(tracked_enemies)
-			var/obj/marker/landmark/B = locate(pick("Bravo","Village"))
-			var/obj/marker/map_node/N_end = find_closest_node(B)
+			enemies_to_spawn = get_enemies_to_spawn()
 			for(var/mob/living/advanced/npc/syndicate/S in world)
 				if(S.map_spawn)
 					continue
 				if(!S.ai)
 					continue
-				var/obj/marker/map_node/N_start = find_closest_node(S)
-				if(N_start)
-					var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
-					if(found_path)
-						S.ai.set_path(found_path)
-						continue
+				if(length(S.ai.current_path))
+					continue
 				var/mob/living/advanced/player/P = locate() in view(VIEW_RANGE + ZOOM_RANGE,S)
 				if(!P)
 					qdel(S)
@@ -208,8 +216,6 @@ SUBSYSTEM_DEF(horde)
 	//if(state == HORDE_STATE_HIJACK)
 		//Do stuff
 
-
-
 	return TRUE
 
 /subsystem/horde/Initialize()
@@ -244,10 +250,6 @@ SUBSYSTEM_DEF(horde)
 		var/chosen_id = pick(valid_boss_ids)
 		valid_boss_ids -= chosen_id
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
-		var/turf/T = get_turf(L)
-		world.log << "Z of [L]: [T.z]."
-		if(T.z != 2)
-			continue
 		HOOK_ADD("post_death","objective_death",L,src,.proc/queue_objectives_update)
 		tracked_objectives += L
 
@@ -295,15 +297,72 @@ SUBSYSTEM_DEF(horde)
 		'sounds/effects/station/new_command_report.ogg'
 	)
 
+	if(completed_objectives >= length(tracked_objectives))
+		//Yeah there we go APC destroyed, mission acomplished.
+		return TRUE
 
+	return FALSE
+
+
+//100 equals failure.
+//Warns at 75, 50, and 25.
+//0 is neutral.
 /subsystem/horde/proc/get_threat_level()
 
 	. = 0
 
-	for(var/mob/living/L in tracked_enemies)
+	for(var/mob/living/L in tracked_enemies) //Every syndicate in an area that you're supposed to defend increases the threat level by 2, except in cases where they've been dead for less than 5 minutes, which reduces it by 1.
 		if(L.dead)
+			if(L.time_of_death + 300 >= world.time)
+				. -= 1
 			continue
 		var/area/A = get_area(L)
+		if(A && !A.defend)
+			continue
+		. += 2
+
+	for(var/mob/living/advanced/player/P in all_players) //Every living playing defending reduces the threat level by 1.
+		if(P.dead)
+			continue
+		var/area/A = get_area(P)
 		if(!A.defend)
 			continue
-		. += 1
+		. -= 1
+
+	. -= completed_objectives*10 //Every objective completed reduces the threat level by 10.
+
+	. += FLOOR(DECISECONDS_TO_SECONDS(world.time)/60,1) //Every 60 seconds is one point.
+
+	return .
+
+/subsystem/horde/proc/check_threat_level()
+
+	if(last_threat_level_warning == 100)
+		return //POINT OF NO RETURN.
+
+	var/threat_level = get_threat_level()
+
+	var/reported_threat_level = clamp(round(threat_level,25),0,100)
+
+	if(reported_threat_level != last_threat_level_warning)
+		var/increase = reported_threat_level > last_threat_level_warning
+		last_threat_level_warning = reported_threat_level
+		switch(last_threat_level_warning)
+			if(0)
+				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL CLEARED.","ALERT: THREAT LEVEL SET TO: GREEN. EXCERSIZE TERM: FADE OUT.")
+			if(25 to 50)
+				if(increase)
+					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: BLUE. EXCERSIZE TERM: SECOND GLANCE.")
+				else
+					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL LOWERED TO: BLUE. EXCERSIZE TERM: SECOND GLANCE.")
+			if(50 to 75)
+				if(increase)
+					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: AMBER. EXCERSIZE TERM: ROAD HOUSE.\nALL GROUNDSIDE TEAMS ARE ORDERED TO FOCUS ON COMPLETION OF OBJECTIVES AND DEFENSE OF THE ALPHA-BRAVO LZ.")
+				else
+					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL DECREASE.","ALERT: THREAT LEVEL LOWERED TO: AMBER. EXCERSIZE TERM: ROAD HOUSE.\nALL GROUNDSIDE TEAMS ARE ORDERED TO CONTINUE THEIR FOCUS ON OBJECTIVES AND THE DEFENSE OF THE ALPHA-BRAVO LZ.")
+			if(75 to 99)
+				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: RED. EXCERSIZE TERM: MARATHON SPRINT. MISSION FAILURE LIKELY.\n ALL GROUNDSIDE TEAMS ARE ORDERED TO FOCUS ON OBJECTIVE COMPLETION. IGNORING THIS ORDER MAY RESULT IN LOSS OF CREDITS AND/OR DEATH.")
+			if(100)
+				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: BLACK. EXCERSIZE TERM: LOADED PISTOL. MISSION FAILURE IMMINENT.\nSTARTING FIREMAN PROTOCOLS. EVACUATION ORDERS UNDERWAY. BLUESPACE CANONS ONLINE IN 5 MINUTES.")
+
+	return threat_level

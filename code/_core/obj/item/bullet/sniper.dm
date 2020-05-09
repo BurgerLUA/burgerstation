@@ -18,5 +18,4 @@
 
 	size = 0.1
 	weight = 0.1
-
-	value = 0.15
+	value = 12

@@ -26,6 +26,8 @@
 
 	value = 100
 
+	ai_heat_sensitivity = 0.75
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 
 	icon_state = initial(icon_state)

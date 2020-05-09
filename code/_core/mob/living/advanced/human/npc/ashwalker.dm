@@ -1,8 +1,5 @@
 /mob/living/advanced/npc/ashwalker
 	name = "ashwalker villager"
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
 	ai = /ai/advanced/
 	class = "ashwalker"
 

@@ -20,7 +20,6 @@
 
 	size = 0.1
 	weight = 0.5
-
 	value = 10
 
 /obj/item/bullet_cartridge/gyrojet/surplus

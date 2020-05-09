@@ -1,8 +1,16 @@
 /obj/item/magazine/smg_45
 	name = "\improper .45 smg magazine"
 	icon = 'icons/obj/items/magazine/45smg.dmi'
-	icon_state = "c20r45"
-	bullet_count_max = 24
+	icon_state = "mag"
+	bullet_count_max = 36
+
+	bullet_length_min = 20
+	bullet_length_best = 23
+	bullet_length_max = 24
+
+	bullet_diameter_min = 11
+	bullet_diameter_best = 11.43
+	bullet_diameter_max = 12
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup
@@ -11,7 +19,7 @@
 	ammo = /obj/item/bullet_cartridge/pistol_45
 
 /obj/item/magazine/smg_45/update_icon()
-	icon_state = "[initial(icon_state)]-[round(length(stored_bullets),2)]"
+	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*12,1)]"
 	..()
 
 /*

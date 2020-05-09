@@ -38,6 +38,8 @@
 
 	value = 400
 
+	ai_heat_sensitivity = 0.25
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()
 
 	var/modifier = "[wielded ? "_wielded" : ""][open ? "_open" : ""][stored_magazine ? "_1" : ""]"

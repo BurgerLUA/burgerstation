@@ -1,9 +1,6 @@
 /mob/living/advanced/npc/unique/robust
 	name = "Ultimate Being"
 	desc = "The most robust man in the world."
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
 	species = "human"
 	sex = MALE
 	gender = MALE

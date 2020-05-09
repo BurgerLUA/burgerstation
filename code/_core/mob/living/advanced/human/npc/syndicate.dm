@@ -1,10 +1,7 @@
 /mob/living/advanced/npc/syndicate
 	name = "syndicate operative"
 	enable_AI = TRUE
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
-	ai = /ai/advanced/
+	ai = /ai/advanced/syndicate
 	class = "syndicate"
 
 	var/list/possible_outfits = list(
@@ -42,6 +39,10 @@
 	)
 
 	var/map_spawn = FALSE
+
+/mob/living/advanced/npc/syndicate/Destroy()
+	if(SShorde)	SShorde.tracked_enemies -= src
+	return ..()
 
 /mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
 

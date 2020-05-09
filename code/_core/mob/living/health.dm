@@ -56,8 +56,7 @@
 	if(has_status_effect(ADRENALINE))
 		health_added = get_status_effect_magnitude(ADRENALINE)
 
-	if(health.health_current <= death_threshold - health_added)
-		to_chat("Dead because your health ([health.health_current] is less than or equal to [death_threshold - health_added].")
+	if(health.health_current + health_added <= death_threshold)
 		return TRUE
 
 	return FALSE

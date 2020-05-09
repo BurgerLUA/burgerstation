@@ -18,25 +18,17 @@
 	size = 0.04
 	weight = 0.04
 
-	value = 0.6
+	value = 0.7
 
 /obj/item/bullet_cartridge/rifle_308/on_spawn()
 	item_count_current = 5
 	return ..()
-
-
-
 
 /obj/item/bullet_cartridge/rifle_308/syndicate
 	name = "\improper 7.62mm rifle bullet"
 	desc = "For rifles that require 7.62mm"
 	icon = 'icons/obj/items/bullet/762.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
-
-
-
-
-
 
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"

@@ -8,6 +8,8 @@ obj/structure/interactive/computer/console/old/research/clicked_on_by_object(var
 	if(!is_living(caller))
 		return ..()
 
+	INTERACT_CHECK
+
 	var/mob/living/L = caller
 	L.toggle_research_game(FALSE,TRUE)
 

@@ -1,9 +1,6 @@
 /mob/living/advanced/npc/evil_wizard
 	name = "Merlin"
 	id = "merlin"
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
 	ai = /ai/advanced/ranged/
 	class = "wizard"
 

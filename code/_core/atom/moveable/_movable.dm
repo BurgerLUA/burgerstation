@@ -18,7 +18,7 @@
 	var/anchored = TRUE
 	var/ghost = FALSE
 
-	var/damage_type_thrown = "thrown" //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
+	var/damage_type_thrown = /damagetype/thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
 
 	var/change_dir_on_move = FALSE
 
@@ -83,9 +83,6 @@
 			QUEUE_AIR_TURF(T)
 
 	return .
-
-/atom/movable/get_examine_list(var/mob/examiner)
-	return ..() + div("notice","Air Block Dirs: [direction_to_text(blocks_air)].")
 
 /atom/movable/proc/can_be_grabbed(var/atom/grabber)
 	return !anchored

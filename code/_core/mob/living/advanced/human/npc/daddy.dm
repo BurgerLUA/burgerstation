@@ -1,9 +1,6 @@
 /mob/living/advanced/npc/daddy
 	name = "\improper the legend"
 	enable_AI = TRUE
-	starting_factions = list(
-		FACTION_PLAYER_HOSTILE
-	)
 	ai = /ai/advanced/daddy
 	class = "daddy"
 

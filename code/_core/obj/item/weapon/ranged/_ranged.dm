@@ -29,6 +29,8 @@
 
 	var/requires_bullets = FALSE
 
+	var/ai_heat_sensitivity = 1 //How much heat matters when trying to make a shot. Should be less for weapons that you're supposed to spray and pray with, basically.
+
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
@@ -141,7 +143,7 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,loca
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(A.ai)
-			. *= heat_current > max(0,(1 - (get_dist(caller,target) * 0.01)) * heat_max) ? 4 : 1
+			. *= heat_current*ai_heat_sensitivity > max(0,(1 - (get_dist(caller,target) * 0.01)) * heat_max) ? rand(2,6) : 1
 
 	return .
 

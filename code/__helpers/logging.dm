@@ -34,4 +34,4 @@
 	LOG_DEBUG("Printing direction list '[list_name]' of length [length(L)]:")
 	for(var/k in L)
 		var/v = L[k]
-		LOG_DEBUG("[direction_to_text(text2num(k))]: [v]")
+		LOG_DEBUG("[dir2text(text2num(k))]: [v]")

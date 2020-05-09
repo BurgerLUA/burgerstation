@@ -318,7 +318,7 @@ var/global/list/equipped_players = list()
 */
 
 /obj/structure/interactive/vending/junk
-	name = "soda vendor"
+	name = "snack vendor"
 	icon_state = "snack"
 
 /obj/structure/interactive/vending/junk/New(var/desired_loc)

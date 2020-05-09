@@ -26,6 +26,8 @@
 
 	value = 100
 
+	ai_heat_sensitivity = 1.5
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/update_icon()
 
 	icon_state = initial(icon_state)

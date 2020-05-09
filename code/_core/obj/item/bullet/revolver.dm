@@ -62,7 +62,6 @@
 
 	size = 0.035
 	weight = 0.035
-
 	value = 0.4
 
 /obj/item/bullet_cartridge/pistol_22
@@ -84,5 +83,4 @@
 
 	size = 0.01
 	weight = 0.01
-
 	value = 0.1
