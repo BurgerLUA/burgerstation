@@ -10,6 +10,11 @@
 
 	var/list/valid_mobs = list()
 
+	for(var/mob/abstract/observer/O in world)
+		if(!L.client)
+			continue
+		valid_mobs += L
+
 	if(announcement_type & ANNOUNCEMENT_STATION)
 		for(var/mob/living/L in all_living)
 			CHECK_TICK

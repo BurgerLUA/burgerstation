@@ -10,7 +10,7 @@
 	name = "Melee"
 	id = SKILL_MELEE
 	desc = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
-	//Each successful blow = 1xp
+	//Each point of damage dealt = 1xp
 	experience_power = 1.9
 	experience_multiplier = 2.5
 	combat_level_mul = 1

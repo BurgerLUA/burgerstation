@@ -104,7 +104,6 @@
 	stored_types = list(
 		/obj/item/clothing/belt/storage/colored,
 		/obj/item/clothing/head/hood/bandana,
-		/obj/item/clothing/head/hood/skimask,
 		/obj/item/clothing/neck/cape,
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,

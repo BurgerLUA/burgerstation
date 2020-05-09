@@ -178,6 +178,7 @@
 	var/mob/living/advanced/A = owner
 
 	var/icon/desired_icon = initial(item_to_update.icon)
+	var/list/states = icon_states(desired_icon)
 	var/desired_icon_state = null
 	if(id == BODY_HAND_LEFT)
 		desired_icon_state = item_to_update.icon_state_held_left
@@ -186,7 +187,7 @@
 
 	if(length(item_to_update.polymorphs))
 		var/icon/I = ICON_INVISIBLE
-		var/list/states = icon_states(desired_icon)
+
 		for(var/polymorph_name in item_to_update.polymorphs)
 			var/polymorph_color = item_to_update.polymorphs[polymorph_name]
 			if(!states["[desired_icon_state]_[polymorph_name]"])
@@ -196,6 +197,8 @@
 			I.Blend(I2,ICON_OVERLAY)
 		desired_icon_state = null
 		desired_icon = I
+	else if(!states[desired_icon_state])
+		return FALSE
 
 	A.remove_overlay(item_to_update)
 	A.add_tracked_overlay(
