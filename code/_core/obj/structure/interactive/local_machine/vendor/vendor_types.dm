@@ -358,7 +358,9 @@ var/global/list/equipped_players = list()
 	stored_types = list(
 		/obj/item/container/pill/bicaridine,
 		/obj/item/container/pill/dylovene,
-		/obj/item/container/pill/kelotane
+		/obj/item/container/pill/kelotane,
+		/obj/item/container/pill/space_drugs,
+		/obj/item/container/pill/iron
 	)
 
 /obj/structure/interactive/vending/dinnerware

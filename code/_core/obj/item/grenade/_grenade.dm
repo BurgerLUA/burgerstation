@@ -50,8 +50,9 @@
 		INITIALIZE(I)
 		SPAWN(I)
 
-	INITIALIZE(stored_trigger)
-	SPAWN(stored_trigger)
+	if(stored_trigger)
+		INITIALIZE(stored_trigger)
+		SPAWN(stored_trigger)
 
 	update_sprite()
 

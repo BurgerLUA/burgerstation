@@ -10,6 +10,14 @@
 
 	value = 60
 
+/obj/item/soulgem/calculate_value()
+
+	. = ..()
+
+	. += total_charge*0.03
+
+	return .
+
 /obj/item/soulgem/get_examine_list(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 
