@@ -11,6 +11,8 @@
 	shoot_sounds_kill = list('sounds/weapons/laser_carbine/kill.ogg')
 	shoot_sounds_stun = list('sounds/weapons/laser_carbine/stun.ogg')
 
+	bullet_color = "#FF0000"
+
 	projectile_speed = 31
 	shoot_delay = 1
 
@@ -37,9 +39,11 @@
 	if(mode)
 		icon_state = "[icon_state]_kill"
 		icon_state_held = "[icon_state_held]_kill"
+		bullet_color = "#FF0000"
 	else
 		icon_state = "[icon_state]_stun"
 		icon_state_held = "[icon_state_held]_stun"
+		bullet_color = "#00FFFF"
 
 	var/charge_mod = charge_current >= charge_cost ? CEILING((charge_current/charge_max)*4,1) : 0
 

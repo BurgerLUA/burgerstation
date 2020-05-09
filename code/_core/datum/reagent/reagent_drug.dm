@@ -63,3 +63,16 @@
 
 	value = 4.5
 
+
+/reagent/core/drug/dust
+	name = "space dust"
+	id = "space_dust"
+	desc = "It's like space weed but better."
+	color = "#7A9BFF"
+
+	flavor = "regret"
+
+	strength = 200
+	duration_mod = 15
+
+	value = 12

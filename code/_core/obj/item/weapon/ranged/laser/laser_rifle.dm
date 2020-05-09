@@ -5,6 +5,8 @@
 	projectile = /obj/projectile/bullet/laser
 	damage_type = /damagetype/ranged/laser/rifle
 
+	bullet_color = "#FF0000"
+
 	projectile_speed = 31
 	shoot_delay = 3
 
@@ -28,10 +30,6 @@
 		"base" = COLOR_WHITE,
 		"barrel" = "#FF0000"
 	)
-
-/obj/item/weapon/ranged/energy/rifle/Initialize()
-	bullet_color = polymorphs["barrel"]
-	return ..()
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
 	return 0.01

@@ -41,6 +41,7 @@
 
 /obj/item/slime_core/red
 	color = "#FF0000"
+	alpha = 128
 
 /obj/item/slime_core/red/strong
 	alpha = 255
@@ -50,6 +51,7 @@
 
 /obj/item/slime_core/green
 	color = "#00FF00"
+	alpha = 128
 
 /obj/item/slime_core/green/strong
 	alpha = 255
@@ -59,6 +61,7 @@
 
 /obj/item/slime_core/blue
 	color = "#0000FF"
+	alpha = 128
 
 /obj/item/slime_core/blue/strong
 	alpha = 255
@@ -68,6 +71,7 @@
 
 /obj/item/slime_core/black
 	color = "#000000"
+	alpha = 128
 
 /obj/item/slime_core/black/weak
 	alpha = 64
@@ -77,6 +81,7 @@
 
 /obj/item/slime_core/white
 	color = "#FFFFFF"
+	alpha = 128
 
 /obj/item/slime_core/white/weak
 	alpha = 64

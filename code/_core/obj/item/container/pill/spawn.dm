@@ -33,3 +33,12 @@
 /obj/item/container/pill/space_drugs/on_spawn()
 	reagents.add_reagent("space_drugs",5)
 	return ..()
+
+
+/obj/item/container/pill/space_dust
+	name = "space dust (10u)"
+	icon_state = "circle"
+
+/obj/item/container/pill/space_drugs/on_spawn()
+	reagents.add_reagent("space_dust",10)
+	return ..()
