@@ -14,6 +14,8 @@
 
 	value = 5
 
+	dyeable = TRUE
+
 /obj/item/clothing/head/hat/beret/shaleez
 	color = COLOR_SHALEEZ_RED
 

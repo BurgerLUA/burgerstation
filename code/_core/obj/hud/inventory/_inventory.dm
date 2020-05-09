@@ -186,8 +186,11 @@
 
 	if(length(item_to_update.polymorphs))
 		var/icon/I = ICON_INVISIBLE
+		var/list/states = icon_states(desired_icon)
 		for(var/polymorph_name in item_to_update.polymorphs)
 			var/polymorph_color = item_to_update.polymorphs[polymorph_name]
+			if(!states["[desired_icon_state]_[polymorph_name]"])
+				break
 			var/icon/I2 = new /icon(desired_icon,"[desired_icon_state]_[polymorph_name]")
 			I2.Blend(polymorph_color,ICON_MULTIPLY)
 			I.Blend(I2,ICON_OVERLAY)

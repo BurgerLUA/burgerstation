@@ -41,6 +41,8 @@
 
 	value = 15
 
+	dyeable = TRUE
+
 /obj/item/clothing/pants/kilt/green
 	color = "#003714"
 
@@ -65,6 +67,8 @@
 	weight = WEIGHT_2
 
 	value = 15
+
+	dyeable = TRUE
 
 /obj/item/clothing/pants/cloth/black
 	color = COLOR_BLACK

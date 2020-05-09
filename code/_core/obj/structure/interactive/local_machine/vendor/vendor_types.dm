@@ -72,7 +72,7 @@
 		/obj/item/clothing/feet/socks/thigh/striped,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/underbottom/underwear/panty,
-		//obj/item/clothing/underbottom/underwear/thong, NOPE
+		/obj/item/clothing/underbottom/underwear/thong,
 		/obj/item/clothing/undertop/underwear/bra,
 		/obj/item/clothing/undertop/underwear/bra/sport
 	)
@@ -96,6 +96,19 @@
 		/obj/item/storage/shoebox/black,
 		/obj/item/storage/shoebox/colored,
 		/obj/item/storage/shoebox/jackboot
+	)
+
+/obj/structure/interactive/vending/clothes/accessories
+	name = "accessories vendor"
+	icon_state = "accessories"
+	stored_types = list(
+		/obj/item/clothing/belt/storage/colored,
+		/obj/item/clothing/head/hood/bandana,
+		/obj/item/clothing/head/hood/skimask,
+		/obj/item/clothing/neck/cape,
+		/obj/item/clothing/neck/cloak,
+		/obj/item/clothing/neck/tie,
+		/obj/item/clothing/glasses/sun
 	)
 
 /obj/structure/interactive/vending/medical/

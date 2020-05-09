@@ -189,3 +189,8 @@
 		return FALSE
 
 	return ..()
+
+
+/mob/receive_sound(var/sound/S)
+	if(client) client.receive_sound(S)
+	return TRUE

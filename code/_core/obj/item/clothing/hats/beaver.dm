@@ -32,6 +32,8 @@
 
 	value = 20
 
+	dyeable = TRUE
+
 /obj/item/clothing/head/hat/wizard/gold
 	color = COLOR_GOLD
 

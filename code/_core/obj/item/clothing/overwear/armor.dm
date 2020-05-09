@@ -424,6 +424,8 @@
 	name = "light armor"
 	icon = 'icons/obj/items/clothing/suit/mod_chest_armor.dmi'
 
+	dyeable = TRUE
+
 /obj/item/clothing/overwear/armor/molded_armor/leather
 	name = "light leather armor"
 	color = "#8C4438"
@@ -470,6 +472,8 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
 
+	dyeable = TRUE
+
 /obj/item/clothing/overwear/armor/medium_armor/leather
 	name = "medium leather armor"
 	color = "#8C4438"
@@ -485,6 +489,8 @@
 	weight = WEIGHT_4
 
 	value = 30
+
+	dyeable = TRUE
 
 /obj/item/clothing/overwear/armor/medium_armor/security
 	name = "medium security armor"
@@ -509,6 +515,8 @@
 	rarity = RARITY_UNCOMMON
 
 	value = 40
+
+	dyeable = TRUE
 
 /obj/item/clothing/overwear/armor/gladiator/brass
 	name = "bronze gladiator armor"

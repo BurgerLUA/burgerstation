@@ -34,6 +34,8 @@
 	name = "colored vest"
 	icon = 'icons/obj/items/clothing/suit/white_vest.dmi'
 
+	dyeable = TRUE
+
 /obj/item/clothing/overwear/armor/vest/colored/brown
 	name = "industrial vest"
 	color = COLOR_BROWN_LIGHT

@@ -207,3 +207,7 @@
 			return FALSE
 
 	return ..()
+
+/atom/proc/receive_sound(var/sound/S)
+	src << S
+

@@ -35,6 +35,8 @@
 
 	value = 30
 
+	dyeable = TRUE
+
 /obj/item/clothing/overwear/coat/wizard/red
 	color = "#FF0000"
 
@@ -99,6 +101,8 @@
 	weight = WEIGHT_3
 
 	value = 40
+
+	dyeable = TRUE
 
 
 /obj/item/clothing/overwear/coat/hoodie/black

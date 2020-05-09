@@ -13,6 +13,8 @@
 
 	value = 5
 
+	dyeable = TRUE
+
 
 /obj/item/clothing/neck/cloak/green
 	color = "#002200"

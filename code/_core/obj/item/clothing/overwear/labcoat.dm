@@ -24,6 +24,8 @@
 
 	value = 10
 
+	dyeable = TRUE
+
 
 /obj/item/clothing/overwear/coat/labcoat/chemist
 	polymorphs = list(

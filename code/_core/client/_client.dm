@@ -347,3 +347,7 @@ var/global/list/all_clients = list()
 	announce(sender,header,message,ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 
 	return TRUE
+
+
+/client/proc/receive_sound(var/sound/S)
+	src << S

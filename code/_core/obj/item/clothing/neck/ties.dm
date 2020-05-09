@@ -16,6 +16,8 @@
 
 	value = 5
 
+	dyeable = TRUE
+
 /obj/item/clothing/neck/tie/red
 	color = "#FF0000"
 

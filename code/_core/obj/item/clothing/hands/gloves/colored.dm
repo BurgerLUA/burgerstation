@@ -25,6 +25,8 @@
 
 	value = 20
 
+	dyeable = TRUE
+
 /obj/item/clothing/hands/gloves/colored/left
 	name = "left white glove"
 	icon_state = "inventory_left"

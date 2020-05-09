@@ -13,6 +13,8 @@
 		COLD = 10
 	)
 
+	dyeable = TRUE
+
 /obj/item/clothing/undertop/underwear/bra/alt
 	icon = 'icons/obj/items/clothing/underwear/bra_alt.dmi'
 
@@ -54,6 +56,8 @@
 		MAGIC = 15,
 		COLD = 15
 	)
+
+	dyeable = TRUE
 
 /obj/item/clothing/undertop/underwear/shirt/security
 	name = "security undershirt"

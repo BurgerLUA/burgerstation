@@ -7,6 +7,7 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/assault
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/

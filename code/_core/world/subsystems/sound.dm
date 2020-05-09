@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(sound)
 			if(active_sounds[S] <= 0)
 				S.status = SOUND_MUTE | SOUND_UPDATE
 				for(var/mob/M in all_mobs_with_clients)
-					M << S
+					M.receive_sound(S)
 				active_sounds -= S
 				qdel(S)
 				continue
@@ -27,14 +27,14 @@ SUBSYSTEM_DEF(sound)
 		if(S.file == sound_path)
 			S.status = SOUND_MUTE
 			for(var/atom/H in hearers)
-				H << S
+				H.receive_sound(S)
 
 proc/stop_ambient_sounds(var/atom/hearer)
 	var/sound/created_sound = sound()
 	created_sound.priority = 100
 	created_sound.status = SOUND_MUTE
 	created_sound.channel = SOUND_CHANNEL_AMBIENT
-	hearer << created_sound
+	hearer.receive_sound(created_sound)
 	if(ismob(hearer))
 		var/mob/M = hearer
 		if(M.client)
@@ -45,7 +45,7 @@ proc/stop_music_track(var/client/hearer)
 	created_sound.priority = 100
 	created_sound.status = SOUND_MUTE
 	created_sound.channel = SOUND_CHANNEL_MUSIC
-	hearer << created_sound
+	hearer.receive_sound(created_sound)
 	hearer.next_music_track = 0
 
 proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
@@ -75,7 +75,7 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 				M.client.current_ambient_sound = sound_path
 			final_volume = M.client.settings.loaded_data["volume_ambient"]
 		created_sound.volume = final_volume
-		A << created_sound
+		A.receive_sound(created_sound)
 
 proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/pitch=1,var/loop=0,var/pan=0,var/echo=0,var/environment=ENVIRONMENT_NONE)
 	var/sound/created_sound = sound(sound_path)
@@ -99,7 +99,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 			var/mob/M = A
 			final_volume = M.client.settings.loaded_data["volume_ambient"]
 		created_sound.volume = final_volume
-		A << created_sound
+		A.receive_sound(created_sound)
 
 proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
@@ -128,7 +128,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.volume = volume * (volume_mod/100)
 	created_sound.status = SOUND_STREAM
 
-	hearer << created_sound
+	hearer.receive_sound(created_sound)
 	hearer.current_music_track = music_track_id
 	hearer.next_music_track = world.time + SECONDS_TO_DECISECONDS(T.length)
 
@@ -223,7 +223,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		CHECK_TICK
 
-		if(!M.client)
+		if(!M.client && !istype(M,/mob/living/vehicle/mech))
 			continue
 
 		if(length(pos) && pos[3] != 0 && pos[3] != M.z) //0 just means that it should play locally
@@ -285,8 +285,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 				if(!L.ai.objective_move)
 					L.ai.set_move_objective(T2)
 
-		if(M.client)
-			M << created_sound
+		M.receive_sound(created_sound)
 
 	return created_sound
 

@@ -52,7 +52,7 @@
 				log_error("Spawn Error: Couldn't find any chairs to spawn syndicate on!")
 				return .
 
-			spawn for(var/i=1,i<=5-length(found_syndicate),i++)
+			spawn for(var/i=1,i<=min(5-length(found_syndicate),SShorde.get_enemies_to_spawn()),i++)
 				CHECK_TICK
 				var/turf/T = pick(valid_spots)
 				valid_spots -= T

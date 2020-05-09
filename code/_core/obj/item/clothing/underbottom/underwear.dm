@@ -14,6 +14,8 @@
 		COLD = 15,
 	)
 
+	dyeable = TRUE
+
 /obj/item/clothing/underbottom/underwear/boxers/random/on_spawn()
 	color = random_color()
 	return ..()
@@ -48,6 +50,8 @@
 		COLD = 50,
 	)
 
+	dyeable = TRUE
+
 /obj/item/clothing/underbottom/underwear/long_johns/grey
 	color = "#888888"
 
@@ -58,6 +62,8 @@
 		MAGIC = 25,
 		COLD = 10,
 	)
+
+	dyeable = TRUE
 
 
 /obj/item/clothing/underbottom/underwear/panty/pink
@@ -84,6 +90,10 @@
 		MAGIC = 25,
 		COLD = 10,
 	)
+
+	dyeable = TRUE
+
+	dyeable = TRUE
 
 /obj/item/clothing/underbottom/underwear/loincloth
 	name = "loincloth"

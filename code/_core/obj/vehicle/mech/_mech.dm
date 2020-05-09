@@ -10,6 +10,11 @@
 
 	movement_delay = 10
 
+/mob/living/vehicle/mech/receive_sound(var/sound/S)
+	for(var/mob/living/L in contents)
+		L.receive_sound(S)
+	return TRUE
+
 
 /mob/living/vehicle/mech/post_death()
 	. = ..()
@@ -82,15 +87,9 @@
 /mob/living/vehicle/mech/gygax/equipped/New(var/desired_loc)
 	..()
 	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
-	INITIALIZE(U1)
-	SPAWN(U1)
 	attach_equipment(U1)
 	var/obj/item/weapon/ranged/energy/mech/smg/mk2/U2 = new(src.loc)
-	INITIALIZE(U2)
-	SPAWN(U2)
 	attach_equipment(U2)
-
-
 
 /mob/living/vehicle/mech/durand
 	name = "\improper MK2 Durand"

@@ -23,6 +23,8 @@
 
 	value = 5
 
+	dyeable = TRUE
+
 
 /obj/item/clothing/neck/mantle/purple
 	color = "#1A1D29"

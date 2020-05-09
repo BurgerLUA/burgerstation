@@ -123,13 +123,16 @@
 
 	return TRUE
 
+/mob/living/vehicle/proc/enter_vehicle(var/mob/living/caller)
+	caller.Move(src)
+	return TRUE
 
 /mob/living/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
 
 	if(!can_enter_vehicle(caller))
 		return FALSE
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),caller./Move,src)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/enter_vehicle,caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_vehicle,caller)
 
 	return TRUE
