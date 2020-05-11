@@ -82,6 +82,7 @@ window "chat"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Chat Tabs"
 		titlebar = false
@@ -90,6 +91,8 @@ window "chat"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 814x814
+		inner-size = 800x800
 	elem "tab"
 		type = TAB
 		pos = 0,0
@@ -98,8 +101,7 @@ window "chat"
 		anchor2 = 100,100
 		font-family = "Arial Narrow"
 		font-size = 10
-		text-color = #ffffff
-		background-color = #3d5e80
+		background-color = none
 		saved-params = ""
 		tabs = "chat_all,chat_say,chat_looc,chat_ooc,chat_combat"
 		current-tab = "chat_all"
@@ -111,7 +113,6 @@ window "chat_all"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "All"
 		titlebar = false
@@ -120,8 +121,6 @@ window "chat_all"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 814x814
-		inner-size = 800x800
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
@@ -131,8 +130,8 @@ window "chat_all"
 		background-color = none
 		is-default = true
 		saved-params = "max-lines"
-		link-color = #000000
-		visited-color = #000000
+		link-color = none
+		visited-color = none
 		legacy-size = false
 
 window "chat_combat"
@@ -179,7 +178,7 @@ window "chat_looc"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #d7ffd7
+		background-color = none
 		saved-params = "max-lines"
 
 window "chat_ooc"
@@ -203,7 +202,7 @@ window "chat_ooc"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #d2e9ff
+		background-color = none
 		saved-params = "max-lines"
 
 window "chat_say"
@@ -227,7 +226,7 @@ window "chat_say"
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #eac9aa
+		background-color = none
 		saved-params = "max-lines"
 
 window "control"
@@ -286,7 +285,7 @@ window "control"
 		size = 200x20
 		anchor1 = 0,0
 		anchor2 = 25,0
-		text-color = #808080
+		text-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = ""
@@ -296,7 +295,6 @@ window "control"
 		size = 800x760
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #3d5e80
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
@@ -326,18 +324,15 @@ window "info"
 		anchor2 = 100,100
 		font-family = "Arial Narrow"
 		font-size = 10
-		text-color = #ffffff
-		background-color = #3d5e80
+		text-color = none
+		background-color = none
 		is-default = true
 		right-click = true
 		saved-params = ""
-		highlight-color = #ffff80
-		tab-text-color = #ffffff
-		tab-background-color = #3d5e80
+		highlight-color = none
+		tab-text-color = none
 		tab-font-family = "Arial Narrow"
 		tab-font-size = 10
-		prefix-color = #ff80ff
-		suffix-color = #0080ff
 
 window "main"
 	elem "main"
@@ -346,7 +341,6 @@ window "main"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = #3d5e80
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
@@ -355,15 +349,12 @@ window "main"
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
-		outer-size = 816x859
-		inner-size = 800x800
 	elem "splitter"
 		type = CHILD
 		pos = 0,0
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #3d5e80
 		is-default = true
 		saved-params = "splitter"
 		left = "map"
