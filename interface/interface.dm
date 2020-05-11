@@ -7,7 +7,7 @@
 		var/normal = color_scheme[2]
 		var/light = color_scheme[3]
 		var/white = color_scheme[4]
-		var/bad = color_scheme[5]
+		//var/bad = color_scheme[5]
 
 		winset(src,"chat.tab","text-color=[white];background-color=[normal];tab-background-color=[normal];tab-text-color=[white]")
 

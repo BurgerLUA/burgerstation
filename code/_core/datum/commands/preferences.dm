@@ -1,7 +1,5 @@
-/client/verb/fullscreen()
-
-	set name = "Toggle Fullscreen"
-	set category = "Preferences"
+/client/verb/toggle_fullscreen()
+	set hidden = TRUE
 
 	var/is_fullscreen = winget(src, "main", "can-close") == "false"
 	is_fullscreen = !is_fullscreen
@@ -20,33 +18,27 @@
 
 
 /client/verb/set_volume_master(var/desired_volume as num)
-	set category = "Preferences"
-	set name = "Volume - Master"
+	set hidden = TRUE
 	settings.change_setting("volume_master",desired_volume)
 
 /client/verb/set_volume_fx(var/desired_volume as num)
-	set category = "Preferences"
-	set name = "Volume - Effects"
+	set hidden = TRUE
 	settings.change_setting("volume_fx",desired_volume)
 
 /client/verb/set_volume_ambient(var/desired_volume as num)
-	set category = "Preferences"
-	set name = "Volume - Ambient"
+	set hidden = TRUE
 	settings.change_setting("volume_ambient",desired_volume)
 
 /client/verb/set_volume_music(var/desired_volume as num)
-	set category = "Preferences"
-	set name = "Volume - Music"
+	set hidden = TRUE
 	settings.change_setting("volume_music",desired_volume)
 
 /client/verb/set_volume_footsteps(var/desired_volume as num)
-	set category = "Preferences"
-	set name = "Volume - Footsteps"
+	set hidden = TRUE
 	settings.change_setting("volume_footsteps",desired_volume)
 
 /client/verb/change_click_mode()
-	set name = "Swap Click Mode"
-	set category = "Preferences"
+	set hidden = TRUE
 	swap_mouse = !swap_mouse
 	if(swap_mouse)
 		to_chat(span("ui notice","Right clicking will now activate the object in your right hand, and vice versa."))
@@ -55,8 +47,7 @@
 
 
 /client/verb/set_fps(var/desired_fps as num)
-	set category = "Preferences"
-	set name = "Maximum FPS"
+	set hidden = TRUE
 	var/old_fps = src.fps
 	desired_fps = clamp(desired_fps,30,60)
 	src.fps = desired_fps

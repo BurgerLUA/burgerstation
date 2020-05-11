@@ -13,7 +13,7 @@
 	verbs += /client/verb/focus_input
 	verbs += /client/verb/button_press
 	verbs += /client/verb/button_release
-	verbs += /client/verb/fullscreen
+	verbs += /client/verb/toggle_fullscreen
 	verbs += /client/verb/change_click_mode
 	verbs += /client/verb/set_volume_master
 	verbs += /client/verb/set_volume_fx

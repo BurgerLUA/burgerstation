@@ -168,7 +168,6 @@
 #include "code\_core\client\verbs\debug.dm"
 #include "code\_core\client\verbs\game.dm"
 #include "code\_core\client\verbs\messaging.dm"
-#include "code\_core\client\verbs\volume.dm"
 #include "code\_core\datum\_datum.dm"
 #include "code\_core\datum\vector.dm"
 #include "code\_core\datum\ai\_ai.dm"
