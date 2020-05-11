@@ -134,6 +134,10 @@
 	if(parent_inventory)
 		color = "#ff0000"
 		add_overlay(parent_inventory.overlays)
+	else if(grabbed_object)
+		color = "#ffff00"
+		var/image/I = new/image(initial(icon),"grab")
+		add_overlay(I)
 	else
 		color = initial(color)
 
@@ -159,12 +163,6 @@
 		if(y_offset_mul)
 			total_pixel_y += I.size*y_offset_mul
 
-		add_overlay(I)
-
-	if(grabbed_object)
-		var/image/I = new/image(grabbed_object.icon,grabbed_object.icon_state)
-		I.appearance = grabbed_object.appearance
-		I.plane = PLANE_HUD_OBJ
 		add_overlay(I)
 
 	return .

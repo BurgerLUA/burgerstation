@@ -25,12 +25,15 @@
 	else
 		status_effects[status_type]["magnitude"] = max(status_effects[status_type]["magnitude"],magnitude)
 
+	if(S.minimum != -1 && status_effects[status_type]["duration"] != -1)
+		status_effects[status_type]["duration"] = max(status_effects[status_type]["duration"],S.minimum)
 
+	if(S.maximum != -1 && status_effects[status_type]["duration"] != -1)
+		status_effects[status_type]["duration"] = min(status_effects[status_type]["duration"],S.maximum)
 
 	if(.)
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
 		handle_horizontal()
-
 
 	return .
 

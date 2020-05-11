@@ -9,7 +9,7 @@
 	metabolism_skin = METABOLISM_SKIN //How many units of the reagent to metabolize per second.
 	overdose_threshold = OVERDOSE_THRESHOLD_MEDICINE
 
-	value = 0.1
+	value = 1
 
 /reagent/medicine/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 
@@ -28,7 +28,10 @@
 
 	flavor = "bandaids"
 
+	value = 1.25
+
 /reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
 	. = ..()
 
 	if(owner && owner.health)
@@ -37,6 +40,7 @@
 	return .
 
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
 	. = ..()
 
 	if(owner && owner.health)
@@ -48,6 +52,8 @@
 	name = "Bicaridine+"
 	id = "bicaridine_plus"
 	color = "#FF0080"
+
+	value = 3
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -72,6 +78,8 @@
 	color = "#FFFF00"
 
 	flavor = "ointment"
+
+	value = 1
 
 /reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -98,6 +106,8 @@
 
 	flavor = "sweetness"
 
+	value = 1.25
+
 /reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -121,6 +131,8 @@
 	color = "#0000FF"
 
 	flavor = "bitterness"
+
+	value = 1.5
 
 /reagent/medicine/dexalin/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -148,6 +160,8 @@
 
 	metabolism_blood = METABOLISM_BLOOD*0.75
 	metabolism_stomach = METABOLISM_STOMACH*0.75
+
+	value = 1.5
 
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -177,6 +191,8 @@
 	metabolism_blood = METABOLISM_BLOOD*0.5
 	metabolism_stomach = METABOLISM_STOMACH*0.5
 
+	value = 2
+
 /reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -203,13 +219,22 @@
 
 	flavor = "bitter silver"
 
-	metabolism_skin = METABOLISM_STOMACH
+	metabolism_skin = 1
+
+	value = 2.5
 
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-10)
+		if(is_living(owner.loc))
+			var/mob/living/L = owner.loc
+			if(L.health)
+				owner.health.adjust_loss_smart(burn=.*-5,update=FALSE)
+				L.health.adjust_loss_smart(burn=.*-3)
+		else
+			owner.health.adjust_loss_smart(burn=.*-5)
+
 
 	return .
 
@@ -232,7 +257,9 @@
 
 	flavor = "baby powder"
 
-	metabolism_skin = METABOLISM_STOMACH
+	metabolism_skin = 1
+
+	value = 2
 
 
 /reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0)
@@ -240,7 +267,7 @@
 	. = ..()
 
 	if(container.owner && container.owner.health)
-		container.owner.health.adjust_loss_smart(brute=.*-10)
+		container.owner.health.adjust_loss_smart(brute=.*-5)
 		container.remove_reagent(id,. * 0.5)
 
 	return .
@@ -250,7 +277,13 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-10)
+		if(is_living(owner.loc))
+			var/mob/living/L = owner.loc
+			if(L.health)
+				owner.health.adjust_loss_smart(brute=.*-5,update=FALSE)
+				L.health.adjust_loss_smart(brute=.*-3)
+		else
+			owner.health.adjust_loss_smart(brute=.*-5)
 
 	return .
 
@@ -263,6 +296,8 @@
 	metabolism_blood = 1
 	var/strength = 100
 	var/duration = 30
+
+	value = 2
 
 /reagent/medicine/adrenaline/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -285,6 +320,8 @@
 	strength = 50
 	duration = 50
 
+	value = 1.5
+
 /reagent/medicine/adrenaline/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -301,12 +338,12 @@
 
 	. = ..()
 
-	if(amount_added >= 15 && is_living(container.owner))
+	if(amount_added >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
+		L.add_status_effect(ADRENALINE,100,100)
 		if(L.dead && !L.check_death())
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
-			L.add_status_effect(ADRENALINE,100,100)
 			. = 100
 
 

@@ -18,6 +18,25 @@
 		'sounds/ambient/cave_2.ogg',
 	)
 
+/area/interior/cave/lava
+	name = "lava cave"
+	icon_state = "lava_cave"
+
+
+/area/interior/cave/lava/setup_sunlight(var/turf/T)
+
+	if(istype(T,/turf/simulated/floor/lava/))
+
+		if( (T.x % FLOOR(sunlight_freq*0.5, 1)) || (T.y % FLOOR(sunlight_freq*0.5, 1)) )
+			return FALSE
+
+		T.set_light(sunlight_freq+1,desired_light_power,"#CE631C")
+		return TRUE
+
+	return ..()
+
+
+
 /area/interior/syndicate_base
 	name = "syndicate base"
 	icon_state = "syndie"

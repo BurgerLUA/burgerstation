@@ -2,6 +2,8 @@
 	var/name //Name of the Status Effect
 	var/desc //Description of the status effect.
 	var/id //Status effect description
+	var/maximum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
+	var/minimum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 
 /status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
@@ -20,26 +22,36 @@
 	name = "Stunned"
 	desc = "You're stunned!"
 	id = STUN
+	minimum = 5
+	maximum = 40
 
 /status_effect/sleeping
 	name = "Sleeping"
 	desc = "You're sleeping!"
 	id = SLEEP
+	minimum = 30
+	maximum = 600
 
 /status_effect/paralyzed
 	name = "Paralyzed"
 	desc = "You're paralyzed!"
 	id = PARALYZE
+	minimum = 10
+	maximum = 80
 
 /status_effect/fatigued
 	name = "Fatigued"
 	desc = "You're fatigued!"
 	id = FATIGUE
+	minimum = 10
+	maximum = 100
 
 /status_effect/staggered
 	name = "Staggered"
 	desc = "You're staggered!"
 	id = STAGGER
+	minimum = 5
+	maximum = 20
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
@@ -50,9 +62,12 @@
 		var/old_dir = owner.dir
 		var/result = owner.Move(get_step(owner,desired_move_dir),desired_move_dir)
 		owner.dir = old_dir
-		if(!result)
-			owner.move_delay = duration
-			var/list/movement = direction_to_pixel_offset(desired_move_dir)
+		owner.move_delay = max(owner.move_delay,duration)
+		var/list/movement = direction_to_pixel_offset(desired_move_dir)
+		if(result) //We can move.
+			//animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
+			//animate(pixel_x = initial(owner.pixel_x), pixel_y = initial(owner.pixel_y),time = duration)
+		else //There is something blocking us!
 			animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
 			spawn(1)
 				var/stun_time = max(duration,10)
@@ -65,6 +80,8 @@
 	name = "Confused"
 	desc = "You're confused!"
 	id = CONFUSED
+	minimum = 10
+	maximum = 100
 
 /status_effect/critical
 	name = "Critical"
@@ -75,6 +92,8 @@
 	name = "Energized"
 	desc = "You're filled with adrenaline!"
 	id = ADRENALINE
+	minimum = 100
+	maximum = 600
 
 /status_effect/resting
 	name = "Resting"
@@ -85,6 +104,8 @@
 	name = "Disarmed"
 	desc = "You're disarmed!"
 	id = DISARM
+	minimum = 10
+	maximum = 10
 
 /status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	if(is_advanced(owner))
@@ -92,13 +113,16 @@
 		A.drop_held_objects(A.loc)
 	else
 		stealthy = TRUE
-	return ..(stealthy = stealthy)
+
+	return ..(owner,source,magnitude,duration,stealthy)
 
 
 /status_effect/druggy
 	name = "Druggy"
 	desc = "You're druggy!"
 	id = DRUGGY
+	minimum = 100
+	maximum = 3000
 
 /status_effect/druggy/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 

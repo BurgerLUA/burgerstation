@@ -14,6 +14,8 @@
 
 	footstep_id = "concrete"
 
+	delay_modifier = 1.1
+
 /turf/simulated/floor/basalt/New(var/desired_loc)
 	if(prob(10))
 		icon_state = "basalt[rand(2,4)]"

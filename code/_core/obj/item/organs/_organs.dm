@@ -192,6 +192,7 @@
 	return ..()
 
 /obj/item/organ/proc/on_life()
+
 	if(reagents)
 		reagents.metabolize()
 

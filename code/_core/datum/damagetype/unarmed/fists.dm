@@ -12,8 +12,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 0,
-		FATIGUE = 25,
+		BLUNT = 5,
+		FATIGUE = 5,
 	)
 
 	attribute_stats = list(
@@ -22,8 +22,8 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = FATIGUE,
-		ATTRIBUTE_DEXTERITY = FATIGUE
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
@@ -31,18 +31,16 @@
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = FATIGUE
+		SKILL_UNARMED = BLUNT
 	)
 
-	allow_friendly_fire = TRUE
+	allow_friendly_fire = FALSE
 
 /damagetype/unarmed/fists/help
 	name = "help fists"
-	attack_verbs = list("hug")
+	attack_verbs = list("tap")
 
-	impact_sounds = list(
-		'sounds/weapons/fists/grab.ogg'
-	)
+	hit_effect = null
 
 	hit_effect = null
 
@@ -114,7 +112,15 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.add_status_effect(STAGGER,10,10, source = attacker)
+
+		if(is_living(attacker))
+			var/mob/living/A = attacker
+			if(A.loyalty_tag != L.loyalty_tag && prob(total_damage_dealt))
+				L.add_status_effect(DISARM,5,5, source = attacker)
+				return ..()
+
+		if(prob(total_damage_dealt))
+			L.add_status_effect(STAGGER,5,5, source = attacker)
 
 	return ..()
 

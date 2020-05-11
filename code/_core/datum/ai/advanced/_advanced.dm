@@ -26,10 +26,21 @@
 		return FALSE
 
 	var/mob/living/advanced/A = owner
-	if(A.right_item || A.left_item)
+	if(A.right_item || A.left_item || !should_find_weapon)
 		return FALSE
 
-	if(should_find_weapon && (!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6) )
+	var/list/possible_items = list()
+	for(var/obj/item/I in A.held_objects)
+		if(istype(I,/obj/item/weapon/))
+			possible_items += I
+
+	if(length(possible_items))
+		var/obj/item/I = pick(possible_items)
+		A.right_hand.add_held_object(I,FALSE)
+		I.click_self(A)
+		return FALSE
+
+	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6)
 		var/list/possible_weapons = list()
 		for(var/obj/item/weapon/W in view(6,A))
 			if(istype(W,/obj/item/weapon/ranged/))
@@ -49,9 +60,10 @@
 
 	if(get_dist(A,objective_weapon) > 1)
 		A.move_dir = get_dir(owner,objective_weapon)
-	else
-		A.right_hand.add_held_object(objective_weapon,FALSE)
-		objective_weapon.click_self(A)
+		return TRUE
+
+	A.right_hand.add_held_object(objective_weapon,FALSE)
+	objective_weapon.click_self(A)
 
 	return FALSE
 

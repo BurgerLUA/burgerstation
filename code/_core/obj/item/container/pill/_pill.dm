@@ -16,6 +16,20 @@
 
 	value = 1
 
+/obj/item/container/pill/calculate_value()
+
+	. = ..()
+
+	if(reagents_2 && length(reagents_2.stored_reagents))
+		for(var/reagent_id in reagents_2.stored_reagents)
+			var/reagent_volume = reagents_2.stored_reagents[reagent_id]
+			var/reagent/R = all_reagents[reagent_id]
+			. += R.value*reagent_volume
+
+	return .
+
+
+
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	INTERACT_CHECK

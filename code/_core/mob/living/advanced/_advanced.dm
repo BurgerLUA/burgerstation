@@ -16,7 +16,7 @@
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventory //List of inventory items
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
-	var/list/obj/item/held_objects
+	var/list/obj/item/held_objects //List of held items. For use in an easy read-only list.
 
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand

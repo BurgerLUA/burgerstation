@@ -9,8 +9,10 @@ var/global/mob/abstract/node_checker
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 	layer = LAYER_GHOST
 	invisibility = 100
-	see_invisible = 101
-	alpha = 0
+	invisibility = 101
+	alpha        = 0
+	opacity      = 0
+	see_in_dark  = 1e6 // Literally arbitrary.
 
 
 /mob/abstract/node_checker/New(var/desired_loc)

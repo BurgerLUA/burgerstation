@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(horde)
 	. = min(.,50,length(all_players)*3)
 	. = max(.,15)
 	. -= length(tracked_enemies)
-	return .
+	return FLOOR(.,1)
 
 /subsystem/horde/proc/check_hijack()
 
@@ -172,13 +172,11 @@ SUBSYSTEM_DEF(horde)
 
 		var/wave_to_spawn = min(4,enemies_to_spawn)
 		enemies_to_spawn -= wave_to_spawn
-		var/list/possible_spawns = all_syndicate_spawns.Copy()
-		spawn while(wave_to_spawn && length(possible_spawns))
+		spawn while(wave_to_spawn > 0)
 
 			CHECK_TICK
 
-			var/turf/chosen_spawn = pick(possible_spawns)
-			possible_spawns -= chosen_spawn
+			var/turf/chosen_spawn = pick(all_syndicate_spawns)
 
 			var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
 			if(P)
@@ -189,7 +187,7 @@ SUBSYSTEM_DEF(horde)
 				continue
 
 			var/list/possible_targets = possible_horde_targets.Copy()
-			while(length(possible_targets))
+			while(length(possible_targets) && wave_to_spawn > 0)
 				var/atom/chosen_target = pick(possible_targets)
 				possible_targets -= chosen_target
 				var/turf/target_turf = get_turf(chosen_target)
@@ -205,12 +203,15 @@ SUBSYSTEM_DEF(horde)
 				if(!found_path)
 					continue
 
-				while(wave_to_spawn)
+				while(wave_to_spawn > 0)
 					var/turf/T = get_step(chosen_spawn,pick(DIRECTIONS_ALL))
-					var/mob/living/advanced/npc/syndicate/S = new(T)
-					INITIALIZE(S)
-					S.ai.set_path(found_path)
-					tracked_enemies += S
+					if(T)
+						var/mob/living/advanced/npc/syndicate/S = new(T)
+						INITIALIZE(S)
+						S.ai.set_path(found_path)
+						tracked_enemies += S
+					else
+						log_error("SSHORDE: COULD NOT FIND A SPAWN TO PLACE SYNDICATE!")
 					wave_to_spawn--
 
 	//if(state == HORDE_STATE_HIJACK)
@@ -227,7 +228,7 @@ SUBSYSTEM_DEF(horde)
 /subsystem/horde/proc/spawn_objectives()
 
 	var/desired_spawn_objectives = min(4,length(possible_objective_spawns))
-	var/desired_kill_objectives = min(4,length(SSbosses.tracked_bosses))
+	var/desired_kill_objectives = min(2,length(SSbosses.tracked_bosses))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
 	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")
@@ -268,16 +269,15 @@ SUBSYSTEM_DEF(horde)
 
 	var/objective_text = ""
 	for(var/atom/A in tracked_objectives)
-		var/turf/T = get_turf(A)
 		if(isobj(A))
 			var/obj/O = A
-			objective_text += "Secure \the [O.name] at ([T.x],[T.y],[T.z]). \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			objective_text += "Secure \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
 			if(O.qdeleting)
 				completed_objectives++
 				tracked_objectives -= O
 		else if(is_living(A))
 			var/mob/living/L = A
-			objective_text += "Kill \the [L.name] at ([T.x],[T.y],[T.z]). \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			objective_text += "Kill \the [L.name]. \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
 			if(L.dead)
 				completed_objectives++
 				tracked_objectives -= L

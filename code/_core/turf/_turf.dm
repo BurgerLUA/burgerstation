@@ -24,6 +24,8 @@
 
 	var/material_id
 
+	var/delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier.
+
 /turf/proc/is_space()
 	return FALSE
 

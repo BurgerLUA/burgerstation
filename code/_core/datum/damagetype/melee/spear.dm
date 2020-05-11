@@ -7,13 +7,13 @@
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = 25,
-		BLADE = 25
+		PIERCE = 50,
+		BLADE = 50
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 20,
-		ATTRIBUTE_DEXTERITY = 10
+		ATTRIBUTE_STRENGTH = 30,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -22,7 +22,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 20
+		SKILL_MELEE = 30
 	)
 
 	skill_damage = list(

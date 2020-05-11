@@ -33,16 +33,6 @@
 
 	attach_flag = BODY_TORSO
 
-/obj/item/organ/internal/stomach
-	name = "stomach"
-	id = BODY_STOMACH
-	icon_state = BODY_STOMACH
-	desc = "Produces digested nutrients and digested liquid. Requires food, water, and oxygenated blood."
-
-	attach_flag = BODY_TORSO
-
-	reagents = /reagent_container/stomach
-
 /obj/item/organ/internal/liver
 	name = "liver"
 	id = BODY_LIVER

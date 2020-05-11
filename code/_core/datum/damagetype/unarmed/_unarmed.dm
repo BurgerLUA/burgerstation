@@ -2,6 +2,17 @@
 	name = "Body"
 	draw_blood = TRUE
 
+	impact_sounds = list(
+		'sounds/weapons/fists/punch1.ogg',
+		'sounds/weapons/fists/punch2.ogg',
+		'sounds/weapons/fists/punch3.ogg',
+		'sounds/weapons/fists/punch4.ogg'
+	)
+
+	skill_stats = list(
+		SKILL_UNARMED = 1
+	)
+
 /*
 /damagetype/unarmed/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 

@@ -99,11 +99,7 @@
 
 	var/allow_friendly_fire = FALSE
 
-	/*
-	var/list/wound_types = list(
-		/wound/bruise/ = 1,
-	)
-	*/
+
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -194,7 +190,6 @@
 			for(var/att in attribute_damage[attribute])
 				new_attack_damage[att] += FLOOR(L.get_attribute_level(attribute) * class * 0.01 * (1/length(attribute_damage[attribute])),1)
 
-
 	for(var/skill in skill_stats)
 		var/class = skill_stats[skill]
 		if(!islist(skill_damage[skill]))
@@ -209,13 +204,18 @@
 	return new_attack_damage
 
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	if(ismovable(victim))
+		var/atom/movable/M = victim
+		if(M.grabbing_hand)
+			var/obj/hud/inventory/I = M.grabbing_hand
+			if(I.owner == attacker)
+				return TRUE
 	return is_living(attacker) && prob(get_crit_chance(attacker))
 
 
-/atom/proc/defer_victim(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
+//atom/proc/defer_victim(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
 
-/atom/proc/defer_hit_object(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
-
+//atom/proc/defer_hit_object(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
 
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
@@ -281,9 +281,7 @@
 		if(!total_damage_dealt)
 			display_glance_message(attacker,victim,weapon,hit_object)
 		else
-
 			display_hit_message(attacker,victim,weapon,hit_object)
-
 			if(is_player(blamed) && is_player(victim))
 				var/mob/living/advanced/player/PA = blamed
 				var/mob/living/advanced/player/PV = victim
@@ -302,7 +300,7 @@
 				var/mob/living/A = attacker
 				if(A.client)
 					for(var/skill in skill_stats)
-						var/xp_to_give = FLOOR(skill_stats[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						var/xp_to_give = FLOOR(skill_stats[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
 

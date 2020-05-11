@@ -8,13 +8,13 @@
 	footstep_id = "carpet"
 
 
-/turf/simulated/floor/carpet_office
+/turf/simulated/floor/carpet/office
 	name = "office carpet"
 	icon = 'icons/turf/floor/carpet_office.dmi'
 	icon_state = "1"
 	footstep_id = "carpet"
 
-/turf/simulated/floor/carpet_office/New(var/desired_loc)
+/turf/simulated/floor/carpet/office/New(var/desired_loc)
 	. = ..()
 	icon_state = "[rand(1,4)]"
 	return .

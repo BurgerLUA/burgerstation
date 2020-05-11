@@ -12,3 +12,5 @@
 	layer = LAYER_FLOOR
 
 	footstep_id = "asteroid"
+
+	delay_modifier = 1.1

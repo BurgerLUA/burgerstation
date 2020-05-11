@@ -20,6 +20,11 @@
 			step_offsets = direction_to_pixel_offset(final_move_dir)
 			desired_loc = src.loc
 			final_movement_delay = 0
+		if(isturf(desired_loc))
+			var/turf/T = desired_loc
+			final_movement_delay *= T.delay_modifier
+
+
 		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = move_delay ? step_size/move_delay : 1
 		if(use_momentum)

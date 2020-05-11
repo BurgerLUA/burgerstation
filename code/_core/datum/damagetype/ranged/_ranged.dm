@@ -24,7 +24,9 @@
 
 	attribute_damage = list()
 
-	skill_stats = list()
+	skill_stats = list(
+		SKILL_RANGED = 1
+	)
 
 	skill_damage = list()
 

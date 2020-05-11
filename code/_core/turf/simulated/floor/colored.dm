@@ -17,6 +17,8 @@
 
 	footstep_id = "snow"
 
+	delay_modifier = 1.3
+
 /turf/simulated/floor/colored/grass
 	name = "grass"
 	color = "#44683B"
@@ -29,6 +31,8 @@
 	footstep_id = "grass"
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
+
+	delay_modifier = 1.1
 
 /*
 /turf/simulated/floor/colored/grass/New(loc)
@@ -62,7 +66,7 @@
 	..()
 */
 
-/turf/simulated/floor/colored/dark_grass
+/turf/simulated/floor/colored/grass/dark
 	name = "dark grass"
 	color = "#527F3F"
 	layer = LAYER_FLOOR_LARGE + 0.1
@@ -71,21 +75,7 @@
 
 	footstep_id = "grass"
 
-/*
-/turf/simulated/floor/colored/dark_grass/New(loc)
-	var/r = 82
-	var/g = 127
-	var/b = 63
-
-	r += rand(-10,0)
-	g += rand(-10,0)
-	b += rand(-10,0)
-
-	color = rgb(r,g,b)
-	..()
-*/
-
-/turf/simulated/floor/colored/mint_grass
+/turf/simulated/floor/colored/grass/mint
 	name = "mint grass"
 	color = "#47E059"
 	layer = LAYER_FLOOR_LARGE + 0.1
@@ -94,7 +84,7 @@
 
 	footstep_id = "grass"
 
-/turf/simulated/floor/colored/necro_grass
+/turf/simulated/floor/colored/grass/necro
 	name = "dark grass"
 	color = "#393317"
 	layer = LAYER_FLOOR_LARGE + 0.1
@@ -116,7 +106,9 @@
 
 	footstep_id = "asteroid"
 
-/turf/simulated/floor/colored/moss
+	delay_modifier = 1.2
+
+/turf/simulated/floor/colored/grass/moss
 	name = "moss"
 	color = "#5A916E"
 	layer = LAYER_FLOOR_LARGE + 0.08
@@ -139,6 +131,8 @@
 	footstep_id = "asteroid"
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/soil
+
+	delay_modifier = 1.1
 
 /turf/simulated/floor/colored/dirt/cave
 	name = "dirt"
@@ -220,6 +214,8 @@
 	corner_category = "ash"
 
 	footstep_id = "asteroid"
+
+	delay_modifier = 1.2
 
 /turf/simulated/floor/colored/ash/grey
 	name = "ancient ash"

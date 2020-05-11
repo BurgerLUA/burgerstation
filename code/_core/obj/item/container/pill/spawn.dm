@@ -39,6 +39,6 @@
 	name = "space dust (10u)"
 	icon_state = "circle"
 
-/obj/item/container/pill/space_drugs/on_spawn()
+/obj/item/container/pill/space_dust/on_spawn()
 	reagents.add_reagent("space_dust",10)
 	return ..()

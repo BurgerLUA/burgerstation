@@ -23,6 +23,11 @@ mob/living/get_examine_list(var/mob/examiner)
 	if(has_status_effect(CRIT))
 		. += list(div("warning","They do not appear to be breathing."))
 
+	if(examiner == src)
+		for(var/status in status_effects)
+			var/status_effect/S = SSstatus.all_status_effects[status]
+			. += list(div("warning",S.desc))
+
 	if(dead)
 		if(client)
 			. += list(div("warning","They lay dead and lifeless."))

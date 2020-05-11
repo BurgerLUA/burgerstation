@@ -4,12 +4,12 @@
 	attack_damage_base = list(
 		BLADE = 20,
 		PIERCE = 20,
-		HOLY = 0
+		HOLY = 10
 	)
 
 	attack_damage_penetration = list(
 		BLADE = 10,
-		HOLY = 0
+		HOLY = 25
 	)
 
 	attribute_stats = list(

@@ -8,8 +8,6 @@
 
 	spawn_blood = FALSE
 
-	anchored = TRUE
-
 /mob/living/advanced/npc/dummy/Initialize()
 
 	. = ..()

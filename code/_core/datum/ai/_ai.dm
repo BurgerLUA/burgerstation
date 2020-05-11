@@ -316,6 +316,14 @@
 
 	return FALSE
 
+/ai/proc/handle_movement_grabbed()
+
+	if(owner.grabbing_hand && prob(25))
+		var/turf/T = get_turf(owner.grabbing_hand)
+		owner.move_dir = get_dir(T,owner)
+		return TRUE
+
+	return FALSE
 
 /ai/proc/handle_movement()
 

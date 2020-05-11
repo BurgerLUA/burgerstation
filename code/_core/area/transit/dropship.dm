@@ -4,7 +4,7 @@
 
 /area/transit/dropship/alpha/bluespace
 	id = "alpha_shuttle_bluespace"
-	transit_turf = /turf/simulated/bluespace/
+	transit_turf = /turf/unsimulated/
 
 /area/transit/dropship/alpha/landing
 	id = "alpha_shuttle_landing"
@@ -18,7 +18,7 @@
 
 /area/transit/dropship/bravo/bluespace
 	id = "bravo_shuttle_bluespace"
-	transit_turf = /turf/simulated/bluespace/
+	transit_turf = /turf/unsimulated/
 
 /area/transit/dropship/bravo/landing
 	id = "bravo_shuttle_landing"
@@ -29,7 +29,7 @@
 
 /area/transit/dropship/charlie/bluespace
 	id = "charlie_shuttle_bluespace"
-	transit_turf = /turf/simulated/bluespace/
+	transit_turf = /turf/unsimulated/
 
 /area/transit/dropship/charlie/landing
 	id = "charlie_shuttle_landing"
@@ -40,7 +40,7 @@
 
 /area/transit/dropship/delta/bluespace
 	id = "delta_shuttle_bluespace"
-	transit_turf = /turf/simulated/bluespace/
+	transit_turf = /turf/unsimulated/
 
 /area/transit/dropship/delta/landing
 	id = "delta_shuttle_landing"

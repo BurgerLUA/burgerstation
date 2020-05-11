@@ -2,7 +2,7 @@
 	name = "null staff"
 
 	attack_damage_base = list(
-		BLUNT = 10,
+		BLUNT = 20,
 		HOLY = 0
 	)
 
@@ -12,7 +12,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_STRENGTH = 20,
 		ATTRIBUTE_DEXTERITY = 30
 	)
 

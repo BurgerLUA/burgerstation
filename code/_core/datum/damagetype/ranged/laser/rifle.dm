@@ -4,7 +4,7 @@
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		HEAT = 20,
-		LASER = 55
+		LASER = 35
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -18,8 +18,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 15,
-		PIERCE = 15,
+		BLUNT = 10,
+		PIERCE = 10,
 		LASER = 10,
 		COLD = 10
 	)
@@ -37,7 +37,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		LASER = 30,
+		LASER = 10,
 		HEAT = 10,
 		RAD = 10
 	)

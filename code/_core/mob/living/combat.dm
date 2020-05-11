@@ -230,10 +230,6 @@
 	return 0
 */
 
-/mob/living/can_be_grabbed()
-	return dead || length(status_effects)
-
-
 /mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_atom)
 
 	var/name_check = blocking_atom == src ? "" : " with \the [blocking_atom.name]"

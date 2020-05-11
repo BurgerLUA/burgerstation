@@ -10,7 +10,7 @@
 	name = "arrivals shuttle - bluespace"
 	id = "arrivals_shuttle_bluespace_01"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
-	transit_turf = /turf/simulated/bluespace
+	transit_turf = /turf/unsimulated
 
 /area/transit/arrivals_shuttle_01/station
 	name = "arrivals shuttle - station"
@@ -30,7 +30,7 @@
 	name = "arrivals shuttle - bluespace"
 	id = "arrivals_shuttle_bluespace_02"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
-	transit_turf = /turf/simulated/bluespace
+	transit_turf = /turf/unsimulated
 
 /area/transit/arrivals_shuttle_02/station
 	name = "arrivals shuttle - station"
