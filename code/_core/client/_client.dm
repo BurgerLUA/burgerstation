@@ -116,12 +116,6 @@ var/global/list/all_clients = list()
 
 	return ..()
 
-/client/proc/setup_stylesheets()
-	winset(src,"chat_all.output","style='[STYLESHEET]'")
-	winset(src,"chat_combat.output","style='[STYLESHEET]'")
-	winset(src,"chat_looc.output","style='[STYLESHEET]'")
-	winset(src,"chat_ooc.output","style='[STYLESHEET]'")
-	winset(src,"chat_say.output","style='[STYLESHEET]'")
 
 /client/proc/examine(var/atom/object)
 
@@ -156,8 +150,6 @@ var/global/list/all_clients = list()
 	known_health_elements = list()
 	known_inventory = list()
 	known_buttons = list()
-
-	setup_stylesheets()
 
 	update_zoom(-1)
 

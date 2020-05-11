@@ -5,7 +5,7 @@
 	icon_state = "slot"
 
 	layer = LAYER_HUD
-	plane = PLANE_HUD
+	plane = PLANE_HUD_OBJ
 	mouse_opacity = 0
 
 	screen_loc = "CENTER,CENTER"
@@ -16,6 +16,8 @@
 	var/obj/hud/inventory/stored_inventory
 
 	user_colors = FALSE
+
+	layer = 100
 
 /obj/hud/click_and_drag/Destroy()
 	stored_object = null

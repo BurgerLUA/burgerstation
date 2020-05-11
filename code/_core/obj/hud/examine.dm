@@ -5,7 +5,7 @@
 	icon_state = "none"
 
 	layer = LAYER_HUD
-	plane = PLANE_HUD
+	plane = PLANE_HUD_MOUSE
 	mouse_opacity = 0
 
 	screen_loc = "CENTER,CENTER"
