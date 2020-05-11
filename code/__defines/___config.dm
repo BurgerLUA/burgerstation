@@ -156,8 +156,9 @@
 	"Ctrl" = "grab", \
 	"R" = "throw", \
 	"Q" = "drop", \
-	"C" = "quick_self", \
-	"E" = "quick_holder", \
+	"X" = "quick_self", \
+	"C" = "quick_holder", \
+	"E" = "examine_mode", \
 	"Z" = "zoom", \
 	"Space" = "kick", \
 	"G" = "cycle-intent-clockwise", \

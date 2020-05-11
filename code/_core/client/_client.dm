@@ -64,6 +64,10 @@ var/global/list/all_clients = list()
 
 	var/list/color_mods = list()
 
+	var/obj/hud/examine/examine_overlay
+
+	var/examine_mode = FALSE
+
 //Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
 
 /*
@@ -100,10 +104,15 @@ var/global/list/all_clients = list()
 	qdel(controls)
 	controls = null
 
+	qdel(examine_overlay)
+	examine_overlay = null
+
 	clear_mob(mob)
 
 	all_clients -= src
 	world.update_status()
+
+
 
 	return ..()
 
@@ -129,10 +138,13 @@ var/global/list/all_clients = list()
 
 	all_clients += src
 
+	examine_overlay = new
+	screen += examine_overlay
+
 	if(!button_tracker)
 		button_tracker = new(src)
 
-	if(!macros) //TODO: LOADING SYSTEM OF CUSTOM MACROS
+	if(!macros)
 		macros = new(src)
 
 	if(!controls)
@@ -209,6 +221,10 @@ var/global/list/all_clients = list()
 	store_new_params(object,location,params)
 
 	var/click_flags = get_click_flags(aug,TRUE)
+
+	if(examine_mode)
+		examine(object)
+		return ..()
 
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= ATTACK_HELD_LEFT

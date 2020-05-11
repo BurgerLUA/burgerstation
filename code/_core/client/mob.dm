@@ -68,6 +68,7 @@
 
 	if(screen)
 		screen.Cut()
+		screen += examine_overlay
 
 	if(images)
 		images.Cut()

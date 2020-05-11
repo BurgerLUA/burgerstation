@@ -70,6 +70,9 @@
 			owner.mob.movement_flags |= MOVEMENT_RUNNING
 		if("walk")
 			owner.mob.attack_flags |= ATTACK_ALT
+		if("examine_mode")
+			owner.examine_mode = TRUE
+			owner.examine_overlay.alpha = 255
 		if("crouch")
 			owner.mob.movement_flags |= MOVEMENT_CROUCHING
 		if("throw")
@@ -112,6 +115,9 @@
 			owner.mob.movement_flags &= ~MOVEMENT_RUNNING
 		if("walk")
 			owner.mob.attack_flags &= ~ATTACK_ALT
+		if("examine_mode")
+			owner.examine_mode = FALSE
+			owner.examine_overlay.alpha = 0
 		if("crouch")
 			owner.mob.movement_flags &= ~MOVEMENT_CROUCHING
 		if("throw")

@@ -111,6 +111,7 @@ window "chat_all"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "All"
 		titlebar = false
@@ -119,6 +120,8 @@ window "chat_all"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 814x814
+		inner-size = 800x800
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
@@ -241,10 +244,56 @@ window "control"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+	elem "input"
+		type = INPUT
+		pos = 0,780
+		size = 800x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		is-default = true
+		border = sunken
+		saved-params = ""
+	elem "patreon"
+		type = BUTTON
+		pos = 600,0
+		size = 200x20
+		anchor1 = 75,0
+		anchor2 = 100,0
+		saved-params = "is-checked"
+		text = "Donate"
+		command = "open-patreon"
+	elem "github"
+		type = BUTTON
+		pos = 400,0
+		size = 200x20
+		anchor1 = 50,0
+		anchor2 = 75,0
+		saved-params = "is-checked"
+		text = "Github"
+		command = "open-github"
+	elem "discord"
+		type = BUTTON
+		pos = 200,0
+		size = 200x20
+		anchor1 = 25,0
+		anchor2 = 50,0
+		saved-params = "is-checked"
+		text = "Discord"
+		command = "open-discord"
+	elem "wiki"
+		type = BUTTON
+		pos = 0,0
+		size = 200x20
+		anchor1 = 0,0
+		anchor2 = 25,0
+		text-color = #808080
+		saved-params = "is-checked"
+		text = "Wiki"
+		command = ""
 	elem "splitter"
 		type = CHILD
-		pos = 0,0
-		size = 800x800
+		pos = 0,20
+		size = 800x760
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #3d5e80
@@ -297,46 +346,21 @@ window "main"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = #ffffff
+		background-color = #3d5e80
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
+		statusbar = false
 		icon = 'interface\\icons\\burger.png'
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
-		outer-size = 816x878
-		inner-size = 800x819
-	elem "button_chat"
-		type = BUTTON
-		pos = 720,780
-		size = 80x20
-		anchor1 = 100,100
-		anchor2 = 100,100
-		font-family = "Arial Narrow"
-		font-size = 12
-		text-color = #ffffff
-		background-color = #3d5e80
-		saved-params = "is-checked"
-		text = "Chat"
-		command = ""
-	elem "input"
-		type = INPUT
-		pos = 0,780
-		size = 720x20
-		anchor1 = 0,100
-		anchor2 = 100,100
-		font-family = "Arial Narrow"
-		font-size = 10
-		text-color = #ffffff
-		background-color = #5d96a0
-		is-default = true
-		border = sunken
-		saved-params = ""
+		outer-size = 816x859
+		inner-size = 800x800
 	elem "splitter"
 		type = CHILD
 		pos = 0,0
-		size = 800x780
+		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #3d5e80

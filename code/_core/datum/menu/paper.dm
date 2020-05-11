@@ -23,7 +23,7 @@
 /menu/paper/close(var/user)
 	winset(user, "map.paper","is-visible=false")
 	winset(user,"map.map","focus=true")
-	winset(user,"main.input","focus=false")
+	winset(user,"control.input","focus=false")
 
 /menu/paper/proc/set_text(var/user,var/text,var/title,var/page_current,var/page_max)
 	var/function_name = "set_text"

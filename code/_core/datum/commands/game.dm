@@ -46,19 +46,19 @@
 	set instant = TRUE
 	var/is_focused = winget(src, "map.map", "focus") == "true"
 	winset(src,"map.map","focus=[is_focused ? "false" : "true"]")
-	winset(src,"main.input","focus=[is_focused ? "true" : "false"]")
+	winset(src,"control.input","focus=[is_focused ? "true" : "false"]")
 
 /client/verb/focus_map()
 	set hidden = TRUE
 	set instant = TRUE
 	winset(src,"map.map","focus=true")
-	winset(src,"main.input","focus=false")
+	winset(src,"control.input","focus=false")
 
 /client/verb/focus_input()
 	set hidden = TRUE
 	set instant = TRUE
 	winset(src,"map.map","focus=false")
-	winset(src,"main.input","focus=true")
+	winset(src,"control.input","focus=true")
 
 /client/verb/button_press(button as text)
 	set hidden = TRUE
