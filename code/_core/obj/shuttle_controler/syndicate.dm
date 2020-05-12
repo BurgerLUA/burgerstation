@@ -35,7 +35,7 @@
 			for(var/mob/living/L in A.contents)
 				if(!L.dead && L.client)
 					return .
-				if(L.iff_tag == "Syndicate")
+				if(L.loyalty_tag == "Syndicate")
 					found_syndicate += L
 				else if(!is_player(L))
 					mobs_to_delete += L
@@ -78,7 +78,7 @@
 				return .
 
 			for(var/mob/living/L in A.contents)
-				if(L.iff_tag != "Syndicate")
+				if(L.loyalty_tag != "Syndicate")
 					continue
 				if(!L.ai)
 					continue

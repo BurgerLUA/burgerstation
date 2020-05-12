@@ -45,8 +45,18 @@
 	iff_tag = "NanoTrasen"
 	icon_state = "nanotrasen"
 
+/obj/item/firing_pin/electronic/iff/nanotrasen/can_shoot(var/mob/caller,var/obj/item/weapon)
 
+	. = ..()
 
+	if(!.)
+		return .
+
+	var/area/A = get_area(caller)
+	if(A.flags_area & FLAGS_AREA_TUTORIAL)
+		return FALSE
+
+	return TRUE
 
 /obj/item/firing_pin/electronic/iff/syndicate
 	name = "syndicate firing pin"

@@ -44,7 +44,7 @@
 /area/interior/station
 	name = "Central Command"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION
+	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_TUTORIAL
 
 	ambient_sound = 'sounds/ambient/station_loop.ogg'
 	random_sounds = list(

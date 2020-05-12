@@ -53,10 +53,12 @@
 						macros.macros[new_key] = new_command
 						to_chat(span("notice","Successfully added new command '[new_command]' to key '[new_key]'"))
 			else
-				var/new_command = input("What command would you like to bind '[key]' to? Leave blank to cancel.","Change Existing Bind") as text | null
+				var/new_command = input("What command would you like to bind '[key]' to? Leave blank to remove.","Change Existing Bind") as text | null
 				if(new_command)
 					macros.macros[key] = new_command
 					to_chat(span("notice","Successfully added '[new_command]' to '[key]'."))
+				else
+					macros.macros -= key
 
 			if(key != "quit")
 				edit_macros()

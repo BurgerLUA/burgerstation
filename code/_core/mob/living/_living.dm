@@ -290,9 +290,6 @@
 
 	iff_tag = desired_iff_tag
 
-	if(security_hud_image)
-		security_hud_image.icon_state = iff_tag ? iff_tag : "unknown"
-
 	return TRUE
 
 
@@ -302,6 +299,9 @@
 		return FALSE
 
 	loyalty_tag = desired_loyalty_tag
+
+	if(security_hud_image)
+		security_hud_image.icon_state = loyalty_tag ? loyalty_tag : "unknown"
 
 	return TRUE
 

@@ -445,9 +445,9 @@
 	if(only_attack_players)
 		return exists(L.client)
 	else if(only_attack_enemies)
-		return L.iff_tag != owner.iff_tag && (L.iff_tag in enemy_tags)
+		return L.loyalty_tag != owner.loyalty_tag && (L.loyalty_tag in enemy_tags)
 	else
-		return !owner.iff_tag || L.iff_tag != owner.iff_tag
+		return !owner.loyalty_tag || L.loyalty_tag != owner.loyalty_tag
 
 	return FALSE
 

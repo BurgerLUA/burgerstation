@@ -22,7 +22,7 @@
 
 	var/change_dir_on_move = FALSE
 
-	var/obj/hud/inventory/grabbing_hand
+	var/obj/hud/inventory/grabbing_hand //What is grabbing this?
 
 	var/allow_shuttle_move = TRUE
 

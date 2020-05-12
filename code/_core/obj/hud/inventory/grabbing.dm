@@ -4,19 +4,31 @@
 	var/OldLoc = loc
 
 	if(right_hand && right_hand.grabbed_object)
-		var/distance = get_dist(src,right_hand.grabbed_object)
-		if(distance > 1)
-			right_hand.release_object(src)
+		right_hand.check_grab()
 
 	if(left_hand && left_hand.grabbed_object)
-		var/distance = get_dist(src,left_hand.grabbed_object)
-		if(distance > 1)
-			left_hand.release_object(src)
+		left_hand.check_grab()
 
 	. = ..()
 
 	if(.)
 
+		//Right hand
+		if(right_hand && right_hand.grabbed_object)
+			var/distance = get_dist(src,right_hand.grabbed_object)
+			if(distance > 1)
+				right_hand.grabbed_object.glide_size = glide_size
+				right_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE)
+
+		//Left hand
+		if(left_hand && left_hand.grabbed_object)
+			var/distance = get_dist(src,left_hand.grabbed_object)
+			if(distance > 1)
+				left_hand.grabbed_object.glide_size = glide_size
+				left_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE)
+
+
+		/*
 		if(right_hand && right_hand.grabbed_object)
 			var/distance = get_dist(src,right_hand.grabbed_object)
 			if(distance > 2)
@@ -45,6 +57,7 @@
 					right_hand.grabbed_object.glide_size = glide_size
 					if(!right_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE))
 						right_hand.release_object(src)
+		*/
 
 	return .
 
@@ -71,6 +84,16 @@
 
 	return TRUE
 
+/obj/hud/inventory/proc/check_grab()
+
+	if(!grabbed_object)
+		return FALSE
+	if(!grabbed_object.can_be_grabbed(owner) || !can_grab(owner,grabbed_object))
+		release_object(owner)
+		return FALSE
+
+	return TRUE
+
 /obj/hud/inventory/proc/release_object(var/mob/caller as mob)
 	if(caller)
 		caller.to_chat(span("notice","You release \the [grabbed_object.name]."))
@@ -78,4 +101,14 @@
 	grabbed_object = null
 	overlays.Cut()
 	update_overlays()
+	return TRUE
+
+/obj/hud/inventory/proc/can_grab(var/mob/caller,var/atom/movable/object)
+
+	if(!object || !caller)
+		return FALSE
+
+	if(get_dist(caller,object) >= 2)
+		return FALSE
+
 	return TRUE

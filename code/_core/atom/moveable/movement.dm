@@ -183,6 +183,7 @@
 				continue
 			A.Crossed(src,NewLoc,OldLoc)
 
-	//HOOK_CALL("move")
+	if(grabbing_hand)
+		grabbing_hand.check_grab()
 
 	return TRUE

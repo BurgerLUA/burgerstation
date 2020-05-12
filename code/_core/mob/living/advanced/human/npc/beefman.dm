@@ -5,6 +5,7 @@
 	species = "beefman"
 	class = "ashwalker"
 	iff_tag = "beefman"
+	loyalty_tag = "beefman"
 
 /mob/living/advanced/npc/beefman/Initialize()
 

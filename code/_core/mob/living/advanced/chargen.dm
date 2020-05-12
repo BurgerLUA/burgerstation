@@ -1,6 +1,7 @@
 /mob/living/advanced/proc/start_chargen()
 
 	Initialize()
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	default_appearance()
 	if(sex == MALE)
 		equip_loadout("new_male",TRUE)

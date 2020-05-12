@@ -1,34 +1,21 @@
-var/global/list/avaliable_commands = list(
-	NORTH,
-	EAST,
-	SOUTH,
-	WEST,
-	"sprint",
-	"walk",
-	"grab",
-	"throw",
-	"drop",
-	"quick_self",
-	"quick_holder",
-	"zoom",
-	"kick",
-	"cycle-intent-clockwise",
-	"cycle-intent-counter-clockwise",
-	"say",
-	"ooc",
-	"looc"
-)
-
 /client/verb/edit_macros()
-	set name = "Edit Macros"
-	set category = "Preferences"
+	set hidden = TRUE
+
+
+	var/list/unused_commands = list()
+	var/list/building = DEFAULT_MACROS
+	for(var/k in building)
+		var/v = building[k]
+		unused_commands += v
 
 	var/html_to_send = "<h1>Controls</h1><h3>I unironically made this in like 2 hours so please be gentle.</h3>"
 
 	for(var/key in macros.macros)
 		var/command = macros.macros[key]
 		html_to_send += "<a href='?change_key=[key]'>[key]: [command]</a><br>"
-
+		unused_commands -= command
+	html_to_send += "<hr>"
+	html_to_send += "<p>Unused commands: [english_list(unused_commands)].</p>"
 	html_to_send += "<hr>"
 	html_to_send += "<a href='?change_key=new'>Add New Bind</a><br>"
 	html_to_send += "<a href='?change_key=reset'>Reset to Factory Default</a><br>"

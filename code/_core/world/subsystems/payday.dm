@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(payday)
 		var/list/mob/living/advanced/player/valid_players = list()
 
 		for(var/mob/living/advanced/player/P in world)
-			if(P.iff_tag != "NanoTrasen" || !P.client || P.dead)
+			if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
 				continue
 			valid_players += P
 
