@@ -156,14 +156,14 @@
 	"Ctrl" = "grab", \
 	"R" = "throw", \
 	"Q" = "drop", \
-	"X" = "quick_self", \
 	"C" = "quick_holder", \
 	"E" = "examine_mode", \
-	"Z" = "zoom", \
+	"Z" = "quick_self", \
 	"Space" = "kick", \
 	"G" = "cycle-intent-clockwise", \
 	"F" = "cycle-intent-counter-clockwise", \
 	"T" = "say", \
 	"O" = "ooc", \
-	"L" = "looc" \
+	"L" = "looc", \
+	"V" = "zoom"\
 )
