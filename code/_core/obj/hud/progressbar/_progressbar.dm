@@ -49,7 +49,7 @@
 	if(end_time - start_time <= 0)
 		return ..()
 
-	var/desired_num = FLOOR((1 - ((end_time - world.time)/(end_time - start_time))) * 26, 1)
+	var/desired_num = FLOOR( clamp((1 - ((end_time - world.time)/(end_time - start_time))) * 26,0,26), 1)
 
 	icon_state = "bar_[desired_num]"
 

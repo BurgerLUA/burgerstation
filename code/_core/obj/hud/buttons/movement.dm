@@ -74,7 +74,7 @@
 	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.has_status_effect(REST) && L.get_status_effect_duration(REST) == -1)
-			L.add_status_effect(REST,100,2, force = TRUE) //
+			PROGRESS_BAR(L,L,3,/mob/living/proc/remove_status_effect,REST)
 		else
 			L.add_status_effect(REST,-1,-2, force = TRUE)
 

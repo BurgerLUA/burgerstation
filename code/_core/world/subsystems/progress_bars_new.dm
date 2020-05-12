@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(progressbars)
 		var/list/progress_list = all_progress_bars[k]
 		var/obj/hud/progress_bar/P = progress_list["progress_bar"]
 
+		P.update_sprite()
+
 		if(progress_list["time"] < world.time)
 			if(progress_list["src"])
 				call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
@@ -40,8 +42,6 @@ SUBSYSTEM_DEF(progressbars)
 				queue_delete(P,10)
 				all_progress_bars -= A
 				continue
-
-		P.update_sprite()
 
 	return TRUE
 

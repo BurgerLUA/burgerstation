@@ -218,12 +218,8 @@
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN
 			animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
-			for(var/image/I in tracked_huds)
-				animate(I,transform = turn(matrix(), -stun_angle), time = 1)
 		else //GET UP
 			animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
-			for(var/image/I in tracked_huds)
-				animate(I,transform = matrix(), time = 2)
 		horizontal = desired_horizontal
 
 	return desired_horizontal

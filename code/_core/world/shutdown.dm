@@ -1,6 +1,5 @@
 /client/verb/trigger_shutdown()
-	set name = "Shutdown"
-	set category = "Server"
+	set hidden = TRUE
 	world.safe_shutdown()
 	return TRUE
 
