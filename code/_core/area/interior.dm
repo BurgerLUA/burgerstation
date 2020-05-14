@@ -21,7 +21,10 @@
 /area/interior/cave/lava
 	name = "lava cave"
 	icon_state = "lava_cave"
-
+	sunlight_freq = 8
+	desired_light_range = 9
+	desired_light_power = 1
+	desired_light_color ="#7F3B11"
 
 /area/interior/cave/lava/setup_sunlight(var/turf/T)
 

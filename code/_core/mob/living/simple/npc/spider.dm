@@ -13,6 +13,22 @@
 
 	health_base = 100
 
+	armor_base = list(
+		BLADE = 10,
+		BLUNT = 25,
+		PIERCE = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 0,
+		BIO = 75,
+		RAD = 0,
+		HOLY = 100,
+		DARK = 100,
+		FATIGUE = 0
+	)
+
 /mob/living/simple/npc/spider/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

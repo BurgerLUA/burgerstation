@@ -389,6 +389,7 @@
 #include "code\_core\datum\reagent_container\stomach.dm"
 #include "code\_core\datum\reagent_container\syringe.dm"
 #include "code\_core\datum\reagent_container\temp.dm"
+#include "code\_core\datum\reagent_container\turf.dm"
 #include "code\_core\datum\reagent_recipe\_reagent_recipe.dm"
 #include "code\_core\datum\reagent_recipe\explosives.dm"
 #include "code\_core\datum\reagent_recipe\food.dm"

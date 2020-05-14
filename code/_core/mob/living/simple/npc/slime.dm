@@ -18,6 +18,22 @@
 
 	var/slime_color = "#000000"
 
+	armor_base = list(
+		BLADE = 25,
+		BLUNT = 75,
+		PIERCE = -25,
+		LASER = -50,
+		MAGIC = -50,
+		HEAT = 50,
+		COLD = -100,
+		BOMB = -25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
+	)
+
 /mob/living/simple/npc/slime/Initialize()
 	. = ..()
 	update_sprite()

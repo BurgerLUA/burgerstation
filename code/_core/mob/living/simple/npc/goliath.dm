@@ -11,17 +11,36 @@
 
 	loot_drop = "goliath"
 
+	armor_base = list(
+		BLADE = 50,
+		BLUNT = 75,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = -50,
+		HEAT = INFINITY,
+		COLD = -75,
+		BOMB = 50,
+		BIO = 75,
+		RAD = 25,
+		HOLY = 100,
+		DARK = 100,
+		FATIGUE = 50
+	)
+
 /mob/living/simple/npc/goliath/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
 
 /mob/living/simple/npc/goliath/proc/tentacle_attack(var/mob/living/desired_target)
-
+	if(dead)
+		return
 	spawn()
 		add_status_effect(PARALYZE,20,20,stealthy = TRUE)
 		icon_state = "goliath_attack"
 		sleep(10)
+		if(dead)
+			return
 		var/list/valid_turfs = list()
 		valid_turfs += get_step(desired_target,NORTH)
 		valid_turfs += get_step(desired_target,EAST)
@@ -34,4 +53,6 @@
 
 		new/obj/effect/temp/hazard/tentacle/(get_turf(desired_target),desired_owner = src)
 		sleep(10)
+		if(dead)
+			return
 		icon_state = initial(icon_state)

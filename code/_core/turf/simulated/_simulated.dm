@@ -35,6 +35,57 @@ var/global/saved_icons = 0
 
 	var/blocks_air = 0x0
 
+	var/obj/overlay/stored_water_overlay
+	var/water_reagent
+
+/turf/simulated/floor/Initialize()
+
+	. = ..()
+
+	if(water_reagent && reagents)
+		var/reagent_container/turf/TR = reagents
+		TR.desired_reagent = water_reagent
+		TR.update_container()
+
+	return .
+
+/turf/simulated/floor/update_sprite()
+
+	. = ..()
+
+	if(reagents && length(reagents.stored_reagents))
+		if(!stored_water_overlay)
+			stored_water_overlay = new
+			stored_water_overlay.icon = 'icons/obj/effects/water_height.dmi'
+			stored_water_overlay.icon_state = "water"
+			stored_water_overlay.alpha = 255
+			stored_water_overlay.plane = PLANE_EFFECT
+			stored_water_overlay.blend_mode = BLEND_SUBTRACT
+
+		stored_water_overlay.color = reagents.color
+
+	return .
+
+/turf/simulated/floor/Entered(var/atom/movable/O,var/atom/old_loc)
+
+	. = ..()
+
+	if(O && stored_water_overlay)
+		O.overlays += stored_water_overlay
+
+	return .
+
+/turf/simulated/floor/Exited(var/atom/movable/O,var/atom/new_loc)
+
+	. = ..()
+
+	if(O && stored_water_overlay)
+		O.overlays -= stored_water_overlay
+
+	return .
+
+
+
 /turf/proc/is_occupied()
 
 	for(var/atom/movable/A in contents)

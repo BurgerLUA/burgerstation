@@ -27,3 +27,12 @@
 /turf/simulated/floor/river/chocolate
 	name = "chocolate river"
 	icon_state = "chocolatewater"
+
+
+/turf/simulated/floor/water
+	name = "water"
+	icon = 'icons/turf/floor/water.dmi'
+	icon_state = "riverwater_static"
+	footstep_id = "water"
+	water_reagent = "water"
+	reagents = /reagent_container/turf/

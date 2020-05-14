@@ -21,7 +21,7 @@
 		LASER = -50,
 		MAGIC = -25,
 		HEAT = -25,
-		COLD = 75,
+		COLD = 90,
 		BOMB = -25,
 		BIO = INFINITY,
 		RAD = INFINITY,

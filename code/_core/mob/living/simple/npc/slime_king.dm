@@ -15,9 +15,9 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 750
+	health_base = 2000
 
-	level_multiplier = 3
+	level_multiplier = 4
 
 	object_size = 1
 
@@ -25,6 +25,22 @@
 
 	boss = TRUE
 	force_spawn = TRUE
+
+	armor_base = list(
+		BLADE = 25,
+		BLUNT = 75,
+		PIERCE = -25,
+		LASER = -50,
+		MAGIC = -50,
+		HEAT = 50,
+		COLD = -100,
+		BOMB = -25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
+	)
 
 /mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
 

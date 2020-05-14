@@ -14,6 +14,22 @@
 	loyalty_tag = "carp"
 	iff_tag = "carp"
 
+	armor_base = list(
+		BLADE = 25,
+		BLUNT = 0,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = -25,
+		HEAT = INFINITY,
+		COLD = INFINITY,
+		BOMB = 0,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = 100,
+		DARK = 100,
+		FATIGUE = 0
+	)
+
 /mob/living/simple/npc/spacecarp/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

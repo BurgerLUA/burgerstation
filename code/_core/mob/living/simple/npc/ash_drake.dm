@@ -24,6 +24,23 @@
 	force_spawn = TRUE
 	boss = TRUE
 
+	armor_base = list(
+		BLADE = 50,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = -25,
+		HEAT = INFINITY,
+		COLD = -25,
+		BOMB = 50,
+		BIO = 75,
+		RAD = 75,
+		HOLY = 0,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
+	)
+
+
 /*
 /mob/living/simple/npc/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
 
