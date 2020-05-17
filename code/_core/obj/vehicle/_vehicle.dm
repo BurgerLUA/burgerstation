@@ -15,6 +15,15 @@
 
 	var/list/obj/item/equipment
 
+
+	var/list/vehicle_buttons = list()
+
+/mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)
+	return TRUE
+
+/mob/living/vehicle/proc/remove_buttons(var/mob/living/advanced/A)
+	return TRUE
+
 /mob/living/vehicle/proc/attach_equipment(var/obj/item/I)
 	if(I in equipment)
 		return FALSE
@@ -53,16 +62,6 @@
 
 	return TRUE
 
-/mob/living/vehicle/Enter(atom/movable/O, atom/oldloc) //When we try to enter the vehicle.
-
-	if(!is_advanced(O))
-		return FALSE
-
-	if(length(passengers) >= passengers_max)
-		return FALSE
-
-	return ..()
-
 /mob/living/vehicle/handle_movement(var/adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
 
 	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
@@ -77,7 +76,7 @@
 
 	return FALSE
 
-/mob/living/vehicle/Entered(atom/movable/Obj,atom/OldLoc)
+/mob/living/vehicle/proc/enter_vehicle(atom/movable/Obj,atom/OldLoc)
 
 	if(!is_advanced(Obj))
 		return ..()
@@ -85,16 +84,29 @@
 	var/mob/living/advanced/L = Obj
 	L.driving = src
 	passengers += L
+	L.force_move(src.loc)
 	if(L.client)
 		L.client.eye = src
+	L.invisibility = 100
+	L.collision_flags = FLAG_COLLISION_NONE
+	L.collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	L.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET|FLAGS_HUD_SPECIAL,speed=0)
+	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=0)
 	update_sprite()
 
 	return ..()
 
-/mob/living/vehicle/Exit(atom/movable/O, atom/newloc) //When we try to exit the vehicle.
-	return FALSE
+/mob/living/vehicle/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
-/mob/living/vehicle/Exited(atom/movable/Obj, atom/newloc)
+	. = ..()
+
+	if(.)
+		for(var/atom/movable/M in passengers)
+			M.force_move(src.loc)
+
+	return .
+
+/mob/living/vehicle/proc/exit_vehicle(atom/movable/Obj, atom/newloc)
 	if(!is_advanced(Obj))
 		return ..()
 
@@ -103,6 +115,9 @@
 	passengers -= L
 	if(L.client)
 		L.client.eye = L
+	L.invisibility = initial(L.invisibility)
+	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
+	L.show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=0)
 	update_sprite()
 
 	return ..()
@@ -123,10 +138,6 @@
 
 	return TRUE
 
-/mob/living/vehicle/proc/enter_vehicle(var/mob/living/caller)
-	caller.Move(src)
-	return TRUE
-
 /mob/living/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
 
 	if(!can_enter_vehicle(caller))
@@ -136,18 +147,3 @@
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_vehicle,caller)
 
 	return TRUE
-
-/mob/living/vehicle/drop_on_object(caller,object,location,control,params) //Exit the vehicle.
-
-	if(!length(passengers) || !passengers[1] || !is_living(passengers[1]) || !get_turf(object) || get_dist(src,object) > 1)
-		return ..()
-
-	var/mob/living/driver = passengers[1]
-
-	if(caller != driver)
-		return FALSE
-
-	driver.force_move(get_turf(object))
-
-	return TRUE
-

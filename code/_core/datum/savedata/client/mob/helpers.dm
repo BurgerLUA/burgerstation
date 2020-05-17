@@ -67,7 +67,7 @@
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
 	if(!owner)
-		CRASH("Someone tried to create a character on a savedata that has no owner!")
+		CRASH_SAFE("Someone tried to create a character on a savedata that has no owner!")
 		return FALSE
 
 	if(text2num(character_id) > MAX_CHARACTERS)
@@ -114,14 +114,16 @@
 	var/list/final_skill_list = list()
 	for(var/id in A.skills)
 		var/experience/skill/S = A.skills[id]
-		final_skill_list[id] = S.experience
+		var/desired_experience = ENABLE_XP_SAVING ? S.experience : S.level_to_xp(S.default_level)
+		final_skill_list[id] = desired_experience
 	loaded_data["skills"] = final_skill_list
 
 	//Attributes
 	var/list/final_attribute_list = list()
 	for(var/id in A.attributes)
 		var/experience/attribute/B = A.attributes[id]
-		final_attribute_list[id] = B.experience
+		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.default_level)
+		final_attribute_list[id] = desired_experience
 	loaded_data["attributes"] = final_attribute_list
 
 	if(write_json_data_to_id(owner.save_slot,loaded_data))
@@ -160,8 +162,8 @@
 
 	//Skills
 	for(var/id in loaded_data["skills"])
-		var/xp = loaded_data["skills"][id]
 		var/experience/skill/S = A.get_skill(id)
+		var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.default_level)
 		if(S)
 			S.Initialize(xp)
 		else
@@ -169,8 +171,8 @@
 
 	//Attributes
 	for(var/id in loaded_data["attributes"])
-		var/xp = loaded_data["attributes"][id]
 		var/experience/attribute/S = A.get_attribute(id)
+		var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.default_level)
 		if(S)
 			S.Initialize(xp)
 		else

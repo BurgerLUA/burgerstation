@@ -23,6 +23,9 @@
 	verbs += /client/verb/ghost
 	verbs += /client/verb/edit_macros
 	verbs += /client/verb/set_fps
+	verbs += /client/verb/open_discord
+	verbs += /client/verb/open_github
+
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test
 	if(ckey == "burgerbb")
@@ -33,3 +36,14 @@
 		verbs += /client/verb/get_enemies_to_spawn
 
 	return TRUE
+
+/client/verb/open_discord()
+	set name = "Open Discord"
+	set hidden = TRUE
+	src << run("https://discord.gg/yEaV92a")
+
+/client/verb/open_github()
+	set name = "Open Github"
+	set hidden = TRUE
+	src << run("https://github.com/BurgerLUA/burgerstation")
+

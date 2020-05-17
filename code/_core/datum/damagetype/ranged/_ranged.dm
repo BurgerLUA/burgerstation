@@ -24,7 +24,7 @@
 
 	attribute_damage = list()
 
-	skill_stats = list(
+	bonus_experience = list(
 		SKILL_RANGED = 1
 	)
 

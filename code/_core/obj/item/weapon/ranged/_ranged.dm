@@ -314,12 +314,11 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
-			if(i == CEILING(bullet_count_to_use/2,1) && is_player(caller) && view_punch && view_punch_time > 1)
+			if(i == 1 && is_player(caller) && view_punch && view_punch_time > 1)
 				var/mob/living/advanced/player/P = caller
 				if(P.client)
-					var/client/C = P.client
-					animate(C,pixel_w = normx*view_punch, pixel_z = -normy*view_punch, time = (view_punch_time-1)*0.5)
-					animate(C,pixel_w = 0, pixel_z = 0, time = view_punch_time-1)
+					animate(P.client,pixel_w = normx*view_punch, pixel_z = -normy*view_punch, time = (view_punch_time-1)*0.5)
+					animate(pixel_w = 0, pixel_z = 0, time = view_punch_time-1)
 
 			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag)
 

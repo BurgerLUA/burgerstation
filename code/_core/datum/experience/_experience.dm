@@ -61,11 +61,11 @@
 
 	if(!(bypass_checks || owner.allow_experience_gains))
 		return FALSE
-
-
 	if(!ENABLE_XP)
 		return FALSE
+
 	experience += xp_to_add
+
 	var/current_level = get_current_level()
 	if(last_level != current_level)
 		on_level_up(last_level,current_level)

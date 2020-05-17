@@ -43,7 +43,7 @@
 */
 
 
-/turf/simulated/floor/colored/jungle_grass
+/turf/simulated/floor/colored/grass/jungle
 	name = "jungle grass"
 	color = "#42512B"
 	layer = LAYER_FLOOR_LARGE + 0.1
@@ -51,20 +51,6 @@
 
 	footstep_id = "grass"
 
-/*
-/turf/simulated/floor/colored/jungle_grass/New(loc)
-
-	var/r = 39
-	var/g = 81
-	var/b = 46
-
-	r += rand(-10,0)
-	g += rand(-10,0)
-	b += rand(-10,0)
-
-	color = rgb(r,g,b)
-	..()
-*/
 
 /turf/simulated/floor/colored/grass/dark
 	name = "dark grass"
@@ -216,6 +202,8 @@
 	footstep_id = "asteroid"
 
 	delay_modifier = 1.2
+
+	layer = LAYER_FLOOR_LARGE + 0.3
 
 /turf/simulated/floor/colored/ash/grey
 	name = "ancient ash"

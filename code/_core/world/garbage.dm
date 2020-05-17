@@ -30,7 +30,7 @@ var/global/list/qdel_refs_to_type = list()
 			return TRUE
 
 		if(do_crash)
-			CRASH("Datum of type [object.type] was queued for delete [object.qdel_attempts] times!")
+			CRASH_SAFE("Datum of type [object.type] was queued for delete [object.qdel_attempts] times!")
 
 
 

@@ -8,7 +8,7 @@
 
 	shoot_delay = 2
 
-	automatic = FALSE
+	automatic = TRUE
 
 	shoot_sounds = list('sounds/weapons/308/shoot.ogg')
 

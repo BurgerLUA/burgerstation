@@ -7,67 +7,66 @@
 
 //Warrior 6
 /experience/skill/melee/ //STRENGTH
+	//Each point of damage dealt = 1xp
 	name = "Melee"
 	id = SKILL_MELEE
 	desc = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
-	//Each point of damage dealt = 1xp
-	experience_power = 1.9
-	experience_multiplier = 2.5
+	experience_power = 1.6
+	experience_multiplier = 15
 	combat_level_mul = 1
 
 /experience/skill/unarmed/ //STRENGTH
+	//Each point of damage dealt = 1xp
 	name = "Unarmed"
 	id = SKILL_UNARMED
 	desc = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
-	//Each point of damage dealt = 1xp
-	experience_power = 2
-	experience_multiplier = 1
+	experience_power = 1.6
+	experience_multiplier = 15
 	combat_level_mul = 0.75
 
 /experience/skill/prayer/ //VITALITY
 	name = "Prayer"
 	id = SKILL_PRAYER
 	desc = "Your skill in praying to the gods. Affects the strength, speed, and success rate of casting prayer-based spells and abilities."
-	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	combat_level_mul = 0.75
 
 /experience/skill/block/ //FORTITUDE
+	//Each time you block = 1xp
 	name = "Block"
 	id = SKILL_BLOCK
 	desc = "Your skill in blocking attacks with a weapon or a shield. Affects the chance of a successful block of swords, bucklers, or even your fists."
-	//Each point of damage blocked = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
+	experience_power = 0.8
+	experience_multiplier = 100
 	combat_level_mul = 0.75
 
 //Rogue 6
 /experience/skill/ranged/ //DEXTERITY
+	//Each point of damage dealt = 1xp
 	name = "Ranged"
 	id = SKILL_RANGED
 	desc = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
-	experience_power = 1.9
-	experience_multiplier = 2.5
-	//Each point of damage dealt = 1xp
+	experience_power = 1.6
+	experience_multiplier = 15
 	combat_level_mul = 1
 
 /experience/skill/precision/ //DEXTERITY
+	//Each critical hit = 1xp
 	name = "Precision"
 	id = SKILL_PRECISION
 	desc = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
-	experience_power = 1.9
-	experience_multiplier = 2.5
-	//Each point of damage dealt = 1xp
+	experience_power = 1.5
+	experience_multiplier = 3
 	combat_level_mul = 1
 
 /experience/skill/dodge/ //AGILITY
+	//Each time you dodge = 1 xp
 	name = "Dodge"
 	id = SKILL_DODGE
 	desc = "Your skill in dodging incoming attacks. Affects the chance of a successful dodge from melee weapons, ranged weapons, and magic."
-	//Each point of damage dodged = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
+	experience_power = 0.8
+	experience_multiplier = 100
 	combat_level_mul = 0.75
 
 /experience/skill/survival //ENDURANCE
@@ -84,39 +83,33 @@
 	name = "Magic"
 	id = SKILL_MAGIC
 	desc = "Your skill in casting damage-dealing subjugation magic such as fireball, lightning bolt, and frostwave."
-	//Each successful spell = 1xp
-	//Each point of power in a spell successfully casted = 1xp
-	experience_power = 1.8
-	experience_multiplier = 4.1
+	experience_power = 1.6
+	experience_multiplier = 15
 	combat_level_mul = 1
 
 /experience/skill/sorcery/ //INTELLIGENCE
 	name = "Sorcery"
 	id = SKILL_SORCERY
 	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
-	//Each successful spell = 1xp
-	//Each point of power in a spell successfully casted = 1xp
-	experience_power = 1.8
-	experience_multiplier = 4.1
+	experience_power = 1.6
+	experience_multiplier = 15
 	combat_level_mul = 0.75
 
 /experience/skill/medicine/ //WILLPOWER
 	name = "Medicine"
 	id = SKILL_MEDICINE
 	desc = "Your skill in casting damage-warding deterrence magic such as raise barrier, conjure armor, and reflect spell."
-	//Each successful spell = 1xp
-	//Each point of power in a spell successfully casted = 1xp
 	experience_power = 1.8
 	experience_multiplier = 4.1
 	combat_level_mul = 0.75
 
 /experience/skill/parry/ //WISDOM
+	//Each time you parry = 1xp
 	name = "Parrying"
 	id = SKILL_PARRY
 	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
-	//Each point of damage parried = 1xp, rounded up.
-	experience_power = 1.5
-	experience_multiplier = 3.1
+	experience_power = 0.8
+	experience_multiplier = 100
 	combat_level_mul = 1
 
 //Crafting

@@ -15,7 +15,7 @@
 	enable_wounds = TRUE
 
 	var/vision_mod = FLAG_VISION_NONE
-	var/sight_mod = SEE_SELF | SEE_BLACKNESS
+	var/sight_mod = SEE_BLACKNESS
 
 
 /obj/item/organ/eye/initialize_blends()

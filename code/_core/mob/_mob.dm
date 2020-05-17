@@ -89,7 +89,7 @@
 
 /mob/proc/update_eyes()
 	vision = 0x0
-	sight = (SEE_SELF | SEE_BLACKNESS)
+	sight = SEE_BLACKNESS
 	return TRUE
 
 /mob/Destroy()

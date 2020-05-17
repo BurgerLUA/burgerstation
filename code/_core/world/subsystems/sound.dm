@@ -107,7 +107,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	var/track/T = all_tracks[music_track_id]
 	if(!T)
-		CRASH("WARNING: INVALID MUSIC TRACK: [music_track_id].")
+		CRASH_SAFE("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 		return FALSE
 
 	var/volume_mod = 50
@@ -199,7 +199,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	var/sound/created_sound = sound(sound_path)
 	if(!created_sound)
-		CRASH("Error: Invalid sound: [sound_path].")
+		CRASH_SAFE("Error: Invalid sound: [sound_path].")
 		return FALSE
 
 	created_sound.frequency = pitch

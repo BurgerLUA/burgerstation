@@ -483,6 +483,9 @@
 	if(I.delete_on_drop)
 		return FALSE
 
+	if(I.anchored)
+		return FALSE
+
 	if(!I.can_be_held(owner,src))
 		return FALSE
 
@@ -538,6 +541,9 @@
 		return FALSE
 
 	if(worn_slots <= 0)
+		return FALSE
+
+	if(I.anchored)
 		return FALSE
 
 	if(!I.can_be_worn(owner,src))

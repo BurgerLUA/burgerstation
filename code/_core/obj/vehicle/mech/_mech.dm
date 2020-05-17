@@ -10,12 +10,6 @@
 
 	movement_delay = 10
 
-/mob/living/vehicle/mech/receive_sound(var/sound/S)
-	for(var/mob/living/L in contents)
-		L.receive_sound(S)
-	return TRUE
-
-
 /mob/living/vehicle/mech/post_death()
 	. = ..()
 	update_sprite()

@@ -34,6 +34,3 @@
 		return TRUE
 
 	return ..()
-
-/mob/living/advanced/npc/get_xp_multiplier()
-	return 0

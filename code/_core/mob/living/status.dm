@@ -2,7 +2,7 @@
 
 	var/status_effect/S = SSstatus.all_status_effects[status_type]
 	if(!S)
-		CRASH("Invalid status effect added! ([status_type])")
+		CRASH_SAFE("Invalid status effect added! ([status_type])")
 		return FALSE
 
 	. = FALSE
@@ -42,7 +42,7 @@
 		return FALSE
 	var/status_effect/S = SSstatus.all_status_effects[status_type]
 	if(!S)
-		CRASH("Invalid status effect removed! ([status_type])")
+		CRASH_SAFE("Invalid status effect removed! ([status_type])")
 		return FALSE
 	S.on_effect_removed(src,status_type,status_effects[status_type]["magnitude"],status_effects[status_type]["duration"])
 	status_effects -= status_type

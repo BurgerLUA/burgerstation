@@ -89,6 +89,8 @@
 
 	var/list/skill_damage = list()
 
+	var/list/bonus_experience = list()
+
 	var/use_blamed_stats = FALSE
 
 	var/throw_mul = 1
@@ -204,13 +206,18 @@
 	return new_attack_damage
 
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(!is_player(attacker))
+		return FALSE
+
 	if(ismovable(victim))
 		var/atom/movable/M = victim
 		if(M.grabbing_hand)
 			var/obj/hud/inventory/I = M.grabbing_hand
 			if(I.owner == attacker)
 				return TRUE
-	return is_living(attacker) && prob(get_crit_chance(attacker))
+
+	return prob(get_crit_chance(attacker))
 
 
 //atom/proc/defer_victim(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
@@ -257,6 +264,8 @@
 			var/real_damage_type = attack_damage_conversion[damage_type]
 			damage_to_deal_main[real_damage_type] += damage_amount * critical_hit_multiplier
 
+
+
 		do_attack_animation(attacker,victim,weapon,hit_object,critical_hit_multiplier > 1)
 
 		var/total_damage_dealt = 0
@@ -299,10 +308,21 @@
 			if(is_living(attacker) && attacker != victim && total_damage_dealt)
 				var/mob/living/A = attacker
 				if(A.client)
+					if(critical_hit_multiplier > 1)
+						A.add_skill_xp(SKILL_PRECISION,1)
+
 					for(var/skill in skill_stats)
-						var/xp_to_give = FLOOR(skill_stats[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						var/xp_to_give = CEILING(skill_stats[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
+							A.to_chat("Giving [xp_to_give] [skill] experience.",CHAT_TYPE_COMBAT)
+
+					for(var/skill in bonus_experience)
+						var/xp_to_give = CEILING(bonus_experience[skill] * total_damage_dealt * victim.get_xp_multiplier(),1)
+						if(xp_to_give > 0)
+							A.add_skill_xp(skill,xp_to_give)
+							A.to_chat("Giving [xp_to_give] [skill] experience.",CHAT_TYPE_COMBAT)
+
 
 		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 

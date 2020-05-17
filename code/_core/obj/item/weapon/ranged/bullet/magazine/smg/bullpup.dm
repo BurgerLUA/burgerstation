@@ -38,13 +38,13 @@
 	ai_heat_sensitivity = 0.75
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
-	if(stored_magazine)
-		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[initial(icon_state)]_[round(length(M.stored_bullets),4)]"
-	else
-		icon_state = initial(icon_state)
 
-	..()
+	icon_state = initial(icon_state)
+
+	if(stored_magazine)
+		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*6, 1)]"
+
+	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_static_spread() //Base spread
 	return 0.01

@@ -9,8 +9,7 @@
 /mob/living/proc/get_skill_power(var/id)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
-		log_error("Warning! Tried getting skill [id], but it didn't exist for [src.name]([src.type])!")
-		CRASH("Attribute error!")
+		CRASH_SAFE("Warning! Tried getting skill [id], but it didn't exist for [src.name]([src.type])!")
 		return 0.25
 	return S.get_power()
 
@@ -37,8 +36,7 @@
 /mob/living/proc/get_attribute_power(var/id)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
-		log_error("Warning! Tried getting attribute [id], but it didn't exist for [src.name]([src.type])!")
-		CRASH_SAFE("Attribute error")
+		CRASH_SAFE("Warning! Tried getting attribute [id], but it didn't exist for [src.name]([src.type])!")
 		return 0.25
 	return A.get_power()
 

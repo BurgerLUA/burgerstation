@@ -17,6 +17,8 @@
 	density_south = TRUE
 	density_west = TRUE
 
+	plane = PLANE_WATER
+
 /turf/simulated/floor/river/walkable
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

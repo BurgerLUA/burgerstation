@@ -1,6 +1,8 @@
-#define PLANE_SPACE -15
+#define PLANE_SPACE -16
 
-#define PLANE_PARALAX -14
+#define PLANE_PARALAX -15
+
+#define PLANE_WATER -14
 
 #define PLANE_FLOOR -13
 

@@ -8,3 +8,5 @@
 	desired_light_color = "#FF8300"
 
 	footstep_id = "lava"
+
+	plane = PLANE_WATER
