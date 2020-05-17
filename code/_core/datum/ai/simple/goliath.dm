@@ -24,7 +24,7 @@
 	if(objective_attack)
 		if(get_dist(owner,objective_attack) <= attack_distance_max)
 			return ..()
-		else if(tentacle_attack_ticks < 15)
+		else if(tentacle_attack_ticks < 100)
 			tentacle_attack_ticks++
 		else
 			owner_as_goliath.tentacle_attack(objective_attack)

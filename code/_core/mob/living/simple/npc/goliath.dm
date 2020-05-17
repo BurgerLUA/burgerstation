@@ -9,8 +9,6 @@
 
 	stun_angle = 0
 
-	loot_drop = "goliath"
-
 	armor_base = list(
 		BLADE = 50,
 		BLUNT = 75,
@@ -47,12 +45,13 @@
 		valid_turfs += get_step(desired_target,SOUTH)
 		valid_turfs += get_step(desired_target,WEST)
 		valid_turfs -= pick(valid_turfs)
+		valid_turfs += get_turf(desired_target)
 
 		for(var/turf/T in valid_turfs)
 			new/obj/effect/temp/hazard/tentacle/(T,desired_owner = src)
 
-		new/obj/effect/temp/hazard/tentacle/(get_turf(desired_target),desired_owner = src)
 		sleep(10)
+
 		if(dead)
 			return
 		icon_state = initial(icon_state)

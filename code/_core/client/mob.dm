@@ -68,7 +68,10 @@
 
 	if(screen)
 		screen.Cut()
-		screen += examine_overlay
+		if(!examine_overlay)
+			log_error("Warning: Client [src] did not have an examine overlay!")
+		else
+			screen += examine_overlay
 
 	if(images)
 		images.Cut()

@@ -96,7 +96,6 @@ obj/effect/temp/hazard/tentacle/
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
 	if(istype(victim,/mob/living/simple/npc/goliath/)) //This bug is hilarious but we don't want to have it.
 		return FALSE
-
 	return ..()
 
 

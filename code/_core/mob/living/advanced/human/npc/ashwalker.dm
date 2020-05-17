@@ -5,13 +5,10 @@
 
 	species = "reptile"
 
-	loot_drop_in_corpse = TRUE
-
 	var/loadout_to_use = "ashwalker"
 	var/shield_chance = 0
 	var/spear_chance = 25
 
-	loot_drop = "ashwalker"
 
 /mob/living/advanced/npc/ashwalker/New(loc,desired_client,desired_level_multiplier)
 
@@ -65,5 +62,3 @@
 	loadout_to_use = "ashwalker_warrior"
 	spear_chance = 100
 	shield_chance = 50
-
-	loot_drop = "ashwalker_warrior"

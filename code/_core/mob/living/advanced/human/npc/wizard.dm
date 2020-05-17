@@ -4,12 +4,9 @@
 	ai = /ai/advanced/ranged/
 	class = "wizard"
 
-	loot_drop = "wizard"
-
 	force_spawn = TRUE
 	boss = TRUE
 
-	loot_drop_in_corpse = TRUE
 
 /mob/living/advanced/npc/evil_wizard/Initialize()
 

@@ -9,7 +9,6 @@
 
 	stun_angle = 180
 
-	loot_drop = "crab"
 
 	armor_base = list(
 		BLADE = 25,
@@ -51,7 +50,6 @@
 	ai = /ai/
 
 	class = "crab_king"
-	loot_drop = "crab"
 
 	object_size = 1
 

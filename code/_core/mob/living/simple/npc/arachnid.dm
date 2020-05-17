@@ -30,9 +30,9 @@
 	iff_tag = "jungle"
 	loyalty_tag = "jungle"
 
-	movement_delay = DECISECONDS_TO_TICKS(0.5)
+	health_base = 500
 
-
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 /mob/living/simple/npc/arachnid/post_death()
 	. = ..()

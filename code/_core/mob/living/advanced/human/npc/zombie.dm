@@ -5,12 +5,10 @@
 
 	species = "human"
 
-	loot_drop_in_corpse = TRUE
 
 	var/loadout_to_use = "zombie"
 	var/spear_chance = 0
 
-	loot_drop = "zombie"
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 
@@ -39,12 +37,10 @@
 
 /mob/living/advanced/npc/zombie/winter
 	loadout_to_use = "zombie_winter"
-	loot_drop = "zombie"
 	spear_chance = 100
 	level_multiplier = 1.5
 
 /mob/living/advanced/npc/zombie/desert
 	loadout_to_use = "zombie_desert"
-	loot_drop = "zombie"
 	spear_chance = 0
 	level_multiplier = 2

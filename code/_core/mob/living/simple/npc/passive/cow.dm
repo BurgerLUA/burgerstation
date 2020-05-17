@@ -3,7 +3,12 @@
 	icon_state = "cow"
 	damage_type = /damagetype/npc/cow
 	class = "cow"
-	loot_drop = "cow"
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/food/dynamic/meat/raw
+	)
 
 /mob/living/simple/npc/passive/cow/post_death()
 	..()

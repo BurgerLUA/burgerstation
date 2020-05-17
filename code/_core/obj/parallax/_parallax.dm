@@ -13,7 +13,7 @@
 
 /obj/parallax/defer_click_on_object(location,control,params)
 
-	if(params && length(params))
+	if(params && length(params) && params["screen-loc"])
 		var/turf/T = get_turf(owner)
 		var/list/screen_loc = parse_screen_loc(params["screen-loc"])
 		var/x_c = FLOOR(T.x + (screen_loc[1]/TILE_SIZE) - VIEW_RANGE,1)

@@ -9,7 +9,7 @@
 
 	class = "spider"
 
-	stun_angle = 180
+	stun_angle = 0
 
 	health_base = 100
 

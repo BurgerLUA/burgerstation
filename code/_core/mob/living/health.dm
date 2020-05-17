@@ -93,7 +93,12 @@
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,damage_table,damage_amount)
 
-
-
+	if(dead && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
+		var/mob/living/L = attacker
+		var/blade_damage = SAFENUM(damage_table[BLADE])
+		if(blade_damage >= src.health.health_max*0.1)
+			src.butcher(attacker)
+		else
+			L.to_chat("You need a stronger blade to butcher \the [src.name]!")
 
 	return .

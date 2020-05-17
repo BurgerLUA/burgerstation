@@ -66,6 +66,7 @@ mob/living/advanced/proc/handle_regen()
 /mob/living/advanced/pre_death()
 	return TRUE
 
+/*
 /mob/living/advanced/do_loot_drop(var/atom/desired_loc)
 
 	if(health && desired_loc && loot_drop && is_item(desired_loc))
@@ -82,6 +83,7 @@ mob/living/advanced/proc/handle_regen()
 		return TRUE
 
 	return FALSE
+*/
 
 mob/living/advanced/revive()
 

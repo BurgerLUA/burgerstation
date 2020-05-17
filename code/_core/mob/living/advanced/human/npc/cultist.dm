@@ -1,7 +1,6 @@
 /mob/living/advanced/npc/clown
 	name = "clown"
 
-	loot_drop = "clown"
 
 	ai = /ai/advanced/ranged
 
@@ -25,7 +24,6 @@
 	ai = /ai/advanced/ranged/wizard
 	class = "wizard"
 
-	loot_drop = "wizard"
 
 /mob/living/advanced/npc/cultist01/Initialize()
 

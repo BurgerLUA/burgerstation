@@ -46,6 +46,7 @@
 
 	return TRUE
 
+/*
 /mob/living/proc/do_loot_drop(var/atom/desired_loc)
 
 	if(desired_loc && loot_drop && health)
@@ -66,6 +67,7 @@
 		return TRUE
 
 	return FALSE
+*/
 
 /mob/living/proc/revive()
 	movement_flags = 0x0
@@ -87,8 +89,6 @@
 	return TRUE
 
 /mob/living/proc/pre_death()
-	var/turf/T = get_turf(src)
-	do_loot_drop(T)
 	return TRUE
 
 /mob/living/proc/post_death()
@@ -318,5 +318,18 @@ mob/living/proc/on_life_slow()
 
 		if(health_regen_buffer || stamina_regen_buffer || mana_regen_buffer)
 			update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0,TRUE)
+
+	return TRUE
+
+/mob/living/proc/butcher(var/mob/caller)
+
+	caller.visible_message("\The [caller.name] butchers \the [src.name].","You butcher \the [src.name].")
+
+	for(var/k in butcher_contents)
+		var/obj/O = new k(src.loc)
+		INITIALIZE(O)
+		SPAWN(O)
+
+	qdel(src)
 
 	return TRUE

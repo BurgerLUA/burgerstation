@@ -45,9 +45,6 @@
 
 	var/turf/old_turf //Last turf someone has been in.
 
-	var/loot_drop
-	var/loot_drop_in_corpse = FALSE
-
 	var/level_multiplier = 1 //Multiplier for enemies. Basically how much each stat is modified by.
 
 	var/stun_angle = 0
@@ -124,6 +121,8 @@
 	acceleration_mod = 0.5
 	acceleration = 25
 	deceleration = 1
+
+	var/list/obj/butcher_contents = list()
 
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))

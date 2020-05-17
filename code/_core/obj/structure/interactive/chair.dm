@@ -11,6 +11,7 @@ obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 	if(.)
 		if(dir == NORTH)
 			plane = PLANE_MOB
+			layer = LAYER_MOB_ABOVE
 		else
 			plane = initial(plane)
 
@@ -20,14 +21,19 @@ obj/structure/interactive/chair/Crossed(var/atom/movable/O,var/atom/new_loc,var/
 
 	. = ..()
 
-	if(is_advanced(O))
-		spawn(SECONDS_TO_DECISECONDS(1))
-			var/turf/T = O.loc
-			if(src in T.contents)
-				O.set_dir(src.dir)
+	if(is_living(O))
+		CALLBACK("sit_down_\ref[src]",SECONDS_TO_DECISECONDS(1),src,.proc/sit_your_ass_down,O)
 
 	return .
 
+obj/structure/interactive/chair/proc/sit_your_ass_down(var/mob/living/L)
+
+	if(L.loc != src.loc)
+		return FALSE
+
+	L.set_dir(src.dir)
+
+	return TRUE
 
 obj/structure/interactive/chair/stool
 	name = "stool"

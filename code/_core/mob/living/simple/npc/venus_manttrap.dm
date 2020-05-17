@@ -28,6 +28,7 @@
 	iff_tag = "jungle"
 	loyalty_tag = "jungle"
 
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 /mob/living/simple/npc/venus_human_trap/post_death()
 	. = ..()

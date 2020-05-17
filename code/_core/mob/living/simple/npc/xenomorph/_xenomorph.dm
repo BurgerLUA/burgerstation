@@ -30,6 +30,8 @@
 		FATIGUE = 0
 	)
 
+	movement_delay = DECISECONDS_TO_TICKS(0.5)
+
 /mob/living/simple/npc/xenomorph/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -56,6 +58,6 @@
 	boss = TRUE
 	force_spawn = TRUE
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	level_multiplier = 4
