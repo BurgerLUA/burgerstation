@@ -114,6 +114,7 @@
 #include "code\__helpers\progress_bar.dm"
 #include "code\__helpers\random.dm"
 #include "code\__helpers\screen_location.dm"
+#include "code\__helpers\subsystems.dm"
 #include "code\__helpers\text.dm"
 #include "code\__helpers\thinking.dm"
 #include "code\__helpers\time.dm"

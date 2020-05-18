@@ -23,7 +23,7 @@
 		return FALSE
 
 	var/obj/structure/interactive/door/alarm/D = new(src.loc)
-	//GENERATEING AND INITIALIZE HANDLED AT ROUND START.
+	LATE_INIT(D)
 
 	//This forces it to be one of 4 directions.
 	if(touching_space & NORTH)
@@ -37,10 +37,11 @@
 
 	return D
 
-
 /obj/marker/spawning/window/do_spawn(var/turf/T)
-	new/obj/structure/interactive/construction/grille(T)
-	new/obj/structure/smooth/window(T)
+	var/obj/structure/interactive/construction/grille/G = new(T)
+	var/obj/structure/smooth/window/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(W)
 	setup_airlock()
 
 /obj/marker/spawning/window/rcd/do_spawn(var/turf/T)
@@ -56,14 +57,18 @@
 	icon_state = "window_grille_reinforced"
 
 /obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
-	new/obj/structure/interactive/construction/grille(T)
-	new/obj/structure/smooth/window/reinforced(T)
+	var/obj/structure/interactive/construction/grille/G = new(T)
+	var/obj/structure/smooth/window/reinforced/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(W)
 	setup_airlock()
 
 /obj/marker/spawning/window/extra/
 	icon_state = "window_grille_extra"
 
 /obj/marker/spawning/window/extra/do_spawn(var/turf/T)
-	new/obj/structure/interactive/construction/grille/plasteel(T)
-	new/obj/structure/smooth/window/reinforced/plasma(T)
+	var/obj/structure/interactive/construction/grille/plasteel/G = new(T)
+	var/obj/structure/smooth/window/reinforced/plasma/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(W)
 	setup_airlock()

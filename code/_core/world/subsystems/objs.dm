@@ -5,14 +5,14 @@ SUBSYSTEM_DEF(obj)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	var/list/queued_smooth = list()
 
-/subsystem/obj/Initialize()
-
-	set background = 1
-
 	var/list/initialize_early = list()
 	var/list/initialize_normal = list()
 	var/list/initialize_late = list()
 	var/list/initialize_none = list()
+
+/subsystem/obj/Initialize()
+
+	set background = 1
 
 	for(var/obj/O in world)
 		if(O.initialize_type == INITIALIZE_EARLY)
@@ -43,9 +43,12 @@ SUBSYSTEM_DEF(obj)
 
 	log_subsystem(name,"Late: Initialized and spawned [length(initialize_late)] objects in world.")
 
-	log_subsystem(name,"Total: Initialized and spawned [length(initialize_early) + length(initialize_normal) + length(initialize_late)] total objects in world.")
-
 	log_subsystem(name,"NULL: Could not initialize [length(initialize_none)] objects.")
+
+	initialize_early.Cut()
+	initialize_normal.Cut()
+	initialize_late.Cut()
+	initialize_none.Cut()
 
 /subsystem/obj/on_life()
 
