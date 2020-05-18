@@ -59,6 +59,8 @@ var/global/list/all_areas = list()
 
 	var/defend = FALSE //Set to true if you're supposed to defend this area.
 
+	var/safe_storage = FALSE
+
 
 /area/New()
 	. = ..()

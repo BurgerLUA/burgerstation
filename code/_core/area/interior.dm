@@ -122,6 +122,7 @@
 /area/interior/ship/kitchen
 	name = "\improper Cafe"
 	icon_state = "cafe"
+	safe_storage = TRUE
 
 /area/interior/ship/dorm
 	name = "\improper Dorm"
@@ -172,6 +173,11 @@
 /area/interior/ship/hanger
 	name = "\improper Hanger"
 	icon_state = "hanger"
+
+/area/interior/ship/cargo
+	name = "\improper Cargo"
+	icon_state = "cargo"
+	safe_storage = TRUE
 
 /area/interior/ship/maint
 	name = "\improper Maint"

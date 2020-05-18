@@ -6,6 +6,7 @@ var/global/list/area/transit/transit_areas = list()
 	is_space = TRUE
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 	var/turf/transit_turf = /turf/simulated/floor/plating
+	safe_storage = TRUE
 
 /area/transit/New(var/desired_loc)
 	transit_areas[id] = src

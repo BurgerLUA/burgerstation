@@ -3,9 +3,10 @@
 	desc = "a powered airlock"
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
-	var/filler = "fill"
 
-	var/base_color = "#FFFFFF"
+	var/filler = "fill"
+	var/panel = TRUE
+
 	var/fill_color = "#FFFFFF"
 
 	var/open_wait_time = 3
@@ -25,15 +26,7 @@
 
 	var/no_access = FALSE
 
-/obj/structure/interactive/door/airlock/Initialize()
-
-	if(color)
-		base_color = color
-		color = "#FFFFFF"
-	else
-		base_color = "#FFFFFF"
-
-	return ..()
+	var/debug = FALSE
 
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -159,30 +152,39 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 	return TRUE
 
 
-
-
-
-/obj/structure/interactive/door/airlock/update_icon()
+/obj/structure/interactive/door/airlock/update_sprite()
 
 	icon = initial(icon)
+	underlays.Cut()
+	overlays.Cut()
+
+	var/light_state = null
+	var/light_color = null
 
 	switch(door_state)
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "opening_01"
+			light_state = "opening_01_light"
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			light_color = "#FFFF00"
 
 		if(DOOR_STATE_OPENING_02)
 			icon_state = "opening_02"
+			light_state = "opening_02_light"
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			light_color = "#00FF00"
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_01)
 			icon_state = "closing_01"
+			light_state = "closing_01_light"
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			light_color = "#FFFF00"
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_02)
 			icon_state = "closing_02"
+			light_state = "closing_02_light"
 			switch(filler)
 				if("glass")
 					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
@@ -190,15 +192,20 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 				else
 					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
 					set_opacity(1)
+			light_color = "#FF0000"
 
 		if(DOOR_STATE_OPENED)
 			icon_state = "open"
+			light_state = "open_light"
+			light_color = null
 			desc = "The door is open."
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
 			set_opacity(0)
 
-		if(DOOR_STATE_CLOSED,DOOR_STATE_DENY,DOOR_STATE_START_OPENING)
+		if(DOOR_STATE_CLOSED)
 			icon_state = "closed"
+			light_state = "closed_light"
+			light_color = null
 			desc = "The door is closed."
 			switch(filler)
 				if("glass")
@@ -207,53 +214,39 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 				else
 					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
 					set_opacity(1)
+			if(locked)
+				light_color = "#FF0000"
 
-	var/icon/base_icon = new/icon(icon,icon_state)
-	ASSERT(base_color)
-	base_icon.Blend(base_color,ICON_MULTIPLY)
+		if(DOOR_STATE_DENY)
+			light_state = "light_special_access"
+			light_color = "#FF0000"
+
+		if(DOOR_STATE_START_OPENING)
+			light_state = "light_special_static"
+			light_color = "#00FF00"
 
 	if(filler)
-		var/icon/fill_icon = new /icon(icon,"[icon_state]_[filler]")
-		ASSERT(fill_color)
-		fill_icon.Blend(fill_color,ICON_MULTIPLY)
-		base_icon.Blend(fill_icon,ICON_OVERLAY)
+		var/image/fill = new/image(icon,"[icon_state]_[filler]")
+		fill.appearance_flags = RESET_COLOR
+		fill.color = fill_color
+		underlays += fill
 
-	var/icon/panel_icon = new /icon(icon,"[icon_state]_panel")
-	base_icon.Blend(panel_icon,ICON_OVERLAY)
+	if(panel)
+		var/image/panel = new /image(icon,"[icon_state]_panel")
+		overlays += panel
 
-	var/desired_color
+	var/image/light_fixtures = new /image(icon,light_state)
+	light_fixtures.appearance_flags = RESET_COLOR
+	light_fixtures.color = light_color ? light_color : "#FFFFFF"
+	overlays += light_fixtures
 
-	if(door_state == DOOR_STATE_DENY || (locked && door_state == DOOR_STATE_CLOSED))
-		desired_color = "#FF0000"
-	else
-		switch(door_state)
-			if(DOOR_STATE_OPENING_01,DOOR_STATE_OPENING_02,DOOR_STATE_START_OPENING)
-				desired_color = "#00FF00"
-			if(DOOR_STATE_CLOSING_01,DOOR_STATE_CLOSING_02)
-				desired_color = "#FFFF00"
+	var/image/frame = new /icon(icon,"frame")
+	overlays += frame
 
-	var/light_state = "[icon_state]_light"
 
-	if(door_state == DOOR_STATE_DENY)
-		light_state = "light_special_access"
 
-	if(door_state == DOOR_STATE_START_OPENING || locked && door_state == DOOR_STATE_CLOSED )
-		light_state = "light_special_static"
+/obj/structure/interactive/door/airlock/proc/get_light_color()
 
-	if(!desired_color)
-		set_light(FALSE)
-	else
-		set_light(1,0.75,desired_color)
-
-	if(desired_color)
-		var/icon/light_icon = new /icon(icon,light_state)
-		light_icon.Blend(desired_color,ICON_MULTIPLY)
-		base_icon.Blend(light_icon,ICON_OVERLAY)
-
-	var/icon/frame_icon = new /icon(icon,"frame")
-	base_icon.Blend(frame_icon,ICON_OVERLAY)
-
-	icon = base_icon
 
 
 /obj/structure/interactive/door/airlock/Cross(var/atom/movable/A,var/atom/NewLoc,var/atom/OldLoc)

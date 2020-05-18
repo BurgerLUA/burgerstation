@@ -1,0 +1,11 @@
+When hitting a target, the body part you hit is affected by your targeting indicator at the bottom right of the screen. Whether or not your shot lands as intended is determined by your precision skill.
+You will always hit the targeted limb when targeting an NPC who isn't aware of your presence.
+Grabbing an enemy and hitting them with a melee weapon, a ranged weapon, or your fists will always deal critical damage.
+Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object.
+Enemy corpses can be sent to cargo for a reward.
+Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while.
+Bicaridine heals brute damage. Kelotane heals burn damage. Dylovene heals toxin damage.
+You can butcher most animals or creatures for meat and materials if you have a sharp enough melee weapon for it.
+Shotguns, SMGs, and Carbines are good for taking on groups of enemies.
+Rifles are good for picking out targets from a long range. They require more skill to use effectively, however.
+

@@ -10,15 +10,15 @@
 
 #define PLANE_TILE -11
 
-#define PLANE_WALL -10
+#define PLANE_SHUTTLE -10
 
-#define PLANE_SHUTTLE -9
+#define PLANE_BLOOD -9
 
-#define PLANE_BLOOD -8
+#define PLANE_OBJ -8
 
-#define PLANE_OBJ -7
+#define PLANE_MOB -7
 
-#define PLANE_MOB -6
+#define PLANE_WALL -6
 
 #define PLANE_TREE -5
 

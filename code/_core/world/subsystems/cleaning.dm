@@ -42,10 +42,17 @@ SUBSYSTEM_DEF(delete)
 				continue
 
 		var/should_delete = TRUE
-		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,get_turf(object_to_delete)))
-			if(!P.client)
-				continue
-			should_delete = FALSE
+
+		if(is_atom(object_to_delete))
+			var/area/A = get_area(object_to_delete)
+			if(A.safe_storage)
+				should_delete = FALSE
+
+		if(should_delete)
+			for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,get_turf(object_to_delete)))
+				if(!P.client)
+					continue
+				should_delete = FALSE
 
 		if(!should_delete)
 			objects_to_delete_safe[object_to_delete] = world.time + 300

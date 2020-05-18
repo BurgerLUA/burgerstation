@@ -8,7 +8,7 @@
 
 	if(!accurate && is_living(attacker) && attacker != src)
 		var/mob/living/L = attacker
-		var/inaccuracy = (1 - L.get_attribute_power(ATTRIBUTE_DEXTERITY))*8
+		var/inaccuracy = (1 - L.get_skill_power(SKILL_PRECISION))*8
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 

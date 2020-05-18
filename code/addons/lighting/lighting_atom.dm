@@ -24,7 +24,7 @@
 #define NONSENSICAL_VALUE -99999
 
 // The proc you should always use to set the light of this atom.
-/atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE)
+/atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 
 	if(!isnum(l_range))
 		CRASH_SAFE("Light range set to null!")
@@ -45,28 +45,32 @@
 	if (angle != NONSENSICAL_VALUE)
 		light_wedge = angle
 
-	if (no_update)
+	if(no_update)
 		return
 
-	update_light()
+	update_light(debug)
 
 #undef NONSENSICAL_VALUE
 
 // Will update the light (duh).
 // Creates or destroys it if needed, makes it update values, makes sure it's got the correct source turf...
-/atom/proc/update_light()
+/atom/proc/update_light(debug)
 
 	if(qdeleting)
+		if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being deleted as the object is being deleted.")
 		QDEL_NULL(light) //TODO: Does this work?
 		return
 
 	if (!light_power || !light_range) // We won't emit light anyways, destroy the light source.
+		if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being deleted as there is no light power ([light_power]) or light range ([light_range]).")
 		QDEL_NULL(light)
 	else
-		if (light)
+		if(light)
 			light.update()
+			if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being updated.")
 		else
 			light = new /light_source(src)
+			if(debug) LOG_DEBUG("Light for [src.get_debug_name()] is being created.")
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
 /atom/movable/Destroy()

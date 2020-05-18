@@ -34,7 +34,6 @@
 			I2.update_sprite()
 			over_inventory.add_object(I2)
 
-
 	return ..()
 
 /obj/hud/inventory/proc/get_top_object()

@@ -43,13 +43,18 @@
 	if(attacker && victim && attacker != victim && !ignore_distance)
 		attacker.face_atom(victim)
 
-	var/attacker_is_ai = FALSE
+	var/precise = FALSE
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		attacker_is_ai = L.ai
+		precise = TRUE
 		if(victim && L.intent == INTENT_HELP && src.help(attacker,victim,params))
 			return TRUE
+
+	if(!precise && is_living(victim))
+		var/mob/living/L = victim
+		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+			precise = TRUE
 
 	if(is_player(attacker))
 		var/mob/living/advanced/player/P = attacker
@@ -70,7 +75,7 @@
 			params[PARAM_ICON_Y] = num2text(attack_y)
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
-	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params,attacker_is_ai,attacker_is_ai)
+	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params,precise,precise)
 
 	if(!object_to_damage_with)
 		return FALSE

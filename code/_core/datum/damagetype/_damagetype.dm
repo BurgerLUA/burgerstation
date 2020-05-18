@@ -116,7 +116,7 @@
 	return list()
 
 /damagetype/proc/get_crit_chance(var/mob/living/L)
-	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION) + L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)
+	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION)*0.75 + (L.get_attribute_power(ATTRIBUTE_LUCK) - 0.5)*0.25)
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -310,7 +310,7 @@
 				var/mob/living/V = victim
 				if(!V.dead && A.client)
 					if(critical_hit_multiplier > 1)
-						A.add_skill_xp(SKILL_PRECISION,1)
+						A.add_skill_xp(SKILL_PRECISION,5)
 
 					for(var/skill in skill_stats)
 						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
