@@ -65,7 +65,7 @@
 		INITIALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
-			SPAWN(O)
+			GENERATE(O)
 		return TRUE
 
 	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects
@@ -76,7 +76,7 @@
 		INITIALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
-			SPAWN(O)
+			GENERATE(O)
 		return TRUE
 
 /*

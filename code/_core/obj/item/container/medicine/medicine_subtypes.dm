@@ -10,7 +10,7 @@
 /obj/item/container/medicine/bandage/advanced
 	name = "infused bandages (styptic powder)"
 
-/obj/item/container/medicine/bandage/advanced/on_spawn()
+/obj/item/container/medicine/bandage/advanced/Generate()
 	reagents.add_reagent("styptic_powder",50)
 	return ..()
 
@@ -25,7 +25,7 @@
 /obj/item/container/medicine/ointment/advanced
 	name = "infused ointment (silver sulfadiazine)"
 
-/obj/item/container/medicine/ointment/advanced/on_spawn()
+/obj/item/container/medicine/ointment/advanced/Generate()
 	reagents.add_reagent("silver_sulfadiazine",50)
 	return ..()
 
@@ -41,7 +41,7 @@
 /obj/item/container/medicine/trauma_kit/advanced
 	name = "infused trauma kit (styptic powder)"
 
-/obj/item/container/medicine/trauma_kit/advanced/on_spawn()
+/obj/item/container/medicine/trauma_kit/advanced/Generate()
 	reagents.add_reagent("styptic_powder",50)
 	return ..()
 
@@ -56,7 +56,7 @@
 /obj/item/container/medicine/burn_kit/advanced
 	name = "infused burn kit (silver sulfadiazine)"
 
-/obj/item/container/medicine/burn_kit/advanced/on_spawn()
+/obj/item/container/medicine/burn_kit/advanced/Generate()
 	reagents.add_reagent("silver_sulfadiazine",50)
 	return ..()
 
@@ -73,12 +73,12 @@
 	name = "brute patch (Styptic Powder)"
 	icon_state = "patch_brute"
 
-/obj/item/container/medicine/patch/brute/on_spawn()
+/obj/item/container/medicine/patch/brute/Generate()
 	reagents.add_reagent("styptic_powder",20)
 
 /obj/item/container/medicine/patch/burn
 	name = "burn patch (Silver Sulfadiazine)"
 	icon_state = "patch_burn"
 
-/obj/item/container/medicine/patch/burn/on_spawn()
+/obj/item/container/medicine/patch/burn/Generate()
 	reagents.add_reagent("silver_sulfadiazine",20)

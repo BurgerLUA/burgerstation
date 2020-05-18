@@ -22,24 +22,21 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 
 #define is_valid(A) (istype(A) && !A.qdeleting && A.loc != null)
 // #define INITIALIZE(A) (A.initialized ? log_error("WARNING: [A.get_debug_name()] was initialized more than once!") : A.Initialize())
-// #define SPAWN(A) (A.spawned ? log_error("WARNING: [A.get_debug_name()] was spawned more than once!") : A.on_spawn())
+// #define GENERATE(A) (A.spawned ? log_error("WARNING: [A.get_debug_name()] was spawned more than once!") : A.on_spawn())
 
 
 
-/proc/INITIALIZE(var/datum/D)
-	if(D.initialized)
-		CRASH_SAFE("WARNING: [D.get_debug_name()] was initialized more than once!")
-		return FALSE
-	return 	D.Initialize()
+#define INITIALIZE(D)																		\
+	if(D.initialized)																		\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");			\
+	else																					\
+		D.Initialize();
 
-
-/proc/SPAWN(var/datum/D)
-	if(D.spawned)
-		CRASH_SAFE("WARNING: [D.get_debug_name()] was spawned more than once!")
-		return FALSE
-	return 	D.on_spawn()
-
-
+#define GENERATE(D)																			\
+	if(D.generated)																			\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");			\
+	else																					\
+		D.Generate();
 
 proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 	for(var/k in objects_to_spawn)
@@ -54,7 +51,7 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 				var/obj/item/material/M2 = M
 				M2.material_id = material_id
 			INITIALIZE(M)
-			SPAWN(M)
+			GENERATE(M)
 			animate(M,pixel_x = rand(-8,8), pixel_y = rand(-8,8), time = 3)
 
 	return TRUE

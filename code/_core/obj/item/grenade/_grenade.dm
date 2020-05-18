@@ -31,9 +31,7 @@
 		qdel(I)
 	stored_containers.Cut()
 
-	if(stored_trigger)
-		qdel(stored_trigger)
-	stored_trigger = null
+	QDEL_NULL(stored_trigger)
 
 	return ..()
 
@@ -42,17 +40,17 @@
 	update_sprite()
 	return .
 
-/obj/item/grenade/on_spawn()
+/obj/item/grenade/Generate()
 
 	. = ..()
 
 	for(var/obj/item/I in stored_containers)
 		INITIALIZE(I)
-		SPAWN(I)
+		GENERATE(I)
 
 	if(stored_trigger)
 		INITIALIZE(stored_trigger)
-		SPAWN(stored_trigger)
+		GENERATE(stored_trigger)
 
 	update_sprite()
 
@@ -149,14 +147,14 @@
 
 	return ..()
 
-/obj/item/grenade/timed/on_spawn()
+/obj/item/grenade/timed/Generate()
 	stored_trigger = new /obj/item/device/timer(src)
 	return ..()
 
 /obj/item/grenade/timed/explosive/
 	name = "timed explosive grenade"
 
-/obj/item/grenade/timed/explosive/on_spawn()
+/obj/item/grenade/timed/explosive/Generate()
 	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)
 	stored_containers += new /obj/item/container/beaker/large/grenade_potassium(src)
 	return ..()

@@ -33,7 +33,7 @@
 	S.item_count_current = I.item_count_current
 	S.material_id = I.material_id
 	INITIALIZE(S)
-	SPAWN(S)
+	GENERATE(S)
 	qdel(I)
 
 	return

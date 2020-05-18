@@ -1,28 +1,28 @@
 /obj/item/container/pill/bicaridine
 	name = "bicaridine pill (20u)"
 
-/obj/item/container/pill/bicaridine/on_spawn()
+/obj/item/container/pill/bicaridine/Generate()
 	reagents.add_reagent("bicaridine",20)
 	return ..()
 
 /obj/item/container/pill/kelotane
 	name = "kelotane pill (20u)"
 
-/obj/item/container/pill/kelotane/on_spawn()
+/obj/item/container/pill/kelotane/Generate()
 	reagents.add_reagent("kelotane",20)
 	return ..()
 
 /obj/item/container/pill/dylovene
 	name = "dylovene pill (20u)"
 
-/obj/item/container/pill/dylovene/on_spawn()
+/obj/item/container/pill/dylovene/Generate()
 	reagents.add_reagent("dylovene",20)
 	return ..()
 
 /obj/item/container/pill/iron
 	name = "iron pill (20u)"
 
-/obj/item/container/pill/iron/on_spawn()
+/obj/item/container/pill/iron/Generate()
 	reagents.add_reagent("iron",20)
 	return ..()
 
@@ -30,7 +30,7 @@
 	name = "space drugs (5u)"
 	icon_state = "circle"
 
-/obj/item/container/pill/space_drugs/on_spawn()
+/obj/item/container/pill/space_drugs/Generate()
 	reagents.add_reagent("space_drugs",5)
 	return ..()
 
@@ -39,6 +39,6 @@
 	name = "space dust (10u)"
 	icon_state = "circle"
 
-/obj/item/container/pill/space_dust/on_spawn()
+/obj/item/container/pill/space_dust/Generate()
 	reagents.add_reagent("space_dust",10)
 	return ..()

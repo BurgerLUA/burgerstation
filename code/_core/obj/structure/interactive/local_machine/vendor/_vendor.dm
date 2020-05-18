@@ -15,6 +15,8 @@
 	var/is_free = FALSE
 	var/free_text = "free"
 
+	initialize_type = INITIALIZE_LATE
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
@@ -43,7 +45,7 @@
 	var/obj/item/new_item
 	new_item = new associated_item.type(get_turf(src))
 	INITIALIZE(new_item)
-	SPAWN(new_item)
+	GENERATE(new_item)
 	new_item.update_sprite()
 	if(P)
 		if(item_value)
@@ -62,7 +64,7 @@
 	for(var/S in stored_types)
 		var/obj/item/I = new S(src.loc)
 		INITIALIZE(I)
-		SPAWN(I)
+		GENERATE(I)
 	stored_types.Cut()
 
 	for(var/obj/item/I in T.contents)

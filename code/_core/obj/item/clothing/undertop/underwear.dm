@@ -45,7 +45,7 @@
 /obj/item/clothing/undertop/underwear/bra/brown
 	color = "#603A20"
 
-/obj/item/clothing/undertop/underwear/bra/random/on_spawn()
+/obj/item/clothing/undertop/underwear/bra/random/Generate()
 	color = random_color()
 	return ..()
 
@@ -63,6 +63,6 @@
 	name = "security undershirt"
 	color = COLOR_BLACK
 
-/obj/item/clothing/undertop/underwear/shirt/random/on_spawn()
+/obj/item/clothing/undertop/underwear/shirt/random/Generate()
 	color = random_color()
 	return ..()

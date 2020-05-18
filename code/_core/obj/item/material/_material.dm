@@ -14,7 +14,7 @@
 
 	value = 1
 
-/obj/item/material/on_spawn()
+/obj/item/material/Generate()
 	. = ..()
 	update_sprite()
 	return .

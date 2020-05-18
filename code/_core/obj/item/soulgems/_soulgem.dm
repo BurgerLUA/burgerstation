@@ -47,18 +47,18 @@
 	return ..()
 
 
-/obj/item/soulgem/common/on_spawn()
+/obj/item/soulgem/common/Generate()
 	total_charge = 1000
 	return ..()
 
-/obj/item/soulgem/uncommon/on_spawn()
+/obj/item/soulgem/uncommon/Generate()
 	total_charge = 2500
 	return ..()
 
-/obj/item/soulgem/rare/on_spawn()
+/obj/item/soulgem/rare/Generate()
 	total_charge = 5000
 	return ..()
 
-/obj/item/soulgem/mystic/on_spawn()
+/obj/item/soulgem/mystic/Generate()
 	total_charge = 10000
 	return ..()

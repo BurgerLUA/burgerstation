@@ -23,7 +23,7 @@
 			R.material_id = material_id
 			R.item_count_current = 4
 			INITIALIZE(R)
-			SPAWN(R)
+			GENERATE(R)
 			caller.to_chat("You cut \the [src.name] into 4 [R.name].")
 			add_item_count(-1)
 			R.Move(get_turf(I))
@@ -33,17 +33,17 @@
 /obj/item/material/sheet/steel
 	material_id = "steel"
 
-/obj/item/material/sheet/steel/spawn_50/on_spawn()
+/obj/item/material/sheet/steel/spawn_50/Generate()
 	item_count_current = 50
 	update_sprite()
 	return ..()
 
-/obj/item/material/sheet/steel/spawn_25/on_spawn()
+/obj/item/material/sheet/steel/spawn_25/Generate()
 	item_count_current = 25
 	update_sprite()
 	return ..()
 
-/obj/item/material/sheet/steel/spawn_10/on_spawn()
+/obj/item/material/sheet/steel/spawn_10/Generate()
 	item_count_current = 10
 	update_sprite()
 	return ..()
@@ -51,7 +51,7 @@
 /obj/item/material/sheet/glass
 	material_id = "glass"
 
-/obj/item/material/sheet/glass/spawn_50/on_spawn()
+/obj/item/material/sheet/glass/spawn_50/Generate()
 	item_count_current = 50
 	update_sprite()
 	return ..()

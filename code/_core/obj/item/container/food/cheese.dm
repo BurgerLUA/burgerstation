@@ -16,7 +16,7 @@
 
 	reagents = /reagent_container/food/cheese
 
-/obj/item/container/food/dynamic/cheese/on_spawn()
+/obj/item/container/food/dynamic/cheese/Generate()
 	created_date = get_date()
 	created_time = get_time()
 	return ..()
@@ -108,7 +108,7 @@
 	name = "block cheese"
 	icon_state = "block"
 
-/obj/item/container/food/dynamic/cheese/block/on_spawn()
+/obj/item/container/food/dynamic/cheese/block/Generate()
 	reagents.add_reagent("processed_cheese",40)
 	return ..()
 
@@ -116,6 +116,6 @@
 	name = "wheel cheese"
 	icon_state = "wheel"
 
-/obj/item/container/food/dynamic/cheese/wheel/on_spawn()
+/obj/item/container/food/dynamic/cheese/wheel/Generate()
 	reagents.add_reagent("processed_cheese",40)
 	return ..()

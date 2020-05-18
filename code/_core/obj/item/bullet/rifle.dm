@@ -20,7 +20,7 @@
 
 	value = 0.7
 
-/obj/item/bullet_cartridge/rifle_308/on_spawn()
+/obj/item/bullet_cartridge/rifle_308/Generate()
 	item_count_current = 5
 	return ..()
 

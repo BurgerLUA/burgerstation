@@ -14,7 +14,7 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/food/sandwich/on_spawn()
+/obj/item/container/food/sandwich/Generate()
 	reagents.add_reagent("bread_flour_white",5)
 	return ..()
 

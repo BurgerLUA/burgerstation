@@ -11,7 +11,6 @@
 
 	if(!new_owner)
 		CRASH_SAFE("FATAL ERROR: Savedata did not have a valid owner!")
-		qdel(src)
 		return FALSE
 
 	if(new_owner)

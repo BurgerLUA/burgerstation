@@ -13,7 +13,7 @@
 
 	value = 50
 
-/obj/item/weapon/melee/tool/rcd/on_spawn()
+/obj/item/weapon/melee/tool/rcd/Generate()
 	matter_current = matter_max
 	return ..()
 

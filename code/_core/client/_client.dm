@@ -90,17 +90,10 @@ var/global/list/all_clients = list()
 	last_location = null
 	last_object = null
 
-	qdel(connection_data)
-	connection_data = null
-
-	qdel(settings)
-	settings = null
-
-	qdel(macros)
-	macros = null
-
-	qdel(controls)
-	controls = null
+	QDEL_NULL(connection_data)
+	QDEL_NULL(settings)
+	QDEL_NULL(macros)
+	QDEL_NULL(controls)
 
 	clear_mob(mob)
 

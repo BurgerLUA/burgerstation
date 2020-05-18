@@ -43,9 +43,7 @@
 
 /stand/Destroy()
 
-	if(linked_stand)
-		qdel(linked_stand)
-		linked_stand = null
+	QDEL_NULL(linked_stand)
 
 	if(stand_user)
 		stand_user = null
@@ -140,8 +138,8 @@
 	return TRUE
 
 /mob/living/proc/remove_stand()
-	qdel(stand)
-	stand = null
+	QDEL_NULL(stand)
+	return TRUE
 
 /mob/living/proc/add_stand()
 

@@ -81,15 +81,8 @@
 		qdel(O)
 	overlays.Cut()
 
-	if(reagents)
-		qdel(reagents)
-
-	reagents = null
-
-	if(health)
-		qdel(health)
-
-	health = null
+	QDEL_NULL(reagents)
+	QDEL_NULL(health)
 
 	stop_thinking(src)
 

@@ -24,7 +24,7 @@
 /obj/item/proc/update_inventory() //When this object's inventory was updated.
 	return TRUE
 
-/obj/item/on_spawn()
+/obj/item/Generate()
 	fill_inventory()
 	return ..()
 
@@ -35,7 +35,7 @@
 			if(I.initialized)
 				continue
 			INITIALIZE(I)
-			SPAWN(I)
+			GENERATE(I)
 			add_to_inventory(null,I,FALSE,TRUE)
 
 		return TRUE

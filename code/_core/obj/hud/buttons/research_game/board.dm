@@ -100,23 +100,14 @@
 	for(var/x_pos=1,x_pos<=RESEARCH_BOARD_SIZE,x_pos++)
 		for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)
 			var/obj/hud/button/research/piece/P = pieces[x_pos][y_pos]
-			if(P)
-				qdel(P)
-			P = null
+			QDEL_NULL(P)
 		pieces[x_pos].Cut()
 	pieces.Cut()
 
-	qdel(linked_time)
-	linked_time = null
-
-	qdel(linked_score)
-	linked_score = null
-
-	qdel(linked_text)
-	linked_text = null
-
-	qdel(linked_quit)
-	linked_quit = null
+	QDEL_NULL(linked_time)
+	QDEL_NULL(linked_score)
+	QDEL_NULL(linked_text)
+	QDEL_NULL(linked_quit)
 
 	return ..()
 
@@ -127,8 +118,7 @@
 	if(linked_time)
 		linked_time.update_owner(desired_owner)
 		if(desired_owner == null)
-			qdel(linked_time)
-			linked_time = null
+			QDEL_NULL(linked_time)
 	else if(desired_owner != null)
 		linked_time = new
 		linked_time.update_owner(desired_owner)
@@ -136,8 +126,7 @@
 	if(linked_level)
 		linked_level.update_owner(desired_owner)
 		if(desired_owner == null)
-			qdel(linked_level)
-			linked_level = null
+			QDEL_NULL(linked_level)
 	else if(desired_owner != null)
 		linked_level = new
 		linked_level.update_owner(desired_owner)
@@ -145,8 +134,7 @@
 	if(linked_score)
 		linked_score.update_owner(desired_owner)
 		if(desired_owner == null)
-			qdel(linked_score)
-			linked_score = null
+			QDEL_NULL(linked_score)
 	else if(desired_owner != null)
 		linked_score = new
 		linked_score.update_owner(desired_owner)
@@ -154,8 +142,7 @@
 	if(linked_text)
 		linked_text.update_owner(desired_owner)
 		if(desired_owner == null)
-			qdel(linked_text)
-			linked_text = null
+			QDEL_NULL(linked_text)
 	else if(desired_owner != null)
 		linked_text = new
 		linked_text.update_owner(desired_owner)
@@ -163,8 +150,7 @@
 	if(linked_quit)
 		linked_quit.update_owner(desired_owner)
 		if(desired_owner == null)
-			qdel(linked_quit)
-			linked_quit = null
+			QDEL_NULL(linked_quit)
 	else if(desired_owner != null)
 		linked_quit = new
 		linked_quit.update_owner(desired_owner)

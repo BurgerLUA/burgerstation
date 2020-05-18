@@ -6,10 +6,10 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
-/obj/item/clothing/ears/headset/on_spawn()
+/obj/item/clothing/ears/headset/Generate()
 	stored_radio = new stored_radio(src)
 	INITIALIZE(stored_radio)
-	SPAWN(stored_radio)
+	GENERATE(stored_radio)
 	return ..()
 
 /obj/item/clothing/ears/headset/click_self(var/mob/caller,location,control,params)

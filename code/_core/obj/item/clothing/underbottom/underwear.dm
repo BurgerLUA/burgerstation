@@ -16,7 +16,7 @@
 
 	dyeable = TRUE
 
-/obj/item/clothing/underbottom/underwear/boxers/random/on_spawn()
+/obj/item/clothing/underbottom/underwear/boxers/random/Generate()
 	color = random_color()
 	return ..()
 
@@ -75,7 +75,7 @@
 /obj/item/clothing/underbottom/underwear/panty/red
 	color = "#C60000"
 
-/obj/item/clothing/underbottom/underwear/panty/random/on_spawn()
+/obj/item/clothing/underbottom/underwear/panty/random/Generate()
 	color = random_color()
 	return ..()
 

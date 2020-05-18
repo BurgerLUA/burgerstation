@@ -6,7 +6,7 @@ var/global/list/chargen_spawnpoints = list()
 var/global/list/horde_spawnpoints = list()
 
 /obj/marker/spawnpoint
-	name = "SPAWNPOINT"
+	name = "GENERATEPOINT"
 
 /obj/marker/spawnpoint/ghost
 	name = "ghost spawnpoint"

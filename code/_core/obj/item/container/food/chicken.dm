@@ -50,10 +50,10 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/chicken/raw/on_spawn()
+/obj/item/container/food/dynamic/chicken/raw/Generate()
 	reagents.add_reagent("raw_chicken",10)
 	return ..()
 
-/obj/item/container/food/dynamic/chicken/cooked/on_spawn()
+/obj/item/container/food/dynamic/chicken/cooked/Generate()
 	reagents.add_reagent("cooked_chicken",10)
 	return ..()

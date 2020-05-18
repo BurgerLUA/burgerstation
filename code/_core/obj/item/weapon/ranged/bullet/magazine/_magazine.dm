@@ -16,12 +16,12 @@
 		if("back")
 			return 'sounds/weapons/gun/general/slide_lock_1.ogg'
 
-/obj/item/weapon/ranged/bullet/magazine/on_spawn()
+/obj/item/weapon/ranged/bullet/magazine/Generate()
 
 	if(stored_magazine)
 		stored_magazine = new stored_magazine(src)
 		INITIALIZE(stored_magazine)
-		SPAWN(stored_magazine)
+		GENERATE(stored_magazine)
 		open = FALSE
 		update_sprite()
 

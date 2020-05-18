@@ -57,7 +57,7 @@
 
 	return TRUE
 
-/obj/item/container/pill/on_spawn()
+/obj/item/container/pill/Generate()
 	. = ..()
 	update_sprite()
 	return .

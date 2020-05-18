@@ -8,33 +8,33 @@
 
 	value = 10
 
-/obj/item/container/beaker/large/bicaridine/on_spawn()
+/obj/item/container/beaker/large/bicaridine/Generate()
 	reagents.add_reagent("bicaridine",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/large/kelotane/on_spawn()
+/obj/item/container/beaker/large/kelotane/Generate()
 	reagents.add_reagent("kelotane",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/large/dylovene/on_spawn()
+/obj/item/container/beaker/large/dylovene/Generate()
 	reagents.add_reagent("dylovene",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/large/water/on_spawn()
+/obj/item/container/beaker/large/water/Generate()
 	reagents.add_reagent("water",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/large/potassium/on_spawn()
+/obj/item/container/beaker/large/potassium/Generate()
 	reagents.add_reagent("potassium",reagents.volume_max)
 	return ..()
 
 
-/obj/item/container/beaker/large/grenade_water/on_spawn()
+/obj/item/container/beaker/large/grenade_water/Generate()
 	reagents.add_reagent("water",reagents.volume_max*0.5)
 	reagents.add_reagent("iron",reagents.volume_max*0.5)
 	return ..()
 
-/obj/item/container/beaker/large/grenade_potassium/on_spawn()
+/obj/item/container/beaker/large/grenade_potassium/Generate()
 	reagents.add_reagent("potassium",reagents.volume_max*0.5)
 	reagents.add_reagent("iron",reagents.volume_max*0.5)
 	return ..()

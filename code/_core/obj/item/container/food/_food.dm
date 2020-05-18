@@ -15,7 +15,7 @@
 
 	var/original_volume = 0
 
-/obj/item/container/food/on_spawn()
+/obj/item/container/food/Generate()
 	original_volume = reagents.volume_current
 	return ..()
 

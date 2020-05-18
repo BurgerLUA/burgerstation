@@ -92,7 +92,7 @@
 
 #define CHAT_FONT_SIZE 0.25
 
-#define SPAWN_PROTECTION_TIME 10 //Time in seconds that you have spawn protection for when you leave a safezone.
+#define GENERATE_PROTECTION_TIME 10 //Time in seconds that you have spawn protection for when you leave a safezone.
 
 #define FOOTSTEP_VOLUME 25
 #define FOOTPRINT_FADE_TIME SECONDS_TO_DECISECONDS(60)

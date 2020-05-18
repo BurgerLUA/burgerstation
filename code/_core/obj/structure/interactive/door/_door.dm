@@ -46,7 +46,7 @@ obj/structure/interactive/door
 		S.frequency_current = radio_frequency
 		S.signal_current = radio_signal
 		INITIALIZE(S)
-		SPAWN(S)
+		GENERATE(S)
 		door_state = DOOR_STATE_CLOSED
 		locked = TRUE
 

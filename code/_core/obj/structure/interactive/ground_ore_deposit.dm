@@ -34,7 +34,7 @@
 	var/obj/item/material/ore/O = new(src.loc)
 	O.material_id = src.material_id
 	INITIALIZE(O)
-	SPAWN(O)
+	GENERATE(O)
 	src.ore_score--
 	update_sprite()
 	for(var/obj/structure/interactive/ore_box/OB in range(1,src))

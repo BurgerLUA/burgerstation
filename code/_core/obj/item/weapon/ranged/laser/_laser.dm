@@ -11,7 +11,7 @@
 	charge_cost = FLOOR(charge_cost, 1)
 	return ..()
 
-/obj/item/weapon/ranged/energy/on_spawn()
+/obj/item/weapon/ranged/energy/Generate()
 	charge_current = charge_max
 	return ..()
 

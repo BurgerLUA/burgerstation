@@ -9,38 +9,43 @@ SUBSYSTEM_DEF(obj)
 
 	set background = 1
 
-	var/initialize_early = 0
-	var/initialize_normal = 0
-	var/initialize_late = 0
+	var/list/initialize_early = list()
+	var/list/initialize_normal = list()
+	var/list/initialize_late = list()
+	var/list/initialize_none = list()
 
 	for(var/obj/O in world)
-		if(O.initialize_type != INITIALIZE_EARLY)
-			continue
+		if(O.initialize_type == INITIALIZE_EARLY)
+			initialize_early += O
+		else if(O.initialize_type == INITIALIZE_LATE)
+			initialize_late += O
+		else if(O.initialize_type == INITIALIZE_NORMAL)
+			initialize_normal += O
+		else
+			initialize_none += O
+			log_error("ERROR: [O.get_debug_name()] did not have a valid initialize_type ([O.initialize_type]) set!")
+
+	for(var/obj/O in initialize_early)
 		INITIALIZE(O)
-		SPAWN(O)
-		initialize_early++
+		GENERATE(O)
 
-	log_subsystem(name,"Early: Initialized and spawned [initialize_early] objects in world.")
+	log_subsystem(name,"Early: Initialized and spawned [length(initialize_early)] objects in world.")
 
-	for(var/obj/O in world)
-		if(O.initialize_type != INITIALIZE_NORMAL)
-			continue
+	for(var/obj/O in initialize_normal)
 		INITIALIZE(O)
-		SPAWN(O)
-		initialize_normal++
+		GENERATE(O)
 
-	log_subsystem(name,"Normal: Initialized and spawned [initialize_normal] objects in world.")
+	log_subsystem(name,"Normal: Initialized and spawned [length(initialize_normal)] objects in world.")
 
-	for(var/obj/O in world)
-		if(O.initialize_type != INITIALIZE_LATE)
-			continue
+	for(var/obj/O in initialize_late)
 		INITIALIZE(O)
-		SPAWN(O)
-		initialize_late++
+		GENERATE(O)
 
-	log_subsystem(name,"Late: Initialized and spawned [initialize_late] objects in world.")
+	log_subsystem(name,"Late: Initialized and spawned [length(initialize_late)] objects in world.")
 
-	log_subsystem(name,"Total: Initialized and spawned [initialize_early + initialize_normal + initialize_late] total objects in world.")
+	log_subsystem(name,"Total: Initialized and spawned [length(initialize_early) + length(initialize_normal) + length(initialize_late)] total objects in world.")
+
+	log_subsystem(name,"NULL: Could not initialize [length(initialize_none)] objects.")
 
 /subsystem/obj/on_life()
 

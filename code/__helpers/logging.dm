@@ -35,4 +35,8 @@
 		var/v = L[k]
 		LOG_DEBUG("[dir2text(text2num(k))]: [v]")
 
-#define CRASH_SAFE(x) try CRASH(x); catch(var/exception/e) log_error("[e.name] in [e.file]:[e.line].\n[e.desc]")
+#define CRASH_SAFE(x) 												\
+	try 															\
+		CRASH(x); 													\
+	catch(var/exception/e) 											\
+		log_error("[e.name] in [e.file]:[e.line].\n[e.desc]");

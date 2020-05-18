@@ -43,12 +43,12 @@
 	..()
 	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
 	INITIALIZE(U1)
-	SPAWN(U1)
+	GENERATE(U1)
 	attach_equipment(U1)
 
 	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U2 = new(src.loc)
 	INITIALIZE(U2)
-	SPAWN(U2)
+	GENERATE(U2)
 	attach_equipment(U2)
 
 /mob/living/vehicle/mech/gygax
@@ -116,9 +116,9 @@
 	..()
 	var/obj/item/weapon/ranged/energy/mech/smg/mk2/U1 = new(src.loc)
 	INITIALIZE(U1)
-	SPAWN(U1)
+	GENERATE(U1)
 	attach_equipment(U1)
 	var/obj/item/weapon/ranged/energy/mech/smg/mk3/U2 = new(src.loc)
 	INITIALIZE(U2)
-	SPAWN(U2)
+	GENERATE(U2)
 	attach_equipment(U2)

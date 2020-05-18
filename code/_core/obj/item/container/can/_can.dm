@@ -27,7 +27,7 @@
 
 	return TRUE
 
-/obj/item/container/beaker/can/on_spawn()
+/obj/item/container/beaker/can/Generate()
 
 	var/best_reagent = null
 	var/best_reagent_amount = 0
@@ -46,37 +46,37 @@
 
 	return ..()
 
-/obj/item/container/beaker/can/cola/on_spawn()
+/obj/item/container/beaker/can/cola/Generate()
 	reagents.add_reagent("cola",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/can/grape_soda/on_spawn()
+/obj/item/container/beaker/can/grape_soda/Generate()
 	reagents.add_reagent("grape_soda",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/can/orange_soda/on_spawn()
+/obj/item/container/beaker/can/orange_soda/Generate()
 	reagents.add_reagent("orange_soda",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/can/iced_tea/on_spawn()
+/obj/item/container/beaker/can/iced_tea/Generate()
 	reagents.add_reagent("iced_tea",reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/can/grey_bull/
 	reagents = /reagent_container/beaker/
 
-/obj/item/container/beaker/can/grey_bull/on_spawn()
+/obj/item/container/beaker/can/grey_bull/Generate()
 	reagents.add_reagent("grey_bull",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/can/mountain_wind/on_spawn()
+/obj/item/container/beaker/can/mountain_wind/Generate()
 	reagents.add_reagent("mountain_wind",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/can/dr_gibb/on_spawn()
+/obj/item/container/beaker/can/dr_gibb/Generate()
 	reagents.add_reagent("dr_gibb",reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/can/space_up/on_spawn()
+/obj/item/container/beaker/can/space_up/Generate()
 	reagents.add_reagent("space_up",reagents.volume_max)
 	return ..()

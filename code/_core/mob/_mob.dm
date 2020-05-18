@@ -108,26 +108,13 @@
 	all_mobs -= src
 	all_mobs_with_clients -= src
 
-	qdel(plane_master_wall)
-	plane_master_wall = null
-
-	qdel(plane_master_mob)
-	plane_master_mob = null
-
-	qdel(paralax)
-	paralax = null
-
-	qdel(plane_master_darkness)
-	plane_master_darkness = null
-
-	qdel(plane_master_obj)
-	plane_master_obj = null
-
-	qdel(plane_master_shuttle)
-	plane_master_shuttle = null
-
-	qdel(examine_overlay)
-	examine_overlay = null
+	QDEL_NULL(plane_master_wall)
+	QDEL_NULL(plane_master_mob)
+	QDEL_NULL(paralax)
+	QDEL_NULL(plane_master_darkness)
+	QDEL_NULL(plane_master_obj)
+	QDEL_NULL(plane_master_shuttle)
+	QDEL_NULL(examine_overlay)
 
 	return ..()
 

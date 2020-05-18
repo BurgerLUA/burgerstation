@@ -10,7 +10,7 @@
 	name = pick("chippy crisps","cripsy chips")
 	return ..()
 
-/obj/item/container/food/package/junkfood/chips/on_spawn()
+/obj/item/container/food/package/junkfood/chips/Generate()
 	reagents.add_reagent("chips",20)
 	reagents.add_reagent("salt",10)
 	return ..()
@@ -20,7 +20,7 @@
 	name = "getmore candy bar"
 	icon_state = "candy"
 
-/obj/item/container/food/package/junkfood/candy/on_spawn()
+/obj/item/container/food/package/junkfood/candy/Generate()
 	reagents.add_reagent("low_chocolate",10)
 	reagents.add_reagent("sugar",5)
 	return ..()
@@ -31,7 +31,7 @@
 	name = "sos jerky"
 	icon_state = "jerky"
 
-/obj/item/container/food/package/junkfood/jerky/on_spawn()
+/obj/item/container/food/package/junkfood/jerky/Generate()
 	reagents.add_reagent("soy_jerky",15)
 	reagents.add_reagent("salt",5)
 	return ..()
@@ -40,7 +40,7 @@
 	name = "4no raisins"
 	icon_state = "raisins"
 
-/obj/item/container/food/package/junkfood/raisins/on_spawn()
+/obj/item/container/food/package/junkfood/raisins/Generate()
 	reagents.add_reagent("junk_raisins",10)
 	reagents.add_reagent("salt",5)
 	reagents.add_reagent("sugar",5)
@@ -51,7 +51,7 @@
 	name = "space cream cake"
 	icon_state = "cake"
 
-/obj/item/container/food/package/junkfood/cake/on_spawn()
+/obj/item/container/food/package/junkfood/cake/Generate()
 	reagents.add_reagent("yellow_cake",10)
 	reagents.add_reagent("cream_filling",5)
 	reagents.add_reagent("sugar",5)
@@ -62,7 +62,7 @@
 	name = "syndi-cakes"
 	icon_state = "syndicate"
 
-/obj/item/container/food/package/junkfood/syndicate/on_spawn()
+/obj/item/container/food/package/junkfood/syndicate/Generate()
 	reagents.add_reagent("yellow_cake",10)
 	reagents.add_reagent("omnizine",10)
 	return ..()
@@ -71,7 +71,7 @@
 	name = "cheese honkers"
 	icon_state = "cheesie_honkers"
 
-/obj/item/container/food/package/junkfood/cheese_chips/on_spawn()
+/obj/item/container/food/package/junkfood/cheese_chips/Generate()
 	reagents.add_reagent("chips",10)
 	reagents.add_reagent("salt",5)
 	reagents.add_reagent("cheese_powder",15)

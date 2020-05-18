@@ -17,12 +17,12 @@
 
 	var/obj/item/weapon/melee/zweihander/W = new(src.loc)
 	INITIALIZE(W)
-	SPAWN(W)
+	GENERATE(W)
 	put_in_hands(W,FALSE)
 
 	var/obj/item/weapon/melee/shield/S = new(src.loc)
 	INITIALIZE(S)
-	SPAWN(S)
+	GENERATE(S)
 	put_in_hands(S,TRUE)
 
 	return .

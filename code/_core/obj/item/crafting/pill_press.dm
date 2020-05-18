@@ -56,7 +56,7 @@
 	var/obj/item/container/pill/P = is_double ? /obj/item/container/pill/double : /obj/item/container/pill
 	P = new P(get_turf(src))
 	INITIALIZE(P)
-	SPAWN(P)
+	GENERATE(P)
 
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount)
 	if(I2)

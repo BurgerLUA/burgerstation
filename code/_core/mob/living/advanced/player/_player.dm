@@ -128,16 +128,14 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(area && area.players_inside)
 		area.players_inside -= src
 	all_players -= src
-	qdel(mobdata)
-	mobdata = null
+	QDEL_NULL(mobdata)
 	attack_logs.Cut()
 
 	active_device = null
 	active_structure = null
 	active_paper = null
 
-	qdel(click_and_drag_icon)
-	click_and_drag_icon = null
+	QDEL_NULL(click_and_drag_icon)
 
 	return ..()
 

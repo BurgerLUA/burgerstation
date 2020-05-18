@@ -20,7 +20,7 @@
 /obj/item/bullet_cartridge/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-/obj/item/bullet_cartridge/shotgun/on_spawn()
+/obj/item/bullet_cartridge/shotgun/Generate()
 	item_count_current = 5
 	return ..()
 

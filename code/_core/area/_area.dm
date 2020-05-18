@@ -129,7 +129,7 @@ var/global/list/all_areas = list()
 
 		/*
 		if(safe)
-			P.spawn_protection = SECONDS_TO_DECISECONDS(SPAWN_PROTECTION_TIME)
+			P.spawn_protection = SECONDS_TO_DECISECONDS(GENERATE_PROTECTION_TIME)
 		*/
 
 		if(!players_inside)
@@ -156,7 +156,7 @@ var/global/list/all_areas = list()
 			if(is_player(enterer) && enterer.area)
 				var/mob/living/advanced/player/P = M
 				if(enterer.area.safe && !src.safe) //Leaving a safezone
-					P.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [SPAWN_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
+					P.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [GENERATE_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
 				else if(!enterer.area.safe && src.safe) //Entering a safezone
 					P.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
 					if(assoc_wishgranter)

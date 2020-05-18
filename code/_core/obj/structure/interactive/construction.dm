@@ -37,7 +37,7 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 			L.material_id = material_id
 			L.color = color
 			INITIALIZE(L)
-			SPAWN(L)
+			GENERATE(L)
 			caller.to_chat("You place \the [L.name].")
 			R.add_item_count(-2)
 			qdel(src)
@@ -61,7 +61,7 @@ obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller
 			G.material_id = material_id
 			G.color = color
 			INITIALIZE(G)
-			SPAWN(G)
+			GENERATE(G)
 			caller.to_chat("You place \the [G.name].")
 			S.add_item_count(-4)
 			qdel(src)
@@ -102,7 +102,7 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 			G.material_id = material_id
 			G.color = color
 			INITIALIZE(G)
-			SPAWN(G)
+			GENERATE(G)
 			caller.to_chat("You place \the [G.name].")
 			R.add_item_count(-4)
 			qdel(src)
@@ -206,7 +206,7 @@ obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/calle
 			W.material_id = S.material_id
 			W.color = S.color
 			INITIALIZE(W)
-			SPAWN(W)
+			GENERATE(W)
 			caller.to_chat("You place \the [W].")
 			S.add_item_count(-4)
 			return TRUE

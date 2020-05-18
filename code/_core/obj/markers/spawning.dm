@@ -23,7 +23,7 @@
 		return FALSE
 
 	var/obj/structure/interactive/door/alarm/D = new(src.loc)
-	//SPAWNING AND INITIALIZE HANDLED AT ROUND START.
+	//GENERATEING AND INITIALIZE HANDLED AT ROUND START.
 
 	//This forces it to be one of 4 directions.
 	if(touching_space & NORTH)
@@ -48,8 +48,8 @@
 	var/obj/structure/smooth/window/W = new(T)
 	INITIALIZE(G)
 	INITIALIZE(W)
-	SPAWN(G)
-	SPAWN(W)
+	GENERATE(G)
+	GENERATE(W)
 	queue_update_smooth_edges(W)
 
 /obj/marker/spawning/window/reinforced/

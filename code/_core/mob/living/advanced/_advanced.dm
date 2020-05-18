@@ -92,8 +92,7 @@
 	tracked_hidden_limbs.Cut()
 	tracked_hidden_limb_clothing.Cut()
 
-	qdel(chat_overlay)
-	chat_overlay = null
+	QDEL_NULL(chat_overlay)
 
 	held_objects = null
 	worn_objects = null
@@ -318,7 +317,7 @@ mob/living/advanced/Login()
 	for(var/key in items_to_add)
 		var/obj/item/I = new key(get_turf(src))
 		INITIALIZE(I)
-		SPAWN(I)
+		GENERATE(I)
 		if(istype(I))
 			spawning_outfit.on_add(src,I)
 		else

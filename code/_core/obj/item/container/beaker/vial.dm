@@ -15,6 +15,6 @@
 /obj/item/container/beaker/vial/stand
 	name = "vial of stand powers"
 
-/obj/item/container/beaker/vial/stand/on_spawn()
+/obj/item/container/beaker/vial/stand/Generate()
 	reagents.add_reagent("stand",10)
 	return ..()

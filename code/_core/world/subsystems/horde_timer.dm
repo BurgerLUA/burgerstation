@@ -211,7 +211,7 @@ SUBSYSTEM_DEF(horde)
 						S.ai.set_path(found_path)
 						tracked_enemies += S
 					else
-						log_error("SSHORDE: COULD NOT FIND A SPAWN TO PLACE SYNDICATE!")
+						log_error("SSHORDE: COULD NOT FIND A GENERATE TO PLACE SYNDICATE!")
 					wave_to_spawn--
 
 	//if(state == HORDE_STATE_HIJACK)
@@ -239,7 +239,7 @@ SUBSYSTEM_DEF(horde)
 		var/turf/T = get_turf(S)
 		var/obj/structure/interactive/objective/O = new(T)
 		INITIALIZE(O)
-		SPAWN(O)
+		GENERATE(O)
 		tracked_objectives += O
 
 	var/list/valid_boss_ids = list()

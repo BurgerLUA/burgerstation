@@ -21,7 +21,7 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-/obj/item/magazine/on_spawn()
+/obj/item/magazine/Generate()
 
 	for(var/i=1, i <= bullet_count_max, i++)
 		var/obj/item/bullet_cartridge/B = new ammo(src)

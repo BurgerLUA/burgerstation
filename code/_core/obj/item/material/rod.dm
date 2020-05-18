@@ -30,7 +30,7 @@
 		F.material_id = material_id
 		F.color = color
 		INITIALIZE(F)
-		SPAWN(F)
+		GENERATE(F)
 		caller.to_chat("You place \the [F.name].")
 		add_item_count(-2)
 		return TRUE
@@ -44,17 +44,17 @@
 	color = COLOR_STEEL
 	material_id = "steel"
 
-/obj/item/material/rod/steel/spawn_50/on_spawn()
+/obj/item/material/rod/steel/spawn_50/Generate()
 	item_count_current = 50
 	update_sprite()
 	return ..()
 
-/obj/item/material/rod/steel/spawn_25/on_spawn()
+/obj/item/material/rod/steel/spawn_25/Generate()
 	item_count_current = 25
 	update_sprite()
 	return ..()
 
-/obj/item/material/rod/steel/spawn_10/on_spawn()
+/obj/item/material/rod/steel/spawn_10/Generate()
 	item_count_current = 10
 	update_sprite()
 	return ..()

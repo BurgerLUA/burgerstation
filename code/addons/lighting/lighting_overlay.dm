@@ -54,7 +54,7 @@
 		else
 			log_error("A lighting overlay realised it was in nullspace in update_overlay() and got deleted!")
 
-		qdel(src, TRUE)
+		qdel(src)
 		return
 
 	// See LIGHTING_CORNER_DIAGONAL in lighting_corner.dm for why these values are what they are.

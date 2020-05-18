@@ -173,22 +173,22 @@
 	return TRUE
 
 
-/obj/item/container/food/dynamic/meat/raw/on_spawn()
+/obj/item/container/food/dynamic/meat/raw/Generate()
 	reagents.add_reagent("raw_meat_cow",15)
 	reagents.add_reagent("fat_cow",5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked/on_spawn()
+/obj/item/container/food/dynamic/meat/cooked/Generate()
 	reagents.add_reagent("cooked_meat_cow",15)
 	reagents.add_reagent("fat_cow",5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked/cutlet/on_spawn()
+/obj/item/container/food/dynamic/meat/cooked/cutlet/Generate()
 	reagents.add_reagent("cooked_meat_cow",7)
 	reagents.add_reagent("fat_cow",3)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked/bacon/on_spawn()
+/obj/item/container/food/dynamic/meat/cooked/bacon/Generate()
 	reagents.add_reagent("cooked_meat_cow",3)
 	reagents.add_reagent("fat_cow",2)
 	return ..()

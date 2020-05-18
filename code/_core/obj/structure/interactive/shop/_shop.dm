@@ -15,8 +15,7 @@
 
 /obj/structure/interactive/shop/Destroy()
 
-	qdel(stored_item)
-	stored_item = null
+	QDEL_NULL(stored_item)
 
 	return ..()
 
@@ -118,7 +117,7 @@
 		spawn()
 			var/obj/item/new_item = new stored_item.type(get_turf(src))
 			INITIALIZE(new_item)
-			SPAWN(new_item)
+			GENERATE(new_item)
 			new_item.update_sprite()
 			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))

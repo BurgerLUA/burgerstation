@@ -102,6 +102,6 @@
 
 	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 
-/obj/item/weapon/ranged/magic/scroll/fireball/amount_3/on_spawn()
+/obj/item/weapon/ranged/magic/scroll/fireball/amount_3/Generate()
 	scroll_count = 5
 	return ..()

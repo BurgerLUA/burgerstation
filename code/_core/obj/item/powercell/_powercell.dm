@@ -11,7 +11,7 @@
 
 	value = 5
 
-/obj/item/powercell/on_spawn()
+/obj/item/powercell/Generate()
 	charge_current = charge_max
 	. = ..()
 	update_sprite()

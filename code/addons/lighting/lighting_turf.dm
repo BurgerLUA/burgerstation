@@ -29,8 +29,7 @@
 			var/turf/badT = lighting_overlay.loc
 			log_error("Lighting overlay variable on turf at ([x],[y],[z]) is insane, lighting overlay actually located at ([badT.x],[badT.y],[badT.z])!")
 
-		qdel(lighting_overlay, TRUE)
-		lighting_overlay = null
+		QDEL_NULL(lighting_overlay)
 
 	for (var/lighting_corner/C in corners)
 		C.update_active()

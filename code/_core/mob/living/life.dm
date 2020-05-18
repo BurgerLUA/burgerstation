@@ -328,7 +328,7 @@ mob/living/proc/on_life_slow()
 	for(var/k in butcher_contents)
 		var/obj/O = new k(src.loc)
 		INITIALIZE(O)
-		SPAWN(O)
+		GENERATE(O)
 
 	qdel(src)
 

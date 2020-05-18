@@ -42,6 +42,7 @@
 #include "code\__defines\flags_clothing.dm"
 #include "code\__defines\flags_collision.dm"
 #include "code\__defines\flags_HUD.dm"
+#include "code\__defines\garbage.dm"
 #include "code\__defines\HUD.dm"
 #include "code\__defines\icons.dm"
 #include "code\__defines\initialize.dm"

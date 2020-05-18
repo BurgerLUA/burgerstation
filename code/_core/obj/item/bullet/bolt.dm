@@ -22,7 +22,7 @@
 	weight = 1
 	value = 0.5
 
-/obj/item/bullet_cartridge/bolt/on_spawn()
+/obj/item/bullet_cartridge/bolt/Generate()
 	item_count_current = 3
 	return ..()
 

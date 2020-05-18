@@ -535,9 +535,7 @@
 
 	enabled = TRUE
 
-	if(owner.stored_alert_effect)
-		qdel(owner.stored_alert_effect)
-		owner.stored_alert_effect = null
+	QDEL_NULL(owner.stored_alert_effect)
 
 	if(new_alert_level == ALERT_LEVEL_ALERT)
 		owner.stored_alert_effect = new /obj/effect/alert/exclaim(owner)

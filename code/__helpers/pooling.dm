@@ -1,4 +1,4 @@
-/proc/returnToPool(thing)
+/proc/returnToPool(var/datum/thing)
 	qdel(thing)
 
 /proc/getFromPool(type)

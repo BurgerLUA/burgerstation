@@ -145,9 +145,7 @@
 
 	skills.Cut()
 
-	if(ai)
-		qdel(ai)
-		ai = null
+	QDEL_NULL(ai)
 
 	if(screen_blood)
 		for(var/obj/hud/screen_blood/S in screen_blood)
@@ -167,17 +165,10 @@
 
 	players_fighting_boss.Cut()
 
-	qdel(medical_hud_image)
-	medical_hud_image = null
-
-	qdel(security_hud_image)
-	security_hud_image = null
-
-	qdel(medical_hud_image_advanced)
-	medical_hud_image_advanced = null
-
-	qdel(stored_alert_effect)
-	stored_alert_effect = null
+	QDEL_NULL(medical_hud_image)
+	QDEL_NULL(security_hud_image)
+	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(stored_alert_effect)
 
 	if(client)
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
