@@ -100,12 +100,12 @@ mob/living/advanced/revive()
 
 	. = ..()
 
-	for(var/obj/item/I in held_objects)
-		I.drop_item(src.loc)
+	drop_held_objects(src.loc)
 
 	for(var/k in overlays_assoc)
 		var/obj/overlay/O = k
 		O.plane = plane
+
 	update_all_blends()
 
 	return TRUE

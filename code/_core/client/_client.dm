@@ -322,9 +322,6 @@ var/global/list/all_clients = list()
 	set category = "Fun"
 	set name = "Make Announcement"
 
-	if(lowertext(ckey) != "burgerbb")
-		return FALSE
-
 	var/sender = input("Who should the sender be?","Message Sender") as text | null
 	if(!sender)
 		return FALSE

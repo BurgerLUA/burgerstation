@@ -15,7 +15,7 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 /obj/item/device/keypad/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
-	if(loc && signal_freq == -1 && ((caller.ckey == "burgerbb" && signal_code == 1337) || signal_code == code))
+	if(loc && signal_freq == -1 && signal_code == code)
 		loc.trigger(caller,src,-1,-1)
 
 	return TRUE

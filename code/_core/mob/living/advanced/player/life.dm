@@ -1,6 +1,5 @@
 /mob/living/advanced/player/pre_death()
 	. = ..()
-	drop_held_objects(src.loc)
 	save(FALSE)
 	return .
 

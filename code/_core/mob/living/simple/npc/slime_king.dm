@@ -15,7 +15,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 2000
+	health_base = 3000
 
 	level_multiplier = 4
 
@@ -46,7 +46,7 @@
 
 	. = ..()
 
-	if(damage_amount >= 10)
+	if(!dead && damage_amount >= 10)
 		var/mob/living/simple/npc/slime/S = new(src.loc)
 
 		var/xvel = rand(-1,1)
@@ -57,8 +57,9 @@
 			yvel = pick(-1,1)
 
 		S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
-		S.color = src.color
-		S.slime_color = src.color
+		S.color = rgb(rand(0,255),rand(0,255),rand(0,255))
+		S.alpha = rand(50,200)
+		S.slime_color = S.color
 		INITIALIZE(S)
 
 	return .

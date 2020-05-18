@@ -80,7 +80,7 @@
 	var/file_num = name_to_choice[choice]
 
 	. = C.load(U,file_num)
-	qdel(src)
+
 	return .
 
 /mob/abstract/observer/verb/new_character()

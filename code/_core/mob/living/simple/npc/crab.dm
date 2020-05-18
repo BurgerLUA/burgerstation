@@ -45,7 +45,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 500
+	health_base = 2000
 
 	ai = /ai/
 

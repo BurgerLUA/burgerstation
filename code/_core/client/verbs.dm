@@ -28,6 +28,7 @@
 
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test
+
 	if(ckey == "burgerbb")
 		verbs += /client/verb/add_new_wikibot_entry
 		verbs += /client/verb/rtv
