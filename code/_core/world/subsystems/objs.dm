@@ -9,37 +9,38 @@ SUBSYSTEM_DEF(obj)
 
 	set background = 1
 
-	var/list/initialize_early = list()
-	var/list/initialize_normal = list()
-	var/list/initialize_late = list()
+	var/initialize_early = 0
+	var/initialize_normal = 0
+	var/initialize_late = 0
 
 	for(var/obj/O in world)
-		if(O.initialize_type == INITIALIZE_EARLY)
-			initialize_early += O
-		else if(O.initialize_type == INITIALIZE_LATE)
-			initialize_late += O
-		else if(O.initialize_type == INITIALIZE_NORMAL)
-			initialize_normal += O
-
-	for(var/obj/O in initialize_early)
+		if(O.initialize_type != INITIALIZE_EARLY)
+			continue
 		INITIALIZE(O)
 		SPAWN(O)
+		initialize_early++
 
-	log_subsystem(name,"Early: Initialized and spawned [length(initialize_early)] objects in world.")
+	log_subsystem(name,"Early: Initialized and spawned [initialize_early] objects in world.")
 
-	for(var/obj/O in initialize_normal)
+	for(var/obj/O in world)
+		if(O.initialize_type != INITIALIZE_NORMAL)
+			continue
 		INITIALIZE(O)
 		SPAWN(O)
+		initialize_normal++
 
-	log_subsystem(name,"Normal: Initialized and spawned [length(initialize_normal)] objects in world.")
+	log_subsystem(name,"Normal: Initialized and spawned [initialize_normal] objects in world.")
 
-	for(var/obj/O in initialize_late)
+	for(var/obj/O in world)
+		if(O.initialize_type != INITIALIZE_LATE)
+			continue
 		INITIALIZE(O)
 		SPAWN(O)
+		initialize_late++
 
-	log_subsystem(name,"Late: Initialized and spawned [length(initialize_late)] objects in world.")
+	log_subsystem(name,"Late: Initialized and spawned [initialize_late] objects in world.")
 
-	log_subsystem(name,"Total: Initialized and spawned [length(initialize_early) + length(initialize_normal) + length(initialize_late)] total objects in world.")
+	log_subsystem(name,"Total: Initialized and spawned [initialize_early + initialize_normal + initialize_late] total objects in world.")
 
 /subsystem/obj/on_life()
 

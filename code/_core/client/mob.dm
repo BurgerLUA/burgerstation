@@ -28,29 +28,6 @@
 	eye = M
 	all_mobs_with_clients += M
 
-	var/obj/parallax/layer1/P1 = new
-	screen += P1
-	mob.parallax += P1
-	P1.transform *= 2
-	P1.owner = mob
-
-	var/obj/parallax/layer2/P2 = new
-	screen += P2
-	mob.parallax += P2
-	P2.transform *= 2
-	P2.owner = mob
-
-	var/obj/parallax/layer3/P3 = new
-	screen += P3
-	mob.parallax += P3
-	P3.transform *= 2
-	P3.owner = mob
-
-	var/obj/parallax/layer4/P4 = new
-	screen += P4
-	mob.parallax += P4
-	P4.owner = mob
-
 	update_zoom(-1)
 	update_verbs()
 	src.to_chat("You have taken control of [M].")
@@ -68,10 +45,6 @@
 
 	if(screen)
 		screen.Cut()
-		if(!examine_overlay)
-			log_error("Warning: Client [src] did not have an examine overlay!")
-		else
-			screen += examine_overlay
 
 	if(images)
 		images.Cut()

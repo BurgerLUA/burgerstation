@@ -52,13 +52,13 @@ var/global/list/all_shuttle_controlers = list()
 	var/area/A3 = transit_areas[transit_end]
 
 	if(!A1)
-		log_error("ERROR: Transit shuttle [type] doesn't have a valid transit starting area ([transit_start])!")
+		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit starting area ([transit_start])!")
 
 	if(!A2)
-		log_error("ERROR: Transit shuttle [type] doesn't have a valid transit bluespace area ([transit_bluespace])!")
+		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit bluespace area ([transit_bluespace])!")
 
 	if(!A3)
-		log_error("ERROR: Transit shuttle [type] doesn't have a valid transit ending area ([transit_end])!")
+		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit ending area ([transit_end])!")
 
 	if(!A1 || !A2 || !A3)
 		qdel(src)
@@ -77,7 +77,7 @@ var/global/list/all_shuttle_controlers = list()
 /obj/shuttle_controller/proc/launch(var/desired_transit_time) //In deciseconds
 
 	if(!set_doors(FALSE,TRUE,TRUE))
-		log_error("Shuttle Controler: Door failure on [src.type]!")
+		log_error("Shuttle Controler: Door failure on [src.get_debug_name()]!")
 		return FALSE
 
 	if(!default_transit_time)

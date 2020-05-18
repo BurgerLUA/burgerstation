@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(garbage_tracking)
 				ref_id_to_warning[ref_id] += TICKS_TO_SECONDS(tick_rate)
 
 			if(!found_datum.qdel_warning_time && ref_id_to_warning[ref_id] >= GARBAGE_TIME_WARNING)
-				text2file("Warning: [found_datum]([found_datum.type]) is taking more than [GARBAGE_TIME_WARNING] seconds to delete!",GARBAGE_LOGS_PATH)
+				text2file("Warning: [found_datum.get_debug_name()] is taking more than [GARBAGE_TIME_WARNING] seconds to delete!",GARBAGE_LOGS_PATH)
 				found_datum.qdel_warning_time = TRUE
 
 		else

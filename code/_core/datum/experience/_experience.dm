@@ -39,10 +39,9 @@
 	return TRUE
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
-	return clamp(FLOOR((xp ** (1/experience_power)) / experience_multiplier, 1),1,max_level)
+	return FLOOR((xp ** (1/experience_power)) / experience_multiplier, 1)
 
 /experience/proc/level_to_xp(var/level) //Convert level to xp
-	level = clamp(level,1,max_level)
 	return CEILING((level*experience_multiplier) ** experience_power,1)
 
 /experience/proc/set_level(var/level)
@@ -69,7 +68,6 @@
 	var/current_level = get_current_level()
 	if(last_level != current_level)
 		on_level_up(last_level,current_level)
-
 
 	return xp_to_add
 

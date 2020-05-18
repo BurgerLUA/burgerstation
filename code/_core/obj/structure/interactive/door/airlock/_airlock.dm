@@ -76,7 +76,7 @@ obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE)
 			set_door_state(DOOR_STATE_DENY)
 			return FALSE
 
-		if(door_state != DOOR_STATE_CLOSED || door_state == DOOR_STATE_DENY)
+		if(door_state != DOOR_STATE_CLOSED)
 			return FALSE
 
 	if(door_state == DOOR_STATE_OPENED)
@@ -93,7 +93,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 		if(locked)
 			return FALSE
 
-		if(door_state != DOOR_STATE_OPENED || door_state == DOOR_STATE_DENY)
+		if(door_state != DOOR_STATE_OPENED)
 			return FALSE
 
 	if(door_state == DOOR_STATE_CLOSED)
@@ -228,7 +228,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 	else
 		switch(door_state)
 			if(DOOR_STATE_OPENING_01,DOOR_STATE_OPENING_02,DOOR_STATE_START_OPENING)
-				desired_color = "#FF0000"
+				desired_color = "#00FF00"
 			if(DOOR_STATE_CLOSING_01,DOOR_STATE_CLOSING_02)
 				desired_color = "#FFFF00"
 
@@ -260,8 +260,10 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 	. = ..()
 
-	if(!. && door_state == DOOR_STATE_CLOSED)
-		open()
+	if(!. && is_living(A) && door_state == DOOR_STATE_CLOSED && door_state != DOOR_STATE_DENY)
+		var/mob/living/L = A
+		if(!L.dead)
+			open()
 
 	return .
 

@@ -10,7 +10,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 1
+		SKILL_UNARMED = 100 //100%
 	)
 
 /*

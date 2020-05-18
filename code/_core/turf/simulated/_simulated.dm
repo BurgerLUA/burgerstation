@@ -149,7 +149,7 @@ var/global/saved_icons = 0
 /turf/simulated/on_destruction(var/atom/caller,var/damage = FALSE)
 
 	if(!destruction_turf)
-		log_error("ERROR! [src.type] called on_destruction without having a destruction turf!")
+		CRASH_SAFE("[get_debug_name()] called on_destruction without having a destruction turf!")
 		return FALSE
 
 	pixel_x = 0

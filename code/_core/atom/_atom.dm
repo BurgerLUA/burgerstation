@@ -43,11 +43,11 @@
 
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
-	overlays += desired_overlay
-
 	if(length(overlays) >= 100)
-		log_error("Warning: Object [src]([src.type]) exceeds 100 overlays! Cutting...")
-		overlays.Cut()
+		log_error("Warning: [get_debug_name()] exceeds 100 overlays!")
+		return FALSE
+
+	overlays += desired_overlay
 
 	return TRUE
 
@@ -210,4 +210,8 @@
 
 /atom/proc/receive_sound(var/sound/S)
 	src << S
+
+
+/atom/get_debug_name()
+	return "[src.name]([src.type])([x],[y],[z])"
 

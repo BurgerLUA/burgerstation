@@ -67,7 +67,7 @@
 	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
 
-	var/list/obj/parallax/parallax
+	var/list/parallax
 
 	var/last_words = ""
 
@@ -86,6 +86,8 @@
 	var/list/known_languages = list(
 		LANGUAGE_BASIC = TRUE
 	)
+
+	var/obj/hud/examine/examine_overlay
 
 /mob/proc/update_eyes()
 	vision = 0x0
@@ -124,6 +126,9 @@
 	qdel(plane_master_shuttle)
 	plane_master_shuttle = null
 
+	qdel(examine_overlay)
+	examine_overlay = null
+
 	return ..()
 
 /mob/proc/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
@@ -141,24 +146,56 @@
 		L.update_for_mob(src)
 
 	if(!plane_master_wall)
-		plane_master_wall = new
+		plane_master_wall = new(src)
 	C.screen += plane_master_wall
 
 	if(!plane_master_mob)
-		plane_master_mob = new
+		plane_master_mob = new(src)
 	C.screen += plane_master_mob
 
 	if(!plane_master_darkness)
-		plane_master_darkness = new
+		plane_master_darkness = new(src)
 	C.screen += plane_master_darkness
 
 	if(!plane_master_obj)
-		plane_master_obj = new
+		plane_master_obj = new(src)
 	C.screen += plane_master_obj
 
 	if(!plane_master_shuttle)
-		plane_master_shuttle = new
+		plane_master_shuttle = new(src)
 	C.screen += plane_master_shuttle
+
+	if(!examine_overlay)
+		examine_overlay = new(src)
+	C.screen += examine_overlay
+
+	if(!parallax["A"])
+		var/obj/parallax/layer1/P = new(src)
+		parallax["A"] += P
+		P.transform *= 2
+		P.owner = src
+	C.screen += parallax["A"]
+
+	if(!parallax["B"])
+		var/obj/parallax/layer2/P = new(src)
+		parallax["B"] += P
+		P.transform *= 2
+		P.owner = src
+	C.screen += parallax["B"]
+
+	if(!parallax["C"])
+		var/obj/parallax/layer3/P = new(src)
+		parallax["C"] += P
+		P.transform *= 2
+		P.owner = src
+	C.screen += parallax["C"]
+
+	if(!parallax["D"])
+		var/obj/parallax/layer4/P = new(src)
+		parallax["D"] += P
+		//P.transform *= 2
+		P.owner = src
+	C.screen += parallax["D"]
 
 	update_eyes()
 

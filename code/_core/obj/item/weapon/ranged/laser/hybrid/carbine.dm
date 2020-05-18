@@ -5,8 +5,8 @@
 	projectile_kill = /obj/projectile/bullet/laser/weak
 	projectile_stun = /obj/projectile/bullet/laser/weak
 
-	damage_type_kill = "laser_carbine_kill"
-	damage_type_stun = "laser_carbine_stun"
+	damage_type_kill = /damagetype/ranged/laser/carbine
+	damage_type_stun = /damagetype/ranged/laser/carbine/stun
 
 	shoot_sounds_kill = list('sounds/weapons/laser_carbine/kill.ogg')
 	shoot_sounds_stun = list('sounds/weapons/laser_carbine/stun.ogg')

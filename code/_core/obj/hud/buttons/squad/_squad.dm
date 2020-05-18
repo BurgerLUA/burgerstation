@@ -122,13 +122,19 @@
 	return ..()
 
 /obj/hud/button/squad/member/New(var/desired_loc,var/desired_tracked_mob)
-	var/icon/I = new(icon,icon_state)
-	swap_colors(I)
-	underlays += I
 	tracked_mob = desired_tracked_mob
 	return ..()
 
+/obj/hud/button/squad/member/update_underlays()
+	. = ..()
+	var/icon/I = new(icon,icon_state)
+	swap_colors(I)
+	underlays += I
+	return .
+
 /obj/hud/button/squad/member/update_icon()
+
+	. = ..()
 
 	maptext = tracked_mob.name
 
@@ -136,4 +142,4 @@
 		var/desired_num = FLOOR((tracked_mob.health.health_current/tracked_mob.health.health_max) * 26, 1)
 		icon_state = "bar_[desired_num]"
 
-	return ..()
+	return .

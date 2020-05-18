@@ -22,3 +22,15 @@
 		hooks = null
 
 	return ..()
+
+
+/datum/proc/get_debug_name()
+	return "[src.type]"
+
+
+/datum/atom/Destroy()
+
+	if(!initialized)
+		log_error("Warning: [get_debug_name()] is being destroyed before it is initialized!")
+
+	return ..()

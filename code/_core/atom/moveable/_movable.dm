@@ -95,11 +95,13 @@
 		if(area)
 			area.Entered(src,null)
 		else
-			log_error("WARNING: For some reason, [src.name]([src.type]) didn't have an area to initialize in! (Loc: [loc.name]([loc.type].)")
+			CRASH_SAFE("WARNING: [get_debug_name()] didn't have an area to initialize in! (Loc: [loc.get_debug_name()].)")
 
 		if(blocks_air && is_simulated(loc))
 			var/turf/simulated/T = loc
 			T.blocks_air |= blocks_air
+	else
+		CRASH_SAFE("WARNING: [get_debug_name()] didn't have a loc to initialize in!")
 
 	return .
 

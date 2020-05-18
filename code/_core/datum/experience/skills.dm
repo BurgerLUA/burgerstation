@@ -11,8 +11,8 @@
 	name = "Melee"
 	id = SKILL_MELEE
 	desc = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
-	experience_power = 1.6
-	experience_multiplier = 15
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 1
 
 /experience/skill/unarmed/ //STRENGTH
@@ -20,16 +20,17 @@
 	name = "Unarmed"
 	id = SKILL_UNARMED
 	desc = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
-	experience_power = 1.6
-	experience_multiplier = 15
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 0.75
 
 /experience/skill/prayer/ //VITALITY
+	//Each point of damage dealt or healed = 1xp
 	name = "Prayer"
 	id = SKILL_PRAYER
 	desc = "Your skill in praying to the gods. Affects the strength, speed, and success rate of casting prayer-based spells and abilities."
-	experience_power = 1.8
-	experience_multiplier = 4.1
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 0.75
 
 /experience/skill/block/ //FORTITUDE
@@ -47,8 +48,8 @@
 	name = "Ranged"
 	id = SKILL_RANGED
 	desc = "Your skill in performing attacks with ranged weapons. Affects the damage and accuracy of bows, crossbows, guns, and throwing objects."
-	experience_power = 1.6
-	experience_multiplier = 15
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 1
 
 /experience/skill/precision/ //DEXTERITY
@@ -83,24 +84,24 @@
 	name = "Magic"
 	id = SKILL_MAGIC
 	desc = "Your skill in casting damage-dealing subjugation magic such as fireball, lightning bolt, and frostwave."
-	experience_power = 1.6
-	experience_multiplier = 15
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 1
 
 /experience/skill/sorcery/ //INTELLIGENCE
 	name = "Sorcery"
 	id = SKILL_SORCERY
 	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
-	experience_power = 1.6
-	experience_multiplier = 15
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 0.75
 
 /experience/skill/medicine/ //WILLPOWER
 	name = "Medicine"
 	id = SKILL_MEDICINE
 	desc = "Your skill in casting damage-warding deterrence magic such as raise barrier, conjure armor, and reflect spell."
-	experience_power = 1.8
-	experience_multiplier = 4.1
+	experience_power = 1.5
+	experience_multiplier = 21
 	combat_level_mul = 0.75
 
 /experience/skill/parry/ //WISDOM

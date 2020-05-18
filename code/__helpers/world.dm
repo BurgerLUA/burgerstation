@@ -1,3 +1,5 @@
+
+
 proc/should_static_view()
 	return (VIEW_RANGE >= world.maxx/2 || VIEW_RANGE >= world.maxy/2)
 
@@ -19,8 +21,25 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	return (atom_a.y*TILE_SIZE + atom_a.pixel_y - initial(atom_a.pixel_y)) - (atom_b.y*TILE_SIZE + atom_b.pixel_y - initial(atom_b.pixel_y))
 
 #define is_valid(A) (istype(A) && !A.qdeleting && A.loc != null)
-#define INITIALIZE(A) (A.initialized ? log_error("WARNING: [A]([A.type]) was initialized more than once!") : A.Initialize())
-#define SPAWN(A) (A.spawned ? log_error("WARNING: [A]([A.type]) was spawned more than once!") : A.on_spawn())
+// #define INITIALIZE(A) (A.initialized ? log_error("WARNING: [A.get_debug_name()] was initialized more than once!") : A.Initialize())
+// #define SPAWN(A) (A.spawned ? log_error("WARNING: [A.get_debug_name()] was spawned more than once!") : A.on_spawn())
+
+
+
+/proc/INITIALIZE(var/datum/D)
+	if(D.initialized)
+		CRASH_SAFE("WARNING: [D.get_debug_name()] was initialized more than once!")
+		return FALSE
+	return 	D.Initialize()
+
+
+/proc/SPAWN(var/datum/D)
+	if(D.spawned)
+		CRASH_SAFE("WARNING: [D.get_debug_name()] was spawned more than once!")
+		return FALSE
+	return 	D.on_spawn()
+
+
 
 proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 	for(var/k in objects_to_spawn)
@@ -41,4 +60,3 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 	return TRUE
 
 
-#define CRASH_SAFE(x) try CRASH(x); catch(var/exception/e) log_error("[e.name] in [e.file]:[e.line].\n[e.desc]")

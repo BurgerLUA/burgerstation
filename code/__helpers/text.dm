@@ -115,10 +115,5 @@
 
 	return "they"
 
-
-#define datum2text(x) "[x.name]([x.type])"
-#define atom2text(x) "[x.name]([x.type])([x.x][x.y])"
-
-
 /proc/proper_url_encode(var/input)
 	return url_encode(replacetextEx(input,"\n",""))

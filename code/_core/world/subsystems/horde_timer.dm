@@ -204,7 +204,7 @@ SUBSYSTEM_DEF(horde)
 					continue
 
 				while(wave_to_spawn > 0)
-					var/turf/T = get_step(chosen_spawn,pick(DIRECTIONS_ALL))
+					var/turf/T = get_turf(chosen_spawn)
 					if(T)
 						var/mob/living/advanced/npc/syndicate/S = new(T)
 						INITIALIZE(S)

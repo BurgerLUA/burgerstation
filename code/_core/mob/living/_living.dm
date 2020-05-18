@@ -180,7 +180,7 @@
 	stored_alert_effect = null
 
 	if(client)
-		log_error("WARNING: [src]([src.type]) deleted itself while there was still a client ([client]) attached!")
+		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		client.make_ghost(FALLBACK_TURF)
 
 	return ..()

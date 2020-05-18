@@ -49,7 +49,7 @@
 	var/turf/T = loc
 	if (!isturf(T)) // Erm...
 		if (loc)
-			log_error("A lighting overlay realised its loc was NOT a turf (actual loc: [loc], [loc.type]) in update_overlay() and got deleted!")
+			log_error("A lighting overlay realised its loc was NOT a turf (actual loc: [loc.get_debug_name()]) in update_overlay() and got deleted!")
 
 		else
 			log_error("A lighting overlay realised it was in nullspace in update_overlay() and got deleted!")

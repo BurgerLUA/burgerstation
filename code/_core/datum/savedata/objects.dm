@@ -1,7 +1,11 @@
-/savedata/proc/load_and_create_object(var/list/object_data,var/loc)
+/savedata/proc/load_and_create_object(var/list/object_data,var/atom/loc)
 
 	if(!object_data)
 		log_error("Tried to create an object with a blank object_data list!")
+		return FALSE
+
+	if(!loc)
+		log_error("Tried to create an object in a null location!")
 		return FALSE
 
 	var/o_type = object_data["type"]
@@ -10,7 +14,7 @@
 	try
 		O = new o_type(loc)
 	catch
-		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc], but it does not exist in code!")
+		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it does not exist in code!")
 		return FALSE
 
 	//General Information

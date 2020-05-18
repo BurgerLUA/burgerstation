@@ -64,8 +64,6 @@ var/global/list/all_clients = list()
 
 	var/list/color_mods = list()
 
-	var/obj/hud/examine/examine_overlay
-
 	var/examine_mode = FALSE
 
 //Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
@@ -104,9 +102,6 @@ var/global/list/all_clients = list()
 	qdel(controls)
 	controls = null
 
-	qdel(examine_overlay)
-	examine_overlay = null
-
 	clear_mob(mob)
 
 	all_clients -= src
@@ -131,9 +126,6 @@ var/global/list/all_clients = list()
 	CLEAR_VERBS(src)
 
 	all_clients += src
-
-	examine_overlay = new
-	screen += examine_overlay
 
 	if(!button_tracker)
 		button_tracker = new(src)

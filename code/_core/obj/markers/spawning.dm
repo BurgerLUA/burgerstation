@@ -1,19 +1,16 @@
 /obj/marker/spawning/
 	name = "spawning marker"
-
 	icon = 'icons/obj/markers/spawning.dmi'
-
-/obj/marker/spawning/New(var/desired_loc)
-	do_spawn(desired_loc)
-	return ..()
+	initialize_type = INITIALIZE_EARLY
 
 /obj/marker/spawning/Initialize()
+	do_spawn(src.loc)
+	. = ..()
 	qdel(src)
-	return ..()
+	return .
 
 /obj/marker/spawning/proc/do_spawn(var/turf/T)
 	return TRUE
-
 
 /obj/marker/spawning/window/
 	name = "full window"

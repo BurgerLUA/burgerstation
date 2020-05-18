@@ -61,7 +61,7 @@
 	name = "ghost of [ckey]"
 
 	for(var/v in spawning_buttons)
-		var/obj/hud/button/B = new v
+		var/obj/hud/button/B = new v(src)
 		B.update_owner(src)
 
 	to_chat(span("notice","Please load a character or create a new character to play using the buttons below."))

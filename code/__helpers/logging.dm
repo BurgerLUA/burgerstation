@@ -29,9 +29,10 @@
 			LOG_DEBUG("[i]: [k]")
 		i++
 
-
 /proc/print_list_dir(var/list_name,var/list/L)
 	LOG_DEBUG("Printing direction list '[list_name]' of length [length(L)]:")
 	for(var/k in L)
 		var/v = L[k]
 		LOG_DEBUG("[dir2text(text2num(k))]: [v]")
+
+#define CRASH_SAFE(x) try CRASH(x); catch(var/exception/e) log_error("[e.name] in [e.file]:[e.line].\n[e.desc]")

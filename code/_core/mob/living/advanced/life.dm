@@ -31,7 +31,7 @@ mob/living/advanced/proc/handle_regen()
 		health_regen_buffer += heal_amount
 		health_adjust = heal_amount
 		if(health_adjust)
-			add_attribute_xp(ATTRIBUTE_VITALITY,health_adjust)
+			add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust)
 		health_regen_delay = max(health_regen_delay,10)
 
 	if((stamina_regen_delay <= 0 || has_status_effect(FATIGUE) || has_status_effect(SLEEP)) && health.stamina_current < health.stamina_max)

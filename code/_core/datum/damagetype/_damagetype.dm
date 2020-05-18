@@ -305,23 +305,22 @@
 					attack_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,PV.health.health_max*-0.25)
 					PV.attack_logs += list(attack_log_format)
 
-			if(is_living(attacker) && attacker != victim && total_damage_dealt)
+			if(is_living(victim) && is_living(attacker) && attacker != victim && total_damage_dealt)
 				var/mob/living/A = attacker
-				if(A.client)
+				var/mob/living/V = victim
+				if(!V.dead && A.client)
 					if(critical_hit_multiplier > 1)
 						A.add_skill_xp(SKILL_PRECISION,1)
 
 					for(var/skill in skill_stats)
-						var/xp_to_give = CEILING(skill_stats[skill] * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
-							A.to_chat("Giving [xp_to_give] [skill] experience.",CHAT_TYPE_COMBAT)
 
 					for(var/skill in bonus_experience)
-						var/xp_to_give = CEILING(bonus_experience[skill] * total_damage_dealt * victim.get_xp_multiplier(),1)
+						var/xp_to_give = CEILING(bonus_experience[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(),1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
-							A.to_chat("Giving [xp_to_give] [skill] experience.",CHAT_TYPE_COMBAT)
 
 
 		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)

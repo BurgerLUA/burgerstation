@@ -84,7 +84,7 @@
 
 	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!DT)
-		log_error("[attacker] can't inflict harm with the [object_to_damage_with.type] due to the damage type [desired_damage_type] not existing!")
+		log_error("[attacker.get_debug_name()] can't inflict harm with the [object_to_damage_with.get_debug_name()] due to the damage type [desired_damage_type] not existing!")
 		attacker.attack_next = world.time + 10
 		object_to_damage_with.attack_next = world.time + 10
 		return FALSE

@@ -22,7 +22,7 @@
 
 /mob/living/proc/update_health_elements()
 	if(client)
-		client.known_health_elements = health_elements
+		client.known_health_elements = health_elements.Copy()
 
 /mob/living/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE,var/update_body=FALSE)
 
