@@ -189,6 +189,8 @@ obj/structure/interactive/construction/grille
 
 	health_base = 75
 
+	plane = PLANE_WALL
+
 
 obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

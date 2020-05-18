@@ -87,14 +87,15 @@ obj/structure/smooth/update_icon()
 	pixel_x = (32 - I.Width())/2
 	pixel_y = (32 - I.Height())/2
 
-obj/structure/smooth/update_overlays()
+/obj/structure/smooth/update_overlays()
 
 	. = ..()
 
 	if(reinforced_material_id)
 		var/image/I = new/image(initial(icon),"ref")
+		I.appearance_flags = RESET_COLOR
 		I.color = reinforced_color
-		I.alpha = 200
+		I.alpha = 100
 		add_overlay(I)
 
 	return .

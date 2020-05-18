@@ -21,6 +21,8 @@
 
 	blocks_air = NORTH | EAST | SOUTH | WEST
 
+	plane = PLANE_WALL
+
 /obj/structure/smooth/window/update_overlays()
 	. = ..()
 	if(health)

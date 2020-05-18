@@ -101,6 +101,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_WAITING)
 		var/time_to_display = round_time_next - round_time
+		set_status_display("mission","PREP:\n[get_clock_time(time_to_display)].")
 		if(time_to_display >= 0)
 			set_message("Round starts in: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -111,6 +112,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_GEARING)
 		var/time_to_display = round_time_next - round_time
+		set_status_display("mission","GEAR:\n[get_clock_time(time_to_display)].")
 		if(time_to_display >= 0)
 			set_message("Loadout Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -123,6 +125,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_BOARDING)
 		var/time_to_display = round_time_next - round_time
+		set_status_display("mission","BOARD:\n[get_clock_time(time_to_display)].")
 		if(time_to_display >= 0)
 			set_message("Boarding Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -134,6 +137,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_LAUNCHING)
 		var/time_to_display = round_time_next - round_time
+		set_status_display("mission","LAUNCH:\n[get_clock_time(time_to_display)].")
 		if(time_to_display >= 0)
 			set_message("Launch Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -349,20 +353,25 @@ SUBSYSTEM_DEF(horde)
 		last_threat_level_warning = reported_threat_level
 		switch(last_threat_level_warning)
 			if(0)
+				set_status_display("mission","CODE:\nGREEN.")
 				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL CLEARED.","ALERT: THREAT LEVEL SET TO: GREEN. EXCERSIZE TERM: FADE OUT.")
 			if(25 to 50)
+				set_status_display("mission","CODE:\nBLUE.")
 				if(increase)
 					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: BLUE. EXCERSIZE TERM: SECOND GLANCE.")
 				else
 					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL LOWERED TO: BLUE. EXCERSIZE TERM: SECOND GLANCE.")
 			if(50 to 75)
+				set_status_display("mission","CODE:\nAMBER.")
 				if(increase)
 					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: AMBER. EXCERSIZE TERM: ROAD HOUSE.\nALL GROUNDSIDE TEAMS ARE ORDERED TO FOCUS ON COMPLETION OF OBJECTIVES AND DEFENSE OF THE ALPHA-BRAVO LZ.")
 				else
 					announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL DECREASE.","ALERT: THREAT LEVEL LOWERED TO: AMBER. EXCERSIZE TERM: ROAD HOUSE.\nALL GROUNDSIDE TEAMS ARE ORDERED TO CONTINUE THEIR FOCUS ON OBJECTIVES AND THE DEFENSE OF THE ALPHA-BRAVO LZ.")
 			if(75 to 99)
+				set_status_display("mission","CODE:\nRED.")
 				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: RED. EXCERSIZE TERM: MARATHON SPRINT. MISSION FAILURE LIKELY.\n ALL GROUNDSIDE TEAMS ARE ORDERED TO FOCUS ON OBJECTIVE COMPLETION. IGNORING THIS ORDER MAY RESULT IN LOSS OF CREDITS AND/OR DEATH.")
 			if(100)
+				set_status_display("mission","CODE:\nBLACK.")
 				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL INCREASE.","ALERT: THREAT LEVEL RAISED TO: BLACK. EXCERSIZE TERM: LOADED PISTOL. MISSION FAILURE IMMINENT.\nSTARTING FIREMAN PROTOCOLS. EVACUATION ORDERS UNDERWAY. BLUESPACE CANONS ONLINE IN 5 MINUTES.")
 
 	return threat_level

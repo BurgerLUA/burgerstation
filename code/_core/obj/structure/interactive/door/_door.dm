@@ -38,6 +38,8 @@ obj/structure/interactive/door
 
 	layer = LAYER_OBJ_DOOR_CLOSED
 
+	plane = PLANE_WALL
+
 /obj/structure/interactive/door/New(var/desired_loc)
 
 	if(spawn_signaller)

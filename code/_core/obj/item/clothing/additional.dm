@@ -3,28 +3,31 @@
 	if(!length(additional_clothing))
 		return FALSE
 
-	for(var/k in additional_clothing)
-		if(k in caller.worn_objects)
-			continue
-		var/obj/item/clothing/C = new k(get_turf(src))
-		C.delete_on_drop = TRUE
-		C.should_save = FALSE
-		C.color = color
-		C.weight = 0
-		C.size = 0
-		if(!C.quick_equip(caller))
-			caller.to_chat(span("notice","There is no way to toggle \the [C.name]!"))
-			qdel(C)
-			continue
-		additional_clothing_stored += C
-
-	return TRUE
-
-
-/obj/item/clothing/proc/delete_additonal_clothing()
+	var/should_deploy = FALSE
 
 	for(var/obj/item/clothing/C in additional_clothing_stored)
-		additional_clothing_stored -= C
-		qdel(C)
+		if(C.loc == C.additional_clothing_parent) //It's not worn, so try to equip.
+			if(!C.quick_equip(caller))
+				caller.to_chat(span("notice","You can't toggle \the [C], there is clothing in the way!"))
+			should_deploy = TRUE
+
+	if(!should_deploy)
+		remove_additonal_clothing()
 
 	return TRUE
+
+
+/obj/item/clothing/proc/remove_additonal_clothing()
+
+	for(var/obj/item/clothing/C in additional_clothing_stored)
+		C.drop_item(src)
+
+	return TRUE
+
+
+/obj/item/clothing/can_be_dragged(var/mob/caller)
+
+	if(additional_clothing_parent)
+		return FALSE
+
+	return ..()

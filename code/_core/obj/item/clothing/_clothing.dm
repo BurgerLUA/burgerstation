@@ -36,10 +36,33 @@
 	var/list/obj/item/clothing/additional_clothing = list()
 	var/list/obj/item/clothing/additional_clothing_stored
 
+	var/obj/item/clothing/additional_clothing_parent
+
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	..()
 	initialize_blends()
+
+/obj/item/clothing/Destroy()
+	additional_clothing_stored.Cut()
+	additional_clothing_parent = null
+	return ..()
+
+/obj/item/clothing/Initialize()
+
+	for(var/k in additional_clothing)
+		var/obj/item/clothing/C = new k(src)
+		C.should_save = FALSE
+		C.color = color
+		C.weight = 0
+		C.size = 0
+		C.additional_blends = additional_blends
+		C.additional_clothing_parent = src
+		C.delete_on_drop = FALSE
+		additional_clothing_stored += C
+
+	return ..()
+
 
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
@@ -52,13 +75,21 @@
 			add_blend("polymorph_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 		update_sprite()
 
+	for(var/obj/item/clothing/C in additional_clothing_stored)
+		C.initialize_blends()
+
 	..()
 
 /obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 	. = ..()
-	delete_additonal_clothing()
+	remove_additonal_clothing()
 	return .
+
+/obj/item/clothing/clicked_on_by_object(var/mob/caller,object,location,control,params)
+	if(additional_clothing_parent)
+		drop_item(additional_clothing_parent)
+		return TRUE
+	return ..()

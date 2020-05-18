@@ -280,8 +280,13 @@ var/global/saved_icons = 0
 
 	if(reinforced_material_id)
 		overlays.Cut()
-		var/image/I2 = new/image(initial(icon),"ref")
-		add_overlay(I2)
+		var/image/I = new/image(initial(icon),"ref")
+		/*
+		I.appearance_flags = RESET_COLOR
+		I.color = reinforced_color
+		I.alpha = 50
+		*/
+		add_overlay(I)
 
 	return .
 

@@ -133,6 +133,12 @@
 
 	return TRUE
 
+/mob/living/simple/npc/slime/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
+	var/obj/projectile/bullet/thrown/P = ..()
+	if(P)
+		P.steps_allowed = 3
+	return P
+
 //Black
 /mob/living/simple/npc/slime/grey
 	slime_color = "#888888"

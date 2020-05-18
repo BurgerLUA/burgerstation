@@ -103,7 +103,7 @@
 	if(is_inventory(object))
 		var/obj/hud/inventory/object_as_inventory = object
 		var/obj/item/I = src.get_top_object()
-		if(I)
+		if(I && I.can_be_dragged(caller) && get_dist(src,object) <= 1)
 			object_as_inventory.add_object(I)
 		return TRUE
 

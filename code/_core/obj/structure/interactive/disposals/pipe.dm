@@ -2,6 +2,7 @@
 	name = "disposals pipe"
 	icon_state = "pipe"
 	layer = LAYER_GROUND_SCENERY
+	plane = PLANE_FLOOR
 	under_tile = TRUE
 
 /obj/structure/interactive/disposals/pipe/get_connections()

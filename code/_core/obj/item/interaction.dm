@@ -87,6 +87,9 @@
 
 /obj/item/drop_on_object(var/atom/caller,var/atom/object,location,control,params) //Src is dragged to object
 
+	if(!can_be_dragged(caller))
+		return TRUE
+
 	if(caller == object)
 		return click_self(caller)
 
@@ -117,3 +120,6 @@
 
 	return FALSE
 */
+
+/obj/item/proc/can_be_dragged(var/mob/caller)
+	return TRUE
