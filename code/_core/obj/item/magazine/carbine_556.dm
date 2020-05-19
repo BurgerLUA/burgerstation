@@ -5,8 +5,8 @@
 	bullet_count_max = 42
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_223

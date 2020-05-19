@@ -5,7 +5,7 @@
 	bullet_count_max = 10
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/syndicate
@@ -41,7 +41,7 @@
 	bullet_diameter_max = 13
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
+		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/sniper_50

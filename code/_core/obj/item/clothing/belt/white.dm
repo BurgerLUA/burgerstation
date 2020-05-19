@@ -25,6 +25,14 @@
 	new /obj/item/grenade/timed/explosive/(src)
 	return ..()
 
+
+/obj/item/clothing/belt/storage/colored/black/filled/syndicate/pistol/fill_inventory()
+	new /obj/item/magazine/pistol_10mm(src)
+	new /obj/item/magazine/pistol_10mm(src)
+	new /obj/item/magazine/pistol_10mm(src)
+	new /obj/item/magazine/pistol_10mm(src)
+	return ..()
+
 /obj/item/clothing/belt/storage/colored/black/filled/stealth/fill_inventory()
 	new /obj/item/container/medicine/bandage/advanced(src)
 	new /obj/item/container/medicine/ointment/advanced(src)

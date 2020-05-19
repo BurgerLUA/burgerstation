@@ -25,7 +25,7 @@
 	return .
 
 
-/ai/advanced/syndicate/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
+/ai/advanced/syndicate/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
 	. = ..()
 

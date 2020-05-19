@@ -14,16 +14,8 @@
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
 /obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller,var/bullet_position=1)
-
-	var/charge_to_remove = cost_charge
-
-	if(is_npc(caller))
-		charge_to_remove *= NPC_MANA_COST_MULTIPLIER
-
-	total_charge -= charge_to_remove
-
+	total_charge -= cost_charge
 	update_sprite()
-
 	return FALSE
 
 /obj/item/weapon/ranged/magic/staff/get_ammo_count()

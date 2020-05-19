@@ -5,8 +5,11 @@ proc/should_static_view()
 
 //Stolen from /tg/
 /proc/stoplag()
+	if(!ENABLE_STOPLAG)
+		return FALSE
 	while(world.cpu >= 90 || world.tick_usage >= 90)
 		sleep(TICK_LAG)
+	return TRUE
 
 proc/get_offset_x(var/atom/atom_a,var/atom/atom_b)
 	return (atom_a.x*TILE_SIZE) - (atom_b.x*TILE_SIZE)

@@ -5,9 +5,9 @@
 	bullet_count_max = 20
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault
+		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/assault = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/

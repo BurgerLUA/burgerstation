@@ -118,13 +118,13 @@
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
 
-	return chambered_bullet.spend_bullet(caller,is_npc(caller))
+	return chambered_bullet.spend_bullet(caller)
 
 /obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
 
 	if(length(stored_bullets) && stored_bullets[bullet_position]) //Spend a bullet
 		var/obj/item/bullet_cartridge/B = stored_bullets[bullet_position]
-		return B.spend_bullet(caller,is_npc(caller))
+		return B.spend_bullet(caller)
 
 
 	return FALSE

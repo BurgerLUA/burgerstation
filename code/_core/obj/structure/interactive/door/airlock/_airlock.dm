@@ -32,11 +32,12 @@
 
 	if(door_state == DOOR_STATE_CLOSED)
 		if(locked)
-			open(TRUE,caller = caller)
+			unlock(caller)
+			open(caller)
 		else
-			lock(caller = caller)
+			lock(caller)
 	else if(door_state == DOOR_STATE_OPENED)
-		close(TRUE,caller = caller)
+		close(caller,TRUE)
 
 	return TRUE
 
@@ -62,11 +63,11 @@
 
 	return TRUE
 
-obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE,var/atom/caller=null)
+obj/structure/interactive/door/airlock/open(var/atom/caller,var/lock = FALSE,var/force = FALSE)
 
 	if(!force)
 		if(locked || no_access)
-			set_door_state(DOOR_STATE_DENY,caller = caller)
+			set_door_state(caller,DOOR_STATE_DENY)
 			return FALSE
 
 		if(door_state != DOOR_STATE_CLOSED)
@@ -74,13 +75,13 @@ obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE,
 
 	if(door_state == DOOR_STATE_OPENED)
 		if(!locked && lock)
-			lock(caller = caller)
+			lock(caller)
 		return FALSE
 
-	set_door_state(DOOR_STATE_START_OPENING,lock,caller)
+	set_door_state(caller,DOOR_STATE_START_OPENING,lock)
 	return TRUE
 
-obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE,var/atom/caller=null)
+obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,var/force = FALSE)
 
 	if(!force)
 		if(locked)
@@ -94,36 +95,36 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 			lock(caller)
 		return FALSE
 
-	set_door_state(DOOR_STATE_CLOSING_01,lock,caller)
+	set_door_state(caller,DOOR_STATE_CLOSING_01,lock)
 	return TRUE
 
-/obj/structure/interactive/door/proc/set_door_state(var/desired_door_state,var/should_lock=FALSE,var/atom/caller=null)
+/obj/structure/interactive/door/proc/set_door_state(var/atom/caller=null,var/desired_door_state,var/should_lock=FALSE)
 	return TRUE
 
-/obj/structure/interactive/door/airlock/set_door_state(var/desired_door_state,var/should_lock=FALSE,var/atom/caller=null)
+/obj/structure/interactive/door/airlock/set_door_state(var/atom/caller=null,var/desired_door_state,var/should_lock=FALSE)
 
 	door_state = desired_door_state
 	update_sprite()
 
 	switch(desired_door_state)
 		if(DOOR_STATE_DENY)
-			CALLBACK("door_state_\ref[src]",6,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock,caller)
+			CALLBACK("door_state_\ref[src]",6,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
 			if(deny_sound)
 				play(deny_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 		if(DOOR_STATE_START_OPENING)
-			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,DOOR_STATE_OPENING_01,should_lock,caller)
+			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,caller,DOOR_STATE_OPENING_01,should_lock)
 			if(open_sound)
 				play(open_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 		if(DOOR_STATE_OPENING_01)
-			CALLBACK("door_state_\ref[src]",open_time_01,src,.proc/set_door_state,DOOR_STATE_OPENING_02,should_lock,caller)
+			CALLBACK("door_state_\ref[src]",open_time_01,src,.proc/set_door_state,caller,DOOR_STATE_OPENING_02,should_lock)
 
 		if(DOOR_STATE_OPENING_02)
-			CALLBACK("door_state_\ref[src]",open_time_02,src,.proc/set_door_state,DOOR_STATE_OPENED,should_lock,caller)
+			CALLBACK("door_state_\ref[src]",open_time_02,src,.proc/set_door_state,caller,DOOR_STATE_OPENED,should_lock)
 
 		if(DOOR_STATE_CLOSING_01)
-			CALLBACK("door_state_\ref[src]",close_time_01,src,.proc/set_door_state,DOOR_STATE_CLOSING_02,should_lock,caller)
+			CALLBACK("door_state_\ref[src]",close_time_01,src,.proc/set_door_state,caller,DOOR_STATE_CLOSING_02,should_lock)
 			if(close_sound)
 				play(close_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
@@ -134,20 +135,20 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 					found_living = L
 					break
 			if(found_living)
-				set_door_state(DOOR_STATE_OPENING_02,FALSE,found_living)
+				set_door_state(found_living,DOOR_STATE_OPENING_02,FALSE)
 			else
-				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock,caller)
+				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
 
 		if(DOOR_STATE_OPENED)
 			if(should_lock)
-				lock()
+				lock(caller)
 			opened_time = 0
 			start_thinking(src)
 
 		if(DOOR_STATE_CLOSED)
 			stop_thinking(src)
 			if(should_lock)
-				lock()
+				lock(caller)
 
 	return TRUE
 
@@ -215,6 +216,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
 					set_opacity(1)
 			if(locked)
+				light_state = "light_special_static"
 				light_color = "#FF0000"
 
 		if(DOOR_STATE_DENY)
@@ -256,7 +258,7 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 	if(!. && is_living(A) && door_state == DOOR_STATE_CLOSED && door_state != DOOR_STATE_DENY)
 		var/mob/living/L = A
 		if(!L.dead)
-			open()
+			open(A)
 
 	return .
 

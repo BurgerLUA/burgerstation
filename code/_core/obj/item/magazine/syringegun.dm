@@ -5,7 +5,7 @@
 	bullet_count_max = 8
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/syringe = TRUE,
 	)
 
 	ammo = /obj/item/bullet_cartridge/syringe_gun/

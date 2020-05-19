@@ -4,7 +4,7 @@
 	var/bullet_count_max = 30 //How many bullets can this store
 	var/list/obj/item/bullet_cartridge/stored_bullets
 
-	var/list/weapon_whitelist = list() //What guns can fit this object?
+	var/list/weapon_whitelist = list() //What guns can fit this object? Assoic list (type = TRUE/FALSE)
 
 	var/ammo
 
@@ -112,7 +112,7 @@
 
 	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
 		var/obj/item/weapon/ranged/bullet/magazine/G = object
-		if(!(G.type in weapon_whitelist))
+		if(!weapon_whitelist[G.type])
 			caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 			return TRUE
 		if(G.stored_magazine)

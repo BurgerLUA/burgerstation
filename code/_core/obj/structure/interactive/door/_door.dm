@@ -90,7 +90,7 @@ obj/structure/interactive/door/update_icon()
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(initial(opacity))
 
-obj/structure/interactive/door/proc/toggle(var/atom/caller)
+obj/structure/interactive/door/proc/toggle(var/atom/caller,var/lock = FALSE,var/force = FALSE)
 	if(door_state == DOOR_STATE_OPENED)
 		close(caller)
 		return TRUE
@@ -99,9 +99,9 @@ obj/structure/interactive/door/proc/toggle(var/atom/caller)
 		return TRUE
 	return FALSE
 
-obj/structure/interactive/door/proc/open(var/atom/caller)
+obj/structure/interactive/door/proc/open(var/atom/caller,var/lock = FALSE,var/force = FALSE)
 	if(open_sound)
-		play(open_sound,src,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
+		play(open_sound,src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
 	door_state = DOOR_STATE_OPENING_01
 	update_sprite()
 	spawn(open_time)
@@ -109,21 +109,21 @@ obj/structure/interactive/door/proc/open(var/atom/caller)
 		update_sprite()
 
 
-obj/structure/interactive/door/proc/close(var/atom/caller)
+obj/structure/interactive/door/proc/close(var/atom/caller,var/lock = FALSE,var/force = FALSE)
 	if(close_sound)
-		play(close_sound,src,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
+		play(close_sound,src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
 	door_state = DOOR_STATE_CLOSING_01
 	update_sprite()
 	spawn(close_time)
 		door_state = DOOR_STATE_CLOSED
 		update_sprite()
 
-/obj/structure/interactive/door/proc/unlock(var/atom/caller)
+/obj/structure/interactive/door/proc/unlock(var/atom/caller,var/force = FALSE)
 	locked = FALSE
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/door/proc/lock(var/atom/caller)
+/obj/structure/interactive/door/proc/lock(var/atom/caller,var/force = FALSE)
 	locked = TRUE
 	update_sprite()
 	return TRUE

@@ -74,6 +74,8 @@
 	var/only_attack_enemies = FALSE
 	var/list/enemy_tags = list()
 
+	var/reaction_time = 10
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -139,13 +141,13 @@
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
-		handle_objectives()
 		objective_ticks = 0
+		handle_objectives()
 
 	attack_ticks += 1
 	if(attack_ticks >= attack_delay)
-		handle_attacking()
 		attack_ticks = 0
+		handle_attacking()
 
 	if(alert_level && alert_level <= ALERT_LEVEL_CAUTION)
 		alert_time -= LIFE_TICK
@@ -356,7 +358,13 @@
 
 /ai/proc/set_objective(var/mob/living/L)
 
+	if(!owner || owner.qdeleting)
+		return FALSE
+
 	if(L == owner)
+		return FALSE
+
+	if(L && L.qdeleting)
 		return FALSE
 
 	var/atom/old_attack = objective_attack
@@ -500,7 +508,8 @@
 
 /ai/proc/Bump(var/atom/obstacle)
 
-	set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
+	if(is_living(obstacle))
+		set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
 
 	if(attack_on_block)
 		do_attack(obstacle,prob(left_click_chance))
@@ -525,12 +534,12 @@
 		alert_level = max(desired_alert_level,alert_level)
 
 	if(old_alert_level != alert_level)
-		on_alert_level_changed(old_alert_level,alert_level)
+		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 
 	return FALSE
 
-/ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
+/ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
 	enabled = TRUE
 
@@ -544,6 +553,9 @@
 
 	else if(new_alert_level == ALERT_LEVEL_NOISE)
 		owner.stored_alert_effect = new /obj/effect/alert/huh(owner)
+
+	if(alert_source)
+		CALLBACK("set_new_objective_\ref[src]",CEILING(reaction_time*0.9,1),src,.proc/set_objective,alert_source)
 
 	owner.move_dir = 0
 

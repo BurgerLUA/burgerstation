@@ -5,8 +5,8 @@
 	bullet_count_max = 7
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
+		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod = TRUE
 	)
 
 	bullet_length_min = 20

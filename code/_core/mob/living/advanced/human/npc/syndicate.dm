@@ -5,10 +5,10 @@
 	class = "syndicate"
 
 	var/list/possible_outfits = list(
-		"syndicate_soldier" = 200,
-		"syndicate_hardsuit" = 10,
-		"syndicate_hardsuit_advanced" = 5,
-		"syndicate_hardsuit_elite" = 3
+		"syndicate_soldier" = 200
+		//"syndicate_hardsuit" = 10,
+		//"syndicate_hardsuit_advanced" = 5,
+		//"syndicate_hardsuit_elite" = 3
 	)
 
 	var/loadout_to_level = list(
@@ -16,26 +16,6 @@
 		"syndicate_hardsuit" = 2,
 		"syndicate_hardsuit_advanced" = 4,
 		"syndicate_hardsuit_elite" = 8
-	)
-
-	var/list/possible_weapons = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet = 1,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre = 1,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = 1,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = 1,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg = 1,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = 1,
-		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = 1
-	)
-
-	var/list/weapon_to_magazine = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet = /obj/item/magazine/gyrojet,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre = /obj/item/magazine/pistol_12mm,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = /obj/item/magazine/pistol_10mm,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = /obj/item/magazine/sniper_762,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg = /obj/item/magazine/lmg_556,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = /obj/item/magazine/shotgun_auto,
-		/obj/item/weapon/ranged/bullet/magazine/smg/handheld = /obj/item/magazine/smp_9mm
 	)
 
 	var/map_spawn = FALSE
@@ -81,6 +61,7 @@
 
 	equip_loadout(loadout_to_use)
 
+	/*
 	for(var/i=1,i<=2,i++)
 		var/picked_weapon = pick(possible_weapons)
 		var/obj/item/weapon/ranged/bullet/magazine/W = new picked_weapon(src.loc)
@@ -94,6 +75,7 @@
 			W.click_self(src)
 		else
 			W.quick_equip(src)
+	*/
 
 	return .
 

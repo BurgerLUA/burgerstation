@@ -85,10 +85,7 @@
 
 	return .
 
-/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/ai_cheat = FALSE)
-
-	if(ai_cheat)
-		return src
+/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller)
 
 	if(!is_spent)
 		if(misfire_chance && prob(misfire_chance))

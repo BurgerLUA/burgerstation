@@ -83,7 +83,7 @@ var/global/list/all_shuttle_controlers = list()
 		return FALSE
 
 	desired_transit_time = max(30,desired_transit_time)
-	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = ALERT_LEVEL_NOISE, alert_source = caller)
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
@@ -126,15 +126,15 @@ var/global/list/all_shuttle_controlers = list()
 				var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
 				if(AL && !istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
 					if(open)
-						AL.open(lock,force)
+						AL.open(null,lock,force)
 					else
-						AL.close(lock,force)
+						AL.close(null,lock,force)
 
 		if(!doorstuck)
 			if(!exposed_to_space && open)
-				S.open(lock,force)
+				S.open(null,lock,force)
 			else
-				S.close(lock,force)
+				S.close(null,lock,force)
 
 	return .
 
@@ -150,7 +150,7 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			if(!transit(transit_source,transit_bluespace))
 				return FALSE
-			play('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert_level = ALERT_LEVEL_CAUTION, alert_source = last_caller)
+			play('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = ALERT_LEVEL_CAUTION, alert_source = last_caller)
 
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
@@ -168,7 +168,7 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
-			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert_level = ALERT_LEVEL_CAUTION, alert_source = last_caller)
+			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = ALERT_LEVEL_CAUTION, alert_source = last_caller)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null

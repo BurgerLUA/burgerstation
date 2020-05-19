@@ -16,6 +16,8 @@
 	var/attack_delay_left
 	var/attack_delay_right
 
+	var/next_complex = 0
+
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()
@@ -63,9 +65,50 @@
 		return TRUE
 
 	A.right_hand.add_held_object(objective_weapon,FALSE)
-	objective_weapon.click_self(A)
 
 	return FALSE
+
+/ai/advanced/proc/handle_gunplay()
+
+	var/mob/living/advanced/A = owner
+	if(istype(A.left_item,/obj/item/weapon/ranged/))
+		if(!handle_gun(A.left_item))
+			return FALSE
+	if(istype(A.right_item,/obj/item/weapon/ranged/))
+		if(!handle_gun(A.right_item))
+			return FALSE
+
+	return TRUE
+
+/ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R)
+
+	var/mob/living/advanced/A = owner
+
+	if(istype(R,/obj/item/weapon/ranged/bullet/magazine/))
+		var/obj/item/weapon/ranged/bullet/magazine/G = R
+		if(!G.stored_magazine) //Find one
+			next_complex = world.time + 30
+
+			var/obj/item/magazine/M
+			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
+			if(O_groin)
+				M = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine)
+
+			if(!M || !M.click_on_object(A,G))
+				G.drop_item(get_turf(A))
+				return FALSE
+
+		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets))
+			G.eject_magazine(A)
+			next_complex = world.time + 20
+			return FALSE
+
+		if(!G.chambered_bullet || G.chambered_bullet.is_spent)
+			G.click_self(A)
+			next_complex = world.time + 10
+			return FALSE
+
+	return TRUE
 
 
 /ai/advanced/handle_movement()
@@ -81,7 +124,13 @@
 	if(!is_advanced(owner))
 		return ..()
 
+	if(next_complex > world.time)
+		return FALSE
+
 	var/mob/living/advanced/A = owner
+
+	if(!handle_gunplay())
+		return FALSE
 
 	var/list/params = list(
 		PARAM_ICON_X = num2text(pick(target_distribution_x)),
@@ -152,7 +201,7 @@
 */
 
 
-/ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level)
+/ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
 	if(!is_advanced(owner))
 		return ..()

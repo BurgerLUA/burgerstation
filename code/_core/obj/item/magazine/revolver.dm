@@ -8,7 +8,7 @@
 	bullet_count_max = 6
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/detective
+		/obj/item/weapon/ranged/bullet/revolver/detective = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_38
@@ -28,8 +28,8 @@
 	bullet_count_max = 6
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/commander,
-		/obj/item/weapon/ranged/bullet/revolver/deckhard
+		/obj/item/weapon/ranged/bullet/revolver/commander = TRUE,
+		/obj/item/weapon/ranged/bullet/revolver/deckhard = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_44
@@ -69,7 +69,7 @@
 	bullet_count_max = 6
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/traitor_357
+		/obj/item/weapon/ranged/bullet/revolver/traitor_357 = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_357

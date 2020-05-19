@@ -5,7 +5,10 @@
 /loadout/proc/get_spawning_items()
 	return spawning_items.Copy()
 
-/loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I)
+/loadout/proc/pre_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
+	return TRUE
+
+/loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I) //added after initialize and spawn
 
 	if(!I.quick_equip(A))
 		qdel(I)

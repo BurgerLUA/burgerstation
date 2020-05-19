@@ -5,7 +5,7 @@
 	bullet_count_max = 10
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten = TRUE,
 	)
 
 	ammo = /obj/item/bullet_cartridge/tungsten

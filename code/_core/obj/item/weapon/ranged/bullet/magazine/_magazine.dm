@@ -76,9 +76,19 @@
 
 	. = ..()
 
-	if(. && !is_npc(caller))
+	if(.)
 		eject_chambered_bullet(caller,get_turf(src),TRUE)
 		if(!requires_cock_each_shot)
 			load_new_bullet_from_magazine(caller)
 
 	return .
+
+
+/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/I)
+
+	if(is_magazine(I))
+		var/obj/item/magazine/M = I
+		if(M.weapon_whitelist[src.type])
+			return TRUE
+
+	return FALSE
