@@ -32,11 +32,11 @@
 
 	if(door_state == DOOR_STATE_CLOSED)
 		if(locked)
-			open(TRUE)
+			open(TRUE,caller = caller)
 		else
-			lock()
+			lock(caller = caller)
 	else if(door_state == DOOR_STATE_OPENED)
-		close(TRUE)
+		close(TRUE,caller = caller)
 
 	return TRUE
 
@@ -62,11 +62,11 @@
 
 	return TRUE
 
-obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE)
+obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE,var/atom/caller=null)
 
 	if(!force)
 		if(locked || no_access)
-			set_door_state(DOOR_STATE_DENY)
+			set_door_state(DOOR_STATE_DENY,caller = caller)
 			return FALSE
 
 		if(door_state != DOOR_STATE_CLOSED)
@@ -74,13 +74,13 @@ obj/structure/interactive/door/airlock/open(var/lock = FALSE, var/force = FALSE)
 
 	if(door_state == DOOR_STATE_OPENED)
 		if(!locked && lock)
-			lock()
+			lock(caller = caller)
 		return FALSE
 
-	set_door_state(DOOR_STATE_START_OPENING,lock)
+	set_door_state(DOOR_STATE_START_OPENING,lock,caller)
 	return TRUE
 
-obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE)
+obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE,var/atom/caller=null)
 
 	if(!force)
 		if(locked)
@@ -91,52 +91,52 @@ obj/structure/interactive/door/airlock/close(var/lock = FALSE, var/force = FALSE
 
 	if(door_state == DOOR_STATE_CLOSED)
 		if(!locked && lock)
-			lock()
+			lock(caller)
 		return FALSE
 
-	set_door_state(DOOR_STATE_CLOSING_01,lock)
+	set_door_state(DOOR_STATE_CLOSING_01,lock,caller)
 	return TRUE
 
-/obj/structure/interactive/door/proc/set_door_state(var/desired_door_state,var/should_lock=FALSE)
+/obj/structure/interactive/door/proc/set_door_state(var/desired_door_state,var/should_lock=FALSE,var/atom/caller=null)
 	return TRUE
 
-/obj/structure/interactive/door/airlock/set_door_state(var/desired_door_state,var/should_lock=FALSE)
+/obj/structure/interactive/door/airlock/set_door_state(var/desired_door_state,var/should_lock=FALSE,var/atom/caller=null)
 
 	door_state = desired_door_state
 	update_sprite()
 
 	switch(desired_door_state)
 		if(DOOR_STATE_DENY)
-			CALLBACK("door_state_\ref[src]",6,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock)
+			CALLBACK("door_state_\ref[src]",6,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock,caller)
 			if(deny_sound)
-				play(deny_sound,src)
+				play(deny_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 		if(DOOR_STATE_START_OPENING)
-			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,DOOR_STATE_OPENING_01,should_lock)
+			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,DOOR_STATE_OPENING_01,should_lock,caller)
 			if(open_sound)
-				play(open_sound,src)
+				play(open_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 		if(DOOR_STATE_OPENING_01)
-			CALLBACK("door_state_\ref[src]",open_time_01,src,.proc/set_door_state,DOOR_STATE_OPENING_02,should_lock)
+			CALLBACK("door_state_\ref[src]",open_time_01,src,.proc/set_door_state,DOOR_STATE_OPENING_02,should_lock,caller)
 
 		if(DOOR_STATE_OPENING_02)
-			CALLBACK("door_state_\ref[src]",open_time_02,src,.proc/set_door_state,DOOR_STATE_OPENED,should_lock)
+			CALLBACK("door_state_\ref[src]",open_time_02,src,.proc/set_door_state,DOOR_STATE_OPENED,should_lock,caller)
 
 		if(DOOR_STATE_CLOSING_01)
-			CALLBACK("door_state_\ref[src]",close_time_01,src,.proc/set_door_state,DOOR_STATE_CLOSING_02,should_lock)
+			CALLBACK("door_state_\ref[src]",close_time_01,src,.proc/set_door_state,DOOR_STATE_CLOSING_02,should_lock,caller)
 			if(close_sound)
-				play(close_sound,src)
+				play(close_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 		if(DOOR_STATE_CLOSING_02)
 			var/found_living = FALSE
 			for(var/mob/living/L in loc.contents)
 				if(L)
-					found_living = TRUE
+					found_living = L
 					break
 			if(found_living)
-				set_door_state(DOOR_STATE_OPENING_02,FALSE)
+				set_door_state(DOOR_STATE_OPENING_02,FALSE,found_living)
 			else
-				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock)
+				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,DOOR_STATE_CLOSED,should_lock,caller)
 
 		if(DOOR_STATE_OPENED)
 			if(should_lock)

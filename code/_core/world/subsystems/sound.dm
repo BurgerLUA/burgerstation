@@ -156,7 +156,7 @@ play('sound, atom) to play to all turfs in range of that atom(add args range_min
 play('sound',list_of_hearers, turf or vector) to play to that list of hearers at that location
 */
 
-/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0)
+/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0, var/atom/alert_source = null)
 
 	if(!sound_path || !location_or_list)
 		return FALSE
@@ -279,7 +279,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		if(alert && is_living(M) && prob(created_sound.volume*2))
 			var/mob/living/L = M
-			if(L.ai && L.ai.set_alert_level(alert) && L.ai.alert_level != ALERT_LEVEL_ALERT)
+			if(L.ai && L.ai.set_alert_level(alert,alert_source = alert_source) && L.ai.alert_level != ALERT_LEVEL_ALERT)
 				var/turf/T2 = locate(pos[1],pos[2],pos[3])
 				M.set_dir(get_dir(M,T2))
 				if(!L.ai.objective_move)

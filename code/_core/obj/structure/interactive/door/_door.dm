@@ -90,18 +90,18 @@ obj/structure/interactive/door/update_icon()
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(initial(opacity))
 
-obj/structure/interactive/door/proc/toggle()
+obj/structure/interactive/door/proc/toggle(var/atom/caller)
 	if(door_state == DOOR_STATE_OPENED)
-		close()
+		close(caller)
 		return TRUE
 	else if(door_state == DOOR_STATE_CLOSED)
-		open()
+		open(caller)
 		return TRUE
 	return FALSE
 
-obj/structure/interactive/door/proc/open()
+obj/structure/interactive/door/proc/open(var/atom/caller)
 	if(open_sound)
-		play(open_sound,src)
+		play(open_sound,src,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
 	door_state = DOOR_STATE_OPENING_01
 	update_sprite()
 	spawn(open_time)
@@ -109,21 +109,21 @@ obj/structure/interactive/door/proc/open()
 		update_sprite()
 
 
-obj/structure/interactive/door/proc/close()
+obj/structure/interactive/door/proc/close(var/atom/caller)
 	if(close_sound)
-		play(close_sound,src)
+		play(close_sound,src,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
 	door_state = DOOR_STATE_CLOSING_01
 	update_sprite()
 	spawn(close_time)
 		door_state = DOOR_STATE_CLOSED
 		update_sprite()
 
-/obj/structure/interactive/door/proc/unlock()
+/obj/structure/interactive/door/proc/unlock(var/atom/caller)
 	locked = FALSE
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/door/proc/lock()
+/obj/structure/interactive/door/proc/lock(var/atom/caller)
 	locked = TRUE
 	update_sprite()
 	return TRUE
@@ -140,9 +140,9 @@ obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,object,locati
 		return TRUE
 
 	if(door_state == DOOR_STATE_OPENED && allow_manual_close)
-		close()
+		close(caller)
 	else if(door_state == DOOR_STATE_CLOSED && allow_manual_open)
-		open()
+		open(caller)
 
 	return TRUE
 

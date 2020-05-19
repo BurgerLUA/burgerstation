@@ -172,8 +172,6 @@
 			best_damage_type = damage_type
 			best_damage_type_amount = damage_amount
 
-	hit_object.visible_message(span("danger","Critical hit!"))
-
 	return crit_multiplier
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
@@ -216,6 +214,11 @@
 			var/obj/hud/inventory/I = M.grabbing_hand
 			if(I.owner == attacker)
 				return TRUE
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+			return TRUE
 
 	return prob(get_crit_chance(attacker))
 
@@ -378,11 +381,11 @@
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(impact_sounds))
-		play(pick(impact_sounds),get_turf(hit_object))
+		play(pick(impact_sounds),get_turf(hit_object), alert = ALERT_LEVEL_NOISE)
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(miss_sounds))
-		play(pick(miss_sounds),get_turf(hit_object))
+		play(pick(miss_sounds),get_turf(hit_object), alert = ALERT_LEVEL_NOISE)
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 

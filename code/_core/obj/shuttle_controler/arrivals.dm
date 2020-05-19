@@ -17,7 +17,7 @@
 	linked_beepsky = locate() in get_area(src)
 	return .
 
-/obj/shuttle_controller/arrivals/launch(var/desired_transit_time)
+/obj/shuttle_controller/arrivals/launch(var/mob/caller,var/desired_transit_time)
 
 	if(get_area(src) != get_area(linked_beepsky))
 		return FALSE

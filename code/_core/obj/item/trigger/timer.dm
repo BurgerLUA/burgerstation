@@ -10,14 +10,17 @@
 
 	var/spam_fix_time = 0
 
+	var/mob/last_caller = null
+
 /obj/item/device/timer/click_self(var/mob/caller)
 	trigger(caller,src,-1,-1)
 	return TRUE
 
 /obj/item/device/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+	last_caller = caller
 	start_thinking(src)
 	active = TRUE
-	play('sounds/weapons/timer/arm.ogg',src)
+	play('sounds/weapons/timer/arm.ogg',src,alert = ALERT_LEVEL_NOISE, alert_source = last_caller)
 	return ..()
 
 /obj/item/device/timer/think()
@@ -28,7 +31,7 @@
 		if( (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)
 			var/turf/T = get_turf(src)
 			if(T)
-				play('sounds/weapons/timer/beep.ogg',src)
+				play('sounds/weapons/timer/beep.ogg',src,alert = ALERT_LEVEL_NOISE, alert_source = last_caller)
 
 		if(time_set <= 0)
 			if(loc)

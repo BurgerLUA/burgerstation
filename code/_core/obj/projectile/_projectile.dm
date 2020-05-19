@@ -235,12 +235,18 @@
 		params[PARAM_ICON_X] = shoot_x
 		params[PARAM_ICON_Y] = shoot_y
 
-		var/owner_is_ai = FALSE
+		var/precise = FALSE
 		if(is_living(owner))
 			var/mob/living/L = owner
-			owner_is_ai = L.ai
+			if(L.ai)
+				precise = TRUE
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,owner_is_ai,owner_is_ai)
+		if(!precise && is_living(hit_atom))
+			var/mob/living/L = hit_atom
+			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+				precise = TRUE
+
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,precise,precise)
 
 		if(!object_to_damage)
 			DT.perform_miss(owner,weapon,object_to_damage)

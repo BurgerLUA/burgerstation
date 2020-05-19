@@ -64,23 +64,23 @@ obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,object
 	. = ..()
 
 	if(. && door_state == SLEEPER_OPENED)
-		close()
+		close(caller)
 
 	return .
 
 obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE)
 
 	if(door_state == SLEEPER_CLOSED)
-		open()
+		open(caller)
 		return FALSE
 	else if(door_state != SLEEPER_OPENED)
 		return FALSE
 
 	return ..()
 
-obj/structure/interactive/bed/sleeper/proc/open()
+obj/structure/interactive/bed/sleeper/proc/open(var/mob/caller)
 	if(open_sound)
-		play(open_sound,src)
+		play(open_sound,src,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
 	door_state = SLEEPER_OPENING
 	update_icon()
 	spawn(open_time)
@@ -90,9 +90,9 @@ obj/structure/interactive/bed/sleeper/proc/open()
 		check_collisions()
 	start_thinking(src)
 
-obj/structure/interactive/bed/sleeper/proc/close()
+obj/structure/interactive/bed/sleeper/proc/close(var/mob/caller)
 	if(close_sound)
-		play(close_sound,src)
+		play(close_sound,src,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
 	door_state = SLEEPER_CLOSING
 	update_icon()
 	spawn(close_time)

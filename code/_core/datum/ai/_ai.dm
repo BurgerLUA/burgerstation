@@ -370,7 +370,7 @@
 	owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
 
 	if(L)
-		set_alert_level(ALERT_LEVEL_ALERT)
+		set_alert_level(ALERT_LEVEL_ALERT,alert_source = L)
 		owner.set_dir(get_dir(owner,L))
 		return TRUE
 
@@ -484,7 +484,7 @@
 	if(!attackers[attacker])
 		attackers[attacker] = TRUE
 
-	set_alert_level(ALERT_LEVEL_ALERT)
+	set_alert_level(ALERT_LEVEL_ALERT,alert_source = attacker)
 
 	return TRUE
 
@@ -500,18 +500,22 @@
 
 /ai/proc/Bump(var/atom/obstacle)
 
-	if(is_player(obstacle))
-		set_alert_level(ALERT_LEVEL_CAUTION)
+	set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
 
 	if(attack_on_block)
 		do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE
 
-/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE)
+/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_source = null)
 
 	if(!use_alerts)
 		return FALSE
+
+	if(alert_source && is_living(alert_source))
+		var/mob/living/L = alert_source
+		if(L.loyalty_tag == owner.loyalty_tag)
+			return FALSE //Ignore sounds and stuff made by those with the same loyalty tag.
 
 	var/old_alert_level = alert_level
 

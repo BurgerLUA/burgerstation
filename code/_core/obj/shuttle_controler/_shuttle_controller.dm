@@ -37,6 +37,8 @@ var/global/list/all_shuttle_controlers = list()
 
 	initialize_type = INITIALIZE_LATE
 
+	var/mob/last_caller = null //The last caller who interacted with this shuttle's launch, if any.
+
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
 	return ..()
@@ -74,17 +76,15 @@ var/global/list/all_shuttle_controlers = list()
 	for(var/turf/T in landing_area.contents)
 		new/obj/effect/temp/shuttle_landing(T)
 
-/obj/shuttle_controller/proc/launch(var/desired_transit_time) //In deciseconds
+/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time = default_transit_time) //In deciseconds
 
 	if(!set_doors(FALSE,TRUE,TRUE))
 		log_error("Shuttle Controler: Door failure on [src.get_debug_name()]!")
 		return FALSE
 
-	if(!default_transit_time)
-		default_transit_time = default_transit_time
-
 	desired_transit_time = max(30,desired_transit_time)
-	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert_level = ALERT_LEVEL_NOISE, alert_source = caller)
+	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
 	transit_time = desired_transit_time
@@ -150,7 +150,7 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			if(!transit(transit_source,transit_bluespace))
 				return FALSE
-			play('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			play('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert_level = ALERT_LEVEL_CAUTION, alert_source = last_caller)
 
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
@@ -168,7 +168,7 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
-			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert_level = ALERT_LEVEL_CAUTION, alert_source = last_caller)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null

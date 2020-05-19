@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/
 
 	var/list/shoot_sounds = list()
+	var/shoot_alert = ALERT_LEVEL_CAUTION
 
 	var/automatic = FALSE
 	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
@@ -131,7 +132,7 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click*"))
 	if(length(empty_sounds))
-		play(pick(empty_sounds),src)
+		play(pick(empty_sounds),src, src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 	return FALSE
 
@@ -207,7 +208,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(projectile_to_use)
 
 		if(length(shoot_sounds))
-			play(pick(shoot_sounds_to_use),src)
+			play(pick(shoot_sounds_to_use),src,alert = shoot_alert, alert_source = caller)
 
 		if(!params || !length(params))
 			params = list()
