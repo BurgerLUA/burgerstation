@@ -23,11 +23,11 @@
 	id = "pocket01"
 	screen_loc = "CENTER+2,BOTTOM"
 
-	priority = 51
+	priority = 11
 
 /obj/hud/inventory/organs/groin/pocket/left
 	name = "right lower pocket"
 	id = "pocket02"
 	screen_loc = "CENTER+3,BOTTOM"
 
-	priority = 50
+	priority = 10

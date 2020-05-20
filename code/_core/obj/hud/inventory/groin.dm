@@ -13,7 +13,7 @@
 
 	drop_on_death = TRUE
 
-	priority = 55
+	priority = 25
 
 /obj/hud/inventory/organs/groin //Underwear + Pants
 	name = "pants slot"
@@ -26,7 +26,7 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	priority = 60
+	priority = 40
 
 /obj/hud/inventory/organs/groin/can_wear_object(var/obj/item/I,var/messages = FALSE)
 

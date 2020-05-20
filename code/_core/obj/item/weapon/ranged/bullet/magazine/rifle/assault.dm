@@ -2,7 +2,7 @@
 	name = "\improper .308 Assault Rifle"
 	desc = "For when you have money to spend on ammo."
 	desc_extended = "Space age technology calls for space age guns. This should easily rip someone a new hole."
-	icon = 'icons/obj/items/weapons/ranged/rifle/308_adv.dmi'
+	icon = 'icons/obj/items/weapons/ranged/rifle/308.dmi'
 	icon_state = "inventory"
 	value = 200
 

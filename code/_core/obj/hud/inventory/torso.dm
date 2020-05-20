@@ -100,3 +100,7 @@
 	max_weight = 1000
 
 	drag_to_take = FALSE
+
+	item_blacklist = list(
+		/obj/item/clothing
+	)

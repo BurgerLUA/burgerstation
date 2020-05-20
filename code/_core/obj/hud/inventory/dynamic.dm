@@ -29,6 +29,10 @@
 
 	var/slot_num = 0
 
+	priority = 0
+
+	allow_quick_equip = FALSE
+
 /obj/hud/inventory/dynamic/New(var/desired_loc)
 
 	if(desired_loc && is_atom(desired_loc))

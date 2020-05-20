@@ -9,7 +9,7 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	priority = 65
+	priority = 50
 
 /obj/hud/inventory/organs/left_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
@@ -51,7 +51,7 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
-	priority = 66
+	priority = 51
 
 /obj/hud/inventory/organs/right_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 

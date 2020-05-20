@@ -38,11 +38,7 @@
 
 	if(length(possible_items))
 		var/obj/item/I = pick(possible_items)
-		A.right_hand.add_held_object(I,FALSE)
-		if(istype(I,/obj/item/weapon/melee/energy))
-			var/obj/item/weapon/melee/energy/E = I
-			if(!E.enabled)
-				E.click_self(A)
+		equip_weapon(I)
 		return FALSE
 
 	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6)
@@ -67,12 +63,7 @@
 		A.move_dir = get_dir(owner,objective_weapon)
 		return TRUE
 
-	A.right_hand.add_held_object(objective_weapon,FALSE)
-
-	if(istype(objective_weapon,/obj/item/weapon/melee/energy))
-		var/obj/item/weapon/melee/energy/E = objective_weapon
-		if(!E.enabled)
-			E.click_self(A)
+	equip_weapon(objective_weapon)
 
 	return FALSE
 
@@ -94,16 +85,15 @@
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/magazine/))
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
-		if(!G.stored_magazine) //Find one
+		if(!G.stored_magazine && !G.chambered_bullet) //Find one
 			next_complex = world.time + 30
 
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
 			if(O_groin)
 				M = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine)
-
 			if(!M || !M.click_on_object(A,G))
-				G.drop_item(get_turf(A))
+				unequip_weapon(G)
 				return FALSE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets))
@@ -208,6 +198,69 @@
 	return .
 */
 
+/ai/advanced/proc/find_best_weapon()
+
+	var/mob/living/advanced/A = owner
+
+	var/obj/item/weapon/best_weapon
+	var/best_weapon_value = -1
+
+	for(var/obj/item/weapon/W in A.worn_objects)
+		if(!best_weapon || !best_weapon_value)
+			best_weapon = W
+			best_weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
+			continue
+
+		var/weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
+		if(weapon_value > best_weapon_value)
+			best_weapon = W
+			continue
+
+	for(var/obj/item/weapon/W in A.held_objects)
+		if(!best_weapon || !best_weapon_value)
+			best_weapon = W
+			best_weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
+			continue
+
+		var/weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
+		if(weapon_value > best_weapon_value)
+			best_weapon = W
+			continue
+
+	return best_weapon
+
+/ai/advanced/proc/equip_weapon(var/obj/item/weapon/W)
+
+	var/mob/living/advanced/A = owner
+
+	. = FALSE
+
+	if(A.right_hand && !A.right_item)
+		A.right_hand.add_held_object(W,FALSE)
+		. = TRUE
+
+	else if(A.left_hand && !A.left_item)
+		A.left_hand.add_held_object(W,FALSE)
+		. = TRUE
+
+	if(.)
+		if(istype(W,/obj/item/weapon/melee/energy))
+			var/obj/item/weapon/melee/energy/E = W
+			if(!E.enabled)
+				E.click_self(A)
+
+	return .
+
+
+/ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
+	var/mob/living/advanced/A = owner
+
+	if(istype(W,/obj/item/weapon/melee/energy))
+		var/obj/item/weapon/melee/energy/E = W
+		if(E.enabled)
+			E.click_self(A)
+
+	return W.quick_equip(A)
 
 /ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
@@ -218,24 +271,13 @@
 
 	if(new_alert_level == ALERT_LEVEL_ALERT || new_alert_level == ALERT_LEVEL_CAUTION)
 		if(!A.left_item && !A.right_item)
-			var/list/possible_weapons = list()
-			for(var/obj/item/weapon/W in A.worn_objects)
-				possible_weapons[W] = W.calculate_value()
-			for(var/obj/item/weapon/W in A.held_objects)
-				possible_weapons[W] = W.calculate_value()
-			if(length(possible_weapons))
-				var/obj/item/weapon/W = pickweight(possible_weapons)
-				if(A.right_hand)
-					A.right_hand.add_held_object(W,FALSE)
-				else if(A.left_hand)
-					A.left_hand.add_held_object(W,FALSE)
-				W.click_self(A)
+			var/obj/item/weapon/W = find_best_weapon()
+			if(W) equip_weapon(W)
 	else
 		if(A.right_item)
-			A.right_item.quick_equip(A)
-
+			unequip_weapon(A.right_item)
 		if(A.left_item)
-			A.left_item.quick_equip(A)
+			unequip_weapon(A.left_item)
 
 	return ..()
 

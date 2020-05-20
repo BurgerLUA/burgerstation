@@ -25,23 +25,27 @@
 
 /obj/item/proc/quick_equip(var/mob/living/advanced/caller)
 
-	var/obj/hud/inventory/best_inventory
+	var/obj/hud/inventory/best_inventory_wear
+	var/obj/hud/inventory/best_inventory_equip
 
 	for(var/obj/hud/inventory/I in caller.inventory)
 
 		if(!I.allow_quick_equip)
 			continue
 
-		if(can_be_worn(caller,I) && I.can_wear_object(src) && (!best_inventory || I.priority >= best_inventory.priority))
-			best_inventory = I
+		if(can_be_worn(caller,I) && I.can_wear_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
+			best_inventory_wear = I
 			continue
 
-		if(can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory || I.priority >= best_inventory.priority))
-			best_inventory = I
+		if(can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+			best_inventory_equip = I
 			continue
 
-	if(best_inventory)
-		return best_inventory.add_object(src)
+	if(best_inventory_wear)
+		return best_inventory_wear.add_object(src)
+
+	if(best_inventory_equip)
+		return best_inventory_equip.add_object(src)
 
 	return FALSE
 

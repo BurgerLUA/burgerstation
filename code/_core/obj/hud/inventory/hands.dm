@@ -36,7 +36,6 @@
 	click_flags = LEFT_HAND
 	item_slot = SLOT_HAND_LEFT
 	held_slots = 1
-	priority = 100
 
 	essential = TRUE
 
@@ -73,7 +72,6 @@
 	click_flags = RIGHT_HAND
 	item_slot = SLOT_HAND_RIGHT
 	held_slots = 1
-	priority = 100
 
 	essential = TRUE
 
