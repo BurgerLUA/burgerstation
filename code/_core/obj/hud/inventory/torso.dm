@@ -9,6 +9,8 @@
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
+	priority = 100
+
 /obj/hud/inventory/organs/torso/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())

@@ -28,14 +28,15 @@
 	var/obj/hud/inventory/best_inventory
 
 	for(var/obj/hud/inventory/I in caller.inventory)
+
 		if(!I.allow_quick_equip)
 			continue
 
-		if(!best_inventory)
+		if(can_be_worn(caller,I) && I.can_wear_object(src) && (!best_inventory || I.priority >= best_inventory.priority))
 			best_inventory = I
 			continue
 
-		if((can_be_worn(caller,I) ? I.can_wear_object(src) : I.can_hold_object(src)) && I.priority >= best_inventory.priority)
+		if(can_be_held(caller,I) && I.can_hold_object(src) && (!best_inventory || I.priority >= best_inventory.priority))
 			best_inventory = I
 			continue
 

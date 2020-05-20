@@ -18,14 +18,16 @@
 
 	drop_on_death = TRUE
 
-	priority = 1000
-
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"
 	screen_loc = "CENTER+2,BOTTOM"
 
+	priority = 51
+
 /obj/hud/inventory/organs/groin/pocket/left
 	name = "right lower pocket"
 	id = "pocket02"
 	screen_loc = "CENTER+3,BOTTOM"
+
+	priority = 50

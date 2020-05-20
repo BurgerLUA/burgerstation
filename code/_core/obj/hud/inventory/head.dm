@@ -10,6 +10,8 @@
 
 	drop_on_death = TRUE
 
+	priority = 100
+
 /obj/hud/inventory/organs/neck
 	name = "neck slot"
 	icon_state = "slot_neck"
@@ -22,6 +24,8 @@
 
 	drop_on_death = TRUE
 
+	priority = 98
+
 /obj/hud/inventory/organs/face
 	name = "face slot"
 	icon_state = "slot_face"
@@ -33,6 +37,8 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
+
+	priority = 99
 
 /obj/hud/inventory/organs/face/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
@@ -75,6 +81,8 @@
 	worn_slots = 1
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+
+	priority = 97
 
 
 /*

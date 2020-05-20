@@ -11,6 +11,8 @@
 
 	drop_on_death = TRUE
 
+	priority = 74
+
 /obj/hud/inventory/organs/right_hand_worn
 	name = "right glove"
 	icon_state = "slot_hand_right"
@@ -22,6 +24,8 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
+
+	priority = 75
 
 //Holding
 /obj/hud/inventory/organs/left_hand_held
@@ -41,6 +45,8 @@
 	drop_on_death = TRUE
 
 	allow_quick_equip = FALSE
+
+	priority = 2
 
 /obj/hud/inventory/organs/left_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()
@@ -76,6 +82,8 @@
 	drop_on_death = TRUE
 
 	allow_quick_equip = FALSE
+
+	priority = 3
 
 /obj/hud/inventory/organs/right_hand_held/add_held_object(var/obj/item/I,var/messages = TRUE)
 	. = ..()

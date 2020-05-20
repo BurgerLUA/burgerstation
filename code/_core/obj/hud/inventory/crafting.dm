@@ -3,8 +3,6 @@
 	held_slots = 1
 	icon_state = "square_round"
 
-	priority = 1
-
 	max_size = SIZE_8
 	max_weight = WEIGHT_8
 

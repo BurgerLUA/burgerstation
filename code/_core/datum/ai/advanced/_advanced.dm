@@ -39,7 +39,10 @@
 	if(length(possible_items))
 		var/obj/item/I = pick(possible_items)
 		A.right_hand.add_held_object(I,FALSE)
-		I.click_self(A)
+		if(istype(I,/obj/item/weapon/melee/energy))
+			var/obj/item/weapon/melee/energy/E = I
+			if(!E.enabled)
+				E.click_self(A)
 		return FALSE
 
 	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6)
@@ -65,6 +68,11 @@
 		return TRUE
 
 	A.right_hand.add_held_object(objective_weapon,FALSE)
+
+	if(istype(objective_weapon,/obj/item/weapon/melee/energy))
+		var/obj/item/weapon/melee/energy/E = objective_weapon
+		if(!E.enabled)
+			E.click_self(A)
 
 	return FALSE
 
