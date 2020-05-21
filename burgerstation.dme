@@ -789,7 +789,6 @@
 #include "code\_core\obj\item\container\beaker\food\flour.dm"
 #include "code\_core\obj\item\container\can\_can.dm"
 #include "code\_core\obj\item\container\food\_food.dm"
-#include "code\_core\obj\item\container\food\bread.dm"
 #include "code\_core\obj\item\container\food\cheese.dm"
 #include "code\_core\obj\item\container\food\chicken.dm"
 #include "code\_core\obj\item\container\food\dynamic.dm"

@@ -23,7 +23,7 @@
 	else if(icon_state == "meatball")
 		icon_state = "patty"
 		caller.to_chat("You reshape \the [src.name] into a patty.")
-		pixel_height = 2
+		pixel_height = 0
 		update_sprite()
 
 	update_sprite()

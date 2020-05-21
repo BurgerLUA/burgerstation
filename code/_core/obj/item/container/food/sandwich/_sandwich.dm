@@ -59,7 +59,7 @@
 
 	. = ..()
 
-	var/offset_y = -2
+	var/offset_y = 0
 
 	for(var/i=1,i<=length(inventories),i++)
 		var/obj/hud/inventory/IN = inventories[i]

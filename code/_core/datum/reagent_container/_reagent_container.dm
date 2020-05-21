@@ -261,9 +261,15 @@
 
 	found_recipe.on_react(caller,src,portions_to_make)
 
+	world.log << "The result is: [found_recipe.result]."
+	world.log << "The owner is: [owner]."
+
+
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
+		world.log << "CUM"
 		update_container(FALSE)
 		while(volume_current > 0)
+			world.log << "PING."
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
 			if(!A.reagents)

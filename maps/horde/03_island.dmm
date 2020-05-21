@@ -234,7 +234,7 @@
 "ez" = (/mob/living/simple/npc/passive/chicken/black{name = "Cow"},/turf/simulated/floor/wood/brown,/area/interior/roof/village)
 "eA" = (/mob/living/simple/npc/passive/chicken/brown{name = "Parot"},/turf/simulated/floor/wood/brown,/area/interior/roof/village)
 "eB" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/brown,/area/interior/roof/village)
-"eC" = (/obj/item/container/food/dynamic/cheese/wheel,/obj/structure/interactive/crate/open,/obj/item/container/food/dynamic/chicken/raw,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/chicken/raw,/obj/item/container/food/dynamic/cheese/block,/obj/item/container/food/bread,/obj/item/container/beaker/food/flour,/obj/item/container/beaker/food/milk,/turf/simulated/floor/wood/brown,/area/interior/roof/village)
+"eC" = (/obj/item/container/food/dynamic/cheese/wheel,/obj/structure/interactive/crate/open,/obj/item/container/food/dynamic/chicken/raw,/obj/item/container/food/dynamic/meat/raw,/obj/item/container/food/dynamic/chicken/raw,/obj/item/container/food/dynamic/cheese/block,/obj/item/container/beaker/food/flour,/obj/item/container/beaker/food/milk,/turf/simulated/floor/wood/brown,/area/interior/roof/village)
 "eD" = (/obj/decal/hazard{icon_state = "line"; dir = 6},/obj/structure/interactive/lighting/floor,/turf/simulated/floor/plating,/area/exterior/grass)
 "eE" = (/obj/decal/hazard{icon_state = "line"; dir = 10},/obj/structure/interactive/lighting/floor,/turf/simulated/floor/plating,/area/exterior/grass)
 "eF" = (/obj/decal/hazard{icon_state = "line"; dir = 8},/obj/structure/interactive/mining_brace{icon_state = "mining_brace"; dir = 8},/turf/simulated/floor/plating,/area/exterior/grass)

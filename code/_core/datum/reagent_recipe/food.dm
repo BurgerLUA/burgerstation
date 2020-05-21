@@ -28,6 +28,8 @@
 		"dough_flour" = 8
 	)
 
+	result = /obj/item/container/food/dynamic/bread
+
 /reagent_recipe/dough/flour/processed
 
 	name = "white flour dough"
@@ -41,6 +43,8 @@
 	results = list(
 		"dough_flour_white" = 8
 	)
+
+	result = /obj/item/container/food/dynamic/bread
 
 
 /reagent_recipe/bread/

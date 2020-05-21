@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(delete)
 		if(is_atom(object_to_delete))
 			var/atom/A = object_to_delete
 			if(!A.is_safe_to_delete())
-				objects_to_delete[object_to_delete] = world.time + 300 //Wait another 30 seconds.
+				objects_to_delete[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
 				continue
 
 		objects_to_delete -= object_to_delete
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(delete)
 		if(is_atom(object_to_delete))
 			var/atom/A = object_to_delete
 			if(!A.is_safe_to_delete())
-				objects_to_delete_safe[object_to_delete] = world.time + 300
+				objects_to_delete_safe[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
 				continue
 
 		var/should_delete = TRUE
@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(delete)
 				should_delete = FALSE
 
 		if(!should_delete)
-			objects_to_delete_safe[object_to_delete] = world.time + 300
+			objects_to_delete_safe[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
 			continue
 
 		objects_to_delete_safe -= object_to_delete
