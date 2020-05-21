@@ -53,7 +53,7 @@
 #define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 
 //Makes compiling faster. FALSE means disabled
 
@@ -72,6 +72,8 @@
 #define ENABLE_WEATHERGEN TRUE
 #define ENABLE_HAZARDS FALSE
 #define ENABLE_WOUNDS FALSE
+
+#define ENABLE_HIT_MESSAGES FALSE
 
 #define ENABLE_LORE FALSE
 #define ENABLE_KARMA FALSE

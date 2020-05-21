@@ -5,11 +5,11 @@
 	icon = 'icons/obj/items/weapons/ranged/rifle/762_lmg.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 3
+	shoot_delay = 2
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/sniper_heavy/heavy_sniper.ogg')
+	shoot_sounds = list('sounds/weapons/308/shoot_alt.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -22,7 +22,7 @@
 	weight = WEIGHT_4
 
 	heat_per_shot = 0.03
-	heat_max = 0.3
+	heat_max = 0.2
 
 	bullet_length_min = 46
 	bullet_length_best = 51

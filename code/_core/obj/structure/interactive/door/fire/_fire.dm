@@ -1,7 +1,7 @@
 /obj/structure/interactive/door/fire
 	name = "fire door"
 	desc = "Protects you from stupidity."
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	icon = 'icons/obj/structure/airlock/fire.dmi'

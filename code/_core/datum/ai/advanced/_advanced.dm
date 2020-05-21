@@ -243,11 +243,10 @@
 		A.left_hand.add_held_object(W,FALSE)
 		. = TRUE
 
-	if(.)
-		if(istype(W,/obj/item/weapon/melee/energy))
-			var/obj/item/weapon/melee/energy/E = W
-			if(!E.enabled)
-				E.click_self(A)
+	if(. && istype(W,/obj/item/weapon/melee/energy))
+		var/obj/item/weapon/melee/energy/E = W
+		if(!E.enabled) E.click_self(A)
+
 
 	return .
 
@@ -257,8 +256,8 @@
 
 	if(istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
-		if(E.enabled)
-			E.click_self(A)
+		if(E.enabled) E.click_self(A)
+
 
 	return W.quick_equip(A)
 

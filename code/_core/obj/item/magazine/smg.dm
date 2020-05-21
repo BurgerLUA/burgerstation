@@ -18,6 +18,9 @@
 
 	ammo = /obj/item/bullet_cartridge/pistol_45
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/smg_45/update_icon()
 	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*12,1)]"
 	..()

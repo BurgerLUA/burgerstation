@@ -15,7 +15,7 @@
 	density_down  = TRUE
 	allow_bullet_pass = TRUE
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 /turf/simulated/floor/chasm/end/

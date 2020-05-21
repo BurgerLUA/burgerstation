@@ -5,20 +5,18 @@
 /obj/structure/interactive/vending/ammo/pistol
 	name = "pistol ammo vendor"
 	stored_types = list(
+		/obj/item/magazine/pistol_12mm/nt,
+		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_45,
-		/obj/item/magazine/pistol_50,
-		/obj/item/magazine/clip/revolver/bullet_38,
-		/obj/item/magazine/clip/revolver/bullet_44
 	)
 
 /obj/structure/interactive/vending/ammo/auto
 	name = "smg, rifle ammo vendor"
 	stored_types = list(
-		/obj/item/magazine/smg_45,
-		/obj/item/magazine/carbine_223,
-		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/sniper_50
+		/obj/item/magazine/sniper_762,
+		/obj/item/magazine/lmg_762,
+		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/smg_46
 	)
 
 /obj/structure/interactive/vending/ammo/shotgun

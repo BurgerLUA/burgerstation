@@ -34,7 +34,7 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	collision_flags = FLAG_COLLISION_NONE
+	collision_flags = FLAG_COLLISION_CRAWLING
 
 	plane = PLANE_OBJ
 
@@ -213,7 +213,7 @@
 
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effect(list(STUN,PARALYZE,FATIGUE,SLEEP,CRIT,REST))
+	var/desired_horizontal = dead || has_status_effect(list(STUN,FATIGUE,SLEEP,CRIT,REST))
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN

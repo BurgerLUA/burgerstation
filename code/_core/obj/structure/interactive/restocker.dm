@@ -26,7 +26,7 @@
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "gear2_ammo"
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 /obj/structure/interactive/restocker/ammo/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

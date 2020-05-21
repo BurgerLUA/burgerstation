@@ -4,7 +4,7 @@ obj/structure/interactive/objective
 	icon_state = "1"
 
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 	value = 5000
 

@@ -2,7 +2,7 @@
 	name = "airlock"
 	icon = 'icons/obj/structure/airlock/fake.dmi'
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	opacity = 1
 

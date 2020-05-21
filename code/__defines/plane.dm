@@ -16,9 +16,9 @@
 
 #define PLANE_OBJ -8
 
-#define PLANE_MOB -7
+#define PLANE_WALL -7
 
-#define PLANE_WALL -6
+#define PLANE_MOB -6
 
 #define PLANE_TREE -5
 

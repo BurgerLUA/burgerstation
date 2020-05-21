@@ -64,10 +64,7 @@
 		owner.dir = old_dir
 		owner.move_delay = max(owner.move_delay,duration)
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)
-		if(result) //We can move.
-			//animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
-			//animate(pixel_x = initial(owner.pixel_x), pixel_y = initial(owner.pixel_y),time = duration)
-		else //There is something blocking us!
+		if(!result) //We can move.
 			animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)
 			spawn(1)
 				var/stun_time = max(duration,10)
@@ -108,6 +105,7 @@
 	maximum = 10
 
 /status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.drop_held_objects(A.loc)

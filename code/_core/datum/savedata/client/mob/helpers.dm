@@ -182,6 +182,7 @@
 		var/obj/marker/dev/D = locate() in world
 		if(D && ENABLE_INSTALOAD)
 			A.force_move(get_turf(D))
+			A.adjust_currency(10000)
 		else
 			var/obj/structure/interactive/bed/sleeper/C = length(cryo_spawnpoints) ? pick(cryo_spawnpoints) : pick(backup_spawnpoints)
 			A.force_move(get_turf(C))

@@ -84,4 +84,4 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
-	shoot_sounds = list('sounds/weapons/assault_rifle/assault_rifle.ogg')
+	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')

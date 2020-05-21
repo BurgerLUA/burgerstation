@@ -43,6 +43,7 @@
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 	return
 
+/*
 /damagetype/ranged/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(hit_object == victim)
 		return span("warning","\The [victim] is hit by \the [src.name]!")
@@ -57,6 +58,7 @@
 
 /damagetype/ranged/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("danger","You hear an impact.")
+
 
 /damagetype/ranged/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
@@ -85,6 +87,8 @@
 
 /damagetype/ranged/get_miss_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return span("warning","You #REASON the [src.name]!")
+
+*/
 
 
 

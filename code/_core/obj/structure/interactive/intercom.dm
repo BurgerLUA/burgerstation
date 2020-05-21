@@ -11,6 +11,8 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
+	plane = PLANE_WALL_ATTACHMENTS
+
 /obj/structure/interactive/intercom/New(var/desired_loc)
 	stored_radio = new(src) //Initialized somewhere else. Don't know where, though, honestly.
 	stored_radio.anchored = TRUE

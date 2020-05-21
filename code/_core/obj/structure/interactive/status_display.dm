@@ -19,6 +19,8 @@ var/global/list/global_status_displays = list()
 
 	maptext_y = -2
 
+	plane = PLANE_WALL_ATTACHMENTS
+
 /obj/structure/interactive/status_display/update_icon()
 	icon_state = null
 	return ..()

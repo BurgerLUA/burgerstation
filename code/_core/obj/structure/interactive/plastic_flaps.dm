@@ -5,7 +5,7 @@
 	anchored = TRUE
 	icon = 'icons/obj/structure/plastic_flaps.dmi'
 	icon_state = "plastic_flaps"
-	plane = PLANE_WALL_ATTACHMENTS
+	plane = PLANE_WALL
 
 /obj/structure/interactive/plastic_flaps/Cross(atom/movable/O)
 

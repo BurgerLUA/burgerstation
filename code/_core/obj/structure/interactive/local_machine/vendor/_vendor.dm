@@ -8,7 +8,7 @@
 	var/list/obj/item/stored_objects = list()
 	var/list/obj/item/stored_types = list()
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	collision_dir = NORTH | EAST | SOUTH | WEST
 

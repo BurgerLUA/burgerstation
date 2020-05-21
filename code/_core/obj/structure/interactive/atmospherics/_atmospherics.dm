@@ -32,6 +32,8 @@ obj/structure/interactive/atmospherics/air_alarm
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
+	plane = PLANE_WALL_ATTACHMENTS
+
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 	setup_dir_offsets()
 	update_sprite()

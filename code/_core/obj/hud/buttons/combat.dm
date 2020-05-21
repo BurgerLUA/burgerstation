@@ -3,12 +3,17 @@
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
 	desc_extended = "Press this button if you want to resist out of whatever situation your in. (That doesn't mean that it will do it.)"
 	icon_state = "resist"
-	screen_loc = "RIGHT-1,BOTTOM+1"
+	screen_loc = "RIGHT-2,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 
 /obj/hud/button/resist/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	//Resist code here
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		if(L.can_resist())
+			L.resist()
+
 	return ..()
 
 /obj/hud/button/resist_auto

@@ -44,6 +44,13 @@
 	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
 		return FALSE
 
+	if(grabbing_hand && move_dir)
+		world.log << "Must resist!"
+		if(can_resist(FALSE))
+			world.log << "Can resist!"
+			resist()
+		return FALSE
+
 	if(has_status_effect(CONFUSED))
 		move_dir = pick(DIRECTIONS_ALL)
 

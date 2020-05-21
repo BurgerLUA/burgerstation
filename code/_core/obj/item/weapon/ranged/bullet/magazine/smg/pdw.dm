@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw
-	name = "\improper 4.6mm WT-550"
+	name = "\improper 4.6x30mm WT-550"
 	desc = "Something squeaks that isn't supposed to squeak? Put some WT-500 on it."
 	desc_extended = "A NanoTrasen made and used personal defense weapon designed for security forces on stations. The unique 4.6x30mm ammo type offers a robust array of special rounds for all combat situations."
 	icon = 'icons/obj/items/weapons/ranged/smg/4mm.dmi'

@@ -9,7 +9,7 @@
 	density_up = TRUE
 	density_down = TRUE
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 /turf/simulated/bluespace/is_space()

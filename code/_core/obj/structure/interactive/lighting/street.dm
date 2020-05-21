@@ -12,7 +12,7 @@
 
 	plane = PLANE_MOB
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	collision_dir = NORTH | EAST | SOUTH | WEST
 

@@ -18,6 +18,9 @@
 	bullet_diameter_best = 10
 	bullet_diameter_max = 11.2
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/pistol_9mm/update_icon()
 	icon_state = "[initial(icon_state)]_[CEILING(length(stored_bullets)/2,1)]"
 	return ..()

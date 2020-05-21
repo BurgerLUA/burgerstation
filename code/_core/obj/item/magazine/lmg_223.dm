@@ -1,4 +1,4 @@
-/obj/item/magazine/lmg_556
+/obj/item/magazine/lmg_223
 	name = "\improper .223 lmg magazine"
 	icon = 'icons/obj/items/magazine/223_lmg.dmi'
 	icon_state = "223"
@@ -8,7 +8,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/rifle_223/syndicate
+	ammo = /obj/item/bullet_cartridge/rifle_223
 
 	size = SIZE_3
 	weight = WEIGHT_3
@@ -21,7 +21,10 @@
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
 
-/obj/item/magazine/lmg_556/update_icon()
+	size = SIZE_4
+	weight = WEIGHT_4
+
+/obj/item/magazine/lmg_223/update_icon()
 	var/math_mod = (length(stored_bullets) / bullet_count_max) * 11
 	icon_state = "[initial(icon_state)]_[CEILING(math_mod, 1)]"
 	return ..()

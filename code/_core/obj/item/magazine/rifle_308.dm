@@ -20,6 +20,9 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/rifle_308/update_icon()
 	if(length(stored_bullets))
 		icon_state = "[initial(icon_state)]_1"

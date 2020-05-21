@@ -57,7 +57,6 @@
 	if(defer_self == grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
-			//grabbed_object.glide_size = initial(grabbed_object.glide_size)
 			grabbed_object.Move(get_step(grabbed_object.loc,desired_move_dir),desired_move_dir)
 		return TRUE
 

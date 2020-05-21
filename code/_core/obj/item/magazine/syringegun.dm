@@ -18,6 +18,9 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 18.5
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/syringe_gun/update_icon()
 	icon_state = "[length(stored_bullets)]"
 	..()

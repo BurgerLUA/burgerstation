@@ -85,6 +85,28 @@
 	weight = 0.01
 	value = 0.1
 
+/obj/item/bullet_cartridge/pistol_4mm/
+	name = "\improper 4.6x30mm smg cartridge"
+	desc = "For smgs that require 4.6x30mm ammo."
+	icon = 'icons/obj/items/bullet/8mm.dmi'
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	id = "bullet"
+	bullet_diameter = 4.6
+	bullet_length = 30
+
+
+	projectile = /obj/projectile/bullet/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	size = 0.01
+	weight = 0.01
+	value = 0.1
+
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require .40 ammo."

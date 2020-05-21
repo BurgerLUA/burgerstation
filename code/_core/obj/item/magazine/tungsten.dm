@@ -18,6 +18,9 @@
 	bullet_diameter_best = 5
 	bullet_diameter_max = 6
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/rifle_tungsten/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 	return TRUE

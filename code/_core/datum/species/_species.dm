@@ -54,6 +54,7 @@
 		/obj/hud/button/intent/grab,
 		/obj/hud/button/sneak,
 		/obj/hud/button/close_inventory,
+		/obj/hud/button/resist,
 
 		#ifdef ENABLE_SLOTS
 			/obj/hud/button/slot/A,

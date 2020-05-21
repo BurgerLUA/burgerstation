@@ -4,6 +4,7 @@
 
 	var/atom/objective_move
 	var/mob/living/objective_attack
+	var/atom/objective_investigate
 
 	var/radius_find_enemy = VIEW_RANGE
 	var/radius_find_enemy_alert = VIEW_RANGE + ZOOM_RANGE
@@ -61,7 +62,12 @@
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
 	var/alert_time = 600 //Deciseconds
+	var/last_alert_level = 0 //When the alert level change last triggered.
 	var/sidestep_next = FALSE
+	var/should_investigate_alert = FALSE
+
+	var/grab_time = 0
+	var/grab_time_max = 20 //How long, in deciseconds, should we allow someone to grab us?
 
 	var/ignore_immortal = FALSE
 
@@ -75,6 +81,8 @@
 	var/list/enemy_tags = list()
 
 	var/reaction_time = 10
+
+
 
 /ai/Destroy()
 	if(owner)
@@ -281,6 +289,12 @@
 	return FALSE
 
 /ai/proc/handle_movement_alert()
+
+	if(alert_level >= ALERT_LEVEL_NONE && objective_investigate)
+		owner.movement_flags = MOVEMENT_WALKING
+		owner.move_dir = get_dir(owner,objective_investigate)
+		return TRUE
+
 	if(alert_level == ALERT_LEVEL_CAUTION)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
@@ -315,7 +329,12 @@
 
 /ai/proc/handle_movement_grabbed()
 
-	if(owner.grabbing_hand && prob(25))
+	if(owner.grabbing_hand)
+		grab_time++
+	else
+		grab_time = 0
+
+	if(owner.grabbing_hand && grab_time >= grab_time_max)
 		var/turf/T = get_turf(owner.grabbing_hand)
 		owner.move_dir = get_dir(T,owner)
 		return TRUE
@@ -356,30 +375,34 @@
 /ai/proc/hostile_message()
 	return FALSE
 
-/ai/proc/set_objective(var/mob/living/L)
+/ai/proc/set_objective(var/atom/A,var/alert = TRUE)
 
 	if(!owner || owner.qdeleting)
 		return FALSE
 
-	if(L == owner)
+	if(A == owner)
 		return FALSE
 
-	if(L && L.qdeleting)
+	if(A && A.qdeleting)
 		return FALSE
 
 	var/atom/old_attack = objective_attack
 
-	if(objective_attack && attackers[objective_attack])
-		attackers -= objective_attack
+	if(!A && old_attack && attackers[old_attack])
+		attackers -= old_attack
 
-	objective_attack = L
-	frustration_attack = 0
+	owner.set_dir(get_dir(owner,A))
 
-	owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
+	if(objective_investigate)
+		objective_investigate = null
 
-	if(L)
-		set_alert_level(ALERT_LEVEL_ALERT,alert_source = L)
-		owner.set_dir(get_dir(owner,L))
+	if(is_living(A))
+		frustration_attack = 0
+		set_alert_level(ALERT_LEVEL_ALERT)
+		objective_attack = A
+		if(objective_move == objective_attack)
+			objective_move = null
+		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
 		return TRUE
 
 	if(old_attack && !old_attack.qdeleting)
@@ -392,7 +415,8 @@
 		set_move_objective(old_attack)
 		return TRUE
 
-	set_alert_level(ALERT_LEVEL_NOISE,TRUE)
+	if(alert)
+		set_alert_level(ALERT_LEVEL_NOISE,TRUE)
 
 	return TRUE
 
@@ -419,7 +443,8 @@
 
 		if(best_target && best_target != objective_attack)
 			hostile_message()
-			set_objective(best_target)
+			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
+			objective_ticks = -(reaction_time + 1)
 
 		frustration_attack = 0
 
@@ -516,14 +541,30 @@
 
 	return TRUE
 
+/ai/proc/investigate(var/atom/desired_target)
+
+	if(!desired_target)
+		return FALSE
+
+	if(objective_investigate == objective_attack)
+		return FALSE
+
+	owner.set_dir(get_dir(owner,desired_target))
+	objective_move = desired_target
+
+	return TRUE
+
 /ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_source = null)
 
 	if(!use_alerts)
 		return FALSE
 
-	if(alert_source && is_living(alert_source))
+	if(owner.dead)
+		return FALSE
+
+	if(alert_level <= alert_level && alert_source && is_living(alert_source))
 		var/mob/living/L = alert_source
-		if(L.loyalty_tag == owner.loyalty_tag)
+		if(!should_attack_mob(L))
 			return FALSE //Ignore sounds and stuff made by those with the same loyalty tag.
 
 	var/old_alert_level = alert_level
@@ -533,6 +574,28 @@
 	else
 		alert_level = max(desired_alert_level,alert_level)
 
+	enabled = TRUE
+
+	if(alert_level == ALERT_LEVEL_ALERT)
+		QDEL_NULL(owner.stored_alert_effect)
+		owner.stored_alert_effect = new /obj/effect/alert/exclaim(owner)
+		last_alert_level = world.time
+	else if(alert_level == ALERT_LEVEL_CAUTION)
+		if(last_alert_level <= world.time + 50)
+			QDEL_NULL(owner.stored_alert_effect)
+			owner.stored_alert_effect = new /obj/effect/alert/question(owner)
+			last_alert_level = world.time
+	else if(alert_level == ALERT_LEVEL_NOISE)
+		if(last_alert_level <= world.time + 50)
+			QDEL_NULL(owner.stored_alert_effect)
+			owner.stored_alert_effect = new /obj/effect/alert/huh(owner)
+			last_alert_level = world.time
+
+	if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
+		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.9,1),src,.proc/investigate,alert_source)
+
+	owner.move_dir = 0
+
 	if(old_alert_level != alert_level)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
@@ -540,23 +603,4 @@
 	return FALSE
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
-
-	enabled = TRUE
-
-	QDEL_NULL(owner.stored_alert_effect)
-
-	if(new_alert_level == ALERT_LEVEL_ALERT)
-		owner.stored_alert_effect = new /obj/effect/alert/exclaim(owner)
-
-	else if(new_alert_level == ALERT_LEVEL_CAUTION)
-		owner.stored_alert_effect = new /obj/effect/alert/question(owner)
-
-	else if(new_alert_level == ALERT_LEVEL_NOISE)
-		owner.stored_alert_effect = new /obj/effect/alert/huh(owner)
-
-	if(alert_source)
-		CALLBACK("set_new_objective_\ref[src]",CEILING(reaction_time*0.9,1),src,.proc/set_objective,alert_source)
-
-	owner.move_dir = 0
-
 	return TRUE

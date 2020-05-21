@@ -14,7 +14,7 @@ obj/structure/interactive/computer/console
 	desired_light_power = 0.75
 	desired_light_color = "#00FF00"
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	collision_dir = NORTH | EAST | SOUTH | WEST

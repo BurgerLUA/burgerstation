@@ -5,7 +5,9 @@
 	icon = 'icons/obj/structure/shield_gen.dmi'
 	icon_state = "shieldwall"
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	collision_dir = NORTH | EAST | SOUTH | WEST
+
+	plane = PLANE_WALL

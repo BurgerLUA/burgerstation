@@ -498,6 +498,10 @@
 	return "[copytext(get_attack_message_1st(attacker,victim,weapon,hit_object),1,-1)]... but it has no effect!"
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(!ENABLE_HIT_MESSAGES)
+		return FALSE
+
 	attacker.visible_message(\
 		span("warning",get_glance_message_3rd(attacker,victim,weapon,hit_object)),\
 		span("warning",get_glance_message_1st(attacker,victim,weapon,hit_object)),\
@@ -506,6 +510,10 @@
 	return TRUE
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(!ENABLE_HIT_MESSAGES)
+		return FALSE
+
 	attacker.visible_message(\
 		span("warning", get_attack_message_3rd(attacker,victim,weapon,hit_object)),\
 		span("danger",  get_attack_message_1st(attacker,victim,weapon,hit_object)),\
@@ -514,6 +522,10 @@
 	return TRUE
 
 /damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+
+	if(!ENABLE_HIT_MESSAGES)
+		return FALSE
+
 	attacker.visible_message(\
 		span("warning", replacetext(get_miss_message_3rd(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\
 		span("danger",  replacetext(get_miss_message_1st(attacker,victim,weapon,hit_object),"#REASON",miss_text)),\

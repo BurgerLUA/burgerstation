@@ -9,7 +9,7 @@
 
 	var/obj/structure/interactive/ground_ore_deposit/found_deposit
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 
 /obj/structure/interactive/mining_drill/Initialize()
@@ -117,7 +117,7 @@
 	icon_state = "mining_brace"
 	anchored = FALSE
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

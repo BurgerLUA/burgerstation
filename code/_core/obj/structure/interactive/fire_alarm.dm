@@ -7,6 +7,8 @@
 	desired_light_power = 1
 	desired_light_color = "#00FF00"
 
+	plane = PLANE_WALL_ATTACHMENTS
+
 /obj/structure/interactive/fire_alarm/Initialize(var/desired_loc)
 	setup_dir_offsets()
 	return ..(loc)

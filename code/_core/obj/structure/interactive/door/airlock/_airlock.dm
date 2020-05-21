@@ -188,10 +188,10 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 			light_state = "closing_02_light"
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_SOLID,a_dir = 0x0)
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
 					set_opacity(1)
 			light_color = "#FF0000"
 
@@ -210,10 +210,10 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 			desc = "The door is closed."
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_SOLID,a_dir = initial(blocks_air))
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_SOLID,a_dir = initial(blocks_air))
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
 					set_opacity(1)
 			if(locked)
 				light_state = "light_special_static"

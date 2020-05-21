@@ -5,7 +5,7 @@
 	icon_state = "ore_box"
 
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 /obj/structure/interactive/ore_box/Initialize()
 	SShorde.possible_horde_targets += src

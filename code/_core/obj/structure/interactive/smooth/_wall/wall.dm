@@ -7,7 +7,7 @@ obj/structure/smooth/wall
 	corner_category = "small_wall"
 	corner_icons = TRUE
 
-	collision_flags = FLAG_COLLISION_WALKING
+	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	plane = PLANE_WALL

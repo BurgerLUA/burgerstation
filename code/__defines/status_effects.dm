@@ -2,6 +2,7 @@
 //Disarms weapons on stun.
 //Move delay multiplied by 3.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
+//Knocked to the ground.
 //Cannot use items.
 
 #define SLEEP "sleep"
@@ -10,6 +11,7 @@
 //Cannot move.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Taking health damage removes this status effect. (TODO)
+//Knocked to the ground.
 
 #define PARALYZE "paralyze"
 //Cannot attack or use items.
@@ -21,16 +23,17 @@
 //Stamina regenrates 5 times faster.
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
+//Knocked to the ground.
 
 
 #define STAGGER "stagger"
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
 //Cannot move.
-//Moves 1 step away from the stagger source.
+//Moves 1 step away from the stagger source, if any.
+//Applies stun if you collide with something while staggered.
 
 #define CONFUSED "confused"
 //Random movement.
-
 
 #define CRIT "critical"
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
@@ -43,6 +46,7 @@
 #define REST "rest"
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
+//Knocked to the ground.
 
 #define DISARM "disarm"
 //Disarms the target's weapons, if it is an advanced target

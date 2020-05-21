@@ -6,7 +6,8 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/nt_10mm = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm
@@ -19,15 +20,12 @@
 	bullet_diameter_best = 10.17
 	bullet_diameter_max = 11
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/pistol_10mm/update_icon()
 	if(length(stored_bullets))
 		icon_state = "[initial(icon_state)]_1"
 	else
 		icon_state = "[initial(icon_state)]_0"
 	..()
-/*
-/obj/item/magazine/pistol_10mm/surplus
-	name = "\improper surplus 10mm auto pistol magazine"
-
-	ammo = /obj/item/bullet_cartridge/pistol_10mm/surplus
-*/

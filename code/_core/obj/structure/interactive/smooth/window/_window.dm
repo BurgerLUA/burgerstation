@@ -7,7 +7,7 @@
 	alpha = 150
 	color = "#6E9CAD"
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_WINDOW
 
 	corner_category = "window"

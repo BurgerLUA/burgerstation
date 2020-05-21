@@ -124,6 +124,9 @@
 
 	var/list/obj/butcher_contents = list()
 
+	var/next_resist = 0
+	var/resist_counter = 0
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

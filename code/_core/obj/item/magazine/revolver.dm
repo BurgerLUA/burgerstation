@@ -21,6 +21,9 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
+	size = SIZE_2
+	weight = WEIGHT_2
+
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 magnum speedloader"
 	icon = 'icons/obj/items/magazine/revolver/44.dmi'
@@ -41,6 +44,9 @@
 	bullet_diameter_min = 10
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
+
+	size = SIZE_2
+	weight = WEIGHT_2
 
 
 
@@ -81,6 +87,9 @@
 	bullet_diameter_min = 8.5
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
+
+	size = SIZE_2
+	weight = WEIGHT_2
 
 /*
 /obj/item/magazine/clip/revolver/bullet_357/surplus

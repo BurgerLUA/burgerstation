@@ -24,7 +24,7 @@
 	item_count_current = 5
 	return ..()
 
-/obj/item/bullet_cartridge/rifle_308/syndicate
+/obj/item/bullet_cartridge/rifle_308/nato
 	name = "\improper 7.62mm rifle bullet"
 	desc = "For rifles that require 7.62mm"
 	icon = 'icons/obj/items/bullet/762.dmi'
@@ -52,7 +52,7 @@
 
 	value = 0.4
 
-/obj/item/bullet_cartridge/rifle_223/syndicate
+/obj/item/bullet_cartridge/rifle_223/nato
 	name = "\improper 5.56mm rifle bullet"
 	desc = "For rifles and machineguns that requre 5,56mm."
 

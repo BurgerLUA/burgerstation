@@ -141,7 +141,7 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 	desc = "A metal girder."
 	icon_state = "girder"
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	health_base = 100
@@ -184,7 +184,7 @@ obj/structure/interactive/construction/grille
 	desc = "A metal grille."
 	icon_state = "grille"
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	health_base = 75

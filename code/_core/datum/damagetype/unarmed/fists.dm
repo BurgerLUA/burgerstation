@@ -119,8 +119,8 @@
 				L.add_status_effect(DISARM,5,5, source = attacker)
 				return ..()
 
-		if(prob(total_damage_dealt))
-			L.add_status_effect(STAGGER,5,5, source = attacker)
+		if(prob(total_damage_dealt*0.5))
+			L.add_status_effect(STAGGER,1,1, source = attacker)
 
 	return ..()
 

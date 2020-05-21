@@ -5,7 +5,7 @@
 	icon_state = "crate"
 
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 	var/list/crate_contents = list()
 

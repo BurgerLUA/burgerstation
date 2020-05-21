@@ -105,6 +105,7 @@
 				P.force_move(get_turf(D))
 				P.start_chargen()
 				P.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
+				P.adjust_currency(10000)
 			else
 				P.force_move(T)
 				P.start_chargen()

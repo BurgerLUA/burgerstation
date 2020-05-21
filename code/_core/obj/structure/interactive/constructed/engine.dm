@@ -4,7 +4,7 @@ obj/structure/shuttle_engine
 	icon_state = "router"
 	plane = PLANE_SHUTTLE
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 
 obj/structure/shuttle_engine/heater
 	name = "engine heater"

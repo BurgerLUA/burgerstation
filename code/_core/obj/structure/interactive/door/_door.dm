@@ -12,7 +12,7 @@
 obj/structure/interactive/door
 	name = "door"
 	desc = "What's on the other side?"
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	opacity = 1
@@ -65,7 +65,7 @@ obj/structure/interactive/door/update_icon()
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "[initial(icon_state)]opening"
 			desc = "The door is opening."
-			update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
+			update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC)
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(0)
 
@@ -86,7 +86,7 @@ obj/structure/interactive/door/update_icon()
 		if(DOOR_STATE_CLOSED)
 			icon_state = initial(icon_state)
 			desc = "The door is closed."
-			update_collisions(FLAG_COLLISION_REAL,FLAG_COLLISION_BULLET_INORGANIC)
+			update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC)
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(initial(opacity))
 

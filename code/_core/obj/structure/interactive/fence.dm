@@ -3,7 +3,7 @@ obj/structure/interactive/fence
 	icon = 'icons/obj/structure/fence.dmi'
 	icon_state = "straight"
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	bullet_block_chance = 0

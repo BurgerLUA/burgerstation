@@ -26,7 +26,7 @@ obj/structure/interactive/bed/sleeper
 	layer = LAYER_MOB_ABOVE
 	plane = PLANE_MOB
 
-	collision_flags = FLAG_COLLISION_REAL
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	collision_dir = NORTH | EAST | SOUTH | WEST
