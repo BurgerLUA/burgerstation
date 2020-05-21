@@ -286,6 +286,8 @@ mob/living/proc/on_life_slow()
 
 	if(is_sneaking)
 		var/desired_alpha = FLOOR(10 + (1-stealth_mod)*base_alpha*0.5, 1)
+		if(horizontal)
+			desired_alpha *= 0.5
 		return desired_alpha
 
 	return base_alpha

@@ -14,6 +14,8 @@
 		'sounds/weapons/fists/punchmiss.ogg'
 	)
 
+	var/impact_sounds_flesh = list() //Leave empty to just use impact sounds, no matter what.
+
 	var/allow_parry = TRUE
 	var/allow_miss = TRUE
 	var/allow_block = TRUE
@@ -380,8 +382,14 @@
 			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(victim) && length(impact_sounds_flesh))
+		play(pick(impact_sounds_flesh),get_turf(hit_object), alert = ALERT_LEVEL_NOISE)
+
 	if(length(impact_sounds))
 		play(pick(impact_sounds),get_turf(hit_object), alert = ALERT_LEVEL_NOISE)
+
+	return TRUE
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	if(length(miss_sounds))

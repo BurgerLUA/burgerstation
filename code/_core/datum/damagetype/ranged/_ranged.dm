@@ -20,6 +20,13 @@
 		'sounds/weapons/ric5.ogg'
 	)
 
+	impact_sounds_flesh = list(
+		'sounds/effects/impacts/bullet_meat1.ogg',
+		'sounds/effects/impacts/bullet_meat2.ogg',
+		'sounds/effects/impacts/bullet_meat3.ogg',
+		'sounds/effects/impacts/bullet_meat4.ogg'
+	)
+
 	attribute_stats = list()
 
 	attribute_damage = list()

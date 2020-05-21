@@ -107,10 +107,9 @@
 	var/image/medical_hud_image
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
+	var/image/alert_hud_image
 
 	has_footsteps = TRUE
-
-	var/obj/effect/stored_alert_effect //For AI
 
 	var/table_count = 0
 
@@ -171,7 +170,7 @@
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
 	QDEL_NULL(medical_hud_image_advanced)
-	QDEL_NULL(stored_alert_effect)
+	QDEL_NULL(alert_hud_image)
 
 	if(client)
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
@@ -226,6 +225,11 @@
 
 	if(ai)
 		ai = new ai(src)
+		alert_hud_image = new/image('icons/mob/living/advanced/overlays/stealth.dmi',"none")
+		alert_hud_image.loc = src
+		alert_hud_image.layer = PLANE_HUD_VISION
+		alert_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		overlays += alert_hud_image
 
 	if(desired_client)
 		screen_blood = list()

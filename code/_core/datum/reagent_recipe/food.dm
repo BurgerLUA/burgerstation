@@ -9,7 +9,7 @@
 	)
 
 	results = list(
-		"dough_wheat_grain" = 1
+		"dough_wheat_grain" = 2
 	)
 
 	result = /obj/item/container/food/dynamic/bread
@@ -25,7 +25,7 @@
 	)
 
 	results = list(
-		"dough_flour" = 15
+		"dough_flour" = 8
 	)
 
 /reagent_recipe/dough/flour/processed
@@ -39,7 +39,7 @@
 	)
 
 	results = list(
-		"dough_flour_white" = 5
+		"dough_flour_white" = 8
 	)
 
 

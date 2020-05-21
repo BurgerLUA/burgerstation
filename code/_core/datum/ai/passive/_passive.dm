@@ -7,5 +7,6 @@
 
 	target_distribution_y = list(8,8,8,8,16,32)
 
-
 	stationary = FALSE
+
+	should_investigate_alert = FALSE

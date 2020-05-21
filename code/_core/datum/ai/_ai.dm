@@ -64,7 +64,7 @@
 	var/alert_time = 600 //Deciseconds
 	var/last_alert_level = 0 //When the alert level change last triggered.
 	var/sidestep_next = FALSE
-	var/should_investigate_alert = FALSE
+	var/should_investigate_alert = TRUE
 
 	var/grab_time = 0
 	var/grab_time_max = 20 //How long, in deciseconds, should we allow someone to grab us?
@@ -81,6 +81,8 @@
 	var/list/enemy_tags = list()
 
 	var/reaction_time = 10
+
+	var/stored_sneak_power = 0
 
 
 
@@ -291,6 +293,7 @@
 /ai/proc/handle_movement_alert()
 
 	if(alert_level >= ALERT_LEVEL_NONE && objective_investigate)
+		world.log << "Walk towards [objective_investigate]!"
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,objective_investigate)
 		return TRUE
@@ -299,6 +302,7 @@
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 		return TRUE
+
 	return FALSE
 
 /ai/proc/handle_movement_sidestep()
@@ -394,6 +398,7 @@
 	owner.set_dir(get_dir(owner,A))
 
 	if(objective_investigate)
+		world.log << "BYE"
 		objective_investigate = null
 
 	if(is_living(A))
@@ -479,6 +484,27 @@
 
 	return FALSE
 
+
+/ai/proc/can_see_mob(var/mob/living/L)
+
+	if(!stored_sneak_power)
+		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
+
+	if(L.alpha == 255)
+		return TRUE
+
+	var/distance = get_dist(owner,L)
+
+	if(distance <= 2)
+		return TRUE
+
+	var/calc = ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
+
+	if(is_player(L))
+		owner.desc = "Last sneak calculation for [L]: [calc](NPC) vs [L.alpha](PLAYER)."
+
+	return L.alpha >= calc
+
 /ai/proc/get_possible_targets()
 
 	if(retaliate)
@@ -499,6 +525,8 @@
 				continue
 			if(!should_attack_mob(P))
 				continue
+			if(!can_see_mob(P))
+				continue
 			.[P] = TRUE
 	else
 		for(var/mob/living/L in view(range_to_use,owner))
@@ -507,6 +535,8 @@
 			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))
 				continue
 			if(!should_attack_mob(L))
+				continue
+			if(!can_see_mob(L))
 				continue
 			.[L] = TRUE
 
@@ -546,11 +576,13 @@
 	if(!desired_target)
 		return FALSE
 
-	if(objective_investigate == objective_attack)
+	if(desired_target == objective_attack)
 		return FALSE
 
+	world.log << "INVESTIGATE [desired_target], YOU FUCK!"
+
 	owner.set_dir(get_dir(owner,desired_target))
-	objective_move = desired_target
+	objective_investigate = desired_target
 
 	return TRUE
 
@@ -564,8 +596,8 @@
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))
 		var/mob/living/L = alert_source
-		if(!should_attack_mob(L))
-			return FALSE //Ignore sounds and stuff made by those with the same loyalty tag.
+		if( !should_attack_mob(L) || !(radius_find_enemy > 0) )
+			return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
 
 	var/old_alert_level = alert_level
 
@@ -577,26 +609,23 @@
 	enabled = TRUE
 
 	if(alert_level == ALERT_LEVEL_ALERT)
-		QDEL_NULL(owner.stored_alert_effect)
-		owner.stored_alert_effect = new /obj/effect/alert/exclaim(owner)
+		owner.alert_hud_image.icon_state = "exclaim"
 		last_alert_level = world.time
 	else if(alert_level == ALERT_LEVEL_CAUTION)
 		if(last_alert_level <= world.time + 50)
-			QDEL_NULL(owner.stored_alert_effect)
-			owner.stored_alert_effect = new /obj/effect/alert/question(owner)
+			owner.alert_hud_image.icon_state = "question"
 			last_alert_level = world.time
 	else if(alert_level == ALERT_LEVEL_NOISE)
 		if(last_alert_level <= world.time + 50)
-			QDEL_NULL(owner.stored_alert_effect)
-			owner.stored_alert_effect = new /obj/effect/alert/huh(owner)
+			owner.alert_hud_image.icon_state = "huh"
 			last_alert_level = world.time
-
-	if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.9,1),src,.proc/investigate,alert_source)
 
 	owner.move_dir = 0
 
 	if(old_alert_level != alert_level)
+		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
+			world.log << "Telling [owner] to investigate [alert_source]."
+			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 
