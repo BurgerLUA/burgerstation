@@ -1,10 +1,28 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine
-	name = "\improper .223 Carbine"
+	name = "\improper .223 Raider Carbine"
+	desc = "A favorite by pirates."
+	desc_extended = "Leftover surplus guns left by the good ol days of syndicate raiding parties. While old and outdated, it still sees some uses by old and new syndicate forces."
 	icon = 'icons/obj/items/weapons/ranged/rifle/223.dmi'
 	icon_state = "inventory"
+	value = 100
+
 	shoot_delay = 2
-	view_punch = 4
+
+	automatic = TRUE
+
 	shoot_sounds = list('sounds/weapons/223/shoot.ogg')
+
+	can_wield = FALSE
+
+	view_punch = 4
+
+	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
+
+	size = SIZE_3
+	weight = WEIGHT_3
+
+	heat_per_shot = 0.03
+	heat_max = 0.09
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -14,19 +32,9 @@
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
 
-	automatic = TRUE
+	ai_heat_sensitivity = 0.75
 
 	override_icon_state = TRUE
-
-	size = SIZE_3
-	weight = WEIGHT_3
-
-	heat_per_shot = 0.03
-	heat_max = 0.09
-
-	value = 100
-
-	ai_heat_sensitivity = 0.75
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 
@@ -50,7 +58,7 @@
 	return 'sounds/weapons/gun/smg/smg_rack.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
-	name = ".223 Carbine MOD"
+	name = "\improper .223 SYN-Carbine MOD"
 	icon = 'icons/obj/items/weapons/ranged/rifle/223_mod.dmi'
 	heat_per_shot = 0.03
 	heat_max = 0.12

@@ -1,11 +1,9 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper
-	name = "\improper 7.62mm Sniper Rifle"
+	name = "\improper 7.62 Dragon Sniper Rifle"
 	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/rifle/762.dmi'
 	icon_state = "inventory"
 
-
-	projectile_speed = 31
 	shoot_delay = 5
 
 	automatic = FALSE
@@ -19,8 +17,8 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
 
-	size = SIZE_4
-	weight = WEIGHT_5
+	size = SIZE_5
+	weight = WEIGHT_4
 
 	heat_per_shot = 0.07
 	heat_max = 0.3

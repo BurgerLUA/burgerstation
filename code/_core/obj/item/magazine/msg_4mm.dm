@@ -1,7 +1,7 @@
-/obj/item/magazine/smg_22
-	name = "\improper .22 PDW magazine"
-	icon = 'icons/obj/items/magazine/9mmsmg.dmi'
-	icon_state = "9mmt"
+/obj/item/magazine/smg_46
+	name = "\improper 4.6mm WT-550 magazine"
+	icon = 'icons/obj/items/magazine/4mm_smg.dmi'
+	icon_state = "mag"
 	bullet_count_max = 20
 
 	bullet_length_min = 12
@@ -18,8 +18,8 @@
 
 	ammo = /obj/item/bullet_cartridge/pistol_22
 
-/obj/item/magazine/smg_22/update_icon()
-	icon_state = "[initial(icon_state)]-[round(length(stored_bullets),4)]"
+/obj/item/magazine/smg_46/update_icon()
+	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/20),1)]"
 	..()
 
 /*

@@ -15,7 +15,7 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
-	size = SIZE_4
+	size = SIZE_3
 	weight = WEIGHT_4
 
 	override_icon_state = TRUE

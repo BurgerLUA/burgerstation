@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg
-	name = "\improper 5.56mm LMG"
+	name = "\improper .223 Defender LMG"
 	desc = "Atatatatatatata."
-	desc_extended = "The 5.56mm Calibre Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time."
+	desc_extended = "The .223 Defender Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time. Was designed by syndicate weapon scientists to take 5.56mm rounds that are commonly dropped by the enemy."
 	icon = 'icons/obj/items/weapons/ranged/rifle/lmg.dmi'
 	icon_state = "inventory"
 	value = 200
@@ -33,7 +33,7 @@
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
 
-	size = SIZE_4
+	size = SIZE_5
 	weight = WEIGHT_5
 
 	value = 400

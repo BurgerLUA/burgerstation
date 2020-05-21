@@ -1,9 +1,9 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
-	name = ".40 Civil Defense Pistol"
+	name = "9mm Civil Defense Pistol"
 	desc = "Even more tactical than the tactical pistol."
-	desc_extended = "A military grade pistol amazingly chambered in .40. It shoots significantly faster than its tactical counterpart, and is easier to use for beginners."
+	desc_extended = "A security grade pistol chambered in 9mm."
 	value = 70
-	icon = 'icons/obj/items/weapons/ranged/pistol/40.dmi'
+	icon = 'icons/obj/items/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
 	shoot_sounds = list('sounds/weapons/40/shoot.ogg')
 
@@ -17,13 +17,13 @@
 	heat_per_shot = 0.03
 	heat_max = 0.12
 
-	bullet_length_min = 21
-	bullet_length_best = 22
-	bullet_length_max = 23
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
 
-	bullet_diameter_min = 9.8
-	bullet_diameter_best = 10
-	bullet_diameter_max = 11.2
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
 	return 0.005
@@ -33,8 +33,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
 	name = ".40 Civil Defense Pistol MOD"
-	icon = 'icons/obj/items/weapons/ranged/pistol/40_2.dmi'
-	desc_extended = "A modified variant of the .40 Military Pistol. The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
+	icon = 'icons/obj/items/weapons/ranged/pistol/9mm_2.dmi'
+	desc_extended = "A modified variant of the 9mm Civil Defense Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 110
 	shoot_sounds = list('sounds/weapons/40/shoot_mod.ogg')
 	shoot_delay = 1
@@ -48,6 +48,14 @@
 
 	heat_per_shot = 0.02
 	heat_max = 0.10
+
+	bullet_length_min = 21
+	bullet_length_best = 22
+	bullet_length_max = 23
+
+	bullet_diameter_min = 9.8
+	bullet_diameter_best = 10
+	bullet_diameter_max = 11.2
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread() //Base spread
 	return 0

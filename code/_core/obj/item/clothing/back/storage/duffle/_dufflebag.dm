@@ -22,52 +22,6 @@
 /obj/item/clothing/back/storage/dufflebag/black
 	color = COLOR_BLACK
 
-/obj/item/clothing/back/storage/dufflebag/loadout/pmc/fill_inventory()
-	new /obj/item/device/radio(src)
-	new /obj/item/pinpointer/custom(src)
-	new /obj/item/pinpointer/landmark(src)
-	new /obj/item/clothing/feet/shoes/black_boots(src)
-	new /obj/item/clothing/feet/shoes/black_boots/left(src)
-	new /obj/item/clothing/hands/gloves/colored/padded/black(src)
-	new /obj/item/clothing/hands/gloves/colored/padded/black/left(src)
-	new /obj/item/clothing/head/hat/beret(src)
-	new /obj/item/clothing/overwear/armor/molded_armor/security(src)
-
-	new /obj/item/storage/pouch/double/black/filled/carbine_223(src)
-	new /obj/item/storage/pouch/double/black/filled/carbine_223(src)
-
-	new /obj/item/clothing/belt/storage/colored/black/filled/pmc(src)
-
-	new /obj/item/weapon/ranged/bullet/magazine/rifle/carbine(src)
-
-
-	new /obj/item/paper/firearms(src)
-	return ..()
-
-/obj/item/clothing/back/storage/dufflebag/engineering
-	name = "engineering dufflebag"
-	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'
-
-/obj/item/clothing/back/storage/dufflebag/engineering/loadout/fill_inventory()
-	new /obj/item/device/radio(src)
-	new /obj/item/pinpointer/custom(src)
-	new /obj/item/pinpointer/landmark(src)
-	new /obj/item/clothing/overwear/armor/hardsuit/engineering(src)
-	new /obj/item/clothing/belt/storage/tool/filled(src)
-	new /obj/item/material/sheet/steel/spawn_50(src)
-	new /obj/item/material/sheet/steel/spawn_50(src)
-	new /obj/item/material/rod/steel/spawn_50(src)
-	new /obj/item/material/sheet/glass/spawn_50(src)
-	new /obj/item/weapon/melee/tool/rcd(src)
-	new /obj/item/matter_cartridge(src)
-	new /obj/item/matter_cartridge(src)
-	new /obj/item/matter_cartridge(src)
-	new /obj/item/storage/pouch/triple/brown/filled/pdw(src)
-	new /obj/item/storage/pouch/triple/brown/filled/pdw(src)
-	new /obj/item/weapon/ranged/bullet/magazine/smg/pdw(src)
-	return ..()
-
-
 /obj/item/clothing/back/storage/dufflebag/engineering
 	name = "engineering dufflebag"
 	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'

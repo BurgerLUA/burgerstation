@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
 	name = "\improper .50 BFR Sniper"
-	desc = "For when you want to be an asshole at an extended range. Uses 50. Cal ammo"
+	desc = "For when you want to be an asshole at an extended range."
 	icon = 'icons/obj/items/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
 
@@ -30,7 +30,7 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
-	size = SIZE_4
+	size = SIZE_5
 	weight = WEIGHT_5
 
 	value = 500

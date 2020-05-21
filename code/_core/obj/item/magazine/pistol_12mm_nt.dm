@@ -1,6 +1,6 @@
-/obj/item/magazine/pistol_12mm
+/obj/item/magazine/pistol_12mm/nt
 	name = "\improper 12.7mm pistol magazine"
-	icon = 'icons/obj/items/magazine/12mm_pistol.dmi'
+	icon = 'icons/obj/items/magazine/12mmpistol2.dmi'
 	icon_state = "12mm"
 	bullet_count_max = 8
 
@@ -20,8 +20,5 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
-/obj/item/magazine/pistol_12mm/update_icon()
-	if(length(stored_bullets))
-		icon_state = "[initial(icon_state)]_1"
-	else
-		icon_state = "[initial(icon_state)]_0"
+/obj/item/magazine/pistol_12mm/nt/update_icon()
+	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"

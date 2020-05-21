@@ -1,5 +1,5 @@
 /obj/item/magazine/lmg_556
-	name = "\improper 5.56 lmg magazine"
+	name = "\improper .223 lmg magazine"
 	icon = 'icons/obj/items/magazine/223_lmg.dmi'
 	icon_state = "223"
 	bullet_count_max = 60

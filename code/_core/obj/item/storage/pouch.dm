@@ -118,15 +118,6 @@
 	name = "brown pouch"
 	color = COLOR_BROWN
 
-/obj/item/storage/pouch/triple/brown/filled/pdw/fill_inventory()
-	new /obj/item/magazine/smg_22(src)
-	new /obj/item/magazine/smg_22(src)
-	new /obj/item/magazine/smg_22(src)
-	new /obj/item/magazine/smg_22(src)
-	new /obj/item/magazine/smg_22(src)
-	new /obj/item/magazine/smg_22(src)
-	return ..()
-
 /obj/item/storage/pouch/triple/brown/filled/buckshot/fill_inventory()
 	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
 	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
@@ -150,12 +141,12 @@
 	return ..()
 
 /obj/item/storage/pouch/triple/brown/filled/pistol/fill_inventory()
-	new /obj/item/magazine/pistol_40(src)
-	new /obj/item/magazine/pistol_40(src)
-	new /obj/item/magazine/pistol_40(src)
-	new /obj/item/magazine/pistol_40(src)
-	new /obj/item/magazine/pistol_40(src)
-	new /obj/item/magazine/pistol_40(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
 	return ..()
 
 
