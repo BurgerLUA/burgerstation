@@ -5,7 +5,7 @@
 
 	var/bite_size = 5 //How many reagents to remove per bite?
 	var/bite_count = 0 //How many times someone has taken a bite from this.
-	var/consume_verb = "take a bite out of"
+	consume_verb = "take a bite out of"
 
 	reagents = /reagent_container/food/
 
@@ -79,7 +79,7 @@
 
 
 
-/obj/item/container/food/proc/consume(var/mob/caller,var/mob/living/consumer)
+/obj/item/container/food/consume(var/mob/caller,var/mob/living/consumer)
 
 	var/reagent_container/reagents_to_consume = get_reagents_to_eat()
 
@@ -98,7 +98,6 @@
 		consumer.to_chat(span("notice",final_flavor_text))
 
 	bite_count += 1
-
 
 	var/reagent_container/reagents_to_transfer_to
 

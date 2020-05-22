@@ -1203,6 +1203,7 @@
 #include "code\_core\world\subsystems\squad.dm"
 #include "code\_core\world\subsystems\status.dm"
 #include "code\_core\world\subsystems\thinking.dm"
+#include "code\_core\world\subsystems\tips.dm"
 #include "code\_core\world\subsystems\tracks.dm"
 #include "code\_core\world\subsystems\turfs.dm"
 #include "code\_core\world\subsystems\unit_tests.dm"

@@ -16,6 +16,8 @@ SUBSYSTEM_DEF(wikibot)
 		log_subsystem(name,"Found no wikibot question/answer keys. Creating new one...")
 		add_new_wikibot_key(list("what","is","wikibot"),"Wikibot is a bot-controlled OOC helper that helps answer commonly asked questions.")
 
+	return TRUE
+
 /subsystem/wikibot/proc/add_new_wikibot_key(var/list/keywords,var/answer)
 	wikibot_list += list(list("keywords" = keywords, "answer" = answer))
 	fdel(WIKIBOT)

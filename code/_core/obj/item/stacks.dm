@@ -34,7 +34,10 @@
 
 	return I
 
-/obj/item/click_on_object(var/mob/caller,object,location,control,params)
+/obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(try_transfer_reagents(caller,object))
+		return TRUE
 
 	if(object == src || !is_item(object) || !src.loc || get_dist(src,object) > 1)
 		return ..()
@@ -48,7 +51,6 @@
 		else
 			caller.to_chat("\The [I.name] is full!")
 			return TRUE
-
 
 	return ..()
 

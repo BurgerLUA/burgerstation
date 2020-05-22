@@ -10,5 +10,11 @@ Rifles are good for picking out targets from a long range. They require more ski
 Critical hits can occur randomly when attacking enemies. Most weapons give a guaranteed critical hit when attacking enemies not in combat. Some weapons even have special critical hit conditions.
 Worn and held equipment can slow you down based on the weight of the object and how cumbersome it is to move with it.
 NPCs also have their own ammo count to manage. A valid tactic to counter an onslaught of NPCs is to wait it out until they run out of ammo.
-NanoTrasen typically uses NATO designated cartridges such as 5.56mm, 7.62mm, and 9mm rounds, while the syndicate primarily use calibre designated cartridges such as .223, .308, and .357. Some exceptions are made for weapons designed to infiltrate as they are better suited to fit enemy cartridges.
+NanoTrasen typically uses NATO designated cartridges such as 5.56mm, 7.62mm, and 9mm rounds, while the syndicate primarily use calibre designated cartridges such as .223, .308, and .357. Some exceptions are made for weapons designed to infiltrate as they are better suited to fit enemy cartridges they would obtain on the field.
 .38 special rounds are actually just shorter .357 rounds, and can fit into .357 chambered weapons.
+Sneaking is a viable way to get around enemies you don't want to engage. To sneak, press the sneak key (Default: C) or press the sneak button at the bottom right of your screen. Note that sneaking drains stamina when moving, and should be used sparingly.
+You're twice as effective at sneaking when laying down (resting).
+Sneaking does nothing to enemies already engaged in combat, regardless if they are your target.
+Grabbing an enemy from behind will stun and disarm them them for 3 seconds.
+You can only grab team members who are on the ground.
+Disarms have a chance to shove people, staggering them. If a staggered enemy hits an object behind them, they're stunned for the duration of the stagger.

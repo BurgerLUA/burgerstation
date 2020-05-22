@@ -161,7 +161,7 @@
 	"Ctrl" = "grab", \
 	"R" = "throw", \
 	"Q" = "drop", \
-	"C" = "quick_holder", \
+	"C" = "sneak", \
 	"E" = "examine_mode", \
 	"Z" = "quick_self", \
 	"Space" = "kick", \

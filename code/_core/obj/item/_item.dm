@@ -96,9 +96,14 @@
 
 	var/block_power = 0.5 //Higher values means it blocks more. Normal weapons should have 1, while stronger items should have between 2-5
 
-	var/allow_beaker_transfer = FALSE
+	//This applies to things like beakers and whatnot. This affects player-controlled transfers, and does not affect procs like add_reagent
+	var/allow_reagent_transfer_to = FALSE
+	var/allow_reagent_transfer_from = FALSE
 
 	var/list/polymorphs = list()
+
+	var/consume_verb = "drink out of"
+	var/transfer_amount = 10
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
@@ -414,3 +419,78 @@
 /obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	last_interacted = caller
 	return ..()
+
+/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object)
+
+	if(!allow_reagent_transfer_from) //Can we transfer anything from this?
+		return FALSE
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(L.intent == INTENT_HARM)
+			return FALSE
+
+	var/atom/defer_object = object.defer_click_on_object()
+
+	if(can_feed(caller,defer_object))
+		if(is_living(defer_object))
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,defer_object)
+			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
+		else if(is_item(defer_object) && defer_object.reagents)
+			var/obj/item/I = defer_object
+			if(I.allow_reagent_transfer_to)
+				var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount)
+				caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
+		return TRUE
+
+	return FALSE
+
+
+/obj/item/proc/consume(var/mob/caller,var/mob/living/consumer)
+
+	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
+		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
+		return FALSE
+
+	if(is_advanced(consumer))
+		var/mob/living/advanced/A = consumer
+
+		if(!A.labeled_organs[BODY_STOMACH])
+			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
+			return FALSE
+
+		var/final_flavor_text = reagents.get_flavor()
+
+		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || A.last_flavor != final_flavor_text) )
+			A.last_flavor = final_flavor_text
+			A.last_flavor_time = world.time
+			final_flavor_text = "You taste [final_flavor_text]."
+		else
+			final_flavor_text = null
+
+		consumer.to_chat(span("notice","You [consume_verb] \the [src.name]."))
+
+		if(final_flavor_text)
+			consumer.to_chat(span("notice",final_flavor_text))
+
+		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
+		return reagents.transfer_reagents_to(S.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
+
+	else
+		return reagents.transfer_reagents_to(consumer.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
+
+	return 0
+
+
+/obj/item/proc/can_feed(var/mob/caller,var/atom/target)
+
+	if(get_dist(caller,target) > 1)
+		return FALSE
+
+	if(caller != target && is_living(target))
+		var/mob/living/L = target
+		if(L.ckey_last && !L.ckey && !L.dead)
+			caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))
+			return FALSE
+
+	return TRUE

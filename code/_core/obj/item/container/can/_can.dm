@@ -9,7 +9,8 @@
 
 	reagents = /reagent_container/beaker/bottle/
 
-	allow_beaker_transfer = TRUE
+	allow_reagent_transfer_to = FALSE //Needs to be open, first.
+	allow_reagent_transfer_from = FALSE
 
 	var/open = FALSE
 
@@ -24,6 +25,8 @@
 
 	caller.to_chat("You open \the [src.name].")
 	open = TRUE
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = TRUE
 
 	return TRUE
 

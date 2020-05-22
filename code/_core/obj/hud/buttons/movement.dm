@@ -14,7 +14,8 @@
 	if(!is_living(caller))
 		return
 	var/mob/living/L = caller
-	L.toggle_sneak(!sneaking)
+	L.sneak()
+	sneaking = L.is_sneaking
 
 	return ..()
 

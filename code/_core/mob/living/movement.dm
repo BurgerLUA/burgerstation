@@ -41,9 +41,7 @@
 		return FALSE
 
 	if(grabbing_hand && move_dir)
-		world.log << "Must resist!"
 		if(can_resist(FALSE))
-			world.log << "Can resist!"
 			resist()
 		return FALSE
 

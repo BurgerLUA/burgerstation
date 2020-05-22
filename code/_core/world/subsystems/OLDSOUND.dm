@@ -85,7 +85,7 @@
 
 		if(alert && is_living(M) && prob(created_sound.volume*2))
 			var/mob/living/L = M
-			if(L.ai && L.ai.set_alert_level(alert) && L.ai.alert_level != ALERT_LEVEL_ALERT)
+			if(L.ai && L.ai.set_alert_level(alert) && L.ai.alert_level != ALERT_LEVEL_COMBAT)
 				var/turf/T2 = locate(pos[1],pos[2],pos[3])
 				M.set_dir(get_dir(M,T2))
 				if(!L.ai.objective_move)

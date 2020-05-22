@@ -13,6 +13,8 @@
 
 	reagents = /reagent_container/food/bread
 
+	allow_reagent_transfer_to = TRUE
+
 /obj/item/container/food/dynamic/bread/click_self(var/mob/caller,location,control,params)
 
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
@@ -73,6 +75,7 @@
 					B.pixel_x = pixel_x
 					B.pixel_y = pixel_y
 					B.raw_icon_state = raw_icon_state
+					B.cooked_icon_state = cooked_icon_state
 					INITIALIZE(B)
 					reagents.transfer_reagents_to(B.reagents,original_volume/pieces)
 					animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)

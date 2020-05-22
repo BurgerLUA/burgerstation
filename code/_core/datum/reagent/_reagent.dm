@@ -26,6 +26,8 @@
 
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
+	var/lethal = FALSE //Used by loyalty tags, checks if this reagent is lethal or not.
+
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0)
 	return amount_added
 

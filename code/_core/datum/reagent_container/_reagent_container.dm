@@ -20,6 +20,8 @@
 
 	var/special_temperature_mod = 0
 
+	var/contains_lethal = FALSE
+
 /reagent_container/Destroy()
 	owner = null
 	all_reagent_containers -= src
@@ -144,8 +146,13 @@
 	var/list/temperature_math_02 = list()
 	var/math_02_total = 0
 
+	contains_lethal = FALSE
+
 	for(var/r_id in stored_reagents)
 		var/reagent/R = all_reagents[r_id]
+
+		if(R.lethal)
+			contains_lethal = TRUE
 
 		var/volume = stored_reagents[r_id]
 		var/temperature = stored_reagents_temperature[r_id] ? stored_reagents_temperature[r_id] : T0C + 20
@@ -261,15 +268,9 @@
 
 	found_recipe.on_react(caller,src,portions_to_make)
 
-	world.log << "The result is: [found_recipe.result]."
-	world.log << "The owner is: [owner]."
-
-
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
-		world.log << "CUM"
 		update_container(FALSE)
 		while(volume_current > 0)
-			world.log << "PING."
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
 			if(!A.reagents)
@@ -281,6 +282,8 @@
 	return TRUE
 
 /reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
+
+	amount = FLOOR(amount,0.01)
 
 	if(!all_reagents[reagent_id])
 		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")

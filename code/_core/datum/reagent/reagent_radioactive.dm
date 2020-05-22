@@ -6,6 +6,8 @@
 
 	flavor = "radioactive waste"
 
+	lethal = TRUE
+
 /reagent/radioactive/radium
 	name = "radium"
 	id = "radium"

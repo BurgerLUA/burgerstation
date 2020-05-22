@@ -7,8 +7,6 @@
 	icon = 'icons/obj/items/container/syringe.dmi'
 	icon_state = "syringe"
 
-	var/consume_verb = "drink out of"
-
 	reagents = /reagent_container/syringe/
 
 	var/icon_count = 7
@@ -19,6 +17,10 @@
 	var/injecting = FALSE
 
 	value = 15
+
+	//Contains special snowflake code.
+	allow_reagent_transfer_to = FALSE
+	allow_reagent_transfer_from = FALSE
 
 /obj/item/container/syringe/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())

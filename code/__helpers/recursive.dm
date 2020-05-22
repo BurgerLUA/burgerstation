@@ -14,7 +14,6 @@
 		CRASH_SAFE("recursive_find_mob not supplied with a obj!")
 		return FALSE
 
-	world.log << "Checking [I]..."
 	var/call_result = call(desired_obj,desired_proc)(I)
 	if(call_result)
 		return I

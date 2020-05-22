@@ -268,7 +268,7 @@
 
 	var/mob/living/advanced/A = owner
 
-	if(new_alert_level == ALERT_LEVEL_ALERT || new_alert_level == ALERT_LEVEL_CAUTION)
+	if(new_alert_level == ALERT_LEVEL_COMBAT || new_alert_level == ALERT_LEVEL_CAUTION)
 		if(!A.left_item && !A.right_item)
 			var/obj/item/weapon/W = find_best_weapon()
 			if(W) equip_weapon(W)

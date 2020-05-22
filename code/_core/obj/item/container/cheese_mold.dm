@@ -10,7 +10,8 @@
 
 	reagents = /reagent_container/cheese_mold
 
-	allow_beaker_transfer = TRUE
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = TRUE
 
 	var/list/cheese_mix = list()
 	var/process_count = 0
@@ -49,7 +50,8 @@
 	reagents.remove_all_reagents()
 
 	process_count = 0
-	allow_beaker_transfer = TRUE
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = TRUE
 	cheese_mix.Cut()
 	stop_thinking(src)
 
@@ -83,7 +85,7 @@
 
 /obj/item/container/cheese_mold/update_icon()
 
-	if(allow_beaker_transfer)
+	if(allow_reagent_transfer_to && allow_reagent_transfer_from)
 
 		var/milk_count = 0
 		var/enzyme_count = 0
@@ -96,7 +98,8 @@
 				enzyme_count += reagent_volume
 
 		if(milk_count >= 40 && enzyme_count >= 10)
-			allow_beaker_transfer = FALSE
+			allow_reagent_transfer_to = FALSE
+			allow_reagent_transfer_from = FALSE
 			var/turf/T = get_turf(src)
 			T.visible_message("The milk starts to curdle!")
 			start_thinking(src)

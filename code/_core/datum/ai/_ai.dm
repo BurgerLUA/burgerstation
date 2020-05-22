@@ -293,7 +293,6 @@
 /ai/proc/handle_movement_alert()
 
 	if(alert_level >= ALERT_LEVEL_NONE && objective_investigate)
-		world.log << "Walk towards [objective_investigate]!"
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,objective_investigate)
 		return TRUE
@@ -398,12 +397,11 @@
 	owner.set_dir(get_dir(owner,A))
 
 	if(objective_investigate)
-		world.log << "BYE"
 		objective_investigate = null
 
 	if(is_living(A))
 		frustration_attack = 0
-		set_alert_level(ALERT_LEVEL_ALERT)
+		set_alert_level(ALERT_LEVEL_COMBAT)
 		objective_attack = A
 		if(objective_move == objective_attack)
 			objective_move = null
@@ -493,6 +491,9 @@
 	if(L.alpha == 255)
 		return TRUE
 
+	if(alert_level == ALERT_LEVEL_COMBAT)
+		return TRUE
+
 	var/distance = get_dist(owner,L)
 
 	if(distance <= 2)
@@ -516,12 +517,12 @@
 		return .
 
 	var/range_to_use = radius_find_enemy
-	if(alert_level == ALERT_LEVEL_ALERT)
+	if(alert_level == ALERT_LEVEL_COMBAT)
 		range_to_use = radius_find_enemy_alert
 
 	if(only_attack_players)
 		for(var/mob/living/advanced/player/P in view(range_to_use,owner))
-			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(P))
+			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(P))
 				continue
 			if(!should_attack_mob(P))
 				continue
@@ -532,7 +533,7 @@
 		for(var/mob/living/L in view(range_to_use,owner))
 			if(!L.initialized)
 				continue
-			if(use_cone_vision && alert_level != ALERT_LEVEL_ALERT && !owner.is_facing(L))
+			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
 				continue
 			if(!should_attack_mob(L))
 				continue
@@ -547,7 +548,7 @@
 	if(!attackers[attacker])
 		attackers[attacker] = TRUE
 
-	set_alert_level(ALERT_LEVEL_ALERT,alert_source = attacker)
+	set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
 
 	return TRUE
 
@@ -579,8 +580,6 @@
 	if(desired_target == objective_attack)
 		return FALSE
 
-	world.log << "INVESTIGATE [desired_target], YOU FUCK!"
-
 	owner.set_dir(get_dir(owner,desired_target))
 	objective_investigate = desired_target
 
@@ -608,7 +607,7 @@
 
 	enabled = TRUE
 
-	if(alert_level == ALERT_LEVEL_ALERT)
+	if(alert_level == ALERT_LEVEL_COMBAT)
 		owner.alert_hud_image.icon_state = "exclaim"
 		last_alert_level = world.time
 	else if(alert_level == ALERT_LEVEL_CAUTION)
@@ -624,7 +623,6 @@
 
 	if(old_alert_level != alert_level)
 		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-			world.log << "Telling [owner] to investigate [alert_source]."
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE

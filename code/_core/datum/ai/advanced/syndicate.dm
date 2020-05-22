@@ -31,21 +31,21 @@
 
 	if(. && prob(25))
 		var/list/responses = list()
-		if(old_alert_level == ALERT_LEVEL_ALERT && new_alert_level == ALERT_LEVEL_CAUTION)
+		if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_CAUTION)
 			responses = list(
 				"I don't see them...",
 				"Lost sight of them.",
 				"No enemy in sight.",
 				"They there?"
 			)
-		else if(old_alert_level == ALERT_LEVEL_ALERT && new_alert_level == ALERT_LEVEL_NONE)
+		else if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_NONE)
 			responses = list(
 				"Enemy down.",
 				"They're dead.",
 				"That's the last of them.",
 				"Any more?"
 			)
-		else if(old_alert_level == ALERT_LEVEL_CAUTION && new_alert_level == ALERT_LEVEL_ALERT)
+		else if(old_alert_level == ALERT_LEVEL_CAUTION && new_alert_level == ALERT_LEVEL_COMBAT)
 			responses = list(
 				"Found you!",
 				"I knew I heard something!",

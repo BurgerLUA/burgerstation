@@ -10,6 +10,8 @@
 
 	value = 10
 
+	lethal = TRUE
+
 
 /reagent/magic/stand_juice/on_add(var/reagent_container/container,var/amount_added=0)
 
