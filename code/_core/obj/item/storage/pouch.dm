@@ -31,20 +31,26 @@
 	return ..()
 
 /obj/item/storage/pouch/single
-	name = "single pouch"
+	name = "single large pouch"
 	icon_state = "single"
-	dynamic_inventory_count = 2
-	size = SIZE_2
+
+	container_max_size = SIZE_4
+	dynamic_inventory_count = 1
+
+	size = SIZE_4
 	weight = WEIGHT_2
 
 /obj/item/storage/pouch/single/black
 	color = COLOR_BLACK
 
 /obj/item/storage/pouch/double
-	name = "double pouch"
+	name = "double medium pouches"
 	icon_state = "double"
-	dynamic_inventory_count = 4
-	size = SIZE_4
+
+	container_max_size = SIZE_3
+	dynamic_inventory_count = 2
+
+	size = SIZE_6
 	weight = WEIGHT_3
 
 /obj/item/storage/pouch/double/black
@@ -53,111 +59,21 @@
 /obj/item/storage/pouch/double/brown
 	color = COLOR_BROWN
 
-/obj/item/storage/pouch/double/black/filled/rifle_308/fill_inventory()
-	new /obj/item/magazine/rifle_308(src)
-	new /obj/item/magazine/rifle_308(src)
-	new /obj/item/magazine/rifle_308(src)
-	new /obj/item/magazine/rifle_308(src)
-	return ..()
-
-/obj/item/storage/pouch/double/black/filled/carbine_223/fill_inventory()
-	new /obj/item/magazine/carbine_223(src)
-	new /obj/item/magazine/carbine_223(src)
-	new /obj/item/magazine/carbine_223(src)
-	new /obj/item/magazine/carbine_223(src)
-	return ..()
-
-/obj/item/storage/pouch/double/black/filled/cell/fill_inventory()
-	new /obj/item/powercell/advanced(src)
-	new /obj/item/powercell/advanced(src)
-	new /obj/item/powercell/advanced(src)
-	new /obj/item/powercell/advanced(src)
-	return ..()
-
 /obj/item/storage/pouch/triple
-	name = "triple pouch"
+	name = "triple small pouches"
 	icon_state = "triple"
 	dynamic_inventory_count = 6
 	size = SIZE_6
 	weight = WEIGHT_4
 
-/obj/item/storage/pouch/triple/syringe/
-	name = "syringe gun pouch"
-	icon_state = "triple"
-	dynamic_inventory_count = 6
-	color = "#FFFFFF"
+	container_max_size = SIZE_2
+	dynamic_inventory_count = 3
 
-/obj/item/storage/pouch/triple/syringe/filled/fill_inventory()
-	new /obj/item/magazine/syringe_gun(src)
-	new /obj/item/magazine/syringe_gun(src)
-	new /obj/item/magazine/syringe_gun(src)
-	new /obj/item/magazine/syringe_gun(src)
-	new /obj/item/magazine/syringe_gun(src)
-	new /obj/item/magazine/syringe_gun(src)
-	return ..()
-
+	size = SIZE_6
+	weight = WEIGHT_3
 
 /obj/item/storage/pouch/triple/black/
 	color = COLOR_BLACK
 
-/*
-/obj/item/storage/pouch/triple/black/filled/stealth
-	name = "stealth pouch"
-
-/obj/item/storage/pouch/triple/black/filled/stealth/fill_inventory()
-	new /obj/item/weapon/ranged/bullet/magazine/pistol/silenced(src)
-	new /obj/item/weapon/ranged/bullet/magazine/pistol/silenced(src)
-	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
-	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
-	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
-	new /obj/item/magazine/pistol_8mm/hollowpoint(src)
-	return ..()
-*/
-
 /obj/item/storage/pouch/triple/brown
-	name = "brown pouch"
 	color = COLOR_BROWN
-
-/obj/item/storage/pouch/triple/brown/filled/buckshot/fill_inventory()
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	new /obj/item/bullet_cartridge/shotgun/buckshot(src)
-	return ..()
-
-/obj/item/storage/pouch/triple/brown/filled/slug/fill_inventory()
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	new /obj/item/bullet_cartridge/shotgun/slug(src)
-	return ..()
-
-/obj/item/storage/pouch/triple/brown/filled/pistol/fill_inventory()
-	new /obj/item/magazine/pistol_9mm(src)
-	new /obj/item/magazine/pistol_9mm(src)
-	new /obj/item/magazine/pistol_9mm(src)
-	new /obj/item/magazine/pistol_9mm(src)
-	new /obj/item/magazine/pistol_9mm(src)
-	new /obj/item/magazine/pistol_9mm(src)
-	return ..()
-
-
-/obj/item/storage/pouch/double/lifesaver
-	name = "lifesaver pouch"
-	icon_state = "lifesaver"
-
-/obj/item/storage/pouch/double/lifesaver/filled/fill_inventory()
-	new /obj/item/container/syringe(src)
-	new /obj/item/container/beaker/bottle/epinephrine(src)
-	new /obj/item/container/beaker/bottle/epinephrine(src)
-	new /obj/item/container/beaker/bottle/epinephrine(src)
-	return ..()
-

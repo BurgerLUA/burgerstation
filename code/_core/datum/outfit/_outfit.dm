@@ -22,3 +22,6 @@
 		C.equip_additional_clothing(A)
 
 	return TRUE
+
+/loadout/proc/post_add(var/mob/living/advanced/A,var/list/added_items = list()) //Added after everything is added.
+	return TRUE

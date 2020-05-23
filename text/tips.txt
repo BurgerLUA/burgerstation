@@ -1,8 +1,8 @@
 When hitting a target, the body part you hit is affected by your targeting indicator at the bottom right of the screen. Whether or not your shot lands as intended is determined by your precision skill.
 You will always hit the targeted limb when targeting an NPC who isn't aware of your presence.
-Grabbing an enemy and hitting them with a melee weapon, a ranged weapon, or your fists will always deal critical damage.
-Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object. All items have some value to NanoTrasen, including corpses.
-Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while.
+Critical hits will always occur when you're grabbing your target.
+Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object. All items have some value to NanoTrasen, including most corpses.
+Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while. Some corpses may attract strange anomalies...
 Bicaridine heals brute damage. Kelotane heals burn damage. Dylovene heals toxin damage.
 You can butcher most animals or creatures for meat and materials if you have a sharp enough melee weapon for it.
 Shotguns, SMGs, and Carbines are good for taking on groups of enemies.
@@ -15,6 +15,8 @@ NanoTrasen typically uses NATO designated cartridges such as 5.56mm, 7.62mm, and
 Sneaking is a viable way to get around enemies you don't want to engage. To sneak, press the sneak key (Default: C) or press the sneak button at the bottom right of your screen. Note that sneaking drains stamina when moving, and should be used sparingly.
 You're twice as effective at sneaking when laying down (resting).
 Sneaking does nothing to enemies already engaged in combat, regardless if they are your target.
-Grabbing an enemy from behind will stun and disarm them them for 3 seconds.
+Grabbing an enemy from behind will stun and disarm them them.
 You can only grab team members who are on the ground.
 Disarms have a chance to shove people, staggering them. If a staggered enemy hits an object behind them, they're stunned for the duration of the stagger.
+Firing pins control who is allowed to operate the gun. Syndicate guns contain firing pins that only Syndicate Operatives can fire, and NanoTrasen guns contain firing pins that only NanoTrasen Mercenaries can fire.
+Firing pins can be removed with a screwdriver, and replaced with existing firing pins.

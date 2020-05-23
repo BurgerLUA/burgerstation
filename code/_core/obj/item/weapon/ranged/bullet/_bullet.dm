@@ -38,16 +38,8 @@
 	return .
 
 /obj/item/weapon/ranged/bullet/Destroy()
-
-	qdel(chambered_bullet)
-	chambered_bullet = null
-
-	if(stored_bullets) //Sometimes this doesn't exist.
-		for(var/obj/item/bullet_cartridge/B in stored_bullets)
-			qdel(B)
-
-		stored_bullets.Cut()
-
+	QDEL_NULL(chambered_bullet)
+	QDEL_CUT(stored_bullets)
 	return ..()
 
 /obj/item/weapon/ranged/bullet/get_damage_type()

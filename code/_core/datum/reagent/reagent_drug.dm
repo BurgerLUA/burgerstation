@@ -9,6 +9,8 @@
 	var/strength = 50
 	var/duration_mod = 10
 
+	liquid = -0.4
+
 /reagent/core/drug/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -50,6 +52,8 @@
 
 	value = 7.5
 
+	liquid = -0.6
+
 /reagent/core/drug/space
 	name = "space drugs"
 	id = "space_drugs"
@@ -76,3 +80,5 @@
 	duration_mod = 15
 
 	value = 12
+
+	liquid = -0.6

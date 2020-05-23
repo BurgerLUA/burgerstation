@@ -48,6 +48,17 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 		else
 			. += list(div("warning","They lay dead and lifeless, and their soul has departed."))
 
+	if(ai && ai.use_alerts)
+		switch(ai.alert_level)
+			if(ALERT_LEVEL_NONE)
+				. += list(div("notice","They do not appear to notice you."))
+			if(ALERT_LEVEL_NOISE)
+				. += list(div("warning","They seem to be looking for a source of noise."))
+			if(ALERT_LEVEL_CAUTION)
+				. += list(div("warning","They seem to be looking for someone."))
+			if(ALERT_LEVEL_COMBAT)
+				. += list(div("danger","They appear to be in a combative stance!"))
+
 	for(var/obj/item/organ/O in src.organs)
 		if(!O.health)
 			continue

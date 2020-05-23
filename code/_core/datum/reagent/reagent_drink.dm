@@ -11,6 +11,8 @@
 
 	value = 0.15
 
+	liquid = 0.7
+
 /reagent/core/nutrition/soda/cola
 	name = "\improper Space Cola"
 	id = "cola"

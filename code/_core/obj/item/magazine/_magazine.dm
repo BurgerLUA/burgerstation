@@ -113,7 +113,7 @@
 	if(is_bullet_gun(object) && !istype(src,/obj/item/magazine/clip))
 		var/obj/item/weapon/ranged/bullet/magazine/G = object
 		if(!weapon_whitelist[G.type])
-			caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
+			if(caller) caller.to_chat(span("notice","You can't insert this type of magazine into \the [G]."))
 			return TRUE
 		if(G.stored_magazine)
 			G.eject_magazine(caller)

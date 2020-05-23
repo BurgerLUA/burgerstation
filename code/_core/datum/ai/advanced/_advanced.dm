@@ -54,7 +54,7 @@
 					continue
 			if(!isturf(W.loc))
 				continue
-			possible_weapons[W] = (6 + 1) - get_dist(A,W.loc)
+			possible_weapons[W] = max(1,(6 + 1) - get_dist(A,W.loc))
 		if(!length(possible_weapons))
 			return FALSE
 		objective_weapon = pickweight(possible_weapons)
@@ -86,24 +86,31 @@
 	if(istype(R,/obj/item/weapon/ranged/bullet/magazine/))
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
-			next_complex = world.time + 30
-
+			next_complex = world.time + 15
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
 			if(O_groin)
 				M = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine)
-			if(!M || !M.click_on_object(A,G))
+			if(!M)
 				unequip_weapon(G)
 				return FALSE
+			M.click_on_object(A,G)
+			if(!G.stored_magazine)
+				unequip_weapon(G)
+				return FALSE
+			return FALSE
 
-		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets))
+		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
 			G.eject_magazine(A)
-			next_complex = world.time + 20
+			next_complex = world.time + 10
 			return FALSE
 
 		if(!G.chambered_bullet || G.chambered_bullet.is_spent)
 			G.click_self(A)
-			next_complex = world.time + 10
+			if(!G.chambered_bullet)
+				unequip_weapon(G)
+				return FALSE
+			next_complex = world.time + 5
 			return FALSE
 
 	return TRUE
@@ -206,6 +213,10 @@
 	var/best_weapon_value = -1
 
 	for(var/obj/item/weapon/W in A.worn_objects)
+		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
+			var/obj/item/weapon/ranged/bullet/magazine/M = W
+			if(!M.stored_magazine)
+				continue
 		if(!best_weapon || !best_weapon_value)
 			best_weapon = W
 			best_weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
@@ -217,6 +228,10 @@
 			continue
 
 	for(var/obj/item/weapon/W in A.held_objects)
+		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
+			var/obj/item/weapon/ranged/bullet/magazine/M = W
+			if(!M.stored_magazine)
+				continue
 		if(!best_weapon || !best_weapon_value)
 			best_weapon = W
 			best_weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
@@ -253,13 +268,12 @@
 
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
-
 	if(istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(E.enabled) E.click_self(A)
-
-
-	return W.quick_equip(A)
+	if(!W.quick_equip(A))
+		W.drop_item(get_turf(owner))
+	return TRUE
 
 /ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 

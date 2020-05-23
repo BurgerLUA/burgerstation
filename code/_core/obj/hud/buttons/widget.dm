@@ -27,18 +27,22 @@
 	var/mob/living/L = caller
 
 	final_text += div("bold underlined","Attributes\n")
-
 	for(var/k in L.attributes)
 		var/experience/attribute/A = L.attributes[k]
 		var/current_level = A.get_current_level()
-		final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([A.get_xp()]/[A.level_to_xp(min(current_level+1,A.max_level))] xp)\n")
+		var/current_xp = A.get_xp()
+		var/last_xp = A.level_to_xp(current_level)
+		var/next_xp = A.level_to_xp(min(current_level+1,A.max_level))
+		final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
 
 	final_text += div("bold underlined","Skills\n")
-
 	for(var/k in L.skills)
-		var/experience/skill/S = L.skills[k]
-		var/current_level = S.get_current_level()
-		final_text += div("notice","[S.name]: [S.get_current_level(current_level)] ([S.get_xp()]/[S.level_to_xp(min(current_level+1,S.max_level))] xp)\n")
+		var/experience/skill/A = L.skills[k]
+		var/current_level = A.get_current_level()
+		var/current_xp = A.get_xp()
+		var/last_xp = A.level_to_xp(current_level)
+		var/next_xp = A.level_to_xp(min(current_level+1,A.max_level))
+		final_text += div("notice","[A.name]: [A.get_current_level(current_level)] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
 
 	L.to_chat(final_text)
 

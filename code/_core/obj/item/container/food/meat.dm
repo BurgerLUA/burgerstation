@@ -19,11 +19,12 @@
 	if(icon_state == "ground")
 		icon_state = "meatball"
 		caller.to_chat("You reshape \the [src.name] into a meatball.")
+		pixel_height = 4
 		update_sprite()
 	else if(icon_state == "meatball")
 		icon_state = "patty"
 		caller.to_chat("You reshape \the [src.name] into a patty.")
-		pixel_height = 0
+		pixel_height = 3
 		update_sprite()
 
 	update_sprite()

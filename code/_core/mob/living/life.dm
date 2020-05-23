@@ -34,15 +34,14 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	collision_flags = FLAG_COLLISION_CRAWLING
-
 	plane = PLANE_OBJ
 
 	handle_horizontal()
 
 	post_death()
 
-	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
+	if(queue_delete_on_death)
+		queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 
 	return TRUE
 
@@ -74,7 +73,6 @@
 	attack_flags = 0x0
 	dead = FALSE
 	plane = initial(plane)
-	update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 	remove_all_status_effects()
 	if(health)
 		health.update_health()
@@ -218,8 +216,10 @@
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN
 			animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
+			update_collisions(FLAG_COLLISION_CRAWLING)
 		else //GET UP
 			animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
+			update_collisions(initial(collision_flags))
 		horizontal = desired_horizontal
 
 	return desired_horizontal

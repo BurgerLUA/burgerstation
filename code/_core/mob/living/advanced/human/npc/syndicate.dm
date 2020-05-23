@@ -5,17 +5,19 @@
 	class = "syndicate"
 
 	var/list/possible_outfits = list(
-		"syndicate_soldier" = 200
-		//"syndicate_hardsuit" = 10,
-		//"syndicate_hardsuit_advanced" = 5,
-		//"syndicate_hardsuit_elite" = 3
+		"syndicate" = 100,
+		"syndicate_soldier" = 75,
+		"syndicate_hardsuit" = 50,
+		"syndicate_hardsuit_advanced" = 25,
+		"syndicate_hardsuit_elite" = 5
 	)
 
 	var/loadout_to_level = list(
-		"syndicate_soldier" = 1,
-		"syndicate_hardsuit" = 2,
-		"syndicate_hardsuit_advanced" = 4,
-		"syndicate_hardsuit_elite" = 8
+		"syndicate" = 1,
+		"syndicate_soldier" = 2,
+		"syndicate_hardsuit" = 4,
+		"syndicate_hardsuit_advanced" = 8,
+		"syndicate_hardsuit_elite" = 16
 	)
 
 	var/map_spawn = FALSE

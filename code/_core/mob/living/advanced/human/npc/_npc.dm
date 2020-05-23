@@ -5,8 +5,10 @@
 
 	var/dialogue_id
 
-	collision_flags = FLAG_COLLISION_WALL
+	/*
+	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	*/
 
 
 /mob/living/advanced/npc/defer_click_on_object(location,control,params)

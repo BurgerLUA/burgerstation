@@ -29,9 +29,7 @@
 
 	var/slot_num = 0
 
-	priority = 0
-
-	allow_quick_equip = FALSE
+	priority = -100 //Very low priority
 
 /obj/hud/inventory/dynamic/New(var/desired_loc)
 

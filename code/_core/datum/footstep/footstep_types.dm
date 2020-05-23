@@ -134,3 +134,13 @@
 		'sounds/effects/footsteps/sand4.ogg',
 		'sounds/effects/footsteps/sand5.ogg'
 	)
+
+
+/footstep/splat
+	id = "splat"
+	footstep_sounds = list(
+		'sounds/effects/footsteps/splat1.ogg',
+		'sounds/effects/footsteps/splat2.ogg',
+		'sounds/effects/footsteps/splat3.ogg',
+		'sounds/effects/footsteps/splat4.ogg'
+	)

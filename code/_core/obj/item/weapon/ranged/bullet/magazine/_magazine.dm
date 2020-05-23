@@ -19,11 +19,12 @@
 /obj/item/weapon/ranged/bullet/magazine/Generate()
 
 	if(stored_magazine)
-		stored_magazine = new stored_magazine(src)
-		INITIALIZE(stored_magazine)
-		GENERATE(stored_magazine)
-		open = FALSE
-		update_sprite()
+		var/obj/item/magazine/M = new stored_magazine(src)
+		stored_magazine = null
+		INITIALIZE(M)
+		GENERATE(M)
+		M.click_on_object(null,src)
+		src.click_self()
 
 	return ..()
 
@@ -31,7 +32,7 @@
 
 	var/cock_type // = "flacid"
 
-	if(eject_chambered_bullet(caller,caller.loc,TRUE))
+	if(eject_chambered_bullet(caller,caller ? caller.loc : get_turf(src),TRUE))
 		cock_type = "back"
 
 	if(load_new_bullet_from_magazine(caller))

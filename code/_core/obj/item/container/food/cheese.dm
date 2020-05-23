@@ -97,8 +97,10 @@
 	else if(has_prefix(icon_state,"block"))
 		if(reagents.volume_current > 10)
 			icon_state = "block"
+			pixel_height = 10
 		else
 			icon_state = "block_slice_[CEILING(reagents.volume_current, 1)]"
+			pixel_height = CEILING(reagents.volume_current, 1)
 
 	color = reagents.color
 

@@ -15,3 +15,5 @@
 	color = "#FFFFFF"
 
 	flavor = "the inside of a reactor"
+
+	liquid = -0.25

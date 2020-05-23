@@ -380,6 +380,8 @@
 
 /ai/proc/set_objective(var/atom/A,var/alert = TRUE)
 
+	world.log << "SETTING OBJECTIVE FOR [owner.get_debug_name()]: [A ? A.get_debug_name() : "NONE"]"
+
 	if(!owner || owner.qdeleting)
 		return FALSE
 
@@ -400,6 +402,8 @@
 		objective_investigate = null
 
 	if(is_living(A))
+		if(!should_attack_mob(A))
+			return FALSE
 		frustration_attack = 0
 		set_alert_level(ALERT_LEVEL_COMBAT)
 		objective_attack = A
@@ -407,6 +411,11 @@
 			objective_move = null
 		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
 		return TRUE
+	else
+		frustration_attack = 0
+		objective_attack = null
+		owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
+		set_alert_level(ALERT_LEVEL_NONE,TRUE)
 
 	if(old_attack && !old_attack.qdeleting)
 		if(is_living(old_attack))
@@ -595,8 +604,12 @@
 
 	if(alert_level <= alert_level && alert_source && is_living(alert_source))
 		var/mob/living/L = alert_source
-		if( !should_attack_mob(L) || !(radius_find_enemy > 0) )
-			return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
+		if(alert_level == ALERT_LEVEL_CAUTION)
+			if(L == owner)
+				return FALSE
+		else
+			if(!should_attack_mob(L) || !(radius_find_enemy > 0) )
+				return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
 
 	var/old_alert_level = alert_level
 

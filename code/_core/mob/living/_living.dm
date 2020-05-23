@@ -126,6 +126,8 @@
 	var/next_resist = 0
 	var/resist_counter = 0
 
+	var/queue_delete_on_death = TRUE
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

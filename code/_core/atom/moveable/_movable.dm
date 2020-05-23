@@ -32,6 +32,7 @@
 	var/next_conveyor = 0 //For conveyors.
 
 	var/has_footsteps = FALSE
+	var/footstep_override_id //If this var is defined, it will always play these footstep sounds instead, regardless of the object's footstep id.
 
 	var/throwable = TRUE
 

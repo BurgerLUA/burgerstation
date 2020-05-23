@@ -200,6 +200,10 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
+	damage_type = /damagetype/unarmed/beef/
+
+/obj/item/organ/hand/beefman/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+	return damage_type
 
 /obj/item/organ/hand/beefman/left
 	name = "left beef hand"

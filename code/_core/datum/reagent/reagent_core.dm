@@ -6,6 +6,8 @@
 
 	flavor = "coal"
 
+	liquid = -0.75
+
 /reagent/core/iron //Found while mining iron ore deposits
 	name = "Iron"
 	id = "iron"
@@ -13,6 +15,8 @@
 	color = COLOR_IRON
 
 	flavor = "iron"
+
+	liquid = -0.25
 
 /reagent/core/iron/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -33,6 +37,8 @@
 
 	flavor = "oxygen"
 
+	liquid = 0.25
+
 /reagent/core/nitrogen //Found in the snow biome as a magic plant
 	name = "Liquid Nitrogen"
 	id = "nitrogen"
@@ -40,6 +46,8 @@
 	color = "#D9E2E2"
 
 	flavor = "cold"
+
+	liquid = 0.25
 
 /reagent/core/silicon //Found while mining silicon ore deposits
 	name = "Silicon"
@@ -49,6 +57,8 @@
 
 	flavor = "dildos"
 
+	liquid = -0.25
+
 /reagent/core/potassium //Found through potash
 	name = "Potassium"
 	id = "potassium"
@@ -56,6 +66,10 @@
 	color = "#ADADAD"
 
 	flavor = "bananas"
+
+	flavor_strength = 2
+
+	liquid = -0.25
 
 /reagent/core/blood //Found through organic things
 	name = "Blood"
@@ -67,6 +81,8 @@
 
 	metabolism_blood = 0
 
+	liquid = 0.4
+
 /reagent/core/water //Found through organic things
 	name = "Water"
 	id = "water"
@@ -76,15 +92,7 @@
 	flavor = "water"
 	flavor_strength = 0.1
 
-/reagent/core/potassium
-	name = "potassium"
-	id = "potassium"
-	desc = "Bananas?"
-	color = "#FFFFFF"
-
-	flavor = "banana"
-	flavor_strength = 2
-
+	liquid = 0.5
 
 /reagent/core/salt
 	name = "salt"
@@ -94,3 +102,5 @@
 
 	flavor = "salt"
 	flavor_strength = 4
+
+	liquid = -1

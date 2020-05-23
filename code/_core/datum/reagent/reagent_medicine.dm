@@ -30,6 +30,8 @@
 
 	value = 1.25
 
+	liquid = 0.6
+
 /reagent/medicine/bicaridine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -223,6 +225,8 @@
 
 	value = 2.5
 
+	liquid = -0.5
+
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -260,6 +264,8 @@
 	metabolism_skin = 1
 
 	value = 2
+
+	liquid = -0.5
 
 
 /reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0)

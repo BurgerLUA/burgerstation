@@ -150,9 +150,11 @@
 		OldLoc.Exited(src,NewLoc)
 
 		//DO: Make a footstep sound.
-		if(!silent && has_footsteps && OldLoc.footstep_id && all_footsteps[OldLoc.footstep_id])
-			var/footstep/F = all_footsteps[OldLoc.footstep_id]
-			F.on_step(OldLoc,src,TRUE)
+		if(!silent && has_footsteps)
+			var/footstep_to_use = footstep_override_id ? footstep_override_id : OldLoc.footstep_id
+			if(footstep_to_use && all_footsteps[footstep_to_use])
+				var/footstep/F = all_footsteps[footstep_to_use]
+				F.on_step(OldLoc,src,TRUE)
 
 		//DO: Exited the contents.
 		for(var/atom/A in OldLoc.contents)
@@ -173,9 +175,11 @@
 		NewLoc.Entered(src,OldLoc)
 
 		//DO: Make a footstep sound.
-		if(!silent && has_footsteps && NewLoc.footstep_id && all_footsteps[NewLoc.footstep_id])
-			var/footstep/F = all_footsteps[NewLoc.footstep_id]
-			F.on_step(NewLoc,src,FALSE)
+		if(!silent && has_footsteps)
+			var/footstep_to_use = footstep_override_id ? footstep_override_id : NewLoc.footstep_id
+			if(footstep_to_use && all_footsteps[footstep_to_use])
+				var/footstep/F = all_footsteps[footstep_to_use]
+				F.on_step(OldLoc,src,FALSE)
 
 		//DO: Enter the contents.
 		for(var/atom/A in NewLoc.contents)

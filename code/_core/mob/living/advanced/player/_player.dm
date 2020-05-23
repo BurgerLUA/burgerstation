@@ -70,6 +70,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	damage_received_multiplier = 0.5
 
+	queue_delete_on_death = FALSE
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 	click_and_drag_icon	= new(src)

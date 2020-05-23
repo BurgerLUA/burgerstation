@@ -14,6 +14,8 @@
 
 	value = 1
 
+	liquid = -0.25
+
 /reagent/core/nutrition/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -41,6 +43,8 @@
 
 	processed_reagent = "flour_whole_wheat"
 
+	liquid = -0.75
+
 /reagent/core/nutrition/wheat_grain/flour
 	name = "whole wheat flour"
 	id = "flour_whole_wheat"
@@ -53,6 +57,8 @@
 
 	processed_reagent = "flour_white"
 
+	liquid = -0.75
+
 /reagent/core/nutrition/wheat_grain/flour/processed
 	name = "white flour"
 	id = "flour_white"
@@ -62,6 +68,8 @@
 	nutrition_amount = 1.5 NUT_FACTOR
 
 	flavor = "gross dry flour"
+
+	liquid = -0.75
 
 //Dough
 /reagent/core/nutrition/dough
@@ -74,6 +82,8 @@
 
 	flavor = "raw oaty dough"
 
+	liquid = 0.25
+
 /reagent/core/nutrition/dough/flour
 	name = "whole wheat flour dough"
 	id = "dough_flour"
@@ -84,6 +94,8 @@
 
 	flavor = "raw oaty dough"
 
+	liquid = 0.25
+
 /reagent/core/nutrition/dough/flour/processed
 	name = "white flour dough"
 	id = "dough_flour_white"
@@ -93,6 +105,8 @@
 	nutrition_amount = 1.5 NUT_FACTOR
 
 	flavor = "raw dough"
+
+	liquid = 0.25
 
 //Bread
 /reagent/core/nutrition/bread
@@ -105,6 +119,8 @@
 
 	flavor = "tough bread"
 
+	liquid = -0.25
+
 /reagent/core/nutrition/bread/flour
 	name = "whole grain bread"
 	id = "bread_flour"
@@ -114,6 +130,8 @@
 	nutrition_amount = 1.75 NUT_FACTOR
 
 	flavor = "whole grain bread"
+
+	liquid = -0.25
 
 /reagent/core/nutrition/bread/flour/processed
 	name = "white bread"
@@ -125,6 +143,8 @@
 
 	flavor = "white bread"
 
+	liquid = -0.25
+
 
 /reagent/core/nutrition/sugar
 	name = "white sugar"
@@ -135,6 +155,8 @@
 	nutrition_amount = 3 NUT_FACTOR
 
 	flavor = "sweetness"
+
+	liquid = -0.4
 
 /reagent/core/nutrition/sugar/cane
 	name = "sugarcane"
@@ -157,6 +179,8 @@
 
 	flavor = "mushroom"
 
+	liquid = -0.1
+
 //Milk
 /reagent/core/nutrition/milk/
 	name = "cow's milk"
@@ -169,6 +193,8 @@
 
 	flavor = "milk"
 
+	liquid = 0.5
+
 //Cheese
 /reagent/core/nutrition/cheese/
 	name = "processed cheese"
@@ -180,6 +206,8 @@
 
 	flavor = "processed cheese"
 
+	liquid = 0.2
+
 //Fat
 /reagent/core/nutrition/fat/
 	name = "fat"
@@ -190,6 +218,8 @@
 	nutrition_amount = 2 NUT_FACTOR
 
 	flavor = "fat"
+
+	liquid = 0.1
 
 /reagent/core/nutrition/fat/cow
 	name = "cow's fat"
@@ -211,6 +241,8 @@
 	nutrition_amount = 4 NUT_FACTOR
 
 	flavor = "raw meat"
+
+	liquid = 0.2
 
 /reagent/core/nutrition/meat/cow
 	name = "raw cow's meat"
@@ -264,6 +296,8 @@
 	flavor = "grease"
 
 	value = 0.2
+
+	liquid = -0.75
 
 
 /reagent/core/nutrition/junk/chips

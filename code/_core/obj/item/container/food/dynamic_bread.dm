@@ -101,8 +101,8 @@
 		else if(icon_state == "bun_whole") //It's cooked, and a bun.
 			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
 			B.pixel_x = pixel_x
-			B.pixel_y = pixel_y + 6
-			B.layer = layer + 0.01
+			B.pixel_y = pixel_y - 3
+			B.layer = layer - 0.01
 			INITIALIZE(B)
 			reagents.transfer_reagents_to(B.reagents,reagents.volume_current/2)
 			cooked_icon_state = "bun_top"

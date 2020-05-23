@@ -114,7 +114,7 @@
 	var/list/final_skill_list = list()
 	for(var/id in A.skills)
 		var/experience/skill/S = A.skills[id]
-		var/desired_experience = ENABLE_XP_SAVING ? S.experience : S.level_to_xp(S.default_level)
+		var/desired_experience = ENABLE_XP_SAVING ? S.experience : S.level_to_xp(S.chargen_max_level)
 		final_skill_list[id] = desired_experience
 	loaded_data["skills"] = final_skill_list
 
@@ -122,7 +122,7 @@
 	var/list/final_attribute_list = list()
 	for(var/id in A.attributes)
 		var/experience/attribute/B = A.attributes[id]
-		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.default_level)
+		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.chargen_max_level)
 		final_attribute_list[id] = desired_experience
 	loaded_data["attributes"] = final_attribute_list
 
@@ -163,7 +163,7 @@
 	//Skills
 	for(var/id in loaded_data["skills"])
 		var/experience/skill/S = A.get_skill(id)
-		var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.default_level)
+		var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.chargen_max_level)
 		if(S)
 			S.Initialize(xp)
 		else
@@ -172,7 +172,7 @@
 	//Attributes
 	for(var/id in loaded_data["attributes"])
 		var/experience/attribute/S = A.get_attribute(id)
-		var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.default_level)
+		var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.chargen_max_level)
 		if(S)
 			S.Initialize(xp)
 		else
