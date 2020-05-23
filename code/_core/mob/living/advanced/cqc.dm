@@ -1,9 +1,9 @@
 /mob/living/advanced/proc/add_cqc(var/cqc_tag)
 
 	cqc += cqc_tag
-	var/tag_length = length(cqc_tag)
+	var/tag_length = length(cqc)
 	if(tag_length > 5)
-		cqc = copytext(1 + (tag_length-5),0)
+		cqc = copytext(cqc,1 + (tag_length-5),0)
 
 	return TRUE
 

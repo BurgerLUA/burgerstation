@@ -7,7 +7,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 0
+		BLUNT = 5,
+		FATIGUE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

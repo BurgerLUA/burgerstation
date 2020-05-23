@@ -84,7 +84,11 @@
 
 	var/cqc = ""
 
-	var/list/known_cqc = list(/cqc/sleeping_carp/crashing_wave_kick)
+	var/list/known_cqc = list(
+		/cqc/sleeping_carp/crashing_wave_kick,
+		/cqc/sleeping_carp/keelhaul,
+		/cqc/sleeping_carp/gnashing_teeth
+	)
 
 /mob/living/advanced/Destroy()
 

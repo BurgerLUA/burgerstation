@@ -238,6 +238,7 @@
 #include "code\_core\datum\damagetype\explosion.dm"
 #include "code\_core\datum\damagetype\item.dm"
 #include "code\_core\datum\damagetype\cqc\_cqc.dm"
+#include "code\_core\datum\damagetype\cqc\sleeping_carp.dm"
 #include "code\_core\datum\damagetype\melee\_melee.dm"
 #include "code\_core\datum\damagetype\melee\spear.dm"
 #include "code\_core\datum\damagetype\melee\club\_club.dm"

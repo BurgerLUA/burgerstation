@@ -17,6 +17,6 @@
 	if(cqc_length == combo_length)
 		return combo == cqc_string
 
-	var/copy = copytext(-combo_length,0)
+	var/copy = copytext(cqc_string,-combo_length,0)
 
 	return combo == copy
