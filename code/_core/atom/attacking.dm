@@ -88,14 +88,15 @@
 		return FALSE
 
 	var/damagetype/DT = all_damage_types[desired_damage_type]
-	if(!DT)
-		log_error("[attacker.get_debug_name()] can't inflict harm with the [object_to_damage_with.get_debug_name()] due to the damage type [desired_damage_type] not existing!")
-		attacker.attack_next = world.time + 10
-		object_to_damage_with.attack_next = world.time + 10
-		return FALSE
-
 	if(!attacker.can_attack(victim,object_to_damage_with,params,DT))
 		return FALSE
+
+	if(is_advanced(attacker) && DT.cqc_tag)
+		var/mob/living/advanced/A = attacker
+		A.add_cqc(DT.cqc_tag)
+		var/damagetype/DT2 = A.check_cqc(victim,object_to_damage_with,object_to_damage,blamed)
+		if(DT2)
+			DT = DT2
 
 	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
 
@@ -107,11 +108,6 @@
 		return FALSE
 
 	var/damage_multiplier = 1
-
-	/*
-	if(DT.allow_miss && DT.should_miss(attacker,victim,object_to_damage_with,object_to_damage))
-		if(DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)) return FALSE
-	*/
 
 	if(DT.allow_dodge)
 		var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)

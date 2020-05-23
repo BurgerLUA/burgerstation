@@ -210,8 +210,6 @@
 		cooked_icon_state = "bread"
 		raw_icon_state = "dough_ball"
 
-	world.log << "THe wetness is: [wetness]"
-
 	icon_state = cooked_percent > 0.5 ? cooked_icon_state : raw_icon_state
 
 	return TRUE

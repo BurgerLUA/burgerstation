@@ -36,6 +36,8 @@
 
 	allow_friendly_fire = FALSE
 
+	cqc_tag = "4"
+
 /damagetype/unarmed/fists/help
 	name = "help fists"
 	attack_verbs = list("tap")
@@ -69,6 +71,8 @@
 	skill_damage = list(
 
 	)
+
+	cqc_tag = "1"
 
 /damagetype/unarmed/fists/disarm
 	name = "disarm fists"
@@ -107,6 +111,8 @@
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
+
+	cqc_tag = "2"
 
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -161,6 +167,8 @@
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
+
+	cqc_tag = "3"
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 

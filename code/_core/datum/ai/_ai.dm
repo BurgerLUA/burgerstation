@@ -380,8 +380,6 @@
 
 /ai/proc/set_objective(var/atom/A,var/alert = TRUE)
 
-	world.log << "SETTING OBJECTIVE FOR [owner.get_debug_name()]: [A ? A.get_debug_name() : "NONE"]"
-
 	if(!owner || owner.qdeleting)
 		return FALSE
 

@@ -155,6 +155,10 @@
 	"S" = "move_down", \
 	"A" = "move_left",\
 	"UP" = "move_up", \
+	"1" = "set-intent-help",\
+	"2" = "set-intent-disarm", \
+	"3" = "set-intent-grab", \
+	"4" = "set-intent-harm", \
 	"RIGHT" = "move_right", \
 	"DOWN" = "move_down", \
 	"LEFT" = "move_left", \

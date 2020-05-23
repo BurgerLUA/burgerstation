@@ -103,7 +103,7 @@
 
 	var/allow_friendly_fire = FALSE
 
-
+	var/cqc_tag
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*

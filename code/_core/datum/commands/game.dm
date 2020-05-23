@@ -1,3 +1,27 @@
+/mob/living/verb/set_intent_harm()
+	set name = "Set Intent Harm"
+	set category = "Game"
+	set hidden = TRUE
+	set_intent(INTENT_HARM)
+
+/mob/living/verb/set_intent_disarm()
+	set name = "Set Intent Disarm"
+	set category = "Game"
+	set hidden = TRUE
+	set_intent(INTENT_DISARM)
+
+/mob/living/verb/set_intent_grab()
+	set name = "Set Intent Grab"
+	set category = "Game"
+	set hidden = TRUE
+	set_intent(INTENT_GRAB)
+
+/mob/living/verb/set_intent_help()
+	set name = "Set Intent Help"
+	set category = "Game"
+	set hidden = TRUE
+	set_intent(INTENT_HELP)
+
 /mob/living/verb/cycle_intent_clockwise()
 	set name = "Cycle Intent Clockwise"
 	set category = "Game"

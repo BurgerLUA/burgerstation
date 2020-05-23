@@ -82,6 +82,10 @@
 
 	stun_angle = -90
 
+	var/cqc = ""
+
+	var/list/known_cqc = list(/cqc/sleeping_carp/crashing_wave_kick)
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
