@@ -16,14 +16,6 @@
 	if(owner && caller.client)
 		caller.client.examine(owner)
 	return ..()
-
-/obj/hud/button/health/bar/
-	icon_state = "base"
-	var/bar_color = "#ffffff"
-	var/min = 0
-	var/max = 100
-	var/current = 0
-
 /obj/hud/button/health/proc/update_stats(var/mob/living/M)
 	update_sprite()
 	return TRUE
@@ -45,6 +37,13 @@
 		update_stats(L)
 
 	return TRUE
+
+/obj/hud/button/health/bar/
+	icon_state = "base"
+	var/bar_color = "#ffffff"
+	var/min = 0
+	var/max = 100
+	var/current = 0
 
 /obj/hud/button/health/bar/update_overlays()
 

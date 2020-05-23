@@ -35,6 +35,8 @@ obj/structure/scenery/jungle_trees
 	pixel_y = -16
 	layer = LAYER_LARGE_OBJ
 
+	plane = PLANE_TREE
+
 obj/structure/scenery/jungle_trees/New()
 	..()
 	icon_state = "tree[rand(1,6)]"
@@ -49,6 +51,8 @@ obj/structure/scenery/jungle_trees_small
 	pixel_x = -32
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ
+
+	plane = PLANE_TREE
 
 obj/structure/scenery/jungle_trees/New()
 	..()

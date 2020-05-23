@@ -14,7 +14,10 @@
 		HEAT = 75,
 		COLD = -15,
 	)
-	additional_clothing = list(/obj/item/clothing/head/helmet/attached/explorer_suit)
+	additional_clothing = list(
+		/obj/item/clothing/head/helmet/attached/explorer_suit,
+		/obj/item/clothing/mask/gas/mining
+	)
 
 	size = SIZE_6
 	weight = WEIGHT_4

@@ -45,7 +45,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 2000
+	health_base = 3000
 
 	ai = /ai/
 
@@ -61,7 +61,7 @@
 
 	armor_base = list(
 		BLADE = 100,
-		BLUNT = 25,
+		BLUNT = 50,
 		PIERCE = 100,
 		LASER = 25,
 		MAGIC = 25,

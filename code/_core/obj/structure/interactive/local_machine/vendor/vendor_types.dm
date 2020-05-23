@@ -5,6 +5,8 @@
 /obj/structure/interactive/vending/ammo/pistol
 	name = "pistol ammo vendor"
 	stored_types = list(
+		/obj/item/magazine/gyrojet,
+		/obj/item/magazine/smp_9mm,
 		/obj/item/magazine/pistol_12mm/nt,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_9mm,
@@ -58,6 +60,16 @@
 	)
 
 
+/obj/structure/interactive/vending/clothes/overshirt
+	name = "overwear vendor"
+	icon_state = "overshirt"
+	stored_types = list(
+		/obj/item/clothing/overwear/coat/hoodie,
+		/obj/item/clothing/overwear/coat/labcoat,
+		/obj/item/clothing/overwear/coat/polymorphic
+	)
+
+
 /obj/structure/interactive/vending/clothes/underwear
 	name = "underwear vendor"
 	icon_state = "underwear"
@@ -83,7 +95,9 @@
 		/obj/item/clothing/pants/normal/chaps,
 		/obj/item/clothing/pants/normal/striped,
 		/obj/item/clothing/pants/skirt,
-		/obj/item/clothing/pants/skirt/striped
+		/obj/item/clothing/pants/skirt/striped,
+		/obj/item/clothing/pants/kilt,
+
 	)
 
 /obj/structure/interactive/vending/clothes/shoes
@@ -99,12 +113,25 @@
 	name = "accessories vendor"
 	icon_state = "accessories"
 	stored_types = list(
+		/obj/item/clothing/back/storage/backpack/,
+		/obj/item/clothing/back/storage/dufflebag/,
 		/obj/item/clothing/belt/storage/colored,
 		/obj/item/clothing/head/hood/bandana,
+		/obj/item/clothing/head/hood/skimask,
 		/obj/item/clothing/neck/cape,
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,
 		/obj/item/clothing/glasses/sun
+	)
+
+/obj/structure/interactive/vending/clothes/hat
+	name = "hat vendor"
+	icon_state = "hat"
+	stored_types = list(
+		/obj/item/clothing/head/hat/beret,
+		/obj/item/clothing/head/hat/cat,
+		/obj/item/clothing/head/hat/top,
+		/obj/item/clothing/head/hat/wizard
 	)
 
 /obj/structure/interactive/vending/medical/
@@ -133,15 +160,16 @@
 	name = "chemistry vendor"
 	icon_state = "chem"
 	stored_types = list(
-		/obj/item/container/beaker/bottle/bicaridine,
-		/obj/item/container/beaker/bottle/dylovene,
-		/obj/item/container/beaker/bottle/epinephrine,
-		/obj/item/container/beaker/bottle/kelotane,
+		/obj/item/storage/bags/chemistry,
 		/obj/item/storage/bags/pills,
 		/obj/item/container/syringe,
 		/obj/item/container/beaker/vial,
+		/obj/item/container/beaker/bottle/large,
+		/obj/item/container/beaker/bottle,
 		/obj/item/container/beaker,
-		/obj/item/container/beaker/large
+		/obj/item/container/beaker/large,
+		/obj/item/crafting/alchemy,
+		/obj/item/crafting/pill_press
 	)
 
 /obj/structure/interactive/vending/medical/wardrobe
@@ -345,7 +373,6 @@ var/global/list/equipped_players = list()
 		/obj/item/container/food/package/junkfood/syndicate
 	)
 
-
 /obj/structure/interactive/vending/smart_fridge
 	name = "smart fridge"
 	icon_state = "smartfridge"
@@ -353,11 +380,10 @@ var/global/list/equipped_players = list()
 /obj/structure/interactive/vending/smart_fridge/chemistry
 	name = "chemistry smart fridge"
 	stored_types = list(
-		/obj/item/container/pill/bicaridine,
-		/obj/item/container/pill/dylovene,
-		/obj/item/container/pill/kelotane,
-		/obj/item/container/pill/space_drugs,
-		/obj/item/container/pill/iron
+		/obj/item/container/beaker/bottle/epinephrine,
+		/obj/item/container/beaker/bottle/dylovene,
+		/obj/item/container/beaker/bottle/kelotane,
+		/obj/item/container/beaker/bottle/bicaridine
 	)
 
 /obj/structure/interactive/vending/dinnerware

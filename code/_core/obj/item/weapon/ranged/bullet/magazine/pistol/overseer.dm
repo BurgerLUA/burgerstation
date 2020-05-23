@@ -18,7 +18,7 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SMG
 
-	size = SIZE_3
+	size = SIZE_2
 	weight = WEIGHT_4
 
 	heat_per_shot = 0.06

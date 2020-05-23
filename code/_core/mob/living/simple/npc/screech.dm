@@ -1,8 +1,5 @@
 /mob/living/simple/npc/screech
-
 	name = "screech"
-	id = "ash_drake"
-
 	desc = "OH FUCK MY EARS"
 	desc_extended = "What the fuck?"
 	icon = 'icons/mob/living/simple/screech.dmi'
@@ -14,8 +11,3 @@
 	ai = /ai/
 	class = "bear"
 	damage_type = /damagetype/unarmed/claw/
-
-
-	boss = TRUE
-	force_spawn = TRUE
-

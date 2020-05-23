@@ -83,6 +83,8 @@ obj/structure/scenery/evergreen
 
 	has_transparency_marker = TRUE
 
+	plane = PLANE_TREE
+
 obj/structure/scenery/evergreen/New()
 	..()
 	icon_state = "evergreen_[rand(1,3)]"

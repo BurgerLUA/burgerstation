@@ -32,7 +32,8 @@
 		for(var/obj/hud/button/B in owner.mob.buttons)
 			B.update_sprite()
 
-		for(var/obj/hud/button/B in owner.mob.health_elements)
+		for(var/k in owner.mob.health_elements)
+			var/obj/hud/button/B = owner.mob.health_elements[k]
 			B.update_sprite()
 
 		if(is_advanced(owner))

@@ -8,6 +8,8 @@
 
 	var/mob/living/simple/npc/captain_beepsky/linked_beepsky
 
+	default_transit_time = 30 //Gotta be speedy or else players will probably D/C at stupid transit times.
+
 	var/list/griefers = list()
 
 	status_id = "arrivals"

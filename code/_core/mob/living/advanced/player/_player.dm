@@ -72,6 +72,12 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	queue_delete_on_death = FALSE
 
+	known_cqc = list(
+		/cqc/sleeping_carp/crashing_wave_kick,
+		/cqc/sleeping_carp/keelhaul,
+		/cqc/sleeping_carp/gnashing_teeth
+	)
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 	click_and_drag_icon	= new(src)
