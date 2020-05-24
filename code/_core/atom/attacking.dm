@@ -47,7 +47,6 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		precise = TRUE
 		if(victim && L.intent == INTENT_HELP && src.help(attacker,victim,params))
 			return TRUE
 

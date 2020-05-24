@@ -10,39 +10,52 @@ obj/effect/temp/hazard
 
 	var/cross_hazard = TRUE
 
+	var/enabled = FALSE
+
 obj/effect/temp/hazard/Destroy()
 	owner = null
 	return ..()
 
-obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_owner)
+obj/effect/temp/hazard/proc/activate_hazard()
+	enabled = TRUE
+	do_hazard()
 
-	cross_hazard = FALSE
+/obj/effect/temp/hazard/proc/deactivate_hazard()
+
+obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_owner)
 
 	if(desired_owner)
 		owner = desired_owner
 
-	spawn(hazard_delay)
-		if(initial(cross_hazard))
-			cross_hazard = TRUE
-		do_hazard()
+	if(hazard_delay <= 0)
+		activate_hazard()
+	else
+		CALLBACK("activate_hazard_\ref[src]",hazard_delay,src,.proc/activate_hazard)
 
 	return ..()
 
 /obj/effect/temp/hazard/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(cross_hazard && is_living(O))
-		attack(owner,O,ignore_distance = TRUE)
-
+	if(enabled && cross_hazard && is_living(O))
+		do_damage(O)
 	return ..()
+
+/obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
+	var/damagetype/DT = all_damage_types[damage_type]
+	var/list/params = list()
+	params[PARAM_ICON_X] = rand(0,32)
+	params[PARAM_ICON_Y] = rand(0,32)
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,params,TRUE,TRUE)
+	return DT.do_damage(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()
 
 	if(hazard_range >= 1)
 		for(var/mob/living/L in range(hazard_range,src))
-			attack(owner,L,ignore_distance = TRUE)
+			do_damage(L)
 	else
 		var/turf/T = get_turf(src)
 		for(var/mob/living/L in T.contents)
-			attack(owner,L,ignore_distance = TRUE)
+			do_damage(L)
 
 
 obj/effect/temp/hazard/falling_fireball
@@ -82,9 +95,9 @@ obj/effect/temp/hazard/fire/
 
 obj/effect/temp/hazard/tentacle/
 	name = "goliath tentacle"
-	icon = 'icons/mob/living/simple/goliath.dmi'
+	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'
 	icon_state = "tentacle"
-	duration = 15
+	duration = 13
 	hazard_delay = 3
 
 	hazard_range = 0
@@ -92,6 +105,11 @@ obj/effect/temp/hazard/tentacle/
 	cross_hazard = TRUE
 
 	layer = LAYER_GROUND_SCENERY
+
+obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/desired_owner)
+	. = ..()
+	CALLBACK("deactivate_hazard_\ref[src]",11,src,.proc/deactivate_hazard)
+	return .
 
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
 	if(istype(victim,/mob/living/simple/npc/goliath/)) //This bug is hilarious but we don't want to have it.

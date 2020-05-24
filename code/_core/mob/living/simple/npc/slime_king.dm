@@ -63,3 +63,9 @@
 		INITIALIZE(S)
 
 	return .
+
+
+/mob/living/simple/npc/slime_king/post_death()
+	..()
+	icon_state = "death"
+	update_sprite()

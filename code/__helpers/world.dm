@@ -41,6 +41,8 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	else																					\
 		D.Generate();
 
+#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D),GENERATE(D)
+
 proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 	for(var/k in objects_to_spawn)
 		if(!ispath(k))

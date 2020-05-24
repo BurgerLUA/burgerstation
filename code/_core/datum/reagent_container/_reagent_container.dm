@@ -1,3 +1,5 @@
+#define REAGENT_ROUNDING 0.01
+
 /reagent_container/
 
 	var/list/stored_reagents = list()
@@ -150,6 +152,7 @@
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = all_reagents[r_id]
+		stored_reagents[r_id] = round(stored_reagents[r_id],REAGENT_ROUNDING)
 
 		if(R.lethal)
 			contains_lethal = TRUE
@@ -283,7 +286,7 @@
 
 /reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
 
-	amount = FLOOR(amount,0.01)
+	amount = FLOOR(amount,REAGENT_ROUNDING)
 
 	if(!all_reagents[reagent_id])
 		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")

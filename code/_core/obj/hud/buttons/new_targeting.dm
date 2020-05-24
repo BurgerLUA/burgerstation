@@ -2,8 +2,9 @@
 	name = "limb targeting"
 	desc = "Aim for the head!"
 	desc_extended = "Where you press determines where you attack."
-	icon_state = "target_selection_new"
-	screen_loc = "RIGHT,BOTTOM"
+	icon = 'icons/hud/paperdoll.dmi'
+	icon_state = "base"
+	screen_loc = "RIGHT:-1,BOTTOM"
 
 	flags = FLAGS_HUD_MOB
 
@@ -46,10 +47,10 @@
 	if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y])
 		return
 
-	var/x_click = text2num(params[PARAM_ICON_X])
-	var/y_click = text2num(params[PARAM_ICON_Y])
+	var/x_click = text2num(params[PARAM_ICON_X])/2
+	var/y_click = text2num(params[PARAM_ICON_Y])/2
 
-	if(x_click >= 7)
+	if(x_click <= 26)
 		if(click_flags & CLICK_LEFT)
 			left[mode] = list(x_click,y_click - 1)
 		if(click_flags & CLICK_RIGHT)
@@ -77,15 +78,16 @@
 	. = ..()
 
 	var/image/left_overlay = new /image(initial(icon),"targeting_r")
-	left_overlay.pixel_x = left[mode][1] - 16
-	left_overlay.pixel_y = left[mode][2] + 1 - 16
+	left_overlay.pixel_x = (left[mode][1] - 16)*2
+	left_overlay.pixel_y = (left[mode][2] + 1 - 16)*2
 
 	var/image/right_overlay = new /image(initial(icon),"targeting_l")
-	right_overlay.pixel_x = right[mode][1] - 16
-	right_overlay.pixel_y = right[mode][2] + 1 - 16
+	right_overlay.pixel_x = (right[mode][1] - 16)*2
+	right_overlay.pixel_y = (right[mode][2] + 1 - 16)*2
 
 	var/image/preset_overlay = new /image(initial(icon),"target_selection_[mode]")
-	preset_overlay.color = "#00FFFF"
+	var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
+	preset_overlay.color = color_scheme[4]
 
 	add_overlay(left_overlay)
 	add_overlay(right_overlay)

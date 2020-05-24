@@ -3,7 +3,7 @@
 	desc = "DON'T FORGET TO SMASH THAT RESIST BUTTON."
 	desc_extended = "Press this button if you want to resist out of whatever situation your in. (That doesn't mean that it will do it.)"
 	icon_state = "resist"
-	screen_loc = "RIGHT-2,BOTTOM+1"
+	screen_loc = "RIGHT-3:8,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -39,6 +39,7 @@
 	update_sprite()
 	return ..()
 
+/*
 /obj/hud/button/targeting
 	name = "limb targeting"
 	desc = "aim for the head"
@@ -130,7 +131,9 @@
 	update_sprite()
 
 	return ..()
+*/
 
+/*
 /obj/hud/button/defense
 	name = "defense toggles"
 	desc = "turn all of them on, what could possibly go wrong"
@@ -185,3 +188,4 @@
 	update_sprite()
 
 	return ..()
+*/

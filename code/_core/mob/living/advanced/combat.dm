@@ -8,7 +8,8 @@
 
 	if(!accurate && is_living(attacker) && attacker != src)
 		var/mob/living/L = attacker
-		var/inaccuracy = (1 - L.get_skill_power(SKILL_PRECISION))*8
+		var/distance_mod = min(4,get_dist(attacker,src)/4)
+		var/inaccuracy = (1 - L.get_skill_power(SKILL_PRECISION))*8*distance_mod
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 

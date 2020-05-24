@@ -7,7 +7,6 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-
 /mob/living/advanced/npc/evil_wizard/Initialize()
 
 	. = ..()

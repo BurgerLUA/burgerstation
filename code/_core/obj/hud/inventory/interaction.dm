@@ -143,7 +143,7 @@
 
 	return ..()
 
-/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params)
+/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc
 
 obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
@@ -183,7 +183,7 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 	var/atom/defer_object = object.defer_click_on_object(null,null,params) //The object we're clicking on could be something else.
 
 	if(defer_self == src)
-		defer_self = get_object_to_damage_with(caller,object,params)
+		defer_self = get_object_to_damage_with(caller,object,params,TRUE,TRUE)
 
 	if(defer_self && defer_object && defer_self != src && defer_self.help(caller,defer_object,params))
 		return TRUE

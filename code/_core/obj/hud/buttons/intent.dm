@@ -3,7 +3,7 @@
 	desc = "harm intent or bust"
 	desc_extended = "Where you press determines where you attack."
 	icon_state = "intent"
-	screen_loc = "RIGHT-1,BOTTOM"
+	screen_loc = "RIGHT-2,BOTTOM"
 
 	flags = FLAGS_HUD_MOB
 

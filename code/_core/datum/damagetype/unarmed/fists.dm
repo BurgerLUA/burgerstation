@@ -13,8 +13,8 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 5,
-		FATIGUE = 5,
+		BLUNT = 0,
+		FATIGUE = 0,
 	)
 
 	attribute_stats = list(

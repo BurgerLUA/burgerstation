@@ -3,9 +3,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 20,
-		BLUNT = 5,
-		PIERCE = 10,
+		BLADE = 25,
+		BLUNT = 10,
+		PIERCE = 25,
 		DARK = 10
 	)
 
@@ -14,5 +14,5 @@
 		BLADE = 25,
 		BLUNT = 25,
 		PIERCE = 25,
-		DARK = 25
+		DARK = 60
 	)

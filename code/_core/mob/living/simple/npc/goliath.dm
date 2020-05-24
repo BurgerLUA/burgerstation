@@ -35,20 +35,21 @@
 		return
 	spawn()
 		add_status_effect(PARALYZE,20,20,stealthy = TRUE)
-		icon_state = "goliath_attack"
+		icon_state = "[initial(icon_state)]_attack"
 		sleep(10)
 		if(dead)
 			return
-		var/list/valid_turfs = list()
-		valid_turfs += get_step(desired_target,NORTH)
-		valid_turfs += get_step(desired_target,EAST)
-		valid_turfs += get_step(desired_target,SOUTH)
-		valid_turfs += get_step(desired_target,WEST)
-		valid_turfs -= pick(valid_turfs)
-		valid_turfs += get_turf(desired_target)
 
-		for(var/turf/T in valid_turfs)
-			new/obj/effect/temp/hazard/tentacle/(T,desired_owner = src)
+		if(get_dist(src,desired_target) <= VIEW_RANGE)
+			var/list/valid_turfs = list()
+			valid_turfs += get_step(desired_target,NORTH)
+			valid_turfs += get_step(desired_target,EAST)
+			valid_turfs += get_step(desired_target,SOUTH)
+			valid_turfs += get_step(desired_target,WEST)
+			valid_turfs -= pick(valid_turfs)
+			valid_turfs += get_turf(desired_target)
+			for(var/turf/T in valid_turfs)
+				new/obj/effect/temp/hazard/tentacle/(T,desired_owner = src)
 
 		sleep(10)
 

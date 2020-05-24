@@ -3,7 +3,7 @@
 	desc = "sneaker no sneaking"
 	desc_extended = "Press to sneak."
 	icon_state = "sneak_0"
-	screen_loc = "RIGHT-2,BOTTOM"
+	screen_loc = "RIGHT-3,BOTTOM"
 
 	var/sneaking = 0
 
@@ -28,7 +28,7 @@
 	desc = "who fucking walks lmao"
 	desc_extended = "Where you press determines where you click"
 	icon_state = "move_1"
-	screen_loc = "RIGHT-2,BOTTOM"
+	screen_loc = "RIGHT-3,BOTTOM"
 
 	var/move_mod_button = 0
 
@@ -66,7 +66,7 @@
 	desc = "No sleeping on the job!"
 	desc_extended = "Press to toggle laying down."
 	icon_state = "rest"
-	screen_loc = "RIGHT,BOTTOM+1"
+	screen_loc = "RIGHT-2:8,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 
@@ -87,7 +87,7 @@
 	desc = "Summons and unsummons your stand."
 	desc_extended = "Press to toggle your stand. Put yourself on harm intent to make your stand attack your enemies. Help intent doesn't."
 	icon_state = "stand"
-	screen_loc = "RIGHT-1,BOTTOM+1"
+	screen_loc = "RIGHT-2:8,BOTTOM+1"
 
 	flags = FLAGS_HUD_MOB
 

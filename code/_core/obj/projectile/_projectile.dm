@@ -236,12 +236,7 @@
 		params[PARAM_ICON_Y] = shoot_y
 
 		var/precise = FALSE
-		if(is_living(owner))
-			var/mob/living/L = owner
-			if(L.ai)
-				precise = TRUE
-
-		if(!precise && is_living(hit_atom))
+		if(is_living(hit_atom))
 			var/mob/living/L = hit_atom
 			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 				precise = TRUE

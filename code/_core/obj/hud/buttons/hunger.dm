@@ -11,7 +11,7 @@
 	var/stored_hunger = -1
 	var/stored_thirst = -1
 
-	screen_loc = "RIGHT:-4,CENTER-3"
+	screen_loc = "RIGHT:-2,CENTER-3"
 
 	flags = FLAGS_HUD_MOB
 

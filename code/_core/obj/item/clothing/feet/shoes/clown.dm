@@ -15,7 +15,7 @@
 		DARK = 50
 	)
 
-	size = SIZE_3
+	size = SIZE_2
 	weight = WEIGHT_2
 
 	value = 100

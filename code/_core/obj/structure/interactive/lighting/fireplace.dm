@@ -11,6 +11,8 @@
 	desired_light_range = 2
 	desired_light_color = "#FFFFB5"
 
+	plane = PLANE_WALL_ATTACHMENTS
+
 /obj/structure/interactive/lighting/fireplace/New()
 	update_sprite()
 	return ..()
