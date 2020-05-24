@@ -21,3 +21,6 @@ Disarms have a chance to shove people, staggering them. If a staggered enemy hit
 Firing pins control who is allowed to operate the gun. Syndicate guns contain firing pins that only Syndicate Operatives can fire, and NanoTrasen guns contain firing pins that only NanoTrasen Mercenaries can fire.
 Firing pins can be removed with a screwdriver, and replaced with other firing pins.
 Nearly every object in the world can be used as cover for ranged weapons. Cover only works if the enemy is more than 2 meters away from the cover you're hiding behind.
+Most armor and protective clothing can only protect certain parts of your body. Be sure to examine the object to see which bodyparts it protects, and what it can protect against.
+Your health goes down if your limbs take damage. Your head contributes to you overall health twice as much as your torso, while your arms, hands, legs and feet contribute half as much.
+Bullets generally deal a mix of piercing and blunt damage. Pistols and revolver rounds usually deal more blunt than piercing damage, while rifle and sniper rifle rounds deal more piercing than blunt damage.
