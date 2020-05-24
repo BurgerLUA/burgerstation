@@ -4,6 +4,8 @@ obj/structure/interactive/chair
 	icon = 'icons/obj/structure/chairs.dmi'
 	icon_state = "chair"
 
+	bullet_block_chance = 25
+
 obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
@@ -39,6 +41,8 @@ obj/structure/interactive/chair/stool
 	name = "stool"
 	icon_state = "stool"
 
+	bullet_block_chance = 5
+
 obj/structure/interactive/chair/stool/bar
 	name = "bar stool"
 	icon_state = "bar"
@@ -47,3 +51,5 @@ obj/structure/interactive/chair/stool/bar
 obj/structure/interactive/chair/wood
 	name = "wooden chair"
 	icon_state = "wooden_chair"
+
+	bullet_block_chance = 10

@@ -10,7 +10,7 @@
 
 	collision_dir = 0x0
 
-	bullet_block_chance = 80
+	bullet_block_chance = 90
 
 	health = /health/construction/
 

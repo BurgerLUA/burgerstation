@@ -6,6 +6,8 @@
 
 	impact_effect_turf = /obj/effect/temp/impact/bullet/laser
 
+	muzzleflash_effect = /obj/effect/temp/muzzleflash/laser
+
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
 /obj/projectile/bullet/laser/update_underlays()
@@ -20,3 +22,10 @@
 
 /obj/projectile/bullet/laser/weak
 	icon_state = "weak"
+
+/obj/projectile/laser/ice
+	name = "ice bolt"
+	icon = 'icons/obj/projectiles/ice.dmi'
+	icon_state = "ice"
+
+	muzzleflash_effect = /obj/effect/temp/muzzleflash/laser

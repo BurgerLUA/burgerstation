@@ -29,6 +29,7 @@
 	var/start_time = 0
 	var/lifetime = SECONDS_TO_DECISECONDS(60) //Just in case.
 
+	var/turf/start_turf
 	var/turf/target_turf
 	var/atom/target_atom
 
@@ -61,6 +62,7 @@
 	blamed = null
 	target_atom = null
 	target_turf = null
+	start_turf = null
 	previous_loc = null
 	current_loc = null
 
@@ -71,6 +73,7 @@
 
 	owner = desired_owner
 	weapon = desired_weapon
+	start_turf = loc
 	if(desired_damage_type)
 		damage_type = desired_damage_type
 
@@ -94,9 +97,9 @@
 
 	var/bullet_offset = FLOOR(TILE_SIZE * 0.5, 1)
 
-	pixel_x = desired_owner.pixel_x + (normal_x * bullet_offset)
-	pixel_y = desired_owner.pixel_y + (normal_y * bullet_offset)
-	pixel_z = desired_owner.pixel_z
+	pixel_x = (desired_owner.pixel_x - initial(desired_owner.pixel_x)) + (normal_x * bullet_offset)
+	pixel_y = (desired_owner.pixel_y - initial(desired_owner.pixel_y)) + (normal_y * bullet_offset)
+	pixel_z = desired_owner.pixel_z - initial(desired_owner.pixel_z)
 
 	if(muzzleflash_effect)
 		var/obj/effect/temp/muzzleflash/M = new muzzleflash_effect(src.loc)
@@ -105,6 +108,8 @@
 		M.pixel_z = pixel_z
 		var/new_angle = ATAN2(vel_x,vel_y) - 90
 		M.transform = turn(M.transform,-new_angle)
+		if(desired_color)
+			M.color = desired_color
 		INITIALIZE(M)
 
 	pixel_x_float = pixel_x

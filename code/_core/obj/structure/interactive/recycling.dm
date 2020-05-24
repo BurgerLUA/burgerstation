@@ -11,6 +11,8 @@
 
 	plane = PLANE_WALL_ATTACHMENTS
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/recycler/New(var/desired_loc)
 
 	var/image/I1b = new/image(icon,"grinder_bottom")

@@ -14,6 +14,8 @@
 
 	plane = PLANE_OBJ
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/disposals/machine/outlet/Entered(var/atom/A,var/oldloc)
 
 	if(istype(A,/obj/disposals_container/))

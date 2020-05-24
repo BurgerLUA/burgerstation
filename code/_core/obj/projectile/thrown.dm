@@ -10,6 +10,8 @@
 	impact_effect_turf = null
 	impact_effect_movable = null
 
+	muzzleflash_effect = null
+
 /obj/projectile/bullet/thrown/post_on_hit(var/atom/hit_atom)
 
 	. = ..()

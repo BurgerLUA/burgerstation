@@ -7,6 +7,8 @@
 	icon_state = "plastic_flaps"
 	plane = PLANE_WALL
 
+	bullet_block_chance = 25
+
 /obj/structure/interactive/plastic_flaps/Cross(atom/movable/O)
 
 	if(is_living(O))

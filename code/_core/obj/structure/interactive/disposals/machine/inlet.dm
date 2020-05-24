@@ -9,6 +9,8 @@
 
 	plane = PLANE_OBJ
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/disposals/machine/inlet/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()

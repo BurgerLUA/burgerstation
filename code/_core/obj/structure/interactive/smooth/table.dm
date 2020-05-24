@@ -12,6 +12,8 @@ obj/structure/smooth/table
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+	bullet_block_chance = 50
+
 /* Just hold Q lol
 obj/structure/smooth/table/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

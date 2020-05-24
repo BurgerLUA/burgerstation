@@ -6,7 +6,7 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = "ash_drake"
 
-	pixel_x = -16
+	pixel_w = -16
 
 	ai = /ai/boss/ash_drake/
 

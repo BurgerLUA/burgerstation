@@ -12,6 +12,8 @@
 
 	value = 1000
 
+	bullet_block_chance = 90
+
 /obj/structure/interactive/supermatter/unachored
 	anchored = FALSE
 

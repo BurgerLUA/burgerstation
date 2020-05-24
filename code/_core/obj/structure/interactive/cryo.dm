@@ -10,6 +10,8 @@ obj/structure/interactive/cryopod
 
 	plane = PLANE_WALL_ATTACHMENTS
 
+	bullet_block_chance = 90
+
 obj/structure/interactive/cryopod/occupied
 	icon_state = "cell_occupied"
 

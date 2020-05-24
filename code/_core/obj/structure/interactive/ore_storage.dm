@@ -4,6 +4,8 @@
 	icon = 'icons/obj/structure/ore_storage.dmi'
 	icon_state = "ore_storage_map"
 
+	bullet_block_chance = 75
+
 /obj/structure/interactive/ore_storage/update_icon()
 
 	if(THINKING(src))

@@ -116,6 +116,8 @@
 	return TRUE
 
 
+
+
 /ai/advanced/handle_movement()
 
 	if(handle_movement_weapon())

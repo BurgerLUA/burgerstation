@@ -7,3 +7,5 @@
 	stationary = FALSE
 	true_sight = TRUE
 	roaming_distance = 3
+
+	use_alerts = FALSE

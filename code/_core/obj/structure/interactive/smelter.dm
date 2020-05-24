@@ -8,6 +8,8 @@
 
 	pixel_y = 2
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/smelter/Initialize()
 
 	pixel_y = 6

@@ -11,6 +11,8 @@ obj/structure/interactive/bed
 	layer = LAYER_MOB_BELOW
 	var/opened_time = 0
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
 	. = ..()

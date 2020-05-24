@@ -1,22 +1,23 @@
-When hitting a target, the body part you hit is affected by your targeting indicator at the bottom right of the screen. Whether or not your shot lands as intended is determined by your precision skill.
-You will always hit the targeted limb when targeting an NPC who isn't aware of your presence.
+When it combat, the specific body part you hit is determined by your targeting indicator at the bottom right of the screen. It is possible not miss or hit the wrong body part if your precision skill is low.
+You will never miss when hitting or shooting an NPC who isn't engaged in combat. That attack will also be a critical hit.
 Critical hits will always occur when you're grabbing your target.
 Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object. All items have some value to NanoTrasen, including most corpses.
-Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while. Some corpses may attract strange anomalies...
-Bicaridine heals brute damage. Kelotane heals burn damage. Dylovene heals toxin damage.
-You can butcher most animals or creatures for meat and materials if you have a sharp enough melee weapon for it.
-Shotguns, SMGs, and Carbines are good for taking on groups of enemies.
-Rifles are good for picking out targets from a long range. They require more skill to use effectively, however.
+Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while. Some corpses left decayed for too long may attract strange creatures...
+Bicaridine heals brute damage. Kelotane heals burn damage. Dylovene heals toxin damage. It's best to keep all 3 in supply as many weapons and creatures do different types of damage.
+You can butcher most animals or creatures for meat and materials if you have a sharp enough weapon for it.
+Shotguns, SMGs, and Carbines are good for taking on groups of enemies, however they usually have poor armor penetration.
+Rifles are good for picking out targets from a long range. They require more skill to use effectively, however. Press the zoom key (Default: V) to zoom in with the weapon in hand.
 Critical hits can occur randomly when attacking enemies. Most weapons give a guaranteed critical hit when attacking enemies not in combat. Some weapons even have special critical hit conditions.
 Worn and held equipment can slow you down based on the weight of the object and how cumbersome it is to move with it.
-NPCs also have their own ammo count to manage. A valid tactic to counter an onslaught of NPCs is to wait it out until they run out of ammo.
+NPCs also have their own ammo count to manage. A valid tactic to counter an onslaught of NPCs is to wait it out until they run out of ammo. Some enemy NPCs do carry backup weapons, however.
 NanoTrasen typically uses NATO designated cartridges such as 5.56mm, 7.62mm, and 9mm rounds, while the syndicate primarily use calibre designated cartridges such as .223, .308, and .357. Some exceptions are made for weapons designed to infiltrate as they are better suited to fit enemy cartridges they would obtain on the field.
 .38 special rounds are actually just shorter .357 rounds, and can fit into .357 chambered weapons.
 Sneaking is a viable way to get around enemies you don't want to engage. To sneak, press the sneak key (Default: C) or press the sneak button at the bottom right of your screen. Note that sneaking drains stamina when moving, and should be used sparingly.
 You're twice as effective at sneaking when laying down (resting).
 Sneaking does nothing to enemies already engaged in combat, regardless if they are your target.
 Grabbing an enemy from behind will stun and disarm them them.
-You can only grab team members who are on the ground.
+You can grab any enemy on the battlefield if they're equal or smaller in size to you, however you can only grab team members who are on the ground.
 Disarms have a chance to shove people, staggering them. If a staggered enemy hits an object behind them, they're stunned for the duration of the stagger.
 Firing pins control who is allowed to operate the gun. Syndicate guns contain firing pins that only Syndicate Operatives can fire, and NanoTrasen guns contain firing pins that only NanoTrasen Mercenaries can fire.
-Firing pins can be removed with a screwdriver, and replaced with existing firing pins.
+Firing pins can be removed with a screwdriver, and replaced with other firing pins.
+Nearly every object in the world can be used as cover for ranged weapons. Cover only works if the enemy is more than 2 meters away from the cover you're hiding behind.

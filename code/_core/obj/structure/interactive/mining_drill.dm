@@ -11,6 +11,8 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 
+	bullet_block_chance = 75
+
 
 /obj/structure/interactive/mining_drill/Initialize()
 	SShorde.possible_horde_targets += src
@@ -118,6 +120,8 @@
 	anchored = FALSE
 
 	collision_flags = FLAG_COLLISION_WALL
+
+	bullet_block_chance = 50
 
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

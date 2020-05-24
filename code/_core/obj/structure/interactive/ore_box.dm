@@ -7,6 +7,8 @@
 	anchored = FALSE
 	collision_flags = FLAG_COLLISION_WALL
 
+	bullet_block_chance = 75
+
 /obj/structure/interactive/ore_box/Initialize()
 	SShorde.possible_horde_targets += src
 	return ..()

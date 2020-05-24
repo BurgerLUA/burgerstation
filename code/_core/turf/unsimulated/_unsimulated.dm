@@ -20,14 +20,9 @@
 	opacity = 0
 	var/generate = TRUE
 
-/turf/unsimulated/space/New()
-	. = ..()
-	update_sprite()
-	return TRUE
-
-/turf/unsimulated/space/update_icon()
-	if(generate)
-		icon_state = "[rand(0,25)]"
+/turf/unsimulated/space/New(var/desired_loc)
+	icon_state = "space"
+	return ..()
 
 /turf/unsimulated/space/blocking
 	name = "deep space"

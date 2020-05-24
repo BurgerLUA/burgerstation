@@ -15,6 +15,8 @@
 	var/temperature_mod = 120
 	var/temperature_mod_oven = 400
 
+	bullet_block_chance = 50
+
 /obj/structure/smooth/table/grill/Initialize()
 	return ..()
 

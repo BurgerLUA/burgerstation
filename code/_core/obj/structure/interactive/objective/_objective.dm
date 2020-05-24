@@ -8,6 +8,8 @@ obj/structure/interactive/objective
 
 	value = 5000
 
+	bullet_block_chance = 75
+
 obj/structure/interactive/objective/Initialize()
 	name = "[pick(SSname.adjectives)] artifact of [pick(SSname.verbs)]"
 	return ..()

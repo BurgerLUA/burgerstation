@@ -2,7 +2,7 @@
 	set hidden = TRUE
 	do_say(text_to_say)
 
-/mob/proc/do_say(var/text_to_say)
+/mob/proc/do_say(var/text_to_say,var/should_sanitize=TRUE)
 
 	if(!text_to_say)
 		text_to_say = input("What would you like to say?","Say") as text|null
@@ -13,7 +13,8 @@
 	if(client && !check_spam(client))
 		return FALSE
 
-	text_to_say = police_input(text_to_say)
+	if(should_sanitize)
+		text_to_say = police_input(text_to_say)
 
 	if(client && !check_spam(client,text_to_say))
 		to_chat(span("warning","You are out of breath!"))

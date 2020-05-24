@@ -344,9 +344,12 @@
 
 	return FALSE
 
-/ai/proc/handle_movement()
-
+/ai/proc/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_NORMAL
+	owner.move_dir = 0x0
+	return TRUE
+
+/ai/proc/handle_movement()
 
 	if(handle_movement_sidestep())
 		return TRUE
@@ -432,10 +435,14 @@
 
 /ai/proc/handle_objectives()
 
+	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+		return TRUE
+
 	var/list/possible_targets = get_possible_targets()
 
 	if(objective_attack)
 		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
+			world.log << "[owner] says fuck off"
 			set_objective(null)
 		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
 			frustration_attack++
@@ -454,7 +461,7 @@
 		if(best_target && best_target != objective_attack)
 			hostile_message()
 			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
-			objective_ticks = -(reaction_time + 1)
+			//objective_ticks = -(reaction_time + 1)
 
 		frustration_attack = 0
 

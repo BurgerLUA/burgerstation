@@ -5,6 +5,8 @@
 	icon_state = "gear2"
 	var/list/stored_material = list()
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/restocker/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	store(O)
 	return ..()

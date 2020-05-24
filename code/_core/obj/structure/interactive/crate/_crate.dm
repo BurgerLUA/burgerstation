@@ -13,6 +13,8 @@
 
 	initialize_type = INITIALIZE_LATE
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()

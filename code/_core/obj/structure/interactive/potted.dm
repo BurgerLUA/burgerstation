@@ -2,6 +2,9 @@ obj/structure/interactive/potted_plant
 	name = "potted plant"
 	icon = 'icons/obj/structure/flora/potted.dmi'
 
+	bullet_block_chance = 25
+
+
 obj/structure/interactive/potted_plant/nanotrasen
 	icon_state = "nt_1"
 

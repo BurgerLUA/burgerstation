@@ -146,6 +146,8 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 
 	health_base = 100
 
+	bullet_block_chance = 90
+
 /obj/structure/interactive/construction/girder/on_destruction(var/atom/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	qdel(src)
@@ -190,6 +192,8 @@ obj/structure/interactive/construction/grille
 	health_base = 75
 
 	plane = PLANE_WALL
+
+	bullet_block_chance = 50
 
 
 obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

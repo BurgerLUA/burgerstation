@@ -9,6 +9,8 @@
 
 	var/disposals_countdown = SECONDS_TO_DECISECONDS(10)
 
+	bullet_block_chance = 50
+
 /obj/structure/interactive/disposals/machine/chute/think()
 
 	if(disposals_countdown <= 0)

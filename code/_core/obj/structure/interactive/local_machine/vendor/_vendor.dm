@@ -17,6 +17,8 @@
 
 	initialize_type = INITIALIZE_LATE
 
+	bullet_block_chance = 75
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()

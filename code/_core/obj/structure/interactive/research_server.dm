@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structure/telecomms.dmi'
 	icon_state = "hub"
 
-
+	bullet_block_chance = 50
 
 
 

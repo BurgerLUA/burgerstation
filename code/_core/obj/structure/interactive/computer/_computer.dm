@@ -19,6 +19,8 @@ obj/structure/interactive/computer/console
 
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
+	bullet_block_chance = 75
+
 obj/structure/interactive/computer/console/Initialize()
 	. = ..()
 	update_sprite()

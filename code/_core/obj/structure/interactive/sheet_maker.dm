@@ -6,6 +6,8 @@ obj/structure/interactive/sheet_maker
 
 	var/obj/item/material/material_to_make = /obj/item/material/sheet/
 
+	bullet_block_chance = 50
+
 obj/structure/interactive/sheet_maker/Initialize()
 	icon_state = "sheet_maker"
 	return ..()

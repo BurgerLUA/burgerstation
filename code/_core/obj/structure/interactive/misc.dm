@@ -7,12 +7,16 @@ obj/structure/interactive/misc/tv
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
+	bullet_block_chance = 25
+
 
 obj/structure/interactive/misc/dresser
 	name = "dresser"
 	icon_state = "dresser"
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+
+	bullet_block_chance = 50
 
 obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
 

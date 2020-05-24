@@ -25,6 +25,9 @@
 		FATIGUE = 50
 	)
 
+	iff_tag = "goliath"
+	loyalty_tag = "goliath"
+
 /mob/living/simple/npc/goliath/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
