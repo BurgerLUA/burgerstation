@@ -54,6 +54,7 @@
 
 	var/area/A = get_area(caller)
 	if(A.flags_area & FLAGS_AREA_TUTORIAL)
+		caller.to_chat("The firing pin refuses to fire in this area!")
 		return FALSE
 
 	return TRUE

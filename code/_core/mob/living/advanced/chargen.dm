@@ -1,7 +1,6 @@
 /mob/living/advanced/proc/start_chargen()
 
 	Initialize()
-	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	default_appearance()
 	if(sex == MALE)
 		equip_loadout("new_male",TRUE)
@@ -116,6 +115,7 @@
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)
 	handle_eyecolor_chargen(S.default_color_eye,FALSE)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	update_all_blends()
 
 /mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())

@@ -2,8 +2,8 @@
 	name = "crashing wave kick"
 
 	attack_damage_base = list(
-		BLUNT = 10,
-		FATIGUE = 30
+		BLUNT = 0,
+		FATIGUE = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -18,8 +18,8 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = list(FATIGUE,BLUNT),
+		ATTRIBUTE_DEXTERITY = list(FATIGUE,BLUNT)
 	)
 
 	skill_stats = list(
@@ -45,8 +45,8 @@
 	name = "keelhaul"
 
 	attack_damage_base = list(
-		BLUNT = 20,
-		FATIGUE = 30
+		BLUNT = 0,
+		FATIGUE = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -61,8 +61,8 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = list(FATIGUE,BLUNT),
+		ATTRIBUTE_DEXTERITY = list(FATIGUE,BLUNT)
 	)
 
 	skill_stats = list(
@@ -79,10 +79,9 @@
 	if(is_living(victim))
 		var/mob/living/L = victim
 		if(L.horizontal)
-			L.add_status_effect(DISARM,40,40)
-			if(L.health) L.health.adjust_stamina(-30)
+			L.add_status_effect(DISARM,10,10)
 		else
-			L.add_status_effect(STUN,40,40)
+			L.add_status_effect(STUN,10,10)
 
 
 	return ..()
@@ -94,8 +93,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 10,
-		FATIGUE = 10
+		BLUNT = 0,
+		FATIGUE = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -105,19 +104,19 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 80,
-		ATTRIBUTE_DEXTERITY = 40
+		ATTRIBUTE_STRENGTH = 30,
+		ATTRIBUTE_DEXTERITY = 30
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
+		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 80
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BLUNT
+		SKILL_UNARMED = list(BLUNT,FATIGUE)
 	)

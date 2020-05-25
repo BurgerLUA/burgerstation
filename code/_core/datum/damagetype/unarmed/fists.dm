@@ -23,8 +23,8 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_DEXTERITY = BLUNT
+		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
+		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
 	)
 
 	skill_stats = list(
@@ -32,7 +32,7 @@
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BLUNT
+		SKILL_UNARMED = list(BLUNT,FATIGUE)
 	)
 
 	allow_friendly_fire = FALSE

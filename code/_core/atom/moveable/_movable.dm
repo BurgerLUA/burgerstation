@@ -89,7 +89,6 @@
 	return !anchored
 
 /atom/movable/Initialize()
-	. = ..()
 
 	if(loc)
 		area = get_area(loc)
@@ -104,7 +103,7 @@
 	else
 		CRASH_SAFE("WARNING: [get_debug_name()] didn't have a loc to initialize in!")
 
-	return .
+	return ..()
 
 /atom/movable/Destroy()
 	area = null

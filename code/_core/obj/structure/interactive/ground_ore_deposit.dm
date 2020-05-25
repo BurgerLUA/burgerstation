@@ -31,7 +31,7 @@
 	return .
 
 /obj/structure/interactive/ground_ore_deposit/proc/mine()
-	var/obj/item/material/ore/O = new(src.loc)
+	var/obj/item/material/ore/O = new(get_turf(src))
 	O.material_id = src.material_id
 	INITIALIZE(O)
 	GENERATE(O)

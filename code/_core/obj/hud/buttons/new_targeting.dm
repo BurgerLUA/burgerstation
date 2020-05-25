@@ -86,8 +86,9 @@
 	right_overlay.pixel_y = (right[mode][2] + 1 - 16)*2
 
 	var/image/preset_overlay = new /image(initial(icon),"target_selection_[mode]")
-	var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
-	preset_overlay.color = color_scheme[4]
+	if(owner.client)
+		var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
+		preset_overlay.color = color_scheme[4]
 
 	add_overlay(left_overlay)
 	add_overlay(right_overlay)
