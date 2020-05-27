@@ -98,7 +98,7 @@
 	var/dead = FALSE
 	var/time_of_death = -1
 
-	var/spawn_blood = "blood"
+	var/spawn_blood = /reagent/blood
 
 	var/obj/structure/buckled_object
 

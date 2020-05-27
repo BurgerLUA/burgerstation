@@ -159,14 +159,15 @@
 
 	for(var/reagent_id in reagents.stored_reagents)
 		var/amount = reagents.stored_reagents[reagent_id]
-		wetness += all_reagents[reagent_id].liquid*(amount/reagents.volume_current)
-		if(has_prefix(reagent_id,"dough_"))
+		var/reagent/R = REAGENT(reagent_id)
+		wetness += R.liquid*(amount/reagents.volume_current)
+		if(R.flags_reagent & FLAG_REAGENT_RAW)
 			total_dough += amount
 			if(best_dough_reagent_id && best_dough_reagent_amount >= amount)
 				continue
 			best_dough_reagent_id = reagent_id
 			best_dough_reagent_amount = amount
-		if(has_prefix(reagent_id,"bread_"))
+		if(R.flags_reagent & FLAG_REAGENT_COOKED)
 			total_bread += amount
 			if(best_bread_reagent_id && best_bread_reagent_amount >= amount)
 				continue
@@ -185,7 +186,8 @@
 				wetness_prefix = "moist"
 
 		if(best_bread_reagent_id)
-			name = "[wetness_prefix] [all_reagents[best_bread_reagent_id].name]"
+			var/reagent/R = REAGENT(best_bread_reagent_id)
+			name = "[wetness_prefix] [R.name]"
 		else
 			name = "[wetness_prefix] mystery bread"
 
@@ -198,7 +200,8 @@
 				wetness_prefix = "wet"
 
 		if(best_dough_reagent_id)
-			name = "[wetness_prefix] [all_reagents[best_dough_reagent_id].name]"
+			var/reagent/R = REAGENT(best_dough_reagent_id)
+			name = "[wetness_prefix] [R.name]"
 		else
 			name = "[wetness_prefix] mystery dough"
 

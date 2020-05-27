@@ -3,6 +3,8 @@
 	var/mob/living/owner
 
 	var/atom/objective_move
+	var/should_follow_objective_move = FALSE
+
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
 
@@ -206,8 +208,9 @@
 			do_attack(objective_attack,is_left_click)
 	return TRUE
 
-/ai/proc/set_move_objective(var/atom/desired_objective)
+/ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
 	objective_move = desired_objective
+	should_follow_objective_move = follow
 	return TRUE
 
 /ai/proc/handle_movement_attack_objective()
@@ -229,7 +232,8 @@
 			owner.movement_flags = MOVEMENT_NORMAL
 			owner.move_dir = get_dir(owner,objective_move)
 		else
-			set_move_objective(null)
+			if(!should_follow_objective_move)
+				set_move_objective(null)
 			owner.movement_flags = MOVEMENT_NORMAL
 			owner.move_dir = 0x0
 		return TRUE

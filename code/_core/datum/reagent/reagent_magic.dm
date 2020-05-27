@@ -3,7 +3,6 @@
 
 /reagent/magic/stand_juice
 	name = "Stand Juice"
-	id = "stand"
 	desc = "Gives you a stand."
 	color = "#B200FF"
 	flavor = "cola"
@@ -23,6 +22,6 @@
 		var/mob/living/L = container.owner.loc
 		if(istype(L))
 			L.add_stand()
-		container.remove_reagent(id,.)
+		container.remove_reagent(type,.)
 
 	return .

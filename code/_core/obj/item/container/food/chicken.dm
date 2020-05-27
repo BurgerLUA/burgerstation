@@ -18,14 +18,15 @@
 
 	for(var/reagent_id in reagents.stored_reagents)
 		var/amount = reagents.stored_reagents[reagent_id]
+		var/reagent/R = REAGENT(reagent_id)
 
-		if(has_prefix(reagent_id,"cooked_"))
+		if(R.flags_reagent & FLAG_REAGENT_COOKED)
 			total_cooked += amount
 			if(!best_meat || amount > best_meat_volume)
 				best_meat = reagent_id
 				best_meat_volume = amount
 
-		else if(has_prefix(reagent_id,"raw_"))
+		else if(R.flags_reagent & FLAG_REAGENT_RAW)
 			total_raw += amount
 			if(!best_meat || amount > best_meat_volume)
 				best_meat = reagent_id
@@ -37,9 +38,10 @@
 	icon = initial(icon)
 
 	var/icon/I = new/icon(icon,icon_state)
-	I.Blend(all_reagents[best_meat].color,ICON_MULTIPLY)
+	var/reagent/R = REAGENT(best_meat)
+	I.Blend(R.color,ICON_MULTIPLY)
 
-	if(has_prefix(best_meat,"cooked_chicken_"))
+	if(R.flags_reagent & FLAG_REAGENT_COOKED)
 		var/icon/I3 = new/icon(icon,"grill_marks")
 		var/icon/I4 = new/icon(I)
 		I4.Blend(rgb(0,0,0,200),ICON_MULTIPLY)
@@ -51,9 +53,9 @@
 	return ..()
 
 /obj/item/container/food/dynamic/chicken/raw/Generate()
-	reagents.add_reagent("raw_chicken",10)
+	reagents.add_reagent(/reagent/nutrition/meat/chicken,10)
 	return ..()
 
 /obj/item/container/food/dynamic/chicken/cooked/Generate()
-	reagents.add_reagent("cooked_chicken",10)
+	reagents.add_reagent(/reagent/nutrition/meat/chicken/cooked,10)
 	return ..()

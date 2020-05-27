@@ -116,3 +116,14 @@
 
 	return ..()
 */
+
+
+
+/mob/living/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+
+	if(is_living(O))
+		var/mob/living/L = O
+		if(L.loyalty_tag == src.loyalty_tag)
+			return TRUE
+
+	return ..()

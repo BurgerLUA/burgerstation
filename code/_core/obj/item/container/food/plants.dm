@@ -18,7 +18,7 @@
 	icon_state = "nitrogen_flower"
 
 /obj/item/container/food/plant/nitrogen_flower/Generate()
-	reagents.add_reagent("nitrogen",10)
+	reagents.add_reagent(/reagent/nitrogen,10)
 	return ..()
 
 /obj/item/container/food/plant/oxygen_fruit
@@ -26,7 +26,7 @@
 	icon_state = "oxygen_fruit"
 
 /obj/item/container/food/plant/oxygen_fruit/Generate()
-	reagents.add_reagent("oxygen",10)
+	reagents.add_reagent(/reagent/oxygen,10)
 	return ..()
 
 /obj/item/container/food/plant/wheat
@@ -34,7 +34,7 @@
 	icon_state = "wheat"
 
 /obj/item/container/food/plant/wheat/Generate()
-	reagents.add_reagent("wheat_grain",10)
+	reagents.add_reagent(/reagent/nutrition/wheat_grain,10)
 	return ..()
 
 
@@ -43,5 +43,5 @@
 	icon_state = "sugarcane"
 
 /obj/item/container/food/plant/sugarcane/Generate()
-	reagents.add_reagent("sugarcane",10)
+	reagents.add_reagent(/reagent/nutrition/sugar/cane,10)
 	return ..()

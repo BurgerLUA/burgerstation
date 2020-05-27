@@ -2,28 +2,28 @@
 	name = "bicaridine pill (20u)"
 
 /obj/item/container/pill/bicaridine/Generate()
-	reagents.add_reagent("bicaridine",20)
+	reagents.add_reagent(/reagent/medicine/bicaridine,20)
 	return ..()
 
 /obj/item/container/pill/kelotane
 	name = "kelotane pill (20u)"
 
 /obj/item/container/pill/kelotane/Generate()
-	reagents.add_reagent("kelotane",20)
+	reagents.add_reagent(/reagent/medicine/kelotane,20)
 	return ..()
 
 /obj/item/container/pill/dylovene
 	name = "dylovene pill (20u)"
 
 /obj/item/container/pill/dylovene/Generate()
-	reagents.add_reagent("dylovene",20)
+	reagents.add_reagent(/reagent/medicine/dylovene,20)
 	return ..()
 
 /obj/item/container/pill/iron
 	name = "iron pill (20u)"
 
 /obj/item/container/pill/iron/Generate()
-	reagents.add_reagent("iron",20)
+	reagents.add_reagent(/reagent/iron,20)
 	return ..()
 
 /obj/item/container/pill/space_drugs
@@ -31,7 +31,7 @@
 	icon_state = "circle"
 
 /obj/item/container/pill/space_drugs/Generate()
-	reagents.add_reagent("space_drugs",5)
+	reagents.add_reagent(/reagent/drug/space,5)
 	return ..()
 
 
@@ -40,5 +40,5 @@
 	icon_state = "circle"
 
 /obj/item/container/pill/space_dust/Generate()
-	reagents.add_reagent("space_dust",10)
+	reagents.add_reagent(/reagent/drug/liberty_dust,10)
 	return ..()

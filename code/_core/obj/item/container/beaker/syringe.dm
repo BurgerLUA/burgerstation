@@ -132,5 +132,5 @@
 	name = "syringe (epinephrine)"
 
 /obj/item/container/syringe/epinephrine/Generate()
-	reagents.add_reagent("epinephrine",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max)
 	return ..()

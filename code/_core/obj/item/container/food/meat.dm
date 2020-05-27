@@ -51,17 +51,18 @@
 
 	for(var/reagent_id in reagents.stored_reagents)
 		var/amount = reagents.stored_reagents[reagent_id]
-		if(has_prefix(reagent_id,"cooked_meat_"))
+		var/reagent/R = REAGENT(reagent_id)
+		if(R.flags_reagent & FLAG_REAGENT_COOKED)
 			total_cooked += amount
 			if(!best_meat || amount > best_meat_volume)
 				best_meat = reagent_id
 				best_meat_volume = amount
-		else if(has_prefix(reagent_id,"raw_meat_"))
+		else if(R.flags_reagent & FLAG_REAGENT_RAW)
 			total_raw += amount
 			if(!best_meat || amount > best_meat_volume)
 				best_meat = reagent_id
 				best_meat_volume = amount
-		else if(has_prefix(reagent_id,"fat_"))
+		else if(R.flags_reagent & FLAG_REAGENT_FAT)
 			total_fat += amount
 			if(!best_fat || amount > best_fat_volume)
 				best_fat = reagent_id
@@ -73,14 +74,16 @@
 	icon = initial(icon)
 
 	var/icon/I = new/icon(icon,icon_state)
-	I.Blend(all_reagents[best_meat].color,ICON_MULTIPLY)
+	var/reagent/RM = REAGENT(best_meat)
+	I.Blend(RM.color,ICON_MULTIPLY)
 
 	if(best_fat)
+		var/reagent/RF = REAGENT(best_fat)
 		var/icon/I2 = new/icon(icon,"[icon_state]_fat")
-		I2.Blend(all_reagents[best_fat].color,ICON_MULTIPLY)
+		I2.Blend(RF.color,ICON_MULTIPLY)
 		I.Blend(I2,ICON_OVERLAY)
 
-	if(has_prefix(best_meat,"cooked_meat_"))
+	if(RM.flags_reagent & FLAG_REAGENT_COOKED)
 		last_cooked = TRUE
 		if(reagents.volume_current > 10 || icon_state == "patty")
 			var/icon/I3 = new/icon(icon,"grill_marks")
@@ -175,21 +178,21 @@
 
 
 /obj/item/container/food/dynamic/meat/raw/Generate()
-	reagents.add_reagent("raw_meat_cow",15)
-	reagents.add_reagent("fat_cow",5)
+	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
+	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
 /obj/item/container/food/dynamic/meat/cooked/Generate()
-	reagents.add_reagent("cooked_meat_cow",15)
-	reagents.add_reagent("fat_cow",5)
+	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
+	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
 /obj/item/container/food/dynamic/meat/cooked/cutlet/Generate()
-	reagents.add_reagent("cooked_meat_cow",7)
-	reagents.add_reagent("fat_cow",3)
+	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,7)
+	reagents.add_reagent(/reagent/nutrition/fat/cow,3)
 	return ..()
 
 /obj/item/container/food/dynamic/meat/cooked/bacon/Generate()
-	reagents.add_reagent("cooked_meat_cow",3)
-	reagents.add_reagent("fat_cow",2)
+	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,3)
+	reagents.add_reagent(/reagent/nutrition/fat/cow,2)
 	return ..()

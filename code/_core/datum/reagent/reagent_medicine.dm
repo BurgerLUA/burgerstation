@@ -22,7 +22,6 @@
 
 /reagent/medicine/bicaridine
 	name = "Bicaridine"
-	id = "bicaridine"
 	desc = "Red for brute."
 	color = "#FF0000"
 
@@ -52,7 +51,6 @@
 
 /reagent/medicine/bicaridine_plus
 	name = "Bicaridine+"
-	id = "bicaridine_plus"
 	color = "#FF0080"
 
 	value = 3
@@ -75,7 +73,6 @@
 
 /reagent/medicine/kelotane
 	name = "Kelotane"
-	id = "kelotane"
 	desc = "Yellow for burn."
 	color = "#FFFF00"
 
@@ -102,7 +99,6 @@
 
 /reagent/medicine/dylovene
 	name = "Dylovene"
-	id = "dylovene"
 	desc = "Green for toxin."
 	color = "#00FF00"
 
@@ -128,7 +124,6 @@
 
 /reagent/medicine/dexalin
 	name = "Dexalin"
-	id = "dexalin"
 	desc = "Blue for oxy."
 	color = "#0000FF"
 
@@ -154,7 +149,6 @@
 
 /reagent/medicine/tricordrazine
 	name = "Tricordrazine"
-	id = "tricordrazine"
 	desc = "Heals everything except for oxygen loss."
 	color = "#B21FFF"
 
@@ -183,7 +177,6 @@
 
 /reagent/medicine/omnizine
 	name = "Omnizine"
-	id = "omnizine"
 	desc = "Heals everything."
 	desc_extended = "Works just as good when consumed."
 	color = "#F7F7F7"
@@ -214,7 +207,6 @@
 
 /reagent/medicine/silver_sulfadiazine
 	name = "Silver Sulfadiazine"
-	id = "silver_sulfadiazine"
 	desc = "Heals burn damage. Only works when applied to skin."
 	desc_extended = ""
 	color = "#E8BEED"
@@ -248,13 +240,12 @@
 
 	if(container.owner && container.owner.health)
 		container.owner.health.adjust_loss_smart(burn=.*-10)
-		container.remove_reagent(id,. * 0.5)
+		container.remove_reagent(type,. * 0.5)
 
 	return .
 
 /reagent/medicine/styptic_powder
 	name = "Styptic Powder"
-	id = "styptic_powder"
 	desc = "Heals brute damage. Only works when applied to skin."
 	desc_extended = ""
 	color = "#FFC9DD"
@@ -274,7 +265,7 @@
 
 	if(container.owner && container.owner.health)
 		container.owner.health.adjust_loss_smart(brute=.*-5)
-		container.remove_reagent(id,. * 0.5)
+		container.remove_reagent(type,. * 0.5)
 
 	return .
 
@@ -295,7 +286,6 @@
 
 /reagent/medicine/adrenaline
 	name = "adrenaline"
-	id = "adrenaline"
 	desc = "Pure adrenaline. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, as well as a speed bonus."
 	color = "#880000"
 	flavor = "pure speed"
@@ -318,7 +308,6 @@
 
 /reagent/medicine/adrenaline/epinephrine
 	name = "epinephrine"
-	id = "epinephrine"
 	desc = "Used for stabilizing dying patients. Prevents people from dying by increasing the amount of damage one must take before succumbing to death, and also regulating oxyloss."
 	desc_extended = ""
 	color = "#FFFFFF"

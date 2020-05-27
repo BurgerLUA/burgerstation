@@ -1,10 +1,11 @@
-
+#define FLAG_REAGENT_RAW 0x1
+#define FLAG_REAGENT_COOKED 0x2
+#define FLAG_REAGENT_FAT 0x4
 
 /reagent/
 	var/name = "Reagent"
 	var/desc = "The basic description of the reagent."
 	var/desc_extended = "The extended description of the reagent, usually a detailed note of its effects."
-	var/id = null
 	var/value = 0 //Value per unit.
 
 	var/color = "#FFFFFF" //Reagent's color.
@@ -27,6 +28,8 @@
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
 	var/lethal = FALSE //Used by loyalty tags, checks if this reagent is lethal or not.
+
+	var/flags_reagent
 
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0)
 	return amount_added

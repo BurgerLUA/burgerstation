@@ -4,7 +4,7 @@
 	glass_color = "#FFFF00"
 
 /obj/item/container/spray/silver_sulfadiazine/Generate()
-	reagents.add_reagent("silver_sulfadiazine",60)
+	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,60)
 
 /obj/item/container/spray/styptic_powder
 	name = "medical spray (styptic powder)"
@@ -12,4 +12,4 @@
 	glass_color = "#FF0000"
 
 /obj/item/container/spray/styptic_powder/Generate()
-	reagents.add_reagent("styptic_powder",60)
+	reagents.add_reagent(/reagent/medicine/styptic_powder,60)

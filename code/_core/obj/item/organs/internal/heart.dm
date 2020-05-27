@@ -50,7 +50,7 @@
 
 		if(heart_rate && heart_ticks >= ((1/heart_rate)*60)*10)
 			if( !is_crit && health_percent >= 0.5 && blood_percent < 1)
-				A.reagents.add_reagent("blood",0.1)
+				A.reagents.add_reagent(/reagent/blood,0.1)
 			var/desired_oxyloss = FLOOR(A.health.health_max * 2 * (1-blood_percent),1)
 			var/current_oxyloss = FLOOR(A.health.get_oxy_loss(),1)
 			if(is_crit || desired_oxyloss > current_oxyloss)

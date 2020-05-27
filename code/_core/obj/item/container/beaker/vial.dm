@@ -16,5 +16,5 @@
 	name = "vial of stand powers"
 
 /obj/item/container/beaker/vial/stand/Generate()
-	reagents.add_reagent("stand",10)
+	reagents.add_reagent(/reagent/magic/stand_juice,10)
 	return ..()

@@ -111,7 +111,7 @@
 	icon_state = "block"
 
 /obj/item/container/food/dynamic/cheese/block/Generate()
-	reagents.add_reagent("processed_cheese",40)
+	reagents.add_reagent(/reagent/nutrition/cheese,40)
 	return ..()
 
 /obj/item/container/food/dynamic/cheese/wheel
@@ -119,5 +119,5 @@
 	icon_state = "wheel"
 
 /obj/item/container/food/dynamic/cheese/wheel/Generate()
-	reagents.add_reagent("processed_cheese",40)
+	reagents.add_reagent(/reagent/nutrition/cheese,40)
 	return ..()

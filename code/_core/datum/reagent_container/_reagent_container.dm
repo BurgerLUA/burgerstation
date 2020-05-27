@@ -34,7 +34,7 @@
 	var/returning_text = list()
 
 	for(var/r_id in stored_reagents)
-		var/reagent/R = all_reagents[r_id]
+		var/reagent/R = REAGENT(r_id)
 		var/volume = stored_reagents[r_id]
 		returning_text += "[volume] units of [R.name]"
 
@@ -72,7 +72,7 @@
 		if(!volume)
 			continue
 
-		var/reagent/R = all_reagents[r_id]
+		var/reagent/R = REAGENT(r_id)
 
 		if(!(flags_metabolism & R.flags_metabolism))
 			continue
@@ -117,7 +117,8 @@
 	var/temperature_mod = 0
 
 	for(var/r_id in stored_reagents)
-		temperature_mod += stored_reagents[r_id] * all_reagents[r_id].temperature_mod
+		var/reagent/R = REAGENT(r_id)
+		temperature_mod += stored_reagents[r_id] * R.temperature_mod
 
 	var/temperature_diff = desired_temperature - average_temperature
 
@@ -151,7 +152,7 @@
 	contains_lethal = FALSE
 
 	for(var/r_id in stored_reagents)
-		var/reagent/R = all_reagents[r_id]
+		var/reagent/R = REAGENT(r_id)
 		stored_reagents[r_id] = round(stored_reagents[r_id],REAGENT_ROUNDING)
 
 		if(R.lethal)
@@ -288,7 +289,7 @@
 
 	amount = FLOOR(amount,REAGENT_ROUNDING)
 
-	if(!all_reagents[reagent_id])
+	if(!REAGENT(reagent_id))
 		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
 		return 0
 
@@ -319,7 +320,7 @@
 		stored_reagents[reagent_id] += amount
 	else
 		stored_reagents[reagent_id] = amount
-		var/reagent/R = all_reagents[reagent_id]
+		var/reagent/R = REAGENT(reagent_id)
 		R.on_add(src,amount)
 
 	if(amount > 0)
@@ -418,7 +419,7 @@
 	var/total_flavor = 0
 
 	for(var/r_id in stored_reagents)
-		var/reagent/R = all_reagents[r_id]
+		var/reagent/R = REAGENT(r_id)
 		flavor_profile[R.flavor] += R.flavor_strength
 		total_flavor += R.flavor_strength
 

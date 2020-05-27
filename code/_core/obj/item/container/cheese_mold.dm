@@ -92,9 +92,10 @@
 
 		for(var/reagent_id in reagents.stored_reagents)
 			var/reagent_volume = reagents.stored_reagents[reagent_id]
-			if(has_prefix(reagent_id,"milk"))
+			var/reagent/R = REAGENT(reagent_id)
+			if(ispath(R,/reagent/nutrition/milk/))
 				milk_count += reagent_volume
-			else if(has_prefix(reagent_id,"enzyme"))
+			else if(ispath(R,/reagent/enzymes/))
 				enzyme_count += reagent_volume
 
 		if(milk_count >= 40 && enzyme_count >= 10)

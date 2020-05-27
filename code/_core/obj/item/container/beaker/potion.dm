@@ -11,19 +11,19 @@
 	name = "flask of water"
 
 /obj/item/container/beaker/bottle/large/water/Generate()
-	reagents.add_reagent("water",reagents.volume_max)
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/bottle/large/milk
 	name = "flask of cow's milk"
 
 /obj/item/container/beaker/bottle/large/milk/Generate()
-	reagents.add_reagent("milk_cow",reagents.volume_max)
+	reagents.add_reagent(/reagent/nutrition/milk,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/bottle/large/enzymes
 	name = "flask of enzymes"
 
 /obj/item/container/beaker/bottle/large/enzymes/Generate()
-	reagents.add_reagent("enzymes",reagents.volume_max)
+	reagents.add_reagent(/reagent/enzymes,reagents.volume_max)
 	return ..()

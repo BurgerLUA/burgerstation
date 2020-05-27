@@ -1,6 +1,5 @@
 /reagent/toxin/
 	name = "toxin"
-	id = "toxin"
 	desc = "A common toxin found nearly everywhere."
 	color = "#FF8411"
 
@@ -32,7 +31,6 @@
 
 /reagent/toxin/angel_toxin
 	name = "angel toxin"
-	id = "angel_toxin"
 	desc = "An incredibly lethal toxin. Injecting this will make you see angels."
 
 	damage_per_unit = 15
@@ -42,7 +40,6 @@
 
 /reagent/toxin/fly_amanita_toxin
 	name = "fly amanita toxin"
-	id = "fly_amanita_toxin"
 	desc = "An moderately lethal toxin."
 
 	damage_per_unit = 4

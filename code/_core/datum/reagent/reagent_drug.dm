@@ -1,6 +1,5 @@
-/reagent/core/drug/ //Found in the snow biome as a magic plant
+/reagent/drug/ //Found in the snow biome as a magic plant
 	name = "drug"
-	id = "drug"
 	desc = "What the fuck is this?"
 	color = "#FFFFFF"
 	metabolism_stomach = 1
@@ -11,7 +10,7 @@
 
 	liquid = -0.4
 
-/reagent/core/drug/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/drug/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -25,7 +24,7 @@
 
 	return .
 
-/reagent/core/drug/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/drug/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -39,9 +38,8 @@
 
 	return .
 
-/reagent/core/drug/liberty_dust
+/reagent/drug/liberty_dust
 	name = "space liberty dust"
-	id = "liberty_dust"
 	desc = "The taste of liberty AND FREEDOM."
 	color = "#FFFFFF"
 
@@ -54,9 +52,8 @@
 
 	liquid = -0.6
 
-/reagent/core/drug/space
+/reagent/drug/space
 	name = "space drugs"
-	id = "space_drugs"
 	desc = "It's like space weed."
 	color = "#FFFFFF"
 
@@ -68,9 +65,8 @@
 	value = 4.5
 
 
-/reagent/core/drug/dust
+/reagent/drug/dust
 	name = "space dust"
-	id = "space_dust"
 	desc = "It's like space weed but better."
 	color = "#7A9BFF"
 

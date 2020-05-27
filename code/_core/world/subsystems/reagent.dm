@@ -1,4 +1,3 @@
-var/global/list/all_reagents = list()
 
 var/global/list/all_reagent_recipes = list()
 
@@ -9,6 +8,8 @@ SUBSYSTEM_DEF(reagent)
 	desc = "Store all the reagents."
 	priority = SS_ORDER_PRELOAD
 	tick_rate = SECONDS_TO_TICKS(1)
+
+	var/list/all_reagents = list()
 
 /subsystem/reagent/on_life()
 
@@ -25,10 +26,9 @@ SUBSYSTEM_DEF(reagent)
 
 	for(var/k in subtypesof(/reagent/))
 		var/reagent/R = k
-		var/id = initial(R.id)
-		if(id)
-			R = new k
-			all_reagents[id] = R
+		R = new k
+		world.log << "[R.type]"
+		all_reagents[R.type] = R
 
 	log_subsystem(name,"Initialized [length(all_reagents)] reagents.")
 

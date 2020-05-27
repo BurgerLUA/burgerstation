@@ -23,7 +23,7 @@
 	if(reagents_2 && length(reagents_2.stored_reagents))
 		for(var/reagent_id in reagents_2.stored_reagents)
 			var/reagent_volume = reagents_2.stored_reagents[reagent_id]
-			var/reagent/R = all_reagents[reagent_id]
+			var/reagent/R = REAGENT(reagent_id)
 			. += R.value*reagent_volume
 
 	return .

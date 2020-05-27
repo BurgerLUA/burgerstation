@@ -13,21 +13,21 @@
 	name = "bottle of bicaridine"
 
 /obj/item/container/beaker/bottle/bicaridine/Generate()
-	reagents.add_reagent("bicaridine",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/bicaridine,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/bottle/dylovene
 	name = "bottle of dylovene"
 
 /obj/item/container/beaker/bottle/dylovene/Generate()
-	reagents.add_reagent("dylovene",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/dylovene,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/bottle/kelotane
 	name = "bottle of kelotane"
 
 /obj/item/container/beaker/bottle/kelotane/Generate()
-	reagents.add_reagent("kelotane",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/kelotane,reagents.volume_max)
 	return ..()
 
 
@@ -35,7 +35,7 @@
 	name = "bottle of epinephrine"
 
 /obj/item/container/beaker/bottle/epinephrine/Generate()
-	reagents.add_reagent("epinephrine",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max)
 	return ..()
 
 

@@ -15,7 +15,7 @@
 	scale_sprite = FALSE
 
 /obj/item/container/food/sandwich/Generate()
-	reagents.add_reagent("bread_flour_white",5)
+	reagents.add_reagent(/reagent/nutrition/bread/flour/processed,5)
 	return ..()
 
 /obj/item/container/food/sandwich/get_reagents_to_eat()

@@ -9,32 +9,32 @@
 	value = 10
 
 /obj/item/container/beaker/large/bicaridine/Generate()
-	reagents.add_reagent("bicaridine",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/bicaridine,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/large/kelotane/Generate()
-	reagents.add_reagent("kelotane",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/kelotane,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/large/dylovene/Generate()
-	reagents.add_reagent("dylovene",reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/dylovene,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/large/water/Generate()
-	reagents.add_reagent("water",reagents.volume_max)
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()
 
 /obj/item/container/beaker/large/potassium/Generate()
-	reagents.add_reagent("potassium",reagents.volume_max)
+	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
 
 
 /obj/item/container/beaker/large/grenade_water/Generate()
-	reagents.add_reagent("water",reagents.volume_max*0.5)
-	reagents.add_reagent("iron",reagents.volume_max*0.5)
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max*0.5)
+	reagents.add_reagent(/reagent/iron,reagents.volume_max*0.5)
 	return ..()
 
 /obj/item/container/beaker/large/grenade_potassium/Generate()
-	reagents.add_reagent("potassium",reagents.volume_max*0.5)
-	reagents.add_reagent("iron",reagents.volume_max*0.5)
+	reagents.add_reagent(/reagent/potassium,reagents.volume_max*0.5)
+	reagents.add_reagent(/reagent/iron,reagents.volume_max*0.5)
 	return ..()

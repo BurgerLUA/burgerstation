@@ -11,7 +11,7 @@
 			var/has_purged = FALSE
 			for(var/reagent_id in A.reagents.stored_reagents)
 				var/reagent_volume = A.reagents.stored_reagents[reagent_id]
-				var/reagent/R = all_reagents[reagent_id]
+				var/reagent/R = REAGENT(reagent_id)
 				if(!R.overdose_threshold || reagent_volume < R.overdose_threshold)
 					continue
 				reagent_volume *= 0.5

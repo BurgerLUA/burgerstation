@@ -63,22 +63,6 @@
 
 	equip_loadout(loadout_to_use)
 
-	/*
-	for(var/i=1,i<=2,i++)
-		var/picked_weapon = pick(possible_weapons)
-		var/obj/item/weapon/ranged/bullet/magazine/W = new picked_weapon(src.loc)
-		W.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-		W.stored_magazine = weapon_to_magazine[W.type]
-		INITIALIZE(W)
-		GENERATE(W)
-		if(i==1)
-			right_hand.add_held_object(W)
-			left_hand.wield_object(null,W)
-			W.click_self(src)
-		else
-			W.quick_equip(src)
-	*/
-
 	return .
 
 /mob/living/advanced/npc/syndicate/map

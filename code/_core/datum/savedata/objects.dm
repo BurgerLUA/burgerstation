@@ -35,7 +35,7 @@
 		if(object_data["reagents"] && length(object_data["reagents"]))
 			for(var/r_id in object_data["reagents"])
 				var/volume = object_data["reagents"][r_id]
-				I.reagents.add_reagent(r_id,volume,TNULL,FALSE)
+				I.reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
 			I.reagents.update_container()
 
 	if(istype(O,/obj/item/radio) && object_data["stored_radio"])

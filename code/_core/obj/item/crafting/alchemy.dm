@@ -75,7 +75,7 @@
 
 	for(var/reagent_id in C.reagents.stored_reagents)
 		var/reagent_amount = C.reagents.stored_reagents[reagent_id]
-		var/reagent/R = all_reagents[reagent_id]
+		var/reagent/R = REAGENT(reagent_id)
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
 			C.reagents.remove_reagent(reagent_id,reagent_amount,FALSE)

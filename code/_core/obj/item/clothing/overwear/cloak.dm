@@ -24,3 +24,6 @@
 
 /obj/item/clothing/neck/cloak/red
 	color = "#8E0000"
+
+/obj/item/clothing/neck/cloak/nanotrasen
+	color = COLOR_NANOTRASEN
