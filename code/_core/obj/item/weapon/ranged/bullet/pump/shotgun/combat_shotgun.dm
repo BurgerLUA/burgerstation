@@ -39,7 +39,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.1
-	return 0.03
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.1 - (0.2 * L.get_skill_power(SKILL_RANGED)))

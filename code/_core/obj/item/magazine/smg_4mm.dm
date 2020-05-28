@@ -4,13 +4,13 @@
 	icon_state = "mag"
 	bullet_count_max = 20
 
-	bullet_length_min = 12
-	bullet_length_best = 17.7
-	bullet_length_max = 19
+	bullet_length_min = 25
+	bullet_length_best = 30
+	bullet_length_max = 31
 
-	bullet_diameter_min = 5
-	bullet_diameter_best = 5.6
-	bullet_diameter_max = 6
+	bullet_diameter_min = 4
+	bullet_diameter_best = 4.6
+	bullet_diameter_max = 5
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw = TRUE
