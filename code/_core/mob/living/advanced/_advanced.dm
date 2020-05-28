@@ -76,7 +76,7 @@
 	var/list/tracked_hidden_limbs
 	var/list/tracked_hidden_limb_clothing
 
-	var/obj/overlay/chat_overlay
+	var/obj/effect/chat_overlay
 
 	value = 250
 

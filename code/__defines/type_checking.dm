@@ -14,7 +14,7 @@
 
 #define is_inventory(A) istype(A,/obj/hud/inventory)
 
-#define is_overlay(A) istype(A, /obj/overlay)
+//#define is_overlay(A) istype(A, /obj/overlay)
 
 #define is_button(A) istype(A, /obj/hud/button)
 

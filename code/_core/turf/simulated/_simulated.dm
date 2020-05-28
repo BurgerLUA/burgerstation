@@ -35,7 +35,7 @@ var/global/saved_icons = 0
 
 	var/blocks_air = 0x0
 
-	var/obj/overlay/stored_water_overlay
+	var/image/overlay/stored_water_overlay
 	var/water_reagent
 
 /turf/simulated/floor/Initialize()
