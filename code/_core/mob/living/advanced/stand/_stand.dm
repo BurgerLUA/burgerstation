@@ -6,7 +6,6 @@
 	name = "stand"
 	desc = "Boss, that's an enemy stand."
 	plane = PLANE_MOB
-	appearance_flags = KEEP_TOGETHER | LONG_GLIDE | PIXEL_SCALE
 	species = "stand"
 
 	collision_flags = FLAG_COLLISION_NONE

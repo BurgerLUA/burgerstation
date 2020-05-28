@@ -146,6 +146,52 @@
 	I.Turn(-new_angle)
 	icon = I
 
+/obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+
+	if(!new_loc || !old_loc)
+		damage_atom(src.loc)
+		on_hit(src.loc,TRUE)
+		return TRUE
+
+	if(hit_target_turf && new_loc == target_turf)
+		damage_atom(new_loc)
+		on_hit(new_loc)
+		return TRUE
+
+	if(steps_allowed && steps_allowed <= steps_current)
+		damage_atom(new_loc)
+		on_hit(new_loc,TRUE)
+		return TRUE
+
+	if(lifetime <= start_time)
+		damage_atom(new_loc)
+		on_hit(new_loc,TRUE)
+		return TRUE
+
+	if(!isturf(old_loc))
+		damage_atom(old_loc)
+		on_hit(old_loc,TRUE)
+		return TRUE
+
+	var/atom/collide_with_turf = current_loc.projectile_should_collide(src,new_loc,old_loc)
+	if(collide_with_turf)
+		damage_atom(collide_with_turf)
+		on_hit(collide_with_turf)
+		return TRUE
+
+	for(var/atom/movable/A in new_loc.contents)
+		if(A == owner || A == weapon)
+			continue
+		var/atom/collide_atom = A.projectile_should_collide(src,new_loc,old_loc)
+		if(!collide_atom)
+			continue
+		if(!damage_atom(collide_atom))
+			continue
+		on_hit(collide_atom)
+		return TRUE
+
+	return FALSE
+
 /obj/projectile/proc/update_projectile()
 
 	if(!isturf(src.loc))
@@ -162,51 +208,9 @@
 	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
-
 		current_loc = locate(current_loc_x,current_loc_y,z)
-
 		steps_current += 1
-
-		if(!current_loc || !previous_loc)
-			damage_atom(src.loc)
-			on_hit(src.loc,TRUE)
-			return FALSE
-
-		if(hit_target_turf && current_loc == target_turf)
-			damage_atom(current_loc)
-			on_hit(current_loc)
-			return FALSE
-
-		if(steps_allowed && steps_allowed <= steps_current)
-			damage_atom(current_loc)
-			on_hit(current_loc,TRUE)
-			return FALSE
-
-		if(lifetime <= start_time)
-			damage_atom(current_loc)
-			on_hit(current_loc,TRUE)
-			return FALSE
-
-		if(!isturf(previous_loc))
-			damage_atom(previous_loc)
-			on_hit(previous_loc,TRUE)
-			return FALSE
-
-		var/atom/collide_with_turf = current_loc.projectile_should_collide(src,current_loc,previous_loc)
-		if(collide_with_turf)
-			damage_atom(collide_with_turf)
-			on_hit(collide_with_turf)
-			return FALSE
-
-		for(var/atom/movable/A in current_loc.contents)
-			if(A == owner || A == weapon)
-				continue
-			var/atom/collide_atom = A.projectile_should_collide(src,current_loc,previous_loc)
-			if(!collide_atom)
-				continue
-			if(!damage_atom(collide_atom))
-				continue
-			on_hit(collide_atom)
+		if(on_enter_tile(previous_loc,current_loc))
 			return FALSE
 
 	if(current_loc)

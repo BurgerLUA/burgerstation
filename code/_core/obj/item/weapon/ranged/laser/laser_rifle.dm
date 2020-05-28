@@ -7,7 +7,7 @@
 
 	bullet_color = "#FF0000"
 
-	projectile_speed = 31
+	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 3
 
 	automatic = TRUE

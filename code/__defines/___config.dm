@@ -20,7 +20,7 @@
 #define MIN_ZOOM 1
 
 #define ZOOM_RANGE 8
-#define VIEW_RANGE 11
+#define VIEW_RANGE 8
 
 #define SOUND_RANGE 18
 
@@ -53,7 +53,7 @@
 #define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 
 //Makes compiling faster. FALSE means disabled
 
