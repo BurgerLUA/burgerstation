@@ -55,6 +55,8 @@
 
 	var/list/overlays_assoc
 
+	var/list/overlays_assoc_atom
+
 	var/list/protection_heat = TARGETABLE_LIMBS_KV
 
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
@@ -72,9 +74,8 @@
 	attack_delay = 2
 	attack_delay_max = 6
 
-	var/update_hidden_limbs = FALSE
-	var/list/tracked_hidden_limbs
-	var/list/tracked_hidden_limb_clothing
+	var/list/tracked_hidden_organs
+	var/list/tracked_hidden_clothing
 
 	var/obj/effect/chat_overlay
 
@@ -93,8 +94,9 @@
 
 	inventory.Cut()
 	overlays_assoc.Cut()
-	tracked_hidden_limbs.Cut()
-	tracked_hidden_limb_clothing.Cut()
+	overlays_assoc_atom.Cut()
+	tracked_hidden_organs.Cut()
+	tracked_hidden_clothing.Cut()
 
 	QDEL_NULL(chat_overlay)
 
@@ -108,21 +110,33 @@
 	driving = null
 	return ..()
 
-/mob/living/advanced/proc/update_hair()
+/mob/living/advanced/proc/update_clothes()
 
-	var/obj/item/organ/head/H = labeled_organs[BODY_HAIR_HEAD]
-
-	if(!istype(H))
+	if(!length(overlays_assoc_atom))
+		CRASH_SAFE("[src.get_debug_name()] did not have anything inside the overlays_assoc_atom list!")
 		return FALSE
 
-	var/hide_hair = FALSE
+	tracked_hidden_organs = list()
+	tracked_hidden_clothing = list()
 
 	for(var/obj/item/clothing/C in worn_objects)
-		if(C.hide_hair)
-			hide_hair = TRUE
-			break
+		if(C.hidden_clothing)
+			tracked_hidden_clothing |= C.hidden_clothing
+		if(C.hidden_organs)
+			tracked_hidden_organs |= C.hidden_organs
 
-	show_overlay(H,!hide_hair)
+	var/do_organs = length(tracked_hidden_organs)
+	var/do_clothing = length(tracked_hidden_clothing)
+
+	for(var/k in overlays_assoc_atom)
+		var/atom/A = k
+		if(is_organ(A))
+			var/obj/item/organ/O = A
+			show_overlay(overlays_assoc_atom[k], (do_organs && tracked_hidden_organs[O.id]) ? FALSE : TRUE)
+			//world.log << "Hiding the: [O]: [tracked_hidden_organs[O.id] ? "TRUE" : "FALSE"]."
+		else if(is_clothing(A))
+			var/obj/item/clothing/C = A
+			show_overlay(overlays_assoc_atom[k], (do_clothing && tracked_hidden_clothing[C.item_slot]) ? FALSE : TRUE)
 
 	return TRUE
 
@@ -230,8 +244,9 @@
 	worn_objects = list()
 	labeled_organs = list()
 	overlays_assoc = list()
-	tracked_hidden_limbs = list()
-	tracked_hidden_limb_clothing = list()
+	overlays_assoc_atom = list()
+	tracked_hidden_organs = list()
+	tracked_hidden_clothing = list()
 
 	. = ..()
 
@@ -299,6 +314,8 @@ mob/living/advanced/Login()
 	update_slowdown_mul()
 
 	setup_name()
+
+	update_clothes()
 
 	return .
 

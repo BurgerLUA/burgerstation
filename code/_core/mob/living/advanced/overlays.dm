@@ -18,13 +18,8 @@ mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,va
 	add_tracked_overlay_image(O)
 	return O
 
-mob/living/advanced/proc/show_overlay(var/obj/object,var/show=TRUE)
-
-	for(var/image/overlay/O in overlays_assoc)
-		if(O.attached_object != object)
-			continue
-		update_overlay_direct(O,desired_alpha= show ? 255 : 0)
-
+mob/living/advanced/proc/show_overlay(var/image/overlay/O,var/show=TRUE)
+	update_overlay_direct(O,desired_alpha= show ? 255 : 0)
 	return TRUE
 
 mob/living/advanced/proc/remove_overlay(var/atom/A)
@@ -55,11 +50,15 @@ mob/living/advanced/proc/add_tracked_overlay_image(var/image/overlay/O)
 	I.appearance = O.appearance
 	add_overlay(I)
 	overlays_assoc[O] = I
+	if(O.attached_object)
+		overlays_assoc_atom[O.attached_object] = O
 
 mob/living/advanced/proc/remove_overlay_image(var/image/overlay/O)
 	var/image/I = overlays_assoc[O]
 	overlays -= I
 	overlays_assoc -= O
+	if(O.attached_object)
+		overlays_assoc_atom -= O.attached_object
 	qdel(I)
 
 mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255)

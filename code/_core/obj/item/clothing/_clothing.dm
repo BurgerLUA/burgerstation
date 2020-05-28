@@ -38,6 +38,9 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
+	var/list/hidden_clothing = list()
+	var/list/hidden_organs = list()
+
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()
 	..()

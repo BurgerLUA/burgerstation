@@ -27,7 +27,7 @@
 
 	. = ..()
 
-	if(.)
+	if(. && owner)
 		update_overlays()
 
 	return .

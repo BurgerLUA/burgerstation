@@ -47,10 +47,7 @@
 
 	var/file_num = U.get_proper_id_from_filename(files[1])
 
-	. = src.client.load(U,file_num)
-	qdel(src)
-	return .
-
+	return src.client.load(U,file_num)
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Character"

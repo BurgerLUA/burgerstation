@@ -9,3 +9,7 @@
 	weight = WEIGHT_2
 
 	value = 5
+
+	hidden_organs = list(
+		BODY_TORSO = TRUE
+	)
