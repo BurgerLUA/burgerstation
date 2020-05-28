@@ -323,7 +323,7 @@
 			A.update_slowdown_mul()
 			A.update_protection()
 			A.update_eyes()
-			A.update_hair()
+			A.update_clothes()
 			update_worn_icon(I)
 
 	update_stats()
@@ -453,7 +453,7 @@
 				A.update_protection()
 				A.update_eyes()
 				if(was_worn)
-					A.update_hair()
+					A.update_clothes()
 
 	return I
 

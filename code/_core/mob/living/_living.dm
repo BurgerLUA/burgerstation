@@ -98,7 +98,8 @@
 	var/dead = FALSE
 	var/time_of_death = -1
 
-	var/spawn_blood = /reagent/blood
+	var/blood_type = /reagent/blood
+	var/blood_volume = BLOOD_LEVEL_DEFAULT
 
 	var/obj/structure/buckled_object
 
@@ -265,9 +266,6 @@
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_boss = src
 				B.update_stats()
-
-	if(reagents && spawn_blood)
-		reagents.add_reagent(spawn_blood,BLOOD_LEVEL_DEFAULT)
 
 	setup_name()
 

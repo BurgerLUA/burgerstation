@@ -144,8 +144,9 @@ mob/living/advanced/revive()
 	if(!health)
 		return FALSE
 
-	for(var/obj/item/organ/O in organs)
+	for(var/k in labeled_organs)
 		CHECK_TICK
-		O.on_life()
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O.has_life) O.on_life()
 
 	return TRUE

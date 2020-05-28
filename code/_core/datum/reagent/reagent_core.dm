@@ -20,10 +20,12 @@
 
 	. = ..()
 
+	/*
 	if(is_living(owner))
 		var/mob/living/L = owner
 		if(L.spawn_blood && L.reagents && L.spawn_blood == /reagent/blood)
 			L.reagents.add_reagent(/reagent/blood,.*2)
+	*/
 
 	return .
 

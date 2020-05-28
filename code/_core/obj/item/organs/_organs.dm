@@ -63,6 +63,8 @@
 
 	var/health_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
 
+	var/has_life = TRUE
+
 /obj/item/organ/Destroy()
 	attached_organ = null
 	attached_organs.Cut()

@@ -519,9 +519,6 @@
 
 	var/calc = ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
 
-	if(is_player(L))
-		owner.desc = "Last sneak calculation for [L]: [calc](NPC) vs [L.alpha](PLAYER)."
-
 	return L.alpha >= calc
 
 /ai/proc/get_possible_targets()
@@ -551,9 +548,9 @@
 		for(var/mob/living/L in view(range_to_use,owner))
 			if(!L.initialized)
 				continue
-			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
-				continue
 			if(!should_attack_mob(L))
+				continue
+			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
 				continue
 			if(!can_see_mob(L))
 				continue

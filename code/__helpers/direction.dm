@@ -10,13 +10,16 @@ proc/direction_to_pixel_offset(var/dir)
 
 	var/sight_dir = get_dir(src,A)
 
-	var/list/sight_dirs = list(
-		"[dir]" = TRUE,
-		"[turn(dir,45)]" = TRUE,
-		"[turn(dir,-45)]" = TRUE
-	)
+	if(dir == sight_dir)
+		return TRUE
 
-	return sight_dirs["[sight_dir]"]
+	if(turn(dir,45) == sight_dir)
+		return TRUE
+
+	if(turn(dir,-45) == sight_dir)
+		return TRUE
+
+	return FALSE
 
 
 proc/dir2text(var/dir)

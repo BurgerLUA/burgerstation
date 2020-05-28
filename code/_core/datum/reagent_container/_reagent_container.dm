@@ -65,6 +65,8 @@
 	if(!flags_metabolism)
 		return
 
+	world.log << "Metabolizing: [src.get_debug_name()]."
+
 	for(var/r_id in stored_reagents)
 
 		var/volume = stored_reagents[r_id]

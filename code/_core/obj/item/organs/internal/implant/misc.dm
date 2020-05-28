@@ -3,6 +3,8 @@
 	desc = "Prevents overdoses."
 	desc_extended = "A special implant that prevents the user from overdosing on chemicals by purging it from their bloodstream."
 
+	has_life = TRUE
+
 /obj/item/organ/internal/implant/torso/od_purge/on_life()
 	. = ..()
 	if(loc && is_advanced(loc))

@@ -6,7 +6,7 @@
 
 	immortal = TRUE
 
-	spawn_blood = FALSE
+	blood_type = null
 
 	health_base = 1000
 

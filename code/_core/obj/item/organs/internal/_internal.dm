@@ -10,6 +10,8 @@
 
 	reagents = null
 
+	has_life = FALSE
+
 /obj/item/organ/internal/brain
 	name = "brain"
 	id = BODY_BRAIN
