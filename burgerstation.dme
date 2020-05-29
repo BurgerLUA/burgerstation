@@ -299,7 +299,6 @@
 #include "code\_core\datum\damagetype\ranged\laser\carbine.dm"
 #include "code\_core\datum\damagetype\ranged\laser\chrono.dm"
 #include "code\_core\datum\damagetype\ranged\laser\freezegun.dm"
-#include "code\_core\datum\damagetype\ranged\laser\pistol.dm"
 #include "code\_core\datum\damagetype\ranged\laser\rifle.dm"
 #include "code\_core\datum\damagetype\ranged\magic\_magic.dm"
 #include "code\_core\datum\damagetype\ranged\magic\chaos.dm"

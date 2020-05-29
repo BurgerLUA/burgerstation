@@ -5,7 +5,9 @@
 	bullet_count_max = 18
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_9mm

@@ -24,3 +24,6 @@ Nearly every object in the world can be used as cover for ranged weapons. Cover 
 Most armor and protective clothing can only protect certain parts of your body. Be sure to examine the object to see which bodyparts it protects, and what it can protect against.
 Your health goes down if your limbs take damage. Your head contributes to you overall health twice as much as your torso, while your arms, hands, legs and feet contribute half as much.
 Bullets generally deal a mix of piercing and blunt damage. Pistols and revolver rounds usually deal more blunt than piercing damage, while rifle and sniper rifle rounds deal more piercing than blunt damage.
+Just because a gun has a larger caliber doesn't mean it deals more damage. Smaller rounds such as the 9mm cartridge can deal more damage to a target than larger rounds like the 12.7mm pistol as it penetrates armour better.
+NATO designated cartridges (9mm, 5.56mm, and 7.62mm) tend to penetrate better than calibre designated cartridges (.50, .45,, .223, .308), but deal less damage.
+Laser weapons are expensive and overheat easily, but they typically do full damage against targets as laser resistant armor is rare.

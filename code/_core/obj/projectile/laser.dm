@@ -14,7 +14,6 @@
 	. = ..()
 	var/image/I = new/image(initial(icon),"[icon_state]_outline")
 	I.color = bullet_color
-	I.transform = src.transform
 	underlays += I
 
 /obj/projectile/bullet/laser/strong

@@ -23,6 +23,9 @@
 	heat_per_shot = 0.1
 	heat_max = 0.2
 
+	size = SIZE_3
+	weight = WEIGHT_4
+
 /obj/item/weapon/ranged/energy/chronogun/get_static_spread() //Base spread
 	return 0.005
 

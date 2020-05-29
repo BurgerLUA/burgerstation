@@ -23,13 +23,16 @@
 
 	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
 
-	heat_per_shot = 0.04
+	heat_per_shot = 0.06
 	heat_max = 0.2
 
 	polymorphs = list(
-		"base" = COLOR_WHITE,
-		"barrel" = "#FF0000"
+		"base" = "#FFFFFF",
+		"barrel" = COLOR_RED
 	)
+
+	size = SIZE_4
+	weight = WEIGHT_4
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
 	return 0.01

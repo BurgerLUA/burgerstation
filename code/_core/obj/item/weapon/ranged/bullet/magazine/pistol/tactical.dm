@@ -12,7 +12,7 @@
 
 	automatic = FALSE
 
-	size = SIZE_1
+	size = SIZE_2
 	weight = WEIGHT_2
 
 	heat_per_shot = 0.03

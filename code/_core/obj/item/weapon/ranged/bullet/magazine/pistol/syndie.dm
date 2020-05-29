@@ -16,8 +16,6 @@
 
 	view_punch = 8
 
-	slowdown_mul_held = HELD_SLOWDOWN_PISTOL * 0.5
-
 	size = SIZE_1
 	weight = WEIGHT_2
 

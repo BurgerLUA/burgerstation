@@ -138,13 +138,10 @@
 
 	update_sprite()
 
-	return .
+	var/new_angle = -ATAN2(vel_x,vel_y) - 90
+	transform.Turn(new_angle)
 
-/obj/projectile/update_icon()
-	var/icon/I = icon(icon,icon_state = icon_state)
-	var/new_angle = ATAN2(vel_x,vel_y) - 90
-	I.Turn(-new_angle)
-	icon = I
+	return .
 
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
@@ -204,6 +201,8 @@
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
 	var/matrix/M = matrix()
+	var/new_angle = -ATAN2(vel_x,vel_y) - 90
+	M.Turn(new_angle)
 	M.Translate(pixel_x_float,pixel_y_float) //WHY DO I HAVE TO HALF THIS?
 	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 

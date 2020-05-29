@@ -23,6 +23,9 @@
 	heat_per_shot = 0.07
 	heat_max = 0.2
 
+	size = SIZE_3
+	weight = WEIGHT_3
+
 /obj/item/weapon/ranged/energy/recharging/captain/update_icon()
 
 	icon_state = initial(icon_state)

@@ -16,7 +16,7 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
 
-	size = SIZE_3
+	size = SIZE_4
 	weight = WEIGHT_3
 
 	value = 120

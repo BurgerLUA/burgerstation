@@ -19,7 +19,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_3
-	weight = WEIGHT_3
+	weight = WEIGHT_4
 
 	heat_per_shot = 0.03
 	heat_max = 0.09
@@ -64,7 +64,7 @@
 	heat_max = 0.12
 
 	size = SIZE_2
-	weight = WEIGHT_2
+	weight = WEIGHT_3
 
 	value = 120
 

@@ -1,12 +1,11 @@
-/obj/item/clothing/head/helmet/
+/obj/item/clothing/head/helmet/knight/
+
 	hidden_organs = list(
 		BODY_HEAD = TRUE,
 		BODY_HAIR_HEAD = TRUE,
 		BODY_HAIR_FACE = TRUE,
 		BODY_EYES = TRUE
 	)
-
-/obj/item/clothing/head/helmet/knight/
 
 	rarity = RARITY_UNCOMMON
 	defense_rating = list(
@@ -22,6 +21,7 @@
 	weight = WEIGHT_4
 
 	value = 160
+
 
 
 /obj/item/clothing/head/helmet/knight/red

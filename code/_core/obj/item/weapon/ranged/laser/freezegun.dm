@@ -25,6 +25,9 @@
 	heat_per_shot = 0.1
 	heat_max = 0.2
 
+	size = SIZE_4
+	weight = WEIGHT_4
+
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread() //Base spread
 	return 0.003
 

@@ -71,12 +71,12 @@
 	desc_extended = "A security grade pistol chambered in 9mm. This one has been modifed with a new lighrweight frame and paintjob."
 	value = 90
 	icon = 'icons/obj/items/weapons/ranged/pistol/9mm_nt.dmi'
-	shoot_delay = 1
+	shoot_delay = 1.5
 	shoot_sounds = list('sounds/weapons/40/shoot.ogg')
 
 	view_punch = 6
 
-	automatic = TRUE
+	automatic = FALSE
 
 	size = SIZE_2
 	weight = WEIGHT_2

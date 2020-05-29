@@ -8,8 +8,6 @@
 
 	shoot_delay = 8
 
-
-
 	automatic = TRUE
 
 	shoot_sounds = list('sounds/weapons/gyrojet/shoot.ogg')
@@ -19,7 +17,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
 
 	size = SIZE_3
-	weight = WEIGHT_3
+	weight = WEIGHT_4
 
 	heat_per_shot = 0
 	heat_max = 0
