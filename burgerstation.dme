@@ -1198,6 +1198,7 @@
 #include "code\_core\world\subsystems\language.dm"
 #include "code\_core\world\subsystems\lighting.dm"
 #include "code\_core\world\subsystems\living.dm"
+#include "code\_core\world\subsystems\logging.dm"
 #include "code\_core\world\subsystems\map_node.dm"
 #include "code\_core\world\subsystems\material.dm"
 #include "code\_core\world\subsystems\menus.dm"

@@ -2,6 +2,10 @@
 	name = "winter hood"
 	icon = 'icons/obj/items/clothing/hats/winter_hood.dmi'
 
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
+
 	defense_rating = list(
 		BLADE = 5,
 		BLUNT = 0,
@@ -32,3 +36,7 @@
 	dyeable = FALSE
 
 	value = 10
+
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)

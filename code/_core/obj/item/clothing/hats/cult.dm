@@ -4,6 +4,10 @@
 	desc_extended = "A sinister red hood."
 	rarity = RARITY_UNCOMMON
 
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
+
 	defense_rating = list(
 		BLADE = 5,
 		BLUNT = 10,
@@ -51,6 +55,10 @@
 	name = "hardened cult hood"
 	icon = 'icons/obj/items/clothing/hats/cult_hard.dmi'
 	rarity = RARITY_MYTHICAL
+
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
 
 	defense_rating = list(
 		BLADE = 50,

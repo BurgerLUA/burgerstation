@@ -20,6 +20,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 	var/turf/source_turf = get_turf(source)
 
 	switch(text_type)
+
 		if(TEXT_RADIO) //People talking into radios.
 			for(var/obj/item/device/radio/R in all_radios)
 				CHECK_TICK
@@ -32,6 +33,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = frequency))
 				//speaker.visible_message("\The [speaker.name] talks into \the [R.name].","You talk into \the [R.name].")
 				break
+			LOG_CHAT("RADIO: [speaker.get_debug_name()]([frequency]): [text_to_say]")
+
 		if(TEXT_RAW) //People talking out of radios, pretty much.
 			for(var/mob/M in range(TALK_RANGE,source_turf))
 				CHECK_TICK
@@ -63,7 +66,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
-
+				LOG_CHAT("WHISPER: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_TALK)
 			if(istype(source,/client/))
@@ -89,7 +92,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
-
+			LOG_CHAT("TALK: [speaker.get_debug_name()]: [text_to_say]")
 		if(TEXT_YELL)
 			if(istype(source,/client/))
 				var/client/C = source
@@ -115,7 +118,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
-
+			LOG_CHAT("YELL: [speaker.get_debug_name()]: [text_to_say]")
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/mob/M in range(YELL_RANGE,source_turf))
@@ -123,6 +126,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				if(!M.client)
 					continue
 				M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
+			LOG_CHAT("LOOC: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_OOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
@@ -134,6 +138,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 			if(SSwikibot && ENABLE_WIKIBOT)
 				SSwikibot.process_string(source,text_to_say)
+			LOG_CHAT("OOC: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
@@ -142,6 +147,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				if(!C.mob || !is_observer(C.mob))
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
+			LOG_CHAT("GHOST: [speaker.get_debug_name()]: [text_to_say]")
 
 	if(language == LANGUAGE_BASIC && (text_type == TEXT_TALK || text_type == TEXT_YELL))
 		var/area/A = get_area(source)

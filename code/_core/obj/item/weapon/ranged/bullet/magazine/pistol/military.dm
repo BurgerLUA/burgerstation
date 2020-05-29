@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
 	name = "9mm Civil Defense Pistol"
-	desc = "Even more tactical than the tactical pistol."
-	desc_extended = "A security grade pistol chambered in 9mm."
+	desc = "An old relic from an oppressive police force."
+	desc_extended = "A security grade pistol chambered in 9mm. Good for self defense."
 	value = 70
 	icon = 'icons/obj/items/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
@@ -62,3 +62,38 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
+
+
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen
+	name = "9mm NT Defense Pistol"
+	desc = "An old relic from an oppressive police force."
+	desc_extended = "A security grade pistol chambered in 9mm. This one has been modifed with a new lighrweight frame and paintjob."
+	value = 90
+	icon = 'icons/obj/items/weapons/ranged/pistol/9mm_nt.dmi'
+	shoot_delay = 1
+	shoot_sounds = list('sounds/weapons/40/shoot.ogg')
+
+	view_punch = 6
+
+	automatic = TRUE
+
+	size = SIZE_2
+	weight = WEIGHT_2
+
+	heat_per_shot = 0.025
+	heat_max = 0.1
+
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_static_spread() //Base spread
+	return 0.004
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen/get_skill_spread(var/mob/living/L) //Base spread
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)) )

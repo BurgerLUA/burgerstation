@@ -3,6 +3,10 @@
 	icon = 'icons/obj/items/clothing/hats/explorer_suit.dmi'
 	rarity = RARITY_UNCOMMON
 
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
+
 	defense_rating = list(
 		BLADE = 25,
 		BLUNT = 50,
@@ -19,6 +23,10 @@
 	name = "goliath cloak hood"
 	icon = 'icons/obj/items/clothing/hats/goliath_cloak.dmi'
 	rarity = RARITY_UNCOMMON
+
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
 
 	defense_rating = list(
 		BLADE = 25,
@@ -37,6 +45,10 @@
 	name = "ash drake helmet"
 	icon = 'icons/obj/items/clothing/hats/drake_helmet.dmi'
 	rarity = RARITY_MYTHICAL
+
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
 
 	defense_rating = list(
 		BLADE = 75,

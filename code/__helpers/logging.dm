@@ -2,7 +2,7 @@
 #define LOG_DEBUG(x) world.log << x
 #define LOG_ADMIN(x) world.log << x
 #define LOG_BYOND_ERROR(x) world.log << "<span class='error'>[x]</span>"
-
+#define LOG_CHAT(x) SSlogging.log_chat(x)
 
 /proc/log_error(var/log_text)
  	world.log << "<span class='error'>[log_text]</span>"

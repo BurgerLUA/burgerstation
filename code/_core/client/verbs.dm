@@ -44,13 +44,13 @@
 	set name = "Open Discord"
 	set hidden = TRUE
 	to_chat("Opening discord in your browser.")
-	src << run("https://discord.gg/yEaV92a")
+	src << link("https://discord.gg/yEaV92a")
 
 /client/verb/open_github()
 	set name = "Open Github"
 	set hidden = TRUE
 	to_chat("Opening github in your browser.")
-	src << run("https://github.com/BurgerLUA/burgerstation")
+	src << link("https://github.com/BurgerLUA/burgerstation")
 
 
 /client/verb/stealth_test()

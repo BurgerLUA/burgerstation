@@ -1,3 +1,10 @@
+/obj/item/clothing/head/helmet/
+	hidden_organs = list(
+		BODY_HEAD = TRUE,
+		BODY_HAIR_HEAD = TRUE,
+		BODY_EYES = TRUE
+	)
+
 /obj/item/clothing/head/helmet/knight/
 
 	rarity = RARITY_UNCOMMON

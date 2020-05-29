@@ -129,6 +129,9 @@
 
 	var/queue_delete_on_death = TRUE
 
+/mob/living/get_debug_name()
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
+
 /mob/living/do_mouse_wheel(object,delta_x,delta_y,location,control,params)
 	if(object && is_atom(object))
 		var/atom/A = object

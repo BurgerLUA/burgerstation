@@ -7,7 +7,7 @@
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/nt_10mm = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm

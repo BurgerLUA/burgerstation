@@ -76,6 +76,9 @@ var/global/list/all_clients = list()
 	ping_num = world.time - time
 */
 
+/client/proc/get_debug_name()
+	return "[src](MOB: [mob ? "[mob.name]([mob.x])([mob.y])([mob.z])" : "NONE"])"
+
 /client/Del() //Called when the client disconnects.
 
 	if(known_inventory)

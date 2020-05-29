@@ -15,6 +15,10 @@
 
 	value = 10
 
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE
+	)
+
 /obj/item/clothing/head/hood/skimask/black
 	color = COLOR_BLACK
 

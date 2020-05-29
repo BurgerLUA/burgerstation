@@ -1,3 +1,12 @@
+/obj/item/clothing/head/helmet/hardsuit/
+
+	hidden_organs = list(
+		BODY_HEAD = TRUE,
+		BODY_HAIR_HEAD = TRUE,
+		BODY_EYES = TRUE
+	)
+
+
 /obj/item/clothing/head/helmet/hardsuit/engineering
 	name = "engineering rig helmet"
 	icon = 'icons/obj/items/clothing/hats/engineering_rig_helmet.dmi'
