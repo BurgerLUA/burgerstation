@@ -11,27 +11,6 @@
 
 	priority = 100
 
-/obj/hud/inventory/organs/torso/can_wear_object(var/obj/item/I,var/messages = FALSE)
-
-	if(!..())
-		return FALSE
-
-	for(var/obj/item/I2 in worn_objects)
-		if(I.item_slot & SLOT_TORSO_U)
-			if(messages)
-				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
-			return FALSE
-		if(I.item_slot & SLOT_TORSO && I2.item_slot & SLOT_TORSO)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-		if(I.item_slot & SLOT_TORSO_U && I2.item_slot & SLOT_TORSO_U)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-
-	return TRUE
-
 /obj/hud/inventory/organs/torso_o
 	name = "coat slot"
 	icon_state = "slot_torso_o"
@@ -44,27 +23,6 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
-
-/obj/hud/inventory/organs/torso_o/can_wear_object(var/obj/item/I,var/messages = FALSE)
-
-	if(!..())
-		return FALSE
-
-	for(var/obj/item/I2 in worn_objects)
-		if(I.item_slot & SLOT_TORSO_A)
-			if(messages)
-				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
-			return FALSE
-		if(I.item_slot & SLOT_TORSO_O && I2.item_slot & SLOT_TORSO_O)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-		if(I.item_slot & SLOT_TORSO_A && I2.item_slot & SLOT_TORSO_A)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-
-	return TRUE
 
 /obj/hud/inventory/organs/torso_b
 	name = "back slot"

@@ -24,6 +24,7 @@
 	var/max_size = -1 //Maximum amount of size this object can hold. -1 basically means it can't hold anything.
 
 	var/worn_slots = 1 //How many items this object can wear
+	var/worn_allow_duplicate = FALSE //Can you wear more than one item of the same slot at once?
 
 	var/total_weight = 0 //Var storage value that is updated every time an item is changed.
 	var/total_size = 0 //Var storage value that is updated every time an item is changed.
@@ -270,6 +271,7 @@
 	I.force_move(src)
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
+	I.pre_pickup(old_location,src)
 
 	if(owner)
 		I.update_owner(owner)
@@ -315,7 +317,7 @@
 	I.force_move(src)
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
-
+	I.pre_pickup(old_location,src)
 	if(owner)
 		I.update_owner(owner)
 		if(should_add_worn)
@@ -549,19 +551,31 @@
 	if(!I.can_be_worn(owner,src))
 		return FALSE
 
+	if(worn_allow_duplicate)
+		for(var/obj/item/I2 in worn_objects)
+			if(I.item_slot & I.item_slot)
+				owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
+				return FALSE
+
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
-		if(C.flags_clothing && is_advanced(owner))
+		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			for(var/obj/item/organ/O in A.organs)
-				if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
-					if(messages)
-						owner.to_chat(span("notice","Beast races cannot wear this!"))
+			if(C.flags_clothing)
+				for(var/obj/item/organ/O in A.organs)
+					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
+						if(messages)
+							owner.to_chat(span("notice","Beast races cannot wear this!"))
+						return FALSE
+					if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
+						if(messages)
+							owner.to_chat(span("notice","Beast races cannot wear this!"))
+						return FALSE
+			for(var/obj/item/clothing/C2 in A.worn_objects)
+				if(C2.blocks_clothing && I.item_slot && I.item_slot & C2.blocks_clothing)
+					owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
 					return FALSE
-				if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
-					if(messages)
-						owner.to_chat(span("notice","Beast races cannot wear this!"))
-					return FALSE
+
 
 	if(!(I.item_slot & item_slot))
 		if(messages)

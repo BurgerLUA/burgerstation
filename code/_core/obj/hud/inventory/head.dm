@@ -31,35 +31,14 @@
 	icon_state = "slot_face"
 	id = BODY_FACE
 	screen_loc = "LEFT+1,BOTTOM+3"
-	item_slot = SLOT_FACE | SLOT_EYES
-	worn_slots = 2
+	item_slot = SLOT_FACE | SLOT_EYES | SLOT_FACE_WRAP
+	worn_slots = 3
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
 
 	priority = 50
-
-/obj/hud/inventory/organs/face/can_wear_object(var/obj/item/I,var/messages = FALSE)
-
-	if(!..())
-		return FALSE
-
-	for(var/obj/item/I2 in worn_objects)
-		if(I.item_slot & SLOT_EYES && I2.item_slot & SLOT_EYES)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-		if(I.item_slot & SLOT_FACE && I2.item_slot & SLOT_FACE)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-		if(I.item_slot & SLOT_EYES)
-			if(messages)
-				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
-			return FALSE
-
-	return TRUE
 
 /*
 /obj/hud/inventory/organs/left_ear

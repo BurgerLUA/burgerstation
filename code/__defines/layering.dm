@@ -88,10 +88,11 @@
 #define LAYER_MOB_WINGS_FRONT          LAYER_MOB + 0.64
 #define LAYER_MOB_CLOTHING_BACK        LAYER_MOB + 0.65
 
-#define LAYER_MOB_HAIR_HEAD            LAYER_MOB + 0.71
-#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.72
-#define LAYER_MOB_CLOTHING_HELMET      LAYER_MOB + 0.73
-#define LAYER_MOB_HELD                 LAYER_MOB + 0.74
+#define LAYER_MOB_HAIR_FACE            LAYER_MOB + 0.71
+#define LAYER_MOB_HAIR_HEAD            LAYER_MOB + 0.72
+#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.73
+#define LAYER_MOB_CLOTHING_HELMET      LAYER_MOB + 0.74
+#define LAYER_MOB_HELD                 LAYER_MOB + 0.75
 
 
 /*

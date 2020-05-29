@@ -75,7 +75,7 @@
 	attack_delay_max = 6
 
 	var/list/tracked_hidden_organs
-	var/list/tracked_hidden_clothing
+	var/tracked_hidden_clothing = 0x0
 
 	var/obj/effect/chat_overlay
 
@@ -96,7 +96,6 @@
 	overlays_assoc.Cut()
 	overlays_assoc_atom.Cut()
 	tracked_hidden_organs.Cut()
-	tracked_hidden_clothing.Cut()
 
 	QDEL_NULL(chat_overlay)
 
@@ -117,7 +116,6 @@
 		return FALSE
 
 	tracked_hidden_organs = list()
-	tracked_hidden_clothing = list()
 
 	for(var/obj/item/clothing/C in worn_objects)
 		if(C.hidden_clothing)
@@ -126,7 +124,7 @@
 			tracked_hidden_organs |= C.hidden_organs
 
 	var/do_organs = length(tracked_hidden_organs)
-	var/do_clothing = length(tracked_hidden_clothing)
+	var/do_clothing = tracked_hidden_clothing != 0x0
 
 	for(var/k in overlays_assoc_atom)
 		var/atom/A = k
@@ -136,7 +134,7 @@
 			//world.log << "Hiding the: [O]: [tracked_hidden_organs[O.id] ? "TRUE" : "FALSE"]."
 		else if(is_clothing(A))
 			var/obj/item/clothing/C = A
-			show_overlay(overlays_assoc_atom[k], (do_clothing && tracked_hidden_clothing[C.item_slot]) ? FALSE : TRUE)
+			show_overlay(overlays_assoc_atom[k], (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
 
 	return TRUE
 
@@ -246,7 +244,6 @@
 	overlays_assoc = list()
 	overlays_assoc_atom = list()
 	tracked_hidden_organs = list()
-	tracked_hidden_clothing = list()
 
 	. = ..()
 

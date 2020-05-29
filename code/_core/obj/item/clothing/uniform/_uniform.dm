@@ -9,3 +9,5 @@
 	weight = WEIGHT_2
 
 	value = 5
+
+	blocks_clothing = SLOT_TORSO_U | SLOT_GROIN_U

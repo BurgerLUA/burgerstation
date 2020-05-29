@@ -53,7 +53,7 @@
 #define BYPASS_AREA_NO_DAMAGE TRUE
 
 //Basically debug mode
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster. FALSE means disabled
 

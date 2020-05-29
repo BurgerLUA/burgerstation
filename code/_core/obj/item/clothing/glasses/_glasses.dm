@@ -9,3 +9,5 @@
 
 	var/vision_mod = FLAG_VISION_NONE
 	var/sight_mod = 0x0
+
+	blocks_clothing = SLOT_FACE_WRAP

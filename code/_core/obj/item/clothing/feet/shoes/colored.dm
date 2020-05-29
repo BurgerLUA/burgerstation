@@ -44,6 +44,7 @@
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
+	blocks_clothing = SLOT_FOOT_LEFT_U
 
 
 /obj/item/clothing/feet/shoes/colored/black
@@ -61,6 +62,7 @@
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
+	blocks_clothing = SLOT_FOOT_LEFT_U
 
 /obj/item/clothing/feet/shoes/colored/blacker
 	polymorphs = list(
@@ -76,6 +78,7 @@
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
+	blocks_clothing = SLOT_FOOT_LEFT_U
 
 
 /obj/item/clothing/feet/shoes/colored/brown
@@ -92,3 +95,4 @@
 
 	item_slot = SLOT_FOOT_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
+	blocks_clothing = SLOT_FOOT_LEFT_U

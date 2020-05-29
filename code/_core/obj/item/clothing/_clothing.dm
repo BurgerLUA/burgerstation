@@ -27,8 +27,6 @@
 	)
 
 	var/list/protected_limbs = list()
-	var/hide_hair = FALSE
-
 	var/list/protection_cold = list()
 	var/list/protection_heat = list()
 	var/list/protection_pressure = list()
@@ -38,8 +36,10 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
-	var/list/hidden_clothing = list()
-	var/list/hidden_organs = list()
+	var/list/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
+
+	var/list/hidden_clothing = 0x0 //Flags of clothing slots that it should hide when this object is equipped.
+	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
 
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()

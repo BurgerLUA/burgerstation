@@ -10,6 +10,4 @@
 
 	value = 5
 
-	hidden_organs = list(
-		BODY_TORSO = TRUE
-	)
+	blocks_clothing = SLOT_TORSO_U

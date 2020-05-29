@@ -32,6 +32,7 @@
 
 
 #define SLOT_SPECIAL      0x400000 //Special items
+#define SLOT_FACE_WRAP    0x800000 //Face wraps, like balaclava
 
 
 
