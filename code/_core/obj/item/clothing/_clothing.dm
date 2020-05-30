@@ -26,6 +26,13 @@
 		FATIGUE = 0
 	)
 
+	//Armor guide. Uses bullets as an example.
+	//10 is very minor protection, like reinforced clothing.
+	//25 is minor protection, like a makeshift plate vest.
+	//50 is moderate protection, like police grade kevlar.
+	//75 is serious protection, like military grade kevlar.
+	//100 is ultra protection, like syndicate elite space armor.
+
 	var/list/protected_limbs = list()
 	var/list/protection_cold = list()
 	var/list/protection_heat = list()

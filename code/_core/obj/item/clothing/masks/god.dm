@@ -1,16 +1,26 @@
 /obj/item/clothing/mask/god
 	name = "god mask"
 	icon = 'obj/items/clothing/masks/god.dmi'
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_LEGENDARY
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
-	desc = "Well, what is it?"
-	desc_extended = "A giant mask depicting some sort of father figure. Has a negative weight value, and decreases equip load when worn."
+	desc = "How can you kill a god?"
+	desc_extended = "Wearing this mask will make them hard to kill... if you only target their head."
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 25
+		BLADE = 100,
+		BLUNT = 100,
+		PIERCE = 100,
+		LASER = 100,
+		MAGIC = 100,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 100,
+		BIO = 100,
+		RAD = 100,
+		HOLY = 100,
+		DARK = 100,
+		FATIGUE = 100
 	)
 
 	size = SIZE_7
@@ -24,4 +34,4 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
-	value = 1000
+	value = 10000

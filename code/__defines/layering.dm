@@ -57,12 +57,12 @@
 #define LAYER_MOB_HEAD                 LAYER_MOB + 0.12
 #define LAYER_MOB_EAR                  LAYER_MOB + 0.13
 #define LAYER_MOB_EYE                  LAYER_MOB + 0.14
-#define LAYER_MOB_MASK                 LAYER_MOB + 0.15
+#define LAYER_MOB_CLOTHING_EAR         LAYER_MOB + 0.15
 
+#define LAYER_MOB_CLOTHING_HEADWRAP    LAYER_MOB + 0.21
 #define LAYER_MOB_CLOTHING_EYE         LAYER_MOB + 0.22
-#define LAYER_MOB_CLOTHING_EAR         LAYER_MOB + 0.23
-#define LAYER_MOB_GROIN                LAYER_MOB + 0.24
-#define LAYER_MOB_ARMS                 LAYER_MOB + 0.25
+#define LAYER_MOB_GROIN                LAYER_MOB + 0.23
+#define LAYER_MOB_ARMS                 LAYER_MOB + 0.24
 
 #define LAYER_MOB_LEGS                 LAYER_MOB + 0.31
 #define LAYER_MOB_FEET                 LAYER_MOB + 0.32
@@ -77,10 +77,11 @@
 #define LAYER_MOB_CLOTHING_ARMOR       LAYER_MOB + 0.45
 
 #define LAYER_MOB_CLOTHING_COAT        LAYER_MOB + 0.51
-#define LAYER_MOB_INJURY               LAYER_MOB + 0.52
-#define LAYER_MOB_HANDS                LAYER_MOB + 0.53
-#define LAYER_MOB_CLOTHING_GLOVES      LAYER_MOB + 0.54
-#define LAYER_MOB_INJURY_HANDS         LAYER_MOB + 0.65
+#define LAYER_MOB_CLOTHING_MASK        LAYER_MOB + 0.52
+#define LAYER_MOB_INJURY               LAYER_MOB + 0.53
+#define LAYER_MOB_HANDS                LAYER_MOB + 0.54
+#define LAYER_MOB_CLOTHING_GLOVES      LAYER_MOB + 0.55
+#define LAYER_MOB_INJURY_HANDS         LAYER_MOB + 0.56
 
 #define LAYER_MOB_CLOTHING_HARDSUIT    LAYER_MOB + 0.61
 #define LAYER_MOB_CLOTHING_NECK_OVER   LAYER_MOB + 0.62

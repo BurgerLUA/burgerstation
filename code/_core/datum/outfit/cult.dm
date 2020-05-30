@@ -8,7 +8,7 @@
 		/obj/item/clothing/feet/shoes/brown,
 		/obj/item/clothing/feet/shoes/brown/left,
 
-		/obj/item/clothing/hands/gloves/colored/black,
-		/obj/item/clothing/hands/gloves/colored/black/left
+		/obj/item/clothing/hands/gloves/colored/combat,
+		/obj/item/clothing/hands/gloves/colored/combat/left
 
 	)

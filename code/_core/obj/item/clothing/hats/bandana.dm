@@ -9,7 +9,29 @@
 
 	dyeable = TRUE
 
+	worn_layer = LAYER_MOB_CLOTHING_MASK
+
+	defense_rating = list(
+		MAGIC = 50,
+		COLD = 25,
+		BIO = 25
+	)
+
 	value = 5
+
+/obj/item/clothing/head/hood/bandana/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+
+	. = ..()
+
+	if(new_location.item_slot & SLOT_HEAD)
+		hidden_organs = list(BODY_HAIR_HEAD = TRUE, BODY_HAIR_FACE = FALSE)
+		worn_layer = LAYER_MOB_CLOTHING_HELMET
+
+	if(new_location.item_slot & SLOT_FACE)
+		hidden_organs = list(BODY_HAIR_HEAD = TRUE, BODY_HAIR_FACE = TRUE)
+		worn_layer = LAYER_MOB_CLOTHING_MASK
+
+	return .
 
 
 /obj/item/clothing/head/hood/bandana/red

@@ -1,4 +1,4 @@
-/obj/item/clothing/overwear/armor/vest/
+/obj/item/clothing/overwear/coat/vest/
 	name = "tactical vest"
 	icon = 'icons/obj/items/clothing/suit/black_vest.dmi'
 
@@ -30,22 +30,7 @@
 
 	value = 30
 
-/obj/item/clothing/overwear/armor/vest/colored
-	name = "colored vest"
-	icon = 'icons/obj/items/clothing/suit/white_vest.dmi'
-
-	dyeable = TRUE
-
-/obj/item/clothing/overwear/armor/vest/colored/brown
-	name = "industrial vest"
-	color = COLOR_BROWN_LIGHT
-
-/obj/item/clothing/overwear/armor/vest/colored/medical
-	name = "medical vest"
-	color = COLOR_WHITE
-
-
-/obj/item/clothing/overwear/armor/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		click_self(caller,location,control,params)
@@ -53,9 +38,21 @@
 
 	return ..()
 
+/obj/item/clothing/overwear/coat/vest/colored
+	name = "colored vest"
+	icon = 'icons/obj/items/clothing/suit/white_vest.dmi'
 
+	dyeable = TRUE
 
-/obj/item/clothing/overwear/armor/vest/sleeveless_leather_jacket
+/obj/item/clothing/overwear/coat/vest/colored/brown
+	name = "industrial vest"
+	color = COLOR_BROWN_LIGHT
+
+/obj/item/clothing/overwear/coat/vest/colored/medical
+	name = "medical vest"
+	color = COLOR_WHITE
+
+/obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/items/clothing/suit/leather_jacket_sleeveless.dmi'
 	rarity = RARITY_COMMON

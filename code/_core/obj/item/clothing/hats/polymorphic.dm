@@ -6,11 +6,11 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 10,
+		BLUNT = 50,
 		PIERCE = 25,
-		LASER = 10,
+		LASER = 25,
 		MAGIC = -25,
-		BOMB = 10
+		BOMB = 25
 	)
 
 	size = SIZE_3
@@ -36,14 +36,14 @@
 
 /obj/item/clothing/head/helmet/polymorphic/engineering
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"ears" = "#FFFFFF",
-		"stripe" = "#FFFFFF"
+		"base" = COLOR_BLACK,
+		"ears" = COLOR_ENGINEERING,
+		"stripe" = COLOR_ENGINEERING
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/medical
 	polymorphs = list(
-		"base" = "#FFFFFF",
-		"ears" = "#FFFFFF",
-		"stripe" = "#FFFFFF"
+		"base" = COLOR_WHITE,
+		"ears" = COLOR_MEDICAL,
+		"stripe" = COLOR_MEDICAL
 	)

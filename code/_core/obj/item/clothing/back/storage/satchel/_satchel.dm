@@ -12,31 +12,6 @@
 
 	value = 10
 
-
-/obj/item/clothing/back/storage/satchel/loadout/stealth
-	name = "stealth satchel"
-
-
-
-
-/obj/item/clothing/back/storage/satchel/loadout/stealth/fill_inventory()
-	new /obj/item/clothing/uniform/stealth(src)
-	new /obj/item/clothing/feet/shoes/carbon_boot(src)
-	new /obj/item/clothing/feet/shoes/carbon_boot/left(src)
-	new /obj/item/clothing/hands/gloves/colored/black(src)
-	new /obj/item/clothing/hands/gloves/colored/black/left(src)
-	new /obj/item/clothing/head/hood/skimask/black(src)
-	new /obj/item/clothing/glasses/ninja(src)
-	new /obj/item/clothing/overwear/armor/carbon_armor(src)
-	new /obj/item/weapon/melee/energy/sword/katana(src)
-	new /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper(src)
-	new /obj/item/magazine/sniper_762(src)
-	new /obj/item/magazine/sniper_762(src)
-	new /obj/item/hand_teleporter(src)
-
-	return ..()
-
-
 /obj/item/clothing/back/storage/satchel/loadout/new_player/fill_inventory()
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/storage/emergency(src)

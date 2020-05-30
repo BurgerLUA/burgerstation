@@ -10,7 +10,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		BIO = 100,
+		BIO = 90,
 		RAD = 10
 	)
 
@@ -27,7 +27,11 @@
 	desc_extended = "A flawless clown mask and wig."
 
 	defense_rating = list(
-		MAGIC = 50,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		BIO = 50,
+		RAD = 10,
 		HOLY = 50,
 		DARK = -50
 	)
@@ -47,13 +51,12 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		MAGIC = 25,
-		HEAT = 25,
-		BIO = 100,
-		RAD = 25
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		MAGIC = -25,
+		HEAT = 50,
+		BIO = 90
 	)
 
 	size = SIZE_2

@@ -7,6 +7,13 @@
 
 	vision_mod = FLAG_VISION_MEDICAL
 
+	defense_rating = list(
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
+		LASER = 25
+	)
+
 	value = 10
 
 /obj/item/clothing/glasses/medical_hud/advanced

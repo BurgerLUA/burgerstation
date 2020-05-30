@@ -20,8 +20,8 @@
 	desc = "Contains 2 insulated yellow gloves."
 
 /obj/item/storage/glovebox/yellow/fill_inventory()
-	new /obj/item/clothing/hands/gloves/colored/yellow(src)
-	new /obj/item/clothing/hands/gloves/colored/yellow/left(src)
+	new /obj/item/clothing/hands/gloves/colored/insulated(src)
+	new /obj/item/clothing/hands/gloves/colored/insulated/left(src)
 	return ..()
 
 /obj/item/storage/glovebox/padded/

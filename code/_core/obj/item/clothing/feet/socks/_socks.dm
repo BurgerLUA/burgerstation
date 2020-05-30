@@ -16,7 +16,8 @@
 
 	defense_rating = list(
 		MAGIC = 10,
-		COLD = 10
+		COLD = 25,
+		HEAT = -10
 	)
 
 	size = SIZE_0

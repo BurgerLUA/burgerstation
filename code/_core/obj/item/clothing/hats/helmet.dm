@@ -9,12 +9,12 @@
 
 	rarity = RARITY_UNCOMMON
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 50,
-		MAGIC = -50,
-		HEAT = -50
+		BLADE = 75,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 75,
+		HEAT = -50,
+		MAGIC = -100
 	)
 
 	size = SIZE_3
@@ -47,13 +47,14 @@
 	icon = 'icons/obj/items/clothing/hats/knight_templar.dmi'
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
 		LASER = 50,
 		MAGIC = -25,
-		HEAT = -50,
-		DARK = 75
+		HEAT = -25,
+		HOLY = -50,
+		DARK = 100
 	)
 
 /obj/item/clothing/head/helmet/knight/battlemage
@@ -61,11 +62,12 @@
 	icon = 'icons/obj/items/clothing/hats/knight_battlemage.dmi'
 
 	defense_rating = list(
-		BLADE = 25,
+		BLADE = 50,
 		BLUNT = 25,
 		PIERCE = 25,
-		MAGIC = 75,
-		HEAT = -50
+		LASER = 50,
+		HEAT = -50,
+		MAGIC = 50
 	)
 
 	size = SIZE_4

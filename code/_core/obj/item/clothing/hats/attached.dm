@@ -9,9 +9,15 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 10,
-		HEAT = 20,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = 25,
+		HEAT = 50,
+		COLD = -25,
+		BIO = 25,
+		HOLY = 25,
+		DARK = 25,
 	)
 
 	size = SIZE_3
@@ -29,11 +35,15 @@
 	)
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
+		BLADE = 50,
+		BLUNT = 25,
 		PIERCE = 25,
+		LASER = -25,
 		MAGIC = 50,
-		HEAT = 75
+		HEAT = 50,
+		COLD = -25,
+		HOLY = 50,
+		DARK = 50
 	)
 
 	size = SIZE_3
@@ -51,13 +61,15 @@
 	)
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 50,
-		MAGIC = 25,
-		HEAT = 75,
-		HOLY = 25,
-		DARK = 25,
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 75,
+		LASER = -25,
+		MAGIC = 50,
+		HEAT = 50,
+		COLD = -25,
+		HOLY = 50,
+		DARK = 50
 	)
 
 	size = SIZE_3

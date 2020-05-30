@@ -11,12 +11,14 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 15,
+		BLADE = 20,
+		BLUNT = 25,
 		PIERCE = 15,
-		MAGIC = 10,
+		LASER = -10,
+		MAGIC = -25,
 		HEAT = 25,
-		COLD = 10,
+		COLD = 25,
+		BOMB = 25
 	)
 
 	size = SIZE_2

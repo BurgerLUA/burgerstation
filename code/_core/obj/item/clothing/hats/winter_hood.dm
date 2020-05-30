@@ -7,13 +7,10 @@
 	)
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 0,
-		PIERCE = 5,
-		LASER = -10,
+		LASER = -25,
 		MAGIC = 50,
 		HEAT = -25,
-		COLD = 50
+		COLD = 75
 	)
 
 	protection_cold = list(
@@ -36,6 +33,12 @@
 	dyeable = FALSE
 
 	value = 10
+
+	defense_rating = list(
+		MAGIC = 50,
+		HEAT = -25,
+		COLD = 50
+	)
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE

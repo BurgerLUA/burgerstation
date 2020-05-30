@@ -1,0 +1,1 @@
+/obj/item/clothing/overwear/coat/

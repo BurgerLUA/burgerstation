@@ -10,9 +10,7 @@
 		BLUNT = -10,
 		PIERCE = 0,
 		LASER = -25,
-		MAGIC = 50,
-		HOLY = 25,
-		DARK = 25
+		MAGIC = 50
 	)
 
 	value = 40

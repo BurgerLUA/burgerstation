@@ -1,5 +1,5 @@
 /obj/item/clothing/hands/gloves/colored
-	name = "right white glove"
+	name = "right glove"
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	desc = "Slap people with these."
@@ -11,13 +11,13 @@
 	protected_limbs = list(BODY_HAND_RIGHT)
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 0,
-		PIERCE = 5,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		MAGIC = 25,
-		HEAT = 10,
-		COLD = 10,
-		BIO = 25
+		HEAT = 25,
+		COLD = 25,
+		BIO = 10
 	)
 
 	size = SIZE_1
@@ -28,14 +28,14 @@
 	dyeable = TRUE
 
 /obj/item/clothing/hands/gloves/colored/left
-	name = "left white glove"
+	name = "left glove"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
 
-/obj/item/clothing/hands/gloves/colored/black
+/obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
 	color = "#404040"
 	rarity = RARITY_UNCOMMON
@@ -48,7 +48,7 @@
 		MAGIC = -25,
 		HEAT = 25,
 		COLD = 25,
-		BOMB = 0,
+		BOMB = 10,
 		BIO = 10
 	)
 
@@ -59,7 +59,7 @@
 	size = SIZE_1
 	weight = WEIGHT_2
 
-/obj/item/clothing/hands/gloves/colored/black/left
+/obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
 	color = "#404040"
 	icon_state = "inventory_left"
@@ -73,20 +73,20 @@
 	)
 
 
-/obj/item/clothing/hands/gloves/colored/yellow
+/obj/item/clothing/hands/gloves/colored/insulated
 	name = "right insulted glove"
 	color = "#FFFF00"
 	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = 5,
+		BLUNT = 5,
 		PIERCE = 5,
-		LASER = 15,
-		MAGIC = 25,
-		HEAT = 75,
-		COLD = 75,
+		MAGIC = 50,
+		HEAT = 50,
+		COLD = -25,
 		BIO = 10,
-		FATIGUE = 100
+		FATIGUE = INFINITY
 	)
 
 	protection_cold = list(
@@ -98,7 +98,7 @@
 
 	value = 60
 
-/obj/item/clothing/hands/gloves/colored/yellow/left
+/obj/item/clothing/hands/gloves/colored/insulated/left
 	name = "left insulted glove"
 	color = "#FFFF00"
 
@@ -120,11 +120,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 5,
-		BLUNT = 5,
-		PIERCE = 5,
-		HEAT = -10,
-		COLD = 50
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = -50,
+		HEAT = 50,
+		COLD = 50,
+		BIO = 10
 	)
 
 	protection_cold = list(

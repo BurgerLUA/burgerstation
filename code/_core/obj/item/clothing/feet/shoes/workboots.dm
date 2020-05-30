@@ -11,11 +11,12 @@
 
 	defense_rating = list(
 		BLADE = 10,
-		BLUNT = 25,
-		PIERCE = 25,
+		BLUNT = 50,
+		PIERCE = 10,
+		LASER = -25,
 		MAGIC = -25,
-		HEAT = 10,
-		COLD = 10,
+		HEAT = 25,
+		COLD = 25
 	)
 
 	size = SIZE_2

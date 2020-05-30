@@ -24,12 +24,12 @@
 	icon = 'icons/obj/items/clothing/glasses/ABOMB.dmi'
 	rarity = RARITY_MYTHICAL
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 0,
-		PIERCE = 5,
-		LASER = 25,
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 15,
+		LASER = 50,
 		MAGIC = -50,
-		BOMB = 25
+		BOMB = -25
 	)
 
 	value = 200

@@ -10,6 +10,8 @@
 
 	health_base = 1000
 
+	anchored = TRUE
+
 /mob/living/advanced/npc/dummy/get_xp_multiplier()
 	return 0.1
 

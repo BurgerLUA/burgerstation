@@ -177,10 +177,8 @@ var/global/saved_icons = 0
 	update_sprite()
 	return .
 
-/turf/simulated/update_icon()
 
-	if(!corner_icons)
-		return ..()
+/turf/simulated/proc/smooth_turfs()
 
 	var/list/calc_list = list()
 
@@ -273,6 +271,13 @@ var/global/saved_icons = 0
 	pixel_x = (32 - I.Width())/2
 	pixel_y = (32 - I.Height())/2
 	layer = initial(layer) + 0.1
+
+/turf/simulated/update_icon()
+
+	if(!corner_icons)
+		return ..()
+
+	smooth_turfs()
 
 /turf/simulated/update_overlays()
 

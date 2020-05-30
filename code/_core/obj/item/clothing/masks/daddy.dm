@@ -9,7 +9,7 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 10,
+		BLUNT = 25,
 		PIERCE = 25
 	)
 

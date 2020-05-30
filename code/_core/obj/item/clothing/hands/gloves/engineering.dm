@@ -11,19 +11,21 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 30,
-		PIERCE = 15,
-		LASER = 10,
-		MAGIC = -25,
-		HEAT = 75,
-		COLD = 75,
-		BIO = 25,
-		RAD = 75
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 50,
+		MAGIC = -100,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 25,
+		BIO = 75,
+		RAD = 75,
+		FATIGUE = 100
 	)
 
 	protection_cold = list(
-		BODY_HAND_LEFT = 2
+		BODY_HAND_RIGHT = 2
 	)
 
 	size = SIZE_1
@@ -42,5 +44,5 @@
 	protected_limbs = list(BODY_HAND_LEFT)
 
 	protection_cold = list(
-		BODY_HAND_RIGHT = 2
+		BODY_HAND_LEFT = 2
 	)

@@ -1,19 +1,19 @@
-/obj/item/clothing/overwear/armor/hardsuit/engineering
+/obj/item/clothing/overwear/hardsuit/engineering
 	name = "engineering hardsuit"
 	icon = 'icons/obj/items/clothing/suit/engineering_rig.dmi'
 	rarity = RARITY_UNCOMMON
 	value = 200
 
 	defense_rating = list(
-		BLADE = 25,
+		BLADE = 50,
 		BLUNT = 50,
-		PIERCE = 25,
-		LASER = 15,
-		MAGIC = -50,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 15,
-		BIO = 25,
+		PIERCE = 50,
+		LASER = 50,
+		MAGIC = -100,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 25,
+		BIO = 75,
 		RAD = 75
 	)
 

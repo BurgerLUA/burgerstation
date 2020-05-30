@@ -1,5 +1,5 @@
 /obj/item/clothing/mask/mummy
-	name = "mummy mask"
+	name = "bandage mask"
 	icon = 'obj/items/clothing/masks/mummy.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	rarity = RARITY_UNCOMMON
@@ -9,8 +9,6 @@
 		PIERCE = 10,
 		LASER = -10,
 		MAGIC = 50,
-		HEAT = 25,
-		COLD = -15,
 		HOLY = 25,
 		DARK = 25
 	)

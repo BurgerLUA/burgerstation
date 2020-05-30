@@ -186,13 +186,13 @@
 	if(is_magazine(object))
 		var/obj/item/magazine/M = object
 		transfer_src_to_magazine(caller,M,location,control,params)
-		play(get_bullet_insert_sound(),src)
+		play(get_bullet_insert_sound(),M)
 		return TRUE
 
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		if(transfer_src_to_gun(caller,G,location,control,params))
-			play(get_bullet_insert_sound(),src)
+			play(get_bullet_insert_sound(),G)
 			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
 				play(M.get_cock_sound("forward"),src)
