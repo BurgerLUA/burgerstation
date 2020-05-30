@@ -13,6 +13,11 @@
 
 	dyeable = TRUE
 
+	defense_rating = list(
+		HEAT = -25,
+		COLD = 50
+	)
+
 
 /obj/item/clothing/overwear/coat/hoodie/black
 	color = COLOR_BLACK

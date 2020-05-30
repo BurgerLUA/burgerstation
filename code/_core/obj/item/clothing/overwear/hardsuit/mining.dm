@@ -1,4 +1,4 @@
-/obj/item/clothing/overwear/armor/hardsuit/mining
+/obj/item/clothing/overwear/hardsuit/mining
 	name = "mining hardsuit"
 	icon = 'icons/obj/items/clothing/suit/hardsuit_mining.dmi'
 	rarity = RARITY_UNCOMMON

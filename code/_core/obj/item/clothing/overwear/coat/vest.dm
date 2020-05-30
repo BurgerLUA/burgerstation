@@ -15,13 +15,10 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 15,
-		PIERCE = 15,
-		LASER = 15,
-		MAGIC = -15,
-		HEAT = 10,
-		COLD = 10
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -25,
+		MAGIC = -25
 	)
 
 	weight = WEIGHT_4

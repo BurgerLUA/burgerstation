@@ -6,7 +6,7 @@
 		BLADE = 15,
 		BLUNT = 10,
 		PIERCE = 10,
-		LASER = -15,
+		LASER = -25,
 		MAGIC = 25,
 		HEAT = -75,
 		COLD = 75
@@ -33,12 +33,11 @@
 	additional_clothing = list() // no hood
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 15,
+		BLADE = 15,
+		BLUNT = 10,
 		PIERCE = 10,
-		LASER = -10,
-		MAGIC = 10,
-		HEAT = -15,
+		LASER = -25,
+		HEAT = -50,
 		COLD = 50,
 		BOMB = 25
 	)

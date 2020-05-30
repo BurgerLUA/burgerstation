@@ -20,7 +20,9 @@ var/global/world_state = STATE_STARTING
 	//maxy = WORLD_SIZE
 	//maxz = 1
 
-	turf = /turf/unsimulated/
+	turf = /turf/unsimulated/space
+	area = /area/space
+
 
 
 /world/New()

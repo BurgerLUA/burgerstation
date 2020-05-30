@@ -6,7 +6,7 @@
 	desc_extended = ""
 
 	defense_rating = list(
-		MAGIC = 25,
+		MAGIC = 50,
 		DARK = 100
 	)
 
