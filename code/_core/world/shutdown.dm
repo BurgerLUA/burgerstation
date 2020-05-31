@@ -14,7 +14,7 @@
 	for(var/mob/living/advanced/player/P in all_players)
 		if(P.dead)
 			continue
-		P.mobdata.save_current_character()
+		P.mobdata.save_current_character(force = TRUE)
 	broadcast_to_clients("<b>All characters saved.</b>")
 
 	broadcast_to_clients("<b>Shutdown complete. Took [DECISECONDS_TO_SECONDS(world.time - start_time)] seconds.</b>")

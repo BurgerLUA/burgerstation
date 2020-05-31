@@ -8,21 +8,10 @@
 
 	var/area/A = get_area(src)
 
-	if(mobdata && mobdata.loaded_data && mobdata.loaded_data["tutorial"] == 1)
-		var/question = input("Are you sure you want to quit? All unsaved progress will be lost.") in list("Yes","No")
-		if(question == "Yes")
-			make_ghost()
-			return TRUE
-	if(mobdata && mobdata.loaded_data && mobdata.loaded_data["tutorial"] == 2)
-		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
-		if(question == "Yes")
-			save(null)
-			make_ghost()
-			return TRUE
-	else if(can_save(A))
+	if(mobdata && can_save(A))
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && can_save(A))
-			save()
+			mobdata.save_current_character()
 			make_ghost()
 			qdel(src)
 			return TRUE
@@ -53,7 +42,9 @@
 	set name = "Load Character"
 	set category = "Menu"
 
-	var/client/C = src.client
+	if(world_state != STATE_RUNNING)
+		to_chat(span("warning","The round is currently ending! Wait until next round!"))
+		return FALSE
 
 	var/savedata/client/mob/U = mobdata
 
@@ -76,7 +67,7 @@
 
 	var/file_num = name_to_choice[choice]
 
-	. = C.load(U,file_num)
+	. = client.load(U,file_num)
 
 	return .
 
@@ -85,6 +76,10 @@
 	set category = "Data"
 
 	if(client)
+
+		if(world_state != STATE_RUNNING)
+			to_chat(span("warning","The round is currently ending! Wait until next round!"))
+			return FALSE
 
 		var/savedata/client/mob/U = mobdata
 

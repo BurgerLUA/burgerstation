@@ -43,7 +43,7 @@
 			play_music_track("intro", O.client)
 
 	spawn
-		while(world_state == STATE_RUNNING)
+		while(world_state != STATE_SHUTDOWN)
 			for(var/subsystem/S in active_subsystems)
 				try
 					if(S.next_run <= ticks && S.next_run >= 0)

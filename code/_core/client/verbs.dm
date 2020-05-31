@@ -32,12 +32,12 @@
 	if(ckey == "burgerbb")
 		verbs += /client/verb/add_new_wikibot_entry
 		verbs += /client/verb/rtv
-		verbs += /client/verb/trigger_shutdown
 		verbs += /client/verb/get_threat_level
 		verbs += /client/verb/get_enemies_to_spawn
 		verbs += /client/verb/stealth_test
 		verbs += /client/verb/generate_map_icon
 		verbs += /client/verb/check_lights
+		verbs += /client/verb/test_round_end
 
 	return TRUE
 
@@ -107,12 +107,12 @@
 	set name = "Check Lights"
 	set category = "DANGER ZONE"
 
-	var/confirm = input("Are you sure you want to check the lights?","Map Generation") in list("Yes","No","Cancel")|null
-
-	var/mob_z = mob.z
+	var/confirm = input("Are you sure you want to check the lights?","Light Checking") in list("Yes","No","Cancel")|null
 
 	if(confirm != "Yes")
 		return FALSE
+
+	var/mob_z = mob.z
 
 	to_chat("Generating light spaces...")
 
@@ -123,3 +123,14 @@
 			T.color = "#00FF00"
 
 	to_chat("Done generating light spaces.")
+
+/client/verb/test_round_end()
+	set name = "Test Round End"
+	set category = "DANGER ZONE"
+
+	var/confirm = input("Are you sure you want to end the round in a NanoTrasen Victory?","NanoTrasen Victory") in list("Yes","No","Cancel")|null
+
+	if(confirm != "Yes")
+		return FALSE
+
+	world.end(WORLD_END_NANOTRASEN_VICTORY,FALSE)

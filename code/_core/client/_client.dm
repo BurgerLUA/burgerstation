@@ -311,11 +311,6 @@ var/global/list/all_clients = list()
 	last_object = over_object
 	last_location = over_location
 
-/client/proc/save_current_character()
-	if(mob && is_player(mob))
-		var/mob/living/advanced/player/P = mob
-		P.mobdata.save_current_character()
-
 /client/proc/get_permissions()
 	return FALSE
 

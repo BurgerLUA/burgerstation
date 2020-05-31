@@ -26,24 +26,3 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 	client.make_ghost(T)
 
 	return TRUE
-
-/mob/living/advanced/player/proc/save(var/save_inventory = TRUE)
-	var/savedata/client/mob/U = mobdata
-	U.save_current_character(save_inventory)
-	return TRUE
-
-/*
-/mob/living/advanced/player/Logout()
-
-	if(!qdeleting) //Only do this if you're not being deleted.
-
-		logout_time = world.time
-
-		if(loc)
-			var/area/A = get_area(src)
-			if(A.safe && A.assoc_wishgranter)
-				save(A.assoc_wishgranter)
-				qdel(src)
-
-	return ..()
-*/

@@ -60,3 +60,56 @@ var/global/world_state = STATE_STARTING
 
 	return TRUE
 */
+
+/world/proc/shutdown_server()
+	world_state = STATE_SHUTDOWN
+	for(var/client/C in all_clients)
+		C << "Shutting down world..."
+	shutdown()
+	return TRUE
+
+
+/world/proc/reboot_server()
+	world_state = STATE_SHUTDOWN
+	for(var/client/C in all_clients)
+		C << "Rebooting world... stick around to automatically rejoin."
+	Reboot(0)
+	return TRUE
+
+/world/proc/end(var/reason,var/shutdown=FALSE)
+
+	var/nice_reason = "Unknown reason."
+
+	world_state = STATE_ROUND_END
+
+	switch(reason)
+		if(WORLD_END_SHUTDOWN)
+			nice_reason = "Adminbus."
+		if(WORLD_END_NANOTRASEN_VICTORY)
+			nice_reason = "Nanotrasen Victory"
+			SSpayday.stored_payday += 10000
+			SSpayday.trigger_payday()
+			announce("Central Command","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
+		if(WORLD_END_SYNDICATE_VICTORY)
+			nice_reason = "Syndicate Victory"
+			announce("Central Command","Fission Mailed","Mission failed, we'll get them next time.")
+
+	for(var/mob/living/advanced/player/P in all_players)
+		CHECK_TICK
+		if(P.dead)
+			continue
+		P.mobdata.save_current_character(force = TRUE)
+
+	sleep(1)
+
+	play('sounds/meme/apcdestroyed.ogg',all_mobs_with_clients)
+
+	if(shutdown)
+		broadcast_to_clients(span("notice","Shutting down world in 30 seconds down the world due to [nice_reason]."))
+		CALLBACK("shutdown_world",SECONDS_TO_DECISECONDS(30),src,.proc/shutdown_server)
+	else
+		broadcast_to_clients(span("notice","Rebooting world in 30 seconds down the world due to [nice_reason]."))
+		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(30),src,.proc/reboot_server)
+
+
+	return TRUE

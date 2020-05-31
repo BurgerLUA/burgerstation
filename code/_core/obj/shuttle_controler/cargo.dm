@@ -25,7 +25,7 @@
 			total_value += calculated_value
 			qdel(O)
 
-		stored_payday += total_value
+		SSpayday.stored_payday += total_value
 
 	return ..()
 

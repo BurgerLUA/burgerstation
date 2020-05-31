@@ -151,20 +151,8 @@ var/global/list/all_areas = list()
 	if(enterer.area != src)
 		if(ismob(enterer) && !is_observer(enterer))
 			var/mob/M = enterer
-			if(M.client)
-				if(ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
-					play_ambient_sound(ambient_sound,list(enterer),environment = sound_environment,loop = TRUE)
-			/*
-			if(is_player(enterer) && enterer.area)
-				var/mob/living/advanced/player/P = M
-				if(enterer.area.safe && !src.safe) //Leaving a safezone
-					P.to_chat(span("notice","You are leaving a safezone. You will be protected for an additional [GENERATE_PROTECTION_TIME] seconds before being able to attack and be attacked again."))
-				else if(!enterer.area.safe && src.safe) //Entering a safezone
-					P.to_chat(span("notice","You are now entering a safezone. You cannot attack or be attacked by others in this area."))
-					if(assoc_wishgranter)
-						var/savedata/client/mob/U = P.mobdata
-						U.save_current_character()
-			*/
+			if(M.client && ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
+				play_ambient_sound(ambient_sound,list(enterer),environment = sound_environment,loop = TRUE)
 
 		enterer.area = src
 

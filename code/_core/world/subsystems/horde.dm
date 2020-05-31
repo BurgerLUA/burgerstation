@@ -302,7 +302,7 @@ SUBSYSTEM_DEF(horde)
 	)
 
 	if(completed_objectives >= length(tracked_objectives))
-		//Yeah there we go APC destroyed, mission acomplished.
+		world.end(WORLD_END_NANOTRASEN_VICTORY)
 		return TRUE
 
 	return FALSE

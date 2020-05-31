@@ -70,6 +70,10 @@
 		CRASH_SAFE("Someone tried to create a character on a savedata that has no owner!")
 		return FALSE
 
+	if(world_state != STATE_RUNNING)
+		owner.mob.to_chat(span("warning","The round is currently ending! Wait until next round!"))
+		return FALSE
+
 	if(text2num(character_id) > MAX_CHARACTERS)
 		owner.mob.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
 		return
@@ -79,7 +83,7 @@
 
 	return TRUE
 
-/savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE)
+/savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE,var/force=FALSE)
 
 	if(!owner)
 		return FALSE
@@ -88,6 +92,8 @@
 	if(!owner.mob)
 		return FALSE
 	if(!is_advanced(owner.mob))
+		return FALSE
+	if(!force && world_state != STATE_RUNNING)
 		return FALSE
 
 	var/mob/living/advanced/player/A = owner.mob

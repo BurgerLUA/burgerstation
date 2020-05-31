@@ -1,6 +1,10 @@
 /mob/living/advanced/player/pre_death()
+
 	. = ..()
-	save(FALSE)
+
+	if(mobdata)
+		mobdata.save_current_character(FALSE)
+
 	return .
 
 /mob/living/advanced/player/post_death()
