@@ -3,7 +3,7 @@
 	desc = "MAGIC MISSILE! MAGIC MISSILE! CLOTHING DOESN'T COUNT!"
 	desc_extended = "Fires a magical missile."
 	cost_mana = 15
-	shoot_delay = 10
+	shoot_delay = 20
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/missile.dmi'
 
@@ -13,6 +13,8 @@
 
 	damage_type = /damagetype/ranged/magic/magic_missile
 
-	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
+	shoot_sounds = list('sounds/weapons/magic/magic_missile.ogg')
 
-	projectile_speed = 10
+	projectile_speed = 20
+
+	value = 500

@@ -17,6 +17,7 @@
 
 	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
 
+	value = 200
 
 /obj/item/weapon/ranged/magic/tome/chaos/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
 
@@ -26,3 +27,7 @@
 	var/norm_y = cos(num*360)
 
 	return list(norm_x,norm_y)
+
+/obj/item/weapon/ranged/magic/tome/chaos/get_static_spread() //Base spread
+	return 0.1
+

@@ -3,7 +3,7 @@
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
 	cost_mana = 12
-	shoot_delay = 2
+	shoot_delay = 0.5
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/crystal.dmi'
 
@@ -13,6 +13,8 @@
 
 	damage_type = /damagetype/ranged/magic/crystal
 
-	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sounds/weapons/magic/zap.ogg')
 
 	projectile_speed = 20
+
+	value = 600

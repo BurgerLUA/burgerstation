@@ -16,3 +16,5 @@
 	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
 
 	projectile_speed = 10
+
+	value = 300

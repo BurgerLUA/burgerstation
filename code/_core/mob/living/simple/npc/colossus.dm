@@ -38,6 +38,11 @@
 	iff_tag = "colossus"
 	loyalty_tag = "colossus"
 
+	butcher_contents = list(
+		/obj/item/soapstone/red
+	)
+
+
 
 /mob/living/simple/npc/colossus/pre_death()
 	say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)

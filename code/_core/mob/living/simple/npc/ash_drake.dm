@@ -40,6 +40,10 @@
 		FATIGUE = INFINITY
 	)
 
+	butcher_contents = list(
+		/obj/item/clothing/overwear/armor/drake_armor,
+		/obj/item/soapstone/red
+	)
 
 /*
 /mob/living/simple/npc/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)

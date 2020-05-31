@@ -24,7 +24,7 @@
 
 /obj/projectile/laser/ice
 	name = "ice bolt"
-	icon = 'icons/obj/projectiles/ice.dmi'
+	icon = 'icons/obj/projectiles/magic.dmi'
 	icon_state = "ice"
 
 	muzzleflash_effect = /obj/effect/temp/muzzleflash/laser

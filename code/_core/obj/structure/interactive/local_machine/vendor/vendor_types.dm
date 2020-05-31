@@ -121,7 +121,8 @@
 		/obj/item/clothing/neck/cape,
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,
-		/obj/item/clothing/glasses/sun
+		/obj/item/clothing/glasses/sun,
+		/obj/item/storage/glovebox/white
 	)
 
 /obj/structure/interactive/vending/clothes/hat
@@ -250,7 +251,9 @@
 		/obj/item/clothing/pants/normal/security,
 		/obj/item/clothing/shirt/normal/security,
 		/obj/item/storage/shoebox/jackboot/,
-		/obj/item/storage/glovebox/padded/
+		/obj/item/storage/glovebox/padded/,
+		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/mask/gas
 	)
 
 

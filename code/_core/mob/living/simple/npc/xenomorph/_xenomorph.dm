@@ -61,3 +61,7 @@
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	level_multiplier = 4
+
+	butcher_contents = list(
+		/obj/item/soapstone/red
+	)

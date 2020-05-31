@@ -7,6 +7,12 @@
 
 	has_quick_function = TRUE
 
+/obj/item/weapon/ranged/magic/tome/get_static_spread() //Base spread
+	return 0
+
+/obj/item/weapon/ranged/magic/tome/get_skill_spread(var/mob/living/L) //Base spread
+	return 0.05 - (0.1 * L.get_skill_power(associated_skill))
+
 /obj/item/weapon/ranged/magic/tome/quick(var/mob/caller as mob,var/atom/object,location,params)
 	if(!automatic)
 		shoot(caller,object,location,params)

@@ -39,6 +39,8 @@
 
 	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 
+	value = 1200
+
 /obj/item/weapon/ranged/magic/staff/fire/New()
 	..()
 	update_sprite()
@@ -69,6 +71,8 @@
 
 	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
 
+	value = 900
+
 
 /obj/item/weapon/ranged/magic/staff/chaos/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
 
@@ -94,9 +98,9 @@
 	projectile = /obj/projectile/magic/magic_missile
 	damage_type = /damagetype/ranged/magic/magic_missile
 
-
-
 	shoot_sounds = list('sounds/weapons/magic/magic_missile.ogg')
+
+	value = 1000
 
 /obj/item/weapon/ranged/magic/staff/focus
 

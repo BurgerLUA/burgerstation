@@ -37,3 +37,8 @@
 		DARK = INFINITY,
 		FATIGUE = INFINITY
 	)
+
+	butcher_contents = list(
+		/obj/item/clothing/overwear/armor/bone_armor,
+		/obj/item/soapstone/red
+	)

@@ -16,3 +16,5 @@
 	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
 
 	projectile_speed = 10
+
+	value = 400
