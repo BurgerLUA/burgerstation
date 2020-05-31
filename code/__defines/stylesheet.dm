@@ -45,6 +45,11 @@ body {
 	color: purple;
 	font-style: italic;
 }
+.payday{
+	font-weight: bold;
+	font-color: #3E6519;
+	font-size: 20px;
+}
 .bold{
 	font-weight: bold;
 }
