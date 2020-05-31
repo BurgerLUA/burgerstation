@@ -11,3 +11,8 @@
 			B.update_sprite()
 
 
+/mob/living/proc/get_nutrition_mod()
+	return client ? clamp(nutrition/750,0,1) : 1
+
+/mob/living/proc/get_hydration_mod()
+	return client ? clamp(hydration/750,0,1) : 1

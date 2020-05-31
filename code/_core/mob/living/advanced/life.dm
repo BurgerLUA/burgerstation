@@ -8,7 +8,7 @@
 			if(talk_duration <= 0 && !is_typing)
 				animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
 
-
+		handle_regen()
 		handle_organs()
 
 	return .
@@ -18,41 +18,45 @@ mob/living/advanced/proc/handle_regen()
 	if(!health)
 		return FALSE
 
+	var/delay_mod = LIFE_TICK
+
 	var/health_adjust = 0
 	var/mana_adjust = 0
 	var/stamina_adjust = 0
 
-	health_regen_delay = max(0,health_regen_delay - LIFE_TICK_SLOW)
-	stamina_regen_delay = max(0,stamina_regen_delay - LIFE_TICK_SLOW)
-	mana_regen_delay = max(0,mana_regen_delay - LIFE_TICK_SLOW)
+	health_regen_delay = max(0,health_regen_delay - delay_mod)
+	stamina_regen_delay = max(0,stamina_regen_delay - delay_mod)
+	mana_regen_delay = max(0,mana_regen_delay - delay_mod)
+
+	var/nutrition_hydration_mod = get_nutrition_mod() * get_hydration_mod()
 
 	if((health_regen_delay <= 0 || health.health_current <= 0 || has_status_effect(SLEEP)) && health.health_current < health.health_max)
-		var/heal_amount = health.health_regeneration*LIFE_TICK_SLOW*0.1
-		health_regen_buffer += heal_amount
-		health_adjust = heal_amount
-		if(health_adjust)
+		health_adjust = health.health_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
+		health_regen_buffer += health_adjust
+		if(health_adjust > 0)
 			add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust)
-		health_regen_delay = max(health_regen_delay,10)
+			health_regen_delay = max(health_regen_delay,CEILING(10,delay_mod))
 
-	if((stamina_regen_delay <= 0 || has_status_effect(FATIGUE) || has_status_effect(SLEEP)) && health.stamina_current < health.stamina_max)
-		var/heal_amount = health.stamina_regeneration*LIFE_TICK_SLOW*0.1
-		stamina_regen_buffer += heal_amount
-		stamina_adjust = heal_amount
-		if(stamina_adjust)
+	if((stamina_regen_delay <= 0 || has_status_effect(list(FATIGUE,SLEEP,REST))) && health.stamina_current < health.stamina_max)
+		stamina_adjust = health.stamina_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
+		stamina_regen_buffer += stamina_adjust
+		if(stamina_adjust > 0)
 			add_attribute_xp(ATTRIBUTE_ENDURANCE,stamina_adjust)
+			stamina_regen_delay = max(stamina_regen_delay,CEILING(10,delay_mod))
 
 	if((mana_regen_delay <= 0 || has_status_effect(SLEEP)) && health.mana_current < health.mana_max)
-		var/heal_amount = health.mana_regeneration*LIFE_TICK_SLOW*0.1
-		mana_regen_buffer += heal_amount
-		mana_adjust = heal_amount
-		if(mana_adjust)
+		mana_adjust = health.mana_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
+		mana_regen_buffer += mana_adjust
+		if(mana_adjust > 0)
 			add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust)
+			mana_regen_delay = max(mana_regen_delay,CEILING(max(0,30*(1 - 1.5*(health.mana_current/health.mana_max))),delay_mod))
 
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust,TRUE)
 
 	return TRUE
 
+/*
 /mob/living/advanced/on_life_slow()
 
 
@@ -62,6 +66,7 @@ mob/living/advanced/proc/handle_regen()
 		handle_regen()
 
 	return .
+*/
 
 /mob/living/advanced/pre_death()
 	return TRUE

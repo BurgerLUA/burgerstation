@@ -1,27 +1,43 @@
-/obj/projectile/bullet/fireball
+/obj/projectile/magic/
+	icon = 'icons/obj/projectiles/magic.dmi'
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
+
+/obj/projectile/magic/fireball
 	name = "fireball"
-	icon = 'icons/obj/projectiles/fire.dmi'
-	icon_state = "ball"
+	icon_state = "fireball"
 
-/obj/projectile/bullet/chaos
+/obj/projectile/magic/chaos
 	name = "chaos ball"
-	icon = 'icons/obj/projectiles/chaos.dmi'
-	icon_state = "ball"
+	icon_state = "chaos"
 
-/obj/projectile/bullet/magic_missile
+/obj/projectile/magic/magic_missile
 	name = "magic missile"
-	icon = 'icons/obj/projectiles/arrow.dmi'
-	icon_state = "arrow"
+	icon_state = "missile"
 
-/obj/projectile/bullet/rift
+/obj/projectile/magic/rift
 	name = "magic rift"
-	icon = 'icons/obj/projectiles/rift.dmi'
 	icon_state = "rift"
 
-/obj/projectile/bullet/lightning_bolt
+/obj/projectile/magic/lightning_bolt
 	name = "holy lightning bolt"
-	icon = 'icons/obj/projectiles/holy.dmi'
 	icon_state = "lightning"
+
+/obj/projectile/magic/crystal
+	name = "magic crystal"
+	icon_state = "crystal"
+
+/obj/projectile/magic/crystal/fire
+	name = "magic fire crystal"
+	icon_state = "crystal_fire"
+
+/obj/projectile/magic/shadow
+	name = "shadow ball"
+	icon_state = "shadow"
+
+/obj/projectile/magic/crystal/ice
+	name = "ice bolt"
+	icon_state = "crystal_ice"
 
 /*
 /obj/projectile/bullet/holy_summon

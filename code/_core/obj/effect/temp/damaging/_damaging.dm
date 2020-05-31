@@ -60,8 +60,8 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 obj/effect/temp/hazard/falling_fireball
 	name = "falling fireball"
-	icon = 'icons/obj/projectiles/fire.dmi'
-	icon_state = "ball2"
+	icon = 'icons/obj/projectiles/magic.dmi'
+	icon_state = "firebolt"
 	duration = SECONDS_TO_DECISECONDS(2.1)
 	hazard_range = 0
 	hazard_delay = SECONDS_TO_DECISECONDS(2)

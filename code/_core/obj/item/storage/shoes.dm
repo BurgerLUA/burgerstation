@@ -28,6 +28,16 @@
 	new /obj/item/clothing/feet/shoes/black_boots/left(src)
 	return ..()
 
+/obj/item/storage/shoebox/sandal/
+	name = "sandal box"
+	desc = "Contains a pair of sandals."
+
+/obj/item/storage/shoebox/sandal/fill_inventory()
+	new /obj/item/clothing/feet/shoes/sandal(src)
+	new /obj/item/clothing/feet/shoes/sandal/left(src)
+	return ..()
+
+
 /obj/item/storage/shoebox/winter/
 	name = "winter boot shoebox"
 	desc = "Contains a pair of winter boots. Good for protecting against the cold."

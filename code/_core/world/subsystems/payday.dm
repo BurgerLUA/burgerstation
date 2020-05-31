@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(payday)
 	var/stored_payday = 0
 
 /subsystem/payday/Initialize()
-	next_payday = world.time + SECONDS_TO_DECISECONDS(10)
+	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
 	return TRUE
 
 /subsystem/payday/on_life()
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(payday)
 		valid_players += P
 
 	for(var/mob/living/advanced/player/P in valid_players)
-		var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,1600)
+		var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,4000)
 		P.adjust_currency( BASE_PAY + bonus_to_give )
 		if(bonus_to_give)
 			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits and a [bonus_to_give] credit bonus from cargo deliveries!"))

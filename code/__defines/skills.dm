@@ -14,7 +14,7 @@
 
 //INTELLIGENCE
 #define SKILL_MAGIC "magic" //Completed
-#define SKILL_SORCERY "magic" //Completed
+#define SKILL_SORCERY "sorcery" //Completed
 #define SKILL_MEDICINE "medicine"
 #define SKILL_PARRY "parry" //Completed
 

@@ -70,6 +70,8 @@
 
 	. *= (2 - skill_power)
 
+	. *= (2 - (get_nutrition_mod() * get_hydration_mod() * 0.5))
+
 	return .
 
 

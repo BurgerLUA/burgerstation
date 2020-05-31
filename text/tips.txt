@@ -27,3 +27,7 @@ Bullets generally deal a mix of piercing and blunt damage. Pistols and revolver 
 Just because a gun has a larger caliber doesn't mean it deals more damage. Smaller rounds such as the 9mm cartridge can deal more damage to a target than larger rounds like the 12.7mm pistol as it penetrates armour better.
 NATO designated cartridges (9mm, 5.56mm, and 7.62mm) tend to penetrate better than calibre designated cartridges (.50, .45,, .223, .308), but deal less damage.
 Laser weapons are expensive and overheat easily, but they typically do full damage against targets as laser resistant armor is rare.
+Don't forget an objective finder when going out to find objectives. The objective tracker at the left of your screen only displays the initial position of the objectives, and not their current position.
+Having low nutrition and/or hydration incurs penalties. You will move slower when hungry and thirsty (Below 50% hunger/thirst) and your health, stamina, and mana will regenerate slower.
+Your stamina regenerates more while sleeping.
+Your mana regenerates less if you have low mana.

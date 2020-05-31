@@ -297,13 +297,9 @@ mob/living/proc/on_life_slow()
 
 	if(health)
 
-		if(health_regen_buffer)
-			var/health_to_regen = clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-			health.adjust_brute_loss(health_to_regen)
-			health.adjust_burn_loss(health_to_regen)
-			health.adjust_tox_loss(health_to_regen)
-			health.adjust_oxy_loss(health_to_regen)
-			health_regen_buffer -= health_to_regen
+		var/update_health = FALSE
+		var/update_stamina = FALSE
+		var/update_mana = FALSE
 
 		if(stamina_regen_buffer)
 			var/stamina_to_regen = clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
@@ -316,10 +312,13 @@ mob/living/proc/on_life_slow()
 			mana_regen_buffer -= mana_to_regen
 
 		if(health_regen_buffer)
+			var/health_to_regen = clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+			health.adjust_loss_smart(brute = health_to_regen*0.25, burn = health_to_regen*0.25, tox = health_to_regen*0.25, oxy = health_to_regen*0.25)
+			health_to_regen -= health_to_regen
 			health.update_health(health_regen_buffer,FALSE)
 
-		if(health_regen_buffer || stamina_regen_buffer || mana_regen_buffer)
-			update_health_element_icons(health_regen_buffer != 0, stamina_regen_buffer != 0, mana_regen_buffer != 0,TRUE)
+		if(update_health || update_stamina || update_mana)
+			update_health_element_icons(update_health,update_stamina,update_mana,TRUE)
 
 	return TRUE
 

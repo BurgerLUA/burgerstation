@@ -93,7 +93,7 @@
 	desc = "Shoots a fireball."
 	id = "fireball"
 
-	projectile = /obj/projectile/bullet/fireball
+	projectile = /obj/projectile/magic/fireball
 
 	damage_type = /damagetype/ranged/magic/fireball
 
