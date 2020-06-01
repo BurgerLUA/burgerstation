@@ -10,6 +10,8 @@
 	id = "syndicate_shuttle_bluespace"
 	transit_turf = /turf/unsimulated/
 
+	cheese_type = /reagent/nutrition/cheese/bluespace
+
 /area/transit/syndicate/planet
 	name = "syndicate shuttle - planet"
 	id = "syndicate_shuttle_planet"
@@ -28,6 +30,8 @@
 	name = "syndicate raid shuttle - bluespace"
 	id = "syndicate_raid_shuttle_bluespace"
 	transit_turf = /turf/unsimulated/
+
+	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/transit/syndicate_raid/ship
 	name = "syndicate raid shuttle - ship"

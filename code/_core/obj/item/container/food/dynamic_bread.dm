@@ -146,10 +146,10 @@
 	var/total_dough = 0
 	var/total_bread = 0
 
-	var/best_dough_reagent_id
+	var/best_dough_reagent_type
 	var/best_dough_reagent_amount
 
-	var/best_bread_reagent_id
+	var/best_bread_reagent_type
 	var/best_bread_reagent_amount
 
 	var/wetness = 0
@@ -157,21 +157,21 @@
 
 	var/cooked_percent = 0
 
-	for(var/reagent_id in reagents.stored_reagents)
-		var/amount = reagents.stored_reagents[reagent_id]
-		var/reagent/R = REAGENT(reagent_id)
+	for(var/reagent_type in reagents.stored_reagents)
+		var/amount = reagents.stored_reagents[reagent_type]
+		var/reagent/R = REAGENT(reagent_type)
 		wetness += R.liquid*(amount/reagents.volume_current)
 		if(R.flags_reagent & FLAG_REAGENT_RAW)
 			total_dough += amount
-			if(best_dough_reagent_id && best_dough_reagent_amount >= amount)
+			if(best_dough_reagent_type && best_dough_reagent_amount >= amount)
 				continue
-			best_dough_reagent_id = reagent_id
+			best_dough_reagent_type = reagent_type
 			best_dough_reagent_amount = amount
 		if(R.flags_reagent & FLAG_REAGENT_COOKED)
 			total_bread += amount
-			if(best_bread_reagent_id && best_bread_reagent_amount >= amount)
+			if(best_bread_reagent_type && best_bread_reagent_amount >= amount)
 				continue
-			best_bread_reagent_id = reagent_id
+			best_bread_reagent_type = reagent_type
 			best_bread_reagent_amount = amount
 
 	if(total_dough + total_bread)
@@ -185,8 +185,8 @@
 			if(20 to INFINITY)
 				wetness_prefix = "moist"
 
-		if(best_bread_reagent_id)
-			var/reagent/R = REAGENT(best_bread_reagent_id)
+		if(best_bread_reagent_type)
+			var/reagent/R = REAGENT(best_bread_reagent_type)
 			name = "[wetness_prefix] [R.name]"
 		else
 			name = "[wetness_prefix] mystery bread"
@@ -199,8 +199,8 @@
 			if(10 to INFINITY)
 				wetness_prefix = "wet"
 
-		if(best_dough_reagent_id)
-			var/reagent/R = REAGENT(best_dough_reagent_id)
+		if(best_dough_reagent_type)
+			var/reagent/R = REAGENT(best_dough_reagent_type)
 			name = "[wetness_prefix] [R.name]"
 		else
 			name = "[wetness_prefix] mystery dough"

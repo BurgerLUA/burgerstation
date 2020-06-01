@@ -71,7 +71,7 @@
 		'sounds/effects/inventory/rustle5.ogg'
 	)
 
-	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_id = volume.
+	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_type = volume.
 
 	var/flags_tool = FLAG_TOOL_NONE
 	var/tool_time = SECONDS_TO_DECISECONDS(5)

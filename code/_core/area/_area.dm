@@ -49,7 +49,7 @@ var/global/list/all_areas = list()
 
 	var/ambient_temperature = T0C + 20
 
-	var/cheese_type = "processed_cheese"
+	var/cheese_type = /reagent/nutrition/cheese/
 
 	var/turf/destruction_turf //The destruction turf of the area, if any.
 

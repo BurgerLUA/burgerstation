@@ -1,4 +1,4 @@
-#define CHEESE_PROCESS_TIME 100
+#define CHEESE_PROCESS_TIME 600
 
 /obj/item/container/cheese_mold
 	name = "cheese mold"
@@ -30,18 +30,18 @@
 
 	var/total_non_enzyme_volume = 0
 
-	for(var/reagent_id in reagents.stored_reagents)
-		if(has_prefix(reagent_id,"enzymes"))
+	for(var/reagent_path in reagents.stored_reagents)
+		if(ispath(reagent_path,/reagent/enzymes/))
 			continue
-		var/reagent_volume = reagents.stored_reagents[reagent_id]
+		var/reagent_volume = reagents.stored_reagents[reagent_path]
 		total_non_enzyme_volume += reagent_volume
 
 	var/obj/item/container/food/dynamic/cheese/C = new(T)
 	C.icon_state = icon_state
 	INITIALIZE(C)
-	for(var/reagent_id in cheese_mix)
-		var/reagent_volume = (cheese_mix[reagent_id]/CHEESE_PROCESS_TIME)*total_non_enzyme_volume
-		C.reagents.add_reagent(reagent_id,reagent_volume,original_temperature,FALSE,FALSE)
+	for(var/reagent_path in cheese_mix)
+		var/reagent_volume = (cheese_mix[reagent_path]/CHEESE_PROCESS_TIME)*total_non_enzyme_volume
+		C.reagents.add_reagent(reagent_path,reagent_volume,original_temperature,FALSE,FALSE)
 
 	T.visible_message("The cheese finishes molding!")
 
@@ -90,12 +90,12 @@
 		var/milk_count = 0
 		var/enzyme_count = 0
 
-		for(var/reagent_id in reagents.stored_reagents)
-			var/reagent_volume = reagents.stored_reagents[reagent_id]
-			var/reagent/R = REAGENT(reagent_id)
-			if(ispath(R,/reagent/nutrition/milk/))
+		for(var/reagent_type in reagents.stored_reagents)
+			var/reagent_volume = reagents.stored_reagents[reagent_type]
+			var/reagent/R = REAGENT(reagent_type)
+			if(istype(R,/reagent/nutrition/milk/))
 				milk_count += reagent_volume
-			else if(ispath(R,/reagent/enzymes/))
+			else if(istype(R,/reagent/enzymes/))
 				enzyme_count += reagent_volume
 
 		if(milk_count >= 40 && enzyme_count >= 10)

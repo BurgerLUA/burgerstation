@@ -201,9 +201,9 @@
 	var/list/c_id_to_volume = list() //What is in the reagent container, but in a nice id = volume form
 	var/list/c_id_to_temperature = list()
 
-	for(var/reagent_id in stored_reagents)
-		c_id_to_volume[reagent_id] = stored_reagents[reagent_id]
-		c_id_to_temperature[reagent_id] = stored_reagents_temperature[reagent_id]
+	for(var/reagent_type in stored_reagents)
+		c_id_to_volume[reagent_type] = stored_reagents[reagent_type]
+		c_id_to_temperature[reagent_type] = stored_reagents_temperature[reagent_type]
 
 	var/reagent_recipe/found_recipe = null
 
@@ -216,16 +216,16 @@
 
 		var/good_recipe = TRUE
 
-		for(var/reagent_id in recipe.required_reagents)
-			if(!c_id_to_volume[reagent_id] || c_id_to_volume[reagent_id] < recipe.required_reagents[reagent_id]) //if our container doesn't have what is required, then lets fuck off.
+		for(var/reagent_type in recipe.required_reagents)
+			if(!c_id_to_volume[reagent_type] || c_id_to_volume[reagent_type] < recipe.required_reagents[reagent_type]) //if our container doesn't have what is required, then lets fuck off.
 				good_recipe = FALSE
 				break
 
-			if(recipe.required_temperature_min[reagent_id] && c_id_to_temperature[reagent_id] < recipe.required_temperature_min[reagent_id])
+			if(recipe.required_temperature_min[reagent_type] && c_id_to_temperature[reagent_type] < recipe.required_temperature_min[reagent_type])
 				good_recipe = FALSE
 				break
 
-			if(recipe.required_temperature_max[reagent_id] && c_id_to_temperature[reagent_id] > recipe.required_temperature_max[reagent_id])
+			if(recipe.required_temperature_max[reagent_type] && c_id_to_temperature[reagent_type] > recipe.required_temperature_max[reagent_type])
 				good_recipe = FALSE
 				break
 
@@ -285,16 +285,16 @@
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_id,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
+/reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
 
 	amount = FLOOR(amount,REAGENT_ROUNDING)
 
-	if(!REAGENT(reagent_id))
-		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_id]) (ID) to [owner]!")
+	if(!REAGENT(reagent_type))
+		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_type]) (ID) to [owner]!")
 		return 0
 
 	if(amount == 0)
-		log_error("Reagent Error: Tried to add/remove 0 units of [reagent_id] (ID) to [owner]!")
+		log_error("Reagent Error: Tried to add/remove 0 units of [reagent_type] (ID) to [owner]!")
 		return 0
 
 	if(temperature == TNULL)
@@ -307,8 +307,8 @@
 		else
 			temperature = T0C + 20
 
-	var/previous_amount = stored_reagents[reagent_id] ? stored_reagents[reagent_id] : 0
-	var/previous_temp = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : 0
+	var/previous_amount = stored_reagents[reagent_type] ? stored_reagents[reagent_type] : 0
+	var/previous_temp = stored_reagents_temperature[reagent_type] ? stored_reagents_temperature[reagent_type] : 0
 
 	if(volume_current + amount > volume_max)
 		amount = volume_max - volume_current
@@ -316,18 +316,18 @@
 	if(amount == 0)
 		return 0
 
-	if(stored_reagents[reagent_id])
-		stored_reagents[reagent_id] += amount
+	if(stored_reagents[reagent_type])
+		stored_reagents[reagent_type] += amount
 	else
-		stored_reagents[reagent_id] = amount
-		var/reagent/R = REAGENT(reagent_id)
+		stored_reagents[reagent_type] = amount
+		var/reagent/R = REAGENT(reagent_type)
 		R.on_add(src,amount)
 
 	if(amount > 0)
-		if(stored_reagents_temperature[reagent_id] && stored_reagents[reagent_id])
-			stored_reagents_temperature[reagent_id] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_id])
+		if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
+			stored_reagents_temperature[reagent_type] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_type])
 		else
-			stored_reagents_temperature[reagent_id] = temperature
+			stored_reagents_temperature[reagent_type] = temperature
 
 	if(check_recipes)
 		process_recipes()
@@ -337,8 +337,8 @@
 
 	return amount
 
-/reagent_container/proc/remove_reagent(var/reagent_id,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
-	return -add_reagent(reagent_id,-amount,TNULL,should_update,check_recipes)
+/reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
+	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes)
 
 /reagent_container/proc/remove_all_reagents()
 
@@ -348,9 +348,9 @@
 
 	return TRUE
 
-/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_id,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE) //Transfer a single reagent by id.
-	var/old_temperature = stored_reagents_temperature[reagent_id] ? stored_reagents_temperature[reagent_id] : T0C + 20
-	return target_container.add_reagent(reagent_id,remove_reagent(reagent_id,amount,should_update,check_recipes),old_temperature,should_update,check_recipes)
+/reagent_container/proc/transfer_reagent_to(var/reagent_container/target_container,var/reagent_type,var/amount=0,var/should_update = TRUE, var/check_recipes = TRUE) //Transfer a single reagent by id.
+	var/old_temperature = stored_reagents_temperature[reagent_type] ? stored_reagents_temperature[reagent_type] : T0C + 20
+	return target_container.add_reagent(reagent_type,remove_reagent(reagent_type,amount,should_update,check_recipes),old_temperature,should_update,check_recipes)
 
 /reagent_container/proc/remove_reagents(var/amount,var/should_update=TRUE,var/check_recipes = TRUE)
 
@@ -413,8 +413,8 @@
 
 	return total_amount_transfered
 
-/reagent_container/proc/get_reagent_volume(var/reagent_id)
-	return stored_reagents[reagent_id] ? stored_reagents[reagent_id] : 0
+/reagent_container/proc/get_reagent_volume(var/reagent_type)
+	return stored_reagents[reagent_type] ? stored_reagents[reagent_type] : 0
 
 /reagent_container/proc/get_flavor()
 

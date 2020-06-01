@@ -35,10 +35,10 @@
 	var/best_reagent = null
 	var/best_reagent_amount = 0
 
-	for(var/reagent_id in reagents.stored_reagents)
-		var/reagent_amount = reagents.stored_reagents[reagent_id]
+	for(var/reagent_type in reagents.stored_reagents)
+		var/reagent_amount = reagents.stored_reagents[reagent_type]
 		if(!best_reagent || reagent_amount > best_reagent_amount)
-			best_reagent = reagent_id
+			best_reagent = reagent_type
 			best_reagent_amount = best_reagent_amount
 
 	var/reagent/R = REAGENT(best_reagent)

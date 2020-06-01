@@ -22,7 +22,7 @@
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
-
+	cheese_type = /reagent/nutrition/cheese/bluespace
 
 /area/space/deep
 	name = "deep space"

@@ -185,11 +185,90 @@
 	desc = "Nutrition and flavor from processed cheese."
 	color = "#FFC237"
 
-	nutrition_amount = 2 NUT_FACTOR
+	nutrition_amount = 1.5 NUT_FACTOR
 
 	flavor = "processed cheese"
 
 	liquid = 0.2
+
+/reagent/nutrition/cheese/kadchgall
+	name = "Kadchgall Desert cheese"
+	desc = "Nutrition and flavor from Kadchgall cheese."
+	color = "#FFE8AA"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "processed cheese"
+
+	liquid = 0.2
+
+/reagent/nutrition/cheese/cheddar
+	name = "cheddar cheese"
+	desc = "Nutrition and flavor from cheddar cheese."
+	color = "#FF9F00"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "sharp cheddar cheese"
+
+	liquid = 0.2
+
+/reagent/nutrition/cheese/brabander
+	name = "Old Brabander Jungle cheese"
+	desc = "Nutrition and flavor from Old Brabander Jungle cheese."
+	color = "#FFFCE8"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "sweet and creamy caramel cheese"
+
+	liquid = 0.2
+
+
+/reagent/nutrition/cheese/raclette
+	name = "Raclette Alpine cheese"
+	desc = "Nutrition and flavor from Raclette Alpine cheese."
+	color = "#FFF09F"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "sweet nutty cheese"
+
+	liquid = 0.2
+
+/reagent/nutrition/cheese/gruyere
+	name = "Gruyère cave cheese"
+	desc = "Nutrition and flavor from Gruyère cave cheese."
+	color = "#E4A300"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "sweet and salty nutty cream cheese"
+
+	liquid = 0.2
+
+/reagent/nutrition/cheese/guava
+	name = "Smoked Guava cheese"
+	desc = "Nutrition and flavor from Smoked Guava cheese."
+	color = "#704226"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "sweet fudge cheese"
+
+	liquid = 0.2
+
+/reagent/nutrition/cheese/bluespace
+	name = "bluespace cheese"
+	desc = "Nutrition and flavor from bluespace cheese."
+	color = "#78A093"
+
+	nutrition_amount = 4 NUT_FACTOR
+
+	flavor = "bluespace cheese"
+
+	liquid = 0.2
+
 
 //Fat
 /reagent/nutrition/fat/
@@ -202,6 +281,8 @@
 	flavor = "fat"
 
 	liquid = 0.1
+
+	flags_reagent = FLAG_REAGENT_FAT
 
 /reagent/nutrition/fat/cow
 	name = "cow's fat"
@@ -224,6 +305,8 @@
 
 	liquid = 0.2
 
+	flags_reagent = FLAG_REAGENT_RAW
+
 /reagent/nutrition/meat/cow
 	name = "raw cow's meat"
 	desc = "Nutrition and flavor from raw cow's meat."
@@ -242,6 +325,8 @@
 
 	flavor = "beef"
 
+	flags_reagent = FLAG_REAGENT_COOKED
+
 /reagent/nutrition/meat/chicken
 	name = "raw chicken"
 	desc = "Nutrition and flavor from raw chicken."
@@ -249,7 +334,7 @@
 
 	nutrition_amount = 3 NUT_FACTOR
 
-	flavor = "raw meat"
+	flavor = "raw chicken"
 
 /reagent/nutrition/meat/chicken/cooked
 	name = "cooked chicken"
@@ -258,7 +343,9 @@
 
 	nutrition_amount = 2 NUT_FACTOR
 
-	flavor = "beef"
+	flavor = "chicken"
+
+	flags_reagent = FLAG_REAGENT_COOKED
 
 
 /reagent/nutrition/junk/

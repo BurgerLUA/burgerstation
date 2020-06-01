@@ -11,10 +11,14 @@
 	hazard = "cold"
 	desired_light_color = "#898989"
 
+	cheese_type = /reagent/nutrition/cheese/raclette
+
 /area/exterior/grass
 	name = "grass"
 	icon_state = "grass"
 	desired_light_color = "#CCB06A"
+
+	cheese_type = /reagent/nutrition/cheese/cheddar
 
 /area/exterior/grass/village
 	name = "village"
@@ -36,6 +40,8 @@
 	desired_light_range = 8
 	desired_light_power = 1
 	desired_light_color = "#29332C"
+
+	cheese_type = /reagent/nutrition/cheese/brabander
 
 
 /area/exterior/jungle/setup_sunlight(var/turf/T)
@@ -68,3 +74,5 @@
 	desired_light_range = 8
 	desired_light_power = 1
 	desired_light_color = "#724C2B"
+
+	cheese_type = /reagent/nutrition/cheese/kadchgall

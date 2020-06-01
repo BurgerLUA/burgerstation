@@ -18,6 +18,8 @@
 		'sounds/ambient/cave_2.ogg',
 	)
 
+	cheese_type = /reagent/nutrition/cheese/gruyere
+
 /area/interior/cave/lava
 	name = "lava cave"
 	icon_state = "lava_cave"
@@ -25,6 +27,8 @@
 	desired_light_range = 9
 	desired_light_power = 1
 	desired_light_color ="#7F3B11"
+
+	cheese_type = /reagent/nutrition/cheese/guava
 
 /area/interior/cave/lava/setup_sunlight(var/turf/T)
 

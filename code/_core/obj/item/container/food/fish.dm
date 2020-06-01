@@ -16,20 +16,20 @@
 	var/best_meat
 	var/best_meat_volume
 
-	for(var/reagent_id in reagents.stored_reagents)
-		var/amount = reagents.stored_reagents[reagent_id]
-		var/reagent/R = REAGENT(reagent_id)
+	for(var/reagent_type in reagents.stored_reagents)
+		var/amount = reagents.stored_reagents[reagent_type]
+		var/reagent/R = REAGENT(reagent_type)
 
 		if(R.flags_reagent & FLAG_REAGENT_COOKED)
 			total_cooked += amount
 			if(!best_meat || amount > best_meat_volume)
-				best_meat = reagent_id
+				best_meat = reagent_type
 				best_meat_volume = amount
 
 		else if(R.flags_reagent & FLAG_REAGENT_RAW)
 			total_raw += amount
 			if(!best_meat || amount > best_meat_volume)
-				best_meat = reagent_id
+				best_meat = reagent_type
 				best_meat_volume = amount
 
 	if(!best_meat)
