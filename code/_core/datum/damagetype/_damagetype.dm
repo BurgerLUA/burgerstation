@@ -251,25 +251,29 @@
 
 		var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 		var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0)
+		var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 
 		var/damage_blocked = 0
 		var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
 		for(var/damage_type in damage_to_deal)
 			var/victim_defense = defense_rating_victim[damage_type]
+			if(victim_defense == INFINITY)
+				damage_to_deal[damage_type] = 0
+				continue
 			if(victim_defense > 0)
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-			var/old_damage_amount = damage_to_deal[damage_type]
+			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)
 			damage_to_deal[damage_type] = max(0,new_damage_amount)
 
-		var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
+		if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)
+			damage_to_deal[FATIGUE] += damage_blocked*0.25
+
 		for(var/damage_type in damage_to_deal)
 			var/damage_amount = damage_to_deal[damage_type]
 			var/real_damage_type = attack_damage_conversion[damage_type]
 			damage_to_deal_main[real_damage_type] += damage_amount * critical_hit_multiplier
-
-
 
 		do_attack_animation(attacker,victim,weapon,hit_object,critical_hit_multiplier > 1)
 

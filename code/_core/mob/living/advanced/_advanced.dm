@@ -131,7 +131,6 @@
 		if(is_organ(A))
 			var/obj/item/organ/O = A
 			show_overlay(overlays_assoc_atom[k], (do_organs && tracked_hidden_organs[O.id]) ? FALSE : TRUE)
-			//world.log << "Hiding the: [O]: [tracked_hidden_organs[O.id] ? "TRUE" : "FALSE"]."
 		else if(is_clothing(A))
 			var/obj/item/clothing/C = A
 			show_overlay(overlays_assoc_atom[k], (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)

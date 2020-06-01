@@ -54,3 +54,6 @@
 
 #define DRUGGY "druggy"
 //Plays visuals
+
+#define GRAB "grab"
+//This actually does nothing but visual effects, and is used to check if objects can actually be grabbed.

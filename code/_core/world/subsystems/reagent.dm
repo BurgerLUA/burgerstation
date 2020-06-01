@@ -27,7 +27,6 @@ SUBSYSTEM_DEF(reagent)
 	for(var/k in subtypesof(/reagent/))
 		var/reagent/R = k
 		R = new k
-		world.log << "[R.type]"
 		all_reagents[R.type] = R
 
 	log_subsystem(name,"Initialized [length(all_reagents)] reagents.")

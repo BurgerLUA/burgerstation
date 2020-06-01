@@ -26,19 +26,12 @@
 	size = SIZE_3
 	weight = WEIGHT_3
 
-/obj/item/weapon/ranged/energy/recharging/captain/update_icon()
+/obj/item/weapon/ranged/energy/recharging/captain/update_overlays()
+	. = ..()
+	var/icon/I2 = new/icon(initial(icon),"charge[FLOOR((charge_current/charge_max) * 4, 1)]")
+	overlays += I2
+	return .
 
-	icon_state = initial(icon_state)
-	icon = initial(icon)
-
-	var/icon/I = new/icon(icon,icon_state)
-	var/icon/I2 = new/icon(icon,"charge[FLOOR((charge_current/charge_max) * 4, 1)]")
-
-	I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
 
 /obj/item/weapon/ranged/energy/recharging/captain/get_static_spread() //Base spread
 	return 0.02

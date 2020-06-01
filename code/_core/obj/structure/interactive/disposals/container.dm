@@ -63,6 +63,9 @@
 			move_to_pipe(D2)
 			return TRUE
 
+	for(var/atom/movable/M in contents)
+		M.force_move(get_turf(src.loc))
+
 	stop_thinking(src)
 
 	return FALSE

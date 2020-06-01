@@ -65,8 +65,6 @@
 	if(!flags_metabolism)
 		return
 
-	world.log << "Metabolizing: [src.get_debug_name()]."
-
 	for(var/r_id in stored_reagents)
 
 		var/volume = stored_reagents[r_id]
@@ -379,6 +377,10 @@
 	return total_amount_removed
 
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=0,var/should_update=TRUE,var/check_recipes = TRUE) //Transfer all the reagents.
+
+	if(!target_container)
+		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
+		return FALSE
 
 	if(amount == 0)
 		return FALSE

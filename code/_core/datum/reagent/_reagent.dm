@@ -31,6 +31,8 @@
 
 	var/flags_reagent
 
+	var/can_icon_state
+
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0)
 	return amount_added
 

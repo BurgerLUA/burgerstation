@@ -7,7 +7,7 @@
 
 	ai = /ai/goliath
 
-	stun_angle = 0
+	stun_angle = 90
 
 	armor_base = list(
 		BLADE = 50,

@@ -66,11 +66,9 @@
 	if(is_sneaking)
 		. *= (2 - stealth_mod*0.5)
 
-	var/skill_power = get_attribute_power(ATTRIBUTE_AGILITY)
+	. *= (2 - get_attribute_power(ATTRIBUTE_AGILITY))
 
-	. *= (2 - skill_power)
-
-	. *= (2 - (get_nutrition_mod() * get_hydration_mod() * 0.5))
+	//. *= (2 - (get_nutrition_mod() * get_hydration_mod() * 0.5))
 
 	return .
 

@@ -13,7 +13,7 @@
 		BLADE = 10,
 		BLUNT = 25,
 		PIERCE = 10,
-		LASER = -25,
+		LASER = 0,
 		MAGIC = 0,
 		HEAT = 0,
 		COLD = 25,

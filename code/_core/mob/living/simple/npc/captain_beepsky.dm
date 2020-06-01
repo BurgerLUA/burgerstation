@@ -7,6 +7,8 @@
 
 	health_base = 1000 //I'm a god.
 	immortal = TRUE //How can you kill a god?
+	damage_received_multiplier = 0.1 //What a grand and intoxicating innocence.
+
 
 	ai = /ai/doorman
 	class = "beepsky"

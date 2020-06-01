@@ -27,20 +27,36 @@
 	force_spawn = TRUE
 
 	armor_base = list(
-		BLADE = 25,
+		BLADE = 75,
 		BLUNT = 75,
-		PIERCE = -25,
-		LASER = -50,
-		MAGIC = -50,
-		HEAT = 50,
-		COLD = -100,
-		BOMB = -25,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = 25,
+		HEAT = 100,
+		COLD = 0,
+		BOMB = 25,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY
 	)
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = STAGGER,
+		PARALYZE = STAGGER,
+		FATIGUE = STAGGER,
+		STAGGER = FALSE,
+		CONFUSED = FALSE,
+		CRIT = FALSE,
+		REST = FALSE,
+		ADRENALINE = FALSE,
+		DISARM = FALSE,
+		DRUGGY = FALSE
+	)
+
+	damage_received_multiplier = 0.5
 
 	butcher_contents = list(
 		/obj/item/soapstone/red

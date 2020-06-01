@@ -16,13 +16,16 @@ SUBSYSTEM_DEF(progressbars)
 		P.update_sprite()
 
 		if(progress_list["time"] < world.time)
-			if(progress_list["src"])
-				call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
-			else
-				call(progress_list["proc"])(arglist(progress_list["args"]))
+			all_progress_bars -= A
+			try
+				if(progress_list["src"])
+					call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
+				else
+					call(progress_list["proc"])(arglist(progress_list["args"]))
+			catch(var/exception/e)
+				log_error("SSprogressbars: [e] on [e.file]:[e.line]!")
 			animate(P,alpha=0,time=5)
 			queue_delete(P,10)
-			all_progress_bars -= A
 			continue
 
 		if(progress_list["condition_proc"])
@@ -35,7 +38,7 @@ SUBSYSTEM_DEF(progressbars)
 					if(call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
 						pass = TRUE
 			catch(var/exception/e)
-				log_error("PROGRESS BAR ERROR: [e] on [e.file]:[e.line]!")
+				log_error("SSprogressbars: [e] on [e.file]:[e.line]!")
 
 			if(!pass)
 				animate(P,alpha=0,time=5)

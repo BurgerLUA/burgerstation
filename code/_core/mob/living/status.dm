@@ -1,5 +1,14 @@
 /mob/living/proc/add_status_effect(var/status_type,var/magnitude,var/duration,var/atom/source,var/force=FALSE,var/stealthy=FALSE)
 
+	if(!force && length(status_immune) && status_immune[status_type])
+		if(isnum(status_immune[status_type]))
+			if(!stealthy) new/obj/effect/temp/damage_number(src.loc,duration,"IMMUNE!")
+			return FALSE
+		else
+			status_type = status_immune[status_type]
+			magnitude = magnitude*0.5
+			duration = duration*0.5
+
 	var/status_effect/S = SSstatus.all_status_effects[status_type]
 	if(!S)
 		CRASH_SAFE("Invalid status effect added! ([status_type])")

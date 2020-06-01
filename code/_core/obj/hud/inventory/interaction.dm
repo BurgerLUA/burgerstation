@@ -50,7 +50,12 @@
 
 	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
 		if(isturf(object.loc))
-			return grab_object(caller,object,location,control,params)
+			if(is_living(object))
+				var/mob/living/L = object
+				if(!L.add_status_effect(GRAB))
+					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
+					return TRUE
+			grab_object(caller,object,location,control,params)
 		else
 			return wield_object(caller,defer_object)
 

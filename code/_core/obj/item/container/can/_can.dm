@@ -44,7 +44,7 @@
 	var/reagent/R = REAGENT(best_reagent)
 	name = R.name
 	desc = R.desc
-	icon_state = best_reagent
+	icon_state = R.can_icon_state
 	desc_extended = "An alluminum can that is said to contain delicious beverage. This one contains [R.name]."
 
 	return ..()

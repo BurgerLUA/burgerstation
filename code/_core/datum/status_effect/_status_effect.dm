@@ -51,7 +51,7 @@
 	desc = "You're staggered!"
 	id = STAGGER
 	minimum = 5
-	maximum = 20
+	maximum = 10
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
@@ -114,6 +114,16 @@
 
 	return ..(owner,source,magnitude,duration,stealthy)
 
+/status_effect/grab
+	name = "Grab"
+	desc = "You're grabbed!"
+	id = GRAB
+	minimum = 5
+	maximum = 5
+
+/status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.add_status_effect(PARALYZE,magnitude,duration,source = source,stealth = TRUE)
+	return ..()
 
 /status_effect/druggy
 	name = "Druggy"

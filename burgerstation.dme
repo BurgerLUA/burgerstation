@@ -545,7 +545,6 @@
 #include "code\_core\mob\living\simple\npc\colossus.dm"
 #include "code\_core\mob\living\simple\npc\crab.dm"
 #include "code\_core\mob\living\simple\npc\goliath.dm"
-#include "code\_core\mob\living\simple\npc\monkey.dm"
 #include "code\_core\mob\living\simple\npc\penguin.dm"
 #include "code\_core\mob\living\simple\npc\screech.dm"
 #include "code\_core\mob\living\simple\npc\slime.dm"

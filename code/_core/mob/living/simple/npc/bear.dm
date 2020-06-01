@@ -25,6 +25,7 @@
 		FATIGUE = 0
 	)
 
+	health_base = 200
 
 /mob/living/simple/npc/bear/post_death()
 	. = ..()

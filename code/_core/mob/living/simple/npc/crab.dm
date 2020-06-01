@@ -9,7 +9,6 @@
 
 	stun_angle = 180
 
-
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 10,
@@ -60,21 +59,36 @@
 	damage_type = /damagetype/npc/crab/king
 
 	armor_base = list(
-		BLADE = 100,
-		BLUNT = 50,
+		BLADE = 75,
+		BLUNT = 75,
 		PIERCE = 100,
-		LASER = 25,
-		MAGIC = 25,
-		HEAT = -15,
-		COLD = -15,
-		BOMB = -15,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 75
+		LASER = 50,
+		MAGIC = 50,
+		HEAT = 0,
+		COLD = 25,
+		BOMB = 25,
+		BIO = 50,
+		RAD = 25,
+		HOLY = 100,
+		DARK = 100,
+		FATIGUE = INFINITY
 	)
 
+	damage_received_multiplier = 0.5
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = STAGGER,
+		PARALYZE = STAGGER,
+		FATIGUE = STAGGER,
+		STAGGER = FALSE,
+		CONFUSED = FALSE,
+		CRIT = FALSE,
+		REST = FALSE,
+		ADRENALINE = FALSE,
+		DISARM = FALSE,
+		DRUGGY = FALSE
+	)
 
 
 /mob/living/simple/npc/crab/king/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)

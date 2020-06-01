@@ -446,7 +446,6 @@
 
 	if(objective_attack)
 		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
-			world.log << "[owner] says fuck off"
 			set_objective(null)
 		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
 			frustration_attack++

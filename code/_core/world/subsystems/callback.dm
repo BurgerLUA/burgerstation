@@ -18,10 +18,13 @@ SUBSYSTEM_DEF(callback)
 		var/stored_args = callback_value["args"]
 		var/datum/stored_object = callback_value["object"]
 		src.all_callbacks -= callback_id
-		if(stored_object)
-			call(stored_object,stored_proc)(arglist(stored_args))
-		else
-			call(stored_proc)(arglist(stored_args))
+		try
+			if(stored_object)
+				call(stored_object,stored_proc)(arglist(stored_args))
+			else
+				call(stored_proc)(arglist(stored_args))
+		catch(var/exception/e)
+			log_error("SScallback: [e] on [e.file]:[e.line]!")
 
 	return TRUE
 

@@ -21,10 +21,3 @@
 
 /obj/projectile/bullet/laser/weak
 	icon_state = "weak"
-
-/obj/projectile/laser/ice
-	name = "ice bolt"
-	icon = 'icons/obj/projectiles/magic.dmi'
-	icon_state = "ice"
-
-	muzzleflash_effect = /obj/effect/temp/muzzleflash/laser

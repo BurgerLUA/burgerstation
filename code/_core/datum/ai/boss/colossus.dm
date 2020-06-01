@@ -129,7 +129,7 @@
 			if(bullet_count > 1)
 				local_angle = (i - (bullet_count / 2)) * (360/bullet_count)
 
-			new /obj/projectile/laser/ice(
+			new /obj/projectile/magic/crystal/ice(
 				get_turf(owner),
 				owner,
 				owner,

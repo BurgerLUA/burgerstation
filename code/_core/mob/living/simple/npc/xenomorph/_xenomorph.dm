@@ -18,7 +18,7 @@
 		BLADE = 50,
 		BLUNT = 50,
 		PIERCE = 50,
-		LASER = -50,
+		LASER = -25,
 		MAGIC = -25,
 		HEAT = -25,
 		COLD = 90,
@@ -49,7 +49,37 @@
 	icon = 'icons/mob/living/simple/alien_queen.dmi'
 	icon_state = "alien_queen"
 	pixel_x = -16
-	health_base = 400
+	health_base = 1000
+
+	armor_base = list(
+		BLADE = 90,
+		BLUNT = 90,
+		PIERCE = 90,
+		LASER = 25,
+		MAGIC = 25,
+		HEAT = 25,
+		COLD = 100,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = 50,
+		DARK = 100,
+		FATIGUE = INFINITY
+	)
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = STAGGER,
+		PARALYZE = STAGGER,
+		FATIGUE = STAGGER,
+		STAGGER = FALSE,
+		CONFUSED = FALSE,
+		CRIT = FALSE,
+		REST = FALSE,
+		ADRENALINE = FALSE,
+		DISARM = FALSE,
+		DRUGGY = FALSE
+	)
 
 	ai = /ai/xenomorph_queen
 	damage_type = /damagetype/npc/xenomorph/queen
@@ -65,3 +95,5 @@
 	butcher_contents = list(
 		/obj/item/soapstone/red
 	)
+
+	damage_received_multiplier = 0.5

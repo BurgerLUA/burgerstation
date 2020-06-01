@@ -28,10 +28,10 @@
 		BLADE = 50,
 		BLUNT = 25,
 		PIERCE = 25,
-		LASER = -25,
-		MAGIC = -25,
+		LASER = 100,
+		MAGIC = 0,
 		HEAT = INFINITY,
-		COLD = -25,
+		COLD = 0,
 		BOMB = 50,
 		BIO = 75,
 		RAD = 75,
@@ -40,10 +40,28 @@
 		FATIGUE = INFINITY
 	)
 
+	damage_received_multiplier = 0.5
+
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/drake_armor,
 		/obj/item/soapstone/red
 	)
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = STAGGER,
+		PARALYZE = STAGGER,
+		FATIGUE = STAGGER,
+		STAGGER = FALSE,
+		CONFUSED = FALSE,
+		CRIT = FALSE,
+		REST = FALSE,
+		ADRENALINE = FALSE,
+		DISARM = FALSE,
+		DRUGGY = FALSE
+	)
+
+
 
 /*
 /mob/living/simple/npc/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
