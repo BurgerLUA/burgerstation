@@ -55,7 +55,13 @@
 			remove_status_effect(SLEEP)
 			return FALSE
 
-	return ..()
+	. = ..()
+
+	if(.)
+		add_nutrition(-0.01,FALSE)
+		add_hydration(-0.01,FALSE)
+
+	return .
 
 /mob/living/get_movement_delay()
 	. = ..()
@@ -68,7 +74,7 @@
 
 	. *= (2 - get_attribute_power(ATTRIBUTE_AGILITY))
 
-	//. *= (2 - (get_nutrition_mod() * get_hydration_mod() * 0.5))
+	. *= (2 - (get_nutrition_mod() * get_hydration_mod()))
 
 	return .
 

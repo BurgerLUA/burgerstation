@@ -61,7 +61,7 @@
 
 	return FALSE
 
-/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	. = ..()
 
@@ -91,14 +91,59 @@
 			O.bleeding = TRUE
 
 	if(ai)
-		ai.on_damage_received(atom_damaged,attacker,damage_table,damage_amount)
+		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount)
 
-	if(dead && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
+	if(dead && time_of_death + 30 <= world.time && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
-		var/blade_damage = SAFENUM(damage_table[BLADE])
-		if(blade_damage >= src.health.health_max*0.1)
-			src.butcher(attacker)
+		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
+		if(blade_damage >= min(100,src.health.health_max*0.1))
+			if(L.can_butcher(weapon,src))
+				L.visible_message(span("warning","\The [L.name] starts to butcher \the [src.name]!"),span("warning","You start to butcher \the [src.name]!"))
+				PROGRESS_BAR(L,L,100,.proc/butcher,src)
+				PROGRESS_BAR_CONDITIONS(L,L,.proc/can_butcher,weapon,src)
 		else
 			L.to_chat("You need a stronger blade to butcher \the [src.name]!")
 
 	return .
+
+/mob/living/proc/can_butcher(var/obj/item/butcher_item,var/mob/living/butcher_target)
+
+	if(!butcher_item || !butcher_target)
+		to_chat(span("warning","You can't butcher that!"))
+		return FALSE
+
+	if(!is_inventory(butcher_item.loc))
+		to_chat(span("warning","You must be holding \the [butcher_item.name] to butcher \the [butcher_target.name]!"))
+		return FALSE
+
+	if(!isturf(butcher_target.loc))
+		to_chat(span("warning","You can't butcher \the [butcher_target.name] in there!"))
+		return FALSE
+
+	if(get_dist(src,butcher_target) > 1 || get_dist(src,butcher_item) > 1)
+		to_chat(span("warning","You're too far way to butcher \the [butcher_target.name]!"))
+		return FALSE
+
+	if(!butcher_target.dead)
+		to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))
+		return FALSE
+
+	return TRUE
+
+/mob/living/proc/butcher(var/mob/living/target)
+
+	src.visible_message(span("danger","\The [src.name] butchers \the [target.name]!"),span("danger","You butcher \the [target.name]."))
+
+	for(var/k in target.butcher_contents)
+		var/obj/O = new k(target.loc)
+		INITIALIZE(O)
+		GENERATE(O)
+
+	for(var/atom/movable/M in target.contents)
+		if(is_organ(M))
+			continue
+		M.force_move(target.loc)
+
+	qdel(target)
+
+	return TRUE

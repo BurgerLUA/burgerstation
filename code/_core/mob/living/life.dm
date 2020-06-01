@@ -237,8 +237,6 @@
 
 	update_alpha(handle_alpha())
 
-	handle_health_buffer()
-
 	handle_charges()
 
 	handle_status_effects()
@@ -275,8 +273,11 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
-	add_nutrition(-(LIFE_TICK_SLOW/10)*0.15,FALSE)
-	add_hydration(-(LIFE_TICK_SLOW/10)*0.15)
+	handle_health_buffer()
+
+	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
+	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10,FALSE)
+	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
 
 	return TRUE
 
@@ -319,18 +320,5 @@ mob/living/proc/on_life_slow()
 
 		if(update_health || update_stamina || update_mana)
 			update_health_element_icons(update_health,update_stamina,update_mana,TRUE)
-
-	return TRUE
-
-/mob/living/proc/butcher(var/mob/caller)
-
-	caller.visible_message("\The [caller.name] butchers \the [src.name].","You butcher \the [src.name].")
-
-	for(var/k in butcher_contents)
-		var/obj/O = new k(src.loc)
-		INITIALIZE(O)
-		GENERATE(O)
-
-	qdel(src)
 
 	return TRUE

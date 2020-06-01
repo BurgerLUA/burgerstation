@@ -7,3 +7,5 @@
 	attach_flag = BODY_TORSO
 
 	reagents = /reagent_container/stomach
+
+	has_life = TRUE

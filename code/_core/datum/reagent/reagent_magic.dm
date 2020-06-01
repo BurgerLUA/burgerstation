@@ -14,14 +14,14 @@
 	liquid = 0.6
 
 
-/reagent/magic/stand_juice/on_add(var/reagent_container/container,var/amount_added=0)
+/reagent/magic/stand_juice/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(. >= 10 && container.flags_metabolism & REAGENT_METABOLISM_INGEST)
-		var/mob/living/L = container.owner.loc
-		if(istype(L))
+	if(current_volume >= 10 && container.flags_metabolism & REAGENT_METABOLISM_INGEST)
+		if(is_living(container.owner.loc))
+			var/mob/living/L = container.owner.loc
 			L.add_stand()
-		container.remove_reagent(type,.)
+		return 0
 
 	return .

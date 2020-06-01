@@ -234,13 +234,13 @@
 
 	return .
 
-/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0)
+/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(container.owner && container.owner.health)
+	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+		. *= 0.5
 		container.owner.health.adjust_loss_smart(burn=.*-10)
-		container.remove_reagent(type,. * 0.5)
 
 	return .
 
@@ -259,13 +259,13 @@
 	liquid = -0.5
 
 
-/reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0)
+/reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(container.owner && container.owner.health)
-		container.owner.health.adjust_loss_smart(brute=.*-5)
-		container.remove_reagent(type,. * 0.5)
+	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+		. *= 0.5
+		container.owner.health.adjust_loss_smart(brute=.*-10)
 
 	return .
 
@@ -329,17 +329,16 @@
 
 	return .
 
-/reagent/medicine/adrenaline/epinephrine/on_add(var/reagent_container/container,var/amount_added=0)
+/reagent/medicine/adrenaline/epinephrine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(amount_added >= 10 && is_living(container.owner))
+	if(. + current_volume >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
 		L.add_status_effect(ADRENALINE,100,100)
 		if(L.dead && !L.check_death())
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
-			. = 100
-
+			return 0
 
 	return .

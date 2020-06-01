@@ -289,7 +289,9 @@
 
 	amount = FLOOR(amount,REAGENT_ROUNDING)
 
-	if(!REAGENT(reagent_type))
+	var/reagent/R = REAGENT(reagent_type)
+
+	if(!R)
 		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_type]) (ID) to [owner]!")
 		return 0
 
@@ -307,8 +309,8 @@
 		else
 			temperature = T0C + 20
 
-	var/previous_amount = stored_reagents[reagent_type] ? stored_reagents[reagent_type] : 0
-	var/previous_temp = stored_reagents_temperature[reagent_type] ? stored_reagents_temperature[reagent_type] : 0
+	var/previous_amount = SAFENUM(stored_reagents[reagent_type])
+	var/previous_temp = SAFENUM(stored_reagents_temperature[reagent_type])
 
 	if(volume_current + amount > volume_max)
 		amount = volume_max - volume_current
@@ -316,12 +318,8 @@
 	if(amount == 0)
 		return 0
 
-	if(stored_reagents[reagent_type])
-		stored_reagents[reagent_type] += amount
-	else
-		stored_reagents[reagent_type] = amount
-		var/reagent/R = REAGENT(reagent_type)
-		R.on_add(src,amount)
+	amount = R.on_add(src,amount,previous_amount)
+	stored_reagents[reagent_type] += amount
 
 	if(amount > 0)
 		if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])

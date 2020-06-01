@@ -20,7 +20,7 @@
 	//initialize_blends()
 	update_sprite()
 
-	caller.to_chat(span("notice","You dye \the [choice]."))
+	caller.to_chat(span("notice","You dye \the [src.name]."))
 	update_sprite()
 
 	return FALSE

@@ -3,27 +3,42 @@
 	desc = "A source of nutrition."
 	color = "#FFFFFF"
 
-	metabolism_stomach = NUT_AMOUNT
+	metabolism_stomach = 8
 
-	var/nutrition_amount = 0 NUT_FACTOR
-	var/hydration_amount = 0 NUT_FACTOR
-	//1 NUT FACTOR means it restores 1 per second.
+	var/nutrition_amount = 0 //Per unit
+	var/hydration_amount = 0 //Per unit
+
 
 	value = 1
 
 	liquid = -0.25
 
+/reagent/nutrition/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_INGEST) && is_living(container.owner.loc))
+		var/mob/living/L = container.owner.loc
+		. *= 0.5
+		if(nutrition_amount)
+			L.add_nutrition(nutrition_amount*0.5*.,FALSE)
+		if(hydration_amount)
+			L.add_hydration(hydration_amount*0.5*.,FALSE)
+
+	return .
+
 /reagent/nutrition/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
+	var/mob/living/L = owner
+	if(nutrition_amount)
+		L.add_nutrition(nutrition_amount*.,FALSE)
+	if(hydration_amount)
+		L.add_hydration(hydration_amount*.,FALSE)
+
 	if(owner && owner.health)
 		owner.health.adjust_loss_smart(brute=-.*nutrition_amount,burn=-.*nutrition_amount,tox=-.*nutrition_amount,oxy=-.*nutrition_amount)
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.add_nutrition(nutrition_amount)
-		L.add_hydration(hydration_amount)
 
 	return .
 
@@ -33,7 +48,7 @@
 	desc = "Ground up wheat. Process this to get flour."
 	color = "#AD9300"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "gross oats"
 
@@ -46,7 +61,7 @@
 	desc = "Processed wheat grains for use in baking. Process this some more to get white flour."
 	color = "#A5771C"
 
-	nutrition_amount = 1.75 NUT_FACTOR
+	nutrition_amount = 1.75
 
 	flavor = "gross dry oat flour"
 
@@ -59,7 +74,7 @@
 	desc = "Finely processed white flour for use in baking."
 	color = "#FFF8ED"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "gross dry flour"
 
@@ -71,7 +86,7 @@
 	desc = "Crudely mixed and made wheat dough."
 	color = "#AA9970"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "raw oaty dough"
 
@@ -82,7 +97,7 @@
 	desc = "Typical whole wheat water-flour based dough."
 	color = "#D8BD6C"
 
-	nutrition_amount = 1.75 NUT_FACTOR
+	nutrition_amount = 1.75
 
 	flavor = "raw oaty dough"
 
@@ -93,7 +108,7 @@
 	desc = "Typical whole wheat water-flour based dough."
 	color = "#E5D4A2"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "raw dough"
 
@@ -105,7 +120,7 @@
 	desc = "Crudely mixed and made wheat dough."
 	color = "#A09170"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "tough bread"
 
@@ -116,7 +131,7 @@
 	desc = "Typical whole wheat water-flour based dough."
 	color = "#A8784D"
 
-	nutrition_amount = 1.75 NUT_FACTOR
+	nutrition_amount = 1.75
 
 	flavor = "whole grain bread"
 
@@ -127,7 +142,7 @@
 	desc = "Typical whole wheat water-flour based dough."
 	color = "#E0AC33"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "white bread"
 
@@ -139,7 +154,7 @@
 	desc = "Processed sugar."
 	color = "#F4FFF8"
 
-	nutrition_amount = 3 NUT_FACTOR
+	nutrition_amount = 3
 
 	flavor = "sweetness"
 
@@ -150,7 +165,7 @@
 	desc = "Unprocessed sugarcane sugar."
 	color = "#CEA171"
 
-	nutrition_amount = 2 NUT_FACTOR
+	nutrition_amount = 2
 
 	flavor = "sweetness"
 
@@ -160,7 +175,7 @@
 	desc = "Nutrition and flavor from a chanterelle mushroom."
 	color = "#FFDD8F"
 
-	nutrition_amount = 1 NUT_FACTOR
+	nutrition_amount = 1
 
 	flavor = "mushroom"
 
@@ -172,8 +187,8 @@
 	desc = "Nutrition and flavor from cow's milk."
 	color = "#FFFFFF"
 
-	nutrition_amount = 1 NUT_FACTOR
-	hydration_amount = 1 NUT_FACTOR
+	nutrition_amount = 1
+	hydration_amount = 1
 
 	flavor = "milk"
 
@@ -185,7 +200,7 @@
 	desc = "Nutrition and flavor from processed cheese."
 	color = "#FFC237"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "processed cheese"
 
@@ -196,7 +211,7 @@
 	desc = "Nutrition and flavor from Kadchgall cheese."
 	color = "#FFE8AA"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "processed cheese"
 
@@ -207,7 +222,7 @@
 	desc = "Nutrition and flavor from cheddar cheese."
 	color = "#FF9F00"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "sharp cheddar cheese"
 
@@ -218,7 +233,7 @@
 	desc = "Nutrition and flavor from Old Brabander Jungle cheese."
 	color = "#FFFCE8"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "sweet and creamy caramel cheese"
 
@@ -230,7 +245,7 @@
 	desc = "Nutrition and flavor from Raclette Alpine cheese."
 	color = "#FFF09F"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "sweet nutty cheese"
 
@@ -241,7 +256,7 @@
 	desc = "Nutrition and flavor from Gruyère cave cheese."
 	color = "#E4A300"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "sweet and salty nutty cream cheese"
 
@@ -252,7 +267,7 @@
 	desc = "Nutrition and flavor from Smoked Guava cheese."
 	color = "#704226"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "sweet fudge cheese"
 
@@ -263,7 +278,7 @@
 	desc = "Nutrition and flavor from bluespace cheese."
 	color = "#78A093"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "bluespace cheese"
 
@@ -276,7 +291,7 @@
 	desc = "Nutrition and flavor from fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 2 NUT_FACTOR
+	nutrition_amount = 2
 
 	flavor = "fat"
 
@@ -289,7 +304,7 @@
 	desc = "Nutrition and flavor from cow's fat."
 	color = "#EAD5A4"
 
-	nutrition_amount = 2 NUT_FACTOR
+	nutrition_amount = 2
 
 	flavor = "fat"
 
@@ -299,7 +314,7 @@
 	desc = "Nutrition and flavor from raw meat."
 	color = "#EA4147"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "raw meat"
 
@@ -312,7 +327,7 @@
 	desc = "Nutrition and flavor from raw cow's meat."
 	color = "#EA4147"
 
-	nutrition_amount = 4 NUT_FACTOR
+	nutrition_amount = 4
 
 	flavor = "raw meat"
 
@@ -321,7 +336,7 @@
 	desc = "Nutrition and flavor from cooked cow's meat."
 	color = "#96463C"
 
-	nutrition_amount = 3 NUT_FACTOR
+	nutrition_amount = 3
 
 	flavor = "beef"
 
@@ -332,7 +347,7 @@
 	desc = "Nutrition and flavor from raw chicken."
 	color = "#E2A5BB"
 
-	nutrition_amount = 3 NUT_FACTOR
+	nutrition_amount = 3
 
 	flavor = "raw chicken"
 
@@ -341,7 +356,7 @@
 	desc = "Nutrition and flavor from cooked chicken."
 	color = "#F2DCD1"
 
-	nutrition_amount = 2 NUT_FACTOR
+	nutrition_amount = 2
 
 	flavor = "chicken"
 
@@ -353,7 +368,7 @@
 	desc = "Nutrition and flavor from junk food."
 	color = "#AAAAAA"
 
-	nutrition_amount = 1 NUT_FACTOR
+	nutrition_amount = 1
 
 	flavor = "grease"
 
@@ -367,7 +382,7 @@
 	desc = "Nutrition and flavor from chips."
 	color = "#FFDE7C"
 
-	nutrition_amount = 1.25 NUT_FACTOR
+	nutrition_amount = 1.25
 
 	flavor = "chips"
 
@@ -376,7 +391,7 @@
 	desc = "Nutrition and flavor from low quality chocolate."
 	color = "#68452A"
 
-	nutrition_amount = 1.25 NUT_FACTOR
+	nutrition_amount = 1.25
 
 	flavor = "bland chocolate"
 
@@ -385,7 +400,7 @@
 	desc = "Nutrition and flavor from soy jerky."
 	color = "#683013"
 
-	nutrition_amount = 1.25 NUT_FACTOR
+	nutrition_amount = 1.25
 
 	flavor = "soy meat"
 
@@ -394,7 +409,7 @@
 	desc = "Nutrition and flavor from dried sweet raisins."
 	color = "#470068"
 
-	nutrition_amount = 1.25 NUT_FACTOR
+	nutrition_amount = 1.25
 
 	flavor = "sour raisins"
 
@@ -403,7 +418,7 @@
 	desc = "Nutrition and flavor from yellow cake."
 	color = "#FFE97C"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "bland overmoist cake"
 
@@ -413,7 +428,7 @@
 	desc = "Nutrition and flavor from cream filling cake."
 	color = "#E1FFFF"
 
-	nutrition_amount = 1.5 NUT_FACTOR
+	nutrition_amount = 1.5
 
 	flavor = "sugary cream filling"
 
@@ -422,6 +437,6 @@
 	desc = "Nutrition and flavor from cheese powder."
 	color = "#FF6A00"
 
-	nutrition_amount = 1 NUT_FACTOR
+	nutrition_amount = 1
 
 	flavor = "cheese powder"

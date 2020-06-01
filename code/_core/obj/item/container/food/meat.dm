@@ -49,8 +49,6 @@
 	var/best_fat
 	var/best_fat_volume
 
-	world.log << "Trying to find the best meat and fat."
-
 	for(var/reagent_type in reagents.stored_reagents)
 		var/amount = reagents.stored_reagents[reagent_type]
 		var/reagent/R = REAGENT(reagent_type)
@@ -79,8 +77,6 @@
 	var/reagent/RM = REAGENT(best_meat)
 	I.Blend(RM.color,ICON_MULTIPLY)
 
-	world.log << "The best meat is: [RM]."
-
 	if(best_fat)
 		var/reagent/RF = REAGENT(best_fat)
 		var/icon/I2 = new/icon(icon,"[icon_state]_fat")
@@ -101,7 +97,7 @@
 	return ..()
 
 
-/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	if(last_cooked)
 		return TRUE
@@ -186,17 +182,22 @@
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked/Generate()
+/obj/item/container/food/dynamic/meat/cooked_steak/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked/cutlet/Generate()
+/obj/item/container/food/dynamic/meat/cooked_cutlet/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,7)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,3)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked/bacon/Generate()
+/obj/item/container/food/dynamic/meat/cooked_bacon/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,3)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,2)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/raw_beefman/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
+	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()

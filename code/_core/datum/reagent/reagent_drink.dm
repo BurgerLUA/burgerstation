@@ -8,15 +8,15 @@
 
 	liquid = 0.5
 
-	hydration_amount = 3 NUT_FACTOR
+	hydration_amount = 3
 
 /reagent/nutrition/soda
 	name = "carbonated water"
 	desc = "Carbonated water."
 	color = "#DDFFFF"
 
-	nutrition_amount = 0.1 NUT_FACTOR
-	hydration_amount = 1 NUT_FACTOR
+	nutrition_amount = 0.1
+	hydration_amount = 1
 
 	flavor = "white noise"
 

@@ -57,7 +57,6 @@
 #include "code\__defines\lighting.dm"
 #include "code\__defines\maths.dm"
 #include "code\__defines\movement.dm"
-#include "code\__defines\nutrition.dm"
 #include "code\__defines\params.dm"
 #include "code\__defines\permissions.dm"
 #include "code\__defines\plane.dm"

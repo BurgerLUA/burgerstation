@@ -13,7 +13,15 @@
 
 	health_base = 100
 
-/mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+	butcher_contents = list(
+		/obj/item/soulgem/rare,
+		/obj/item/container/food/dynamic/meat/raw_beefman,
+		/obj/item/container/food/dynamic/meat/raw_beefman,
+		/obj/item/container/food/dynamic/meat/raw_beefman,
+		/obj/item/container/food/dynamic/meat/raw_beefman
+	)
+
+/mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	if(damage_amount > 20 & prob(20 + damage_amount))
 		play('sounds/weapons/beef/beef_grab.ogg',atom_damaged)

@@ -25,6 +25,17 @@
 
 	return .
 
+/obj/hud/button/hunger/get_examine_list(var/mob/caller)
+
+	. = ..()
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		. += "Your nutrition is [L.nutrition]/[initial(L.nutrition)]."
+		. += "Your hydration is [L.hydration]/[initial(L.hydration)]."
+		. += "Your energy level is [100 * L.get_nutrition_mod() * L.get_hydration_mod()]%."
+
+	return .
 
 /obj/hud/button/hunger/update_underlays()
 
@@ -46,16 +57,18 @@
 	var/initial_icon = initial(icon)
 
 	var/mob/living/L = owner
-	var/hunger_mod = (L.nutrition/1500)
-	var/thirst_mod = (L.hydration/1500)
-	var/hunger_icon = FLOOR(hunger_mod * 20,1)
-	var/thirst_icon = FLOOR(thirst_mod * 20,1)
+	var/visual_hunger_mod = clamp(L.nutrition/(initial(L.nutrition)*0.75),0,1)
+	var/visual_thirst_mod = clamp(L.hydration/(initial(L.hydration)*0.75),0,1)
+	var/hunger_mod = L.get_nutrition_mod()
+	var/thirst_mod = L.get_hydration_mod()
+	var/hunger_icon = FLOOR(visual_hunger_mod * 20,1)
+	var/thirst_icon = FLOOR(visual_thirst_mod * 20,1)
 
 	var/image/I_hunger = new/image(initial_icon,"hunger_bar_[hunger_icon]")
-	I_hunger.color = blend_colors("#FF0000","#00FF00",hunger_mod)
+	I_hunger.color = hunger_mod >= 1 ? "#00FF00" : blend_colors("#FF0000","#FFFF00",hunger_mod)
 
 	var/image/I_thirst = new/image(initial_icon,"thirst_bar_[thirst_icon]")
-	I_thirst.color = blend_colors("#FF0000","#00FF00",thirst_mod)
+	I_thirst.color = thirst_mod >= 1 ? "#00FF00" : blend_colors("#FF0000","#FFFF00",thirst_mod)
 
 	add_overlay(I_hunger)
 	add_overlay(I_thirst)

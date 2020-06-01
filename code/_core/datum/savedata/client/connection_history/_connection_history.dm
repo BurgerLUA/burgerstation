@@ -36,8 +36,6 @@
 	var/new_file_name = "[get_folder(ckey)][loaded_data["connection_date"]]_[loaded_data["connection_time"]].json"
 	var/new_file_data = json_encode(loaded_data)
 
-	//new_owner << new_file_name
-
 	text2file(new_file_data,new_file_name)
 
 	return .

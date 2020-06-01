@@ -479,11 +479,7 @@
 		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
 		return reagents.transfer_reagents_to(S.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
 
-	else
-		return reagents.transfer_reagents_to(consumer.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
-
-	return 0
-
+	return reagents.transfer_reagents_to(consumer.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
 
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 

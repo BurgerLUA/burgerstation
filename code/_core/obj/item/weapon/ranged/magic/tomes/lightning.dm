@@ -2,7 +2,7 @@
 	name = "tome of the lightning bolt"
 	desc = "Be like Zeus!"
 	desc_extended = "Hold down the fire button to charge up a powerful lightning bolt. The longer the tome is charged, the higher the damage."
-	cost_mana = 16
+	cost_mana = 32
 	shoot_delay = 10
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/lightning.dmi'

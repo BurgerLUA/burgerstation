@@ -45,7 +45,7 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+/obj/item/container/food/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	var/original_volume = reagents.volume_current
 

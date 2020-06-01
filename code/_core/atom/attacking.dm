@@ -8,7 +8,7 @@
 
 	return attack_delay
 
-/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	if(health)
 		health.update_health(damage_amount,attacker)

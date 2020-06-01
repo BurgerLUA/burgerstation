@@ -2,7 +2,7 @@
 	name = "tome of the fireball"
 	desc = "Shoot fireballs in long hallways like an asshole."
 	desc_extended = "Costs mana to use."
-	cost_mana = 12
+	cost_mana = 24
 	shoot_delay = 10
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/fireball.dmi'

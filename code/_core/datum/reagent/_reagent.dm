@@ -33,8 +33,8 @@
 
 	var/can_icon_state
 
-/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0)
-	return amount_added
+/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+	return amount_added //How much to actually add
 
 /reagent/proc/metabolize(var/atom/originial_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
