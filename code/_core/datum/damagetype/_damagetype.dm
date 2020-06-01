@@ -271,7 +271,7 @@
 				fatigue_damage += damage_blocked*0.25
 
 		if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)
-			damage_to_deal[FATIGUE] += fatigue_damage
+			damage_to_deal[FATIGUE] += FLOOR(fatigue_damage,1)
 
 		for(var/damage_type in damage_to_deal)
 			var/damage_amount = damage_to_deal[damage_type]
@@ -322,12 +322,17 @@
 				var/mob/living/V = victim
 				if(!V.dead && A.client)
 					if(critical_hit_multiplier > 1)
-						A.add_skill_xp(SKILL_PRECISION,5)
+						A.add_skill_xp(SKILL_PRECISION,CEILING(total_damage_dealt*victim.get_xp_multiplier()/critical_hit_multiplier,1))
 
 					for(var/skill in skill_stats)
 						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
+
+					for(var/attribute in attribute_stats)
+						var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						if(xp_to_give > 0)
+							A.add_attribute_xp(attribute,xp_to_give)
 
 					for(var/skill in bonus_experience)
 						var/xp_to_give = CEILING(bonus_experience[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(),1)

@@ -87,8 +87,8 @@
 #define ENABLE_VAREDIT FALSE
 
 #define ENABLE_XP TRUE
-#define ENABLE_XP_SAVING FALSE
-#define LEVEL_CAP 100
+#define ENABLE_XP_SAVING TRUE
+#define LEVEL_CAP 100 //This is the highest possible OVERALL level someone can get.
 
 #define ITEM_DELETION_TIME_DROPPED 3000 //5 minutes
 #define ITEM_DELETION_TIME_NEW 600 //60 seconds.

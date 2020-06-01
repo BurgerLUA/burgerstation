@@ -41,7 +41,7 @@ mob/living/advanced/proc/handle_regen()
 		stamina_regen_buffer += stamina_adjust
 		add_nutrition(-stamina_adjust*0.1,FALSE)
 		if(stamina_adjust > 0)
-			add_attribute_xp(ATTRIBUTE_ENDURANCE,stamina_adjust)
+			add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust)
 
 	if((mana_regen_delay <= 0 || has_status_effect(SLEEP)) && health.mana_current < health.mana_max)
 		mana_adjust = health.mana_regeneration*delay_mod*nutrition_hydration_mod*0.1*(1 + (health.mana_current/health.mana_max)*3) //The 0.1 converts from seconds to deciseconds.

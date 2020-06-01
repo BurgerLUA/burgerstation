@@ -132,11 +132,9 @@
 
 	var/mob/living/advanced/A = owner
 
-	var/endurance = A.get_attribute_power(ATTRIBUTE_ENDURANCE) //Endurance is used twice here.
-
-	health_max = A.health_base + A.get_attribute_power(ATTRIBUTE_VITALITY)*400
-	stamina_max = A.stamina_base + endurance*400
-	mana_max = A.mana_base + A.get_attribute_power(ATTRIBUTE_WISDOM)*400
+	health_max = A.health_base + A.get_attribute_power(ATTRIBUTE_VITALITY)*100
+	stamina_max = A.stamina_base + A.get_attribute_power(ATTRIBUTE_ENDURANCE)*100
+	mana_max = A.mana_base + A.get_attribute_power(ATTRIBUTE_WISDOM)*100
 
 	if(health_current <= 0) //In crit.
 		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*19)
@@ -144,9 +142,9 @@
 		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*9)
 
 	if(A.has_status_effect(list(FATIGUE,SLEEP,REST)))
-		stamina_regeneration = (3 + endurance*29)
+		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*29)
 	else
-		stamina_regeneration = (2 + endurance*19)
+		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*19)
 
 	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*19)
 

@@ -7,18 +7,18 @@
 	var/fortitude = get_attribute_level(ATTRIBUTE_FORTITUDE)
 
 	var/intelligence = get_attribute_level(ATTRIBUTE_INTELLIGENCE)
-	var/wisdom = get_attribute_level(ATTRIBUTE_WILLPOWER)
+	var/wisdom = get_attribute_level(ATTRIBUTE_WISDOM)
 	var/willpower = get_attribute_level(ATTRIBUTE_WILLPOWER)
 
 	var/dexterity = get_attribute_level(ATTRIBUTE_DEXTERITY)
-	var/agility = get_attribute_level(ATTRIBUTE_AGILITY)
+	var/resilience = get_attribute_level(ATTRIBUTE_RESILIENCE)
 	var/endurance = get_attribute_level(ATTRIBUTE_ENDURANCE)
 
-	var/weight_muscle = 20 + strength*1.2 + vitality*0.25 - intelligence*0.2
-	var/weight_fat = 60 + strength*0.3 - intelligence*0.2 - agility*0.5 - willpower*0.1 - wisdom*0.1 - dexterity*0.1 - endurance*0.5
+	var/weight_muscle = 20 + strength*1.2 + vitality*0.25 - intelligence*0.2 + resilience*0.5
+	var/weight_fat = 60 + strength*0.3 - intelligence*0.2 - willpower*0.1 - wisdom*0.1 - dexterity*0.1 - endurance*0.5 + resilience*0.5
 	var/weight_total = weight_fat + weight_muscle
-	var/height = 140 + strength*0.1 + agility*0.1 + fortitude*0.2 + vitality*0.05
-	var/masculinity = strength*0.75 + endurance*0.25 - intelligence*0.5 - agility*0.25 - dexterity*0.1 //Negative values are feminine.
+	var/height = 140 + strength*0.1 + fortitude*0.2 + vitality*0.05
+	var/masculinity = strength*0.75 + endurance*0.25 - intelligence*0.5 - dexterity*0.1 //Negative values are feminine.
 
 	//Sexism and stereotypes ahoy
 	if(gender == MALE)

@@ -16,8 +16,7 @@
 	return .
 
 /mob/living/vehicle/mech/get_movement_delay()
-	. = movement_delay
-	return . * (2 - get_attribute_power(ATTRIBUTE_AGILITY))
+	return movement_delay
 
 /mob/living/vehicle/mech/update_icon()
 

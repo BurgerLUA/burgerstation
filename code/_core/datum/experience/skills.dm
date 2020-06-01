@@ -12,7 +12,7 @@
 	id = SKILL_MELEE
 	desc = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
 	experience_power = 1.5
-	experience_multiplier = 21
+	experience_multiplier = 21.5
 	combat_level_mul = 1
 
 /experience/skill/unarmed/ //STRENGTH
@@ -53,12 +53,12 @@
 	combat_level_mul = 1
 
 /experience/skill/precision/ //DEXTERITY
-	//Each critical hit = 1xp
+	//Each point of extra damage in a critical hit = 1xp
 	name = "Precision"
 	id = SKILL_PRECISION
 	desc = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
 	experience_power = 1.5
-	experience_multiplier = 3
+	experience_multiplier = 21.5
 	combat_level_mul = 1
 
 /experience/skill/dodge/ //AGILITY

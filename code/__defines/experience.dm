@@ -13,7 +13,7 @@
 #define ATTRIBUTE_WILLPOWER "willpower"
 
 #define ATTRIBUTE_DEXTERITY "dexterity"
-#define ATTRIBUTE_AGILITY "agility"
+#define ATTRIBUTE_RESILIENCE "agility"
 #define ATTRIBUTE_ENDURANCE "endurance"
 
 #define ATTRIBUTE_LUCK "luck"
