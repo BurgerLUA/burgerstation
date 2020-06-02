@@ -1,14 +1,9 @@
-#define ICON_TO_HTML(icon,icon_state,width,height) ("<IMG CLASS=icon src=\ref[icon] ICONSTATE='[icon_state]' width='[width]' height='[height]'>")
+#define ICON_TO_HTML(icon,icon_state) ("<IMG CLASS=icon src=\ref[icon] ICONSTATE='[icon_state]'>")
 
 /proc/deunderscore(var/text)
 	return replacetextEx(text,"_"," ")
 
-/proc/police_input(var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
-
-	/*
-	for(var/badword in all_badwords)
-		input = replacetextEx(input, badword, repeat_text("*",length(badword)))
-	*/
+/proc/police_input(var/client/caller,var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
 
 	if(capitalize)
 		input = capitalize(input)
@@ -17,6 +12,10 @@
 		input = periodize(input)
 
 	input = sanitize(input,max_length)
+
+	if(caller && SSbadwords.has_badword(input))
+		caller.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
+		return FALSE
 
 	return input
 

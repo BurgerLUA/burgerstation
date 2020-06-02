@@ -8,7 +8,11 @@
 		return FALSE
 
 	if(text_to_check)
-		C.spam_protection_chat = min(C.spam_protection_chat+1+(length(text_to_check)*0.01),10)
+		if(C.last_message == text_to_check)
+			C.spam_protection_chat = 30
+		else
+			C.spam_protection_chat = min(C.spam_protection_chat+1+(length(text_to_check)*0.01),30)
+		C.last_message = text_to_check
 
 	return TRUE
 

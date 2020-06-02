@@ -8,6 +8,8 @@
 		equip_loadout("new_female",TRUE)
 	stop_music_track(client)
 
+	nutrition *= RAND_PRECISE(0.5,0.75)
+	hydration *= RAND_PRECISE(0.5,0.75)
 
 	if(ENABLE_LORE && client)
 

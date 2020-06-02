@@ -122,11 +122,11 @@
 
 		if(is_living(attacker))
 			var/mob/living/A = attacker
-			if(A.loyalty_tag != L.loyalty_tag && prob(total_damage_dealt))
+			if(A.loyalty_tag != L.loyalty_tag && luck(list(attacker,weapon),total_damage_dealt) && luck(list(victim,hit_object),100,FALSE))
 				L.add_status_effect(DISARM,5,5, source = attacker)
 				return ..()
 
-		if(prob(total_damage_dealt*0.5))
+		if(luck(list(attacker,weapon),total_damage_dealt*0.5) && luck(list(victim,hit_object),100,FALSE))
 			L.add_status_effect(STAGGER,1,1, source = attacker)
 
 	return ..()

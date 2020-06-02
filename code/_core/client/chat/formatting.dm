@@ -54,11 +54,11 @@ proc/format_speaker(var/speaker,var/source,var/tag,var/frequency=-1,var/language
 
 	if(language != LANGUAGE_BASIC)
 		tag += " [language]"
-		tag_text += ICON_TO_HTML(chat_language.icon,language,16,16)
+		tag_text += ICON_TO_HTML(chat_language.icon,language)
 
 	if(tag)
 		tag = trim(tag)
-		tag_text += ICON_TO_HTML(chat_tags.icon,tag,32,10)
+		tag_text += ICON_TO_HTML(chat_tags.icon,tag)
 		. = span(tag,"[tag_text][.]")
 
 	return .

@@ -77,7 +77,7 @@
 	if(boss_state)
 		return
 
-	if(prob(1000))
+	if(prob(50))
 		fire_rain()
 
 	new/obj/effect/temp/ash_drake/swoop_up(src.loc)

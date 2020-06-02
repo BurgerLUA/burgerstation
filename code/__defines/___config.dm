@@ -11,7 +11,6 @@
 
 #define GARBAGE_LOGS_PATH "data/server/garbage_logs.txt"
 
-#define BADWORDS "text/badwords.txt"
 #define BADNAMES "text/badnames.txt"
 
 #define WIKIBOT "data/server/wikibot.txt"

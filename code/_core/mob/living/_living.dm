@@ -4,7 +4,7 @@
 	var/list/experience/skill/skills
 	var/list/faction/factions
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	icon_state = "directional"
 

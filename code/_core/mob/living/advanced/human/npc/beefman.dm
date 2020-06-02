@@ -23,7 +23,7 @@
 
 /mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
-	if(damage_amount > 20 & prob(20 + damage_amount))
+	if(damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		play('sounds/weapons/beef/beef_grab.ogg',atom_damaged)
 		add_status_effect(STAGGER,5,5,source = attacker)
 
@@ -38,7 +38,7 @@
 	return TRUE
 
 /mob/living/advanced/npc/beefman/post_death()
-	if(prob(50))
+	if(luck(50,src))
 		CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(1,5)),src,.proc/beef)
 	return ..()
 

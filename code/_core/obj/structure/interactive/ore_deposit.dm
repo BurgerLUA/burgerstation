@@ -21,7 +21,6 @@
 
 	return ..()
 
-
 /obj/structure/interactive/ore_deposit/proc/mine(var/mob/caller)
 
 	if(uses_current <= 0)

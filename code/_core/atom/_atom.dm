@@ -41,6 +41,8 @@
 
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
+	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
+
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
 	if(length(overlays) >= 100)

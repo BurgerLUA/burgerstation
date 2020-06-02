@@ -36,7 +36,11 @@
 	if(!choice)
 		return FALSE
 
-	choice = sanitize(choice,40)
+	if(caller.client)
+		choice = police_input(caller.client,choice,40)
+
+	if(!choice)
+		return FALSE
 
 	P.real_name = choice
 	P.setup_name()

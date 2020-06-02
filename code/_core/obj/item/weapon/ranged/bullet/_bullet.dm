@@ -56,7 +56,7 @@
 	if(jammed)
 		caller.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
-	else if(B.jam_chance && prob(B.jam_chance))
+	else if(B.jam_chance && luck(list(B,src,caller),B.jam_chance,FALSE))
 		caller.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE

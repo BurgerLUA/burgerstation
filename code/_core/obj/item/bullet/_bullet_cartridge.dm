@@ -88,7 +88,7 @@
 /obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller)
 
 	if(!is_spent)
-		if(misfire_chance && prob(misfire_chance))
+		if(misfire_chance && luck(list(caller,src,loc),misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
 		item_count_max = -1

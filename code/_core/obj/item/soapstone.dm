@@ -59,6 +59,12 @@
 	if(!input_text)
 		return TRUE
 
+	if(caller.client)
+		input_text = police_input(caller.client,input_text)
+
+	if(!input_text)
+		return TRUE
+
 	var/date = get_date()
 	var/time = get_time()
 

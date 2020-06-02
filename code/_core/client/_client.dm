@@ -56,6 +56,7 @@ var/global/list/all_clients = list()
 	var/ping_num = 0
 
 	var/spam_protection_chat = 0 //Prevents users from spamming every tick.
+	var/last_message //See above.
 
 	var/list/stored_hud_images = list() //For MediHUDs
 

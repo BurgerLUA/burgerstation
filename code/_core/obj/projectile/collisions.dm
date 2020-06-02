@@ -92,7 +92,7 @@
 	if(projectile_dir & src.collision_dir)
 		. = src
 
-	if(. && P.start_turf && get_dist(P.start_turf,src) > 1 && prob(bullet_block_chance))
+	if(. && P.start_turf && get_dist(P.start_turf,src) > 1 && luck(src,bullet_block_chance))
 		return src
 
 	return .

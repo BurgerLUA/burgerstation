@@ -181,7 +181,7 @@
 	if(dead)
 		return null
 
-	if(ai && (!ai.objective_attack || !ai.parry_chance || prob(100-ai.parry_chance)))
+	if(ai && (!ai.objective_attack || !ai.parry_chance || luck(src,100-ai.parry_chance,FALSE)))
 		return null
 
 	return src
@@ -198,7 +198,7 @@
 	if(dead)
 		return null
 
-	if(ai && (!ai.objective_attack || !ai.dodge_chance || prob(100-ai.dodge_chance)))
+	if(ai && (!ai.objective_attack || !ai.dodge_chance || luck(src,100-ai.dodge_chance,FALSE)))
 		return null
 
 	return src
@@ -214,7 +214,7 @@
 	if(dead)
 		return null
 
-	if(ai && (!ai.objective_attack || !ai.block_chance || prob(100-ai.block_chance)))
+	if(ai && (!ai.objective_attack || !ai.block_chance || luck(src,100-ai.block_chance,FALSE)))
 		return null
 
 	return src

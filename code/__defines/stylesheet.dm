@@ -28,6 +28,9 @@ body {
 	color: blue;
 	font-style: italic;
 }
+.emote{
+	color: black;
+}
 .debug_message{
 	color:blue;
 	font-weight: bold;

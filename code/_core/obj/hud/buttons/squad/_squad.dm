@@ -76,9 +76,15 @@
 	while(P.client)
 		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation",null) as text|null
 
-		if(squad_name == "Cancel" || squad_name == "Create New Squad")
+		if(squad_name == "Cancel" || squad_name == "Create New Squad" || squad_name == "Cancel")
 			P.to_chat("You cheeky bastard.")
 			return FALSE
+
+		if(!squad_name)
+			return FALSE
+
+		if(P.client)
+			squad_name = police_input(P.client,squad_name)
 
 		if(!squad_name)
 			return FALSE
