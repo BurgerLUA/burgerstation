@@ -49,12 +49,12 @@
 
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = 10,
-		ATTRIBUTE_AGILITY = 20
+		ATTRIBUTE_RESILIENCE = 20
 	)
 
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLUNT,
-		ATTRIBUTE_AGILITY = LASER
+		ATTRIBUTE_RESILIENCE = LASER
 	)
 
 	skill_stats = list(

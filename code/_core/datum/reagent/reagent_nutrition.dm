@@ -21,9 +21,10 @@
 		var/mob/living/L = container.owner.loc
 		. *= 0.5
 		if(nutrition_amount)
-			L.add_nutrition(nutrition_amount*0.5*.,FALSE)
+			L.add_nutrition(nutrition_amount*.,FALSE)
 		if(hydration_amount)
-			L.add_hydration(hydration_amount*0.5*.,FALSE)
+			L.add_hydration(hydration_amount*.,FALSE)
+
 
 	return .
 

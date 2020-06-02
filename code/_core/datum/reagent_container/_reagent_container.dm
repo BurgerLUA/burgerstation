@@ -292,11 +292,11 @@
 	var/reagent/R = REAGENT(reagent_type)
 
 	if(!R)
-		log_error("Reagent Error: Tried to add/remove a null reagent ([reagent_type]) (ID) to [owner]!")
+		CRASH_SAFE("Reagent Error: Tried to add/remove a null reagent ([reagent_type]) to [owner]!")
 		return 0
 
 	if(amount == 0)
-		log_error("Reagent Error: Tried to add/remove 0 units of [reagent_type] (ID) to [owner]!")
+		CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner]!")
 		return 0
 
 	if(temperature == TNULL)
@@ -318,8 +318,13 @@
 	if(amount == 0)
 		return 0
 
-	amount = R.on_add(src,amount,previous_amount)
-	stored_reagents[reagent_type] += amount
+	. = amount
+
+	if(amount > 0)
+		amount = R.on_add(src,amount,previous_amount)
+
+	if(amount)
+		stored_reagents[reagent_type] += amount
 
 	if(amount > 0)
 		if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
@@ -333,7 +338,9 @@
 	if(should_update)
 		update_container()
 
-	return amount
+	world.log << "Returning [.]."
+
+	return . //The reason why we don't return . is for a very good reason, trust me.
 
 /reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
 	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes)

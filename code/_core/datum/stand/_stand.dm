@@ -146,8 +146,6 @@
 	if(dead || qdeleting)
 		return FALSE
 
-	remove_stand()
-
 	stand = new(src)
 	stand.generate()
 	stand.display_stand(src)

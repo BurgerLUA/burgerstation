@@ -18,10 +18,11 @@
 
 	. = ..()
 
-	if(current_volume >= 10 && container.flags_metabolism & REAGENT_METABOLISM_INGEST)
+	if(. + current_volume >= 10 && container.flags_metabolism & REAGENT_METABOLISM_INGEST)
 		if(is_living(container.owner.loc))
 			var/mob/living/L = container.owner.loc
 			L.add_stand()
-		return 0
+			if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
+			return 0
 
 	return .

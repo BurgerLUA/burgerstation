@@ -237,7 +237,7 @@
 
 	update_alpha(handle_alpha())
 
-	handle_charges()
+	handle_charges(LIFE_TICK)
 
 	handle_status_effects()
 
@@ -253,14 +253,13 @@
 	var/old_block = charge_block
 	var/old_parry = charge_parry
 
-	charge_dodge = min(charge_dodge + 10*dodge_power,CEILING(dodge_power*500,100))
-	charge_block = min(charge_block + 10*block_power,CEILING(block_power*500,100))
-	charge_parry = min(charge_parry + 10*parry_power,CEILING(parry_power*500,100))
+	charge_dodge = min(charge_dodge + charge_gain*dodge_power,CEILING(dodge_power*500,100))
+	charge_block = min(charge_block + charge_gain*block_power,CEILING(block_power*500,100))
+	charge_parry = min(charge_parry + charge_gain*parry_power,CEILING(parry_power*500,100))
 
 	if(!charge_gain || old_dodge != charge_dodge || old_block != charge_block || !old_parry != charge_parry)
 		for(var/obj/hud/button/evade/B in buttons)
 			B.update_overlays()
-
 		return TRUE
 
 	return FALSE

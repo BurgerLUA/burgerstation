@@ -24,7 +24,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	has_hard_crit = TRUE
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	var/list/attack_logs = list()
 

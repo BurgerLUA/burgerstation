@@ -336,9 +336,10 @@
 	if(. + current_volume >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
 		L.add_status_effect(ADRENALINE,100,100)
+		. = 0
+		if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
 		if(L.dead && !L.check_death())
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
-			return 0
 
 	return .
