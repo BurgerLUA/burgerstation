@@ -131,6 +131,10 @@
 
 	var/queue_delete_on_death = TRUE
 
+	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling. See mob_size.dm for more information.
+
+	var/max_level = 500 //Max level for attributes of the mob.
+
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 

@@ -1,5 +1,4 @@
 /dialogue/npc/bartender/
-	name = "Miss Flanagan"
 	id = "bartender_dialogue"
 
 /dialogue/npc/bartender/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

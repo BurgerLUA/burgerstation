@@ -105,6 +105,13 @@
 	var/consume_verb = "drink out of"
 	var/transfer_amount = 10
 
+	var/list/block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
+		ATTACK_TYPE_MELEE = 0,
+		ATTACK_TYPE_RANGED = 0.9,
+		ATTACK_TYPE_MAGIC = 0.9,
+		ATTACK_TYPE_UNARMED = 2
+	)
+
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
 		return 0
@@ -136,25 +143,17 @@
 
 /obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
-	if(istype(DT,/damagetype/unarmed/))
-		return null
-
 	if(is_living(victim))
 		var/mob/living/V = victim
-		if(istype(DT,/damagetype/ranged/))
-			return (V.get_skill_power(SKILL_BLOCK)) >= 0.75 ? src : null
+		return (V.get_skill_power(SKILL_BLOCK)) >= block_difficulty[DT.get_attack_type()] ? src : null
 
 	return src
 
 /obj/item/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
-	if(istype(DT,/damagetype/unarmed/))
-		return null
-
 	if(is_living(victim))
 		var/mob/living/V = victim
-		if(istype(DT,/damagetype/ranged/))
-			return (V.get_skill_power(SKILL_PARRY)) >= 0.75 ? src : null
+		return (V.get_skill_power(SKILL_PARRY)) >= block_difficulty[DT.get_attack_type()] ? src : null
 
 	return src
 
@@ -392,7 +391,6 @@
 
 	if(length(polymorphs))
 		icon = initial(icon)
-		icon_state = initial(icon_state)
 		var/icon/I = ICON_INVISIBLE
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
@@ -493,3 +491,23 @@
 			return FALSE
 
 	return TRUE
+
+/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+
+	if(magnitude > 1)
+
+		var/x_mod = src.x - epicenter.x
+		var/y_mod = src.y - epicenter.y
+
+		var/max = max(abs(x_mod),abs(y_mod))
+
+		if(!max)
+			x_mod = pick(-1,1)
+			y_mod = pick(-1,1)
+		else
+			x_mod *= 1/max
+			y_mod *= 1/max
+
+		throw_self(owner,null,null,null,x_mod*magnitude*2,y_mod*magnitude*2)
+
+	return ..()

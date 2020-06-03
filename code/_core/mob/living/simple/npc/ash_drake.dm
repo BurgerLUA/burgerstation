@@ -61,6 +61,8 @@
 		DRUGGY = FALSE
 	)
 
+	mob_size = MOB_SIZE_BOSS
+
 
 
 /*

@@ -36,6 +36,13 @@
 
 	health_coefficient = 0.5
 
+	block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
+		ATTACK_TYPE_MELEE = 0.5,
+		ATTACK_TYPE_RANGED = 0.95,
+		ATTACK_TYPE_MAGIC = 0.75,
+		ATTACK_TYPE_UNARMED = 0.25
+	)
+
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
 
 	if(is_living(attacker))
@@ -207,6 +214,32 @@
 
 /obj/item/organ/hand/beefman/left
 	name = "left beef hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+//Stand
+/obj/item/organ/hand/stand
+	name = "right fast hand"
+
+	attack_delay = 1
+	attack_delay_max = 4
+
+/obj/item/organ/hand/stand/left
+	name = "left fast hand"
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(

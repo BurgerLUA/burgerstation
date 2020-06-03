@@ -128,13 +128,9 @@
 /health/mob/living/advanced/update_health_stats()
 
 	if(!is_advanced(owner))
-		return 0
+		return ..()
 
 	var/mob/living/advanced/A = owner
-
-	health_max = A.health_base + A.get_attribute_power(ATTRIBUTE_VITALITY)*100
-	stamina_max = A.stamina_base + A.get_attribute_power(ATTRIBUTE_ENDURANCE)*100
-	mana_max = A.mana_base + A.get_attribute_power(ATTRIBUTE_WISDOM)*100
 
 	if(health_current <= 0) //In crit.
 		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*19)
@@ -148,7 +144,7 @@
 
 	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER)*19)
 
-	A.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+	return ..()
 
 
 /health/mob/living/advanced/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)

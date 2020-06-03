@@ -1,5 +1,4 @@
 /dialogue/npc/soldier/
-	name = "Soldier"
 	id = "soldier_dialogue"
 
 /dialogue/npc/soldier/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

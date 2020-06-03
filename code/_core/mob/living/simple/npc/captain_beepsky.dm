@@ -16,3 +16,5 @@
 
 	iff_tag = "NanoTrasen"
 	loyalty_tag = "NanoTrasen"
+
+	mob_size = MOB_SIZE_BOSS

@@ -6,18 +6,26 @@
 	damage_type = /damagetype/melee/sword/energy
 	var/damage_type_on = /damagetype/melee/sword/energy/on
 
+	block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
+		ATTACK_TYPE_MELEE = 0,
+		ATTACK_TYPE_RANGED = 0.25,
+		ATTACK_TYPE_MAGIC = 0.25,
+		ATTACK_TYPE_UNARMED = 0
+	)
+
 /obj/item/weapon/melee/energy/click_self(var/atom/caller)
 	enabled = !enabled
 	update_sprite()
 	return TRUE
 
 /obj/item/weapon/melee/energy/can_parry()
-	return enabled ? src : null
+	return enabled ? ..() : null
 
 /obj/item/weapon/melee/energy/can_block()
-	return enabled ? src : null
+	return enabled ? ..() : null
 
 /obj/item/weapon/melee/energy/update_icon()
+
 	if(enabled)
 		icon_state = "[initial(icon_state)]_on"
 		icon_state_held_left = "[initial(icon_state_held_left)]_on"
@@ -31,7 +39,7 @@
 
 	update_held_icon()
 
-	..()
+	return ..()
 
 /obj/item/weapon/melee/energy/sword/
 	name = "energy sword"
@@ -91,9 +99,15 @@
 	color = "#FFFF00"
 
 /obj/item/weapon/melee/energy/sword/katana
-	name = "energy katana"
+	name = "high frequency blade"
 	icon = 'icons/obj/items/weapons/melee/laser/katana.dmi'
 	color = "#FFFFFF"
 
-	damage_type = /damagetype/sword/energy_katana
+	damage_type = /damagetype/melee/sword/energy_katana
 	damage_type_on = /damagetype/melee/sword/energy_katana/on
+
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"core" = "#A5FF7F",
+		"blade" = "#4CFF00"
+	)

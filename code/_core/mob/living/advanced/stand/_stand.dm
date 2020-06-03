@@ -23,6 +23,9 @@
 
 	var/display_menacing = FALSE
 
+	attack_delay = 1
+	attack_delay_max = 2
+
 /mob/living/advanced/stand/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(owner && attacker == owner)

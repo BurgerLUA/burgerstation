@@ -1,4 +1,4 @@
-/damagetype/sword/energy_katana
+/damagetype/melee/sword/energy_katana
 	name = "inactive energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

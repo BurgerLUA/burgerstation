@@ -24,7 +24,7 @@
 	var/dialogue/D = all_dialogue[P.dialogue_target_id]
 	if(D)
 		D.add_stored_topics_if_exist(P)
-		run_function(usr,"set_name","'[D.name]'")
+		run_function(usr,"set_name","'[P.dialogue_target.name]'")
 	else
 		log_error("ALERT: [user] cannot access dialogue ID [P.dialogue_target_id]!")
 

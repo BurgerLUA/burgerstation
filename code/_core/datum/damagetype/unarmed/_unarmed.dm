@@ -13,6 +13,9 @@
 		SKILL_UNARMED = 100 //100%
 	)
 
+/damagetype/unarmed/get_attack_type()
+	return ATTACK_TYPE_UNARMED
+
 /*
 /damagetype/unarmed/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
 

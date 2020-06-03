@@ -24,8 +24,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	has_hard_crit = TRUE
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
-
 	var/list/attack_logs = list()
 
 	var/currency = 1000
@@ -34,9 +32,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/logout_time = 0
 
-	health_base = 100
-	stamina_base = 50
-	mana_base = 50
 	death_threshold = -100
 
 	var/attack_mode = 1

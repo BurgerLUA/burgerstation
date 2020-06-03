@@ -58,3 +58,5 @@
 	)
 
 	damage_received_multiplier = 0.5
+
+	mob_size = MOB_SIZE_BOSS

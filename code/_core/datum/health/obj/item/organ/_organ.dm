@@ -9,11 +9,13 @@
 	var/obj/item/organ/O = owner
 	var/mob/living/advanced/A = owner.loc
 
-	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY)*2)
+	. = ..()
+
+	health_max = O.health_base * ( 1 + A.get_attribute_power(ATTRIBUTE_VITALITY)*A.mob_size)
 
 	//A.update_health_element_icons(TRUE,TRUE,TRUE,TRUE) TODO: CHECK IF THIS IS NEEDED
 
-	return TRUE
+	return .
 
 /health/obj/item/organ/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
 

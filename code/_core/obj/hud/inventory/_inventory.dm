@@ -192,7 +192,7 @@
 		for(var/polymorph_name in item_to_update.polymorphs)
 			var/polymorph_color = item_to_update.polymorphs[polymorph_name]
 			if(!("[desired_icon_state]_[polymorph_name]" in states))
-				break
+				continue
 			var/icon/I2 = new /icon(desired_icon,"[desired_icon_state]_[polymorph_name]")
 			I2.Blend(polymorph_color,ICON_MULTIPLY)
 			I.Blend(I2,ICON_OVERLAY)

@@ -32,6 +32,8 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(0.5)
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/npc/xenomorph/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -97,3 +99,5 @@
 	)
 
 	damage_received_multiplier = 0.5
+
+	mob_size = MOB_SIZE_BOSS

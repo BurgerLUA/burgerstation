@@ -30,6 +30,8 @@
 		FATIGUE = 0
 	)
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/npc/spacecarp/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

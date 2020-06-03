@@ -228,8 +228,12 @@
 
 /ai/proc/handle_movement_move_objective()
 	if(objective_move)
-		if(get_dist(owner,objective_move) > 1)
-			owner.movement_flags = MOVEMENT_NORMAL
+		var/move_distance = get_dist(owner,objective_move)
+		if(move_distance > 1)
+			if(should_follow_objective_move && move_distance >= 4)
+				owner.movement_flags = MOVEMENT_RUNNING
+			else
+				owner.movement_flags = MOVEMENT_NORMAL
 			owner.move_dir = get_dir(owner,objective_move)
 		else
 			if(!should_follow_objective_move)
@@ -576,10 +580,13 @@
 
 	return TRUE
 
-/ai/proc/Bump(var/atom/obstacle)
+/ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
 	if(is_living(obstacle))
+		var/mob/living/L = obstacle
 		set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
+		if(trigger_other_bump && L.ai)
+			L.ai.Bump(owner,FALSE)
 
 	if(attack_on_block)
 		do_attack(obstacle,prob(left_click_chance))

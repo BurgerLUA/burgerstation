@@ -34,6 +34,8 @@
 		FATIGUE = INFINITY
 	)
 
+	mob_size = MOB_SIZE_ANIMAL
+
 /mob/living/simple/npc/slime/Initialize()
 	. = ..()
 	update_sprite()

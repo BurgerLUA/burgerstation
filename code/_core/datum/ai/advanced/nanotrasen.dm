@@ -4,3 +4,5 @@
 	should_find_weapon = TRUE
 
 	var/mob/living/commanding_officer
+
+	roaming_distance = 0

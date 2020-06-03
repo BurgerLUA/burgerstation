@@ -6,6 +6,10 @@
 	retaliate = FALSE
 	should_find_weapon = FALSE
 
+	parry_chance = 100
+	block_chance = 100
+	dodge_chance = 100
+
 /ai/advanced/stand/on_life()
 	if(istype(owner,/mob/living/advanced/stand/))
 		var/mob/living/advanced/stand/S = owner

@@ -62,6 +62,8 @@
 		/obj/item/soapstone/red
 	)
 
+	mob_size = MOB_SIZE_BOSS
+
 /mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	. = ..()

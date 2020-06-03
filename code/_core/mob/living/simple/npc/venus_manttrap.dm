@@ -30,6 +30,8 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/npc/venus_human_trap/post_death()
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"

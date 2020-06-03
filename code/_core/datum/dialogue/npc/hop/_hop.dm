@@ -1,5 +1,4 @@
 /dialogue/npc/hop/
-	name = "Head of Personel"
 	id = "hop"
 
 /dialogue/npc/hop/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
@@ -7,7 +6,7 @@
 	var/list/dialogue_options = list()
 
 	dialogue_options["hello"] = list(
-		"Ah, hello. I'm [name]. It's a pleasure to meet you. You must be one of the new hires? By the looks of it you're [P.real_name], correct? You're here for a new #1?",
+		"Ah, hello. I'm [P.dialogue_target.name]. It's a pleasure to meet you. You must be one of the new hires? By the looks of it you're [P.real_name], correct? You're here for a new #1?",
 		"job"
 	)
 

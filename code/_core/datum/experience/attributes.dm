@@ -128,6 +128,6 @@
 	. = ..()
 
 	if(.)
-		owner.luck = clamp(level,1,max_level)
+		owner.luck = clamp(level,1,owner.max_level)
 
 	return .

@@ -15,10 +15,16 @@
 
 	value = 35
 
+	block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
+		ATTACK_TYPE_MELEE = 0,
+		ATTACK_TYPE_RANGED = 0.5,
+		ATTACK_TYPE_MAGIC = 0.5,
+		ATTACK_TYPE_UNARMED = 0
+	)
+
+
 /obj/item/weapon/melee/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
-
-
 
 /obj/item/weapon/melee/shield/glass
 	name = "glass shield"

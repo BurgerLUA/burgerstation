@@ -338,8 +338,6 @@
 	if(should_update)
 		update_container()
 
-	world.log << "Returning [.]."
-
 	return . //The reason why we don't return . is for a very good reason, trust me.
 
 /reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)

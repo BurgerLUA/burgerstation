@@ -1,5 +1,4 @@
 /dialogue/npc/chargen_computer/
-	name = "IMB Piece of Shit"
 	id = "chargen_computer"
 
 /dialogue/npc/chargen_computer/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

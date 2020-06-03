@@ -48,6 +48,8 @@
 		DRUGGY = FALSE
 	)
 
+	mob_size = MOB_SIZE_GIANT
+
 /mob/living/simple/npc/arachnid/post_death()
 	. = ..()
 	icon_state = "dead"

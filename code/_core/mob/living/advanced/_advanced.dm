@@ -26,9 +26,9 @@
 
 	var/is_typing = FALSE
 
-	health_base = 50
-	stamina_base = 50
-	mana_base = 50
+	health_base = 200
+	stamina_base = 100
+	mana_base = 100
 
 	var/talk_duration = 0
 	var/talk_type = 0
@@ -86,6 +86,12 @@
 	var/cqc = ""
 
 	var/list/known_cqc = list()
+
+	mob_size = MOB_SIZE_HUMAN
+
+	max_level = 100 //Max level for skills and attributes of the mob.
+
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 /mob/living/advanced/Destroy()
 

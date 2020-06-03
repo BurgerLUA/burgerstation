@@ -1,5 +1,4 @@
 /dialogue/npc/marwani/
-	name = "Ilaeza Marwani"
 	id = "marwani_dialogue"
 
 /dialogue/npc/marwani/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

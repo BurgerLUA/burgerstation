@@ -19,8 +19,6 @@
 	var/experience_power = 2
 	var/experience_multiplier = 30
 
-	var/max_level = 100
-
 	var/flags = 0
 
 	var/mob/living/owner
@@ -47,11 +45,11 @@
 /experience/proc/set_level(var/level)
 	if(!ENABLE_XP)
 		return FALSE
-	experience = level_to_xp(clamp(level,1,max_level))
+	experience = level_to_xp(clamp(level,1,owner.max_level))
 	return experience
 
 /experience/proc/get_current_level()
-	return min(max_level,xp_to_level(experience))
+	return min(owner.max_level,xp_to_level(experience))
 
 /experience/proc/get_xp()
 	return experience
@@ -77,8 +75,8 @@
 	experience = new_xp
 	return experience
 
-/experience/proc/get_power()
-	return min(0.5,get_current_level() / max_level)
+/experience/proc/get_power(var/min_power = 0.25,var/max_power = 1)
+	return clamp(get_current_level() / 100,min_power,max_power)
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
 	owner.on_level_up(src,old_level,new_level)

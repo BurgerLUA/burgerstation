@@ -27,6 +27,8 @@
 
 	health_base = 200
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/npc/bear/post_death()
 	. = ..()
 	icon_state = "[initial(icon_state)]_dead"

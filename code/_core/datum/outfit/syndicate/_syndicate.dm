@@ -10,7 +10,7 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
-		/obj/item/weapon/melee/energy/sword/katana,
+		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
@@ -50,7 +50,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/storage/pouch/double/black,
-		/obj/item/weapon/melee/energy/sword/katana,
+		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/carbine_223,
@@ -75,7 +75,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
 		/obj/item/storage/pouch/double/black,
-		/obj/item/weapon/melee/energy/sword/katana,
+		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/carbine_223,
 		/obj/item/magazine/carbine_223,
@@ -100,7 +100,7 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre,
-		/obj/item/weapon/melee/energy/sword/katana,
+		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308,
 		/obj/item/magazine/rifle_308,
@@ -127,5 +127,5 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
 		/obj/item/magazine/lmg_223,
 		/obj/item/magazine/lmg_223,
-		/obj/item/weapon/melee/energy/sword/katana
+		/obj/item/weapon/melee/energy/sword/red
 	)

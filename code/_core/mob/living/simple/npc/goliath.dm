@@ -28,6 +28,8 @@
 	iff_tag = "goliath"
 	loyalty_tag = "goliath"
 
+	mob_size = MOB_SIZE_LARGE
+
 /mob/living/simple/npc/goliath/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

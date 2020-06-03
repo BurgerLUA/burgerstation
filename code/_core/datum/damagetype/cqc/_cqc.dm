@@ -24,3 +24,7 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+
+
+/damagetype/cqc/get_attack_type()
+	return ATTACK_TYPE_UNARMED

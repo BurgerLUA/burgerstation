@@ -19,6 +19,11 @@
 
 /mob/living/Bump(var/atom/obstacle,var/Dir=0)
 
+	if(is_living(obstacle))
+		var/mob/living/L = obstacle
+		if(L.mob_size > mob_size)
+			return FALSE
+
 	. = ..()
 
 	if(ai)

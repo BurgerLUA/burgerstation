@@ -4,6 +4,8 @@
 	damage_type = /damagetype/npc/chicken
 	class = "chicken"
 
+	mob_size = MOB_SIZE_CRITTER
+
 /mob/living/simple/npc/passive/chicken/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

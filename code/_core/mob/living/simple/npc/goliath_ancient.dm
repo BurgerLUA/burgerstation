@@ -33,3 +33,5 @@
 		DARK = INFINITY,
 		FATIGUE = INFINITY
 	)
+
+	mob_size = MOB_SIZE_GIANT

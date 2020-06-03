@@ -1,5 +1,4 @@
 /dialogue/npc/blind/
-	name = "Good John the Blind"
 	id = "blind_dialogue"
 
 /dialogue/npc/blind/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

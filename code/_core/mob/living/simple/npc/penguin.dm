@@ -21,6 +21,8 @@
 		FATIGUE = 25
 	)
 
+	mob_size = MOB_SIZE_ANIMAL
+
 /mob/living/simple/npc/passive/penguin/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

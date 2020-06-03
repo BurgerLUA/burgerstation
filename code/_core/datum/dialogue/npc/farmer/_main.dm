@@ -1,5 +1,4 @@
 /dialogue/npc/farmer/
-	name = "Crundus Bundus"
 	id = "farmer_dialogue"
 
 /dialogue/npc/farmer/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)

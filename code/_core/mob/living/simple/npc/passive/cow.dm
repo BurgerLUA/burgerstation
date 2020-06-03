@@ -10,6 +10,8 @@
 		/obj/item/container/food/dynamic/meat/raw
 	)
 
+	mob_size = MOB_SIZE_HUMAN
+
 /mob/living/simple/npc/passive/cow/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

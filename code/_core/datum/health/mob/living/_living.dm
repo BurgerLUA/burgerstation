@@ -45,9 +45,9 @@
 
 	var/mob/living/L = owner
 
-	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*500
-	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*500
-	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*500
+	health_max = L.health_base + L.get_attribute_power(ATTRIBUTE_VITALITY)*100*L.mob_size
+	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100*L.mob_size
+	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100*L.mob_size
 
 	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
