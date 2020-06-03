@@ -40,11 +40,16 @@
 				if(confirm == "Yes")
 					controls.loaded_data = macros.macros
 					controls.save()
-			else if(key == "reset")
-				var/confirm = input("Are you sure you want to reset your macros?","Reset Macros","No") in list("Yes","No","Cancel")
+			else if(key == "QWERTY")
+				var/confirm = input("Are you sure you want to reset your macros to QWERTY?","QWERTY Macros","No") in list("Yes","No","Cancel")
 				if(confirm == "Yes")
-					macros.macros = DEFAULT_MACROS
+					macros.macros = QWERT_MACROS
 					to_chat(span("notice","Successfully reset macros."))
+			else if(key == "AZERTY")
+				var/confirm = input("Are you sure you want to change your macros to AZERTY?","AZERTY Macros","No") in list("Yes","No","Cancel")
+				if(confirm == "Yes")
+					macros.macros = AZERTY_MACROS
+					to_chat(span("notice","Successfully reset macros to AZERTY."))
 			else if(key == "new")
 				var/new_key = input("What would you like the new key to be? Leave blank to cancel.","New Key Bind") as text | null
 				if(new_key)

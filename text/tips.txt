@@ -1,34 +1,37 @@
-When it combat, the specific body part you hit is determined by your targeting indicator at the bottom right of the screen. It is possible not miss or hit the wrong body part if your precision skill is low.
-You will never miss when hitting or shooting an NPC who isn't engaged in combat. That attack will also be a critical hit.
-Critical hits will always occur when you're grabbing your target.
+Where you aim with weapons is determined by the target doll on the bottom right of your interface. Having a low precision skill can cause your hits to target something else, or miss outright.
+Your attacks are 100% accurate against NPCs who are not engaged in combat.
+Critical hits occur via a dice roll system which is influenced by your precision skill.
+All objects have their own luck as well. Some objects can be lucky while some can be unlucky.
+Luck has a small effect on all chance based rolls.
 Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object. All items have some value to NanoTrasen, including most corpses.
 Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while. Some corpses left decayed for too long may attract strange creatures...
 Bicaridine heals brute damage. Kelotane heals burn damage. Dylovene heals toxin damage. It's best to keep all 3 in supply as many weapons and creatures do different types of damage.
 You can butcher most animals or creatures for meat and materials if you have a sharp enough weapon for it.
-Shotguns, SMGs, and Carbines are good for taking on groups of enemies, however they usually have poor armor penetration.
+Shotguns, SMGs, and Carbines are good for taking on groups of enemies.
 Rifles are good for picking out targets from a long range. They require more skill to use effectively, however. Press the zoom key (Default: V) to zoom in with the weapon in hand.
-Critical hits can occur randomly when attacking enemies. Most weapons give a guaranteed critical hit when attacking enemies not in combat. Some weapons even have special critical hit conditions.
 Worn and held equipment can slow you down based on the weight of the object and how cumbersome it is to move with it.
-NPCs also have their own ammo count to manage. A valid tactic to counter an onslaught of NPCs is to wait it out until they run out of ammo. Some enemy NPCs do carry backup weapons, however.
+NPCs also have their own ammo count to manage. A valid tactic to counter an onslaught of NPCs is to wait it out until they run out of ammo. Some enemy NPCs do carry backup weapons, including swords, however.
 .38 special rounds are actually just shorter .357 rounds, and can fit into .357 chambered weapons.
 Sneaking is a viable way to get around enemies you don't want to engage. To sneak, press the sneak key (Default: C) or press the sneak button at the bottom right of your screen. Note that sneaking drains stamina when moving, and should be used sparingly.
-You're twice as effective at sneaking when laying down (resting).
-Sneaking does nothing to enemies already engaged in combat, regardless if they are your target.
+You're twice as hard to detect while sneaking when laying down (resting).
+Sneaking does nothing to enemies already engaged in combat.
 Grabbing an enemy from behind will stun and disarm them them.
 You can grab any enemy on the battlefield if they're equal or smaller in size to you, however you can only grab team members who are on the ground.
+Enemies who are strong enough can instantly break out of your grab, if they're able to.
 Disarms have a chance to shove people, staggering them. If a staggered enemy hits an object behind them, they're stunned for the duration of the stagger.
 Firing pins control who is allowed to operate the gun. Syndicate guns contain firing pins that only Syndicate Operatives can fire, and NanoTrasen guns contain firing pins that only NanoTrasen Mercenaries can fire.
 Firing pins can be removed with a screwdriver, and replaced with other firing pins.
-Nearly every object in the world can be used as cover for ranged weapons. Cover only works if the enemy is more than 2 meters away from the cover you're hiding behind.
+Nearly every object in the world can be used as cover for ranged weapons. Cover only works if the enemy is not directly next to it.
 Most armor and protective clothing can only protect certain parts of your body. Be sure to examine the object to see which bodyparts it protects, and what it can protect against.
 Your health goes down if your limbs take damage. Your head contributes to you overall health twice as much as your torso, while your arms, hands, legs and feet contribute half as much.
 Bullets generally deal a mix of piercing and blunt damage. Pistols and revolver rounds usually deal more blunt than piercing damage, while rifle and sniper rifle rounds deal more piercing than blunt damage.
-Just because a gun has a larger caliber doesn't mean it deals more damage. Smaller rounds such as the 9mm cartridge can deal more damage to a target than larger rounds like the 12.7mm pistol as it penetrates armour better.
+Just because a gun has a larger calibre doesn't mean it deals more damage. Smaller rounds such as the 9mm cartridge can deal more damage to an armored target than larger rounds.
 NATO designated cartridges (9mm, 5.56mm, and 7.62mm) tend to penetrate better than calibre designated cartridges (.50, .45,, .223, .308), but deal less damage.
 Laser weapons are expensive and overheat easily, but they typically do full damage against targets as laser resistant armor is rare.
 Don't forget an objective finder when going out to find objectives. The objective tracker at the left of your screen only displays the initial position of the objectives, and not their current position.
-Having low nutrition and/or hydration incurs penalties. You will move slower when hungry and thirsty (Below 50% hunger/thirst) and your health, stamina, and mana will regenerate slower.
+Having low nutrition and/or hydration incurs penalties. You will move slower when hungry and thirsty, and your health, stamina, and mana will regenerate slower.
 Your stamina regenerates more while resting or sleeping.
 Your mana regenerates less if you have low mana.
 Some enemies are too large to be stunned or grabbed.
 Unarmed attacks cannot be blocked, except by shields and your hands.
+Most sources of damage absorbed via armor will convert itself into 25% of the damage blocked as fatigue damage. Exceptions apply to fatigue damage, holy damage, and dark damage.

@@ -89,10 +89,10 @@
 	if(!..()) //REMEMBER, THIS NEEDS TO BE HERE.
 		return FALSE
 
-	if(projectile_dir & src.collision_dir)
+	if(projectile_dir & src.collision_dir && (bullet_block_chance == 100 || luck(src,bullet_block_chance)))
 		. = src
 
-	if(. && P.start_turf && get_dist(P.start_turf,src) > 1 && luck(src,bullet_block_chance))
-		return src
+	if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
+		return FALSE
 
 	return .

@@ -8,8 +8,8 @@
 
 	block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
 		ATTACK_TYPE_MELEE = 0,
-		ATTACK_TYPE_RANGED = 0.25,
-		ATTACK_TYPE_MAGIC = 0.25,
+		ATTACK_TYPE_RANGED = 0.5,
+		ATTACK_TYPE_MAGIC = 0.5,
 		ATTACK_TYPE_UNARMED = 0
 	)
 

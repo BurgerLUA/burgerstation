@@ -36,10 +36,12 @@ SUBSYSTEM_DEF(area)
 				if(WEATHER_SANDSTORM)
 					areas_sandstorm += A
 
+	/*
 	if(run_unit_tests)
 		log_subsystem(name,"Initialized [length(areas_snow)] snow areas.")
 		log_subsystem(name,"Initialized [length(areas_rain)] rain areas.")
 		log_subsystem(name,"Initialized [length(areas_sandstorm)] sandstorm areas.")
+	*/
 
 	log_subsystem(name,"Initialized [area_count] total areas.")
 

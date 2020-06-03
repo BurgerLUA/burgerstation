@@ -3,7 +3,7 @@
 
 
 	var/list/unused_commands = list()
-	var/list/building = DEFAULT_MACROS
+	var/list/building = QWERT_MACROS
 	for(var/k in building)
 		var/v = building[k]
 		unused_commands += v
@@ -18,7 +18,8 @@
 	html_to_send += "<p>Unused commands: [english_list(unused_commands)].</p>"
 	html_to_send += "<hr>"
 	html_to_send += "<a href='?change_key=new'>Add New Bind</a><br>"
-	html_to_send += "<a href='?change_key=reset'>Reset to Factory Default</a><br>"
+	html_to_send += "<a href='?change_key=QWERTY'>Reset to Factory Default (QWERTY)</a><br>"
+	html_to_send += "<a href='?change_key=AZERTY'>Reset to Factory Default (AZERTY)</a><br>"
 	html_to_send += "<a href='?change_key=save'>Save Settings to Stored File</a><br>"
 	html_to_send += "<a href='?change_key=load'>Load Settings from Stored File</a><br>"
 	html_to_send += "<a href='?change_key=quit'>Quit</a><br>"

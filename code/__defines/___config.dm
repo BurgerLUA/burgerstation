@@ -145,16 +145,16 @@
 #define SHUTTLE_DEFAULT_WAITING_TIME 30
 #define SHUTTLE_DEFAULT_IDLE_TIME 10
 
-#define DEFAULT_MACROS list( \
+#define QWERT_MACROS list( \
 	"W" = "move_up", \
 	"D" = "move_right", \
 	"S" = "move_down", \
 	"A" = "move_left",\
-	"UP" = "move_up", \
 	"1" = "set-intent-help",\
 	"2" = "set-intent-disarm", \
 	"3" = "set-intent-grab", \
 	"4" = "set-intent-harm", \
+	"UP" = "move_up", \
 	"RIGHT" = "move_right", \
 	"DOWN" = "move_down", \
 	"LEFT" = "move_left", \
@@ -173,4 +173,33 @@
 	"O" = "ooc", \
 	"L" = "looc", \
 	"V" = "zoom"\
+)
+
+#define AZERTY_MACROS list( \
+	"Z" = "move_up",\
+	"D" = "move_right",\
+	"S" = "move_down",\
+	"Q" = "move_left",\
+	"1" = "set-intent-help",\
+	"2" = "set-intent-disarm",\
+	"3" = "set-intent-grab",\
+	"4" = "set-intent-harm",\
+	"RIGHT" = "move_right",\
+	"DOWN" = "move_down",\
+	"LEFT" = "move_left",\
+	"Shift" = "sprint",\
+	"Alt" = "walk",\
+	"Ctrl" = "grab",\
+	"R" = "throw",\
+	"X" = "drop",\
+	"C" = "sneak",\
+	"E" = "examine_mode",\
+	"F" = "quick_self",\
+	"Space" = "kick",\
+	"G" = "cycle-intent-clockwise",\
+	"H" = "cycle-intent-counter-clockwise",\
+	"T" = "say",\
+	"O" = "ooc",\
+	"L" = "looc",\
+	"V" = "zoom",\
 )
