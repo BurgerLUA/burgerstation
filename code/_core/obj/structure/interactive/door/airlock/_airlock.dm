@@ -235,15 +235,15 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 
 	if(panel)
 		var/image/panel = new /image(icon,"[icon_state]_panel")
-		overlays += panel
+		add_overlay(panel)
 
 	var/image/light_fixtures = new /image(icon,light_state)
 	light_fixtures.appearance_flags = RESET_COLOR
 	light_fixtures.color = light_color ? light_color : "#FFFFFF"
-	overlays += light_fixtures
+	add_overlay(light_fixtures)
 
 	var/image/frame = new /icon(icon,"frame")
-	overlays += frame
+	add_overlay(frame)
 
 
 

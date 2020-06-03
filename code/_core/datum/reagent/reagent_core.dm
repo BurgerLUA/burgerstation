@@ -29,6 +29,15 @@
 
 	return .
 
+/reagent/steel
+	name = "Steel"
+	desc = "What most lifeforms build weapons out of."
+	color = COLOR_STEEL
+
+	flavor = "steel"
+
+	liquid = -0.25
+
 /reagent/oxygen //Found in the snow biome as a magic plant
 	name = "Liquid Oxygen"
 	desc = "What most lifeforms breathe in.."

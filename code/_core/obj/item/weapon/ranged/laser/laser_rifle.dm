@@ -48,7 +48,7 @@
 /obj/item/weapon/ranged/energy/rifle/update_overlays()
 	var/image/I = new/image(initial(icon),"ammo[FLOOR((charge_current/charge_max) * 7, 1)]")
 	I.color = polymorphs["barrel"]
-	overlays += I
+	add_overlay(I)
 	return ..()
 
 /obj/item/weapon/ranged/energy/rifle/hardlight

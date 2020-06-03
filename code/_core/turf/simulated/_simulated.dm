@@ -66,15 +66,6 @@ var/global/saved_icons = 0
 
 	return .
 
-/turf/simulated/floor/Entered(var/atom/movable/O,var/atom/old_loc)
-
-	. = ..()
-
-	if(O && stored_water_overlay)
-		O.overlays += stored_water_overlay
-
-	return .
-
 /turf/simulated/floor/Exited(var/atom/movable/O,var/atom/new_loc)
 
 	. = ..()

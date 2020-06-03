@@ -35,22 +35,7 @@
 	if(!override_icon_state)
 		icon_state = "[initial(icon_state)][open_text]"
 
-	if(is_inventory(src.loc))
-		var/obj/hud/inventory/I = src.loc
-		if(wielded)
-			if(I.item_slot & SLOT_HAND_RIGHT)
-				pixel_x = 16
-			else if(I.item_slot & SLOT_HAND_LEFT)
-				pixel_x = -16
-			else
-				pixel_x = 0
-		else
-			pixel_x = 0
-
-	else
-		pixel_x = 0
-
-	..()
+	return ..()
 
 /obj/item/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

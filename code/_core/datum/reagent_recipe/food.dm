@@ -4,12 +4,12 @@
 	id = "dough_wheat_grain"
 
 	required_reagents = list(
-		"wheat_grain" = 1,
-		"water" = 1,
+		/reagent/nutrition/wheat_grain = 3,
+		/reagent/nutrition/water = 2,
 	)
 
 	results = list(
-		"dough_wheat_grain" = 2
+		/reagent/nutrition/dough = 5
 	)
 
 	result = /obj/item/container/food/dynamic/bread
@@ -20,12 +20,12 @@
 	id = "dough_flour"
 
 	required_reagents = list(
-		"flour_whole_wheat" = 5,
-		"water" = 3,
+		/reagent/nutrition/wheat_grain/flour = 3,
+		/reagent/nutrition/water = 2,
 	)
 
 	results = list(
-		"dough_flour" = 8
+		/reagent/nutrition/dough/flour = 5
 	)
 
 	result = /obj/item/container/food/dynamic/bread
@@ -36,12 +36,12 @@
 	id = "dough_flour_white"
 
 	required_reagents = list(
-		"flour_white" = 5,
-		"water" = 3,
+		/reagent/nutrition/wheat_grain/flour/processed = 3,
+		/reagent/nutrition/water = 2,
 	)
 
 	results = list(
-		"dough_flour_white" = 8
+		/reagent/nutrition/dough/flour/processed = 5
 	)
 
 	result = /obj/item/container/food/dynamic/bread
@@ -53,15 +53,15 @@
 	id = "bread_wheat_grain"
 
 	required_reagents = list(
-		"dough_wheat_grain" = 1
+		/reagent/nutrition/dough = 1
 	)
 
 	required_temperature_min = list(
-		"dough_wheat_grain" = 475
+		/reagent/nutrition/dough = 475
 	)
 
 	results = list(
-		"bread_wheat_grain" = 1
+		/reagent/nutrition/bread = 1
 	)
 
 /reagent_recipe/bread/flour
@@ -70,15 +70,15 @@
 	id = "bread_flour"
 
 	required_reagents = list(
-		"dough_flour" = 1
+		/reagent/nutrition/dough/flour = 1
 	)
 
 	required_temperature_min = list(
-		"dough_flour" = 475
+		/reagent/nutrition/dough/flour = 475
 	)
 
 	results = list(
-		"bread_flour" = 1
+		/reagent/nutrition/bread/flour = 1
 	)
 
 /reagent_recipe/bread/flour/processed
@@ -87,15 +87,15 @@
 	id = "bread_flour_white"
 
 	required_reagents = list(
-		"dough_flour_white" = 1,
+		/reagent/nutrition/dough/flour/processed = 1,
 	)
 
 	required_temperature_min = list(
-		"dough_flour_white" = 475
+		/reagent/nutrition/dough/flour/processed = 475
 	)
 
 	results = list(
-		"bread_flour_white" = 1
+		/reagent/nutrition/bread/flour/processed = 1
 	)
 
 //Meat
@@ -105,15 +105,15 @@
 	id = "cooked_meat_cow"
 
 	required_reagents = list(
-		"raw_meat_cow" = 1
+		/reagent/nutrition/meat/cow = 1
 	)
 
 	required_temperature_min = list(
-		"raw_meat_cow" = 400
+		/reagent/nutrition/meat/cow = 400
 	)
 
 	results = list(
-		"cooked_meat_cow" = 1
+		/reagent/nutrition/meat/cow/cooked = 1
 	)
 
 /reagent_recipe/meat/chicken
@@ -122,13 +122,13 @@
 	id = "cooked_chicken"
 
 	required_reagents = list(
-		"raw_chicken" = 1
+		/reagent/nutrition/meat/chicken = 1
 	)
 
 	required_temperature_min = list(
-		"raw_chicken" = 400
+		/reagent/nutrition/meat/chicken = 400
 	)
 
 	results = list(
-		"cooked_chicken" = 1
+		/reagent/nutrition/meat/chicken/cooked = 1
 	)

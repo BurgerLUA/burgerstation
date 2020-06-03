@@ -241,7 +241,7 @@
 		alert_hud_image.loc = src
 		alert_hud_image.layer = PLANE_HUD_VISION
 		alert_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
-		overlays += alert_hud_image
+		add_overlay(alert_hud_image)
 
 	if(desired_client)
 		screen_blood = list()
@@ -339,7 +339,7 @@
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
 		var/atom/object_to_damage = src.get_object_to_damage(owner,params,FALSE,TRUE)
-		var/damagetype/D = all_damage_types["explosion"]
+		var/damagetype/D = all_damage_types[/damagetype/explosion/]
 		D.do_damage(source,src,source,object_to_damage,owner,magnitude*0.5)
 
 	return ..()

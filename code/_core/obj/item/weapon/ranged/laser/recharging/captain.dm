@@ -28,8 +28,8 @@
 
 /obj/item/weapon/ranged/energy/recharging/captain/update_overlays()
 	. = ..()
-	var/icon/I2 = new/icon(initial(icon),"charge[FLOOR((charge_current/charge_max) * 4, 1)]")
-	overlays += I2
+	var/image/I = new/icon(initial(icon),"charge[FLOOR((charge_current/charge_max) * 4, 1)]")
+	add_overlay(I)
 	return .
 
 

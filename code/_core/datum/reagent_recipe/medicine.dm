@@ -4,13 +4,13 @@
 	id = "bicaridine"
 
 	required_reagents = list(
-		"carbon" = 1,
-		"sugar" = 1,
-		"oxygen" = 1
+		/reagent/carbon = 1,
+		/reagent/nutrition/sugar = 1,
+		/reagent/carbon = 1
 	)
 
 	results = list(
-		"bicaridine" = 3
+		/reagent/medicine/bicaridine = 3
 	)
 
 /reagent_recipe/kelotane
@@ -19,12 +19,12 @@
 	id = "kelotane"
 
 	required_reagents = list(
-		"carbon" = 1,
-		"silicon" = 1,
+		/reagent/carbon = 1,
+		/reagent/silicon = 1,
 	)
 
 	results = list(
-		"kelotane" = 2
+		/reagent/medicine/kelotane = 2
 	)
 
 
@@ -34,13 +34,13 @@
 	id = "dylovene"
 
 	required_reagents = list(
-		"nitrogen" = 1,
-		"silicon" = 1,
-		"potassium" = 1,
+		/reagent/nitrogen = 1,
+		/reagent/silicon = 1,
+		/reagent/potassium = 1,
 	)
 
 	results = list(
-		"dylovene" = 3
+		/reagent/medicine/dylovene = 3
 	)
 
 /reagent_recipe/tricordrazine
@@ -49,11 +49,11 @@
 	id = "tricordrazine"
 
 	required_reagents = list(
-		"bicaridine" = 1,
-		"kelotane" = 1,
-		"dylovene" = 1
+		/reagent/medicine/bicaridine = 1,
+		/reagent/medicine/kelotane = 1,
+		/reagent/medicine/dylovene = 1
 	)
 
 	results = list(
-		"tricordrazine" = 3
+		/reagent/medicine/tricordrazine = 3
 	)

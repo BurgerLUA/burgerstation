@@ -311,7 +311,7 @@
 
 //Meat
 /reagent/nutrition/meat/
-	name = "raw meat"
+	name = "raw mystery meat"
 	desc = "Nutrition and flavor from raw meat."
 	color = "#EA4147"
 

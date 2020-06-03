@@ -139,6 +139,7 @@
 /obj/item/grenade/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	for(var/obj/item/container/beaker/B in stored_containers)
+		world.log << "TRANSFERING!"
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE)
 		B.reagents.update_container()
 

@@ -1,5 +1,6 @@
 proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source)
 
+	world.log << "KABOOM!"
 
 	new /obj/effect/temp/explosion(desired_turf,SECONDS_TO_DECISECONDS(desired_range))
 

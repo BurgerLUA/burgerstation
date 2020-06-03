@@ -211,6 +211,8 @@
 
 		var/reagent_recipe/recipe = all_reagent_recipes[k]
 
+		if(debug) world.log << "Checking [recipe]..."
+
 		if(!length(recipe.required_reagents))
 			continue
 
@@ -218,14 +220,17 @@
 
 		for(var/reagent_type in recipe.required_reagents)
 			if(!c_id_to_volume[reagent_type] || c_id_to_volume[reagent_type] < recipe.required_reagents[reagent_type]) //if our container doesn't have what is required, then lets fuck off.
+				if(debug) world.log << "Recipe [recipe.name] invalid because of too few reagents of [reagent_type]."
 				good_recipe = FALSE
 				break
 
 			if(recipe.required_temperature_min[reagent_type] && c_id_to_temperature[reagent_type] < recipe.required_temperature_min[reagent_type])
+				if(debug) world.log << "Recipe [recipe.name] invalid because of too low temperature of [reagent_type]."
 				good_recipe = FALSE
 				break
 
 			if(recipe.required_temperature_max[reagent_type] && c_id_to_temperature[reagent_type] > recipe.required_temperature_max[reagent_type])
+				if(debug) world.log << "Recipe [recipe.name] invalid because of too high temperature of [reagent_type]."
 				good_recipe = FALSE
 				break
 

@@ -152,7 +152,6 @@
 #include "code\_core\atom\moveable\_movable.dm"
 #include "code\_core\atom\moveable\astar.dm"
 #include "code\_core\atom\moveable\direction.dm"
-#include "code\_core\atom\moveable\explosion.dm"
 #include "code\_core\atom\moveable\movement.dm"
 #include "code\_core\atom\moveable\throwing.dm"
 #include "code\_core\atom\moveable\value.dm"
