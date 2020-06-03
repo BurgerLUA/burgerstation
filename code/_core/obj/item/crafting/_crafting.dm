@@ -22,6 +22,8 @@
 
 	crafting_id = "workbench"
 
+	value = 5
+
 /obj/item/crafting/click_self(caller,location,control,params)
 
 	if(!is_advanced(caller))

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/firing_pins.dmi'
 	icon_state = "normal"
 
-	value = 10
+	value = 100
 
 /obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon)
 	return TRUE
@@ -17,9 +17,12 @@
 /obj/item/firing_pin/electronic
 	name = "electronic firing pin"
 
-/obj/item/firing_pin/mechanical
+/obj/item/firing_pin/mechanical //YOU SHOULDN'T HAVE THIS.
 	name = "mechanical firing pin"
-
+	desc = "Oh god oh fuck."
+	desc_extended = "A completely mechanical firing pin that has no digital IFF technology and thus can be shot by anyone and aimed at anybody. These are extremely rare and extremely illegal. Having one may result in contract termination."
+	rarity = RARITY_LEGENDARY
+	value = 50000
 
 /obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon)
 

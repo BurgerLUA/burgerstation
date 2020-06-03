@@ -3,6 +3,8 @@
 	var/song/current_song = /song/
 	var/instrument_type = "piano"
 
+	value = 1000
+
 /obj/item/instrument/New(var/desired_loc)
 	. = ..()
 	current_song = new current_song(src)

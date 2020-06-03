@@ -1,5 +1,6 @@
 /obj/item/weapon/melee/tool
 	name = "tool"
+	value = 10
 
 /obj/item/weapon/melee/tool/wirecutters
 	name = "wirecutters"

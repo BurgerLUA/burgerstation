@@ -8,6 +8,8 @@
 	item_count_max = 10
 	item_count_max_icon = 3
 
+	value = 5
+
 /obj/item/deployable/proc/get_deploy_time(var/mob/caller)
 	return SECONDS_TO_DECISECONDS(3)
 
@@ -48,3 +50,4 @@
 	desc_extended = "A large deployable barricade."
 	structure_to_deploy = /obj/structure/interactive/barricade/
 	icon = 'icons/obj/items/deployable/barricade.dmi'
+	value = 80

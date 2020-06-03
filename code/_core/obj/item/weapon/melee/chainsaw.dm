@@ -7,7 +7,7 @@
 	attack_delay = 10
 	attack_delay_max = 15
 
-	value = 50
+	s
 
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/atom/caller)
 	. = ..()

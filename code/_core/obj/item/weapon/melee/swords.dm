@@ -1,3 +1,6 @@
+/obj/item/weapon/melee/sword/
+	value = 10
+
 /obj/item/weapon/melee/sword/sabre
 
 	name = "sabre"

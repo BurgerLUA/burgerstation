@@ -15,6 +15,8 @@
 
 	var/original_volume = 0
 
+	value = 10
+
 /obj/item/container/food/Generate()
 	original_volume = reagents.volume_current
 	return ..()

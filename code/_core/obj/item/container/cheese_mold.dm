@@ -16,7 +16,7 @@
 	var/list/cheese_mix = list()
 	var/process_count = 0
 
-	value = 10
+	value = 30
 
 
 /obj/item/container/cheese_mold/block

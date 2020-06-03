@@ -23,8 +23,6 @@
 
 	var/override_icon_state = FALSE
 
-
-
 /obj/item/container/medicine/New(var/desired_loc)
 
 	. = ..()

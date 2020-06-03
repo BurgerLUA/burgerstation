@@ -6,6 +6,8 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
+	value = 20
+
 /obj/item/radio/Generate()
 	stored_radio = new stored_radio(src)
 	INITIALIZE(stored_radio)
@@ -15,7 +17,7 @@
 /obj/item/radio/click_self(var/mob/caller,location,control,params)
 	return stored_radio.click_self(caller,location,control,params)
 
-/obj/item/radio/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 	return stored_radio.clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)

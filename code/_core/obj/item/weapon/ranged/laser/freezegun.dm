@@ -12,9 +12,9 @@
 
 	bullet_color = "#00FFFF"
 
-	charge_max = CELL_SIZE_ADVANCED
 	charge_current = CELL_SIZE_ADVANCED
-	charge_cost = CELL_SIZE_ADVANCED / 30
+	charge_max = CELL_SIZE_ADVANCED
+	charge_cost = CELL_SIZE_ADVANCED / 20
 
 	view_punch = 15
 
@@ -28,6 +28,8 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	value = 800
+
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread() //Base spread
 	return 0.003
 
@@ -36,9 +38,11 @@
 
 /obj/item/weapon/ranged/energy/freezegun/update_icon()
 
-	if(charge_cost < charge_current)
+	if(charge_cost > charge_current)
 		icon_state = "inventory_0"
 	else
 		icon_state = "inventory_[FLOOR((charge_current/charge_max) * 4, 1)]"
+
+	world.log << "The state: [icon_state]."
 
 	return ..()

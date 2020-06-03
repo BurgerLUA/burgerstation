@@ -17,6 +17,8 @@
 
 	var/radio_sound = 'sounds/items/radio.ogg'
 
+	value = 10
+
 
 /obj/radio/click_self(var/mob/caller,location,control,params)
 	broadcasting = !broadcasting

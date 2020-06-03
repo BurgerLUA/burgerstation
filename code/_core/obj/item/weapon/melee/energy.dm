@@ -13,6 +13,8 @@
 		ATTACK_TYPE_UNARMED = 0
 	)
 
+	value = 50
+
 /obj/item/weapon/melee/energy/click_self(var/atom/caller)
 	enabled = !enabled
 	update_sprite()

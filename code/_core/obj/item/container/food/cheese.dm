@@ -109,6 +109,7 @@
 /obj/item/container/food/dynamic/cheese/block
 	name = "block cheese"
 	icon_state = "block"
+	value = 20
 
 /obj/item/container/food/dynamic/cheese/block/Generate()
 	reagents.add_reagent(/reagent/nutrition/cheese,40)
@@ -117,6 +118,7 @@
 /obj/item/container/food/dynamic/cheese/wheel
 	name = "wheel cheese"
 	icon_state = "wheel"
+	value = 30
 
 /obj/item/container/food/dynamic/cheese/wheel/Generate()
 	reagents.add_reagent(/reagent/nutrition/cheese,40)
