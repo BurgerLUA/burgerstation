@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/weapons/ranged/laser/chronogun.dmi'
 
 	projectile = /obj/projectile/bullet/laser/strong
-	damage_type = /damagetype/ranged/laser/chronogun
+	ranged_damage_type = /damagetype/ranged/laser/chronogun
 
 	projectile_speed = 8
 	shoot_delay = 20

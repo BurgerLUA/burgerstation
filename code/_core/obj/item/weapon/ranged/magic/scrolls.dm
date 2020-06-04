@@ -2,6 +2,7 @@
 
 	open = FALSE
 	damage_type = null //TODO: Paper cut
+	ranged_damage_type = null
 
 	icon = 'icons/obj/items/weapons/ranged/magic/scroll.dmi'
 	icon_state = "scroll"
@@ -95,7 +96,7 @@
 
 	projectile = /obj/projectile/magic/fireball
 
-	damage_type = /damagetype/ranged/magic/fireball
+	ranged_damage_type = /damagetype/ranged/magic/fireball
 
 	shoot_delay = 10
 	projectile_speed = 16

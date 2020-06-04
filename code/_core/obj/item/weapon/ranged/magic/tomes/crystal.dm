@@ -11,7 +11,7 @@
 
 	projectile = /obj/projectile/magic/crystal
 
-	damage_type = /damagetype/ranged/magic/crystal
+	ranged_damage_type = /damagetype/ranged/magic/crystal
 
 	shoot_sounds = list('sounds/weapons/magic/zap.ogg')
 

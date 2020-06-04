@@ -16,26 +16,36 @@
 		sleep(1)
 		winset(src,"main","is-maximized=true")
 
+/client/verb/stop_sound()
+	set name = "Stop Sounds"
+	set category = "Game"
+	mob << sound(null)
+	to_chat("All sounds have been stopped.")
 
 /client/verb/set_volume_master(var/desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_master",desired_volume)
+	stop_sound()
 
 /client/verb/set_volume_fx(var/desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_fx",desired_volume)
+	stop_sound()
 
 /client/verb/set_volume_ambient(var/desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_ambient",desired_volume)
+	stop_sound()
 
 /client/verb/set_volume_music(var/desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_music",desired_volume)
+	stop_sound()
 
 /client/verb/set_volume_footsteps(var/desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_footsteps",desired_volume)
+	stop_sound()
 
 /client/verb/change_click_mode()
 	set hidden = TRUE

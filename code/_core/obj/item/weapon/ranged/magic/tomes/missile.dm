@@ -11,7 +11,7 @@
 
 	projectile = /obj/projectile/magic/magic_missile
 
-	damage_type = /damagetype/ranged/magic/magic_missile
+	ranged_damage_type = /damagetype/ranged/magic/magic_missile
 
 	shoot_sounds = list('sounds/weapons/magic/magic_missile.ogg')
 

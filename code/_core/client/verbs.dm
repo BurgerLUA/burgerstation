@@ -25,6 +25,7 @@
 	verbs += /client/verb/set_fps
 	verbs += /client/verb/open_discord
 	verbs += /client/verb/open_github
+	verbs += /client/verb/stop_sound
 
 	if(ENABLE_ATMOS)
 		verbs += /client/verb/air_test

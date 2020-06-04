@@ -7,7 +7,7 @@
 	stored_bullets = new/list(bullet_count_max)
 	return .
 
-/obj/item/weapon/ranged/bullet/revolver/get_damage_type()
+/obj/item/weapon/ranged/bullet/revolver/get_ranged_damage_type()
 	return stored_bullets[current_chamber] ? stored_bullets[current_chamber].damage_type : damage_type
 
 /obj/item/weapon/ranged/bullet/revolver/proc/rotate_cylinder(var/rotate_amount=1)

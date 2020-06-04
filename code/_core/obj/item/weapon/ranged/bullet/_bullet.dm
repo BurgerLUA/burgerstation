@@ -42,7 +42,7 @@
 	QDEL_CUT(stored_bullets)
 	return ..()
 
-/obj/item/weapon/ranged/bullet/get_damage_type()
+/obj/item/weapon/ranged/bullet/get_ranged_damage_type()
 	return chambered_bullet ? chambered_bullet.damage_type : damage_type
 
 

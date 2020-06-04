@@ -9,6 +9,7 @@
 	var/shoot_delay = 4 //In deciseconds
 	var/next_shoot_time = 0
 
+	var/ranged_damage_type
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value
@@ -33,6 +34,9 @@
 	var/ai_heat_sensitivity = 1 //How much heat matters when trying to make a shot. Should be less for weapons that you're supposed to spray and pray with, basically.
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
+
+/obj/item/weapon/ranged/proc/get_ranged_damage_type()
+	return ranged_damage_type
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
@@ -177,7 +181,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
-	var/damage_type_to_use = damage_type
+	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread = 0
 	var/projectile_speed_to_use = projectile_speed

@@ -1,3 +1,6 @@
+#define DEFAULT_CPU_USAGE 75
+#define DEFAULT_TICK_USAGE 75
+
 /subsystem/
 	var/name = "Base Subsystem"
 	var/desc = "Subsystem for base functions. You shouldn't be seeing this."
@@ -6,6 +9,9 @@
 	var/priority = 0 //High number = runs later
 	var/next_run = 0 //When the subsystem should run next
 	var/life_time = 0 //Time it takes for it to complete a life cycle.
+
+	var/cpu_usage_max = DEFAULT_CPU_USAGE
+	var/tick_usage_max = DEFAULT_TICK_USAGE
 
 	var/debug = FALSE
 

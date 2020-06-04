@@ -6,6 +6,9 @@ SUBSYSTEM_DEF(client)
 
 	var/advanced_ticks = 0
 
+	cpu_usage_max = 100
+	tick_usage_max = 100
+
 /subsystem/client/on_life()
 
 	var/do_slow = advanced_ticks >= CLIENT_TICKS_PER_SLOW_CLIENT_TICKS

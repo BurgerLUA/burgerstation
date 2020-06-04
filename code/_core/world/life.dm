@@ -42,6 +42,27 @@
 			O.force_move(get_turf(pick(lobby_positions)))
 			play_music_track("intro", O.client)
 
+	for(var/subsystem/SS in active_subsystems)
+		spawn
+			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
+				if(world.cpu > SS.cpu_usage_max)
+					sleep(TICK_LAG)
+					continue
+				if(world.tick_usage > SS.tick_usage_max)
+					sleep(TICK_LAG)
+					continue
+				try
+					SS.on_life()
+				catch(var/exception/e)
+					log_error("[SS.name] on_life() error: [e] on [e.file]:[e.line]!<br>[e.desc]")
+					sleep(10)
+					continue
+				sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+			log_subsystem(SS.name,"Shutting down.")
+
+	LOG_SERVER("Life complete.")
+
+	/*
 	spawn
 		while(world_state != STATE_SHUTDOWN)
 			for(var/subsystem/S in active_subsystems)
@@ -62,3 +83,4 @@
 			ticks += 1
 			sleep(tick_lag)
 		LOG_SERVER("ALL SUBSYSTEMS HAVE STOPPED.")
+	*/

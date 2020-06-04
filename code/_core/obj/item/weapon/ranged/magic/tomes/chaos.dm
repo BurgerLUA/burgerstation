@@ -13,7 +13,7 @@
 	projectile_speed = 4
 
 	projectile = /obj/projectile/magic/chaos
-	damage_type = /damagetype/ranged/magic/chaos
+	ranged_damage_type = /damagetype/ranged/magic/chaos
 
 	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
 
