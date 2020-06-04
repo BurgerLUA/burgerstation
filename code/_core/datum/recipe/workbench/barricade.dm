@@ -18,5 +18,3 @@
 	)
 
 	product = /obj/item/deployable/barricade
-
-	do_debug = TRUE

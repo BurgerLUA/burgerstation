@@ -33,7 +33,7 @@
 			vel_y *= 12
 
 			I.drop_item(get_turf(caller))
-			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y)
+			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30)
 		return TRUE
 
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.

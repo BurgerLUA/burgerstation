@@ -6,9 +6,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 10.17
 	bullet_length = 32
+	bullet_color = "#FFECB6"
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_10mm
@@ -19,6 +20,7 @@
 	weight = 0.02
 	value = 0.3
 
+
 /obj/item/bullet_cartridge/pistol_50/
 	name = "\improper .50 pistol cartridge"
 	desc = "For pistols that require .50."
@@ -27,9 +29,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 12.7
 	bullet_length = 33
+	bullet_color = "#FFECB6"
 
 
 	projectile = /obj/projectile/bullet/revolver/
@@ -50,9 +53,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 12.7
 	bullet_length = 33
+	bullet_color = "#FFECB6"
 
 	projectile = /obj/projectile/bullet/revolver
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_12mm
@@ -71,9 +75,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 9
 	bullet_length = 19
+	bullet_color = "#FFECB6"
 
 
 	projectile = /obj/projectile/bullet/pistol
@@ -93,9 +98,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 4.6
 	bullet_length = 30
+	bullet_color = "#FFECB6"
 
 
 	projectile = /obj/projectile/bullet/pistol
@@ -115,9 +121,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 10
 	bullet_length = 22
+	bullet_color = "#FFECB6"
 
 
 	projectile = /obj/projectile/bullet/pistol
@@ -137,9 +144,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 11.43
 	bullet_length = 23
+	bullet_color = "#FFECB6"
 
 	projectile = /obj/projectile/bullet/smg
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_45
@@ -158,9 +166,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 8
 	bullet_length = 12
+	bullet_color = "#FFECB6"
 
 	projectile = /obj/projectile/bullet/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_8mm

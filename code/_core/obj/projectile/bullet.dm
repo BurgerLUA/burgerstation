@@ -5,6 +5,12 @@
 
 	muzzleflash_effect = /obj/effect/temp/muzzleflash/
 
+/obj/projectile/bullet/update_icon()
+	. = ..()
+	color = bullet_color
+	return .
+
+
 /obj/projectile/bullet/revolver
 	name = "revolver bullet"
 	icon = 'icons/obj/projectiles/bullet.dmi'

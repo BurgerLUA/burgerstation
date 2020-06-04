@@ -6,7 +6,6 @@
 	item_count_max_icon = 6
 	icon_state = "bolt"
 
-	id = "bolt"
 	bullet_length = -1
 	bullet_diameter = -1
 

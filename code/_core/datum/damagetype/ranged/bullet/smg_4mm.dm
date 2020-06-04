@@ -10,3 +10,5 @@
 	attack_damage_penetration = list(
 		PIERCE = 75
 	)
+
+	falloff = VIEW_RANGE

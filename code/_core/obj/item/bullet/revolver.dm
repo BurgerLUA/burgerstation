@@ -3,9 +3,10 @@
 	desc = "For revolvers that require .38 ammo."
 	icon = 'icons/obj/items/bullet/38.dmi'
 
-	id = "bullet"
+
 	bullet_diameter = 9
 	bullet_length = 29
+	bullet_color = "#FFECB6"
 
 	item_count_max = 6
 	item_count_max_icon = 6
@@ -25,9 +26,10 @@
 	desc = "For revolvers that require .357 ammo."
 	icon = 'icons/obj/items/bullet/357.dmi'
 
-	id = "bullet"
+
 	bullet_diameter = 9
 	bullet_length = 33
+	bullet_color = "#FFECB6"
 
 	item_count_max = 6
 	item_count_max_icon = 6
@@ -48,9 +50,9 @@
 	icon = 'icons/obj/items/bullet/44.dmi'
 
 
-	id = "bullet"
 	bullet_diameter = 10.9
 	bullet_length = 29
+	bullet_color = "#FFECB6"
 
 	item_count_max = 6
 	item_count_max_icon = 6
@@ -69,9 +71,10 @@
 	desc = "For pistols and revolvers that require .22 ammo."
 	icon = 'icons/obj/items/bullet/22.dmi'
 
-	id = "bullet"
+
 	bullet_diameter = 5.6
 	bullet_length = 17.7
+	bullet_color = "#FFECB6"
 
 	item_count_max = 6
 	item_count_max_icon = 6

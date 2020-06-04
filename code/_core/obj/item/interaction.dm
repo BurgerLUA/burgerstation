@@ -95,31 +95,5 @@
 
 	return ..()
 
-/* fuck this code
-	if(.)
-		return .
-
-	if(object.loc && (isturf(object) || isturf(object.loc)))
-		caller.face_atom(object)
-		var/vel_x = object.x - caller.x
-		var/vel_y = object.y - caller.y
-		var/highest = max(abs(vel_x),abs(vel_y))
-		if(!highest)
-			src.drop_item(get_turf(caller))
-			return TRUE
-
-		vel_x *= 1/highest
-		vel_y *= 1/highest
-
-		vel_x *= 12
-		vel_y *= 12
-
-		src.drop_item(get_turf(caller))
-		src.throw_self(caller,object,text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y)
-		return TRUE
-
-	return FALSE
-*/
-
 /obj/item/proc/can_be_dragged(var/mob/caller)
 	return TRUE

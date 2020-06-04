@@ -4,9 +4,10 @@
 	id = ".50"
 	icon = 'icons/obj/items/bullet/50.dmi'
 
-	id = "bullet"
+
 	bullet_diameter = 12.7
 	bullet_length = 99
+	bullet_color = "#FFECB6"
 
 	item_count_max = 4
 	item_count_max_icon = 4

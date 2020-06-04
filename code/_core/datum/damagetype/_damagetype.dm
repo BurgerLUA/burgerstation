@@ -97,9 +97,11 @@
 
 	var/throw_mul = 1
 
-	var/crit_multiplier = 2
-	var/crit_chance = 5
-	var/crit_chance_max = 10
+	var/crit_multiplier = 2 //Damage multiplier.
+	var/crit_chance = 5 //Base crit chance.
+	var/crit_chance_max = 10 //Maximium crit chance at 100 luck.
+
+	var/falloff = 0 //How many tiles it takes for the weapon to start loosing damage. Set to 0 to disable. Applys to projectile weapons only.
 
 	var/allow_friendly_fire = FALSE
 

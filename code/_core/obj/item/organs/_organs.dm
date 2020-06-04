@@ -198,7 +198,7 @@
 	if(reagents)
 		reagents.metabolize()
 
-	if(bleeding && is_advanced(src.loc) && luck(src.loc,10,FALSE))
+	if(bleeding && is_advanced(src.loc) && prob(10))
 		var/mob/living/advanced/A = src.loc
 		if(A.reagents.volume_current)
 			new /obj/effect/temp/blood/drip(A.loc,SECONDS_TO_DECISECONDS(60),A.reagents.color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))

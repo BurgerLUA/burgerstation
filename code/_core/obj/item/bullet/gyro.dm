@@ -6,7 +6,6 @@
 	item_count_max = 4
 	item_count_max_icon = 4
 
-	id = "rocket"
 	bullet_length = 50
 	bullet_diameter = 20
 

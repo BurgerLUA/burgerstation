@@ -5,7 +5,7 @@
 
 	icon_state = "bullet"
 
-	id = "bullet"
+
 	var/bullet_length = -1
 	var/bullet_diameter = -1
 
@@ -23,6 +23,7 @@
 	var/base_spread = 0 //The additional spread of this type of bullet. Optional. Adds to the gun's settings.
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
 	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
+	var/bullet_color //The bullet color of the projectile.
 
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
@@ -113,7 +114,7 @@
 	if(src == transfer_target)
 		return FALSE //TODO: THIS USED TO BE TRUE, TEST BULLETS TO SEE IF THIS SHOULD BE TRUE
 
-	if(id != transfer_target.id)
+	if(type != transfer_target.type)
 		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))
 		return FALSE
 

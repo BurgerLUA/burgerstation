@@ -181,6 +181,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread = 0
 	var/projectile_speed_to_use = projectile_speed
+	var/bullet_color_to_use = bullet_color
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
@@ -197,6 +198,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			bullet_spread = spent_bullet.base_spread
 		if(spent_bullet.projectile_speed)
 			projectile_speed_to_use = spent_bullet.projectile_speed
+		if(spent_bullet.bullet_color)
+			bullet_color_to_use = spent_bullet.bullet_color
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
@@ -226,13 +229,10 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		if(is_living(caller))
 			var/mob/living/L = caller
 			accuracy_loss += (get_skill_spread(L) + get_movement_spread(L))
-
-
 		accuracy_loss = clamp(accuracy_loss,0,0.5)
 
 		var/view_punch_time = shoot_delay
-
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)

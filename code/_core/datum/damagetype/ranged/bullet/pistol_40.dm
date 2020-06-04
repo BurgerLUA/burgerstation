@@ -10,3 +10,5 @@
 	attack_damage_penetration = list(
 		BLUNT = 25
 	)
+
+	falloff = VIEW_RANGE

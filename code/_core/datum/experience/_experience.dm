@@ -76,7 +76,7 @@
 	return experience
 
 /experience/proc/get_power(var/min_power = 0.25,var/max_power = 1)
-	return clamp(get_current_level() / 100,min_power,max_power)
+	return clamp(last_level / 100,min_power,max_power)
 
 /experience/proc/on_level_up(var/old_level,var/new_level)
 	owner.on_level_up(src,old_level,new_level)

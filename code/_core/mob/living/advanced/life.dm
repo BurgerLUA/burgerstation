@@ -8,8 +8,6 @@
 			if(talk_duration <= 0 && !is_typing)
 				animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
 
-		handle_organs()
-
 	return .
 
 mob/living/advanced/proc/handle_regen()
@@ -62,6 +60,7 @@ mob/living/advanced/proc/handle_regen()
 
 	if(.)
 		handle_regen()
+		handle_organs()
 
 	return .
 

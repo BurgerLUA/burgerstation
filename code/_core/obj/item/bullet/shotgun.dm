@@ -4,9 +4,10 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	id = "bullet"
+
 	bullet_diameter = 18.5
 	bullet_length = 18.5
+	bullet_color = "#FFECB6"
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O

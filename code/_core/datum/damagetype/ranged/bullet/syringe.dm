@@ -12,3 +12,5 @@
 		PIERCE = 15,
 		BIO = 25
 	)
+
+	falloff = 0

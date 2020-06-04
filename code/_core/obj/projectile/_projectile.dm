@@ -274,6 +274,9 @@
 				damage_multiplier *= 0.75
 				damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(hit_atom,owner,weapon,object_to_damage,DT) - DT.get_block_power_penetration(owner,hit_atom,weapon,object_to_damage,blocking_atom),0,1)
 
+		if(DT.falloff > 0)
+			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
+
 		if(damage_multiplier > 0)
 			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else

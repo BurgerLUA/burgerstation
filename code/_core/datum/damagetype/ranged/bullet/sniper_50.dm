@@ -12,3 +12,5 @@
 		BLUNT = INFINITY,
 		PIERCE = INFINITY
 	)
+
+	falloff = 0

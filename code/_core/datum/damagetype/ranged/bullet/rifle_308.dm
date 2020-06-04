@@ -13,6 +13,8 @@
 		PIERCE = 25
 	)
 
+	falloff = VIEW_RANGE + ZOOM_RANGE
+
 /damagetype/ranged/bullet/rifle_762mm
 	name = "7.62mm rifle bullet"
 
@@ -27,3 +29,5 @@
 		BLUNT = 25,
 		PIERCE = 25
 	)
+
+	falloff = VIEW_RANGE + ZOOM_RANGE

@@ -13,3 +13,5 @@
 		'sounds/effects/impacts/energy_meat1.ogg',
 		'sounds/effects/impacts/energy_meat2.ogg'
 	)
+
+	falloff = VIEW_RANGE

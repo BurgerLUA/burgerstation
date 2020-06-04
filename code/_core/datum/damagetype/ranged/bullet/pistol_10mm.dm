@@ -12,3 +12,5 @@
 		BLUNT = 25,
 		PIERCE = 25
 	)
+
+	falloff = VIEW_RANGE

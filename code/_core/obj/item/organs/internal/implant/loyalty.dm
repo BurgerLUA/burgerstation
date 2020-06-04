@@ -2,7 +2,7 @@
 	var/registered_name = "none"
 	var/registered_id = "none"
 	var/registered_squad = "none"
-	var/loyalty_tag = "NanoTrasen"
+	var/loyalty_tag = "none"
 
 /obj/item/organ/internal/implant/head/loyalty/proc/update_implant(var/desired_name,var/desired_id,var/desired_squad)
 

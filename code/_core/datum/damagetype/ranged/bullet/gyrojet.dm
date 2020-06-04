@@ -14,3 +14,5 @@
 		PIERCE = 10,
 		BOMB = 25,
 	)
+
+	falloff = 0

@@ -43,6 +43,4 @@
 	else
 		icon_state = "inventory_[FLOOR((charge_current/charge_max) * 4, 1)]"
 
-	world.log << "The state: [icon_state]."
-
 	return ..()

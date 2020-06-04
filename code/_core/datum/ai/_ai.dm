@@ -14,7 +14,7 @@
 	var/objective_ticks = 0
 	var/attack_ticks = 0
 
-	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 tick in between
+	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 AI_TICK.
 	var/objective_delay = 3
 	var/attack_delay = 0
 
@@ -205,7 +205,7 @@
 	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max)
 		var/is_left_click = prob(left_click_chance)
 		if(can_ai_attack(objective_attack,is_left_click))
-			do_attack(objective_attack,is_left_click)
+			spawn do_attack(objective_attack,is_left_click)
 	return TRUE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
@@ -589,7 +589,7 @@
 			L.ai.Bump(owner,FALSE)
 
 	if(attack_on_block)
-		do_attack(obstacle,prob(left_click_chance))
+		spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE
 

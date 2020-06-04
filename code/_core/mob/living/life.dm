@@ -237,13 +237,11 @@
 
 	update_alpha(handle_alpha())
 
-	handle_charges(LIFE_TICK)
-
 	handle_status_effects()
 
 	return TRUE
 
-/mob/living/proc/handle_charges(var/charge_gain = 10)
+/mob/living/proc/handle_charges(var/charge_gain = 0)
 
 	var/dodge_power = src.get_skill_power(SKILL_DODGE)
 	var/block_power = src.get_skill_power(SKILL_BLOCK)
@@ -271,6 +269,8 @@ mob/living/proc/on_life_slow()
 
 	if(dead)
 		return FALSE
+
+	handle_charges(LIFE_TICK_SLOW)
 
 	handle_health_buffer()
 

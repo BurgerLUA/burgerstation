@@ -15,6 +15,8 @@
 		PIERCE = 50
 	)
 
+	falloff = VIEW_RANGE*0.5
+
 /damagetype/ranged/bullet/shotgun/slug
 	name = "shotgun slug"
 
@@ -29,3 +31,5 @@
 		BLUNT = 20,
 		PIERCE = 10
 	)
+
+	falloff = VIEW_RANGE

@@ -3,12 +3,14 @@
 	desc = "For rifles that require .308."
 	icon = 'icons/obj/items/bullet/762.dmi'
 
-	id = "bullet"
+
 	bullet_diameter = 7.62
 	bullet_length = 51
+	bullet_color = "#FFECB6"
 
 	item_count_max = 5
 	item_count_max_icon = 5
+	bullet_color = "#FFECB6"
 
 	projectile = /obj/projectile/bullet/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_308
@@ -35,9 +37,10 @@
 	desc = "For rifles and machineguns that requre .223."
 	icon = 'icons/obj/items/bullet/223.dmi'
 
-	id = "bullet"
+
 	bullet_diameter = 5.56
 	bullet_length = 45
+	bullet_color = "#FFECB6"
 
 	item_count_max = 5
 	item_count_max_icon = 5

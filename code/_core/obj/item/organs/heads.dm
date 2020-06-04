@@ -33,7 +33,7 @@
 
 	health_base = 50
 
-	reagents = /reagent_container/limb/head
+	reagents = /reagent_container/limb
 
 	health_coefficient = 2
 
