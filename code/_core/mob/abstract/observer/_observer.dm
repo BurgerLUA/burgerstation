@@ -4,14 +4,19 @@
 	desc_extended = "Those who perish in this world turn into these beings to then later be resurrected to die again and again."
 	icon = 'icons/mob/abstract/ghosts.dmi'
 	icon_state = "basic"
-	//ghost = TRUE
+	invisibility = INVISIBLITY_GHOST
+	see_invisible = INVISIBLITY_GHOST
+
 	layer = LAYER_GHOST
 
 	movement_delay = 1
 
 	var/list/spawning_buttons = list(
-		/obj/hud/button/load_character,
-		/obj/hud/button/new_character
+		/obj/hud/button/menu/title,
+		/obj/hud/button/menu/selection/character_new,
+		/obj/hud/button/menu/selection/character_load,
+		/obj/hud/button/menu/selection/observe,
+		/obj/hud/button/menu/selection/macros
 	)
 
 	collision_flags = FLAG_COLLISION_ETHEREAL
@@ -26,6 +31,11 @@
 	deceleration = 5
 
 	alpha = 0
+
+	anchored = TRUE
+
+/mob/abstract/observer/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
+	return ..(text_to_say,should_sanitize,TEXT_GHOST)
 
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))

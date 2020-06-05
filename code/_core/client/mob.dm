@@ -6,6 +6,17 @@
 	if(mob)
 		mob.ckey_last = null
 
+	var/mob/abstract/observer/ghost/O = new(desired_loc,src)
+	INITIALIZE(O)
+	O.force_move(desired_loc)
+
+/client/proc/make_observer(var/turf/desired_loc)
+	if(!desired_loc)
+		desired_loc = FALLBACK_TURF
+
+	if(mob)
+		mob.ckey_last = null
+
 	var/mob/abstract/observer/O = new(desired_loc,src)
 	INITIALIZE(O)
 	O.force_move(desired_loc)
@@ -27,6 +38,7 @@
 	mob = M
 	eye = M
 	all_mobs_with_clients += M
+	view = M.view
 
 	update_zoom(-1)
 	update_verbs()

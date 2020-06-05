@@ -4,6 +4,13 @@
 	path = 'sounds/music/intro.ogg'
 	length = 1*60 + 51
 
+/track/slow_fall
+	name = "Slow Fall"
+	id = "slow_fall"
+	path = 'sounds/music/slow_fall.ogg'
+	length = 2*60 + 20
+
+
 /track/space_wayfarer
 	name = "Space Wayfarer"
 	id = "space_wayfarer"

@@ -1,5 +1,11 @@
 /mob/proc/can_sprint()
-	return TRUE
+	return !anchored
+
+/mob/proc/can_walk()
+	return !anchored
+
+/mob/proc/can_jog()
+	return !anchored
 
 /mob/proc/on_sprint()
 	return TRUE
@@ -7,14 +13,15 @@
 /mob/proc/on_jog()
 	return TRUE
 
-/mob/proc/can_walk()
-	return TRUE
-
-/mob/proc/can_jog()
-	return TRUE
-
 /mob/proc/on_walk()
 	return TRUE
+
+/mob/handle_movement(var/adjust_delay = 1)
+
+	if(!can_walk())
+		return FALSE
+
+	return ..()
 
 /mob/get_movement_delay()
 

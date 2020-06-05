@@ -3,16 +3,16 @@
 	set desc = "Saves and quits your character, returning you to the main menu."
 	set category = "Menu"
 
-	if(!loc)
+	if(!loc || !client || !mobdata)
 		return FALSE
 
 	var/area/A = get_area(src)
 
-	if(mobdata && can_save(A))
+	if(can_save(A))
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && can_save(A))
 			mobdata.save_current_character()
-			make_ghost()
+			client.make_ghost()
 			qdel(src)
 			return TRUE
 

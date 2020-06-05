@@ -10,6 +10,7 @@ var/global/list/all_clients = list()
 	//control_freak = CONTROL_FREAK_ALL //Just for now as I don't want people's binds to get messed up
 	fps = FPS_CLIENT
 	preload_rsc = 1
+	view = VIEW_RANGE
 
 	var/list/obj/hud/inventory/known_inventory
 	var/list/obj/hud/button/known_buttons
@@ -152,9 +153,9 @@ var/global/list/all_clients = list()
 		control_mob(found_mob)
 	else
 		welcome()
-		make_ghost(FALLBACK_TURF)
+		make_observer(FALLBACK_TURF)
 		if(world_state == STATE_RUNNING)
-			play_music_track("intro", src)
+			play_music_track("slow_fall", src)
 
 	if(!connection_data)
 		connection_data = new(src)

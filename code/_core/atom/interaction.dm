@@ -64,7 +64,7 @@
 	return FALSE
 
 /atom/proc/get_examine_list(var/mob/examiner)
-	var/object_icon = ICON_TO_HTML(icon,icon_state)
+	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
 	return list(div("examine_title","[object_icon][src.name]"),div("examine_description","\"[src.desc]\""),div("examine_description_long",src.desc_extended))
 
 /atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)

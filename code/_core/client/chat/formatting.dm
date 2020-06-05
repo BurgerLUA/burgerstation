@@ -18,7 +18,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		if(TEXT_OOC)
 			html = "[format_speaker(speaker,source,"OOC", language = language)]: [span("ooc",text)]"
 		if(TEXT_GHOST)
-			html = "[format_speaker(speaker,source,"DEAD", language = language)] moans, &#34;[span("ghost",text)]&#34;"
+			html = "[format_speaker(speaker,source,"DEAD", language = language)] moans &#34;[span("dead",text)]&#34;"
 		if(TEXT_BOT)
 			html = "[format_speaker(speaker,source,"BOT", language = language)]: [span("bot",text)]"
 		if(TEXT_RADIO)
@@ -54,11 +54,11 @@ proc/format_speaker(var/speaker,var/source,var/tag,var/frequency=-1,var/language
 
 	if(language != LANGUAGE_BASIC)
 		tag += " [language]"
-		tag_text += ICON_TO_HTML(chat_language.icon,language)
+		tag_text += ICON_TO_HTML(chat_language.icon,language,32,32)
 
 	if(tag)
 		tag = trim(tag)
-		tag_text += ICON_TO_HTML(chat_tags.icon,tag)
-		. = span(tag,"[tag_text][.]")
+		tag_text += ICON_TO_HTML(chat_tags.icon,tag,32,10)
+		. = span(tag,"[tag_text] [.]")
 
 	return .

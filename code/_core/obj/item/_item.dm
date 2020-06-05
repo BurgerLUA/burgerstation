@@ -295,7 +295,7 @@
 /obj/item/get_examine_list(var/mob/examiner)
 
 	. = list()
-	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state)][src.name]")
+	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size] | Weight: [weight]")

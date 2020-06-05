@@ -127,8 +127,6 @@
 
 	var/client/C = src.client
 
-	C.view = view
-
 	for(var/obj/structure/interactive/localmachine/L in local_machines)
 		L.update_for_mob(src)
 

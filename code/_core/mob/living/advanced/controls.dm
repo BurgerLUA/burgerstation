@@ -39,7 +39,7 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 		return FALSE
 
 	if(driving)
-		return driving.click_on_object(src,object,location,control,params)
+		return driving.on_left_down(object,location,control,params)
 
 	if(quick_mode && !right_hand.get_top_held_object() && handle_quick(object,location,control,params))
 		return TRUE
@@ -54,7 +54,6 @@ mob/living/advanced/on_left_down(var/atom/object,location,control,params) //THIS
 			return object.clicked_on_by_object(src,right_hand,location,control,params)
 		return right_hand.click_on_object(src,object,location,control,params)
 
-
 	return FALSE
 
 
@@ -65,7 +64,7 @@ mob/living/advanced/on_right_down(var/atom/object,location,control,params)  //TH
 		return FALSE
 
 	if(driving)
-		return driving.click_on_object(src,object,location,control,params)
+		return driving.on_right_down(object,location,control,params)
 
 	if(quick_mode && !left_hand.get_top_held_object() && handle_quick(object,location,control,params))
 		return TRUE

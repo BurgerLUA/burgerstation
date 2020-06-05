@@ -117,7 +117,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 /mob/living/advanced/player/Destroy()
 
 	if(client)
-		make_ghost(src.loc ? src.loc : FALLBACK_TURF)
+		client.make_ghost(src.loc ? src.loc : FALLBACK_TURF)
 
 	dialogue_target = null
 

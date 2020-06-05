@@ -16,11 +16,6 @@
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
 	src.to_chat(span("danger","Be warned, if you choose to be cloned or you cannot be revived, you will lose all your items until they are retrieved!."))
 
-	/*
-	if(client)
-		client.make_ghost(get_turf(src))
-	*/
-
 	dead = TRUE
 	time_of_death = world.time
 

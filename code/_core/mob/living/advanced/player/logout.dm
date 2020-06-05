@@ -17,12 +17,3 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 		return FALSE
 
 	return TRUE
-
-/mob/living/advanced/player/proc/make_ghost(var/turf/T)
-
-	if(!T)
-		T = get_turf(src)
-
-	client.make_ghost(T)
-
-	return TRUE

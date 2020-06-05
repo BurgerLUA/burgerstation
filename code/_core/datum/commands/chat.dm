@@ -187,7 +187,7 @@
 	if(src.client)
 		text_to_say = police_input(src.client,text_to_say)
 
-	if(!check_spam(src,text_to_say))
+	if(!check_spam(client,text_to_say))
 		return FALSE
 
 	if(!text_to_say)

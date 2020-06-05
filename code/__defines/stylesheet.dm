@@ -20,6 +20,9 @@ body {
 	color: #46B2B2;
 	font-weight: bold;
 }
+.dead{
+	color: #530FAD;
+}
 .bot{
 	color: #921FAA;
 	font-weight: bold;
