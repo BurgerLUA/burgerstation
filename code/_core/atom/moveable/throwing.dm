@@ -1,4 +1,4 @@
-/atom/movable/proc/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
+/atom/movable/proc/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0)
 
 	if(!throwable)
 		if(ismob(thrower))
@@ -12,13 +12,8 @@
 	P.pixel_y = src.pixel_y
 	P.pixel_x_float = src.pixel_x
 	P.pixel_y_float = src.pixel_y
-	P.lifetime = (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*5
+	P.lifetime = lifetime == -1 ? (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*6 : lifetime
+	P.steps_allowed = steps_allowed
 	INITIALIZE(P)
 	src.force_move(P) //Move it to contents.
-	return P
-
-/mob/living/throw_self(var/atom/thrower,var/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y)
-	var/obj/projectile/bullet/thrown/P = ..()
-	if(P)
-		P.set_dir(thrower.dir)
 	return P
