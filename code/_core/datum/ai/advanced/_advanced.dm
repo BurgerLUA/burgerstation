@@ -255,14 +255,18 @@
 	if(A.right_hand && !A.right_item)
 		A.right_hand.add_held_object(W,FALSE)
 		. = TRUE
+		if(W.can_wield && !W.wielded && A.left_hand && !A.left_item)
+			A.left_hand.wield_object(A,W)
 
-	else if(A.left_hand && !A.left_item)
+	else if(A.left_hand && !A.left_hand.parent_inventory && !A.left_item)
 		A.left_hand.add_held_object(W,FALSE)
 		. = TRUE
 
 	if(. && istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(!E.enabled) E.click_self(A)
+
+
 
 
 	return .
