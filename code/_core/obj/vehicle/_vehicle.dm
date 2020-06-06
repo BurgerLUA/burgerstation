@@ -28,6 +28,17 @@
 		/obj/hud/button/vehicle/ammo_display/right
 	)
 
+/mob/living/vehicle/pre_death()
+
+	for(var/mob/living/advanced/A in passengers)
+		exit_vehicle(A, get_turf(src))
+
+	return ..()
+
+/mob/living/vehicle/post_death()
+	explode(get_turf(src),2,src,src)
+	return ..()
+
 /mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)
 	for(var/v in buttons_to_add)
 		var/obj/hud/button/B = new v(src)
@@ -103,7 +114,15 @@
 /mob/living/vehicle/proc/enter_vehicle(atom/movable/Obj,atom/OldLoc)
 
 	if(!is_advanced(Obj))
-		return ..()
+		return FALSE
+
+	if(dead)
+		to_chat("The [src.name] is destroyed!")
+		return FALSE
+
+	if(length(passengers) >= passengers_max)
+		to_chat("There isn't enough space inside \the [src.name] to fit [length(passengers) + 1] people!")
+		return FALSE
 
 	var/mob/living/advanced/L = Obj
 	L.driving = src

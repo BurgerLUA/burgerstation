@@ -154,8 +154,10 @@ var/global/list/all_clients = list()
 	else
 		welcome()
 		make_observer(FALLBACK_TURF)
+		mob.show_hud(FALSE,speed = 0)
 		if(world_state == STATE_RUNNING)
 			play_music_track("slow_fall", src)
+			mob.show_hud(TRUE,speed = 2)
 
 
 	if(!connection_data)

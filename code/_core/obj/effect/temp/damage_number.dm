@@ -18,7 +18,7 @@ obj/effect/temp/damage_number
 obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desired_value)
 
 	. = ..()
-	/*
+
 	if(duration)
 		var/desired_color = "#FFFFFF"
 		var/desired_size = 0.5
@@ -31,5 +31,5 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 		animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=duration*0.5,easing = CIRCULAR_EASING | EASE_OUT)
 		spawn(duration - 5)
 			animate(src,alpha=0,time = 5)
-	*/
+
 	return .

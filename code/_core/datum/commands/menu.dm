@@ -12,7 +12,7 @@
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && can_save(A))
 			mobdata.save_current_character()
-			client.make_ghost()
+			client.make_ghost(get_turf(src))
 			qdel(src)
 			return TRUE
 

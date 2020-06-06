@@ -161,11 +161,16 @@ obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
 	secondary_color = "#00FF00"
+	var/spawnpoint = TRUE
+
+obj/structure/interactive/bed/sleeper/cryo/no_spawn
+	spawnpoint = FALSE
 
 var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = list()
 
 obj/structure/interactive/bed/sleeper/cryo/New(var/desired_loc)
-	cryo_spawnpoints += src
+	if(spawnpoint)
+		cryo_spawnpoints += src
 	return ..()
 
 obj/structure/interactive/bed/sleeper/medical

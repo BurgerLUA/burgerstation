@@ -12,6 +12,8 @@
 
 	footstep_override_id = "mech_step"
 
+	movement_delay = DECISECONDS_TO_TICKS(4)
+
 /mob/living/vehicle/mech/post_death()
 	. = ..()
 	update_sprite()
@@ -32,15 +34,16 @@
 	..()
 
 /mob/living/vehicle/mech/ripley
-	name = "\improper APLU Ripley"
+	name = "\improper APLU Ripley Combat Mech"
 	desc = "Ripley"
 
 	icon_state = "ripley"
 
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
-/mob/living/vehicle/mech/ripley/full
+	health_base = 1000
 
-/mob/living/vehicle/mech/ripley/full/New(var/desired_loc)
+/mob/living/vehicle/mech/ripley/equipped/New(var/desired_loc)
 	..()
 	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
 	INITIALIZE(U1)
@@ -78,7 +81,9 @@
 
 	class = "gygax"
 
-	health_base = 500
+	health_base = 1500
+
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 
 /mob/living/vehicle/mech/gygax/equipped/New(var/desired_loc)
@@ -114,7 +119,9 @@
 
 	class = "durand"
 
-	health_base = 1500
+	health_base = 3000
+
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 
 /mob/living/vehicle/mech/durand/equipped/New(var/desired_loc)

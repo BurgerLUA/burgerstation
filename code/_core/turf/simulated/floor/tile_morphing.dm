@@ -29,7 +29,7 @@
 			continue
 
 		if(should_smooth_with(T))
-			calc_list[dir_to_text] = T.color
+			calc_list[dir_to_text] = T.color ? T.color : "#FFFFFF"
 			continue
 
 	var/ne = 0

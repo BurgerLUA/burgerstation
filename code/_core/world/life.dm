@@ -41,6 +41,7 @@
 		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			O.force_move(get_turf(pick(lobby_positions)))
 			play_music_track("slow_fall", O.client)
+			O.show_hud(TRUE,speed = 2)
 
 	for(var/subsystem/SS in active_subsystems)
 		spawn

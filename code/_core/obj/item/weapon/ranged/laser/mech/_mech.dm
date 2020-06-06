@@ -9,8 +9,8 @@
 	automatic = FALSE
 	bullet_color = "#0000FF"
 
-	charge_max = 100000
-	charge_current = 100000
+	charge_max = 1000000
+	charge_current = 1000000
 	charge_cost = 1000
 
 	view_punch = 0
@@ -51,8 +51,8 @@
 
 	shoot_delay = 3
 
-	charge_max = 250*60
-	charge_current = 250*60
+	charge_max = 250*300
+	charge_current = 250*300
 	charge_cost = 250
 
 	projectile = /obj/projectile/bullet/pistol
@@ -71,8 +71,8 @@
 
 	shoot_delay = 4
 
-	charge_max = 500*30
-	charge_current = 500*30
+	charge_max = 500*240
+	charge_current = 500*240
 	charge_cost = 500
 
 	projectile = /obj/projectile/bullet/rifle
@@ -91,8 +91,8 @@
 
 	shoot_delay = 5
 
-	charge_max = 1000*20
-	charge_current = 1000*20
+	charge_max = 1000*120
+	charge_current = 1000*120
 	charge_cost = 1000
 
 	projectile = /obj/projectile/bullet/rifle
