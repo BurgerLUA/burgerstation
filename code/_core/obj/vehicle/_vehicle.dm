@@ -23,7 +23,9 @@
 	var/list/buttons_to_add = list(
 		/obj/hud/button/vehicle/eject,
 		/obj/hud/button/vehicle/weapon,
-		/obj/hud/button/vehicle/weapon/right
+		/obj/hud/button/vehicle/weapon/right,
+		/obj/hud/button/vehicle/ammo_display,
+		/obj/hud/button/vehicle/ammo_display/right
 	)
 
 /mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)
@@ -109,6 +111,7 @@
 	L.force_move(src.loc)
 	if(L.client)
 		L.client.eye = src
+	L.has_footsteps = FALSE
 	L.invisibility = 100
 	L.collision_flags = FLAG_COLLISION_NONE
 	L.collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -140,6 +143,7 @@
 	if(L.client)
 		L.client.eye = L
 	L.invisibility = initial(L.invisibility)
+	L.has_footsteps = initial(L.has_footsteps)
 	remove_buttons(L)
 	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
 	L.show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=0)

@@ -47,6 +47,7 @@
 	maptext = "<div style='text-align:right'>[desired_text]</div>"
 	return TRUE
 
+//Eject
 /obj/hud/button/vehicle/eject
 	name = "eject"
 	icon_state = "eject"
@@ -62,3 +63,40 @@
 			A.driving.exit_vehicle(A,get_turf(A.driving))
 
 	return .
+
+
+/obj/hud/button/vehicle/ammo_display
+	name = "ammo display"
+	icon_state = "none"
+	var/weapon_slot = 2
+	screen_loc = "CENTER-1.4,BOTTOM+0.5"
+
+/obj/hud/button/vehicle/ammo_display/proc/set_map_text(var/desired_text)
+	maptext = desired_text
+	return TRUE
+
+/obj/hud/button/vehicle/ammo_display/update_owner(var/mob/desired_owner)
+
+	. = ..()
+
+	if(owner)
+		update_ammo()
+
+	return .
+
+/obj/hud/button/vehicle/ammo_display/proc/update_ammo()
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.driving && length(A.driving.equipment) && istype(A.driving.equipment[weapon_slot],/obj/item/weapon/ranged/energy/mech))
+			var/obj/item/weapon/ranged/energy/mech/E = A.driving.equipment[weapon_slot]
+			set_map_text("[FLOOR(E.charge_current/E.charge_cost,1)]/[FLOOR(E.charge_max/E.charge_cost,1)]")
+
+/obj/hud/button/vehicle/ammo_display/right
+	name = "ammo display"
+	icon_state = "none"
+	weapon_slot = 1
+	screen_loc = "CENTER+1.4,BOTTOM+0.5"
+
+/obj/hud/button/vehicle/ammo_display/right/set_map_text(var/desired_text)
+	maptext = "<div style='text-align:right'>[desired_text]</div>"
+	return TRUE

@@ -203,10 +203,6 @@
 
 	return ..()
 
-/atom/proc/receive_sound(var/sound/S)
-	src << S
-
-
 /atom/get_debug_name()
 	return "[src.name]([src.type])([x],[y],[z])"
 

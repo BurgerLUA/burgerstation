@@ -10,6 +10,8 @@
 
 	movement_delay = 10
 
+	footstep_override_id = "mech_step"
+
 /mob/living/vehicle/mech/post_death()
 	. = ..()
 	update_sprite()

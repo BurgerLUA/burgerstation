@@ -59,7 +59,6 @@
 	var/random_spawn_dir = TRUE
 
 	var/has_footprints = FALSE
-	var/list/footstep_override
 
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC

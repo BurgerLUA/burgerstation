@@ -22,11 +22,18 @@
 	size = SIZE_6
 	weight = WEIGHT_6
 
-/obj/item/weapon/ranged/energy/mech/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/mech/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
-	world.log << "Trying to click [src] by [caller]."
+	. = ..()
 
-	return ..()
+	if(. && istype(loc,/mob/living/vehicle/))
+		var/mob/living/vehicle/V = loc
+		if(length(V.passengers) && is_advanced(V.passengers[1]))
+			var/mob/living/advanced/A = V.passengers[1]
+			for(var/obj/hud/button/vehicle/ammo_display/B in A.buttons)
+				B.update_ammo()
+
+	return .
 
 /obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
 

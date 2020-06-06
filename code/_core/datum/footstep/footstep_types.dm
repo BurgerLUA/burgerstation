@@ -144,3 +144,15 @@
 		'sounds/effects/footsteps/splat3.ogg',
 		'sounds/effects/footsteps/splat4.ogg'
 	)
+
+/footstep/mech_step
+	id = "mech_step"
+	footstep_sounds = list(
+		'sounds/effects/footsteps/mechstep.ogg',
+	)
+
+/footstep/mech_move
+	id = "mech_move"
+	footstep_sounds = list(
+		'sounds/effects/footsteps/mechmove.ogg',
+	)
