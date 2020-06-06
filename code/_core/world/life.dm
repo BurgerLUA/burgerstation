@@ -33,12 +33,12 @@
 	world_state = STATE_RUNNING
 
 	if(ENABLE_INSTALOAD)
-		for(var/mob/abstract/observer/O in all_mobs_with_clients)
+		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			if(!O.load_most_recent_character())
 				O.new_character()
 
 	else if(length(lobby_positions))
-		for(var/mob/abstract/observer/O in all_mobs_with_clients)
+		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			O.force_move(get_turf(pick(lobby_positions)))
 			play_music_track("slow_fall", O.client)
 

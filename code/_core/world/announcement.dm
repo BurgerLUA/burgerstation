@@ -10,7 +10,7 @@
 
 	var/list/valid_mobs = list()
 
-	for(var/mob/abstract/observer/O in world)
+	for(var/mob/abstract/observer/ghost/O in world)
 		if(!O.client)
 			continue
 		valid_mobs += O

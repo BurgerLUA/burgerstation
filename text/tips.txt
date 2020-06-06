@@ -35,3 +35,6 @@ Your mana regenerates less if you have low mana.
 Some enemies are too large to be stunned or grabbed.
 Unarmed attacks cannot be blocked, except by shields and your hands.
 Most sources of damage absorbed via armor will convert itself into 25% of the damage blocked as fatigue damage. Exceptions apply to fatigue damage, holy damage, and dark damage.
+Having a negative armor rating means that you take additional damage from what that armor protects.
+Humans have a natural holy and darkness armor resist of 100.
+Just because something is, doesn't mean it should be. If you believe you've encountered a bug or something horribly unbalanced, start a conversation about it on discord.

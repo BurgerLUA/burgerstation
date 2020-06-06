@@ -76,6 +76,8 @@
 
 	class = "gygax"
 
+	health_base = 500
+
 
 /mob/living/vehicle/mech/gygax/equipped/New(var/desired_loc)
 	..()
@@ -109,6 +111,8 @@
 	)
 
 	class = "durand"
+
+	health_base = 1500
 
 
 /mob/living/vehicle/mech/durand/equipped/New(var/desired_loc)

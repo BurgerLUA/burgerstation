@@ -30,6 +30,15 @@
 
 	return ..()
 
+/mob/living/vehicle/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+
+	if(is_advanced(P.owner))
+		var/mob/living/advanced/A = P.owner
+		if(A.driving == src)
+			return FALSE
+
+	return ..()
+
 /mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	if(P && !P.ignore_iff && is_living(P.owner)) //FAILSAFE. PUSSY SHIT BUT IT SHOULD PREVENT EXPLOITS.

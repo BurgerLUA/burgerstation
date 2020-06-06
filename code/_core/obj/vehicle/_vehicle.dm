@@ -15,13 +15,27 @@
 
 	var/list/obj/item/equipment
 
-
 	var/list/vehicle_buttons = list()
 
+	iff_tag = "NanoTrasen"
+	loyalty_tag = "NanoTrasen"
+
+	var/list/buttons_to_add = list(
+		/obj/hud/button/vehicle/eject,
+		/obj/hud/button/vehicle/weapon,
+		/obj/hud/button/vehicle/weapon/right
+	)
+
 /mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)
+	for(var/v in buttons_to_add)
+		var/obj/hud/button/B = new v(src)
+		B.update_owner(A)
 	return TRUE
 
 /mob/living/vehicle/proc/remove_buttons(var/mob/living/advanced/A)
+	for(var/obj/hud/button/B in A.buttons)
+		if(B.type in buttons_to_add)
+			B.update_owner(null)
 	return TRUE
 
 /mob/living/vehicle/proc/attach_equipment(var/obj/item/I)
@@ -54,11 +68,19 @@
 	var/click_flags = A.client.get_click_flags(params,TRUE)
 
 	if(length(equipment))
-		if(click_flags & RIGHT_HAND && equipment[1])
-			equipment[1].click_on_object(src,object,location,control,params)
+		if(click_flags & RIGHT_HAND)
+			if(equipment[1])
+				equipment[1].click_on_object(caller,object,location,control,params)
+			else
+				caller.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
 
 		if(click_flags & LEFT_HAND && equipment[2])
-			equipment[2].click_on_object(src,object,location,control,params)
+			if(equipment[2])
+				equipment[2].click_on_object(caller,object,location,control,params)
+			else
+				caller.to_chat("\the [src.name] blares, \"No equipment found in slot 2!\"")
+	else
+		caller.to_chat("<b>\the [src.name]</b> blares, \"No equipment found!\"")
 
 	return TRUE
 
@@ -90,8 +112,9 @@
 	L.invisibility = 100
 	L.collision_flags = FLAG_COLLISION_NONE
 	L.collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	add_buttons(L)
 	L.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET|FLAGS_HUD_SPECIAL,speed=0)
-	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=0)
+	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=1)
 	update_sprite()
 
 	return ..()
@@ -107,6 +130,7 @@
 	return .
 
 /mob/living/vehicle/proc/exit_vehicle(atom/movable/Obj, atom/newloc)
+
 	if(!is_advanced(Obj))
 		return ..()
 
@@ -116,6 +140,7 @@
 	if(L.client)
 		L.client.eye = L
 	L.invisibility = initial(L.invisibility)
+	remove_buttons(L)
 	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
 	L.show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=0)
 	update_sprite()
@@ -123,6 +148,10 @@
 	return ..()
 
 /mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
+
+	if(get_dist(src,caller) > 1)
+		caller.to_chat("You're too far away!")
+		return FALSE
 
 	if(length(passengers) >= passengers_max)
 		caller.to_chat("\The [src.name] is full!")
@@ -132,8 +161,10 @@
 		caller.to_chat("You can't get inside \the [src.name]!")
 		return FALSE
 
-	if(get_dist(src,caller) > 1)
-		caller.to_chat("You're too far away!")
+	var/mob/living/advanced/A = caller
+
+	if(A.iff_tag != iff_tag)
+		A.to_chat("ERROR: Unrecognized IFF tag.")
 		return FALSE
 
 	return TRUE

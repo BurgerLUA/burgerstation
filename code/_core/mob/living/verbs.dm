@@ -15,7 +15,6 @@
 	set hidden = TRUE
 	toggle_sneak(!is_sneaking)
 
-
 /mob/living/verb/suicide()
 	set name = "Suicide"
 	set category = "Game"

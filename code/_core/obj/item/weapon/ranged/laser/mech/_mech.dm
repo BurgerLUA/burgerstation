@@ -22,9 +22,15 @@
 	size = SIZE_6
 	weight = WEIGHT_6
 
+/obj/item/weapon/ranged/energy/mech/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	world.log << "Trying to click [src] by [caller]."
+
+	return ..()
+
 /obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
 
-	if(!istype(caller,/mob/living/vehicle/))
+	if(!istype(loc,/mob/living/vehicle/))
 		return FALSE
 
 	return ..()

@@ -157,6 +157,7 @@ var/global/list/all_clients = list()
 		if(world_state == STATE_RUNNING)
 			play_music_track("slow_fall", src)
 
+
 	if(!connection_data)
 		connection_data = new(src)
 	world.update_status()

@@ -17,7 +17,7 @@
 	if(mob)
 		mob.ckey_last = null
 
-	var/mob/abstract/observer/O = new(desired_loc,src)
+	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
 	O.force_move(desired_loc)
 

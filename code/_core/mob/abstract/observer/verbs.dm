@@ -17,7 +17,7 @@
 	if(decision != "Yes")
 		return FALSE
 
-	if(type != /mob/abstract/observer/)
+	if(type == /mob/abstract/observer/ghost)
 		to_chat("You are already observing!")
 		return FALSE
 
