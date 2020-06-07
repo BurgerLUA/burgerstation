@@ -73,6 +73,7 @@
 		return FALSE
 
 	if(grabbed_object == object)
+		caller.to_chat(span("notice","You cannot grab yourself!"))
 		return FALSE
 
 	if(grabbed_object)
@@ -88,11 +89,12 @@
 	animate(grabbed_object,pixel_x = initial(grabbed_object.pixel_x), pixel_y = initial(grabbed_object.pixel_y), time = SECONDS_TO_DECISECONDS(1))
 	grabbed_object.grabbing_hand = src
 
-	if(is_living(grabbed_object))
+	if(is_living(grabbed_object) && is_living(caller))
 		var/mob/living/L = grabbed_object
-		if(!L.dead && L.dir == caller.dir)
-			L.add_status_effect(PARALYZE,30,stealthy = TRUE)
-			L.add_status_effect(DISARM,30)
+		var/mob/living/A = caller
+		if(!L.dead && L.dir == caller.dir && L.loyalty_tag != A.loyalty_tag)
+			L.add_status_effect(PARALYZE,30,source = A,stealthy = TRUE)
+			L.add_status_effect(DISARM,30,source = A)
 
 	overlays.Cut()
 	update_overlays()

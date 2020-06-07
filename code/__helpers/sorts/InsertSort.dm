@@ -8,12 +8,8 @@
 		if(toIndex <= 0)
 			toIndex += L.len + 1
 
-		var/datum/sortInstance/SI = sortInstance
-		if(!SI)
-			SI = new
-		SI.L = L
-		SI.cmp = cmp
-		SI.associative = associative
-
-		SI.binarySort(fromIndex, toIndex, fromIndex)
+		sortInstance.L = L
+		sortInstance.cmp = cmp
+		sortInstance.associative = associative
+		sortInstance.binarySort(fromIndex, toIndex, fromIndex)
 	return L

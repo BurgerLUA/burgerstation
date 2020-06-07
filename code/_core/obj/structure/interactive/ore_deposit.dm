@@ -28,7 +28,7 @@
 			caller.to_chat(span("notice","This ore vein is depleted!."))
 		return TRUE
 
-	var/obj/item/material/ore/O = new(get_turf(src))
+	var/obj/item/material/ore/O = new(src.loc)
 	O.material_id = src.material_id
 	INITIALIZE(O)
 	GENERATE(O)

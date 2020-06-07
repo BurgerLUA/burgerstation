@@ -22,7 +22,7 @@
 	weight = WEIGHT_4
 
 	heat_per_shot = 0.03
-	heat_max = 0.1
+	heat_max = 0.15
 
 	bullet_length_min = 46
 	bullet_length_best = 51

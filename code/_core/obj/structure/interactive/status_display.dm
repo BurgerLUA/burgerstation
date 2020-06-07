@@ -75,4 +75,5 @@ var/global/list/global_status_displays = list()
 
 /obj/structure/interactive/status_display/global_display/round
 	name = "mission status display"
+	frame_color = "#E5C14B"
 	status_id = "mission"

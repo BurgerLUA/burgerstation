@@ -12,7 +12,7 @@
 	id = "nitrogen_flower"
 	icon_count = 3
 	reagents = list(
-		nitrogen = 1,
+		/reagent/nitrogen = 1,
 	)
 
 
@@ -22,7 +22,7 @@
 	id = "oxygen_fruit"
 	icon_count = 3
 	reagents = list(
-		oxygen = 1,
+		/reagent/oxygen = 1,
 	)
 
 /plant_type/wheat
@@ -31,7 +31,7 @@
 	id = "wheat"
 	icon_count = 5
 	reagents = list(
-		wheat_grain = 1,
+		/reagent/nutrition/wheat_grain = 1,
 	)
 
 /plant_type/sugarcane
@@ -40,7 +40,7 @@
 	id = "sugarcane"
 	icon_count = 4
 	reagents = list(
-		sugarcane = 1,
+		/reagent/nutrition/sugar/cane = 1,
 	)
 
 /plant_type/liberty_cap
@@ -49,7 +49,7 @@
 	id = "liberty_cap"
 	icon_count = 1
 	reagents = list(
-		liberty_dust = 1,
+		/reagent/drug/liberty_dust = 1,
 	)
 
 /plant_type/chanterelle
@@ -58,7 +58,7 @@
 	id = "chanterelle"
 	icon_count = 1
 	reagents = list(
-		chanterelle = 1,
+		/reagent/nutrition/chanterelle = 1,
 	)
 
 /plant_type/destroying_angel
@@ -67,7 +67,7 @@
 	id = "destroying_angel"
 	icon_count = 1
 	reagents = list(
-		angel_toxin = 1,
+		/reagent/toxin/angel_toxin = 1,
 	)
 
 /plant_type/fly_amanita
@@ -76,7 +76,8 @@
 	id = "fly_amanita"
 	icon_count = 1
 	reagents = list(
-		fly_amanita_toxin = 1,
+		/reagent/toxin/fly_amanita_toxin = 1,
+		/reagent/drug/space = 1
 	)
 
 /plant_type/glowshroom
@@ -85,7 +86,7 @@
 	id = "glowshroom"
 	icon_count = 2
 	reagents = list(
-		radium = 1,
+		/reagent/radioactive/radium = 1,
 	)
 
 /plant_type/tomato
@@ -94,7 +95,7 @@
 	id = "tomato"
 	icon_count = 5
 	reagents = list(
-		tomato_paste = 1,
+		/reagent/nutrition/tomato = 1,
 	)
 
 /plant_type/cabbage
@@ -103,5 +104,5 @@
 	id = "cabbage"
 	icon_count = 0
 	reagents = list(
-		cabbage = 1,
+		/reagent/nutrition/cabbage = 1,
 	)

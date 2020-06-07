@@ -24,6 +24,8 @@
 
 	drop_on_death = TRUE
 
+	priority = 90
+
 /obj/hud/inventory/organs/torso_b
 	name = "back slot"
 	icon_state = "slot_torso_b"
@@ -38,6 +40,8 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
 
 	drop_on_death = TRUE
+
+	priority = 10
 
 /obj/hud/inventory/organs/torso_ob
 	name = "overwear belt slot"
@@ -62,3 +66,5 @@
 	item_blacklist = list(
 		/obj/item/clothing
 	)
+
+	priority = 1

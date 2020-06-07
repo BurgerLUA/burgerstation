@@ -2,14 +2,12 @@
 	name = "deep ore deposit"
 	icon = 'icons/lighting.dmi'
 	icon_state = "white"
-	var/ore_score = 0
+	var/ore_score = 1
 	//invisibility = 101
 	var/material_id
 	plane = PLANE_OBJ
 	layer = LAYER_FLOOR_DECAL
 	initialize_type = INITIALIZE_LATE
-
-
 
 /obj/structure/interactive/ground_ore_deposit/Initialize(var/desired_loc)
 
@@ -31,31 +29,30 @@
 	return .
 
 /obj/structure/interactive/ground_ore_deposit/proc/mine()
-	var/obj/item/material/ore/O = new(get_turf(src))
+	if(src.ore_score <= 0)
+		CRASH_SAFE("Tried to mine ore from a ground ore deposit that had no ore!")
+		return FALSE
+	src.ore_score--
+	var/obj/item/material/ore/O = new(src.loc)
 	O.material_id = src.material_id
 	INITIALIZE(O)
 	GENERATE(O)
-	src.ore_score--
-	update_sprite()
-	for(var/obj/structure/interactive/ore_box/OB in range(1,src))
+	var/obj/structure/interactive/ore_box/OB = locate() in range(1,src)
+	if(OB)
 		O.force_move(OB)
-		return TRUE
-	O.force_move(get_step(src,pick(DIRECTIONS_ALL)))
+	else
+		O.force_move(get_step(src,pick(DIRECTIONS_ALL)))
+	if(ore_score <= 0)
+		qdel(src)
+	update_sprite()
 	return TRUE
 
-
 /obj/structure/interactive/ground_ore_deposit/get_examine_list(var/mob/examiner)
-
 	. = ..()
-
 	. += div("notice","The meter detects an ore concentration of [ore_score]%.")
-
 	return .
 
 /obj/structure/interactive/ground_ore_deposit/update_icon()
-	if(ore_score <= 0)
-		qdel(src)
-		return TRUE
 	var/color_mod = (clamp(ore_score,0,100)/100)*255
 	color = rgb(255 - color_mod,color_mod,0)
 	return ..()

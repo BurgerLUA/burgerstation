@@ -86,6 +86,8 @@
 	if(istype(R,/obj/item/weapon/ranged/bullet/magazine/))
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
+			if(G.wielded) //We should unwield
+				A.left_hand.wield_object(A,G) //Also unwields
 			next_complex = world.time + 15
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
@@ -98,6 +100,8 @@
 			if(!G.stored_magazine)
 				unequip_weapon(G)
 				return FALSE
+			if(G.can_wield && !G.wielded && A.left_hand && !A.left_item)
+				A.left_hand.wield_object(A,G)
 			return FALSE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
@@ -266,11 +270,7 @@
 		var/obj/item/weapon/melee/energy/E = W
 		if(!E.enabled) E.click_self(A)
 
-
-
-
 	return .
-
 
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner

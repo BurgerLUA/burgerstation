@@ -42,6 +42,7 @@ SUBSYSTEM_DEF(horde)
 	var/objectives_spawned = FALSE
 	var/next_objectives_update = -1
 	var/completed_objectives = 0
+	var/spawned_objectives = 0
 	var/last_update = null
 	var/round_end_time = -1
 
@@ -90,8 +91,8 @@ SUBSYSTEM_DEF(horde)
 /subsystem/horde/on_life()
 
 	if(next_objectives_update > 0 && next_objectives_update <= world.time)
-		update_objectives()
 		next_objectives_update = -1
+		update_objectives()
 
 	if(next_threat_update > 0 && next_threat_update <= world.time)
 		check_threat_level()
@@ -101,7 +102,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_WAITING)
 		var/time_to_display = round_time_next - round_time
-		set_status_display("mission","PREP:\n[get_clock_time(time_to_display)].")
+		set_status_display("mission","PREP\n[get_clock_time(time_to_display)]")
 		if(time_to_display >= 0)
 			set_message("Round starts in: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -112,7 +113,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_GEARING)
 		var/time_to_display = round_time_next - round_time
-		set_status_display("mission","GEAR:\n[get_clock_time(time_to_display)].")
+		set_status_display("mission","GEAR\n[get_clock_time(time_to_display)]")
 		if(time_to_display >= 0)
 			set_message("Loadout Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -125,7 +126,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_BOARDING)
 		var/time_to_display = round_time_next - round_time
-		set_status_display("mission","BOARD:\n[get_clock_time(time_to_display)].")
+		set_status_display("mission","BRDN\n[get_clock_time(time_to_display)]")
 		if(time_to_display >= 0)
 			set_message("Boarding Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -137,7 +138,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_LAUNCHING)
 		var/time_to_display = round_time_next - round_time
-		set_status_display("mission","LAUNCH:\n[get_clock_time(time_to_display)].")
+		set_status_display("mission","LNCH\n[get_clock_time(time_to_display)]")
 		if(time_to_display >= 0)
 			set_message("Launch Period: [get_clock_time(time_to_display)]",TRUE)
 			return TRUE
@@ -163,7 +164,7 @@ SUBSYSTEM_DEF(horde)
 					continue
 				var/mob/living/advanced/player/P = locate() in view(VIEW_RANGE + ZOOM_RANGE,S)
 				if(!P)
-					qdel(S)
+					S.ai.set_objective(pick(possible_horde_targets))
 
 		if(ENABLE_HIJACK && next_hijack_check_time <= round_time)
 			if(check_hijack())
@@ -190,10 +191,8 @@ SUBSYSTEM_DEF(horde)
 			if(!N_start)
 				continue
 
-			var/list/possible_targets = possible_horde_targets.Copy()
-			while(length(possible_targets) && wave_to_spawn > 0)
-				var/atom/chosen_target = pick(possible_targets)
-				possible_targets -= chosen_target
+			while(wave_to_spawn > 0)
+				var/atom/chosen_target = pick(possible_horde_targets)
 				var/turf/target_turf = get_turf(chosen_target)
 
 				if(target_turf.z != 3)
@@ -210,10 +209,14 @@ SUBSYSTEM_DEF(horde)
 				while(wave_to_spawn > 0)
 					var/turf/T = get_turf(chosen_spawn)
 					if(T)
+						if(!T.loc)
+							log_error("SSHORDE: TURF [T.get_debug_name()] DID NOT HAVE AN AREA!")
+							continue
 						var/mob/living/advanced/npc/syndicate/S = new(T)
 						INITIALIZE(S)
 						S.ai.set_path(found_path)
 						tracked_enemies += S
+						spawned_enemies_round++
 					else
 						log_error("SSHORDE: COULD NOT FIND A GENERATE TO PLACE SYNDICATE!")
 					wave_to_spawn--
@@ -258,6 +261,7 @@ SUBSYSTEM_DEF(horde)
 		HOOK_ADD("post_death","objective_death",L,src,.proc/queue_objectives_update)
 		tracked_objectives += L
 
+	spawned_objectives = length(tracked_objectives)
 	objectives_spawned = TRUE
 
 	return TRUE
@@ -301,8 +305,9 @@ SUBSYSTEM_DEF(horde)
 		'sounds/effects/station/new_command_report.ogg'
 	)
 
-	if(completed_objectives >= length(tracked_objectives))
+	if(completed_objectives >= spawned_objectives)
 		world.end(WORLD_END_NANOTRASEN_VICTORY)
+		tick_rate = 0
 		return TRUE
 
 	return FALSE

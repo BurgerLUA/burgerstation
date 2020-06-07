@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/magic/tome/lightning
 	name = "tome of the lightning bolt"
 	desc = "Be like Zeus!"
-	desc_extended = "Hold down the fire button to charge up a powerful lightning bolt. The longer the tome is charged, the higher the damage."
+	desc_extended = "Fires slow moving lightning bolts at foes."
 	cost_mana = 32
 	shoot_delay = 10
 

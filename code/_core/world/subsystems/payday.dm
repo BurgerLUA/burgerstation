@@ -24,11 +24,7 @@ SUBSYSTEM_DEF(payday)
 
 	return TRUE
 
-
-
 /subsystem/payday/proc/trigger_payday()
-
-	stored_payday *= 0.75 //Prevents gaming the system.
 
 	var/list/mob/living/advanced/player/valid_players = list()
 
@@ -36,12 +32,19 @@ SUBSYSTEM_DEF(payday)
 		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
 			continue
 		valid_players += P
+		var/tax = FLOOR(P.currency * 0.05,10)
+		if(tax)
+			P.adjust_currency( -tax )
+			P.to_chat(span("notice","You were taxed 5% of your wealth ([tax] credits)."))
+			stored_payday += tax
+
+	stored_payday *= 0.75 //Prevents gaming the system.
 
 	for(var/mob/living/advanced/player/P in valid_players)
 		var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,4000)
 		P.adjust_currency( BASE_PAY + bonus_to_give )
 		if(bonus_to_give)
-			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits and a [bonus_to_give] credit bonus from cargo deliveries!"))
+			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits and a [bonus_to_give] credit bonus."))
 		else
 			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits for your efforts."))
 

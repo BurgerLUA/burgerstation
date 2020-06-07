@@ -132,8 +132,7 @@
 		L.client.eye = src
 	L.has_footsteps = FALSE
 	L.invisibility = 100
-	L.collision_flags = FLAG_COLLISION_NONE
-	L.collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+	L.update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	add_buttons(L)
 	L.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET|FLAGS_HUD_SPECIAL,speed=0)
 	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=1)
@@ -163,6 +162,7 @@
 		L.client.eye = L
 	L.invisibility = initial(L.invisibility)
 	L.has_footsteps = initial(L.has_footsteps)
+	L.update_collisions(initial(L.collision_flags),initial(L.collision_bullet_flags))
 	remove_buttons(L)
 	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
 	L.show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=0)

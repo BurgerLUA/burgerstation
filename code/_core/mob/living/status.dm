@@ -13,8 +13,10 @@
 	if(!S)
 		CRASH_SAFE("Invalid status effect added! ([status_type])")
 		return FALSE
-
 	. = FALSE
+
+	if(!S.can_add_status_effect(source,src))
+		return FALSE
 
 	if(!status_effects[status_type])
 		status_effects[status_type] = list()

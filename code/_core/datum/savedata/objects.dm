@@ -217,141 +217,148 @@
 
 /savedata/proc/get_item_data(var/obj/I,var/save_inventory = TRUE)
 
-	if(!I || !I.should_save)
-		return list()
+	try
+		if(!I || !I.should_save)
+			return list()
 
-	var/list/returning_list = list()
-	returning_list["type"] = I.type
-	if(I.color && lowertext(I.color) != "#ffffff")
-		returning_list["color"] = I.color
+		var/list/returning_list = list()
+		returning_list["type"] = I.type
+		if(I.color && lowertext(I.color) != "#ffffff")
+			returning_list["color"] = I.color
 
-	if(is_organ(I)) //Only organs should save blend data.
-		var/list/blend_data = generate_blend_data(I)
-		if(length(blend_data))
-			returning_list["blend_data"] = blend_data
+		if(is_organ(I)) //Only organs should save blend data.
+			var/list/blend_data = generate_blend_data(I)
+			if(length(blend_data))
+				returning_list["blend_data"] = blend_data
 
-	if(is_item(I))
-		var/obj/item/IT = I
-		if(save_inventory && length(IT.inventories))
-			returning_list["inventories"] = new/list(length(IT.inventories))
-			for(var/i=1,i<=length(IT.inventories),i++)
-				var/obj/hud/inventory/IN = IT.inventories[i]
-				returning_list["inventories"][i] = get_inventory_data(IN)
-		if(IT.soul_bound)
-			returning_list["soul_bound"] = IT.soul_bound
-		if(IT.item_count_current > 1)
-			returning_list["item_count_current"] = IT.item_count_current
-		if(IT.delete_on_drop)
-			returning_list["delete_on_drop"] = TRUE
-		if(IT.reagents && IT.reagents.stored_reagents && length(IT.reagents.stored_reagents))
-			returning_list["reagents"] = list()
-			for(var/r_id in IT.reagents.stored_reagents)
-				returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+		if(is_item(I))
+			var/obj/item/IT = I
+			if(save_inventory && length(IT.inventories))
+				returning_list["inventories"] = new/list(length(IT.inventories))
+				for(var/i=1,i<=length(IT.inventories),i++)
+					var/obj/hud/inventory/IN = IT.inventories[i]
+					returning_list["inventories"][i] = get_inventory_data(IN)
+			if(IT.soul_bound)
+				returning_list["soul_bound"] = IT.soul_bound
+			if(IT.item_count_current > 1)
+				returning_list["item_count_current"] = IT.item_count_current
+			if(IT.delete_on_drop)
+				returning_list["delete_on_drop"] = TRUE
+			if(IT.reagents && IT.reagents.stored_reagents && length(IT.reagents.stored_reagents))
+				returning_list["reagents"] = list()
+				for(var/r_id in IT.reagents.stored_reagents)
+					returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
 
-	if(istype(I,/obj/item/weapon/ranged/))
-		var/obj/item/weapon/ranged/R = I
-		returning_list["firing_pin"] = get_item_data(R.firing_pin)
+		if(istype(I,/obj/item/weapon/ranged/))
+			var/obj/item/weapon/ranged/R = I
+			returning_list["firing_pin"] = get_item_data(R.firing_pin)
 
-	if(is_food(I))
-		var/obj/item/container/food/F = I
-		returning_list["original_volume"] = F.original_volume
+		if(is_food(I))
+			var/obj/item/container/food/F = I
+			returning_list["original_volume"] = F.original_volume
 
-	if(istype(I,/obj/item/container/food/dynamic))
-		var/obj/item/container/food/dynamic/D = I
-		returning_list["icon_state"] = D.icon_state
+		if(istype(I,/obj/item/container/food/dynamic))
+			var/obj/item/container/food/dynamic/D = I
+			returning_list["icon_state"] = D.icon_state
 
-	if(istype(I,/obj/item/container/food/dynamic/bread))
-		var/obj/item/container/food/dynamic/bread/B = I
-		returning_list["cooked_icon_state"] = B.cooked_icon_state
-		returning_list["raw_icon_state"] = B.raw_icon_state
+		if(istype(I,/obj/item/container/food/dynamic/bread))
+			var/obj/item/container/food/dynamic/bread/B = I
+			returning_list["cooked_icon_state"] = B.cooked_icon_state
+			returning_list["raw_icon_state"] = B.raw_icon_state
 
-	if(istype(I,/obj/item/container/food/dynamic/meat))
-		var/obj/item/container/food/dynamic/meat/M = I
-		returning_list["last_cooked"] = M.last_cooked
+		if(istype(I,/obj/item/container/food/dynamic/meat))
+			var/obj/item/container/food/dynamic/meat/M = I
+			returning_list["last_cooked"] = M.last_cooked
 
-	if(is_clothing(I))
-		var/obj/item/clothing/C = I
-		if(length(C.polymorphs))
-			returning_list["polymorphs"] = C.polymorphs
+		if(is_clothing(I))
+			var/obj/item/clothing/C = I
+			if(length(C.polymorphs))
+				returning_list["polymorphs"] = C.polymorphs
 
-	if(is_pill(I))
-		var/obj/item/container/pill/P = I
-		if(P.reagents_2 && P.reagents_2.stored_reagents && length(P.reagents_2.stored_reagents))
-			returning_list["reagents_2"] = list()
-			for(var/r_id in P.reagents_2.stored_reagents)
-				returning_list["reagents_2"][r_id] = P.reagents_2.stored_reagents[r_id]
+		if(is_pill(I))
+			var/obj/item/container/pill/P = I
+			if(P.reagents_2 && P.reagents_2.stored_reagents && length(P.reagents_2.stored_reagents))
+				returning_list["reagents_2"] = list()
+				for(var/r_id in P.reagents_2.stored_reagents)
+					returning_list["reagents_2"][r_id] = P.reagents_2.stored_reagents[r_id]
 
-	if(is_soulgem(I))
-		var/obj/item/soulgem/S = I
-		if(S.total_charge)
-			returning_list["total_charge"] = S.total_charge
+		if(is_soulgem(I))
+			var/obj/item/soulgem/S = I
+			if(S.total_charge)
+				returning_list["total_charge"] = S.total_charge
 
-	if(is_weapon(I))
-		var/obj/item/weapon/W = I
-		if(W.open)
-			returning_list["open"] = TRUE
+		if(is_weapon(I))
+			var/obj/item/weapon/W = I
+			if(W.open)
+				returning_list["open"] = TRUE
 
-	if(is_scroll(I))
-		var/obj/item/weapon/ranged/magic/scroll/S = I
-		if(S.scroll_count)
-			returning_list["scroll_count"] = S.scroll_count
+		if(is_scroll(I))
+			var/obj/item/weapon/ranged/magic/scroll/S = I
+			if(S.scroll_count)
+				returning_list["scroll_count"] = S.scroll_count
 
-	if(is_powercell(I))
-		var/obj/item/powercell/P = I
-		if(P.charge_current)
-			returning_list["charge_current"] = P.charge_current
+		if(is_powercell(I))
+			var/obj/item/powercell/P = I
+			if(P.charge_current)
+				returning_list["charge_current"] = P.charge_current
 
-	if(istype(I,/obj/item/radio))
-		var/obj/item/radio/R = I
-		returning_list["stored_radio"] = get_item_data(R.stored_radio)
+		if(istype(I,/obj/item/radio))
+			var/obj/item/radio/R = I
+			returning_list["stored_radio"] = get_item_data(R.stored_radio)
 
-	if(istype(I,/obj/item/clothing/ears/headset))
-		var/obj/item/clothing/ears/headset/R = I
-		returning_list["stored_radio"] = get_item_data(R.stored_radio)
+		if(istype(I,/obj/item/clothing/ears/headset))
+			var/obj/item/clothing/ears/headset/R = I
+			returning_list["stored_radio"] = get_item_data(R.stored_radio)
 
-	if(is_currency(I))
-		var/obj/item/currency/C = I
-		if(C.value > 1)
-			returning_list["value"] = C.value
+		if(is_currency(I))
+			var/obj/item/currency/C = I
+			if(C.value > 1)
+				returning_list["value"] = C.value
 
-	if(is_bullet_gun(I))
-		var/obj/item/weapon/ranged/bullet/BG = I
+		if(is_bullet_gun(I))
+			var/obj/item/weapon/ranged/bullet/BG = I
 
-		if(BG.chambered_bullet)
-			returning_list["chambered_bullet"] = BG.chambered_bullet.type
+			if(BG.chambered_bullet)
+				returning_list["chambered_bullet"] = BG.chambered_bullet.type
 
-		if(length(BG.stored_bullets))
-			returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
-			for(var/i=1,i<=length(BG.stored_bullets),i++)
-				var/obj/item/bullet_cartridge/B = BG.stored_bullets[i]
-				if(B) returning_list["stored_bullets"][i] = B.type
+			if(length(BG.stored_bullets))
+				returning_list["stored_bullets"] = new/list(length(BG.stored_bullets))
+				for(var/i=1,i<=length(BG.stored_bullets),i++)
+					var/obj/item/bullet_cartridge/B = BG.stored_bullets[i]
+					if(B) returning_list["stored_bullets"][i] = B.type
 
 
-	/*
-	if(is_pump_gun(I))
-		var/obj/item/weapon/ranged/bullet/pump/P = I
-		if(P.stored_chamber)
-			returning_list["stored_chamber"] = P.stored_chamber.type
-	*/
+		/*
+		if(is_pump_gun(I))
+			var/obj/item/weapon/ranged/bullet/pump/P = I
+			if(P.stored_chamber)
+				returning_list["stored_chamber"] = P.stored_chamber.type
+		*/
 
-	if(is_magazine_gun(I))
-		var/obj/item/weapon/ranged/bullet/magazine/MG = I
-		if(MG.stored_magazine)
-			returning_list["stored_magazine"] = get_item_data(MG.stored_magazine)
+		if(is_magazine_gun(I))
+			var/obj/item/weapon/ranged/bullet/magazine/MG = I
+			if(MG.stored_magazine)
+				returning_list["stored_magazine"] = get_item_data(MG.stored_magazine)
 
-	if(is_magazine(I))
-		var/obj/item/magazine/M = I
-		if(length(M.stored_bullets))
-			returning_list["stored_bullets"] = list()
-			for(var/i=1,i<=length(M.stored_bullets),i++)
-				var/obj/item/bullet_cartridge/B = M.stored_bullets[i]
-				if(B) returning_list["stored_bullets"][B.type] += 1
+		if(is_magazine(I))
+			var/obj/item/magazine/M = I
+			if(length(M.stored_bullets))
+				returning_list["stored_bullets"] = list()
+				for(var/i=1,i<=length(M.stored_bullets),i++)
+					var/obj/item/bullet_cartridge/B = M.stored_bullets[i]
+					if(B) returning_list["stored_bullets"][B.type] += 1
 
-	if(istype(I,/obj/item/firing_pin/))
-		var/obj/item/firing_pin/FP = I
-		returning_list["iff_tag"] = FP.iff_tag
+		if(istype(I,/obj/item/firing_pin/))
+			var/obj/item/firing_pin/FP = I
+			returning_list["iff_tag"] = FP.iff_tag
 
-	return returning_list
+		return returning_list
+
+	catch(var/exception/e)
+		log_error("ERROR: Could not save [I.get_debug_name()]! [e.name] in [e.file]:[e.line].\n[e.desc]")
+
+	return null
+
 
 /savedata/proc/generate_blend_data(var/obj/O)
 

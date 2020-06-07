@@ -93,6 +93,8 @@
 
 	liquid = 0.25
 
+	flags_reagent = FLAG_REAGENT_RAW
+
 /reagent/nutrition/dough/flour
 	name = "whole wheat flour dough"
 	desc = "Typical whole wheat water-flour based dough."
@@ -126,6 +128,8 @@
 	flavor = "tough bread"
 
 	liquid = -0.25
+
+	flags_reagent = FLAG_REAGENT_COOKED
 
 /reagent/nutrition/bread/flour
 	name = "whole grain bread"
@@ -180,7 +184,29 @@
 
 	flavor = "mushroom"
 
-	liquid = -0.1
+	liquid = -0.2
+
+/reagent/nutrition/tomato
+	name = "tomato paste"
+	desc = "Nutrition and flavor from a tomato."
+	color = "#C90000"
+
+	nutrition_amount = 1
+
+	flavor = "tomato"
+
+	liquid = 0.3
+
+/reagent/nutrition/cabbage
+	name = "cabbage"
+	desc = "Nutrition and flavor from a cabbage."
+	color = "#658268"
+
+	nutrition_amount = 1
+
+	flavor = "cabbage"
+
+	liquid = 0
 
 //Milk
 /reagent/nutrition/milk/

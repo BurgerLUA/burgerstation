@@ -139,8 +139,8 @@
 /proc/moveElement(var/list/L, var/fromIndex, var/toIndex)
 	if(fromIndex > toIndex)
 		++fromIndex
-	else
-		++toIndex
+	//else
+	//	++toIndex
 
 	L.Insert(toIndex, null)
 	L.Swap(fromIndex, toIndex)

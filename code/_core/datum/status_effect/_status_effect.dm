@@ -5,6 +5,9 @@
 	var/maximum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 	var/minimum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 
+/status_effect/proc/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+	return TRUE
+
 /status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	if(!stealthy)
@@ -122,7 +125,7 @@
 	maximum = 5
 
 /status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-	owner.add_status_effect(PARALYZE,magnitude,duration,source = source,stealth = TRUE)
+	owner.add_status_effect(PARALYZE,magnitude,duration,source = source,stealthy = TRUE)
 	return ..()
 
 /status_effect/druggy

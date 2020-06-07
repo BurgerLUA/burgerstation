@@ -18,8 +18,8 @@
 	bullet_diameter_best = 7.62
 	bullet_diameter_max = 7.7
 
-	size = SIZE_4
-	weight = WEIGHT_4
+	size = SIZE_3
+	weight = WEIGHT_3
 
 /obj/item/magazine/lmg_762/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"

@@ -46,13 +46,9 @@
 /mob/living/vehicle/mech/ripley/equipped/New(var/desired_loc)
 	..()
 	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
-	INITIALIZE(U1)
-	GENERATE(U1)
 	attach_equipment(U1)
 
 	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U2 = new(src.loc)
-	INITIALIZE(U2)
-	GENERATE(U2)
 	attach_equipment(U2)
 
 /mob/living/vehicle/mech/gygax
@@ -127,10 +123,6 @@
 /mob/living/vehicle/mech/durand/equipped/New(var/desired_loc)
 	..()
 	var/obj/item/weapon/ranged/energy/mech/smg/mk2/U1 = new(src.loc)
-	INITIALIZE(U1)
-	GENERATE(U1)
 	attach_equipment(U1)
 	var/obj/item/weapon/ranged/energy/mech/smg/mk3/U2 = new(src.loc)
-	INITIALIZE(U2)
-	GENERATE(U2)
 	attach_equipment(U2)

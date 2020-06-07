@@ -15,6 +15,8 @@
 
 	bullet_block_chance = 50
 
+	var/max_mob_size = MOB_SIZE_HUMAN
+
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()
@@ -54,9 +56,11 @@
 	return ..()
 
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	INTERACT_CHECK
-	toggle(caller)
-	return ..()
+	. = ..()
+	if(!.)
+		INTERACT_CHECK
+		toggle(caller)
+	return .
 
 /obj/structure/interactive/crate/Generate()
 
@@ -77,6 +81,18 @@
 	return open ? close(caller) : open(caller)
 
 /obj/structure/interactive/crate/proc/close(var/mob/caller)
+
+	var/atom/blocking
+	for(var/atom/movable/M in loc.contents)
+		if(is_living(M))
+			var/mob/living/L = M
+			if(!L.horizontal || L.mob_size > max_mob_size)
+				blocking = L
+				break
+
+	if(blocking)
+		caller.to_chat("\The [blocking.name] is preventing \the [src.name] from being closed!")
+		return FALSE
 
 	for(var/atom/movable/M in loc.contents)
 		if(M == src || M.anchored)

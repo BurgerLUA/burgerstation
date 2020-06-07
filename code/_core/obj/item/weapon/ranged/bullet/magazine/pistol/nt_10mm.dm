@@ -4,7 +4,7 @@
 	desc_extended = "The 10mm NanoTrasen Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/items/weapons/ranged/pistol/10mm_nt.dmi'
 	icon_state = "inventory"
-	value = 40
+	value = 110
 
 	shoot_delay = 2
 

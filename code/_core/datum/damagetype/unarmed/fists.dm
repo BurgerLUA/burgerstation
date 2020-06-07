@@ -177,7 +177,7 @@
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(!L.add_status_effect(GRAB))
+			if(!L.add_status_effect(GRAB, source = A))
 				A.to_chat(span("waring","You cannot grab \the [L.name]!"))
 				return ..()
 		if(istype(weapon,/obj/item/organ/hand))

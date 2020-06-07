@@ -15,7 +15,13 @@
 	update_all_blends()
 	equip_loadout("wizard_evil")
 
-	put_in_hands(new /obj/item/weapon/ranged/magic/staff/basic(src.loc),FALSE)
-	put_in_hands(new /obj/item/weapon/ranged/magic/tome/lightning(src.loc),TRUE)
+	var/obj/item/weapon/ranged/magic/staff/basic/B = new(src.loc)
+	INITIALIZE(B)
+	GENERATE(B)
+	var/obj/item/weapon/ranged/magic/tome/lightning/L = new(src.loc)
+	INITIALIZE(L)
+	GENERATE(L)
+	put_in_hands(B,FALSE)
+	put_in_hands(L,TRUE)
 
 	return .

@@ -98,6 +98,10 @@
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
 
+	if(ispath(firing_pin))
+		log_error("WARNING: WEAPON OF TYPE [src.type] HAD A PATH AS A FIRING PIN.")
+		firing_pin = null
+
 	if(!firing_pin || !firing_pin.can_shoot(caller,src))
 		caller.to_chat("This gun doesn't have a firing pin installed!")
 		return FALSE

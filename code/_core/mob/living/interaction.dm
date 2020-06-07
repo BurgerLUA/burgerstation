@@ -35,9 +35,8 @@ mob/living/get_examine_list(var/mob/examiner)
 		if(client)
 			. += list(div("warning","[final_pronoun] lay dead and lifeless."))
 		else
-			. += list(div("danger","[final_pronoun] lay dead and lifeless, and their soul has departed."))
-
-	if(ai && ai.use_alerts)
+			. += list(div("danger","[final_pronoun] lay dead and lifeless, and their soul has departed..."))
+	else if(ai && ai.use_alerts)
 		switch(ai.alert_level)
 			if(ALERT_LEVEL_NONE)
 				. += list(div("notice","They do not appear to notice you."))

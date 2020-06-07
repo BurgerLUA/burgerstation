@@ -29,6 +29,7 @@ var/global/list/all_shuttle_controlers = list()
 	var/transit_end
 
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME
+	var/default_transit_time_no_living = SHUTTLE_DEFAULT_TRANSIT_TIME_NO_LIVING
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME
 
 	anchored = TRUE
@@ -76,18 +77,23 @@ var/global/list/all_shuttle_controlers = list()
 	for(var/turf/T in landing_area.contents)
 		new/obj/effect/temp/shuttle_landing(T)
 
-/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time = default_transit_time) //In deciseconds
+/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds
 
 	if(!set_doors(FALSE,TRUE,TRUE))
 		log_error("Shuttle Controler: Door failure on [src.get_debug_name()]!")
 		return FALSE
-
-	desired_transit_time = max(30,desired_transit_time)
 	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = caller)
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
-	transit_time = desired_transit_time
+	if(!desired_transit_time)
+		desired_transit_time = default_transit_time_no_living
+		for(var/mob/living/advanced/P in get_area(src))
+			if(P.dead)
+				continue
+			desired_transit_time = default_transit_time
+			break
+	transit_time = max(10,desired_transit_time)
 	var/area/A = get_area(src)
 	if(A.id == transit_start)
 		transit_target = transit_end

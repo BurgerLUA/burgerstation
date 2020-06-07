@@ -72,11 +72,15 @@ var/global/world_state = STATE_STARTING
 /world/proc/reboot_server()
 	world_state = STATE_SHUTDOWN
 	for(var/client/C in all_clients)
-		C << "Rebooting world... stick around to automatically rejoin."
+		C << "Rebooting world. Stick around to automatically rejoin."
 	Reboot(0)
 	return TRUE
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
+
+	if(world_state != STATE_RUNNING)
+		CRASH_SAFE("Can't restart now!")
+		return FALSE
 
 	var/nice_reason = "Unknown reason."
 
@@ -94,15 +98,16 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command","Fission Mailed","Mission failed, we'll get them next time.")
 
+	play('sounds/meme/apcdestroyed.ogg',all_mobs_with_clients)
+
 	for(var/mob/living/advanced/player/P in all_players)
 		CHECK_TICK
 		if(P.dead)
+			P.to_chat("Could not save your character because you were dead.")
 			continue
 		P.mobdata.save_current_character(force = TRUE)
-
-	sleep(1)
-
-	play('sounds/meme/apcdestroyed.ogg',all_mobs_with_clients)
+		P.to_chat("Your character was automatically saved.")
+		sleep(1)
 
 	if(shutdown)
 		broadcast_to_clients(span("notice","Shutting down world in 30 seconds down the world due to [nice_reason]."))

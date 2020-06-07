@@ -38,8 +38,7 @@
 	return TRUE
 
 /mob/living/advanced/npc/beefman/post_death()
-	if(luck(50,src))
-		CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(1,5)),src,.proc/beef)
+	CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(1,5)),src,.proc/beef)
 	return ..()
 
 /mob/living/advanced/npc/beefman/Initialize()

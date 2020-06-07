@@ -113,21 +113,21 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	return TRUE
 
-obj/structure/interactive/computer/console/remote_flight
+/obj/structure/interactive/computer/console/remote_flight
 	name = "remote flight control console"
 	computer_type = "syndishuttle"
 	keyboard_type = "syndie_key"
 
 	var/obj/shuttle_controller/desired_shuttle_controller
 
-obj/structure/interactive/computer/console/remote_flight/Initialize()
+/obj/structure/interactive/computer/console/remote_flight/Initialize()
 
 	if(src.z == 3)
 		SShorde.possible_horde_targets += src
 
 	return ..()
 
-obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

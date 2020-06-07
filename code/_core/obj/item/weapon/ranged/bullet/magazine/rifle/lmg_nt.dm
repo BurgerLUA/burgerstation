@@ -21,8 +21,8 @@
 	size = SIZE_5
 	weight = WEIGHT_4
 
-	heat_per_shot = 0.03
-	heat_max = 0.2
+	heat_per_shot = 0.02
+	heat_max = 0.08
 
 	bullet_length_min = 46
 	bullet_length_best = 51
@@ -35,7 +35,7 @@
 	size = SIZE_4
 	weight = WEIGHT_6
 
-	value = 1000
+	value = 800
 
 	ai_heat_sensitivity = 0.1
 

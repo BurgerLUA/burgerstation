@@ -252,6 +252,7 @@
 			if(desired_node.x == T.x && desired_node.y == T.y)
 				path_steps++
 				owner.move_dir = 0
+				frustration_path = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
 		else
@@ -320,8 +321,7 @@
 		var/move_cone = pick(45,90)
 		owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))
 		sidestep_next = FALSE
-		if(path_end_turf)
-			frustration_path++
+		frustration_move = 0
 		return TRUE
 
 	return FALSE
@@ -574,9 +574,10 @@
 
 	if(!success)
 		frustration_move++
-		sidestep_next = TRUE
-		if(current_path)
+		if(length(current_path))
 			frustration_path++
+		if(frustration_move >= frustration_threshold)
+			sidestep_next = TRUE
 
 	return TRUE
 

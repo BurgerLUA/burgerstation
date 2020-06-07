@@ -10,17 +10,9 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	*/
 
-
-/mob/living/advanced/npc/defer_click_on_object(location,control,params)
-
-	if(dialogue_id)
-		return src
-
-	return ..()
-
 /mob/living/advanced/npc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(dialogue_id)
+	if(dialogue_id && is_player(attacker))
 		return FALSE
 
 	return ..()

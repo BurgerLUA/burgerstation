@@ -338,8 +338,10 @@
 		L.add_status_effect(ADRENALINE,100,100)
 		. = 0
 		if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
-		if(L.dead && !L.check_death())
+		if(L.dead && !L.check_death() && L.client)
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
+		else
+			L.visible_message("\The [L.name] twitches for a moment, but falls back limp...")
 
 	return .
