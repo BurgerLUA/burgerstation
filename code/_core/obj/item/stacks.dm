@@ -17,7 +17,7 @@
 		catch()
 			log_error("Cannot write var [i]!")
 
-	INITIALIZE(N)
+	//INITIALIZE(N)
 
 	return N
 

@@ -111,6 +111,16 @@
 
 	return FALSE
 
+/mob/living/vehicle/set_dir(var/desired_dir,var/force=FALSE)
+
+	. = ..()
+
+	if(.)
+		for(var/mob/living/L in passengers)
+			L.set_dir(.)
+
+	return .
+
 /mob/living/vehicle/proc/enter_vehicle(atom/movable/Obj,atom/OldLoc)
 
 	if(!is_advanced(Obj))

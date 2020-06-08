@@ -94,7 +94,7 @@
 		var/mob/living/advanced/A = attacker
 		A.add_cqc(DT.cqc_tag)
 		var/damagetype/DT2 = A.check_cqc(victim,object_to_damage_with,object_to_damage,blamed)
-		if(DT2)
+		if(DT2 && attacker.can_attack(victim,object_to_damage_with,params,DT2))
 			DT = DT2
 
 	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)

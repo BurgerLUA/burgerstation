@@ -31,7 +31,7 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/update_status()
 
-	var/server_name = "Burgerstation 13 \[ALPHA TEST SERVER\]"
+	var/server_name = "Burgerstation 13"
 	var/server_link = "https://discord.gg/yEaV92a"
 	var/github_name = "Space Station 13 <b>FROM SCRATCH</b>"
 
@@ -42,7 +42,7 @@ var/global/world_state = STATE_STARTING
 		minutes = "0[minutes]"
 
 	var/duration = "[hours]:[minutes]"
-	var/map = "Burgerstation (512x512x1)"
+	var/map = "Biomes (255x255x3)"
 
 	//Format it.
 	status = "<a href='[server_link]'><b>[server_name]</b></a>] ([github_name])<br><br>"
@@ -110,11 +110,11 @@ var/global/world_state = STATE_STARTING
 		sleep(1)
 
 	if(shutdown)
-		broadcast_to_clients(span("notice","Shutting down world in 30 seconds down the world due to [nice_reason]."))
-		CALLBACK("shutdown_world",SECONDS_TO_DECISECONDS(30),src,.proc/shutdown_server)
+		broadcast_to_clients(span("notice","Shutting down world in 60 seconds down the world due to [nice_reason]."))
+		CALLBACK("shutdown_world",SECONDS_TO_DECISECONDS(60),src,.proc/shutdown_server)
 	else
-		broadcast_to_clients(span("notice","Rebooting world in 30 seconds down the world due to [nice_reason]."))
-		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(30),src,.proc/reboot_server)
+		broadcast_to_clients(span("notice","Rebooting world in 60 seconds down the world due to [nice_reason]."))
+		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(60),src,.proc/reboot_server)
 
 
 	return TRUE

@@ -234,8 +234,8 @@ SUBSYSTEM_DEF(horde)
 
 /subsystem/horde/proc/spawn_objectives()
 
-	var/desired_spawn_objectives = min(4,length(possible_objective_spawns))
-	var/desired_kill_objectives = min(2,length(SSbosses.tracked_bosses))
+	var/desired_spawn_objectives = min(3,length(possible_objective_spawns))
+	var/desired_kill_objectives = min(3,length(SSbosses.tracked_bosses))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
 	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")

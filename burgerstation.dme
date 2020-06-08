@@ -902,7 +902,6 @@
 #include "code\_core\obj\item\organs\torso.dm"
 #include "code\_core\obj\item\organs\internal\_internal.dm"
 #include "code\_core\obj\item\organs\internal\heart.dm"
-#include "code\_core\obj\item\organs\internal\implant.dm"
 #include "code\_core\obj\item\organs\internal\stomach.dm"
 #include "code\_core\obj\item\organs\internal\implant\_implant.dm"
 #include "code\_core\obj\item\organs\internal\implant\iff.dm"

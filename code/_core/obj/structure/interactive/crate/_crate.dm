@@ -56,10 +56,13 @@
 	return ..()
 
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
 	. = ..()
-	if(!.)
+
+	if(!. && !(caller.attack_flags & ATTACK_GRAB))
 		INTERACT_CHECK
 		toggle(caller)
+
 	return .
 
 /obj/structure/interactive/crate/Generate()

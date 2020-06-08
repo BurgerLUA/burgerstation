@@ -1,13 +1,13 @@
-"a" = (/turf/unsimulated,/area/space/bluespace)
-"b" = (/turf/unsimulated,/area/transit/arrivals_shuttle_01/bluespace)
-"c" = (/turf/unsimulated,/area/transit/arrivals_shuttle_02/bluespace)
-"d" = (/turf/unsimulated,/area/transit/dropship/bravo/bluespace)
-"e" = (/turf/unsimulated,/area/transit/dropship/alpha/bluespace)
-"f" = (/turf/unsimulated,/area/transit/cargo/bluespace)
+"a" = (/turf/unsimulated/bluespace,/area/space/bluespace)
+"b" = (/turf/unsimulated/bluespace,/area/transit/arrivals_shuttle_01/bluespace)
+"c" = (/turf/unsimulated/bluespace,/area/transit/arrivals_shuttle_02/bluespace)
+"d" = (/turf/unsimulated/bluespace,/area/transit/dropship/bravo/bluespace)
+"e" = (/turf/unsimulated/bluespace,/area/transit/dropship/alpha/bluespace)
+"f" = (/turf/unsimulated/bluespace,/area/transit/cargo/bluespace)
 "g" = (/turf/unsimulated,/area/space/deep)
-"h" = (/turf/unsimulated,/area/transit/syndicate/bluespace)
-"i" = (/turf/unsimulated,/area/transit/dropship/charlie/bluespace)
-"j" = (/turf/unsimulated,/area/transit/dropship/delta/bluespace)
+"h" = (/turf/unsimulated/bluespace,/area/transit/syndicate/bluespace)
+"i" = (/turf/unsimulated/bluespace,/area/transit/dropship/charlie/bluespace)
+"j" = (/turf/unsimulated/bluespace,/area/transit/dropship/delta/bluespace)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg

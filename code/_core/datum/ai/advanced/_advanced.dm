@@ -166,9 +166,17 @@
 		left_click = FALSE
 
 	if(!defer_right_click && !defer_left_click)
+		if(A.left_hand && A.right_hand)
+			if(prob(50))
+				return A.left_hand.click_on_object(owner,target,null,null,params)
+			return A.right_hand.click_on_object(owner,target,null,null,params)
+		else if(A.right_hand)
+			return A.right_hand.click_on_object(owner,target,null,null,params)
+		else if(A.left_hand)
+			return A.left_hand.click_on_object(owner,target,null,null,params)
 		return FALSE
 
-	var/atom/attacking_atom = left_click ? defer_left_click : defer_right_click
+	var/atom/attacking_atom = left_click ? A.left_hand : A.right_hand
 	return attacking_atom.click_on_object(owner,target,null,null,params)
 
 

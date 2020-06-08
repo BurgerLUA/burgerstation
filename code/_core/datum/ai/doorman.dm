@@ -10,6 +10,8 @@
 
 	enabled = TRUE
 
+	can_attack_friendlies = TRUE
+
 /ai/doorman/handle_movement()
 
 	if(!beepsky_marker)

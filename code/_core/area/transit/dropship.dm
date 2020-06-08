@@ -4,7 +4,7 @@
 
 /area/transit/dropship/alpha/bluespace
 	id = "alpha_shuttle_bluespace"
-	transit_turf = /turf/unsimulated/
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -20,7 +20,7 @@
 
 /area/transit/dropship/bravo/bluespace
 	id = "bravo_shuttle_bluespace"
-	transit_turf = /turf/unsimulated/
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -33,7 +33,7 @@
 
 /area/transit/dropship/charlie/bluespace
 	id = "charlie_shuttle_bluespace"
-	transit_turf = /turf/unsimulated/
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -46,7 +46,7 @@
 
 /area/transit/dropship/delta/bluespace
 	id = "delta_shuttle_bluespace"
-	transit_turf = /turf/unsimulated/
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 

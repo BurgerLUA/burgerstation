@@ -79,9 +79,9 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds
 
-	if(!set_doors(FALSE,TRUE,TRUE))
-		log_error("Shuttle Controler: Door failure on [src.get_debug_name()]!")
+	if(!set_doors(FALSE,TRUE,TRUE)) //Something blocking?
 		return FALSE
+
 	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = caller)
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
@@ -149,7 +149,8 @@ var/global/list/all_shuttle_controlers = list()
 	if(state == SHUTTLE_STATE_WAITING)
 		display = "Prep\n[get_clock_time(FLOOR((default_waiting_time - time), 1))]"
 		if(time >= default_waiting_time)
-			launch()
+			if(!launch())
+				time -= 5
 
 	if(state == SHUTTLE_STATE_LAUNCHING)
 		display = "IGNT"

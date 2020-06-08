@@ -207,7 +207,7 @@
 
 /mob/is_safe_to_delete()
 
-	if(client || ckey_last)
+	if(client || (ckey_last && ckey_last != ""))
 		return FALSE
 
 	return ..()

@@ -1,4 +1,4 @@
-#define TIPS 'text/tips.txt'
+#define TIPS "text/tips.txt"
 
 SUBSYSTEM_DEF(tips)
 	name = "Tips Subsystem"

@@ -30,7 +30,7 @@
 
 /obj/structure/interactive/ground_ore_deposit/proc/mine()
 	if(src.ore_score <= 0)
-		CRASH_SAFE("Tried to mine ore from a ground ore deposit that had no ore!")
+		qdel(src)
 		return FALSE
 	src.ore_score--
 	var/obj/item/material/ore/O = new(src.loc)

@@ -34,7 +34,7 @@
 	var/caller_ref = "\ref[caller]"
 	griefers[caller_ref] += 1
 
-	if(griefers[caller_ref] >= 10)
+	if(griefers[caller_ref] >= 3)
 		linked_beepsky.ai.attackers += caller
 		griefers -= caller_ref
 

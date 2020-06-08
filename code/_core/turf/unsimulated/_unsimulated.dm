@@ -1,6 +1,4 @@
 /turf/unsimulated/
-	name = "bluespace"
-	icon_state = "bluespace"
 	opacity = 0
 
 	dynamic_lighting = FALSE
@@ -12,6 +10,24 @@
 	density_up    = TRUE
 	density_down  = TRUE
 	allow_bullet_pass = FALSE
+
+
+/turf/unsimulated/bluespace
+	name = "bluespace"
+	icon_state = "bluespace"
+
+/turf/unsimulated/bluespace/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+
+	. = ..()
+
+	if(. && !istype(O,/mob/abstract/))
+		O.visible_message(span("danger","\The [O.name] flashes violently!"))
+		if(is_safe_to_delete(O))
+			qdel(O)
+		else
+			O.force_move(pick(rift_markers))
+
+	return .
 
 /turf/unsimulated/space
 	name = "space"

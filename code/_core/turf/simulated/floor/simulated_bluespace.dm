@@ -14,3 +14,16 @@
 
 /turf/simulated/bluespace/is_space()
 	return TRUE
+
+
+/turf/simulated/bluespace/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+
+	. = ..()
+
+	if(. && !istype(O,/mob/abstract/))
+		O.visible_message(span("danger","\The [O.name] flashes violently!"))
+		if(is_safe_to_delete(O))
+			qdel(O)
+		else
+			O.force_move(pick(rift_markers))
+

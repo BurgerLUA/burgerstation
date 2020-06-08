@@ -1,4 +1,4 @@
-/damagetype/melee/gun_butt
+/damagetype/melee/club/gun_butt
 	name = "gun butt"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

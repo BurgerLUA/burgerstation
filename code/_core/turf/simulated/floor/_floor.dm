@@ -61,7 +61,7 @@
 
 	var/area/A = loc
 	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
-		caller.to_chat(span("warning","You cannot deploy im this area!"))
+		caller.to_chat(span("warning","You cannot deploy this in this area!"))
 		return FALSE
 
 	for(var/obj/structure/S in src.contents)

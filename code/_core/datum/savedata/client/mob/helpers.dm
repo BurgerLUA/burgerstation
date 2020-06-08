@@ -88,14 +88,19 @@
 /savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE,var/force=FALSE)
 
 	if(!owner)
+		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr].")
 		return FALSE
 	if(!owner.save_slot)
-		return
+		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 2.</h2>"))
+		return FALSE
 	if(!owner.mob)
+		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 3.</h2>"))
 		return FALSE
 	if(!is_advanced(owner.mob))
+		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 4.</h2>"))
 		return FALSE
 	if(!force && world_state != STATE_RUNNING)
+		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 5.</h2>"))
 		return FALSE
 
 	var/mob/living/advanced/player/A = owner.mob
@@ -139,7 +144,7 @@
 	if(write_json_data_to_id(owner.save_slot,loaded_data))
 		owner.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
-		owner.to_chat(span("warning","Save failed. Please contact the server owner."))
+		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
 
 	LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
 

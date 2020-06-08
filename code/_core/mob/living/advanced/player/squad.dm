@@ -28,7 +28,6 @@
 			return FALSE
 
 	var/obj/hud/button/squad/member/B = new(null,P)
-	INITIALIZE(B)
 	B.update_owner(src)
 
 	return TRUE

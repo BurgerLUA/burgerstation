@@ -13,7 +13,7 @@
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value
-	damage_type = /damagetype/melee/gun_butt
+	damage_type = /damagetype/melee/club/gun_butt
 
 	var/list/empty_sounds = list()
 

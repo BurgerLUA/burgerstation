@@ -80,6 +80,7 @@
 	var/dodge_chance = 25
 
 	var/only_attack_enemies = FALSE
+	var/can_attack_friendlies = FALSE
 	var/list/enemy_tags = list()
 
 	var/reaction_time = 10
@@ -498,6 +499,8 @@
 		return exists(L.client)
 	else if(only_attack_enemies)
 		return L.loyalty_tag != owner.loyalty_tag && (L.loyalty_tag in enemy_tags)
+	else if(can_attack_friendlies)
+		return TRUE
 	else
 		return !owner.loyalty_tag || L.loyalty_tag != owner.loyalty_tag
 

@@ -8,7 +8,7 @@
 /area/transit/syndicate/bluespace
 	name = "syndicate shuttle - bluespace"
 	id = "syndicate_shuttle_bluespace"
-	transit_turf = /turf/unsimulated/
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -29,7 +29,7 @@
 /area/transit/syndicate_raid/bluespace
 	name = "syndicate raid shuttle - bluespace"
 	id = "syndicate_raid_shuttle_bluespace"
-	transit_turf = /turf/unsimulated/
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 

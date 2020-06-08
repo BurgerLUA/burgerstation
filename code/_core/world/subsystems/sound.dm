@@ -183,7 +183,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	else if(is_atom(location_or_list))
 		var/turf/T = get_turf(location_or_list)
 		if(!T)
-			CRASH_SAFE("Could not find a turf to play this sound!")
+			CRASH_SAFE("Could not find a turf to play sound ([sound_path])!")
 			return FALSE
 		pos = vector(T.x,T.y,T.z)
 

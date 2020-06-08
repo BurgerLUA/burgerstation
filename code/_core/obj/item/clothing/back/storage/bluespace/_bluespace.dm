@@ -7,7 +7,7 @@
 
 
 	dynamic_inventory_count = MAX_INVENTORY_X*4
-	container_max_size = SIZE_3
+	container_max_size = SIZE_6
 
 	size = MAX_INVENTORY_X*4*SIZE_3
 	weight = WEIGHT_7
@@ -26,7 +26,7 @@
 	icon = 'icons/obj/items/clothing/back/satchel/bluespace.dmi'
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
-	container_max_size = SIZE_3
+	container_max_size = SIZE_6
 
 	size = MAX_INVENTORY_X*4*SIZE_3
 	weight = WEIGHT_3

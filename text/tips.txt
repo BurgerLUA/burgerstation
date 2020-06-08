@@ -38,3 +38,5 @@ Most sources of damage absorbed via armor will convert itself into 25% of the da
 Having a negative armor rating means that you take additional damage from what that armor protects.
 Humans have a natural holy and darkness armor resist of 100.
 Just because something is, doesn't mean it should be. If you believe you've encountered a bug or something horribly unbalanced, start a conversation about it on discord.
+Don't underestimate smaller pistols! The smaller projectile size is actually great at penetrating armor.
+Do not be afraid to ask questions! Wikibot can answer most commonly asked questions if asked in OOC, and if not, players are willing to help and give you advise.
