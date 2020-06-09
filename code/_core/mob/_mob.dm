@@ -157,28 +157,27 @@
 	if(!parallax["A"])
 		var/obj/parallax/layer1/P = new(src)
 		parallax["A"] += P
-		P.transform *= 2
+		P.transform *= 1.5
 		P.owner = src
 	C.screen += parallax["A"]
 
 	if(!parallax["B"])
 		var/obj/parallax/layer2/P = new(src)
 		parallax["B"] += P
-		P.transform *= 2
+		P.transform *= 1.5
 		P.owner = src
 	C.screen += parallax["B"]
 
 	if(!parallax["C"])
 		var/obj/parallax/layer3/P = new(src)
 		parallax["C"] += P
-		P.transform *= 2
+		P.transform *= 1.5
 		P.owner = src
 	C.screen += parallax["C"]
 
 	if(!parallax["D"])
 		var/obj/parallax/layer4/P = new(src)
 		parallax["D"] += P
-		//P.transform *= 2
 		P.owner = src
 	C.screen += parallax["D"]
 

@@ -1164,7 +1164,6 @@
 #include "code\_core\turf\simulated\floor\sand.dm"
 #include "code\_core\turf\simulated\floor\simulated_bluespace.dm"
 #include "code\_core\turf\simulated\floor\snow.dm"
-#include "code\_core\turf\simulated\floor\space.dm"
 #include "code\_core\turf\simulated\floor\stairs.dm"
 #include "code\_core\turf\simulated\floor\tile.dm"
 #include "code\_core\turf\simulated\floor\tile_morphing.dm"

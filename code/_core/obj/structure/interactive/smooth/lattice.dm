@@ -21,7 +21,7 @@ obj/structure/smooth/lattice/should_smooth_with(var/turf/T)
 	if(istype(T,/turf/simulated/wall/))
 		return TRUE
 
-	if(istype(src.loc,/turf/simulated/floor/space) && !istype(T,/turf/simulated/floor/space))
+	if(T.is_space())
 		return TRUE
 
 	return FALSE

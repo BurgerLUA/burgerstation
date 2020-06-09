@@ -35,6 +35,21 @@
 	icon_state = "1"
 	opacity = 0
 	var/generate = TRUE
+	plane = PLANE_SPACE
+
+/turf/unsimulated/space/is_space()
+	return TRUE
+
+/turf/unsimulated/space/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(ismob(O) && !istype(O,/mob/abstract/))
+		var/mob/M = O
+		M.to_chat(span("notice","How did you get here?"))
+		var/obj/marker/failsafe/FS = locate() in world
+		if(FS)
+			M.force_move(FS.loc)
+		else
+			M.force_move(pick(cryo_spawnpoints).loc)
+	return ..()
 
 /turf/unsimulated/space/New(var/desired_loc)
 	icon_state = "space"

@@ -1,5 +1,5 @@
 /area/transit/arrivals_shuttle_01/
-	transit_turf = /turf/simulated/floor/space
+	transit_turf = /turf/unsimulated/space/
 
 /area/transit/arrivals_shuttle_01/centcomm
 	name = "arrivals shuttle - central command"
@@ -21,7 +21,7 @@
 
 
 /area/transit/arrivals_shuttle_02/
-	transit_turf = /turf/simulated/floor/space
+	transit_turf = /turf/unsimulated/space/
 
 /area/transit/arrivals_shuttle_02/centcomm
 	name = "arrivals shuttle - central command"

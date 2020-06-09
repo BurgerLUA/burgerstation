@@ -23,13 +23,6 @@
 /atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 	return FALSE
 
-/mob/living/advanced/npc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-
-	if(dialogue_id)
-		return FALSE
-
-	return ..()
-
 /mob/living/vehicle/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	if(is_advanced(P.owner))
@@ -93,15 +86,20 @@
 
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
+	. = ..()
+
+	if(!.)
+		return FALSE
+
 	var/projectile_dir = get_dir(old_turf,new_turf)
 
-	if(!..()) //REMEMBER, THIS NEEDS TO BE HERE.
-		return FALSE
-
-	if(projectile_dir & src.collision_dir && (bullet_block_chance == 100 || luck(src,bullet_block_chance)))
-		. = src
-
-	if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
-		return FALSE
+	if(projectile_dir & src.collision_dir)
+		if(bullet_block_chance == 100)
+			. = src
+		else if (luck(src,bullet_block_chance))
+			if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
+				return FALSE
+			else
+				. = src
 
 	return .
