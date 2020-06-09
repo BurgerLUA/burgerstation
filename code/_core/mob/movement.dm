@@ -87,6 +87,7 @@
 		var/obj/parallax/P = parallax[k]
 		var/desired_x = FLOOR(-(x - (WORLD_SIZE*0.5)) * P.ratio,1)
 		var/desired_y = FLOOR(-(y - (WORLD_SIZE*0.5)) * P.ratio,1)
+
 		P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
 
 	. = ..()

@@ -5,7 +5,15 @@
 	var/ratio = 1 //For every tile moved, move x pixel in the opposite direction.
 	plane = PLANE_SPACE
 	var/mob/owner
+	var/auto_resize = TRUE
 
+/obj/parallax/New(var/desired_loc)
+
+	if(auto_resize)
+		transform *= ((VIEW_RANGE*2 + 1)*TILE_SIZE)/(480)
+
+
+	return ..()
 
 /obj/parallax/Destroy()
 	owner = null
@@ -47,3 +55,4 @@
 	icon_state = "layer4"
 	layer = 4
 	ratio = 1
+	auto_resize = FALSE
