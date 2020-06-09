@@ -46,16 +46,22 @@
 	if(L.stand && L.stand.linked_stand == owner)
 		return FALSE
 
-	if(!can_ai_attack(L))
+	if(!L.can_be_attacked(owner))
 		return FALSE
-
-	if(istype(owner,/mob/living/advanced/stand/))
-		var/mob/living/advanced/stand/S = owner
-		if(L.ai && L.ai.should_attack_mob(S.owner))
-			return TRUE
 
 	return FALSE
 
+
+/ai/advanced/stand/is_enemy(var/mob/living/L)
+	if(L == owner)
+		return FALSE
+	if(istype(owner,/mob/living/advanced/stand/))
+		var/mob/living/advanced/stand/S = owner
+		if(L == S.owner)
+			return FALSE
+		if(L.ai && L.ai.is_enemy(S.owner))
+			return TRUE
+	return FALSE
 
 /ai/advanced/stand/get_attack_score(var/mob/living/L)
 	. = ..()

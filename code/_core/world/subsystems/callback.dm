@@ -36,3 +36,9 @@ SUBSYSTEM_DEF(callback)
 		"time" = world.time + desired_time
 	)
 	return TRUE
+
+/subsystem/callback/proc/remove_callback(var/desired_id)
+	if(src.all_callbacks[desired_id])
+		all_callbacks -= desired_id
+		return TRUE
+	return FALSE

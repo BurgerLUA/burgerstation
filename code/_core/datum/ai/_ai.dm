@@ -23,8 +23,6 @@
 
 	var/turf/start_turf
 
-	var/only_attack_players = FALSE
-
 	var/stationary = TRUE
 
 	var/roaming_distance = 5
@@ -73,21 +71,24 @@
 
 	var/ignore_immortal = FALSE
 
-	var/retaliate = TRUE
-
 	var/block_chance = 25
 	var/parry_chance = 25
 	var/dodge_chance = 25
 
-	var/only_attack_enemies = FALSE
-	var/can_attack_friendlies = FALSE
 	var/list/enemy_tags = list()
 
 	var/reaction_time = 10
 
 	var/stored_sneak_power = 0
 
+	var/retaliate = TRUE
+	var/aggression = 2 //Thanks elder scrolls.
+	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
+	//1 = Attacks enemies in enemy tags.
+	//2 = Attacks people who don't have the same loyalty tag as them.
+	//3 = Attacks literally everyone in sight.
 
+	var/debug = FALSE
 
 /ai/Destroy()
 	if(owner)
@@ -175,7 +176,7 @@
 /ai/proc/attack_message()
 	return TRUE
 
-/ai/proc/can_ai_attack(var/atom/target,var/left_click=FALSE)
+/ai/proc/can_owner_attack(var/atom/target,var/left_click=FALSE)
 	return target.can_be_attacked(owner)
 
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
@@ -203,11 +204,11 @@
 	return TRUE
 
 /ai/proc/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max)
+	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked(owner))
 		var/is_left_click = prob(left_click_chance)
-		if(can_ai_attack(objective_attack,is_left_click))
-			spawn do_attack(objective_attack,is_left_click)
-	return TRUE
+		spawn do_attack(objective_attack,is_left_click)
+		return TRUE
+	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
 	objective_move = desired_objective
@@ -469,24 +470,28 @@
 		if(best_target && best_target != objective_attack)
 			hostile_message()
 			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
-			//objective_ticks = -(reaction_time + 1)
 
 		frustration_attack = 0
 
 	return TRUE
 
 /ai/proc/get_attack_score(var/mob/living/L)
-	return -get_dist(L.loc,owner.loc)
 
-/ai/proc/should_attack_mob(var/mob/living/L)
+	var/dist = get_dist(L.loc,owner.loc)
+
+	if(dist <= attack_distance_max)
+		if(L.ai && L.ai.objective_attack == owner)
+			return 2000 - L.health.health_current
+		return 1000 - L.health.health_current
+
+	return -dist
+
+/ai/proc/should_attack_mob(var/mob/living/L,var/do_aggression_check = TRUE)
 
 	if(L == owner)
 		return FALSE
 
 	if(L.dead)
-		return FALSE
-
-	if(!can_ai_attack(L))
 		return FALSE
 
 	if(L.immortal && !ignore_immortal)
@@ -495,17 +500,25 @@
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
 		return FALSE
 
-	if(only_attack_players)
-		return exists(L.client)
-	else if(only_attack_enemies)
-		return L.loyalty_tag != owner.loyalty_tag && (L.loyalty_tag in enemy_tags)
-	else if(can_attack_friendlies)
-		return TRUE
-	else
-		return !owner.loyalty_tag || L.loyalty_tag != owner.loyalty_tag
+	if(!L.can_be_attacked(owner))
+		return FALSE
 
+	return TRUE
+
+/ai/proc/is_enemy(var/mob/living/L)
+	switch(aggression)
+		if(0)
+			return FALSE
+		if(1)
+			return owner.loyalty_tag && L.loyalty_tag && (L.loyalty_tag in enemy_tags)
+		if(2)
+			return owner.loyalty_tag != L.loyalty_tag
+		if(3)
+			return TRUE
 	return FALSE
 
+/ai/proc/is_friend(var/mob/living/L)
+	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
 
 /ai/proc/can_see_mob(var/mob/living/L)
 
@@ -541,26 +554,18 @@
 	if(alert_level == ALERT_LEVEL_COMBAT)
 		range_to_use = radius_find_enemy_alert
 
-	if(only_attack_players)
-		for(var/mob/living/advanced/player/P in view(range_to_use,owner))
-			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(P))
-				continue
-			if(!should_attack_mob(P))
-				continue
-			if(!can_see_mob(P))
-				continue
-			.[P] = TRUE
-	else
-		for(var/mob/living/L in view(range_to_use,owner))
-			if(!L.initialized)
-				continue
-			if(!should_attack_mob(L))
-				continue
-			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
-				continue
-			if(!can_see_mob(L))
-				continue
-			.[L] = TRUE
+	for(var/mob/living/L in view(range_to_use,owner))
+		if(!L.initialized)
+			continue
+		if(!is_enemy(L))
+			continue
+		if(!should_attack_mob(L))
+			continue
+		if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
+			continue
+		if(!can_see_mob(L))
+			continue
+		.[L] = TRUE
 
 	return .
 
@@ -624,7 +629,7 @@
 			if(L == owner)
 				return FALSE
 		else
-			if(!should_attack_mob(L) || !(radius_find_enemy > 0) )
+			if(!is_enemy(L) || !(radius_find_enemy > 0) )
 				return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
 
 	var/old_alert_level = alert_level

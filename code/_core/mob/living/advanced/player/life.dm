@@ -58,6 +58,13 @@
 
 	return ..()
 
+
+/mob/living/advanced/player/revive()
+	. = ..()
+	if(.)
+		CALLBACK_REMOVE("beef_create_\ref[src]")
+	return .
+
 /mob/living/advanced/player/proc/create_beef()
 
 	if(qdeleting)

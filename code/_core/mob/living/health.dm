@@ -97,7 +97,7 @@
 		var/mob/living/L = attacker
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
 		var/butcher_mod = (src.health.health_max + src.health.health_current)*0.1
-		if(blade_damage >= butcher_mod)
+		if(blade_damage > max(10,butcher_mod))
 			if(L.can_butcher(weapon,src))
 				L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
 				PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)

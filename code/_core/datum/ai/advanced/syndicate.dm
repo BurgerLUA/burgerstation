@@ -1,7 +1,7 @@
 /ai/advanced/syndicate
 	enemy_tags = list("NanoTrasen")
-	only_attack_enemies = TRUE
 	should_find_weapon = TRUE
+	debug = TRUE
 
 /*
 /ai/advanced/syndicate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)

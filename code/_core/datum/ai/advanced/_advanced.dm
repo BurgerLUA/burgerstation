@@ -154,6 +154,10 @@
 		"alt" = 0
 	)
 
+	A.left_hand?.click_on_object(owner,target,null,null,params)
+	A.right_hand?.click_on_object(owner,target,null,null,params)
+
+	/*
 	var/atom/defer_right_click = A.left_hand?.defer_click_on_object(null,null,params)
 	var/atom/defer_left_click = A.right_hand?.defer_click_on_object(null,null,params)
 
@@ -178,6 +182,7 @@
 
 	var/atom/attacking_atom = left_click ? A.left_hand : A.right_hand
 	return attacking_atom.click_on_object(owner,target,null,null,params)
+	*/
 
 
 /*
