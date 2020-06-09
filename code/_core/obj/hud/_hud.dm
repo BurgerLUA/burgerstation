@@ -15,7 +15,9 @@
 
 	return ..()
 
-
+/obj/hud/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE)
+	CRASH_SAFE("WARNING: [attacker] TRIES TO ATTACK [victim] WITH A HUD OBJECT!")
+	return FALSE
 
 /obj/hud/proc/swap_colors(var/icon/I)
 

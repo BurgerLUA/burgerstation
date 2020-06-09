@@ -154,10 +154,6 @@
 		"alt" = 0
 	)
 
-	A.left_hand?.click_on_object(owner,target,null,null,params)
-	A.right_hand?.click_on_object(owner,target,null,null,params)
-
-	/*
 	var/atom/defer_right_click = A.left_hand?.defer_click_on_object(null,null,params)
 	var/atom/defer_left_click = A.right_hand?.defer_click_on_object(null,null,params)
 
@@ -171,19 +167,18 @@
 
 	if(!defer_right_click && !defer_left_click)
 		if(A.left_hand && A.right_hand)
-			if(prob(50))
-				return A.left_hand.click_on_object(owner,target,null,null,params)
-			return A.right_hand.click_on_object(owner,target,null,null,params)
+			left_click = prob(50)
 		else if(A.right_hand)
-			return A.right_hand.click_on_object(owner,target,null,null,params)
+			left_click = TRUE
 		else if(A.left_hand)
-			return A.left_hand.click_on_object(owner,target,null,null,params)
-		return FALSE
+			left_click = FALSE
 
-	var/atom/attacking_atom = left_click ? A.left_hand : A.right_hand
-	return attacking_atom.click_on_object(owner,target,null,null,params)
-	*/
-
+	if(left_click)
+		params["left"] = TRUE
+		return owner.on_left_down(target,null,null,params)
+	else
+		params["right"] = TRUE
+		return owner.on_right_down(target,null,null,params)
 
 /*
 /ai/advanced/can_attack(var/atom/target,var/left_click=FALSE)

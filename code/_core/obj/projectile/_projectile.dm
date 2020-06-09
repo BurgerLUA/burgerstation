@@ -252,13 +252,8 @@
 		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,precise,precise)
 
 		if(!object_to_damage)
-			DT.perform_miss(owner,weapon,object_to_damage)
+			DT.perform_miss(owner,hit_atom,weapon)
 			return FALSE
-
-		/*
-		if(DT.allow_miss && DT.should_miss(owner,weapon,object_to_damage))
-			if(DT.perform_miss(owner,weapon,object_to_damage)) return FALSE
-		*/
 
 		if(DT.allow_dodge)
 			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)

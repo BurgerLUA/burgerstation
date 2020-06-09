@@ -154,10 +154,10 @@
 /damagetype/proc/get_attack_type()
 	return ATTACK_TYPE_MELEE
 
-/damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	do_attack_animation(attacker,victim,weapon,hit_object)
-	do_miss_sound(attacker,victim,weapon,hit_object)
-	display_miss_message(attacker,victim,weapon,hit_object,"missed")
+/damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
+	do_attack_animation(attacker,victim,weapon,null)
+	do_miss_sound(attacker,victim,weapon)
+	display_miss_message(attacker,victim,weapon,null,"missed")
 	return TRUE
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
@@ -400,9 +400,9 @@
 
 	return TRUE
 
-/damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
-		play(pick(miss_sounds),get_turf(hit_object), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
+		play(pick(miss_sounds),get_turf(attacker), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 

@@ -11,6 +11,8 @@
 
 	var/list/material = list() //Stored materials
 
+	damage_type = null
+
 	var/delete_on_drop = FALSE
 
 	var/item_count_current = 1

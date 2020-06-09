@@ -24,6 +24,8 @@
 	if(!is_advanced(caller))
 		return ..()
 
+	INTERACT_CHECK
+
 	if(!stored_implant)
 		caller.to_chat("There is no implanter loaded!")
 		return TRUE

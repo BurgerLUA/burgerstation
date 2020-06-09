@@ -100,7 +100,18 @@
 				src.add_object(defer_object)
 				return TRUE
 
-	return ..()
+	//Stolen from /atom/proc/click_on_object
+	if(src != defer_self && defer_self.click_on_object(caller,object,location,control,params))
+		return TRUE
+
+	if(object.clicked_on_by_object(caller,src,location,control,params))
+		return TRUE
+
+	if(is_organ(src.loc))
+		var/obj/item/organ/O = src.loc
+		return O.attack(caller,object,params)
+
+	return FALSE
 
 /obj/hud/inventory/drop_on_object(var/atom/caller,var/atom/object,location,control,params) //Src is dragged to object
 
@@ -181,16 +192,3 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 		return grabbed_object
 
 	return src
-
-/obj/hud/inventory/help(var/atom/caller,var/atom/object,var/list/params=list())
-
-	var/atom/defer_self = src.defer_click_on_object(null,null,params) //We could be holding an object.
-	var/atom/defer_object = object.defer_click_on_object(null,null,params) //The object we're clicking on could be something else.
-
-	if(defer_self == src)
-		defer_self = get_object_to_damage_with(caller,object,params,TRUE,TRUE)
-
-	if(defer_self && defer_object && defer_self != src && defer_self.help(caller,defer_object,params))
-		return TRUE
-
-	return ..()

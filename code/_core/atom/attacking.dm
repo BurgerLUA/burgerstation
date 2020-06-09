@@ -24,10 +24,7 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
-/atom/proc/help(var/atom/caller,var/atom/object,var/list/params=list()) //The src attacks the victim, with the blamed taking responsibility
-	return FALSE
-
-/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!attacker)
 		attacker = src
@@ -35,8 +32,9 @@
 	if(!blamed)
 		blamed = attacker
 
-	if(!length(params))
+	if(!params)
 		params = list()
+		CRASH_SAFE("No params found!")
 
 	victim = victim.change_victim(attacker)
 
@@ -44,11 +42,6 @@
 		attacker.face_atom(victim)
 
 	var/precise = FALSE
-
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		if(victim && L.intent == INTENT_HELP && src.help(attacker,victim,params))
-			return TRUE
 
 	if(!precise && is_living(victim))
 		var/mob/living/L = victim
@@ -103,7 +96,7 @@
 		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
 
 	if(!object_to_damage)
-		DT.perform_miss(attacker,victim,object_to_damage_with,object_to_damage)
+		DT.perform_miss(attacker,victim,object_to_damage_with)
 		return FALSE
 
 	var/damage_multiplier = 1
