@@ -428,23 +428,20 @@
 
 	var/list/flavor_profile = list()
 
-	var/total_flavor = 0
-
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
-		flavor_profile[R.flavor] += R.flavor_strength
-		total_flavor += R.flavor_strength
+		flavor_profile[R.flavor] += R.flavor_strength*(stored_reagents[r_id]/volume_current)
 
-	//flavor_profile = sortList(flavor_profile, /proc/cmp_numeric_dsc, TRUE)
+	sortTim(flavor_profile,associative=TRUE)
 
 	var/list/english_flavor_profile = list()
 
-	for(var/i=1,i<=min(3,length(flavor_profile)),i++)
-		var/k = flavor_profile[i]
-		var/v = flavor_profile[k] / total_flavor
+	for(var/i=1,i<=min(4,length(flavor_profile)),i++)
+		var/k = flavor_profile[i] //This gets the key (flavor name)
+		var/v = flavor_profile[k] //This gets the value (flavor strength)
 		var/flavor_text
 		switch(v)
-			if(0 to 0.25)
+			if(0.15 to 0.25)
 				flavor_text = "a hint of [k]"
 			if(0.25 to 0.5)
 				flavor_text = "a little bit of [k]"
@@ -454,7 +451,7 @@
 				flavor_text = "a strong amount of [k]"
 			if(2 to INFINITY)
 				flavor_text = "an overwhelming amount of [k]"
-
-		english_flavor_profile += flavor_text
+		if(flavor_text)
+			english_flavor_profile += flavor_text
 
 	return english_list(english_flavor_profile)
