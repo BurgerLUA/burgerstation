@@ -29,8 +29,8 @@
 
 	base_miss_chance = 20
 
-	attack_delay = 4
-	attack_delay_max = 12
+	attack_delay = 8
+	attack_delay_max = 15
 
 	health_base = 25
 

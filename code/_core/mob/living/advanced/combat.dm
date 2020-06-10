@@ -102,21 +102,29 @@
 	if(!.)
 		return null
 
-	var/obj/item/IL = get_held_left(DT.get_attack_type())
-	var/obj/item/IR = get_held_right(DT.get_attack_type())
-
 	var/list/possible_parry = list()
 
-	if(IL && IL.can_parry(attacker,weapon,target,DT))
-		possible_parry += IL
+	if(left_item && left_item.can_parry(attacker,weapon,target,DT))
+		possible_parry += left_item
 
-	if(IR && IR.can_parry(attacker,weapon,target,DT))
-		possible_parry += IL
+	if(right_item && right_item.can_parry(attacker,weapon,target,DT))
+		possible_parry += right_item
 
 	if(length(possible_parry))
 		return pick(possible_parry)
 
-	return .
+	if(left_hand && left_hand.can_parry(attacker,weapon,target,DT))
+		possible_parry += left_hand
+
+	if(right_hand && right_hand.can_parry(attacker,weapon,target,DT))
+		possible_parry += right_hand
+
+	if(length(possible_parry))
+		return pick(possible_parry)
+
+	return null
+
+
 
 /mob/living/advanced/proc/update_protection()
 

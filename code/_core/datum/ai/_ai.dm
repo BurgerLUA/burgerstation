@@ -81,7 +81,7 @@
 
 	var/stored_sneak_power = 0
 
-	var/retaliate = TRUE
+	var/retaliate = TRUE //Should we attack when getting hit?
 	var/aggression = 2 //Thanks elder scrolls.
 	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
 	//1 = Attacks enemies in enemy tags.
@@ -554,18 +554,19 @@
 	if(alert_level == ALERT_LEVEL_COMBAT)
 		range_to_use = radius_find_enemy_alert
 
-	for(var/mob/living/L in view(range_to_use,owner))
-		if(!L.initialized)
-			continue
-		if(!is_enemy(L))
-			continue
-		if(!should_attack_mob(L))
-			continue
-		if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
-			continue
-		if(!can_see_mob(L))
-			continue
-		.[L] = TRUE
+	if(aggression > 0)
+		for(var/mob/living/L in view(range_to_use,owner))
+			if(!L.initialized)
+				continue
+			if(!is_enemy(L))
+				continue
+			if(!should_attack_mob(L))
+				continue
+			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
+				continue
+			if(!can_see_mob(L))
+				continue
+			.[L] = TRUE
 
 	return .
 
