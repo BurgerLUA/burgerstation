@@ -159,3 +159,27 @@
 	results = list(
 		/reagent/nutrition/cake = 1
 	)
+
+/reagent_recipe/icing_sugar
+	name = "icing sugar"
+
+	required_reagents = list(
+		/reagent/nutrition/corn_flour = 1,
+		/reagent/nutrition/sugar = 1
+	)
+
+	results = list(
+		/reagent/nutrition/sugar/icing = 1
+	)
+
+/reagent_recipe/icing
+	name = "icing"
+
+	required_reagents = list(
+		/reagent/nutrition/sugar/icing = 1,
+		/reagent/nutrition/water = 1
+	)
+
+	results = list(
+		/reagent/nutrition/icing = 1
+	)

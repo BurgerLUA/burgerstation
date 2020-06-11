@@ -81,6 +81,17 @@
 
 	liquid = -0.75
 
+/reagent/nutrition/corn_flour
+	name = "corn flour"
+	desc = "Also called corn starch. One of the biproducts of processing corn."
+	color = "#E0AC33"
+
+	nutrition_amount = 0.75
+
+	flavor = "corn starch"
+
+	liquid = -1
+
 //Dough
 /reagent/nutrition/dough
 	name = "wheat grain dough"
@@ -199,6 +210,24 @@
 	nutrition_amount = 2
 
 	flavor = "sweetness"
+
+/reagent/nutrition/sugar/icing
+	name = "icing sugar"
+	desc = "White and fluffy icing sugar."
+	color = "#F4FFF8"
+
+	nutrition_amount = 2.5
+
+	flavor = "icing sugar"
+
+/reagent/nutrition/icing
+	name = "white icing"
+	desc = "White icing."
+	color = "#FFFFFF"
+
+	nutrition_amount = 2
+
+	flavor = "icing"
 
 
 /reagent/nutrition/chanterelle

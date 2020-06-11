@@ -37,3 +37,13 @@
 /obj/item/container/beaker/food/cream/Generate()
 	reagents.add_reagent(/reagent/nutrition/cream,reagents.volume_max)
 	return ..()
+
+/obj/item/container/beaker/food/corn_flour
+	name = "container of corn flour"
+	icon = 'icons/obj/items/container/cooking.dmi'
+	icon_state = "corn_flour"
+	reagents = /reagent_container/beaker/bottle/
+
+/obj/item/container/beaker/food/corn_flour/Generate()
+	reagents.add_reagent(/reagent/nutrition/corn_flour,reagents.volume_max)
+	return ..()

@@ -398,6 +398,7 @@ var/global/list/equipped_players = list()
 		/obj/item/container/beaker/food/sugar,
 		/obj/item/container/beaker/food/milk,
 		/obj/item/container/beaker/food/cream,
+		/obj/item/container/beaker/food/corn_flour,
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/beaker/bottle/large/water
 	)
