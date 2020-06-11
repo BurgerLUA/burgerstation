@@ -73,3 +73,20 @@
 	attack_delay_max = 15
 
 	value = 10
+
+
+/obj/item/weapon/melee/tool/shovel
+	name = "shovel"
+	desc = "Useful for digging."
+	icon = 'icons/obj/items/weapons/melee/clubs/shovel.dmi'
+
+	damage_type = /damagetype/melee/club/pickaxe/
+
+	flags_tool = FLAG_TOOL_SHOVEL
+
+	tool_time = SECONDS_TO_DECISECONDS(2)
+
+	attack_delay = 10
+	attack_delay_max = 15
+
+	value = 10

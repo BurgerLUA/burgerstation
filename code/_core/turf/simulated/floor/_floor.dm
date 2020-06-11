@@ -15,6 +15,19 @@
 
 	return TRUE
 
+/turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(!is_item(weapon))
+		return FALSE
+
+	var/obj/item/I = weapon
+
+	if(!(I.flags_tool & FLAG_TOOL_SHOVEL))
+		return FALSE
+
+	return ..()
+
+
 /turf/simulated/floor/Initialize()
 
 	. = ..()

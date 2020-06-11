@@ -5,6 +5,8 @@
 	var/action = "\The #USER stares as they cannot scream."
 	var/action_target
 
+	var/special = FALSE //Set to true if it can only be activated by code execution and not manually.
+
 /emote/proc/on_emote(var/atom/emoter,var/atom/target)
 
 	if(!target || !action_target)
@@ -14,17 +16,96 @@
 
 	return TRUE
 
+/emote/sound/
+	var/list/sounds_male = list()
+	var/list/sounds_female = list()
+
+/emote/sound/on_emote(var/atom/emoter,var/atom/target)
+
+	. = ..()
+
+	if(.)
+		play(get_sound_to_play(emoter,target),get_turf(emoter))
+
+	return .
+
+/emote/sound/proc/get_sound_to_play(var/atom/emoter,var/atom/target)
+	return emoter.gender == FEMALE && length(sounds_female) > 0 ? pick(sounds_female) : pick(sounds_male)
+
+/emote/sound/laugh
+	name = "Laugh"
+	id = "laugh"
+	action = "\The #USER laughs!"
+	action_target = "\The #USER laughs at #TARGET!"
+
+	sounds_male = list('sounds/voice/human/human_male_laugh_1.ogg','sounds/voice/human/human_male_laugh_2.ogg')
+	sounds_female = list('sounds/voice/human/human_female_laugh_1.ogg')
+
+/emote/sound/cough
+	name = "Cough"
+	id = "cough"
+	action = "\The #USER coughs."
+	action_target = "\The #USER coughs on #TARGET."
+
+	sounds_male = list('sounds/voice/human/human_male_cough_1.ogg','sounds/voice/human/human_male_cough_2.ogg')
+	sounds_female = list('sounds/voice/human/human_female_cough_1.ogg','sounds/voice/human/human_female_cough_2.ogg')
+
+/emote/sound/deathgasp
+	name = "Death Gasp"
+	id = "deathgasp"
+	action = "\The #USER seizes up and falls limp, their eyes dead and lifeless..."
+
+	sounds_male = list('sounds/voice/human/human_male_deathgasp_1.ogg','sounds/voice/human/human_male_deathgasp_2.ogg')
+	sounds_female = list('sounds/voice/human/human_female_deathgasp_1.ogg','sounds/voice/human/human_female_deathgasp_2.ogg')
+
+/emote/sound/gasp
+	name = "Gasp"
+	id = "gasp"
+	action = "\The #USER gasps!"
+
+	sounds_male = list('sounds/voice/human/human_male_gasp_1.ogg','sounds/voice/human/human_male_gasp_2.ogg','sounds/voice/human/human_male_gasp_3.ogg')
+	sounds_female = list('sounds/voice/human/human_female_gasp_1.ogg','sounds/voice/human/human_female_gasp_2.ogg')
+
+/emote/sound/grenade
+	name = "Grenade!"
+	id = "grenade"
+	action = "\The #USER primes a grenade!"
+
+	sounds_male = list('sounds/voice/human/human_male_grenadethrow_1.ogg','sounds/voice/human/human_male_grenadethrow_2.ogg','sounds/voice/human/human_male_grenadethrow_3.ogg')
+	sounds_female = list('sounds/voice/human/human_female_grenadethrow_1.ogg','sounds/voice/human/human_female_grenadethrow_2.ogg','sounds/voice/human/human_female_grenadethrow_3.ogg')
+
+	special = TRUE
+
+/emote/sound/medic
+	name = "Medic!"
+	id = "medic"
+	action = "\The #USER calls out for a medic!"
+
+	sounds_male = list('sounds/voice/human/human_male_medic_1.ogg','sounds/voice/human/human_male_medic_2.ogg')
+	sounds_female = list('sounds/voice/human/human_female_medic_1.ogg')
+
+/emote/sound/pain
+	name = "Oof"
+	id = "pain"
+	action = "\The #USER cries in pain!"
+
+	sounds_male = list('sounds/voice/human/human_male_pain_1.ogg','sounds/voice/human/human_male_pain_2.ogg','sounds/voice/human/human_male_pain_3.ogg','sounds/voice/human/human_male_pain_4.ogg','sounds/voice/human/human_male_pain_5.ogg','sounds/voice/human/human_male_pain_6.ogg','sounds/voice/human/human_male_pain_7.ogg','sounds/voice/human/human_male_pain_8.ogg')
+	sounds_female = list('sounds/voice/human/human_female_pain_1.ogg','sounds/voice/human/human_female_pain_2.ogg','sounds/voice/human/human_female_pain_3.ogg')
+
+/emote/sound/scream
+	name = "Scream"
+	id = "scream"
+	action = "\The #USER screams!"
+	action_target = "\The #USER screams at #TARGET!"
+
+	sounds_male = list('sounds/voice/human/human_male_scream_1.ogg','sounds/voice/human/human_male_scream_2.ogg','sounds/voice/human/human_male_scream_3.ogg','sounds/voice/human/human_male_scream_4.ogg','sounds/voice/human/human_male_scream_5.ogg','sounds/voice/human/human_male_scream_6.ogg')
+	sounds_female = list('sounds/voice/human/human_female_scream_1.ogg','sounds/voice/human/human_female_scream_2.ogg','sounds/voice/human/human_female_scream_3.ogg','sounds/voice/human/human_female_scream_4.ogg','sounds/voice/human/human_female_scream_5.ogg')
+
 /emote/dab
 	name = "Dab"
 	id = "dab"
 	action = "\The #USER suddenly hits a dab!"
 	action_target = "\The #USER dabs on #TARGET!"
-
-/emote/laugh
-	name = "Laugh"
-	id = "laugh"
-	action = "\The #USER laughs!"
-	action_target = "\The #USER laughs at #TARGET!"
 
 /emote/laugh
 	name = "Nod Head"
