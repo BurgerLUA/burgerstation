@@ -22,6 +22,8 @@
 
 	crafting_id = "workbench"
 
+	var/crafting_type = null
+
 	value = 5
 
 /obj/item/crafting/click_self(caller,location,control,params)
@@ -77,8 +79,8 @@
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
-	for(var/R_id in all_recipes)
-		var/recipe/R = all_recipes[R_id]
+	for(var/k in SSrecipe.all_recipes)
+		var/recipe/R = k
 
 		var/list/recipe_check = R.check_recipe(item_table,src)
 		if(length(recipe_check)) //We can craft

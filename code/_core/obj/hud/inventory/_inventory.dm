@@ -573,7 +573,7 @@
 						return FALSE
 			for(var/obj/item/clothing/C2 in A.worn_objects)
 				if(C2.blocks_clothing && I.item_slot && I.item_slot & C2.blocks_clothing)
-					owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
+					if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
 					return FALSE
 
 

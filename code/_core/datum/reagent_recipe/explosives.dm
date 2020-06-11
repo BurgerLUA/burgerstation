@@ -1,8 +1,5 @@
 /reagent_recipe/explosion_water_potassium
-
 	name = "water potassium explosion"
-	id = "explosion_water_potassium"
-
 	required_reagents = list(
 		/reagent/nutrition/water = 1,
 		/reagent/potassium = 1

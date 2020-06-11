@@ -1,7 +1,7 @@
-/obj/item/crafting/alchemy
-	name = "portable alchemy table"
+/obj/item/crafting/grinder
+	name = "portable grinder"
 	icon = 'icons/obj/items/ore.dmi'
-	icon_state = "alchemy"
+	icon_state = "grinder"
 
 	inventories = list(
 		/obj/hud/inventory/crafting/slotB1,
@@ -11,23 +11,30 @@
 		/obj/hud/inventory/crafting/result
 	)
 
-	crafting_id = "alchemy"
+	crafting_id = "grinder"
 
-	crafting_type = /recipe/alchemy/
+	crafting_type = null //This actually doesn't craft anything.
 
 	value = 25
 
-/obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)
+
+/obj/item/crafting/grinder/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/item/container/C //Final slot container.
 
 	for(var/obj/hud/inventory/crafting/result/R in caller.inventory)
 		var/obj/item/top_object = R.get_top_held_object()
-		if(is_container(top_object))
-			C = top_object
-			break
+		C = top_object
+		break
 
-	if(!C && !is_beaker(C))
+	if(!C)
+		for(var/obj/hud/inventory/crafting/R in caller.inventory)
+			var/obj/item/top_object = R.get_top_held_object()
+			if(is_beaker(top_object))
+				C = top_object
+				break
+
+	if(!C || !is_beaker(C))
 		caller.to_chat(span("notice","You're missing a valid container in the product slot!"))
 		return FALSE
 
@@ -39,36 +46,16 @@
 
 		var/obj/item/I = item_table["b[i]"]
 
-		if(!I)
+		if(!I || !I.reagents)
 			continue
-
-		var/should_delete = FALSE
-
-		var/list/reagents_list = list()
-
-		if(I.alchemy_reagents && length(I.alchemy_reagents))
-			for(var/r_id in I.alchemy_reagents)
-				if(reagents_list[r_id])
-					reagents_list[r_id] += I.alchemy_reagents[r_id]
-				else
-					reagents_list[r_id] = I.alchemy_reagents[r_id]
-			should_delete = TRUE
-
-		if(!length(reagents_list) && !(I.reagents && I.reagents.volume_current))
-			caller.to_chat(span("notice","\The [I.name] contains no suitable reagents!"))
-			continue
-
-		for(var/k in reagents_list)
-			var/v = reagents_list[k]
-			C.reagents.add_reagent(k,v,TNULL,FALSE)
 
 		if(I.reagents)
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE)
+			success = TRUE
 
-		success = TRUE
-		if(should_delete || !is_beaker(I))
+		if(!is_beaker(I))
 			qdel(I)
-		else if(I.reagents)
+		else
 			I.reagents.update_container()
 
 	if(!success)
@@ -86,7 +73,3 @@
 	C.reagents.update_container()
 
 	return TRUE
-
-
-
-

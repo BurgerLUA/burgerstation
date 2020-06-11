@@ -1,10 +1,10 @@
-/obj/item/container/food/dynamic/bread
-	name = "dough"
-	icon = 'icons/obj/items/consumable/food/dynamic_bread.dmi'
+/obj/item/container/food/dynamic/cake
+	name = "pastry dough"
+	icon = 'icons/obj/items/consumable/food/cake.dmi'
 	icon_state = "dough_ball"
-	crafting_id = "dough"
+	crafting_id = "pastry_dough"
 
-	var/cooked_icon_state = "bread"
+	var/cooked_icon_state = "cake"
 	var/raw_icon_state = "dough_ball"
 
 	health = /health/obj/item/misc/
@@ -17,20 +17,22 @@
 
 	var/last_cooked = FALSE
 
-/obj/item/container/food/dynamic/bread/click_self(var/mob/caller,location,control,params)
+
+/obj/item/container/food/dynamic/cake/click_self(var/mob/caller,location,control,params)
 
 	if(icon_state == raw_icon_state && (icon_state == "dough_flat" || icon_state == "dough_slice"))
 		raw_icon_state = "dough_ball"
-		cooked_icon_state = "bread"
+		cooked_icon_state = "cake"
 		caller.to_chat("You reshape \the [src.name].")
 
 	update_sprite()
 
 	return TRUE
 
-/obj/item/container/food/dynamic/bread/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(icon_state == raw_icon_state && istype(object,/obj/item/container/food/dynamic/bread)) //IT'S RAW.
+/obj/item/container/food/dynamic/cake/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(icon_state == raw_icon_state && istype(object,/obj/item/container/food/dynamic/cake)) //IT'S RAW.
 		var/obj/item/container/food/dynamic/bread/B = object
 		if(B.icon_state == B.raw_icon_state) //IT'S FUCKING RAW.
 			var/amount_to_transfer = min(reagents.volume_current,B.reagents.volume_max - B.reagents.volume_current)
@@ -47,7 +49,8 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+
+/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 
 	var/original_volume = reagents.volume_current
 
@@ -90,24 +93,13 @@
 					var/mob/living/L = attacker
 					L.to_chat("You cut some small dough from the dough pile.")
 
-		else if(icon_state == "bun_whole") //It's cooked, and a bun.
-			var/obj/item/container/food/sandwich/burger/B = new(get_turf(src))
-			B.pixel_x = pixel_x
-			B.pixel_y = pixel_y - 3
-			B.layer = layer - 0.01
-			INITIALIZE(B)
-			reagents.transfer_reagents_to(B.reagents,reagents.volume_current/2)
-			cooked_icon_state = "bun_top"
-			if(is_living(attacker))
-				var/mob/living/L = attacker
-				L.to_chat("You cut \the [src.name] into two halves.")
-			update_sprite()
-			B.update_sprite()
+		//else if(icon_state == "cake") //It's cooked, and a cake.
+			//Make cake slices.
 
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
 		if(has_prefix(icon_state,"dough") && raw_icon_state != "dough_flat")
 			raw_icon_state = "dough_flat"
-			cooked_icon_state = "bread_flat"
+			cooked_icon_state = "pie"
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.to_chat("You flatten \the [src.name].")
@@ -115,11 +107,10 @@
 
 	return TRUE
 
-/obj/item/container/food/dynamic/bread/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/food/dynamic/cake/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-
-/obj/item/container/food/dynamic/bread/update_sprite()
+/obj/item/container/food/dynamic/cake/update_sprite()
 
 	if(reagents)
 		color = reagents.color
@@ -130,7 +121,8 @@
 
 	return ..()
 
-/obj/item/container/food/dynamic/bread/update_icon()
+
+/obj/item/container/food/dynamic/cake/update_icon()
 
 	if(last_cooked)
 		return FALSE
@@ -172,7 +164,7 @@
 	if(total_dough + total_bread)
 		cooked_percent = total_bread / (total_dough + total_bread)
 
-	if(cooked_percent > 0.5) //It's bread
+	if(cooked_percent > 0.5) //It's cake
 
 		switch(wetness)
 			if(-INFINITY to -20)
@@ -184,7 +176,7 @@
 			var/reagent/R = REAGENT(best_bread_reagent_type)
 			name = "[wetness_prefix] [R.name]"
 		else
-			name = "[wetness_prefix] mystery bread"
+			name = "[wetness_prefix] mystery cake"
 
 	else //It's dough
 
@@ -198,14 +190,14 @@
 			var/reagent/R = REAGENT(best_dough_reagent_type)
 			name = "[wetness_prefix] [R.name]"
 		else
-			name = "[wetness_prefix] mystery dough"
+			name = "[wetness_prefix] mystery pastry"
 
-	if(reagents.volume_current <= 20 && cooked_icon_state == "bread")
-		cooked_icon_state = "bun_whole"
+	if(reagents.volume_current <= 20 && cooked_icon_state == "cake")
+		cooked_icon_state = "cup_cake"
 		raw_icon_state = "dough_ball_small"
 
-	else if(reagents.volume_current > 20 && cooked_icon_state == "bun_whole")
-		cooked_icon_state = "bread"
+	else if(reagents.volume_current > 20 && cooked_icon_state == "cup_cake")
+		cooked_icon_state = "cake"
 		raw_icon_state = "dough_ball"
 
 	icon_state = cooked_percent > 0.5 ? cooked_icon_state : raw_icon_state

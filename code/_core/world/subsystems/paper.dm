@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(paper)
 
 /subsystem/paper/Initialize()
 
-	var/initial_directory = "html/books/"
+	var/initial_directory = "text/books/"
 	var/list/book_list = flist(initial_directory)
 
 	var/found_books = 0

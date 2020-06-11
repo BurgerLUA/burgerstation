@@ -1,7 +1,6 @@
 /recipe/
 	var/name = "recipe"
 	var/recipe_type = ""
-	var/id = null
 	var/desc = "A recipe."
 	var/desc_extended = "Recipe information."
 

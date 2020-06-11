@@ -151,10 +151,10 @@
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/syringe/epinephrine,
-		/obj/item/storage/bags/pills/iron_small,
-		/obj/item/storage/bags/pills/kelotane_small,
-		/obj/item/storage/bags/pills/dylovene_small,
-		/obj/item/storage/bags/pills/bicaridine_small
+		/obj/item/storage/pillbottle/iron_small,
+		/obj/item/storage/pillbottle/kelotane_small,
+		/obj/item/storage/pillbottle/dylovene_small,
+		/obj/item/storage/pillbottle/bicaridine_small
 	)
 
 /obj/structure/interactive/vending/medical/chemistry
@@ -162,7 +162,7 @@
 	icon_state = "chem"
 	stored_types = list(
 		/obj/item/storage/bags/chemistry,
-		/obj/item/storage/bags/pills,
+		/obj/item/storage/pillbottle,
 		/obj/item/container/syringe,
 		/obj/item/container/beaker/vial,
 		/obj/item/container/beaker/bottle/large,
@@ -379,6 +379,7 @@ var/global/list/equipped_players = list()
 /obj/structure/interactive/vending/smart_fridge
 	name = "smart fridge"
 	icon_state = "smartfridge"
+	plane = PLANE_WALL_ATTACHMENTS
 
 /obj/structure/interactive/vending/smart_fridge/chemistry
 	name = "chemistry smart fridge"
@@ -387,6 +388,18 @@ var/global/list/equipped_players = list()
 		/obj/item/container/beaker/bottle/dylovene,
 		/obj/item/container/beaker/bottle/kelotane,
 		/obj/item/container/beaker/bottle/bicaridine
+	)
+
+/obj/structure/interactive/vending/smart_fridge/kitchen
+	name = "kitchen smart fridge"
+	stored_types = list(
+		/obj/item/container/beaker/bottle/large/enzymes,
+		/obj/item/container/beaker/food/flour,
+		/obj/item/container/beaker/food/sugar,
+		/obj/item/container/beaker/food/milk,
+		/obj/item/container/beaker/food/cream,
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/beaker/bottle/large/water
 	)
 
 /obj/structure/interactive/vending/dinnerware
@@ -398,10 +411,7 @@ var/global/list/equipped_players = list()
 		/obj/item/container/cheese_mold/block,
 		/obj/item/container/beaker/glass,
 		/obj/item/container/beaker/bowl,
-		/obj/item/container/beaker/bottle/large/enzymes,
-		/obj/item/container/beaker/large/water,
-		/obj/item/container/beaker/food/flour,
-		/obj/item/container/beaker/food/milk,
-		/obj/item/container/food/dynamic/meat/raw
+		/obj/item/container/beaker/large
+
 
 	)

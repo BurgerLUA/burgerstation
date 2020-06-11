@@ -40,13 +40,13 @@
 		/obj/item/container/beaker,
 		/obj/item/container/pill,
 		/obj/item/container/syringe,
-		/obj/item/storage/bags/pills,
+		/obj/item/storage/pillbottle,
 	)
 
 /obj/item/storage/bags/chemistry/filled/fill_inventory()
 
 
-/obj/item/storage/bags/pills
+/obj/item/storage/pillbottle
 	name = "pill bottle"
 	desc_extended = "A pill bottle that can hold up to 30 pills."
 	icon = 'icons/obj/items/storage/bottles.dmi'
@@ -63,75 +63,75 @@
 		/obj/item/container/pill,
 	)
 
-/obj/item/storage/bags/pills/bicaridine
+/obj/item/storage/pillbottle/bicaridine
 	name = "bicaridine pill bottle"
 	desc = "Contains 20 20u bicaridine pills."
 
-/obj/item/storage/bags/pills/bicaridine/fill_inventory()
+/obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/bicaridine(src)
 	return ..()
 
-/obj/item/storage/bags/pills/bicaridine_small
+/obj/item/storage/pillbottle/bicaridine_small
 	name = "bicaridine pill bottle"
 	desc = "Contains 10 20u bicaridine pills."
 
-/obj/item/storage/bags/pills/bicaridine_small/fill_inventory()
+/obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/bicaridine(src)
 	return ..()
 
-/obj/item/storage/bags/pills/kelotane
+/obj/item/storage/pillbottle/kelotane
 	name = "kelotane pill bottle"
 	desc = "Contains 20 20u kelotane pills."
 
-/obj/item/storage/bags/pills/kelotane/fill_inventory()
+/obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/kelotane(src)
 	return ..()
 
-/obj/item/storage/bags/pills/kelotane_small
+/obj/item/storage/pillbottle/kelotane_small
 	name = "kelotane pill bottle"
 	desc = "Contains 10 20u kelotane pills."
 
-/obj/item/storage/bags/pills/kelotane_small/fill_inventory()
+/obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/kelotane(src)
 	return ..()
 
-/obj/item/storage/bags/pills/dylovene
+/obj/item/storage/pillbottle/dylovene
 	name = "dylovene pill bottle"
 	desc = "Contains 20 20u dylovene pills."
 
-/obj/item/storage/bags/pills/dylovene/fill_inventory()
+/obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/dylovene(src)
 	return ..()
 
-/obj/item/storage/bags/pills/dylovene_small
+/obj/item/storage/pillbottle/dylovene_small
 	name = "dylovene pill bottle"
 	desc = "Contains 10 20u dylovene pills."
 
-/obj/item/storage/bags/pills/dylovene_small/fill_inventory()
+/obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/dylovene(src)
 	return ..()
 
 
-/obj/item/storage/bags/pills/iron
+/obj/item/storage/pillbottle/iron
 	name = "iron pill bottle"
 	desc = "Contains 20 20u iron pills."
 
-/obj/item/storage/bags/pills/iron/fill_inventory()
+/obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/iron(src)
 	return ..()
 
-/obj/item/storage/bags/pills/iron_small
+/obj/item/storage/pillbottle/iron_small
 	name = "iron pill bottle"
 	desc = "Contains 10 20u iron pills."
 
-/obj/item/storage/bags/pills/iron_small/fill_inventory()
+/obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/iron(src)
 	return ..()

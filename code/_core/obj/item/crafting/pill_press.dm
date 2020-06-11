@@ -13,6 +13,8 @@
 
 	crafting_id = "pill_press"
 
+	crafting_type = null //This actually doesn't make anything.
+
 	value = 40
 
 /obj/item/crafting/pill_press/attempt_to_craft(var/mob/living/advanced/caller)

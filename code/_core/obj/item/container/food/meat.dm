@@ -33,6 +33,9 @@
 
 /obj/item/container/food/dynamic/meat/update_icon()
 
+	if(last_cooked)
+		return FALSE
+
 	if(has_prefix(icon_state,"meat_"))
 		if(reagents.volume_current <= 5)
 			icon_state = "bacon"

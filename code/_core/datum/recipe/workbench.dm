@@ -1,6 +1,5 @@
 /recipe/workbench/
 	name = "workbench recipe"
-	id = null
 	desc = "A workbench recipe"
 	desc_extended = "Workbench recipe information."
 

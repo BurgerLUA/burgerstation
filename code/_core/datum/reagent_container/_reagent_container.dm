@@ -234,6 +234,10 @@
 				good_recipe = FALSE
 				break
 
+			if(recipe.required_container && !istype(owner,recipe.required_container))
+				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of wrong container type.")
+				good_recipe = FALSE
+				break
 
 		if(!good_recipe) //This recipe doesn't work. Onto the next recipe.
 			continue
@@ -292,7 +296,7 @@
 
 /reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE)
 
-	amount = FLOOR(amount,REAGENT_ROUNDING)
+	amount = round(amount,REAGENT_ROUNDING)
 
 	var/reagent/R = REAGENT(reagent_type)
 

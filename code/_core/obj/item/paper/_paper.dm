@@ -39,9 +39,3 @@
 			P.active_paper = null
 
 	return ..()
-
-
-/obj/item/paper/firearms/Generate()
-	name = "book: A Guide to Firearms"
-	data = all_paper_data["a guide to firearms"]
-	return ..()

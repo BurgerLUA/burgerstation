@@ -1,7 +1,6 @@
 /recipe/workbench/barricade
 
 	name = "steel barricade"
-	id = "barricade"
 
 	required_item_grid = list( //The second value is the craft_id of the item.
 		"a1" = "sheet_steel",

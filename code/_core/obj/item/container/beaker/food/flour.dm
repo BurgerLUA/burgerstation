@@ -10,6 +10,15 @@
 	reagents.add_reagent(/reagent/nutrition/wheat_grain/flour/processed,reagents.volume_max)
 	return ..()
 
+/obj/item/container/beaker/food/sugar
+	name = "sack of white sugar"
+	icon = 'icons/obj/items/container/cooking.dmi'
+	icon_state = "sugar"
+
+/obj/item/container/beaker/food/sugar/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,reagents.volume_max)
+	return ..()
+
 /obj/item/container/beaker/food/milk
 	name = "carton of cow's milk"
 	icon = 'icons/obj/items/container/cooking.dmi'
@@ -17,4 +26,14 @@
 
 /obj/item/container/beaker/food/milk/Generate()
 	reagents.add_reagent(/reagent/nutrition/milk,reagents.volume_max)
+	return ..()
+
+
+/obj/item/container/beaker/food/cream
+	name = "carton of cream"
+	icon = 'icons/obj/items/container/cooking.dmi'
+	icon_state = "cream"
+
+/obj/item/container/beaker/food/cream/Generate()
+	reagents.add_reagent(/reagent/nutrition/cream,reagents.volume_max)
 	return ..()

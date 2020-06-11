@@ -9,3 +9,11 @@
 	item_count_max_icon = 6
 
 	crafting_id = "ingot"
+
+
+/obj/item/material/ingot/iron
+	material_id = "iron"
+
+
+/obj/item/material/ingot/steel
+	material_id = "steel"

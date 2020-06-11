@@ -53,7 +53,7 @@
 
 	flavor = "gross oats"
 
-	processed_reagent = "flour_whole_wheat"
+	processed_reagent = /reagent/nutrition/wheat_grain/flour
 
 	liquid = -0.75
 
@@ -66,7 +66,7 @@
 
 	flavor = "gross dry oat flour"
 
-	processed_reagent = "flour_white"
+	processed_reagent = /reagent/nutrition/wheat_grain/flour/processed
 
 	liquid = -0.75
 
@@ -120,7 +120,7 @@
 //Bread
 /reagent/nutrition/bread
 	name = "wheat grain bread"
-	desc = "Crudely mixed and made wheat dough."
+	desc = "Crudely mixed and made wheat bread."
 	color = "#A09170"
 
 	nutrition_amount = 1.5
@@ -133,7 +133,7 @@
 
 /reagent/nutrition/bread/flour
 	name = "whole grain bread"
-	desc = "Typical whole wheat water-flour based dough."
+	desc = "Typical whole wheat water-flour based bread."
 	color = "#A8784D"
 
 	nutrition_amount = 1.75
@@ -144,7 +144,7 @@
 
 /reagent/nutrition/bread/flour/processed
 	name = "white bread"
-	desc = "Typical whole wheat water-flour based dough."
+	desc = "Typical water-flour based bread."
 	color = "#E0AC33"
 
 	nutrition_amount = 1.5
@@ -153,6 +153,32 @@
 
 	liquid = -0.25
 
+//Cake
+/reagent/nutrition/cake_batter
+	name = "cake batter"
+	desc = "Typical cake batter."
+	color = "#DDBE8F"
+
+	nutrition_amount = 1.5
+
+	flavor = "raw dough"
+
+	liquid = 0.25
+
+	flags_reagent = FLAG_REAGENT_RAW
+
+/reagent/nutrition/cake
+	name = "cake"
+	desc = "Cooked cake."
+	color = "#BC9253"
+
+	nutrition_amount = 4
+
+	flavor = "cake"
+
+	liquid = -0.125
+
+	flags_reagent = FLAG_REAGENT_COOKED
 
 /reagent/nutrition/sugar
 	name = "white sugar"
@@ -166,7 +192,7 @@
 	liquid = -0.4
 
 /reagent/nutrition/sugar/cane
-	name = "sugarcane"
+	name = "cane sugar"
 	desc = "Unprocessed sugarcane sugar."
 	color = "#CEA171"
 
@@ -220,6 +246,20 @@
 	flavor = "milk"
 
 	liquid = 0.5
+
+/reagent/nutrition/cream
+	name = "milk cream"
+	desc = "Nutrition and flavor from milk cream."
+	color = "#EEEED9"
+
+	nutrition_amount = 3
+	hydration_amount = 0.5
+
+	flavor = "milk"
+
+	liquid = 0.5
+
+	processed_reagent = /reagent/nutrition/butter
 
 //Cheese
 /reagent/nutrition/cheese/
@@ -467,3 +507,37 @@
 	nutrition_amount = 1
 
 	flavor = "cheese powder"
+
+
+/reagent/nutrition/butter
+	name = "butter"
+	desc = "Nutrition and flavor from butter."
+	color = "#FFD865"
+
+	nutrition_amount = 3
+
+	flavor = "butter"
+
+	value = 2
+
+/reagent/nutrition/egg_white
+	name = "egg whites"
+	desc = "Nutrition and flavor from egg whites."
+	color = "#FFD865"
+
+	nutrition_amount = 2
+
+	flavor = "egg white"
+
+	value = 2
+
+/reagent/nutrition/egg_yellow
+	name = "egg yolk"
+	desc = "Nutrition and flavor from egg yellows."
+	color = "#FFFFE4"
+
+	nutrition_amount = 6
+
+	flavor = "egg yolk"
+
+	value = 4

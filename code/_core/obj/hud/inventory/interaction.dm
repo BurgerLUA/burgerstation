@@ -85,20 +85,18 @@
 				if(object_as_inventory.can_hold_object(defer_self,FALSE)) //The inventory has space.
 					object_as_inventory.add_held_object(defer_self) //Add the object to the inventory
 					return TRUE
-		else //We don't have an object in our hands.
-			if(is_item(defer_object)) //We're clicking on an item.
-				var/obj/item/I = defer_object
-				if(is_inventory(defer_object.loc)) //The object is in an inventory
-					var/obj/hud/inventory/I2 = defer_object.loc
-					if(!I.is_container && I2.click_flags) //The object we're clicking on is actually in our other hand and it's not a container
-						return ..()
-					if(I.is_container) //The object that we're clicking on is a container and it should be opened instead.
-						I.click_self(caller)
-						return TRUE
-					if(I2.drag_to_take) //The inventory object is marked as drag to take, so it shouldn't be removed by simply clicking.
-						return ..()
+		else if(is_item(defer_object)) //We don't have an object in our hands and we're clicking on an item.
+			var/obj/item/I = defer_object
+			if(is_inventory(defer_object.loc)) //The object is in an inventory
+				var/obj/hud/inventory/I2 = defer_object.loc
+				if(I.is_container) //The object that we're clicking on is a container and it should be opened instead.
+					I.click_self(caller)
+					return TRUE
+				if(!I2.click_flags && !I2.drag_to_take)
+					src.add_object(defer_object)
+			else
 				src.add_object(defer_object)
-				return TRUE
+			return TRUE
 
 	//Stolen from /atom/proc/click_on_object
 	if(src != defer_self && defer_self.click_on_object(caller,object,location,control,params))

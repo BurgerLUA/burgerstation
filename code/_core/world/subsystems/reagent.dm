@@ -32,10 +32,7 @@ SUBSYSTEM_DEF(reagent)
 	log_subsystem(name,"Initialized [length(all_reagents)] reagents.")
 
 	for(var/k in subtypesof(/reagent_recipe/))
-		var/reagent_recipe/R = k
-		var/id = initial(R.id)
-		if(id)
-			R = new k
-			all_reagent_recipes[id] = new k
+		var/reagent_recipe/R = new k
+		all_reagent_recipes[R.type] = R
 
 	log_subsystem(name,"Initialized [length(all_reagent_recipes)] reagent recipes.")
