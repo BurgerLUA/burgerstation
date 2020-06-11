@@ -93,7 +93,6 @@
 
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
-		world.log << "Delay: [object_to_damage_with.attack_next - world.time]."
 
 	if(!object_to_damage)
 		DT.perform_miss(attacker,victim,object_to_damage_with)

@@ -38,9 +38,11 @@
 	if(load_new_bullet_from_magazine(caller))
 		cock_type = cock_type == "back" ? "both" : "forward"
 
-	if(cock_type)
-		play(get_cock_sound(cock_type),src)
-		update_sprite()
+	if(!cock_type)
+		cock_type = "forward"
+
+	play(get_cock_sound(cock_type),src)
+	update_sprite()
 
 	return TRUE
 

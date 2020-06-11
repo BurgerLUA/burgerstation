@@ -94,9 +94,10 @@
 					return TRUE
 				if(!I2.click_flags && !I2.drag_to_take)
 					src.add_object(defer_object)
+					return TRUE
 			else
 				src.add_object(defer_object)
-			return TRUE
+				return TRUE
 
 	//Stolen from /atom/proc/click_on_object
 	if(src != defer_self && defer_self.click_on_object(caller,object,location,control,params))

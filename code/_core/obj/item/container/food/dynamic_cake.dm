@@ -126,8 +126,6 @@
 
 	. = ..()
 
-	world.log << "last cooked: [last_cooked]"
-
 	if(last_cooked)
 		var/icing = FALSE
 		var/icing_color = null
@@ -136,16 +134,15 @@
 			var/amount = reagents.stored_reagents[reagent_type]
 			var/reagent/R = REAGENT(reagent_type)
 			if(istype(R,/reagent/nutrition/icing))
-				world.log << "Found icing."
 				icing = TRUE
 				icing_color = icing_amount ? blend_colors(icing_color,R.color,amount/icing_amount) : R.color
 				icing_amount += amount
 		if(icing)
 			var/image/I = new/image(initial(icon),"[cooked_icon_state]_icing")
-			world.log << "State: ["[cooked_icon_state]_icing"]."
+			I.appearance_flags = RESET_COLOR
 			I.color = icing_color
-			//I.alpha = clamp(icing_amount/10,10,255)
-			overlays += I
+			I.alpha = clamp((icing_amount/10)*225,100,255)
+			add_overlay(I)
 
 	return .
 
