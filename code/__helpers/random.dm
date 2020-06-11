@@ -16,7 +16,7 @@
 
 	return base_prob
 
-/proc/luck(var/input,var/base_value=50,var/positive=TRUE)
+/proc/luck(var/input,var/base_value=50,var/positive=TRUE,var/debug) //Debug should be a string.
 
 	. = 1
 
@@ -30,5 +30,8 @@
 		var/luck_to_use = A ? A.luck : 50
 		var/mod = positive ? 0.5 + (luck_to_use/50)*0.5 : 1.5 - (luck_to_use/50)*0.5
 		. *= mod
+
+	if(debug)
+		world.log << "Luck for [debug]: [.] x [base_value]."
 
 	return prob(base_value*.)

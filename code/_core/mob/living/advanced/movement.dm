@@ -45,13 +45,3 @@ mob/living/advanced/get_movement_delay()
 			return FALSE
 
 	return ..()
-
-/mob/living/advanced/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
-
-	. = ..()
-
-	if(. && chat_overlay)
-		chat_overlay.glide_size = src.glide_size
-		chat_overlay.force_move(src.loc)
-
-	return .

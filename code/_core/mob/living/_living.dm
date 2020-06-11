@@ -101,6 +101,7 @@
 
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_LEVEL_DEFAULT
+	var/blood_color = "#B20000"
 
 	var/obj/structure/buckled_object
 
@@ -109,7 +110,6 @@
 	var/image/medical_hud_image
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
-	var/image/alert_hud_image
 
 	has_footsteps = TRUE
 
@@ -133,6 +133,13 @@
 	var/mob_size = MOB_SIZE_ANIMAL //Size scale when calculating health as well as collision handling. See mob_size.dm for more information.
 
 	var/max_level = 500 //Max level for attributes of the mob.
+
+	var/is_typing = FALSE
+	var/talk_duration = 0
+	var/talk_type = 0
+
+	var/obj/effect/chat_overlay
+	var/obj/effect/alert_overlay
 
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
@@ -178,10 +185,12 @@
 
 	players_fighting_boss.Cut()
 
+	QDEL_NULL(alert_overlay)
+	QDEL_NULL(chat_overlay)
+
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
 	QDEL_NULL(medical_hud_image_advanced)
-	QDEL_NULL(alert_hud_image)
 
 	if(client)
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
@@ -194,12 +203,6 @@
 
 /mob/living/proc/get_burn_color()
 	return "#444444"
-
-/mob/living/Login()
-	. = ..()
-	client.update_stats = TRUE
-	client.statpanel = "Skills"
-	return .
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
@@ -230,17 +233,8 @@
 
 	. = ..()
 
-	if(client)
-		client.update_stats = TRUE
-		client.statpanel = "Skills"
-
 	if(ai)
 		ai = new ai(src)
-		alert_hud_image = new/image('icons/mob/living/advanced/overlays/stealth.dmi',"none")
-		alert_hud_image.loc = src
-		alert_hud_image.layer = PLANE_HUD_VISION
-		alert_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
-		add_overlay(alert_hud_image)
 
 	if(desired_client)
 		screen_blood = list()
@@ -276,6 +270,18 @@
 				B.update_stats()
 
 	setup_name()
+
+	chat_overlay = new(src.loc)
+	chat_overlay.layer = LAYER_EFFECT
+	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
+	chat_overlay.alpha = 0
+	//This is initialized somewhere else.
+
+	alert_overlay = new(src.loc)
+	alert_overlay.layer = LAYER_EFFECT
+	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
+	alert_overlay.pixel_z = 20
+	//This is initialized somewhere else.
 
 	return .
 

@@ -1,3 +1,7 @@
+/mob/living/advanced/death_message()
+	src.emote("deathgasp")
+	return TRUE
+
 /mob/living/advanced/on_life()
 
 	. = ..()

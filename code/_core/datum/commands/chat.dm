@@ -106,10 +106,6 @@
 		to_chat(span("warning","You can't talk while you're dead!"))
 		return FALSE
 
-	return ..()
-
-/mob/living/advanced/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
-
 	start_typing()
 
 	. = ..()

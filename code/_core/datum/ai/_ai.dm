@@ -62,7 +62,6 @@
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
 	var/alert_time = 600 //Deciseconds
-	var/last_alert_level = 0 //When the alert level change last triggered.
 	var/sidestep_next = FALSE
 	var/should_investigate_alert = TRUE
 
@@ -642,18 +641,6 @@
 
 	enabled = TRUE
 
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		owner.alert_hud_image.icon_state = "exclaim"
-		last_alert_level = world.time
-	else if(alert_level == ALERT_LEVEL_CAUTION)
-		if(last_alert_level <= world.time + 50)
-			owner.alert_hud_image.icon_state = "question"
-			last_alert_level = world.time
-	else if(alert_level == ALERT_LEVEL_NOISE)
-		if(last_alert_level <= world.time + 50)
-			owner.alert_hud_image.icon_state = "huh"
-			last_alert_level = world.time
-
 	owner.move_dir = 0
 
 	if(old_alert_level != alert_level)
@@ -665,4 +652,11 @@
 	return FALSE
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
+	if(owner.alert_overlay)
+		if(new_alert_level == ALERT_LEVEL_COMBAT)
+			owner.alert_overlay.icon_state = "exclaim"
+		else if(new_alert_level == ALERT_LEVEL_CAUTION)
+			owner.alert_overlay.icon_state = "question"
+		else if(new_alert_level == ALERT_LEVEL_NOISE)
+			owner.alert_overlay.icon_state = "huh"
 	return TRUE

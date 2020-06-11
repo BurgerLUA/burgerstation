@@ -24,14 +24,9 @@
 	var/obj/item/left_item
 	var/obj/item/right_item
 
-	var/is_typing = FALSE
-
 	health_base = 200
 	stamina_base = 100
 	mana_base = 100
-
-	var/talk_duration = 0
-	var/talk_type = 0
 
 	var/automatic_ticks = 0
 
@@ -77,8 +72,6 @@
 	var/list/tracked_hidden_organs
 	var/tracked_hidden_clothing = 0x0
 
-	var/obj/effect/chat_overlay
-
 	value = 250
 
 	stun_angle = -90
@@ -102,8 +95,6 @@
 	overlays_assoc.Cut()
 	overlays_assoc_atom.Cut()
 	tracked_hidden_organs.Cut()
-
-	QDEL_NULL(chat_overlay)
 
 	held_objects = null
 	worn_objects = null
@@ -251,12 +242,6 @@
 	tracked_hidden_organs = list()
 
 	. = ..()
-
-	chat_overlay = new(src.loc)
-	chat_overlay.layer = LAYER_EFFECT
-	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
-	chat_overlay.alpha = 0
-	//This is initialized somewhere else.
 
 	return .
 

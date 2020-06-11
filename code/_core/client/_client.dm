@@ -45,8 +45,6 @@ var/global/list/all_clients = list()
 
 	var/next_allowed_topic = -1
 
-	var/update_stats = FALSE
-
 	var/list/queued_chat_messages = list()
 
 	var/last_ooc = 0

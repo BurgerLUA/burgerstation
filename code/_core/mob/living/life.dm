@@ -1,7 +1,13 @@
+/mob/living/proc/death_message()
+	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
+	return TRUE
+
 /mob/living/proc/death()
 
 	if(dead)
 		return FALSE
+
+	death_message()
 
 	pre_death()
 
@@ -9,8 +15,6 @@
 		if(P == src)
 			continue
 		P.to_chat(span("notice","<b>\The [src.name] dies!</b>"),CHAT_TYPE_COMBAT)
-
-	src.visible_message("\The [src.name] seizes up and falls limp, their eyes dead and lifeless...")
 
 	src.to_chat(span("danger","<h1>You died!</h1>"),CHAT_TYPE_COMBAT)
 	src.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))

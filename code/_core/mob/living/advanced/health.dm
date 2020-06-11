@@ -25,6 +25,7 @@
 
 	if(damage_amount > 0)
 		health_regen_delay = max(health_regen_delay,600)
-
+		if(!dead && damage_amount > 10 && prob(damage_amount*0.3))
+			emote("pain")
 
 	return .

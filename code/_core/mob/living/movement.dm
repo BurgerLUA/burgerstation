@@ -17,6 +17,20 @@
 	return .
 
 
+/mob/living/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(.)
+		if(chat_overlay)
+			chat_overlay.glide_size = src.glide_size
+			chat_overlay.force_move(src.loc)
+		if(alert_overlay)
+			alert_overlay.glide_size = src.glide_size
+			alert_overlay.force_move(src.loc)
+
+	return .
+
 /mob/living/Bump(var/atom/obstacle,var/Dir=0)
 
 	if(is_living(obstacle))
