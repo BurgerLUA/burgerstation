@@ -26,7 +26,6 @@
 /obj/item/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
 
-
 /obj/item/radio/get_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["stored_radio"] = stored_radio

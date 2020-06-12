@@ -13,9 +13,19 @@
 
 	var/remove_on_no_reagents = TRUE
 
-	var/original_volume = 0
+	var/original_volume = 0 //For cooking and stuff.
 
 	value = 10
+
+/obj/item/container/food/get_item_data(var/save_inventory = TRUE)
+	. = ..()
+	.["original_volume"] = original_volume
+	return .
+
+/obj/item/container/food/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(object_data["original_volume"]) original_volume = object_data["original_volume"]
+	return .
 
 /obj/item/container/food/Generate()
 	original_volume = reagents.volume_current

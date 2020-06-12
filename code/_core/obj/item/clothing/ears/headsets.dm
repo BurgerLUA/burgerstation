@@ -23,3 +23,14 @@
 
 /obj/item/clothing/ears/headset/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
+
+
+/obj/item/clothing/ears/headset/get_item_data(var/save_inventory = TRUE)
+	. = ..()
+	.["stored_radio"] = stored_radio
+	return .
+
+/obj/item/clothing/ears/headset/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(object_data["stored_radio"]) stored_radio = load_and_create(P,object_data["stored_radio"],src)
+	return .

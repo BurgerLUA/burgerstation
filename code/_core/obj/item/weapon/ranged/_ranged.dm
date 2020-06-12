@@ -35,6 +35,17 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
+/obj/item/weapon/ranged/get_item_data(var/save_inventory = TRUE)
+	. = ..()
+	.["firing_pin"] = firing_pin
+	return .
+
+/obj/item/weapon/ranged/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(object_data["firing_pin"]) firing_pin = load_and_create(P,object_data["firing_pin"],src)
+	return .
+
+
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
@@ -350,6 +361,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
 
 	return list(cos(new_angle),sin(new_angle))
+
+
 
 
 
