@@ -67,8 +67,6 @@
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	world.log << "[src]: [total_bleed_damage]"
-
 	if(total_bleed_damage && luck(src,total_bleed_damage,FALSE,"bleed"))
 
 		if(blood_volume > 0)

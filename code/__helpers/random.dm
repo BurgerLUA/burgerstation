@@ -32,6 +32,6 @@
 		. *= mod
 
 	if(debug)
-		world.log << "Luck for [debug]: [.] x [base_value]."
+		LOG_DEBUG("Luck for [debug]: [.] x [base_value].")
 
 	return prob(base_value*.)

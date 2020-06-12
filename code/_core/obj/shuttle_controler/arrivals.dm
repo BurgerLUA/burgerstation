@@ -35,7 +35,6 @@
 	griefers[caller_ref] += 1
 
 	if(griefers[caller_ref] >= 3)
-		world.log << "Bitch"
 		linked_beepsky.ai.attackers += caller
 		griefers -= caller_ref
 

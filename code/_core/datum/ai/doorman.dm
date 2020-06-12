@@ -47,7 +47,6 @@
 	if(!objective_attack && length(attackers))
 		var/mob/living/chosen_target = pick(attackers)
 		attackers -= chosen_target
-		world.log << "Setting objective to: [chosen_target]."
 		set_objective(chosen_target)
 
 	if(objective_attack && !(locate(/obj/structure/interactive/scanner/living) in objective_attack.loc.contents))
