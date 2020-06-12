@@ -72,8 +72,10 @@
 			client.disable_controls = FALSE
 
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
-
 	O = new O(src)
+	attach_organ(O)
+
+/mob/living/advanced/proc/attach_organ(var/obj/item/organ/O,var/initialize=TRUE)
 
 	if(labeled_organs[O.attach_flag])
 		var/obj/item/organ/A = labeled_organs[O.attach_flag]
@@ -83,7 +85,8 @@
 	labeled_organs[O.id] = O
 	O.update_owner(src) //This updates inventories.
 
-	INITIALIZE(O)
+	if(initialize)
+		INITIALIZE(O)
 
 	if(is_tail(O))
 		add_tracked_overlay(O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")

@@ -87,7 +87,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	add_species_languages()
 
-	mobdata.apply_data_to_mob(src,teleport,update_blends)
+	set_mob_data(mobdata["loaded_data"],teleport,update_blends)
 
 	if(client)
 		add_species_buttons()

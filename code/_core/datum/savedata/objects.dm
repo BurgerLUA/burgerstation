@@ -1,4 +1,4 @@
-/savedata/proc/load_and_create_object(var/list/object_data,var/atom/loc)
+/proc/load_and_create_object(var/list/object_data,var/atom/loc)
 
 	if(!object_data)
 		log_error("Tried to create an object with a blank object_data list!")
@@ -162,7 +162,7 @@
 
 	return O
 
-/savedata/proc/get_inventory_data(var/obj/hud/inventory/I)
+/proc/get_inventory_data(var/obj/hud/inventory/I)
 	if(!I)
 		return list()
 
@@ -182,40 +182,7 @@
 
 	return returning_list
 
-
-/savedata/proc/apply_inventory_data(var/obj/item/O,var/list/inventory_data)
-
-	var/obj/hud/inventory/I
-
-	for(var/obj/hud/inventory/I2 in O.inventories)
-		if(I2.id == inventory_data["id"])
-			I = I2
-			break
-
-	if(I)
-		if(inventory_data["held"])
-			for(var/i=1,i<=length(inventory_data["held"]),i++)
-				try
-					var/obj/item/I2 = load_and_create_object(inventory_data["held"][i],get_turf(I))
-					if(I2)
-						I.add_held_object(I2,FALSE,TRUE)
-				catch(var/exception/e)
-					log_error("LOADING ERROR: [e] on [e.file]:[e.line]! Couldn't load [inventory_data["held"][i]]!")
-		if(inventory_data["worn"])
-			for(var/i=1,i<=length(inventory_data["worn"]),i++)
-				try
-					var/obj/item/I2 = load_and_create_object(inventory_data["worn"][i],get_turf(I))
-					if(I2)
-						I.add_worn_object(I2,FALSE,TRUE)
-				catch(var/exception/e)
-					log_error("LOADING ERROR: [e] on [e.file]:[e.line]! Couldn't load [inventory_data["worn"][i]]!")
-
-		return TRUE
-
-
-	return FALSE
-
-/savedata/proc/get_item_data(var/obj/I,var/save_inventory = TRUE)
+/proc/get_item_data(var/obj/I,var/save_inventory = TRUE)
 
 	try
 		if(!I || !I.should_save)
@@ -358,39 +325,3 @@
 		log_error("ERROR: Could not save [I.get_debug_name()]! [e.name] in [e.file]:[e.line].\n[e.desc]")
 
 	return null
-
-
-/savedata/proc/generate_blend_data(var/obj/O)
-
-	var/list/returning_list = list()
-	for(var/id in O.additional_blends)
-
-		var/icon_blend/IB = O.additional_blends[id]
-
-		if(IB.should_save)
-			returning_list[id] = list()
-		else
-			continue
-
-		if(IB.id)
-			returning_list[id]["id"] = IB.id
-
-		if(IB.icon)
-			returning_list[id]["icon"] = IB.icon
-
-		if(IB.icon_state)
-			returning_list[id]["icon_state"] = IB.icon_state
-
-		if(IB.color)
-			returning_list[id]["color"] = IB.color
-
-		if(IB.blend)
-			returning_list[id]["blend"] = IB.blend
-
-		if(IB.special_type)
-			returning_list[id]["special_type"] = IB.special_type
-
-		if(IB.layer)
-			returning_list[id]["layer"] = IB.layer
-
-	return returning_list
