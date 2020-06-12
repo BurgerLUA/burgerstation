@@ -17,27 +17,27 @@
 		adjust_currency(2000)
 
 
-	for(var/id in loaded_data["organs"])
-		var/obj/item/organ/O = load_and_create(loaded_data["organs"][id],get_turf(src),FALSE)
-		attach_organ(O,TRUE)
-
-
-	//Organs
 	/*
+	for(var/id in loaded_data["organs"])
+		var/obj/item/organ/O = load_and_create(src,loaded_data["organs"][id],src,FALSE)
+		attach_organ(O,FALSE)
+		O.update_sprite()
+	*/
+
+
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special. TODO: IT SHOULD THOUGH.
 		var/o_type = loaded_data["organs"][id]["type"]
-		if(!ispath(o_type))
-			log_error("INVALID ORGAN: [o_type].")
-			continue
 		var/obj/item/organ/O = add_organ(o_type)
+		if(!O)
+			log_error("Invalid Organ: [o_type].")
+			continue
 		if(loaded_data["organs"][id]["blend_data"])
 			O.set_blend_data(loaded_data["organs"][id]["blend_data"])
 		if(loaded_data["organs"][id]["inventories"])
 			for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
 				var/obj/hud/inventory/I = O.inventories[i]
-				I.set_inventory_data(loaded_data["organs"][id]["inventories"][i])
+				I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
 		O.update_sprite()
-	*/
 
 	//Skills
 	for(var/id in loaded_data["skills"])

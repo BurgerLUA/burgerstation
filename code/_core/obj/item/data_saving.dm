@@ -33,11 +33,12 @@
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
 		var/desired_layer = value_or_null(blend_list,"layer")
+		world.log << "BLEND TEST: [desired_color]."
 		src.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
 
 	return TRUE
 
-/proc/load_and_create(var/list/object_data,var/atom/loc,var/initialize=TRUE)
+/proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE)
 
 	if(!object_data)
 		log_error("Tried to create an object with a blank object_data list!")
@@ -54,11 +55,12 @@
 		return FALSE
 
 	var/obj/item/I = new o_type(loc)
-	if(initialize) INITIALIZE(I)
-	I.set_item_data(object_data)
+	I.set_item_data(P,object_data)
+	INITIALIZE(I)
+	I.force_move(loc)
+	I.update_sprite()
 
 	return I
-
 
 /obj/item/proc/get_item_data(var/save_inventory = TRUE)
 
@@ -100,24 +102,27 @@
 
 	return .
 
-/obj/item/organ/set_item_data(var/list/object_data)
+/obj/item/organ/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 
 	if(object_data["blend_data"])
+		LOG_DEBUG("Blend data for [src.type]:")
+		debug_list(object_data["blend_data"])
 		set_blend_data(object_data["blend_data"])
+	else
+		LOG_DEBUG("No blend data found for: [src.type].")
 
 	return .
 
-/obj/item/proc/set_item_data(var/list/object_data)
+/obj/item/proc/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
 
 	if(object_data["color"])
 		color = object_data["color"]
-
 	if(object_data["inventories"])
 		for(var/i=1,i<=length(object_data["inventories"]),i++)
 			var/obj/hud/inventory/I = inventories[i]
-			I.set_inventory_data(object_data["inventories"][i])
+			I.set_inventory_data(P,object_data["inventories"][i])
 	if(object_data["soul_bound"])
 		soul_bound = object_data["soul_bound"]
 	if(object_data["item_count_current"])
@@ -130,21 +135,21 @@
 			reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
 		reagents.update_container()
 
-	return ..()
+	return TRUE
 
 
-/obj/hud/inventory/proc/set_inventory_data(var/list/inventory_data) //Setting the data found.
+/obj/hud/inventory/proc/set_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
 
 	if(inventory_data["held"])
 		for(var/i=1,i<=length(inventory_data["held"]),i++)
 			world.log << "Trying to create and hold: [inventory_data["held"][i]["type"]]."
-			var/obj/item/I = load_and_create(inventory_data["held"][i],get_turf(src))
+			var/obj/item/I = load_and_create(P,inventory_data["held"][i],get_turf(src))
 			if(I) src.add_held_object(I,TRUE,TRUE)
 
 	if(inventory_data["worn"])
 		for(var/i=1,i<=length(inventory_data["worn"]),i++)
 			world.log << "Trying to create and wear: [inventory_data["worn"][i]["type"]]."
-			var/obj/item/I = load_and_create(inventory_data["worn"][i],get_turf(src))
+			var/obj/item/I = load_and_create(P,inventory_data["worn"][i],get_turf(src))
 			if(I) src.add_worn_object(I,TRUE,TRUE)
 
 	return TRUE

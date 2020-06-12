@@ -111,6 +111,7 @@
 #include "code\__helpers\icons.dm"
 #include "code\__helpers\interaction.dm"
 #include "code\__helpers\lazy.dm"
+#include "code\__helpers\list.dm"
 #include "code\__helpers\lists.dm"
 #include "code\__helpers\logging.dm"
 #include "code\__helpers\name.dm"

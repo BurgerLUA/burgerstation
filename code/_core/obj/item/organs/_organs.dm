@@ -201,7 +201,6 @@ obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/old_owner)
 	return TRUE
 
-
 obj/item/organ/proc/get_damage_description()
 
 	if(!health)
