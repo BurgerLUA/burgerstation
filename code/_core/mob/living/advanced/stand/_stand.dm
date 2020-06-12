@@ -28,7 +28,7 @@
 
 /mob/living/advanced/stand/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(owner && attacker == owner)
+	if(attacker && owner && attacker == owner)
 		return FALSE
 
 	if(!enabled)

@@ -28,6 +28,8 @@
 
 	var/debug = FALSE
 
+	var/safeties = TRUE
+
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(door_state == DOOR_STATE_CLOSED)
@@ -49,11 +51,11 @@
 		opened_time = 0
 
 	if(door_state == DOOR_STATE_OPENED && opened_time >= 100)
-
 		var/has_living = FALSE
 		for(var/mob/living/L in loc.contents)
-			has_living = TRUE
-			break
+			if(safeties)
+				has_living = TRUE
+				break
 
 		if(!has_living)
 			close()
@@ -129,13 +131,17 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 				play(close_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
 
 		if(DOOR_STATE_CLOSING_02)
-			var/found_living = FALSE
+			var/has_living = FALSE
 			for(var/mob/living/L in loc.contents)
-				if(L)
-					found_living = L
+				if(safeties)
+					has_living = TRUE
 					break
-			if(found_living)
-				set_door_state(found_living,DOOR_STATE_OPENING_02,FALSE)
+				else
+					for(var/d in DIRECTIONS_ALL)
+						if(L.Move(get_step(L,d),d))
+							break
+			if(has_living)
+				set_door_state(has_living,DOOR_STATE_OPENING_02,FALSE)
 			else
 				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
 

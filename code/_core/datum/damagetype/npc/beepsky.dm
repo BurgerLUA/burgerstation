@@ -21,6 +21,8 @@
 
 	skill_damage = list()
 
+	allow_friendly_fire = TRUE
+
 
 /damagetype/npc/captain_beepsky/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 

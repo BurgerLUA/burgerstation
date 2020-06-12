@@ -109,6 +109,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/area/A = get_area(src)
 	for(var/obj/structure/interactive/door/airlock/shuttle/S in A.contents)
+		S.safeties = FALSE
 		var/doorstuck = FALSE
 		var/obj/structure/interactive/scanner/living/S1 = locate() in S.loc.contents
 		if(S1 && !S1.trigger(null,src,-1,-1))
@@ -131,6 +132,7 @@ var/global/list/all_shuttle_controlers = list()
 					continue
 				var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
 				if(AL && !istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
+					AL.safeties = FALSE
 					if(open)
 						AL.open(null,lock,force)
 					else

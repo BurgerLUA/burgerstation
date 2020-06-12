@@ -12,7 +12,7 @@
 
 /mob/living/advanced/npc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(dialogue_id && is_player(attacker))
+	if(attacker && dialogue_id && is_player(attacker))
 		return FALSE
 
 	return ..()

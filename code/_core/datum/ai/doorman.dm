@@ -8,7 +8,17 @@
 
 	var/obj/marker/beepsky/beepsky_marker
 
+	aggression = 0
+	retaliate = TRUE
+
 	enabled = TRUE
+
+/ai/doorman/should_attack_mob(var/mob/living/L,var/do_aggression_check = TRUE)
+
+	if(L == owner)
+		return FALSE
+
+	return TRUE
 
 /ai/doorman/handle_movement()
 
@@ -37,6 +47,7 @@
 	if(!objective_attack && length(attackers))
 		var/mob/living/chosen_target = pick(attackers)
 		attackers -= chosen_target
+		world.log << "Setting objective to: [chosen_target]."
 		set_objective(chosen_target)
 
 	if(objective_attack && !(locate(/obj/structure/interactive/scanner/living) in objective_attack.loc.contents))

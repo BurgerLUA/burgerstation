@@ -29,7 +29,6 @@
 	return .
 
 
-
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
