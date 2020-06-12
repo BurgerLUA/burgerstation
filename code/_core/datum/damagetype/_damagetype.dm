@@ -282,7 +282,7 @@
 			for(var/damage_type in damage_to_deal_main)
 				total_damage_dealt += damage_to_deal_main[damage_type]
 		else
-			total_damage_dealt += hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
+			hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
 			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
@@ -402,7 +402,7 @@
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
-		play(pick(miss_sounds),get_turf(attacker), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
+		play(pick(miss_sounds),get_turf(victim), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 
