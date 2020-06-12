@@ -18,8 +18,8 @@
 
 
 	for(var/id in loaded_data["organs"])
-		var/obj/item/organ/O = load_and_create(loaded_data["organs"][id],get_turf(src))
-		attach_organ(O,FALSE)
+		var/obj/item/organ/O = load_and_create(loaded_data["organs"][id],get_turf(src),FALSE)
+		attach_organ(O,TRUE)
 
 
 	//Organs

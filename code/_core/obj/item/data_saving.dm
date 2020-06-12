@@ -139,13 +139,13 @@
 		for(var/i=1,i<=length(inventory_data["held"]),i++)
 			world.log << "Trying to create and hold: [inventory_data["held"][i]["type"]]."
 			var/obj/item/I = load_and_create(inventory_data["held"][i],get_turf(src))
-			if(I) add_held_object(I,FALSE,TRUE)
+			if(I) src.add_held_object(I,TRUE,TRUE)
 
 	if(inventory_data["worn"])
 		for(var/i=1,i<=length(inventory_data["worn"]),i++)
 			world.log << "Trying to create and wear: [inventory_data["worn"][i]["type"]]."
 			var/obj/item/I = load_and_create(inventory_data["worn"][i],get_turf(src))
-			if(I) add_worn_object(I,FALSE,TRUE)
+			if(I) src.add_worn_object(I,TRUE,TRUE)
 
 	return TRUE
 
