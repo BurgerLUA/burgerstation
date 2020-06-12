@@ -23,8 +23,6 @@
 
 /obj/item/proc/set_blend_data(var/list/blend_data)
 
-	world.log << "SETTING BLEND DATA FOR [src]!"
-
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
 		var/desired_id = value_or_null(blend_list,"id")
@@ -139,11 +137,13 @@
 
 	if(inventory_data["held"])
 		for(var/i=1,i<=length(inventory_data["held"]),i++)
+			world.log << "Trying to create and hold: [inventory_data["held"][i]["type"]]."
 			var/obj/item/I = load_and_create(inventory_data["held"][i],get_turf(src))
 			if(I) add_held_object(I,FALSE,TRUE)
 
 	if(inventory_data["worn"])
 		for(var/i=1,i<=length(inventory_data["worn"]),i++)
+			world.log << "Trying to create and wear: [inventory_data["worn"][i]["type"]]."
 			var/obj/item/I = load_and_create(inventory_data["worn"][i],get_turf(src))
 			if(I) add_worn_object(I,FALSE,TRUE)
 
