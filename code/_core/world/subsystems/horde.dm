@@ -57,19 +57,22 @@ SUBSYSTEM_DEF(horde)
 	killed_syndicate_total++
 	killed_syndicate_round++
 
-	if(killed_syndicate_round >= spawned_enemies_round)
+	if(spawned_enemies_round != 0 && killed_syndicate_round >= spawned_enemies_round)
 		current_round++
 		message_displayed = FALSE
 		killed_syndicate_round = 0
+		spawned_enemies_round = 0
 
 	tracked_enemies -= L
 
 	return TRUE
 
 /subsystem/horde/proc/get_enemies_to_spawn()
-	. = 15 + (current_round * 2.5)
+	if(length(tracked_enemies) > 50)
+		return 0
+	. = 10 + (current_round * 2.5)
 	. = min(.,50,length(all_players)*3)
-	. = max(.,15)
+	. = max(.,10)
 	. -= length(tracked_enemies)
 	return FLOOR(.,1)
 

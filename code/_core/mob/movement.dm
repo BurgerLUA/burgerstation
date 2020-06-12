@@ -58,9 +58,6 @@
 	. = ..()
 
 	if(.)
-
-		update_rs_chat()
-
 		switch(move_mod)
 			if(1)
 				on_walk()
@@ -94,5 +91,7 @@
 
 	if(client)
 		client.post_move(loc,old_loc)
+
+	update_rs_chat()
 
 	return .

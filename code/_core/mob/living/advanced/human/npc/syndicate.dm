@@ -6,16 +6,16 @@
 
 	var/list/possible_outfits = list(
 		//"syndicate" = 100,
-		//"syndicate_soldier" = 75,
-		//"syndicate_hardsuit" = 50,
+		"syndicate_soldier" = 75,
+		"syndicate_hardsuit" = 50,
 		"syndicate_hardsuit_advanced" = 25,
 		"syndicate_hardsuit_elite" = 5
 	)
 
 	var/loadout_to_level = list(
 		//"syndicate" = 1,
-		//"syndicate_soldier" = 2,
-		//"syndicate_hardsuit" = 4,
+		"syndicate_soldier" = 2,
+		"syndicate_hardsuit" = 4,
 		"syndicate_hardsuit_advanced" = 8,
 		"syndicate_hardsuit_elite" = 16
 	)
@@ -23,7 +23,8 @@
 	var/map_spawn = FALSE
 
 /mob/living/advanced/npc/syndicate/Destroy()
-	if(SShorde)	SShorde.tracked_enemies -= src
+	if(SShorde && src in SShorde.tracked_enemies)
+		SShorde.on_killed_syndicate(src)
 	return ..()
 
 /mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
