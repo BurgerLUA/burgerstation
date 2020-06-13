@@ -31,7 +31,7 @@
 		var/mod = positive ? 0.5 + (luck_to_use/50)*0.5 : 1.5 - (luck_to_use/50)*0.5
 		. *= mod
 
-	if(debug)
-		LOG_DEBUG("Luck for [debug]: [.] x [base_value].")
+	//if(debug)
+	//	LOG_DEBUG("Luck for [debug]: [.] x [base_value].")
 
 	return prob(base_value*.)

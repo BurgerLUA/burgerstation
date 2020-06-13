@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever
 	name = "12g lever-action shotgun"
-	desc = "A lever action shotgun."
+	desc = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower."
 	icon = 'icons/obj/items/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 3
+	shoot_delay = 5
 
 	automatic = FALSE
 
@@ -27,7 +27,7 @@
 	heat_max = 0.3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread() //Base spread
-	return 0.01
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.05 - (0.1 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))

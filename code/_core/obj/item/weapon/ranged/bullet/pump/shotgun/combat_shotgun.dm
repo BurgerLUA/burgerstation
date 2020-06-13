@@ -51,7 +51,7 @@
 	icon = 'icons/obj/items/weapons/ranged/shotgun/combat_mod.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 4
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -60,7 +60,7 @@
 
 	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	view_punch = 16
 
@@ -72,7 +72,7 @@
 	value = 150
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_static_spread() //Base spread
-	return 0.05
+	return 0.003
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.075 - (0.1 * L.get_skill_power(SKILL_RANGED))
+	return 0.0075 - (0.01 * L.get_skill_power(SKILL_RANGED))

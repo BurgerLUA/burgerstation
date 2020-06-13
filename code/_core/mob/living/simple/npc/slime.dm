@@ -36,6 +36,8 @@
 
 	mob_size = MOB_SIZE_ANIMAL
 
+	damage_type = /damagetype/npc/slime
+
 /mob/living/simple/npc/slime/Initialize()
 	. = ..()
 	update_sprite()

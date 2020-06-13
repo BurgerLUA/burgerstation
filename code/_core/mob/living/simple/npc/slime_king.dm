@@ -8,6 +8,8 @@
 
 	ai = /ai/
 
+	damage_type = /damagetype/npc/slime
+
 	can_attack_while_moving = TRUE
 
 	color = "#2222FF"
@@ -63,6 +65,8 @@
 	)
 
 	mob_size = MOB_SIZE_BOSS
+
+	damage_type = /damagetype/npc/slime
 
 /mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
 

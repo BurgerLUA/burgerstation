@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/shotgun/regular.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 4
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -25,7 +25,7 @@
 	heat_max = 0.3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread() //Base spread
-	return 0.02
+	return 0.004
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.05 - (0.1 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.025 - (0.01 * L.get_skill_power(SKILL_RANGED)))
