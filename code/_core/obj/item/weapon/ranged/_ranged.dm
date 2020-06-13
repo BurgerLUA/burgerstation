@@ -35,6 +35,8 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
+	var/inaccuracy_modifer = 1
+
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
@@ -190,6 +192,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/bullet_spread = 0
 	var/projectile_speed_to_use = projectile_speed
 	var/bullet_color_to_use = bullet_color
+	var/inaccuracy_modifer_to_use = inaccuracy_modifer
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
@@ -208,6 +211,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			projectile_speed_to_use = spent_bullet.projectile_speed
 		if(spent_bullet.bullet_color)
 			bullet_color_to_use = spent_bullet.bullet_color
+		if(spent_bullet.inaccuracy_modifer)
+			inaccuracy_modifer_to_use = inaccuracy_modifer_to_use * spent_bullet.inaccuracy_modifer //Use both the gun and the bullet.
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE
@@ -240,7 +245,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		accuracy_loss = clamp(accuracy_loss,0,0.5)
 
 		var/view_punch_time = shoot_delay
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null,inaccuracy_modifer_to_use)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)
@@ -281,7 +286,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_inaccuracy_modifer=1)
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
@@ -329,7 +334,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					animate(P.client,pixel_w = normx*view_punch, pixel_z = -normy*view_punch, time = (view_punch_time-1)*0.5)
 					animate(pixel_w = 0, pixel_z = 0, time = view_punch_time-1)
 
-			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag)
+			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_inaccuracy_modifer)
 
 
 

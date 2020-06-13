@@ -1,4 +1,4 @@
-#define METABOLISM_BLOOD 0.2
+#define METABOLISM_BLOOD 1
 #define METABOLISM_STOMACH METABOLISM_BLOOD * 0.75
 #define METABOLISM_SKIN METABOLISM_BLOOD * 10
 #define OVERDOSE_THRESHOLD_MEDICINE 30
@@ -45,8 +45,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		world.log << "Want to heal \the [owner]."
-		owner.health.adjust_loss_smart(brute=.*-2.5)
+		owner.health.adjust_loss_smart(brute=.*-4)
 
 	return .
 
@@ -68,7 +67,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5)
+		owner.health.adjust_loss_smart(brute=.*-8)
 
 	return .
 
@@ -94,7 +93,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-2.5)
+		owner.health.adjust_loss_smart(burn=.*-4)
 
 	return .
 
@@ -119,7 +118,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*-2.5)
+		owner.health.adjust_loss_smart(tox=.*-4)
 
 	return .
 
@@ -144,7 +143,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-2.5)
+		owner.health.adjust_loss_smart(oxy=.*-4)
 
 	return .
 
@@ -164,7 +163,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2)
+		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4)
 
 	return .
 
@@ -172,7 +171,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-1,burn=.*-1,tox=.*-1)
+		owner.health.adjust_loss_smart(brute=.*-3,burn=.*-3,tox=.*-3)
 
 	return .
 
@@ -193,7 +192,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2,oxy=.*-2)
+		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4,oxy=.*-4)
 
 	return .
 
@@ -201,7 +200,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2,oxy=.*-2)
+		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4,oxy=.*-4)
 
 	return .
 
@@ -220,6 +219,16 @@
 
 	liquid = -0.5
 
+/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+		. *= 0.5
+		container.owner.health.adjust_loss_smart(burn=.*-10)
+
+	return .
+
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -232,16 +241,6 @@
 		else
 			owner.health.adjust_loss_smart(burn=.*-5)
 
-
-	return .
-
-/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
-
-	. = ..()
-
-	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
-		. *= 0.5
-		container.owner.health.adjust_loss_smart(burn=.*-10)
 
 	return .
 

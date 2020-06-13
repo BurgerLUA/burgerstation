@@ -203,7 +203,8 @@
 		/obj/item/weapon/melee/tool/multitool,
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/wirecutters,
-		/obj/item/weapon/melee/tool/wrench
+		/obj/item/weapon/melee/tool/wrench,
+		/obj/item/weapon/melee/torch/flashlight
 	)
 
 

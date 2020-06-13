@@ -20,6 +20,8 @@
 	var/shoot_x = 0
 	var/shoot_y = 0
 
+	var/inaccuracy_modifier = 1
+
 	mouse_opacity = 0
 
 	layer = LAYER_PROJECTILE
@@ -69,7 +71,7 @@
 	all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_inaccuracy_modifier=1)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -249,7 +251,7 @@
 			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 				precise = TRUE
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,precise,precise)
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,precise,precise,inaccuracy_modifier)
 
 		if(!object_to_damage)
 			DT.perform_miss(owner,hit_atom,weapon)

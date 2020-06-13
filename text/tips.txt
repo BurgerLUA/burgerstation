@@ -40,3 +40,4 @@ Humans have a natural holy and darkness armor resist of 100.
 Just because something is, doesn't mean it should be. If you believe you've encountered a bug or something horribly unbalanced, start a conversation about it on discord.
 Don't underestimate smaller pistols! The smaller projectile size is actually great at penetrating armor.
 Do not be afraid to ask questions! Wikibot can answer most commonly asked questions if asked in OOC, and if not, players are willing to help and give you advise.
+Some weapons, such as sniper rifles, give a bonus to precision.

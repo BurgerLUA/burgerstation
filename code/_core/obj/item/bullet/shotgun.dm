@@ -62,3 +62,5 @@
 	size = 0.04
 	weight = 0.04
 	value = 0.6
+
+	inaccuracy_modifer = 1.5

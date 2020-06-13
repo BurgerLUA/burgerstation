@@ -6,8 +6,6 @@
 
 	var/client/owner = CLIENT(desired_ckey)
 
-	world.log << "The client is: [desired_ckey]."
-
 	if(!owner)
 		CRASH_SAFE("FATAL ERROR: Savedata did not have a valid owner!")
 		return FALSE

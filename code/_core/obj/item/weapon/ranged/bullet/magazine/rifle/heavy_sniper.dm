@@ -37,6 +37,8 @@
 
 	ai_heat_sensitivity = 2
 
+	inaccuracy_modifer = 0.1
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread() //Base spread
 	return 0
 

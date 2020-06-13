@@ -17,4 +17,5 @@
 	new /obj/item/storage/emergency(src)
 	new /obj/item/pinpointer/landmark(src)
 	new /obj/item/clothing/overwear/coat/hoodie/grey(src)
+	new /obj/item/weapon/melee/torch/flashlight(src)
 	return ..()
