@@ -7,12 +7,12 @@
 
 	bullet_diameter = 12.7
 	bullet_length = 99
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 4
 	item_count_max_icon = 4
 
-	projectile = /obj/projectile/bullet/sniper
+	projectile = /obj/projectile/bullet/firearm/sniper
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50
 
 	projectile_speed = BULLET_SPEED_SNIPER

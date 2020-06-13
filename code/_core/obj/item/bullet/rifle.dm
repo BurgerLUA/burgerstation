@@ -6,13 +6,13 @@
 
 	bullet_diameter = 7.62
 	bullet_length = 51
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 5
 	item_count_max_icon = 5
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_308
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
@@ -40,12 +40,12 @@
 
 	bullet_diameter = 5.56
 	bullet_length = 45
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_223
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
@@ -62,7 +62,7 @@
 	item_count_max = 5
 	item_count_max_icon = 5
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT

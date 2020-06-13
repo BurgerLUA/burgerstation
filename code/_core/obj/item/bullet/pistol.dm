@@ -9,9 +9,9 @@
 
 	bullet_diameter = 10.17
 	bullet_length = 32
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_10mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
@@ -32,10 +32,10 @@
 
 	bullet_diameter = 12.7
 	bullet_length = 33
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 
-	projectile = /obj/projectile/bullet/revolver/
+	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_50
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
@@ -56,9 +56,9 @@
 
 	bullet_diameter = 12.7
 	bullet_length = 33
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
-	projectile = /obj/projectile/bullet/revolver
+	projectile = /obj/projectile/bullet/firearm/revolver
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_12mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
@@ -78,10 +78,10 @@
 
 	bullet_diameter = 9
 	bullet_length = 19
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -101,10 +101,10 @@
 
 	bullet_diameter = 4.6
 	bullet_length = 30
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -124,10 +124,10 @@
 
 	bullet_diameter = 10
 	bullet_length = 22
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -147,9 +147,9 @@
 
 	bullet_diameter = 11.43
 	bullet_length = 23
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
-	projectile = /obj/projectile/bullet/smg
+	projectile = /obj/projectile/bullet/firearm/smg
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_45
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -169,9 +169,9 @@
 
 	bullet_diameter = 8
 	bullet_length = 12
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_8mm
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE

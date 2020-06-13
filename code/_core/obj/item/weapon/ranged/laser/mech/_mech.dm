@@ -55,7 +55,7 @@
 	charge_current = 250*300
 	charge_cost = 250
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	ranged_damage_type = /damagetype/ranged/bullet/pistol_9mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -75,7 +75,7 @@
 	charge_current = 500*240
 	charge_cost = 500
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	ranged_damage_type = /damagetype/ranged/bullet/rifle_223
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
@@ -95,7 +95,7 @@
 	charge_current = 1000*120
 	charge_cost = 1000
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	ranged_damage_type = /damagetype/ranged/bullet/rifle_762mm
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY

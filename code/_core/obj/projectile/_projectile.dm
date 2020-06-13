@@ -138,9 +138,6 @@
 
 	update_sprite()
 
-	var/new_angle = -ATAN2(vel_x,vel_y) - 90
-	transform.Turn(new_angle)
-
 	return .
 
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
@@ -195,16 +192,19 @@
 		on_hit(src.loc,TRUE)
 		return FALSE
 
-	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
-
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1)
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
 	var/matrix/M = matrix()
-	var/new_angle = -ATAN2(vel_x,vel_y) - 90
+	var/new_angle = -ATAN2(vel_x,vel_y) + 90
 	M.Turn(new_angle)
 	M.Translate(pixel_x_float,pixel_y_float) //WHY DO I HAVE TO HALF THIS?
-	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+	if(start_time == 0)
+		transform = M
+	else
+		animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+
+	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)

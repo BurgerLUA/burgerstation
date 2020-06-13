@@ -7,7 +7,7 @@
 
 	bullet_diameter = 18.5
 	bullet_length = 18.5
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 	item_slot = SLOT_GROIN_O
@@ -36,7 +36,7 @@
 	projectile_speed = 31
 
 
-	projectile = /obj/projectile/bullet/shotgun_slug
+	projectile = /obj/projectile/bullet/firearm/shotgun_slug
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -54,7 +54,7 @@
 	projectile_count = 8
 	base_spread = 0.03
 
-	projectile = /obj/projectile/bullet/shotgun_pellet
+	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/buckshot
 
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE

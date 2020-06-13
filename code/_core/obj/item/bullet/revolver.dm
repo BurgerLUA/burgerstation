@@ -6,12 +6,12 @@
 
 	bullet_diameter = 9
 	bullet_length = 29
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 6
 	item_count_max_icon = 6
 
-	projectile = /obj/projectile/bullet/revolver/
+	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_38
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
@@ -29,12 +29,12 @@
 
 	bullet_diameter = 9
 	bullet_length = 33
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 6
 	item_count_max_icon = 6
 
-	projectile = /obj/projectile/bullet/revolver/
+	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_357
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
@@ -52,12 +52,12 @@
 
 	bullet_diameter = 10.9
 	bullet_length = 29
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 6
 	item_count_max_icon = 6
 
-	projectile = /obj/projectile/bullet/revolver/
+	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_44
 
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
@@ -74,12 +74,12 @@
 
 	bullet_diameter = 5.6
 	bullet_length = 17.7
-	bullet_color = "#FFECB6"
+	bullet_color = COLOR_BULLET
 
 	item_count_max = 6
 	item_count_max_icon = 6
 
-	projectile = /obj/projectile/bullet/revolver/
+	projectile = /obj/projectile/bullet/firearm/revolver/
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_22
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT

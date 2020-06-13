@@ -28,7 +28,7 @@
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
-		"barrel" = COLOR_RED
+		"barrel" = "#FF0000"
 	)
 
 	size = SIZE_4

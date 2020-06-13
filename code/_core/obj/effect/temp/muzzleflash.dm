@@ -3,6 +3,8 @@ obj/effect/temp/muzzleflash
 	icon = 'icons/obj/effects/muzzleflash.dmi'
 	icon_state = "muzzle_bullet"
 	duration = 1
+	plane = PLANE_LIGHTING
+	layer = 99
 
 
 obj/effect/temp/muzzleflash/laser

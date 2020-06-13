@@ -41,9 +41,8 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 			var/original_x = desired_object.pixel_x
 			var/original_y = desired_object.pixel_y
 			desired_object.alpha = 0
-			var/matrix/M = matrix()
 			src.transform *= 0
-			animate(src,transform=M, pixel_x=original_x, pixel_y = original_y, time = duration,easing=SINE_EASING)
+			animate(src,transform=desired_object.transform, pixel_x=original_x, pixel_y = original_y, time = duration,easing=SINE_EASING)
 		if("transfer")
 			animate(src,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 

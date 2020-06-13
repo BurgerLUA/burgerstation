@@ -9,7 +9,7 @@
 	bullet_length = 50
 	bullet_diameter = 20
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
 
 

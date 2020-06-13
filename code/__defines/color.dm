@@ -2,6 +2,7 @@
 #define COLOR_WHITE "#FFFFFF"
 #define COLOR_GREY "#999999"
 #define COLOR_GREY_LIGHT "#A8A8A8"
+#define COLOR_GREY_DARK "#303030"
 #define COLOR_BLACK "#404040"
 
 #define COLOR_RED "#994444"
@@ -33,6 +34,7 @@
 #define COLOR_SHALEEZ_RED "#700100"
 #define COLOR_NANOTRASEN "#10436B"
 #define COLOR_VISIBLE_GREEN "#B6FF00"
+#define COLOR_BULLET "#BCA258"
 
 //Department Colors
 #define COLOR_CARGO "#BB9042"
@@ -48,6 +50,8 @@
 #define COLOR_ENGINEERING_BRIGHT "#FFDE15"
 #define COLOR_SCIENCE "#9651C6"
 #define COLOR_CHEMISTRY "#FF6A00"
+
+#define COLOR_LIBRARY "#992F2F"
 
 //Materials
 #define COLOR_STEEL "#444444"

@@ -1,10 +1,10 @@
 /atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	if(P == src)
-		return FALSE
+		return null
 
 	if(P.owner == src)
-		return FALSE
+		return null
 
 	if( (collision_bullet_flags & FLAG_COLLISION_SPECIFIC) && P.target_atom == src)
 		return src
@@ -13,22 +13,22 @@
 		return src
 
 	if(!src.collision_bullet_flags || !P.collision_bullet_flags)
-		return FALSE
+		return null
 
 	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
-		return FALSE
+		return null
 
 	return src
 
 /atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-	return FALSE
+	return null
 
 /mob/living/vehicle/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	if(is_advanced(P.owner))
 		var/mob/living/advanced/A = P.owner
 		if(A.driving == src)
-			return FALSE
+			return null
 
 	return ..()
 
@@ -37,17 +37,17 @@
 	if(P && !P.ignore_iff && is_living(P.owner)) //FAILSAFE. PUSSY SHIT BUT IT SHOULD PREVENT EXPLOITS.
 		var/mob/living/L = P.owner
 		if(L.loyalty_tag == src.loyalty_tag)
-			return FALSE
+			return null
 
 	return ..()
 
 /mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	if(src != P.target_atom && (dead || horizontal))
-		return FALSE
+		return null
 
 	if(P && !P.ignore_iff && P.iff_tag && src.iff_tag == P.iff_tag)
-		return FALSE
+		return null
 
 	return ..()
 
@@ -56,7 +56,7 @@
 	. = ..()
 
 	if(!.)
-		return FALSE
+		return null
 
 	if(P.vel_y > 0)
 		if(!old_turf.allow_bullet_pass && old_turf.density_north)
@@ -79,27 +79,26 @@
 		if(!new_turf.allow_bullet_pass && new_turf.density_east)
 			return new_turf
 
-	return FALSE
+	return null
 
 /obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-	return FALSE
+	return null
 
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	. = ..()
 
 	if(!.)
-		return FALSE
+		return null
 
 	var/projectile_dir = get_dir(old_turf,new_turf)
 
 	if(projectile_dir & src.collision_dir)
-		if(bullet_block_chance == 100)
-			. = src
-		else if (luck(src,bullet_block_chance))
-			if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
-				return FALSE
-			else
-				. = src
+		if(bullet_block_chance >= 100)
+			return src
+		else if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
+			return null
+		else if(luck(P.owner,bullet_block_chance,FALSE))
+			return null
 
 	return .

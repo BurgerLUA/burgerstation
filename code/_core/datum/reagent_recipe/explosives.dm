@@ -36,7 +36,7 @@
 		if(shapnel_reagents[reagent_type])
 			shrapnel_volume += reagent_volume
 	var/shrapnel_amount = CEILING(shrapnel_volume/6,1)
-	container.owner.shoot_projectile(caller,get_step(explosion_location,pick(DIRECTIONS_ALL)),null,null,/obj/projectile/bullet/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.25,shrapnel_amount)
+	container.owner.shoot_projectile(caller,get_step(explosion_location,pick(DIRECTIONS_ALL)),null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.25,shrapnel_amount)
 	explode(explosion_location,explosion_power,caller,container.owner)
 
 	play(pick(explosion_sounds),explosion_location, alert = ALERT_LEVEL_CAUTION, alert_source = caller)
