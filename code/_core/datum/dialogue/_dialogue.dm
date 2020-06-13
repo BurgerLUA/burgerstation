@@ -11,8 +11,9 @@
 
 /dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
 
+	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 	var/menu/M = get_menu("dialogue")
-	var/list/known_options = P.mobdata.loaded_data["known_topics"]
+	var/list/known_options = mobdata.loaded_data["known_topics"]
 	var/list/dialogue_options = get_dialogue_options(P,known_options)
 	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
 
@@ -45,19 +46,22 @@
 
 	var/final_topic = "[topic]_[dialogue]"
 
+	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+
 	for(var/i=2,i<=length(chosen_dialogue),i++)
 
 		final_topic += "_[chosen_dialogue[i]]"
 
 		var/first_letter = copytext(chosen_dialogue[i],1,2)
 
-		if(!(chosen_dialogue[i] in P.mobdata.loaded_data["known_topics"]) && first_letter != "*")
-			P.mobdata.loaded_data["known_topics"] += chosen_dialogue[i]
+		if(!(chosen_dialogue[i] in mobdata.loaded_data["known_topics"]) && first_letter != "*")
+			mobdata.loaded_data["known_topics"] += chosen_dialogue[i]
 
 	return final_topic
 
 /dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic)
+	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 	var/menu/M = get_menu("dialogue")
-	var/list/known_options = P.mobdata.loaded_data["known_topics"]
+	var/list/known_options = mobdata.loaded_data["known_topics"]
 	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P,known_options)))
 	M.run_function(P,"convert_data","\"[final_topic_string]\"")

@@ -28,8 +28,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/currency = 1000
 
-	var/savedata/client/mob/mobdata
-
 	var/logout_time = 0
 
 	death_threshold = -100
@@ -81,6 +79,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 
 	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
 		return ..()
@@ -131,7 +130,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(area && area.players_inside)
 		area.players_inside -= src
 	all_players -= src
-	QDEL_NULL(mobdata)
 	attack_logs.Cut()
 
 	active_device = null

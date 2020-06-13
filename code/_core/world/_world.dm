@@ -107,7 +107,8 @@ var/global/world_state = STATE_STARTING
 		if(P.dead)
 			P.to_chat("Could not save your character because you were dead.")
 			continue
-		P.mobdata.save_current_character(force = TRUE)
+		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+		mobdata.save_current_character(force = TRUE)
 		P.to_chat("Your character was automatically saved.")
 		sleep(1)
 

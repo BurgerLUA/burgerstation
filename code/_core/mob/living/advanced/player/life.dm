@@ -2,6 +2,8 @@
 
 	. = ..()
 
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+
 	if(mobdata)
 		mobdata.save_current_character(FALSE)
 

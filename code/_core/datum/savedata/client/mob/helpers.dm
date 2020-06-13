@@ -83,7 +83,10 @@
 	LOG_DEBUG("[owner] is creating a new character with the character id of [character_id].")
 
 	reset_data()
-	owner.save_slot = character_id
+	loaded_data["id"] = character_id
+
+
+	//owner.save_slot = character_id
 
 	return TRUE
 
@@ -94,9 +97,11 @@
 	if(!owner)
 		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr].")
 		return FALSE
+	/*
 	if(!owner.save_slot)
 		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 2.</h2>"))
 		return FALSE
+	*/
 	if(!owner.mob)
 		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 3.</h2>"))
 		return FALSE
@@ -113,7 +118,7 @@
 
 	//Basic Information
 	loaded_data["name"] = A.real_name
-	loaded_data["id"] = owner.save_slot
+	//loaded_data["id"] = owner.save_slot
 	loaded_data["currency"] = A.currency
 	loaded_data["species"] = A.species
 	loaded_data["gender"] = A.gender
@@ -145,7 +150,7 @@
 		final_attribute_list[id] = desired_experience
 	loaded_data["attributes"] = final_attribute_list
 
-	if(write_json_data_to_id(owner.save_slot,loaded_data))
+	if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		owner.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
 		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))

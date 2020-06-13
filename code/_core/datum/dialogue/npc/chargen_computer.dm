@@ -163,7 +163,8 @@
 				O.set_icon_state_mob(P,"paper_normal")
 
 		if("*Burgerstation")
-			P.mobdata.loaded_data["known_topics"] += "Burgerstation"
+			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+			mobdata.loaded_data["known_topics"] += "Burgerstation"
 			P.to_chat(span("thought","My shift starts in one hour! I should check if I'm ready, then catch the next shuttle!"))
 
 

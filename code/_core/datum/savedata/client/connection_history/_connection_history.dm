@@ -2,9 +2,7 @@
 
 /savedata/client/connection_history/reset_data()
 
-	var/client/owner
-
-
+	var/client/owner = CLIENT(ckey)
 
 	loaded_data = list(
 		"address" = owner.address,

@@ -23,7 +23,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/savedata/client/settings/settings
 	var/savedata/client/controls/controls
 
-	var/save_slot //The character slot that the client wishes to overwrite.
+	//var/save_slot //The character slot that the client wishes to overwrite.
 	var/list/last_params
 	var/atom/last_object
 	var/atom/last_location
@@ -130,10 +130,20 @@ var/global/list/all_clients = list() //Assoc list
 		macros = new(src)
 
 	if(!controls)
-		controls = new(src)
+		controls = new(ckey)
 
 	if(!settings)
-		settings = new(src)
+		settings = new(ckey)
+
+	if(!connection_data)
+		connection_data = new(ckey)
+
+	if(!roles)
+		roles = new(ckey)
+
+	var/savedata/client/mob/mobdata = MOBDATA(ckey)
+	if(!mobdata)
+		new/savedata/client/mob(ckey)
 
 	known_health_elements = list()
 	known_inventory = list()
@@ -157,9 +167,6 @@ var/global/list/all_clients = list() //Assoc list
 			play_music_track("slow_fall", src)
 			mob.show_hud(TRUE,speed = 2)
 
-
-	if(!connection_data)
-		connection_data = new(src)
 	world.update_status()
 	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()

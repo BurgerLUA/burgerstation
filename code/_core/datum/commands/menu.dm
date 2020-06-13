@@ -3,6 +3,8 @@
 	set desc = "Saves and quits your character, returning you to the main menu."
 	set category = "Menu"
 
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+
 	if(!loc || !client || !mobdata)
 		return FALSE
 
@@ -26,17 +28,17 @@
 		log_error("Attempted to quickload a character without a client!")
 		return FALSE
 
-	var/savedata/client/mob/U = mobdata
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 
-	var/list/files = U.get_files()
+	var/list/files = mobdata.get_files()
 
 	if(!files || !length(files))
 		new_character()
 		return FALSE
 
-	var/file_num = U.get_proper_id_from_filename(files[1])
+	var/file_num = mobdata.get_proper_id_from_filename(files[1])
 
-	return src.client.load(U,file_num)
+	return src.client.load(mobdata,file_num)
 
 /mob/abstract/observer/verb/load_character()
 	set name = "Load Character"
@@ -46,17 +48,17 @@
 		to_chat(span("warning","The round is currently ending! Wait until next round!"))
 		return FALSE
 
-	var/savedata/client/mob/U = mobdata
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 
-	if(!U.has_files())
+	if(!mobdata.has_files())
 		to_chat(span("notice","You don't have a character to load! Please create a new character."))
 		return
 
 	var/list/name_to_choice = list()
 
-	for(var/file in U.get_files())
-		var/filenum = U.get_proper_id_from_filename(file)
-		var/list/local_loaded_data = U.load_json_data_from_id(filenum)
+	for(var/file in mobdata.get_files())
+		var/filenum = mobdata.get_proper_id_from_filename(file)
+		var/list/local_loaded_data = mobdata.load_json_data_from_id(filenum)
 		var/name = "[filenum]: [local_loaded_data["name"]]"
 		name_to_choice[name] = filenum
 
@@ -67,7 +69,7 @@
 
 	var/file_num = name_to_choice[choice]
 
-	. = client.load(U,file_num)
+	. = client.load(mobdata,file_num)
 
 	return .
 
@@ -81,17 +83,17 @@
 			to_chat(span("warning","The round is currently ending! Wait until next round!"))
 			return FALSE
 
-		var/savedata/client/mob/U = mobdata
 
-		if(!U)
-			log_error("WARNING: [ckey] DOESN'T HAVE ANY CHARACTER DATA ATTACHED TO A GHOST.")
+		var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+
+		if(!mobdata)
+			log_error("WARNING: [ckey] doesn't have any mobdata!")
 			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 01. Rejoining may fix this.")
 			return FALSE
 
-		if(U.create_new_character(U.get_next_character_id()))
+		if(mobdata.create_new_character(mobdata.get_next_character_id()))
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
-			P.mobdata = U
 			var/obj/marker/dev/D = locate() in world
 			if(D && ENABLE_INSTALOAD) //Setup like this so the iff initializes properly.
 				P.force_move(get_turf(D))
@@ -104,4 +106,4 @@
 			return TRUE
 		else
 			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this.")
-			log_error("WARNING: [ckey] WAS UNABLE TO CREATE A NEW CHARACTER!")
+			log_error("WARNING: [ckey] was unable to create a new character!")

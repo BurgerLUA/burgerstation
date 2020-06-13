@@ -35,8 +35,8 @@ var/global/list/ckey_to_mobdata = list()
 			owner << "Welcome to Burgerstation!"
 		else
 			owner << "Welcome back to Burgerstation!"
-			loaded_data = load_most_recent_character()
-			owner.save_slot = loaded_data["id"]
+			//loaded_data = load_most_recent_character()
+			//owner.save_slot = loaded_data["id"]
 
 		ckey_to_mobdata[ckey] = src
 
