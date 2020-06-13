@@ -111,51 +111,32 @@
 
 	return TRUE
 
-
 /obj/structure/interactive/ore_deposit/iron
 	name = "iron deposit"
 	icon_state = "deposit_iron"
-	material_id = "iron"
-
-/obj/structure/interactive/ore_deposit/copper
-	name = "copper deposit"
-	color = "#E28446"
-	material_id = "copper"
-
-
-/obj/structure/interactive/ore_deposit/tin
-	name = "tin deposit"
-	color = "#E2E2E2"
-	material_id = "tin"
-
-
-/obj/structure/interactive/ore_deposit/zinc
-	name = "zinc deposit"
-	color = "#E8E8EF"
-	material_id = "zinc"
-
+	material_id = /material/iron
 
 /obj/structure/interactive/ore_deposit/gold
 	name = "gold deposit"
 	icon_state = "deposit_gold"
-	material_id = "gold"
+	material_id = /material/gold
 
 /obj/structure/interactive/ore_deposit/silver
 	name = "silver deposit"
 	icon_state = "deposit_silver"
-	material_id = "silver"
+	material_id = /material/silver
 
 /obj/structure/interactive/ore_deposit/carbon //Found near the ocean.
 	name = "coal deposit"
 	icon_state = "deposit_coal"
-	material_id = "carbon"
+	material_id = /material/carbon
 
 /obj/structure/interactive/ore_deposit/aluminum //Found in surface.
 	name = "aluminum deposit"
 	color = "#C4C4C4"
-	material_id = "aluminum"
+	material_id = /material/aluminum
 
 /obj/structure/interactive/ore_deposit/plasma
 	name = "phoron plasma deposit"
 	icon_state = "deposit_phoron"
-	material_id = "plasma"
+	material_id = /material/phoron

@@ -3,7 +3,7 @@ obj/structure/smooth/
 	desc = "What does it do?"
 	icon_state = "table"
 
-	var/material_id = "glass"
+	var/material_id = /material/steel
 	var/reinforced_material_id = null
 	var/reinforced_color = "#FFFFFF"
 

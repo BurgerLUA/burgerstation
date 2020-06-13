@@ -40,9 +40,7 @@
 /obj/item/material/rod/steel
 	name = "steel rod"
 	desc = "The basic building material."
-	crafting_id = "rod_steel"
-	color = COLOR_STEEL
-	material_id = "steel"
+	material_id = /material/steel
 
 /obj/item/material/rod/steel/spawn_50/Generate()
 	item_count_current = 50

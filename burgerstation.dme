@@ -17,6 +17,7 @@
 #include "code\__defines\___config.dm"
 #include "code\__defines\__config_horde.dm"
 #include "code\__defines\_config_balance.dm"
+#include "code\__defines\_config_damage.dm"
 #include "code\__defines\_config_slowdown.dm"
 #include "code\__defines\_config_ticks.dm"
 #include "code\__defines\_health_threshold.dm"

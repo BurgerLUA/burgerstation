@@ -62,22 +62,22 @@
 	ore_score = 200
 
 /obj/structure/interactive/ground_ore_deposit/map/iron
-	material_id = "iron"
+	material_id = /material/iron
 
 /obj/structure/interactive/ground_ore_deposit/map/carbon
-	material_id = "carbon"
+	material_id = /material/carbon
 
 /obj/structure/interactive/ground_ore_deposit/map/random/New(var/desired_loc)
 
 	var/list/possible_materials = list(
-		"iron" = 100,
-		"phoron" = 10,
-		"carbon" = 50,
-		"gold" = 20,
-		"silver" = 30,
-		"diamond" = 5,
-		"uranium" = 30,
-		"titanium" = 20
+		/material/iron = 100,
+		/material/phoron = 10,
+		/material/carbon = 50,
+		/material/gold = 20,
+		/material/silver = 30,
+		/material/diamond = 5,
+		/material/uranium = 30,
+		/material/titanium = 20
 	)
 
 	var/material_to_choose = pickweight(possible_materials)

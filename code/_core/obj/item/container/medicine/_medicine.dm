@@ -40,10 +40,6 @@
 
 	return ..()
 
-
-
-
-
 /obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
 
 	if(heal_bleeding && is_organ(A))

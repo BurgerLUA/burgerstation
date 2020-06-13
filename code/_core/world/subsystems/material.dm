@@ -10,10 +10,8 @@ SUBSYSTEM_DEF(materials)
 
 	for(var/k in subtypesof(/material/))
 		var/material/M = k
-		var/id = initial(M.id)
-		if(id)
-			M = new k
-			all_materials[id] = M
+		M = new k
+		all_materials[M.type] = M
 
 	log_subsystem(name,"Initialized [length(all_materials)] material types.")
 

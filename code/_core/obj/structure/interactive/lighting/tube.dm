@@ -30,10 +30,10 @@
 		desired_light_color = null
 		if(health)
 			health.restore()
-		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),"glass")
+		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),/material/glass)
 		update_sprite()
 	else
-		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),"steel")
+		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),/material/steel)
 		qdel(src)
 
 	return TRUE

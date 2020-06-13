@@ -20,4 +20,4 @@
 /obj/item/material/shard/glass
 	name = "glass shard"
 	desc = "A shard of glass."
-	material_id = "glass"
+	material_id = /material/glass

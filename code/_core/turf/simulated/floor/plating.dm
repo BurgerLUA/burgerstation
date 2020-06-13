@@ -7,7 +7,7 @@
 	footstep_id = "plating"
 
 	color = COLOR_STEEL
-	material_id = "steel"
+	material_id = /material/steel
 
 	layer = LAYER_FLOOR_LARGE - 0.01
 

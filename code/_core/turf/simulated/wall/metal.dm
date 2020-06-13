@@ -8,7 +8,7 @@
 	destruction_turf = /turf/simulated/floor/plating
 
 	color = COLOR_STEEL
-	material_id = "steel"
+	material_id = /material/steel
 
 /turf/simulated/wall/metal/on_destruction(var/atom/caller,var/damage = FALSE)
 
@@ -36,14 +36,14 @@
 /turf/simulated/wall/metal/reinforced
 	name = "plasteel reinforced steel wall"
 	icon_state = "wall_ref"
-	reinforced_material_id = "plasteel"
+	reinforced_material_id = /material/plasteel
 	reinforced_color = COLOR_PLASTEEL
 
 /turf/simulated/wall/metal/reinforced/hull
 	name = "adamantium-carbon reinforced plasteel wall"
-	reinforced_material_id = "adamantium-carbon"
+	reinforced_material_id = /material/adamantium_carbon
 	color = "#48482B"
-	reinforced_color = "#00FF00"
+	reinforced_color = COLOR_ADAMANITUM_CARBON
 	health = null
 
 /turf/simulated/wall/metal/reinforced/syndicate

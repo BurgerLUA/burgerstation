@@ -12,8 +12,8 @@
 
 
 /obj/item/material/ingot/iron
-	material_id = "iron"
+	material_id = /material/iron
 
 
 /obj/item/material/ingot/steel
-	material_id = "steel"
+	material_id = /material/steel

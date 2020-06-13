@@ -20,6 +20,10 @@
 #define COLOR_BROWN "#644D37"
 #define COLOR_BROWN_LIGHT "#896A4C"
 
+#define COLOR_WOOD "#6F4533"
+
+#define COLOR_ADAMANITUM_CARBON "#00FF00"
+
 
 //Special colors
 #define COLOR_SPACE_LIGHT "#CCD9E8"

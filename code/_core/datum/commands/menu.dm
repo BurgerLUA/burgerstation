@@ -78,11 +78,9 @@
 	set category = "Data"
 
 	if(client)
-
 		if(world_state != STATE_RUNNING)
 			to_chat(span("warning","The round is currently ending! Wait until next round!"))
 			return FALSE
-
 
 		var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 
