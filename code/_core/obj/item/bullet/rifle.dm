@@ -22,6 +22,8 @@
 
 	value = 0.7
 
+	inaccuracy_modifer = 0.75
+
 /obj/item/bullet_cartridge/rifle_308/Generate()
 	item_count_current = 5
 	return ..()

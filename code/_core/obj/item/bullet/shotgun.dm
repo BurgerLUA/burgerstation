@@ -51,7 +51,7 @@
 	desc_extended = "This shell is not very accurate and has many projectiles."
 	icon_state = "buckshot"
 
-	projectile_count = 8
+	projectile_count = 9
 	base_spread = 0.03
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
