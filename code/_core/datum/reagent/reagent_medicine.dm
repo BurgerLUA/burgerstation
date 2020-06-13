@@ -45,6 +45,7 @@
 	. = ..()
 
 	if(owner && owner.health)
+		world.log << "Want to heal \the [owner]."
 		owner.health.adjust_loss_smart(brute=.*-2.5)
 
 	return .

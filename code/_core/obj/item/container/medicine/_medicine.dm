@@ -71,7 +71,15 @@
 
 	return TRUE
 
-/obj/item/container/medicine/proc/can_treat(var/mob/caller,var/atom/target)
+/obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
+
+	if(!is_organ(target) && !is_living(target))
+		caller.to_chat("You can't treat this!")
+		return FALSE
+
+	if(!target || !target.health)
+		caller.to_chat("You can't treat this!")
+		return FALSE
 
 	if(get_dist(caller,target) > 1)
 		caller.to_chat("You're too far away!")
@@ -79,14 +87,12 @@
 
 	return TRUE
 
-/obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
 
-	if(!target || !target.health)
-		return FALSE
-
-	return TRUE
 
 /obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_inventory(object))
+		return ..()
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
@@ -96,9 +102,8 @@
 		object = object.get_object_to_damage(caller,params,TRUE,TRUE)
 
 	if(can_be_treated(caller,object))
-		if(!can_treat(caller,object))
-			return FALSE
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
 		return TRUE
 
 	return ..()
