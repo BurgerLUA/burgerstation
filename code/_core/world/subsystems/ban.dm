@@ -121,12 +121,13 @@ SUBSYSTEM_DEF(ban)
 
 	return FALSE
 
-/subsystem/ban/proc/add_ckey_ban(var/ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
+/subsystem/ban/proc/add_ckey_ban(var/desired_ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
 
-	bans_keys[ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
+	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
 
-	for(var/client/C in all_clients)
-		if(C.ckey == ckey)
+	for(var/ckey in all_clients)
+		var/client/C = all_clients[ckey]
+		if(desired_ckey == ckey)
 			C << span("danger","You have been banned from the server.\n\
 			Banning Admin: [admin_ckey]\n\
 			Reason: [reason]\n\
@@ -136,7 +137,7 @@ SUBSYSTEM_DEF(ban)
 	fdel(BANLIST_KEYS_DIR)
 	text2file(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
-	LOG_ADMIN("[ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
+	LOG_ADMIN("[desired_ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
 
 	return TRUE
 

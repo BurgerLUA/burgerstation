@@ -66,6 +66,8 @@
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
+	var/client/owner = CLIENT(ckey)
+
 	if(!owner)
 		CRASH_SAFE("Someone tried to create a character on a savedata that has no owner!")
 		return FALSE
@@ -86,6 +88,8 @@
 	return TRUE
 
 /savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE,var/force=FALSE)
+
+	var/client/owner = CLIENT(ckey)
 
 	if(!owner)
 		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr].")
@@ -149,6 +153,8 @@
 	LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE,var/update_blends=TRUE)
+
+	var/client/owner = CLIENT(ckey)
 
 	//Name
 	A.real_name = loaded_data["name"]

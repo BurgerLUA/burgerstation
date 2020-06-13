@@ -4,11 +4,11 @@
 /savedata/client/roles/get_file(var/file_id)
 	return "roles.json"
 
-/savedata/client/roles/New(var/client/new_owner)
+/savedata/client/roles/New(var/desired_ckey)
 
 	..()
 
-	owner = new_owner
+	//var/client/owner = CLIENT(ckey)
 
 	var/full_path = "[get_folder(ckey)][get_file()]"
 

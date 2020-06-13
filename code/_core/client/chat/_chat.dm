@@ -5,7 +5,8 @@
 */
 
 /proc/broadcast_to_clients(var/text_to_say as text, var/text_type = TEXT_OOC)
-	for(var/client/C in all_clients)
+	for(var/k in all_clients)
+		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,text_type)
 
 /proc/has_client(var/atom/A)
@@ -136,7 +137,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 		if(TEXT_OOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
-			for(var/client/C in all_clients)
+			for(var/k in all_clients)
+				var/client/C = all_clients[k]
 				CHECK_TICK
 				if(!C.mob)
 					continue
@@ -148,7 +150,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
-			for(var/client/C in all_clients)
+			for(var/k in all_clients)
+				var/client/C = all_clients[k]
 				CHECK_TICK
 				if(!C.mob || !is_observer(C.mob))
 					continue

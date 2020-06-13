@@ -63,7 +63,8 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/shutdown_server()
 	world_state = STATE_SHUTDOWN
-	for(var/client/C in all_clients)
+	for(var/k in all_clients)
+		var/client/C = all_clients[k]
 		C << "Shutting down world..."
 	shutdown()
 	return TRUE
@@ -71,7 +72,8 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/reboot_server()
 	world_state = STATE_SHUTDOWN
-	for(var/client/C in all_clients)
+	for(var/k in all_clients)
+		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
 	Reboot(0)
 	return TRUE

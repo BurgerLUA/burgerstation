@@ -13,7 +13,8 @@ SUBSYSTEM_DEF(client)
 
 	var/do_slow = advanced_ticks >= CLIENT_TICKS_PER_SLOW_CLIENT_TICKS
 
-	for(var/client/C in all_clients)
+	for(var/ckey in all_clients)
+		var/client/C = all_clients[ckey]
 		CHECK_TICK
 		C.on_life()
 		if(do_slow)

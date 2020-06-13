@@ -95,6 +95,7 @@
 #include "code\__helpers\atmos.dm"
 #include "code\__helpers\atom.dm"
 #include "code\__helpers\callback.dm"
+#include "code\__helpers\client.dm"
 #include "code\__helpers\cmp.dm"
 #include "code\__helpers\colors.dm"
 #include "code\__helpers\conversions.dm"

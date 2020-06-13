@@ -1,4 +1,4 @@
-var/global/list/all_clients = list()
+var/global/list/all_clients = list() //Assoc list
 
 #define string2params(str) list2params(list(str))
 
@@ -100,7 +100,7 @@ var/global/list/all_clients = list()
 
 	clear_mob(mob)
 
-	all_clients -= src
+	all_clients -= src.ckey
 	world.update_status()
 
 
@@ -121,7 +121,7 @@ var/global/list/all_clients = list()
 
 	CLEAR_VERBS(src)
 
-	all_clients += src
+	all_clients[src.ckey] = src
 
 	if(!button_tracker)
 		button_tracker = new(src)

@@ -12,11 +12,11 @@
 /savedata/client/settings/get_file(var/file_id)
 	return "settings.json"
 
-/savedata/client/settings/New(var/client/new_owner)
+/savedata/client/settings/New(var/desired_ckey)
 
 	. = ..()
 
-	owner = new_owner
+	var/client/owner = CLIENT(ckey)
 
 	var/full_path = "[get_folder(ckey)][get_file()]"
 
@@ -26,7 +26,7 @@
 	var/file_contents = file2text(full_path)
 	loaded_data = json_decode(file_contents)
 	if(loaded_data["fps_client"])
-		new_owner.fps = loaded_data["fps_client"]
+		owner.fps = loaded_data["fps_client"]
 
 	if(owner.mob)
 		for(var/obj/hud/button/B in owner.mob.buttons)
@@ -51,6 +51,7 @@
 	return TRUE
 
 /savedata/client/settings/proc/save()
+	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"
 	owner.mob.to_chat(span("notice","Your settings have been saved."))
 	fdel(full_path)
