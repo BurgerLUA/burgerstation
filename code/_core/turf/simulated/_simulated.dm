@@ -168,7 +168,7 @@ var/global/saved_icons = 0
 		return FALSE
 	*/
 
-	var/full_icon_string = "[type]_[ne][nw][se][sw]"
+	var/full_icon_string = "[icon]_[ne][nw][se][sw]"
 
 	var/icon/I
 
