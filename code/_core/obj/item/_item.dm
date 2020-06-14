@@ -443,7 +443,10 @@
 			var/obj/item/I = defer_object
 			if(I.allow_reagent_transfer_to)
 				if(reagents.volume_current <= 0)
-					caller.to_chat(span("warning","\The [src] is empty!"))
+					caller.to_chat(span("warning","\The [src.name] is empty!"))
+					return FALSE
+				if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
+					caller.to_chat(span("warning","\The [defer_object.name] is full!"))
 					return FALSE
 				var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount)
 				caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))

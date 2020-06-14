@@ -26,8 +26,11 @@
 	heat_per_shot = 0.1
 	heat_max = 0.3
 
+/obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_base_spread()
+	return 0.01
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread() //Base spread
-	return 0.001
+	return 0
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))

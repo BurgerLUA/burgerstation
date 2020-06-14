@@ -124,10 +124,6 @@
 	if(reagents)
 		color = reagents.color
 
-	if(reagents.volume_current <= 0)
-		qdel(src)
-		return TRUE
-
 	return ..()
 
 /obj/item/container/food/dynamic/bread/update_icon()

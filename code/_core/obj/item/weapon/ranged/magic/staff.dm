@@ -74,7 +74,7 @@
 	value = 900
 
 
-/obj/item/weapon/ranged/magic/staff/chaos/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
+/obj/item/weapon/ranged/magic/staff/chaos/get_projectile_offset(var/bullet_num,var/accuracy)
 
 	var/num = bullet_num/bullet_count
 

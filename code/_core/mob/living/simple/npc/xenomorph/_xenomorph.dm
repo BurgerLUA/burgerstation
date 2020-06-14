@@ -12,8 +12,6 @@
 	loyalty_tag = "xeno"
 	iff_tag = "xeno"
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
-
 	armor_base = list(
 		BLADE = 50,
 		BLUNT = 50,
@@ -30,7 +28,7 @@
 		FATIGUE = 0
 	)
 
-	movement_delay = DECISECONDS_TO_TICKS(0.5)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	mob_size = MOB_SIZE_LARGE
 

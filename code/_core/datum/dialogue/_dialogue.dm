@@ -33,13 +33,13 @@
 /dialogue/proc/get_topic_string(var/mob/living/advanced/player/P,var/topic,var/list/dialogue_options)
 
 	if(!length(dialogue_options))
-		CRASH_SAFE("No dialogue options for [topic] for dialogue id of [id]!")
+		CRASH_SAFE("No dialogue options for [topic] for dialogue [type]!")
 		return null
 
 	var/list/chosen_dialogue = dialogue_options[topic]
 
 	if(!length(chosen_dialogue))
-		log_error("ERROR: [P] cannot access chosen topic [topic] for dialogue id of [id]!")
+		log_error("ERROR: [P] cannot access chosen topic [topic] for dialogue [type]!")
 		return FALSE
 
 	var/dialogue = chosen_dialogue[1]

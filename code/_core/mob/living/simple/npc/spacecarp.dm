@@ -32,6 +32,8 @@
 
 	mob_size = MOB_SIZE_LARGE
 
+	movement_delay = DECISECONDS_TO_TICKS(1.5)
+
 /mob/living/simple/npc/spacecarp/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

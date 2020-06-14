@@ -36,6 +36,9 @@
 
 	ai_heat_sensitivity = 0.75
 
+/obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_base_spread()
+	return 0.025
+
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_static_spread() //Base spread
 	return 0.002
 

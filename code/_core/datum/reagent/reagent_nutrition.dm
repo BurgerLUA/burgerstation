@@ -7,6 +7,7 @@
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
+	var/heal_factor = 0.5
 
 
 	value = 1
@@ -21,9 +22,9 @@
 		var/mob/living/L = container.owner.loc
 		. *= 0.5
 		if(nutrition_amount)
-			L.add_nutrition(nutrition_amount*.,FALSE)
+			L.add_nutrition(nutrition_amount*.*heal_factor,FALSE)
 		if(hydration_amount)
-			L.add_hydration(hydration_amount*.,FALSE)
+			L.add_hydration(hydration_amount*.*heal_factor,FALSE)
 
 
 	return .
@@ -34,9 +35,9 @@
 
 	var/mob/living/L = owner
 	if(nutrition_amount)
-		L.add_nutrition(nutrition_amount*.,FALSE)
+		L.add_nutrition(nutrition_amount*.*heal_factor,FALSE)
 	if(hydration_amount)
-		L.add_hydration(hydration_amount*.,FALSE)
+		L.add_hydration(hydration_amount*.*heal_factor,FALSE)
 
 	if(owner && owner.health)
 		owner.health.adjust_loss_smart(brute=-.*nutrition_amount,burn=-.*nutrition_amount,tox=-.*nutrition_amount,oxy=-.*nutrition_amount)

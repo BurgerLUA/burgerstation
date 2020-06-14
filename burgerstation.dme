@@ -821,7 +821,6 @@
 #include "code\_core\obj\item\clothing\uniform\stealth.dm"
 #include "code\_core\obj\item\clothing\uniform\suit.dm"
 #include "code\_core\obj\item\container\_container.dm"
-#include "code\_core\obj\item\container\cake_tin.dm"
 #include "code\_core\obj\item\container\cheese_mold.dm"
 #include "code\_core\obj\item\container\beaker\_beaker.dm"
 #include "code\_core\obj\item\container\beaker\bottle.dm"

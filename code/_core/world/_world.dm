@@ -34,6 +34,7 @@ var/global/world_state = STATE_STARTING
 	var/server_name = "Burgerstation 13"
 	var/server_link = "https://discord.gg/yEaV92a"
 	var/github_name = "Space Station 13 <b>FROM SCRATCH</b>"
+	var/description = "Newbie Friendly Persistent Action-Roleplay oriented MRP server made with fun in mind."
 
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
@@ -45,9 +46,10 @@ var/global/world_state = STATE_STARTING
 	var/map = "Biomes (255x255x3)"
 
 	//Format it.
-	status = "<a href='[server_link]'><b>[server_name]</b></a>] ([github_name])<br><br>"
+	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>"
+	status += "<i>[description]</i><br>"
 	status += "Map: <b>[map]</b><br>"
-	status += "Round Duration: <b>[duration]</b>"
+	status += "Time: <b>\[[duration]</b>"
 
 /*
 /world/Error(var/exception/e)

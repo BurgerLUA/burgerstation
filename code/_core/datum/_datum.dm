@@ -10,6 +10,9 @@
 	initialized = TRUE
 	return TRUE
 
+/datum/proc/PostInitialize()
+	return TRUE
+
 /datum/proc/Generate() //Generate the atom, giving it stuff if needed.
 	generated = TRUE
 	return TRUE

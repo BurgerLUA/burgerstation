@@ -31,6 +31,8 @@
 
 	mob_size = MOB_SIZE_LARGE
 
+	movement_delay = DECISECONDS_TO_TICKS(2)
+
 /mob/living/simple/npc/spider/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

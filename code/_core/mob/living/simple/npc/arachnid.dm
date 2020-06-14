@@ -32,7 +32,7 @@
 
 	health_base = 1000
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	status_immune = list(
 		STUN = TRUE,

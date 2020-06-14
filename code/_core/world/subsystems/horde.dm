@@ -68,12 +68,7 @@ SUBSYSTEM_DEF(horde)
 	return TRUE
 
 /subsystem/horde/proc/get_enemies_to_spawn()
-	if(length(tracked_enemies) > 50)
-		return 0
-	. = 10 + (current_round * 2.5)
-	. = min(.,50,length(all_players)*3)
-	. = max(.,10)
-	. -= length(tracked_enemies)
+	. = clamp(10 + current_round*2.5,10,40)
 	return FLOOR(.,1)
 
 /subsystem/horde/proc/check_hijack()

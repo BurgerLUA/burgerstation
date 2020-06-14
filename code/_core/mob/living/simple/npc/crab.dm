@@ -27,6 +27,8 @@
 
 	mob_size = MOB_SIZE_ANIMAL
 
+	movement_delay = DECISECONDS_TO_TICKS(2)
+
 /mob/living/simple/npc/crab/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"

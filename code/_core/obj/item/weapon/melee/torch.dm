@@ -98,8 +98,8 @@
 	override_icon_state_held = TRUE
 
 	desired_light_range = VIEW_RANGE
-	desired_light_power = 0.7
+	desired_light_power = 0.6
 	desired_light_color = "#FFF0C6"
-	desired_light_angle = LIGHT_WIDE
+	desired_light_angle = LIGHT_NARROW
 
 	value = 80

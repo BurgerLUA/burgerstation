@@ -35,16 +35,18 @@
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
 	if(is_item(object))
+		INTERACT_CHECK
 		var/obj/item/I = object
 		I.drop_item(get_turf(src))
+
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(ismob(object) && caller == object)
+		INTERACT_CHECK
 		var/mob/M = object
 		M.force_move(src)
 		start_thinking(src)

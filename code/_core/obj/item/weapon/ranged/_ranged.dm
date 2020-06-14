@@ -311,12 +311,14 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			target_fake_x += M.client.pixel_x
 			target_fake_y += M.client.pixel_y
 
+	var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,accuracy_loss)
+
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
-		var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,i,accuracy_loss)
+		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,get_base_spread())
 
-		var/new_x = xy_list[1]
-		var/new_y = xy_list[2]
+		var/new_x = local_xy_list[1]
+		var/new_y = local_xy_list[2]
 
 		var/highest = max(abs(new_x),abs(new_y))
 
@@ -337,9 +339,10 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_inaccuracy_modifer)
 
 
+/atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
+	return 0.01
 
-
-/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
+/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
 
 	//desired_x and desired_y is in pixels.
 
@@ -356,36 +359,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	return list(cos(new_angle),sin(new_angle))
 
-
-
-
-/*
-/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/bullet_num,var/accuracy)
-
-	//desired_x and desired_y is in pixels.
-
-	//This is where the caller is in the world.
-	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x
-	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y
-
-	//Distance.
-	var/diffx = desired_x - caller_fake_x
-	var/diffy = desired_y - caller_fake_y
-
-
-	var/distance = sqrt(diffx ** 2 + diffy ** 2)
-	var/inaccuracy_x = RAND_PRECISE(-distance*accuracy,distance*accuracy)
-	var/inaccuracy_y = RAND_PRECISE(-distance*accuracy,distance*accuracy)
-
-	diffx += inaccuracy_x
-	diffy += inaccuracy_y
-
-	var/highest = max(abs(diffx),abs(diffy))
-
-	if(highest > 0)
-		var/normx = diffx/highest
-		var/normy = diffy/highest
-		return list(normx,normy)
-
-	return list(0,0)
-*/
+/atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/accuracy)
+	var/new_angle = ATAN2(initial_offset_x,initial_offset_y)
+	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
+	return list(cos(new_angle),sin(new_angle))

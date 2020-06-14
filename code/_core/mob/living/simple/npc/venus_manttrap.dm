@@ -28,7 +28,7 @@
 	iff_tag = "jungle"
 	loyalty_tag = "jungle"
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	mob_size = MOB_SIZE_LARGE
 

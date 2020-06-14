@@ -111,14 +111,8 @@
 	return TRUE
 
 /obj/item/container/food/dynamic/cake/update_sprite()
-
 	if(reagents)
 		color = reagents.color
-
-	if(reagents.volume_current <= 0)
-		qdel(src)
-		return TRUE
-
 	return ..()
 
 
