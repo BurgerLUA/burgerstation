@@ -2,7 +2,7 @@
 	name = "\improper the legend"
 	enable_AI = TRUE
 	ai = /ai/advanced/daddy
-	class = "daddy"
+	class = /class/daddy/
 
 
 /mob/living/advanced/npc/daddy/setup_name()

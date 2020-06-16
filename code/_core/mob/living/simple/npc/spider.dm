@@ -7,7 +7,7 @@
 
 	ai = /ai/
 
-	class = "spider"
+	class = /class/spider
 
 	stun_angle = 0
 

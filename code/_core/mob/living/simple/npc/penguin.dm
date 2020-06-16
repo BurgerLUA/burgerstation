@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/passive.dmi'
 	icon_state = "penguin"
 	damage_type = /damagetype/unarmed/bite/
-	class = "crab"
+	class = /class/crab
 
 	armor_base = list(
 		BLADE = 0,

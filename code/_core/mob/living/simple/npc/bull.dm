@@ -9,7 +9,7 @@
 	health_base = 100
 
 	ai = /ai/
-	class = "bull"
+	class = /class/bull
 	damage_type = /damagetype/npc/bull
 
 	armor_base = list(

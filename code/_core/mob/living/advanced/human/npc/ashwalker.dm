@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/ashwalker
 	name = "ashwalker villager"
 	ai = /ai/advanced/
-	class = "ashwalker"
+	class = /class/ashwalker
 
 	species = "reptile"
 

@@ -2,7 +2,7 @@
 	name = "Merlin"
 	id = "merlin"
 	ai = /ai/advanced/ranged/
-	class = "wizard"
+	class = /class/wizard
 
 	force_spawn = TRUE
 	boss = TRUE

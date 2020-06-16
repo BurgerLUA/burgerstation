@@ -5,8 +5,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	target_distribution_y = list(4,4,4,16,32,32,32)
-
 	stationary = FALSE
 
 	var/mob/living/simple/npc/xenomorph/pack_leader/leader
@@ -62,6 +60,4 @@
 
 	objective_delay = 6
 	attack_delay = 1
-
-	target_distribution_y = list(4,4,4,16,32,32,32)
 

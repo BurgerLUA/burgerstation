@@ -18,8 +18,8 @@
 	var/objective_delay = 3
 	var/attack_delay = 0
 
-	var/list/target_distribution_x = list(0,16,16,16,32)
-	var/list/target_distribution_y = list(16,16,16,8,8,32,32)
+	var/list/target_distribution_x = list(8,16,16,16,24)
+	var/list/target_distribution_y = list(8,8,16,16,16,32,32)
 
 	var/turf/start_turf
 

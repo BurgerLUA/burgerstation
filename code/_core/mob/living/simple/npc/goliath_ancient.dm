@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath_ancient.dmi'
 	icon_state = "agoliath"
 	damage_type = /damagetype/unarmed/claw/
-	class = "ancient_goliath"
+	class = /class/goliath/ancient/
 
 	ai = /ai/goliath/ancient
 

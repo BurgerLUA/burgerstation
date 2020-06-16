@@ -1,5 +1,4 @@
 /class/npc/squats
-	id = "squats"
 
 	attributes = list(
 		ATTRIBUTE_STRENGTH = 30,

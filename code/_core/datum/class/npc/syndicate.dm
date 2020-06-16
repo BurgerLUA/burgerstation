@@ -1,7 +1,6 @@
 
 
-/class/syndicate
-	id = "syndicate"
+/class/syndicate_soldier
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

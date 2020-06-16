@@ -3,6 +3,20 @@
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
+	if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
+		if(isturf(object.loc))
+			if(is_living(object))
+				var/mob/living/L = object
+				if(!L.dead && !L.add_status_effect(GRAB, source = caller))
+					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
+					return TRUE
+			grab_object(caller,object,location,control,params)
+		else
+			return wield_object(caller,defer_object)
+
+	if(parent_inventory)
+		return TRUE
+
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
 		if(!M.anchored && M.can_rotate)
@@ -47,17 +61,6 @@
 
 	else if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
-
-	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
-		if(isturf(object.loc))
-			if(is_living(object))
-				var/mob/living/L = object
-				if(!L.dead && !L.add_status_effect(GRAB, source = caller))
-					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
-					return TRUE
-			grab_object(caller,object,location,control,params)
-		else
-			return wield_object(caller,defer_object)
 
 	if(defer_self == grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
@@ -135,6 +138,10 @@
 		return FALSE
 
 	var/obj/hud/inventory/holding = item_to_wield.loc
+
+	if(!(holding.click_flags & (LEFT_HAND | RIGHT_HAND)))
+		return FALSE
+
 	item_to_wield.wielded = !item_to_wield.wielded
 	src.parent_inventory = item_to_wield.wielded ? holding : null
 	holding.child_inventory = item_to_wield.wielded ? src : null

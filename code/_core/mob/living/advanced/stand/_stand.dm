@@ -19,7 +19,7 @@
 
 	ai = /ai/advanced/stand
 
-	class = "stand"
+	class = /class/stand
 
 	var/display_menacing = FALSE
 

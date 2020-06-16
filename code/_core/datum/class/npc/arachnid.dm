@@ -1,5 +1,4 @@
 /class/arachnid
-	id = "arachnid"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

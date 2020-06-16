@@ -1,5 +1,4 @@
 /class/goliath/ancient
-	id = "ancient_goliath"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

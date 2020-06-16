@@ -1,5 +1,4 @@
 /class/carp
-	id = "carp"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

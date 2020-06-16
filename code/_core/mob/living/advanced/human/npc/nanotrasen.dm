@@ -2,7 +2,7 @@
 	name = "nanotrasen security force"
 	enable_AI = TRUE
 	ai = /ai/advanced/nanotrasen
-	class = "syndicate"
+	class = /class/syndicate_soldier
 	dialogue_id = "soldier_dialogue"
 
 /mob/living/advanced/npc/nanotrasen/Initialize()

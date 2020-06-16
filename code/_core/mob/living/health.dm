@@ -81,8 +81,9 @@
 			offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
 			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,5),i++)
-				new /obj/effect/temp/blood/splatter(src.loc,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)
+			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
+				if(!create_blood(/obj/effect/blood/splatter,get_turf(src),blood_color,offset_x,offset_y))
+					break
 
 			blood_volume -= FLOOR(total_bleed_damage/5,1)
 

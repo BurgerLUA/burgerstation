@@ -1,8 +1,6 @@
 /ai/slime/
 	radius_find_enemy = 12
 
-	target_distribution_y = list(0,0,0,0,4,8)
-
 	objective_delay = 10
 	attack_delay = 1
 

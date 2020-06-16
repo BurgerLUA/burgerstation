@@ -4,7 +4,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
-	class = "default"
+	class = /class/player
 
 	var/dialogue_target_id
 	var/atom/dialogue_target

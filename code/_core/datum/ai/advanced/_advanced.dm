@@ -5,8 +5,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	target_distribution_y = list(0,8,8,16,16,16,32,32,32,32,64,64,64)
-
 	stationary = FALSE
 
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.

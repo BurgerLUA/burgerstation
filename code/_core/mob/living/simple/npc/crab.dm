@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/crab.dmi'
 	icon_state = "crab"
 	damage_type = /damagetype/npc/crab
-	class = "crab"
+	class = /class/crab
 
 	ai = /ai/
 
@@ -52,7 +52,7 @@
 
 	ai = /ai/
 
-	class = "crab_king"
+	class = /class/crab/king
 
 	object_size = 1
 

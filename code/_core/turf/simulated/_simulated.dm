@@ -38,6 +38,8 @@ var/global/saved_icons = 0
 	var/image/overlay/stored_water_overlay
 	var/water_reagent
 
+	var/blood_level = 0
+
 /turf/proc/is_occupied()
 
 	for(var/atom/movable/A in contents)

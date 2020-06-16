@@ -4,7 +4,7 @@
 	ai = null
 	move_mod = 1
 	species = "cyborg"
-	class = "passive"
+	class = /class/cyborg/
 	dialogue_id = "cyborg_assistant"
 	anchored = TRUE
 

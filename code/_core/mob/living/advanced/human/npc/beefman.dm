@@ -3,7 +3,7 @@
 	enable_AI = TRUE
 	ai = /ai/advanced/beef
 	species = "beefman"
-	class = "ashwalker"
+	class = /class/beefman
 	iff_tag = "beefman"
 	loyalty_tag = "beefman"
 
@@ -51,7 +51,7 @@
 	enable_AI = TRUE
 	ai = /ai/advanced/
 	species = "cyborg"
-	class = "ashwalker"
+	class = /class/cyborg
 
 /mob/living/advanced/npc/borgman/Initialize()
 

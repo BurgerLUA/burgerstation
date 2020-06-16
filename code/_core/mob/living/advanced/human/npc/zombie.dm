@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/zombie
 	name = "zombie"
 	ai = /ai/advanced/
-	class = "zombie"
+	class = /class/zombie/
 
 	species = "human"
 

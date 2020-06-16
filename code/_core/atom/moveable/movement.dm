@@ -14,6 +14,7 @@
 			final_move_dir = move_dir_last
 
 	if(final_move_dir && is_valid_dir(final_move_dir) && move_delay <= 0)
+
 		var/retrieved_movement_delay = get_movement_delay()
 
 		var/final_movement_delay = acceleration_mod ? retrieved_movement_delay + (acceleration_mod*retrieved_movement_delay*(1 - acceleration_value/100)) : retrieved_movement_delay
@@ -27,8 +28,7 @@
 			var/turf/T = desired_loc
 			final_movement_delay *= T.delay_modifier
 
-
-		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
+		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = move_delay ? step_size/move_delay : 1
 		if(use_momentum)
 			move_dir_last = final_move_dir

@@ -1,5 +1,4 @@
 /class/xenomorph
-	id = "xenomorph"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

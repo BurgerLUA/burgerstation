@@ -75,7 +75,7 @@
 		FATIGUE = INFINITY
 	)
 
-	class = "gygax"
+	class = /class/gygax/
 
 	health_base = 1500
 
@@ -113,8 +113,7 @@
 		FATIGUE = INFINITY
 	)
 
-	class = "durand"
-
+	class = /class/durand
 	health_base = 3000
 
 	movement_delay = DECISECONDS_TO_TICKS(4)

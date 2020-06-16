@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/jungle/venus_human_trap.dmi'
 	icon_state = "venus_human_trap"
 	damage_type = /damagetype/unarmed/claw/
-	class = "venus_human_trap"
+	class = /class/venus_human_trap
 
 	ai = /ai/
 

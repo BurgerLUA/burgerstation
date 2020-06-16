@@ -1,5 +1,4 @@
-/class/npc/default
-	id = "default"
+/class/default
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

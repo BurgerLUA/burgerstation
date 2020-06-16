@@ -2,7 +2,7 @@
 	name = "white chicken"
 	icon_state = "chicken_white"
 	damage_type = /damagetype/npc/chicken
-	class = "chicken"
+	class = /class/chicken
 
 	mob_size = MOB_SIZE_CRITTER
 

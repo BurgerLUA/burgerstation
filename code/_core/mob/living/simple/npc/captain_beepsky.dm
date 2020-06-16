@@ -11,7 +11,7 @@
 
 
 	ai = /ai/doorman
-	class = "beepsky"
+	class = /class/beepsky
 	damage_type = /damagetype/npc/captain_beepsky
 
 	iff_tag = "NanoTrasen"

@@ -1,6 +1,5 @@
 
 /class/ashwalker
-	id = "ashwalker"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

@@ -1,5 +1,4 @@
 /class/beepsky
-	id = "beepsky"
 
 	attributes = list(
 		ATTRIBUTE_STRENGTH = 35,

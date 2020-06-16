@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/dummy
 	name = "target practice dummy"
 	ai = null
-	class = "passive"
+	class = /class/dummy
 	species = "dummy"
 
 	immortal = TRUE

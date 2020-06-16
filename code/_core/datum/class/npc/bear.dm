@@ -1,5 +1,4 @@
 /class/bear
-	id = "bear"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

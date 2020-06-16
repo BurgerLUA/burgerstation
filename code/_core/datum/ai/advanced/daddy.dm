@@ -5,8 +5,6 @@
 	objective_delay = 5
 	attack_delay = 1
 
-	target_distribution_y = list(8,16,16,16,16,32,32,32)
-
 
 /ai/advanced/daddy/hostile_message()
 	owner.say("THE LEGEND NEVER DIES.")

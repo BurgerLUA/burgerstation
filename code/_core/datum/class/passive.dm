@@ -1,5 +1,4 @@
-/class/npc/passive
-	id = "passive"
+/class/passive
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

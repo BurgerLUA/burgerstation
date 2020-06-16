@@ -1,5 +1,4 @@
 /class/venus_human_trap
-	id = "venus_human_trap"
 
 	attributes = list(
 		ATTRIBUTE_STRENGTH = 25,

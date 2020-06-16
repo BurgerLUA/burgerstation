@@ -8,7 +8,7 @@
 
 	icon_state = "directional"
 
-	var/class = "default"
+	var/class = /class/default
 
 	var/enable_AI = FALSE
 	var/ai/ai

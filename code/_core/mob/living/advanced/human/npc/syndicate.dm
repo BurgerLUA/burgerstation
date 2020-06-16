@@ -2,7 +2,7 @@
 	name = "syndicate operative"
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate
-	class = "syndicate"
+	class = /class/syndicate_soldier
 
 	var/list/possible_outfits = list(
 		//"syndicate" = 100,

@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/simple/bears.dmi'
 	icon_state = "brown"
 	damage_type = /damagetype/unarmed/claw/
-	class = "bear"
+	class = /class/bear
 
 	ai = /ai/
 

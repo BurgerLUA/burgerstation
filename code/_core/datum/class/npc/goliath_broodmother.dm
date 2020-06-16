@@ -1,5 +1,4 @@
 /class/goliath/broodmother
-	id = "broodmother"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

@@ -1,5 +1,4 @@
-/class/mech/durand
-	id = "durand"
+/class/durand
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

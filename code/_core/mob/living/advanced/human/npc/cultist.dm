@@ -22,7 +22,7 @@
 /mob/living/advanced/npc/cultist01
 	name = "Nalagaf the Wicked"
 	ai = /ai/advanced/ranged/wizard
-	class = "wizard"
+	class = /class/wizard/
 
 
 /mob/living/advanced/npc/cultist01/Initialize()
