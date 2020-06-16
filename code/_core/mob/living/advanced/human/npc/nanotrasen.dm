@@ -26,6 +26,6 @@
 
 	update_all_blends()
 
-	equip_loadout("nanotrasen")
+	equip_loadout(/loadout/nanotrasen/soldier)
 
 	return .

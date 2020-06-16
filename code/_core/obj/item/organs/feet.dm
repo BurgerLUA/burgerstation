@@ -182,3 +182,29 @@
 
 	target_bounds_y_min = 1
 	target_bounds_y_max = 3
+
+
+//Skeleton
+/obj/item/organ/foot/skeleton
+	name = "right skeleton foot"
+
+	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+
+	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+/obj/item/organ/foot/skeleton/left
+	name = "left skeleton foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3

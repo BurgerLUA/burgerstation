@@ -8,9 +8,5 @@ SUBSYSTEM_DEF(loadouts)
 /subsystem/loadouts/Initialize()
 	for(var/v in subtypesof(/loadout/))
 		var/loadout/O = new v
-		if(O.id)
-			all_loadouts[O.id] = O
-		else
-			qdel(O)
-
+		all_loadouts[O.type] = O
 	log_subsystem(name,"Initialized [length(all_loadouts)] outfits.")

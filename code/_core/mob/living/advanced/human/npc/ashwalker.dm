@@ -5,7 +5,7 @@
 
 	species = "reptile"
 
-	var/loadout_to_use = "ashwalker"
+	var/loadout_to_use = /loadout/ashwalker/
 	var/shield_chance = 0
 	var/spear_chance = 25
 
@@ -59,6 +59,6 @@
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
 	level_multiplier = 1.5
-	loadout_to_use = "ashwalker_warrior"
+	loadout_to_use = /loadout/ashwalker/warrior
 	spear_chance = 100
 	shield_chance = 50

@@ -11,7 +11,7 @@
 	change_organ_visual("skin", desired_color = "#8CA73E")
 	change_organ_visual("hair_head", desired_color = "#fff0be", desired_icon_state = "frills")
 	update_all_blends()
-	equip_loadout("marwani_outfit")
+	equip_loadout(/loadout/marwani)
 	return .
 
 /mob/living/advanced/npc/unique/marwani/ship

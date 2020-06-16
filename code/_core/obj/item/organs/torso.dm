@@ -87,3 +87,9 @@
 	name = "beefman torso"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	desc = "An organ."
+
+
+/obj/item/organ/torso/skeleton
+	name = "skeleton torso"
+	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+	desc = "An organ."

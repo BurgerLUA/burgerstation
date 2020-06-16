@@ -14,5 +14,5 @@
 	change_organ_visual("eyes", desired_color = "#F2F200")
 	change_organ_visual("hair_head", desired_color = "#779922", desired_icon_state = "frills_short")
 	update_all_blends()
-	equip_loadout("shaleez_outfit")
+	equip_loadout(/loadout/shaleez)
 	return .

@@ -2,10 +2,7 @@
 
 	Initialize()
 	default_appearance()
-	if(sex == MALE)
-		equip_loadout("new_male",TRUE)
-	else
-		equip_loadout("new_female",TRUE)
+	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)
 
 	nutrition *= RAND_PRECISE(0.5,0.75)
@@ -131,10 +128,8 @@
 	if(length(kept_items))
 		equip_objects_in_list(kept_items)
 	else
-		if(sex == MALE)
-			equip_loadout("new_male",TRUE)
-		else
-			equip_loadout("new_female",TRUE)
+		equip_loadout(/loadout/new_player,TRUE)
+
 
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
 		B.update_sprite()

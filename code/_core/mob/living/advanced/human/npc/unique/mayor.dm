@@ -14,5 +14,5 @@
 	change_organ_visual("skin_detail", desired_color = "#719333")
 	change_organ_visual("skin_glow", desired_color = "#B2F861")
 	update_all_blends()
-	equip_loadout("diamond_outfit")
+	equip_loadout(/loadout/diamond_with_flaw)
 	return .

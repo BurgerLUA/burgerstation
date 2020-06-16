@@ -35,6 +35,6 @@
 
 	. = ..()
 
-	equip_loadout("dummy_armor")
+	equip_loadout(/loadout/dummy)
 
 	return .

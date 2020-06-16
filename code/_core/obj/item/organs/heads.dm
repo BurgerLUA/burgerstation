@@ -90,3 +90,10 @@
 	name = "beef head"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	desc = "An organ."
+
+
+//skeleton
+/obj/item/organ/head/skeleton
+	name = "skeleton head"
+	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+	desc = "An organ."

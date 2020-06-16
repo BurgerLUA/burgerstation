@@ -13,7 +13,7 @@
 
 	. = ..()
 
-	equip_loadout("daddy")
+	equip_loadout(/loadout/daddy)
 
 	var/obj/item/weapon/melee/zweihander/W = new(src.loc)
 	INITIALIZE(W)

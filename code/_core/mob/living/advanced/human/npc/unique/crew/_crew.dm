@@ -23,6 +23,6 @@
 	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
 	change_organ_visual("hair_head", desired_color = "#FFFFFF", desired_icon_state = "none")
 	update_all_blends()
-	equip_loadout("bartender")
+	equip_loadout(/loadout/bartender)
 
 	return .

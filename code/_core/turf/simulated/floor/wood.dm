@@ -19,8 +19,7 @@
 
 
 /turf/simulated/floor/wood/boat
-	color = "#423022"
-	desired_light_color = "#423022"
+	color = "#59402E"
 
 /turf/simulated/floor/wood/boat/starting
 	color = "#724C34"

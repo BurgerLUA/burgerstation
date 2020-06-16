@@ -6,7 +6,7 @@
 	species = "human"
 
 
-	var/loadout_to_use = "zombie"
+	var/loadout_to_use = /loadout/zombie
 	var/spear_chance = 0
 
 
@@ -36,11 +36,11 @@
 
 
 /mob/living/advanced/npc/zombie/winter
-	loadout_to_use = "zombie_winter"
+	loadout_to_use = /loadout/zombie/winter
 	spear_chance = 100
 	level_multiplier = 1.5
 
 /mob/living/advanced/npc/zombie/desert
-	loadout_to_use = "zombie_desert"
+	loadout_to_use = /loadout/zombie/desert
 	spear_chance = 0
 	level_multiplier = 2

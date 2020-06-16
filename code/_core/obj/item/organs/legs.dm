@@ -141,3 +141,23 @@
 
 	target_bounds_y_min = 4
 	target_bounds_y_max = 8
+
+
+//Cyborg
+/obj/item/organ/leg/skeleton
+	name = "right skeleton leg"
+	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+
+
+/obj/item/organ/leg/skeleton/left
+	name = "left skeleton leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8

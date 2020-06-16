@@ -35,7 +35,6 @@
 
 /obj/item/clothing/hands/gloves/engineering/left
 	name = "left engineering glove"
-	color = "#FFFF00"
 
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"

@@ -30,12 +30,7 @@ obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,objec
 	if(length(A.worn_objects))
 		return TRUE
 
-	if(A.sex == MALE)
-		A.equip_loadout("new_male",TRUE)
-	else
-		A.equip_loadout("new_female",TRUE)
-
-	A.equip_loadout("assistant",TRUE)
+	A.equip_loadout(/loadout/new_player,TRUE)
 
 
 	return TRUE

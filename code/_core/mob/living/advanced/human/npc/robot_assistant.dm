@@ -19,13 +19,13 @@
 
 /mob/living/advanced/npc/cyborg_assistant/bartender/Initialize()
 	. = ..()
-	equip_loadout("bartender")
+	equip_loadout(/loadout/cyborg_assistant/bartender)
 	return .
 
 
 /mob/living/advanced/npc/cyborg_assistant/help_desk/Initialize()
 	. = ..()
-	equip_loadout("help_desk")
+	equip_loadout(/loadout/cyborg_assistant/help_desk)
 	return .
 
 

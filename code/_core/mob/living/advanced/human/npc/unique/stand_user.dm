@@ -11,7 +11,7 @@
 	change_organ_visual("skin", desired_color = "#B48E7A")
 	change_organ_visual("hair_head", desired_color = "#634933", desired_icon_state = "hair_long")
 	update_all_blends()
-	equip_loadout("hop_outfit")
+	equip_loadout(/loadout/hop)
 
 	stand = new(src)
 	stand.generate()
