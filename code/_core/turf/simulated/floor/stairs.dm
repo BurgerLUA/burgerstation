@@ -11,7 +11,7 @@
 	color = "#A05120"
 
 /turf/simulated/floor/stair/wood/dock
-	color = "#494E14"
+	color = "#7F604B"
 
 /turf/simulated/floor/stair/cult
 	color = "#33241B"

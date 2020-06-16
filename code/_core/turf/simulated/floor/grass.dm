@@ -2,12 +2,14 @@
 	name = "colored floor"
 
 	icon = 'icons/turf/floor/icons.dmi'
-	icon_state = "colored"
+	icon_state = "grass_new"
 
 	real_icon = 'icons/turf/floor/grass_new.dmi'
 	real_icon_state = "floor"
 	corner_icons = TRUE
 
+/turf/simulated/floor/grass/jungle
+	color = "#969696"
 
 /turf/simulated/floor/grass/smooth_turfs()
 
