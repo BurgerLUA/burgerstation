@@ -4,7 +4,7 @@
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "xenomorph"
 
-	real_icon = 'icons/turf/floor/resin_01.dmi'
+	real_icon = 'icons/turf/floor/resin_1.dmi'
 	real_icon_state = "floor"
 
 	corner_icons = TRUE
@@ -18,11 +18,11 @@
 
 /turf/simulated/floor/xenomorph/New(var/desired_loc)
 
-	if(prob(10))
-		real_icon = 'icons/turf/floor/resin_04.dmi'
+	if(prob(5))
+		real_icon = 'icons/turf/floor/resin_4.dmi'
 		glow = TRUE
 	else
-		real_icon = pick('icons/turf/floor/resin_01.dmi','icons/turf/floor/resin_02.dmi','icons/turf/floor/resin_03.dmi')
+		real_icon = pick('icons/turf/floor/resin_1.dmi','icons/turf/floor/resin_2.dmi','icons/turf/floor/resin_3.dmi')
 
 	return ..()
 

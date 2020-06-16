@@ -1,5 +1,5 @@
 /ai/advanced/syndicate
-	enemy_tags = list("NanoTrasen")
+	enemy_tags = list("NanoTrasen","Skeleton")
 	should_find_weapon = TRUE
 	debug = TRUE
 

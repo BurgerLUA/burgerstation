@@ -28,6 +28,7 @@
 
 	priority = 40
 
+/*
 /obj/hud/inventory/organs/groin/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
@@ -48,3 +49,4 @@
 			return FALSE
 
 	return TRUE
+*/

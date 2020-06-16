@@ -44,7 +44,7 @@
 
 /obj/item/firing_pin/electronic/iff/nanotrasen
 	name = "electronic nanotrasen firing pin"
-	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. Also has a safety feature to prevent accidental discharge on the NSS Eos."
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one."
 	iff_tag = "NanoTrasen"
 	icon_state = "nanotrasen"
 
@@ -64,6 +64,13 @@
 
 /obj/item/firing_pin/electronic/iff/syndicate
 	name = "syndicate firing pin"
-	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. Also has a safety feature to prevent accidental discharge on the NSS Eos."
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Syndicate IFF implant, and prevents firing at those with one."
 	iff_tag = "Syndicate"
 	icon_state = "syndicate"
+
+
+/obj/item/firing_pin/electronic/iff/bone
+	name = "bone firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Bone IFF implant, and prevents firing at those with one."
+	iff_tag = "Skeleton"
+	icon_state = "bone"

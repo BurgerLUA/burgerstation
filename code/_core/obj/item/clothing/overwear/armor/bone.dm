@@ -1,7 +1,7 @@
 /obj/item/clothing/overwear/armor/bone_armor
 	name = "bone armor"
 	icon = 'icons/obj/items/clothing/suit/bone_armor.dmi'
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	item_slot = SLOT_TORSO_A
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_RARE
 
@@ -20,3 +20,5 @@
 	weight = WEIGHT_4
 
 	value = 500
+
+	blocks_clothing = SLOT_TORSO_A

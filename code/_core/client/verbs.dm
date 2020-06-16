@@ -65,6 +65,7 @@
 		var/mob/living/advanced/npc/syndicate/map/M = new(T)
 		M.dir = mob.dir
 		INITIALIZE(M)
+		M.ai.enabled = TRUE
 
 
 

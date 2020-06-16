@@ -12,7 +12,7 @@
 	priority = 100
 
 /obj/hud/inventory/organs/torso_o
-	name = "coat slot"
+	name = "armor slot"
 	icon_state = "slot_torso_o"
 	id = BODY_TORSO_O
 	screen_loc = "LEFT,BOTTOM+2"

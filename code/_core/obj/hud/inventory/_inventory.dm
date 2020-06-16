@@ -298,11 +298,13 @@
 
 	var/mob/living/advanced/A = owner
 
+	/*
 	for(var/obj/item/C in A.worn_objects)
 		if(C.item_slot & I.item_slot && (!C.ignore_other_slots && !I.ignore_other_slots))
 			if(messages)
 				A.to_chat(span("notice","\The [C.name] prevents you from wearing \the [I.name]!"))
 			return FALSE
+	*/
 
 	var/atom/old_location = I.loc
 
