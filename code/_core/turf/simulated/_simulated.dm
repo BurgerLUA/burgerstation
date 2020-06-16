@@ -105,8 +105,7 @@ var/global/saved_icons = 0
 	update_sprite()
 	return .
 
-
-/turf/simulated/proc/smooth_turfs()
+/turf/simulated/proc/get_smooth_code()
 
 	var/list/calc_list = list()
 
@@ -161,14 +160,17 @@ var/global/saved_icons = 0
 	if(!se) se = "i"
 	if(!sw) sw = "i"
 
-	/*
-	if(opacity && "[nw][ne][sw][se]" == "ffff")
-		dynamic_lighting = FALSE
-		icon = 'icons/debug/turfs.dmi'
-		icon_state = "black"
-		plane = PLANE_ALWAYS_VISIBLE
-		return FALSE
-	*/
+	return list(ne,nw,se,sw)
+
+
+/turf/simulated/proc/smooth_turfs()
+
+	var/list/smooth_code = get_smooth_code()
+
+	var/ne = smooth_code[1]
+	var/nw = smooth_code[2]
+	var/se = smooth_code[3]
+	var/sw = smooth_code[4]
 
 	var/full_icon_string = "[icon]_[ne][nw][se][sw]"
 

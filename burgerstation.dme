@@ -1175,6 +1175,7 @@
 #include "code\_core\turf\simulated\floor\cult.dm"
 #include "code\_core\turf\simulated\floor\diona.dm"
 #include "code\_core\turf\simulated\floor\dirt.dm"
+#include "code\_core\turf\simulated\floor\grass.dm"
 #include "code\_core\turf\simulated\floor\icing.dm"
 #include "code\_core\turf\simulated\floor\lava.dm"
 #include "code\_core\turf\simulated\floor\plating.dm"

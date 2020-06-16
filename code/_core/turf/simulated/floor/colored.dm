@@ -5,7 +5,7 @@
 	icon_state = "colored"
 
 	real_icon = 'icons/turf/floor/ground.dmi'
-	real_icon_state = "floor"
+	real_icon_state = "grass"
 	corner_icons = TRUE
 
 /turf/simulated/floor/colored/snow
