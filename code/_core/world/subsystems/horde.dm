@@ -234,9 +234,11 @@ SUBSYSTEM_DEF(horde)
 
 	var/desired_spawn_objectives = min(3,length(possible_objective_spawns))
 	var/desired_kill_objectives = min(3,length(SSbosses.tracked_bosses))
+	var/desired_rescue_objectives = min(2,length(possible_hostage_spawns),length(possible_hostage_types))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
 	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")
+	LOG_DEBUG("Making [desired_rescue_objectives] rescue objectives.")
 
 	for(var/i=1,i<=desired_spawn_objectives,i++)
 		var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
@@ -246,6 +248,16 @@ SUBSYSTEM_DEF(horde)
 		INITIALIZE(O)
 		GENERATE(O)
 		tracked_objectives += O
+
+	for(var/i=1,i<=desired_rescue_objectives, i++)
+		var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
+		possible_hostage_spawns -= S
+		var/mob/living/advanced/npc/unique/hostage/L = pick(possible_hostage_types)
+		possible_hostage_types -= L
+		L = new L(get_turf(S))
+		INITIALIZE(L)
+		L.set_handcuffs(TRUE)
+		tracked_objectives += L
 
 	var/list/valid_boss_ids = list()
 
@@ -260,6 +272,7 @@ SUBSYSTEM_DEF(horde)
 		tracked_objectives += L
 
 	spawned_objectives = length(tracked_objectives)
+
 	objectives_spawned = TRUE
 
 	return TRUE
@@ -273,6 +286,8 @@ SUBSYSTEM_DEF(horde)
 	if(!objectives_spawned)
 		spawn_objectives()
 
+	var/additional_text = ""
+
 	var/objective_text = ""
 	for(var/atom/A in tracked_objectives)
 		if(isobj(A))
@@ -283,10 +298,22 @@ SUBSYSTEM_DEF(horde)
 				tracked_objectives -= O
 		else if(is_living(A))
 			var/mob/living/L = A
-			objective_text += "Kill \the [L.name]. \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
-			if(L.dead)
-				completed_objectives++
-				tracked_objectives -= L
+			if(istype(L,/mob/living/advanced/npc/unique/hostage/))
+				var/mob/living/advanced/npc/unique/hostage/H = L
+				objective_text += "Rescue \the [L.name]. \[<b>[!H.hostage ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+				if(!H.hostage)
+					if(H.dead)
+						additional_text += "It appears that [H.name] was brought back dead. The crew will not be receiving a bonus for this tragedy.<br>"
+					else
+						additional_text += "As [H.name] was brought back in one piece, the crew will be receiving a bonus of 3000 credits.<br>"
+						SSpayday.stored_payday += 3000
+					completed_objectives++
+					tracked_objectives -= L
+			else
+				objective_text += "Kill \the [L.name]. \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+				if(L.dead)
+					completed_objectives++
+					tracked_objectives -= L
 
 	last_update = objective_text
 
@@ -294,6 +321,10 @@ SUBSYSTEM_DEF(horde)
 		B.set_stored_text(last_update)
 		if(B.owner)
 			B.owner.to_chat(span("notice","Your objectives have been updated!"))
+
+	if(additional_text)
+		objective_text = "[objective_text]<br>[additional_text]"
+
 
 	announce(
 		"Central Command Update",

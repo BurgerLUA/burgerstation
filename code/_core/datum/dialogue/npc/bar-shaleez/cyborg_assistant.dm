@@ -1,7 +1,6 @@
-/dialogue/npc/cyborg_assistant/
-	id = "cyborg_assistant"
+/dialogue/tutorial/front_desk
 
-/dialogue/npc/cyborg_assistant/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/tutorial/front_desk/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	var/list/dialogue_options = list()
 

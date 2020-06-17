@@ -1,5 +1,4 @@
 /dialogue/npc/hop/
-	id = "hop"
 
 /dialogue/npc/hop/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 

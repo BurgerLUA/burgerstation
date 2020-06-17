@@ -13,7 +13,7 @@
 	species = "human"
 	gender = FEMALE
 	sex = FEMALE
-	dialogue_id = "bartender_dialogue"
+	dialogue_id = /dialogue/tutorial/front_desk
 	dir = SOUTH
 
 /mob/living/advanced/npc/unique/crew/front_desk/Initialize()

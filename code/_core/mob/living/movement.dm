@@ -55,11 +55,12 @@
 	if(dead)
 		return FALSE
 
-	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
+	if(grabbing_hand)
+		if(move_dir && client)
+			resist()
 		return FALSE
 
-	if(grabbing_hand && move_dir)
-		resist()
+	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
 		return FALSE
 
 	if(has_status_effect(CONFUSED))

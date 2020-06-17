@@ -7,6 +7,9 @@
 	var/list/hooks
 
 /datum/proc/Initialize()
+	if(initialized)
+		CRASH_SAFE("WARNING: [src.get_debug_name()] was initialized twice!")
+		return TRUE
 	initialized = TRUE
 	return TRUE
 

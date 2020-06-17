@@ -80,6 +80,8 @@
 
 	var/stored_sneak_power = 0
 
+	var/resist_grabs = TRUE
+
 	var/retaliate = TRUE //Should we attack when getting hit?
 	var/aggression = 2 //Thanks elder scrolls.
 	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
@@ -444,6 +446,10 @@
 
 /ai/proc/handle_objectives()
 
+	if(resist_grabs && owner.grabbing_hand)
+		owner.resist()
+		return TRUE
+
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE
 
@@ -501,6 +507,11 @@
 
 	if(!L.can_be_attacked(owner))
 		return FALSE
+
+	if(is_advanced(L) && !L.client)
+		var/mob/living/advanced/A = L
+		if(A.handcuffed) //Don't target hostages.
+			return FALSE
 
 	return TRUE
 

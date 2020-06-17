@@ -6,7 +6,7 @@ obj/structure/interactive/objective
 	anchored = FALSE
 	collision_flags = FLAG_COLLISION_WALL
 
-	value = 5000
+	value = 1000
 
 	bullet_block_chance = 75
 

@@ -1,5 +1,4 @@
 /dialogue/npc/diamond/
-	id = "diamond_dialogue"
 
 /dialogue/npc/diamond/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 

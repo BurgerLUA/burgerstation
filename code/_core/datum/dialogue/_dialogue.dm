@@ -2,8 +2,6 @@
 //NameOfTopic_"Dialogue #1 #2 #3"_Link1Topic_Link2Topic_Link3Topic
 
 /dialogue/
-	var/id = null
-	//* means hidden
 
 /dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 	var/list/dialogue_options = list()

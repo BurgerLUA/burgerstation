@@ -43,6 +43,7 @@ obj/structure/interactive/misc/toilet
 obj/structure/interactive/misc/urinal
 	name = "urinal"
 	icon_state = "urinal"
+	plane = PLANE_WALL_ATTACHMENTS
 
 
 
@@ -53,6 +54,7 @@ obj/structure/interactive/misc/shower
 obj/structure/interactive/misc/mirror
 	name = "mirror"
 	icon_state = "mirror"
+	plane = PLANE_WALL_ATTACHMENTS
 
 
 obj/structure/interactive/misc/mirror/chargen/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
@@ -81,3 +83,4 @@ obj/structure/interactive/misc/curtain_open
 obj/structure/interactive/misc/sink
 	name = "sink"
 	icon_state = "sink"
+	plane = PLANE_WALL_ATTACHMENTS

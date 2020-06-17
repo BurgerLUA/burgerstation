@@ -1,27 +1,19 @@
-/dialogue/npc/soldier/
-
-/dialogue/npc/soldier/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/hostage/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	. = list()
 
-	.["hello"] = list(
-		"Reporting for duty.",
-		"*wait here",
-		"*follow me"
-	)
-
 	.["*wait here"] = list(
-		"Waiting here."
+		"I will wait here."
 	)
 
 	.["*follow me"] = list(
-		"Following."
+		"I will follow."
 	)
 
 	return .
 
 
-/dialogue/npc/soldier/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()
 

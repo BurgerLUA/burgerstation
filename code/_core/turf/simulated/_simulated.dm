@@ -86,7 +86,6 @@ var/global/saved_icons = 0
 	change_turf(destruction_turf,)
 
 	queue_update_turf_edges(src)
-	Initialize()
 
 	return ..()
 
@@ -172,7 +171,9 @@ var/global/saved_icons = 0
 	var/se = smooth_code[3]
 	var/sw = smooth_code[4]
 
-	var/full_icon_string = "[icon]_[ne][nw][se][sw]"
+	var/full_icon_string = "[type]_[icon_state]_[ne][nw][se][sw]"
+
+	desc = full_icon_string
 
 	var/icon/I
 

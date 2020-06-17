@@ -1,3 +1,6 @@
+//Loads your character instantly at a marker point.
+#define ENABLE_INSTALOAD FALSE
+
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 55
@@ -50,9 +53,6 @@
 #define WEATHER_REMOVE_CHANCE 10
 
 #define BYPASS_AREA_NO_DAMAGE TRUE
-
-//Basically debug mode
-#define ENABLE_INSTALOAD FALSE
 
 //Makes compiling faster. FALSE means disabled
 

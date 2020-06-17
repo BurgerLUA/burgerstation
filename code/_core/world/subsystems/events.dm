@@ -1,6 +1,4 @@
-var/global/list/all_events = list()
-var/global/list/all_events_prob = list()
-var/global/list/all_events_active = list()
+
 
 SUBSYSTEM_DEF(events)
 	name = "Event Subsystem"
@@ -8,18 +6,18 @@ SUBSYSTEM_DEF(events)
 	priority = SS_ORDER_NORMAL
 	tick_rate = SECONDS_TO_TICKS(1)
 
+	var/list/all_events = list()
+	var/list/all_events_prob = list()
+	var/list/all_events_active = list()
+
 	var/ticks_unit_trigger = 300
 
 /subsystem/events/Initialize()
 
 	for(var/k in subtypesof(/event/))
-		var/event/E = k
-		var/E_id = initial(E.id)
-		if(!E_id)
-			continue
-		E = new k
-		all_events[E.id] = E
-		all_events_prob[E.id] = E.probability
+		var/event/E = new k
+		all_events[E.type] = E
+		all_events_prob[E.type] = E.probability
 
 /subsystem/events/on_life()
 
@@ -38,7 +36,7 @@ SUBSYSTEM_DEF(events)
 
 	return TRUE
 
-/proc/trigger_random_event()
+/subsystem/events/proc/trigger_random_event()
 	var/event_id = pickweight(all_events_prob)
 
 	if(!event_id)

@@ -1,5 +1,4 @@
 /dialogue/npc/marwani/tutorial
-	id = "marwani_tutorial_dialogue"
 
 /dialogue/npc/marwani/tutorial/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 

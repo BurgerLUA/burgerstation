@@ -3,7 +3,7 @@
 	enable_AI = TRUE
 	ai = /ai/advanced/nanotrasen
 	class = /class/syndicate_soldier
-	dialogue_id = "soldier_dialogue"
+	dialogue_id = /dialogue/npc/soldier/
 
 /mob/living/advanced/npc/nanotrasen/Initialize()
 
