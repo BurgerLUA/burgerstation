@@ -18,3 +18,6 @@ obj/structure/interactive/fence/post
 
 obj/structure/interactive/fence/corner
 	icon_state = "corner"
+
+obj/structure/interactive/fence/door
+	icon_state = "door_opened"

@@ -86,6 +86,10 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
+	var/image/overlay/handcuffs_overlay
+	var/handcuffed = FALSE
+	var/handcuff_break_counter = 0
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

@@ -59,8 +59,7 @@
 		return FALSE
 
 	if(grabbing_hand && move_dir)
-		if(can_resist(FALSE))
-			resist()
+		resist()
 		return FALSE
 
 	if(has_status_effect(CONFUSED))

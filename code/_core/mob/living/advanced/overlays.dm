@@ -23,11 +23,20 @@ mob/living/advanced/proc/show_overlay(var/image/overlay/O,var/show=TRUE)
 	return TRUE
 
 mob/living/advanced/proc/remove_overlay(var/atom/A)
+	/*
 	for(var/image/overlay/O in overlays_assoc)
 		if(O.attached_object != A)
 			continue
 		remove_overlay_image(O)
 		qdel(O)
+	*/
+	var/image/overlay/O = overlays_assoc_atom[A]
+	if(O)
+		remove_overlay_image(O)
+		qdel(O)
+		return TRUE
+
+	return FALSE
 
 mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0)
 
