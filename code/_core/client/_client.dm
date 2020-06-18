@@ -143,6 +143,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	update_zoom(-1)
 
+	if(SSadmin.initialized)
+		sync_permissions()
+
 	var/mob/found_mob = null
 	for(var/mob/M in all_mobs)
 		if(M.ckey_last == ckey)
@@ -163,22 +166,22 @@ var/global/list/all_clients = list() //Assoc list
 	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()
 
-	if(SSadmin.initialized)
-		sync_permissions()
-
 	return mob
 
 /client/proc/sync_permissions()
 
-	var/rank/R = SSadmin.stored_ranks["USER"]
+	var/rank/R = SSadmin.stored_ranks["user"]
+
+	if(src.address == null)
+		R = SSadmin.stored_ranks["Host"]
 
 	var/lower_ckey = lowertext(ckey)
 
 	if(SSadmin.stored_user_ranks[lower_ckey])
-		R = SSadmin.stored_ranks[SSadmin.stored_user_ranks[lower_ckey]]
-		to_chat("Setting your rank to [R].")
+		R = SSadmin.stored_user_ranks[lower_ckey]
+		to_chat("Setting your rank to [R.name].")
 	else
-		log_error("WARNING: Valid rank does not exist for [src]!")
+		log_error("WARNING: Valid rank does not exist for [lower_ckey]!")
 
 	permissions = R.permissions
 	to_chat("Welcome, [R.name] [src]!")

@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(admin)
 
 	for(var/k in subtypesof(/rank/))
 		var/rank/R = new k
-		stored_ranks[R.id] = R
+		stored_ranks[lowertext(R.id)] = R
 	log_subsystem(src.name,"Loaded [length(stored_ranks)] different ranks.")
 
 	var/file_text = file2text(RANK_DIR)
@@ -23,8 +23,8 @@ SUBSYSTEM_DEF(admin)
 		if(length(split_line) < 2)
 			log_error("Invalid rank format for [RANK_DIR] on line [line_count]: [line]")
 			continue
-		var/ckey = split_line[1]
-		var/rank = split_line[2]
+		var/ckey = lowertext(split_line[1])
+		var/rank = lowertext(split_line[2])
 		if(!stored_ranks[rank])
 			log_error("Rank [rank] not found for [RANK_DIR] on line [line_count]!")
 			continue

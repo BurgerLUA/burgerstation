@@ -74,5 +74,5 @@
 
 /client/verb/rtv()
 	set name = "Rock the Vote"
-	set category = "Cheat"
+	set category = "Admin"
 	SShorde.round_time = 1000000
