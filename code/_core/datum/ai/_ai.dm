@@ -8,8 +8,8 @@
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
 
-	var/radius_find_enemy = VIEW_RANGE
-	var/radius_find_enemy_alert = VIEW_RANGE + ZOOM_RANGE
+	var/radius_find_enemy = AI_DETECTION_RANGE
+	var/radius_find_enemy_alert = AI_DETECTION_RANGE_COMBAT
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -153,6 +153,15 @@
 
 	if(!isturf(owner.loc))
 		return FALSE
+
+	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && prob(10))
+		owner.resist()
+		return FALSE
+
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.handcuffed && owner.next_resist <= world.time)
+			owner.resist()
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
@@ -446,10 +455,6 @@
 
 /ai/proc/handle_objectives()
 
-	if(resist_grabs && owner.grabbing_hand)
-		owner.resist()
-		return TRUE
-
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE
 
@@ -585,7 +590,8 @@
 	if(!attackers[attacker])
 		attackers[attacker] = TRUE
 
-	set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+	if(!stealthy)
+		set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
 
 	return TRUE
 

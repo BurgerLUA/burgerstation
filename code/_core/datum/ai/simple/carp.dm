@@ -1,7 +1,5 @@
 /ai/carp
 
-	radius_find_enemy = 12
-
 	objective_delay = 10
 	attack_delay = 1
 

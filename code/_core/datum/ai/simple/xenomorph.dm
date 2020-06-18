@@ -1,7 +1,5 @@
 /ai/xenomorph //Space carp clone
 
-	radius_find_enemy = VIEW_RANGE
-
 	objective_delay = 10
 	attack_delay = 1
 
@@ -49,14 +47,10 @@
 
 /ai/xenomorph/pack_leader
 
-	radius_find_enemy = VIEW_RANGE * 2
-
 	objective_delay = 10
 	attack_delay = 1
 
 /ai/xenomorph_queen
-
-	radius_find_enemy = VIEW_RANGE * 2
 
 	objective_delay = 6
 	attack_delay = 1

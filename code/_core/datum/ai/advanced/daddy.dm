@@ -1,7 +1,5 @@
 /ai/advanced/daddy
 
-	radius_find_enemy = VIEW_RANGE*2
-
 	objective_delay = 5
 	attack_delay = 1
 

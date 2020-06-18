@@ -9,6 +9,7 @@
 
 	color = COLOR_STEEL
 	material_id = /material/steel
+	health_base = 1000
 
 /turf/simulated/wall/metal/on_destruction(var/atom/caller,var/damage = FALSE)
 
@@ -38,6 +39,7 @@
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
 	reinforced_color = COLOR_PLASTEEL
+	health_base = 3000
 
 /turf/simulated/wall/metal/reinforced/hull
 	name = "adamantium-carbon reinforced plasteel wall"

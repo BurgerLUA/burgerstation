@@ -38,7 +38,7 @@
 	name = "\improper 7.62x39mm Soviet rifle bullet"
 	desc = "For soviet rifles that require 7.62x39mm"
 	icon = 'icons/obj/items/bullet/762_short.dmi'
-	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/short
 
 	bullet_length = 39
 

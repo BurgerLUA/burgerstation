@@ -493,6 +493,11 @@
 	if(!I.can_be_held(owner,src))
 		return FALSE
 
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.handcuffed)
+			return FALSE
+
 	if(parent_inventory)
 		return FALSE
 

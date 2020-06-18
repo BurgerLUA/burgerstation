@@ -8,6 +8,10 @@
 		if(messages) to_chat(span("warning","You're too exhausted to resist!"))
 		return FALSE
 
+	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN)))
+		if(messages) to_chat(span("warning","You can't resist in this state!"))
+		return FALSE
+
 	return TRUE
 
 /mob/living/proc/resist()
@@ -45,7 +49,7 @@
 
 	if(. && handcuffed)
 
-		var/counter_to_add = src.get_attribute_power(ATTRIBUTE_STRENGTH)*50
+		var/counter_to_add = src.get_attribute_power(ATTRIBUTE_STRENGTH)*10*(client ? 3 : 1)
 
 		if(intent == INTENT_HARM)
 			counter_to_add *= 3

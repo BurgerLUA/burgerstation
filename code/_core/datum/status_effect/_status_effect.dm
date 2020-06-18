@@ -11,7 +11,7 @@
 /status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	if(!stealthy)
-		new/obj/effect/temp/damage_number(owner.loc,duration,"[uppertext(name)]!")
+		new/obj/effect/temp/damage_number(owner.loc,clamp(duration,10,100),"[uppertext(name)]!")
 
 	return TRUE
 

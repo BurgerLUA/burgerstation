@@ -1,6 +1,5 @@
 /ai/boss/
 
-	radius_find_enemy = VIEW_RANGE*2
 	objective_delay = 1
 	attack_delay = 1
 

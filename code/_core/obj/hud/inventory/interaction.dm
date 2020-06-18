@@ -11,6 +11,7 @@
 					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
 					return TRUE
 			grab_object(caller,object,location,control,params)
+			return TRUE
 		else
 			return wield_object(caller,defer_object)
 

@@ -1,7 +1,5 @@
 /ai/advanced/
 
-	radius_find_enemy = VIEW_RANGE
-
 	objective_delay = 10
 	attack_delay = 1
 
