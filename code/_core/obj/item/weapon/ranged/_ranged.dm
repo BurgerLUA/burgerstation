@@ -35,7 +35,7 @@
 
 	var/obj/item/firing_pin/firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen //Unless stated otherwise, all guns can only be fired by NanoTrasen personel.
 
-	var/inaccuracy_modifer = 1
+	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
@@ -142,7 +142,7 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click*"))
 	if(length(empty_sounds))
-		play(pick(empty_sounds),src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
+		play(pick(empty_sounds),src,alert = ALERT_LEVEL_NOISE, alert_source = caller, range_max = 3)
 
 	return FALSE
 

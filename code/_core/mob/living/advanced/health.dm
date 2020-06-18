@@ -19,11 +19,11 @@
 
 
 
-/mob/living/advanced/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/mob/living/advanced/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	. = ..()
 
-	if(damage_amount > 0)
+	if(!stealthy && damage_amount > 0)
 		health_regen_delay = max(health_regen_delay,600)
 		if(!dead && damage_amount > 10 && prob(damage_amount*0.3))
 			emote("pain")

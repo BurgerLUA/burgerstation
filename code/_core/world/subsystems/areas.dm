@@ -49,6 +49,8 @@ SUBSYSTEM_DEF(area)
 	set_weather(WEATHER_SNOW,is_snowing,areas_snow)
 	set_weather(WEATHER_SANDSTORM,is_sandstorming,areas_sandstorm)
 
+	return ..()
+
 /subsystem/area/on_life()
 
 	if(prob(is_raining ? WEATHER_REMOVE_CHANCE : WEATHER_ADD_CHANCE))

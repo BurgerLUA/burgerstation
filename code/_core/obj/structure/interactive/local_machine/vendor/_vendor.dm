@@ -103,7 +103,7 @@
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "CENTER-3,CENTER-[(stored_objects_length+stored_types_length+1)*0.5]+[i]"
+		V.screen_loc = "CENTER-3,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]-[i]"
 		V.update_owner(A)
 		V.update_sprite()
 

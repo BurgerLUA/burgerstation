@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(payday)
 
 /subsystem/payday/Initialize()
 	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
-	return TRUE
+	return ..()
 
 /subsystem/payday/on_life()
 

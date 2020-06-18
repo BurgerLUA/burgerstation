@@ -30,13 +30,17 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");			\
 	else																					\
 		D.Initialize();																		\
-		D.PostInitialize();
+		D.PostInitialize();																	\
+		if(!D.initialized)																	\
+			CRASH_SAFE("ERROR: [D.get_debug_name()] did not initialize properly!");
 
 #define GENERATE(D)																			\
 	if(D.generated)																			\
 		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");			\
 	else																					\
-		D.Generate();
+		D.Generate();																		\
+		if(!D.generated)																	\
+			CRASH_SAFE("ERROR: [D.get_debug_name()] did not generate properly!");
 
 #define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D)
 

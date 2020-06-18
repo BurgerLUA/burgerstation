@@ -45,3 +45,5 @@
 	size = SIZE_2
 
 	shoot_sounds = list('sounds/weapons/10/shoot_mod.ogg')
+
+	shoot_alert = ALERT_LEVEL_NONE

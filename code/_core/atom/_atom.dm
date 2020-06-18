@@ -69,7 +69,6 @@
 	return (T.corner_category == corner_category)
 
 /atom/proc/on_destruction(var/atom/caller,var/damage = FALSE) //Called when destructed by tools or damage.
-	world.log << "CALLED DESTRUCTION!"
 	return TRUE
 
 /atom/Destroy()

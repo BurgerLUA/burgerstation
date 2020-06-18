@@ -4,12 +4,6 @@ SUBSYSTEM_DEF(hook)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 
-/subsystem/hook/Initialize()
-	return TRUE
-
-/subsystem/hook/on_life()
-	return TRUE
-
 //GMOD, anyone? Doesn't need a priority var as people should just add/overwrite the proc it calls.
 //Adds a hook to an event.
 /subsystem/hook/proc/add_hook(var/event_name,var/identifier,var/datum/owner,var/datum/proc_target,var/proc_to_use)

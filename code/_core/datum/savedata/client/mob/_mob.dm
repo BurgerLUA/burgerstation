@@ -23,21 +23,10 @@ var/global/list/ckey_to_mobdata = list()
 	)
 
 /savedata/client/mob/New(var/desired_ckey)
-
 	..()
-
 	reset_data()
-
 	var/client/owner = CLIENT(ckey)
-
 	if(owner)
-		if(!has_files())
-			owner << "Welcome to Burgerstation!"
-		else
-			owner << "Welcome back to Burgerstation!"
-			//loaded_data = load_most_recent_character()
-			//owner.save_slot = loaded_data["id"]
-
 		ckey_to_mobdata[ckey] = src
 
 /savedata/client/mob/Destroy()

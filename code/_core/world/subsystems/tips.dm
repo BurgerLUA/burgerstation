@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(tips)
 
 	log_subsystem(name,"Found and stored [length(stored_tips)] tips.")
 
-	return TRUE
+	return ..()
 
 /subsystem/tips/on_life()
 	broadcast_to_clients(span("bot","TIP: [pick(stored_tips)]"))

@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(recipe)
 
 	log_subsystem(name,"Initialized [length(all_recipes)] recipes.")
 
+	return ..()
 
 /proc/generate_crafting_table(var/mob/living/advanced/caller,var/obj/item/crafting/C)
 

@@ -15,4 +15,4 @@ SUBSYSTEM_DEF(materials)
 
 	log_subsystem(name,"Initialized [length(all_materials)] material types.")
 
-	return TRUE
+	return ..()

@@ -19,7 +19,6 @@ var/global/list/all_clients = list() //Assoc list
 	var/zoom_level = MIN_ZOOM
 
 	var/savedata/client/connection_history/connection_data
-	var/savedata/client/roles/roles
 	var/savedata/client/settings/settings
 	var/savedata/client/controls/controls
 
@@ -66,15 +65,11 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/examine_mode = FALSE
 
-//Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
+	var/permissions = FLAG_PERMISSION_NONE
 
-/*
-/client/verb/ping()
-	winset(src,null,"command=pong+[world.time]")
-
-/client/verb/pong(var/time as num)
-	ping_num = world.time - time
-*/
+/client/proc/set_permissions(var/desired_permissions = FLAG_PERMISSION_NONE)
+	permissions = desired_permissions
+	update_verbs()
 
 /client/proc/get_debug_name()
 	return "[src](MOB: [mob ? "[mob.name]([mob.x])([mob.y])([mob.z])" : "NONE"])"
@@ -138,9 +133,6 @@ var/global/list/all_clients = list() //Assoc list
 	if(!connection_data)
 		connection_data = new(ckey)
 
-	if(!roles)
-		roles = new(ckey)
-
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)
 		new/savedata/client/mob(ckey)
@@ -171,7 +163,26 @@ var/global/list/all_clients = list() //Assoc list
 	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()
 
+	if(SSadmin.initialized)
+		sync_permissions()
+
 	return mob
+
+/client/proc/sync_permissions()
+
+	var/rank/R = SSadmin.stored_ranks["USER"]
+
+	var/lower_ckey = lowertext(ckey)
+
+	if(SSadmin.stored_user_ranks[lower_ckey])
+		R = SSadmin.stored_ranks[SSadmin.stored_user_ranks[lower_ckey]]
+		to_chat("Setting your rank to [R].")
+	else
+		log_error("WARNING: Valid rank does not exist for [src]!")
+
+	permissions = R.permissions
+	to_chat("Welcome, [R.name] [src]!")
+	return TRUE
 
 /client/proc/welcome()
 	to_chat("<title>Welcome to Burgerstation 13</title><p>This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed. If you wish to join the discord, please do so here: https://discord.gg/yEaV92a</p>")
@@ -323,29 +334,6 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/proc/get_permissions()
 	return FALSE
-
-
-/client/verb/make_announcement()
-
-	set category = "Fun"
-	set name = "Make Announcement"
-
-	var/sender = input("Who should the sender be?","Message Sender") as text | null
-	if(!sender)
-		return FALSE
-
-	var/message = input("What should the message be?", "Message") as message | null
-	if(!message)
-		return FALSE
-
-	var/header = input("What should the header be?", "Message Header") as text | null
-	if(!header)
-		return FALSE
-
-	announce(sender,header,message,ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
-
-	return TRUE
-
 
 /client/proc/receive_sound(var/sound/S)
 	src << S

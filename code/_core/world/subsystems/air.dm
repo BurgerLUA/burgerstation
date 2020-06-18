@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(air)
 /subsystem/air/Initialize()
 
 	if(!ENABLE_ATMOS)
-		return FALSE
+		return ..()
 
 	var/update_count = 0
 	var/bad_count = 0
@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(air)
 	if(bad_count)
 		log_subsystem(src.name, "WARNING: [bad_count] TURFS STILL NEEDED AN ATMOS UPDATE!.")
 
-	return TRUE
+	return ..()
 
 /subsystem/air/proc/update_turf_air(var/turf/simulated/source_turf)
 
@@ -79,18 +79,5 @@ SUBSYSTEM_DEF(air)
 	for(var/k in queued_atmos_updates)
 		CHECK_TICK
 		update_turf_air(k)
-
-	return TRUE
-
-client/verb/air_test(var/pressure as num)
-	set name = "Air Test"
-	set category = "Debug"
-	set hidden = FALSE
-
-	if(mob)
-		var/turf/simulated/S = get_turf(mob)
-		if(S)
-			S.air_contents["oxygen"] += pressure
-			SSair.update_turf_air(S)
 
 	return TRUE

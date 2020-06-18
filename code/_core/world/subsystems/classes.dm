@@ -12,3 +12,5 @@ SUBSYSTEM_DEF(classes)
 		all_classes[C.type] = C
 
 	log_subsystem(name,"Initialized [length(all_classes)] classes.")
+
+	return ..()

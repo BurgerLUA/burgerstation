@@ -36,3 +36,5 @@ SUBSYSTEM_DEF(reagent)
 		all_reagent_recipes[R.type] = R
 
 	log_subsystem(name,"Initialized [length(all_reagent_recipes)] reagent recipes.")
+
+	return ..()

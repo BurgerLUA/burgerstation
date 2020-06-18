@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(hazard)
 
 	log_subsystem(name,"Initialized [length(all_hazards)] hazards.")
 
-	return TRUE
+	return ..()
 
 /subsystem/hazard/on_life()
 

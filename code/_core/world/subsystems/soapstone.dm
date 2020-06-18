@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(soapstone)
 /subsystem/soapstone/Initialize()
 	save_soapstone = new
 	save_soapstone.quick_load()
+	return ..()
 
 /subsystem/soapstone/proc/create_new_soapstone(var/turf/desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
 

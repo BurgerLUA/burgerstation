@@ -2,7 +2,6 @@
 
 	set name = "ban"
 	set category = "Admin"
-	set hidden = TRUE
 
 	ban_duration_minutes = text2num(ban_duration_minutes)
 

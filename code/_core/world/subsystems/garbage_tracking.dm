@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(garbage_tracking)
 
 /subsystem/garbage_tracking/Initialize()
 	fdel(GARBAGE_LOGS_PATH)
-	return TRUE
+	return ..()
 
 /subsystem/garbage_tracking/on_life()
 

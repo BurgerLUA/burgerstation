@@ -8,16 +8,16 @@
 
 	return attack_delay
 
-/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	if(health)
 		health.update_health(damage_amount,attacker)
 
-	if(damage_amount > 0)
+	if(!stealthy && damage_amount > 0)
 		if(isturf(src))
 			new/obj/effect/temp/damage_number(src,null,damage_amount)
 		else if(isturf(src.loc))
-			new/obj/effect/temp/damage_number(src.loc,null,damage_amount)
+			new/obj/effect/temp/damage_number(get_turf(src),null,damage_amount)
 
 	return TRUE
 

@@ -580,7 +580,7 @@
 
 	return .
 
-/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	if(!attackers[attacker])
 		attackers[attacker] = TRUE

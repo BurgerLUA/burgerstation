@@ -33,6 +33,9 @@
 	fill_color = "#FFFFFF"
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/security/glass/tactical
+	name = "\improper Tactical Operations airlock"
+
 /obj/structure/interactive/door/airlock/station/security/shop
 	name = "security airlock"
 	color = COLOR_RED

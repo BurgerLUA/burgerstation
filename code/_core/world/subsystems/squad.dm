@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(squad)
 	green_team.name = "Green Squad"
 	green_team.never_delete = TRUE
 
-	return TRUE
+	return ..()
 
 /subsystem/squad/on_life()
 

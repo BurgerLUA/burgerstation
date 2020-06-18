@@ -14,4 +14,4 @@ SUBSYSTEM_DEF(cqc)
 		C = new k
 		all_cqc[C.type] = C
 
-	return TRUE
+	return ..()

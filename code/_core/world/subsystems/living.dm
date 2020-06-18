@@ -18,6 +18,8 @@ SUBSYSTEM_DEF(living)
 			qdel(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
+	return ..()
+
 
 /subsystem/living/on_life()
 

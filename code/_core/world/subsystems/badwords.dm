@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(badwords)
 		log_subsystem(name,"Could not find a bad words file.")
 
 
-	return TRUE
+	return ..()
 
 /subsystem/badwords/proc/has_badword(var/text_to_check)
 

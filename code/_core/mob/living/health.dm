@@ -61,13 +61,13 @@
 
 	return FALSE
 
-/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	. = ..()
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	if(total_bleed_damage && luck(src,total_bleed_damage,FALSE,"bleed"))
+	if(total_bleed_damage && luck(src,total_bleed_damage,FALSE))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)
@@ -92,7 +92,7 @@
 			O.bleeding = TRUE
 
 	if(ai)
-		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount)
+		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
 
 	if(dead && time_of_death + 30 <= world.time && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker

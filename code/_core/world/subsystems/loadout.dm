@@ -10,3 +10,5 @@ SUBSYSTEM_DEF(loadouts)
 		var/loadout/O = new v
 		all_loadouts[O.type] = O
 	log_subsystem(name,"Initialized [length(all_loadouts)] outfits.")
+
+	return ..()

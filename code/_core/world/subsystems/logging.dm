@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(logging)
 	fdel(ROUND_ID_DIR)
 	text2file("[round_id]",ROUND_ID_DIR)
 	start_date = time2text(world.realtime,"YYYY-MMM-DD")
-	return TRUE
+	return ..()
 
 /subsystem/logging/proc/log_chat(var/data_to_log)
 	buffered_log_chat += data_to_log

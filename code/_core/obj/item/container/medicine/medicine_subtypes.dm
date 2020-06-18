@@ -82,6 +82,7 @@
 
 /obj/item/container/medicine/patch/brute/Generate()
 	reagents.add_reagent(/reagent/medicine/styptic_powder,60)
+	return ..()
 
 /obj/item/container/medicine/patch/burn
 	name = "burn patch (Silver Sulfadiazine)"
@@ -89,3 +90,4 @@
 
 /obj/item/container/medicine/patch/burn/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,60)
+	return ..()

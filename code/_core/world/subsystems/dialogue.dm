@@ -11,3 +11,5 @@ SUBSYSTEM_DEF(dialogue)
 		all_dialogue[D.type] = D
 
 	log_subsystem(name,"Initialized [length(all_dialogue)] dialogues.")
+
+	return ..()

@@ -38,6 +38,8 @@
 
 	ai_heat_sensitivity = 2
 
+	shoot_alert = ALERT_LEVEL_NONE
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

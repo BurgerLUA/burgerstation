@@ -35,3 +35,9 @@
 
 
 	return FALSE
+
+/client/verb/stop_sound()
+	set name = "Stop Sounds"
+	set category = "Game"
+	mob << sound(null)
+	to_chat("All sounds have been stopped.")

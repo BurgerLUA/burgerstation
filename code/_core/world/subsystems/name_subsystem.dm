@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(name)
 	log_subsystem(name,"Found [length(first_names_female)] female first names.")
 	log_subsystem(name,"Found [length(last_names)] last names.")
 
-	return TRUE
+	return ..()
 
 /subsystem/name/proc/check_duplicate_name(var/name)
 	if(name_count[name])

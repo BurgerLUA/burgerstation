@@ -27,3 +27,5 @@ SUBSYSTEM_DEF(paper)
 
 	log_subsystem(name,"Found [found_books] books.")
 	log_subsystem(name,"Found [found_pages] pages.")
+
+	return ..()

@@ -21,7 +21,7 @@
 	created_time = get_time()
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/obj/item/container/food/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 

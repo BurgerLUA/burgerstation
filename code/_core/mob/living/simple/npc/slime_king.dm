@@ -68,7 +68,7 @@
 
 	damage_type = /damagetype/npc/slime
 
-/mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	. = ..()
 

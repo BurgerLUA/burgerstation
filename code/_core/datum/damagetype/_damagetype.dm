@@ -21,6 +21,8 @@
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
 
+	var/stealthy = FALSE //Set to true to not display any damage dealt as well as not to alert any NPCs when hit.
+
 	var/attack_delay_mod = 1
 
 	var/block_coefficient = 0.25 //The block co-efficient. High values means it penetrates armor easier.
@@ -162,6 +164,7 @@
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 
+	/*
 	var/best_damage_type = null
 	var/best_damage_type_amount = 0
 
@@ -170,6 +173,7 @@
 		if(!best_damage_type || damage_amount > best_damage_type_amount)
 			best_damage_type = damage_type
 			best_damage_type_amount = damage_amount
+	*/
 
 	return crit_multiplier
 
@@ -339,9 +343,9 @@
 
 		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-		victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt)
+		victim.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,stealthy)
 		if(victim != hit_object)
-			hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt)
+			hit_object.on_damage_received(hit_object,attacker,weapon,damage_to_deal,total_damage_dealt,stealthy)
 
 	return TRUE
 

@@ -50,6 +50,8 @@
 
 	update_health(update_hud = FALSE)
 
+	return ..()
+
 /health/Destroy()
 
 	/*

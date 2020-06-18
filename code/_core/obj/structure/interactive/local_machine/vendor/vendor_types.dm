@@ -122,7 +122,9 @@
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,
 		/obj/item/clothing/glasses/sun,
-		/obj/item/storage/glovebox/white
+		/obj/item/storage/glovebox/white,
+		/obj/item/clothing/glasses/eyepatch,
+		/obj/item/clothing/head/hat/headband
 	)
 
 /obj/structure/interactive/vending/clothes/hat

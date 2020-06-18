@@ -11,10 +11,6 @@
 	C.verbs.Cut()
 	return TRUE
 
-
-
-
-
 /role/user/
 	name = "User"
 	id = "user"

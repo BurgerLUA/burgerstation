@@ -16,4 +16,4 @@ SUBSYSTEM_DEF(weapons)
 			weapon_to_magazine[supported_weapon] += M.type
 		qdel(M)
 
-	return TRUE
+	return ..()

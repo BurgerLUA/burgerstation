@@ -228,7 +228,7 @@ SUBSYSTEM_DEF(horde)
 	state = HORDE_STATE_WAITING
 	round_time = 0
 	round_time_next = HORDE_DELAY_WAIT
-	return TRUE
+	return ..()
 
 /subsystem/horde/proc/spawn_objectives()
 

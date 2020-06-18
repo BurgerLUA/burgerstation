@@ -37,6 +37,8 @@
 
 	ai_heat_sensitivity = 0.75
 
+	shoot_alert = ALERT_LEVEL_NONE
+
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 
 	icon_state = initial(icon_state)

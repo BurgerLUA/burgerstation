@@ -15,3 +15,5 @@ SUBSYSTEM_DEF(footstep)
 			all_footsteps[id] = F
 
 	log_subsystem(name,"Initialized [length(all_footsteps)] footstep types.")
+
+	return ..()

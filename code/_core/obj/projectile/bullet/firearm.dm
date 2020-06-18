@@ -39,3 +39,7 @@
 	name = "shotgun slug"
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_large"
+
+/obj/projectile/bullet/firearm/pistol/stealth
+	name = "stealth pistol bullet"
+	icon_state = "stealth"
