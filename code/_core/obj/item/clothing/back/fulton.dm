@@ -46,5 +46,6 @@ var/global/list/obj/item/clothing/back/fulton/fulton_devices = list()
 		return FALSE
 
 	A.force_move(desired_turf)
+	qdel(src)
 
 	return TRUE

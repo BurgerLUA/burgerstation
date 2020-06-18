@@ -320,8 +320,8 @@
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
 	I.pre_pickup(old_location,src)
-	if(owner)
-		I.update_owner(owner)
+	if(A)
+		I.update_owner(A)
 		if(should_add_worn)
 			A.worn_objects += I
 			A.update_slowdown_mul()

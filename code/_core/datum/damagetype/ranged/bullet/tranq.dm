@@ -21,9 +21,10 @@
 
 	. = ..()
 
-	if(total_damage_dealt && victim.health && is_living(victim))
+	if(victim.health && is_living(victim))
 		var/mob/living/L = victim
-		if(L.health.stamina_current <= total_damage_dealt)
+		world.log << L.health.stamina_current
+		if(L.health.stamina_current <= 0)
 			if(L.ckey_last)
 				L.add_status_effect(SLEEP,300,300) //30 seconds of sleep
 			else

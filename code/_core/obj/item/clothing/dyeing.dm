@@ -17,10 +17,12 @@
 		return FALSE
 
 	polymorphs[choice] = blend_colors(polymorphs[choice],dye_color,dye_strength)
-	//initialize_blends()
+	caller.to_chat(span("notice","You dye \the [src.name]."))
+
 	update_sprite()
 
-	caller.to_chat(span("notice","You dye \the [src.name]."))
-	update_sprite()
+	if(is_inventory(loc))
+		var/obj/hud/inventory/I = loc
+		I.update_worn_icon(src)
 
 	return FALSE

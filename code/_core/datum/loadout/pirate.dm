@@ -49,7 +49,8 @@
 		/obj/item/clothing/hands/gloves/colored/padded/brown/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/weapon/melee/sword/sabre
+		/obj/item/weapon/melee/sword/sabre,
+		/obj/item/clothing/head/hood/bandana/red
 	)
 
 
@@ -61,6 +62,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/brown/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/glasses/eyepatch,
 		/obj/item/weapon/melee/sword/sabre,
 		/obj/item/weapon/ranged/energy/rifle
 	)

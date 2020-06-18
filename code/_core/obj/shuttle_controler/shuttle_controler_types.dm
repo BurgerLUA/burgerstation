@@ -52,7 +52,7 @@
 	transit_bluespace = "delta_shuttle_bluespace"
 	transit_end = "delta_shuttle_landing"
 
-/obj/shuttle_controller/charlie/transit(var/starting_transit_id,var/ending_transit_id)
+/obj/shuttle_controller/delta/transit(var/starting_transit_id,var/ending_transit_id)
 
 	if(starting_transit_id == "delta_shuttle_landing")
 		var/obj/structure/interactive/fulton_beacon/B = locate() in get_area(src)

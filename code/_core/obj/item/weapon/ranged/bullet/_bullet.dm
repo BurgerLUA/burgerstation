@@ -54,10 +54,10 @@
 	var/obj/item/bullet_cartridge/B = chambered_bullet
 
 	if(jammed)
-		caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
 	else if(B.jam_chance && luck(list(B,src,caller),B.jam_chance,FALSE))
-		caller.to_chat(span("danger","\The [src.name] jams!"))
+		if(B.jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE
 

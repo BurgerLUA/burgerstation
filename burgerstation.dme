@@ -705,7 +705,6 @@
 #include "code\_core\obj\item\bullet\tungsten.dm"
 #include "code\_core\obj\item\clothing\_clothing.dm"
 #include "code\_core\obj\item\clothing\additional.dm"
-#include "code\_core\obj\item\clothing\dyeing.dm"
 #include "code\_core\obj\item\clothing\interaction.dm"
 #include "code\_core\obj\item\clothing\back\_back.dm"
 #include "code\_core\obj\item\clothing\back\fulton.dm"
