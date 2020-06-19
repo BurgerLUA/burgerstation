@@ -2,6 +2,7 @@
 	name = "spawning marker"
 	icon = 'icons/obj/markers/spawning.dmi'
 	initialize_type = INITIALIZE_EARLY
+	plane = PLANE_OBJ
 
 /obj/marker/spawning/Initialize()
 	do_spawn(src.loc)

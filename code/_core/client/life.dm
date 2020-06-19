@@ -50,6 +50,8 @@
 				stored_hud_images += L.medical_hud_image_advanced
 				images += L.medical_hud_image_advanced
 
+	update_color_mods()
+
 	/*
 	if(is_zoomed)
 
@@ -66,8 +68,6 @@
 		if(mob)
 			mob.face_atom(last_location)
 	*/
-
-	update_color_mods()
 
 	return TRUE
 

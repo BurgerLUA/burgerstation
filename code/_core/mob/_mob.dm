@@ -89,6 +89,8 @@
 
 	var/obj/hud/examine/examine_overlay
 
+	var/list/color_mods = list()
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = SEE_BLACKNESS

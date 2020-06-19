@@ -148,11 +148,11 @@
 			enlightenment_power,enlightenment_power,enlightenment_power,enlightenment_power
 		)
 		owner.update_eyes()
-		owner.client.add_color_mod("druggy",desired_color_mod)
+		owner.add_color_mod("druggy",desired_color_mod)
 
 	return TRUE
 
 /status_effect/druggy/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
 	if(owner && owner.client)
-		owner.client.remove_color_mod("druggy")
+		owner.remove_color_mod("druggy")
 	return TRUE

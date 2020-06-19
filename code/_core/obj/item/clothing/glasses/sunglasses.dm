@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/sun
 	name = "sunglasses"
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 	desc = "Deal with it."
 	desc_extended = "A simple pair of sleek sunglasses designed to reflect sunlight, and lasers. The inverse of prescription glasses."
 	icon = 'icons/obj/items/clothing/glasses/sunglasses.dmi'
