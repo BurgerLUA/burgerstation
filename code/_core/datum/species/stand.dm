@@ -10,6 +10,8 @@
 	default_color_skin = "#e0b19d"
 	default_color_hair = "#000000"
 
+	flags_species_traits = TRAIT_NO_PAIN | TRAIT_NO_BLOOD
+
 	default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	default_icon_state_hair = "hair_c"
 

@@ -86,6 +86,8 @@
 	return TRUE
 
 /mob/living/proc/pre_death()
+	alert_overlay.icon_state = "none"
+	chat_overlay.icon_state = "none"
 	return TRUE
 
 /mob/living/proc/post_death()

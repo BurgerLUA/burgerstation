@@ -18,7 +18,6 @@ SUBSYSTEM_DEF(horde)
 	var/round_time = 0 //In seconds.
 	var/round_time_next = 0 //In seconds.
 	var/state = HORDE_STATE_PRELOAD
-	var/current_round = 1
 
 	var/max_enemies = 10
 	var/enemies_to_spawn = 0
@@ -29,9 +28,7 @@ SUBSYSTEM_DEF(horde)
 
 	var/list/possible_horde_targets = list()
 
-	var/killed_syndicate_total = 0
-	var/killed_syndicate_round = 0
-	var/spawned_enemies_round = 0
+	var/total_killed_syndicate = 0
 
 	var/next_hijack_check_time = 0
 
@@ -54,24 +51,18 @@ SUBSYSTEM_DEF(horde)
 	if(!(L in tracked_enemies))
 		return FALSE
 
-	killed_syndicate_total++
-	killed_syndicate_round++
-
-	if(spawned_enemies_round != 0 && killed_syndicate_round >= spawned_enemies_round)
-		current_round++
-		message_displayed = FALSE
-		killed_syndicate_round = 0
-		spawned_enemies_round = 0
-
+	total_killed_syndicate++
 	tracked_enemies -= L
 
 	return TRUE
 
 /subsystem/horde/proc/get_enemies_to_spawn()
-	. = clamp(10 + current_round*2.5,10,40)
-	return FLOOR(.,1)
+	return clamp(10 + FLOOR(DECISECONDS_TO_SECONDS(world.time)/300,1),0,40) - length(tracked_enemies) //One additional enemy every 5 minutes.
 
 /subsystem/horde/proc/check_hijack()
+
+	if(!ENABLE_HIJACK)
+		return FALSE
 
 	var/area/exterior/grass/village/A = all_areas[/area/exterior/grass/village/]
 	if(!A)
@@ -148,23 +139,9 @@ SUBSYSTEM_DEF(horde)
 
 	if(state == HORDE_STATE_FIGHTING)
 
-		if(!message_displayed)
-			LOG_DEBUG("Moving to round [current_round].")
-			set_message("Round [current_round]")
+		if(!message_displayed || world.time >= next_hijack_check_time)
 			message_displayed = TRUE
 			enemies_to_spawn = get_enemies_to_spawn()
-			for(var/mob/living/advanced/npc/syndicate/S in world)
-				if(S.map_spawn)
-					continue
-				if(!S.ai)
-					continue
-				if(length(S.ai.current_path))
-					continue
-				var/mob/living/advanced/player/P = locate() in view(VIEW_RANGE + ZOOM_RANGE,S)
-				if(!P)
-					S.ai.set_objective(pick(possible_horde_targets))
-
-		if(ENABLE_HIJACK && next_hijack_check_time <= round_time)
 			if(check_hijack())
 				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 				state = HORDE_STATE_HIJACK
@@ -174,55 +151,75 @@ SUBSYSTEM_DEF(horde)
 			return TRUE
 
 		var/wave_to_spawn = min(4,enemies_to_spawn)
-		enemies_to_spawn -= wave_to_spawn
-		spawn while(wave_to_spawn > 0)
 
+		if(wave_to_spawn <= 0)
+			return TRUE
+
+		var/obj/marker/map_node/spawn_node = find_viable_spawn()
+		if(!spawn_node)
+			return TRUE
+
+		var/obj/marker/map_node/target_node = find_viable_target()
+		if(!target_node)
+			return TRUE
+
+		var/obj/marker/map_node/list/found_path = spawn_node.find_path(target_node)
+		if(!found_path)
+			log_error("ERROR: Could not find a valid path from [spawn_node.get_debug_name()] to [target_node.get_debug_name()]!")
+			return TRUE
+
+		var/turf/T = get_turf(spawn_node)
+
+		while(wave_to_spawn > 0)
+			wave_to_spawn--
 			CHECK_TICK
-
-			var/turf/chosen_spawn = pick(all_syndicate_spawns)
-
-			var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
-			if(P)
-				continue
-
-			var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
-			if(!N_start)
-				continue
-
-			while(wave_to_spawn > 0)
-				var/atom/chosen_target = pick(possible_horde_targets)
-				var/turf/target_turf = get_turf(chosen_target)
-
-				if(target_turf.z != 3)
-					continue
-
-				var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
-				if(!N_end)
-					continue
-
-				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
-				if(!found_path)
-					continue
-
-				while(wave_to_spawn > 0)
-					var/turf/T = get_turf(chosen_spawn)
-					if(T)
-						if(!T.loc)
-							log_error("SSHORDE: TURF [T.get_debug_name()] DID NOT HAVE AN AREA!")
-							continue
-						var/mob/living/advanced/npc/syndicate/S = new(T)
-						INITIALIZE(S)
-						S.ai.set_path(found_path)
-						tracked_enemies += S
-						spawned_enemies_round++
-					else
-						log_error("SSHORDE: COULD NOT FIND A GENERATE TO PLACE SYNDICATE!")
-					wave_to_spawn--
-
-	//if(state == HORDE_STATE_HIJACK)
-		//Do stuff
+			var/mob/living/advanced/npc/syndicate/S = new(T)
+			INITIALIZE(S)
+			S.ai.set_path(found_path)
+			tracked_enemies += S
+			for(var/mob/abstract/observer/ghost/G in world)
+				G.force_move(S.loc)
+			enemies_to_spawn--
 
 	return TRUE
+
+/subsystem/horde/proc/find_viable_target()
+
+	var/picks_remaining = 4
+
+	while(picks_remaining > 0)
+		CHECK_TICK
+		picks_remaining--
+		var/turf/chosen_target = get_turf(pick(possible_horde_targets))
+		if(chosen_target.z != 3)
+			continue
+		var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
+		if(!N_end)
+			continue
+		return N_end
+
+	return null
+
+/subsystem/horde/proc/find_viable_spawn()
+
+	var/picks_remaining = 4
+
+	while(picks_remaining > 0)
+		CHECK_TICK
+		picks_remaining--
+		var/turf/chosen_spawn = pick(all_syndicate_spawns)
+		if(chosen_spawn.z != 3)
+			continue
+		var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
+		if(P)
+			continue
+		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
+		if(!N_start)
+			log_error("WARNING: [chosen_spawn.get_debug_name()] didn't have a node to spawn enemies!")
+			continue
+		return N_start
+
+	return null
 
 /subsystem/horde/Initialize()
 	state = HORDE_STATE_WAITING
@@ -241,6 +238,7 @@ SUBSYSTEM_DEF(horde)
 	LOG_DEBUG("Making [desired_rescue_objectives] rescue objectives.")
 
 	for(var/i=1,i<=desired_spawn_objectives,i++)
+		CHECK_TICK
 		var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
 		possible_objective_spawns -= S
 		var/turf/T = get_turf(S)
@@ -250,6 +248,7 @@ SUBSYSTEM_DEF(horde)
 		tracked_objectives += O
 
 	for(var/i=1,i<=desired_rescue_objectives, i++)
+		CHECK_TICK
 		var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
 		possible_hostage_spawns -= S
 		var/mob/living/advanced/npc/unique/hostage/L = pick(possible_hostage_types)
@@ -265,6 +264,7 @@ SUBSYSTEM_DEF(horde)
 		valid_boss_ids += boss_id
 
 	for(var/i=1, i<=desired_kill_objectives, i++)
+		CHECK_TICK
 		var/chosen_id = pick(valid_boss_ids)
 		valid_boss_ids -= chosen_id
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
@@ -290,6 +290,7 @@ SUBSYSTEM_DEF(horde)
 
 	var/objective_text = ""
 	for(var/atom/A in tracked_objectives)
+		CHECK_TICK
 		if(isobj(A))
 			var/obj/O = A
 			objective_text += "Secure \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"

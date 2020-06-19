@@ -5,8 +5,10 @@
 	var/id = null
 
 	var/flags_species = SPECIES_NONE
-
+	var/flags_species_traits = TRAIT_NONE
 	var/flags_chargen = CHARGEN_NONE
+
+	var/default_blood_color = COLOR_BLOOD
 
 	var/default_color_eye = "#FF0000"
 
@@ -17,7 +19,6 @@
 
 	var/default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	var/default_icon_state_hair = "bald"
-
 
 	var/list/all_hair_head = list()
 	var/list/all_hair_face = list()

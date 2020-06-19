@@ -386,6 +386,9 @@ mob/living/advanced/Login()
 	if(S.default_color_glow)
 		change_organ_visual("skin_glow", desired_color = S.default_color_glow)
 
+	if(S.default_blood_color)
+		blood_color = S.default_blood_color
+
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/obj/item/organ/O in organs)
 		if(!length(O.additional_blends))

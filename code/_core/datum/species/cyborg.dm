@@ -6,6 +6,8 @@
 
 	flags_chargen = CHARGEN_EYE
 
+	default_blood_color = COLOR_OIL
+
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#FFFFFF"
 	default_color_hair = "#FFFFFF"
@@ -13,6 +15,8 @@
 	default_color_glow = "#FFFFFF"
 
 	genderless = TRUE
+
+	flags_species_traits = TRAIT_NO_PAIN
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso/cyborg,

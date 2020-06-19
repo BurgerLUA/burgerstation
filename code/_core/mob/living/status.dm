@@ -87,10 +87,12 @@
 
 	if(islist(status_type))
 		for(var/v in status_type)
-			if(has_status_effect(v))
+			if(src.status_effects[v])
 				return TRUE
 			else if(and)
 				return FALSE
+		if(and)
+			return TRUE
 	else if(src.status_effects[status_type])
 		return TRUE
 

@@ -136,7 +136,8 @@
 	path_end_turf = locate(last_path.x,last_path.y,last_path.z)
 	return TRUE
 
-/ai/proc/on_life()
+
+/ai/proc/should_life()
 
 	if(!enabled)
 		return FALSE
@@ -154,14 +155,17 @@
 	if(!isturf(owner.loc))
 		return FALSE
 
-	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && prob(10))
+	if(owner.has_status_effect(list(STUN,SLEEP,PARALYZE)))
+		return FALSE
+
+	if(resist_grabs && owner.grabbing_hand && is_enemy(owner.grabbing_hand.owner) && owner.next_resist <= world.time && prob(20))
 		owner.resist()
 		return FALSE
 
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(A.handcuffed && owner.next_resist <= world.time)
-			owner.resist()
+	return TRUE
+
+
+/ai/proc/on_life()
 
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
@@ -173,11 +177,11 @@
 		attack_ticks = 0
 		handle_attacking()
 
-	if(alert_level && alert_level <= ALERT_LEVEL_CAUTION)
+	if(alert_level >= ALERT_LEVEL_NOISE && alert_level <= ALERT_LEVEL_CAUTION)
 		alert_time -= LIFE_TICK
 		if(alert_time <= 0)
 			alert_time = initial(alert_time)
-			alert_level -= 1
+			set_alert_level(alert_level-1,TRUE)
 
 	owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
 
@@ -313,12 +317,12 @@
 
 /ai/proc/handle_movement_alert()
 
-	if(alert_level >= ALERT_LEVEL_NONE && objective_investigate)
+	if(alert_level > ALERT_LEVEL_NONE && objective_investigate)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,objective_investigate)
 		return TRUE
 
-	if(alert_level == ALERT_LEVEL_CAUTION)
+	else if(alert_level == ALERT_LEVEL_CAUTION)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 		return TRUE
@@ -646,7 +650,7 @@
 			if(L == owner)
 				return FALSE
 		else
-			if(!is_enemy(L) || !(radius_find_enemy > 0) )
+			if(!is_enemy(L) || radius_find_enemy <= 0 )
 				return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
 
 	var/old_alert_level = alert_level
@@ -676,4 +680,7 @@
 			owner.alert_overlay.icon_state = "question"
 		else if(new_alert_level == ALERT_LEVEL_NOISE)
 			owner.alert_overlay.icon_state = "huh"
+		else
+			owner.alert_overlay.icon_state = "none"
+
 	return TRUE

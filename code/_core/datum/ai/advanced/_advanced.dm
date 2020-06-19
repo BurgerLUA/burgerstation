@@ -14,8 +14,20 @@
 
 	var/next_complex = 0
 
+	var/resist_handcuffs = TRUE
+
 /ai/advanced/Destroy()
 	objective_weapon = null
+	return ..()
+
+
+/ai/advanced/on_life()
+
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(resist_handcuffs && A.handcuffed && owner.next_resist <= world.time)
+			owner.resist()
+
 	return ..()
 
 /ai/advanced/proc/handle_movement_weapon()

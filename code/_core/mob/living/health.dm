@@ -61,13 +61,16 @@
 
 	return FALSE
 
+/mob/living/proc/should_bleed()
+	return TRUE
+
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	. = ..()
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	if(total_bleed_damage && luck(src,total_bleed_damage,FALSE))
+	if(total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)

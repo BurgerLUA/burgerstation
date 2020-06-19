@@ -237,7 +237,8 @@
 
 	var/list/possible_bosses = list()
 
-	for(var/atom/A in SSbosses.tracked_bosses)
+	for(var/k in SSbosses.tracked_bosses)
+		var/atom/A = SSbosses.tracked_bosses[k]
 		if(!can_track(A))
 			continue
 		var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"

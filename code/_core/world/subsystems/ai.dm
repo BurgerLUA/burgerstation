@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(ai)
 			log_error("WARING! AI of type [AI.type] didn't have an owner!")
 			qdel(AI)
 			continue
-		AI.on_life()
+		if(AI.should_life())
+			AI.on_life()
 
 	return TRUE

@@ -43,9 +43,8 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
-	var/list/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
-
-	var/list/hidden_clothing = 0x0 //Flags of clothing slots that it should hide when this object is equipped.
+	var/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
+	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
 	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
 
 /obj/item/clothing/New(var/desired_loc)

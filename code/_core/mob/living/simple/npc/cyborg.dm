@@ -5,7 +5,7 @@
 
 	damage_type = "cult_blade"
 
-	ai = /ai/simple/karma_borg/
+	ai = /ai/
 
 
 /mob/living/simple/npc/silicon/engineer
@@ -26,19 +26,38 @@
 
 	damage_type = "squats_punch"
 
-	class = "squats"
+	class = /class/squats
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(2)
+
+	health_base = 500
 
 	sprint_delay_mul = 1
 	jog_delay_mul = 3
 	walk_delay_mul = 3
 
+	armor_base = list(
+		BLADE = 50,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = 0,
+		HEAT = 25,
+		COLD = 50,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
+	)
+
+
 /mob/living/simple/npc/silicon/squats/post_death()
 
 	. = ..()
 	icon_state = "squats-dead"
-	update_icon()
+	update_sprite()
 	return .
 
 
@@ -47,47 +66,46 @@
 	update_icon()
 	return .
 
-/mob/living/simple/npc/silicon/squats/update_icon()
+/mob/living/simple/npc/silicon/squats/update_overlays()
 
-	if(!health)
+	if(!health || icon_state == "squats-roll" || icon_state == "squats-dead")
+		damage_received_multiplier = initial(damage_received_multiplier)
 		return ..()
 
-	if(icon_state == "squats-roll" || icon_state == "squats-dead")
-		icon = initial(icon)
-		return ..()
-
-	icon = initial(icon)
-
-	var/icon/new_icon = icon(icon,icon_state)
-	var/icon/shield_icon = icon(icon,"squats-shield")
-	new_icon.Blend(shield_icon,ICON_OVERLAY)
-	icon = new_icon
+	var/image/I = new/image(icon,"squats-shield")
+	add_overlay(I)
+	damage_received_multiplier = 0.1
 
 	return ..()
 
 /mob/living/simple/npc/silicon/squats/on_sprint()
 	. = ..()
+
 	if(.)
 		if(icon_state != "squats-roll")
 			icon_state = "squats-roll"
-			update_icon()
+			update_sprite()
 
 	return .
 
 /mob/living/simple/npc/silicon/squats/on_jog()
+
 	. = ..()
+
 	if(.)
 		if(icon_state != "squats")
 			icon_state = "squats"
-			update_icon()
+			update_sprite()
 
 	return .
 
 /mob/living/simple/npc/silicon/squats/on_walk()
+
 	. = ..()
+
 	if(.)
 		if(icon_state != "squats")
 			icon_state = "squats"
-			update_icon()
+			update_sprite()
 
 	return .

@@ -1,0 +1,3 @@
+#define TRAIT_NONE 0x0
+#define TRAIT_NO_PAIN 0x1
+#define TRAIT_NO_BLOOD 0x2

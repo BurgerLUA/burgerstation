@@ -68,6 +68,10 @@
 #define COLOR_TITANIUM "#8A99AD"
 
 
+#define COLOR_BLOOD "#B20000"
+#define COLOR_OIL "#3D3D3D"
+
+
 
 
 

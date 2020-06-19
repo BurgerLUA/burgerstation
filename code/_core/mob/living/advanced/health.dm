@@ -7,6 +7,15 @@
 		B = new B
 		B.update_owner(src)
 
+/mob/living/advanced/should_bleed()
+
+	var/species/S = all_species[species]
+	if(S.flags_species_traits & TRAIT_NO_BLOOD)
+		return FALSE
+
+	return ..()
+
+
 /mob/living/advanced/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE,var/update_body=FALSE)
 
 	. = ..()
@@ -26,6 +35,8 @@
 	if(!stealthy && damage_amount > 0)
 		health_regen_delay = max(health_regen_delay,600)
 		if(!dead && damage_amount > 10 && prob(damage_amount*0.3))
-			emote("pain")
+			var/species/S = all_species[species]
+			if(!(S.flags_species_traits & TRAIT_NO_PAIN))
+				emote("pain")
 
 	return .
