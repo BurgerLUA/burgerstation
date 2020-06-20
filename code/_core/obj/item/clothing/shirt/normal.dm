@@ -12,6 +12,7 @@
 		COLD = 25,
 	)
 
+	dyeable = TRUE
 
 	polymorphs = list(
 		"shirt" = COLOR_WHITE

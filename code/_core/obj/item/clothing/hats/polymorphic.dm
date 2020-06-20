@@ -18,6 +18,8 @@
 
 	value = 40
 
+	dyeable = TRUE
+
 	polymorphs = list(
 		"base" = "#FFFFFF",
 		"ears" = "#FFFFFF",

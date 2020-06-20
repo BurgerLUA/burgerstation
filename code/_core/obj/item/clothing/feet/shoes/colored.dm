@@ -25,7 +25,7 @@
 	size = SIZE_1
 	weight = WEIGHT_1
 
-
+	dyeable = TRUE
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,

@@ -17,6 +17,8 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
+	dyeable = TRUE
+
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"design" = COLOR_WHITE,

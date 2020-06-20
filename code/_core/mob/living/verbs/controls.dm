@@ -18,7 +18,6 @@
 		visible_message("[src.name] kills themselves!")
 
 /mob/living/verb/set_intent_harm()
-	set name = "Intent - Harm"
 	set category = "Game"
 	set_intent(INTENT_HARM)
 
@@ -28,12 +27,10 @@
 	set_intent(INTENT_DISARM)
 
 /mob/living/verb/set_intent_grab()
-	set name = "Intent - Grab"
 	set category = "Game"
 	set_intent(INTENT_GRAB)
 
 /mob/living/verb/set_intent_help()
-	set name = "Intent - Help"
 	set category = "Game"
 	set_intent(INTENT_HELP)
 

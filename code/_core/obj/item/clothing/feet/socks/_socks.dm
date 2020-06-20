@@ -14,6 +14,8 @@
 
 	protected_limbs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT) //TODO: MAKE THIS DYNAMIC
 
+	dyeable = TRUE
+
 	defense_rating = list(
 		MAGIC = 10,
 		COLD = 25,

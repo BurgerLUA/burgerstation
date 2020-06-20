@@ -12,6 +12,7 @@
 
 	if(!mob)
 		color = "#FFFFFF"
+		return TRUE
 
 	var/list/desired_color = list(
 		1,0,0,0,
@@ -29,3 +30,5 @@
 			desired_color[i] = (desired_color[i]+color_mod[i])*0.5
 
 	animate(src,color = desired_color,time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
+
+	return TRUE

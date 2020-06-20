@@ -12,7 +12,7 @@
 
 	stun_angle = 0
 
-	health_base = 2000
+	health_base = 4000
 
 	attack_range = 2
 
@@ -20,17 +20,17 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = 25,
+		BLADE = 50,
 		BLUNT = 75,
 		PIERCE = 50,
 		LASER = 100,
-		MAGIC = 0,
+		MAGIC = 25,
 		HEAT = INFINITY,
 		COLD = INFINITY,
 		BOMB = 50,
 		BIO = 75,
 		RAD = 75,
-		HOLY = 0,
+		HOLY = 25,
 		DARK = INFINITY,
 		FATIGUE = INFINITY
 	)

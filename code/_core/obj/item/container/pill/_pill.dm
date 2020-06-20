@@ -31,10 +31,10 @@
 
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_advanced(object))
 		return ..()
+
+	INTERACT_CHECK
 
 	var/mob/living/advanced/A2 = object
 

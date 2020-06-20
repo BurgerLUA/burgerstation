@@ -22,10 +22,6 @@
 
 	use_cone_vision = FALSE
 
-/ai/boss/colossus/hostile_message()
-	owner.do_say("<font color='#DD1C1F' size='4'>JUDGEMENT.</font>",FALSE)
-	play('sounds/effects/narsie_attack.ogg',get_turf(owner), range_max = SOUND_RANGE * 3)
-
 /ai/boss/colossus/on_life()
 
 	. = ..()

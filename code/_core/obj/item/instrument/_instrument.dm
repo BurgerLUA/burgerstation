@@ -17,7 +17,9 @@
 	return TRUE
 
 /obj/item/instrument/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
 	if(anchored)
+
 		INTERACT_CHECK
 
 		if(caller && current_song)

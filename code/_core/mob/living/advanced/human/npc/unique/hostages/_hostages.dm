@@ -1,7 +1,16 @@
+var/global/list/possible_hostage_types = list(
+	/mob/living/advanced/npc/unique/hostage/bar_shaleez,
+	/mob/living/advanced/npc/unique/hostage/diamond_with_flaw,
+	/mob/living/advanced/npc/unique/hostage/clown,
+	/mob/living/advanced/npc/unique/hostage/assistant,
+	/mob/living/advanced/npc/unique/hostage/scientist
+)
+
 /mob/living/advanced/npc/unique/hostage/
 	ai = /ai/advanced/hostage
 	health_base = 300 //Extra health so the escort mission isn't fucking hell.
 	var/hostage = TRUE
+	queue_delete_on_death = FALSE
 
 /mob/living/advanced/npc/unique/hostage/on_life_slow()
 
@@ -89,4 +98,30 @@
 	. = ..()
 	update_all_blends()
 	equip_loadout(/loadout/new_player)
+	return .
+
+
+/mob/living/advanced/npc/unique/hostage/clown
+	name = "Charles the Clown"
+	sex = MALE
+	gender = MALE
+	dialogue_id = /dialogue/hostage/assistant
+
+/mob/living/advanced/npc/unique/hostage/clown/Initialize()
+	. = ..()
+	update_all_blends()
+	equip_loadout(/loadout/clown)
+	return .
+
+
+/mob/living/advanced/npc/unique/hostage/scientist
+	name = "Chad Thundercock"
+	sex = MALE
+	gender = MALE
+	dialogue_id = /dialogue/hostage/assistant
+
+/mob/living/advanced/npc/unique/hostage/scientist/Initialize()
+	. = ..()
+	update_all_blends()
+	equip_loadout(/loadout/scientist)
 	return .

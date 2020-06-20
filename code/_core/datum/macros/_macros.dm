@@ -1,6 +1,6 @@
 /macros/
 	var/client/owner
-	var/list/macros = QWERT_MACROS
+	var/list/macros = QWERTY_MACROS
 
 	var/list/radio_keys = list(
 		";" = RADIO_FREQ_COMMON,

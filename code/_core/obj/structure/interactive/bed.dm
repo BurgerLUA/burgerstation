@@ -38,21 +38,21 @@ obj/structure/interactive/bed
 
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	if(!is_living(caller))
+		return ..()
+
 	INTERACT_CHECK
 
-	if(is_living(caller))
+	if(buckled)
+		if(buckled == caller)
+			return ..()
+		unbuckle(caller)
+		return TRUE
 
-		if(buckled)
-			if(buckled == caller)
-				return ..()
-			unbuckle(caller)
-			return TRUE
+	var/mob/living/L = locate() in loc.contents
+	if(L) buckle(L,caller)
 
-		for(var/mob/living/L in loc.contents)
-			buckle(L,caller)
-			return TRUE
-
-	return ..()
+	return TRUE
 
 obj/structure/interactive/bed/Initialize()
 	. = ..()

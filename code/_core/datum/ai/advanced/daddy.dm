@@ -3,11 +3,6 @@
 	objective_delay = 5
 	attack_delay = 1
 
-
-/ai/advanced/daddy/hostile_message()
-	owner.say("THE LEGEND NEVER DIES.")
-
-
 /ai/advanced/daddy/handle_objectives()
 
 	. = ..()

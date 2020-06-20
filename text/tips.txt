@@ -42,3 +42,9 @@ Don't underestimate smaller pistols! The smaller projectile size is actually gre
 Do not be afraid to ask questions! Wikibot can answer most commonly asked questions if asked in OOC, and if not, players are willing to help and give you advise.
 Some weapons, such as sniper rifles, give a bonus to precision.
 Feel your character is too slow? Make sure they're not injured, hungry, or thirsty before engaging in combat. Most weapons also slow you down when equipped as well.
+Food and drink is just as important as medicine. There is a very high chance that you will become hungry or thirst in the middle of a mission and suffer hunger or thirst penalties.
+Having performance issues? You can change your graphical settings under "View" in the top left corner.
+Stealth is a legitimate tactic. Don't let anyone else tell you otherwise.
+It is possible for NPCs to break out of cuffs.
+Don't go alone. The meatmen might get you.
+Sometimes wearing Syndicate armor as a NanoTrasen mercenary isn't a good idea as your corpse can easily be mistaken for the enemy when you die.

@@ -1,15 +1,6 @@
 //Here be shitcode.
 //I need to improve this in the future.
 
-#define HORDE_STATE_PRELOAD "preload" //We're preloading everything.
-#define HORDE_STATE_WAITING "waiting" //Waiting for round to start.
-#define HORDE_STATE_GEARING "gearing" //Everyone gears up.
-#define HORDE_STATE_BOARDING "boarding" //Everyone boards the shuttles.
-#define HORDE_STATE_LAUNCHING "launching" //Everyone is launching now.
-#define HORDE_STATE_FIGHTING "fighting" //Fighting starts.
-#define HORDE_STATE_HIJACK "hijack" //Station is under assault
-#define HORDE_STATE_BREAK "break"
-
 SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
 	desc = "Handles hordes and whatnot."
@@ -19,9 +10,6 @@ SUBSYSTEM_DEF(horde)
 	var/round_time_next = 0 //In seconds.
 	var/state = HORDE_STATE_PRELOAD
 
-	var/max_enemies = 10
-	var/enemies_to_spawn = 0
-	var/enemies_spawned = 0
 	var/list/tracked_enemies = list()
 
 	var/message_displayed = FALSE
@@ -141,7 +129,6 @@ SUBSYSTEM_DEF(horde)
 
 		if(!message_displayed || world.time >= next_hijack_check_time)
 			message_displayed = TRUE
-			enemies_to_spawn = get_enemies_to_spawn()
 			if(check_hijack())
 				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 				state = HORDE_STATE_HIJACK
@@ -150,9 +137,9 @@ SUBSYSTEM_DEF(horde)
 				next_hijack_check_time = round_time + 60
 			return TRUE
 
-		var/wave_to_spawn = min(4,enemies_to_spawn)
+		var/wave_to_spawn = get_enemies_to_spawn()
 
-		if(wave_to_spawn <= 0)
+		if(wave_to_spawn < 4)
 			return TRUE
 
 		var/obj/marker/map_node/spawn_node = find_viable_spawn()
@@ -179,7 +166,6 @@ SUBSYSTEM_DEF(horde)
 			tracked_enemies += S
 			for(var/mob/abstract/observer/ghost/G in world)
 				G.force_move(S.loc)
-			enemies_to_spawn--
 
 	return TRUE
 
@@ -229,7 +215,7 @@ SUBSYSTEM_DEF(horde)
 
 /subsystem/horde/proc/spawn_objectives()
 
-	var/desired_spawn_objectives = min(3,length(possible_objective_spawns))
+	var/desired_spawn_objectives = min(2,length(possible_objective_spawns))
 	var/desired_kill_objectives = min(3,length(SSbosses.tracked_bosses))
 	var/desired_rescue_objectives = min(2,length(possible_hostage_spawns),length(possible_hostage_types))
 
@@ -293,7 +279,10 @@ SUBSYSTEM_DEF(horde)
 		CHECK_TICK
 		if(isobj(A))
 			var/obj/O = A
-			objective_text += "Secure \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			if(istype(O,/obj/structure/interactive/objective))
+				objective_text += "Secure \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			else
+				objective_text += "Destroy \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
 			if(O.qdeleting)
 				completed_objectives++
 				tracked_objectives -= O

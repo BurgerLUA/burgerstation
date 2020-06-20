@@ -401,10 +401,6 @@
 
 	return FALSE
 
-
-/ai/proc/hostile_message()
-	return FALSE
-
 /ai/proc/set_objective(var/atom/A,var/alert = TRUE)
 
 	if(!owner || owner.qdeleting)
@@ -482,7 +478,6 @@
 				best_score = local_score
 
 		if(best_target && best_target != objective_attack)
-			hostile_message()
 			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
 
 		frustration_attack = 0
@@ -539,25 +534,26 @@
 /ai/proc/is_friend(var/mob/living/L)
 	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
 
-/ai/proc/can_see_mob(var/mob/living/L)
+/ai/proc/can_see(var/atom/A)
 
-	if(!stored_sneak_power)
+	if(!stored_sneak_power && is_living(owner))
+		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
 
-	if(L.alpha == 255)
+	if(A.alpha == 255)
 		return TRUE
 
 	if(alert_level == ALERT_LEVEL_COMBAT)
 		return TRUE
 
-	var/distance = get_dist(owner,L)
+	var/distance = get_dist(owner,A)
 
 	if(distance <= 2)
 		return TRUE
 
 	var/calc = ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
 
-	return L.alpha >= calc
+	return A.alpha >= calc
 
 /ai/proc/get_possible_targets()
 
@@ -575,27 +571,34 @@
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
-			if(!L.initialized)
-				continue
-			if(!is_enemy(L))
-				continue
-			if(!should_attack_mob(L))
-				continue
-			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
-				continue
-			if(!can_see_mob(L))
+			if(!can_detect(L))
 				continue
 			.[L] = TRUE
 
 	return .
 
+/ai/proc/can_detect(var/atom/A)
+	if(!A.initialized)
+		return FALSE
+	if(!is_enemy(A))
+		return FALSE
+	if(!should_attack_mob(A))
+		return FALSE
+	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
+		return FALSE
+	if(!can_see(A))
+		return FALSE
+	return TRUE
+
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
-	if(!attackers[attacker])
-		attackers[attacker] = TRUE
-
 	if(!stealthy)
-		set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+		if(can_detect(attacker))
+			if(!attackers[attacker])
+				attackers[attacker] = TRUE
+			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+		else if(alert_level == ALERT_LEVEL_NONE)
+			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
 	return TRUE
 

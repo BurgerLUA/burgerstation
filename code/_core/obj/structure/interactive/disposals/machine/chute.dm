@@ -47,8 +47,8 @@
 
 	if(ismob(object) && caller == object)
 		INTERACT_CHECK
-		var/mob/M = object
-		M.force_move(src)
+		var/mob/living/L = object
+		L.force_move(src)
 		start_thinking(src)
 		return TRUE
 

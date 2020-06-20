@@ -69,7 +69,6 @@ obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(call
 	INTERACT_CHECK
 
 	var/mob/living/advanced/player/P = caller
-
 	P.dialogue_target_id = "chargen_computer"
 	open_menu(P,"dialogue")
 

@@ -21,6 +21,8 @@
 
 	value = 200
 
+	dyeable = TRUE
+
 	polymorphs = list(
 		"armor" = "#FFFFFF",
 		"detail" = "#FFFFFF",
@@ -30,6 +32,9 @@
 	no_initial_blend = TRUE
 
 /obj/item/clothing/overwear/armor/carbon/nanotrasen
+
+	dyeable = TRUE
+
 	polymorphs = list(
 		"armor" = COLOR_NANOTRASEN,
 		"detail" = COLOR_GOLD,

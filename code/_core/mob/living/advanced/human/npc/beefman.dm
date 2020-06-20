@@ -11,7 +11,7 @@
 
 	footstep_override_id = "splat"
 
-	health_base = 100
+	health_base = 50
 
 	butcher_contents = list(
 		/obj/item/soulgem/rare,
@@ -32,13 +32,13 @@
 /mob/living/advanced/npc/beefman/proc/beef()
 	if(!health)
 		return FALSE
-	health.adjust_loss_smart(brute=-health.get_brute_loss()*0.5,burn=-health.get_burn_loss()*0.5)
+	health.adjust_loss_smart(brute=-health.get_brute_loss()*0.25,burn=-health.get_burn_loss()*0.25)
 	if(!check_death())
 		revive()
 	return TRUE
 
 /mob/living/advanced/npc/beefman/post_death()
-	CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(1,5)),src,.proc/beef)
+	CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/beef)
 	return ..()
 
 /mob/living/advanced/npc/beefman/Initialize()

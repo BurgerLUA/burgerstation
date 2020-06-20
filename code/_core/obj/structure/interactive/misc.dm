@@ -21,7 +21,7 @@ obj/structure/interactive/misc/dresser
 obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
 
 	if(!is_advanced(caller))
-		return TRUE
+		return ..()
 
 	INTERACT_CHECK
 

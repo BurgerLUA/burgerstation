@@ -26,6 +26,8 @@
 		COLD = 25
 	)
 
+	dyeable = TRUE
+
 	polymorphs = list(
 		"base" = "#FFFFFF"
 	)

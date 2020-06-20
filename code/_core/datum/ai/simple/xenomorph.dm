@@ -19,9 +19,6 @@
 
 	return null
 
-/ai/xenomorph/hostile_message()
-	owner.say("HISSSSSSSSSSSS!")
-
 /ai/xenomorph/handle_objectives()
 
 	if(!leader || !is_valid_leader(leader))

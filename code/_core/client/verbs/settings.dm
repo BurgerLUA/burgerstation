@@ -3,7 +3,7 @@
 
 
 	var/list/unused_commands = list()
-	var/list/building = QWERT_MACROS
+	var/list/building = QWERTY_MACROS
 	for(var/k in building)
 		var/v = building[k]
 		unused_commands += v

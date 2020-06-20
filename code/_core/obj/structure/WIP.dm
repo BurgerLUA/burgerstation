@@ -17,3 +17,12 @@
 	icon_state = "unga"
 
 	plane = PLANE_ALWAYS_VISIBLE
+
+
+
+/obj/structure/wip/meme
+	name = "WOW"
+	desc = "IT'S FUCKING NOTHING."
+	desc_extended = "Imagine adding an area, only to add literally nothing else to it."
+	icon = 'icons/meme2.dmi'
+	icon_state = "nothing"

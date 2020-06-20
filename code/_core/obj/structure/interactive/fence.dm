@@ -4,7 +4,7 @@ obj/structure/interactive/fence
 	icon_state = "straight"
 
 	collision_flags = FLAG_COLLISION_WALL
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+	collision_bullet_flags = FLAG_COLLISION_NONE
 
 	bullet_block_chance = 0
 
@@ -21,3 +21,5 @@ obj/structure/interactive/fence/corner
 
 obj/structure/interactive/fence/door
 	icon_state = "door_opened"
+	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_NONE

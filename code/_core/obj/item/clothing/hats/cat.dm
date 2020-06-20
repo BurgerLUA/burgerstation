@@ -17,6 +17,8 @@
 
 	no_initial_blend = TRUE
 
+	dyeable = TRUE
+
 	polymorphs = list(
 		"outer" = "#FFFFFF",
 		"inner" = "#FF8888"

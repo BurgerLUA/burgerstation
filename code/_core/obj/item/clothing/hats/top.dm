@@ -18,6 +18,8 @@
 
 	value = 30
 
+	dyeable = TRUE
+
 	polymorphs = list(
 		"base" = COLOR_BLACK,
 		"stripe" = COLOR_WHITE

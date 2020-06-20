@@ -132,9 +132,6 @@ obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,object,locati
 
 	INTERACT_CHECK
 
-	if(!is_living(caller))
-		return FALSE
-
 	var/atom/A = check_interactables(caller,object,location,control,params)
 	if(A && A.clicked_on_by_object(caller,object,location,control,params))
 		return TRUE
