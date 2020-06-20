@@ -12,7 +12,7 @@ var/global/list/possible_hostage_types = list(
 	var/hostage = TRUE
 	queue_delete_on_death = FALSE
 
-/mob/living/advanced/npc/unique/hostage/on_life_slow()
+/mob/living/advanced/npc/unique/hostage/post_move()
 
 	. = ..()
 

@@ -24,7 +24,7 @@
 /atom/proc/change_victim(var/atom/attacker)
 	return src
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params,var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!attacker)
 		attacker = src
@@ -39,8 +39,6 @@
 
 	if(attacker && victim && attacker != victim && !ignore_distance)
 		attacker.face_atom(victim)
-
-	var/precise = FALSE
 
 	if(!precise && is_living(victim))
 		var/mob/living/L = victim

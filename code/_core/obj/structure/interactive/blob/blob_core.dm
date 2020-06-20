@@ -80,10 +80,6 @@
 			CHECK_TICK
 			if(resources_to_spend <= 0)
 				break
-			var/obj/structure/interactive/blob/node/N = linked_nodes[i]
-			if(N.check_jugs())
-				resources_to_spend -= 5
-				continue
 			if(!length(valid_turfs))
 				break
 			var/turf/simulated/floor/F = pick(valid_turfs)
@@ -97,6 +93,9 @@
 				resources_to_spend -= 1
 				INITIALIZE(B)
 			valid_turfs -= F
+			var/obj/structure/interactive/blob/node/N = linked_nodes[i]
+			if(N.check_jugs())
+				resources_to_spend -= 5
 
 	return ..()
 

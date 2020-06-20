@@ -32,6 +32,8 @@
 
 	var/obj/structure/interactive/blob/node/linked_node
 
+	movement_delay = DECISECONDS_TO_TICKS(6)
+
 /mob/living/simple/npc/blobbernaught/New(loc,desired_client,desired_level_multiplier,var/obj/structure/interactive/blob/node/desired_node)
 
 	if(desired_node)

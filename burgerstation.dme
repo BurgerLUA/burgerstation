@@ -279,6 +279,7 @@
 #include "code\_core\datum\damagetype\melee\sword\zweihander.dm"
 #include "code\_core\datum\damagetype\npc\_npc.dm"
 #include "code\_core\datum\damagetype\npc\beepsky.dm"
+#include "code\_core\datum\damagetype\npc\blob_attack.dm"
 #include "code\_core\datum\damagetype\npc\bubblegum.dm"
 #include "code\_core\datum\damagetype\npc\bull.dm"
 #include "code\_core\datum\damagetype\npc\chicken.dm"
