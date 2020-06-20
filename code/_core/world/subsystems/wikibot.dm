@@ -1,3 +1,5 @@
+#define WIKIBOT "text/wikibot.txt"
+
 var/global/list/wikibot_list = list()
 
 SUBSYSTEM_DEF(wikibot)
@@ -23,8 +25,6 @@ SUBSYSTEM_DEF(wikibot)
 	fdel(WIKIBOT)
 	text2file(json_encode(wikibot_list),WIKIBOT)
 	return TRUE
-
-
 
 /subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)
 

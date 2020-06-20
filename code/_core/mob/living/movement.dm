@@ -55,11 +55,6 @@
 	if(dead)
 		return FALSE
 
-	if(grabbing_hand)
-		if(move_dir && client)
-			resist()
-		return FALSE
-
 	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
 		return FALSE
 
@@ -68,6 +63,10 @@
 
 	if(move_dir)
 		if(buckled_object && !buckled_object.unbuckle(src))
+			return FALSE
+
+		if(move_dir && grabbing_hand)
+			resist()
 			return FALSE
 
 		if(get_status_effect_magnitude(SLEEP) == -1)

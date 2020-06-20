@@ -32,6 +32,9 @@
 
 /obj/structure/interactive/blob/core/Destroy()
 
+	if(src in SShorde.tracked_objectives)
+		SShorde.queue_objectives_update()
+
 	for(var/obj/structure/interactive/blob/B in linked_walls)
 		B.health.adjust_brute_loss(max(0,B.health.health_current - 10))
 		B.health.update_health()
@@ -80,6 +83,9 @@
 			CHECK_TICK
 			if(resources_to_spend <= 0)
 				break
+			var/obj/structure/interactive/blob/node/N = linked_nodes[i]
+			if(N.check_jugs())
+				resources_to_spend -= 5
 			if(!length(valid_turfs))
 				break
 			var/turf/simulated/floor/F = pick(valid_turfs)
@@ -93,9 +99,6 @@
 				resources_to_spend -= 1
 				INITIALIZE(B)
 			valid_turfs -= F
-			var/obj/structure/interactive/blob/node/N = linked_nodes[i]
-			if(N.check_jugs())
-				resources_to_spend -= 5
 
 	return ..()
 

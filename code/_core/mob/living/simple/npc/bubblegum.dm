@@ -12,9 +12,9 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 5000
+	health_base = 4000
 
-	move_delay = DECISECONDS_TO_TICKS(4)
+	move_delay = DECISECONDS_TO_TICKS(2)
 
 	stun_angle = 0
 
@@ -59,6 +59,17 @@
 	damage_received_multiplier = 0.5
 
 	mob_size = MOB_SIZE_BOSS
+
+	sprint_delay_mul = 1
+	jog_delay_mul = 3
+	walk_delay_mul = 4
+
+/mob/living/simple/npc/bubblegum/post_death()
+	. = ..()
+	charge_steps = 0
+	charge_dir = 0
+	icon_state = "dead"
+	return .
 
 /mob/living/simple/npc/bubblegum/proc/blood_attack()
 

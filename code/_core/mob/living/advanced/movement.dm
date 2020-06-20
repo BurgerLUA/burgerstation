@@ -8,6 +8,9 @@
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
+	if(grabbing_hand && handcuffed)
+		return FALSE
+
 	if(driving)
 		return driving.handle_movement(adjust_delay)
 

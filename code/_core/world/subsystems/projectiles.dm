@@ -6,6 +6,9 @@ SUBSYSTEM_DEF(projectile)
 	tick_rate = PROJECTILE_TICK
 	priority = SS_ORDER_IMPORTANT
 
+	cpu_usage_max = 90
+	tick_usage_max = 90
+
 /subsystem/projectile/on_life()
 
 	for(var/obj/projectile/P in all_projectiles)

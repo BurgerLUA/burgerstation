@@ -22,7 +22,6 @@
 	set_intent(INTENT_HARM)
 
 /mob/living/verb/set_intent_disarm()
-	set name = "Intent - Disarm"
 	set category = "Game"
 	set_intent(INTENT_DISARM)
 

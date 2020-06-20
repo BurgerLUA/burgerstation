@@ -98,7 +98,7 @@
 	action = "\The #USER screams!"
 	action_target = "\The #USER screams at #TARGET!"
 
-	sounds_male = list('sounds/voice/human/human_male_scream_1.ogg','sounds/voice/human/human_male_scream_2.ogg','sounds/voice/human/human_male_scream_3.ogg','sounds/voice/human/human_male_scream_4.ogg','sounds/voice/human/human_male_scream_5.ogg','sounds/voice/human/human_male_scream_6.ogg')
+	sounds_male = list('sounds/voice/human/human_male_scream_1.ogg','sounds/voice/human/human_male_scream_2.ogg','sounds/voice/human/human_male_scream_3.ogg','sounds/voice/human/human_male_scream_4.ogg','sounds/voice/human/human_male_scream_5.ogg','sounds/voice/human/human_male_scream_6.ogg','sounds/voice/human/human_male_scream_special.ogg')
 	sounds_female = list('sounds/voice/human/human_female_scream_1.ogg','sounds/voice/human/human_female_scream_2.ogg','sounds/voice/human/human_female_scream_3.ogg','sounds/voice/human/human_female_scream_4.ogg','sounds/voice/human/human_female_scream_5.ogg')
 
 /emote/dab

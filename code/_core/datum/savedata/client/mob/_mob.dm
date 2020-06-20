@@ -3,7 +3,8 @@ var/global/list/ckey_to_mobdata = list()
 /savedata/client/mob
 
 /savedata/client/mob/get_folder(var/folder_id)
-	return replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
+	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
+	return
 
 /savedata/client/mob/reset_data()
 	loaded_data = list(

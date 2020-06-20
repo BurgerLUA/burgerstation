@@ -1,3 +1,5 @@
+#define PLANE_HIDDEN -17
+
 #define PLANE_SPACE -16
 
 #define PLANE_PARALAX -15

@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/russian
-	name = "\improper 7.62x38mm AK-13"
+	name = "\improper 7.62x39mm AK-13"
 	desc = "Vanilla, but still powerful."
 	desc_extended = "The .308 Mauler Marksman Rifle is THE dmr for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
 	icon = 'icons/obj/items/weapons/ranged/rifle/762_russia.dmi'

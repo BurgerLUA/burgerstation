@@ -17,7 +17,7 @@
 		choice = input("Are you sure you want to dye \the [src.name]?","Dye Selection") in list("Yes","No","Cancel")
 		if(choice)
 			INTERACT_CHECK
-			color = blend_colors(color ? color : "#FFFFFF",dye_color,dye_strength)
+			color = blend_colors(color ? color : "#FFFFFF",dye_color ? dye_color : "#FFFFFF",dye_strength)
 
 	if(choice)
 		caller.to_chat(span("notice","You dye \the [src.name]."))

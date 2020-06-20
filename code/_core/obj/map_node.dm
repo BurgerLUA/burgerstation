@@ -28,6 +28,7 @@ var/global/mob/abstract/node_checker
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
 	invisibility = 0
+	plane = PLANE_HIDDEN
 
 /obj/marker/map_node/New(var/desired_loc)
 	alpha = 0

@@ -209,6 +209,8 @@
 
 	for(var/k in all_reagent_recipes)
 
+		CHECK_TICK
+
 		var/reagent_recipe/recipe = all_reagent_recipes[k]
 
 		if(debug) LOG_DEBUG("Checking [recipe]...")
@@ -253,6 +255,7 @@
 	var/portions_to_make
 
 	for(var/k in found_recipe.required_reagents)
+		CHECK_TICK
 		var/required_amount = found_recipe.required_reagents[k]
 		var/current_volume = c_id_to_volume[k]
 		var/math_to_do = current_volume / required_amount
@@ -268,6 +271,7 @@
 	var/desired_temperature = average_temperature
 
 	for(var/k in found_recipe.required_reagents)
+		CHECK_TICK
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
 		remove_reagent(k,amount_to_remove,FALSE,FALSE)
@@ -284,6 +288,7 @@
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(FALSE)
 		while(volume_current > 0)
+			CHECK_TICK
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
 			if(!A.reagents)
