@@ -21,6 +21,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/savedata/client/connection_history/connection_data
 	var/savedata/client/settings/settings
 	var/savedata/client/controls/controls
+	var/savedata/client/globals/globals
 
 	//var/save_slot //The character slot that the client wishes to overwrite.
 	var/list/last_params
@@ -66,6 +67,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/examine_mode = FALSE
 
 	var/permissions = FLAG_PERMISSION_NONE
+
 
 /client/proc/set_permissions(var/desired_permissions = FLAG_PERMISSION_NONE)
 	permissions = desired_permissions
@@ -132,6 +134,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	if(!connection_data)
 		connection_data = new(ckey)
+
+	if(!globals)
+		globals = new(ckey)
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)

@@ -43,7 +43,7 @@
 
 	cheese_type = /reagent/nutrition/cheese/brabander
 
-	ambient_sound = 'sounds/ambient/crickets.ogg'
+	//ambient_sound = 'sounds/ambient/crickets.ogg'
 
 	random_sounds = list(
 		'sounds/ambient/ambiruin_1.ogg',

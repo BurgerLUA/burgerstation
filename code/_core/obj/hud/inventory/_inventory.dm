@@ -8,7 +8,7 @@
 	//icon = 'icons/invisible.dmi'
 	//icon_state = "0"
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
 	plane = PLANE_HUD

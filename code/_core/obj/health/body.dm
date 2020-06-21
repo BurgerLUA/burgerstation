@@ -3,7 +3,7 @@
 	desc = "Health for your limbs."
 	id = "body"
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "invisible"
 
 	screen_loc = "RIGHT,CENTER-2"

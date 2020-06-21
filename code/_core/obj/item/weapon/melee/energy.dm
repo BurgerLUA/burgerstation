@@ -113,3 +113,10 @@
 		"core" = "#A5FF7F",
 		"blade" = "#4CFF00"
 	)
+
+/obj/item/weapon/melee/energy/sword/katana/black
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"core" = "#000000",
+		"blade" = "#FFFFFF"
+	)

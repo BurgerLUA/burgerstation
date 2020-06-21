@@ -2,7 +2,7 @@
 	name = "button"
 	desc = "This button does something, I think."
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "slot"
 
 	var/is_static = TRUE //Is the button anchored?

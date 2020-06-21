@@ -1,6 +1,6 @@
 /obj/hud/button/research/info
 	name = "info"
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "none"
 	maptext = "<center>Info</center>"
 

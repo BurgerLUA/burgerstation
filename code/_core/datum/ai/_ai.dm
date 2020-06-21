@@ -588,7 +588,7 @@
 		return FALSE
 	if(!is_enemy(A))
 		return FALSE
-	if(!should_attack_mob(A))
+	if(ismob(A) && !should_attack_mob(A))
 		return FALSE
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
 		return FALSE

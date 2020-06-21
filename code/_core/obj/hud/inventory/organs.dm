@@ -9,7 +9,7 @@
 
 	drag_to_take = TRUE
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
 	screen_loc = "CENTER,CENTER"
