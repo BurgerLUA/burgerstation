@@ -423,7 +423,7 @@
 	last_interacted = caller
 	return ..()
 
-/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object)
+/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
 	if(!allow_reagent_transfer_from) //Can we transfer anything from this?
 		return FALSE
@@ -433,7 +433,7 @@
 		if(L.intent == INTENT_HARM)
 			return FALSE
 
-	var/atom/defer_object = object.defer_click_on_object()
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(can_feed(caller,defer_object))
 		if(is_living(defer_object))

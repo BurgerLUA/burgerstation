@@ -4,7 +4,10 @@
 	roaming_distance = 0
 	resist_handcuffs = FALSE
 
-/ai/advanced/hostage/is_enemy(var/mob/living/L)
+/ai/advanced/hostage/is_enemy(var/atom/A)
+	if(!is_living(A))
+		return FALSE
+	var/mob/living/L = A
 	return L.ai && L.ai.objective_attack == owner
 
 

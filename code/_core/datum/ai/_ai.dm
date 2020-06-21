@@ -519,13 +519,19 @@
 
 	return TRUE
 
-/ai/proc/is_enemy(var/mob/living/L)
+/ai/proc/is_enemy(var/atom/A)
 	switch(aggression)
 		if(0)
 			return FALSE
 		if(1)
+			if(!is_living(A))
+				return FALSE
+			var/mob/living/L = A
 			return owner.loyalty_tag && L.loyalty_tag && (L.loyalty_tag in enemy_tags)
 		if(2)
+			if(!is_living(A))
+				return TRUE
+			var/mob/living/L = A
 			return owner.loyalty_tag != L.loyalty_tag
 		if(3)
 			return TRUE

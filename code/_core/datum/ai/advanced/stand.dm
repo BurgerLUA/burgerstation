@@ -51,15 +51,17 @@
 	return FALSE
 
 
-/ai/advanced/stand/is_enemy(var/mob/living/L)
-	if(L == owner)
+/ai/advanced/stand/is_enemy(var/atom/A)
+	if(A == owner)
 		return FALSE
 	if(istype(owner,/mob/living/advanced/stand/))
 		var/mob/living/advanced/stand/S = owner
-		if(L == S.owner)
+		if(A == S.owner)
 			return FALSE
-		if(L.ai && L.ai.is_enemy(S.owner))
-			return TRUE
+		if(is_living(A))
+			var/mob/living/L = A
+			if(L.ai && L.ai.is_enemy(S.owner))
+				return TRUE
 	return FALSE
 
 /ai/advanced/stand/get_attack_score(var/mob/living/L)

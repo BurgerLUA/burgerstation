@@ -42,10 +42,10 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	var/atom/defer_object = object.defer_click_on_object()
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(is_item(defer_object))
-		var/obj/item/I = object
+		var/obj/item/I = defer_object
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
 				firing_pin.force_move(get_turf(src))
