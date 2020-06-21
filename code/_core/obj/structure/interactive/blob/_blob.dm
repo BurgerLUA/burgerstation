@@ -32,8 +32,9 @@
 	. = FALSE
 
 	for(var/mob/living/L in range(1,src))
-		src.attack(src,L,precise = TRUE)
-		. = TRUE
+		if(can_attack(L,src,null,damage_type))
+			src.attack(src,L,precise = TRUE)
+			. = TRUE
 
 	if(. && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
 		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)

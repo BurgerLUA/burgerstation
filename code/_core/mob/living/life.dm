@@ -233,9 +233,6 @@
 	if(dead)
 		return FALSE
 
-	if(reagents)
-		reagents.metabolize()
-
 	update_alpha(handle_alpha())
 
 	handle_status_effects()
@@ -270,6 +267,9 @@ mob/living/proc/on_life_slow()
 
 	if(dead)
 		return FALSE
+
+	if(reagents)
+		reagents.metabolize()
 
 	handle_charges(LIFE_TICK_SLOW)
 

@@ -167,7 +167,6 @@
 #include "code\_core\client\hud.dm"
 #include "code\_core\client\life.dm"
 #include "code\_core\client\mob.dm"
-#include "code\_core\client\mousemove.dm"
 #include "code\_core\client\movement.dm"
 #include "code\_core\client\topic.dm"
 #include "code\_core\client\varedit.dm"

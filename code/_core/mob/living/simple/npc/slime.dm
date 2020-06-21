@@ -38,6 +38,9 @@
 
 	damage_type = /damagetype/npc/slime
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/npc/slime/Initialize()
 	. = ..()
 	update_sprite()

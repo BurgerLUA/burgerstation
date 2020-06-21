@@ -68,11 +68,14 @@
 
 	damage_type = /damagetype/npc/slime
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	. = ..()
 
-	if(!dead && damage_amount >= 10)
+	if(!dead && prob(damage_amount))
 		var/mob/living/simple/npc/slime/S = new(src.loc)
 
 		var/xvel = rand(-1,1)

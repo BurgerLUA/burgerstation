@@ -33,6 +33,8 @@
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
+
+
 /area/transit/syndicate_raid/ship
 	name = "syndicate raid shuttle - ship"
 	id = "syndicate_raid_shuttle_ship"

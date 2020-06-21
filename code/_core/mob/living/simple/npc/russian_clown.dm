@@ -51,6 +51,9 @@
 
 	mob_size = MOB_SIZE_GIANT
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 
 /mob/living/simple/npc/rev_leader/pre_death()
 	do_say("<font face='Comic Sans MS' color='#FF69FF' size='4'>oh darn</font>",FALSE)

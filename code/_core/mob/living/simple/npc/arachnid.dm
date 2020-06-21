@@ -50,6 +50,9 @@
 
 	mob_size = MOB_SIZE_GIANT
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/npc/arachnid/post_death()
 	. = ..()
 	icon_state = "dead"

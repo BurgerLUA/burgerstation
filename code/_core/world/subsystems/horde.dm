@@ -144,10 +144,12 @@ SUBSYSTEM_DEF(horde)
 
 		var/obj/marker/map_node/spawn_node = find_viable_spawn()
 		if(!spawn_node)
+			log_error("ERROR: Could not find a valid horde spawn!")
 			return TRUE
 
 		var/obj/marker/map_node/target_node = find_viable_target()
 		if(!target_node)
+			log_error("ERROR: Could not find a valid horde target!")
 			return TRUE
 
 		var/obj/marker/map_node/list/found_path = spawn_node.find_path(target_node)
@@ -164,8 +166,6 @@ SUBSYSTEM_DEF(horde)
 			INITIALIZE(S)
 			S.ai.set_path(found_path)
 			tracked_enemies += S
-			for(var/mob/abstract/observer/ghost/G in world)
-				G.force_move(S.loc)
 
 	return TRUE
 

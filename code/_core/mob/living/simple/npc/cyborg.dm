@@ -7,6 +7,9 @@
 
 	ai = /ai/
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 
 /mob/living/simple/npc/silicon/engineer
 	name = "engineer cyborg"

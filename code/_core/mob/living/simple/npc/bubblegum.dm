@@ -64,6 +64,9 @@
 	jog_delay_mul = 3
 	walk_delay_mul = 4
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/npc/bubblegum/post_death()
 	. = ..()
 	charge_steps = 0

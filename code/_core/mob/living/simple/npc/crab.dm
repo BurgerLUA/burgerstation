@@ -94,6 +94,9 @@
 		DRUGGY = FALSE
 	)
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 
 /mob/living/simple/npc/crab/king/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 

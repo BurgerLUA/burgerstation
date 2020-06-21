@@ -13,6 +13,7 @@
 	if(!linked_blobbernaught)
 		linked_blobbernaught = new(get_turf(src),null,1,src)
 		INITIALIZE(linked_blobbernaught)
+		return TRUE
 
 	return FALSE
 

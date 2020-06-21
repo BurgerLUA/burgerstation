@@ -10,6 +10,7 @@
 	health_states = 0
 
 	var/resources_to_spend = 36 //Early growth.
+	var/blob_limit = 640
 
 /obj/structure/interactive/blob/core/proc/get_nodes_to_create()
 	return FLOOR(length(linked_walls)*(1/18),1) - length(linked_nodes)
@@ -86,7 +87,10 @@
 			var/obj/structure/interactive/blob/node/N = linked_nodes[i]
 			if(N.check_jugs())
 				resources_to_spend -= 5
+				break
 			if(!length(valid_turfs))
+				break
+			if(length(linked_walls) > blob_limit)
 				break
 			var/turf/simulated/floor/F = pick(valid_turfs)
 			var/obj/structure/interactive/blob/node/N2 = locate() in range(5,F)

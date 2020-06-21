@@ -45,19 +45,18 @@ obj/structure/interactive/bed/sleeper/update_underlays()
 	underlays += I
 	return .
 
-obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,object,location,control,params)
+obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	. = ..()
+	object = object.defer_click_on_object(location,control,params)
 
-	if(!.)
+	if(is_inventory(object))
 		if(door_state == SLEEPER_CLOSED)
 			open()
 		else if(door_state == SLEEPER_OPENED)
 			close()
-
 		return TRUE
 
-	return .
+	return ..()
 
 /obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 

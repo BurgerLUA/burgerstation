@@ -57,13 +57,13 @@
 	return total_metabolized
 
 /reagent/proc/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_stomach
+	return metabolism_stomach * LIFE_TICK_SLOW
 
 /reagent/proc/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_blood
+	return metabolism_blood * LIFE_TICK_SLOW
 
 /reagent/proc/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_skin
+	return metabolism_skin * LIFE_TICK_SLOW
 
 /reagent/proc/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
-	return metabolism_amount
+	return metabolism_amount * LIFE_TICK_SLOW
