@@ -1,6 +1,7 @@
 /mob/living/advanced/player/antagonist/
 	var/loadout/loadout_to_use
 	class = /class/antagonist
+	allow_save = FALSE
 
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)

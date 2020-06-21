@@ -71,6 +71,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 		/cqc/sleeping_carp/gnashing_teeth
 	)
 
+	var/allow_save = TRUE
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 	click_and_drag_icon	= new(src)

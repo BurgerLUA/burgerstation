@@ -2,10 +2,10 @@
 
 	. = ..()
 
-	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
-
-	if(mobdata)
-		mobdata.save_current_character(FALSE)
+	if(allow_save)
+		var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+		if(mobdata)
+			mobdata.save_current_character(FALSE)
 
 	return .
 

@@ -39,13 +39,12 @@ obj/structure/interactive/bed
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_living(caller))
-		return ..()
+		..() //This is needed
+		return FALSE
 
 	INTERACT_CHECK
 
 	if(buckled)
-		if(buckled == caller)
-			return ..()
 		unbuckle(caller)
 		return TRUE
 
