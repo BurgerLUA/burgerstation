@@ -50,7 +50,8 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,locatio
 		return TRUE
 
 	var/mob/living/L = locate() in loc.contents
-	if(L) buckle(L,caller)
+	if(L)
+		buckle(L,caller)
 
 	return TRUE
 
