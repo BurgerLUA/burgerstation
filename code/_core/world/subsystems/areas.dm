@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(area)
 		var/sound_to_play = pick(A.random_sounds)
 		var/list/valid_players = list()
 		for(var/mob/living/advanced/player/P in A.contents)
-			if(!P.client)
+			if(!P.client || P.dead)
 				continue
 			valid_players += P
 		if(length(valid_players))

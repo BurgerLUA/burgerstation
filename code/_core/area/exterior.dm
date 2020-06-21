@@ -43,6 +43,18 @@
 
 	cheese_type = /reagent/nutrition/cheese/brabander
 
+	ambient_sound = 'sounds/ambient/crickets.ogg'
+
+	random_sounds = list(
+		'sounds/ambient/ambiruin_1.ogg',
+		'sounds/ambient/ambiruin_2.ogg',
+		'sounds/ambient/ambiruin_3.ogg',
+		'sounds/ambient/ambiruin_4.ogg',
+		'sounds/ambient/ambiruin_5.ogg',
+		'sounds/ambient/ambiruin_6.ogg',
+		'sounds/ambient/ambiruin_7.ogg',
+	)
+
 
 /area/exterior/jungle/setup_sunlight(var/turf/T)
 

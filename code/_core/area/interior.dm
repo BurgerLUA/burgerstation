@@ -28,6 +28,11 @@
 	desired_light_power = 1
 	desired_light_color ="#7F3B11"
 
+	random_sounds = list(
+		'sounds/ambient/lavacaves_1.ogg',
+		'sounds/ambient/lavacaves_2.ogg',
+	)
+
 	cheese_type = /reagent/nutrition/cheese/guava
 
 /area/interior/cave/lava/setup_sunlight(var/turf/T)
@@ -66,7 +71,8 @@
 		'sounds/ambient/station_9.ogg',
 		'sounds/ambient/station_10.ogg',
 		'sounds/ambient/station_11.ogg',
-		'sounds/ambient/station_12.ogg'
+		'sounds/ambient/station_12.ogg',
+		'sounds/ambient/station_13.ogg'
 	)
 
 /area/interior/station/singleplayer
@@ -92,7 +98,8 @@
 		'sounds/ambient/station_9.ogg',
 		'sounds/ambient/station_10.ogg',
 		'sounds/ambient/station_11.ogg',
-		'sounds/ambient/station_12.ogg'
+		'sounds/ambient/station_12.ogg',
+		'sounds/ambient/station_13.ogg'
 	)
 
 /area/interior/ship/hall
@@ -189,7 +196,8 @@
 	ambient_sound = 'sounds/ambient/vents_loop.ogg'
 
 	random_sounds = list(
-		'sounds/ambient/maintenance.ogg'
+		'sounds/ambient/maint_1.ogg',
+		'sounds/ambient/maint_2.ogg'
 	)
 
 /area/interior/ship/pvp
