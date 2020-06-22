@@ -208,7 +208,7 @@
 
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	if(!is_player(attacker))
+	if(!attacker.is_player_controlled())
 		return FALSE
 
 	if(ismovable(victim))
@@ -223,7 +223,11 @@
 		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 			return TRUE
 
-	return luck(list(attacker,weapon),get_crit_chance(attacker)) && luck(list(victim,hit_object),100,FALSE)
+	var/crit_chance = get_crit_chance(attacker)
+
+	world.log << "Crit Chance: [crit_chance]%."
+
+	return luck(list(attacker,weapon),crit_chance)
 
 
 //atom/proc/defer_victim(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
@@ -257,11 +261,16 @@
 
 		var/damage_blocked = 0
 		var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
+		var/defense_rating_attacker = list()
+		if(attacker.health && get_attack_type() == ATTACK_TYPE_MAGIC)
+			defense_rating_attacker = attacker.health.get_defense(attacker,hit_object)
+
 		for(var/damage_type in damage_to_deal)
 			var/victim_defense = defense_rating_victim[damage_type]
-			if(victim_defense == INFINITY)
+			if(victim_defense >= INFINITY)
 				damage_to_deal[damage_type] = 0
 				continue
+			victim_defense -= defense_rating_attacker[damage_type] && defense_rating_attacker[damage_type] < INFINITY ? defense_rating_attacker[damage_type] : 0
 			if(victim_defense > 0)
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
@@ -321,22 +330,25 @@
 			if(is_living(victim) && is_living(attacker) && attacker != victim && total_damage_dealt)
 				var/mob/living/A = attacker
 				var/mob/living/V = victim
-				if(!V.dead && A.client)
+				if(!V.dead && A.is_player_controlled())
+					var/experience_multiplier = victim.get_xp_multiplier()
 					if(critical_hit_multiplier > 1)
-						A.add_skill_xp(SKILL_PRECISION,CEILING(total_damage_dealt*victim.get_xp_multiplier()/critical_hit_multiplier,1))
+						var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
+						if(xp_to_give > 0)
+							A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 
 					for(var/skill in skill_stats)
-						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
 
 					for(var/attribute in attribute_stats)
-						var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(), 1)
+						var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 						if(xp_to_give > 0)
 							A.add_attribute_xp(attribute,xp_to_give)
 
 					for(var/skill in bonus_experience)
-						var/xp_to_give = CEILING(bonus_experience[skill] * 0.01 * total_damage_dealt * victim.get_xp_multiplier(),1)
+						var/xp_to_give = CEILING(bonus_experience[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
 
@@ -380,11 +392,10 @@
 		if(attack_direction & SOUTH)
 			offset_y -= 1
 
-		if(is_player(victim))
-			var/mob/living/advanced/player/P = victim
-			if(P && P.client)
-				var/client/C = P.client
-				animate(C,pixel_x = offset_x*multiplier, pixel_y = offset_y*multiplier,time=1)
+		if(ismob(victim))
+			var/mob/M = victim
+			if(M.client)
+				animate(M.client,pixel_x = offset_x*multiplier, pixel_y = offset_y*multiplier,time=1)
 				animate(pixel_x = 0, pixel_y = 0, time = 5)
 
 		else if(victim.health.health_current - damage_dealt <= 0)

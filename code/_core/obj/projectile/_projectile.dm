@@ -36,6 +36,7 @@
 	var/atom/target_atom
 
 	var/hit_target_turf = FALSE
+	var/hit_laying = FALSE
 
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

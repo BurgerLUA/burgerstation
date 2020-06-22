@@ -253,7 +253,7 @@
 		var/mob/living/L = src
 		L.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name][name_check]!"),CHAT_TYPE_COMBAT)
 
-	if(is_player(src))
+	if(is_player_controlled())
 		add_skill_xp(SKILL_BLOCK,1)
 
 	return TRUE
@@ -282,7 +282,7 @@
 	if(get_dist(src,attacker) <= 1)
 		parry_atom.attack(src,attacker)
 
-	if(is_player(src))
+	if(is_player_controlled())
 		add_skill_xp(SKILL_PARRY,1)
 
 	return TRUE

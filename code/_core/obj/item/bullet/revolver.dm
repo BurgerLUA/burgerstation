@@ -46,7 +46,7 @@
 
 /obj/item/bullet_cartridge/revolver_44
 	name = "\improper .44 revolver cartridge"
-	desc = "For revolvers that require .44 magnum ammo."
+	desc = "For revolvers that require .44 revolver ammo."
 	icon = 'icons/obj/items/bullet/44.dmi'
 
 
@@ -87,3 +87,24 @@
 	size = 0.01
 	weight = 0.01
 	value = 0.1
+
+/obj/item/bullet_cartridge/revolver_300
+	name = "\improper .300 revolver cartridge"
+	desc = "For revolvers that require .300 revolver ammo."
+	icon = 'icons/obj/items/bullet/300.dmi'
+
+	bullet_diameter = 7.62
+	bullet_length = 46
+	bullet_color = COLOR_BULLET
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	projectile = /obj/projectile/bullet/firearm/revolver/
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_300
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.06
+	weight = 0.06
+	value = 1.2

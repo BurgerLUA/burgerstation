@@ -3,8 +3,7 @@
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
-#define FPS_SERVER 55
-#define FPS_SERVER_MIN 30
+#define FPS_SERVER 30
 
 #define SHUTDOWN_SUBSYSTEM_ON_ERROR FALSE
 

@@ -3,7 +3,10 @@
 	if(is_sneaking)
 		on_sneak()
 
-	. = ..()
+	if(horizontal)
+		silent = TRUE
+
+	. = ..(silent = silent)
 
 	if(.)
 		table_count = 0

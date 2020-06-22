@@ -49,13 +49,10 @@
 	var/has_hard_crit = FALSE
 
 	var/list/overlays_assoc
-
 	var/list/overlays_assoc_atom
 
 	var/list/protection_heat = TARGETABLE_LIMBS_KV
-
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
-
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
 	var/list/known_wishgranters = list() //ID based.
@@ -419,17 +416,6 @@ mob/living/advanced/Login()
 		return FALSE
 
 	return ..()
-
-/* OLD MOVEMENT
-/mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
-	. = ..()
-	if(.)
-		add_skill_xp(,1)
-		stamina_current = max(0,stamina_current - 1)
-		return .
-	else
-		return FALSE
-*/
 
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
 

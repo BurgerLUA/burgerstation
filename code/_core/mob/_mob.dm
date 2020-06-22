@@ -202,10 +202,5 @@
 
 	return ..()
 
-
-/mob/is_safe_to_delete()
-
-	if(client || (ckey_last && ckey_last != ""))
-		return FALSE
-
-	return ..()
+/mob/is_player_controlled()
+	return ckey || (ckey_last && ckey_last != "")

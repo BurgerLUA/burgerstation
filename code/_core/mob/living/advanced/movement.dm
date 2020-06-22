@@ -48,3 +48,19 @@ mob/living/advanced/get_movement_delay()
 			return FALSE
 
 	return ..()
+
+
+/mob/living/advanced/do_footstep(var/turf/T,var/silent=FALSE,var/right=FALSE)
+
+	if(right)
+		if(labeled_organs[LEFT_FOOT])
+			var/obj/item/organ/foot/O = labeled_organs[LEFT_FOOT]
+			O.do_step(T)
+			return TRUE
+	else
+		if(labeled_organs[RIGHT_FOOT])
+			var/obj/item/organ/foot/O = labeled_organs[RIGHT_FOOT]
+			O.do_step(T)
+			return TRUE
+
+	return FALSE

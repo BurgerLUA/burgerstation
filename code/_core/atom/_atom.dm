@@ -193,8 +193,13 @@
 
 	return 0x0
 
+/atom/proc/is_player_controlled()
+	return FALSE
 
 /atom/is_safe_to_delete()
+
+	if(is_player_controlled())
+		return FALSE
 
 	for(var/atom/A in contents)
 		if(!A.is_safe_to_delete())
@@ -204,4 +209,5 @@
 
 /atom/get_debug_name()
 	return "[src.name]([src.type])([x],[y],[z])"
+
 

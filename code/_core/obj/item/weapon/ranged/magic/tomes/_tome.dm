@@ -20,9 +20,6 @@
 
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(var/mob/living/caster)
 
-	if(!is_player(caster))
-		return cost_mana * NPC_MANA_COST_MULTIPLIER
-
 	var/mob/living/advanced/player/P = caster
 
 	return cost_mana * (1 - (P.get_skill_level(associated_skill)/200))

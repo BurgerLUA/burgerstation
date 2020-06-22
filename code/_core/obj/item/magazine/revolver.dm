@@ -25,7 +25,7 @@
 	weight = WEIGHT_2
 
 /obj/item/magazine/clip/revolver/bullet_44
-	name = "\improper .44 magnum speedloader"
+	name = "\improper .44 revolver speedloader"
 	icon = 'icons/obj/items/magazine/revolver/44.dmi'
 	icon_state = "44"
 	bullet_count_max = 6
@@ -52,7 +52,7 @@
 
 /*
 /obj/item/magazine/clip/revolver/bullet_44/surplus/
-	name = "\improper surplus .44 magnum speedloader"
+	name = "\improper surplus .44 revolver speedloader"
 	ammo = /obj/item/bullet_cartridge/revolver_44/surplus
 */
 

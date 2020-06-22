@@ -86,6 +86,19 @@
 
 	return FALSE
 
+
+/atom/movable/proc/do_footstep(var/turf/T,var/silent=FALSE,var/right=FALSE)
+
+	if(!silent && has_footsteps)
+		var/footstep_to_use = footstep_override_id ? footstep_override_id : T.footstep_id
+		if(footstep_to_use && all_footsteps[footstep_to_use])
+			var/footstep/F = all_footsteps[footstep_to_use]
+			F.on_step(T,src,TRUE)
+			return TRUE
+
+	return FALSE
+
+
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	var/stepped_x = 0
@@ -153,11 +166,7 @@
 		OldLoc.Exited(src,NewLoc)
 
 		//DO: Make a footstep sound.
-		if(!silent && has_footsteps)
-			var/footstep_to_use = footstep_override_id ? footstep_override_id : OldLoc.footstep_id
-			if(footstep_to_use && all_footsteps[footstep_to_use])
-				var/footstep/F = all_footsteps[footstep_to_use]
-				F.on_step(OldLoc,src,TRUE)
+		src.do_footstep(OldLoc,silent,TRUE)
 
 		//DO: Exited the contents.
 		for(var/atom/A in OldLoc.contents)
@@ -177,12 +186,7 @@
 		//DO: Entered the turf.
 		NewLoc.Entered(src,OldLoc)
 
-		//DO: Make a footstep sound.
-		if(!silent && has_footsteps)
-			var/footstep_to_use = footstep_override_id ? footstep_override_id : NewLoc.footstep_id
-			if(footstep_to_use && all_footsteps[footstep_to_use])
-				var/footstep/F = all_footsteps[footstep_to_use]
-				F.on_step(NewLoc,src,FALSE)
+		src.do_footstep(NewLoc,silent,FALSE)
 
 		//DO: Enter the contents.
 		for(var/atom/A in NewLoc.contents)
