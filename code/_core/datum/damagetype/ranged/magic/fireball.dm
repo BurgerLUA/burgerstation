@@ -4,7 +4,7 @@
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		MAGIC = 10,
-		HEAT = 20
+		HEAT = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -14,7 +14,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 40
+		ATTRIBUTE_INTELLIGENCE = 25
 	)
 
 	attribute_damage = list(
@@ -22,7 +22,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 40
+		SKILL_MAGIC = 25
 	)
 
 	skill_damage = list(

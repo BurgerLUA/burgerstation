@@ -125,6 +125,7 @@
 
 /loadout/syndicate/player_antagonist
 	spawning_items = list(
+		/obj/item/clothing/ears/headset,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/feet/socks/ankle,

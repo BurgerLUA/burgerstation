@@ -2,7 +2,7 @@
 	name = "tome of the plasma crystal"
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
-	cost_mana = 24
+	cost_mana = 18
 	shoot_delay = 0.5
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/crystal.dmi'

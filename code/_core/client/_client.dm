@@ -75,6 +75,9 @@ var/global/list/all_clients = list() //Assoc list
 	var/desired_recoil_y = 0
 
 
+/client/proc/is_player_controlled()
+	return TRUE //duh
+
 /client/proc/set_permissions(var/desired_permissions = FLAG_PERMISSION_NONE)
 	permissions = desired_permissions
 	update_verbs()

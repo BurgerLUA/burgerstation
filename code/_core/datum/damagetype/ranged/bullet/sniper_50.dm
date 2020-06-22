@@ -13,4 +13,4 @@
 		PIERCE = INFINITY
 	)
 
-	falloff = 0
+	falloff = VIEW_RANGE*3
