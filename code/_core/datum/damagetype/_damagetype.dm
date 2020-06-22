@@ -406,16 +406,16 @@
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play(pick(impact_sounds_flesh),get_turf(hit_object), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
+		play(pick(impact_sounds_flesh),get_turf(hit_object), alert = ALERT_LEVEL_CAUTION, alert_source = attacker)
 
 	if(length(impact_sounds))
-		play(pick(impact_sounds),get_turf(hit_object), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
+		play(pick(impact_sounds),get_turf(hit_object), alert = ALERT_LEVEL_CAUTION, alert_source = attacker)
 
 	return TRUE
 
 /damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
 	if(length(miss_sounds))
-		play(pick(miss_sounds),get_turf(victim), alert = ALERT_LEVEL_NOISE, alert_source = attacker)
+		play(pick(miss_sounds),get_turf(victim), alert = ALERT_LEVEL_CAUTION, alert_source = attacker)
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
 

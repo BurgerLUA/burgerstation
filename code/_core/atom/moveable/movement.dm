@@ -17,6 +17,9 @@
 
 		var/retrieved_movement_delay = get_movement_delay()
 
+		if(final_move_dir in DIRECTIONS_INTERCARDINAL)
+			retrieved_movement_delay *= HYPOTENUSE(1,1)
+
 		var/final_movement_delay = acceleration_mod ? retrieved_movement_delay + (acceleration_mod*retrieved_movement_delay*(1 - acceleration_value/100)) : retrieved_movement_delay
 		var/atom/desired_loc = get_step(src,final_move_dir)
 		var/list/step_offsets = list(0,0)

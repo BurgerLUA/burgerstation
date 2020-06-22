@@ -604,6 +604,7 @@
 				attackers[attacker] = TRUE
 			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
 		else if(alert_level == ALERT_LEVEL_NONE)
+			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
 	return TRUE
@@ -675,7 +676,7 @@
 
 	if(old_alert_level != alert_level)
 		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
+			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 

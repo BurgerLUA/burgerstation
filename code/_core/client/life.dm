@@ -43,9 +43,15 @@
 		zoom_offset_x = returning_list[1]*TILE_SIZE*ZOOM_RANGE
 		zoom_offset_y = returning_list[2]*TILE_SIZE*ZOOM_RANGE
 
-	var/speed = CEILING(TILE_SIZE * 0.1,1)
-	var/x_mod = clamp((desired_recoil_x + desired_pixel_x + zoom_offset_x) - pixel_x,-speed,speed)
-	var/y_mod = clamp((desired_recoil_y + desired_pixel_y + zoom_offset_y) - pixel_y,-speed,speed)
+	var/final_pixel_x = desired_recoil_x + desired_pixel_x + zoom_offset_x
+	var/final_pixel_y = desired_recoil_y + desired_pixel_y + zoom_offset_y
+
+	var/total_difference = abs(final_pixel_x - pixel_x) + abs(final_pixel_y - pixel_y)
+	var/diff_mod = clamp(total_difference*0.1,1,10)
+
+	var/speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
+	var/x_mod = clamp(final_pixel_x - pixel_x,-speed,speed)
+	var/y_mod = clamp(final_pixel_y - pixel_y,-speed,speed)
 
 	pixel_x = pixel_x + x_mod
 	pixel_y = pixel_y + y_mod

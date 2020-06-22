@@ -78,22 +78,22 @@
 
 	var/horde_state = SShorde.state
 
-
-	if(C.globals.loaded_data["antag_tokens"] <= 0 && !(C.permissions & FLAG_PERMISSION_DEVELOPER))
-		caller.to_chat(span("notice","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
-		return .
-
 	if(horde_state == HORDE_STATE_PRELOAD)
 		caller.to_chat(span("notice","The game has not loaded yet!"))
 		return TRUE
 
-	if(horde_state == HORDE_STATE_WAITING)
-		caller.to_chat(span("notice","The game hasn't started yet!"))
-		return TRUE
+	if(!(C.permissions & FLAG_PERMISSION_DEVELOPER))
+		if(C.globals.loaded_data["antag_tokens"] <= 0)
+			caller.to_chat(span("notice","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
+			return .
 
-	if(horde_state != HORDE_STATE_GEARING)
-		caller.to_chat(span("notice","It's too late to become an antag now!"))
-		return TRUE
+		if(horde_state == HORDE_STATE_WAITING)
+			caller.to_chat(span("notice","The game hasn't started yet!"))
+			return TRUE
+
+		if(horde_state != HORDE_STATE_GEARING)
+			caller.to_chat(span("notice","It's too late to become an antag now!"))
+			return TRUE
 
 	var/choice = input("Are you sure you wish to spend an antag token to become an antagonist? You will spawn in as a Syndicate Assassin with predetermined gear.") as null|anything in list("Yes","No","Cancel")
 
@@ -102,7 +102,7 @@
 		return FALSE
 
 	var/obj/marker/antag/M = pick(all_antag_markers)
-	all_antag_markers -= M
+	//all_antag_markers -= M
 	var/mob/living/advanced/player/antagonist/syndicate/SP = new(get_turf(M),C)
 	SP.prepare()
 	return .

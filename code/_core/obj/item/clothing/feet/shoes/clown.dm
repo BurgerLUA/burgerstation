@@ -19,9 +19,9 @@
 	size = SIZE_2
 	weight = WEIGHT_2
 
-	value = 200
+	value = 150
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/feet/shoes/clown/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
 	original_footsteps += /footstep/clownstep

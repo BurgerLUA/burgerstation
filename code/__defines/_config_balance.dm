@@ -21,7 +21,7 @@
 #define WEIGHT_8 100
 #define WEIGHT_X 1000
 
-#define BULLET_SPEED_MAX                  (TILE_SIZE-1)*0.80
+#define BULLET_SPEED_MAX                  (TILE_SIZE-1)
 #define BULLET_SPEED_SNIPER               BULLET_SPEED_MAX * 0.9
 #define BULLET_SPEED_RIFLE_HEAVY          BULLET_SPEED_MAX * 0.8
 #define BULLET_SPEED_RIFLE_LIGHT          BULLET_SPEED_MAX * 0.7

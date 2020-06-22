@@ -24,9 +24,9 @@
 
 	if(new_location.item_slot & SLOT_EYES)
 		var/list/desired_color = list(
-			0.5,1,0,0,
-			0,1.5,0,0,
-			0,1,0.5,0,
+			1.5,2,0,0,
+			0,2.5,0,0,
+			0,2,1.5,0,
 			0,0,0,1,
 			0,0,0,0
 		)
