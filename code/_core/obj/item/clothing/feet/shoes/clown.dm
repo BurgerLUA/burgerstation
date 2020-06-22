@@ -20,9 +20,11 @@
 
 	value = 100
 
-	slowdown_mul_worn = 1.1
+	slowdown_mul_worn = 1.4
 
-	footstep = /footstep/clownstep
+/obj/item/clothing/feet/shoes/clown/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
+	original_footsteps += /footstep/clownstep
+	return original_footsteps
 
 /obj/item/clothing/feet/shoes/clown/left
 	name = "left clown shoe"

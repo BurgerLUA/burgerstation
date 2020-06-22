@@ -1,12 +1,41 @@
+/mob/living/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+
+	if(enter)
+		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(move_delay)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
+		return FALSE
+
+	do_footstep(T,footsteps_to_use,enter)
+
+	return TRUE
+
+/mob/living/proc/do_footstep(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+	for(var/k in footsteps_to_use)
+		if(!k)
+			continue
+		var/footstep/F = SSfootstep.all_footsteps[k]
+		if(F.has_footprints)
+			var/type_to_use = enter ? /obj/effect/footprint/emboss/ : /obj/effect/footprint/emboss/exit
+			var/obj/effect/footprint/emboss/P = new type_to_use(T,src.dir,TRUE,TRUE)
+			P.color = F.footprint_color
+			P.alpha = F.footprint_alpha
+			INITIALIZE(P)
+		var/footstep_volume = 50 * (move_mod-0.5)
+		if(is_sneaking)
+			footstep_volume *= 0.5
+		if(length(F.footstep_sounds))
+			var/footstep_sound = pick(F.footstep_sounds)
+			play(footstep_sound,all_mobs_with_clients - src, T, volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
+			play(footstep_sound,src,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch= 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
+
+/mob/living/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	return original_footsteps
+
 /mob/living/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	if(is_sneaking)
 		on_sneak()
 
-	if(horizontal)
-		silent = TRUE
-
-	. = ..(silent = silent)
+	. = ..()
 
 	if(.)
 		table_count = 0
@@ -18,7 +47,6 @@
 		stand.on_move(.,NewLoc,Dir)
 
 	return .
-
 
 /mob/living/post_move(var/atom/old_loc)
 

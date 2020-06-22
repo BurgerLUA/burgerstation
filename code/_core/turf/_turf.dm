@@ -28,6 +28,10 @@
 
 	var/delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier.
 
+/turf/proc/on_step()
+	return TRUE
+
+
 /turf/proc/is_space()
 	return FALSE
 
@@ -71,17 +75,32 @@
 
 	return src
 
-/turf/Entered(var/atom/enterer,var/atom/old_loc)
+/turf/proc/do_footstep(var/atom/movable/source,var/enter=FALSE)
+
+	if(!source.has_footsteps)
+		return FALSE
+
+	var/list/returning_footsteps = source.get_footsteps(footstep ? list(footstep) : list(),enter)
+	if(length(returning_footsteps))
+		return source.handle_footsteps(src,returning_footsteps,enter)
+
+	return FALSE
+
+/turf/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	if(src.loc && (!old_loc || src.loc != old_loc.loc))
 		src.loc.Entered(enterer)
 
+	do_footstep(enterer,TRUE)
+
 	..()
 
-/turf/Exited(var/atom/exiter,var/atom/new_loc)
+/turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
 		src.loc.Exited(exiter)
+
+	do_footstep(exiter,FALSE)
 
 	..()
 

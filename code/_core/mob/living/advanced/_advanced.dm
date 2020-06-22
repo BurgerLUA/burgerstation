@@ -135,7 +135,6 @@
 
 	return TRUE
 
-
 /mob/living/advanced/update_eyes()
 
 	. = ..()

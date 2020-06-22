@@ -225,8 +225,6 @@
 
 	var/crit_chance = get_crit_chance(attacker)
 
-	world.log << "Crit Chance: [crit_chance]%."
-
 	return luck(list(attacker,weapon),crit_chance)
 
 

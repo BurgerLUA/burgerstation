@@ -87,16 +87,6 @@
 	return FALSE
 
 
-/atom/movable/proc/do_footstep(var/turf/T,var/silent=FALSE,var/right=FALSE)
-
-	if(!silent && T.footstep && all_footsteps[T.footstep])
-		var/footstep/F = all_footsteps[T.footstep]
-		F.on_step(T,src,TRUE)
-		return TRUE
-
-	return FALSE
-
-
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	var/stepped_x = 0
@@ -163,9 +153,6 @@
 		//DO: Exited the turf.
 		OldLoc.Exited(src,NewLoc)
 
-		//DO: Make a footstep sound.
-		src.do_footstep(OldLoc,silent,TRUE)
-
 		//DO: Exited the contents.
 		for(var/atom/A in OldLoc.contents)
 			if(A == src)
@@ -183,8 +170,6 @@
 
 		//DO: Entered the turf.
 		NewLoc.Entered(src,OldLoc)
-
-		src.do_footstep(NewLoc,silent,FALSE)
 
 		//DO: Enter the contents.
 		for(var/atom/A in NewLoc.contents)

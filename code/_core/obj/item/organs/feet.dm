@@ -29,14 +29,12 @@
 
 	health_coefficient = 0.5
 
-/obj/item/organ/foot/proc/do_step(var/turf/T)
-	for(var/obj/hud/inventory/I in inventories)
-		var/obj/item/S = I.get_top_worn_object()
-		if(S.footstep && all_footsteps[S.footstep])
-			var/footstep/F = all_footsteps[S.footstep]
-			F.on_step(T,src,TRUE)
-			return TRUE
-	return FALSE
+/obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	for(var/obj/hud/inventory/H in src.inventories)
+		var/obj/item/I = H.get_top_worn_object()
+		if(I)
+			return I.get_footsteps(original_footsteps,enter)
+	return original_footsteps
 
 /obj/item/organ/foot/left
 	name = "left foot"
