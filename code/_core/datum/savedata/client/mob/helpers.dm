@@ -155,6 +155,8 @@
 	else
 		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
 
+	owner.globals.save() //Save globals too.
+
 	LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE,var/update_blends=TRUE)

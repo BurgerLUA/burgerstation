@@ -41,7 +41,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/disable_controls = FALSE
 
-	var/is_zoomed = FALSE
+	var/is_zoomed = 0x0 //Takes a dir as a value.
 
 	var/next_allowed_topic = -1
 
@@ -67,6 +67,12 @@ var/global/list/all_clients = list() //Assoc list
 	var/examine_mode = FALSE
 
 	var/permissions = FLAG_PERMISSION_NONE
+
+	var/desired_pixel_x = 0
+	var/desired_pixel_y = 0
+
+	var/desired_recoil_x = 0
+	var/desired_recoil_y = 0
 
 
 /client/proc/set_permissions(var/desired_permissions = FLAG_PERMISSION_NONE)

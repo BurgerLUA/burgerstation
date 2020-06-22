@@ -10,15 +10,7 @@
 
 	. = ..()
 
-	var/client/owner = CLIENT(ckey)
-
-	var/full_path = "[get_folder(ckey)][get_file()]"
-
-	if(!fexists(full_path))
-		text2file(json_encode(owner.macros.macros),full_path)
-	else
-		loaded_data = json_decode(file2text(full_path))
-		owner.macros.macros = loaded_data
+	load()
 
 	return .
 
