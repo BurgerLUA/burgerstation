@@ -4,7 +4,7 @@
 	icon = 'icons/turf/floor/tile.dmi'
 	icon_state = "white_multi"
 
-	footstep_id = "default"
+	footstep = /footstep/tile
 
 	layer = LAYER_FLOOR
 	plane = PLANE_TILE

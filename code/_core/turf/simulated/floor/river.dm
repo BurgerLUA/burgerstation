@@ -10,7 +10,7 @@
 	desired_light_range = 8
 	desired_light_color = "#AAAAFF"
 
-	footstep_id = "water"
+	footstep = /footstep/water
 
 	density_north = TRUE
 	density_east = TRUE
@@ -23,8 +23,6 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	footstep_id = "wood"
-
 
 /turf/simulated/floor/river/chocolate
 	name = "chocolate river"
@@ -35,6 +33,6 @@
 	name = "water"
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
-	footstep_id = "water"
+	footstep = /footstep/water
 	water_reagent = "water"
 	reagents = /reagent_container/turf/

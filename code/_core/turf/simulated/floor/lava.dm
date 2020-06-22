@@ -7,6 +7,6 @@
 	desired_light_range = 6
 	desired_light_color = "#FF8300"
 
-	footstep_id = "lava"
+	footstep = /footstep/lava
 
 	plane = PLANE_WATER

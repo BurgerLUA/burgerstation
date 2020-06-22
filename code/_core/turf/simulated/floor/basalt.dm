@@ -12,7 +12,7 @@
 
 	layer = LAYER_FLOOR_LARGE + 0.2
 
-	footstep_id = "concrete"
+	footstep = /footstep/concrete
 
 	delay_modifier = 1.1
 

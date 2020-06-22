@@ -22,7 +22,7 @@
 
 	slowdown_mul_worn = 1.1
 
-	footstep_id = "clownstep"
+	footstep = /footstep/clownstep
 
 /obj/item/clothing/feet/shoes/clown/left
 	name = "left clown shoe"

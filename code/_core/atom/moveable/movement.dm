@@ -89,12 +89,10 @@
 
 /atom/movable/proc/do_footstep(var/turf/T,var/silent=FALSE,var/right=FALSE)
 
-	if(!silent && has_footsteps)
-		var/footstep_to_use = footstep_override_id ? footstep_override_id : T.footstep_id
-		if(footstep_to_use && all_footsteps[footstep_to_use])
-			var/footstep/F = all_footsteps[footstep_to_use]
-			F.on_step(T,src,TRUE)
-			return TRUE
+	if(!silent && T.footstep && all_footsteps[T.footstep])
+		var/footstep/F = all_footsteps[T.footstep]
+		F.on_step(T,src,TRUE)
+		return TRUE
 
 	return FALSE
 

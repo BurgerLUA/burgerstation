@@ -35,8 +35,6 @@
 
 	var/immortal = FALSE //Is this object allowed to take damage?
 
-	var/footstep_id //The sound the object makes when something enters or exits it.
-
 	var/ignore_incoming_collisons = FALSE //TODO: Replace with tiny.
 
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.

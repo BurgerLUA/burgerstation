@@ -10,8 +10,6 @@
 
 	movement_delay = 10
 
-	footstep_override_id = "mech_step"
-
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
 /mob/living/vehicle/mech/post_death()

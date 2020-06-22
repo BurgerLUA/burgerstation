@@ -9,8 +9,6 @@
 
 	movement_delay = 1
 
-	footstep_override_id = "splat"
-
 	health_base = 50
 
 	butcher_contents = list(

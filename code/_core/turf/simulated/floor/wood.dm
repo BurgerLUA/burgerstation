@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/wood.dmi'
 	icon_state = "wood"
 
-	footstep_id = "wood"
+	footstep = /footstep/wood
 
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"

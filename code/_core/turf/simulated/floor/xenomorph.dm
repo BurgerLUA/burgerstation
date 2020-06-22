@@ -10,7 +10,7 @@
 	corner_icons = TRUE
 	corner_category = "xenomorph"
 
-	footstep_id = "concrete"
+	//footstep = /footstep/xeno
 
 	var/glow = FALSE
 

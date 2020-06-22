@@ -1,5 +1,4 @@
 /footstep/
-	var/id = null
 
 	var/list/footstep_sounds = list()
 

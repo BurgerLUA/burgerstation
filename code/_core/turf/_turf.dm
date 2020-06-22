@@ -20,6 +20,8 @@
 	var/density_down  = FALSE
 	var/allow_bullet_pass = FALSE
 
+	var/footstep/footstep //The footstep sounds that play.
+
 	var/list/mob/living/old_living //List of mobs that used to be on this turf.
 
 	var/material_id

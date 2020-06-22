@@ -32,8 +32,8 @@
 /obj/item/organ/foot/proc/do_step(var/turf/T)
 	for(var/obj/hud/inventory/I in inventories)
 		var/obj/item/S = I.get_top_worn_object()
-		if(S.footstep_id && all_footsteps[S.footstep_id])
-			var/footstep/F = all_footsteps[S.footstep_id]
+		if(S.footstep && all_footsteps[S.footstep])
+			var/footstep/F = all_footsteps[S.footstep]
 			F.on_step(T,src,TRUE)
 			return TRUE
 	return FALSE

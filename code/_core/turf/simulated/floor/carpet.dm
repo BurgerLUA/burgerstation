@@ -5,14 +5,12 @@
 	corner_icons = TRUE
 	corner_category = "carpet"
 
-	footstep_id = "carpet"
-
+	footstep = /footstep/carpet
 
 /turf/simulated/floor/carpet/office
 	name = "office carpet"
 	icon = 'icons/turf/floor/carpet_office.dmi'
 	icon_state = "1"
-	footstep_id = "carpet"
 
 /turf/simulated/floor/carpet/office/New(var/desired_loc)
 	. = ..()

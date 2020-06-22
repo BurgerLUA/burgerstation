@@ -4,7 +4,7 @@
 	icon_state = "cobble_center"
 	color = "#888888"
 
-	footstep_id = "concrete"
+	footstep = /footstep/concrete
 
 /turf/simulated/floor/cobblestone/side
 	icon_state = "cobble_side"

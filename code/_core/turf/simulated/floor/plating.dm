@@ -4,7 +4,7 @@
 	icon = 'icons/turf/floor/plating.dmi'
 	icon_state = "empty"
 
-	footstep_id = "plating"
+	footstep = /footstep/plating
 
 	color = COLOR_STEEL
 	material_id = /material/steel

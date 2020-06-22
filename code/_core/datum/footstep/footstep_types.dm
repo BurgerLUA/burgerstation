@@ -1,5 +1,4 @@
 /footstep/asteroid
-	id = "asteroid"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/asteroid1.ogg',
 		'sounds/effects/footsteps/asteroid2.ogg',
@@ -9,7 +8,6 @@
 	)
 
 /footstep/carpet
-	id = "carpet"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/carpet1.ogg',
 		'sounds/effects/footsteps/carpet2.ogg',
@@ -19,7 +17,6 @@
 	)
 
 /footstep/catwalk
-	id = "catwalk"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/catwalk1.ogg',
 		'sounds/effects/footsteps/catwalk2.ogg',
@@ -29,14 +26,12 @@
 	)
 
 /footstep/clownstep
-	id = "clownstep"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/clownstep1.ogg',
 		'sounds/effects/footsteps/clownstep2.ogg'
 	)
 
 /footstep/concrete
-	id = "concrete"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/concrete1.ogg',
 		'sounds/effects/footsteps/concrete2.ogg',
@@ -45,8 +40,7 @@
 	)
 
 
-/footstep/default
-	id = "default"
+/footstep/tile
 	footstep_sounds = list(
 		'sounds/effects/footsteps/floor1.ogg',
 		'sounds/effects/footsteps/floor2.ogg',
@@ -56,7 +50,6 @@
 	)
 
 /footstep/grass
-	id = "grass"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/grass1.ogg',
 		'sounds/effects/footsteps/grass2.ogg',
@@ -65,7 +58,6 @@
 	)
 
 /footstep/lava
-	id = "lava"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/lava1.ogg',
 		'sounds/effects/footsteps/lava2.ogg',
@@ -73,7 +65,6 @@
 	)
 
 /footstep/plating
-	id = "plating"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/plating1.ogg',
 		'sounds/effects/footsteps/plating2.ogg',
@@ -83,7 +74,6 @@
 	)
 
 /footstep/water
-	id = "water"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/water1.ogg',
 		'sounds/effects/footsteps/water2.ogg',
@@ -92,7 +82,6 @@
 	)
 
 /footstep/wood
-	id = "wood"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/wood1.ogg',
 		'sounds/effects/footsteps/wood2.ogg',
@@ -102,8 +91,6 @@
 	)
 
 /footstep/snow/
-	id = "snow"
-
 	footstep_sounds = list(
 		'sounds/effects/footsteps/grass1.ogg',
 		'sounds/effects/footsteps/grass2.ogg',
@@ -116,7 +103,6 @@
 	footprint_alpha = 255
 
 /footstep/gravel
-	id = "gravel"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/gravel1.ogg',
 		'sounds/effects/footsteps/gravel2.ogg',
@@ -126,7 +112,6 @@
 	)
 
 /footstep/sand
-	id = "sand"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/sand1.ogg',
 		'sounds/effects/footsteps/sand2.ogg',
@@ -137,7 +122,6 @@
 
 
 /footstep/splat
-	id = "splat"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/splat1.ogg',
 		'sounds/effects/footsteps/splat2.ogg',
@@ -146,13 +130,11 @@
 	)
 
 /footstep/mech_step
-	id = "mech_step"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/mechstep.ogg',
 	)
 
 /footstep/mech_move
-	id = "mech_move"
 	footstep_sounds = list(
 		'sounds/effects/footsteps/mechmove.ogg',
 	)

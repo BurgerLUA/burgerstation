@@ -5,7 +5,7 @@
 
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
-	footstep_id = "wood"
+	footstep = /footstep/wood
 
 /turf/simulated/floor/stair/wood/rich
 	color = "#A05120"

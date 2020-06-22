@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/natural.dmi'
 	icon_state = "sand1"
 
-	footstep_id = "sand"
+	footstep = /footstep/sand
 
 /turf/simulated/floor/sand/New(var/desired_loc)
 	icon_state = "sand[rand(1,4)]"

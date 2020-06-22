@@ -15,7 +15,7 @@
 	corner_category = "snow"
 	desired_light_color = "#FDFFFC"
 
-	footstep_id = "snow"
+	footstep = /footstep/snow
 
 	delay_modifier = 1.3
 
@@ -28,7 +28,7 @@
 
 	fade = TRUE
 
-	footstep_id = "grass"
+	footstep = /footstep/grass
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
 
@@ -49,8 +49,6 @@
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "jungle_grass"
 
-	footstep_id = "grass"
-
 
 /turf/simulated/floor/colored/grass/dark
 	name = "dark grass"
@@ -59,8 +57,6 @@
 	corner_category = "grass"
 	desired_light_color = "#527F3F"
 
-	footstep_id = "grass"
-
 /turf/simulated/floor/colored/grass/mint
 	name = "mint grass"
 	color = "#47E059"
@@ -68,16 +64,12 @@
 	corner_category = "grass"
 	desired_light_color = "#47E059"
 
-	footstep_id = "grass"
-
 /turf/simulated/floor/colored/grass/necro
 	name = "dark grass"
 	color = "#393317"
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "grass"
 	desired_light_color = "#393317"
-
-	footstep_id = "grass"
 
 
 /turf/simulated/floor/colored/sand
@@ -90,7 +82,7 @@
 	real_icon_state = "floor"
 	desired_light_color = "#80806D"
 
-	footstep_id = "asteroid"
+	footstep = /footstep/asteroid
 
 	delay_modifier = 1.2
 
@@ -100,8 +92,6 @@
 	layer = LAYER_FLOOR_LARGE + 0.08
 	corner_category = "moss"
 	desired_light_color = "#5A916E"
-
-	footstep_id = "grass"
 
 /turf/simulated/floor/colored/dirt
 	name = "dirt"
@@ -114,7 +104,7 @@
 
 	desired_light_color = "#FFD3AA"
 
-	footstep_id = "asteroid"
+	footstep = /footstep/asteroid
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/soil
 
@@ -199,7 +189,7 @@
 	corner_icons = TRUE
 	corner_category = "ash"
 
-	footstep_id = "asteroid"
+	footstep = /footstep/asteroid
 
 	delay_modifier = 1.2
 
