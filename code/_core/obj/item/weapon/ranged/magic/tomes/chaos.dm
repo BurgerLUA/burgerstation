@@ -19,15 +19,17 @@
 
 	value = 200
 
-/obj/item/weapon/ranged/magic/tome/chaos/get_projectile_offset(var/bullet_num,var/accuracy)
+/obj/item/weapon/ranged/magic/tome/chaos/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/accuracy)
 
 	var/num = bullet_num/bullet_count
 
-	var/norm_x = sin(num*360)
-	var/norm_y = cos(num*360)
+	var/norm_x = initial_offset_x + sin(num*360)
+	var/norm_y = initial_offset_y + cos(num*360)
 
-	return list(norm_x,norm_y)
+	var/mul = max(abs(norm_x),abs(norm_y))
+
+	return list(norm_x/mul,norm_y/mul)
 
 /obj/item/weapon/ranged/magic/tome/chaos/get_static_spread() //Base spread
-	return 0.1
+	return 0
 

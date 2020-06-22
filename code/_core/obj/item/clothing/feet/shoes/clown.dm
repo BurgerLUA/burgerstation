@@ -10,17 +10,18 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
+		BLUNT = 50,
 		MAGIC = 50,
-		HOLY = 50,
-		DARK = 50
+		HOLY = -50,
+		DARK = 75
 	)
 
 	size = SIZE_2
 	weight = WEIGHT_2
 
-	value = 100
+	value = 200
 
-	slowdown_mul_worn = 1.3
+	slowdown_mul_worn = 1.2
 
 /obj/item/clothing/feet/shoes/clown/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
 	original_footsteps += /footstep/clownstep

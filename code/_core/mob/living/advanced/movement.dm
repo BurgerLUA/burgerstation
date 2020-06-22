@@ -51,7 +51,7 @@ mob/living/advanced/get_movement_delay()
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 
-	if(enter)
+	if(footstep_left_right_counter)
 		if(labeled_organs[BODY_FOOT_RIGHT])
 			var/obj/item/organ/foot/O = labeled_organs[BODY_FOOT_RIGHT]
 			return O.get_footsteps(original_footsteps,enter)

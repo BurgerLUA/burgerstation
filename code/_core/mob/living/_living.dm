@@ -144,6 +144,10 @@
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
 
+	var/footstep_mod = 2 //How many cycles required to make a footstep sound.
+	var/footstep_counter = 0 //Read only
+	var/footstep_left_right_counter = FALSE //Read only. For playing left/right footstep sounds. Good only for advanced but you never know.
+
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
