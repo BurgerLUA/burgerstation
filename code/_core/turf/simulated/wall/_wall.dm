@@ -1,5 +1,6 @@
 /turf/simulated/wall/
 	name = "WALL"
+	desc = "A wall"
 	layer = LAYER_WALL
 	plane = PLANE_WALL
 	opacity = 1

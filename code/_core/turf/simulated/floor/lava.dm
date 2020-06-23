@@ -1,6 +1,7 @@
 /turf/simulated/floor/lava/
 	name = "lava"
 	icon = 'icons/turf/floor/lava2.dmi'
+	desc = "Melting hot lava, dont fall in!"
 	icon_state = "lava"
 
 	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT * 0.5

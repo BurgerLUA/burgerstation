@@ -1,5 +1,6 @@
 /mob/living/advanced/npc/syndicate
 	name = "syndicate operative"
+	desc = "A member of the Syndicate crime organization."
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate
 	class = /class/syndicate_soldier
