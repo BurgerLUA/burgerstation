@@ -20,6 +20,7 @@
 	icon_state = "chicken_black"
 
 /mob/living/simple/npc/passive/chicken/black/Initialize()
-	..()
+	. = ..()
 	if(prob(1))
 		name = "black cock"
+	return .

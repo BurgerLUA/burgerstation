@@ -116,9 +116,10 @@
 	attached_organs = list()
 	return .
 
-/obj/item/organ/Initialize()
+/obj/item/organ/PostInitialize()
+	. = ..()
 	initialize_blends()
-	return ..()
+	return .
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 

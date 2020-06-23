@@ -17,9 +17,6 @@
 
 	bullet_block_chance = 50
 
-/obj/structure/smooth/table/grill/Initialize()
-	return ..()
-
 /obj/structure/smooth/table/grill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK

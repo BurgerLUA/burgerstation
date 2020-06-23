@@ -54,7 +54,7 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,locatio
 
 	return TRUE
 
-obj/structure/interactive/bed/Initialize()
+obj/structure/interactive/bed/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

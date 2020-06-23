@@ -31,7 +31,7 @@
 
 	return .
 
-/mob/abstract/observer/menu/Initialize()
+/mob/abstract/observer/menu/PostInitialize()
 	. = ..()
 	start_thinking(src)
 	return .

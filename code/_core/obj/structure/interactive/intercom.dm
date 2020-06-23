@@ -28,10 +28,14 @@
 	add_overlay(I)
 	return .
 
-/obj/structure/interactive/intercom/Initialize(var/desired_loc)
+/obj/structure/interactive/intercom/Initialize()
 	setup_dir_offsets()
+	return ..()
+
+/obj/structure/interactive/intercom/PostInitialize()
+	. = ..()
 	update_sprite()
-	return ..(loc)
+	return .
 
 /obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

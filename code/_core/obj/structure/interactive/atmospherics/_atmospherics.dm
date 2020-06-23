@@ -36,8 +36,12 @@ obj/structure/interactive/atmospherics/air_alarm
 
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 	setup_dir_offsets()
+	return ..()
+
+obj/structure/interactive/atmospherics/air_alarm/PostInitialize()
+	. = ..()
 	update_sprite()
-	return ..(loc)
+	return .
 
 
 obj/structure/interactive/atmospherics/air_alarm/update_overlays()

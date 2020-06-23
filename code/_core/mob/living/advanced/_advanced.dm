@@ -287,9 +287,6 @@ mob/living/advanced/Login()
 	add_species_languages()
 	add_species_organs()
 	add_species_colors()
-	if(client)
-		add_species_buttons()
-		add_species_health_elements()
 	return TRUE
 
 /mob/living/advanced/Initialize()
@@ -298,16 +295,24 @@ mob/living/advanced/Login()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
+	setup_name()
+
+	return .
+
+/mob/living/advanced/PostInitialize()
+	. = ..()
+
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+		add_species_buttons()
+		add_species_health_elements()
 
 	update_slowdown_mul()
-
-	setup_name()
 
 	update_clothes()
 
 	return .
+
 
 /mob/living/advanced/setup_name()
 

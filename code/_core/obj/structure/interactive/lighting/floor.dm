@@ -18,7 +18,7 @@
 
 
 
-/obj/structure/interactive/lighting/floor/Initialize()
+/obj/structure/interactive/lighting/floor/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

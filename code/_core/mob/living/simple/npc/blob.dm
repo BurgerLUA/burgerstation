@@ -45,7 +45,7 @@
 	return ..()
 
 
-/mob/living/simple/npc/blobbernaught/Initialize()
+/mob/living/simple/npc/blobbernaught/PostInitialize()
 	. = ..()
 	flick("blobbernaut_produce",src)
 	return .

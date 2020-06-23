@@ -100,6 +100,9 @@ var/global/saved_icons = 0
 		if(destruction_turf)
 			health = /health/turf/
 	set_exposed(exposed,!exposed)
+	return ..()
+
+/turf/simulated/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

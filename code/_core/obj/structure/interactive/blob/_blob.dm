@@ -81,7 +81,7 @@
 
 	return .
 
-/obj/structure/interactive/blob/Initialize()
+/obj/structure/interactive/blob/PostInitialize()
 	. = ..()
 	var/matrix/M = matrix()
 	M.Turn(pick(0,90,180,270))

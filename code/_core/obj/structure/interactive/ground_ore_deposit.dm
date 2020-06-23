@@ -24,8 +24,10 @@
 				GOD.initialize_type = INITIALIZE_NONE
 				INITIALIZE(GOD)
 
+	return .
+/obj/structure/interactive/ground_ore_deposit/PostInitialize()
+	. = ..()
 	update_sprite()
-
 	return .
 
 /obj/structure/interactive/ground_ore_deposit/proc/mine()

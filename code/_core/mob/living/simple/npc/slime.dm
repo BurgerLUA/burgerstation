@@ -41,7 +41,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-/mob/living/simple/npc/slime/Initialize()
+/mob/living/simple/npc/slime/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

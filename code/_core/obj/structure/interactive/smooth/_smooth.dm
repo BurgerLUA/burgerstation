@@ -9,7 +9,7 @@ obj/structure/smooth/
 
 	var/debug = FALSE
 
-obj/structure/smooth/Initialize()
+obj/structure/smooth/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

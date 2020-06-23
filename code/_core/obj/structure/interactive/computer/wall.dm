@@ -33,11 +33,15 @@ obj/structure/interactive/computer/wall
 	var/computer_type = "generic"
 	var/keyboard_type = "generic_key"
 
-obj/structure/interactive/computer/wall/Initialize(var/desired_loc)
+obj/structure/interactive/computer/wall/Initialize()
 	setup_dir_offsets()
 	dir = SOUTH
+	return ..()
+
+obj/structure/interactive/computer/wall/PostInitialize()
+	. = ..()
 	update_sprite()
-	return ..(loc) //thanks, i hate it
+	return .
 
 obj/structure/interactive/computer/wall/update_icon()
 

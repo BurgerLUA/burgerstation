@@ -269,9 +269,6 @@
 
 	. = ..()
 
-	if(health)
-		health.armor_base = armor_base
-
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
@@ -292,6 +289,12 @@
 	alert_overlay.pixel_z = 20
 	//This is initialized somewhere else.
 
+	return .
+
+/mob/living/PostInitialize()
+	. = ..()
+	if(health)
+		health.armor_base = armor_base
 	return .
 
 /mob/living/proc/setup_name()
