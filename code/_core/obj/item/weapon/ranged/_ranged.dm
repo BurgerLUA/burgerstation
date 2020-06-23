@@ -335,7 +335,11 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					M.client.desired_recoil_x -= normx*view_punch*2
 					M.client.desired_recoil_y -= normy*view_punch*2
 
-			new projectile_to_use(T,caller,src,normx * projectile_speed_to_use,normy * projectile_speed_to_use,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_inaccuracy_modifer)
+			var/mod = HYPOTENUSE(normx,normy)
+			var/x_vel = normx * projectile_speed_to_use / mod
+			var/y_vel = normy * projectile_speed_to_use / mod
+
+			new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_inaccuracy_modifer)
 
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.

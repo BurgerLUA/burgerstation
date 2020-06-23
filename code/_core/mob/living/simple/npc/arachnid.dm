@@ -1,5 +1,7 @@
 /mob/living/simple/npc/arachnid
 	name = "giant arachnid"
+	desc = "Might as well be a miniboss."
+	desc_extended = "A giant quadreped carniverous creature."
 	icon = 'icons/mob/living/simple/jungle/arachnid.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/

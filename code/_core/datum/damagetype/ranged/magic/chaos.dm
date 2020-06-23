@@ -3,22 +3,21 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		MAGIC = 5,
-		DARK = 5
+		DARK = 15
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 25
+		ATTRIBUTE_INTELLIGENCE = 15
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = MAGIC
+		ATTRIBUTE_INTELLIGENCE = list(DARK)
 	)
 
 	skill_stats = list(
-		SKILL_SORCERY = 25
+		SKILL_SORCERY = 15
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = DARK
+		SKILL_SORCERY = list(DARK)
 	)

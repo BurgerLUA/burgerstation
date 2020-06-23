@@ -327,7 +327,6 @@
 #include "code\_core\datum\damagetype\ranged\magic\fireball_ashdrake.dm"
 #include "code\_core\datum\damagetype\ranged\magic\lightning.dm"
 #include "code\_core\datum\damagetype\ranged\magic\magic_missile.dm"
-#include "code\_core\datum\damagetype\ranged\magic\missile.dm"
 #include "code\_core\datum\damagetype\thrown\_thrown.dm"
 #include "code\_core\datum\damagetype\unarmed\_unarmed.dm"
 #include "code\_core\datum\damagetype\unarmed\beef.dm"

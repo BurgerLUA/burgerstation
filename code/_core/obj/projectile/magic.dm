@@ -23,9 +23,29 @@
 	name = "holy lightning bolt"
 	icon_state = "lightning"
 
-/obj/projectile/magic/crystal
+/obj/projectile/magic/crystal/primary
 	name = "magic crystal"
 	icon_state = "crystal"
+
+/obj/projectile/magic/crystal/secondary
+	name = "magic crystal"
+	icon_state = "crystal"
+
+/obj/projectile/magic/crystal/primary/update_projectile()
+
+	. = ..()
+
+	if(.)
+		vel_x *= 0.9
+		vel_y *= 0.9
+		alpha = clamp(alpha-5,0,255)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_hit(current_loc,TRUE)
+			return FALSE
+
+	return .
+
 
 /obj/projectile/magic/crystal/fire
 	name = "magic fire crystal"

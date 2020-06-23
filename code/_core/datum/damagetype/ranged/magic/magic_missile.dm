@@ -6,13 +6,8 @@
 		MAGIC = 15
 	)
 
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		MAGIC = 25
-	)
-
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 25
+		ATTRIBUTE_INTELLIGENCE = 15
 	)
 
 	attribute_damage = list(
@@ -20,7 +15,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 25
+		SKILL_MAGIC = 15
 	)
 
 	skill_damage = list(

@@ -9,7 +9,7 @@
 
 	associated_skill = SKILL_MAGIC
 
-	projectile = /obj/projectile/magic/crystal
+	projectile = /obj/projectile/magic/crystal/primary/
 
 	ranged_damage_type = /damagetype/ranged/magic/crystal
 
