@@ -1,6 +1,7 @@
 /turf/simulated/floor/carpet
 	name = "carpet"
 	icon = 'icons/turf/floor/carpet.dmi'
+	desc = "A nice carpet floor."
 	icon_state = "floor"
 	corner_icons = TRUE
 	corner_category = "carpet"

@@ -1,5 +1,6 @@
 /mob/living/advanced/npc/beefman
 	name = "meat anomaly"
+	desc = "A disgusting monster made by beef"
 	enable_AI = TRUE
 	ai = /ai/advanced/beef
 	species = "beefman"
