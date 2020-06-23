@@ -80,7 +80,7 @@
 		owner.mob.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
 		return
 
-	LOG_DEBUG("[owner] is creating a new character with the character id of [character_id].")
+	//LOG_DEBUG("[owner] is creating a new character with the character id of [character_id].")
 
 	reset_data()
 	loaded_data["id"] = character_id
@@ -95,7 +95,7 @@
 	var/client/owner = CLIENT(ckey)
 
 	if(!owner)
-		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr].")
+		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr]. Last recorded name: [loaded_data["name"]]")
 		return FALSE
 	/*
 	if(!owner.save_slot)
@@ -114,7 +114,7 @@
 
 	var/mob/living/advanced/player/A = owner.mob
 
-	LOG_DEBUG("[owner] is saving their character [A.get_debug_name()]...")
+	//LOG_DEBUG("[owner] is saving their character [A.get_debug_name()]...")
 
 	//Basic Information
 	loaded_data["name"] = A.real_name
@@ -157,11 +157,11 @@
 
 	owner.globals.save() //Save globals too.
 
-	LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
+	//LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE,var/update_blends=TRUE)
 
-	var/client/owner = CLIENT(ckey)
+	//var/client/owner = CLIENT(ckey)
 
 	//Name
 	A.real_name = loaded_data["name"]
@@ -172,7 +172,7 @@
 	A.nutrition = loaded_data["nutrition"] ? loaded_data["nutrition"] : 1000
 	A.hydration = loaded_data["hydration"] ? loaded_data["hydration"] : 1000
 
-	LOG_DEBUG("[owner] is loading their character [A.real_name].")
+	//LOG_DEBUG("[owner] is loading their character [A.real_name].")
 
 	if(loaded_data["known_languages"])
 		A.known_languages |= loaded_data["known_languages"]
@@ -225,7 +225,7 @@
 	else
 		A.update_all_blends() //butts
 
-	LOG_DEBUG("[owner] is done loading their character [A.get_debug_name()].")
+	//LOG_DEBUG("[owner] is done loading their character [A.get_debug_name()].")
 
 /savedata/client/mob/proc/apply_blend_data(var/obj/O, var/list/blend_data)
 	for(var/id in blend_data)

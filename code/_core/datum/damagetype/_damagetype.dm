@@ -260,7 +260,7 @@
 		var/damage_blocked = 0
 		var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
 		var/defense_rating_attacker = list()
-		if(attacker.health && get_attack_type() == ATTACK_TYPE_MAGIC)
+		if(attacker.health)
 			defense_rating_attacker = attacker.health.get_defense(attacker,hit_object)
 
 		for(var/damage_type in damage_to_deal)
@@ -268,7 +268,8 @@
 			if(victim_defense >= INFINITY)
 				damage_to_deal[damage_type] = 0
 				continue
-			victim_defense -= defense_rating_attacker[damage_type] && defense_rating_attacker[damage_type] < INFINITY ? defense_rating_attacker[damage_type] : 0
+			if(damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)
+				victim_defense -= (defense_rating_attacker[damage_type] && defense_rating_attacker[damage_type] < INFINITY ? defense_rating_attacker[damage_type]*0.25 : 0)
 			if(victim_defense > 0)
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
@@ -293,8 +294,12 @@
 			for(var/damage_type in damage_to_deal_main)
 				total_damage_dealt += damage_to_deal_main[damage_type]
 		else
-			hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
-			total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
+			if(hit_object.health)
+				hit_object.health.adjust_fatigue_loss(damage_to_deal_main[FATIGUE])
+				total_damage_dealt += hit_object.health.adjust_loss_smart(brute=damage_to_deal_main[BRUTE],burn=damage_to_deal_main[BURN],tox=damage_to_deal_main[TOX],oxy=damage_to_deal_main[OXY],update=FALSE)
+			else
+				CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
+				return TRUE
 
 		do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 		do_attack_sound(attacker,victim,weapon,hit_object)

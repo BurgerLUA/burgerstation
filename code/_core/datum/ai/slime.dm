@@ -3,8 +3,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	stationary = FALSE
-
 	roaming_distance = 32
 
 /ai/slime/proc/can_absorb_slime(var/mob/living/simple/npc/slime/S)

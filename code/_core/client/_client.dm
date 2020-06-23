@@ -193,12 +193,9 @@ var/global/list/all_clients = list() //Assoc list
 
 	if(SSadmin.stored_user_ranks[lower_ckey])
 		R = SSadmin.stored_user_ranks[lower_ckey]
-		to_chat("Setting your rank to [R.name].")
-	else
-		log_error("WARNING: Valid rank does not exist for [lower_ckey]!")
 
 	permissions = R.permissions
-	to_chat("Welcome, [R.name] [src]!")
+	to_chat("Welcome to Burgerstation, [R.name] [src]!")
 	return TRUE
 
 /client/proc/welcome()

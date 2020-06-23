@@ -2,7 +2,7 @@
 	name = "tome of chaos"
 	desc = "Can't aim? Shoot balls of pure chaos around you."
 	desc_extended = "Costs mana to use."
-	cost_mana = 32
+	cost_mana = 16
 	shoot_delay = 10
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/chaos.dmi'

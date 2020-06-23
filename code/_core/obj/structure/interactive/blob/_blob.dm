@@ -51,6 +51,11 @@
 	if(. && linked_core && damage_amount > 0)
 		linked_core.damaged_walls += src
 
+	if(health && health.health_current <= 0)
+		qdel(src)
+	else
+		update_sprite()
+
 	return .
 
 /obj/structure/interactive/blob/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
@@ -97,7 +102,8 @@
 	var/icon_mul = health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
 	var/desired_state = "[initial(icon_state)]_[icon_mul]"
 	if(desired_state != icon_state)
-		play(pick('sounds/effects/impacts/flesh_01.ogg','sounds/effects/impacts/flesh_02.ogg','sounds/effects/impacts/flesh_03.ogg'),get_turf(src))
+		if(icon_state != initial(icon_state))
+			play(pick('sounds/effects/impacts/flesh_01.ogg','sounds/effects/impacts/flesh_02.ogg','sounds/effects/impacts/flesh_03.ogg'),get_turf(src))
 		icon_state = desired_state
 
 	return .

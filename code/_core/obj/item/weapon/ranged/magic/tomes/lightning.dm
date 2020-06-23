@@ -2,7 +2,7 @@
 	name = "tome of the lightning bolt"
 	desc = "Be like Zeus!"
 	desc_extended = "Fires slow moving lightning bolts at foes."
-	cost_mana = 32
+	cost_mana = 16
 	shoot_delay = 10
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/lightning.dmi'

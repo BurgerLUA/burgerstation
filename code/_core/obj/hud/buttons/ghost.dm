@@ -103,6 +103,8 @@
 
 	var/obj/marker/antag/M = pick(all_antag_markers)
 	//all_antag_markers -= M
+	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
+	mobdata.reset_data()
 	var/mob/living/advanced/player/antagonist/syndicate/SP = new(get_turf(M),C)
 	SP.prepare()
 	return .
@@ -120,7 +122,7 @@
 
 /obj/hud/button/teleport_to_player/update_overlays()
 	. = ..()
-	var/image/I = new/image(icon,"ghost_overlay")
+	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
 	return .
 

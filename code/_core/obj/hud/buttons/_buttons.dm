@@ -55,15 +55,14 @@
 	if(owner && !desired_owner)
 		owner.remove_button(src)
 
-	if(desired_owner)
-		owner = desired_owner
-		owner.add_button(src)
-		update_sprite()
-	else
+	if(!desired_owner)
 		qdel(src)
+		return FALSE
 
+	owner = desired_owner
+	owner.add_button(src)
+	update_sprite()
 	return TRUE
-
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,object,location,control,params)
 	play('sounds/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)

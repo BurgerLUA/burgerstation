@@ -3,8 +3,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	stationary = FALSE
-
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader
 
 

@@ -4,8 +4,6 @@
 	objective_delay = 20
 	attack_delay = 1000
 
-	stationary = FALSE
-
 
 /ai/villager/on_life()
 
@@ -76,4 +74,3 @@
 
 
 /ai/villager/stationary
-	stationary = TRUE

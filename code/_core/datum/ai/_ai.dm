@@ -23,8 +23,6 @@
 
 	var/turf/start_turf
 
-	var/stationary = TRUE
-
 	var/roaming_distance = 5
 
 	var/attack_distance_min = 0
@@ -88,6 +86,13 @@
 	//1 = Attacks enemies in enemy tags.
 	//2 = Attacks people who don't have the same loyalty tag as them.
 	//3 = Attacks literally everyone in sight.
+
+	//Roaming Stuff. Mostly read only.
+	var/roam = FALSE
+	var/roam_counter = 30
+
+
+
 
 	var/debug = FALSE
 
@@ -309,10 +314,24 @@
 	return FALSE
 
 /ai/proc/handle_movement_roaming()
-	if(roaming_distance && get_dist(owner,start_turf) >= roaming_distance)
-		owner.movement_flags = MOVEMENT_WALKING
-		owner.move_dir = get_dir(owner,start_turf)
-		return TRUE
+	if(roaming_distance)
+		if(get_dist(owner,start_turf) >= roaming_distance)
+			owner.movement_flags = MOVEMENT_WALKING
+			owner.move_dir = get_dir(owner,start_turf)
+			return TRUE
+		else
+			if(roam)
+				owner.movement_flags = MOVEMENT_WALKING
+				owner.move_dir = pick(DIRECTIONS_ALL)
+				roam_counter -= 1
+			else
+				owner.movement_flags = MOVEMENT_WALKING
+				owner.move_dir = 0x0
+				roam_counter -= 0.25
+			if(roam_counter <= 0)
+				roam = !roam
+				roam_counter = initial(roam_counter)
+
 	return FALSE
 
 /ai/proc/handle_movement_alert()

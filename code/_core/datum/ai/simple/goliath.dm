@@ -3,8 +3,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	stationary = FALSE
-
 	var/mob/living/simple/npc/goliath/owner_as_goliath
 
 	var/tentacle_attack_ticks = 0
@@ -31,7 +29,6 @@
 
 
 /ai/goliath/ancient
-	stationary = TRUE
 	objective_delay = 10
 	attack_delay = 1
 	tentacle_ttack_frequency = 50

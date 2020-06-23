@@ -3,8 +3,6 @@
 	objective_delay = 10
 	attack_delay = 1
 
-	stationary = FALSE
-
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
 	var/checked_weapons = FALSE
 

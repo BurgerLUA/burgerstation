@@ -198,6 +198,9 @@
 
 /mob/living/advanced/proc/update_slowdown_mul()
 
+	if(qdeleting) //Bandaid fix.
+		return FALSE
+
 	capacity = 0
 
 	var/slow_mul = 1
