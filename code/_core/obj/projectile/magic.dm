@@ -3,9 +3,24 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
+	ignore_loyalty = FALSE
+	ignore_iff = TRUE
+
+
 /obj/projectile/magic/fireball
 	name = "fireball"
 	icon_state = "fireball"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/fireball/post_on_hit(var/atom/hit_atom)
+	. = ..()
+
+	if(.)
+		explode(get_turf(hit_atom),1,owner,src,loyalty_tag)
+
+	return .
+
 
 /obj/projectile/magic/chaos
 	name = "chaos ball"
@@ -14,6 +29,8 @@
 /obj/projectile/magic/magic_missile
 	name = "magic missile"
 	icon_state = "missile"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/magic/rift
 	name = "magic rift"
@@ -27,9 +44,13 @@
 	name = "magic crystal"
 	icon_state = "crystal"
 
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
 /obj/projectile/magic/crystal/secondary
 	name = "magic crystal"
 	icon_state = "crystal"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/magic/crystal/primary/update_projectile()
 
@@ -51,6 +72,8 @@
 	name = "magic fire crystal"
 	icon_state = "crystal_fire"
 
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
 /obj/projectile/magic/shadow
 	name = "shadow ball"
 	icon_state = "shadow"
@@ -58,6 +81,8 @@
 /obj/projectile/magic/crystal/ice
 	name = "ice bolt"
 	icon_state = "crystal_ice"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /*
 /obj/projectile/bullet/holy_summon

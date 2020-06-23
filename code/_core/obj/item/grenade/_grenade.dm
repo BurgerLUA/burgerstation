@@ -16,7 +16,7 @@
 
 	value = 15
 
-/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
 	if(source == src)
 		qdel(src)

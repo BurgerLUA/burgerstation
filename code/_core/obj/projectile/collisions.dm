@@ -32,6 +32,7 @@
 
 	return ..()
 
+/*
 /mob/living/advanced/player/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
 	if(P && !P.ignore_iff && is_living(P.owner)) //FAILSAFE. PUSSY SHIT BUT IT SHOULD PREVENT EXPLOITS.
@@ -40,6 +41,7 @@
 			return null
 
 	return ..()
+*/
 
 /mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
@@ -47,6 +49,9 @@
 		return null
 
 	if(P && !P.ignore_iff && P.iff_tag && src.iff_tag == P.iff_tag)
+		return null
+
+	if(P && !P.ignore_loyalty && P.loyalty_tag && src.loyalty_tag == P.loyalty_tag)
 		return null
 
 	return ..()

@@ -500,9 +500,9 @@
 
 	return TRUE
 
-/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(magnitude > 1)
+	if(magnitude > 3)
 
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y

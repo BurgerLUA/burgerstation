@@ -7,14 +7,12 @@
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/lightning.dmi'
 
-	associated_skill = SKILL_PRAYER
-
 	projectile = /obj/projectile/magic/lightning_bolt
 
 	ranged_damage_type = /damagetype/ranged/magic/lightning
 
 	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
 
-	projectile_speed = 10
+	projectile_speed = TILE_SIZE - 1
 
 	value = 300

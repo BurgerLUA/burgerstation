@@ -37,6 +37,8 @@
 
 	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
 
+	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
+
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
@@ -44,7 +46,7 @@
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(is_item(defer_object))
+	if(!use_loyalty_tag && is_item(defer_object))
 		var/obj/item/I = defer_object
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
@@ -71,9 +73,10 @@
 
 
 /obj/item/weapon/ranged/Generate()
-	firing_pin = new firing_pin(src)
-	INITIALIZE(firing_pin)
-	GENERATE(firing_pin)
+	if(!use_loyalty_tag)
+		firing_pin = new firing_pin(src)
+		INITIALIZE(firing_pin)
+		GENERATE(firing_pin)
 	return ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()
@@ -100,13 +103,18 @@
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
 
-	if(ispath(firing_pin))
-		log_error("WARNING: WEAPON OF TYPE [src.type] HAD A PATH AS A FIRING PIN.")
-		firing_pin = null
+	if(!use_loyalty_tag)
+		if(ispath(firing_pin))
+			log_error("WARNING: WEAPON OF TYPE [src.type] HAD A PATH AS A FIRING PIN.")
+			firing_pin = null
 
-	if(!firing_pin || !firing_pin.can_shoot(caller,src))
-		caller.to_chat("This gun doesn't have a firing pin installed!")
-		return FALSE
+		if(!firing_pin)
+			caller.to_chat("This gun doesn't have a firing pin installed!")
+			return FALSE
+
+		if(!firing_pin.can_shoot(caller,src))
+			//Messages are broadcasted in the above proc.
+			return FALSE
 
 	if(next_shoot_time > world.time)
 		return FALSE
@@ -223,6 +231,11 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	if(projectile_to_use)
 
+		var/loyalty_tag = null
+		if(is_living(caller) && use_loyalty_tag)
+			var/mob/living/L = caller
+			loyalty_tag = L.loyalty_tag
+
 		if(length(shoot_sounds))
 			play(pick(shoot_sounds_to_use),src,alert = shoot_alert, alert_source = caller)
 
@@ -245,12 +258,12 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		accuracy_loss = clamp(accuracy_loss,0,0.5)
 
 		var/view_punch_time = shoot_delay
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null,inaccuracy_modifer_to_use)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)
 
-	if(firing_pin)
+	if(!use_loyalty_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
 	if(automatic)
@@ -285,7 +298,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
@@ -339,7 +352,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_inaccuracy_modifer)
+			new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
 
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.

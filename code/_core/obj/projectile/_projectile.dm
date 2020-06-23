@@ -57,6 +57,9 @@
 	var/iff_tag
 	var/ignore_iff = FALSE //Set to true if you want it to ignore IFF collision checking.
 
+	var/loyalty_tag
+	var/ignore_loyalty = TRUE //SEt to true if you want to ignore loyalty tag collision checking.
+
 	anchored = TRUE
 
 /obj/projectile/Destroy()
@@ -72,7 +75,7 @@
 	all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_inaccuracy_modifier=1)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -136,6 +139,9 @@
 
 	if(desired_iff)
 		iff_tag = desired_iff
+
+	if(desired_loyalty)
+		loyalty_tag = desired_loyalty
 
 	. = ..()
 

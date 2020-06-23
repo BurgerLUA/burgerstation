@@ -10,14 +10,12 @@
 	if(initialized)
 		CRASH_SAFE("WARNING: [src.get_debug_name()] was initialized twice!")
 		return TRUE
-	initialized = TRUE
 	return TRUE
 
 /datum/proc/PostInitialize()
 	return TRUE
 
 /datum/proc/Generate() //Generate the atom, giving it stuff if needed.
-	generated = TRUE
 	return TRUE
 
 /datum/proc/is_safe_to_delete()

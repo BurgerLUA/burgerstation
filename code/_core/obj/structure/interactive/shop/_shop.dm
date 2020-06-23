@@ -29,7 +29,7 @@
 
 	if(!length(possible_items))
 		qdel(src)
-		return FALSE
+		return .
 
 	stored_item = pick(possible_items)
 	stored_item.force_move(src)

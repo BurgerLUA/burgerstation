@@ -7,8 +7,6 @@
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/missile.dmi'
 
-	associated_skill = SKILL_MAGIC
-
 	projectile = /obj/projectile/magic/magic_missile
 
 	ranged_damage_type = /damagetype/ranged/magic/magic_missile

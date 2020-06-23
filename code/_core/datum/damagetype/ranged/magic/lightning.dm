@@ -3,11 +3,11 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HOLY = 30
+		HOLY = 40
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 30
+		ATTRIBUTE_INTELLIGENCE = 20
 	)
 
 	attribute_damage = list(
@@ -15,7 +15,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_PRAYER = 30,
+		SKILL_PRAYER = 20,
 	)
 
 	skill_damage = list(

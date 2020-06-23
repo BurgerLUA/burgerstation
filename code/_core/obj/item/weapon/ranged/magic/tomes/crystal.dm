@@ -2,12 +2,12 @@
 	name = "tome of the plasma crystal"
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
-	cost_mana = 9
-	shoot_delay = 0.5
+	cost_mana = 10
+	shoot_delay = 1
+
+	automatic = TRUE
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/crystal.dmi'
-
-	associated_skill = SKILL_MAGIC
 
 	projectile = /obj/projectile/magic/crystal/primary/
 
