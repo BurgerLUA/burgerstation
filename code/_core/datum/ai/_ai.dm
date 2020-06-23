@@ -89,10 +89,7 @@
 
 	//Roaming Stuff. Mostly read only.
 	var/roam = FALSE
-	var/roam_counter = 30
-
-
-
+	var/roam_counter = 10
 
 	var/debug = FALSE
 
@@ -321,13 +318,15 @@
 			return TRUE
 		else
 			if(roam)
-				owner.movement_flags = MOVEMENT_WALKING
-				owner.move_dir = pick(DIRECTIONS_ALL)
-				roam_counter -= 1
+				if(prob(5))
+					owner.movement_flags = MOVEMENT_WALKING
+					owner.move_dir = pick(DIRECTIONS_ALL)
+					roam_counter -= 1
 			else
 				owner.movement_flags = MOVEMENT_WALKING
 				owner.move_dir = 0x0
-				roam_counter -= 0.25
+				if(prob(25))
+					roam_counter -= 1
 			if(roam_counter <= 0)
 				roam = !roam
 				roam_counter = initial(roam_counter)
