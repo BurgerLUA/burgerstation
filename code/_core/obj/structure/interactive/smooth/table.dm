@@ -33,11 +33,11 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 		if(T)
 			return TRUE
 
-		if(L.table_count >= 3)
-			L.table_count = 0
+		if(L.climb_counter >= 3)
+			L.climb_counter = 0
 			return TRUE
 
-		L.table_count++
+		L.climb_counter++
 
 		return FALSE
 

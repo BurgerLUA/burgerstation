@@ -134,13 +134,15 @@ SUBSYSTEM_DEF(horde)
 				state = HORDE_STATE_HIJACK
 				round_time = 0
 			else
-				next_hijack_check_time = round_time + 60
+				next_hijack_check_time = world.time + 60
 			return TRUE
 
 		var/wave_to_spawn = get_enemies_to_spawn()
 
 		if(wave_to_spawn < 4)
 			return TRUE
+
+		wave_to_spawn = 4 //Only spawn 4 in a group at a time.
 
 		var/obj/marker/map_node/spawn_node = find_viable_spawn()
 		if(!spawn_node)

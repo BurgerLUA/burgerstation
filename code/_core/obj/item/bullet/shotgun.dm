@@ -33,8 +33,6 @@
 
 	projectile_count = 1
 	base_spread = 0
-	projectile_speed = 31
-
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_slug
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun/slug

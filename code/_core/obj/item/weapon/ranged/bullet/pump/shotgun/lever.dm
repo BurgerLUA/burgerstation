@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 5
+	shoot_delay = 7
 
 	automatic = FALSE
 
@@ -23,8 +23,8 @@
 
 	action_name = "work"
 
-	heat_per_shot = 0.1
-	heat_max = 0.3
+	heat_per_shot = 0.03
+	heat_max = 0.12
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_base_spread()
 	return 0.01

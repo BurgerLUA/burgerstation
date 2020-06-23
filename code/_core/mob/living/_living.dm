@@ -113,7 +113,7 @@
 
 	has_footsteps = TRUE
 
-	var/table_count = 0
+	var/climb_counter = 0
 
 	var/stand/stand
 

@@ -69,7 +69,7 @@
 			play(pick(F.footstep_sounds), T, volume = 50, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
 
 /atom/movable/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
-	return list()
+	return original_footsteps
 
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
 

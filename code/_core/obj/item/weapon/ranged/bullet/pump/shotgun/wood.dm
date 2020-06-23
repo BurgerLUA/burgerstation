@@ -21,11 +21,11 @@
 
 	value = 80
 
-	heat_per_shot = 0.1
-	heat_max = 0.3
+	heat_per_shot = 0.03
+	heat_max = 0.12
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
-	return 0.015
+	return 0.08
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_static_spread() //Base spread
 	return 0.002

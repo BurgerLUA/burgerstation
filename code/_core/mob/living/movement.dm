@@ -45,7 +45,7 @@
 	. = ..()
 
 	if(.)
-		table_count = 0
+		climb_counter = 0
 
 	if(ai)
 		ai.on_move(.,NewLoc,Dir)
