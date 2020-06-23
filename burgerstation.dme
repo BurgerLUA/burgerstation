@@ -1003,7 +1003,6 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\tactical.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\tranq.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\_rifle.dm"
-#include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\assault.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\carbine.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\civ_carbine.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\heavy_sniper.dm"
