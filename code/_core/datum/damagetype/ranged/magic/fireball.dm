@@ -3,7 +3,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		HEAT = 20,
+		HEAT = 10,
 		MAGIC = 20
 	)
 
@@ -12,7 +12,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(MAGIC,HEAT)
+		ATTRIBUTE_INTELLIGENCE = list(MAGIC)
 	)
 
 	skill_stats = list(
@@ -20,5 +20,5 @@
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(MAGIC,HEAT)
+		SKILL_MAGIC = list(MAGIC)
 	)
