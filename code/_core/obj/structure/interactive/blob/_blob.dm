@@ -32,8 +32,11 @@
 	. = FALSE
 
 	for(var/mob/living/L in range(1,src))
-		if(can_attack(L,src,null,damage_type))
+		if(!L.dead && L.loyalty_tag != "Blob" && can_attack(L,src,null,damage_type))
 			src.attack(src,L,precise = TRUE)
+			if(L.loc != src.loc)
+				visible_message(span("danger","\The [src.name] tries to absorb \the [L.name]!"))
+				L.force_move(src.loc)
 			. = TRUE
 
 	if(. && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
@@ -55,6 +58,9 @@
 		qdel(src)
 	else
 		update_sprite()
+
+	if(damage_amount > 0 && get_dist(attacker,src) <= 1 && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
+		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
 
 	return .
 

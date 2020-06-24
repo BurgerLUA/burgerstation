@@ -14,6 +14,9 @@
 
 	value = 10
 
+	slowdown_mul_worn = 1.2
+	slowdown_mul_held = 1.1
+
 /obj/item/clothing/back/storage/backpack/grey
 	color = COLOR_GREY
 

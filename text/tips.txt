@@ -48,3 +48,5 @@ Stealth is a legitimate tactic. Don't let anyone else tell you otherwise.
 It is possible for NPCs to break out of cuffs.
 Don't go alone. The meatmen might get you.
 Sometimes wearing Syndicate armor as a NanoTrasen mercenary isn't a good idea as your corpse can easily be mistaken for the enemy when you die.
+It is actually possible for two people to hit eachother with a melee attack at the same time and both die.
+Backpacks slow you down when worn or carried.

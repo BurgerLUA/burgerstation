@@ -12,6 +12,9 @@
 
 	value = 10
 
+	slowdown_mul_worn = 1.1
+	slowdown_mul_held = 1.05
+
 /obj/item/clothing/back/storage/satchel/loadout/new_player/fill_inventory()
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/storage/emergency(src)

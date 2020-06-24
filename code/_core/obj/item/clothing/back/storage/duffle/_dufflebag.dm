@@ -12,6 +12,9 @@
 
 	value = 20
 
+	slowdown_mul_worn = 1.3
+	slowdown_mul_held = 1.15
+
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
 	color = COLOR_WHITE
 	vendor_name = "\improper New Recruit's Kit"

@@ -11,11 +11,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 75,
-		LASER = 40,
-		MAGIC = -75
+		BLADE = 25,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = -50
 	)
 
 	size = SIZE_3
@@ -32,11 +32,11 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 30,
-		BLUNT = 30,
-		PIERCE = 65,
-		LASER = 30,
-		MAGIC = -75
+		BLADE = 25,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = -50
 	)
 
 	size = SIZE_2
@@ -52,16 +52,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 65,
+		BLADE = 25,
 		BLUNT = 75,
-		PIERCE = 85,
-		LASER = 45,
-		MAGIC = -200,
-		HEAT = 85,
-		COLD = 85,
-		BOMB = 85,
-		BIO = 85,
-		RAD = 85
+		PIERCE = 75,
+		LASER = 25,
+		MAGIC = -100,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 75
 	)
 
 	size = SIZE_7
@@ -81,16 +79,14 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 55,
-		BLUNT = 65,
-		PIERCE = 70,
-		LASER = 45,
+		BLADE = 25,
+		BLUNT = 100,
+		PIERCE = 50,
+		LASER = 25,
 		MAGIC = -100,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 75,
-		BIO = 85,
-		RAD = 85
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 50
 	)
 
 	size = SIZE_4
