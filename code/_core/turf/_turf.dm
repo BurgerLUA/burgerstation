@@ -143,11 +143,11 @@
 	return ..()
 
 
-/turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
 	for(var/atom/A in contents)
 		CHECK_TICK
-		A.act_explode(owner,source,epicenter,magnitude)
+		A.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return ..()
 

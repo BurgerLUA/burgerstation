@@ -18,7 +18,7 @@
 
 	health_base = 100
 
-obj/structure/interactive/barricade/Initialize()
+obj/structure/interactive/barricade/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

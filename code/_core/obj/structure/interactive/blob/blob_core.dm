@@ -23,13 +23,16 @@
 		INITIALIZE(N)
 		linked_nodes += N
 
-	start_thinking(src)
-
 	SShorde.tracked_objectives += src
 	if(SShorde.state == HORDE_STATE_FIGHTING)
 		SShorde.update_objectives()
 
 	return ..()
+
+/obj/structure/interactive/blob/core/PostInitialize()
+	. = ..()
+	start_thinking(src)
+	return .
 
 /obj/structure/interactive/blob/core/Destroy()
 

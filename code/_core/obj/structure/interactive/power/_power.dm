@@ -31,7 +31,11 @@
 	return .
 
 
-/obj/structure/interactive/power/apc/Initialize(var/desired_loc)
+/obj/structure/interactive/power/apc/Initialize()
 	setup_dir_offsets()
+	return ..()
+
+/obj/structure/interactive/power/apc/PostInitialize()
+	. = ..()
 	update_sprite()
-	return ..(loc)
+	return .

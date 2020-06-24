@@ -13,7 +13,9 @@
 	id = "null"
 	var/offset = 0
 
-/obj/decal/directions/Initialize()
+/obj/decal/directions/PostInitialize()
+
+	. = ..()
 
 	if(dir == EAST || dir == WEST)
 		pixel_x = offset*5*(dir == WEST ? 1 : -1)
@@ -23,7 +25,8 @@
 		pixel_y = offset*5*(dir == SOUTH ? 1 : -1)
 		if(x % 5 == 0)
 			icon_state = "[initial(icon_state)]_[id]"
-	return ..()
+
+	return .
 
 /obj/decal/directions/security
 	id = "sec"

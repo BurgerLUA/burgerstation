@@ -60,10 +60,11 @@
 		desired_light_color = color
 		color = "#FFFFFF"
 
+	return ..()
+
+/obj/structure/interactive/lighting/tube/PostInitialize()
 	. = ..()
-
 	update_sprite()
-
 	return .
 
 /obj/structure/interactive/lighting/tube/update_icon()

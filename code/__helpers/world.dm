@@ -25,22 +25,20 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 
 #define is_valid(A) (istype(A) && !A.qdeleting && A.loc != null)
 
-#define INITIALIZE(D)																		\
-	if(D.initialized)																		\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");			\
-	else																					\
-		D.Initialize();																		\
-		D.PostInitialize();																	\
-		if(!D.initialized)																	\
-			CRASH_SAFE("ERROR: [D.get_debug_name()] did not initialize properly!");
+#define INITIALIZE(D)																								\
+	if(D.initialized)																								\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");									\
+	else																											\
+		if(!D.Initialize()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Initialize() properly!");			\
+		if(!D.PostInitialize()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run PostInitialize() properly!");	\
+		D.initialized = TRUE;
 
-#define GENERATE(D)																			\
-	if(D.generated)																			\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");			\
-	else																					\
-		D.Generate();																		\
-		if(!D.generated)																	\
-			CRASH_SAFE("ERROR: [D.get_debug_name()] did not generate properly!");
+#define GENERATE(D)																									\
+	if(D.generated)																									\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");									\
+	else																											\
+		if(!D.Generate()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Generate() properly!");				\
+		D.generated = TRUE;
 
 #define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D)
 

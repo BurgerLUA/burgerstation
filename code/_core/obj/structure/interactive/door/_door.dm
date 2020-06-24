@@ -54,7 +54,7 @@ obj/structure/interactive/door
 
 	return ..()
 
-/obj/structure/interactive/door/Initialize()
+/obj/structure/interactive/door/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

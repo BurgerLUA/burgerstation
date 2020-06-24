@@ -44,9 +44,10 @@
 
 	return TRUE
 
-/obj/item/pinpointer/Initialize()
+/obj/item/pinpointer/PostInitialize()
+	. = ..()
 	update_sprite()
-	return ..()
+	return .
 
 /obj/item/pinpointer/update_underlays()
 	if(!length(underlays))

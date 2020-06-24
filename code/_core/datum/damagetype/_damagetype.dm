@@ -269,7 +269,7 @@
 				damage_to_deal[damage_type] = 0
 				continue
 			if(damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)
-				victim_defense -= (defense_rating_attacker[damage_type] && defense_rating_attacker[damage_type] < INFINITY ? defense_rating_attacker[damage_type]*0.25 : 0)
+				victim_defense -= (defense_rating_attacker[damage_type] && defense_rating_attacker[damage_type] < INFINITY ? defense_rating_attacker[damage_type] : 0)
 			if(victim_defense > 0)
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
@@ -383,29 +383,20 @@
 		multiplier = clamp(multiplier,0,TILE_SIZE*0.25)
 
 		var/attack_direction = get_dir(attacker,victim)
-		var/offset_x = 0
-		var/offset_y = 0
 
-		if(attack_direction & EAST)
-			offset_x += 1
-		if(attack_direction & WEST)
-			offset_x -= 1
-		if(attack_direction & NORTH)
-			offset_y += 1
-		if(attack_direction & SOUTH)
-			offset_y -= 1
+		var/list/offsets = direction_to_pixel_offset(attack_direction)
 
 		if(ismob(victim))
 			var/mob/M = victim
 			if(M.client)
-				animate(M.client,pixel_x = offset_x*multiplier, pixel_y = offset_y*multiplier,time=1)
+				animate(M.client,pixel_x = offsets[1]*multiplier, pixel_y = offsets[2]*multiplier,time=1)
 				animate(pixel_x = 0, pixel_y = 0, time = 5)
 
 		else if(victim.health.health_current - damage_dealt <= 0)
 			if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
-				animate(victim, pixel_x = initial(victim.pixel_x) + offset_x*multiplier, pixel_y = initial(victim.pixel_y) + offset_y*multiplier,time=2)
+				animate(victim, pixel_x = initial(victim.pixel_x) + offsets[1]*multiplier, pixel_y = initial(victim.pixel_y) + offsets[2]*multiplier,time=2)
 		else
-			animate(victim, pixel_x = initial(victim.pixel_x) + offset_x*multiplier, pixel_y = initial(victim.pixel_y) + offset_y*multiplier,time=1)
+			animate(victim, pixel_x = initial(victim.pixel_x) + offsets[1]*multiplier, pixel_y = initial(victim.pixel_y) + offsets[2]*multiplier,time=1)
 			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)

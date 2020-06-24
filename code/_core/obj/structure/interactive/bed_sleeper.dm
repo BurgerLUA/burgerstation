@@ -33,7 +33,6 @@ obj/structure/interactive/bed/sleeper
 
 obj/structure/interactive/bed/sleeper/Initialize()
 	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
-	update_sprite()
 	check_collisions()
 	return ..()
 

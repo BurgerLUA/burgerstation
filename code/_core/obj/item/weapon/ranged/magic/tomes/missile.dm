@@ -3,11 +3,9 @@
 	desc = "MAGIC MISSILE! MAGIC MISSILE! CLOTHING DOESN'T COUNT!"
 	desc_extended = "Fires a magical missile."
 	cost_mana = 15
-	shoot_delay = 20
+	shoot_delay = 5
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/missile.dmi'
-
-	associated_skill = SKILL_MAGIC
 
 	projectile = /obj/projectile/magic/magic_missile
 

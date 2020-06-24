@@ -41,7 +41,7 @@
 
 	return ..()
 
-/obj/item/magazine/Initialize()
+/obj/item/magazine/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

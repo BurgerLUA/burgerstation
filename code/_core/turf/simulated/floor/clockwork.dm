@@ -20,7 +20,10 @@
 		icon_state = "floor2"
 	else
 		icon_state = "floor4"
+/turf/simulated/floor/clockwork/special/PostInitialize()
+	. = ..()
 	update_sprite()
+	return .
 
 /turf/simulated/floor/clockwork/vent
 	name = "clockwork vent"

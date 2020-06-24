@@ -2,12 +2,10 @@
 	name = "tome of chaos"
 	desc = "Can't aim? Shoot balls of pure chaos around you."
 	desc_extended = "Costs mana to use."
-	cost_mana = 16
+	cost_mana = 15
 	shoot_delay = 10
 
 	icon = 'icons/obj/items/weapons/ranged/magic/tomes/chaos.dmi'
-
-	associated_skill = SKILL_SORCERY
 
 	bullet_count = 9
 	projectile_speed = 4

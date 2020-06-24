@@ -101,7 +101,7 @@
 
 	return ..()
 
-/atom/Initialize()
+/atom/PostInitialize()
 
 	if(health)
 		health = new health(src)

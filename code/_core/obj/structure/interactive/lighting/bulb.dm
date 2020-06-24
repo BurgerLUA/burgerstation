@@ -34,7 +34,7 @@
 
 	return .
 
-/obj/structure/interactive/lighting/bulb/Initialize()
+/obj/structure/interactive/lighting/bulb/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

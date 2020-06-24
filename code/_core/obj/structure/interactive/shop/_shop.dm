@@ -29,7 +29,7 @@
 
 	if(!length(possible_items))
 		qdel(src)
-		return FALSE
+		return .
 
 	stored_item = pick(possible_items)
 	stored_item.force_move(src)
@@ -38,17 +38,25 @@
 	for(var/obj/item/I in possible_items)
 		qdel(I)
 
-	stored_item.update_sprite()
-	update_sprite()
+	return .
 
-	stored_item_cost = max(1,CEILING(stored_item.calculate_value(),1))
+/obj/structure/interactive/shop/PostInitialize()
 
-	if(stored_item_cost == 1)
-		log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
+	. = ..()
 
-	name = "[stored_item.name] - [stored_item_cost] credits"
+	if(stored_item)
+		stored_item.update_sprite()
+		update_sprite()
+
+		stored_item_cost = max(1,CEILING(stored_item.calculate_value(),1))
+
+		if(stored_item_cost == 1)
+			log_error("Warning: Item of [stored_item] has a low value! Suspected no cost item.")
+
+		name = "[stored_item.name] - [stored_item_cost] credits"
 
 	return .
+
 
 /obj/structure/interactive/shop/update_overlays()
 

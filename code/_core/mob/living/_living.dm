@@ -269,9 +269,6 @@
 
 	. = ..()
 
-	if(health)
-		health.armor_base = armor_base
-
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
@@ -292,6 +289,12 @@
 	alert_overlay.pixel_z = 20
 	//This is initialized somewhere else.
 
+	return .
+
+/mob/living/PostInitialize()
+	. = ..()
+	if(health)
+		health.armor_base = armor_base
 	return .
 
 /mob/living/proc/setup_name()
@@ -330,9 +333,12 @@
 
 	return ..()
 
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(magnitude > 1)
+	if(loyalty_tag && desired_loyalty == loyalty_tag)
+		return ..()
+
+	if(magnitude > 5)
 
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y
@@ -347,6 +353,12 @@
 			y_mod *= 1/max
 
 		throw_self(owner,null,null,null,x_mod*magnitude,y_mod*magnitude)
+
+	else if(magnitude > 3)
+		add_status_effect(STUN,20,20)
+
+	else if(magnitude > 2)
+		add_status_effect(STAGGER,10,10)
 
 	for(var/i=1,i<=clamp(1+(magnitude*2),1,4),i++)
 		var/list/params = list()

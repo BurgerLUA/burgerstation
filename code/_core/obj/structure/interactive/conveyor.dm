@@ -20,12 +20,12 @@
 	icon_state = "conveyor_inverted"
 	reversed = TRUE
 
-/obj/structure/interactive/conveyor/Initialize()
+/obj/structure/interactive/conveyor/PostInitialize()
 
 	if(active)
 		enable()
 	else
-		update_sprite()
+		disable()
 
 	return ..()
 

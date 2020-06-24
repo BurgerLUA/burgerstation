@@ -9,6 +9,6 @@
 
 	plane = PLANE_WALL_ATTACHMENTS
 
-/obj/structure/interactive/fire_alarm/Initialize(var/desired_loc)
+/obj/structure/interactive/fire_alarm/Initialize()
 	setup_dir_offsets()
-	return ..(loc)
+	return ..()

@@ -21,7 +21,7 @@ obj/structure/interactive/computer/console
 
 	bullet_block_chance = 75
 
-obj/structure/interactive/computer/console/Initialize()
+obj/structure/interactive/computer/console/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .
@@ -119,12 +119,14 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	var/obj/shuttle_controller/desired_shuttle_controller
 
-/obj/structure/interactive/computer/console/remote_flight/Initialize()
+/obj/structure/interactive/computer/console/remote_flight/PostInitialize()
+
+	. = ..()
 
 	if(src.z == 3)
 		SShorde.possible_horde_targets += src
 
-	return ..()
+	return .
 
 /obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

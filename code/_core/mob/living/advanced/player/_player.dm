@@ -90,10 +90,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	mobdata.apply_data_to_mob(src,teleport,update_blends)
 
-	if(client)
-		add_species_buttons()
-		add_species_health_elements()
-
 	return TRUE
 
 /mob/living/advanced/player/Initialize()

@@ -18,9 +18,10 @@
 	damage_type = "cult_blade"
 
 
-/mob/living/simple/npc/silicon/engineer/Initialize()
-	..()
+/mob/living/simple/npc/silicon/engineer/PostInitialize()
+	. = ..()
 	flick("engineer_transform",src)
+	return .
 
 
 /mob/living/simple/npc/silicon/squats
@@ -64,9 +65,9 @@
 	return .
 
 
-/mob/living/simple/npc/silicon/squats/Initialize()
+/mob/living/simple/npc/silicon/squats/PostInitialize()
 	. = ..()
-	update_icon()
+	update_sprite()
 	return .
 
 /mob/living/simple/npc/silicon/squats/update_overlays()

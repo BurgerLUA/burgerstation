@@ -45,8 +45,9 @@
 	level_multiplier = 1.25
 
 /mob/living/simple/npc/spider/desert/Initialize()
+	. = ..()
 	set_light(4,0.25,"#00FF00")
-	return ..()
+	return .
 
 /mob/living/simple/npc/spider/twilight
 	name = "twilight spider"

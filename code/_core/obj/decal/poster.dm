@@ -11,12 +11,12 @@
 	dir = SOUTH
 	return ..()
 
-/obj/decal/poster/nanotrasen/Initialize() //Random positive poster.
+/obj/decal/poster/nanotrasen/PostInitialize() //Random positive poster.
 	. = ..()
 	icon_state = "poster[rand(1,35)]_legit"
 	return .
 
-/obj/decal/poster/syndicate/Initialize() //Random negative poster.
+/obj/decal/poster/syndicate/PostInitialize() //Random negative poster.
 	. = ..()
 	icon_state = "poster[rand(1,44)]"
 	return .
