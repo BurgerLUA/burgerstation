@@ -345,3 +345,94 @@
 			L.visible_message("\The [L.name] twitches for a moment, but falls back limp...")
 
 	return .
+
+
+
+/reagent/medicine/health_potion
+	name = "Healing Juice"
+	desc = "Heals everything. Magical!"
+	desc_extended = "Works just as good when consumed."
+	color = "#FF0000"
+
+	flavor = "cherry"
+
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
+
+	value = 3
+
+/reagent/medicine/health_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+
+	return .
+
+/reagent/medicine/health_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+
+	return .
+
+
+/reagent/medicine/stamina_potion
+	name = "Stamina Juice"
+	desc = "Restores your energy. Magical!"
+	desc_extended = "Works just as good when consumed."
+	color = "#00FF00"
+
+	flavor = "lime"
+
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
+
+	value = 3
+
+/reagent/medicine/stamina_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_stamina(.*10)
+
+	return .
+
+/reagent/medicine/stamina_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_stamina(.*10)
+
+	return .
+
+
+/reagent/medicine/mana_potion
+	name = "Mana Juice"
+	desc = "Restores your magical powers. Super magical!"
+	desc_extended = "Works just as good when consumed."
+	color = "#0000FF"
+
+	flavor = "blueberry"
+
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
+
+	value = 3
+
+/reagent/medicine/mana_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_mana(.*10)
+
+	return .
+
+/reagent/medicine/mana_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_mana(.*10)
+
+	return .

@@ -56,6 +56,8 @@
 		FATIGUE = INFINITY
 	)
 
+	iff_tag = "Syndicate"
+	loyalty_tag = "Syndicate"
 
 /mob/living/simple/npc/silicon/squats/post_death()
 

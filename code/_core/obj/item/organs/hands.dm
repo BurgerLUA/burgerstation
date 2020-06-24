@@ -238,6 +238,9 @@
 	attack_delay = 1
 	attack_delay_max = 4
 
+/obj/item/organ/hand/stand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+	return /damagetype/unarmed/fists/stand
+
 /obj/item/organ/hand/stand/left
 	name = "left fast hand"
 	id = BODY_HAND_LEFT

@@ -1,5 +1,5 @@
- /damagetype/ranged/bullet/revolver_300
- 	name = "revolver bullet"
+/damagetype/ranged/bullet/revolver_300
+	name = "revolver bullet"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

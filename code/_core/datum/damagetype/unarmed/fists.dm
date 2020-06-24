@@ -7,14 +7,14 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 5,
+		BLUNT = 10,
 		FATIGUE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 0,
-		FATIGUE = 0,
+		BLUNT = 25,
+		FATIGUE = 25,
 	)
 
 	attribute_stats = list(
@@ -49,7 +49,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 0
+		FATIGUE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -58,7 +58,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 10
+		ATTRIBUTE_STRENGTH = 50
 	)
 
 	attribute_damage = list(
@@ -188,3 +188,43 @@
 				A.left_hand.grab_object(attacker,victim)
 
 	return ..()
+
+
+
+/damagetype/unarmed/fists/stand
+	name = "stand fist"
+	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 20,
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	attack_damage_penetration = list(
+		BLUNT = INFINITY
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 20
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = list(BLUNT),
+		ATTRIBUTE_DEXTERITY = list(BLUNT)
+	)
+
+	skill_stats = list(
+		SKILL_UNARMED = 40
+	)
+
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT)
+	)
+
+	allow_friendly_fire = FALSE
+
+	cqc_tag = "4"

@@ -45,3 +45,37 @@
 				return TRUE
 
 	return ..()
+
+/obj/projectile/bullet/gyrojet
+	name = "gyrojet"
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "gyrojet"
+
+/obj/projectile/bullet/gyrojet/post_on_hit(var/atom/hit_atom)
+	. = ..()
+
+	if(.)
+		explode(get_turf(hit_atom),1,owner,src,iff_tag)
+
+	return .
+
+/obj/projectile/bullet/gyrojet/update_projectile()
+
+	. = ..()
+
+	if(.)
+
+		var/vel_x_change = vel_x * 0.05
+		var/vel_y_change = vel_y * 0.05
+
+		if(prob(50))
+			vel_x += clamp(vel_y_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
+
+		if(prob(50))
+			vel_y += clamp(vel_x_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_hit(current_loc,TRUE)
+			return FALSE
+
+	return .

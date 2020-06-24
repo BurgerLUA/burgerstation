@@ -130,7 +130,7 @@
 
 /obj/structure/interactive/crate/loot/Generate()
 
-	switch(rand(1,26))
+	switch(rand(1,32))
 		if(1 to 2)
 			for(var/i=1,i<=rand(2,4),i++)
 				CREATE(/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,src.loc)
@@ -157,8 +157,10 @@
 			for(var/i=1,i<=rand(2,4),i++)
 				CREATE(/obj/item/storage/kit/burn/filled,src.loc)
 		if(10 to 14)
-			for(var/i=1,i<=rand(4,12),i++)
-				CREATE(/obj/item/magazine/carbine_223,src.loc)
+			for(var/i=1,i<=rand(2,3),i++)
+				CREATE(/obj/item/weapon/ranged/bullet/revolver/big_game,src.loc)
+			for(var/i=1,i<=rand(6,10),i++)
+				CREATE(/obj/item/bullet_cartridge/revolver_300,src.loc)
 		if(14 to 18)
 			for(var/i=1,i<=rand(4,12),i++)
 				CREATE(/obj/item/magazine/rifle_556,src.loc)
@@ -170,5 +172,16 @@
 				CREATE(/obj/item/defib,src.loc)
 			for(var/i=1,i<=rand(2,4),i++)
 				CREATE(/obj/item/storage/kit/filled,src.loc)
+		if(26 to 30)
+			for(var/i=1,i<=rand(1,3),i++)
+				CREATE(/obj/item/container/beaker/bottle/large/health_potion,src.loc)
+			for(var/i=1,i<=rand(1,3),i++)
+				CREATE(/obj/item/container/beaker/bottle/large/stamina_potion,src.loc)
+			for(var/i=1,i<=rand(1,3),i++)
+				CREATE(/obj/item/container/beaker/bottle/large/mana_potion,src.loc)
+		if(30 to 32)
+			for(var/i=1,i<=rand(2,4),i++)
+				CREATE(/obj/item/grenade/timed/explosive/,src.loc)
+
 
 	return ..()
