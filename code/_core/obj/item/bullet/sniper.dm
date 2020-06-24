@@ -20,3 +20,33 @@
 	size = 0.1
 	weight = 0.1
 	value = 12
+
+/obj/item/bullet_cartridge/rifle_939mm
+	name = "\improper 9x39mm rifle bullet"
+	desc = "For rifles that require 9x39mm."
+	icon = 'icons/obj/items/bullet/223.dmi'
+
+
+	bullet_diameter = 9
+	bullet_length = 39
+	bullet_color = COLOR_BULLET
+
+	item_count_max = 5
+	item_count_max_icon = 5
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/rifle
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_939mm
+
+	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
+
+	size = 0.04
+	weight = 0.04
+
+	value = 0.7
+
+	inaccuracy_modifer = 0.75
+
+/obj/item/bullet_cartridge/rifle_939/Generate()
+	item_count_current = 5
+	return ..()

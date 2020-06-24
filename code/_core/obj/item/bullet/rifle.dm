@@ -76,3 +76,21 @@
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_556mm
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
+
+/obj/item/bullet_cartridge/rifle_545mm
+	name = "\improper 5.45mm rifle bullet"
+	desc = "For rifles and machineguns that requre 5,45mm."
+	icon = 'icons/obj/items/bullet/223.dmi'
+
+	bullet_diameter = 5.45
+	bullet_length = 39
+	bullet_color = COLOR_BULLET
+
+
+	item_count_max = 5
+	item_count_max_icon = 5
+
+	projectile = /obj/projectile/bullet/firearm/rifle
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_545mm
+
+	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
