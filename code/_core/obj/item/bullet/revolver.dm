@@ -108,3 +108,7 @@
 	size = 0.06
 	weight = 0.06
 	value = 1.2
+
+/obj/item/bullet_cartridge/revolver_300/Generate()
+	item_count_current = 5
+	return ..()

@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/civ_carbine
-	name = "\improper 5.56 BP-SOL"
+	name = "\improper 5.56mm BP-SOL"
 	desc = "A taste of SOL weaponry."
 	desc_extended = "An older version of a carbine. Despite its age, many PMCs consider this carbine superior as it doesn't have any firerate limiters, allowing it to fire 600 rounds per second."
 	icon = 'icons/obj/items/weapons/ranged/rifle/556_carbine.dmi'
