@@ -75,10 +75,10 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/rifle_545mm,
-		/obj/item/magazine/rifle_545mm,
-		/obj/item/magazine/rifle_545mm,
-		/obj/item/magazine/rifle_545mm
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545,
+		/obj/item/magazine/rifle_545
 	)
 
 /loadout/rev/scout_sniper
@@ -99,10 +99,10 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/rifle_939mm/vintorez,
-		/obj/item/magazine/rifle_939mm/vintorez,
-		/obj/item/magazine/rifle_939mm/vintorez,
-		/obj/item/magazine/rifle_939mm/vintorez
+		/obj/item/magazine/rifle_939/vintorez,
+		/obj/item/magazine/rifle_939/vintorez,
+		/obj/item/magazine/rifle_939/vintorez,
+		/obj/item/magazine/rifle_939/vintorez
 	)
 
 /loadout/rev/heavy
@@ -123,10 +123,10 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/rifle_939mm/val,
-		/obj/item/magazine/rifle_939mm/val,
-		/obj/item/magazine/rifle_939mm/val,
-		/obj/item/magazine/rifle_939mm/val,
+		/obj/item/magazine/rifle_939/val,
+		/obj/item/magazine/rifle_939/val,
+		/obj/item/magazine/rifle_939/val,
+		/obj/item/magazine/rifle_939/val,
 		/obj/item/grenade/timed/explosive/,
 		/obj/item/grenade/timed/explosive/
 	)
@@ -148,8 +148,8 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/rifle_939mm/groza,
-		/obj/item/magazine/rifle_939mm/groza,
-		/obj/item/magazine/rifle_939mm/groza,
-		/obj/item/magazine/rifle_939mm/groza
+		/obj/item/magazine/rifle_939/groza,
+		/obj/item/magazine/rifle_939/groza,
+		/obj/item/magazine/rifle_939/groza,
+		/obj/item/magazine/rifle_939/groza
 	)

@@ -18,7 +18,7 @@
 	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"
 	fdel(full_path)
-	text2file(json_encode(owner.globals),full_path)
+	text2file(json_encode(loaded_data),full_path)
 	owner.to_chat(span("notice","Your global stats has been saved."))
 	return TRUE
 

@@ -48,6 +48,6 @@
 	new /obj/item/container/medicine/burn_kit(src)
 	new /obj/item/container/medicine/patch/burn(src)
 	new /obj/item/container/medicine/patch/burn(src)
-	new /obj/item/container/medicine/patch/brute(src)
+	new /obj/item/container/medicine/patch/burn(src)
 	new /obj/item/container/medicine/patch/burn(src)
 	return ..()

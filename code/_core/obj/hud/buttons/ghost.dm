@@ -83,6 +83,9 @@
 		return TRUE
 
 	if(!(C.permissions & FLAG_PERMISSION_DEVELOPER))
+		if(!C.globals.loaded_data)
+			caller.to_chat(span("warning","Your globals data appears to be bugged. Message Burger with your ckey on discord so he can fix this."))
+			return FALSE
 		if(C.globals.loaded_data["antag_tokens"] <= 0)
 			caller.to_chat(span("notice","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
 			return .

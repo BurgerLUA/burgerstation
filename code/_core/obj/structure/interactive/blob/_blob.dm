@@ -23,8 +23,16 @@
 	var/health_states = 0
 
 /obj/structure/interactive/blob/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-	if(istype(victim,/mob/living/simple/npc/blobbernaught))
-		return FALSE
+
+	if(is_living(victim))
+		if(istype(victim,/mob/living/simple/npc/blobbernaught))
+			return FALSE
+		var/mob/living/L = victim
+		if(L.dead)
+			return FALSE
+		if(L.loyalty_tag == "Blob")
+			return FALSE
+
 	return ..()
 
 /obj/structure/interactive/blob/proc/check_mobs()
@@ -32,15 +40,16 @@
 	. = FALSE
 
 	for(var/mob/living/L in range(1,src))
-		if(!L.dead && L.loyalty_tag != "Blob" && can_attack(L,src,null,damage_type))
+		if(!can_attack(L,src,null,damage_type))
+			continue
 			src.attack(src,L,precise = TRUE)
-			if(L.loc != src.loc)
-				visible_message(span("danger","\The [src.name] tries to absorb \the [L.name]!"))
-				L.force_move(src.loc)
-			. = TRUE
+		if(L.loc != src.loc)
+			visible_message(span("danger","\The [src.name] tries to absorb \the [L.name]!"))
+			L.force_move(src.loc)
+		. = TRUE
 
 	if(. && !CALLBACK_EXISTS("check_mobs_\ref[src]"))
-		CALLBACK("check_mobs_\ref[src]",10,src,.proc/check_mobs)
+		CALLBACK("check_mobs_\ref[src]",30,src,.proc/check_mobs)
 
 /obj/structure/interactive/blob/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	if(is_living(O))

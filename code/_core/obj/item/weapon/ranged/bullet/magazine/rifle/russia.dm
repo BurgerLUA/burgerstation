@@ -105,7 +105,7 @@
 
 	shoot_sounds = list('sounds/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
 
-	can_wield = TRUE
+	can_wield = FALSE
 
 	view_punch = 4
 
@@ -139,13 +139,13 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val
 	name = "\improper 9x39mm AS Val"
-	desc = "The last thing you never hear."
+	desc = "The last thing you'll never hear."
 	desc_extended = "A modified version of the silent Vintorez sniper rifle, the assault rifle was designed as a special forces weapon."
 	icon = 'icons/obj/items/weapons/ranged/rifle/939_val.dmi'
 	icon_state = "inventory"
 	value = 200
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = TRUE
 

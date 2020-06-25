@@ -7,22 +7,17 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 5,
 		BLUNT = 10,
-		PIERCE = 5,
-		BIO = 20,
-		FATIGUE = 10
+		HEAT = 10,
+		FATIGUE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 25,
 		BLUNT = 25,
-		PIERCE = 25,
-		BIO = 25,
-		FATIGUE = 25
+		HEAT = 25,
+		FATIGUE = 10
 	)
-
 
 	attribute_stats = list(
 	)
