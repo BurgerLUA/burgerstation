@@ -276,7 +276,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 				if(length(V.passengers) && is_player(V.passengers[1]))
 					P = V.passengers[1]
 
-			if(P && P.client && ((P.right_item = src && P.attack_flags & ATTACK_HELD_RIGHT) || (P.left_item = src && P.attack_flags & ATTACK_HELD_LEFT)) )
+			if(P && P.client && (( (P.right_item == src) && P.attack_flags & ATTACK_HELD_LEFT) || ((P.left_item == src) && P.attack_flags & ATTACK_HELD_RIGHT)) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
 					return TRUE

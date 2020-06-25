@@ -95,7 +95,7 @@
 	var/client/owner = CLIENT(ckey)
 
 	if(!owner)
-		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr]. Last recorded name: [loaded_data["name"]]")
+		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr]. Last recorded name: [loaded_data["name"]]. Registered ckey: [ckey]")
 		return FALSE
 	/*
 	if(!owner.save_slot)

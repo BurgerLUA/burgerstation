@@ -49,8 +49,6 @@
 	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE)*100*L.mob_size
 	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM)*100*L.mob_size
 
-	L.to_chat("Your wisdom power is: [L.get_attribute_level(ATTRIBUTE_WISDOM)].")
-
 	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
 	return TRUE

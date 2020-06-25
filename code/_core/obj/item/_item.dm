@@ -115,8 +115,8 @@
 	)
 
 	var/dan_mode = FALSE //Special in hand sprites, used by artist D4n0w4r.
-	// list(NORTH,EAST,SOUTH,WEST)
 	var/dan_icon_state = "held"
+	// list(NORTH,EAST,SOUTH,WEST)
 	var/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
 	var/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand. These values are inversed in left hand.
 	var/dan_layer_above = LAYER_MOB_HELD

@@ -310,7 +310,7 @@
 		return 0
 
 	if(amount == 0)
-		CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner]!")
+		CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
 		return 0
 
 	if(temperature == TNULL)
