@@ -153,44 +153,11 @@
 
 	. = ..()
 
-	if(. || force)
-		if(left_item && left_item.dan_mode)
-			var/final_pixel_x = 0
-			var/final_pixel_y = -4
-			var/final_layer = 0
-			switch(dir)
-				if(NORTH)
-					final_layer = LAYER_MOB_NONE
-					final_pixel_x = -8
-				if(SOUTH)
-					final_layer = LAYER_MOB_HELD
-					final_pixel_x = 8
-				if(EAST)
-					final_layer = LAYER_MOB_NONE
-					final_pixel_x = 4
-				if(WEST)
-					final_layer = LAYER_MOB_HELD
-					final_pixel_x = -4
-			update_overlay(left_item, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
-
-		if(right_item && right_item.dan_mode)
-			var/final_pixel_x = 0
-			var/final_pixel_y = -4
-			var/final_layer = 0
-			switch(dir)
-				if(NORTH)
-					final_layer = LAYER_MOB_HELD
-					final_pixel_x = dan_offset_pixel_x
-				if(SOUTH)
-					final_layer = LAYER_MOB_NONE
-					final_pixel_x = -dan_offset_pixel_x
-				if(EAST)
-					final_layer = LAYER_MOB_HELD
-					final_pixel_x = -dan_offset_pixel_y
-				if(WEST)
-					final_layer = LAYER_MOB_NONE
-					final_pixel_x = dan_offset_pixel_y
-			update_overlay(right_item, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
+	if(. || force) //Dan updating.
+		if(left_hand && left_item && left_item.dan_mode)
+			left_hand.update_held_icon(left_item)
+		if(right_hand && right_item && right_item.dan_mode)
+			right_hand.update_held_icon(right_item)
 
 	return .
 

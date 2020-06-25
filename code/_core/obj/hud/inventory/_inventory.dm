@@ -176,11 +176,36 @@
 
 	var/mob/living/advanced/A = owner
 
+
 	var/icon/desired_icon = initial(item_to_update.icon)
-	var/list/states = icon_states(initial(item_to_update.icon))
 	var/desired_icon_state = null
-	if(item_to_update)
-		desired_icon_state = "held"
+	var/desired_pixel_x = 0
+	var/desired_pixel_y = 0
+	var/desired_layer = LAYER_MOB_HELD
+
+	var/list/states = icon_states(initial(item_to_update.icon))
+
+	if(item_to_update.dan_mode)
+		desired_icon_state = item_to_update.dan_icon_state
+		world.log << "FUCK OFF?"
+		switch(owner.dir)
+			if(NORTH)
+				desired_layer = item_to_update.dan_layer_below
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[1] : -item_to_update.dan_offset_pixel_x[1]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[1] : -item_to_update.dan_offset_pixel_y[1]
+			if(EAST)
+				desired_layer = click_flags & RIGHT_HAND ? item_to_update.dan_layer_above : item_to_update.dan_layer_below
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[2] : -item_to_update.dan_offset_pixel_x[2]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[2] : -item_to_update.dan_offset_pixel_y[2]
+			if(SOUTH)
+				desired_layer = item_to_update.dan_layer_above
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[3] : -item_to_update.dan_offset_pixel_x[3]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[3] : -item_to_update.dan_offset_pixel_y[3]
+			if(WEST)
+				desired_layer = click_flags & RIGHT_HAND ? item_to_update.dan_layer_below : item_to_update.dan_layer_below
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[4] : -item_to_update.dan_offset_pixel_x[4]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[4] : -item_to_update.dan_offset_pixel_y[4]
+
 	else if(id == BODY_HAND_LEFT)
 		desired_icon_state = item_to_update.icon_state_held_left
 	else if(id == BODY_HAND_RIGHT)
@@ -208,9 +233,11 @@
 		item_to_update,
 		desired_icon = desired_icon,
 		desired_icon_state = desired_icon_state,
-		desired_layer = LAYER_MOB_HELD,
+		desired_layer = desired_layer,
 		desired_never_blend = TRUE,
-		desired_color = item_to_update.color
+		desired_color = item_to_update.color,
+		desired_pixel_x = desired_pixel_x,
+		desired_pixel_y = desired_pixel_y
 	)
 
 	return TRUE
