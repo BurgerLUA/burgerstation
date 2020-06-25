@@ -187,7 +187,6 @@
 
 	if(item_to_update.dan_mode)
 		desired_icon_state = item_to_update.dan_icon_state
-		world.log << "FUCK OFF?"
 		switch(owner.dir)
 			if(NORTH)
 				desired_layer = item_to_update.dan_layer_below
