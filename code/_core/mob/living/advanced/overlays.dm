@@ -1,4 +1,4 @@
-mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
+mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_dan_mode = FALSE)
 	var/image/overlay/O = new /image/overlay
 	O.attached_object = object
 	O.initial_icon = desired_icon ? desired_icon : object.icon
@@ -46,6 +46,8 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 		update_overlay_direct(O,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends,desired_pixel_x,desired_pixel_y)
 		return TRUE
 
+	log_error("Tries to update an overlay [A.get_debug_name()] for player [src.get_debug_name()], but it did not exist!")
+
 	return FALSE
 
 var/global/meme_count = 0
@@ -86,7 +88,6 @@ mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_l
 		O.color = desired_color
 	if(desired_additional_blends)
 		O.additional_blends = desired_additional_blends
-
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
 	O.alpha = desired_alpha

@@ -114,6 +114,10 @@
 		ATTACK_TYPE_UNARMED = 2
 	)
 
+	var/dan_mode = FALSE //Special in hand sprites, used by artist D4n0w4r.
+	var/dan_offset_pixel_x = 8
+	var/dan_offset_pixel_y = 4
+
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
 		return 0

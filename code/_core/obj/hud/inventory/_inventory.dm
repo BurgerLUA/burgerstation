@@ -179,7 +179,9 @@
 	var/icon/desired_icon = initial(item_to_update.icon)
 	var/list/states = icon_states(initial(item_to_update.icon))
 	var/desired_icon_state = null
-	if(id == BODY_HAND_LEFT)
+	if(item_to_update)
+		desired_icon_state = "held"
+	else if(id == BODY_HAND_LEFT)
 		desired_icon_state = item_to_update.icon_state_held_left
 	else if(id == BODY_HAND_RIGHT)
 		desired_icon_state = item_to_update.icon_state_held_right

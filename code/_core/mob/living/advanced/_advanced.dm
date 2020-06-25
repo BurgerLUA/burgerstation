@@ -149,52 +149,50 @@
 
 	return .
 
-/* HERE LIES A FAILED PROJECT
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
 	. = ..()
 
-	if(.)
-		if(left_item && left_item.icon_state_held_single)
+	if(. || force)
+		if(left_item && left_item.dan_mode)
 			var/final_pixel_x = 0
 			var/final_pixel_y = -4
 			var/final_layer = 0
 			switch(dir)
 				if(NORTH)
-					final_layer = LAYER_MOB_ITEM_BEHIND
+					final_layer = LAYER_MOB_NONE
 					final_pixel_x = -8
 				if(SOUTH)
-					final_layer = LAYER_MOB_ITEM_FRONT
+					final_layer = LAYER_MOB_HELD
 					final_pixel_x = 8
 				if(EAST)
-					final_layer = LAYER_MOB_ITEM_BEHIND
+					final_layer = LAYER_MOB_NONE
 					final_pixel_x = 4
 				if(WEST)
-					final_layer = LAYER_MOB_ITEM_FRONT
+					final_layer = LAYER_MOB_HELD
 					final_pixel_x = -4
-			update_overlay(left_item, desired_icon = initial(left_item.icon), desired_icon_state = left_item.icon_state_held_single,  desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
+			update_overlay(left_item, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
 
-		if(right_item && right_item.icon_state_held_single)
+		if(right_item && right_item.dan_mode)
 			var/final_pixel_x = 0
 			var/final_pixel_y = -4
 			var/final_layer = 0
 			switch(dir)
 				if(NORTH)
-					final_layer = LAYER_MOB_ITEM_FRONT
-					final_pixel_x = 8
+					final_layer = LAYER_MOB_HELD
+					final_pixel_x = dan_offset_pixel_x
 				if(SOUTH)
-					final_layer = LAYER_MOB_ITEM_BEHIND
-					final_pixel_x = -8
+					final_layer = LAYER_MOB_NONE
+					final_pixel_x = -dan_offset_pixel_x
 				if(EAST)
-					final_layer = LAYER_MOB_ITEM_FRONT
-					final_pixel_x = -4
+					final_layer = LAYER_MOB_HELD
+					final_pixel_x = -dan_offset_pixel_y
 				if(WEST)
-					final_layer = LAYER_MOB_ITEM_BEHIND
-					final_pixel_x = 4
-			update_overlay(right_item, desired_icon = initial(right_item.icon), desired_icon_state = right_item.icon_state_held_single, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
+					final_layer = LAYER_MOB_NONE
+					final_pixel_x = dan_offset_pixel_y
+			update_overlay(right_item, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
 
 	return .
-*/
 
 /mob/living/advanced/proc/update_slowdown_mul()
 
