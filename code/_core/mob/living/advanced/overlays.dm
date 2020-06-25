@@ -1,4 +1,4 @@
-mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_dan_mode = FALSE)
+mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
 	var/image/overlay/O = new /image/overlay
 	O.attached_object = object
 	O.initial_icon = desired_icon ? desired_icon : object.icon
@@ -12,6 +12,8 @@ mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,va
 	O.no_initial = desired_no_initial
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
+	if(desired_transform)
+		O.transform = desired_transform
 	if(!desired_never_blend)
 		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
 	O.update()
@@ -72,7 +74,7 @@ mob/living/advanced/proc/remove_overlay_image(var/image/overlay/O)
 		overlays_assoc_atom -= O.attached_object
 	qdel(I)
 
-mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255)
+mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255,var/desired_transform)
 
 	remove_overlay_image(O)
 
@@ -88,6 +90,8 @@ mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_l
 		O.color = desired_color
 	if(desired_additional_blends)
 		O.additional_blends = desired_additional_blends
+	if(desired_transform)
+		O.transform = desired_transform
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
 	O.alpha = desired_alpha
