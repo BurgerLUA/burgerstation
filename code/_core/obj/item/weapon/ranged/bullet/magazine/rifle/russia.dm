@@ -11,7 +11,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/308/shoot_short.ogg')
+	shoot_sounds = list('sounds/weapons/russian/abakan.oga') //Shooting sounds for both AK and Abakan were similar so uuh yes
 
 	can_wield = TRUE
 
@@ -57,7 +57,7 @@
 	max_bursts = 2
 	view_punch = 5
 
-	shoot_sounds = list('sounds/weapons/223/shoot.ogg') //I'm lazy
+	shoot_sounds = list('sounds/weapons/russian/abakan.oga')
 
 	can_wield = TRUE
 
@@ -103,8 +103,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
-
+	shoot_sounds = list('sounds/weapons/russian/groza.oga')
 	can_wield = TRUE
 
 	view_punch = 4
@@ -149,7 +148,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sounds/weapons/russian/val.oga')
 
 	can_wield = TRUE
 
@@ -194,7 +193,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sounds/weapons/russian/val.oga') // similar shooting sounds so yes
 
 	can_wield = TRUE
 	wield_only = FALSE
