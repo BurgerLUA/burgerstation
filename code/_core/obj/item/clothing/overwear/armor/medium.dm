@@ -24,6 +24,7 @@
 		BLADE = 25,
 		BLUNT = 25,
 		PIERCE = 50,
+		LASER = 40,
 		MAGIC = -50,
 		COLD = 15
 	)

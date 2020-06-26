@@ -190,7 +190,7 @@
 	icon = 'icons/obj/items/weapons/ranged/rifle/939_vintar.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 2.5
+	shoot_delay = 3.5
 
 	automatic = TRUE
 
@@ -207,7 +207,7 @@
 	weight = WEIGHT_4
 
 	heat_per_shot = 0.07
-	heat_max = 0.3
+	heat_max = 0.49
 
 	bullet_length_min = 38
 	bullet_length_best = 39
@@ -229,7 +229,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.02
-	return 0.001
+	return 0.0005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.02 - (0.004 * L.get_skill_power(SKILL_RANGED)))

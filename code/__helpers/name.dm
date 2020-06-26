@@ -1,4 +1,7 @@
 #define CHECK_NAME(x) (SSname.check_duplicate_name(x))
 #define FIRST_NAME_MALE (pick(SSname.first_names_male))
+#define FIRST_NAME_MALE_RUSSIAN (pick(SSname.first_names_male_russian))
 #define FIRST_NAME_FEMALE (pick(SSname.first_names_female))
+#define FIRST_NAME_FEMALE_RUSSIAN (pick(SSname.first_names_female_russian))
 #define LAST_NAME (pick(SSname.last_names))
+#define LAST_NAME_RUSSIAN (pick(SSname.last_names_russian))
