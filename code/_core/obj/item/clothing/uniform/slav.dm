@@ -1,6 +1,6 @@
 /obj/item/clothing/uniform/slav
 	name = "matroska shirt and slacks"
-	icon = 'icons/obj/items/clothing/uniforms/hos.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/slav_uniform.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
