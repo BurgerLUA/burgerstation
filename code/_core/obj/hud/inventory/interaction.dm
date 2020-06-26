@@ -7,7 +7,7 @@
 		if(isturf(object.loc))
 			if(is_living(object))
 				var/mob/living/L = object
-				if(!L.dead && !L.add_status_effect(GRAB, source = caller))
+				if(!L.add_status_effect(GRAB, source = caller))
 					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
 					return TRUE
 			grab_object(caller,object,location,control,params)
@@ -28,7 +28,8 @@
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
 		return TRUE
 
-	else if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
+	else if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+		var/mob/living/L = caller
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = src.defer_click_on_object(location,control,params)
 		if(is_item(object_to_throw))
@@ -48,7 +49,7 @@
 			vel_y *= 12
 
 			I.drop_item(get_turf(caller))
-			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30)
+			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
 
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.

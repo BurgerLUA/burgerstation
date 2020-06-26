@@ -1,7 +1,7 @@
 /mob/living/proc/can_resist(var/messages = TRUE)
 
 	if(next_resist > world.time)
-		if(messages) to_chat(span("warning","You don't have enough strength to resist now!"))
+		//if(messages) to_chat(span("warning","You don't have enough strength to resist now!"))
 		return FALSE
 
 	if(health.stamina_current < 20)
@@ -18,6 +18,16 @@
 
 	if(!src.can_resist())
 		return FALSE
+
+	if(on_fire)
+		adjust_fire_stacks(max(-fire_stacks,-50))
+		health.adjust_stamina(-5)
+		src.visible_message(
+			span("warning","\The [src.name] quickly pats out the flames!"),
+			span("warning","You quickly pat out the flames!"),
+		)
+		next_resist = world.time + 20
+		return TRUE
 
 	if(grabbing_hand)
 		var/mob/living/advanced/attacker = grabbing_hand.owner

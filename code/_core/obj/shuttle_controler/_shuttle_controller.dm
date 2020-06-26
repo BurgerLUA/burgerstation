@@ -247,6 +247,6 @@ var/global/list/all_shuttle_controlers = list()
 			continue
 		if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 			continue
-		//M.throw_self(M,null,null,null,transit_throw_x*16,transit_throw_y*16)
+		M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
 
 	return TRUE

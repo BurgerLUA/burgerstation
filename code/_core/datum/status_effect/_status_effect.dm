@@ -142,7 +142,7 @@
 	minimum = 5
 	maximum = 5
 
-/status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	owner.add_status_effect(PARALYZE,magnitude,duration,source = source,stealthy = TRUE)
 	return ..()
 
@@ -162,7 +162,7 @@
 			power,0,0,0,
 			0,power,0,0,
 			0,0,power,0,
-			0,0,0,1-min(0.9,power*0.33),
+			0,0,0,1,
 			enlightenment_power,enlightenment_power,enlightenment_power,enlightenment_power
 		)
 		owner.update_eyes()
