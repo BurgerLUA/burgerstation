@@ -30,5 +30,7 @@
 
 
 /damagetype/ranged/magic/fire/ash_drake/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-	L.add_status_effect(FIRE,100,0,stealthy=L.on_fire)
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.add_status_effect(FIRE,100,0,stealthy=L.on_fire)
 	return ..()
