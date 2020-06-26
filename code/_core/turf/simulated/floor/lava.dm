@@ -4,21 +4,29 @@
 	desc = "Melting hot lava, dont fall in!"
 	icon_state = "lava"
 
-	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT * 0.5
-	desired_light_range = 6
-	desired_light_color = "#FF8300"
-
 	footstep = /footstep/lava
 
 	plane = PLANE_WATER
 
-	density_north = TRUE
-	density_south = TRUE
-	density_east  = TRUE
-	density_west  = TRUE
-	density_up    = TRUE
-	density_down  = TRUE
-	allow_bullet_pass = TRUE
+/turf/simulated/floor/lava/Crossed(var/atom/movable/M)
+	if(is_living(M))
+		lava_idiot(M)
+	return ..()
 
-	collision_flags = FLAG_COLLISION_WALL
-	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
+/turf/simulated/floor/lava/proc/lava_idiot(var/mob/living/L)
+
+	if(L.loc != src)
+		return FALSE
+
+	if(length(L.status_immune) && L.status_immune[FIRE])
+		return FALSE
+
+	if(!L.on_fire)
+		L.to_chat(span("danger","<h1>The lava is HOT!</h1>"))
+		L.emote("pain")
+
+	L.add_status_effect(FIRE,100,0,stealthy=L.on_fire)
+
+	CALLBACK("lava_\ref[L]",10,src,.proc/lava_idiot,L)
+
+	return TRUE

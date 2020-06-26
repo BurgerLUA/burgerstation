@@ -8,5 +8,11 @@
 	verbs += /mob/living/verb/set_intent_grab
 	verbs += /mob/living/verb/set_intent_help
 	verbs += /mob/living/verb/suicide
+	verbs += /mob/living/verb/test_fire
 
 	return ..()
+
+
+/mob/living/verb/test_fire()
+	set category = "Debug"
+	add_status_effect(FIRE,100,100)

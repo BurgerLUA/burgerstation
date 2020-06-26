@@ -19,18 +19,22 @@
 
 /mob/living/verb/set_intent_harm()
 	set category = "Game"
+	set hidden = TRUE
 	set_intent(INTENT_HARM)
 
 /mob/living/verb/set_intent_disarm()
 	set category = "Game"
+	set hidden = TRUE
 	set_intent(INTENT_DISARM)
 
 /mob/living/verb/set_intent_grab()
 	set category = "Game"
+	set hidden = TRUE
 	set_intent(INTENT_GRAB)
 
 /mob/living/verb/set_intent_help()
 	set category = "Game"
+	set hidden = TRUE
 	set_intent(INTENT_HELP)
 
 /mob/living/verb/cycle_intent_clockwise()

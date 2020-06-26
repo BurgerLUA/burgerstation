@@ -24,6 +24,8 @@
 #define LAYER_MOB_BELOW        LAYER_MOB - 0.1
 #define LAYER_MOB              8
 
+#define LAYER_MOB_FIRE         9
+
 #define LAYER_MOB_ABOVE        10
 
 #define LAYER_PROJECTILE 13

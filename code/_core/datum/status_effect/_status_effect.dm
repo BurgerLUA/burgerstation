@@ -49,6 +49,24 @@
 	minimum = 10
 	maximum = 100
 
+/status_effect/fire
+	name = "Fire"
+	desc = "You're on fire!"
+	id = FIRE
+	minimum = 0
+	maximum = 300
+
+/status_effect/fire/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+
+	. = ..()
+
+	var/initial_fire = owner.on_fire
+
+	if(owner.ignite(magnitude) && !initial_fire)
+		owner.visible_message(span("danger","\The [owner.name] is set on fire!"))
+
+	return .
+
 /status_effect/staggered
 	name = "Staggered"
 	desc = "You're staggered!"

@@ -218,6 +218,7 @@
 		if(desired_horizontal) //KNOCK DOWN
 			animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
 			update_collisions(FLAG_COLLISION_CRAWLING)
+			play(pick('sounds/effects/impacts/bodyfall2.ogg','sounds/effects/impacts/bodyfall3.ogg','sounds/effects/impacts/bodyfall4.ogg'),get_turf(src))
 		else //GET UP
 			animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
@@ -278,6 +279,8 @@ mob/living/proc/on_life_slow()
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
 	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10,FALSE)
 	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
+
+	handle_fire()
 
 	return TRUE
 

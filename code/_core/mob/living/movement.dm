@@ -66,7 +66,9 @@
 		if(alert_overlay)
 			alert_overlay.glide_size = src.glide_size
 			alert_overlay.force_move(src.loc)
-
+		if(fire_overlay)
+			fire_overlay.glide_size = src.glide_size
+			fire_overlay.force_move(src.loc)
 	return .
 
 /mob/living/Bump(var/atom/obstacle,var/Dir=0)

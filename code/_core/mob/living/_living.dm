@@ -140,6 +140,7 @@
 
 	var/obj/effect/chat_overlay
 	var/obj/effect/alert_overlay
+	var/obj/effect/fire_overlay
 
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
@@ -147,6 +148,9 @@
 	var/footstep_mod = 2 //How many cycles required to make a footstep sound.
 	var/footstep_counter = 0 //Read only
 	var/footstep_left_right_counter = FALSE //Read only. For playing left/right footstep sounds. Good only for advanced but you never know.
+
+	var/on_fire = FALSE
+	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
@@ -194,6 +198,7 @@
 
 	QDEL_NULL(alert_overlay)
 	QDEL_NULL(chat_overlay)
+	QDEL_NULL(fire_overlay)
 
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
@@ -287,6 +292,12 @@
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 	alert_overlay.pixel_z = 20
+	//This is initialized somewhere else.
+
+	fire_overlay = new(src.loc)
+	fire_overlay.layer = LAYER_MOB_FIRE
+	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
+	fire_overlay.icon_state = "0"
 	//This is initialized somewhere else.
 
 	return .
