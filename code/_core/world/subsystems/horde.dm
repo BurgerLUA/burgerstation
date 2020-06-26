@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_FIGHTING
 		round_time = 0
 		round_time_next = 0
-		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Alpha/Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
 		next_threat_update = world.time + 100
 
 	if(state == HORDE_STATE_FIGHTING)
@@ -243,7 +243,10 @@ SUBSYSTEM_DEF(horde)
 		possible_hostage_types -= L
 		L = new L(get_turf(S))
 		INITIALIZE(L)
-		L.set_handcuffs(TRUE)
+		var/obj/item/handcuffs/H = new(get_turf(L))
+		INITIALIZE(H)
+		GENERATE(H)
+		L.set_handcuffs(TRUE,H)
 		tracked_objectives += L
 
 	var/list/valid_boss_ids = list()

@@ -19,9 +19,13 @@
 	bullet_diameter_max = 19
 
 
-	size = SIZE_3
+	size = SIZE_2
 	weight = WEIGHT_3
 
 /obj/item/magazine/shotgun_auto/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 	return ..()
+
+
+/obj/item/magazine/shotgun_auto/empty
+	ammo = null

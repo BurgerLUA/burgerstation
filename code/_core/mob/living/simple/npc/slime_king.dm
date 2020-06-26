@@ -61,7 +61,7 @@
 	damage_received_multiplier = 0.5
 
 	butcher_contents = list(
-		/obj/item/soapstone/red
+		/obj/item/soapstone/orange
 	)
 
 	mob_size = MOB_SIZE_BOSS

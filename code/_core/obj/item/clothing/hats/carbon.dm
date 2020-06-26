@@ -25,6 +25,8 @@
 
 	no_initial_blend = TRUE
 
+	dyeable = TRUE
+
 
 /obj/item/clothing/head/helmet/carbon/nanotrasen
 	polymorphs = list(

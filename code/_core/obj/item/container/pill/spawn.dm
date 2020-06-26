@@ -42,3 +42,11 @@
 /obj/item/container/pill/space_dust/Generate()
 	reagents.add_reagent(/reagent/drug/liberty_dust,10)
 	return ..()
+
+
+/obj/item/container/pill/omnizine
+	name = "omnizine pill (20u)"
+
+/obj/item/container/pill/omnizine/Generate()
+	reagents.add_reagent(/reagent/medicine/omnizine,20)
+	return ..()

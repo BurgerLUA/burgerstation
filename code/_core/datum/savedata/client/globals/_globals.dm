@@ -4,7 +4,7 @@
 	)
 
 /savedata/client/globals/get_file(var/file_id)
-	return "global.json"
+	return "global_stats.json"
 
 /savedata/client/globals/New(var/desired_ckey)
 

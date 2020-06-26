@@ -47,9 +47,12 @@
 
 	. = ..()
 
-	if(. && handcuffed)
+	if(. && handcuffed && !horizontal && !grabbing_hand)
 
 		var/counter_to_add = src.get_attribute_power(ATTRIBUTE_STRENGTH)*10*(client ? 3 : 1)
+
+		if(stored_handcuffs && stored_handcuffs.strength)
+			counter_to_add *= (1/stored_handcuffs.strength)
 
 		if(intent == INTENT_HARM)
 			counter_to_add *= 3

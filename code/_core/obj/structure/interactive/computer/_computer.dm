@@ -119,15 +119,6 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	var/obj/shuttle_controller/desired_shuttle_controller
 
-/obj/structure/interactive/computer/console/remote_flight/PostInitialize()
-
-	. = ..()
-
-	if(src.z == 3)
-		SShorde.possible_horde_targets += src
-
-	return .
-
 /obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
@@ -187,6 +178,15 @@ obj/structure/interactive/computer/console/remote_flight/alpha
 obj/structure/interactive/computer/console/remote_flight/bravo
 	name = "remote bravo shuttle console"
 	desired_shuttle_controller = /obj/shuttle_controller/bravo
+
+/obj/structure/interactive/computer/console/remote_flight/bravo/PostInitialize()
+	. = ..()
+	if(src.z == 3)
+		SShorde.possible_horde_targets += src
+	return .
+
+
+
 
 obj/structure/interactive/computer/console/remote_flight/charlie
 	name = "remote charlie shuttle console"

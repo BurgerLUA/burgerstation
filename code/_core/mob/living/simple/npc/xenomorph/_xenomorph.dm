@@ -95,7 +95,7 @@
 	level_multiplier = 4
 
 	butcher_contents = list(
-		/obj/item/soapstone/red
+		/obj/item/soapstone/orange
 	)
 
 	damage_received_multiplier = 0.5

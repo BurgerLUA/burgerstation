@@ -14,6 +14,8 @@
 
 	var/resist_handcuffs = TRUE
 
+	roaming_distance = 0
+
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()

@@ -11,6 +11,9 @@
 	item_slot = SLOT_TORSO_B
 	slot_icons = TRUE
 
+	weight = WEIGHT_3
+	size = SIZE_3
+
 	value = 110
 
 /obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)

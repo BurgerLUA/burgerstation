@@ -13,11 +13,6 @@
 
 	bullet_block_chance = 75
 
-
-/obj/structure/interactive/mining_drill/Initialize()
-	SShorde.possible_horde_targets += src
-	return ..()
-
 /obj/structure/interactive/mining_drill/update_icon()
 
 	if(THINKING(src))

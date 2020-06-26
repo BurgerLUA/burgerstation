@@ -4,6 +4,7 @@
 	desc_extended = "Cheaply made metal handcuffs that anyone can really break out of with enough strength. To handcuff someone, click on them while this is in your hands. Handcuff speed is increased if the target is laying down."
 	icon = 'icons/obj/items/handcuffs.dmi'
 	icon_state = "inventory"
+	var/strength = 1 //Multiplier required to resist out of them.
 
 
 /obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
@@ -22,11 +23,8 @@
 	return ..()
 
 /obj/item/handcuffs/proc/cuff(var/mob/caller,var/mob/living/advanced/target)
-
 	target.visible_message(span("warning","\The [caller.name] finishes cuffing \the [target.name]."),span("danger","\The [caller.name] cuffs you!"))
-	target.set_handcuffs(TRUE)
-	qdel(src)
-
+	target.set_handcuffs(TRUE,src)
 	return TRUE
 
 /obj/item/handcuffs/proc/can_cuff(var/mob/caller,var/mob/living/advanced/target)

@@ -10,11 +10,9 @@
 /obj/item/coin/antag_token
 	name = "antag token"
 	desc = "Valid or salid?"
-	desc_extended = "Buying this and then crushing it in your hand will increase your number of OOC antag tokens by 1. Antag tokens can be redeemed while observing and pressing the \"Become Antagonist\" menu option."
+	desc_extended = "Buying this and then crushing it in your hand will increase your number of OOC antag tokens by 1. Antag tokens can be redeemed while observing and pressing the \"Become Antagonist\" menu option at the start of the round. Note that slots are limited."
 	icon_state = "antag_token_gold"
-
-	value = 10000
-
+	value = 7500
 
 /obj/item/coin/antag_token/click_self(var/mob/caller)
 

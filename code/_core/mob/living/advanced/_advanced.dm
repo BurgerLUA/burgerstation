@@ -86,6 +86,7 @@
 	var/image/overlay/handcuffs_overlay
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
+	var/obj/item/handcuffs/stored_handcuffs
 
 /mob/living/advanced/Destroy()
 
@@ -105,6 +106,9 @@
 	right_item = null
 	active_inventory = null
 	driving = null
+
+	QDEL_NULL(stored_handcuffs)
+
 	return ..()
 
 /mob/living/advanced/proc/update_clothes()

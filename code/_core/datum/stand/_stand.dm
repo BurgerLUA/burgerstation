@@ -118,7 +118,7 @@
 	linked_stand.iff_tag = stand_user.iff_tag
 	linked_stand.loyalty_tag = stand_user.loyalty_tag
 	INITIALIZE(linked_stand)
-	linked_stand.equip_loadout("outfit_stand_[rand(1,9)]")
+	linked_stand.equip_loadout(pick(subtypesof(/loadout/stand/)))
 
 	if(stand_user.ai)
 		stand_user.set_intent(INTENT_HARM)

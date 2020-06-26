@@ -7,7 +7,7 @@
 	is_container = TRUE
 
 	size = SIZE_3
-	container_max_size = SIZE_1
+	container_max_size = SIZE_2
 	dynamic_inventory_count = 8
 
 /obj/item/storage/kit/filled/fill_inventory()
@@ -50,4 +50,20 @@
 	new /obj/item/container/medicine/patch/burn(src)
 	new /obj/item/container/medicine/patch/burn(src)
 	new /obj/item/container/medicine/patch/burn(src)
+	return ..()
+
+
+/obj/item/storage/kit/syndicate
+	name = "combat medikit"
+	icon_state = "syndicate"
+
+/obj/item/storage/kit/syndicate/filled/fill_inventory()
+	new /obj/item/storage/pillbottle/bicaridine(src)
+	new /obj/item/storage/pillbottle/dylovene(src)
+	new /obj/item/storage/pillbottle/kelotane(src)
+	new /obj/item/storage/pillbottle/iron(src)
+	new /obj/item/storage/pillbottle/omnizine(src)
+	new /obj/item/container/syringe/epinephrine(src)
+	new /obj/item/container/syringe/epinephrine(src)
+	new /obj/item/analyzer/health(src)
 	return ..()

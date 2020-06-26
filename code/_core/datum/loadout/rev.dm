@@ -112,7 +112,6 @@
 		/obj/item/clothing/shirt/syndicate,
 		/obj/item/clothing/pants/syndicate,
 		/obj/item/clothing/overwear/hardsuit/exosuit,
-		/obj/item/clothing/head/helmet/hardsuit/exosuit,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/back/storage/satchel,

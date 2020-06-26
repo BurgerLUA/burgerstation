@@ -32,8 +32,8 @@
 	heat_per_shot = 0.04
 	heat_max = 0.1
 
-/obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/revolver/big_game/get_static_spread() //Base spread
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/revolver/traitor_357/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/revolver/big_game/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))

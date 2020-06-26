@@ -9,10 +9,6 @@
 
 	bullet_block_chance = 75
 
-/obj/structure/interactive/ore_box/Initialize()
-	SShorde.possible_horde_targets += src
-	return ..()
-
 /obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	if(istype(object,/obj/item/material/ore))

@@ -292,11 +292,6 @@
 		/obj/item/storage/shoebox/clown
 	)
 
-
-/obj/structure/interactive/vending/syndicate
-	name = "syndicate vendor"
-	icon_state = "syndi"
-
 /obj/structure/interactive/vending/hydroponics/nutri
 	name = "garden vendor"
 	icon_state = "nutri"
@@ -325,8 +320,6 @@
 		/obj/item/container/beaker/can/orange_soda,
 		/obj/item/container/beaker/can/space_up
 	)
-
-var/global/list/equipped_players = list()
 
 /*
 /obj/structure/interactive/vending/autolocker

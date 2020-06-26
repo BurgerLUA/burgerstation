@@ -62,3 +62,24 @@
 	value = 0.6
 
 	inaccuracy_modifer = 1.5
+
+
+/obj/item/bullet_cartridge/shotgun/fire
+	name = "\improper 12 gauge drake breath shell"
+	desc = "A drake breath shell that shoots incendiary rounds."
+	desc_extended = "A magic imbued shotgun shell that shoots 3 high damaging incendiary rounds. Don't ask how it works."
+	icon_state = "fire"
+
+	projectile_count = 3
+	base_spread = 0.01
+
+	projectile = /obj/projectile/bullet/firearm/rifle
+	damage_type_bullet = /damagetype/ranged/magic/fireball/ash_drake
+
+	projectile_speed = 8
+
+	size = 0.04
+	weight = 0.04
+	value = 10
+
+	inaccuracy_modifer = 1

@@ -44,7 +44,7 @@
 
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/drake_armor,
-		/obj/item/soapstone/red
+		/obj/item/soapstone/orange
 	)
 
 	status_immune = list(

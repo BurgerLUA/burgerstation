@@ -23,12 +23,13 @@
 
 /obj/item/magazine/Generate()
 
-	for(var/i=1, i <= bullet_count_max, i++)
-		var/obj/item/bullet_cartridge/B = new ammo(src)
-		INITIALIZE(B)
-		stored_bullets += B
+	if(ammo)
+		for(var/i=1, i <= bullet_count_max, i++)
+			var/obj/item/bullet_cartridge/B = new ammo(src)
+			INITIALIZE(B)
+			stored_bullets += B
 
-	update_sprite()
+		update_sprite()
 
 	return ..()
 

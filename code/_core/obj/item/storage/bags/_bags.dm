@@ -135,3 +135,13 @@
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/iron(src)
 	return ..()
+
+
+/obj/item/storage/pillbottle/omnizine
+	name = "omnizine pill bottle"
+	desc = "Contains 20 20u omnizine pills."
+
+/obj/item/storage/pillbottle/omnizine/fill_inventory()
+	for(var/i=1,i<=20,i++)
+		new /obj/item/container/pill/omnizine(src)
+	return ..()
