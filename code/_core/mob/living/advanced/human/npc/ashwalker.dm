@@ -1,6 +1,6 @@
 /mob/living/advanced/npc/ashwalker
 	name = "ashwalker villager"
-	ai = /ai/advanced/
+	ai = /ai/advanced/ashwalker
 	class = /class/ashwalker
 
 	species = "reptile"
@@ -9,6 +9,8 @@
 	var/shield_chance = 0
 	var/spear_chance = 25
 
+	loyalty_tag = "Ashwalker"
+	iff_tag = "Ashwalker"
 
 /mob/living/advanced/npc/ashwalker/New(loc,desired_client,desired_level_multiplier)
 

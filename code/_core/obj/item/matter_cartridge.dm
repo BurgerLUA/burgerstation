@@ -9,6 +9,8 @@
 
 /obj/item/matter_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	object = object.defer_click_on_object()
+
 	if(istype(object,/obj/item/weapon/melee/tool/rcd/))
 		var/obj/item/weapon/melee/tool/rcd/R = object
 		R.add_matter(R.matter_max)

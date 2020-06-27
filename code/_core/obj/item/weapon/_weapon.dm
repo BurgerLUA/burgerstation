@@ -48,8 +48,10 @@
 
 	return ..()
 
+/*
 /obj/item/weapon/click_self(var/mob/caller)
 	return TRUE
+*/
 
 /obj/item/weapon/on_drop(var/obj/hud/inventory/I)
 	wielded = FALSE

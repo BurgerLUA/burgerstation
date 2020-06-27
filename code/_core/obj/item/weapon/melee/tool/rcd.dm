@@ -42,6 +42,9 @@
 
 /obj/item/weapon/melee/tool/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(is_inventory(object))
+		return ..()
+
 	if(!isturf(object))
 		object = get_turf(object)
 
