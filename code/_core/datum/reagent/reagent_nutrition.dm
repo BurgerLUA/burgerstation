@@ -1,9 +1,11 @@
+#define NUTRITION_MULTIPLIER 2
+
 /reagent/nutrition/
 	name = "nutrients"
 	desc = "A source of nutrition."
 	color = "#FFFFFF"
 
-	metabolism_stomach = 8
+	metabolism_stomach = 4
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
@@ -22,9 +24,9 @@
 		var/mob/living/L = container.owner.loc
 		. *= 0.5
 		if(nutrition_amount)
-			L.add_nutrition(nutrition_amount*.,FALSE)
+			L.add_nutrition(nutrition_amount*.*NUTRITION_MULTIPLIER,FALSE)
 		if(hydration_amount)
-			L.add_hydration(hydration_amount*.,FALSE)
+			L.add_hydration(hydration_amount*.*NUTRITION_MULTIPLIER,FALSE)
 
 	return .
 
@@ -34,9 +36,9 @@
 
 	var/mob/living/L = owner
 	if(nutrition_amount)
-		L.add_nutrition(nutrition_amount*.,FALSE)
+		L.add_nutrition(nutrition_amount*.*NUTRITION_MULTIPLIER,FALSE)
 	if(hydration_amount)
-		L.add_hydration(hydration_amount*.,FALSE)
+		L.add_hydration(hydration_amount*.*NUTRITION_MULTIPLIER,FALSE)
 
 	if(owner && owner.health)
 		var/amount_to_heal = (nutrition_amount + hydration_amount)*heal_factor*.

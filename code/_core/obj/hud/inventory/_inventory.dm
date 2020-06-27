@@ -76,7 +76,7 @@
 
 	var/allow_quick_equip = TRUE
 
-/obj/hud/inventory/proc/is_occupied(var/ignore_worn = TRUE)
+/obj/hud/inventory/proc/is_occupied(var/ignore_held = TRUE, var/ignore_worn = TRUE)
 
 	if(get_top_held_object())
 		return TRUE
@@ -543,7 +543,7 @@
 	if(held_slots <= 0)
 		return FALSE
 
-	if(is_occupied(TRUE))
+	if(is_occupied(TRUE,TRUE))
 		if(messages && src.loc)
 			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE
@@ -598,7 +598,7 @@
 			owner.to_chat(span("notice","You can't wear \the [I.name] like this!"))
 		return FALSE
 
-	if(is_occupied(FALSE))
+	if(is_occupied(TRUE,TRUE))
 		if(messages && src.loc)
 			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE

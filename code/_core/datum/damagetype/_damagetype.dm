@@ -383,14 +383,13 @@
 		multiplier = clamp(multiplier,0,TILE_SIZE*0.25)
 
 		var/attack_direction = get_dir(attacker,victim)
-
 		var/list/offsets = direction_to_pixel_offset(attack_direction)
 
 		if(ismob(victim))
 			var/mob/M = victim
 			if(M.client)
-				animate(M.client,pixel_x = offsets[1]*multiplier, pixel_y = offsets[2]*multiplier,time=1)
-				animate(pixel_x = 0, pixel_y = 0, time = 5)
+				M.client.desired_punch_x += offsets[1]*multiplier
+				M.client.desired_punch_y += offsets[2]*multiplier
 
 		else if(victim.health.health_current - damage_dealt <= 0)
 			if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))

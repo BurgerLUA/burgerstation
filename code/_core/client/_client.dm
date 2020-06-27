@@ -74,6 +74,9 @@ var/global/list/all_clients = list() //Assoc list
 	var/desired_recoil_x = 0
 	var/desired_recoil_y = 0
 
+	var/desired_punch_x = 0
+	var/desired_punch_y = 0
+
 
 /client/proc/is_player_controlled()
 	return TRUE //duh

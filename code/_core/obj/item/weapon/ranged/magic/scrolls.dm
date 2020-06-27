@@ -28,6 +28,11 @@
 /obj/item/weapon/ranged/magic/scroll/can_gun_shoot(var/mob/caller)
 
 	if(!open)
+		caller.to_chat(span("notice","You need to unravel the scroll before firing it!"))
+		return FALSE
+
+	if(get_ammo_count() <= 0)
+		caller.to_chat(span("notice","The scroll is blank!"))
 		return FALSE
 
 	return ..()
@@ -55,6 +60,8 @@
 	return TRUE //No melee
 
 /obj/item/weapon/ranged/magic/scroll/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
 
 	if(is_scroll(object))
 
@@ -88,6 +95,7 @@
 /obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
 	scroll_count -= 1
 	update_sprite()
+	return ..()
 
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"
