@@ -188,8 +188,15 @@
 /obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
-/obj/item/can_be_grabbed(var/atom/grabber)
-	return isturf(src.loc)
+/obj/item/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+
+	if(!isturf(src.loc))
+		if(messages && is_living(grabber))
+			var/mob/living/L = grabber
+			L.to_chat(span("warning","\The [src.name] needs to be out in the open before you can grab it!"))
+		return FALSE
+
+	return ..()
 
 /obj/item/proc/can_add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE)
 
@@ -391,6 +398,10 @@
 
 
 /obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+	if(delete_on_drop)
+		return FALSE
+	if(anchored)
+		return FALSE
 	return TRUE
 
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)

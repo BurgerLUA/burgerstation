@@ -485,20 +485,19 @@
 	if(objective_attack)
 		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
 			set_objective(null)
-		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
+		else if(get_dist(owner,objective_attack) > attack_distance_max + 1 || !can_see(objective_attack))
 			frustration_attack++
+		else
+			frustration_attack = 0
 
 	if(!objective_attack || frustration_attack > frustration_threshold)
-
 		var/atom/best_target
 		var/best_score = 0
-
 		for(var/mob/living/L in possible_targets)
 			var/local_score = get_attack_score(L)
 			if(!best_score || local_score > best_score)
 				best_target = L
 				best_score = local_score
-
 		if(best_target && best_target != objective_attack)
 			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
 

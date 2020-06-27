@@ -32,11 +32,6 @@
 			I.item_count_current = object_data["item_count_current"]
 		if(object_data["delete_on_drop"])
 			I.delete_on_drop = TRUE
-		if(object_data["reagents"] && length(object_data["reagents"]))
-			for(var/r_id in object_data["reagents"])
-				var/volume = object_data["reagents"][r_id]
-				I.reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
-			I.reagents.update_container()
 
 	if(istype(O,/obj/item/radio) && object_data["stored_radio"])
 		var/obj/item/radio/R = O
@@ -157,8 +152,18 @@
 			FP.iff_tag = object_data["iff_tag"]
 
 	INITIALIZE(O)
+
+	if(is_item(O) && object_data["reagents"] && length(object_data["reagents"]))
+		var/obj/item/I = O
+		for(var/r_id in object_data["reagents"])
+			var/volume = object_data["reagents"][r_id]
+			I.reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
+		I.reagents.update_container()
+
 	O.force_move(loc)
 	O.update_sprite()
+
+
 
 	return O
 
@@ -247,7 +252,8 @@
 			if(IT.reagents && IT.reagents.stored_reagents && length(IT.reagents.stored_reagents))
 				returning_list["reagents"] = list()
 				for(var/r_id in IT.reagents.stored_reagents)
-					returning_list["reagents"][r_id] = IT.reagents.stored_reagents[r_id]
+					var/volume = IT.reagents.stored_reagents[r_id]
+					returning_list["reagents"][r_id] = volume
 
 		if(istype(I,/obj/item/weapon/ranged/))
 			var/obj/item/weapon/ranged/R = I

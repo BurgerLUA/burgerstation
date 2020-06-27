@@ -109,6 +109,13 @@
 
 	return ..()
 
+/atom/Initialize()
+
+	if(reagents)
+		reagents = new reagents(src)
+
+	return ..()
+
 /atom/New()
 
 	. = ..()
@@ -116,9 +123,6 @@
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-	if(reagents && ispath(reagents))
-		reagents = new reagents(src)
 
 	set_dir(dir,TRUE)
 

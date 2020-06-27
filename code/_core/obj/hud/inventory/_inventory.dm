@@ -76,6 +76,27 @@
 
 	var/allow_quick_equip = TRUE
 
+/obj/hud/inventory/proc/is_occupied(var/ignore_worn = TRUE)
+
+	if(get_top_held_object())
+		return TRUE
+
+	if(!ignore_worn && get_top_worn_object())
+		return TRUE
+
+	if(grabbed_object)
+		return TRUE
+
+	if(parent_inventory)
+		return TRUE
+
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.handcuffed)
+			return TRUE
+
+	return FALSE
+
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)
@@ -519,24 +540,15 @@
 	if(loc && loc == I)
 		return FALSE
 
-	if(I.delete_on_drop)
+	if(held_slots <= 0)
 		return FALSE
 
-	if(I.anchored)
+	if(is_occupied(TRUE))
+		if(messages && src.loc)
+			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE
 
 	if(!I.can_be_held(owner,src))
-		return FALSE
-
-	if(is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(A.handcuffed)
-			return FALSE
-
-	if(parent_inventory)
-		return FALSE
-
-	if(held_slots <= 0)
 		return FALSE
 
 	if(length(item_blacklist))
@@ -581,13 +593,17 @@
 	if(loc && loc == I)
 		return FALSE
 
-	if(parent_inventory)
-		return FALSE
-
 	if(worn_slots <= 0)
+		if(messages)
+			owner.to_chat(span("notice","You can't wear \the [I.name] like this!"))
 		return FALSE
 
-	if(I.anchored)
+	if(is_occupied(FALSE))
+		if(messages && src.loc)
+			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
+		return FALSE
+
+	if(!I.can_be_held(owner,src))
 		return FALSE
 
 	if(!I.can_be_worn(owner,src))
@@ -596,7 +612,7 @@
 	if(worn_allow_duplicate)
 		for(var/obj/item/I2 in worn_objects)
 			if(I.item_slot & I.item_slot)
-				owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
+				if(messages) owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 				return FALSE
 
 	if(is_clothing(I))

@@ -61,14 +61,14 @@
 	update_sprite()
 	return .
 
-/obj/item/container/pill/update_icon()
+/obj/item/container/pill/update_sprite()
 
 	if(double)
 		color = null
 	else
 		color = reagents.color
 
-	return TRUE
+	return ..()
 
 /obj/item/container/pill/update_overlays()
 
@@ -87,13 +87,15 @@
 
 /obj/item/container/pill/New(var/desired_loc)
 
-	if(double)
-		reagents_2 = new/reagent_container/pill/half(src)
-		reagents = new/reagent_container/pill/half(src)
-	else
-		reagents = /reagent_container/pill/
+	. = ..()
 
-	return ..()
+	if(double)
+		reagents_2 = /reagent_container/pill/half
+		reagents = /reagent_container/pill/half
+	else
+		reagents = /reagent_container/pill
+
+	return .
 
 
 /obj/item/container/pill/double/ //Yes, this is shitcode.

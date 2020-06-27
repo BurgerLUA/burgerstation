@@ -103,8 +103,15 @@
 
 	return .
 
-/atom/movable/proc/can_be_grabbed(var/atom/grabber)
-	return !anchored
+/atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+
+	if(anchored)
+		if(messages && is_living(grabber))
+			var/mob/living/L = grabber
+			L.to_chat(span("warning","\The [src.name] is secured firmly to the ground!"))
+		return FALSE
+
+	return TRUE
 
 /atom/movable/Initialize()
 
