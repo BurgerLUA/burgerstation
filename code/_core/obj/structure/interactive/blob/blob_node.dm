@@ -8,12 +8,18 @@
 
 	var/mob/living/simple/npc/blobbernaught/linked_blobbernaught
 
+	var/next_jug = 0
+
 /obj/structure/interactive/blob/node/proc/check_jugs()
 
 	if(!linked_blobbernaught)
-		linked_blobbernaught = new(get_turf(src),null,1,src)
-		INITIALIZE(linked_blobbernaught)
-		return TRUE
+		if(next_jug <= world.time)
+			linked_blobbernaught = new(get_turf(src),null,1,src)
+			INITIALIZE(linked_blobbernaught)
+			return TRUE
+	else if(linked_blobbernaught.dead)
+		linked_blobbernaught = null
+		next_jug = world.time + SECONDS_TO_DECISECONDS(60)
 
 	return FALSE
 

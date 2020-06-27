@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(admin)
 	var/line_count = 0
 	for(var/line in split_file)
 		line_count++
+		if(copytext(line,1,2) == "#")
+			continue
 		var/list/split_line = splittext(line," ")
 		if(length(split_line) < 2)
 			log_error("Invalid rank format for [RANK_DIR] on line [line_count]: [line]")

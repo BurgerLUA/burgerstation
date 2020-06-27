@@ -85,11 +85,10 @@
 		var/list/valid_turfs = get_valid_turfs()
 		for(var/i=1,i<=CEILING(length(linked_nodes),1),i++)
 			CHECK_TICK
-			if(resources_to_spend <= 0)
-				break
 			var/obj/structure/interactive/blob/node/N = linked_nodes[i]
 			if(N.check_jugs())
 				resources_to_spend -= 5
+			if(resources_to_spend <= 0)
 				break
 			if(!length(valid_turfs))
 				break

@@ -26,7 +26,6 @@ SUBSYSTEM_DEF(living)
 	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
 
 	for(var/mob/living/L in all_living)
-		//CHECK_TICK
 		L.on_life()
 		if(do_slow)
 			L.on_life_slow()

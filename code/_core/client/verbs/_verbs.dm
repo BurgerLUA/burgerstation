@@ -11,6 +11,8 @@
 	//Menu
 	verbs += /client/verb/open_discord
 	verbs += /client/verb/open_github
+	verbs += /client/verb/player_who
+	verbs += /client/verb/staff_who
 
 	//Settings
 	verbs += /client/verb/change_click_mode

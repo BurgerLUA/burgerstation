@@ -69,7 +69,7 @@
 	var/list/tracked_hidden_organs
 	var/tracked_hidden_clothing = 0x0
 
-	value = 250
+	value = 500
 
 	stun_angle = -90
 

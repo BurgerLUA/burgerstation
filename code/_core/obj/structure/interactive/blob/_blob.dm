@@ -43,7 +43,7 @@
 		if(!can_attack(L,src,null,damage_type))
 			continue
 			src.attack(src,L,precise = TRUE)
-		if(L.loc != src.loc)
+		if(L.loc != src.loc && src.loc.Enter(L,L.loc))
 			visible_message(span("danger","\The [src.name] tries to absorb \the [L.name]!"))
 			L.force_move(src.loc)
 		. = TRUE
@@ -90,6 +90,7 @@
 
 /obj/structure/interactive/blob/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
 	. = ..()
+
 	if(desired_owner)
 		linked_core = desired_owner
 		linked_core.linked_walls += src

@@ -190,12 +190,10 @@ var/global/list/all_clients = list() //Assoc list
 	var/rank/R = SSadmin.stored_ranks["user"]
 
 	if(src.address == null)
-		R = SSadmin.stored_ranks["Host"]
+		R = SSadmin.stored_ranks["host"]
 
-	var/lower_ckey = lowertext(ckey)
-
-	if(SSadmin.stored_user_ranks[lower_ckey])
-		R = SSadmin.stored_user_ranks[lower_ckey]
+	if(SSadmin.stored_user_ranks[ckey])
+		R = SSadmin.stored_user_ranks[ckey]
 
 	permissions = R.permissions
 	to_chat("Welcome to Burgerstation, [R.name] [src]!")

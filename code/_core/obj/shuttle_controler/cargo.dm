@@ -21,6 +21,10 @@
 				continue
 			if(!O.is_safe_to_delete())
 				continue
+			if(is_living(O))
+				var/mob/living/L = O
+				if(L.loyalty_tag == "NanoTrasen")
+					continue
 			var/calculated_value = CEILING(O.calculate_value(),1)
 			if(calculated_value <= 0)
 				continue

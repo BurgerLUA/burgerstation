@@ -152,6 +152,17 @@
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
+	value = 250
+
+/mob/living/calculate_value()
+
+	. = ..()
+
+	if(!dead)
+		. *= 4
+
+	return .
+
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 

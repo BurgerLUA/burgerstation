@@ -266,6 +266,8 @@ mob/living/proc/on_life_slow()
 	if(!initialized)
 		return FALSE
 
+	handle_fire()
+
 	if(dead)
 		return FALSE
 
@@ -279,8 +281,6 @@ mob/living/proc/on_life_slow()
 	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
 	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10,FALSE)
 	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
-
-	handle_fire()
 
 	return TRUE
 
