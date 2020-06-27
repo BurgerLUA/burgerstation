@@ -105,6 +105,7 @@
 
 	if(!grabbed_object)
 		return FALSE
+
 	if(!grabbed_object.can_be_grabbed(owner) || !can_grab(owner,grabbed_object))
 		release_object(owner)
 		return FALSE

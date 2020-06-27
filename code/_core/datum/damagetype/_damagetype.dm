@@ -421,33 +421,16 @@
 	if(draw_weapon)
 		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),FLOOR(weapon_attack_delay*0.25,1),victim,attacker,weapon)
 
-	var/pixel_x_offset = 0
-	var/pixel_y_offset = 0
 	var/punch_distance = 12
-
-	if(attacker.dir & NORTH)
-		pixel_y_offset += punch_distance
-
-	if(attacker.dir & SOUTH)
-		pixel_y_offset += -punch_distance
-
-	if(attacker.dir & EAST)
-		pixel_x_offset += punch_distance
-
-	if(attacker.dir & WEST)
-		pixel_x_offset += -punch_distance
+	var/list/pixel_offset = direction_to_pixel_offset(attacker)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		//M.add_animation(pixel_x = movement_x, pixel_y = movement_y, time = 2)
-		//M.add_animation(pixel_x = -movement_x, pixel_y = -movement_y, time = 4, delay = 2, time = 4)
-
 		var/matrix/attack_matrix = matrix()
-
 		if(L.horizontal)
 			attack_matrix = turn(attack_matrix,L.stun_angle)
 
-		attack_matrix.Translate(pixel_x_offset,pixel_y_offset)
+		attack_matrix.Translate(pixel_offset[1]*punch_distance,pixel_offset[2]*punch_distance)
 
 		animate(L, transform = attack_matrix, time = FLOOR(weapon_attack_delay*0.125,1), flags = ANIMATION_LINEAR_TRANSFORM)
 

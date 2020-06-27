@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(client)
 
 	var/advanced_ticks = 0
 
-	cpu_usage_max = 100
-	tick_usage_max = 100
+	cpu_usage_max = 200
+	tick_usage_max = 200
 
 /subsystem/client/on_life()
 

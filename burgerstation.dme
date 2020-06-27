@@ -1262,6 +1262,7 @@
 #include "code\_core\world\subsystems\_subsystems.dm"
 #include "code\_core\world\subsystems\admin.dm"
 #include "code\_core\world\subsystems\ai.dm"
+#include "code\_core\world\subsystems\ai_boss.dm"
 #include "code\_core\world\subsystems\air.dm"
 #include "code\_core\world\subsystems\areas.dm"
 #include "code\_core\world\subsystems\badnames.dm"

@@ -31,3 +31,6 @@
 	skill_damage = list(
 
 	)
+
+/damagetype/on_fire/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
+	return

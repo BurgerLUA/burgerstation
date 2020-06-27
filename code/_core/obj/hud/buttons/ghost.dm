@@ -111,6 +111,10 @@
 		caller.to_chat(span("notice","There aren't enough antag slots left! Better luck next time!"))
 		return TRUE
 
+	caller.client.globals.loaded_data["antag_tokens"] -= 1 //We don't save here because there might be an exploit where you don't save or something.
+	caller.to_chat(span("notice","You spend an antag token to become an antagonist. You now have [caller.client.globals.loaded_data["antag_tokens"]] token(s)."))
+	caller.client.globals.save()
+
 	var/obj/marker/antag/M = pick(all_antag_markers)
 	all_antag_markers -= M
 	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)

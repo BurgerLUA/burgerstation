@@ -22,5 +22,6 @@
 
 	caller.client.globals.loaded_data["antag_tokens"] += 1 //We don't save here because there might be an exploit where you don't save or something.
 	caller.to_chat(span("warning","Your antag token count has increased by 1! It is now [caller.client.globals.loaded_data["antag_tokens"]]."))
+	qdel(src)
 
 	return TRUE

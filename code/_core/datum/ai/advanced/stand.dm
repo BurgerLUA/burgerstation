@@ -48,7 +48,7 @@
 	if(!L.can_be_attacked(owner))
 		return FALSE
 
-	return FALSE
+	return TRUE
 
 
 /ai/advanced/stand/is_enemy(var/atom/A)

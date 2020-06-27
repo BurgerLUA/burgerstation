@@ -101,6 +101,7 @@
 	objective_attack = null
 	start_turf = null
 	all_living_ai -= src
+	all_boss_ai -= src
 	attackers.Cut()
 	path_start_turf = null
 	path_end_turf = null
@@ -115,7 +116,10 @@
 
 	start_turf = get_turf(owner)
 
-	all_living_ai += src
+	if(owner.boss)
+		all_boss_ai += src
+	else
+		all_living_ai += src
 
 /ai/proc/set_path(var/list/Vector3D/desired_path = list())
 

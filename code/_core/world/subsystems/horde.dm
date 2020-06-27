@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(horde)
 				state = HORDE_STATE_HIJACK
 				round_time = 0
 			else
-				next_hijack_check_time = world.time + 60
+				next_hijack_check_time = world.time + 600 //1 minute
 			return TRUE
 
 		var/wave_to_spawn = get_enemies_to_spawn()

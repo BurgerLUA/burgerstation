@@ -16,7 +16,9 @@
 	if(ending_transit_id == "cargo_shuttle_planet")
 		var/area/A = get_area(src)
 		var/total_value = 0
-		for(var/obj/O in A.contents)
+		for(var/atom/movable/O in A.contents)
+			if(!isobj(O) && !ismob(O))
+				continue
 			if(!O.is_safe_to_delete())
 				continue
 			var/calculated_value = CEILING(O.calculate_value(),1)
