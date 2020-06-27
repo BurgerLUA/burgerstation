@@ -107,6 +107,8 @@
 	var/consume_verb = "drink out of"
 	var/transfer_amount = 10
 
+	var/zoom_mul = 1 //Holding this item will grant bonus zoom.
+
 	var/list/block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
 		ATTACK_TYPE_MELEE = 0,
 		ATTACK_TYPE_RANGED = 0.9,
@@ -122,6 +124,9 @@
 	var/dan_layer_above = LAYER_MOB_HELD
 	var/dan_layer_below = LAYER_MOB_NONE
 
+/obj/item/get_base_value()
+	return initial(value) * item_count_current
+
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
 		return 0
@@ -131,6 +136,12 @@
 	. = target.add_item_count(amount_to_add,TRUE)
 	src.add_item_count(-amount_to_add,TRUE)
 	return .
+
+/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
+	if(is_living(source))
+		var/mob/living/L = source
+		return (1 - L.get_skill_power(SKILL_PRECISION))*inaccuracy_modifier*8
+	return 0
 
 /obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
 

@@ -257,7 +257,8 @@
 
 		if(istype(I,/obj/item/weapon/ranged/))
 			var/obj/item/weapon/ranged/R = I
-			returning_list["firing_pin"] = get_item_data(R.firing_pin)
+			if(R.firing_pin)
+				returning_list["firing_pin"] = get_item_data(R.firing_pin)
 
 		if(is_food(I))
 			var/obj/item/container/food/F = I

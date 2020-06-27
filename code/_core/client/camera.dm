@@ -7,9 +7,18 @@
 	var/zoom_offset_y = 0
 
 	if(is_zoomed)
+
+		var/zoom_mul = 1
+		if(is_advanced(mob))
+			var/mob/living/advanced/A = mob
+			if(A.right_item && A.right_item.wielded && (A.right_item.wielded || !A.right_item.can_wield))
+				zoom_mul = A.right_item.zoom_mul
+			else if(A.left_item && A.left_item.wielded && (A.left_item.wielded || !A.left_item.can_wield))
+				zoom_mul = A.left_item.zoom_mul
+
 		var/list/returning_list = direction_to_pixel_offset(is_zoomed)
-		zoom_offset_x = returning_list[1]*TILE_SIZE*ZOOM_RANGE
-		zoom_offset_y = returning_list[2]*TILE_SIZE*ZOOM_RANGE
+		zoom_offset_x = returning_list[1]*TILE_SIZE*ZOOM_RANGE*zoom_mul
+		zoom_offset_y = returning_list[2]*TILE_SIZE*ZOOM_RANGE*zoom_mul
 
 	var/final_pixel_x = desired_recoil_x + desired_pixel_x + zoom_offset_x + desired_punch_x
 	var/final_pixel_y = desired_recoil_y + desired_pixel_y + zoom_offset_y + desired_punch_y

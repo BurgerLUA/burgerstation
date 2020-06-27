@@ -15,6 +15,13 @@
 
 	var/scroll_count = 1
 
+	value = 10
+
+/obj/item/weapon/ranged/magic/scroll/calculate_value()
+	. = ..()
+	. *= scroll_count
+	return .
+
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
 	shoot(caller,object,location,params)
 	return TRUE
@@ -110,6 +117,8 @@
 	projectile_speed = 16
 
 	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+
+	value = 20
 
 /obj/item/weapon/ranged/magic/scroll/fireball/amount_3/Generate()
 	scroll_count = 5

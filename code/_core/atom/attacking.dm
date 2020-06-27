@@ -64,7 +64,6 @@
 			params[PARAM_ICON_Y] = num2text(attack_y)
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
-	var/atom/object_to_damage = victim.get_object_to_damage(attacker,params,precise,precise)
 
 	if(!object_to_damage_with)
 		return FALSE
@@ -72,7 +71,9 @@
 	if(!ignore_distance && get_dist_advanced(attacker,victim) > object_to_damage_with.attack_range)
 		return FALSE
 
+	var/atom/object_to_damage = victim.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
 	var/desired_damage_type = object_to_damage_with.get_damage_type(attacker,victim,object_to_damage)
+
 	if(!desired_damage_type)
 		return FALSE
 
@@ -124,7 +125,7 @@
 /atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 0.5
 
-/atom/proc/get_object_to_damage(var/atom/attacker,params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
+/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
 	return src
 
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?

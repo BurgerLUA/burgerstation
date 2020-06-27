@@ -213,3 +213,6 @@
 	return "[src.name]([src.type])([x],[y],[z])"
 
 
+
+/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod = 1)
+	return 0

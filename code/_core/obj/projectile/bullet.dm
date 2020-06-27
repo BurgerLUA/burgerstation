@@ -37,7 +37,7 @@
 			var/list/params = list()
 			params[PARAM_ICON_X] = shoot_x
 			params[PARAM_ICON_Y] = shoot_y
-			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,FALSE,FALSE)
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,FALSE,FALSE)
 			if(ismovable(object_to_damage))
 				var/atom/movable/M = object_to_damage
 				if(M.reagents)

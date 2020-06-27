@@ -379,3 +379,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	var/new_angle = ATAN2(initial_offset_x,initial_offset_y)
 	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
 	return list(cos(new_angle),sin(new_angle))
+
+/obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
+	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(2 + get_dist(L,target))*inaccuracy_modifier

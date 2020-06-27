@@ -1,26 +1,23 @@
-Where you aim with weapons is determined by the target doll on the bottom right of your interface. Having a low precision skill can cause your hits to target something else, or miss outright.
 Your attacks are 100% accurate against NPCs who are not engaged in combat.
-Critical hits occur via a dice roll system which is influenced by your precision skill.
-All objects have their own luck as well. Some objects can be lucky while some can be unlucky.
-Luck has a small effect on all chance based rolls.
-Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object. All items have some value to NanoTrasen, including most corpses.
-Objects abandoned for a long time, on station or the battlefield, will likely be stolen or cleaned up after a while. Some corpses left decayed for too long may attract strange creatures...
+The chance of a critical hit increases with your precision skill, or fulfilling the weapon's critical hit conditions.
+Luck is influenced by the object's inherit luck as well as the person using it. Luck influences combat in small and big ways.
+Delivering objects to cargo, regardless if they are part of your objectives, will grant a bonus payment relative to the value of the object. All items have some value to NanoTrasen, including most corpses. Living creatures, except for NanoTrasen personnel, are worth 4 times as more.
+Objects abandoned for a long time, on station or the battlefield, will likely be stolen or removed after a while. Some corpses left decayed for too long may attract strange creatures...
 Bicaridine heals brute damage. Kelotane heals burn damage. Dylovene heals toxin damage. It's best to keep all 3 in supply as many weapons and creatures do different types of damage.
-You can butcher most animals or creatures for meat and materials if you have a sharp enough weapon for it.
-Shotguns, SMGs, and Carbines are good for taking on groups of enemies.
-Rifles are good for picking out targets from a long range. They require more skill to use effectively, however. Press the zoom key (Default: V) to zoom in with the weapon in hand.
-Worn and held equipment can slow you down based on the weight of the object and how cumbersome it is to move with it.
+You can butcher most animals or creatures for meat and materials if you have a sharp enough weapon for it. Not all creatures can be butchered, however.
+Shotguns, SMGs, and Carbines are good for taking on groups of enemies. Rifles are good for picking out targets from a long range. They require more skill to use effectively, however. Press the zoom key (Default: V) to zoom in with the weapon in hand.
+Worn and held equipment can slow you down based on the weight of the object and how cumbersome it is to move with it. Objects inside containers, such as backpacks or pouches, do not count towards your character's weight.
 NPCs also have their own ammo count to manage. A valid tactic to counter an onslaught of NPCs is to wait it out until they run out of ammo. Some enemy NPCs do carry backup weapons, including swords, however.
 .38 special rounds are actually just shorter .357 rounds, and can fit into .357 chambered weapons.
-Sneaking is a viable way to get around enemies you don't want to engage. To sneak, press the sneak key (Default: C) or press the sneak button at the bottom right of your screen. Note that sneaking drains stamina when moving, and should be used sparingly.
+Sneaking is a legitimate tactic to avoid enemies you don't want to engage with. To toggle sneaking mode, press the C key. Note that stamina is consumed while sneaking while moving.
 You're twice as hard to detect while sneaking when laying down (resting).
-Sneaking does nothing to enemies already engaged in combat.
-Grabbing an enemy from behind will stun and disarm them them.
-You can grab any enemy on the battlefield if they're equal or smaller in size to you, however you can only grab team members who are on the ground.
-Enemies who are strong enough can instantly break out of your grab, if they're able to.
-Disarms have a chance to shove people, staggering them. If a staggered enemy hits an object behind them, they're stunned for the duration of the stagger.
+Performing a sneak attack (hitting an enemy unaware of you presence while in sneak mode) with perform a guaranteed critical hit.
+Grabbing an enemy will stun them for a short time. Grabbing an enemy from behind will stun them for a longer duration, and also disarm them.
+Enemies who are strong enough can break out of your grab, if they're able to.
+Disarms have a chance to shove people, staggering them. If a staggered enemy hits an object behind them, they're stunned instead.
 Firing pins control who is allowed to operate the gun. Syndicate guns contain firing pins that only Syndicate Operatives can fire, and NanoTrasen guns contain firing pins that only NanoTrasen Mercenaries can fire.
 Firing pins can be removed with a screwdriver, and replaced with other firing pins.
+Magic items, such as spell tomes, staves, and scrolls, do not use firing pins, but instead rely on the user's loyalty implant.
 Nearly every object in the world can be used as cover for ranged weapons. Cover only works if the enemy is not directly next to it.
 Most armor and protective clothing can only protect certain parts of your body. Be sure to examine the object to see which bodyparts it protects, and what it can protect against.
 Your health goes down if your limbs take damage. Your head contributes to you overall health twice as much as your torso, while your arms, hands, legs and feet contribute half as much.
@@ -30,23 +27,20 @@ NATO designated cartridges (9mm, 5.56mm, and 7.62mm) tend to penetrate better th
 Laser weapons are expensive and overheat easily, but they typically do full damage against targets as laser resistant armor is rare.
 Don't forget an objective finder when going out to find objectives. The objective tracker at the left of your screen only displays the initial position of the objectives, and not their current position.
 Having low nutrition and/or hydration incurs penalties. You will move slower when hungry and thirsty, and your health, stamina, and mana will regenerate slower.
-Your stamina regenerates more while resting or sleeping.
+Your health, mana, and stamina regenerates faster while resting or sleeping.
 Your mana regenerates less if you have low mana.
-Some enemies are too large to be stunned or grabbed.
 Unarmed attacks cannot be blocked, except by shields and your hands.
 Most sources of damage absorbed via armor will convert itself into 25% of the damage blocked as fatigue damage. Exceptions apply to fatigue damage, holy damage, and dark damage.
 Having a negative armor rating means that you take additional damage from what that armor protects.
 Humans have a natural holy and darkness armor resist of 100.
 Just because something is, doesn't mean it should be. If you believe you've encountered a bug or something horribly unbalanced, start a conversation about it on discord.
-Don't underestimate smaller pistols! The smaller projectile size is actually great at penetrating armor.
 Do not be afraid to ask questions! Wikibot can answer most commonly asked questions if asked in OOC, and if not, players are willing to help and give you advise.
-Some weapons, such as sniper rifles, give a bonus to precision.
+Sniper rifles are less precise at close range. They're more precise at longer range while looking through the scope (Default Key: V.)
 Feel your character is too slow? Make sure they're not injured, hungry, or thirsty before engaging in combat. Most weapons also slow you down when equipped as well.
 Food and drink is just as important as medicine. There is a very high chance that you will become hungry or thirst in the middle of a mission and suffer hunger or thirst penalties.
 Having performance issues? You can change your graphical settings under "View" in the top left corner.
-Stealth is a legitimate tactic. Don't let anyone else tell you otherwise.
-It is possible for NPCs to break out of cuffs.
+It is possible for NPCs or Players to break out of cuffs by resisting. NPCs and players cannot resist out of cuffs if they're on the floor.
 Don't go alone. The meatmen might get you.
 Sometimes wearing Syndicate armor as a NanoTrasen mercenary isn't a good idea as your corpse can easily be mistaken for the enemy when you die.
 It is actually possible for two people to hit eachother with a melee attack at the same time and both die.
-Backpacks slow you down when worn or carried.
+Backpacks slow you down when worn or carried. Remember to take only what you need.

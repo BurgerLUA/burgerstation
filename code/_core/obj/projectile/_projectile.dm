@@ -258,7 +258,7 @@
 			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 				precise = TRUE
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,precise,precise,inaccuracy_modifier)
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
 
 		if(!object_to_damage)
 			DT.perform_miss(owner,hit_atom,weapon)
@@ -309,3 +309,14 @@
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
 
 	return TRUE
+
+/obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
+
+	world.log << "The weapon is: [weapon]."
+	world.log << "The source is: [source]."
+
+	if(istype(weapon,/obj/item/weapon/ranged/) && is_living(source))
+		var/obj/item/weapon/ranged/R = weapon
+		return R.get_bullet_inaccuracy(source,target,src,inaccuracy_modifier)
+
+	return 0

@@ -121,7 +121,7 @@
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = obstacle.get_object_to_damage(src,params,TRUE,TRUE)
+		var/atom/object_to_damage = obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
 		DT.do_damage(src,obstacle,src,object_to_damage,src,1)
 		return TRUE
 

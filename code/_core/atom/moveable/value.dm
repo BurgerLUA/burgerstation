@@ -1,6 +1,3 @@
-/obj/item/get_base_value()
-	return initial(value) * item_count_current
-
 /atom/movable/proc/get_base_value()
 	return initial(value)
 
