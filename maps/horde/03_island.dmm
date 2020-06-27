@@ -294,7 +294,7 @@
 "fH" = (/obj/marker/syndicate,/turf/simulated/floor/colored/sand/desert,/area/exterior/desert)
 "fI" = (/mob/living/simple/npc/goliath,/turf/simulated/floor/basalt,/area/interior/cave/lava)
 "fJ" = (/obj/marker/objective_spawn,/turf/simulated/floor/colored/ash/dark,/area/interior/cave/lava)
-"fK" = (/turf/simulated/floor/circuit,/area/interior/roof)
+"fK" = (/obj/marker/hostage_rest,/turf/simulated/floor/circuit,/area/interior/roof)
 "fL" = (/mob/living/simple/npc/passive/penguin,/turf/simulated/floor/colored/snow,/area/exterior/snow)
 "fM" = (/turf/simulated/floor/tile/dark,/area/interior/syndicate_base)
 "fN" = (/mob/living/simple/npc/arachnid,/turf/simulated/floor/colored/dirt/jungle,/area/exterior/jungle)

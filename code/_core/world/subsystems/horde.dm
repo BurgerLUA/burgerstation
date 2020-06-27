@@ -344,9 +344,9 @@ SUBSYSTEM_DEF(horde)
 
 	. = 0
 
-	for(var/mob/living/L in tracked_enemies) //Every syndicate in an area that you're supposed to defend increases the threat level by 2, except in cases where they've been dead for less than 5 minutes, which reduces it by 1.
+	for(var/mob/living/L in tracked_enemies) //Every syndicate in an area that you're supposed to defend increases the threat level by 2, except in cases where they've been dead for less than 60 seconds, which reduces it by 1.
 		if(L.dead)
-			if(L.time_of_death + 300 >= world.time)
+			if(L.time_of_death + 600 >= world.time)
 				. -= 1
 			continue
 		var/area/A = get_area(L)
@@ -357,6 +357,9 @@ SUBSYSTEM_DEF(horde)
 	for(var/mob/living/advanced/player/P in all_players) //Every living playing defending reduces the threat level by 1.
 		if(P.dead)
 			continue
+		if(istype(P,/mob/living/advanced/player/antagonist/))
+			. += 5
+			continue
 		var/area/A = get_area(P)
 		if(!A.defend)
 			continue
@@ -364,23 +367,20 @@ SUBSYSTEM_DEF(horde)
 
 	. -= completed_objectives*10 //Every objective completed reduces the threat level by 10.
 
-	. += FLOOR(DECISECONDS_TO_SECONDS(world.time)/60,1) //Every 60 seconds is one point.
+	. += FLOOR(DECISECONDS_TO_SECONDS(world.time)/60,2) //Every 60 seconds is two points.
 
 	return .
 
 /subsystem/horde/proc/check_threat_level()
 
-	if(last_threat_level_warning == 100)
-		return //POINT OF NO RETURN.
-
 	var/threat_level = get_threat_level()
 
 	var/reported_threat_level = clamp(round(threat_level,25),0,100)
 
-	if(reported_threat_level != last_threat_level_warning)
+	if(reported_threat_level != last_threat_level_warning && abs(reported_threat_level - last_threat_level_warning) >= 15)
 		var/increase = reported_threat_level > last_threat_level_warning
 		last_threat_level_warning = reported_threat_level
-		switch(last_threat_level_warning)
+		switch(reported_threat_level)
 			if(0)
 				set_status_display("mission","CODE:\nGREEN.")
 				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL CLEARED.","ALERT: THREAT LEVEL SET TO: GREEN. EXCERSIZE TERM: FADE OUT.")
