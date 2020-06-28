@@ -10,6 +10,12 @@
 
 	health_base = 200
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/fish/,
+		/obj/item/container/food/dynamic/meat/fish/,
+		/obj/item/container/food/dynamic/meat/fish/
+	)
+
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 

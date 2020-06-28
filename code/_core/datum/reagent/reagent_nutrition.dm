@@ -407,6 +407,34 @@
 
 	flavor = "fat"
 
+/reagent/nutrition/fat/bear
+	name = "bear's fat"
+	desc = "Nutrition and flavor from bear's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/penguin
+	name = "penguin's fat"
+	desc = "Nutrition and flavor from penguin's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/fish
+	name = "fish's fat"
+	desc = "Nutrition and flavor from fish's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
+
 //Meat
 /reagent/nutrition/meat/
 	name = "raw mystery meat"
@@ -458,6 +486,106 @@
 	nutrition_amount = 2
 
 	flavor = "chicken"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+
+/reagent/nutrition/meat/xeno
+	name = "raw xeno meat"
+	desc = "Nutrition and flavor from raw xeno meat."
+	color = "#336B42"
+
+	nutrition_amount = 4
+
+	flavor = "mistakes"
+
+/reagent/nutrition/meat/xeno/cooked
+	name = "cooked xeno meat"
+	desc = "Nutrition and flavor from cooked xeno meat."
+	color = "#293D2E"
+
+	nutrition_amount = 3
+
+	flavor = "space aliens"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+
+/reagent/nutrition/meat/spider
+	name = "raw spider meat"
+	desc = "Nutrition and flavor from raw spider meat."
+	color = "#19B03E"
+
+	nutrition_amount = 3
+
+	flavor = "hair"
+
+/reagent/nutrition/meat/spider/cooked
+	name = "cooked spider meat"
+	desc = "Nutrition and flavor from cooked spider meat."
+	color = "#A0DBAF"
+
+	nutrition_amount = 2
+
+	flavor = "web"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+
+/reagent/nutrition/meat/bear
+	name = "raw bear meat"
+	desc = "Nutrition and flavor from raw bear meat."
+	color = "#BA0214"
+
+	nutrition_amount = 5
+
+	flavor = "bearable"
+
+/reagent/nutrition/meat/bear/cooked
+	name = "cooked bear meat"
+	desc = "Nutrition and flavor from cooked bear meat."
+	color = "#57040D"
+
+	nutrition_amount = 4
+
+	flavor = "russia"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+
+/reagent/nutrition/meat/penguin
+	name = "raw penguin meat"
+	desc = "Nutrition and flavor from raw penguin meat."
+	color = "#B39497"
+
+	nutrition_amount = 3
+
+	flavor = "ice"
+
+/reagent/nutrition/meat/penguin/cooked
+	name = "cooked penguin meat"
+	desc = "Nutrition and flavor from cooked penguin meat."
+	color = "#756A63"
+
+	nutrition_amount = 2
+
+	flavor = "igloos"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+
+/reagent/nutrition/meat/fish
+	name = "raw fish"
+	desc = "Nutrition and flavor from raw fish."
+	color = "#F0D8E0"
+
+	nutrition_amount = 3
+
+	flavor = "fish"
+
+/reagent/nutrition/meat/fish/cooked
+	name = "cooked fish"
+	desc = "Nutrition and flavor from cooked fish."
+	color = "#CFBE91"
+
+	nutrition_amount = 2
+
+	flavor = "FISH"
 
 	flags_reagent = FLAG_REAGENT_COOKED
 
@@ -573,3 +701,4 @@
 	flavor = "egg yolk"
 
 	value = 4
+

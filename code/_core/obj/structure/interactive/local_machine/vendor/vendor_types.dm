@@ -289,7 +289,8 @@
 	stored_types = list(
 		/obj/item/clothing/mask/gas/clown,
 		/obj/item/clothing/uniform/clown,
-		/obj/item/storage/shoebox/clown
+		/obj/item/storage/shoebox/clown,
+		/obj/item/fluff/bikehorn
 	)
 
 /obj/structure/interactive/vending/hydroponics/nutri
@@ -409,7 +410,7 @@
 		/obj/item/container/cheese_mold/block,
 		/obj/item/container/beaker/glass,
 		/obj/item/container/beaker/bowl,
-		/obj/item/container/beaker/large
-
+		/obj/item/container/beaker/large,
+		/obj/item/clothing/head/hat/paperbag
 
 	)

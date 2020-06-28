@@ -206,3 +206,28 @@
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
+
+/obj/item/container/food/dynamic/meat/xeno/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/xeno,15)
+	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/spider/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/spider,15)
+	reagents.add_reagent(/reagent/toxin/spider_toxin,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/bear/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/bear,20)
+	reagents.add_reagent(/reagent/nutrition/fat/bear,10)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/penguin/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/penguin,15)
+	reagents.add_reagent(/reagent/nutrition/fat/penguin,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/fish/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/fish,15)
+	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
+	return ..()

@@ -21,6 +21,11 @@
 		FATIGUE = 25
 	)
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/penguin/,
+		/obj/item/container/food/dynamic/meat/penguin/
+	)
+
 	mob_size = MOB_SIZE_ANIMAL
 
 /mob/living/simple/npc/passive/penguin/post_death()

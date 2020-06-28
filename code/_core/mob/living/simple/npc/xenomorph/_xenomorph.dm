@@ -9,6 +9,12 @@
 	class = /class/xenomorph
 	health_base = 100
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/xeno/,
+		/obj/item/container/food/dynamic/meat/xeno/,
+		/obj/item/container/food/dynamic/meat/xeno/
+	)
+
 	loyalty_tag = "xeno"
 	iff_tag = "xeno"
 

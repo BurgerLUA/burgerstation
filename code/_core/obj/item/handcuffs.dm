@@ -6,6 +6,7 @@
 	icon_state = "inventory"
 	var/strength = 1 //Multiplier required to resist out of them.
 
+	value = 10
 
 /obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
