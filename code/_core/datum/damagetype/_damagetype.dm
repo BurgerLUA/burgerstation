@@ -421,7 +421,7 @@
 		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),FLOOR(weapon_attack_delay*0.25,1),victim,attacker,weapon)
 
 	var/punch_distance = 12
-	var/list/pixel_offset = direction_to_pixel_offset(attacker)
+	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

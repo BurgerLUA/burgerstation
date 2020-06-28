@@ -30,8 +30,10 @@
 
 	var/skin_color = sex == MALE ? rgb(rand(75,120),rand(75,120),rand(75,120)) : rgb(rand(120,200),rand(120,200),rand(120,200))
 
+	/*
 	if(sex == FEMALE)
-		loadout_to_use = loadout_to_use + "_female"
+		loadout_to_use = locate("[loadout_to_use]" + "/female")
+	*/
 
 	var/rand_col = rand(50,200)
 	var/horn_color =  sex == MALE ? pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)) : skin_color

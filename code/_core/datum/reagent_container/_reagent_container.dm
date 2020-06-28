@@ -24,6 +24,8 @@
 
 	var/contains_lethal = FALSE
 
+	var/allow_recipie_processing = TRUE
+
 /reagent_container/Destroy()
 	owner = null
 	all_reagent_containers -= src
@@ -194,6 +196,9 @@
 
 /reagent_container/proc/process_recipes(var/mob/caller)
 
+	if(!allow_recipie_processing)
+		return FALSE
+
 	if(!caller && is_item(src.owner))
 		var/obj/item/I = src.owner
 		caller = I.last_interacted
@@ -310,7 +315,7 @@
 		return 0
 
 	if(amount == 0)
-		CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
+		//CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
 		return 0
 
 	if(temperature == TNULL)

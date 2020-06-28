@@ -234,15 +234,14 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.02 - (0.004 * L.get_skill_power(SKILL_RANGED)))
 
-
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
 
 	var/distance = get_dist(L,target)
 
 	if(distance <= 3)
-		return 8 //No using snipers at close range.
+		return TILE_SIZE*0.5 //No using snipers at close range.
 
 	if(distance <= VIEW_RANGE*0.5)
-		return max(0,1 - L.get_skill_power(SKILL_PRECISION)) * ((VIEW_RANGE*0.5)/get_dist(L,target)) * 8
+		return max(0,1 - L.get_skill_power(SKILL_PRECISION)) * ((VIEW_RANGE*0.5)/get_dist(L,target)) * TILE_SIZE*0.5
 
-	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(0.1+0.9*(get_dist(L,target) - VIEW_RANGE*0.5)) * (L.client & L.client.is_zoomed ? 0.25 : 1)
+	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(0.1+0.9*(get_dist(L,target) - VIEW_RANGE*0.5)) * (L.client && L.client.is_zoomed ? 0.25 : 1)

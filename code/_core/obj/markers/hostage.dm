@@ -16,7 +16,6 @@ var/global/list/possible_hostage_rest_markers = list()
 
 /obj/marker/hostage_rest
 	name = "hostage rest location"
-	icon_state = "hostage"
 
 /obj/marker/hostage_rest/New(var/desired_loc)
 	possible_hostage_rest_markers += src

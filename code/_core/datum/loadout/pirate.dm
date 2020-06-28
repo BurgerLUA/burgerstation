@@ -2,7 +2,8 @@
 
 	if(istype(I,/obj/item/weapon/ranged/))
 		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/bone
+		if(R.firing_pin)
+			R.firing_pin = /obj/item/firing_pin/electronic/iff/bone
 
 	return ..()
 

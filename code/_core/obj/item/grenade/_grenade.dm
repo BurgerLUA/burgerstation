@@ -141,6 +141,15 @@
 	if(!src.reagents)
 		return ..()
 
+	if(is_inventory(loc))
+		drop_item()
+
+	if(istype(loc,/obj/projectile/))
+		var/obj/projectile/P = loc
+		var/turf/T = get_turf(src)
+		P.damage_atom(T)
+		P.on_hit(T,TRUE)
+
 	for(var/obj/item/container/beaker/B in stored_containers)
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE)
 		B.reagents.update_container()

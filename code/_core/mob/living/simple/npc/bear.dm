@@ -31,6 +31,25 @@
 
 	var/armored = FALSE
 
+/mob/living/simple/npc/bear/update_overlays()
+	. = ..()
+
+	if(armored)
+		var/image/I = new/image(initial(icon),"armor")
+		add_overlay(I)
+
+	return .
+
+/mob/living/simple/npc/bear/PostInitialize()
+	. = ..()
+	update_sprite()
+	return .
+
+/mob/living/simple/npc/bear/post_death()
+	. = ..()
+	icon_state = "[initial(icon_state)]_dead"
+	update_sprite()
+
 /mob/living/simple/npc/bear/armored
 	name = "armored bear"
 	level_multiplier = 2
@@ -57,20 +76,6 @@
 	name = "armored russian bear"
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"
-
-/mob/living/simple/npc/bear/update_overlays()
-	. = ..()
-
-	if(armored)
-		var/image/I = new/image(initial(icon),"armor")
-		add_overlay(I)
-
-	return .
-
-/mob/living/simple/npc/bear/post_death()
-	. = ..()
-	icon_state = "[initial(icon_state)]_dead"
-	update_sprite()
 
 /mob/living/simple/npc/bear/snow
 	name = "snow bear"

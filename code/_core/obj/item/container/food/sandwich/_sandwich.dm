@@ -45,13 +45,14 @@
 
 /obj/item/container/food/sandwich/update_icon()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+	if(istype(reagents))
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
-	var/icon/I = new/icon(icon,icon_state)
-	I.Blend(reagents.color,ICON_MULTIPLY)
+		var/icon/I = new/icon(icon,icon_state)
+		I.Blend(reagents.color,ICON_MULTIPLY)
 
-	icon = I
+		icon = I
 
 	return ..()
 
@@ -77,9 +78,9 @@
 
 /obj/item/container/food/sandwich/update_inventory()
 	. = ..()
-	update_sprite()
+	if(initialized)
+		update_sprite()
 	return .
-
 
 /obj/item/container/food/sandwich/burger
 	name = "burger"

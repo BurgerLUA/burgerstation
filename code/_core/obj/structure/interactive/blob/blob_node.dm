@@ -12,6 +12,9 @@
 
 /obj/structure/interactive/blob/node/proc/check_jugs()
 
+	if(!initialized || qdeleting)
+		return FALSE
+
 	if(!linked_blobbernaught)
 		if(next_jug <= world.time)
 			linked_blobbernaught = new(get_turf(src),null,1,src)

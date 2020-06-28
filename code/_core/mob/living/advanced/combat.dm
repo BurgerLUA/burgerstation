@@ -7,9 +7,7 @@
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
 	if(!accurate && is_living(attacker) && attacker != src)
-		world.log << "The (get_object_to_damage) weapon is: [weapon]."
 		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
-		world.log << "The inaccuracy is: [inaccuracy]."
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 

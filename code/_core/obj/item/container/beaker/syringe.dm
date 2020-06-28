@@ -78,6 +78,9 @@
 
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(is_inventory(object))
+		return ..()
+
 	object = object.defer_click_on_object(location,control,params)
 
 	if(istype(object,/obj/item/container/))

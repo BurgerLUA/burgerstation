@@ -153,6 +153,9 @@
 	if(victim && !victim.can_be_attacked(src,weapon,params,damage_type))
 		return FALSE
 
+	if(!isturf(loc))
+		return FALSE
+
 	return TRUE
 
 /*

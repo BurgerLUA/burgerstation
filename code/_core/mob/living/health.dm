@@ -113,6 +113,10 @@
 
 /mob/living/proc/can_butcher(var/obj/item/butcher_item,var/mob/living/butcher_target)
 
+	if(butcher_target.qdeleting)
+		to_chat(span("warning","They were already butchered!"))
+		return FALSE
+
 	if(!butcher_item || !butcher_target)
 		to_chat(span("warning","You can't butcher that!"))
 		return FALSE
@@ -139,15 +143,17 @@
 
 	src.visible_message(span("danger","\The [src.name] butchers \the [target.name]!"),span("danger","You butcher \the [target.name]."))
 
+	var/turf/T = get_turf(target)
+
 	for(var/k in target.butcher_contents)
-		var/obj/O = new k(target.loc)
+		var/obj/O = new k(T)
 		INITIALIZE(O)
 		GENERATE(O)
 
 	for(var/atom/movable/M in target.contents)
 		if(is_organ(M))
 			continue
-		M.force_move(target.loc)
+		M.force_move(T)
 
 	qdel(target)
 

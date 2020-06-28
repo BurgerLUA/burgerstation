@@ -109,7 +109,7 @@
 		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 4.</h2>"))
 		return FALSE
 	if(!force && world_state != STATE_RUNNING)
-		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 5.</h2>"))
+		owner.to_chat(span("danger","Your character was not saved as the round just ended!"))
 		return FALSE
 
 	var/mob/living/advanced/player/A = owner.mob

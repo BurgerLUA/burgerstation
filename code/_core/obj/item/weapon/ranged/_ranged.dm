@@ -258,7 +258,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		accuracy_loss = clamp(accuracy_loss,0,0.5)
 
 		var/view_punch_time = shoot_delay
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier,firing_pin ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)

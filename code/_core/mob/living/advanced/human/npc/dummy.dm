@@ -13,7 +13,7 @@
 	anchored = TRUE
 
 /mob/living/advanced/npc/dummy/get_xp_multiplier()
-	return 0.5
+	return 0.1
 
 /mob/living/advanced/npc/dummy/Initialize()
 

@@ -27,6 +27,14 @@
 
 	return .
 
+/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
+
+	if(!open && damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
+		visible_message(span("warning","\The [src.name] shoots open!"))
+		open(null)
+
+	return ..()
+
 /obj/structure/interactive/crate/Cross(var/atom/movable/O)
 
 	if(istype(O,/obj/structure/interactive/crate))

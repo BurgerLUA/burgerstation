@@ -11,6 +11,9 @@
 	var/o_type = object_data["type"]
 	var/obj/O
 
+	if(!o_type)
+		return FALSE
+
 	try
 		O = new o_type(loc)
 	catch

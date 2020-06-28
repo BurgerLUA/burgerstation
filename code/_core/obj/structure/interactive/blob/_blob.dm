@@ -115,7 +115,7 @@
 
 	. = ..()
 
-	var/icon_mul = health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
+	var/icon_mul = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
 	var/desired_state = "[initial(icon_state)]_[icon_mul]"
 	if(desired_state != icon_state)
 		if(icon_state != initial(icon_state))

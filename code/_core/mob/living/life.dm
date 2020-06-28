@@ -231,12 +231,9 @@
 	if(!initialized)
 		return FALSE
 
-	if(dead)
-		return FALSE
+	handle_status_effects()
 
 	update_alpha(handle_alpha())
-
-	handle_status_effects()
 
 	return TRUE
 

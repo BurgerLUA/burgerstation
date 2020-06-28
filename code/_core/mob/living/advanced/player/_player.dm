@@ -138,7 +138,7 @@ mob/living/advanced/player/on_life_client()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
 	return .
 
-/mob/living/advanced/player/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/advanced/player/post_move(var/atom/old_loc)
 
 	. = ..()
 
@@ -157,14 +157,12 @@ mob/living/advanced/player/on_life_client()
 		for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
 			if(!L.ai)
 				continue
-			var/ai/AI = L.ai
-			AI.enabled = TRUE
+			L.ai.enabled = TRUE
 
 		for(var/mob/living/simple/npc/L in view(src,VIEW_RANGE))
 			if(!L.ai)
 				continue
-			var/ai/AI = L.ai
-			AI.enabled = TRUE
+			L.ai.enabled = TRUE
 
 
 	return .

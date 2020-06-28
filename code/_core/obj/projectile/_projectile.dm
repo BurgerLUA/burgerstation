@@ -312,9 +312,6 @@
 
 /obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
 
-	world.log << "The weapon is: [weapon]."
-	world.log << "The source is: [source]."
-
 	if(istype(weapon,/obj/item/weapon/ranged/) && is_living(source))
 		var/obj/item/weapon/ranged/R = weapon
 		return R.get_bullet_inaccuracy(source,target,src,inaccuracy_modifier)

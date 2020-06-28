@@ -194,7 +194,10 @@
 				continue
 
 			for(var/damage_type in C.defense_rating)
-				returning_value[damage_type] += C.defense_rating[damage_type]
+				if(abs(C.defense_rating[damage_type]) == INFINITY)
+					returning_value[damage_type] = C.defense_rating[damage_type]
+				else if(abs(returning_value[damage_type]) != INFINITY)
+					returning_value[damage_type] += C.defense_rating[damage_type]
 
 	return returning_value
 

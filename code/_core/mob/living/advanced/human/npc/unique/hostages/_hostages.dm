@@ -16,7 +16,7 @@ var/global/list/possible_hostage_types = list(
 
 	. = ..()
 
-	if(SShorde && hostage && !handcuffed && src.z == 2 && src.x > 119)
+	if(SShorde && hostage && src.z == 2 && src.x > 119)
 
 		hostage = FALSE
 		SShorde.queue_objectives_update()

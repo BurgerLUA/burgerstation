@@ -150,4 +150,16 @@
 		caller.to_chat(span("notice","The game has not loaded yet!"))
 		return TRUE
 
+	var/list/valid_spectators = list()
+
+	for(var/mob/M in all_mobs_with_clients)
+		valid_spectators[M.name] = M
+
+	var/mob/selection = input("Who do you want to spectate?","Spectate Choice") as null|anything in valid_spectators
+
+	if(selection)
+		var/mob/M = valid_spectators[selection]
+		caller.to_chat(span("notice","You are now spectating [M.name]."))
+		caller.force_move(M.loc)
+
 	return .

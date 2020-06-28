@@ -19,10 +19,11 @@ obj/effect/temp/damage_number/New(var/desired_location,var/desired_time,var/desi
 
 	. = ..()
 
-	if(duration)
+	if(duration && desired_value)
 		var/desired_color = "#FFFFFF"
 		var/desired_size = 0.5
 		if(isnum(desired_value))
+			desired_value = clamp(desired_value,1,99999)
 			var/damage_color_math = clamp(255 - (desired_value/100)*255,0,255)
 			desired_size = clamp(desired_value*0.05,0.25,5)
 			desired_color = rgb(255,damage_color_math,damage_color_math)

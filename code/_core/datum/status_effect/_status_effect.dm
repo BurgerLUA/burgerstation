@@ -143,7 +143,15 @@
 	maximum = 5
 
 /status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-	owner.add_status_effect(PARALYZE,magnitude,duration,source = source,stealthy = TRUE)
+
+	if(source && is_living(source) && owner && !owner.dead && owner.dir == source.dir)
+		var/mob/living/L = source
+		if(L.loyalty_tag != owner.loyalty_tag)
+			L.add_status_effect(PARALYZE,30,source = source,stealthy = TRUE)
+			L.add_status_effect(DISARM,30,source = source)
+			return ..()
+
+	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
 	return ..()
 
 /status_effect/druggy
