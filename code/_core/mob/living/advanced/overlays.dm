@@ -70,13 +70,18 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 		add_overlay(O) //Is this needed?
 	return TRUE
 
-/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255,var/desired_transform)
+/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform)
 
 	var/image/overlay/O = overlays_assoc[k]
 
+	if(!istype(O))
+		var/datum/found_ref = locate(k)
+		CRASH_SAFE("Warning: Tried to update the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
+		return FALSE
+
 	overlays -= O
 
-	if(desired_layer)
+	if(isnum(desired_layer))
 		O.layer = desired_layer
 	if(desired_icon)
 		O.icon = desired_icon
@@ -90,13 +95,18 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 		O.additional_blends = desired_additional_blends
 	if(desired_transform)
 		O.transform = desired_transform
-	O.pixel_x = desired_pixel_x
-	O.pixel_y = desired_pixel_y
-	O.alpha = desired_alpha
+	if(isnum(desired_pixel_x))
+		O.pixel_x = desired_pixel_x
+	if(isnum(desired_pixel_y))
+		O.pixel_y = desired_pixel_y
+	if(isnum(desired_alpha))
+		O.alpha = desired_alpha
 	O.update()
 
 	add_overlay(O)
 
+	return TRUE
+
 /mob/living/advanced/proc/show_overlay(var/k,var/show=TRUE)
-	update_overlay_tracked(k,desired_alpha= show ? 255 : 0)
+	update_overlay_tracked(k,desired_alpha = show ? 255 : 0)
 	return TRUE

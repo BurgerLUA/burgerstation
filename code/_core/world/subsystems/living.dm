@@ -16,11 +16,10 @@ SUBSYSTEM_DEF(living)
 	for(var/mob/living/L in all_living)
 		CHECK_TICK
 		INITIALIZE(L)
-		qdel(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
-	return ..()
 
+	return ..()
 
 /subsystem/living/on_life()
 

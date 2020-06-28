@@ -197,7 +197,6 @@
 
 	var/mob/living/advanced/A = owner
 
-
 	var/icon/desired_icon = initial(item_to_update.icon)
 	var/desired_icon_state = null
 	var/desired_pixel_x = 0
@@ -254,18 +253,32 @@
 	else if(!(desired_icon_state in states))
 		return FALSE
 
-	A.update_overlay_tracked(
-		"\ref[item_to_update]",
-		item_to_update,
-		desired_icon = desired_icon,
-		desired_icon_state = desired_icon_state,
-		desired_layer = desired_layer,
-		desired_never_blend = TRUE,
-		desired_color = item_to_update.color,
-		desired_pixel_x = desired_pixel_x,
-		desired_pixel_y = desired_pixel_y,
-		desired_transform = desired_transform
-	)
+	if(!A.overlays_assoc["\ref[item_to_update]"])
+		A.add_overlay_tracked(
+			"\ref[item_to_update]",
+			item_to_update,
+			desired_icon = desired_icon,
+			desired_icon_state = desired_icon_state,
+			desired_layer = desired_layer,
+			desired_never_blend = TRUE,
+			desired_color = item_to_update.color,
+			desired_pixel_x = desired_pixel_x,
+			desired_pixel_y = desired_pixel_y,
+			desired_transform = desired_transform
+		)
+	else
+		A.update_overlay_tracked(
+			"\ref[item_to_update]",
+			item_to_update,
+			desired_icon = desired_icon,
+			desired_icon_state = desired_icon_state,
+			desired_layer = desired_layer,
+			desired_never_blend = TRUE,
+			desired_color = item_to_update.color,
+			desired_pixel_x = desired_pixel_x,
+			desired_pixel_y = desired_pixel_y,
+			desired_transform = desired_transform
+		)
 
 	return TRUE
 
