@@ -67,7 +67,7 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 			continue
 		overlays -= O
 		O.update()
-		overlays += O //Is this needed?
+		add_overlay(O) //Is this needed?
 	return TRUE
 
 /mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255,var/desired_transform)
@@ -95,7 +95,7 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 	O.alpha = desired_alpha
 	O.update()
 
-	//overlays += O
+	add_overlay(O)
 
 /mob/living/advanced/proc/show_overlay(var/k,var/show=TRUE)
 	update_overlay_tracked(k,desired_alpha= show ? 255 : 0)
