@@ -47,7 +47,7 @@
 
 
 			if(should_update)
-				A.update_overlay(O)
+				A.update_overlay_tracked("\ref[O]")
 
 	return .
 

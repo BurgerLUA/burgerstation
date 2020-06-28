@@ -8,13 +8,10 @@
 		stored_handcuffs = handcuff_item
 
 	if(desired_handcuffs)
-		handcuffs_overlay = new /image/overlay('icons/mob/living/advanced/overlays/handcuffs.dmi',"regular")
-		handcuffs_overlay.plane = PLANE_MOB
-		handcuffs_overlay.layer = LAYER_MOB_ABOVE
-		add_tracked_overlay_image(handcuffs_overlay)
+		update_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "regular")
 		drop_held_objects(get_turf(src))
 	else
-		remove_overlay_image(handcuffs_overlay)
+		remove_overlay(handcuffs_overlay)
 		if(stored_handcuffs)
 			stored_handcuffs.force_move(get_turf(src))
 			stored_handcuffs = null

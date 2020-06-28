@@ -28,7 +28,7 @@
 			var/obj/hud/inventory/I = loc
 			if(is_advanced(I.owner))
 				var/mob/living/advanced/A = I.owner
-				A.remove_overlay(src)
+				A.remove_overlay("\ref[src]")
 				if(src in I.worn_objects)
 					I.update_worn_icon(src)
 				if(src in I.held_objects)

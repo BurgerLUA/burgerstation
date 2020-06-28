@@ -97,6 +97,13 @@
 
 	return .
 
+/obj/item/container/pill/Initialize()
+
+	if(reagents_2)
+		reagents_2 = new reagents(src)
+
+	return ..()
+
 
 /obj/item/container/pill/double/ //Yes, this is shitcode.
 	icon_state = "circle"

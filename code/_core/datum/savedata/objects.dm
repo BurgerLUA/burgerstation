@@ -162,6 +162,7 @@
 			var/volume = object_data["reagents"][r_id]
 			I.reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
 		I.reagents.update_container()
+		I.update_sprite()
 
 	O.force_move(loc)
 	O.update_sprite()

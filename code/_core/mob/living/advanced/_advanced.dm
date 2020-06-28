@@ -49,7 +49,6 @@
 	var/has_hard_crit = FALSE
 
 	var/list/overlays_assoc
-	var/list/overlays_assoc_atom
 
 	var/list/protection_heat = TARGETABLE_LIMBS_KV
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
@@ -95,7 +94,6 @@
 
 	inventory.Cut()
 	overlays_assoc.Cut()
-	overlays_assoc_atom.Cut()
 	tracked_hidden_organs.Cut()
 
 	held_objects = null
@@ -111,11 +109,7 @@
 
 	return ..()
 
-/mob/living/advanced/proc/update_clothes()
-
-	if(!length(overlays_assoc_atom))
-		CRASH_SAFE("[src.get_debug_name()] did not have anything inside the overlays_assoc_atom list!")
-		return FALSE
+/mob/living/advanced/proc/update_clothes() //Avoid using?
 
 	tracked_hidden_organs = list()
 
@@ -128,14 +122,15 @@
 	var/do_organs = length(tracked_hidden_organs)
 	var/do_clothing = tracked_hidden_clothing != 0x0
 
-	for(var/k in overlays_assoc_atom)
-		var/atom/A = k
-		if(is_organ(A))
-			var/obj/item/organ/O = A
-			show_overlay(overlays_assoc_atom[k], (do_organs && tracked_hidden_organs[O.id]) ? FALSE : TRUE)
-		else if(is_clothing(A))
-			var/obj/item/clothing/C = A
-			show_overlay(overlays_assoc_atom[k], (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
+	for(var/id in overlays_assoc)
+		var/image/overlay/O = overlays_assoc[id]
+		var/obj/item/I = O.attached_object
+		if(is_organ(I))
+			var/obj/item/organ/OR = I
+			show_overlay(id, (do_organs && tracked_hidden_organs[OR.id]) ? FALSE : TRUE)
+		else if(is_clothing(I))
+			var/obj/item/clothing/C = I
+			show_overlay(id, (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
 
 	return TRUE
 
@@ -210,7 +205,6 @@
 	worn_objects = list()
 	labeled_organs = list()
 	overlays_assoc = list()
-	overlays_assoc_atom = list()
 	tracked_hidden_organs = list()
 
 	. = ..()

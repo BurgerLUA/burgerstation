@@ -92,7 +92,6 @@
 					update_sprite()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
-
 				return TRUE
 
 			if(stored_trigger)
@@ -102,7 +101,6 @@
 					update_sprite()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
-
 				return TRUE
 
 		else if(is_beaker(object))
@@ -115,9 +113,6 @@
 				update_sprite()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
-
-
-
 			return TRUE
 
 		else if(is_trigger(object))
@@ -130,7 +125,6 @@
 				update_sprite()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
-
 			return TRUE
 
 	return ..()
