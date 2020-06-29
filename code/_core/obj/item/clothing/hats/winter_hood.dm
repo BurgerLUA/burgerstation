@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hood/winter
 	name = "winter hood"
-	icon = 'icons/obj/items/clothing/hats/winter_hood.dmi'
+	icon = 'icons/obj/item/clothing/hats/winter_hood.dmi'
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE
@@ -25,7 +25,7 @@
 
 /obj/item/clothing/head/hood/hoodie
 	name = "hoodie hood"
-	icon = 'icons/obj/items/clothing/hats/hoodie.dmi'
+	icon = 'icons/obj/item/clothing/hats/hoodie.dmi'
 
 	size = SIZE_2
 	weight = WEIGHT_1

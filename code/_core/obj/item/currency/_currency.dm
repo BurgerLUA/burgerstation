@@ -2,7 +2,7 @@
 	name = "telecrystal"
 	desc = "Often used as currency in the realm for its rarity and magical properties."
 
-	icon = 'icons/obj/items/currency/telecrystals.dmi'
+	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
 
 	value = 1

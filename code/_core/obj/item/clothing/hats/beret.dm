@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/beret
 	name = "beret"
-	icon = 'icons/obj/items/clothing/hats/beret.dmi'
+	icon = 'icons/obj/item/clothing/hats/beret.dmi'
 	desc = "HON HON HON"
 	desc_extended = "A fashionable beret."
 

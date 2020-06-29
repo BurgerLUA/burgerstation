@@ -2,7 +2,7 @@
 	name = "paper bag"
 	desc = "Put the MONEY in the BAG! PUT IT IN!"
 	desc_extended = "Holds items but preferably food. Can be dyed. Also a fashion statement when worn."
-	icon = 'icons/obj/items/clothing/hats/paperbag.dmi'
+	icon = 'icons/obj/item/clothing/hats/paperbag.dmi'
 	icon_state = "paperbag"
 
 	dynamic_inventory_count = 7

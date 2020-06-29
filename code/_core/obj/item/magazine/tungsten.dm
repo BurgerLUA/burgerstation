@@ -1,6 +1,6 @@
 /obj/item/magazine/rifle_tungsten
 	name = "\improper tungsten magazine"
-	icon = 'icons/obj/items/magazine/tungsten.dmi'
+	icon = 'icons/obj/item/magazine/tungsten.dmi'
 	icon_state = "t"
 	bullet_count_max = 10
 

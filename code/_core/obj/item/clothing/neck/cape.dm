@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/cape
 	name = "cape"
-	icon = 'icons/obj/items/clothing/suit/cape.dmi'
+	icon = 'icons/obj/item/clothing/suit/cape.dmi'
 
 
 	protected_limbs = list(BODY_TORSO)
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/neck/cape/goliath
 	name = "goliath cloak"
-	icon = 'icons/obj/items/clothing/suit/goliath_cloak.dmi'
+	icon = 'icons/obj/item/clothing/suit/goliath_cloak.dmi'
 	desc_extended = "A cloak made from goliath hide."
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/)

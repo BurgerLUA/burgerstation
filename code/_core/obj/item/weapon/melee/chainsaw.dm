@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/energy/chainsaw/
 	name = "chainsaw"
 	desc = "A blade made out of ENERGY. Please do not sue."
-	icon = 'icons/obj/items/weapons/melee/swords/chainsaw.dmi'
+	icon = 'icons/obj/item/weapons/melee/swords/chainsaw.dmi'
 	damage_type = /damagetype/melee/sword/chainsaw
 
 	attack_delay = 10

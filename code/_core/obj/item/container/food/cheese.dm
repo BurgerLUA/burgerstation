@@ -2,7 +2,7 @@
 	name = "cheese"
 	desc = "A rat's favorite."
 
-	icon = 'icons/obj/items/consumable/food/cheese.dmi'
+	icon = 'icons/obj/item/consumable/food/cheese.dmi'
 	icon_state = "wheel"
 
 	health = /health/obj/item/misc/

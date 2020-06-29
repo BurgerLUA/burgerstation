@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/winter
 	name = "winter coat"
-	icon = 'icons/obj/items/clothing/suit/winter_coat.dmi'
+	icon = 'icons/obj/item/clothing/suit/winter_coat.dmi'
 
 	defense_rating = list(
 		BLADE = 15,
@@ -29,7 +29,7 @@
 /obj/item/clothing/overwear/coat/winter/bomber
 	name = "bomber jacket"
 	desc = "Wait this actually protects agains bombs what the fuck."
-	icon = 'icons/obj/items/clothing/suit/bomberjacket.dmi'
+	icon = 'icons/obj/item/clothing/suit/bomberjacket.dmi'
 	additional_clothing = list() // no hood
 
 	defense_rating = list(

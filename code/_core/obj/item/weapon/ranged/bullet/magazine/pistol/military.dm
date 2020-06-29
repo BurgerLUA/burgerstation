@@ -3,7 +3,7 @@
 	desc = "An old relic from an oppressive police force."
 	desc_extended = "A security grade pistol chambered in 9mm. Good for self defense."
 	value = 70
-	icon = 'icons/obj/items/weapons/ranged/pistol/9mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
@@ -33,7 +33,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
 	name = ".40 Civil Defense Pistol MOD"
-	icon = 'icons/obj/items/weapons/ranged/pistol/9mm_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_2.dmi'
 	desc_extended = "A modified variant of the 9mm Civil Defense Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 110
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
@@ -70,7 +70,7 @@
 	desc = "An old relic from an oppressive police force."
 	desc_extended = "A security grade pistol chambered in 9mm. This one has been modifed with a new lighrweight frame and paintjob."
 	value = 90
-	icon = 'icons/obj/items/weapons/ranged/pistol/9mm_nt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 

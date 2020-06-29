@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/energy/rifle
 	name = "laser rifle"
-	icon = 'icons/obj/items/weapons/ranged/modular_laser.dmi'
+	icon = 'icons/obj/item/weapons/ranged/modular_laser.dmi'
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/rifle

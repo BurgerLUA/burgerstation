@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hood/skimask
 	name = "ski mask"
-	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	icon = 'icons/obj/item/clothing/masks/balaclava.dmi'
 	icon_state = "inventory"
 	slot_icons = TRUE
 

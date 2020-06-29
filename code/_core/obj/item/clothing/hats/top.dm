@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/top
 	name = "top hat"
-	icon = 'icons/obj/items/clothing/hats/top.dmi'
+	icon = 'icons/obj/item/clothing/hats/top.dmi'
 	desc = "Classy!"
 	desc_extended = "An expensive top hat."
 

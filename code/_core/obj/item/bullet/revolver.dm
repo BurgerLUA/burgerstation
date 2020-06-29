@@ -1,7 +1,7 @@
 /obj/item/bullet_cartridge/revolver_38
 	name = "\improper .38 revolver cartridge"
 	desc = "For revolvers that require .38 ammo."
-	icon = 'icons/obj/items/bullet/38.dmi'
+	icon = 'icons/obj/item/bullet/38.dmi'
 
 
 	bullet_diameter = 9
@@ -24,7 +24,7 @@
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
 	desc = "For revolvers that require .357 ammo."
-	icon = 'icons/obj/items/bullet/357.dmi'
+	icon = 'icons/obj/item/bullet/357.dmi'
 
 
 	bullet_diameter = 9
@@ -47,7 +47,7 @@
 /obj/item/bullet_cartridge/revolver_44
 	name = "\improper .44 revolver cartridge"
 	desc = "For revolvers that require .44 revolver ammo."
-	icon = 'icons/obj/items/bullet/44.dmi'
+	icon = 'icons/obj/item/bullet/44.dmi'
 
 
 	bullet_diameter = 10.9
@@ -69,7 +69,7 @@
 /obj/item/bullet_cartridge/pistol_22
 	name = "\improper .22 pistol cartridge"
 	desc = "For pistols and revolvers that require .22 ammo."
-	icon = 'icons/obj/items/bullet/22.dmi'
+	icon = 'icons/obj/item/bullet/22.dmi'
 
 
 	bullet_diameter = 5.6
@@ -91,7 +91,7 @@
 /obj/item/bullet_cartridge/revolver_300
 	name = "\improper .300 revolver cartridge"
 	desc = "For revolvers that require .300 revolver ammo."
-	icon = 'icons/obj/items/bullet/300.dmi'
+	icon = 'icons/obj/item/bullet/300.dmi'
 
 	bullet_diameter = 7.62
 	bullet_length = 46

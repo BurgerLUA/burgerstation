@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/tie
 	name = "tie"
-	icon = 'icons/obj/items/clothing/neck/tie.dmi'
+	icon = 'icons/obj/item/clothing/neck/tie.dmi'
 	desc = "Clip-ons are for pussies."
 	desc_extended = "A sleek tie."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER

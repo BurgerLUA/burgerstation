@@ -1,7 +1,7 @@
 /obj/item/bullet_cartridge/tranq_11m
 	name = "\improper 11.43x25mm tranquilizer cartridge"
 	desc = "For tranquilizers."
-	icon = 'icons/obj/items/bullet/tranq.dmi'
+	icon = 'icons/obj/item/bullet/tranq.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5

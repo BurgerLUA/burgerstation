@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/polymorphic
 	name = "protective helmet"
-	icon = 'icons/obj/items/clothing/hats/security_new.dmi'
+	icon = 'icons/obj/item/clothing/hats/security_new.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 

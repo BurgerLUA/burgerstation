@@ -1,7 +1,7 @@
 /obj/item/storage/pouch //For boxes and such, not backpacks.
 	name = "small pouch"
 	desc = "Simple pounches"
-	icon = 'icons/obj/items/storage/pouches_new.dmi'
+	icon = 'icons/obj/item/storage/pouches_new.dmi'
 
 	size = SIZE_2
 	weight = WEIGHT_2

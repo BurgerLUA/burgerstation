@@ -1,6 +1,6 @@
 /obj/item/container/food/dynamic/bread
 	name = "dough"
-	icon = 'icons/obj/items/consumable/food/dynamic_bread.dmi'
+	icon = 'icons/obj/item/consumable/food/dynamic_bread.dmi'
 	icon_state = "dough_ball"
 	crafting_id = "dough"
 

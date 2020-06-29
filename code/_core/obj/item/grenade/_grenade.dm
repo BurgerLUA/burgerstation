@@ -2,7 +2,7 @@
 	name = "grenade"
 	desc = "Activate, then throw."
 
-	icon = 'icons/obj/items/grenade.dmi'
+	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "chem"
 
 	var/list/obj/item/container/beaker/stored_containers = list()

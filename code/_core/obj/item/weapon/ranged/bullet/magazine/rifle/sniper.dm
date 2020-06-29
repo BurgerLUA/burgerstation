@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper
 	name = "\improper 7.62mm Dragon Sniper Rifle"
 	desc = "For when you want to be an asshole at an extended range."
-	icon = 'icons/obj/items/weapons/ranged/rifle/762.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/762.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 5

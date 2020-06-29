@@ -2,7 +2,7 @@
 	name = "\improper .50 sniper round"
 	desc = "For sniper rifles that require .50 ammo."
 	id = ".50"
-	icon = 'icons/obj/items/bullet/50.dmi'
+	icon = 'icons/obj/item/bullet/50.dmi'
 
 
 	bullet_diameter = 12.7
@@ -24,7 +24,7 @@
 /obj/item/bullet_cartridge/rifle_939mm
 	name = "\improper 9x39mm rifle bullet"
 	desc = "For rifles that require 9x39mm."
-	icon = 'icons/obj/items/bullet/223.dmi'
+	icon = 'icons/obj/item/bullet/223.dmi'
 
 
 	bullet_diameter = 9

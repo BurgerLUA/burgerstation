@@ -29,12 +29,12 @@
 
 /obj/item/clothing/feet/socks/ankle
 	name = "ankle high socks"
-	icon = 'icons/obj/items/clothing/socks/normal.dmi'
+	icon = 'icons/obj/item/clothing/socks/normal.dmi'
 	polymorphs = null
 
 /obj/item/clothing/feet/socks/knee
 	name = "knee high socks"
-	icon = 'icons/obj/items/clothing/socks/knee.dmi'
+	icon = 'icons/obj/item/clothing/socks/knee.dmi'
 	polymorphs = list(
 		"sock" = COLOR_WHITE
 	)
@@ -60,7 +60,7 @@
 
 /obj/item/clothing/feet/socks/thigh/
 	name = "thigh high sock"
-	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
+	icon = 'icons/obj/item/clothing/socks/programmer.dmi'
 
 	value = 10
 

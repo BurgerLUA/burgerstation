@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/torch //Also flashlights.
 	name = "torch"
 	desc = "Somehow it has unlimited fuel."
-	icon = 'icons/obj/items/weapons/melee/clubs/torch.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/torch.dmi'
 
 	var/enabled = FALSE
 
@@ -48,7 +48,7 @@
 /obj/item/weapon/melee/torch/lantern
 	name = "lantern"
 	desc = "Somehow it has unlimited fuel."
-	icon = 'icons/obj/items/weapons/melee/clubs/lantern.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/lantern.dmi'
 
 	damage_type = /damagetype/item/medium
 	damage_type_on = /damagetype/item/medium
@@ -71,7 +71,7 @@
 /obj/item/weapon/melee/torch/flashlight
 	name = "plastic flashlight"
 	desc = "Can't live without it!"
-	icon = 'icons/obj/items/weapons/melee/clubs/flashlight.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/flashlight.dmi'
 
 	damage_type = /damagetype/item/light
 	damage_type_on = /damagetype/item/light
@@ -89,7 +89,7 @@
 /obj/item/weapon/melee/torch/flashlight/maglight
 	name = "maglight"
 	desc = "A robust flashlight."
-	icon = 'icons/obj/items/weapons/melee/clubs/maglight.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/maglight.dmi'
 
 	damage_type = /damagetype/item/medium
 	damage_type_on = /damagetype/item/medium

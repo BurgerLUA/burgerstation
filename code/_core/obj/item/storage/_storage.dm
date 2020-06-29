@@ -3,7 +3,7 @@
 	desc = "What could it contain?"
 
 	icon_state = "box"
-	icon = 'icons/obj/items/storage/boxes.dmi'
+	icon = 'icons/obj/item/storage/boxes.dmi'
 
 	size = 3
 

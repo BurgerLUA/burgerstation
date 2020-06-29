@@ -1,6 +1,6 @@
 /obj/item/clothing/back/storage/dufflebag/syndicate
 	name = "dufflebag"
-	icon = 'icons/obj/items/clothing/back/dufflebag/syndicate.dmi'
+	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate.dmi'
 	desc = "EVIL!"
 	desc_extended = "A sturdy, yet lightweight black dufflebag."
 	rarity = RARITY_MYTHICAL
@@ -32,7 +32,7 @@
 
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical
-	icon = 'icons/obj/items/clothing/back/dufflebag/syndicate_medical.dmi'
+	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_medical.dmi'
 
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/medical/field_doctor
@@ -72,7 +72,7 @@
 	return ..()
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo
-	icon = 'icons/obj/items/clothing/back/dufflebag/syndicate_ammo.dmi'
+	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_ammo.dmi'
 
 
 /obj/item/clothing/back/storage/dufflebag/syndicate/ammo/fuck_you

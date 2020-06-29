@@ -1,6 +1,6 @@
 /obj/item/clothing/shirt/blouse
 	name = "blouse"
-	icon = 'icons/obj/items/clothing/shirts/blouse.dmi'
+	icon = 'icons/obj/item/clothing/shirts/blouse.dmi'
 
 	item_slot = SLOT_TORSO
 

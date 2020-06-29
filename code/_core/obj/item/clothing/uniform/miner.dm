@@ -1,7 +1,7 @@
 /obj/item/clothing/uniform/miner
 	name = "miner's uniform"
 	desc = "A slightly reinforced jumpsuit for miners."
-	icon = 'icons/obj/items/clothing/uniforms/miner.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/miner.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

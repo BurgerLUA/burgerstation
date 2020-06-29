@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/god
 	name = "god mask"
-	icon = 'obj/items/clothing/masks/god.dmi'
+	icon = 'obj/item/clothing/masks/god.dmi'
 	rarity = RARITY_LEGENDARY
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "How can you kill a god?"

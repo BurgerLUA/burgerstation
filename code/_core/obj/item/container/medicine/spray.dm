@@ -1,7 +1,7 @@
 /obj/item/container/spray
 	name = "medical spray"
 
-	icon = 'icons/obj/items/container/spray.dmi'
+	icon = 'icons/obj/item/container/spray.dmi'
 	icon_state = "spray"
 
 	var/icon_count = 8

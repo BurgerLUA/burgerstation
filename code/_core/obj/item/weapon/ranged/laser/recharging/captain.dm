@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/energy/recharging/captain
 	name = "\improper Captain's laser pistol"
-	icon = 'icons/obj/items/weapons/ranged/laser/captain.dmi'
+	icon = 'icons/obj/item/weapons/ranged/laser/captain.dmi'
 	rarity = RARITY_MYTHICAL
 
 	projectile = /obj/projectile/bullet/laser

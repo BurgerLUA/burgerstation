@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/molded_armor
 	name = "light armor"
-	icon = 'icons/obj/items/clothing/suit/mod_chest_armor.dmi'
+	icon = 'icons/obj/item/clothing/suit/mod_chest_armor.dmi'
 
 	dyeable = TRUE
 
@@ -40,7 +40,7 @@
 
 /obj/item/clothing/overwear/armor/medium_armor
 	name = "medium armor"
-	icon = 'icons/obj/items/clothing/suit/medium_chest_armor.dmi'
+	icon = 'icons/obj/item/clothing/suit/medium_chest_armor.dmi'
 
 	value = 30
 

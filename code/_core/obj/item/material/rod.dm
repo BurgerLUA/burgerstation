@@ -1,7 +1,7 @@
 /obj/item/material/rod
 	name = "rod"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "rod"
 
 	item_count_current = 1

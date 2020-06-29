@@ -2,7 +2,7 @@
 	name = "health analyzer"
 	desc = "HOLD STILL AND LET ME TREAT YOU!"
 	desc_extended = "A handheld portable health analyzer that prints the target's total recieved damage in an arbitary measurement. It also broadcasts the results of the scan for those who can't bother to read."
-	icon = 'icons/obj/items/analyzers/health.dmi'
+	icon = 'icons/obj/item/analyzers/health.dmi'
 	icon_state = "inventory"
 	value = 50
 

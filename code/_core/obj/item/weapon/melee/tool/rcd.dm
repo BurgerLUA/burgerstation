@@ -2,7 +2,7 @@
 	name = "rapid construction device"
 	desc = "Rapidly construct items."
 	desc_extended = "Useful for making complex structures fast. Requires a blueprint disk to be loaded."
-	icon = 'icons/obj/items/weapons/melee/tools/rcd.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/rcd.dmi'
 
 	var/obj/item/disk/rcd_disk
 

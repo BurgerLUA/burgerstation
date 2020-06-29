@@ -1,6 +1,6 @@
 /obj/item/clothing/uniform/chemist
 	name = "\improper Chemist's uniform"
-	icon = 'icons/obj/items/clothing/uniforms/chemist.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/chemist.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

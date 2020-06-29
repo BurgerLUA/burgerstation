@@ -1,6 +1,6 @@
 /obj/item/magazine/pistol_tranq_11m
 	name = "\improper 11.43x25mm tranquilizer magazine"
-	icon = 'icons/obj/items/magazine/tranq.dmi'
+	icon = 'icons/obj/item/magazine/tranq.dmi'
 	icon_state = "tranq"
 	bullet_count_max = 7
 

@@ -1,7 +1,7 @@
 /obj/item/storage/ammo/
 	name = "ammo box"
 	desc = "Contains amoo"
-	icon = 'icons/obj/items/storage/ammo.dmi'
+	icon = 'icons/obj/item/storage/ammo.dmi'
 	icon_state = "template"
 
 	container_whitelist = list(

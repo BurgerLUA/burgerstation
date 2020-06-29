@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/ushanka
 	name = "ushanka"
-	icon = 'icons/obj/items/clothing/hats/ushanka.dmi'
+	icon = 'icons/obj/item/clothing/hats/ushanka.dmi'
 
 	defense_rating = list(
 		COLD = INFINITY

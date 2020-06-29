@@ -3,7 +3,7 @@
 	desc = "Where is it?"
 	desc_extended = "Use this to track and locate objects."
 
-	icon = 'icons/obj/items/pinpointer.dmi'
+	icon = 'icons/obj/item/pinpointer.dmi'
 	icon_state = "red"
 
 	var/atom/tracked_atom

@@ -3,7 +3,7 @@ var/global/list/obj/item/clothing/back/fulton/fulton_devices = list()
 /obj/item/clothing/back/fulton
 	name = "personal fulton extraction device"
 	desc = "For when you're too lazy to escort high value times."
-	icon = 'icons/obj/items/clothing/back/fulton.dmi'
+	icon = 'icons/obj/item/clothing/back/fulton.dmi'
 	desc_extended = "One time use only. Activate in hand to toggle extraction. Can be worn by humanoids for a quick extraction. Does not work indoors, and targets are extracted only when the Delta Shuttle leaves the Area of Operations."
 	size = SIZE_3
 	weight = WEIGHT_4

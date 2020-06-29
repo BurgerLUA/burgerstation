@@ -1,6 +1,6 @@
 /obj/item/container/beaker/bottle/large
 	name = "large bottle"
-	icon = 'icons/obj/items/container/cup/potion_large.dmi'
+	icon = 'icons/obj/item/container/cup/potion_large.dmi'
 	icon_state = "potion"
 	icon_count = 16
 

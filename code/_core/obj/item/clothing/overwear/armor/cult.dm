@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/cult
 	name = "cult robes"
-	icon = 'icons/obj/items/clothing/suit/cult.dmi'
+	icon = 'icons/obj/item/clothing/suit/cult.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
@@ -25,7 +25,7 @@
 
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
-	icon = 'icons/obj/items/clothing/suit/cult_old.dmi'
+	icon = 'icons/obj/item/clothing/suit/cult_old.dmi'
 
 	rarity = RARITY_RARE
 
@@ -47,7 +47,7 @@
 
 /obj/item/clothing/overwear/armor/cult/hard
 	name = "hardened cult robes"
-	icon = 'icons/obj/items/clothing/suit/cult_hard.dmi'
+	icon = 'icons/obj/item/clothing/suit/cult_hard.dmi'
 
 	rarity = RARITY_MYTHICAL
 

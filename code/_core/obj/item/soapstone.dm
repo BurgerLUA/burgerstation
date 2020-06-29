@@ -1,7 +1,7 @@
 /obj/item/soapstone/ //Rare drops from bosses.
 	name = "soapstone"
 	desc = "Writes a message."
-	icon = 'icons/obj/items/soapstone.dmi'
+	icon = 'icons/obj/item/soapstone.dmi'
 	icon_state = "inventory"
 	dir = NORTH
 	var/cooldown = 0

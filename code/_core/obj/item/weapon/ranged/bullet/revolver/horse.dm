@@ -2,7 +2,7 @@
 	name = "\improper .45 HOL-Horse Revolver"
 	desc = "Yeehaw chucklefucks."
 	desc_extended = "A replica of a past relic, this double action revolver fires .45 pistol rounds. Not very practical, but at least you'll look cool using it."
-	icon = 'icons/obj/items/weapons/ranged/revolver/45.dmi'
+	icon = 'icons/obj/item/weapons/ranged/revolver/45.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 3

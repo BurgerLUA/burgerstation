@@ -4,7 +4,7 @@
 
 /obj/item/weapon/melee/tool/wirecutters
 	name = "wirecutters"
-	icon = 'icons/obj/items/weapons/melee/tools/wirecutters.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/wirecutters.dmi'
 
 	flags_tool = FLAG_TOOL_WIRECUTTER
 
@@ -12,7 +12,7 @@
 
 /obj/item/weapon/melee/tool/wrench
 	name = "wrench"
-	icon = 'icons/obj/items/weapons/melee/tools/wrench.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/wrench.dmi'
 
 	flags_tool = FLAG_TOOL_WRENCH
 
@@ -20,7 +20,7 @@
 
 /obj/item/weapon/melee/tool/crowbar
 	name = "crowbar"
-	icon = 'icons/obj/items/weapons/melee/tools/crowbar.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/crowbar.dmi'
 
 	flags_tool = FLAG_TOOL_CROWBAR
 
@@ -28,11 +28,11 @@
 
 /obj/item/weapon/melee/tool/crowbar/red
 	name = "red crowbar"
-	icon = 'icons/obj/items/weapons/melee/tools/crowbar_red.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/crowbar_red.dmi'
 
 /obj/item/weapon/melee/tool/multitool
 	name = "multitool"
-	icon = 'icons/obj/items/weapons/melee/tools/multitool.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/multitool.dmi'
 
 	flags_tool = FLAG_TOOL_MULTITOOL
 
@@ -52,7 +52,7 @@
 
 /obj/item/weapon/melee/tool/screwdriver
 	name = "screwdriver"
-	icon = 'icons/obj/items/weapons/melee/tools/screwdriver.dmi'
+	icon = 'icons/obj/item/weapons/melee/tools/screwdriver.dmi'
 
 	value = 5
 
@@ -61,7 +61,7 @@
 /obj/item/weapon/melee/tool/pickaxe
 	name = "steel pickaxe"
 	desc = "Useful for lobotomies."
-	icon = 'icons/obj/items/weapons/melee/clubs/pickaxe_steel.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe_steel.dmi'
 
 	damage_type = /damagetype/melee/club/pickaxe/
 
@@ -78,7 +78,7 @@
 /obj/item/weapon/melee/tool/shovel
 	name = "shovel"
 	desc = "Useful for digging."
-	icon = 'icons/obj/items/weapons/melee/clubs/shovel.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/shovel.dmi'
 
 	damage_type = /damagetype/melee/club/pickaxe/
 

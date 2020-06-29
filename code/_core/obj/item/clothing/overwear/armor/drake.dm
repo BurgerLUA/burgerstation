@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/drake_armor
 	name = "ash drake armor"
-	icon = 'icons/obj/items/clothing/suit/drake_armor.dmi'
+	icon = 'icons/obj/item/clothing/suit/drake_armor.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_MYTHICAL

@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/explorer_suit
 	name = "explorer's suit"
-	icon = 'icons/obj/items/clothing/suit/explorer_suit.dmi'
+	icon = 'icons/obj/item/clothing/suit/explorer_suit.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_UNCOMMON

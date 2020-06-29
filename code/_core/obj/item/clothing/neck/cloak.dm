@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/cloak
 	name = "cloak"
-	icon = 'icons/obj/items/clothing/suit/cloak.dmi'
+	icon = 'icons/obj/item/clothing/suit/cloak.dmi'
 	desc_extended = "A simple cloak. Wear your colors proudly."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 

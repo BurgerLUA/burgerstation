@@ -3,7 +3,7 @@
 
 /obj/item/magazine/clip/revolver/bullet_38
 	name = "\improper .38 six round speedloader"
-	icon = 'icons/obj/items/magazine/revolver/38.dmi'
+	icon = 'icons/obj/item/magazine/revolver/38.dmi'
 	icon_state = "38"
 	bullet_count_max = 6
 
@@ -26,7 +26,7 @@
 
 /obj/item/magazine/clip/revolver/bullet_38/eight
 	name = "\improper .38 eight round speedloader"
-	icon = 'icons/obj/items/magazine/revolver/38_2.dmi'
+	icon = 'icons/obj/item/magazine/revolver/38_2.dmi'
 	bullet_count_max = 8
 
 	weapon_whitelist = list(
@@ -36,7 +36,7 @@
 
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 revolver speedloader"
-	icon = 'icons/obj/items/magazine/revolver/44.dmi'
+	icon = 'icons/obj/item/magazine/revolver/44.dmi'
 	icon_state = "44"
 	bullet_count_max = 6
 
@@ -69,7 +69,7 @@
 /*
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
-	icon = 'icons/obj/items/magazine/revolver/22.dmi'
+	icon = 'icons/obj/item/magazine/revolver/22.dmi'
 	icon_state = "22"
 	bullet_count_max = 6
 
@@ -80,7 +80,7 @@
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
-	icon = 'icons/obj/items/magazine/revolver/357.dmi'
+	icon = 'icons/obj/item/magazine/revolver/357.dmi'
 	icon_state = "357"
 	bullet_count_max = 6
 

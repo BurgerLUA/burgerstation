@@ -5,7 +5,7 @@
 	desc = "Make cheese with this."
 	desc_extended = "Cheesemaking is a delicate process. In order to make the best cheese, it needs to be mixed in open air and left undisturbed until it is fully formed. This can take up to a minute."
 
-	icon = 'icons/obj/items/container/cheese_mold.dmi'
+	icon = 'icons/obj/item/container/cheese_mold.dmi'
 	icon_state = "wheel"
 
 	reagents = /reagent_container/cheese_mold

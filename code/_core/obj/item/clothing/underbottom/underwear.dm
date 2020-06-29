@@ -6,7 +6,7 @@
 
 /obj/item/clothing/underbottom/underwear/boxers
 	name = "boxers"
-	icon = 'icons/obj/items/clothing/underwear/boxers_new.dmi'
+	icon = 'icons/obj/item/clothing/underwear/boxers_new.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
@@ -35,11 +35,11 @@
 
 /obj/item/clothing/underbottom/underwear/boxers/heart
 	name = "heart boxers"
-	icon = 'icons/obj/items/clothing/underwear/heart_boxers.dmi'
+	icon = 'icons/obj/item/clothing/underwear/heart_boxers.dmi'
 
 /obj/item/clothing/underbottom/underwear/long_johns
 	name = "long johns"
-	icon = 'icons/obj/items/clothing/underwear/long_john.dmi'
+	icon = 'icons/obj/item/clothing/underwear/long_john.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	rarity = RARITY_UNCOMMON
@@ -56,7 +56,7 @@
 	color = "#888888"
 
 /obj/item/clothing/underbottom/underwear/panty
-	icon = 'icons/obj/items/clothing/underwear/panty.dmi'
+	icon = 'icons/obj/item/clothing/underwear/panty.dmi'
 
 	defense_rating = list(
 		MAGIC = 25,
@@ -81,7 +81,7 @@
 
 /obj/item/clothing/underbottom/underwear/thong
 	name = "thong"
-	icon = 'icons/obj/items/clothing/underwear/thong.dmi'
+	icon = 'icons/obj/item/clothing/underwear/thong.dmi'
 	color = COLOR_WHITE
 	defense_rating = list(
 		BLADE = -10,
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/underbottom/underwear/loincloth
 	name = "loincloth"
-	icon = 'icons/obj/items/clothing/underwear/loincloth.dmi'
+	icon = 'icons/obj/item/clothing/underwear/loincloth.dmi'
 
 	defense_rating = list(
 		MAGIC = 25

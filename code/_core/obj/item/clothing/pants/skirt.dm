@@ -1,6 +1,6 @@
 /obj/item/clothing/pants/skirt
 	name = "skirt"
-	icon = 'icons/obj/items/clothing/pants/skirt.dmi'
+	icon = 'icons/obj/item/clothing/pants/skirt.dmi'
 
 	desc = "For letting people know that you're female. Or a crossdresser."
 	desc_extended = "The peak of fashion."

@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/hos
 	name = "\improper Head of Security's coat"
-	icon = 'icons/obj/items/clothing/suit/hos.dmi'
+	icon = 'icons/obj/item/clothing/suit/hos.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(

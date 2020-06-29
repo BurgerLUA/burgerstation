@@ -2,7 +2,7 @@
 	name = "egg carton"
 	desc = "Stores eggs."
 	desc_extended = "Holds eggs."
-	icon = 'icons/obj/items/storage/egg_carton.dmi'
+	icon = 'icons/obj/item/storage/egg_carton.dmi'
 	icon_state = "eggbox"
 
 	dynamic_inventory_count = 12

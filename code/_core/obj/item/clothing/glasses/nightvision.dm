@@ -3,7 +3,7 @@
 	rarity = RARITY_RARE
 	desc = "Kept you waiting, huh?"
 	desc_extended = "A pair of tactical nightvision goggles. Keep away from light."
-	icon = 'icons/obj/items/clothing/glasses/nightvision.dmi'
+	icon = 'icons/obj/item/clothing/glasses/nightvision.dmi'
 
 	defense_rating = list(
 		LASER = -50,

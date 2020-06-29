@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/headband
 	name = "headband"
-	icon = 'icons/obj/items/clothing/hats/headband.dmi'
+	icon = 'icons/obj/item/clothing/hats/headband.dmi'
 	desc = "Be an action hero!"
 	desc_extended = "A generic colorable headband."
 

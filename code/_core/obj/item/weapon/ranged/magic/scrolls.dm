@@ -4,7 +4,7 @@
 	damage_type = null //TODO: Paper cut
 	ranged_damage_type = null
 
-	icon = 'icons/obj/items/weapons/ranged/magic/scroll.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/scroll.dmi'
 	icon_state = "scroll"
 
 	override_icon_state = TRUE

@@ -46,7 +46,7 @@
 /obj/item/weapon/melee/energy/sword/
 	name = "energy sword"
 	desc = "A blade made out of ENERGY. Please do not sue."
-	icon = 'icons/obj/items/weapons/melee/laser/sword.dmi'
+	icon = 'icons/obj/item/weapons/melee/laser/sword.dmi'
 
 	attack_delay = 4
 	attack_delay_max = 8
@@ -79,7 +79,7 @@
 /obj/item/weapon/melee/energy/shield/
 	name = "energy shield"
 	desc = "A shield made out of ENERGY. Please do not sue."
-	icon = 'icons/obj/items/weapons/melee/laser/shield.dmi'
+	icon = 'icons/obj/item/weapons/melee/laser/shield.dmi'
 
 	damage_type = /damagetype/melee/club/shield/energy
 	damage_type_on = /damagetype/melee/club/shield/energy/on
@@ -102,7 +102,7 @@
 
 /obj/item/weapon/melee/energy/sword/katana
 	name = "high frequency blade"
-	icon = 'icons/obj/items/weapons/melee/laser/katana.dmi'
+	icon = 'icons/obj/item/weapons/melee/laser/katana.dmi'
 	color = "#FFFFFF"
 
 	damage_type = /damagetype/melee/sword/energy_katana

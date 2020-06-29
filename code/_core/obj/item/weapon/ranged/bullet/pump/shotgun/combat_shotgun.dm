@@ -2,7 +2,7 @@
 	name = "12g Combat Shotgun"
 	desc = "Reliable, cheap, and strong."
 	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
-	icon = 'icons/obj/items/weapons/ranged/shotgun/combat.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/combat.dmi'
 	icon_state = "inventory"
 	value = 70
 
@@ -50,7 +50,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod
 	name = "12 gauge modified combat shotgun"
 	desc = "A very robust combat shotgun. This one has been modified to be have a pistol grip and be shorter."
-	icon = 'icons/obj/items/weapons/ranged/shotgun/combat_mod.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/combat_mod.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2

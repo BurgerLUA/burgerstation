@@ -1,6 +1,6 @@
 /obj/item/container/food/dynamic/cake
 	name = "pastry dough"
-	icon = 'icons/obj/items/consumable/food/cake.dmi'
+	icon = 'icons/obj/item/consumable/food/cake.dmi'
 	icon_state = "dough_ball"
 	crafting_id = "pastry_dough"
 

@@ -1,6 +1,6 @@
 /obj/item/clothing/pants/normal
 	name = "pants"
-	icon = 'icons/obj/items/clothing/pants/normal.dmi'
+	icon = 'icons/obj/item/clothing/pants/normal.dmi'
 
 	desc = "Please wear these at least."
 	desc_extended = "The peak of fashion."

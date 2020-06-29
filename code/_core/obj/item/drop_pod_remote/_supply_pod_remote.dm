@@ -2,7 +2,7 @@
 	name = "drop pod remote"
 	desc = "When you need things delivered."
 	desc_extended = "A special remote designed to drop things into the battlefield."
-	icon = 'icons/obj/items/supply_remote.dmi'
+	icon = 'icons/obj/item/supply_remote.dmi'
 	icon_state = "inventory"
 
 	var/list/atom/movable/stored_object_types = list(/obj/structure/wip/meme)

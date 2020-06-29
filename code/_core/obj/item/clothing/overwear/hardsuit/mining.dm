@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/hardsuit/mining
 	name = "mining hardsuit"
-	icon = 'icons/obj/items/clothing/suit/hardsuit_mining.dmi'
+	icon = 'icons/obj/item/clothing/suit/hardsuit_mining.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(

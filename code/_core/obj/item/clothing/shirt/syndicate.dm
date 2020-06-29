@@ -1,6 +1,6 @@
 /obj/item/clothing/shirt/syndicate
 	name = "\improper syndicate shirt"
-	icon = 'icons/obj/items/clothing/shirts/syndicate.dmi'
+	icon = 'icons/obj/item/clothing/shirts/syndicate.dmi'
 
 	item_slot = SLOT_TORSO
 

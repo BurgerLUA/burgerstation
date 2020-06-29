@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/gladiator
 	name = "gladiator armor"
-	icon = 'icons/obj/items/clothing/suit/gladiator.dmi'
+	icon = 'icons/obj/item/clothing/suit/gladiator.dmi'
 	rarity = RARITY_UNCOMMON
 
 	value = 40

@@ -1,6 +1,6 @@
 /obj/item/disk/
 	name = "data disk"
-	icon = 'icons/obj/items/disk.dmi'
+	icon = 'icons/obj/item/disk.dmi'
 	icon_state = "disk"
 
 	var/list/data = null

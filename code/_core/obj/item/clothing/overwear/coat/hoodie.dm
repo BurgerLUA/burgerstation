@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/hoodie
 	name = "hoodie"
-	icon = 'icons/obj/items/clothing/suit/hoodie.dmi'
+	icon = 'icons/obj/item/clothing/suit/hoodie.dmi'
 
 	additional_clothing = list(/obj/item/clothing/head/hood/hoodie)
 

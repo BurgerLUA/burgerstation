@@ -5,7 +5,7 @@
 	cost_mana = 16
 	shoot_delay = 10
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/lightning.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/lightning.dmi'
 
 	projectile = /obj/projectile/magic/lightning_bolt
 

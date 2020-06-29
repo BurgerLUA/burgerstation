@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/apron
 	name = "blacksmith's apron"
-	icon = 'icons/obj/items/clothing/suit/apron_leather.dmi'
+	icon = 'icons/obj/item/clothing/suit/apron_leather.dmi'
 	desc_extended = "A leather apron, perfect for the blacksmith in you. Contains large pockets"
 	worn_layer = LAYER_MOB_CLOTHING_COAT
 

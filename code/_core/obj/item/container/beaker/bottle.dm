@@ -1,6 +1,6 @@
 /obj/item/container/beaker/bottle
 	name = "small bottle"
-	icon = 'icons/obj/items/container/cup/bottle.dmi'
+	icon = 'icons/obj/item/container/cup/bottle.dmi'
 	icon_state = "bottle"
 	icon_count = 7
 
@@ -42,7 +42,7 @@
 
 /obj/item/container/beaker/glass
 	name = "drinking glass"
-	icon = 'icons/obj/items/container/cup/glass.dmi'
+	icon = 'icons/obj/item/container/cup/glass.dmi'
 	icon_state = "cup"
 	icon_count = 15
 
@@ -52,7 +52,7 @@
 
 /obj/item/container/beaker/bowl
 	name = "glass mixing bowl"
-	icon = 'icons/obj/items/container/cup/bowl.dmi'
+	icon = 'icons/obj/item/container/cup/bowl.dmi'
 	icon_state = "bowl"
 	icon_count = 23
 

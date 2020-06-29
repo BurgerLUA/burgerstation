@@ -7,7 +7,7 @@
 
 	automatic = TRUE
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/crystal.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/crystal.dmi'
 
 	projectile = /obj/projectile/magic/crystal/primary/
 

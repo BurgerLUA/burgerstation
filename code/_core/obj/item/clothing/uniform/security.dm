@@ -1,7 +1,7 @@
 /obj/item/clothing/uniform/security
 	name = "security uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
-	icon = 'icons/obj/items/clothing/uniforms/security.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/security.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
@@ -21,7 +21,7 @@
 /obj/item/clothing/uniform/ABOMB
 	name = "\improper A.B.O.M.B. uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
-	icon = 'icons/obj/items/clothing/uniforms/ABOMB.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/ABOMB.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
@@ -42,7 +42,7 @@
 /obj/item/clothing/uniform/tacticool
 	name = "tacticool uniform"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
-	icon = 'icons/obj/items/clothing/uniforms/tacticool.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/tacticool.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

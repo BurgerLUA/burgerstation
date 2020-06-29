@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/energy/stunbaton
 	name = "harmbaton"
 	desc = "A stunbaton, except the stun setting is stuck on lethal."
-	icon = 'icons/obj/items/weapons/melee/clubs/stunbaton.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/stunbaton.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 
 	attack_delay = 5

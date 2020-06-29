@@ -2,7 +2,7 @@
 	name = "\improper .38 Competitive Revolver"
 	desc = "8 shots!"
 	desc_extended = "An 8 round short barrel revolver designed for competitive shooting. Shoots really fast and has very low recoil and spread after the first shot."
-	icon = 'icons/obj/items/weapons/ranged/revolver/38_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/revolver/38_2.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 1

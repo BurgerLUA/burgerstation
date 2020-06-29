@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/attached/explorer_suit
 	name = "explorer suit helmet"
-	icon = 'icons/obj/items/clothing/hats/explorer_suit.dmi'
+	icon = 'icons/obj/item/clothing/hats/explorer_suit.dmi'
 	rarity = RARITY_UNCOMMON
 
 	hidden_organs = list(
@@ -27,7 +27,7 @@
 
 /obj/item/clothing/head/helmet/attached/goliath_cloak
 	name = "goliath cloak hood"
-	icon = 'icons/obj/items/clothing/hats/goliath_cloak.dmi'
+	icon = 'icons/obj/item/clothing/hats/goliath_cloak.dmi'
 	rarity = RARITY_UNCOMMON
 
 	hidden_organs = list(
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/head/helmet/attached/drake_armor
 	name = "ash drake helmet"
-	icon = 'icons/obj/items/clothing/hats/drake_helmet.dmi'
+	icon = 'icons/obj/item/clothing/hats/drake_helmet.dmi'
 	rarity = RARITY_MYTHICAL
 
 	hidden_organs = list(

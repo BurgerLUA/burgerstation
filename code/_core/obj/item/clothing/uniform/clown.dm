@@ -1,6 +1,6 @@
 /obj/item/clothing/uniform/clown
 	name = "clown uniform"
-	icon = 'icons/obj/items/clothing/uniforms/clown.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/clown.dmi'
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	defense_rating = list(

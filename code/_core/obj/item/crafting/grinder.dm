@@ -1,6 +1,6 @@
 /obj/item/crafting/grinder
 	name = "portable grinder"
-	icon = 'icons/obj/items/ore.dmi'
+	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "grinder"
 
 	inventories = list(

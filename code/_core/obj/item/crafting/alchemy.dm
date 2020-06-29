@@ -1,6 +1,6 @@
 /obj/item/crafting/alchemy
 	name = "portable alchemy table"
-	icon = 'icons/obj/items/ore.dmi'
+	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "alchemy"
 
 	inventories = list(

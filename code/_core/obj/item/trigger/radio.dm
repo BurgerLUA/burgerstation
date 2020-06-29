@@ -3,7 +3,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 /obj/item/device/radio/
 	name = "radio"
 	desc = "Long distance communication. What could possibly go wrong?"
-	icon = 'icons/obj/items/radio_transmitter.dmi'
+	icon = 'icons/obj/item/radio_transmitter.dmi'
 	icon_state = "inventory"
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.

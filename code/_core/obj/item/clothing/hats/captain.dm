@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/captain
 	name = "\improper Captain's hat"
-	icon = 'icons/obj/items/clothing/hats/captain.dmi'
+	icon = 'icons/obj/item/clothing/hats/captain.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(

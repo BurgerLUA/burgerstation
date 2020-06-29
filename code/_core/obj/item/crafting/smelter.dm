@@ -1,7 +1,7 @@
 /obj/item/crafting/smelter
 	name = "portable smelter"
 	desc = "Smelt ores! Also cooks!"
-	icon = 'icons/obj/items/ore.dmi'
+	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "smelter"
 
 	container_temperature = 800 - (T0C + 20)

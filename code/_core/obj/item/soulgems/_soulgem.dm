@@ -2,7 +2,7 @@
 	name = "bluespace gem"
 	desc = "Holds the souls of lesser beings. Not to be confused with bluespace crystals."
 	desc_extended = "Used in enchanting items or refilling the magic of staves."
-	icon = 'icons/obj/items/soulgem.dmi'
+	icon = 'icons/obj/item/soulgem.dmi'
 	icon_state = "common"
 
 	var/total_charge = 0

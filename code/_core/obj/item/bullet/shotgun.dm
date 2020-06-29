@@ -1,6 +1,6 @@
 /obj/item/bullet_cartridge/shotgun/
 	id = "shotgun"
-	icon = 'icons/obj/items/bullet/shotgun.dmi'
+	icon = 'icons/obj/item/bullet/shotgun.dmi'
 	item_count_max = 5
 	item_count_max_icon = 5
 

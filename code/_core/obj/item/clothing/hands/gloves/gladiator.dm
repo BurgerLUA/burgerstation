@@ -4,7 +4,7 @@
 	icon_state_worn = "worn_right"
 	desc = "Fight with these."
 	desc_extended = "A generic gladiator glove. Hope that you have a matching pair."
-	icon = 'icons/obj/items/clothing/gloves/gladiator.dmi'
+	icon = 'icons/obj/item/clothing/gloves/gladiator.dmi'
 	color = "#FFFFFF"
 
 	item_slot = SLOT_HAND_RIGHT

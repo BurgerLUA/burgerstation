@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/hardsuit/syndie
 	name = "mauler hardsuit mk1"
-	icon = 'icons/obj/items/clothing/suit/syndie_basic.dmi'
+	icon = 'icons/obj/item/clothing/suit/syndie_basic.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -27,7 +27,7 @@
 
 /obj/item/clothing/overwear/hardsuit/syndie/advanced
 	name = "mauler hardsuit mk2"
-	icon = 'icons/obj/items/clothing/suit/syndie_advanced.dmi'
+	icon = 'icons/obj/item/clothing/suit/syndie_advanced.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(
@@ -54,7 +54,7 @@
 
 /obj/item/clothing/overwear/hardsuit/syndie/elite
 	name = "mauler hardsuit mk3"
-	icon = 'icons/obj/items/clothing/suit/syndie_elite.dmi'
+	icon = 'icons/obj/item/clothing/suit/syndie_elite.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(

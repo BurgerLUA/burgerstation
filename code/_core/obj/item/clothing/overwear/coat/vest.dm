@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/vest/
 	name = "tactical vest"
-	icon = 'icons/obj/items/clothing/suit/black_vest.dmi'
+	icon = 'icons/obj/item/clothing/suit/black_vest.dmi'
 
 	rarity = RARITY_UNCOMMON
 
@@ -37,7 +37,7 @@
 
 /obj/item/clothing/overwear/coat/vest/colored
 	name = "colored vest"
-	icon = 'icons/obj/items/clothing/suit/white_vest.dmi'
+	icon = 'icons/obj/item/clothing/suit/white_vest.dmi'
 
 	dyeable = TRUE
 
@@ -51,7 +51,7 @@
 
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
-	icon = 'icons/obj/items/clothing/suit/leather_jacket_sleeveless.dmi'
+	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'
 	rarity = RARITY_COMMON
 	desc = "For when you need pockets but not many."
 

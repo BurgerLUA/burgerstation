@@ -1,6 +1,6 @@
 /obj/item/magazine/pistol_12mm
 	name = "\improper 12.7mm pistol magazine"
-	icon = 'icons/obj/items/magazine/12mm_pistol.dmi'
+	icon = 'icons/obj/item/magazine/12mm_pistol.dmi'
 	icon_state = "12mm"
 	bullet_count_max = 8
 

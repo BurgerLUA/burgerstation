@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/mummy
 	name = "bandage mask"
-	icon = 'obj/items/clothing/masks/mummy.dmi'
+	icon = 'obj/item/clothing/masks/mummy.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	rarity = RARITY_UNCOMMON
 

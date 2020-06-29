@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/bulletproof
 	name = "bulletproof armor"
-	icon = 'icons/obj/items/clothing/suit/bulletproof_vest.dmi'
+	icon = 'icons/obj/item/clothing/suit/bulletproof_vest.dmi'
 	item_slot = SLOT_TORSO_A
 	desc = "Protecting against the greytide since 2193."
 	desc_extended = "A sturdy chestplate of bulletproof armor. Should protect against most small arms fire."

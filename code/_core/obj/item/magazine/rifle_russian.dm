@@ -1,6 +1,6 @@
 /obj/item/magazine/rifle_939
 	name = "\improper 9x39mm magazine"
-	icon = 'icons/obj/items/magazine/939.dmi'
+	icon = 'icons/obj/item/magazine/939.dmi'
 
 	ammo = /obj/item/bullet_cartridge/rifle_939mm
 
@@ -34,7 +34,7 @@
 
 /obj/item/magazine/rifle_939/val
 	name = "\improper 9x39mm AS Val magazine"
-	icon = 'icons/obj/items/magazine/939_val.dmi'
+	icon = 'icons/obj/item/magazine/939_val.dmi'
 	icon_state = "val"
 	bullet_count_max = 20
 
@@ -44,7 +44,7 @@
 
 /obj/item/magazine/rifle_939/groza
 	name = "\improper 9x39mm Groza magazine"
-	icon = 'icons/obj/items/magazine/939_groza.dmi'
+	icon = 'icons/obj/item/magazine/939_groza.dmi'
 	icon_state = "groza"
 	bullet_count_max = 30
 

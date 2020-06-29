@@ -1,6 +1,6 @@
 /obj/item/clothing/back/storage/dufflebag/
 	name = "dufflebag"
-	icon = 'icons/obj/items/clothing/back/dufflebag/white.dmi'
+	icon = 'icons/obj/item/clothing/back/dufflebag/white.dmi'
 	rarity = RARITY_COMMON
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
@@ -27,4 +27,4 @@
 
 /obj/item/clothing/back/storage/dufflebag/engineering
 	name = "engineering dufflebag"
-	icon = 'icons/obj/items/clothing/back/dufflebag/engineering.dmi'
+	icon = 'icons/obj/item/clothing/back/dufflebag/engineering.dmi'

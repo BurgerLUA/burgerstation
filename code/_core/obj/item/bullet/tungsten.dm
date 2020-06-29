@@ -1,7 +1,7 @@
 /obj/item/bullet_cartridge/tungsten
 	name = "tungsten bolt"
 	desc = "A small tungsten rod designed to be shot at heavily armored targets."
-	icon = 'icons/obj/items/bullet/tungsten.dmi'
+	icon = 'icons/obj/item/bullet/tungsten.dmi'
 	item_count_max = 5
 	item_count_max_icon = 5
 	icon_state = "t"

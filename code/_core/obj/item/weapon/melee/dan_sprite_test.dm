@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/dan_test
 	name = "wooden baton"
 	desc = "A classic wooden baton."
-	icon = 'icons/obj/items/weapons/test.dmi'
+	icon = 'icons/obj/item/weapons/test.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 
 	attack_delay = 4

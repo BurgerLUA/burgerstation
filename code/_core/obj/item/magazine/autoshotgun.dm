@@ -1,6 +1,6 @@
 /obj/item/magazine/shotgun_auto
 	name = "\improper 12 gauge AS-12 magazine"
-	icon = 'icons/obj/items/magazine/auto_shotgun.dmi'
+	icon = 'icons/obj/item/magazine/auto_shotgun.dmi'
 	icon_state = "auto"
 	bullet_count_max = 9
 

@@ -2,7 +2,7 @@
 	name = "plant"
 	desc = "For vegans."
 
-	icon = 'icons/obj/items/consumable/food/plants.dmi'
+	icon = 'icons/obj/item/consumable/food/plants.dmi'
 	icon_state = "burger"
 
 	consume_verb = "eat"

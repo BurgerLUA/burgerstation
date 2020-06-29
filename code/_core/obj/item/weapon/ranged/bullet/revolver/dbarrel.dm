@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/dbarrel
 	name = "\improper 12 gauge boomstick"
 	desc = "The bartender's trusty double barrel shotgun. It was cut in half by a clown."
-	icon = 'icons/obj/items/weapons/ranged/dbarrel.dmi'
+	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 16

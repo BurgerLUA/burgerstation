@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/prototype
 	name = "prototype carbon fibre armor"
-	icon = 'icons/obj/items/clothing/suit/captain_suit.dmi'
+	icon = 'icons/obj/item/clothing/suit/captain_suit.dmi'
 
 	rarity = RARITY_MYTHICAL
 

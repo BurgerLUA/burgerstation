@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever
 	name = "12g lever-action shotgun"
 	desc = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower."
-	icon = 'icons/obj/items/weapons/ranged/shotgun/lever_action.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 7

@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/carbon
 	name = "space swat helmet"
-	icon = 'icons/obj/items/clothing/hats/carbon.dmi'
+	icon = 'icons/obj/item/clothing/hats/carbon.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 

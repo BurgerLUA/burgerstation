@@ -1,6 +1,6 @@
 /obj/item/clothing/pants/syndicate
 	name = "\improper syndicate pants"
-	icon = 'icons/obj/items/clothing/pants/syndicate.dmi'
+	icon = 'icons/obj/item/clothing/pants/syndicate.dmi'
 
 	defense_rating = list(
 		BLADE = 15,

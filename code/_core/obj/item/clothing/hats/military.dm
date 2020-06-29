@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/security/tactical_helmet
 	name = "tactical police helmet"
-	icon = 'icons/obj/items/clothing/hats/tacticool.dmi'
+	icon = 'icons/obj/item/clothing/hats/tacticool.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/head/helmet/security/tactical_helmet2
 	name = "tactical military helmet"
-	icon = 'icons/obj/items/clothing/hats/tacticool2.dmi'
+	icon = 'icons/obj/item/clothing/hats/tacticool2.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
 

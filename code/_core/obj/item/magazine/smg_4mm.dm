@@ -1,6 +1,6 @@
 /obj/item/magazine/smg_46
 	name = "\improper 4.6x30mm WT-550 magazine"
-	icon = 'icons/obj/items/magazine/4mm_smg.dmi'
+	icon = 'icons/obj/item/magazine/4mm_smg.dmi'
 	icon_state = "mag"
 	bullet_count_max = 20
 

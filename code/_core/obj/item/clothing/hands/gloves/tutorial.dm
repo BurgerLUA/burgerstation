@@ -7,7 +7,7 @@
 	desc = "Commonly worn by lizard thots."
 	desc_extended = "Generic glove."
 
-	icon = 'icons/obj/items/clothing/gloves/tutorial_gloves.dmi'
+	icon = 'icons/obj/item/clothing/gloves/tutorial_gloves.dmi'
 
 	item_slot = SLOT_HAND_RIGHT
 

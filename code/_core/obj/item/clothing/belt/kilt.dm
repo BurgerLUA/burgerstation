@@ -2,7 +2,7 @@
 	name = "kilt belt"
 	desc = "THERE CAN ONLY BE ONE."
 	desc_extended = "For holding up kilts."
-	icon = 'icons/obj/items/clothing/belts/kilt.dmi'
+	icon = 'icons/obj/item/clothing/belts/kilt.dmi'
 
 	is_container = TRUE
 

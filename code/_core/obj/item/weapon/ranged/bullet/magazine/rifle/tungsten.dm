@@ -2,7 +2,7 @@
 	name = "\improper T20mm Tungsten Carbine"
 	desc = "Shoots movable rods."
 	desc_extended = "A special NanoTrasen Research Team tungesten shooting carbine designed to rival the syndicate energy crossbow. This version shoots tungesten rods instead of energy bolts, is more cumbersome than the energy now, and honestly really doesn't have any resemblence the energy crossbow at all."
-	icon = 'icons/obj/items/weapons/ranged/smg/tungsten.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/tungsten.dmi'
 	icon_state = "inventory"
 	shoot_delay = 2
 	view_punch = 4

@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hood/cult
 	name = "cult hood"
-	icon = 'icons/obj/items/clothing/hats/cult.dmi'
+	icon = 'icons/obj/item/clothing/hats/cult.dmi'
 	desc_extended = "A sinister red hood."
 	rarity = RARITY_UNCOMMON
 
@@ -28,7 +28,7 @@
 /obj/item/clothing/head/hood/cult/old
 
 	name = "ancient cult hood"
-	icon = 'icons/obj/items/clothing/hats/cult_old.dmi'
+	icon = 'icons/obj/item/clothing/hats/cult_old.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(
@@ -51,7 +51,7 @@
 /obj/item/clothing/head/helmet/cult
 
 	name = "hardened cult hood"
-	icon = 'icons/obj/items/clothing/hats/cult_hard.dmi'
+	icon = 'icons/obj/item/clothing/hats/cult_hard.dmi'
 	rarity = RARITY_MYTHICAL
 
 	hidden_organs = list(

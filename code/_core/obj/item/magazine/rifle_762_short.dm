@@ -1,6 +1,6 @@
 /obj/item/magazine/rifle_762_short
 	name = "\improper 7.62x39mm Soviet magazine"
-	icon = 'icons/obj/items/magazine/762_short_rifle.dmi'
+	icon = 'icons/obj/item/magazine/762_short_rifle.dmi'
 	icon_state = "762"
 	bullet_count_max = 30
 

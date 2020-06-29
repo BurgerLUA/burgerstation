@@ -1,6 +1,6 @@
 /obj/item/clothing/back/storage/satchel/
 	name = "grey satchel"
-	icon = 'icons/obj/items/clothing/back/satchel/grey.dmi'
+	icon = 'icons/obj/item/clothing/back/satchel/grey.dmi'
 	rarity = RARITY_COMMON
 
 	dynamic_inventory_count = MAX_INVENTORY_X*2

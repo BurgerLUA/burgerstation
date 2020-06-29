@@ -1,6 +1,6 @@
 /obj/item/container/food/dynamic/chicken
 	name = "chicken"
-	icon = 'icons/obj/items/consumable/food/meat.dmi'
+	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "chicken"
 	crafting_id = "chicken"
 

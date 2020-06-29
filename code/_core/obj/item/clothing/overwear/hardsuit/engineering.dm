@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/hardsuit/engineering
 	name = "engineering hardsuit"
-	icon = 'icons/obj/items/clothing/suit/engineering_rig.dmi'
+	icon = 'icons/obj/item/clothing/suit/engineering_rig.dmi'
 	rarity = RARITY_UNCOMMON
 	value = 200
 

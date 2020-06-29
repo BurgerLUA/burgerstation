@@ -1,6 +1,6 @@
 /obj/item/magazine/smg_45
 	name = "\improper .45 smg magazine"
-	icon = 'icons/obj/items/magazine/45smg.dmi'
+	icon = 'icons/obj/item/magazine/45smg.dmi'
 	icon_state = "mag"
 	bullet_count_max = 36
 
@@ -37,7 +37,7 @@
 /obj/item/magazine/smg_22/
 	name = "\improper .22 smg magazine"
 	bullet_type = ".22"
-	icon = 'icons/obj/items/magazine/22smg.dmi'
+	icon = 'icons/obj/item/magazine/22smg.dmi'
 	icon_state = "22"
 	bullet_count_max = 28
 

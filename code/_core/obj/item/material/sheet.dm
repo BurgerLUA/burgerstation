@@ -1,7 +1,7 @@
 /obj/item/material/sheet
 	name = "sheet"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "sheet"
 
 	item_count_current = 1

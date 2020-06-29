@@ -1,7 +1,7 @@
 /obj/item/bullet_cartridge/rifle_308
 	name = "\improper .308 rifle bullet"
 	desc = "For rifles that require .308."
-	icon = 'icons/obj/items/bullet/762.dmi'
+	icon = 'icons/obj/item/bullet/762.dmi'
 
 
 	bullet_diameter = 7.62
@@ -31,13 +31,13 @@
 /obj/item/bullet_cartridge/rifle_308/nato
 	name = "\improper 7.62mm rifle bullet"
 	desc = "For rifles that require 7.62mm"
-	icon = 'icons/obj/items/bullet/762.dmi'
+	icon = 'icons/obj/item/bullet/762.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 
 /obj/item/bullet_cartridge/rifle_308/short
 	name = "\improper 7.62x39mm Soviet rifle bullet"
 	desc = "For soviet rifles that require 7.62x39mm"
-	icon = 'icons/obj/items/bullet/762_short.dmi'
+	icon = 'icons/obj/item/bullet/762_short.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/short
 
 	bullet_length = 39
@@ -45,7 +45,7 @@
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"
 	desc = "For rifles and machineguns that requre .223."
-	icon = 'icons/obj/items/bullet/223.dmi'
+	icon = 'icons/obj/item/bullet/223.dmi'
 
 
 	bullet_diameter = 5.56
@@ -80,7 +80,7 @@
 /obj/item/bullet_cartridge/rifle_545mm
 	name = "\improper 5.45mm rifle bullet"
 	desc = "For rifles and machineguns that requre 5,45mm."
-	icon = 'icons/obj/items/bullet/223.dmi'
+	icon = 'icons/obj/item/bullet/223.dmi'
 
 	bullet_diameter = 5.45
 	bullet_length = 39

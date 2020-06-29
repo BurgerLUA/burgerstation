@@ -30,7 +30,7 @@
 	projectile_speed = 16
 	shoot_delay = SECONDS_TO_DECISECONDS(2)
 
-	icon = 'icons/obj/items/weapons/ranged/magic/fire.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/fire.dmi'
 
 	projectile = /obj/projectile/magic/fireball
 	ranged_damage_type = /damagetype/ranged/magic/fireball
@@ -64,7 +64,7 @@
 
 	bullet_count = 9
 
-	icon = 'icons/obj/items/weapons/ranged/magic/chaos.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/chaos.dmi'
 
 	projectile = /obj/projectile/magic/chaos
 	ranged_damage_type = /damagetype/ranged/magic/chaos
@@ -98,7 +98,7 @@
 	projectile_speed = 20
 	bullet_count = 1
 
-	icon = 'icons/obj/items/weapons/ranged/magic/basic.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/basic.dmi'
 
 	projectile = /obj/projectile/magic/magic_missile
 	ranged_damage_type = /damagetype/ranged/magic/magic_missile
@@ -117,7 +117,7 @@
 	projectile_speed = 31
 	bullet_count = 1
 
-	icon = 'icons/obj/items/weapons/ranged/magic/focus.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/focus.dmi'
 
 	projectile = /obj/projectile/magic/rift
 	ranged_damage_type = /damagetype/ranged/magic/chaos

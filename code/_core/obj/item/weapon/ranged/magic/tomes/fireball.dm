@@ -5,7 +5,7 @@
 	cost_mana = 50
 	shoot_delay = 30
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/fireball.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/fireball.dmi'
 
 	projectile = /obj/projectile/magic/fireball
 

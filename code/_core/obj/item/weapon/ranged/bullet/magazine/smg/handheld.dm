@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld
 	name = "\improper 9mm SMP"
-	icon = 'icons/obj/items/weapons/ranged/smg/9mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2

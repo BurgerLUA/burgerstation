@@ -1,6 +1,6 @@
 /obj/item/powercell/
 	name = "basic powercell"
-	icon = 'icons/obj/items/cells.dmi'
+	icon = 'icons/obj/item/cells.dmi'
 	icon_state = "cell_basic"
 
 	var/charge_current = 0

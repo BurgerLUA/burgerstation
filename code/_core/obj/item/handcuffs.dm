@@ -2,7 +2,7 @@
 	name = "handcuffs"
 	desc = "Restrain someone with these."
 	desc_extended = "Cheaply made metal handcuffs that anyone can really break out of with enough strength. To handcuff someone, click on them while this is in your hands. Handcuff speed is increased if the target is laying down."
-	icon = 'icons/obj/items/handcuffs.dmi'
+	icon = 'icons/obj/item/handcuffs.dmi'
 	icon_state = "inventory"
 	var/strength = 1 //Multiplier required to resist out of them.
 

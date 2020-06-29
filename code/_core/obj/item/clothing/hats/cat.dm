@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/cat
 	name = "\improper cursed cat ears"
-	icon = 'icons/obj/items/clothing/hats/cat.dmi'
+	icon = 'icons/obj/item/clothing/hats/cat.dmi'
 	desc = "why the fuck would you wear this"
 	desc_extended = "don't fucking wear this"
 	rarity = RARITY_LEGENDARY

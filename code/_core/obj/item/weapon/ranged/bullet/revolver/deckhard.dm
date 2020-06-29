@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/deckhard
 	name = "\improper .44 space detective revolver"
 	desc = "A sidearm commonly used by space police. Uses .44 rounds."
-	icon = 'icons/obj/items/weapons/ranged/deckhard_mine.dmi'
+	icon = 'icons/obj/item/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 31

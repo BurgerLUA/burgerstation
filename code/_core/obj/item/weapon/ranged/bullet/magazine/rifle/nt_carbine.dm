@@ -2,7 +2,7 @@
 	name = "\improper 5.56 U-NT Carabiner"
 	desc = "Good for shuttle hijackings."
 	desc_extended = "A small carbine rifle that was intended to phase out the much older AR-SS13. Turns out, people still like the AR-SS13 for what it does, so it exists alongside it."
-	icon = 'icons/obj/items/weapons/ranged/rifle/556_nt_carbine.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/556_nt_carbine.dmi'
 	icon_state = "inventory"
 	value = 150
 

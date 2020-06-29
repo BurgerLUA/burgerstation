@@ -1,7 +1,7 @@
 /obj/item/radio
 	name = "radio"
 	desc = "It's a radio"
-	icon = 'icons/obj/items/radio.dmi'
+	icon = 'icons/obj/item/radio.dmi'
 	icon_state = "inventory"
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen

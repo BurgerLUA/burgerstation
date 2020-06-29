@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/toolbox
 	name = "toolbox"
 	desc = "Ultra robust."
-	icon = 'icons/obj/items/weapons/melee/toolbox/red.dmi'
+	icon = 'icons/obj/item/weapons/melee/toolbox/red.dmi'
 	damage_type = /damagetype/item/heavy
 
 	attack_delay = 5

@@ -9,7 +9,7 @@
 
 	dynamic_inventory_count = 8
 
-	icon = 'icons/obj/items/consumable/food/dynamic_bread.dmi'
+	icon = 'icons/obj/item/consumable/food/dynamic_bread.dmi'
 	icon_state = "bun_bottom"
 
 	scale_sprite = FALSE

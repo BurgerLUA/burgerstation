@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/bone_armor
 	name = "bone armor"
-	icon = 'icons/obj/items/clothing/suit/bone_armor.dmi'
+	icon = 'icons/obj/item/clothing/suit/bone_armor.dmi'
 	item_slot = SLOT_TORSO_A
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_RARE

@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/chaplain
 	name = "priest garb"
-	icon = 'icons/obj/items/clothing/suit/religious.dmi'
+	icon = 'icons/obj/item/clothing/suit/religious.dmi'
 
 	desc = "Ultra fancy!"
 	desc_extended = ""

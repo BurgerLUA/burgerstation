@@ -1,7 +1,7 @@
 /obj/item/material/
 	name = "glitch"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "shard_1"
 
 	var/material_id = /material/steel

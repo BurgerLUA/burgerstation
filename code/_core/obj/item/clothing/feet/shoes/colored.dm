@@ -5,7 +5,7 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	icon = 'icons/obj/items/clothing/shoes/colored.dmi'
+	icon = 'icons/obj/item/clothing/shoes/colored.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)

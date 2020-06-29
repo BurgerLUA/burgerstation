@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/labcoat
 	name = "labcoat"
-	icon = 'icons/obj/items/clothing/suit/labcoat.dmi'
+	icon = 'icons/obj/item/clothing/suit/labcoat.dmi'
 
 	defense_rating = list(
 		LASER = 25,

@@ -1,6 +1,6 @@
 /obj/item/magazine/lmg_762
 	name = "\improper 7.62mm drum magazine."
-	icon = 'icons/obj/items/magazine/762_lmg.dmi'
+	icon = 'icons/obj/item/magazine/762_lmg.dmi'
 	icon_state = "lmg"
 	bullet_count_max = 40
 

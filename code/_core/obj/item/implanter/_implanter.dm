@@ -6,7 +6,7 @@
 
 	var/obj/item/organ/internal/stored_implant
 
-	icon = 'icons/obj/items/implanter.dmi'
+	icon = 'icons/obj/item/implanter.dmi'
 	icon_state = "implanter"
 
 	value = 50

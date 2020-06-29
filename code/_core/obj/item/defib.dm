@@ -1,6 +1,6 @@
 /obj/item/defib
 	name = "defibrillator"
-	icon = 'icons/obj/items/defib.dmi'
+	icon = 'icons/obj/item/defib.dmi'
 	desc = "Contains a lot of atoms!"
 	desc_extended = "Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
 
@@ -91,7 +91,7 @@
 
 /obj/item/defib_paddle
 	name = "defibrillator paddle"
-	icon = 'icons/obj/items/defib_paddle.dmi'
+	icon = 'icons/obj/item/defib_paddle.dmi'
 	var/obj/item/defib/linked_defib
 	var/placed_target_ref //While refs can be replaced by other objects, placing the last paddle with check if it's a valid ref.
 

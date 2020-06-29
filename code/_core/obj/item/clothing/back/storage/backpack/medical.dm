@@ -1,6 +1,6 @@
 obj/item/clothing/back/storage/backpack/medical
 	name = "medical backpack"
-	icon = 'icons/obj/items/clothing/back/backpack/medical.dmi'
+	icon = 'icons/obj/item/clothing/back/backpack/medical.dmi'
 
 	value = 15
 

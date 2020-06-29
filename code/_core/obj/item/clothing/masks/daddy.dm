@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/daddy
 	name = "true mask"
-	icon = 'obj/items/clothing/masks/daddy.dmi'
+	icon = 'obj/item/clothing/masks/daddy.dmi'
 	rarity = RARITY_MYTHICAL
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Well, what is it?"

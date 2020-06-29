@@ -6,7 +6,7 @@
 
 /obj/item/clothing/undertop/underwear/bra
 	name = "brassiere"
-	icon = 'icons/obj/items/clothing/underwear/bra.dmi'
+	icon = 'icons/obj/item/clothing/underwear/bra.dmi'
 
 	defense_rating = list(
 		MAGIC = 15,
@@ -16,7 +16,7 @@
 	dyeable = TRUE
 
 /obj/item/clothing/undertop/underwear/bra/alt
-	icon = 'icons/obj/items/clothing/underwear/bra_alt.dmi'
+	icon = 'icons/obj/item/clothing/underwear/bra_alt.dmi'
 
 /obj/item/clothing/undertop/underwear/bra/alt/black
 	color = "#111111"
@@ -25,13 +25,13 @@
 	color = "#8E0000"
 
 /obj/item/clothing/undertop/underwear/bra/strapless
-	icon = 'icons/obj/items/clothing/underwear/bra_strapless.dmi'
+	icon = 'icons/obj/item/clothing/underwear/bra_strapless.dmi'
 
 /obj/item/clothing/undertop/underwear/bra/strapless/brown
 	color = "#603A20"
 
 /obj/item/clothing/undertop/underwear/bra/sport
-	icon = 'icons/obj/items/clothing/underwear/bra_sports.dmi'
+	icon = 'icons/obj/item/clothing/underwear/bra_sports.dmi'
 
 /obj/item/clothing/undertop/underwear/bra/sport/pink
 	color = "#FF9BC6"
@@ -50,7 +50,7 @@
 	return ..()
 
 /obj/item/clothing/undertop/underwear/shirt
-	icon = 'icons/obj/items/clothing/underwear/undershirt.dmi'
+	icon = 'icons/obj/item/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
 		MAGIC = 15,

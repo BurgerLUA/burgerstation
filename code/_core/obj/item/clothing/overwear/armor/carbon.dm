@@ -1,7 +1,7 @@
 
 /obj/item/clothing/overwear/armor/carbon
 	name = "carbon armor"
-	icon = 'icons/obj/items/clothing/suit/carbon.dmi'
+	icon = 'icons/obj/item/clothing/suit/carbon.dmi'
 
 	rarity = RARITY_MYTHICAL
 

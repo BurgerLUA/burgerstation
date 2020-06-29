@@ -10,7 +10,7 @@
 
 /obj/item/clothing/head/helmet/hardsuit/engineering
 	name = "engineering rig helmet"
-	icon = 'icons/obj/items/clothing/hats/engineering_rig_helmet.dmi'
+	icon = 'icons/obj/item/clothing/hats/engineering_rig_helmet.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -34,7 +34,7 @@
 
 /obj/item/clothing/head/helmet/hardsuit/syndie
 	name = "mauler helmet mk1"
-	icon = 'icons/obj/items/clothing/hats/syndie_basic.dmi'
+	icon = 'icons/obj/item/clothing/hats/syndie_basic.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -57,7 +57,7 @@
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
-	icon = 'icons/obj/items/clothing/hats/syndie_advanced.dmi'
+	icon = 'icons/obj/item/clothing/hats/syndie_advanced.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(
@@ -80,7 +80,7 @@
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
-	icon = 'icons/obj/items/clothing/hats/syndie_elite.dmi'
+	icon = 'icons/obj/item/clothing/hats/syndie_elite.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
@@ -105,7 +105,7 @@
 
 /obj/item/clothing/head/helmet/hardsuit/mining
 	name = "mining hardsuit helmet"
-	icon = 'icons/obj/items/clothing/hats/hardsuit_mining.dmi'
+	icon = 'icons/obj/item/clothing/hats/hardsuit_mining.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(

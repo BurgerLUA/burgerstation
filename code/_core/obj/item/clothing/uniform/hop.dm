@@ -1,7 +1,7 @@
 /obj/item/clothing/uniform/hop
 	name = "head of personel's uniform"
 	desc = "Nothing personel, kid."
-	icon = 'icons/obj/items/clothing/uniforms/hop.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/hop.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

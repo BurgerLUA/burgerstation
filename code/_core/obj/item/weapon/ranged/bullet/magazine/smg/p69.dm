@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech
 	name = ".40 NanoTech submachine gun"
-	icon = 'icons/obj/items/weapons/ranged/smg/40.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/40.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 1.25

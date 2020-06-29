@@ -1,7 +1,7 @@
 obj/item/fluff/bikehorn
 	name = "bike horn"
 	desc = "PRAISE BE TO THE HONKMOTHER!"
-	icon = 'icons/obj/items/fluff/bikehorn.dmi'
+	icon = 'icons/obj/item/fluff/bikehorn.dmi'
 	damage_type = /damagetype/item/light
 
 	attack_delay = 4

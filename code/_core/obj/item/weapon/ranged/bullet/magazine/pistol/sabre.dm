@@ -2,7 +2,7 @@
 	name = "\improper 12.7mm Sabre"
 	desc = "12.7mm Sabre Pistol"
 	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
-	icon = 'icons/obj/items/weapons/ranged/pistol/12mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
 	value = 150
 
@@ -40,7 +40,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod
 	name = "\improper 12.7mm Sabre MOD"
-	icon = 'icons/obj/items/weapons/ranged/pistol/12mm_mod.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_mod.dmi'
 	desc_extended = "A modded variant very powerful semiautomatic pistol commonly used by the most elite high ranking Syndicate Operatives. \
 	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through other means."
 

@@ -2,7 +2,7 @@
 	name = "coin"
 	desc = "Shiny!"
 	desc_extended = "A special coin that does something special."
-	icon = 'icons/obj/items/coin.dmi'
+	icon = 'icons/obj/item/coin.dmi'
 	icon_state = "coin"
 
 

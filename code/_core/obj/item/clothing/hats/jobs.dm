@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hat/hop
 	name = "\improper Head of Personel's hat"
-	icon = 'icons/obj/items/clothing/hats/hop.dmi'
+	icon = 'icons/obj/item/clothing/hats/hop.dmi'
 	desc = "Nothing personel, kid."
 	desc_extended = "It's a hat."
 	rarity = RARITY_MYTHICAL
@@ -22,7 +22,7 @@
 
 /obj/item/clothing/head/hat/hos
 	name = "\improper Head of Security's hat"
-	icon = 'icons/obj/items/clothing/hats/hos.dmi'
+	icon = 'icons/obj/item/clothing/hats/hos.dmi'
 	desc_extended = "It's a hat."
 	rarity = RARITY_MYTHICAL
 

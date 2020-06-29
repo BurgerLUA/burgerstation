@@ -2,7 +2,7 @@
 	name = "\improper 12g Double Action"
 	desc = "For when you want to clear a room."
 	desc_extended = "The 12 Gauge Double Action is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bull\" for its bullpup design as well as the fact that it kicks like one too."
-	icon = 'icons/obj/items/weapons/ranged/shotgun/auto.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
 	icon_state = "inventory"
 	value = 210
 

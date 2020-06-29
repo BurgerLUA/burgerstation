@@ -1,6 +1,6 @@
 /obj/item/clothing/uniform/hos
 	name = "\improper Head of Security's uniform"
-	icon = 'icons/obj/items/clothing/uniforms/hos.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/hos.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

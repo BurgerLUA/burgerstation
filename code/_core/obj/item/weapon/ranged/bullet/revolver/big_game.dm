@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/big_game
 	name = "\improper .300 Big Game Revolver"
 	desc = "Can't spell overkill without .300."
-	icon = 'icons/obj/items/weapons/ranged/revolver/300.dmi'
+	icon = 'icons/obj/item/weapons/ranged/revolver/300.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 6

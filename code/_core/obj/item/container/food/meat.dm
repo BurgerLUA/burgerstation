@@ -2,7 +2,7 @@
 	name = "meat"
 	desc = "IT'S RAW!"
 
-	icon = 'icons/obj/items/consumable/food/meat.dmi'
+	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "meat_1"
 
 	health = /health/obj/item/misc/

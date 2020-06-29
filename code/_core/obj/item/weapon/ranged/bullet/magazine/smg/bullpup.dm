@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
 	name = ".45 C-20r submachine gun"
 	desc = "Commonly used by Syndicate Operatives for its reliability and light weight"
-	icon = 'icons/obj/items/weapons/ranged/smg/45.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 20

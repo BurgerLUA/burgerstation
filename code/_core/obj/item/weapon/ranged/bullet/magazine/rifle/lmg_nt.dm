@@ -2,7 +2,7 @@
 	name = "\improper 7.62mm H-LMG"
 	desc = "What's betweeen you and 100 Syndicate? This LMG."
 	desc_extended = "An extremely pricy 7.62mm Light Machine Gun that was originally inteded for use in mounted placements is now available for use in combat situations."
-	icon = 'icons/obj/items/weapons/ranged/rifle/762_lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_lmg.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2

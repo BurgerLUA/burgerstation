@@ -1,6 +1,6 @@
 /obj/item/clothing/hands/gloves/engineering
 	name = "right engineering glove"
-	icon = 'icons/obj/items/clothing/gloves/engineering_rig_gloves.dmi'
+	icon = 'icons/obj/item/clothing/gloves/engineering_rig_gloves.dmi'
 
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"

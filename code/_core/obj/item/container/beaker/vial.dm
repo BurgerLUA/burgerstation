@@ -1,6 +1,6 @@
 /obj/item/container/beaker/vial
 	name = "small vial"
-	icon = 'icons/obj/items/container/cup/vial.dmi'
+	icon = 'icons/obj/item/container/cup/vial.dmi'
 	icon_state = "vial"
 	icon_count = 10
 

@@ -3,7 +3,7 @@
 	desc = "Yes, these exist here too."
 	desc_extended = "Acts as a trigger mechanism for the gun. Controls who can fire the gun, what can trigger the gun, when can the gun be fired, where the gun can be fired, why the gun can be fired, and how the gun should be fired. This also controls the IFF settings for the gun."
 	var/iff_tag = null
-	icon = 'icons/obj/items/firing_pins.dmi'
+	icon = 'icons/obj/item/firing_pins.dmi'
 	icon_state = "normal"
 
 	value = 100

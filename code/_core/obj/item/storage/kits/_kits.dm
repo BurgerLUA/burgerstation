@@ -1,7 +1,7 @@
 /obj/item/storage/kit/
 	name = "first aid kit"
 	desc = "Carries medicine."
-	icon = 'icons/obj/items/storage/kits.dmi'
+	icon = 'icons/obj/item/storage/kits.dmi'
 	icon_state = "firstaid"
 
 	is_container = TRUE

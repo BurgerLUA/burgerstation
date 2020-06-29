@@ -1,6 +1,6 @@
 /obj/item/storage/bags
 	name = "specific item type bags"
-	icon = 'icons/obj/items/storage/bags.dmi'
+	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
 
 /obj/item/storage/bags/mining
@@ -49,7 +49,7 @@
 /obj/item/storage/pillbottle
 	name = "pill bottle"
 	desc_extended = "A pill bottle that can hold up to 30 pills."
-	icon = 'icons/obj/items/storage/bottles.dmi'
+	icon = 'icons/obj/item/storage/bottles.dmi'
 	icon_state = "pill_canister"
 
 	size = SIZE_2

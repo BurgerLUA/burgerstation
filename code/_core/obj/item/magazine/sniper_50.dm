@@ -1,6 +1,6 @@
 /obj/item/magazine/sniper_50
 	name = "\improper .50 sniper magazine"
-	icon = 'icons/obj/items/magazine/50_sniper.dmi'
+	icon = 'icons/obj/item/magazine/50_sniper.dmi'
 	icon_state = "50"
 	bullet_count_max = 4
 

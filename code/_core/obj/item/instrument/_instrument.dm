@@ -31,80 +31,80 @@
 
 /obj/item/instrument/accordion
 	name = "accordion"
-	icon = 'icons/obj/items/instrument/accordion.dmi'
+	icon = 'icons/obj/item/instrument/accordion.dmi'
 	instrument_type = "accordion"
 	value = 400
 
 /obj/item/instrument/banjo
 	name = "banjo"
-	icon = 'icons/obj/items/instrument/banjo.dmi'
+	icon = 'icons/obj/item/instrument/banjo.dmi'
 	instrument_type = "banjo"
 	value = 400
 
 /obj/item/instrument/bikehorn
 	name = "bike horn"
-	icon = 'icons/obj/items/instrument/bikehorn.dmi'
+	icon = 'icons/obj/item/instrument/bikehorn.dmi'
 	instrument_type = "bikehorn"
 	value = 300
 
 /obj/item/instrument/eguitar
 	name = "electric guitar"
-	icon = 'icons/obj/items/instrument/eguitar.dmi'
+	icon = 'icons/obj/item/instrument/eguitar.dmi'
 	instrument_type = "eguitar"
 	value = 600
 
 /obj/item/instrument/glockenspiel
 	name = "glockenspiel"
-	icon = 'icons/obj/items/instrument/glockenspiel.dmi'
+	icon = 'icons/obj/item/instrument/glockenspiel.dmi'
 	instrument_type = "glockenspiel"
 	value = 500
 
 /obj/item/instrument/guitar
 	name = "guitar"
-	icon = 'icons/obj/items/instrument/guitar.dmi'
+	icon = 'icons/obj/item/instrument/guitar.dmi'
 	instrument_type = "guitar"
 	value = 400
 
 /obj/item/instrument/harmonica
 	name = "harmonica"
-	icon = 'icons/obj/items/instrument/harmonica.dmi'
+	icon = 'icons/obj/item/instrument/harmonica.dmi'
 	instrument_type = "harmonica"
 	value = 300
 
 /obj/item/instrument/piano
 	name = "piano"
-	icon = 'icons/obj/items/instrument/piano.dmi'
+	icon = 'icons/obj/item/instrument/piano.dmi'
 	instrument_type = "piano"
 	anchored = TRUE
 	value = 1000
 
 /obj/item/instrument/recorder
 	name = "recorder"
-	icon = 'icons/obj/items/instrument/recorder.dmi'
+	icon = 'icons/obj/item/instrument/recorder.dmi'
 	instrument_type = "recorder"
 	value = 300
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
-	icon = 'icons/obj/items/instrument/saxophone.dmi'
+	icon = 'icons/obj/item/instrument/saxophone.dmi'
 	instrument_type = "saxophone"
 	value = 500
 
 /obj/item/instrument/trombone
 	name = "trombone"
-	icon = 'icons/obj/items/instrument/trombone.dmi'
+	icon = 'icons/obj/item/instrument/trombone.dmi'
 	instrument_type = "trombone"
 	value = 500
 
 /obj/item/instrument/violin
 	name = "violin"
-	icon = 'icons/obj/items/instrument/violin.dmi'
+	icon = 'icons/obj/item/instrument/violin.dmi'
 	instrument_type = "violin"
 	value = 500
 
 /obj/item/instrument/xylophone
 	name = "xylophone"
-	icon = 'icons/obj/items/instrument/xylophone.dmi'
+	icon = 'icons/obj/item/instrument/xylophone.dmi'
 	instrument_type = "xylophone"
 	anchored = TRUE
 	value = 300

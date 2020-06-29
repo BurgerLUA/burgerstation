@@ -5,7 +5,7 @@
 	cost_mana = 15
 	shoot_delay = 5
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/missile.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/missile.dmi'
 
 	projectile = /obj/projectile/magic/magic_missile
 

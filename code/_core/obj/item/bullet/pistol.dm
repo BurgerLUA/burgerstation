@@ -1,7 +1,7 @@
 /obj/item/bullet_cartridge/pistol_10mm/
 	name = "\improper 10mm pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require 10mm auto ammo."
-	icon = 'icons/obj/items/bullet/10mm.dmi'
+	icon = 'icons/obj/item/bullet/10mm.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -24,7 +24,7 @@
 /obj/item/bullet_cartridge/pistol_50/
 	name = "\improper .50 pistol cartridge"
 	desc = "For pistols that require .50."
-	icon = 'icons/obj/items/bullet/50ae.dmi'
+	icon = 'icons/obj/item/bullet/50ae.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -48,7 +48,7 @@
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
 	desc = "For pistols, revolvers, and smgs that require 12mm ammo."
-	icon = 'icons/obj/items/bullet/12mm.dmi'
+	icon = 'icons/obj/item/bullet/12mm.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -70,7 +70,7 @@
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require 9mm ammo."
-	icon = 'icons/obj/items/bullet/9mm.dmi'
+	icon = 'icons/obj/item/bullet/9mm.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -93,7 +93,7 @@
 /obj/item/bullet_cartridge/pistol_4mm/
 	name = "\improper 4.6x30mm smg cartridge"
 	desc = "For smgs that require 4.6x30mm ammo."
-	icon = 'icons/obj/items/bullet/8mm.dmi'
+	icon = 'icons/obj/item/bullet/8mm.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -116,7 +116,7 @@
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
 	desc = "For pistols, revolvers, and smgs that require .40 ammo."
-	icon = 'icons/obj/items/bullet/40.dmi'
+	icon = 'icons/obj/item/bullet/40.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -139,7 +139,7 @@
 /obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"
 	desc = "For pistols and smgs that requre .45 ammo."
-	icon = 'icons/obj/items/bullet/45.dmi'
+	icon = 'icons/obj/item/bullet/45.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -161,7 +161,7 @@
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
 	name = "\improper 8mm pistol bullet"
 	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
-	icon = 'icons/obj/items/bullet/8mm.dmi'
+	icon = 'icons/obj/item/bullet/8mm.dmi'
 
 	item_count_max = 5
 	item_count_max_icon = 5

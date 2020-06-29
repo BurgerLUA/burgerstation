@@ -4,7 +4,7 @@
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	icon = 'icons/obj/items/clothing/shoes/workboots.dmi'
+	icon = 'icons/obj/item/clothing/shoes/workboots.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)

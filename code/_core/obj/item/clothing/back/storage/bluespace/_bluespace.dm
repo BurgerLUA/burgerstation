@@ -2,7 +2,7 @@
 	name = "bag of holding"
 	desc = "Sticking your head in isn't recommended."
 	desc_extended = "A special backpack that creates its own pocket inside the bluespace dimension to store an absurd amount of items. It's extremely heavy, however, and only practical for hauling items over long distances."
-	icon = 'icons/obj/items/clothing/back/backpack/bluespace.dmi'
+	icon = 'icons/obj/item/clothing/back/backpack/bluespace.dmi'
 	rarity = RARITY_RARE
 
 
@@ -23,7 +23,7 @@
 	name = "satchel of holding"
 	desc_extended = "A smaller version of the bag of holding."
 
-	icon = 'icons/obj/items/clothing/back/satchel/bluespace.dmi'
+	icon = 'icons/obj/item/clothing/back/satchel/bluespace.dmi'
 
 	dynamic_inventory_count = MAX_INVENTORY_X*3
 	container_max_size = SIZE_6

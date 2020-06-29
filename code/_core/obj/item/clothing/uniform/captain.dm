@@ -1,6 +1,6 @@
 /obj/item/clothing/uniform/captain
 	name = "\improper Captain's uniform"
-	icon = 'icons/obj/items/clothing/uniforms/captain.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/captain.dmi'
 	rarity = RARITY_MYTHICAL
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
@@ -23,4 +23,4 @@
 
 /obj/item/clothing/uniform/captain/formal
 	name = "formal Captain's uniform"
-	icon = 'icons/obj/items/clothing/uniforms/captain_formal.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/captain_formal.dmi'

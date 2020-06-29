@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/knight
 	name = "heavy knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_blank.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_blank.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_UNCOMMON
@@ -24,23 +24,23 @@
 
 /obj/item/clothing/overwear/armor/knight/red
 	name = "red heavy knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_red.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_red.dmi'
 
 /obj/item/clothing/overwear/armor/knight/blue
 	name = "blue heavy knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_blue.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_blue.dmi'
 
 /obj/item/clothing/overwear/armor/knight/green
 	name = "green heavy knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_green.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_green.dmi'
 
 /obj/item/clothing/overwear/armor/knight/yellow
 	name = "yellow heavy knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_yellow.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_yellow.dmi'
 
 /obj/item/clothing/overwear/armor/knight/special
 	name = "ultra heavy knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_special.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_special.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
@@ -60,7 +60,7 @@
 
 /obj/item/clothing/overwear/armor/knight/templar
 	name = "templar knight armor"
-	icon = 'icons/obj/items/clothing/suit/knight_templar.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_templar.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -81,7 +81,7 @@
 
 /obj/item/clothing/overwear/armor/knight/battlemage
 	name = "battlemage armor"
-	icon = 'icons/obj/items/clothing/suit/knight_battlemage.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_battlemage.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(
@@ -102,7 +102,7 @@
 	name = "giant father's armor"
 	rarity = RARITY_LEGENDARY
 	desc = "THE LEGEND NEVER DIES"
-	icon = 'icons/obj/items/clothing/suit/knight_daddy.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
 		BLADE = 100,
@@ -123,7 +123,7 @@
 
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "magnus armor"
-	icon = 'icons/obj/items/clothing/suit/magnus.dmi'
+	icon = 'icons/obj/item/clothing/suit/magnus.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(

@@ -1,7 +1,7 @@
 /obj/item/clothing/uniform/mummy
 	name = "mummy wraps"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
-	icon = 'icons/obj/items/clothing/uniforms/mummy.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/mummy.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

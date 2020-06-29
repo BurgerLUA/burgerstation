@@ -5,7 +5,7 @@
 	cost_mana = 15
 	shoot_delay = 10
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/chaos.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/chaos.dmi'
 
 	bullet_count = 9
 	projectile_speed = 4

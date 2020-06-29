@@ -2,7 +2,7 @@
 	name = "pill"
 	desc = "FLOORPILL"
 
-	icon = 'icons/obj/items/container/pills.dmi'
+	icon = 'icons/obj/item/container/pills.dmi'
 	icon_state = "rectangle"
 
 	desc_extended = "Hope you remember what the pill is."

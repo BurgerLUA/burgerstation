@@ -3,7 +3,7 @@
 	name = "\improper 7.62x39mm AK-13"  //not this one
 	desc = "Ancient, but still powerful. Maybe."
 	desc_extended = "The 7.62x39 is THE rifle for shady Eastern European uprisings. Reliable, inaccurate, and comes only in automatic to train those recruits to at least hit the target."
-	icon = 'icons/obj/items/weapons/ranged/rifle/762_russia.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia.dmi'
 	icon_state = "inventory"
 	value = 100
 
@@ -49,7 +49,7 @@
 	name = "\improper 5.45x39mm AN-94"
 	desc = "A nuu cheeki breeki i v damkee!"
 	desc_extended = "Weapon of the elite troops of the Russian army. It was developed as a replacement for the outdated AK-74. In the 'Abakan' not only the internal mechanisms are mobile, but the entire receiver along with the barrel, which allows you to reduce the recoil, therefore significantly increasing the accuracy."
-	icon = 'icons/obj/items/weapons/ranged/rifle/rifle_545.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rifle_545.dmi'
 	icon_state = "inventory"
 	value = 175
 
@@ -95,7 +95,7 @@
 	name = "\improper 9x39mm OTs-14 Groza"
 	desc = "No need to pull the pin now."
 	desc_extended = "This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specifically developed for rapid response units. The main differences are its 9x39 caliber ammunition, bullpup layout and extensive configuration options."
-	icon = 'icons/obj/items/weapons/ranged/rifle/939_groza.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/939_groza.dmi'
 	icon_state = "inventory"
 	value = 175
 
@@ -141,7 +141,7 @@
 	name = "\improper 9x39mm AS Val"
 	desc = "The last thing you'll never hear."
 	desc_extended = "A modified version of the silent Vintorez sniper rifle, the assault rifle was designed as a special forces weapon."
-	icon = 'icons/obj/items/weapons/ranged/rifle/939_val.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/939_val.dmi'
 	icon_state = "inventory"
 	value = 200
 
@@ -187,7 +187,7 @@
 	name = "\improper 9x39mm VSS Vintorez"
 	desc = "The last thing you never see."
 	desc_extended = "A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical."
-	icon = 'icons/obj/items/weapons/ranged/rifle/939_vintar.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/939_vintar.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2.5

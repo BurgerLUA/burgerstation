@@ -1,7 +1,7 @@
 /obj/item/material/ore
 	name = "ore"
 	desc = "I am an ore."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "ore"
 
 	item_count_current = 1

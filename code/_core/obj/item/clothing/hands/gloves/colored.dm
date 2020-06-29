@@ -4,7 +4,7 @@
 	icon_state_worn = "worn_right"
 	desc = "Slap people with these."
 	desc_extended = "A generic glove. Hope that you have a matching pair."
-	icon = 'icons/obj/items/clothing/gloves/regular.dmi'
+	icon = 'icons/obj/item/clothing/gloves/regular.dmi'
 	color = "#FFFFFF"
 
 	item_slot = SLOT_HAND_RIGHT
@@ -116,7 +116,7 @@
 
 /obj/item/clothing/hands/gloves/colored/padded
 	name = "padded glove"
-	icon = 'icons/obj/items/clothing/gloves/padded.dmi'
+	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(

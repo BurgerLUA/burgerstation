@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/detective
 	name = "\improper .38 Special revolver"
 	desc = "The detective's trusty sidearm. Uses .38 revolver rounds."
-	icon = 'icons/obj/items/weapons/ranged/revolver/38.dmi'
+	icon = 'icons/obj/item/weapons/ranged/revolver/38.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 3

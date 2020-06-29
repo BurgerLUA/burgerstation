@@ -1,6 +1,6 @@
 /obj/item/magazine/rifle_545
 	name = "\improper 5.45x39mm magazine"
-	icon = 'icons/obj/items/magazine/545_rifle.dmi'
+	icon = 'icons/obj/item/magazine/545_rifle.dmi'
 	icon_state = "545"
 	bullet_count_max = 20
 

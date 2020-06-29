@@ -4,7 +4,7 @@
 	desc_extended = "Holds reagents. Can be toggled to inject or draw."
 	crafting_id = "syringe"
 
-	icon = 'icons/obj/items/container/syringe.dmi'
+	icon = 'icons/obj/item/container/syringe.dmi'
 	icon_state = "syringe"
 
 	reagents = /reagent_container/syringe/

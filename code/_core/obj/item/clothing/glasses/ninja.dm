@@ -2,7 +2,7 @@
 	name = "ninja eye mask"
 	desc = "Made in Space China."
 	desc_extended = "A cheaply made plastic ninja mask. Supposed to make you go faster."
-	icon = 'obj/items/clothing/masks/ninja.dmi'
+	icon = 'obj/item/clothing/masks/ninja.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(

@@ -2,7 +2,7 @@
 	name = "headset"
 	desc = "; LING MAINT!"
 	desc_extended = "It doesn't seem to be functioning."
-	icon = 'icons/obj/items/clothing/ears/headset.dmi'
+	icon = 'icons/obj/item/clothing/ears/headset.dmi'
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 

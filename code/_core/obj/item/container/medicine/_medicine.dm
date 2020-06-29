@@ -4,7 +4,7 @@
 	name = "medicine"
 	desc = "For when you have a boo-boo."
 	desc_extended = "Apply to your wounds or damaged limbs to treat."
-	icon = 'icons/obj/items/medicine.dmi'
+	icon = 'icons/obj/item/medicine.dmi'
 
 	var/heal_brute = 0
 	var/heal_burn = 0

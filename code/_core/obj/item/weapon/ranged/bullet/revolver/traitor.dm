@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/traitor_357
 	name = "\improper .357 Traditore Revolver"
 	desc = "For all your traitor needs!"
-	icon = 'icons/obj/items/weapons/ranged/revolver/357.dmi'
+	icon = 'icons/obj/item/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 4

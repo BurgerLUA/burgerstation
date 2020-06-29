@@ -3,7 +3,7 @@
 	var/desc = "plant description"
 	var/id = null
 	var/icon_count = 1
-	var/harvest_icon = 'icons/obj/items/consumable/food/plants.dmi'
+	var/harvest_icon = 'icons/obj/item/consumable/food/plants.dmi'
 	var/list/reagents = list()
 
 /plant_type/nitrogen_flower

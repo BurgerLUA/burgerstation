@@ -1,7 +1,7 @@
 /obj/item/material/shard
 	name = "shard"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "shard"
 
 	item_count_current = 1
