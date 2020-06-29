@@ -22,24 +22,10 @@
 	size = SIZE_6
 	weight = WEIGHT_6
 
-/obj/item/weapon/ranged/energy/mech/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
-
-	. = ..()
-
-	if(. && istype(loc,/mob/living/vehicle/))
-		var/mob/living/vehicle/V = loc
-		if(length(V.passengers) && is_advanced(V.passengers[1]))
-			var/mob/living/advanced/A = V.passengers[1]
-			for(var/obj/hud/button/vehicle/ammo_display/B in A.buttons)
-				B.update_ammo()
-
-	return .
-
 /obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
-
 	if(!istype(loc,/mob/living/vehicle/))
+		caller.to_chat(span("warning","This gun can only be fired in a vehicle!"))
 		return FALSE
-
 	return ..()
 
 /obj/item/weapon/ranged/energy/mech/smg/mk1

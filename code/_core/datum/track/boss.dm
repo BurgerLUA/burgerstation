@@ -10,3 +10,9 @@
 	id = "skeletons"
 	path = 'sound/music/skeletons.ogg'
 	length = 2*60 + 35
+
+/track/cursed_as_love
+	name = "XTaKeRuX - Cursed as Love"
+	id = "cursed_as_love"
+	path = 'sound/music/XTaKeRuX-CursedAsLove.ogg'
+	length = 3*60

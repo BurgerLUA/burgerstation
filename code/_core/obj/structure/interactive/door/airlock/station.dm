@@ -52,6 +52,10 @@
 /obj/structure/interactive/door/airlock/station/maintenance/no_access
 	no_access = TRUE
 
+/obj/structure/interactive/door/airlock/station/dark
+	name = "maintenance airlock"
+	color = "#242424"
+	fill_color = "#444444"
 
 /obj/structure/interactive/door/airlock/station/external
 	name = "security airlock"

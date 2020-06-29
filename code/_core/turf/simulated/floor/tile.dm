@@ -31,6 +31,9 @@
 /turf/simulated/floor/tile/dark
 	color = COLOR_STEEL
 
+/turf/simulated/floor/tile/dark/er
+	color = "#242424"
+
 /turf/simulated/floor/tile/dark/single
 	icon_state = "white_single"
 

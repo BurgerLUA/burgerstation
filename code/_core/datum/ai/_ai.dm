@@ -450,6 +450,8 @@
 		frustration_attack = 0
 		set_alert_level(ALERT_LEVEL_COMBAT)
 		objective_attack = A
+		if(owner.boss && is_player(A))
+			owner.add_player_to_boss(A)
 		if(objective_move == objective_attack)
 			objective_move = null
 		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)

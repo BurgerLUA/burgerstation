@@ -252,6 +252,8 @@ SUBSYSTEM_DEF(horde)
 	var/list/valid_boss_ids = list()
 
 	for(var/boss_id in SSbosses.tracked_bosses)
+		if(boss_id == "can_man") //Optional hardmode boss.
+			continue
 		valid_boss_ids += boss_id
 
 	for(var/i=1, i<=desired_kill_objectives, i++)

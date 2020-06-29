@@ -266,17 +266,10 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	if(!use_loyalty_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	if(automatic)
+	if(automatic && is_player(caller))
 		spawn(next_shoot_time - world.time)
-			var/mob/living/advanced/player/P
-			if(is_player(caller))
-				P = caller
-			else if(istype(caller,/mob/living/vehicle/))
-				var/mob/living/vehicle/V = caller
-				if(length(V.passengers) && is_player(V.passengers[1]))
-					P = V.passengers[1]
-
-			if(P && P.client && (( (P.right_item == src) && P.attack_flags & ATTACK_HELD_LEFT) || ((P.left_item == src) && P.attack_flags & ATTACK_HELD_RIGHT)) )
+			var/mob/living/advanced/player/P = caller
+			if(P && P.client && ((params["left"] && P.attack_flags & ATTACK_HELD_LEFT) || (params["right"] && P.attack_flags & ATTACK_HELD_RIGHT)) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
 					return TRUE
@@ -291,7 +284,6 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 					else if(max_bursts > 0)
 						next_shoot_time = world.time + shoot_delay*current_bursts
 						current_bursts = 0
-
 			else if(max_bursts > 0)
 				next_shoot_time = world.time + shoot_delay*current_bursts
 				current_bursts = 0

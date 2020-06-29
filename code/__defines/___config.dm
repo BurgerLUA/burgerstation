@@ -1,5 +1,5 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.

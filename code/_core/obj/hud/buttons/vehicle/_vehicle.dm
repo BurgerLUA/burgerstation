@@ -13,7 +13,7 @@
 	name = "left weapon"
 	icon = 'icons/hud/vehicle_long.dmi'
 	icon_state = "right"
-	screen_loc = "CENTER+0.5,BOTTOM"
+	screen_loc = "CENTER-2.5,BOTTOM"
 	maptext = "Left Weapon"
 	maptext_width = TILE_SIZE*3 - 8
 	maptext_x = 4
@@ -37,7 +37,7 @@
 /obj/hud/button/vehicle/weapon/right
 	name = "right weapon"
 	icon_state = "left"
-	screen_loc = "CENTER-2.5,BOTTOM"
+	screen_loc = "CENTER+0.5,BOTTOM"
 	maptext = "<div style='text-align:right'>Right Weapon</div>"
 	maptext_width = TILE_SIZE*3 - 8
 	maptext_x = 4
@@ -80,16 +80,22 @@
 	. = ..()
 
 	if(owner)
-		update_ammo()
+		start_thinking(src)
+	else
+		stop_thinking(src)
 
 	return .
+
+/obj/hud/button/vehicle/ammo_display/think()
+	update_ammo() //I really hate having to do this but whatever.
+	return ..()
 
 /obj/hud/button/vehicle/ammo_display/proc/update_ammo()
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		if(A.driving && length(A.driving.equipment) && istype(A.driving.equipment[weapon_slot],/obj/item/weapon/ranged/energy/mech))
-			var/obj/item/weapon/ranged/energy/mech/E = A.driving.equipment[weapon_slot]
-			set_map_text("[FLOOR(E.charge_current/E.charge_cost,1)]/[FLOOR(E.charge_max/E.charge_cost,1)]")
+		if(A.driving && length(A.driving.equipment) && istype(A.driving.equipment[weapon_slot],/obj/item/weapon/ranged/))
+			var/obj/item/weapon/ranged/E = A.driving.equipment[weapon_slot]
+			set_map_text("[E.get_ammo_count()]")
 
 /obj/hud/button/vehicle/ammo_display/right
 	name = "ammo display"

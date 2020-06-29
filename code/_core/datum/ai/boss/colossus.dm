@@ -32,7 +32,7 @@
 	return .
 
 
-/ai/boss/handle_movement_reset()
+/ai/boss/colossus/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_WALKING
 	//Don't reset dir.
 

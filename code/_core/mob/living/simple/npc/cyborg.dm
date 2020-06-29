@@ -10,6 +10,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	blood_color = "#262626"
 
 /mob/living/simple/npc/silicon/engineer
 	name = "engineer cyborg"

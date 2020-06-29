@@ -8,6 +8,8 @@
 	var/list/atom/movable/stored_object_types = list(/obj/structure/wip/meme)
 	var/charges = 1
 
+	value = 1000
+
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
@@ -34,3 +36,4 @@
 /obj/item/supply_remote/gygax
 	name = "drop pod remote - Gygax Combat Mech"
 	stored_object_types = list(/mob/living/vehicle/mech/gygax/equipped)
+	value = 5000
