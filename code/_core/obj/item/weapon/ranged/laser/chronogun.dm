@@ -18,7 +18,7 @@
 
 	view_punch = 31
 
-	shoot_sounds = list('sounds/weapons/chronogun/fire.ogg')
+	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	heat_per_shot = 0.1
 	heat_max = 0.2

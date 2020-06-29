@@ -11,7 +11,7 @@
 
 	ranged_damage_type = /damagetype/ranged/magic/fireball
 
-	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
 	projectile_speed = 8
 

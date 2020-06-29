@@ -10,7 +10,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/12/shoot.ogg')
+	shoot_sounds = list('sound/weapons/12/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -52,7 +52,7 @@
 
 	value = 500
 
-	shoot_sounds = list('sounds/weapons/12/shoot_mod.ogg')
+	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
 
 	automatic = TRUE
 	max_bursts = 3

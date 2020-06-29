@@ -4,14 +4,14 @@
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
 	var/impact_sounds = list(
-		'sounds/weapons/fists/punch1.ogg',
-		'sounds/weapons/fists/punch2.ogg',
-		'sounds/weapons/fists/punch3.ogg',
-		'sounds/weapons/fists/punch4.ogg'
+		'sound/weapons/fists/punch1.ogg',
+		'sound/weapons/fists/punch2.ogg',
+		'sound/weapons/fists/punch3.ogg',
+		'sound/weapons/fists/punch4.ogg'
 	)
 
 	var/miss_sounds = list(
-		'sounds/weapons/fists/punchmiss.ogg'
+		'sound/weapons/fists/punchmiss.ogg'
 	)
 
 	var/impact_sounds_flesh = list() //Leave empty to just use impact sounds, no matter what.

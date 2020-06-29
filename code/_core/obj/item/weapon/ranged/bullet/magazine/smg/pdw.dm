@@ -12,7 +12,7 @@
 	max_bursts = 5
 	view_punch = 4
 
-	shoot_sounds = list('sounds/weapons/smg_light/smg.ogg')
+	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
 
 	override_icon_state = TRUE
 

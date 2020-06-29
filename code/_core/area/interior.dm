@@ -14,8 +14,8 @@
 	name = "cave"
 	icon_state = "cave"
 	random_sounds = list(
-		'sounds/ambient/cave_1.ogg',
-		'sounds/ambient/cave_2.ogg',
+		'sound/ambient/cave_1.ogg',
+		'sound/ambient/cave_2.ogg',
 	)
 
 	cheese_type = /reagent/nutrition/cheese/gruyere
@@ -29,8 +29,8 @@
 	desired_light_color ="#7F3B11"
 
 	random_sounds = list(
-		'sounds/ambient/lavacaves_1.ogg',
-		'sounds/ambient/lavacaves_2.ogg',
+		'sound/ambient/lavacaves_1.ogg',
+		'sound/ambient/lavacaves_2.ogg',
 	)
 
 	cheese_type = /reagent/nutrition/cheese/guava
@@ -58,21 +58,21 @@
 	icon_state = "cmd"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_ROUND_INFORMATION | FLAGS_AREA_TUTORIAL
 
-	ambient_sound = 'sounds/ambient/station_loop.ogg'
+	ambient_sound = 'sound/ambient/station_loop.ogg'
 	random_sounds = list(
-		'sounds/ambient/station_1.ogg',
-		'sounds/ambient/station_2.ogg',
-		'sounds/ambient/station_3.ogg',
-		'sounds/ambient/station_4.ogg',
-		'sounds/ambient/station_5.ogg',
-		'sounds/ambient/station_6.ogg',
-		'sounds/ambient/station_7.ogg',
-		'sounds/ambient/station_8.ogg',
-		'sounds/ambient/station_9.ogg',
-		'sounds/ambient/station_10.ogg',
-		'sounds/ambient/station_11.ogg',
-		'sounds/ambient/station_12.ogg',
-		'sounds/ambient/station_13.ogg'
+		'sound/ambient/station_1.ogg',
+		'sound/ambient/station_2.ogg',
+		'sound/ambient/station_3.ogg',
+		'sound/ambient/station_4.ogg',
+		'sound/ambient/station_5.ogg',
+		'sound/ambient/station_6.ogg',
+		'sound/ambient/station_7.ogg',
+		'sound/ambient/station_8.ogg',
+		'sound/ambient/station_9.ogg',
+		'sound/ambient/station_10.ogg',
+		'sound/ambient/station_11.ogg',
+		'sound/ambient/station_12.ogg',
+		'sound/ambient/station_13.ogg'
 	)
 
 /area/interior/station/singleplayer
@@ -85,21 +85,21 @@
 	icon_state = "ship"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 
-	ambient_sound = 'sounds/ambient/station_loop.ogg'
+	ambient_sound = 'sound/ambient/station_loop.ogg'
 	random_sounds = list(
-		'sounds/ambient/station_1.ogg',
-		'sounds/ambient/station_2.ogg',
-		'sounds/ambient/station_3.ogg',
-		'sounds/ambient/station_4.ogg',
-		'sounds/ambient/station_5.ogg',
-		'sounds/ambient/station_6.ogg',
-		'sounds/ambient/station_7.ogg',
-		'sounds/ambient/station_8.ogg',
-		'sounds/ambient/station_9.ogg',
-		'sounds/ambient/station_10.ogg',
-		'sounds/ambient/station_11.ogg',
-		'sounds/ambient/station_12.ogg',
-		'sounds/ambient/station_13.ogg'
+		'sound/ambient/station_1.ogg',
+		'sound/ambient/station_2.ogg',
+		'sound/ambient/station_3.ogg',
+		'sound/ambient/station_4.ogg',
+		'sound/ambient/station_5.ogg',
+		'sound/ambient/station_6.ogg',
+		'sound/ambient/station_7.ogg',
+		'sound/ambient/station_8.ogg',
+		'sound/ambient/station_9.ogg',
+		'sound/ambient/station_10.ogg',
+		'sound/ambient/station_11.ogg',
+		'sound/ambient/station_12.ogg',
+		'sound/ambient/station_13.ogg'
 	)
 
 /area/interior/ship/hall
@@ -193,11 +193,11 @@
 /area/interior/ship/maint
 	name = "\improper Maint"
 	icon_state = "maint"
-	ambient_sound = 'sounds/ambient/vents_loop.ogg'
+	ambient_sound = 'sound/ambient/vents_loop.ogg'
 
 	random_sounds = list(
-		'sounds/ambient/maint_1.ogg',
-		'sounds/ambient/maint_2.ogg'
+		'sound/ambient/maint_1.ogg',
+		'sound/ambient/maint_2.ogg'
 	)
 
 /area/interior/ship/pvp

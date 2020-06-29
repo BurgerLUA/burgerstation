@@ -10,7 +10,7 @@
 
 	bullet_count_max = 5
 
-	shoot_sounds = list('sounds/weapons/308/big_game.ogg')
+	shoot_sounds = list('sound/weapons/308/big_game.ogg')
 
 	view_punch = 24
 

@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -55,7 +55,7 @@
 	return max(0,0.02 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")
-	return 'sounds/weapons/gun/smg/smg_rack.ogg'
+	return 'sound/weapons/gun/smg/smg_rack.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = "\improper .223 SYN-Carbine MOD"

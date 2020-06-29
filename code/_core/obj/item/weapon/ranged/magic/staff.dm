@@ -37,7 +37,7 @@
 
 	override_icon_state = TRUE
 
-	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
 	value = 1200
 
@@ -69,7 +69,7 @@
 	projectile = /obj/projectile/magic/chaos
 	ranged_damage_type = /damagetype/ranged/magic/chaos
 
-	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
+	shoot_sounds = list('sound/weapons/magic/chaos.ogg')
 
 	value = 900
 
@@ -103,7 +103,7 @@
 	projectile = /obj/projectile/magic/magic_missile
 	ranged_damage_type = /damagetype/ranged/magic/magic_missile
 
-	shoot_sounds = list('sounds/weapons/magic/magic_missile.ogg')
+	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 
 	value = 1000
 
@@ -122,5 +122,5 @@
 	projectile = /obj/projectile/magic/rift
 	ranged_damage_type = /damagetype/ranged/magic/chaos
 
-	shoot_sounds = list('sounds/weapons/magic/teleport_out.ogg')
+	shoot_sounds = list('sound/weapons/magic/teleport_out.ogg')
 

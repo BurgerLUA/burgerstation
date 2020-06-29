@@ -9,6 +9,7 @@
 
 	var/list/crate_contents = list()
 
+	var/can_interact_with = TRUE //Can players interact with this?
 	var/open = FALSE
 
 	initialize_type = INITIALIZE_LATE
@@ -16,6 +17,8 @@
 	bullet_block_chance = 50
 
 	var/max_mob_size = MOB_SIZE_HUMAN
+
+	var/collect_contents_on_initialize = TRUE
 
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
@@ -67,7 +70,7 @@
 
 	. = ..()
 
-	if(!. && !(caller.attack_flags & ATTACK_GRAB))
+	if(!. && can_interact_with && !(caller.attack_flags & ATTACK_GRAB))
 		INTERACT_CHECK
 		toggle(caller)
 
@@ -75,7 +78,7 @@
 
 /obj/structure/interactive/crate/Generate()
 
-	if(!open)
+	if(collect_contents_on_initialize && !open)
 		for(var/atom/movable/M in loc.contents)
 			if(M == src || M.anchored)
 				continue
@@ -91,29 +94,47 @@
 /obj/structure/interactive/crate/proc/toggle(var/mob/caller)
 	return open ? close(caller) : open(caller)
 
+/obj/structure/interactive/crate/proc/can_store(var/atom/movable/M)
+	if(M.anchored)
+		return FALSE
+	return TRUE
+
+/obj/structure/interactive/crate/proc/can_prevent_close(var/atom/movable/M)
+	if(is_living(M))
+		var/mob/living/L = M
+		if(!L.horizontal || L.mob_size > max_mob_size)
+			return TRUE
+	return FALSE
+
+/obj/structure/interactive/crate/proc/add_to_crate(var/atom/movable/M)
+	M.force_move(src)
+	M.pixel_x = initial(M.pixel_x)
+	M.pixel_y = initial(M.pixel_y)
+	crate_contents += M
+	return TRUE
+
 /obj/structure/interactive/crate/proc/close(var/mob/caller)
 
 	var/atom/blocking
 	for(var/atom/movable/M in loc.contents)
-		if(is_living(M))
-			var/mob/living/L = M
-			if(!L.horizontal || L.mob_size > max_mob_size)
-				blocking = L
-				break
+		if(can_prevent_close(M))
+			blocking = M
+		break
 
 	if(blocking)
 		caller.to_chat("\The [blocking.name] is preventing \the [src.name] from being closed!")
 		return FALSE
 
 	for(var/atom/movable/M in loc.contents)
-		if(M == src || M.anchored)
+		if(M == src)
 			continue
-		M.force_move(src)
-		M.pixel_x = 0
-		M.pixel_y = 0
-		crate_contents += M
+		if(!can_store(M))
+			continue
+		add_to_crate(M)
 
 	open = FALSE
+
+	play('sound/effects/click.ogg',get_turf(src))
 
 	update_sprite()
 
@@ -127,6 +148,8 @@
 		//animate(M,pixel_x = initial(M.pixel_x) + rand(-16,16),pixel_y = initial(M.pixel_y) + rand(-16,16),time = 4)
 
 	open = TRUE
+
+	play('sound/effects/click.ogg',get_turf(src))
 
 	update_sprite()
 

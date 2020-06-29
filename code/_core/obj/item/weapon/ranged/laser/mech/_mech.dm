@@ -15,7 +15,7 @@
 
 	view_punch = 0
 
-	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
 	mech_only = TRUE
 
@@ -60,7 +60,7 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
-	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
+	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
 
 /obj/item/weapon/ranged/energy/mech/smg/mk2
 	name = "mk2 machine gun"
@@ -80,7 +80,7 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sound/weapons/pistol_medium/shoot.ogg')
 
 /obj/item/weapon/ranged/energy/mech/smg/mk3
 	name = "mk3 machine gun"
@@ -100,4 +100,4 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sound/weapons/pistol_medium/shoot.ogg')

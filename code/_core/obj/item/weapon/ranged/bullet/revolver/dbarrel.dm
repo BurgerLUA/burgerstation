@@ -15,7 +15,7 @@
 
 	view_punch = 12
 
-	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
 

@@ -14,5 +14,5 @@ obj/item/fluff/bikehorn
 
 obj/item/fluff/bikehorn/click_self(var/atom/caller)
 	. = ..()
-		play('sounds/items/bikehorn.ogg',src)
+		play('sound/items/bikehorn.ogg',src)
 	return .

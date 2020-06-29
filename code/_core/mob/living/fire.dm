@@ -34,7 +34,7 @@
 		return FALSE
 
 	on_fire = TRUE
-	play('sounds/weapons/magic/fireball.ogg',get_turf(src))
+	play('sound/weapons/magic/fireball.ogg',get_turf(src))
 
 	if(added_fire_stacks) adjust_fire_stacks(added_fire_stacks)
 

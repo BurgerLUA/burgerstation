@@ -13,7 +13,7 @@
 
 	ranged_damage_type = /damagetype/ranged/magic/crystal
 
-	shoot_sounds = list('sounds/weapons/magic/zap.ogg')
+	shoot_sounds = list('sound/weapons/magic/zap.ogg')
 
 	projectile_speed = 20
 

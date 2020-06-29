@@ -59,9 +59,9 @@
 /obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
 	. = ..()
 	if(enabled)
-		play('sounds/weapons/energy/energy_on.ogg',src)
+		play('sound/weapons/energy/energy_on.ogg',src)
 	else
-		play('sounds/weapons/energy/energy_off.ogg',src)
+		play('sound/weapons/energy/energy_off.ogg',src)
 	return .
 
 /obj/item/weapon/melee/energy/sword/blue

@@ -102,7 +102,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command","Fission Mailed","Mission failed, we'll get them next time.")
 
-	play('sounds/meme/apcdestroyed.ogg',all_mobs_with_clients)
+	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
 	for(var/mob/living/advanced/player/P in all_players)
 		CHECK_TICK

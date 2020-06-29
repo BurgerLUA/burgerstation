@@ -13,7 +13,7 @@
 
 
 
-	shoot_sounds = list('sounds/weapons/deckhard/shot.ogg')
+	shoot_sounds = list('sound/weapons/deckhard/shot.ogg')
 
 	view_punch = 8
 

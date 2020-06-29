@@ -80,7 +80,7 @@
 	attack_verbs = list("shove")
 
 	impact_sounds = list(
-		'sounds/weapons/fists/grab.ogg'
+		'sound/weapons/fists/grab.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
@@ -138,7 +138,7 @@
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
 	impact_sounds = list(
-		'sounds/weapons/fists/grab.ogg'
+		'sound/weapons/fists/grab.ogg'
 	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

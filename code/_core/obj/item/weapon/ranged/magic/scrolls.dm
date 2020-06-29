@@ -116,7 +116,7 @@
 	shoot_delay = 10
 	projectile_speed = 16
 
-	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
 	value = 20
 

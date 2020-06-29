@@ -25,8 +25,8 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/get_cock_sound(var/direction="both")
 	switch(direction)
 		if("both")
-			return 'sounds/weapons/gun/pistol/rack.ogg'
+			return 'sound/weapons/gun/pistol/rack.ogg'
 		if("forward")
-			return 'sounds/weapons/gun/pistol/slide_drop.ogg'
+			return 'sound/weapons/gun/pistol/slide_drop.ogg'
 		if("back")
-			return 'sounds/weapons/gun/pistol/slide_lock.ogg'
+			return 'sound/weapons/gun/pistol/slide_lock.ogg'

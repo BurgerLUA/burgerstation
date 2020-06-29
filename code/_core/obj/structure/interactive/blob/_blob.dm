@@ -119,7 +119,7 @@
 	var/desired_state = "[initial(icon_state)]_[icon_mul]"
 	if(desired_state != icon_state)
 		if(icon_state != initial(icon_state))
-			play(pick('sounds/effects/impacts/flesh_01.ogg','sounds/effects/impacts/flesh_02.ogg','sounds/effects/impacts/flesh_03.ogg'),get_turf(src))
+			play(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 		icon_state = desired_state
 
 	return .

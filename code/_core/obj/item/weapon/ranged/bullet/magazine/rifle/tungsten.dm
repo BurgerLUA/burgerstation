@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	shoot_delay = 2
 	view_punch = 4
-	shoot_sounds = list('sounds/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	heat_per_shot = 0.01
 	heat_max = 0.03
@@ -46,4 +46,4 @@
 	return max(0,0.025 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_cock_sound(var/direction="both")
-	return 'sounds/weapons/gun/smg/smg_rack.ogg'
+	return 'sound/weapons/gun/smg/smg_rack.ogg'

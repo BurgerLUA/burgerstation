@@ -19,7 +19,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/spam_fix_time = 0
 
-	var/radio_sound = 'sounds/items/radio.ogg'
+	var/radio_sound = 'sound/items/radio.ogg'
 
 	var/broadcasting_range = VIEW_RANGE
 

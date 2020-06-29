@@ -18,9 +18,9 @@
 
 	var/opened_time = 0
 
-	open_sound = 'sounds/machines/airlock/open.ogg'
-	close_sound = 'sounds/machines/airlock/close.ogg'
-	deny_sound = 'sounds/machines/airlock/deny.ogg'
+	open_sound = 'sound/machines/airlock/open.ogg'
+	close_sound = 'sound/machines/airlock/close.ogg'
+	deny_sound = 'sound/machines/airlock/deny.ogg'
 
 	blocks_air = NORTH | EAST | SOUTH | WEST
 

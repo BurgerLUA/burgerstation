@@ -11,7 +11,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/308/shoot_short.ogg')
+	shoot_sounds = list('sound/weapons/308/shoot_short.ogg')
 
 	can_wield = TRUE
 
@@ -57,7 +57,7 @@
 	max_bursts = 2
 	view_punch = 5
 
-	shoot_sounds = list('sounds/weapons/223/shoot.ogg') //I'm lazy
+	shoot_sounds = list('sound/weapons/223/shoot.ogg') //I'm lazy
 
 	can_wield = TRUE
 
@@ -103,7 +103,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
+	shoot_sounds = list('sound/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
 
 	can_wield = FALSE
 
@@ -149,7 +149,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sound/weapons/silenced/fire.ogg')
 
 	can_wield = TRUE
 
@@ -194,7 +194,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sound/weapons/silenced/fire.ogg')
 
 	can_wield = TRUE
 	wield_only = FALSE

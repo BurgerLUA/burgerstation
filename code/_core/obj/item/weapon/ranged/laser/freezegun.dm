@@ -18,7 +18,7 @@
 
 	view_punch = 15
 
-	shoot_sounds = list('sounds/weapons/chronogun/fire.ogg')
+	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	override_icon_state = TRUE
 

@@ -13,7 +13,7 @@
 	projectile = /obj/projectile/magic/chaos
 	ranged_damage_type = /damagetype/ranged/magic/chaos
 
-	shoot_sounds = list('sounds/weapons/magic/chaos.ogg')
+	shoot_sounds = list('sound/weapons/magic/chaos.ogg')
 
 	value = 200
 

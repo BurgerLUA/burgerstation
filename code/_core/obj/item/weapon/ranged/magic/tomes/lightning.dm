@@ -11,7 +11,7 @@
 
 	ranged_damage_type = /damagetype/ranged/magic/lightning
 
-	shoot_sounds = list('sounds/weapons/magic/zap_large.ogg')
+	shoot_sounds = list('sound/weapons/magic/zap_large.ogg')
 
 	projectile_speed = TILE_SIZE - 1
 

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/weapons/ranged/pistol/50.dmi'
 	value = 170
 	shoot_delay = 4
-	shoot_sounds = list('sounds/weapons/50/shoot.ogg')
+	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	view_punch = 20
 

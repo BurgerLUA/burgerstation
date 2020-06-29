@@ -10,7 +10,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sounds/weapons/revolver_heavy/shoot.ogg')
+	shoot_sounds = list('sound/weapons/revolver_heavy/shoot.ogg')
 
 	view_punch = 10
 

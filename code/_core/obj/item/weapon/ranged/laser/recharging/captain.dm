@@ -11,7 +11,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
 
 	charge_max = 12000
 	charge_current = 12000

@@ -10,7 +10,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/10/shoot.ogg')
+	shoot_sounds = list('sound/weapons/10/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -44,6 +44,6 @@
 
 	size = SIZE_2
 
-	shoot_sounds = list('sounds/weapons/10/shoot_mod.ogg')
+	shoot_sounds = list('sound/weapons/10/shoot_mod.ogg')
 
 	shoot_alert = ALERT_LEVEL_NONE

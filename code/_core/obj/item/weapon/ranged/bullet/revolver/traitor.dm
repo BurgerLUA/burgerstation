@@ -12,7 +12,7 @@
 
 
 
-	shoot_sounds = list('sounds/weapons/traitor/fire.ogg')
+	shoot_sounds = list('sound/weapons/traitor/fire.ogg')
 
 	view_punch = 12
 

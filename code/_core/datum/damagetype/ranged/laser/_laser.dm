@@ -5,13 +5,13 @@
 	draw_blood = FALSE
 
 	impact_sounds = list(
-		'sounds/effects/impacts/energy_metal1.ogg',
-		'sounds/effects/impacts/energy_metal2.ogg'
+		'sound/effects/impacts/energy_metal1.ogg',
+		'sound/effects/impacts/energy_metal2.ogg'
 	)
 
 	impact_sounds_flesh = list(
-		'sounds/effects/impacts/energy_meat1.ogg',
-		'sounds/effects/impacts/energy_meat2.ogg'
+		'sound/effects/impacts/energy_meat1.ogg',
+		'sound/effects/impacts/energy_meat2.ogg'
 	)
 
 	falloff = VIEW_RANGE

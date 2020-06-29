@@ -2,7 +2,7 @@
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 
 /obj/item/magazine/clip/revolver/bullet_38
-	name = "\improper .38 speedloader"
+	name = "\improper .38 six round speedloader"
 	icon = 'icons/obj/items/magazine/revolver/38.dmi'
 	icon_state = "38"
 	bullet_count_max = 6
@@ -21,8 +21,18 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	size = SIZE_2
-	weight = WEIGHT_2
+	size = SIZE_1
+	weight = WEIGHT_1
+
+/obj/item/magazine/clip/revolver/bullet_38/eight
+	name = "\improper .38 eight round speedloader"
+	icon = 'icons/obj/items/magazine/revolver/38_2.dmi'
+	bullet_count_max = 8
+
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/revolver/comp = TRUE
+	)
+
 
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 revolver speedloader"
@@ -45,8 +55,8 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
-	size = SIZE_2
-	weight = WEIGHT_2
+	size = SIZE_1
+	weight = WEIGHT_1
 
 
 
@@ -88,8 +98,8 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	size = SIZE_2
-	weight = WEIGHT_2
+	size = SIZE_1
+	weight = WEIGHT_1
 
 /*
 /obj/item/magazine/clip/revolver/bullet_357/surplus

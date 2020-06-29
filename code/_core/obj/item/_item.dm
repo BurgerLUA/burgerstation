@@ -66,11 +66,11 @@
 	var/crafting_id = null
 
 	var/list/inventory_sounds = list(
-		'sounds/effects/inventory/rustle1.ogg',
-		'sounds/effects/inventory/rustle2.ogg',
-		'sounds/effects/inventory/rustle3.ogg',
-		'sounds/effects/inventory/rustle4.ogg',
-		'sounds/effects/inventory/rustle5.ogg'
+		'sound/effects/inventory/rustle1.ogg',
+		'sound/effects/inventory/rustle2.ogg',
+		'sound/effects/inventory/rustle3.ogg',
+		'sound/effects/inventory/rustle4.ogg',
+		'sound/effects/inventory/rustle5.ogg'
 	)
 
 	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_type = volume.

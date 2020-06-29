@@ -28,7 +28,7 @@
 				L.health.update_health()
 				L.emote("pain")
 				L.add_status_effect(STUN,30,30)
-				play('sounds/effects/impacts/meteor_impact.ogg',get_turf(L))
+				play('sound/effects/impacts/meteor_impact.ogg',get_turf(L))
 
 	return .
 

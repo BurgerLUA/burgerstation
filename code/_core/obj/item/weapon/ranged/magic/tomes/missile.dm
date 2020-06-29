@@ -11,7 +11,7 @@
 
 	ranged_damage_type = /damagetype/ranged/magic/magic_missile
 
-	shoot_sounds = list('sounds/weapons/magic/magic_missile.ogg')
+	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 
 	projectile_speed = 20
 

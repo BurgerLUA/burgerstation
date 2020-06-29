@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/smg_heavy/classic_2.ogg')
+	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
 
 	can_wield = TRUE
 

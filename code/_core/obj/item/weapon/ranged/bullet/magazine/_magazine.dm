@@ -10,11 +10,11 @@
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)
 		if("both")
-			return 'sounds/weapons/gun/general/bolt_rack.ogg'
+			return 'sound/weapons/gun/general/bolt_rack.ogg'
 		if("forward")
-			return 'sounds/weapons/gun/general/bolt_drop.ogg'
+			return 'sound/weapons/gun/general/bolt_drop.ogg'
 		if("back")
-			return 'sounds/weapons/gun/general/slide_lock_1.ogg'
+			return 'sound/weapons/gun/general/slide_lock_1.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/Generate()
 

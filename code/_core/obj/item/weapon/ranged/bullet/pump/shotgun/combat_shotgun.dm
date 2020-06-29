@@ -12,7 +12,7 @@
 
 	bullet_count_max = 8
 
-	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -60,7 +60,7 @@
 	bullet_count_max = 6
 
 
-	shoot_sounds = list('sounds/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 

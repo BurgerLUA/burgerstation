@@ -32,7 +32,7 @@
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
 
-	play('sounds/weapons/revolver_click2.ogg',src)
+	play('sound/weapons/revolver_click2.ogg',src)
 
 	update_sprite()
 

@@ -2,7 +2,7 @@
 	name = "blob"
 
 	impact_sounds = list(
-		'sounds/effects/impacts/blob_impact.ogg'
+		'sound/effects/impacts/blob_impact.ogg'
 	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

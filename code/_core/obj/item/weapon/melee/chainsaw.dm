@@ -12,10 +12,10 @@
 /obj/item/weapon/melee/energy/chainsaw/click_self(var/atom/caller)
 	. = ..()
 	if(enabled)
-		play('sounds/weapons/energy/energy_on.ogg',src)
+		play('sound/weapons/energy/energy_on.ogg',src)
 		damage_type = /damagetype/melee/sword/chainsaw/on
 	else
-		play('sounds/weapons/energy/energy_off.ogg',src)
+		play('sound/weapons/energy/energy_off.ogg',src)
 		damage_type = /damagetype/melee/sword/chainsaw
 	return .
 

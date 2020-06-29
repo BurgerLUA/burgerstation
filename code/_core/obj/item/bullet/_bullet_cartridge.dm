@@ -37,10 +37,10 @@
 	value = 0.1
 
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
-	return 'sounds/weapons/gun/general/mag_bullet_remove.ogg'
+	return 'sound/weapons/gun/general/mag_bullet_remove.ogg'
 
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
-	return 'sounds/weapons/gun/general/mag_bullet_insert.ogg'
+	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
 
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return item_count_current

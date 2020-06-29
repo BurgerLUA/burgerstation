@@ -1,7 +1,7 @@
 /damagetype/cqc/
 	impact_sounds = list(
-		'sounds/weapons/fists/cqchit1.ogg',
-		'sounds/weapons/fists/cqchit2.ogg'
+		'sound/weapons/fists/cqchit1.ogg',
+		'sound/weapons/fists/cqchit2.ogg'
 	)
 
 	allow_parry = FALSE

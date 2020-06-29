@@ -21,7 +21,7 @@
 
 	view_punch = 6
 
-	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
 	heat_per_shot = 0.06
 	heat_max = 0.2

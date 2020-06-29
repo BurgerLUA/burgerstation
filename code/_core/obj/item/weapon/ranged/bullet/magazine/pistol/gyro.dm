@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/gyrojet/shoot.ogg')
+	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
 
 	view_punch = 2
 

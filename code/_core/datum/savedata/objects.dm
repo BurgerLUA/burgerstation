@@ -154,6 +154,11 @@
 		if(object_data["iff_tag"])
 			FP.iff_tag = object_data["iff_tag"]
 
+	if(istype(O,/obj/item/supply_remote))
+		var/obj/item/supply_remote/D = O
+		D.stored_object_types = object_data["stored_object_types"]
+		D.charges = object_data["charges"]
+
 	INITIALIZE(O)
 
 	if(is_item(O) && object_data["reagents"] && length(object_data["reagents"]))
@@ -362,6 +367,11 @@
 		if(istype(I,/obj/item/firing_pin/))
 			var/obj/item/firing_pin/FP = I
 			returning_list["iff_tag"] = FP.iff_tag
+
+		if(istype(I,/obj/item/supply_remote))
+			var/obj/item/supply_remote/D = I
+			returning_list["stored_object_types"] = D.stored_object_types
+			returning_list["charges"] = D.charges
 
 		return returning_list
 

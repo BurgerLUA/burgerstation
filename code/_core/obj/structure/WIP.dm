@@ -26,3 +26,5 @@
 	desc_extended = "Imagine adding an area, only to add literally nothing else to it."
 	icon = 'icons/meme2.dmi'
 	icon_state = "nothing"
+	pixel_x = 16-55
+	pixel_y = 16-45

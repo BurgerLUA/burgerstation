@@ -104,7 +104,7 @@
 /mob/living/simple/npc/bubblegum/post_move(var/atom/old_loc)
 
 	if(charge_steps)
-		play('sounds/effects/impacts/meteor_impact.ogg',get_turf(src))
+		play('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 		var/turf/simulated/T0 = get_turf(src)
 		var/turf/simulated/T1 = get_step(src,turn(dir,90))
 		var/turf/simulated/T2 = get_step(src,turn(dir,-90))

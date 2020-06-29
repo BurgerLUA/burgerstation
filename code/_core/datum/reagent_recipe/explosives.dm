@@ -7,13 +7,6 @@
 
 	results = list()
 
-	var/list/explosion_sounds = list(
-		'sounds/effects/explosion/Explosion1.ogg',
-		'sounds/effects/explosion/Explosion2.ogg',
-		'sounds/effects/explosion/Explosion3.ogg'
-	)
-
-
 /reagent_recipe/explosion_water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
 
 	var/turf/explosion_location = get_turf(container.owner)
@@ -43,7 +36,5 @@
 	var/shrapnel_amount = CEILING(shrapnel_volume/6,1)
 	container.owner.shoot_projectile(caller,explosion_location,null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.5,shrapnel_amount,"#FFFFFF",0,0,1,null,tag_to_use,2,1)
 	explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
-
-	play(pick(explosion_sounds),explosion_location, alert = ALERT_LEVEL_CAUTION, alert_source = caller)
 
 	return TRUE

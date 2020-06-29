@@ -15,6 +15,6 @@
 	if(!header)
 		return FALSE
 
-	announce(sender,header,message,ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+	announce(sender,header,message,ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
 
 	return TRUE
