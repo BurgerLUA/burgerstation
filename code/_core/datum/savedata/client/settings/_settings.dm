@@ -5,6 +5,7 @@
 		"volume_ambient" = 50,
 		"volume_music" = 50,
 		"volume_footsteps" = 50,
+		"view_range" = VIEW_RANGE,
 		"fps_client" = FPS_CLIENT,
 		"hud_colors" = DEFAULT_COLORS
 	)

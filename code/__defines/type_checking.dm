@@ -115,3 +115,5 @@
 #define is_pill(A) istype(A, /obj/item/container/pill)
 
 #define is_food(A) istype(A, /obj/item/container/food)
+
+#define is_hud(A) istype(A,/obj/hud/)

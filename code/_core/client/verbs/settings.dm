@@ -38,6 +38,24 @@
 	settings.change_setting("fps_client",desired_fps)
 	to_chat(span("notice","Your FPS was changed from [old_fps] to [desired_fps]."))
 
+/client/verb/set_view_range(var/desired_view_range as num)
+	set hidden = TRUE
+	var/old_view_range = view
+	settings.change_setting("view_range",desired_view_range)
+	update_view_range()
+	to_chat(span("notice","Your view range was changed from [old_view_range] to [view]."))
+
+
+/client/verb/precise_zoom()
+	set hidden = TRUE
+
+	if(precise_zoom)
+		update_zoom(CEILING(zoom_level,1))
+		to_chat(span("notice","You disable precise zooming."))
+		precise_zoom = FALSE
+	else
+		to_chat(span("notice","You enable precise zooming."))
+		precise_zoom = TRUE
 
 /client/verb/toggle_fullscreen()
 	set hidden = TRUE

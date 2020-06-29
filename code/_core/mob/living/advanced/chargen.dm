@@ -24,7 +24,7 @@
 		play_music_track("space_wayfarer",src.client)
 
 		client.disable_controls = TRUE
-		client.update_zoom(3) //300%
+		client.update_zoom(3)
 
 		var/obj/hud/screen/S = new()
 		S.icon = 'icons/hud/discovery.dmi' //320x320

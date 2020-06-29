@@ -24,6 +24,8 @@
 	verbs += /client/verb/toggle_fullscreen
 	verbs += /client/verb/set_fps
 	verbs += /client/verb/edit_macros
+	verbs += /client/verb/set_view_range
+	verbs += /client/verb/precise_zoom
 
 	//Controls
 	verbs += /client/verb/button_release

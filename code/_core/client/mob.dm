@@ -40,7 +40,7 @@
 	all_mobs_with_clients += M
 	view = M.view
 
-	update_zoom(-1)
+	update_zoom(2)
 	update_verbs()
 
 /client/proc/clear_mob(var/mob/M,var/hard = FALSE) //This is called when the client no longer controls this mob.

@@ -1,6 +1,41 @@
 #define CAMERA_RECOIL_SPEED 8
 #define CAMERA_PUNCH_SPEED 6
 
+/client/proc/update_zoom(var/desired_zoom_level = 2)
+
+	if(!mob || !eye || eye != mob)
+		zoom_level = initial(zoom_level)
+	else
+		zoom_level = clamp(desired_zoom_level,MIN_ZOOM,MAX_ZOOM)
+
+	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE]")
+
+	return TRUE
+
+/client/MouseWheel(object,delta_x,delta_y,location,control,params)
+
+	var/list/aug = params2list(params)
+
+	if(mob && (mob.attack_flags & ATTACK_GRAB) && allow_zoom_controls)
+		var/change_in_screen = delta_y > 1 ? 1 : -1
+		if(precise_zoom)
+			change_in_screen *= 0.1
+		update_zoom(zoom_level + change_in_screen)
+		return TRUE
+
+	mob.do_mouse_wheel(object,delta_x,delta_y,location,control,aug)
+
+	return TRUE
+
+/client/proc/update_view_range()
+
+	if(settings && settings.loaded_data["view_range"])
+		view = clamp(settings.loaded_data["view_range"],4,VIEW_RANGE)
+	else
+		view = VIEW_RANGE
+
+	return TRUE
+
 /client/proc/handle_camera()
 
 	var/zoom_offset_x = 0

@@ -16,7 +16,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/list/obj/hud/button/known_buttons
 	var/list/obj/hud/button/known_health_elements
 
-	var/zoom_level = MIN_ZOOM
+	var/zoom_level = 2
 
 	var/savedata/client/connection_history/connection_data
 	var/savedata/client/settings/settings
@@ -76,6 +76,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/desired_punch_x = 0
 	var/desired_punch_y = 0
+
+	var/precise_zoom = FALSE
 
 
 /client/proc/is_player_controlled()
@@ -158,7 +160,7 @@ var/global/list/all_clients = list() //Assoc list
 	known_inventory = list()
 	known_buttons = list()
 
-	update_zoom(-1)
+	update_zoom(2)
 
 	if(SSadmin.initialized)
 		sync_permissions()

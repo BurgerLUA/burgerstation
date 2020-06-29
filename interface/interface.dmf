@@ -82,6 +82,16 @@ menu "menu"
 		category = "View"
 		saved-params = "is-checked"
 	elem 
+		name = "&View Range"
+		command = "set-view-range"
+		category = "View"
+		saved-params = "is-checked"
+	elem 
+		name = "Toggle &Precise Zoom"
+		command = "precise-zoom"
+		category = "View"
+		saved-params = "is-checked"
+	elem 
 		name = "Volume"
 		command = ""
 		saved-params = "is-checked"
@@ -390,7 +400,6 @@ window "main"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
@@ -398,15 +407,12 @@ window "main"
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
-		outer-size = 816x878
-		inner-size = 800x819
 	elem "splitter"
 		type = CHILD
 		pos = 0,0
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "map"
@@ -441,6 +447,7 @@ window "map"
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 32
 		zoom = 1
+		zoom-mode = distort
 	elem "paper"
 		type = BROWSER
 		pos = 100,40
@@ -450,7 +457,6 @@ window "map"
 		is-visible = false
 		border = sunken
 		saved-params = ""
-		auto-format = false
 	elem "dialogue"
 		type = BROWSER
 		pos = 60,420
@@ -459,5 +465,4 @@ window "map"
 		anchor2 = 100,100
 		is-visible = false
 		saved-params = ""
-		auto-format = false
 
