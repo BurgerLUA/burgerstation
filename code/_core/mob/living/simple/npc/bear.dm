@@ -27,6 +27,13 @@
 
 	health_base = 200
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/bear/,
+		/obj/item/container/food/dynamic/meat/bear/,
+		/obj/item/container/food/dynamic/meat/bear/,
+		/obj/item/container/food/dynamic/meat/bear/
+	)
+
 	mob_size = MOB_SIZE_LARGE
 
 	var/armored = FALSE

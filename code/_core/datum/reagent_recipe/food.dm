@@ -125,6 +125,86 @@
 		/reagent/nutrition/meat/chicken/cooked = 1
 	)
 
+/reagent_recipe/meat/xeno
+
+	name = "cooked xeno's meat"
+
+	required_reagents = list(
+		/reagent/nutrition/meat/xeno = 1,
+		/reagent/toxin/xeno_acid = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/meat/xeno = 400
+	)
+
+	results = list(
+		/reagent/nutrition/meat/xeno/cooked = 1
+	)
+
+/reagent_recipe/meat/spider
+
+	name = "cooked spider's meat"
+
+	required_reagents = list(
+		/reagent/nutrition/meat/spider = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/meat/spider = 400
+	)
+
+	results = list(
+		/reagent/nutrition/meat/spider/cooked = 1
+	)
+
+/reagent_recipe/meat/bear
+
+	name = "cooked bear's meat"
+
+	required_reagents = list(
+		/reagent/nutrition/meat/bear = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/meat/bear = 400
+	)
+
+	results = list(
+		/reagent/nutrition/meat/bear/cooked = 1
+	)
+
+/reagent_recipe/meat/penguin
+
+	name = "cooked penguin's meat"
+
+	required_reagents = list(
+		/reagent/nutrition/meat/penguin = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/meat/penguin = 400
+	)
+
+	results = list(
+		/reagent/nutrition/meat/penguin/cooked = 1
+	)
+
+/reagent_recipe/meat/fish
+
+	name = "cooked fish"
+
+	required_reagents = list(
+		/reagent/nutrition/meat/fish = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/meat/fish = 400
+	)
+
+	results = list(
+		/reagent/nutrition/meat/fish/cooked = 1
+	)
 
 /reagent_recipe/cake_batter/
 

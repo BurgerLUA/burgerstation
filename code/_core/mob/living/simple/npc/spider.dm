@@ -13,6 +13,12 @@
 
 	health_base = 100
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/spider/,
+		/obj/item/container/food/dynamic/meat/spider/,
+		/obj/item/container/food/dynamic/meat/spider/
+	)
+
 	armor_base = list(
 		BLADE = 10,
 		BLUNT = 25,

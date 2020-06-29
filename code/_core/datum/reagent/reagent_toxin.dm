@@ -45,3 +45,19 @@
 	damage_per_unit = 4
 
 	flavor = "mushroom"
+
+/reagent/toxin/xeno_acid
+	name = "xenomorph acid"
+	desc = "Literal fucking acid."
+
+	damage_per_unit = 2
+
+	flavor = "pain"
+
+/reagent/toxin/spider_toxin
+	name = "spider toxin"
+	desc = "Toxins bad."
+
+	damage_per_unit = 3
+
+	flavor = "arachnophobia"
