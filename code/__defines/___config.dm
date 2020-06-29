@@ -1,9 +1,9 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
-#define FPS_SERVER 30
+#define FPS_SERVER 40
 
 #define SHUTDOWN_SUBSYSTEM_ON_ERROR FALSE
 
@@ -23,7 +23,7 @@
 #define AI_DETECTION_RANGE VIEW_RANGE * 0.6
 #define AI_DETECTION_RANGE_COMBAT VIEW_RANGE + ZOOM_RANGE*0.5
 
-#define SOUND_RANGE 18
+#define SOUND_RANGE VIEW_RANGE + ZOOM_RANGE
 
 #define STUN_ANGLE -90
 

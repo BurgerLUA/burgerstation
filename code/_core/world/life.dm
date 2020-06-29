@@ -65,4 +65,6 @@
 			play_music_track("slow_fall", O.client)
 			O.show_hud(TRUE,speed = 2)
 
-	log_subsystem("Subsystem Controller","Life complete.")
+	log_subsystem("Subsystem Controller","Life initializations complete.")
+
+	return TRUE

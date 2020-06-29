@@ -60,6 +60,10 @@
 	iff_tag = "Syndicate"
 	loyalty_tag = "Syndicate"
 
+	status_immune = list(
+		FIRE = TRUE
+	)
+
 /mob/living/simple/npc/silicon/squats/post_death()
 
 	. = ..()
