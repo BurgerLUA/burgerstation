@@ -122,15 +122,15 @@
 	var/do_organs = length(tracked_hidden_organs)
 	var/do_clothing = tracked_hidden_clothing != 0x0
 
-	for(var/id in overlays_assoc)
-		var/image/overlay/O = overlays_assoc[id]
+	for(var/k in overlays_assoc)
+		var/image/overlay/O = overlays_assoc[k]
 		var/obj/item/I = O.attached_object
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
-			show_overlay(id, (do_organs && tracked_hidden_organs[OR.id]) ? FALSE : TRUE)
+			show_overlay(k, (do_organs && tracked_hidden_organs[OR.id]) ? FALSE : TRUE)
 		else if(is_clothing(I))
 			var/obj/item/clothing/C = I
-			show_overlay(id, (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
+			show_overlay(k, (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
 
 	return TRUE
 
