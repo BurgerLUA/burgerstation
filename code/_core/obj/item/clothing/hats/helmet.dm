@@ -53,8 +53,8 @@
 		LASER = 50,
 		MAGIC = -25,
 		HEAT = -25,
-		HOLY = -50,
-		DARK = 100
+		HOLY = 50,
+		DARK = -100
 	)
 
 /obj/item/clothing/head/helmet/knight/battlemage

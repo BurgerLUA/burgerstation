@@ -14,8 +14,8 @@
 		MAGIC = 25,
 		HEAT = 25,
 		COLD = 25,
-		HOLY = 50,
-		DARK = -50
+		HOLY = -50,
+		DARK = 50
 	)
 
 	size = SIZE_4
@@ -37,7 +37,7 @@
 		MAGIC = -25,
 		HEAT = 10,
 		COLD = 25,
-		HOLY = 75
+		HOLY = -75
 	)
 
 	size = SIZE_3
@@ -59,7 +59,7 @@
 		MAGIC = -75,
 		HEAT = 50,
 		COLD = 50,
-		HOLY = 25,
+		HOLY = -25,
 	)
 
 	size = SIZE_5
