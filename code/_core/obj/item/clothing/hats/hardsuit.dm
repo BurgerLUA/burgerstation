@@ -153,3 +153,33 @@
 	weight = WEIGHT_4
 
 	value = 300
+
+/obj/item/clothing/head/helmet/hardsuit/seva
+	name = "seva suit"
+	desc = "Idi ko mne"
+	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike!"
+	icon = 'icons/obj/item/clothing/hats/seva_suit.dmi'
+	rarity = RARITY_UNCOMMON
+
+	defense_rating = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = -50,
+		DARK = 25,
+		HOLY = -25,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 25,
+		BIO = 100,
+		RAD = 100
+	)
+
+	size = SIZE_3
+	weight = WEIGHT_4
+
+	value = 300
+
+/obj/item/clothing/head/helmet/hardsuit/seva/mono
+	icon = 'icons/obj/item/clothing/hats/sevamono_suit.dmi'
