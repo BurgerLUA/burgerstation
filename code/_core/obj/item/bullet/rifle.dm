@@ -42,6 +42,8 @@
 
 	bullet_length = 39
 
+	projectile_speed = BULLET_SPEED_RIFLE_HEAVY*0.9
+
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"
 	desc = "For rifles and machineguns that requre .223."

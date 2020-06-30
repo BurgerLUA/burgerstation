@@ -47,6 +47,6 @@
 
 	inaccuracy_modifer = 0.75
 
-/obj/item/bullet_cartridge/rifle_939/Generate()
+/obj/item/bullet_cartridge/rifle_939mm/Generate()
 	item_count_current = 5
 	return ..()
