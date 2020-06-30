@@ -1,4 +1,5 @@
 /obj/structure/interactive/door/airlock/station
+	desc_extended = "It opens and closes."
 
 /obj/structure/interactive/door/airlock/station/cargo
 	name = "cargo airlock"

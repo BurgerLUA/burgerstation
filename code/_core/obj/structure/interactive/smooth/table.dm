@@ -1,6 +1,7 @@
 obj/structure/smooth/table
 	name = "table"
-	desc = "A table for placing objects down or taking them"
+	desc = "A table for placing objects down or taking them."
+	desc_extended = "To place items on a table, press Q + Left/Right click depending on if the item is in your left or right hand. Climbing over tables is automatic; Walk into a table for long enough to climb over it."
 	icon = 'icons/obj/structure/smooth/table/normal.dmi'
 	icon_state = "table"
 
@@ -65,7 +66,8 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 
 obj/structure/smooth/table/rack
 	name = "table"
-	desc = "What does it do?"
+	desc = "A rack. Not the middle ages kind."
+	desc_extended = "To place items on a rack, press Q + Left/Right click depending on if the item is in your left or right hand."
 	icon = 'icons/obj/structure/rack.dmi'
 	icon_state = "rack"
 

@@ -1,5 +1,7 @@
 obj/structure/interactive/potted_plant
 	name = "potted plant"
+	desc = "For replacing the oxygen that theese retards waste."
+	desc_extended = "A randomized potted plant as decor to liven up the area."
 	icon = 'icons/obj/structure/flora/potted.dmi'
 
 	bullet_block_chance = 25

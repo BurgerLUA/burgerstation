@@ -1,6 +1,7 @@
 /obj/item/magazine/
 	name = "weapon magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	var/bullet_count_max = 30 //How many bullets can this store
 	var/list/obj/item/bullet_cartridge/stored_bullets
 

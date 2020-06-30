@@ -1,6 +1,7 @@
 /obj/structure/smooth/table/grill
 	name = "electric oven and grill"
-	desc = "Cook thigns with this."
+	desc = "Cook things with this."
+	desc_extended = "You can cook or heat up items by either slotting it inside the oven or dropping it on top of the grill. The oven/grill turns on and off automatically."
 	icon = 'icons/obj/structure/smooth/table/grill.dmi'
 	icon_state = "grill"
 

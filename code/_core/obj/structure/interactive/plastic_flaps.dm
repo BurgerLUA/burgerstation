@@ -1,7 +1,7 @@
 /obj/structure/interactive/plastic_flaps
 	name = "airtight plastic flaps"
-	desc = "What sorcery is this?"
-	desc_extended = "Somehow prevents air and large beings from crossing."
+	desc = "Impassable flaps. What kind of sorcery is this?"
+	desc_extended = "Somehow prevents air and *large* beings from crossing."
 	anchored = TRUE
 	icon = 'icons/obj/structure/plastic_flaps.dmi'
 	icon_state = "plastic_flaps"

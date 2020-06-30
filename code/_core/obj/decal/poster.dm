@@ -1,5 +1,7 @@
 /obj/decal/poster/
 	name = "poster"
+	desc = "Do not ERP, ERP is bad."
+	desc_extended = "A randomized poster as decor to liven up the area."
 	icon = 'icons/obj/decal/poster.dmi'
 	mouse_opacity = 1
 	icon_state = null

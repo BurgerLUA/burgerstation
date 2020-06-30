@@ -1,5 +1,7 @@
 /obj/structure/interactive/disposals/machine/chute
 	name = "disposals chute"
+	desc = "Express delivery!"
+	desc_extended = "Throw trash in here."
 	icon_state = "disposal"
 
 	collision_flags = FLAG_COLLISION_WALKING
