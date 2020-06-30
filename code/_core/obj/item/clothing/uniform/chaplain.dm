@@ -14,8 +14,8 @@
 		MAGIC = 75,
 		HEAT = 10,
 		COLD = 15,
-		HOLY = -100,
-		DARK = 100
+		HOLY = 100,
+		DARK = -100
 	)
 
 	value = 40

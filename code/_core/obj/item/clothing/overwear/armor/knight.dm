@@ -12,7 +12,7 @@
 		BLUNT = 50,
 		PIERCE = 50,
 		LASER = 75,
-		HEAT = -50,
+		HEAT = 50,
 		MAGIC = -100
 	)
 
@@ -70,8 +70,8 @@
 		LASER = 50,
 		MAGIC = -25,
 		HEAT = -25,
-		HOLY = -50,
-		DARK = 100
+		HOLY = 50,
+		DARK = -100
 	)
 
 	size = SIZE_5

@@ -9,7 +9,7 @@
 		PIERCE = 10,
 		MAGIC = 75,
 		COLD = 15,
-		HOLY = 75,
+		HOLY = -75,
 		DARK = 75,
 		FATIGUE = -100
 	)

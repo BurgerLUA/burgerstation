@@ -32,8 +32,8 @@
 		PIERCE = 10,
 		BIO = 50,
 		RAD = 10,
-		HOLY = 50,
-		DARK = -50
+		HOLY = -50,
+		DARK = 50
 	)
 
 	size = SIZE_2
