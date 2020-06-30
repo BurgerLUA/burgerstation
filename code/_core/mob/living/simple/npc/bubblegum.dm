@@ -9,6 +9,8 @@
 
 	pixel_x = -32
 
+	value = 4000
+
 	var/charge_steps = 0
 	var/charge_dir = 0
 

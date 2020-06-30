@@ -5,6 +5,8 @@
 	damage_type = /damagetype/npc/crab
 	class = /class/crab
 
+	value = 25
+
 	ai = /ai/
 
 	stun_angle = 180

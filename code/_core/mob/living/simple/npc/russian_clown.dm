@@ -12,6 +12,8 @@
 
 	pixel_x = -16
 
+	value = 1000
+
 	armor_base = list(
 		BLADE = 75,
 		BLUNT = 75,

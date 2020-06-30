@@ -132,9 +132,9 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		if(TEXT_OOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/k in all_clients)
-				var/client/C = all_clients[k]
 				CHECK_TICK
-				if(!C.mob)
+				var/client/C = all_clients[k]
+				if(!C || !C.mob)
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_OOC)
 

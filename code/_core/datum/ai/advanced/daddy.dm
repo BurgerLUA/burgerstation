@@ -1,6 +1,6 @@
 /ai/advanced/daddy
 
-	objective_delay = 5
+	objective_delay = 10
 	attack_delay = 1
 
 /ai/advanced/daddy/handle_objectives()

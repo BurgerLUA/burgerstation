@@ -1,6 +1,6 @@
 /ai/boss/
 
-	objective_delay = 1
+	objective_delay = 10
 	attack_delay = 1
 
 	true_sight = TRUE

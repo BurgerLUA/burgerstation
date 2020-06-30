@@ -60,12 +60,13 @@
 
 	to_chat(span("notice","Your [E.name] increased to [new_level]."))
 
-	switch(E.id)
-		if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE)
-			add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)
-		if(ATTRIBUTE_DEXTERITY,ATTRIBUTE_RESILIENCE)
-			add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
-		if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER)
-			add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
+	if(new_level > old_level)
+		switch(E.id)
+			if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE)
+				add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)
+			if(ATTRIBUTE_DEXTERITY,ATTRIBUTE_RESILIENCE)
+				add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
+			if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER)
+				add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
 
 	return TRUE

@@ -7,6 +7,8 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/arachnid
 
+	value = 500
+
 	ai = /ai/
 
 	stun_angle = 0

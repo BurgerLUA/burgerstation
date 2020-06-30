@@ -15,7 +15,7 @@
 	var/attack_ticks = 0
 
 	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 AI_TICK.
-	var/objective_delay = 3
+	var/objective_delay = 10
 	var/attack_delay = 0
 
 	var/list/target_distribution_x = list(8,16,16,16,24)
@@ -487,7 +487,7 @@
 	if(objective_attack)
 		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
 			set_objective(null)
-		else if(get_dist(owner,objective_attack) > attack_distance_max + 1 || !can_see(objective_attack))
+		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
 		else
 			frustration_attack = 0
@@ -563,6 +563,9 @@
 /ai/proc/is_friend(var/mob/living/L)
 	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
 
+/ai/proc/is_in_view(var/atom/A)
+	return A in view(owner)
+
 /ai/proc/can_see(var/atom/A)
 
 	if(!stored_sneak_power && is_living(owner))
@@ -621,12 +624,12 @@
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
-	if(!stealthy)
+	if(!stealthy && attacker != objective_attack)
 		if(can_detect(attacker))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
 			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
-		else if(alert_level == ALERT_LEVEL_NONE)
+		else if(alert_level != ALERT_LEVEL_COMBAT)
 			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 

@@ -1,5 +1,8 @@
 /obj/item/proc/dye_self(var/mob/caller,var/obj/item/D,var/dye_color,var/dye_strength=0.5)
 
+	if(!dye_color)
+		dye_color = "#FFFFFF"
+
 	INTERACT_CHECK
 
 	if(!dyeable)
@@ -12,12 +15,12 @@
 		choice = input("What do you want to dye?","Dye Selection") as null|anything in polymorphs
 		if(choice)
 			INTERACT_CHECK
-			polymorphs[choice] = blend_colors(polymorphs[choice],dye_color,dye_strength)
+			polymorphs[choice] = blend_colors(polymorphs[choice] ? polymorphs[choice] : "#FFFFFF",dye_color,dye_strength)
 	else
 		choice = input("Are you sure you want to dye \the [src.name]?","Dye Selection") as null|anything in list("Yes","No","Cancel")
 		if(choice == "Yes")
 			INTERACT_CHECK
-			color = blend_colors(color ? color : "#FFFFFF",dye_color ? dye_color : "#FFFFFF",dye_strength)
+			color = blend_colors(color ? color : "#FFFFFF",dye_color,dye_strength)
 		else
 			choice = null
 

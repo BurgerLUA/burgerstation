@@ -8,6 +8,8 @@
 
 	health_base = 500
 
+	value = 50
+
 	ai = /ai/
 	class = /class/bull
 	damage_type = /damagetype/npc/bull

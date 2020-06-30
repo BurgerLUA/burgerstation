@@ -19,6 +19,8 @@
 
 	health_base = 3000
 
+	value = 500
+
 	level_multiplier = 4
 
 	object_size = 1

@@ -99,13 +99,15 @@
 	if(!volume_current)
 		return FALSE
 
-	var/turf/simulated/T = get_turf(owner)
+	var/turf/simulated/T
+	if(is_simulated(owner.loc))
+		T = owner.loc
 
-	if(!istype(T))
-		return FALSE
+	var/area/A
+	if(T && T.loc)
+		A = T.loc
 
-	var/area/A = T.loc
-	var/desired_temperature = A.ambient_temperature + T.turf_temperature_mod + special_temperature_mod
+	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + special_temperature_mod + (T ? T.turf_temperature_mod : 0)
 	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
 
 	if(is_inventory(owner.loc))
@@ -226,6 +228,11 @@
 		var/good_recipe = TRUE
 
 		for(var/reagent_type in recipe.required_reagents)
+			if(recipe.required_container && !istype(owner,recipe.required_container))
+				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of wrong container type.")
+				good_recipe = FALSE
+				break
+
 			if(!c_id_to_volume[reagent_type] || c_id_to_volume[reagent_type] < recipe.required_reagents[reagent_type]) //if our container doesn't have what is required, then lets fuck off.
 				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too few reagents of [reagent_type].")
 				good_recipe = FALSE
@@ -238,11 +245,6 @@
 
 			if(recipe.required_temperature_max[reagent_type] && c_id_to_temperature[reagent_type] > recipe.required_temperature_max[reagent_type])
 				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too high temperature of [reagent_type].")
-				good_recipe = FALSE
-				break
-
-			if(recipe.required_container && !istype(owner,recipe.required_container))
-				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of wrong container type.")
 				good_recipe = FALSE
 				break
 

@@ -9,6 +9,8 @@
 
 	stun_angle = 0
 
+	value = 50
+
 	armor_base = list(
 		BLADE = 10,
 		BLUNT = 25,

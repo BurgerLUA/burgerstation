@@ -12,6 +12,8 @@
 
 	blood_color = "#262626"
 
+	value = 100
+
 /mob/living/simple/npc/silicon/engineer
 	name = "engineer cyborg"
 	icon_state = "engineer"

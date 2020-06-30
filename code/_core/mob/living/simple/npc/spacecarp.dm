@@ -10,6 +10,8 @@
 
 	health_base = 200
 
+	value = 100
+
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/fish/,
 		/obj/item/container/food/dynamic/meat/fish/,

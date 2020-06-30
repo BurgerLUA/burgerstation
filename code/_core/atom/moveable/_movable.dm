@@ -105,6 +105,12 @@
 
 /atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
 
+	if(grabber == src)
+		if(messages && is_living(grabber))
+			var/mob/living/L = grabber
+			L.to_chat(span("warning","You can't grab yourself! ERP is against the rules!"))
+		return FALSE
+
 	if(anchored)
 		if(messages && is_living(grabber))
 			var/mob/living/L = grabber

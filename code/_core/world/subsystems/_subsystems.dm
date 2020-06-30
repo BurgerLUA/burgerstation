@@ -15,6 +15,9 @@
 
 	var/debug = FALSE
 
+	var/overtime_count = 0
+	var/overtime_max = 10
+
 
 //What to do when this subsystem is spawned. It's like New() but not really.
 /subsystem/proc/PreInitialize()

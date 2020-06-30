@@ -88,13 +88,17 @@
 		if(DT2 && attacker.can_attack(victim,object_to_damage_with,params,DT2))
 			DT = DT2
 
+	if(!DT)
+		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
+		return FALSE
+
 	attacker.attack_next = world.time + attacker.get_attack_delay(attacker)
 
 	if(attacker != object_to_damage_with)
 		object_to_damage_with.attack_next = world.time + object_to_damage_with.get_attack_delay(attacker)*DT.attack_delay_mod
 
 	if(!object_to_damage)
-		DT.perform_miss(attacker,victim,object_to_damage_with)
+		DT.perform_miss(attacker,victim,object_to_damage_with) //TODO: FIX THIS
 		return FALSE
 
 	var/damage_multiplier = 1

@@ -37,13 +37,17 @@
 	for(var/subsystem/SS in active_subsystems)
 		spawn
 			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
-				if(world.cpu > SS.cpu_usage_max)
-					sleep(TICK_LAG)
-					continue
-				if(world.tick_usage > SS.tick_usage_max)
-					sleep(TICK_LAG)
-					continue
+				if(SS.overtime_count < SS.overtime_max)
+					if(world.cpu > SS.cpu_usage_max)
+						SS.overtime_count++
+						sleep(TICK_LAG)
+						continue
+					if(world.tick_usage > SS.tick_usage_max)
+						SS.overtime_count++
+						sleep(TICK_LAG)
+						continue
 				try
+					SS.overtime_count = 0
 					SS.on_life()
 				catch(var/exception/e)
 					log_error("[SS.name] on_life() error: [e] on [e.file]:[e.line]!<br>[e.desc]")

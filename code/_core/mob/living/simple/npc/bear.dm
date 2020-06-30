@@ -5,6 +5,8 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/bear
 
+	value = 100
+
 	ai = /ai/
 
 	stun_angle = 90

@@ -18,6 +18,8 @@
 
 	var/slime_color = "#000000"
 
+	value = 100
+
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 75,

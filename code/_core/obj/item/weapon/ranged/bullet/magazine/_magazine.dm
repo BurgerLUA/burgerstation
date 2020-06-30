@@ -45,6 +45,11 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
+
+	if(!stored_magazine)
+		CRASH_SAFE("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
+		return FALSE
+
 	play(stored_magazine.get_magazine_eject_sound(),src)
 	stored_magazine.force_move(caller.loc)
 	if(object)

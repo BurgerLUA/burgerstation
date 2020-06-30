@@ -3,6 +3,8 @@
 	volume_max = 1000
 	should_update_owner = TRUE
 
+	allow_recipie_processing = FALSE
+
 	var/desired_reagent
 
 /reagent_container/turf/update_container()

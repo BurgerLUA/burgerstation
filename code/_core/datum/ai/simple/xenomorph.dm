@@ -47,6 +47,6 @@
 
 /ai/xenomorph_queen
 
-	objective_delay = 6
+	objective_delay = 10
 	attack_delay = 1
 

@@ -9,6 +9,8 @@
 	class = /class/xenomorph
 	health_base = 100
 
+	value = 100
+
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/meat/xeno/,
 		/obj/item/container/food/dynamic/meat/xeno/,
@@ -58,6 +60,7 @@
 	icon_state = "alien_queen"
 	pixel_x = -16
 	health_base = 1000
+	value = 2000
 
 	armor_base = list(
 		BLADE = 100,

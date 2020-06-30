@@ -3,14 +3,11 @@
 /obj/structure/interactive/blob/
 	name = "blob piece"
 	icon = 'icons/obj/structure/blob.dmi'
-	health = /health/blob
 	var/has_damaged_state = FALSE
 	var/obj/structure/interactive/blob/core/linked_core
 	color = "#80CC2A"
 
 	plane = PLANE_WALL_ATTACHMENTS
-
-	health_base = 250
 
 	anchored = TRUE
 
@@ -20,7 +17,14 @@
 
 	damage_type = /damagetype/blob_attack/
 
+	health = /health/construction/
+	health_base = 250
+
 	var/health_states = 0
+
+/obj/structure/interactive/blob/on_destruction(var/atom/caller,var/damage = FALSE)
+	qdel(src)
+	return TRUE
 
 /obj/structure/interactive/blob/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 

@@ -6,6 +6,8 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/colossus
 
+	value = 4000
+
 	pixel_x = -32
 
 	ai = /ai/boss/colossus/

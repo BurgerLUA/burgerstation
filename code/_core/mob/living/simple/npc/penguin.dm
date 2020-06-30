@@ -5,6 +5,8 @@
 	damage_type = /damagetype/unarmed/bite/
 	class = /class/crab
 
+	value = 50
+
 	armor_base = list(
 		BLADE = 0,
 		BLUNT = 0,

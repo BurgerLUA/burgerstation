@@ -154,15 +154,15 @@ mob/living/advanced/player/on_life_client()
 		if(active_device && get_dist(src,active_device) > 1)
 			set_device_unactive()
 
-		for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
-			if(!L.ai)
-				continue
-			L.ai.enabled = TRUE
-
-		for(var/mob/living/simple/npc/L in view(src,VIEW_RANGE))
-			if(!L.ai)
-				continue
-			L.ai.enabled = TRUE
+		if( (x % VIEW_RANGE == 0) || (y % VIEW_RANGE == 0) )
+			for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
+				if(!L.ai)
+					continue
+				L.ai.enabled = TRUE
+			for(var/mob/living/simple/npc/L in view(src,VIEW_RANGE))
+				if(!L.ai)
+					continue
+				L.ai.enabled = TRUE
 
 
 	return .

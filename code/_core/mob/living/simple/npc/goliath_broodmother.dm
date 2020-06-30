@@ -8,6 +8,8 @@
 
 	ai = /ai/goliath/broodmother
 
+	value = 1000
+
 	stun_angle = 0
 
 	health_base = 3000

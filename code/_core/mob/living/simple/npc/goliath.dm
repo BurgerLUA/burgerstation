@@ -5,6 +5,8 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/goliath
 
+	value = 25
+
 	ai = /ai/goliath
 
 	stun_angle = 0

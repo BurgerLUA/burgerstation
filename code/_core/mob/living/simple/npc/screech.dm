@@ -8,6 +8,8 @@
 
 	health_base = 100
 
+	value = 1000
+
 	ai = null
 	class = /class/passive/
 	damage_type = /damagetype/unarmed/claw/
