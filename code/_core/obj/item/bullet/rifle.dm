@@ -34,6 +34,7 @@
 	icon = 'icons/obj/item/bullet/762.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 
+
 /obj/item/bullet_cartridge/rifle_308/short
 	name = "\improper 7.62x39mm Soviet rifle bullet"
 	desc = "For soviet rifles that require 7.62x39mm"
@@ -43,6 +44,15 @@
 	bullet_length = 39
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY*0.9
+
+/obj/item/bullet_cartridge/rifle_308/long
+	name = "\improper 7.62mm rifle bullet"
+	desc = "For rifles that require 7.62mmx54mmR"
+	icon = 'icons/obj/item/bullet/762.dmi'
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/long
+
+	bullet_length = 54
+
 
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"

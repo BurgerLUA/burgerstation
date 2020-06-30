@@ -1,0 +1,30 @@
+/obj/item/magazine/rifle_762_long
+	name = "\improper 7.62x54mmR rifle magazine"
+	icon = 'icons/obj/item/magazine/762_rifle_long.dmi'
+	icon_state = "762l"
+	bullet_count_max = 10
+
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/svt = TRUE
+	)
+
+	ammo = /obj/item/bullet_cartridge/rifle_308/long
+
+	bullet_length_min = 46
+	bullet_length_best = 54
+	bullet_length_max = 58
+
+	bullet_diameter_min = 7.6
+	bullet_diameter_best = 7.62
+	bullet_diameter_max = 7.7
+
+	size = SIZE_2
+	weight = WEIGHT_2
+
+/obj/item/magazine/rifle_762_long/update_icon()
+	if(length(stored_bullets))
+		icon_state = "[initial(icon_state)]_1"
+	else
+		icon_state = "[initial(icon_state)]_0"
+
+	..()
