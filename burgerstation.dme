@@ -832,6 +832,7 @@
 #include "code\_core\obj\item\clothing\overwear\coat\wizard.dm"
 #include "code\_core\obj\item\clothing\overwear\hardsuit\_hardsuit.dm"
 #include "code\_core\obj\item\clothing\overwear\hardsuit\engineering.dm"
+#include "code\_core\obj\item\clothing\overwear\hardsuit\medical.dm"
 #include "code\_core\obj\item\clothing\overwear\hardsuit\mining.dm"
 #include "code\_core\obj\item\clothing\overwear\hardsuit\science.dm"
 #include "code\_core\obj\item\clothing\overwear\hardsuit\syndicate.dm"
