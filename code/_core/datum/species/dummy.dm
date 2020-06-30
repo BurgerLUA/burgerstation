@@ -1,6 +1,7 @@
 /species/dummy/
 
 	name = "Target Practice Dummy"
+	desc = "It's a dummy, dummy."
 	id = "dummy"
 
 	flags_species = SPECIES_DUMMY

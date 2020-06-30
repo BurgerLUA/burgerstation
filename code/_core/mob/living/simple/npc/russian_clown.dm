@@ -3,6 +3,7 @@
 	icon = 'icons/mob/living/simple/clown_large.dmi'
 	icon_state = "rev"
 	desc = "<font face='Comic Sans MS' color='#FF69FF' size='4'>Honk.</font>"
+	desc_extended = "A rather clownish leader of a revolution."
 	damage_type = /damagetype/unarmed/fists
 	class = /class/arachnid
 

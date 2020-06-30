@@ -1,6 +1,7 @@
 /mob/living/simple/npc/xenomorph
 	name = "xenomorph"
-	desc = "Oh shit they're here too?!"
+	desc = "Xenos mad."
+	desc_extended = "Oh shit they're here too?!"
 	icon = 'icons/mob/living/simple/alien.dmi'
 	icon_state = "alien"
 

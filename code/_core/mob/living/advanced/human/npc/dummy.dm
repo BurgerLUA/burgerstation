@@ -1,5 +1,6 @@
 /mob/living/advanced/npc/dummy
 	name = "target practice dummy"
+	desc = "It's a dummy, dummy."
 	ai = null
 	class = /class/dummy
 	species = "dummy"

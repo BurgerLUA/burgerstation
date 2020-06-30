@@ -1,5 +1,7 @@
 /mob/living/simple/npc/passive/penguin
 	name = "penguin"
+	desc = "Business bird."
+	desc_extended = "A harmless critter. Or so it may seem."
 	icon = 'icons/mob/living/simple/passive.dmi'
 	icon_state = "penguin"
 	damage_type = /damagetype/unarmed/bite/
