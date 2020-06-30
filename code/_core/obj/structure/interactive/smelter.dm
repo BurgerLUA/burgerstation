@@ -1,6 +1,7 @@
 /obj/structure/interactive/smelter
 	name = "smelter"
 	desc = "A furnace used to smelt ores"
+	desc_extended = "Ore that goes from one side via conveyor comes out smelted into ingots out the other."
 	icon = 'icons/obj/structure/smelter.dmi'
 	icon_state = "furnace"
 

@@ -1,6 +1,7 @@
 /obj/item/weapon/melee/torch //Also flashlights.
 	name = "torch"
-	desc = "Somehow it has unlimited fuel."
+	desc = "A staple of cavemen and revolutionaries."
+	desc_extended = "Emits light. Somehow it has unlimited fuel."
 	icon = 'icons/obj/item/weapons/melee/clubs/torch.dmi'
 
 	var/enabled = FALSE
@@ -47,7 +48,8 @@
 
 /obj/item/weapon/melee/torch/lantern
 	name = "lantern"
-	desc = "Somehow it has unlimited fuel."
+	desc = "But what type of lantern? Eh, who cares."
+	desc_extended = "Emits a lot of light. Somehow it has unlimited fuel."
 	icon = 'icons/obj/item/weapons/melee/clubs/lantern.dmi'
 
 	damage_type = /damagetype/item/medium
@@ -71,6 +73,7 @@
 /obj/item/weapon/melee/torch/flashlight
 	name = "plastic flashlight"
 	desc = "Can't live without it!"
+	desc_extended = "Emits light in a certain radius and direction when activated."
 	icon = 'icons/obj/item/weapons/melee/clubs/flashlight.dmi'
 
 	damage_type = /damagetype/item/light

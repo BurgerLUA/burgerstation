@@ -1,7 +1,7 @@
 /obj/structure/interactive/intercom
 	name = "ship intercom"
 	desc = "ONE DAY WHILE-"
-	desc_extended = "A ship intercom that connects to the ship's common frequency."
+	desc_extended = "A ship intercom that connects to the ship's common frequency. It can be turned on/off by interacting with it."
 	icon = 'icons/obj/structure/radio.dmi'
 	icon_state = "intercom"
 

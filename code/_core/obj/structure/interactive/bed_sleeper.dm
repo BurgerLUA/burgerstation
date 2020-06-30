@@ -158,6 +158,8 @@ obj/structure/interactive/bed/sleeper/backup/New(var/desired_loc)
 obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
+	desc = "Ah shit, i gotta cryo."
+	desc_extended = "Move inside here in order to save your character and log out."
 	secondary_color = "#00FF00"
 	var/spawnpoint = TRUE
 

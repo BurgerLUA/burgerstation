@@ -1,6 +1,7 @@
 /obj/structure/interactive/crate
 	name = "crate"
-	desc = "Shove things inside."
+	desc = "Freight for hauling."
+	desc_extended = "A storage container for storing goodies. Also acts as decent cover in a gunfight."
 	icon = 'icons/obj/structure/crates.dmi'
 	icon_state = "crate"
 
@@ -158,6 +159,7 @@
 
 /obj/structure/interactive/crate/loot
 	name = "abandoned supply crate"
+	desc = "What could be inside?"
 
 /obj/structure/interactive/crate/loot/Generate()
 

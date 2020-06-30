@@ -1,5 +1,7 @@
 /obj/structure/interactive/lighting/tube
 	name = "tube light"
+	desc = "An electrical storm has been detected in proximity of the station. Please check all equipment for potential overloads."
+	desc_extended = "Used to light up the area."
 
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "tube_light"

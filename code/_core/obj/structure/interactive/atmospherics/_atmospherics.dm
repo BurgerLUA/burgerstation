@@ -3,6 +3,8 @@ obj/structure/interactive/atmospherics
 
 obj/structure/interactive/atmospherics/vent
 	name = "vent"
+	desc = "Supplies oxygen. Or spicy air."
+	desc_extended = "Decorative item. Currenly has no use."
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "vent_1"
 
@@ -14,6 +16,8 @@ obj/structure/interactive/atmospherics/vent
 
 obj/structure/interactive/atmospherics/scrubber
 	name = "scrubber"
+	desc = "Law 4: Oxygen is harmfull to humans."
+	desc_extended = "Decorative item. Currenly has no use."
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "scrubber_1"
 
@@ -25,6 +29,8 @@ obj/structure/interactive/atmospherics/scrubber
 
 obj/structure/interactive/atmospherics/air_alarm
 	name = "air alarm"
+	desc = "'Pull in case of emergency' Hence, keep pulling it forever."
+	desc_extended = "Decorative item. Currenly has no use."
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "air_alarm"
 
@@ -55,6 +61,8 @@ obj/structure/interactive/atmospherics/air_alarm/update_overlays()
 
 obj/structure/interactive/atmospherics/fan
 	name = "fan"
+	desc = "Law 4: Oxygen is harmfull to humans."
+	desc_extended = "Decorative item. Currenly has no use."
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "fan_tiny"
 

@@ -1,5 +1,7 @@
 /mob/living/simple/npc/crab
 	name = "crab"
+	desc = "Look, sir! Free crabs!"
+	desc_extended = "A harmless critter. Or so it may seem."
 	icon = 'icons/mob/living/simple/crab.dmi'
 	icon_state = "crab"
 	damage_type = /damagetype/npc/crab
