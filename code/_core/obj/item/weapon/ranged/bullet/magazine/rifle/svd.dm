@@ -8,7 +8,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
+	shoot_sounds = list('sound/weapons/russia/svd.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
