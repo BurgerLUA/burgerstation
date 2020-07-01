@@ -1,5 +1,7 @@
 /obj/item/container/beaker/bottle
 	name = "small bottle"
+	desc = "Remember to read the label before drinking."
+	desc_extended = "A bottle used by chemists to contain medicines and other reagents."
 	icon = 'icons/obj/item/container/cup/bottle.dmi'
 	icon_state = "bottle"
 	icon_count = 7
@@ -42,6 +44,8 @@
 
 /obj/item/container/beaker/glass
 	name = "drinking glass"
+	desc = "Bottom's up!"
+	desc_extended = "You can put drinks in these."
 	icon = 'icons/obj/item/container/cup/glass.dmi'
 	icon_state = "cup"
 	icon_count = 15
@@ -52,6 +56,8 @@
 
 /obj/item/container/beaker/bowl
 	name = "glass mixing bowl"
+	desc = "A bowl for all your baking needs."
+	desc_extended = "You can use this to prepare mixes for baking."
 	icon = 'icons/obj/item/container/cup/bowl.dmi'
 	icon_state = "bowl"
 	icon_count = 23
