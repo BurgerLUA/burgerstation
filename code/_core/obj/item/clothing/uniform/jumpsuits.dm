@@ -1,6 +1,7 @@
 /obj/item/clothing/uniform/jumpsuit
 	name = "jumpsuit"
 	desc = "A nice jumpsuit."
+	desc_extended = "When you really can't be bothered to get matching pants."
 
 	icon = 'icons/obj/items/clothing/uniforms/poly_suit_new.dmi'
 
