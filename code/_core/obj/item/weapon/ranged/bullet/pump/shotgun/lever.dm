@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever
 	name = "12g lever-action shotgun"
-	desc = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower."
+	desc = "Git off my property!"
+	desc_extended = "A lever action shotgun. Its lightweight, long-barrel design makes it more accurate than most shotguns, but fires slower. The weapon of choice for Space Farmers."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/lever_action.dmi'
 	icon_state = "inventory"
 

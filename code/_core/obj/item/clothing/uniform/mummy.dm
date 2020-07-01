@@ -1,5 +1,7 @@
 /obj/item/clothing/uniform/mummy
 	name = "mummy wraps"
+	desc = "Doesn't actually stop bleeding."
+	desc_extended = "For when you want to look like an ancient corpse, or a person who's been in a really bad accident."
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/item/clothing/uniforms/mummy.dmi'
 

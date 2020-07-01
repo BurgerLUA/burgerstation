@@ -24,6 +24,7 @@
 /obj/item/weapon/ranged/magic/staff/fire
 	name = "Wand of Fireballs"
 	desc = "Shoot fireballs!"
+	desc = "You can also use it to reheat soup in a pinch."
 	cost_charge = 100
 	total_charge = 2500
 
@@ -55,6 +56,7 @@
 
 	name = "Staff of Chaos"
 	desc = "Summon Chaos!"
+	desc_extended = "For when you need to summon a little chaos."
 	cost_charge = 250
 	total_charge = 1000
 
@@ -91,7 +93,8 @@
 /obj/item/weapon/ranged/magic/staff/basic
 
 	name = "Staff of Magic Missile"
-	desc = "MAGIC MWISSLE."
+	desc = "MAGIC MISSILE!."
+	desc_extended = "Point the orb end at the enemy for best result."
 	cost_charge = 100
 	total_charge = 1000
 
@@ -111,6 +114,7 @@
 
 	name = "Staff of the Rift"
 	desc = "Shoot rifts and annoy the shit out of people."
+	desc_extended = "If you pass through a Rift in a car, does it become the staff of the drift?"
 	cost_charge = 100
 	total_charge = 1000
 

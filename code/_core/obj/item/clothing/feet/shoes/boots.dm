@@ -1,5 +1,7 @@
 /obj/item/clothing/feet/shoes/black_boots
 	name = "right black boot"
+	desc = "For when you want to turn up the heat a little."
+	desc_extended = "A black combat boot. Shields your feet from shrapnel."
 	rarity = RARITY_UNCOMMON
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"

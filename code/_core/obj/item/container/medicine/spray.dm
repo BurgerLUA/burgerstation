@@ -1,5 +1,7 @@
 /obj/item/container/spray
 	name = "medical spray"
+	desc = "Spray and Pray."
+	desc_extended = "A Spray. Can be used to infuse bandages or and ointments, highening their effectiveness, or applied directly to wounds. Of course, be sure it contains a medicine, and not polytrinic acid, before you do either"
 
 	icon = 'icons/obj/item/container/spray.dmi'
 	icon_state = "spray"

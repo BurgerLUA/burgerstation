@@ -1,5 +1,7 @@
 /obj/item/clothing/overwear/armor/cult
 	name = "cult robes"
+	desc = "We all have to start somewhere. Even if you're joining a blood cult."
+	desc_extended = "A set of robes often worn by the low-ranking acolytes of the cult of Nar-sie. Has no supernatural qualities, but it's padded."
 	icon = 'icons/obj/item/clothing/suit/cult.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
@@ -25,6 +27,8 @@
 
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
+	desc = "Listen to your eldritch, son."
+	desc_extended = "A set of dusty old robes, often worn by elder members of the cult. Dusty, but full of unholy magic."
 	icon = 'icons/obj/item/clothing/suit/cult_old.dmi'
 
 	rarity = RARITY_RARE
@@ -47,6 +51,8 @@
 
 /obj/item/clothing/overwear/armor/cult/hard
 	name = "hardened cult robes"
+	desc = "Try to exorcise me now, dickhead!"
+	desc_extended = "A set of heavily padded robes. Has stronger protection than the other robes."
 	icon = 'icons/obj/item/clothing/suit/cult_hard.dmi'
 
 	rarity = RARITY_MYTHICAL

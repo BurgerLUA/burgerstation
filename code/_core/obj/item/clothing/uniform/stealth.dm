@@ -1,6 +1,7 @@
 /obj/item/clothing/uniform/stealth
 	name = "stealth uniform"
 	desc = "SM DELAM CALL THE SHUTTLE"
+	desc = "A stealth skintight uniform. Doesn't actually make you any stealthier."
 	icon = 'icons/obj/item/clothing/uniforms/stealth.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN

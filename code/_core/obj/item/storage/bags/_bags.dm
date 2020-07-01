@@ -5,6 +5,7 @@
 
 /obj/item/storage/bags/mining
 	name = "mining bag"
+	desc = "What if i put my mining bed next to yours?"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots. Holds up to 40 ores or ingots."
 	icon_state = "mining"
 
@@ -20,6 +21,7 @@
 /obj/item/storage/bags/mining/bluespace
 	name = "bluespace mining bag"
 	icon_state = "mining_bluespace"
+	desc = "I got that bluespace fever and I can't sleep!"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores or ingots."
 	dynamic_inventory_count = 6
 	container_max_size = 100
@@ -48,6 +50,7 @@
 
 /obj/item/storage/pillbottle
 	name = "pill bottle"
+	desc = "Be sure to read the label before eating the contents."
 	desc_extended = "A pill bottle that can hold up to 30 pills."
 	icon = 'icons/obj/item/storage/bottles.dmi'
 	icon_state = "pill_canister"

@@ -2,8 +2,8 @@
 	name = "right gladiator gauntlet"
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
-	desc = "Fight with these."
-	desc_extended = "A generic gladiator glove. Hope that you have a matching pair."
+	desc = "Fight people with these."
+	desc_extended = "A long glove made of leather, to protect against shankings."
 	icon = 'icons/obj/item/clothing/gloves/gladiator.dmi'
 	color = "#FFFFFF"
 
@@ -37,6 +37,8 @@
 
 /obj/item/clothing/hands/gloves/colored/gladiator/gold/left
 	name = "left gladiator gauntlet"
+	desc = "Fight people with these."
+	desc_extended = "A long glove made of leather, to protect against shankings."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

@@ -1,7 +1,8 @@
 /obj/item/clothing/head/hood/cult
 	name = "cult hood"
+	desc = "MARANAX INFIRMAX"
+	desc_extended = "A sinister hood that for some reason doesn't work as an actual toggle-able hood."
 	icon = 'icons/obj/item/clothing/hats/cult.dmi'
-	desc_extended = "A sinister red hood."
 	rarity = RARITY_UNCOMMON
 
 	hidden_organs = list(

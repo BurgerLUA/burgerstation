@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/energy/chronogun
 	name = "chrono gun"
+	desc = "Shoots timey wimey...stuff."
+	desc_extended = "A gun that shoots beam that age the opponent's skin until it necrotizes. Somehow not a war crime to use."
 	icon = 'icons/obj/item/weapons/ranged/laser/chronogun.dmi'
 
 	projectile = /obj/projectile/bullet/laser/strong

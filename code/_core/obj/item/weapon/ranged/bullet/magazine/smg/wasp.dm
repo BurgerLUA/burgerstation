@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp
 	name = ".22LR Wasp SMG"
 	desc = "Wait is that chambered in .22?"
+	desc_extended = "A very weak, but easily controllable and concealable SMG."
 	icon = 'icons/obj/items/weapons/ranged/cr19.dmi'
 	icon_state = "inventory"
 	shoot_delay = 2

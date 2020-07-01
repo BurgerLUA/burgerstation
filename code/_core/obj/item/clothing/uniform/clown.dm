@@ -1,5 +1,7 @@
 /obj/item/clothing/uniform/clown
 	name = "clown uniform"
+	desc = "HONK!"
+	desc_extended = "If you see this, run as fast as you can."
 	icon = 'icons/obj/item/clothing/uniforms/clown.dmi'
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

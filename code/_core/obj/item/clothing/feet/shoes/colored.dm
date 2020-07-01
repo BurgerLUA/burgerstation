@@ -1,7 +1,7 @@
 /obj/item/clothing/feet/shoes/colored
 	name = "right shoe"
 	desc = "Good for running!"
-	desc_extended = "A basic running shoe. Doesn't protect much, but it makes you go faster."
+	desc_extended = "A basic running shoe. Doesn't protect much, but it makes you go faster. Can also be colored with dye."
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 

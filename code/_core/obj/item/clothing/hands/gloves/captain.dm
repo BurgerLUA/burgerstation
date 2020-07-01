@@ -1,5 +1,7 @@
 /obj/item/clothing/hands/gloves/captain
 	name = "right Captain's glove"
+	desc = "Be a comdom with these."
+	desc_extended = "Fancy one-of-a-kind glove, issued to the station Captain. Don't lose the other one!"
 	icon = 'icons/obj/item/clothing/gloves/captain.dmi'
 
 	icon_state = "inventory_right"
@@ -35,6 +37,8 @@
 
 /obj/item/clothing/hands/gloves/captain/left
 	name = "left Captain's glove"
+	desc = "Be a comdom with these."
+	desc_extended = "Fancy one-of-a-kind glove, issued to the station Captain. Don't lose the other one!"
 
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"

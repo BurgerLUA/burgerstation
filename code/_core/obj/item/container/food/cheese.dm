@@ -1,6 +1,7 @@
 /obj/item/container/food/dynamic/cheese
 	name = "cheese"
 	desc = "A rat's favorite."
+	desc_extended = "Nothing says class like huge yellow blocks of cheddar."
 
 	icon = 'icons/obj/item/consumable/food/cheese.dmi'
 	icon_state = "wheel"

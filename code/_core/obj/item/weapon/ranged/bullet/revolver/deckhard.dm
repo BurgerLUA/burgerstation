@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/deckhard
 	name = "\improper .44 space detective revolver"
 	desc = "A sidearm commonly used by space police. Uses .44 rounds."
+	desc_extended = "While Semiautos have become standard issue for Space Police, diehard Seargeants still tout the higher reliability of a revolver as a reason to carry these."
 	icon = 'icons/obj/item/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
 

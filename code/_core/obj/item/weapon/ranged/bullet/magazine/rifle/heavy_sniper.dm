@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
 	name = "\improper .50 BFR Sniper"
-	desc = "For when you want to be an asshole at an extended range."
+	desc = "For when you want to leave a hole the size of a basketball somewhere."
+	desc_extended = "The 50 BFR is technically an Anti-Materiel Rifle, but somehow it works against Personnel just as well."
 	icon = 'icons/obj/item/weapons/ranged/rifle/50.dmi'
 	icon_state = "inventory"
 
