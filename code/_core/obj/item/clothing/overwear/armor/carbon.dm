@@ -1,6 +1,8 @@
 
 /obj/item/clothing/overwear/armor/carbon
 	name = "carbon armor"
+	desc = "Carbon is Unbreakable"
+	desc_extended = "Armor made from hardened carbon fibres. Effective, but it's like walking in an oven."
 	icon = 'icons/obj/item/clothing/suit/carbon.dmi'
 
 	rarity = RARITY_MYTHICAL

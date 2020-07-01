@@ -1,5 +1,7 @@
 /obj/item/clothing/overwear/armor/prototype
 	name = "prototype carbon fibre armor"
+	desc = "It's a secret to everybody."
+	desc_extended = "A suit made from hardened carbon fibres, currently undergoing testing by the Nanotrasen Science Division."
 	icon = 'icons/obj/item/clothing/suit/captain_suit.dmi'
 
 	rarity = RARITY_MYTHICAL
