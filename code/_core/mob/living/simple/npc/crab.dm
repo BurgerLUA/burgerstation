@@ -9,6 +9,10 @@
 
 	value = 25
 
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/crab/
+	)
+
 	ai = /ai/
 
 	stun_angle = 180
@@ -57,6 +61,17 @@
 	ai = /ai/
 
 	class = /class/crab/king
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/crab/,
+		/obj/item/container/food/dynamic/meat/crab/,
+		/obj/item/container/food/dynamic/meat/crab/,
+		/obj/item/container/food/dynamic/meat/crab/,
+		/obj/item/container/food/dynamic/meat/crab/,
+		/obj/item/container/food/dynamic/meat/crab/,
+		/obj/item/container/food/dynamic/meat/crab/
+	)
+
 
 	object_size = 1
 

@@ -10,6 +10,7 @@
 	container_max_size = SIZE_1
 
 	size = SIZE_2
+	is_container = TRUE
 	weight = WEIGHT_0
 	value = 10
 
@@ -23,13 +24,11 @@
 
 	. = ..()
 
-	var/filled_slots = 0
+	var/filled_slots = 1
 	for(var/obj/hud/inventory/I in src.inventories)
 		filled_slots += length(I.held_objects)
 
-	if(filled_slots == 0)
-		icon_state = "paperbag1"
-	else icon_state = "paperbag2"
+	icon_state = "[initial(icon_state)][clamp(filled_slots,1,2)]"
 
 	return .
 

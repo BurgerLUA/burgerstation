@@ -434,6 +434,15 @@
 
 	flavor = "fat"
 
+/reagent/nutrition/fat/crab
+	name = "crab's fat"
+	desc = "Nutrition and flavor from crab's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
 
 //Meat
 /reagent/nutrition/meat/
@@ -589,6 +598,25 @@
 
 	flags_reagent = FLAG_REAGENT_COOKED
 
+/reagent/nutrition/meat/crab
+	name = "raw crab meat"
+	desc = "Nutrition and flavor from raw crab meat."
+	color = "#EB8046"
+
+	nutrition_amount = 4
+
+	flavor = "seashells"
+
+/reagent/nutrition/meat/crab/cooked
+	name = "cooked crab meat"
+	desc = "Nutrition and flavor from cooked crab meat."
+	color = "#D45B19"
+
+	nutrition_amount = 4
+
+	flavor = "the ocean"
+
+	flags_reagent = FLAG_REAGENT_COOKED
 
 /reagent/nutrition/junk/
 	name = "junk food"

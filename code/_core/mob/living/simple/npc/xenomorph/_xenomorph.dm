@@ -105,7 +105,12 @@
 	level_multiplier = 4
 
 	butcher_contents = list(
-		/obj/item/soapstone/orange
+		/obj/item/soapstone/orange,
+		/obj/item/container/food/dynamic/meat/xeno/,
+		/obj/item/container/food/dynamic/meat/xeno/,
+		/obj/item/container/food/dynamic/meat/xeno/,
+		/obj/item/container/food/dynamic/meat/xeno/,
+		/obj/item/container/food/dynamic/meat/xeno/
 	)
 
 	damage_received_multiplier = 0.5
