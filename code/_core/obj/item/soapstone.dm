@@ -1,6 +1,7 @@
 /obj/item/soapstone/ //Rare drops from bosses.
 	name = "soapstone"
-	desc = "Writes a message."
+	desc = "Leave a message behind, for other to find."
+	desc_extended = "Allows you to write a single message on the floor that will persist between rounds. DISCLAIMER: Cannot be used as actual soap."
 	icon = 'icons/obj/item/soapstone.dmi'
 	icon_state = "inventory"
 	dir = NORTH
