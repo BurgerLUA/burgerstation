@@ -10,6 +10,8 @@
 
 /obj/item/clothing/head/helmet/hardsuit/engineering
 	name = "engineering rig helmet"
+	desc = "The SM is at 9% health? Eh, it's probably gonna be fine"
+	desc_extended = "A hardsuit worn by engineers. Able to withstand incredible heat in order to work with engines."
 	icon = 'icons/obj/item/clothing/hats/engineering_rig_helmet.dmi'
 	rarity = RARITY_UNCOMMON
 
@@ -34,6 +36,8 @@
 
 /obj/item/clothing/head/helmet/hardsuit/syndie
 	name = "mauler helmet mk1"
+	desc = "GET DAT FUKKEN DISK!"
+	desc_extended = "The first model of mauler hardsuit, and a common sight during the Nuclear Operatives era. Today it's mostly surplus worn by Syndicate grunts."
 	icon = 'icons/obj/item/clothing/hats/syndie_basic.dmi'
 	rarity = RARITY_UNCOMMON
 
@@ -57,6 +61,8 @@
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
+	desc = "Perimeter Secured."
+	desc_extended = "The current model in service by medium to high level Syndicate operatives. People wearing this are not to be treated lightly."
 	icon = 'icons/obj/item/clothing/hats/syndie_advanced.dmi'
 	rarity = RARITY_RARE
 
@@ -80,6 +86,8 @@
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
+	desc = "May I make a suggestion? Run."
+	desc_extended = "A prototype suit in use by the best of the best of Syndicate Operatives. Lightweight and agile but still heavily armored. Don't attempt to face someone wearing this alone."
 	icon = 'icons/obj/item/clothing/hats/syndie_elite.dmi'
 	rarity = RARITY_MYTHICAL
 
@@ -105,6 +113,8 @@
 
 /obj/item/clothing/head/helmet/hardsuit/mining
 	name = "mining hardsuit helmet"
+	desc = "MIIIIINIIIIING DIAAAAMOOOOOONDS!"
+	desc_extended = "A hardsuit worn by miners to protect against a variety of hazards, such as rock falls, black lungs, and cave monsters."
 	icon = 'icons/obj/item/clothing/hats/hardsuit_mining.dmi'
 	rarity = RARITY_UNCOMMON
 
