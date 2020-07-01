@@ -82,7 +82,7 @@
 /obj/item/clothing/hands/gloves/colored/insulated
 	name = "right insulated glove"
 	desc = "Hack airlocks with theese."
-	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why.""
+	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 	rarity = RARITY_RARE
 
