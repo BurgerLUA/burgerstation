@@ -1,6 +1,7 @@
 /obj/item/container/food/plant
 	name = "plant"
 	desc = "For vegans."
+	desc_extended = "The trick to not spending money is that there's food pretty much everywhere if you're not afraid of poisoning."
 
 	icon = 'icons/obj/item/consumable/food/plants.dmi'
 	icon_state = "burger"

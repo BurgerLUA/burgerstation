@@ -1,6 +1,7 @@
 /obj/item/container/food/burger
 	name = "burger"
 	desc = "Makes you think."
+	desc_extended = "A basic meal, but it's cheap and easy to make, so expect this to be all you eat here."
 
 	icon = 'icons/obj/items/consumable/food/burgers.dmi'
 	icon_state = "burger"
