@@ -1,7 +1,7 @@
 /obj/item/clothing/overwear/coat/apron
 	name = "blacksmith's apron"
 	icon = 'icons/obj/item/clothing/suit/apron_leather.dmi'
-	desc = "Perfect for the blacksmith in you."
+	desc = "An apron used to protect yourself from fire and steel shrapnel when blacksmithing.  Blacksmithing with no clothes on besides the apron is very sexy, but it's also very dangerous."
 	desc_extended = "Contains large pockets, capable of holding two Size 3 items."
 	worn_layer = LAYER_MOB_CLOTHING_COAT
 
