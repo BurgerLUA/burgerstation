@@ -109,6 +109,8 @@
 
 	var/cqc_tag
 
+	var/fatigue_coefficient = 0.25 //What percentage of blocked damage to convert into fatigue damage. 1 means 100%, 0.25 means 25%, ect...
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -276,8 +278,8 @@
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)
 			damage_to_deal[damage_type] = max(0,new_damage_amount)
-			if(damage_type != HOLY && damage_type != DARK && damage_type != FATIGUE)
-				fatigue_damage += damage_blocked*0.25
+			if(damage_type == BLUNT || damage_type == BLADE || damage_type == PIERCE)
+				fatigue_damage += damage_blocked*src.fatigue_coefficient
 
 		if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)
 			damage_to_deal[FATIGUE] += FLOOR(fatigue_damage,1)
@@ -292,6 +294,8 @@
 		var/total_damage_dealt = 0
 		if(victim.immortal || hit_object.immortal)
 			for(var/damage_type in damage_to_deal_main)
+				if(damage_type == FATIGUE)
+					continue
 				total_damage_dealt += damage_to_deal_main[damage_type]
 		else
 			if(hit_object.health)
