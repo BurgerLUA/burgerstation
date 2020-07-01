@@ -118,9 +118,6 @@
 
 	screen_loc = "CENTER,CENTER"
 
-	var/health_current = 100
-	var/health_max = 100
-
 	var/mob/living/advanced/player/tracked_mob
 
 /obj/hud/button/squad/member/Destroy()
@@ -131,21 +128,30 @@
 	tracked_mob = desired_tracked_mob
 	return ..()
 
+/obj/hud/button/squad/member/update_owner(var/desired_owner)
+
+	. = ..()
+
+	if(.)
+		update_sprite()
+
+	return .
+
 /obj/hud/button/squad/member/update_underlays()
 	. = ..()
-	var/icon/I = new(icon,icon_state)
+	var/icon/I = new(initial(icon),initial(icon_state))
 	swap_colors(I)
 	underlays += I
 	return .
 
 /obj/hud/button/squad/member/update_icon()
-
 	. = ..()
-
-	maptext = tracked_mob.name
-
 	if(tracked_mob && tracked_mob.health)
 		var/desired_num = FLOOR((tracked_mob.health.health_current/tracked_mob.health.health_max) * 26, 1)
 		icon_state = "bar_[desired_num]"
 
 	return .
+
+/obj/hud/button/squad/member/update_sprite()
+	maptext = tracked_mob.name
+	return ..()

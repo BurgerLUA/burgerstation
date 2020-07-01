@@ -10,6 +10,9 @@
 
 	value = 1000
 
+/obj/item/supply_remote/calculate_value()
+	return 10 + charges * value
+
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object))

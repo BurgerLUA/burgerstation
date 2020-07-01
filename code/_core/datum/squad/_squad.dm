@@ -53,6 +53,9 @@ var/global/list/squad/all_squads = list()
 
 	P.set_squad(src)
 
+	for(var/mob/living/advanced/player/P2 in members)
+		P2.add_squad_button(P)
+
 	P.to_chat("You have joined [name].")
 
 	return TRUE
@@ -70,6 +73,9 @@ var/global/list/squad/all_squads = list()
 	members -= P
 
 	P.to_chat("You are no longer in [name].")
+
+	for(var/mob/living/advanced/player/P2 in members)
+		P2.remove_squad_button(P)
 
 	if(!never_delete && !length(members))
 		qdel(src)
