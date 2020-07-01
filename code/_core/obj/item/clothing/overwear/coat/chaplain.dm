@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/suit/religious.dmi'
 
 	desc = "Ultra fancy!"
-	desc_extended = ""
+	desc_extended = "Protects against magic attacks."
 
 	defense_rating = list(
 		MAGIC = 50,
