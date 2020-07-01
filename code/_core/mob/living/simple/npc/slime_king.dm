@@ -73,6 +73,9 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	iff_tag = "Slime"
+	loyalty_tag = "Slime"
+
 /mob/living/simple/npc/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
 
 	. = ..()

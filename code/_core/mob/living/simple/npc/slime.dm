@@ -43,6 +43,9 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	iff_tag = "Slime"
+	loyalty_tag = "Slime"
+
 /mob/living/simple/npc/slime/PostInitialize()
 	. = ..()
 	update_sprite()

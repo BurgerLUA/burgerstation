@@ -18,16 +18,16 @@
 
 /turf/unsimulated/bluespace/Entered(atom/movable/Obj, atom/OldLoc)
 
-	. = ..()
-
-	if(. && !istype(Obj,/mob/abstract/))
+	if(!istype(Obj,/mob/abstract/))
 		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
 		if(is_safe_to_delete(Obj))
 			qdel(Obj)
 		else
 			Obj.force_move(pick(rift_markers))
+			Obj.visible_message(span("danger","\The [Obj.name] appears out of nowhere!"))
+		return TRUE
 
-	return .
+	return ..()
 
 /turf/unsimulated/space
 	name = "space"
@@ -45,7 +45,6 @@
 	if(ismob(Obj) && !istype(Obj,/mob/abstract/))
 		var/mob/M = Obj
 		if(M.initialized)
-			M.to_chat(span("notice","How did you get here?"))
 			var/obj/marker/failsafe/FS = locate() in world
 			if(FS)
 				M.force_move(FS.loc)

@@ -83,10 +83,10 @@
 
 	armored = TRUE
 
-/mob/living/simple/npc/bear/armored/syndicate
+/mob/living/simple/npc/bear/armored/revolutionary
 	name = "armored russian bear"
-	loyalty_tag = "Syndicate"
-	iff_tag = "Syndicate"
+	loyalty_tag = "Revolutionary"
+	iff_tag = "Revolutionary"
 
 /mob/living/simple/npc/bear/snow
 	name = "snow bear"

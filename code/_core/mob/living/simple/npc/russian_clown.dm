@@ -31,8 +31,8 @@
 		FATIGUE = INFINITY
 	)
 
-	iff_tag = "Syndicate"
-	loyalty_tag = "Syndicate"
+	loyalty_tag = "Revolutionary"
+	iff_tag = "Revolutionary"
 
 	health_base = 4000
 
