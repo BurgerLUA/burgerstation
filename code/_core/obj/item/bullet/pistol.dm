@@ -141,8 +141,8 @@
 	desc = "For pistols and smgs that requre .45 ammo."
 	icon = 'icons/obj/item/bullet/45.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	item_count_max = 6
+	item_count_max_icon = 6
 
 
 	bullet_diameter = 11.43
@@ -157,6 +157,10 @@
 	size = 0.015
 	weight = 0.015
 	value = 0.2
+
+/obj/item/bullet_cartridge/pistol_45/Generate()
+	item_count_current = 6
+	return ..()
 
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
 	name = "\improper 8mm pistol bullet"

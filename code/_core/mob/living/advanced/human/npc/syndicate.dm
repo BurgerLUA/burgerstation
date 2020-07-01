@@ -4,6 +4,7 @@
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate
 	class = /class/syndicate_soldier
+	dialogue_id = /dialogue/npc/soldier
 
 	var/list/possible_outfits = list(
 		/loadout/syndicate/soldier = 75,

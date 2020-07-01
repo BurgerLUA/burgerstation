@@ -6,7 +6,7 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/svt = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper/svd = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/svd = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/long

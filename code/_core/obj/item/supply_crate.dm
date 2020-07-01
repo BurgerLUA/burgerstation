@@ -42,3 +42,16 @@
 
 /obj/item/supply_crate/russian
 	loot = /loot/supply_crate/russian
+	icon_state = "supply_russian"
+
+/obj/item/supply_crate/syndicate
+	loot = /loot/supply_crate/syndicate
+	icon_state = "supply_syndicate"
+
+/obj/item/supply_crate/american
+	loot = /loot/supply_crate/american
+	icon_state = "supply_american"
+
+/obj/item/supply_crate/nanotrasen
+	loot = /loot/supply_crate/nanotrasen
+	icon_state = "supply_nanotrasen"

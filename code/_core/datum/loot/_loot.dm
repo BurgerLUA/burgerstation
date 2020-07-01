@@ -5,26 +5,35 @@
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
 	var/chance_none = 0 //Applies on a per item basis.
 
-
-/loot/proc/spawn_loot(var/type_to_spawn,var/spawn_loc) //Don't use this.
-
+/loot/proc/create_loot(var/type_to_spawn,var/spawn_loc) //Don't use this.
 	if(ispath(type_to_spawn,/loot/))
 		var/loot/L = LOOT(type_to_spawn)
-		return L.spawn_loot_table(spawn_loc)
+		return L.create_loot_table(spawn_loc)
+	return new type_to_spawn(spawn_loc)
 
-	var/atom/movable/M = new type_to_spawn(spawn_loc)
-	INITIALIZE(M)
-	GENERATE(M)
-	return M
+/loot/proc/pre_spawn(var/atom/movable/M)
+	return TRUE
 
-/loot/proc/spawn_loot_table(var/spawn_loc) //Use this to spawn the loot.
+/loot/proc/post_spawn(var/atom/movable/M)
+	return TRUE
+
+/loot/proc/do_spawn(var/spawn_loc)
+	. = create_loot_table(spawn_loc)
+	for(var/atom/movable/M in .)
+		pre_spawn(M)
+		INITIALIZE(M)
+		GENERATE(M)
+		post_spawn(M)
+	return .
+
+/loot/proc/create_loot_table(var/spawn_loc) //Use this to spawn the loot.
 
 	var/list/new_table = loot_table.Copy()
 
 	. = list()
 
 	for(var/k in loot_table_guaranteed)
-		spawn_loot(k,spawn_loc)
+		. += create_loot(k,spawn_loc)
 
 	if(length(loot_table))
 		for(var/i=1,i<=loot_count,i++)
@@ -35,6 +44,6 @@
 			var/selection = pickweight(loot_table)
 			if(!allow_duplicates)
 				new_table -= selection
-			. += spawn_loot(selection,spawn_loc)
+			. += create_loot(selection,spawn_loc)
 
 	return .

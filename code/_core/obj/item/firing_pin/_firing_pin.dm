@@ -74,3 +74,10 @@
 	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Bone IFF implant, and prevents firing at those with one."
 	iff_tag = "Skeleton"
 	icon_state = "bone"
+
+
+/obj/item/firing_pin/electronic/iff/revolutionary
+	name = "revolutionary firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Revolutionary IFF implant, and prevents firing at those with one."
+	iff_tag = "Revolution"
+	icon_state = "revolution"

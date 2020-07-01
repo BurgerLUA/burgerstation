@@ -35,7 +35,7 @@
 
 	value = 60
 
-/obj/item/weapon/ranged/bullet/revolver/dbarrel/wood/get_base_spread()
+/obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()
 	return 0.1
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_static_spread() //Base spread

@@ -1,4 +1,4 @@
-mob/living/advanced/proc/add_overlay_tracked(var/k,var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
+mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
 
 	if(!k)
 		k = "\ref[object]"
@@ -26,7 +26,12 @@ mob/living/advanced/proc/add_overlay_tracked(var/k,var/obj/object,var/desired_la
 	if(desired_transform)
 		O.transform = desired_transform
 	if(!desired_never_blend)
-		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
+		if(desired_additional_blends)
+			O.additional_blends = desired_additional_blends
+		else if(isobj(object))
+			var/obj/B = object
+			O.additional_blends = B.additional_blends
+
 	O.update()
 	add_overlay(O)
 	overlays_assoc[k] = O

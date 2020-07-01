@@ -1040,6 +1040,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\russia.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\service.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\sniper.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\svd.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\svt.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\syringe_rifle.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\rifle\tungsten.dm"

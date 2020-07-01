@@ -15,7 +15,7 @@
 
 	if(istype(I,/obj/item/weapon/ranged/))
 		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+		R.firing_pin = /obj/item/firing_pin/electronic/iff/revolutionary
 
 	if(istype(I,/obj/item/weapon/ranged/bullet/magazine))
 		var/obj/item/weapon/ranged/bullet/magazine/M = I
