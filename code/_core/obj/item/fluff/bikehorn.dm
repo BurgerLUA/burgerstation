@@ -1,6 +1,7 @@
 obj/item/fluff/bikehorn
 	name = "bike horn"
 	desc = "PRAISE BE TO THE HONKMOTHER!"
+	desc_extended = "You guessed it - Makes the signature HONK sound when used in your hand. Please don't spam."
 	icon = 'icons/obj/item/fluff/bikehorn.dmi'
 	damage_type = /damagetype/item/light
 
