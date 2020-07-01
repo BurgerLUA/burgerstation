@@ -1,6 +1,7 @@
 obj/structure/interactive/computer
 	name = "computer"
 	desc = "Beep boop."
+	desc_extended = "Operates things, depending on what the console is."
 	icon = 'icons/obj/structure/computer.dmi'
 	var/on = TRUE
 
@@ -82,6 +83,8 @@ obj/structure/interactive/computer/console/medical
 
 obj/structure/interactive/computer/console/flight
 	name = "flight control console"
+	desc = "Beep boop."
+	desc_extended = "Operates things, depending on what the console is. This one controls a shuttle."
 	computer_type = "syndishuttle"
 	keyboard_type = "syndie_key"
 

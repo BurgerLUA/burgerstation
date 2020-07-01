@@ -93,6 +93,7 @@
 
 /obj/item/pinpointer/custom/
 	name = "custom pinpointer"
+	desc_extended = "Use this to track and locate objects. This one allows you to scan an object and then track it."
 	icon_state = "brown"
 
 	value = 30
@@ -127,6 +128,7 @@
 
 /obj/item/pinpointer/crew/
 	name = "crew pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of Nanotrasen crew."
 	icon_state = "blue"
 
 	value = 20
@@ -157,6 +159,7 @@
 
 /obj/item/pinpointer/landmark/
 	name = "landmark pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of landmarks."
 	icon_state = "green"
 
 	value = 10
@@ -193,6 +196,7 @@
 
 /obj/item/pinpointer/artifact/
 	name = "objectives pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of your objectives, only works when in the field."
 	icon_state = "yellow"
 
 	value = 20
@@ -230,6 +234,7 @@
 
 /obj/item/pinpointer/boss/
 	name = "boss pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of the big bad, only works when in the field."
 	icon_state = "orange"
 
 	value = 100

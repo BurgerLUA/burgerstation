@@ -1,7 +1,7 @@
 /obj/item/clothing/ears/headset
 	name = "headset"
-	desc = "; LING MAINT!"
-	desc_extended = "It doesn't seem to be functioning."
+	desc = "; HELP MAINT!"
+	desc_extended = "A headset for communicating with your fellows. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
 	icon = 'icons/obj/item/clothing/ears/headset.dmi'
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
