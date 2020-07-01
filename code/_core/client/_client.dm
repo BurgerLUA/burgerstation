@@ -47,10 +47,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/list/queued_chat_messages = list()
 
-	var/last_ooc = 0
-	var/inactivity_warning_stage = 0
-
-	var/allow_zoom_controls = TRUE
+	var/allow_zoom_controls = TRUE //Disabled usually during cutscenes.
 
 	var/ping_num = 0
 
