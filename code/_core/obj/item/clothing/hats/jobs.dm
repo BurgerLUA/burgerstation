@@ -1,5 +1,7 @@
 /obj/item/clothing/head/hat/hop
 	name = "\improper Head of Personel's hat"
+	desc = "The badge on my hat is shinier, which means i'm better than you."
+	desc_extended = "The hat issued to HoPs. Not sure about it's purpose since all they do is sit at a desk all fucking day."
 	icon = 'icons/obj/item/clothing/hats/hop.dmi'
 	desc = "Nothing personel, kid."
 	desc_extended = "It's a hat."
@@ -22,6 +24,8 @@
 
 /obj/item/clothing/head/hat/hos
 	name = "\improper Head of Security's hat"
+	desc = "The last thing you see before you're beaten to death"
+	desc_extended = "The head of security's hat. Has a high profile so it can be easily avoided."
 	icon = 'icons/obj/item/clothing/hats/hos.dmi'
 	desc_extended = "It's a hat."
 	rarity = RARITY_MYTHICAL
