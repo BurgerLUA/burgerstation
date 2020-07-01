@@ -18,6 +18,9 @@
 	var/overtime_count = 0
 	var/overtime_max = 10
 
+	var/last_usage_cpu = 0
+	var/last_usage_tick = 0
+
 
 //What to do when this subsystem is spawned. It's like New() but not really.
 /subsystem/proc/PreInitialize()

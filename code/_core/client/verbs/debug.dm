@@ -259,3 +259,16 @@ client/verb/air_test(var/pressure as num)
 
 		src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",returning_text)]</body>","window=help")
 
+/client/verb/subsystem_report()
+	set name = "Subsystem Report"
+	set category = "Debug"
+
+	var/report_string = "<h2>Subsystem Report</h2>CPU Usage: [world.cpu]%<br>Tick Usage: [world.tick_usage]%<br>"
+
+	for(var/subsystem/S in active_subsystems)
+		if(S.last_usage_cpu || S.last_usage_tick)
+			report_string += "<b>[S.name]</b>: <pre>CPU:[CEILING(S.last_usage_cpu,0.01)]%, TICK:[CEILING(S.last_usage_tick,0.01)]%</pre><br>"
+
+	report_string += "Subsystems that aren't listed have no registered CPU or tick usage."
+
+	to_chat(report_string)

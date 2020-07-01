@@ -66,5 +66,6 @@
 		verbs += /client/verb/check_lights
 		verbs += /client/verb/get_enemies_to_spawn
 		verbs += /client/verb/get_threat_level
+		verbs += /client/verb/subsystem_report
 
 	return TRUE
