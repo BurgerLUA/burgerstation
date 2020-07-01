@@ -57,3 +57,10 @@
 		/loot/weapon/syringe_gun = 10,
 		/loot/weapon/traitor_revolver = 10
 	)
+
+/loot/supply_crate/syndicate/pre_spawn(var/atom/movable/M)
+	if(istype(M,/obj/item/weapon/ranged/))
+		var/obj/item/weapon/ranged/R = M
+		R.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+
+	return ..()

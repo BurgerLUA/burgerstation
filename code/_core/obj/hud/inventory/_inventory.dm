@@ -607,8 +607,6 @@
 		return FALSE
 
 	if(worn_slots <= 0)
-		if(messages)
-			owner.to_chat(span("notice","You can't wear \the [I.name] like this!"))
 		return FALSE
 
 	if(is_occupied(TRUE,TRUE))

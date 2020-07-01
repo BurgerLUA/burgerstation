@@ -369,8 +369,7 @@
 		/obj/item/container/food/package/junkfood/cheese_chips,
 		/obj/item/container/food/package/junkfood/chips,
 		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/raisins,
-		/obj/item/container/food/package/junkfood/syndicate
+		/obj/item/container/food/package/junkfood/raisins
 	)
 
 /obj/structure/interactive/vending/smart_fridge
