@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood
 	name = "12g Civilian Shotgun"
-	desc = "A classic pump action shotgun with the stock and barrel shortened."
+	desc = "Good ol' fashioned shotgun."
+	desc_extended = "A classic pump action shotgun with the stock and barrel shortened. Most commonly used by hunters, but has been seen on Security and PMCs on a budget as well."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/regular.dmi'
 	icon_state = "inventory"
 

@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/detective
 	name = "\improper .38 Special revolver"
 	desc = "The detective's trusty sidearm. Uses .38 revolver rounds."
+	desc_extended = "Private Detectives still carry snub-nose revolvers due to them packing a bigger punch in a much smaller guns. Can be useful in a pinch."
 	icon = 'icons/obj/item/weapons/ranged/revolver/38.dmi'
 	icon_state = "inventory"
 
