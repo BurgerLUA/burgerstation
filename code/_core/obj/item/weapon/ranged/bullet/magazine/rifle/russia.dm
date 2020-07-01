@@ -56,7 +56,7 @@
 	max_bursts = 2
 	view_punch = 5
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg') //I'm lazy
+	shoot_sounds = list('sound/weapons/russia/abakan.ogg') //I'm lazy
 
 	can_wield = TRUE
 
@@ -148,7 +148,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sound/weapons/russia/val.ogg')
 
 	can_wield = TRUE
 
@@ -193,7 +193,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sound/weapons/russia/vintorez.ogg')
 
 	can_wield = TRUE
 	wield_only = FALSE
