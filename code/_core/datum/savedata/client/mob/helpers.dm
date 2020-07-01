@@ -68,51 +68,33 @@
 
 	var/client/owner = CLIENT(ckey)
 
-	if(!owner)
-		CRASH_SAFE("Someone tried to create a character on a savedata that has no owner!")
-		return FALSE
-
 	if(world_state != STATE_RUNNING)
-		owner.mob.to_chat(span("warning","The round is currently ending! Wait until next round!"))
+		owner?.mob?.to_chat(span("warning","The round is currently ending! Wait until next round!"))
 		return FALSE
 
 	if(text2num(character_id) > MAX_CHARACTERS)
-		owner.mob.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
-		return
-
-	//LOG_DEBUG("[owner] is creating a new character with the character id of [character_id].")
+		owner?.mob?.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
+		return FALSE
 
 	reset_data()
 	loaded_data["id"] = character_id
 
-
-	//owner.save_slot = character_id
-
 	return TRUE
 
-/savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE,var/force=FALSE)
+/savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/force=FALSE)
 
-	var/client/owner = CLIENT(ckey)
+	if(!A)
+		usr?.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 1000.</h2>"))
+		CRASH_SAFE("FATAL ERROR: Tried to save a character without an actual character!")
+		return FALSE
 
-	if(!owner)
-		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr]. Last recorded name: [loaded_data["name"]]. Registered ckey: [ckey]")
+	if(!istype(A))
+		usr?.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 2000.</h2>"))
 		return FALSE
-	/*
-	if(!owner.save_slot)
-		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 2.</h2>"))
-		return FALSE
-	*/
-	if(!owner.mob)
-		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 3.</h2>"))
-		return FALSE
-	if(!is_advanced(owner.mob))
-		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 4.</h2>"))
-		return FALSE
+
 	if(!force && world_state != STATE_RUNNING)
-		owner.to_chat(span("danger","Your character was not saved as the round just ended!"))
+		usr?.to_chat(span("danger","Your character was not saved as the round just ended!"))
 		return FALSE
-
-	var/mob/living/advanced/player/A = owner.mob
 
 	//LOG_DEBUG("[owner] is saving their character [A.get_debug_name()]...")
 
@@ -151,17 +133,17 @@
 	loaded_data["attributes"] = final_attribute_list
 
 	if(write_json_data_to_id(loaded_data["id"],loaded_data))
-		owner.to_chat(span("notice","Sucessfully saved character [A.name]."))
+		A.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
-		owner.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
+		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
 
-	owner.globals.save() //Save globals too.
+	A.client.globals.save() //Save globals too.
 
-	//LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
+	return TRUE
 
 /savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE,var/update_blends=TRUE)
 
-	//var/client/owner = CLIENT(ckey)
+	attached_mob = A
 
 	//Name
 	A.real_name = loaded_data["name"]

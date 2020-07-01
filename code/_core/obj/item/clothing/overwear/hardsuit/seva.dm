@@ -32,5 +32,4 @@
 
 /obj/item/clothing/overwear/hardsuit/seva/mono
 	icon = 'icons/obj/item/clothing/suit/sevamono_suit.dmi'
-
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/seva/mono)

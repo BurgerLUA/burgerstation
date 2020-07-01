@@ -92,6 +92,8 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/Del() //Called when the client disconnects.
 
+	all_clients -= src.ckey
+
 	if(known_inventory)
 		known_inventory.Cut()
 
@@ -111,10 +113,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	clear_mob(mob)
 
-	all_clients -= src.ckey
 	world.update_status()
-
-
 
 	return ..()
 
@@ -128,11 +127,9 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/New()
 
-	update_color_mods()
+	all_clients[src.ckey] = src
 
 	CLEAR_VERBS(src)
-
-	all_clients[src.ckey] = src
 
 	if(!button_tracker)
 		button_tracker = new(src)
@@ -184,6 +181,7 @@ var/global/list/all_clients = list() //Assoc list
 	world.update_status()
 	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()
+	update_color_mods()
 
 	return mob
 

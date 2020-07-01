@@ -50,7 +50,7 @@
 		caller.to_chat("You implant \the [added_implant.name] into your [added_implant.attached_organ.name].")
 		if(should_save_on_implant && is_player(A))
 			var/savedata/client/mob/mobdata = MOBDATA(A.ckey_last)
-			if(mobdata) mobdata.save_current_character()
+			if(mobdata) mobdata.save_character(A)
 	else
 		caller.to_chat("There was an error adding your implant.")
 

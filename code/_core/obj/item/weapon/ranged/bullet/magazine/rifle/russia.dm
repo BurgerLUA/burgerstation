@@ -1,6 +1,5 @@
-//                                              Stockpile of slavic weapons.
-/obj/item/weapon/ranged/bullet/magazine/rifle/russian //pls change the name of it to something else thank you - Stalkeros
-	name = "\improper 7.62x39mm AK-13"  //not this one
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13
+	name = "\improper 7.62x39mm AK-13"
 	desc = "Ancient, but still powerful. Maybe."
 	desc_extended = "The 7.62x39 is THE rifle for shady Eastern European uprisings. Reliable, inaccurate, and comes only in automatic to train those recruits to at least hit the target."
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_russia.dmi'
@@ -35,12 +34,12 @@
 
 	ai_heat_sensitivity = 1.5
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/russian/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.15
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/russian/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L) //Base spread
 	if(!heat_current)
 		return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))

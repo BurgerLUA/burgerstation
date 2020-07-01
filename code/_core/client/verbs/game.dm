@@ -13,7 +13,7 @@
 				if(choice == "Yes")
 					var/savedata/client/mob/mobdata = MOBDATA(ckey)
 					if(mobdata)
-						mobdata.save_current_character()
+						mobdata.save_character(P)
 					qdel(P)
 					make_ghost(S.loc)
 					return TRUE

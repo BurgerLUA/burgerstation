@@ -11,7 +11,7 @@
 		update_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "regular")
 		drop_held_objects(get_turf(src))
 	else
-		remove_overlay(handcuffs_overlay)
+		remove_overlay("handcuffs")
 		if(stored_handcuffs)
 			stored_handcuffs.force_move(get_turf(src))
 			stored_handcuffs = null

@@ -1,62 +1,40 @@
 /loot/
-	var/id = null
-
 	var/list/loot_table = list()
-	var/loot_count = 1 //Only works on spawn_loot_turf
+	var/list/loot_table_guaranteed = list()
+	var/loot_count = 1 //How much of this loot to spawn.
+	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
+	var/chance_none = 0 //Applies on a per item basis.
 
-	var/account_bound = FALSE
 
-	var/chance_none = 0
+/loot/proc/spawn_loot(var/type_to_spawn,var/spawn_loc) //Don't use this.
 
-/loot/proc/spawn_loot(var/spawn_loc)
+	if(ispath(type_to_spawn,/loot/))
+		var/loot/L = LOOT(type_to_spawn)
+		return L.spawn_loot_table(spawn_loc)
 
-	if(chance_none && prob(chance_none))
-		return FALSE
+	var/atom/movable/M = new type_to_spawn(spawn_loc)
+	INITIALIZE(M)
+	GENERATE(M)
+	return M
 
-	var/obj/item/I = pickweight(loot_table)
-	I = new I(spawn_loc)
-	INITIALIZE(I)
-	SPAWN(I)
+/loot/proc/spawn_loot_table(var/spawn_loc) //Use this to spawn the loot.
 
-	return I
+	var/list/new_table = loot_table.Copy()
 
-/loot/proc/spawn_loot_container(var/obj/item/C)
+	. = list()
 
-	if(!C)
-		return FALSE
+	for(var/k in loot_table_guaranteed)
+		spawn_loot(k,spawn_loc)
 
-	if(chance_none && prob(chance_none))
-		return FALSE
+	if(length(loot_table))
+		for(var/i=1,i<=loot_count,i++)
+			if(length(new_table) <= 0)
+				break
+			if(prob(chance_none))
+				continue
+			var/selection = pickweight(loot_table)
+			if(!allow_duplicates)
+				new_table -= selection
+			. += spawn_loot(selection,spawn_loc)
 
-	var/obj/item/I = pickweight(loot_table)
-	I = new I(get_turf(C))
-	INITIALIZE(I)
-	SPAWN(I)
-
-	C.add_to_inventory(null,I,FALSE)
-
-	return I
-
-/loot/proc/spawn_loot_advanced(var/mob/living/advanced/A,var/left = FALSE)
-	var/obj/item/I = spawn_loot(get_turf(A))
-	if(I)
-		A.put_in_hands(I,left)
-		return I
-	else
-		return FALSE
-
-/loot/proc/spawn_loot_turf(var/turf/T)
-	for(var/i=1,i <= loot_count,i++)
-		var/obj/item/I = spawn_loot(T)
-		step_rand(I)
-
-loot/proc/spawn_loot_corpse(var/turf/T)
-	var/obj/item/storage/heavy/corpse/C = new(T)
-	INITIALIZE(C)
-	for(var/i=1,i <= loot_count,i++)
-		var/obj/item/I = spawn_loot(T)
-		C.add_to_inventory(null,I,FALSE)
-
-	C.prune_inventory()
-
-	return C
+	return .

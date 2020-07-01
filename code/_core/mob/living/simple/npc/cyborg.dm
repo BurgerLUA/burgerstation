@@ -62,6 +62,8 @@
 	iff_tag = "Syndicate"
 	loyalty_tag = "Syndicate"
 
+	damage_type = /damagetype/squats/
+
 	status_immune = list(
 		FIRE = TRUE
 	)

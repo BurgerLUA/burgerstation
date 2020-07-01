@@ -82,7 +82,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	var/image/overlay/handcuffs_overlay
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs
@@ -253,6 +252,8 @@ mob/living/advanced/Login()
 	return TRUE
 
 /mob/living/advanced/Initialize()
+
+	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none")
 
 	. = ..()
 

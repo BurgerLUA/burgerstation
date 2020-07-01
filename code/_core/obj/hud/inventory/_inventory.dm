@@ -78,7 +78,7 @@
 
 /obj/hud/inventory/proc/is_occupied(var/ignore_held = TRUE, var/ignore_worn = TRUE)
 
-	if(get_top_held_object())
+	if(!ignore_held && get_top_held_object())
 		return TRUE
 
 	if(!ignore_worn && get_top_worn_object())

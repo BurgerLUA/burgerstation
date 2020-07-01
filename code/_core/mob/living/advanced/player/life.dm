@@ -5,7 +5,7 @@
 	if(allow_save)
 		var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 		if(mobdata)
-			mobdata.save_current_character(FALSE)
+			mobdata.save_character(src,save_inventory = FALSE)
 
 	return .
 
