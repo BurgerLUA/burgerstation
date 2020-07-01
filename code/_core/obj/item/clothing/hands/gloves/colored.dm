@@ -29,6 +29,8 @@
 
 /obj/item/clothing/hands/gloves/colored/left
 	name = "left glove"
+	desc = "Slap people with these."
+	desc_extended = "A generic glove. Hope that you have a matching pair."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
@@ -37,6 +39,8 @@
 
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
+	desc = "Shoot guns with theese."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
 	color = "#404040"
 	rarity = RARITY_UNCOMMON
 
@@ -61,6 +65,8 @@
 
 /obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
+	desc = "Shoot guns with theese."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
 	color = "#404040"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
@@ -74,7 +80,9 @@
 
 
 /obj/item/clothing/hands/gloves/colored/insulated
-	name = "right insulted glove"
+	name = "right insulated glove"
+	desc = "Hack airlocks with theese."
+	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why.""
 	color = "#FFFF00"
 	rarity = RARITY_RARE
 
@@ -99,7 +107,9 @@
 	value = 60
 
 /obj/item/clothing/hands/gloves/colored/insulated/left
-	name = "left insulted glove"
+	name = "left insulated glove"
+	desc = "Hack airlocks with theese."
+	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 
 	icon_state = "inventory_left"
@@ -116,6 +126,8 @@
 
 /obj/item/clothing/hands/gloves/colored/padded
 	name = "padded glove"
+	desc = "Be tactical with theese."
+	desc_extended = "A padded glove. Equipped with a fancier icon for extra tactical-ness."
 	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
 	rarity = RARITY_UNCOMMON
 
@@ -139,6 +151,8 @@
 
 /obj/item/clothing/hands/gloves/colored/padded/left
 	name = "left padded glove"
+	desc = "Be tactical with theese."
+	desc_extended = "A padded glove. Equipped with a fancier texture for extra tactical-ness."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

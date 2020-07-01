@@ -1,5 +1,7 @@
 /obj/item/clothing/hands/gloves/engineering
 	name = "right engineering glove"
+	desc = "Spacewalk with theese."
+	desc_extended = "Part of the engineering rigsuit. Don't lose them!"
 	icon = 'icons/obj/item/clothing/gloves/engineering_rig_gloves.dmi'
 
 	icon_state = "inventory_right"
@@ -35,6 +37,8 @@
 
 /obj/item/clothing/hands/gloves/engineering/left
 	name = "left engineering glove"
+	desc = "Spacewalk with theese."
+	desc_extended = "Part of the engineering rigsuit. Don't lose them!"
 
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
