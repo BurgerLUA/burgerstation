@@ -104,27 +104,6 @@
 	return A.heal_all_organs(0,0,0,-value)
 */
 
-/health/mob/living/advanced/adjust_fatigue_loss(var/value)
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	if(!value)
-		return 0
-
-	if(A.has_status_effect(FATIGUE))
-		return 0
-
-	if(adjust_stamina(-value))
-		A.update_health_element_icons(stamina=TRUE)
-
-	if(stamina_current <= 0)
-		A.add_status_effect(FATIGUE,value,value)
-
-	return value
-
 /health/mob/living/advanced/update_health_stats()
 
 	if(!is_advanced(owner))

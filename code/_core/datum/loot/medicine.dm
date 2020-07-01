@@ -6,7 +6,7 @@
 		/loot/medicine/kits = 2,
 		/loot/medicine/misc_medicine = 1,
 	)
-	loot_count = 3
+	loot_count = 2
 
 /loot/medicine/kits
 	loot_table = list(
@@ -31,4 +31,4 @@
 		/obj/item/storage/pillbottle/dylovene_small = 1,
 		/obj/item/storage/pillbottle/kelotane_small = 1
 	)
-	loot_count = 4
+	loot_count = 3
