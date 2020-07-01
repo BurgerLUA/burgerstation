@@ -1,6 +1,7 @@
 /obj/item/container/food/dynamic/meat
 	name = "meat"
 	desc = "IT'S RAW!"
+	desc_extended = "You need plenty of proteins for soldiering, soldier."
 
 	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "meat_1"

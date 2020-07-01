@@ -1,11 +1,14 @@
 /obj/item/clothing/undertop/underwear/
 	name = "undertop"
-
+	desc = "Shirt that goes under your shirt."
+	desc_extended = "You can also not wear another shirt over this, but you'll look like an idiot, or an Australian."
 	size = SIZE_2
 	weight = WEIGHT_1
 
 /obj/item/clothing/undertop/underwear/bra
 	name = "brassiere"
+	desc = "For bits that need extra support."
+	desc_extended = "A bra. Does not actually stand for Battle Ready Armor."
 	icon = 'icons/obj/item/clothing/underwear/bra.dmi'
 
 	defense_rating = list(
@@ -50,6 +53,8 @@
 	return ..()
 
 /obj/item/clothing/undertop/underwear/shirt
+	desc = "Shirt that goes under your shirt."
+	desc_extended = "Slightly more acceptable to wear alone in public than the Undertop.."
 	icon = 'icons/obj/item/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
@@ -60,6 +65,8 @@
 	dyeable = TRUE
 
 /obj/item/clothing/undertop/underwear/shirt/security
+	desc = "Shirt that goes under your shirt."
+	desc_extended = "Slightly more acceptable to wear alone in public than the Undertop. Black Version for Security to show off how manly and not insecure you are."
 	name = "security undershirt"
 	color = COLOR_BLACK
 

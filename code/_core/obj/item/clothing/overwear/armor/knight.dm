@@ -1,5 +1,7 @@
 /obj/item/clothing/overwear/armor/knight
 	name = "heavy knight armor"
+	desc = "Fat roll mode on!"
+	desc_extended = "Heavily padded steel armor. Provides great protection from all physical forms of damage, but makes it hard to move."
 	icon = 'icons/obj/item/clothing/suit/knight_blank.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
@@ -40,6 +42,8 @@
 
 /obj/item/clothing/overwear/armor/knight/special
 	name = "ultra heavy knight armor"
+	desc = "Rolling in this would probably break all your bones."
+	desc_extended = "A huge suit of armor made entirely of steel. Makes you almost impervious to all forms of physical damage, but makes it very hard to move. Plus, it's like being in an oven."
 	icon = 'icons/obj/item/clothing/suit/knight_special.dmi'
 	rarity = RARITY_MYTHICAL
 
@@ -60,6 +64,8 @@
 
 /obj/item/clothing/overwear/armor/knight/templar
 	name = "templar knight armor"
+	desc = "Fuck Elves."
+	desc_extended = "Once worn by mercenaries who didn't understand religion, now it's often worn by cosplayers who also don't understand religion."
 	icon = 'icons/obj/item/clothing/suit/knight_templar.dmi'
 	rarity = RARITY_UNCOMMON
 
@@ -81,6 +87,8 @@
 
 /obj/item/clothing/overwear/armor/knight/battlemage
 	name = "battlemage armor"
+	desc = "To protect your frail wizard form."
+	desc_extended = "A suit of armor used by those in the Wizard Federation who aren't septuagenarian yet."
 	icon = 'icons/obj/item/clothing/suit/knight_battlemage.dmi'
 	rarity = RARITY_RARE
 
@@ -102,6 +110,7 @@
 	name = "giant father's armor"
 	rarity = RARITY_LEGENDARY
 	desc = "THE LEGEND NEVER DIES"
+	desc = "A matching suit of armor for your Chaos Zweihander."
 	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(

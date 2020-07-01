@@ -1,5 +1,7 @@
 /obj/item/container/medicine/bandage
 	name = "bandages"
+	desc = "Stop the bleeding, and you stop death - or delay it, at least."
+	desc_extended = "Folks here believe that any affliction can be smothered in bandages, and any decently soft cloth can serve as one. Makes one wonder how people with such advanced medical knowledge even get sick at all."
 	icon_state = "brutepack"
 	treatment_time = 1
 	heal_brute = 30
@@ -11,6 +13,8 @@
 
 /obj/item/container/medicine/bandage/advanced
 	name = "infused bandages (styptic powder)"
+	desc = "Allows wounds to recover further than simple cloth."
+	desc_extended = "Bandages infused with styptic power. Close wounds faster than normal bandages if pressed well against the skin."
 
 /obj/item/container/medicine/bandage/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/styptic_powder,50)
@@ -18,6 +22,8 @@
 
 /obj/item/container/medicine/ointment
 	name = "ointment"
+	desc = "Nothing like salving an itching burn."
+	desc_extended = "Applied topically to burns to heal the skin and relieve pain. Standard ointment bottles used to have Silver Sulfadiazine in them, but were deemed too expensive to keep buying in bulk."
 	icon_state = "ointment"
 	treatment_time = 1
 	heal_burn = 30
@@ -25,13 +31,16 @@
 
 /obj/item/container/medicine/ointment/advanced
 	name = "infused ointment (silver sulfadiazine)"
-
+	desc = "Sometimes you have to prepare your own medicine."
+	desc_extended = "Ointment whose gel has been mixed with Silver Sufadiazine.  Far more effective at both healing burnt skin and relieving pain."
 /obj/item/container/medicine/ointment/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,50)
 	return ..()
 
 /obj/item/container/medicine/trauma_kit
 	name = "trauma kit"
+	desc = "Each kit contains a set of bandaging equipment:bandages, splits, and antiseptics."
+	desc_extended = "Very useful for recovery after traumatic injury. Allows to stop bleeding, disinfect wounds, support injured joints and damaged tissue."
 	icon_state = "traumakit"
 	treatment_time = 30
 	heal_brute = 80
@@ -43,6 +52,8 @@
 
 /obj/item/container/medicine/trauma_kit/advanced
 	name = "infused trauma kit (styptic powder)"
+	desc = "I knew something was missing."
+	desc_extended = "Trauma Kits with added styptic powder to the bandages and antiseptics, allowing for even better recovery."
 
 /obj/item/container/medicine/trauma_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/styptic_powder,50)
@@ -50,6 +61,8 @@
 
 /obj/item/container/medicine/burn_kit
 	name = "burn kit"
+	desc = "Each kit contains a set of ointments and antiseptics."
+	desc_extended = "The major problems with burns aren't as much the burns themselves, but the infections. These kits have antiseptics, lowering infection. Of course, the best way to avoid infection is still to be dead."
 	icon_state = "burnkit"
 	treatment_time = 30
 	heal_burn = 80
@@ -60,6 +73,8 @@
 
 /obj/item/container/medicine/burn_kit/advanced
 	name = "infused burn kit (silver sulfadiazine)"
+	desc = "I can't believe they still cheaped out on the silver sulfadiazine."
+	desc_extended = "Burn kits whose contents have been infused with Silver Sulfadiazine. A great lesson in how Capitalism will never provide to your needs."
 
 /obj/item/container/medicine/burn_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,50)
@@ -67,6 +82,8 @@
 
 /obj/item/container/medicine/patch
 	name = "medical patch"
+	desc = "For when you can't be bothered to use a syringe."
+	desc_extended = "Patches like these can't be used to cover wounds on their own, but can administer a great quantity of medicines really fast. Of course, giving too much medicines can be a way to speed up death rather than delay it, so be careful."
 	icon_state = "patch"
 	treatment_time = 5
 	heal_burn = 0
@@ -78,6 +95,8 @@
 
 /obj/item/container/medicine/patch/brute
 	name = "brute patch (Styptic Powder)"
+	desc = "For when you can't be bothered to use a syringe."
+	desc_extended = "Patches like these can't be used to cover wounds on their own, but can administer a great quantity of medicines really fast. Of course, giving too much medicines can be a way to speed up death rather than delay it, so be careful."
 	icon_state = "patch_brute"
 
 /obj/item/container/medicine/patch/brute/Generate()
@@ -86,6 +105,8 @@
 
 /obj/item/container/medicine/patch/burn
 	name = "burn patch (Silver Sulfadiazine)"
+	desc = "For when you can't be bothered to use a syringe."
+	desc_extended = "Patches like these can't be used to cover wounds on their own, but can administer a great quantity of medicines really fast. Of course, giving too much medicines can be a way to speed up death rather than delay it, so be careful."
 	icon_state = "patch_burn"
 
 /obj/item/container/medicine/patch/burn/Generate()

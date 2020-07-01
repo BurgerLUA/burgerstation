@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/energy/hybrid/carbine
 	name = "hybrid laser carbine"
+	desc = "Freeze, Criminal Scum!"
+	desc_extended = "A hybrid laser carbine with two firemodes, low intensity (stun) and high intensity (kill). Commonly used by shitsecurity."
 	icon = 'icons/obj/item/weapons/ranged/laser/carbine.dmi'
 
 	projectile_kill = /obj/projectile/bullet/laser/weak

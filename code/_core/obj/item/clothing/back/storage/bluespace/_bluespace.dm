@@ -21,7 +21,8 @@
 
 /obj/item/clothing/back/storage/satchel/bluespace
 	name = "satchel of holding"
-	desc_extended = "A smaller version of the bag of holding."
+	desc = "Let me just get X from my inter-dimensional purse."
+	desc_extended = "A smaller version of the bag of holding. Very spacious despite that."
 
 	icon = 'icons/obj/item/clothing/back/satchel/bluespace.dmi'
 

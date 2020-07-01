@@ -1,5 +1,7 @@
 /obj/item/container/food/dynamic/fish
 	name = "fish"
+	desc = "Something smells fishy here..."
+	desc_extended = "Fish. It's good for you. Except the mercury."
 	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "fish"
 	crafting_id = "fish"

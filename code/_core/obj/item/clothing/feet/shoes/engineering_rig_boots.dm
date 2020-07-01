@@ -1,5 +1,7 @@
 /obj/item/clothing/feet/shoes/engineering
 	name = "right engineering boot"
+	desc = "Magboots not included."
+	desc_extended = "Part of the engineering rigsuit. Don't lose them!"
 	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"

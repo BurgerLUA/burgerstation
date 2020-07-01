@@ -1,11 +1,11 @@
 /obj/item/clothing/hands/gloves/tutorial
-	name = "right antimagic armwraps"
+	name = "right antimagic armwrap"
 	rarity = RARITY_MYTHICAL
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	desc = "Commonly worn by lizard thots."
-	desc_extended = "Generic glove."
+	desc = "Data-mine the code with theese."
+	desc_extended = "You probably shouldn't have this."
 
 	icon = 'icons/obj/item/clothing/gloves/tutorial_gloves.dmi'
 
@@ -26,7 +26,9 @@
 	value = 120
 
 /obj/item/clothing/hands/gloves/tutorial/left
-	name = "left antimagic glove"
+	name = "left antimagic armwrap"
+	desc = "Data-mine the code with theese."
+	desc_extended = "You probably shouldn't have this."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 

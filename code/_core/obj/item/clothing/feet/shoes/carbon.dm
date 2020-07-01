@@ -1,5 +1,7 @@
 /obj/item/clothing/feet/shoes/carbon_boot
 	name = "right carbon boot"
+	desc = "For when you REALLY want to turn up the heat."
+	desc_extended = "A high-tech boot shielded with carbon-fibre. Somewhat bulky, but protects well."
 	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"

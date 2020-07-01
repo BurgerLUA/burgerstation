@@ -2,8 +2,8 @@
 	name = "wizard's robes"
 	icon = 'icons/obj/item/clothing/suit/wizard.dmi'
 
-	desc = "Not a bathrobe."
-	desc_extended = "A colorful bathrobe."
+	desc = "EI NATH!!"
+	desc_extended = "Not necessairly required to use magic, but wearing this, or any other clothing with high Magic protection will make your spells stronger."
 
 	defense_rating = list(
 		MAGIC = 75,

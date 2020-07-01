@@ -1,5 +1,7 @@
 /obj/item/clothing/feet/shoes/workboot
 	name = "right workboot"
+	desc = "Heavy load coming trough!"
+	desc_extended = "A heavy-duty boot for a heavy-duty work enviroment. Protects your feet against falling tools."
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT

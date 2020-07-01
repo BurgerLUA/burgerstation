@@ -1,6 +1,7 @@
 /obj/item/clothing/overwear/coat/polymorphic
 	name = "coat"
 	desc = "A nice coat."
+	desc_extended = "Can hold a single Size 2 item."
 	icon = 'icons/obj/item/clothing/suit/jacket.dmi'
 
 	rarity = RARITY_COMMON

@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech
 	name = ".40 NanoTech submachine gun"
+	desc = "It's how you use it that matters!"
+	desc_extended = "Nanotrasen's answer to the fearsome C-20r, this one has a higher firerate at the cost of a smaller round."
 	icon = 'icons/obj/item/weapons/ranged/smg/40.dmi'
 	icon_state = "inventory"
 

@@ -1,5 +1,7 @@
 /obj/item/clothing/uniform/captain
 	name = "\improper Captain's uniform"
+	desc = "STUBBED MY TOE, CALL THE SHUTTLE!"
+	desc_extended = "A suit worn by Captains of Nanotrasen stations. Does not resemble a giant comdom."
 	icon = 'icons/obj/item/clothing/uniforms/captain.dmi'
 	rarity = RARITY_MYTHICAL
 

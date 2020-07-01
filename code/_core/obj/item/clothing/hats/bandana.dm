@@ -1,5 +1,7 @@
 /obj/item/clothing/head/hood/bandana
 	name = "bandana"
+	desc = "Damn, it feels good to be a gangsta."
+	desc_extended = "Can be worn both as a mask to cover up your face, or as a hat."
 	icon = 'icons/obj/item/clothing/masks/bandana.dmi'
 	icon_state = "inventory"
 	slot_icons = TRUE
