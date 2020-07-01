@@ -1,5 +1,7 @@
 /obj/item/clothing/overwear/coat/labcoat
 	name = "labcoat"
+	desc = "SCIENCE RULES!"
+	desc_extended = "Extra pockets not included."
 	icon = 'icons/obj/item/clothing/suit/labcoat.dmi'
 
 	defense_rating = list(

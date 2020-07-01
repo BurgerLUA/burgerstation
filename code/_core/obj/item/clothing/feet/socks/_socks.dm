@@ -1,6 +1,6 @@
 /obj/item/clothing/feet/socks/
 	name = "sock"
-	desc = "Don't wear socks with this or I'll fucking end you."
+	desc = "Don't wear socks with sandals or I'll fucking end you."
 	desc_extended = "A sock. This can go on either foot."
 	icon_state = "inventory"
 	icon_state_worn = "worn"

@@ -1,5 +1,7 @@
 /obj/item/clothing/feet/shoes/miner
 	name = "right mining boot"
+	desc = "For when the heat is actually turned up."
+	desc_extended = "A tough brown boot. Shields your feet from the ashes."
 	rarity = RARITY_UNCOMMON
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"

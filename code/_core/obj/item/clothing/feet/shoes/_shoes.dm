@@ -1,6 +1,6 @@
 /obj/item/clothing/feet/shoes/
 	name = "shoes"
-	desc = "Behave yourself."
+	desc = "Look at my kicks, bro! Sick kicks!"
 	desc_extended = "Protects your feet from the harsh enviroment in the world."
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
