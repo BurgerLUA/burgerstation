@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/energy/freezegun
 	name = "freeze ray"
+	desc = "Get iced, dummy."
+	desc_extended = "A gun that shoots beams that freeze the opponent."
 	icon = 'icons/obj/item/weapons/ranged/laser/freezegun.dmi'
 
 	projectile = /obj/projectile/bullet/laser/strong

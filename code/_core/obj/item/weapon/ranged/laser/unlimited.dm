@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/energy/unlimited
 	name = "nut gun"
+	desc = "Seriously?"
+	desc_extended = "Nuts lasers everywhere."
 	icon = 'icons/obj/items/weapons/ranged/laser.dmi'
 
 	projectile = /obj/projectile/bullet/laser
