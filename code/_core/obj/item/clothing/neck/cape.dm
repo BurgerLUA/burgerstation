@@ -1,5 +1,7 @@
 /obj/item/clothing/neck/cape
 	name = "cape"
+	desc = "Is it a bird? Is it a plane?"
+	desc_extended = "Attaches to the neck slot for extra fashion."
 	icon = 'icons/obj/item/clothing/suit/cape.dmi'
 
 
@@ -57,7 +59,8 @@
 /obj/item/clothing/neck/cape/goliath
 	name = "goliath cloak"
 	icon = 'icons/obj/item/clothing/suit/goliath_cloak.dmi'
-	desc_extended = "A cloak made from goliath hide."
+	desc = "Is it a bird? Is it a plane? No, it's a Shaft Miner!"
+	desc_extended = "A protective cloak made from goliath hide."
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/)
 

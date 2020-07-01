@@ -1,7 +1,8 @@
 /obj/item/clothing/neck/cloak
 	name = "cloak"
 	icon = 'icons/obj/item/clothing/suit/cloak.dmi'
-	desc_extended = "A simple cloak. Wear your colors proudly."
+	desc = "A simple cloak. Wear your colors proudly."
+	desc_extended = "Attaches to the neck slot for extra fashion, and in this case, for team identification if dyed correctly."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	protected_limbs = list(BODY_TORSO)
