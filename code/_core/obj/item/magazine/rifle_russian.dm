@@ -1,5 +1,7 @@
 /obj/item/magazine/rifle_939
 	name = "\improper 9x39mm magazine"
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/939.dmi'
 
 	ammo = /obj/item/bullet_cartridge/rifle_939mm

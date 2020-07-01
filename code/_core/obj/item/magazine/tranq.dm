@@ -1,5 +1,7 @@
 /obj/item/magazine/pistol_tranq_11m
 	name = "\improper 11.43x25mm tranquilizer magazine"
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/tranq.dmi'
 	icon_state = "tranq"
 	bullet_count_max = 7

@@ -1,6 +1,7 @@
 /obj/item/magazine/clip/
 	name = "weapon clip"
-	desc = "IT'S NOT A MAGAZINE. IT'S A CLIP."
+	desc = "Leaving theese around the field won't get you in trouble with the Sergeant Major."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

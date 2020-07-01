@@ -1,5 +1,7 @@
 /obj/item/magazine/rifle_556
 	name = "\improper 5.56mm rifle magazine"
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/556_rifle.dmi'
 	icon_state = "556"
 	bullet_count_max = 20

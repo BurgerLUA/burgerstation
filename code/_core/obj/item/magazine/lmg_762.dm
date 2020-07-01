@@ -1,5 +1,7 @@
 /obj/item/magazine/lmg_762
 	name = "\improper 7.62mm drum magazine."
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/762_lmg.dmi'
 	icon_state = "lmg"
 	bullet_count_max = 40
