@@ -2,7 +2,7 @@
 	name = "protective helmet"
 	icon = 'icons/obj/item/clothing/hats/security_new.dmi'
 	desc = "RUSH B"
-	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
+	desc_extended = "Standard-issue of the Nanotrasen security force. Protects your head from bullets."
 
 	defense_rating = list(
 		BLADE = 25,

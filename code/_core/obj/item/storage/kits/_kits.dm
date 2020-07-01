@@ -1,6 +1,7 @@
 /obj/item/storage/kit/
 	name = "first aid kit"
 	desc = "Carries medicine."
+	desc_extended = "A basic first aid kit. Usually contains 4 sets of bandages, two tubes of ointment, a pill bottle filled with dylovene and an epinephrine syringe."
 	icon = 'icons/obj/item/storage/kits.dmi'
 	icon_state = "firstaid"
 
@@ -24,6 +25,7 @@
 
 /obj/item/storage/kit/brute
 	name = "brute first aid kit"
+	desc_extended = "A first aid kit that focuses on healing brute injury. Usually contains a pill bottle filled with bicaridine, two sets of bandages, one set of trauma kits and four sets of styptic powder patches."
 	icon_state = "brute"
 
 /obj/item/storage/kit/brute/filled/fill_inventory()
@@ -39,6 +41,7 @@
 
 /obj/item/storage/kit/burn
 	name = "burn first aid kit"
+	desc_extended = "A first aid kit that focuses on healing burn injuries. Usually contains a pill bottle filled with kelotane, two tubes of ointment, one set of burn kits and four sets of silver sulfadiazine."
 	icon_state = "burn"
 
 /obj/item/storage/kit/burn/filled/fill_inventory()
@@ -55,6 +58,8 @@
 
 /obj/item/storage/kit/syndicate
 	name = "combat medikit"
+	desc = "I hope you've got insurance."
+	desc_extended = "A combat medical kit for healing when under pressure. Usually contains five pill bottles, each filled with bicaridine, dylovene, kelotane, iron and epinephrine pills. Also contains two epinephrine syringes and a health analyzer."
 	icon_state = "syndicate"
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()

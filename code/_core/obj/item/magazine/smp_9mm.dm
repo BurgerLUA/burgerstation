@@ -1,5 +1,7 @@
 /obj/item/magazine/smp_9mm
 	name = "\improper 9mm smp magazine"
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/9mmsmp.dmi'
 	icon_state = "smp"
 	bullet_count_max = 27

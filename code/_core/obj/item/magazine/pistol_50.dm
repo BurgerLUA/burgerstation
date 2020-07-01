@@ -1,5 +1,7 @@
 /obj/item/magazine/pistol_50
 	name = "\improper .50 pistol magazine"
+	desc = "Not compatible with the 'Degle'."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/50aepistol.dmi'
 	icon_state = "50ae"
 	bullet_count_max = 7

@@ -1,5 +1,7 @@
 /obj/item/magazine/smg_45
 	name = "\improper .45 smg magazine"
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/45smg.dmi'
 	icon_state = "mag"
 	bullet_count_max = 36

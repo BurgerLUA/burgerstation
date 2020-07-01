@@ -1,5 +1,7 @@
 /obj/item/clothing/head/hood/skimask
 	name = "ski mask"
+	desc = "LOADSAMONEY"
+	desc_extended = "Covers up your face and head. Handy for robbing banks, or for its actual intended purpose."
 	icon = 'icons/obj/item/clothing/masks/balaclava.dmi'
 	icon_state = "inventory"
 	slot_icons = TRUE
