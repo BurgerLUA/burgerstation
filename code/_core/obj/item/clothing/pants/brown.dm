@@ -1,5 +1,7 @@
 /obj/item/clothing/pants/brown
 	name = "brown pants"
+	desc = "An office worker's favorite."
+	desc_extended = "The pants of choice for boring people everywhere."
 	icon = 'icons/obj/item/clothing/pants/brown_pants.dmi'
 
 	desc = "Please wear these at least."

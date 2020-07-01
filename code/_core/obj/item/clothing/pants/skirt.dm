@@ -2,7 +2,7 @@
 	name = "skirt"
 	icon = 'icons/obj/item/clothing/pants/skirt.dmi'
 
-	desc = "For letting people know that you're female. Or a crossdresser."
+	desc = "For letting people know that you're a woman and/or a programmer."
 	desc_extended = "The peak of fashion."
 
 	defense_rating = list(
