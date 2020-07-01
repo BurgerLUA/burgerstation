@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
 	name = ".45 C-20r submachine gun"
-	desc = "Commonly used by Syndicate Operatives for its reliability and light weight"
+	desc = "GET DAT FUKKEN DISK"
+	desc_extended = "Commonly used by Syndicate Operatives for its reliability and light weight, the 45 C-20r was the primary firearm of the Syndicate Nuclear Operatives, before NT figured out having self destruct nukes on their station wasn't a great idea."
 	icon = 'icons/obj/item/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 

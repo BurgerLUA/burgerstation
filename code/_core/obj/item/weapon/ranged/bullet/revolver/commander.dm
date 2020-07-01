@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/commander
 	name = "\improper .44 Commander Autorevolver"
 	desc = "Semi-automatic!"
+	desc_extended = "A revolver that uses a blowback recoil system to recock the hammer. Was initially made in small numbers for gun collectors and shooting enthusiasts, but has since become commonplace everywhere."
 	icon = 'icons/obj/item/weapons/ranged/revolver/44.dmi'
 	icon_state = "inventory"
 

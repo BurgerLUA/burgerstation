@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/big_game
 	name = "\improper .300 Big Game Revolver"
 	desc = "Can't spell overkill without .300."
+	desc_extended = "A BFR (Big Frame Revolver) that has to be reloaded manually, but packs a big punch. Commonly used by Megafauna hunters."
 	icon = 'icons/obj/item/weapons/ranged/revolver/300.dmi'
 	icon_state = "inventory"
 

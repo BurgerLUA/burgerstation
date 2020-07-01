@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/svd
 	name = "\improper 7.62x54mmR SVD Dragunov"
 	desc = "For when you want to spread communism at an extended range."
+	desc_extended = "Originally developed in 1958 and still used as the primary Designated Marskman weapon pretty much everywhere, proving the superiority of Soviet Engineering."
 	icon = 'icons/obj/item/weapons/ranged/rifle/762_snipe.dmi'
 	icon_state = "inventory"
 

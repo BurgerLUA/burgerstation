@@ -1,6 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/traitor_357
 	name = "\improper .357 Traditore Revolver"
 	desc = "For all your traitor needs!"
+	desc_extended = "An Italian made 357 revolver, the Traditore is so cheap it's basically ubiquitous, often ending up among the hands of those of less than savory repute."
 	icon = 'icons/obj/item/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
 
