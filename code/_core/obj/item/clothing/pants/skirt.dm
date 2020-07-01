@@ -27,6 +27,8 @@
 
 /obj/item/clothing/pants/skirt/striped
 	name = "striped skirt"
+	desc = "*me waves"
+	desc_extended = "A skirt most commonly seen on female mimes. Careful to not get put in an invisible box."
 	polymorphs = list(
 		"skirt" = COLOR_WHITE,
 		"stripes" = COLOR_BLACK
@@ -34,6 +36,8 @@
 
 /obj/item/clothing/pants/skirt/grey
 	name = "assistant skirt"
+	desc = "Whoops, I accidentally jabbed you with a spear, tee-hee!"
+	desc_extended = "When you want to be a shitter, but also look cute when you're doing it."
 	polymorphs = list(
 		"skirt" = COLOR_GREY
 	)
