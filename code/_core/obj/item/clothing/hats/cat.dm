@@ -1,8 +1,8 @@
 /obj/item/clothing/head/hat/cat
 	name = "\improper cursed cat ears"
 	icon = 'icons/obj/item/clothing/hats/cat.dmi'
-	desc = "why the fuck would you wear this"
-	desc_extended = "don't fucking wear this"
+	desc = "Pwease gimme huggie wuggies! uwu!"
+	desc_extended = "Dude what the fuck are you doing? Why did you buy this, why the fuck would you wanna even wear this? What the fuck, dude?"
 	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
