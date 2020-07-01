@@ -1,6 +1,7 @@
 /obj/item/clothing/head/helmet/hardhat
 	name = "industrial hardhat"
 	icon = 'icons/obj/item/clothing/hats/hardhat.dmi'
+	desc = "THIS IS AN OFFICIAL CONSTRUCTION ZONE! PLEASE REMOVE YOURSELF FROM THE AREA!"
 	desc_extended = "A yellow industrial hardhat. Seems pretty robust against blunt trauma."
 	rarity = RARITY_UNCOMMON
 
