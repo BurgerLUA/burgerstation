@@ -206,6 +206,23 @@
 		/reagent/nutrition/meat/fish/cooked = 1
 	)
 
+/reagent_recipe/meat/crab
+
+	name = "cooked crab"
+
+	required_reagents = list(
+		/reagent/nutrition/meat/crab = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/meat/crab = 400
+	)
+
+	results = list(
+		/reagent/nutrition/meat/crab/cooked = 1
+	)
+
+
 /reagent_recipe/cake_batter/
 
 	name = "cake batter"

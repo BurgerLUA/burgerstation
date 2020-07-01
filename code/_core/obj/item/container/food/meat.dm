@@ -231,3 +231,9 @@
 	reagents.add_reagent(/reagent/nutrition/meat/fish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
+
+/obj/item/container/food/dynamic/meat/crab/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/crab,15)
+	reagents.add_reagent(/reagent/nutrition/fat/crab,5)
+	return ..()
+
