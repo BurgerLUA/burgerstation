@@ -270,10 +270,12 @@
 			if(victim_defense >= INFINITY)
 				damage_to_deal[damage_type] = 0
 				continue
-			if(damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)
-				victim_defense -= (defense_rating_attacker[damage_type] && defense_rating_attacker[damage_type] < INFINITY ? defense_rating_attacker[damage_type] : 0)
 			if(victim_defense > 0)
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
+			if(damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)
+				var/attacker_bonus_damage = defense_rating_attacker[damage_type] ? defense_rating_attacker[damage_type] : 0
+				attacker_bonus_damage = clamp(attacker_bonus_damage,-200,200)
+				victim_defense -= attacker_bonus_damage
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)

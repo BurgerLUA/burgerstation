@@ -45,3 +45,4 @@ Sometimes wearing Syndicate armor as a NanoTrasen mercenary isn't a good idea as
 It is actually possible for two people to hit eachother with a melee attack at the same time and both die.
 Backpacks slow you down when worn or carried. Remember to take only what you need.
 Wearing running shoes gives a bonus to movespeed.
+90% of player deaths are a result of going alone.

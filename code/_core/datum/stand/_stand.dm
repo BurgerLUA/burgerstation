@@ -146,6 +146,10 @@
 	if(dead || qdeleting)
 		return FALSE
 
+	if(stand)
+		to_chat("You already have a stand!")
+		return FALSE
+
 	stand = new(src)
 	stand.generate()
 	stand.display_stand(src)

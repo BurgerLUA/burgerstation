@@ -272,3 +272,23 @@ client/verb/air_test(var/pressure as num)
 	report_string += "Subsystems that aren't listed have no registered CPU or tick usage."
 
 	to_chat(report_string)
+
+/client/verb/reload_badwords()
+	set name = "Reload Badwords"
+	set category = "Debug"
+	SSbadwords.load_badwords()
+
+
+/client/verb/force_save_all()
+	set name = "Force Save Everyone (DANGER)"
+	set category = "Debug"
+
+	for(var/mob/living/advanced/player/P)
+		if(!P.ckey_last)
+			continue
+		try
+			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+			if(mobdata)
+				mobdata.save_character(src,force = TRUE)
+		catch
+			to_chat("COULD NOT SAVE [P.get_debug_name()]!")

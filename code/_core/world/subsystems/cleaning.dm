@@ -18,14 +18,14 @@ SUBSYSTEM_DEF(delete)
 		if(is_atom(object_to_delete))
 			var/atom/A = object_to_delete
 			if(!A.is_safe_to_delete())
-				objects_to_delete[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
+				objects_to_delete[object_to_delete] = world.time + ITEM_DELETION_TIME_NEW
 				continue
 
 		objects_to_delete -= object_to_delete
 		qdel(object_to_delete)
 
 
-	for(var/datum/object_to_delete in objects_to_delete_safe)
+	for(var/datum/object_to_delete in objects_to_delete_safe) //Don't delete stuff if players are in view.
 
 		if(!istype(object_to_delete) || object_to_delete.qdeleting)
 			objects_to_delete_safe -= object_to_delete
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(delete)
 			continue
 
 		if(!should_delete(object_to_delete))
-			objects_to_delete_safe[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
+			objects_to_delete_safe[object_to_delete] = world.time + ITEM_DELETION_TIME_NEW
 			continue
 
 		objects_to_delete_safe -= object_to_delete

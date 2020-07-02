@@ -543,6 +543,10 @@
 	return TRUE
 
 /ai/proc/is_enemy(var/atom/A)
+
+	if(A == owner)
+		return FALSE
+
 	switch(aggression)
 		if(0)
 			return FALSE

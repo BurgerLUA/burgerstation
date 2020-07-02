@@ -9,6 +9,8 @@
 
 	var/expense = 1
 
+	anchored = TRUE
+
 /obj/effect/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 
 	color = desired_color

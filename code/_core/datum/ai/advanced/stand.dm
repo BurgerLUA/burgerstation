@@ -28,21 +28,25 @@
 	owner.set_dir(owner.dir,TRUE)
 	return .
 
+/ai/advanced/stand/is_enemy(var/atom/A)
+	if(is_living(A))
+		var/mob/living/L = A
+		if(L.stand && L.stand.linked_stand == owner)
+			return FALSE
+	return ..()
+
 /ai/advanced/stand/should_attack_mob(var/mob/living/L)
 
-	if(L == owner)
+	if(L.dead)
 		return FALSE
 
-	if(L.dead)
+	if(is_enemy(L))
 		return FALSE
 
 	if(L.immortal && !ignore_immortal)
 		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
-		return FALSE
-
-	if(L.stand && L.stand.linked_stand == owner)
 		return FALSE
 
 	if(!L.can_be_attacked(owner))

@@ -40,9 +40,8 @@ var/global/list/ckey_to_mobdata = list()
 	return ..()
 
 /savedata/client/mob/get_file(var/file_id)
-	var/client/owner = CLIENT(ckey)
 	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"
-	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : owner.ckey)
+	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : ckey)
 	returning = replacetext(returning,"%CID",file_id)
 	return returning
 
