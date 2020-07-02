@@ -7,6 +7,7 @@
 
 	anchored = FALSE
 	collision_flags = FLAG_COLLISION_WALKING //Not wall because crawling.
+	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 	layer = LAYER_OBJ_CRATE
 
 	var/list/crate_contents = list()

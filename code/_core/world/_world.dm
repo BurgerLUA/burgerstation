@@ -34,7 +34,7 @@ var/global/world_state = STATE_STARTING
 	var/server_name = "Burgerstation 13"
 	var/server_link = "https://discord.gg/yEaV92a"
 	var/github_name = "Space Station 13 <b>FROM SCRATCH</b>"
-	var/description = "A newbie-friendly persistent action-oriented roleplay-optional server made with fun in mind."
+	var/description = "A newbie-friendly character-persistent action-oriented roleplay-optional server made with fun and socialization in mind."
 
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
