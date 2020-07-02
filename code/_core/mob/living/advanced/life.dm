@@ -110,7 +110,6 @@ mob/living/advanced/revive()
 
 	drop_held_objects(src.loc)
 
-
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)
 
