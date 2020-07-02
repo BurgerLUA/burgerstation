@@ -18,7 +18,8 @@
 	update_sprite()
 
 	if(!open)
-		play('sound/effects/mortar_long_whistle.ogg',get_turf(src),range_max = VIEW_RANGE * 2)
+		play('sound/effects/mortar_long_whistle.ogg',get_turf(src),range_min = VIEW_RANGE*0.5,range_max = VIEW_RANGE * 2)
+		create_alert(VIEW_RANGE,src,src,ALERT_LEVEL_NOISE)
 		pixel_z = TILE_SIZE*VIEW_RANGE*4
 		pixel_w = TILE_SIZE*VIEW_RANGE*0.5
 		animate(src, pixel_z = 0, pixel_w = 0,time = SECONDS_TO_DECISECONDS(2))

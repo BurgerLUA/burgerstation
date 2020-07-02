@@ -29,6 +29,7 @@
 				L.emote("pain")
 				L.add_status_effect(STUN,30,30)
 				play('sound/effects/impacts/meteor_impact.ogg',get_turf(L))
+				create_alert(VIEW_RANGE,L,L,ALERT_LEVEL_NOISE)
 
 	return .
 

@@ -284,11 +284,6 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		created_sound.volume = local_volume
 
-		if(alert && is_living(M) && luck(alert_source,created_sound.volume*3,FALSE))
-			var/mob/living/L = M
-			if(L.ai && L.ai.alert_level != ALERT_LEVEL_COMBAT)
-				CALLBACK("alert_level_change_\ref[src]",CEILING(L.ai.reaction_time*0.1,1),L.ai,/ai/proc/set_alert_level,alert,FALSE,alert_source)
-
 		if(C) C.receive_sound(created_sound)
 
 	if(length(hearers))

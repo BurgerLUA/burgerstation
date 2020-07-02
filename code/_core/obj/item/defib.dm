@@ -37,7 +37,9 @@
 
 	caller.visible_message("\The [caller.name] charges up \the [src.name]...","You charge up \the [src.name]...")
 
-	play('sound/items/defib/defib_charge.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sound/items/defib/defib_charge.ogg',src)
+
+	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
@@ -58,14 +60,17 @@
 
 	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
 
-	play('sound/items/defib/defib_zap.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sound/items/defib/defib_zap.ogg',src)
+	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	if(target.check_death() || !target.client)
 		target.visible_message("Nothing happens!")
-		play('sound/items/defib/defib_failed.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+		play('sound/items/defib/defib_failed.ogg',src)
+		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 		return FALSE
 
-	play('sound/items/defib/defib_ready.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sound/items/defib/defib_ready.ogg',src)
+	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	target.revive()
 	caller.visible_message("\The [target.name] jolts to life!")

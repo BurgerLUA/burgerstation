@@ -18,7 +18,8 @@ obj/item/fluff/bikehorn/click_self(var/atom/caller)
 	. = ..()
 
 	if(caller.can_attack(null,src))
-		play('sound/items/bikehorn.ogg',src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
+		play('sound/items/bikehorn.ogg',src)
+		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 		src.attack_next = world.time + src.get_attack_delay(caller)
 
 	return .

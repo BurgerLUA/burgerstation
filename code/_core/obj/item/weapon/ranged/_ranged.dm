@@ -150,7 +150,8 @@ obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	caller.to_chat(span("danger","*click*"))
 	if(length(empty_sounds))
-		play(pick(empty_sounds),src,alert = ALERT_LEVEL_NOISE, alert_source = caller, range_max = 3)
+		play(pick(empty_sounds),src,range_max = 3)
+		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	return FALSE
 
@@ -237,7 +238,9 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			loyalty_tag = L.loyalty_tag
 
 		if(length(shoot_sounds))
-			play(pick(shoot_sounds_to_use),src,alert = shoot_alert, alert_source = caller)
+			play(pick(shoot_sounds_to_use),src)
+			if(shoot_alert)
+				create_alert(VIEW_RANGE,src,caller,shoot_alert)
 
 		if(!params || !length(params))
 			params = list()

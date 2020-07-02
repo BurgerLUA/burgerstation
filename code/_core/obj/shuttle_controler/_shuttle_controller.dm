@@ -81,11 +81,14 @@ var/global/list/all_shuttle_controlers = list()
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //Something blocking?
 		return FALSE
-
-	play('sound/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = caller)
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
+
+	play('sound/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+	if(last_caller)
+		create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+
 	if(!desired_transit_time)
 		desired_transit_time = default_transit_time_no_living
 		for(var/mob/living/advanced/P in get_area(src))
@@ -159,8 +162,9 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			if(!transit(transit_source,transit_bluespace))
 				return FALSE
-			play('sound/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = last_caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = last_caller)
-
+			play('sound/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			if(last_caller)
+				create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
 
@@ -177,7 +181,9 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
-			play('sound/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = last_caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = last_caller)
+			play('sound/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			if(last_caller)
+				create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null

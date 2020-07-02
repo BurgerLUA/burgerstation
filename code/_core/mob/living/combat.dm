@@ -240,7 +240,8 @@
 
 	var/area/A = get_area(src)
 	if(A && istype(A))
-		play('sound/weapons/generic_block.ogg', get_turf(src), alert = ALERT_LEVEL_NOISE, alert_source = src)
+		play('sound/weapons/generic_block.ogg', get_turf(src))
+		create_alert(VIEW_RANGE,src,attacker,ALERT_LEVEL_NOISE)
 
 	charge_block -= 100
 	handle_charges(0)
