@@ -36,11 +36,10 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_debug_name()]([frequency]): [text_to_say]")
 
 		if(TEXT_RAW) //People talking out of radios, pretty much.
-			for(var/mob/M in range(TALK_RANGE,source_turf))
+			for(var/mob/M in all_mobs_with_clients)
 				CHECK_TICK
-				if(!M.client)
-					continue
-				M.to_chat(text_to_say,CHAT_TYPE_RADIO)
+				if(within_range(M,source,TALK_RANGE))
+					M.to_chat(text_to_say,CHAT_TYPE_RADIO)
 
 		if(TEXT_WHISPER)
 			if(istype(source,/client/))
@@ -50,11 +49,10 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			else
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/mob/M in range(WHISPER_RANGE,source_turf))
+				for(var/mob/M in all_mobs_with_clients)
 					CHECK_TICK
-					if(!M.client)
-						continue
-					M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
+					if(within_range(M,source,WHISPER_RANGE))
+						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				for(var/obj/item/device/radio/R in all_radios)
 					CHECK_TICK
@@ -76,11 +74,10 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			else
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/mob/M in range(TALK_RANGE,source_turf))
+				for(var/mob/M in all_mobs_with_clients)
 					CHECK_TICK
-					if(!M.client)
-						continue
-					M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
+					if(within_range(M,source,TALK_RANGE))
+						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				for(var/obj/item/device/radio/R in all_radios)
 					CHECK_TICK
@@ -102,11 +99,10 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			else
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				for(var/mob/M in range(YELL_RANGE,source_turf))
+				for(var/mob/M in all_mobs_with_clients)
 					CHECK_TICK
-					if(!M.client)
-						continue
-					M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
+					if(within_range(M,source,YELL_RANGE))
+						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				for(var/obj/item/device/radio/R in all_radios)
 					CHECK_TICK
@@ -122,11 +118,10 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
-			for(var/mob/M in range(YELL_RANGE,source_turf))
+			for(var/mob/M in all_mobs_with_clients)
 				CHECK_TICK
-				if(!M.client)
-					continue
-				M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
+				if(within_range(M,source,YELL_RANGE))
+					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 			if(speaker.is_player_controlled()) LOG_CHAT("LOOC: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_OOC)
