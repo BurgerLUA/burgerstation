@@ -139,8 +139,8 @@
 	name = "Grab"
 	desc = "You're grabbed!"
 	id = GRAB
-	minimum = 5
-	maximum = 5
+	minimum = 1
+	maximum = 1
 
 /status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 

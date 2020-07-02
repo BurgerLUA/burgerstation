@@ -47,6 +47,7 @@
 
 
 			if(should_update)
+				world.log << "Updating: [O]."
 				A.update_overlay_tracked("\ref[O]")
 
 	return .

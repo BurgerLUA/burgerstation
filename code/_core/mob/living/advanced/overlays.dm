@@ -1,4 +1,4 @@
-mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
+/mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_plane,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
 
 	if(!k)
 		k = "\ref[object]"
@@ -15,7 +15,7 @@ mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_l
 	O.initial_icon = desired_icon ? desired_icon : object.icon
 	O.initial_icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.layer = desired_layer ? desired_layer : object.layer
-	O.plane = src.plane
+	O.plane = desired_plane ? desired_plane : src.plane
 	O.icon = desired_icon ? desired_icon : object.icon
 	O.icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.color = desired_color ? desired_color : object.color
@@ -75,7 +75,7 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 		add_overlay(O) //Is this needed?
 	return TRUE
 
-/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform)
+/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_plane,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform)
 
 	var/image/overlay/O = overlays_assoc[k]
 
@@ -88,6 +88,8 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 
 	if(isnum(desired_layer))
 		O.layer = desired_layer
+	if(isnum(desired_plane))
+		O.plane = desired_plane
 	if(desired_icon)
 		O.icon = desired_icon
 		O.initial_icon = desired_icon

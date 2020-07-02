@@ -8,7 +8,7 @@
 			if(is_living(object))
 				var/mob/living/L = object
 				if(!L.add_status_effect(GRAB, source = caller))
-					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
+					caller.to_chat(span("warning","\The [object.name] is too strong to be grabbed!"))
 					return TRUE
 			grab_object(caller,object,location,control,params)
 			return TRUE
