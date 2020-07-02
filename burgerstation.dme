@@ -14,6 +14,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "05_hellscape.dmm"
 #include "code\__defines\___config.dm"
 #include "code\__defines\__config_horde.dm"
 #include "code\__defines\_config_balance.dm"
@@ -402,6 +403,7 @@
 #include "code\_core\datum\loadout\scientist.dm"
 #include "code\_core\datum\loadout\shaleez.dm"
 #include "code\_core\datum\loadout\shopkeeper.dm"
+#include "code\_core\datum\loadout\skeleton_miner.dm"
 #include "code\_core\datum\loadout\stand.dm"
 #include "code\_core\datum\loadout\wizard.dm"
 #include "code\_core\datum\loadout\zombie.dm"
@@ -546,6 +548,7 @@
 #include "code\_core\mob\living\advanced\human\npc\nanotrasen.dm"
 #include "code\_core\mob\living\advanced\human\npc\rev.dm"
 #include "code\_core\mob\living\advanced\human\npc\robot_assistant.dm"
+#include "code\_core\mob\living\advanced\human\npc\skeleton_miner.dm"
 #include "code\_core\mob\living\advanced\human\npc\syndicate.dm"
 #include "code\_core\mob\living\advanced\human\npc\wizard.dm"
 #include "code\_core\mob\living\advanced\human\npc\zombie.dm"
@@ -1356,6 +1359,7 @@
 #include "maps\horde\01_bluespace.dmm"
 #include "maps\horde\02_burgerstation.dmm"
 #include "maps\horde\03_island.dmm"
+#include "maps\horde\05_hellscape.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
