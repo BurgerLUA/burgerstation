@@ -111,6 +111,7 @@
 
 /obj/item/bullet_cartridge/revolver_300/Generate()
 	item_count_current = 5
+	update_sprite()
 	return ..()
 
 
@@ -137,4 +138,5 @@
 
 /obj/item/bullet_cartridge/revolver_762/Generate()
 	item_count_current = 7
+	update_sprite()
 	return ..()

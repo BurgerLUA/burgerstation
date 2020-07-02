@@ -34,10 +34,19 @@
 	heat_per_shot = 0.03
 	heat_max = 0.1
 
-	value = 60
+	value = 120
+
+	open = TRUE //Starts open.
+
+	can_shoot_while_open = TRUE
 
 /obj/item/weapon/ranged/bullet/revolver/nagant/get_static_spread() //Base spread
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/revolver/nagant/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/revolver/nagant/click_self(var/mob/caller)
+	rotate_cylinder(-1)
+	caller?.to_chat(span("notice","You rotate the cylinder backwards."))
+	return TRUE
