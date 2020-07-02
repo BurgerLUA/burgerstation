@@ -138,6 +138,21 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	var/area/A = get_area(src)
 	return A.sound_environment
 
+/proc/get_mobs_in_range(var/range,var/atom/epicenter=usr)
+	. = list()
+	for(var/mob/M in range(range,epicenter))
+		. += M
+	return .
+
+/proc/get_clients_in_range(var/range,var/atom/epicenter=usr)
+
+	. = list()
+	for(var/mob/M in all_mobs_with_clients)
+		if(get_dist(epicenter,M) > range)
+			continue
+		. += M
+	return .
+
 //Example Formats
 /*
 play('sound',mob) to play to that mob only
@@ -160,8 +175,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	else if(is_atom(location_or_list))
 		var/atom/A = location_or_list
 		var/turf/AT = get_turf(A)
-		for(var/mob/M in mobs_in_range(range_max,AT))
-			hearers += M
+		hearers += get_clients_in_range(range_max,AT)
 		if(!sound_source)
 			sound_source = AT
 	else
@@ -212,6 +226,8 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	for(var/mob/M in hearers)
 
 		CHECK_TICK
+
+		hearers -= M
 
 		var/client/C = M.client
 
@@ -274,5 +290,8 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 				CALLBACK("alert_level_change_\ref[src]",CEILING(L.ai.reaction_time*0.1,1),L.ai,/ai/proc/set_alert_level,alert,FALSE,alert_source)
 
 		if(C) C.receive_sound(created_sound)
+
+	if(length(hearers))
+		CRASH_SAFE("Warning: Found [length(hearers)] non-mobs in a hearers list.")
 
 	return created_sound

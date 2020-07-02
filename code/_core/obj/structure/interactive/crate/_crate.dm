@@ -6,7 +6,8 @@
 	icon_state = "crate"
 
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_WALL
+	collision_flags = FLAG_COLLISION_WALKING //Not wall because crawling.
+	layer = LAYER_OBJ_CRATE
 
 	var/list/crate_contents = list()
 
@@ -51,7 +52,6 @@
 		return TRUE
 
 	return ..()
-
 
 /obj/structure/interactive/crate/Uncross(var/atom/movable/O)
 

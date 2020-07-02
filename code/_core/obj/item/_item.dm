@@ -2,6 +2,8 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	layer = LAYER_OBJ_ITEM
+
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
 
 	var/rarity = RARITY_COMMON
