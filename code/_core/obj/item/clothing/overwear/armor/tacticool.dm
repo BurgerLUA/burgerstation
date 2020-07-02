@@ -2,7 +2,6 @@
 /obj/item/clothing/overwear/armor/slavticool
 	name = "\improper 'Slav-safe' LLC body armor"
 	icon = 'icons/obj/item/clothing/suit/squad_armor.dmi'
-	item_slot = SLOT_TORSO_A
 	desc = "Protecting against the capitalism since 2238."
 	desc_extended = "A sturdy chestplate with shoulder- and knee pads of bulletproof armor. Should protect against most small arms fire. Feels lighter than standard-issued vests."
 
@@ -50,6 +49,9 @@
 	desc = "RIP Tachenko."
 	desc_extended = "An experimental sample of a military exoskeleton. Was never mass-produced due to extraordinary cost and some design flaws. Despite this, it is in demand due to its ability to take on the weight of all carried equipment, and therefore small batches are made in underground facilities."
 	rarity = RARITY_UNCOMMON
+
+	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
 	defense_rating = list(
 		BLADE = 25,

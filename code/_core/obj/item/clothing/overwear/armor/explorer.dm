@@ -29,4 +29,6 @@
 	size = SIZE_6
 	weight = WEIGHT_4
 
+	blocks_clothing = SLOT_TORSO_U
+
 	value = 100

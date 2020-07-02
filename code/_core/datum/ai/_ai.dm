@@ -9,7 +9,14 @@
 	var/atom/objective_investigate
 
 	var/radius_find_enemy = AI_DETECTION_RANGE
+	var/radius_find_enemy_noise = AI_DETECTION_RANGE_NOISE
+	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
+	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
+
+	/*
+	var/radius_find_enemy = AI_DETECTION_RANGE
 	var/radius_find_enemy_alert = AI_DETECTION_RANGE_COMBAT
+	*/
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -602,8 +609,13 @@
 		return .
 
 	var/range_to_use = radius_find_enemy
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		range_to_use = radius_find_enemy_alert
+	switch(alert_level)
+		if(ALERT_LEVEL_NOISE)
+			range_to_use = radius_find_enemy_noise
+		if(ALERT_LEVEL_CAUTION)
+			range_to_use = radius_find_enemy_caution
+		if(ALERT_LEVEL_COMBAT)
+			range_to_use = radius_find_enemy_combat
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))

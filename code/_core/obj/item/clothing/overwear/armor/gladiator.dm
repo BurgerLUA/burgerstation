@@ -14,8 +14,6 @@
 	desc = "It belongs in a museum!"
 	desc_extended = "A set of real bronze Gladiator Armor. Weaker than modern armor, but much cooler."
 	color = "#B7A33E"
-	item_slot = SLOT_TORSO_A
-	worn_layer = LAYER_MOB_CLOTHING_ARMOR
 
 	defense_rating = list(
 		BLADE = 50,

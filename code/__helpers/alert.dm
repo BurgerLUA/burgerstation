@@ -1,5 +1,8 @@
 /proc/within_range(var/atom/point_A,var/atom/point_B,var/range=VIEW_RANGE)
 
+	point_A = get_turf(point_A)
+	point_B = get_turf(point_B)
+
 	if(!point_A || !point_B)
 		return FALSE
 

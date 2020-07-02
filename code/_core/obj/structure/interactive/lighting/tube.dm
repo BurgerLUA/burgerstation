@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "tube_light"
 
-	desired_light_power = 0.3
+	desired_light_power = 0.5
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
 

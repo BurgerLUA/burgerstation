@@ -3,7 +3,6 @@
 	icon = 'icons/obj/item/clothing/suit/bone_armor.dmi'
 	desc = "I've got a BONE to pick with ya!"
 	desc_extended = "Armor made from bones. Metal as fuck."
-	item_slot = SLOT_TORSO_A
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_RARE
 
@@ -22,5 +21,3 @@
 	weight = WEIGHT_4
 
 	value = 500
-
-	blocks_clothing = SLOT_TORSO_A

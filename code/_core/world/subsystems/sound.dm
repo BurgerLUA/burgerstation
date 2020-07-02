@@ -229,23 +229,23 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		hearers -= M
 
+		if(!created_sound)
+			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
+			return FALSE
+
+		var/turf/T = get_turf(M)
+		if(!T)
+			continue
+
 		var/client/C = M.client
 
 		if(C && ismob(C.eye))
 			M = C.eye
 
-		if(length(pos) && pos[3] != 0 && pos[3] != M.z) //0 just means that it should play locally
+		if(length(pos) && pos[3] != 0 && pos[3] != T.z) //0 just means that it should play locally
 			continue
-
-		if(!created_sound)
-			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
-			return FALSE
 
 		if(invisibility_check && M.see_invisible < invisibility_check)
-			continue
-
-		var/turf/T = get_turf(M)
-		if(!T)
 			continue
 
 		created_sound.environment = M.get_sound_environment()

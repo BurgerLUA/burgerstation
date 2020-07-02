@@ -175,13 +175,10 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 		var/turf/mob_turf = get_turf(M)
 
-		if(mob_turf.z != T.z)
+		if(!within_range(mob_turf,T,view_range))
 			continue
 
 		var/distance = get_dist(mob_turf,T)
-
-		if(distance > view_range)
-			continue
 
 		if(M.see_invisible < src.invisibility)
 			continue
