@@ -2,10 +2,10 @@
 	name = "research"
 	desc = "Yes, this is research."
 
-	icon = 'icons/hud/game_border.dmi'
-	icon_state = "game_border"
+	//icon = 'icons/hud/game_border.dmi'
+	icon_state = "none"
 
-	screen_loc = "LEFT,BOTTOM"
+	screen_loc = "CENTER,CENTER"
 
 	var/list/pieces = new/list(RESEARCH_BOARD_SIZE,RESEARCH_BOARD_SIZE)
 

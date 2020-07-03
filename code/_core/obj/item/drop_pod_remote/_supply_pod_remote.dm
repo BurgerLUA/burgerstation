@@ -6,6 +6,7 @@
 	icon_state = "inventory"
 
 	var/list/atom/movable/stored_object_types = list(/obj/structure/wip/meme)
+	var/obj/structure/interactive/crate/closet/supply_pod/supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod
 	var/charges = 1
 
 	value = 1000
@@ -26,7 +27,7 @@
 
 	var/turf/T = get_turf(object)
 
-	var/obj/structure/interactive/crate/closet/supply_pod/SP = new(T)
+	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)
 	for(var/k in stored_object_types)
 		var/atom/movable/M = new k(T)
 		INITIALIZE(M)
@@ -40,3 +41,43 @@
 	name = "drop pod remote - Gygax Combat Mech"
 	stored_object_types = list(/mob/living/vehicle/mech/gygax/equipped)
 	value = 5000
+
+/obj/item/supply_remote/crates/
+	value = 3000
+
+/obj/item/supply_remote/crates/nanotrasen
+	name = "drop pod remote - x4 NanoTrasen supply crates"
+	stored_object_types = list(
+		/obj/item/supply_crate/nanotrasen,
+		/obj/item/supply_crate/nanotrasen,
+		/obj/item/supply_crate/nanotrasen,
+		/obj/item/supply_crate/nanotrasen
+	)
+
+/obj/item/supply_remote/crates/syndicate
+	name = "drop pod remote - x4 Syndicate supply crates"
+	stored_object_types = list(
+		/obj/item/supply_crate/syndicate,
+		/obj/item/supply_crate/syndicate,
+		/obj/item/supply_crate/syndicate,
+		/obj/item/supply_crate/syndicate
+	)
+	supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod/syndicate
+
+/obj/item/supply_remote/crates/russian
+	name = "drop pod remote - x4 Russian supply crates"
+	stored_object_types = list(
+		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/russian
+	)
+
+/obj/item/supply_remote/crates/american
+	name = "drop pod remote - x4 American supply crates"
+	stored_object_types = list(
+		/obj/item/supply_crate/american,
+		/obj/item/supply_crate/american,
+		/obj/item/supply_crate/american,
+		/obj/item/supply_crate/american
+	)

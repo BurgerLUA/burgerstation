@@ -10,15 +10,13 @@
 		clear_research_pieces()
 		B.update_owner(null)
 		show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,1)
-		client.view = VIEW_RANGE
 		client.disable_controls = FALSE
 	else if(!B && allow_enable)
+		client.update_zoom(2)
 		client.disable_controls = TRUE
-		client.view = (RESEARCH_BOARD_SIZE+1)/2
 		show_hud(FALSE,FLAGS_HUD_MOB,FLAGS_HUD_NONE,1)
 		B = new
 		B.update_owner(src)
-
 
 /mob/living/proc/clear_research_pieces()
 	for(var/obj/hud/button/research/piece/P in buttons)

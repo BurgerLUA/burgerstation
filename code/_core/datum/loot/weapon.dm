@@ -382,4 +382,46 @@
 	loot_count = 6
 	chance_none = 25
 
+/loot/weapon/nagant_revolver
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/revolver/nagant,
+		/obj/item/weapon/ranged/bullet/revolver/nagant,
+		/obj/item/bullet_cartridge/revolver_762,
+	)
 
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/revolver/nagant = 1,
+		/obj/item/bullet_cartridge/revolver_762 = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/tribarrel_shotgun
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/revolver/tribarrel,
+		/obj/item/weapon/ranged/bullet/revolver/tribarrel,
+		/obj/item/storage/ammo/buckshot_23,
+		/obj/item/storage/ammo/slug_23,
+	)
+
+	loot_table = list(
+		/obj/item/storage/ammo/buckshot_23 = 1,
+		/obj/item/storage/ammo/slug_23 = 1
+	)
+	loot_count = 4
+	chance_none = 50
+
+/loot/weapon/russian_shotgun
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/storage/ammo/buckshot_23,
+		/obj/item/storage/ammo/slug_23,
+	)
+
+	loot_table = list(
+		/obj/item/storage/ammo/buckshot_23 = 1,
+		/obj/item/storage/ammo/slug_23 = 1
+	)
+	loot_count = 4
+	chance_none = 50

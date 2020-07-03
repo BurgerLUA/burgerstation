@@ -19,7 +19,8 @@
 	for(var/atom/movable/A in src.contents)
 		A.set_dir(dir)
 		A.force_move(previous_loc)
-		var/did_move = A.Move(current_loc ? current_loc : previous_loc,silent=TRUE)
+		//var/did_move = A.Move(current_loc ? current_loc : previous_loc,silent=TRUE)
+		/*
 		if(is_living(A))
 			var/mob/living/L = A
 			var/steps = max(1,steps_allowed)
@@ -27,7 +28,8 @@
 			if(did_move)
 				guessed_velocity *= 0.5
 			if(!L.dead)
-				L.add_status_effect(STAGGER,10+guessed_velocity,10+guessed_velocity,source=owner)
+				L.add_status_effect(STAGGER,1,1,source=owner)
+		*/
 
 	return .
 

@@ -337,7 +337,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
-			if(i == 1 && ismob(caller) && view_punch && view_punch_time > 1)
+			if(i == 1 && view_punch && ismob(caller))
 				var/mob/M = caller
 				if(M.client)
 					M.client.desired_recoil_x -= normx*view_punch*2

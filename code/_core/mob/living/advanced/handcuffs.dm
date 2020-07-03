@@ -5,6 +5,7 @@
 
 	if(handcuff_item)
 		handcuff_item.drop_item(src)
+		handcuff_item.force_move(src)
 		stored_handcuffs = handcuff_item
 
 	if(desired_handcuffs)
