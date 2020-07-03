@@ -5,11 +5,11 @@
 	class = /class/daddy/
 
 
-/mob/living/advanced/npc/unique/setup_name()
+/mob/living/advanced/npc/unique/daddy/setup_name()
 	name = "\improper THE LEGEND (SL 99)"
 	return TRUE
 
-/mob/living/advanced/npc/unique/Initialize()
+/mob/living/advanced/npc/unique/daddy/Initialize()
 
 	. = ..()
 

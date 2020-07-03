@@ -9,6 +9,7 @@
 	desired_light_power = 0.5
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
+	desired_light_angle = LIGHT_WIDE
 
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_WALL_ATTACHMENTS
@@ -81,7 +82,7 @@
 		var/icon/F = new /icon(icon,"tube_bulb")
 		F.Blend(desired_light_color,ICON_MULTIPLY)
 		I.Blend(F,ICON_OVERLAY)
-		set_light(on ? desired_light_range : 0, on ? desired_light_power : 0, desired_light_color)
+		set_light(on ? desired_light_range : 0, on ? desired_light_power : 0, desired_light_color, desired_light_angle)
 	else
 		set_light(FALSE)
 
@@ -99,14 +100,6 @@
 		add_overlay(IS)
 
 	return .
-
-/obj/structure/interactive/lighting/tube/strong
-	desired_light_power = 0.4
-	desired_light_range = 8
-
-/obj/structure/interactive/lighting/tube/stronger
-	desired_light_power = 0.5
-	desired_light_range = 16
 
 
 /obj/structure/interactive/lighting/tube/color
@@ -130,3 +123,17 @@
 		name = loc.color
 
 	return ..()
+
+/obj/structure/interactive/lighting/tube/station
+	color = COLOR_LIGHT
+	color_frame = COLOR_GREY
+	desired_light_power = 0.5
+	desired_light_range = 7
+
+/obj/structure/interactive/lighting/tube/station/strong
+	desired_light_power = 0.6
+	desired_light_range = 9
+
+/obj/structure/interactive/lighting/tube/station/stronger
+	desired_light_power = 0.7
+	desired_light_range = 12

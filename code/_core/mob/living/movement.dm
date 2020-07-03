@@ -179,8 +179,6 @@
 	return ..()
 */
 
-
-
 /mob/living/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
 	if(is_living(O))
