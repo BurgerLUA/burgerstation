@@ -12,7 +12,7 @@
 	value = 1000
 
 /obj/item/supply_remote/calculate_value()
-	return 10 + charges * value
+	return  charges ? charges * value : 10
 
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -43,7 +43,7 @@
 	value = 5000
 
 /obj/item/supply_remote/crates/
-	value = 3000
+	value = 5000
 
 /obj/item/supply_remote/crates/nanotrasen
 	name = "drop pod remote - x4 NanoTrasen supply crates"

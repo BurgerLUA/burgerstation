@@ -17,3 +17,7 @@
 	INITIALIZE(P)
 	src.force_move(P) //Move it to contents.
 	return P
+
+
+/atom/movable/proc/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
+	return TRUE

@@ -70,7 +70,7 @@
 
 	if(old_living)
 		for(var/mob/living/L in old_living)
-			if(L.move_delay > 0 && attacker != L)
+			if(!L.dead && L.move_delay > 0 && attacker != L)
 				return L
 
 	return src
