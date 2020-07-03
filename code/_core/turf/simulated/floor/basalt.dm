@@ -2,7 +2,7 @@
 	name = "basalt"
 
 	icon = 'icons/turf/floor/basalt.dmi'
-	icon_state = "basalt[rand(0,12)]"
+	icon_state = "basalt0"
 
 	real_icon = 'icons/turf/floor/basalt_smooth.dmi'
 	real_icon_state = "floor"
@@ -17,9 +17,5 @@
 	delay_modifier = 1.1
 
 /turf/simulated/floor/basalt/New(var/desired_loc)
-	if(prob(10))
-		icon_state = "basalt[rand(1,12)]"
-		desired_light_range = 4
-		desired_light_color = "#FF8300"
-
+	icon_state = "basalt [rand(1,15)]"
 	. = ..()
