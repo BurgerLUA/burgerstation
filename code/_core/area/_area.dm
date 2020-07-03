@@ -102,7 +102,7 @@ var/global/list/all_areas = list()
 
 		var/light_count = 0
 
-		for(var/turf/simulated/T in contents)
+		for(var/turf/T in contents)
 			if(setup_sunlight(T))
 				light_count++
 

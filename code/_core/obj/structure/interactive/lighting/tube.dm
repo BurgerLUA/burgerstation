@@ -9,7 +9,7 @@
 	desired_light_power = 0.5
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
-	desired_light_angle = LIGHT_WIDE
+	desired_light_angle = LIGHT_TUBE
 
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_WALL_ATTACHMENTS
@@ -97,6 +97,7 @@
 		IS.plane = PLANE_LIGHTING
 		IS.layer = 99
 		IS.color = desired_light_color
+		IS.alpha = 100
 		add_overlay(IS)
 
 	return .
