@@ -128,16 +128,20 @@
 
 /obj/item/pinpointer/crew/
 	name = "crew pinpointer"
-	desc_extended = "Use this to track and locate objects. This one tracks positions of Nanotrasen crew."
+	desc_extended = "Use this to track and locate objects. This one tracks positions of NanoTrasen crew."
 	icon_state = "blue"
 
 	value = 20
+
+	var/desired_loyalty = "NanoTrasen"
 
 /obj/item/pinpointer/crew/click_self(var/mob/caller)
 
 	var/list/possible_crew = list()
 
 	for(var/mob/living/advanced/player/P in all_mobs_with_clients)
+		if(P.loyalty_tag != desired_loyalty)
+			continue
 		var/name_mod = "[P.name] ([dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"
 		possible_crew[name_mod] = P
 
@@ -156,6 +160,13 @@
 	start_thinking(src)
 
 	return TRUE
+
+/obj/item/pinpointer/crew/syndicate
+	name = "syndicate pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks positions of Syndicate Raiders."
+	icon_state = "red"
+	desired_loyalty = "Syndicate"
+	value = 1000
 
 /obj/item/pinpointer/landmark/
 	name = "landmark pinpointer"

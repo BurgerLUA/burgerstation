@@ -6,7 +6,7 @@
 
 	var/area/A = get_area(P)
 
-	var/is_on_burgerstation = istype(A,/area/interior/ship)
+	var/is_on_burgerstation = istype(A,/area/burgerstation)
 
 	if(is_on_burgerstation)
 		dialogue_options["hello"] = list(

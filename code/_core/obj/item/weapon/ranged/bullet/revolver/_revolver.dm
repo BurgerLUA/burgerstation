@@ -2,6 +2,8 @@
 	open = FALSE
 	var/current_chamber = 1
 
+	var/can_shoot_while_open = FALSE
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)
@@ -48,7 +50,7 @@
 
 /obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)
 
-	if(open)
+	if(!can_shoot_while_open && open)
 		return FALSE
 
 	return ..()

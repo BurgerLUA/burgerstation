@@ -238,6 +238,7 @@
 	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
+	enabled = TRUE
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	return TRUE
@@ -440,6 +441,8 @@
 
 	if(A && A.qdeleting)
 		return FALSE
+
+	enabled = TRUE
 
 	var/atom/old_attack = objective_attack
 

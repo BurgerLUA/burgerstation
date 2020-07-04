@@ -71,7 +71,7 @@
 	name = "Staggered"
 	desc = "You're staggered!"
 	id = STAGGER
-	minimum = 5
+	minimum = 1
 	maximum = 10
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)

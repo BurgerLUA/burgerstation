@@ -158,7 +158,7 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
+		/obj/item/pinpointer/crew/syndicate,
 		/obj/item/container/food/package/junkfood/syndicate,
 		/obj/item/container/beaker/can/dr_gibb
 	)

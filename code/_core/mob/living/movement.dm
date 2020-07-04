@@ -179,8 +179,6 @@
 	return ..()
 */
 
-
-
 /mob/living/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
 	if(is_living(O))
@@ -188,4 +186,12 @@
 		if(L.loyalty_tag == src.loyalty_tag)
 			return TRUE
 
+	return ..()
+
+
+/mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
+	if(hit_wall)
+		add_status_effect(STUN,5,5,source = owner)
+	else
+		add_status_effect(STAGGER,2,2,source = owner)
 	return ..()

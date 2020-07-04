@@ -35,9 +35,24 @@
 	else if(alpha > 200)
 		prefix = "strong "
 
-	name = "[prefix]dye core ([color ? color : "#FFFFFF"])"
+	name = "[prefix][initial(name)] ([color ? color : "#FFFFFF"])"
 
 	return TRUE
+
+/obj/item/slime_core/custom
+	name = "custom slime core"
+	value = 1000
+	alpha = 255
+
+/obj/item/slime_core/custom/click_self(var/mob/caller)
+	var/choice = input("What would you like the color to be?") as color|null
+	if(choice)
+		color = choice
+		update_sprite()
+	return TRUE
+
+/obj/item/slime_core/calculate_value()
+	return value
 
 /obj/item/slime_core/red
 	color = "#FF0000"

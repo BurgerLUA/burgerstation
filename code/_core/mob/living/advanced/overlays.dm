@@ -4,7 +4,7 @@
 		k = "\ref[object]"
 
 	if(overlays_assoc[k])
-		CRASH_SAFE("An overlay of reference [k] already exists!")
+		CRASH_SAFE("An overlay of reference [k] already exists! Removing and replacing...")
 		remove_overlay(k)
 
 	var/image/overlay/O = new /image/overlay

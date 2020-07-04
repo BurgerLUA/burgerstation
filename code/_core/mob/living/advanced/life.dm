@@ -97,10 +97,7 @@ mob/living/advanced/revive()
 	. = ..()
 
 	for(var/k in overlays_assoc)
-		var/image/overlay/O = overlays_assoc[k]
-		O.plane = plane
-
-	update_all_blends()
+		update_overlay_tracked(k, desired_plane = plane)
 
 	return .
 
@@ -109,7 +106,6 @@ mob/living/advanced/revive()
 	. = ..()
 
 	drop_held_objects(src.loc)
-
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k, desired_plane = plane)

@@ -90,13 +90,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
-		/obj/item/magazine/rifle_939/groza,
-		/obj/item/magazine/rifle_939/groza,
+		/obj/item/magazine/rifle_939,
+		/obj/item/magazine/rifle_939,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza = 1,
-		/obj/item/magazine/rifle_939/groza = 4,
+		/obj/item/magazine/rifle_939 = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -135,13 +135,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
-		/obj/item/magazine/rifle_939/val,
-		/obj/item/magazine/rifle_939/val,
+		/obj/item/magazine/rifle_939,
+		/obj/item/magazine/rifle_939,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val = 1,
-		/obj/item/magazine/rifle_939/val = 4,
+		/obj/item/magazine/rifle_939 = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -150,13 +150,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
-		/obj/item/magazine/rifle_939/vintorez,
-		/obj/item/magazine/rifle_939/vintorez,
+		/obj/item/magazine/rifle_939,
+		/obj/item/magazine/rifle_939,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val = 1,
-		/obj/item/magazine/rifle_939/vintorez = 4,
+		/obj/item/magazine/rifle_939 = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -301,13 +301,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
-		/obj/item/magazine/rifle_762,
-		/obj/item/magazine/rifle_762,
+		/obj/item/magazine/sniper_762,
+		/obj/item/magazine/sniper_762,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod = 1,
-		/obj/item/magazine/rifle_762 = 8,
+		/obj/item/magazine/sniper_762 = 8,
 	)
 	loot_count = 8
 	chance_none = 25
@@ -382,4 +382,46 @@
 	loot_count = 6
 	chance_none = 25
 
+/loot/weapon/nagant_revolver
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/revolver/nagant,
+		/obj/item/weapon/ranged/bullet/revolver/nagant,
+		/obj/item/bullet_cartridge/revolver_762,
+	)
 
+	loot_table = list(
+		/obj/item/weapon/ranged/bullet/revolver/nagant = 1,
+		/obj/item/bullet_cartridge/revolver_762 = 4,
+	)
+	loot_count = 6
+	chance_none = 25
+
+/loot/weapon/tribarrel_shotgun
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/revolver/tribarrel,
+		/obj/item/weapon/ranged/bullet/revolver/tribarrel,
+		/obj/item/storage/ammo/buckshot_23,
+		/obj/item/storage/ammo/slug_23,
+	)
+
+	loot_table = list(
+		/obj/item/storage/ammo/buckshot_23 = 1,
+		/obj/item/storage/ammo/slug_23 = 1
+	)
+	loot_count = 4
+	chance_none = 50
+
+/loot/weapon/russian_shotgun
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
+		/obj/item/storage/ammo/buckshot_23,
+		/obj/item/storage/ammo/slug_23,
+	)
+
+	loot_table = list(
+		/obj/item/storage/ammo/buckshot_23 = 1,
+		/obj/item/storage/ammo/slug_23 = 1
+	)
+	loot_count = 4
+	chance_none = 50

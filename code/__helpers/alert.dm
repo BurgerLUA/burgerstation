@@ -32,7 +32,6 @@
 			continue
 		if(!AI.is_enemy(alert_source))
 			continue
-		//world.log << "\The [M.get_debug_name()] is alerted because of [alert_source.get_debug_name()]. They are now investigating [epicenter.get_debug_name()]."
 		CALLBACK("alert_level_change_\ref[M]",CEILING(AI.reaction_time*0.1,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter)
 
 	return TRUE

@@ -13,7 +13,9 @@
 		/loot/weapon/svt = 10,
 		/loot/weapon/val = 10,
 		/loot/weapon/vintorez = 10,
-		/loot/weapon/svd = 10
+		/loot/weapon/svd = 10,
+		/loot/weapon/nagant_revolver = 10,
+		/loot/weapon/russian_shotgun = 10
 	)
 
 /loot/supply_crate/russian/pre_spawn(var/atom/movable/M)
@@ -32,7 +34,8 @@
 		/loot/weapon/civil_defense_pistol = 10,
 		/loot/weapon/civilian_carbine = 10,
 		/loot/weapon/tungsten = 10,
-		/loot/weapon/commander_revolver = 10
+		/loot/weapon/commander_revolver = 10,
+		/loot/weapon/tribarrel_shotgun = 10
 	)
 
 /loot/supply_crate/american

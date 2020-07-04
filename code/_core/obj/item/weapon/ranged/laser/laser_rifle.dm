@@ -36,6 +36,8 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
+	value = 1200
+
 /obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
 	return 0.01
 

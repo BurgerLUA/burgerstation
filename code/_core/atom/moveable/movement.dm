@@ -57,10 +57,18 @@
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
-	if(loc)
-		loc.Exited(src, new_loc)
-
 	var/atom/old_loc = loc
+
+	if(old_loc)
+		old_loc.Exited(src, new_loc)
+		/*
+		if(loc)
+			for(var/atom/movable/AM in old_loc.contents)
+				if(AM == src)
+					continue
+				AM.Uncrossed(src)
+		*/
+
 	loc = new_loc
 
 	if(loc)

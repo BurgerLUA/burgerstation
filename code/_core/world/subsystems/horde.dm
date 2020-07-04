@@ -52,6 +52,7 @@ SUBSYSTEM_DEF(horde)
 	if(!ENABLE_HIJACK)
 		return FALSE
 
+	/*
 	var/area/exterior/grass/village/A = all_areas[/area/exterior/grass/village/]
 	if(!A)
 		log_error("HORDE MODE: Could not find the village area!")
@@ -63,6 +64,7 @@ SUBSYSTEM_DEF(horde)
 		desired_player_count -= 1
 
 	return desired_player_count > 0
+	*/
 
 
 /subsystem/horde/on_life()

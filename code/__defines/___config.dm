@@ -1,5 +1,6 @@
 //Loads your character instantly at a marker point.
 #define ENABLE_INSTALOAD FALSE
+#define ENABLE_STOPLAG FALSE
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
@@ -62,7 +63,6 @@
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
-#define ENABLE_STOPLAG TRUE
 
 #define ENABLE_HIJACK FALSE
 
@@ -135,7 +135,7 @@
 #define TARGETABLE_LIMBS list(BODY_HEAD, BODY_TORSO, BODY_GROIN, BODY_ARM_LEFT, BODY_ARM_RIGHT , BODY_HAND_LEFT, BODY_HAND_RIGHT, BODY_LEG_LEFT, BODY_LEG_RIGHT, BODY_FOOT_LEFT, BODY_FOOT_RIGHT	)
 #define TARGETABLE_LIMBS_KV list(BODY_HEAD = 0, BODY_TORSO = 0, BODY_GROIN = 0, BODY_ARM_LEFT = 0, BODY_ARM_RIGHT = 0, BODY_HAND_LEFT = 0, BODY_HAND_RIGHT = 0, BODY_LEG_LEFT = 0, BODY_LEG_RIGHT = 0, BODY_FOOT_LEFT = 0, BODY_FOOT_RIGHT = 0	)
 
-#define AIR_TEMPERATURE_MOD 0.5 //How much the air has an impact on reagent temperature.
+#define AIR_TEMPERATURE_MOD 3 //How much the air has an impact on reagent temperature.
 
 #define DEFAULT_COLORS list("#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871","#FE0000")
 

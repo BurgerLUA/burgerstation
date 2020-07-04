@@ -44,7 +44,7 @@
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
 	if(length(overlays) >= 100)
-		log_error("Warning: [get_debug_name()] exceeds 100 overlays!")
+		CRASH_SAFE("Warning: [get_debug_name()] exceeds 100 overlays![is_datum(desired_overlay) ? " Overlay name: [desired_overlay.get_debug_name()]." : ""]")
 		return FALSE
 
 	overlays += desired_overlay

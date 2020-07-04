@@ -5,7 +5,6 @@
 	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
 
-	projectile_speed = 16
 	shoot_delay = 2
 
 	automatic = FALSE
@@ -20,7 +19,7 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN_SMALL
 
-	size = SIZE_3
+	size = SIZE_2
 	weight = WEIGHT_2
 
 	bullet_length_min = 18

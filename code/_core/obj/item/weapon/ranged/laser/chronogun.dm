@@ -28,6 +28,8 @@
 	size = SIZE_3
 	weight = WEIGHT_4
 
+	value = 2000
+
 /obj/item/weapon/ranged/energy/chronogun/get_static_spread() //Base spread
 	return 0.005
 
