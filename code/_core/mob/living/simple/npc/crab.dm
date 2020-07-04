@@ -10,7 +10,7 @@
 	value = 25
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/crab/
+		/obj/item/container/food/dynamic/fish/crab/
 	)
 
 	ai = /ai/
@@ -63,13 +63,13 @@
 	class = /class/crab/king
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/crab/,
-		/obj/item/container/food/dynamic/meat/crab/,
-		/obj/item/container/food/dynamic/meat/crab/,
-		/obj/item/container/food/dynamic/meat/crab/,
-		/obj/item/container/food/dynamic/meat/crab/,
-		/obj/item/container/food/dynamic/meat/crab/,
-		/obj/item/container/food/dynamic/meat/crab/
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/
 	)
 
 

@@ -1371,6 +1371,9 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
+#include "maps\horde\01_bluespace.dmm"
+#include "maps\horde\02_burgerstation.dmm"
+#include "maps\horde\03_island.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

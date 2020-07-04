@@ -53,3 +53,13 @@
 	icon = I
 
 	return ..()
+
+/obj/item/container/food/dynamic/fish/penguin/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/penguin,15)
+	reagents.add_reagent(/reagent/nutrition/fat/penguin,5)
+	return ..()
+
+/obj/item/container/food/dynamic/fish/crab/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/crab,15)
+	reagents.add_reagent(/reagent/nutrition/fat/crab,5)
+	return ..()

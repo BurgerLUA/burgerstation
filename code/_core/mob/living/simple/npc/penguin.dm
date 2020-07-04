@@ -26,8 +26,8 @@
 	)
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/penguin/,
-		/obj/item/container/food/dynamic/meat/penguin/
+		/obj/item/container/food/dynamic/fish/penguin/,
+		/obj/item/container/food/dynamic/fish/penguin/
 	)
 
 	mob_size = MOB_SIZE_ANIMAL
