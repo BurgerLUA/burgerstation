@@ -704,7 +704,7 @@
 "nB" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "nC" = (/obj/structure/smooth/table/wood,/obj/item/container/beaker/can/mountain_wind,/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
 "nD" = (/obj/structure/interactive/chair/wood{dir = 8},/turf/simulated/floor/wood/brown,/area/lz_001/forest/village/interior/bar)
-"nE" = (/obj/structure/smooth/table/wood{step_y = 31},/turf/simulated/wall/wood/brown,/area/lz_001/forest/village/interior/bar)
+"nE" = (/obj/structure/smooth/table/wood,/turf/simulated/wall/wood/brown,/area/lz_001/forest/village/interior/bar)
 
 (1,1,1) = {"
 aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaefKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKfKhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUhUebebebebebebecececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececececec
