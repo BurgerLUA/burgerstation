@@ -283,7 +283,7 @@ client/verb/air_test(var/pressure as num)
 	set name = "Force Save Everyone (DANGER)"
 	set category = "Debug"
 
-	for(var/mob/living/advanced/player/P)
+	for(var/mob/living/advanced/player/P in world)
 		if(!P.ckey_last)
 			continue
 		try

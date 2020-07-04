@@ -122,7 +122,8 @@ var/global/list/all_shuttle_controlers = list()
 		var/exposed_to_space = FALSE
 		for(var/direction in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(S,direction)
-			if(istype(T.loc,/area/space/))
+			var/area/A2 = T.loc
+			if(A2.is_space)
 				exposed_to_space = TRUE
 
 		if(!exposed_to_space)

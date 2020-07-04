@@ -151,7 +151,6 @@
 
 	return ..()
 
-
 /*
 /turf/dropped_on_by_object(var/atom/caller,var/atom/object)
 
@@ -163,3 +162,6 @@
 
 	return ..()
 */
+
+/turf/proc/setup_sunlight(var/sunlight_freq=VIEW_RANGE*0.5)
+	return FALSE

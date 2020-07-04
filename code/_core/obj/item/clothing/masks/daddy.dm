@@ -19,3 +19,10 @@
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	value = 200
+
+	hidden_organs = list(
+		BODY_HEAD = TRUE,
+		BODY_HAIR_HEAD = TRUE,
+		BODY_HAIR_FACE = TRUE,
+		BODY_EYES = TRUE
+	)

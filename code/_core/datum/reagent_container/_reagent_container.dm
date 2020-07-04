@@ -122,19 +122,37 @@
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
-		temperature_mod += stored_reagents[r_id] * R.temperature_mod
+		var/volume = stored_reagents[r_id]
+		temperature_mod += (volume * R.temperature_mod)
 
 	var/temperature_diff = desired_temperature - average_temperature
 
-	if(average_temperature > desired_temperature)
-		average_temperature = max(desired_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
-	else
-		average_temperature = min(desired_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
+	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
+
+	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
+		average_temperature = max(desired_temperature,average_temperature + temperature_change)
+	else //If we're colder than we need to be.
+		average_temperature = min(desired_temperature,average_temperature + temperature_change)
+
+	 . = FALSE
 
 	for(var/r_id in stored_reagents_temperature)
+		var/reagent/R = REAGENT(r_id)
+		var/volume = stored_reagents[r_id]
 		stored_reagents_temperature[r_id] = average_temperature
+		if(R.heated_reagent && R.heated_reagent_temp < average_temperature)
+			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
+			add_reagent(R.heated_reagent,remove_reagent(r_id,CEILING(min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume),REAGENT_ROUNDING)))
+			. = TRUE
+		else if(R.cooled_reagent && R.cooled_reagent_temp > average_temperature)
+			var/temperature_cool_mod = (R.cooled_reagent_temp/max(0.1,average_temperature)) ** 2
+			add_reagent(R.cooled_reagent,remove_reagent(r_id,CEILING(min(R.cooled_reagent_amount + (volume * R.cooled_reagent_mul * temperature_cool_mod),volume),REAGENT_ROUNDING)))
+			. = TRUE
 
-	process_recipes()
+	if(.)
+		return TRUE
+
+	process_recipes() //Don't worry, this is only called when there was a temperature change and nothing else.
 
 	return TRUE
 
@@ -339,10 +357,10 @@
 	if(amount == 0)
 		return 0
 
-	. = amount
+	. = amount //This is the REAL WORLD AMOUNT that is added. This is used for removing stuff.
 
 	if(amount > 0)
-		amount = R.on_add(src,amount,previous_amount)
+		amount = R.on_add(src,amount,previous_amount) //This is the VIRTUAL AMOUNT that is actually added.
 
 	if(amount)
 		stored_reagents[reagent_type] += amount
@@ -359,7 +377,7 @@
 	if(should_update)
 		update_container()
 
-	return . //The reason why we don't return . is for a very good reason, trust me.
+	return .
 
 /reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
 	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes)

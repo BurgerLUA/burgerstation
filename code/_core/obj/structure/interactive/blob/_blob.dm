@@ -44,11 +44,10 @@
 	. = FALSE
 
 	for(var/mob/living/L in range(1,src))
-		if(!can_attack(L,src,null,damage_type))
+		if(!src.can_attack(L,src,null,damage_type))
 			continue
-			src.attack(src,L,precise = TRUE)
+		src.attack(src,L,precise = TRUE)
 		if(L.loc != src.loc && src.loc.Enter(L,L.loc))
-			visible_message(span("danger","\The [src.name] tries to absorb \the [L.name]!"))
 			L.force_move(src.loc)
 		. = TRUE
 

@@ -87,11 +87,11 @@
 
 	if(islist(status_type))
 		for(var/v in status_type)
-			if(src.status_effects[v])
-				return TRUE
-			else if(and)
-				return FALSE
-		if(and)
+			if(!src.status_effects[v])
+				if(and)
+					return FALSE
+				else
+					continue
 			return TRUE
 	else if(src.status_effects[status_type])
 		return TRUE

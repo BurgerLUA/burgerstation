@@ -59,6 +59,11 @@
 
 	if(loc)
 		loc.Exited(src, new_loc)
+		if(loc)
+			for(var/atom/movable/AM in loc.contents)
+				if(AM == src)
+					continue
+				AM.Uncrossed(src)
 
 	var/atom/old_loc = loc
 	loc = new_loc

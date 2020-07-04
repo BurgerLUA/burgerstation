@@ -16,3 +16,10 @@
 	)
 
 	value = 5
+
+	worn_layer = LAYER_MOB_CLOTHING_MASK
+
+	hidden_organs = list(
+		BODY_HAIR_HEAD = TRUE,
+		BODY_HAIR_FACE = TRUE
+	)

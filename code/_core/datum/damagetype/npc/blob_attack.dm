@@ -9,14 +9,14 @@
 	attack_damage_base = list(
 		BLUNT = 10,
 		HEAT = 10,
-		FATIGUE = 5
+		BIO = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 25,
 		HEAT = 25,
-		FATIGUE = 10
+		BIO = 0
 	)
 
 	attribute_stats = list(

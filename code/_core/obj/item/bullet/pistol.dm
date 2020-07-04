@@ -160,6 +160,7 @@
 
 /obj/item/bullet_cartridge/pistol_45/Generate()
 	item_count_current = 6
+	update_sprite()
 	return ..()
 
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK

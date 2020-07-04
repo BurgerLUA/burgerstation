@@ -243,3 +243,4 @@ var/global/saved_icons = 0
 			O.invisibility = 101
 
 	return TRUE
+

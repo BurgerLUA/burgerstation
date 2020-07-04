@@ -10,7 +10,7 @@
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 25,
-		PIERCE = 0
+		PIERCE = 25
 	)
 
 	falloff = VIEW_RANGE

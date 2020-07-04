@@ -73,3 +73,20 @@
 		L.add_status_effect(FATIGUE,value,value)
 
 	return value
+
+/health/mob/living/get_total_loss(var/include_fatigue = TRUE)
+
+	if(!is_living(owner))
+		return ..()
+
+	var/mob/living/L = owner
+
+	var/returning_value = 0
+	for(var/damage_type in damage)
+		if(!include_fatigue && damage_type == FATIGUE)
+			continue
+		if(damage_type == TOX && L.has_status_effect(ADRENALINE))
+			continue
+		returning_value += damage[damage_type]
+
+	return returning_value
