@@ -103,9 +103,11 @@ var/global/list/all_areas = list()
 
 		var/light_count = 0
 
+		/*
 		for(var/turf/T in contents)
 			if(setup_sunlight(T))
 				light_count++
+		*/
 
 		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
 
@@ -120,10 +122,10 @@ var/global/list/all_areas = list()
 	if(roof)
 		return FALSE
 
-	if(T.setup_sunlight(sunlight_freq))
+	if(T.setup_turf_light(sunlight_freq))
 		return FALSE
 
-	return (T.x % sunlight_freq) && (T.y % sunlight_freq)
+	return !((T.x % sunlight_freq) || (T.y % sunlight_freq))
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 

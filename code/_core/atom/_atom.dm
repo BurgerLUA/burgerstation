@@ -63,9 +63,6 @@
 /atom/proc/should_smooth_with(var/turf/T)
 	return FALSE
 
-/turf/should_smooth_with(var/turf/T)
-	return (T.corner_category == corner_category)
-
 /atom/proc/on_destruction(var/atom/caller,var/damage = FALSE) //Called when destructed by tools or damage.
 	return TRUE
 
