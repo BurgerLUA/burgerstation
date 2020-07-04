@@ -95,3 +95,4 @@
 #define LIGHT_SEMI 180
 #define LIGHT_WIDE 90
 #define LIGHT_NARROW 45
+#define LIGHT_TUBE null

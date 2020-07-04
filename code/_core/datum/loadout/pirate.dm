@@ -25,7 +25,7 @@
 		/obj/item/clothing/pants/syndicate,
 		/obj/item/clothing/overwear/coat/hos,
 		/obj/item/clothing/glasses/sun,
-		/obj/item/clothing/head/hat/beret/black,
+		/obj/item/clothing/head/hat/hos,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/feet/shoes/black_boots,

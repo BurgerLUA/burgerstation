@@ -55,3 +55,15 @@
 		var/image/I = new/image(icon,"[icon_state]_[open ? "open" : "closed"]")
 		add_overlay(I)
 	return .
+
+/obj/structure/interactive/crate/closet/supply_pod/bluespace
+	name = "bluespace supply pod"
+	icon_state = "bluespacepod"
+
+/obj/structure/interactive/crate/closet/supply_pod/centcomm
+	name = "centcomm supply pod"
+	icon_state = "centcommpod"
+
+/obj/structure/interactive/crate/closet/supply_pod/syndicate
+	name = "syndicate supply pod"
+	icon_state = "syndiepod"

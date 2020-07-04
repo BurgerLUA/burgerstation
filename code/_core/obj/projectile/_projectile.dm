@@ -296,11 +296,13 @@
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 
+	/*
 	for(var/mob/MO in contents)
 		if(MO.client)
 			MO.client.pixel_x = vel_x
 			MO.client.pixel_y = vel_y
 			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
+	*/
 
 	if(impact_effect_turf && isturf(hit_atom))
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)

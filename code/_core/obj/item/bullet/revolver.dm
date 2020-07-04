@@ -111,4 +111,32 @@
 
 /obj/item/bullet_cartridge/revolver_300/Generate()
 	item_count_current = 5
+	update_sprite()
+	return ..()
+
+
+/obj/item/bullet_cartridge/revolver_762
+	name = "\improper 7.62x38mmR revolver cartridge"
+	desc = "For revolvers that require 7.62x38mmR revolver ammo."
+	icon = 'icons/obj/item/bullet/762_revolver.dmi'
+
+	bullet_diameter = 7.62
+	bullet_length = 38
+	bullet_color = COLOR_BULLET
+
+	item_count_max = 7
+	item_count_max_icon = 7
+
+	projectile = /obj/projectile/bullet/firearm/revolver/
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_762
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	size = 0.06
+	weight = 0.06
+	value = 0.1
+
+/obj/item/bullet_cartridge/revolver_762/Generate()
+	item_count_current = 7
+	update_sprite()
 	return ..()

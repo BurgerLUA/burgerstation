@@ -58,6 +58,10 @@
 
 /turf/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
+	for(var/atom/movable/M in contents)
+		if(!src.Enter(M))
+			return src
+
 	. = ..()
 
 	if(!.)

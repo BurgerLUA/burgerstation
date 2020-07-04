@@ -45,9 +45,7 @@
 					if(damage_type == BRUTE && current_amount == 0)
 						O.bleeding = FALSE
 
-
 			if(should_update)
-				world.log << "Updating: [O]."
 				A.update_overlay_tracked("\ref[O]")
 
 	return .

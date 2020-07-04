@@ -243,7 +243,7 @@
 
 /obj/hud/button/research/piece/update_sprite()
 	. = ..()
-	screen_loc = "LEFT+[x_p],BOTTOM+[y_p]"
+	screen_loc = "CENTER+[x_p-RESEARCH_BOARD_SIZE*0.5],CENTER+[y_p-RESEARCH_BOARD_SIZE*0.5]"
 	return .
 
 
