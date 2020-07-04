@@ -1,5 +1,6 @@
 //Loads your character instantly at a marker point.
 #define ENABLE_INSTALOAD FALSE
+#define ENABLE_STOPLAG FALSE
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
@@ -62,7 +63,6 @@
 #define ENABLE_MAPLOAD TRUE
 #define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
-#define ENABLE_STOPLAG TRUE
 
 #define ENABLE_HIJACK FALSE
 
