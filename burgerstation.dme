@@ -141,6 +141,8 @@
 #include "code\_core\area\_area.dm"
 #include "code\_core\area\burgerstation\_burgerstation.dm"
 #include "code\_core\area\centcomm\_centcomm.dm"
+#include "code\_core\area\hellscape\_hellscape.dm"
+#include "code\_core\area\hellscape\jungle.dm"
 #include "code\_core\area\lz_001\_lz_001.dm"
 #include "code\_core\area\lz_001\caves\_caves.dm"
 #include "code\_core\area\lz_001\desert\_desert.dm"
@@ -1390,8 +1392,8 @@
 #include "interface\interface.dmf"
 #include "maps\horde\01_bluespace.dmm"
 #include "maps\horde\02_burgerstation.dmm"
+#include "maps\horde\03_hellscape.dmm"
 #include "maps\horde\03_island.dmm"
-#include "maps\horde\05_hellscape.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

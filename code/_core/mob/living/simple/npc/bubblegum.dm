@@ -98,6 +98,7 @@
 	return TRUE
 
 /mob/living/simple/npc/bubblegum/get_movement_delay()
+
 	. = ..()
 
 	if(charge_steps)
