@@ -56,6 +56,7 @@ var/global/list/all_areas = list()
 	var/list/turf/sunlight_turfs = list()
 
 	var/is_space = FALSE
+	var/roof = FALSE //Does this area have a roof?
 
 	var/defend = FALSE //Set to true if you're supposed to defend this area.
 
@@ -116,23 +117,19 @@ var/global/list/all_areas = list()
 
 /area/proc/setup_sunlight(var/turf/T)
 
-	if((T.x % sunlight_freq) || (T.y % sunlight_freq))
+	if(roof)
 		return FALSE
 
-	T.set_light(sunlight_freq+1,desired_light_power,desired_light_color)
+	if(T.setup_sunlight(sunlight_freq))
+		return FALSE
 
-	return TRUE
+	return (T.x % sunlight_freq) && (T.y % sunlight_freq)
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	if(is_player(enterer))
 
 		var/mob/living/advanced/player/P = enterer
-
-		/*
-		if(safe)
-			P.spawn_protection = SECONDS_TO_DECISECONDS(GENERATE_PROTECTION_TIME)
-		*/
 
 		if(!players_inside)
 			players_inside = list()
