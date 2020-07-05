@@ -1,1 +1,0 @@
-/area/lz_001/outpost

@@ -141,6 +141,8 @@
 #include "code\_core\area\_area.dm"
 #include "code\_core\area\exterior.dm"
 #include "code\_core\area\interior.dm"
+#include "code\_core\area\shooting_range.dm"
+#include "code\_core\area\space.dm"
 #include "code\_core\area\transit\_transit.dm"
 #include "code\_core\area\transit\arrivals.dm"
 #include "code\_core\area\transit\dropship.dm"

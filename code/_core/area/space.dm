@@ -34,6 +34,7 @@
 	desired_light_power = 0
 	desired_light_color = 0
 
+
 /area/space/light
 	icon_state = "spess_light"
 	sunlight_freq = 1
