@@ -8,11 +8,9 @@
 
 	plane = PLANE_WATER
 
-/turf/simulated/floor/lava/setup_turf_light(var/sunlight_freq=VIEW_RANGE*0.5)
-	if( (src.x % FLOOR(sunlight_freq*0.5, 1)) || (src.y % FLOOR(sunlight_freq*0.5, 1)) )
-		return FALSE
-	src.set_light(sunlight_freq+1,desired_light_power,"#CE631C")
-	return TRUE
+	desired_light_power = 0.5
+	desired_light_range = 8
+	desired_light_color = "#CE631C"
 
 /turf/simulated/floor/lava/Crossed(var/atom/movable/M)
 	if(is_living(M))

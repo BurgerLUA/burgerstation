@@ -21,27 +21,18 @@ var/global/list/all_areas = list()
 	var/map_color_b = rgb(0,0,255,255)
 	var/map_color_a = rgb(0,0,0,255)
 
-	var/dynamic_lighting_overlay_color = FALSE
-	var/list/lighting_overlay_color_day = LIGHTING_BASE_MATRIX
-	var/list/lighting_overlay_color_night = LIGHTING_BASE_MATRIX
-
 	var/ambient_sound
 	var/list/random_sounds = list()
 	var/list/tracks = list()
 
 	var/level_multiplier = 1 //Adjust the level multiplier for mobs that spawn here using spawners.
 
-	var/area_light_power = 0
-
 	var/list/mob/living/advanced/player/players_inside
 
 	var/hazard //The id of the hazard
 
 	var/sunlight_freq = 0
-
-	desired_light_range = 0
-	desired_light_power = 0
-	desired_light_color = 0
+	var/sunlight_color = "#FFFFFF"
 
 	//var/assoc_wishgranter //The wishgranter ID this is area is associated with, if any.
 
@@ -99,16 +90,11 @@ var/global/list/all_areas = list()
 
 /area/Initialize()
 
-	if(sunlight_freq > 0 && desired_light_range && desired_light_power && desired_light_color)
-
+	if(sunlight_freq > 0 && sunlight_color)
 		var/light_count = 0
-
-		/*
 		for(var/turf/T in contents)
 			if(setup_sunlight(T))
 				light_count++
-		*/
-
 		LOG_DEBUG("Initialized Area \"[name]\" with [light_count] sun lights.")
 
 	if(weather)
@@ -122,10 +108,21 @@ var/global/list/all_areas = list()
 	if(roof)
 		return FALSE
 
+	if(T.desired_light_power && T.desired_light_range)
+		return FALSE //Already has a light.
+
 	if(T.setup_turf_light(sunlight_freq))
+		return TRUE
+
+	if((T.x % sunlight_freq) || (T.y % sunlight_freq))
 		return FALSE
 
-	return !((T.x % sunlight_freq) || (T.y % sunlight_freq))
+	T.desired_light_power = 1
+	T.desired_light_range = sunlight_freq
+	T.desired_light_color = sunlight_color
+	T.update_atom_light()
+
+	return TRUE
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
 

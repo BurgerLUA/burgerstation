@@ -9,10 +9,6 @@
 	icon = 'icons/turf/space/abyss.dmi'
 	icon_state = "abyss"
 
-	desired_light_power = 1
-	desired_light_range = 2
-	desired_light_color = "#FFFFFF"
-
 /turf/simulated/wall/hole
 	icon = 'icons/lighting.dmi'
 	icon_state = "white"

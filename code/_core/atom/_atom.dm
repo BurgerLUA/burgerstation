@@ -41,6 +41,16 @@
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
 
+	var/desired_light_range = 0 //Range of the light.
+	var/desired_light_power = 0 //Power of the light.
+	var/desired_light_color = "#FFFFFF" //Color of the light.
+	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
+
+/atom/proc/update_atom_light()
+	if(desired_light_range > 0 && desired_light_power > 0)
+		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
+	return TRUE
+
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
 	if(length(overlays) >= 100)
@@ -103,6 +113,8 @@
 	if(health)
 		health = new health(src)
 		INITIALIZE(health)
+
+	update_atom_light()
 
 	return ..()
 

@@ -11,10 +11,9 @@
 /area/lz_001/caves/lava
 	name = "lava cave"
 	icon_state = "lava_cave"
+
 	sunlight_freq = 8
-	desired_light_range = 9
-	desired_light_power = 1
-	desired_light_color ="#7F3B11"
+	sunlight_color ="#7F3B11"
 
 	random_sounds = list(
 		'sound/ambient/lavacaves_1.ogg',
@@ -49,10 +48,16 @@
 	icon_state = "lagoon"
 	roof = FALSE
 
+	sunlight_freq = 8
+	sunlight_color ="#8CB08F"
+
 /area/lz_001/caves/knight/
 	name = "\improper Knight's Landing"
 	icon_state = "day"
 	roof = FALSE
+
+	sunlight_freq = 8
+	sunlight_color ="#AEB05D"
 
 /area/lz_001/caves/knight/cave
 	name = "\improper Knight's Landing Cave"
