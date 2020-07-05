@@ -9,4 +9,3 @@
 #define CLIENT_TICKS_PER_SLOW_CLIENT_TICKS (CLIENT_TICK_SLOW / CLIENT_TICK)
 
 #define PROJECTILE_TICK 1 //Ticks per projectile tick interval
-#define STATUS_TICK 1 //Ticks per status effect interval

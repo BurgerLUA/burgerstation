@@ -29,6 +29,21 @@
 
 	health_coefficient = 0.5
 
+	has_pain = TRUE
+
+
+/obj/item/organ/foot/on_pain()
+
+	. = ..()
+
+	if(is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		if(A.add_status_effect(STAGGER,5,5))
+			A.to_chat(span("danger","Your [src.name] recoils in pain, throwing you off balance!"))
+			return TRUE
+
+	return .
+
 /obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	for(var/obj/hud/inventory/H in src.inventories)
 		var/obj/item/I = H.get_top_worn_object()

@@ -388,6 +388,18 @@ mob/living/advanced/Login()
 	if(health.stamina_current <= 0)
 		return FALSE
 
+	var/list/organs_to_check = list(
+		BODY_FOOT_RIGHT,
+		BODY_FOOT_LEFT,
+		BODY_LEG_LEFT,
+		BODY_LEG_RIGHT
+	)
+
+	for(var/k in organs_to_check)
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O.health && O.health.health_current <= 0)
+			return FALSE
+
 	return ..()
 
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)

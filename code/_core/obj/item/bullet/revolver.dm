@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/revolver_38
 	name = "\improper .38 revolver cartridge"
-	desc = "For revolvers that require .38 ammo."
+	desc = "For when your gun needs something a little 38 Special."
+	desc_extended = "For revolvers that require .38 ammo."
 	icon = 'icons/obj/item/bullet/38.dmi'
 
 
@@ -23,7 +24,8 @@
 
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
-	desc = "For revolvers that require .357 ammo."
+	desc = "DRAW!"
+	desc_extended = "For revolvers that require .357 ammo."
 	icon = 'icons/obj/item/bullet/357.dmi'
 
 
@@ -46,7 +48,8 @@
 
 /obj/item/bullet_cartridge/revolver_44
 	name = "\improper .44 revolver cartridge"
-	desc = "For revolvers that require .44 revolver ammo."
+	desc = "I'm feeling lucky"
+	desc_extended = "For revolvers that require .44 revolver ammo."
 	icon = 'icons/obj/item/bullet/44.dmi'
 
 
@@ -68,7 +71,8 @@
 
 /obj/item/bullet_cartridge/pistol_22
 	name = "\improper .22 pistol cartridge"
-	desc = "For pistols and revolvers that require .22 ammo."
+	desc = "For when you need to mildly bother someone."
+	desc_extended = "For pistols and revolvers that require .22 ammo."
 	icon = 'icons/obj/item/bullet/22.dmi'
 
 
@@ -90,7 +94,8 @@
 
 /obj/item/bullet_cartridge/revolver_300
 	name = "\improper .300 revolver cartridge"
-	desc = "For revolvers that require .300 revolver ammo."
+	desc = "For pocket sized bear deterrers, ask for no substitute."
+	desc_extended = "For revolvers that require .300 revolver ammo."
 	icon = 'icons/obj/item/bullet/300.dmi'
 
 	bullet_diameter = 7.62
@@ -117,7 +122,8 @@
 
 /obj/item/bullet_cartridge/revolver_762
 	name = "\improper 7.62x38mmR revolver cartridge"
-	desc = "For revolvers that require 7.62x38mmR revolver ammo."
+	desc = "Isn't this just a cut down rifle bullet?"
+	desc_extended = "For revolvers that require 7.62x38mmR revolver ammo."
 	icon = 'icons/obj/item/bullet/762_revolver.dmi'
 
 	bullet_diameter = 7.62

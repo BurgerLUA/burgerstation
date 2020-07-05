@@ -10,4 +10,4 @@
 		if(distance > desired_range)
 			continue
 		new/obj/effect/explosion_particle(T)
-		T.act_explode(desired_owner,desired_source,desired_turf,desired_range * (desired_range - distance),desired_loyalty)
+		T.act_explode(desired_owner,desired_source,desired_turf,0.5 + ((1 + desired_range) - distance)*0.5,desired_loyalty)

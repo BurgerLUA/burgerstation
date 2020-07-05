@@ -20,7 +20,7 @@
 		/obj/item/container/food/dynamic/meat/raw_beefman
 	)
 
-/mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
+/mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		play('sound/weapons/beef/beef_grab.ogg',atom_damaged)

@@ -177,6 +177,7 @@
 /mob/living/simple/npc/ash_drake/post_death()
 	..()
 	icon_state = "dead"
+	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
 	update_sprite()
 
 

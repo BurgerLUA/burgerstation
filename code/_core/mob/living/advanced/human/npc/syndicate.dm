@@ -76,6 +76,6 @@
 	level_multiplier = 3
 
 /mob/living/advanced/npc/syndicate/map/quadruple
-	level_multiplier = 3
+	level_multiplier = 4
 
 

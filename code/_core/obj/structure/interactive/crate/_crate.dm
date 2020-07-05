@@ -23,7 +23,7 @@
 
 	var/collect_contents_on_initialize = TRUE
 
-	var/loot/loot_to_spawn
+	var/loot/loot
 
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
@@ -35,7 +35,7 @@
 
 	return .
 
-/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
+/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(!open && damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		visible_message(span("warning","\The [src.name] shoots open!"))
@@ -146,10 +146,10 @@
 
 /obj/structure/interactive/crate/proc/open(var/mob/caller)
 
-	if(loot_to_spawn)
-		var/loot/L = LOOT(loot_to_spawn)
+	if(loot)
+		var/loot/L = LOOT(loot)
 		L.do_spawn(src.loc)
-		loot_to_spawn = null
+		loot = null
 
 	for(var/atom/movable/M in crate_contents)
 		crate_contents -= M

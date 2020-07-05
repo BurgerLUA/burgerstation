@@ -63,3 +63,11 @@
 					F.try_extract(T)
 
 	return ..()
+
+/obj/shuttle_controller/golf
+	name = "golf shuttle controler"
+	desc = "Controls the golf shuttle."
+
+	transit_start = "golf_shuttle_station"
+	transit_bluespace = "golf_shuttle_bluespace"
+	transit_end = "golf_shuttle_landing"
