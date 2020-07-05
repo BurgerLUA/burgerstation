@@ -18,3 +18,7 @@
 /obj/structure/interactive/crate/coffin
 	name = "coffin"
 	icon_state = "coffin"
+
+/obj/structure/interactive/crate/necro
+	name = "necro"
+	icon_state = "necro_chest"

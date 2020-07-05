@@ -23,6 +23,8 @@
 
 	var/collect_contents_on_initialize = TRUE
 
+	var/loot/loot_to_spawn
+
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()
@@ -143,6 +145,11 @@
 	return TRUE
 
 /obj/structure/interactive/crate/proc/open(var/mob/caller)
+
+	if(loot_to_spawn)
+		var/loot/L = LOOT(loot_to_spawn)
+		L.do_spawn(src.loc)
+		loot_to_spawn = null
 
 	for(var/atom/movable/M in crate_contents)
 		crate_contents -= M

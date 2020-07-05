@@ -126,6 +126,8 @@
 	var/dan_layer_above = LAYER_MOB_HELD
 	var/dan_layer_below = LAYER_MOB_NONE
 
+	var/obj/item/clothing/additional_clothing_parent
+
 /obj/item/get_base_value()
 	return initial(value) * item_count_current
 
@@ -182,6 +184,8 @@
 
 
 /obj/item/Destroy()
+
+	additional_clothing_parent = null
 
 	for(var/obj/hud/inventory/I in inventories)
 		qdel(I)
@@ -383,6 +387,9 @@
 	if(delete_on_drop)
 		qdel(src)
 		return TRUE
+
+	if(additional_clothing_parent)
+		src.force_move(additional_clothing_parent)
 
 	if(light)
 		light.update(src)

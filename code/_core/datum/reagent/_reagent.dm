@@ -10,7 +10,7 @@
 
 	var/color = "#FFFFFF" //Reagent's color.
 
-	var/temperature_mod = 0.15 //Lower is better.
+	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive.
 
 	var/metabolism_stomach = 1 //How many units of the reagent to metabolize per second.
 	var/metabolism_blood = 1 //How many units of the reagent to metabolize per second.
