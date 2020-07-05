@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/pistol_10mm/
 	name = "\improper 10mm pistol cartridge"
-	desc = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
 	icon = 'icons/obj/item/bullet/10mm.dmi'
 
 	item_count_max = 5
@@ -23,7 +24,8 @@
 
 /obj/item/bullet_cartridge/pistol_50/
 	name = "\improper .50 pistol cartridge"
-	desc = "For pistols that require .50."
+	desc = "Impractical, but cool as fuck."
+	desc_extended = "For pistols that require .50."
 	icon = 'icons/obj/item/bullet/50ae.dmi'
 
 	item_count_max = 5
@@ -47,7 +49,8 @@
 
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
-	desc = "For pistols, revolvers, and smgs that require 12mm ammo."
+	desc = "The pistol round of the future, today!"
+	desc_extended = "For pistols, revolvers, and smgs that require 12mm ammo."
 	icon = 'icons/obj/item/bullet/12mm.dmi'
 
 	item_count_max = 5
@@ -69,7 +72,8 @@
 
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
-	desc = "For pistols, revolvers, and smgs that require 9mm ammo."
+	desc = "The average bullet for the average shooter."
+	desc_extended = "For pistols, revolvers, and smgs that require 9mm ammo."
 	icon = 'icons/obj/item/bullet/9mm.dmi'
 
 	item_count_max = 5
@@ -92,7 +96,8 @@
 
 /obj/item/bullet_cartridge/pistol_4mm/
 	name = "\improper 4.6x30mm smg cartridge"
-	desc = "For smgs that require 4.6x30mm ammo."
+	desc = "Fuck Armor, honestly."
+	desc_extended = "For smgs that require 4.6x30mm ammo."
 	icon = 'icons/obj/item/bullet/8mm.dmi'
 
 	item_count_max = 5
@@ -115,7 +120,8 @@
 
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
-	desc = "For pistols, revolvers, and smgs that require .40 ammo."
+	desc = "Different than 9mm!"
+	desc_extended = "For pistols, revolvers, and smgs that require .40 ammo."
 	icon = 'icons/obj/item/bullet/40.dmi'
 
 	item_count_max = 5
@@ -138,7 +144,8 @@
 
 /obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"
-	desc = "For pistols and smgs that requre .45 ammo."
+	desc = "Can't go wrong with the classics."
+	desc_extended = "For pistols and smgs that requre .45 ammo."
 	icon = 'icons/obj/item/bullet/45.dmi'
 
 	item_count_max = 6
@@ -164,7 +171,8 @@
 
 /obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
 	name = "\improper 8mm pistol bullet"
-	desc = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
+	desc = "It's like a baby bullet. Adorable."
+	desc_extended = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
 	icon = 'icons/obj/item/bullet/8mm.dmi'
 
 	item_count_max = 5

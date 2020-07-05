@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/bolt
 	name = "crossbow bolt"
-	desc = "A crudely designed bolt meant for crossbows."
+	desc = "For when you need to go medieval on someone's ass."
+	desc_extended = "A crudely constructed bolt meant for crossbow"
 	icon = 'icons/obj/item/bullet/bolt.dmi'
 	item_count_max = 6
 	item_count_max_icon = 6
