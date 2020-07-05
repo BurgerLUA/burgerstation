@@ -23,3 +23,6 @@
 
 /turf/simulated/floor/tile/shuttle/cyan
 	color = COLOR_CYAN
+
+/turf/simulated/floor/tile/shuttle/green
+	color = "#449944"
