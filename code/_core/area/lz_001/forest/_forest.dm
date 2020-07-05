@@ -1,11 +1,9 @@
 /area/lz_001/forest
 	name = "Forest"
 	icon_state = "forrest"
-	desired_light_color = "#CCB06A"
 	cheese_type = /reagent/nutrition/cheese/cheddar
 	sunlight_freq = 8
-	desired_light_range = 9
-	desired_light_power = 1
+	sunlight_color = "#CCB06A"
 
 /area/lz_001/forest/village
 	name = "First Light Village"

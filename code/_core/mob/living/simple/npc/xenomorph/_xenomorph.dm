@@ -18,8 +18,8 @@
 		/obj/item/container/food/dynamic/meat/xeno/
 	)
 
-	loyalty_tag = "xeno"
-	iff_tag = "xeno"
+	loyalty_tag = "Alien"
+	iff_tag = "Alien"
 
 	armor_base = list(
 		BLADE = 80,

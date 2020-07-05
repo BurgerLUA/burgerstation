@@ -15,6 +15,7 @@
 	desired_light_range = VIEW_RANGE*0.5
 	desired_light_power = 0.5
 	desired_light_color = "#FFD175"
+	desired_light_angle = LIGHT_OMNI
 
 	attack_delay = 5
 	attack_delay_max = 10
@@ -24,7 +25,14 @@
 /obj/item/weapon/melee/torch/click_self(var/atom/caller)
 	enabled = !enabled
 	update_sprite()
+	update_atom_light()
 	return TRUE
+
+/obj/item/weapon/melee/torch/update_atom_light()
+	if(enabled)
+		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
+	else
+		set_light(FALSE)
 
 /obj/item/weapon/melee/torch/update_icon()
 
@@ -33,13 +41,11 @@
 		icon_state = "[initial(icon_state)]_on"
 		icon_state_held_left = "[initial(icon_state_held_left)]_on"
 		icon_state_held_right = "[initial(icon_state_held_right)]_on"
-		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	else
 		damage_type = initial(damage_type)
 		icon_state = initial(icon_state)
 		icon_state_held_left = initial(icon_state_held_left)
 		icon_state_held_right = initial(icon_state_held_right)
-		set_light(FALSE)
 
 	update_held_icon()
 

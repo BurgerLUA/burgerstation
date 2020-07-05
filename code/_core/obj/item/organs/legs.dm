@@ -27,6 +27,8 @@
 
 	health_coefficient = 0.75
 
+	has_pain = TRUE
+
 /obj/item/organ/leg/left
 	name = "left leg"
 	id = BODY_LEG_LEFT

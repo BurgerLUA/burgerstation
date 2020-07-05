@@ -11,11 +11,6 @@
 
 	health_base = 500
 
-	var/boss_state = 0
-	//0 = walking
-	//1 = flying
-	//2 = landing
-
 	attack_range = 1
 
 	armor_base = list(

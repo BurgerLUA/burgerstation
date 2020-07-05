@@ -27,7 +27,7 @@
 
 /obj/item/bullet_cartridge/shotgun/slug
 	name = "\improper 12 gauge slug"
-	desc = "A slug shell, load it into a shotgun to use."
+	desc = "Shoots one really big bullet."
 	desc_extended = "This shell doesn't spread alot, and only has one projectile."
 	icon_state = "slug"
 
@@ -45,7 +45,7 @@
 
 /obj/item/bullet_cartridge/shotgun/buckshot
 	name = "\improper 12 gauge buckshot shell"
-	desc = "A buckshot shell, load it into a shotgun to use."
+	desc = "Shoots a lot of small bullets at once."
 	desc_extended = "This shell is not very accurate and has many projectiles."
 	icon_state = "buckshot"
 
@@ -66,7 +66,7 @@
 
 /obj/item/bullet_cartridge/shotgun/fire
 	name = "\improper 12 gauge drake breath shell"
-	desc = "A drake breath shell that shoots incendiary rounds."
+	desc = "Sets everything on fire."
 	desc_extended = "A magic imbued shotgun shell that shoots 3 high damaging incendiary rounds. Don't ask how it works."
 	icon_state = "fire"
 

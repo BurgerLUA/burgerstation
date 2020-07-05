@@ -34,6 +34,7 @@
 		if(health)
 			health.restore()
 		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),/material/glass)
+		update_atom_light()
 		update_sprite()
 	else
 		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),/material/steel)
@@ -70,6 +71,13 @@
 	update_sprite()
 	return .
 
+/obj/structure/interactive/lighting/tube/update_atom_light()
+	if(on && desired_light_color)
+		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
+	else
+		set_light(FALSE)
+	return TRUE
+
 /obj/structure/interactive/lighting/tube/update_icon()
 
 	icon = initial(icon)
@@ -82,9 +90,6 @@
 		var/icon/F = new /icon(icon,"tube_bulb")
 		F.Blend(desired_light_color,ICON_MULTIPLY)
 		I.Blend(F,ICON_OVERLAY)
-		set_light(on ? desired_light_range : 0, on ? desired_light_power : 0, desired_light_color, desired_light_angle)
-	else
-		set_light(FALSE)
 
 	icon = I
 

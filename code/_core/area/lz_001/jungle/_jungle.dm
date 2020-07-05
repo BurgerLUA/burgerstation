@@ -4,9 +4,8 @@
 	weather = WEATHER_RAIN
 	ambient_temperature = T0C + 40
 
-	desired_light_range = 8
-	desired_light_power = 1
-	desired_light_color = "#29332C"
+	sunlight_freq = 8
+	sunlight_color = "#29332C"
 
 	cheese_type = /reagent/nutrition/cheese/brabander
 

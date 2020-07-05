@@ -71,9 +71,11 @@
 
 /mob/living/simple/npc/bubblegum/post_death()
 	. = ..()
+	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
 	charge_steps = 0
 	charge_dir = 0
 	icon_state = "dead"
+	update_sprite()
 	return .
 
 /mob/living/simple/npc/bubblegum/proc/blood_attack()

@@ -1,5 +1,5 @@
 /atom/movable/proc/get_movement_delay()
-	return movement_delay
+	return movement_delay * MOVEMENT_DELAY_MOD
 
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
 
@@ -61,13 +61,11 @@
 
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
-		/*
 		if(loc)
 			for(var/atom/movable/AM in old_loc.contents)
 				if(AM == src)
 					continue
 				AM.Uncrossed(src)
-		*/
 
 	loc = new_loc
 

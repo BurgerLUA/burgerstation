@@ -130,6 +130,7 @@
 	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
+		temperature_change *= 3
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
 	else //If we're colder than we need to be.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)

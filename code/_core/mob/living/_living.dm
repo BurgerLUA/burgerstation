@@ -360,7 +360,7 @@
 	if(loyalty_tag && desired_loyalty == loyalty_tag)
 		return ..()
 
-	if(magnitude > 5)
+	if(magnitude > 3)
 
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y
@@ -374,20 +374,20 @@
 			x_mod *= 1/max
 			y_mod *= 1/max
 
-		throw_self(owner,null,null,null,x_mod*magnitude,y_mod*magnitude)
-
-	else if(magnitude > 3)
-		add_status_effect(STUN,20,20)
+		throw_self(owner,null,null,null,x_mod*16,y_mod*16,steps_allowed = magnitude)
 
 	else if(magnitude > 2)
-		add_status_effect(STAGGER,10,10)
+		add_status_effect(STUN,20,20)
 
-	for(var/i=1,i<=clamp(1+(magnitude*2),1,4),i++)
+	else if(magnitude > 1)
+		add_status_effect(STAGGER,5,5, source = epicenter)
+
+	for(var/i=1,i<=clamp(2+(magnitude),1,5),i++)
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
 		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 		var/damagetype/D = all_damage_types[/damagetype/explosion/]
-		D.do_damage(source,src,source,object_to_damage,owner,magnitude*0.5)
+		D.do_damage(source,src,source,object_to_damage,owner,magnitude)
 
 	return ..()

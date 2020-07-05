@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/rifle_308
 	name = "\improper .308 rifle bullet"
-	desc = "For rifles that require .308."
+	desc = "The ol' reliable."
+	desc_extended = "For rifles that require .308."
 	icon = 'icons/obj/item/bullet/762.dmi'
 
 
@@ -30,14 +31,16 @@
 
 /obj/item/bullet_cartridge/rifle_308/nato
 	name = "\improper 7.62mm rifle bullet"
-	desc = "For rifles that require 7.62mm"
+	desc = "The choice for Marksmen and Machinegunners."
+	desc_extended = "For rifles that require 7.62mm"
 	icon = 'icons/obj/item/bullet/762.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 
 
 /obj/item/bullet_cartridge/rifle_308/short
 	name = "\improper 7.62x39mm Soviet rifle bullet"
-	desc = "For soviet rifles that require 7.62x39mm"
+	desc = "Kalashnikov's Magnum Opus."
+	desc_extended = "For soviet rifles that require 7.62x39mm"
 	icon = 'icons/obj/item/bullet/762_short.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/short
 
@@ -47,7 +50,8 @@
 
 /obj/item/bullet_cartridge/rifle_308/long
 	name = "\improper 7.62mm rifle bullet"
-	desc = "For rifles that require 7.62mmx54mmR"
+	desc = "Killed more Fascists than any competing round!"
+	desc_extended = "For rifles that require 7.62mmx54mmR"
 	icon = 'icons/obj/item/bullet/762.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/long
 
@@ -56,7 +60,8 @@
 
 /obj/item/bullet_cartridge/rifle_223
 	name = "\improper .223 rifle bullet"
-	desc = "For rifles and machineguns that requre .223."
+	desc = "The round of choice for soldier cosplayers."
+	desc_extended = "For rifles and machineguns that requre .223."
 	icon = 'icons/obj/item/bullet/223.dmi'
 
 
@@ -79,7 +84,8 @@
 
 /obj/item/bullet_cartridge/rifle_223/nato
 	name = "\improper 5.56mm rifle bullet"
-	desc = "For rifles and machineguns that requre 5,56mm."
+	desc = "The poodle shooter's favorite."
+	desc_extended = "For rifles and machineguns that requre 5,56mm."
 
 	item_count_max = 5
 	item_count_max_icon = 5
@@ -91,7 +97,8 @@
 
 /obj/item/bullet_cartridge/rifle_545mm
 	name = "\improper 5.45mm rifle bullet"
-	desc = "For rifles and machineguns that requre 5,45mm."
+	desc = "Smaller than 7.62x39, but boy does it leave a nasty wound!"
+	desc_extended = "For rifles and machineguns that requre 5,45mm."
 	icon = 'icons/obj/item/bullet/223.dmi'
 
 	bullet_diameter = 5.45

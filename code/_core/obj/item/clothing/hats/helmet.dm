@@ -1,3 +1,6 @@
+/obj/item/clothing/head/helmet/
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
+
 /obj/item/clothing/head/helmet/knight/
 
 	hidden_organs = list(

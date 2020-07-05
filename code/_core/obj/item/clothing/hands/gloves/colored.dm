@@ -36,6 +36,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
@@ -73,6 +74,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 1
@@ -117,6 +119,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 2
@@ -158,6 +161,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -173,6 +177,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -190,6 +195,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3

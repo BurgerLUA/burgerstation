@@ -198,3 +198,7 @@ obj/structure/interactive/computer/console/remote_flight/charlie
 obj/structure/interactive/computer/console/remote_flight/delta
 	name = "remote delta shuttle console"
 	desired_shuttle_controller = /obj/shuttle_controller/delta
+
+obj/structure/interactive/computer/console/remote_flight/golf
+	name = "remote golf shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/golf

@@ -20,6 +20,8 @@
 
 	dyeable = TRUE
 
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
+
 /obj/item/clothing/head/hat/paperbag/update_icon()
 
 	. = ..()

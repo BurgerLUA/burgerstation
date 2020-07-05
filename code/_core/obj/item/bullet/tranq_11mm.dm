@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/tranq_11m
 	name = "\improper 11.43x25mm tranquilizer cartridge"
-	desc = "For tranquilizers."
+	desc = "Makes people sleep. Aim at the head for best results."
+	desc = "For guns that use tranquilizer rounds."
 	icon = 'icons/obj/item/bullet/tranq.dmi'
 
 	item_count_max = 5

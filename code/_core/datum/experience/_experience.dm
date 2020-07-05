@@ -64,7 +64,8 @@
 	experience += xp_to_add
 
 	var/current_level = get_current_level()
-	if(last_level != current_level)
+	if(last_level < current_level)
+		world.log << "From [last_level] to [current_level]."
 		on_level_up(last_level,current_level)
 
 	return xp_to_add

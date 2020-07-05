@@ -7,7 +7,10 @@
 
 	defense_rating = list(
 		HOLY = -100,
-		DARK = 100
+		DARK = 100,
+		BLADE = -25,
+		BLUNT = -25,
+		PIERCE = -25
 	)
 
 	protected_limbs = TARGETABLE_LIMBS

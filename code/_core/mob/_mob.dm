@@ -94,6 +94,7 @@
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = SEE_BLACKNESS
+	see_invisible = INVISIBILITY_DEFAULT
 	return TRUE
 
 /mob/Destroy()

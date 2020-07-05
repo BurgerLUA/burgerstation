@@ -50,7 +50,7 @@
 	return ..()
 
 
-/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/stealthy=FALSE)
+/obj/item/container/food/dynamic/cake/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 

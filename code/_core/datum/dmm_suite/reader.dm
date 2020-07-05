@@ -194,7 +194,7 @@ dmm_suite
 
 //-- Preloading ----------------------------------------------------------------
 
-turf
+/turf/
 	var
 		dmm_suite/preloader/dmm_preloader
 

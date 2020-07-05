@@ -1,6 +1,6 @@
 /obj/hud/button/cash_money
-	name = "telecrystals"
-	desc = "Favorite currency of the syndicate."
+	name = "credits"
+	desc = "Currency of the universe."
 
 	var/amount = 0
 

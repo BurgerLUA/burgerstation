@@ -140,10 +140,12 @@
 	for(var/obj/item/organ/eye/E in labeled_organs)
 		sight |= E.sight_mod
 		vision |= E.vision_mod
+		see_invisible = max(E.see_invisible,see_invisible)
 
 	for(var/obj/item/clothing/glasses/G in worn_objects)
 		sight |= G.sight_mod
 		vision |= G.vision_mod
+		see_invisible = max(G.see_invisible,see_invisible)
 
 	return .
 
@@ -385,6 +387,18 @@ mob/living/advanced/Login()
 
 	if(health.stamina_current <= 0)
 		return FALSE
+
+	var/list/organs_to_check = list(
+		BODY_FOOT_RIGHT,
+		BODY_FOOT_LEFT,
+		BODY_LEG_LEFT,
+		BODY_LEG_RIGHT
+	)
+
+	for(var/k in organs_to_check)
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O.health && O.health.health_current <= 0)
+			return FALSE
 
 	return ..()
 

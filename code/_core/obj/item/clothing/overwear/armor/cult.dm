@@ -60,15 +60,18 @@
 	defense_rating = list(
 		BLADE = 25,
 		BLUNT = 25,
-		PIERCE = 25,
+		PIERCE = 50,
 		LASER = -75,
-		MAGIC = -75,
+		MAGIC = 25,
 		HEAT = 50,
 		COLD = 50,
-		HOLY = -25,
+		HOLY = -75,
+		DARK = 100
 	)
 
 	size = SIZE_5
 	weight = WEIGHT_5
 
 	value = 300
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/cult)

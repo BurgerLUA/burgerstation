@@ -85,11 +85,6 @@
 		if(object_data["total_charge"])
 			S.total_charge = object_data["total_charge"]
 
-	if(is_currency(O))
-		var/obj/item/currency/C = O
-		if(object_data["value"])
-			C.value = object_data["value"]
-
 	if(is_powercell(O))
 		var/obj/item/powercell/P = O
 		if(object_data["charge_current"])
@@ -325,11 +320,6 @@
 		if(istype(I,/obj/item/clothing/ears/headset))
 			var/obj/item/clothing/ears/headset/R = I
 			returning_list["stored_radio"] = get_item_data(R.stored_radio)
-
-		if(is_currency(I))
-			var/obj/item/currency/C = I
-			if(C.value > 1)
-				returning_list["value"] = C.value
 
 		if(is_bullet_gun(I))
 			var/obj/item/weapon/ranged/bullet/BG = I

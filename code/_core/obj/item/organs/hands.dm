@@ -43,6 +43,23 @@
 		ATTACK_TYPE_UNARMED = 0.25
 	)
 
+	has_pain = TRUE
+
+/obj/item/organ/hand/on_pain()
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
+	var/did_drop = FALSE
+	for(var/obj/hud/inventory/I in inventories)
+		if(length(I.drop_held_objects(T)))
+			did_drop = TRUE
+	if(did_drop && is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		A.to_chat(span("danger","You cry in pain as your [src.name] recoils from your injury!"))
+
+	return . || did_drop
+
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
 
 	if(is_living(attacker))
