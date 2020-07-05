@@ -1,4 +1,4 @@
-/area/lz_001/jungle/
+/area/lz_001/jungle
 	name = "jungle"
 	icon_state = "jungle"
 	weather = WEATHER_RAIN

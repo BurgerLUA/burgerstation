@@ -25,6 +25,17 @@
 
 	roof = FALSE //I mean yes, but actually no.
 
+/area/exterior/volcanic
+	name = "volcanic"
+	icon_state = "volcanic"
+	weather = WEATHER_VOLCANIC
+	ambient_temperature = T0C + 80
+
+	desired_light_range = 8
+	desired_light_power = 1
+
+	cheese_type = /reagent/nutrition/cheese/brabander
+
 /area/lz_001/caves/crab
 	name = "\improper King Crab's Burrow"
 	icon_state = "king_crab"

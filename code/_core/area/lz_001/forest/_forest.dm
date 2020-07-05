@@ -23,5 +23,7 @@
 	icon_state = "chemistry"
 
 
-
-
+/area/lz_001/forest/river
+	name = "river forest"
+	icon_state = "river"
+	desired_light_color = "#6D95A5"
