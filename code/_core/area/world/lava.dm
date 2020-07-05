@@ -13,6 +13,7 @@
 
 	desired_light_range = 8
 	desired_light_power = 1
+	desired_light_color = "#684934"
 
 /area/world/lava/exterior/setup_sunlight(var/turf/T)
 
