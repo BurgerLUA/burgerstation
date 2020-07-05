@@ -65,3 +65,7 @@
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
+
+/mob/living/simple/npc/goliath/broodmother/post_death()
+	..()
+	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))

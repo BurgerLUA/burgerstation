@@ -65,6 +65,20 @@
 
 	var/has_life = TRUE
 
+	var/has_pain = FALSE
+
+/obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+
+	if(has_pain && atom_damaged == src && ((src.health && src.health.health_current >= 0) || critical_hit_multiplier))
+		on_pain()
+		for(var/obj/item/organ/O in attached_organs)
+			O.on_pain()
+
+	return ..()
+
+/obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
+	return FALSE
+
 /obj/item/organ/Destroy()
 	attached_organ = null
 	attached_organs.Cut()
