@@ -15,6 +15,11 @@
 
 	plane = PLANE_WATER
 
+	desired_light_frequency = 4
+	desired_light_power = 0.5
+	desired_light_range = 8
+	desired_light_color = "#158996"
+
 /turf/simulated/floor/river/walkable
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE

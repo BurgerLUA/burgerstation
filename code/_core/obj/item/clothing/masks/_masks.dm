@@ -4,4 +4,4 @@
 
 	protected_limbs = list(BODY_HEAD)
 
-	blocks_clothing = SLOT_EYES | SLOT_FACE_WRAP
+	blocks_clothing = SLOT_EYES | SLOT_FACE_WRAP | SLOT_FACE

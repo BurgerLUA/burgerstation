@@ -147,8 +147,11 @@ var/global/list/all_areas = list()
 	if(enterer.area != src)
 		if(ismob(enterer) && !is_observer(enterer))
 			var/mob/M = enterer
-			if(M.client && ambient_sound && (!enterer.area || enterer.area.ambient_sound != ambient_sound))
-				play_ambient_sound(ambient_sound,list(enterer),environment = sound_environment,loop = TRUE)
+			if(M.client)
+				if(!ambient_sound)
+					stop_ambient_sounds(M)
+				else if(!enterer.area || enterer.area.ambient_sound != ambient_sound)
+					play_ambient_sound(ambient_sound,list(M),environment = sound_environment,loop = TRUE)
 
 		enterer.area = src
 

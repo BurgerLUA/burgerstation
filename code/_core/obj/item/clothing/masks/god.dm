@@ -35,3 +35,5 @@
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	value = 10000
+
+	item_slot = SLOT_HEAD | SLOT_FACE

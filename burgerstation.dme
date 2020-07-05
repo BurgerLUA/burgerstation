@@ -925,7 +925,6 @@
 #include "code\_core\obj\item\crafting\pill_press.dm"
 #include "code\_core\obj\item\crafting\smelter.dm"
 #include "code\_core\obj\item\crafting\workbench.dm"
-#include "code\_core\obj\item\currency\_currency.dm"
 #include "code\_core\obj\item\deployable\_deployable.dm"
 #include "code\_core\obj\item\disk\_disk.dm"
 #include "code\_core\obj\item\drop_pod_remote\_supply_pod_remote.dm"

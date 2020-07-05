@@ -26,3 +26,5 @@
 		BODY_HAIR_FACE = TRUE,
 		BODY_EYES = TRUE
 	)
+
+	item_slot = SLOT_HEAD | SLOT_FACE

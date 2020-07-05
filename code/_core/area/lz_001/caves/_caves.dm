@@ -12,6 +12,7 @@
 	name = "lava cave"
 	icon_state = "lava_cave"
 
+	//sunlight_power = 1
 	sunlight_freq = 8
 	sunlight_color ="#7F3B11"
 
@@ -22,6 +23,7 @@
 
 	cheese_type = /reagent/nutrition/cheese/guava
 
+	roof = FALSE //I mean yes, but actually no.
 
 /area/lz_001/caves/crab
 	name = "\improper King Crab's Burrow"

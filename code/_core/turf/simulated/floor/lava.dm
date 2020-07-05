@@ -8,6 +8,7 @@
 
 	plane = PLANE_WATER
 
+	desired_light_frequency = 2
 	desired_light_power = 0.5
 	desired_light_range = 8
 	desired_light_color = "#CE631C"

@@ -41,6 +41,7 @@
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
 
+	var/desired_light_frequency = 1 //Setting this to a number other than 1 should be reserved for turfs.
 	var/desired_light_range = 0 //Range of the light.
 	var/desired_light_power = 0 //Power of the light.
 	var/desired_light_color = "#FFFFFF" //Color of the light.
@@ -48,8 +49,11 @@
 
 /atom/proc/update_atom_light()
 	if(desired_light_range > 0 && desired_light_power > 0)
+		if(src.x % desired_light_frequency || src.y % desired_light_frequency)
+			return FALSE
 		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
-	return TRUE
+		return TRUE
+	return FALSE
 
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
