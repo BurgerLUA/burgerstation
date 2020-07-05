@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/sniper_50/
 	name = "\improper .50 sniper round"
-	desc = "For sniper rifles that require .50 ammo."
+	desc = "For when you want to shoot something so hard it's family will feel it too."
+	desc_extended = "For sniper rifles that require .50 ammo."
 	id = ".50"
 	icon = 'icons/obj/item/bullet/50.dmi'
 
@@ -23,7 +24,8 @@
 
 /obj/item/bullet_cartridge/rifle_939mm
 	name = "\improper 9x39mm rifle bullet"
-	desc = "For rifles that require 9x39mm."
+	desc = "Be vewy, vewy quiet."
+	desc_extended = "For rifles that require 9x39mm."
 	icon = 'icons/obj/item/bullet/223.dmi'
 
 

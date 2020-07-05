@@ -1,6 +1,7 @@
 /obj/item/bullet_cartridge/syringe_gun/
 	name = "\improper syringe gun round"
-	desc = "For weapons that take special syringe rounds"
+	desc = "Whoops! That was not medicine!"
+	desc_extended = "For weapons that take special syringe rounds"
 	icon = 'icons/obj/item/bullet/syringe_gun.dmi'
 	icon_state = "syringe"
 

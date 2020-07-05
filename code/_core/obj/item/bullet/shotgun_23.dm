@@ -28,7 +28,7 @@
 /obj/item/bullet_cartridge/shotgun_23/slug
 	name = "\improper 23x75mmR slug"
 	desc = "This thing's huge!"
-	desc_extended = "A shotgun slug designes specifically for the KS23"
+	desc_extended = "A shotgun slug designed specifically for the KS23"
 	icon_state = "23slug"
 
 	projectile_count = 1
@@ -46,7 +46,7 @@
 /obj/item/bullet_cartridge/shotgun_23/buckshot
 	name = "\improper 23x75mmR buckshot shell"
 	desc = "Now with 50% more pellet per pellet"
-	desc_extended = "This shell is not very accurate and has many projectiles."
+	desc_extended = "A buckshot shell designed specifically for the KS23"
 	icon_state = "23buck"
 
 	projectile_count = 6
