@@ -179,20 +179,3 @@
 					returning_value[damage_type] += C.defense_rating[damage_type]
 
 	return returning_value
-
-
-/*
-/health/mob/living/advanced/get_total_loss()
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	for(var/obj/item/organ/O in A.organs)
-		if(!O.health)
-			continue
-		. += O.health.get_total_loss()
-
-	return .
-*/

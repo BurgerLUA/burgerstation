@@ -7,9 +7,6 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	item_slot = SLOT_HAND_RIGHT
-	protected_limbs = list(BODY_HAND_RIGHT)
-
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
@@ -45,6 +42,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 1

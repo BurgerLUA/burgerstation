@@ -33,3 +33,5 @@
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_HAND_LEFT
+	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT

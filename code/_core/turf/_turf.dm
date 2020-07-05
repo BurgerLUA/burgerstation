@@ -151,7 +151,6 @@
 
 	return ..()
 
-
 /*
 /turf/dropped_on_by_object(var/atom/caller,var/atom/object)
 
@@ -163,3 +162,9 @@
 
 	return ..()
 */
+
+/turf/proc/setup_turf_light(var/sunlight_freq=VIEW_RANGE*0.5)
+	return FALSE
+
+/turf/should_smooth_with(var/turf/T)
+	return (T.corner_category == corner_category)

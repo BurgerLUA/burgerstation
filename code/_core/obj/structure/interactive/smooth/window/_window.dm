@@ -71,10 +71,6 @@
 	icon = 'icons/obj/structure/clockwork/window.dmi'
 	icon_state = "window"
 
-	desired_light_power = 0.5
-	desired_light_range = 2
-	desired_light_color = "#E29E00"
-
 
 /obj/structure/smooth/window/cult
 	name = "cult window"

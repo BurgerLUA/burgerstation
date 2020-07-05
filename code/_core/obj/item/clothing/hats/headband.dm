@@ -4,7 +4,7 @@
 	desc = "Be an action hero!"
 	desc_extended = "A generic colorable headband."
 
-	item_slot = SLOT_FACE
+	item_slot = SLOT_FACE_WRAP
 
 	defense_rating = list(
 		MAGIC = 25

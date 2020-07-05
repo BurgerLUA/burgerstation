@@ -39,6 +39,8 @@
 	if(.)
 		play('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE * 2)
 
+	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
+
 	return .
 
 

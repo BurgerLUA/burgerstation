@@ -7,6 +7,7 @@
 		BODY_EYES = TRUE
 	)
 
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
 
 /obj/item/clothing/head/helmet/hardsuit/engineering
 	name = "engineering rig helmet"

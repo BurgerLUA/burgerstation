@@ -7,6 +7,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	worn_layer = LAYER_MOB_CLOTHING_SOCKS
 	item_slot = SLOT_FOOT_LEFT_U | SLOT_FOOT_RIGHT_U
+	blocks_clothing = SLOT_FOOT_LEFT_U | SLOT_FOOT_RIGHT_U
 
 	ignore_other_slots = TRUE
 

@@ -27,6 +27,8 @@
 
 	dyeable = TRUE
 
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
+
 
 /obj/item/clothing/head/helmet/carbon/nanotrasen
 	polymorphs = list(

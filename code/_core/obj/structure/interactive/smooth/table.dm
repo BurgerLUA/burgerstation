@@ -140,10 +140,6 @@ obj/structure/smooth/table/brass
 
 	corner_category = "table_clockwork"
 
-	desired_light_power = 0.5
-	desired_light_range = 2
-	desired_light_color = "#E29E00"
-
 obj/structure/smooth/table/cult
 
 	name = "cult table"

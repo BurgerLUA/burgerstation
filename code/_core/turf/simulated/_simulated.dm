@@ -7,10 +7,6 @@ var/global/saved_icons = 0
 	var/real_icon
 	var/real_icon_state
 
-	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	desired_light_range = DEFAULT_RANGE_AMBIENT
-	desired_light_color = "#FFFFFF"
-
 	dynamic_lighting = TRUE
 
 	var/fade = FALSE
@@ -68,9 +64,6 @@ var/global/saved_icons = 0
 		icon = real_icon
 	if(real_icon_state)
 		icon_state = real_icon_state
-
-	var/area/A = loc
-	desired_light_power *= A.area_light_power
 
 	return ..()
 
@@ -243,3 +236,4 @@ var/global/saved_icons = 0
 			O.invisibility = 101
 
 	return TRUE
+

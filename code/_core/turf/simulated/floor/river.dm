@@ -6,10 +6,6 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	desired_light_power = 0.05
-	desired_light_range = 8
-	desired_light_color = "#AAAAFF"
-
 	footstep = /footstep/water
 
 	density_north = TRUE
@@ -18,6 +14,11 @@
 	density_west = TRUE
 
 	plane = PLANE_WATER
+
+	desired_light_frequency = 4
+	desired_light_power = 0.5
+	desired_light_range = 8
+	desired_light_color = "#158996"
 
 /turf/simulated/floor/river/walkable
 	collision_flags = FLAG_COLLISION_NONE

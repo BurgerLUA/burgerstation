@@ -48,6 +48,7 @@
 	var/choice = input("What would you like the color to be?") as color|null
 	if(choice)
 		color = choice
+		update_sprite()
 	return TRUE
 
 /obj/item/slime_core/calculate_value()

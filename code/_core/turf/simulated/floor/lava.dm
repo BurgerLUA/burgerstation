@@ -8,6 +8,11 @@
 
 	plane = PLANE_WATER
 
+	desired_light_frequency = 2
+	desired_light_power = 0.5
+	desired_light_range = 8
+	desired_light_color = "#CE631C"
+
 /turf/simulated/floor/lava/Crossed(var/atom/movable/M)
 	if(is_living(M))
 		lava_idiot(M)

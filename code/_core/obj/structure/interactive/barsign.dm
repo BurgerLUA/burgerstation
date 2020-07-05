@@ -3,6 +3,8 @@ obj/structure/interactive/bar_sign
 	desc = "Come on in!"
 	icon = 'icons/obj/structure/store_signs.dmi'
 	icon_state = null
+	plane = PLANE_WALL
+	layer = 99
 
 obj/structure/interactive/bar_sign/assistant
 	name = "The Greytide"

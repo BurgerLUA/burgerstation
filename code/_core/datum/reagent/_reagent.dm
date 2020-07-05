@@ -10,7 +10,7 @@
 
 	var/color = "#FFFFFF" //Reagent's color.
 
-	var/temperature_mod = 1
+	var/temperature_mod = 0.15 //Lower is better.
 
 	var/metabolism_stomach = 1 //How many units of the reagent to metabolize per second.
 	var/metabolism_blood = 1 //How many units of the reagent to metabolize per second.
@@ -24,6 +24,15 @@
 	var/flavor_strength = 1
 
 	var/processed_reagent
+
+	var/heated_reagent //What this heats into.
+	var/heated_reagent_temp //Temperature required to heat
+	var/heated_reagent_amount //Amount (units) to add per reagent tick.
+	var/heated_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
+	var/cooled_reagent //What this cools inot.
+	var/cooled_reagent_temp //Temperature required to cool.
+	var/cooled_reagent_amount //Amount (units) to add per reagent tick.
+	var/cooled_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
 
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
