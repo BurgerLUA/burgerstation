@@ -29,6 +29,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 
 /obj/item/clothing/hands/gloves/colored/gladiator/gold
@@ -44,5 +45,6 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	color = COLOR_GOLD
