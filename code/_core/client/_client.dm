@@ -76,6 +76,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/precise_zoom = FALSE
 
+	var/byond_member = FALSE
+
 
 /client/proc/is_player_controlled()
 	return TRUE //duh
@@ -180,20 +182,30 @@ var/global/list/all_clients = list() //Assoc list
 	update_window()
 	update_color_mods()
 
+	if(IsByondMember())
+		byond_member = TRUE
+
 	return mob
+
+/client/proc/get_ranks()
+
+	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
+	if(src.address == null) ranks |= SSadmin.stored_ranks["host"]
+	if(SSadmin.stored_user_ranks[ckey])
+		for(var/rank/R in SSadmin.stored_user_ranks[ckey])
+			ranks |= R
+
+	return ranks
+
 
 /client/proc/sync_permissions()
 
-	var/rank/R = SSadmin.stored_ranks["user"]
+	var/list/rank/ranks = get_ranks()
 
-	if(src.address == null)
-		R = SSadmin.stored_ranks["host"]
+	for(var/rank/R in ranks)
+		to_chat("Adding [R.name] permissions...")
+		permissions |= R.permissions
 
-	if(SSadmin.stored_user_ranks[ckey])
-		R = SSadmin.stored_user_ranks[ckey]
-
-	permissions = R.permissions
-	to_chat("Welcome to Burgerstation, [R.name] [src]!")
 	return TRUE
 
 /client/proc/welcome()
@@ -343,9 +355,6 @@ var/global/list/all_clients = list() //Assoc list
 	last_params = new_params
 	last_object = over_object
 	last_location = over_location
-
-/client/proc/get_permissions()
-	return FALSE
 
 /client/proc/receive_sound(var/sound/S)
 	src << S

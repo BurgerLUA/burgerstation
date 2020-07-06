@@ -32,9 +32,7 @@ SUBSYSTEM_DEF(logging)
 /subsystem/logging/on_life()
 
 	if(length(buffered_log_chat))
-		var/chat_log_string = ""
-		for(var/k in buffered_log_chat)
-			chat_log_string += "[k]\n"
+		var/chat_log_string = english_list(buffered_log_chat,"ERROR.","\n","\n")
 		text2file(chat_log_string,get_logging_dir("chat"))
 		buffered_log_chat.Cut()
 

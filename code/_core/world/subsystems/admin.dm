@@ -26,13 +26,17 @@ SUBSYSTEM_DEF(admin)
 			log_error("Invalid rank format for [RANK_DIR] on line [line_count]: [line]")
 			continue
 		var/ckey = lowertext(split_line[1])
-		var/rank = lowertext(split_line[2])
-		if(!stored_ranks[rank])
-			log_error("Rank [rank] not found for [RANK_DIR] on line [line_count]!")
-			continue
-		var/rank/R = stored_ranks[rank]
-		stored_user_ranks[ckey] = R
-		log_subsystem(src.name,"Added rank [R.name] for ckey [ckey].")
+		var/list/rank_ids = split_line.Copy(2)
+		for(var/rank in rank_ids)
+			rank = lowertext(rank)
+			if(!stored_ranks[rank])
+				log_error("Rank [rank] not found for [RANK_DIR] on line [line_count]!")
+				continue
+			var/rank/R = stored_ranks[rank]
+			if(!stored_user_ranks[ckey])
+				stored_user_ranks[ckey] = list()
+			stored_user_ranks[ckey] |= R
+			log_subsystem(src.name,"Added rank [R.name] for ckey [ckey].")
 
 	log_subsystem(src.name,"Loaded [length(stored_user_ranks)] users with special permissions.")
 

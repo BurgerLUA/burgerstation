@@ -4,18 +4,35 @@
 	var/id
 
 	var/permissions = FLAG_PERMISSION_NONE
-	var/protection = 0
+	var/protection = 0 //Higher equals better.
 	var/list/verbs = list()
 
-/rank/proc/add_verbs(var/client/C)
-	C.verbs.Cut()
-	return TRUE
-
-/rank/user/
+/rank/user/ //Don't need to add this to the config.
 	name = "User"
 	id = "USER"
 	desc = "The default rank for players. They have no special commands or actions."
 	permissions = FLAG_PERMISSION_NONE
+	protection = 1
+
+/rank/donator/bronze
+	name = "Bronze Member"
+	id = "BRONZE"
+	desc = "A bronze donator."
+	permissions = FLAG_PERMISSION_BRONZE
+	protection = 1
+
+/rank/donator/silver
+	name = "Silver Member"
+	id = "SILVER"
+	desc = "A silver donator."
+	permissions = FLAG_PERMISSION_SILVER
+	protection = 1
+
+/rank/donator/gold
+	name = "Gold Member"
+	id = "GOLD"
+	desc = "A gold donator."
+	permissions = FLAG_PERMISSION_GOLD
 	protection = 1
 
 /rank/moderator/
@@ -46,7 +63,7 @@
 	permissions = FLAG_PERMISSION_DEVELOPER
 	protection = 2
 
-/rank/developer/
+/rank/gamemaster/
 	name = "Gamemaster"
 	id = "GAMEMASTER"
 	desc = "Gamemasters have control over gamemaster related commands."

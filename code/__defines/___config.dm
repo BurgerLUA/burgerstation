@@ -1,6 +1,6 @@
 //Loads your character instantly at a marker point.
 #define ENABLE_INSTALOAD FALSE
-#define ENABLE_STOPLAG FALSE
+#define ENABLE_STOPLAG TRUE
 #define MOVEMENT_DELAY_MOD 0.75 //Lower values means faster.
 
 //Game Options
