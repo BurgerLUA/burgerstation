@@ -13,7 +13,7 @@
 	bullet_color = COLOR_BULLET
 
 	projectile = /obj/projectile/bullet/firearm/pistol/stealth
-	damage_type_bullet = /damagetype/ranged/bullet/gauss_carbine
+	damage_type_bullet = /damagetype/ranged/bullet/gauss_gun
 
 	projectile_speed = TILE_SIZE-1
 

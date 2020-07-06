@@ -3,7 +3,7 @@
 	var/next_scan = 0
 	value = 10
 
-/obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target)
+/obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target,location,control,params)
 
 
 	return TRUE
@@ -22,7 +22,7 @@
 
 	if(can_be_scanned(caller,object))
 		if(can_scan(caller,object))
-			on_scan(caller,object)
+			on_scan(caller,object,location,control,params)
 		return TRUE
 
 	return ..()

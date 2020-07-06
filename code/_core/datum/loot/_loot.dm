@@ -4,12 +4,22 @@
 	var/loot_count = 1 //How much of this loot to spawn.
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
 	var/chance_none = 0 //Applies on a per item basis.
+	var/loot_multiplier = 1 //How much of the loot to duplicate.
 
 /loot/proc/create_loot(var/type_to_spawn,var/spawn_loc) //Don't use this.
+
+	. = list()
+
 	if(ispath(type_to_spawn,/loot/))
 		var/loot/L = LOOT(type_to_spawn)
-		return L.create_loot_table(spawn_loc)
-	return new type_to_spawn(spawn_loc)
+		for(var/i=1,i<=loot_multiplier,i++)
+			. += L.create_loot_table(spawn_loc)
+		return .
+
+	for(var/i=1,i<=loot_multiplier,i++)
+		. += new type_to_spawn(spawn_loc)
+
+	return .
 
 /loot/proc/pre_spawn(var/atom/movable/M)
 	return TRUE
@@ -24,6 +34,7 @@
 		INITIALIZE(M)
 		GENERATE(M)
 		post_spawn(M)
+		animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
 	return .
 
 /loot/proc/create_loot_table(var/spawn_loc) //Use this to spawn the loot.

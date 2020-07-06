@@ -13,6 +13,8 @@
 
 	initialize_type = INITIALIZE_LATE
 
+	value = 0
+
 /obj/structure/interactive/shop/Destroy()
 
 	QDEL_NULL(stored_item)

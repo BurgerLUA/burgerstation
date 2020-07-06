@@ -15,7 +15,7 @@
 		BLADE = 50,
 		BLUNT = 75,
 		PIERCE = 25,
-		LASER = -25,
+		LASER = 25,
 		MAGIC = -50,
 		HEAT = INFINITY,
 		COLD = -75,
@@ -35,6 +35,8 @@
 	loyalty_tag = "goliath"
 
 	mob_size = MOB_SIZE_LARGE
+
+	health_base = 100
 
 /mob/living/simple/npc/goliath/post_death()
 	..()

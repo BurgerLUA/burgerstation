@@ -425,3 +425,15 @@
 	)
 	loot_count = 4
 	chance_none = 50
+
+
+/loot/weapon/gauss_rifle
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun
+	)
+
+	loot_table = list(
+		/obj/item/magazine/gauss_gun = 1
+	)
+	loot_count = 6
+	chance_none = 50

@@ -7,9 +7,14 @@
 	value = 50
 
 /obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
+
+	if(get_dist(caller,target) > 1)
+		caller.to_chat(span("warning","You're too far away!"))
+		return FALSE
+
 	return is_living(target)
 
-/obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target)
+/obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target,location,control,params)
 	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_brute_loss(),1)]</font>|<font color='yellow'>[CEILING(target.health.get_burn_loss(),1)]</font>|<font color='green'>[CEILING(target.health.get_tox_loss(),1)]</font>|<font color='blue'>[CEILING(target.health.get_oxy_loss(),1)]</font>"
 	new/obj/effect/chat_text(target,.,TRUE)
 	caller.to_chat(.)

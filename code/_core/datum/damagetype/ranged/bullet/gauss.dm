@@ -1,4 +1,4 @@
-/damagetype/ranged/bullet/gauss_carbine
+/damagetype/ranged/bullet/gauss_gun
 	name = "gauss carbine bullet"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

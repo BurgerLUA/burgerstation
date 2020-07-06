@@ -1,8 +1,8 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_carbine
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun
 	name = "\improper 2x12mm Experimental Gauss Gun"
 	desc = "We thank you, oh Monolith, for revealing the cunning plans of your enemies to us. May your light shine down on the souls of the brave soldiers who gave their lives in service to your will."
 	desc_extended = "A super-accurate hi-tech weapon known as the Gauss rifle, this weapon was developed in secret laboratories located inside the russian facilities. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil."
-	icon = 'icons/obj/item/weapons/ranged/rifle/gauss_carbine.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/gauss_gun.dmi'
 	icon_state = "inventory"
 	value = 1200
 
@@ -39,13 +39,13 @@
 
 	zoom_mul = 2
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread() //Base spread
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_carbine/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
 
 	var/distance = get_dist(L,target)
 

@@ -48,20 +48,21 @@
 	if(is_player(attacker))
 		var/mob/living/advanced/player/P = attacker
 		if(P.client)
-			var/click_flags = P.client.get_click_flags(params,TRUE)
+			//var/click_flags = P.client.get_click_flags(params,TRUE)
 
-			var/attack_x = 16
-			var/attack_y = 16
+			var/list/attack_coords = P.get_current_target_cords(params)
 
+			/*
 			if(click_flags & CLICK_LEFT)
 				attack_x = P.attack_left[P.attack_mode][1]
 				attack_y = P.attack_left[P.attack_mode][2]
 			else if(click_flags & CLICK_RIGHT)
 				attack_x = P.attack_right[P.attack_mode][1]
 				attack_y = P.attack_right[P.attack_mode][2]
+			*/
 
-			params[PARAM_ICON_X] = num2text(attack_x)
-			params[PARAM_ICON_Y] = num2text(attack_y)
+			params[PARAM_ICON_X] = num2text(attack_coords[1])
+			params[PARAM_ICON_Y] = num2text(attack_coords[2])
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 
