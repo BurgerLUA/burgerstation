@@ -1174,7 +1174,6 @@
 #include "code\_core\obj\structure\interactive\conveyor.dm"
 #include "code\_core\obj\structure\interactive\cryo.dm"
 #include "code\_core\obj\structure\interactive\diverter.dm"
-#include "code\_core\obj\structure\interactive\door_safeties.dm"
 #include "code\_core\obj\structure\interactive\fakedoor.dm"
 #include "code\_core\obj\structure\interactive\fence.dm"
 #include "code\_core\obj\structure\interactive\fire_alarm.dm"

@@ -8,8 +8,6 @@
 	sunlight_freq = 4
 	sunlight_color = "#1A3E4C"
 
-	is_space = TRUE
-
 /area/space/bluespace
 	name = "bluespace"
 	icon_state=  "bluespess"

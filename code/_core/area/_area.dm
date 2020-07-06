@@ -47,7 +47,6 @@ var/global/list/all_areas = list()
 
 	var/list/turf/sunlight_turfs = list()
 
-	var/is_space = FALSE
 	var/roof = FALSE //Does this area have a roof?
 
 	var/defend = FALSE //Set to true if you're supposed to defend this area.

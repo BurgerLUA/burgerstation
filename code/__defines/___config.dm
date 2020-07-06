@@ -1,7 +1,7 @@
 //Loads your character instantly at a marker point.
 #define ENABLE_INSTALOAD FALSE
 #define ENABLE_STOPLAG FALSE
-#define MOVEMENT_DELAY_MOD 0.75
+#define MOVEMENT_DELAY_MOD 0.75 //Lower values means faster.
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
@@ -142,11 +142,6 @@
 
 #define FRIENDLY_FIRE FALSE
 #define PLAYER_COLLISIONS FALSE
-
-#define SHUTTLE_DEFAULT_TRANSIT_TIME 60 //In seconds.
-#define SHUTTLE_DEFAULT_TRANSIT_TIME_NO_LIVING 15
-#define SHUTTLE_DEFAULT_WAITING_TIME 30
-#define SHUTTLE_DEFAULT_IDLE_TIME 10
 
 #define QWERTY_MACROS list( \
 	"W" = "move_up", \

@@ -184,27 +184,25 @@
 	var/turf/T = get_turf(src)
 	for(var/dir in (intercardinal ? DIRECTIONS_ALL : DIRECTIONS_CARDINAL))
 		var/turf/T2 = get_step(T,dir)
-		var/area/A = T2.loc
-		if(A.is_space)
+		if(T2.is_space())
 			. |= dir
 
 	return .
 
 
-/atom/proc/get_best_touching_space()
+/atom/proc/get_best_touching_space(var/intercardinal = TRUE)
 
 	var/turf/T = get_turf(src)
 	for(var/dir in list(NORTH,SOUTH,EAST,WEST))
 		var/turf/T2 = get_step(T,dir)
-		var/area/A = T2.loc
-		if(A.is_space)
+		if(T2.is_space())
 			return dir
 
-	for(var/dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
-		var/turf/T2 = get_step(T,dir)
-		var/area/A = T2.loc
-		if(A.is_space)
-			return dir
+	if(intercardinal)
+		for(var/dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
+			var/turf/T2 = get_step(T,dir)
+			if(T2.is_space())
+				return dir
 
 	return 0x0
 

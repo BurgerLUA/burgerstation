@@ -35,9 +35,6 @@
 			for(var/turf/T in range(12,attacker))
 				if(!T.is_safe_teleport())
 					continue
-				var/area/A = T.loc
-				if(A.is_space)
-					continue
 				possible_teleport_turfs += T
 
 			if(length(possible_teleport_turfs))

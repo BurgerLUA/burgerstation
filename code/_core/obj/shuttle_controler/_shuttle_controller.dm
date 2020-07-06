@@ -69,7 +69,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	. =..()
 
-	set_doors(TRUE,TRUE,TRUE) //Open all the doors!
+	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
 	return .
 
@@ -108,46 +108,41 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE,var/force = FALSE)
 
-	. = TRUE
+	. = TRUE //TRUE if nothing went wrong. False if something went wrong.
 
 	var/area/A = get_area(src)
-	for(var/obj/structure/interactive/door/airlock/shuttle/S in A.contents)
-		S.safeties = FALSE
-		var/doorstuck = FALSE
-		var/obj/structure/interactive/scanner/living/S1 = locate() in S.loc.contents
-		if(S1 && !S1.trigger(null,src,-1,-1))
-			. = FALSE
-			continue
 
-		var/exposed_to_space = FALSE
+	for(var/obj/structure/interactive/door/airlock/shuttle/S in A.contents)
+
+		var/obj/structure/interactive/scanner/living/S1 = locate() in S.loc.contents
+		if(S1 && !S1.trigger(null,src,-1,-1)) //Unsafe to close.
+			. = FALSE
+			break
+
+		var/exposed_to_space = S.get_best_touching_space(FALSE)
+
 		for(var/direction in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(S,direction)
-			var/area/A2 = T.loc
-			if(A2.is_space)
-				exposed_to_space = TRUE
+			var/obj/structure/interactive/scanner/living/S2 = locate() in T.contents
+			if(S2 && !S2.trigger(null,src,-1,-1))
+				. = FALSE //Unsafe to close.
+				break
 
-		if(!exposed_to_space)
-			for(var/direction in DIRECTIONS_CARDINAL)
-				var/turf/T = get_step(S,direction)
-				var/obj/structure/interactive/scanner/living/S2 = locate() in T.contents
-				if(S2 && !S2.trigger(null,src,-1,-1))
-					. = FALSE
-					doorstuck = TRUE
-					continue
-				var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
-				if(AL && !istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
-					AL.safeties = FALSE
-					if(open)
-						AL.open(null,lock,force)
-					else
-						AL.close(null,lock,force)
+			var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
+			if(!AL || istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
+				//No airlock? Whatever, keep going.
+				continue
 
-		if(!doorstuck)
-			if(!exposed_to_space && open)
+			if(open)
+				AL.open(null,lock,force)
+			else
+				AL.close(null,lock,force)
+
+		if(.)
+			if(open && !exposed_to_space)
 				S.open(null,lock,force)
 			else
 				S.close(null,lock,force)
-
 	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()

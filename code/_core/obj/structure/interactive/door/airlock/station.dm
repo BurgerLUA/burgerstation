@@ -62,6 +62,7 @@
 	name = "security airlock"
 	color = "#A70000"
 	fill_color = "#FFB200"
+	safeties = FALSE
 
 /obj/structure/interactive/door/airlock/station/external/bolted
 	locked = TRUE
