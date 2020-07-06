@@ -10,7 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/shotgun/slug
+	ammo = /obj/item/bullet_cartridge/shotgun_12/slug
 
 	bullet_length_min = 18
 	bullet_length_best = 18.5
@@ -33,7 +33,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/shotgun/buckshot
+	ammo = /obj/item/bullet_cartridge/shotgun_12/buckshot
 
 /obj/item/magazine/shotgun_auto/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"

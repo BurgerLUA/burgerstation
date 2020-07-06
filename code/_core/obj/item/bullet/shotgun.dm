@@ -1,4 +1,4 @@
-/obj/item/bullet_cartridge/shotgun/
+/obj/item/bullet_cartridge/shotgun_12/
 	id = "shotgun"
 	icon = 'icons/obj/item/bullet/shotgun.dmi'
 	item_count_max = 5
@@ -18,14 +18,14 @@
 	weight = 0.04
 	value = 0.6
 
-/obj/item/bullet_cartridge/shotgun/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 
-/obj/item/bullet_cartridge/shotgun/Generate()
+/obj/item/bullet_cartridge/shotgun_12/Generate()
 	item_count_current = 5
 	return ..()
 
-/obj/item/bullet_cartridge/shotgun/slug
+/obj/item/bullet_cartridge/shotgun_12/slug
 	name = "\improper 12 gauge slug"
 	desc = "Shoots one really big bullet."
 	desc_extended = "This shell doesn't spread alot, and only has one projectile."
@@ -43,7 +43,7 @@
 	weight = 0.04
 	value = 0.6
 
-/obj/item/bullet_cartridge/shotgun/buckshot
+/obj/item/bullet_cartridge/shotgun_12/buckshot
 	name = "\improper 12 gauge buckshot shell"
 	desc = "Shoots a lot of small bullets at once."
 	desc_extended = "This shell is not very accurate and has many projectiles."
@@ -64,7 +64,7 @@
 	inaccuracy_modifer = 1.5
 
 
-/obj/item/bullet_cartridge/shotgun/fire
+/obj/item/bullet_cartridge/shotgun_12/fire
 	name = "\improper 12 gauge drake breath shell"
 	desc = "Sets everything on fire."
 	desc_extended = "A magic imbued shotgun shell that shoots 3 high damaging incendiary rounds. Don't ask how it works."

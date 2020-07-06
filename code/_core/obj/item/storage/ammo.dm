@@ -35,7 +35,7 @@
 
 /obj/item/storage/ammo/slug/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun/slug(src)
+		new /obj/item/bullet_cartridge/shotgun_12/slug(src)
 	return ..()
 
 /obj/item/storage/ammo/buckshot
@@ -49,7 +49,7 @@
 
 /obj/item/storage/ammo/buckshot/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun/buckshot(src)
+		new /obj/item/bullet_cartridge/shotgun_12/buckshot(src)
 	return ..()
 
 
@@ -64,7 +64,7 @@
 
 /obj/item/storage/ammo/fire/fill_inventory()
 	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun/fire(src)
+		new /obj/item/bullet_cartridge/shotgun_12/fire(src)
 	return ..()
 
 

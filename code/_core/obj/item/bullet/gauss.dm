@@ -1,4 +1,4 @@
-/obj/item/bullet_cartridge/gauss/carbine
+/obj/item/bullet_cartridge/gauss_carbine
 	name = "\improper 2x12 steel ball"
 	desc = "I've got balls of steel."
 	desc_extended = "For the Gauss Carbine."

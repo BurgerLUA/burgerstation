@@ -27,6 +27,10 @@
 		FATIGUE = 50
 	)
 
+	status_immune = list(
+		FIRE = FALSE
+	)
+
 	iff_tag = "goliath"
 	loyalty_tag = "goliath"
 

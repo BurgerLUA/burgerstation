@@ -24,8 +24,8 @@
 /obj/structure/interactive/vending/ammo/shotgun
 	name = "shotgun ammo vendor"
 	stored_types = list(
-		/obj/item/bullet_cartridge/shotgun/buckshot,
-		/obj/item/bullet_cartridge/shotgun/slug,
+		/obj/item/bullet_cartridge/shotgun_12/buckshot,
+		/obj/item/bullet_cartridge/shotgun_12/slug,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug
 	)
