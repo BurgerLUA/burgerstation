@@ -37,6 +37,10 @@
 
 	handle_horizontal()
 
+	if(following)
+		following.followers -= src
+		following = null
+
 	post_death()
 
 	if(queue_delete_on_death)

@@ -39,10 +39,12 @@
 
 /obj/item/container/spray/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(get_dist(caller,object) > 1)
-		return FALSE
+	if(is_inventory(object))
+		return ..()
 
 	if(is_advanced(object) && is_advanced(caller))
+		if(get_dist(caller,object) > 1)
+			return FALSE
 		var/mob/living/advanced/victim = object
 		var/mob/living/advanced/attacker = caller
 		var/list/new_x_y = attacker.get_current_target_cords(params)

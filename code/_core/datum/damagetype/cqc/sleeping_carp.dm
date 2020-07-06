@@ -36,7 +36,10 @@
 	if(is_living(victim))
 		var/list/offsets = direction_to_pixel_offset(get_dir(attacker,victim))
 		var/mob/living/L = victim
-		L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12)
+		if(get_dist(attacker,victim) <= 0)
+			L.add_status_effect(STUN,10,10,source = attacker)
+		else
+			L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12)
 
 	return ..()
 

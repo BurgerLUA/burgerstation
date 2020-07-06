@@ -154,6 +154,8 @@
 
 	value = 250
 
+	var/mob/living/advanced/player/following = null
+
 /mob/living/calculate_value()
 
 	. = ..()
@@ -175,7 +177,9 @@
 
 /mob/living/Destroy()
 
-	//factions.Cut()
+	if(following)
+		following.followers -= src
+		following = null
 
 	for(var/experience/E in attributes)
 		qdel(E)

@@ -23,6 +23,9 @@ var/global/list/global_status_displays = list()
 
 	plane = PLANE_WALL_ATTACHMENTS
 
+/obj/structure/interactive/status_display/shuttle
+	name = "shuttle status display"
+
 /obj/structure/interactive/status_display/update_icon()
 	icon_state = null
 	return ..()

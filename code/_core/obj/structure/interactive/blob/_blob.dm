@@ -47,7 +47,7 @@
 		if(!src.can_attack(L,src,null,damage_type))
 			continue
 		src.attack(src,L,precise = TRUE)
-		if(L.loc != src.loc && src.loc.Enter(L,L.loc))
+		if(L.loc != src.loc && src.loc.Enter(L,L.loc) && get_dist(linked_core,L) >= get_dist(linked_core,src))
 			L.force_move(src.loc)
 		. = TRUE
 
