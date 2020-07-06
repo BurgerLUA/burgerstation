@@ -30,6 +30,9 @@
 
 	else if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller
+		world.log << "The object is: [object]."
+		object = object.defer_click_on_object(location,control,params)
+		world.log << "The NEW object is: [object]."
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = src.defer_click_on_object(location,control,params)
 		if(is_item(object_to_throw))

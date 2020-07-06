@@ -90,6 +90,8 @@
 			xvel = pick(-1,1)
 			yvel = pick(-1,1)
 
+		attacker = attacker.defer_click_on_object()
+
 		S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
 		S.color = rgb(rand(0,255),rand(0,255),rand(0,255))
 		S.alpha = rand(50,200)

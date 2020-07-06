@@ -42,7 +42,7 @@
 
 /obj/item/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(wield_only && !wielded)
+	if(wield_only && !wielded && !is_inventory(object))
 		caller.to_chat(span("notice","You can only attack with this when wielded! (CTRL+CLICK)"))
 		return TRUE
 

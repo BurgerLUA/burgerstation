@@ -36,9 +36,8 @@
 	icon = 'icons/obj/item/bullet/762.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm
 
-
 /obj/item/bullet_cartridge/rifle_308/short
-	name = "\improper 7.62x39mm Soviet rifle bullet"
+	name = "\improper 7.62x39mmR Soviet rifle bullet"
 	desc = "Kalashnikov's Magnum Opus."
 	desc_extended = "For soviet rifles that require 7.62x39mm"
 	icon = 'icons/obj/item/bullet/762_short.dmi'
@@ -49,7 +48,7 @@
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY*0.9
 
 /obj/item/bullet_cartridge/rifle_308/long
-	name = "\improper 7.62mm rifle bullet"
+	name = "\improper 7.62x54mmR Soviet rifle bullet"
 	desc = "Killed more Fascists than any competing round!"
 	desc_extended = "For rifles that require 7.62mmx54mmR"
 	icon = 'icons/obj/item/bullet/762.dmi'

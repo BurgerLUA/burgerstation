@@ -1,24 +1,23 @@
-/obj/item/bullet_cartridge/gauss_carbine
-	name = "\improper 2x12 steel ball"
+/obj/item/bullet_cartridge/gauss
+	name = "\improper 2x12mm steel ball gauss cartridge"
 	desc = "I've got balls of steel."
-	desc_extended = "For the Gauss Carbine."
-	icon = 'icons/obj/item/bullet/gauss_carbine.dmi'
-
+	desc_extended = "A steel ball attached to an overcharged tri-lithium battery. For use in gauss weapons."
+	icon = 'icons/obj/item/bullet/gauss.dmi'
 
 	bullet_diameter = 2
 	bullet_length = 12
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	item_count_max = 4
+	item_count_max_icon = 4
 	bullet_color = COLOR_BULLET
 
-	projectile = /obj/projectile/bullet/firearm/rifle
+	projectile = /obj/projectile/bullet/firearm/pistol/stealth
 	damage_type_bullet = /damagetype/ranged/bullet/gauss_carbine
 
-	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
+	projectile_speed = TILE_SIZE-1
 
 	size = 0.04
 	weight = 0.04
 
-	value = 0.7
+	value = 12

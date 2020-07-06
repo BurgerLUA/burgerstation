@@ -10,7 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_carbine = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/gauss_carbine
+	ammo = /obj/item/bullet_cartridge/gauss
 
 	bullet_length_min = 11
 	bullet_length_best = 12

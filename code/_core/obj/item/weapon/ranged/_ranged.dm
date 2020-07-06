@@ -376,4 +376,4 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 	return list(cos(new_angle),sin(new_angle))
 
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
-	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(2 + get_dist(L,target))*inaccuracy_modifier
+	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(1 + get_dist(L,target))*inaccuracy_modifier
