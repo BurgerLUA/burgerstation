@@ -27,7 +27,16 @@
 
 
 /area/lz_001/caves/lava/brighter
+	name = "brighter"
+	icon_state = "volcanic"
+	weather = WEATHER_VOLCANIC
+	ambient_temperature = T0C + 80
+
+	desired_light_range = 8
+	desired_light_power = 1
+
 	sunlight_color ="#A8663F"
+
 
 /area/lz_001/caves/crab
 	name = "\improper King Crab's Burrow"
