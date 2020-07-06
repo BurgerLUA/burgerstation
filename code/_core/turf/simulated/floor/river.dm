@@ -35,5 +35,5 @@
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
 	footstep = /footstep/water
-	water_reagent = "water"
+	water_reagent = /reagent/nutrition/water
 	reagents = /reagent_container/turf/

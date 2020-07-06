@@ -124,6 +124,7 @@
 /obj/trigger/jumpmarker/clockwork_exit
 	desired_marker = "clockwork_exit"
 
+/*
 /obj/trigger/transparency_trigger
 	name = "transparency trigger"
 	desc = "Adjusts transparency."
@@ -153,4 +154,5 @@
 	spawn
 		if(!length(linked_object.crossed_objects))
 			animate(linked_object,alpha = 255, time = SECONDS_TO_DECISECONDS(0.7))
+*/
 

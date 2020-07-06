@@ -66,6 +66,8 @@
 	var/obj/plane_master/objs/plane_master_obj
 	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
+	var/obj/plane_master/scenery/plane_master_scenery
+	var/obj/plane_master/lighting/plane_master_lighting
 
 	var/list/parallax
 
@@ -117,6 +119,8 @@
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
+	QDEL_NULL(plane_master_scenery)
+	QDEL_NULL(plane_master_lighting)
 	QDEL_NULL(examine_overlay)
 
 	return ..()
@@ -152,6 +156,16 @@
 	if(!plane_master_shuttle)
 		plane_master_shuttle = new(src)
 	C.screen += plane_master_shuttle
+
+	if(!plane_master_scenery)
+		plane_master_scenery = new(src)
+	C.screen += plane_master_scenery
+
+	/* TODO: Find out why this make lighting invisible.
+	if(!plane_master_lighting)
+		plane_master_lighting = new(src)
+	C.screen += plane_master_lighting
+	*/
 
 	if(!examine_overlay)
 		examine_overlay = new(src)

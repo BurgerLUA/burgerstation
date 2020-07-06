@@ -22,7 +22,7 @@
 
 #define PLANE_MOB -6
 
-#define PLANE_TREE -5
+#define PLANE_SCENERY -5
 
 #define PLANE_EFFECT -4
 

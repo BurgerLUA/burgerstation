@@ -9,6 +9,7 @@ var/global/list/all_areas = list()
 	layer = LAYER_AREA
 	plane = PLANE_AREA
 	invisibility = 101
+	alpha = 100
 
 	mouse_opacity = 0
 

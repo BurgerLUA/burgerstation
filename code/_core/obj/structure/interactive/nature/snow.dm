@@ -10,11 +10,9 @@ obj/structure/scenery/pinetrees
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ
 
-	plane = PLANE_TREE
+	plane = PLANE_SCENERY
 
 	mouse_opacity = 0
-
-	has_transparency_marker = TRUE
 
 
 obj/structure/scenery/pinetrees/New()

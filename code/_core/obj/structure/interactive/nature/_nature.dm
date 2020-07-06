@@ -1,16 +1,5 @@
 obj/structure/scenery
-	var/has_transparency_marker = FALSE
-
-	var/list/crossed_objects = list()
-
 	mouse_opacity = 0
-
-obj/structure/scenery/New()
-	..()
-
-	if(has_transparency_marker)
-		var/obj/trigger/transparency_trigger/T1 = new(get_step(src,NORTH),src)
-		new/obj/trigger/transparency_trigger(get_step(T1,NORTH),src)
 
 obj/structure/scenery/grass_bush
 	name = "grassy bush"
@@ -81,9 +70,7 @@ obj/structure/scenery/evergreen
 
 	mouse_opacity = 0
 
-	has_transparency_marker = TRUE
-
-	plane = PLANE_TREE
+	plane = PLANE_SCENERY
 
 obj/structure/scenery/evergreen/New()
 	..()
@@ -104,8 +91,6 @@ obj/structure/scenery/lolipop_tree
 	layer = LAYER_LARGE_OBJ
 
 	mouse_opacity = 0
-
-	has_transparency_marker = TRUE
 
 	var/top_color = "#FFFFFF"
 

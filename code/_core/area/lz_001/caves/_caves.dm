@@ -25,6 +25,10 @@
 
 	roof = FALSE //I mean yes, but actually no.
 
+
+/area/lz_001/caves/lava/brighter
+	sunlight_color ="#A8663F"
+
 /area/lz_001/caves/crab
 	name = "\improper King Crab's Burrow"
 	icon_state = "king_crab"
