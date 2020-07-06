@@ -15,7 +15,8 @@
 		/loot/weapon/vintorez = 10,
 		/loot/weapon/svd = 10,
 		/loot/weapon/nagant_revolver = 10,
-		/loot/weapon/russian_shotgun = 10
+		/loot/weapon/russian_shotgun = 10,
+		/loot/weapon/gauss_rifle = 10
 	)
 
 /loot/supply_crate/russian/pre_spawn(var/atom/movable/M)

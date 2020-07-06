@@ -193,6 +193,21 @@
 		on_hit(collide_atom)
 		return TRUE
 
+	for(var/mob/living/L in new_loc.old_living)
+		if(L.dead)
+			continue
+		if(L.move_delay > 0)
+			continue
+		if(L == owner || L == weapon)
+			continue
+		var/atom/collide_atom = L.projectile_should_collide(src,new_loc,old_loc)
+		if(!collide_atom)
+			continue
+		if(!damage_atom(collide_atom))
+			continue
+		on_hit(collide_atom)
+		return TRUE
+
 	return FALSE
 
 /obj/projectile/proc/update_projectile()
