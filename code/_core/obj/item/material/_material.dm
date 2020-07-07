@@ -19,6 +19,10 @@
 		log_error("Warning: [src.get_debug_name()] had invalid material id \"[material_id]\".")
 		qdel(src)
 		return TRUE
+
+	var/material/M = SSmaterials.all_materials[material_id]
+	crafting_id = "[crafting_id]_[M.name]"
+
 	return ..()
 
 /obj/item/material/Generate()

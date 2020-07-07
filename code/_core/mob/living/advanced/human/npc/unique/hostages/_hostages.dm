@@ -1,6 +1,4 @@
 var/global/list/possible_hostage_types = list(
-	/mob/living/advanced/npc/unique/hostage/bar_shaleez,
-	/mob/living/advanced/npc/unique/hostage/diamond_with_flaw,
 	/mob/living/advanced/npc/unique/hostage/clown,
 	/mob/living/advanced/npc/unique/hostage/assistant,
 	/mob/living/advanced/npc/unique/hostage/scientist

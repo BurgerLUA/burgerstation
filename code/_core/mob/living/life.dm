@@ -41,6 +41,10 @@
 		following.followers -= src
 		following = null
 
+	if(is_sneaking)
+		is_sneaking = FALSE
+		handle_alpha()
+
 	post_death()
 
 	if(queue_delete_on_death)

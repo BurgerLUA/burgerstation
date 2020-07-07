@@ -24,7 +24,10 @@
 	if(fire_stacks <= 0)
 		extinguish()
 	else if(on_fire)
-		fire_overlay.icon_state = "[clamp(FLOOR(1 + (fire_stacks/MAX_FIRE_STACKS)*3,1),1,3)]"
+		if(!fire_overlay)
+			CRASH_SAFE("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
+		else
+			fire_overlay.icon_state = "[clamp(FLOOR(1 + (fire_stacks/MAX_FIRE_STACKS)*3,1),1,3)]"
 	return TRUE
 
 /mob/living/proc/ignite(var/added_fire_stacks = 0)
@@ -48,7 +51,10 @@
 	if(!on_fire)
 		return FALSE
 
-	fire_overlay.icon_state = "0"
+	if(!fire_overlay)
+		CRASH_SAFE("Warning: [src.get_debug_name()] did not have an initialized fire overlay.")
+	else
+		fire_overlay.icon_state = "0"
 
 	on_fire = FALSE
 

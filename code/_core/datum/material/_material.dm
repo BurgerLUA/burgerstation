@@ -101,7 +101,6 @@
 	color = COLOR_WOOD
 	value_per_unit = 5
 
-
 /material/adamantium_carbon
 	name = "adamantium-carbon"
 	color = COLOR_ADAMANITUM_CARBON

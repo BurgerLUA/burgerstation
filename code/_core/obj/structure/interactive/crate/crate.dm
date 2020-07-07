@@ -24,3 +24,5 @@
 	icon_state = "necro"
 
 	loot = /loot/lavaland
+
+	collect_contents_on_initialize = FALSE

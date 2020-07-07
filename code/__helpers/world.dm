@@ -55,7 +55,8 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 				var/obj/item/material/M2 = M
 				M2.material_id = material_id
 			INITIALIZE(M)
-			GENERATE(M)
+			M.update_sprite()
+			//GENERATE(M)
 			animate(M,pixel_x = rand(-8,8), pixel_y = rand(-8,8), time = 3)
 
 	return TRUE

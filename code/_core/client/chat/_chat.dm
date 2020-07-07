@@ -204,7 +204,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			local_third_person_text = span("distance_tiny",third_person_text)
 			local_blind_text = span("distance_tiny",blind_text)
 
-		if(src in view(M.client.eye))
+		if(src in view(M.client.eye,VIEW_RANGE))
 			if(src == M)
 				M.to_chat(local_first_person_text)
 			else

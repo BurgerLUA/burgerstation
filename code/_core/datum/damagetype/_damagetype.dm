@@ -182,7 +182,7 @@
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
 	if(!is_living(attacker))
-		return attack_damage_base
+		return attack_damage_base.Copy()
 
 	var/mob/living/L = attacker
 	var/list/new_attack_damage = attack_damage_base.Copy()
@@ -267,19 +267,17 @@
 
 		for(var/damage_type in damage_to_deal)
 			var/victim_defense = defense_rating_victim[damage_type]
-			if(victim_defense >= INFINITY)
+			if(victim_defense >= INFINITY) //Defense is infinite. No point of doing damage.
 				damage_to_deal[damage_type] = 0
 				continue
-			if(victim_defense > 0)
+			if(victim_defense > 0) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-			if(damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)
-				var/attacker_bonus_damage = defense_rating_attacker[damage_type] ? defense_rating_attacker[damage_type] : 0
-				attacker_bonus_damage = clamp(attacker_bonus_damage,-200,200)
-				victim_defense -= attacker_bonus_damage
+			if((damage_type == MAGIC || damage_type == HOLY || damage_type == DARK) && defense_rating_attacker[damage_type]) //Deal bonus damage.
+				damage_to_deal[damage_type] = calculate_damage_with_armor(-defense_rating_attacker[damage_type],damage_to_deal[damage_type])
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)
-			damage_to_deal[damage_type] = max(0,new_damage_amount)
+			damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 			if(damage_type == BLUNT || damage_type == BLADE || damage_type == PIERCE)
 				fatigue_damage += damage_blocked*src.fatigue_coefficient
 

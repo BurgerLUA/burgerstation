@@ -75,9 +75,10 @@
 			meat_g += GetGreenPart(R.color) * amount
 			meat_b += GetBluePart(R.color) * amount
 
-	meat_r *= (1/total_meat)
-	meat_g *= (1/total_meat)
-	meat_b *= (1/total_meat)
+	if(total_meat)
+		meat_r *= (1/total_meat)
+		meat_g *= (1/total_meat)
+		meat_b *= (1/total_meat)
 
 	if(best_fat)
 		var/reagent/RF = REAGENT(best_fat)

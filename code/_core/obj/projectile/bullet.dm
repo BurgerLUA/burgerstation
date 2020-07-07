@@ -26,7 +26,7 @@
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "syringe"
 	ignore_iff = TRUE
-	var/reagent_to_add = "tricordrazine"
+	var/reagent_to_add = /reagent/medicine/omnizine
 	var/volume_to_add = 15
 
 /obj/projectile/bullet/syringe/damage_atom(var/atom/hit_atom)

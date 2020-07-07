@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
 
-	collision_flags = FLAG_COLLISION_WALKING
+	collision_flags = FLAG_COLLISION_WALKING | FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	footstep = /footstep/water

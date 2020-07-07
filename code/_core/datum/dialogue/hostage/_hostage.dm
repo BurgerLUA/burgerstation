@@ -1,35 +1,25 @@
-/dialogue/hostage/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
-
-	var/mob/living/L = P.dialogue_target
+/dialogue/npc/hostage/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	. = list()
 
-	.["hello"] = list("Awaiting orders.")
+	.["hello"] = list(
+		"Are you going to get me to safety?",
+		"*wait here",
+		"*follow me"
+	)
 
-	if(L.following)
-		if(L.following == P)
-			.["*stop following me"] = list(
-				"I will wait here."
-			)
-		else
-			.["hello"] = list(
-				"I am currently following the orders of [L.following.real_name]."
-			)
+	.["*wait here"] = list(
+		"Waiting here."
+	)
 
-	else
-		if(length(P.followers) <= 0)
-			.["*follow me"] = list(
-				"I will follow."
-			)
-		else
-			.["*follow me"] = list(
-				"You already have someone with you."
-			)
+	.["*follow me"] = list(
+		"Following."
+	)
 
 	return .
 
 
-/dialogue/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()
 
@@ -43,13 +33,8 @@
 
 	switch(topic)
 		if("*wait here")
-			if(L in P.followers)
-				L.ai.set_move_objective(null)
-				L.following = null
-				P.followers -= L
+			L.ai.set_move_objective(null)
 		if("*follow me")
-			if(length(P.followers) <= 0)
-				P.followers += L
-				L.ai.set_move_objective(P,TRUE)
-				L.following = null
+			L.ai.set_move_objective(P,TRUE)
+
 	return .
