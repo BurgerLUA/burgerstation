@@ -21,7 +21,7 @@
 	name = "augmented shades"
 	desc = "Your vision is augmented."
 	desc_extended = "Powerful augmented shades meant for security personel. These come with a built in security HUD as well as thermal imaging. For the badass."
-	icon = 'icons/obj/item/clothing/glasses/ABOMB.dmi'
+	icon = 'icons/obj/item/clothing/glasses/abomb_shades.dmi'
 	rarity = RARITY_MYTHICAL
 	defense_rating = list(
 		BLADE = 15,

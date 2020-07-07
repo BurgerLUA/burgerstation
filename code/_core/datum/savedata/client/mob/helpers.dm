@@ -105,7 +105,7 @@
 	else
 		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
 
-	LOG_DEBUG("[owner] has finished saving their character [A.get_debug_name()].")
+	LOG_DEBUG("[A.client] has finished saving their character [A.get_debug_name()].")
 
 	A.client?.globals?.save() //Save globals too. TODO: FIX THIS
 

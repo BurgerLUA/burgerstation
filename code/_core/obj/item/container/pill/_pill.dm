@@ -21,7 +21,7 @@
 	.["double"] = double
 
 	if(reagents_2)
-		.object_data["reagents_2"] = reagents_2.stored_reagents
+		.["reagents_2"] = reagents_2.stored_reagents
 
 
 /obj/item/container/pill/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
@@ -33,8 +33,8 @@
 	if(object_data["reagents_2"] && length(object_data["reagents_2"]))
 		for(var/r_id in object_data["reagents_2"])
 			var/volume = object_data["reagents_2"][r_id]
-			P.reagents_2.add_reagent(r_id,volume,TNULL,FALSE)
-		P.reagents_2.update_container()
+			reagents_2.add_reagent(r_id,volume,TNULL,FALSE)
+		reagents_2.update_container()
 
 	return .
 

@@ -25,7 +25,7 @@
 	desc = "LOOK OUT JC!"
 	desc_extended = "It's said a team of scientists were close to figuring out what the acronym means, but were interrupted when A BOMB was found in their building."
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
-	icon = 'icons/obj/item/clothing/uniforms/ABOMB.dmi'
+	icon = 'icons/obj/item/clothing/uniforms/abomb_suit.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
