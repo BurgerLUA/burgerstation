@@ -2,18 +2,18 @@
 	name = "tome of the plasma crystal"
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
-	cost_mana = 24
-	shoot_delay = 0.5
+	cost_mana = 10
+	shoot_delay = 1
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/crystal.dmi'
+	automatic = TRUE
 
-	associated_skill = SKILL_MAGIC
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/crystal.dmi'
 
-	projectile = /obj/projectile/magic/crystal
+	projectile = /obj/projectile/magic/crystal/primary/
 
 	ranged_damage_type = /damagetype/ranged/magic/crystal
 
-	shoot_sounds = list('sounds/weapons/magic/zap.ogg')
+	shoot_sounds = list('sound/weapons/magic/zap.ogg')
 
 	projectile_speed = 20
 

@@ -35,7 +35,7 @@ obj/structure/scenery/jungle_trees
 	pixel_y = -16
 	layer = LAYER_LARGE_OBJ
 
-	plane = PLANE_TREE
+	plane = PLANE_SCENERY
 
 obj/structure/scenery/jungle_trees/New()
 	..()
@@ -52,7 +52,7 @@ obj/structure/scenery/jungle_trees_small
 	pixel_y = 0
 	layer = LAYER_LARGE_OBJ
 
-	plane = PLANE_TREE
+	plane = PLANE_SCENERY
 
 obj/structure/scenery/jungle_trees/New()
 	..()

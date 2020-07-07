@@ -1,15 +1,6 @@
 //Here be shitcode.
 //I need to improve this in the future.
 
-#define HORDE_STATE_PRELOAD "preload" //We're preloading everything.
-#define HORDE_STATE_WAITING "waiting" //Waiting for round to start.
-#define HORDE_STATE_GEARING "gearing" //Everyone gears up.
-#define HORDE_STATE_BOARDING "boarding" //Everyone boards the shuttles.
-#define HORDE_STATE_LAUNCHING "launching" //Everyone is launching now.
-#define HORDE_STATE_FIGHTING "fighting" //Fighting starts.
-#define HORDE_STATE_HIJACK "hijack" //Station is under assault
-#define HORDE_STATE_BREAK "break"
-
 SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
 	desc = "Handles hordes and whatnot."
@@ -18,20 +9,14 @@ SUBSYSTEM_DEF(horde)
 	var/round_time = 0 //In seconds.
 	var/round_time_next = 0 //In seconds.
 	var/state = HORDE_STATE_PRELOAD
-	var/current_round = 1
 
-	var/max_enemies = 10
-	var/enemies_to_spawn = 0
-	var/enemies_spawned = 0
 	var/list/tracked_enemies = list()
 
 	var/message_displayed = FALSE
 
 	var/list/possible_horde_targets = list()
 
-	var/killed_syndicate_total = 0
-	var/killed_syndicate_round = 0
-	var/spawned_enemies_round = 0
+	var/total_killed_syndicate = 0
 
 	var/next_hijack_check_time = 0
 
@@ -54,27 +39,20 @@ SUBSYSTEM_DEF(horde)
 	if(!(L in tracked_enemies))
 		return FALSE
 
-	killed_syndicate_total++
-	killed_syndicate_round++
-
-	if(killed_syndicate_round >= spawned_enemies_round)
-		current_round++
-		message_displayed = FALSE
-		killed_syndicate_round = 0
-
+	total_killed_syndicate++
 	tracked_enemies -= L
 
 	return TRUE
 
 /subsystem/horde/proc/get_enemies_to_spawn()
-	. = 15 + (current_round * 2.5)
-	. = min(.,50,length(all_players)*3)
-	. = max(.,15)
-	. -= length(tracked_enemies)
-	return FLOOR(.,1)
+	return clamp(10 + FLOOR(DECISECONDS_TO_SECONDS(world.time)/300,1),0,40) - length(tracked_enemies) //One additional enemy every 5 minutes.
 
 /subsystem/horde/proc/check_hijack()
 
+	if(!ENABLE_HIJACK)
+		return FALSE
+
+	/*
 	var/area/exterior/grass/village/A = all_areas[/area/exterior/grass/village/]
 	if(!A)
 		log_error("HORDE MODE: Could not find the village area!")
@@ -86,6 +64,7 @@ SUBSYSTEM_DEF(horde)
 		desired_player_count -= 1
 
 	return desired_player_count > 0
+	*/
 
 
 /subsystem/horde/on_life()
@@ -109,7 +88,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_GEARING
 		round_time = 0
 		round_time_next = HORDE_DELAY_GEARING
-		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_GEARING)
 		var/time_to_display = round_time_next - round_time
@@ -120,7 +99,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_BOARDING
 		round_time = 0
 		round_time_next = HORDE_DELAY_BOARDING
-		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
 		next_objectives_update = world.time + 100
 
 
@@ -133,7 +112,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_LAUNCHING
 		round_time = 0
 		round_time_next = HORDE_DELAY_LAUNCHING
-		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
 		allow_shuttle_launch = TRUE
 
 	if(state == HORDE_STATE_LAUNCHING)
@@ -145,102 +124,111 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_FIGHTING
 		round_time = 0
 		round_time_next = 0
-		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Alpha/Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
 		next_threat_update = world.time + 100
 
 	if(state == HORDE_STATE_FIGHTING)
 
-		if(!message_displayed)
-			LOG_DEBUG("Moving to round [current_round].")
-			set_message("Round [current_round]")
+		if(!message_displayed || world.time >= next_hijack_check_time)
 			message_displayed = TRUE
-			enemies_to_spawn = get_enemies_to_spawn()
-			for(var/mob/living/advanced/npc/syndicate/S in world)
-				if(S.map_spawn)
-					continue
-				if(!S.ai)
-					continue
-				if(length(S.ai.current_path))
-					continue
-				var/mob/living/advanced/player/P = locate() in view(VIEW_RANGE + ZOOM_RANGE,S)
-				if(!P)
-					S.ai.set_objective(pick(possible_horde_targets))
-
-		if(ENABLE_HIJACK && next_hijack_check_time <= round_time)
 			if(check_hijack())
-				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
+				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
 				state = HORDE_STATE_HIJACK
 				round_time = 0
 			else
-				next_hijack_check_time = round_time + 60
+				next_hijack_check_time = world.time + 600 //1 minute
 			return TRUE
 
-		var/wave_to_spawn = min(4,enemies_to_spawn)
-		enemies_to_spawn -= wave_to_spawn
-		spawn while(wave_to_spawn > 0)
+		var/wave_to_spawn = get_enemies_to_spawn()
 
+		if(wave_to_spawn < 4)
+			return TRUE
+
+		wave_to_spawn = 4 //Only spawn 4 in a group at a time.
+
+		var/obj/marker/map_node/spawn_node = find_viable_spawn()
+		if(!spawn_node)
+			log_error("ERROR: Could not find a valid horde spawn!")
+			return TRUE
+
+		var/obj/marker/map_node/target_node = find_viable_target()
+		if(!target_node)
+			log_error("ERROR: Could not find a valid horde target!")
+			return TRUE
+
+		var/obj/marker/map_node/list/found_path = spawn_node.find_path(target_node)
+		if(!found_path)
+			log_error("ERROR: Could not find a valid path from [spawn_node.get_debug_name()] to [target_node.get_debug_name()]!")
+			return TRUE
+
+		var/turf/T = get_turf(spawn_node)
+
+		while(wave_to_spawn > 0)
+			wave_to_spawn--
 			CHECK_TICK
-
-			var/turf/chosen_spawn = pick(all_syndicate_spawns)
-
-			var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
-			if(P)
-				continue
-
-			var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
-			if(!N_start)
-				continue
-
-			while(wave_to_spawn > 0)
-				var/atom/chosen_target = pick(possible_horde_targets)
-				var/turf/target_turf = get_turf(chosen_target)
-
-				if(target_turf.z != 3)
-					continue
-
-				var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
-				if(!N_end)
-					continue
-
-				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
-				if(!found_path)
-					continue
-
-				while(wave_to_spawn > 0)
-					var/turf/T = get_turf(chosen_spawn)
-					if(T)
-						if(!T.loc)
-							log_error("SSHORDE: TURF [T.get_debug_name()] DID NOT HAVE AN AREA!")
-							continue
-						var/mob/living/advanced/npc/syndicate/S = new(T)
-						INITIALIZE(S)
-						S.ai.set_path(found_path)
-						tracked_enemies += S
-						spawned_enemies_round++
-					else
-						log_error("SSHORDE: COULD NOT FIND A GENERATE TO PLACE SYNDICATE!")
-					wave_to_spawn--
-
-	//if(state == HORDE_STATE_HIJACK)
-		//Do stuff
+			var/mob/living/advanced/npc/syndicate/S = new(T)
+			INITIALIZE(S)
+			S.ai.set_path(found_path)
+			tracked_enemies += S
 
 	return TRUE
+
+/subsystem/horde/proc/find_viable_target()
+
+	var/picks_remaining = 4
+
+	while(picks_remaining > 0)
+		CHECK_TICK
+		picks_remaining--
+		var/turf/chosen_target = get_turf(pick(possible_horde_targets))
+		if(chosen_target.z != 3)
+			continue
+		var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
+		if(!N_end)
+			continue
+		return N_end
+
+	return null
+
+/subsystem/horde/proc/find_viable_spawn()
+
+	var/picks_remaining = 4
+
+	while(picks_remaining > 0)
+		CHECK_TICK
+		picks_remaining--
+		var/turf/chosen_spawn = pick(all_syndicate_spawns)
+		if(chosen_spawn.z != 3)
+			continue
+		var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
+		if(P)
+			continue
+		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
+		if(!N_start)
+			log_error("WARNING: [chosen_spawn.get_debug_name()] didn't have a node to spawn enemies!")
+			continue
+		return N_start
+
+	return null
 
 /subsystem/horde/Initialize()
 	state = HORDE_STATE_WAITING
 	round_time = 0
 	round_time_next = HORDE_DELAY_WAIT
-	return TRUE
+	return ..()
 
 /subsystem/horde/proc/spawn_objectives()
 
-	var/desired_spawn_objectives = min(3,length(possible_objective_spawns))
+	var/desired_spawn_objectives = min(2,length(possible_objective_spawns))
 	var/desired_kill_objectives = min(3,length(SSbosses.tracked_bosses))
+	var/desired_rescue_objectives = min(2,length(possible_hostage_spawns),length(possible_hostage_types))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
 	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")
+	LOG_DEBUG("Making [desired_rescue_objectives] rescue objectives.")
 
 	for(var/i=1,i<=desired_spawn_objectives,i++)
+		CHECK_TICK
 		var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
 		possible_objective_spawns -= S
 		var/turf/T = get_turf(S)
@@ -249,12 +237,27 @@ SUBSYSTEM_DEF(horde)
 		GENERATE(O)
 		tracked_objectives += O
 
+	for(var/i=1,i<=desired_rescue_objectives, i++)
+		CHECK_TICK
+		var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
+		possible_hostage_spawns -= S
+		var/mob/living/advanced/npc/unique/hostage/L = pick(possible_hostage_types)
+		possible_hostage_types -= L
+		L = new L(get_turf(S))
+		INITIALIZE(L)
+		var/obj/item/handcuffs/H = new(get_turf(L))
+		INITIALIZE(H)
+		GENERATE(H)
+		L.set_handcuffs(TRUE,H)
+		tracked_objectives += L
+
 	var/list/valid_boss_ids = list()
 
 	for(var/boss_id in SSbosses.tracked_bosses)
 		valid_boss_ids += boss_id
 
 	for(var/i=1, i<=desired_kill_objectives, i++)
+		CHECK_TICK
 		var/chosen_id = pick(valid_boss_ids)
 		valid_boss_ids -= chosen_id
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
@@ -262,6 +265,7 @@ SUBSYSTEM_DEF(horde)
 		tracked_objectives += L
 
 	spawned_objectives = length(tracked_objectives)
+
 	objectives_spawned = TRUE
 
 	return TRUE
@@ -275,20 +279,38 @@ SUBSYSTEM_DEF(horde)
 	if(!objectives_spawned)
 		spawn_objectives()
 
+	var/additional_text = ""
+
 	var/objective_text = ""
 	for(var/atom/A in tracked_objectives)
+		CHECK_TICK
 		if(isobj(A))
 			var/obj/O = A
-			objective_text += "Secure \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			if(istype(O,/obj/structure/interactive/objective))
+				objective_text += "Secure \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+			else
+				objective_text += "Destroy \the [O.name]. \[<b>[O.qdeleting ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
 			if(O.qdeleting)
 				completed_objectives++
 				tracked_objectives -= O
 		else if(is_living(A))
 			var/mob/living/L = A
-			objective_text += "Kill \the [L.name]. \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
-			if(L.dead)
-				completed_objectives++
-				tracked_objectives -= L
+			if(istype(L,/mob/living/advanced/npc/unique/hostage/))
+				var/mob/living/advanced/npc/unique/hostage/H = L
+				objective_text += "Rescue \the [L.name]. \[<b>[!H.hostage ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+				if(!H.hostage)
+					if(H.dead)
+						additional_text += "It appears that [H.name] was brought back dead. The crew will not be receiving a bonus for this tragedy.<br>"
+					else
+						additional_text += "As [H.name] was brought back in one piece, the crew will be receiving a bonus of 3000 credits.<br>"
+						SSpayday.stored_payday += 3000
+					completed_objectives++
+					tracked_objectives -= L
+			else
+				objective_text += "Kill \the [L.name]. \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+				if(L.dead)
+					completed_objectives++
+					tracked_objectives -= L
 
 	last_update = objective_text
 
@@ -297,12 +319,16 @@ SUBSYSTEM_DEF(horde)
 		if(B.owner)
 			B.owner.to_chat(span("notice","Your objectives have been updated!"))
 
+	if(additional_text)
+		objective_text = "[objective_text]<br>[additional_text]"
+
+
 	announce(
 		"Central Command Update",
 		"Objectives Update",
 		"[objective_text]",
 		ANNOUNCEMENT_STATION,
-		'sounds/effects/station/new_command_report.ogg'
+		'sound/effects/station/new_command_report.ogg'
 	)
 
 	if(completed_objectives >= spawned_objectives)
@@ -320,9 +346,9 @@ SUBSYSTEM_DEF(horde)
 
 	. = 0
 
-	for(var/mob/living/L in tracked_enemies) //Every syndicate in an area that you're supposed to defend increases the threat level by 2, except in cases where they've been dead for less than 5 minutes, which reduces it by 1.
+	for(var/mob/living/L in tracked_enemies) //Every syndicate in an area that you're supposed to defend increases the threat level by 2, except in cases where they've been dead for less than 60 seconds, which reduces it by 1.
 		if(L.dead)
-			if(L.time_of_death + 300 >= world.time)
+			if(L.time_of_death + 600 >= world.time)
 				. -= 1
 			continue
 		var/area/A = get_area(L)
@@ -333,6 +359,9 @@ SUBSYSTEM_DEF(horde)
 	for(var/mob/living/advanced/player/P in all_players) //Every living playing defending reduces the threat level by 1.
 		if(P.dead)
 			continue
+		if(istype(P,/mob/living/advanced/player/antagonist/))
+			. += 5
+			continue
 		var/area/A = get_area(P)
 		if(!A.defend)
 			continue
@@ -340,23 +369,20 @@ SUBSYSTEM_DEF(horde)
 
 	. -= completed_objectives*10 //Every objective completed reduces the threat level by 10.
 
-	. += FLOOR(DECISECONDS_TO_SECONDS(world.time)/60,1) //Every 60 seconds is one point.
+	. += FLOOR(DECISECONDS_TO_SECONDS(world.time)/60,2) //Every 60 seconds is two points.
 
 	return .
 
 /subsystem/horde/proc/check_threat_level()
 
-	if(last_threat_level_warning == 100)
-		return //POINT OF NO RETURN.
-
 	var/threat_level = get_threat_level()
 
 	var/reported_threat_level = clamp(round(threat_level,25),0,100)
 
-	if(reported_threat_level != last_threat_level_warning)
+	if(reported_threat_level != last_threat_level_warning && abs(reported_threat_level - last_threat_level_warning) >= 15)
 		var/increase = reported_threat_level > last_threat_level_warning
 		last_threat_level_warning = reported_threat_level
-		switch(last_threat_level_warning)
+		switch(reported_threat_level)
 			if(0)
 				set_status_display("mission","CODE:\nGREEN.")
 				announce("EMERGENCY ALERT SYSTEM.","THREAT LEVEL CLEARED.","ALERT: THREAT LEVEL SET TO: GREEN. EXCERSIZE TERM: FADE OUT.")

@@ -1,7 +1,8 @@
 /obj/item/clothing/head/hood/cult
 	name = "cult hood"
-	icon = 'icons/obj/items/clothing/hats/cult.dmi'
-	desc_extended = "A sinister red hood."
+	desc = "MARANAX INFIRMAX"
+	desc_extended = "A sinister hood that for some reason doesn't work as an actual toggle-able hood."
+	icon = 'icons/obj/item/clothing/hats/cult.dmi'
 	rarity = RARITY_UNCOMMON
 
 	hidden_organs = list(
@@ -16,8 +17,8 @@
 		MAGIC = 25,
 		HEAT = 25,
 		COLD = 25,
-		HOLY = 50,
-		DARK = -50
+		HOLY = -50,
+		DARK = 50
 	)
 
 	size = SIZE_2
@@ -28,7 +29,7 @@
 /obj/item/clothing/head/hood/cult/old
 
 	name = "ancient cult hood"
-	icon = 'icons/obj/items/clothing/hats/cult_old.dmi'
+	icon = 'icons/obj/item/clothing/hats/cult_old.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(
@@ -39,8 +40,8 @@
 		MAGIC = 50,
 		HEAT = 50,
 		COLD = 25,
-		HOLY = 75,
-		DARK = -75
+		HOLY = -75,
+		DARK = 75
 	)
 
 	size = SIZE_2
@@ -51,7 +52,7 @@
 /obj/item/clothing/head/helmet/cult
 
 	name = "hardened cult hood"
-	icon = 'icons/obj/items/clothing/hats/cult_hard.dmi'
+	icon = 'icons/obj/item/clothing/hats/cult_hard.dmi'
 	rarity = RARITY_MYTHICAL
 
 	hidden_organs = list(
@@ -60,14 +61,14 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 75,
+		BLUNT = 25,
+		PIERCE = 50,
 		LASER = -75,
-		MAGIC = 50,
+		MAGIC = 25,
 		HEAT = 50,
-		COLD = 25,
-		HOLY = 75,
-		DARK = -75
+		COLD = 50,
+		HOLY = -75,
+		DARK = 100
 	)
 
 	size = SIZE_3

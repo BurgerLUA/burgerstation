@@ -1,10 +1,21 @@
-mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0)
+/mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_plane,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
+
+	if(!k)
+		k = "\ref[object]"
+
+	if(overlays_assoc[k])
+		CRASH_SAFE("An overlay of reference [k] already exists! Removing and replacing...")
+		remove_overlay(k)
+
 	var/image/overlay/O = new /image/overlay
-	O.attached_object = object
+	if(object)
+		O.attached_object = object
+	else
+		object = src //Intentional. This is just a fallback for the below settings.
 	O.initial_icon = desired_icon ? desired_icon : object.icon
 	O.initial_icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.layer = desired_layer ? desired_layer : object.layer
-	O.plane = src.plane
+	O.plane = desired_plane ? desired_plane : src.plane
 	O.icon = desired_icon ? desired_icon : object.icon
 	O.icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.color = desired_color ? desired_color : object.color
@@ -12,23 +23,33 @@ mob/living/advanced/proc/add_tracked_overlay(var/obj/object,var/desired_layer,va
 	O.no_initial = desired_no_initial
 	O.pixel_x = desired_pixel_x
 	O.pixel_y = desired_pixel_y
+	if(desired_transform)
+		O.transform = desired_transform
 	if(!desired_never_blend)
-		O.additional_blends = desired_additional_blends ? desired_additional_blends : object.additional_blends
+		if(desired_additional_blends)
+			O.additional_blends = desired_additional_blends
+		else if(isobj(object))
+			var/obj/B = object
+			O.additional_blends = B.additional_blends
+
 	O.update()
-	add_tracked_overlay_image(O)
+	add_overlay(O)
+	overlays_assoc[k] = O
 	return O
 
-mob/living/advanced/proc/show_overlay(var/image/overlay/O,var/show=TRUE)
-	update_overlay_direct(O,desired_alpha= show ? 255 : 0)
+mob/living/advanced/proc/remove_overlay(var/k)
+
+	if(!overlays_assoc[k]) //It is normal not to find any.
+		//CRASH_SAFE("Tried to remove non-existant overlay! ([k]).")
+		return FALSE
+
+	var/image/overlay/O = overlays_assoc[k]
+	overlays -= O
+	overlays_assoc -= k
+	qdel(O)
 	return TRUE
 
-mob/living/advanced/proc/remove_overlay(var/atom/A)
-	for(var/image/overlay/O in overlays_assoc)
-		if(O.attached_object != A)
-			continue
-		remove_overlay_image(O)
-		qdel(O)
-
+/*
 mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0)
 
 	for(var/image/overlay/O in overlays_assoc)
@@ -37,36 +58,38 @@ mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired
 		update_overlay_direct(O,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends,desired_pixel_x,desired_pixel_y)
 		return TRUE
 
+	log_error("Tries to update an overlay [A.get_debug_name()] for player [src.get_debug_name()], but it did not exist!")
+
 	return FALSE
+*/
 
-var/global/meme_count = 0
+/mob/living/advanced/proc/update_all_blends() //Avoid using this.
+	for(var/k in overlays_assoc)
+		var/image/overlay/O = overlays_assoc[k]
+		if(!istype(O))
+			var/datum/found_ref = locate(k)
+			CRASH_SAFE("Warning: Tried to get the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
+			continue
+		overlays -= O
+		O.update()
+		add_overlay(O) //Is this needed?
+	return TRUE
 
-mob/living/advanced/proc/update_all_blends()
-	for(var/image/overlay/O in overlays_assoc)
-		update_overlay_direct(O)
+/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_plane,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform)
 
-mob/living/advanced/proc/add_tracked_overlay_image(var/image/overlay/O)
-	var/image/I = new /image(O.icon)
-	I.appearance = O.appearance
-	add_overlay(I)
-	overlays_assoc[O] = I
-	if(O.attached_object)
-		overlays_assoc_atom[O.attached_object] = O
+	var/image/overlay/O = overlays_assoc[k]
 
-mob/living/advanced/proc/remove_overlay_image(var/image/overlay/O)
-	var/image/I = overlays_assoc[O]
-	overlays -= I
-	overlays_assoc -= O
-	if(O.attached_object)
-		overlays_assoc_atom -= O.attached_object
-	qdel(I)
+	if(!istype(O))
+		var/datum/found_ref = locate(k)
+		CRASH_SAFE("Warning: Tried to update the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
+		return FALSE
 
-mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0,var/desired_alpha=255)
+	overlays -= O
 
-	remove_overlay_image(O)
-
-	if(desired_layer)
+	if(isnum(desired_layer))
 		O.layer = desired_layer
+	if(isnum(desired_plane))
+		O.plane = desired_plane
 	if(desired_icon)
 		O.icon = desired_icon
 		O.initial_icon = desired_icon
@@ -77,10 +100,20 @@ mob/living/advanced/proc/update_overlay_direct(var/image/overlay/O,var/desired_l
 		O.color = desired_color
 	if(desired_additional_blends)
 		O.additional_blends = desired_additional_blends
-
-	O.pixel_x = desired_pixel_x
-	O.pixel_y = desired_pixel_y
-	O.alpha = desired_alpha
+	if(desired_transform)
+		O.transform = desired_transform
+	if(isnum(desired_pixel_x))
+		O.pixel_x = desired_pixel_x
+	if(isnum(desired_pixel_y))
+		O.pixel_y = desired_pixel_y
+	if(isnum(desired_alpha))
+		O.alpha = desired_alpha
 	O.update()
 
-	add_tracked_overlay_image(O)
+	add_overlay(O)
+
+	return TRUE
+
+/mob/living/advanced/proc/show_overlay(var/k,var/show=TRUE)
+	update_overlay_tracked(k,desired_alpha = show ? 255 : 0)
+	return TRUE

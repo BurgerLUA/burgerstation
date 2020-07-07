@@ -1,13 +1,7 @@
 /ai/carp
 
-	radius_find_enemy = 12
-
 	objective_delay = 10
 	attack_delay = 1
-
-	target_distribution_y = list(4,4,4,16,32,32,32)
-
-	stationary = FALSE
 
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader
 

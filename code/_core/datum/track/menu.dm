@@ -1,30 +1,30 @@
 /track/intro
 	name = "Intro"
 	id = "intro"
-	path = 'sounds/music/intro.ogg'
+	path = 'sound/music/intro.ogg'
 	length = 1*60 + 51
 
 /track/slow_fall
 	name = "Slow Fall"
 	id = "slow_fall"
-	path = 'sounds/music/slow_fall.ogg'
+	path = 'sound/music/slow_fall.ogg'
 	length = 2*60 + 20
 
 
 /track/space_wayfarer
 	name = "Space Wayfarer"
 	id = "space_wayfarer"
-	path = 'sounds/music/space_wayfarer.ogg'
+	path = 'sound/music/space_wayfarer.ogg'
 	length = 1*60 + 45
 
 /track/village_intro
 	name = "Village Intro"
 	id = "village_intro"
-	path = 'sounds/music/village_intro.ogg'
+	path = 'sound/music/village_intro.ogg'
 	length = 2*60 + 18
 
 /track/loading
 	name = "Loading..."
 	id = "loading"
-	path = 'sounds/music/loading.ogg'
+	path = 'sound/music/loading.ogg'
 	length = 1*60 + 6

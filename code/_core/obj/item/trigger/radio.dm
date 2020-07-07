@@ -3,7 +3,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 /obj/item/device/radio/
 	name = "radio"
 	desc = "Long distance communication. What could possibly go wrong?"
-	icon = 'icons/obj/items/radio_transmitter.dmi'
+	icon = 'icons/obj/item/radio_transmitter.dmi'
 	icon_state = "inventory"
 
 	var/frequency = RADIO_FREQ_COMMON //The broadcasting frequency of the radio.
@@ -19,7 +19,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	var/spam_fix_time = 0
 
-	var/radio_sound = 'sounds/items/radio.ogg'
+	var/radio_sound = 'sound/items/radio.ogg'
 
 	var/broadcasting_range = VIEW_RANGE
 
@@ -126,6 +126,7 @@ list(
 	for(var/mob/M in range(broadcasting_range,T))
 		if(!M.client)
 			continue
+		CHECK_TICK
 		M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
 
 	return TRUE

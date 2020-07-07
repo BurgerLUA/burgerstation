@@ -2,6 +2,8 @@
 	open = FALSE
 	var/current_chamber = 1
 
+	var/can_shoot_while_open = FALSE
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)
@@ -9,6 +11,9 @@
 
 /obj/item/weapon/ranged/bullet/revolver/get_ranged_damage_type()
 	return stored_bullets[current_chamber] ? stored_bullets[current_chamber].damage_type : damage_type
+
+/obj/item/weapon/ranged/bullet/revolver/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
+	return FALSE
 
 /obj/item/weapon/ranged/bullet/revolver/proc/rotate_cylinder(var/rotate_amount=1)
 
@@ -29,7 +34,7 @@
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
 
-	play('sounds/weapons/revolver_click2.ogg',src)
+	play('sound/weapons/revolver_click2.ogg',src)
 
 	update_sprite()
 
@@ -45,7 +50,7 @@
 
 /obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)
 
-	if(open)
+	if(!can_shoot_while_open && open)
 		return FALSE
 
 	return ..()

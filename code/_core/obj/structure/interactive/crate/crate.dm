@@ -18,3 +18,11 @@
 /obj/structure/interactive/crate/coffin
 	name = "coffin"
 	icon_state = "coffin"
+
+/obj/structure/interactive/crate/necro
+	name = "necro"
+	icon_state = "necro"
+
+	loot = /loot/lavaland
+
+	collect_contents_on_initialize = FALSE

@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/blazer_blue
 	name = "blue blazer"
-	icon = 'icons/obj/items/clothing/suit/blazer_blue.dmi'
+	icon = 'icons/obj/item/clothing/suit/blazer_blue.dmi'
 
 	rarity = RARITY_UNCOMMON
 

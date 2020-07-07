@@ -13,7 +13,7 @@
 	)
 
 	impact_sounds = list(
-		'sounds/weapons/beef/beef_hit.ogg'
+		'sound/weapons/beef/beef_hit.ogg'
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

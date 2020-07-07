@@ -3,19 +3,19 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 3,
-		BLUNT = 2,
-		PIERCE = 5
+		BLADE = 20,
+		BLUNT = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 50
+		BLADE = 25,
+		BLUNT = 25
 	)
 
 	falloff = VIEW_RANGE*0.5
+
+	fatigue_coefficient = 1
 
 /damagetype/ranged/bullet/shotgun/slug
 	name = "shotgun slug"
@@ -28,8 +28,10 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 20,
-		PIERCE = 10
+		BLUNT = 25,
+		PIERCE = 25
 	)
 
 	falloff = VIEW_RANGE
+
+	fatigue_coefficient = 0.25

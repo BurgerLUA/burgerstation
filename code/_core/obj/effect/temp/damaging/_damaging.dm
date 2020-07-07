@@ -44,7 +44,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	var/list/params = list()
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
-	var/atom/object_to_damage = victim.get_object_to_damage(owner,params,TRUE,TRUE)
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,params,TRUE,TRUE)
 	return DT.do_damage(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()
@@ -108,7 +108,7 @@ obj/effect/temp/hazard/tentacle/
 
 obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/desired_owner)
 	. = ..()
-	CALLBACK("deactivate_hazard_\ref[src]",11,src,.proc/deactivate_hazard)
+	CALLBACK("deactivate_hazard_\ref[src]",9,src,.proc/deactivate_hazard)
 	return .
 
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
@@ -116,6 +116,45 @@ obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,params,
 		return FALSE
 	return ..()
 
+obj/effect/temp/hazard/bubblefist/
+	name = "bubblegum grab"
+	icon = 'icons/mob/living/simple/lavaland/bubblegum_hands.dmi'
+	icon_state = "rightpawgrab"
+	var/overlay_state = "rightthumbgrab"
+	duration = 10
+	hazard_delay = 6
+
+	hazard_range = 0
+	damage_type = /damagetype/npc/goliath_tentacle
+	cross_hazard = TRUE
+
+	layer = LAYER_GROUND_SCENERY
+
+	plane = PLANE_MOB - 1
+
+obj/effect/temp/hazard/bubblefist/update_overlays()
+	. = ..()
+	var/image/I = new/image(icon,overlay_state)
+	I.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	I.plane = PLANE_EFFECT
+
+	add_overlay(I)
+	return .
+
+obj/effect/temp/hazard/bubblefist/New(var/desired_location,var/desired_time,var/desired_owner)
+	if(prob(50))
+		icon_state = "leftpawgrab"
+		overlay_state = "leftthumbgrab"
+	. = ..()
+	CALLBACK("deactivate_hazard_\ref[src]",7,src,.proc/deactivate_hazard)
+	update_sprite()
+
+	return .
+
+obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,params,var/atom/blamed,var/ignore_distance = FALSE)
+	if(istype(victim,/mob/living/simple/npc/bubblegum)) //This bug is hilarious but we don't want to have it.
+		return FALSE
+	return ..()
 
 obj/effect/temp/hazard/falling_meteor
 	name = "falling meteor"

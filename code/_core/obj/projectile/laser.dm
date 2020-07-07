@@ -10,6 +10,9 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
+	plane = PLANE_LIGHTING
+	layer = 99
+
 /obj/projectile/bullet/laser/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"[icon_state]_outline")

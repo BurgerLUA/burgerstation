@@ -1,13 +1,14 @@
 /obj/item/clothing/overwear/coat/chaplain
 	name = "priest garb"
-	icon = 'icons/obj/items/clothing/suit/religious.dmi'
+	icon = 'icons/obj/item/clothing/suit/religious.dmi'
 
 	desc = "Ultra fancy!"
-	desc_extended = ""
+	desc_extended = "Protects against magic attacks."
 
 	defense_rating = list(
 		MAGIC = 50,
-		DARK = 100
+		DARK = -100,
+		HOLY = 100
 	)
 
 	size = SIZE_3

@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/clockwork.dmi'
 	icon_state = "floor1"
 
-	footstep_id = "catwalk"
+	footstep = /footstep/catwalk
 
 /turf/simulated/floor/clockwork/alt1/
 	icon_state = "floor2"
@@ -20,7 +20,10 @@
 		icon_state = "floor2"
 	else
 		icon_state = "floor4"
+/turf/simulated/floor/clockwork/special/PostInitialize()
+	. = ..()
 	update_sprite()
+	return .
 
 /turf/simulated/floor/clockwork/vent
 	name = "clockwork vent"

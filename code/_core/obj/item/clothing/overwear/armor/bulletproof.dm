@@ -1,7 +1,6 @@
 /obj/item/clothing/overwear/armor/bulletproof
 	name = "bulletproof armor"
-	icon = 'icons/obj/items/clothing/suit/bulletproof_vest.dmi'
-	item_slot = SLOT_TORSO_A
+	icon = 'icons/obj/item/clothing/suit/bulletproof_vest.dmi'
 	desc = "Protecting against the greytide since 2193."
 	desc_extended = "A sturdy chestplate of bulletproof armor. Should protect against most small arms fire."
 
@@ -11,8 +10,8 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 75,
+		BLUNT = 50,
+		PIERCE = 50,
 		LASER = -25,
 		MAGIC = -25
 	)

@@ -69,7 +69,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	. =..()
 
-	set_doors(TRUE,TRUE,TRUE) //Open all the doors!
+	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
 	return .
 
@@ -81,11 +81,14 @@ var/global/list/all_shuttle_controlers = list()
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //Something blocking?
 		return FALSE
-
-	play('sounds/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = caller)
 	last_caller = caller
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
+
+	play('sound/effects/shuttle/hyperspace_begin.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+	if(last_caller)
+		create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
+
 	if(!desired_transit_time)
 		desired_transit_time = default_transit_time_no_living
 		for(var/mob/living/advanced/P in get_area(src))
@@ -105,43 +108,41 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE,var/force = FALSE)
 
-	. = TRUE
+	. = TRUE //TRUE if nothing went wrong. False if something went wrong.
 
 	var/area/A = get_area(src)
-	for(var/obj/structure/interactive/door/airlock/shuttle/S in A.contents)
-		var/doorstuck = FALSE
-		var/obj/structure/interactive/scanner/living/S1 = locate() in S.loc.contents
-		if(S1 && !S1.trigger(null,src,-1,-1))
-			. = FALSE
-			continue
 
-		var/exposed_to_space = FALSE
+	for(var/obj/structure/interactive/door/airlock/shuttle/S in A.contents)
+
+		var/obj/structure/interactive/scanner/living/S1 = locate() in S.loc.contents
+		if(S1 && !S1.trigger(null,src,-1,-1)) //Unsafe to close.
+			. = FALSE
+			break
+
+		var/exposed_to_space = S.get_best_touching_space(FALSE)
+
 		for(var/direction in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(S,direction)
-			if(istype(T.loc,/area/space/))
-				exposed_to_space = TRUE
+			var/obj/structure/interactive/scanner/living/S2 = locate() in T.contents
+			if(S2 && !S2.trigger(null,src,-1,-1))
+				. = FALSE //Unsafe to close.
+				break
 
-		if(!exposed_to_space)
-			for(var/direction in DIRECTIONS_CARDINAL)
-				var/turf/T = get_step(S,direction)
-				var/obj/structure/interactive/scanner/living/S2 = locate() in T.contents
-				if(S2 && !S2.trigger(null,src,-1,-1))
-					. = FALSE
-					doorstuck = TRUE
-					continue
-				var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
-				if(AL && !istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
-					if(open)
-						AL.open(null,lock,force)
-					else
-						AL.close(null,lock,force)
+			var/obj/structure/interactive/door/airlock/AL = locate() in T.contents
+			if(!AL || istype(AL,/obj/structure/interactive/door/airlock/shuttle/))
+				//No airlock? Whatever, keep going.
+				continue
 
-		if(!doorstuck)
-			if(!exposed_to_space && open)
+			if(open)
+				AL.open(null,lock,force)
+			else
+				AL.close(null,lock,force)
+
+		if(.)
+			if(open && !exposed_to_space)
 				S.open(null,lock,force)
 			else
 				S.close(null,lock,force)
-
 	return .
 
 /obj/shuttle_controller/proc/on_shuttle_think()
@@ -157,8 +158,9 @@ var/global/list/all_shuttle_controlers = list()
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
 			if(!transit(transit_source,transit_bluespace))
 				return FALSE
-			play('sounds/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = last_caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = last_caller)
-
+			play('sound/effects/shuttle/hyperspace_progress.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			if(last_caller)
+				create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
 
@@ -175,7 +177,9 @@ var/global/list/all_shuttle_controlers = list()
 			if(!transit(transit_bluespace,transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
-			play('sounds/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3,alert = last_caller ? ALERT_LEVEL_NOISE : ALERT_LEVEL_NONE, alert_source = last_caller)
+			play('sound/effects/shuttle/hyperspace_end.ogg',src,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
+			if(last_caller)
+				create_alert(VIEW_RANGE,src,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 			transit_source = null
@@ -183,7 +187,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/area/A = get_area(src)
 
-	for(var/obj/structure/interactive/status_display/SD in A.contents)
+	for(var/obj/structure/interactive/status_display/shuttle/SD in A.contents)
 		SD.set_text(display)
 
 	if(status_id)
@@ -245,6 +249,6 @@ var/global/list/all_shuttle_controlers = list()
 			continue
 		if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 			continue
-		//M.throw_self(M,null,null,null,transit_throw_x*16,transit_throw_y*16)
+		M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
 
 	return TRUE

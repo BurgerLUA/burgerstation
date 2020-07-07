@@ -2,7 +2,7 @@
 	name = "button"
 	desc = "This button does something, I think."
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "slot"
 
 	var/is_static = TRUE //Is the button anchored?
@@ -55,16 +55,15 @@
 	if(owner && !desired_owner)
 		owner.remove_button(src)
 
-	if(desired_owner)
-		owner = desired_owner
-		owner.add_button(src)
-		update_sprite()
-	else
+	if(!desired_owner)
 		qdel(src)
+		return FALSE
 
+	owner = desired_owner
+	owner.add_button(src)
+	update_sprite()
 	return TRUE
 
-
 /obj/hud/button/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	play('sounds/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
+	play('sound/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
 	return TRUE

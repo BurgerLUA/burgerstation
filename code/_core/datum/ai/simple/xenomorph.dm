@@ -1,13 +1,7 @@
 /ai/xenomorph //Space carp clone
 
-	radius_find_enemy = VIEW_RANGE
-
 	objective_delay = 10
 	attack_delay = 1
-
-	target_distribution_y = list(4,4,4,16,32,32,32)
-
-	stationary = FALSE
 
 	var/mob/living/simple/npc/xenomorph/pack_leader/leader
 
@@ -22,9 +16,6 @@
 			return L
 
 	return null
-
-/ai/xenomorph/hostile_message()
-	owner.say("HISSSSSSSSSSSS!")
 
 /ai/xenomorph/handle_objectives()
 
@@ -51,17 +42,11 @@
 
 /ai/xenomorph/pack_leader
 
-	radius_find_enemy = VIEW_RANGE * 2
-
 	objective_delay = 10
 	attack_delay = 1
 
 /ai/xenomorph_queen
 
-	radius_find_enemy = VIEW_RANGE * 2
-
-	objective_delay = 6
+	objective_delay = 10
 	attack_delay = 1
-
-	target_distribution_y = list(4,4,4,16,32,32,32)
 

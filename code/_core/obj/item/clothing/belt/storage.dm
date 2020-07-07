@@ -1,6 +1,6 @@
 /obj/item/clothing/belt/storage
 	name = "utility belt"
-	icon = 'icons/obj/items/clothing/belts/tool.dmi'
+	icon = 'icons/obj/item/clothing/belts/tool.dmi'
 	desc = "Don't make me get the belt."
 	desc_extended = "Stores a robust amount of items that can easily and quickly be accessed."
 
@@ -40,7 +40,7 @@
 
 /obj/item/clothing/belt/storage/medical
 	name = "medical belt"
-	icon = 'icons/obj/items/clothing/belts/medical.dmi'
+	icon = 'icons/obj/item/clothing/belts/medical.dmi'
 	desc_extended = "Stores a robust amount of items that can easily and quickly be accessed. This one is medical themed."
 
 /obj/item/clothing/belt/storage/medical/filled/fill_inventory()

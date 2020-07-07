@@ -58,9 +58,6 @@
 	. = ..()
 
 	if(.)
-
-		update_rs_chat()
-
 		switch(move_mod)
 			if(1)
 				on_walk()
@@ -83,10 +80,12 @@
 
 /mob/post_move(var/atom/old_loc)
 
+	var/turf/T = get_turf(src.loc)
+
 	for(var/k in parallax)
 		var/obj/parallax/P = parallax[k]
-		var/desired_x = FLOOR(-(x - (WORLD_SIZE*0.5)) * P.ratio,1)
-		var/desired_y = FLOOR(-(y - (WORLD_SIZE*0.5)) * P.ratio,1)
+		var/desired_x = FLOOR(-(T.x - (WORLD_SIZE*0.5)) * P.ratio,1)
+		var/desired_y = FLOOR(-(T.y - (WORLD_SIZE*0.5)) * P.ratio,1)
 
 		P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
 
@@ -94,5 +93,7 @@
 
 	if(client)
 		client.post_move(loc,old_loc)
+
+	update_rs_chat()
 
 	return .

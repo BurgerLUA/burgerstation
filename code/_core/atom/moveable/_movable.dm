@@ -31,9 +31,6 @@
 
 	var/next_conveyor = 0 //For conveyors.
 
-	var/has_footsteps = FALSE
-	var/footstep_override_id //If this var is defined, it will always play these footstep sounds instead, regardless of the object's footstep id.
-
 	var/throwable = TRUE
 
 	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
@@ -51,7 +48,28 @@
 	var/acceleration_mod = 0
 	var/use_momentum = FALSE //Acceleration uses momentum.
 
+	var/has_footsteps = FALSE
 
+/atom/movable/proc/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+
+	if(!enter)
+		return FALSE //Only for advanced types
+
+	for(var/k in footsteps_to_use)
+		if(!k)
+			continue
+		var/footstep/F = SSfootstep.all_footsteps[k]
+		if(F.has_footprints)
+			var/type_to_use = enter ? /obj/effect/footprint/emboss/ : /obj/effect/footprint/emboss/exit
+			var/obj/effect/footprint/emboss/P = new type_to_use(T,src.dir,TRUE,TRUE)
+			P.color = F.footprint_color
+			P.alpha = F.footprint_alpha
+			INITIALIZE(P)
+		if(length(F.footstep_sounds))
+			play(pick(F.footstep_sounds), T, volume = 50, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
+
+/atom/movable/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	return original_footsteps
 
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
 
@@ -85,8 +103,21 @@
 
 	return .
 
-/atom/movable/proc/can_be_grabbed(var/atom/grabber)
-	return !anchored
+/atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+
+	if(grabber == src)
+		if(messages && is_living(grabber))
+			var/mob/living/L = grabber
+			L.to_chat(span("warning","You can't grab yourself! ERP is against the rules!"))
+		return FALSE
+
+	if(anchored)
+		if(messages && is_living(grabber))
+			var/mob/living/L = grabber
+			L.to_chat(span("warning","\The [src.name] is secured firmly to the ground!"))
+		return FALSE
+
+	return TRUE
 
 /atom/movable/Initialize()
 

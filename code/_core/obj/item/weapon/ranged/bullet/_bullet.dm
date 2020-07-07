@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet
 
 	var/obj/item/bullet_cartridge/chambered_bullet //One in the chamber
-	var/list/obj/item/bullet_cartridge/stored_bullets //This is a fixed list, so be careful.
+	var/list/obj/item/bullet_cartridge/stored_bullets //This is a fixed list, so be careful. Used for shotguns and stuff.
 
 	var/bullet_count_max = 0 //How many bullets can this store on top of the chambered bullet?
 
@@ -12,10 +12,10 @@
 	requires_bullets = TRUE
 
 	empty_sounds = list(
-		'sounds/weapons/empty1.ogg',
-		'sounds/weapons/empty2.ogg',
-		'sounds/weapons/empty3.ogg',
-		'sounds/weapons/empty4.ogg'
+		'sound/weapons/empty1.ogg',
+		'sound/weapons/empty2.ogg',
+		'sound/weapons/empty3.ogg',
+		'sound/weapons/empty4.ogg'
 	)
 
 	var/jammed = FALSE
@@ -54,10 +54,10 @@
 	var/obj/item/bullet_cartridge/B = chambered_bullet
 
 	if(jammed)
-		caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
 	else if(B.jam_chance && luck(list(B,src,caller),B.jam_chance,FALSE))
-		caller.to_chat(span("danger","\The [src.name] jams!"))
+		if(B.jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE
 

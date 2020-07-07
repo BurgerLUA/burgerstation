@@ -18,6 +18,8 @@
 
 	var/slime_color = "#000000"
 
+	value = 100
+
 	armor_base = list(
 		BLADE = 25,
 		BLUNT = 75,
@@ -36,7 +38,15 @@
 
 	mob_size = MOB_SIZE_ANIMAL
 
-/mob/living/simple/npc/slime/Initialize()
+	damage_type = /damagetype/npc/slime
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
+	iff_tag = "Slime"
+	loyalty_tag = "Slime"
+
+/mob/living/simple/npc/slime/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

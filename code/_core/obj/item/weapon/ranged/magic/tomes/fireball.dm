@@ -2,19 +2,17 @@
 	name = "tome of the fireball"
 	desc = "Shoot fireballs in long hallways like an asshole."
 	desc_extended = "Costs mana to use."
-	cost_mana = 24
-	shoot_delay = 10
+	cost_mana = 50
+	shoot_delay = 30
 
-	icon = 'icons/obj/items/weapons/ranged/magic/tomes/fireball.dmi'
-
-	associated_skill = SKILL_SORCERY
+	icon = 'icons/obj/item/weapons/ranged/magic/tomes/fireball.dmi'
 
 	projectile = /obj/projectile/magic/fireball
 
 	ranged_damage_type = /damagetype/ranged/magic/fireball
 
-	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
 
-	projectile_speed = 10
+	projectile_speed = 8
 
-	value = 400
+	value = 600

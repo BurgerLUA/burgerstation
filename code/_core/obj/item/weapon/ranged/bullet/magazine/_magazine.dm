@@ -10,11 +10,11 @@
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)
 		if("both")
-			return 'sounds/weapons/gun/general/bolt_rack.ogg'
+			return 'sound/weapons/gun/general/bolt_rack.ogg'
 		if("forward")
-			return 'sounds/weapons/gun/general/bolt_drop.ogg'
+			return 'sound/weapons/gun/general/bolt_drop.ogg'
 		if("back")
-			return 'sounds/weapons/gun/general/slide_lock_1.ogg'
+			return 'sound/weapons/gun/general/slide_lock_1.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/Generate()
 
@@ -45,6 +45,11 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
+
+	if(!stored_magazine)
+		CRASH_SAFE("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
+		return FALSE
+
 	play(stored_magazine.get_magazine_eject_sound(),src)
 	stored_magazine.force_move(caller.loc)
 	if(object)
@@ -54,10 +59,11 @@
 	stored_magazine = null
 	open = TRUE
 	update_sprite()
+	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(!wielded && stored_magazine && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
+	if(stored_magazine && !wielded && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
 		eject_magazine(caller,object)
 		return TRUE
 	return ..()

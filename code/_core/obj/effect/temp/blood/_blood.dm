@@ -1,21 +1,17 @@
-/obj/effect/temp/blood/
+/obj/effect/blood/
 	name = "blood"
 	icon = 'icons/obj/effects/blood_impact.dmi'
 	layer = LAYER_GROUND_SCENERY
 	plane = PLANE_BLOOD
-	alpha = 150
+	alpha = 200
 
 	var/animate_position = FALSE
 
-/obj/effect/temp/blood/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
+	var/expense = 1
 
-	var/blood_count = 0
+	anchored = TRUE
 
-	for(var/obj/effect/temp/blood/B in src.loc.contents)
-		blood_count++
-
-	if(blood_count > 5)
-		desired_time = SECONDS_TO_DECISECONDS(4)
+/obj/effect/blood/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 
 	color = desired_color
 
@@ -27,22 +23,23 @@
 		pixel_x = SAFENUM(desired_x)
 		pixel_y = SAFENUM(desired_y)
 
-	spawn(desired_time-20)
-		animate(src,alpha = 0,time = 20)
-
 	return ..()
 
-/obj/effect/temp/blood/drip
+/obj/effect/blood/drip
 	name = "blood drip"
 	icon_state = "drip"
 	animate_position = FALSE
 
-/obj/effect/temp/blood/splatter/
+	expense = 0.5
+
+/obj/effect/blood/splatter/
 	name = "blood splatter"
 	icon_state = "1"
 	animate_position = TRUE
 
-/obj/effect/temp/blood/splatter/New(var/desired_location,var/desired_time,var/desired_color,var/desired_x,var/desired_y)
+	expense = 1
+
+/obj/effect/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "[rand(1,12)]"
 	return ..()
 

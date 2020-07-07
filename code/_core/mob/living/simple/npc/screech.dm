@@ -8,8 +8,10 @@
 
 	health_base = 100
 
+	value = 1000
+
 	ai = null
-	class = "bear"
+	class = /class/passive/
 	damage_type = /damagetype/unarmed/claw/
 
 	anchored = TRUE

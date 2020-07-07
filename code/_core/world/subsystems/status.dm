@@ -14,4 +14,4 @@ SUBSYSTEM_DEF(status)
 			S = new k
 			all_status_effects[id] = S
 
-	return TRUE
+	return ..()

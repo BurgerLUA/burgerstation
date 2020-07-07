@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld
 	name = "\improper 9mm SMP"
-	icon = 'icons/obj/items/weapons/ranged/smg/9mm.dmi'
+	desc = "Spray n' Pray"
+	desc_extended = "Extremely inaccurate, but brute forces that problem with it's high firerate. Dual wield for best results."
+	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sound/weapons/silenced/fire.ogg')
 
 	can_wield = FALSE
 

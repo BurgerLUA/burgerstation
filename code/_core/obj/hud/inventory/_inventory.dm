@@ -8,7 +8,7 @@
 	//icon = 'icons/invisible.dmi'
 	//icon_state = "0"
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
 	plane = PLANE_HUD
@@ -75,6 +75,27 @@
 	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
 
 	var/allow_quick_equip = TRUE
+
+/obj/hud/inventory/proc/is_occupied(var/ignore_held = TRUE, var/ignore_worn = TRUE)
+
+	if(!ignore_held && get_top_held_object())
+		return TRUE
+
+	if(!ignore_worn && get_top_worn_object())
+		return TRUE
+
+	if(grabbed_object)
+		return TRUE
+
+	if(parent_inventory)
+		return TRUE
+
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(A.handcuffed)
+			return TRUE
+
+	return FALSE
 
 /obj/hud/inventory/Destroy()
 
@@ -177,9 +198,40 @@
 	var/mob/living/advanced/A = owner
 
 	var/icon/desired_icon = initial(item_to_update.icon)
-	var/list/states = icon_states(initial(item_to_update.icon))
 	var/desired_icon_state = null
-	if(id == BODY_HAND_LEFT)
+	var/desired_pixel_x = 0
+	var/desired_pixel_y = 0
+	var/desired_layer = LAYER_MOB_HELD
+	var/matrix/desired_transform = matrix()
+
+	var/list/states = icon_states(initial(item_to_update.icon))
+
+	if(item_to_update.dan_mode)
+		desired_icon_state = item_to_update.dan_icon_state
+		switch(owner.dir)
+			if(NORTH)
+				desired_layer = item_to_update.dan_layer_below
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[1] : -item_to_update.dan_offset_pixel_x[1]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[1] : -item_to_update.dan_offset_pixel_y[1]
+				if(click_flags & RIGHT_HAND)
+					desired_transform.Scale(-1,1)
+			if(EAST)
+				desired_layer = click_flags & RIGHT_HAND ? item_to_update.dan_layer_above : item_to_update.dan_layer_below
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[2] : -item_to_update.dan_offset_pixel_x[2] + 4
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[2] : -item_to_update.dan_offset_pixel_y[2]
+				desired_transform.Scale(-1,1)
+			if(SOUTH)
+				desired_layer = item_to_update.dan_layer_above
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[3] : -item_to_update.dan_offset_pixel_x[3]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[3] : -item_to_update.dan_offset_pixel_y[3]
+				if(click_flags & LEFT_HAND)
+					desired_transform.Scale(-1,1)
+			if(WEST)
+				desired_layer = click_flags & RIGHT_HAND ? item_to_update.dan_layer_below : item_to_update.dan_layer_above
+				desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[4] - 4 : -item_to_update.dan_offset_pixel_x[4]
+				desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[4] : -item_to_update.dan_offset_pixel_y[4]
+				//desired_transform.Scale(-1,1)
+	else if(id == BODY_HAND_LEFT)
 		desired_icon_state = item_to_update.icon_state_held_left
 	else if(id == BODY_HAND_RIGHT)
 		desired_icon_state = item_to_update.icon_state_held_right
@@ -201,15 +253,32 @@
 	else if(!(desired_icon_state in states))
 		return FALSE
 
-	A.remove_overlay(item_to_update)
-	A.add_tracked_overlay(
-		item_to_update,
-		desired_icon = desired_icon,
-		desired_icon_state = desired_icon_state,
-		desired_layer = LAYER_MOB_HELD,
-		desired_never_blend = TRUE,
-		desired_color = item_to_update.color
-	)
+	if(!A.overlays_assoc["\ref[item_to_update]"])
+		A.add_overlay_tracked(
+			"\ref[item_to_update]",
+			item_to_update,
+			desired_icon = desired_icon,
+			desired_icon_state = desired_icon_state,
+			desired_layer = desired_layer,
+			desired_never_blend = TRUE,
+			desired_color = item_to_update.color,
+			desired_pixel_x = desired_pixel_x,
+			desired_pixel_y = desired_pixel_y,
+			desired_transform = desired_transform
+		)
+	else
+		A.update_overlay_tracked(
+			"\ref[item_to_update]",
+			item_to_update,
+			desired_icon = desired_icon,
+			desired_icon_state = desired_icon_state,
+			desired_layer = desired_layer,
+			desired_never_blend = TRUE,
+			desired_color = item_to_update.color,
+			desired_pixel_x = desired_pixel_x,
+			desired_pixel_y = desired_pixel_y,
+			desired_transform = desired_transform
+		)
 
 	return TRUE
 
@@ -298,11 +367,13 @@
 
 	var/mob/living/advanced/A = owner
 
+	/*
 	for(var/obj/item/C in A.worn_objects)
 		if(C.item_slot & I.item_slot && (!C.ignore_other_slots && !I.ignore_other_slots))
 			if(messages)
 				A.to_chat(span("notice","\The [C.name] prevents you from wearing \the [I.name]!"))
 			return FALSE
+	*/
 
 	var/atom/old_location = I.loc
 
@@ -318,8 +389,8 @@
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
 	I.pre_pickup(old_location,src)
-	if(owner)
-		I.update_owner(owner)
+	if(A)
+		I.update_owner(A)
 		if(should_add_worn)
 			A.worn_objects += I
 			A.update_slowdown_mul()
@@ -355,11 +426,11 @@
 			C.initialize_blends(desired_icon_state)
 
 	if(is_wings(item_to_update))
-		A.add_tracked_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
-		A.add_tracked_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
-		A.add_tracked_overlay(item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_overlay_tracked("wings_behind",item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_overlay_tracked("wings_front",item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_overlay_tracked("wings_side",item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
 	else
-		A.add_tracked_overlay(item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
+		A.add_overlay_tracked("\ref[item_to_update]",item_to_update,desired_layer = item_to_update.worn_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y)
 
 	return TRUE
 
@@ -446,7 +517,7 @@
 		update_stats()
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			A.remove_overlay(I)
+			A.remove_overlay("\ref[I]")
 		if(owner)
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))
@@ -482,19 +553,15 @@
 	if(loc && loc == I)
 		return FALSE
 
-	if(I.delete_on_drop)
+	if(held_slots <= 0)
 		return FALSE
 
-	if(I.anchored)
+	if(is_occupied(TRUE,TRUE))
+		if(messages && src.loc)
+			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
 		return FALSE
 
 	if(!I.can_be_held(owner,src))
-		return FALSE
-
-	if(parent_inventory)
-		return FALSE
-
-	if(held_slots <= 0)
 		return FALSE
 
 	if(length(item_blacklist))
@@ -539,13 +606,15 @@
 	if(loc && loc == I)
 		return FALSE
 
-	if(parent_inventory)
-		return FALSE
-
 	if(worn_slots <= 0)
 		return FALSE
 
-	if(I.anchored)
+	if(is_occupied(TRUE,TRUE))
+		if(messages && src.loc)
+			owner.to_chat(span("notice","\The [src.loc.name] is already occupied!"))
+		return FALSE
+
+	if(!I.can_be_held(owner,src))
 		return FALSE
 
 	if(!I.can_be_worn(owner,src))
@@ -554,7 +623,7 @@
 	if(worn_allow_duplicate)
 		for(var/obj/item/I2 in worn_objects)
 			if(I.item_slot & I.item_slot)
-				owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
+				if(messages) owner.to_chat(span("notice","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 				return FALSE
 
 	if(is_clothing(I))
@@ -571,8 +640,18 @@
 						if(messages)
 							owner.to_chat(span("notice","Beast races cannot wear this!"))
 						return FALSE
-			for(var/obj/item/clothing/C2 in A.worn_objects)
-				if(C2.blocks_clothing && I.item_slot && I.item_slot & C2.blocks_clothing)
+
+			var/list/list_to_check = I.ignore_other_slots ? src.worn_objects : A.worn_objects
+
+			/*
+			for(var/obj/item/clothing/C2 in src.worn_objects)
+				if(C2.item_slot & C.item_slot)
+					if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
+					return FALSE
+			*/
+
+			for(var/obj/item/clothing/C2 in list_to_check)
+				if(C2.blocks_clothing && I.item_slot && (I.item_slot & C2.blocks_clothing)) //DON'T LET YOUR EYES FOOL YOU AS THEY DID MINE.
 					if(messages) owner.to_chat(span("notice","\The [C2.name] prevents you from wearing \the [C.name]!"))
 					return FALSE
 

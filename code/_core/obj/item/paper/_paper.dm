@@ -2,7 +2,7 @@
 	name = "Paper"
 	desc = "Paper!"
 
-	icon = 'icons/obj/items/paper.dmi'
+	icon = 'icons/obj/item/paper.dmi'
 	icon_state = "normal"
 
 	var/last_page = 1

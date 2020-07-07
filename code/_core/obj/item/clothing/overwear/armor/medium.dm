@@ -1,5 +1,7 @@
 /obj/item/clothing/overwear/armor/medium_armor/leather
 	name = "medium leather armor"
+	desc = "This is medieval, right?"
+	desc_extended = "A suit of leather armor. Often seeing at renessaince faires, despite the fact medieval soldiers wore wool gambesons."
 	color = "#8C4438"
 
 	defense_rating = list(
@@ -18,6 +20,8 @@
 
 /obj/item/clothing/overwear/armor/medium_armor/security
 	name = "padded kevlar security armor"
+	desc = "Morning, Mr. Freeman. Looks like you're running late."
+	desc_extended = "Standard-issue armor of the Nanotrasen security force. Bulky, but also better than nothing."
 	color = COLOR_BLACK
 
 	defense_rating = list(

@@ -1,9 +1,9 @@
-/reagent/carbon //Found while mining carbon ore deposits
+/reagent/carbon //Found while mining carbon ore deposits. Or burning food.
 	name = "Carbon"
 	desc = "What most lifeforms are made out of."
 	color = "#000000"
 
-	flavor = "coal"
+	flavor = "burnt food"
 
 	liquid = -0.75
 

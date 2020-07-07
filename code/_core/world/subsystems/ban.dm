@@ -1,7 +1,6 @@
 #define BANLIST_KEYS_DIR "data/server/banlist_keys.json"
 #define BANLIST_ADDRESS_DIR "data/server/banlist_address.json"
 #define BANLIST_COMPUTER_DIR "data/server/banlist_computer_id.json"
-#define ADMINLIST_DIR "data/server/adminlist.json"
 
 SUBSYSTEM_DEF(ban)
 	name = "Ban Subsystem"
@@ -12,16 +11,7 @@ SUBSYSTEM_DEF(ban)
 	var/list/bans_address = list("192.167.255.256" = list("admin" = "burgerbb", "reason" = "For being an example.", "expires" = -1))
 	var/list/bans_computer_ids = list("1234567890" = list("admin" = "burgerbb", "reason" = "For being an example.", "expires" = -1))
 
-	var/list/admins = list("burgerbb")
-
 /subsystem/ban/Initialize()
-
-	if(fexists(ADMINLIST_DIR))
-		admins = json_decode(file2text(ADMINLIST_DIR))
-	else
-		text2file(json_encode(admins),ADMINLIST_DIR)
-
-	LOG_DEBUG("Found [length(admins)] admins.")
 
 	var/bans_keys_changed = 0
 	var/bans_address_changed = 0
@@ -121,12 +111,13 @@ SUBSYSTEM_DEF(ban)
 
 	return FALSE
 
-/subsystem/ban/proc/add_ckey_ban(var/ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
+/subsystem/ban/proc/add_ckey_ban(var/desired_ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
 
-	bans_keys[ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
+	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
 
-	for(var/client/C in all_clients)
-		if(C.ckey == ckey)
+	for(var/ckey in all_clients)
+		var/client/C = all_clients[ckey]
+		if(desired_ckey == ckey)
 			C << span("danger","You have been banned from the server.\n\
 			Banning Admin: [admin_ckey]\n\
 			Reason: [reason]\n\
@@ -136,7 +127,7 @@ SUBSYSTEM_DEF(ban)
 	fdel(BANLIST_KEYS_DIR)
 	text2file(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
-	LOG_ADMIN("[ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
+	LOG_ADMIN("[desired_ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
 
 	return TRUE
 

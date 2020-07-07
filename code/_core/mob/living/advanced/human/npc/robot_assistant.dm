@@ -4,8 +4,8 @@
 	ai = null
 	move_mod = 1
 	species = "cyborg"
-	class = "passive"
-	dialogue_id = "cyborg_assistant"
+	class = /class/cyborg/
+	dialogue_id = /dialogue/tutorial/front_desk
 	anchored = TRUE
 
 /mob/living/advanced/npc/cyborg_assistant/Initialize()
@@ -19,13 +19,13 @@
 
 /mob/living/advanced/npc/cyborg_assistant/bartender/Initialize()
 	. = ..()
-	equip_loadout("bartender")
+	equip_loadout(/loadout/cyborg_assistant/bartender)
 	return .
 
 
 /mob/living/advanced/npc/cyborg_assistant/help_desk/Initialize()
 	. = ..()
-	equip_loadout("help_desk")
+	equip_loadout(/loadout/cyborg_assistant/help_desk)
 	return .
 
 

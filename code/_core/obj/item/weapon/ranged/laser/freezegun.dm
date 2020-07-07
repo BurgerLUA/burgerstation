@@ -1,6 +1,8 @@
 /obj/item/weapon/ranged/energy/freezegun
 	name = "freeze ray"
-	icon = 'icons/obj/items/weapons/ranged/laser/freezegun.dmi'
+	desc = "Get iced, dummy."
+	desc_extended = "A gun that shoots beams that freeze the opponent."
+	icon = 'icons/obj/item/weapons/ranged/laser/freezegun.dmi'
 
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/freezegun
@@ -18,7 +20,7 @@
 
 	view_punch = 15
 
-	shoot_sounds = list('sounds/weapons/chronogun/fire.ogg')
+	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	override_icon_state = TRUE
 
@@ -28,7 +30,7 @@
 	size = SIZE_4
 	weight = WEIGHT_4
 
-	value = 800
+	value = 1500
 
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread() //Base spread
 	return 0.003

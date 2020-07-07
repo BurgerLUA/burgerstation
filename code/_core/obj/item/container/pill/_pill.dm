@@ -2,7 +2,7 @@
 	name = "pill"
 	desc = "FLOORPILL"
 
-	icon = 'icons/obj/items/container/pills.dmi'
+	icon = 'icons/obj/item/container/pills.dmi'
 	icon_state = "rectangle"
 
 	desc_extended = "Hope you remember what the pill is."
@@ -51,13 +51,12 @@
 	return .
 
 
-
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	INTERACT_CHECK
 
 	if(!is_advanced(object))
 		return ..()
+
+	INTERACT_CHECK
 
 	var/mob/living/advanced/A2 = object
 
@@ -84,14 +83,14 @@
 	update_sprite()
 	return .
 
-/obj/item/container/pill/update_icon()
+/obj/item/container/pill/update_sprite()
 
 	if(double)
 		color = null
 	else
 		color = reagents.color
 
-	return TRUE
+	return ..()
 
 /obj/item/container/pill/update_overlays()
 
@@ -110,11 +109,20 @@
 
 /obj/item/container/pill/New(var/desired_loc)
 
+	. = ..()
+
 	if(double)
-		reagents_2 = new/reagent_container/pill/half(src)
-		reagents = new/reagent_container/pill/half(src)
+		reagents_2 = /reagent_container/pill/half
+		reagents = /reagent_container/pill/half
 	else
-		reagents = /reagent_container/pill/
+		reagents = /reagent_container/pill
+
+	return .
+
+/obj/item/container/pill/Initialize()
+
+	if(reagents_2)
+		reagents_2 = new reagents(src)
 
 	return ..()
 

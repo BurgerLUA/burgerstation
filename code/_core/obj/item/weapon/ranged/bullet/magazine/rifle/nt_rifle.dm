@@ -2,7 +2,7 @@
 	name = "\improper 5.56 AR-SS13"
 	desc = "Vanilla yet still advanced."
 	desc_extended = "A cheap yet still reliable assault rifle primarily used and mass produced by NanoTrasen PMCs. Kicks like a mule, though."
-	icon = 'icons/obj/items/weapons/ranged/rifle/556_nt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/556_nt.dmi'
 	icon_state = "inventory"
 	value = 200
 
@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	can_wield = TRUE
 

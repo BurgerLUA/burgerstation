@@ -10,7 +10,7 @@
 
 	var/color = "#FFFFFF" //Reagent's color.
 
-	var/temperature_mod = 1
+	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive.
 
 	var/metabolism_stomach = 1 //How many units of the reagent to metabolize per second.
 	var/metabolism_blood = 1 //How many units of the reagent to metabolize per second.
@@ -24,6 +24,15 @@
 	var/flavor_strength = 1
 
 	var/processed_reagent
+
+	var/heated_reagent //What this heats into.
+	var/heated_reagent_temp //Temperature required to heat
+	var/heated_reagent_amount //Amount (units) to add per reagent tick.
+	var/heated_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
+	var/cooled_reagent //What this cools inot.
+	var/cooled_reagent_temp //Temperature required to cool.
+	var/cooled_reagent_amount //Amount (units) to add per reagent tick.
+	var/cooled_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
 
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
@@ -57,13 +66,13 @@
 	return total_metabolized
 
 /reagent/proc/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_stomach
+	return metabolism_stomach * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_blood
+	return metabolism_blood * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_skin
+	return metabolism_skin * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
 
 /reagent/proc/on_overdose(var/atom/original_owner,var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
-	return metabolism_amount
+	return metabolism_amount * DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)

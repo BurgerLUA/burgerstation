@@ -37,6 +37,14 @@
 
 	handle_horizontal()
 
+	if(following)
+		following.followers -= src
+		following = null
+
+	if(is_sneaking)
+		is_sneaking = FALSE
+		handle_alpha()
+
 	post_death()
 
 	if(queue_delete_on_death)
@@ -86,6 +94,8 @@
 	return TRUE
 
 /mob/living/proc/pre_death()
+	alert_overlay.icon_state = "none"
+	chat_overlay.icon_state = "none"
 	return TRUE
 
 /mob/living/proc/post_death()
@@ -216,6 +226,7 @@
 		if(desired_horizontal) //KNOCK DOWN
 			animate(src,transform = turn(matrix(), stun_angle), pixel_z = 0, time = 1)
 			update_collisions(FLAG_COLLISION_CRAWLING)
+			play(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25)
 		else //GET UP
 			animate(src,transform = matrix(), pixel_z = initial(src.pixel_z), time = 2)
 			update_collisions(initial(collision_flags))
@@ -228,15 +239,9 @@
 	if(!initialized)
 		return FALSE
 
-	if(dead)
-		return FALSE
-
-	if(reagents)
-		reagents.metabolize()
+	handle_status_effects()
 
 	update_alpha(handle_alpha())
-
-	handle_status_effects()
 
 	return TRUE
 
@@ -266,8 +271,13 @@ mob/living/proc/on_life_slow()
 	if(!initialized)
 		return FALSE
 
+	handle_fire()
+
 	if(dead)
 		return FALSE
+
+	if(reagents)
+		reagents.metabolize()
 
 	handle_charges(LIFE_TICK_SLOW)
 

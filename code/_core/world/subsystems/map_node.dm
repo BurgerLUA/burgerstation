@@ -21,4 +21,4 @@ SUBSYSTEM_DEF(map_node)
 
 		log_subsystem(name,"Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
 
-	return TRUE
+	return ..()

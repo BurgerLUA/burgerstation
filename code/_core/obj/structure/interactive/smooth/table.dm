@@ -1,6 +1,7 @@
 obj/structure/smooth/table
 	name = "table"
-	desc = "A table for placing objects down or taking them"
+	desc = "A table for placing objects down or taking them."
+	desc_extended = "To place items on a table, press Q + Left/Right click depending on if the item is in your left or right hand. Climbing over tables is automatic; Walk into a table for long enough to climb over it."
 	icon = 'icons/obj/structure/smooth/table/normal.dmi'
 	icon_state = "table"
 
@@ -13,30 +14,6 @@ obj/structure/smooth/table
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	bullet_block_chance = 50
-
-/* Just hold Q lol
-obj/structure/smooth/table/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(!is_living(caller))
-		return ..()
-
-	INTERACT_CHECK
-
-	var/mob/living/L = caller
-
-	if(L.intent == INTENT_HARM)
-		return ..()
-
-	if(is_item(object) && is_inventory(object.loc))
-		var/obj/item/I = object
-		var/obj/hud/inventory/I2 = object.loc
-		if(!params)
-			params = list(PARAM_ICON_X = 16,PARAM_ICON_Y=16)
-		I2.remove_object(I,src.loc,params[PARAM_ICON_X],params[PARAM_ICON_Y])
-		return TRUE
-
-	return ..()
-*/
 
 obj/structure/smooth/table/dropped_on_by_object(var/atom/caller,var/atom/object)
 
@@ -57,11 +34,11 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 		if(T)
 			return TRUE
 
-		if(L.table_count >= 3)
-			L.table_count = 0
+		if(L.climb_counter >= 3)
+			L.climb_counter = 0
 			return TRUE
 
-		L.table_count++
+		L.climb_counter++
 
 		return FALSE
 
@@ -89,7 +66,8 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 
 obj/structure/smooth/table/rack
 	name = "table"
-	desc = "What does it do?"
+	desc = "A rack. Not the middle ages kind."
+	desc_extended = "To place items on a rack, press Q + Left/Right click depending on if the item is in your left or right hand."
 	icon = 'icons/obj/structure/rack.dmi'
 	icon_state = "rack"
 
@@ -161,10 +139,6 @@ obj/structure/smooth/table/brass
 	icon_state = "table"
 
 	corner_category = "table_clockwork"
-
-	desired_light_power = 0.5
-	desired_light_range = 2
-	desired_light_color = "#E29E00"
 
 obj/structure/smooth/table/cult
 

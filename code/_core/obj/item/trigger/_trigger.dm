@@ -1,6 +1,6 @@
 /obj/item/device
 	name = "trigger assembly"
-	icon = 'icons/obj/items/trigger.dmi'
+	icon = 'icons/obj/item/trigger.dmi'
 
 	var/interactable = FALSE
 

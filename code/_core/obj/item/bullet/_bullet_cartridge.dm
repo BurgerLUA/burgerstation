@@ -24,6 +24,7 @@
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
 	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 	var/bullet_color //The bullet color of the projectile.
+	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
 
 	var/jam_chance = 0 //Chance to not eject when spent.
 	var/misfire_chance = 0 //Chance not to shoot when shot.
@@ -36,10 +37,10 @@
 	value = 0.1
 
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
-	return 'sounds/weapons/gun/general/mag_bullet_remove.ogg'
+	return 'sound/weapons/gun/general/mag_bullet_remove.ogg'
 
 /obj/item/bullet_cartridge/proc/get_bullet_insert_sound()
-	return 'sounds/weapons/gun/general/mag_bullet_insert.ogg'
+	return 'sound/weapons/gun/general/mag_bullet_insert.ogg'
 
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return item_count_current

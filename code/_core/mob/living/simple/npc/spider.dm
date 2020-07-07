@@ -7,11 +7,19 @@
 
 	ai = /ai/
 
-	class = "spider"
+	class = /class/spider
 
 	stun_angle = 0
 
 	health_base = 100
+
+	value = 100
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/spider/,
+		/obj/item/container/food/dynamic/meat/spider/,
+		/obj/item/container/food/dynamic/meat/spider/
+	)
 
 	armor_base = list(
 		BLADE = 10,
@@ -31,6 +39,8 @@
 
 	mob_size = MOB_SIZE_LARGE
 
+	movement_delay = DECISECONDS_TO_TICKS(2)
+
 /mob/living/simple/npc/spider/post_death()
 	..()
 	icon_state = "[initial(icon_state)]_dead"
@@ -43,8 +53,9 @@
 	level_multiplier = 1.25
 
 /mob/living/simple/npc/spider/desert/Initialize()
+	. = ..()
 	set_light(4,0.25,"#00FF00")
-	return ..()
+	return .
 
 /mob/living/simple/npc/spider/twilight
 	name = "twilight spider"

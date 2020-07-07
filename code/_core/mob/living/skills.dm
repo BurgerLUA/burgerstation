@@ -1,7 +1,7 @@
 //Skills
 /mob/living/proc/get_skill(var/id)
 	if(!skills[id])
-		CRASH_SAFE("Warning! Tried getting skill of [id], but it didn't exist for [src.name]([src.type])!")
+		CRASH_SAFE("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
 	return skills[id]
 
 /mob/living/proc/get_skill_level(var/id)
@@ -11,7 +11,7 @@
 /mob/living/proc/get_skill_power(var/id)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
-		CRASH_SAFE("Warning! Tried getting skill power of [id], but it didn't exist for [src.name]([src.type])!")
+		CRASH_SAFE("Warning! Tried getting skill power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
 	return S.get_power()
 
@@ -30,7 +30,7 @@
 //Attributes
 /mob/living/proc/get_attribute(var/id)
 	if(!attributes[id])
-		CRASH_SAFE("Warning! Tried getting attribute of [id], but it didn't exist for [src.name]([src.type])!")
+		CRASH_SAFE("Warning! Tried getting attribute of [id], but it didn't exist for [src.get_debug_name()]!")
 	return attributes[id]
 
 /mob/living/proc/get_attribute_level(var/id)
@@ -40,7 +40,7 @@
 /mob/living/proc/get_attribute_power(var/id)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
-		CRASH_SAFE("Warning! Tried getting attribute power of [id], but it didn't exist for [src.name]([src.type])!")
+		CRASH_SAFE("Warning! Tried getting attribute power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
 	return A.get_power()
 

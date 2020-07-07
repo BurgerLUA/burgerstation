@@ -37,14 +37,22 @@
 	for(var/subsystem/SS in active_subsystems)
 		spawn
 			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
-				if(world.cpu > SS.cpu_usage_max)
-					sleep(TICK_LAG)
-					continue
-				if(world.tick_usage > SS.tick_usage_max)
-					sleep(TICK_LAG)
-					continue
+				if(SS.overtime_count < SS.overtime_max)
+					if(world.cpu > SS.cpu_usage_max)
+						SS.overtime_count++
+						sleep(TICK_LAG)
+						continue
+					if(world.tick_usage > SS.tick_usage_max)
+						SS.overtime_count++
+						sleep(TICK_LAG)
+						continue
 				try
+					SS.overtime_count = 0
+					var/pre_usage_tick = world.tick_usage
+					var/pre_usage_cpu = world.cpu
 					SS.on_life()
+					SS.last_usage_cpu = world.cpu - pre_usage_cpu
+					SS.last_usage_tick = world.tick_usage - pre_usage_tick
 				catch(var/exception/e)
 					log_error("[SS.name] on_life() error: [e] on [e.file]:[e.line]!<br>[e.desc]")
 					sleep(10)
@@ -65,4 +73,6 @@
 			play_music_track("slow_fall", O.client)
 			O.show_hud(TRUE,speed = 2)
 
-	log_subsystem("Subsystem Controller","Life complete.")
+	log_subsystem("Subsystem Controller","Life initializations complete.")
+
+	return TRUE

@@ -73,6 +73,9 @@
 
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(is_hud(object))
+		return ..()
+
 	if(!is_advanced(caller))
 		return FALSE
 

@@ -2,6 +2,7 @@
 #define COLOR_WHITE "#FFFFFF"
 #define COLOR_GREY "#999999"
 #define COLOR_GREY_LIGHT "#A8A8A8"
+#define COLOR_GREY_DARK "#303030"
 #define COLOR_BLACK "#404040"
 
 #define COLOR_RED "#994444"
@@ -20,6 +21,10 @@
 #define COLOR_BROWN "#644D37"
 #define COLOR_BROWN_LIGHT "#896A4C"
 
+#define COLOR_WOOD "#6F4533"
+
+#define COLOR_ADAMANITUM_CARBON "#00FF00"
+
 
 //Special colors
 #define COLOR_SPACE_LIGHT "#CCD9E8"
@@ -29,6 +34,7 @@
 #define COLOR_SHALEEZ_RED "#700100"
 #define COLOR_NANOTRASEN "#10436B"
 #define COLOR_VISIBLE_GREEN "#B6FF00"
+#define COLOR_BULLET "#BCA258"
 
 //Department Colors
 #define COLOR_CARGO "#BB9042"
@@ -45,6 +51,8 @@
 #define COLOR_SCIENCE "#9651C6"
 #define COLOR_CHEMISTRY "#FF6A00"
 
+#define COLOR_LIBRARY "#992F2F"
+
 //Materials
 #define COLOR_STEEL "#444444"
 #define COLOR_ALUMINUM "#C0C0C0"
@@ -58,6 +66,10 @@
 #define COLOR_SILVER "#C0C0D1"
 #define COLOR_URANIUM "#5B9646"
 #define COLOR_TITANIUM "#8A99AD"
+
+
+#define COLOR_BLOOD "#B20000"
+#define COLOR_OIL "#3D3D3D"
 
 
 

@@ -1,5 +1,5 @@
 /atom/movable/proc/get_movement_delay()
-	return movement_delay
+	return movement_delay * MOVEMENT_DELAY_MOD
 
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks.
 
@@ -14,7 +14,11 @@
 			final_move_dir = move_dir_last
 
 	if(final_move_dir && is_valid_dir(final_move_dir) && move_delay <= 0)
+
 		var/retrieved_movement_delay = get_movement_delay()
+
+		if(final_move_dir in DIRECTIONS_INTERCARDINAL)
+			retrieved_movement_delay *= HYPOTENUSE(1,1)
 
 		var/final_movement_delay = acceleration_mod ? retrieved_movement_delay + (acceleration_mod*retrieved_movement_delay*(1 - acceleration_value/100)) : retrieved_movement_delay
 		var/atom/desired_loc = get_step(src,final_move_dir)
@@ -27,8 +31,7 @@
 			var/turf/T = desired_loc
 			final_movement_delay *= T.delay_modifier
 
-
-		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
+		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = move_delay ? step_size/move_delay : 1
 		if(use_momentum)
 			move_dir_last = final_move_dir
@@ -54,10 +57,16 @@
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 
-	if(loc)
-		loc.Exited(src, new_loc)
-
 	var/atom/old_loc = loc
+
+	if(old_loc)
+		old_loc.Exited(src, new_loc)
+		if(loc)
+			for(var/atom/movable/AM in old_loc.contents)
+				if(AM == src)
+					continue
+				AM.Uncrossed(src)
+
 	loc = new_loc
 
 	if(loc)
@@ -85,6 +94,7 @@
 			return M.Move(get_step(M,Dir),Dir)
 
 	return FALSE
+
 
 /atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
@@ -152,13 +162,6 @@
 		//DO: Exited the turf.
 		OldLoc.Exited(src,NewLoc)
 
-		//DO: Make a footstep sound.
-		if(!silent && has_footsteps)
-			var/footstep_to_use = footstep_override_id ? footstep_override_id : OldLoc.footstep_id
-			if(footstep_to_use && all_footsteps[footstep_to_use])
-				var/footstep/F = all_footsteps[footstep_to_use]
-				F.on_step(OldLoc,src,TRUE)
-
 		//DO: Exited the contents.
 		for(var/atom/A in OldLoc.contents)
 			if(A == src)
@@ -176,13 +179,6 @@
 
 		//DO: Entered the turf.
 		NewLoc.Entered(src,OldLoc)
-
-		//DO: Make a footstep sound.
-		if(!silent && has_footsteps)
-			var/footstep_to_use = footstep_override_id ? footstep_override_id : NewLoc.footstep_id
-			if(footstep_to_use && all_footsteps[footstep_to_use])
-				var/footstep/F = all_footsteps[footstep_to_use]
-				F.on_step(NewLoc,src,FALSE)
 
 		//DO: Enter the contents.
 		for(var/atom/A in NewLoc.contents)

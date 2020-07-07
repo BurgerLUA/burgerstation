@@ -16,14 +16,14 @@
 	return TRUE
 
 
-/turf/simulated/bluespace/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/turf/simulated/bluespace/Entered(atom/movable/Obj, atom/OldLoc)
 
 	. = ..()
 
-	if(. && !istype(O,/mob/abstract/))
-		O.visible_message(span("danger","\The [O.name] flashes violently!"))
-		if(is_safe_to_delete(O))
-			qdel(O)
+	if(. && !istype(Obj,/mob/abstract/))
+		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
+		if(is_safe_to_delete(Obj))
+			qdel(Obj)
 		else
-			O.force_move(pick(rift_markers))
+			Obj.force_move(pick(rift_markers))
 

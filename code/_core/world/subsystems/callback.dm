@@ -5,8 +5,8 @@ SUBSYSTEM_DEF(callback)
 	priority = SS_ORDER_IMPORTANT
 	var/list/all_callbacks = list()
 
-/subsystem/callback/Initialize()
-	return TRUE
+	cpu_usage_max = 100
+	tick_usage_max = 100
 
 /subsystem/callback/on_life()
 

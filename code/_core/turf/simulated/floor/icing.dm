@@ -9,5 +9,3 @@
 	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
 	desired_light_range = DEFAULT_RANGE_AMBIENT
 	desired_light_color = "#FFF4C1"
-
-	footstep_id = "asteroid"

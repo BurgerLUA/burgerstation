@@ -1,6 +1,8 @@
 /obj/item/magazine/carbine_223
 	name = "\improper .223 carbine magazine"
-	icon = 'icons/obj/items/magazine/223_carbine.dmi'
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/223_carbine.dmi'
 	icon_state = "556"
 	bullet_count_max = 42
 

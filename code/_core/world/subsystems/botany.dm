@@ -24,4 +24,4 @@ SUBSYSTEM_DEF(botany)
 
 	log_subsystem(name,"Found [length(all_plant_types)] plant types.")
 
-	return TRUE
+	return ..()

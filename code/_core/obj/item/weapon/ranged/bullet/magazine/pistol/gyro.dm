@@ -2,7 +2,7 @@
 	name = "\improper 20mm GyroPistol"
 	desc = "Overdesigned and a little overpowered."
 	desc_extended = "A prototype syndicate pistol that uses minature rockets as projectiles. As a result, it suffers no inaccuracy due to firing."
-	icon = 'icons/obj/items/weapons/ranged/pistol/gyrojet.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
 	value = 140
 
@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/gyrojet/shoot.ogg')
+	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
 
 	view_punch = 2
 

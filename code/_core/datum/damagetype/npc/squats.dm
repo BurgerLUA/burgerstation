@@ -1,6 +1,5 @@
 /damagetype/squats/
 	name = "squats punch"
-	id = "squats_punch"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -11,14 +10,14 @@
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 20,
-		PIERCE = 0,
-		FATIGUE = 100
+		BLUNT = 25,
+		PIERCE = 25,
+		FATIGUE = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = CLASS_B,
-		ATTRIBUTE_DEXTERITY = CLASS_D
+		ATTRIBUTE_STRENGTH = 50,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
@@ -27,11 +26,9 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = CLASS_B
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT,
 	)
-
-	skill_xp_per_damage = list()

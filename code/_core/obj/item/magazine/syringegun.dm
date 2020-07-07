@@ -1,6 +1,8 @@
 /obj/item/magazine/syringe_gun
 	name = "\improper syringe gun magazine"
-	icon = 'icons/obj/items/magazine/syringegun.dmi'
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/syringegun.dmi'
 	icon_state = "syringe"
 	bullet_count_max = 8
 

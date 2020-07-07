@@ -14,7 +14,6 @@
 		if(!new_location)
 			new_location = get_turf(I.owner)
 		return I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset)
-
 	return FALSE
 
 /*

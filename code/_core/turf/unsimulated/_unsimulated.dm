@@ -16,18 +16,18 @@
 	name = "bluespace"
 	icon_state = "bluespace"
 
-/turf/unsimulated/bluespace/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/turf/unsimulated/bluespace/Entered(atom/movable/Obj, atom/OldLoc)
 
-	. = ..()
-
-	if(. && !istype(O,/mob/abstract/))
-		O.visible_message(span("danger","\The [O.name] flashes violently!"))
-		if(is_safe_to_delete(O))
-			qdel(O)
+	if(!istype(Obj,/mob/abstract/))
+		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
+		if(is_safe_to_delete(Obj))
+			qdel(Obj)
 		else
-			O.force_move(pick(rift_markers))
+			Obj.force_move(get_turf(pick(rift_markers)))
+			Obj.visible_message(span("danger","\The [Obj.name] appears out of nowhere!"))
+		return TRUE
 
-	return .
+	return ..()
 
 /turf/unsimulated/space
 	name = "space"
@@ -40,15 +40,17 @@
 /turf/unsimulated/space/is_space()
 	return TRUE
 
-/turf/unsimulated/space/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(ismob(O) && !istype(O,/mob/abstract/))
-		var/mob/M = O
-		M.to_chat(span("notice","How did you get here?"))
-		var/obj/marker/failsafe/FS = locate() in world
-		if(FS)
-			M.force_move(FS.loc)
-		else
-			M.force_move(pick(cryo_spawnpoints).loc)
+/turf/unsimulated/space/Entered(atom/movable/Obj, atom/OldLoc)
+
+	if(ismob(Obj) && !istype(Obj,/mob/abstract/))
+		var/mob/M = Obj
+		if(M.initialized)
+			var/obj/marker/failsafe/FS = locate() in world
+			if(FS)
+				M.force_move(FS.loc)
+			else
+				M.force_move(pick(cryo_spawnpoints).loc)
+
 	return ..()
 
 /turf/unsimulated/space/New(var/desired_loc)

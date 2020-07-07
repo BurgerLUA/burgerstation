@@ -1,5 +1,4 @@
 /class/ash_drake
-	id = "ash_drake"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

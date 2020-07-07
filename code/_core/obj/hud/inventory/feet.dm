@@ -11,6 +11,7 @@
 
 	priority = 50
 
+/*
 /obj/hud/inventory/organs/left_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
@@ -39,6 +40,7 @@
 			return FALSE
 
 	return TRUE
+*/
 
 /obj/hud/inventory/organs/right_foot
 	name = "right foot slot"
@@ -53,6 +55,7 @@
 
 	priority = 51
 
+/*
 /obj/hud/inventory/organs/right_foot/can_wear_object(var/obj/item/I,var/messages = FALSE)
 
 	if(!..())
@@ -81,3 +84,4 @@
 			return FALSE
 
 	return TRUE
+*/

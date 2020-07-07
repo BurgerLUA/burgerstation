@@ -4,7 +4,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
-	class = "default"
+	class = /class/player
 
 	var/dialogue_target_id
 	var/atom/dialogue_target
@@ -27,8 +27,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	var/list/attack_logs = list()
 
 	var/currency = 1000
-
-	var/savedata/client/mob/mobdata
 
 	var/logout_time = 0
 
@@ -73,6 +71,12 @@ var/global/list/mob/living/advanced/player/all_players = list()
 		/cqc/sleeping_carp/gnashing_teeth
 	)
 
+	var/allow_save = TRUE
+
+	var/list/mob/living/followers = list()
+
+	//movement_delay = DECISECONDS_TO_TICKS(1.5)
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 	click_and_drag_icon	= new(src)
@@ -81,6 +85,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 
+	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 
 	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
 		return ..()
@@ -88,15 +93,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	add_species_languages()
 
 	set_mob_data(mobdata["loaded_data"],teleport,update_blends)
-
-	if(client)
-		add_species_buttons()
-		add_species_health_elements()
-
-	//BANDAID FIX
-	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in contents
-	if(!L)
-		src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
 	return TRUE
 
@@ -121,8 +117,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	dialogue_target = null
 
-	if(src in equipped_players)
-		equipped_players -= src
+	if(src in equipped_antags)
+		equipped_antags -= src
 
 	if(current_squad)
 		current_squad.remove_member(src)
@@ -131,7 +127,6 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	if(area && area.players_inside)
 		area.players_inside -= src
 	all_players -= src
-	QDEL_NULL(mobdata)
 	attack_logs.Cut()
 
 	active_device = null
@@ -147,7 +142,7 @@ mob/living/advanced/player/on_life_client()
 	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
 	return .
 
-/mob/living/advanced/player/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/advanced/player/post_move(var/atom/old_loc)
 
 	. = ..()
 
@@ -163,17 +158,15 @@ mob/living/advanced/player/on_life_client()
 		if(active_device && get_dist(src,active_device) > 1)
 			set_device_unactive()
 
-		for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
-			if(!L.ai)
-				continue
-			var/ai/AI = L.ai
-			AI.enabled = TRUE
-
-		for(var/mob/living/simple/npc/L in view(src,VIEW_RANGE))
-			if(!L.ai)
-				continue
-			var/ai/AI = L.ai
-			AI.enabled = TRUE
+		if( (x % VIEW_RANGE == 0) || (y % VIEW_RANGE == 0) )
+			for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
+				if(!L.ai)
+					continue
+				L.ai.enabled = TRUE
+			for(var/mob/living/simple/npc/L in view(src,VIEW_RANGE))
+				if(!L.ai)
+					continue
+				L.ai.enabled = TRUE
 
 
 	return .

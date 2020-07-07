@@ -22,13 +22,11 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 /obj/item/device/keypad/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_player(caller))
-		return TRUE
+		return ..()
 
+	INTERACT_CHECK
 	var/mob/living/advanced/player/P = caller
-
 	P.set_device_active(src)
 
 	return TRUE

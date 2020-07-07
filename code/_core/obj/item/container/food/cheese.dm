@@ -1,8 +1,9 @@
 /obj/item/container/food/dynamic/cheese
 	name = "cheese"
 	desc = "A rat's favorite."
+	desc_extended = "Nothing says class like huge yellow blocks of cheddar."
 
-	icon = 'icons/obj/items/consumable/food/cheese.dmi'
+	icon = 'icons/obj/item/consumable/food/cheese.dmi'
 	icon_state = "wheel"
 
 	health = /health/obj/item/misc/
@@ -21,7 +22,7 @@
 	created_time = get_time()
 	return ..()
 
-/obj/item/container/food/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/obj/item/container/food/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 

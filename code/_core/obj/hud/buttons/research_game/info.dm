@@ -1,18 +1,16 @@
 /obj/hud/button/research/info
 	name = "info"
-	icon = 'icons/hud/new.dmi'
-	icon_state = "none"
+	icon = 'icons/hud/hud.dmi'
+	icon_state = "square_round"
 	maptext = "<center>Info</center>"
 
 /obj/hud/button/research/info/time
 	name = "time left"
-	icon_state = "none"
 	screen_loc = "LEFT,TOP"
 	maptext = "<center>Time:<br>1:00</center>"
 
 /obj/hud/button/research/info/level
 	name = "current level"
-	icon_state = "none"
 	screen_loc = "LEFT,TOP-1"
 	maptext = "<center>Level:<br>1</center>"
 

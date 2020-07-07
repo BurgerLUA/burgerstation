@@ -7,6 +7,9 @@
 
 	automatic = FALSE
 
+	use_loyalty_tag = TRUE
+	firing_pin = null
+
 /obj/item/weapon/ranged/magic/get_static_spread() //Base spread
 	return 0
 

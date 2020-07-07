@@ -1,5 +1,4 @@
 /class/daddy
-	id = "daddy"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

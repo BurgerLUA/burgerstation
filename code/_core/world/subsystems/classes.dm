@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(classes)
 
 	for(var/A in subtypesof(/class/))
 		var/class/C = new A
-		all_classes[C.id] = C
+		all_classes[C.type] = C
 
 	log_subsystem(name,"Initialized [length(all_classes)] classes.")
+
+	return ..()

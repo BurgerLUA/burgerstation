@@ -1,4 +1,4 @@
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE)
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
 		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
@@ -7,9 +7,7 @@
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
 	if(!accurate && is_living(attacker) && attacker != src)
-		var/mob/living/L = attacker
-		var/distance_mod = min(4,get_dist(attacker,src)/4)
-		var/inaccuracy = (1 - L.get_skill_power(SKILL_PRECISION))*8*distance_mod
+		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
 		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
 		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 

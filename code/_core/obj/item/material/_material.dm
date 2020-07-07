@@ -1,10 +1,10 @@
 /obj/item/material/
 	name = "glitch"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "shard_1"
 
-	var/material_id = "glitch"
+	var/material_id = /material/steel
 
 	item_count_current = 1
 	item_count_max = 50
@@ -13,6 +13,17 @@
 	crafting_id = "material"
 
 	value = 1
+
+/obj/item/material/Initialize()
+	if(!SSmaterials.all_materials[material_id])
+		log_error("Warning: [src.get_debug_name()] had invalid material id \"[material_id]\".")
+		qdel(src)
+		return TRUE
+
+	var/material/M = SSmaterials.all_materials[material_id]
+	crafting_id = "[crafting_id]_[M.name]"
+
+	return ..()
 
 /obj/item/material/Generate()
 	. = ..()

@@ -1,8 +1,8 @@
 /obj/item/clothing/head/hat/beaver
 	name = "beaver hat"
-	icon = 'icons/obj/items/clothing/hats/beaver.dmi'
+	icon = 'icons/obj/item/clothing/hats/beaver.dmi'
 	desc = "Poor people wear these."
-	desc_extended = "It's a hat."
+	desc_extended = "It's a hat made out of an innocent beaver. It was a vain sacrifice on it's part, since it's ugly as shit."
 
 	defense_rating = list(
 		MAGIC = 50,
@@ -16,7 +16,7 @@
 
 /obj/item/clothing/head/hat/wizard
 	name = "wizard hat"
-	icon = 'icons/obj/items/clothing/hats/wizard.dmi'
+	icon = 'icons/obj/item/clothing/hats/wizard.dmi'
 	desc = "Roll for style."
 	desc_extended = "A typical hat worn often by manchildren and those in the wizard federation."
 	rarity = RARITY_RARE

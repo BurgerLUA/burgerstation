@@ -52,3 +52,41 @@
 	L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 
 	return TRUE
+
+/health/mob/living/adjust_fatigue_loss(var/value)
+
+	if(!is_living(owner))
+		return 0
+
+	var/mob/living/L = owner
+
+	if(!value)
+		return 0
+
+	if(L.has_status_effect(FATIGUE))
+		return 0
+
+	if(adjust_stamina(-value))
+		L.update_health_element_icons(stamina=TRUE)
+
+	if(stamina_current <= 0)
+		L.add_status_effect(FATIGUE,value,value)
+
+	return value
+
+/health/mob/living/get_total_loss(var/include_fatigue = TRUE)
+
+	if(!is_living(owner))
+		return ..()
+
+	var/mob/living/L = owner
+
+	var/returning_value = 0
+	for(var/damage_type in damage)
+		if(!include_fatigue && damage_type == FATIGUE)
+			continue
+		if(damage_type == TOX && L.has_status_effect(ADRENALINE))
+			continue
+		returning_value += damage[damage_type]
+
+	return returning_value

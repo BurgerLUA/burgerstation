@@ -1,6 +1,8 @@
 /obj/item/clothing/head/hood/winter
 	name = "winter hood"
-	icon = 'icons/obj/items/clothing/hats/winter_hood.dmi'
+	desc = "Protects your head against the elements."
+	desc_extended = "Click this or shift-click the winter coat to bring the hood back down."
+	icon = 'icons/obj/item/clothing/hats/winter_hood.dmi'
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE
@@ -25,7 +27,9 @@
 
 /obj/item/clothing/head/hood/hoodie
 	name = "hoodie hood"
-	icon = 'icons/obj/items/clothing/hats/hoodie.dmi'
+	desc = "Where da hood at? Dere da hood at."
+	desc_extended = "Click this or shift-click the hoodie to bring the hood back down."
+	icon = 'icons/obj/item/clothing/hats/hoodie.dmi'
 
 	size = SIZE_2
 	weight = WEIGHT_1

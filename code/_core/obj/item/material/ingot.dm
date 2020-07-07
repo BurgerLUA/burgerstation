@@ -1,7 +1,7 @@
 /obj/item/material/ingot
 	name = "ingot"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "ingot"
 
 	item_count_current = 1
@@ -12,8 +12,8 @@
 
 
 /obj/item/material/ingot/iron
-	material_id = "iron"
+	material_id = /material/iron
 
 
 /obj/item/material/ingot/steel
-	material_id = "steel"
+	material_id = /material/steel

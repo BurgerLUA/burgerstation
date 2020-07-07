@@ -1,9 +1,17 @@
 /mob/living/simple/npc/crab
 	name = "crab"
+	desc = "Look, sir! Free crabs!"
+	desc_extended = "A harmless critter. Or so it may seem."
 	icon = 'icons/mob/living/simple/crab.dmi'
 	icon_state = "crab"
 	damage_type = /damagetype/npc/crab
-	class = "crab"
+	class = /class/crab
+
+	value = 25
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/fish/crab/
+	)
 
 	ai = /ai/
 
@@ -26,6 +34,8 @@
 	)
 
 	mob_size = MOB_SIZE_ANIMAL
+
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 /mob/living/simple/npc/crab/post_death()
 	..()
@@ -50,7 +60,18 @@
 
 	ai = /ai/
 
-	class = "crab_king"
+	class = /class/crab/king
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/,
+		/obj/item/container/food/dynamic/fish/crab/
+	)
+
 
 	object_size = 1
 
@@ -91,6 +112,9 @@
 		DISARM = FALSE,
 		DRUGGY = FALSE
 	)
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
 
 
 /mob/living/simple/npc/crab/king/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)

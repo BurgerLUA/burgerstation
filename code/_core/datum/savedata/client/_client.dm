@@ -1,24 +1,16 @@
 /savedata/client/
-	var/client/owner
 	var/ckey
 	var/bot_controlled = FALSE
 
-/savedata/client/Destroy()
-	owner = null
-	return ..()
+/savedata/client/New(var/desired_ckey)
 
-/savedata/client/New(var/client/new_owner)
+	var/client/owner = CLIENT(desired_ckey)
 
-	if(!new_owner)
+	if(!owner)
 		CRASH_SAFE("FATAL ERROR: Savedata did not have a valid owner!")
 		return FALSE
 
-	if(new_owner)
-		owner = new_owner
-		ckey = owner.ckey
-	else
-		bot_controlled = TRUE
-		ckey = "BOT"
+	ckey = desired_ckey
 
 	return ..()
 

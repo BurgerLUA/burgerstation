@@ -2,7 +2,6 @@
 	var/material/M = SSmaterials.all_materials[material_id]
 	weight = M.weight_per_unit*item_count_current*initial(weight)
 	color = M.color
-	crafting_id = "[initial(crafting_id)]_[material_id]"
 	material = list()
 	material[material_id] = item_count_current * initial(weight) * 1000
 	return ..()

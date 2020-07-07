@@ -3,29 +3,20 @@
 	desc = "What secrets does this tome hold?"
 	desc_extended = "A weapon that uses mana to cast spells."
 
-	var/associated_skill = SKILL_MAGIC //For mana cost calculation
-
 	has_quick_function = TRUE
 
 /obj/item/weapon/ranged/magic/tome/get_static_spread() //Base spread
 	return 0
 
 /obj/item/weapon/ranged/magic/tome/get_skill_spread(var/mob/living/L) //Base spread
-	return 0.05 - (0.1 * L.get_skill_power(associated_skill))
+	return 0
 
 /obj/item/weapon/ranged/magic/tome/quick(var/mob/caller as mob,var/atom/object,location,params)
-	if(!automatic)
-		shoot(caller,object,location,params)
+	shoot(caller,object,location,params)
 	return TRUE
 
 /obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(var/mob/living/caster)
-
-	if(!is_player(caster))
-		return cost_mana * NPC_MANA_COST_MULTIPLIER
-
-	var/mob/living/advanced/player/P = caster
-
-	return cost_mana * (1 - (P.get_skill_level(associated_skill)/200))
+	return cost_mana
 
 /obj/item/weapon/ranged/magic/tome/get_owner()
 
@@ -68,8 +59,7 @@
 
 	var/mana_cost = get_mana_cost(A)
 
-	if(!automatic)
-		A.health.adjust_mana(-mana_cost)
+	A.health.adjust_mana(-mana_cost)
 
 	A.update_health_element_icons(mana=TRUE)
 

@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech
 	name = ".40 NanoTech submachine gun"
-	icon = 'icons/obj/items/weapons/ranged/smg/40.dmi'
+	desc = "It's how you use it that matters!"
+	desc_extended = "Nanotrasen's answer to the fearsome C-20r, this one has a higher firerate at the cost of a smaller round."
+	icon = 'icons/obj/item/weapons/ranged/smg/40.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 1.25
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/40/shoot_smg.ogg')
+	shoot_sounds = list('sound/weapons/40/shoot_smg.ogg')
 
 	can_wield = FALSE
 

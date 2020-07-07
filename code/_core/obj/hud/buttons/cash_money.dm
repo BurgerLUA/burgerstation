@@ -1,6 +1,6 @@
 /obj/hud/button/cash_money
-	name = "telecrystals"
-	desc = "Favorite currency of the syndicate."
+	name = "credits"
+	desc = "Currency of the universe."
 
 	var/amount = 0
 
@@ -41,7 +41,7 @@
 
 	if(amount != new_value)
 		amount = new_value
-		play('sounds/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
+		play('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
 		update_sprite()
 
 	return TRUE

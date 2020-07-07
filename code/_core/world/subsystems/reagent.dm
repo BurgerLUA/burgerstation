@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(reagent)
 	name = "Reagent Subsystem"
 	desc = "Store all the reagents."
 	priority = SS_ORDER_PRELOAD
-	tick_rate = SECONDS_TO_TICKS(1)
+	tick_rate = SECONDS_TO_TICKS(4)
 
 	var/list/all_reagents = list()
 
@@ -36,3 +36,5 @@ SUBSYSTEM_DEF(reagent)
 		all_reagent_recipes[R.type] = R
 
 	log_subsystem(name,"Initialized [length(all_reagent_recipes)] reagent recipes.")
+
+	return ..()

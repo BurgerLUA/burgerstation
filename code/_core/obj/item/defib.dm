@@ -1,6 +1,6 @@
 /obj/item/defib
 	name = "defibrillator"
-	icon = 'icons/obj/items/defib.dmi'
+	icon = 'icons/obj/item/defib.dmi'
 	desc = "Contains a lot of atoms!"
 	desc_extended = "Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
 
@@ -10,6 +10,9 @@
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	item_slot = SLOT_TORSO_B
 	slot_icons = TRUE
+
+	weight = WEIGHT_3
+	size = SIZE_3
 
 	value = 110
 
@@ -34,7 +37,9 @@
 
 	caller.visible_message("\The [caller.name] charges up \the [src.name]...","You charge up \the [src.name]...")
 
-	play('sounds/items/defib/defib_charge.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sound/items/defib/defib_charge.ogg',src)
+
+	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
@@ -55,14 +60,17 @@
 
 	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
 
-	play('sounds/items/defib/defib_zap.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sound/items/defib/defib_zap.ogg',src)
+	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	if(target.check_death() || !target.client)
 		target.visible_message("Nothing happens!")
-		play('sounds/items/defib/defib_failed.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+		play('sound/items/defib/defib_failed.ogg',src)
+		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 		return FALSE
 
-	play('sounds/items/defib/defib_ready.ogg',src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+	play('sound/items/defib/defib_ready.ogg',src)
+	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	target.revive()
 	caller.visible_message("\The [target.name] jolts to life!")
@@ -88,7 +96,7 @@
 
 /obj/item/defib_paddle
 	name = "defibrillator paddle"
-	icon = 'icons/obj/items/defib_paddle.dmi'
+	icon = 'icons/obj/item/defib_paddle.dmi'
 	var/obj/item/defib/linked_defib
 	var/placed_target_ref //While refs can be replaced by other objects, placing the last paddle with check if it's a valid ref.
 

@@ -40,3 +40,9 @@
 	desc = "An implant that gives you FREEDOM."
 	desc_extended = "A highly illegal Syndicate Freedom Implant specifically designed to override and replace any other NanoTrasen Loyalty Implants. This implant prevents the user from doing harm to those who also have the same freedom implant model, and vice versa."
 	loyalty_tag = "Syndicate"
+
+/obj/item/organ/internal/implant/head/loyalty/revolutionary
+	name = "revolutionary implant"
+	desc = "An implant that gives you COMMUNISM."
+	desc_extended = "A highly illegal Revolutionary Implant specifically designed to override and replace any other NanoTrasen Loyalty Implants. This implant prevents the user from doing harm to those who also have the same freedom implant model, and vice versa."
+	loyalty_tag = "Revolutionary"

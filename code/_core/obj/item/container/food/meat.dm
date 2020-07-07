@@ -1,8 +1,9 @@
 /obj/item/container/food/dynamic/meat
 	name = "meat"
 	desc = "IT'S RAW!"
+	desc_extended = "You need plenty of proteins for soldiering, soldier."
 
-	icon = 'icons/obj/items/consumable/food/meat.dmi'
+	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "meat_1"
 
 	health = /health/obj/item/misc/
@@ -19,22 +20,26 @@
 	if(icon_state == "ground")
 		icon_state = "meatball"
 		caller.to_chat("You reshape \the [src.name] into a meatball.")
-		pixel_height = 4
+		pixel_height = 1
 		update_sprite()
 	else if(icon_state == "meatball")
 		icon_state = "patty"
 		caller.to_chat("You reshape \the [src.name] into a patty.")
-		pixel_height = 3
+		pixel_height = 1
 		update_sprite()
+	else
+		pixel_height = 1
 
 	update_sprite()
 
 	return TRUE
 
-/obj/item/container/food/dynamic/meat/update_icon()
+/obj/item/container/food/dynamic/meat/update_sprite()
 
-	if(last_cooked)
+	if(!reagents.volume_current)
 		return FALSE
+
+	overlays.Cut()
 
 	if(has_prefix(icon_state,"meat_"))
 		if(reagents.volume_current <= 5)
@@ -42,65 +47,60 @@
 		else if(reagents.volume_current <= 10)
 			icon_state = "cutlet"
 
-	var/total_raw = 0
-	var/total_cooked = 0
 	var/total_fat = 0
-
-	var/best_meat
-	var/best_meat_volume
-
 	var/best_fat
 	var/best_fat_volume
 
+	var/total_meat = 0
+	var/meat_r
+	var/meat_g
+	var/meat_b
+
+	var/carbon_amount = 0
+
 	for(var/reagent_type in reagents.stored_reagents)
-		var/amount = reagents.stored_reagents[reagent_type]
 		var/reagent/R = REAGENT(reagent_type)
-		if(R.flags_reagent & FLAG_REAGENT_COOKED)
-			total_cooked += amount
-			if(!best_meat || amount > best_meat_volume)
-				best_meat = reagent_type
-				best_meat_volume = amount
-		else if(R.flags_reagent & FLAG_REAGENT_RAW)
-			total_raw += amount
-			if(!best_meat || amount > best_meat_volume)
-				best_meat = reagent_type
-				best_meat_volume = amount
-		else if(R.flags_reagent & FLAG_REAGENT_FAT)
+		var/amount = reagents.stored_reagents[reagent_type]
+		if(istype(R,/reagent/carbon))
+			carbon_amount += amount
+			continue
+		if(R.flags_reagent & FLAG_REAGENT_FAT)
 			total_fat += amount
 			if(!best_fat || amount > best_fat_volume)
 				best_fat = reagent_type
 				best_fat_volume = amount
+		if(R.flags_reagent & (FLAG_REAGENT_RAW | FLAG_REAGENT_COOKED))
+			total_meat += amount
+			meat_r += GetRedPart(R.color) * amount
+			meat_g += GetGreenPart(R.color) * amount
+			meat_b += GetBluePart(R.color) * amount
 
-	if(!best_meat)
-		return ..()
-
-	icon = initial(icon)
-
-	var/icon/I = new/icon(icon,icon_state)
-	var/reagent/RM = REAGENT(best_meat)
-	I.Blend(RM.color,ICON_MULTIPLY)
+	if(total_meat)
+		meat_r *= (1/total_meat)
+		meat_g *= (1/total_meat)
+		meat_b *= (1/total_meat)
 
 	if(best_fat)
 		var/reagent/RF = REAGENT(best_fat)
-		var/icon/I2 = new/icon(icon,"[icon_state]_fat")
-		I2.Blend(RF.color,ICON_MULTIPLY)
-		I.Blend(I2,ICON_OVERLAY)
+		var/image/fat_image = new/image(initial(icon),"[icon_state]_fat")
+		fat_image.appearance_flags = RESET_COLOR
+		fat_image.alpha = clamp(total_fat*50,0,255)
+		fat_image.color = RF ? RF.color : "#FFFFFF"
+		add_overlay(fat_image)
 
-	if(RM.flags_reagent & FLAG_REAGENT_COOKED)
+	if(carbon_amount)
+		var/image/carbon_image = new/image(initial(icon),"[icon_state]_marks")
+		carbon_image.appearance_flags = RESET_COLOR
+		carbon_image.alpha = clamp(carbon_amount*75,0,255)
+		add_overlay(carbon_image)
 		last_cooked = TRUE
-		if(reagents.volume_current > 10 || icon_state == "patty")
-			var/icon/I3 = new/icon(icon,"grill_marks")
-			var/icon/I4 = new/icon(I)
-			I4.Blend(rgb(0,0,0,200),ICON_MULTIPLY)
-			I3.Blend(I4,ICON_ADD)
-			I.Blend(I3,ICON_OVERLAY)
 
-	icon = I
+	color = blend_colors(rgb(meat_r,meat_g,meat_b),"#000000",carbon_amount/(reagents.volume_current*0.5))
 
-	return ..()
+	return TRUE
 
 
-/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(last_cooked)
 		return TRUE
@@ -204,3 +204,21 @@
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
+
+/obj/item/container/food/dynamic/meat/xeno/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/xeno,15)
+	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/spider/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/spider,15)
+	reagents.add_reagent(/reagent/toxin/spider_toxin,5)
+	return ..()
+
+/obj/item/container/food/dynamic/meat/bear/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/bear,20)
+	reagents.add_reagent(/reagent/nutrition/fat/bear,10)
+	return ..()
+
+
+

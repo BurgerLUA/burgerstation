@@ -30,26 +30,28 @@ mob/living/advanced/proc/handle_regen()
 	mana_regen_delay = max(0,mana_regen_delay - delay_mod)
 
 	var/nutrition_hydration_mod = get_nutrition_mod() * get_hydration_mod()
+	var/player_controlled = is_player_controlled()
 
 	if((health_regen_delay <= 0 || health.health_current <= 0 || has_status_effect(SLEEP)) && health.health_current < health.health_max)
 		health_adjust = health.health_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
 		health_regen_buffer += health_adjust
 		add_nutrition(-stamina_adjust*0.2,FALSE)
-		if(health_adjust > 0)
-			add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust)
+		if(health_adjust > 0 && player_controlled)
+			add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
 
 	if((stamina_regen_delay <= 0 || has_status_effect(list(FATIGUE,SLEEP,REST))) && health.stamina_current < health.stamina_max)
 		stamina_adjust = health.stamina_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
 		stamina_regen_buffer += stamina_adjust
-		add_nutrition(-stamina_adjust*0.1,FALSE)
-		if(stamina_adjust > 0)
-			add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust)
+		add_nutrition(-stamina_adjust*0.05,FALSE)
+		add_hydration(-stamina_adjust*0.05,FALSE)
+		if(stamina_adjust > 0 && player_controlled)
+			add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust*10)
 
 	if((mana_regen_delay <= 0 || has_status_effect(SLEEP)) && health.mana_current < health.mana_max)
 		mana_adjust = health.mana_regeneration*delay_mod*nutrition_hydration_mod*0.1*(1 + (health.mana_current/health.mana_max)*3) //The 0.1 converts from seconds to deciseconds.
 		mana_regen_buffer += mana_adjust
-		if(mana_adjust > 0)
-			add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust)
+		if(mana_adjust > 0 && player_controlled)
+			add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust*10)
 
 	if(health_adjust || stamina_adjust || mana_adjust)
 		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust,TRUE)
@@ -95,9 +97,7 @@ mob/living/advanced/revive()
 	. = ..()
 
 	for(var/k in overlays_assoc)
-		var/image/overlay/O = k
-		O.plane = plane
-	update_all_blends()
+		update_overlay_tracked(k, desired_plane = plane)
 
 	return .
 
@@ -108,10 +108,7 @@ mob/living/advanced/revive()
 	drop_held_objects(src.loc)
 
 	for(var/k in overlays_assoc)
-		var/image/overlay/O = k
-		O.plane = plane
-
-	update_all_blends()
+		update_overlay_tracked(k, desired_plane = plane)
 
 	return TRUE
 

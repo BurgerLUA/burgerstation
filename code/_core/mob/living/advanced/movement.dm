@@ -8,6 +8,9 @@
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
+	if(grabbing_hand && handcuffed)
+		return FALSE
+
 	if(driving)
 		return driving.handle_movement(adjust_delay)
 
@@ -45,3 +48,16 @@ mob/living/advanced/get_movement_delay()
 			return FALSE
 
 	return ..()
+
+/mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+
+	if(footstep_left_right_counter)
+		if(labeled_organs[BODY_FOOT_RIGHT])
+			var/obj/item/organ/foot/O = labeled_organs[BODY_FOOT_RIGHT]
+			return O.get_footsteps(original_footsteps,enter)
+	else
+		if(labeled_organs[BODY_FOOT_LEFT])
+			var/obj/item/organ/foot/O = labeled_organs[BODY_FOOT_LEFT]
+			return O.get_footsteps(original_footsteps,enter)
+
+	return original_footsteps

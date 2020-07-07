@@ -3,13 +3,13 @@ obj/structure/smooth/
 	desc = "What does it do?"
 	icon_state = "table"
 
-	var/material_id = "glass"
+	var/material_id = /material/steel
 	var/reinforced_material_id = null
 	var/reinforced_color = "#FFFFFF"
 
 	var/debug = FALSE
 
-obj/structure/smooth/Initialize()
+obj/structure/smooth/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

@@ -43,6 +43,23 @@
 		ATTACK_TYPE_UNARMED = 0.25
 	)
 
+	has_pain = TRUE
+
+/obj/item/organ/hand/on_pain()
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
+	var/did_drop = FALSE
+	for(var/obj/hud/inventory/I in inventories)
+		if(length(I.drop_held_objects(T)))
+			did_drop = TRUE
+	if(did_drop && is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		A.to_chat(span("danger","You cry in pain as your [src.name] recoils from your injury!"))
+
+	return . || did_drop
+
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
 
 	if(is_living(attacker))
@@ -238,8 +255,40 @@
 	attack_delay = 1
 	attack_delay_max = 4
 
+/obj/item/organ/hand/stand/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+	return /damagetype/unarmed/fists/stand
+
 /obj/item/organ/hand/stand/left
 	name = "left fast hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+
+//Skeleton
+/obj/item/organ/hand/skeleton
+	name = "right skeleton hand"
+	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+	inventories = list(
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
+	)
+
+/obj/item/organ/hand/skeleton/left
+	name = "left skeleton hand"
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(

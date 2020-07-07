@@ -61,15 +61,16 @@
 
 	return FALSE
 
-/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/mob/living/proc/should_bleed()
+	return TRUE
+
+/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	world.log << "[src]: [total_bleed_damage]"
-
-	if(total_bleed_damage && luck(src,total_bleed_damage,FALSE,"bleed"))
+	if(total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)
@@ -83,8 +84,9 @@
 			offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
 			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,5),i++)
-				new /obj/effect/temp/blood/splatter(src.loc,SECONDS_TO_DECISECONDS(60),blood_color,offset_x,offset_y)
+			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
+				if(!create_blood(/obj/effect/blood/splatter,get_turf(src),blood_color,offset_x,offset_y))
+					break
 
 			blood_volume -= FLOOR(total_bleed_damage/5,1)
 
@@ -93,7 +95,7 @@
 			O.bleeding = TRUE
 
 	if(ai)
-		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount)
+		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)
 
 	if(dead && time_of_death + 30 <= world.time && length(butcher_contents) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
@@ -110,6 +112,10 @@
 	return .
 
 /mob/living/proc/can_butcher(var/obj/item/butcher_item,var/mob/living/butcher_target)
+
+	if(butcher_target.qdeleting)
+		to_chat(span("warning","They were already butchered!"))
+		return FALSE
 
 	if(!butcher_item || !butcher_target)
 		to_chat(span("warning","You can't butcher that!"))
@@ -137,15 +143,17 @@
 
 	src.visible_message(span("danger","\The [src.name] butchers \the [target.name]!"),span("danger","You butcher \the [target.name]."))
 
+	var/turf/T = get_turf(target)
+
 	for(var/k in target.butcher_contents)
-		var/obj/O = new k(target.loc)
+		var/obj/O = new k(T)
 		INITIALIZE(O)
 		GENERATE(O)
 
 	for(var/atom/movable/M in target.contents)
 		if(is_organ(M))
 			continue
-		M.force_move(target.loc)
+		M.force_move(T)
 
 	qdel(target)
 

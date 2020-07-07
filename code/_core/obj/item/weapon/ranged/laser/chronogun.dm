@@ -1,6 +1,8 @@
 /obj/item/weapon/ranged/energy/chronogun
 	name = "chrono gun"
-	icon = 'icons/obj/items/weapons/ranged/laser/chronogun.dmi'
+	desc = "Shoots timey wimey...stuff."
+	desc_extended = "A gun that shoots beam that age the opponent's skin until it necrotizes. Somehow not a war crime to use."
+	icon = 'icons/obj/item/weapons/ranged/laser/chronogun.dmi'
 
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/chronogun
@@ -18,13 +20,15 @@
 
 	view_punch = 31
 
-	shoot_sounds = list('sounds/weapons/chronogun/fire.ogg')
+	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
 
 	heat_per_shot = 0.1
 	heat_max = 0.2
 
 	size = SIZE_3
 	weight = WEIGHT_4
+
+	value = 2000
 
 /obj/item/weapon/ranged/energy/chronogun/get_static_spread() //Base spread
 	return 0.005

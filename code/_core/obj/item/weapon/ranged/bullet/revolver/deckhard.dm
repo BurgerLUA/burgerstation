@@ -1,7 +1,8 @@
 /obj/item/weapon/ranged/bullet/revolver/deckhard
 	name = "\improper .44 space detective revolver"
 	desc = "A sidearm commonly used by space police. Uses .44 rounds."
-	icon = 'icons/obj/items/weapons/ranged/deckhard_mine.dmi'
+	desc_extended = "While Semiautos have become standard issue for Space Police, diehard Seargeants still tout the higher reliability of a revolver as a reason to carry these."
+	icon = 'icons/obj/item/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 31
@@ -13,7 +14,7 @@
 
 
 
-	shoot_sounds = list('sounds/weapons/deckhard/shot.ogg')
+	shoot_sounds = list('sound/weapons/deckhard/shot.ogg')
 
 	view_punch = 8
 

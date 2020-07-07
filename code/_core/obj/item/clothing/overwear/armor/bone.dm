@@ -1,7 +1,8 @@
 /obj/item/clothing/overwear/armor/bone_armor
 	name = "bone armor"
-	icon = 'icons/obj/items/clothing/suit/bone_armor.dmi'
-	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
+	icon = 'icons/obj/item/clothing/suit/bone_armor.dmi'
+	desc = "I've got a BONE to pick with ya!"
+	desc_extended = "Armor made from bones. Metal as fuck."
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_RARE
 

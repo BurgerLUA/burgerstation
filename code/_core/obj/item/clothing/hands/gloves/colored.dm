@@ -4,7 +4,7 @@
 	icon_state_worn = "worn_right"
 	desc = "Slap people with these."
 	desc_extended = "A generic glove. Hope that you have a matching pair."
-	icon = 'icons/obj/items/clothing/gloves/regular.dmi'
+	icon = 'icons/obj/item/clothing/gloves/regular.dmi'
 	color = "#FFFFFF"
 
 	item_slot = SLOT_HAND_RIGHT
@@ -29,14 +29,19 @@
 
 /obj/item/clothing/hands/gloves/colored/left
 	name = "left glove"
+	desc = "Slap people with these."
+	desc_extended = "A generic glove. Hope that you have a matching pair."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
+	desc = "Shoot guns with theese."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
 	color = "#404040"
 	rarity = RARITY_UNCOMMON
 
@@ -61,12 +66,15 @@
 
 /obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
+	desc = "Shoot guns with theese."
+	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your russian bias."
 	color = "#404040"
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 1
@@ -74,7 +82,9 @@
 
 
 /obj/item/clothing/hands/gloves/colored/insulated
-	name = "right insulted glove"
+	name = "right insulated glove"
+	desc = "Hack airlocks with theese."
+	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 	rarity = RARITY_RARE
 
@@ -99,7 +109,9 @@
 	value = 60
 
 /obj/item/clothing/hands/gloves/colored/insulated/left
-	name = "left insulted glove"
+	name = "left insulated glove"
+	desc = "Hack airlocks with theese."
+	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 
 	icon_state = "inventory_left"
@@ -107,6 +119,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_RIGHT = 2
@@ -116,7 +129,9 @@
 
 /obj/item/clothing/hands/gloves/colored/padded
 	name = "padded glove"
-	icon = 'icons/obj/items/clothing/gloves/padded.dmi'
+	desc = "Be tactical with theese."
+	desc_extended = "A padded glove. Equipped with a fancier icon for extra tactical-ness."
+	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -139,11 +154,14 @@
 
 /obj/item/clothing/hands/gloves/colored/padded/left
 	name = "left padded glove"
+	desc = "Be tactical with theese."
+	desc_extended = "A padded glove. Equipped with a fancier texture for extra tactical-ness."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -159,6 +177,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
@@ -176,6 +195,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	protection_cold = list(
 		BODY_HAND_LEFT = 3

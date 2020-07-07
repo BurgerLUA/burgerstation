@@ -1,6 +1,8 @@
 /obj/item/clothing/overwear/hardsuit/mining
 	name = "mining hardsuit"
-	icon = 'icons/obj/items/clothing/suit/hardsuit_mining.dmi'
+	desc = "MIIIIINIIIIING DIAAAAMOOOOOONDS!"
+	desc_extended = "A hardsuit worn by miners to protect against a variety of hazards, such as rock falls, black lungs, and cave monsters."
+	icon = 'icons/obj/item/clothing/suit/hardsuit_mining.dmi'
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(

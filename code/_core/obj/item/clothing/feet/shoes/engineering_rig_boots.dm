@@ -1,11 +1,13 @@
 /obj/item/clothing/feet/shoes/engineering
 	name = "right engineering boot"
+	desc = "Magboots not included."
+	desc_extended = "Part of the engineering rigsuit. Don't lose them!"
 	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	icon = 'icons/obj/items/clothing/shoes/engineering_rig_boots.dmi'
+	icon = 'icons/obj/item/clothing/shoes/engineering_rig_boots.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT_O
 	protected_limbs = list(BODY_FOOT_RIGHT)

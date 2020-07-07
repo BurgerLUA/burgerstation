@@ -1,5 +1,11 @@
 mob/living/advanced/get_examine_list(var/mob/examiner)
 
+	var/final_pronoun = "They"
+	var/final_pronoun2 = "Their"
+	if(examiner == src)
+		final_pronoun = "You"
+		final_pronoun2 = "Your"
+
 	. = list()
 
 	var/survival_skill = 1
@@ -18,18 +24,25 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 	var/pronoun = capitalize(get_pronoun(src))
 
 	if(examiner != src)
-		for(var/obj/item/I in worn_objects)
-			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Strip</a>) [pronoun] is wearing \the <b>[I.name]</b> on their [I.loc.loc.name].")
+
+		var/blocked_clothing = 0x0
+
+		for(var/obj/item/clothing/C in worn_objects)
+			var/bits_to_block = (C.blocks_clothing | C.hidden_clothing) & ~C.item_slot
+			blocked_clothing |= bits_to_block
+
+		for(var/obj/item/C in worn_objects)
+			if(!is_inventory(C.loc))
+				continue
+			var/obj/hud/inventory/I = C.loc
+			if((C.item_slot & I.item_slot) & blocked_clothing)
+				continue
+			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[C]'>Strip</a>) [pronoun] is wearing \the <b>[C.name]</b> on their [I.loc.name].")
 
 		for(var/obj/item/I in held_objects)
+			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.name].")
 
-			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.loc.name].")
-
-	var/final_pronoun = "They"
-	if(examiner == src)
-		final_pronoun = "You"
-
-	if(survival_skill > 50)
+	if(survival_skill >= 50)
 		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
 
 	if(health)
@@ -40,24 +53,24 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 			. += div("warning","[final_pronoun] looks a bit pale.")
 
 	if(has_status_effect(CRIT))
-		. += list(div("warning","They do not appear to be breathing."))
+		. += list(div("warning","[final_pronoun2] breathing is shallow."))
 
 	if(dead)
 		if(client)
-			. += list(div("warning","They lay dead and lifeless."))
+			. += list(div("warning","[final_pronoun] lay dead and lifeless."))
 		else
-			. += list(div("warning","They lay dead and lifeless, and their soul has departed."))
+			. += list(div("warning","[final_pronoun] lay dead and lifeless, and their soul has departed."))
 
 	if(ai && ai.use_alerts)
 		switch(ai.alert_level)
 			if(ALERT_LEVEL_NONE)
-				. += list(div("notice","They do not appear to notice you."))
+				. += list(div("notice","[final_pronoun] do not appear to notice you."))
 			if(ALERT_LEVEL_NOISE)
-				. += list(div("warning","They seem to be looking for a source of noise."))
+				. += list(div("warning","[final_pronoun] seem to be looking for a source of noise."))
 			if(ALERT_LEVEL_CAUTION)
-				. += list(div("warning","They seem to be looking for someone."))
+				. += list(div("warning","[final_pronoun] seem to be looking for someone."))
 			if(ALERT_LEVEL_COMBAT)
-				. += list(div("danger","They appear to be in a combative stance!"))
+				. += list(div("danger","[final_pronoun] appear to be in a combative stance!"))
 
 	for(var/obj/item/organ/O in src.organs)
 		if(!O.health)
@@ -70,15 +83,13 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 
 		var/is_injured = length(damage_desc)
 
+		if(!is_injured)
+			continue
+
 		var/noun = "Their"
 		var/number_text = ""
 		if(examiner == src)
 			noun = "Your"
-			//number_text = " ([O.health.health_current]/[O.health.health_max])"
-		else if(!is_injured)
-			continue
-		else
-			number_text = ""
 
 		. += div(is_injured ? "warning" : "notice","[noun] [O.name] is [english_list(damage_desc,nothing_text="healthy")][number_text].")
 
@@ -90,5 +101,9 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 			reagent_contents += "[k] ([v]u)"
 		. += div("notice","Reagent volume is [reagents.volume_current]/[reagents.volume_max] containing [english_list(reagent_contents)].")
 	*/
+
+
+	if(handcuffed)
+		. += div("warning","(<a href='?src=\ref[examiner];uncuff=\ref[src]'>Remove</a>)[final_pronoun] are hancuffed!")
 
 	return .

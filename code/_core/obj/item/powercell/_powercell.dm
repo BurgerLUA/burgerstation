@@ -1,6 +1,8 @@
 /obj/item/powercell/
-	name = "basic powercell"
-	icon = 'icons/obj/items/cells.dmi'
+	name = "basic power cell"
+	desc = "Please do not lick."
+	desc_extended = "A power cell for use in recharging energy weaponry. This one has a rating of 10000 megawatts."
+	icon = 'icons/obj/item/cells.dmi'
 	icon_state = "cell_basic"
 
 	var/charge_current = 0
@@ -65,6 +67,8 @@
 
 /obj/item/powercell/advanced
 	name = "advanced power cell"
+	desc = "r&d can i have a powercell plz i wont use it for stunprod promise"
+	desc_extended = "A power cell for use in recharging energy weaponry. This one has a rating of 25000 megawatts."
 	icon_state = "cell_advanced"
 	charge_max = CELL_SIZE_ADVANCED
 
@@ -75,6 +79,8 @@
 
 /obj/item/powercell/industrial
 	name = "industrial power cell"
+	desc = "r&d can i have a powercell plz i wont use it for stunprod promise"
+	desc_extended = "A bulky power cell for use in recharging energy weaponry. This one has a rating of 50000 megawatts."
 	icon_state = "cell_industrial"
 	charge_max = CELL_SIZE_INDUSTRIAL
 

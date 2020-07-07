@@ -16,8 +16,6 @@
 	collision_flags = FLAG_COLLISION_ETHEREAL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/savedata/client/mob/mobdata
-
 	damage_type = null //Just in case.
 
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
@@ -49,9 +47,6 @@
 		qdel(src)
 		CRASH_SAFE("Tired to initialize an observer without a client!")
 		return FALSE
-
-	if(!mobdata)
-		mobdata = new(client)
 
 	name = "ghost of [ckey]"
 

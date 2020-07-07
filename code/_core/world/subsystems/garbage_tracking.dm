@@ -3,18 +3,20 @@ var/global/list/ref_id_to_warning = list()
 #define GARBAGE_TIME_WARNING 60 //Time in seconds, to alert the server that an object is having difficulty being deleted.
 
 SUBSYSTEM_DEF(garbage_tracking)
-	name = "Garbage Subsystem"
+	name = "Garbage Tracking Subsystem"
 	desc = "Powered by raw shitcode."
 	priority = SS_ORDER_FIRST
 	tick_rate = SECONDS_TO_TICKS(10)
 
 /subsystem/garbage_tracking/Initialize()
 	fdel(GARBAGE_LOGS_PATH)
-	return TRUE
+	return ..()
 
 /subsystem/garbage_tracking/on_life()
 
 	for(var/ref_id in qdel_refs_to_type)
+
+		CHECK_TICK
 
 		var/o_type = qdel_refs_to_type[ref_id]
 

@@ -1,5 +1,4 @@
 /class/zombie
-	id = "zombie"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

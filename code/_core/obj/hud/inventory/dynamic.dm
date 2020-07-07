@@ -17,11 +17,11 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
 
 	var/list/add_sounds = list(
-		'sounds/effects/inventory/rustle1.ogg',
-		'sounds/effects/inventory/rustle2.ogg',
-		'sounds/effects/inventory/rustle3.ogg',
-		'sounds/effects/inventory/rustle4.ogg',
-		'sounds/effects/inventory/rustle5.ogg'
+		'sound/effects/inventory/rustle1.ogg',
+		'sound/effects/inventory/rustle2.ogg',
+		'sound/effects/inventory/rustle3.ogg',
+		'sound/effects/inventory/rustle4.ogg',
+		'sound/effects/inventory/rustle5.ogg'
 	)
 
 	should_add_worn = FALSE

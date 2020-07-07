@@ -1,4 +1,3 @@
-
 #define ROUND_ID_DIR "data/server/round_id.txt"
 
 #define LOG_RATE 10
@@ -19,8 +18,8 @@ SUBSYSTEM_DEF(logging)
 	round_id++
 	fdel(ROUND_ID_DIR)
 	text2file("[round_id]",ROUND_ID_DIR)
-	start_date = time2text(world.realtime,"YYYY-MMM-DD")
-	return TRUE
+	start_date = lowertext(time2text(world.realtime,"YYYY-MMM-DD"))
+	return ..()
 
 /subsystem/logging/proc/log_chat(var/data_to_log)
 	buffered_log_chat += data_to_log
@@ -32,9 +31,7 @@ SUBSYSTEM_DEF(logging)
 /subsystem/logging/on_life()
 
 	if(length(buffered_log_chat))
-		var/chat_log_string = ""
-		for(var/k in buffered_log_chat)
-			chat_log_string += "[k]\n"
+		var/chat_log_string = english_list(buffered_log_chat,"ERROR.","\n","\n")
 		text2file(chat_log_string,get_logging_dir("chat"))
 		buffered_log_chat.Cut()
 

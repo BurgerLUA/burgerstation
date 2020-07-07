@@ -1,5 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical
 	name = ".45 silent syndicate submachine gun"
+	desc = "get that fukken disk...quietly."
+	desc_extended = "A silent version of the C-20r used by Syndicate Stealth Ops."
 	icon = 'icons/obj/items/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 	shoot_delay = 3

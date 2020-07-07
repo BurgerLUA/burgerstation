@@ -21,6 +21,8 @@
 
 	skill_damage = list()
 
+	allow_friendly_fire = TRUE
+
 
 /damagetype/npc/captain_beepsky/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -32,9 +34,6 @@
 			var/list/possible_teleport_turfs = list()
 			for(var/turf/T in range(12,attacker))
 				if(!T.is_safe_teleport())
-					continue
-				var/area/A = T.loc
-				if(A.is_space)
 					continue
 				possible_teleport_turfs += T
 

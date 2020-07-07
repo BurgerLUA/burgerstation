@@ -13,4 +13,4 @@ SUBSYSTEM_DEF(damagetype)
 
 	log_subsystem(name,"Initialized [length(all_damage_types)] damage types.")
 
-
+	return ..()

@@ -1,5 +1,7 @@
 /obj/structure/interactive/lighting/floor
 	name = "tube light"
+	desc = "An electrical storm has been detected in proximity of the station. Please check all equipment for potential overloads."
+	desc_extended = "Used to light up the area."
 
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "floor_light"
@@ -18,7 +20,7 @@
 
 
 
-/obj/structure/interactive/lighting/floor/Initialize()
+/obj/structure/interactive/lighting/floor/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

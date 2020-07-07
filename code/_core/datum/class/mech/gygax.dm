@@ -1,5 +1,4 @@
-/class/mech/gygax
-	id = "gygax"
+/class/gygax
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

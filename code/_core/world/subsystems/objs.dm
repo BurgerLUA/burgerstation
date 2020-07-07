@@ -50,6 +50,8 @@ SUBSYSTEM_DEF(obj)
 	initialize_late.Cut()
 	initialize_none.Cut()
 
+	return ..()
+
 /subsystem/obj/on_life()
 
 	for(var/obj/structure/smooth/S in queued_smooth)

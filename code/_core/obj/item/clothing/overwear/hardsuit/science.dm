@@ -1,6 +1,8 @@
 /obj/item/clothing/overwear/hardsuit/science
 	name = "\improper H.E.K. hazard hardsuit"
-	icon = 'icons/obj/items/clothing/suit/hek.dmi'
+	desc = "STAHP! I'M WITH THE SCIENCE TEAM!"
+	desc_extended = "A hardsuit worn by scientist. Lighter plated than most other models."
+	icon = 'icons/obj/item/clothing/suit/hek.dmi'
 	rarity = RARITY_RARE
 	value = 300
 

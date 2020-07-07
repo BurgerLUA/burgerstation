@@ -1,6 +1,7 @@
 /obj/item/magazine/
 	name = "weapon magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	var/bullet_count_max = 30 //How many bullets can this store
 	var/list/obj/item/bullet_cartridge/stored_bullets
 
@@ -23,12 +24,13 @@
 
 /obj/item/magazine/Generate()
 
-	for(var/i=1, i <= bullet_count_max, i++)
-		var/obj/item/bullet_cartridge/B = new ammo(src)
-		INITIALIZE(B)
-		stored_bullets += B
+	if(ammo)
+		for(var/i=1, i <= bullet_count_max, i++)
+			var/obj/item/bullet_cartridge/B = new ammo(src)
+			INITIALIZE(B)
+			stored_bullets += B
 
-	update_sprite()
+		update_sprite()
 
 	return ..()
 
@@ -41,7 +43,7 @@
 
 	return ..()
 
-/obj/item/magazine/Initialize()
+/obj/item/magazine/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .
@@ -101,10 +103,10 @@
 
 
 /obj/item/magazine/proc/get_magazine_insert_sound()
-	return length(stored_bullets) ? 'sounds/weapons/gun/general/magazine_remove_full.ogg' : 'sounds/weapons/gun/general/magazine_remove_empty.ogg'
+	return length(stored_bullets) ? 'sound/weapons/gun/general/magazine_insert_full.ogg' : 'sound/weapons/gun/general/magazine_insert_empty.ogg'
 
 /obj/item/magazine/proc/get_magazine_eject_sound()
-	return length(stored_bullets) ? 'sounds/weapons/gun/general/magazine_insert_full.ogg' : 'sounds/weapons/gun/general/magazine_insert_empty.ogg'
+	return length(stored_bullets) ? 'sound/weapons/gun/general/magazine_remove_full.ogg' : 'sound/weapons/gun/general/magazine_remove_empty.ogg'
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

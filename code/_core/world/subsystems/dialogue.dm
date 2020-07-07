@@ -8,6 +8,8 @@ SUBSYSTEM_DEF(dialogue)
 /subsystem/dialogue/Initialize()
 	for(var/A in subtypesof(/dialogue/))
 		var/dialogue/D = new A
-		all_dialogue[D.id] = D
+		all_dialogue[D.type] = D
 
 	log_subsystem(name,"Initialized [length(all_dialogue)] dialogues.")
+
+	return ..()

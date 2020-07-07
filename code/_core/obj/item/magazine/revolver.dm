@@ -2,8 +2,10 @@
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"
 
 /obj/item/magazine/clip/revolver/bullet_38
-	name = "\improper .38 speedloader"
-	icon = 'icons/obj/items/magazine/revolver/38.dmi'
+	name = "\improper .38 six round speedloader"
+	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/revolver/38.dmi'
 	icon_state = "38"
 	bullet_count_max = 6
 
@@ -21,12 +23,26 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	size = SIZE_2
-	weight = WEIGHT_2
+	size = SIZE_1
+	weight = WEIGHT_1
+
+/obj/item/magazine/clip/revolver/bullet_38/eight
+	name = "\improper .38 eight round speedloader"
+	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/revolver/38_2.dmi'
+	bullet_count_max = 8
+
+	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/revolver/comp = TRUE
+	)
+
 
 /obj/item/magazine/clip/revolver/bullet_44
-	name = "\improper .44 magnum speedloader"
-	icon = 'icons/obj/items/magazine/revolver/44.dmi'
+	name = "\improper .44 revolver speedloader"
+	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/revolver/44.dmi'
 	icon_state = "44"
 	bullet_count_max = 6
 
@@ -45,21 +61,21 @@
 	bullet_diameter_best = 10.9
 	bullet_diameter_max = 11
 
-	size = SIZE_2
-	weight = WEIGHT_2
+	size = SIZE_1
+	weight = WEIGHT_1
 
 
 
 /*
 /obj/item/magazine/clip/revolver/bullet_44/surplus/
-	name = "\improper surplus .44 magnum speedloader"
+	name = "\improper surplus .44 revolver speedloader"
 	ammo = /obj/item/bullet_cartridge/revolver_44/surplus
 */
 
 /*
 /obj/item/magazine/clip/revolver/bullet_22
 	name = "\improper .22LR speedloader"
-	icon = 'icons/obj/items/magazine/revolver/22.dmi'
+	icon = 'icons/obj/item/magazine/revolver/22.dmi'
 	icon_state = "22"
 	bullet_count_max = 6
 
@@ -70,7 +86,9 @@
 
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
-	icon = 'icons/obj/items/magazine/revolver/357.dmi'
+	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/revolver/357.dmi'
 	icon_state = "357"
 	bullet_count_max = 6
 
@@ -88,8 +106,8 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	size = SIZE_2
-	weight = WEIGHT_2
+	size = SIZE_1
+	weight = WEIGHT_1
 
 /*
 /obj/item/magazine/clip/revolver/bullet_357/surplus

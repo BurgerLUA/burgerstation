@@ -1,7 +1,8 @@
 /obj/item/storage/pouch //For boxes and such, not backpacks.
 	name = "small pouch"
 	desc = "Simple pounches"
-	icon = 'icons/obj/items/storage/pouches_new.dmi'
+	desc_extended = "Storage pouches attachable to the groin or chest."
+	icon = 'icons/obj/item/storage/pouches_new.dmi'
 
 	size = SIZE_2
 	weight = WEIGHT_2
@@ -32,6 +33,7 @@
 
 /obj/item/storage/pouch/single
 	name = "single large pouch"
+	desc_extended = "Storage pouches attachable to the groin or chest. This one can carry one Size 4 item, such as bulky guns."
 	icon_state = "single"
 
 	container_max_size = SIZE_4
@@ -45,6 +47,7 @@
 
 /obj/item/storage/pouch/double
 	name = "double medium pouches"
+	desc_extended = "Storage pouches attachable to the groin or chest. This one can carry two Size 3 items, such as rifles or medkits."
 	icon_state = "double"
 
 	container_max_size = SIZE_3
@@ -61,6 +64,7 @@
 
 /obj/item/storage/pouch/triple
 	name = "triple small pouches"
+	desc_extended = "Storage pouches attachable to the groin or chest. This one can carry three Size 2 items, such as a sidearm or extra ammo."
 	icon_state = "triple"
 	dynamic_inventory_count = 6
 	size = SIZE_6

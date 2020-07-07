@@ -4,7 +4,9 @@
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = "ash_drake"
+	class = /class/ash_drake
+
+	value = 3000
 
 	pixel_w = -16
 
@@ -44,7 +46,7 @@
 
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/drake_armor,
-		/obj/item/soapstone/red
+		/obj/item/soapstone/orange
 	)
 
 	status_immune = list(
@@ -58,11 +60,14 @@
 		REST = FALSE,
 		ADRENALINE = FALSE,
 		DISARM = FALSE,
-		DRUGGY = FALSE
+		DRUGGY = FALSE,
+		FIRE = FALSE
 	)
 
 	mob_size = MOB_SIZE_BOSS
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
 
 
 /*
@@ -158,20 +163,21 @@
 	return TRUE
 
 /mob/living/simple/npc/ash_drake/get_movement_delay()
-	if(boss_state)
-		return DECISECONDS_TO_TICKS(2)
 
-	return ..()
+	. = ..()
+
+	if(boss_state)
+		. *= 0.5
+
+	return .
 
 /mob/living/simple/npc/ash_drake/proc/shoot_fireball(var/atom/desired_target)
-	shoot_projectile(src,desired_target,null,null,/obj/projectile/magic/fireball/,/damagetype/ranged/magic/fireball/ash_drake,16,16,0,20,1,"#FFFFFF",0,0)
-
-
-
+	shoot_projectile(src,desired_target,null,null,/obj/projectile/magic/fireball/,/damagetype/ranged/magic/fireball/ash_drake,16,16,0,TILE_SIZE*0.75,1,"#FFFFFF",0,0,1,iff_tag,loyalty_tag)
 
 /mob/living/simple/npc/ash_drake/post_death()
 	..()
 	icon_state = "dead"
+	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
 	update_sprite()
 
 

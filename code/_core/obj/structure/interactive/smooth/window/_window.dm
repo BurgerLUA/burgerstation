@@ -46,14 +46,14 @@
 	icon_state = "window"
 
 
-	reinforced_material_id = "aluminum"
+	reinforced_material_id = /material/aluminum
 	reinforced_color = COLOR_ALUMINUM
 
 /obj/structure/smooth/window/reinforced/plasma
 	name = "plasteel reinforced phoron-silicate window"
 	color = "#E423C9"
 
-	reinforced_material_id = "plasteel"
+	reinforced_material_id = /material/plasteel
 	reinforced_color = COLOR_PLASTEEL
 
 	health = null
@@ -70,10 +70,6 @@
 	opacity = 1
 	icon = 'icons/obj/structure/clockwork/window.dmi'
 	icon_state = "window"
-
-	desired_light_power = 0.5
-	desired_light_range = 2
-	desired_light_color = "#E29E00"
 
 
 /obj/structure/smooth/window/cult

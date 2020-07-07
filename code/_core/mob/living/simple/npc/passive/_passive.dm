@@ -5,7 +5,7 @@
 	icon_state = ""
 
 	ai = /ai/passive
-	class = "passive"
+	class = /class/passive/
 	damage_type = /damagetype/unarmed/bite/
 
 	collision_flags = FLAG_COLLISION_WALKING

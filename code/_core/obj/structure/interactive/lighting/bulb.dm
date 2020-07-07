@@ -4,8 +4,8 @@
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "bulb_light"
 
-	desired_light_power = 0.2
-	desired_light_range = 6
+	desired_light_power = 0.4
+	desired_light_range = 4
 	desired_light_color = null //Set in update_icon
 
 	layer = LAYER_LARGE_OBJ
@@ -34,7 +34,7 @@
 
 	return .
 
-/obj/structure/interactive/lighting/bulb/Initialize()
+/obj/structure/interactive/lighting/bulb/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

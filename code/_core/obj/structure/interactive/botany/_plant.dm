@@ -26,9 +26,10 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 	all_plants += src
 	return ..()
 
-/obj/structure/interactive/plant/Initialize()
+/obj/structure/interactive/plant/PostInitialize()
+	. = ..()
 	update_sprite()
-	return ..()
+	return .
 
 /obj/structure/interactive/plant/Destroy()
 	all_plants -= src
@@ -123,10 +124,10 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 /obj/structure/interactive/plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(!is_advanced(caller))
-		return FALSE
+		return ..()
+
+	INTERACT_CHECK
 
 	harvest(caller)
 

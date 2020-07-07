@@ -7,7 +7,11 @@ SUBSYSTEM_DEF(badwords)
 	var/list/regex/bad_word_regex = list()
 
 /subsystem/badwords/Initialize()
+	load_badwords()
+	return ..()
 
+/subsystem/badwords/proc/load_badwords()
+	bad_word_regex = list()
 	if(fexists(BADWORDS))
 		var/r_file = trim(file2text(BADWORDS))
 		if(r_file)
@@ -18,7 +22,6 @@ SUBSYSTEM_DEF(badwords)
 			log_subsystem(name,"Found bad words file, but it was empty.")
 	else
 		log_subsystem(name,"Could not find a bad words file.")
-
 
 	return TRUE
 

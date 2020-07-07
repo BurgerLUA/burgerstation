@@ -27,24 +27,3 @@
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
 	priority = 40
-
-/obj/hud/inventory/organs/groin/can_wear_object(var/obj/item/I,var/messages = FALSE)
-
-	if(!..())
-		return FALSE
-
-	for(var/obj/item/I2 in worn_objects)
-		if(I.item_slot & SLOT_GROIN_U)
-			if(messages)
-				owner.to_chat(span("notice","You can't wear \the [I] over \the [I2]!"))
-			return FALSE
-		if(I.item_slot & SLOT_GROIN_U && I2.item_slot & SLOT_GROIN_U)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-		if(I.item_slot & SLOT_GROIN && I2.item_slot & SLOT_GROIN)
-			if(messages)
-				owner.to_chat(span("notice","You are already wearing clothing of this type!"))
-			return FALSE
-
-	return TRUE

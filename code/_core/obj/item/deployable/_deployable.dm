@@ -49,5 +49,5 @@
 	desc = "Your main source of protection."
 	desc_extended = "A large deployable barricade."
 	structure_to_deploy = /obj/structure/interactive/barricade/
-	icon = 'icons/obj/items/deployable/barricade.dmi'
+	icon = 'icons/obj/item/deployable/barricade.dmi'
 	value = 80

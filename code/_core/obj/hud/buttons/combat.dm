@@ -11,8 +11,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		if(L.can_resist())
-			L.resist()
+		L.resist()
 
 	return ..()
 

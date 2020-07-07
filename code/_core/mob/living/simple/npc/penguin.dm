@@ -1,9 +1,13 @@
 /mob/living/simple/npc/passive/penguin
 	name = "penguin"
+	desc = "Business bird."
+	desc_extended = "A harmless critter. Or so it may seem."
 	icon = 'icons/mob/living/simple/passive.dmi'
 	icon_state = "penguin"
 	damage_type = /damagetype/unarmed/bite/
-	class = "crab"
+	class = /class/crab
+
+	value = 50
 
 	armor_base = list(
 		BLADE = 0,
@@ -19,6 +23,11 @@
 		HOLY = 0,
 		DARK = 0,
 		FATIGUE = 25
+	)
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/fish/penguin/,
+		/obj/item/container/food/dynamic/fish/penguin/
 	)
 
 	mob_size = MOB_SIZE_ANIMAL

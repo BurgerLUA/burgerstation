@@ -1,4 +1,5 @@
 /obj/structure/interactive/door/airlock/station
+	desc_extended = "It opens and closes."
 
 /obj/structure/interactive/door/airlock/station/cargo
 	name = "cargo airlock"
@@ -33,6 +34,9 @@
 	fill_color = "#FFFFFF"
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/security/glass/tactical
+	name = "\improper Tactical Operations airlock"
+
 /obj/structure/interactive/door/airlock/station/security/shop
 	name = "security airlock"
 	color = COLOR_RED
@@ -49,11 +53,16 @@
 /obj/structure/interactive/door/airlock/station/maintenance/no_access
 	no_access = TRUE
 
+/obj/structure/interactive/door/airlock/station/dark
+	name = "maintenance airlock"
+	color = "#242424"
+	fill_color = "#444444"
 
 /obj/structure/interactive/door/airlock/station/external
 	name = "security airlock"
 	color = "#A70000"
 	fill_color = "#FFB200"
+	safeties = FALSE
 
 /obj/structure/interactive/door/airlock/station/external/bolted
 	locked = TRUE

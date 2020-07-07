@@ -92,40 +92,6 @@
 		/reagent/nutrition/bread/flour/processed = 1
 	)
 
-//Meat
-/reagent_recipe/meat/cow
-
-	name = "cooked cow's meat"
-
-	required_reagents = list(
-		/reagent/nutrition/meat/cow = 1
-	)
-
-	required_temperature_min = list(
-		/reagent/nutrition/meat/cow = 400
-	)
-
-	results = list(
-		/reagent/nutrition/meat/cow/cooked = 1
-	)
-
-/reagent_recipe/meat/chicken
-
-	name = "cooked chicken's meat"
-
-	required_reagents = list(
-		/reagent/nutrition/meat/chicken = 1
-	)
-
-	required_temperature_min = list(
-		/reagent/nutrition/meat/chicken = 400
-	)
-
-	results = list(
-		/reagent/nutrition/meat/chicken/cooked = 1
-	)
-
-
 /reagent_recipe/cake_batter/
 
 	name = "cake batter"
@@ -142,23 +108,6 @@
 	)
 
 	result = /obj/item/container/food/dynamic/cake
-
-
-/reagent_recipe/cake/
-
-	name = "cake"
-
-	required_reagents = list(
-		/reagent/nutrition/cake_batter = 1
-	)
-
-	required_temperature_min = list(
-		/reagent/nutrition/cake_batter = 475
-	)
-
-	results = list(
-		/reagent/nutrition/cake = 1
-	)
 
 /reagent_recipe/icing_sugar
 	name = "icing sugar"

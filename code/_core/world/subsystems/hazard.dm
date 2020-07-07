@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(hazard)
 	tick_rate = SECONDS_TO_TICKS(10)
 	priority = SS_ORDER_IMPORTANT
 
+	var/list/hazard_turfs = list()
+
 /subsystem/hazard/Initialize()
 
 	for(var/k in subtypesof(/hazard/))
@@ -18,7 +20,7 @@ SUBSYSTEM_DEF(hazard)
 
 	log_subsystem(name,"Initialized [length(all_hazards)] hazards.")
 
-	return TRUE
+	return ..()
 
 /subsystem/hazard/on_life()
 
@@ -35,6 +37,9 @@ SUBSYSTEM_DEF(hazard)
 			for(var/mob/living/advanced/player/P in A.players_inside)
 				CHECK_TICK
 				H.process_player_tick(P)
+
+	for(var/turf/T in hazard_turfs)
+
 
 	return TRUE
 

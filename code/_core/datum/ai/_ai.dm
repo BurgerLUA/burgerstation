@@ -8,22 +8,27 @@
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
 
-	var/radius_find_enemy = VIEW_RANGE
-	var/radius_find_enemy_alert = VIEW_RANGE + ZOOM_RANGE
+	var/radius_find_enemy = AI_DETECTION_RANGE
+	var/radius_find_enemy_noise = AI_DETECTION_RANGE_NOISE
+	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
+	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
+
+	/*
+	var/radius_find_enemy = AI_DETECTION_RANGE
+	var/radius_find_enemy_alert = AI_DETECTION_RANGE_COMBAT
+	*/
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
 
 	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 AI_TICK.
-	var/objective_delay = 3
+	var/objective_delay = 10
 	var/attack_delay = 0
 
-	var/list/target_distribution_x = list(0,16,16,16,32)
-	var/list/target_distribution_y = list(16,16,16,8,8,32,32)
+	var/list/target_distribution_x = list(8,16,16,16,24)
+	var/list/target_distribution_y = list(8,16,16,16,24)
 
 	var/turf/start_turf
-
-	var/stationary = TRUE
 
 	var/roaming_distance = 5
 
@@ -80,12 +85,18 @@
 
 	var/stored_sneak_power = 0
 
+	var/resist_grabs = TRUE
+
 	var/retaliate = TRUE //Should we attack when getting hit?
 	var/aggression = 2 //Thanks elder scrolls.
 	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
 	//1 = Attacks enemies in enemy tags.
 	//2 = Attacks people who don't have the same loyalty tag as them.
 	//3 = Attacks literally everyone in sight.
+
+	//Roaming Stuff. Mostly read only.
+	var/roam = FALSE
+	var/roam_counter = 10
 
 	var/debug = FALSE
 
@@ -97,6 +108,7 @@
 	objective_attack = null
 	start_turf = null
 	all_living_ai -= src
+	all_boss_ai -= src
 	attackers.Cut()
 	path_start_turf = null
 	path_end_turf = null
@@ -111,7 +123,10 @@
 
 	start_turf = get_turf(owner)
 
-	all_living_ai += src
+	if(owner.boss)
+		all_boss_ai += src
+	else
+		all_living_ai += src
 
 /ai/proc/set_path(var/list/Vector3D/desired_path = list())
 
@@ -134,7 +149,8 @@
 	path_end_turf = locate(last_path.x,last_path.y,last_path.z)
 	return TRUE
 
-/ai/proc/on_life()
+
+/ai/proc/should_life()
 
 	if(!enabled)
 		return FALSE
@@ -152,6 +168,18 @@
 	if(!isturf(owner.loc))
 		return FALSE
 
+	if(owner.has_status_effect(list(STUN,SLEEP,PARALYZE)))
+		return FALSE
+
+	if(resist_grabs && owner.grabbing_hand && is_enemy(owner.grabbing_hand.owner) && owner.next_resist <= world.time && prob(20))
+		owner.resist()
+		return FALSE
+
+	return TRUE
+
+
+/ai/proc/on_life()
+
 	objective_ticks += 1
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
@@ -162,11 +190,11 @@
 		attack_ticks = 0
 		handle_attacking()
 
-	if(alert_level && alert_level <= ALERT_LEVEL_CAUTION)
+	if(alert_level >= ALERT_LEVEL_NOISE && alert_level <= ALERT_LEVEL_CAUTION)
 		alert_time -= LIFE_TICK
 		if(alert_time <= 0)
 			alert_time = initial(alert_time)
-			alert_level -= 1
+			set_alert_level(alert_level-1,TRUE)
 
 	owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
 
@@ -203,13 +231,14 @@
 	return TRUE
 
 /ai/proc/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked(owner))
+	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
 		var/is_left_click = prob(left_click_chance)
 		spawn do_attack(objective_attack,is_left_click)
 		return TRUE
 	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
+	enabled = TRUE
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	return TRUE
@@ -294,20 +323,36 @@
 	return FALSE
 
 /ai/proc/handle_movement_roaming()
-	if(roaming_distance && get_dist(owner,start_turf) >= roaming_distance)
-		owner.movement_flags = MOVEMENT_WALKING
-		owner.move_dir = get_dir(owner,start_turf)
-		return TRUE
+	if(roaming_distance)
+		if(get_dist(owner,start_turf) >= roaming_distance)
+			owner.movement_flags = MOVEMENT_WALKING
+			owner.move_dir = get_dir(owner,start_turf)
+			return TRUE
+		else
+			if(roam)
+				if(prob(5))
+					owner.movement_flags = MOVEMENT_WALKING
+					owner.move_dir = pick(DIRECTIONS_ALL)
+					roam_counter -= 1
+			else
+				owner.movement_flags = MOVEMENT_WALKING
+				owner.move_dir = 0x0
+				if(prob(25))
+					roam_counter -= 1
+			if(roam_counter <= 0)
+				roam = !roam
+				roam_counter = initial(roam_counter)
+
 	return FALSE
 
 /ai/proc/handle_movement_alert()
 
-	if(alert_level >= ALERT_LEVEL_NONE && objective_investigate)
+	if(alert_level > ALERT_LEVEL_NONE && objective_investigate)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,objective_investigate)
 		return TRUE
 
-	if(alert_level == ALERT_LEVEL_CAUTION)
+	else if(alert_level == ALERT_LEVEL_CAUTION)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
 		return TRUE
@@ -386,10 +431,6 @@
 
 	return FALSE
 
-
-/ai/proc/hostile_message()
-	return FALSE
-
 /ai/proc/set_objective(var/atom/A,var/alert = TRUE)
 
 	if(!owner || owner.qdeleting)
@@ -400,6 +441,8 @@
 
 	if(A && A.qdeleting)
 		return FALSE
+
+	enabled = TRUE
 
 	var/atom/old_attack = objective_attack
 
@@ -417,6 +460,8 @@
 		frustration_attack = 0
 		set_alert_level(ALERT_LEVEL_COMBAT)
 		objective_attack = A
+		if(owner.boss && is_player(A))
+			owner.add_player_to_boss(A)
 		if(objective_move == objective_attack)
 			objective_move = null
 		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
@@ -452,22 +497,20 @@
 	if(objective_attack)
 		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
 			set_objective(null)
-		if(get_dist(owner,objective_attack) > attack_distance_max + 1)
+		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
+		else
+			frustration_attack = 0
 
 	if(!objective_attack || frustration_attack > frustration_threshold)
-
 		var/atom/best_target
 		var/best_score = 0
-
 		for(var/mob/living/L in possible_targets)
 			var/local_score = get_attack_score(L)
 			if(!best_score || local_score > best_score)
 				best_target = L
 				best_score = local_score
-
 		if(best_target && best_target != objective_attack)
-			hostile_message()
 			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
 
 		frustration_attack = 0
@@ -502,15 +545,30 @@
 	if(!L.can_be_attacked(owner))
 		return FALSE
 
+	if(is_advanced(L) && !L.client)
+		var/mob/living/advanced/A = L
+		if(A.handcuffed) //Don't target hostages.
+			return FALSE
+
 	return TRUE
 
-/ai/proc/is_enemy(var/mob/living/L)
+/ai/proc/is_enemy(var/atom/A)
+
+	if(A == owner)
+		return FALSE
+
 	switch(aggression)
 		if(0)
 			return FALSE
 		if(1)
+			if(!is_living(A))
+				return FALSE
+			var/mob/living/L = A
 			return owner.loyalty_tag && L.loyalty_tag && (L.loyalty_tag in enemy_tags)
 		if(2)
+			if(!is_living(A))
+				return TRUE
+			var/mob/living/L = A
 			return owner.loyalty_tag != L.loyalty_tag
 		if(3)
 			return TRUE
@@ -519,25 +577,29 @@
 /ai/proc/is_friend(var/mob/living/L)
 	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
 
-/ai/proc/can_see_mob(var/mob/living/L)
+/ai/proc/is_in_view(var/atom/A)
+	return A in view(owner)
 
-	if(!stored_sneak_power)
+/ai/proc/can_see(var/atom/A)
+
+	if(!stored_sneak_power && is_living(owner))
+		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
 
-	if(L.alpha == 255)
+	if(A.alpha == 255)
 		return TRUE
 
 	if(alert_level == ALERT_LEVEL_COMBAT)
 		return TRUE
 
-	var/distance = get_dist(owner,L)
+	var/distance = get_dist(owner,A)
 
 	if(distance <= 2)
 		return TRUE
 
 	var/calc = ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
 
-	return L.alpha >= calc
+	return A.alpha >= calc
 
 /ai/proc/get_possible_targets()
 
@@ -550,31 +612,45 @@
 		return .
 
 	var/range_to_use = radius_find_enemy
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		range_to_use = radius_find_enemy_alert
+	switch(alert_level)
+		if(ALERT_LEVEL_NOISE)
+			range_to_use = radius_find_enemy_noise
+		if(ALERT_LEVEL_CAUTION)
+			range_to_use = radius_find_enemy_caution
+		if(ALERT_LEVEL_COMBAT)
+			range_to_use = radius_find_enemy_combat
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
-			if(!L.initialized)
-				continue
-			if(!is_enemy(L))
-				continue
-			if(!should_attack_mob(L))
-				continue
-			if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(L))
-				continue
-			if(!can_see_mob(L))
+			if(!can_detect(L))
 				continue
 			.[L] = TRUE
 
 	return .
 
-/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount)
+/ai/proc/can_detect(var/atom/A)
+	if(!A.initialized)
+		return FALSE
+	if(!is_enemy(A))
+		return FALSE
+	if(ismob(A) && !should_attack_mob(A))
+		return FALSE
+	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
+		return FALSE
+	if(!can_see(A))
+		return FALSE
+	return TRUE
 
-	if(!attackers[attacker])
-		attackers[attacker] = TRUE
+/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+	if(!stealthy && attacker != objective_attack)
+		if(can_detect(attacker))
+			if(!attackers[attacker])
+				attackers[attacker] = TRUE
+			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+		else if(alert_level != ALERT_LEVEL_COMBAT)
+			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
 	return TRUE
 
@@ -629,7 +705,7 @@
 			if(L == owner)
 				return FALSE
 		else
-			if(!is_enemy(L) || !(radius_find_enemy > 0) )
+			if(!is_enemy(L) || radius_find_enemy <= 0 )
 				return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
 
 	var/old_alert_level = alert_level
@@ -645,7 +721,7 @@
 
 	if(old_alert_level != alert_level)
 		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
+			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 
@@ -659,4 +735,7 @@
 			owner.alert_overlay.icon_state = "question"
 		else if(new_alert_level == ALERT_LEVEL_NOISE)
 			owner.alert_overlay.icon_state = "huh"
+		else
+			owner.alert_overlay.icon_state = "none"
+
 	return TRUE

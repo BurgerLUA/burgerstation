@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/miner_talisman
 	name = "bone talisman"
-	icon = 'icons/obj/items/clothing/neck/talisman.dmi'
+	icon = 'icons/obj/item/clothing/neck/talisman.dmi'
 	desc = "Grody."
 	desc_extended = "A talisman made from sinew and shards of bone."
 	worn_layer = LAYER_MOB_CLOTHING_NECK_UNDER

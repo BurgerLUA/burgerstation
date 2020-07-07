@@ -1,17 +1,24 @@
+#define NUTRITION_MULTIPLIER 2
+
 /reagent/nutrition/
 	name = "nutrients"
 	desc = "A source of nutrition."
 	color = "#FFFFFF"
 
-	metabolism_stomach = 8
+	metabolism_stomach = 4
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
-
+	var/heal_factor = 0.1
 
 	value = 1
 
 	liquid = -0.25
+
+	heated_reagent = /reagent/carbon
+	heated_reagent_temp = 400
+	heated_reagent_amount = 0
+	heated_reagent_mul = 0.01
 
 /reagent/nutrition/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -21,10 +28,9 @@
 		var/mob/living/L = container.owner.loc
 		. *= 0.5
 		if(nutrition_amount)
-			L.add_nutrition(nutrition_amount*.,FALSE)
+			L.add_nutrition(nutrition_amount*.*NUTRITION_MULTIPLIER,FALSE)
 		if(hydration_amount)
-			L.add_hydration(hydration_amount*.,FALSE)
-
+			L.add_hydration(hydration_amount*.*NUTRITION_MULTIPLIER,FALSE)
 
 	return .
 
@@ -34,12 +40,13 @@
 
 	var/mob/living/L = owner
 	if(nutrition_amount)
-		L.add_nutrition(nutrition_amount*.,FALSE)
+		L.add_nutrition(nutrition_amount*.*NUTRITION_MULTIPLIER,FALSE)
 	if(hydration_amount)
-		L.add_hydration(hydration_amount*.,FALSE)
+		L.add_hydration(hydration_amount*.*NUTRITION_MULTIPLIER,FALSE)
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=-.*nutrition_amount,burn=-.*nutrition_amount,tox=-.*nutrition_amount,oxy=-.*nutrition_amount)
+		var/amount_to_heal = (nutrition_amount + hydration_amount)*heal_factor*.
+		owner.health.adjust_loss_smart(brute=-amount_to_heal,burn=-amount_to_heal)
 
 	return .
 
@@ -106,6 +113,11 @@
 
 	flags_reagent = FLAG_REAGENT_RAW
 
+	heated_reagent = /reagent/nutrition/bread
+	heated_reagent_temp = 450
+	heated_reagent_amount = 0.1
+	heated_reagent_mul = 0.01
+
 /reagent/nutrition/dough/flour
 	name = "whole wheat flour dough"
 	desc = "Typical whole wheat water-flour based dough."
@@ -117,6 +129,8 @@
 
 	liquid = 0.25
 
+	heated_reagent = /reagent/nutrition/bread/flour
+
 /reagent/nutrition/dough/flour/processed
 	name = "white flour dough"
 	desc = "Typical whole wheat water-flour based dough."
@@ -127,6 +141,8 @@
 	flavor = "raw dough"
 
 	liquid = 0.25
+
+	heated_reagent = /reagent/nutrition/bread/flour/processed
 
 //Bread
 /reagent/nutrition/bread
@@ -177,6 +193,11 @@
 	liquid = 0.25
 
 	flags_reagent = FLAG_REAGENT_RAW
+
+	heated_reagent = /reagent/nutrition/cake
+	heated_reagent_temp = 450
+	heated_reagent_amount = 0.01
+	heated_reagent_mul = 0.05
 
 /reagent/nutrition/cake
 	name = "cake"
@@ -382,6 +403,21 @@
 
 
 //Fat
+
+
+/reagent/nutrition/flavor/ //TODO: Give buffs.
+	name = "flavor"
+	desc = "Pure flavor."
+	color = "#EAD5A4"
+
+	nutrition_amount = 3
+
+	flavor = "flavor"
+
+	liquid = 0.3
+
+	flags_reagent = FLAG_REAGENT_FAT
+
 /reagent/nutrition/fat/
 	name = "fat"
 	desc = "Nutrition and flavor from fat."
@@ -395,6 +431,10 @@
 
 	flags_reagent = FLAG_REAGENT_FAT
 
+	heated_reagent = /reagent/nutrition/flavor/
+	heated_reagent_temp = 328
+	heated_reagent_mul = 0.01
+
 /reagent/nutrition/fat/cow
 	name = "cow's fat"
 	desc = "Nutrition and flavor from cow's fat."
@@ -403,6 +443,43 @@
 	nutrition_amount = 2
 
 	flavor = "fat"
+
+/reagent/nutrition/fat/bear
+	name = "bear's fat"
+	desc = "Nutrition and flavor from bear's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/penguin
+	name = "penguin's fat"
+	desc = "Nutrition and flavor from penguin's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/fish
+	name = "fish's fat"
+	desc = "Nutrition and flavor from fish's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
+/reagent/nutrition/fat/crab
+	name = "crab's fat"
+	desc = "Nutrition and flavor from crab's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 2
+
+	flavor = "fat"
+
 
 //Meat
 /reagent/nutrition/meat/
@@ -418,25 +495,34 @@
 
 	flags_reagent = FLAG_REAGENT_RAW
 
+	heated_reagent_temp = 335
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 1
+
 /reagent/nutrition/meat/cow
 	name = "raw cow's meat"
 	desc = "Nutrition and flavor from raw cow's meat."
-	color = "#EA4147"
+	color = "#BF0000"
 
 	nutrition_amount = 4
 
 	flavor = "raw meat"
 
+	heated_reagent = /reagent/nutrition/meat/cow/cooked
+
 /reagent/nutrition/meat/cow/cooked
 	name = "cooked cow's meat"
 	desc = "Nutrition and flavor from cooked cow's meat."
-	color = "#96463C"
+	color = "#6B3731"
 
 	nutrition_amount = 3
 
 	flavor = "beef"
 
 	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
 
 /reagent/nutrition/meat/chicken
 	name = "raw chicken"
@@ -446,6 +532,8 @@
 	nutrition_amount = 3
 
 	flavor = "raw chicken"
+
+	heated_reagent = /reagent/nutrition/meat/chicken/cooked
 
 /reagent/nutrition/meat/chicken/cooked
 	name = "cooked chicken"
@@ -457,7 +545,162 @@
 	flavor = "chicken"
 
 	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
 
+/reagent/nutrition/meat/xeno
+	name = "raw xeno meat"
+	desc = "Nutrition and flavor from raw xeno meat."
+	color = "#336B42"
+
+	nutrition_amount = 4
+
+	flavor = "mistakes"
+
+	heated_reagent = /reagent/nutrition/meat/xeno/cooked
+
+/reagent/nutrition/meat/xeno/cooked
+	name = "cooked xeno meat"
+	desc = "Nutrition and flavor from cooked xeno meat."
+	color = "#293D2E"
+
+	nutrition_amount = 3
+
+	flavor = "space aliens"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+/reagent/nutrition/meat/spider
+	name = "raw spider meat"
+	desc = "Nutrition and flavor from raw spider meat."
+	color = "#19B03E"
+
+	nutrition_amount = 3
+
+	flavor = "hair"
+
+	heated_reagent = /reagent/nutrition/meat/spider/cooked
+
+/reagent/nutrition/meat/spider/cooked
+	name = "cooked spider meat"
+	desc = "Nutrition and flavor from cooked spider meat."
+	color = "#A0DBAF"
+
+	nutrition_amount = 2
+
+	flavor = "web"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+/reagent/nutrition/meat/bear
+	name = "raw bear meat"
+	desc = "Nutrition and flavor from raw bear meat."
+	color = "#BA0214"
+
+	nutrition_amount = 5
+
+	flavor = "bearable"
+
+	heated_reagent = /reagent/nutrition/meat/bear/cooked
+
+/reagent/nutrition/meat/bear/cooked
+	name = "cooked bear meat"
+	desc = "Nutrition and flavor from cooked bear meat."
+	color = "#57040D"
+
+	nutrition_amount = 4
+
+	flavor = "russia"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+/reagent/nutrition/meat/penguin
+	name = "raw penguin meat"
+	desc = "Nutrition and flavor from raw penguin meat."
+	color = "#B39497"
+
+	nutrition_amount = 3
+
+	flavor = "ice"
+
+	heated_reagent = /reagent/nutrition/meat/penguin/cooked
+
+/reagent/nutrition/meat/penguin/cooked
+	name = "cooked penguin meat"
+	desc = "Nutrition and flavor from cooked penguin meat."
+	color = "#756A63"
+
+	nutrition_amount = 2
+
+	flavor = "igloos"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+/reagent/nutrition/meat/fish
+	name = "raw fish"
+	desc = "Nutrition and flavor from raw fish."
+	color = "#F0D8E0"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+	flavor = "fish"
+
+	heated_reagent = /reagent/nutrition/meat/fish/cooked
+
+/reagent/nutrition/meat/fish/cooked
+	name = "cooked fish"
+	desc = "Nutrition and flavor from cooked fish."
+	color = "#CFBE91"
+
+	nutrition_amount = 2
+
+	flavor = "FISH"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
+/reagent/nutrition/meat/crab
+	name = "raw crab meat"
+	desc = "Nutrition and flavor from raw crab meat."
+	color = "#EB8046"
+
+	nutrition_amount = 4
+
+	flavor = "seashells"
+
+	heated_reagent = /reagent/nutrition/meat/crab/cooked
+
+/reagent/nutrition/meat/crab/cooked
+	name = "cooked crab meat"
+	desc = "Nutrition and flavor from cooked crab meat."
+	color = "#D45B19"
+
+	nutrition_amount = 4
+
+	flavor = "the ocean"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
 
 /reagent/nutrition/junk/
 	name = "junk food"
@@ -471,7 +714,6 @@
 	value = 0.2
 
 	liquid = -0.75
-
 
 /reagent/nutrition/junk/chips
 	name = "chips"
@@ -570,3 +812,4 @@
 	flavor = "egg yolk"
 
 	value = 4
+

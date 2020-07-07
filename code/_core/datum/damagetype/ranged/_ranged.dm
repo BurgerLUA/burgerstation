@@ -7,24 +7,24 @@
 	hit_effect = null //Handled elsewhere.
 
 	miss_sounds = list(
-		'sounds/weapons/bulletflyby.ogg',
-		'sounds/weapons/bulletflyby2.ogg',
-		'sounds/weapons/bulletflyby3.ogg'
+		'sound/weapons/bulletflyby.ogg',
+		'sound/weapons/bulletflyby2.ogg',
+		'sound/weapons/bulletflyby3.ogg'
 	)
 
 	impact_sounds = list(
-		'sounds/weapons/ric1.ogg',
-		'sounds/weapons/ric2.ogg',
-		'sounds/weapons/ric3.ogg',
-		'sounds/weapons/ric4.ogg',
-		'sounds/weapons/ric5.ogg'
+		'sound/weapons/ric1.ogg',
+		'sound/weapons/ric2.ogg',
+		'sound/weapons/ric3.ogg',
+		'sound/weapons/ric4.ogg',
+		'sound/weapons/ric5.ogg'
 	)
 
 	impact_sounds_flesh = list(
-		'sounds/effects/impacts/bullet_meat1.ogg',
-		'sounds/effects/impacts/bullet_meat2.ogg',
-		'sounds/effects/impacts/bullet_meat3.ogg',
-		'sounds/effects/impacts/bullet_meat4.ogg'
+		'sound/effects/impacts/bullet_meat1.ogg',
+		'sound/effects/impacts/bullet_meat2.ogg',
+		'sound/effects/impacts/bullet_meat3.ogg',
+		'sound/effects/impacts/bullet_meat4.ogg'
 	)
 
 	attribute_stats = list()

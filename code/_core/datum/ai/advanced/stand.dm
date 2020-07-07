@@ -1,7 +1,6 @@
 /ai/advanced/stand
 	use_alerts = FALSE
 	ignore_immortal = TRUE
-	radius_find_enemy = VIEW_RANGE
 	use_cone_vision = FALSE
 	retaliate = FALSE
 	should_find_weapon = FALSE
@@ -29,12 +28,19 @@
 	owner.set_dir(owner.dir,TRUE)
 	return .
 
+/ai/advanced/stand/is_enemy(var/atom/A)
+	if(is_living(A))
+		var/mob/living/L = A
+		if(L.stand && L.stand.linked_stand == owner)
+			return FALSE
+	return ..()
+
 /ai/advanced/stand/should_attack_mob(var/mob/living/L)
 
-	if(L == owner)
+	if(L.dead)
 		return FALSE
 
-	if(L.dead)
+	if(is_enemy(L))
 		return FALSE
 
 	if(L.immortal && !ignore_immortal)
@@ -43,24 +49,23 @@
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
 		return FALSE
 
-	if(L.stand && L.stand.linked_stand == owner)
-		return FALSE
-
 	if(!L.can_be_attacked(owner))
 		return FALSE
 
-	return FALSE
+	return TRUE
 
 
-/ai/advanced/stand/is_enemy(var/mob/living/L)
-	if(L == owner)
+/ai/advanced/stand/is_enemy(var/atom/A)
+	if(A == owner)
 		return FALSE
 	if(istype(owner,/mob/living/advanced/stand/))
 		var/mob/living/advanced/stand/S = owner
-		if(L == S.owner)
+		if(A == S.owner)
 			return FALSE
-		if(L.ai && L.ai.is_enemy(S.owner))
-			return TRUE
+		if(is_living(A))
+			var/mob/living/L = A
+			if(L.ai && L.ai.is_enemy(S.owner))
+				return TRUE
 	return FALSE
 
 /ai/advanced/stand/get_attack_score(var/mob/living/L)

@@ -19,16 +19,34 @@
 
 	ai = /ai/advanced/stand
 
-	class = "stand"
+	class = /class/stand
 
 	var/display_menacing = FALSE
 
 	attack_delay = 1
 	attack_delay_max = 2
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
+		DISARM = TRUE,
+		DRUGGY = TRUE,
+		FIRE = TRUE
+	)
+
 /mob/living/advanced/stand/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(owner && attacker == owner)
+	if(attacker && owner && attacker == owner)
 		return FALSE
 
 	if(!enabled)
@@ -129,7 +147,7 @@
 
 	return ..()
 
-/mob/living/advanced/stand/Initialize()
+/mob/living/advanced/stand/PostInitialize()
 
 	. = ..()
 
@@ -141,4 +159,5 @@
 	if(sex == MALE && prob(25))
 		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
 	update_all_blends()
+
 	return .

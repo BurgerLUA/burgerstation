@@ -15,4 +15,4 @@ SUBSYSTEM_DEF(badnames)
 
 	log_subsystem(name,"Found [length(all_badnames)] bad names.")
 
-	return TRUE
+	return ..()

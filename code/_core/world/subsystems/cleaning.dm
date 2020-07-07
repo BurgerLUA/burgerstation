@@ -18,14 +18,14 @@ SUBSYSTEM_DEF(delete)
 		if(is_atom(object_to_delete))
 			var/atom/A = object_to_delete
 			if(!A.is_safe_to_delete())
-				objects_to_delete[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
+				objects_to_delete[object_to_delete] = world.time + ITEM_DELETION_TIME_NEW
 				continue
 
 		objects_to_delete -= object_to_delete
 		qdel(object_to_delete)
 
 
-	for(var/datum/object_to_delete in objects_to_delete_safe)
+	for(var/datum/object_to_delete in objects_to_delete_safe) //Don't delete stuff if players are in view.
 
 		if(!istype(object_to_delete) || object_to_delete.qdeleting)
 			objects_to_delete_safe -= object_to_delete
@@ -35,31 +35,30 @@ SUBSYSTEM_DEF(delete)
 		if(time_to_delete > world.time)
 			continue
 
-		if(is_atom(object_to_delete))
-			var/atom/A = object_to_delete
-			if(!A.is_safe_to_delete())
-				objects_to_delete_safe[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
-				continue
-
-		var/should_delete = TRUE
-
-		if(is_atom(object_to_delete))
-			var/area/A = get_area(object_to_delete)
-			if(A.safe_storage)
-				should_delete = FALSE
-
-		if(should_delete)
-			for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,get_turf(object_to_delete)))
-				if(!P.client)
-					continue
-				should_delete = FALSE
-
-		if(!should_delete)
-			objects_to_delete_safe[object_to_delete] = world.time + 3000 //Wait another 5 minutes.
+		if(!should_delete(object_to_delete))
+			objects_to_delete_safe[object_to_delete] = world.time + ITEM_DELETION_TIME_NEW
 			continue
 
 		objects_to_delete_safe -= object_to_delete
 		qdel(object_to_delete)
+
+	return TRUE
+
+/subsystem/delete/proc/should_delete(var/datum/D)
+
+	if(is_atom(D))
+		var/atom/A = D
+		if(!A.is_safe_to_delete())
+			return FALSE
+		if(!isturf(A.loc))
+			return FALSE
+		var/area/A2 = get_area(A)
+		if(A2.safe_storage)
+			return FALSE
+		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,get_turf(A)))
+			if(!P.client)
+				continue
+			return FALSE
 
 	return TRUE
 

@@ -1,62 +1,60 @@
 /loot/
-	var/id = null
-
 	var/list/loot_table = list()
-	var/loot_count = 1 //Only works on spawn_loot_turf
+	var/list/loot_table_guaranteed = list()
+	var/loot_count = 1 //How much of this loot to spawn.
+	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
+	var/chance_none = 0 //Applies on a per item basis.
+	var/loot_multiplier = 1 //How much of the loot to duplicate.
 
-	var/account_bound = FALSE
+/loot/proc/create_loot(var/type_to_spawn,var/spawn_loc) //Don't use this.
 
-	var/chance_none = 0
+	. = list()
 
-/loot/proc/spawn_loot(var/spawn_loc)
+	if(ispath(type_to_spawn,/loot/))
+		var/loot/L = LOOT(type_to_spawn)
+		for(var/i=1,i<=loot_multiplier,i++)
+			. += L.create_loot_table(spawn_loc)
+		return .
 
-	if(chance_none && prob(chance_none))
-		return FALSE
+	for(var/i=1,i<=loot_multiplier,i++)
+		. += new type_to_spawn(spawn_loc)
 
-	var/obj/item/I = pickweight(loot_table)
-	I = new I(spawn_loc)
-	INITIALIZE(I)
-	SPAWN(I)
+	return .
 
-	return I
+/loot/proc/pre_spawn(var/atom/movable/M)
+	return TRUE
 
-/loot/proc/spawn_loot_container(var/obj/item/C)
+/loot/proc/post_spawn(var/atom/movable/M)
+	return TRUE
 
-	if(!C)
-		return FALSE
+/loot/proc/do_spawn(var/spawn_loc)
+	. = create_loot_table(spawn_loc)
+	for(var/atom/movable/M in .)
+		pre_spawn(M)
+		INITIALIZE(M)
+		GENERATE(M)
+		post_spawn(M)
+		animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
+	return .
 
-	if(chance_none && prob(chance_none))
-		return FALSE
+/loot/proc/create_loot_table(var/spawn_loc) //Use this to spawn the loot.
 
-	var/obj/item/I = pickweight(loot_table)
-	I = new I(get_turf(C))
-	INITIALIZE(I)
-	SPAWN(I)
+	var/list/new_table = loot_table.Copy()
 
-	C.add_to_inventory(null,I,FALSE)
+	. = list()
 
-	return I
+	for(var/k in loot_table_guaranteed)
+		. += create_loot(k,spawn_loc)
 
-/loot/proc/spawn_loot_advanced(var/mob/living/advanced/A,var/left = FALSE)
-	var/obj/item/I = spawn_loot(get_turf(A))
-	if(I)
-		A.put_in_hands(I,left)
-		return I
-	else
-		return FALSE
+	if(length(loot_table))
+		for(var/i=1,i<=loot_count,i++)
+			if(length(new_table) <= 0)
+				break
+			if(prob(chance_none))
+				continue
+			var/selection = pickweight(loot_table)
+			if(!allow_duplicates)
+				new_table -= selection
+			. += create_loot(selection,spawn_loc)
 
-/loot/proc/spawn_loot_turf(var/turf/T)
-	for(var/i=1,i <= loot_count,i++)
-		var/obj/item/I = spawn_loot(T)
-		step_rand(I)
-
-loot/proc/spawn_loot_corpse(var/turf/T)
-	var/obj/item/storage/heavy/corpse/C = new(T)
-	INITIALIZE(C)
-	for(var/i=1,i <= loot_count,i++)
-		var/obj/item/I = spawn_loot(T)
-		C.add_to_inventory(null,I,FALSE)
-
-	C.prune_inventory()
-
-	return C
+	return .

@@ -1,5 +1,4 @@
 /class/crab
-	id = "crab"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY
@@ -54,7 +53,6 @@
 
 
 /class/crab/king
-	id = "crab_king"
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

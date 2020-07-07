@@ -2,7 +2,7 @@
 	name = "telecrystal"
 	desc = "Often used as currency in the realm for its rarity and magical properties."
 
-	icon = 'icons/obj/items/currency/telecrystals.dmi'
+	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
 
 	value = 1
@@ -54,19 +54,6 @@
 		qdel(src)
 
 	return ..()
-
-/*
-/obj/item/currency/transfer_item(var/obj/hud/inventory/new_inventory)
-
-	if(new_inventory && new_inventory.owner && is_player(new_inventory.owner))
-		var/mob/living/advanced/player/P = new_inventory.owner
-		P.adjust_currency(value)
-		value = 0 //just in case
-		qdel(src)
-		return TRUE
-
-	return ..()
-*/
 
 /obj/item/currency/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

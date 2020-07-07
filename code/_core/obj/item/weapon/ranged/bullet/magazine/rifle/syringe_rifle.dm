@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe
 	name = "\improper syringe rifle"
-	icon = 'icons/obj/items/weapons/ranged/misc/syringe.dmi'
+	icon = 'icons/obj/item/weapons/ranged/misc/syringe.dmi'
+	desc = "Long distance Poisoning"
+	desc_extended = "In the older days, poisoners had to rely on clever tricks, distraction and sleight-of-hand in order to poison their enemies. Luckily, we live in gentler times, so now you can just shoot em with poison syringes."
 	icon_state = "inventory"
 
 	shoot_delay = 8
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/silenced/fire.ogg')
+	shoot_sounds = list('sound/weapons/silenced/fire.ogg')
 
 	can_wield = FALSE
 
@@ -37,6 +39,8 @@
 	value = 150
 
 	ai_heat_sensitivity = 2
+
+	shoot_alert = ALERT_LEVEL_NONE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)

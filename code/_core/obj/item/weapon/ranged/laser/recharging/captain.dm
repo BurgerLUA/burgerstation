@@ -1,19 +1,22 @@
 /obj/item/weapon/ranged/energy/recharging/captain
-	name = "captain's laser pistol"
-	icon = 'icons/obj/items/weapons/ranged/laser/captain.dmi'
+	name = "\improper Captain's laser pistol"
+	desc = "All craftsmanship is of the highest quality."
+	desc_extended = "A fancier version of the laser rifle that self-charges. It has become innacurate due to its age."
+	icon = 'icons/obj/item/weapons/ranged/laser/captain.dmi'
+	rarity = RARITY_MYTHICAL
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
-	projectile_speed = 31
-	shoot_delay = 5
+	projectile_speed = TILE_SIZE - 1
+	shoot_delay = 7
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
 
-	charge_max = 8000
-	charge_current = 8000
+	charge_max = 12000
+	charge_current = 12000
 	charge_cost = 1000
 
 	override_icon_state = TRUE
@@ -25,6 +28,8 @@
 
 	size = SIZE_3
 	weight = WEIGHT_3
+
+	value = 2000
 
 /obj/item/weapon/ranged/energy/recharging/captain/update_overlays()
 	. = ..()

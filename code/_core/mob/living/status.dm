@@ -76,9 +76,9 @@
 			remove_status_effect(status)
 			continue
 		if(status_effects[status]["duration"] < -1)
-			status_effects[status]["duration"]++
+			status_effects[status]["duration"] = min(-1,status_effects[status]["duration"] + LIFE_TICK)
 			continue
-		status_effects[status]["duration"]--
+		status_effects[status]["duration"] = max(0,status_effects[status]["duration"] - LIFE_TICK)
 
 	return TRUE
 
@@ -87,10 +87,12 @@
 
 	if(islist(status_type))
 		for(var/v in status_type)
-			if(has_status_effect(v))
-				return TRUE
-			else if(and)
-				return FALSE
+			if(!src.status_effects[v])
+				if(and)
+					return FALSE
+				else
+					continue
+			return TRUE
 	else if(src.status_effects[status_type])
 		return TRUE
 

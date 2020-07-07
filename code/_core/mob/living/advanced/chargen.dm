@@ -1,11 +1,8 @@
 /mob/living/advanced/proc/start_chargen()
 
-	Initialize()
+	INITIALIZE(src)
 	default_appearance()
-	if(sex == MALE)
-		equip_loadout("new_male",TRUE)
-	else
-		equip_loadout("new_female",TRUE)
+	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)
 
 	nutrition *= RAND_PRECISE(0.5,0.75)
@@ -27,7 +24,7 @@
 		play_music_track("space_wayfarer",src.client)
 
 		client.disable_controls = TRUE
-		client.update_zoom(3) //300%
+		client.update_zoom(3)
 
 		var/obj/hud/screen/S = new()
 		S.icon = 'icons/hud/discovery.dmi' //320x320
@@ -127,20 +124,22 @@
 
 	apply_mob_parts(FALSE,FALSE,FALSE)
 	default_appearance()
+	add_species_buttons()
+	add_species_health_elements()
 
 	if(length(kept_items))
 		equip_objects_in_list(kept_items)
 	else
-		if(sex == MALE)
-			equip_loadout("new_male",TRUE)
-		else
-			equip_loadout("new_female",TRUE)
+		equip_loadout(/loadout/new_player,TRUE)
+
 
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
 		B.update_sprite()
 
 	update_all_blends()
 	update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+
+	show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=3)
 
 
 

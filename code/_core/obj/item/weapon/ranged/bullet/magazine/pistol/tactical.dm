@@ -4,9 +4,9 @@
 	desc_extended = "A common pistol used by moderern police forces as well as some private military corporations."
 	value = 30
 
-	icon = 'icons/obj/items/weapons/ranged/pistol/45.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
 	shoot_delay = 3
-	shoot_sounds = list('sounds/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	view_punch = 6
 
@@ -40,9 +40,9 @@
 	The base of the trigger guard's been filed down for a higher grip. And not only that, nearly every part of this gun has been expertly crafted and customized. \
 	Where'd you get something like this?"
 	value = 50
-	icon = 'icons/obj/items/weapons/ranged/pistol/45_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
 	shoot_delay = 3
-	shoot_sounds = list('sounds/weapons/45/shoot_mod.ogg')
+	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
 
 	view_punch = 3
 

@@ -1,0 +1,2 @@
+/area/hellscape/
+	name = "Hellscape"

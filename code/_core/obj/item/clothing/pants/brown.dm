@@ -1,6 +1,8 @@
 /obj/item/clothing/pants/brown
 	name = "brown pants"
-	icon = 'icons/obj/items/clothing/pants/brown_pants.dmi'
+	desc = "An office worker's favorite."
+	desc_extended = "The pants of choice for boring people everywhere."
+	icon = 'icons/obj/item/clothing/pants/brown_pants.dmi'
 
 	desc = "Please wear these at least."
 	desc_extended = "The peak of fashion."
@@ -22,7 +24,7 @@
 
 /obj/item/clothing/pants/kilt
 	name = "kilt"
-	icon = 'icons/obj/items/clothing/pants/kilt.dmi'
+	icon = 'icons/obj/item/clothing/pants/kilt.dmi'
 
 	desc = "THERE CAN ONLY BE ONE."
 	desc_extended = "A very tough and fashionable kilt. Needs to be held up by a kilt belt."
@@ -49,7 +51,7 @@
 
 /obj/item/clothing/pants/cloth
 	name = "cloth"
-	icon = 'icons/obj/items/clothing/pants/cloth.dmi'
+	icon = 'icons/obj/item/clothing/pants/cloth.dmi'
 
 	desc = "Modest?"
 	desc_extended = "A basic piece of cloth worn around the torso."

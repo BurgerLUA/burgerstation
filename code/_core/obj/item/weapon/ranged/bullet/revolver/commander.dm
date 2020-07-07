@@ -1,7 +1,8 @@
 /obj/item/weapon/ranged/bullet/revolver/commander
 	name = "\improper .44 Commander Autorevolver"
 	desc = "Semi-automatic!"
-	icon = 'icons/obj/items/weapons/ranged/revolver/44.dmi'
+	desc_extended = "A revolver that uses a blowback recoil system to recock the hammer. Was initially made in small numbers for gun collectors and shooting enthusiasts, but has since become commonplace everywhere."
+	icon = 'icons/obj/item/weapons/ranged/revolver/44.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 3
@@ -10,7 +11,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sounds/weapons/revolver_heavy/shoot.ogg')
+	shoot_sounds = list('sound/weapons/revolver_heavy/shoot.ogg')
 
 	view_punch = 10
 

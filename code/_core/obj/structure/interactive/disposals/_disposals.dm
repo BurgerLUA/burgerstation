@@ -6,7 +6,7 @@
 
 	anchored = TRUE
 
-/obj/structure/interactive/disposals/Initialize()
+/obj/structure/interactive/disposals/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

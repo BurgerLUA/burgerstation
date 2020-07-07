@@ -1,13 +1,7 @@
 /ai/advanced/
 
-	radius_find_enemy = VIEW_RANGE
-
 	objective_delay = 10
 	attack_delay = 1
-
-	target_distribution_y = list(0,8,8,16,16,16,32,32,32,32,64,64,64)
-
-	stationary = FALSE
 
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
 	var/checked_weapons = FALSE
@@ -18,8 +12,22 @@
 
 	var/next_complex = 0
 
+	var/resist_handcuffs = TRUE
+
+	roaming_distance = 0
+
 /ai/advanced/Destroy()
 	objective_weapon = null
+	return ..()
+
+
+/ai/advanced/on_life()
+
+	if(is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		if(resist_handcuffs && A.handcuffed && owner.next_resist <= world.time)
+			owner.resist()
+
 	return ..()
 
 /ai/advanced/proc/handle_movement_weapon()

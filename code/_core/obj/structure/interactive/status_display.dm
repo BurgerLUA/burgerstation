@@ -11,6 +11,8 @@ var/global/list/global_status_displays = list()
 
 /obj/structure/interactive/status_display
 	name = "status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display."
 	icon = 'icons/obj/structure/status_display.dmi'
 	icon_state = "icon"
 
@@ -20,6 +22,9 @@ var/global/list/global_status_displays = list()
 	maptext_y = -2
 
 	plane = PLANE_WALL_ATTACHMENTS
+
+/obj/structure/interactive/status_display/shuttle
+	name = "shuttle status display"
 
 /obj/structure/interactive/status_display/update_icon()
 	icon_state = null
@@ -62,18 +67,26 @@ var/global/list/global_status_displays = list()
 
 /obj/structure/interactive/status_display/global_display/arrivals_01
 	name = "arrivals ship 1 status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Arrivals Shuttle."
 	status_id = "arrivals_01"
 
 /obj/structure/interactive/status_display/global_display/arrivals_02
 	name = "arrivals ship 2 status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Arrivals Shuttle."
 	status_id = "arrivals_02"
 
 
 /obj/structure/interactive/status_display/global_display/cargo
 	name = "cargo status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the Cargo Shuttle."
 	status_id = "cargo"
 
 /obj/structure/interactive/status_display/global_display/round
 	name = "mission status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of Nanotrasen's mission."
 	frame_color = "#E5C14B"
 	status_id = "mission"

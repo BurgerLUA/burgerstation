@@ -4,7 +4,7 @@
 	damage_type = null //TODO: Paper cut
 	ranged_damage_type = null
 
-	icon = 'icons/obj/items/weapons/ranged/magic/scroll.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/scroll.dmi'
 	icon_state = "scroll"
 
 	override_icon_state = TRUE
@@ -14,6 +14,13 @@
 	automatic = FALSE
 
 	var/scroll_count = 1
+
+	value = 10
+
+/obj/item/weapon/ranged/magic/scroll/calculate_value()
+	. = ..()
+	. *= scroll_count
+	return .
 
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
 	shoot(caller,object,location,params)
@@ -28,6 +35,11 @@
 /obj/item/weapon/ranged/magic/scroll/can_gun_shoot(var/mob/caller)
 
 	if(!open)
+		caller.to_chat(span("notice","You need to unravel the scroll before firing it!"))
+		return FALSE
+
+	if(get_ammo_count() <= 0)
+		caller.to_chat(span("notice","The scroll is blank!"))
 		return FALSE
 
 	return ..()
@@ -55,6 +67,8 @@
 	return TRUE //No melee
 
 /obj/item/weapon/ranged/magic/scroll/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object()
 
 	if(is_scroll(object))
 
@@ -88,6 +102,7 @@
 /obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
 	scroll_count -= 1
 	update_sprite()
+	return ..()
 
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"
@@ -101,7 +116,9 @@
 	shoot_delay = 10
 	projectile_speed = 16
 
-	shoot_sounds = list('sounds/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
+
+	value = 20
 
 /obj/item/weapon/ranged/magic/scroll/fireball/amount_3/Generate()
 	scroll_count = 5

@@ -6,7 +6,7 @@
 
 	layer = LAYER_FLOOR
 
-	footstep_id = "plating"
+	footstep = /footstep/plating
 
 
 /turf/simulated/floor/circuit/blue

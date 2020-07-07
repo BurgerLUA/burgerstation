@@ -138,6 +138,21 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	var/area/A = get_area(src)
 	return A.sound_environment
 
+/proc/get_mobs_in_range(var/range,var/atom/epicenter=usr)
+	. = list()
+	for(var/mob/M in range(range,epicenter))
+		. += M
+	return .
+
+/proc/get_clients_in_range(var/range,var/atom/epicenter=usr)
+
+	. = list()
+	for(var/mob/M in all_mobs_with_clients)
+		if(get_dist(epicenter,M) > range)
+			continue
+		. += M
+	return .
+
 //Example Formats
 /*
 play('sound',mob) to play to that mob only
@@ -160,8 +175,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	else if(is_atom(location_or_list))
 		var/atom/A = location_or_list
 		var/turf/AT = get_turf(A)
-		for(var/mob/M in mobs_in_range(range_max,AT))
-			hearers += M
+		hearers += get_clients_in_range(range_max,AT)
 		if(!sound_source)
 			sound_source = AT
 	else
@@ -213,23 +227,25 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		CHECK_TICK
 
-		var/client/C = M.client
-
-		if(C && ismob(C.eye))
-			M = C.eye
-
-		if(length(pos) && pos[3] != 0 && pos[3] != M.z) //0 just means that it should play locally
-			continue
+		hearers -= M
 
 		if(!created_sound)
 			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
 			return FALSE
 
-		if(invisibility_check && M.see_invisible < invisibility_check)
-			continue
-
 		var/turf/T = get_turf(M)
 		if(!T)
+			continue
+
+		var/client/C = M.client
+
+		if(C && ismob(C.eye))
+			M = C.eye
+
+		if(length(pos) && pos[3] != 0 && pos[3] != T.z) //0 just means that it should play locally
+			continue
+
+		if(invisibility_check && M.see_invisible < invisibility_check)
 			continue
 
 		created_sound.environment = M.get_sound_environment()
@@ -268,11 +284,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		created_sound.volume = local_volume
 
-		if(alert && is_living(M) && luck(alert_source,created_sound.volume*3,FALSE))
-			var/mob/living/L = M
-			if(L.ai && L.ai.alert_level != ALERT_LEVEL_COMBAT)
-				CALLBACK("alert_level_change_\ref[src]",CEILING(L.ai.reaction_time*0.1,1),L.ai,/ai/proc/set_alert_level,alert,FALSE,alert_source)
-
 		if(C) C.receive_sound(created_sound)
+
+	if(length(hearers))
+		CRASH_SAFE("Warning: Found [length(hearers)] non-mobs in a hearers list.")
 
 	return created_sound

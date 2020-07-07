@@ -5,13 +5,13 @@
 
 /turf/simulated/floor/stair/wood/
 	color = "#724C34"
-	footstep_id = "wood"
+	footstep = /footstep/wood
 
 /turf/simulated/floor/stair/wood/rich
 	color = "#A05120"
 
 /turf/simulated/floor/stair/wood/dock
-	color = "#494E14"
+	color = "#7F604B"
 
 /turf/simulated/floor/stair/cult
 	color = "#33241B"

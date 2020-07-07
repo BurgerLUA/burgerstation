@@ -1,7 +1,8 @@
 /obj/item/weapon/ranged/bullet/revolver/traitor_357
 	name = "\improper .357 Traditore Revolver"
 	desc = "For all your traitor needs!"
-	icon = 'icons/obj/items/weapons/ranged/revolver/357.dmi'
+	desc_extended = "An Italian made 357 revolver, the Traditore is so cheap it's basically ubiquitous, often ending up among the hands of those of less than savory repute."
+	icon = 'icons/obj/item/weapons/ranged/revolver/357.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 4
@@ -12,7 +13,7 @@
 
 
 
-	shoot_sounds = list('sounds/weapons/traitor/fire.ogg')
+	shoot_sounds = list('sound/weapons/traitor/fire.ogg')
 
 	view_punch = 12
 

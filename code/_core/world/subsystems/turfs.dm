@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(turfs)
 	log_subsystem(name,"Initialized [turf_count] turfs.")
 	log_subsystem(name,"Stored [length(turf_icon_cache)] icons and saved [saved_icons] redundent icons.")
 
+	return ..()
+
 /subsystem/turfs/on_life()
 	for(var/turf/T in queued_edges)
 		T.update_sprite()

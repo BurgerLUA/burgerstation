@@ -2,6 +2,8 @@
 	name = "item"
 	desc = "Oh my god it's an item."
 
+	layer = LAYER_OBJ_ITEM
+
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
 
 	var/rarity = RARITY_COMMON
@@ -66,11 +68,11 @@
 	var/crafting_id = null
 
 	var/list/inventory_sounds = list(
-		'sounds/effects/inventory/rustle1.ogg',
-		'sounds/effects/inventory/rustle2.ogg',
-		'sounds/effects/inventory/rustle3.ogg',
-		'sounds/effects/inventory/rustle4.ogg',
-		'sounds/effects/inventory/rustle5.ogg'
+		'sound/effects/inventory/rustle1.ogg',
+		'sound/effects/inventory/rustle2.ogg',
+		'sound/effects/inventory/rustle3.ogg',
+		'sound/effects/inventory/rustle4.ogg',
+		'sound/effects/inventory/rustle5.ogg'
 	)
 
 	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_type = volume.
@@ -107,12 +109,27 @@
 	var/consume_verb = "drink out of"
 	var/transfer_amount = 10
 
+	var/zoom_mul = 1 //Holding this item will grant bonus zoom.
+
 	var/list/block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
 		ATTACK_TYPE_MELEE = 0,
 		ATTACK_TYPE_RANGED = 0.9,
 		ATTACK_TYPE_MAGIC = 0.9,
 		ATTACK_TYPE_UNARMED = 2
 	)
+
+	var/dan_mode = FALSE //Special in hand sprites, used by artist D4n0w4r.
+	var/dan_icon_state = "held"
+	// list(NORTH,EAST,SOUTH,WEST)
+	var/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
+	var/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand. These values are inversed in left hand.
+	var/dan_layer_above = LAYER_MOB_HELD
+	var/dan_layer_below = LAYER_MOB_NONE
+
+	var/obj/item/clothing/additional_clothing_parent
+
+/obj/item/get_base_value()
+	return initial(value) * item_count_current
 
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
@@ -123,6 +140,12 @@
 	. = target.add_item_count(amount_to_add,TRUE)
 	src.add_item_count(-amount_to_add,TRUE)
 	return .
+
+/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
+	if(is_living(source))
+		var/mob/living/L = source
+		return (1 - L.get_skill_power(SKILL_PRECISION))*inaccuracy_modifier*8
+	return 0
 
 /obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
 
@@ -162,6 +185,8 @@
 
 /obj/item/Destroy()
 
+	additional_clothing_parent = null
+
 	for(var/obj/hud/inventory/I in inventories)
 		qdel(I)
 
@@ -180,8 +205,15 @@
 /obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE
 
-/obj/item/can_be_grabbed(var/atom/grabber)
-	return isturf(src.loc)
+/obj/item/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+
+	if(!isturf(src.loc))
+		if(messages && is_living(grabber))
+			var/mob/living/L = grabber
+			L.to_chat(span("warning","\The [src.name] needs to be out in the open before you can grab it!"))
+		return FALSE
+
+	return ..()
 
 /obj/item/proc/can_add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE)
 
@@ -356,6 +388,9 @@
 		qdel(src)
 		return TRUE
 
+	if(additional_clothing_parent)
+		src.force_move(additional_clothing_parent)
+
 	if(light)
 		light.update(src)
 
@@ -383,6 +418,10 @@
 
 
 /obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+	if(delete_on_drop)
+		return FALSE
+	if(anchored)
+		return FALSE
 	return TRUE
 
 /obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
@@ -423,7 +462,7 @@
 	last_interacted = caller
 	return ..()
 
-/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object)
+/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
 	if(!allow_reagent_transfer_from) //Can we transfer anything from this?
 		return FALSE
@@ -433,7 +472,7 @@
 		if(L.intent == INTENT_HARM)
 			return FALSE
 
-	var/atom/defer_object = object.defer_click_on_object()
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
 	if(can_feed(caller,defer_object))
 		if(is_living(defer_object))
@@ -443,7 +482,10 @@
 			var/obj/item/I = defer_object
 			if(I.allow_reagent_transfer_to)
 				if(reagents.volume_current <= 0)
-					caller.to_chat(span("warning","\The [src] is empty!"))
+					caller.to_chat(span("warning","\The [src.name] is empty!"))
+					return FALSE
+				if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
+					caller.to_chat(span("warning","\The [defer_object.name] is full!"))
 					return FALSE
 				var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount)
 				caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
@@ -497,9 +539,9 @@
 
 	return TRUE
 
-/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(magnitude > 1)
+	if(magnitude > 3)
 
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y

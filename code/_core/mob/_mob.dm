@@ -66,6 +66,8 @@
 	var/obj/plane_master/objs/plane_master_obj
 	var/obj/plane_master/render_target/plane_master_render_target
 	var/obj/plane_master/shuttle/plane_master_shuttle
+	var/obj/plane_master/scenery/plane_master_scenery
+	var/obj/plane_master/lighting/plane_master_lighting
 
 	var/list/parallax
 
@@ -89,9 +91,12 @@
 
 	var/obj/hud/examine/examine_overlay
 
+	var/list/color_mods = list()
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = SEE_BLACKNESS
+	see_invisible = INVISIBILITY_DEFAULT
 	return TRUE
 
 /mob/Destroy()
@@ -114,6 +119,8 @@
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
+	QDEL_NULL(plane_master_scenery)
+	QDEL_NULL(plane_master_lighting)
 	QDEL_NULL(examine_overlay)
 
 	return ..()
@@ -149,6 +156,16 @@
 	if(!plane_master_shuttle)
 		plane_master_shuttle = new(src)
 	C.screen += plane_master_shuttle
+
+	if(!plane_master_scenery)
+		plane_master_scenery = new(src)
+	C.screen += plane_master_scenery
+
+	/* TODO: Find out why this make lighting invisible.
+	if(!plane_master_lighting)
+		plane_master_lighting = new(src)
+	C.screen += plane_master_lighting
+	*/
 
 	if(!examine_overlay)
 		examine_overlay = new(src)
@@ -200,10 +217,5 @@
 
 	return ..()
 
-
-/mob/is_safe_to_delete()
-
-	if(client || (ckey_last && ckey_last != ""))
-		return FALSE
-
-	return ..()
+/mob/is_player_controlled()
+	return ckey || (ckey_last && ckey_last != "")

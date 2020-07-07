@@ -79,7 +79,7 @@
 				0,0,0,0
 			)
 
-			owner.client.add_color_mod("health",desired_color)
+			owner.add_color_mod("health",desired_color)
 
 	else if(dir in DIRECTIONS_INTERCARDINAL)
 		var/max_stamina = owner.health.stamina_max

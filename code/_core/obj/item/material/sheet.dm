@@ -1,7 +1,7 @@
 /obj/item/material/sheet
 	name = "sheet"
 	desc = "I am error."
-	icon = 'icons/obj/items/material.dmi'
+	icon = 'icons/obj/item/material.dmi'
 	icon_state = "sheet"
 
 	item_count_current = 1
@@ -31,7 +31,7 @@
 	return ..()
 
 /obj/item/material/sheet/steel
-	material_id = "steel"
+	material_id = /material/steel
 
 /obj/item/material/sheet/steel/spawn_50/Generate()
 	item_count_current = 50
@@ -49,7 +49,7 @@
 	return ..()
 
 /obj/item/material/sheet/glass
-	material_id = "glass"
+	material_id = /material/glass
 
 /obj/item/material/sheet/glass/spawn_50/Generate()
 	item_count_current = 50

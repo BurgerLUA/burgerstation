@@ -1,10 +1,10 @@
 /obj/item/container/syringe
 	name = "syringe"
-	desc = "For the mad scientist in all of us."
+	desc = "For when you want to poke holes into people and get away with it."
 	desc_extended = "Holds reagents. Can be toggled to inject or draw."
 	crafting_id = "syringe"
 
-	icon = 'icons/obj/items/container/syringe.dmi'
+	icon = 'icons/obj/item/container/syringe.dmi'
 	icon_state = "syringe"
 
 	reagents = /reagent_container/syringe/
@@ -79,6 +79,9 @@
 /obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
+
+	if(is_inventory(object))
+		return ..()
 
 	if(istype(object,/obj/item/container/))
 		inject(caller,object,injecting ? inject_amount : -draw_amount)

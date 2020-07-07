@@ -2,7 +2,7 @@
 	name = "Merlin"
 	id = "merlin"
 	ai = /ai/advanced/ranged/
-	class = "wizard"
+	class = /class/wizard
 
 	force_spawn = TRUE
 	boss = TRUE
@@ -13,7 +13,7 @@
 
 	change_organ_visual("hair_face", desired_color = "#FFFFFF", desired_icon_state = "facial_wise_s")
 	update_all_blends()
-	equip_loadout("wizard_evil")
+	equip_loadout(/loadout/wizard/evil)
 
 	var/obj/item/weapon/ranged/magic/staff/basic/B = new(src.loc)
 	INITIALIZE(B)

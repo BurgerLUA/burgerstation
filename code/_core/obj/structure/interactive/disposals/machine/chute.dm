@@ -1,5 +1,7 @@
 /obj/structure/interactive/disposals/machine/chute
 	name = "disposals chute"
+	desc = "Express delivery!"
+	desc_extended = "Throw trash in here."
 	icon_state = "disposal"
 
 	collision_flags = FLAG_COLLISION_WALKING
@@ -35,18 +37,20 @@
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
 	if(is_item(object))
+		INTERACT_CHECK
 		var/obj/item/I = object
 		I.drop_item(get_turf(src))
+
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-
 	if(ismob(object) && caller == object)
-		var/mob/M = object
-		M.force_move(src)
+		INTERACT_CHECK
+		var/mob/living/L = object
+		L.force_move(src)
 		start_thinking(src)
 		return TRUE
 

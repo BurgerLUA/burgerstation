@@ -1,11 +1,11 @@
 /obj/item/clothing/feet/shoes/colored
 	name = "right shoe"
 	desc = "Good for running!"
-	desc_extended = "A basic running shoe. Doesn't protect much, but it makes you go faster."
+	desc_extended = "A basic running shoe. Doesn't protect much, but it makes you go faster. Can also be colored with dye."
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	icon = 'icons/obj/items/clothing/shoes/colored.dmi'
+	icon = 'icons/obj/item/clothing/shoes/colored.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)
@@ -25,7 +25,7 @@
 	size = SIZE_1
 	weight = WEIGHT_1
 
-
+	dyeable = TRUE
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,

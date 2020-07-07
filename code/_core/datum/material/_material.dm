@@ -1,6 +1,5 @@
 /material/
 	var/name = "material"
-	var/id
 	var/desc = "Pun."
 	var/desc_extended = "Information about this material."
 
@@ -16,7 +15,6 @@
 
 /material/glass/
 	name = "glass"
-	id = "glass"
 	color = COLOR_GLASS
 
 	icon_state_sheet = "glass"
@@ -27,20 +25,17 @@
 
 /material/steel
 	name = "steel"
-	id = "steel"
 	color = COLOR_STEEL
 
 	value_per_unit = 2
 
 /material/aluminum
 	name = "aluminum"
-	id = "aluminum"
 	color = COLOR_ALUMINUM
 	value_per_unit = 3
 
 /material/iron
 	name = "iron"
-	id = "iron"
 	color = COLOR_IRON
 	icon_state_ore = "ore_iron"
 
@@ -48,7 +43,6 @@
 
 /material/phoron
 	name = "phoron"
-	id = "phoron"
 	color = COLOR_PHORON
 	icon_state_ore = "ore_phoron"
 
@@ -56,7 +50,6 @@
 
 /material/carbon
 	name = "carbon"
-	id = "carbon"
 	color = COLOR_CARBON
 	icon_state_ore = "ore_coal"
 
@@ -64,7 +57,6 @@
 
 /material/gold
 	name = "gold"
-	id = "gold"
 	color = COLOR_GOLD
 	icon_state_ore = "ore_gold"
 
@@ -72,7 +64,6 @@
 
 /material/diamond
 	name = "diamond"
-	id = "diamond"
 	color = COLOR_DIAMOND
 	icon_state_ore = "ore_diamond"
 
@@ -80,7 +71,6 @@
 
 /material/silver
 	name = "silver"
-	id = "silver"
 	color = COLOR_SILVER
 	icon_state_ore = "ore_silver"
 
@@ -88,7 +78,6 @@
 
 /material/uranium
 	name = "uranium"
-	id = "uranium"
 	color = COLOR_URANIUM
 	icon_state_ore = "ore_uranium"
 
@@ -96,15 +85,23 @@
 
 /material/titanium
 	name = "titanium"
-	id = "titanium"
 	color = COLOR_TITANIUM
 	icon_state_ore = "ore_titanium"
 
 	value_per_unit = 30
 
-/material/plaststeel
-	name = "plaststeel"
-	id = "plaststeel"
+/material/plasteel
+	name = "plasteel"
 	color = COLOR_PLASTEEL
 
 	value_per_unit = 30
+
+/material/wood
+	name = "wood"
+	color = COLOR_WOOD
+	value_per_unit = 5
+
+/material/adamantium_carbon
+	name = "adamantium-carbon"
+	color = COLOR_ADAMANITUM_CARBON
+	value_per_unit = 200

@@ -24,24 +24,23 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	return (atom_a.y*TILE_SIZE + atom_a.pixel_y - initial(atom_a.pixel_y)) - (atom_b.y*TILE_SIZE + atom_b.pixel_y - initial(atom_b.pixel_y))
 
 #define is_valid(A) (istype(A) && !A.qdeleting && A.loc != null)
-// #define INITIALIZE(A) (A.initialized ? log_error("WARNING: [A.get_debug_name()] was initialized more than once!") : A.Initialize())
-// #define GENERATE(A) (A.spawned ? log_error("WARNING: [A.get_debug_name()] was spawned more than once!") : A.on_spawn())
 
+#define INITIALIZE(D)																								\
+	if(D.initialized)																								\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");									\
+	else																											\
+		if(!D.Initialize()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Initialize() properly!");			\
+		if(!D.PostInitialize()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run PostInitialize() properly!");	\
+		D.initialized = TRUE;
 
+#define GENERATE(D)																									\
+	if(D.generated)																									\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");									\
+	else																											\
+		if(!D.Generate()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Generate() properly!");				\
+		D.generated = TRUE;
 
-#define INITIALIZE(D)																		\
-	if(D.initialized)																		\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");			\
-	else																					\
-		D.Initialize();
-
-#define GENERATE(D)																			\
-	if(D.generated)																			\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");			\
-	else																					\
-		D.Generate();
-
-#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D),GENERATE(D)
+#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D)
 
 proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 	for(var/k in objects_to_spawn)
@@ -56,7 +55,8 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 				var/obj/item/material/M2 = M
 				M2.material_id = material_id
 			INITIALIZE(M)
-			GENERATE(M)
+			M.update_sprite()
+			//GENERATE(M)
 			animate(M,pixel_x = rand(-8,8), pixel_y = rand(-8,8), time = 3)
 
 	return TRUE

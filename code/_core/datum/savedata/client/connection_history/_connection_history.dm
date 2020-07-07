@@ -1,6 +1,9 @@
 /savedata/client/connection_history
 
 /savedata/client/connection_history/reset_data()
+
+	var/client/owner = CLIENT(ckey)
+
 	loaded_data = list(
 		"address" = owner.address,
 		"byond_version" = owner.byond_version,
@@ -9,7 +12,7 @@
 		"connection_time" = get_time()
 	)
 
-/savedata/client/connection_history/New(var/client/new_owner)
+/savedata/client/connection_history/New(var/desired_ckey)
 
 	. = ..()
 

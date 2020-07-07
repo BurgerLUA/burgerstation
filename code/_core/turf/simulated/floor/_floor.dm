@@ -1,5 +1,6 @@
 /turf/simulated/floor/
 	name = "FLOOR"
+	desc = "A floor."
 	density_down = TRUE
 
 	collision_flags = FLAG_COLLISION_NONE

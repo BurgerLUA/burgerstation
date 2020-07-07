@@ -33,7 +33,6 @@ obj/structure/interactive/bed/sleeper
 
 obj/structure/interactive/bed/sleeper/Initialize()
 	new /obj/structure/interactive/blocker(get_step(loc,EAST),src)
-	update_sprite()
 	check_collisions()
 	return ..()
 
@@ -45,16 +44,15 @@ obj/structure/interactive/bed/sleeper/update_underlays()
 	underlays += I
 	return .
 
-obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,object,location,control,params)
+obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(!.)
+	if(.)
 		if(door_state == SLEEPER_CLOSED)
-			open()
+			open(caller)
 		else if(door_state == SLEEPER_OPENED)
-			close()
-
+			close(caller)
 		return TRUE
 
 	return .
@@ -80,7 +78,8 @@ obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE)
 
 obj/structure/interactive/bed/sleeper/proc/open(var/mob/caller)
 	if(open_sound)
-		play(open_sound,src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
+		play(open_sound,src)
+		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 	door_state = SLEEPER_OPENING
 	update_icon()
 	spawn(open_time)
@@ -92,7 +91,8 @@ obj/structure/interactive/bed/sleeper/proc/open(var/mob/caller)
 
 obj/structure/interactive/bed/sleeper/proc/close(var/mob/caller)
 	if(close_sound)
-		play(close_sound,src,alert = ALERT_LEVEL_NOISE, alert_source = caller)
+		play(close_sound,src)
+		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 	door_state = SLEEPER_CLOSING
 	update_icon()
 	spawn(close_time)
@@ -160,6 +160,8 @@ obj/structure/interactive/bed/sleeper/backup/New(var/desired_loc)
 obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
+	desc = "Ah shit, i gotta cryo."
+	desc_extended = "Move inside here in order to save your character and log out."
 	secondary_color = "#00FF00"
 	var/spawnpoint = TRUE
 

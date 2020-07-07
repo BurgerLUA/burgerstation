@@ -3,7 +3,7 @@
 	open = TRUE
 	open_icon = FALSE
 
-	var/pump_sound = 'sounds/weapons/shotgun_pump.ogg'
+	var/pump_sound = 'sound/weapons/shotgun_pump.ogg'
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
 

@@ -1,7 +1,8 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
 	name = ".45 C-20r submachine gun"
-	desc = "Commonly used by Syndicate Operatives for its reliability and light weight"
-	icon = 'icons/obj/items/weapons/ranged/smg/45.dmi'
+	desc = "GET DAT FUKKEN DISK"
+	desc_extended = "Commonly used by Syndicate Operatives for its reliability and light weight, the 45 C-20r was the primary firearm of the Syndicate Nuclear Operatives, before NT figured out having self destruct nukes on their station wasn't a great idea."
+	icon = 'icons/obj/item/weapons/ranged/smg/45.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 20
@@ -9,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/45/shoot_silenced.ogg')
+	shoot_sounds = list('sound/weapons/45/shoot_silenced.ogg')
 
 	can_wield = FALSE
 
@@ -36,6 +37,8 @@
 	value = 150
 
 	ai_heat_sensitivity = 0.75
+
+	shoot_alert = ALERT_LEVEL_NONE
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 

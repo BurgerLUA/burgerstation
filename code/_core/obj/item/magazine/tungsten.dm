@@ -1,6 +1,8 @@
 /obj/item/magazine/rifle_tungsten
 	name = "\improper tungsten magazine"
-	icon = 'icons/obj/items/magazine/tungsten.dmi'
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/tungsten.dmi'
 	icon_state = "t"
 	bullet_count_max = 10
 

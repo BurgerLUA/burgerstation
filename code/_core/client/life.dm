@@ -1,6 +1,6 @@
 /client/proc/on_life()
 
-	spam_protection_chat = max(0,spam_protection_chat-1)
+	spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK))
 
 	if(queued_chat_messages && length(queued_chat_messages) && queued_chat_messages[1])
 
@@ -18,6 +18,10 @@
 	if(mob)
 		mob.on_life_client()
 
+
+	handle_camera()
+
+	/*
 	if(is_zoomed)
 		var/list/dir_to_pixel = direction_to_pixel_offset(mob.dir)
 		pixel_x += clamp(dir_to_pixel[1]*TILE_SIZE*ZOOM_RANGE - pixel_x,-8,8)
@@ -25,9 +29,9 @@
 	else
 		pixel_x -= clamp(pixel_x,-12,12)
 		pixel_y -= clamp(pixel_y,-12,12)
+	*/
 
 	return TRUE
-
 
 /client/proc/on_life_slow()
 
@@ -40,15 +44,17 @@
 
 	if(mob.vision)
 		for(var/mob/living/L in view(mob,VIEW_RANGE*0.5))
-			if(mob.vision & FLAG_VISION_MEDICAL && L.medical_hud_image)
+			if(mob.vision & FLAG_VISION_MEDICAL && L.medical_hud_image && L.alpha >= 255)
 				stored_hud_images += L.medical_hud_image
 				images += L.medical_hud_image
-			if(mob.vision & FLAG_VISION_SECURITY && L.security_hud_image)
+			if(mob.vision & FLAG_VISION_SECURITY && L.security_hud_image && L.alpha >= 255)
 				stored_hud_images += L.security_hud_image
 				images += L.security_hud_image
-			if(mob.vision & FLAG_VISION_MEDICAL_ADVANCED && L.medical_hud_image_advanced)
+			if(mob.vision & FLAG_VISION_MEDICAL_ADVANCED && L.medical_hud_image_advanced && L.alpha >= 255)
 				stored_hud_images += L.medical_hud_image_advanced
 				images += L.medical_hud_image_advanced
+
+	update_color_mods()
 
 	/*
 	if(is_zoomed)
@@ -66,8 +72,6 @@
 		if(mob)
 			mob.face_atom(last_location)
 	*/
-
-	update_color_mods()
 
 	return TRUE
 

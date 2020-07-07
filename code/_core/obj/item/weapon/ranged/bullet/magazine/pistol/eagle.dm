@@ -2,10 +2,10 @@
 	name = ".50 Silver Eagle"
 	desc = "Shiny!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is silver plated."
-	icon = 'icons/obj/items/weapons/ranged/pistol/50.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'
 	value = 170
 	shoot_delay = 4
-	shoot_sounds = list('sounds/weapons/50/shoot.ogg')
+	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	view_punch = 20
 
@@ -33,6 +33,6 @@
 	name = ".50 Gold Eagle"
 	desc = "Now in gold!"
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
-	icon = 'icons/obj/items/weapons/ranged/pistol/50_gold.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
 	value = 240
 	weight = WEIGHT_5

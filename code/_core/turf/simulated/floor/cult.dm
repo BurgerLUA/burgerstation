@@ -3,9 +3,7 @@
 	icon = 'icons/turf/floor/cult.dmi'
 	icon_state = "floor1"
 
-	desired_light_color = "#FFFFFF"
-
-	footstep_id = "default"
+	footstep = /footstep/tile
 
 /turf/simulated/floor/cult/New(var/desired_loc)
 

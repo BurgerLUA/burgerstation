@@ -2,7 +2,7 @@
 	name = "feral greytider"
 	enable_AI = TRUE
 	ai = /ai/advanced/
-	class = "ashwalker"
+	class = /class/greytide
 
 /mob/living/advanced/npc/greytide/Initialize()
 

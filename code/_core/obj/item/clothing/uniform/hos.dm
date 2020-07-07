@@ -1,6 +1,8 @@
 /obj/item/clothing/uniform/hos
 	name = "\improper Head of Security's uniform"
-	icon = 'icons/obj/items/clothing/uniforms/hos.dmi'
+	desc = "Execute Order 66."
+	desc_extended = "The uniform of choice for dictatorial fascists and Heads of Security alike."
+	icon = 'icons/obj/item/clothing/uniforms/hos.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

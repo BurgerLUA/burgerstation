@@ -4,7 +4,7 @@
 	name = "medicine"
 	desc = "For when you have a boo-boo."
 	desc_extended = "Apply to your wounds or damaged limbs to treat."
-	icon = 'icons/obj/items/medicine.dmi'
+	icon = 'icons/obj/item/medicine.dmi'
 
 	var/heal_brute = 0
 	var/heal_burn = 0
@@ -23,7 +23,7 @@
 
 	var/override_icon_state = FALSE
 
-/obj/item/container/medicine/New(var/desired_loc)
+/obj/item/container/medicine/Initialize(var/desired_loc)
 
 	. = ..()
 
@@ -39,10 +39,6 @@
 		icon_state = "[initial(icon_state)]_[clamp(item_count_current,1,icon_state_max)]"
 
 	return ..()
-
-
-
-
 
 /obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
 
@@ -75,7 +71,15 @@
 
 	return TRUE
 
-/obj/item/container/medicine/proc/can_treat(var/mob/caller,var/atom/target)
+/obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
+
+	if(!is_organ(target) && !is_living(target))
+		caller.to_chat("You can't treat this!")
+		return FALSE
+
+	if(!target || !target.health)
+		caller.to_chat("You can't treat this!")
+		return FALSE
 
 	if(get_dist(caller,target) > 1)
 		caller.to_chat("You're too far away!")
@@ -83,26 +87,23 @@
 
 	return TRUE
 
-/obj/item/container/medicine/proc/can_be_treated(var/mob/caller,var/atom/target)
 
-	if(!target || !target.health)
-		return FALSE
-
-	return TRUE
 
 /obj/item/container/medicine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_inventory(object))
+		return ..()
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		object = object.get_object_to_damage(caller,params,TRUE,TRUE)
+		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
 	if(can_be_treated(caller,object))
-		if(!can_treat(caller,object))
-			return FALSE
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/treat,caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
 		return TRUE
 
 	return ..()

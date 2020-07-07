@@ -1,19 +1,17 @@
 /obj/item/weapon/ranged/bullet/revolver/detective
 	name = "\improper .38 Special revolver"
 	desc = "The detective's trusty sidearm. Uses .38 revolver rounds."
-	icon = 'icons/obj/items/weapons/ranged/revolver.dmi'
+	desc_extended = "Private Detectives still carry snub-nose revolvers due to them packing a bigger punch in a much smaller guns. Can be useful in a pinch."
+	icon = 'icons/obj/item/weapons/ranged/revolver/38.dmi'
 	icon_state = "inventory"
 
-	projectile_speed = 31
 	shoot_delay = 3
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
-
-
-	shoot_sounds = list('sounds/weapons/revolver_light/revolver.ogg')
+	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
 	view_punch = 4
 
@@ -36,7 +34,7 @@
 	value = 50
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread() //Base spread
-	return 0
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

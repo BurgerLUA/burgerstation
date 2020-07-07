@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/emoji
 	name = "forbidden mask"
-	icon = 'obj/items/clothing/masks/emoji.dmi'
+	icon = 'obj/item/clothing/masks/emoji.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "WHY?"
 	desc_extended = "An absolutely cursed mask."

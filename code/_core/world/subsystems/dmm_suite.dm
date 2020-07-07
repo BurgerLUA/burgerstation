@@ -20,3 +20,5 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	log_subsystem(name,"Loaded [prefabs_loaded] map prefabs.")
 
+	return ..()
+

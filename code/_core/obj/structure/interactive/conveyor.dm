@@ -20,12 +20,12 @@
 	icon_state = "conveyor_inverted"
 	reversed = TRUE
 
-/obj/structure/interactive/conveyor/Initialize()
+/obj/structure/interactive/conveyor/PostInitialize()
 
 	if(active)
 		enable()
 	else
-		update_sprite()
+		disable()
 
 	return ..()
 
@@ -87,7 +87,7 @@
 				continue
 			if(is_living(M))
 				var/mob/living/L2 = M
-				if(!L2.dead && M.move_delay > -1)
+				if(!L2.horizontal && M.move_delay > -1)
 					continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(8)
 			M.Move(desired_turf,silent=TRUE)

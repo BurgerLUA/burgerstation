@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/mantle
 	name = "torn mantle"
-	icon = 'icons/obj/items/clothing/suit/mantle.dmi'
+	icon = 'icons/obj/item/clothing/suit/mantle.dmi'
 
 	desc = "Lizards like wearing this for some reason."
 	desc_extended = "A very poorly maintained mantle made from various animal hides and hairs."
@@ -37,7 +37,7 @@
 /obj/item/clothing/neck/mantle/daddy
 	name = "dad's bib"
 	rarity = RARITY_RARE
-	icon = 'icons/obj/items/clothing/suit/knight_daddy_bib.dmi'
+	icon = 'icons/obj/item/clothing/suit/knight_daddy_bib.dmi'
 
 	desc = "For eating ass."
 	desc_extended = "A near pristine bib."

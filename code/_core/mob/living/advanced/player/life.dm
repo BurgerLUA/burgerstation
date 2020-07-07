@@ -2,12 +2,16 @@
 
 	. = ..()
 
-	if(mobdata)
-		mobdata.save_current_character(FALSE)
+	if(allow_save)
+		var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+		if(mobdata)
+			mobdata.save_character(src,save_inventory = FALSE)
 
 	return .
 
 /mob/living/advanced/player/post_death()
+
+	play(pick('sound/ambient/death_1.ogg','sound/ambient/death_2.ogg','sound/ambient/death_3.ogg'),src)
 
 	var/list/people_who_contributed = list()
 	var/list/people_who_killed = list()

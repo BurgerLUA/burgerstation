@@ -4,56 +4,12 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 	muzzleflash_effect = /obj/effect/temp/muzzleflash/
+	alpha = 255
 
 /obj/projectile/bullet/update_icon()
 	. = ..()
 	color = bullet_color
 	return .
-
-
-/obj/projectile/bullet/revolver
-	name = "revolver bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_small"
-
-/obj/projectile/bullet/sniper
-	name = "sniper bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_massive"
-
-/obj/projectile/bullet/revolver_large
-	name = "revolver bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_large"
-
-/obj/projectile/bullet/rifle
-	name = "rifle bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_large"
-
-/obj/projectile/bullet/smg
-	name = "smg bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_small"
-
-/obj/projectile/bullet/pistol
-	name = "pistol bullet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_small"
-
-/obj/projectile/bullet/shotgun_pellet
-	name = "shotgun pellet"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "pellet"
-
-/obj/projectile/bullet/shotgun_pellet/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1)
-	icon_state = "pellets_[rand(1,4)]"
-	return ..()
-
-/obj/projectile/bullet/shotgun_slug
-	name = "shotgun slug"
-	icon = 'icons/obj/projectiles/bullet.dmi'
-	icon_state = "bullet_large"
 
 /obj/projectile/bullet/bolt
 	name = "crossbow bolt"
@@ -70,7 +26,7 @@
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "syringe"
 	ignore_iff = TRUE
-	var/reagent_to_add = "tricordrazine"
+	var/reagent_to_add = /reagent/medicine/omnizine
 	var/volume_to_add = 15
 
 /obj/projectile/bullet/syringe/damage_atom(var/atom/hit_atom)
@@ -81,7 +37,7 @@
 			var/list/params = list()
 			params[PARAM_ICON_X] = shoot_x
 			params[PARAM_ICON_Y] = shoot_y
-			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,FALSE,FALSE)
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,FALSE,FALSE)
 			if(ismovable(object_to_damage))
 				var/atom/movable/M = object_to_damage
 				if(M.reagents)
@@ -89,3 +45,37 @@
 				return TRUE
 
 	return ..()
+
+/obj/projectile/bullet/gyrojet
+	name = "gyrojet"
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "gyrojet"
+
+/obj/projectile/bullet/gyrojet/post_on_hit(var/atom/hit_atom)
+	. = ..()
+
+	if(.)
+		explode(get_turf(hit_atom),1,owner,src,iff_tag)
+
+	return .
+
+/obj/projectile/bullet/gyrojet/update_projectile()
+
+	. = ..()
+
+	if(.)
+
+		var/vel_x_change = vel_x * 0.05
+		var/vel_y_change = vel_y * 0.05
+
+		if(prob(50))
+			vel_x += clamp(vel_y_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
+
+		if(prob(50))
+			vel_y += clamp(vel_x_change * rand(-1,1),-(TILE_SIZE-1),TILE_SIZE-1)
+
+		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+			on_hit(current_loc,TRUE)
+			return FALSE
+
+	return .

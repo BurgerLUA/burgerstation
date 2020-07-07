@@ -15,4 +15,4 @@ SUBSYSTEM_DEF(language)
 
 	log_subsystem(name,"Initialized [length(all_languages)] languages.")
 
-	return TRUE
+	return ..()

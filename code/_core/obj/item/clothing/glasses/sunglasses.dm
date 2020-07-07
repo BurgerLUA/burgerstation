@@ -1,9 +1,9 @@
 /obj/item/clothing/glasses/sun
 	name = "sunglasses"
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 	desc = "Deal with it."
 	desc_extended = "A simple pair of sleek sunglasses designed to reflect sunlight, and lasers. The inverse of prescription glasses."
-	icon = 'icons/obj/items/clothing/glasses/sunglasses.dmi'
+	icon = 'icons/obj/item/clothing/glasses/sunglasses.dmi'
 
 	defense_rating = list(
 		BLADE = 5,
@@ -21,7 +21,7 @@
 	name = "augmented shades"
 	desc = "Your vision is augmented."
 	desc_extended = "Powerful augmented shades meant for security personel. These come with a built in security HUD as well as thermal imaging. For the badass."
-	icon = 'icons/obj/items/clothing/glasses/ABOMB.dmi'
+	icon = 'icons/obj/item/clothing/glasses/ABOMB.dmi'
 	rarity = RARITY_MYTHICAL
 	defense_rating = list(
 		BLADE = 15,

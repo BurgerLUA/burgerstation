@@ -2,7 +2,7 @@
 	name = "\improper 12.7mm High-Power Auto"
 	desc = "The \"Auto\" is for semiauto."
 	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders. The bulkiness of the pistol rivals submachine guns."
-	icon = 'icons/obj/items/weapons/ranged/pistol/12mm_nt.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
 	value = 150
 
@@ -10,7 +10,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/12/shoot.ogg')
+	shoot_sounds = list('sound/weapons/12/shoot.ogg')
 
 	can_wield = FALSE
 

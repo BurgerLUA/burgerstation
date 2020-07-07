@@ -15,31 +15,17 @@
 
 	view_punch = 0
 
-	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
 	mech_only = TRUE
 
 	size = SIZE_6
 	weight = WEIGHT_6
 
-/obj/item/weapon/ranged/energy/mech/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
-
-	. = ..()
-
-	if(. && istype(loc,/mob/living/vehicle/))
-		var/mob/living/vehicle/V = loc
-		if(length(V.passengers) && is_advanced(V.passengers[1]))
-			var/mob/living/advanced/A = V.passengers[1]
-			for(var/obj/hud/button/vehicle/ammo_display/B in A.buttons)
-				B.update_ammo()
-
-	return .
-
 /obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
-
 	if(!istype(loc,/mob/living/vehicle/))
+		caller.to_chat(span("warning","This gun can only be fired in a vehicle!"))
 		return FALSE
-
 	return ..()
 
 /obj/item/weapon/ranged/energy/mech/smg/mk1
@@ -55,12 +41,12 @@
 	charge_current = 250*300
 	charge_cost = 250
 
-	projectile = /obj/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/firearm/pistol
 	ranged_damage_type = /damagetype/ranged/bullet/pistol_9mm
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
-	shoot_sounds = list('sounds/weapons/pistol/shoot.ogg')
+	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
 
 /obj/item/weapon/ranged/energy/mech/smg/mk2
 	name = "mk2 machine gun"
@@ -75,12 +61,12 @@
 	charge_current = 500*240
 	charge_cost = 500
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	ranged_damage_type = /damagetype/ranged/bullet/rifle_223
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sound/weapons/pistol_medium/shoot.ogg')
 
 /obj/item/weapon/ranged/energy/mech/smg/mk3
 	name = "mk3 machine gun"
@@ -95,9 +81,9 @@
 	charge_current = 1000*120
 	charge_cost = 1000
 
-	projectile = /obj/projectile/bullet/rifle
+	projectile = /obj/projectile/bullet/firearm/rifle
 	ranged_damage_type = /damagetype/ranged/bullet/rifle_762mm
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
-	shoot_sounds = list('sounds/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sound/weapons/pistol_medium/shoot.ogg')

@@ -1,6 +1,8 @@
 /obj/item/clothing/overwear/coat/hos
 	name = "\improper Head of Security's coat"
-	icon = 'icons/obj/items/clothing/suit/hos.dmi'
+	desc = "hey hos can i have your coat plz"
+	desc_extended = "Somehow better against bullets than actual kevlar vests."
+	icon = 'icons/obj/item/clothing/suit/hos.dmi'
 	rarity = RARITY_RARE
 
 	defense_rating = list(

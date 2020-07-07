@@ -26,7 +26,3 @@
 
 
 	return .
-
-
-/ai/advanced/ranged/wizard/hostile_message()
-	owner.say("Ohohoho! Someone challenges me?")

@@ -37,7 +37,7 @@
 					return .
 				if(L.loyalty_tag == "Syndicate")
 					found_syndicate += L
-				else if(!is_player(L))
+				else if(!L.is_player_controlled())
 					mobs_to_delete += L
 
 			for(var/mob/living/L in mobs_to_delete)

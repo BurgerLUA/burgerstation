@@ -65,6 +65,20 @@
 
 	var/has_life = TRUE
 
+	var/has_pain = FALSE
+
+/obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+
+	if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
+		on_pain()
+		for(var/obj/item/organ/O in attached_organs)
+			O.on_pain()
+
+	return ..()
+
+/obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
+	return FALSE
+
 /obj/item/organ/Destroy()
 	attached_organ = null
 	attached_organs.Cut()
@@ -116,9 +130,10 @@
 	attached_organs = list()
 	return .
 
-/obj/item/organ/Initialize()
+/obj/item/organ/PostInitialize()
+	. = ..()
 	initialize_blends()
-	return ..()
+	return .
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T)
 
@@ -187,11 +202,11 @@
 	if(reagents)
 		reagents.metabolize()
 
-	if(bleeding && is_advanced(src.loc) && prob(10))
+	if(bleeding && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
-		if(A.reagents.volume_current)
-			new /obj/effect/temp/blood/drip(A.loc,SECONDS_TO_DECISECONDS(60),A.reagents.color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
-			A.reagents.remove_reagents(1)
+		if(A.blood_volume && A.should_bleed() && prob(10))
+			create_blood(/obj/effect/blood/drip,get_turf(A),A.blood_color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
+			A.blood_volume--
 
 	return TRUE
 

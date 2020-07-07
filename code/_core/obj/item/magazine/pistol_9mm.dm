@@ -1,6 +1,8 @@
 /obj/item/magazine/pistol_9mm
 	name = "\improper 9mm pistol magazine"
-	icon = 'icons/obj/items/magazine/9mmpistol.dmi'
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/9mmpistol.dmi'
 	icon_state = "9mm"
 	bullet_count_max = 18
 

@@ -1,8 +1,8 @@
 /obj/item/clothing/head/helmet/polymorphic
 	name = "protective helmet"
-	icon = 'icons/obj/items/clothing/hats/security_new.dmi'
+	icon = 'icons/obj/item/clothing/hats/security_new.dmi'
 	desc = "RUSH B"
-	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
+	desc_extended = "Standard-issue of the Nanotrasen security force. Protects your head from bullets."
 
 	defense_rating = list(
 		BLADE = 25,
@@ -17,6 +17,8 @@
 	weight = WEIGHT_2
 
 	value = 40
+
+	dyeable = TRUE
 
 	polymorphs = list(
 		"base" = "#FFFFFF",

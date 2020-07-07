@@ -33,7 +33,7 @@
 		var/mob/living/L = caller
 		. += "Your nutrition is [L.nutrition]/[initial(L.nutrition)]."
 		. += "Your hydration is [L.hydration]/[initial(L.hydration)]."
-		. += "Your energy level is [100 * L.get_nutrition_mod() * L.get_hydration_mod()]%."
+		. += "Your energy level is [FLOOR(100 * L.get_nutrition_mod() * L.get_hydration_mod(),1)]%."
 
 	return .
 

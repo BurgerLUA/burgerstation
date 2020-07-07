@@ -2,7 +2,7 @@
 	name = "basalt"
 
 	icon = 'icons/turf/floor/basalt.dmi'
-	icon_state = "basalt1"
+	icon_state = "basalt0"
 
 	real_icon = 'icons/turf/floor/basalt_smooth.dmi'
 	real_icon_state = "floor"
@@ -12,14 +12,14 @@
 
 	layer = LAYER_FLOOR_LARGE + 0.2
 
-	footstep_id = "concrete"
+	footstep = /footstep/concrete
 
 	delay_modifier = 1.1
 
-/turf/simulated/floor/basalt/New(var/desired_loc)
+/turf/simulated/floor/basalt/setup_turf_light(var/sunlight_freq)
 	if(prob(10))
-		icon_state = "basalt[rand(2,4)]"
-		desired_light_range = 4
-		desired_light_color = "#FF8300"
-
-	. = ..()
+		icon_state = "basalt[rand(1,4)]"
+		src.set_light(4,0.5,"#FF8300")
+	else if(prob(20))
+		icon_state = "basalt[rand(4,12)]"
+	return TRUE

@@ -15,7 +15,7 @@
 
 	var/spam_fix_time = 0
 
-	var/radio_sound = 'sounds/items/radio.ogg'
+	var/radio_sound = 'sound/items/radio.ogg'
 
 	value = 10
 

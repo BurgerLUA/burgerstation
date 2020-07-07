@@ -104,27 +104,6 @@
 	return A.heal_all_organs(0,0,0,-value)
 */
 
-/health/mob/living/advanced/adjust_fatigue_loss(var/value)
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	if(!value)
-		return 0
-
-	if(A.has_status_effect(FATIGUE))
-		return 0
-
-	if(adjust_stamina(-value))
-		A.update_health_element_icons(stamina=TRUE)
-
-	if(stamina_current <= 0)
-		A.add_status_effect(FATIGUE,value,value)
-
-	return value
-
 /health/mob/living/advanced/update_health_stats()
 
 	if(!is_advanced(owner))
@@ -194,23 +173,9 @@
 				continue
 
 			for(var/damage_type in C.defense_rating)
-				returning_value[damage_type] += C.defense_rating[damage_type]
+				if(abs(C.defense_rating[damage_type]) == INFINITY)
+					returning_value[damage_type] = C.defense_rating[damage_type]
+				else if(abs(returning_value[damage_type]) != INFINITY)
+					returning_value[damage_type] += C.defense_rating[damage_type]
 
 	return returning_value
-
-
-/*
-/health/mob/living/advanced/get_total_loss()
-
-	if(!is_advanced(owner))
-		return 0
-
-	var/mob/living/advanced/A = owner
-
-	for(var/obj/item/organ/O in A.organs)
-		if(!O.health)
-			continue
-		. += O.health.get_total_loss()
-
-	return .
-*/

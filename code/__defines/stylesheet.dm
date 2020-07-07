@@ -33,6 +33,8 @@ body {
 }
 .emote{
 	color: black;
+	fot-weight:bold;
+	font-style: italic;
 }
 .debug_message{
 	color:blue;

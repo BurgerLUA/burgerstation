@@ -21,7 +21,7 @@ var/global/world_state = STATE_STARTING
 	//maxz = 1
 
 	turf = /turf/unsimulated/space
-	area = /area/space
+	area = /area/
 
 
 
@@ -34,6 +34,7 @@ var/global/world_state = STATE_STARTING
 	var/server_name = "Burgerstation 13"
 	var/server_link = "https://discord.gg/yEaV92a"
 	var/github_name = "Space Station 13 <b>FROM SCRATCH</b>"
+	var/description = "A newbie-friendly character-persistent action-oriented roleplay-optional server made with fun and socialization in mind."
 
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
@@ -45,9 +46,10 @@ var/global/world_state = STATE_STARTING
 	var/map = "Biomes (255x255x3)"
 
 	//Format it.
-	status = "<a href='[server_link]'><b>[server_name]</b></a>] ([github_name])<br><br>"
+	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>"
+	status += "<i>[description]</i><br>"
 	status += "Map: <b>[map]</b><br>"
-	status += "Round Duration: <b>[duration]</b>"
+	status += "Time: <b>\[[duration]</b>"
 
 /*
 /world/Error(var/exception/e)
@@ -63,7 +65,8 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/shutdown_server()
 	world_state = STATE_SHUTDOWN
-	for(var/client/C in all_clients)
+	for(var/k in all_clients)
+		var/client/C = all_clients[k]
 		C << "Shutting down world..."
 	shutdown()
 	return TRUE
@@ -71,7 +74,8 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/reboot_server()
 	world_state = STATE_SHUTDOWN
-	for(var/client/C in all_clients)
+	for(var/k in all_clients)
+		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
 	Reboot(0)
 	return TRUE
@@ -98,14 +102,15 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command","Fission Mailed","Mission failed, we'll get them next time.")
 
-	play('sounds/meme/apcdestroyed.ogg',all_mobs_with_clients)
+	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
 	for(var/mob/living/advanced/player/P in all_players)
 		CHECK_TICK
 		if(P.dead)
 			P.to_chat("Could not save your character because you were dead.")
 			continue
-		P.mobdata.save_current_character(force = TRUE)
+		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+		mobdata.save_character(P,force = TRUE)
 		P.to_chat("Your character was automatically saved.")
 		sleep(1)
 

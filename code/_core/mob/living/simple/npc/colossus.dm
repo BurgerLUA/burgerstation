@@ -4,7 +4,9 @@
 	icon = 'icons/mob/living/simple/lavaland/colossus.dmi'
 	icon_state = "colossus"
 	damage_type = /damagetype/unarmed/claw/
-	class = "colossus"
+	class = /class/colossus
+
+	value = 4000
 
 	pixel_x = -32
 
@@ -12,7 +14,7 @@
 
 	stun_angle = 0
 
-	health_base = 2000
+	health_base = 4000
 
 	attack_range = 2
 
@@ -20,17 +22,17 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = 25,
+		BLADE = 50,
 		BLUNT = 75,
 		PIERCE = 50,
 		LASER = 100,
-		MAGIC = 0,
+		MAGIC = 25,
 		HEAT = INFINITY,
 		COLD = INFINITY,
 		BOMB = 50,
 		BIO = 75,
 		RAD = 75,
-		HOLY = 0,
+		HOLY = 25,
 		DARK = INFINITY,
 		FATIGUE = INFINITY
 	)
@@ -56,12 +58,16 @@
 
 	mob_size = MOB_SIZE_BOSS
 
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
+
 /mob/living/simple/npc/colossus/pre_death()
 	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)
-	play('sounds/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
+	play('sound/effects/demon_dies.ogg',get_turf(src), volume=75, range_min = VIEW_RANGE, range_max = VIEW_RANGE * 3)
 	return ..()
 
 /mob/living/simple/npc/colossus/post_death()
 	. = ..()
 	animate(src, pixel_z = 64, alpha=0, time = 30)
+	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
 	return .

@@ -3,18 +3,13 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath_ancient.dmi'
 	icon_state = "agoliath"
 	damage_type = /damagetype/unarmed/claw/
-	class = "ancient_goliath"
+	class = /class/goliath/ancient/
 
 	ai = /ai/goliath/ancient
 
 	stun_angle = 0
 
 	health_base = 500
-
-	var/boss_state = 0
-	//0 = walking
-	//1 = flying
-	//2 = landing
 
 	attack_range = 1
 

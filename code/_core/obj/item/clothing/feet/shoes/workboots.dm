@@ -1,10 +1,12 @@
 /obj/item/clothing/feet/shoes/workboot
 	name = "right workboot"
+	desc = "Heavy load coming trough!"
+	desc_extended = "A heavy-duty boot for a heavy-duty work enviroment. Protects your feet against falling tools."
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	icon = 'icons/obj/items/clothing/shoes/workboots.dmi'
+	icon = 'icons/obj/item/clothing/shoes/workboots.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)

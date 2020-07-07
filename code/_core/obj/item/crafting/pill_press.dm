@@ -1,6 +1,6 @@
 /obj/item/crafting/pill_press
 	name = "portable pill press table"
-	icon = 'icons/obj/items/ore.dmi'
+	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "pill_press"
 
 	inventories = list(

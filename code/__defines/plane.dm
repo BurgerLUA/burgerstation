@@ -1,3 +1,5 @@
+#define PLANE_HIDDEN -17
+
 #define PLANE_SPACE -16
 
 #define PLANE_PARALAX -15
@@ -20,7 +22,7 @@
 
 #define PLANE_MOB -6
 
-#define PLANE_TREE -5
+#define PLANE_SCENERY -5
 
 #define PLANE_EFFECT -4
 

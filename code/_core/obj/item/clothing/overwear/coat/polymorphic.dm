@@ -1,7 +1,8 @@
 /obj/item/clothing/overwear/coat/polymorphic
 	name = "coat"
 	desc = "A nice coat."
-	icon = 'icons/obj/items/clothing/suit/jacket.dmi'
+	desc_extended = "Can hold a single Size 2 item."
+	icon = 'icons/obj/item/clothing/suit/jacket.dmi'
 
 	rarity = RARITY_COMMON
 
@@ -25,6 +26,8 @@
 		MAGIC = 25,
 		COLD = 25
 	)
+
+	dyeable = TRUE
 
 	polymorphs = list(
 		"base" = "#FFFFFF"

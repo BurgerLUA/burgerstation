@@ -1,18 +1,21 @@
 /obj/item/clothing/feet/socks/
 	name = "sock"
-	desc = "Don't wear socks with this or I'll fucking end you."
+	desc = "Don't wear socks with sandals or I'll fucking end you."
 	desc_extended = "A sock. This can go on either foot."
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	worn_layer = LAYER_MOB_CLOTHING_SOCKS
 	item_slot = SLOT_FOOT_LEFT_U | SLOT_FOOT_RIGHT_U
+	blocks_clothing = SLOT_FOOT_LEFT_U | SLOT_FOOT_RIGHT_U
 
 	ignore_other_slots = TRUE
 
 	slot_icons = TRUE
 
 	protected_limbs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT) //TODO: MAKE THIS DYNAMIC
+
+	dyeable = TRUE
 
 	defense_rating = list(
 		MAGIC = 10,
@@ -27,12 +30,12 @@
 
 /obj/item/clothing/feet/socks/ankle
 	name = "ankle high socks"
-	icon = 'icons/obj/items/clothing/socks/normal.dmi'
+	icon = 'icons/obj/item/clothing/socks/normal.dmi'
 	polymorphs = null
 
 /obj/item/clothing/feet/socks/knee
 	name = "knee high socks"
-	icon = 'icons/obj/items/clothing/socks/knee.dmi'
+	icon = 'icons/obj/item/clothing/socks/knee.dmi'
 	polymorphs = list(
 		"sock" = COLOR_WHITE
 	)
@@ -58,7 +61,7 @@
 
 /obj/item/clothing/feet/socks/thigh/
 	name = "thigh high sock"
-	icon = 'icons/obj/items/clothing/socks/programmer.dmi'
+	icon = 'icons/obj/item/clothing/socks/programmer.dmi'
 
 	value = 10
 

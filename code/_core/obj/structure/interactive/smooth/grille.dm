@@ -1,6 +1,7 @@
 /obj/structure/smooth/table/grill
 	name = "electric oven and grill"
-	desc = "Cook thigns with this."
+	desc = "Cook things with this."
+	desc_extended = "You can cook or heat up items by either slotting it inside the oven or dropping it on top of the grill. The oven/grill turns on and off automatically."
 	icon = 'icons/obj/structure/smooth/table/grill.dmi'
 	icon_state = "grill"
 
@@ -12,13 +13,10 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	var/temperature_mod = 120
-	var/temperature_mod_oven = 400
+	var/temperature_mod = 400
+	var/temperature_mod_oven = 350
 
 	bullet_block_chance = 50
-
-/obj/structure/smooth/table/grill/Initialize()
-	return ..()
 
 /obj/structure/smooth/table/grill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -47,21 +45,22 @@
 
 /obj/structure/smooth/table/grill/Entered(var/atom/movable/O,var/atom/old_loc)
 	if(O.reagents)
-		O.reagents.special_temperature_mod += temperature_mod_oven
+		O.reagents.special_temperature_mod += (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Exited(var/atom/movable/O,var/atom/new_loc)
 	if(O.reagents)
-		O.reagents.special_temperature_mod -= temperature_mod_oven
+		O.reagents.special_temperature_mod -= (temperature_mod_oven - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	if(O.reagents)
 		src.visible_message(span("notice","The [O.name] starts to cook."))
-		O.reagents.special_temperature_mod += temperature_mod
+		O.reagents.special_temperature_mod += (temperature_mod - (T0C + 20))
 	return ..()
 
 /obj/structure/smooth/table/grill/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	if(O.reagents)
-		O.reagents.special_temperature_mod -= temperature_mod
+		src.visible_message(span("notice","The [O.name] continues to cook off the grille."))
+		O.reagents.special_temperature_mod -= (temperature_mod - (T0C + 20))
 	return ..()

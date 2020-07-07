@@ -1,6 +1,8 @@
 /obj/item/clothing/neck/cape
 	name = "cape"
-	icon = 'icons/obj/items/clothing/suit/cape.dmi'
+	desc = "Is it a bird? Is it a plane?"
+	desc_extended = "Attaches to the neck slot for extra fashion."
+	icon = 'icons/obj/item/clothing/suit/cape.dmi'
 
 
 	protected_limbs = list(BODY_TORSO)
@@ -16,6 +18,8 @@
 	weight = WEIGHT_2
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
+
+	dyeable = TRUE
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,
@@ -54,8 +58,9 @@
 
 /obj/item/clothing/neck/cape/goliath
 	name = "goliath cloak"
-	icon = 'icons/obj/items/clothing/suit/goliath_cloak.dmi'
-	desc_extended = "A cloak made from goliath hide."
+	icon = 'icons/obj/item/clothing/suit/goliath_cloak.dmi'
+	desc = "Is it a bird? Is it a plane? No, it's a Shaft Miner!"
+	desc_extended = "A protective cloak made from goliath hide."
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/)
 

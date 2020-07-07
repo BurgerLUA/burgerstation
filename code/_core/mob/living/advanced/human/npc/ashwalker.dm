@@ -1,14 +1,16 @@
 /mob/living/advanced/npc/ashwalker
 	name = "ashwalker villager"
-	ai = /ai/advanced/
-	class = "ashwalker"
+	ai = /ai/advanced/ashwalker
+	class = /class/ashwalker
 
 	species = "reptile"
 
-	var/loadout_to_use = "ashwalker"
+	var/loadout_to_use = /loadout/ashwalker/
 	var/shield_chance = 0
 	var/spear_chance = 25
 
+	loyalty_tag = "Ashwalker"
+	iff_tag = "Ashwalker"
 
 /mob/living/advanced/npc/ashwalker/New(loc,desired_client,desired_level_multiplier)
 
@@ -28,8 +30,10 @@
 
 	var/skin_color = sex == MALE ? rgb(rand(75,120),rand(75,120),rand(75,120)) : rgb(rand(120,200),rand(120,200),rand(120,200))
 
+	/*
 	if(sex == FEMALE)
-		loadout_to_use = loadout_to_use + "_female"
+		loadout_to_use = locate("[loadout_to_use]" + "/female")
+	*/
 
 	var/rand_col = rand(50,200)
 	var/horn_color =  sex == MALE ? pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)) : skin_color
@@ -59,6 +63,6 @@
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
 	level_multiplier = 1.5
-	loadout_to_use = "ashwalker_warrior"
+	loadout_to_use = /loadout/ashwalker/warrior
 	spear_chance = 100
 	shield_chance = 50

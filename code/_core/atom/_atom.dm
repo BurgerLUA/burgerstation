@@ -35,18 +35,30 @@
 
 	var/immortal = FALSE //Is this object allowed to take damage?
 
-	var/footstep_id //The sound the object makes when something enters or exits it.
-
 	var/ignore_incoming_collisons = FALSE //TODO: Replace with tiny.
 
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
 
+	var/desired_light_frequency = 1 //Setting this to a number other than 1 should be reserved for turfs.
+	var/desired_light_range = 0 //Range of the light.
+	var/desired_light_power = 0 //Power of the light.
+	var/desired_light_color = "#FFFFFF" //Color of the light.
+	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
+
+/atom/proc/update_atom_light()
+	if(desired_light_range > 0 && desired_light_power > 0)
+		if(src.x % desired_light_frequency || src.y % desired_light_frequency)
+			return FALSE
+		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
+		return TRUE
+	return FALSE
+
 /atom/proc/add_overlay(var/datum/desired_overlay)
 
 	if(length(overlays) >= 100)
-		log_error("Warning: [get_debug_name()] exceeds 100 overlays!")
+		CRASH_SAFE("Warning: [get_debug_name()] exceeds 100 overlays![is_datum(desired_overlay) ? " Overlay name: [desired_overlay.get_debug_name()]." : ""]")
 		return FALSE
 
 	overlays += desired_overlay
@@ -64,9 +76,6 @@
 
 /atom/proc/should_smooth_with(var/turf/T)
 	return FALSE
-
-/turf/should_smooth_with(var/turf/T)
-	return (T.corner_category == corner_category)
 
 /atom/proc/on_destruction(var/atom/caller,var/damage = FALSE) //Called when destructed by tools or damage.
 	return TRUE
@@ -103,14 +112,22 @@
 
 	return ..()
 
-/atom/Initialize()
+/atom/PostInitialize()
 
 	if(health)
 		health = new health(src)
 		INITIALIZE(health)
 
+	update_atom_light()
+
 	return ..()
 
+/atom/Initialize()
+
+	if(reagents)
+		reagents = new reagents(src)
+
+	return ..()
 
 /atom/New()
 
@@ -119,9 +136,6 @@
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-	if(reagents && ispath(reagents))
-		reagents = new reagents(src)
 
 	set_dir(dir,TRUE)
 
@@ -170,32 +184,35 @@
 	var/turf/T = get_turf(src)
 	for(var/dir in (intercardinal ? DIRECTIONS_ALL : DIRECTIONS_CARDINAL))
 		var/turf/T2 = get_step(T,dir)
-		var/area/A = T2.loc
-		if(A.is_space)
+		if(T2.is_space())
 			. |= dir
 
 	return .
 
 
-/atom/proc/get_best_touching_space()
+/atom/proc/get_best_touching_space(var/intercardinal = TRUE)
 
 	var/turf/T = get_turf(src)
 	for(var/dir in list(NORTH,SOUTH,EAST,WEST))
 		var/turf/T2 = get_step(T,dir)
-		var/area/A = T2.loc
-		if(A.is_space)
+		if(T2.is_space())
 			return dir
 
-	for(var/dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
-		var/turf/T2 = get_step(T,dir)
-		var/area/A = T2.loc
-		if(A.is_space)
-			return dir
+	if(intercardinal)
+		for(var/dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
+			var/turf/T2 = get_step(T,dir)
+			if(T2.is_space())
+				return dir
 
 	return 0x0
 
+/atom/proc/is_player_controlled()
+	return FALSE
 
 /atom/is_safe_to_delete()
+
+	if(is_player_controlled())
+		return FALSE
 
 	for(var/atom/A in contents)
 		if(!A.is_safe_to_delete())
@@ -206,3 +223,7 @@
 /atom/get_debug_name()
 	return "[src.name]([src.type])([x],[y],[z])"
 
+
+
+/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod = 1)
+	return 0

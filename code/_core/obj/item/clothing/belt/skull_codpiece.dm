@@ -2,7 +2,7 @@
 	name = "skull codpiece"
 	desc = "Spooky."
 	desc_extended = "You may be expecting a joke about 'bone'rs. Nope. Not gonna happen."
-	icon = 'icons/obj/items/clothing/belts/skull_codpiece.dmi'
+	icon = 'icons/obj/item/clothing/belts/skull_codpiece.dmi'
 
 	weight = WEIGHT_2
 

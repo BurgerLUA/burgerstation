@@ -1,6 +1,8 @@
 /obj/item/weapon/ranged/energy/rifle
 	name = "laser rifle"
-	icon = 'icons/obj/items/weapons/ranged/modular_laser.dmi'
+	desc = "Pew pew pew!"
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
+	icon = 'icons/obj/item/weapons/ranged/modular_laser.dmi'
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/rifle
@@ -21,18 +23,20 @@
 
 	view_punch = 6
 
-	shoot_sounds = list('sounds/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
 	heat_per_shot = 0.06
 	heat_max = 0.2
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
-		"barrel" = COLOR_RED
+		"barrel" = "#FF0000"
 	)
 
 	size = SIZE_4
 	weight = WEIGHT_4
+
+	value = 1200
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
 	return 0.01
@@ -53,6 +57,7 @@
 
 /obj/item/weapon/ranged/energy/rifle/hardlight
 	name = "hardlight laser rifle"
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a hardlight beam that pierces through people."
 	ranged_damage_type = /damagetype/ranged/laser/rifle/hardlight
 
 	projectile_speed = 26
@@ -69,6 +74,7 @@
 
 /obj/item/weapon/ranged/energy/rifle/xray
 	name = "xray laser rifle"
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor."
 	ranged_damage_type = /damagetype/ranged/laser/rifle/xray
 
 	projectile_speed = 20

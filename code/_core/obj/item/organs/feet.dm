@@ -29,6 +29,28 @@
 
 	health_coefficient = 0.5
 
+	has_pain = TRUE
+
+
+/obj/item/organ/foot/on_pain()
+
+	. = ..()
+
+	if(is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		if(A.add_status_effect(STAGGER,5,5))
+			A.to_chat(span("danger","Your [src.name] recoils in pain, throwing you off balance!"))
+			return TRUE
+
+	return .
+
+/obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+	for(var/obj/hud/inventory/H in src.inventories)
+		var/obj/item/I = H.get_top_worn_object()
+		if(I)
+			return I.get_footsteps(original_footsteps,enter)
+	return original_footsteps
+
 /obj/item/organ/foot/left
 	name = "left foot"
 	id = BODY_FOOT_LEFT
@@ -168,6 +190,32 @@
 
 /obj/item/organ/foot/beefman/left
 	name = "left beef foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
+
+
+//Skeleton
+/obj/item/organ/foot/skeleton
+	name = "right skeleton foot"
+
+	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+
+	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+/obj/item/organ/foot/skeleton/left
+	name = "left skeleton foot"
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 

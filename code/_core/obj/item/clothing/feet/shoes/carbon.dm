@@ -1,11 +1,13 @@
 /obj/item/clothing/feet/shoes/carbon_boot
 	name = "right carbon boot"
+	desc = "For when you REALLY want to turn up the heat."
+	desc_extended = "A high-tech boot shielded with carbon-fibre. Somewhat bulky, but protects well."
 	rarity = RARITY_RARE
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	icon = 'icons/obj/items/clothing/shoes/carbon.dmi'
+	icon = 'icons/obj/item/clothing/shoes/carbon.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)

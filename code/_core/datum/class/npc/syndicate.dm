@@ -1,7 +1,6 @@
 
 
-/class/syndicate
-	id = "syndicate"
+/class/syndicate_soldier
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY
@@ -36,7 +35,7 @@
 	skills = list(
 		SKILL_RANGED = 20,
 		SKILL_DODGE = 10,
-		SKILL_PRECISION = 10,
+		SKILL_PRECISION = 5,
 		SKILL_SURVIVAL = 25,
 
 		SKILL_MELEE = 25,

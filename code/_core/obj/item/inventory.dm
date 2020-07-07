@@ -34,10 +34,18 @@
 		for(var/obj/item/I in contents)
 			if(I.initialized)
 				continue
+			pre_fill_inventory(I)
 			INITIALIZE(I)
 			GENERATE(I)
+			post_fill_inventory(I)
 			add_to_inventory(null,I,FALSE,TRUE)
 
 		return TRUE
 
 	return FALSE
+
+/obj/item/proc/pre_fill_inventory(var/obj/item/item_added)
+	return TRUE
+
+/obj/item/proc/post_fill_inventory(var/obj/item/item_added)
+	return TRUE

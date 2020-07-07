@@ -1,9 +1,13 @@
 /mob/living/simple/npc/arachnid
 	name = "giant arachnid"
+	desc = "Might as well be a miniboss."
+	desc_extended = "A giant quadreped carniverous creature."
 	icon = 'icons/mob/living/simple/jungle/arachnid.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
-	class = "arachnid"
+	class = /class/arachnid
+
+	value = 500
 
 	ai = /ai/
 
@@ -32,7 +36,7 @@
 
 	health_base = 1000
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	status_immune = list(
 		STUN = TRUE,
@@ -49,6 +53,9 @@
 	)
 
 	mob_size = MOB_SIZE_GIANT
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE
 
 /mob/living/simple/npc/arachnid/post_death()
 	. = ..()

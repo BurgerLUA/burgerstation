@@ -2,7 +2,7 @@
 	name = "construction object"
 	icon = 'icons/obj/structure/construction.dmi'
 	mouse_opacity = 2
-	var/material_id = "steel"
+	var/material_id = /material/steel
 	color = COLOR_STEEL
 
 	health = /health/construction/
@@ -204,7 +204,7 @@ obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/calle
 
 	if(istype(A,/obj/item/material/sheet/))
 		var/obj/item/material/sheet/S = A
-		if(has_prefix(S.material_id,"glass"))
+		if(ispath(S.material_id,/material/glass))
 			if(!S.item_count_current >= 4)
 				caller.to_chat("You don't have enough glass sheets to make a window!")
 				return TRUE
@@ -224,7 +224,7 @@ obj/structure/interactive/construction/grille/plasteel
 	name = "plasteel grille"
 	desc = "A plasteel grille."
 	color = COLOR_PLASTEEL
-	material_id = "plasteel"
+	material_id = /material/plasteel
 
 obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 

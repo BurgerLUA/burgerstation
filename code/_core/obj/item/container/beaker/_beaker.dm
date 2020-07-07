@@ -4,7 +4,7 @@
 	desc_extended = "Holds reagents."
 	crafting_id = "beaker"
 
-	icon = 'icons/obj/items/container/cup/beaker.dmi'
+	icon = 'icons/obj/item/container/cup/beaker.dmi'
 	icon_state = "beaker"
 
 

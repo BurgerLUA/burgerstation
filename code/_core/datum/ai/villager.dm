@@ -4,10 +4,6 @@
 	objective_delay = 20
 	attack_delay = 1000
 
-	target_distribution_y = list(32)
-
-	stationary = FALSE
-
 
 /ai/villager/on_life()
 
@@ -78,4 +74,3 @@
 
 
 /ai/villager/stationary
-	stationary = TRUE

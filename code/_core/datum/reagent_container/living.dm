@@ -4,3 +4,5 @@
 
 	flags_metabolism = REAGENT_METABOLISM_BLOOD
 	flags_temperature = REAGENT_TEMPERATURE_NO_AMBIENT
+
+	allow_recipie_processing = FALSE

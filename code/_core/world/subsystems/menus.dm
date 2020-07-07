@@ -13,3 +13,5 @@ SUBSYSTEM_DEF(menus)
 			all_menus[M.id] = M
 
 	log_subsystem(name,"Initialized [length(all_menus)] menus.")
+
+	return ..()

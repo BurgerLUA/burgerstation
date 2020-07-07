@@ -24,8 +24,8 @@
 /obj/structure/interactive/vending/ammo/shotgun
 	name = "shotgun ammo vendor"
 	stored_types = list(
-		/obj/item/bullet_cartridge/shotgun/buckshot,
-		/obj/item/bullet_cartridge/shotgun/slug,
+		/obj/item/bullet_cartridge/shotgun_12/buckshot,
+		/obj/item/bullet_cartridge/shotgun_12/slug,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug
 	)
@@ -122,7 +122,9 @@
 		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/neck/tie,
 		/obj/item/clothing/glasses/sun,
-		/obj/item/storage/glovebox/white
+		/obj/item/storage/glovebox/white,
+		/obj/item/clothing/glasses/eyepatch,
+		/obj/item/clothing/head/hat/headband
 	)
 
 /obj/structure/interactive/vending/clothes/hat
@@ -203,7 +205,8 @@
 		/obj/item/weapon/melee/tool/multitool,
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/wirecutters,
-		/obj/item/weapon/melee/tool/wrench
+		/obj/item/weapon/melee/tool/wrench,
+		/obj/item/weapon/melee/torch/flashlight
 	)
 
 
@@ -261,7 +264,7 @@
 	name = "chemist wardrobe vendor"
 	icon_state = "chemdrobe"
 
-
+/*
 /obj/structure/interactive/vending/clown/
 	name = "clown vendor"
 	icon_state = "games"
@@ -278,6 +281,7 @@
 		/obj/item/instrument/trombone,
 		/obj/item/instrument/violin
 	)
+*/
 
 /obj/structure/interactive/vending/clown/wardrobe
 	name = "clown wardrobe vendor"
@@ -286,13 +290,9 @@
 	stored_types = list(
 		/obj/item/clothing/mask/gas/clown,
 		/obj/item/clothing/uniform/clown,
-		/obj/item/storage/shoebox/clown
+		/obj/item/storage/shoebox/clown,
+		/obj/item/fluff/bikehorn
 	)
-
-
-/obj/structure/interactive/vending/syndicate
-	name = "syndicate vendor"
-	icon_state = "syndi"
 
 /obj/structure/interactive/vending/hydroponics/nutri
 	name = "garden vendor"
@@ -322,8 +322,6 @@
 		/obj/item/container/beaker/can/orange_soda,
 		/obj/item/container/beaker/can/space_up
 	)
-
-var/global/list/equipped_players = list()
 
 /*
 /obj/structure/interactive/vending/autolocker
@@ -372,8 +370,7 @@ var/global/list/equipped_players = list()
 		/obj/item/container/food/package/junkfood/cheese_chips,
 		/obj/item/container/food/package/junkfood/chips,
 		/obj/item/container/food/package/junkfood/jerky,
-		/obj/item/container/food/package/junkfood/raisins,
-		/obj/item/container/food/package/junkfood/syndicate
+		/obj/item/container/food/package/junkfood/raisins
 	)
 
 /obj/structure/interactive/vending/smart_fridge
@@ -399,6 +396,7 @@ var/global/list/equipped_players = list()
 		/obj/item/container/beaker/food/milk,
 		/obj/item/container/beaker/food/cream,
 		/obj/item/container/beaker/food/corn_flour,
+		/obj/item/storage/egg_carton,
 		/obj/item/container/food/dynamic/meat/raw,
 		/obj/item/container/beaker/bottle/large/water
 	)
@@ -412,7 +410,7 @@ var/global/list/equipped_players = list()
 		/obj/item/container/cheese_mold/block,
 		/obj/item/container/beaker/glass,
 		/obj/item/container/beaker/bowl,
-		/obj/item/container/beaker/large
-
+		/obj/item/container/beaker/large,
+		/obj/item/clothing/head/hat/paperbag
 
 	)

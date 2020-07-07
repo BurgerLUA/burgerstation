@@ -20,6 +20,8 @@
 	var/shoot_x = 0
 	var/shoot_y = 0
 
+	var/inaccuracy_modifier = 1
+
 	mouse_opacity = 0
 
 	layer = LAYER_PROJECTILE
@@ -34,6 +36,7 @@
 	var/atom/target_atom
 
 	var/hit_target_turf = FALSE
+	var/hit_laying = FALSE
 
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -54,6 +57,9 @@
 	var/iff_tag
 	var/ignore_iff = FALSE //Set to true if you want it to ignore IFF collision checking.
 
+	var/loyalty_tag
+	var/ignore_loyalty = TRUE //SEt to true if you want to ignore loyalty tag collision checking.
+
 	anchored = TRUE
 
 /obj/projectile/Destroy()
@@ -69,7 +75,7 @@
 	all_projectiles -= src
 	return ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff)
+/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -134,12 +140,12 @@
 	if(desired_iff)
 		iff_tag = desired_iff
 
+	if(desired_loyalty)
+		loyalty_tag = desired_loyalty
+
 	. = ..()
 
 	update_sprite()
-
-	var/new_angle = -ATAN2(vel_x,vel_y) - 90
-	transform.Turn(new_angle)
 
 	return .
 
@@ -187,6 +193,21 @@
 		on_hit(collide_atom)
 		return TRUE
 
+	for(var/mob/living/L in new_loc.old_living)
+		if(L.dead)
+			continue
+		if(L.move_delay > 0)
+			continue
+		if(L == owner || L == weapon)
+			continue
+		var/atom/collide_atom = L.projectile_should_collide(src,new_loc,old_loc)
+		if(!collide_atom)
+			continue
+		if(!damage_atom(collide_atom))
+			continue
+		on_hit(collide_atom)
+		return TRUE
+
 	return FALSE
 
 /obj/projectile/proc/update_projectile()
@@ -195,16 +216,19 @@
 		on_hit(src.loc,TRUE)
 		return FALSE
 
-	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
-
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1)
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
 	var/matrix/M = matrix()
-	var/new_angle = -ATAN2(vel_x,vel_y) - 90
+	var/new_angle = -ATAN2(vel_x,vel_y) + 90
 	M.Turn(new_angle)
 	M.Translate(pixel_x_float,pixel_y_float) //WHY DO I HAVE TO HALF THIS?
-	animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+	if(start_time == 0)
+		transform = M
+	else
+		animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+
+	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
 	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
@@ -249,7 +273,7 @@
 			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 				precise = TRUE
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,params,precise,precise)
+		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
 
 		if(!object_to_damage)
 			DT.perform_miss(owner,hit_atom,weapon)
@@ -287,11 +311,13 @@
 
 /obj/projectile/proc/post_on_hit(var/atom/hit_atom)
 
+	/*
 	for(var/mob/MO in contents)
 		if(MO.client)
 			MO.client.pixel_x = vel_x
 			MO.client.pixel_y = vel_y
 			animate(MO.client,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(2))
+	*/
 
 	if(impact_effect_turf && isturf(hit_atom))
 		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
@@ -300,3 +326,11 @@
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
 
 	return TRUE
+
+/obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
+
+	if(istype(weapon,/obj/item/weapon/ranged/) && is_living(source))
+		var/obj/item/weapon/ranged/R = weapon
+		return R.get_bullet_inaccuracy(source,target,src,inaccuracy_modifier)
+
+	return 0

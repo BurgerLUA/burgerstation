@@ -1,5 +1,4 @@
 /class/bull
-	id = "bull"
 
 	attributes = list(
 		ATTRIBUTE_STRENGTH = 60,

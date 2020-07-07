@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(research)
 	else
 		quadrant_high_scores = json_decode(quadrants_file)
 
-	return TRUE
+	return ..()
 
 /subsystem/research/proc/add_quadrants_score(var/mob/living/advanced/player/P ,var/score)
 	quadrant_high_scores.Add(list(list(P.real_name,score)))

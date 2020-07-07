@@ -50,12 +50,8 @@
 
 	var/list/overlays_assoc
 
-	var/list/overlays_assoc_atom
-
 	var/list/protection_heat = TARGETABLE_LIMBS_KV
-
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
-
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
 	var/list/known_wishgranters = list() //ID based.
@@ -72,7 +68,7 @@
 	var/list/tracked_hidden_organs
 	var/tracked_hidden_clothing = 0x0
 
-	value = 250
+	value = 500
 
 	stun_angle = -90
 
@@ -86,6 +82,10 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
+	var/handcuffed = FALSE
+	var/handcuff_break_counter = 0
+	var/obj/item/handcuffs/stored_handcuffs
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -93,7 +93,6 @@
 
 	inventory.Cut()
 	overlays_assoc.Cut()
-	overlays_assoc_atom.Cut()
 	tracked_hidden_organs.Cut()
 
 	held_objects = null
@@ -104,13 +103,12 @@
 	right_item = null
 	active_inventory = null
 	driving = null
+
+	QDEL_NULL(stored_handcuffs)
+
 	return ..()
 
-/mob/living/advanced/proc/update_clothes()
-
-	if(!length(overlays_assoc_atom))
-		CRASH_SAFE("[src.get_debug_name()] did not have anything inside the overlays_assoc_atom list!")
-		return FALSE
+/mob/living/advanced/proc/update_clothes() //Avoid using?
 
 	tracked_hidden_organs = list()
 
@@ -123,17 +121,17 @@
 	var/do_organs = length(tracked_hidden_organs)
 	var/do_clothing = tracked_hidden_clothing != 0x0
 
-	for(var/k in overlays_assoc_atom)
-		var/atom/A = k
-		if(is_organ(A))
-			var/obj/item/organ/O = A
-			show_overlay(overlays_assoc_atom[k], (do_organs && tracked_hidden_organs[O.id]) ? FALSE : TRUE)
-		else if(is_clothing(A))
-			var/obj/item/clothing/C = A
-			show_overlay(overlays_assoc_atom[k], (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
+	for(var/k in overlays_assoc)
+		var/image/overlay/O = overlays_assoc[k]
+		var/obj/item/I = O.attached_object
+		if(is_organ(I))
+			var/obj/item/organ/OR = I
+			show_overlay(k, (do_organs && tracked_hidden_organs[OR.id]) ? FALSE : TRUE)
+		else if(is_clothing(I))
+			var/obj/item/clothing/C = I
+			show_overlay(k, (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
 
 	return TRUE
-
 
 /mob/living/advanced/update_eyes()
 
@@ -142,61 +140,31 @@
 	for(var/obj/item/organ/eye/E in labeled_organs)
 		sight |= E.sight_mod
 		vision |= E.vision_mod
+		see_invisible = max(E.see_invisible,see_invisible)
 
 	for(var/obj/item/clothing/glasses/G in worn_objects)
 		sight |= G.sight_mod
 		vision |= G.vision_mod
+		see_invisible = max(G.see_invisible,see_invisible)
 
 	return .
 
-/* HERE LIES A FAILED PROJECT
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
 	. = ..()
 
-	if(.)
-		if(left_item && left_item.icon_state_held_single)
-			var/final_pixel_x = 0
-			var/final_pixel_y = -4
-			var/final_layer = 0
-			switch(dir)
-				if(NORTH)
-					final_layer = LAYER_MOB_ITEM_BEHIND
-					final_pixel_x = -8
-				if(SOUTH)
-					final_layer = LAYER_MOB_ITEM_FRONT
-					final_pixel_x = 8
-				if(EAST)
-					final_layer = LAYER_MOB_ITEM_BEHIND
-					final_pixel_x = 4
-				if(WEST)
-					final_layer = LAYER_MOB_ITEM_FRONT
-					final_pixel_x = -4
-			update_overlay(left_item, desired_icon = initial(left_item.icon), desired_icon_state = left_item.icon_state_held_single,  desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
-
-		if(right_item && right_item.icon_state_held_single)
-			var/final_pixel_x = 0
-			var/final_pixel_y = -4
-			var/final_layer = 0
-			switch(dir)
-				if(NORTH)
-					final_layer = LAYER_MOB_ITEM_FRONT
-					final_pixel_x = 8
-				if(SOUTH)
-					final_layer = LAYER_MOB_ITEM_BEHIND
-					final_pixel_x = -8
-				if(EAST)
-					final_layer = LAYER_MOB_ITEM_FRONT
-					final_pixel_x = -4
-				if(WEST)
-					final_layer = LAYER_MOB_ITEM_BEHIND
-					final_pixel_x = 4
-			update_overlay(right_item, desired_icon = initial(right_item.icon), desired_icon_state = right_item.icon_state_held_single, desired_layer = final_layer, desired_pixel_x = final_pixel_x, desired_pixel_y = final_pixel_y)
+	if(. || force) //Dan updating.
+		if(left_hand && left_item && left_item.dan_mode)
+			left_hand.update_held_icon(left_item)
+		if(right_hand && right_item && right_item.dan_mode)
+			right_hand.update_held_icon(right_item)
 
 	return .
-*/
 
 /mob/living/advanced/proc/update_slowdown_mul()
+
+	if(qdeleting) //Bandaid fix.
+		return FALSE
 
 	capacity = 0
 
@@ -238,7 +206,6 @@
 	worn_objects = list()
 	labeled_organs = list()
 	overlays_assoc = list()
-	overlays_assoc_atom = list()
 	tracked_hidden_organs = list()
 
 	. = ..()
@@ -284,27 +251,34 @@ mob/living/advanced/Login()
 	add_species_languages()
 	add_species_organs()
 	add_species_colors()
-	if(client)
-		add_species_buttons()
-		add_species_health_elements()
 	return TRUE
 
 /mob/living/advanced/Initialize()
+
+	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none")
 
 	. = ..()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
+	setup_name()
+
+	return .
+
+/mob/living/advanced/PostInitialize()
+	. = ..()
+
 	if(client)
 		update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
+		add_species_buttons()
+		add_species_health_elements()
 
 	update_slowdown_mul()
-
-	setup_name()
 
 	update_clothes()
 
 	return .
+
 
 /mob/living/advanced/setup_name()
 
@@ -382,6 +356,9 @@ mob/living/advanced/Login()
 	if(S.default_color_glow)
 		change_organ_visual("skin_glow", desired_color = S.default_color_glow)
 
+	if(S.default_blood_color)
+		blood_color = S.default_blood_color
+
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/obj/item/organ/O in organs)
 		if(!length(O.additional_blends))
@@ -411,18 +388,19 @@ mob/living/advanced/Login()
 	if(health.stamina_current <= 0)
 		return FALSE
 
-	return ..()
+	var/list/organs_to_check = list(
+		BODY_FOOT_RIGHT,
+		BODY_FOOT_LEFT,
+		BODY_LEG_LEFT,
+		BODY_LEG_RIGHT
+	)
 
-/* OLD MOVEMENT
-/mob/living/advanced/do_move(var/turf/new_loc,var/movement_override = 0)
-	. = ..()
-	if(.)
-		add_skill_xp(,1)
-		stamina_current = max(0,stamina_current - 1)
-		return .
-	else
-		return FALSE
-*/
+	for(var/k in organs_to_check)
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O.health && O.health.health_current <= 0)
+			return FALSE
+
+	return ..()
 
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
 

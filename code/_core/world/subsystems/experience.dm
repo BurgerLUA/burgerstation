@@ -23,4 +23,4 @@ SUBSYSTEM_DEF(experience)
 	log_subsystem(name,"Initialized [length(all_skills)] skills.")
 	log_subsystem(name,"Initialized [length(all_attributes)] attributes.")
 
-	return TRUE
+	return ..()

@@ -12,7 +12,7 @@
 
 	var/safe = TRUE
 
-	footstep_id = "concrete"
+	footstep = /footstep/concrete
 
 
 /turf/simulated/floor/boss/New()

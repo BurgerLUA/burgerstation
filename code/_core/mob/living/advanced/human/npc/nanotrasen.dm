@@ -2,8 +2,8 @@
 	name = "nanotrasen security force"
 	enable_AI = TRUE
 	ai = /ai/advanced/nanotrasen
-	class = "syndicate"
-	dialogue_id = "soldier_dialogue"
+	class = /class/syndicate_soldier
+	dialogue_id = /dialogue/npc/soldier/
 
 /mob/living/advanced/npc/nanotrasen/Initialize()
 
@@ -26,6 +26,6 @@
 
 	update_all_blends()
 
-	equip_loadout("nanotrasen")
+	equip_loadout(/loadout/nanotrasen/soldier)
 
 	return .

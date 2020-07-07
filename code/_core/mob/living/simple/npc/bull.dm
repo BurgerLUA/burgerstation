@@ -8,8 +8,18 @@
 
 	health_base = 100
 
+	value = 50
+
+	butcher_contents = list(
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/food/dynamic/meat/raw,
+		/obj/item/container/food/dynamic/meat/raw
+	)
+
+
 	ai = /ai/
-	class = "bull"
+	class = /class/bull
 	damage_type = /damagetype/npc/bull
 
 	armor_base = list(

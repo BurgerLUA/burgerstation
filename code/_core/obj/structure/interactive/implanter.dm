@@ -37,6 +37,9 @@
 	if(A.labeled_organs[initial_id])
 		if(removes_existing)
 			var/obj/item/organ/O = A.labeled_organs[initial_id]
+			if(O.type == stored_implant)
+				caller.to_chat("You already have an implant of that type!")
+				return TRUE
 			O.unattach_from_parent(A.loc)
 		else
 			caller.to_chat("You already have an implant of that type!")
@@ -46,8 +49,8 @@
 	if(added_implant)
 		caller.to_chat("You implant \the [added_implant.name] into your [added_implant.attached_organ.name].")
 		if(should_save_on_implant && is_player(A))
-			var/mob/living/advanced/player/P = A
-			if(P.mobdata) P.mobdata.save_current_character()
+			var/savedata/client/mob/mobdata = MOBDATA(A.ckey_last)
+			if(mobdata) mobdata.save_character(A)
 	else
 		caller.to_chat("There was an error adding your implant.")
 

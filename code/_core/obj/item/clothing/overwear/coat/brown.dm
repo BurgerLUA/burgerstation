@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/coat/brown
 	name = "coat"
-	icon = 'icons/obj/items/clothing/suit/detective_coat.dmi'
+	icon = 'icons/obj/item/clothing/suit/detective_coat.dmi'
 
 	desc = "The detective's favorite."
 	desc_extended = "A dark brown leather coat. It is quite heavy, but contains many pockets."

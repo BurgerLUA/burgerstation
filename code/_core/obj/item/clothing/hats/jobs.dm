@@ -1,8 +1,8 @@
 /obj/item/clothing/head/hat/hop
 	name = "\improper Head of Personel's hat"
-	icon = 'icons/obj/items/clothing/hats/hop.dmi'
-	desc = "Nothing personel, kid."
-	desc_extended = "It's a hat."
+	desc = "can i get all access plz"
+	desc_extended = "A hat usually worn by the all-access giving and disappearing."
+	icon = 'icons/obj/item/clothing/hats/hop.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
@@ -22,8 +22,9 @@
 
 /obj/item/clothing/head/hat/hos
 	name = "\improper Head of Security's hat"
-	icon = 'icons/obj/items/clothing/hats/hos.dmi'
-	desc_extended = "It's a hat."
+	desc = "THE HOS IS A CHANGELING--- Nevermind, go back to work."
+	desc_extended = "A hat usually worn by the leader of shitcurity. Or security if they can keep them in line."
+	icon = 'icons/obj/item/clothing/hats/hos.dmi'
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(

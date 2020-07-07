@@ -1,12 +1,15 @@
 /obj/structure/interactive/lighting/tube
 	name = "tube light"
+	desc = "An electrical storm has been detected in proximity of the station. Please check all equipment for potential overloads."
+	desc_extended = "Used to light up the area."
 
 	icon = 'icons/obj/structure/lights_new.dmi'
 	icon_state = "tube_light"
 
-	desired_light_power = 0.3
+	desired_light_power = 0.5
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
+	desired_light_angle = LIGHT_TUBE
 
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_WALL_ATTACHMENTS
@@ -30,10 +33,11 @@
 		desired_light_color = null
 		if(health)
 			health.restore()
-		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),"glass")
+		create_destruction(get_turf(src),list(/obj/item/material/shard = 1),/material/glass)
+		update_atom_light()
 		update_sprite()
 	else
-		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),"steel")
+		create_destruction(get_turf(src),list(/obj/item/material/sheet = 1),/material/steel)
 		qdel(src)
 
 	return TRUE
@@ -60,11 +64,19 @@
 		desired_light_color = color
 		color = "#FFFFFF"
 
+	return ..()
+
+/obj/structure/interactive/lighting/tube/PostInitialize()
 	. = ..()
-
 	update_sprite()
-
 	return .
+
+/obj/structure/interactive/lighting/tube/update_atom_light()
+	if(on && desired_light_color)
+		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
+	else
+		set_light(FALSE)
+	return TRUE
 
 /obj/structure/interactive/lighting/tube/update_icon()
 
@@ -78,9 +90,6 @@
 		var/icon/F = new /icon(icon,"tube_bulb")
 		F.Blend(desired_light_color,ICON_MULTIPLY)
 		I.Blend(F,ICON_OVERLAY)
-		set_light(on ? desired_light_range : 0, on ? desired_light_power : 0, desired_light_color)
-	else
-		set_light(FALSE)
 
 	icon = I
 
@@ -93,17 +102,10 @@
 		IS.plane = PLANE_LIGHTING
 		IS.layer = 99
 		IS.color = desired_light_color
+		IS.alpha = 100
 		add_overlay(IS)
 
 	return .
-
-/obj/structure/interactive/lighting/tube/strong
-	desired_light_power = 0.4
-	desired_light_range = 8
-
-/obj/structure/interactive/lighting/tube/stronger
-	desired_light_power = 0.5
-	desired_light_range = 16
 
 
 /obj/structure/interactive/lighting/tube/color
@@ -127,3 +129,17 @@
 		name = loc.color
 
 	return ..()
+
+/obj/structure/interactive/lighting/tube/station
+	color = COLOR_LIGHT
+	color_frame = COLOR_GREY
+	desired_light_power = 0.5
+	desired_light_range = 7
+
+/obj/structure/interactive/lighting/tube/station/strong
+	desired_light_power = 0.6
+	desired_light_range = 9
+
+/obj/structure/interactive/lighting/tube/station/stronger
+	desired_light_power = 0.7
+	desired_light_range = 12

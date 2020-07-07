@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/security/old
 	name = "old riot helmet"
-	icon = 'icons/obj/items/clothing/hats/security.dmi'
+	icon = 'icons/obj/item/clothing/hats/security.dmi'
 	desc = "Protects against cream pies."
 	desc_extended = "A sturdy riot helmet. It is quite outdated."
 

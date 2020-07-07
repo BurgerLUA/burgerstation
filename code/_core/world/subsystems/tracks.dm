@@ -11,3 +11,4 @@ SUBSYSTEM_DEF(tracks)
 		all_tracks[T.id] = T
 
 	log_subsystem(name,"Initialized [length(all_tracks)] music tracks.")
+	return ..()

@@ -2,7 +2,7 @@
 	name = "\improper .223 Defender LMG"
 	desc = "Atatatatatatata."
 	desc_extended = "The .223 Defender Light Machine Gun is a not very light machine gun meant to fire a lot of rounds in quick succession for relatively extended periods of time. Was designed by syndicate weapon scientists to take 5.56mm rounds that are commonly dropped by the enemy."
-	icon = 'icons/obj/items/weapons/ranged/rifle/lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/lmg.dmi'
 	icon_state = "inventory"
 	value = 200
 
@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/smg_heavy/classic_2.ogg')
+	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
 
 	can_wield = TRUE
 

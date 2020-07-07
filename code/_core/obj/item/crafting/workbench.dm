@@ -1,6 +1,6 @@
 /obj/item/crafting/workbench
 	name = "portable workbench"
-	icon = 'icons/obj/items/ore.dmi'
+	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "workbench"
 
 	inventories = list(

@@ -2,9 +2,9 @@
 	name = "right gladiator gauntlet"
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
-	desc = "Fight with these."
-	desc_extended = "A generic gladiator glove. Hope that you have a matching pair."
-	icon = 'icons/obj/items/clothing/gloves/gladiator.dmi'
+	desc = "Fight people with these."
+	desc_extended = "A long glove made of leather, to protect against shankings."
+	icon = 'icons/obj/item/clothing/gloves/gladiator.dmi'
 	color = "#FFFFFF"
 
 	item_slot = SLOT_HAND_RIGHT
@@ -29,6 +29,7 @@
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 
 /obj/item/clothing/hands/gloves/colored/gladiator/gold
@@ -37,10 +38,13 @@
 
 /obj/item/clothing/hands/gloves/colored/gladiator/gold/left
 	name = "left gladiator gauntlet"
+	desc = "Fight people with these."
+	desc_extended = "A long glove made of leather, to protect against shankings."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
 	item_slot = SLOT_HAND_LEFT
 	protected_limbs = list(BODY_HAND_LEFT)
+	blocks_clothing = SLOT_HAND_LEFT
 
 	color = COLOR_GOLD

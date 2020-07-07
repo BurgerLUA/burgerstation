@@ -119,3 +119,18 @@
 
 /turf/simulated/floor/tile/morphing/engineering
 	color = COLOR_ENGINEERING
+
+/turf/simulated/floor/tile/morphing/security
+	color = COLOR_SECURITY
+
+/turf/simulated/floor/tile/morphing/chapel
+	color = COLOR_GREY_DARK
+
+/turf/simulated/floor/tile/morphing/library
+	color = COLOR_LIBRARY
+
+/turf/simulated/floor/tile/morphing/red
+	color = COLOR_RED
+
+/turf/simulated/floor/tile/morphing/red/dark
+	color = COLOR_RED_DARK

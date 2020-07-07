@@ -1,11 +1,13 @@
 /obj/item/clothing/feet/shoes/tutorial
 	name = "right tutorial boot"
+	desc = "Cut content, perhaps?"
+	desc_extended = "You probably shouldn't have this."
 	rarity = RARITY_MYTHICAL
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
-	icon = 'icons/obj/items/clothing/shoes/tutorial_shoes.dmi'
+	icon = 'icons/obj/item/clothing/shoes/tutorial_shoes.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)

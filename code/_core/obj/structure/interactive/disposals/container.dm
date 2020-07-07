@@ -6,7 +6,7 @@
 	var/obj/structure/interactive/disposals/last_pipe
 	var/sorting_tag
 
-/obj/disposals_container/Initialize()
+/obj/disposals_container/PostInitialize()
 	start_thinking(src)
 	return ..()
 

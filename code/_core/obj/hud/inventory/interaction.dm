@@ -3,6 +3,21 @@
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 
+	if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
+		if(isturf(object.loc))
+			if(is_living(object))
+				var/mob/living/L = object
+				if(!L.add_status_effect(GRAB, source = caller))
+					caller.to_chat(span("warning","\The [object.name] is too strong to be grabbed!"))
+					return TRUE
+			grab_object(caller,object,location,control,params)
+			return TRUE
+		else
+			return wield_object(caller,defer_object)
+
+	if(parent_inventory)
+		return TRUE
+
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
 		if(!M.anchored && M.can_rotate)
@@ -13,7 +28,9 @@
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
 		return TRUE
 
-	else if(caller.attack_flags & ATTACK_THROW) //Throw the object if we are telling it to throw.
+	else if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+		var/mob/living/L = caller
+		object = object.defer_click_on_object(location,control,params)
 		caller.face_atom(object)
 		var/atom/movable/object_to_throw = src.defer_click_on_object(location,control,params)
 		if(is_item(object_to_throw))
@@ -33,7 +50,7 @@
 			vel_y *= 12
 
 			I.drop_item(get_turf(caller))
-			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30)
+			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
 		return TRUE
 
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
@@ -47,17 +64,6 @@
 
 	else if(grabbed_object && grabbed_object == object)
 		return release_object(caller)
-
-	else if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)
-		if(isturf(object.loc))
-			if(is_living(object))
-				var/mob/living/L = object
-				if(!L.dead && !L.add_status_effect(GRAB, source = caller))
-					caller.to_chat(span("warning","You cannot grab \the [object.name]!"))
-					return TRUE
-			grab_object(caller,object,location,control,params)
-		else
-			return wield_object(caller,defer_object)
 
 	if(defer_self == grabbed_object)
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
@@ -135,6 +141,10 @@
 		return FALSE
 
 	var/obj/hud/inventory/holding = item_to_wield.loc
+
+	if(!(holding.click_flags & (LEFT_HAND | RIGHT_HAND)))
+		return FALSE
+
 	item_to_wield.wielded = !item_to_wield.wielded
 	src.parent_inventory = item_to_wield.wielded ? holding : null
 	holding.child_inventory = item_to_wield.wielded ? src : null

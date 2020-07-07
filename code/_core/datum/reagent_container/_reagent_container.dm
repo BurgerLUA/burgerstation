@@ -24,6 +24,8 @@
 
 	var/contains_lethal = FALSE
 
+	var/allow_recipie_processing = TRUE
+
 /reagent_container/Destroy()
 	owner = null
 	all_reagent_containers -= src
@@ -97,13 +99,15 @@
 	if(!volume_current)
 		return FALSE
 
-	var/turf/simulated/T = get_turf(owner)
+	var/turf/simulated/T
+	if(is_simulated(owner.loc))
+		T = owner.loc
 
-	if(!istype(T))
-		return FALSE
+	var/area/A
+	if(T && T.loc)
+		A = T.loc
 
-	var/area/A = T.loc
-	var/desired_temperature = A.ambient_temperature + T.turf_temperature_mod + special_temperature_mod
+	var/desired_temperature = (A ? A.ambient_temperature : T0C + 20) + special_temperature_mod + (T ? T.turf_temperature_mod : 0)
 	var/desired_temperature_mod = AIR_TEMPERATURE_MOD
 
 	if(is_inventory(owner.loc))
@@ -118,19 +122,38 @@
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
-		temperature_mod += stored_reagents[r_id] * R.temperature_mod
+		var/volume = stored_reagents[r_id]
+		temperature_mod += (volume * R.temperature_mod)
 
 	var/temperature_diff = desired_temperature - average_temperature
 
-	if(average_temperature > desired_temperature)
-		average_temperature = max(desired_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
-	else
-		average_temperature = min(desired_temperature,average_temperature + (temperature_diff * (AIR_TEMPERATURE_MOD/temperature_mod)))
+	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
+
+	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
+		temperature_change *= 3
+		average_temperature = max(desired_temperature,average_temperature + temperature_change)
+	else //If we're colder than we need to be.
+		average_temperature = min(desired_temperature,average_temperature + temperature_change)
+
+	 . = FALSE
 
 	for(var/r_id in stored_reagents_temperature)
+		var/reagent/R = REAGENT(r_id)
+		var/volume = stored_reagents[r_id]
 		stored_reagents_temperature[r_id] = average_temperature
+		if(R.heated_reagent && R.heated_reagent_temp < average_temperature)
+			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
+			add_reagent(R.heated_reagent,remove_reagent(r_id,CEILING(min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume),REAGENT_ROUNDING)))
+			. = TRUE
+		else if(R.cooled_reagent && R.cooled_reagent_temp > average_temperature)
+			var/temperature_cool_mod = (R.cooled_reagent_temp/max(0.1,average_temperature)) ** 2
+			add_reagent(R.cooled_reagent,remove_reagent(r_id,CEILING(min(R.cooled_reagent_amount + (volume * R.cooled_reagent_mul * temperature_cool_mod),volume),REAGENT_ROUNDING)))
+			. = TRUE
 
-	process_recipes()
+	if(.)
+		return TRUE
+
+	process_recipes() //Don't worry, this is only called when there was a temperature change and nothing else.
 
 	return TRUE
 
@@ -194,6 +217,9 @@
 
 /reagent_container/proc/process_recipes(var/mob/caller)
 
+	if(!allow_recipie_processing)
+		return FALSE
+
 	if(!caller && is_item(src.owner))
 		var/obj/item/I = src.owner
 		caller = I.last_interacted
@@ -209,6 +235,8 @@
 
 	for(var/k in all_reagent_recipes)
 
+		CHECK_TICK
+
 		var/reagent_recipe/recipe = all_reagent_recipes[k]
 
 		if(debug) LOG_DEBUG("Checking [recipe]...")
@@ -219,6 +247,11 @@
 		var/good_recipe = TRUE
 
 		for(var/reagent_type in recipe.required_reagents)
+			if(recipe.required_container && !istype(owner,recipe.required_container))
+				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of wrong container type.")
+				good_recipe = FALSE
+				break
+
 			if(!c_id_to_volume[reagent_type] || c_id_to_volume[reagent_type] < recipe.required_reagents[reagent_type]) //if our container doesn't have what is required, then lets fuck off.
 				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too few reagents of [reagent_type].")
 				good_recipe = FALSE
@@ -231,11 +264,6 @@
 
 			if(recipe.required_temperature_max[reagent_type] && c_id_to_temperature[reagent_type] > recipe.required_temperature_max[reagent_type])
 				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of too high temperature of [reagent_type].")
-				good_recipe = FALSE
-				break
-
-			if(recipe.required_container && !istype(owner,recipe.required_container))
-				if(debug) LOG_DEBUG("Recipe [recipe.name] invalid because of wrong container type.")
 				good_recipe = FALSE
 				break
 
@@ -253,6 +281,7 @@
 	var/portions_to_make
 
 	for(var/k in found_recipe.required_reagents)
+		CHECK_TICK
 		var/required_amount = found_recipe.required_reagents[k]
 		var/current_volume = c_id_to_volume[k]
 		var/math_to_do = current_volume / required_amount
@@ -268,6 +297,7 @@
 	var/desired_temperature = average_temperature
 
 	for(var/k in found_recipe.required_reagents)
+		CHECK_TICK
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
 		remove_reagent(k,amount_to_remove,FALSE,FALSE)
@@ -284,6 +314,7 @@
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(FALSE)
 		while(volume_current > 0)
+			CHECK_TICK
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
 			if(!A.reagents)
@@ -305,7 +336,7 @@
 		return 0
 
 	if(amount == 0)
-		CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner]!")
+		//CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
 		return 0
 
 	if(temperature == TNULL)
@@ -327,10 +358,10 @@
 	if(amount == 0)
 		return 0
 
-	. = amount
+	. = amount //This is the REAL WORLD AMOUNT that is added. This is used for removing stuff.
 
 	if(amount > 0)
-		amount = R.on_add(src,amount,previous_amount)
+		amount = R.on_add(src,amount,previous_amount) //This is the VIRTUAL AMOUNT that is actually added.
 
 	if(amount)
 		stored_reagents[reagent_type] += amount
@@ -347,7 +378,7 @@
 	if(should_update)
 		update_container()
 
-	return . //The reason why we don't return . is for a very good reason, trust me.
+	return .
 
 /reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE)
 	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes)

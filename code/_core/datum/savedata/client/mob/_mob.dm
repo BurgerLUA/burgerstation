@@ -1,7 +1,15 @@
+var/global/list/ckey_to_mobdata = list()
+
 /savedata/client/mob
+	var/mob/living/advanced/player/attached_mob
+
+/savedata/client/mob/Destroy()
+	CRASH_SAFE("FATAL WARNING: SAVEDATA ATTEMPTED TO BE DESTROYED! SAVEDATA SHOULD NEVER BE DESTROYED!")
+	return ..()
 
 /savedata/client/mob/get_folder(var/folder_id)
-	return replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
+	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
+	return
 
 /savedata/client/mob/reset_data()
 	loaded_data = list(
@@ -20,24 +28,20 @@
 		"known_languages" = list()
 	)
 
-/savedata/client/mob/New(var/client/new_owner)
-
+/savedata/client/mob/New(var/desired_ckey)
 	..()
-
 	reset_data()
-
+	var/client/owner = CLIENT(ckey)
 	if(owner)
-		if(!has_files())
-			owner << "Welcome to Burgerstation!"
-		else
-			owner << "Welcome back to Burgerstation!"
-			loaded_data = load_most_recent_character()
-			owner.save_slot = loaded_data["id"]
+		ckey_to_mobdata[ckey] = src
 
+/savedata/client/mob/Destroy()
+	log_error("SERIOUS ERROR: Mobdata for [ckey] was destroyed!")
+	return ..()
 
 /savedata/client/mob/get_file(var/file_id)
 	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"
-	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : owner.ckey)
+	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : ckey)
 	returning = replacetext(returning,"%CID",file_id)
 	return returning
 

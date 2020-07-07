@@ -1,6 +1,8 @@
 /obj/item/container/food/dynamic/chicken
 	name = "chicken"
-	icon = 'icons/obj/items/consumable/food/meat.dmi'
+	desc = "Hmm, white meat."
+	desc_extended = "A piece of chicken. Somewhat healtier than red meat."
+	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "chicken"
 	crafting_id = "chicken"
 

@@ -38,14 +38,11 @@
 	var/list/protection_heat = list()
 	var/list/protection_pressure = list()
 
-	var/list/obj/item/clothing/additional_clothing = list()
-	var/list/obj/item/clothing/additional_clothing_stored
+	var/list/obj/item/additional_clothing = list()
+	var/list/obj/item/additional_clothing_stored
 
-	var/obj/item/clothing/additional_clothing_parent
-
-	var/list/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
-
-	var/list/hidden_clothing = 0x0 //Flags of clothing slots that it should hide when this object is equipped.
+	var/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
+	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
 	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
 
 
@@ -67,13 +64,12 @@
 
 /obj/item/clothing/Destroy()
 	additional_clothing_stored.Cut()
-	additional_clothing_parent = null
 	return ..()
 
 /obj/item/clothing/Initialize()
 
 	for(var/k in additional_clothing)
-		var/obj/item/clothing/C = new k(src)
+		var/obj/item/C = new k(src)
 		C.should_save = FALSE
 		C.color = color
 		C.weight = 0
@@ -97,7 +93,7 @@
 			add_blend("polymorph_[polymorph_name]", desired_icon = initial_icon, desired_icon_state = "[desired_icon_state]_[polymorph_name]", desired_color = polymorph_color, desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 		update_sprite()
 
-	for(var/obj/item/clothing/C in additional_clothing_stored)
+	for(var/obj/item/C in additional_clothing_stored)
 		C.initialize_blends()
 
 	..()
@@ -109,9 +105,3 @@
 	. = ..()
 	remove_additonal_clothing()
 	return .
-
-/obj/item/clothing/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	if(additional_clothing_parent)
-		drop_item(additional_clothing_parent)
-		return TRUE
-	return ..()

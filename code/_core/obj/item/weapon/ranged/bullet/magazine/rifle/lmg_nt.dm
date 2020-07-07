@@ -1,15 +1,15 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_lmg
-	name = "\improper 7.62 LMG"
+	name = "\improper 7.62mm H-LMG"
 	desc = "What's betweeen you and 100 Syndicate? This LMG."
 	desc_extended = "An extremely pricy 7.62mm Light Machine Gun that was originally inteded for use in mounted placements is now available for use in combat situations."
-	icon = 'icons/obj/items/weapons/ranged/rifle/762_lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_lmg.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2
 
 	automatic = TRUE
 
-	shoot_sounds = list('sounds/weapons/308/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -22,7 +22,7 @@
 	weight = WEIGHT_4
 
 	heat_per_shot = 0.02
-	heat_max = 0.08
+	heat_max = 0.06
 
 	bullet_length_min = 46
 	bullet_length_best = 51

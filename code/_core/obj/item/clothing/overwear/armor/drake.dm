@@ -1,6 +1,8 @@
 /obj/item/clothing/overwear/armor/drake_armor
 	name = "ash drake armor"
-	icon = 'icons/obj/items/clothing/suit/drake_armor.dmi'
+	desc = "More like Drakeskin Armor, eh?"
+	desc_extended = "Armor made from the hardened scales of an Elder Ash Drake."
+	icon = 'icons/obj/item/clothing/suit/drake_armor.dmi'
 	item_slot = SLOT_TORSO_A | SLOT_TORSO_O
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_MYTHICAL
@@ -20,5 +22,7 @@
 	size = SIZE_7
 	weight = WEIGHT_6
 	additional_clothing = list(/obj/item/clothing/head/helmet/attached/drake_armor)
+
+	blocks_clothing = SLOT_TORSO_U
 
 	value = 1000

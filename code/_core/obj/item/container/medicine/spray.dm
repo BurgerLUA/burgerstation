@@ -1,7 +1,9 @@
 /obj/item/container/spray
 	name = "medical spray"
+	desc = "Spray and Pray."
+	desc_extended = "A Spray. Can be used to infuse bandages or and ointments, highening their effectiveness, or applied directly to wounds. Of course, be sure it contains a medicine, and not polytrinic acid, before you do either"
 
-	icon = 'icons/obj/items/container/spray.dmi'
+	icon = 'icons/obj/item/container/spray.dmi'
 	icon_state = "spray"
 
 	var/icon_count = 8
@@ -37,10 +39,12 @@
 
 /obj/item/container/spray/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(get_dist(caller,object) > 1)
-		return FALSE
+	if(is_inventory(object))
+		return ..()
 
 	if(is_advanced(object) && is_advanced(caller))
+		if(get_dist(caller,object) > 1)
+			return FALSE
 		var/mob/living/advanced/victim = object
 		var/mob/living/advanced/attacker = caller
 		var/list/new_x_y = attacker.get_current_target_cords(params)
@@ -48,7 +52,7 @@
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
 
-		var/obj/item/organ/O = victim.get_object_to_damage(attacker,params,TRUE,TRUE)
+		var/obj/item/organ/O = victim.get_object_to_damage(attacker,src,params,TRUE,TRUE)
 
 		if(!O || !O.health || !O.reagents)
 			return TRUE

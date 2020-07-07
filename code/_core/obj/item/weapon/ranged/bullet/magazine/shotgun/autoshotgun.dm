@@ -2,7 +2,7 @@
 	name = "\improper 12g Double Action"
 	desc = "For when you want to clear a room."
 	desc_extended = "The 12 Gauge Double Action is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bull\" for its bullpup design as well as the fact that it kicks like one too."
-	icon = 'icons/obj/items/weapons/ranged/shotgun/auto.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
 	icon_state = "inventory"
 	value = 210
 
@@ -10,7 +10,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sounds/weapons/12gauge/shoot.ogg')
+	shoot_sounds = list('sound/weapons/12gauge/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -35,6 +35,9 @@
 	value = 300
 
 	ai_heat_sensitivity = 0.75
+
+/obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_base_spread()
+	return 0.08
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bull/get_static_spread() //Base spread
 	return 0.002

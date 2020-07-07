@@ -1,4 +1,4 @@
-var/global/list/all_clients = list()
+var/global/list/all_clients = list() //Assoc list
 
 #define string2params(str) list2params(list(str))
 
@@ -16,14 +16,14 @@ var/global/list/all_clients = list()
 	var/list/obj/hud/button/known_buttons
 	var/list/obj/hud/button/known_health_elements
 
-	var/zoom_level = MIN_ZOOM
+	var/zoom_level = 2
 
 	var/savedata/client/connection_history/connection_data
-	var/savedata/client/roles/roles
 	var/savedata/client/settings/settings
 	var/savedata/client/controls/controls
+	var/savedata/client/globals/globals
 
-	var/save_slot //The character slot that the client wishes to overwrite.
+	//var/save_slot //The character slot that the client wishes to overwrite.
 	var/list/last_params
 	var/atom/last_object
 	var/atom/last_location
@@ -41,16 +41,13 @@ var/global/list/all_clients = list()
 
 	var/disable_controls = FALSE
 
-	var/is_zoomed = FALSE
+	var/is_zoomed = 0x0 //Takes a dir as a value.
 
 	var/next_allowed_topic = -1
 
 	var/list/queued_chat_messages = list()
 
-	var/last_ooc = 0
-	var/inactivity_warning_stage = 0
-
-	var/allow_zoom_controls = TRUE
+	var/allow_zoom_controls = TRUE //Disabled usually during cutscenes.
 
 	var/ping_num = 0
 
@@ -66,20 +63,35 @@ var/global/list/all_clients = list()
 
 	var/examine_mode = FALSE
 
-//Ping verb based on Ter13 http://www.byond.com/forum/post/99653?page=2#comment21759302
+	var/permissions = FLAG_PERMISSION_NONE
 
-/*
-/client/verb/ping()
-	winset(src,null,"command=pong+[world.time]")
+	var/desired_pixel_x = 0
+	var/desired_pixel_y = 0
 
-/client/verb/pong(var/time as num)
-	ping_num = world.time - time
-*/
+	var/desired_recoil_x = 0
+	var/desired_recoil_y = 0
+
+	var/desired_punch_x = 0
+	var/desired_punch_y = 0
+
+	var/precise_zoom = FALSE
+
+	var/byond_member = FALSE
+
+
+/client/proc/is_player_controlled()
+	return TRUE //duh
+
+/client/proc/set_permissions(var/desired_permissions = FLAG_PERMISSION_NONE)
+	permissions = desired_permissions
+	update_verbs()
 
 /client/proc/get_debug_name()
 	return "[src](MOB: [mob ? "[mob.name]([mob.x])([mob.y])([mob.z])" : "NONE"])"
 
 /client/Del() //Called when the client disconnects.
+
+	all_clients -= src.ckey
 
 	if(known_inventory)
 		known_inventory.Cut()
@@ -100,10 +112,7 @@ var/global/list/all_clients = list()
 
 	clear_mob(mob)
 
-	all_clients -= src
 	world.update_status()
-
-
 
 	return ..()
 
@@ -117,11 +126,9 @@ var/global/list/all_clients = list()
 
 /client/New()
 
-	update_color_mods()
+	all_clients[src.ckey] = src
 
 	CLEAR_VERBS(src)
-
-	all_clients += src
 
 	if(!button_tracker)
 		button_tracker = new(src)
@@ -130,16 +137,29 @@ var/global/list/all_clients = list()
 		macros = new(src)
 
 	if(!controls)
-		controls = new(src)
+		controls = new(ckey)
 
 	if(!settings)
-		settings = new(src)
+		settings = new(ckey)
+
+	if(!connection_data)
+		connection_data = new(ckey)
+
+	if(!globals)
+		globals = new(ckey)
+
+	var/savedata/client/mob/mobdata = MOBDATA(ckey)
+	if(!mobdata)
+		new/savedata/client/mob(ckey)
 
 	known_health_elements = list()
 	known_inventory = list()
 	known_buttons = list()
 
-	update_zoom(-1)
+	update_zoom(2)
+
+	if(SSadmin.initialized)
+		sync_permissions()
 
 	var/mob/found_mob = null
 	for(var/mob/M in all_mobs)
@@ -157,14 +177,36 @@ var/global/list/all_clients = list()
 			play_music_track("slow_fall", src)
 			mob.show_hud(TRUE,speed = 2)
 
-
-	if(!connection_data)
-		connection_data = new(src)
 	world.update_status()
 	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()
+	update_color_mods()
+
+	if(IsByondMember())
+		byond_member = TRUE
 
 	return mob
+
+/client/proc/get_ranks()
+
+	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
+	if(src.address == null) ranks |= SSadmin.stored_ranks["host"]
+	if(SSadmin.stored_user_ranks[ckey])
+		for(var/rank/R in SSadmin.stored_user_ranks[ckey])
+			ranks |= R
+
+	return ranks
+
+
+/client/proc/sync_permissions()
+
+	var/list/rank/ranks = get_ranks()
+
+	for(var/rank/R in ranks)
+		to_chat("Adding [R.name] permissions...")
+		permissions |= R.permissions
+
+	return TRUE
 
 /client/proc/welcome()
 	to_chat("<title>Welcome to Burgerstation 13</title><p>This is a work in progress server for testing out currently working features and other memes. Absolutely anything and everything will end up being changed. If you wish to join the discord, please do so here: https://discord.gg/yEaV92a</p>")
@@ -313,32 +355,6 @@ var/global/list/all_clients = list()
 	last_params = new_params
 	last_object = over_object
 	last_location = over_location
-
-/client/proc/get_permissions()
-	return FALSE
-
-
-/client/verb/make_announcement()
-
-	set category = "Fun"
-	set name = "Make Announcement"
-
-	var/sender = input("Who should the sender be?","Message Sender") as text | null
-	if(!sender)
-		return FALSE
-
-	var/message = input("What should the message be?", "Message") as message | null
-	if(!message)
-		return FALSE
-
-	var/header = input("What should the header be?", "Message Header") as text | null
-	if(!header)
-		return FALSE
-
-	announce(sender,header,message,ANNOUNCEMENT_STATION,'sounds/effects/station/new_command_report.ogg')
-
-	return TRUE
-
 
 /client/proc/receive_sound(var/sound/S)
 	src << S

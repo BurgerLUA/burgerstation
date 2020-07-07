@@ -1,13 +1,7 @@
 /ai/goliath
 
-	radius_find_enemy = 6
-
 	objective_delay = 10
 	attack_delay = 1
-
-	target_distribution_y = list(8,8,8,8,16,32)
-
-	stationary = FALSE
 
 	var/mob/living/simple/npc/goliath/owner_as_goliath
 
@@ -35,14 +29,11 @@
 
 
 /ai/goliath/ancient
-	stationary = TRUE
-	radius_find_enemy = VIEW_RANGE
 	objective_delay = 10
 	attack_delay = 1
 	tentacle_ttack_frequency = 50
 
 /ai/goliath/broodmother
-	radius_find_enemy = VIEW_RANGE + ZOOM_RANGE
 	objective_delay = 10
 	attack_delay = 1
 	tentacle_ttack_frequency = 50

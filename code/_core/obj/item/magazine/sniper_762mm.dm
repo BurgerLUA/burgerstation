@@ -1,11 +1,14 @@
 /obj/item/magazine/sniper_762
 	name = "\improper 7.62mm sniper magazine"
-	icon = 'icons/obj/items/magazine/762_sniper.dmi'
+	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
+	icon = 'icons/obj/item/magazine/762_sniper.dmi'
 	icon_state = "762"
-	bullet_count_max = 10
+	bullet_count_max = 20
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato

@@ -4,7 +4,7 @@
 	icon = 'icons/turf/floor/tile.dmi'
 	icon_state = "white_multi"
 
-	footstep_id = "default"
+	footstep = /footstep/tile
 
 	layer = LAYER_FLOOR
 	plane = PLANE_TILE
@@ -30,6 +30,9 @@
 
 /turf/simulated/floor/tile/dark
 	color = COLOR_STEEL
+
+/turf/simulated/floor/tile/dark/er
+	color = "#242424"
 
 /turf/simulated/floor/tile/dark/single
 	icon_state = "white_single"

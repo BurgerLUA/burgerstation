@@ -1,5 +1,7 @@
 /obj/structure/interactive/disposals/machine/inlet
 	name = "disposals inlet"
+	desc = "Express delivery!"
+	desc_extended = "Throw various things in here, including yourself."
 	icon_state = "intake"
 
 	collision_flags = FLAG_COLLISION_WALKING

@@ -20,6 +20,9 @@
 	color = "#4C3323"
 	corner_category = "wood_wall"
 
+/obj/structure/smooth/wall/wood/starting
+	color = "#60402C"
+
 /obj/structure/smooth/wall/brick
 	name = "short stone wall"
 	icon = 'icons/obj/structure/smooth/stone.dmi'

@@ -1,6 +1,7 @@
 /species/dummy/
 
 	name = "Target Practice Dummy"
+	desc = "It's a dummy, dummy."
 	id = "dummy"
 
 	flags_species = SPECIES_DUMMY
@@ -9,6 +10,8 @@
 	default_color_eye = "#000000"
 	default_color_skin = "#FFE121"
 	default_color_hair = "#000000"
+
+	flags_species_traits = TRAIT_NO_PAIN | TRAIT_NO_BLOOD
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,

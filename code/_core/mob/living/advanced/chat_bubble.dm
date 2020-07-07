@@ -13,7 +13,6 @@
 
 /mob/living/proc/do_type(var/type_type)
 	talk_duration = SECONDS_TO_DECISECONDS(4)
-	chat_overlay.alpha = 255
 	chat_overlay.icon_state = type_type
 	chat_overlay.pixel_x = pixel_x
 	chat_overlay.pixel_y = pixel_y
@@ -21,7 +20,6 @@
 
 /mob/living/proc/start_typing()
 	is_typing = TRUE
-	chat_overlay.alpha = 255
 	chat_overlay.icon_state = "talking"
 	chat_overlay.pixel_x = pixel_x
 	chat_overlay.pixel_y = pixel_y
@@ -29,4 +27,4 @@
 
 /mob/living/proc/end_typing()
 	is_typing = FALSE
-	chat_overlay.alpha = 0
+	chat_overlay.icon_state = "none"

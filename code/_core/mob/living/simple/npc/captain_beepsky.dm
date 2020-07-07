@@ -11,10 +11,13 @@
 
 
 	ai = /ai/doorman
-	class = "beepsky"
+	class = /class/beepsky
 	damage_type = /damagetype/npc/captain_beepsky
 
 	iff_tag = "NanoTrasen"
 	loyalty_tag = "NanoTrasen"
 
 	mob_size = MOB_SIZE_BOSS
+
+	enable_medical_hud = FALSE
+	enable_security_hud = FALSE

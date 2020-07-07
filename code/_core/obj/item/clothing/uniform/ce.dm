@@ -1,7 +1,8 @@
 /obj/item/clothing/uniform/ce
 	name = "chief engineer's uniform"
 	desc = "SM DELAM CALL THE SHUTTLE"
-	icon = 'icons/obj/items/clothing/uniforms/ce.dmi'
+	desc_extended = "An uniform worn by the most incompetent engineers, who get promoted to Chiefs."
+	icon = 'icons/obj/item/clothing/uniforms/ce.dmi'
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 

@@ -60,6 +60,17 @@
 	id = "delta_shuttle_station"
 
 
+/area/transit/dropship/golf/bluespace
+	id = "golf_shuttle_bluespace"
+	transit_turf = /turf/unsimulated/bluespace
+
+	cheese_type = /reagent/nutrition/cheese/bluespace
+
+/area/transit/dropship/golf/landing
+	id = "golf_shuttle_landing"
+
+/area/transit/dropship/golf/station
+	id = "golf_shuttle_station"
 
 
 

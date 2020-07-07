@@ -70,8 +70,10 @@
 /atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)
 
 	if(get_dist(src,caller) > interact_distance)
-		if(enable_message)
-			caller.to_chat(span("notice","You're too far away to interact with \the [src.name]!"))
+		if(enable_message) caller.to_chat(span("warning","You're too far away to interact with \the [src.name]!"))
+		return FALSE
+
+	if(!caller.can_interact())
 		return FALSE
 
 	return TRUE

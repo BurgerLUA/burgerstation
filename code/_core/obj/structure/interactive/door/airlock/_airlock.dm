@@ -18,15 +18,17 @@
 
 	var/opened_time = 0
 
-	open_sound = 'sounds/machines/airlock/open.ogg'
-	close_sound = 'sounds/machines/airlock/close.ogg'
-	deny_sound = 'sounds/machines/airlock/deny.ogg'
+	open_sound = 'sound/machines/airlock/open.ogg'
+	close_sound = 'sound/machines/airlock/close.ogg'
+	deny_sound = 'sound/machines/airlock/deny.ogg'
 
 	blocks_air = NORTH | EAST | SOUTH | WEST
 
 	var/no_access = FALSE
 
 	var/debug = FALSE
+
+	var/safeties = TRUE
 
 /obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -49,11 +51,11 @@
 		opened_time = 0
 
 	if(door_state == DOOR_STATE_OPENED && opened_time >= 100)
-
 		var/has_living = FALSE
 		for(var/mob/living/L in loc.contents)
-			has_living = TRUE
-			break
+			if(safeties)
+				has_living = TRUE
+				break
 
 		if(!has_living)
 			close()
@@ -110,12 +112,14 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 		if(DOOR_STATE_DENY)
 			CALLBACK("door_state_\ref[src]",6,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
 			if(deny_sound)
-				play(deny_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+				play(deny_sound, src)
+				if(caller) create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 		if(DOOR_STATE_START_OPENING)
 			CALLBACK("door_state_\ref[src]",open_wait_time,src,.proc/set_door_state,caller,DOOR_STATE_OPENING_01,should_lock)
 			if(open_sound)
-				play(open_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+				play(open_sound, src)
+				if(caller) create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 		if(DOOR_STATE_OPENING_01)
 			CALLBACK("door_state_\ref[src]",open_time_01,src,.proc/set_door_state,caller,DOOR_STATE_OPENING_02,should_lock)
@@ -126,16 +130,21 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 		if(DOOR_STATE_CLOSING_01)
 			CALLBACK("door_state_\ref[src]",close_time_01,src,.proc/set_door_state,caller,DOOR_STATE_CLOSING_02,should_lock)
 			if(close_sound)
-				play(close_sound, src, alert = ALERT_LEVEL_NOISE, alert_source = caller)
+				play(close_sound, src)
+				if(caller) create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 		if(DOOR_STATE_CLOSING_02)
-			var/found_living = FALSE
+			var/has_living = FALSE
 			for(var/mob/living/L in loc.contents)
-				if(L)
-					found_living = L
+				if(safeties)
+					has_living = TRUE
 					break
-			if(found_living)
-				set_door_state(found_living,DOOR_STATE_OPENING_02,FALSE)
+				else
+					for(var/d in DIRECTIONS_ALL)
+						if(L.Move(get_step(L,d),d))
+							break
+			if(has_living)
+				set_door_state(has_living,DOOR_STATE_OPENING_02,FALSE)
 			else
 				CALLBACK("door_state_\ref[src]",close_time_02,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
 

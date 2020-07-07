@@ -7,10 +7,6 @@ var/global/saved_icons = 0
 	var/real_icon
 	var/real_icon_state
 
-	desired_light_power = DEFAULT_BRIGHTNESS_AMBIENT
-	desired_light_range = DEFAULT_RANGE_AMBIENT
-	desired_light_color = "#FFFFFF"
-
 	dynamic_lighting = TRUE
 
 	var/fade = FALSE
@@ -37,6 +33,8 @@ var/global/saved_icons = 0
 
 	var/image/overlay/stored_water_overlay
 	var/water_reagent
+
+	var/blood_level = 0
 
 /turf/proc/is_occupied()
 
@@ -67,9 +65,6 @@ var/global/saved_icons = 0
 	if(real_icon_state)
 		icon_state = real_icon_state
 
-	var/area/A = loc
-	desired_light_power *= A.area_light_power
-
 	return ..()
 
 /turf/simulated/on_destruction(var/atom/caller,var/damage = FALSE)
@@ -84,7 +79,6 @@ var/global/saved_icons = 0
 	change_turf(destruction_turf,)
 
 	queue_update_turf_edges(src)
-	Initialize()
 
 	return ..()
 
@@ -99,12 +93,14 @@ var/global/saved_icons = 0
 		if(destruction_turf)
 			health = /health/turf/
 	set_exposed(exposed,!exposed)
+	return ..()
+
+/turf/simulated/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .
 
-
-/turf/simulated/proc/smooth_turfs()
+/turf/simulated/proc/get_smooth_code()
 
 	var/list/calc_list = list()
 
@@ -159,16 +155,21 @@ var/global/saved_icons = 0
 	if(!se) se = "i"
 	if(!sw) sw = "i"
 
-	/*
-	if(opacity && "[nw][ne][sw][se]" == "ffff")
-		dynamic_lighting = FALSE
-		icon = 'icons/debug/turfs.dmi'
-		icon_state = "black"
-		plane = PLANE_ALWAYS_VISIBLE
-		return FALSE
-	*/
+	return list(ne,nw,se,sw)
 
-	var/full_icon_string = "[type]_[ne][nw][se][sw]"
+
+/turf/simulated/proc/smooth_turfs()
+
+	var/list/smooth_code = get_smooth_code()
+
+	var/ne = smooth_code[1]
+	var/nw = smooth_code[2]
+	var/se = smooth_code[3]
+	var/sw = smooth_code[4]
+
+	var/full_icon_string = "[type]_[icon_state]_[ne][nw][se][sw]"
+
+	desc = full_icon_string
 
 	var/icon/I
 
@@ -235,3 +236,4 @@ var/global/saved_icons = 0
 			O.invisibility = 101
 
 	return TRUE
+

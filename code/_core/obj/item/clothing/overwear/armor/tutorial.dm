@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/tutorial
 	name = "tutorial armor"
-	icon = 'icons/obj/items/clothing/suit/tutorial_dress.dmi'
+	icon = 'icons/obj/item/clothing/suit/tutorial_dress.dmi'
 	item_slot = SLOT_TORSO_O
 	rarity = RARITY_MYTHICAL
 

@@ -3,7 +3,6 @@ var/global/list/area/transit/transit_areas = list()
 /area/transit
 	name = "transit"
 	icon_state = "shuttle"
-	is_space = TRUE
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION
 	var/turf/transit_turf = /turf/simulated/floor/plating
 	safe_storage = TRUE

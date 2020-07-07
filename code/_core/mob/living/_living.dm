@@ -8,7 +8,7 @@
 
 	icon_state = "directional"
 
-	var/class = "default"
+	var/class = /class/default
 
 	var/enable_AI = FALSE
 	var/ai/ai
@@ -101,7 +101,7 @@
 
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_LEVEL_DEFAULT
-	var/blood_color = "#B20000"
+	var/blood_color = COLOR_BLOOD
 
 	var/obj/structure/buckled_object
 
@@ -113,7 +113,7 @@
 
 	has_footsteps = TRUE
 
-	var/table_count = 0
+	var/climb_counter = 0
 
 	var/stand/stand
 
@@ -140,6 +140,30 @@
 
 	var/obj/effect/chat_overlay
 	var/obj/effect/alert_overlay
+	var/obj/effect/fire_overlay
+
+	var/enable_medical_hud = TRUE
+	var/enable_security_hud = TRUE
+
+	var/footstep_mod = 2 //How many cycles required to make a footstep sound.
+	var/footstep_counter = 0 //Read only
+	var/footstep_left_right_counter = FALSE //Read only. For playing left/right footstep sounds. Good only for advanced but you never know.
+
+	var/on_fire = FALSE
+	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
+
+	value = 250
+
+	var/mob/living/advanced/player/following = null
+
+/mob/living/calculate_value()
+
+	. = ..()
+
+	if(!dead)
+		. *= 4
+
+	return .
 
 /mob/living/get_debug_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
@@ -153,7 +177,9 @@
 
 /mob/living/Destroy()
 
-	//factions.Cut()
+	if(following)
+		following.followers -= src
+		following = null
 
 	for(var/experience/E in attributes)
 		qdel(E)
@@ -187,6 +213,7 @@
 
 	QDEL_NULL(alert_overlay)
 	QDEL_NULL(chat_overlay)
+	QDEL_NULL(fire_overlay)
 
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
@@ -215,21 +242,23 @@
 	health_elements = list()
 	players_fighting_boss = list()
 
-	medical_hud_image = new/image('icons/hud/medihud.dmi',"0")
-	medical_hud_image.loc = src
-	medical_hud_image.layer = PLANE_HUD_VISION
-	medical_hud_image.pixel_y = 4
-	medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	if(enable_medical_hud)
+		medical_hud_image = new/image('icons/hud/medihud.dmi',"0")
+		medical_hud_image.loc = src
+		medical_hud_image.layer = PLANE_HUD_VISION
+		medical_hud_image.pixel_y = 4
+		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
-	security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
-	security_hud_image.loc = src
-	security_hud_image.layer = PLANE_HUD_VISION
-	security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
+		medical_hud_image_advanced.loc = src
+		medical_hud_image_advanced.layer = PLANE_HUD_VISION
+		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
-	medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
-	medical_hud_image_advanced.loc = src
-	medical_hud_image_advanced.layer = PLANE_HUD_VISION
-	medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	if(enable_security_hud)
+		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
+		security_hud_image.loc = src
+		security_hud_image.layer = PLANE_HUD_VISION
+		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 
 	. = ..()
 
@@ -260,9 +289,6 @@
 
 	. = ..()
 
-	if(health)
-		health.armor_base = armor_base
-
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
@@ -283,6 +309,18 @@
 	alert_overlay.pixel_z = 20
 	//This is initialized somewhere else.
 
+	fire_overlay = new(src.loc)
+	fire_overlay.layer = LAYER_MOB_FIRE
+	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
+	fire_overlay.icon_state = "0"
+	//This is initialized somewhere else.
+
+	return .
+
+/mob/living/PostInitialize()
+	. = ..()
+	if(health)
+		health.armor_base = armor_base
 	return .
 
 /mob/living/proc/setup_name()
@@ -321,9 +359,12 @@
 
 	return ..()
 
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(magnitude > 1)
+	if(loyalty_tag && desired_loyalty == loyalty_tag)
+		return ..()
+
+	if(magnitude > 3)
 
 		var/x_mod = src.x - epicenter.x
 		var/y_mod = src.y - epicenter.y
@@ -337,14 +378,20 @@
 			x_mod *= 1/max
 			y_mod *= 1/max
 
-		throw_self(owner,null,null,null,x_mod*magnitude,y_mod*magnitude)
+		throw_self(owner,null,null,null,x_mod*16,y_mod*16,steps_allowed = magnitude)
 
-	for(var/i=1,i<=clamp(1+(magnitude*2),1,4),i++)
+	else if(magnitude > 2)
+		add_status_effect(STUN,20,20)
+
+	else if(magnitude > 1)
+		add_status_effect(STAGGER,5,5, source = epicenter)
+
+	for(var/i=1,i<=clamp(2+(magnitude),1,5),i++)
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = src.get_object_to_damage(owner,params,FALSE,TRUE)
+		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
 		var/damagetype/D = all_damage_types[/damagetype/explosion/]
-		D.do_damage(source,src,source,object_to_damage,owner,magnitude*0.5)
+		D.do_damage(source,src,source,object_to_damage,owner,magnitude)
 
 	return ..()

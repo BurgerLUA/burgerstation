@@ -1,7 +1,7 @@
 /obj/hud/click_and_drag
 	name = "click and drag effect"
 
-	icon = 'icons/hud/new.dmi'
+	icon = 'icons/hud/hud.dmi'
 	icon_state = "slot"
 
 	layer = LAYER_HUD

@@ -1,6 +1,6 @@
 /macros/
 	var/client/owner
-	var/list/macros = QWERT_MACROS
+	var/list/macros = QWERTY_MACROS
 
 	var/list/radio_keys = list(
 		";" = RADIO_FREQ_COMMON,
@@ -88,7 +88,10 @@
 		if("quick_holder")
 			owner.mob.attack_flags |= ATTACK_OWNER
 		if("zoom")
-			owner.is_zoomed = !owner.is_zoomed
+			if(owner.is_zoomed)
+				owner.is_zoomed = 0x0
+			else
+				owner.is_zoomed = owner.mob.dir
 
 	return TRUE
 

@@ -8,9 +8,15 @@ obj/structure/interactive/sheet_maker
 
 	bullet_block_chance = 50
 
-obj/structure/interactive/sheet_maker/Initialize()
+obj/structure/interactive/sheet_maker/PostInitialize()
+	. = ..()
+	update_sprite()
+	return .
+
+obj/structure/interactive/sheet_maker/update_icon()
+	. = ..()
 	icon_state = "sheet_maker"
-	return ..()
+	return .
 
 obj/structure/interactive/sheet_maker/Cross(var/atom/movable/O)
 	make_sheet(O)

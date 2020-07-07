@@ -10,6 +10,8 @@
 	default_color_skin = "#e0b19d"
 	default_color_hair = "#000000"
 
+	flags_species_traits = TRAIT_NO_PAIN | TRAIT_NO_BLOOD
+
 	default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	default_icon_state_hair = "hair_c"
 
@@ -25,8 +27,8 @@
 		BODY_FOOT_LEFT = /obj/item/organ/foot/left,
 		BODY_ARM_RIGHT = /obj/item/organ/arm/stand,
 		BODY_ARM_LEFT = /obj/item/organ/arm/stand/left,
-		BODY_HAND_RIGHT = /obj/item/organ/hand,
-		BODY_HAND_LEFT = /obj/item/organ/hand/left,
+		BODY_HAND_RIGHT = /obj/item/organ/hand/stand,
+		BODY_HAND_LEFT = /obj/item/organ/hand/stand/left,
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
 		BODY_EYE_LEFT = /obj/item/organ/eye/left,
 		BODY_EAR_RIGHT = /obj/item/organ/ear,

@@ -1,8 +1,9 @@
 /obj/item/grenade/
 	name = "grenade"
 	desc = "Activate, then throw."
+	desc_extended = "With good grenades being expensive and hard to come by, civilians often use homemade grenades filled with various chemicals, with varying degrees of success."
 
-	icon = 'icons/obj/items/grenade.dmi'
+	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "chem"
 
 	var/list/obj/item/container/beaker/stored_containers = list()
@@ -16,7 +17,7 @@
 
 	value = 15
 
-/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude)
+/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
 	if(source == src)
 		qdel(src)
@@ -92,7 +93,6 @@
 					update_sprite()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
-
 				return TRUE
 
 			if(stored_trigger)
@@ -102,7 +102,6 @@
 					update_sprite()
 				else
 					caller.to_chat(span("notice","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
-
 				return TRUE
 
 		else if(is_beaker(object))
@@ -115,9 +114,6 @@
 				update_sprite()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
-
-
-
 			return TRUE
 
 		else if(is_trigger(object))
@@ -130,7 +126,6 @@
 				update_sprite()
 			else
 				caller.to_chat(span("notice","You can't fit \the [object.name] in!"))
-
 			return TRUE
 
 	return ..()
@@ -140,6 +135,15 @@
 
 	if(!src.reagents)
 		return ..()
+
+	if(is_inventory(loc))
+		drop_item()
+
+	if(istype(loc,/obj/projectile/))
+		var/obj/projectile/P = loc
+		var/turf/T = get_turf(src)
+		P.damage_atom(T)
+		P.on_hit(T,TRUE)
 
 	for(var/obj/item/container/beaker/B in stored_containers)
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE)

@@ -1,4 +1,4 @@
-#define METABOLISM_BLOOD 0.2
+#define METABOLISM_BLOOD 1
 #define METABOLISM_STOMACH METABOLISM_BLOOD * 0.75
 #define METABOLISM_SKIN METABOLISM_BLOOD * 10
 #define OVERDOSE_THRESHOLD_MEDICINE 30
@@ -45,7 +45,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2.5)
+		owner.health.adjust_loss_smart(brute=.*-4)
 
 	return .
 
@@ -67,7 +67,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5)
+		owner.health.adjust_loss_smart(brute=.*-8)
 
 	return .
 
@@ -93,7 +93,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-2.5)
+		owner.health.adjust_loss_smart(burn=.*-4)
 
 	return .
 
@@ -118,7 +118,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*-2.5)
+		owner.health.adjust_loss_smart(tox=.*-4)
 
 	return .
 
@@ -143,7 +143,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(oxy=.*-2.5)
+		owner.health.adjust_loss_smart(oxy=.*-4)
 
 	return .
 
@@ -163,7 +163,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2)
+		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4)
 
 	return .
 
@@ -171,7 +171,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-1,burn=.*-1,tox=.*-1)
+		owner.health.adjust_loss_smart(brute=.*-3,burn=.*-3,tox=.*-3)
 
 	return .
 
@@ -192,7 +192,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2,oxy=.*-2)
+		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4,oxy=.*-4)
 
 	return .
 
@@ -200,7 +200,7 @@
 	. = ..()
 
 	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-2,burn=.*-2,tox=.*-2,oxy=.*-2)
+		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4,oxy=.*-4)
 
 	return .
 
@@ -219,6 +219,16 @@
 
 	liquid = -0.5
 
+/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
+		. *= 0.5
+		container.owner.health.adjust_loss_smart(burn=.*-10)
+
+	return .
+
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -231,16 +241,6 @@
 		else
 			owner.health.adjust_loss_smart(burn=.*-5)
 
-
-	return .
-
-/reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
-
-	. = ..()
-
-	if(current_volume == 0 && container.owner && container.owner.health) //Added for the first time.
-		. *= 0.5
-		container.owner.health.adjust_loss_smart(burn=.*-10)
 
 	return .
 
@@ -343,5 +343,96 @@
 			L.visible_message("\The [L.name] jolts to life!")
 		else
 			L.visible_message("\The [L.name] twitches for a moment, but falls back limp...")
+
+	return .
+
+
+
+/reagent/medicine/health_potion
+	name = "Healing Juice"
+	desc = "Heals everything. Magical!"
+	desc_extended = "Works just as good when consumed."
+	color = "#FF0000"
+
+	flavor = "cherry"
+
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
+
+	value = 3
+
+/reagent/medicine/health_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+
+	return .
+
+/reagent/medicine/health_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+
+	return .
+
+
+/reagent/medicine/stamina_potion
+	name = "Stamina Juice"
+	desc = "Restores your energy. Magical!"
+	desc_extended = "Works just as good when consumed."
+	color = "#00FF00"
+
+	flavor = "lime"
+
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
+
+	value = 3
+
+/reagent/medicine/stamina_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_stamina(.*10)
+
+	return .
+
+/reagent/medicine/stamina_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_stamina(.*10)
+
+	return .
+
+
+/reagent/medicine/mana_potion
+	name = "Mana Juice"
+	desc = "Restores your magical powers. Super magical!"
+	desc_extended = "Works just as good when consumed."
+	color = "#0000FF"
+
+	flavor = "blueberry"
+
+	metabolism_blood = METABOLISM_BLOOD*0.5
+	metabolism_stomach = METABOLISM_STOMACH*0.5
+
+	value = 3
+
+/reagent/medicine/mana_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_mana(.*10)
+
+	return .
+
+/reagent/medicine/mana_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	. = ..()
+
+	if(owner && owner.health)
+		owner.health.adjust_mana(.*10)
 
 	return .

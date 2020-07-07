@@ -1,10 +1,12 @@
 /obj/item/clothing/feet/shoes/brown
 	name = "right leather shoe"
+	desc = "Protects your feet from cigarettes."
+	desc_extended = "An expensive brown shoe, fit for a detective."
 	rarity = RARITY_UNCOMMON
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	icon = 'icons/obj/items/clothing/shoes/brown.dmi'
+	icon = 'icons/obj/item/clothing/shoes/brown.dmi'
 
 	item_slot = SLOT_FOOT_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)

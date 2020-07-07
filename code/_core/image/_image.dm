@@ -27,8 +27,6 @@
 
 	overlays.Cut()
 
-	name = "[attached_object.name] overlay"
-
 	if(length(additional_blends) && !never_blend)
 
 		//Sort blends by layer.
@@ -68,6 +66,7 @@
 		icon = initial_icon
 		icon_state = initial_icon_state
 
-	name = "[attached_object.name] (overlay)"
+	if(attached_object)
+		name = "[attached_object.name] (overlay)"
 
 	return TRUE

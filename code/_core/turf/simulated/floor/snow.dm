@@ -3,7 +3,7 @@
 	icon = 'icons/turf/floor/ice.dmi'
 	icon_state = "snow"
 
-	footstep_id = "snow"
+	footstep = /footstep/snow
 
 /turf/simulated/floor/snow/New()
 	icon_state = "snow[rand(0,12)]"

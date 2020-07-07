@@ -1,10 +1,11 @@
 /obj/item/storage/bags
 	name = "specific item type bags"
-	icon = 'icons/obj/items/storage/bags.dmi'
+	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
 
 /obj/item/storage/bags/mining
 	name = "mining bag"
+	desc = "What if i put my mining bed next to yours?"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots. Holds up to 40 ores or ingots."
 	icon_state = "mining"
 
@@ -20,6 +21,7 @@
 /obj/item/storage/bags/mining/bluespace
 	name = "bluespace mining bag"
 	icon_state = "mining_bluespace"
+	desc = "I got that bluespace fever and I can't sleep!"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores or ingots."
 	dynamic_inventory_count = 6
 	container_max_size = 100
@@ -48,8 +50,9 @@
 
 /obj/item/storage/pillbottle
 	name = "pill bottle"
+	desc = "Be sure to read the label before eating the contents."
 	desc_extended = "A pill bottle that can hold up to 30 pills."
-	icon = 'icons/obj/items/storage/bottles.dmi'
+	icon = 'icons/obj/item/storage/bottles.dmi'
 	icon_state = "pill_canister"
 
 	size = SIZE_2
@@ -134,4 +137,14 @@
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/pill/iron(src)
+	return ..()
+
+
+/obj/item/storage/pillbottle/omnizine
+	name = "omnizine pill bottle"
+	desc = "Contains 20 20u omnizine pills."
+
+/obj/item/storage/pillbottle/omnizine/fill_inventory()
+	for(var/i=1,i<=20,i++)
+		new /obj/item/container/pill/omnizine(src)
 	return ..()

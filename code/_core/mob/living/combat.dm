@@ -240,7 +240,8 @@
 
 	var/area/A = get_area(src)
 	if(A && istype(A))
-		play('sounds/weapons/generic_block.ogg', get_turf(src), alert = ALERT_LEVEL_NOISE, alert_source = src)
+		play('sound/weapons/generic_block.ogg', get_turf(src))
+		create_alert(VIEW_RANGE,src,attacker,ALERT_LEVEL_NOISE)
 
 	charge_block -= 100
 	handle_charges(0)
@@ -253,7 +254,7 @@
 		var/mob/living/L = src
 		L.to_chat(span("warning","You block \the [attacker.name]'s [weapon == attacker ? "attack" : weapon.name][name_check]!"),CHAT_TYPE_COMBAT)
 
-	if(is_player(src))
+	if(is_player_controlled())
 		add_skill_xp(SKILL_BLOCK,1)
 
 	return TRUE
@@ -282,7 +283,7 @@
 	if(get_dist(src,attacker) <= 1)
 		parry_atom.attack(src,attacker)
 
-	if(is_player(src))
+	if(is_player_controlled())
 		add_skill_xp(SKILL_PARRY,1)
 
 	return TRUE
@@ -315,7 +316,7 @@
 
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(src.loyalty_tag && attacker && is_living(attacker))
+	if(attacker && is_living(attacker) && src.loyalty_tag)
 		var/mob/living/L = attacker
 		if(L.loyalty_tag == src.loyalty_tag)
 			var/area/A1 = get_area(L)

@@ -1,6 +1,8 @@
 /obj/item/clothing/overwear/hardsuit/engineering
 	name = "engineering hardsuit"
-	icon = 'icons/obj/items/clothing/suit/engineering_rig.dmi'
+	desc = "The SM is at 9% health? Eh, it's probably gonna be fine"
+	desc_extended = "A hardsuit worn by engineers. Able to withstand incredible heat in order to work with engines."
+	icon = 'icons/obj/item/clothing/suit/engineering_rig.dmi'
 	rarity = RARITY_UNCOMMON
 	value = 200
 

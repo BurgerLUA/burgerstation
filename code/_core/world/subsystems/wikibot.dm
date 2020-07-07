@@ -1,3 +1,5 @@
+#define WIKIBOT "text/wikibot.txt"
+
 var/global/list/wikibot_list = list()
 
 SUBSYSTEM_DEF(wikibot)
@@ -16,15 +18,13 @@ SUBSYSTEM_DEF(wikibot)
 		log_subsystem(name,"Found no wikibot question/answer keys. Creating new one...")
 		add_new_wikibot_key(list("what","is","wikibot"),"Wikibot is a bot-controlled OOC helper that helps answer commonly asked questions.")
 
-	return TRUE
+	return ..()
 
 /subsystem/wikibot/proc/add_new_wikibot_key(var/list/keywords,var/answer)
 	wikibot_list += list(list("keywords" = keywords, "answer" = answer))
 	fdel(WIKIBOT)
 	text2file(json_encode(wikibot_list),WIKIBOT)
 	return TRUE
-
-
 
 /subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)
 

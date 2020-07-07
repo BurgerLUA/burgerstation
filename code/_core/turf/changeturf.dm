@@ -10,6 +10,7 @@
 	var/old_corners = corners
 
 	var/turf/W = new N(src)
+	W.initialized = FALSE
 	INITIALIZE(W)
 	. = W
 

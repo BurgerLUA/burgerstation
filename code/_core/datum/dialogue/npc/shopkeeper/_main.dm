@@ -1,8 +1,4 @@
-shopkeeper_dialogue
-
-
 /dialogue/npc/shopkeeper/
-	id = "shopkeeper_dialogue"
 
 /dialogue/npc/shopkeeper/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 

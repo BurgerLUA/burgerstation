@@ -13,3 +13,5 @@ SUBSYSTEM_DEF(emote)
 			all_emotes[E.id] = E
 
 	log_subsystem(name,"Initialized [length(all_emotes)] emotes.")
+
+	return ..()

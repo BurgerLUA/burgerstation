@@ -1,6 +1,7 @@
 obj/structure/interactive/computer
 	name = "computer"
 	desc = "Beep boop."
+	desc_extended = "Operates things, depending on what the console is."
 	icon = 'icons/obj/structure/computer.dmi'
 	var/on = TRUE
 
@@ -21,7 +22,7 @@ obj/structure/interactive/computer/console
 
 	bullet_block_chance = 75
 
-obj/structure/interactive/computer/console/Initialize()
+obj/structure/interactive/computer/console/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .
@@ -69,7 +70,6 @@ obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(call
 	INTERACT_CHECK
 
 	var/mob/living/advanced/player/P = caller
-
 	P.dialogue_target_id = "chargen_computer"
 	open_menu(P,"dialogue")
 
@@ -83,6 +83,8 @@ obj/structure/interactive/computer/console/medical
 
 obj/structure/interactive/computer/console/flight
 	name = "flight control console"
+	desc = "Beep boop."
+	desc_extended = "Operates things, depending on what the console is. This one controls a shuttle."
 	computer_type = "syndishuttle"
 	keyboard_type = "syndie_key"
 
@@ -119,13 +121,6 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	keyboard_type = "syndie_key"
 
 	var/obj/shuttle_controller/desired_shuttle_controller
-
-/obj/structure/interactive/computer/console/remote_flight/Initialize()
-
-	if(src.z == 3)
-		SShorde.possible_horde_targets += src
-
-	return ..()
 
 /obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -187,6 +182,15 @@ obj/structure/interactive/computer/console/remote_flight/bravo
 	name = "remote bravo shuttle console"
 	desired_shuttle_controller = /obj/shuttle_controller/bravo
 
+/obj/structure/interactive/computer/console/remote_flight/bravo/PostInitialize()
+	. = ..()
+	if(src.z == 3)
+		SShorde.possible_horde_targets += src
+	return .
+
+
+
+
 obj/structure/interactive/computer/console/remote_flight/charlie
 	name = "remote charlie shuttle console"
 	desired_shuttle_controller = /obj/shuttle_controller/charlie
@@ -194,3 +198,7 @@ obj/structure/interactive/computer/console/remote_flight/charlie
 obj/structure/interactive/computer/console/remote_flight/delta
 	name = "remote delta shuttle console"
 	desired_shuttle_controller = /obj/shuttle_controller/delta
+
+obj/structure/interactive/computer/console/remote_flight/golf
+	name = "remote golf shuttle console"
+	desired_shuttle_controller = /obj/shuttle_controller/golf

@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/god
 	name = "god mask"
-	icon = 'obj/items/clothing/masks/god.dmi'
+	icon = 'obj/item/clothing/masks/god.dmi'
 	rarity = RARITY_LEGENDARY
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "How can you kill a god?"
@@ -35,3 +35,5 @@
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
 	value = 10000
+
+	item_slot = SLOT_HEAD | SLOT_FACE

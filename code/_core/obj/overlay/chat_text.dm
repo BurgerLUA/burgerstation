@@ -17,6 +17,8 @@
 
 	return ..()
 
+#define CHAT_TEXT_CHARACTER_LIMIT 144
+
 /obj/effect/chat_text/New(var/atom/desired_loc,var/desired_text,var/bypass_length=FALSE)
 
 	if(ismob(desired_loc))
@@ -33,12 +35,12 @@
 		animate(src,pixel_y = 0, alpha = 255, time = 5)
 		force_move(get_turf(desired_loc))
 
-		maptext_width = TILE_SIZE*CEILING(VIEW_RANGE*0.75,2)
+		maptext_width = TILE_SIZE*CEILING(VIEW_RANGE*2*0.75,2)
 		maptext_x = -(maptext_width-TILE_SIZE)*0.5
 		maptext_y = TILE_SIZE*0.75
 
-		if(!bypass_length && length(desired_text) >= 52) //52 is a magic number because reasons.
-			desired_text = copytext(desired_text,1,52) + "..."
+		if(!bypass_length && length(desired_text) > CHAT_TEXT_CHARACTER_LIMIT) //52 is a magic number because reasons.
+			desired_text = copytext(desired_text,1,CHAT_TEXT_CHARACTER_LIMIT) + "..."
 
 		maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>[html_decode(desired_text)]</font></center>"
 

@@ -30,6 +30,7 @@ var/global/mob/abstract/node_checker
 	invisibility = 0
 
 /obj/marker/map_node/New(var/desired_loc)
+	plane = PLANE_HIDDEN
 	alpha = 0
 	all_map_nodes += src
 	return ..()

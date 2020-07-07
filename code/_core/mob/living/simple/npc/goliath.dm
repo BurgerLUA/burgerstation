@@ -3,17 +3,19 @@
 	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'
 	icon_state = "goliath"
 	damage_type = /damagetype/unarmed/claw/
-	class = "goliath"
+	class = /class/goliath
+
+	value = 25
 
 	ai = /ai/goliath
 
-	stun_angle = 90
+	stun_angle = 0
 
 	armor_base = list(
 		BLADE = 50,
 		BLUNT = 75,
 		PIERCE = 25,
-		LASER = -25,
+		LASER = 25,
 		MAGIC = -50,
 		HEAT = INFINITY,
 		COLD = -75,
@@ -25,10 +27,16 @@
 		FATIGUE = 50
 	)
 
+	status_immune = list(
+		FIRE = FALSE
+	)
+
 	iff_tag = "goliath"
 	loyalty_tag = "goliath"
 
 	mob_size = MOB_SIZE_LARGE
+
+	health_base = 100
 
 /mob/living/simple/npc/goliath/post_death()
 	..()

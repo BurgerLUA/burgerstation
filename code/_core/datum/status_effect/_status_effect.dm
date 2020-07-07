@@ -11,7 +11,7 @@
 /status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	if(!stealthy)
-		new/obj/effect/temp/damage_number(owner.loc,duration,"[uppertext(name)]!")
+		new/obj/effect/temp/damage_number(owner.loc,clamp(duration,10,100),"[uppertext(name)]!")
 
 	return TRUE
 
@@ -49,11 +49,29 @@
 	minimum = 10
 	maximum = 100
 
+/status_effect/fire
+	name = "Fire"
+	desc = "You're on fire!"
+	id = FIRE
+	minimum = 0
+	maximum = 300
+
+/status_effect/fire/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+
+	. = ..()
+
+	var/initial_fire = owner.on_fire
+
+	if(owner.ignite(magnitude) && !initial_fire)
+		owner.visible_message(span("danger","\The [owner.name] is set on fire!"))
+
+	return .
+
 /status_effect/staggered
 	name = "Staggered"
 	desc = "You're staggered!"
 	id = STAGGER
-	minimum = 5
+	minimum = 1
 	maximum = 10
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
@@ -121,11 +139,19 @@
 	name = "Grab"
 	desc = "You're grabbed!"
 	id = GRAB
-	minimum = 5
-	maximum = 5
+	minimum = 1
+	maximum = 1
 
-/status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-	owner.add_status_effect(PARALYZE,magnitude,duration,source = source,stealthy = TRUE)
+/status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+
+	if(source && is_living(source) && owner && !owner.dead && owner.dir == source.dir)
+		var/mob/living/L = source
+		if(L.loyalty_tag != owner.loyalty_tag)
+			L.add_status_effect(PARALYZE,30,source = source,stealthy = TRUE)
+			L.add_status_effect(DISARM,30,source = source)
+			return ..()
+
+	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
 	return ..()
 
 /status_effect/druggy
@@ -144,15 +170,15 @@
 			power,0,0,0,
 			0,power,0,0,
 			0,0,power,0,
-			0,0,0,1-min(0.9,power*0.33),
+			0,0,0,1,
 			enlightenment_power,enlightenment_power,enlightenment_power,enlightenment_power
 		)
 		owner.update_eyes()
-		owner.client.add_color_mod("druggy",desired_color_mod)
+		owner.add_color_mod("druggy",desired_color_mod)
 
 	return TRUE
 
 /status_effect/druggy/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
 	if(owner && owner.client)
-		owner.client.remove_color_mod("druggy")
+		owner.remove_color_mod("druggy")
 	return TRUE
