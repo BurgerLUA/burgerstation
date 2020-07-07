@@ -24,11 +24,17 @@
 		.["reagents_2"] = reagents_2.stored_reagents
 
 
-/obj/item/container/pill/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/container/pill/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 
 	if(object_data["double"]) double = object_data["double"]
+
+	return .
+
+/obj/item/container/pill/set_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+
+	. = ..()
 
 	if(object_data["reagents_2"] && length(object_data["reagents_2"]))
 		for(var/r_id in object_data["reagents_2"])
@@ -37,6 +43,7 @@
 		reagents_2.update_container()
 
 	return .
+
 
 /obj/item/container/pill/calculate_value()
 

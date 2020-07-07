@@ -31,7 +31,7 @@
 	.["stored_radio"] = stored_radio
 	return .
 
-/obj/item/radio/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/radio/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["stored_radio"]) stored_radio = load_and_create(P,object_data["stored_radio"],src)
 	return .

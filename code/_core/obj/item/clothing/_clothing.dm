@@ -52,7 +52,7 @@
 	.["polymorphs"] = polymorphs
 	return .
 
-/obj/item/clothing/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/clothing/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
 	return .

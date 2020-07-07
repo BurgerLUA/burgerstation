@@ -44,7 +44,7 @@
 	.["firing_pin"] = firing_pin
 	return .
 
-/obj/item/weapon/ranged/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/weapon/ranged/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["firing_pin"]) firing_pin = load_and_create(P,object_data["firing_pin"],src)
 	return .

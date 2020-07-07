@@ -22,6 +22,33 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
+/obj/item/magazine/get_item_data(var/save_inventory = TRUE)
+
+	. = ..()
+
+	if(length(stored_bullets))
+		.["stored_bullets"] = list()
+		for(var/i=1,i<=length(stored_bullets),i++)
+			var/obj/item/bullet_cartridge/B = stored_bullets[i]
+			if(B) .["stored_bullets"][B.type] += 1
+
+	return .
+
+/obj/item/magazine/set_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+
+	. = ..()
+
+	if(object_data["stored_bullets"])
+		for(var/k in object_data["stored_bullets"])
+			var/v = object_data["stored_bullets"][k]
+			for(var/i=1,i<=v,i++)
+				var/obj/item/bullet_cartridge/B = new k(src)
+				INITIALIZE(B)
+				GENERATE(B)
+				stored_bullets += B
+
+	return .
+
 /obj/item/magazine/Generate()
 
 	if(ammo)

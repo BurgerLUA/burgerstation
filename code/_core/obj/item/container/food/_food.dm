@@ -22,7 +22,7 @@
 	.["original_volume"] = original_volume
 	return .
 
-/obj/item/container/food/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/container/food/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["original_volume"]) original_volume = object_data["original_volume"]
 	return .

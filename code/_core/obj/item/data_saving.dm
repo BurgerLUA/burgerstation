@@ -55,8 +55,9 @@
 		return FALSE
 
 	var/obj/item/I = new o_type(loc)
-	I.set_item_data(P,object_data)
+	I.set_item_data_pre(P,object_data)
 	INITIALIZE(I)
+	I.set_item_data_post(P,object_data)
 	I.force_move(loc)
 	I.update_sprite()
 
@@ -102,7 +103,7 @@
 
 	return .
 
-/obj/item/organ/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/organ/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 
@@ -115,7 +116,7 @@
 
 	return .
 
-/obj/item/proc/set_item_data(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/proc/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
 	if(object_data["color"])
 		color = object_data["color"]
@@ -129,26 +130,29 @@
 		item_count_current = object_data["item_count_current"]
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
+
+	return TRUE
+
+
+/obj/item/proc/set_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	if(object_data["reagents"] && length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
 			reagents.add_reagent(text2path(r_id),volume,TNULL,FALSE)
 		reagents.update_container()
-
 	return TRUE
-
 
 /obj/hud/inventory/proc/set_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
 
 	if(inventory_data["held"])
 		for(var/i=1,i<=length(inventory_data["held"]),i++)
-			world.log << "Trying to create and hold: [inventory_data["held"][i]["type"]]."
+			//world.log << "Trying to create and hold: [inventory_data["held"][i]["type"]]."
 			var/obj/item/I = load_and_create(P,inventory_data["held"][i],get_turf(src))
 			if(I) src.add_held_object(I,TRUE,TRUE)
 
 	if(inventory_data["worn"])
 		for(var/i=1,i<=length(inventory_data["worn"]),i++)
-			world.log << "Trying to create and wear: [inventory_data["worn"][i]["type"]]."
+			//world.log << "Trying to create and wear: [inventory_data["worn"][i]["type"]]."
 			var/obj/item/I = load_and_create(P,inventory_data["worn"][i],get_turf(src))
 			if(I) src.add_worn_object(I,TRUE,TRUE)
 
