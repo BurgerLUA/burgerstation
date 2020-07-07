@@ -1,4 +1,3 @@
-
 #define ROUND_ID_DIR "data/server/round_id.txt"
 
 #define LOG_RATE 10
@@ -19,7 +18,7 @@ SUBSYSTEM_DEF(logging)
 	round_id++
 	fdel(ROUND_ID_DIR)
 	text2file("[round_id]",ROUND_ID_DIR)
-	start_date = time2text(world.realtime,"YYYY-MMM-DD")
+	start_date = lowertext(time2text(world.realtime,"YYYY-MMM-DD"))
 	return ..()
 
 /subsystem/logging/proc/log_chat(var/data_to_log)
