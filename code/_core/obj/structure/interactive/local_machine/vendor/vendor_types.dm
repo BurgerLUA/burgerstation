@@ -264,7 +264,7 @@
 	name = "chemist wardrobe vendor"
 	icon_state = "chemdrobe"
 
-
+/*
 /obj/structure/interactive/vending/clown/
 	name = "clown vendor"
 	icon_state = "games"
@@ -281,6 +281,7 @@
 		/obj/item/instrument/trombone,
 		/obj/item/instrument/violin
 	)
+*/
 
 /obj/structure/interactive/vending/clown/wardrobe
 	name = "clown wardrobe vendor"
