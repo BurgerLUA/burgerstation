@@ -41,7 +41,7 @@
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	.["firing_pin"] = firing_pin.save_item_data(save_inventory)
+	if(firing_pin) .["firing_pin"] = firing_pin.save_item_data(save_inventory)
 	return .
 
 /obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)

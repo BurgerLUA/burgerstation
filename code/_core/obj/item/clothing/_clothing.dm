@@ -49,7 +49,7 @@
 
 /obj/item/clothing/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	.["polymorphs"] = polymorphs
+	if(length(polymorphs)) .["polymorphs"] = polymorphs
 	return .
 
 /obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)

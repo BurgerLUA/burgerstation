@@ -37,6 +37,7 @@ var/global/world_state = STATE_STARTING
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
 	var/description = CONFIG("SERVER_DESCRIPTION","No description provided.")
 
+	/*
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
 
@@ -45,12 +46,13 @@ var/global/world_state = STATE_STARTING
 
 	var/duration = "[hours]:[minutes]"
 	var/map = "Biomes"
+	*/
 
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>"
 	status += "<i>[description]</i><br>"
-	status += "Map: <b>[map]</b><br>"
-	status += "Time: <b>\[[duration]</b>"
+	//status += "Map: <b>[map]</b><br>"
+	//status += "Time: <b>\[[duration]</b>"
 
 /*
 /world/Error(var/exception/e)

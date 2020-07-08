@@ -32,8 +32,7 @@
 /obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 
-	if(src.chambered_bullet)
-		.["chambered_bullet"] = src.chambered_bullet.type
+	if(src.chambered_bullet) .["chambered_bullet"] = src.chambered_bullet.type
 
 	if(length(src.stored_bullets))
 		.["stored_bullets"] = new/list(length(src.stored_bullets))

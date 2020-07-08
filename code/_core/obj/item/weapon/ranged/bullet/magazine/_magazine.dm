@@ -9,8 +9,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	if(src.stored_magazine)
-		.["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
+	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
 	return .
 
 

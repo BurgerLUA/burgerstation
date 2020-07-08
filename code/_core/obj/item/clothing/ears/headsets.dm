@@ -27,7 +27,7 @@
 
 /obj/item/clothing/ears/headset/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	.["stored_radio"] = stored_radio.save_item_data(save_inventory)
+	if(stored_radio) .["stored_radio"] = stored_radio.save_item_data(save_inventory)
 	return .
 
 /obj/item/clothing/ears/headset/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)

@@ -105,8 +105,7 @@
 	. = ..()
 
 	var/list/blend_data = get_blend_data()
-	if(length(blend_data))
-		.["blend_data"] = blend_data
+	if(length(blend_data)) .["blend_data"] = blend_data
 
 	return .
 

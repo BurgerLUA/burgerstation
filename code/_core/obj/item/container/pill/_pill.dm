@@ -20,8 +20,7 @@
 	. = ..()
 	.["double"] = double
 
-	if(reagents_2)
-		.["reagents_2"] = reagents_2.stored_reagents
+	if(reagents_2) .["reagents_2"] = reagents_2.stored_reagents
 
 
 /obj/item/container/pill/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
