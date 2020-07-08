@@ -1,6 +1,7 @@
 /obj/item/weapon/melee/toolbox
 	name = "toolbox"
-	desc = "Ultra robust."
+	desc = "WARNING: Very Robust"
+	desc_extended = "A Toolbox mainly used by the most brutish and stupid mercs to hit people with. Can also be used to store tools."
 	icon = 'icons/obj/item/weapons/melee/toolbox/red.dmi'
 	damage_type = /damagetype/item/heavy
 

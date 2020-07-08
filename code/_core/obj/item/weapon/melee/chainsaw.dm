@@ -1,6 +1,7 @@
 /obj/item/weapon/melee/energy/chainsaw/
 	name = "chainsaw"
-	desc = "A blade made out of ENERGY. Please do not sue."
+	desc = "When you solve your problems with a chainsaw, you never have the same problem twice!"
+	desc_extended =  "It's a chainsaw. Turn it on and watch as everything you hit with it becomes chunky soup."
 	icon = 'icons/obj/item/weapons/melee/swords/chainsaw.dmi'
 	damage_type = /damagetype/melee/sword/chainsaw
 
