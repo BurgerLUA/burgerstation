@@ -61,29 +61,38 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob,var/atom/object)
+/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob)
 
 	if(!stored_magazine)
 		CRASH_SAFE("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
 		return FALSE
+
 	var/turf/T = get_turf(caller)
-	stored_magazine.force_move(T)
-	if(T)
-		if(object && is_inventory(object))
-			var/obj/hud/inventory/offhand_slot = object
-			offhand_slot.add_object(stored_magazine)
+
+	if(!T)
+		qdel(src)
+	else
+		stored_magazine.force_move(T)
 		play(stored_magazine.get_magazine_eject_sound(),T)
-		stored_magazine.update_sprite()
-	stored_magazine = null
+		if(stored_magazine)
+			stored_magazine.update_sprite()
+			stored_magazine = null
+
 	open = TRUE
 	update_sprite()
+
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(stored_magazine && !wielded && object && is_inventory(object) && src && src.loc && is_inventory(src.loc) && !(caller.movement_flags & MOVEMENT_CROUCHING))
-		eject_magazine(caller,object)
+		var/obj/item/magazine/M = stored_magazine
+		var/obj/hud/inventory/I = object
+		eject_magazine(caller)
+		if(M && !M.qdeleting)
+			I.add_held_object(M)
 		return TRUE
+
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)

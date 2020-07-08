@@ -2,6 +2,7 @@
 #define ENABLE_INSTALOAD FALSE
 #define ENABLE_STOPLAG TRUE
 #define MOVEMENT_DELAY_MOD 0.75 //Lower values means faster.
+#define ENABLE_DAMAGE_NUMBERS FALSE
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.

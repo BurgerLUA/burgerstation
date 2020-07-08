@@ -57,7 +57,9 @@ obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/Old
 /obj/structure/smooth/table/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
 		var/mob/living/L = O
-		var/obj/structure/smooth/table/T = locate() in new_loc.contents
+		var/obj/structure/smooth/table/T
+		if(new_loc)
+			T = locate() in new_loc.contents
 		if(!T)
 			animate(L,pixel_z = initial(L.pixel_z),time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
 			L.move_delay += DECISECONDS_TO_TICKS(5)

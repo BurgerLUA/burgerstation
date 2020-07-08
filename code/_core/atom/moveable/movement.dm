@@ -65,7 +65,7 @@
 			for(var/atom/movable/AM in old_loc.contents)
 				if(AM == src)
 					continue
-				AM.Uncrossed(src)
+				AM.Uncrossed(src,new_loc,old_loc)
 
 	loc = new_loc
 
@@ -75,7 +75,7 @@
 			for(var/atom/movable/AM in loc.contents)
 				if(AM == src)
 					continue
-				AM.Crossed(src)
+				AM.Crossed(src,new_loc,old_loc)
 
 	if(old_loc != loc)
 		post_move(old_loc)

@@ -89,7 +89,7 @@
 		return FALSE
 
 	if(!istype(A))
-		usr?.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 2000.</h2>"))
+		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 2000.</h2>"))
 		return FALSE
 
 	if(!force && world_state != STATE_RUNNING)

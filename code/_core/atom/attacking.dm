@@ -13,7 +13,7 @@
 	if(health)
 		health.update_health(damage_amount,attacker)
 
-	if(!stealthy && damage_amount > 0)
+	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0)
 		if(isturf(src))
 			new/obj/effect/temp/damage_number(src,null,damage_amount)
 		else if(isturf(src.loc))
