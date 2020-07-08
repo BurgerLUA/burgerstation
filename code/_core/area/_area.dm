@@ -144,7 +144,7 @@ var/global/list/all_areas = list()
 			play_music_track(pick(tracks),M.client)
 
 	if(enterer.area != src)
-		if(ismob(enterer) && !is_observer(enterer))
+		if(ismob(enterer))
 			var/mob/M = enterer
 			if(M.client)
 				if(!ambient_sound)

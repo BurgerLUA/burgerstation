@@ -39,8 +39,6 @@ var/global/world_state = STATE_STARTING
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
 	var/description = CONFIG("SERVER_DESCRIPTION","No description provided.")
 
-	world.log << "The server name is: [server_name]."
-
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
 

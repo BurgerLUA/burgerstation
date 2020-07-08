@@ -41,6 +41,9 @@
 		var/atom/movable/object_to_throw = src.defer_click_on_object(location,control,params)
 		if(is_item(object_to_throw))
 			var/obj/item/I = object_to_throw
+			if(I.additional_clothing_parent)
+				caller.to_chat(span("warning","You can't throw this!"))
+				return TRUE
 			var/vel_x = object.x - caller.x
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))

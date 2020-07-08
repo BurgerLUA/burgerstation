@@ -190,21 +190,22 @@
 	for(var/attribute in attribute_stats)
 		var/class = attribute_stats[attribute]
 		if(!islist(attribute_damage[attribute]))
-			new_attack_damage[attribute_damage[attribute]] += FLOOR(L.get_attribute_level(attribute) * class * 0.01,1)
+			new_attack_damage[attribute_damage[attribute]] += L.get_attribute_level(attribute) * class * 0.01
 		else
 			for(var/att in attribute_damage[attribute])
-				new_attack_damage[att] += FLOOR(L.get_attribute_level(attribute) * class * 0.01 * (1/length(attribute_damage[attribute])),1)
+				new_attack_damage[att] += L.get_attribute_level(attribute) * class * 0.01 * (1/length(attribute_damage[attribute]))
 
 	for(var/skill in skill_stats)
 		var/class = skill_stats[skill]
 		if(!islist(skill_damage[skill]))
-			new_attack_damage[skill_damage[skill]] += FLOOR(L.get_skill_level(skill) * class * 0.01,1)
+			new_attack_damage[skill_damage[skill]] += L.get_skill_level(skill) * class * 0.01
 		else
 			for(var/ski in skill_damage[skill])
-				new_attack_damage[ski] += FLOOR(L.get_skill_level(skill) * class * 0.01 * (1/length(skill_damage[skill])),1)
+				new_attack_damage[ski] += L.get_skill_level(skill) * class * 0.01 * (1/length(skill_damage[skill]))
 
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= hit_object.health.damage_multiplier*damage_multiplier
+		new_attack_damage[k] *= RAND_PRECISE(1,1.1)
 
 	return new_attack_damage
 
