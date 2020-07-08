@@ -36,11 +36,13 @@
 	var/mob/living/simple/npc/slime/self = owner
 
 	for(var/mob/living/advanced/A in view(radius_find_enemy,owner))
+		CHECK_TICK
 		if(should_attack_mob(A) && is_enemy(A))
 			.[A] = TRUE
 
 	if(!length(.) && self.stored_slimes < self.stored_slimes_max)
 		for(var/mob/living/simple/npc/slime/S in view(radius_find_enemy,owner))
+			CHECK_TICK
 			if(can_absorb_slime(S))
 				.[S] = TRUE
 

@@ -25,6 +25,7 @@
 	var/list/list_of_ais = all_boss_ai + all_living_ai
 
 	for(var/ai/AI in list_of_ais)
+		CHECK_TICK
 		if(AI.alert_level == ALERT_LEVEL_COMBAT)
 			continue
 		var/mob/M = AI.owner
