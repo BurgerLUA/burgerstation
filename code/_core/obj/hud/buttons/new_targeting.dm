@@ -64,7 +64,7 @@
 		P.attack_left = left
 		update_overlays()
 
-	return ..()
+	return .
 
 /obj/hud/button/targeting_new/update_overlays()
 

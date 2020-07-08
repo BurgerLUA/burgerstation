@@ -1,5 +1,11 @@
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
+			L.to_chat(span("warning","You're dead!"))
+			return FALSE
+
 	var/atom/defer_self = src.defer_click_on_object(location,control,params) //We could be holding an object.
 	var/atom/defer_object = object.defer_click_on_object(location,control,params) //The object we're clicking on could be something else.
 

@@ -23,18 +23,23 @@ var/global/world_state = STATE_STARTING
 	turf = /turf/unsimulated/space
 	area = /area/
 
-
+	visibility = 0 //This is changed to true when update_server_status runs successfully.
 
 /world/New()
 	..()
 	life()
 
-/world/proc/update_status()
+/world/proc/update_server_status()
 
-	var/server_name = "Burgerstation 13"
-	var/server_link = "https://discord.gg/yEaV92a"
-	var/github_name = "Space Station 13 <b>FROM SCRATCH</b>"
-	var/description = "A newbie-friendly character-persistent action-oriented roleplay-optional server made with fun and socialization in mind."
+	if(world_state == STATE_STARTING)
+		return FALSE
+
+	var/server_name = CONFIG("SERVER_NAME","Unofficial Burgerstation 13 Server")
+	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
+	var/github_name = "SS13 <b>FROM SCRATCH</b>"
+	var/description = CONFIG("SERVER_DESCRIPTION","No description provided.")
+
+	world.log << "The server name is: [server_name]."
 
 	var/minutes = FLOOR(world.time / 600, 1)
 	var/hours = FLOOR(world.time / 36000, 1)
@@ -43,13 +48,16 @@ var/global/world_state = STATE_STARTING
 		minutes = "0[minutes]"
 
 	var/duration = "[hours]:[minutes]"
-	var/map = "Biomes (255x255x3)"
+	var/map = "Biomes"
 
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>"
 	status += "<i>[description]</i><br>"
 	status += "Map: <b>[map]</b><br>"
 	status += "Time: <b>\[[duration]</b>"
+
+	visibility = 1
+
 
 /*
 /world/Error(var/exception/e)

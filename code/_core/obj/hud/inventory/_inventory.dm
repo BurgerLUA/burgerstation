@@ -76,6 +76,8 @@
 
 	var/allow_quick_equip = TRUE
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_NO_DISTANCE
+
 /obj/hud/inventory/proc/is_occupied(var/ignore_held = TRUE, var/ignore_worn = TRUE)
 
 	if(!ignore_held && get_top_held_object())

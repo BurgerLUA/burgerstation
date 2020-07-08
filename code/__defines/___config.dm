@@ -35,7 +35,6 @@
 #define TALK_RANGE VIEW_RANGE
 #define YELL_RANGE VIEW_RANGE*1.5
 
-#define RADIO_RANGE 3 //Can only receive radio messages in this distance
 #define RADIO_WHISPER_RANGE 1
 #define RADIO_TALK_RANGE 4
 #define RADIO_YELL_RANGE 8
@@ -60,7 +59,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 #define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD TRUE
-#define ENABLE_LIGHTING FALSE
+#define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
 
 #define ENABLE_HIJACK FALSE

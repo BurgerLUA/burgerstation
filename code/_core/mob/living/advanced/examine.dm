@@ -56,7 +56,9 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 		. += list(div("warning","[final_pronoun2] breathing is shallow."))
 
 	if(dead)
-		if(client)
+		if(suicide)
+			. += list(div("warning","[final_pronoun] lay dead and lifeless from what appears to be a suicide. There is no hope of recovery."))
+		else if(client)
 			. += list(div("warning","[final_pronoun] lay dead and lifeless."))
 		else
 			. += list(div("warning","[final_pronoun] lay dead and lifeless, and their soul has departed."))

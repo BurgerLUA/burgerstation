@@ -12,7 +12,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/widget/experience
 	name = "Check Experience"
@@ -20,6 +20,8 @@
 	screen_loc = "RIGHT-1,TOP"
 
 /obj/hud/button/widget/experience/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	. = ..()
 
 	if(. && is_living(caller))
 

@@ -6,8 +6,6 @@
 
 	world_state = STATE_INITIALIZING
 
-	update_status()
-
 	for(var/subsystem in subtypesof(/subsystem/))
 		var/subsystem/S = subsystem
 		if(!initial(S.priority))
@@ -74,5 +72,7 @@
 			O.show_hud(TRUE,speed = 2)
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")
+
+	update_server_status()
 
 	return TRUE

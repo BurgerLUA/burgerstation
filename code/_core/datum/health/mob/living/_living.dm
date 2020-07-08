@@ -20,7 +20,7 @@
 			var/health_icon_state
 
 			if(L.dead)
-				if(L.client)
+				if(L.client && !L.suicide)
 					health_icon_state = "revive"
 				else
 					health_icon_state = "dead"

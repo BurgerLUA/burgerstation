@@ -14,8 +14,10 @@
 		return FALSE
 
 	if(choice == "Yes")
-		health.adjust_loss_smart(brute = 1000, burn = 1000, oxy = 1000, tox = 1000)
+		death()
 		visible_message("[src.name] kills themselves!")
+		suicide = TRUE
+		client.make_ghost(get_turf(src))
 
 /mob/living/verb/set_intent_harm()
 	set category = "Game"

@@ -58,13 +58,13 @@
 
 	target.add_status_effect(ADRENALINE,30,30)
 
-	caller.visible_message("\The [caller.name] shocks \the [target.name] with \the [src.name]!","You shock \the [target.name] with \the [src.name]!")
+	caller.visible_message(span("notice","\The [caller.name] shocks \the [target.name] with \the [src.name]!"),span("notice","You shock \the [target.name] with \the [src.name]!"))
 
 	play('sound/items/defib/defib_zap.ogg',src)
 	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
-	if(target.check_death() || !target.client)
-		target.visible_message("Nothing happens!")
+	if(target.check_death() || !target.client || target.suicide)
+		target.visible_message(span("warning","Nothing happens..."))
 		play('sound/items/defib/defib_failed.ogg',src)
 		create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 		return FALSE
@@ -73,7 +73,7 @@
 	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
 
 	target.revive()
-	caller.visible_message("\The [target.name] jolts to life!")
+	caller.visible_message(span("danger","\The [target.name] jolts to life!"))
 
 	target.add_status_effect(ADRENALINE,100,100)
 

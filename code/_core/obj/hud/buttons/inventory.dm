@@ -10,7 +10,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -77,12 +77,14 @@
 
 /obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	. = ..()
+
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
 		update_sprite()
 
-	return ..()
+	return .
 
 /obj/hud/button/hide_show_inventory/update_icon()
 

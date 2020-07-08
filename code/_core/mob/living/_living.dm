@@ -156,6 +156,8 @@
 
 	var/mob/living/advanced/player/following = null
 
+	var/suicide = FALSE
+
 /mob/living/calculate_value()
 
 	. = ..()

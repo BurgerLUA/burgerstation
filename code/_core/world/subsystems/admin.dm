@@ -14,6 +14,10 @@ SUBSYSTEM_DEF(admin)
 		stored_ranks[lowertext(R.id)] = R
 	log_subsystem(src.name,"Loaded [length(stored_ranks)] different ranks.")
 
+	if(!fexists(RANK_DIR))
+		log_subsystem(name,"Could not find an admin file ([RANK_DIR]).")
+		return ..()
+
 	var/file_text = file2text(RANK_DIR)
 	var/list/split_file = splittext(file_text,"\n")
 	var/line_count = 0

@@ -20,6 +20,13 @@
 		/obj/item/container/food/dynamic/meat/raw_beefman
 	)
 
+/mob/living/advanced/npc/beefman/Initialize()
+	. = ..()
+	change_organ_visual("skin", desired_color = pick("#C42F36","#A02518","#742210","#541900","#261007"))
+	update_all_blends()
+	return .
+
+
 /mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(damage_amount > 20 & luck(src,20 + damage_amount,FALSE))

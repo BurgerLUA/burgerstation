@@ -8,7 +8,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -38,7 +38,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -67,7 +67,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -147,7 +147,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/teleport_to_player/update_overlays()
 	. = ..()
@@ -192,7 +192,7 @@
 
 	has_quick_function = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

@@ -21,6 +21,8 @@
 	has_quick_function = TRUE
 	quick_function_type =  FLAG_QUICK_INSTANT
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
 
 	if(alpha == 0)

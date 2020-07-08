@@ -48,13 +48,13 @@
 
 	switch(dir)
 		if(NORTH)
-			pixel_y = 1
+			pixel_y = -2
 		if(SOUTH)
-			pixel_y = -1
+			pixel_y = 2
 		if(EAST)
-			pixel_x = 1
+			pixel_x = -2
 		if(WEST)
-			pixel_x = -1
+			pixel_x = 2
 
 	return .
 

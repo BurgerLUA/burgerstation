@@ -5,7 +5,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/menu/title
 	name = "Burgerstation 13"

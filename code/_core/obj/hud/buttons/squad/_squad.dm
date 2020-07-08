@@ -45,7 +45,7 @@
 
 			var/answer = input("Which squad would you like to join?","Squad Selection",null) as null|anything in squad_table
 
-			if(!P)
+			if(!P || !answer)
 				return FALSE
 
 			if(P.current_squad && answer == "Leave Existing Squad")

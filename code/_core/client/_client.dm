@@ -112,7 +112,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	clear_mob(mob)
 
-	world.update_status()
+	world.update_server_status()
 
 	return ..()
 
@@ -177,13 +177,14 @@ var/global/list/all_clients = list() //Assoc list
 			play_music_track("slow_fall", src)
 			mob.show_hud(TRUE,speed = 2)
 
-	world.update_status()
 	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
 	update_window()
 	update_color_mods()
 
 	if(IsByondMember())
 		byond_member = TRUE
+
+	world.update_server_status()
 
 	return mob
 

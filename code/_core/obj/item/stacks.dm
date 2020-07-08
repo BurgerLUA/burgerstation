@@ -1,5 +1,5 @@
 /obj/item/proc/can_transfer_stacks_to(var/obj/item/I)
-	return istype(src,I)
+	return istype(src,I) && I != src
 
 //Credit goes to Unknown Person
 
@@ -36,21 +36,19 @@
 
 /obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(try_transfer_reagents(caller,object,location,control,params))
+	var/atom/defer_object = object.defer_click_on_object(location,control,params)
+
+	if(try_transfer_reagents(caller,defer_object,location,control,params))
 		return TRUE
 
-	if(object == src || !is_item(object) || !src.loc || get_dist(src,object) > 1)
-		return ..()
-
-	var/obj/item/I = object
-	if(I.can_transfer_stacks_to(src))
-		var/stacks_transfered = I.transfer_item_count_to(src)
+	if(is_item(defer_object) && src.can_transfer_stacks_to(defer_object))
+		var/obj/item/I = defer_object
+		var/stacks_transfered = src.transfer_item_count_to(I)
 		if(stacks_transfered)
-			caller.to_chat("You transfer [stacks_transfered] stacks.")
-			return TRUE
+			caller.to_chat("You transfer [stacks_transfered] stacks to \the [I.name].")
 		else
 			caller.to_chat("\The [I.name] is full!")
-			return TRUE
+		return TRUE
 
 	return ..()
 

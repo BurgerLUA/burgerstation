@@ -1,4 +1,3 @@
-#ignore misc BYOND files
 Thumbs.db
 *.log
 *.rsc
@@ -10,6 +9,7 @@ Thumbs.db
 *.code-workspace
 data/
 cfg/
+config/config.txt
 build_log.txt
 code/_core/world/private.dm
 maps/main/backup/
