@@ -4,7 +4,6 @@ mob/living/advanced/on_left_up(var/atom/object,location,control,params) //THIS O
 	if(!can_use_controls(object,location,control,params))
 		return FALSE
 
-
 	if(src.attack_flags & ATTACK_BLOCK)
 
 	else

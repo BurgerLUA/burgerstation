@@ -124,10 +124,10 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 
 /obj/structure/interactive/plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(!is_advanced(caller))
 		return ..()
-
-	INTERACT_CHECK
 
 	harvest(caller)
 

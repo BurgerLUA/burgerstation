@@ -19,6 +19,8 @@
 	var/collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	var/collision_dir = 0x0
 
+	var/interaction_flags = FLAG_INTERACTION_LIVING
+
 	var/interact_distance = 1 //You must be at least this close to interact with this object, and for the object to interact with others.
 	var/object_size = 1 //This-1 is added to attack range.
 	var/attack_range = 1 //If it's a melee weapon, it needs a range.

@@ -141,6 +141,11 @@
 
 /obj/hud/button/research/piece/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	. = ..()
+
+	if(!.)
+		return FALSE
+
 	if(turning)
 		return FALSE
 

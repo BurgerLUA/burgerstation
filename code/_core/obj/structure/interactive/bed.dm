@@ -13,6 +13,8 @@ obj/structure/interactive/bed
 
 	bullet_block_chance = 50
 
+	interaction_flags = FLAG_INTERACTION_LIVING
+
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
 	. = ..()
@@ -37,10 +39,6 @@ obj/structure/interactive/bed
 	return .
 
 obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
-	if(!is_living(caller))
-		..() //This is needed
-		return FALSE
 
 	INTERACT_CHECK
 

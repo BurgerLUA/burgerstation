@@ -13,5 +13,9 @@
 
 
 /obj/hud/button/skip/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	caller.skip_cutscene = TRUE
-	return ..()
+	. = ..()
+
+	if(.)
+		caller.skip_cutscene = TRUE
+
+	return .

@@ -22,6 +22,8 @@
 
 	var/flags_placement = FLAGS_PLACEMENT_NONE
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
+
 /obj/structure/Initialize()
 
 	. = ..()

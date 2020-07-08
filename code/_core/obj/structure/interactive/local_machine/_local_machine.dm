@@ -30,6 +30,9 @@ var/global/list/local_machines = list()
 		update_for_mob(M)
 
 /obj/structure/interactive/localmachine/clicked_on_by_object(caller,object,location,control,params)
+
+	INTERACT_CHECK
+
 	if(ismob(caller))
 		var/mob/M = caller
 		disallowed_mobs += M

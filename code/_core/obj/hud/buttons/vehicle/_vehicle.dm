@@ -57,7 +57,7 @@
 
 	. = ..()
 
-	if(is_advanced(caller))
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(A.driving)
 			A.driving.exit_vehicle(A,get_turf(A.driving))

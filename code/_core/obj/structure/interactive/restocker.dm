@@ -32,8 +32,9 @@
 
 /obj/structure/interactive/restocker/ammo/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(istype(object,/obj/item/magazine/))
-		INTERACT_CHECK
 		var/obj/item/magazine/M = object
 		if(!M.ammo)
 			caller.to_chat(span("warning","That magazine isn't registered in our system!"))

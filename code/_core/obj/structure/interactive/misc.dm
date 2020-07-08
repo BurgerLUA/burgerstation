@@ -24,10 +24,10 @@ obj/structure/interactive/misc/dresser
 
 obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(!is_advanced(caller))
 		return ..()
-
-	INTERACT_CHECK
 
 	var/mob/living/advanced/A = caller
 
@@ -38,7 +38,6 @@ obj/structure/interactive/misc/dresser/chargen/clicked_on_by_object(caller,objec
 
 
 	return TRUE
-
 
 obj/structure/interactive/misc/toilet
 	name = "toilet"

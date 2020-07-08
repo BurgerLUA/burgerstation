@@ -78,13 +78,15 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 /obj/hud/button/chargen/change_beardstyle/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_advanced(caller))
+	. = ..()
+
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/species/S = all_species[A.species]
 		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(S.all_hair_face))
 		A.handle_beardstyle_chargen(hair_num)
 
-	return TRUE
+	return .
 
 
 /obj/hud/button/chargen/change_beardstyle/main/update_owner(var/mob/desired_owner)
@@ -138,10 +140,11 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	..()
 
 /obj/hud/button/chargen/beardstyle/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	if(is_advanced(caller))
+	. = ..()
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.handle_beardstyle_chargen(hair_num)
-	return TRUE
+	return .
 
 /obj/hud/button/chargen/beardstyle/main
 	icon_state = "square_round"
@@ -149,13 +152,15 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 /obj/hud/button/chargen/beardstyle/main/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_advanced(caller))
+	. = ..()
+
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/desired_color = input("Hair Color","Hair Color",hair_color) as color|null
 		if(desired_color)
 			A.handle_beardstyle_chargen(hair_num,desired_color)
 
-	return TRUE
+	return .
 
 /obj/hud/button/chargen/beardstyle/slot01
 	icon_state = "square_trim"

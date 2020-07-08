@@ -12,7 +12,6 @@
 
 	var/list/crate_contents = list()
 
-	var/can_interact_with = TRUE //Can players interact with this?
 	var/open = FALSE
 
 	initialize_type = INITIALIZE_LATE
@@ -72,13 +71,12 @@
 
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	. = ..()
+	INTERACT_CHECK
 
-	if(!. && can_interact_with && !(caller.attack_flags & ATTACK_GRAB))
-		INTERACT_CHECK
+	if(!(caller.attack_flags & ATTACK_GRAB))
 		toggle(caller)
 
-	return .
+	return ..()
 
 /obj/structure/interactive/crate/Generate()
 

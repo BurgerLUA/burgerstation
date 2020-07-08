@@ -27,11 +27,13 @@ mob/living/advanced/proc/handle_eyecolor_chargen(var/desired_color,var/update_bl
 
 /obj/hud/button/chargen/eye_color/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_advanced(caller))
+	. = ..()
+
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/desired_color = input("Eye Color","Eye Color",eye_color) as color|null
 		if(desired_color)
 			A.handle_eyecolor_chargen(desired_color)
 
-	return TRUE
+	return .
 

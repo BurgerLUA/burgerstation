@@ -39,6 +39,8 @@
 
 /obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(!stored_radio)
 		return ..()
 

@@ -120,6 +120,8 @@
 
 /obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)
 			caller.to_chat("Unsecure \the [src.name] before rotating it!")

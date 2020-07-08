@@ -4,7 +4,10 @@
 	icon_state = "supplypod"
 
 	collect_contents_on_initialize = FALSE
-	can_interact_with = FALSE
+
+
+	interaction_flags = FLAG_INTERACTION_NONE
+
 	anchored = TRUE
 
 	var/transit = FALSE

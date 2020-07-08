@@ -38,8 +38,9 @@
 
 /obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(is_item(object))
-		INTERACT_CHECK
 		var/obj/item/I = object
 		I.drop_item(get_turf(src))
 

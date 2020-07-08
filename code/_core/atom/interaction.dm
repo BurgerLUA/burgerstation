@@ -69,14 +69,28 @@
 
 /atom/proc/can_caller_interact_with(var/mob/caller,var/enable_message = TRUE)
 
-	if(get_dist(src,caller) > interact_distance)
+	. = FALSE
+
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(L.dead && src.interaction_flags & FLAG_INTERACTION_DEAD)
+			. = TRUE
+		if(!L.dead && src.interaction_flags & FLAG_INTERACTION_LIVING)
+			. = TRUE
+		if(L.horizontal && src.interaction_flags & FLAG_INTERACTION_NO_HORIZONTAL)
+			if(enable_message) caller.to_chat(span("warning","You need to be standing in order to interact with \the [src.name]!"))
+			return FALSE
+	else if(src.interaction_flags & FLAG_INTERACTION_DEAD)
+		. = TRUE
+	else
+		if(enable_message) caller.to_chat(span("warning","The dead cannot interact with \the [src.name]!"))
+		return FALSE
+
+	if(!(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(src,caller) > interact_distance)
 		if(enable_message) caller.to_chat(span("warning","You're too far away to interact with \the [src.name]!"))
 		return FALSE
 
-	if(!caller.can_interact())
-		return FALSE
-
-	return TRUE
+	return .
 
 /atom/proc/click_self(caller,location,control,params)
 	return FALSE

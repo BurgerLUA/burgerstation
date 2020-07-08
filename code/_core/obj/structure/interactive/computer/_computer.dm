@@ -90,10 +90,10 @@ obj/structure/interactive/computer/console/flight
 
 obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(!is_advanced(caller))
 		return ..()
-
-	INTERACT_CHECK
 
 	if(!SShorde.allow_shuttle_launch)
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
@@ -160,10 +160,10 @@ obj/structure/interactive/computer/console/old/station_job
 
 obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(!is_player(caller))
 		return TRUE
-
-	INTERACT_CHECK
 
 	var/mob/living/advanced/player/P = caller
 

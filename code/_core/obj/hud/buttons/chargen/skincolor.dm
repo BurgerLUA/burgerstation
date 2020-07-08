@@ -23,10 +23,12 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 
 /obj/hud/button/chargen/skin_color/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_advanced(caller))
+	. = ..()
+
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/desired_color = input("Skin Color","Skin Color",skin_color) as color|null
 		if(desired_color)
 			A.handle_skincolor_chargen(desired_color)
 
-	return TRUE
+	return .

@@ -120,11 +120,13 @@
 
 /mob/living/can_use_controls(object,location,control,params)
 
+	/*
 	if(dead)
 		return FALSE
 
 	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
 		return FALSE
+	*/
 
 	return ..()
 

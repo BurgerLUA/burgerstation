@@ -16,21 +16,18 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+
 /obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller))
-		return ..()
+	. = ..()
 
-	var/mob/living/advanced/A = caller
+	if(. && is_advanced(caller) && caller.client && caller.client.settings)
+		var/mob/living/advanced/A = caller
+		A.remove_color_scheme_buttons()
+		A.client.settings.save()
 
-	A.remove_color_scheme_buttons()
-
-	if(!A.client || !A.client.settings)
-		return ..()
-
-	A.client.settings.save()
-
-	return ..()
+	return .
 
 /obj/hud/button/default_color_scheme
 	name = "close color scheme"
@@ -41,29 +38,25 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 /obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller))
-		return ..()
+	. = ..()
 
-	var/mob/living/advanced/A = caller
+	if(. && is_advanced(caller) && caller.client && caller.client.settings && caller.client.settings.loaded_data)
+		var/mob/living/advanced/A = caller
+		A.client.settings.loaded_data["hud_colors"] = DEFAULT_COLORS
 
-	if(!A.client || !A.client.settings || !A.client.settings.loaded_data)
-		return ..()
+		for(var/obj/hud/button/B in A.buttons)
+			B.update_sprite()
 
-	A.client.settings.loaded_data["hud_colors"] = DEFAULT_COLORS
+		for(var/k in A.health_elements)
+			var/obj/hud/button/B = A.health_elements[k]
+			B.update_sprite()
 
-	for(var/obj/hud/button/B in A.buttons)
-		B.update_sprite()
+		for(var/obj/hud/inventory/I in A.inventory)
+			I.update_sprite()
 
-	for(var/k in A.health_elements)
-		var/obj/hud/button/B = A.health_elements[k]
-		B.update_sprite()
+		A.client.update_window()
 
-	for(var/obj/hud/inventory/I in A.inventory)
-		I.update_sprite()
-
-	A.client.update_window()
-
-	return ..()
+	return .
 
 /obj/hud/button/color_scheme
 	name = "color scheme button changer"
@@ -82,32 +75,27 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 /obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller))
-		return ..()
+	. = ..()
 
-	var/mob/living/advanced/A = caller
+	if(. && is_advanced(caller) && caller.client && caller.client.settings && caller.client.settings.loaded_data)
+		var/mob/living/advanced/A = caller
+		var/desired_color = input("Skin Color","Skin Color",A.client.settings.loaded_data["hud_colors"][color_id]) as color|null
+		if(desired_color)
+			A.client.settings.loaded_data["hud_colors"][color_id] = desired_color
 
-	if(!A.client || !A.client.settings || !A.client.settings.loaded_data)
-		return ..()
+			for(var/obj/hud/button/B in A.buttons)
+				B.update_sprite()
 
-	var/desired_color = input("Skin Color","Skin Color",A.client.settings.loaded_data["hud_colors"][color_id]) as color|null
+			for(var/k in A.health_elements)
+				var/obj/hud/button/B = A.health_elements[k]
+				B.update_sprite()
 
-	if(desired_color)
-		A.client.settings.loaded_data["hud_colors"][color_id] = desired_color
+			for(var/obj/hud/inventory/I in A.inventory)
+				I.update_sprite()
 
-		for(var/obj/hud/button/B in A.buttons)
-			B.update_sprite()
+			A.client.update_window()
 
-		for(var/k in A.health_elements)
-			var/obj/hud/button/B = A.health_elements[k]
-			B.update_sprite()
-
-		for(var/obj/hud/inventory/I in A.inventory)
-			I.update_sprite()
-
-		A.client.update_window()
-
-	return ..()
+	return .
 
 /obj/hud/button/color_scheme/update_icon()
 

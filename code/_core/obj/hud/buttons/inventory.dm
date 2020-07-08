@@ -10,23 +10,26 @@
 
 	has_quick_function = FALSE
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
+
 /obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller))
-		return TRUE
+	. = ..()
 
-	var/mob/living/advanced/A = caller
+	if(. && is_advanced(caller))
 
-	for(var/obj/hud/inventory/I in A.inventory)
-		if(!(I.flags & FLAGS_HUD_CONTAINER))
-			continue
-		animate(I,alpha=0,time=4)
-		I.mouse_opacity = 0
+		var/mob/living/advanced/A = caller
 
-	animate(src,alpha=0,time=4)
-	src.mouse_opacity = 0
+		for(var/obj/hud/inventory/I in A.inventory)
+			if(!(I.flags & FLAGS_HUD_CONTAINER))
+				continue
+			animate(I,alpha=0,time=4)
+			I.mouse_opacity = 0
 
-	return ..()
+		animate(src,alpha=0,time=4)
+		src.mouse_opacity = 0
+
+	return .
 
 /*
 /obj/hud/button/drop
@@ -74,13 +77,10 @@
 
 /obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(owner))
-		return ..()
-
-	var/mob/living/advanced/A = owner
-	A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
-
-	update_sprite()
+	if(. && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,0.1)
+		update_sprite()
 
 	return ..()
 

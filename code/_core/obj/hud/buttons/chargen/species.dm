@@ -9,7 +9,9 @@
 
 /obj/hud/button/chargen/species/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_advanced(caller))
+	. = ..()
+
+	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 
 		var/species_choice = input("What species do you wish to change to?") as null|anything in list("Human","Lizard","Cyborg")
@@ -27,5 +29,5 @@
 		if(choice == "Yes")
 			A.perform_specieschange(choice_to_species[species_choice],TRUE,TRUE)
 
-	return TRUE
+	return .
 

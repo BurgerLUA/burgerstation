@@ -36,11 +36,9 @@
 
 /obj/hud/button/research/info/quit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_living(caller))
-		return ..()
-
-	var/mob/living/L = caller
-	L.toggle_research_game(TRUE,FALSE)
+	if(. && is_living(caller))
+		var/mob/living/L = caller
+		L.toggle_research_game(TRUE,FALSE)
 
 	return TRUE
 

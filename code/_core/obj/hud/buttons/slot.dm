@@ -96,9 +96,12 @@
 	return clicked_on_by_object(caller,object)
 
 /obj/hud/button/slot/clicked_on_by_object(caller,object,location,control,params)
-	//store_atom(caller,object,location,control,params)
-	clear_object(caller)
-	return ..()
+	. = ..()
+
+	if(.)
+		clear_object(caller)
+
+	return .
 
 /obj/hud/button/slot/proc/store_atom(var/mob/caller,object,location,control,params)
 

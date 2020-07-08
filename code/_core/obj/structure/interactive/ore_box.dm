@@ -11,6 +11,8 @@
 
 /obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
+	INTERACT_CHECK
+
 	if(istype(object,/obj/item/material/ore))
 		var/obj/item/material/ore/O = object
 		O.drop_item(src.loc)

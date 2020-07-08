@@ -45,7 +45,7 @@
 
 	. = ..()
 
-	if(is_living(caller))
+	if(. && is_living(caller))
 		var/mob/living/L = caller
 		L.set_intent(intent)
 

@@ -4,6 +4,10 @@
 		//if(messages) to_chat(span("warning","You don't have enough strength to resist now!"))
 		return FALSE
 
+	if(dead)
+		if(messages) to_chat(span("warning","You can't resist while dead!"))
+		return FALSE
+
 	if(health.stamina_current < 20)
 		if(messages) to_chat(span("warning","You're too exhausted to resist!"))
 		return FALSE

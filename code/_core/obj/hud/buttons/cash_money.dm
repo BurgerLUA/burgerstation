@@ -13,7 +13,9 @@
 	maptext_x = -2
 
 /obj/hud/button/cash_money/update_owner(var/mob/desired_owner)
+
 	. = ..()
+
 	if(. && is_player(owner))
 		var/mob/living/advanced/player/P = owner
 		update_stats(P.currency)

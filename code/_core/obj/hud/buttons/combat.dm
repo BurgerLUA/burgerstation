@@ -9,11 +9,13 @@
 
 /obj/hud/button/resist/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_living(owner))
+	. = ..()
+
+	if(. && is_living(owner))
 		var/mob/living/L = owner
 		L.resist()
 
-	return ..()
+	return .
 
 /obj/hud/button/resist_auto
 	name = "toggle auto resist"
@@ -34,9 +36,14 @@
 	..()
 
 /obj/hud/button/resist_auto/clicked_on_by_object(var/mob/caller,object,location,control,params)
-	owner.auto_resist = !owner.auto_resist
-	update_sprite()
-	return ..()
+
+	. = ..()
+
+	if(.)
+		owner.auto_resist = !owner.auto_resist
+		update_sprite()
+
+	return .
 
 /*
 /obj/hud/button/targeting

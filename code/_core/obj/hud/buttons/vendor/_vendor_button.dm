@@ -98,24 +98,21 @@
 
 /obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller))
-		return ..()
+	. = ..()
 
-	var/mob/living/advanced/player/P = caller
-	var/atom/defer_object = object.defer_click_on_object(location,control,params)
-	var/item_value = CEILING(associated_item.calculate_value(),1)
+	if(. && is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		var/atom/defer_object = object.defer_click_on_object(location,control,params)
+		var/item_value = CEILING(associated_item.calculate_value(),1)
 
-	if(!is_inventory(defer_object))
-		P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
-		return TRUE
+		if(!is_inventory(defer_object))
+			P.to_chat(span("notice","Your hand needs to be empty in order to buy this!"))
+			return TRUE
 
-	var/obj/hud/inventory/I = defer_object
-	associated_vendor.purchase_item(caller,associated_item,item_value,I)
+		var/obj/hud/inventory/I = defer_object
+		associated_vendor.purchase_item(caller,associated_item,item_value,I)
 
-	return ..()
-
-
-
+	return .
 
 
 /obj/hud/button/close_vendor
@@ -129,14 +126,14 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,object,location,control,params)
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD
 
-	if(!is_player(caller))
-		return TRUE
+/obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	. = ..()
 
-	var/mob/living/advanced/player/P = caller
-	P.set_structure_unactive()
+	if(. && is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		P.set_structure_unactive()
 
 	return .

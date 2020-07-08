@@ -14,11 +14,13 @@
 
 /obj/hud/button/keypad/close/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(is_player(caller))
+	. = ..()
+
+	if(. && is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		P.set_device_unactive()
 
-	return ..()
+	return .
 
 /obj/hud/button/keypad/top
 	icon_state = "keypad_top"
@@ -36,40 +38,44 @@
 
 /obj/hud/button/keypad/top/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	var/number_selected = 0
+	. = ..()
 
-	switch(text2num(params[PARAM_ICON_X]))
-		if(1 to 10)
-			number_selected = 1
-		if(12 to 21)
-			number_selected = 2
-		if(23 to 32)
-			number_selected = 3
-		else
-			number_selected = -100
+	if(.)
 
-	switch(text2num(params[PARAM_ICON_Y]))
-		if(12 to 21)
-			number_selected *= 1
-		if(1 to 10)
-			number_selected += 3
-		else
-			number_selected = -100
+		var/number_selected = 0
 
-	if(number_selected == -100)
-		return TRUE
+		switch(text2num(params[PARAM_ICON_X]))
+			if(1 to 10)
+				number_selected = 1
+			if(12 to 21)
+				number_selected = 2
+			if(23 to 32)
+				number_selected = 3
+			else
+				number_selected = -100
 
-	else if(stored_keypad > 999)
+		switch(text2num(params[PARAM_ICON_Y]))
+			if(12 to 21)
+				number_selected *= 1
+			if(1 to 10)
+				number_selected += 3
+			else
+				number_selected = -100
+
+		if(number_selected == -100)
+			return TRUE
+
+		else if(stored_keypad > 999)
+			return ..()
+
+		else if(stored_keypad >= 0)
+			stored_keypad = (stored_keypad*10) + number_selected
+
+		for(var/obj/hud/button/keypad/K in caller.buttons)
+			K.stored_keypad = stored_keypad
+			K.update_sprite()
+
 		return ..()
-
-	else if(stored_keypad >= 0)
-		stored_keypad = (stored_keypad*10) + number_selected
-
-	for(var/obj/hud/button/keypad/K in caller.buttons)
-		K.stored_keypad = stored_keypad
-		K.update_sprite()
-
-	return ..()
 
 /obj/hud/button/keypad/bottom
 	icon_state = "keypad_bottom"
@@ -77,57 +83,61 @@
 
 /obj/hud/button/keypad/bottom/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	var/number_selected = 0
+	. = ..()
 
-	switch(text2num(params[PARAM_ICON_X]))
-		if(1 to 10)
-			number_selected = 7
-		if(12 to 21)
-			number_selected = 8
-		if(23 to 32)
-			number_selected = 9
-		else
-			number_selected = -100
+	if(.)
 
-	switch(text2num(params[PARAM_ICON_Y]))
-		if(22 to 32)
-			number_selected *= 1
-		if(11 to 20)
-			if(number_selected == 7)
-				number_selected = -1
-			else if(number_selected == 8)
-				number_selected = 0
-			else if(number_selected == 9)
-				number_selected = -2
+		var/number_selected = 0
 
-		else
-			number_selected = -100
+		switch(text2num(params[PARAM_ICON_X]))
+			if(1 to 10)
+				number_selected = 7
+			if(12 to 21)
+				number_selected = 8
+			if(23 to 32)
+				number_selected = 9
+			else
+				number_selected = -100
 
-	if(number_selected == -1)
-		//Clear
-		stored_keypad = 0
+		switch(text2num(params[PARAM_ICON_Y]))
+			if(22 to 32)
+				number_selected *= 1
+			if(11 to 20)
+				if(number_selected == 7)
+					number_selected = -1
+				else if(number_selected == 8)
+					number_selected = 0
+				else if(number_selected == 9)
+					number_selected = -2
 
-	else if(number_selected == -2)
-		//Submit
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
-			if(P.active_device)
-				P.active_device.trigger(caller,src,-1,stored_keypad)
+			else
+				number_selected = -100
 
-		return ..()
+		if(number_selected == -1)
+			//Clear
+			stored_keypad = 0
 
-	else if(number_selected == -100)
-		//Pressed Nothing
-		return TRUE
+		else if(number_selected == -2)
+			//Submit
+			if(is_player(caller))
+				var/mob/living/advanced/player/P = caller
+				if(P.active_device)
+					P.active_device.trigger(caller,src,-1,stored_keypad)
 
-	else if(stored_keypad > 999)
-		return ..()
+			return .
 
-	else if(stored_keypad >= 0)
-		stored_keypad = (stored_keypad*10) + number_selected
+		else if(number_selected == -100)
+			//Pressed Nothing
+			return TRUE
 
-	for(var/obj/hud/button/keypad/K in caller.buttons)
-		K.stored_keypad = stored_keypad
-		K.update_sprite()
+		else if(stored_keypad > 999)
+			return .
+
+		else if(stored_keypad >= 0)
+			stored_keypad = (stored_keypad*10) + number_selected
+
+		for(var/obj/hud/button/keypad/K in caller.buttons)
+			K.stored_keypad = stored_keypad
+			K.update_sprite()
 
 	return ..()

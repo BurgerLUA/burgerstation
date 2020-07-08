@@ -46,23 +46,3 @@ mob/living/get_examine_list(var/mob/examiner)
 			if(ALERT_LEVEL_COMBAT)
 				. += list(div("danger","They appear to be in a combative stance!"))
 	return .
-
-/mob/living/can_interact(var/messages = TRUE)
-
-	if(dead)
-		if(messages) to_chat(span("danger","You can't do this while dead!"))
-		return FALSE
-
-	if(has_status_effect(STUN))
-		if(messages) to_chat(span("danger","You can't do this while stunned!"))
-		return FALSE
-
-	if(has_status_effect(SLEEP))
-		if(messages) to_chat(span("danger","You can't do this while sleeping!"))
-		return FALSE
-
-	if(has_status_effect(PARALYZE))
-		if(messages) to_chat(span("danger","You can't do this while paralyzed!"))
-		return FALSE
-
-	return ..()

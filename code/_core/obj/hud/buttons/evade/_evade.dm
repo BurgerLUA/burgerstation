@@ -6,14 +6,6 @@
 	screen_loc = "RIGHT-4,BOTTOM"
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/evade/clicked_on_by_object(var/mob/caller,object,location,control,params)
-
-	. = ..()
-
-	update_overlays()
-
-	return .
-
 /obj/hud/button/evade/proc/get_charge_level(var/mob/living/caller)
 	return 0
 

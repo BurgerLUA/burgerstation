@@ -25,13 +25,13 @@
 
 /obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller) || !stored_crafting_table)
-		return ..()
+	. = ..()
 
-	var/mob/living/advanced/A = caller
-	stored_crafting_table.attempt_to_craft(A)
+	if(. && is_advanced(caller) && stored_crafting_table)
+		var/mob/living/advanced/A = caller
+		stored_crafting_table.attempt_to_craft(A)
 
-	return ..()
+	return .
 
 /obj/hud/button/crafting/close
 	name = "close crafting menu"
@@ -40,17 +40,17 @@
 
 /obj/hud/button/crafting/close/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_advanced(caller))
-		return ..()
+	. = ..()
 
-	var/mob/living/advanced/A = caller
+	if(. && is_advanced(caller))
+		var/mob/living/advanced/A = caller
 
-	for(var/obj/hud/inventory/crafting/I in A.inventory)
-		animate(I,alpha=0,time=4)
-		I.mouse_opacity = 0
+		for(var/obj/hud/inventory/crafting/I in A.inventory)
+			animate(I,alpha=0,time=4)
+			I.mouse_opacity = 0
 
-	for(var/obj/hud/button/crafting/B in A.buttons)
-		animate(B,alpha=0,time=4)
-		B.mouse_opacity = 0
+		for(var/obj/hud/button/crafting/B in A.buttons)
+			animate(B,alpha=0,time=4)
+			B.mouse_opacity = 0
 
-	return ..()
+	return .

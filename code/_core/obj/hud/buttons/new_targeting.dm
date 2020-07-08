@@ -35,40 +35,34 @@
 
 /obj/hud/button/targeting_new/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!is_player(caller))
-		return
+	. = ..()
 
-	if(!caller.client)
-		return
+	if(. && is_player(caller) && caller.client)
+		var/mob/living/advanced/player/P = caller
+		var/click_flags = P.client.get_click_flags(params,TRUE)
+		if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y])
+			return .
+		var/x_click = text2num(params[PARAM_ICON_X])/2
+		var/y_click = text2num(params[PARAM_ICON_Y])/2
 
-	var/mob/living/advanced/player/P = caller
+		if(x_click <= 26)
+			if(click_flags & CLICK_LEFT)
+				left[mode] = list(x_click,y_click - 1)
+			if(click_flags & CLICK_RIGHT)
+				right[mode] = list(x_click,y_click - 1)
+		else
+			switch(y_click)
+				if(9 to 15)
+					mode = 3
+				if(17 to 23)
+					mode = 2
+				if(25 to 31)
+					mode = 1
 
-	var/click_flags = P.client.get_click_flags(params,TRUE)
-
-	if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y])
-		return
-
-	var/x_click = text2num(params[PARAM_ICON_X])/2
-	var/y_click = text2num(params[PARAM_ICON_Y])/2
-
-	if(x_click <= 26)
-		if(click_flags & CLICK_LEFT)
-			left[mode] = list(x_click,y_click - 1)
-		if(click_flags & CLICK_RIGHT)
-			right[mode] = list(x_click,y_click - 1)
-	else
-		switch(y_click)
-			if(9 to 15)
-				mode = 3
-			if(17 to 23)
-				mode = 2
-			if(25 to 31)
-				mode = 1
-
-	P.attack_mode = mode
-	P.attack_right = right
-	P.attack_left = left
-	update_overlays()
+		P.attack_mode = mode
+		P.attack_right = right
+		P.attack_left = left
+		update_overlays()
 
 	return ..()
 

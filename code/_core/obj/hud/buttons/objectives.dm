@@ -40,13 +40,16 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 
 /obj/hud/button/objectives/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
-	if(!maptext)
-		alpha = 100
-		maptext = stored_text
-		animate(src,alpha = 255,time = 1)
-	else
-		alpha = 255
-		maptext = null
-		animate(src,alpha = 100,time = 1)
+	. = ..()
 
-	return ..()
+	if(.)
+		if(!maptext)
+			alpha = 100
+			maptext = stored_text
+			animate(src,alpha = 255,time = 1)
+		else
+			alpha = 255
+			maptext = null
+			animate(src,alpha = 100,time = 1)
+
+	return .

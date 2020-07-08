@@ -690,7 +690,6 @@
 #include "code\_core\obj\hud\buttons\objectives.dm"
 #include "code\_core\obj\hud\buttons\skip.dm"
 #include "code\_core\obj\hud\buttons\slot.dm"
-#include "code\_core\obj\hud\buttons\test.dm"
 #include "code\_core\obj\hud\buttons\widget.dm"
 #include "code\_core\obj\hud\buttons\chargen\_chargen.dm"
 #include "code\_core\obj\hud\buttons\chargen\beardstyle.dm"
