@@ -11,6 +11,14 @@
 	src << link("https://github.com/BurgerLUA/burgerstation")
 
 
+/client/verb/open_patreon()
+	set name = "Open Patreon"
+	set category = "Menu"
+	to_chat("Opening patreon in your browser.")
+	src << link("https://www.patreon.com/burgerstation")
+
+
+
 /client/verb/player_who()
 	set name = "Player Who"
 	set category = "Menu"
