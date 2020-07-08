@@ -66,12 +66,14 @@
 	if(!stored_magazine)
 		CRASH_SAFE("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
 		return FALSE
-	stored_magazine.force_move(caller.loc)
-	if(object)
-		var/obj/hud/inventory/offhand_slot = object
-		offhand_slot.add_object(stored_magazine)
-	play(stored_magazine.get_magazine_eject_sound(),src)
-	stored_magazine.update_sprite()
+	var/turf/T = get_turf(caller)
+	stored_magazine.force_move(T)
+	if(T)
+		if(object && is_inventory(object))
+			var/obj/hud/inventory/offhand_slot = object
+			offhand_slot.add_object(stored_magazine)
+		play(stored_magazine.get_magazine_eject_sound(),T)
+		stored_magazine.update_sprite()
 	stored_magazine = null
 	open = TRUE
 	update_sprite()

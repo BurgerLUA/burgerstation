@@ -22,7 +22,7 @@
 
 	if(.)
 		play('sound/effects/footsteps/mechmove.ogg',get_turf(src))
-		if(passengers[1])
+		if(length(passengers) && passengers[1])
 			create_alert(VIEW_RANGE,src,passengers[1],ALERT_LEVEL_NOISE)
 
 	return .

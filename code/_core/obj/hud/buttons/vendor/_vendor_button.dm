@@ -100,6 +100,11 @@
 
 	. = ..()
 
+	if(!associated_item)
+		CRASH_SAFE("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
+		update_owner(null)
+		return .
+
 	if(. && is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		var/atom/defer_object = object.defer_click_on_object(location,control,params)
