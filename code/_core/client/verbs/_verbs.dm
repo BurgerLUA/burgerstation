@@ -71,5 +71,6 @@
 		verbs += /client/verb/reload_badwords
 		verbs += /client/verb/force_save_all
 		verbs += /client/verb/rejuvenate_player
+		verbs += /client/verb/stress_test
 
 	return TRUE

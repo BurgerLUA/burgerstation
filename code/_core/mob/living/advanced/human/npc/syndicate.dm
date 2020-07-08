@@ -79,3 +79,12 @@
 	level_multiplier = 4
 
 
+/mob/living/advanced/npc/syndicate/stress_test
+	name = "stress test"
+	iff_tag = "Syndicate"
+	loyalty_tag = null
+
+/mob/living/advanced/npc/syndicate/stress_test/PostInitialize()
+	. = ..()
+	ai.aggression = 3
+	return .
