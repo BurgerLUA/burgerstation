@@ -10,6 +10,16 @@
 
 	value = 60
 
+/obj/item/soulgem/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("total_charge")
+	return .
+
+/obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("total_charge")
+	return .
+
 /obj/item/soulgem/calculate_value()
 
 	. = ..()

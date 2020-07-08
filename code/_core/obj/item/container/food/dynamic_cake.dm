@@ -4,9 +4,6 @@
 	icon_state = "dough_ball"
 	crafting_id = "pastry_dough"
 
-	var/cooked_icon_state = "cake"
-	var/raw_icon_state = "dough_ball"
-
 	health = /health/obj/item/misc/
 
 	scale_sprite = FALSE

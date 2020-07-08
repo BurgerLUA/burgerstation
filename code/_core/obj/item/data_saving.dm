@@ -41,11 +41,19 @@
 /proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE)
 
 	if(!object_data)
-		log_error("Tried to create an object with a blank object_data list!")
+		log_error("Tried to create an object with a null object_data list!")
+		return FALSE
+
+	if(length(object_data) <= 0 )
+		log_error("Tried to create an object with an empty object_data list!")
 		return FALSE
 
 	if(!loc)
 		log_error("Tried to create an object in a null location!")
+		return FALSE
+
+	if(!object_data["type"])
+		log_error("Tried to create an object that didn't have a type!")
 		return FALSE
 
 	var/o_type = object_data["type"]
@@ -55,15 +63,15 @@
 		return FALSE
 
 	var/obj/item/I = new o_type(loc)
-	I.set_item_data_pre(P,object_data)
+	I.load_item_data_pre(P,object_data)
 	INITIALIZE(I)
-	I.set_item_data_post(P,object_data)
+	I.load_item_data_post(P,object_data)
 	I.force_move(loc)
 	I.update_sprite()
 
 	return I
 
-/obj/item/proc/get_item_data(var/save_inventory = TRUE)
+/obj/item/proc/save_item_data(var/save_inventory = TRUE)
 
 	if(!should_save)
 		return list()
@@ -93,7 +101,7 @@
 
 	return .
 
-/obj/item/organ/get_item_data(var/save_inventory = TRUE)
+/obj/item/organ/save_item_data(var/save_inventory = TRUE)
 
 	. = ..()
 
@@ -103,7 +111,7 @@
 
 	return .
 
-/obj/item/organ/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/organ/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 
@@ -116,7 +124,7 @@
 
 	return .
 
-/obj/item/proc/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/proc/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
 	if(object_data["color"])
 		color = object_data["color"]
@@ -134,7 +142,7 @@
 	return TRUE
 
 
-/obj/item/proc/set_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/proc/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	if(object_data["reagents"] && length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
@@ -167,11 +175,11 @@
 	if(length(held_objects))
 		.["held"] = new/list(length(held_objects))
 		for(var/i=1,i<=length(held_objects),i++)
-			.["held"][i] = held_objects[i].get_item_data()
+			.["held"][i] = held_objects[i].save_item_data()
 
 	if(length(worn_objects))
 		.["worn"] = new/list(length(worn_objects))
 		for(var/i=1,i<=length(worn_objects),i++)
-			.["worn"][i] = worn_objects[i].get_item_data()
+			.["worn"][i] = worn_objects[i].save_item_data()
 
 	return .

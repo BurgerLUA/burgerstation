@@ -58,10 +58,12 @@
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
 	json_data["last_saved_time"] = get_time()
+	world.log << "Character ID: [character_id]."
 	var/desired_file = get_file(character_id)
 	var/data = json_encode(json_data)
 	if(data)
 		fdel(desired_file)
+	world.log << "File: [desired_file]."
 	return text2file(data,desired_file)
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
@@ -99,6 +101,8 @@
 	//LOG_DEBUG("[owner] is saving their character [A.get_debug_name()]...")
 
 	var/list/loaded_data = A.get_mob_data(save_inventory,force)
+
+	world.log << "save_character() found ID: [loaded_data["id"]]."
 
 	if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		A.to_chat(span("notice","Sucessfully saved character [A.name]."))

@@ -39,12 +39,12 @@
 
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 
-/obj/item/weapon/ranged/get_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	.["firing_pin"] = firing_pin
+	.["firing_pin"] = firing_pin.save_item_data(save_inventory)
 	return .
 
-/obj/item/weapon/ranged/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["firing_pin"]) firing_pin = load_and_create(P,object_data["firing_pin"],src)
 	return .

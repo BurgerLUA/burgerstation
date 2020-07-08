@@ -5,8 +5,6 @@
 	icon = 'icons/obj/item/coin.dmi'
 	icon_state = "coin"
 
-
-
 /obj/item/coin/antag_token
 	name = "antag token"
 	desc = "Valid or salid?"

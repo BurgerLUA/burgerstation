@@ -28,6 +28,41 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
+
+/obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+
+	if(src.chambered_bullet)
+		.["chambered_bullet"] = src.chambered_bullet.type
+
+	if(length(src.stored_bullets))
+		.["stored_bullets"] = new/list(length(src.stored_bullets))
+		for(var/i=1,i<=length(src.stored_bullets),i++)
+			var/obj/item/bullet_cartridge/B = src.stored_bullets[i]
+			if(B) .["stored_bullets"][i] = B.type
+
+	return .
+
+/obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+
+	if(object_data["chambered_bullet"])
+		var/b_type = object_data["chambered_bullet"]
+		var/obj/item/bullet_cartridge/B = new b_type(src)
+		INITIALIZE(B)
+		src.chambered_bullet = B
+
+	if(object_data["stored_bullets"] && length(object_data["stored_bullets"]))
+		for(var/i=1, i <= length(object_data["stored_bullets"]), i++)
+			var/b_type = object_data["stored_bullets"][i]
+			if(b_type)
+				var/obj/item/bullet_cartridge/B = new b_type(src)
+				INITIALIZE(B)
+				src.stored_bullets[i] = B
+
+	return .
+
+
 /obj/item/weapon/ranged/bullet/get_examine_list(var/mob/examiner)
 
 	. = ..()

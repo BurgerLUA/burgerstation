@@ -22,7 +22,7 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
-/obj/item/magazine/get_item_data(var/save_inventory = TRUE)
+/obj/item/magazine/save_item_data(var/save_inventory = TRUE)
 
 	. = ..()
 
@@ -34,11 +34,12 @@
 
 	return .
 
-/obj/item/magazine/set_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 
 	if(object_data["stored_bullets"])
+		world.log << "FOUND [length(object_data["stored_bullets"])] STORED BULLETS."
 		for(var/k in object_data["stored_bullets"])
 			var/v = object_data["stored_bullets"][k]
 			for(var/i=1,i<=v,i++)

@@ -16,7 +16,7 @@
 
 	value = 1
 
-/obj/item/container/pill/get_item_data(var/save_inventory = TRUE)
+/obj/item/container/pill/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["double"] = double
 
@@ -24,7 +24,7 @@
 		.["reagents_2"] = reagents_2.stored_reagents
 
 
-/obj/item/container/pill/set_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/container/pill/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 
@@ -32,7 +32,7 @@
 
 	return .
 
-/obj/item/container/pill/set_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/container/pill/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
 

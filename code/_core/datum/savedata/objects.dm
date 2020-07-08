@@ -167,8 +167,6 @@
 	O.force_move(loc)
 	O.update_sprite()
 
-
-
 	return O
 
 /proc/get_inventory_data(var/obj/hud/inventory/I)

@@ -17,6 +17,17 @@
 
 	value = 10
 
+
+/obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	.["scroll_count"] = scroll_count
+	return .
+
+/obj/item/weapon/ranged/magic/scroll/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(isnum(object_data["scroll_count"])) scroll_count = object_data["scroll_count"]
+	return .
+
 /obj/item/weapon/ranged/magic/scroll/calculate_value()
 	. = ..()
 	. *= scroll_count

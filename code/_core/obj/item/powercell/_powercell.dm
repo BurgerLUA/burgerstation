@@ -13,6 +13,16 @@
 
 	value = 5
 
+/obj/item/powercell/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("charge_current")
+	return .
+
+/obj/item/powercell/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("charge_current")
+	return .
+
 /obj/item/powercell/Generate()
 	charge_current = charge_max
 	. = ..()

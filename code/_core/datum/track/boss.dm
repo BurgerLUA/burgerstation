@@ -14,5 +14,5 @@
 /track/cursed_as_love
 	name = "XTaKeRuX - Cursed as Love"
 	id = "cursed_as_love"
-	path = 'sound/music/XTaKeRuX-CursedAsLove.ogg'
+	//path = 'sound/music/XTaKeRuX-CursedAsLove.ogg'
 	length = 3*60

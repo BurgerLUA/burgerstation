@@ -7,6 +7,24 @@
 
 	stored_bullets = null
 
+/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	if(src.stored_magazine)
+		.["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
+	return .
+
+
+/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+
+	. = ..()
+
+	if(object_data["stored_magazine"])
+		src.stored_magazine = load_and_create(P,object_data["stored_magazine"],src)
+		src.open = FALSE
+
+	return .
+
+
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)
 		if("both")

@@ -8,6 +8,7 @@
 	species = loaded_data["species"]
 	nutrition = loaded_data["nutrition"] ? loaded_data["nutrition"] : 1000
 	hydration = loaded_data["hydration"] ? loaded_data["hydration"] : 1000
+	save_id = loaded_data["id"]
 
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
@@ -85,11 +86,12 @@
 	.["nutrition"] = nutrition
 	.["hydration"] = hydration
 	.["known_languages"] = known_languages
+	.["id"] = save_id
 
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[id]
-		final_organ_list[id] = O.get_item_data(save_inventory)
+		final_organ_list[id] = O.save_item_data(save_inventory)
 	.["organs"] = final_organ_list
 
 	//Skills

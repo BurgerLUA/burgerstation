@@ -4,8 +4,8 @@
 	icon_state = "dough_ball"
 	crafting_id = "dough"
 
-	var/cooked_icon_state = "bread"
-	var/raw_icon_state = "dough_ball"
+	cooked_icon_state = "bread"
+	raw_icon_state = "dough_ball"
 
 	health = /health/obj/item/misc/
 

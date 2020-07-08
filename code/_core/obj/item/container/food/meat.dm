@@ -8,7 +8,8 @@
 
 	health = /health/obj/item/misc/
 
-	var/last_cooked = FALSE //Read only.
+	cooked_icon_state = "cake"
+	raw_icon_state = "dough_ball"
 
 	scale_sprite = FALSE
 
@@ -93,7 +94,6 @@
 		carbon_image.appearance_flags = RESET_COLOR
 		carbon_image.alpha = clamp(carbon_amount*75,0,255)
 		add_overlay(carbon_image)
-		last_cooked = TRUE
 
 	color = blend_colors(rgb(meat_r,meat_g,meat_b),"#000000",carbon_amount/(reagents.volume_current*0.5))
 
@@ -101,9 +101,6 @@
 
 
 /obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
-	if(last_cooked)
-		return TRUE
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 

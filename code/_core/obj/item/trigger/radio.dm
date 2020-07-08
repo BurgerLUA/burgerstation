@@ -25,6 +25,16 @@ var/global/list/obj/item/device/radio/all_radios = list()
 
 	value = 5
 
+/obj/item/device/radio/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("frequency")
+	return .
+
+/obj/item/device/radio/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("frequency")
+	return .
+
 /obj/item/device/radio/click_self(var/mob/caller,location,control,params)
 	broadcasting = !broadcasting
 	caller.to_chat(span("notice","You toggle the receiver to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))

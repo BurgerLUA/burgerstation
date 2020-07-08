@@ -81,6 +81,7 @@
 
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	U.loaded_data["id"] = file_num
+	world.log << "load() Character ID: [U.loaded_data["id"]]."
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
 	stop_music_track(src)
 

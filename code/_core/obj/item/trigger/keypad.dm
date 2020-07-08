@@ -13,6 +13,16 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 	var/code = 1337
 
+/obj/item/device/keypad/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("code")
+	return .
+
+/obj/item/device/keypad/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("code")
+	return .
+
 /obj/item/device/keypad/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(loc && signal_freq == -1 && signal_code == code)
