@@ -3,6 +3,7 @@ var/global/list/obj/item/device/radio/all_radios = list()
 /obj/item/device/radio/
 	name = "radio"
 	desc = "Long distance communication. What could possibly go wrong?"
+	desc_extended = "A handheld radio."
 	icon = 'icons/obj/item/radio_transmitter.dmi'
 	icon_state = "inventory"
 

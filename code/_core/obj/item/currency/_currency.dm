@@ -1,6 +1,7 @@
 /obj/item/currency/
 	name = "telecrystal"
 	desc = "Often used as currency in the realm for its rarity and magical properties."
+	desc_extended = "A crystal that can be used to teleport stuff. The bigger the stuff, the more crystals you need."
 
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"

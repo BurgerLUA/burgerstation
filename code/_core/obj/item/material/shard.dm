@@ -20,4 +20,5 @@
 /obj/item/material/shard/glass
 	name = "glass shard"
 	desc = "A shard of glass."
+	desc_extended = "Careful to not step on this barefoot."
 	material_id = /material/glass

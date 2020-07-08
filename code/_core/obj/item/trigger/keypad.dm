@@ -7,7 +7,8 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 /obj/item/device/keypad
 	name = "keypad"
-	desc = "An access keypad. Only works if you know the code."
+	desc = "One, One, One...uh....One!"
+	desc_extended = "An access keypad. Only works if you know the code."
 	icon_state = "keypad_red"
 	interactable = TRUE
 

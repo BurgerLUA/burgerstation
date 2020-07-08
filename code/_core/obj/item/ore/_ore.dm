@@ -1,6 +1,7 @@
 obj/item/ore/
 	name = "broken ore"
 	desc = "Wait, what the fuck is this?"
+	desc_extended = "A rock containing minerals. Put this in a smelter to get it's precious contents."
 	icon = 'icons/obj/items/ore.dmi'
 	icon_state = "rock_small"
 	var/ore_color = "#FFFFFF"
