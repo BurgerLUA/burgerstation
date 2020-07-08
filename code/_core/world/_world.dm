@@ -23,8 +23,6 @@ var/global/world_state = STATE_STARTING
 	turf = /turf/unsimulated/space
 	area = /area/
 
-	visibility = 0 //This is changed to true when update_server_status runs successfully.
-
 /world/New()
 	..()
 	life()
@@ -53,9 +51,6 @@ var/global/world_state = STATE_STARTING
 	status += "<i>[description]</i><br>"
 	status += "Map: <b>[map]</b><br>"
 	status += "Time: <b>\[[duration]</b>"
-
-	visibility = 1
-
 
 /*
 /world/Error(var/exception/e)

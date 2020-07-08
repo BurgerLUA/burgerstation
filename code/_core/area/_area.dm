@@ -138,13 +138,13 @@ var/global/list/all_areas = list()
 		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
 			P.see_invisible = INVISIBILITY_NO_PLAYERS
 
-	if(ismob(enterer))
+	if(ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
 		var/mob/M = enterer
 		if(M.client && length(tracks) && (!M.client.next_music_track || M.client.next_music_track <= world.time))
 			play_music_track(pick(tracks),M.client)
 
 	if(enterer.area != src)
-		if(ismob(enterer))
+		if(ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
 			var/mob/M = enterer
 			if(M.client)
 				if(!ambient_sound)
