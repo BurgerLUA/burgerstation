@@ -14,7 +14,13 @@
 
 	var/area/A = get_area(src)
 
-	if(can_save(A))
+	if(A.flags_area & FLAGS_AREA_TUTORIAL)
+		var/question = input("Are you sure you want to cancel character creation? Your character won't be saved, and it will be deleted from the game.") in list("Yes","No")
+		if(question == "Yes" && A.flags_area & FLAGS_AREA_TUTORIAL)
+			client.make_ghost(get_turf(src))
+			qdel(src)
+			return TRUE
+	else if(can_save(A))
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && can_save(A))
 			mobdata.save_character(src)

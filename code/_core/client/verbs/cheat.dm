@@ -76,3 +76,16 @@
 	set name = "Rock the Vote"
 	set category = "Admin"
 	SShorde.round_time = 1000000
+
+
+/client/verb/rejuvenate_player(var/dosh_amount as num)
+	set name = "Rejuvenate Player"
+	set category = "Cheat"
+
+	var/mob/living/advanced/player/P = input("Who do you want to rejuvenate?") in all_players as mob|null
+
+	if(!P)
+		return FALSE
+
+	P.resurrect()
+	to_chat("You rejuvenated [P.name].")

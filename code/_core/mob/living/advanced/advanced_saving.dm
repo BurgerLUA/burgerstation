@@ -17,14 +17,12 @@
 		to_chat(span("notice","<h2>You are rewarded 2000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
 		adjust_currency(2000)
 
-
 	/*
 	for(var/id in loaded_data["organs"])
 		var/obj/item/organ/O = load_and_create(src,loaded_data["organs"][id],src,FALSE)
 		attach_organ(O,FALSE)
 		O.update_sprite()
 	*/
-
 
 	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special. TODO: IT SHOULD THOUGH.
 		var/o_type = loaded_data["organs"][id]["type"]

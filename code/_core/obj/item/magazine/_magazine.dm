@@ -39,7 +39,6 @@
 	. = ..()
 
 	if(object_data["stored_bullets"])
-		world.log << "FOUND [length(object_data["stored_bullets"])] STORED BULLETS."
 		for(var/k in object_data["stored_bullets"])
 			var/v = object_data["stored_bullets"][k]
 			for(var/i=1,i<=v,i++)

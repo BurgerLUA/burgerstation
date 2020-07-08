@@ -8,14 +8,14 @@
 
 	mouse_opacity = 1
 
-	icon = 'icons/hud/widget.dmi'
+	icon = 'icons/hud/hud.dmi'
 
 	has_quick_function = FALSE
 
 /obj/hud/button/widget/experience
 	name = "Check Experience"
-	icon_state = "experience"
-	screen_loc = "RIGHT,TOP"
+	icon_state = "xp_new"
+	screen_loc = "RIGHT-1,TOP"
 
 /obj/hud/button/widget/experience/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
@@ -50,7 +50,7 @@
 
 /obj/hud/button/widget/logout
 	name = "Logout"
-	icon_state = "logout"
+	icon_state = "logout_new"
 	screen_loc = "RIGHT,TOP"
 
 /obj/hud/button/widget/logout/clicked_on_by_object(var/mob/caller,object,location,control,params)
@@ -65,8 +65,8 @@
 
 /obj/hud/button/widget/change_theme
 	name = "Change Theme"
-	icon_state = "change_theme"
-	screen_loc = "RIGHT,TOP"
+	icon_state = "theme_new"
+	screen_loc = "RIGHT-2,TOP"
 
 /obj/hud/button/widget/change_theme/clicked_on_by_object(var/mob/caller,object,location,control,params)
 

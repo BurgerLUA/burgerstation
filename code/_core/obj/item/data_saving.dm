@@ -33,7 +33,6 @@
 		var/desired_blend = value_or_null(blend_list,"blend")
 		var/desired_type = value_or_null(blend_list,"type")
 		var/desired_layer = value_or_null(blend_list,"layer")
-		world.log << "BLEND TEST: [desired_color]."
 		src.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
 
 	return TRUE
@@ -154,13 +153,11 @@
 
 	if(inventory_data["held"])
 		for(var/i=1,i<=length(inventory_data["held"]),i++)
-			//world.log << "Trying to create and hold: [inventory_data["held"][i]["type"]]."
 			var/obj/item/I = load_and_create(P,inventory_data["held"][i],get_turf(src))
 			if(I) src.add_held_object(I,TRUE,TRUE)
 
 	if(inventory_data["worn"])
 		for(var/i=1,i<=length(inventory_data["worn"]),i++)
-			//world.log << "Trying to create and wear: [inventory_data["worn"][i]["type"]]."
 			var/obj/item/I = load_and_create(P,inventory_data["worn"][i],get_turf(src))
 			if(I) src.add_worn_object(I,TRUE,TRUE)
 

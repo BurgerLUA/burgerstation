@@ -163,3 +163,29 @@
 		caller.force_move(M.loc)
 
 	return .
+
+
+/obj/hud/button/dead_ghost/
+	name = "ghost"
+	desc = ""
+	icon_state = "square_round_small"
+	screen_loc = "CENTER,BOTTOM+2"
+
+	flags = FLAGS_HUD_DEAD
+
+	has_quick_function = FALSE
+
+/obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	. = ..()
+
+	if(caller.client)
+		caller.client.ghost()
+
+	return .
+
+/obj/hud/button/dead_ghost/update_overlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"ghost_overlay")
+	add_overlay(I)
+	return .

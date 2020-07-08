@@ -67,7 +67,9 @@
 			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 01. Rejoining may fix this.")
 			return FALSE
 
-		if(mobdata.create_new_character(mobdata.get_next_character_id()))
+		var/character_id = mobdata.get_next_character_id()
+
+		if(mobdata.create_new_character(character_id))
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
 			var/obj/marker/dev/D = locate() in world
@@ -79,6 +81,7 @@
 			else
 				P.force_move(T)
 				P.start_chargen()
+			P.save_id = character_id
 			return TRUE
 		else
 			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this.")

@@ -69,5 +69,6 @@
 		verbs += /client/verb/subsystem_report
 		verbs += /client/verb/reload_badwords
 		verbs += /client/verb/force_save_all
+		verbs += /client/verb/rejuvenate_player
 
 	return TRUE
