@@ -7,7 +7,9 @@ proc/should_static_view()
 /proc/stoplag()
 	if(!ENABLE_STOPLAG)
 		return FALSE
-	while(world.cpu >= 90 || world.tick_usage >= 90)
+	var/stoplag_limit = 20
+	while((world.cpu >= 90 || world.tick_usage >= 90) && stoplag_limit > 0)
+		stoplag_limit--
 		sleep(TICK_LAG)
 	return TRUE
 

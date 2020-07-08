@@ -70,11 +70,11 @@
 	if(object)
 		var/obj/hud/inventory/offhand_slot = object
 		offhand_slot.add_object(stored_magazine)
+	play(stored_magazine.get_magazine_eject_sound(),src)
 	stored_magazine.update_sprite()
 	stored_magazine = null
 	open = TRUE
 	update_sprite()
-	play(stored_magazine.get_magazine_eject_sound(),src)
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
