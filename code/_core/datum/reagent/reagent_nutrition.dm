@@ -16,7 +16,7 @@
 	liquid = -0.25
 
 	heated_reagent = /reagent/carbon
-	heated_reagent_temp = 400
+	heated_reagent_temp = 300
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
@@ -114,8 +114,8 @@
 	flags_reagent = FLAG_REAGENT_RAW
 
 	heated_reagent = /reagent/nutrition/bread
-	heated_reagent_temp = 450
-	heated_reagent_amount = 0.1
+	heated_reagent_temp = 370
+	heated_reagent_amount = 0.3
 	heated_reagent_mul = 0.01
 
 /reagent/nutrition/dough/flour
@@ -158,6 +158,9 @@
 
 	flags_reagent = FLAG_REAGENT_COOKED
 
+	heated_reagent_temp = 370
+	heated_reagent_mul = 0.003
+
 /reagent/nutrition/bread/flour
 	name = "whole grain bread"
 	desc = "Typical whole wheat water-flour based bread."
@@ -195,8 +198,8 @@
 	flags_reagent = FLAG_REAGENT_RAW
 
 	heated_reagent = /reagent/nutrition/cake
-	heated_reagent_temp = 450
-	heated_reagent_amount = 0.01
+	heated_reagent_temp = 370
+	heated_reagent_amount = 0.03
 	heated_reagent_mul = 0.05
 
 /reagent/nutrition/cake

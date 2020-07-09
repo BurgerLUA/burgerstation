@@ -46,11 +46,18 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,locatio
 		unbuckle(caller)
 		return TRUE
 
-	var/mob/living/L = locate() in loc.contents
+	var/mob/living/L
+	for(var/mob/living/L2 in contents)
+		if(istype(L2,/mob/living/advanced/stand))
+			continue
+		L = L2
+		break
+
 	if(L)
 		buckle(L,caller)
+		return TRUE
 
-	return TRUE
+	return FALSE
 
 obj/structure/interactive/bed/PostInitialize()
 	. = ..()

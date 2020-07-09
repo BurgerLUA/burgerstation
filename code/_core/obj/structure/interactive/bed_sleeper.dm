@@ -48,16 +48,20 @@ obj/structure/interactive/bed/sleeper/update_underlays()
 
 obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(door_state == SLEEPER_CLOSED)
+		open(caller)
+		return TRUE
+
 	. = ..()
 
 	if(.)
-		if(door_state == SLEEPER_CLOSED)
-			open(caller)
-		else if(door_state == SLEEPER_OPENED)
-			close(caller)
 		return TRUE
 
-	return .
+	if(door_state == SLEEPER_OPENED)
+		close(caller)
+		return TRUE
+
+	return FALSE
 
 /obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
