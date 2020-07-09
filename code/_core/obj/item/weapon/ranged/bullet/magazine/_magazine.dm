@@ -55,8 +55,10 @@
 	if(load_new_bullet_from_magazine(caller))
 		cock_type = cock_type == "back" ? "both" : "forward"
 
+	var/turf/T = get_turf(src)
+
 	if(cock_type)
-		play(get_cock_sound(cock_type),src)
+		if(T) play(get_cock_sound(cock_type),T)
 		update_sprite()
 
 	return TRUE

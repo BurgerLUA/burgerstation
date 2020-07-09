@@ -243,7 +243,7 @@
 
 /mob/living/proc/on_life()
 
-	if(!initialized)
+	if(!initialized || qdeleting)
 		return FALSE
 
 	handle_status_effects()
