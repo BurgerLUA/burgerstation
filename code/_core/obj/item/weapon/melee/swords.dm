@@ -5,6 +5,7 @@
 
 	name = "sabre"
 	desc = "A curved sword. Curved. Sword."
+	desc_extended = "A cavalry sabre that was often used as a weapon by non-commissioned officers of the Sol Army before being replaced by energy swords, nowadays it's used as a dress decoration more than anything."
 
 	icon = 'icons/obj/item/weapons/melee/swords/sabre.dmi'
 
@@ -74,6 +75,7 @@
 	name = "zweihander"
 	rarity = RARITY_MYTHICAL
 	desc = "THE LEGEND."
+	desc_extended = "A steel sword that makes up for it's simplicity by being heavy and huge, the Zweihander is a fearsome sight only used by PMCs with no self-regard whatsoever."
 	icon = 'icons/obj/item/weapons/melee/swords/zweihander.dmi'
 	damage_type = /damagetype/melee/sword/zweihander
 

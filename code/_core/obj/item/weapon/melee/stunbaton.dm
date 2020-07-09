@@ -1,6 +1,7 @@
 /obj/item/weapon/melee/energy/stunbaton
 	name = "harmbaton"
 	desc = "A stunbaton, except the stun setting is stuck on lethal."
+	desc_extended = "A baton used by Private Security and Space Police. Remember to turn it on before applying it to someone's head, or it will just be a weighty stick."
 	icon = 'icons/obj/item/weapons/melee/clubs/stunbaton.dmi'
 	damage_type = /damagetype/melee/club/stunbaton
 
