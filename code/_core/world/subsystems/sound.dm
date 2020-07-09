@@ -162,7 +162,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 /proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0, var/atom/alert_source = null)
 
-	if(!sound_path || !location_or_list)
+	if(!sound_path || !location_or_list ||!SSsound)
 		return FALSE
 
 	var/list/hearers = list()

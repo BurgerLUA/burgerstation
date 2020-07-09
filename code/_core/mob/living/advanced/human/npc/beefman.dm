@@ -51,18 +51,3 @@
 	. = ..()
 	update_all_blends()
 	return .
-
-/mob/living/advanced/npc/borgman
-	name = "borgman"
-	enable_AI = TRUE
-	ai = /ai/advanced/
-	species = "cyborg"
-	class = /class/cyborg
-
-/mob/living/advanced/npc/borgman/Initialize()
-
-	. = ..()
-
-	update_all_blends()
-
-	return .

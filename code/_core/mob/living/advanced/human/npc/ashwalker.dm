@@ -6,8 +6,7 @@
 	species = "reptile"
 
 	var/loadout_to_use = /loadout/ashwalker/
-	var/shield_chance = 0
-	var/spear_chance = 25
+	var/loadout_to_use_female = /loadout/ashwalker/female
 
 	loyalty_tag = "Ashwalker"
 	iff_tag = "Ashwalker"
@@ -19,7 +18,7 @@
 
 	. = ..()
 
-	level_multiplier *= rand(90,150)/100
+	level_multiplier *= rand(90,150)/100 //Randomness.
 
 	return .
 
@@ -28,41 +27,40 @@
 
 	. = ..()
 
+	var/species/S = all_species[species]
+
 	var/skin_color = sex == MALE ? rgb(rand(75,120),rand(75,120),rand(75,120)) : rgb(rand(120,200),rand(120,200),rand(120,200))
-
-	/*
-	if(sex == FEMALE)
-		loadout_to_use = locate("[loadout_to_use]" + "/female")
-	*/
-
 	var/rand_col = rand(50,200)
-	var/horn_color =  sex == MALE ? pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)) : skin_color
-
-	var/horns_to_use = sex == MALE ? "horns" : pick("frills_long","frills_short","frills_aqua")
 
 	change_organ_visual("skin", desired_color = skin_color)
-	change_organ_visual("hair_head", desired_color = horn_color, desired_icon_state = horns_to_use)
+
+	if(sex == MALE)
+		change_organ_visual("hair_face", desired_color = pick("#FFF0BE","#808080","#FFED96",rgb(rand_col,rand_col,rand_col)), desired_icon_state = pick(S.all_hair_face))
+		equip_loadout(loadout_to_use)
+	else
+		change_organ_visual("hair_head", desired_color = skin_color, desired_icon_state = pick(S.all_hair_head))
+		equip_loadout(loadout_to_use_female)
 
 	update_all_blends()
-	equip_loadout(loadout_to_use)
 
 
-	if(prob(shield_chance))
-		put_in_hands(new /obj/item/weapon/melee/shield(src.loc),TRUE)
-
-	if(spear_chance)
-		put_in_hands(new /obj/item/weapon/melee/spear(src.loc),FALSE)
 
 	return .
 
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"
 	level_multiplier = 1.25
-	spear_chance = 100
+	loadout_to_use = /loadout/ashwalker/hunter
+	loadout_to_use_female = /loadout/ashwalker/hunter/female
+
+/mob/living/advanced/npc/ashwalker/assassin
+	name = "ashwalker assassin"
+	level_multiplier = 2
+	loadout_to_use = /loadout/ashwalker/assassin
+	loadout_to_use_female = /loadout/ashwalker/assassin/female
 
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
-	level_multiplier = 1.5
+	level_multiplier = 3
 	loadout_to_use = /loadout/ashwalker/warrior
-	spear_chance = 100
-	shield_chance = 50
+	loadout_to_use_female = /loadout/ashwalker/warrior/female

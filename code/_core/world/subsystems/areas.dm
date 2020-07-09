@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(area)
 /subsystem/area/Initialize()
 
 	if(!ENABLE_WEATHERGEN)
-		return
+		return ..()
 
 	var/area_count = 0
 

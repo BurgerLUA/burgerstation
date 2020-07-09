@@ -35,3 +35,11 @@
 		"visor" = COLOR_GOLD,
 		"helmet" = COLOR_NANOTRASEN
 	)
+
+
+/obj/item/clothing/head/helmet/carbon/dummy
+	name = "old space swat helmet"
+	polymorphs = list(
+		"visor" = COLOR_BROWN,
+		"helmet" = COLOR_RED
+	)

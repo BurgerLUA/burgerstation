@@ -1399,7 +1399,7 @@
 #include "interface\interface.dmf"
 #include "maps\horde\01_bluespace.dmm"
 #include "maps\horde\02_burgerstation.dmm"
-#include "maps\horde\03_island.dmm"
+#include "maps\horde\03_hellscape.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 
