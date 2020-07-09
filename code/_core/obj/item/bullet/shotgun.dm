@@ -74,7 +74,7 @@
 	base_spread = 0.01
 
 	projectile = /obj/projectile/bullet/firearm/rifle
-	damage_type_bullet = /damagetype/ranged/magic/fireball/ash_drake
+	damage_type_bullet = /damagetype/ranged/magic/fireball
 
 	projectile_speed = 8
 

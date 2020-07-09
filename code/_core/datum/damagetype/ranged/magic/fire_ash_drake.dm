@@ -21,11 +21,11 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 40,
+		SKILL_SORCERY = 40,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(MAGIC,HEAT)
+		SKILL_SORCERY = list(MAGIC,HEAT)
 	)
 
 

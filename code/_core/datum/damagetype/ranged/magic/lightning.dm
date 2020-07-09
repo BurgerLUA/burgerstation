@@ -6,16 +6,12 @@
 		HOLY = 40
 	)
 
-	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 20
-	)
+	attribute_stats = list()
 
-	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = MAGIC
-	)
+	attribute_damage = list()
 
 	skill_stats = list(
-		SKILL_PRAYER = 20,
+		SKILL_PRAYER = 40,
 	)
 
 	skill_damage = list(

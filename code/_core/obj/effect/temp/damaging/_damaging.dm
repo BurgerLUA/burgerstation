@@ -65,7 +65,7 @@ obj/effect/temp/hazard/falling_fireball
 	duration = SECONDS_TO_DECISECONDS(2.1)
 	hazard_range = 0
 	hazard_delay = SECONDS_TO_DECISECONDS(2)
-	damage_type = /damagetype/ranged/magic/fireball/ash_drake
+	damage_type = /damagetype/ranged/magic/fireball
 
 obj/effect/temp/hazard/falling_fireball/New(var/desired_location,var/desired_time,var/desired_owner)
 
@@ -88,7 +88,7 @@ obj/effect/temp/hazard/fire/
 	duration = SECONDS_TO_DECISECONDS(6)
 	hazard_range = 1
 	hazard_delay = SECONDS_TO_DECISECONDS(1)
-	damage_type = /damagetype/ranged/magic/fire/ash_drake
+	damage_type = /damagetype/ranged/magic/magefire
 
 	cross_hazard = TRUE
 

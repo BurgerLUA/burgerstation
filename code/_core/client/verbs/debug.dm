@@ -284,7 +284,7 @@ client/verb/air_test(var/pressure as num)
 	set category = "Debug"
 
 	for(var/mob/living/advanced/player/P in world)
-		if(!P.ckey_last)
+		if(!P.ckey_last || !P.allow_save)
 			continue
 		try
 			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)

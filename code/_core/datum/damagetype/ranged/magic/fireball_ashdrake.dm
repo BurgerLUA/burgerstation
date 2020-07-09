@@ -16,11 +16,11 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 40,
+		SKILL_SORCERY = 40,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(MAGIC,HEAT)
+		SKILL_SORCERY = list(MAGIC,HEAT)
 	)
 
 /damagetype/ranged/magic/fireball/ash_drake/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

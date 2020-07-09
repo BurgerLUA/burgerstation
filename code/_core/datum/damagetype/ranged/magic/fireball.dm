@@ -16,11 +16,11 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 20,
+		SKILL_SORCERY = 20,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(MAGIC)
+		SKILL_SORCERY = list(MAGIC)
 	)
 
 /damagetype/ranged/magic/fireball/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

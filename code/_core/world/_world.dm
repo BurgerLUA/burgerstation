@@ -23,6 +23,8 @@ var/global/world_state = STATE_STARTING
 	turf = /turf/unsimulated/space
 	area = /area/
 
+	loop_checks = 0
+
 /world/New()
 	..()
 	life()
