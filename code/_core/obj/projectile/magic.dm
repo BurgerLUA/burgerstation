@@ -84,6 +84,25 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
+/obj/projectile/bullet/skeleton_summon
+	name = "skeleton summon"
+	icon = 'icons/obj/projectiles/magic.dmi'
+	icon_state = "summon_dark"
+	steps_allowed = 6
+	hit_target_turf = TRUE
+	lifetime = SECONDS_TO_DECISECONDS(2)
+
+
+/obj/projectile/bullet/skeleton_summon/post_on_hit(var/atom/hit_atom)
+	var/mob/living/advanced/npc/skeleton_summon/summoned/S = new(previous_loc,null,owner,SECONDS_TO_DECISECONDS(60))
+	if(is_living(owner))
+		var/mob/living/L = owner
+		S.iff_tag = L.iff_tag
+		S.loyalty_tag = L.loyalty_tag
+		INITIALIZE(S)
+		GENERATE(S)
+		S.say("I RISE TO SERVE MY MASTER!")
+
 /*
 /obj/projectile/bullet/holy_summon
 	name = "holy summon"
@@ -97,7 +116,7 @@
 
 /obj/projectile/bullet/holy_summon/post_on_hit(var/atom/hit_atom)
 	var/mob/living/simple/npc/summon/holy_warrior/H = new(previous_loc,null,owner,SECONDS_TO_DECISECONDS(60))
-	H.say("I RISE TO SERVER MY MASTER.")
+	H.say("I RISE TO SERVE MY MASTER.")
 
 /obj/projectile/bullet/mass_heal
 	name = "mass heal"
