@@ -1,6 +1,7 @@
 /obj/item/paper/
 	name = "Paper"
 	desc = "Paper!"
+	desc_extended = "Historically used to write things on."
 
 	icon = 'icons/obj/item/paper.dmi'
 	icon_state = "normal"

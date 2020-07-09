@@ -1,6 +1,7 @@
 obj/item/ingot/
 	name = "broken ingot"
-	desc = "Wait, what the fuck is this?"
+	desc = "The ingot form of metal."
+	desc_extended = "A metal ingot. Used for storage and other purposes."
 	icon = 'icons/obj/items/ore.dmi'
 	icon_state = "ingot_small"
 	var/ingot_color = "#FFFFFF"

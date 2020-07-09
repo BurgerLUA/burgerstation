@@ -2,6 +2,8 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 /obj/item/device/signaller
 	name = "signaller"
+	desc = "Suspiciously detonator shaped."
+	desc_extended = "A device used to send a signal to the selected frequency."
 	icon_state = "signaller"
 
 	var/frequency_current = RADIO_FREQ_MIN

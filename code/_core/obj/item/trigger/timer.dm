@@ -1,5 +1,7 @@
 /obj/item/device/timer
 	name = "timer"
+	desc = "Tick tock."
+	desc_extended = "A simple timer. Can be used to build totally innocuous and non-explosive things."
 	icon_state = "timer"
 
 	var/time_set = 50
