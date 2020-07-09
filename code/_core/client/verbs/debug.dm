@@ -290,6 +290,7 @@ client/verb/air_test(var/pressure as num)
 			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 			if(mobdata)
 				mobdata.save_character(src,force = TRUE)
+			to_chat("Saved [P.get_debug_name()].")
 		catch
 			to_chat("COULD NOT SAVE [P.get_debug_name()]!")
 
