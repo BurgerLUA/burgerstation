@@ -20,7 +20,7 @@
 
 	if(!istype(Obj,/mob/abstract/))
 		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
-		if(is_safe_to_delete(Obj))
+		if(is_safe_to_delete(Obj) && (!SShorde || !length(SShorde.tracked_objectives) || !(Obj in SShorde.tracked_objectives)) )
 			qdel(Obj)
 		else
 			Obj.force_move(get_turf(pick(rift_markers)))
