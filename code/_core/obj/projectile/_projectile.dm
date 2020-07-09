@@ -222,29 +222,29 @@
 	var/matrix/M = matrix()
 	var/new_angle = -ATAN2(vel_x,vel_y) + 90
 	M.Turn(new_angle)
-	M.Translate(pixel_x_float,pixel_y_float) //WHY DO I HAVE TO HALF THIS?
-	if(start_time == 0)
+	M.Translate(pixel_x_float,pixel_y_float)
+	if(!start_time)
 		transform = M
 	else
 		animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
 	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
-	if( (last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
+	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
 		steps_current += 1
 		if(on_enter_tile(previous_loc,current_loc))
 			return FALSE
-
-	if(current_loc)
-		previous_loc = current_loc
+		if(current_loc)
+			previous_loc = current_loc
 
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
 	for(var/mob/MO in contents)
-		if(MO.client)
-			animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+		if(!MO.client)
+			continue
+		animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
 	last_loc_x = current_loc_x
 	last_loc_y = current_loc_y

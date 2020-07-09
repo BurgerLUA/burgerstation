@@ -12,6 +12,10 @@ SUBSYSTEM_DEF(callback)
 
 	for(var/callback_id in src.all_callbacks)
 		var/callback_value = src.all_callbacks[callback_id]
+		if(!length(callback_value))
+			CRASH_SAFE("[callback_id] had an improper callback!")
+			remove_callback(callback_id)
+			continue
 		if(callback_value["time"] > world.time)
 			continue
 		var/stored_proc = callback_value["proc"]

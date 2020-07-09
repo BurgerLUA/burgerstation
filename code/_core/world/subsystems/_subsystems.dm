@@ -35,3 +35,8 @@
 
 //When the old subsystem hangs and we gotta replace it with a new one.
 /subsystem/proc/Recover()
+
+
+
+/subsystem/proc/on_shutdown()
+	return TRUE
