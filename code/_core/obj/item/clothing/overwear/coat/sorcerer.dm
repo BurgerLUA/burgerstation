@@ -14,8 +14,8 @@
 		MAGIC = 100,
 		COLD = 25,
 		HEAT = 15,
-		HOLY = -50,
-		DARK = 50
+		HOLY = -75,
+		DARK = 75
 	)
 
 	rarity = RARITY_RARE
