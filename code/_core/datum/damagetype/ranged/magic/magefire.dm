@@ -20,5 +20,5 @@
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(HEAT,MAGIC)
+		SKILL_SORCERY = list(HEAT,MAGIC)
 	)

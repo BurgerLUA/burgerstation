@@ -301,6 +301,7 @@
 #include "code\_core\datum\damagetype\melee\sword\energy_katana.dm"
 #include "code\_core\datum\damagetype\melee\sword\katana.dm"
 #include "code\_core\datum\damagetype\melee\sword\null_dagger.dm"
+#include "code\_core\datum\damagetype\melee\sword\plightbringer.dm"
 #include "code\_core\datum\damagetype\melee\sword\sabre.dm"
 #include "code\_core\datum\damagetype\melee\sword\zweihander.dm"
 #include "code\_core\datum\damagetype\npc\_npc.dm"
