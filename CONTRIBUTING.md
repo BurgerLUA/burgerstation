@@ -6,3 +6,6 @@ If you're porting something or adding assets to the server from amother server, 
 
 ## Rule 1: No Map Edits.
 Do not edit the map files unless you first get Burger's permission first. The map is changed constantly and will very likely conflict.
+
+## Rule 2: NO MAP EDITS.
+DO NOT EDIT THE MAP FILES UNLESS YOU FIRST GET BURGER'S PERMISSION.
