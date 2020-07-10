@@ -160,12 +160,16 @@
 
 	var/suicide = FALSE
 
+	var/mob/living/minion //This object's minion.
+	var/mob/living/master //This object's master.
+	var/minion_remove_time = 0
+
 /mob/living/calculate_value()
 
 	. = ..()
 
 	if(!dead)
-		. *= 4
+		. += value * 3
 
 	return .
 
@@ -179,7 +183,19 @@
 
 	return TRUE
 
+/mob/living/proc/dust()
+	new /obj/effect/temp/death(src.loc,30)
+	qdel(src)
+
 /mob/living/Destroy()
+
+	if(minion)
+		minion.master = null
+		minion = null
+
+	if(master)
+		master.minion = null
+		master = null
 
 	if(following)
 		following.followers -= src

@@ -53,6 +53,9 @@
 	var/obj/hud/button/dead_ghost/DG = new
 	DG.update_owner(src)
 
+	if(master)
+		dust()
+
 	return TRUE
 
 /*
@@ -130,101 +133,6 @@
 
 	return ..()
 
-/*
-/mob/living/proc/check_status_effects()
-
-	//Crit
-	if(!(status & CRIT) && (crit_time > 0 || crit_time == -1))
-		add_status(CRIT)
-		on_crit()
-
-	if(status & CRIT && crit_time <= 0 && crit_time != -1)
-		remove_status_effect(CRIT)
-		on_uncrit()
-
-	//Fatigue
-	if(!(status & FATIGUE) && (fatigue_time > 0 || fatigue_time == -1))
-		add_status(FATIGUE)
-		on_fatigued()
-
-	if(status & FATIGUE && fatigue_time <= 0 && fatigue_time != -1)
-		remove_status_effect(FATIGUE)
-		on_unfatigued()
-
-	//Rest
-	if(!(status & REST) && (rest_time > 0 || rest_time == -1))
-		add_status(REST)
-		on_rest()
-
-	if(status & REST && rest_time <= 0 && rest_time != -1)
-		remove_status_effect(REST)
-		on_unrest()
-
-	//Sleep
-	if(!(status & SLEEP) && (sleep_time > 0 || sleep_time == -1))
-		add_status(SLEEP)
-		on_sleeped()
-
-	if(status & SLEEP && sleep_time <= 0 && sleep_time != -1)
-		remove_status_effect(SLEEP)
-		on_unsleeped()
-
-	//Stun
-	if(!(status & STUN) && (stun_time > 0 || stun_time == -1))
-		add_status(STUN)
-		on_stunned()
-
-	if(status & STUN && stun_time <= 0 && stun_time != -1)
-		remove_status_effect(STUN)
-		on_unstunned()
-
-	//Stagger
-	if(!(status & STAGGER) && (stagger_time > 0 || stagger_time == -1))
-		add_status(STAGGER)
-		on_staggered()
-
-	if(status & STAGGER && stagger_time <= 0 && stagger_time != -1)
-		remove_status_effect(STAGGER)
-		on_unstaggered()
-
-	//Paralyze
-	if(!(status & PARALYZE) && (paralyze_time > 0 || paralyze_time == -1))
-		add_status(PARALYZE)
-		on_paralyzed()
-
-	if(status & PARALYZE && paralyze_time <= 0 && paralyze_time != -1)
-		remove_status_effect(PARALYZE)
-		on_unparalyzed()
-
-	//Confuse
-	if(!(status & CONFUSED) && (confuse_time > 0 || confuse_time == -1))
-		add_status(CONFUSED)
-		on_confused()
-
-	if(status & CONFUSED && confuse_time <= 0 && confuse_time != -1)
-		remove_status_effect(CONFUSED)
-		on_unconfused()
-
-	//Adrenaline
-	if(!(status & ADRENALINE) && (adrenaline_time > 0 || adrenaline_time == -1))
-		add_status(ADRENALINE)
-		on_adrenaline()
-
-	if(status & ADRENALINE && adrenaline_time <= 0 && adrenaline_time != -1)
-		remove_status_effect(ADRENALINE)
-		on_unadrenaline()
-
-	//Final Checks
-	if(status && !(src in all_living_with_status))
-		all_living_with_status += src
-
-	if(!status && (src in all_living_with_status))
-		handle_horizontal()
-		all_living_with_status -= src
-
-	return TRUE
-*/
-
 /mob/living/proc/handle_horizontal()
 
 	var/desired_horizontal = dead || has_status_effect(list(STUN,FATIGUE,SLEEP,CRIT,REST))
@@ -277,6 +185,10 @@ mob/living/proc/on_life_slow()
 
 	if(!initialized)
 		return FALSE
+
+	if(minion_remove_time && minion_remove_time <= world.time)
+		dust()
+		return TRUE
 
 	handle_fire()
 

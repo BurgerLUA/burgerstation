@@ -229,3 +229,7 @@
 
 /atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod = 1)
 	return 0
+
+
+/atom/proc/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
+	return TRUE
