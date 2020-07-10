@@ -32,3 +32,12 @@
 		DARK = 100,
 		FATIGUE = 50
 	)
+
+	status_immune = list(
+		STUN = STAGGER,
+		SLEEP = STAGGER,
+		PARALYZE = STAGGER,
+		FATIGUE = STAGGER,
+		DISARM = TRUE,
+		FIRE = TRUE
+	)

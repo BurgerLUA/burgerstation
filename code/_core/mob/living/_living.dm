@@ -93,6 +93,8 @@
 	)
 
 	var/list/status_immune = list() //What status effects area they immune to?
+	//STATUS = TRUE //Means it's immune.
+	//STATUS = OTHERSTATUS //Means it will do OTHERSTATUS instead for half the duration.
 
 	var/damage_received_multiplier = 1
 

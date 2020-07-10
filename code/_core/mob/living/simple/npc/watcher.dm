@@ -28,7 +28,7 @@
 	)
 
 	status_immune = list(
-		FIRE = FALSE
+		FIRE = TRUE
 	)
 
 	iff_tag = "watcher"
