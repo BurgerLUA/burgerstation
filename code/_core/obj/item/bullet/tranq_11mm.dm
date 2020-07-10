@@ -1,7 +1,8 @@
 /obj/item/bullet_cartridge/tranq_11m
 	name = "\improper 11.43x25mm tranquilizer cartridge"
 	desc = "Makes people sleep. Aim at the head for best results."
-	desc = "For guns that use tranquilizer rounds."
+	desc_extended = "For guns that use tranquilizer rounds."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/tranq.dmi'
 
 	item_count_max = 5
@@ -18,6 +19,6 @@
 
 	size = 0.01
 	weight = 0.01
-	value = 0.5
+	value = 2
 
-	jam_chance = 100
+	jam_chance = 100 //Required.

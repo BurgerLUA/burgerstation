@@ -2,6 +2,7 @@
 	name = "\improper 10mm pistol cartridge"
 	desc = "At least 1mm bigger than 9mm"
 	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/10mm.dmi'
 
 	item_count_max = 5
@@ -19,13 +20,14 @@
 
 	size = 0.02
 	weight = 0.02
-	value = 0.3
+	value = 1
 
 
 /obj/item/bullet_cartridge/pistol_50/
 	name = "\improper .50 pistol cartridge"
-	desc = "Impractical, but cool as fuck."
+	desc = "The cool kids use this."
 	desc_extended = "For pistols that require .50."
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/50ae.dmi'
 
 	item_count_max = 5
@@ -45,12 +47,13 @@
 	size = 0.025
 	weight = 0.025
 
-	value = 0.4
+	value = 1.3
 
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
 	desc = "The pistol round of the future, today!"
-	desc_extended = "For pistols, revolvers, and smgs that require 12mm ammo."
+	desc_extended = "For pistols, revolvers, and smgs that require 12.7mm ammo."
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/12mm.dmi'
 
 	item_count_max = 5
@@ -68,12 +71,13 @@
 
 	size = 0.025
 	weight = 0.025
-	value = 0.4
+	value = 1.2
 
 /obj/item/bullet_cartridge/pistol_9mm/
 	name = "\improper 9mm pistol cartridge"
 	desc = "The average bullet for the average shooter."
 	desc_extended = "For pistols, revolvers, and smgs that require 9mm ammo."
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/9mm.dmi'
 
 	item_count_max = 5
@@ -92,12 +96,13 @@
 
 	size = 0.01
 	weight = 0.01
-	value = 0.1
+	value = 0.9
 
 /obj/item/bullet_cartridge/pistol_4mm/
 	name = "\improper 4.6x30mm smg cartridge"
-	desc = "Fuck Armor, honestly."
+	desc = "Pierces armor like butter."
 	desc_extended = "For smgs that require 4.6x30mm ammo."
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/8mm.dmi'
 
 	item_count_max = 5
@@ -116,12 +121,13 @@
 
 	size = 0.01
 	weight = 0.01
-	value = 0.1
+	value = 0.4
 
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
 	desc = "Different than 9mm!"
 	desc_extended = "For pistols, revolvers, and smgs that require .40 ammo."
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/40.dmi'
 
 	item_count_max = 5
@@ -140,12 +146,13 @@
 
 	size = 0.01
 	weight = 0.01
-	value = 0.1
+	value = 1
 
 /obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"
 	desc = "Can't go wrong with the classics."
 	desc_extended = "For pistols and smgs that requre .45 ammo."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/45.dmi'
 
 	item_count_max = 6
@@ -163,7 +170,7 @@
 
 	size = 0.015
 	weight = 0.015
-	value = 0.2
+	value = 1.5
 
 /obj/item/bullet_cartridge/pistol_45/Generate()
 	item_count_current = 6
@@ -174,6 +181,7 @@
 	name = "\improper 8mm pistol bullet"
 	desc = "It's like a baby bullet. Adorable."
 	desc_extended = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/8mm.dmi'
 
 	item_count_max = 5
@@ -191,4 +199,4 @@
 
 	size = 0.01
 	weight = 0.01
-	value = 0.2
+	value = 1

@@ -1,4 +1,5 @@
 /obj/item/bullet_cartridge/shotgun_12/
+	rarity = RARITY_COMMON
 	id = "shotgun"
 	icon = 'icons/obj/item/bullet/shotgun.dmi'
 	item_count_max = 5
@@ -16,7 +17,7 @@
 
 	size = 0.04
 	weight = 0.04
-	value = 0.6
+	value = 2
 
 /obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
@@ -41,7 +42,7 @@
 
 	size = 0.04
 	weight = 0.04
-	value = 0.6
+	value = 1.8
 
 /obj/item/bullet_cartridge/shotgun_12/buckshot
 	name = "\improper 12 gauge buckshot shell"
@@ -59,7 +60,7 @@
 
 	size = 0.04
 	weight = 0.04
-	value = 0.6
+	value = 1.6
 
 	inaccuracy_modifer = 1.5
 
@@ -69,6 +70,7 @@
 	desc = "Sets everything on fire."
 	desc_extended = "A magic imbued shotgun shell that shoots 3 high damaging incendiary rounds. Don't ask how it works."
 	icon_state = "fire"
+	rarity = RARITY_RARE
 
 	projectile_count = 3
 	base_spread = 0.01
@@ -80,6 +82,6 @@
 
 	size = 0.04
 	weight = 0.04
-	value = 10
+	value = 5
 
 	inaccuracy_modifer = 1

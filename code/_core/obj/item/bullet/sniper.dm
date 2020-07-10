@@ -2,6 +2,7 @@
 	name = "\improper .50 sniper round"
 	desc = "For when you want to shoot something so hard it's family will feel it too."
 	desc_extended = "For sniper rifles that require .50 ammo."
+	rarity = RARITY_RARE
 	id = ".50"
 	icon = 'icons/obj/item/bullet/50.dmi'
 
@@ -26,6 +27,7 @@
 	name = "\improper 9x39mm rifle bullet"
 	desc = "Be vewy, vewy quiet."
 	desc_extended = "For rifles that require 9x39mm."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/223.dmi'
 
 
@@ -45,7 +47,7 @@
 	size = 0.04
 	weight = 0.04
 
-	value = 0.7
+	value = 1.8
 
 	inaccuracy_modifer = 0.75
 

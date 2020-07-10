@@ -1,4 +1,5 @@
 /obj/item/bullet_cartridge/shotgun_23/
+	rarity = RARITY_COMMON
 	id = "shotgun"
 	icon = 'icons/obj/item/bullet/shotgun_23.dmi'
 	item_count_max = 4
@@ -29,6 +30,7 @@
 	name = "\improper 23x75mmR slug"
 	desc = "This thing's huge!"
 	desc_extended = "A shotgun slug designed specifically for the KS23"
+	rarity = RARITY_RARE
 	icon_state = "23slug"
 
 	projectile_count = 1
@@ -41,12 +43,13 @@
 
 	size = 0.04
 	weight = 0.04
-	value = 0.6
+	value = 4
 
 /obj/item/bullet_cartridge/shotgun_23/buckshot
 	name = "\improper 23x75mmR buckshot shell"
 	desc = "Now with 50% more pellet per pellet"
 	desc_extended = "A buckshot shell designed specifically for the KS23"
+	rarity = RARITY_RARE
 	icon_state = "23buck"
 
 	projectile_count = 6
@@ -59,6 +62,6 @@
 
 	size = 0.04
 	weight = 0.04
-	value = 0.6
+	value = 3.5
 
 	inaccuracy_modifer = 2

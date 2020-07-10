@@ -12,7 +12,7 @@
 
 	weight = WEIGHT_2
 
-	value = 10
+	value = 30
 
 	slowdown_mul_worn = 1.1
 	slowdown_mul_held = 1.05

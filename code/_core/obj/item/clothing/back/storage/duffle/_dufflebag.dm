@@ -12,10 +12,10 @@
 
 	weight = WEIGHT_4
 
-	value = 20
+	value = 100
 
-	slowdown_mul_worn = 1.3
-	slowdown_mul_held = 1.15
+	slowdown_mul_worn = 1.5
+	slowdown_mul_held = 1.3
 
 /obj/item/clothing/back/storage/dufflebag/loadout/pmc
 	color = COLOR_WHITE

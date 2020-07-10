@@ -256,7 +256,10 @@
 		/obj/item/storage/shoebox/jackboot/,
 		/obj/item/storage/glovebox/padded/,
 		/obj/item/clothing/head/hood/skimask/black,
-		/obj/item/clothing/mask/gas
+		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/back/storage/satchel/poly/security,
+		/obj/item/clothing/back/storage/dufflebag/poly/security,
+		/obj/item/clothing/back/storage/backpack/poly/security
 	)
 
 

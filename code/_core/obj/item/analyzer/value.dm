@@ -2,9 +2,10 @@
 	name = "value analyzer"
 	desc = "Is it worth it?"
 	desc_extended = "A special camera and sensor combo that calculates the current market rate of an item."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/analyzers/value.dmi'
 	icon_state = "inventory"
-	value = 400
+	value = 450
 
 /obj/item/analyzer/value/can_be_scanned(var/mob/caller,var/atom/target)
 	return ismovable(target)

@@ -2,6 +2,7 @@
 	name = "crossbow bolt"
 	desc = "For when you need to go medieval on someone's ass."
 	desc_extended = "A crudely constructed bolt meant for crossbow"
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/bolt.dmi'
 	item_count_max = 6
 	item_count_max_icon = 6
@@ -20,7 +21,7 @@
 
 	size = 0.5
 	weight = 1
-	value = 0.5
+	value = 10
 
 /obj/item/bullet_cartridge/bolt/Generate()
 	item_count_current = 3

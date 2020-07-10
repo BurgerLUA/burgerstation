@@ -1,10 +1,10 @@
 /obj/item/bullet_cartridge/ //NOT TO BE CONFUSED WITH PROJECTILES.
 	name = "bullet"
 	desc = "Try not to bite it."
-	desc_extended = "Bullets can be put in guns with the matching ammo type. Some bullets are very rare and should only be used when needed."
+	desc_extended = "Bullets can be put in guns with the matching ammo type."
+	rarity = RARITY_COMMON
 
 	icon_state = "bullet"
-
 
 	var/bullet_length = -1
 	var/bullet_diameter = -1

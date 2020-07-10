@@ -2,6 +2,7 @@
 	name = "armor analyzer"
 	desc = "Minmaxxing setups since 2520."
 	desc_extended = "An incredible complex sensor that sends (mostly) harmless radiation waves to calculate the physical protection of an object."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/analyzers/armor.dmi'
 	icon_state = "inventory"
 	value = 250

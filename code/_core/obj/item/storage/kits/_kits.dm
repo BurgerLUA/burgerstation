@@ -11,6 +11,21 @@
 	container_max_size = SIZE_2
 	dynamic_inventory_count = 8
 
+/obj/item/storage/kit/New(var/desired_loc)
+	. = ..()
+	icon_state = "[initial(icon_state)]_[rand(1,4)]"
+	return .
+
+/obj/item/storage/kit/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("icon_state")
+	return .
+
+/obj/item/storage/kit/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("icon_state")
+	return .
+
 /obj/item/storage/kit/filled/fill_inventory()
 	new /obj/item/container/medicine/bandage(src)
 	new /obj/item/container/medicine/bandage(src)
@@ -60,7 +75,7 @@
 	name = "combat medikit"
 	desc = "I hope you've got insurance."
 	desc_extended = "A combat medical kit for healing when under pressure. Usually contains five pill bottles, each filled with bicaridine, dylovene, kelotane, iron and epinephrine pills. Also contains two epinephrine syringes and a health analyzer."
-	icon_state = "syndicate"
+	icon_state = "tactical"
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()
 	new /obj/item/storage/pillbottle/bicaridine(src)

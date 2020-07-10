@@ -12,4 +12,4 @@ obj/item/clothing/back/storage/backpack/explorer
 
 	weight = WEIGHT_2
 
-	value = 20
+	value = 160

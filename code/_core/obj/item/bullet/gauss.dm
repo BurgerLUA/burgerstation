@@ -2,6 +2,7 @@
 	name = "\improper 2x12mm steel ball gauss cartridge"
 	desc = "I've got balls of steel."
 	desc_extended = "A steel ball attached to an overcharged tri-lithium battery. For use in gauss weapons."
+	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/gauss.dmi'
 
 	bullet_diameter = 2
@@ -20,4 +21,4 @@
 	size = 0.04
 	weight = 0.04
 
-	value = 12
+	value = 50

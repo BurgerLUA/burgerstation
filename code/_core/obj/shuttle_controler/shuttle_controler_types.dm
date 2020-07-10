@@ -52,6 +52,7 @@
 	transit_bluespace = "delta_shuttle_bluespace"
 	transit_end = "delta_shuttle_landing"
 
+/*
 /obj/shuttle_controller/delta/transit(var/starting_transit_id,var/ending_transit_id)
 
 	if(starting_transit_id == "delta_shuttle_landing")
@@ -63,6 +64,7 @@
 					F.try_extract(T)
 
 	return ..()
+*/
 
 /obj/shuttle_controller/golf
 	name = "golf shuttle controler"
