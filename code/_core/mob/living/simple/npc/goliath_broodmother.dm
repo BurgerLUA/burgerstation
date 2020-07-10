@@ -24,22 +24,6 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 75,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 100,
-		MAGIC = 0,
-		HEAT = INFINITY,
-		COLD = 0,
-		BOMB = 75,
-		BIO = 75,
-		RAD = 75,
-		HOLY = 25,
-		DARK = INFINITY,
-		FATIGUE = INFINITY
-	)
-
 	status_immune = list(
 		STUN = TRUE,
 		SLEEP = STAGGER,

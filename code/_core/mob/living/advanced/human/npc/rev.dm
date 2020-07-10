@@ -1,5 +1,7 @@
 /mob/living/advanced/npc/rev
 	name = "revolutionary"
+	desc = "FOR THE REVOLUTION!"
+	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Suprisingly, they're not syndicate backed."
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate
 	class = /class/syndicate_soldier
@@ -66,6 +68,3 @@
 	equip_loadout(loadout_to_use)
 
 	return .
-
-/mob/living/advanced/npc/rev/map
-	map_spawn = TRUE

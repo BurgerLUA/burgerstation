@@ -275,7 +275,10 @@
 			if(victim_defense > 0) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 			if((damage_type == MAGIC || damage_type == HOLY || damage_type == DARK) && defense_rating_attacker[damage_type]) //Deal bonus damage.
-				damage_to_deal[damage_type] = calculate_damage_with_armor(damage_to_deal[damage_type],-defense_rating_attacker[damage_type]*3)
+				if(defense_rating_attacker[damage_type] == INFINITY)
+					damage_to_deal[damage_type] = 0
+					continue
+				damage_to_deal[damage_type] = calculate_damage_with_armor(damage_to_deal[damage_type],-defense_rating_attacker[damage_type])
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)

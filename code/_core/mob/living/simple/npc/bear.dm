@@ -14,14 +14,14 @@
 	stun_angle = 90
 
 	armor_base = list(
-		BLADE = 10,
+		BLADE = 25,
 		BLUNT = 25,
-		PIERCE = 10,
+		PIERCE = 50,
 		LASER = -25,
-		MAGIC = 0,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
+		MAGIC = 50,
+		HEAT = -25,
+		COLD = 100,
+		BOMB = 25,
 		BIO = 0,
 		RAD = 0,
 		HOLY = 100,

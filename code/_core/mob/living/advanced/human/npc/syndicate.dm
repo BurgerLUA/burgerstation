@@ -20,8 +20,6 @@
 		/loadout/syndicate/elite = 16
 	)
 
-	var/map_spawn = FALSE
-
 /mob/living/advanced/npc/syndicate/Destroy()
 	if(SShorde && src in SShorde.tracked_enemies)
 		SShorde.on_killed_syndicate(src)
@@ -66,16 +64,13 @@
 
 	return .
 
-/mob/living/advanced/npc/syndicate/map
-	map_spawn = TRUE
-
-/mob/living/advanced/npc/syndicate/map/double
+/mob/living/advanced/npc/syndicate/double
 	level_multiplier = 2
 
-/mob/living/advanced/npc/syndicate/map/triple
+/mob/living/advanced/npc/syndicate/triple
 	level_multiplier = 3
 
-/mob/living/advanced/npc/syndicate/map/quadruple
+/mob/living/advanced/npc/syndicate/quadruple
 	level_multiplier = 4
 
 

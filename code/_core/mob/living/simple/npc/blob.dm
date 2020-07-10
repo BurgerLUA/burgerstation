@@ -16,17 +16,17 @@
 
 	armor_base = list(
 		BLADE = 25,
-		BLUNT = 75,
+		BLUNT = 50,
 		PIERCE = 75,
-		LASER = 25,
-		MAGIC = 25,
-		HEAT = 25,
-		COLD = 75,
-		BOMB = 25,
+		LASER = -50,
+		MAGIC = -25,
+		HEAT = -25,
+		COLD = 100,
+		BOMB = -50,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = 50,
-		DARK = 100,
+		HOLY = 75,
+		DARK = 75,
 		FATIGUE = INFINITY
 	)
 

@@ -52,6 +52,8 @@
 	desc = "An organ."
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
 
+	defense_rating = REPTILE_ARMOR
+
 /obj/item/organ/head/reptile/female
 	icon_state = BODY_HEAD_FEMALE
 
@@ -61,6 +63,8 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	desc = "An organ."
 	flags_organ = FLAG_ORGAN_BEAST_HEAD
+
+	defense_rating = REPTILE_ARMOR
 
 /obj/item/organ/head/reptile_advanced/female
 	icon_state = BODY_HEAD_FEMALE
@@ -77,12 +81,16 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
+	defense_rating = DIONA_ARMOR
+
 
 //cyborg
 /obj/item/organ/head/cyborg
 	name = "cyborg head"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	desc = "An organ."
+
+	defense_rating = CYBORG_ARMOR
 
 
 //beef
@@ -91,9 +99,13 @@
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	desc = "An organ."
 
+	defense_rating = MEATMEN_ARMOR
+
 
 //skeleton
 /obj/item/organ/head/skeleton
 	name = "skeleton head"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 	desc = "An organ."
+
+	defense_rating = SKELETON_ARMOR

@@ -16,3 +16,19 @@
 	loyalty_tag = "American"
 
 	mob_size = MOB_SIZE_BOSS
+
+	armor_base = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 50,
+		MAGIC = 25,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 50,
+		BIO = 50,
+		RAD = 50,
+		HOLY = 25,
+		DARK = 100,
+		FATIGUE = 50
+	)

@@ -40,9 +40,10 @@
 		return FALSE
 
 	var/list/possible_items = list()
-	for(var/obj/item/I in A.held_objects)
-		if(istype(I,/obj/item/weapon/))
-			possible_items += I
+	for(var/obj/item/weapon/I in A.held_objects)
+		possible_items += I
+	for(var/obj/item/weapon/I in A.worn_objects)
+		possible_items += I
 
 	if(length(possible_items))
 		var/obj/item/I = pick(possible_items)

@@ -1,6 +1,7 @@
 /mob/living/advanced/npc/beefman
 	name = "meat anomaly"
-	desc = "A disgusting monster made by beef"
+	desc = "I told you not to go alone."
+	desc_extended = "A disgusting monster made entirely out of beef. It's unknown where these things came from, but we do know that they're attracted by the rotting corpses of humanoids."
 	enable_AI = TRUE
 	ai = /ai/advanced/beef
 	species = "beefman"
@@ -38,7 +39,11 @@
 /mob/living/advanced/npc/beefman/proc/beef()
 	if(!health)
 		return FALSE
-	health.adjust_loss_smart(brute=-health.get_brute_loss()*0.25,burn=-health.get_burn_loss()*0.25)
+	var/brute_to_remove = health.get_brute_loss()*0.5
+	var/burn_to_remove = health.get_burn_loss()*0.5
+	if(health.health_current + brute_to_remove + burn_to_remove <= 0)
+		return FALSE
+	health.adjust_loss_smart(brute=-brute_to_remove,burn=-burn_to_remove)
 	if(!check_death())
 		revive()
 	return TRUE

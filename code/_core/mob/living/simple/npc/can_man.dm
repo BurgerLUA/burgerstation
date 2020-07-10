@@ -22,13 +22,13 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = 90,
-		BLUNT = 90,
+		BLADE = 75,
+		BLUNT = 75,
 		PIERCE = 75,
-		LASER = INFINITY,
-		MAGIC = 50,
-		HEAT = INFINITY,
-		COLD =INFINITY,
+		LASER = 100,
+		MAGIC = 25,
+		HEAT = 75,
+		COLD = 100,
 		BOMB = 50,
 		BIO = INFINITY,
 		RAD = INFINITY,

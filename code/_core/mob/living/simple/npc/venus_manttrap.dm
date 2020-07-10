@@ -5,6 +5,8 @@
 	damage_type = /damagetype/unarmed/claw/
 	class = /class/venus_human_trap
 
+	health_base = 100
+
 	ai = /ai/
 
 	stun_angle = 0
@@ -12,19 +14,19 @@
 	value = 50
 
 	armor_base = list(
-		BLADE = 10,
-		BLUNT = 25,
-		PIERCE = 10,
+		BLADE = 0,
+		BLUNT = 50,
+		PIERCE = 75,
 		LASER = 0,
-		MAGIC = 0,
+		MAGIC = 100,
 		HEAT = 0,
-		COLD = 25,
+		COLD = -25,
 		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0
+		BIO = -50,
+		RAD = 75,
+		HOLY = 75,
+		DARK = 0,
+		FATIGUE = 50
 	)
 
 	iff_tag = "jungle"

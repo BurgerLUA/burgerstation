@@ -20,8 +20,8 @@
 	name = "Unarmed"
 	id = SKILL_UNARMED
 	desc = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
-	experience_power = 1.5
-	experience_multiplier = 21
+	experience_power = 1.4
+	experience_multiplier = 22.5
 	combat_level_mul = 0.75
 
 /experience/skill/prayer/ //VITALITY
@@ -57,8 +57,8 @@
 	name = "Precision"
 	id = SKILL_PRECISION
 	desc = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
-	experience_power = 1.5
-	experience_multiplier = 21.5
+	experience_power = 1.4
+	experience_multiplier = 22.5
 	combat_level_mul = 1
 
 /experience/skill/dodge/ //AGILITY

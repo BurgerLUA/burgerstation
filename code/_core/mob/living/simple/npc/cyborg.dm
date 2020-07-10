@@ -44,13 +44,13 @@
 	walk_delay_mul = 3
 
 	armor_base = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		MAGIC = 0,
-		HEAT = 25,
-		COLD = 50,
+		PIERCE = 75,
+		LASER = 50,
+		MAGIC = -50,
+		HEAT = 75,
+		COLD = 75,
 		BOMB = 25,
 		BIO = INFINITY,
 		RAD = INFINITY,

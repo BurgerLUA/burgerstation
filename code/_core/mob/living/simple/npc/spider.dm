@@ -24,17 +24,17 @@
 	armor_base = list(
 		BLADE = 10,
 		BLUNT = 25,
-		PIERCE = 0,
+		PIERCE = 25,
 		LASER = 0,
-		MAGIC = 0,
-		HEAT = 25,
+		MAGIC = 50,
+		HEAT = -25,
 		COLD = 25,
 		BOMB = 0,
 		BIO = 75,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0
+		RAD = 25,
+		HOLY = 50,
+		DARK = 75,
+		FATIGUE = 25
 	)
 
 	mob_size = MOB_SIZE_LARGE
@@ -52,6 +52,22 @@
 
 	level_multiplier = 1.25
 
+	armor_base = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = 50,
+		HEAT = 75,
+		COLD = -25,
+		BOMB = 0,
+		BIO = INFINITY,
+		RAD = 25,
+		HOLY = 75,
+		DARK = 50,
+		FATIGUE = 25
+	)
+
 /mob/living/simple/npc/spider/desert/Initialize()
 	. = ..()
 	set_light(4,0.25,"#00FF00")
@@ -62,4 +78,20 @@
 	icon_state = "hunter"
 
 	level_multiplier = 1.5
+
+	armor_base = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = 50,
+		HEAT = 75,
+		COLD = -25,
+		BOMB = 0,
+		BIO = 75,
+		RAD = 25,
+		HOLY = 25,
+		DARK = 100,
+		FATIGUE = 25
+	)
 

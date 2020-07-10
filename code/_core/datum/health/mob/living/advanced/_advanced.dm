@@ -163,19 +163,19 @@
 
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
-
 		for(var/obj/item/clothing/C in A.worn_objects)
-
 			if(!C.defense_rating && length(C.defense_rating))
 				continue
-
 			if(!(O.id in C.protected_limbs))
 				continue
-
 			for(var/damage_type in C.defense_rating)
 				if(abs(C.defense_rating[damage_type]) == INFINITY)
 					returning_value[damage_type] = C.defense_rating[damage_type]
-				else if(abs(returning_value[damage_type]) != INFINITY)
-					returning_value[damage_type] += C.defense_rating[damage_type]
+					continue
+				if(abs(O.defense_rating[damage_type]) == INFINITY)
+					returning_value[damage_type] = O.defense_rating[damage_type]
+					continue
+				if(O.defense_rating[damage_type]) returning_value[damage_type] += O.defense_rating[damage_type]
+				if(C.defense_rating[damage_type]) returning_value[damage_type] += C.defense_rating[damage_type]
 
 	return returning_value

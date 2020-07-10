@@ -41,6 +41,8 @@
 	name = "reptile groin"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
+	defense_rating = REPTILE_ARMOR
+
 /obj/item/organ/groin/reptile/female
 	icon_state = BODY_GROIN_FEMALE
 
@@ -49,6 +51,8 @@
 /obj/item/organ/groin/reptile_advanced
 	name = "reptile groin"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+
+	defense_rating = REPTILE_ARMOR
 
 /obj/item/organ/groin/reptile_advanced/female
 	icon_state = BODY_GROIN_FEMALE
@@ -62,16 +66,22 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
+	defense_rating = DIONA_ARMOR
+
 //cyborg
 /obj/item/organ/groin/cyborg
 	name = "cyborg groin"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+
+	defense_rating = CYBORG_ARMOR
 
 
 //Beefman
 /obj/item/organ/groin/beefman
 	name = "beef groin"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
+
+	defense_rating = MEATMEN_ARMOR
 
 
 
@@ -80,3 +90,5 @@
 /obj/item/organ/groin/skeleton
 	name = "skeleton groin"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+
+	defense_rating = SKELETON_ARMOR

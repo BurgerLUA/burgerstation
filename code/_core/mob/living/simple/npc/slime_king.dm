@@ -31,18 +31,18 @@
 	force_spawn = TRUE
 
 	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 50,
-		LASER = 25,
-		MAGIC = 25,
+		BLADE = 50,
+		BLUNT = INFINITY,
+		PIERCE = 100,
+		LASER = 75,
+		MAGIC = 75,
 		HEAT = 100,
-		COLD = 0,
+		COLD = -25,
 		BOMB = 25,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
+		HOLY = 200,
+		DARK = 100,
 		FATIGUE = INFINITY
 	)
 

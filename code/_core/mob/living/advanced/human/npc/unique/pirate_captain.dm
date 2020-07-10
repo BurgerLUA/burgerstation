@@ -2,6 +2,7 @@
 	name = "Captain Condom"
 	id = "captain"
 	desc = "The one and only."
+	desc = "The infamous Captain Condom. They lead a skeleton crew of murderous skeletons called the murderboners."
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
@@ -12,7 +13,7 @@
 	class = /class/pirate
 	level_multiplier = 3
 
-	health_base = 1000
+	health_base = 1200
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
@@ -25,6 +26,7 @@
 /mob/living/advanced/npc/unique/pirate_mate
 	name = "HOS COOL"
 	desc = "THE FUCKING COOLEST."
+	desc_extended = "Captain Condom's second in command, but we all know he's the one in charge."
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
@@ -32,7 +34,7 @@
 	class = /class/pirate
 	level_multiplier = 2
 
-	health_base = 500
+	health_base = 1200
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
@@ -46,6 +48,7 @@
 /mob/living/advanced/npc/pirate_crew
 	name = "skeleton crew"
 	desc = "RATTLE ME BONES."
+	desc = "A skeleton pirate belonging to Captain Condom's crew of pirates."
 	species = "skeleton"
 	sex = MALE
 	gender = MALE

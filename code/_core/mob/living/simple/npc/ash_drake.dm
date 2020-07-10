@@ -27,19 +27,19 @@
 	boss = TRUE
 
 	armor_base = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 25,
-		PIERCE = 25,
+		PIERCE = 50,
 		LASER = 100,
-		MAGIC = 0,
-		HEAT = INFINITY,
-		COLD = 0,
-		BOMB = 50,
-		BIO = 75,
-		RAD = 75,
+		MAGIC = 25,
+		HEAT = 100,
+		COLD = -25,
+		BOMB = 25,
+		BIO = 25,
+		RAD = 100,
 		HOLY = 0,
-		DARK = INFINITY,
-		FATIGUE = INFINITY
+		DARK = 100,
+		FATIGUE = 25
 	)
 
 	damage_received_multiplier = 0.5

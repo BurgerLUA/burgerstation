@@ -86,6 +86,8 @@
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs
 
+	armor_base = list()
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()
@@ -266,6 +268,7 @@ mob/living/advanced/Login()
 	return .
 
 /mob/living/advanced/PostInitialize()
+
 	. = ..()
 
 	if(client)
@@ -282,11 +285,14 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/setup_name()
 
-	if(name == DEFAULT_NAME) //Not unique.
+	if(name == DEFAULT_NAME) //Give a human name
 		name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 		real_name = name
+		return TRUE
 
-	return TRUE
+	real_name = name
+
+	return ..()
 
 /mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 

@@ -1,5 +1,7 @@
 /mob/living/advanced/npc/cyborg_assistant
 	name = "cyborg assistant"
+	desc = "DO YOU REQUIRE HELP?"
+	desc_extended = "A NanoTrasen model Cyborg unit programmed to assist those in asking stupid questions."
 	enable_AI = TRUE
 	ai = null
 	move_mod = 1

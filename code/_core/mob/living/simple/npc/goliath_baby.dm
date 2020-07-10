@@ -14,22 +14,6 @@
 
 	attack_range = 1
 
-	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = -25,
-		MAGIC = -25,
-		HEAT = INFINITY,
-		COLD = -25,
-		BOMB = INFINITY,
-		BIO = 75,
-		RAD = 75,
-		HOLY = -25,
-		DARK = INFINITY,
-		FATIGUE = INFINITY
-	)
-
 	mob_size = MOB_SIZE_CRITTER
 
 

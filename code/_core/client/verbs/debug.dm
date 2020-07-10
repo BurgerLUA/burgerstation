@@ -65,7 +65,7 @@ client/verb/air_test(var/pressure as num)
 
 	var/turf/T = locate(mob.x + offset[1]*5, mob.y + offset[2]*5, mob.z)
 	if(T)
-		var/mob/living/advanced/npc/syndicate/map/M = new(T)
+		var/mob/living/advanced/npc/syndicate/M = new(T)
 		M.dir = mob.dir
 		INITIALIZE(M)
 		M.ai.enabled = TRUE
@@ -140,7 +140,7 @@ client/verb/air_test(var/pressure as num)
 		INITIALIZE(N_NPC)
 		N_NPC.ai.enabled = TRUE
 
-		var/mob/living/advanced/npc/syndicate/map/S_NPC = new(S)
+		var/mob/living/advanced/npc/syndicate/S_NPC = new(S)
 		S_NPC.dir = WEST
 		INITIALIZE(S_NPC)
 		S_NPC.ai.enabled = TRUE

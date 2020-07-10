@@ -27,15 +27,9 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = -25,
-		MAGIC = -25,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
+		MAGIC = 25,
 		HOLY = 50,
-		DARK = 100,
-		FATIGUE = 0
+		DARK = 100
 	)
 
 	mob_size = MOB_SIZE_LARGE

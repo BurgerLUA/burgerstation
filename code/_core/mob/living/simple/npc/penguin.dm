@@ -9,22 +9,6 @@
 
 	value = 50
 
-	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = -15,
-		MAGIC = 0,
-		HEAT = -25,
-		COLD = 50,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 25
-	)
-
 	butcher_contents = list(
 		/obj/item/container/food/dynamic/fish/penguin/,
 		/obj/item/container/food/dynamic/fish/penguin/

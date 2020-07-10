@@ -570,8 +570,6 @@
 #include "code\_core\mob\living\advanced\human\npc\robot_assistant.dm"
 #include "code\_core\mob\living\advanced\human\npc\skeleton_miner.dm"
 #include "code\_core\mob\living\advanced\human\npc\syndicate.dm"
-#include "code\_core\mob\living\advanced\human\npc\wizard.dm"
-#include "code\_core\mob\living\advanced\human\npc\zombie.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\_unique.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\daddy.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\knights_of.dm"

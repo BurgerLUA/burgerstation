@@ -1,14 +1,16 @@
 /mob/living/advanced/npc/skeleton_miner
-	name = "skeleton mind-slave"
-	desc = "A mind-slaved skeleton worked to the bone at a syndicate mining facility."
+	name = "skeleton miner minion"
+	desc = "Worked to the bone."
+	desc_extended = "A reanimated magical skeleton forced to work the phoron mines of the Syndicate for all eternity."
+
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
 	var/desired_loadout = /loadout/skeleton_miner/skeleton
 	class = /class/pirate
 
-	loyalty_tag = "Skeleton"
-	iff_tag = "Skeleton"
+	loyalty_tag = "Syndicate"
+	iff_tag = "Syndicate"
 	ai = /ai/advanced/skeleton
 
 
@@ -18,13 +20,10 @@
 	return .
 
 /mob/living/advanced/npc/skeleton_miner/shovel
-	name = "skeleton mind-slave"
 	desired_loadout = /loadout/skeleton_miner/skeleton/shovel
 
 /mob/living/advanced/npc/skeleton_miner/pickaxe
-	name = "skeleton mind-slave"
 	desired_loadout = /loadout/skeleton_miner/skeleton/pickaxe
 
 /mob/living/advanced/npc/skeleton_miner/torch
-	name = "skeleton mind-slave"
 	desired_loadout = /loadout/skeleton_miner/skeleton/torch

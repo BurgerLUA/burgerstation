@@ -50,6 +50,8 @@
 
 	flags_organ = FLAG_ORGAN_BEAST_FEET
 
+	defense_rating = REPTILE_ARMOR
+
 /obj/item/organ/leg/reptile/left
 	name = "left reptile leg"
 	id = BODY_LEG_LEFT
@@ -68,6 +70,8 @@
 /obj/item/organ/leg/reptile_advanced
 	name = "right advanced reptile leg"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+
+	defense_rating = REPTILE_ARMOR
 
 
 /obj/item/organ/leg/reptile_advanced/left
@@ -93,6 +97,8 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
+	defense_rating = DIONA_ARMOR
+
 /obj/item/organ/leg/diona/left
 	name = "left diona leg"
 	id = BODY_LEG_LEFT
@@ -111,6 +117,8 @@
 /obj/item/organ/leg/cyborg
 	name = "right cyborg leg"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+
+	defense_rating = CYBORG_ARMOR
 
 
 /obj/item/organ/leg/cyborg/left
@@ -131,6 +139,8 @@
 	name = "right beef leg"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 
+	defense_rating = MEATMEN_ARMOR
+
 /obj/item/organ/leg/beefman/left
 	name = "left beef leg"
 	id = BODY_LEG_LEFT
@@ -149,6 +159,8 @@
 /obj/item/organ/leg/skeleton
 	name = "right skeleton leg"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
+
+	defense_rating = SKELETON_ARMOR
 
 
 /obj/item/organ/leg/skeleton/left

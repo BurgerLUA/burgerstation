@@ -79,6 +79,8 @@
 
 	flags_organ = FLAG_ORGAN_BEAST_FEET
 
+	defense_rating = REPTILE_ARMOR
+
 /obj/item/organ/foot/reptile/left
 	name = "left reptile foot"
 	id = BODY_FOOT_LEFT
@@ -103,6 +105,8 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+	defense_rating = REPTILE_ARMOR
 
 /obj/item/organ/foot/reptile_advanced/left
 	name = "left advanced reptile foot"
@@ -134,6 +138,8 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
+	defense_rating = DIONA_ARMOR
+
 /obj/item/organ/foot/diona/left
 	name = "left diona foot"
 	id = BODY_FOOT_LEFT
@@ -162,6 +168,8 @@
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
+	defense_rating = CYBORG_ARMOR
+
 /obj/item/organ/foot/cyborg/left
 	name = "left cyborg foot"
 	id = BODY_FOOT_LEFT
@@ -179,7 +187,6 @@
 	target_bounds_y_min = 1
 	target_bounds_y_max = 3
 
-
 //Beefman
 /obj/item/organ/foot/beefman
 	name = "right beef foot"
@@ -187,6 +194,8 @@
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+	defense_rating = MEATMEN_ARMOR
 
 /obj/item/organ/foot/beefman/left
 	name = "left beef foot"
@@ -213,6 +222,8 @@
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+	defense_rating = SKELETON_ARMOR
 
 /obj/item/organ/foot/skeleton/left
 	name = "left skeleton foot"

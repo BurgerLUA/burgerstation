@@ -105,6 +105,7 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 
+	defense_rating = REPTILE_ARMOR
 
 /obj/item/organ/hand/reptile/left
 	name = "left reptile hand"
@@ -133,6 +134,8 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
+
+	defense_rating = REPTILE_ARMOR
 
 /obj/item/organ/hand/reptile_advanced/left
 	name = "left advanced reptile hand"
@@ -166,6 +169,8 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
+	defense_rating = DIONA_ARMOR
+
 
 /obj/item/organ/hand/diona/left
 	name = "left diona hand"
@@ -196,6 +201,8 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 
+	defense_rating = CYBORG_ARMOR
+
 /obj/item/organ/hand/cyborg/left
 	name = "left cyborg hand"
 	id = BODY_HAND_LEFT
@@ -225,6 +232,8 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 	damage_type = /damagetype/unarmed/beef/
+
+	defense_rating = MEATMEN_ARMOR
 
 /obj/item/organ/hand/beefman/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
 	return damage_type
@@ -286,6 +295,8 @@
 		/obj/hud/inventory/organs/right_hand_worn,
 		/obj/hud/inventory/organs/right_hand_held
 	)
+
+	defense_rating = SKELETON_ARMOR
 
 /obj/item/organ/hand/skeleton/left
 	name = "left skeleton hand"

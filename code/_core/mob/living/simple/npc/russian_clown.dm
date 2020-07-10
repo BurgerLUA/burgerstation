@@ -16,19 +16,18 @@
 	value = 1000
 
 	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
+		BLADE = 50,
+		BLUNT = 90,
 		PIERCE = 75,
 		LASER = 50,
-		MAGIC = 25,
-		HEAT = 25,
-		COLD = INFINITY,
-		BOMB = 100,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = 25,
-		DARK = INFINITY,
-		FATIGUE = INFINITY
+		MAGIC = 75,
+		HEAT = 50,
+		COLD = 100,
+		BOMB = 25,
+		BIO = 25,
+		RAD = 25,
+		HOLY = 100,
+		DARK = 100
 	)
 
 	loyalty_tag = "Revolutionary"

@@ -12,19 +12,19 @@
 	stun_angle = 0
 
 	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 50,
-		LASER = 25,
+		BLADE = 0,
+		BLUNT = 50,
+		PIERCE = 25,
+		LASER = 50,
 		MAGIC = 75,
-		HEAT = 50,
-		COLD = 100,
+		HEAT = 25,
+		COLD = 75,
 		BOMB = 0,
-		BIO = 25,
-		RAD = 25,
+		BIO = 75,
+		RAD = 50,
 		HOLY = 50,
-		DARK = 50,
-		FATIGUE = 75
+		DARK = 75,
+		FATIGUE = 25
 	)
 
 	status_immune = list(

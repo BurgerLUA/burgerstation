@@ -1,5 +1,9 @@
 /mob/living/advanced/npc/ashwalker
 	name = "ashwalker villager"
+	desc = "Walker of the ash."
+	desc_extended = "A more primitive cousin to the lizardmen that NanoTrasen hires, these bipedal Ashwalkers tend to hunt in lava-infested regions for meat and leather. They're hostile to anything that isn't their own kin."
+
+
 	ai = /ai/advanced/ashwalker
 	class = /class/ashwalker
 

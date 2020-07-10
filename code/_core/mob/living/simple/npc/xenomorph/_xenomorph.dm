@@ -22,13 +22,13 @@
 	iff_tag = "Alien"
 
 	armor_base = list(
-		BLADE = 80,
-		BLUNT = 80,
+		BLADE = 75,
+		BLUNT = 50,
 		PIERCE = 75,
 		LASER = 25,
 		MAGIC = 25,
-		HEAT = 25,
-		COLD = INFINITY,
+		HEAT = 75,
+		COLD = 75,
 		BOMB = 25,
 		BIO = INFINITY,
 		RAD = INFINITY,
@@ -65,18 +65,18 @@
 
 	armor_base = list(
 		BLADE = 100,
-		BLUNT = 100,
-		PIERCE = 90,
-		LASER = 75,
-		MAGIC = 75,
+		BLUNT = 75,
+		PIERCE = 100,
+		LASER = 50,
+		MAGIC = 50,
 		HEAT = 75,
-		COLD = INFINITY,
+		COLD = 75,
 		BOMB = 50,
 		BIO = INFINITY,
 		RAD = INFINITY,
-		HOLY = 50,
+		HOLY = 75,
 		DARK = 100,
-		FATIGUE = INFINITY
+		FATIGUE = 50
 	)
 
 	status_immune = list(
