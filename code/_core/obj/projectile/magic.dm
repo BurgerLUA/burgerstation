@@ -92,7 +92,7 @@
 	hit_target_turf = TRUE
 	lifetime = SECONDS_TO_DECISECONDS(2)
 
-/*
+
 /obj/projectile/bullet/skeleton_summon/post_on_hit(var/atom/hit_atom)
 	var/mob/living/advanced/npc/skeleton_summon/S = new(previous_loc,null,owner,SECONDS_TO_DECISECONDS(60))
 	if(is_living(owner))
@@ -102,7 +102,7 @@
 		INITIALIZE(S)
 		GENERATE(S)
 		S.say("I RISE TO SERVE MY MASTER!")
-*/
+
 
 /*
 /obj/projectile/bullet/holy_summon
