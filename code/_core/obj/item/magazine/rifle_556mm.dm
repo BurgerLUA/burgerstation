@@ -24,7 +24,7 @@
 	bullet_diameter_max = 5.6
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/rifle_556/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"

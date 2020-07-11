@@ -13,7 +13,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_2
+
 
 
 	polymorphs = list(

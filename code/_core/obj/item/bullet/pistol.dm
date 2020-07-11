@@ -19,7 +19,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.02
-	weight = 0.02
 	value = 1
 
 
@@ -45,8 +44,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.025
-	weight = 0.025
-
 	value = 1.3
 
 /obj/item/bullet_cartridge/pistol_12mm/
@@ -70,7 +67,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.025
-	weight = 0.025
 	value = 1.2
 
 /obj/item/bullet_cartridge/pistol_9mm/
@@ -95,7 +91,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	weight = 0.01
 	value = 0.9
 
 /obj/item/bullet_cartridge/pistol_4mm/
@@ -120,7 +115,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	weight = 0.01
 	value = 0.4
 
 /obj/item/bullet_cartridge/pistol_40/
@@ -145,7 +139,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	weight = 0.01
 	value = 1
 
 /obj/item/bullet_cartridge/pistol_45/
@@ -169,7 +162,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.015
-	weight = 0.015
 	value = 1.5
 
 /obj/item/bullet_cartridge/pistol_45/Generate()
@@ -198,5 +190,4 @@
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.01
-	weight = 0.01
 	value = 1

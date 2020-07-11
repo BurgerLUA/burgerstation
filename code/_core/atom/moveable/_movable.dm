@@ -11,7 +11,7 @@
 	var/area/area //The object's area.
 
 	var/tmp/move_dir = 0
-	var/tmp/move_dir_last = 0 //Used for momentum.
+	var/tmp/move_dir_last = 0 //Used for momentum and speed.
 	var/tmp/move_delay = 0
 
 	var/movement_delay = 4 //Measured in ticks.

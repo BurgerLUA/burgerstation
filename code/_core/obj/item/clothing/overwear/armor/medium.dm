@@ -24,7 +24,7 @@
 	)
 
 	size = SIZE_4
-	weight = WEIGHT_4
+
 
 	value = 30
 
@@ -45,6 +45,6 @@
 	)
 
 	size = SIZE_4
-	weight = WEIGHT_5
+
 
 	value = 50

@@ -18,7 +18,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	override_icon_state = TRUE
 
@@ -34,7 +34,7 @@
 	bullet_diameter_max = 18.5
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	value = 150
 

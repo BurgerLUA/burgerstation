@@ -20,7 +20,7 @@
 	)
 
 	size = SIZE_6
-	weight = WEIGHT_6
+
 	slowdown_mul_worn = 1.3
 
 	value = 150
@@ -58,7 +58,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_7
+
 	slowdown_mul_worn = 1.5
 
 	value = 1000
@@ -82,7 +82,7 @@
 	)
 
 	size = SIZE_5
-	weight = WEIGHT_4
+
 
 	value = 200
 
@@ -103,7 +103,7 @@
 	)
 
 	size = SIZE_6
-	weight = WEIGHT_6
+
 
 	value = 300
 
@@ -128,7 +128,6 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_8
 
 
 /obj/item/clothing/overwear/armor/knight/magnus
@@ -151,7 +150,7 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
 
 	size = SIZE_5
-	weight = WEIGHT_5
+
 
 	value = 300
 

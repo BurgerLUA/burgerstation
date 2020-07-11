@@ -20,7 +20,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	bullet_length_min = 73
 	bullet_length_best = 75

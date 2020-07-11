@@ -21,7 +21,7 @@
 	bullet_diameter_max = 3
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/gauss_gun/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets)]"

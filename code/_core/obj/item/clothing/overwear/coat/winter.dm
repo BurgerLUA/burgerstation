@@ -24,7 +24,7 @@
 	additional_clothing = list(/obj/item/clothing/head/hood/winter)
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	value = 20
 
@@ -46,6 +46,6 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	value = 20

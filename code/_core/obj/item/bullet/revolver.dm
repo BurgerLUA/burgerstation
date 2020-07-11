@@ -19,8 +19,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.02
-	weight = 0.02
-
 	value = 1.1
 
 /obj/item/bullet_cartridge/revolver_357
@@ -44,8 +42,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.03
-	weight = 0.03
-
 	value = 1.5
 
 /obj/item/bullet_cartridge/revolver_44
@@ -69,7 +65,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.035
-	weight = 0.035
 	value = 2
 
 /obj/item/bullet_cartridge/pistol_22
@@ -93,7 +88,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	weight = 0.01
 	value = 0.5
 
 /obj/item/bullet_cartridge/revolver_300
@@ -116,7 +110,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.06
-	weight = 0.06
 	value = 5
 
 /obj/item/bullet_cartridge/revolver_300/Generate()
@@ -145,7 +138,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.06
-	weight = 0.06
 	value = 2
 
 /obj/item/bullet_cartridge/revolver_762/Generate()

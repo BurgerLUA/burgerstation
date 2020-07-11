@@ -20,7 +20,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	value = 15
 
@@ -37,7 +37,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 75
 

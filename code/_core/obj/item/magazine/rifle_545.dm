@@ -21,7 +21,7 @@
 	bullet_diameter_max = 5.46
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/rifle_545/update_icon()
 	if(length(stored_bullets))

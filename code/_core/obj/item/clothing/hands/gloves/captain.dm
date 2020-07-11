@@ -28,7 +28,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_3
+
 
 	value = 500
 

@@ -13,7 +13,7 @@
 	ammo = /obj/item/bullet_cartridge/rifle_223
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -24,7 +24,7 @@
 	bullet_diameter_max = 5.6
 
 	size = SIZE_4
-	weight = WEIGHT_4
+
 
 /obj/item/magazine/lmg_223/update_icon()
 	var/math_mod = (length(stored_bullets) / bullet_count_max) * 11

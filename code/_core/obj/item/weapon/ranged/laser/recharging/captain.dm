@@ -27,7 +27,7 @@
 	heat_max = 0.2
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	value = 2000
 

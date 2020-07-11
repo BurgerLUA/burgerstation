@@ -3,7 +3,7 @@
 	desc = "Shirt that goes under your shirt."
 	desc_extended = "You can also not wear another shirt over this, but you'll look like an idiot, or an Australian."
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 /obj/item/clothing/undertop/underwear/bra
 	name = "brassiere"

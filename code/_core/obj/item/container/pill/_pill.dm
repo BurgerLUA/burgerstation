@@ -10,7 +10,7 @@
 	var/double = FALSE
 
 	size = SIZE_0
-	weight = WEIGHT_0
+
 
 	var/reagent_container/reagents_2
 

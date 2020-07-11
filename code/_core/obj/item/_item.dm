@@ -9,7 +9,6 @@
 	var/rarity = RARITY_COMMON
 
 	var/size = 1
-	var/weight = 1
 
 	var/list/material = list() //Stored materials
 
@@ -258,13 +257,12 @@
 /obj/item/New(var/desired_loc)
 
 	if(!damage_type || damage_type == /damagetype/default/)
-		var/size_mass = size * weight
-		switch(size_mass)
-			if(1 to 5)
+		switch(size)
+			if(0 to SIZE_3)
 				damage_type = /damagetype/item/light
-			if(5 to 10)
+			if(SIZE_3 to SIZE_5)
 				damage_type = /damagetype/item/medium
-			if(10 to INFINITY)
+			if(SIZE_5 to INFINITY)
 				damage_type = /damagetype/item/heavy
 
 	for(var/i=1, i <= length(inventories), i++)
@@ -338,7 +336,7 @@
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
-	. += div("weightsize","Size: [size] | Weight: [weight]")
+	. += div("weightsize","Size: [size]")
 	. += div("examine_description","Crafting ID: [crafting_id ? crafting_id : "none"]")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)

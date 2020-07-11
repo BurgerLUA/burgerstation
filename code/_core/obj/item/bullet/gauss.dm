@@ -19,6 +19,4 @@
 	projectile_speed = TILE_SIZE-1
 
 	size = 0.04
-	weight = 0.04
-
 	value = 50

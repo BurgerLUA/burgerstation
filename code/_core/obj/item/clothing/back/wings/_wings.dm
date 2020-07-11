@@ -3,7 +3,6 @@ obj/item/clothing/back/wings
 	desc_extended = "For all your snowflake needs."
 
 	size = SIZE_8
-	weight = -100
 
 	worn_pixel_x = -7
 
@@ -12,4 +11,4 @@ obj/item/clothing/back/wings
 
 	protected_limbs = TARGETABLE_LIMBS
 
-	slowdown_mul_worn = 0.75
+	slowdown_mul_worn = 0.5

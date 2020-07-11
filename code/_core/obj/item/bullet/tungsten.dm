@@ -21,5 +21,4 @@
 	projectile_speed = BULLET_SPEED_MAX
 
 	size = 0.5
-	weight = 1
 	value = 3

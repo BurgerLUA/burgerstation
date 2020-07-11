@@ -21,7 +21,7 @@
 	bullet_diameter_max = 9.5
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/smp_9mm/update_icon()
 

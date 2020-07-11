@@ -24,7 +24,7 @@
 	bullet_diameter_max = 9.5
 
 	size = SIZE_1
-	weight = WEIGHT_1
+
 
 /obj/item/magazine/clip/revolver/bullet_38/eight
 	name = "\improper .38 eight round speedloader"
@@ -62,7 +62,7 @@
 	bullet_diameter_max = 11
 
 	size = SIZE_1
-	weight = WEIGHT_1
+
 
 
 
@@ -107,7 +107,7 @@
 	bullet_diameter_max = 9.5
 
 	size = SIZE_1
-	weight = WEIGHT_1
+
 
 /*
 /obj/item/magazine/clip/revolver/bullet_357/surplus

@@ -10,7 +10,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 	value = 5
 
@@ -28,7 +28,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 	value = 20
 

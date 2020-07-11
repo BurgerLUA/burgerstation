@@ -6,7 +6,7 @@
 	worn_slots = 0
 	held_slots = 1
 	max_size = SIZE_2
-	max_weight = WEIGHT_3
+	max_
 	//should_draw = FALSE
 	drag_to_take = FALSE
 

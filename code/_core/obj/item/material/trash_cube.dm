@@ -8,6 +8,4 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	weight = 0.1
-
 	crafting_id = "trash_cube"

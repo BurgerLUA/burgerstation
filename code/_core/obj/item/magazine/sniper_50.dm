@@ -21,7 +21,7 @@
 	ammo = /obj/item/bullet_cartridge/sniper_50
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/sniper_50/update_icon()
 	if(length(stored_bullets))

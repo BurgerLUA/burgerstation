@@ -31,7 +31,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_1
+
 
 	value = 100
 

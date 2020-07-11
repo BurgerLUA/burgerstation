@@ -8,22 +8,27 @@
 
 	var/final_move_dir = move_dir
 
-	if(!final_move_dir && acceleration_mod)
-		acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
+	if(!final_move_dir)
+		if(deceleration)
+			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
+		else
+			acceleration_value = 0
 		if(use_momentum && move_dir_last && acceleration_value)
 			final_move_dir = move_dir_last
 
 	if(final_move_dir && is_valid_dir(final_move_dir) && move_delay <= 0)
 
-		var/retrieved_movement_delay = get_movement_delay()
+		var/final_movement_delay = get_movement_delay()
 
 		if(final_move_dir in DIRECTIONS_INTERCARDINAL)
-			retrieved_movement_delay *= HYPOTENUSE(1,1)
+			final_movement_delay *= HYPOTENUSE(1,1)
 
-		var/final_movement_delay = acceleration_mod ? retrieved_movement_delay + (acceleration_mod*retrieved_movement_delay*(1 - acceleration_value/100)) : retrieved_movement_delay
+		if(acceleration_mod > 0)
+			final_movement_delay *= 1 / (acceleration_mod + ((acceleration_value/100)*(1-acceleration_mod)))
+
 		var/atom/desired_loc = get_step(src,final_move_dir)
 		var/list/step_offsets = list(0,0)
-		if(step_size != 32)
+		if(step_size != TILE_SIZE)
 			step_offsets = direction_to_pixel_offset(final_move_dir)
 			desired_loc = src.loc
 			final_movement_delay = 0
@@ -33,11 +38,15 @@
 
 		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
 		glide_size = move_delay ? step_size/move_delay : 1
-		if(use_momentum)
-			move_dir_last = final_move_dir
+
+		var/similiar_move_dir = FALSE
 
 		var/move_result = Move(desired_loc,final_move_dir,step_offsets[1],step_offsets[2])
-		if(move_result == 0 && (final_move_dir in DIRECTIONS_INTERCARDINAL))
+		if(move_result)
+			if(move_dir_last & final_move_dir)
+				similiar_move_dir = TRUE
+			move_dir_last = final_move_dir
+		else if(final_move_dir in DIRECTIONS_INTERCARDINAL)
 			for(var/new_dir in DIRECTIONS_CARDINAL)
 				var/list/new_step_offsets = list(0,0)
 				var/atom/new_desired_loc = get_step(src,new_dir)
@@ -45,10 +54,22 @@
 					new_step_offsets = direction_to_pixel_offset(final_move_dir)
 					new_desired_loc = src.loc
 				if((new_dir & final_move_dir) && Move(new_desired_loc,new_dir,new_step_offsets[1],new_step_offsets[2]))
+					if(move_dir_last & final_move_dir)
+						similiar_move_dir = TRUE
+					move_dir_last = new_dir
 					return TRUE
+				else
+					move_dir_last = 0x0
+		else
+			move_dir_last = 0x0
 
 		if(acceleration_mod)
-			acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
+			if(similiar_move_dir)
+				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
+			else
+				acceleration_value *= 0.5
+
+
 		return TRUE
 	else
 		if(adjust_delay)

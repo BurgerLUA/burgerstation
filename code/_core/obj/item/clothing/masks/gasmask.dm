@@ -15,7 +15,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	value = 40
 
@@ -37,7 +37,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 	value = 100
 
@@ -60,7 +60,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 	value = 50
 

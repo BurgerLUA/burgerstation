@@ -21,7 +21,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_0
+
 
 	value = 20
 
@@ -62,7 +62,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_2
+
 
 /obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
@@ -104,7 +104,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_1
+
 
 	value = 60
 
@@ -150,7 +150,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_1
+
 
 /obj/item/clothing/hands/gloves/colored/padded/left
 	name = "left padded glove"

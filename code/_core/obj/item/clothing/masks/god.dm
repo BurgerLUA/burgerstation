@@ -24,7 +24,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_5
+
 
 	pixel_x = -16
 	pixel_y = -16

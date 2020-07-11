@@ -11,7 +11,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_2
+
 
 	value = 30
 

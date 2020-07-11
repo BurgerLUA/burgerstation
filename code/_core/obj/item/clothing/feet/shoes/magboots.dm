@@ -23,7 +23,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	slowdown_mul_worn = 1.1
 

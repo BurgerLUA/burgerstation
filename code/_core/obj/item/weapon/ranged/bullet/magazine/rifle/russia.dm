@@ -19,7 +19,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
-	weight = WEIGHT_3
+
 
 	heat_per_shot = 0.02
 	heat_max = 0.3
@@ -65,7 +65,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
-	weight = WEIGHT_3
+
 
 	heat_per_shot = 0.01
 	heat_max = 0.2
@@ -111,7 +111,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
-	weight = WEIGHT_3
+
 
 	heat_per_shot = 0.02
 	heat_max = 0.3
@@ -157,7 +157,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
-	weight = WEIGHT_3
+
 
 	heat_per_shot = 0.02
 	heat_max = 0.3
@@ -203,7 +203,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
-	weight = WEIGHT_4
+
 
 	heat_per_shot = 0.07
 	heat_max = 0.3
@@ -217,7 +217,7 @@
 	bullet_diameter_max = 10
 
 	size = SIZE_4
-	weight = WEIGHT_5
+
 
 	value = 250
 

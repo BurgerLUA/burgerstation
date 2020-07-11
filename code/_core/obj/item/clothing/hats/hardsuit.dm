@@ -30,7 +30,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 80
 
@@ -56,7 +56,7 @@
 	)
 
 	size = SIZE_4
-	weight = WEIGHT_5
+
 
 	value = 200
 
@@ -81,7 +81,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 300
 
@@ -106,7 +106,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	slowdown_mul_worn = 0.75
 
@@ -133,7 +133,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 300
 
@@ -161,7 +161,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 300
 
@@ -188,7 +188,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 300
 

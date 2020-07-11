@@ -56,11 +56,11 @@
 	icon_state = "pill_canister"
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	dynamic_inventory_count = 1
 	container_max_size = SIZE_1
-	container_max_weight = WEIGHT_1
+	container_max_
 	container_held_slots = 30
 	container_whitelist = list(
 		/obj/item/container/pill,

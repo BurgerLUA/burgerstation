@@ -18,5 +18,4 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.1
-	weight = 0.02
 	value = 0.5

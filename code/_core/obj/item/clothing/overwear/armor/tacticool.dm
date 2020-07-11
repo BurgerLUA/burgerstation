@@ -18,7 +18,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	value = 250
 
@@ -39,7 +39,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 	value = 150
 
@@ -65,7 +65,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_7
+
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/exosuit)
 
@@ -92,6 +92,6 @@
 	)
 
 	size = SIZE_4
-	weight = WEIGHT_5
+
 
 	value = 250

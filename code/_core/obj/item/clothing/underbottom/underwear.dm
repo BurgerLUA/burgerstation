@@ -4,7 +4,7 @@
 	desc_extended = "A regular pait of underwear."
 
 	size = SIZE_1
-	weight = WEIGHT_0
+
 
 /obj/item/clothing/underbottom/underwear/boxers
 	name = "boxers"

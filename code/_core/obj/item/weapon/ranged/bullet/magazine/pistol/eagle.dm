@@ -10,7 +10,7 @@
 	view_punch = 20
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 	heat_per_shot = 0.06
 	heat_max = 0.3
@@ -35,4 +35,3 @@
 	desc_extended = "A proudly American made and designed<sup>\[citation needed\]</sup> 50 calibre pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
 	value = 240
-	weight = WEIGHT_5

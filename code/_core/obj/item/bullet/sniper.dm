@@ -20,7 +20,6 @@
 	projectile_speed = BULLET_SPEED_SNIPER
 
 	size = 0.1
-	weight = 0.1
 	value = 12
 
 /obj/item/bullet_cartridge/rifle_939mm
@@ -45,7 +44,6 @@
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
 	size = 0.04
-	weight = 0.04
 
 	value = 1.8
 

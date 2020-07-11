@@ -18,7 +18,7 @@
 	)
 
 	size = SIZE_1
-	weight = WEIGHT_0
+
 
 	value = 20
 

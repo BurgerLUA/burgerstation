@@ -23,7 +23,7 @@
 	bullet_diameter_max = 11
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/pistol_10mm/update_icon()
 	if(length(stored_bullets))

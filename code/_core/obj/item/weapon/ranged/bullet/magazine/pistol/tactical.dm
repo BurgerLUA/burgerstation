@@ -13,7 +13,7 @@
 	automatic = FALSE
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	heat_per_shot = 0.03
 	heat_max = 0.12
@@ -47,7 +47,7 @@
 	view_punch = 3
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 	heat_per_shot = 0.02
 	heat_max = 0.12

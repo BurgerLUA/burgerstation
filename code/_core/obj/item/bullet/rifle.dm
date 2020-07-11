@@ -20,8 +20,6 @@
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
 	size = 0.04
-	weight = 0.04
-
 	value = 1.2
 
 	inaccuracy_modifer = 0.75
@@ -87,8 +85,6 @@
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
 	size = 0.03
-	weight = 0.03
-
 	value = 1.1
 
 /obj/item/bullet_cartridge/rifle_223/nato

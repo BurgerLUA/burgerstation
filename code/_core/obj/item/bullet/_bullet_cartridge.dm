@@ -33,7 +33,6 @@
 	maptext_y = 2
 
 	size = 0.01
-	weight = 0.01
 	value = 0.1
 
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
@@ -71,7 +70,6 @@
 			pixel_y = rand(-8,8)
 
 	size = initial(size)*item_count_current
-	weight = initial(weight)*item_count_current
 
 	..()
 

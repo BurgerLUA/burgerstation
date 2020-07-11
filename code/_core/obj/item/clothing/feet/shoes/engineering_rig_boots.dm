@@ -26,7 +26,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	value = 100
 

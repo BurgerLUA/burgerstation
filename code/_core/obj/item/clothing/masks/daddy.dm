@@ -4,7 +4,7 @@
 	rarity = RARITY_MYTHICAL
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Well, what is it?"
-	desc_extended = "A giant mask depicting some sort of father figure. Has a negative weight value, and decreases equip load when worn."
+	desc_extended = "A giant mask depicting some sort of father figure. Speeds you up when worn."
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
@@ -14,7 +14,6 @@
 	)
 
 	size = SIZE_3
-	weight = -15
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
@@ -28,3 +27,5 @@
 	)
 
 	item_slot = SLOT_HEAD | SLOT_FACE
+
+	slowdown_mul_worn = 0.95

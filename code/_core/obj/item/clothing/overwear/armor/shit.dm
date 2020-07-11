@@ -8,7 +8,7 @@
 	desc_extended = "A somehow effective armor made from duct tape, metal plates, leather straps, and prayers. It just werks."
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	defense_rating = list(
 		BLADE = 25,

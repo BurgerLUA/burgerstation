@@ -42,10 +42,7 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 		for(var/obj/item/I in held_objects)
 			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.name].")
 
-	if(survival_skill >= 50)
-		. += div("carryweight","Carry Weight: [capacity]/[max_capacity].")
-
-	if(health)
+	if(health && survival_skill >= 5)
 		if(health.damage[TOX] >= 25)
 			. += div("warning","[final_pronoun] looks a bit sickly.")
 

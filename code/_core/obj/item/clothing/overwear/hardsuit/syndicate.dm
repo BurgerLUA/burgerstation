@@ -19,7 +19,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_7
+
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie)
 
@@ -48,7 +48,7 @@
 	)
 
 	size = SIZE_6
-	weight = WEIGHT_6
+
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced)
 
@@ -79,7 +79,7 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/elite)
 
 	size = SIZE_6
-	weight = WEIGHT_5
+
 	slowdown_mul_worn = 1
 
 	value = 360

@@ -21,7 +21,7 @@
 		MAGIC = -25
 	)
 
-	weight = WEIGHT_4
+
 
 	protected_limbs = list(BODY_TORSO)
 

@@ -19,7 +19,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE_LARGE
 
 	size = SIZE_5
-	weight = WEIGHT_4
+
 
 	heat_per_shot = 0.02
 	heat_max = 0.06
@@ -33,7 +33,7 @@
 	bullet_diameter_max = 7.7
 
 	size = SIZE_4
-	weight = WEIGHT_6
+
 
 	value = 800
 

@@ -537,7 +537,6 @@
 	total_size = 0
 
 	for(var/obj/item/O in held_objects)
-		total_weight += O.weight
 		total_size += O.size
 
 	var/obj/item/I = get_top_object()
@@ -594,11 +593,6 @@
 		if(max_size >= 0 && I.size > max_size)
 			if(messages && src.loc)
 				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src.loc.name]."))
-			return FALSE
-
-		if(max_weight >= 0 && I.weight > max_weight)
-			if(messages && src.loc)
-				owner.to_chat(span("notice","\The [I] is too heavy to be put in \the [src.loc.name]."))
 			return FALSE
 
 	return TRUE

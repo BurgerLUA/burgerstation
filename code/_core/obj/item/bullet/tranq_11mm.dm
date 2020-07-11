@@ -18,7 +18,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	weight = 0.01
 	value = 2
 
 	jam_chance = 100 //Required.

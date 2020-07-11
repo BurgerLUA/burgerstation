@@ -10,6 +10,6 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 	value = 15

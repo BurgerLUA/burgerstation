@@ -20,7 +20,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.5
-	weight = 1
 	value = 10
 
 /obj/item/bullet_cartridge/bolt/Generate()

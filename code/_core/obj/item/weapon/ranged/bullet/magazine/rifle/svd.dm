@@ -19,7 +19,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_SNIPER_LARGE
 
 	size = SIZE_5
-	weight = WEIGHT_4
+
 
 	heat_per_shot = 0.07
 	heat_max = 0.07
@@ -33,7 +33,7 @@
 	bullet_diameter_max = 7.7
 
 	size = SIZE_4
-	weight = WEIGHT_5
+
 
 	value = 400
 

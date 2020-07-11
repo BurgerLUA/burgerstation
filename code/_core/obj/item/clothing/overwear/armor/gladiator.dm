@@ -24,5 +24,5 @@
 	)
 
 	size = SIZE_5
-	weight = WEIGHT_5
+
 

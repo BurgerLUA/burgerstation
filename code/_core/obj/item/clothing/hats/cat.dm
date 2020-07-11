@@ -16,7 +16,7 @@
 	protected_limbs = TARGETABLE_LIMBS
 
 	size = SIZE_2
-	weight = WEIGHT_5
+
 
 	no_initial_blend = TRUE
 

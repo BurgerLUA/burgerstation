@@ -11,7 +11,7 @@
 
 	size = SIZE_2
 	is_container = TRUE
-	weight = WEIGHT_0
+
 	value = 10
 
 	defense_rating = list(

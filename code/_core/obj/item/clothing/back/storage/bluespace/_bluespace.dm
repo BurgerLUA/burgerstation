@@ -10,7 +10,7 @@
 	container_max_size = SIZE_6
 
 	size = MAX_INVENTORY_X*4*SIZE_3
-	weight = WEIGHT_7
+
 
 	container_blacklist = list(
 		/obj/item/clothing/back/storage/backpack/bluespace,
@@ -30,7 +30,7 @@
 	container_max_size = SIZE_6
 
 	size = MAX_INVENTORY_X*4*SIZE_3
-	weight = WEIGHT_3
+
 
 	container_blacklist = list(
 		/obj/item/clothing/back/storage/backpack/bluespace,

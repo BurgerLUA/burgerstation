@@ -21,7 +21,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 160
 
@@ -74,6 +74,6 @@
 	)
 
 	size = SIZE_4
-	weight = WEIGHT_4
+
 
 	value = 200

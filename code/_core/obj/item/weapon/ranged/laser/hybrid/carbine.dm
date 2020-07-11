@@ -34,7 +34,7 @@
 	heat_max = 0.2
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/update_icon()
 

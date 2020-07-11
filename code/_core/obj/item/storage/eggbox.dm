@@ -13,7 +13,7 @@
 	)
 
 	size = SIZE_3
-	weight = WEIGHT_1
+
 
 /obj/item/storage/egg_carton/update_icon()
 

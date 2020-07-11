@@ -8,8 +8,6 @@
 	item_count_max = 1
 	item_count_max_icon = 1
 
-	weight = 0.1
-
 	crafting_id = "shard"
 
 /obj/item/material/shard/New(var/desired_loc)

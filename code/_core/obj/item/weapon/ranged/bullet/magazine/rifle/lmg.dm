@@ -34,7 +34,7 @@
 	bullet_diameter_max = 5.6
 
 	size = SIZE_4
-	weight = WEIGHT_5
+
 
 	value = 400
 

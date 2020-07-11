@@ -8,8 +8,6 @@
 	item_count_max = 1
 	item_count_max_icon = 1
 
-	weight = 0.5
-
 	crafting_id = "ore"
 
 

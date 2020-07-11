@@ -20,7 +20,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_5
+
 
 	additional_clothing = list(
 		/obj/item/clothing/head/helmet/hardsuit/engineering,

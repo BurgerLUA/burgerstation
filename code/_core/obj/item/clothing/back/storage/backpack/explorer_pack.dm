@@ -10,6 +10,6 @@ obj/item/clothing/back/storage/backpack/explorer
 	size = MAX_INVENTORY_X*2*SIZE_3
 	container_max_size = SIZE_4
 
-	weight = WEIGHT_2
+
 
 	value = 160

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/storage/pouches_new.dmi'
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	is_container = TRUE
 
@@ -40,7 +40,7 @@
 	dynamic_inventory_count = 1
 
 	size = SIZE_4
-	weight = WEIGHT_2
+
 
 /obj/item/storage/pouch/single/black
 	color = COLOR_BLACK
@@ -54,7 +54,7 @@
 	dynamic_inventory_count = 2
 
 	size = SIZE_6
-	weight = WEIGHT_3
+
 
 /obj/item/storage/pouch/double/black
 	color = COLOR_BLACK
@@ -68,13 +68,13 @@
 	icon_state = "triple"
 	dynamic_inventory_count = 6
 	size = SIZE_6
-	weight = WEIGHT_4
+
 
 	container_max_size = SIZE_2
 	dynamic_inventory_count = 3
 
 	size = SIZE_6
-	weight = WEIGHT_3
+
 
 /obj/item/storage/pouch/triple/black/
 	color = COLOR_BLACK

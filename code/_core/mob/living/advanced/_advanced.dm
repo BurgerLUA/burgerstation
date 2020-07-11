@@ -58,10 +58,6 @@
 
 	health = /health/mob/living/advanced
 
-	//Read only values. Don't change these.
-	var/capacity = 0
-	var/max_capacity = 1
-
 	attack_delay = 2
 	attack_delay_max = 6
 
@@ -168,13 +164,10 @@
 	if(qdeleting) //Bandaid fix.
 		return FALSE
 
-	capacity = 0
-
 	var/slow_mul = 1
 
 	for(var/obj/item/I in worn_objects)
 		slow_mul *= I.get_slowdown_mul_worn()
-		capacity += I.weight
 
 	for(var/obj/item/I in held_objects)
 		if(is_inventory(I.loc))
@@ -184,16 +177,7 @@
 			else
 				slow_mul *= I.get_slowdown_mul_worn()
 
-		capacity += I.weight
-
-	max_capacity = 100 + get_attribute_power(ATTRIBUTE_ENDURANCE)*400
-
-	var/carry_mod = 1 + (max(0,(capacity/max_capacity) - 0.5))**2
-
-	if(ai)
-		slowdown_mul = 1
-	else
-		slowdown_mul = clamp(slow_mul * carry_mod,0.75,4)
+	slowdown_mul = clamp(slow_mul,0.75,4)
 
 	return TRUE
 

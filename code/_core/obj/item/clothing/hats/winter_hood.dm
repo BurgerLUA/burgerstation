@@ -20,7 +20,7 @@
 	)
 
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 	value = 10
 
@@ -32,7 +32,7 @@
 	icon = 'icons/obj/item/clothing/hats/hoodie.dmi'
 
 	size = SIZE_2
-	weight = WEIGHT_1
+
 
 	dyeable = FALSE
 

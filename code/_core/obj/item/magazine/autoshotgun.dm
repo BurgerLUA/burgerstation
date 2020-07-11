@@ -22,7 +22,7 @@
 
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 /obj/item/magazine/shotgun_auto/buckshot
 	name = "\improper 12 gauge AS-12 magazine"

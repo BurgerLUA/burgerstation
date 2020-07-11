@@ -21,7 +21,7 @@
 	slowdown_mul_held = HELD_SLOWDOWN_REVOLVER
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	bullet_length_min = 10
 	bullet_length_best = 29

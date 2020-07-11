@@ -22,7 +22,7 @@
 	bullet_diameter_max = 5.6
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 /obj/item/magazine/carbine_223/update_icon()
 	icon_state = "[initial(icon_state)]_[FLOOR((length(stored_bullets)/bullet_count_max)*21,1)]"

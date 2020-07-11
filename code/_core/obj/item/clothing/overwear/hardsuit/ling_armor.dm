@@ -19,7 +19,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_5
+
 
 	additional_clothing = list(
 		/obj/item/weapon/melee/sword/armblade,

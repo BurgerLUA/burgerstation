@@ -18,7 +18,7 @@
 	rarity = RARITY_RARE
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 

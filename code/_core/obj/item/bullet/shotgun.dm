@@ -16,7 +16,6 @@
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04
-	weight = 0.04
 	value = 2
 
 /obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
@@ -41,7 +40,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.04
-	weight = 0.04
 	value = 1.8
 
 /obj/item/bullet_cartridge/shotgun_12/buckshot
@@ -59,7 +57,6 @@
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04
-	weight = 0.04
 	value = 1.6
 
 	inaccuracy_modifer = 1.5
@@ -81,7 +78,6 @@
 	projectile_speed = 8
 
 	size = 0.04
-	weight = 0.04
 	value = 5
 
 	inaccuracy_modifer = 1

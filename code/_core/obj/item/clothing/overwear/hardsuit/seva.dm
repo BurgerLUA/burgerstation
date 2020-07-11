@@ -21,7 +21,7 @@
 	)
 
 	size = SIZE_7
-	weight = WEIGHT_7
+
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/seva)
 

@@ -8,8 +8,6 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	weight = 1
-
 	crafting_id = "sheet"
 
 /obj/item/material/sheet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

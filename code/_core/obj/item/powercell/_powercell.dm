@@ -9,7 +9,7 @@
 	var/charge_max = CELL_SIZE_BASIC
 
 	size = SIZE_1
-	weight = WEIGHT_2
+
 
 	value = 5
 
@@ -83,7 +83,7 @@
 	charge_max = CELL_SIZE_ADVANCED
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 	value = 15
 
@@ -95,6 +95,6 @@
 	charge_max = CELL_SIZE_INDUSTRIAL
 
 	size = SIZE_3
-	weight = WEIGHT_4
+
 
 	value = 25

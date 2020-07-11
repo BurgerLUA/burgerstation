@@ -22,7 +22,7 @@
 	bullet_diameter_max = 10
 
 	size = SIZE_2
-	weight = WEIGHT_2
+
 
 	bullet_count_max = 20
 

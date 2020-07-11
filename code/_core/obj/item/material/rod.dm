@@ -8,8 +8,6 @@
 	item_count_max = 50
 	item_count_max_icon = 3
 
-	weight = 0.25
-
 	crafting_id = "rod"
 
 /obj/item/material/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

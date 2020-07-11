@@ -73,7 +73,6 @@
 		var/obj/item/C = new k(src)
 		C.should_save = FALSE
 		C.color = color
-		C.weight = 0
 		C.size = 0
 		C.additional_blends = additional_blends
 		C.additional_clothing_parent = src

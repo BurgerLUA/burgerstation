@@ -8,7 +8,7 @@
 	var/list/armor_base = list()
 
 	size = SIZE_2
-	weight = WEIGHT_3
+
 
 /obj/item/armor_plate/light
 	name = "light armor plate"
@@ -21,7 +21,7 @@
 		LASER = 10,
 		MAGIC = -20
 	)
-	weight = WEIGHT_3
+
 
 	value = 90
 
@@ -36,7 +36,7 @@
 		LASER = 10,
 		MAGIC = -40
 	)
-	weight = WEIGHT_4
+
 
 	value = 190
 
@@ -51,7 +51,7 @@
 		LASER = 25,
 		MAGIC = -60
 	)
-	weight = WEIGHT_5
+
 
 	value = 275
 
@@ -66,7 +66,7 @@
 		LASER = 25,
 		MAGIC = -75
 	)
-	weight = WEIGHT_6
+
 
 	value = 500
 
@@ -81,6 +81,6 @@
 		LASER = 50,
 		MAGIC = -100
 	)
-	weight = WEIGHT_6
+
 
 	value = 1000

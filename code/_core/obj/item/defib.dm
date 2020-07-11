@@ -11,7 +11,7 @@
 	item_slot = SLOT_TORSO_B
 	slot_icons = TRUE
 
-	weight = WEIGHT_3
+
 	size = SIZE_3
 
 	value = 110

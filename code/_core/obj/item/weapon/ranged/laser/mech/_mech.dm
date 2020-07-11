@@ -20,7 +20,7 @@
 	mech_only = TRUE
 
 	size = SIZE_6
-	weight = WEIGHT_6
+
 
 /obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
 	if(!istype(loc,/mob/living/vehicle/))

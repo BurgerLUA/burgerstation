@@ -122,8 +122,9 @@
 	var/list/status_effects = list()
 
 	acceleration_mod = 0.5
-	acceleration = 25
-	deceleration = 1
+	acceleration = 10
+	deceleration = 15
+	use_momentum = TRUE
 
 	var/list/obj/butcher_contents = list()
 

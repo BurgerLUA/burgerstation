@@ -9,4 +9,3 @@
 	blocks_clothing = SLOT_GROIN_U
 
 	size = SIZE_3
-	weight = WEIGHT_2

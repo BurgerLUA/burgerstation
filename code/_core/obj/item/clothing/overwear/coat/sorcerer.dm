@@ -21,7 +21,7 @@
 	rarity = RARITY_RARE
 
 	size = SIZE_3
-	weight = WEIGHT_2
+
 
 	value = 1200
 

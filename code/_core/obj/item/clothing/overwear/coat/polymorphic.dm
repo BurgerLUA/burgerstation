@@ -16,7 +16,7 @@
 	container_max_size = SIZE_2
 
 	size = SIZE_3
-	weight = WEIGHT_3
+
 
 	defense_rating = list(
 		BLADE = 10,

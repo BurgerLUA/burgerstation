@@ -5,7 +5,7 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/clothing/belts/skull_codpiece.dmi'
 
-	weight = WEIGHT_2
+
 
 	defense_rating = list(
 		BLADE = 10,
