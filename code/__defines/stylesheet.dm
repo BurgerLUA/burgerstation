@@ -61,7 +61,7 @@ body {
 .bold{
 	font-weight: bold;
 }
-.centered {
+.center{
 	text-align: center;
 }
 .underlined{
@@ -123,15 +123,12 @@ body {
 	font-weight: bold;
 }
 .red{
-	font-size: 150%;
 	color: red;
 }
 .blue{
-	font-size: 150%;
 	color: blue;
 }
 .green{
-	font-size: 150%;
 	color: green;
 }
 .yellow{

@@ -337,7 +337,16 @@
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size]")
-	. += div("examine_description","Crafting ID: [crafting_id ? crafting_id : "none"]")
+	var/worn_slowdown = get_slowdown_mul_worn()
+	if(worn_slowdown > 1)//Slower
+		. += div("red bold center","Worn Speed Penalty: [FLOOR((worn_slowdown-1)*100,1)]%")
+	else if(worn_slowdown < 1)//Faster
+		. += div("green bold center","Worn Speed Boost: [FLOOR((1/worn_slowdown)*100,1)-100]%")
+	var/held_slowdown = get_slowdown_mul_held()
+	if(held_slowdown > 1)//Slower
+		. += div("red bold center","Held Speed Penalty: [FLOOR((held_slowdown-1)*100,1)]%")
+	else if(held_slowdown < 1)//Faster
+		. += div("green bold center","Held Speed Boost: [FLOOR((1/held_slowdown)*100,1)-100]%")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 

@@ -4,7 +4,7 @@
 	desc_extended = "A plate carrier system. Requires an armor plate to useable."
 	icon = 'icons/obj/item/clothing/suit/plate_carrier.dmi'
 
-	protected_limbs = list(BODY_TORSO,BODY_GROIN)
+	protected_limbs = list(BODY_TORSO)
 
 	dyeable = TRUE
 
@@ -18,6 +18,14 @@
 	value = 50
 
 	var/list/obj/item/armor_plate/installed_plate_carriers = list()
+
+/obj/item/clothing/overwear/armor/plate_carrier/get_slowdown_mul_worn()
+	. = ..()
+
+	for(var/obj/item/armor_plate/P in installed_plate_carriers)
+		. *= P.get_slowdown_mul_worn()
+
+	return .
 
 /obj/item/clothing/overwear/armor/plate_carrier/get_defense_rating()
 

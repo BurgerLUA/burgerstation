@@ -9,6 +9,8 @@
 
 	size = SIZE_2
 
+	slowdown_mul_worn = 1
+
 
 /obj/item/armor_plate/light
 	name = "light armor plate"
@@ -25,6 +27,8 @@
 
 	value = 90
 
+	slowdown_mul_worn = 1.1
+
 /obj/item/armor_plate/medium
 	name = "medium armor plate"
 	icon_state = "medium"
@@ -40,6 +44,9 @@
 
 	value = 190
 
+	slowdown_mul_worn = 1.15
+
+
 /obj/item/armor_plate/heavy
 	name = "heavy armor plate"
 	icon_state = "heavy"
@@ -51,6 +58,9 @@
 		LASER = 25,
 		MAGIC = -60
 	)
+
+	slowdown_mul_worn = 1.2
+
 
 
 	value = 275
@@ -67,6 +77,7 @@
 		MAGIC = -75
 	)
 
+	slowdown_mul_worn = 1.3
 
 	value = 500
 
@@ -82,5 +93,6 @@
 		MAGIC = -100
 	)
 
+	slowdown_mul_worn = 1.3
 
 	value = 1000
