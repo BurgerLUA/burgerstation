@@ -8,13 +8,14 @@
 
 	defense_rating = list(
 		MAGIC = 25,
-		HEAT = 50
+		HEAT = 25
 	)
 
 	size = SIZE_2
 
+	value = 20
 
-	value = 15
+	dyeable = TRUE
 
 /obj/item/clothing/overwear/coat/apron/chef
 	name = "chef's apron"
@@ -25,8 +26,7 @@
 	protected_limbs = list(BODY_TORSO, BODY_GROIN)
 
 	defense_rating = list(
-		BLADE = 50,
-		MAGIC = 75,
+		MAGIC = 50,
 		HEAT = 50
 	)
 
@@ -34,6 +34,8 @@
 
 
 	value = 400
+
+	dyeable = FALSE
 
 
 /obj/item/clothing/overwear/coat/apron/blacksmith
@@ -60,5 +62,6 @@
 
 	size = SIZE_3
 
+	dyeable = FALSE
 
-	value = 30
+	value = 120

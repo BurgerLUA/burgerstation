@@ -22,4 +22,4 @@
 		COLD = 25
 	)
 
-	value = 10
+	value = 30

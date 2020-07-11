@@ -5,12 +5,9 @@
 	icon = 'icons/obj/item/clothing/suit/winter_coat.dmi'
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 10,
-		PIERCE = 10,
 		LASER = -25,
-		MAGIC = 25,
-		HEAT = -75,
+		MAGIC = 50,
+		HEAT = -25,
 		COLD = 75
 	)
 
@@ -35,17 +32,19 @@
 	icon = 'icons/obj/item/clothing/suit/bomberjacket.dmi'
 	additional_clothing = list() // no hood
 
+	rarity = RARITY_UNCOMMON
+
 	defense_rating = list(
 		BLADE = 15,
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = -25,
-		HEAT = -50,
-		COLD = 50,
+		MAGIC = 50,
+		HEAT = -25,
+		COLD = 75,
 		BOMB = 25
 	)
 
 	size = SIZE_3
 
-
-	value = 20
+	value = 120

@@ -12,7 +12,7 @@
 		BLADE = 25,
 		BLUNT = 25,
 		PIERCE = 25,
-		LASER = -25,
+		LASER = -10,
 		MAGIC = 25,
 		HEAT = 25,
 		COLD = 25,
@@ -35,13 +35,14 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 15,
-		LASER = -75,
-		MAGIC = -25,
-		HEAT = 10,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = 50,
+		HEAT = 50,
 		COLD = 25,
-		HOLY = -75
+		HOLY = -75,
+		DARK = 75
 	)
 
 	size = SIZE_3
@@ -59,8 +60,8 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 50,
+		BLUNT = 50,
+		PIERCE = 75,
 		LASER = -75,
 		MAGIC = 25,
 		HEAT = 50,
@@ -72,6 +73,6 @@
 	size = SIZE_5
 
 
-	value = 300
+	value = 500
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/cult)

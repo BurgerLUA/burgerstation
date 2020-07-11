@@ -26,4 +26,4 @@
 
 	dyeable = TRUE
 
-	value = 950
+	value = 750

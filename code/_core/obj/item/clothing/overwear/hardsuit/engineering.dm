@@ -7,16 +7,17 @@
 	value = 200
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
-		MAGIC = -100,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = -75,
 		HEAT = 100,
 		COLD = 100,
 		BOMB = 25,
-		BIO = 75,
-		RAD = 75
+		BIO = 50,
+		RAD = 75,
+		FATIGUE = INFINITY
 	)
 
 	size = SIZE_7

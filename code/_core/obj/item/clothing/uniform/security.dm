@@ -1,5 +1,5 @@
 /obj/item/clothing/uniform/security
-	name = "security uniform"
+	name = "outdated security uniform"
 	desc = "I swear his head was already caved in when i found him!"
 	desc_extended = "The old shitcurity uniform."
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
@@ -17,7 +17,7 @@
 		HEAT = 10
 	)
 
-	value = 10
+	value = 40
 
 
 /obj/item/clothing/uniform/ABOMB
@@ -26,23 +26,25 @@
 	desc_extended = "It's said a team of scientists were close to figuring out what the acronym means, but were interrupted when A BOMB was found in their building."
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 	icon = 'icons/obj/item/clothing/uniforms/abomb_suit.dmi'
+	rarity = RARITY_RARE
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 15,
-		PIERCE = 15,
-		LASER = -15,
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 15,
 		MAGIC = -15,
 		COLD = 15,
 		BOMB = 25
 	)
 
-	value = 20
+	value = 400
 
+/*
 /obj/item/clothing/uniform/tacticool
 	name = "tacticool uniform"
 	desc = "Look mom! I'm a real soldier!"
@@ -64,3 +66,4 @@
 	)
 
 	value = 30
+*/

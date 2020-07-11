@@ -1,5 +1,5 @@
 /obj/item/clothing/shirt/syndicate
-	name = "\improper syndicate shirt"
+	name = "\improper syndicate turtleneck"
 	desc = "Suspicious-looking."
 	desc_extended = "Wearing this as a member of Nanotrasen might not be a good idea..."
 	icon = 'icons/obj/item/clothing/shirts/syndicate.dmi'
@@ -11,7 +11,7 @@
 		BLUNT = 15,
 		PIERCE = 15,
 		MAGIC = 10,
-		COLD = 25,
+		COLD = 50,
 	)
 
-	value = 20
+	value = 60

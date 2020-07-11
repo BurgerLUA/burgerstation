@@ -6,16 +6,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 50,
+		BLADE = 50,
+		BLUNT = 75,
 		PIERCE = 50,
-		LASER = 25,
-		MAGIC = -50,
-		HEAT = 100,
+		LASER = 50,
+		MAGIC = -75,
+		HEAT = 75,
 		COLD = 75,
-		BOMB = 25,
-		BIO = 75,
-		RAD = 75
+		BOMB = 50,
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_7
@@ -25,4 +25,4 @@
 
 	slowdown_mul_worn = 1.2
 
-	value = 80
+	value = 1000

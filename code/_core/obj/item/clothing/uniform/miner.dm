@@ -13,10 +13,10 @@
 		BLUNT = 15,
 		PIERCE = 10,
 		HEAT = 25,
-		COLD = -25,
+		COLD = 25,
 		MAGIC = -10
 	)
 
-	value = 20
+	value = 100
 
 

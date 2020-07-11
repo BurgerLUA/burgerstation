@@ -15,13 +15,12 @@
 		COLD = 25,
 		HEAT = 15,
 		HOLY = -75,
-		DARK = 75
+		DARK = 100
 	)
 
 	rarity = RARITY_RARE
 
 	size = SIZE_3
-
 
 	value = 1200
 

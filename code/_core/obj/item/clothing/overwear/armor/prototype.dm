@@ -10,17 +10,16 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 100,
-		PIERCE = 50,
-		LASER = -50,
-		MAGIC = -75,
-		HEAT = 50
+		BLADE = 50,
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 50,
+		MAGIC = -100,
+		BOMB = 50
 	)
 
 	size = SIZE_6
 
-
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
 
-	value = 200
+	value = 800

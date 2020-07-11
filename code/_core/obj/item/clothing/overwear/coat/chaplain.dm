@@ -14,4 +14,4 @@
 	size = SIZE_3
 
 
-	value = 30
+	value = 90

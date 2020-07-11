@@ -10,17 +10,18 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
+		BLADE = 30,
+		BLUNT = 30,
 		PIERCE = 50,
-		LASER = 25,
-		MAGIC = -50
+		LASER = 50,
+		MAGIC = -50,
+		BOMB = 25
 	)
 
 	size = SIZE_3
 
 
-	value = 250
+	value = 300
 
 /obj/item/clothing/head/helmet/security/slavticool
 	name = "\improper 'Slav-safe' LLC combat helmet"
@@ -57,12 +58,12 @@
 	defense_rating = list(
 		BLADE = 25,
 		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 25,
+		PIERCE = 50,
+		LASER = 50,
 		MAGIC = -100,
-		HEAT = 75,
-		COLD = 75,
-		BOMB = 75
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 50
 	)
 
 	size = SIZE_7

@@ -11,11 +11,13 @@
 		PIERCE = 10,
 		LASER = -10,
 		MAGIC = 50,
-		HOLY = 25,
+		HOLY = -25,
 		DARK = 25
 	)
 
-	value = 5
+	value = 20
+
+	worn_layer = LAYER_MOB_CLOTHING_MASK
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
@@ -26,3 +28,4 @@
 		BODY_HAIR_FACE = TRUE
 	)
 
+	blocks_clothing = SLOT_FACE_WRAP

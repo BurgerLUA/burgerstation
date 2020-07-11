@@ -1,5 +1,5 @@
 /obj/item/clothing/mask/gas
-	name = "gas mask"
+	name = "classic gas mask"
 	icon = 'obj/item/clothing/masks/gasmask.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Oxygen not included."
@@ -32,14 +32,14 @@
 		PIERCE = 10,
 		BIO = 50,
 		RAD = 10,
-		HOLY = -50,
-		DARK = 50
+		HOLY = -75,
+		DARK = 75
 	)
 
 	size = SIZE_2
 
 
-	value = 100
+	value = 120
 
 
 /obj/item/clothing/mask/gas/mining
@@ -51,18 +51,16 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		MAGIC = -25,
-		HEAT = 50,
-		BIO = 90
+		BLADE = 20,
+		BLUNT = 15,
+		PIERCE = 15,
+		BIO = 100,
+		RAD = 25
 	)
 
 	size = SIZE_2
 
-
-	value = 50
+	value = 160
 
 /obj/item/clothing/mask/gas/poly
 	icon = 'obj/item/clothing/masks/gasmask_poly.dmi'

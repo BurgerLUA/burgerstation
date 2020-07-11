@@ -11,8 +11,7 @@
 	defense_rating = list(
 		BLADE = 10,
 		BLUNT = 10,
-		PIERCE = 10,
-		MAGIC = -10
+		PIERCE = 10
 	)
 
 	value = 50

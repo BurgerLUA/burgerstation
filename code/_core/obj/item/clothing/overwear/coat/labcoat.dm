@@ -6,7 +6,7 @@
 
 	defense_rating = list(
 		LASER = 25,
-		MAGIC = 50,
+		MAGIC = 25,
 		HEAT = 25,
 		COLD = 25,
 		BIO = 25,

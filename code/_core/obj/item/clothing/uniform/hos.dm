@@ -14,14 +14,8 @@
 		PIERCE = 20,
 		LASER = 20,
 		MAGIC = -50,
-		HEAT = 0,
 		COLD = 20,
-		BOMB = 20,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		BOMB = 20
 	)
 
 	value = 180

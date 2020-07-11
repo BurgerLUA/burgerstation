@@ -10,4 +10,4 @@
 
 	value = 5
 
-	blocks_clothing = SLOT_TORSO_U | SLOT_GROIN_U
+	blocks_clothing = SLOT_TORSO | SLOT_GROIN | SLOT_TORSO_U | SLOT_GROIN_U

@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/
-	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD
 
 /obj/item/clothing/head/helmet/knight/
 
@@ -27,7 +27,7 @@
 
 	value = 160
 
-
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
 /obj/item/clothing/head/helmet/knight/red
 	name = "red knight helmet"

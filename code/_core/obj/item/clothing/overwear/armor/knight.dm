@@ -15,8 +15,8 @@
 		BLUNT = 50,
 		PIERCE = 50,
 		LASER = 75,
-		HEAT = 50,
-		MAGIC = -100
+		HEAT = -25,
+		MAGIC = -75
 	)
 
 	size = SIZE_6
@@ -49,12 +49,14 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 100,
-		PIERCE = 100,
-		LASER = 100,
-		HEAT = -100,
-		MAGIC = -100
+		BLADE = 90,
+		BLUNT = 90,
+		PIERCE = 90,
+		LASER = 50,
+		MAGIC = -125,
+		HEAT = -75,
+		COLD = 25,
+		BOMB = 25
 	)
 
 	size = SIZE_7
@@ -72,9 +74,9 @@
 
 	defense_rating = list(
 		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 25,
 		MAGIC = -25,
 		HEAT = -25,
 		HOLY = 50,
@@ -98,8 +100,9 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 50,
-		HEAT = -50,
-		MAGIC = 50
+		MAGIC = 25,
+		HOLY = -50,
+		DARK = -50
 	)
 
 	size = SIZE_6
@@ -115,20 +118,23 @@
 	icon = 'icons/obj/item/clothing/suit/knight_daddy.dmi'
 
 	defense_rating = list(
-		BLADE = 100,
-		BLUNT = 25,
-		PIERCE = 15,
+		BLADE = 90,
+		BLUNT = 90,
+		PIERCE = 90,
 		LASER = -25,
 		MAGIC = -100,
 		HEAT = -100,
 		COLD = 15,
 		BOMB = 10,
 		HOLY = -25,
-		DARK = -25
+		DARK = 25
 	)
 
 	size = SIZE_7
 
+	value = 4000
+
+	slowdown_mul_worn = 1.6
 
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "magnus armor"
@@ -151,8 +157,9 @@
 
 	size = SIZE_5
 
-
 	value = 300
+
+	slowdown_mul_worn = 1.2
 
 /obj/item/clothing/overwear/armor/knight/magnus/red
 	color = COLOR_RED

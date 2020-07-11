@@ -10,13 +10,13 @@
 	container_max_size = SIZE_2
 
 	defense_rating = list(
-		BLADE = 10,
+		BLADE = 25,
 		PIERCE = 25,
 		HEAT = -25,
-		COLD = 50
+		COLD = 25
 	)
 
 	size = SIZE_3
 
 
-	value = 10
+	value = 60

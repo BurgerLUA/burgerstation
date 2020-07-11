@@ -12,7 +12,7 @@
 		COLD = 15,
 	)
 
-	value = 5
+	value = 20
 
 	dyeable = TRUE
 

@@ -4,18 +4,17 @@
 	desc_extended = "A hardsuit worn by scientist. Lighter plated than most other models."
 	icon = 'icons/obj/item/clothing/suit/hek.dmi'
 	rarity = RARITY_RARE
-	value = 300
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 10,
-		LASER = 10,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 25,
 		MAGIC = -100,
 		HEAT = 25,
 		COLD = 25,
 		BOMB = 50,
-		BIO = 75,
+		BIO = 100,
 		RAD = 75
 	)
 
@@ -25,3 +24,5 @@
 	additional_clothing = list()
 
 	slowdown_mul_worn = 0.9
+
+	value = 1200

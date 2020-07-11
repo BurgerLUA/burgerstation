@@ -5,7 +5,6 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 	desc = "Well, what is it?"
 	desc_extended = "A giant mask depicting some sort of father figure. Speeds you up when worn."
-	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
 		BLADE = 25,
@@ -17,7 +16,7 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_NECK_OVER
 
-	value = 200
+	value = 500
 
 	hidden_organs = list(
 		BODY_HEAD = TRUE,
@@ -27,5 +26,7 @@
 	)
 
 	item_slot = SLOT_HEAD | SLOT_FACE
+
+	blocks_clothing = SLOT_HEAD | SLOT_FACE
 
 	slowdown_mul_worn = 0.95

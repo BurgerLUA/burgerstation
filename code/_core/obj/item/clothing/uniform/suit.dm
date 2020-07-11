@@ -9,17 +9,13 @@
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 15,
-		MAGIC = 15,
-		COLD = 15,
+		MAGIC = 50
 	)
 
 
 	size = SIZE_2
 
-
-	value = 100
+	value = 90
 
 
 // maybe eventually perhaps i'll make this stuff colorable. that eventually is definitely not now.

@@ -3,25 +3,22 @@
 	desc = "SM DELAM CALL THE SHUTTLE"
 	desc_extended = "An uniform worn by the most incompetent engineers, who get promoted to Chiefs."
 	icon = 'icons/obj/item/clothing/uniforms/ce.dmi'
+	rarity = RARITY_RARE
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = 10,
 		MAGIC = 25,
 		HEAT = 25,
 		COLD = 25,
 		BOMB = 25,
-		BIO = 0,
-		RAD = 50,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0
+		RAD = 25
 	)
 
-	value = 80
+	value = 300

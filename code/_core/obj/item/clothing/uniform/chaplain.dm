@@ -13,11 +13,11 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		MAGIC = 75,
+		MAGIC = 25,
 		HEAT = 10,
 		COLD = 15,
 		HOLY = 100,
-		DARK = -100
+		DARK = -50
 	)
 
-	value = 40
+	value = 120

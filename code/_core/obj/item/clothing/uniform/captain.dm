@@ -21,7 +21,7 @@
 		BIO = 25
 	)
 
-	value = 300
+	value = 600
 
 /obj/item/clothing/uniform/captain/formal
 	name = "formal Captain's uniform"

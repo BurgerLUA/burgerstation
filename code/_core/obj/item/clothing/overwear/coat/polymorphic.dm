@@ -19,11 +19,7 @@
 
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 0,
-		LASER = 10,
-		MAGIC = 25,
+		MAGIC = 50,
 		COLD = 25
 	)
 
@@ -33,7 +29,7 @@
 		"base" = "#FFFFFF"
 	)
 
-	value = 30
+	value = 40
 
 /obj/item/clothing/overwear/coat/polymorphic/shaleez
 	polymorphs = list(

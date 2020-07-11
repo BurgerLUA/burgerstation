@@ -9,10 +9,9 @@
 	defense_rating = list(
 		MAGIC = 25,
 		HOLY = -50,
-		DARK = 50
+		DARK = 100
 	)
 
-	size = SIZE_1
+	size = SIZE_2
 
-
-	value = 150
+	value = 400

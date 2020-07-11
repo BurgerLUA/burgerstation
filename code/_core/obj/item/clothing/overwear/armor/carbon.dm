@@ -1,19 +1,19 @@
 
 /obj/item/clothing/overwear/armor/carbon
-	name = "carbon armor"
-	desc = "Carbon is Unbreakable"
-	desc_extended = "Armor made from hardened carbon fibres. Effective, but it's like walking in an oven."
+	name = "space military armor"
+	desc = "Military. In space!"
+	desc_extended = "Armor made from hardened carbon fibres."
 	icon = 'icons/obj/item/clothing/suit/carbon.dmi'
 
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 100,
+		BLUNT = 50,
 		PIERCE = 50,
-		LASER = -50,
-		MAGIC = -75,
-		HEAT = 50
+		LASER = 25,
+		MAGIC = -25,
+		BOMB = 25
 	)
 
 	size = SIZE_6
@@ -21,7 +21,7 @@
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
 
-	value = 200
+	value = 400
 
 	dyeable = TRUE
 

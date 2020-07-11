@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/coat/vest/
-	name = "tactical vest"
+	name = "tactical storage vest"
 	icon = 'icons/obj/item/clothing/suit/black_vest.dmi'
 
 	rarity = RARITY_UNCOMMON
@@ -21,11 +21,9 @@
 		MAGIC = -25
 	)
 
-
-
 	protected_limbs = list(BODY_TORSO)
 
-	value = 30
+	value = 90
 
 /obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
 

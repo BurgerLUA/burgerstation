@@ -28,7 +28,7 @@
 	)
 
 
-	value = 20
+	value = 60
 
 /obj/item/clothing/neck/cape/hunter
 	polymorphs = list(

@@ -9,7 +9,7 @@
 		BLUNT = 15,
 		PIERCE = 15,
 		MAGIC = 10,
-		COLD = 25,
+		COLD = 10,
 	)
 
 	value = 20

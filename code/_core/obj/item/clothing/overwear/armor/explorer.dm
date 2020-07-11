@@ -16,7 +16,7 @@
 		LASER = 25,
 		MAGIC = 25,
 		HEAT = 50,
-		COLD = -25,
+		COLD = 25,
 		BIO = 25,
 		HOLY = 25,
 		DARK = 25,

@@ -3,7 +3,7 @@
 	desc = "hey hos can i have your coat plz"
 	desc_extended = "Somehow better against bullets than actual kevlar vests."
 	icon = 'icons/obj/item/clothing/suit/hos.dmi'
-	rarity = RARITY_RARE
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = 25,
@@ -18,4 +18,4 @@
 	size = SIZE_4
 
 
-	value = 200
+	value = 800

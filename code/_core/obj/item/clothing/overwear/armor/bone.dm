@@ -4,7 +4,7 @@
 	desc = "I've got a BONE to pick with ya!"
 	desc_extended = "Armor made from bones. Metal as fuck."
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
-	rarity = RARITY_RARE
+	rarity = RARITY_MYTHICAL
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
@@ -14,10 +14,11 @@
 		PIERCE = 25,
 		MAGIC = 25,
 		HEAT = 50,
-		COLD = 25
+		COLD = 25,
+		DARK = 50,
+		HOLY = -50
 	)
 
 	size = SIZE_6
-
 
 	value = 500

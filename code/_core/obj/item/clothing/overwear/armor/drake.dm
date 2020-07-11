@@ -10,13 +10,15 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	defense_rating = list(
-		BLADE = 75,
+		BLADE = 50,
 		BLUNT = 75,
 		PIERCE = 75,
-		LASER = -50,
+		LASER = 75,
 		MAGIC = 25,
-		HEAT = 100,
-		COLD = -25
+		HEAT = 50,
+		COLD = -25,
+		HOLY = -25,
+		DARK = 50
 	)
 
 	size = SIZE_7
@@ -25,4 +27,4 @@
 
 	blocks_clothing = SLOT_TORSO_U
 
-	value = 1000
+	value = 1100

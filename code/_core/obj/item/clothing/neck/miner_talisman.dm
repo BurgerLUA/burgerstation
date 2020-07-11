@@ -17,4 +17,4 @@
 	size = SIZE_1
 
 
-	value = 160
+	value = 300

@@ -13,10 +13,10 @@
 		COLD = 15,
 		HOLY = -75,
 		DARK = 75,
-		FATIGUE = -100
+		FATIGUE = 25
 	)
 
-	value = 100
+	value = 200
 
 /obj/item/clothing/uniform/clown/purple
 	name = "purple clown uniform"
