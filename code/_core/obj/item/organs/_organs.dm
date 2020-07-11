@@ -69,6 +69,9 @@
 
 	var/list/defense_rating = HUMAN_ARMOR
 
+/obj/item/organ/proc/get_defense_rating()
+	return defense_rating
+
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))

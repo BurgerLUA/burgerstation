@@ -1,5 +1,5 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 #define ENABLE_STOPLAG TRUE
 #define MOVEMENT_DELAY_MOD 0.75 //Lower values means faster.
 #define ENABLE_DAMAGE_NUMBERS FALSE
@@ -22,7 +22,7 @@
 #define MIN_ZOOM 1
 
 #define ZOOM_RANGE 8
-#define VIEW_RANGE 10
+#define VIEW_RANGE 11
 #define AI_DETECTION_RANGE VIEW_RANGE * 0.6
 #define AI_DETECTION_RANGE_NOISE VIEW_RANGE
 #define AI_DETECTION_RANGE_CAUTION VIEW_RANGE + ZOOM_RANGE*0.5

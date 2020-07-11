@@ -1,3 +1,15 @@
+/obj/item/clothing/overwear/armor/medium_armor
+	name = "medium armor"
+	desc = "9/10, it's ok."
+	desc_extended = "A very cheap armor. Not very effective, but better than nothing."
+	icon = 'icons/obj/item/clothing/suit/medium_chest_armor.dmi'
+
+	value = 30
+
+	protected_limbs = list(BODY_TORSO,BODY_GROIN)
+
+	dyeable = TRUE
+
 /obj/item/clothing/overwear/armor/medium_armor/leather
 	name = "medium leather armor"
 	desc = "This is medieval, right?"

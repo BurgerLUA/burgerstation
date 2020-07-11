@@ -222,3 +222,7 @@
 // )
 
 #define HYPOTENUSE(a,b) sqrt(a**2 + b**2)
+
+
+
+#define IS_INFINITY(a) (abs(a) >= INFINITY)

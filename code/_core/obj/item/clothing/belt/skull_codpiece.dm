@@ -2,6 +2,7 @@
 	name = "skull codpiece"
 	desc = "Spooky."
 	desc_extended = "You may be expecting a joke about 'bone'rs. Nope. Not gonna happen."
+	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/clothing/belts/skull_codpiece.dmi'
 
 	weight = WEIGHT_2
@@ -16,4 +17,4 @@
 	)
 
 	rarity = RARITY_UNCOMMON
-	value = 40
+	value = 100

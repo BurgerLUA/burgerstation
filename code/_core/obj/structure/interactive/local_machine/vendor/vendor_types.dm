@@ -245,7 +245,7 @@
 
 /obj/structure/interactive/vending/security/wardrobe
 	name = "security wardrobe vendor"
-	icon_state = "secdrobe"
+	icon_state = "secdrobe_new"
 
 	stored_types = list(
 		/obj/item/clothing/feet/socks/knee/white,
@@ -256,10 +256,13 @@
 		/obj/item/storage/shoebox/jackboot/,
 		/obj/item/storage/glovebox/padded/,
 		/obj/item/clothing/head/hood/skimask/black,
-		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/back/storage/satchel/poly/security,
 		/obj/item/clothing/back/storage/dufflebag/poly/security,
-		/obj/item/clothing/back/storage/backpack/poly/security
+		/obj/item/clothing/back/storage/backpack/poly/security,
+		/obj/item/storage/pouch/single/black,
+		/obj/item/storage/pouch/double/black,
+		/obj/item/storage/pouch/triple/black
 	)
 
 

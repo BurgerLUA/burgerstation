@@ -22,7 +22,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-	value = 10
+	value = 40
 
 
 

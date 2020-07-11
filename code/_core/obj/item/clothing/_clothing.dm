@@ -45,7 +45,8 @@
 	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
 	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
 
-
+/obj/item/clothing/proc/get_defense_rating()
+	return defense_rating
 
 /obj/item/clothing/save_item_data(var/save_inventory = TRUE)
 	. = ..()

@@ -54,6 +54,7 @@
 #define COLOR_LIBRARY "#992F2F"
 
 //Materials
+#define COLOR_METAL "#777777"
 #define COLOR_STEEL "#444444"
 #define COLOR_ALUMINUM "#C0C0C0"
 #define COLOR_GLASS "#D9FFFF"

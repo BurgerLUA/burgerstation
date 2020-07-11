@@ -19,6 +19,8 @@
 
 	bullet_block_chance = 75
 
+	var/columns = 1
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
@@ -96,19 +98,25 @@
 /obj/structure/interactive/vending/proc/show_buttons_to(var/mob/living/advanced/A)
 
 	var/stored_objects_length = length(stored_objects)
-	var/stored_types_length = length(stored_types)
+
+	var/row=0
+	var/column=0
 
 	for(var/i=1,i<=stored_objects_length,i++)
+		if(row >= 6)
+			row = 0
+			column++
 		var/obj/item/I = stored_objects[i]
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "CENTER-3,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]-[i]"
+		V.screen_loc = "LEFT+[(column+1)*3],TOP-[row+2]"
 		V.update_owner(A)
 		V.update_sprite()
+		row++
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "CENTER,CENTER+[(stored_objects_length+stored_types_length+1)*0.5]-1"
+	CV.screen_loc = "LEFT+[(column+2)*3],TOP-2"
 	CV.update_owner(A)
 	CV.update_sprite()
 

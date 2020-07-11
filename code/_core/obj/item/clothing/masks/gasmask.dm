@@ -63,3 +63,34 @@
 	weight = WEIGHT_3
 
 	value = 50
+
+/obj/item/clothing/mask/gas/poly
+	icon = 'obj/item/clothing/masks/gasmask_poly.dmi'
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"eyes" = COLOR_WHITE,
+		"filter" = COLOR_WHITE
+	)
+	dyeable = TRUE
+
+
+/obj/item/clothing/mask/gas/poly/grey
+	polymorphs = list(
+		"base" = COLOR_METAL,
+		"eyes" = COLOR_GREEN,
+		"filter" = COLOR_METAL
+	)
+
+/obj/item/clothing/mask/gas/poly/security
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"eyes" = COLOR_SECURITY,
+		"filter" = COLOR_PLASTEEL
+	)
+
+/obj/item/clothing/mask/gas/poly/syndicate
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"eyes" = COLOR_RED,
+		"filter" = COLOR_PLASTEEL
+	)

@@ -155,27 +155,32 @@
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object)
 
 	if(!is_advanced(owner))
-		return 0
+		return ..()
 
 	var/mob/living/advanced/A = owner
 
-	var/list/returning_value = ..()
+	. = ..()
 
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
-		for(var/obj/item/clothing/C in A.worn_objects)
-			if(!C.defense_rating && length(C.defense_rating))
+		var/list/O_defense_rating = O.get_defense_rating()
+		for(var/damage_type in O_defense_rating)
+			if(IS_INFINITY(.[damage_type]))
 				continue
+			if(IS_INFINITY(O_defense_rating[damage_type]))
+				.[damage_type] = O_defense_rating[damage_type]
+				continue
+			.[damage_type] += O_defense_rating[damage_type]
+		for(var/obj/item/clothing/C in A.worn_objects)
 			if(!(O.id in C.protected_limbs))
 				continue
-			for(var/damage_type in C.defense_rating)
-				if(abs(C.defense_rating[damage_type]) == INFINITY)
-					returning_value[damage_type] = C.defense_rating[damage_type]
+			var/list/C_defense_rating = C.get_defense_rating()
+			for(var/damage_type in C_defense_rating)
+				if(IS_INFINITY(.[damage_type]))
 					continue
-				if(abs(O.defense_rating[damage_type]) == INFINITY)
-					returning_value[damage_type] = O.defense_rating[damage_type]
+				if(IS_INFINITY(C_defense_rating[damage_type]))
+					.[damage_type] = C_defense_rating[damage_type]
 					continue
-				if(O.defense_rating[damage_type]) returning_value[damage_type] += O.defense_rating[damage_type]
-				if(C.defense_rating[damage_type]) returning_value[damage_type] += C.defense_rating[damage_type]
+				.[damage_type] += C_defense_rating[damage_type]
 
-	return returning_value
+	return .
