@@ -110,13 +110,13 @@
 		var/obj/hud/button/vendor/V = new
 		V.associated_item = I
 		V.associated_vendor = src
-		V.screen_loc = "LEFT+[(column+1)*3],TOP-[row+2]"
+		V.screen_loc = "LEFT+[1 + (column)*3],TOP-[row+1]"
 		V.update_owner(A)
 		V.update_sprite()
 		row++
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "LEFT+[(column+2)*3],TOP-2"
+	CV.screen_loc = "LEFT+[1 + (column+1)*3],TOP-1"
 	CV.update_owner(A)
 	CV.update_sprite()
 

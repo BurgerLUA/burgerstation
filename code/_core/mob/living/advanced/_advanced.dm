@@ -173,14 +173,16 @@
 	var/slow_mul = 1
 
 	for(var/obj/item/I in worn_objects)
-		slow_mul *= I.slowdown_mul_worn
+		slow_mul *= I.get_slowdown_mul_worn()
 		capacity += I.weight
 
 	for(var/obj/item/I in held_objects)
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
-				slow_mul *= I.slowdown_mul_held
+				slow_mul *= I.get_slowdown_mul_held()
+			else
+				slow_mul *= I.get_slowdown_mul_worn()
 
 		capacity += I.weight
 
@@ -411,10 +413,16 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE)
 
 	if(left_hand && right_hand)
-		if(left && left_hand.can_hold_object(I,FALSE))
-			return left_hand.add_object(I)
-		if(!left && right_hand.can_hold_object(I,FALSE))
-			return right_hand.add_object(I)
+		if(left)
+			if(left_hand.can_hold_object(I,FALSE))
+				return left_hand.add_object(I)
+			else if(right_hand.can_hold_object(I,FALSE))
+				return right_hand.add_object(I)
+		else
+			if(right_hand.can_hold_object(I,FALSE))
+				return right_hand.add_object(I)
+			else if(left_hand.can_hold_object(I,FALSE))
+				return left_hand.add_object(I)
 	else
 		if(left_hand)
 			return left_hand.add_object(I)

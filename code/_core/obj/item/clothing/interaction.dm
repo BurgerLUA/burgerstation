@@ -57,10 +57,12 @@
 
 	. = ..()
 
-	if(defense_rating && length(defense_rating) && protected_limbs && length(protected_limbs))
+	var/list/defense_rating_to_print = get_defense_rating()
+
+	if(defense_rating_to_print && length(defense_rating_to_print) && protected_limbs && length(protected_limbs))
 		var/list/armor_list = list()
-		for(var/damagetype in defense_rating)
-			var/damage_rating = defense_rating[damagetype]
+		for(var/damagetype in defense_rating_to_print)
+			var/damage_rating = defense_rating_to_print[damagetype]
 			if(damage_rating)
 				armor_list += "[capitalize(damagetype)]: [damage_rating]"
 

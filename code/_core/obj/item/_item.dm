@@ -131,6 +131,12 @@
 /obj/item/get_base_value()
 	return initial(value) * item_count_current
 
+/obj/item/proc/get_slowdown_mul_held()
+	return slowdown_mul_held
+
+/obj/item/proc/get_slowdown_mul_worn()
+	return slowdown_mul_worn
+
 /obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
 	if(!amount_to_add)
 		return 0
