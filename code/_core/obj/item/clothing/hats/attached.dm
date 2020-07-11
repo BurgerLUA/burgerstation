@@ -24,6 +24,8 @@
 
 	value = 300
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/head/hood/goliath_cloak
 	name = "goliath cloak hood"
 	icon = 'icons/obj/item/clothing/hats/goliath_cloak.dmi'
@@ -75,3 +77,5 @@
 
 
 	value = 400
+
+	slowdown_mul_worn = 1.1

@@ -25,6 +25,8 @@
 
 	value = 200
 
+	slowdown_mul_worn = 1.1
+
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
 	desc = "Listen to your eldritch, son."
@@ -76,3 +78,5 @@
 	value = 500
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/cult)
+
+	slowdown_mul_worn = 1.2

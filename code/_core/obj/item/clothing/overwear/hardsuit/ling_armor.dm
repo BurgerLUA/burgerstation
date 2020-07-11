@@ -26,4 +26,4 @@
 		/obj/item/weapon/melee/sword/armblade
 	)
 
-	slowdown_mul_worn = 0.9
+	slowdown_mul_worn = 1.1

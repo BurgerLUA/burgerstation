@@ -25,6 +25,8 @@
 	value = 40
 
 
+	slowdown_mul_worn = 1.05
+
 
 /obj/item/clothing/belt/storage/tool/full
 	name = "toolbelt"

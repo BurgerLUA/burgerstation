@@ -28,3 +28,5 @@
 	blocks_clothing = SLOT_TORSO_U
 
 	value = 1100
+
+	slowdown_mul_worn = 1.2

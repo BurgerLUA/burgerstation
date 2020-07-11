@@ -52,7 +52,7 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/hardsuit/syndie/advanced)
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.3
 
 	value = 180
 
@@ -80,6 +80,6 @@
 
 	size = SIZE_6
 
-	slowdown_mul_worn = 1
+	slowdown_mul_worn = 1 //Having the helmet on makes it go faster.
 
 	value = 360

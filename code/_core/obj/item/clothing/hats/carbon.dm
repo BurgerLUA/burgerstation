@@ -29,6 +29,8 @@
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
 
+	slowdown_mul_worn = 1.05
+
 
 /obj/item/clothing/head/helmet/carbon/nanotrasen
 	polymorphs = list(

@@ -23,6 +23,8 @@
 
 	value = 300
 
+	slowdown_mul_worn = 1.2
+
 /obj/item/clothing/head/helmet/security/slavticool
 	name = "\improper 'Slav-safe' LLC combat helmet"
 	icon = 'icons/obj/item/clothing/hats/squad_helmet.dmi'
@@ -42,8 +44,9 @@
 
 	size = SIZE_2
 
-
 	value = 150
+
+	slowdown_mul_worn = 1.05
 
 /obj/item/clothing/overwear/hardsuit/exosuit
 	name = "Russian exosuit"

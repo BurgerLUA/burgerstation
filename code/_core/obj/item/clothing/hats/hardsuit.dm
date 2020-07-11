@@ -35,6 +35,7 @@
 
 	value = 80
 
+	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/head/helmet/hardsuit/syndie
 	name = "mauler helmet mk1"
@@ -60,6 +61,8 @@
 
 	value = 250
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
 	desc = "Perimeter Secured."
@@ -83,6 +86,8 @@
 	size = SIZE_3
 
 	value = 500
+
+	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
@@ -135,6 +140,8 @@
 
 	value = 300
 
+	slowdown_mul_worn = 1.1
+
 
 /obj/item/clothing/head/helmet/hardsuit/medical
 	name = "medical voidsuit"
@@ -158,8 +165,9 @@
 
 	size = SIZE_3
 
-
 	value = 300
+
+	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/head/helmet/hardsuit/seva
 	name = "SEVA suit"
@@ -184,6 +192,8 @@
 	size = SIZE_3
 
 	value = 400
+
+	slowdown_mul_worn = 1.05
 
 /obj/item/clothing/head/helmet/hardsuit/seva/mono
 	name = "custom SEVA suit"

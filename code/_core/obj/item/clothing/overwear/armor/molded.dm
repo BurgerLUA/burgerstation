@@ -8,6 +8,8 @@
 
 	dyeable = TRUE
 
+	slowdown_mul_worn = 1.2
+
 /obj/item/clothing/overwear/armor/molded_armor/leather
 	name = "light leather armor"
 	desc = "It's like i'm wearing nothing at all!"

@@ -18,6 +18,8 @@
 
 	var/list/obj/item/armor_plate/installed_plate_carriers = list()
 
+	slowdown_mul_worn = 1.05
+
 /obj/item/clothing/overwear/armor/plate_carrier/get_slowdown_mul_worn()
 	. = ..()
 

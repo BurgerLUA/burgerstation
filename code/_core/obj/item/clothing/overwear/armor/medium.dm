@@ -10,6 +10,8 @@
 
 	dyeable = TRUE
 
+	slowdown_mul_worn = 1.2
+
 /obj/item/clothing/overwear/armor/medium_armor/leather
 	name = "medium leather armor"
 	desc = "This is medieval, right?"

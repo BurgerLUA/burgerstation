@@ -14,8 +14,9 @@
 
 	size = SIZE_3
 
-
 	value = 60
+
+	slowdown_mul_worn = 1.05
 
 /obj/item/clothing/head/helmet/security/tactical_helmet2
 	name = "tactical military helmet"
@@ -36,3 +37,5 @@
 
 
 	value = 120
+
+	slowdown_mul_worn = 1.05
