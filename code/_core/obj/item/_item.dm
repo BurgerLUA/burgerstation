@@ -28,7 +28,6 @@
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count = 0
 	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
-	var/container_max_weight = 0 //This item has a container, how much should it be able to carry in TOTAL?
 	var/container_held_slots = 0 //How much each inventory slot can hold.
 	var/container_blacklist = list()
 	var/container_whitelist = list()
@@ -119,6 +118,7 @@
 
 	var/dan_mode = FALSE //Special in hand sprites, used by artist D4n0w4r.
 	var/dan_icon_state = "held"
+	var/dan_icon_state_wielded = "wielded"
 	// list(NORTH,EAST,SOUTH,WEST)
 	var/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
 	var/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand. These values are inversed in left hand.
@@ -273,8 +273,6 @@
 			inventories[i].held_slots = container_held_slots
 		if(container_max_size)
 			inventories[i].max_size = container_max_size
-		if(container_max_weight)
-			inventories[i].max_weight = container_max_weight
 		if(container_blacklist && length(container_blacklist))
 			inventories[i].item_blacklist = container_blacklist
 		if(container_whitelist && length(container_whitelist))
@@ -293,8 +291,6 @@
 			D.held_slots = container_held_slots
 		if(container_max_size)
 			D.max_size = container_max_size
-		if(container_max_weight)
-			D.max_weight = container_max_weight
 		if(container_blacklist && length(container_blacklist))
 			D.item_blacklist = container_blacklist
 		if(container_whitelist && length(container_whitelist))

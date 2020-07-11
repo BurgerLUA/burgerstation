@@ -20,13 +20,11 @@
 	var/atom/movable/grabbed_object
 
 	var/held_slots = 1 //How many items this object can hold.
-	var/max_weight = -1 //Maximum weight this inventory object can hold. -1 basically means it can't hold anything.
 	var/max_size = -1 //Maximum amount of size this object can hold. -1 basically means it can't hold anything.
 
 	var/worn_slots = 1 //How many items this object can wear
 	var/worn_allow_duplicate = FALSE //Can you wear more than one item of the same slot at once?
 
-	var/total_weight = 0 //Var storage value that is updated every time an item is changed.
 	var/total_size = 0 //Var storage value that is updated every time an item is changed.
 
 	var/item_slot = SLOT_NONE //Items that can be worn in this slot. Applies to clothing only.
@@ -38,7 +36,7 @@
 
 	var/list/obj/item/item_blacklist = list() //Items that can't go in this invetory.
 	var/list/obj/item/item_whitelist = list() //Items that can only go in this inventory.
-	var/list/obj/item/item_bypass = list() //Items that bypass any size and weight requirements.
+	var/list/obj/item/item_bypass = list() //Items that bypass any size requirements.
 
 	var/click_flags
 
@@ -209,7 +207,7 @@
 	var/list/states = icon_states(initial(item_to_update.icon))
 
 	if(item_to_update.dan_mode)
-		desired_icon_state = item_to_update.dan_icon_state
+		desired_icon_state = item_to_update.wielded ? item_to_update.dan_icon_state_wielded : item_to_update.dan_icon_state
 		switch(owner.dir)
 			if(NORTH)
 				desired_layer = item_to_update.dan_layer_below
@@ -533,7 +531,6 @@
 	return I
 
 /obj/hud/inventory/proc/update_stats()
-	total_weight = 0
 	total_size = 0
 
 	for(var/obj/item/O in held_objects)
@@ -589,7 +586,7 @@
 			owner.to_chat(span("notice","You don't see how you can fit any more objects inside \the [src.loc.name]."))
 		return FALSE
 
-	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && (max_size >= 0 || max_weight >= 0))
+	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
 		if(max_size >= 0 && I.size > max_size)
 			if(messages && src.loc)
 				owner.to_chat(span("notice","\The [I] is too large to be put in \the [src.loc.name]."))

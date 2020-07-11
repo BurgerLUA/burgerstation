@@ -6,7 +6,6 @@
 	mouse_opacity = 0 //Off until enabled.
 
 	max_size = -1
-	max_weight = -1
 
 	should_draw = FALSE
 	drag_to_take = FALSE

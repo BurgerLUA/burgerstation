@@ -59,7 +59,6 @@
 	drop_on_death = TRUE
 
 	max_size = 1000
-	max_weight = 1000
 
 	drag_to_take = FALSE
 
