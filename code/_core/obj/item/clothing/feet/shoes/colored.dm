@@ -17,9 +17,7 @@
 		BLUNT = 5,
 		PIERCE = 5,
 		MAGIC = 25,
-		HEAT = 5,
-		COLD = 5,
-		FATIGUE = 10
+		COLD = 10,
 	)
 
 	size = SIZE_1
@@ -33,7 +31,7 @@
 		"sole" = COLOR_GREY_LIGHT
 	)
 
-	value = 10
+	value = 30
 
 	slowdown_mul_worn = 0.95
 

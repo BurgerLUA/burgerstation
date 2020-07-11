@@ -17,16 +17,17 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
-		MAGIC = -100,
-		HEAT = 75,
+		PIERCE = 25,
+		LASER = 25,
+		MAGIC = -75,
+		HEAT = 100,
 		COLD = 100,
 		BOMB = 25,
-		BIO = 75,
-		RAD = 75
+		BIO = 50,
+		RAD = 75,
+		FATIGUE = INFINITY
 	)
 
 	size = SIZE_3
@@ -43,22 +44,21 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 50,
 		PIERCE = 50,
-		LASER = 25,
-		MAGIC = -100,
+		LASER = 75,
+		MAGIC = -75,
 		HEAT = 75,
 		COLD = 75,
 		BOMB = 75,
-		BIO = 75,
-		RAD = 25
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_4
 
-
-	value = 200
+	value = 250
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
@@ -68,22 +68,21 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 75,
 		PIERCE = 75,
-		LASER = 25,
-		MAGIC = -100,
+		LASER = 100,
+		MAGIC = -75,
 		HEAT = 75,
 		COLD = 75,
 		BOMB = 75,
-		BIO = 75,
-		RAD = 25
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_3
 
-
-	value = 300
+	value = 500
 
 /obj/item/clothing/head/helmet/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
@@ -93,24 +92,23 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 100,
-		PIERCE = 100,
-		LASER = 50,
-		MAGIC = -100,
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 75,
+		MAGIC = -50,
 		HEAT = 75,
 		COLD = 75,
 		BOMB = 75,
-		BIO = 75,
-		RAD = 25
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_3
 
-
 	slowdown_mul_worn = 0.75
 
-	value = 500
+	value = 1200
 
 /obj/item/clothing/head/helmet/hardsuit/mining
 	name = "mining hardsuit helmet"
@@ -120,16 +118,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 75,
-		BLUNT = 50,
+		BLADE = 50,
+		BLUNT = 75,
 		PIERCE = 50,
-		LASER = 25,
-		MAGIC = -50,
-		HEAT = 100,
+		LASER = 50,
+		MAGIC = -75,
+		HEAT = 75,
 		COLD = 75,
-		BOMB = 25,
-		BIO = 75,
-		RAD = 75
+		BOMB = 50,
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_3
@@ -146,18 +144,16 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 50,
-		PIERCE = 50,
+		PIERCE = 25,
 		LASER = 25,
 		MAGIC = -50,
-		DARK = -25,
-		HOLY = 25,
 		HEAT = 75,
 		COLD = 75,
 		BOMB = 25,
-		BIO = 100,
-		RAD = 100
+		BIO = 150,
+		RAD = 75
 	)
 
 	size = SIZE_3
@@ -173,24 +169,22 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 50,
+		BLADE = 25,
 		BLUNT = 50,
-		PIERCE = 50,
+		PIERCE = 25,
 		LASER = 25,
 		MAGIC = -50,
-		DARK = 25,
-		HOLY = -25,
-		HEAT = 75,
-		COLD = 75,
+		HEAT = 25,
+		COLD = 50,
 		BOMB = 25,
-		BIO = 100,
-		RAD = 100
+		BIO = 150,
+		RAD = 150
 	)
 
 	size = SIZE_3
 
-
-	value = 300
+	value = 400
 
 /obj/item/clothing/head/helmet/hardsuit/seva/mono
+	name = "custom SEVA suit"
 	icon = 'icons/obj/item/clothing/hats/sevamono_suit.dmi'

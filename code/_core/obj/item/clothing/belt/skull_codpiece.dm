@@ -8,9 +8,9 @@
 
 
 	defense_rating = list(
-		BLADE = 10,
+		BLADE = 15,
 		BLUNT = 10,
-		PIERCE = 10,
+		PIERCE = 15,
 		MAGIC = 25,
 		HOLY = -25,
 		DARK = 25

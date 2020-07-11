@@ -7,13 +7,16 @@
 	item_slot = SLOT_FACE_WRAP
 
 	defense_rating = list(
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
 		MAGIC = 25
 	)
 
 	size = SIZE_1
 
 
-	value = 5
+	value = 10
 
 	dyeable = TRUE
 

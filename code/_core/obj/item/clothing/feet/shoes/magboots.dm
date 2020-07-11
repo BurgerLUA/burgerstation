@@ -24,10 +24,9 @@
 
 	size = SIZE_2
 
-
 	slowdown_mul_worn = 1.1
 
-	value = 80
+	value = 200
 
 /obj/item/clothing/feet/shoes/magboot/left
 	name = "left magboot"

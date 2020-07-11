@@ -1,5 +1,5 @@
 /obj/item/clothing/hands/gloves/captain
-	name = "right Captain's glove"
+	name = "right glove of the captain"
 	desc = "Be a comdom with these."
 	desc_extended = "Fancy one-of-a-kind glove, issued to the station Captain. Don't lose the other one!"
 	icon = 'icons/obj/item/clothing/gloves/captain.dmi'
@@ -7,20 +7,20 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_LEGENDARY
 
 	defense_rating = list(
-		BLADE = 75,
+		BLADE = 50,
 		BLUNT = 75,
 		PIERCE = 75,
 		LASER = 50,
 		MAGIC = -100,
-		HEAT = 100,
-		COLD = 100,
+		HEAT = 75,
+		COLD = 75,
 		BOMB = 25,
 		BIO = 75,
 		RAD = 75,
-		FATIGUE = 100
+		FATIGUE = INFINITY
 	)
 
 	protection_cold = list(
@@ -29,11 +29,10 @@
 
 	size = SIZE_1
 
-
-	value = 500
+	value = 800
 
 /obj/item/clothing/hands/gloves/captain/left
-	name = "left Captain's glove"
+	name = "left glove of the captain"
 	desc = "Be a comdom with these."
 	desc_extended = "Fancy one-of-a-kind glove, issued to the station Captain. Don't lose the other one!"
 

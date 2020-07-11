@@ -5,6 +5,9 @@
 	desc_extended = "A fashionable beret."
 
 	defense_rating = list(
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
 		MAGIC = 25,
 		COLD = 25
 	)
@@ -12,7 +15,7 @@
 	size = SIZE_2
 
 
-	value = 5
+	value = 10
 
 	dyeable = TRUE
 

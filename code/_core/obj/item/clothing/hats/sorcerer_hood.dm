@@ -21,6 +21,6 @@
 	size = SIZE_2
 
 
-	value = 10
+	value = 120
 
 	dyeable = TRUE

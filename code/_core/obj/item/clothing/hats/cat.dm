@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/hats/cat.dmi'
 	desc = "Pwease gimme huggie wuggies! uwu!"
 	desc_extended = "Dude what the fuck are you doing? Why did you buy this, why the fuck would you wanna even wear this? What the fuck, dude?"
-	rarity = RARITY_LEGENDARY
+	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
 		HOLY = -100,
@@ -16,7 +16,6 @@
 	protected_limbs = TARGETABLE_LIMBS
 
 	size = SIZE_2
-
 
 	no_initial_blend = TRUE
 

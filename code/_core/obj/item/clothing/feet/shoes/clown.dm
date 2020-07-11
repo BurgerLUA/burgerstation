@@ -12,7 +12,7 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLUNT = 50,
+		BLUNT = 25,
 		MAGIC = 50,
 		HOLY = -50,
 		DARK = 75
@@ -21,7 +21,7 @@
 	size = SIZE_2
 
 
-	value = 150
+	value = 100
 
 	slowdown_mul_worn = 1.1
 

@@ -17,8 +17,7 @@
 
 	size = SIZE_2
 
-
-	value = 120
+	value = 240
 
 /obj/item/clothing/head/hat/hos
 	name = "\improper Head of Security's hat"
@@ -28,9 +27,9 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
+		BLADE = 30,
+		BLUNT = 30,
+		PIERCE = 40,
 		LASER = 15,
 		MAGIC = -50,
 		HEAT = 10,
@@ -40,4 +39,4 @@
 	size = SIZE_2
 
 
-	value = 170
+	value = 360

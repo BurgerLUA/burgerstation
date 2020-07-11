@@ -15,7 +15,7 @@
 		PIERCE = 10,
 		LASER = -25,
 		MAGIC = -25,
-		HEAT = -50,
+		HEAT = -25,
 		COLD = 75
 	)
 
@@ -27,7 +27,7 @@
 	size = SIZE_2
 
 
-	value = 30
+	value = 70
 
 	slowdown_mul_worn = 1.05
 

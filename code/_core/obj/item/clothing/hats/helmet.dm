@@ -3,6 +3,8 @@
 
 /obj/item/clothing/head/helmet/knight/
 
+	rarity = RARITY_UNCOMMON
+
 	hidden_organs = list(
 		BODY_HEAD = TRUE,
 		BODY_HAIR_HEAD = TRUE,
@@ -16,8 +18,8 @@
 		BLUNT = 50,
 		PIERCE = 50,
 		LASER = 75,
-		HEAT = -50,
-		MAGIC = -100
+		HEAT = -25,
+		MAGIC = -75
 	)
 
 	size = SIZE_3
@@ -51,29 +53,33 @@
 
 	defense_rating = list(
 		BLADE = 50,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 25,
 		MAGIC = -25,
 		HEAT = -25,
 		HOLY = 50,
 		DARK = -100
 	)
 
+	value = 110
+
 /obj/item/clothing/head/helmet/knight/battlemage
 	name = "battlemage helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_battlemage.dmi'
+	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
 		BLADE = 50,
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 50,
-		HEAT = -50,
-		MAGIC = 50
+		MAGIC = 25,
+		HOLY = -50,
+		DARK = -50
 	)
 
 	size = SIZE_4
 
 
-	value = 200
+	value = 300

@@ -74,6 +74,6 @@
 		COLD = 25
 	)
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/attached/goliath_cloak)
+	additional_clothing = list(/obj/item/clothing/head/hood/goliath_cloak)
 
 	value = 200

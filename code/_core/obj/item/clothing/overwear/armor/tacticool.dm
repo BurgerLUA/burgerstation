@@ -31,11 +31,12 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
+		BLADE = 30,
+		BLUNT = 30,
+		PIERCE = 30,
 		LASER = 25,
-		MAGIC = -50
+		MAGIC = -25,
+		BOMB = 25
 	)
 
 	size = SIZE_2
@@ -74,17 +75,17 @@
 	value = 750 //Extraordinary cost. :P
 
 /obj/item/clothing/head/helmet/hardsuit/exosuit
-	name = "exosuit helmet"
+	name = "russian exosuit helmet"
 	icon = 'icons/obj/item/clothing/hats/exosuit_helmet.dmi'
 	desc = "Duty more like dooty."
 	desc_extended = "So, it's an exosuit's helmet. It protects. It is cool, because gas masks are cool."
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 100,
+		BLUNT = 75,
 		PIERCE = 50,
-		LASER = 25,
+		LASER = 50,
 		MAGIC = -100,
 		HEAT = 50,
 		COLD = 50,
@@ -94,4 +95,4 @@
 	size = SIZE_4
 
 
-	value = 250
+	value = 400

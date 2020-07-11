@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/carbon
-	name = "space swat helmet"
+	name = "space military helmet"
 	icon = 'icons/obj/item/clothing/hats/carbon.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
@@ -7,7 +7,7 @@
 	defense_rating = list(
 		BLADE = 25,
 		BLUNT = 50,
-		PIERCE = 25,
+		PIERCE = 50,
 		LASER = 25,
 		MAGIC = -25,
 		BOMB = 25

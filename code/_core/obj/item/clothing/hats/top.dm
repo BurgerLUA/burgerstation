@@ -3,20 +3,15 @@
 	icon = 'icons/obj/item/clothing/hats/top.dmi'
 	desc = "Classy!"
 	desc_extended = "An expensive top hat."
+	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 0,
-		PIERCE = 5,
-		LASER = 0,
-		MAGIC = 50,
-		COLD = 25
+		MAGIC = 50
 	)
 
 	size = SIZE_2
 
-
-	value = 30
+	value = 60
 
 	dyeable = TRUE
 

@@ -22,7 +22,7 @@
 	size = SIZE_2
 
 
-	value = 10
+	value = 30
 
 
 /obj/item/clothing/head/hood/hoodie
@@ -39,7 +39,7 @@
 	value = 10
 
 	defense_rating = list(
-		MAGIC = 50,
+		MAGIC = 25,
 		HEAT = -25,
 		COLD = 50
 	)

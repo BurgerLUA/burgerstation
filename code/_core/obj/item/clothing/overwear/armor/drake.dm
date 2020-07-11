@@ -21,7 +21,7 @@
 
 	size = SIZE_7
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/attached/drake_armor)
+	additional_clothing = list(/obj/item/clothing/head/helmet/drake)
 
 	blocks_clothing = SLOT_TORSO_U
 

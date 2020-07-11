@@ -15,4 +15,4 @@
 	size = SIZE_2
 
 
-	value = 30
+	value = 60

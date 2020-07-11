@@ -14,17 +14,17 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
+		BLUNT = 25,
 		PIERCE = 50,
 		LASER = -50,
 		MAGIC = -50,
-		BOMB = 75
+		BOMB = 25
 	)
 
 	size = SIZE_2
 
 
-	value = 80
+	value = 150
 
 	slowdown_mul_worn = 1.1
 

@@ -12,14 +12,12 @@
 
 	container_max_size = 2
 
-
-
 	defense_rating = list(
-		BLADE = 15,
-		BLUNT = 5,
+		BLADE = 10,
+		BLUNT = 10,
 		PIERCE = 10,
 		MAGIC = 10
 	)
 
 	rarity = RARITY_UNCOMMON
-	value = 20
+	value = 30

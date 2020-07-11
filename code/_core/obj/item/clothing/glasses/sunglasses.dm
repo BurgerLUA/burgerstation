@@ -14,7 +14,7 @@
 		HEAT = 25
 	)
 
-	value = 25
+	value = 30
 
 
 /obj/item/clothing/glasses/sun/augmented
@@ -32,7 +32,7 @@
 		BOMB = -25
 	)
 
-	value = 200
-
 	sight_mod = SEE_MOBS
-	vision_mod = FLAG_VISION_SECURITY
+	vision_mod = FLAG_VISION_SECURITY | FLAG_VISION_MEDICAL
+
+	value = 1400

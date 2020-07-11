@@ -7,8 +7,8 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 5,
-		PIERCE = 5
+		BLUNT = 10,
+		PIERCE = 10
 	)
 
 	size = SIZE_1
@@ -18,4 +18,4 @@
 
 	value = 40
 
-	slowdown_mul_worn = 0.95
+	slowdown_mul_worn = 0.90

@@ -16,7 +16,6 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		MAGIC = 25,
-		HEAT = 10,
 		COLD = 10
 	)
 

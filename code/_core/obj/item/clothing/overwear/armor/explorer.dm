@@ -22,7 +22,7 @@
 		DARK = 25,
 	)
 	additional_clothing = list(
-		/obj/item/clothing/head/helmet/attached/explorer_suit,
+		/obj/item/clothing/head/helmet/explorer_suit,
 		/obj/item/clothing/mask/gas/mining
 	)
 

@@ -10,9 +10,9 @@
 	)
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
 		LASER = -10,
 		MAGIC = 25,
 		HEAT = 25,
@@ -24,7 +24,7 @@
 	size = SIZE_2
 
 
-	value = 20
+	value = 120
 
 /obj/item/clothing/head/hood/cult/old
 
@@ -47,7 +47,7 @@
 	size = SIZE_2
 
 
-	value = 100
+	value = 200
 
 /obj/item/clothing/head/helmet/cult
 
@@ -61,8 +61,8 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 50,
+		BLUNT = 50,
+		PIERCE = 75,
 		LASER = -75,
 		MAGIC = 25,
 		HEAT = 50,

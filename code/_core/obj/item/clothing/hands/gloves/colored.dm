@@ -11,11 +11,10 @@
 	protected_limbs = list(BODY_HAND_RIGHT)
 
 	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
 		MAGIC = 25,
-		HEAT = 25,
 		COLD = 25,
 		BIO = 10
 	)
@@ -83,7 +82,7 @@
 
 /obj/item/clothing/hands/gloves/colored/insulated
 	name = "right insulated glove"
-	desc = "Hack airlocks with theese."
+	desc = "Hack airlocks with these."
 	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 	rarity = RARITY_RARE
@@ -93,8 +92,8 @@
 		BLUNT = 5,
 		PIERCE = 5,
 		MAGIC = 50,
-		HEAT = 50,
-		COLD = -25,
+		HEAT = 25,
+		COLD = 25,
 		BIO = 10,
 		FATIGUE = INFINITY
 	)
@@ -106,7 +105,7 @@
 	size = SIZE_1
 
 
-	value = 60
+	value = 150
 
 /obj/item/clothing/hands/gloves/colored/insulated/left
 	name = "left insulated glove"
@@ -125,10 +124,8 @@
 		BODY_HAND_RIGHT = 2
 	)
 
-	value = 40
-
 /obj/item/clothing/hands/gloves/colored/padded
-	name = "padded glove"
+	name = "right padded tactical glove"
 	desc = "Be tactical with theese."
 	desc_extended = "A padded glove. Equipped with a fancier icon for extra tactical-ness."
 	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
@@ -151,9 +148,11 @@
 
 	size = SIZE_1
 
+	value = 120
+
 
 /obj/item/clothing/hands/gloves/colored/padded/left
-	name = "left padded glove"
+	name = "left padded tactical glove"
 	desc = "Be tactical with theese."
 	desc_extended = "A padded glove. Equipped with a fancier texture for extra tactical-ness."
 	icon_state = "inventory_left"

@@ -6,10 +6,11 @@
 
 	defense_rating = list(
 		MAGIC = 25,
-		HEAT = 50
+		HEAT = 25
 	)
 
 	size = SIZE_2
 
+	value = 25
 
-	value = 15
+	dyeable = TRUE
