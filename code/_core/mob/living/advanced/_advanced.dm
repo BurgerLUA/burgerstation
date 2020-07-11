@@ -20,9 +20,11 @@
 
 	var/obj/hud/inventory/left_hand
 	var/obj/hud/inventory/right_hand
+	var/obj/hud/inventory/holster
 
 	var/obj/item/left_item
 	var/obj/item/right_item
+	var/obj/item/holster_item
 
 	health_base = 200
 	stamina_base = 100
@@ -97,8 +99,10 @@
 	worn_objects = null
 	left_hand = null
 	right_hand = null
+	holster = null
 	left_item = null
 	right_item = null
+	holster_item = null
 	active_inventory = null
 	driving = null
 
@@ -156,6 +160,8 @@
 			left_hand.update_held_icon(left_item)
 		if(right_hand && right_item && right_item.dan_mode)
 			right_hand.update_held_icon(right_item)
+		if(holster && holster_item && holster_item.dan_mode)
+			holster.update_held_icon(holster_item)
 
 	return .
 

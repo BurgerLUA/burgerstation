@@ -8,6 +8,9 @@
 	if(I.id == BODY_HAND_RIGHT)
 		right_hand = I
 
+	if(I.id == BODY_TORSO_OB)
+		holster = I
+
 	inventory += I
 
 	if(client)
@@ -21,6 +24,9 @@
 
 	if(I.id == BODY_HAND_RIGHT)
 		right_hand = null
+
+	if(I.id == BODY_TORSO_OB)
+		holster = null
 
 	inventory -= I
 
