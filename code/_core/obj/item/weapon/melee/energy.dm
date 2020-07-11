@@ -121,3 +121,28 @@
 		"core" = "#000000",
 		"blade" = "#FFFFFF"
 	)
+
+
+
+/obj/item/weapon/melee/energy/enchanted/plightbringer
+	name = "Plightbringer"
+	desc = "A large black steel straightsword with a decorated hilt."
+	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
+	icon = 'icons/obj/item/weapons/melee/swords/plightbringer.dmi'
+
+	attack_delay = 4
+	attack_delay_max = 10
+
+	value = 1000
+	rarity = RARITY_RARE
+
+	damage_type = /damagetype/melee/sword/plightbringer
+	damage_type_on = /damagetype/melee/sword/plightbringer/on
+
+/obj/item/weapon/melee/energy/enchanted/plightbringer/click_self(var/atom/caller)
+	. = ..()
+	if(enabled)
+		play('sound/weapons/magic/ash.ogg',src)
+	else
+		play('sound/weapons/magic/ash.ogg',src)
+	return .
