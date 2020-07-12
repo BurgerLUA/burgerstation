@@ -43,9 +43,20 @@
 		/obj/item/magazine/pistol_12mm/nt,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
 		/obj/item/magazine/pistol_tranq_11m,
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
+		/obj/item/magazine/smg_46,
+		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
+		/obj/item/magazine/smg_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
-		/obj/item/magazine/sniper_762
-
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
+		/obj/item/magazine/sniper_762,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
+		/obj/item/magazine/lmg_762,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/bullet_cartridge/shotgun_12/buckshot,
+		/obj/item/bullet_cartridge/shotgun_12/slug,
+		/obj/item/bullet_cartridge/shotgun_12/fire
 	)

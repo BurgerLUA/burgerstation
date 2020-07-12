@@ -7,7 +7,8 @@
 	bullet_count_max = 40
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_lmg = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato

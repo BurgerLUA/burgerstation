@@ -21,6 +21,10 @@
 	var/last_usage_cpu = 0
 	var/last_usage_tick = 0
 
+/subsystem/New(var/desired_loc)
+	tick_rate = FLOOR(tick_rate,1)
+	return ..()
+
 
 //What to do when this subsystem is spawned. It's like New() but not really.
 /subsystem/proc/PreInitialize()
