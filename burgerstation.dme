@@ -1271,6 +1271,7 @@
 #include "code\_core\obj\structure\interactive\lighting\tube.dm"
 #include "code\_core\obj\structure\interactive\local_machine\_local_machine.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\_vendor.dm"
+#include "code\_core\obj\structure\interactive\local_machine\vendor\security.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\syndicate.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\vendor_types.dm"
 #include "code\_core\obj\structure\interactive\nature\_nature.dm"

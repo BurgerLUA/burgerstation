@@ -239,39 +239,6 @@
 	name = "chaplain wardrobe vendor"
 	icon_state = "chapdrobe"
 
-/obj/structure/interactive/vending/security
-	name = "security vendor"
-	icon_state = "sec"
-
-/obj/structure/interactive/vending/security/wardrobe
-	name = "security wardrobe vendor"
-	icon_state = "secdrobe_new"
-
-	stored_types = list(
-		/obj/item/clothing/feet/socks/knee/white,
-		/obj/item/clothing/underbottom/underwear/boxers/security,
-		/obj/item/clothing/undertop/underwear/shirt/security,
-		/obj/item/clothing/pants/normal/security,
-		/obj/item/clothing/shirt/normal/security,
-		/obj/item/storage/shoebox/jackboot/,
-		/obj/item/storage/glovebox/padded/,
-		/obj/item/clothing/back/storage/satchel/poly/security,
-		/obj/item/clothing/back/storage/dufflebag/poly/security,
-		/obj/item/clothing/back/storage/backpack/poly/security,
-		/obj/item/storage/pouch/single/black,
-		/obj/item/storage/pouch/double/black,
-		/obj/item/storage/pouch/triple/black,
-		/obj/item/clothing/head/hood/skimask/black,
-		/obj/item/clothing/mask/gas/poly/security,
-		/obj/item/clothing/head/helmet/polymorphic/security,
-		/obj/item/clothing/overwear/armor/plate_carrier/black,
-		/obj/item/clothing/overwear/armor/plate_carrier/pocket/black,
-		/obj/item/armor_plate/light,
-		/obj/item/armor_plate/medium,
-		/obj/item/armor_plate/heavy
-	)
-
-
 /obj/structure/interactive/vending/chemistry/wardrobe
 	name = "chemist wardrobe vendor"
 	icon_state = "chemdrobe"

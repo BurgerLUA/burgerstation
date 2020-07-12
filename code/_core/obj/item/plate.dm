@@ -20,14 +20,13 @@
 		BLADE = 15,
 		BLUNT = 15,
 		PIERCE = 15,
-		LASER = 10,
-		MAGIC = -20
+		LASER = 10
 	)
 
 
 	value = 90
 
-	slowdown_mul_worn = 1.1
+	slowdown_mul_worn = 1.05
 
 /obj/item/armor_plate/medium
 	name = "medium armor plate"
@@ -38,13 +37,13 @@
 		BLUNT = 30,
 		PIERCE = 30,
 		LASER = 10,
-		MAGIC = -40
+		MAGIC = -25
 	)
 
 
 	value = 190
 
-	slowdown_mul_worn = 1.15
+	slowdown_mul_worn = 1.1
 
 
 /obj/item/armor_plate/heavy
@@ -56,10 +55,10 @@
 		BLUNT = 45,
 		PIERCE = 45,
 		LASER = 25,
-		MAGIC = -60
+		MAGIC = -50
 	)
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.15
 
 
 
@@ -77,7 +76,7 @@
 		MAGIC = -75
 	)
 
-	slowdown_mul_worn = 1.3
+	slowdown_mul_worn = 1.2
 
 	value = 500
 
@@ -90,9 +89,9 @@
 		BLUNT = 75,
 		PIERCE = 75,
 		LASER = 50,
-		MAGIC = -100
+		MAGIC = -75
 	)
 
-	slowdown_mul_worn = 1.3
+	slowdown_mul_worn = 1.2
 
 	value = 1000

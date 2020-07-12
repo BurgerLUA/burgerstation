@@ -43,3 +43,8 @@
 	if(!heat_current)
 		return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt
+	dan_mode = TRUE
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_service_nt.dmi'

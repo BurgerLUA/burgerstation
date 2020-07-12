@@ -20,13 +20,13 @@
 
 #define PLANE_WALL -7
 
-#define PLANE_MOB -6
+#define PLANE_WALL_ATTACHMENTS -6
 
-#define PLANE_SCENERY -5
+#define PLANE_MOB -5
 
-#define PLANE_EFFECT -4
+#define PLANE_SCENERY -4
 
-#define PLANE_WALL_ATTACHMENTS -3
+#define PLANE_EFFECT -3
 
 #define PLANE_AREA -2
 
