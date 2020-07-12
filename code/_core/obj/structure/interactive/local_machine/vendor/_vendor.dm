@@ -19,8 +19,6 @@
 
 	bullet_block_chance = 75
 
-	var/columns = 1
-
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()

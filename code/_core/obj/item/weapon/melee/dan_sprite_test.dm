@@ -11,3 +11,5 @@
 	value = 10
 
 	dan_mode = TRUE
+
+	can_wield = TRUE

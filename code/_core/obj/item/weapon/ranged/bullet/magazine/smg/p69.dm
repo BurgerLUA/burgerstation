@@ -1,7 +1,7 @@
-/obj/item/weapon/ranged/bullet/magazine/smg/nanotech
-	name = ".40 NanoTech submachine gun"
-	desc = "It's how you use it that matters!"
-	desc_extended = "Nanotrasen's answer to the fearsome C-20r, this one has a higher firerate at the cost of a smaller round."
+/obj/item/weapon/ranged/bullet/magazine/smg/p69
+	name = ".40 Prototype NT-SMG"
+	desc = "This looks ugly."
+	desc_extended = "An early prototype of the 9x22mm NanoTech SMG. This one uses .40 ammo."
 	icon = 'icons/obj/item/weapons/ranged/smg/40.dmi'
 	icon_state = "inventory"
 
@@ -21,7 +21,6 @@
 
 	size = SIZE_3
 
-
 	heat_per_shot = 0.01
 	heat_max = 0.05
 
@@ -37,7 +36,7 @@
 
 	ai_heat_sensitivity = 0.5
 
-/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
+/obj/item/weapon/ranged/bullet/magazine/smg/p69/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
 		var/bullet_num = FLOOR((length(M.stored_bullets)/M.bullet_count_max)*17,1)
@@ -47,8 +46,8 @@
 
 	..()
 
-/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_static_spread() //Base spread
 	return 0.02
 
-/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))

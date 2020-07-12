@@ -1,8 +1,8 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_lmg
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt
 	name = "\improper 7.62mm H-LMG"
 	desc = "What's betweeen you and 100 Syndicate? This LMG."
 	desc_extended = "An extremely pricy 7.62mm Light Machine Gun that was originally inteded for use in mounted placements is now available for use in combat situations."
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_lmg_2.dmi'
 	icon_state = "inventory"
 
 	shoot_delay = 2
@@ -34,13 +34,14 @@
 
 	size = SIZE_4
 
-
 	value = 800
 
 	ai_heat_sensitivity = 0.1
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_lmg/get_static_spread() //Base spread
+	dan_mode = TRUE
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_static_spread() //Base spread
 	return 0.05
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_lmg/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))
