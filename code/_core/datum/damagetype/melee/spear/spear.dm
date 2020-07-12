@@ -1,4 +1,4 @@
-/damagetype/melee/spear/
+/damagetype/melee/spear/spear/
 	name = "spear"
 
 	attack_damage_base = list(
@@ -29,7 +29,7 @@
 		SKILL_MELEE = PIERCE
 	)
 
-/damagetype/melee/spear/thrown
+/damagetype/melee/spear/spear/thrown
 
 	name = "thrown spear"
 

@@ -63,8 +63,8 @@
 	desc = "Unga bunga."
 	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/item/weapons/melee/swords/spear.dmi'
-	damage_type = /damagetype/melee/spear/
-	damage_type_thrown = /damagetype/melee/spear/thrown
+	damage_type = /damagetype/melee/spear/spear/
+	damage_type_thrown = /damagetype/melee/spear/spear/thrown
 
 	attack_delay = 5
 	attack_delay_max = 12
@@ -83,3 +83,23 @@
 	attack_delay_max = 30
 
 	value = 120
+
+/obj/item/weapon/melee/sword/curvedsword
+	name = "steel curved sword"
+	desc = "A curved blade. Poor at trusting, excells at slashing quickly."
+	desc_extended = "A standard curved sword. Capable of fast swings, and when maintained it can be exceptionally sharp."
+
+	icon = 'icons/obj/item/weapons/melee/swords/curvedsword.dmi'
+
+	dan_mode = TRUE
+
+	item_slot = SLOT_GROIN_O
+	worn_layer = LAYER_MOB_CLOTHING_BACK
+	slot_icons = TRUE
+
+	damage_type = /damagetype/melee/sword/curvedsword
+
+	attack_delay = 7
+	attack_delay_max = 14
+
+	value = 900

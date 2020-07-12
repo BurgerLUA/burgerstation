@@ -1,5 +1,5 @@
 /damagetype/melee/sword/plightbringer
-	name = "Unlit Plightbringer"
+	name = "unlit plightbringer"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -29,7 +29,7 @@
 	)
 
 /damagetype/melee/sword/plightbringer/on
-	name = "Blazing Plightbringer"
+	name = "blazing plightbringer"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
