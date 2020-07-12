@@ -46,6 +46,3 @@
 
 
 	value = 200
-
-/obj/item/clothing/overwear/armor/molded_armor/security/nanotrasen
-	color = COLOR_NANOTRASEN

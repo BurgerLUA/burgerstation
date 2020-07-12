@@ -217,38 +217,72 @@
 					desired_layer = item_to_update.dan_layer_above
 				else
 					desired_layer = item_to_update.dan_layer_below
-					desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[1] : -item_to_update.dan_offset_pixel_x[1]
-					desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[1] : -item_to_update.dan_offset_pixel_y[1]
-					if(click_flags & RIGHT_HAND)
-						desired_transform.Scale(-1,1)
+					if(item_to_update.wielded)
+						if(click_flags & RIGHT_HAND)
+							desired_transform.Scale(-1,1)
+					else
+						if(click_flags & RIGHT_HAND)
+							desired_pixel_x = item_to_update.dan_offset_pixel_x[1]
+							desired_pixel_y = item_to_update.dan_offset_pixel_y[1]
+							desired_transform.Scale(-1,1)
+						else
+							desired_pixel_x = -item_to_update.dan_offset_pixel_x[1]
+							desired_pixel_y = -item_to_update.dan_offset_pixel_y[1]
+
 			if(EAST)
 				if(id == BODY_TORSO_OB)
 					desired_layer = item_to_update.dan_layer_below
 					desired_transform.Scale(-0.5,1)
 					desired_pixel_x = -4
 				else
-					desired_layer = click_flags & RIGHT_HAND ? item_to_update.dan_layer_above : item_to_update.dan_layer_below
-					desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[2] : -item_to_update.dan_offset_pixel_x[2] + 4
-					desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[2] : -item_to_update.dan_offset_pixel_y[2]
-					desired_transform.Scale(-1,1)
+					if(item_to_update.wielded)
+						desired_layer = item_to_update.dan_layer_above
+						desired_pixel_x = 4
+					else
+						if(click_flags & RIGHT_HAND)
+							desired_pixel_x = item_to_update.dan_offset_pixel_x[2]
+							desired_pixel_y = item_to_update.dan_offset_pixel_y[2]
+							desired_layer = item_to_update.dan_layer_above
+						else
+							desired_pixel_x = -item_to_update.dan_offset_pixel_x[2] + 4
+							desired_pixel_y = -item_to_update.dan_offset_pixel_y[2]
+							desired_layer = item_to_update.dan_layer_below
+						desired_transform.Scale(-1,1)
 			if(SOUTH)
 				if(id == BODY_TORSO_OB)
 					desired_layer = item_to_update.dan_layer_below
 				else
 					desired_layer = item_to_update.dan_layer_above
-					desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[3] : -item_to_update.dan_offset_pixel_x[3]
-					desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[3] : -item_to_update.dan_offset_pixel_y[3]
-					if(click_flags & LEFT_HAND)
-						desired_transform.Scale(-1,1)
+					if(item_to_update.wielded)
+						if(click_flags & LEFT_HAND)
+							desired_transform.Scale(-1,1)
+					else
+						if(click_flags & RIGHT_HAND)
+							desired_pixel_x = item_to_update.dan_offset_pixel_x[3]
+							desired_pixel_y = item_to_update.dan_offset_pixel_y[3]
+						else
+							desired_pixel_x = -item_to_update.dan_offset_pixel_x[3]
+							desired_pixel_y = -item_to_update.dan_offset_pixel_y[3]
+							desired_transform.Scale(-1,1)
 			if(WEST)
 				if(id == BODY_TORSO_OB)
 					desired_layer = item_to_update.dan_layer_below
 					desired_transform.Scale(0.5,1)
 					desired_pixel_x = 4
 				else
-					desired_layer = click_flags & RIGHT_HAND ? item_to_update.dan_layer_below : item_to_update.dan_layer_above
-					desired_pixel_x = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_x[4] - 4 : -item_to_update.dan_offset_pixel_x[4]
-					desired_pixel_y = click_flags & RIGHT_HAND ? item_to_update.dan_offset_pixel_y[4] : -item_to_update.dan_offset_pixel_y[4]
+					if(item_to_update.wielded)
+						desired_layer = item_to_update.dan_layer_above
+						desired_transform.Scale(-1,1)
+						desired_pixel_x = -4
+					else
+						if(click_flags & RIGHT_HAND)
+							desired_layer = item_to_update.dan_layer_below
+							desired_pixel_x = item_to_update.dan_offset_pixel_x[4] - 4
+							desired_pixel_y = item_to_update.dan_offset_pixel_y[4]
+						else
+							desired_layer = item_to_update.dan_layer_above
+							desired_pixel_x = -item_to_update.dan_offset_pixel_x[4]
+							desired_pixel_y = -item_to_update.dan_offset_pixel_y[4]
 
 	else if(id == BODY_HAND_LEFT)
 		desired_icon_state = item_to_update.icon_state_held_left
