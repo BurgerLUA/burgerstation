@@ -100,9 +100,9 @@
 
 	var/active = FALSE
 
-/ai/proc/set_active(var/desired_active=TRUE)
+/ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
 
-	if(active == desired_active)
+	if(!force && active == desired_active)
 		return FALSE
 
 	active = desired_active
@@ -111,6 +111,7 @@
 		SSai.active_ai |= src
 		SSai.inactive_ai -= src
 	else
+		world.log << "Adding [src.owner] to inactive AI!"
 		SSai.active_ai -= src
 		SSai.inactive_ai |= src
 
@@ -142,10 +143,7 @@
 
 	start_turf = get_turf(owner)
 
-	if(owner.boss)
-		all_boss_ai += src
-	else
-		set_active(active,TRUE)
+	return ..()
 
 /ai/proc/set_path(var/list/Vector3D/desired_path = list())
 
@@ -169,6 +167,14 @@
 	path_end_turf = locate(last_path.x,last_path.y,last_path.z)
 	return TRUE
 
+
+/ai/PostInitialize()
+	. = ..()
+	if(owner.boss)
+		all_boss_ai += src
+	else
+		set_active(active,TRUE)
+	return .
 
 /ai/proc/should_life()
 

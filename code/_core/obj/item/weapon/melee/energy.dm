@@ -130,7 +130,7 @@
 
 
 
-/obj/item/weapon/melee/energy/enchanted/plightbringer
+/obj/item/weapon/melee/energy/plightbringer
 	name = "Plightbringer"
 	desc = "A large black steel straightsword with a decorated hilt."
 	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
@@ -145,7 +145,7 @@
 	damage_type = /damagetype/melee/sword/plightbringer
 	damage_type_on = /damagetype/melee/sword/plightbringer/on
 
-/obj/item/weapon/melee/energy/enchanted/plightbringer/click_self(var/atom/caller)
+/obj/item/weapon/melee/energy/plightbringer/click_self(var/atom/caller)
 	. = ..()
 	if(enabled)
 		play('sound/weapons/magic/ash.ogg',src)

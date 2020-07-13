@@ -13,7 +13,3 @@
 	. = ..()
 	equip_loadout(desired_loadout)
 	return .
-
-/mob/living/advanced/npc/skeleton_summon/summoned
-	name = "summoned skeleton"
-	desired_loadout = /loadout/skeleton_summon/summoned

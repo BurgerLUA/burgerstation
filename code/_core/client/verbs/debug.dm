@@ -324,8 +324,6 @@ client/verb/air_test(var/pressure as num)
 		for(var/mob/living/L in view(VIEW_RANGE,mob))
 			simple_operation += 1
 
-	world.log << "perform_test_A Time: [world.time - start_time]."
-
 
 /client/verb/perform_test_B()
 
@@ -340,5 +338,3 @@ client/verb/air_test(var/pressure as num)
 			if(get_dist(A.owner,src.mob) > VIEW_RANGE)
 				continue
 			simple_operation += 1
-
-	world.log << "perform_test_B Time: [world.time - start_time]."

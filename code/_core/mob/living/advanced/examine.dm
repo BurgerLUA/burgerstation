@@ -22,7 +22,11 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 	. += div("examine_description_long",get_flavortext())
 
 	if(survival_skill >= 50)
-		. += div("warning","Equipment Move Penalty: [100 - CEILING(100*(1/slowdown_mul),1)]%.")
+		var/move_penalty = 100 - CEILING(100*(1/slowdown_mul),1)
+		if(move_penalty > 0)
+			. += div("red","Equipment Move Penalty: [move_penalty]%.")
+		else if(move_penalty < 0)
+			. += div("green","Equipment Move Bonus: [-move_penalty]%.")
 
 	var/pronoun = capitalize(get_pronoun(src))
 

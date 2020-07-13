@@ -16,6 +16,7 @@
 	icon_state = "[initial(icon_state)]_[rand(1,4)]"
 	return .
 
+/*
 /obj/item/storage/kit/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("icon_state")
@@ -25,6 +26,7 @@
 	. = ..()
 	LOADVAR("icon_state")
 	return .
+*/
 
 /obj/item/storage/kit/filled/fill_inventory()
 	new /obj/item/container/medicine/bandage(src)

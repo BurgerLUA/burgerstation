@@ -17,7 +17,7 @@
 		/obj/item/clothing/back/storage/satchel/bluespace
 	)
 
-	value = 800
+	value = 3000
 
 /obj/item/clothing/back/storage/satchel/bluespace
 	name = "satchel of holding"
@@ -37,4 +37,4 @@
 		/obj/item/clothing/back/storage/satchel/bluespace
 	)
 
-	value = 600
+	value = 2500

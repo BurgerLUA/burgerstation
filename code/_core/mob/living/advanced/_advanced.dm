@@ -255,8 +255,6 @@ mob/living/advanced/Login()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
-	setup_name()
-
 	return .
 
 /mob/living/advanced/PostInitialize()

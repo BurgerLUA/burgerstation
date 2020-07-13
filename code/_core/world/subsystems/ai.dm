@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(ai)
 	name = "AI Subsystem"
 	desc = "Controls the AI of mobs."
 	tick_rate = DECISECONDS_TO_TICKS(AI_TICK)
-	priority = SS_ORDER_IMPORTANT
+	priority = SS_ORDER_PRELOAD
 
 	var/list/active_ai = list()
 	var/list/inactive_ai = list()

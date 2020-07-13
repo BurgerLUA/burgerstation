@@ -63,6 +63,7 @@
 	value = 160
 
 /obj/item/clothing/mask/gas/poly
+	name = "gas mask"
 	icon = 'obj/item/clothing/masks/gasmask_poly.dmi'
 	polymorphs = list(
 		"base" = COLOR_WHITE,

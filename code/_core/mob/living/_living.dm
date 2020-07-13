@@ -121,7 +121,7 @@
 
 	var/list/status_effects = list()
 
-	acceleration_mod = 0.5
+	acceleration_mod = 0.75
 	acceleration = 10
 	deceleration = 15
 	use_momentum = TRUE
@@ -316,8 +316,6 @@
 				B.target_boss = src
 				B.update_stats()
 
-	setup_name()
-
 	chat_overlay = new(src.loc)
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
@@ -342,6 +340,9 @@
 	. = ..()
 	if(health)
 		health.armor_base = armor_base
+	if(ai)
+		INITIALIZE(ai)
+	setup_name()
 	return .
 
 /mob/living/proc/setup_name()

@@ -35,6 +35,8 @@
 
 	size = SIZE_3
 
+	value = 600
+
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/update_icon()
 

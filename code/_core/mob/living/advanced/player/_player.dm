@@ -79,6 +79,8 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	//movement_delay = DECISECONDS_TO_TICKS(1.5)
 
+	var/ai_steps = 0 //Determining when the AI activates.
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	. = ..()
 	click_and_drag_icon	= new(src)
@@ -160,15 +162,19 @@ mob/living/advanced/player/on_life_client()
 		if(active_device && get_dist(src,active_device) > 1)
 			set_device_unactive()
 
-		if( (x % VIEW_RANGE == 0) || (y % VIEW_RANGE == 0) )
-			for(var/ai/A in SSai.inactive_ai) //THIS MIGHT CAUSE ISSUES.
+		ai_steps++
+
+		if(ai_steps >= VIEW_RANGE || (old_loc && src.loc && old_loc.z != src.loc.z))
+			for(var/ai/A in SSai.inactive_ai)
 				if(!A.owner)
 					to_chat("Warning! [A.get_debug_name()] had no owner!")
 					qdel(A)
 					continue
-				if(get_dist(src,A.owner) > VIEW_RANGE + ZOOM_RANGE)
+				var/dist = get_dist(src,A.owner)
+				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
 				A.set_active(TRUE)
+			ai_steps = 0
 
 
 	return .
