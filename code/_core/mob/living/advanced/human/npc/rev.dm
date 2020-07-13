@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/rev
-	name = "revolutionary"
-	desc = "FOR THE REVOLUTION!"
-	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Suprisingly, they're not syndicate backed."
+	name = "vladistov operative"
+	desc = "Powering Worlds since 2076."
+	desc_extended = "PMCs hired by Vladistov Manufacturing Concern to defend their resource extraction operations and power plants from both other PMCs and trade unions."
 	enable_AI = TRUE
 	ai = /ai/advanced/syndicate
 	class = /class/syndicate_soldier
@@ -60,8 +60,8 @@
 	if(sex == MALE && prob(25))
 		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
 
-	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/revolutionary)
-	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/revolutionary)
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/vladistov)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/vladistov)
 
 	update_all_blends()
 

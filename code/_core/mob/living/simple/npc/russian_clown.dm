@@ -1,9 +1,9 @@
 /mob/living/simple/npc/rev_leader
-	name = "revolutionary leader"
+	name = "vladistov manager"
 	icon = 'icons/mob/living/simple/clown_large.dmi'
 	icon_state = "rev"
 	desc = "<font face='Comic Sans MS' color='#FF69FF' size='4'>Honk.</font>"
-	desc_extended = "A rather clownish leader of a revolution."
+	desc_extended = "A rather clownish workplace manager."
 	damage_type = /damagetype/unarmed/fists
 	class = /class/arachnid
 
@@ -30,8 +30,8 @@
 		DARK = 100
 	)
 
-	loyalty_tag = "Revolutionary"
-	iff_tag = "Revolutionary"
+	loyalty_tag = "Vladistov"
+	iff_tag = "Vladistov"
 
 	health_base = 4000
 

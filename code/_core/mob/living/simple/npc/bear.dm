@@ -85,8 +85,8 @@
 
 /mob/living/simple/npc/bear/armored/revolutionary
 	name = "armored russian bear"
-	loyalty_tag = "Revolutionary"
-	iff_tag = "Revolutionary"
+	loyalty_tag = "Vladistov"
+	iff_tag = "Vladistov"
 
 /mob/living/simple/npc/bear/snow
 	name = "snow bear"
