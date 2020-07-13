@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/carbon
-	name = "space military helmet"
+	name = "heavy protective helmet"
 	icon = 'icons/obj/item/clothing/hats/carbon.dmi'
 	desc = "RUSH B"
 	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
@@ -27,10 +27,16 @@
 
 	dyeable = TRUE
 
-	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE
+	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD | SLOT_FACE | SLOT_EYES
 
 	slowdown_mul_worn = 1.05
 
+	hidden_organs = list(
+		BODY_HEAD = TRUE,
+		BODY_HAIR_HEAD = TRUE,
+		BODY_HAIR_FACE = TRUE,
+		BODY_EYES = TRUE
+	)
 
 /obj/item/clothing/head/helmet/carbon/nanotrasen
 	polymorphs = list(

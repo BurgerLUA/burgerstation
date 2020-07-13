@@ -116,8 +116,8 @@
 	. = ..()
 
 	if(.)
-		add_nutrition(-0.01,FALSE)
-		add_hydration(-0.01,FALSE)
+		add_nutrition(-0.01)
+		add_hydration(-0.01)
 
 	return .
 

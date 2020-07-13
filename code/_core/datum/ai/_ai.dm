@@ -35,8 +35,6 @@
 	var/attack_distance_min = 0
 	var/attack_distance_max = 1
 
-	var/enabled = FALSE
-
 	var/left_click_chance = 90
 
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
@@ -100,6 +98,24 @@
 
 	var/debug = FALSE
 
+	var/active = FALSE
+
+/ai/proc/set_active(var/desired_active=TRUE)
+
+	if(active == desired_active)
+		return FALSE
+
+	active = desired_active
+
+	if(active)
+		SSai.active_ai |= src
+		SSai.inactive_ai -= src
+	else
+		SSai.active_ai -= src
+		SSai.inactive_ai |= src
+
+	return TRUE
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -107,11 +123,14 @@
 	objective_move = null
 	objective_attack = null
 	start_turf = null
-	all_living_ai -= src
 	all_boss_ai -= src
 	attackers.Cut()
 	path_start_turf = null
 	path_end_turf = null
+
+	SSai.active_ai -= src
+	SSai.inactive_ai -= src
+
 	return ..()
 
 /ai/New(var/mob/living/desired_owner)
@@ -126,7 +145,7 @@
 	if(owner.boss)
 		all_boss_ai += src
 	else
-		all_living_ai += src
+		set_active(active,TRUE)
 
 /ai/proc/set_path(var/list/Vector3D/desired_path = list())
 
@@ -138,7 +157,8 @@
 		frustration_path = 0
 		return TRUE
 
-	enabled = TRUE
+	set_active(TRUE)
+
 	path_steps = 1
 	current_path = desired_path
 	frustration_path = 0
@@ -152,7 +172,7 @@
 
 /ai/proc/should_life()
 
-	if(!enabled)
+	if(!active)
 		return FALSE
 
 	if(!owner)
@@ -238,7 +258,7 @@
 	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
-	enabled = TRUE
+	set_active(TRUE)
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	return TRUE
@@ -442,7 +462,7 @@
 	if(A && A.qdeleting)
 		return FALSE
 
-	enabled = TRUE
+	set_active(TRUE)
 
 	var/atom/old_attack = objective_attack
 
@@ -716,11 +736,10 @@
 	else
 		alert_level = max(desired_alert_level,alert_level)
 
-	enabled = TRUE
-
 	owner.move_dir = 0
 
 	if(old_alert_level != alert_level)
+		set_active(TRUE)
 		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
 			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)

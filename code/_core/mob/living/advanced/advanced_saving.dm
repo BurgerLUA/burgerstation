@@ -64,7 +64,10 @@
 		else
 			var/obj/structure/interactive/bed/sleeper/C = length(cryo_spawnpoints) ? pick(cryo_spawnpoints) : pick(backup_spawnpoints)
 			force_move(get_turf(C))
+			C.door_state = SLEEPER_OPENED
 			C.buckle(src,silent=TRUE)
+			C.door_state = SLEEPER_CLOSED
+			C.update_icon()
 
 	if(update_blends)
 		update_all_blends()

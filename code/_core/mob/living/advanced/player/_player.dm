@@ -161,14 +161,14 @@ mob/living/advanced/player/on_life_client()
 			set_device_unactive()
 
 		if( (x % VIEW_RANGE == 0) || (y % VIEW_RANGE == 0) )
-			for(var/mob/living/advanced/npc/L in view(src,VIEW_RANGE))
-				if(!L.ai)
+			for(var/ai/A in SSai.inactive_ai) //THIS MIGHT CAUSE ISSUES.
+				if(!A.owner)
+					to_chat("Warning! [A.get_debug_name()] had no owner!")
+					qdel(A)
 					continue
-				L.ai.enabled = TRUE
-			for(var/mob/living/simple/npc/L in view(src,VIEW_RANGE))
-				if(!L.ai)
+				if(get_dist(src,A.owner) > VIEW_RANGE + ZOOM_RANGE)
 					continue
-				L.ai.enabled = TRUE
+				A.set_active(TRUE)
 
 
 	return .

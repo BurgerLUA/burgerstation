@@ -28,7 +28,7 @@
 		remove_stand()
 
 	if(ai)
-		ai.enabled = FALSE
+		ai.set_active(TRUE)
 
 	movement_flags = 0x0
 	attack_flags = 0x0
@@ -90,7 +90,7 @@
 	if(health)
 		health.update_health()
 	if(ai)
-		ai.enabled = TRUE
+		ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
 	return TRUE
@@ -181,6 +181,19 @@
 
 	return FALSE
 
+/mob/living/proc/handle_hunger()
+
+	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
+	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10)
+	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
+
+	if(client)
+		for(var/obj/hud/button/hunger/B in buttons)
+			B.update_sprite()
+
+	return TRUE
+
+
 mob/living/proc/on_life_slow()
 
 	if(!initialized)
@@ -202,9 +215,7 @@ mob/living/proc/on_life_slow()
 
 	handle_health_buffer()
 
-	var/thirst_mod = health && (health.stamina_current <= health.stamina_max*0.5) ? 2 : 1
-	add_nutrition(-(LIFE_TICK_SLOW/10)*0.10,FALSE)
-	add_hydration(-(LIFE_TICK_SLOW/10)*0.05*thirst_mod)
+	handle_hunger()
 
 	return TRUE
 

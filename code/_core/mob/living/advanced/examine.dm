@@ -21,6 +21,9 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",get_flavortext())
 
+	if(survival_skill >= 50)
+		. += div("warning","Equipment Move Penalty: [100 - CEILING(100*(1/slowdown_mul),1)]%.")
+
 	var/pronoun = capitalize(get_pronoun(src))
 
 	if(examiner != src)

@@ -1,10 +1,3 @@
-#define SLEEPER_OPENED "open"
-#define SLEEPER_OPENING "opening"
-
-#define SLEEPER_CLOSED "closed"
-#define SLEEPER_CLOSING "closing"
-
-
 obj/structure/interactive/bed/sleeper
 	name = "sleeper"
 	icon_state = "sleeper"
@@ -48,6 +41,9 @@ obj/structure/interactive/bed/sleeper/update_underlays()
 
 obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(door_state == SLEEPER_CLOSING || door_state == SLEEPER_OPENING)
+		return TRUE
+
 	if(door_state == SLEEPER_CLOSED)
 		open(caller)
 		return TRUE
@@ -65,7 +61,7 @@ obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/at
 
 /obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
-	if(door_state == SLEEPER_CLOSED)
+	if(door_state != SLEEPER_OPENED)
 		return FALSE
 
 	return ..()

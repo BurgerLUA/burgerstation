@@ -6,7 +6,6 @@
 		'sound/ambient/cave_2.ogg',
 	)
 	cheese_type = /reagent/nutrition/cheese/gruyere
-	roof = TRUE
 
 /area/lz_001/caves/lava
 	name = "lava cave"
@@ -22,8 +21,6 @@
 	)
 
 	cheese_type = /reagent/nutrition/cheese/guava
-
-	roof = FALSE //I mean yes, but actually no.
 
 
 /area/lz_001/caves/lava/brighter
@@ -61,7 +58,6 @@
 /area/lz_001/caves/lagoon
 	name = "\improper Pirate's Lagoon"
 	icon_state = "lagoon"
-	roof = FALSE
 
 	sunlight_freq = 8
 	sunlight_color ="#8CB08F"
@@ -69,7 +65,6 @@
 /area/lz_001/caves/knight/
 	name = "\improper Knight's Landing"
 	icon_state = "day"
-	roof = FALSE
 
 	sunlight_freq = 8
 	sunlight_color ="#AEB05D"
@@ -77,9 +72,7 @@
 /area/lz_001/caves/knight/cave
 	name = "\improper Knight's Landing Cave"
 	icon_state = "knight"
-	roof = TRUE
 
 /area/lz_001/caves/hive
 	name = "\improper Alien Hive"
 	icon_state = "hive"
-	roof = TRUE

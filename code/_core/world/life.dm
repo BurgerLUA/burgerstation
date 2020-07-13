@@ -46,11 +46,10 @@
 						continue
 				try
 					SS.overtime_count = 0
-					var/pre_usage_tick = world.tick_usage
-					var/pre_usage_cpu = world.cpu
+					var/start_time = world.time
 					SS.on_life()
-					SS.last_usage_cpu = world.cpu - pre_usage_cpu
-					SS.last_usage_tick = world.tick_usage - pre_usage_tick
+					SS.last_run_duration = FLOOR(world.time - start_time,0.01)
+					SS.total_run_duration += SS.last_run_duration
 				catch(var/exception/e)
 					log_error("[SS.name] on_life() error: [e] on [e.file]:[e.line]!<br>[e.desc]")
 					sleep(10)

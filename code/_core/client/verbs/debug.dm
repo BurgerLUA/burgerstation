@@ -68,7 +68,7 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/M = new(T)
 		M.dir = mob.dir
 		INITIALIZE(M)
-		M.ai.enabled = TRUE
+		M.ai.set_active(TRUE)
 
 /client/verb/generate_map_icon()
 	set name = "Map Test (DANGER)"
@@ -138,12 +138,12 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/nanotrasen/N_NPC = new(N)
 		N_NPC.dir = EAST
 		INITIALIZE(N_NPC)
-		N_NPC.ai.enabled = TRUE
+		N_NPC.ai.set_active(TRUE)
 
 		var/mob/living/advanced/npc/syndicate/S_NPC = new(S)
 		S_NPC.dir = WEST
 		INITIALIZE(S_NPC)
-		S_NPC.ai.enabled = TRUE
+		S_NPC.ai.set_active(TRUE)
 
 
 /client/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
@@ -263,13 +263,13 @@ client/verb/air_test(var/pressure as num)
 	set name = "Subsystem Report"
 	set category = "Debug"
 
-	var/report_string = "<h2>Subsystem Report</h2>CPU Usage: [world.cpu]%<br>Tick Usage: [world.tick_usage]%<br>"
+	var/report_string = "<h2>Subsystem Report</h2>CPU Usage: [CEILING(world.cpu,1)]%<br>Tick Usage: [CEILING(world.tick_usage,1)]%<br>"
 
 	for(var/subsystem/S in active_subsystems)
-		if(S.last_usage_cpu || S.last_usage_tick)
-			report_string += "<b>[S.name]</b>: <pre>CPU:[CEILING(S.last_usage_cpu,0.01)]%, TICK:[CEILING(S.last_usage_tick,0.01)]%</pre><br>"
+		if(S.last_run_duration || S.total_run_duration)
+			report_string += "<b>[S.name]</b>: <pre>LAST: [S.last_run_duration], TOTAL: [S.total_run_duration].</pre><br>"
 
-	report_string += "Subsystems that aren't listed have no registered CPU or tick usage."
+	report_string += "Subsystems that aren't listed have no registered overtime.."
 
 	to_chat(report_string)
 
@@ -312,3 +312,33 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
+
+
+/client/verb/perform_test_A()
+
+	var/simple_operation = 0
+
+	var/start_time = world.time
+
+	for(var/i=1,i<=100,i++)
+		for(var/mob/living/L in view(VIEW_RANGE,mob))
+			simple_operation += 1
+
+	world.log << "perform_test_A Time: [world.time - start_time]."
+
+
+/client/verb/perform_test_B()
+
+	var/simple_operation = 0
+
+	var/start_time = world.time
+
+	for(var/i=1,i<=100,i++)
+		for(var/ai/A in SSai.inactive_ai)
+			if(!A.owner)
+				continue
+			if(get_dist(A.owner,src.mob) > VIEW_RANGE)
+				continue
+			simple_operation += 1
+
+	world.log << "perform_test_B Time: [world.time - start_time]."

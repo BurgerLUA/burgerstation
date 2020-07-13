@@ -35,15 +35,15 @@ mob/living/advanced/proc/handle_regen()
 	if((health_regen_delay <= 0 || health.health_current <= 0 || has_status_effect(SLEEP)) && health.health_current < health.health_max)
 		health_adjust = health.health_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
 		health_regen_buffer += health_adjust
-		add_nutrition(-stamina_adjust*0.2,FALSE)
+		add_nutrition(-stamina_adjust*0.2)
 		if(health_adjust > 0 && player_controlled)
 			add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
 
 	if((stamina_regen_delay <= 0 || has_status_effect(list(FATIGUE,SLEEP,REST))) && health.stamina_current < health.stamina_max)
 		stamina_adjust = health.stamina_regeneration*delay_mod*nutrition_hydration_mod*0.1 //The 0.1 converts from seconds to deciseconds.
 		stamina_regen_buffer += stamina_adjust
-		add_nutrition(-stamina_adjust*0.05,FALSE)
-		add_hydration(-stamina_adjust*0.05,FALSE)
+		add_nutrition(-stamina_adjust*0.05)
+		add_hydration(-stamina_adjust*0.05)
 		if(stamina_adjust > 0 && player_controlled)
 			add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust*10)
 
