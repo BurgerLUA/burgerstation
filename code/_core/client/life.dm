@@ -18,7 +18,6 @@
 	if(mob)
 		mob.on_life_client()
 
-
 	handle_camera()
 
 	/*
@@ -55,23 +54,6 @@
 				images += L.medical_hud_image_advanced
 
 	update_color_mods()
-
-	/*
-	if(is_zoomed)
-
-		var/list/params_list = params2list(last_params)
-		var/list/screen_loc = parse_screen_loc(params_list["screen-loc"])
-
-		animate(
-			src,
-			pixel_x = clamp( (screen_loc[1] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE),
-			pixel_y = clamp( (screen_loc[2] - VIEW_RANGE*TILE_SIZE)*3, -ZOOM_RANGE*TILE_SIZE, ZOOM_RANGE*TILE_SIZE),
-			time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW)
-		)
-
-		if(mob)
-			mob.face_atom(last_location)
-	*/
 
 	return TRUE
 

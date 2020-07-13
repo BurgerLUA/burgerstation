@@ -23,6 +23,8 @@
 		/obj/item/clothing/head/hood/skimask/black,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
+		/obj/item/clothing/overwear/armor/medium_armor/security,
+		/obj/item/clothing/overwear/armor/molded_armor/security,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/clothing/overwear/armor/plate_carrier/pocket/black,
 		/obj/item/armor_plate/light,

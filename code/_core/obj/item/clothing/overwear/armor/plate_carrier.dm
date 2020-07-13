@@ -84,8 +84,6 @@
 	desc_extended = "A plate carrier system. Requires an armor plate to useable."
 	icon = 'icons/obj/item/clothing/suit/plate_carrier_pouched.dmi'
 
-	protected_limbs = list(BODY_TORSO,BODY_GROIN)
-
 	dyeable = TRUE
 
 	defense_rating = list(

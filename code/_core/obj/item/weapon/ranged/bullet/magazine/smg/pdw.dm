@@ -8,8 +8,8 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1
-	max_bursts = 5
+	shoot_delay = 0.5
+	max_bursts = 3
 	view_punch = 4
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')

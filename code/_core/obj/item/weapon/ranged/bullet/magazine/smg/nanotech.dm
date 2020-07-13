@@ -44,9 +44,6 @@
 	else
 		icon_state = initial(icon_state)
 
-	world.log << "Icon state: [icon_state]."
-
-
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_static_spread() //Base spread

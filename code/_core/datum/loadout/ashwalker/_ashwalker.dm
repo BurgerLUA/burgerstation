@@ -51,7 +51,6 @@
 /loadout/ashwalker/assassin
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/loincloth/red,
-		/obj/item/clothing/overwear/armor/molded_armor/leather,
 		/obj/item/clothing/neck/cape/goliath,
 		/obj/item/clothing/belt/skull_codpiece,
 		/obj/item/weapon/melee/null_rod/dagger
@@ -61,7 +60,6 @@
 	spawning_items = list(
 		/obj/item/clothing/undertop/underwear/bra/alt/red,
 		/obj/item/clothing/underbottom/underwear/panty/red,
-		/obj/item/clothing/overwear/armor/molded_armor/leather,
 		/obj/item/clothing/neck/cape/goliath,
 		/obj/item/clothing/belt/skull_codpiece,
 		/obj/item/weapon/melee/null_rod/dagger

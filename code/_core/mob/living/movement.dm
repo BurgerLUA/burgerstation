@@ -121,11 +121,17 @@
 
 	return .
 
-/mob/living/get_movement_delay()
-	. = ..()
+/mob/living/get_stance_movement_mul()
 
 	if(horizontal)
-		. *= 3
+		move_mod = initial(move_mod)
+		return 3
+
+	return ..()
+
+/mob/living/get_movement_delay()
+
+	. = ..()
 
 	if(is_sneaking)
 		. *= (2 - stealth_mod*0.5)

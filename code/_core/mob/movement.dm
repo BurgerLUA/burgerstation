@@ -23,9 +23,7 @@
 
 	return ..()
 
-/mob/get_movement_delay()
-
-	. = ..()
+/mob/proc/get_stance_movement_mul()
 
 	move_mod = initial(move_mod)
 
@@ -40,11 +38,19 @@
 
 	switch(move_mod)
 		if(1)
-			. *= walk_delay_mul
+			.return walk_delay_mul
 		if(2)
-			. *= jog_delay_mul
+			return jog_delay_mul
 		if(3)
-			. *= sprint_delay_mul
+			return sprint_delay_mul
+
+	return 1
+
+/mob/get_movement_delay()
+
+	. = ..()
+
+	. *= get_stance_movement_mul()
 
 	if(health && health.health_max)
 		. *= 2 - (health.health_current/health.health_max)
