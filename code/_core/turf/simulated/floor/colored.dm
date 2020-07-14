@@ -16,7 +16,7 @@
 
 	footstep = /footstep/snow
 
-	delay_modifier = 1.3
+	delay_modifier = 1.2
 
 /turf/simulated/floor/colored/grass
 	name = "grass"
@@ -30,7 +30,7 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
 
-	delay_modifier = 1.1
+	delay_modifier = 1.05
 
 /*
 /turf/simulated/floor/colored/grass/New(loc)
@@ -78,7 +78,7 @@
 
 	footstep = /footstep/asteroid
 
-	delay_modifier = 1.2
+	delay_modifier = 1.1
 
 /turf/simulated/floor/colored/grass/moss
 	name = "moss"
@@ -100,7 +100,7 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/soil
 
-	delay_modifier = 1.1
+	delay_modifier = 1.05
 
 /turf/simulated/floor/colored/dirt/cave
 	name = "dirt"
@@ -169,7 +169,7 @@
 
 	footstep = /footstep/asteroid
 
-	delay_modifier = 1.2
+	delay_modifier = 1.1
 
 	layer = LAYER_FLOOR_LARGE + 0.3
 

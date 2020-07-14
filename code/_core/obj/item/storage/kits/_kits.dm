@@ -13,7 +13,7 @@
 
 /obj/item/storage/kit/New(var/desired_loc)
 	. = ..()
-	icon_state = "[initial(icon_state)]_[rand(1,4)]"
+	icon_state = "[initial(icon_state)][rand(1,4)]"
 	return .
 
 /*

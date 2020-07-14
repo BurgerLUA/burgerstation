@@ -57,8 +57,16 @@
 
 	var/o_type = object_data["type"]
 
+	if(!o_type)
+		log_error("ERROR: Tried to load a null item inside [loc.get_debug_name()]!")
+		return FALSE
+
 	if(ispath(object_data["type"],/obj/item/))
 		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it does not exist in code!")
+		return FALSE
+
+	if(!ispath(o_type))
+		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it was not a path!")
 		return FALSE
 
 	var/obj/item/I = new o_type(loc)
@@ -149,6 +157,10 @@
 	return TRUE
 
 /obj/hud/inventory/proc/set_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
+
+	if(!inventory_data)
+		log_error("Warning: [src.get_debug_name()] in [P.get_debug_name()] had no inventory data!")
+		return TRUE
 
 	if(inventory_data["held"])
 		for(var/i=1,i<=length(inventory_data["held"]),i++)

@@ -8,15 +8,11 @@
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
 
-	var/radius_find_enemy = AI_DETECTION_RANGE
+	var/radius_find_enemy = AI_DETECTION_RANGE //No alert.
 	var/radius_find_enemy_noise = AI_DETECTION_RANGE_NOISE
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
-	/*
-	var/radius_find_enemy = AI_DETECTION_RANGE
-	var/radius_find_enemy_alert = AI_DETECTION_RANGE_COMBAT
-	*/
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -111,7 +107,6 @@
 		SSai.active_ai |= src
 		SSai.inactive_ai -= src
 	else
-		world.log << "Adding [src.owner] to inactive AI!"
 		SSai.active_ai -= src
 		SSai.inactive_ai |= src
 
@@ -634,9 +629,6 @@
 	else
 		. = list()
 
-	if(radius_find_enemy <= 0)
-		return .
-
 	var/range_to_use = radius_find_enemy
 	switch(alert_level)
 		if(ALERT_LEVEL_NOISE)
@@ -645,6 +637,9 @@
 			range_to_use = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			range_to_use = radius_find_enemy_combat
+
+	if(range_to_use <= 0)
+		return .
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
@@ -694,14 +689,15 @@
 
 /ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
-	if(is_living(obstacle))
-		var/mob/living/L = obstacle
-		set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
-		if(trigger_other_bump && L.ai)
-			L.ai.Bump(owner,FALSE)
+	if(obstacle)
+		if(is_living(obstacle))
+			var/mob/living/L = obstacle
+			set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
+			if(trigger_other_bump && L.ai)
+				L.ai.Bump(owner,FALSE)
 
-	if(attack_on_block)
-		spawn do_attack(obstacle,prob(left_click_chance))
+		if(attack_on_block)
+			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE
 

@@ -131,9 +131,9 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		needs_update = TRUE
 		SSlighting.corner_queue += src
 	else
-		update_overlays(TRUE)
+		update_lighting_overlays(TRUE)
 
-/lighting_corner/proc/update_overlays(now = FALSE)
+/lighting_corner/proc/update_lighting_overlays(now = FALSE)
 
 	var/lr = apparent_r
 	var/lg = apparent_g

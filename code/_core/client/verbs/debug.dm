@@ -312,29 +312,3 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
-
-
-/client/verb/perform_test_A()
-
-	var/simple_operation = 0
-
-	var/start_time = world.time
-
-	for(var/i=1,i<=100,i++)
-		for(var/mob/living/L in view(VIEW_RANGE,mob))
-			simple_operation += 1
-
-
-/client/verb/perform_test_B()
-
-	var/simple_operation = 0
-
-	var/start_time = world.time
-
-	for(var/i=1,i<=100,i++)
-		for(var/ai/A in SSai.inactive_ai)
-			if(!A.owner)
-				continue
-			if(get_dist(A.owner,src.mob) > VIEW_RANGE)
-				continue
-			simple_operation += 1

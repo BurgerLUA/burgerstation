@@ -73,7 +73,4 @@
 		verbs += /client/verb/rejuvenate_player
 		verbs += /client/verb/stress_test
 
-		verbs += /client/verb/perform_test_A
-		verbs += /client/verb/perform_test_B
-
 	return TRUE

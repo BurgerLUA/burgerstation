@@ -14,7 +14,7 @@
 
 	footstep = /footstep/concrete
 
-	delay_modifier = 1.1
+	delay_modifier = 1.05
 
 /turf/simulated/floor/basalt/setup_turf_light(var/sunlight_freq)
 	if(prob(10))

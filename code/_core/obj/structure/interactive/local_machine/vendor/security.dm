@@ -20,6 +20,7 @@
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
+		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/head/hood/skimask/black,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
@@ -30,7 +31,6 @@
 		/obj/item/armor_plate/medium,
 		/obj/item/armor_plate/heavy,
 		/obj/item/weapon/melee/energy/sword/grazer,
-		/obj/item/weapon/melee/torch/flashlight/maglight
 	)
 
 /obj/structure/interactive/vending/security/gundrobe

@@ -49,6 +49,9 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 /obj/effect/temp/hazard/proc/do_hazard()
 
+	if(qdeleting)
+		return FALSE
+
 	if(hazard_range >= 1)
 		for(var/mob/living/L in range(hazard_range,src))
 			do_damage(L)

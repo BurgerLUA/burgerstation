@@ -92,7 +92,11 @@
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[id]
-		final_organ_list[id] = O.save_item_data(save_inventory)
+		try
+			final_organ_list[id] = O.save_item_data(save_inventory)
+		catch(var/exception/e)
+			log_error("get_mob_data: [e] on [e.file]:[e.line]!")
+
 	.["organs"] = final_organ_list
 
 	//Skills

@@ -1,5 +1,5 @@
 /turf/simulated/floor/grass/
-	name = "colored floor"
+	name = "grass"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "grass_new"
@@ -8,7 +8,10 @@
 	real_icon_state = "floor"
 	corner_icons = TRUE
 
+	footstep = /footstep/grass
+
 /turf/simulated/floor/grass/jungle
+	name = "jungle grass"
 	color = "#969696"
 
 /turf/simulated/floor/grass/smooth_turfs()
