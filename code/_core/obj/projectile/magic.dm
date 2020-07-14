@@ -91,3 +91,9 @@
 	steps_allowed = 6
 	hit_target_turf = TRUE
 	lifetime = SECONDS_TO_DECISECONDS(2)
+
+/obj/projectile/magic/blackflame
+	name = "blackflame"
+	icon_state = "blackflame"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID

@@ -356,6 +356,7 @@
 #include "code\_core\datum\damagetype\ranged\laser\freezegun.dm"
 #include "code\_core\datum\damagetype\ranged\laser\rifle.dm"
 #include "code\_core\datum\damagetype\ranged\magic\_magic.dm"
+#include "code\_core\datum\damagetype\ranged\magic\blackflame.dm"
 #include "code\_core\datum\damagetype\ranged\magic\chaos.dm"
 #include "code\_core\datum\damagetype\ranged\magic\crystal.dm"
 #include "code\_core\datum\damagetype\ranged\magic\fireball.dm"
