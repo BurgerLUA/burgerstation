@@ -65,9 +65,11 @@
 		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it does not exist in code!")
 		return FALSE
 
+	/*
 	if(!ispath(o_type))
 		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it was not a path!")
 		return FALSE
+	*/
 
 	var/obj/item/I = new o_type(loc)
 	I.load_item_data_pre(P,object_data)
