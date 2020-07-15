@@ -6,9 +6,13 @@ SUBSYSTEM_DEF(delete)
 	var/list/objects_to_delete = list()
 	var/list/objects_to_delete_safe = list()
 
+	cpu_usage_max = 50
+	tick_usage_max = 50
+
 /subsystem/delete/on_life()
 
 	for(var/datum/object_to_delete in objects_to_delete)
+		CHECK_TICK_ADV(tick_usage_max)
 		if(object_to_delete.qdeleting)
 			objects_to_delete -= object_to_delete
 			continue
@@ -26,7 +30,7 @@ SUBSYSTEM_DEF(delete)
 
 
 	for(var/datum/object_to_delete in objects_to_delete_safe) //Don't delete stuff if players are in view.
-
+		CHECK_TICK_ADV(tick_usage_max)
 		if(!istype(object_to_delete) || object_to_delete.qdeleting)
 			objects_to_delete_safe -= object_to_delete
 			continue

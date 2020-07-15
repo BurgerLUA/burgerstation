@@ -6,20 +6,29 @@
 
 	. = list()
 
-	.["hello"] = list("Awaiting orders.")
-
-	if(L.following)
-		if(L.following == P)
+	if(L.following) //If we're following someone
+		if(L.following == P) //If we're following the person we're talking to.
+			.["hello"] = list(
+				"Awaiting orders1.",
+				"*stop following me"
+			)
 			.["*stop following me"] = list(
 				"I will wait here."
 			)
-		else
+		else //If we're following someone else.
 			.["hello"] = list(
+				"Awaiting orders2.",
+				"*follow me"
+			)
+			.["*follow me"] = list(
 				"I am currently following the orders of [L.following.real_name]."
 			)
-
-	else
-		if(length(P.followers) <= 0)
+	else //We're not following someone.
+		.["hello"] = list(
+			"Awaiting orders3.",
+			"*follow me"
+		)
+		if(length(P.followers) <= 0) //They have no followers.
 			.["*follow me"] = list(
 				"I will follow."
 			)
@@ -44,14 +53,14 @@
 		return .
 
 	switch(topic)
-		if("*wait here")
+		if("*stop following me")
 			if(L in P.followers)
 				L.ai.set_move_objective(null)
 				L.following = null
 				P.followers -= L
 		if("*follow me")
-			if(length(P.followers) <= 0)
+			if(length(P.followers) <= 0 && !L.following)
 				P.followers += L
 				L.ai.set_move_objective(P,TRUE)
-				L.following = null
+				L.following = P
 	return .

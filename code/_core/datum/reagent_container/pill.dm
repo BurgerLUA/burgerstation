@@ -4,6 +4,8 @@
 
 	allow_recipie_processing = FALSE
 
+	should_update_owner = TRUE
+
 
 /reagent_container/pill/half
 

@@ -92,7 +92,7 @@
 	if(color && lowertext(color) != "#ffffff")
 		.["color"] = color
 
-	if(save_inventory && length(inventories))
+	if(length(inventories))
 		.["inventories"] = new/list(length(inventories))
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/hud/inventory/IN = inventories[i]
@@ -104,9 +104,7 @@
 	if(delete_on_drop)
 		.["delete_on_drop"] = TRUE
 	if(reagents && reagents.stored_reagents && length(reagents.stored_reagents))
-		.["reagents"] = list()
-		for(var/r_id in reagents.stored_reagents)
-			.["reagents"][r_id] = reagents.stored_reagents[r_id]
+		.["reagents"] = reagents.stored_reagents
 
 	return .
 
@@ -185,11 +183,11 @@
 	if(length(held_objects))
 		.["held"] = new/list(length(held_objects))
 		for(var/i=1,i<=length(held_objects),i++)
-			.["held"][i] = held_objects[i].save_item_data()
+			.["held"][i] = held_objects[i].save_item_data(TRUE)
 
 	if(length(worn_objects))
 		.["worn"] = new/list(length(worn_objects))
 		for(var/i=1,i<=length(worn_objects),i++)
-			.["worn"][i] = worn_objects[i].save_item_data()
+			.["worn"][i] = worn_objects[i].save_item_data(TRUE)
 
 	return .

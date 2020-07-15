@@ -14,3 +14,20 @@
 	radius_find_enemy_noise = BOSS_RANGE
 	radius_find_enemy_caution = BOSS_RANGE
 	radius_find_enemy_combat = BOSS_RANGE
+
+
+/ai/boss/set_active(var/desired_active=TRUE,var/force=FALSE)
+
+	if(!force && active == desired_active)
+		return FALSE
+
+	active = desired_active
+
+	if(active)
+		SSbossai.active_ai |= src
+		SSbossai.inactive_ai -= src
+	else
+		SSbossai.active_ai -= src
+		SSbossai.inactive_ai |= src
+
+	return TRUE

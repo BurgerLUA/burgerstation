@@ -1,7 +1,6 @@
 SUBSYSTEM_DEF(hook)
-	name = "Enviromental Hazard Subsystem"
-	desc = "Controls hazards, like extreme cold or extreme heat."
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	name = "Hook Subsystem"
+	desc = "Controls the callback of hooks and whatnot."
 	priority = SS_ORDER_IMPORTANT
 
 //GMOD, anyone? Doesn't need a priority var as people should just add/overwrite the proc it calls.

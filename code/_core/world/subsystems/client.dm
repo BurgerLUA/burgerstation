@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(client)
 		do_slow = TRUE
 		advanced_ticks = 0
 
-	for(var/ckey in all_clients)
+	for(var/ckey in all_clients) //This should never be tick checked.
 		var/client/C = all_clients[ckey]
 		if(!C)
 			log_error("Tried getting the client of [ckey] but it didn't exist!")

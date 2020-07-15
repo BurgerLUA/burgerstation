@@ -22,6 +22,9 @@ SUBSYSTEM_DEF(lighting)
 	var/total_ss_updates = 0
 	var/total_instant_updates = 0
 
+	tick_usage_max = 75
+	cpu_usage_max = 75
+
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 	var/force_queued = TRUE
 	var/force_override = FALSE	// For admins.
@@ -62,7 +65,7 @@ SUBSYSTEM_DEF(lighting)
 /subsystem/lighting/proc/CreateLobjForZ(zlevel)
 	. = 0
 	for (var/thing in Z_ALL_TURFS(zlevel))
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		var/turf/T = thing
 		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
@@ -72,7 +75,7 @@ SUBSYSTEM_DEF(lighting)
 /subsystem/lighting/proc/InitializeLightingAtoms(list/atoms)
 	. = 0
 	for (var/turf/T in atoms)
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
@@ -90,7 +93,7 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: lq_idex is at [lq_idex].")
 
 	while (length(curr_lights) && lq_idex <= length(curr_lights))
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		var/light_source/L = curr_lights[lq_idex]
 		if (L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1
@@ -108,7 +111,7 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: cq_idex is at [cq_idex].")
 
 	while (length(curr_corners) && cq_idex <= length(curr_corners))
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		var/lighting_corner/C = curr_corners[cq_idex]
 		if (C.needs_update)
 			C.update_lighting_overlays()
@@ -125,7 +128,7 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: oq_idex is at [oq_idex].")
 
 	while (length(curr_overlays) && oq_idex <= length(curr_overlays))
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		if(oq_idex < 0 || oq_idex > length(curr_overlays))
 			log_error("Lighting Error: List index out of bounds! Data: [length(curr_overlays)], [oq_idex].")
 			break

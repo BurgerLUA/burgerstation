@@ -1,5 +1,3 @@
-var/global/list/ai/all_boss_ai = list()
-
 SUBSYSTEM_DEF(bossai)
 	name = "Boss AI Subsystem"
 	desc = "Controls the AI of bosses."
@@ -8,10 +6,13 @@ SUBSYSTEM_DEF(bossai)
 	cpu_usage_max = 100
 	tick_usage_max = 100
 
+	var/list/active_ai = list()
+	var/list/inactive_ai = list()
+
 /subsystem/bossai/on_life()
 
-	for(var/ai/AI in all_boss_ai)
-		CHECK_TICK
+	for(var/ai/AI in active_ai)
+		CHECK_TICK_ADV(tick_usage_max)
 		if(AI && !AI.owner)
 			log_error("WARING! AI of type [AI.type] didn't have an owner!")
 			qdel(AI)

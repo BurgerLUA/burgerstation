@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(garbage_tracking)
 	desc = "Powered by raw shitcode."
 	priority = SS_ORDER_FIRST
 	tick_rate = SECONDS_TO_TICKS(60)
+	tick_usage_max = 50
+	cpu_usage_max = 50
 
 /subsystem/garbage_tracking/Initialize()
 	fdel(GARBAGE_LOGS_PATH)
@@ -15,7 +17,7 @@ SUBSYSTEM_DEF(garbage_tracking)
 /subsystem/garbage_tracking/on_life()
 
 	for(var/ref_id in qdel_refs_to_type)
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		var/o_type = qdel_refs_to_type[ref_id]
 		var/datum/found_datum = locate(ref_id)
 		if(found_datum && found_datum.type == o_type && found_datum.qdeleting)

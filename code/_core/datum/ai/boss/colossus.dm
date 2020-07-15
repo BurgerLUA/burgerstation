@@ -49,10 +49,10 @@
 
 	if(steps_to_take >= 0)
 		steps_to_take -= 1
-	else
+	else if(get_dist(owner,objective_attack) >= 6)
 		steps_to_take = rand(5,10)
 		slow_ticks = 30
-		owner.move_dir = pick(DIRECTIONS_ALL)
+		owner.move_dir = get_dir(src,objective_attack)
 
 	return TRUE
 

@@ -11,10 +11,13 @@
 
 	size = SIZE_0
 
-
 	var/reagent_container/reagents_2
 
 	value = 1
+
+/obj/item/container/pill/get_examine_list(var/mob/examiner)
+	return ..() + div("notice",reagents.get_contents_english())
+
 
 /obj/item/container/pill/save_item_data(var/save_inventory = TRUE)
 	. = ..()

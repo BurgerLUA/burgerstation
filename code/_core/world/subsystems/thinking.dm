@@ -5,8 +5,12 @@ SUBSYSTEM_DEF(thinking)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	var/list/all_thinkers = list() //associative list
 
+	cpu_usage_max = 75
+	tick_usage_max = 75
+
 /subsystem/thinking/on_life()
 	for(var/atom/A in all_thinkers)
+		CHECK_TICK_ADV(tick_usage_max)
 		if(!A.think())
 			stop_thinking(A)
 

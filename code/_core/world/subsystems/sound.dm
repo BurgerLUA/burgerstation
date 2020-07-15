@@ -6,8 +6,12 @@ SUBSYSTEM_DEF(sound)
 	priority = SS_ORDER_PRELOAD
 	var/channel_hack = 0
 
+	cpu_usage_max = 75
+	tick_usage_max = 75
+
 /subsystem/sound/on_life()
 	for(var/F in active_sounds)
+		CHECK_TICK_ADV(tick_usage_max)
 		var/sound/S = F
 		if(active_sounds[S] == -1)
 			continue
@@ -26,6 +30,7 @@ SUBSYSTEM_DEF(sound)
 
 /proc/stop_sound(var/sound_path,var/list/mob/hearers)
 	for(var/F in active_sounds)
+		CHECK_TICK_ADV(SSsound.tick_usage_max)
 		var/sound/S = F
 		if(S.file != sound_path)
 			continue
@@ -225,7 +230,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 	for(var/mob/M in hearers)
 
-		CHECK_TICK
+		CHECK_TICK_ADV(SSsound.tick_usage_max)
 
 		hearers -= M
 

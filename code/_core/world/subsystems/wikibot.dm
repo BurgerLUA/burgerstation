@@ -7,6 +7,9 @@ SUBSYSTEM_DEF(wikibot)
 	desc = "A 'bot' that answers questions."
 	priority = SS_ORDER_PRELOAD
 
+	cpu_usage_max = 50
+	tick_usage_max = 50
+
 /subsystem/wikibot/Initialize()
 
 	var/wikibot_file = file2text(WIKIBOT)
@@ -32,6 +35,7 @@ SUBSYSTEM_DEF(wikibot)
 	var/best_answer = null
 
 	for(var/list/wikibot_key in wikibot_list)
+		CHECK_TICK_ADV(tick_usage_max)
 		var/question_keys = wikibot_key["keywords"]
 		var/answer_key = wikibot_key["answer"]
 		var/current_score = 0

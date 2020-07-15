@@ -11,10 +11,13 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/all_reagents = list()
 
+	cpu_usage_max = 70
+	tick_usage_max = 70
+
 /subsystem/reagent/on_life()
 
 	for(var/reagent_container/R in all_reagent_containers)
-		CHECK_TICK
+		CHECK_TICK_ADV(tick_usage_max)
 		if(R.flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT)
 			continue
 		R.process_temperature()

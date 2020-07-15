@@ -119,13 +119,15 @@
 	objective_move = null
 	objective_attack = null
 	start_turf = null
-	all_boss_ai -= src
 	attackers.Cut()
 	path_start_turf = null
 	path_end_turf = null
 
 	SSai.active_ai -= src
 	SSai.inactive_ai -= src
+
+	SSbossai.active_ai -= src
+	SSbossai.inactive_ai -= src
 
 	return ..()
 
@@ -165,10 +167,7 @@
 
 /ai/PostInitialize()
 	. = ..()
-	if(owner.boss)
-		all_boss_ai += src
-	else
-		set_active(active,TRUE)
+	set_active(active,TRUE)
 	return .
 
 /ai/proc/should_life()

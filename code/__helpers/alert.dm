@@ -22,7 +22,8 @@
 		CRASH_SAFE("create_alert() had no epicenter!")
 		return FALSE
 
-	var/list/list_of_ais = all_boss_ai + SSai.active_ai + SSai.inactive_ai
+	var/list/list_of_ais = list()
+	list_of_ais.Add(SSbossai.inactive_ai,SSbossai.active_ai,SSai.active_ai,SSai.inactive_ai)
 
 	for(var/ai/AI in list_of_ais)
 		CHECK_TICK
@@ -39,7 +40,8 @@
 
 /proc/get_ais_in_range(var/range=VIEW_RANGE,var/atom/epicenter=usr)
 
-	var/list/list_of_ais = all_boss_ai + SSai.active_ai + SSai.inactive_ai
+	var/list/list_of_ais = list()
+	list_of_ais.Add(SSbossai.inactive_ai,SSbossai.active_ai,SSai.active_ai,SSai.inactive_ai)
 
 	for(var/ai/AI in list_of_ais)
 		var/mob/M = AI.owner

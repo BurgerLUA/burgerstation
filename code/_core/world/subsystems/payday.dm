@@ -13,6 +13,9 @@ SUBSYSTEM_DEF(payday)
 	var/next_payday = -1
 	var/stored_payday = 0
 
+	tick_usage_max = 50
+	cpu_usage_max = 50
+
 /subsystem/payday/Initialize()
 	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
 	return ..()
@@ -28,7 +31,8 @@ SUBSYSTEM_DEF(payday)
 
 	var/list/mob/living/advanced/player/valid_players = list()
 
-	for(var/mob/living/advanced/player/P in world)
+	for(var/mob/living/advanced/player/P in all_players)
+		CHECK_TICK_ADV(tick_usage_max)
 		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
 			continue
 		valid_players += P
@@ -41,6 +45,7 @@ SUBSYSTEM_DEF(payday)
 	stored_payday *= 0.75 //Prevents gaming the system.
 
 	for(var/mob/living/advanced/player/P in valid_players)
+		CHECK_TICK_ADV(tick_usage_max)
 		var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,4000)
 		P.adjust_currency( BASE_PAY + bonus_to_give )
 		if(bonus_to_give)

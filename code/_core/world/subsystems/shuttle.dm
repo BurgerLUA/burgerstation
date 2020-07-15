@@ -4,6 +4,9 @@ SUBSYSTEM_DEF(shuttle)
 	tick_rate = SECONDS_TO_TICKS(1)
 	priority = SS_ORDER_NORMAL
 
+	cpu_usage_max = 50
+	tick_usage_max = 50
+
 /subsystem/shuttle/Initialize()
 
 	log_subsystem(src.name,"Found [length(all_shuttle_controlers)] shuttle controllers.")
@@ -13,6 +16,7 @@ SUBSYSTEM_DEF(shuttle)
 /subsystem/shuttle/on_life()
 
 	for(var/obj/shuttle_controller/SC in all_shuttle_controlers)
+		CHECK_TICK_ADV(tick_usage_max)
 		SC.time++
 		if(!SC.on_shuttle_think())
 			log_error("Shutting down controller for [SC]([SC.x])([SC.y])([SC.z]) as on_shuttle_think returned FALSE!")

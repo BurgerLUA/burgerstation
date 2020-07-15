@@ -8,6 +8,9 @@ SUBSYSTEM_DEF(turfs)
 
 	var/list/queued_edges = list()
 
+	cpu_usage_max = 50
+	tick_usage_max = 50
+
 /subsystem/turfs/Initialize()
 
 	set background = 1
@@ -28,6 +31,7 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/on_life()
 	for(var/turf/T in queued_edges)
+		CHECK_TICK_ADV(tick_usage_max)
 		T.update_sprite()
 		queued_edges -= T
 	return TRUE

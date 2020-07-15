@@ -13,6 +13,7 @@ SUBSYSTEM_DEF(progressbars)
 /subsystem/progressbars/on_life()
 
 	for(var/k in all_progress_bars)
+		CHECK_TICK_ADV(tick_usage_max)
 		var/atom/A = k
 		var/list/progress_list = all_progress_bars[k]
 		var/obj/hud/progress_bar/P = progress_list["progress_bar"]

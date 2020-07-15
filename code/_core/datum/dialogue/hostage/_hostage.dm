@@ -1,4 +1,4 @@
-/dialogue/npc/hostage/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/hostage/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	. = list()
 
@@ -19,7 +19,7 @@
 	return .
 
 
-/dialogue/npc/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
 
 	. = ..()
 
