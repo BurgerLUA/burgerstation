@@ -27,6 +27,8 @@
 	heat_per_shot = 0.02
 	heat_max = 0.08
 
+	dan_mode = TRUE
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_base_spread() //For multiple bullets
 	return 0.05
 

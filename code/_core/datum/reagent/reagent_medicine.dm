@@ -35,8 +35,10 @@
 
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 5*.
+		L.health_regen_delay = 0
 
 	return .
 
@@ -44,8 +46,10 @@
 
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-4)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 4*.
+		L.health_regen_delay = 0
 
 	return .
 
@@ -58,16 +62,20 @@
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-10)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 10*.
+		L.health_regen_delay = 0
 
 	return .
 
 /reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-8)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 8*.
+		L.health_regen_delay = 0
 
 	return .
 
@@ -83,8 +91,10 @@
 /reagent/medicine/kelotane/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-5)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.burn_regen_buffer += 5*.
+		L.health_regen_delay = 0
 
 
 	return .
@@ -92,8 +102,10 @@
 /reagent/medicine/kelotane/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(burn=.*-4)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.burn_regen_buffer += 4*.
+		L.health_regen_delay = 0
 
 	return .
 
@@ -109,20 +121,24 @@
 /reagent/medicine/dylovene/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*-5)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.tox_regen_buffer += 5*.
+		L.health_regen_delay = 0
 
 	return .
 
 /reagent/medicine/dylovene/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(tox=.*-4)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.tox_regen_buffer += 4*.
+		L.health_regen_delay = 0
 
 	return .
 
-/reagent/medicine/dexalin
+/reagent/medicine/dexalin //Shit chem, rework.
 	name = "Dexalin"
 	desc = "Blue for oxy."
 	color = "#0000FF"
@@ -162,16 +178,24 @@
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 4*.
+		L.burn_regen_buffer += 4*.
+		L.tox_regen_buffer += 4*.
+		L.health_regen_delay = 0
 
 	return .
 
 /reagent/medicine/tricordrazine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-3,burn=.*-3,tox=.*-3)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 3*.
+		L.burn_regen_buffer += 3*.
+		L.tox_regen_buffer += 3*.
+		L.health_regen_delay = 0
 
 	return .
 
@@ -191,16 +215,24 @@
 /reagent/medicine/omnizine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4,oxy=.*-4)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 3*.
+		L.burn_regen_buffer += 3*.
+		L.tox_regen_buffer += 3*.
+		L.health_regen_delay = 0
 
 	return .
 
 /reagent/medicine/omnizine/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-4,burn=.*-4,tox=.*-4,oxy=.*-4)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 3*.
+		L.burn_regen_buffer += 3*.
+		L.tox_regen_buffer += 3*.
+		L.health_regen_delay = 0
 
 	return .
 
@@ -237,7 +269,7 @@
 			var/mob/living/L = owner.loc
 			if(L.health)
 				owner.health.adjust_loss_smart(burn=.*-5,update=FALSE)
-				L.health.adjust_loss_smart(burn=.*-3)
+				L.burn_regen_buffer += 3*.
 		else
 			owner.health.adjust_loss_smart(burn=.*-5)
 
@@ -278,7 +310,8 @@
 			var/mob/living/L = owner.loc
 			if(L.health)
 				owner.health.adjust_loss_smart(brute=.*-5,update=FALSE)
-				L.health.adjust_loss_smart(brute=.*-3)
+				L.brute_regen_buffer += 3*.
+				L.health_regen_delay = 0
 		else
 			owner.health.adjust_loss_smart(brute=.*-5)
 
@@ -350,26 +383,31 @@
 
 /reagent/medicine/health_potion
 	name = "Healing Juice"
-	desc = "Heals everything. Magical!"
+	desc = "Heals brute and burn damage. Metabolizes fast."
 	desc_extended = "Works just as good when consumed."
 	color = "#FF0000"
 
 	flavor = "cherry"
 
-	metabolism_blood = METABOLISM_BLOOD*0.5
-	metabolism_stomach = METABOLISM_STOMACH*0.5
+	metabolism_blood = 10
+	metabolism_stomach = 10
 
 	value = 3
 
 /reagent/medicine/health_potion/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
 	. = ..()
 
-	if(owner && owner.health)
-		owner.health.adjust_loss_smart(brute=.*-5,burn=.*-5,tox=.*-5,oxy=.*-5)
+	if(is_living(owner))
+		var/mob/living/L = owner
+		L.brute_regen_buffer += 5*.
+		L.burn_regen_buffer += 5*.
+		L.health_regen_delay = 0
 
 	return .
 
 /reagent/medicine/health_potion/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
 	. = ..()
 
 	if(owner && owner.health)
@@ -386,8 +424,8 @@
 
 	flavor = "lime"
 
-	metabolism_blood = METABOLISM_BLOOD*0.5
-	metabolism_stomach = METABOLISM_STOMACH*0.5
+	metabolism_blood = 10
+	metabolism_stomach = 10
 
 	value = 3
 
@@ -416,8 +454,8 @@
 
 	flavor = "blueberry"
 
-	metabolism_blood = METABOLISM_BLOOD*0.5
-	metabolism_stomach = METABOLISM_STOMACH*0.5
+	metabolism_blood = 10
+	metabolism_stomach = 10
 
 	value = 3
 

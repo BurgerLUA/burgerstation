@@ -46,8 +46,6 @@ var/global/list/all_areas = list()
 
 	var/list/turf/sunlight_turfs = list()
 
-	var/roof = FALSE //Does this area have a roof?
-
 	var/defend = FALSE //Set to true if you're supposed to defend this area.
 
 	var/safe_storage = FALSE
@@ -104,7 +102,7 @@ var/global/list/all_areas = list()
 
 /area/proc/setup_sunlight(var/turf/T)
 
-	if(roof)
+	if(sunlight_freq == 0)
 		return FALSE
 
 	if(T.desired_light_power && T.desired_light_range)

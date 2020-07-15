@@ -40,6 +40,8 @@
 
 	can_shoot_while_open = TRUE
 
+	inaccuracy_modifer = 0.25
+
 /obj/item/weapon/ranged/bullet/revolver/nagant/get_static_spread() //Base spread
 	return 0.002
 

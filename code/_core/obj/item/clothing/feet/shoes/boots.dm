@@ -13,9 +13,9 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		BLADE = 20,
+		BLADE = 25,
 		BLUNT = 25,
-		PIERCE = 15,
+		PIERCE = 25,
 		LASER = -10,
 		MAGIC = -25,
 		COLD = 25,
@@ -27,7 +27,7 @@
 
 	value = 60
 
-	slowdown_mul_worn = 1.05
+	slowdown_mul_worn = 1
 
 /obj/item/clothing/feet/shoes/black_boots/left
 	name = "left black boot"

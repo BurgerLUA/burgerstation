@@ -32,7 +32,7 @@
 		BOMB = 25,
 		BIO = 25,
 		RAD = 50,
-		HOLY = 25,
+		HOLY = -25,
 		DARK = 100,
 		FATIGUE = 100
 	)

@@ -141,6 +141,9 @@
 
 /mob/living/proc/butcher(var/mob/living/target)
 
+	if(target.qdeleting)
+		return FALSE
+
 	src.visible_message(span("danger","\The [src.name] butchers \the [target.name]!"),span("danger","You butcher \the [target.name]."))
 
 	var/turf/T = get_turf(target)

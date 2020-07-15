@@ -284,7 +284,7 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
-      src << "[v] = [object.vars[v]]"
+      to_chat("[v] = [object.vars[v]]")
 
 /client/MouseUp(object,location,control,params)
 

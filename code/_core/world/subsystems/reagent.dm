@@ -14,13 +14,12 @@ SUBSYSTEM_DEF(reagent)
 /subsystem/reagent/on_life()
 
 	for(var/reagent_container/R in all_reagent_containers)
-
+		CHECK_TICK
 		if(R.flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT)
 			continue
-
 		R.process_temperature()
 
-	return TRUE
+	return ..()
 
 /subsystem/reagent/Initialize()
 

@@ -11,6 +11,17 @@
 
 	slowdown_mul_worn = 1
 
+/obj/item/armor_plate/get_examine_list(var/mob/examiner)
+
+	. = ..()
+
+	var/list/armor_list = list()
+	for(var/damagetype in armor_base)
+		var/damage_rating = armor_base[damagetype]
+		if(damage_rating)
+			armor_list += "[capitalize(damagetype)]: [damage_rating]"
+	. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
+	. += div("notice","<b>Armor rating applies when applied to a plate carrier. Stacking multiple plate carriers gives dimishing returns.</b>")
 
 /obj/item/armor_plate/light
 	name = "light armor plate"

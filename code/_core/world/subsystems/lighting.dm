@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(lighting)
 		CHECK_TICK
 		var/lighting_corner/C = curr_corners[cq_idex]
 		if (C.needs_update)
-			C.update_overlays()
+			C.update_lighting_overlays()
 			C.needs_update = FALSE
 			processed_corners++
 		cq_idex++

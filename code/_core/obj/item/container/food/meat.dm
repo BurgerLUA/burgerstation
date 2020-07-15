@@ -97,6 +97,8 @@
 
 	color = blend_colors(rgb(meat_r,meat_g,meat_b),"#000000",carbon_amount/(reagents.volume_current*0.5))
 
+	update_held_icon()
+
 	return TRUE
 
 

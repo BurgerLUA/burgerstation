@@ -4,8 +4,6 @@
 	value = 10
 
 /obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target,location,control,params)
-
-
 	return TRUE
 
 

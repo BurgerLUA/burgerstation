@@ -7,7 +7,7 @@
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	default_icon_hair = 'icons/mob/living/advanced/hair/reptile_hair_head.dmi'
-	default_icon_state_hair = "bald"
+	default_icon_state_hair = "none"
 
 	default_icon_face = 'icons/mob/living/advanced/hair/reptile_hair_face.dmi'
 	default_icon_state_face = "none"

@@ -8,15 +8,11 @@
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
 
-	var/radius_find_enemy = AI_DETECTION_RANGE
+	var/radius_find_enemy = AI_DETECTION_RANGE //No alert.
 	var/radius_find_enemy_noise = AI_DETECTION_RANGE_NOISE
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
-	/*
-	var/radius_find_enemy = AI_DETECTION_RANGE
-	var/radius_find_enemy_alert = AI_DETECTION_RANGE_COMBAT
-	*/
 
 	var/objective_ticks = 0
 	var/attack_ticks = 0
@@ -34,8 +30,6 @@
 
 	var/attack_distance_min = 0
 	var/attack_distance_max = 1
-
-	var/enabled = FALSE
 
 	var/left_click_chance = 90
 
@@ -100,6 +94,24 @@
 
 	var/debug = FALSE
 
+	var/active = FALSE
+
+/ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
+
+	if(!force && active == desired_active)
+		return FALSE
+
+	active = desired_active
+
+	if(active)
+		SSai.active_ai |= src
+		SSai.inactive_ai -= src
+	else
+		SSai.active_ai -= src
+		SSai.inactive_ai |= src
+
+	return TRUE
+
 /ai/Destroy()
 	if(owner)
 		owner.ai = null
@@ -107,11 +119,14 @@
 	objective_move = null
 	objective_attack = null
 	start_turf = null
-	all_living_ai -= src
 	all_boss_ai -= src
 	attackers.Cut()
 	path_start_turf = null
 	path_end_turf = null
+
+	SSai.active_ai -= src
+	SSai.inactive_ai -= src
+
 	return ..()
 
 /ai/New(var/mob/living/desired_owner)
@@ -123,10 +138,7 @@
 
 	start_turf = get_turf(owner)
 
-	if(owner.boss)
-		all_boss_ai += src
-	else
-		all_living_ai += src
+	return ..()
 
 /ai/proc/set_path(var/list/Vector3D/desired_path = list())
 
@@ -138,7 +150,8 @@
 		frustration_path = 0
 		return TRUE
 
-	enabled = TRUE
+	set_active(TRUE)
+
 	path_steps = 1
 	current_path = desired_path
 	frustration_path = 0
@@ -150,9 +163,17 @@
 	return TRUE
 
 
+/ai/PostInitialize()
+	. = ..()
+	if(owner.boss)
+		all_boss_ai += src
+	else
+		set_active(active,TRUE)
+	return .
+
 /ai/proc/should_life()
 
-	if(!enabled)
+	if(!active)
 		return FALSE
 
 	if(!owner)
@@ -238,7 +259,7 @@
 	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
-	enabled = TRUE
+	set_active(TRUE)
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	return TRUE
@@ -442,7 +463,7 @@
 	if(A && A.qdeleting)
 		return FALSE
 
-	enabled = TRUE
+	set_active(TRUE)
 
 	var/atom/old_attack = objective_attack
 
@@ -608,9 +629,6 @@
 	else
 		. = list()
 
-	if(radius_find_enemy <= 0)
-		return .
-
 	var/range_to_use = radius_find_enemy
 	switch(alert_level)
 		if(ALERT_LEVEL_NOISE)
@@ -619,6 +637,9 @@
 			range_to_use = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			range_to_use = radius_find_enemy_combat
+
+	if(range_to_use <= 0)
+		return .
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
@@ -668,14 +689,15 @@
 
 /ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
-	if(is_living(obstacle))
-		var/mob/living/L = obstacle
-		set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
-		if(trigger_other_bump && L.ai)
-			L.ai.Bump(owner,FALSE)
+	if(obstacle)
+		if(is_living(obstacle))
+			var/mob/living/L = obstacle
+			set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
+			if(trigger_other_bump && L.ai)
+				L.ai.Bump(owner,FALSE)
 
-	if(attack_on_block)
-		spawn do_attack(obstacle,prob(left_click_chance))
+		if(attack_on_block)
+			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE
 
@@ -716,11 +738,10 @@
 	else
 		alert_level = max(desired_alert_level,alert_level)
 
-	enabled = TRUE
-
 	owner.move_dir = 0
 
 	if(old_alert_level != alert_level)
+		set_active(TRUE)
 		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
 			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)

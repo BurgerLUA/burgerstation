@@ -13,4 +13,4 @@
 
 	footstep = /footstep/asteroid
 
-	delay_modifier = 1.1
+	delay_modifier = 1

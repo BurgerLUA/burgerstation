@@ -35,6 +35,8 @@
 
 	value = 60
 
+	inaccuracy_modifer = 1
+
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()
 	return 0.1
 

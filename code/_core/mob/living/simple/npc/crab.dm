@@ -108,6 +108,8 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
+	movement_delay = DECISECONDS_TO_TICKS(3)
+
 
 /mob/living/simple/npc/crab/king/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 

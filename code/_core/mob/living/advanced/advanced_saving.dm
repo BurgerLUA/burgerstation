@@ -64,7 +64,10 @@
 		else
 			var/obj/structure/interactive/bed/sleeper/C = length(cryo_spawnpoints) ? pick(cryo_spawnpoints) : pick(backup_spawnpoints)
 			force_move(get_turf(C))
+			C.door_state = SLEEPER_OPENED
 			C.buckle(src,silent=TRUE)
+			C.door_state = SLEEPER_CLOSED
+			C.update_icon()
 
 	if(update_blends)
 		update_all_blends()
@@ -89,7 +92,11 @@
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[id]
-		final_organ_list[id] = O.save_item_data(save_inventory)
+		try
+			final_organ_list[id] = O.save_item_data(save_inventory)
+		catch(var/exception/e)
+			log_error("get_mob_data: [e] on [e.file]:[e.line]!")
+
 	.["organs"] = final_organ_list
 
 	//Skills

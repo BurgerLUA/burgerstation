@@ -20,6 +20,7 @@
 /turf/simulated/floor/wood/boat/starting
 	color = "#724C34"
 
-
-
 //C67843 good color
+
+/turf/simulated/floor/wood/magic
+	color = "#458CBA"

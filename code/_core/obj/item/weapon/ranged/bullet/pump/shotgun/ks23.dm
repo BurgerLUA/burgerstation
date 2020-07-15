@@ -5,6 +5,10 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/ks23.dmi'
 	icon_state = "inventory"
 
+	can_wield = TRUE
+
+	dan_mode = TRUE
+
 	shoot_delay = 3
 
 	automatic = FALSE

@@ -143,14 +143,17 @@
 		stored_reagents_temperature[r_id] = average_temperature
 		if(R.heated_reagent && R.heated_reagent_temp < average_temperature)
 			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
-			add_reagent(R.heated_reagent,remove_reagent(r_id,CEILING(min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume),REAGENT_ROUNDING)))
+			var/amount_to_remove = CEILING(min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume),REAGENT_ROUNDING)
+			add_reagent(R.heated_reagent,remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE),should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
 		else if(R.cooled_reagent && R.cooled_reagent_temp > average_temperature)
 			var/temperature_cool_mod = (R.cooled_reagent_temp/max(0.1,average_temperature)) ** 2
-			add_reagent(R.cooled_reagent,remove_reagent(r_id,CEILING(min(R.cooled_reagent_amount + (volume * R.cooled_reagent_mul * temperature_cool_mod),volume),REAGENT_ROUNDING)))
+			var/amount_to_remove = CEILING(min(R.cooled_reagent_amount + (volume * R.cooled_reagent_mul * temperature_cool_mod),volume),REAGENT_ROUNDING)
+			add_reagent(R.cooled_reagent,remove_reagent(r_id,amount_to_remove,should_update = FALSE, check_recipes = FALSE),should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
 
 	if(.)
+		update_container()
 		return TRUE
 
 	process_recipes() //Don't worry, this is only called when there was a temperature change and nothing else.

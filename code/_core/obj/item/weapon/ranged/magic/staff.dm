@@ -128,3 +128,27 @@
 
 	shoot_sounds = list('sound/weapons/magic/teleport_out.ogg')
 
+/obj/item/weapon/ranged/magic/staff/blackflame
+	name = "Staff of the Blackflame"
+	desc = "Draw unholy power to cast a flame that burns black!"
+	desc_extended = "You can also use it to reheat soup in a pinch."
+	cost_charge = 50
+	total_charge = 2000
+
+	projectile_speed = 15
+	bullet_count = 1
+	shoot_delay = 4
+
+	can_wield = TRUE
+
+	dan_mode = TRUE
+
+	icon = 'icons/obj/item/weapons/ranged/magic/blackflame.dmi'
+
+	projectile = /obj/projectile/magic/blackflame
+	ranged_damage_type = /damagetype/ranged/magic/blackflame
+
+	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
+
+	value = 1400
+

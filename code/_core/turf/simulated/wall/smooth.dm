@@ -10,3 +10,6 @@
 	name = "office wall"
 	color = "#DED4C8"
 
+/turf/simulated/wall/plastic/wizard
+	name = "wizard wall"
+	color = "#8034B2"

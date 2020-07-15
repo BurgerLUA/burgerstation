@@ -20,14 +20,17 @@
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
+		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/head/hood/skimask/black,
 		/obj/item/clothing/mask/gas/poly/security,
 		/obj/item/clothing/head/helmet/polymorphic/security,
+		/obj/item/clothing/overwear/armor/medium_armor/security,
+		/obj/item/clothing/overwear/armor/molded_armor/security,
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
-		/obj/item/clothing/overwear/armor/plate_carrier/pocket/black,
 		/obj/item/armor_plate/light,
 		/obj/item/armor_plate/medium,
-		/obj/item/armor_plate/heavy
+		/obj/item/armor_plate/heavy,
+		/obj/item/weapon/melee/energy/sword/grazer,
 	)
 
 /obj/structure/interactive/vending/security/gundrobe
@@ -58,5 +61,11 @@
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/bullet_cartridge/shotgun_12/buckshot,
 		/obj/item/bullet_cartridge/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/fire
+		/obj/item/bullet_cartridge/shotgun_12/fire,
+		/obj/item/weapon/ranged/energy/hybrid/carbine,
+		/obj/item/weapon/ranged/energy/rifle,
+		/obj/item/weapon/ranged/energy/rifle/hardlight,
+		/obj/item/weapon/ranged/energy/rifle/xray,
+		/obj/item/weapon/ranged/energy/freezegun,
+		/obj/item/powercell/advanced
 	)

@@ -9,6 +9,9 @@
 		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,text_type)
 
+/proc/handle_radio()
+
+
 proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
 
 	if(!text_to_say)
@@ -21,19 +24,24 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 	var/turf/source_turf = get_turf(source)
 
 	switch(text_type)
-		if(TEXT_RADIO) //People talking into radios.
+		if(TEXT_RADIO) //People talking into radios with the ; key.
+			var/list/sent_frequencies = list()
 			for(var/obj/item/device/radio/R in all_radios)
 				CHECK_TICK
+				var/desired_frequency = frequency
+				if(desired_frequency == -1)
+					desired_frequency = R.frequency
+				if(length(sent_frequencies) && sent_frequencies[desired_frequency])
+					continue
 				if(get_turf(R) != source_turf)
 					continue
-				if(frequency == -1)
-					frequency = R.frequency
-				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
+				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,desired_frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
-				R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = frequency))
-				//speaker.visible_message("\The [speaker.name] talks into \the [R.name].","You talk into \the [R.name].")
+				R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
+				sent_frequencies[desired_frequency] = TRUE
+				if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_debug_name()]([desired_frequency]): [text_to_say]")
 				break
-			if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_debug_name()]([frequency]): [text_to_say]")
+
 
 		if(TEXT_RAW) //People talking out of radios, pretty much.
 			for(var/mob/M in all_mobs_with_clients)
@@ -53,7 +61,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					CHECK_TICK
 					if(within_range(M,source,WHISPER_RANGE))
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
-
+				var/list/sent_frequencies = list()
 				for(var/obj/item/device/radio/R in all_radios)
 					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
@@ -64,6 +72,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = text_to_say, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
+					sent_frequencies[desired_frequency] = TRUE
+					if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_debug_name()]([desired_frequency]): [text_to_say]")
 				if(speaker.is_player_controlled()) LOG_CHAT("WHISPER: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_TALK)
@@ -79,6 +89,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					if(within_range(M,source,TALK_RANGE))
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
+				var/list/sent_frequencies = list()
 				for(var/obj/item/device/radio/R in all_radios)
 					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
@@ -86,9 +97,13 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					var/desired_frequency = frequency
 					if(!desired_frequency)
 						desired_frequency = R.frequency
+					if(length(sent_frequencies) && sent_frequencies[desired_frequency])
+						continue
 					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
+					sent_frequencies[desired_frequency] = TRUE
+					if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_debug_name()]([desired_frequency]): [text_to_say]")
 			if(speaker.is_player_controlled()) LOG_CHAT("TALK: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_YELL)
@@ -104,6 +119,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					if(within_range(M,source,YELL_RANGE))
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
+				var/list/sent_frequencies = list()
 				for(var/obj/item/device/radio/R in all_radios)
 					CHECK_TICK
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
@@ -111,9 +127,13 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 					var/desired_frequency = frequency
 					if(!desired_frequency)
 						desired_frequency = R.frequency
+					if(length(sent_frequencies) && sent_frequencies[desired_frequency])
+						continue
 					formatted_speech = format_speech(speaker,source,text_to_say,TEXT_RADIO,desired_frequency,language)
 					formatted_speech_language = format_speech(speaker,source,text_to_say_language,TEXT_RADIO,desired_frequency,language)
 					R.send_data(list("speaker" = speaker, "source" = source, "message" = formatted_speech, "language" = language, "message_language" = formatted_speech_language, "frequency" = desired_frequency))
+					sent_frequencies[desired_frequency] = TRUE
+					if(speaker.is_player_controlled()) LOG_CHAT("RADIO: [speaker.get_debug_name()]([desired_frequency]): [text_to_say]")
 			if(speaker.is_player_controlled()) LOG_CHAT("YELL: [speaker.get_debug_name()]: [text_to_say]")
 
 		if(TEXT_LOOC)

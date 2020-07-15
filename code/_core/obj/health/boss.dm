@@ -38,7 +38,6 @@
 
 	if(!target_boss || !target_boss.health)
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
-		mouse_opacity = 0
 		if(current_boss_music && owner)
 			var/client/C = owner.client
 			if(C)
@@ -46,7 +45,6 @@
 		return FALSE
 	else
 		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
-		mouse_opacity = 2
 		if(target_boss.boss_music && owner)
 			var/client/C = owner.client
 			if(C && C.current_music_track != target_boss.boss_music)

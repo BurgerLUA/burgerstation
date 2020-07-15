@@ -32,11 +32,17 @@
 		icon_state = "[initial(icon_state)]_on"
 		icon_state_held_left = "[initial(icon_state_held_left)]_on"
 		icon_state_held_right = "[initial(icon_state_held_right)]_on"
+		dan_icon_state = "[initial(dan_icon_state)]_on"
+		dan_icon_state_wielded = "[initial(dan_icon_state_wielded)]_on"
+		dan_icon_state_back = "[initial(dan_icon_state_back)]_on"
 		damage_type = damage_type_on
 	else
 		icon_state = initial(icon_state)
 		icon_state_held_left = initial(icon_state_held_left)
 		icon_state_held_right = initial(icon_state_held_right)
+		dan_icon_state = initial(dan_icon_state)
+		dan_icon_state_wielded = initial(dan_icon_state_wielded)
+		dan_icon_state_back = initial(dan_icon_state_back)
 		damage_type = initial(damage_type)
 
 	update_held_icon()
@@ -124,7 +130,7 @@
 
 
 
-/obj/item/weapon/melee/energy/enchanted/plightbringer
+/obj/item/weapon/melee/energy/plightbringer
 	name = "Plightbringer"
 	desc = "A large black steel straightsword with a decorated hilt."
 	desc_extended = "A large decorated black steel straightsword. While black steel holds sorceries and magical infusions better than most metals, it is difficult to retain its sharpness. Because of this, Battlemages are the most common to use weapons made with the metal."
@@ -139,7 +145,7 @@
 	damage_type = /damagetype/melee/sword/plightbringer
 	damage_type_on = /damagetype/melee/sword/plightbringer/on
 
-/obj/item/weapon/melee/energy/enchanted/plightbringer/click_self(var/atom/caller)
+/obj/item/weapon/melee/energy/plightbringer/click_self(var/atom/caller)
 	. = ..()
 	if(enabled)
 		play('sound/weapons/magic/ash.ogg',src)

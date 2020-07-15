@@ -35,6 +35,10 @@
 	if(!params)
 		params = list()
 
+	if(!victim)
+		CRASH_SAFE("Warning! [attacker.get_debug_name()] tried attacking a null victim!")
+		return FALSE
+
 	victim = victim.change_victim(attacker)
 
 	if(attacker && victim && attacker != victim && !ignore_distance)

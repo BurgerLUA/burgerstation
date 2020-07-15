@@ -1,8 +1,8 @@
 /obj/item/weapon/ranged/energy/rifle
-	name = "laser rifle"
+	name = "AER13 Laser Rifle"
 	desc = "Pew pew pew!"
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
-	icon = 'icons/obj/item/weapons/ranged/modular_laser.dmi'
+	icon = 'icons/obj/item/weapons/ranged/laser/modular.dmi'
 
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/rifle
@@ -10,7 +10,7 @@
 	bullet_color = "#FF0000"
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = TRUE
 
@@ -21,12 +21,12 @@
 	charge_current = CELL_SIZE_ADVANCED
 	charge_cost = CELL_SIZE_ADVANCED / 40
 
-	view_punch = 6
+	view_punch = 16
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
 	heat_per_shot = 0.06
-	heat_max = 0.2
+	heat_max = 0.1
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
@@ -36,13 +36,13 @@
 	size = SIZE_4
 
 
-	value = 1200
+	value = 900
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
-	return 0.01
+	return 0.001
 
 /obj/item/weapon/ranged/energy/rifle/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.02 - (0.3 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
@@ -50,13 +50,21 @@
 	return .
 
 /obj/item/weapon/ranged/energy/rifle/update_overlays()
-	var/image/I = new/image(initial(icon),"ammo[FLOOR((charge_current/charge_max) * 7, 1)]")
+
+	var/true_charge = FLOOR(charge_current/charge_cost, 1) / FLOOR(charge_max/charge_cost, 1)
+
+	var/image/I = new/image(initial(icon),"ammo_[CEILING(true_charge * 8, 1)]")
 	I.color = polymorphs["barrel"]
 	add_overlay(I)
 	return ..()
 
+/obj/item/weapon/ranged/energy/rifle/update_sprite()
+	. = ..()
+	bullet_color = polymorphs["barrel"]
+	return .
+
 /obj/item/weapon/ranged/energy/rifle/hardlight
-	name = "hardlight laser rifle"
+	name = "AER13b Hardlight Rifle"
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a hardlight beam that pierces through people."
 	ranged_damage_type = /damagetype/ranged/laser/rifle/hardlight
 
@@ -65,15 +73,17 @@
 
 	charge_cost = 2000
 
-	view_punch = 8
+	view_punch = 20
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"barrel" = "#FFFF00"
 	)
 
+	value = 1100
+
 /obj/item/weapon/ranged/energy/rifle/xray
-	name = "xray laser rifle"
+	name = "AER13c X-Ray Rifle"
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor."
 	ranged_damage_type = /damagetype/ranged/laser/rifle/xray
 
@@ -82,9 +92,11 @@
 
 	charge_cost = 2000
 
-	view_punch = 8
+	view_punch = 24
 
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"barrel" = "#00FF00"
 	)
+
+	value = 1500

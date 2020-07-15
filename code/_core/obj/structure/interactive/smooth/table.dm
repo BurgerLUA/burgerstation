@@ -111,6 +111,8 @@ obj/structure/smooth/table/wood/poor
 	name = "wood table"
 	color = "#6B4E3A"
 
+obj/structure/smooth/table/wood/magic
+	color = "#B5004E"
 
 obj/structure/smooth/table/reinforced
 	name = "reinforced table"

@@ -1,8 +1,8 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 #define ENABLE_STOPLAG TRUE
 #define MOVEMENT_DELAY_MOD 0.75 //Lower values means faster.
-#define ENABLE_DAMAGE_NUMBERS FALSE
+#define ENABLE_DAMAGE_NUMBERS TRUE
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
@@ -40,7 +40,7 @@
 #define RADIO_TALK_RANGE 4
 #define RADIO_YELL_RANGE 8
 
-#define BOSS_RANGE VIEW_RANGE*2 //If you're out of this range, you're out of the boss fight.
+#define BOSS_RANGE VIEW_RANGE + ZOOM_RANGE*2 //If you're out of this range, you're out of the boss fight.
 
 #define MAX_MESSAGE_LEN 512
 #define MAX_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
@@ -60,7 +60,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 #define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD TRUE
-#define ENABLE_LIGHTING FALSE
+#define ENABLE_LIGHTING TRUE
 #define ENABLE_TURFGEN TRUE
 
 #define ENABLE_HIJACK FALSE
@@ -122,7 +122,7 @@
 
 #define CONSUME_AMOUNT_MAX 30
 
-#define HEALTH_REGEN_BUFFER_MAX 10
+#define HEALTH_REGEN_BUFFER_MAX 3
 #define HEALTH_REGEN_BUFFER_MIN -10
 
 #define STAMINA_REGEN_BUFFER_MAX 10

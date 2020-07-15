@@ -18,8 +18,8 @@
 	var/overtime_count = 0
 	var/overtime_max = 10
 
-	var/last_usage_cpu = 0
-	var/last_usage_tick = 0
+	var/last_run_duration = 0
+	var/total_run_duration = 0
 
 /subsystem/New(var/desired_loc)
 	tick_rate = FLOOR(tick_rate,1)
@@ -31,16 +31,15 @@
 
 //When this subsystem runs for the first time.
 //subsystem/Initialize()
+//	return ..()
 
-
-//When this subsystem runs. Returning true means that it will run again, false means it will never run again.
+//When this subsystem runs.
 /subsystem/proc/on_life()
 	return FALSE
 
 //When the old subsystem hangs and we gotta replace it with a new one.
 /subsystem/proc/Recover()
-
-
+	return TRUE
 
 /subsystem/proc/on_shutdown()
 	return TRUE

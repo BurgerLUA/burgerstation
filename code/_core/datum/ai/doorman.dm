@@ -11,8 +11,6 @@
 	aggression = 0
 	retaliate = TRUE
 
-	enabled = TRUE
-
 /ai/doorman/should_attack_mob(var/mob/living/L,var/do_aggression_check = TRUE)
 
 	if(L == owner)

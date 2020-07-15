@@ -7,10 +7,10 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 25,
-		MAGIC = -100,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 50,
+		MAGIC = -75,
 		HEAT = 25,
 		COLD = 25,
 		BOMB = 50,
@@ -23,6 +23,6 @@
 
 	additional_clothing = list()
 
-	slowdown_mul_worn = 1
+	slowdown_mul_worn = 1.05
 
-	value = 1200
+	value = 1700

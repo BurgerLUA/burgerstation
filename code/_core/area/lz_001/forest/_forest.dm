@@ -12,7 +12,6 @@
 
 /area/lz_001/forest/village/interior
 	sunlight_freq = 0
-	roof = TRUE
 
 /area/lz_001/forest/village/interior/bar
 	name = "Bar"

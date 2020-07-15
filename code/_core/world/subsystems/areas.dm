@@ -17,9 +17,6 @@ SUBSYSTEM_DEF(area)
 
 /subsystem/area/Initialize()
 
-	if(!ENABLE_WEATHERGEN)
-		return ..()
-
 	var/area_count = 0
 
 	for(var/area/A in world)
@@ -27,7 +24,7 @@ SUBSYSTEM_DEF(area)
 		area_count += 1
 		if(length(A.random_sounds))
 			areas_ambient += A
-		if(A.weather)
+		if(ENABLE_WEATHERGEN && A.weather)
 			A.invisibility = 0
 			A.alpha = 0
 			switch(A.weather)
@@ -50,10 +47,11 @@ SUBSYSTEM_DEF(area)
 
 	log_subsystem(name,"Initialized [area_count] total areas.")
 
-	set_weather(WEATHER_RAIN,is_raining,areas_rain)
-	set_weather(WEATHER_SNOW,is_snowing,areas_snow)
-	set_weather(WEATHER_SANDSTORM,is_sandstorming,areas_sandstorm)
-	set_weather(WEATHER_VOLCANIC,is_volcanic,areas_volcanic)
+	if(ENABLE_WEATHERGEN)
+		set_weather(WEATHER_RAIN,is_raining,areas_rain)
+		set_weather(WEATHER_SNOW,is_snowing,areas_snow)
+		set_weather(WEATHER_SANDSTORM,is_sandstorming,areas_sandstorm)
+		set_weather(WEATHER_VOLCANIC,is_volcanic,areas_volcanic)
 
 	return ..()
 

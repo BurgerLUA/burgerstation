@@ -112,7 +112,7 @@
 	projectile = /obj/projectile/bullet/firearm/pistol
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
 
-	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+	projectile_speed = 32 - 1 //fast as fuck booooooooooi
 
 	size = 0.01
 	value = 0.4
