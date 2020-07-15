@@ -38,7 +38,7 @@
 
 	L.set_attribute_level(chosen_attribute,chosen_value)
 
-	L << "Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."
+	to_chat("Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)].")
 
 
 /client/verb/set_skill(var/mob/mob as mob)
@@ -69,7 +69,7 @@
 
 	L.set_skill_level(chosen_skill,chosen_value)
 
-	L << "Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."
+	to_chat("Your [chosen_skill] is now [L.get_skill_level(chosen_skill)].")
 
 
 /client/verb/rtv()

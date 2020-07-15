@@ -8,7 +8,9 @@
 
 	liquid = 0.5
 
-	hydration_amount = 3
+	hydration_amount = 8
+
+	value = 0.2
 
 /reagent/nutrition/soda
 	name = "carbonated water"
@@ -16,7 +18,7 @@
 	color = "#DDFFFF"
 
 	nutrition_amount = 0.1
-	hydration_amount = 1
+	hydration_amount = 5
 
 	flavor = "white noise"
 

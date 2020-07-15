@@ -57,17 +57,22 @@
 	var/initial_icon = initial(icon)
 
 	var/mob/living/L = owner
-	var/visual_hunger_mod = clamp(L.nutrition/(initial(L.nutrition)*0.75),0,1)
-	var/visual_thirst_mod = clamp(L.hydration/(initial(L.hydration)*0.75),0,1)
+	var/visual_hunger_mod = L.nutrition/(initial(L.nutrition)*0.95)
+	var/visual_thirst_mod = L.hydration/(initial(L.hydration)*0.95)
 	var/hunger_mod = L.get_nutrition_mod()
 	var/thirst_mod = L.get_hydration_mod()
-	var/hunger_icon = FLOOR(visual_hunger_mod * 20,1)
-	var/thirst_icon = FLOOR(visual_thirst_mod * 20,1)
+	var/hunger_icon = FLOOR(clamp(visual_hunger_mod * 20,0,20),1)
+	var/thirst_icon = FLOOR(clamp(visual_thirst_mod * 20,0,20),1)
 
 	var/image/I_hunger = new/image(initial_icon,"hunger_bar_[hunger_icon]")
-	I_hunger.color = hunger_mod >= 1 ? "#00FF00" : blend_colors("#FF0000","#FFFF00",hunger_mod)
-
 	var/image/I_thirst = new/image(initial_icon,"thirst_bar_[thirst_icon]")
+
+
+	if(visual_hunger_mod > 1 && hunger_mod < 1) //Fat
+		I_hunger.color = blend_colors("#000000","#808080",hunger_mod)
+	else
+		I_hunger.color = hunger_mod >= 1 ? "#00FF00" : blend_colors("#FF0000","#FFFF00",hunger_mod)
+
 	I_thirst.color = thirst_mod >= 1 ? "#00FF00" : blend_colors("#FF0000","#FFFF00",thirst_mod)
 
 	add_overlay(I_hunger)

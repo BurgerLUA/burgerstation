@@ -10,7 +10,7 @@
 
 	dyeable = TRUE
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/overwear/armor/medium_armor/security
 	name = "padded stab vest"
@@ -20,9 +20,9 @@
 
 	defense_rating = list(
 		BLADE = 40,
-		PIERCE = 35,
-		MAGIC = -25,
-		COLD = 15
+		BLUNT = 20,
+		PIERCE = 30,
+		MAGIC = -25
 	)
 
 	size = SIZE_4

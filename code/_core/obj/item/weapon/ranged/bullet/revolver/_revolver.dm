@@ -4,6 +4,8 @@
 
 	var/can_shoot_while_open = FALSE
 
+	inaccuracy_modifer = 0.5
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)

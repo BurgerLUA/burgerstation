@@ -1016,7 +1016,6 @@
 #include "code\_core\obj\item\material\sheet.dm"
 #include "code\_core\obj\item\material\trash_cube.dm"
 #include "code\_core\obj\item\material\wood.dm"
-#include "code\_core\obj\item\modular_armor\_modular_armor.dm"
 #include "code\_core\obj\item\organs\_organs.dm"
 #include "code\_core\obj\item\organs\arms.dm"
 #include "code\_core\obj\item\organs\ears.dm"

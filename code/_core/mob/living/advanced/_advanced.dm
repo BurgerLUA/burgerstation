@@ -34,10 +34,6 @@
 
 	var/obj/hud/inventory/active_inventory
 
-	var/health_regen_delay = 0
-	var/stamina_regen_delay = 0
-	var/mana_regen_delay = 0
-
 	var/mob/living/vehicle/driving
 
 	var/quick_mode = null

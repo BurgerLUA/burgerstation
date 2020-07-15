@@ -29,7 +29,15 @@
 
 	var/first_life = TRUE
 
-	var/health_regen_buffer = 0
+	var/brute_regen_buffer = 0
+	var/burn_regen_buffer = 0
+	var/tox_regen_buffer = 0
+
+	var/health_regen_delay = 0
+	var/stamina_regen_delay = 0
+	var/mana_regen_delay = 0
+	//Oxy not present as that is controlled via an organ.
+
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0
 

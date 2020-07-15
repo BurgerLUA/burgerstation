@@ -191,6 +191,12 @@
 /health/proc/get_loss(var/damage_type)
 	return damage[damage_type]
 
+/health/proc/get_stamina_loss()
+	return stamina_max - stamina_current
+
+/health/proc/get_mana_loss()
+	return mana_max - mana_current
+
 /health/proc/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE) //Update the health values.
 	health_current = get_overall_health()
 	return TRUE

@@ -8,7 +8,7 @@
 
 	dyeable = TRUE
 
-	slowdown_mul_worn = 1.2
+	slowdown_mul_worn = 1.1
 
 /obj/item/clothing/overwear/armor/molded_armor/security
 	name = "kevlar vest"
@@ -17,10 +17,9 @@
 	color = COLOR_BLACK
 
 	defense_rating = list(
-		BLUNT = 50,
+		BLUNT = 65,
 		PIERCE = 25,
-		MAGIC = -50,
-		COLD = 15
+		MAGIC = -25
 	)
 
 	size = SIZE_3

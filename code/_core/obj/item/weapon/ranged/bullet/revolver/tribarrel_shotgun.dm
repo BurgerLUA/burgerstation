@@ -37,6 +37,8 @@
 
 	open = TRUE
 
+	inaccuracy_modifer = 1
+
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_base_spread()
 	return 0.05
 

@@ -86,7 +86,6 @@
 	attack_flags = 0x0
 	dead = FALSE
 	plane = initial(plane)
-	remove_all_status_effects()
 	if(health)
 		health.update_health()
 	if(ai)
@@ -97,7 +96,7 @@
 
 /mob/living/proc/resurrect()
 	if(health)
-		health.adjust_loss_smart(-1000,-1000,-1000,-1000)
+		health.adjust_loss_smart(-health.get_brute_loss(),-health.get_burn_loss(),-health.get_tox_loss(),-health.get_oxy_loss())
 	revive()
 	return TRUE
 
@@ -156,6 +155,8 @@
 
 	handle_status_effects()
 
+	handle_health_buffer()
+
 	update_alpha(handle_alpha())
 
 	return TRUE
@@ -208,12 +209,12 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
+	handle_regen()
+
 	if(reagents)
 		reagents.metabolize()
 
 	handle_charges(LIFE_TICK_SLOW)
-
-	handle_health_buffer()
 
 	handle_hunger()
 
@@ -232,31 +233,100 @@ mob/living/proc/on_life_slow()
 	return base_alpha
 
 
+/mob/living/proc/can_buffer_health()
+	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer) && health_regen_delay <= 0
+
+/mob/living/proc/can_buffer_stamina()
+	return stamina_regen_buffer && (stamina_regen_delay <= 0 || (horizontal && move_delay <= 0))
+
+/mob/living/proc/can_buffer_mana()
+	return mana_regen_buffer && mana_regen_delay <= 0
+
 /mob/living/proc/handle_health_buffer()
 
-	if(health)
+	if(!health)
+		return FALSE
 
-		var/update_health = FALSE
-		var/update_stamina = FALSE
-		var/update_mana = FALSE
+	var/update_health = FALSE
+	var/update_stamina = FALSE
+	var/update_mana = FALSE
 
-		if(stamina_regen_buffer)
-			var/stamina_to_regen = clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
-			health.adjust_stamina(stamina_to_regen)
-			stamina_regen_buffer -= stamina_to_regen
+	if(can_buffer_health())
+		var/brute_to_regen = clamp(brute_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		var/burn_to_regen = clamp(burn_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		var/tox_to_regen = clamp(tox_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
+		health.adjust_loss_smart(brute = -brute_to_regen, burn = -burn_to_regen, tox=-tox_to_regen)
+		brute_regen_buffer -= brute_to_regen
+		burn_regen_buffer -= burn_to_regen
+		tox_regen_buffer -= tox_to_regen
+		health.update_health(-brute_to_regen + -burn_to_regen + -tox_to_regen,FALSE)
+		update_health = TRUE
 
-		if(mana_regen_buffer)
-			var/mana_to_regen = clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
-			health.adjust_mana(mana_to_regen)
-			mana_regen_buffer -= mana_to_regen
+	if(can_buffer_stamina())
+		var/stamina_to_regen = clamp(stamina_regen_buffer,STAMINA_REGEN_BUFFER_MIN,STAMINA_REGEN_BUFFER_MAX)
+		health.adjust_stamina(stamina_to_regen)
+		stamina_regen_buffer -= stamina_to_regen
+		update_stamina = TRUE
 
-		if(health_regen_buffer)
-			var/health_to_regen = clamp(health_regen_buffer,HEALTH_REGEN_BUFFER_MIN,HEALTH_REGEN_BUFFER_MAX)
-			health.adjust_loss_smart(brute = health_to_regen*0.25, burn = health_to_regen*0.25, tox = health_to_regen*0.25, oxy = health_to_regen*0.25)
-			health_to_regen -= health_to_regen
-			health.update_health(health_regen_buffer,FALSE)
+	if(can_buffer_mana())
+		var/mana_to_regen = clamp(mana_regen_buffer,MANA_REGEN_BUFFER_MIN,MANA_REGEN_BUFFER_MAX)
+		health.adjust_mana(mana_to_regen)
+		mana_regen_buffer -= mana_to_regen
+		update_mana = TRUE
 
-		if(update_health || update_stamina || update_mana)
-			update_health_element_icons(update_health,update_stamina,update_mana,TRUE)
+	if(update_health || update_stamina || update_mana)
+		update_health_element_icons(update_health,update_stamina,update_mana,TRUE)
+		return TRUE
+
+	return FALSE
+
+/mob/living/proc/handle_regen()
+
+	if(!health)
+		return FALSE
+
+	var/delay_mod = LIFE_TICK_SLOW
+
+	var/health_adjust = 0
+	var/mana_adjust = 0
+	var/stamina_adjust = 0
+
+	health_regen_delay = max(0,health_regen_delay - delay_mod)
+	stamina_regen_delay = max(0,stamina_regen_delay - delay_mod)
+	mana_regen_delay = max(0,mana_regen_delay - delay_mod)
+
+	var/nutrition_hydration_mod = get_nutrition_mod() * get_hydration_mod()
+	var/player_controlled = is_player_controlled()
+
+	if(health_regen_delay <= 0)
+		var/health_mod = health.health_regeneration * delay_mod * nutrition_hydration_mod * 0.1
+		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
+		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
+		health_adjust += brute_to_adjust + burn_to_adjust
+		if(health_adjust)
+			brute_regen_buffer += brute_to_adjust
+			burn_regen_buffer += burn_to_adjust
+			add_nutrition(-health_adjust*0.2)
+			if(health_adjust > 0 && player_controlled)
+				add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
+
+	if(stamina_regen_delay <= 0)
+		stamina_adjust += min(max(0,health.get_stamina_loss() - stamina_regen_buffer),health.stamina_regeneration*delay_mod*nutrition_hydration_mod*0.1)
+		if(stamina_adjust)
+			stamina_regen_buffer += stamina_adjust
+			add_nutrition(-stamina_adjust*0.05)
+			add_hydration(-stamina_adjust*0.1)
+			if(stamina_adjust > 0 && player_controlled)
+				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust*10)
+
+	if(mana_regen_delay <= 0)
+		mana_adjust = min(max(0,health.get_mana_loss() - mana_regen_buffer),health.mana_regeneration*delay_mod*nutrition_hydration_mod*0.1*(1 + (health.mana_current/health.mana_max)*3)) //The 0.1 converts from seconds to deciseconds.
+		if(mana_adjust)
+			mana_regen_buffer += mana_adjust
+			if(mana_adjust > 0 && player_controlled)
+				add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust*10)
+
+	if(health_adjust || stamina_adjust || mana_adjust)
+		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust,TRUE)
 
 	return TRUE
