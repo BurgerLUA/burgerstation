@@ -3,7 +3,7 @@
 	desc = "Shoot plasma crystals at a rapid rate."
 	desc_extended = "Costs mana to use."
 	cost_mana = 10
-	shoot_delay = 1
+	shoot_delay = 1.25
 
 	automatic = TRUE
 

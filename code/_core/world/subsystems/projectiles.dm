@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(projectile)
 /subsystem/projectile/on_life()
 
 	for(var/obj/projectile/P in all_projectiles)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		P.update_projectile()
 
 	return TRUE

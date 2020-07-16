@@ -137,7 +137,7 @@ list(
 	for(var/mob/M in range(broadcasting_range,T))
 		if(!M.client)
 			continue
-		CHECK_TICK
+		CHECK_TICK(75)
 		M.to_chat_language(data["message"],CHAT_TYPE_RADIO,data["language"],data["message_language"])
 
 	return TRUE

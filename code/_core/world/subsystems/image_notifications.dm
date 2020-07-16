@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(image_notifications)
 
 /subsystem/image_notifications/on_life()
 	for(var/var/obj/hud/screen/S in all_notifications)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		if(S.time <= SECONDS_TO_DECISECONDS(2) && !S.is_fading && S.fade_out)
 			S.is_fading = TRUE
 			animate(S,time=SECONDS_TO_DECISECONDS(2),alpha = 0,easing=LINEAR_EASING)

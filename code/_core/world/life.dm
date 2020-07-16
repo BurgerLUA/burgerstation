@@ -36,11 +36,11 @@
 		spawn
 			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
 				if(SS.overtime_count < SS.overtime_max)
-					if(world.cpu > SS.cpu_usage_max)
+					if(SS.cpu_usage_max > 0 && world.cpu > SS.cpu_usage_max)
 						SS.overtime_count++
 						sleep(TICK_LAG)
 						continue
-					if(world.tick_usage > SS.tick_usage_max)
+					if(SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 						SS.overtime_count++
 						sleep(TICK_LAG)
 						continue

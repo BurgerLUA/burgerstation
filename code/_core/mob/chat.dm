@@ -147,3 +147,10 @@
 	E.on_emote(src,target)
 
 	return TRUE
+
+/mob/living/do_emote(var/emote_text,var/atom/target)
+
+	if(dead)
+		return FALSE
+
+	return ..()

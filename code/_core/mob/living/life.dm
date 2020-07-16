@@ -285,6 +285,9 @@ mob/living/proc/on_life_slow()
 	if(!health)
 		return FALSE
 
+	if(health.health_regeneration <= 0 && health.stamina_regeneration <= 0 && health.mana_regeneration <= 0)
+		return FALSE
+
 	var/delay_mod = LIFE_TICK_SLOW
 
 	var/health_adjust = 0
@@ -298,7 +301,7 @@ mob/living/proc/on_life_slow()
 	var/nutrition_hydration_mod = get_nutrition_mod() * get_hydration_mod()
 	var/player_controlled = is_player_controlled()
 
-	if(health_regen_delay <= 0)
+	if(health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = health.health_regeneration * delay_mod * nutrition_hydration_mod * 0.1
 		var/brute_to_adjust = min(max(0,health.get_brute_loss() - brute_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
 		var/burn_to_adjust = min(max(0,health.get_burn_loss() - burn_regen_buffer),health_mod) //The 0.1 converts from seconds to deciseconds.
@@ -310,7 +313,7 @@ mob/living/proc/on_life_slow()
 			if(health_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,health_adjust*10)
 
-	if(stamina_regen_delay <= 0)
+	if(stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
 		stamina_adjust += min(max(0,health.get_stamina_loss() - stamina_regen_buffer),health.stamina_regeneration*delay_mod*nutrition_hydration_mod*0.1)
 		if(stamina_adjust)
 			stamina_regen_buffer += stamina_adjust
@@ -319,7 +322,7 @@ mob/living/proc/on_life_slow()
 			if(stamina_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust*10)
 
-	if(mana_regen_delay <= 0)
+	if(mana_regen_delay <= 0 && health.mana_regeneration > 0)
 		mana_adjust = min(max(0,health.get_mana_loss() - mana_regen_buffer),health.mana_regeneration*delay_mod*nutrition_hydration_mod*0.1*(1 + (health.mana_current/health.mana_max)*3)) //The 0.1 converts from seconds to deciseconds.
 		if(mana_adjust)
 			mana_regen_buffer += mana_adjust

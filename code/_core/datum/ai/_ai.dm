@@ -642,7 +642,7 @@
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
-			CHECK_TICK
+			CHECK_TICK(75)
 			if(!can_detect(L))
 				continue
 			.[L] = TRUE

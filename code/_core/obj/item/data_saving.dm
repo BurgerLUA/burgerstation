@@ -96,7 +96,7 @@
 		.["inventories"] = new/list(length(inventories))
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/hud/inventory/IN = inventories[i]
-			.["inventories"][i] = IN.get_inventory_data()
+			.["inventories"][i] = IN.get_inventory_data(save_inventory)
 	if(soul_bound)
 		.["soul_bound"] = soul_bound
 	if(item_count_current > 1)
@@ -174,7 +174,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/get_inventory_data() //Getting the inventory and their contents for saving.
+/obj/hud/inventory/proc/get_inventory_data(var/save_inventory=TRUE) //Getting the inventory and their contents for saving.
 
 	. = list()
 	.["type"] = type
@@ -183,11 +183,11 @@
 	if(length(held_objects))
 		.["held"] = new/list(length(held_objects))
 		for(var/i=1,i<=length(held_objects),i++)
-			.["held"][i] = held_objects[i].save_item_data(TRUE)
+			.["held"][i] = held_objects[i].save_item_data(save_inventory)
 
 	if(length(worn_objects))
 		.["worn"] = new/list(length(worn_objects))
 		for(var/i=1,i<=length(worn_objects),i++)
-			.["worn"][i] = worn_objects[i].save_item_data(TRUE)
+			.["worn"][i] = worn_objects[i].save_item_data(save_inventory)
 
 	return .

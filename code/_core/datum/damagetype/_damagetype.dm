@@ -267,7 +267,7 @@
 			defense_rating_attacker = attacker.health.get_defense(attacker,hit_object)
 
 		for(var/damage_type in damage_to_deal)
-			CHECK_TICK
+			CHECK_TICK(75)
 			var/victim_defense = defense_rating_victim[damage_type]
 			if(victim_defense >= INFINITY) //Defense is infinite. No point of doing damage.
 				damage_to_deal[damage_type] = 0
@@ -290,7 +290,7 @@
 			damage_to_deal[FATIGUE] += FLOOR(fatigue_damage,1)
 
 		for(var/damage_type in damage_to_deal)
-			CHECK_TICK
+			CHECK_TICK(75)
 			var/damage_amount = damage_to_deal[damage_type]
 			var/real_damage_type = attack_damage_conversion[damage_type]
 			damage_to_deal_main[real_damage_type] += damage_amount
@@ -300,7 +300,7 @@
 		var/total_damage_dealt = 0
 		if(victim.immortal || hit_object.immortal)
 			for(var/damage_type in damage_to_deal_main)
-				CHECK_TICK
+				CHECK_TICK(75)
 				if(damage_type == FATIGUE)
 					continue
 				total_damage_dealt += damage_to_deal_main[damage_type]
@@ -352,19 +352,19 @@
 							A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 
 					for(var/skill in skill_stats)
-						CHECK_TICK
+						CHECK_TICK(75)
 						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
 
 					for(var/attribute in attribute_stats)
-						CHECK_TICK
+						CHECK_TICK(75)
 						var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 						if(xp_to_give > 0)
 							A.add_attribute_xp(attribute,xp_to_give)
 
 					for(var/skill in bonus_experience)
-						CHECK_TICK
+						CHECK_TICK(75)
 						var/xp_to_give = CEILING(bonus_experience[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)

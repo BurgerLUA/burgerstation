@@ -17,7 +17,7 @@
 
 	if(announcement_type & ANNOUNCEMENT_STATION)
 		for(var/mob/living/L in all_living)
-			CHECK_TICK
+			CHECK_TICK(75)
 			if(!L.client)
 				continue
 			var/area/A = get_area(L)
@@ -25,7 +25,7 @@
 				valid_mobs += L
 
 	for(var/mob/M in valid_mobs)
-		CHECK_TICK
+		CHECK_TICK(75)
 		M.to_chat_language(text_to_announce,CHAT_TYPE_SAY,language,text_to_announce_language)
 
 	if(sound_to_play)

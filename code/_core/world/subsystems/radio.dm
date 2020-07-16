@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(radio)
 		if(!R.receiving)
 			continue
 		for(var/data_key in all_unprocessed_radio_data)
-			CHECK_TICK_ADV(tick_usage_max)
+			CHECK_TICK(tick_usage_max)
 			var/data_value = all_unprocessed_radio_data[data_key]
 			R.receive_data(data_value)
 

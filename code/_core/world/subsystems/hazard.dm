@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(hazard)
 		if(!A.players_inside)
 			continue
 		for(var/mob/living/advanced/player/P in A.players_inside)
-			CHECK_TICK_ADV(tick_usage_max)
+			CHECK_TICK(tick_usage_max)
 			H.process_player_tick(P)
 
 	return TRUE

@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(botany)
 /subsystem/botany/on_life()
 
 	for(var/obj/structure/interactive/plant/P in all_plants)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		P.on_life()
 
 	return TRUE

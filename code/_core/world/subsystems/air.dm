@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(air)
 	var/bad_count = 0
 
 	for(var/turf/simulated/T in world)
-		CHECK_TICK
+		CHECK_TICK(75)
 		if(update_turf_air(T))
 			queued_atmos_updates += T
 			bad_count++
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(air)
 		return FALSE
 
 	for(var/k in queued_atmos_updates)
-		CHECK_TICK
+		CHECK_TICK(75)
 		update_turf_air(k)
 
 	return TRUE

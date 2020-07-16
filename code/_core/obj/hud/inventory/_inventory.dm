@@ -295,6 +295,7 @@
 	if(length(item_to_update.polymorphs))
 		var/icon/I = ICON_INVISIBLE
 		for(var/polymorph_name in item_to_update.polymorphs)
+			CHECK_TICK(75)
 			var/polymorph_color = item_to_update.polymorphs[polymorph_name]
 			if(!("[desired_icon_state]_[polymorph_name]" in states))
 				continue

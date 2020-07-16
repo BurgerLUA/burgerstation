@@ -13,8 +13,7 @@
 
 		queued_chat_messages.Cut(1,2)
 
-	if(mob)
-		mob.on_life_client()
+	if(mob) mob.on_life_client()
 
 	handle_camera()
 

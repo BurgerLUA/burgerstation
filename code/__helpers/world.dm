@@ -3,16 +3,6 @@
 proc/should_static_view()
 	return (VIEW_RANGE >= world.maxx/2 || VIEW_RANGE >= world.maxy/2)
 
-//Stolen from /tg/
-/proc/stoplag(var/limit = TICK_LIMIT)
-	if(!ENABLE_STOPLAG)
-		return FALSE
-	var/stoplag_limit = FPS_SERVER
-	while((world.cpu >= limit || world.tick_usage >= limit) && stoplag_limit > 0)
-		stoplag_limit--
-		sleep(TICK_LAG)
-	return TRUE
-
 proc/get_offset_x(var/atom/atom_a,var/atom/atom_b)
 	return (atom_a.x*TILE_SIZE) - (atom_b.x*TILE_SIZE)
 

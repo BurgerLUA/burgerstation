@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(callback)
 /subsystem/callback/on_life()
 
 	for(var/callback_id in src.all_callbacks)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		var/callback_value = src.all_callbacks[callback_id]
 		if(!length(callback_value))
 			CRASH_SAFE("[callback_id] had an improper callback!")

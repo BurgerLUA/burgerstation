@@ -52,7 +52,7 @@
 	icon_state = "inventory"
 	value = 175
 
-	shoot_delay = 0.75
+	shoot_delay = 1
 	max_bursts = 2
 	view_punch = 5
 

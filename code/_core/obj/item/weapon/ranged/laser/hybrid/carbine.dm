@@ -16,7 +16,7 @@
 	bullet_color = "#FF0000"
 
 	projectile_speed = 31
-	shoot_delay = 1
+	shoot_delay = 1.25
 
 	automatic = TRUE
 	max_bursts = 3

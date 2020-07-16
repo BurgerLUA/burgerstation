@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(area)
 		set_weather(WEATHER_VOLCANIC,is_volcanic,areas_volcanic)
 
 	for(var/area/A in areas_ambient)
-		CHECK_TICK
+		CHECK_TICK(75)
 		var/sound_to_play = pick(A.random_sounds)
 		var/list/valid_players = list()
 		for(var/mob/living/advanced/player/P in A.contents)
@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(area)
 
 /subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/affected_areas)
 	for(var/area/A in affected_areas)
-		CHECK_TICK
+		CHECK_TICK(75)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'
 			A.icon_state = weather_type

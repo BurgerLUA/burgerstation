@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(garbage_tracking)
 /subsystem/garbage_tracking/on_life()
 
 	for(var/ref_id in qdel_refs_to_type)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		var/o_type = qdel_refs_to_type[ref_id]
 		var/datum/found_datum = locate(ref_id)
 		if(found_datum && found_datum.type == o_type && found_datum.qdeleting)

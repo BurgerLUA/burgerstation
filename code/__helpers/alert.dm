@@ -26,7 +26,7 @@
 	list_of_ais.Add(SSbossai.inactive_ai,SSbossai.active_ai,SSai.active_ai,SSai.inactive_ai)
 
 	for(var/ai/AI in list_of_ais)
-		CHECK_TICK
+		CHECK_TICK(75)
 		if(AI.alert_level == ALERT_LEVEL_COMBAT)
 			continue
 		var/mob/M = AI.owner

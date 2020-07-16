@@ -15,6 +15,7 @@
 	var/should_center = length(inventories) <= MAX_INVENTORY_X
 
 	for(var/obj/hud/inventory/I in A.inventory)
+		CHECK_TICK(75)
 		if(I in inventories)
 			continue
 		if(!(I.flags & FLAGS_HUD_CONTAINER))
@@ -28,6 +29,7 @@
 			B.mouse_opacity = 0
 
 	for(var/i=1,i<=length(inventories),i++)
+		CHECK_TICK(75)
 		var/obj/hud/inventory/I = inventories[i]
 		I.update_owner(A)
 

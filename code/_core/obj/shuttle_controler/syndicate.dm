@@ -53,7 +53,7 @@
 				return .
 
 			spawn for(var/i=1,i<=min(5-length(found_syndicate),SShorde.get_enemies_to_spawn()),i++)
-				CHECK_TICK
+				CHECK_TICK(75)
 				var/turf/T = pick(valid_spots)
 				valid_spots -= T
 				var/mob/living/advanced/npc/syndicate/S = new(T)

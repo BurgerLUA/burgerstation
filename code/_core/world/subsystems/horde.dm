@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(horde)
 
 		while(wave_to_spawn > 0)
 			wave_to_spawn--
-			CHECK_TICK_ADV(tick_usage_max)
+			CHECK_TICK(tick_usage_max)
 			var/mob/living/advanced/npc/syndicate/S = new(T)
 			INITIALIZE(S)
 			S.ai.set_path(found_path)
@@ -181,7 +181,7 @@ SUBSYSTEM_DEF(horde)
 	var/picks_remaining = 4
 
 	while(picks_remaining > 0)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		picks_remaining--
 		var/turf/chosen_target = get_turf(pick(possible_horde_targets))
 		if(chosen_target.z != 3)
@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(horde)
 	var/picks_remaining = 4
 
 	while(picks_remaining > 0)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		picks_remaining--
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
 		if(chosen_spawn.z != 3)
@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(horde)
 	LOG_DEBUG("Making [desired_rescue_objectives] rescue objectives.")
 
 	for(var/i=1,i<=desired_spawn_objectives,i++)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
 		possible_objective_spawns -= S
 		var/turf/T = get_turf(S)
@@ -241,7 +241,7 @@ SUBSYSTEM_DEF(horde)
 		tracked_objectives += O
 
 	for(var/i=1,i<=desired_rescue_objectives, i++)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
 		possible_hostage_spawns -= S
 		var/mob/living/advanced/npc/unique/hostage/L = pick(possible_hostage_types)
@@ -260,7 +260,7 @@ SUBSYSTEM_DEF(horde)
 		valid_boss_ids += boss_id
 
 	for(var/i=1, i<=desired_kill_objectives, i++)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		var/chosen_id = pick(valid_boss_ids)
 		valid_boss_ids -= chosen_id
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
@@ -286,7 +286,7 @@ SUBSYSTEM_DEF(horde)
 
 	var/objective_text = ""
 	for(var/atom/A in tracked_objectives)
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		if(isobj(A))
 			var/obj/O = A
 			if(istype(O,/obj/structure/interactive/objective))
@@ -350,7 +350,7 @@ SUBSYSTEM_DEF(horde)
 	. = 0
 
 	for(var/mob/living/L in tracked_enemies) //Every syndicate in an area that you're supposed to defend increases the threat level by 2, except in cases where they've been dead for less than 60 seconds, which reduces it by 1.
-		CHECK_TICK_ADV(tick_usage_max)
+		CHECK_TICK(tick_usage_max)
 		if(L.dead)
 			if(L.time_of_death + 600 >= world.time)
 				. -= 1
@@ -361,8 +361,8 @@ SUBSYSTEM_DEF(horde)
 		. += 2
 
 	for(var/mob/living/advanced/player/P in all_players) //Every living playing defending reduces the threat level by 1.
-		CHECK_TICK_ADV(tick_usage_max)
-		if(P.dead)
+		CHECK_TICK(tick_usage_max)
+		if(P.dead || P.qdeleting)
 			continue
 		if(istype(P,/mob/living/advanced/player/antagonist/))
 			. += 5
