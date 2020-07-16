@@ -1380,8 +1380,6 @@
 #include "code\_core\world\subsystems\emote.dm"
 #include "code\_core\world\subsystems\experience.dm"
 #include "code\_core\world\subsystems\footstep.dm"
-#include "code\_core\world\subsystems\garbage_tracking.dm"
-#include "code\_core\world\subsystems\hazard.dm"
 #include "code\_core\world\subsystems\hooks.dm"
 #include "code\_core\world\subsystems\horde.dm"
 #include "code\_core\world\subsystems\image_notifications.dm"

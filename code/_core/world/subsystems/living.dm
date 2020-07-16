@@ -17,7 +17,6 @@ SUBSYSTEM_DEF(living)
 		return ..()
 
 	for(var/mob/living/L in all_living)
-		CHECK_TICK(tick_usage_max)
 		INITIALIZE(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
@@ -29,7 +28,7 @@ SUBSYSTEM_DEF(living)
 	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
 
 	for(var/mob/living/L in all_living)
-		CHECK_TICK(tick_usage_max)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		L.on_life()
 		if(do_slow)
 			L.on_life_slow()

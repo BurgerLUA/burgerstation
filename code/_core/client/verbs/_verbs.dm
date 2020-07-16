@@ -58,7 +58,7 @@
 		verbs += /client/verb/var_edit
 		verbs += /client/verb/change_variable
 		verbs += /client/verb/spawn_from_path
-		verbs += /client/verb/print_garbage
+		//verbs += /client/verb/print_garbage
 		verbs += /client/verb/add_new_wikibot_entry
 		verbs += /client/verb/make_war
 		verbs += /client/verb/generate_map_icon

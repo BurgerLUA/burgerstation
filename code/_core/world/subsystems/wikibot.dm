@@ -35,13 +35,12 @@ SUBSYSTEM_DEF(wikibot)
 	var/best_answer = null
 
 	for(var/list/wikibot_key in wikibot_list)
-		CHECK_TICK(tick_usage_max)
 		var/question_keys = wikibot_key["keywords"]
 		var/answer_key = wikibot_key["answer"]
 		var/current_score = 0
 
 		for(var/key in question_keys)
-			CHECK_TICK(tick_usage_max)
+			CHECK_TICK(75,FPS_SERVER*3)
 			if(!findtextEx(lowertext(string_to_process),key))
 				continue
 			current_score += 1

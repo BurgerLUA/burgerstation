@@ -54,8 +54,10 @@ var/global/list/all_areas = list()
 /area/New()
 	. = ..()
 
+	/*
 	if(hazard)
 		all_areas_with_hazards += src
+	*/
 
 	/*
 	if(dynamic_lighting_overlay_color)

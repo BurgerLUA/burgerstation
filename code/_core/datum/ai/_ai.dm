@@ -642,7 +642,7 @@
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
-			CHECK_TICK(75)
+			CHECK_TICK(90,FPS_SERVER)
 			if(!can_detect(L))
 				continue
 			.[L] = TRUE

@@ -6,11 +6,13 @@ SUBSYSTEM_DEF(botany)
 	tick_rate = SECONDS_TO_TICKS(4)
 	priority = SS_ORDER_PRELOAD
 
+	tick_usage_max = 75
+	cpu_usage_max = 75
 
 /subsystem/botany/on_life()
 
 	for(var/obj/structure/interactive/plant/P in all_plants)
-		CHECK_TICK(tick_usage_max)
+		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		P.on_life()
 
 	return TRUE

@@ -110,7 +110,6 @@ var/global/world_state = STATE_STARTING
 	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
 	for(var/mob/living/advanced/player/P in all_players)
-		CHECK_TICK(75)
 		if(P.dead)
 			P.to_chat("Could not save your character because you were dead.")
 			continue

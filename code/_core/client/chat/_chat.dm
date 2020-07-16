@@ -27,7 +27,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		if(TEXT_RADIO) //People talking into radios with the ; key.
 			var/list/sent_frequencies = list()
 			for(var/obj/item/device/radio/R in all_radios)
-				CHECK_TICK(75)
+				CHECK_TICK(75,FPS_SERVER)
 				var/desired_frequency = frequency
 				if(desired_frequency == -1 || !desired_frequency)
 					desired_frequency = R.frequency
@@ -44,7 +44,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 		if(TEXT_RAW) //People talking out of radios, pretty much.
 			for(var/mob/M in all_mobs_with_clients)
-				CHECK_TICK(75)
+				CHECK_TICK(75,FPS_SERVER)
 				if(within_range(M,source,TALK_RANGE))
 					M.to_chat(text_to_say,CHAT_TYPE_RADIO)
 
@@ -57,12 +57,12 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				for(var/mob/M in all_mobs_with_clients)
-					CHECK_TICK(75)
+					CHECK_TICK(75,FPS_SERVER)
 					if(within_range(M,source,WHISPER_RANGE))
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 				var/list/sent_frequencies = list()
 				for(var/obj/item/device/radio/R in all_radios)
-					CHECK_TICK(75)
+					CHECK_TICK(75,FPS_SERVER)
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_WHISPER_RANGE)
 						continue
 					var/desired_frequency = frequency
@@ -84,13 +84,13 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				for(var/mob/M in all_mobs_with_clients)
-					CHECK_TICK(75)
+					CHECK_TICK(75,FPS_SERVER)
 					if(within_range(M,source,TALK_RANGE))
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				var/list/sent_frequencies = list()
 				for(var/obj/item/device/radio/R in all_radios)
-					CHECK_TICK(75)
+					CHECK_TICK(75,FPS_SERVER)
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_TALK_RANGE)
 						continue
 					var/desired_frequency = frequency
@@ -114,13 +114,13 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 				var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,frequency,language)
 				var/formatted_speech_language = format_speech(speaker,source,text_to_say_language,text_type,frequency,language)
 				for(var/mob/M in all_mobs_with_clients)
-					CHECK_TICK(75)
+					CHECK_TICK(75,FPS_SERVER)
 					if(within_range(M,source,YELL_RANGE))
 						M.to_chat_language(formatted_speech,CHAT_TYPE_SAY,language,formatted_speech_language)
 
 				var/list/sent_frequencies = list()
 				for(var/obj/item/device/radio/R in all_radios)
-					CHECK_TICK(75)
+					CHECK_TICK(75,FPS_SERVER)
 					if(!R.broadcasting || get_dist(source_turf,R) > RADIO_YELL_RANGE)
 						continue
 					var/desired_frequency = frequency
@@ -138,7 +138,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/mob/M in all_mobs_with_clients)
-				CHECK_TICK(75)
+				CHECK_TICK(75,FPS_SERVER)
 				if(within_range(M,source,YELL_RANGE))
 					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 			if(speaker.is_player_controlled()) LOG_CHAT("LOOC: [speaker.get_debug_name()]: [text_to_say]")
@@ -146,7 +146,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		if(TEXT_OOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/k in all_clients)
-				CHECK_TICK(75)
+				CHECK_TICK(75,FPS_SERVER)
 				var/client/C = all_clients[k]
 				if(!C || !C.mob)
 					continue
@@ -159,8 +159,8 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type)
 			for(var/k in all_clients)
+				CHECK_TICK(75,FPS_SERVER)
 				var/client/C = all_clients[k]
-				CHECK_TICK(75)
 				if(!C.mob || !is_observer(C.mob))
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_SAY)
@@ -187,7 +187,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 	for(var/mob/M in all_mobs_with_clients)
 
-		CHECK_TICK(75)
+		CHECK_TICK(50,FPS_SERVER)
 
 		if(!M.client) //Just in case.
 			continue

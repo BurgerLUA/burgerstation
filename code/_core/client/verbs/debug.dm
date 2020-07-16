@@ -158,6 +158,7 @@ client/verb/air_test(var/pressure as num)
 	if(SSwikibot)
 		SSwikibot.add_new_wikibot_key(new_question_keys,wikibot_answer)
 
+/*
 /client/verb/print_garbage()
 
 	set category = "Debug"
@@ -176,6 +177,7 @@ client/verb/air_test(var/pressure as num)
 		final_text += "<br>[var_edit_text]([o_type]) = ~[warning_count] seconds"
 
 	usr << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
+*/
 
 
 /client/verb/spawn_from_path(var/object as text) //TODO: Make this work.

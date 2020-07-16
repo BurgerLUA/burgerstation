@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(thinking)
 
 /subsystem/thinking/on_life()
 	for(var/atom/A in all_thinkers)
-		CHECK_TICK(tick_usage_max)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(!A.think())
 			stop_thinking(A)
 

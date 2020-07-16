@@ -5,7 +5,7 @@
 	play(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)
 
 	FOR_DVIEW(var/turf/T,desired_range,desired_turf,0)
-		CHECK_TICK(75)
+		CHECK_TICK(80,FPS_SERVER*0.5)
 		var/distance = get_dist_real(T,desired_turf)
 		if(distance > desired_range)
 			continue

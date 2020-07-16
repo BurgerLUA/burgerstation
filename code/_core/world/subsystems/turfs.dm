@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(turfs)
 
 /subsystem/turfs/on_life()
 	for(var/turf/T in queued_edges)
-		CHECK_TICK(tick_usage_max)
+		CHECK_TICK(75,FPS_SERVER*3)
 		T.update_sprite()
 		queued_edges -= T
 	return TRUE

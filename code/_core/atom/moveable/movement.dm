@@ -37,6 +37,7 @@
 			final_movement_delay *= T.delay_modifier
 
 		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
+
 		glide_size = move_delay ? step_size/move_delay : 1
 
 		var/similiar_move_dir = FALSE

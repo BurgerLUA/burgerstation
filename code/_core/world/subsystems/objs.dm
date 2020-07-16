@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(obj)
 /subsystem/obj/on_life()
 
 	for(var/obj/structure/smooth/S in queued_smooth)
-		CHECK_TICK(tick_usage_max)
+		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		S.update_sprite()
 		queued_smooth -= S
 

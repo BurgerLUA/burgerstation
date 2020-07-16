@@ -5,13 +5,12 @@ SUBSYSTEM_DEF(callback)
 	priority = SS_ORDER_IMPORTANT
 	var/list/all_callbacks = list()
 
-	cpu_usage_max = 100
-	tick_usage_max = 100
+	cpu_usage_max = 0
+	tick_usage_max = 0
 
 /subsystem/callback/on_life()
 
 	for(var/callback_id in src.all_callbacks)
-		CHECK_TICK(tick_usage_max)
 		var/callback_value = src.all_callbacks[callback_id]
 		if(!length(callback_value))
 			CRASH_SAFE("[callback_id] had an improper callback!")

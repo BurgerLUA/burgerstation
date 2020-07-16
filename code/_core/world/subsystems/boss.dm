@@ -8,10 +8,10 @@ SUBSYSTEM_DEF(bosses)
 /subsystem/bosses/on_life()
 
 	for(var/k in tracked_bosses)
-		CHECK_TICK(tick_usage_max)
 		var/mob/living/L = tracked_bosses[k]
 		if(L.dead)
 			for(var/mob/living/advanced/P in L.players_fighting_boss)
+				CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 				L.remove_player_from_boss(P)
 			continue
 
@@ -19,10 +19,11 @@ SUBSYSTEM_DEF(bosses)
 			var/ai/AI = L.ai
 			if(AI.objective_attack)
 				for(var/mob/living/advanced/P in view(L,L.boss_range))
+					CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 					L.add_player_to_boss(P)
 
 		for(var/mob/living/advanced/P in L.players_fighting_boss)
-			CHECK_TICK(tick_usage_max)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 			if(get_dist(P,L) >= L.boss_range*2)
 				L.remove_player_from_boss(P)
 
