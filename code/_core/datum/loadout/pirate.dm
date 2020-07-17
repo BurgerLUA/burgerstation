@@ -24,7 +24,7 @@
 	spawning_items = list(
 		/obj/item/clothing/pants/syndicate,
 		/obj/item/clothing/overwear/coat/hos,
-		/obj/item/clothing/glasses/sun,
+		/obj/item/clothing/glasses/sun/augmented,
 		/obj/item/clothing/head/hat/hos,
 		/obj/item/clothing/hands/gloves/colored/padded/black,
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
@@ -41,6 +41,23 @@
 		/obj/item/magazine/pistol_50
 	)
 
+/loadout/pirate/crew/ninja
+	spawning_items = list(
+		/obj/item/clothing/uniform/security,
+		/obj/item/clothing/feet/shoes/black_boots,
+		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/overwear/armor/bulletproof,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/head/hood/skimask/black,
+		/obj/item/clothing/glasses/ninja,
+		/obj/item/clothing/head/hat/headband/dark_grey,
+		/obj/item/clothing/neck/cloak/black,
+		/obj/item/clothing/hands/gloves/colored/combat,
+		/obj/item/clothing/hands/gloves/colored/combat/left,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
+		/obj/item/weapon/melee/sword/katana,
+		/obj/item/magazine/pistol_tranq_11m
+	)
 
 
 /loadout/pirate/crew/melee

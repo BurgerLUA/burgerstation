@@ -10,8 +10,7 @@
 	. = ..()
 
 	if(volume_current <= 0)
-		spawn
-			qdel(src)
+		qdel(src)
 		return FALSE
 
 	return .

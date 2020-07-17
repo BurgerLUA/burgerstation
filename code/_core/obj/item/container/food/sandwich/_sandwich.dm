@@ -19,31 +19,6 @@
 	reagents.add_reagent(/reagent/nutrition/bread/flour/processed,5)
 	return ..()
 
-/obj/item/container/food/sandwich/get_reagents_to_eat()
-
-	var/total_reagents = reagents.volume_current
-
-	for(var/i=1,i<=length(inventories),i++)
-		var/obj/hud/inventory/IN = inventories[i]
-		var/obj/item/IT = IN.get_top_held_object()
-		if(!IT || !IT.reagents)
-			continue
-		total_reagents += IT.reagents.volume_current
-
-	var/reagent_container/temp/T = new()
-
-	for(var/i=1,i<=length(inventories),i++)
-		var/obj/hud/inventory/IN = inventories[i]
-		var/obj/item/IT = IN.get_top_held_object()
-		if(!IT || !IT.reagents)
-			continue
-		IT.reagents.transfer_reagents_to(T, bite_size * (IT.reagents.volume_current/total_reagents), FALSE )
-		IT.reagents.update_container()
-
-	reagents.transfer_reagents_to(T, bite_size * (reagents.volume_current/total_reagents))
-
-	return T
-
 /obj/item/container/food/sandwich/update_icon()
 
 	if(istype(reagents))

@@ -6,6 +6,9 @@
 
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
+	flags_flavor_love = FLAG_FLAVOR_COOKED | FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_MEAT | FLAG_FLAVOR_FISH | FLAG_FLAVOR_LOVE | FLAG_FLAVOR_JUNK | FLAG_FLAVOR_FAT | FLAG_FLAVOR_DAIRY
+	flags_flavor_hate = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW
+
 	default_color_eye = "#000000"
 	default_color_skin = "#e0b19d"
 	default_color_hair = "#000000"

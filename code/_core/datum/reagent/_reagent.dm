@@ -22,6 +22,7 @@
 
 	var/flavor = "nothing"
 	var/flavor_strength = 1
+	var/flags_flavor = FLAG_FLAVOR_NONE
 
 	var/processed_reagent
 

@@ -28,3 +28,7 @@
 
 /obj/item/clothing/neck/cloak/nanotrasen
 	color = COLOR_NANOTRASEN
+
+
+/obj/item/clothing/neck/cloak/black
+	color = COLOR_BLACK

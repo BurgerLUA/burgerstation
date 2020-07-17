@@ -28,6 +28,8 @@
 		/obj/hud/button/vehicle/ammo_display/right
 	)
 
+	blood_type = null
+
 /mob/living/vehicle/pre_death()
 
 	for(var/mob/living/advanced/A in passengers)
@@ -53,6 +55,8 @@
 
 /mob/living/vehicle/proc/attach_equipment(var/mob/caller,var/obj/item/I)
 	if(I in equipment)
+		return FALSE
+	if(I.unremovable)
 		return FALSE
 	caller?.to_chat(span("notice","You attach \the [I.name] to \the [src.name]."))
 	equipment += I

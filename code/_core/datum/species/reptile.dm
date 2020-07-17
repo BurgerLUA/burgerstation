@@ -6,6 +6,9 @@
 
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
+	flags_flavor_love = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW | FLAG_FLAVOR_MEAT | FLAG_FLAVOR_FISH | FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_FAT
+	flags_flavor_hate = FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GRAIN | FLAG_FLAVOR_JUNK | FLAG_FLAVOR_DAIRY
+
 	default_icon_hair = 'icons/mob/living/advanced/hair/reptile_hair_head.dmi'
 	default_icon_state_hair = "none"
 

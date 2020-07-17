@@ -76,3 +76,8 @@
 /mob/living/advanced/npc/pirate_crew/melee
 	name = "skeleton crew brawler"
 	desired_loadout = /loadout/pirate/crew/melee
+
+
+/mob/living/advanced/npc/pirate_crew/ninja
+	name = "skeleton crew ninja"
+	desired_loadout = /loadout/pirate/crew/ninja

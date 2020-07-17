@@ -85,7 +85,7 @@
 	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!attacker.can_attack(victim,object_to_damage_with,params,DT))
 		return FALSE
-	if(victim.can_be_attacked(attacker,object_to_damage_with,params,DT))
+	if(!victim.can_be_attacked(attacker,object_to_damage_with,params,DT))
 		return FALSE
 
 	if(is_advanced(attacker) && DT.cqc_tag)

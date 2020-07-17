@@ -472,6 +472,11 @@
 	last_interacted = caller
 	return ..()
 
+/obj/item/proc/get_reagents_to_eat()
+	var/reagent_container/temp/T = new(src,1000)
+	reagents.transfer_reagents_to(T,BITE_SIZE)
+	return T
+
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
 
 	if(!allow_reagent_transfer_from) //Can we transfer anything from this?
@@ -486,8 +491,12 @@
 
 	if(can_feed(caller,defer_object))
 		if(is_living(defer_object))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,defer_object)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
+			//PROGRESS_BAR(caller,src.reagents,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,defer_object)
+			//PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
+			if(reagents && can_feed(caller,defer_object))
+				var/reagent_container/R = get_reagents_to_eat()
+				R.consume(caller,defer_object)
+
 		else if(is_item(defer_object) && defer_object.reagents)
 			var/obj/item/I = defer_object
 			if(I.allow_reagent_transfer_to)
@@ -502,39 +511,6 @@
 		return TRUE
 
 	return FALSE
-
-
-/obj/item/proc/consume(var/mob/caller,var/mob/living/consumer)
-
-	if(!reagents || !length(reagents.stored_reagents) || reagents.volume_current <= 0)
-		consumer.to_chat(span("warning","There is nothing left of \the [src] to [consume_verb]!"))
-		return FALSE
-
-	if(is_advanced(consumer))
-		var/mob/living/advanced/A = consumer
-
-		if(!A.labeled_organs[BODY_STOMACH])
-			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
-			return FALSE
-
-		var/final_flavor_text = reagents.get_flavor()
-
-		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || A.last_flavor != final_flavor_text) )
-			A.last_flavor = final_flavor_text
-			A.last_flavor_time = world.time
-			final_flavor_text = "You taste [final_flavor_text]."
-		else
-			final_flavor_text = null
-
-		consumer.to_chat(span("notice","You [consume_verb] \the [src.name]."))
-
-		if(final_flavor_text)
-			consumer.to_chat(span("notice",final_flavor_text))
-
-		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
-		return reagents.transfer_reagents_to(S.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
-
-	return reagents.transfer_reagents_to(consumer.reagents,clamp(transfer_amount,0,CONSUME_AMOUNT_MAX))
 
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 

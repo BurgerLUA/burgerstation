@@ -74,9 +74,6 @@
 	INTERACT_CHECK
 	SPAM_CHECK
 
-	if(caller.client)
-		world.log << "Num: [caller.client.spam_protection_interact]."
-
 	if(!(caller.attack_flags & ATTACK_GRAB))
 		toggle(caller)
 

@@ -130,7 +130,7 @@
 	var/temperature_change = (temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-1,1)
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
-		temperature_change *= 3
+		temperature_change *= 0.5
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
 	else //If we're colder than we need to be.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
@@ -465,12 +465,15 @@
 /reagent_container/proc/get_flavor()
 
 	var/list/flavor_profile = list()
+	var/list/flavor_flags = list()
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
-		flavor_profile[R.flavor] += R.flavor_strength*(stored_reagents[r_id]/volume_current)
+		var/flavor_strength = R.flavor_strength*(stored_reagents[r_id]/volume_current)
+		flavor_profile[R.flavor] += flavor_strength
+		flavor_flags["[R.flags_flavor]"] = flavor_strength
 
-	sortTim(flavor_profile,associative=TRUE)
+	sortTim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
 
 	var/list/english_flavor_profile = list()
 
@@ -479,11 +482,11 @@
 		var/v = flavor_profile[k] //This gets the value (flavor strength)
 		var/flavor_text
 		switch(v)
-			if(0.15 to 0.25)
+			if(0.05 to 0.1)
 				flavor_text = "a hint of [k]"
-			if(0.25 to 0.5)
+			if(0.1 to 0.25)
 				flavor_text = "a little bit of [k]"
-			if(0.5 to 1)
+			if(0.25 to 1)
 				flavor_text = k
 			if(1 to 2)
 				flavor_text = "a strong amount of [k]"
@@ -492,7 +495,7 @@
 		if(flavor_text)
 			english_flavor_profile += flavor_text
 
-	return english_list(english_flavor_profile)
+	return list(english_list(english_flavor_profile),flavor_flags)
 
 
 /reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE)
@@ -522,3 +525,56 @@
 	update_container()
 
 	return TRUE
+
+
+/reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
+
+	var/consume_verb = "eat"
+
+	if(!length(stored_reagents) || volume_current <= 0)
+		caller.to_chat(span("warning","There is nothing left of \the [src.owner.name] to [consume_verb]!"))
+		return FALSE
+
+	if(is_advanced(consumer))
+		var/mob/living/advanced/A = consumer
+		if(!A.labeled_organs[BODY_STOMACH])
+			if(caller && caller != consumer)
+				caller.to_chat(span("warning","You don't know how they can [consume_verb] \the [src.owner.name]!"))
+			consumer.to_chat(span("warning","You don't know how you can [consume_verb] \the [src]!"))
+			return FALSE
+
+		var/list/flavor_data = get_flavor()
+
+		var/final_flavor_text = flavor_data[1]
+		var/list/flavor_flags = flavor_data[2]
+
+		var/like_score = 0
+		var/species/SP = all_species[A.species]
+		for(var/k in flavor_flags)
+			var/real_bit = text2num(k)
+			if(real_bit & SP.flags_flavor_love)
+				like_score += flavor_flags[k]
+			if(real_bit & SP.flags_flavor_hate)
+				like_score -= flavor_flags[k]
+
+		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || A.last_flavor != final_flavor_text) )
+			A.last_flavor = final_flavor_text
+			A.last_flavor_time = world.time
+			final_flavor_text = "You taste [final_flavor_text]."
+		else
+			final_flavor_text = null
+
+		if(caller && caller != consumer)
+			caller.to_chat(span("notice","You feed \the [consumer.name] \the [src.owner.name]."))
+			consumer.to_chat(span("danger","\The [caller.name] feeds you \the [src.owner.name]!"))
+		consumer.to_chat(span("notice","You [consume_verb] \the [src.owner.name]."))
+
+		if(final_flavor_text)
+			consumer.to_chat(span("notice",final_flavor_text))
+
+		var/obj/item/organ/internal/stomach/S = A.labeled_organs[BODY_STOMACH]
+		. = transfer_reagents_to(S.reagents,volume_current)
+	else
+		. = transfer_reagents_to(consumer.reagents,volume_current)
+
+	return .
