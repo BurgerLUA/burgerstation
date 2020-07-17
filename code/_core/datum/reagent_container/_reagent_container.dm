@@ -529,7 +529,8 @@
 
 /reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
 
-	var/consume_verb = "eat"
+	var/consume_verb = owner.get_consume_verb()
+	var/consume_sound = owner.get_consume_sound()
 
 	if(!length(stored_reagents) || volume_current <= 0)
 		caller.to_chat(span("warning","There is nothing left of \the [src.owner.name] to [consume_verb]!"))
@@ -568,6 +569,8 @@
 			caller.to_chat(span("notice","You feed \the [consumer.name] \the [src.owner.name]."))
 			consumer.to_chat(span("danger","\The [caller.name] feeds you \the [src.owner.name]!"))
 		consumer.to_chat(span("notice","You [consume_verb] \the [src.owner.name]."))
+
+		if(consume_sound) play(consume_sound,get_turf(consumer))
 
 		if(final_flavor_text)
 			consumer.to_chat(span("notice",final_flavor_text))

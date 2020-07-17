@@ -1,5 +1,5 @@
 /obj/item/container/beaker/can
-	name = "soda can"
+	name = "generic soda can"
 	desc = "ERROR."
 	desc_extended = "Holds reagents."
 	crafting_id = "soda_can"
@@ -12,7 +12,7 @@
 	allow_reagent_transfer_to = FALSE //Needs to be open, first.
 	allow_reagent_transfer_from = FALSE
 
-	var/open = FALSE
+	var/open = TRUE
 
 	overide_icon = TRUE
 
@@ -30,56 +30,75 @@
 
 	return TRUE
 
-/obj/item/container/beaker/can/Generate()
-
-	var/best_reagent = null
-	var/best_reagent_amount = 0
-
-	for(var/reagent_type in reagents.stored_reagents)
-		var/reagent_amount = reagents.stored_reagents[reagent_type]
-		if(!best_reagent || reagent_amount > best_reagent_amount)
-			best_reagent = reagent_type
-			best_reagent_amount = best_reagent_amount
-
-	var/reagent/R = REAGENT(best_reagent)
-	name = R.name
-	desc = R.desc
-	icon_state = R.can_icon_state
-	desc_extended = "An alluminum can that is said to contain delicious beverage. This one contains [R.name]."
-
-	return ..()
+/obj/item/container/beaker/can/cola/
+	name = "\improper Space Cola"
+	icon_state = "cola"
 
 /obj/item/container/beaker/can/cola/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/cola,reagents.volume_max)
+	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/grape_soda/
+	name = "\improper Starkist Orange Soda"
+	icon_state = "grape_soda"
 
 /obj/item/container/beaker/can/grape_soda/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/grape,reagents.volume_max)
+	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/orange_soda/
+	name = "\improper Starkist Orange Soda"
+	icon_state = "orange_soda"
 
 /obj/item/container/beaker/can/orange_soda/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/orange,reagents.volume_max)
+	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/iced_tea/
+	name = "\improper Disk! Iced Tea"
+	icon_state = "iced_tea"
 
 /obj/item/container/beaker/can/iced_tea/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/iced_tea,reagents.volume_max)
+	open = FALSE
 	return ..()
 
 /obj/item/container/beaker/can/grey_bull/
+	name = "\improper Grey Bull"
+	icon_state = "grey_bull"
 	reagents = /reagent_container/beaker/
 
 /obj/item/container/beaker/can/grey_bull/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/grey_bull,reagents.volume_max)
+	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/mountain_wind/
+	name = "\improper Space Mountain Wind"
+	icon_state = "mountain_wind"
 
 /obj/item/container/beaker/can/mountain_wind/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/mountain_wind,reagents.volume_max)
+	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/dr_gibb/
+	name = "\improper Dr. Gibb"
+	icon_state = "dr_gibb"
 
 /obj/item/container/beaker/can/dr_gibb/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/dr_gibb,reagents.volume_max)
+	open = FALSE
 	return ..()
+
+/obj/item/container/beaker/can/space_up/
+	name = "\improper Space Up!"
+	icon_state = "space_up"
 
 /obj/item/container/beaker/can/space_up/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/space_up,reagents.volume_max)
+	open = FALSE
 	return ..()

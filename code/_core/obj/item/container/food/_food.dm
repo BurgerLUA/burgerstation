@@ -47,23 +47,13 @@
 /obj/item/container/food/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	if(!is_living(object))
-		return ..()
-
-	if(!can_feed(caller,object))
-		return FALSE
-
-	var/reagent_container/R = get_reagents_to_eat()
-	R.consume(caller,object)
-
-	if(reagents.volume_current <= 0)
+/obj/item/container/food/feed(var/mob/caller,var/mob/living/target)
+	. = ..()
+	if(. && reagents.volume_current <= 0)
 		qdel(src)
+	return .
 
-	return TRUE
-
-/obj/item/container/food/get_reagents_to_eat()
+/obj/item/container/food/get_reagents_to_consume()
 
 	var/total_reagents = reagents.volume_current
 

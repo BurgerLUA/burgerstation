@@ -60,3 +60,7 @@
 
 #define FIRE "fire"
 //Sets you on fire!
+
+
+#define SLIP "slip"
+//Honk

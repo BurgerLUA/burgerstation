@@ -11,9 +11,10 @@
 	projectile = /obj/projectile/spray
 	projectile_speed = 5
 
+	shoot_sounds = list('sound/effects/window_spray.ogg')
+
 /obj/item/weapon/ranged/reagent_sprayer/get_ammo_count()
 	return CEILING(reagents.volume_current / (reagent_per_shot*bullet_count),1)
-
 
 /obj/item/weapon/ranged/reagent_sprayer/can_gun_shoot(var/mob/caller)
 
@@ -39,3 +40,17 @@
 	icon = 'icons/obj/item/container/spray_bottle.dmi'
 
 	value = 50
+
+/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
+	name = "spray bottle (water)"
+
+/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water/Generate()
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
+	return ..()
+
+/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube
+	name = "spray bottle (lube)"
+
+/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube/Generate()
+	reagents.add_reagent(/reagent/lube,reagents.volume_max)
+	return ..()

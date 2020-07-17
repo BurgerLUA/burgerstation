@@ -20,6 +20,12 @@
 
 	value = 5
 
+/obj/item/container/beaker/get_consume_verb()
+	return "drink"
+
+/obj/item/container/beaker/get_consume_sound()
+	return 'sound/items/consumables/drink.ogg'
+
 /obj/item/container/beaker/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 

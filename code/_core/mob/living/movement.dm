@@ -196,6 +196,10 @@
 
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
+
+	if(has_status_effect(list(STUN,STAGGER,PARALYZE)))
+		return ..()
+
 	if(hit_wall)
 		add_status_effect(STUN,5,5,source = owner)
 	else

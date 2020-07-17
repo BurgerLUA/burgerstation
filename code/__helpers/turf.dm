@@ -35,5 +35,5 @@
 
 	return best_distance
 
-/proc/get_dist_real(var/atom/A1,var/atom/A2)
+/proc/get_dist_real(var/atom/A1,var/atom/A2) //More intensive than get_dist
 	return sqrt( ((A1.x - A2.x)**2) + ((A1.y - A2.y)**2) )

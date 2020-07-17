@@ -1,3 +1,26 @@
+/reagent/lube //Found through organic things
+	name = "Space Lube"
+	desc = "Lube in space!"
+	color = "#B6F0FF"
+
+	flavor = "cherries"
+	flavor_strength = 2
+
+	liquid = 2
+
+	value = 2
+
+/reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+
+	. = ..()
+
+	if(. && is_simulated(target))
+		var/turf/simulated/S = target
+		S.add_wet(volume_to_splash*100)
+
+	return .
+
+
 /reagent/carbon //Found while mining carbon ore deposits. Or burning food.
 	name = "Carbon"
 	desc = "What most lifeforms are made out of."

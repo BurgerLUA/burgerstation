@@ -94,6 +94,22 @@
 
 	return .
 
+/status_effect/slip
+	name = "Slipped"
+	desc = "You slipped!"
+	id = SLIP
+	minimum = 1
+	maximum = 100
+
+/status_effect/slip/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	play('sound/effects/slip.ogg',get_turf(owner))
+	owner.add_status_effect(STUN,30,30,source = source,stealthy = TRUE)
+	var/throw_dir = owner.move_dir
+	var/list/throw_offset = direction_to_pixel_offset(throw_dir)
+	owner.throw_self(source,null,16,16,throw_offset[1]*magnitude,throw_offset[2]*magnitude, steps_allowed = CEILING(magnitude/20,1))
+	return .
+
 /status_effect/confused
 	name = "Confused"
 	desc = "You're confused!"
@@ -147,8 +163,8 @@
 	if(source && is_living(source) && owner && !owner.dead && owner.dir == source.dir)
 		var/mob/living/L = source
 		if(L.loyalty_tag != owner.loyalty_tag)
-			L.add_status_effect(PARALYZE,30,source = source,stealthy = TRUE)
-			L.add_status_effect(DISARM,30,source = source)
+			L.add_status_effect(PARALYZE,30,30,source = source,stealthy = TRUE)
+			L.add_status_effect(DISARM,30,30,source = source)
 			return ..()
 
 	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)

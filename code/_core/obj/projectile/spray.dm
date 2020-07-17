@@ -5,6 +5,9 @@
 	icon_state = "placeholder"
 	reagents = /reagent_container/chem_spray
 
+	hit_target_turf = TRUE
+	hit_laying = TRUE
+
 /obj/projectile/spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(!.)

@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(turfs)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 
 	var/list/queued_edges = list()
+	var/list/wet_turfs = list()
 
 	cpu_usage_max = 50
 	tick_usage_max = 50
@@ -34,6 +35,14 @@ SUBSYSTEM_DEF(turfs)
 		CHECK_TICK(75,FPS_SERVER*3)
 		T.update_sprite()
 		queued_edges -= T
+
+	for(var/turf/simulated/T in wet_turfs)
+		T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
+		if(T.wet_level <= 0)
+			wet_turfs -= T
+			T.overlays.Cut()
+			T.update_overlays()
+
 	return TRUE
 
 /proc/queue_update_turf_edges(var/turf/T)

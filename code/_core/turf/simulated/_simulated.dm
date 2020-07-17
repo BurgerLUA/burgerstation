@@ -35,6 +35,37 @@ var/global/saved_icons = 0
 	var/water_reagent
 
 	var/blood_level = 0
+	var/wet_level = 0
+
+	var/drying_add = 0.1
+	var/drying_mul = 0.02
+
+	var/slip_factor = 1
+
+/turf/simulated/proc/get_slip_strength(var/mob/living/L)
+	return (wet_level ? 1 : 0) + (wet_level/100)*slip_factor
+
+/turf/simulated/proc/add_wet(var/wet_to_add)
+	var/old_wet = wet_level
+	wet_level += wet_to_add
+	SSturfs.wet_turfs |= src
+	if(old_wet <= 0)
+		overlays.Cut()
+		update_overlays()
+	return TRUE
+
+/turf/simulated/Entered(var/atom/movable/O,var/atom/new_loc)
+
+	. = ..()
+
+	if(is_living(O))
+		var/mob/living/L = O
+		var/slip_strength = get_slip_strength(L)
+		if(slip_strength >= 4 - L.move_mod)
+			L.add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+
+	return .
+
 
 /turf/proc/is_occupied()
 
@@ -56,6 +87,7 @@ var/global/saved_icons = 0
 /turf/simulated/get_examine_list(var/mob/caller)
 	. = ..()
 	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
+	. += div("notice","The slippery percentage is [get_slip_strength()*100]%.")
 	return .
 
 /turf/simulated/New(var/atom/desired_loc)
@@ -211,13 +243,11 @@ var/global/saved_icons = 0
 	. = ..()
 
 	if(reinforced_material_id)
-		overlays.Cut()
 		var/image/I = new/image(initial(icon),"ref")
-		/*
-		I.appearance_flags = RESET_COLOR
-		I.color = reinforced_color
-		I.alpha = 50
-		*/
+		add_overlay(I)
+
+	if(wet_level)
+		var/image/I = new/image('icons/obj/effects/water.dmi',"wet_floor")
 		add_overlay(I)
 
 	return .

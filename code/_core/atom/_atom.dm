@@ -49,6 +49,12 @@
 	var/desired_light_color = "#FFFFFF" //Color of the light.
 	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
 
+/atom/proc/get_consume_verb()
+	return "eat"
+
+/atom/proc/get_consume_sound()
+	return 'sound/items/consumables/eatfood.ogg'
+
 /atom/proc/update_atom_light()
 	if(desired_light_range > 0 && desired_light_power > 0)
 		if(src.x % desired_light_frequency || src.y % desired_light_frequency)

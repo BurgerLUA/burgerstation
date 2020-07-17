@@ -472,56 +472,62 @@
 	last_interacted = caller
 	return ..()
 
-/obj/item/proc/get_reagents_to_eat()
+/obj/item/proc/get_reagents_to_consume()
 	var/reagent_container/temp/T = new(src,1000)
 	reagents.transfer_reagents_to(T,BITE_SIZE)
 	return T
 
+/obj/item/proc/feed(var/mob/caller,var/mob/living/target)
+	if(reagents && can_feed(caller,target))
+		var/reagent_container/R = get_reagents_to_consume()
+		R.consume(caller,target)
+		return TRUE
+	return FALSE
+
 /obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
-
-	if(!allow_reagent_transfer_from) //Can we transfer anything from this?
-		return FALSE
-
-	if(is_living(caller))
-		var/mob/living/L = caller
-		if(L.intent == INTENT_HARM)
-			return FALSE
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(can_feed(caller,defer_object))
-		if(is_living(defer_object))
-			//PROGRESS_BAR(caller,src.reagents,SECONDS_TO_DECISECONDS(1),.proc/consume,caller,defer_object)
-			//PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
-			if(reagents && can_feed(caller,defer_object))
-				var/reagent_container/R = get_reagents_to_eat()
-				R.consume(caller,defer_object)
+	if(is_living(caller) && allow_reagent_transfer_from)
+		var/mob/living/L = caller
+		if(L.intent == INTENT_HARM) //SPLASH
+			reagents.splash(caller,object)
+			return TRUE
 
-		else if(is_item(defer_object) && defer_object.reagents)
-			var/obj/item/I = defer_object
-			if(I.allow_reagent_transfer_to)
-				if(reagents.volume_current <= 0)
-					caller.to_chat(span("warning","\The [src.name] is empty!"))
-					return FALSE
-				if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
-					caller.to_chat(span("warning","\The [defer_object.name] is full!"))
-					return FALSE
-				var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount)
-				caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
+	if(can_feed(caller,defer_object))
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/feed,caller,defer_object)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,defer_object)
+		return TRUE
+
+	if(allow_reagent_transfer_from && is_item(defer_object) && defer_object.reagents)
+		var/obj/item/I = defer_object
+		if(I.allow_reagent_transfer_to)
+			if(reagents.volume_current <= 0)
+				caller.to_chat(span("warning","\The [src.name] is empty!"))
+				return FALSE
+			if(defer_object.reagents.volume_current >= defer_object.reagents.volume_max)
+				caller.to_chat(span("warning","\The [defer_object.name] is full!"))
+				return FALSE
+			var/actual_transfer_amount = reagents.transfer_reagents_to(defer_object.reagents,transfer_amount)
+			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [defer_object]."))
 		return TRUE
 
 	return FALSE
 
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,target) > 1)
+	if(!is_living(target))
 		return FALSE
 
-	if(caller != target && is_living(target))
-		var/mob/living/L = target
-		if(L.ckey_last && !L.ckey && !L.dead)
-			caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))
-			return FALSE
+	var/mob/living/L = target
+
+	if(get_dist(caller,target) > 1)
+		caller?.to_chat(span("warning","They're too far away!"))
+		return FALSE
+
+	if(caller != target && L.ckey_last && !L.ckey && !L.dead)
+		caller.to_chat(span("warning","\The [L.name]'s mouth is locked shut! They must be suffering from Space Sleep Disorder..."))
+		return FALSE
 
 	return TRUE
 
