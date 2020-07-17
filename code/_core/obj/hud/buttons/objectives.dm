@@ -38,7 +38,7 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	all_objective_buttons -= src
 	return ..()
 
-/obj/hud/button/objectives/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/objectives/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

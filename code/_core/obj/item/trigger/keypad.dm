@@ -31,7 +31,7 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 	return TRUE
 
-/obj/item/device/keypad/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/item/device/keypad/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
 		return ..()

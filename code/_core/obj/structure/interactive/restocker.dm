@@ -30,7 +30,7 @@
 	anchored = FALSE
 	collision_flags = FLAG_COLLISION_WALL
 
-/obj/structure/interactive/restocker/ammo/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/restocker/ammo/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 

@@ -36,7 +36,7 @@
 	start_thinking(src)
 	return ..()
 
-/obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 

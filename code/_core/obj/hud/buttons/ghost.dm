@@ -10,7 +10,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -40,7 +40,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -69,7 +69,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -155,7 +155,7 @@
 	add_overlay(I)
 	return .
 
-/obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -194,7 +194,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

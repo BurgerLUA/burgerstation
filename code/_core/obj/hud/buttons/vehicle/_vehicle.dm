@@ -53,7 +53,7 @@
 	icon_state = "eject"
 	screen_loc = "RIGHT,BOTTOM"
 
-/obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

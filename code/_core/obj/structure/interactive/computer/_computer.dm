@@ -88,7 +88,7 @@ obj/structure/interactive/computer/console/flight
 	computer_type = "syndishuttle"
 	keyboard_type = "syndie_key"
 
-obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
+obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 
@@ -122,7 +122,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	var/obj/shuttle_controller/desired_shuttle_controller
 
-/obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

@@ -18,7 +18,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -36,7 +36,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -73,7 +73,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

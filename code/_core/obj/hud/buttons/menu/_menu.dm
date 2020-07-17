@@ -15,7 +15,7 @@
 /obj/hud/button/menu/selection
 	var/command_to_run
 
-/obj/hud/button/menu/selection/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/menu/selection/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

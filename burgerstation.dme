@@ -751,6 +751,7 @@
 #include "code\_core\obj\item\interaction.dm"
 #include "code\_core\obj\item\inventory.dm"
 #include "code\_core\obj\item\matter_cartridge.dm"
+#include "code\_core\obj\item\mech_attachment.dm"
 #include "code\_core\obj\item\pinpointer.dm"
 #include "code\_core\obj\item\plate.dm"
 #include "code\_core\obj\item\radio.dm"

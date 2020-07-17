@@ -12,7 +12,7 @@
 	has_quick_function = FALSE
 
 
-/obj/hud/button/skip/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/skip/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()
 
 	if(.)

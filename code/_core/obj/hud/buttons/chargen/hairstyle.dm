@@ -84,7 +84,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	return .
 
-/obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -137,7 +137,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	..()
 
-/obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -151,7 +151,7 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+4"
 
-/obj/hud/button/chargen/hairstyle/main/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/hairstyle/main/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

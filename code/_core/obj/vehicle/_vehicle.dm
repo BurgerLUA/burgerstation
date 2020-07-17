@@ -246,7 +246,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/clicked_on_by_object(var/mob/caller,object,location,control,params) //Enter the vehicle.
+/mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Enter the vehicle.
 
 	if(!can_enter_vehicle(caller))
 		return FALSE

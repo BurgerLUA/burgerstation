@@ -38,7 +38,7 @@
 	return TRUE
 
 
-/mob/living/advanced/npc/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/mob/living/advanced/npc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(dialogue_id && is_player(caller) && can_talk_to(caller))
 		var/mob/living/advanced/player/P = caller

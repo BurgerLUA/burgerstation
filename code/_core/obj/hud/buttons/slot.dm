@@ -103,7 +103,7 @@
 
 	return .
 
-/obj/hud/button/slot/proc/store_atom(var/mob/caller,object,location,control,params)
+/obj/hud/button/slot/proc/store_atom(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()
@@ -192,7 +192,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_slots/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/close_slots/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller))
 		return TRUE

@@ -9,7 +9,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/sneak/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/sneak/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -39,7 +39,7 @@
 	icon_state = "move_[move_mod_button+2]"
 	..()
 
-/obj/hud/button/move/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/move/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -73,7 +73,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/rest/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/rest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -99,7 +99,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/stand/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/stand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

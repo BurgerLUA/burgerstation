@@ -38,7 +38,7 @@ obj/structure/interactive/bed
 
 	return .
 
-obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,object,location,control,params)
+obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 

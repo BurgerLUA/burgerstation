@@ -24,7 +24,7 @@
 
 	return ..()
 
-/obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 
@@ -118,7 +118,7 @@
 
 	bullet_block_chance = 50
 
-/obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 

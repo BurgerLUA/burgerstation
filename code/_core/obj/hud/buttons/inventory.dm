@@ -12,7 +12,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -46,7 +46,7 @@
 	screen_loc = "CENTER+1.5,BOTTOM"
 	left = 1
 
-/obj/hud/button/drop/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return TRUE
@@ -75,7 +75,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

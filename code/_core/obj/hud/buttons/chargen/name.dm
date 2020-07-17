@@ -21,7 +21,7 @@
 	return ..()
 
 
-/obj/hud/button/chargen/change_name/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/change_name/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

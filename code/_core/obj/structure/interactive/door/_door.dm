@@ -130,7 +130,7 @@ obj/structure/interactive/door/proc/close(var/atom/caller,var/lock = FALSE,var/f
 	update_sprite()
 	return TRUE
 
-obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,object,location,control,params)
+obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 

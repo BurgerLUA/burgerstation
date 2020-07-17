@@ -52,7 +52,7 @@
 
 	return ..()
 
-/obj/item/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/item/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()

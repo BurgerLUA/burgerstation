@@ -21,7 +21,7 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 
 	chargen_flags = CHARGEN_SKIN
 
-/obj/hud/button/chargen/skin_color/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/chargen/skin_color/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 

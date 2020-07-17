@@ -9,7 +9,7 @@
 
 	bullet_block_chance = 75
 
-/obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 
