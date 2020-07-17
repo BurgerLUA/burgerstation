@@ -59,21 +59,26 @@
 
 	icon_state = "ripley"
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	health_base = 1000
 
-/mob/living/vehicle/mech/ripley/equipped/Generate()
-	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
-	INITIALIZE(U1)
-	GENERATE(U1)
-	attach_equipment(U1)
+	armor_base = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 50,
+		MAGIC = -100,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY
+	)
 
-	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U2 = new(src.loc)
-	INITIALIZE(U2)
-	GENERATE(U2)
-	attach_equipment(U2)
-	return ..()
 
 /mob/living/vehicle/mech/gygax
 	name = "\improper Gygax Combat Mech"
@@ -84,16 +89,16 @@
 	pixel_x = -1
 
 	armor_base = list(
-		BLADE = 50,
-		BLUNT = 25,
-		PIERCE = 15,
-		LASER = 25,
+		BLADE = 75,
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 75,
 		MAGIC = -100,
-		HEAT = 25,
-		COLD = 25,
-		BOMB = 15,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 50,
 		BIO = INFINITY,
-		RAD = 75,
+		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY
@@ -103,19 +108,7 @@
 
 	health_base = 1500
 
-	movement_delay = DECISECONDS_TO_TICKS(5)
-
-/mob/living/vehicle/mech/gygax/equipped/Generate()
-	var/obj/item/weapon/ranged/energy/mech/smg/mk2/U1 = new(src.loc)
-	INITIALIZE(U1)
-	GENERATE(U1)
-	attach_equipment(U1)
-
-	var/obj/item/weapon/ranged/energy/recharging/captain/U2 = new(src.loc)
-	INITIALIZE(U2)
-	GENERATE(U2)
-	attach_equipment(U2)
-	return ..()
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 /mob/living/vehicle/mech/durand
 	name = "\improper MK2 Durand"
@@ -126,16 +119,16 @@
 	pixel_x = -4
 
 	armor_base = list(
-		BLADE = 75,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 15,
+		BLADE = 100,
+		BLUNT = 100,
+		PIERCE = 100,
+		LASER = 25,
 		MAGIC = -100,
-		HEAT = 15,
-		COLD = 15,
+		HEAT = 100,
+		COLD = 100,
 		BOMB = 50,
 		BIO = INFINITY,
-		RAD = 25,
+		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY
@@ -144,17 +137,4 @@
 	class = /class/durand
 	health_base = 3000
 
-	movement_delay = DECISECONDS_TO_TICKS(8)
-
-
-/mob/living/vehicle/mech/durand/equipped/Generate()
-	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U1 = new(src.loc)
-	INITIALIZE(U1)
-	GENERATE(U1)
-	attach_equipment(U1)
-
-	var/obj/item/weapon/ranged/energy/mech/smg/mk1/U2 = new(src.loc)
-	INITIALIZE(U2)
-	GENERATE(U2)
-	attach_equipment(U2)
-	return ..()
+	movement_delay = DECISECONDS_TO_TICKS(6)

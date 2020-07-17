@@ -85,12 +85,14 @@
 	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!attacker.can_attack(victim,object_to_damage_with,params,DT))
 		return FALSE
+	if(victim.can_be_attacked(attacker,object_to_damage_with,params,DT))
+		return FALSE
 
 	if(is_advanced(attacker) && DT.cqc_tag)
 		var/mob/living/advanced/A = attacker
 		A.add_cqc(DT.cqc_tag)
 		var/damagetype/DT2 = A.check_cqc(victim,object_to_damage_with,object_to_damage,blamed)
-		if(DT2 && attacker.can_attack(victim,object_to_damage_with,params,DT2))
+		if(DT2 && attacker.can_attack(victim,object_to_damage_with,params,DT2) && victim.can_be_attacked(attacker,object_to_damage_with,params,DT2))
 			DT = DT2
 
 	if(!DT)
@@ -145,21 +147,10 @@
 	if(!mouse_opacity)
 		return FALSE
 
-	/* TODO: Loyalty Implant
-	if(victim && is_valid(victim) && is_living(victim))
-		var/area/A1 = get_area(victim)
-		var/area/A2 = get_area(src)
-		if(A1.flags_area & FLAGS_AREA_NO_DAMAGE != A2.flags_area & FLAGS_AREA_NO_DAMAGE)
-			return FALSE
-	*/
-
 	if(attack_next > world.time)
 		return FALSE
 
 	if(weapon && weapon.attack_next > world.time)
-		return FALSE
-
-	if(victim && !victim.can_be_attacked(src,weapon,params,damage_type))
 		return FALSE
 
 	if(!isturf(loc))

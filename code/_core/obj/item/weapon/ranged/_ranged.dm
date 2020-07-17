@@ -103,14 +103,14 @@
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited
 
-/obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller)
+/obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
 
-	if(!caller.can_attack(null,src,null,null))
+	if(!caller.can_attack(object,src,location,params))
 		return FALSE
 
 	return TRUE
 
-/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
 
 	if(!use_loyalty_tag)
 		if(ispath(firing_pin))
@@ -165,7 +165,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	return FALSE
 
 
-obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,location,params)
+obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 
 	. = shoot_delay
 
@@ -176,7 +176,7 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/atom/caller,var/atom/target,loca
 
 	return .
 
-obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,params,var/damage_multiplier=1)
+obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!object)
 		return FALSE
@@ -195,10 +195,10 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 		var/mob/M = caller
 		M.attack_turn = world.time + M.attack_turn_delay
 
-	if(!can_owner_shoot(caller))
+	if(!can_owner_shoot(caller,object,location,params))
 		return FALSE
 
-	if(!can_gun_shoot(caller))
+	if(!can_gun_shoot(caller,object,location,params))
 		return FALSE
 
 	next_shoot_time = world.time + get_shoot_delay(caller,object,location,params)
@@ -302,7 +302,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
+/atom/proc/shoot_projectile(var/mob/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color,var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread())
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 
@@ -367,7 +367,7 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
 	return 0.01
 
-/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
+/atom/proc/get_projectile_path(var/mob/caller,var/desired_x,var/desired_y,var/accuracy)
 
 	//desired_x and desired_y is in pixels.
 

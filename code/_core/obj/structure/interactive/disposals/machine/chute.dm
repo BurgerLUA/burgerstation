@@ -46,7 +46,7 @@
 
 	return ..()
 
-/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
 	//Todo, interact delay.
 	if(ismob(object) && caller == object)
 		INTERACT_CHECK

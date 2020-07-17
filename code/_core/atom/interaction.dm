@@ -30,7 +30,7 @@
 
 	return TRUE
 
-/atom/proc/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+/atom/proc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	var/atom/defer_self = src.defer_click_on_object(location,control,params)
 
@@ -39,7 +39,7 @@
 
 	return FALSE
 
-/atom/proc/drop_on_object(var/atom/caller,var/atom/object,location,control,params)
+/atom/proc/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	var/atom/defer_self = src.defer_click_on_object(location,control,params)
 
@@ -54,7 +54,7 @@
 
 	return FALSE
 
-/atom/proc/dropped_on_by_object(var/atom/caller,var/atom/object)
+/atom/proc/dropped_on_by_object(var/mob/caller,var/atom/object)
 
 	var/atom/defer_self = src.defer_click_on_object(null,null,null) //TODO: FIX
 

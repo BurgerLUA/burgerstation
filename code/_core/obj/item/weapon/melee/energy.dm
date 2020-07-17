@@ -15,7 +15,7 @@
 
 	value = 50
 
-/obj/item/weapon/melee/energy/click_self(var/atom/caller)
+/obj/item/weapon/melee/energy/click_self(var/mob/caller)
 	enabled = !enabled
 	update_sprite()
 	return TRUE
@@ -63,7 +63,7 @@
 	damage_type = /damagetype/melee/sword/energy
 	damage_type_on = /damagetype/melee/sword/energy/on
 
-/obj/item/weapon/melee/energy/sword/click_self(var/atom/caller)
+/obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
 	. = ..()
 	if(enabled)
 		play('sound/weapons/energy/energy_on.ogg',src)
@@ -145,7 +145,7 @@
 	damage_type = /damagetype/melee/sword/plightbringer
 	damage_type_on = /damagetype/melee/sword/plightbringer/on
 
-/obj/item/weapon/melee/energy/plightbringer/click_self(var/atom/caller)
+/obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller)
 	. = ..()
 	if(enabled)
 		play('sound/weapons/magic/ash.ogg',src)

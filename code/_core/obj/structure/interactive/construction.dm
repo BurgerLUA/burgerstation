@@ -148,7 +148,7 @@ obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/call
 
 	bullet_block_chance = 90
 
-/obj/structure/interactive/construction/girder/on_destruction(var/atom/caller,var/damage = FALSE)
+/obj/structure/interactive/construction/girder/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	qdel(src)
 	return TRUE
@@ -233,7 +233,7 @@ obj/structure/interactive/construction/grille/Cross(var/atom/movable/O,var/atom/
 
 	return ..()
 
-/obj/structure/interactive/construction/grille/on_destruction(var/atom/caller,var/damage = FALSE)
+/obj/structure/interactive/construction/grille/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	qdel(src)
 	return TRUE

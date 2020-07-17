@@ -79,7 +79,7 @@
 /atom/proc/should_smooth_with(var/turf/T)
 	return FALSE
 
-/atom/proc/on_destruction(var/atom/caller,var/damage = FALSE) //Called when destructed by tools or damage.
+/atom/proc/on_destruction(var/mob/caller,var/damage = FALSE) //Called when destructed by tools or damage.
 	return TRUE
 
 /atom/Destroy()

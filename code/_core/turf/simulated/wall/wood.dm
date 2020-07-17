@@ -12,7 +12,7 @@
 
 	color = COLOR_WOOD
 
-/turf/simulated/wall/wood/on_destruction(var/atom/caller,var/damage = FALSE)
+/turf/simulated/wall/wood/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	. = ..()
 

@@ -11,7 +11,7 @@
 	material_id = /material/steel
 	health_base = 1000
 
-/turf/simulated/wall/metal/on_destruction(var/atom/caller,var/damage = FALSE)
+/turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	. = ..()
 

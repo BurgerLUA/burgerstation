@@ -88,10 +88,10 @@
 	return 	..()
 
 
-/obj/item/dropped_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	return clicked_on_by_object(caller,object,location,control,params)
 
-/obj/item/drop_on_object(var/atom/caller,var/atom/object,location,control,params) //Src is dragged to object
+/obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
 	if(!can_be_dragged(caller))
 		return TRUE

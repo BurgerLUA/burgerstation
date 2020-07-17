@@ -31,7 +31,7 @@
 /obj/item/supply_crate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/supply_crate/on_destruction(var/atom/caller,var/damage = FALSE)
+/obj/item/supply_crate/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	play('sound/effects/crate_break.ogg',get_turf(src))
 	create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)

@@ -68,7 +68,7 @@
 
 	return ..()
 
-/obj/item/grenade/click_self(var/atom/caller)
+/obj/item/grenade/click_self(var/mob/caller)
 
 	if(stored_trigger)
 		stored_trigger.click_self(caller)

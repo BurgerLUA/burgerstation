@@ -27,7 +27,7 @@
 
 	slowdown_mul_worn = 1.1
 
-/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		click_self(caller,location,control,params)

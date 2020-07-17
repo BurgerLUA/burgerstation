@@ -67,7 +67,7 @@ obj/structure/interactive/barricade/PostInitialize()
 	return .
 
 
-/obj/structure/interactive/barricade/on_destruction(var/atom/caller,var/damage = FALSE)
+/obj/structure/interactive/barricade/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),/material/steel)
 	qdel(src)
 	return TRUE

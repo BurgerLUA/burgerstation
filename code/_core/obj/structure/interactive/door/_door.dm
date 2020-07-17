@@ -90,7 +90,7 @@ obj/structure/interactive/door/update_icon()
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(initial(opacity))
 
-obj/structure/interactive/door/proc/toggle(var/atom/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/proc/toggle(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 	if(door_state == DOOR_STATE_OPENED)
 		close(caller)
 		return TRUE
@@ -99,7 +99,7 @@ obj/structure/interactive/door/proc/toggle(var/atom/caller,var/lock = FALSE,var/
 		return TRUE
 	return FALSE
 
-obj/structure/interactive/door/proc/open(var/atom/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/proc/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 	if(open_sound)
 		play(open_sound,src)
 		if(caller) create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
@@ -110,7 +110,7 @@ obj/structure/interactive/door/proc/open(var/atom/caller,var/lock = FALSE,var/fo
 		update_sprite()
 
 
-obj/structure/interactive/door/proc/close(var/atom/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 	if(close_sound)
 		play(close_sound,src)
 		if(caller) create_alert(VIEW_RANGE,src,caller,ALERT_LEVEL_NOISE)
@@ -120,12 +120,12 @@ obj/structure/interactive/door/proc/close(var/atom/caller,var/lock = FALSE,var/f
 		door_state = DOOR_STATE_CLOSED
 		update_sprite()
 
-/obj/structure/interactive/door/proc/unlock(var/atom/caller,var/force = FALSE)
+/obj/structure/interactive/door/proc/unlock(var/mob/caller,var/force = FALSE)
 	locked = FALSE
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/door/proc/lock(var/atom/caller,var/force = FALSE)
+/obj/structure/interactive/door/proc/lock(var/mob/caller,var/force = FALSE)
 	locked = TRUE
 	update_sprite()
 	return TRUE

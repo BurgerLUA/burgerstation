@@ -17,7 +17,7 @@
 	maptext = "Left Weapon"
 	maptext_width = TILE_SIZE*3 - 8
 	maptext_x = 4
-	var/weapon_slot = 2
+	var/weapon_slot = 1
 
 /obj/hud/button/vehicle/weapon/proc/set_map_text(var/desired_text)
 	maptext = desired_text
@@ -29,7 +29,7 @@
 
 	if(owner && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		if(A.driving && length(A.driving.equipment) && A.driving.equipment[weapon_slot])
+		if(A.driving && length(A.driving.equipment) >= weapon_slot && A.driving.equipment[weapon_slot])
 			set_map_text(A.driving.equipment[weapon_slot].name)
 
 	return .
@@ -41,7 +41,7 @@
 	maptext = "<div style='text-align:right'>Right Weapon</div>"
 	maptext_width = TILE_SIZE*3 - 8
 	maptext_x = 4
-	weapon_slot = 1
+	weapon_slot = 2
 
 /obj/hud/button/vehicle/weapon/right/set_map_text(var/desired_text)
 	maptext = "<div style='text-align:right'>[desired_text]</div>"
@@ -93,7 +93,7 @@
 /obj/hud/button/vehicle/ammo_display/proc/update_ammo()
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		if(A.driving && length(A.driving.equipment) && istype(A.driving.equipment[weapon_slot],/obj/item/weapon/ranged/))
+		if(A.driving && length(A.driving.equipment) >= weapon_slot && istype(A.driving.equipment[weapon_slot],/obj/item/weapon/ranged/))
 			var/obj/item/weapon/ranged/E = A.driving.equipment[weapon_slot]
 			set_map_text("[E.get_ammo_count()]")
 

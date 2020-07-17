@@ -168,10 +168,10 @@
 
 	var/list/possible_attacks = list()
 
-	if(defer_right_click && owner.can_attack(target,defer_right_click,params,null))
+	if(defer_right_click && owner.can_attack(target,defer_right_click,params,null) && target.can_be_attacked(A,defer_right_click,params,null))
 		possible_attacks += defer_right_click
 
-	if(defer_left_click && owner.can_attack(target,defer_left_click,params,null))
+	if(defer_left_click && owner.can_attack(target,defer_left_click,params,null) && target.can_be_attacked(A,defer_left_click,params,null))
 		possible_attacks += defer_left_click
 
 	if(!length(possible_attacks))

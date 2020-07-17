@@ -8,7 +8,7 @@
 	attack_delay = 10
 	attack_delay_max = 15
 
-/obj/item/weapon/melee/energy/chainsaw/click_self(var/atom/caller)
+/obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)
 	. = ..()
 	if(enabled)
 		play('sound/weapons/energy/energy_on.ogg',src)

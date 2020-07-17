@@ -22,7 +22,7 @@
 
 	var/health_states = 0
 
-/obj/structure/interactive/blob/on_destruction(var/atom/caller,var/damage = FALSE)
+/obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
 	qdel(src)
 	return TRUE
 
@@ -45,6 +45,8 @@
 
 	for(var/mob/living/L in range(1,src))
 		if(!src.can_attack(L,src,null,damage_type))
+			continue
+		if(!L.can_be_attacked(src,src,null,damage_type))
 			continue
 		src.attack(src,L,precise = TRUE)
 		if(L.loc != src.loc && src.loc.Enter(L,L.loc) && get_dist(linked_core,L) >= get_dist(linked_core,src))

@@ -45,7 +45,7 @@
 
 	return ..()
 
-/obj/item/powercell/click_on_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/powercell/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
 

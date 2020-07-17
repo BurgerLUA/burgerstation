@@ -1,11 +1,23 @@
+
+/obj/item/weapon/ranged/energy/mech/smg/
+	bullet_color = COLOR_BULLET
+
+	heat_per_shot = 0.01
+	heat_max = 0.03
+
+/obj/item/weapon/ranged/energy/mech/smg/get_static_spread() //Base spread
+	return 0.005
+
+/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(var/mob/living/L) //Base spread
+	return 0
+
 /obj/item/weapon/ranged/energy/mech/smg/mk1
-	name = "mk1 machine gun"
+	name = "9x19mm SMG"
 	icon = 'icons/obj/item/weapons/ranged/mech/mk1_smg.dmi'
-	bullet_color = "#FFFFFF"
 
 	automatic = TRUE
 
-	shoot_delay = 3
+	shoot_delay = 1.5
 
 	charge_max = 250*300
 	charge_current = 250*300
@@ -16,16 +28,15 @@
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
-	shoot_sounds = list('sound/weapons/pistol/shoot.ogg')
+	shoot_sounds = list('sound/weapons/40/shoot_smg.ogg')
 
 /obj/item/weapon/ranged/energy/mech/smg/mk2
-	name = "mk2 machine gun"
+	name = "5.56mm LMG"
 	icon = 'icons/obj/item/weapons/ranged/mech/mk2_smg.dmi'
-	bullet_color = "#FFFFFF"
 
 	automatic = TRUE
 
-	shoot_delay = 4
+	shoot_delay = 2
 
 	charge_max = 500*240
 	charge_current = 500*240
@@ -36,16 +47,15 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
-	shoot_sounds = list('sound/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
 /obj/item/weapon/ranged/energy/mech/smg/mk3
-	name = "mk3 machine gun"
+	name = "7.62mm HMG"
 	icon = 'icons/obj/item/weapons/ranged/mech/mk3_smg.dmi'
-	bullet_color = "#FFFFFF"
 
 	automatic = TRUE
 
-	shoot_delay = 5
+	shoot_delay = 3
 
 	charge_max = 1000*120
 	charge_current = 1000*120
@@ -56,4 +66,4 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
-	shoot_sounds = list('sound/weapons/pistol_medium/shoot.ogg')
+	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')

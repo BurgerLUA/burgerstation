@@ -65,7 +65,7 @@
 
 	return TRUE
 
-obj/structure/interactive/door/airlock/open(var/atom/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 
 	if(!force)
 		if(locked || no_access)
@@ -83,7 +83,7 @@ obj/structure/interactive/door/airlock/open(var/atom/caller,var/lock = FALSE,var
 	set_door_state(caller,DOOR_STATE_START_OPENING,lock)
 	return TRUE
 
-obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 
 	if(!force)
 		if(locked)
@@ -100,10 +100,10 @@ obj/structure/interactive/door/airlock/close(var/atom/caller,var/lock = FALSE,va
 	set_door_state(caller,DOOR_STATE_CLOSING_01,lock)
 	return TRUE
 
-/obj/structure/interactive/door/proc/set_door_state(var/atom/caller=null,var/desired_door_state,var/should_lock=FALSE)
+/obj/structure/interactive/door/proc/set_door_state(var/mob/caller=null,var/desired_door_state,var/should_lock=FALSE)
 	return TRUE
 
-/obj/structure/interactive/door/airlock/set_door_state(var/atom/caller=null,var/desired_door_state,var/should_lock=FALSE)
+/obj/structure/interactive/door/airlock/set_door_state(var/mob/caller=null,var/desired_door_state,var/should_lock=FALSE)
 
 	door_state = desired_door_state
 	update_sprite()

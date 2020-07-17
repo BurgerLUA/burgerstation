@@ -1,4 +1,4 @@
-/obj/item/clothing/click_on_object(var/atom/caller,var/atom/object,location,control,params) //When we attack something with the clothes
+/obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
 		quick_equip(caller)
@@ -7,7 +7,7 @@
 	return ..()
 
 
-/obj/item/clothing/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_inventory(object) && is_inventory(src.loc))
 

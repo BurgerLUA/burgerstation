@@ -244,7 +244,6 @@
 		/obj/item/weapon/ranged/energy/mech/smg/mk3
 	)
 
-
 /obj/structure/interactive/vending/chaplain/wardrobe
 	name = "chaplain wardrobe vendor"
 	icon_state = "chapdrobe"

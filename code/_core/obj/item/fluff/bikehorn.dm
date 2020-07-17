@@ -13,7 +13,7 @@ obj/item/fluff/bikehorn
 	icon_state_held_left = "held_left"
 	icon_state_held_right = "held_right"
 
-obj/item/fluff/bikehorn/click_self(var/atom/caller)
+obj/item/fluff/bikehorn/click_self(var/mob/caller)
 
 	. = ..()
 

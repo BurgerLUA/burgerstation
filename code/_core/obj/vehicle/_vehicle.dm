@@ -51,18 +51,20 @@
 			B.update_owner(null)
 	return TRUE
 
-/mob/living/vehicle/proc/attach_equipment(var/obj/item/I)
+/mob/living/vehicle/proc/attach_equipment(var/mob/caller,var/obj/item/I)
 	if(I in equipment)
 		return FALSE
+	caller?.to_chat(span("notice","You attach \the [I.name] to \the [src.name]."))
 	equipment += I
 	I.drop_item(src)
 	I.unremovable = TRUE
 
-/mob/living/vehicle/proc/unattach_equipment(var/obj/item/I)
+/mob/living/vehicle/proc/unattach_equipment(var/mob/caller,var/obj/item/I)
 	if(!(I in equipment))
 		return FALSE
+	caller?.to_chat(span("notice","You detach \the [I.name] from \the [src.name]."))
 	equipment -= I
-	I.force_move(get_turf(src))
+	I.force_move(get_turf(caller))
 	I.unremovable = initial(I.unremovable)
 
 /mob/living/vehicle/New(var/desired_loc)
@@ -93,24 +95,36 @@
 				var/atom/movable/choice = input("What would you like to remove?","Equipment Removal") as null|anything in equipment
 				if(choice && choice in equipment)
 					caller.to_chat(span("notice","You remove \the [choice.name] from \the [src.name]."))
-					choice.force_move(get_turf(caller))
+					unattach_equipment(caller,choice)
 				else
 					caller.to_chat(span("notice","You choose not to remove anything."))
-
 				return TRUE
 
-			if(istype(I,/obj/item/weapon/ranged/))
+			if(istype(I,/obj/item/weapon))
 				if(length(equipment) >= 2)
 					caller.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
 					return TRUE
-				var/obj/item/weapon/ranged/R = I
-				caller.to_chat(span("notice","You attach \the [R.name] to \the [src.name]."))
-				attach_equipment(R)
+				attach_equipment(caller,I)
 				return TRUE
 
 			return TRUE
 
+	if(is_inventory(object))
+		if(!can_enter_vehicle(caller))
+			return TRUE
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/enter_vehicle,caller)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_vehicle,caller)
+		return TRUE
+
 	return ..()
+
+/mob/living/vehicle/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(!(get_dir(src,victim) & dir))
+		return FALSE
+
+	return ..()
+
 
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -124,20 +138,17 @@
 
 	var/click_flags = A.client.get_click_flags(params,TRUE)
 
-	if(length(equipment))
-		if(click_flags & RIGHT_HAND)
-			if(equipment[1])
-				equipment[1].click_on_object(caller,object,location,control,params)
-			else
-				caller.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
+	if(click_flags & RIGHT_HAND)
+		if(length(equipment) >= 1)
+			equipment[1].click_on_object(caller,object,location,control,params)
+		else
+			caller.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
 
-		if(click_flags & LEFT_HAND && equipment[2])
-			if(equipment[2])
-				equipment[2].click_on_object(caller,object,location,control,params)
-			else
-				caller.to_chat("\the [src.name] blares, \"No equipment found in slot 2!\"")
-	else
-		caller.to_chat("<b>\the [src.name]</b> blares, \"No equipment found!\"")
+	if(click_flags & LEFT_HAND)
+		if(length(equipment) >= 2)
+			equipment[2].click_on_object(caller,object,location,control,params)
+		else
+			caller.to_chat("\the [src.name] blares, \"No equipment found in slot 2!\"")
 
 	return TRUE
 
@@ -243,15 +254,5 @@
 	if(A.iff_tag != iff_tag)
 		A.to_chat("ERROR: Unrecognized IFF tag.")
 		return FALSE
-
-	return TRUE
-
-/mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Enter the vehicle.
-
-	if(!can_enter_vehicle(caller))
-		return FALSE
-
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/enter_vehicle,caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_vehicle,caller)
 
 	return TRUE

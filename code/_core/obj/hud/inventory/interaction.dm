@@ -127,7 +127,7 @@
 
 	return FALSE
 
-/obj/hud/inventory/drop_on_object(var/atom/caller,var/atom/object,location,control,params) //Src is dragged to object
+/obj/hud/inventory/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 
 	if(is_inventory(object))
 		var/obj/hud/inventory/object_as_inventory = object
@@ -163,7 +163,7 @@
 	item_to_wield.update_sprite() //This will also update the inventory.
 	return TRUE
 
-/obj/hud/inventory/dropped_on_by_object(var/atom/caller,var/atom/object,location,control,params) //Object dropped on src
+/obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 
 	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object

@@ -1,3 +1,11 @@
+/mob/living/advanced/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(driving && !driving.can_attack(victim,weapon,params,damage_type))
+		return FALSE
+
+	return ..()
+
+
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))

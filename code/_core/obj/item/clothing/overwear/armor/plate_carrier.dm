@@ -42,7 +42,7 @@
 
 	return .
 
-/obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(var/atom/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/armor_plate/))
 		if(length(installed_plate_carriers) >= 2)

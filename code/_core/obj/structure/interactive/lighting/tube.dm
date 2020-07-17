@@ -27,7 +27,7 @@
 
 	health_base = 10
 
-/obj/structure/interactive/lighting/tube/on_destruction(var/atom/caller,var/damage = FALSE)
+/obj/structure/interactive/lighting/tube/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	if(desired_light_color)
 		desired_light_color = null

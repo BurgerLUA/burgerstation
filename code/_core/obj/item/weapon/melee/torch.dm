@@ -22,7 +22,7 @@
 
 	value = 10
 
-/obj/item/weapon/melee/torch/click_self(var/atom/caller)
+/obj/item/weapon/melee/torch/click_self(var/mob/caller)
 	enabled = !enabled
 	update_sprite()
 	update_atom_light()

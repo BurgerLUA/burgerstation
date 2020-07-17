@@ -95,7 +95,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/ore_deposit/proc/mine_ore(var/atom/caller)
+/obj/structure/interactive/ore_deposit/proc/mine_ore(var/mob/caller)
 
 	return TRUE
 
