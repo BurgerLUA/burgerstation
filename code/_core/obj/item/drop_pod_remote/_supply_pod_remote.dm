@@ -47,13 +47,23 @@
 	INITIALIZE(SP)
 	return TRUE
 
+/obj/item/supply_remote/ripley
+	name = "drop pod remote - Ripley Mining Mech"
+	stored_object_types = list(/mob/living/vehicle/mech/ripley)
+	value = 1000
+
 /obj/item/supply_remote/gygax
 	name = "drop pod remote - Gygax Combat Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/gygax/equipped)
+	stored_object_types = list(/mob/living/vehicle/mech/gygax)
+	value = 2500
+
+/obj/item/supply_remote/durand
+	name = "drop pod remote - Durand Combat Mech"
+	stored_object_types = list(/mob/living/vehicle/mech/durand)
 	value = 5000
 
 /obj/item/supply_remote/crates/
-	value = 5000
+	value = 2000
 
 /obj/item/supply_remote/crates/nanotrasen
 	name = "drop pod remote - x4 NanoTrasen supply crates"

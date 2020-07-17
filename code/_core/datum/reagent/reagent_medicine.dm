@@ -251,6 +251,15 @@
 
 	liquid = -0.5
 
+/reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+
+	. = ..()
+
+	if(. && is_living(target))
+		on_add(container,volume_to_splash*0.5,0)
+
+	return .
+
 /reagent/medicine/silver_sulfadiazine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
@@ -289,6 +298,15 @@
 	value = 2
 
 	liquid = -0.5
+
+/reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+
+	. = ..()
+
+	if(. && is_living(target))
+		on_add(container,volume_to_splash*0.5,0)
+
+	return .
 
 
 /reagent/medicine/styptic_powder/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)

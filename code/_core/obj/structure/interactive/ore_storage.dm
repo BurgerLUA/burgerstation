@@ -27,14 +27,27 @@
 	return .
 
 /obj/structure/interactive/ore_storage/Cross(atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
-	store_ore(O)
-	return FALSE
+
+	if(store_ore(O))
+		return FALSE
+
+	return ..()
+
+
+/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/caller,object,location,control,params)
+
+	INTERACT_CHECK
+
+	if(store_ore(object))
+		return TRUE
+
+	return ..()
 
 /obj/structure/interactive/ore_storage/proc/store_ore(var/atom/movable/M)
 
 	if(istype(M,/obj/item/material/ore/))
 		var/obj/item/material/ore/O = M
-		O.force_move(src)
+		O.drop_item(src)
 		return TRUE
 
 	if(istype(M,/obj/structure/interactive/ore_box))
@@ -43,10 +56,8 @@
 		for(var/obj/item/material/ore/O in OB.contents)
 			if(store_ore(O))
 				did_store = TRUE
-
 		if(did_store)
 			OB.visible_message("\The [OB.name] dumps all the ore inside \the [src.name].")
-
 		return TRUE
 
 	return FALSE

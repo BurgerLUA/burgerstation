@@ -98,7 +98,7 @@
 		if(caller && !silent)
 			caller.to_chat("You swap \the [old_disk.name] for \the [desired_disk.name].")
 
-	desired_disk.force_move(src)
+	desired_disk.drop_item(src)
 	rcd_disk = desired_disk
 	if(caller && !silent)
 		caller.to_chat("You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD.")

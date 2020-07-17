@@ -8,12 +8,14 @@
 /obj/item/proc/is_held()
 	return istype(src.loc,/obj/hud/inventory)
 
-/obj/item/proc/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0)
+/obj/item/proc/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0) //Should be used in place of forcemove when it can.
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		if(!new_location)
 			new_location = get_turf(I.owner)
-		return I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset)
+		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset))
+			return TRUE
+	force_move(new_location)
 	return FALSE
 
 /*

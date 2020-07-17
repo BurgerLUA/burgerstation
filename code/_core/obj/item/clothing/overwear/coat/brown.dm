@@ -1,5 +1,5 @@
 /obj/item/clothing/overwear/coat/brown
-	name = "coat"
+	name = "brown coat"
 	icon = 'icons/obj/item/clothing/suit/detective_coat.dmi'
 
 	desc = "The detective's favorite."

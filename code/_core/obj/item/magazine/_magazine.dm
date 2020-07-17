@@ -147,7 +147,6 @@
 		if(G.stored_magazine)
 			G.eject_magazine(caller)
 		src.drop_item(G)
-		src.force_move(G)
 		G.stored_magazine = src
 		G.open = FALSE
 		play(get_magazine_insert_sound(),src)

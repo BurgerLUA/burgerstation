@@ -85,7 +85,7 @@
 			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
 			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
-				if(!create_blood(/obj/effect/blood/splatter,get_turf(src),blood_color,offset_x,offset_y))
+				if(!create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),blood_color,offset_x,offset_y))
 					break
 
 			blood_volume -= FLOOR(total_bleed_damage/5,1)

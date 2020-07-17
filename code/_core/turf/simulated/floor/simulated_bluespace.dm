@@ -22,8 +22,5 @@
 
 	if(. && !istype(Obj,/mob/abstract/))
 		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
-		if(is_safe_to_delete(Obj))
-			qdel(Obj)
-		else
-			Obj.force_move(pick(rift_markers))
+		Obj.force_move(pick(rift_markers))
 

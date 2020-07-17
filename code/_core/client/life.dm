@@ -1,6 +1,7 @@
 /client/proc/on_life()
 
 	spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK))
+	spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK))
 
 	if(queued_chat_messages && length(queued_chat_messages) && queued_chat_messages[1])
 

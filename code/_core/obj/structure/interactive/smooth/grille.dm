@@ -22,11 +22,9 @@
 
 	INTERACT_CHECK
 
-	if(is_item(object) && is_inventory(object.loc))
+	if(is_item(object))
 		var/obj/item/I = object
-		var/obj/hud/inventory/I2 = object.loc
-		I2.remove_object(I,get_turf(I2))
-		I.force_move(src)
+		I.drop_item(src)
 		caller.visible_message(
 			span("notice","\The [caller] name slides in \the [I.name] into \the [src.name]."),
 			span("notice","You slide in \the [I.name] into \the [src.name]."),

@@ -24,6 +24,8 @@
 
 	loc = locate(x+x_offset,y+y_offset,z) //Legitimately don't know why force_move or get_step doesn't work here. Even in initialize.
 
+	return TRUE
+
 obj/structure/interactive/computer/wall
 	name = "wall computer"
 	desc = "Compute walls!"

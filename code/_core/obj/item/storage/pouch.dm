@@ -45,6 +45,9 @@
 /obj/item/storage/pouch/single/black
 	color = COLOR_BLACK
 
+/obj/item/storage/pouch/single/brown
+	color = COLOR_BROWN
+
 /obj/item/storage/pouch/double
 	name = "double medium pouches"
 	desc_extended = "Storage pouches attachable to the groin or chest. This one can carry two Size 3 items, such as rifles or medkits."

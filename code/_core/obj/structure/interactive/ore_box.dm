@@ -15,8 +15,7 @@
 
 	if(istype(object,/obj/item/material/ore))
 		var/obj/item/material/ore/O = object
-		O.drop_item(src.loc)
-		O.force_move(src)
+		O.drop_item(src)
 		return TRUE
 
 	return ..()

@@ -212,7 +212,7 @@
 	if(bleeding && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		if(A.blood_volume && A.should_bleed() && prob(10))
-			create_blood(/obj/effect/blood/drip,get_turf(A),A.blood_color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
+			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),A.blood_color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
 			A.blood_volume--
 
 	return TRUE

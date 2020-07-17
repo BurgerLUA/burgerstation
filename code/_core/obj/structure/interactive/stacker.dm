@@ -24,7 +24,7 @@
 	if(I.item_count_current >= I.item_count_max)
 		return FALSE
 
-	O.force_move(src)
+	I.drop_item(src)
 
 	for(var/obj/item/E in contents) //E for existing
 		if(I.can_transfer_stacks_to(E))

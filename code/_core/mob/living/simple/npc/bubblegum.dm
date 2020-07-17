@@ -108,9 +108,9 @@
 		var/turf/simulated/T0 = get_turf(src)
 		var/turf/simulated/T1 = get_step(src,turn(dir,90))
 		var/turf/simulated/T2 = get_step(src,turn(dir,-90))
-		create_blood(/obj/effect/blood/splatter,T0,"#7F0000",rand(-8,8),rand(-8,8))
-		create_blood(/obj/effect/blood/splatter,T1,"#7F0000",rand(-8,8),rand(-8,8))
-		create_blood(/obj/effect/blood/splatter,T2,"#7F0000",rand(-8,8),rand(-8,8))
+		create_blood(/obj/effect/cleanable/blood/splatter,T0,"#7F0000",rand(-8,8),rand(-8,8))
+		create_blood(/obj/effect/cleanable/blood/splatter,T1,"#7F0000",rand(-8,8),rand(-8,8))
+		create_blood(/obj/effect/cleanable/blood/splatter,T2,"#7F0000",rand(-8,8),rand(-8,8))
 
 	return ..()
 

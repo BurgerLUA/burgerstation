@@ -13,7 +13,7 @@
 
 	layer = LAYER_MOB_BELOW
 
-	var/list/obj/item/equipment
+	var/list/obj/item/equipment = list()
 
 	var/list/vehicle_buttons = list()
 
@@ -55,7 +55,7 @@
 	if(I in equipment)
 		return FALSE
 	equipment += I
-	I.force_move(src)
+	I.drop_item(src)
 	I.unremovable = TRUE
 
 /mob/living/vehicle/proc/unattach_equipment(var/obj/item/I)
@@ -70,6 +70,47 @@
 	passengers = list()
 	equipment = list()
 	update_sprite()
+
+
+/mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	object = object.defer_click_on_object(location,control,params)
+
+	if(is_item(object) && is_living(caller))
+		var/mob/living/L = caller
+		if(L.intent != INTENT_HARM)
+			var/obj/item/I = object
+			if(I.flags_tool & FLAG_TOOL_WRENCH)
+
+				if(length(passengers))
+					caller.to_chat(span("warning","You can't remove this while it's in use!"))
+					return TRUE
+
+				if(!length(equipment))
+					caller.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
+					return TRUE
+
+				var/atom/movable/choice = input("What would you like to remove?","Equipment Removal") as null|anything in equipment
+				if(choice && choice in equipment)
+					caller.to_chat(span("notice","You remove \the [choice.name] from \the [src.name]."))
+					choice.force_move(get_turf(caller))
+				else
+					caller.to_chat(span("notice","You choose not to remove anything."))
+
+				return TRUE
+
+			if(istype(I,/obj/item/weapon/ranged/))
+				if(length(equipment) >= 2)
+					caller.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
+					return TRUE
+				var/obj/item/weapon/ranged/R = I
+				caller.to_chat(span("notice","You attach \the [R.name] to \the [src.name]."))
+				attach_equipment(R)
+				return TRUE
+
+			return TRUE
+
+	return ..()
 
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

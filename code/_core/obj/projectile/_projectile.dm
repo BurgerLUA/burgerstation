@@ -62,6 +62,7 @@
 
 	anchored = TRUE
 
+
 /obj/projectile/Destroy()
 	owner = null
 	weapon = null
@@ -71,7 +72,6 @@
 	start_turf = null
 	previous_loc = null
 	current_loc = null
-
 	all_projectiles -= src
 	return ..()
 
@@ -304,7 +304,6 @@
 	return TRUE
 
 /obj/projectile/proc/on_hit(var/atom/hit_atom)
-	all_projectiles -= src
 	post_on_hit(hit_atom)
 	qdel(src)
 	return TRUE

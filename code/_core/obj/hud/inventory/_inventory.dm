@@ -383,15 +383,17 @@
 
 	var/atom/old_location = I.loc
 
+	/*
 	if(is_inventory(I.loc))
 		var/obj/hud/inventory/I2 = I.loc
 		if(I2 == src)
 			return FALSE
 		I2.remove_object(I,get_turf(I))
+	*/
 
 	undelete(I)
 
-	I.force_move(src)
+	I.drop_item(src)
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
 	I.pre_pickup(old_location,src)
@@ -431,15 +433,17 @@
 
 	var/atom/old_location = I.loc
 
+	/*
 	if(is_inventory(I.loc))
 		var/obj/hud/inventory/I2 = I.loc
 		if(I2 == src)
 			return FALSE
 		I2.remove_object(I,owner.loc)
+	*/
 
 	undelete(I)
 
-	I.force_move(src)
+	I.drop_item(src)
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
 	I.pre_pickup(old_location,src)

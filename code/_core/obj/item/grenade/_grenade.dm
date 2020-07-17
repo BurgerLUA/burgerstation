@@ -108,7 +108,6 @@
 			if(length(stored_containers) < max_containers)
 				var/obj/item/container/beaker/B = object
 				B.drop_item(src)
-				B.force_move(src)
 				stored_containers += B
 				caller.to_chat(span("notice","You fit \the [object.name] inside \the [src.name]."))
 				update_sprite()

@@ -235,6 +235,16 @@
 	name = "robotics vendor"
 	icon_state = "robotics"
 
+/obj/structure/interactive/vending/robotics/mech_gun_fabricator
+	name = "mech gun fabricator"
+	icon_state = "mech"
+	stored_types = list(
+		/obj/item/weapon/ranged/energy/mech/smg/mk1,
+		/obj/item/weapon/ranged/energy/mech/smg/mk2,
+		/obj/item/weapon/ranged/energy/mech/smg/mk3
+	)
+
+
 /obj/structure/interactive/vending/chaplain/wardrobe
 	name = "chaplain wardrobe vendor"
 	icon_state = "chapdrobe"
@@ -276,10 +286,6 @@
 /obj/structure/interactive/vending/hydroponics/nutri
 	name = "garden vendor"
 	icon_state = "nutri"
-
-/obj/structure/interactive/vending/mining
-	name = "mining vendor"
-	icon_state = "mining"
 
 
 /obj/structure/interactive/vending/soda

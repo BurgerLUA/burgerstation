@@ -72,6 +72,10 @@
 /obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,object,location,control,params)
 
 	INTERACT_CHECK
+	SPAM_CHECK
+
+	if(caller.client)
+		world.log << "Num: [caller.client.spam_protection_interact]."
 
 	if(!(caller.attack_flags & ATTACK_GRAB))
 		toggle(caller)

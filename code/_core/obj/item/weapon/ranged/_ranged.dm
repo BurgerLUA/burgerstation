@@ -12,7 +12,7 @@
 	var/ranged_damage_type
 	var/projectile_speed = 31 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
-	var/bullet_count = 1 //Fallback value
+	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
 	damage_type = /damagetype/melee/club/gun_butt
 
 	var/list/empty_sounds = list()
@@ -71,8 +71,7 @@
 			if(istype(firing_pin))
 				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
 			else
-				I.drop_item()
-				I.force_move(src)
+				I.drop_item(src)
 				firing_pin = I
 				caller.to_chat(span("notice","You carefully slide in and install \the [I.name] into \the [src.name]."))
 			return TRUE
@@ -330,6 +329,8 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 
 	var/list/xy_list = get_projectile_path(caller,target_fake_x,target_fake_y,accuracy_loss)
 
+	. = list()
+
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
 		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,base_spread)
@@ -357,8 +358,11 @@ obj/item/weapon/ranged/proc/shoot(var/atom/caller,var/atom/object,location,param
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer)
+			INITIALIZE(P)
+			. += P
 
+	return .
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
 	return 0.01

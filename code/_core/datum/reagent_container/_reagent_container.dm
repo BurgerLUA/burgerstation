@@ -493,3 +493,32 @@
 			english_flavor_profile += flavor_text
 
 	return english_list(english_flavor_profile)
+
+
+/reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE)
+
+	if(!splash_amount)
+		CRASH_SAFE("Tried to splash with no splash amount!")
+		return FALSE
+
+	if(!target)
+		CRASH_SAFE("Tried to splash with no target!")
+		return FALSE
+
+	if(!volume_current)
+		CRASH_SAFE("Tried to splash with an empty container!")
+		return FALSE
+
+	target = target.change_victim(caller)
+
+	for(var/r_id in stored_reagents)
+		var/reagent/R = REAGENT(r_id)
+		var/volume_to_splash = remove_reagent(R.type,stored_reagents[r_id] * (splash_amount/volume_current),FALSE,FALSE)
+		R.on_splash(src,caller,target,volume_to_splash)
+
+	if(!silent)
+		caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [src.owner.name] on \the [target.name]!"))
+
+	update_container()
+
+	return TRUE

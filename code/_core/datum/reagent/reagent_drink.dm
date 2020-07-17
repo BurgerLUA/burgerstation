@@ -12,6 +12,21 @@
 
 	value = 0.2
 
+/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
+
+	. = ..()
+
+	if(. && isturf(target))
+		var/turf/T = target
+		var/cleaning_power = volume_to_splash
+		for(var/obj/effect/cleanable/C in T)
+			if(cleaning_power <= 0)
+				break
+			qdel(C)
+			cleaning_power -= 10
+
+	return .
+
 /reagent/nutrition/soda
 	name = "carbonated water"
 	desc = "Carbonated water."

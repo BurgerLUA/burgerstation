@@ -52,6 +52,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/ping_num = 0
 
 	var/spam_protection_chat = 0 //Prevents users from spamming every tick.
+	var/spam_protection_interact = 0 //Prevents soundspam and other memes.
 	var/last_message //See above.
 
 	var/list/stored_hud_images = list() //For MediHUDs
@@ -264,7 +265,7 @@ var/global/list/all_clients = list() //Assoc list
 		examine(object)
 		return TRUE
 
-	..()
+	return ..()
 
 /client/Click(var/atom/object,location,control,params)
 
@@ -280,7 +281,7 @@ var/global/list/all_clients = list() //Assoc list
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_click(object,location,control,aug)
 
-	..()
+	return ..()
 
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
@@ -348,7 +349,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	store_new_params(over_object,over_location,params)
 
-	..()
+	return ..()
 
 
 /client/proc/store_new_params(over_object,over_location,params)
