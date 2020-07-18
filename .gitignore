@@ -10,6 +10,7 @@ Thumbs.db
 data/
 cfg/
 config/config.txt
+error_log.txt
 build_log.txt
 code/_core/world/private.dm
 maps/main/backup/

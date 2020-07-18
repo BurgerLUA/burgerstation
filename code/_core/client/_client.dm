@@ -88,7 +88,7 @@ var/global/list/all_clients = list() //Assoc list
 	update_verbs()
 
 /client/proc/get_debug_name()
-	return "[src](MOB: [mob ? "[mob.name]([mob.x])([mob.y])([mob.z])" : "NONE"])"
+	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
 
 /client/Del() //Called when the client disconnects.
 

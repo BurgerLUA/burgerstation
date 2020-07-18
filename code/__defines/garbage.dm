@@ -8,7 +8,7 @@
 		if (!object.qdel_warning && WARN_ON_DUPLICATE_QDEL) {														\
 			var/warning_message = "[object.get_debug_name()] was queued for delete more than once!";				\
 			CRASH_SAFE(warning_message);																			\
-			text2file(warning_message,GARBAGE_LOGS_PATH);															\
+			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");															\
 		}																											\
 		object.qdel_warning = TRUE;																					\
 	}																												\
@@ -18,6 +18,6 @@
 		if (!object.Destroy()) {																					\
 			var/warning_message = "[object.get_debug_name()] did not have a proper destroy call!";					\
 			CRASH_SAFE(warning_message);																			\
-			text2file(warning_message,GARBAGE_LOGS_PATH);															\
+			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");															\
 		}																											\
 	}

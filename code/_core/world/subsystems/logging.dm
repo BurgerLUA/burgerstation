@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(logging)
 
 	if(length(buffered_log_chat))
 		var/chat_log_string = english_list(buffered_log_chat,"ERROR.","\n","\n")
-		text2file(chat_log_string,get_logging_dir("chat"))
+		rustg_log_write(get_logging_dir("chat"),chat_log_string,"true")
 		buffered_log_chat.Cut()
 
 	return TRUE

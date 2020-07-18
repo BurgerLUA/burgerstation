@@ -26,6 +26,7 @@ var/global/world_state = STATE_STARTING
 	loop_checks = 0
 
 /world/New()
+	__detect_rust_g()
 	..()
 	life()
 

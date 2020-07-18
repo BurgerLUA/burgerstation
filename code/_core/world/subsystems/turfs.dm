@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(turfs)
 	cpu_usage_max = 50
 	tick_usage_max = 50
 
+
+
 /subsystem/turfs/Initialize()
 
 	set background = 1

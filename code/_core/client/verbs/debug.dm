@@ -314,3 +314,7 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
+
+/client/verb/noise_test()
+	var/test = rustg_noise_get_at_coordinates(rand(1,1000),26,26)
+	to_chat("The result is: [test].")
