@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(tips)
 
 /subsystem/tips/Initialize()
 
-	var/tips_text = file2text(TIPS)
+	var/tips_text = rustg_file_read(TIPS)
 
 	if(!tips_text)
 		log_error("WARNING: [TIPS] does not exist!")

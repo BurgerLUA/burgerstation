@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(badnames)
 
 /subsystem/badnames/Initialize()
 
-	var/badnames = file2text(BADNAMES)
+	var/badnames = rustg_file_read(BADNAMES)
 	if(!badnames)
 		return
 

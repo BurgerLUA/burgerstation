@@ -13,11 +13,10 @@ SUBSYSTEM_DEF(logging)
 
 /subsystem/logging/Initialize()
 	if(fexists(ROUND_ID_DIR))
-		var/file_text = file2text(ROUND_ID_DIR)
+		var/file_text = rustg_file_read(ROUND_ID_DIR)
 		round_id = text2num(file_text)
 	round_id++
-	fdel(ROUND_ID_DIR)
-	text2file("[round_id]",ROUND_ID_DIR)
+	rustg_file_write("[round_id]",ROUND_ID_DIR)
 	start_date = lowertext(time2text(world.realtime,"YYYY-MMM-DD"))
 	return ..()
 

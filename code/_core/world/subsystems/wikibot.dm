@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(wikibot)
 
 /subsystem/wikibot/Initialize()
 
-	var/wikibot_file = file2text(WIKIBOT)
+	var/wikibot_file = rustg_file_read(WIKIBOT)
 
 	if(wikibot_file)
 		wikibot_list = json_decode(wikibot_file)
@@ -25,8 +25,7 @@ SUBSYSTEM_DEF(wikibot)
 
 /subsystem/wikibot/proc/add_new_wikibot_key(var/list/keywords,var/answer)
 	wikibot_list += list(list("keywords" = keywords, "answer" = answer))
-	fdel(WIKIBOT)
-	text2file(json_encode(wikibot_list),WIKIBOT)
+	rustg_file_write(json_encode(wikibot_list),WIKIBOT)
 	return TRUE
 
 /subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)

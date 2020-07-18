@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/prefabs_loaded = 0
 
 	for(var/obj/marker/map/M in world)
-		dmm_suite.read_map(file2text(M.map_file),M.x,M.y,M.z)
+		dmm_suite.read_map(rustg_file_read(M.map_file),M.x,M.y,M.z)
 		M.post_map_load()
 		prefabs_loaded++
 

@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(admin)
 		log_subsystem(name,"Could not find an admin file ([RANK_DIR]).")
 		return ..()
 
-	var/file_text = file2text(RANK_DIR)
+	var/file_text = rustg_file_read(RANK_DIR)
 	var/list/split_file = splittext(file_text,"\n")
 	var/line_count = 0
 	for(var/line in split_file)

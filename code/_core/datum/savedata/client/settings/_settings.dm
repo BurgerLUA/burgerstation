@@ -22,9 +22,9 @@
 	var/full_path = "[get_folder(ckey)][get_file()]"
 
 	if(!fexists(full_path))
-		text2file(json_encode(loaded_data),full_path)
+		rustg_file_append(json_encode(loaded_data),full_path)
 
-	var/file_contents = file2text(full_path)
+	var/file_contents = rustg_file_read(full_path)
 	loaded_data = json_decode(file_contents)
 	if(loaded_data["fps_client"])
 		owner.fps = loaded_data["fps_client"]
@@ -55,5 +55,4 @@
 	var/client/owner = CLIENT(ckey)
 	var/full_path = "[get_folder(ckey)][get_file()]"
 	owner.mob.to_chat(span("notice","Your settings have been saved."))
-	fdel(full_path)
-	text2file(json_encode(loaded_data),full_path)
+	rustg_file_write(json_encode(loaded_data),full_path)

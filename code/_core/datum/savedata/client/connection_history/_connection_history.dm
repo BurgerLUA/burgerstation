@@ -32,14 +32,10 @@
 				worst_date = local_date
 				worst_time = local_time
 
-		if(worst_date && worst_time)
-			var/file_to_delete = "[get_folder(ckey)][worst_date]_[worst_time].json"
-			fdel(file_to_delete)
-
 	var/new_file_name = "[get_folder(ckey)][loaded_data["connection_date"]]_[loaded_data["connection_time"]].json"
 	var/new_file_data = json_encode(loaded_data)
 
-	text2file(new_file_data,new_file_name)
+	rustg_file_write(new_file_data,new_file_name)
 
 	return .
 

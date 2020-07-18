@@ -12,13 +12,13 @@
 	var/z = data_to_write["z"]
 	var/unique_identifier = "[x]_[y]_[z]"
 
-	text2file(",\"[unique_identifier]\":" + json_encode(data_to_write),get_file())
+	rustg_file_append(",\"[unique_identifier]\":" + json_encode(data_to_write),get_file())
 
 	return TRUE
 
 /savedata/server/soapstone/proc/quick_load()
 
-	var/json_data = file2text(get_file())
+	var/json_data = rustg_file_read(get_file())
 
 	if(!json_data)
 		return FALSE

@@ -87,7 +87,7 @@ dmm_suite
 	*/
 	load_map(dmm_file as file, z_offset as num)
 		if(!z_offset) z_offset = world.maxz+1
-		var dmmText = file2text(dmm_file)
+		var dmmText = rustg_file_read(dmm_file)
 		return read_map(dmmText, 1, 1, z_offset)
 
 

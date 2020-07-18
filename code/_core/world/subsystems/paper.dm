@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(paper)
 		var/list/book_contents = flist(initial_directory + book_directory)
 		for(var/page_directory in book_contents)
 			found_pages++
-			var/loaded_data = file2text(initial_directory + book_directory + page_directory)
+			var/loaded_data = rustg_file_read(initial_directory + book_directory + page_directory)
 			all_paper_data[title] += loaded_data
 
 	log_subsystem(name,"Found [found_books] books.")

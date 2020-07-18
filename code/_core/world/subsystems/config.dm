@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(config)
 		log_subsystem(name,"Could not find a config file ([CONFIG_DIR]).")
 		return ..()
 
-	var/file_text = file2text(CONFIG_DIR)
+	var/file_text = rustg_file_read(CONFIG_DIR)
 	var/list/split_file = splittext(file_text,"\n")
 	var/line_count = 0
 	for(var/line in split_file)

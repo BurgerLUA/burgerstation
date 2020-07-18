@@ -19,20 +19,17 @@ SUBSYSTEM_DEF(ban)
 
 	//Get the banlist
 	if(fexists(BANLIST_KEYS_DIR))
-		bans_keys = json_decode(file2text(BANLIST_KEYS_DIR))
-		fdel(BANLIST_KEYS_DIR)
+		bans_keys = json_decode(rustg_file_read(BANLIST_KEYS_DIR))
 	else
 		bans_keys_changed = 1
 
 	if(fexists(BANLIST_ADDRESS_DIR))
-		bans_address = json_decode(file2text(BANLIST_ADDRESS_DIR))
-		fdel(BANLIST_ADDRESS_DIR)
+		bans_address = json_decode(rustg_file_read(BANLIST_ADDRESS_DIR))
 	else
 		bans_address_changed = 1
 
 	if(fexists(BANLIST_COMPUTER_DIR))
-		bans_computer_ids = json_decode(file2text(BANLIST_COMPUTER_DIR))
-		fdel(BANLIST_COMPUTER_DIR)
+		bans_computer_ids = json_decode(rustg_file_read(BANLIST_COMPUTER_DIR))
 	else
 		bans_computer_changed = 1
 
@@ -64,13 +61,13 @@ SUBSYSTEM_DEF(ban)
 
 	//Save the banlist
 	if(bans_keys_changed)
-		text2file(json_encode(bans_keys),BANLIST_KEYS_DIR)
+		rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
 	if(bans_address_changed)
-		text2file(json_encode(bans_address),BANLIST_ADDRESS_DIR)
+		rustg_file_write(json_encode(bans_address),BANLIST_ADDRESS_DIR)
 
 	if(bans_computer_changed)
-		text2file(json_encode(bans_computer_ids),BANLIST_COMPUTER_DIR)
+		rustg_file_write(json_encode(bans_computer_ids),BANLIST_COMPUTER_DIR)
 
 	log_subsystem(name,"Tracking [length(bans_keys)] banned ckeys.")
 	log_subsystem(name,"Tracking [length(bans_address)] banned ip addresses.")
@@ -124,8 +121,7 @@ SUBSYSTEM_DEF(ban)
 			Duration: [expires == -1 ? "Forever" : get_nice_time(expires - world.realtime)]")
 			del(C)
 
-	fdel(BANLIST_KEYS_DIR)
-	text2file(json_encode(bans_keys),BANLIST_KEYS_DIR)
+	rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
 	LOG_ADMIN("[desired_ckey] was added to the ckey banlist by [admin_ckey] for [get_nice_time(expires - world.realtime)] with the reason of: [reason].")
 

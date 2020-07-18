@@ -71,6 +71,5 @@
 		verbs += /client/verb/force_save_all
 		verbs += /client/verb/rejuvenate_player
 		verbs += /client/verb/stress_test
-		verbs += /client/verb/noise_test
 
 	return TRUE

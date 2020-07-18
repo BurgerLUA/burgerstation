@@ -72,8 +72,8 @@
 //returns an empty list if the file doesn't exist
 /world/proc/file2list(filename, seperator="\n", trim = TRUE)
 	if (trim)
-		return splittext(trim(file2text(filename)),seperator)
-	return splittext(file2text(filename),seperator)
+		return splittext(trim(rustg_file_read(filename)),seperator)
+	return splittext(rustg_file_read(filename),seperator)
 
 //Turns text into proper directions
 /proc/text2dir(direction)

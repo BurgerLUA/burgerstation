@@ -53,7 +53,7 @@
 
 #ifdef RUSTG_OVERRIDE_BUILTINS
 #define file2text(fname) rustg_file_read(fname)
-#define text2file(text, fname) rustg_file_append(text, fname)
+#define rustg_file_append(text, fname) rustg_file_append(text, fname)
 #endif
 
 #define rustg_git_revparse(rev) call(RUST_G, "rg_git_revparse")(rev)

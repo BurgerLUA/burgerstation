@@ -45,7 +45,7 @@
 /savedata/client/mob/proc/load_json_data_from_id(var/character_id)
 
 	var/filename = get_file(character_id)
-	var/data = file2text(filename)
+	var/data = rustg_file_read(filename)
 
 	if(!data)
 		log_error("FATAL ERROR: NO DATA FOUND FOR [filename] for [ckey].")
@@ -60,9 +60,7 @@
 	json_data["last_saved_time"] = get_time()
 	var/desired_file = get_file(character_id)
 	var/data = json_encode(json_data)
-	if(data)
-		fdel(desired_file)
-	return text2file(data,desired_file)
+	return rustg_file_write(data,desired_file)
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
