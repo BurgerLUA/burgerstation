@@ -1,7 +1,11 @@
 /obj/marker/generation
 	name = "generation marker"
+	icon = 'icons/obj/markers/generation.dmi'
+	icon_state = "generation"
 
 	var/atom/object_to_place
+
+	var/turf/turf_whitelist
 
 	var/turf/list/valid_turfs = list()
 	var/turf/list/forbidden_turfs = list()
@@ -15,6 +19,9 @@
 	var/skip_chance = 25 //Higher values makes it look less circular.
 	var/hole_chance = 5 //Higher values make it look more like swiss cheese.
 
+	pixel_x = -32
+	pixel_y = -32
+
 /obj/marker/generation/proc/grow(var/desired_grow)
 
 	for(var/turf/T in valid_turfs)
@@ -23,7 +30,7 @@
 			continue
 		forbidden_turfs[T] = TRUE //Already processed
 
-		if(!prob(hole_chance) && !ispath(object_to_place,T))
+		if(!prob(hole_chance) && !ispath(object_to_place,T) && !T.world_spawn && !(turf_whitelist && !istype(T,turf_whitelist)))
 			new object_to_place(T)
 			objects_placed++
 
@@ -73,11 +80,44 @@
 
 
 /obj/marker/generation/lava
-	object_to_place = /turf/simulated/floor/sand/
-	grow_amount_min = 10
-	grow_amount_max = 30
-	objects_max = 100
+	object_to_place = /turf/simulated/floor/lava/
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 5
 
+	color = COLOR_ORANGE
+
+/obj/marker/generation/ice
+	object_to_place = /turf/simulated/floor/ice
+	grow_amount_min = 15
+	grow_amount_max = 30
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 5
+
+	color = COLOR_CYAN
+
+/obj/marker/generation/snow
+	object_to_place = /turf/simulated/floor/colored/snow
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_WHITE
+
+/obj/marker/generation/snow_dirt
+	object_to_place = /turf/simulated/floor/colored/dirt/snow
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_BROWN
 
 /obj/marker/generation/basalt
 	object_to_place = /turf/simulated/floor/basalt
@@ -87,6 +127,8 @@
 	skip_chance = 25
 	hole_chance = 0
 
+	color = COLOR_GREY_DARK
+
 /obj/marker/generation/basalt_wall
 	object_to_place = /turf/simulated/wall/rock/basalt
 	grow_amount_min = 5
@@ -94,3 +136,40 @@
 	objects_max = 50
 	skip_chance = 25
 	hole_chance = 0
+
+	color = COLOR_GREY_DARK
+
+/obj/marker/generation/snow_wall
+	object_to_place = /turf/simulated/wall/rock/snow
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREY
+
+/obj/marker/generation/snow_grass
+	object_to_place = /obj/structure/scenery/snow_grass
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/snow
+
+
+/obj/marker/generation/snow_tree
+	object_to_place = /obj/structure/scenery/pinetrees
+	grow_amount_min = 10
+	grow_amount_max = 20
+	objects_max = 12
+	skip_chance = 0
+	hole_chance = 90
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/snow

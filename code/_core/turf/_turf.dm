@@ -28,6 +28,8 @@
 
 	var/delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier.
 
+	var/world_spawn = FALSE
+
 /turf/proc/on_step()
 	return TRUE
 

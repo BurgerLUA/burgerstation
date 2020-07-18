@@ -24,8 +24,15 @@ SUBSYSTEM_DEF(turfs)
 	for(var/i=1,i<=10,i++) //Generate 10 seeds.
 		seeds += rand(1,99999)
 
+	var/found_turfs = 0
 	var/turf_generation_count = 0
 	var/object_generation_count = 0
+
+	for(var/turf/simulated/T in world)
+		T.world_spawn = TRUE
+		found_turfs++
+
+	log_subsystem(name,"Found [found_turfs] simulated turfs.")
 
 	for(var/turf/unsimulated/generation/G in world)
 		G.generate()
