@@ -99,6 +99,16 @@
 
 	color = COLOR_CYAN
 
+/obj/marker/generation/water
+	object_to_place = /turf/simulated/floor/water
+	grow_amount_min = 15
+	grow_amount_max = 30
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 5
+
+	color = COLOR_CYAN
+
 /obj/marker/generation/snow
 	object_to_place = /turf/simulated/floor/colored/snow
 	grow_amount_min = 5
@@ -108,6 +118,26 @@
 	hole_chance = 0
 
 	color = COLOR_WHITE
+
+/obj/marker/generation/jungle_grass
+	object_to_place = /turf/simulated/floor/colored/grass/jungle
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_WHITE
+
+/obj/marker/generation/jungle_dirt
+	object_to_place = /turf/simulated/floor/colored/dirt/jungle
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_BROWN
 
 /obj/marker/generation/snow_dirt
 	object_to_place = /turf/simulated/floor/colored/dirt/snow
@@ -131,6 +161,16 @@
 
 /obj/marker/generation/basalt_wall
 	object_to_place = /turf/simulated/wall/rock/basalt
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREY_DARK
+
+/obj/marker/generation/jungle_wall
+	object_to_place = /turf/simulated/wall/rock/moss
 	grow_amount_min = 5
 	grow_amount_max = 8
 	objects_max = 50
@@ -173,3 +213,58 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/colored/snow
+
+
+
+/obj/marker/generation/jungle_tree
+	object_to_place = /obj/structure/scenery/jungle_trees
+	grow_amount_min = 10
+	grow_amount_max = 20
+	objects_max = 2
+	skip_chance = 10
+	hole_chance = 90
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+
+
+/obj/marker/generation/jungle_tree_small
+	object_to_place = /obj/structure/scenery/jungle_trees_small
+	grow_amount_min = 10
+	grow_amount_max = 30
+	objects_max = 3
+	skip_chance = 5
+	hole_chance = 90
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+
+
+/obj/marker/generation/jungle_high_grass
+	object_to_place = /obj/structure/scenery/jungle_grass
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 10
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+
+/obj/marker/generation/jungle_rock_grass
+	object_to_place = /obj/structure/scenery/jungle_rock
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 10
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/grass
