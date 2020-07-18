@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(turfs)
 	cpu_usage_max = 50
 	tick_usage_max = 50
 
-
+	var/list/seeds = list() //id = value
 
 /subsystem/turfs/Initialize()
 
@@ -20,6 +20,24 @@ SUBSYSTEM_DEF(turfs)
 
 	if(!ENABLE_TURFGEN)
 		return
+
+	for(var/i=1,i<=10,i++) //Generate 10 seeds.
+		seeds += rand(1,99999)
+
+	var/turf_generation_count = 0
+	var/object_generation_count = 0
+
+	for(var/turf/unsimulated/generation/G in world)
+		G.generate()
+		turf_generation_count++
+
+	log_subsystem(name,"Randomly Generated [turf_generation_count] turfs.")
+
+	for(var/obj/marker/generation/G in world)
+		G.generate()
+		object_generation_count++
+
+	log_subsystem(name,"Randomly Generated [object_generation_count] random islands.")
 
 	var/turf_count = 0
 
