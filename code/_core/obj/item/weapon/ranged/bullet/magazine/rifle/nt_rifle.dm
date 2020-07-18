@@ -43,4 +43,4 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_skill_spread(var/mob/living/L) //Base spread
 	if(!heat_current)
 		return 0
-	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))

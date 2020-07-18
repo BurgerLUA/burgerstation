@@ -35,7 +35,7 @@
 	ai_heat_sensitivity = 0.5
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread() //Base spread
-	return 0.01
+	return 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_skill_spread(var/mob/living/L) //Base spread
 	if(!heat_current)

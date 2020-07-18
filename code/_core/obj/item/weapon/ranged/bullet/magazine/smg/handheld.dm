@@ -21,7 +21,7 @@
 
 
 	heat_per_shot = 0.03
-	heat_max = 0.09
+	heat_max = 0.12
 
 	bullet_length_min = 16
 	bullet_length_best = 19
@@ -36,7 +36,7 @@
 	ai_heat_sensitivity = 0.5
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread() //Base spread
-	return 0.02
+	return 0.06
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

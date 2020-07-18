@@ -23,8 +23,8 @@
 	size = SIZE_3
 
 
-	heat_per_shot = 0.03
-	heat_max = 0.09
+	heat_per_shot = 0.02
+	heat_max = 0.06
 
 	bullet_length_min = 20
 	bullet_length_best = 23
@@ -50,7 +50,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_static_spread() //Base spread
-	return 0.01
+	return 0.05
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_skill_spread(var/mob/living/L) //Base spread
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
