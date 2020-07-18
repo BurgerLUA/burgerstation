@@ -204,29 +204,26 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 
 		var/local_first_person_text
 		var/local_third_person_text
-		var/local_blind_text
+		//var/local_blind_text
 
 		if(M == src)
 			local_first_person_text = span("distance_medium",first_person_text)
 			local_third_person_text = span("distance_medium",third_person_text)
-			local_blind_text = span("distance_medium",blind_text)
+			//local_blind_text = span("distance_medium",blind_text)
 		else if(distance <= view_range*0.75)
 			local_first_person_text = span("distance_medium",first_person_text)
 			local_third_person_text = span("distance_medium",third_person_text)
-			local_blind_text = span("distance_medium",blind_text)
+			//local_blind_text = span("distance_medium",blind_text)
 		else if(distance <= view_range)
 			local_first_person_text = span("distance_small",first_person_text)
 			local_third_person_text = span("distance_small",third_person_text)
-			local_blind_text = span("distance_small",blind_text)
+			//local_blind_text = span("distance_small",blind_text)
 		else
 			local_first_person_text = span("distance_tiny",first_person_text)
 			local_third_person_text = span("distance_tiny",third_person_text)
-			local_blind_text = span("distance_tiny",blind_text)
+			//local_blind_text = span("distance_tiny",blind_text)
 
-		if(src in view(M.client.eye,VIEW_RANGE))
-			if(src == M)
-				M.to_chat(local_first_person_text)
-			else
-				M.to_chat(local_third_person_text)
+		if(src == M)
+			M.to_chat(local_first_person_text)
 		else
-			M.to_chat(local_blind_text)
+			M.to_chat(local_third_person_text)

@@ -27,7 +27,8 @@
 		BIO = 25,
 		RAD = 25,
 		HOLY = 100,
-		DARK = 100
+		DARK = 100,
+		ION = INFINITY
 	)
 
 	loyalty_tag = "Revolutionary"

@@ -90,6 +90,7 @@
 
 	if(!istype(A))
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 2000.</h2>"))
+		CRASH_SAFE("FATAL ERROR: Tried to save [A.get_debug_name()], a non-player!")
 		return FALSE
 
 	if(!force && world_state != STATE_RUNNING)

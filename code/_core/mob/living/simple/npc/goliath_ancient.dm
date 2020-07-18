@@ -26,7 +26,8 @@
 		RAD = INFINITY,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		ION = INFINITY
 	)
 
 	mob_size = MOB_SIZE_GIANT

@@ -11,7 +11,14 @@
 	size = SIZE_1
 
 
-	value = 5
+	value = 10
+
+/obj/item/powercell/calculate_value()
+
+	. = ..()
+	. += CEILING(charge_current*0.01,1)
+	. += CEILING(charge_max*0.005,1)
+	return .
 
 /obj/item/powercell/save_item_data(var/save_inventory = TRUE)
 	. = ..()

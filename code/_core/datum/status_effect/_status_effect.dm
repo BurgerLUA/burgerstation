@@ -107,7 +107,8 @@
 	owner.add_status_effect(STUN,30,30,source = source,stealthy = TRUE)
 	var/throw_dir = owner.move_dir
 	var/list/throw_offset = direction_to_pixel_offset(throw_dir)
-	owner.throw_self(source,null,16,16,throw_offset[1]*magnitude,throw_offset[2]*magnitude, steps_allowed = CEILING(magnitude/20,1))
+	var/vel_magnitude = clamp(magnitude * 0.5,TILE_SIZE*0.5,TILE_SIZE-1)
+	owner.throw_self(source,null,16,16,throw_offset[1]*vel_magnitude,throw_offset[2]*vel_magnitude, steps_allowed = clamp(CEILING(magnitude/20,1),1,6))
 	return .
 
 /status_effect/confused

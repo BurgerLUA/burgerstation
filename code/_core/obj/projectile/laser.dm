@@ -24,3 +24,6 @@
 
 /obj/projectile/bullet/laser/weak
 	icon_state = "weak"
+
+/obj/projectile/bullet/laser/ion
+	icon_state = "ion"

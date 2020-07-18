@@ -92,7 +92,7 @@
 	if(color && lowertext(color) != "#ffffff")
 		.["color"] = color
 
-	if(length(inventories))
+	if(save_inventory && length(inventories))
 		.["inventories"] = new/list(length(inventories))
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/hud/inventory/IN = inventories[i]

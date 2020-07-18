@@ -42,6 +42,10 @@
 
 /obj/item/container/medicine/proc/treat(var/mob/caller,var/atom/A)
 
+	if(!reagents)
+		CRASH_SAFE("[src.get_debug_name()] had no reagents!")
+		return FALSE
+
 	if(heal_bleeding && is_organ(A))
 		var/obj/item/organ/O = A
 		O.bleeding = FALSE

@@ -53,6 +53,22 @@
 	return ..()
 
 
+/obj/item/storage/ammo/flechette
+	name = "box of flechette rounds"
+	desc_extended = "An ammo box that can hold 24 shotgun flechette rounds."
+	icon_state = "flechette"
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1*6
+	container_held_slots = 6
+
+/obj/item/storage/ammo/flechette/fill_inventory()
+	for(var/i=1, i <= container_held_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/shotgun_12/flechette(src)
+	return ..()
+
+
+
 /obj/item/storage/ammo/fire
 	name = "box of drake breath"
 	desc_extended = "An ammo box that can hold 24 shotgun fireball rounds."

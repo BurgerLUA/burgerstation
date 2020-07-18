@@ -70,8 +70,7 @@
 	var/reagent_container/temp/T = new(src,1000)
 	reagents?.transfer_reagents_to(T,reagents.volume_current)
 	reagents_2?.transfer_reagents_to(T,reagents_2.volume_current)
-	return T
-
+	return T.qdeleting ? null : T
 
 /obj/item/container/pill/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

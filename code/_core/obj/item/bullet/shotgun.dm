@@ -81,3 +81,23 @@
 	value = 5
 
 	inaccuracy_modifer = 1
+
+
+/obj/item/bullet_cartridge/shotgun_12/flechette
+	name = "\improper 12 gauge flechette shell"
+	desc = "Shoots a lot of small shards at once."
+	desc_extended = "This shell is not very accurate and has many projectiles. Lower damage but pierces armor better."
+	icon_state = "flechette"
+
+	projectile_count = 5
+	base_spread = 0.025
+
+	projectile = /obj/projectile/bullet/firearm/shotgun_flechette
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun/flechette
+
+	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
+
+	size = 0.04
+	value = 1.8
+
+	inaccuracy_modifer = 1.3

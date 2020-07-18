@@ -28,7 +28,8 @@
 		BOMB = 50,
 		BIO = 25,
 		HOLY = 100,
-		DARK = 100
+		DARK = 100,
+		ION = INFINITY
 	)
 
 	mob_size = MOB_SIZE_ANIMAL
@@ -92,7 +93,8 @@
 		RAD = 25,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		ION = INFINITY
 	)
 
 	damage_received_multiplier = 0.5

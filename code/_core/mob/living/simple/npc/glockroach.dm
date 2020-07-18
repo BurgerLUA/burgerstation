@@ -24,7 +24,8 @@
 		BOMB = 25,
 		BIO = 50,
 		HOLY = 100,
-		DARK = 100
+		DARK = 100,
+		ION = INFINITY
 	)
 
 	mob_size = MOB_SIZE_ANIMAL

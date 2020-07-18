@@ -64,7 +64,7 @@
 			continue
 		total_reagents += IT.reagents.volume_current
 
-	var/calculated_bites = CEILING(total_reagents/(BITE_SIZE*2),1)
+	var/calculated_bites = 1 + FLOOR(total_reagents/(BITE_SIZE*2),1)
 
 	var/reagent_container/temp/T = new(src,1000)
 
@@ -78,4 +78,5 @@
 
 	reagents.transfer_reagents_to(T, reagents.volume_current/calculated_bites)
 
-	return T
+	return T.qdeleting ? null : T
+

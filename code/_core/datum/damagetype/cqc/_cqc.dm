@@ -22,7 +22,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = 0
 	)
 
 

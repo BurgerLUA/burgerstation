@@ -26,7 +26,8 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = INFINITY
 	)
 
 	health_base = 200
@@ -78,7 +79,8 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = INFINITY
 	)
 
 	armored = TRUE
@@ -107,7 +109,8 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = INFINITY
 	)
 
 /mob/living/simple/npc/bear/black
@@ -129,7 +132,8 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = INFINITY
 	)
 
 /mob/living/simple/npc/bear/space
@@ -151,5 +155,6 @@
 		RAD = 0,
 		HOLY = 100,
 		DARK = 100,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = INFINITY
 	)

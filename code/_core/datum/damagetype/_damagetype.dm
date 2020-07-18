@@ -46,7 +46,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = 0
 	)
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
@@ -63,7 +64,8 @@
 		RAD = TOX,
 		HOLY = BURN,
 		DARK = BURN,
-		FATIGUE = FATIGUE
+		FATIGUE = FATIGUE,
+		ION = BURN
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -80,7 +82,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = 0
 	)
 
 

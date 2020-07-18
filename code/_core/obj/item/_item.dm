@@ -475,12 +475,12 @@
 /obj/item/proc/get_reagents_to_consume()
 	var/reagent_container/temp/T = new(src,1000)
 	reagents.transfer_reagents_to(T,BITE_SIZE)
-	return T
+	return T.qdeleting ? null : T
 
 /obj/item/proc/feed(var/mob/caller,var/mob/living/target)
 	if(reagents && can_feed(caller,target))
 		var/reagent_container/R = get_reagents_to_consume()
-		R.consume(caller,target)
+		if(R) R.consume(caller,target)
 		return TRUE
 	return FALSE
 
@@ -517,6 +517,14 @@
 /obj/item/proc/can_feed(var/mob/caller,var/atom/target)
 
 	if(!is_living(target))
+		return FALSE
+
+	if(is_living(caller))
+		var/mob/living/C = caller
+		if(C.intent != INTENT_HELP)
+			return FALSE
+
+	if(!reagents)
 		return FALSE
 
 	var/mob/living/L = target

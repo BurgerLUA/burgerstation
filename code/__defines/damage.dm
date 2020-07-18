@@ -22,6 +22,8 @@
 #define BIO "bioweapon"
 #define RAD "radiation"
 
+#define ION "ion"
+
 #define HOLY "holy"
 #define DARK "dark"
 

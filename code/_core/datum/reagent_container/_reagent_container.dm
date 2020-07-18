@@ -44,13 +44,13 @@
 
 /reagent_container/New(var/atom/desired_owner,var/desired_volume_max)
 
-	. = ..()
-
 	if(desired_owner)
 		owner = desired_owner
 
 	if(desired_volume_max)
 		volume_max = desired_volume_max
+
+	. = ..()
 
 	all_reagent_containers += src
 
@@ -528,6 +528,10 @@
 
 
 /reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
+
+	if(!owner)
+		CRASH_SAFE("[src.get_debug_name()] had no owner!")
+		return FALSE
 
 	var/consume_verb = owner.get_consume_verb()
 	var/consume_sound = owner.get_consume_sound()

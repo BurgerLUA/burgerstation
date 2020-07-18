@@ -34,7 +34,8 @@
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		ION = 0
 	)
 
 	damage_received_multiplier = 0.5

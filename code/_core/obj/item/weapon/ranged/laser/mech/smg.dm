@@ -30,6 +30,8 @@
 
 	shoot_sounds = list('sound/weapons/40/shoot_smg.ogg')
 
+	value = 500
+
 /obj/item/weapon/ranged/energy/mech/smg/mk2
 	name = "5.56mm LMG"
 	icon = 'icons/obj/item/weapons/ranged/mech/mk2_smg.dmi'
@@ -49,6 +51,8 @@
 
 	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
 
+	value = 1000
+
 /obj/item/weapon/ranged/energy/mech/smg/mk3
 	name = "7.62mm HMG"
 	icon = 'icons/obj/item/weapons/ranged/mech/mk3_smg.dmi'
@@ -67,3 +71,5 @@
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
 
 	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
+
+	value = 2000

@@ -34,7 +34,8 @@
 		RAD = 50,
 		HOLY = -25,
 		DARK = 100,
-		FATIGUE = 100
+		FATIGUE = 100,
+		ION = INFINITY
 	)
 
 	status_immune = list(

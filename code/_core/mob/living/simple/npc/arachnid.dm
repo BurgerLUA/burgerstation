@@ -27,7 +27,8 @@
 		BIO = 75,
 		HOLY = 50,
 		DARK = 50,
-		FATIGUE = 25
+		FATIGUE = 25,
+		ION = INFINITY
 	)
 
 	iff_tag = "jungle"

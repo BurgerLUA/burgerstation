@@ -34,7 +34,8 @@
 		RAD = INFINITY,
 		HOLY = 50,
 		DARK = 100,
-		FATIGUE = 75
+		FATIGUE = 75,
+		ION = INFINITY
 	)
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
@@ -76,7 +77,8 @@
 		RAD = INFINITY,
 		HOLY = 75,
 		DARK = 100,
-		FATIGUE = 50
+		FATIGUE = 50,
+		ION = INFINITY
 	)
 
 	status_immune = list(

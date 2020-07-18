@@ -76,7 +76,8 @@
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		ION = -50
 	)
 
 
@@ -101,7 +102,8 @@
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		ION = -50
 	)
 
 	class = /class/gygax/
@@ -131,7 +133,8 @@
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
-		FATIGUE = INFINITY
+		FATIGUE = INFINITY,
+		ION = -50
 	)
 
 	class = /class/durand

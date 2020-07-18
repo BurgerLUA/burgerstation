@@ -29,7 +29,8 @@
 		LASER = -25,
 		MAGIC = 25,
 		HOLY = 50,
-		DARK = 100
+		DARK = 100,
+		ION = INFINITY
 	)
 
 	mob_size = MOB_SIZE_LARGE

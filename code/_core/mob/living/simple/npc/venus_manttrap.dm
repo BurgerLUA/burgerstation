@@ -26,7 +26,8 @@
 		RAD = 75,
 		HOLY = 75,
 		DARK = 0,
-		FATIGUE = 50
+		FATIGUE = 50,
+		ION = INFINITY
 	)
 
 	iff_tag = "jungle"

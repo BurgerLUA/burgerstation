@@ -29,7 +29,7 @@
 	plane = PLANE_EFFECT
 
 	var/start_time = 0
-	var/lifetime = SECONDS_TO_DECISECONDS(60) //Just in case.
+	var/lifetime = SECONDS_TO_DECISECONDS(10) //Just in case.
 
 	var/turf/start_turf
 	var/turf/target_turf
@@ -166,11 +166,6 @@
 		on_hit(new_loc,TRUE)
 		return TRUE
 
-	if(lifetime <= start_time)
-		damage_atom(new_loc)
-		on_hit(new_loc,TRUE)
-		return TRUE
-
 	if(!isturf(old_loc))
 		damage_atom(old_loc)
 		on_hit(old_loc,TRUE)
@@ -216,6 +211,10 @@
 		on_hit(src.loc,TRUE)
 		return FALSE
 
+	if(!vel_x && !vel_y)
+		on_hit(src.loc,TRUE)
+		return FALSE
+
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1)
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
@@ -229,6 +228,10 @@
 		animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
 	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
+
+	if(lifetime && start_time >= lifetime)
+		on_hit(src.loc,TRUE)
+		return FALSE
 
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
