@@ -17,6 +17,9 @@ SUBSYSTEM_DEF(living)
 		return ..()
 
 	for(var/mob/living/L in all_living)
+		if(istype(L.loc,/turf/simulated/wall))
+			qdel(L)
+			continue
 		INITIALIZE(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")

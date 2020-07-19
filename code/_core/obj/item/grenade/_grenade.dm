@@ -154,11 +154,15 @@
 	return ..()
 
 /obj/item/grenade/timed/Generate()
-	stored_trigger = new /obj/item/device/timer(src)
+	var/obj/item/device/timer/T = new(src)
+	T.time_set = 30
+	stored_trigger = T
 	return ..()
 
 /obj/item/grenade/timed/explosive/
 	name = "timed explosive grenade"
+	desc = "Kaboom!"
+	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 /obj/item/grenade/timed/explosive/Generate()
 	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)

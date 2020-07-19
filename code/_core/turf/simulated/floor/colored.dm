@@ -47,13 +47,6 @@
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "jungle_grass"
 
-
-/turf/simulated/floor/colored/grass/dark
-	name = "dark grass"
-	color = "#527F3F"
-	layer = LAYER_FLOOR_LARGE + 0.1
-	corner_category = "grass"
-
 /turf/simulated/floor/colored/grass/mint
 	name = "mint grass"
 	color = "#47E059"
