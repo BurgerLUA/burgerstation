@@ -124,6 +124,8 @@
 		if(0.4 to 0.6)
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
+				new /obj/marker/generation/mob/watcher(src)
+			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.6 to 0.8)
 			new /turf/simulated/hazard/lava(src)
@@ -183,6 +185,8 @@
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.44 to 0.94)
 			new /turf/simulated/floor/colored/snow(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/snow_bear(src)
 			if(prob(1))
 				new /obj/marker/generation/snow_tree(src)
 			if(prob(6))
@@ -331,6 +335,8 @@
 				new /obj/marker/generation/rock_wall/small(src)
 		if(0.5 to 1)
 			new /turf/simulated/floor/cave_dirt(src)
+			if(prob(0.5))
+				new /obj/marker/generation/mob/black_bear(src)
 		if(1 to INFINITY)
 			new /turf/simulated/wall/rock(src)
 
@@ -348,7 +354,7 @@
 
 	var/noise = 0
 
-	var/instances = 4
+	var/instances = 3
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
 
@@ -376,16 +382,20 @@
 			new /turf/simulated/floor/colored/grass(src)
 			if(prob(10))
 				new /obj/marker/generation/forest_tree(src)
+				if(prob(50))
+					new /obj/marker/generation/mob/chicken
 			if(prob(10))
 				new /obj/marker/generation/forest_grass(src)
 		if(0.42 to 0.44)
 			new /turf/simulated/floor/colored/dirt(src)
 		if(0.44 to 0.94)
 			new /turf/simulated/floor/colored/grass(src)
-			if(prob(10))
+			if(prob(5))
 				new /obj/marker/generation/forest_tree(src)
 			if(prob(10))
 				new /obj/marker/generation/forest_grass(src)
+				if(prob(5))
+					new /obj/marker/generation/mob/cow(src)
 		if(0.94 to 0.95)
 			new /turf/simulated/floor/colored/dirt(src)
 		if(0.95 to INFINITY)

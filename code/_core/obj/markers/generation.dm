@@ -354,15 +354,47 @@
 
 	turf_whitelist = /turf/simulated/floor/
 
+	ignore_existing = TRUE
+
 
 /obj/marker/generation/mob/arachnid
 	object_to_place = /mob/living/simple/npc/arachnid
 	objects_max = 1
-	ignore_existing = TRUE
 
 /obj/marker/generation/mob/venus_human_trap
 	object_to_place = /mob/living/simple/npc/venus_human_trap
 	objects_max = 1
-	ignore_existing = TRUE
-
 	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+
+/obj/marker/generation/mob/watcher
+	object_to_place = /mob/living/simple/npc/watcher
+	objects_max = 1
+
+/obj/marker/generation/mob/goliath
+	object_to_place = /mob/living/simple/npc/goliath
+	objects_max = 1
+
+/obj/marker/generation/mob/goliath_ancient
+	object_to_place = /mob/living/simple/npc/goliath/ancient
+	objects_max = 1
+
+/obj/marker/generation/mob/black_bear
+	object_to_place = /mob/living/simple/npc/bear/black
+	objects_max = 1
+
+/obj/marker/generation/mob/snow_bear
+	object_to_place = /mob/living/simple/npc/bear/snow
+	objects_max = 1
+
+/obj/marker/generation/mob/chicken
+	object_to_place = /mob/living/simple/npc/passive/chicken
+	objects_max = 3
+
+/obj/marker/generation/mob/cow
+	object_to_place = /mob/living/simple/npc/passive/cow
+	objects_max = 2
+
+/obj/marker/generation/mob/cave_spider
+	object_to_place = /mob/living/simple/npc/spider
+	objects_max = 3
