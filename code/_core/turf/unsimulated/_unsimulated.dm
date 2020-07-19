@@ -78,12 +78,14 @@
 
 
 /turf/unsimulated/generation
+	icon = 'icons/turf/generation.dmi'
 
 /turf/unsimulated/generation/proc/generate(var/size = WORLD_SIZE)
 	return TRUE
 
 /turf/unsimulated/generation/lava
 	name = "lava generation"
+	icon_state = "lava"
 
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
@@ -139,6 +141,7 @@
 
 /turf/unsimulated/generation/snow
 	name = "snow generation"
+	icon_state = "snow"
 
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
@@ -180,9 +183,9 @@
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.44 to 0.94)
 			new /turf/simulated/floor/colored/snow(src)
-			if(prob(2))
-				new /obj/marker/generation/snow_tree(src)
 			if(prob(1))
+				new /obj/marker/generation/snow_tree(src)
+			if(prob(6))
 				new /obj/marker/generation/snow_grass(src)
 		if(0.94 to 0.95)
 			new /turf/simulated/floor/colored/dirt/snow(src)
@@ -196,6 +199,7 @@
 
 /turf/unsimulated/generation/jungle
 	name = "jungle generation"
+	icon_state = "jungle"
 
 /turf/unsimulated/generation/jungle/generate(var/size = WORLD_SIZE)
 
@@ -233,7 +237,7 @@
 			new /turf/simulated/floor/colored/dirt/jungle(src)
 		if(0.13 to 0.15)
 			new /turf/simulated/floor/colored/grass/jungle(src)
-			if(prob(5))
+			if(prob(10))
 				new /obj/marker/generation/jungle_rock_grass(src)
 		if(0.15 to 0.4)
 			new /turf/simulated/floor/grass/jungle(src)
@@ -247,7 +251,7 @@
 			new /turf/simulated/floor/colored/dirt/jungle(src)
 		if(0.42 to 0.43)
 			new /turf/simulated/floor/colored/grass/jungle(src)
-			if(prob(5))
+			if(prob(10))
 				new /obj/marker/generation/jungle_rock_grass(src)
 		if(0.43 to 0.44)
 			new /turf/simulated/floor/water(src)
@@ -267,7 +271,7 @@
 				new /obj/marker/generation/jungle_tree(src)
 		if(0.75 to 0.8)
 			new /turf/simulated/floor/colored/grass/jungle(src)
-			if(prob(5))
+			if(prob(10))
 				new /obj/marker/generation/jungle_rock_grass(src)
 		if(0.8 to 0.9)
 			new /turf/simulated/floor/water(src)
@@ -275,5 +279,102 @@
 			new /turf/simulated/floor/colored/dirt/jungle(src)
 
 	name = "noise: [noise]."
+
+	return ..()
+
+
+
+
+/turf/unsimulated/generation/cave
+	name = "lava generation"
+	icon_state = "caves"
+
+/turf/unsimulated/generation/cave/generate(var/size = WORLD_SIZE)
+
+	var/noise = 0
+
+	var/instances = 2
+
+	for(var/i=1,i<=instances,i++) //Use sin/cosine?
+
+		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
+		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+
+		var/seed_resolution = WORLD_SIZE * 0.25
+		var/x_seed = used_x / seed_resolution
+		if(x_seed > 1)
+			x_seed = 1 - (x_seed - 1)
+		var/y_seed = used_y / seed_resolution
+		if(y_seed > 1)
+			y_seed = 1 - (y_seed - 1)
+		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[1] + i*10]","[x_seed]","[y_seed]"))
+		if(found >= 0.25 && found <= 0.75) noise += found
+
+	switch(noise)
+		if(-INFINITY to 0.5)
+			new /turf/simulated/floor/colored/dirt/cave(src)
+			if(prob(1))
+				new /obj/marker/generation/rock_wall/small(src)
+		if(0.5 to 1)
+			new /turf/simulated/floor/cave_dirt(src)
+		if(1 to INFINITY)
+			new /turf/simulated/wall/rock(src)
+
+	return ..()
+
+
+
+
+
+/turf/unsimulated/generation/forest
+	name = "forest generation"
+	icon_state = "forest"
+
+/turf/unsimulated/generation/forest/generate(var/size = WORLD_SIZE)
+
+	var/noise = 0
+
+	var/instances = 4
+
+	for(var/i=1,i<=instances,i++) //Use sin/cosine?
+
+		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
+		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
+
+		var/seed_resolution = WORLD_SIZE * 0.5
+		var/x_seed = used_x / seed_resolution
+		if(x_seed > 1)
+			x_seed = 1 - (x_seed - 1)
+		var/y_seed = used_y / seed_resolution
+		if(y_seed > 1)
+			y_seed = 1 - (y_seed - 1)
+		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[2] + i]","[x_seed]","[y_seed]"))
+		noise += found
+
+	noise = (noise/instances)
+
+	switch(noise) //Lower values means deeper.
+		if(-INFINITY to 0.05)
+			new /turf/simulated/floor/water(src)
+		if(0.05 to 0.1)
+			new /turf/simulated/floor/colored/sand/beach(src)
+		if(0.1 to 0.42)
+			new /turf/simulated/floor/colored/grass(src)
+			if(prob(10))
+				new /obj/marker/generation/forest_tree(src)
+			if(prob(10))
+				new /obj/marker/generation/forest_grass(src)
+		if(0.42 to 0.44)
+			new /turf/simulated/floor/colored/dirt(src)
+		if(0.44 to 0.94)
+			new /turf/simulated/floor/colored/grass(src)
+			if(prob(10))
+				new /obj/marker/generation/forest_tree(src)
+			if(prob(10))
+				new /obj/marker/generation/forest_grass(src)
+		if(0.94 to 0.95)
+			new /turf/simulated/floor/colored/dirt(src)
+		if(0.95 to INFINITY)
+			new /turf/simulated/floor/water(src)
 
 	return ..()

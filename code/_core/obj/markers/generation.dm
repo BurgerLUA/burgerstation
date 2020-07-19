@@ -30,6 +30,9 @@
 			continue
 		forbidden_turfs[T] = TRUE //Already processed
 
+		if(objects_placed > objects_max)
+			return FALSE
+
 		if(!prob(hole_chance) && !ispath(object_to_place,T) && !T.world_spawn && !(turf_whitelist && !istype(T,turf_whitelist)))
 			new object_to_place(T)
 			objects_placed++
@@ -139,6 +142,16 @@
 
 	color = COLOR_BROWN
 
+/obj/marker/generation/cave_dirt
+	object_to_place = /turf/simulated/floor/cave_dirt
+	grow_amount_min = 5
+	grow_amount_max = 10
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_BROWN
+
 /obj/marker/generation/snow_dirt
 	object_to_place = /turf/simulated/floor/colored/dirt/snow
 	grow_amount_min = 5
@@ -158,6 +171,22 @@
 	hole_chance = 0
 
 	color = COLOR_GREY_DARK
+
+/obj/marker/generation/rock_wall
+	object_to_place = /turf/simulated/wall/rock
+	grow_amount_min = 15
+	grow_amount_max = 30
+	objects_max = 40
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREY_DARK
+
+
+/obj/marker/generation/rock_wall/small
+	objects_max = 30
+	skip_chance = 10
+
 
 /obj/marker/generation/basalt_wall
 	object_to_place = /turf/simulated/wall/rock/basalt
@@ -193,9 +222,9 @@
 	object_to_place = /obj/structure/scenery/snow_grass
 	grow_amount_min = 5
 	grow_amount_max = 8
-	objects_max = 50
-	skip_chance = 25
-	hole_chance = 0
+	objects_max = 25
+	skip_chance = 50
+	hole_chance = 10
 
 	color = COLOR_GREEN
 
@@ -227,6 +256,47 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
+
+
+/obj/marker/generation/forest_tree
+	object_to_place = /obj/structure/scenery/evergreen
+	grow_amount_min = 10
+	grow_amount_max = 20
+	objects_max = 5
+	skip_chance = 50
+	hole_chance = 50
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/grass
+
+
+/obj/marker/generation/flowers
+	object_to_place = /obj/structure/scenery/flowers
+	grow_amount_min = 10
+	grow_amount_max = 20
+	objects_max = 4
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/grass
+
+
+/obj/marker/generation/forest_grass
+	object_to_place = /obj/structure/scenery/grass
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 25
+	skip_chance = 50
+	hole_chance = 10
+
+	color = COLOR_GREEN
+
+	turf_whitelist = /turf/simulated/floor/colored/grass
+
+
 
 
 
