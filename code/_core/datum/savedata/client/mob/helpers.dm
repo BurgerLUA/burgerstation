@@ -54,13 +54,13 @@
 	return json_decode(data)
 
 /savedata/client/mob/proc/write_json_data_to_id(var/character_id,var/json_data)
-
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
 	json_data["last_saved_time"] = get_time()
 	var/desired_file = get_file(character_id)
 	var/data = json_encode(json_data)
-	return rustg_file_write(data,desired_file)
+	rustg_file_write(data,desired_file)
+	return TRUE
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
@@ -95,15 +95,11 @@
 		usr?.to_chat(span("danger","Your character was not saved as the round just ended!"))
 		return FALSE
 
-	//LOG_DEBUG("[owner] is saving their character [A.get_debug_name()]...")
-
 	var/list/loaded_data = A.get_mob_data(save_inventory,force)
 	if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		A.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
 		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
-
-	LOG_DEBUG("[A.client] has finished saving their character [A.get_debug_name()].")
 
 	A.client?.globals?.save() //Save globals too. TODO: FIX THIS
 

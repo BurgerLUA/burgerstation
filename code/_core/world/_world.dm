@@ -69,6 +69,10 @@ var/global/world_state = STATE_STARTING
 	return TRUE
 */
 
+/world/Del()
+	SSdiscord.send_message("Shutting down world...")
+	return ..()
+
 /world/proc/shutdown_server()
 	world_state = STATE_SHUTDOWN
 	for(var/k in all_clients)
@@ -126,5 +130,6 @@ var/global/world_state = STATE_STARTING
 		broadcast_to_clients(span("notice","Rebooting world in 60 seconds down the world due to [nice_reason]."))
 		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(60),src,.proc/reboot_server)
 
+	SSdiscord.send_message("Round ended due to [nice_reason].")
 
 	return TRUE

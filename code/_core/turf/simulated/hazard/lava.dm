@@ -1,4 +1,4 @@
-/turf/simulated/floor/lava/
+/turf/simulated/hazard/lava/
 	name = "lava"
 	icon = 'icons/turf/floor/lava2.dmi'
 	desc = "Melting hot lava, dont fall in!"
@@ -13,12 +13,12 @@
 	desired_light_range = 8
 	desired_light_color = "#CE631C"
 
-/turf/simulated/floor/lava/Crossed(var/atom/movable/M)
+/turf/simulated/hazard/lava/Crossed(var/atom/movable/M)
 	if(is_living(M))
 		lava_idiot(M)
 	return ..()
 
-/turf/simulated/floor/lava/proc/lava_idiot(var/mob/living/L)
+/turf/simulated/hazard/lava/proc/lava_idiot(var/mob/living/L)
 
 	if(L.loc != src)
 		return FALSE

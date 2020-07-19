@@ -112,13 +112,13 @@
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
-			new /turf/simulated/floor/lava(src)
+			new /turf/simulated/hazard/lava(src)
 		if(0.1 to 0.2)
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
 		if(0.2 to 0.4)
-			new /turf/simulated/floor/lava(src)
+			new /turf/simulated/hazard/lava(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt(src)
 		if(0.4 to 0.6)
@@ -126,7 +126,7 @@
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.6 to 0.8)
-			new /turf/simulated/floor/lava(src)
+			new /turf/simulated/hazard/lava(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.8 to INFINITY)
@@ -205,7 +205,7 @@
 
 	var/noise = 0
 
-	var/instances = 5
+	var/instances = 3
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
 
@@ -228,19 +228,23 @@
 		if(-INFINITY to 0.05)
 			new /turf/simulated/wall/rock/basalt(src)
 		if(0.05 to 0.1)
-			new /turf/simulated/floor/lava(src)
+			new /turf/simulated/hazard/lava(src)
 		if(0.1 to 0.11)
 			new /turf/simulated/floor/basalt(src)
 		if(0.11 to 0.12)
 			new /turf/simulated/floor/cave_dirt(src)
 		if(0.12 to 0.13)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/arachnid(src)
 		if(0.13 to 0.15)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 			if(prob(10))
 				new /obj/marker/generation/jungle_rock_grass(src)
 		if(0.15 to 0.4)
 			new /turf/simulated/floor/grass/jungle(src)
+			if(prob(2))
+				new /obj/marker/generation/mob/venus_human_trap(src)
 			if(prob(10))
 				new /obj/marker/generation/jungle_high_grass(src)
 			if(prob(3))
@@ -249,20 +253,28 @@
 				new /obj/marker/generation/jungle_tree(src)
 		if(0.40 to 0.42)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/arachnid(src)
 		if(0.42 to 0.43)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 			if(prob(10))
 				new /obj/marker/generation/jungle_rock_grass(src)
 		if(0.43 to 0.44)
-			new /turf/simulated/floor/water(src)
+			new /turf/simulated/hazard/water(src)
 		if(0.4 to 0.45)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/arachnid(src)
 		if(0.45 to 0.47)
 			new /turf/simulated/wall/rock/brown(src)
 		if(0.47 to 0.48)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/arachnid(src)
 		if(0.48 to 0.75)
 			new /turf/simulated/floor/grass/jungle(src)
+			if(prob(2))
+				new /obj/marker/generation/mob/venus_human_trap(src)
 			if(prob(10))
 				new /obj/marker/generation/jungle_high_grass(src)
 			if(prob(3))
@@ -274,9 +286,11 @@
 			if(prob(10))
 				new /obj/marker/generation/jungle_rock_grass(src)
 		if(0.8 to 0.9)
-			new /turf/simulated/floor/water(src)
+			new /turf/simulated/hazard/water(src)
 		if(0.9 to INFINITY)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
+			if(prob(1))
+				new /obj/marker/generation/mob/arachnid(src)
 
 	name = "noise: [noise]."
 
@@ -355,7 +369,7 @@
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.05)
-			new /turf/simulated/floor/water(src)
+			new /turf/simulated/hazard/water(src)
 		if(0.05 to 0.1)
 			new /turf/simulated/floor/colored/sand/beach(src)
 		if(0.1 to 0.42)
@@ -375,6 +389,6 @@
 		if(0.94 to 0.95)
 			new /turf/simulated/floor/colored/dirt(src)
 		if(0.95 to INFINITY)
-			new /turf/simulated/floor/water(src)
+			new /turf/simulated/hazard/water(src)
 
 	return ..()

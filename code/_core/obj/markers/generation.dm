@@ -19,6 +19,8 @@
 	var/skip_chance = 25 //Higher values makes it look less circular.
 	var/hole_chance = 5 //Higher values make it look more like swiss cheese.
 
+	var/ignore_existing = FALSE
+
 	pixel_x = -32
 	pixel_y = -32
 
@@ -50,7 +52,7 @@
 					forbidden_turfs[T2] = TRUE //Already processed
 					continue
 			else
-				if(T2.is_occupied())
+				if(!ignore_existing && T2.is_occupied())
 					forbidden_turfs[T2] = TRUE //Already processed
 					continue
 			valid_turfs += T2
@@ -83,7 +85,7 @@
 
 
 /obj/marker/generation/lava
-	object_to_place = /turf/simulated/floor/lava/
+	object_to_place = /turf/simulated/hazard/lava
 	grow_amount_min = 5
 	grow_amount_max = 10
 	objects_max = 50
@@ -103,7 +105,7 @@
 	color = COLOR_CYAN
 
 /obj/marker/generation/water
-	object_to_place = /turf/simulated/floor/water
+	object_to_place = /turf/simulated/hazard/water
 	grow_amount_min = 15
 	grow_amount_max = 30
 	objects_max = 50
@@ -338,3 +340,29 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
+
+
+
+/obj/marker/generation/mob
+	grow_amount_min = 20
+	grow_amount_max = 30
+	objects_max = 3
+	skip_chance = 90
+	hole_chance = 0
+
+	color = COLOR_RED
+
+	turf_whitelist = /turf/simulated/floor/
+
+
+/obj/marker/generation/mob/arachnid
+	object_to_place = /mob/living/simple/npc/arachnid
+	objects_max = 1
+	ignore_existing = TRUE
+
+/obj/marker/generation/mob/venus_human_trap
+	object_to_place = /mob/living/simple/npc/venus_human_trap
+	objects_max = 1
+	ignore_existing = TRUE
+
+	turf_whitelist = /turf/simulated/floor/grass/jungle
