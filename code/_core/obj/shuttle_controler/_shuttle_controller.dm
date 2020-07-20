@@ -232,6 +232,8 @@ var/global/list/all_shuttle_controlers = list()
 		var/offset_x = T.x - starting_cord_x
 		var/offset_y = T.y - starting_cord_y
 		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, ending_cord_z)
+		for(var/atom/movable/M in replacing_turf.contents)
+			M.on_crush()
 		replacing_turf.change_turf(T.type,TRUE,TRUE)
 		for(var/atom/movable/M in T.contents)
 			CHECK_TICK(75,FPS_SERVER)

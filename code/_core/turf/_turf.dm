@@ -33,9 +33,9 @@
 /turf/proc/on_step()
 	return TRUE
 
-
 /turf/proc/is_space()
-	return FALSE
+	var/area/A = loc
+	return istype(A) && A.is_space()
 
 /turf/proc/update_edges()
 
@@ -47,7 +47,7 @@
 	return TRUE
 
 /turf/proc/is_safe_teleport()
-	return FALSE
+	return !is_space()
 
 /turf/New(loc)
 

@@ -24,6 +24,14 @@
 
 	var/loot/loot
 
+
+/obj/structure/interactive/crate/on_crush()
+
+	for(var/atom/movable/M in contents)
+		M.on_crush()
+
+	return ..()
+
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()

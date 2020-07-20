@@ -28,7 +28,8 @@ var/global/list/equipped_antags = list()
 	stored_types = list(
 		/obj/item/clothing/back/storage/dufflebag/syndicate/normie,
 		/obj/item/clothing/back/storage/dufflebag/syndicate/ammo/fuck_you,
-		/obj/item/clothing/back/storage/dufflebag/syndicate/medical/field_doctor
+		/obj/item/clothing/back/storage/dufflebag/syndicate/medical/field_doctor,
+		/obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank
 	)
 
 	is_free = TRUE

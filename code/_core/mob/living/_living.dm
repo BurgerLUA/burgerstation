@@ -173,6 +173,14 @@
 	var/mob/living/master //This object's master.
 	var/minion_remove_time = 0
 
+
+/mob/living/on_crush() //What happens when this object is crushed by a larger object.
+	. = ..()
+	visible_message(span("danger","\The [src] is violently crushed!"))
+	death()
+	qdel(src)
+	return .
+
 /mob/living/calculate_value()
 
 	. = ..()

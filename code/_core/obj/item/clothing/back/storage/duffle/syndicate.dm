@@ -144,3 +144,47 @@
 	new /obj/item/magazine/rifle_308(src)
 	new /obj/item/magazine/rifle_308(src)
 	return ..()
+
+
+/obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank
+	name = "anti-tankman dufflebag"
+	desc = "Fuck mechs."
+	desc_extended = "A sturdy, yet lightweight black dufflebag. This one has am ammo logo on it."
+	icon = 'icons/obj/item/clothing/back/dufflebag/syndicate_ammo.dmi'
+
+/obj/item/clothing/back/storage/dufflebag/syndicate/ammo/anti_tank/fill_inventory()
+	//8 normal shit
+	new /obj/item/weapon/melee/energy/shield/red(src)
+	new /obj/item/grenade/timed/explosive(src)
+	new /obj/item/grenade/timed/explosive(src)
+	new /obj/item/grenade/landmine/proximity/explosive(src)
+	new /obj/item/grenade/landmine/proximity/explosive(src)
+	new /obj/item/grenade/landmine/proximity/explosive(src)
+	new /obj/item/grenade/landmine/proximity/explosive(src)
+	new /obj/item/grenade/landmine/proximity/explosive(src)
+	//8 primary weapon shit
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper(src)
+	new /obj/item/magazine/sniper_50(src)
+	new /obj/item/magazine/sniper_50(src)
+	new /obj/item/magazine/sniper_50(src)
+	new /obj/item/weapon/ranged/energy/iongun(src)
+	new /obj/item/powercell/industrial(src)
+	new /obj/item/powercell/industrial(src)
+	new /obj/item/powercell/industrial(src)
+	//8 secondary weapon shit
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+	new /obj/item/magazine/pistol_12mm(src)
+
+
+
+
+
+
+
+	return ..()

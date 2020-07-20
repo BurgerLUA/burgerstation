@@ -67,6 +67,9 @@
 	if(!ismovable(object) || !object.can_be_grabbed(caller))
 		return FALSE
 
+	if(!isturf(caller.loc))
+		return FALSE
+
 	if(length(held_objects) || grabbed_object)
 		caller.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE

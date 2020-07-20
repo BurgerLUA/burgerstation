@@ -6,6 +6,8 @@
 
 	value = 10
 
+	var/active = FALSE
+
 /obj/item/device/proc/on_active()
 	return TRUE
 
@@ -29,6 +31,6 @@
 	if(active_device)
 		active_device.on_inactive(src)
 
-	active_device = FALSE
+	active_device = null
 
 	return TRUE

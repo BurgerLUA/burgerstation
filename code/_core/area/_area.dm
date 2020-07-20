@@ -50,6 +50,8 @@ var/global/list/all_areas = list()
 
 	var/safe_storage = FALSE
 
+/area/proc/is_space()
+	return FALSE
 
 /area/New()
 	. = ..()

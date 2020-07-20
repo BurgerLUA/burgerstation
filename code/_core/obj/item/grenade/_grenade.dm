@@ -17,6 +17,30 @@
 
 	value = 15
 
+/obj/item/grenade/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)
+
+
+	if(length(stored_containers))
+		.["stored_containers"] = list()
+		for(var/obj/item/container/beaker/B in stored_containers)
+			.["stored_containers"] += list(B.save_item_data(save_inventory))
+
+	return .
+
+/obj/item/grenade/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+
+	. = ..()
+
+	if(object_data["stored_trigger"]) stored_trigger = load_and_create(P,object_data["stored_trigger"],src)
+
+	if(length(object_data["stored_containers"]))
+		for(var/k in object_data["stored_containers"])
+			stored_containers += load_and_create(P,k,src)
+
+	return .
+
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
 	if(source == src)
@@ -60,11 +84,14 @@
 /obj/item/grenade/update_icon()
 
 	if(length(stored_containers) && stored_trigger)
-		icon_state = "chem"
+		if(stored_trigger.active)
+			icon_state = "[initial(icon_state)]_active"
+		else
+			icon_state = initial(icon_state)
 	else if(length(stored_containers) || stored_trigger)
-		icon_state = "chem_assembly"
+		icon_state = "[initial(icon_state)]_assembly"
 	else
-		icon_state = "chem_casing"
+		icon_state = "[initial(icon_state)]_casing"
 
 	return ..()
 
@@ -74,6 +101,8 @@
 		stored_trigger.click_self(caller)
 
 	last_interacted = caller
+
+	update_sprite()
 
 	return TRUE
 

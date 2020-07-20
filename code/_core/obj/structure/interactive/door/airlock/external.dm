@@ -3,6 +3,7 @@ obj/structure/interactive/door/airlock/external
 	desc = "A powered airlock."
 	color = "#9F2828"
 	fill_color = "#9F2828"
+	safeties = FALSE
 
 obj/structure/interactive/door/airlock/external/glass
 	filler = "glass"
