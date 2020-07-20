@@ -56,3 +56,20 @@
 	flick("door_good",src)
 
 	return TRUE
+
+
+
+/obj/structure/interactive/scanner/anti_dead
+	name = "\improper living body scanner"
+	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
+	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to only allow living silicons and carbons."
+
+/obj/structure/interactive/scanner/anti_dead/Cross/(var/atom/movable/M)
+
+	if(!is_living(M))
+		return FALSE
+	var/mob/living/L = M
+	if(L.dead)
+		return FALSE
+
+	return ..()

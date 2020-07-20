@@ -537,7 +537,7 @@
 		else
 			frustration_attack = 0
 
-	if(!objective_attack || frustration_attack > frustration_threshold)
+	if(!objective_attack || frustration_attack > frustration_threshold || !prob(80)) //THE CLASSIC.
 		var/atom/best_target
 		var/best_score = 0
 		for(var/mob/living/L in possible_targets)

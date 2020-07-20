@@ -24,7 +24,21 @@
 	if(get_area(src) != get_area(linked_beepsky))
 		return FALSE
 
-	return ..()
+	. = ..()
+
+	if(.)
+		var/area/A = get_area(src)
+		for(var/mob/living/advanced/player/P in A.contents)
+			if(P.dead)
+				continue
+			if(!P.tutorial)
+				continue
+			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+			if(mobdata)
+				mobdata.save_character(P)
+			P.tutorial = FALSE
+
+	return .
 
 /obj/shuttle_controller/arrivals/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
@@ -57,7 +71,6 @@
 					time = 0
 
 	return ..()
-
 
 /obj/shuttle_controller/arrivals/alpha
 	transit_start = "arrivals_shuttle_centcomm_01"

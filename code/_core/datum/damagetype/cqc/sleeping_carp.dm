@@ -1,35 +1,40 @@
 /damagetype/cqc/sleeping_carp/crashing_wave_kick
 	name = "crashing wave kick"
+	attack_verbs = list("crashing wave kick")
 
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 0,
-		FATIGUE = 0
+		BLUNT = 10,
+		FATIGUE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 50,
-		FATIGUE = 75,
+		FATIGUE = 50,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 25,
-		ATTRIBUTE_DEXTERITY = 25
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 80
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(FATIGUE,BLUNT),
-		ATTRIBUTE_DEXTERITY = list(FATIGUE,BLUNT)
+		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
+		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 40
+		SKILL_UNARMED = 80
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = BLUNT
+		SKILL_UNARMED = list(BLUNT,FATIGUE)
 	)
 
+	allow_friendly_fire = FALSE
 
 /damagetype/cqc/sleeping_carp/crashing_wave_kick/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
@@ -48,8 +53,8 @@
 	name = "keelhaul"
 
 	attack_damage_base = list(
-		BLUNT = 0,
-		FATIGUE = 0
+		BLUNT = 10,
+		FATIGUE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -93,33 +98,38 @@
 
 /damagetype/cqc/sleeping_carp/gnashing_teeth
 	name = "gnashing teeth"
+	attack_verbs = list("gnashing teeth punch")
+
+	hit_effect = /obj/effect/temp/impact/combat/punch
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLUNT = 20,
-		FATIGUE = 30
+		PIERCE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 25,
-		FATIGUE = 25,
+		PIERCE = 50,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 30,
-		ATTRIBUTE_DEXTERITY = 30
+		ATTRIBUTE_STRENGTH = 80,
+		ATTRIBUTE_DEXTERITY = 40
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
-		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
+		ATTRIBUTE_STRENGTH = list(BLUNT,PIERCE),
+		ATTRIBUTE_DEXTERITY = list(BLUNT,PIERCE)
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 50
+		SKILL_UNARMED = 40
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT,FATIGUE)
+		SKILL_UNARMED = list(BLUNT,PIERCE)
 	)
+
+	allow_friendly_fire = FALSE

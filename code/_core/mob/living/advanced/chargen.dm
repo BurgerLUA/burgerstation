@@ -115,6 +115,7 @@
 	handle_skincolor_chargen(S.default_color_skin,FALSE)
 	handle_eyecolor_chargen(S.default_color_eye,FALSE)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	update_all_blends()
 
 /mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())

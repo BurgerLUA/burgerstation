@@ -22,6 +22,9 @@
 /obj/item/clothing/head/hat/beret/shaleez
 	color = COLOR_SHALEEZ_RED
 
+/obj/item/clothing/head/hat/beret/red
+	color = COLOR_SHALEEZ_RED
+
 /obj/item/clothing/head/hat/beret/black
 	color = COLOR_BLACK
 

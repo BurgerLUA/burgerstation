@@ -50,7 +50,7 @@
 		equip_weapon(I)
 		return FALSE
 
-	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6)
+	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6) //Find a wepapon on the ground.
 		var/list/possible_weapons = list()
 		for(var/obj/item/weapon/W in view(6,A))
 			if(istype(W,/obj/item/weapon/ranged/))
@@ -103,11 +103,11 @@
 			if(O_groin)
 				M = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine)
 			if(!M)
-				unequip_weapon(G)
+				G.drop_item(get_turf(owner)) //IT'S NO USE.
 				return FALSE
 			M.click_on_object(A,G)
 			if(!G.stored_magazine)
-				unequip_weapon(G)
+				G.drop_item(get_turf(owner)) //IT'S NO USE.
 				return FALSE
 			if(G.can_wield && !G.wielded && A.left_hand && !A.left_item)
 				A.left_hand.wield_object(A,G)
@@ -147,10 +147,10 @@
 	if(next_complex > world.time)
 		return FALSE
 
-	var/mob/living/advanced/A = owner
-
 	if(!handle_gunplay())
 		return FALSE
+
+	var/mob/living/advanced/A = owner
 
 	var/list/params = list(
 		PARAM_ICON_X = num2text(pick(target_distribution_x)),
@@ -223,26 +223,31 @@
 	return .
 */
 
-/ai/advanced/proc/find_best_weapon()
+/ai/advanced/proc/find_best_weapon(var/atom/possible_target)
 
 	var/mob/living/advanced/A = owner
 
 	var/obj/item/weapon/best_weapon
 	var/best_weapon_value = -1
 
+	var/distance_check = possible_target ? get_dist(owner,possible_target) : VIEW_RANGE
+
 	for(var/obj/item/weapon/W in A.worn_objects)
 		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = W
 			if(!M.stored_magazine)
 				continue
+
+		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 2 : 1)
+
 		if(!best_weapon || !best_weapon_value)
 			best_weapon = W
-			best_weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
+			best_weapon_value = weapon_value
 			continue
 
-		var/weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
 		if(weapon_value > best_weapon_value)
 			best_weapon = W
+			best_weapon_value = weapon_value
 			continue
 
 	for(var/obj/item/weapon/W in A.held_objects)
@@ -250,14 +255,17 @@
 			var/obj/item/weapon/ranged/bullet/magazine/M = W
 			if(!M.stored_magazine)
 				continue
+
+		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 2 : 1)
+
 		if(!best_weapon || !best_weapon_value)
 			best_weapon = W
-			best_weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
+			best_weapon_value = weapon_value
 			continue
 
-		var/weapon_value = W.calculate_value() * (istype(W,/obj/item/weapon/ranged) ? 3 : 1)
 		if(weapon_value > best_weapon_value)
 			best_weapon = W
+			best_weapon_value = weapon_value
 			continue
 
 	return best_weapon
@@ -289,7 +297,7 @@
 	if(istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(E.enabled) E.click_self(A)
-	if(!W.quick_equip(A))
+	if(!W.quick_equip(A,ignore_hands=TRUE,debug=TRUE))
 		W.drop_item(get_turf(owner))
 	return TRUE
 
@@ -302,13 +310,11 @@
 
 	if(new_alert_level == ALERT_LEVEL_COMBAT || new_alert_level == ALERT_LEVEL_CAUTION)
 		if(!A.left_item && !A.right_item)
-			var/obj/item/weapon/W = find_best_weapon()
+			var/obj/item/weapon/W = find_best_weapon(alert_source)
 			if(W) equip_weapon(W)
-	else
-		if(A.right_item)
-			unequip_weapon(A.right_item)
-		if(A.left_item)
-			unequip_weapon(A.left_item)
+	else if(new_alert_level == ALERT_LEVEL_NONE)
+		if(A.right_item) unequip_weapon(A.right_item)
+		if(A.left_item) unequip_weapon(A.left_item)
 
 	return ..()
 
@@ -329,29 +335,38 @@
 		if(is_ranged_gun(A.right_item))
 			distance_target_min = VIEW_RANGE * 0.5
 			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = 1
-			attack_distance_max = 8
+			attack_distance_min = VIEW_RANGE * 0.5
+			attack_distance_max = VIEW_RANGE * 0.75
 			if(!is_ranged_gun(A.left_item))
 				left_click_chance = 100
 		else if(is_ranged_gun(A.left_item))
 			distance_target_min = VIEW_RANGE * 0.5
 			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = 1
-			attack_distance_max = 8
+			attack_distance_min = VIEW_RANGE * 0.5
+			attack_distance_max = VIEW_RANGE * 0.75
 			left_click_chance = 0
 	else if(A.right_item)
 		left_click_chance = 100
 		if(is_ranged_gun(A.right_item))
 			distance_target_min = VIEW_RANGE * 0.5
 			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = 1
-			attack_distance_max = 8
+			attack_distance_min = VIEW_RANGE * 0.5
+			attack_distance_max = VIEW_RANGE * 0.75
 	else if(A.left_item)
 		left_click_chance = 0
 		if(is_ranged_gun(A.left_item))
 			distance_target_min = VIEW_RANGE * 0.5
 			distance_target_max = VIEW_RANGE + ZOOM_RANGE
-			attack_distance_min = 1
-			attack_distance_max = 8
+			attack_distance_min = VIEW_RANGE * 0.5
+			attack_distance_max = VIEW_RANGE * 0.75
+
+	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4)
+		var/obj/item/weapon/W = find_best_weapon(objective_attack)
+		if(is_ranged_gun(W))
+			if(A.right_item) unequip_weapon(A.right_item)
+			if(A.left_item) unequip_weapon(A.left_item)
+			equip_weapon(W)
+		else
+			checked_weapons = TRUE //Give up.
 
 	return ..()

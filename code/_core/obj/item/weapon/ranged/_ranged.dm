@@ -172,7 +172,7 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(A.ai)
-			. *= heat_current*ai_heat_sensitivity > max(0,(1 - (get_dist(caller,target) * 0.01)) * heat_max) ? rand(2,6) : 1
+			. *= max(1,(heat_current*ai_heat_sensitivity)*(get_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
 
 	return .
 

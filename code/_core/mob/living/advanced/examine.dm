@@ -44,10 +44,10 @@ mob/living/advanced/get_examine_list(var/mob/examiner)
 			var/obj/hud/inventory/I = C.loc
 			if((C.item_slot & I.item_slot) & blocked_clothing)
 				continue
-			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[C]'>Strip</a>) [pronoun] is wearing \the <b>[C.name]</b> on their [I.loc.name].")
+			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[C]'>Strip</a>) [pronoun] is wearing \the <b>[C.name]</b> on their [initial(I.loc.name)].")
 
 		for(var/obj/item/I in held_objects)
-			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [pronoun] is holding \the <b>[I.name]</b> on their [I.loc.name].")
+			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [pronoun] is holding \the <b>[I.name]</b> on their [initial(I.loc.name)].")
 
 	if(health && survival_skill >= 5)
 		if(health.damage[TOX] >= 25)
