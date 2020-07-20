@@ -1426,6 +1426,7 @@
 #include "code\_core\world\subsystems\sound.dm"
 #include "code\_core\world\subsystems\species.dm"
 #include "code\_core\world\subsystems\squad.dm"
+#include "code\_core\world\subsystems\stats.dm"
 #include "code\_core\world\subsystems\status.dm"
 #include "code\_core\world\subsystems\thinking.dm"
 #include "code\_core\world\subsystems\tips.dm"

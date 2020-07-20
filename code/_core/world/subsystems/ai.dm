@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(ai)
 	var/list/active_ai = list()
 	var/list/inactive_ai = list()
 
+	var/turf/list/stuck_turfs = list() //List of turfs that the AI keeps getting stuck on.
+
 /subsystem/ai/on_life()
 
 	for(var/ai/AI in active_ai)

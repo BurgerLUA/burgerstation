@@ -9,7 +9,6 @@
 		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
-		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm,

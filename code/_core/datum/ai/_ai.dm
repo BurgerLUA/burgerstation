@@ -216,6 +216,10 @@
 			alert_time = initial(alert_time)
 			set_alert_level(alert_level-1,TRUE)
 
+	if(owner.move_delay <= 0)
+		handle_movement_reset()
+		handle_movement()
+
 	owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
 
 	return TRUE
@@ -305,6 +309,14 @@
 				frustration_path = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
+				if(length(SSai.stuck_turfs))
+					var/turf/turf_to_check = get_step(owner,owner.move_dir)
+					var/turf/we_fucked_anyways = get_turf(owner)
+					if(SSai.stuck_turfs[turf_to_check] && !SSai.stuck_turfs[we_fucked_anyways])
+						owner.move_dir = turn(owner.move_dir,180)
+					if(owner.old_turf && owner.old_turf == get_step(owner,owner.move_dir))
+						owner.old_turf.color = "#FFFF00"
+						SSai.stuck_turfs[owner.old_turf] = TRUE
 		else
 			start_turf = get_turf(owner)
 			set_path(null)
@@ -318,22 +330,25 @@
 
 		frustration_path = 0
 
+		var/turf/bad_turf = get_turf(owner)
+
+		if(bad_turf)
+			SSai.stuck_turfs[bad_turf] = TRUE
+			bad_turf.color = "#FF0000"
+
 		var/obj/marker/map_node/N_start = find_closest_node(owner)
 		if(!N_start)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path start!")
-			set_path(null)
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
 		if(!N_end)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path end!")
-			set_path(null)
 			return FALSE
 
 		var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 		if(!found_path)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
-			set_path(null)
 			return FALSE
 
 		set_path(found_path)
@@ -515,7 +530,7 @@
 	var/list/possible_targets = get_possible_targets()
 
 	if(objective_attack)
-		if(!possible_targets[objective_attack] || !should_attack_mob(objective_attack))
+		if(objective_attack.dead || objective_attack.qdeleting || !possible_targets[objective_attack] || !should_attack_mob(objective_attack))
 			set_objective(null)
 		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
@@ -542,6 +557,8 @@
 	var/dist = get_dist(L.loc,owner.loc)
 
 	if(dist <= attack_distance_max)
+		if(attackers[L])
+			return 3000 - L.health.health_current
 		if(L.ai && L.ai.objective_attack == owner)
 			return 2000 - L.health.health_current
 		return 1000 - L.health.health_current
@@ -643,7 +660,7 @@
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
 			CHECK_TICK(90,FPS_SERVER)
-			if(!can_detect(L))
+			if(!can_detect(L) || !is_enemy(L))
 				continue
 			.[L] = TRUE
 
@@ -749,6 +766,7 @@
 	return FALSE
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
+
 	if(owner.alert_overlay)
 		if(new_alert_level == ALERT_LEVEL_COMBAT)
 			owner.alert_overlay.icon_state = "exclaim"

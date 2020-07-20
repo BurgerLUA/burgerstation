@@ -16,12 +16,15 @@ SUBSYSTEM_DEF(name)
 
 /subsystem/name/Initialize()
 
-	first_names_male = splittext(rustg_file_read('text/names/first_male.txt'),"\n")
-	first_names_female = splittext(rustg_file_read('text/names/first_female.txt'),"\n")
-	last_names = splittext(rustg_file_read('text/names/last.txt'),"\n")
+	first_names_male = splittext(rustg_file_read("text/names/first_male.txt"),"\n")
+	first_names_female = splittext(rustg_file_read("text/names/first_female.txt"),"\n")
+	last_names = splittext(rustg_file_read("text/names/last.txt"),"\n")
 
-	adjectives = splittext(rustg_file_read('text/names/adjectives.txt'),"\n")
-	verbs = splittext(rustg_file_read('text/names/verbs.txt'),"\n")
+	adjectives = splittext(rustg_file_read("text/names/adjectives.txt"),"\n")
+	verbs = splittext(rustg_file_read("text/names/verbs.txt"),"\n")
+
+	log_subsystem(name,"Found [length(adjectives)] adjectives.")
+	log_subsystem(name,"Found [length(verbs)] verbs.")
 
 	log_subsystem(name,"Found [length(first_names_male)] male first names.")
 	log_subsystem(name,"Found [length(first_names_female)] female first names.")

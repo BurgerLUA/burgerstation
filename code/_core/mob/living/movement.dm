@@ -88,10 +88,6 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
-	if(move_delay <= 0 && ai)
-		ai.handle_movement_reset()
-		ai.handle_movement()
-
 	if(dead)
 		return FALSE
 
