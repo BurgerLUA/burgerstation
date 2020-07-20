@@ -10,6 +10,10 @@ var/global/list/possible_hostage_types = list(
 	var/hostage = TRUE
 	queue_delete_on_death = FALSE
 
+/mob/living/advanced/npc/unique/hostage/Destroy() //Hostages should never be destroyed, but when they are, fail the objective.
+	if(hostage)	SShorde.queue_objectives_update()
+	return ..()
+
 /mob/living/advanced/npc/unique/hostage/post_move()
 
 	. = ..()

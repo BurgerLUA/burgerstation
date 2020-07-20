@@ -354,7 +354,7 @@
 
 	var/noise = 0
 
-	var/instances = 3
+	var/instances = 2
 
 	for(var/i=1,i<=instances,i++) //Use sin/cosine?
 
@@ -376,8 +376,12 @@
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.05)
 			new /turf/simulated/hazard/water(src)
-		if(0.05 to 0.1)
+		if(0.05 to 0.08)
 			new /turf/simulated/floor/colored/sand/beach(src)
+			if(prob(1))
+				new /mob/living/simple/npc/crab(src)
+		if(0.05 to 0.08)
+			new /turf/simulated/floor/colored/dirt(src)
 		if(0.1 to 0.42)
 			new /turf/simulated/floor/colored/grass(src)
 			if(prob(10))

@@ -1,3 +1,5 @@
+#define ROUND_END_DIRECTORY "sound/round_end/"
+
 var/global/list/active_sounds = list()
 
 SUBSYSTEM_DEF(sound)
@@ -8,6 +10,15 @@ SUBSYSTEM_DEF(sound)
 
 	cpu_usage_max = 75
 	tick_usage_max = 75
+
+	var/list/round_end_sounds = list()
+
+/subsystem/sound/Initialize()
+	var/found_files = flist(ROUND_END_DIRECTORY)
+	for(var/k in found_files)
+		round_end_sounds += "[ROUND_END_DIRECTORY][k]"
+	log_subsystem(name,"Found [length(round_end_sounds)] round end sounds.")
+	return TRUE
 
 /subsystem/sound/on_life()
 	for(var/F in active_sounds)
@@ -167,14 +178,24 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 /proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0, var/alert=0, var/atom/alert_source = null)
 
-	if(!sound_path || !location_or_list ||!SSsound)
+	if(!SSsound)
+		log_error("Tried playing a sound without the sound subsystem active!")
+		return FALSE
+
+	if(!sound_path)
+		CRASH_SAFE("Tried playing a sound without a sound path!")
+		return FALSE
+
+	if(!location_or_list)
+		CRASH_SAFE("Tried playing a sound without a target!")
 		return FALSE
 
 	var/list/hearers = list()
 	var/list/pos = list()
 
 	if(islist(location_or_list))
-		hearers = location_or_list
+		var/list/NL = location_or_list
+		hearers = NL.Copy()
 	else if(ismob(location_or_list))
 		hearers += location_or_list
 	else if(is_atom(location_or_list))
@@ -184,13 +205,15 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		if(!sound_source)
 			sound_source = AT
 	else
-		hearers = all_mobs_with_clients
+		CRASH_SAFE("Tried playing a sound without a valid ([location_or_list]) target!")
+		return FALSE
 
 	if(islist(sound_source))
 		pos = sound_source
 	else if(ismob(sound_source))
 		var/mob/M = sound_source
 		if(!M.client)
+			log_error("Tried playing a sound to a mob ([M.get_debug_name()], but it had no client!")
 			return FALSE
 	else if(sound_source)
 		if(isturf(sound_source))
@@ -234,6 +257,9 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 
 		hearers -= M
 
+		if(!M.client)
+			continue
+
 		if(!created_sound)
 			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
 			return FALSE
@@ -247,7 +273,10 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		if(C && ismob(C.eye))
 			M = C.eye
 
-		if(length(pos) && pos[3] != 0 && pos[3] != T.z) //0 just means that it should play locally
+		if(!length(pos))
+			pos = vector(T.x,T.y,T.z)
+
+		if(pos[3] != T.z)
 			continue
 
 		if(invisibility_check && M.see_invisible < invisibility_check)

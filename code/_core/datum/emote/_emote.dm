@@ -20,6 +20,10 @@
 	var/list/sounds_male = list()
 	var/list/sounds_female = list()
 
+
+	var/list/sounds_male_meme = list()
+	var/list/sounds_female_meme = list()
+
 /emote/sound/on_emote(var/atom/emoter,var/atom/target)
 
 	. = ..()
@@ -30,7 +34,16 @@
 	return .
 
 /emote/sound/proc/get_sound_to_play(var/atom/emoter,var/atom/target)
-	return emoter.gender == FEMALE && length(sounds_female) > 0 ? pick(sounds_female) : pick(sounds_male)
+
+	if(emoter.gender == FEMALE && length(sounds_female) > 0)
+		if(length(sounds_female_meme) && prob(1))
+			return pick(sounds_female_meme)
+		return pick(sounds_female)
+
+	if(length(sounds_male_meme) && prob(1))
+		return pick(sounds_male_meme)
+
+	return pick(sounds_male)
 
 /emote/sound/laugh
 	name = "Laugh"
@@ -92,6 +105,8 @@
 	sounds_male = list('sound/voice/human/human_male_pain_1.ogg','sound/voice/human/human_male_pain_2.ogg','sound/voice/human/human_male_pain_3.ogg','sound/voice/human/human_male_pain_4.ogg','sound/voice/human/human_male_pain_5.ogg','sound/voice/human/human_male_pain_6.ogg','sound/voice/human/human_male_pain_7.ogg','sound/voice/human/human_male_pain_8.ogg')
 	sounds_female = list('sound/voice/human/human_female_pain_1.ogg','sound/voice/human/human_female_pain_2.ogg','sound/voice/human/human_female_pain_3.ogg')
 
+	sounds_male_meme = list('sound/voice/human/human_male_pain_9.ogg','sound/voice/human/human_male_pain_10.ogg')
+
 /emote/sound/scream
 	name = "Scream"
 	id = "scream"
@@ -100,6 +115,8 @@
 
 	sounds_male = list('sound/voice/human/human_male_scream_1.ogg','sound/voice/human/human_male_scream_2.ogg','sound/voice/human/human_male_scream_3.ogg','sound/voice/human/human_male_scream_4.ogg','sound/voice/human/human_male_scream_5.ogg','sound/voice/human/human_male_scream_6.ogg','sound/voice/human/human_male_scream_special.ogg')
 	sounds_female = list('sound/voice/human/human_female_scream_1.ogg','sound/voice/human/human_female_scream_2.ogg','sound/voice/human/human_female_scream_3.ogg','sound/voice/human/human_female_scream_4.ogg','sound/voice/human/human_female_scream_5.ogg')
+
+	sounds_male_meme = list('sound/voice/human/human_male_scream_7.ogg')
 
 /emote/dab
 	name = "Dab"

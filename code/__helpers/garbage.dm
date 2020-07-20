@@ -1,4 +1,4 @@
-#define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
+#define QDEL_NULL(x) if(x) { if(!ispath(x)) {qdel(x)} ; x = null }
 
 #define QDEL_CUT(x)				\
 	if(x) {						\

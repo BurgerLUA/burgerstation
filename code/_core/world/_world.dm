@@ -3,6 +3,8 @@ var/global/ticks = 0
 var/global/rollovers = 0
 var/global/world_state = STATE_STARTING
 
+#define REBOOT_TIME 10 //In seconds
+
 /world/
 	fps = FPS_SERVER
 	icon_size = TILE_SIZE
@@ -57,6 +59,8 @@ var/global/world_state = STATE_STARTING
 	//status += "Map: <b>[map]</b><br>"
 	//status += "Time: <b>\[[duration]</b>"
 
+	return TRUE
+
 /*
 /world/Error(var/exception/e)
 	var/name = e.name
@@ -74,21 +78,40 @@ var/global/world_state = STATE_STARTING
 	return ..()
 
 /world/proc/shutdown_server()
+	save()
 	world_state = STATE_SHUTDOWN
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C << "Shutting down world..."
+	sleep(30)
 	shutdown()
 	return TRUE
 
-
 /world/proc/reboot_server()
+	save()
 	world_state = STATE_SHUTDOWN
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
+	sleep(30)
 	Reboot(0)
 	return TRUE
+
+/world/proc/save()
+	var/chosen_sound = pick(SSsound.round_end_sounds)
+	play(chosen_sound,all_mobs_with_clients)
+	world.log << "The sound is: [chosen_sound]."
+	for(var/mob/living/advanced/player/P in all_players)
+		if(P.dead)
+			P.to_chat("Could not save your character because you were dead.")
+			continue
+		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
+		mobdata.save_character(P,force = TRUE)
+		P.to_chat("Your character was automatically saved.")
+		sleep(1)
+	return TRUE
+
+
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
 
@@ -114,21 +137,12 @@ var/global/world_state = STATE_STARTING
 
 	play('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
 
-	for(var/mob/living/advanced/player/P in all_players)
-		if(P.dead)
-			P.to_chat("Could not save your character because you were dead.")
-			continue
-		var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
-		mobdata.save_character(P,force = TRUE)
-		P.to_chat("Your character was automatically saved.")
-		sleep(1)
-
 	if(shutdown)
-		broadcast_to_clients(span("notice","Shutting down world in 60 seconds down the world due to [nice_reason]."))
-		CALLBACK("shutdown_world",SECONDS_TO_DECISECONDS(60),src,.proc/shutdown_server)
+		broadcast_to_clients(span("notice","Shutting down world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server shuts down."))
+		CALLBACK("shutdown_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,.proc/shutdown_server)
 	else
-		broadcast_to_clients(span("notice","Rebooting world in 60 seconds down the world due to [nice_reason]."))
-		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(60),src,.proc/reboot_server)
+		broadcast_to_clients(span("notice","Rebooting world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server reboots."))
+		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,.proc/reboot_server)
 
 	SSdiscord.send_message("Round ended due to [nice_reason].")
 

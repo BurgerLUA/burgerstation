@@ -24,6 +24,7 @@
 		linked_nodes += N
 
 	SShorde.tracked_objectives += src
+	SShorde.spawned_objectives++
 	if(SShorde.state == HORDE_STATE_FIGHTING)
 		SShorde.update_objectives()
 

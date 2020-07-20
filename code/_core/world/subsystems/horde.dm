@@ -23,6 +23,7 @@ SUBSYSTEM_DEF(horde)
 	var/allow_shuttle_launch = FALSE
 
 	var/list/tracked_objectives = list()
+	var/list/failed_objectives = list()
 
 	var/objectives_spawned = FALSE
 	var/next_objectives_update = -1
@@ -297,15 +298,21 @@ SUBSYSTEM_DEF(horde)
 			var/mob/living/L = A
 			if(istype(L,/mob/living/advanced/npc/unique/hostage/))
 				var/mob/living/advanced/npc/unique/hostage/H = L
-				objective_text += "Rescue \the [L.name]. \[<b>[!H.hostage ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
-				if(!H.hostage)
-					if(H.dead)
-						additional_text += "It appears that [H.name] was brought back dead. The crew will not be receiving a bonus for this tragedy.<br>"
-					else
-						additional_text += "As [H.name] was brought back in one piece, the crew will be receiving a bonus of 3000 credits.<br>"
-						SSpayday.stored_payday += 3000
+				if(H.qdeleting)
+					objective_text += "Rescue \the [H.name]. \[<b>FAILED</b>\]<br>"
+					additional_text += "It appears that the crew fucked up so hard, [H.name]'s body cannot be recovered.<br>"
 					completed_objectives++
 					tracked_objectives -= L
+				else
+					objective_text += "Rescue \the [H.name]. \[<b>[!H.hostage ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
+					if(!H.hostage)
+						if(H.dead)
+							additional_text += "It appears that [H.name] was brought back dead. The crew will not be receiving a bonus for this tragedy.<br>"
+						else
+							additional_text += "As [H.name] was brought back in one piece, the crew will be receiving a bonus of 3000 credits.<br>"
+							SSpayday.stored_payday += 3000
+						completed_objectives++
+						tracked_objectives -= L
 			else
 				objective_text += "Kill \the [L.name]. \[<b>[L.dead ? "COMPLETED" : "IN PROGRESS"]</b>\]<br>"
 				if(L.dead)
@@ -333,7 +340,7 @@ SUBSYSTEM_DEF(horde)
 
 	if(completed_objectives >= spawned_objectives)
 		world.end(WORLD_END_NANOTRASEN_VICTORY)
-		tick_rate = 0
+		tick_rate = 0 //Showdown this subsystem.
 		return TRUE
 
 	return FALSE

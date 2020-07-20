@@ -95,6 +95,10 @@
 		usr?.to_chat(span("danger","Your character was not saved as the round just ended!"))
 		return FALSE
 
+	if(!A.allow_save)
+		usr?.to_chat(span("danger","You cannot save this character!"))
+		return FALSE
+
 	var/list/loaded_data = A.get_mob_data(save_inventory,force)
 	if(write_json_data_to_id(loaded_data["id"],loaded_data))
 		A.to_chat(span("notice","Sucessfully saved character [A.name]."))

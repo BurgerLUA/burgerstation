@@ -14,6 +14,12 @@ obj/structure/interactive/objective/Initialize()
 	name = "[pick(SSname.adjectives)] artifact of [pick(SSname.verbs)]"
 	return ..()
 
+obj/structure/interactive/objective/on_crush()
+	var/turf/T = get_turf(pick(all_fall_markers))
+	src.visible_message(span("danger","\The [name] strains as it disappears in a large flash!"))
+	src.force_move(T)
+	return FALSE
+
 obj/structure/interactive/objective/Destroy()
 	if(src in SShorde.tracked_objectives)
 		SShorde.queue_objectives_update()
