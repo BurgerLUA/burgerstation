@@ -120,7 +120,7 @@
 "cp" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/reinforced,/area/burgerstation/armory)
 "cq" = (/obj/structure/interactive/atmospherics/air_alarm{dir = 1},/turf/simulated/wall/metal/reinforced,/area/burgerstation/maint/north)
 "cr" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/burgerstation/armory/shooting_range)
-"cs" = (/obj/structure/interactive/disposals/pipe{dir = 9},/turf/simulated/floor/tile/dark,/area/burgerstation/armory)
+"cs" = (/turf/simulated/floor/tile/dark,/area/burgerstation/armory)
 "ct" = (/obj/structure/interactive/atmospherics/air_alarm,/turf/simulated/wall/metal/reinforced,/area/burgerstation/armory)
 "cu" = (/turf/simulated/wall/metal/reinforced,/area/burgerstation/armory/special)
 "cv" = (/obj/structure/interactive/power/apc{dir = 1},/turf/simulated/wall/metal/reinforced,/area/burgerstation/maint/north)
