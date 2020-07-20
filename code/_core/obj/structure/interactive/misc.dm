@@ -86,6 +86,30 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/movable/O,var/a
 		//P.save()
 	return ..()
 
+
+
+/obj/structure/interactive/misc/mirror/cracked
+	name = "cracked mirror"
+	desc = "It's broken."
+	desc_extended = "Who could even use this?"
+	icon_state = "mirror_broke"
+
+/obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(istype(O,/mob/living/advanced/player/antagonist/))
+		var/mob/living/advanced/player/P = O
+		P.add_chargen_buttons()
+		P.handle_hairstyle_chargen(-1,update_blends=FALSE)
+		P.handle_beardstyle_chargen(-1,update_blends=FALSE)
+		P.update_all_blends()
+		P.show_hud(TRUE,FLAGS_HUD_CHARGEN,FLAGS_HUD_SPECIAL,speed=3)
+
+/obj/structure/interactive/misc/mirror/cracked/chargen/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	if(istype(O,/mob/living/advanced/player/antagonist/))
+		var/mob/living/advanced/player/P = O
+		P.remove_chargen_buttons()
+	return ..()
+
+
 obj/structure/interactive/misc/curtain_open
 	name = "curtain"
 	desc = "For warding off peeping toms."

@@ -2,7 +2,7 @@
 	name = "Vehicle"
 	desc = "A large vehicle that holds a driver"
 
-	var/mob/living/advanced/passengers //Slot 1 is a driver.
+	var/list/mob/living/advanced/passengers //Slot 1 is a driver.
 	var/passengers_max = 1
 
 	collision_flags = FLAG_COLLISION_WALKING
@@ -29,6 +29,29 @@
 	)
 
 	blood_type = null
+
+/mob/living/vehicle/on_crush()
+
+	for(var/mob/living/advanced/A in passengers)
+		exit_vehicle(A,loc)
+		A.on_crush()
+
+	qdel(src)
+
+	return TRUE
+
+/mob/living/vehicle/Destroy()
+
+	for(var/mob/living/advanced/A in passengers)
+		exit_vehicle(A,loc)
+	passengers.Cut()
+
+	for(var/obj/item/I in equipment)
+		qdel(I)
+	equipment.Cut()
+
+	return ..()
+
 
 /mob/living/vehicle/pre_death()
 

@@ -13,3 +13,5 @@
 #define FLAG_AREA_NO_IFF 0x40 //Disable IFF.
 
 #define FLAGS_AREA_TUTORIAL 0x80
+
+#define FLAGS_AREA_NO_EVENTS 0x100

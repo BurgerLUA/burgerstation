@@ -26,3 +26,16 @@
 	equip_loadout(loadout_to_use)
 
 	return TRUE
+
+
+/mob/living/advanced/player/antagonist/default_appearance()
+	var/species/S = all_species[species]
+	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
+	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
+	handle_skincolor_chargen(S.default_color_skin,FALSE)
+	handle_eyecolor_chargen(S.default_color_eye,FALSE)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
+	src.add_organ(/obj/item/organ/internal/implant/groin/syndicate_explosive)
+	update_all_blends()
+	return TRUE

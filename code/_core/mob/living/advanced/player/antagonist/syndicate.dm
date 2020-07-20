@@ -1,9 +1,9 @@
 /mob/living/advanced/player/antagonist/syndicate
-	name = "antagonist syndicate operative"
 	loadout_to_use = /loadout/syndicate/player_antagonist
 
 /mob/living/advanced/player/antagonist/syndicate/prepare()
 	. = ..()
+	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/groin/syndicate_explosive)
@@ -14,6 +14,6 @@
 
 
 /mob/living/advanced/player/antagonist/syndicate/setup_name()
-	name = "Operative [gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
-	real_name = name
+	. = ..()
+	name = "Operative [real_name]"
 	return TRUE

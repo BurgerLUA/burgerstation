@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_GEARING
 		round_time = 0
 		round_time_next = HORDE_DELAY_GEARING
-		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 
 	if(state == HORDE_STATE_GEARING)
 		var/time_to_display = round_time_next - round_time
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_BOARDING
 		round_time = 0
 		round_time_next = HORDE_DELAY_BOARDING
-		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 		next_objectives_update = world.time + 100
 
 
@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_LAUNCHING
 		round_time = 0
 		round_time_next = HORDE_DELAY_LAUNCHING
-		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 		allow_shuttle_launch = TRUE
 
 	if(state == HORDE_STATE_LAUNCHING)
@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(horde)
 		state = HORDE_STATE_FIGHTING
 		round_time = 0
 		round_time_next = 0
-		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
+		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 		next_threat_update = world.time + 100
 
 	if(state == HORDE_STATE_FIGHTING)
@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(horde)
 		if(!message_displayed || world.time >= next_hijack_check_time)
 			message_displayed = TRUE
 			if(check_hijack())
-				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sound/effects/station/new_command_report.ogg')
+				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 				state = HORDE_STATE_HIJACK
 				round_time = 0
 			else
@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(horde)
 		"Objectives Update",
 		"[objective_text]",
 		ANNOUNCEMENT_STATION,
-		'sound/effects/station/new_command_report.ogg'
+		'sound/voice/station/new_command_report.ogg'
 	)
 
 	if(completed_objectives >= spawned_objectives)

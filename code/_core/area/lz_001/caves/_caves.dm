@@ -7,6 +7,8 @@
 	)
 	cheese_type = /reagent/nutrition/cheese/gruyere
 
+	interior = TRUE
+
 /area/lz_001/caves/lava
 	name = "lava cave"
 	icon_state = "lava_cave"
