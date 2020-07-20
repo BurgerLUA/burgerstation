@@ -130,6 +130,11 @@ var/global/saved_icons = 0
 /turf/simulated/PostInitialize()
 	. = ..()
 	update_sprite()
+
+	for(var/obj/item/I in contents)
+		I.pixel_x += rand(-4,4)
+		I.pixel_y += rand(-4,4)
+
 	return .
 
 /turf/simulated/proc/get_smooth_code()
