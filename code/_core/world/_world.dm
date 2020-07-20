@@ -100,7 +100,6 @@ var/global/world_state = STATE_STARTING
 /world/proc/save()
 	var/chosen_sound = pick(SSsound.round_end_sounds)
 	play(chosen_sound,all_mobs_with_clients)
-	world.log << "The sound is: [chosen_sound]."
 	for(var/mob/living/advanced/player/P in all_players)
 		if(P.dead)
 			P.to_chat("Could not save your character because you were dead.")

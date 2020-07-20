@@ -21,6 +21,11 @@
 	size = 0.02
 	value = 1.1
 
+/obj/item/bullet_cartridge/revolver_38/Generate()
+	item_count_current = 6
+	update_sprite()
+	return ..()
+
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
 	desc = "DRAW!"

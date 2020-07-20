@@ -297,7 +297,7 @@
 	if(istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(E.enabled) E.click_self(A)
-	if(!W.quick_equip(A,ignore_hands=TRUE,debug=TRUE))
+	if(!W.quick_equip(A,ignore_hands=TRUE))
 		W.drop_item(get_turf(owner))
 	return TRUE
 

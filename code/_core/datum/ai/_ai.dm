@@ -640,10 +640,10 @@
 
 /ai/proc/get_possible_targets()
 
+	. = list()
+
 	if(retaliate)
-		. = attackers.Copy()
-	else
-		. = list()
+		. |= attackers
 
 	var/range_to_use = radius_find_enemy
 	switch(alert_level)

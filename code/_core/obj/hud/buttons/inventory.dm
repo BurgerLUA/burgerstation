@@ -12,11 +12,10 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
-/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	. = ..()
+/obj/hud/button/close_inventory/proc/close(var/mob/caller)
 
-	if(. && is_advanced(caller))
+	if(is_advanced(caller))
 
 		var/mob/living/advanced/A = caller
 
@@ -28,6 +27,15 @@
 
 		animate(src,alpha=0,time=4)
 		src.mouse_opacity = 0
+
+	return TRUE
+
+/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	. = ..()
+
+	if(.)
+		close(caller)
 
 	return .
 
