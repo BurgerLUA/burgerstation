@@ -3,7 +3,7 @@ var/global/ticks = 0
 var/global/rollovers = 0
 var/global/world_state = STATE_STARTING
 
-#define REBOOT_TIME 10 //In seconds
+#define REBOOT_TIME 60 //In seconds
 
 /world/
 	fps = FPS_SERVER
