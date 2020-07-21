@@ -63,8 +63,8 @@
 	desc = "Unga bunga."
 	desc_extended = "Commonly used by the local Ashwalkers for hunting and settlement defense. Can be thrown for heavy damage."
 	icon = 'icons/obj/item/weapons/melee/swords/spear.dmi'
-	damage_type = /damagetype/melee/spear/
-	damage_type_thrown = /damagetype/melee/spear/thrown
+	damage_type = /damagetype/melee/spear/spear/
+	damage_type_thrown = /damagetype/melee/spear/spear/thrown
 
 	attack_delay = 5
 	attack_delay_max = 12
@@ -83,3 +83,74 @@
 	attack_delay_max = 30
 
 	value = 120
+
+/obj/item/weapon/melee/sword/curvedsword
+	name = "steel curved sword"
+	desc = "A curved blade. Poor at trusting, excells at slashing quickly."
+	desc_extended = "A standard curved sword. Capable of fast swings, and when maintained it can be exceptionally sharp."
+
+	icon = 'icons/obj/item/weapons/melee/swords/curvedsword.dmi'
+
+	dan_mode = TRUE
+
+	item_slot = SLOT_GROIN_O
+	worn_layer = LAYER_MOB_CLOTHING_BACK
+	slot_icons = TRUE
+
+	damage_type = /damagetype/melee/sword/curvedsword
+
+	attack_delay = 7
+	attack_delay_max = 14
+
+	value = 900
+
+/obj/item/weapon/melee/sword/skana
+	name = "skana"
+	desc = "A metal katana that's been space-ified."
+	desc_extended = "A straight katana-like sword, with a curved starting near the end. Incredibly sharp."
+
+	icon = 'icons/obj/item/weapons/melee/swords/skana.dmi'
+
+	dan_mode = TRUE
+
+	item_slot = SLOT_GROIN_O
+
+	damage_type = /damagetype/melee/sword/skana
+
+	attack_delay = 8
+
+	value = 200
+
+/obj/item/weapon/melee/sword/gladius
+	name = "gladius"
+	desc = "A steel bladed gladius."
+	desc_extended = "A light gladius with a bronze hilt and steel blade."
+
+	icon = 'icons/obj/item/weapons/melee/swords/gladius.dmi'
+
+	dan_mode = TRUE
+
+	item_slot = SLOT_GROIN_O
+
+	damage_type = /damagetype/melee/sword/gladius
+
+	attack_delay = 6
+
+	value = 200
+
+/obj/item/weapon/melee/sword/allium
+	name = "allium"
+	desc = "An allium made of copper."
+	desc_extended = "A light copper allium, better for thrusting than a gladius."
+
+	icon = 'icons/obj/item/weapons/melee/swords/allium.dmi'
+
+	dan_mode = TRUE
+
+	item_slot = SLOT_GROIN_O
+
+	damage_type = /damagetype/melee/sword/allium
+
+	attack_delay = 7
+
+	value = 200
