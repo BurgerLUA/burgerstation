@@ -7,6 +7,8 @@
 	var/list/turf/valid_turfs = list()
 	var/list/area/valid_areas = list()
 
+	occurances_max = 5
+
 /event/meteors/Destroy()
 	valid_turfs.Cut()
 	valid_areas.Cut()

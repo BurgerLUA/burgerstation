@@ -11,6 +11,9 @@
 
 	var/lifetime = 0 //How long as this event been triggering for? In deciseconds.
 
+	var/occurances_total = 0
+	var/occurances_max = 3
+
 /event/proc/on_start()
 	lifetime = 0
 	return TRUE

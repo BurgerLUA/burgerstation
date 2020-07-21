@@ -6,6 +6,8 @@
 	var/list/turf/valid_turfs = list()
 	var/list/area/valid_areas = list()
 
+	occurances_max = 3
+
 /event/carp/Destroy()
 	valid_turfs.Cut()
 	valid_areas.Cut()
