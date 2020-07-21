@@ -12,8 +12,6 @@ SUBSYSTEM_DEF(obj)
 
 /subsystem/obj/Initialize()
 
-	set background = 1
-
 	for(var/obj/O in world)
 		if(O.initialize_type == INITIALIZE_EARLY)
 			initialize_early += O

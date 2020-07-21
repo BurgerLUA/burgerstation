@@ -1,0 +1,65 @@
+/event/blob
+	name = "Blob Biohazard"
+
+	probability = 5 //relative
+
+	var/list/turf/valid_turfs = list()
+	var/list/area/valid_areas = list()
+
+	occurances_max = 1
+
+/event/blob/Destroy()
+	valid_turfs.Cut()
+	valid_areas.Cut()
+	return ..()
+
+/event/blob/New()
+
+	for(var/area/A in world)
+		if(A.z != 3)
+			continue
+		if(A.interior)
+			continue
+		if(A.flags_area & FLAGS_AREA_NO_EVENTS)
+			continue
+		valid_areas += A
+
+	LOG_DEBUG("Found [length(valid_turfs)] valid turfs for blob event.")
+
+	return ..()
+
+/event/blob/on_start()
+
+	valid_turfs.Cut()
+
+	LOG_DEBUG("Starting Blob Event")
+
+	var/area/A
+
+	var/chances = 20
+
+	if(length(valid_areas))
+		while(TRUE && chances > 0)
+			CHECK_TICK(50,FPS_SERVER*10)
+			A = pick(valid_areas)
+			var/mob/living/advanced/player/P = locate() in A.contents
+			if(!P) break
+			chances--
+		for(var/turf/simulated/floor/T in A.contents)
+			valid_turfs += T
+
+	announce(
+		"Central Xenoviral Division",
+		"Blob Alert",
+		"A level 5 \"blob\" biohazard growth has been detected near the area of operations. Predicted area: [A.name]."
+	)
+
+	var/turf/T = pick(valid_turfs)
+
+	CREATE(/obj/structure/interactive/blob/core,T)
+
+	return ..()
+
+/event/blob/on_end()
+	LOG_DEBUG("Ending Blob Event")
+	return ..()

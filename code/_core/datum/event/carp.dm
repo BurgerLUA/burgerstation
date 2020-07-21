@@ -55,7 +55,7 @@
 		var/turf/T = pick(valid_turfs)
 		if(!T)
 			break
-		CREATE(/mob/living/simple/npc/spacecarp/,T)
+		CREATE_SAFE(/mob/living/simple/npc/spacecarp/,T)
 
 	return ..()
 

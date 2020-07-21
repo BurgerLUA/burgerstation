@@ -14,6 +14,8 @@ var/global/list/all_areas = list()
 
 	var/flags_area = FLAG_AREA_NONE
 
+	var/flags_comms = FLAG_COMM_NONE
+
 	var/sound_environment = ENVIRONMENT_GENERIC
 
 	var/map_color_r = rgb(255,0,0,255)

@@ -1,6 +1,5 @@
 
 /world/proc/life()
-	//set background = TRUE
 
 	LOG_SERVER("STARTING WORLD.")
 

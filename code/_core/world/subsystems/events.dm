@@ -37,11 +37,10 @@ SUBSYSTEM_DEF(events)
 
 /subsystem/events/proc/trigger_random_event()
 
-	var/event_id = pickweight(all_events_prob)
-
-	if(!event_id)
-		LOG_DEBUG("There are [length(all_events_prob)] events!")
+	if(!length(all_events_prob))
 		return FALSE
+
+	var/event_id = pickweight(all_events_prob)
 
 	var/event/E = all_events[event_id]
 	if(E.active)
@@ -55,6 +54,10 @@ SUBSYSTEM_DEF(events)
 		E.end_time = world.time + E.duration
 	else
 		E.on_end()
+
+	if(E.occurances_current >= E.occurances_max)
+		all_events -= E
+		all_events_prob -= E
 
 	return E
 

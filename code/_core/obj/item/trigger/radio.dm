@@ -119,6 +119,16 @@ list(
 	if(speaker_ref && all_unprocessed_radio_data[speaker_ref])
 		return FALSE
 
+	var/area/A = get_area(src)
+	if(A.flags_comms & FLAG_COMM_DISABLED)
+		return FALSE
+
+	/*
+	if(TRUE || A.flags_comms & FLAG_COMM_SCRAMBLED)
+		data["message"] = scramble(data["message"])
+		data["message_language"] = scramble(data["message_language"])
+	*/
+
 	all_unprocessed_radio_data[speaker_ref] = data
 
 	play(radio_sound,src)
@@ -132,6 +142,16 @@ list(
 
 	if(data["frequency"] != frequency && !(data["frequency"] in listening_frequencies))
 		return FALSE
+
+	var/area/A = get_area(src)
+	if(A.flags_comms & FLAG_COMM_DISABLED)
+		return FALSE
+
+	/*
+	if(A.flags_comms & FLAG_COMM_SCRAMBLED)
+		data["message"] = scramble(data["message"])
+		data["message_language"] = scramble(data["message_language"])
+	*/
 
 	var/turf/T = get_turf(src)
 	for(var/mob/M in range(broadcasting_range,T))
