@@ -8,3 +8,17 @@
 	sunlight_color = "#898989"
 
 	cheese_type = /reagent/nutrition/cheese/raclette
+
+
+/area/lz_001/snow/interior
+	sunlight_freq = 0
+	interior = TRUE
+
+/area/lz_001/snow/interior/lodge
+	name = "\improper White Forest Lodge"
+	icon_state = "bar"
+
+
+/area/lz_001/snow/interior/shack
+	name = "\improper Abandoned White Forest Mining Shack"
+	icon_state = "mining"

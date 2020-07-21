@@ -38,11 +38,15 @@
 	var/list/announce_areas = list()
 
 	for(var/i=1,i<=3,i++)
-		if(length(valid_areas))
-			var/area/A = pick(valid_areas)
-			announce_areas += A.name
-			for(var/turf/T in A.contents)
-				valid_turfs += T
+		if(!length(valid_areas))
+			return FALSE
+		var/area/A = pick(valid_areas)
+		announce_areas |= A.name
+		for(var/turf/T in A.contents)
+			valid_turfs |= T
+
+	if(!length(valid_turfs))
+		return FALSE
 
 	announce(
 		"Central Command Meteorology Division",

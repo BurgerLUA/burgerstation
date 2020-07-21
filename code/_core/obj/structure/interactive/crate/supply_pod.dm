@@ -5,14 +5,15 @@
 
 	collect_contents_on_initialize = FALSE
 
-
-	interaction_flags = FLAG_INTERACTION_NONE
+	interaction_flags = FLAG_INTERACTION_LIVING
 
 	anchored = TRUE
 
 	var/transit = FALSE
 
 	pixel_x = -16
+
+	var/auto_open = TRUE
 
 /obj/structure/interactive/crate/closet/supply_pod/PostInitialize()
 
@@ -27,7 +28,8 @@
 		pixel_w = TILE_SIZE*VIEW_RANGE*0.5
 		animate(src, pixel_z = 0, pixel_w = 0,time = SECONDS_TO_DECISECONDS(2))
 		CALLBACK("pod_land_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/land)
-		CALLBACK("pod_open_\ref[src]",SECONDS_TO_DECISECONDS(6),src,.proc/open)
+		if(auto_open)
+			CALLBACK("pod_open_\ref[src]",SECONDS_TO_DECISECONDS(6),src,.proc/open)
 
 	return .
 
@@ -37,9 +39,12 @@
 
 /obj/structure/interactive/crate/closet/supply_pod/open(var/mob/caller)
 
+	if(caller && auto_open)
+		return FALSE
+
 	. = ..()
 
-	if(.)
+	if(. && auto_open)
 		play('sound/meme/tada.ogg',get_turf(src),range_max = VIEW_RANGE * 2)
 
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
@@ -72,3 +77,8 @@
 /obj/structure/interactive/crate/closet/supply_pod/syndicate
 	name = "syndicate supply pod"
 	icon_state = "syndiepod"
+
+/obj/structure/interactive/crate/closet/supply_pod/stray
+	name = "stray supply pod"
+	icon_state = "squadpod"
+	auto_open = FALSE

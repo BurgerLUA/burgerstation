@@ -87,6 +87,9 @@
 	//1 = Attacks enemies in enemy tags.
 	//2 = Attacks people who don't have the same loyalty tag as them.
 	//3 = Attacks literally everyone in sight.
+	var/assistance = 1
+	//0 = Helps no one but themselves.
+	//1 = Helps people with the same loyalty tag as them.
 
 	//Roaming Stuff. Mostly read only.
 	var/roam = FALSE
@@ -605,9 +608,13 @@
 
 	if(is_living(A))
 		var/mob/living/L = A
-		if(L.ai)
+		if(L.ai && L.ai.objective_attack)
 			if(L.ai.objective_attack == owner)
 				return TRUE
+			if(assistance == 1 && is_living(L.ai.objective_attack))
+				var/mob/living/L2 = L.ai.objective_attack
+				if(L2.loyalty_tag == owner.loyalty_tag)
+					return TRUE
 
 	switch(aggression)
 		if(0)

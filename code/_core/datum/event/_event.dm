@@ -24,3 +24,6 @@
 
 /event/proc/on_end()
 	return TRUE
+
+/event/proc/on_fail()
+	return TRUE

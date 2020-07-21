@@ -6,7 +6,7 @@
 
 /loot/supply_crate/russian
 	loot_table = list(
-		/loot/medicine/pack = 50,
+		/loot/medicine/pack = 10,
 		/loot/weapon/abakan = 10,
 		/loot/weapon/groza = 10,
 		/loot/weapon/ak13 = 10,
@@ -28,7 +28,7 @@
 
 /loot/supply_crate/nanotrasen
 	loot_table = list(
-		/loot/medicine/pack = 50,
+		/loot/medicine/pack = 10,
 		/loot/weapon/big_game_revolver = 10,
 		/loot/weapon/assault_rifle = 10,
 		/loot/weapon/grenade = 10,
@@ -41,7 +41,7 @@
 
 /loot/supply_crate/american
 	loot_table = list(
-		/loot/medicine/pack = 50,
+		/loot/medicine/pack = 10,
 		/loot/weapon/deagle = 10,
 		/loot/weapon/pistol_45 = 10,
 		/loot/weapon/comp_revolver = 10,
@@ -51,7 +51,7 @@
 
 /loot/supply_crate/syndicate
 	loot_table = list(
-		/loot/medicine/pack = 50,
+		/loot/medicine/pack = 10,
 		/loot/weapon/high_cal = 10,
 		/loot/weapon/stealth_pistol = 10,
 		/loot/weapon/syndicate_carbine = 10,

@@ -11,3 +11,12 @@
 
 /area/lz_001/outpost/syndicate/jungle
 	name = "\improper Syndicate Outpost Juliett"
+
+
+
+/area/lz_001/outpost/russian
+	icon_state = "syndicate"
+
+
+/area/lz_001/outpost/russian/snow
+	name = "\improper Russian Outpost Sierra"

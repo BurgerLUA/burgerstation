@@ -19,9 +19,16 @@
 	icon_state = "bar"
 
 /area/lz_001/forest/village/interior/chemistry
-	name = "\improper Village Chemistry"
-	icon_state = "chemistry"
+	name = "\improper First Light Chemistry"
+	icon_state = "chem"
 
+/area/lz_001/forest/village/interior/mining
+	name = "\improper First Light Mining"
+	icon_state = "mining"
+
+/area/lz_001/forest/village/interior/armory
+	name = "\improper First Light Armory"
+	icon_state = "armory"
 
 
 

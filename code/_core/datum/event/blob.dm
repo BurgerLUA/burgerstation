@@ -48,6 +48,9 @@
 		for(var/turf/simulated/floor/T in A.contents)
 			valid_turfs += T
 
+	if(!length(valid_turfs))
+		return FALSE
+
 	announce(
 		"Central Xenoviral Division",
 		"Blob Alert",

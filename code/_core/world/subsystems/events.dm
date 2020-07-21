@@ -46,7 +46,12 @@ SUBSYSTEM_DEF(events)
 	if(E.active)
 		return FALSE
 
-	E.on_start()
+	if(!E.on_start())
+		E.on_fail()
+		all_events -= event_id
+		return FALSE
+
+
 	if(E.duration)
 		all_events_active += E
 		E.active = TRUE
