@@ -558,3 +558,6 @@
 		throw_self(owner,null,null,null,x_mod*magnitude*2,y_mod*magnitude*2)
 
 	return ..()
+
+/obj/item/proc/get_overlay_ids()
+	return list("\ref[src]")

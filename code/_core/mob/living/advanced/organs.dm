@@ -5,7 +5,11 @@
 			I.remove_all_objects()
 			I.remove_from_owner()
 
-	remove_overlay("\ref[O]")
+	if(is_tail(O))
+		remove_overlay("tail_behind")
+		remove_overlay("tail_front")
+	else
+		remove_overlay("\ref[O]")
 	organs -= O
 	labeled_organs -= O.id
 

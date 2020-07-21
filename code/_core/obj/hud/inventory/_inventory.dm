@@ -382,16 +382,6 @@
 
 	var/atom/old_location = I.loc
 
-	/*
-	if(is_inventory(I.loc))
-		var/obj/hud/inventory/I2 = I.loc
-		if(I2 == src)
-			return FALSE
-		I2.remove_object(I,get_turf(I))
-	*/
-
-	undelete(I)
-
 	I.drop_item(src)
 	I.plane = PLANE_HUD_OBJ
 	held_objects += I
@@ -410,6 +400,8 @@
 	overlays.Cut()
 	update_overlays()
 
+	undelete(I)
+
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
@@ -421,31 +413,13 @@
 		return FALSE
 
 	var/mob/living/advanced/A = owner
-
-	/*
-	for(var/obj/item/C in A.worn_objects)
-		if(C.item_slot & I.item_slot && (!C.ignore_other_slots && !I.ignore_other_slots))
-			if(messages)
-				A.to_chat(span("notice","\The [C.name] prevents you from wearing \the [I.name]!"))
-			return FALSE
-	*/
-
 	var/atom/old_location = I.loc
-
-	/*
-	if(is_inventory(I.loc))
-		var/obj/hud/inventory/I2 = I.loc
-		if(I2 == src)
-			return FALSE
-		I2.remove_object(I,owner.loc)
-	*/
-
-	undelete(I)
 
 	I.drop_item(src)
 	I.plane = PLANE_HUD_OBJ
 	worn_objects += I
 	I.pre_pickup(old_location,src)
+
 	if(A)
 		I.update_owner(A)
 		if(should_add_worn)
@@ -460,6 +434,8 @@
 	I.on_pickup(old_location,src)
 	overlays.Cut()
 	update_overlays()
+
+	undelete(I)
 
 	return TRUE
 
@@ -574,7 +550,12 @@
 		update_stats()
 		if(owner && is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			A.remove_overlay("\ref[I]")
+			if(is_wings(I))
+				A.remove_overlay("wings_behind")
+				A.remove_overlay("wings_front")
+				A.remove_overlay("wings_side")
+			else
+				A.remove_overlay("\ref[I]")
 		if(owner)
 			I.set_dir(owner.dir)
 			if(is_advanced(owner))

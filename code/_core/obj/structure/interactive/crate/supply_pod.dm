@@ -26,8 +26,8 @@
 		pixel_z = TILE_SIZE*VIEW_RANGE*4
 		pixel_w = TILE_SIZE*VIEW_RANGE*0.5
 		animate(src, pixel_z = 0, pixel_w = 0,time = SECONDS_TO_DECISECONDS(2))
-		CALLBACK("\ref[src]_pod_land",SECONDS_TO_DECISECONDS(2),src,.proc/land)
-		CALLBACK("\ref[src]_pod_open",SECONDS_TO_DECISECONDS(6),src,.proc/open)
+		CALLBACK("pod_land_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/land)
+		CALLBACK("pod_open_\ref[src]",SECONDS_TO_DECISECONDS(6),src,.proc/open)
 
 	return .
 
