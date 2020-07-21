@@ -54,14 +54,12 @@
 
 
 /mob/living/vehicle/pre_death()
-
-	for(var/mob/living/advanced/A in passengers)
-		exit_vehicle(A, get_turf(src))
-
+	explode(get_turf(src),2,src,src)
 	return ..()
 
 /mob/living/vehicle/post_death()
-	explode(get_turf(src),2,src,src)
+	for(var/mob/living/advanced/A in passengers)
+		exit_vehicle(A, get_turf(src))
 	return ..()
 
 /mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)
@@ -110,15 +108,12 @@
 		if(L.intent != INTENT_HARM)
 			var/obj/item/I = object
 			if(I.flags_tool & FLAG_TOOL_WRENCH)
-
 				if(length(passengers))
 					caller.to_chat(span("warning","You can't remove this while it's in use!"))
 					return TRUE
-
 				if(!length(equipment))
 					caller.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
 					return TRUE
-
 				var/atom/movable/choice = input("What would you like to remove?","Equipment Removal") as null|anything in equipment
 				if(choice && choice in equipment)
 					caller.to_chat(span("notice","You remove \the [choice.name] from \the [src.name]."))
@@ -127,7 +122,7 @@
 					caller.to_chat(span("notice","You choose not to remove anything."))
 				return TRUE
 
-			if(istype(I,/obj/item/weapon))
+			if(istype(I,/obj/item/weapon) && !istype(I,/obj/item/weapon/ranged/magic))
 				if(length(equipment) >= 2)
 					caller.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
 					return TRUE

@@ -18,8 +18,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 80,
-		ATTRIBUTE_DEXTERITY = 40
+		ATTRIBUTE_STRENGTH = 40,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(

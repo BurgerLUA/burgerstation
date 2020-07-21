@@ -13,6 +13,8 @@
 		SKILL_UNARMED = 100 //100%
 	)
 
+	fatigue_coefficient =  1
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 

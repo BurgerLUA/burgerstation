@@ -1,5 +1,5 @@
 /area/lz_001/snow
-	name = "snow"
+	name = "\improper White Forest"
 	icon_state = "snow"
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20

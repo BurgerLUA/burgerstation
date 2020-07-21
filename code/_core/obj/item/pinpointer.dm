@@ -135,9 +135,17 @@
 
 	var/desired_loyalty = "NanoTrasen"
 
+	var/encoded = TRUE
+
 /obj/item/pinpointer/crew/click_self(var/mob/caller)
 
 	var/list/possible_crew = list()
+
+	if(encoded && is_living(caller))
+		var/mob/living/L = caller
+		if(L.loyalty_tag != desired_loyalty)
+			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
+			return FALSE
 
 	for(var/mob/living/advanced/player/P in all_mobs_with_clients)
 		if(P.loyalty_tag != desired_loyalty)
@@ -167,6 +175,7 @@
 	icon_state = "red"
 	desired_loyalty = "Syndicate"
 	value = 1000
+	encoded = TRUE
 
 /obj/item/pinpointer/landmark/
 	name = "landmark pinpointer"

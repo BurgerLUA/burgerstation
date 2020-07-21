@@ -1,5 +1,5 @@
 /area/lz_001/caves
-	name = "Unexplored Caves"
+	name = "\improper Unexplored Caves"
 	icon_state = "cave"
 	random_sounds = list(
 		'sound/ambient/cave_1.ogg',
@@ -10,7 +10,7 @@
 	interior = TRUE
 
 /area/lz_001/caves/lava
-	name = "lava cave"
+	name = "\improper Magma Caves"
 	icon_state = "lava_cave"
 
 	//sunlight_power = 1
@@ -26,7 +26,7 @@
 
 
 /area/lz_001/caves/lava/brighter
-	name = "brighter"
+	name = "\improper Magma Caves Hellchamber"
 	icon_state = "volcanic"
 	weather = WEATHER_VOLCANIC
 	ambient_temperature = T0C + 80

@@ -1,12 +1,12 @@
 /area/lz_001/forest
-	name = "Forest"
+	name = "\improper Boreal Forest"
 	icon_state = "forrest"
 	cheese_type = /reagent/nutrition/cheese/cheddar
 	sunlight_freq = 8
 	sunlight_color = "#CCB06A"
 
 /area/lz_001/forest/village
-	name = "First Light Village"
+	name = "\improper First Light Village"
 	icon_state = "village"
 	defend = TRUE
 
@@ -15,7 +15,7 @@
 	interior = TRUE
 
 /area/lz_001/forest/village/interior/bar
-	name = "Bar"
+	name = "\improper Bar"
 	icon_state = "bar"
 
 /area/lz_001/forest/village/interior/chemistry

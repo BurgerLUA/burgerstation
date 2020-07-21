@@ -7,7 +7,7 @@
 
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 20
+	shoot_delay = 30
 
 	automatic = FALSE
 
@@ -31,7 +31,7 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
-	size = SIZE_5
+	size = SIZE_4
 
 
 	value = 500

@@ -96,6 +96,8 @@
 
 	var/active = FALSE
 
+	var/delete_on_no_path = FALSE
+
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
 
 	if(!force && active == desired_active)
@@ -315,7 +317,6 @@
 					if(SSai.stuck_turfs[turf_to_check] && !SSai.stuck_turfs[we_fucked_anyways])
 						owner.move_dir = turn(owner.move_dir,180)
 					if(owner.old_turf && owner.old_turf == get_step(owner,owner.move_dir))
-						owner.old_turf.color = "#FFFF00"
 						SSai.stuck_turfs[owner.old_turf] = TRUE
 		else
 			start_turf = get_turf(owner)
@@ -334,21 +335,29 @@
 
 		if(bad_turf)
 			SSai.stuck_turfs[bad_turf] = TRUE
-			bad_turf.color = "#FF0000"
 
 		var/obj/marker/map_node/N_start = find_closest_node(owner)
 		if(!N_start)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path start!")
+			set_path(null)
+			if(delete_on_no_path)
+				queue_delete(owner,0,TRUE)
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
 		if(!N_end)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path end!")
+			set_path(null)
+			if(delete_on_no_path)
+				queue_delete(owner,0,TRUE)
 			return FALSE
 
 		var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
 		if(!found_path)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
+			set_path(null)
+			if(delete_on_no_path)
+				queue_delete(owner,0,TRUE)
 			return FALSE
 
 		set_path(found_path)
@@ -594,6 +603,12 @@
 	if(A == owner)
 		return FALSE
 
+	if(is_living(A))
+		var/mob/living/L = A
+		if(L.ai)
+			if(L.ai.objective_attack == owner)
+				return TRUE
+
 	switch(aggression)
 		if(0)
 			return FALSE
@@ -609,6 +624,7 @@
 			return owner.loyalty_tag != L.loyalty_tag
 		if(3)
 			return TRUE
+
 	return FALSE
 
 /ai/proc/is_friend(var/mob/living/L)
@@ -643,7 +659,7 @@
 	. = list()
 
 	if(retaliate)
-		. |= attackers
+		. += attackers
 
 	var/range_to_use = radius_find_enemy
 	switch(alert_level)

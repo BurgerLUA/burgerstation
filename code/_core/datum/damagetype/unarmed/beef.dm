@@ -45,3 +45,5 @@
 	)
 
 	throw_mul = 1
+
+	fatigue_coefficient = 0.25

@@ -22,7 +22,7 @@
 		Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"))
 		if(is_safe_to_delete(Obj) && (!SShorde || !length(SShorde.tracked_objectives) || !(Obj in SShorde.tracked_objectives)) )
 			qdel(Obj)
-		else
+		else if(length(rift_markers))
 			Obj.force_move(get_turf(pick(rift_markers)))
 			Obj.visible_message(span("danger","\The [Obj.name] appears out of nowhere!"))
 		return TRUE
@@ -380,7 +380,7 @@
 			new /turf/simulated/floor/colored/sand/beach(src)
 			if(prob(1))
 				new /mob/living/simple/npc/crab(src)
-		if(0.05 to 0.08)
+		if(0.08 to 0.1)
 			new /turf/simulated/floor/colored/dirt(src)
 		if(0.1 to 0.42)
 			new /turf/simulated/floor/colored/grass(src)

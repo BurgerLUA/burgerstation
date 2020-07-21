@@ -501,15 +501,13 @@
 /reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE)
 
 	if(!splash_amount)
-		CRASH_SAFE("Tried to splash with no splash amount!")
+		return FALSE
+
+	if(!volume_current)
 		return FALSE
 
 	if(!target)
 		CRASH_SAFE("Tried to splash with no target!")
-		return FALSE
-
-	if(!volume_current)
-		CRASH_SAFE("Tried to splash with an empty container!")
 		return FALSE
 
 	target = target.change_victim(caller)

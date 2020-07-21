@@ -26,6 +26,7 @@
 		ION = 0
 	)
 
+	fatigue_coefficient =  1
 
 /damagetype/cqc/get_attack_type()
 	return ATTACK_TYPE_UNARMED

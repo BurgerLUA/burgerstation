@@ -1,5 +1,5 @@
 /area/lz_001/jungle/
-	name = "jungle"
+	name = "\improper Vinetangle Jungle"
 	icon_state = "jungle"
 	weather = WEATHER_RAIN
 	ambient_temperature = T0C + 40

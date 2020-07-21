@@ -37,6 +37,9 @@
 
 	var/mob/living/owner = get_owner()
 
+	if(!owner)
+		return 0
+
 	if(!owner.health)
 		return 1
 

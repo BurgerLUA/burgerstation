@@ -214,7 +214,7 @@
 
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	if(!attacker.is_player_controlled())
+	if(!attacker.is_player_controlled() || victim.is_player_controlled())
 		return FALSE
 
 	if(ismovable(victim))
