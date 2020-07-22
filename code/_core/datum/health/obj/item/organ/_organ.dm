@@ -43,7 +43,7 @@
 					O.visual_wounds[damage_type] = current_amount
 					should_update = TRUE
 					if(damage_type == BRUTE && current_amount == 0)
-						O.bleeding = FALSE
+						O.bleeding = 0
 
 			if(should_update)
 				A.update_overlay_tracked("\ref[O]")
@@ -66,7 +66,7 @@
 
 	if(. && update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
-		A.health.update_health()
+		A.queue_health_update = TRUE
 
 	return .
 

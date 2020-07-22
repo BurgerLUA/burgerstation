@@ -71,7 +71,7 @@
 				total_damage += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],tox=-heal_list[TOX],oxy=-heal_list[OXY],update=FALSE)
 
 	if(total_damage && update)
-		update_health(total_damage)
+		A.queue_health_update = TRUE
 
 	return total_damage
 

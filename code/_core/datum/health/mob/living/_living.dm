@@ -9,11 +9,13 @@
 
 		var/mob/living/L = owner
 
+		damage[OXY] = clamp(1 - L.blood_volume/L.blood_volume_max,0,1) * 300
+
 		if(L.check_death())
 			L.death()
 
 		if(update_hud)
-			L.update_health_element_icons(health=TRUE,update_body=TRUE)
+			L.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 			L.update_boss_health()
 
 		if(L.medical_hud_image)
@@ -90,4 +92,4 @@
 
 
 
-	return min(returning_value,clamp(L.blood_volume/L.blood_volume_max,0,1)*health_max)
+	return returning_value //min(returning_value,clamp(L.blood_volume/L.blood_volume_max,0,1)*health_max)

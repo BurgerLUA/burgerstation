@@ -48,7 +48,7 @@
 
 	if(heal_bleeding && is_organ(A))
 		var/obj/item/organ/O = A
-		O.bleeding = FALSE
+		O.bleeding = 0
 
 	if(heal_brute)
 		A.health.adjust_brute_loss(-heal_brute)

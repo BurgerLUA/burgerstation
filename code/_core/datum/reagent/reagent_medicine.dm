@@ -376,7 +376,7 @@
 		var/mob/living/L = owner
 		if(L.health && L.health.get_oxy_loss() > 100 - strength)
 			L.health.set_oxy_loss(100 - strength)
-			L.health.update_health()
+			L.queue_health_update = TRUE
 
 	return .
 

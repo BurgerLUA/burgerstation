@@ -68,9 +68,9 @@
 
 	. = ..()
 
-	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*3 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
+	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*4 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*2
 
-	if(total_bleed_damage && should_bleed() && luck(src,total_bleed_damage,FALSE))
+	if(total_bleed_damage && should_bleed() && (luck(src,total_bleed_damage,FALSE) || (atom_damaged && atom_damaged.health && luck(src,atom_damaged.health.get_brute_loss()*5,FALSE))))
 
 		if(blood_volume > 0)
 			var/offset_x = (src.x - attacker.x)
@@ -89,12 +89,13 @@
 					break
 
 			if(health && total_bleed_damage)
-				blood_volume -= FLOOR(total_bleed_damage/5,1)
-				health.update_health()
+				blood_volume -= FLOOR(total_bleed_damage*0.2,1)
+				queue_health_update = TRUE
 
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
-			O.bleeding = TRUE
+			var/bleed_to_add = 1 + total_bleed_damage*0.01
+			O.bleeding += bleed_to_add
 
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,damage_table,damage_amount,stealthy)

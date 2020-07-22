@@ -25,7 +25,7 @@
 				L.visible_message(span("danger","\The [O.name] falls from above and takes damage from the impact!"))
 				for(var/i=1,i<=3,i++)
 					L.health.adjust_brute_loss(-30)
-				L.health.update_health()
+				L.queue_health_update = TRUE
 				L.emote("pain")
 				L.add_status_effect(STUN,30,30)
 				play('sound/effects/impacts/meteor_impact.ogg',get_turf(L))

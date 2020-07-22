@@ -159,6 +159,10 @@
 
 	update_alpha(handle_alpha())
 
+	if(queue_health_update && health)
+		health.update_health()
+		queue_health_update = FALSE
+
 	return TRUE
 
 /*
@@ -261,7 +265,6 @@ mob/living/proc/on_life_slow()
 		brute_regen_buffer -= brute_to_regen
 		burn_regen_buffer -= burn_to_regen
 		tox_regen_buffer -= tox_to_regen
-		health.update_health(-brute_to_regen + -burn_to_regen + -tox_to_regen,FALSE)
 		update_health = TRUE
 
 	if(can_buffer_stamina())
@@ -277,7 +280,7 @@ mob/living/proc/on_life_slow()
 		update_mana = TRUE
 
 	if(update_health || update_stamina || update_mana)
-		update_health_element_icons(update_health,update_stamina,update_mana,TRUE)
+		queue_health_update = TRUE
 		return TRUE
 
 	return FALSE
@@ -330,8 +333,5 @@ mob/living/proc/on_life_slow()
 			mana_regen_buffer += mana_adjust
 			if(mana_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_WILLPOWER,mana_adjust*10)
-
-	if(health_adjust || stamina_adjust || mana_adjust)
-		update_health_element_icons(health_adjust,stamina_adjust,mana_adjust,TRUE)
 
 	return TRUE

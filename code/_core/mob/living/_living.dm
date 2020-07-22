@@ -174,6 +174,7 @@
 	var/mob/living/master //This object's master.
 	var/minion_remove_time = 0
 
+	var/queue_health_update = FALSE //From automated processes like reagent and health updating. Should not be used for bullet impacts and whatnot.
 
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
@@ -394,7 +395,7 @@
 /mob/living/Logout()
 
 	if(health)
-		health.update_health()
+		health.update_health() //TODO: Find out what the fuck this is for.
 
 	return ..()
 

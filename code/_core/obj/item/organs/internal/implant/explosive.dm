@@ -10,10 +10,10 @@
 	if(T.z != 3 && is_advanced(loc))
 		var/mob/living/advanced/A = loc
 		if(!A.dead)
-			explode(T,7,A,src)
 			for(var/i=1,i<=10,i++)
 				A.health.adjust_brute_loss(100)
 				A.health.adjust_burn_loss(100)
-			A.health.update_health()
+			explode(T,7,A,src)
+			A.queue_health_update = TRUE
 
 	return .

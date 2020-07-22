@@ -59,7 +59,7 @@
 
 	var/damage_layer = LAYER_MOB_INJURY
 
-	var/bleeding = FALSE
+	var/bleeding = 0 //How much blood to use per second.
 
 	var/health_coefficient = 1 //How much should this contribute to the overall health value of an advanced mob?
 
@@ -210,12 +210,14 @@
 	if(reagents)
 		reagents.metabolize()
 
-	if(bleeding && is_advanced(src.loc))
+	if(bleeding >= 1 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
-		if(A.health && A.blood_volume && A.should_bleed() && prob(10))
+		if(A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
+			var/bleed_amount = bleeding*DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
+			A.to_chat("Bleed: [bleed_amount].")
 			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),A.blood_color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
-			A.blood_volume--
-			A.health.update_health()
+			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
+			A.queue_health_update = TRUE
 
 	return TRUE
 
@@ -252,7 +254,7 @@ obj/item/organ/proc/get_damage_description()
 		if(50 to INFINITY)
 			damage_desc += "charred"
 
-	if(bleeding)
+	if(bleeding >= 1)
 		damage_desc += "<b>bleeding</b>"
 
 	/*
