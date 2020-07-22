@@ -22,8 +22,8 @@
 	var/heat_current = 0
 	var/heat_max = 0.2
 
-	var/movement_spread_base = 0.1
-	var/movement_spread_mul = 0.2
+	var/movement_spread_base = 0.05
+	var/movement_spread_mul = 0.1
 
 	var/bullet_color = "#FFFFFF"
 

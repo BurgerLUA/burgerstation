@@ -5,11 +5,11 @@
 /obj/structure/interactive/vending/syndicate/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
 	if(SShorde.state == HORDE_STATE_PRELOAD)
-		P.to_chat(span("notice","It's too <b>early</b> to purchase this! Wait a bit!"))
+		P.to_chat(span("notice","It's too <b>early</b> to purchase this! Wait a bit and coordinate with your team!"))
 		return FALSE
 
 	if(SShorde.state == HORDE_STATE_WAITING)
-		P.to_chat(span("notice","It's too <b>early</b> to purchase this! Wait a bit!"))
+		P.to_chat(span("notice","It's too <b>early</b> to purchase this! Wait a bit and coordinate with your team!"))
 		return FALSE
 
 	if(SShorde.state != HORDE_STATE_GEARING)

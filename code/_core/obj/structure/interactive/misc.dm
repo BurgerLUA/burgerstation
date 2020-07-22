@@ -95,7 +95,7 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(var/atom/movable/O,var/a
 	icon_state = "mirror_broke"
 
 /obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(istype(O,/mob/living/advanced/player/antagonist/))
+	if(istype(O,/mob/living/advanced/player/antagonist/) && SShorde.state != HORDE_STATE_FIGHTING)
 		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()
 		P.handle_hairstyle_chargen(-1,update_blends=FALSE)

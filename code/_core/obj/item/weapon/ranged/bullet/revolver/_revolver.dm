@@ -6,6 +6,9 @@
 
 	inaccuracy_modifer = 0.5
 
+	movement_spread_base = 0.02
+	movement_spread_mul = 0.05
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)

@@ -7,6 +7,9 @@
 
 	slowdown_mul_held = HELD_SLOWDOWN_SHOTGUN
 
+	movement_spread_base = 0.03
+	movement_spread_mul = 0.05
+
 /obj/item/weapon/ranged/bullet/pump/get_ranged_damage_type()
 	return stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
 
