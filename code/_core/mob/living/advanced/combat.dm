@@ -160,7 +160,7 @@
 
 /*
 /mob/living/advanced/player/proc/get_defence_key()
-	if(attack_flags & ATTACK_BLOCK)
+	if(attack_flags & ATTACK_HOLD)
 		return "block"
 	else if(movement_flags & MOVEMENT_RUNNING)
 		return "dodge"

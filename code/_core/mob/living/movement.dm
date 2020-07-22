@@ -42,7 +42,10 @@
 	if(is_sneaking)
 		on_sneak()
 
-	. = ..()
+	if(attack_flags & ATTACK_HOLD || (client && client.is_zoomed))
+		Dir = 0x0
+
+	. = ..(NewLoc,Dir,desired_step_x,desired_step_y,silent)
 
 	if(.)
 		climb_counter = 0

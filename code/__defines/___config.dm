@@ -138,7 +138,7 @@
 
 #define AIR_TEMPERATURE_MOD 3 //How much the air has an impact on reagent temperature.
 
-#define DEFAULT_COLORS list("#3D5E80","#48728B","#5D96A0","#FFFFFF","#335871","#FE0000")
+#define DEFAULT_COLORS list("#498eb1","#4f7081","#326068","#eaeaea","#333333","#fe0000")
 
 #define FRIENDLY_FIRE FALSE
 #define PLAYER_COLLISIONS FALSE
@@ -161,7 +161,8 @@
 	"Ctrl" = "grab", \
 	"R" = "throw", \
 	"Q" = "drop", \
-	"C" = "sneak", \
+	"C" = "hold", \
+	"B" = "sneak", \
 	"E" = "examine_mode", \
 	"Z" = "quick_self", \
 	"Space" = "kick", \
@@ -191,7 +192,8 @@
 	"Ctrl" = "grab",\
 	"R" = "throw",\
 	"X" = "drop",\
-	"C" = "sneak",\
+	"C" = "hold",\
+	"B" = "sneak",\
 	"E" = "examine_mode",\
 	"F" = "quick_self",\
 	"Space" = "kick",\

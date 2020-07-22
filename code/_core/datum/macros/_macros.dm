@@ -79,8 +79,8 @@
 			owner.mob.attack_flags |= ATTACK_THROW
 		if("drop")
 			owner.mob.attack_flags |= ATTACK_DROP
-		if("kick")
-			owner.mob.attack_flags |= ATTACK_BLOCK
+		if("hold")
+			owner.mob.attack_flags |= ATTACK_HOLD
 		if("grab")
 			owner.mob.attack_flags |= ATTACK_GRAB
 		if("quick_self")
@@ -127,8 +127,8 @@
 			owner.mob.attack_flags &= ~ATTACK_THROW
 		if("drop")
 			owner.mob.attack_flags &= ~ATTACK_DROP
-		if("kick")
-			owner.mob.attack_flags &= ~ATTACK_BLOCK
+		if("hold")
+			owner.mob.attack_flags &= ~ATTACK_HOLD
 		if("grab")
 			owner.mob.attack_flags &= ~ATTACK_GRAB
 		if("quick_self")

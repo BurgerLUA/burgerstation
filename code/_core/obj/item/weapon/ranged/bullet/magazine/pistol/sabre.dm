@@ -44,7 +44,7 @@
 	desc_extended = "A modded variant very powerful semiautomatic pistol commonly used by the most elite high ranking Syndicate Operatives. \
 	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through other means."
 
-	shoot_delay = 1
+	shoot_delay = 2
 	view_punch = 4
 
 	heat_per_shot = 0.04
@@ -53,6 +53,3 @@
 	value = 500
 
 	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
-
-	automatic = TRUE
-	max_bursts = 3

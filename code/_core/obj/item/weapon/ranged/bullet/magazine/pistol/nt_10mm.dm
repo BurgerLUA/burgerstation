@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power
-	name = "10mm NT Penetrator Pistol"
+	name = "10mm NT Penumbra Pistol"
 	desc = "For when 9mm isn't big enough."
 	desc_extended = "The 10mm NanoTrasen Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_nt.dmi'
 	icon_state = "inventory"
 	value = 110
 
-	shoot_delay = 2
+	shoot_delay = 1.5
 
 	automatic = FALSE
 
@@ -19,7 +19,6 @@
 	slowdown_mul_held = HELD_SLOWDOWN_PISTOL
 
 	size = SIZE_2
-
 
 	heat_per_shot = 0.02
 	heat_max = 0.12
