@@ -43,12 +43,11 @@
 
 	. = ..()
 
-	/*
+
 	if(is_living(owner))
 		var/mob/living/L = owner
-		if(L.spawn_blood && L.reagents && L.spawn_blood == /reagent/blood)
-			L.reagents.add_reagent(/reagent/blood,.*2)
-	*/
+		if(L.blood_type && L.reagents && L.blood_type == /reagent/blood)
+			L.blood_volume = clamp(L.blood_volume + .*3,0,L.blood_volume_max)
 
 	return .
 

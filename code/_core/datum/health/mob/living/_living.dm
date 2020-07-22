@@ -88,4 +88,6 @@
 			continue
 		returning_value += damage[damage_type]
 
-	return returning_value
+
+
+	return min(returning_value,clamp(L.blood_volume/L.blood_volume_max,0,1)*health_max)

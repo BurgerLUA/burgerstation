@@ -111,6 +111,7 @@
 
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_LEVEL_DEFAULT
+	var/blood_volume_max = BLOOD_LEVEL_DEFAULT
 	var/blood_color = COLOR_BLOOD
 
 	var/obj/structure/buckled_object

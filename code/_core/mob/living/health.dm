@@ -88,7 +88,9 @@
 				if(!create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),blood_color,offset_x,offset_y))
 					break
 
-			blood_volume -= FLOOR(total_bleed_damage/5,1)
+			if(health && total_bleed_damage)
+				blood_volume -= FLOOR(total_bleed_damage/5,1)
+				health.update_health()
 
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
