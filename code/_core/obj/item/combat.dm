@@ -98,7 +98,7 @@
 	return returning
 */
 
-
+/*
 /obj/item/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 
 	if(is_living(victim))
@@ -106,3 +106,4 @@
 		return 0.25 + V.get_skill_power(SKILL_BLOCK)
 
 	return ..()
+*/

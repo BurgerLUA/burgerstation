@@ -4,11 +4,6 @@
 		'sound/weapons/fists/cqchit2.ogg'
 	)
 
-	allow_parry = FALSE
-	allow_miss = FALSE
-	allow_block = FALSE
-	allow_dodge = FALSE
-
 	attack_damage_base = list(
 		BLADE = 0,
 		BLUNT = 0,

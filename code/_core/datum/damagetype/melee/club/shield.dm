@@ -21,12 +21,12 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 10,
-		SKILL_BLOCK = 20
+		//SKILL_BLOCK = 20
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLUNT,
-		SKILL_BLOCK = BLUNT
+		//SKILL_BLOCK = BLUNT
 	)
 
 /damagetype/melee/club/shield/energy/on
@@ -59,12 +59,12 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 20,
-		SKILL_BLOCK = 10,
+		//SKILL_BLOCK = 10,
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = LASER,
-		SKILL_BLOCK = LASER,
+		//SKILL_BLOCK = LASER,
 	)
 
 /damagetype/melee/club/shield/energy

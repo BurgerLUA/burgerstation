@@ -170,6 +170,8 @@
 	check_status_effects()
 */
 
+/*
+
 /mob/living/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
 	if(!client && !ai)
@@ -219,7 +221,6 @@
 
 	return src
 
-/*
 /mob/living/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //TODO: DELETE THIS
 
 	if(status || dead)
@@ -228,7 +229,6 @@
 			return 50 + distance*10
 
 	return 0
-*/
 
 /mob/living/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/atom/blocking_atom)
 
@@ -313,6 +313,8 @@
 		add_skill_xp(SKILL_DODGE,1)
 
 	return TRUE
+*/
+
 
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 

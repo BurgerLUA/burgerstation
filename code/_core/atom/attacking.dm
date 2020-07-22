@@ -110,6 +110,7 @@
 
 	var/damage_multiplier = 1
 
+	/*
 	if(DT.allow_dodge)
 		var/dodging_return = victim.can_dodge(attacker,object_to_damage_with,object_to_damage,DT)
 		if(dodging_return && victim.perform_dodge(attacker,object_to_damage_with,object_to_damage,DT))
@@ -125,6 +126,7 @@
 		if(blocking_atom && victim.perform_block(attacker,object_to_damage_with,object_to_damage,DT,blocking_atom))
 			damage_multiplier *= 0.75
 			damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(victim,attacker,object_to_damage_with,object_to_damage,DT) - DT.get_block_power_penetration(attacker,victim,object_to_damage_with,object_to_damage,blocking_atom),0,1)
+	*/
 
 	if(damage_multiplier <= 0)
 		return FALSE
@@ -163,6 +165,7 @@
 	return 0
 */
 
+/*
 /atom/proc/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 	return null
 
@@ -180,6 +183,7 @@
 
 /atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 	return FALSE
+*/
 
 /atom/proc/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
 	return damage_type

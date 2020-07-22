@@ -72,6 +72,7 @@
 
 	return attack_left[attack_mode]
 
+/*
 /mob/living/advanced/can_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
 
 	. = ..()
@@ -129,6 +130,7 @@
 		return pick(possible_parry)
 
 	return null
+*/
 
 
 
@@ -156,7 +158,7 @@
 
 	return TRUE
 
-
+/*
 /mob/living/advanced/player/proc/get_defence_key()
 	if(attack_flags & ATTACK_BLOCK)
 		return "block"
@@ -186,3 +188,4 @@
 		return null
 
 	return ..()
+*/

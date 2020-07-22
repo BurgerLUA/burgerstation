@@ -16,10 +16,12 @@
 
 	var/impact_sounds_flesh = list() //Leave empty to just use impact sounds, no matter what.
 
+	/*
 	var/allow_parry = TRUE
 	var/allow_miss = TRUE
 	var/allow_block = TRUE
 	var/allow_dodge = TRUE
+	*/
 
 	var/stealthy = FALSE //Set to true to not display any damage dealt as well as not to alert any NPCs when hit.
 
@@ -139,6 +141,7 @@
 		var/damage = attack_damage[damage_type]
 		combat_rating += damage
 
+	/*
 	if(!allow_parry)
 		combat_rating *= 1.1
 
@@ -152,6 +155,7 @@
 		combat_rating *= (100-get_miss_chance())/100
 	else
 		combat_rating *= 1.1
+	*/
 
 	return round(combat_rating*0.25,1)
 

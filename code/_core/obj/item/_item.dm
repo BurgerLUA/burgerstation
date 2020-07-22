@@ -178,6 +178,7 @@
 
 	return amount_to_add
 
+/*
 /obj/item/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
 
 	if(is_living(victim))
@@ -193,6 +194,7 @@
 		return (V.get_skill_power(SKILL_PARRY)) >= block_difficulty[DT.get_attack_type()] ? src : null
 
 	return src
+*/
 
 
 /obj/item/Destroy()

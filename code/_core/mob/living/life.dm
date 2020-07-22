@@ -161,6 +161,7 @@
 
 	return TRUE
 
+/*
 /mob/living/proc/handle_charges(var/charge_gain = 0)
 
 	var/dodge_power = src.get_skill_power(SKILL_DODGE)
@@ -181,6 +182,7 @@
 		return TRUE
 
 	return FALSE
+*/
 
 /mob/living/proc/handle_hunger()
 
@@ -214,7 +216,7 @@ mob/living/proc/on_life_slow()
 	if(reagents)
 		reagents.metabolize()
 
-	handle_charges(LIFE_TICK_SLOW)
+	//handle_charges(LIFE_TICK_SLOW)
 
 	handle_hunger()
 

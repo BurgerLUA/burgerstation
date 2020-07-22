@@ -19,12 +19,13 @@
 	enabled = !enabled
 	update_sprite()
 	return TRUE
-
+/*
 /obj/item/weapon/melee/energy/can_parry()
 	return enabled ? ..() : null
 
 /obj/item/weapon/melee/energy/can_block()
 	return enabled ? ..() : null
+*/
 
 /obj/item/weapon/melee/energy/update_icon()
 

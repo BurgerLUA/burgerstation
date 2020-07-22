@@ -39,8 +39,6 @@
 
 	throw_mul = 0.25
 
-	allow_parry = FALSE
-
 /damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0.5
 

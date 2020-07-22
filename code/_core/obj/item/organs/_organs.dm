@@ -267,6 +267,7 @@ obj/item/organ/proc/get_damage_description()
 
 	return damage_desc
 
+/*
 /obj/item/organ/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 
 	if(is_living(victim))
@@ -296,3 +297,4 @@ obj/item/organ/proc/get_damage_description()
 		return (V.get_skill_power(SKILL_UNARMED)*V.get_skill_power(SKILL_PARRY)) >= block_difficulty[DT.get_attack_type()] ? src : null
 
 	return null
+*/

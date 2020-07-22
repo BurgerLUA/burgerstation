@@ -15,7 +15,7 @@
 	experience_multiplier = 21.5
 	combat_level_mul = 1
 
-/experience/skill/unarmed/ //STRENGTH
+/experience/skill/unarmed/ //FORTITUDE
 	//Each point of damage dealt = 1xp
 	name = "Unarmed"
 	id = SKILL_UNARMED
@@ -33,6 +33,7 @@
 	experience_multiplier = 21
 	combat_level_mul = 0.75
 
+/*
 /experience/skill/block/ //FORTITUDE
 	//Each time you block = 1xp
 	name = "Block"
@@ -41,6 +42,7 @@
 	experience_power = 0.8
 	experience_multiplier = 100
 	combat_level_mul = 0.75
+*/
 
 //Rogue 6
 /experience/skill/ranged/ //DEXTERITY
@@ -52,7 +54,7 @@
 	experience_multiplier = 21
 	combat_level_mul = 1
 
-/experience/skill/precision/ //DEXTERITY
+/experience/skill/precision/ //AGILITY
 	//Each point of extra damage in a critical hit = 1xp
 	name = "Precision"
 	id = SKILL_PRECISION
@@ -61,6 +63,7 @@
 	experience_multiplier = 22.5
 	combat_level_mul = 1
 
+/*
 /experience/skill/dodge/ //AGILITY
 	//Each time you dodge = 1 xp
 	name = "Dodge"
@@ -69,6 +72,7 @@
 	experience_power = 0.8
 	experience_multiplier = 100
 	combat_level_mul = 0.75
+*/
 
 /experience/skill/survival //ENDURANCE
 	name = "Survival"
@@ -88,7 +92,7 @@
 	experience_multiplier = 21
 	combat_level_mul = 1
 
-/experience/skill/sorcery/ //INTELLIGENCE
+/experience/skill/sorcery/ //WISDOM
 	name = "Sorcery"
 	id = SKILL_SORCERY
 	desc = "Your skill in casting chaos related magic such as summon demon, ruin luck, and random banish."
@@ -104,6 +108,7 @@
 	experience_multiplier = 21
 	combat_level_mul = 0.75
 
+/*
 /experience/skill/parry/ //WISDOM
 	//Each time you parry = 1xp
 	name = "Parrying"
@@ -112,6 +117,7 @@
 	experience_power = 0.8
 	experience_multiplier = 100
 	combat_level_mul = 1
+*/
 
 //Crafting
 /experience/skill/alchemy/ //Int
