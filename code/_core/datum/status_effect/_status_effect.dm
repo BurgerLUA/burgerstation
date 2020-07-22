@@ -81,7 +81,7 @@
 	if(source)
 		var/desired_move_dir = get_dir(source,owner)
 		var/old_dir = owner.dir
-		var/result = owner.Move(get_step(owner,desired_move_dir),desired_move_dir)
+		var/result = owner.Move(get_step(owner,desired_move_dir))
 		owner.dir = old_dir
 		owner.move_delay = max(owner.move_delay,duration)
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)

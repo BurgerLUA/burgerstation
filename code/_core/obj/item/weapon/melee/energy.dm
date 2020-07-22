@@ -6,13 +6,6 @@
 	damage_type = /damagetype/melee/sword/energy
 	var/damage_type_on = /damagetype/melee/sword/energy/on
 
-	block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
-		ATTACK_TYPE_MELEE = 0,
-		ATTACK_TYPE_RANGED = 0.5,
-		ATTACK_TYPE_MAGIC = 0.5,
-		ATTACK_TYPE_UNARMED = 0
-	)
-
 	value = 50
 
 /obj/item/weapon/melee/energy/click_self(var/mob/caller)
@@ -118,6 +111,12 @@
 
 	dan_mode = TRUE
 
+/obj/item/weapon/melee/energy/shield/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+
+	if(get_dir(attacker,victim) & victim.dir)
+		return ..()
+
+	return enabled && !(DT.get_attack_type() & (ATTACK_TYPE_UNARMED | ATTACK_TYPE_MELEE)) ? 0.5 : 1
 
 /obj/item/weapon/melee/energy/shield/blue
 	color = "#0000FF"

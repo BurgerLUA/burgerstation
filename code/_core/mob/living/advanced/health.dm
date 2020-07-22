@@ -40,3 +40,16 @@
 				emote("pain")
 
 	return .
+
+
+/mob/living/advanced/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+
+	. = ..()
+
+	if(right_item)
+		. *= right_item.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,DT)
+
+	if(left_item)
+		. *= left_item.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,DT)
+
+	return .

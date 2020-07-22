@@ -109,13 +109,6 @@
 
 	var/zoom_mul = 1 //Holding this item will grant bonus zoom.
 
-	var/list/block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
-		ATTACK_TYPE_MELEE = 0,
-		ATTACK_TYPE_RANGED = 0.9,
-		ATTACK_TYPE_MAGIC = 0.9,
-		ATTACK_TYPE_UNARMED = 2
-	)
-
 	var/dan_mode = FALSE //Special in hand sprites, used by artist D4n0w4r.
 	var/dan_icon_state = "held"
 	var/dan_icon_state_wielded = "wielded"
@@ -569,3 +562,6 @@
 
 /obj/item/proc/get_overlay_ids()
 	return list("\ref[src]")
+
+/obj/item/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+	return 1

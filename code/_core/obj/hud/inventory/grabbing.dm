@@ -1,5 +1,5 @@
 
-/mob/living/advanced/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/advanced/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	var/OldLoc = loc
 
@@ -18,14 +18,14 @@
 			var/distance = get_dist(src,right_hand.grabbed_object)
 			if(distance > 1)
 				right_hand.grabbed_object.glide_size = glide_size
-				right_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE)
+				right_hand.grabbed_object.Move(OldLoc,silent=TRUE)
 
 		//Left hand
 		if(left_hand && left_hand.grabbed_object)
 			var/distance = get_dist(src,left_hand.grabbed_object)
 			if(distance > 1)
 				left_hand.grabbed_object.glide_size = glide_size
-				left_hand.grabbed_object.Move(OldLoc,Dir,silent=TRUE)
+				left_hand.grabbed_object.Move(OldLoc,silent=TRUE)
 
 
 		/*

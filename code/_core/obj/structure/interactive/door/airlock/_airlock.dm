@@ -141,7 +141,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 					break
 				else
 					for(var/d in DIRECTIONS_ALL)
-						if(L.Move(get_step(L,d),d))
+						if(L.Move(get_step(L,d)))
 							break
 			if(has_living)
 				set_door_state(has_living,DOOR_STATE_OPENING_02,FALSE)

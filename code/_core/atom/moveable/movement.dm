@@ -113,12 +113,12 @@
 		var/atom/movable/M = obstacle
 		if(!M.anchored && (!grabbing_hand || obstacle != grabbing_hand.owner))
 			M.glide_size = src.glide_size
-			return M.Move(get_step(M,Dir),Dir)
+			return M.Move(get_step(M,Dir))
 
 	return FALSE
 
 
-/atom/movable/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
 
 	var/stepped_x = 0
 	var/stepped_y = 0

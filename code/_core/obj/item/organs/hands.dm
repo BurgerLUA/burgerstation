@@ -36,13 +36,6 @@
 
 	health_coefficient = 0.5
 
-	block_difficulty = list( //Also affects parry. High values means more difficult to block. Generally 0 = level 0, 1 = level 100.
-		ATTACK_TYPE_MELEE = 0.5,
-		ATTACK_TYPE_RANGED = 0.95,
-		ATTACK_TYPE_MAGIC = 0.75,
-		ATTACK_TYPE_UNARMED = 0.25
-	)
-
 	has_pain = TRUE
 
 /obj/item/organ/hand/on_pain()

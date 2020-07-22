@@ -13,7 +13,7 @@
 #define DODGE_PARRY 0x4
 #define DODGE_DODGE 0x8 //I really need to rename this
 
-#define ATTACK_TYPE_MELEE "melee"
-#define ATTACK_TYPE_RANGED "ranged"
-#define ATTACK_TYPE_MAGIC "magic"
-#define ATTACK_TYPE_UNARMED "unarmed"
+#define ATTACK_TYPE_MELEE 0x1
+#define ATTACK_TYPE_RANGED 0x2
+#define ATTACK_TYPE_MAGIC 0x4
+#define ATTACK_TYPE_UNARMED 0x8

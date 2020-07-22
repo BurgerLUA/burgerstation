@@ -260,7 +260,7 @@
 
 		if(is_living(victim))
 			var/mob/living/L = victim
-			damage_multiplier *= L.damage_received_multiplier
+			damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 
 		var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 		var/list/damage_to_deal_main = list(BRUTE=0,BURN=0,TOX=0,OXY=0,FATIGUE=0)
