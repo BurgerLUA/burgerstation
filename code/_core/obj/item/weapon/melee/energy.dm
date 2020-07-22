@@ -130,6 +130,9 @@
 /obj/item/weapon/melee/energy/shield/yellow
 	color = "#FFFF00"
 
+/obj/item/weapon/melee/energy/shield/classic
+	color = "#5EB9FF"
+
 /obj/item/weapon/melee/energy/sword/katana
 	name = "high frequency blade"
 	icon = 'icons/obj/item/weapons/melee/laser/katana.dmi'

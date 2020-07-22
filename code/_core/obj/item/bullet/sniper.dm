@@ -22,6 +22,34 @@
 	size = 0.1
 	value = 12
 
+/obj/item/bullet_cartridge/sniper_50/explosive
+	name = "\improper .50 explosive sniper round"
+	icon = 'icons/obj/item/bullet/50_explosive.dmi'
+	rarity = RARITY_MYTHICAL
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/explosive
+	value = 20
+
+/obj/item/bullet_cartridge/sniper_50/ion
+	name = "\improper .50 ion sniper round"
+	icon = 'icons/obj/item/bullet/50_ion.dmi'
+	rarity = RARITY_MYTHICAL
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/ion
+	value = 80
+
+/obj/item/bullet_cartridge/sniper_50/incendiary
+	name = "\improper .50 incendiary sniper round"
+	icon = 'icons/obj/item/bullet/50_incendiary.dmi'
+	rarity = RARITY_MYTHICAL
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/incendiary
+	value = 60
+
+/obj/item/bullet_cartridge/sniper_50/ap
+	name = "\improper .50 AP sniper round"
+	icon = 'icons/obj/item/bullet/50_ap.dmi'
+	rarity = RARITY_MYTHICAL
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/ap
+	value = 28
+
 /obj/item/bullet_cartridge/rifle_939mm
 	name = "\improper 9x39mm rifle bullet"
 	desc = "Be vewy, vewy quiet."

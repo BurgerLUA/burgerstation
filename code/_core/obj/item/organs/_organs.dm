@@ -214,7 +214,6 @@
 		var/mob/living/advanced/A = src.loc
 		if(A.health && A.blood_volume && A.should_bleed() && prob(80)) //Blood optimizations!
 			var/bleed_amount = bleeding*DECISECONDS_TO_SECONDS(LIFE_TICK_SLOW)
-			A.to_chat("Bleed: [bleed_amount].")
 			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),A.blood_color,rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),rand(-TILE_SIZE*0.25,TILE_SIZE*0.25))
 			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
 			A.queue_health_update = TRUE

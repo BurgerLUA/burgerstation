@@ -1073,6 +1073,7 @@
 #include "code\_core\obj\item\storage\pouch.dm"
 #include "code\_core\obj\item\storage\shoes.dm"
 #include "code\_core\obj\item\storage\bags\_bags.dm"
+#include "code\_core\obj\item\storage\box\_box.dm"
 #include "code\_core\obj\item\storage\heavy\_heavy.dm"
 #include "code\_core\obj\item\storage\heavy\corpse.dm"
 #include "code\_core\obj\item\storage\kits\_kits.dm"

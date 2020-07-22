@@ -5,6 +5,8 @@
 	desc = "Inventory"
 	id = "BADINVENTORY"
 
+	alpha = 200
+
 	//icon = 'icons/invisible.dmi'
 	//icon_state = "0"
 
@@ -124,7 +126,7 @@
 
 /obj/hud/inventory/proc/show(var/should_show,var/speed)
 	if(should_show)
-		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(speed))
+		animate(src,alpha=initial(alpha),time=SECONDS_TO_DECISECONDS(speed))
 		src.mouse_opacity = 2
 	else
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(speed))

@@ -15,7 +15,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -32,7 +33,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = 0
 	)
 
 
