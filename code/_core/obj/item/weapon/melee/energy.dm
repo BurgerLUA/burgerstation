@@ -63,6 +63,12 @@
 	damage_type = /damagetype/melee/sword/energy
 	damage_type_on = /damagetype/melee/sword/energy/on
 
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"blade" = "#FFFFFF",
+		"core" = "#FFFFFF"
+	)
+
 /obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
 	. = ..()
 	if(enabled)
@@ -72,16 +78,32 @@
 	return .
 
 /obj/item/weapon/melee/energy/sword/blue
-	color = "#0000FF"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"blade" = "#0000FF",
+		"core" = "#FFFFFF"
+	)
 
 /obj/item/weapon/melee/energy/sword/green
-	color = "#00FF00"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"blade" = "#00FF00",
+		"core" = "#FFFFFF"
+	)
 
 /obj/item/weapon/melee/energy/sword/red
-	color = "#FF0000"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"blade" = "#FF0000",
+		"core" = "#FFFFFF"
+	)
 
 /obj/item/weapon/melee/energy/sword/yellow
-	color = "#FFFF00"
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"blade" = "#FFFF00",
+		"core" = "#FFFFFF"
+	)
 
 /obj/item/weapon/melee/energy/shield/
 	name = "energy shield"
@@ -91,8 +113,9 @@
 	damage_type = /damagetype/melee/club/shield/energy
 	damage_type_on = /damagetype/melee/club/shield/energy/on
 
-	value = 60
+	value = 400
 
+	dan_mode = TRUE
 
 
 /obj/item/weapon/melee/energy/shield/blue

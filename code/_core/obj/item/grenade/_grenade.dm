@@ -17,6 +17,8 @@
 
 	value = 15
 
+	qdelete_immune = TRUE
+
 /obj/item/grenade/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(save_inventory)

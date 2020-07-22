@@ -4,6 +4,7 @@
 	var/qdeleting = FALSE
 	var/initialized = FALSE
 	var/generated = FALSE
+	var/qdelete_immune = FALSE
 	var/list/hooks
 
 /datum/proc/Initialize()

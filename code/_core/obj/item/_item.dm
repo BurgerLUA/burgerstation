@@ -128,6 +128,12 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
+/obj/item/PostInitialize()
+	. = ..()
+	if(length(polymorphs))
+		update_sprite()
+	return .
+
 /obj/item/get_base_value()
 	return initial(value) * item_count_current
 

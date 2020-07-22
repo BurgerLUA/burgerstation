@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(events)
 
 	if(world.time >= next_event_time)
 		trigger_random_event()
-		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(300,600))
+		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
 
 	return TRUE
 
