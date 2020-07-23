@@ -118,6 +118,9 @@
 	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN)))
 		return FALSE
 
+	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
+		return FALSE
+
 	return ..()
 
 

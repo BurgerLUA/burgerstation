@@ -36,14 +36,18 @@
 	if(grabbing_hand)
 		var/mob/living/advanced/attacker = grabbing_hand.owner
 		if(attacker)
-			var/difficulty = attacker.get_attribute_power(ATTRIBUTE_STRENGTH)*10 - get_attribute_power(ATTRIBUTE_STRENGTH)*5
+			var/attacker_power = attacker.get_attribute_power(ATTRIBUTE_STRENGTH)*10
+			var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH)*5
+			var/difficulty = (attacker_power - src_power) * (get_dir(attacker,src) == src.dir) ? 5 : 1
 			if(resist_counter >= difficulty)
 				src.visible_message(
 					span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),
 					span("danger","You resist out of the grip of \the [attacker.name]!")
 				)
 				grabbing_hand.release_object()
-				attacker.add_status_effect(STAGGER,10,source = attacker)
+				attacker.add_status_effect(STAGGER,10,source = src)
+				resist_counter = 0
+				return TRUE
 			else
 				src.visible_message(
 					span("warning","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),

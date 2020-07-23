@@ -1,4 +1,4 @@
-#define LIGHTING_INTERVAL       10     // Frequency, in 1/10ths of a second, of the lighting process.
+#define LIGHTING_INTERVAL       4     // Frequency, in 1/10ths of a second, of the lighting process.
 
 #define LIGHTING_HEIGHT         1 // height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
 #define LIGHTING_Z_FACTOR       10 // Z diff is multiplied by this and LIGHTING_HEIGHT to get the final height of a light source. Affects how much darker A Z light gets with each level transitioned.

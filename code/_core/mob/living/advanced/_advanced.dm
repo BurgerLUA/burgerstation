@@ -149,6 +149,9 @@
 
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
+	if(!force && grabbing_hand)
+		return FALSE
+
 	. = ..()
 
 	if(. || force) //Dan updating.

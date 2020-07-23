@@ -61,19 +61,13 @@
 		log_error("ERROR: Tried to load a null item inside [loc.get_debug_name()]!")
 		return FALSE
 
-	/*
-	if(!ispath(o_type,/obj/item/))
-		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it does not exist in code!")
-		return FALSE
-	*/
+	var/obj/item/I = text2path(o_type)
 
-	/*
-	if(!ispath(o_type))
-		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it was not a path!")
+	if(!I)
+		log_error("ERROR: Tried to load an item that did not exist in code ([o_type]) inside the [loc.get_debug_name()]!")
 		return FALSE
-	*/
 
-	var/obj/item/I = new o_type(loc)
+	I = new I(loc)
 	I.load_item_data_pre(P,object_data)
 	INITIALIZE(I)
 	I.load_item_data_post(P,object_data)
@@ -84,10 +78,10 @@
 
 /obj/item/proc/save_item_data(var/save_inventory = TRUE)
 
-	if(!should_save)
-		return list()
-
 	. = list()
+
+	if(!should_save)
+		return .
 
 	.["type"] = type
 
@@ -98,7 +92,12 @@
 		.["inventories"] = new/list(length(inventories))
 		for(var/i=1,i<=length(inventories),i++)
 			var/obj/hud/inventory/IN = inventories[i]
-			.["inventories"][i] = IN.get_inventory_data(save_inventory)
+			var/list/inventory_data = list()
+			try
+				inventory_data = IN.get_inventory_data(save_inventory)
+			catch(var/exception/E)
+				log_error("Failed to save inventory data of [src.get_debug_name()]. Some information may be lost.")
+			.["inventories"][i] = inventory_data
 	if(soul_bound)
 		.["soul_bound"] = soul_bound
 	if(item_count_current > 1)
