@@ -41,7 +41,7 @@
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	if(firing_pin) .["firing_pin"] = firing_pin.save_item_data(save_inventory)
+	if(istype(firing_pin)) .["firing_pin"] = firing_pin.save_item_data(save_inventory)
 	return .
 
 /obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
@@ -82,7 +82,7 @@
 
 
 /obj/item/weapon/ranged/Generate()
-	if(!use_loyalty_tag)
+	if(!use_loyalty_tag && ispath(firing_pin))
 		firing_pin = new firing_pin(src)
 		INITIALIZE(firing_pin)
 		GENERATE(firing_pin)

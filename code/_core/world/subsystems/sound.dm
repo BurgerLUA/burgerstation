@@ -273,10 +273,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		if(C && ismob(C.eye))
 			M = C.eye
 
-		if(!length(pos))
-			pos = vector(T.x,T.y,T.z)
-
-		if(pos[3] != T.z)
+		if(length(pos) && pos[3] != T.z)
 			continue
 
 		if(invisibility_check && M.see_invisible < invisibility_check)

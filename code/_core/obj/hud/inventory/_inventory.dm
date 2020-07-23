@@ -5,7 +5,7 @@
 	desc = "Inventory"
 	id = "BADINVENTORY"
 
-	alpha = 200
+	alpha = 225
 
 	//icon = 'icons/invisible.dmi'
 	//icon_state = "0"
@@ -382,6 +382,10 @@
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
+	if(I.qdeleting)
+		I.drop_item(null)
+		return FALSE
+
 	var/atom/old_location = I.loc
 
 	I.drop_item(src)
@@ -412,6 +416,9 @@
 		return FALSE
 
 	if(!is_advanced(owner))
+		return FALSE
+
+	if(I.qdeleting)
 		return FALSE
 
 	var/mob/living/advanced/A = owner
@@ -706,11 +713,27 @@
 	if(!length(worn_objects))
 		return null
 
-	return worn_objects[length(worn_objects)]
+	var/obj/item/I = worn_objects[length(worn_objects)]
+	if(I.qdeleting)
+		worn_objects -= I
+		overlays.Cut()
+		update_overlays()
+		update_stats()
+		return null
+
+	return I
 
 /obj/hud/inventory/proc/get_top_held_object()
 
 	if(!length(held_objects))
 		return null
 
-	return held_objects[length(held_objects)]
+	var/obj/item/I = held_objects[length(held_objects)]
+	if(I.qdeleting)
+		held_objects -= I
+		overlays.Cut()
+		update_overlays()
+		update_stats()
+		return null
+
+	return I

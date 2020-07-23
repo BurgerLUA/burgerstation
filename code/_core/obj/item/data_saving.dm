@@ -61,9 +61,11 @@
 		log_error("ERROR: Tried to load a null item inside [loc.get_debug_name()]!")
 		return FALSE
 
-	if(ispath(object_data["type"],/obj/item/))
+	/*
+	if(!ispath(o_type,/obj/item/))
 		log_error("ERROR: \"[o_type]\" attempted to be loaded inside [loc.get_debug_name()], but it does not exist in code!")
 		return FALSE
+	*/
 
 	/*
 	if(!ispath(o_type))

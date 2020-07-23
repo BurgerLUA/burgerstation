@@ -92,6 +92,7 @@
 		ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
+	handle_horizontal()
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -214,6 +215,8 @@ mob/living/proc/on_life_slow()
 
 	if(dead)
 		return FALSE
+
+	blood_volume = clamp(blood_volume + 1,0,blood_volume_max)
 
 	handle_regen()
 

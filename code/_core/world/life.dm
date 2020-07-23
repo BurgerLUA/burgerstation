@@ -31,6 +31,8 @@
 
 	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((world.timeofday - benchmark))] seconds.")
 
+	SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]). Join at <[world.url]>! <@&695106439911571516>")
+
 	for(var/subsystem/SS in active_subsystems)
 		spawn
 			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)

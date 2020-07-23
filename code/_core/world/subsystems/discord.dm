@@ -18,8 +18,6 @@ SUBSYSTEM_DEF(discord)
 
 	discord_webhook_key = file2text(WEBHOOK_FILE)
 
-	//send_message("Starting new round (ID: [SSlogging.round_id]). Join at <[world.url]>! <@&695106439911571516>")
-
 	return TRUE
 
 /subsystem/discord/proc/send_message(var/message_to_send)

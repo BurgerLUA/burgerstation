@@ -10,8 +10,6 @@
 	size = MAX_INVENTORY_X*3*SIZE_3
 	container_max_size = SIZE_4
 
-
-
 	value = 200
 
 	slowdown_mul_worn = 1

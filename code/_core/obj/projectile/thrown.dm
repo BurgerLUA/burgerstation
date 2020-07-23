@@ -3,7 +3,7 @@
 	id = "thrown"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
-	collision_flags_special = FLAG_COLLISION_FLYING
+	collision_flags_special = FLAG_COLLISION_WALKING | FLAG_COLLISION_CRAWLING
 
 	hit_target_turf = TRUE
 

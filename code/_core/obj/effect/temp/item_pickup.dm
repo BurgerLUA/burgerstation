@@ -9,6 +9,7 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 
 	appearance = desired_object.appearance
 	plane = initial(plane)
+	mouse_opacity = 0
 
 	var/target_dir = get_dir(get_turf(old_location),get_turf(desired_location))
 

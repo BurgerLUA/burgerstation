@@ -14,6 +14,7 @@
 	P.pixel_y_float = src.pixel_y
 	P.lifetime = lifetime == -1 ? (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*6 : lifetime
 	P.steps_allowed = steps_allowed
+	P.mouse_opacity = 0
 	INITIALIZE(P)
 	src.force_move(P) //Move it to contents.
 	return P

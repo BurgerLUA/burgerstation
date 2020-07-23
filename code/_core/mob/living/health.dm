@@ -94,7 +94,7 @@
 
 		if(is_organ(atom_damaged))
 			var/obj/item/organ/O = atom_damaged
-			var/bleed_to_add = 1 + total_bleed_damage*0.005
+			var/bleed_to_add = 1 + total_bleed_damage*0.002
 			O.bleeding += bleed_to_add
 
 	if(ai)

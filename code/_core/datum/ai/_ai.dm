@@ -87,7 +87,7 @@
 	//1 = Attacks enemies in enemy tags.
 	//2 = Attacks people who don't have the same loyalty tag as them.
 	//3 = Attacks literally everyone in sight.
-	var/assistance = 1
+	var/assistance = 2
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them.
 

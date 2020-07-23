@@ -44,8 +44,6 @@
 		if(S)
 			var/xp = ENABLE_XP_SAVING ? loaded_data["skills"][id] : S.level_to_xp(S.chargen_max_level)
 			S.Initialize(xp)
-		else
-			log_error("Warning! Skill of ID \"[id]\" for [src] is invalid!")
 
 	//Attributes
 	for(var/id in loaded_data["attributes"])
