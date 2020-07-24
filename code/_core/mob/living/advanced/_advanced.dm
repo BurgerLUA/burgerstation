@@ -343,7 +343,7 @@ mob/living/advanced/Login()
 
 	if(S.default_color_hair && S.default_icon_hair && S.default_icon_state_hair)
 		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = S.default_icon_state_hair, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
-		change_organ_visual("hair_face", desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
+		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = S.default_icon_state_hair_face, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
 
 	if(S.default_color_detail)
 		change_organ_visual("skin_detail", desired_color = S.default_color_detail)

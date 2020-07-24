@@ -88,7 +88,7 @@ var/global/list/all_clients = list() //Assoc list
 	update_verbs()
 
 /client/proc/get_debug_name()
-	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
+	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[mob.x];y=[mob.y];z=[mob.z]'>([mob.x],[mob.y],[mob.z])</a>" : "NONE"])"
 
 /client/Del() //Called when the client disconnects.
 
@@ -121,6 +121,9 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/examine(var/atom/object)
 
 	for(var/v in object.get_examine_list(src.mob))
+		src.mob.to_chat(v)
+
+	for(var/v in object.get_examine_details_list(src.mob))
 		src.mob.to_chat(v)
 
 	return TRUE

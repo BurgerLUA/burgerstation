@@ -53,6 +53,10 @@
 	var/obj/hud/button/dead_ghost/DG = new
 	DG.update_owner(src)
 
+	if(client)
+		var/turf/T = get_turf(src)
+		notify_ghosts("[src.name] has died!",T)
+
 	if(master)
 		dust()
 

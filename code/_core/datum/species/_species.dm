@@ -26,8 +26,8 @@
 	var/list/all_hair_head = list()
 	var/list/all_hair_face = list()
 
-	var/default_icon_face = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
-	var/default_icon_state_face = "none"
+	var/default_icon_hair_face = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
+	var/default_icon_state_hair_face = "none"
 
 	var/default_hairstyle_chargen_male = 2
 	var/default_hairstyle_chargen_female = 16

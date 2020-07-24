@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(events)
 
 	next_event_time = world.time + SECONDS_TO_DECISECONDS(1200)
 
+	return ..()
+
 /subsystem/events/on_life()
 
 	for(var/event/E in all_events_active)
@@ -31,9 +33,8 @@ SUBSYSTEM_DEF(events)
 
 	if(world.time >= next_event_time)
 		trigger_random_event()
-		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
 
-	return TRUE
+	return ..()
 
 /subsystem/events/proc/trigger_random_event()
 
@@ -48,17 +49,18 @@ SUBSYSTEM_DEF(events)
 
 	if(!E.on_start())
 		E.on_fail()
-		all_events -= event_id
+		next_event_time = world.time + 20
 		return FALSE
-
 
 	if(E.duration)
 		all_events_active += E
 		E.active = TRUE
 		E.start_time = world.time
 		E.end_time = world.time + E.duration
+		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900)) + E.duration
 	else
 		E.on_end()
+		next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
 
 	if(E.occurances_current >= E.occurances_max)
 		all_events -= E

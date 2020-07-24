@@ -61,6 +61,8 @@
 
 	CREATE(/obj/structure/interactive/blob/core,T)
 
+	notify_ghosts("A blob is being created!",T)
+
 	return ..()
 
 /event/blob/on_end()

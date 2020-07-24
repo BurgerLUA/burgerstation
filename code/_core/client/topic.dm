@@ -24,6 +24,17 @@
 	*/
 
 	if(length(href_list))
+		if(href_list["spectate"])
+			if(is_observer(mob))
+				var/mob/abstract/observer/O = mob
+				var/turf/T = locate(text2num(href_list["x"]),text2num(href_list["y"]),text2num(href_list["z"]))
+				if(T)
+					O.force_move(T)
+					to_chat(span("notice","Jumping to new location..."))
+				else
+					to_chat(span("warning","Could not find that location!"))
+			else
+				to_chat(span("warning","You can't do this!"))
 		if(href_list["vote"])
 			var/vote/vote_datum = locate(href_list["vote"]) in active_votes
 			if(!vote_datum)

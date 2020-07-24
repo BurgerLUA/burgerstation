@@ -128,7 +128,7 @@
 		if(FEMALE)
 			return "she"
 
-	return "they"
+	return "it"
 
 /proc/proper_url_encode(var/input)
 	return url_encode(replacetextEx(input,"\n",""))

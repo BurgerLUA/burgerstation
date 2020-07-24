@@ -229,7 +229,7 @@
 	return ..()
 
 /atom/get_debug_name()
-	return "[src.name]([src.type])([x],[y],[z])"
+	return "[src.name]([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
 
 
 

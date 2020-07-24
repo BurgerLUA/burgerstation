@@ -12,8 +12,8 @@
 	default_icon_hair = 'icons/mob/living/advanced/hair/reptile_hair_head.dmi'
 	default_icon_state_hair = "none"
 
-	default_icon_face = 'icons/mob/living/advanced/hair/reptile_hair_face.dmi'
-	default_icon_state_face = "none"
+	default_icon_hair_face = 'icons/mob/living/advanced/hair/reptile_hair_face.dmi'
+	default_icon_state_hair_face = "none"
 
 	default_color_eye = "#AAAA00"
 	default_color_skin = "#8CA73E"

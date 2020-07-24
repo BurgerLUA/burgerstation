@@ -55,9 +55,9 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 	var/hair_icon = S.all_hair_face[clamp(choice_main,1,length(S.all_hair_face))]
 	if(desired_color)
-		change_organ_visual("hair_face", desired_icon = S.default_icon_face, desired_icon_state = hair_icon, desired_color = desired_color)
+		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon, desired_color = desired_color)
 	else
-		change_organ_visual("hair_face", desired_icon = S.default_icon_face, desired_icon_state = hair_icon)
+		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon)
 
 	if(update_blends) update_all_blends()
 
@@ -129,7 +129,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		var/hair_icon = S.all_hair_face[hair_num]
 		if(hair_icon)
 			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
-			var/icon/I3 = new/icon(S.default_icon_face,hair_icon)
+			var/icon/I3 = new/icon(S.default_icon_hair_face,hair_icon)
 			I3.Blend(hair_color,ICON_MULTIPLY)
 			I2.Blend(I3,ICON_OVERLAY)
 			I2.Shift(SOUTH,9)

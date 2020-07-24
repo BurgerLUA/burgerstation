@@ -24,8 +24,8 @@ SUBSYSTEM_DEF(species)
 
 				log_subsystem(name,"Initialized [length(S.all_hair_head)] species hairstyles for [S.name].")
 
-			if(S.default_icon_face)
-				for(var/v in icon_states(S.default_icon_face))
+			if(S.default_icon_hair_face)
+				for(var/v in icon_states(S.default_icon_hair_face))
 
 					if(!v || v == "")
 						continue
