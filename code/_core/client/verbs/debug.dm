@@ -317,12 +317,14 @@ client/verb/air_test(var/pressure as num)
 
 
 /client/verb/create_vote()
-	set name = "Create Vote"
-	set category = "Admin"
+	set name = "Test Vote (DANGER)"
+	set category = "Debug"
 
-	var/vote/V = new
-	V.name = "What is your opinion?"
-	V.add_option("Yes.")
-	V.add_option("No.")
-	V.add_option("Maybe.")
-	V.announce()
+	var/confirm = input("Are you sure you want to do this?","Vote Testing.") in list("Yes","No","Cancel")|null
+
+	if(confirm != "Yes")
+		return FALSE
+
+	SSvote.create_vote(/vote/continue_round)
+
+	return TRUE

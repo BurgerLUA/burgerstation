@@ -27,13 +27,18 @@ body {
 	color: #921FAA;
 	font-weight: bold;
 }
+.vote{
+	color: #530FAD;
+	font-weight: bold;
+	font-size: 110%;
+}
 .notice{
 	color: blue;
 	font-style: italic;
 }
 .emote{
 	color: black;
-	fot-weight:bold;
+	font-weight:bold;
 	font-style: italic;
 }
 .debug_message{

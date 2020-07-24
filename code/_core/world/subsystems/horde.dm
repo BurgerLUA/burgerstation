@@ -221,11 +221,11 @@ SUBSYSTEM_DEF(horde)
 	round_time_next = HORDE_DELAY_WAIT
 	return ..()
 
-/subsystem/horde/proc/spawn_objectives()
+/subsystem/horde/proc/spawn_objectives(var/artifact_count = 1, var/kill_count = 3, var/rescue_count = 1)
 
-	var/desired_spawn_objectives = min(1,length(possible_objective_spawns))
-	var/desired_kill_objectives = min(4,length(SSbosses.tracked_bosses))
-	var/desired_rescue_objectives = min(1,length(possible_hostage_spawns),length(possible_hostage_types))
+	var/desired_spawn_objectives = min(artifact_count,length(possible_objective_spawns))
+	var/desired_kill_objectives = min(kill_count,length(SSbosses.tracked_bosses))
+	var/desired_rescue_objectives = min(rescue_count,length(possible_hostage_spawns),length(possible_hostage_types))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
 	LOG_DEBUG("Making [desired_kill_objectives] kill objectives.")
@@ -239,6 +239,7 @@ SUBSYSTEM_DEF(horde)
 		INITIALIZE(O)
 		GENERATE(O)
 		tracked_objectives += O
+		spawned_objectives++
 
 	for(var/i=1,i<=desired_rescue_objectives, i++)
 		var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
@@ -252,6 +253,7 @@ SUBSYSTEM_DEF(horde)
 		GENERATE(H)
 		L.set_handcuffs(TRUE,H)
 		tracked_objectives += L
+		spawned_objectives++
 
 	var/list/valid_boss_ids = list()
 
@@ -265,8 +267,7 @@ SUBSYSTEM_DEF(horde)
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
 		HOOK_ADD("post_death","objective_death",L,src,.proc/queue_objectives_update)
 		tracked_objectives += L
-
-	spawned_objectives = length(tracked_objectives)
+		spawned_objectives++
 
 	objectives_spawned = TRUE
 
@@ -277,6 +278,9 @@ SUBSYSTEM_DEF(horde)
 	return TRUE
 
 /subsystem/horde/proc/update_objectives()
+
+	if(state == HORDE_STATE_BREAK)
+		return FALSE
 
 	if(!objectives_spawned)
 		spawn_objectives()
@@ -339,8 +343,8 @@ SUBSYSTEM_DEF(horde)
 	)
 
 	if(completed_objectives >= spawned_objectives)
-		world.end(WORLD_END_NANOTRASEN_VICTORY)
-		tick_rate = 0 //Showdown this subsystem.
+		state = HORDE_STATE_BREAK
+		SSvote.create_vote(/vote/continue_round)
 		return TRUE
 
 	return FALSE
