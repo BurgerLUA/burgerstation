@@ -9,9 +9,6 @@
 		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,text_type)
 
-/proc/handle_radio()
-
-
 proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC)
 
 	if(!text_to_say)

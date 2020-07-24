@@ -8,7 +8,7 @@
 	projectile = /obj/projectile/bullet/laser/ion
 	ranged_damage_type = /damagetype/ranged/laser/ion
 
-	projectile_speed = 8
+	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 3
 
 	automatic = FALSE

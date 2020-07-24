@@ -538,6 +538,7 @@
 #include "code\_core\datum\track\menu.dm"
 #include "code\_core\datum\track\mountain.dm"
 #include "code\_core\datum\track\village.dm"
+#include "code\_core\datum\vote\_vote.dm"
 #include "code\_core\datum\wires\_wires.dm"
 #include "code\_core\image\_image.dm"
 #include "code\_core\mob\_mob.dm"

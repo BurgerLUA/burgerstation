@@ -314,3 +314,15 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
+
+
+/client/verb/create_vote()
+	set name = "Create Vote"
+	set category = "Admin"
+
+	var/vote/V = new
+	V.name = "What is your opinion?"
+	V.add_option("Yes.")
+	V.add_option("No.")
+	V.add_option("Maybe.")
+	V.announce()

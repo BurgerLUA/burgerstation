@@ -95,7 +95,7 @@
 			var/list/inventory_data = list()
 			try
 				inventory_data = IN.get_inventory_data(save_inventory)
-			catch(var/exception/E)
+			catch
 				log_error("Failed to save inventory data of [src.get_debug_name()]. Some information may be lost.")
 			.["inventories"][i] = inventory_data
 	if(soul_bound)

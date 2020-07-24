@@ -7,7 +7,7 @@
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/chronogun
 
-	projectile_speed = 8
+	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 20
 
 	automatic = FALSE

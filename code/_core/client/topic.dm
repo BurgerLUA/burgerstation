@@ -24,7 +24,21 @@
 	*/
 
 	if(length(href_list))
-		if(href_list["change_key"])
+		if(href_list["vote"])
+			var/vote/vote_datum = locate(href_list["vote"]) in active_votes
+			if(!vote_datum)
+				to_chat("Could not locate a valid poll!")
+			else
+				if(href_list["vote_option"])
+					var/option = text2num(href_list["vote_option"])
+					vote_datum.set_vote(src.ckey,option)
+					//src << browse(null,"window=Voting")
+					to_chat("Your vote has been recorded.")
+					vote_datum.show(src)
+				else
+					vote_datum.show(src)
+					to_chat("Opening the voting window...")
+		else if(href_list["change_key"])
 			//Changing Macros
 			var/key = href_list["change_key"]
 			if(key == "quit")
