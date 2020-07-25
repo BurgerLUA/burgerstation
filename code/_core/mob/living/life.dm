@@ -7,6 +7,9 @@
 	if(dead)
 		return FALSE
 
+	if(boss)
+		SSbosses.living_bosses -= src
+
 	death_message()
 
 	pre_death()

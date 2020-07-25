@@ -1,7 +1,8 @@
 //Skills
-/mob/living/proc/get_skill(var/id)
+/mob/living/proc/get_skill(var/id,var/error_on_null = TRUE)
 	if(!skills[id])
-		CRASH_SAFE("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
+		if(error_on_null) CRASH_SAFE("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
+		return null
 	return skills[id]
 
 /mob/living/proc/get_skill_level(var/id)
@@ -28,9 +29,10 @@
 	return S.add_xp(xp_to_add)
 
 //Attributes
-/mob/living/proc/get_attribute(var/id)
+/mob/living/proc/get_attribute(var/id,var/error_on_null = TRUE)
 	if(!attributes[id])
-		CRASH_SAFE("Warning! Tried getting attribute of [id], but it didn't exist for [src.get_debug_name()]!")
+		if(error_on_null) CRASH_SAFE("Warning! Tried getting attribute of [id], but it didn't exist for [src.get_debug_name()]!")
+		return null
 	return attributes[id]
 
 /mob/living/proc/get_attribute_level(var/id)

@@ -1,5 +1,8 @@
 /mob/living/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
 
+	if(!T)
+		return FALSE
+
 	if(enter)
 		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(move_delay)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
 		return FALSE
@@ -32,7 +35,7 @@
 			if(length(F.footstep_sounds))
 				var/footstep_sound = pick(F.footstep_sounds)
 				play(footstep_sound,all_mobs_with_clients - src, T, volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
-				play(footstep_sound,src,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch= 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
+				if(src.client) play(footstep_sound,src,volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch= 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
 
 /mob/living/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps

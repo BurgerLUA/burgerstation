@@ -86,6 +86,7 @@
 
 	boss_state = 1
 	update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
+	interaction_flags = 0x0
 	icon_state = "shadow"
 	update_sprite()
 
@@ -94,13 +95,14 @@
 	if(boss_state != 1)
 		return
 
-	spawn()
-		new/obj/effect/temp/ash_drake/swoop_down(src.loc)
-		boss_state = 2
-		sleep(SECONDS_TO_DECISECONDS(1))
+	new/obj/effect/temp/ash_drake/swoop_down(src.loc)
+	boss_state = 2
+
+	spawn(SECONDS_TO_DECISECONDS(1))
 		boss_state = 0
 		icon_state = "living"
 		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
+		interaction_flags = initial(interaction_flags)
 		update_sprite()
 
 		for(var/turf/T in range(2,src))
@@ -153,7 +155,7 @@
 	for(var/i=1,i<=amount_multiplier,i++)
 		var/turf/T = pick(valid_floors)
 		new/obj/effect/temp/ash_drake/target/(T)
-		new/obj/effect/temp/hazard/falling_fireball(T,desired_owner = src)
+		new/obj/effect/falling_meteor/falling_fireball(T)
 
 	return TRUE
 

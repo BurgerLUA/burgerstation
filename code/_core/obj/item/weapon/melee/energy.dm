@@ -8,6 +8,17 @@
 
 	value = 50
 
+/obj/item/weapon/melee/energy/get_examine_details_list(var/mob/examiner)
+
+	. = ..()
+
+	if(enabled)
+		. += span("notice","It is active.")
+		. += span("notice","Icon state: [icon_state].")
+
+
+	return .
+
 /obj/item/weapon/melee/energy/click_self(var/mob/caller)
 	enabled = !enabled
 	update_sprite()
@@ -38,8 +49,6 @@
 		dan_icon_state_wielded = initial(dan_icon_state_wielded)
 		dan_icon_state_back = initial(dan_icon_state_back)
 		damage_type = initial(damage_type)
-
-	update_held_icon()
 
 	return ..()
 

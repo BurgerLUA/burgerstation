@@ -82,6 +82,23 @@
 
 	armor_base = list()
 
+	armor_base = list(
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0,
+		ION = 0
+	)
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

@@ -29,3 +29,8 @@
 	src.alpha = 0
 	queue_delete(src,10)
 	return TRUE
+
+/obj/effect/falling_meteor/falling_fireball
+	name = "falling fireball"
+	icon = 'icons/obj/projectiles/magic.dmi'
+	icon_state = "firebolt_flipped"

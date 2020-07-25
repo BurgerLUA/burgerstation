@@ -224,7 +224,7 @@ SUBSYSTEM_DEF(horde)
 /subsystem/horde/proc/spawn_objectives(var/artifact_count = 1, var/kill_count = 3, var/rescue_count = 1)
 
 	var/desired_spawn_objectives = min(artifact_count,length(possible_objective_spawns))
-	var/desired_kill_objectives = min(kill_count,length(SSbosses.tracked_bosses))
+	var/desired_kill_objectives = min(kill_count,length(SSbosses.living_bosses))
 	var/desired_rescue_objectives = min(rescue_count,length(possible_hostage_spawns),length(possible_hostage_types))
 
 	LOG_DEBUG("Making [desired_spawn_objectives] spawn objectives.")
@@ -257,8 +257,8 @@ SUBSYSTEM_DEF(horde)
 
 	var/list/valid_boss_ids = list()
 
-	for(var/boss_id in SSbosses.tracked_bosses)
-		valid_boss_ids += boss_id
+	for(var/mob/living/L in SSbosses.living_bosses)
+		valid_boss_ids += L.id
 
 	for(var/i=1, i<=desired_kill_objectives, i++)
 		CHECK_TICK(tick_usage_max,0)
@@ -343,9 +343,17 @@ SUBSYSTEM_DEF(horde)
 	)
 
 	if(completed_objectives >= spawned_objectives)
-		state = HORDE_STATE_BREAK
-		SSvote.create_vote(/vote/continue_round)
-		return TRUE
+		var/possible_spawn_objectives = length(possible_objective_spawns)
+		var/possible_kill_objectives = length(SSbosses.living_bosses)
+
+		if(possible_spawn_objectives && possible_kill_objectives)
+			state = HORDE_STATE_BREAK
+			SSvote.create_vote(/vote/continue_round)
+			return TRUE
+		else
+			broadcast_to_clients(span("vote","There was no vote for round end as there are no objectives to spawn!"))
+			tick_rate = 0 //Stop horde processing.
+			world.end(WORLD_END_NANOTRASEN_VICTORY)
 
 	return FALSE
 

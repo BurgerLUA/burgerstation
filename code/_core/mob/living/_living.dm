@@ -247,6 +247,7 @@
 
 	if(boss)
 		SSbosses.tracked_bosses -= src
+		SSbosses.living_bosses -= src
 
 	players_fighting_boss.Cut()
 
@@ -320,6 +321,7 @@
 
 	if(boss)
 		SSbosses.tracked_bosses[id] = src
+		SSbosses.living_bosses += src
 
 	initialize_attributes()
 	initialize_skills()

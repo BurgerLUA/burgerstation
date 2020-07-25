@@ -4,6 +4,7 @@ SUBSYSTEM_DEF(bosses)
 	tick_rate = SECONDS_TO_TICKS(4)
 	priority = SS_ORDER_IMPORTANT
 	var/list/tracked_bosses = list()
+	var/list/living_bosses = list()
 
 /subsystem/bosses/on_life()
 

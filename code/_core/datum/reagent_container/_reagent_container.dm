@@ -558,12 +558,16 @@
 			if(real_bit & SP.flags_flavor_love)
 				like_score += flavor_flags[k]
 			if(real_bit & SP.flags_flavor_hate)
-				like_score -= flavor_flags[k]
+				like_score -= flavor_flags[k]*5 //Things you dislike in food are much more obvious than things you like.
 
 		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || A.last_flavor != final_flavor_text) )
 			A.last_flavor = final_flavor_text
 			A.last_flavor_time = world.time
 			final_flavor_text = "You taste [final_flavor_text]."
+			if(like_score >= 1)
+				final_flavor_text += " You like this taste."
+			else if(like_score < 0)
+				final_flavor_text += " You hate this taste!"
 		else
 			final_flavor_text = null
 

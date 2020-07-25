@@ -1,0 +1,8 @@
+http://www.fromtexttospeech.com/
+
+Jenna, Medium Speed
+Bass(db) -30
+Treble(db) 30
+Paulstretch: 1 factor, 0.1 time resolution
+Echo: 0.2 delay, 0.25 Delay Factor.
+Equalization: AM Radio

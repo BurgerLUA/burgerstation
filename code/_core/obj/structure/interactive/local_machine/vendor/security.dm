@@ -30,7 +30,7 @@
 		/obj/item/armor_plate/light,
 		/obj/item/armor_plate/medium,
 		/obj/item/armor_plate/heavy,
-		/obj/item/weapon/melee/energy/sword/grazer,
+		/obj/item/weapon/melee/energy/grazer,
 	)
 
 /obj/structure/interactive/vending/security/gundrobe

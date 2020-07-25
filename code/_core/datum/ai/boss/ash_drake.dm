@@ -14,18 +14,18 @@
 
 /ai/boss/ash_drake/handle_attacking()
 
-	if(objective_attack)
-		if(owner_as_ash_drake.boss_state == 1)
-			if(fly_time >= 30)
-				owner_as_ash_drake.land()
-				fly_time = 0
-			fly_time += 1
-		else if(!owner_as_ash_drake.boss_state)
 
+	if(owner_as_ash_drake.boss_state == 1)
+		if(fly_time >= 30)
+			owner_as_ash_drake.land()
+			fly_time = 0
+		fly_time += 1
+
+	else if(objective_attack)
+		if(!owner_as_ash_drake.boss_state)
 			var/distance = get_dist(owner,objective_attack)
 			var/fly_chance = max(0,distance*10 - 50) + max(0,failed_attack_frames - 50)
 			var/shoot_chance = max(0,distance*10 - 25) + max(0,failed_attack_frames - 25)
-
 			if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max))
 				failed_attack_frames = 0
 				return ..()

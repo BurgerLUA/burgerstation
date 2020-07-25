@@ -165,20 +165,21 @@
 		var/obj/item/organ/O = hit_object
 		var/list/O_defense_rating = O.get_defense_rating()
 		for(var/damage_type in O_defense_rating)
-			if(IS_INFINITY(.[damage_type]))
+			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
 				continue
-			if(IS_INFINITY(O_defense_rating[damage_type]))
+			if(IS_INFINITY(O_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
 				.[damage_type] = O_defense_rating[damage_type]
 				continue
 			.[damage_type] += O_defense_rating[damage_type]
+
 		for(var/obj/item/clothing/C in A.worn_objects)
 			if(!(O.id in C.protected_limbs))
 				continue
 			var/list/C_defense_rating = C.get_defense_rating()
 			for(var/damage_type in C_defense_rating)
-				if(IS_INFINITY(.[damage_type]))
+				if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
 					continue
-				if(IS_INFINITY(C_defense_rating[damage_type]))
+				if(IS_INFINITY(C_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
 					.[damage_type] = C_defense_rating[damage_type]
 					continue
 				.[damage_type] += C_defense_rating[damage_type]

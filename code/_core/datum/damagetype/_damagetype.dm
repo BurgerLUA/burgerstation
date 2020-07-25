@@ -269,23 +269,29 @@
 
 		var/damage_blocked = 0
 		var/defense_rating_victim = victim.health.get_defense(attacker,hit_object)
-		var/defense_rating_attacker = list()
-		if(attacker.health)
-			defense_rating_attacker = attacker.health.get_defense(attacker,hit_object)
+		var/atom/object_to_check = null
+		if(is_organ(hit_object))
+			var/obj/item/organ/O = hit_object
+			if(is_advanced(attacker))
+				var/mob/living/advanced/A = attacker
+				object_to_check = A.labeled_organs[O.id]
+		var/defense_rating_attacker = attacker.health.get_defense(attacker,object_to_check)
 
 		for(var/damage_type in damage_to_deal)
+			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 			var/victim_defense = defense_rating_victim[damage_type]
-			if(victim_defense >= INFINITY) //Defense is infinite. No point of doing damage.
+			if(victim_defense >= INFINITY) //Defense is infinite. No point in calculating further armor.
 				damage_to_deal[damage_type] = 0
 				continue
 			if(victim_defense > 0) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-			if((damage_type == MAGIC || damage_type == HOLY || damage_type == DARK) && defense_rating_attacker[damage_type]) //Deal bonus damage.
-				if(defense_rating_attacker[damage_type] == INFINITY)
+			world.log << "The defense rating of [attacker] for [damage_type] is [defense_rating_attacker[damage_type]]."
+			if(old_damage_amount && defense_rating_attacker[damage_type] && (damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
+				world.log << "Defense rating [attacker] [damage_type]: [defense_rating_attacker[damage_type]]."
+				if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 					damage_to_deal[damage_type] = 0
 					continue
 				damage_to_deal[damage_type] = calculate_damage_with_armor(damage_to_deal[damage_type],-defense_rating_attacker[damage_type])
-			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 			damage_blocked += max(0,old_damage_amount - new_damage_amount)
 			damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)

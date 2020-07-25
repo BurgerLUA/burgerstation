@@ -38,7 +38,7 @@
 	attack_damage_base = list(
 		BLADE = 20,
 		PIERCE = 10,
-		UNHOLY = 50
+		DARK = 50
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

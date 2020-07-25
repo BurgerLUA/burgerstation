@@ -35,7 +35,8 @@
 
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/bone_armor,
-		/obj/item/soapstone/orange
+		/obj/item/soapstone/orange,
+		/obj/item/weapon/ranged/magic/tome/summon/goliath
 	)
 
 	damage_received_multiplier = 0.5

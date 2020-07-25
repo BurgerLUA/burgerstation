@@ -64,6 +64,15 @@
 
 /mob/living/simple/npc/colossus/post_death()
 	. = ..()
-	animate(src, pixel_z = 64, alpha=0, time = 30)
 	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
+	animate(src, pixel_z = 64, time = 30)
 	return .
+
+/mob/living/simple/npc/colossus/handle_alpha()
+
+	if(dead)
+		return 0
+
+	return ..()
+
+

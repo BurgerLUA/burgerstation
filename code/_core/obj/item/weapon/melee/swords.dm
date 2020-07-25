@@ -21,6 +21,8 @@
 	attack_delay = 5
 	attack_delay_max = 12
 
+	size = SIZE_3
+
 	value = 40
 
 /obj/item/weapon/melee/sword/sabre/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
@@ -42,6 +44,8 @@
 
 	attack_delay = 8
 
+	size = SIZE_3
+
 	value = 30
 
 /obj/item/weapon/melee/sword/claymore/cult
@@ -51,6 +55,8 @@
 	desc_extended = "A very basic claymore sword known for its use by knights in Medieval Europe, now cursed with Nar'sie's magic."
 
 	damage_type = /damagetype/melee/sword/claymore/cult
+
+	size = SIZE_3
 
 	value = 50
 
@@ -69,6 +75,8 @@
 	attack_delay = 5
 	attack_delay_max = 12
 
+	size = SIZE_4
+
 	value = 10
 
 /obj/item/weapon/melee/zweihander
@@ -81,6 +89,8 @@
 
 	attack_delay = 10
 	attack_delay_max = 30
+
+	size = SIZE_5
 
 	value = 120
 
@@ -102,6 +112,8 @@
 	attack_delay = 7
 	attack_delay_max = 14
 
+	size = SIZE_3
+
 	value = 900
 
 /obj/item/weapon/melee/sword/skana
@@ -118,6 +130,8 @@
 	damage_type = /damagetype/melee/sword/skana
 
 	attack_delay = 8
+
+	size = SIZE_3
 
 	value = 200
 
@@ -136,6 +150,8 @@
 
 	attack_delay = 6
 
+	size = SIZE_2
+
 	value = 200
 
 /obj/item/weapon/melee/sword/allium
@@ -152,5 +168,7 @@
 	damage_type = /damagetype/melee/sword/allium
 
 	attack_delay = 7
+
+	size = SIZE_2
 
 	value = 200
