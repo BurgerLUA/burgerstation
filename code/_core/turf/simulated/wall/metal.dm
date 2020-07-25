@@ -13,8 +13,6 @@
 
 /turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
 
-	. = ..()
-
 	var/obj/structure/interactive/construction/girder/G = new(src)
 	G.material_id = material_id
 	G.color = color
@@ -23,7 +21,7 @@
 
 	create_destruction(src,list(/obj/item/material/sheet/ = 4),material_id)
 
-	return .
+	return ..()
 
 /*
 /turf/simulated/wall/metal/rusted

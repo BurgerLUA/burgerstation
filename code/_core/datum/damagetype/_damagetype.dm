@@ -285,9 +285,7 @@
 				continue
 			if(victim_defense > 0) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-			world.log << "The defense rating of [attacker] for [damage_type] is [defense_rating_attacker[damage_type]]."
 			if(old_damage_amount && defense_rating_attacker[damage_type] && (damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
-				world.log << "Defense rating [attacker] [damage_type]: [defense_rating_attacker[damage_type]]."
 				if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 					damage_to_deal[damage_type] = 0
 					continue

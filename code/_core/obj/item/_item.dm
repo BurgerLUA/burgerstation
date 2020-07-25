@@ -136,15 +136,15 @@
 /obj/item/proc/get_slowdown_mul_worn()
 	return slowdown_mul_worn
 
-/obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_add = item_count_current)
-	if(!amount_to_add)
-		return 0
-	if(amount_to_add < 0)
-		return target.transfer_item_count_to(src,-amount_to_add)
-	amount_to_add = min(amount_to_add,item_count_current,target.item_count_max - target.item_count_current)
-	. = target.add_item_count(amount_to_add,TRUE)
-	src.add_item_count(-amount_to_add,TRUE)
-	return .
+/obj/item/proc/transfer_item_count_to(var/obj/item/target,var/amount_to_transfer = item_count_current)
+	if(!amount_to_transfer) return 0
+	if(amount_to_transfer < 0) return target.transfer_item_count_to(src,-amount_to_transfer)
+	amount_to_transfer = min(
+		amount_to_transfer, //What we want to transfer
+		item_count_current, //What we can actually transfer from
+		target.item_count_max - target.item_count_current //What the target can actually hold.
+	)
+	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
 	if(is_living(source))

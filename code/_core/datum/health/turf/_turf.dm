@@ -1,5 +1,6 @@
 /health/turf/
 
+	/*
 	armor_base = list(  //Base armor for the mob.
 		BLADE = 50,
 		BLUNT = 0,
@@ -15,6 +16,7 @@
 		DARK = INFINITY,
 		FATIGUE = INFINITY
 	)
+	*/
 
 
 /health/turf/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)

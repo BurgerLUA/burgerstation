@@ -10,31 +10,6 @@
 
 	crafting_id = "rod"
 
-/obj/item/material/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	INTERACT_CHECK
-
-	if(isturf(object))
-		var/turf/T = object
-
-		if(item_count_current < 2)
-			caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))
-			return TRUE
-
-		if(!T.can_construct_on(caller,/obj/structure/interactive/construction/frame/))
-			return TRUE
-
-		var/obj/structure/interactive/construction/frame/F = new(T)
-		F.material_id = material_id
-		F.color = color
-		INITIALIZE(F)
-		GENERATE(F)
-		caller.to_chat("You place \the [F.name].")
-		add_item_count(-2)
-		return TRUE
-
-	return ..()
-
 /obj/item/material/rod/steel
 	name = "steel rod"
 	desc = "The basic building material."

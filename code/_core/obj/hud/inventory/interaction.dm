@@ -104,7 +104,7 @@
 			var/obj/item/I = defer_object
 			if(is_inventory(defer_object.loc)) //The object is in an inventory
 				var/obj/hud/inventory/I2 = defer_object.loc
-				if(I.is_container) //The object that we're clicking on is a container and it should be opened instead.
+				if(I.is_container && !istype(I2,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container, and it should be opened instead.
 					I.click_self(caller)
 					return TRUE
 				if(!I2.click_flags && !I2.drag_to_take)

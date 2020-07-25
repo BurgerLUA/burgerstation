@@ -26,6 +26,7 @@
 /obj/item/material/ore/update_icon()
 	. = ..()
 	var/material/M = SSmaterials.all_materials[material_id]
+	name = "[M.name] ore"
 	color = "#FFFFFF"
 	icon_state = M.icon_state_ore
 	return .

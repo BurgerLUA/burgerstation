@@ -14,17 +14,14 @@
 
 /turf/simulated/wall/wood/on_destruction(var/mob/caller,var/damage = FALSE)
 
-	. = ..()
-
 	var/obj/structure/interactive/construction/girder/G = new(src)
 	G.material_id = material_id
 	G.color = color
 	INITIALIZE(G)
-	GENERATE(G)
 
 	create_destruction(src,list(/obj/item/material/wood/ = 4),material_id)
 
-	return .
+	return ..()
 
 
 /turf/simulated/wall/wood/brown
