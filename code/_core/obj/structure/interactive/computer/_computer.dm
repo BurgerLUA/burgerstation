@@ -95,7 +95,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	if(!is_advanced(caller))
 		return ..()
 
-	if(!SShorde.allow_shuttle_launch)
+	if(!(src in SSgamemode.active_gamemode.allowed_shuttles))
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
 		return FALSE
 
@@ -129,7 +129,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	INTERACT_CHECK
 
-	if(!SShorde.allow_shuttle_launch)
+	if(!(src in SSgamemode.active_gamemode.allowed_shuttles))
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
 		return FALSE
 
@@ -172,12 +172,6 @@ obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(
 	open_menu(P,"dialogue")
 
 	return TRUE
-
-/obj/structure/interactive/computer/console/remote_flight/PostInitialize()
-	. = ..()
-	if(src.z == 3)
-		SShorde.possible_horde_targets += src
-	return .
 
 obj/structure/interactive/computer/console/remote_flight/alpha
 	name = "remote alpha shuttle console"

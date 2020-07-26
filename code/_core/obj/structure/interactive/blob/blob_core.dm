@@ -23,11 +23,6 @@
 		INITIALIZE(N)
 		linked_nodes += N
 
-	SShorde.tracked_objectives += src
-	SShorde.spawned_objectives++
-	if(SShorde.state == HORDE_STATE_FIGHTING)
-		SShorde.update_objectives()
-
 	return ..()
 
 /obj/structure/interactive/blob/core/PostInitialize()
@@ -36,9 +31,6 @@
 	return .
 
 /obj/structure/interactive/blob/core/Destroy()
-
-	if(src in SShorde.tracked_objectives)
-		SShorde.queue_objectives_update()
 
 	for(var/obj/structure/interactive/blob/B in linked_walls)
 		B.health.adjust_brute_loss(max(0,B.health.health_current - 10))

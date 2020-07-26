@@ -22,6 +22,67 @@
 
 	value = 5
 
+/obj/item/weapon/melee/tool/welder
+	name = "welding tool"
+	desc = "Your common, typical everyday wielding tool! Wear eye protection!"
+	desc_extended = "A wielding tool powered by special hydrogen fuel. Good for most wielding jobs."
+	icon = 'icons/obj/item/weapons/melee/tools/welder.dmi'
+
+	flags_tool = FLAG_TOOL_WELDER
+
+	value = 5
+
+	var/fuel_current = 0
+	var/fuel_max = 50
+
+	var/active = FALSE
+
+/obj/item/weapon/melee/tool/welder/Generate()
+	fuel_current = fuel_max
+	return ..()
+
+/obj/item/weapon/melee/tool/welder/proc/add_fuel(var/fuel_amount = 0)
+
+	if(!fuel_amount)
+		return 0
+
+	. = clamp(fuel_amount,-fuel_amount,fuel_max - fuel_current)
+
+	fuel_current += .
+
+	return .
+
+
+/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller)
+
+	if(active)
+		active = FALSE
+		update_sprite()
+		caller.to_chat(span("notice","You turn \the [src.name] off."))
+	else
+		if(fuel_current > 0)
+			active = TRUE
+			update_sprite()
+			caller.to_chat(span("notice","\The [src.name] turns on."))
+		else
+			caller.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
+
+	return TRUE
+
+/obj/item/weapon/melee/tool/welder/update_overlays()
+
+	. = ..()
+
+	if(active)
+		var/image/I = new/image(icon,"welder_on")
+		add_overlay(I)
+
+	var/ratio = CEILING((fuel_current/fuel_max)*7,1)
+	var/image/I = new/image(icon,"charge_[ratio]")
+	add_overlay(I)
+
+	return ..()
+
 /obj/item/weapon/melee/tool/crowbar
 	name = "crowbar"
 	desc = "hl2_crowbar_ogg"
@@ -48,7 +109,7 @@
 
 /obj/item/weapon/melee/tool/multitool/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/structure/interactive/))
+	if(istype(object,/obj/structure/interactive/)) //MOVE THIS TO STRUCTURE CODE
 		var/obj/structure/interactive/I = object
 		var/atom/movable/A = I.check_interactables(caller,src,location,control,params)
 		if(A)

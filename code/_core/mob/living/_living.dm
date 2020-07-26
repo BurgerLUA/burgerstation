@@ -263,6 +263,8 @@
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		client.make_ghost(FALLBACK_TURF)
 
+	HOOK_CALL("Destroy")
+
 	return ..()
 
 /mob/living/proc/get_brute_color()

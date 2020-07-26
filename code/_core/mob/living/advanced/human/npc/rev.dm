@@ -24,22 +24,12 @@
 
 	var/map_spawn = FALSE
 
-/mob/living/advanced/npc/rev/Destroy()
-	if(SShorde && src in SShorde.tracked_enemies)
-		SShorde.on_killed_syndicate(src)
-	return ..()
-
 /mob/living/advanced/npc/rev/Bump(var/atom/Obstacle)
 
 	if(istype(src,Obstacle) || istype(Obstacle,src))
 		return TRUE
 
 	return ..()
-
-/mob/living/advanced/npc/rev/post_death()
-	SShorde.on_killed_syndicate(src)
-	return ..()
-
 
 /mob/living/advanced/npc/rev/Initialize()
 

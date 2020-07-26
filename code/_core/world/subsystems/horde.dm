@@ -131,50 +131,6 @@ SUBSYSTEM_DEF(horde)
 		announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 		next_threat_update = world.time + 100
 
-	if(state == HORDE_STATE_FIGHTING)
-
-		if(!message_displayed || world.time >= next_hijack_check_time)
-			message_displayed = TRUE
-			if(check_hijack())
-				announce("Central Command Update","Incoming Syndicate Forces","Syndicate forces preparing to board the station. Predicted boarding location: Hanger Bay.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
-				state = HORDE_STATE_HIJACK
-				round_time = 0
-			else
-				next_hijack_check_time = world.time + 600 //1 minute
-			return TRUE
-
-		var/wave_to_spawn = get_enemies_to_spawn()
-
-		if(wave_to_spawn < 4)
-			return TRUE
-
-		wave_to_spawn = 4 //Only spawn 4 in a group at a time.
-
-		var/obj/marker/map_node/spawn_node = find_viable_spawn()
-		if(!spawn_node)
-			log_error("ERROR: Could not find a valid horde spawn!")
-			return TRUE
-
-		var/obj/marker/map_node/target_node = find_viable_target()
-		if(!target_node)
-			log_error("ERROR: Could not find a valid horde target!")
-			return TRUE
-
-		var/obj/marker/map_node/list/found_path = spawn_node.find_path(target_node)
-		if(!found_path)
-			log_error("ERROR: Could not find a valid path from [spawn_node.get_debug_name()] to [target_node.get_debug_name()]!")
-			return TRUE
-
-		var/turf/T = get_turf(spawn_node)
-
-		while(wave_to_spawn > 0)
-			wave_to_spawn--
-			CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-			var/mob/living/advanced/npc/syndicate/S = new(T)
-			INITIALIZE(S)
-			S.ai.set_path(found_path)
-			tracked_enemies += S
-
 	return TRUE
 
 /subsystem/horde/proc/find_viable_target()

@@ -1,40 +1,8 @@
-var/global/list/possible_hostage_types = list(
-	/mob/living/advanced/npc/unique/hostage/clown,
-	/mob/living/advanced/npc/unique/hostage/assistant,
-	/mob/living/advanced/npc/unique/hostage/scientist
-)
-
 /mob/living/advanced/npc/unique/hostage/
 	ai = /ai/advanced/hostage
 	health_base = 300 //Extra health so the escort mission isn't fucking hell.
 	var/hostage = TRUE
 	queue_delete_on_death = FALSE
-
-/mob/living/advanced/npc/unique/hostage/Destroy() //Hostages should never be destroyed, but when they are, fail the objective.
-	if(hostage)	SShorde.queue_objectives_update()
-	return ..()
-
-/mob/living/advanced/npc/unique/hostage/post_move()
-
-	. = ..()
-
-	if(SShorde && hostage && src.z == 2 && src.x > 119)
-
-		hostage = FALSE
-		SShorde.queue_objectives_update()
-		ai.set_move_objective(null)
-		dialogue_id = null
-
-		var/obj/marker/map_node/N_start = find_closest_node(src)
-		if(N_start)
-			var/obj/marker/hostage_rest/HR = get_turf(pick(possible_hostage_rest_markers))
-			var/obj/marker/map_node/N_end = find_closest_node(HR)
-			if(N_end)
-				var/obj/marker/map_node/list/found_path = N_start.find_path(N_end)
-				if(found_path)
-					ai.set_path(found_path)
-
-	return .
 
 /mob/living/advanced/npc/unique/hostage/Initialize()
 	. = ..()

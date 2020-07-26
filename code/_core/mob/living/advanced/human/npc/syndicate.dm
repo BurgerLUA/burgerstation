@@ -19,20 +19,11 @@
 		/loadout/syndicate/elite = 16
 	)
 
-/mob/living/advanced/npc/syndicate/Destroy()
-	if(SShorde && src in SShorde.tracked_enemies)
-		SShorde.on_killed_syndicate(src)
-	return ..()
-
 /mob/living/advanced/npc/syndicate/Bump(var/atom/Obstacle)
 
 	if(istype(src,Obstacle) || istype(Obstacle,src))
 		return TRUE
 
-	return ..()
-
-/mob/living/advanced/npc/syndicate/post_death()
-	SShorde.on_killed_syndicate(src)
 	return ..()
 
 /mob/living/advanced/npc/syndicate/Initialize()

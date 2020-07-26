@@ -225,7 +225,7 @@
 
 	var/list/possible_artifacts = list()
 
-	for(var/atom/A in SShorde.tracked_objectives)
+	for(var/atom/A in SSgamemode.active_gamemode.active_objectives)
 		if(!can_track(A))
 			continue
 		var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"

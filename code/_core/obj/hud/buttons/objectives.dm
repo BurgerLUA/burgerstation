@@ -28,9 +28,8 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 
 	. = ..()
 
-	if(. && SShorde && SShorde.last_update)
-		set_stored_text(SShorde.last_update)
-		//maptext = stored_text
+	if(. && SSgamemode && SSgamemode.active_gamemode && SSgamemode.active_gamemode.objective_text_list)
+		set_stored_text(SSgamemode.active_gamemode.objective_text_list)
 
 	return .
 

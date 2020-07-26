@@ -20,11 +20,6 @@ obj/structure/interactive/objective/on_crush()
 	src.force_move(T)
 	return FALSE
 
-obj/structure/interactive/objective/Destroy()
-	if(src in SShorde.tracked_objectives)
-		SShorde.queue_objectives_update()
-	return ..()
-
 obj/structure/interactive/objective/New(var/desired_loc)
 	icon_state = "[rand(1,9)]"
 	return ..()
