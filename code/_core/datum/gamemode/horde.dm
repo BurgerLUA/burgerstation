@@ -4,67 +4,64 @@
 
 	var/list/horde_targets = list()
 
-
 	var/list/tracked_enemies = list()
 
 	var/total_killed_enemies = 0
 
-	var/round_time_next = 0
-
-/gamemode/horde/on_start()
-	state = HORDE_STATE_WAITING
-	SSgamemode.round_time = 0
-	round_time_next = HORDE_DELAY_WAIT
+/gamemode/horde/New()
+	state = GAMEMODE_WAITING
+	round_time = 0
+	round_time_next = 1 //Skip to gearing. Nothing to wait for.
 	return ..()
 
 /gamemode/horde/on_life()
-
 	switch(state)
-		if(HORDE_STATE_WAITING)
+		if(GAMEMODE_WAITING)
 			on_waiting()
-		if(HORDE_STATE_GEARING)
+		if(GAMEMODE_GEARING)
 			on_gearing()
-		if(HORDE_STATE_BOARDING)
+		if(GAMEMODE_BOARDING)
 			on_boarding()
-		if(HORDE_STATE_LAUNCHING)
+		if(GAMEMODE_LAUNCHING)
 			on_launching()
-		if(HORDE_STATE_FIGHTING)
+		if(GAMEMODE_FIGHTING)
 			on_fighting()
 
+	return ..()
 
 /gamemode/horde/proc/on_waiting()
-	var/time_to_display = round_time_next - SSgamemode.round_time
+	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","PREP\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
 		set_message("Round starts in: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
-	state = HORDE_STATE_GEARING
-	SSgamemode.round_time = 0
+	state = GAMEMODE_GEARING
+	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
 	announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	return TRUE
 
 /gamemode/horde/proc/on_gearing()
-	var/time_to_display = round_time_next - SSgamemode.round_time
+	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","GEAR\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
 		set_message("Loadout Period: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
-	state = HORDE_STATE_BOARDING
-	SSgamemode.round_time = 0
+	state = GAMEMODE_BOARDING
+	round_time = 0
 	round_time_next = HORDE_DELAY_BOARDING
 	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	next_objective_update = world.time + 100
 	return TRUE
 
 /gamemode/horde/proc/on_boarding()
-	var/time_to_display = round_time_next - SSgamemode.round_time
+	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","BRDN\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
 		set_message("Boarding Period: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
-	state = HORDE_STATE_LAUNCHING
-	SSgamemode.round_time = 0
+	state = GAMEMODE_LAUNCHING
+	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
 	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	for(var/obj/shuttle_controller/S in all_shuttle_controlers)
@@ -72,13 +69,13 @@
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
-	var/time_to_display = round_time_next - SSgamemode.round_time
+	var/time_to_display = round_time_next - round_time
 	set_status_display("mission","LNCH\n[get_clock_time(time_to_display)]")
 	if(time_to_display >= 0)
 		set_message("Launch Period: [get_clock_time(time_to_display)]",TRUE)
 		return TRUE
-	state = HORDE_STATE_FIGHTING
-	SSgamemode.round_time = 0
+	state = GAMEMODE_FIGHTING
+	round_time = 0
 	announce("Central Command Update","Incoming Syndicate Forces","Enemy forces spotted heading towards the Bravo landing zone. Prepare for enemy combatants.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	return TRUE
 

@@ -88,9 +88,12 @@
 
 		var/client/C = caller.client
 
-		var/gamemode_state = SSgamemode.gamemode_state
+		if(!SSgamemode || !SSgamemode.active_gamemode)
+			return FALSE
 
-		if(gamemode_state == GAMEMODE_INITIALIZING)
+		var/gamemode_state = SSgamemode.active_gamemode.state
+
+		if(gamemode_state <= GAMEMODE_WAITING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
@@ -107,11 +110,11 @@
 			caller.to_chat(span("notice","Good choice."))
 			return FALSE
 
-		if(gamemode_state == GAMEMODE_RUNNING)
+		if(gamemode_state >= GAMEMODE_FIGHTING)
 			caller.to_chat(span("notice","The game has already started!"))
 			return TRUE
 
-		if(gamemode_state != GAMEMODE_ENDING)
+		if(gamemode_state >= GAMEMODE_BREAK)
 			caller.to_chat(span("notice","The round is currently ending!"))
 			return TRUE
 

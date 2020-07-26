@@ -75,7 +75,7 @@
 /client/verb/rtv()
 	set name = "Rock the Vote"
 	set category = "Admin"
-	SSgamemode.round_time = 1000000
+	SSgamemode.active_gamemode.round_time = 1000000
 
 
 /client/verb/rejuvenate_player(var/dosh_amount as num)

@@ -181,7 +181,7 @@ var/global/list/all_clients = list() //Assoc list
 			play_music_track("slow_fall", src)
 			mob.show_hud(TRUE,speed = 2)
 
-	broadcast_to_clients("<b>[ckey] has joined the game.</b>")
+	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
 	update_window()
 	update_color_mods()
 
@@ -189,6 +189,11 @@ var/global/list/all_clients = list() //Assoc list
 		byond_member = TRUE
 
 	world.update_server_status()
+
+
+	if(SSvote && SSvote.initialized)
+		for(var/vote/V in SSvote.active_votes)
+			V.show(src)
 
 	return mob
 

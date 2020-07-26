@@ -4,11 +4,11 @@
 
 /obj/structure/interactive/vending/syndicate/can_purchase_item(var/mob/living/advanced/player/P,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
 
-	if(SSgamemode.gamemode_state == GAMEMODE_INITIALIZING)
+	if(SSgamemode.active_gamemode.state < GAMEMODE_GEARING)
 		P.to_chat(span("notice","It's too <b>early</b> to purchase this! Wait a bit and coordinate with your team!"))
 		return FALSE
 
-	if(SSgamemode.gamemode_state != GAMEMODE_SETUP)
+	if(SSgamemode.active_gamemode.state >= GAMEMODE_LAUNCHING)
 		P.to_chat(span("notice","It's too late to purchase this!"))
 		return FALSE
 
