@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(progressbars)
 
 	var/list/all_progress_bars = list()
 
-	cpu_usage_max = 75
-	tick_usage_max = 75
+	cpu_usage_max = 90
+	tick_usage_max = 90
 
 
 /subsystem/progressbars/on_life()

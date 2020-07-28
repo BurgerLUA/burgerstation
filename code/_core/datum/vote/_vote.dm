@@ -94,9 +94,8 @@
 		for(var/m in message_to_send)
 			C.to_chat(m)
 
-	on_result(winner,results)
-
 	play('sound/ui/end_vote.ogg',all_mobs_with_clients)
+	on_result(winner,results)
 
 	return ..()
 

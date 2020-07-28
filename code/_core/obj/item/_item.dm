@@ -335,6 +335,7 @@
 	. += div("rarity [rarity]",capitalize(rarity))
 	. += div("rarity","Value: [CEILING(calculate_value(TRUE),1)].")
 	. += div("weightsize","Size: [size]")
+	if(item_count_current > 1) . += div("weightsize","Count: [item_count_current].")
 	var/worn_slowdown = get_slowdown_mul_worn()
 	if(worn_slowdown > 1)//Slower
 		. += div("red bold center","Worn Speed Penalty: [FLOOR((worn_slowdown-1)*100,1)]%")

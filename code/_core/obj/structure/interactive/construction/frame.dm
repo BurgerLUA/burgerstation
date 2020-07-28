@@ -37,7 +37,7 @@
 		return FALSE
 	if(R.material_id != material_id)
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
-		return TRUE
+		return FALSE
 	if(get_dist(caller,src) > 1)
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
@@ -66,7 +66,7 @@
 			src.on_destruction(caller)
 			return TRUE
 		if(istype(A,/obj/item/material/rod/))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_lattice,caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_lattice,caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_lattice,caller,object)
 			return TRUE
 		if(istype(A,/obj/item/material/sheet/))

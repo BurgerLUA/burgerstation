@@ -296,8 +296,6 @@
 			if(prob(0.5))
 				new /obj/marker/generation/mob/arachnid(src)
 
-	name = "noise: [noise]."
-
 	return ..()
 
 

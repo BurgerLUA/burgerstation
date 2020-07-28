@@ -9,6 +9,12 @@
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
 
+	for(var/obj/effect/footprint/F in contents)
+		qdel(F)
+
+	for(var/obj/effect/cleanable/C in contents)
+		qdel(C)
+
 	var/turf/W = new N(src)
 	W.initialized = FALSE
 	INITIALIZE(W)

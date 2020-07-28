@@ -98,7 +98,7 @@
 	INTERACT_CHECK
 
 	if(istype(object,/obj/item/material/rod))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_frame,caller,object)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_frame,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_frame,caller,object)
 		return TRUE
 
@@ -106,8 +106,8 @@
 
 /turf/simulated/floor/proc/construct_frame(var/mob/caller,var/obj/item/material/rod/R)
 	var/obj/structure/interactive/construction/frame/F = new(src)
-	F.material_id = material_id
-	F.color = color
+	F.material_id = R.material_id
+	F.color = R.color
 	INITIALIZE(F)
 	caller.to_chat(span("notice","You place \the [F.name]."))
 	R.add_item_count(-2)

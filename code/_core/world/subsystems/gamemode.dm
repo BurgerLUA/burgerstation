@@ -8,10 +8,10 @@ SUBSYSTEM_DEF(gamemode)
 	var/gamemode/active_gamemode
 
 
-/subsystem/gamemode/proc/set_active_gamemode(var/gamemode/desired_gamemode)
+/subsystem/gamemode/proc/set_active_gamemode(var/gamemode/desired_gamemode,var/source)
 	QDEL_NULL(active_gamemode)
 	active_gamemode = new desired_gamemode
-	LOG_DEBUG("Setting gamemode to: [active_gamemode.name]...")
+	LOG_DEBUG("Setting gamemode to: [active_gamemode.name]... Source: [source].")
 	return TRUE
 
 /subsystem/gamemode/Initialize()
@@ -26,11 +26,12 @@ SUBSYSTEM_DEF(gamemode)
 
 	return ..()
 
+/subsystem/gamemode/PostInitialize()
+	. = ..()
+	set_active_gamemode(/gamemode/lobby,"Gamemode PostInitialize()")
+	return .
+
+
 /subsystem/gamemode/on_life()
-
-	if(active_gamemode)
-		active_gamemode.on_life()
-	else
-		set_active_gamemode(/gamemode/lobby)
-
+	if(active_gamemode) active_gamemode.on_life()
 	return ..()
