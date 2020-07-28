@@ -15,14 +15,6 @@
 
 	value = 35
 
-
-/obj/item/weapon/melee/shield/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-
-	if(get_dir(attacker,victim) & victim.dir)
-		return ..()
-
-	return (DT.get_attack_type() & (ATTACK_TYPE_UNARMED | ATTACK_TYPE_MELEE)) ? 0.5 : 1
-
 /obj/item/weapon/melee/shield/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
 	return TRUE
 

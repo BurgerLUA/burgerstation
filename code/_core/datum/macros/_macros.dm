@@ -52,20 +52,16 @@
 	switch(command)
 		if("move_up")
 			owner.mob.move_dir |= NORTH
-			if(owner.mob)
-				owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,2)
 		if("move_down")
 			owner.mob.move_dir |= SOUTH
-			if(owner.mob)
-				owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,2)
 		if("move_left")
 			owner.mob.move_dir |= WEST
-			if(owner.mob)
-				owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,2)
 		if("move_right")
 			owner.mob.move_dir |= EAST
-			if(owner.mob)
-				owner.mob.move_delay = max(owner.mob.move_delay,2)
+			owner.mob.move_delay = max(owner.mob.move_delay,2)
 		if("sprint")
 			owner.mob.movement_flags |= MOVEMENT_RUNNING
 		if("walk")
@@ -81,6 +77,8 @@
 			owner.mob.attack_flags |= ATTACK_DROP
 		if("hold")
 			owner.mob.attack_flags |= ATTACK_HOLD
+			if(world.time - owner.mob.last_hold >= 30) //Can't spam it.
+				owner.mob.last_hold = world.time
 		if("grab")
 			owner.mob.attack_flags |= ATTACK_GRAB
 		if("quick_self")
@@ -129,6 +127,7 @@
 			owner.mob.attack_flags &= ~ATTACK_DROP
 		if("hold")
 			owner.mob.attack_flags &= ~ATTACK_HOLD
+			owner.mob.last_hold = -1
 		if("grab")
 			owner.mob.attack_flags &= ~ATTACK_GRAB
 		if("quick_self")

@@ -444,3 +444,11 @@ mob/living/advanced/Login()
 	if(right_hand)
 		return right_hand.get_top_held_object()
 	return null
+
+
+/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/critical_hit_mutliplier=1,var/damagetype/DT)
+
+	if(last_hold && (world.time - last_hold <= 5))
+		return TRUE
+
+	return FALSE

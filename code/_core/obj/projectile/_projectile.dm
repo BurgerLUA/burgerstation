@@ -254,11 +254,6 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-	for(var/mob/MO in contents)
-		if(!MO.client)
-			continue
-		animate(MO.client,pixel_x = pixel_x_float, pixel_y = pixel_y_float, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
-
 	last_loc_x = current_loc_x
 	last_loc_y = current_loc_y
 

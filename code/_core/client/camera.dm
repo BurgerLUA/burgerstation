@@ -58,6 +58,11 @@
 	var/final_pixel_x = desired_recoil_x + desired_pixel_x + zoom_offset_x + desired_punch_x
 	var/final_pixel_y = desired_recoil_y + desired_pixel_y + zoom_offset_y + desired_punch_y
 
+	if(istype(mob.loc,/obj/projectile/))
+		var/obj/projectile/P = mob.loc
+		final_pixel_x = P.pixel_x_float
+		final_pixel_y = P.pixel_y_float
+
 	var/total_difference = abs(final_pixel_x - pixel_x) + abs(final_pixel_y - pixel_y)
 	var/diff_mod = clamp(total_difference*0.1,1,10)
 

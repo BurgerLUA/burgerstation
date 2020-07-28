@@ -184,4 +184,14 @@
 					continue
 				.[damage_type] += C_defense_rating[damage_type]
 
+	if(A.attack_flags |= ATTACK_HOLD && get_dir(attacker,src) & A.dir) //Do you even block?
+		var/obj/item/shield_to_use
+		if(A.right_item && A.right_item.can_block() && length(A.right_item.block_defense_rating))
+			shield_to_use = A.right_item
+		else if(A.left_item && A.left_item.can_block() && length(A.left_item.block_defense_rating))
+			shield_to_use = A.left_item
+		if(shield_to_use)
+			for(var/damage_type in shield_to_use.block_defense_rating)
+				.[damage_type] += shield_to_use.block_defense_rating[damage_type]
+
 	return .

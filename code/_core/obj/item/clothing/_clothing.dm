@@ -10,7 +10,10 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
-	var/list/defense_rating = list(
+	var/list/defense_rating = list()
+
+	/*
+	defense_rating = list(
 		BLADE = 0,
 		BLUNT = 0,
 		PIERCE = 0,
@@ -25,6 +28,8 @@
 		DARK = 0,
 		FATIGUE = 0
 	)
+	*/
+
 
 	//Armor guide. Uses bullets as an example.
 	//10 is very minor protection, like reinforced clothing.

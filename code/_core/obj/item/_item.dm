@@ -121,6 +121,9 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
+
+	var/list/block_defense_rating = list()
+
 /obj/item/PostInitialize()
 	. = ..()
 	if(length(polymorphs))
@@ -564,5 +567,8 @@
 /obj/item/proc/get_overlay_ids()
 	return list("\ref[src]")
 
-/obj/item/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-	return 1
+/obj/item/proc/can_block()
+	return TRUE
+
+/obj/item/proc/can_parry()
+	return TRUE

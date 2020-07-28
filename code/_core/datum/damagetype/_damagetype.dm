@@ -116,6 +116,8 @@
 
 	var/fatigue_coefficient = 0.25 //What percentage of blocked damage to convert into fatigue damage. 1 means 100%, 0.25 means 25%, ect...
 
+	var/can_be_parried = TRUE //Can this damage be parried?
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -237,11 +239,6 @@
 
 	return luck(list(attacker,weapon),crit_chance)
 
-
-//atom/proc/defer_victim(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
-
-//atom/proc/defer_hit_object(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed)
-
 /damagetype/proc/do_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	spawn
@@ -305,6 +302,16 @@
 			damage_to_deal_main[real_damage_type] += damage_amount
 
 		do_attack_animation(attacker,victim,weapon,hit_object,critical_hit_multiplier > 1)
+
+		if(is_advanced(victim) && can_be_parried)
+			var/mob/living/advanced/A = victim
+			if(A.parry(attacker,weapon,hit_object,critical_hit_multiplier,src))
+				A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
+				if(is_living(attacker))
+					var/mob/living/L = attacker
+					L.to_chat(span("warning","Your attack was parried by \the [A.name]!"),CHAT_TYPE_COMBAT)
+					L.add_status_effect(STAGGER,1,1)
+				return FALSE
 
 		var/total_damage_dealt = 0
 		if(victim.immortal || hit_object.immortal)

@@ -95,6 +95,8 @@
 
 	var/list/known_emotes = list()
 
+	var/last_hold = -1
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = SEE_BLACKNESS

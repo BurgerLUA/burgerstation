@@ -8,6 +8,12 @@
 
 	value = 50
 
+/obj/item/weapon/melee/energy/can_block()
+	return enabled
+
+/obj/item/weapon/melee/energy/can_parry()
+	return enabled
+
 /obj/item/weapon/melee/energy/get_examine_details_list(var/mob/examiner)
 
 	. = ..()
@@ -119,13 +125,6 @@
 	value = 400
 
 	dan_mode = TRUE
-
-/obj/item/weapon/melee/energy/shield/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-
-	if(get_dir(attacker,victim) & victim.dir)
-		return ..()
-
-	return enabled && !(DT.get_attack_type() & (ATTACK_TYPE_UNARMED | ATTACK_TYPE_MELEE)) ? 0.5 : 1
 
 /obj/item/weapon/melee/energy/shield/blue
 	color = "#0000FF"
