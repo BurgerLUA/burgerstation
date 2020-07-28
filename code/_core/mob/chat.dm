@@ -134,13 +134,17 @@
 
 	return text_to_say
 
-/mob/proc/do_emote(var/emote_text,var/atom/target)
+/mob/proc/do_emote(var/emote_text,var/atom/target,var/messages = TRUE)
 
 	if(!emote_text)
 		return FALSE
 
+	if(!(emote_text in known_emotes))
+		if(messages) to_chat("Invalid emote!")
+		return FALSE
+
 	if(!SSemote.all_emotes[emote_text])
-		to_chat("Unknown emote: \"[emote_text]\".")
+		if(messages) to_chat("Unknown emote: \"[emote_text]\".")
 		return FALSE
 
 	var/emote/E = SSemote.all_emotes[emote_text]

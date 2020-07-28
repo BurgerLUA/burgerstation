@@ -47,7 +47,7 @@
 	flavor = "mushroom"
 
 /reagent/toxin/xeno_acid
-	name = "xenomorph acid"
+	name = "xeno acid"
 	desc = "Literal fucking acid."
 
 	damage_per_unit = 2

@@ -6,9 +6,13 @@ var/global/list/possible_hostage_types = list(
 
 /objective/hostage
 	name = "Rescue Hostage"
-	desc = "Rescue \the #TARGET located at #LOCATION."
 
 	var/mob/living/created_hostage
+
+	var/completed = FALSE
+
+/objective/hostage/get_description()
+	return "Rescue [english_list(tracked_atoms)] and bring them shipside. Location: [english_list(get_locations())]."
 
 /objective/hostage/setup()
 	var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
@@ -31,14 +35,26 @@ var/global/list/possible_hostage_types = list(
 /objective/hostage/get_valid_targets()
 	return list(created_hostage)
 
-/objective/hostage/proc/hostage_post_move(var/mob/caller,args)
+/objective/hostage/check_completion()
 
-	if(caller.z == 2 && caller.x > 119)
+	if(completed)
+		return COMPLETED
+
+	if(!created_hostage || created_hostage.qdeleting || created_hostage.dead)
+		return FAILED
+
+	return ACTIVE
+
+
+/objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/unique/hostage/H,args)
+
+	if(H.z == 2 && H.x > 119)
+		completed = TRUE
 		update()
 
 	return TRUE
 
-/objective/hostage/proc/hostage_Destroy(var/mob/caller,args)
+/objective/hostage/proc/hostage_Destroy(var/mob/living/advanced/npc/unique/hostage/H,args)
 	update()
 	return TRUE
 

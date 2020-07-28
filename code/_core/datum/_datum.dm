@@ -24,6 +24,8 @@
 
 /datum/Destroy()
 
+	HOOK_CALL("Destroy")
+
 	if(hooks)
 		hooks.Cut()
 		hooks = null

@@ -275,7 +275,7 @@
 			if(is_advanced(attacker))
 				var/mob/living/advanced/A = attacker
 				object_to_check = A.labeled_organs[O.id]
-		var/defense_rating_attacker = attacker.health.get_defense(attacker,object_to_check)
+		var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
 
 		for(var/damage_type in damage_to_deal)
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
@@ -285,7 +285,7 @@
 				continue
 			if(victim_defense > 0) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
-			if(old_damage_amount && defense_rating_attacker[damage_type] && (damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
+			if(old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 				if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 					damage_to_deal[damage_type] = 0
 					continue

@@ -38,41 +38,48 @@
 
 
 /area/lz_001/caves/crab
-	name = "\improper King Crab's Burrow"
+	name = "King Crab's Burrow"
 	icon_state = "king_crab"
 
 /area/lz_001/caves/ocean_pass
-	name = "\improper Ocean's Pass"
+	name = "Ocean's Pass"
 	icon_state = "ocean_pass"
 
 /area/lz_001/caves/diamond_cave
-	name = "\improper Diamond's Cave"
+	name = "Diamond's Cave"
 	icon_state = "diamond_cave"
 
 /area/lz_001/caves/glow_cave
-	name = "\improper Glowshroom Cave"
+	name = "Glowshroom Cave"
 	icon_state = "glow_cave"
 
 /area/lz_001/caves/desert_cave
-	name = "\improper Sandraider's Cave"
+	name = "Sandraider's Cave"
 	icon_state = "desert_cave"
 
 /area/lz_001/caves/lagoon
-	name = "\improper Pirate's Lagoon"
+	name = "Pirate's Lagoon"
 	icon_state = "lagoon"
 
 	sunlight_freq = 8
 	sunlight_color ="#8CB08F"
 
+/area/lz_001/caves/lagoon/ship
+	name = "Captain Condom's Ship"
+	icon_state = "ship"
+
+	sunlight_freq = 8
+	sunlight_color ="#8CB08F"
+
 /area/lz_001/caves/knight/
-	name = "\improper Knight's Landing"
+	name = "Knight's Landing"
 	icon_state = "day"
 
 	sunlight_freq = 8
 	sunlight_color ="#AEB05D"
 
 /area/lz_001/caves/knight/cave
-	name = "\improper Knight's Landing Cave"
+	name = "Knight's Landing Cave"
 	icon_state = "knight"
 
 /area/lz_001/caves/hive

@@ -13,3 +13,10 @@
 		"detail" = COLOR_SECURITY,
 		"straps" = COLOR_BLACK
 	)
+
+/obj/item/clothing/back/storage/dufflebag/poly/engineering
+	polymorphs = list(
+		"body" = COLOR_BROWN,
+		"detail" = COLOR_ENGINEERING,
+		"straps" = COLOR_BROWN
+	)

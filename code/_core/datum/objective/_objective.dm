@@ -1,6 +1,6 @@
 #define FAILED "FAILED"
 #define COMPLETED "COMPLETED"
-#define IN_PROGRESS "IN PROGRESS"
+#define ACTIVE "ACTIVE"
 #define IMPOSSIBLE "IMPOSSIBLE"
 
 
@@ -8,7 +8,7 @@
 	var/name = "Objective Name"
 	var/desc = "Objective Description"
 	var/atom/list/tracked_atoms = list()
-	var/completion_state = IN_PROGRESS
+	var/completion_state = ACTIVE
 
 /objective/New()
 
@@ -24,7 +24,16 @@
 	return TRUE
 
 /objective/proc/check_completion()
-	return COMPLETED
+	return ACTIVE
+
+/objective/proc/get_locations()
+	. = list()
+
+	for(var/atom/A in tracked_atoms)
+		var/area/A2 = get_area(A)
+		if(A2) . += A2
+
+	return .
 
 /objective/proc/get_description()
 	return "[initial(desc)] ([completion_state])"
@@ -36,18 +45,16 @@
 	var/old_completion_state = completion_state
 	completion_state = check_completion()
 
+	G.active_objectives -= src
+	G.completed_objectives -= src
+	G.failed_objectives -= src
+
 	switch(completion_state)
-		if(IN_PROGRESS)
+		if(ACTIVE)
 			G.active_objectives |= src
-			G.completed_objectives -= src
-			G.failed_objectives -= src
 		if(COMPLETED)
-			G.active_objectives -= src
 			G.completed_objectives |= src
-			G.failed_objectives -= src
 		if(FAILED)
-			G.active_objectives -= src
-			G.completed_objectives -= src
 			G.failed_objectives |= src
 
 	desc = get_description()

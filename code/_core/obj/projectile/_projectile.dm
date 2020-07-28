@@ -60,6 +60,9 @@
 	var/loyalty_tag
 	var/ignore_loyalty = TRUE //SEt to true if you want to ignore loyalty tag collision checking.
 
+	var/translate_projectile = TRUE
+	var/rotate_projectile = TRUE
+
 	anchored = TRUE
 
 
@@ -76,6 +79,11 @@
 	return ..()
 
 /obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1)
+
+	if(!desired_owner)
+		log_error("WARNING: PROJECTILE [src.get_debug_name()] DID NOT HAVE AN OWNER!")
+		qdel(src)
+		return FALSE
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -218,14 +226,16 @@
 	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1)
 	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1)
 
-	var/matrix/M = matrix()
-	var/new_angle = -ATAN2(vel_x,vel_y) + 90
-	M.Turn(new_angle)
-	M.Translate(pixel_x_float,pixel_y_float)
-	if(!start_time)
-		transform = M
-	else
-		animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+	if(translate_projectile)
+		var/matrix/M = matrix()
+		if(rotate_projectile)
+			var/new_angle = -ATAN2(vel_x,vel_y) + 90
+			M.Turn(new_angle)
+		M.Translate(pixel_x_float,pixel_y_float)
+		if(!start_time)
+			transform = M
+		else
+			animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
 
 	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
 
@@ -258,7 +268,7 @@
 
 	if(damage_type && all_damage_types[damage_type])
 
-		if(!owner && !owner.qdeleting)
+		if(!owner || owner.qdeleting)
 			return TRUE
 
 		var/damagetype/DT = all_damage_types[damage_type]

@@ -95,7 +95,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 	if(!is_advanced(caller))
 		return ..()
 
-	if(!(src in SSgamemode.active_gamemode.allowed_shuttles))
+	if(!SSgamemode.active_gamemode.allow_launch)
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
 		return FALSE
 
@@ -129,7 +129,7 @@ obj/structure/interactive/computer/console/flight/clicked_on_by_object(var/mob/c
 
 	INTERACT_CHECK
 
-	if(!(src in SSgamemode.active_gamemode.allowed_shuttles))
+	if(!SSgamemode.active_gamemode.allow_launch)
 		caller.to_chat(span("warning","The shuttle isn't ready to launch yet!"))
 		return FALSE
 

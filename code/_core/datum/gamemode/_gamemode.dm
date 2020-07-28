@@ -6,11 +6,11 @@
 	var/objective/list/completed_objectives = list()
 	var/objective/list/failed_objectives = list()
 
-	var/list/allowed_shuttles = list() //What shuttles are allowed to launch.
+	var/allow_launch = FALSE
 
 	var/state = GAMEMODE_PRELOAD
 
-	var/list/objective_text_list = list()
+	var/list/objective_text = "No objectives listed."
 
 	var/next_objective_update = 0
 
@@ -23,17 +23,15 @@
 	active_objectives.Cut()
 	completed_objectives.Cut()
 	failed_objectives.Cut()
-	allowed_shuttles.Cut()
 	return ..()
 
 /gamemode/New()
 	state = GAMEMODE_WAITING
-	round_time_next = initial(round_time_next)
 	return TRUE
 
 /gamemode/proc/on_life()
 
-	if(next_objective_update && next_objective_update <= world.time)
+	if(next_objective_update > 0 && next_objective_update <= world.time)
 		update_objectives()
 
 	round_time++
@@ -44,17 +42,37 @@
 	state = GAMEMODE_BREAK
 	return TRUE
 
+/gamemode/proc/on_continue() //What to do when this gamemode continues via a vote.
+	state = GAMEMODE_FIGHTING
+	return TRUE
+
+/gamemode/proc/add_objective(var/objective/O)
+	O = new O
+	if(!O || O.qdeleting)
+		log_error("Could not add objective [O.type].")
+		return FALSE
+	next_objective_update = world.time + 10
+	O.update()
+	return TRUE
+
 /gamemode/proc/update_objectives()
 
-	objective_text_list = list()
+	objective_text = ""
 
 	for(var/objective/O in active_objectives)
-		objective_text_list += O.desc
+		objective_text += "[O.desc] (ACTIVE)<br>"
 
 	for(var/objective/O in completed_objectives)
-		objective_text_list += O.desc
+		objective_text += "[O.desc] (COMPLETED)<br>"
 
 	for(var/objective/O in failed_objectives)
-		objective_text_list += O.desc
+		objective_text += "[O.desc] (FAILED)<br>"
+
+	for(var/obj/hud/button/objectives/O in all_objective_buttons)
+		O.set_stored_text(objective_text)
+
+	announce("Central Command Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+
+	next_objective_update = -1
 
 	return TRUE

@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(hook)
 		var/list/list_info = datum_to_use.hooks[event_name][identifier]
 		var/proc_owner = list_info[1]
 		var/proc_to_use = list_info[2]
-		call(proc_owner,proc_to_use)(args)
+		call(proc_owner,proc_to_use)(datum_to_use,args)
 		total_calls++
 
 	return total_calls

@@ -108,32 +108,6 @@
 
 	return TRUE
 
-/atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
-
-	. = ..()
-
-	if (. && light_sources)
-		var/light_source/L
-		var/thing
-		for (thing in light_sources)
-			L = thing
-			L.source_atom.update_light()
-
-	return .
-
-/atom/movable/force_move(var/atom/new_loc)
-
-	. = ..()
-
-	var/light_source/L
-	var/thing
-	for (thing in light_sources)
-		L = thing
-		L.source_atom.update_light()
-
-	return .
-
-
 /atom/set_dir(var/desired_dir,var/force = FALSE)
 
 

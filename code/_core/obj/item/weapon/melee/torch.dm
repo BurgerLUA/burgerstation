@@ -33,6 +33,7 @@
 		set_light(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	else
 		set_light(FALSE)
+	return TRUE
 
 /obj/item/weapon/melee/torch/update_icon()
 

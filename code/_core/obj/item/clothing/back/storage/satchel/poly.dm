@@ -15,3 +15,12 @@
 		"detail" = COLOR_SECURITY,
 		"buckle" = COLOR_SILVER
 	)
+
+
+/obj/item/clothing/back/storage/satchel/poly/engineering
+	polymorphs = list(
+		"body" = COLOR_BROWN,
+		"straps" = COLOR_BROWN,
+		"detail" = COLOR_ENGINEERING,
+		"buckle" = COLOR_SILVER
+	)

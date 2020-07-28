@@ -102,9 +102,23 @@
 	if(old_loc != loc)
 		post_move(old_loc)
 
-	return TRUE
+	return FALSE
+
+
 
 /atom/movable/proc/post_move(var/atom/old_loc)
+
+	if(grabbing_hand)
+		grabbing_hand.check_grab()
+
+	var/light_source/L
+	var/thing
+	for(thing in light_sources)
+		L = thing
+		L.source_atom.update_light()
+	return TRUE
+
+	HOOK_CALL("post_move")
 	return TRUE
 
 /atom/movable/Bump(var/atom/obstacle,var/Dir=0)
@@ -208,7 +222,6 @@
 				continue
 			A.Crossed(src,NewLoc,OldLoc)
 
-	if(grabbing_hand)
-		grabbing_hand.check_grab()
+		post_move(OldLoc)
 
 	return TRUE

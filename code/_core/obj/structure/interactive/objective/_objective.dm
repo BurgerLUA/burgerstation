@@ -1,4 +1,4 @@
-obj/structure/interactive/objective
+obj/structure/interactive/artifact
 	name = "valuable artifact"
 	icon = 'icons/obj/structure/objectives.dmi'
 	icon_state = "1"
@@ -10,16 +10,16 @@ obj/structure/interactive/objective
 
 	bullet_block_chance = 75
 
-obj/structure/interactive/objective/Initialize()
+obj/structure/interactive/artifact/Initialize()
 	name = "[pick(SSname.adjectives)] artifact of [pick(SSname.verbs)]"
 	return ..()
 
-obj/structure/interactive/objective/on_crush()
+obj/structure/interactive/artifact/on_crush()
 	var/turf/T = get_turf(pick(all_fall_markers))
 	src.visible_message(span("danger","\The [name] strains as it disappears in a large flash!"))
 	src.force_move(T)
 	return FALSE
 
-obj/structure/interactive/objective/New(var/desired_loc)
+obj/structure/interactive/artifact/New(var/desired_loc)
 	icon_state = "[rand(1,9)]"
 	return ..()

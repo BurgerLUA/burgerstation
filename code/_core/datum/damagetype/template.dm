@@ -61,9 +61,3 @@
 		SKILL_MELEE = BLADE,
 		SKILL_RANGED = BLADE
 	)
-
-	skill_xp_per_damage = list(
-		SKILL_UNARMED = 0,
-		SKILL_MELEE = 0,
-		SKILL_RANGED = 0
-	)

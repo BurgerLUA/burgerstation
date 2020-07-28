@@ -69,3 +69,6 @@
 		/obj/item/weapon/ranged/energy/freezegun,
 		/obj/item/powercell/advanced
 	)
+
+/obj/structure/interactive/vending/security/gundrobe/engineering
+	icon_state = "gundrobe_engineering"

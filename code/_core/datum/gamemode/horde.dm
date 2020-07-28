@@ -1,5 +1,5 @@
 /gamemode/horde/
-	name = "Free-Roam Horde"
+	name = "Horde Mode (ERROR)"
 	desc = "Fight off a near endless wave of enemies while attempting to complete objectives scattered across the map."
 
 	var/list/horde_targets = list()
@@ -8,10 +8,48 @@
 
 	var/total_killed_enemies = 0
 
+	var/list/mob/living/enemy_types_to_spawn = list()
+
+	hidden = TRUE
+
+/gamemode/horde/update_objectives()
+
+	. = ..()
+
+	if(!length(active_objectives) && length(completed_objectives) >= 1 && state == GAMEMODE_FIGHTING)
+		state = GAMEMODE_BREAK
+		SSvote.create_vote(/vote/continue_round)
+
+	return .
+
 /gamemode/horde/New()
 	state = GAMEMODE_WAITING
 	round_time = 0
-	round_time_next = 1 //Skip to gearing. Nothing to wait for.
+	round_time_next = HORDE_DELAY_WAIT //Skip to gearing. Nothing to wait for.
+	announce("Free-Roam Horde Mode","Starting new round...","Roam around the map completing set objectives while hostile enemies prevent you from doing so.")
+
+	for(var/turf/T in horde_spawnpoints)
+		var/mob/living/L = pick(enemy_types_to_spawn)
+		L = new L(T)
+		INITIALIZE(L)
+
+	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
+		if(O.z != 3)
+			continue
+		horde_targets += O
+
+	return ..()
+
+/gamemode/horde/proc/add_objectives()
+	add_objective(/objective/kill_boss)
+	add_objective(/objective/kill_boss)
+	add_objective(/objective/artifact)
+	add_objective(/objective/hostage)
+	return TRUE
+
+/gamemode/horde/on_continue()
+	add_objective(/objective/kill_boss)
+	add_objective(/objective/artifact)
 	return ..()
 
 /gamemode/horde/on_life()
@@ -38,7 +76,8 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	announce("Central Command Update","Prepare for Landfall","All landfall are ordered to gear up for planetside combat. Estimated time until shuttle functionality: [CEILING(HORDE_DELAY_GEARING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
+	add_objectives()
 	return TRUE
 
 /gamemode/horde/proc/on_gearing()
@@ -50,8 +89,7 @@
 	state = GAMEMODE_BOARDING
 	round_time = 0
 	round_time_next = HORDE_DELAY_BOARDING
-	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes. Objectives will be announced soon.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
-	next_objective_update = world.time + 100
+	announce("Central Command Update","Shuttle Boarding","All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in [CEILING(HORDE_DELAY_BOARDING/60,1)] minutes.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
 	return TRUE
 
 /gamemode/horde/proc/on_boarding()
@@ -64,8 +102,7 @@
 	round_time = 0
 	round_time_next = HORDE_DELAY_LAUNCHING
 	announce("Central Command Update","Mission is a Go","Shuttles are prepped and ready to depart into Syndicate territory. Launch now.",ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')
-	for(var/obj/shuttle_controller/S in all_shuttle_controlers)
-		allowed_shuttles += S
+	allow_launch = TRUE
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
@@ -109,13 +146,14 @@
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
-		var/mob/living/advanced/npc/syndicate/S = new(T)
-		INITIALIZE(S)
-		S.ai.set_path(found_path)
-		tracked_enemies += S
+		var/mob/living/L = pick(enemy_types_to_spawn)
+		L = new L(T)
+		INITIALIZE(L)
+		L.ai.set_path(found_path)
+		tracked_enemies += L
+		HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
 
-
-/gamemode/horde/proc/on_killed_enemy(var/mob/living/L)
+/gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
 
 	if(!(L in tracked_enemies))
 		return FALSE

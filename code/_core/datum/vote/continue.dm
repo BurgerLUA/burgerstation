@@ -7,11 +7,8 @@
 /vote/continue_round/on_result(var/winner,var/list/results)
 
 	if(winner == "No")
-		SShorde.tick_rate = 0 //Stop horde processing.
 		world.end(WORLD_END_NANOTRASEN_VICTORY)
 	else
-		SShorde.spawn_objectives(1,2,0)
-		SShorde.state = HORDE_STATE_FIGHTING
-		SShorde.update_objectives()
+		SSgamemode.active_gamemode.on_continue()
 
 	return TRUE

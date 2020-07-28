@@ -119,10 +119,3 @@
 			)
 
 #undef ALL_EQUAL
-
-/*
-// Override here to prevent things accidentally moving around overlays.
-/atom/movable/lighting_overlay/force_move(atom/destination, no_tp = FALSE, harderforce = FALSE)
-	if(harderforce)
-		. = ..()
-*/

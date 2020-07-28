@@ -2,9 +2,13 @@
 	set hidden = TRUE
 	do_say(text_to_say)
 
-/mob/verb/emote(var/emote in SSemote.all_emotes,var/mob/target in view)
+/mob/verb/emote(var/emote as text,var/mob/target in view)
 	set name = "Emote"
 	set category = "Communication"
+
+	if(!(emote in known_emotes))
+		to_chat("Invalid emote!")
+		return FALSE
 
 	if(!SSemote.all_emotes[emote])
 		to_chat("Invalid emote!")

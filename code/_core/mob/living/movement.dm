@@ -76,8 +76,6 @@
 			fire_overlay.glide_size = src.glide_size
 			fire_overlay.force_move(src.loc)
 
-	HOOK_CALL("post_move")
-
 	return .
 
 /mob/living/Bump(var/atom/obstacle,var/Dir=0)

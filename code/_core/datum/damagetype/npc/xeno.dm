@@ -1,5 +1,5 @@
-/damagetype/npc/xenomorph
-	name = "xenomorph claw"
+/damagetype/npc/xeno
+	name = "xeno claw"
 	attack_verbs = list("claw","scratch","maul")
 
 
@@ -25,8 +25,8 @@
 		ATTRIBUTE_DEXTERITY = PIERCE
 	)
 
-/damagetype/npc/xenomorph/queen
-	name = "queen xenomorph poison claw"
+/damagetype/npc/xeno/queen
+	name = "queen xeno poison claw"
 	attack_verbs = list("claw","scratch","maul")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

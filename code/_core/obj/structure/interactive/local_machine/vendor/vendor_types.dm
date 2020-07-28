@@ -230,7 +230,6 @@
 		/obj/item/clothing/shirt/normal/engineering
 	)
 
-
 /obj/structure/interactive/vending/robotics
 	name = "robotics vendor"
 	icon_state = "robotics"

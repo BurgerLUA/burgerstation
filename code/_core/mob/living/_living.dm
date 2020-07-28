@@ -176,6 +176,31 @@
 
 	var/queue_health_update = FALSE //From automated processes like reagent and health updating. Should not be used for bullet impacts and whatnot.
 
+	known_emotes = list(
+		"laugh",
+		"cough",
+		"deathgasp",
+		"gasp",
+		"grenade",
+		"medic",
+		"pain",
+		"scream",
+		"dab",
+		"nod",
+		"shake",
+		"bow",
+		"fist",
+		"think",
+		"wave",
+		"shrug",
+		"cheer",
+		"beckon",
+		"yawn",
+		"cry",
+		"clap",
+		"salute"
+	)
+
 /mob/living/on_crush() //What happens when this object is crushed by a larger object.
 	. = ..()
 	visible_message(span("danger","\The [src] is violently crushed!"))
@@ -262,8 +287,6 @@
 	if(client)
 		CRASH_SAFE("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		client.make_ghost(FALLBACK_TURF)
-
-	HOOK_CALL("Destroy")
 
 	return ..()
 

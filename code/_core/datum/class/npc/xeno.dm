@@ -1,4 +1,4 @@
-/class/xenomorph
+/class/xeno
 
 	//Limits:
 	//1 ATTRIBUTE_STARTING_PRIMARY

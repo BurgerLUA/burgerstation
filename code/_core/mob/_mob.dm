@@ -93,6 +93,8 @@
 
 	var/list/color_mods = list()
 
+	var/list/known_emotes = list()
+
 /mob/proc/update_eyes()
 	vision = 0x0
 	sight = SEE_BLACKNESS

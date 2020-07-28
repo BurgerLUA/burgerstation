@@ -48,7 +48,7 @@
 
 	var/kick_chance = 10
 
-	var/attack_on_block = FALSE
+	var/attack_on_block = TRUE
 
 	var/path_steps = 1
 	var/list/Vector3D/current_path = list()
@@ -237,6 +237,9 @@
 
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
 
+	if(!owner || !target)
+		return FALSE
+
 	owner.move_dir = 0
 
 	var/list/params = list(
@@ -273,16 +276,21 @@
 	return TRUE
 
 /ai/proc/handle_movement_attack_objective()
+
 	if(objective_attack)
-		owner.movement_flags = MOVEMENT_RUNNING
 		var/target_distance = get_dist(owner,objective_attack)
 		if(target_distance < attack_distance_min)
 			owner.move_dir = get_dir(objective_attack,owner)
+			owner.movement_flags = MOVEMENT_RUNNING
 		if(target_distance > attack_distance_max)
 			owner.move_dir = get_dir(owner,objective_attack)
-		else if(prob(target_distance <= 1 ? 25 : 5))
-			owner.move_dir = pick(turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90))
+			owner.movement_flags = MOVEMENT_RUNNING
+		else
+			owner.movement_flags = MOVEMENT_NORMAL
+			if(prob(target_distance <= 1 ? 25 : 5))
+				owner.move_dir = pick(turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90))
 		return TRUE
+
 	return FALSE
 
 /ai/proc/handle_movement_move_objective()
@@ -735,7 +743,7 @@
 			if(trigger_other_bump && L.ai)
 				L.ai.Bump(owner,FALSE)
 
-		if(attack_on_block)
+		if(attack_on_block && obstacle.health)
 			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE
