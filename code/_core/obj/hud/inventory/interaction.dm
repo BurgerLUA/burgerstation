@@ -11,7 +11,7 @@
 
 	if(caller.attack_flags & ATTACK_HOLD && defer_self == src && is_living(caller))
 		var/mob/living/L = caller
-		L.dash(object,2)
+		L.dash(object,0x0,2)
 		return TRUE
 
 	if(object && caller.attack_flags & ATTACK_GRAB && get_dist(caller,object) <= 1)

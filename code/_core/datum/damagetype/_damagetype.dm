@@ -307,10 +307,12 @@
 			var/mob/living/advanced/A = victim
 			if(A.parry(attacker,weapon,hit_object,critical_hit_multiplier,src))
 				A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
+				play('sound/effects/parry.ogg',get_turf(A))
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat(span("warning","Your attack was parried by \the [A.name]!"),CHAT_TYPE_COMBAT)
-					L.add_status_effect(STAGGER,1,1)
+					L.to_chat(span("warning","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
+					if(get_dist(A,L) <= 1)
+						L.add_status_effect(STAGGER,10,10)
 				return FALSE
 
 		var/total_damage_dealt = 0
