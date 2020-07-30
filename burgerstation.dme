@@ -198,6 +198,7 @@
 #include "code\_core\client\verbs\cheat.dm"
 #include "code\_core\client\verbs\controls.dm"
 #include "code\_core\client\verbs\debug.dm"
+#include "code\_core\client\verbs\dps_calc.dm"
 #include "code\_core\client\verbs\fun.dm"
 #include "code\_core\client\verbs\game.dm"
 #include "code\_core\client\verbs\menu.dm"

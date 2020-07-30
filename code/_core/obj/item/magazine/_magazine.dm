@@ -44,7 +44,6 @@
 			for(var/i=1,i<=v,i++)
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
-				GENERATE(B)
 				stored_bullets += B
 
 	return .

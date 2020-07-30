@@ -28,6 +28,8 @@
 	var/bullet_diameter_best = -1
 	var/bullet_diameter_max = -1
 
+	var/standard_bullet_type //The standard bullet type this weapon normally uses.
+
 
 /obj/item/weapon/ranged/bullet/save_item_data(var/save_inventory = TRUE)
 	. = ..()

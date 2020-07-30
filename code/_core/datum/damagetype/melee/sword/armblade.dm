@@ -15,7 +15,6 @@
 		BIO = 25
 	)
 
-
 	attribute_stats = list(
 		ATTRIBUTE_STRENGTH = 25,
 		ATTRIBUTE_DEXTERITY = 10

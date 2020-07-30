@@ -166,7 +166,7 @@ client/verb/air_test(var/pressure as num)
 
 
 /client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
-	set name = "Spawn Object"
+	set name = "Spawn"
 	set desc = "Spawn an object."
 	set category = "Debug"
 
@@ -175,6 +175,10 @@ client/verb/air_test(var/pressure as num)
 
 	if(object[1] != "/")
 		object = "/" + object
+
+	var/last_checker = copytext(object,-1,0)
+	if(last_checker == "/")
+		object = copytext(object,1,-1)
 
 	var/valid_path = text2path(object)
 

@@ -80,7 +80,6 @@
 				L.dash(null,owner.mob.move_dir ? owner.mob.move_dir : owner.mob.dir,2)
 			else if(world.time - owner.mob.last_hold >= 30) //Can't spam it.
 				owner.mob.last_hold = world.time
-
 		if("grab")
 			owner.mob.attack_flags |= ATTACK_GRAB
 		if("quick_self")
@@ -129,7 +128,6 @@
 			owner.mob.attack_flags &= ~ATTACK_DROP
 		if("hold")
 			owner.mob.attack_flags &= ~ATTACK_HOLD
-			//owner.mob.last_hold = -1
 		if("grab")
 			owner.mob.attack_flags &= ~ATTACK_GRAB
 		if("quick_self")

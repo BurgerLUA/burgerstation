@@ -144,6 +144,9 @@ body {
 	color:red;
 	font-family: Courier, Monaco, monospace;
 }
+.debug{
+	font-family: Courier, Monaco, monospace;
+}
 div.announcement p{
 	color: red;
 }
