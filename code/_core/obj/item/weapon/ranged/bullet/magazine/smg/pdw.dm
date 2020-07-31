@@ -9,7 +9,7 @@
 	can_wield = FALSE
 
 	shoot_delay = 1.25
-	max_bursts = 3
+	max_bursts = 2
 	view_punch = 4
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
@@ -29,10 +29,25 @@
 
 	size = SIZE_3
 
-
 	value = 110
 
 	ai_heat_sensitivity = 0.5
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE
+	)
+
+	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_y = 18 - 16
+
+	attachment_sight_offset_x = 0
+	attachment_sight_offset_y = 0
+
+	attachment_undermount_offset_x = 0
+	attachment_undermount_offset_y = 0
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
 	return 0.01

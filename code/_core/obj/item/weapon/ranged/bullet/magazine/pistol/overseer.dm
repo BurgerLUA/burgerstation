@@ -32,6 +32,25 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 18- 16
+
+	attachment_sight_offset_x = 20 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 30
+	attachment_undermount_offset_y = 16
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_static_spread() //Base spread
 	return 0
 

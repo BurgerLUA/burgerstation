@@ -25,3 +25,6 @@
 
 /obj/decal/tile/cross/medical
 	color = COLOR_MEDICAL
+
+/obj/decal/tile/cross/red
+	color = COLOR_RED

@@ -72,3 +72,22 @@
 
 /obj/structure/interactive/vending/security/gundrobe/engineering
 	icon_state = "gundrobe_engineering"
+
+
+/obj/structure/interactive/vending/security/attachment
+	name = "attachment vendor"
+	icon_state = "attachment"
+
+	stored_types = list(
+		/obj/item/weapon/melee/tool/multitool,
+		/obj/item/attachment/barrel/laser_charger,
+		/obj/item/attachment/barrel/charger,
+		/obj/item/attachment/barrel/compensator,
+		/obj/item/attachment/barrel/extended,
+		/obj/item/attachment/barrel/suppressor,
+		/obj/item/attachment/sight/laser_sight,
+		/obj/item/attachment/sight/quickfire_adapter,
+		/obj/item/attachment/sight/red_dot,
+		/obj/item/attachment/undermount/burst_adapter,
+		/obj/item/attachment/undermount/vertical_grip
+	)

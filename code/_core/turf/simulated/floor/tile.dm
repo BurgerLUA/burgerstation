@@ -64,6 +64,10 @@
 /turf/simulated/floor/tile/brown
 	color = "#995121"
 
+/turf/simulated/floor/tile/tan
+	color = "#D3CBA5"
+
+
 /turf/simulated/floor/tile/yellow
 	color = "#FFFF44"
 

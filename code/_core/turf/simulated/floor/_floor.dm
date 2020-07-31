@@ -95,7 +95,8 @@
 
 /turf/simulated/floor/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
+	if(get_dist(caller,src) > 1) //No interact check here because that's annoying.
+		return ..()
 
 	if(istype(object,/obj/item/material/rod))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_frame,caller,object)

@@ -25,6 +25,27 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+	)
+
+	attachment_barrel_offset_x = 12
+	attachment_barrel_offset_y = 4
+
+	attachment_sight_offset_x = -1
+	attachment_sight_offset_y = 5
+
+	attachment_undermount_offset_x = 11
+	attachment_undermount_offset_y = 1
+
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread() //Base spread
 	return 0.005
 
@@ -56,6 +77,8 @@
 	bullet_diameter_min = 9.8
 	bullet_diameter_best = 10
 	bullet_diameter_max = 11.2
+
+	attachment_whitelist = list()
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread() //Base spread
 	return 0

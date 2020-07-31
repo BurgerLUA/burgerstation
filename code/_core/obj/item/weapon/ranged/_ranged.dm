@@ -5,7 +5,7 @@
 
 	var/automatic = FALSE
 	var/max_bursts = 0 //Set to a number greater than 0 to limit automatic fire.
-	var/current_bursts = 0
+	var/current_bursts = 0 //Read only.
 	var/shoot_delay = 4 //In deciseconds
 	var/next_shoot_time = 0
 
@@ -39,25 +39,127 @@
 
 	var/use_loyalty_tag = FALSE //Set to true if this weapon uses a loyalty tag instead of a firing pin. Used for spells.
 
+	var/list/attachment_whitelist = list()
+	var/obj/item/attachment/attachment_barrel
+	var/attachment_barrel_offset_x = 0
+	var/attachment_barrel_offset_y = 0
+	var/obj/item/attachment/attachment_sight
+	var/attachment_sight_offset_x = 0
+	var/attachment_sight_offset_y = 0
+	var/obj/item/attachment/attachment_undermount
+	var/attachment_undermount_offset_x = 0
+	var/attachment_undermount_offset_y = 0
+
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	if(istype(firing_pin)) .["firing_pin"] = firing_pin.save_item_data(save_inventory)
+	SAVEATOM("firing_pin")
+	SAVEATOM("attachment_barrel")
+	SAVEATOM("attachment_sight")
+	SAVEATOM("attachment_undermount")
 	return .
 
 /obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	if(object_data["firing_pin"]) firing_pin = load_and_create(P,object_data["firing_pin"],src)
+	LOADATOM("firing_pin")
+	LOADATOM("attachment_barrel")
+	LOADATOM("attachment_sight")
+	LOADATOM("attachment_undermount")
 	return .
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
+/obj/item/weapon/ranged/proc/update_attachments()
+
+	automatic = initial(automatic)
+
+	if(attachment_barrel)
+		if(attachment_barrel.attachment_force_automatic) automatic = TRUE
+
+	if(attachment_sight)
+		if(attachment_sight.attachment_force_automatic) automatic = TRUE
+
+	if(attachment_undermount)
+		if(attachment_undermount.attachment_force_automatic) automatic = TRUE
+
+	return TRUE
+
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	var/atom/defer_object = object.defer_click_on_object(location,control,params)
 
-	if(!use_loyalty_tag && is_item(defer_object))
+	if(istype(defer_object,/obj/item/attachment))
+		var/obj/item/attachment/A = defer_object
+
+		if(!length(attachment_whitelist))
+			caller.to_chat(span("notice","This weapon does not accept attachments!"))
+			return FALSE
+
+		if(!attachment_whitelist[A.type])
+			caller.to_chat(span("notice","\The [A.name] cannot fit on \the [src.name]!"))
+			return FALSE
+
+		if(istype(A,/obj/item/attachment/barrel))
+			if(attachment_barrel)
+				caller.to_chat(span("notice","There is already a [attachment_barrel.name] attached to \the [src.name]!"))
+			else
+				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
+				A.drop_item(src)
+				attachment_barrel = A
+				update_attachments()
+				update_sprite()
+		else if(istype(A,/obj/item/attachment/sight))
+			if(attachment_sight)
+				caller.to_chat(span("notice","There is already a [attachment_sight.name] attached to \the [src.name]!"))
+			else
+				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
+				A.drop_item(src)
+				attachment_sight = A
+				update_attachments()
+				update_sprite()
+		else if(istype(A,/obj/item/attachment/undermount))
+			if(attachment_undermount)
+				caller.to_chat(span("notice","There is already a [attachment_undermount.name] attached to \the [src.name]!"))
+			else
+				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
+				A.drop_item(src)
+				attachment_undermount = A
+				update_attachments()
+				update_sprite()
+		return TRUE
+
+	else if(!use_loyalty_tag && is_item(defer_object))
 		var/obj/item/I = defer_object
+		if(I.flags_tool & FLAG_TOOL_MULTITOOL)
+			var/choice_list = list()
+			if(attachment_barrel) choice_list[attachment_barrel.name] = "barrel"
+			if(attachment_sight) choice_list[attachment_sight.name] = "sight"
+			if(attachment_undermount) choice_list[attachment_undermount.name] = "undermount"
+			var/attachment_choice = input("What would you like to remove?","Attachment Removal") as null|anything in choice_list
+			switch(choice_list[attachment_choice])
+				if("barrel")
+					caller.to_chat(span("notice","You remove \the [attachment_barrel.name] from \the [src.name]."))
+					attachment_barrel.drop_item(get_turf(caller))
+					attachment_barrel = null
+					update_attachments()
+					update_sprite()
+				if("sight")
+					caller.to_chat(span("notice","You remove \the [attachment_sight.name] from \the [src.name]."))
+					attachment_sight.drop_item(get_turf(caller))
+					attachment_sight = null
+					update_attachments()
+					update_sprite()
+				if("undermount")
+					caller.to_chat(span("notice","You remove \the [attachment_undermount.name] from \the [src.name]."))
+					attachment_undermount.drop_item(get_turf(caller))
+					attachment_undermount = null
+					update_attachments()
+					update_sprite()
+				else
+					caller.to_chat(span("notice","You decide not to remove anything."))
+			return TRUE
+
+
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
 				firing_pin.force_move(get_turf(src))
@@ -66,7 +168,6 @@
 			else
 				caller.to_chat(span("notice","There is no firing pin inside \the [src.name]!"))
 			return TRUE
-
 		if(istype(I,/obj/item/firing_pin/))
 			if(istype(firing_pin))
 				caller.to_chat(span("notice","There is already a [firing_pin.name] installed in \the [src.name]! Remove it with a screwdriver first!"))
@@ -77,9 +178,6 @@
 			return TRUE
 
 	return ..()
-
-
-
 
 /obj/item/weapon/ranged/Generate()
 	if(!use_loyalty_tag && ispath(firing_pin))
@@ -201,8 +299,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!can_gun_shoot(caller,object,location,params))
 		return FALSE
 
-	next_shoot_time = world.time + get_shoot_delay(caller,object,location,params)
-
 	var/obj/projectile/projectile_to_use = projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = get_ranged_damage_type()
@@ -211,6 +307,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/projectile_speed_to_use = projectile_speed
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifer_to_use = inaccuracy_modifer
+	var/view_punch_to_use = view_punch
+	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
+	var/max_bursts_to_use = max_bursts
+	var/shoot_alert_to_use = shoot_alert
+	var/damage_multiplier_to_use = damage_multiplier
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
@@ -235,9 +336,39 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		handle_empty(caller)
 		return FALSE
 
-	projectile_speed_to_use = min(projectile_speed_to_use,31)
+	if(attachment_barrel)
+		if(attachment_barrel.attachment_accuracy_mod) bullet_spread *= attachment_barrel.attachment_accuracy_mod
+		if(attachment_barrel.attachment_damage_mod) damage_multiplier_to_use *= attachment_barrel.attachment_damage_mod
+		if(attachment_barrel.attachment_recoil_mod) view_punch_to_use *= attachment_barrel.attachment_recoil_mod
+		if(attachment_barrel.attachment_delay_mod) shoot_delay_to_use *= attachment_barrel.attachment_delay_mod
+		if(attachment_barrel.attachment_burst_add) max_bursts_to_use += attachment_barrel.attachment_burst_add
+		if(attachment_barrel.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= attachment_barrel.attachment_inaccuracy_mod
+		if(attachment_barrel.attachment_shoot_alert) shoot_alert_to_use = attachment_barrel.attachment_shoot_alert
+		if(attachment_barrel.attachment_shoot_sound) shoot_sounds_to_use = attachment_barrel.attachment_shoot_sound
 
-	update_sprite()
+
+	if(attachment_sight)
+		if(attachment_sight.attachment_accuracy_mod) bullet_spread *= attachment_sight.attachment_accuracy_mod
+		if(attachment_sight.attachment_damage_mod) damage_multiplier_to_use *= attachment_sight.attachment_damage_mod
+		if(attachment_sight.attachment_recoil_mod) view_punch_to_use *= attachment_sight.attachment_recoil_mod
+		if(attachment_sight.attachment_delay_mod) shoot_delay_to_use *= attachment_sight.attachment_delay_mod
+		if(attachment_sight.attachment_burst_add) max_bursts_to_use += attachment_sight.attachment_burst_add
+		if(attachment_sight.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= attachment_sight.attachment_inaccuracy_mod
+		if(attachment_sight.attachment_shoot_alert) shoot_alert_to_use = attachment_sight.attachment_shoot_alert
+		if(attachment_sight.attachment_shoot_sound) shoot_sounds_to_use = attachment_sight.attachment_shoot_sound
+
+	if(attachment_undermount)
+		if(attachment_undermount.attachment_accuracy_mod) bullet_spread *= attachment_undermount.attachment_accuracy_mod
+		if(attachment_undermount.attachment_damage_mod) damage_multiplier_to_use *= attachment_undermount.attachment_damage_mod
+		if(attachment_undermount.attachment_recoil_mod) view_punch_to_use *= attachment_undermount.attachment_recoil_mod
+		if(attachment_undermount.attachment_delay_mod) shoot_delay_to_use *= attachment_undermount.attachment_delay_mod
+		if(attachment_undermount.attachment_burst_add) max_bursts_to_use += attachment_undermount.attachment_burst_add
+		if(attachment_undermount.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= attachment_undermount.attachment_inaccuracy_mod
+		if(attachment_undermount.attachment_shoot_alert) shoot_alert_to_use = attachment_undermount.attachment_shoot_alert
+		if(attachment_undermount.attachment_shoot_sound) shoot_sounds_to_use = attachment_undermount.attachment_shoot_sound
+
+	next_shoot_time = world.time + shoot_delay_to_use
+	projectile_speed_to_use = min(projectile_speed_to_use,31)
 
 	if(projectile_to_use)
 
@@ -248,8 +379,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 		if(length(shoot_sounds))
 			play(pick(shoot_sounds_to_use),src)
-			if(shoot_alert)
-				create_alert(VIEW_RANGE,src,caller,shoot_alert)
+			if(shoot_alert_to_use)
+				create_alert(VIEW_RANGE,src,caller,shoot_alert_to_use)
 
 		if(!params || !length(params))
 			params = list()
@@ -270,7 +401,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		accuracy_loss = clamp(accuracy_loss,0,0.5)
 
 		var/view_punch_time = shoot_delay
-		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch,view_punch_time,damage_multiplier, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
+		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch_to_use,view_punch_time,damage_multiplier_to_use, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)
@@ -291,14 +422,16 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				var/turf/T = locate(desired_x,desired_y,caller.z)
 				if(T)
 					next_shoot_time = 0 //This is needed.
-					if((max_bursts <= 0 || current_bursts < (max_bursts-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
+					if((max_bursts_to_use <= 0 || current_bursts < (max_bursts_to_use-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
 						current_bursts += 1
-					else if(max_bursts > 0)
+					else if(max_bursts_to_use > 0)
 						next_shoot_time = world.time + shoot_delay*current_bursts
 						current_bursts = 0
-			else if(max_bursts > 0)
+			else if(max_bursts_to_use > 0)
 				next_shoot_time = world.time + shoot_delay*current_bursts
 				current_bursts = 0
+
+	update_sprite()
 
 	return TRUE
 
@@ -395,3 +528,27 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
 	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(1 + get_dist(L,target))*inaccuracy_modifier
+
+/obj/item/weapon/ranged/update_overlays()
+
+	. = ..()
+
+	if(attachment_barrel)
+		var/image/I = new/image(attachment_barrel.icon,"[attachment_barrel.icon_state]_attached")
+		I.pixel_x = attachment_barrel.attachment_offset_x + attachment_barrel_offset_x
+		I.pixel_y = attachment_barrel.attachment_offset_y + attachment_barrel_offset_y
+		add_overlay(I)
+
+	if(attachment_sight)
+		var/image/I = new/image(attachment_sight.icon,"[attachment_sight.icon_state]_attached")
+		I.pixel_x = attachment_sight.attachment_offset_x + attachment_sight_offset_x
+		I.pixel_y = attachment_sight.attachment_offset_y + attachment_sight_offset_y
+		add_overlay(I)
+
+	if(attachment_undermount)
+		var/image/I = new/image(attachment_undermount.icon,"[attachment_undermount.icon_state]_attached")
+		I.pixel_x = attachment_undermount.attachment_offset_x + attachment_undermount_offset_x
+		I.pixel_y = attachment_undermount.attachment_offset_y + attachment_undermount_offset_y
+		add_overlay(I)
+
+	return .

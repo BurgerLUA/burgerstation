@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/9mm_2.dmi'
 	icon_state = "inventory"
 
-	shoot_delay = 1.25
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
@@ -35,6 +35,25 @@
 	value = 200
 
 	ai_heat_sensitivity = 0.5
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE
+	)
+
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 25 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 0
+	attachment_undermount_offset_y = 0
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
 	if(stored_magazine)

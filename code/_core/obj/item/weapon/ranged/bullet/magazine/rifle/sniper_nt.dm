@@ -43,6 +43,24 @@
 
 	dan_mode = TRUE
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 0
+	attachment_sight_offset_y = 0
+
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 18 - 16
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt/get_static_spread() //Base spread
 	return 0
 

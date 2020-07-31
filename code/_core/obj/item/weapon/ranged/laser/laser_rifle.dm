@@ -12,7 +12,7 @@
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 4
 
-	automatic = TRUE
+	automatic = FALSE
 
 	override_icon_state = TRUE
 	override_icon_state_held = FALSE //TODO: FIX THIS
@@ -35,8 +35,25 @@
 
 	size = SIZE_4
 
-
 	value = 900
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/laser_charger = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = TRUE
+	)
+
+	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_y = 15 - 16
+
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 22 - 16
+
+	attachment_undermount_offset_x = 29 - 16
+	attachment_undermount_offset_y = 12 - 16
 
 /obj/item/weapon/ranged/energy/rifle/get_static_spread() //Base spread
 	return 0.001

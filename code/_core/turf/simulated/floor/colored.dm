@@ -73,6 +73,11 @@
 
 	delay_modifier = 1.1
 
+/turf/simulated/floor/colored/sand/oasis
+	name = "sand"
+	color = "#CCBC8A"
+
+
 /turf/simulated/floor/colored/grass/moss
 	name = "moss"
 	color = "#5A916E"
