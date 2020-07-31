@@ -10,7 +10,7 @@
 
 /menu/paper/on_load(var/user)
 
-	run_function(usr,"set_reference","'\ref[src]'")
+	run_function(usr,"set_reference",list2params(list("\ref[src]")))
 
 	if(!is_player(user))
 		return FALSE
@@ -26,9 +26,9 @@
 	winset(user,"control.input","focus=false")
 
 /menu/paper/proc/set_text(var/user,var/text,var/title,var/page_current,var/page_max)
-	var/function_name = "set_text"
-	var/function_args = "\"[proper_url_encode(text)]\",\"[proper_url_encode(title)]\",[page_current],[page_max]"
 
+	var/function_name = "set_text"
+	var/function_args = list2params(list(text,title,page_current,page_max))
 
 	run_function(user,function_name,function_args)
 	if(is_player(user))
@@ -37,7 +37,7 @@
 			P.active_paper.last_page = page_current
 
 /menu/paper/run_function(var/user, var/function_name,var/args)
-	user << output("[function_name]([args]);", "map.paper:eval")
+	user << output(args, "map.paper:[function_name]")
 
 /menu/paper/Topic(href,href_list)
 

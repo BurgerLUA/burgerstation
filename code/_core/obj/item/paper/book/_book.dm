@@ -5,14 +5,31 @@
 	icon = 'icons/obj/item/book.dmi'
 	icon_state = "book_template"
 
-/obj/item/paper/book/firearms/Generate()
+/obj/item/paper/book/firearms/Initialize()
+	. = ..()
 	name = "manual: A Guide to Firearms"
 	desc_extended = "A guide on how to use and mantain modern firearms."
 	data = all_paper_data["a guide to firearms"]
-	return ..()
+	return .
 
-/obj/item/paper/book/cooking/Generate()
+/obj/item/paper/book/cooking/Initialize()
+	. = ..()
 	name = "manual: A Guide to Cooking"
 	desc_extended = "A guide on how to cook, and hopefully not burn the kitchen down."
 	data = all_paper_data["a guide to cooking"]
-	return ..()
+	return .
+
+
+/obj/item/paper/book/controls/Initialize()
+	. = ..()
+	name = "manual: A Guide to Controlling Yourself"
+	desc_extended = "A guide on how to masteer self-control"
+	data = all_paper_data["a guide to cooking"]
+	return .
+
+/obj/item/paper/book/controls/Initialize()
+	. = ..()
+	name = "manual: A Guide to Controlling Yourself"
+	desc_extended = "A guide on how to masteer self-control"
+	data = all_paper_data["a guide to controlling yourself"]
+	return .

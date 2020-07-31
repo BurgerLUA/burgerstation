@@ -47,6 +47,9 @@
 		}
 
 		function set_text(desired_text,desired_title,desired_page,desired_page_max) {
+		
+			desired_page = parseInt(desired_page)
+			desired_page_max = parseInt(desired_page_max)
 
 			document.getElementById("text").innerHTML = desired_text
 			document.getElementById("title").innerHTML = desired_title

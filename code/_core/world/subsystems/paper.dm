@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(paper)
 			found_pages++
 			var/loaded_data = rustg_file_read(initial_directory + book_directory + page_directory)
 			all_paper_data[title] += loaded_data
+		log_subsystem(name,"Found book [title] with [length(book_contents)] pages.")
 
 	log_subsystem(name,"Found [found_books] books.")
 	log_subsystem(name,"Found [found_pages] pages.")
