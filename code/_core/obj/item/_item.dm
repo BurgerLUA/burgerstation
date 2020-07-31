@@ -131,7 +131,7 @@
 	return .
 
 /obj/item/get_base_value()
-	return initial(value) * item_count_current
+	return initial(value) * item_count_current * price_multiplier
 
 /obj/item/proc/get_slowdown_mul_held()
 	return slowdown_mul_held

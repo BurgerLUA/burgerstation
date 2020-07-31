@@ -10,7 +10,7 @@
 
 /ai/simple/glockroach/handle_attacking()
 
-	if(objective_attack)
+	if(objective_attack && prob(20))
 		handle_projectiles()
 
 	return ..()
