@@ -7,7 +7,7 @@
 /obj/item/organ/internal/implant/groin/syndicate_explosive/on_life()
 	. = ..()
 	var/turf/T = get_turf(src)
-	if(T.z != 3 && is_advanced(loc))
+	if(T.z < Z_LEVEL_MISSION && is_advanced(loc))
 		var/mob/living/advanced/A = loc
 		if(!A.dead)
 			for(var/i=1,i<=10,i++)

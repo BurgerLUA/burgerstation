@@ -553,6 +553,7 @@
 #include "code\_core\datum\vote\_vote.dm"
 #include "code\_core\datum\vote\continue.dm"
 #include "code\_core\datum\vote\gamemode.dm"
+#include "code\_core\datum\vote\map.dm"
 #include "code\_core\datum\wires\_wires.dm"
 #include "code\_core\image\_image.dm"
 #include "code\_core\mob\_mob.dm"
@@ -1215,7 +1216,6 @@
 #include "code\_core\obj\markers\_marker.dm"
 #include "code\_core\obj\markers\antag.dm"
 #include "code\_core\obj\markers\boss.dm"
-#include "code\_core\obj\markers\cell.dm"
 #include "code\_core\obj\markers\chargen.dm"
 #include "code\_core\obj\markers\chasm_fall.dm"
 #include "code\_core\obj\markers\dev_info.dm"
@@ -1491,9 +1491,8 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
-#include "maps\horde\01_bluespace.dmm"
-#include "maps\horde\02_burgerstation.dmm"
-#include "maps\horde\03_island_new.dmm"
+#include "maps\core\_core.dm"
+#include "maps\horde\_horde.dm"
 #include "scripts\macro.dms"
 // END_INCLUDE
 

@@ -8,6 +8,8 @@
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 40
 
+#define NEXT_MAP_FILE "data/server/next_map.txt"
+
 #define BITE_SIZE 5
 
 #define SHUTDOWN_SUBSYSTEM_ON_ERROR FALSE
@@ -204,3 +206,7 @@
 	"L" = "looc",\
 	"V" = "zoom",\
 )
+
+#define Z_LEVEL_CENTCOMM 1
+#define Z_LEVEL_BLUESPACE 2
+#define Z_LEVEL_MISSION 3

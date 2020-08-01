@@ -24,7 +24,7 @@
 /event/supply/New()
 
 	for(var/area/A in world)
-		if(A.z != 3)
+		if(A.z < Z_LEVEL_MISSION)
 			continue
 		if(A.interior)
 			continue

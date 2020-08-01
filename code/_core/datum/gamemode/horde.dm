@@ -34,7 +34,7 @@
 		INITIALIZE(L)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
-		if(O.z != 3)
+		if(O.z < Z_LEVEL_MISSION)
 			continue
 		horde_targets += O
 
@@ -172,7 +172,7 @@
 		CHECK_TICK(50,FPS_SERVER*10)
 		picks_remaining--
 		var/turf/chosen_target = get_turf(pick(horde_targets))
-		if(chosen_target.z != 3)
+		if(chosen_target.z < Z_LEVEL_MISSION)
 			continue
 		var/obj/marker/map_node/N_end = find_closest_node(get_turf(chosen_target))
 		if(!N_end)
@@ -190,7 +190,7 @@
 		CHECK_TICK(50,FPS_SERVER*10)
 		picks_remaining--
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
-		if(chosen_spawn.z != 3)
+		if(chosen_spawn.z < Z_LEVEL_MISSION)
 			continue
 		var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
 		if(P)
