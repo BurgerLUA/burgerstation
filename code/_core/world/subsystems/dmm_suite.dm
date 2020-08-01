@@ -19,7 +19,9 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	var/voted_map = "Island"
 	if(fexists(NEXT_MAP_FILE))
-		voted_map = file2text(NEXT_MAP_FILE)
+		voted_map = trim(file2text(NEXT_MAP_FILE))
+
+	LOG_DEBUG("The found map is: [maps[voted_map]].")
 	var/ground_map = file2text(maps[voted_map])
 	dmm_suite.read_map(ground_map,1,1,3)
 	log_subsystem(name,"Loaded ground map.")
