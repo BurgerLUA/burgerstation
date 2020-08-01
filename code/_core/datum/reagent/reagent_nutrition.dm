@@ -46,7 +46,7 @@
 		L.add_hydration(hydration_amount*.)
 
 	if(owner && owner.health)
-		var/amount_to_heal = (nutrition_amount + hydration_amount)*heal_factor*.
+		var/amount_to_heal = heal_factor*.
 
 		if(amount_to_heal > 0)
 			owner.health.adjust_loss_smart(brute=-amount_to_heal,burn=-amount_to_heal,tox=-amount_to_heal)
