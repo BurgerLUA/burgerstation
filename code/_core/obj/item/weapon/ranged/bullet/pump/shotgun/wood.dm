@@ -19,11 +19,30 @@
 
 	size = SIZE_4
 
-
 	value = 80
 
 	heat_per_shot = 0.03
 	heat_max = 0.12
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 18 - 16
+
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 19 - 16
+
+	attachment_undermount_offset_x = 30 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/wood/get_base_spread()
 	return 0.08

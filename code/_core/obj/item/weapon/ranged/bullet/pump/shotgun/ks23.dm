@@ -38,6 +38,26 @@
 	heat_per_shot = 0.09
 	heat_max = 0.18
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 9 - 16
+	attachment_sight_offset_y = 19 - 16
+
+	attachment_undermount_offset_x = 28 - 16
+	attachment_undermount_offset_y = 15 - 16
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
 	return 0.12
 
