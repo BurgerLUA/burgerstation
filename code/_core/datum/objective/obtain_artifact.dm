@@ -25,11 +25,13 @@
 		return COMPLETED
 	return ..()
 
-/objective/artifact/proc/artifact_post_move(var/obj/structure/interactive/artifact/A,args)
+/objective/artifact/proc/artifact_post_move(var/obj/structure/interactive/artifact/H,args)
 
-	if(A.z == 2 && A.x > 119)
-		completed = TRUE
-		update()
+	if(!completed && H.z == Z_LEVEL_CENTCOMM)
+		var/area/A = get_area(H)
+		if(istype(A,/area/burgerstation))
+			completed = TRUE
+			update()
 
 	return TRUE
 

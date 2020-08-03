@@ -71,6 +71,15 @@
 
 	flavor = "fat"
 
+/reagent/nutrition/fat/xeno
+	name = "xeo fat"
+	desc = "Nutrition and flavor from a xeno's fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 20
+
+	flavor = "fat"
+
 /reagent/nutrition/fat/crab
 	name = "crab's fat"
 	desc = "Nutrition and flavor from crab's fat."

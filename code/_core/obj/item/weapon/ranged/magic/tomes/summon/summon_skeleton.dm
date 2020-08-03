@@ -8,7 +8,7 @@
 
 	value = 1000
 
-	object_to_summon = /mob/living/simple/npc/bull
+	object_to_summon = /mob/living/advanced/npc/skeleton_summon/
 
 /obj/item/weapon/ranged/magic/tome/summon/bull
 	name = "summoning tome of bulls"

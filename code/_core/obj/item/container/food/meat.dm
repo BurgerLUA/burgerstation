@@ -209,6 +209,7 @@
 
 /obj/item/container/food/dynamic/meat/xeno/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/xeno,15)
+	reagents.add_reagent(/reagent/nutrition/fat/xemo,5)
 	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
 	return ..()
 
