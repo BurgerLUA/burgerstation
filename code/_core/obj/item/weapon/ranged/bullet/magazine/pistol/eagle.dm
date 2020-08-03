@@ -23,6 +23,27 @@
 	bullet_diameter_best = 12.7
 	bullet_diameter_max = 13
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 24 - 16
+
+	attachment_undermount_offset_x = 26 - 16
+	attachment_undermount_offset_y = 14 - 16
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread() //Base spread
 	return 0.005
 

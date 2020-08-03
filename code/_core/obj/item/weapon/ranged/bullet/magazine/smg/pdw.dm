@@ -8,15 +8,14 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1.25
-	max_bursts = 2
+	shoot_delay = 1.5
 	view_punch = 4
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
 
 	override_icon_state = TRUE
 
-	heat_per_shot = 0.03
+	heat_per_shot = 0.02
 	heat_max = 0.09
 
 	bullet_length_min = 25
@@ -43,11 +42,11 @@
 	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 0
-	attachment_sight_offset_y = 0
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 0
-	attachment_undermount_offset_y = 0
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread() //Base spread
 	return 0.01

@@ -4,9 +4,9 @@
 	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders. The bulkiness of the pistol rivals submachine guns."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
-	value = 150
+	value = 350
 
-	shoot_delay = 3
+	shoot_delay = 2
 
 	automatic = FALSE
 
@@ -20,9 +20,8 @@
 
 	size = SIZE_2
 
-
-	heat_per_shot = 0.06
-	heat_max = 0.10
+	heat_per_shot = 0.04
+	heat_max = 0.15
 
 	bullet_length_min = 27
 	bullet_length_best = 33
@@ -39,20 +38,22 @@
 		/obj/item/attachment/barrel/suppressor = TRUE,
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
-		/obj/item/attachment/sight/red_dot = TRUE
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 18- 16
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 20 - 16
 
 	attachment_sight_offset_x = 20 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 30
-	attachment_undermount_offset_y = 16
+	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_y = 12 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_static_spread() //Base spread
-	return 0
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_skill_spread(var/mob/living/L) //Base spread
-	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

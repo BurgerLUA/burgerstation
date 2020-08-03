@@ -101,7 +101,7 @@
 	var/column=0
 
 	for(var/i=1,i<=stored_objects_length,i++)
-		if(row >= 6)
+		if(row >= 8)
 			row = 0
 			column++
 		var/obj/item/I = stored_objects[i]

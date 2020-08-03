@@ -1,12 +1,12 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine
-	name = "\improper 5.56 U-NT Carabiner"
-	desc = "Good for shuttle hijackings."
-	desc_extended = "A small carbine rifle that was intended to phase out the much older AR-SS13. Turns out, people still like the AR-SS13 for what it does, so it exists alongside it."
-	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_2.dmi'
+/obj/item/weapon/ranged/bullet/magazine/rifle/pdw
+	name = "\improper 5.56 PDW"
+	desc = "For personel defense!"
+	desc_extended = "A small, lightweight personal defense weapon chambered in 5.56. Shoots fast, but isn't that accurate."
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_5.dmi'
 	icon_state = "inventory"
-	value = 150
+	value = 200
 
-	shoot_delay = 1.5
+	shoot_delay = 1.3
 
 	automatic = TRUE
 
@@ -14,15 +14,14 @@
 
 	can_wield = TRUE
 
-	view_punch = 10
+	view_punch = 9
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_3
 
-
-	heat_per_shot = 0.04
-	heat_max = 0.08
+	heat_per_shot = 0.06
+	heat_max = 0.12
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -58,12 +57,12 @@
 	dan_mode = TRUE
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/pdw/get_static_spread() //Base spread
 	if(wielded)
 		return 0.01
-	return 0.02
+	return 0.015
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/pdw/get_skill_spread(var/mob/living/L) //Base spread
 	if(!heat_current)
 		return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))

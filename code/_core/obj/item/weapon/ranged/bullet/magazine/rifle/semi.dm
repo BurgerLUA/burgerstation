@@ -1,28 +1,28 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/standard
-	name = "\improper 5.56 AR-SS13"
-	desc = "For the basic soldier."
-	desc_extended = "A cheap yet still reliable assault rifle primarily used and mass produced by NanoTrasen PMCs."
-	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_1.dmi'
+/obj/item/weapon/ranged/bullet/magazine/rifle/semi
+	name = "\improper 5.56 SA-AR"
+	desc = "Bet you can't guess what SA-AR stands for."
+	desc_extended = "A semi-automatic assault rifle designed for shooters who want to be precise with their shots, but don't want to shell out the extra credits for a high caliber rifle."
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_4.dmi'
 	icon_state = "inventory"
-	value = 200
+	value = 150
 
-	shoot_delay = 2
+	shoot_delay = 1
 
-	automatic = TRUE
+	automatic = FALSE
 
 	shoot_sounds = list('sound/weapons/223/shoot.ogg')
 
 	can_wield = TRUE
 
-	view_punch = 10
+	view_punch = 12
 
 	slowdown_mul_held = HELD_SLOWDOWN_RIFLE
 
 	size = SIZE_4
 
 
-	heat_per_shot = 0.04
-	heat_max = 0.08
+	heat_per_shot = 0.06
+	heat_max = 0.20
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -47,23 +47,23 @@
 	)
 
 	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_y = 20 - 16
 
 	attachment_sight_offset_x = 15 - 16
-	attachment_sight_offset_y = 21 - 16
+	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 27 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 	dan_mode = TRUE
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_static_spread() //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread() //Base spread
 	if(!wielded)
-		return 0.15
+		return 0.2
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L) //Base spread
 	if(!heat_current)
 		return 0
-	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.09 * L.get_skill_power(SKILL_RANGED)))

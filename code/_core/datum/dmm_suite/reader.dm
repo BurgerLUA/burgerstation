@@ -55,7 +55,6 @@ dmm_suite
 		while(grid.Find(gridText))
 			gridLevels.Add(copytext(grid.group[1], 1, -1)) // Strip last \n
 		// Create all Atoms at map location, from model key
-		world.maxz = max(world.maxz, coordZ+gridLevels.len-1)
 		for(var/posZ = 1 to gridLevels.len)
 			var zGrid = gridLevels[posZ]
 			// Reverse Y coordinate
@@ -63,12 +62,6 @@ dmm_suite
 			var /list/yLines = list()
 			for(var/posY = yReversed.len to 1 step -1)
 				yLines.Add(yReversed[posY])
-			//
-			var yMax = yLines.len+(coordY-1)
-			if(world.maxy < yMax) world.maxy = yMax
-			var exampleLine = pick(yLines)
-			var xMax = length(exampleLine)+(coordX-1)
-			if(world.maxx < xMax) world.maxx = xMax
 			for(var/posY = 1 to yLines.len)
 				var yLine = yLines[posY]
 				for(var/posX = 1 to length(yLine)/key_len)

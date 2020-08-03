@@ -19,16 +19,36 @@
 	bullet_diameter_best = 5
 	bullet_diameter_max = 6
 
-	automatic = FALSE
+	automatic = TRUE
 
 	override_icon_state = TRUE
 
 	size = SIZE_3
 
-
-	value = 100
+	value = 300
 
 	ai_heat_sensitivity = 1.5
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 22 - 16
+
+	attachment_sight_offset_x = 23 - 16
+	attachment_sight_offset_y = 23 - 16
+
+	attachment_undermount_offset_x = 29 - 16
+	attachment_undermount_offset_y = 17 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/update_icon()
 

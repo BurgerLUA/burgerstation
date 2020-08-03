@@ -33,21 +33,6 @@
 
 	ai_heat_sensitivity = 1.5
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/get_static_spread() //Base spread
-	if(!wielded)
-		return 0.2
-	return 0
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/get_skill_spread(var/mob/living/L) //Base spread
-	if(!heat_current)
-		return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
-
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt
-	dan_mode = TRUE
-	icon = 'icons/obj/item/weapons/ranged/rifle/762_service_nt.dmi'
-
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
@@ -68,3 +53,18 @@
 
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 19 - 16
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/service/get_static_spread() //Base spread
+	if(!wielded)
+		return 0.2
+	return 0
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/service/get_skill_spread(var/mob/living/L) //Base spread
+	if(!heat_current)
+		return 0
+	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt
+	dan_mode = TRUE
+	icon = 'icons/obj/item/weapons/ranged/rifle/762_service_nt.dmi'

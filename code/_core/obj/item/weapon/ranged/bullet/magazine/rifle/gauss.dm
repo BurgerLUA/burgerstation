@@ -39,6 +39,18 @@
 
 	zoom_mul = 2
 
+	attachment_whitelist = list()
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 19 - 16
+
+	attachment_sight_offset_x = 14 - 16
+	attachment_sight_offset_y = 25 - 16
+
+	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_y = 15 - 16
+
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread() //Base spread
 	return 0
 

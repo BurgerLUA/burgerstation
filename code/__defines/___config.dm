@@ -1,5 +1,5 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 #define ENABLE_STOPLAG TRUE
 #define MOVEMENT_DELAY_MOD 0.75 //Lower values means faster.
 #define ENABLE_DAMAGE_NUMBERS TRUE
@@ -64,7 +64,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 #define ENABLE_AI TRUE
 #define ENABLE_MAPLOAD TRUE
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_LIGHTING FALSE
 #define ENABLE_TURFGEN TRUE
 
 #define ENABLE_HIJACK FALSE

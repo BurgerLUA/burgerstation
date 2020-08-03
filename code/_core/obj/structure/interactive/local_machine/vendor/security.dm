@@ -38,20 +38,21 @@
 	icon_state = "gundrobe"
 
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer,
 		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
-		/obj/item/magazine/pistol_tranq_11m,
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
 		/obj/item/magazine/smg_46,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 		/obj/item/magazine/smg_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
 		/obj/item/magazine/rifle_556,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service/nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_nt,
@@ -62,11 +63,9 @@
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,
 		/obj/item/storage/ammo/flechette,
-		/obj/item/weapon/ranged/energy/hybrid/carbine,
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,
-		/obj/item/weapon/ranged/energy/freezegun,
 		/obj/item/powercell/advanced
 	)
 
@@ -88,6 +87,8 @@
 		/obj/item/attachment/sight/laser_sight,
 		/obj/item/attachment/sight/quickfire_adapter,
 		/obj/item/attachment/sight/red_dot,
+		/obj/item/attachment/sight/scope,
+		/obj/item/attachment/sight/scope/large,
 		/obj/item/attachment/undermount/burst_adapter,
 		/obj/item/attachment/undermount/vertical_grip
 	)

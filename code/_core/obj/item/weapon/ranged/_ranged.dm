@@ -72,15 +72,19 @@
 /obj/item/weapon/ranged/proc/update_attachments()
 
 	automatic = initial(automatic)
+	zoom_mul = initial(zoom_mul)
 
 	if(attachment_barrel)
 		if(attachment_barrel.attachment_force_automatic) automatic = TRUE
+		if(attachment_barrel.attachment_zoom_mul) zoom_mul *= attachment_barrel.attachment_zoom_mul
 
 	if(attachment_sight)
 		if(attachment_sight.attachment_force_automatic) automatic = TRUE
+		if(attachment_sight.attachment_zoom_mul) zoom_mul *= attachment_sight.attachment_zoom_mul
 
 	if(attachment_undermount)
 		if(attachment_undermount.attachment_force_automatic) automatic = TRUE
+		if(attachment_barrel.attachment_zoom_mul) zoom_mul *= attachment_barrel.attachment_zoom_mul
 
 	return TRUE
 

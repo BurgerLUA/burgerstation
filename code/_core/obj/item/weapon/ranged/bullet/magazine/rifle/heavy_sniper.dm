@@ -42,6 +42,8 @@
 
 	zoom_mul = 2
 
+	attachment_whitelist = list()
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread() //Base spread
 	return 0
 

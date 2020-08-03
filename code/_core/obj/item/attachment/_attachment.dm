@@ -16,6 +16,7 @@
 	var/attachment_shoot_sound
 
 	var/attachment_force_automatic
+	var/attachment_zoom_mul
 
 	var/attachment_offset_x = 0
 	var/attachment_offset_y = 0
@@ -95,6 +96,24 @@
 	attachment_inaccuracy_mod = 0.75
 	attachment_accuracy_mod = 0.85
 	value = 300
+
+/obj/item/attachment/sight/scope
+	name = "x2 scope"
+	desc = "What's wrong with ironsights?"
+	desc_extended = "A bulky rifle scope that increases the zoom range of the weapon. The weight and size increases recoil as a penalty."
+	icon_state = "x2_scope"
+	attachment_recoil_mod = 1.1
+	attachment_zoom_mul = 2
+	value = 400
+
+/obj/item/attachment/sight/scope/large
+	name = "x4 scope"
+	desc = "What's wrong with ironsights?"
+	desc_extended = "A bulky sniper scope that increases the zoom range of the weapon. The weight and size increases recoil as a penalty."
+	icon_state = "x4_scope"
+	attachment_recoil_mod = 1.2
+	attachment_zoom_mul = 4
+	value = 800
 
 /obj/item/attachment/sight/quickfire_adapter
 	name = "quickfire adapter"

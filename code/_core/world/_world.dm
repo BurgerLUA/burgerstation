@@ -21,6 +21,10 @@ var/global/world_state = STATE_STARTING
 	turf = /turf/unsimulated/space
 	area = /area/
 
+	maxx = WORLD_SIZE
+	maxy = WORLD_SIZE
+	maxz = 3
+
 	loop_checks = 0
 
 /world/New()

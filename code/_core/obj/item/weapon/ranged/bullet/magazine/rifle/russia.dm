@@ -34,6 +34,27 @@
 
 	ai_heat_sensitivity = 1.5
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 18 - 16
+
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 20 - 16
+
+	attachment_undermount_offset_x = 21 - 16
+	attachment_undermount_offset_y = 17 - 16
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.15
@@ -79,6 +100,27 @@
 	bullet_diameter_max = 5.46  //Just so people wouldn't load this gun with 5.56, would be really-really weird to do so - Stalkeros
 
 	ai_heat_sensitivity = 1.5
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 23 - 16
+	attachment_undermount_offset_y = 18 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/abakan/get_static_spread() //Base spread
 	if(!wielded)
@@ -126,6 +168,27 @@
 
 	ai_heat_sensitivity = 1.5
 
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE
+	)
+
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 18 - 16
+
+	attachment_sight_offset_x = 20 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_y = 16 - 16
+
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.06
@@ -171,6 +234,23 @@
 	bullet_diameter_max = 10
 
 	ai_heat_sensitivity = 1.5
+
+	attachment_whitelist = list(
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 20 - 16
+
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 18 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread() //Base spread
 	if(!wielded)
@@ -224,6 +304,23 @@
 	ai_heat_sensitivity = 2
 
 	inaccuracy_modifer = 0.09
+
+	attachment_whitelist = list(
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE
+	)
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 20 - 16
+
+	attachment_undermount_offset_x = 23 - 16
+	attachment_undermount_offset_y = 17 - 16
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread() //Base spread
 	if(!wielded)
