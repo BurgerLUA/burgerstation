@@ -14,6 +14,18 @@
 
 	value = 1
 
+/*
+/obj/item/material/save_item_data(var/save_inventory = TRUE)
+	. = ..()
+	SAVEVAR("material_id")
+	return .
+
+/obj/item/material/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("material_id")
+	return .
+*/
+
 /obj/item/material/Initialize()
 	if(!SSmaterials.all_materials[material_id])
 		log_error("Warning: [src.get_debug_name()] had invalid material id \"[material_id]\".")
@@ -25,7 +37,7 @@
 
 	return ..()
 
-/obj/item/material/Generate()
+/obj/item/material/PostInitialize()
 	. = ..()
 	update_sprite()
 	return .

@@ -1,10 +1,14 @@
-#define PLANE_HIDDEN -17
+#define PLANE_HIDDEN -19
 
-#define PLANE_SPACE -16
+#define PLANE_SPACE -18
 
-#define PLANE_PARALAX -15
+#define PLANE_PARALAX -17
 
-#define PLANE_WATER -14
+#define PLANE_WATER -16
+
+#define PLANE_BEDROCK -15
+
+#define PLANE_FLOOR_ORE -14
 
 #define PLANE_FLOOR -13
 

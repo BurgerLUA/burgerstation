@@ -9,6 +9,7 @@
 	var/icon_state_rod = "rod"
 	var/icon_state_ingot = "ingot"
 	var/icon_state_ore = "ore"
+	var/icon_state_ore_deposit
 
 	var/weight_per_unit = 0.1
 	var/value_per_unit = 1
@@ -38,6 +39,7 @@
 	name = "iron"
 	color = COLOR_IRON
 	icon_state_ore = "ore_iron"
+	icon_state_ore_deposit = "deposit_iron"
 
 	value_per_unit = 0.5
 
@@ -45,6 +47,7 @@
 	name = "phoron"
 	color = COLOR_PHORON
 	icon_state_ore = "ore_phoron"
+	icon_state_ore_deposit = "deposit_phoron"
 
 	value_per_unit = 10
 
@@ -52,6 +55,7 @@
 	name = "carbon"
 	color = COLOR_CARBON
 	icon_state_ore = "ore_coal"
+	icon_state_ore_deposit = "deposit_coal"
 
 	value_per_unit = 0.5
 
@@ -59,6 +63,7 @@
 	name = "gold"
 	color = COLOR_GOLD
 	icon_state_ore = "ore_gold"
+	icon_state_ore_deposit = "deposit_gold"
 
 	value_per_unit = 3
 
@@ -66,6 +71,7 @@
 	name = "diamond"
 	color = COLOR_DIAMOND
 	icon_state_ore = "ore_diamond"
+	icon_state_ore_deposit = "deposit_diamond"
 
 	value_per_unit = 50
 
@@ -73,6 +79,7 @@
 	name = "silver"
 	color = COLOR_SILVER
 	icon_state_ore = "ore_silver"
+	icon_state_ore_deposit = "deposit_silver"
 
 	value_per_unit = 30
 
@@ -80,6 +87,7 @@
 	name = "uranium"
 	color = COLOR_URANIUM
 	icon_state_ore = "ore_uranium"
+	icon_state_ore_deposit = "deposit_uranium"
 
 	value_per_unit = 20
 

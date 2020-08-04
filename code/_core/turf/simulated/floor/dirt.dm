@@ -1,5 +1,7 @@
 /turf/simulated/floor/cave_dirt/
-	name = "hard dirt"
+	name = "bedrock"
+
+
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "dirt"
@@ -9,8 +11,11 @@
 	corner_icons = TRUE
 	corner_category = "dirt"
 
-	layer = LAYER_FLOOR
+	plane = PLANE_BEDROCK
+	layer = 0
 
 	footstep = /footstep/asteroid
 
 	delay_modifier = 1
+
+	health = null
