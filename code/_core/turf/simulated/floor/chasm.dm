@@ -17,7 +17,7 @@
 		O.visible_message(span("danger","\The [O.name] falls into \the [src.name]!"))
 		if(is_living(O))
 			var/mob/living/L = O
-			L.emote("scream")
+			L.send_pain(80)
 		O.force_move(T)
 		if(is_living(O))
 			var/mob/living/L = O
@@ -26,7 +26,7 @@
 				for(var/i=1,i<=3,i++)
 					L.health.adjust_brute_loss(-30)
 				L.queue_health_update = TRUE
-				L.emote("pain")
+				L.send_pain(40)
 				L.add_status_effect(STUN,30,30)
 				play('sound/effects/impacts/meteor_impact.ogg',get_turf(L))
 				create_alert(VIEW_RANGE,L,L,ALERT_LEVEL_NOISE)

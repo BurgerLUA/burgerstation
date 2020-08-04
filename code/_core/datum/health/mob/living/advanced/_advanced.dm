@@ -116,7 +116,7 @@
 	else
 		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE)*9)
 
-	if(A.has_status_effect(list(FATIGUE,SLEEP,REST)))
+	if(A.has_status_effects(FATIGUE,SLEEP,REST))
 		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*29)
 	else
 		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE)*19)

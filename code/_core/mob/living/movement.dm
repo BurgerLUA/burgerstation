@@ -98,7 +98,7 @@
 	if(dead)
 		return FALSE
 
-	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
 		return FALSE
 
 	if(has_status_effect(CONFUSED))
@@ -200,7 +200,7 @@
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
 
-	if(has_status_effect(list(STUN,STAGGER,PARALYZE)))
+	if(has_status_effects(STUN,STAGGER,PARALYZE))
 		return ..()
 
 	if(hit_wall)

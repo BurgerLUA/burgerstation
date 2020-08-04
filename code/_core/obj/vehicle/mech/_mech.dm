@@ -12,6 +12,7 @@
 
 	change_dir_on_move = FALSE
 
+	blood_color = "#111111"
 
 /mob/living/vehicle/mech/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps + /footstep/mech_step
@@ -48,7 +49,7 @@
 
 	if(dead)
 		icon_state = "[icon_state]_dead"
-	else if(!length(passengers) || !passengers[1])
+	else if(!ai && !length(passengers))
 		icon_state = "[icon_state]_open"
 
 	..()
@@ -111,6 +112,40 @@
 	health_base = 1500
 
 	movement_delay = DECISECONDS_TO_TICKS(3)
+
+/mob/living/vehicle/mech/gygax/dark
+	name = "\improper DARK Gygax Combat Mech"
+	desc = "A syndicate owned Dark Gygax. These are usually controlled by AI."
+	icon = 'icons/obj/vehicles/gygax_dark.dmi'
+	icon_state = "dark_gygax"
+
+	pixel_x = 0
+	pixel_y = 0
+
+	health_base = 2000
+
+	ai = /ai/mech
+
+	iff_tag = "Syndicate"
+	loyalty_tag = "Syndicate"
+
+/mob/living/vehicle/mech/gygax/dark/Generate()
+	. = ..()
+
+	var/obj/item/weapon/ranged/energy/mech/smg/mk1/M1 = new(src.loc)
+	M1.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	INITIALIZE(M1)
+	GENERATE(M1)
+	src.attach_equipment(null,M1)
+
+	var/obj/item/weapon/ranged/energy/mech/smg/mk2/M2 = new(src.loc)
+	M2.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	INITIALIZE(M2)
+	GENERATE(M2)
+	src.attach_equipment(null,M2)
+
+	return .
+
 
 /mob/living/vehicle/mech/durand
 	name = "\improper MK2 Durand"

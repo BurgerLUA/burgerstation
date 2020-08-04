@@ -76,8 +76,7 @@
 
 	if(is_advanced(loc) && has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 		var/mob/living/advanced/A = loc
-		if(!A.dead)
-			A.emote("scream")
+		if(!A.dead && A.send_pain(80))
 			on_pain()
 			for(var/obj/item/organ/O in attached_organs)
 				O.on_pain()

@@ -26,8 +26,6 @@
 	var/stacks_to_take = FLOOR(item_count_current/2, 1)
 	if(!stacks_to_take)
 		return FALSE
-
-
 	var/obj/item/I = copy(src)
 	I.force_move(get_turf(src))
 	I.item_count_current = 0

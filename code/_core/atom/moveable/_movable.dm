@@ -130,7 +130,6 @@
 		if(blocks_air && is_simulated(loc))
 			var/turf/simulated/T = loc
 			T.blocks_air |= blocks_air
-		force_move(loc)
 	else
 		CRASH_SAFE("ERROR: [get_debug_name()] didn't have a loc to initialize in!")
 

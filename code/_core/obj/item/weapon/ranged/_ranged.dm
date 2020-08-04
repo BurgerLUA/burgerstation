@@ -49,6 +49,9 @@
 	var/obj/item/attachment/attachment_undermount
 	var/attachment_undermount_offset_x = 0
 	var/attachment_undermount_offset_y = 0
+	var/obj/item/attachment/stock/attachment_stock
+	var/attachment_stock_offset_x = 0
+	var/attachment_stock_offset_y = 0
 
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
@@ -56,6 +59,7 @@
 	SAVEATOM("attachment_barrel")
 	SAVEATOM("attachment_sight")
 	SAVEATOM("attachment_undermount")
+	SAVEATOM("attachment_stock")
 	return .
 
 /obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
@@ -64,6 +68,8 @@
 	LOADATOM("attachment_barrel")
 	LOADATOM("attachment_sight")
 	LOADATOM("attachment_undermount")
+	LOADATOM("attachment_stock")
+	update_attachments()
 	return .
 
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
@@ -73,18 +79,20 @@
 
 	automatic = initial(automatic)
 	zoom_mul = initial(zoom_mul)
+	heat_per_shot = initial(heat_per_shot)
 
-	if(attachment_barrel)
-		if(attachment_barrel.attachment_force_automatic) automatic = TRUE
-		if(attachment_barrel.attachment_zoom_mul) zoom_mul *= attachment_barrel.attachment_zoom_mul
+	var/list/list_to_check = list(attachment_barrel,attachment_sight,attachment_undermount,attachment_stock)
 
-	if(attachment_sight)
-		if(attachment_sight.attachment_force_automatic) automatic = TRUE
-		if(attachment_sight.attachment_zoom_mul) zoom_mul *= attachment_sight.attachment_zoom_mul
-
-	if(attachment_undermount)
-		if(attachment_undermount.attachment_force_automatic) automatic = TRUE
-		if(attachment_barrel.attachment_zoom_mul) zoom_mul *= attachment_barrel.attachment_zoom_mul
+	for(var/k in list_to_check)
+		if(!k)
+			continue
+		var/obj/item/attachment/A = k
+		if(A.attachment_force_automatic)
+			automatic = TRUE
+		if(A.attachment_zoom_mul)
+			zoom_mul *= A.attachment_zoom_mul
+		if(A.attachment_heat_mul)
+			heat_per_shot *= A.attachment_heat_mul
 
 	return TRUE
 
@@ -105,7 +113,7 @@
 
 		if(istype(A,/obj/item/attachment/barrel))
 			if(attachment_barrel)
-				caller.to_chat(span("notice","There is already a [attachment_barrel.name] attached to \the [src.name]!"))
+				caller.to_chat(span("notice","There is already \a [attachment_barrel.name] attached to \the [src.name]!"))
 			else
 				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
 				A.drop_item(src)
@@ -114,7 +122,7 @@
 				update_sprite()
 		else if(istype(A,/obj/item/attachment/sight))
 			if(attachment_sight)
-				caller.to_chat(span("notice","There is already a [attachment_sight.name] attached to \the [src.name]!"))
+				caller.to_chat(span("notice","There is already \a [attachment_sight.name] attached to \the [src.name]!"))
 			else
 				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
 				A.drop_item(src)
@@ -123,13 +131,24 @@
 				update_sprite()
 		else if(istype(A,/obj/item/attachment/undermount))
 			if(attachment_undermount)
-				caller.to_chat(span("notice","There is already a [attachment_undermount.name] attached to \the [src.name]!"))
+				caller.to_chat(span("notice","There is already \a [attachment_undermount.name] attached to \the [src.name]!"))
 			else
 				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
 				A.drop_item(src)
 				attachment_undermount = A
 				update_attachments()
 				update_sprite()
+		else if(istype(A,/obj/item/attachment/stock))
+			if(attachment_stock)
+				caller.to_chat(span("notice","There is already \a [attachment_stock.name] attached to \the [src.name]!"))
+			else
+				caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
+				A.drop_item(src)
+				attachment_stock = A
+				update_attachments()
+				update_sprite()
+
+
 		return TRUE
 
 	else if(!use_loyalty_tag && is_item(defer_object))
@@ -139,6 +158,7 @@
 			if(attachment_barrel) choice_list[attachment_barrel.name] = "barrel"
 			if(attachment_sight) choice_list[attachment_sight.name] = "sight"
 			if(attachment_undermount) choice_list[attachment_undermount.name] = "undermount"
+			if(attachment_stock) choice_list[attachment_stock.name] = "stock"
 			var/attachment_choice = input("What would you like to remove?","Attachment Removal") as null|anything in choice_list
 			switch(choice_list[attachment_choice])
 				if("barrel")
@@ -159,10 +179,15 @@
 					attachment_undermount = null
 					update_attachments()
 					update_sprite()
+				if("stock")
+					caller.to_chat(span("notice","You remove \the [attachment_stock.name] from \the [src.name]."))
+					attachment_stock.drop_item(get_turf(caller))
+					attachment_stock = null
+					update_attachments()
+					update_sprite()
 				else
 					caller.to_chat(span("notice","You decide not to remove anything."))
 			return TRUE
-
 
 		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 			if(istype(firing_pin))
@@ -224,7 +249,7 @@
 			return FALSE
 
 		if(!firing_pin.can_shoot(caller,src))
-			//Messages are broadcasted in the above proc.
+			//Messages are handled in the above proc.
 			return FALSE
 
 	if(next_shoot_time > world.time)
@@ -340,36 +365,20 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		handle_empty(caller)
 		return FALSE
 
-	if(attachment_barrel)
-		if(attachment_barrel.attachment_accuracy_mod) bullet_spread *= attachment_barrel.attachment_accuracy_mod
-		if(attachment_barrel.attachment_damage_mod) damage_multiplier_to_use *= attachment_barrel.attachment_damage_mod
-		if(attachment_barrel.attachment_recoil_mod) view_punch_to_use *= attachment_barrel.attachment_recoil_mod
-		if(attachment_barrel.attachment_delay_mod) shoot_delay_to_use *= attachment_barrel.attachment_delay_mod
-		if(attachment_barrel.attachment_burst_add) max_bursts_to_use += attachment_barrel.attachment_burst_add
-		if(attachment_barrel.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= attachment_barrel.attachment_inaccuracy_mod
-		if(attachment_barrel.attachment_shoot_alert) shoot_alert_to_use = attachment_barrel.attachment_shoot_alert
-		if(attachment_barrel.attachment_shoot_sound) shoot_sounds_to_use = attachment_barrel.attachment_shoot_sound
+	var/list/attachment_list = list(attachment_barrel,attachment_sight,attachment_undermount,attachment_stock)
 
-
-	if(attachment_sight)
-		if(attachment_sight.attachment_accuracy_mod) bullet_spread *= attachment_sight.attachment_accuracy_mod
-		if(attachment_sight.attachment_damage_mod) damage_multiplier_to_use *= attachment_sight.attachment_damage_mod
-		if(attachment_sight.attachment_recoil_mod) view_punch_to_use *= attachment_sight.attachment_recoil_mod
-		if(attachment_sight.attachment_delay_mod) shoot_delay_to_use *= attachment_sight.attachment_delay_mod
-		if(attachment_sight.attachment_burst_add) max_bursts_to_use += attachment_sight.attachment_burst_add
-		if(attachment_sight.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= attachment_sight.attachment_inaccuracy_mod
-		if(attachment_sight.attachment_shoot_alert) shoot_alert_to_use = attachment_sight.attachment_shoot_alert
-		if(attachment_sight.attachment_shoot_sound) shoot_sounds_to_use = attachment_sight.attachment_shoot_sound
-
-	if(attachment_undermount)
-		if(attachment_undermount.attachment_accuracy_mod) bullet_spread *= attachment_undermount.attachment_accuracy_mod
-		if(attachment_undermount.attachment_damage_mod) damage_multiplier_to_use *= attachment_undermount.attachment_damage_mod
-		if(attachment_undermount.attachment_recoil_mod) view_punch_to_use *= attachment_undermount.attachment_recoil_mod
-		if(attachment_undermount.attachment_delay_mod) shoot_delay_to_use *= attachment_undermount.attachment_delay_mod
-		if(attachment_undermount.attachment_burst_add) max_bursts_to_use += attachment_undermount.attachment_burst_add
-		if(attachment_undermount.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= attachment_undermount.attachment_inaccuracy_mod
-		if(attachment_undermount.attachment_shoot_alert) shoot_alert_to_use = attachment_undermount.attachment_shoot_alert
-		if(attachment_undermount.attachment_shoot_sound) shoot_sounds_to_use = attachment_undermount.attachment_shoot_sound
+	for(var/k in attachment_list)
+		if(!k)
+			continue
+		var/obj/item/attachment/A = k
+		if(A.attachment_accuracy_mod) bullet_spread *= A.attachment_accuracy_mod
+		if(A.attachment_damage_mod) damage_multiplier_to_use *= A.attachment_damage_mod
+		if(A.attachment_recoil_mod) view_punch_to_use *= A.attachment_recoil_mod
+		if(A.attachment_delay_mod) shoot_delay_to_use *= A.attachment_delay_mod
+		if(A.attachment_burst_add) max_bursts_to_use += A.attachment_burst_add
+		if(A.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= A.attachment_inaccuracy_mod
+		if(A.attachment_shoot_alert) shoot_alert_to_use = A.attachment_shoot_alert
+		if(A.attachment_shoot_sound) shoot_sounds_to_use = A.attachment_shoot_sound
 
 	next_shoot_time = world.time + shoot_delay_to_use
 	projectile_speed_to_use = min(projectile_speed_to_use,31)
@@ -553,6 +562,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/image/I = new/image(attachment_undermount.icon,"[attachment_undermount.icon_state]_attached")
 		I.pixel_x = attachment_undermount.attachment_offset_x + attachment_undermount_offset_x
 		I.pixel_y = attachment_undermount.attachment_offset_y + attachment_undermount_offset_y
+		add_overlay(I)
+
+	if(attachment_stock)
+		var/image/I = new/image(attachment_stock.icon,"[attachment_stock.icon_state]_attached")
+		I.pixel_x = attachment_stock.attachment_offset_x + attachment_stock_offset_x
+		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)
 
 	return .

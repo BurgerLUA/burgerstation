@@ -48,6 +48,10 @@
 
 /gamemode/proc/add_objective(var/objective/O)
 	O = new O
+
+	if(O.completion_state == IMPOSSIBLE)
+		qdel(O)
+
 	if(!O || O.qdeleting)
 		log_error("Could not add objective [O.type].")
 		return FALSE

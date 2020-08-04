@@ -17,6 +17,7 @@
 
 	var/attachment_force_automatic
 	var/attachment_zoom_mul
+	var/attachment_heat_mul
 
 	var/attachment_offset_x = 0
 	var/attachment_offset_y = 0
@@ -143,7 +144,19 @@
 	desc_extended = "A complex underbarrel mechanism that turns any semi-automatic or automatic weapon to shoot in 3 round bursts. If the weapon already fires in 3 round bursts, it will increase the amount of bursts by 3."
 	attachment_burst_add = 3
 	attachment_delay_mod = 0.75
-	attachment_accuracy_mod = 1.1
 	attachment_recoil_mod = 1.2
 	attachment_force_automatic = TRUE
 	value = 400
+
+
+/obj/item/attachment/stock/
+	name = "stock attachment"
+
+
+/obj/item/attachment/stock/c20r
+	name = "c20r stock"
+	desc_extended = "A stock attachment for the c20r. Comes standard with it."
+	icon_state = "c20r_stock"
+	attachment_recoil_mod = 0.75
+	attachment_accuracy_mod = 1.1
+	attachment_heat_mul = 0.9

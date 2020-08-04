@@ -12,6 +12,10 @@
 
 	hidden = TRUE
 
+	var/enemies_to_spawn_base = 4
+	var/enemies_to_spawn_per_player = 1
+	var/enemies_to_spawn_per_minute = 0.34
+
 /gamemode/horde/update_objectives()
 
 	. = ..()
@@ -29,7 +33,7 @@
 	announce("Free-Roam Horde Mode","Starting new round...","Roam around the map completing set objectives while hostile enemies prevent you from doing so.")
 
 	for(var/turf/T in horde_spawnpoints)
-		var/mob/living/L = pick(enemy_types_to_spawn)
+		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)
 
@@ -43,9 +47,7 @@
 /gamemode/horde/proc/add_objectives()
 	add_objective(/objective/kill_boss)
 	add_objective(/objective/kill_boss)
-	add_objective(/objective/artifact)
-	add_objective(/objective/artifact)
-	add_objective(/objective/hostage)
+	add_objective(/objective/kill_boss)
 	return TRUE
 
 /gamemode/horde/on_continue()
@@ -146,7 +148,7 @@
 	while(wave_to_spawn > 0)
 		wave_to_spawn--
 		CHECK_TICK(50,FPS_SERVER*5)
-		var/mob/living/L = pick(enemy_types_to_spawn)
+		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)
 		L.ai.set_path(found_path)
@@ -164,7 +166,7 @@
 	return TRUE
 
 /gamemode/horde/proc/get_enemies_to_spawn()
-	return clamp(10 + FLOOR(DECISECONDS_TO_SECONDS(world.time)/300,1),0,40) - length(tracked_enemies) //One additional enemy every 5 minutes.
+	return CEILING(clamp(enemies_to_spawn_base + length(all_players)*enemies_to_spawn_per_player + FLOOR(DECISECONDS_TO_SECONDS(world.time)/(60*enemies_to_spawn_per_minute),1),0,40),4) - length(tracked_enemies) //One additional enemy every 3 minutes.
 
 /gamemode/horde/proc/find_horde_target()
 

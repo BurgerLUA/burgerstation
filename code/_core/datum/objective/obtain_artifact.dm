@@ -9,6 +9,8 @@
 	return "Obtain [english_list(tracked_atoms)] and bring it shipside. Location: [english_list(get_locations())]."
 
 /objective/artifact/setup()
+	if(!length(possible_objective_spawns))
+		return FALSE
 	var/obj/marker/objective_spawn/S = pick(possible_objective_spawns)
 	if(!S) return FALSE
 	possible_objective_spawns -= S
@@ -43,3 +45,4 @@
 	HOOK_ADD("post_move","artifact_post_move",created_artifact,src,.proc/artifact_post_move)
 	HOOK_ADD("Destroy","artifact_Destroy",created_artifact,src,.proc/artifact_Destroy)
 	tracked_atoms += created_artifact
+	return TRUE

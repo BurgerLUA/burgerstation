@@ -185,7 +185,7 @@
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.44 to 0.94)
 			new /turf/simulated/floor/colored/snow(src)
-			if(prob(1))
+			if(prob(0.5))
 				new /obj/marker/generation/mob/snow_bear(src)
 			if(prob(1))
 				new /obj/marker/generation/snow_tree(src)

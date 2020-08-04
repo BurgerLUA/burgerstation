@@ -83,8 +83,8 @@
 
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
-		if(loc)
-			for(var/atom/movable/AM in old_loc.contents)
+		if(loc) //This needs to be here.
+			for(var/atom/movable/AM in loc.contents)
 				if(AM == src)
 					continue
 				AM.Uncrossed(src,new_loc,old_loc)
@@ -93,7 +93,7 @@
 
 	if(loc)
 		loc.Entered(src, old_loc)
-		if(loc)
+		if(loc) //This needs to be here.
 			for(var/atom/movable/AM in loc.contents)
 				if(AM == src)
 					continue

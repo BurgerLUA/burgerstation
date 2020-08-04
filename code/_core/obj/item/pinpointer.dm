@@ -225,11 +225,12 @@
 
 	var/list/possible_artifacts = list()
 
-	for(var/atom/A in SSgamemode.active_gamemode.active_objectives)
-		if(!can_track(A))
-			continue
-		var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"
-		possible_artifacts[name_mod] = A
+	for(var/objective/O in SSgamemode.active_gamemode.active_objectives)
+		for(var/atom/A in O.tracked_atoms)
+			if(!can_track(A))
+				continue
+			var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"
+			possible_artifacts[name_mod] = A
 
 	if(!length(possible_artifacts))
 		caller.to_chat(span("warning","Can't find anything to track!"))

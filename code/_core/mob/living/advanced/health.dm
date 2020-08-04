@@ -35,8 +35,6 @@
 	if(!stealthy && damage_amount > 0)
 		health_regen_delay = max(health_regen_delay,600)
 		if(!dead && damage_amount > 10 && prob(damage_amount*0.3))
-			var/species/S = all_species[species]
-			if(!(S.flags_species_traits & TRAIT_NO_PAIN))
-				emote("pain")
+			src.send_pain(damage_amount)
 
 	return .

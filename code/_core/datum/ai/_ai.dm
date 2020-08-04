@@ -193,7 +193,7 @@
 	if(!isturf(owner.loc))
 		return FALSE
 
-	if(owner.has_status_effect(list(STUN,SLEEP,PARALYZE)))
+	if(owner.has_status_effects(STUN,SLEEP,PARALYZE))
 		return FALSE
 
 	if(resist_grabs && owner.grabbing_hand && is_enemy(owner.grabbing_hand.owner) && owner.next_resist <= world.time && prob(20))
@@ -547,10 +547,8 @@
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return TRUE
 
-	var/list/possible_targets = get_possible_targets()
-
 	if(objective_attack)
-		if(objective_attack.dead || objective_attack.qdeleting || !possible_targets[objective_attack] || !should_attack_mob(objective_attack))
+		if(objective_attack.dead || objective_attack.qdeleting || !should_attack_mob(objective_attack) || !can_see(objective_attack))
 			set_objective(null)
 		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
@@ -558,6 +556,7 @@
 			frustration_attack = 0
 
 	if(!objective_attack || frustration_attack > frustration_threshold || !prob(80)) //THE CLASSIC.
+		var/list/possible_targets = get_possible_targets()
 		var/atom/best_target
 		var/best_score = 0
 		for(var/mob/living/L in possible_targets)
@@ -654,15 +653,17 @@
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
 
-	if(A.alpha == 255)
-		return TRUE
+	var/atom_alpha = A.alpha
 
 	if(alert_level == ALERT_LEVEL_COMBAT)
+		atom_alpha *= 2
+
+	if(atom_alpha >= 255)
 		return TRUE
 
 	var/distance = get_dist(owner,A)
 
-	if(distance <= 2)
+	if(distance <= 1)
 		return TRUE
 
 	var/calc = ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
@@ -690,7 +691,7 @@
 
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
-			CHECK_TICK(90,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 			if(!can_detect(L) || !is_enemy(L))
 				continue
 			.[L] = TRUE

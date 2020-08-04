@@ -15,7 +15,7 @@
 /obj/item/weapon/melee/null_rod/staff
 	name = "null staff"
 	desc = "Originally a sheperd's rod, but some asshole cut the crook off."
-	desc_extended = "A long, lightweight piece of blessed ceramic designed to show religious authority in the form of robust beatings. Has the ability to block magic exceptionally well.."
+	desc_extended = "A long, lightweight piece of blessed ceramic designed to show religious authority in the form of robust beatings. Has the ability to block magic exceptionally well."
 	icon = 'icons/obj/item/weapons/melee/clubs/nullstaff.dmi'
 
 	damage_type = /damagetype/melee/club/null_staff

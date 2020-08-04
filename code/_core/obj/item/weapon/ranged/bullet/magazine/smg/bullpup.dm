@@ -2,7 +2,7 @@
 	name = ".45 C-20r submachine gun"
 	desc = "GET DAT FUKKEN DISK"
 	desc_extended = "Commonly used by Syndicate Operatives for its reliability and light weight, the 45 C-20r was the primary firearm of the Syndicate Nuclear Operatives, before NT figured out having self destruct nukes on their station wasn't a great idea."
-	icon = 'icons/obj/item/weapons/ranged/smg/45.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/45_2.dmi'
 	icon_state = "inventory"
 
 	projectile_speed = 20
@@ -49,24 +49,42 @@
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/stock/c20r = TRUE
 	)
 
-	attachment_barrel_offset_x = 28 - 16
-	attachment_barrel_offset_y = 22 - 16
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 15 - 16
-	attachment_sight_offset_y = 23 - 16
+	attachment_sight_offset_x = 23 - 16
+	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 22 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 0 - 16
+	attachment_undermount_offset_y = 0 - 16
+
+/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard/Generate()
+
+	. = ..()
+
+	var/obj/item/attachment/stock/c20r/S = new(src)
+	attachment_stock = S
+
+	var/obj/item/attachment/sight/red_dot/RD = new(src)
+	attachment_sight = RD
+
+	var/obj/item/attachment/barrel/suppressor/SS = new(src)
+	attachment_barrel = SS
+
+	update_attachments()
+	update_sprite()
+
+	return .
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 
 	icon_state = initial(icon_state)
 
 	if(stored_magazine)
-		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*6, 1)]"
+		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*5, 1)]"
 
 	return ..()
 

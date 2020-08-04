@@ -17,6 +17,9 @@
 	. = ..()
 
 	for(var/atom/movable/A in src.contents)
+		if(A.qdeleting)
+			A.force_move(null)
+			continue
 		A.set_dir(dir)
 		A.force_move(previous_loc)
 		var/atom/hit_wall

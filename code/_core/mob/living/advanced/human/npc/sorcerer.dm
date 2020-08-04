@@ -1,6 +1,6 @@
 /mob/living/advanced/npc/sorcerer
-	name = "sorcerer"
-	desc = "A sorcerer of the wizard federation."
+	name = "syndicate sorcerer"
+	desc = "A sorcerer borrowed from the syndicate-allied wizard federation."
 	ai = /ai/advanced
 	class = /class/syndicate_soldier
 

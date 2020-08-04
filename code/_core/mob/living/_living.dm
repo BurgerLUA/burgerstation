@@ -428,7 +428,7 @@
 
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	if(loyalty_tag && desired_loyalty == loyalty_tag)
+	if(src != source && owner != source && loyalty_tag && desired_loyalty == loyalty_tag)
 		return ..()
 
 	if(magnitude > 3)

@@ -30,6 +30,16 @@
 
 	blood_type = null
 
+/mob/living/vehicle/get_examine_details_list()
+
+	. = ..()
+
+	for(var/obj/item/I in equipment)
+		. += div("notice","It has \the [I.name] attached.")
+
+	return .
+
+
 /mob/living/vehicle/on_crush()
 
 	for(var/mob/living/advanced/A in passengers)
@@ -101,6 +111,9 @@
 
 /mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(caller == src)
+		return ..()
+
 	object = object.defer_click_on_object(location,control,params)
 
 	if(is_item(object) && is_living(caller))
@@ -108,7 +121,7 @@
 		if(L.intent != INTENT_HARM)
 			var/obj/item/I = object
 			if(I.flags_tool & FLAG_TOOL_WRENCH)
-				if(length(passengers))
+				if(ai || length(passengers))
 					caller.to_chat(span("warning","You can't remove this while it's in use!"))
 					return TRUE
 				if(!length(equipment))
@@ -123,6 +136,9 @@
 				return TRUE
 
 			if(istype(I,/obj/item/weapon) && !istype(I,/obj/item/weapon/ranged/magic))
+				if(ai || length(passengers))
+					caller.to_chat(span("warning","You can't add this while it's in use!"))
+					return TRUE
 				if(length(equipment) >= 2)
 					caller.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
 					return TRUE
@@ -131,7 +147,7 @@
 
 			return TRUE
 
-	if(is_inventory(object))
+	if(is_inventory(object) )
 		if(!can_enter_vehicle(caller))
 			return TRUE
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/enter_vehicle,caller)
@@ -153,28 +169,28 @@
 	if(is_hud(object))
 		return ..()
 
-	if(!is_advanced(caller))
-		return FALSE
+	if(!params || !length(params))
+		params["right"] = rand(0,1)
+		params["left"] = rand(0,1)
 
-	var/mob/living/advanced/A = caller
-
-	var/click_flags = A.client.get_click_flags(params,TRUE)
-
-	if(click_flags & RIGHT_HAND)
+	if(params["right"])
 		if(length(equipment) >= 1)
 			equipment[1].click_on_object(caller,object,location,control,params)
 		else
-			caller.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
+			caller?.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
 
-	if(click_flags & LEFT_HAND)
+	if(params["left"])
 		if(length(equipment) >= 2)
 			equipment[2].click_on_object(caller,object,location,control,params)
 		else
-			caller.to_chat("\the [src.name] blares, \"No equipment found in slot 2!\"")
+			caller?.to_chat("\the [src.name] blares, \"No equipment found in slot 2!\"")
 
 	return TRUE
 
 /mob/living/vehicle/handle_movement(var/adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
+
+	if(ai)
+		return ..()
 
 	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
 		var/final_movement_delay = get_movement_delay()

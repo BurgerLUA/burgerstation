@@ -10,7 +10,7 @@
 	name = "arrivals shuttle - bluespace"
 	id = "arrivals_shuttle_bluespace_01"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
-	transit_turf = /turf/unsimulated
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
@@ -34,7 +34,7 @@
 	name = "arrivals shuttle - bluespace"
 	id = "arrivals_shuttle_bluespace_02"
 	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
-	transit_turf = /turf/unsimulated
+	transit_turf = /turf/unsimulated/bluespace
 
 /area/transit/arrivals_shuttle_02/station
 	name = "arrivals shuttle - station"

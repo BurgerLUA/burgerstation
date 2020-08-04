@@ -47,7 +47,7 @@
 	desc = "You're fatigued!"
 	id = FATIGUE
 	minimum = 10
-	maximum = 100
+	maximum = 30
 
 /status_effect/fire
 	name = "Fire"

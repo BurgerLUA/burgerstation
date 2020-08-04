@@ -25,9 +25,11 @@
 	if(istype(M,/obj/disposals_container/))
 		return FALSE
 
-	var/obj/disposals_container/disposals_container = new(src)
-	INITIALIZE(disposals_container)
-	GENERATE(disposals_container)
+	var/obj/disposals_container/disposals_container = locate() in src.contents
+	if(!disposals_container)
+		disposals_container = new(src)
+		INITIALIZE(disposals_container)
+		GENERATE(disposals_container)
 
 	M.force_move(disposals_container)
 	M.glide_size = M.step_size / DECISECONDS_TO_TICKS(1)

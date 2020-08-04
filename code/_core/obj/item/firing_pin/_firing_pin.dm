@@ -26,7 +26,7 @@
 
 /obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon)
 
-	if(!is_advanced(caller))
+	if(!is_living(caller))
 		caller.to_chat("The firing pin doesn't detect your IFF signature and refuses to fire!")
 		return FALSE
 
@@ -57,7 +57,7 @@
 
 	var/area/A = get_area(caller)
 	if(A.flags_area & FLAGS_AREA_TUTORIAL)
-		caller.to_chat("The firing pin refuses to fire in this area!")
+		caller.to_chat("\The [src.name] refuses to fire in this area!")
 		return FALSE
 
 	return TRUE

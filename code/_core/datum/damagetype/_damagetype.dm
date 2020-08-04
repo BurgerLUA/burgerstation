@@ -471,6 +471,8 @@
 
 	sleep(CEILING(weapon_attack_delay*0.125,1))
 
+	return TRUE
+
 /damagetype/proc/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0
 

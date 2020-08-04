@@ -74,6 +74,8 @@
 
 	max_level = 100 //Max level for skills and attributes of the mob.
 
+	death_threshold = -50
+
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	var/handcuffed = FALSE

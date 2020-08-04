@@ -17,6 +17,6 @@
 		broadcast_to_clients(span("danger","Vote failed! Defaulting to Island..."))
 		winner = "Island"
 
-	text2file(winner,NEXT_MAP_FILE)
+	rustg_file_write(winner,NEXT_MAP_FILE)
 
 	return TRUE

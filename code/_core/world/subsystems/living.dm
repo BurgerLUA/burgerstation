@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(living)
 			qdel(L)
 			continue
 		INITIALIZE(L)
+		GENERATE(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 

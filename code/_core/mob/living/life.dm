@@ -122,7 +122,7 @@
 	if(dead)
 		return FALSE
 
-	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN)))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN))
 		return FALSE
 
 	if(grabbing_hand && grabbing_hand.owner && get_dir(grabbing_hand.owner,src) == src.dir)
@@ -130,22 +130,23 @@
 
 	return ..()
 
-
+/*
 /mob/living/can_use_controls(object,location,control,params)
 
 	/*
 	if(dead)
 		return FALSE
 
-	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,STUN)))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
 		return FALSE
 	*/
 
 	return ..()
+*/
 
 /mob/living/proc/handle_horizontal()
 
-	var/desired_horizontal = dead || has_status_effect(list(STUN,FATIGUE,SLEEP,CRIT,REST))
+	var/desired_horizontal = dead || has_status_effects(STUN,FATIGUE,SLEEP,CRIT,REST)
 
 	if(desired_horizontal != horizontal)
 		if(desired_horizontal) //KNOCK DOWN

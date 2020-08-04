@@ -1,9 +1,3 @@
-#define FAILED "FAILED"
-#define COMPLETED "COMPLETED"
-#define ACTIVE "ACTIVE"
-#define IMPOSSIBLE "IMPOSSIBLE"
-
-
 /objective/
 	var/name = "Objective Name"
 	var/desc = "Objective Description"

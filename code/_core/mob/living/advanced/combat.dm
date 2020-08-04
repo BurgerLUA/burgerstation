@@ -1,3 +1,16 @@
+
+
+
+/mob/living/advanced/send_pain(var/pain_strength=50)
+
+	var/species/S = all_species[species]
+
+	if(S.flags_species_traits & TRAIT_NO_PAIN)
+		return FALSE
+
+	return ..()
+
+
 /mob/living/advanced/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(driving && !driving.can_attack(victim,weapon,params,damage_type))

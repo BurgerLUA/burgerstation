@@ -15,6 +15,8 @@ var/global/list/possible_hostage_types = list(
 	return "Rescue [english_list(tracked_atoms)] and bring them shipside. Location: [english_list(get_locations())]."
 
 /objective/hostage/setup()
+	if(!length(possible_hostage_spawns))
+		return FALSE
 	var/obj/marker/hostage_spawn/S = pick(possible_hostage_spawns)
 	if(!S)
 		return FALSE
@@ -64,3 +66,4 @@ var/global/list/possible_hostage_types = list(
 	HOOK_ADD("post_move","hostage_post_move",created_hostage,src,.proc/hostage_post_move)
 	HOOK_ADD("Destroy","hostage_Destroy",created_hostage,src,.proc/hostage_Destroy)
 	tracked_atoms += created_hostage
+	return TRUE

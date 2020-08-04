@@ -18,7 +18,7 @@ var/global/list/area/transit/transit_areas = list()
 /area/transit/cargo/bluespace
 	name = "cargo shuttle"
 	id = "cargo_shuttle_bluespace"
-	transit_turf = /turf/unsimulated
+	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 

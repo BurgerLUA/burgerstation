@@ -12,7 +12,7 @@
 		if(messages) to_chat(span("warning","You're too exhausted to resist!"))
 		return FALSE
 
-	if(has_status_effect(list(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN)))
+	if(has_status_effects(PARALYZE,SLEEP,STAGGER,FATIGUE,STUN))
 		if(messages) to_chat(span("warning","You can't resist in this state!"))
 		return FALSE
 
