@@ -48,7 +48,7 @@
 		BLUNT = 30,
 		PIERCE = 30,
 		LASER = 10,
-		MAGIC = -25
+		ARCANE = -25
 	)
 
 
@@ -66,7 +66,7 @@
 		BLUNT = 45,
 		PIERCE = 45,
 		LASER = 25,
-		MAGIC = -50
+		ARCANE = -50
 	)
 
 	slowdown_mul_worn = 1.15
@@ -84,7 +84,7 @@
 		BLUNT = 65,
 		PIERCE = 65,
 		LASER = 25,
-		MAGIC = -75
+		ARCANE = -75
 	)
 
 	slowdown_mul_worn = 1.2
@@ -100,7 +100,7 @@
 		BLUNT = 75,
 		PIERCE = 75,
 		LASER = 50,
-		MAGIC = -75
+		ARCANE = -75
 	)
 
 	slowdown_mul_worn = 1.2

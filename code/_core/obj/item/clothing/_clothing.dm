@@ -18,7 +18,7 @@
 		BLUNT = 0,
 		PIERCE = 0,
 		LASER = 0,
-		MAGIC = 0,
+		ARCANE = 0,
 		HEAT = 0,
 		COLD = 0,
 		BOMB = 0,

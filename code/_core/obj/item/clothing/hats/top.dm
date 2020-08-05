@@ -6,7 +6,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		MAGIC = 50
+		ARCANE = 50
 	)
 
 	size = SIZE_2

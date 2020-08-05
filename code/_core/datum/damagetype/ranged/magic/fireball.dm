@@ -4,7 +4,7 @@
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		HEAT = 10,
-		MAGIC = 20
+		ARCANE = 20
 	)
 
 	attribute_stats = list(
@@ -12,7 +12,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(MAGIC)
+		ATTRIBUTE_INTELLIGENCE = list(ARCANE)
 	)
 
 	skill_stats = list(
@@ -20,7 +20,7 @@
 	)
 
 	skill_damage = list(
-		SKILL_SORCERY = list(MAGIC)
+		SKILL_SORCERY = list(ARCANE)
 	)
 
 /damagetype/ranged/magic/fireball/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

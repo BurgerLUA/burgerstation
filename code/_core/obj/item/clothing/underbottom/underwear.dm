@@ -14,7 +14,7 @@
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
 	defense_rating = list(
-		MAGIC = 15,
+		ARCANE = 15,
 		COLD = 15,
 	)
 
@@ -59,7 +59,7 @@
 	rarity = RARITY_UNCOMMON
 
 	defense_rating = list(
-		MAGIC = 15,
+		ARCANE = 15,
 		HEAT = -25,
 		COLD = 50,
 	)
@@ -75,7 +75,7 @@
 	desc_extended = "A pair of slim underwear."
 
 	defense_rating = list(
-		MAGIC = 25,
+		ARCANE = 25,
 		COLD = 10,
 	)
 
@@ -105,7 +105,7 @@
 		BLADE = -10,
 		BLUNT = -10,
 		PIERCE = -10,
-		MAGIC = 25,
+		ARCANE = 25,
 		COLD = 10,
 	)
 
@@ -120,7 +120,7 @@
 	icon = 'icons/obj/item/clothing/underwear/loincloth.dmi'
 
 	defense_rating = list(
-		MAGIC = 25
+		ARCANE = 25
 	)
 
 

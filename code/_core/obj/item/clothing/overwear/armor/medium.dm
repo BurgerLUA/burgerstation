@@ -22,7 +22,7 @@
 		BLADE = 40,
 		BLUNT = 20,
 		PIERCE = 30,
-		MAGIC = -25
+		ARCANE = -25
 	)
 
 	size = SIZE_4

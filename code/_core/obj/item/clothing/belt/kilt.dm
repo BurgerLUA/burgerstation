@@ -16,7 +16,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		MAGIC = 10
+		ARCANE = 10
 	)
 
 	rarity = RARITY_UNCOMMON

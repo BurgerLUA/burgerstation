@@ -10,7 +10,7 @@ obj/item/clothing/back/wings/angel
 		BLUNT = -50,
 		PIERCE = -50,
 		LASER = 0,
-		MAGIC = 75,
+		ARCANE = 75,
 		HEAT = -25,
 		HOLY = 100,
 		DARK = -100

@@ -19,7 +19,7 @@
 	defense_rating = list(
 		BLUNT = 65,
 		PIERCE = 25,
-		MAGIC = -25
+		ARCANE = -25
 	)
 
 	size = SIZE_3

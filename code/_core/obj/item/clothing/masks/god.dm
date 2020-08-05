@@ -12,7 +12,7 @@
 		BLUNT = 100,
 		PIERCE = 100,
 		LASER = 100,
-		MAGIC = 100,
+		ARCANE = 100,
 		HEAT = 100,
 		COLD = 100,
 		BOMB = 100,

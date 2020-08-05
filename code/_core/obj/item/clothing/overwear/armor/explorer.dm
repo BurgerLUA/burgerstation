@@ -14,7 +14,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 25,
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 50,
 		COLD = 25,
 		BIO = 25,

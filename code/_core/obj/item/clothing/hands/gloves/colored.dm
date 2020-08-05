@@ -14,7 +14,7 @@
 		BLADE = 5,
 		BLUNT = 5,
 		PIERCE = 5,
-		MAGIC = 25,
+		ARCANE = 25,
 		COLD = 25,
 		BIO = 10
 	)
@@ -49,7 +49,7 @@
 		BLUNT = 10,
 		PIERCE = 25,
 		LASER = -10,
-		MAGIC = -25,
+		ARCANE = -25,
 		HEAT = 25,
 		COLD = 25,
 		BOMB = 10,
@@ -91,7 +91,7 @@
 		BLADE = 5,
 		BLUNT = 5,
 		PIERCE = 5,
-		MAGIC = 50,
+		ARCANE = 50,
 		HEAT = 25,
 		COLD = 25,
 		BIO = 10,
@@ -136,7 +136,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = -25,
-		MAGIC = -50,
+		ARCANE = -50,
 		HEAT = 50,
 		COLD = 50,
 		BIO = 10

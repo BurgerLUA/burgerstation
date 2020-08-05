@@ -8,7 +8,7 @@
 		BLUNT = 75,
 		PIERCE = 75,
 		LASER = 75,
-		MAGIC = 75
+		ARCANE = 75
 	)
 
 	size = SIZE_2

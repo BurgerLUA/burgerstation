@@ -35,7 +35,7 @@
 		BLUNT = INFINITY,
 		PIERCE = 100,
 		LASER = 75,
-		MAGIC = 75,
+		ARCANE = 75,
 		HEAT = 100,
 		COLD = -25,
 		BOMB = 25,

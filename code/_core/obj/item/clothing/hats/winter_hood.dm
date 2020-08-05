@@ -10,7 +10,7 @@
 
 	defense_rating = list(
 		LASER = -25,
-		MAGIC = 50,
+		ARCANE = 50,
 		HEAT = -25,
 		COLD = 75
 	)
@@ -39,7 +39,7 @@
 	value = 10
 
 	defense_rating = list(
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = -25,
 		COLD = 50
 	)

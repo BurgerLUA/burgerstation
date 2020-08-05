@@ -13,7 +13,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 10,
 		COLD = 15,
 		HOLY = 100,

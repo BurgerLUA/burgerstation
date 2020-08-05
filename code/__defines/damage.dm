@@ -15,7 +15,7 @@
 #define PIERCE "pierce"
 
 #define LASER "laser"
-#define MAGIC "magic"
+#define ARCANE "magic"
 #define HEAT "heat"
 #define COLD "cold"
 #define BOMB "bomb"

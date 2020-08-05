@@ -5,7 +5,7 @@
 	desc_extended = "A fancy chef hat. For chefing."
 
 	defense_rating = list(
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 25
 	)
 

@@ -11,7 +11,7 @@
 		BLADE = 15,
 		BLUNT = 10,
 		PIERCE = 15,
-		MAGIC = 25,
+		ARCANE = 25,
 		HOLY = -25,
 		DARK = 25
 	)

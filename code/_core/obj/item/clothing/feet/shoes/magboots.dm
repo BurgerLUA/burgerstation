@@ -16,7 +16,7 @@
 		BLADE = 20,
 		BLUNT = 30,
 		PIERCE = 10,
-		MAGIC = -25,
+		ARCANE = -25,
 		HEAT = -20,
 		COLD = 25,
 		FATIGUE = 100

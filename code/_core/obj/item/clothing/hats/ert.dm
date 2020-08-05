@@ -8,7 +8,7 @@
 		BLADE = 10,
 		BLUNT = 20,
 		PIERCE = 10,
-		MAGIC = -25
+		ARCANE = -25
 	)
 
 	size = SIZE_3

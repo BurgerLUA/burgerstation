@@ -5,7 +5,7 @@
 	desc_extended = "It's a hat made out of an innocent beaver. It was a vain sacrifice on it's part, since it's ugly as shit."
 
 	defense_rating = list(
-		MAGIC = 25,
+		ARCANE = 25,
 		COLD = 25
 	)
 
@@ -22,7 +22,7 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		MAGIC = 75,
+		ARCANE = 75,
 		DARK = -25,
 		HOLY = -25
 	)

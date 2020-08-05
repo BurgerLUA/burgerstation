@@ -9,7 +9,7 @@
 		BLUNT = 25,
 		PIERCE = 50,
 		LASER = 25,
-		MAGIC = -25
+		ARCANE = -25
 	)
 
 	size = SIZE_3
@@ -29,7 +29,7 @@
 		BLUNT = 25,
 		PIERCE = 50,
 		LASER = 50,
-		MAGIC = -25,
+		ARCANE = -25,
 		BOMB = 25
 	)
 

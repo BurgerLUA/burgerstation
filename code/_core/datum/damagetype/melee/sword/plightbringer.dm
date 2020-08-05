@@ -53,7 +53,7 @@
 	attribute_damage = list(
 		ATTRIBUTE_STRENGTH = BLADE,
 		ATTRIBUTE_DEXTERITY = BLADE,
-		ATTRIBUTE_INTELLIGENCE = list(HEAT,MAGIC)
+		ATTRIBUTE_INTELLIGENCE = list(HEAT,ARCANE)
 	)
 
 	skill_stats = list(
@@ -63,7 +63,7 @@
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_SORCERY = list(HEAT,MAGIC)
+		SKILL_SORCERY = list(HEAT,ARCANE)
 	)
 
 /damagetype/melee/sword/plightbringer/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

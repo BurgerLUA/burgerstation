@@ -13,7 +13,7 @@
 		BLADE = 15,
 		BLUNT = 10,
 		PIERCE = 15,
-		MAGIC = -15,
+		ARCANE = -15,
 		HEAT = 10
 	)
 
@@ -37,7 +37,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 15,
-		MAGIC = -15,
+		ARCANE = -15,
 		COLD = 15,
 		BOMB = 25
 	)
@@ -61,7 +61,7 @@
 		BLUNT = 10,
 		PIERCE = 15,
 		LASER = -15,
-		MAGIC = -15,
+		ARCANE = -15,
 		COLD = 15
 	)
 

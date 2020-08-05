@@ -18,7 +18,7 @@
 	dyeable = TRUE
 
 	defense_rating = list(
-		MAGIC = 10,
+		ARCANE = 10,
 		COLD = 25,
 		HEAT = -10
 	)

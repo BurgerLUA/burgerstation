@@ -10,7 +10,7 @@
 		BLUNT = 50,
 		PIERCE = 50,
 		LASER = -25,
-		MAGIC = -50,
+		ARCANE = -50,
 		HEAT = -25,
 		COLD = 25
 	)

@@ -19,7 +19,7 @@
 		PIERCE = 50,
 		LASER = 75,
 		HEAT = -25,
-		MAGIC = -75
+		ARCANE = -75
 	)
 
 	size = SIZE_3
@@ -58,7 +58,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 25,
-		MAGIC = -25,
+		ARCANE = -25,
 		HEAT = -25,
 		HOLY = 50,
 		DARK = -100
@@ -76,7 +76,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 50,
-		MAGIC = 25,
+		ARCANE = 25,
 		HOLY = -50,
 		DARK = -50
 	)

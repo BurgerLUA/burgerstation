@@ -14,7 +14,7 @@
 		PIERCE = 10,
 		HEAT = 25,
 		COLD = 25,
-		MAGIC = -10
+		ARCANE = -10
 	)
 
 	value = 100

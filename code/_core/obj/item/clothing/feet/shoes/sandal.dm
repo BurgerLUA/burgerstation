@@ -12,7 +12,7 @@
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	defense_rating = list(
-		MAGIC = 75
+		ARCANE = 75
 	)
 
 	size = SIZE_1

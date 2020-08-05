@@ -6,7 +6,7 @@
 		BLUNT = 0,
 		PIERCE = 25,
 		LASER = 25,
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 0,
 		COLD = 50,
 		BOMB = 0,

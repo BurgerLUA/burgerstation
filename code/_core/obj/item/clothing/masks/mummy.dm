@@ -10,7 +10,7 @@
 		BLADE = 10,
 		PIERCE = 10,
 		LASER = -10,
-		MAGIC = 50,
+		ARCANE = 50,
 		HOLY = -25,
 		DARK = 25
 	)

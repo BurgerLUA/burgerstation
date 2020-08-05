@@ -6,7 +6,7 @@
 	desc_extended = "Not necessairly required to use magic, but wearing this, or any other clothing with high Magic protection will make your spells stronger."
 
 	defense_rating = list(
-		MAGIC = 100,
+		ARCANE = 100,
 	)
 
 	size = SIZE_3

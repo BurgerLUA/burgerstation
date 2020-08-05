@@ -7,7 +7,7 @@
 	rarity = RARITY_MYTHICAL
 
 	defense_rating = list(
-		MAGIC = 25,
+		ARCANE = 25,
 		HOLY = -50,
 		DARK = 100
 	)

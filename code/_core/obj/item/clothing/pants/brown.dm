@@ -11,7 +11,7 @@
 		BLADE = 15,
 		BLUNT = 10,
 		PIERCE = 10,
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 15,
 		COLD = 25
 	)
@@ -32,7 +32,7 @@
 		BLADE = 15,
 		BLUNT = 15,
 		PIERCE = 15,
-		MAGIC = 10,
+		ARCANE = 10,
 		HEAT = 10,
 		COLD = 25
 	)
@@ -56,7 +56,7 @@
 	desc_extended = "A basic piece of cloth worn around the torso."
 
 	defense_rating = list(
-		MAGIC = 25
+		ARCANE = 25
 	)
 
 	size = SIZE_2

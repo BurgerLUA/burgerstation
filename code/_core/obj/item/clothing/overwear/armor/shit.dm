@@ -15,7 +15,7 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = 10,
-		MAGIC = -50
+		ARCANE = -50
 	)
 
 	slowdown_mul_worn = 1.1

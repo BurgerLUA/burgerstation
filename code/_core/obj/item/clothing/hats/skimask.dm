@@ -14,7 +14,7 @@
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
 	defense_rating = list(
-		MAGIC = 25,
+		ARCANE = 25,
 		COLD = 50,
 		BIO = 25
 	)

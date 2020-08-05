@@ -10,7 +10,7 @@
 		BLADE = 15,
 		BLUNT = 15,
 		PIERCE = 15,
-		MAGIC = 10,
+		ARCANE = 10,
 		COLD = 50,
 	)
 

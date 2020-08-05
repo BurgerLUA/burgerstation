@@ -10,7 +10,7 @@
 	value = 120
 
 	defense_rating = list(
-		MAGIC = -25,
+		ARCANE = -25,
 	)
 
 /obj/item/clothing/glasses/medical_hud/advanced
@@ -24,7 +24,7 @@
 	value = 200
 
 	defense_rating = list(
-		MAGIC = -50,
+		ARCANE = -50,
 	)
 
 /obj/item/clothing/glasses/security_hud
@@ -39,7 +39,7 @@
 	value = 160
 
 	defense_rating = list(
-		MAGIC = -25,
+		ARCANE = -25,
 	)
 
 /obj/item/clothing/glasses/security_hud/red

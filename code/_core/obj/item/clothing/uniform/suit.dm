@@ -9,7 +9,7 @@
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
 	defense_rating = list(
-		MAGIC = 50
+		ARCANE = 50
 	)
 
 

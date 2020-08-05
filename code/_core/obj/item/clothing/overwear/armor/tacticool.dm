@@ -14,7 +14,7 @@
 		BLUNT = 30,
 		PIERCE = 50,
 		LASER = 50,
-		MAGIC = -50,
+		ARCANE = -50,
 		BOMB = 25
 	)
 
@@ -38,7 +38,7 @@
 		BLUNT = 30,
 		PIERCE = 30,
 		LASER = 25,
-		MAGIC = -25,
+		ARCANE = -25,
 		BOMB = 25
 	)
 
@@ -63,7 +63,7 @@
 		BLUNT = 75,
 		PIERCE = 50,
 		LASER = 50,
-		MAGIC = -100,
+		ARCANE = -100,
 		HEAT = 50,
 		COLD = 50,
 		BOMB = 50
@@ -90,7 +90,7 @@
 		BLUNT = 75,
 		PIERCE = 50,
 		LASER = 50,
-		MAGIC = -100,
+		ARCANE = -100,
 		HEAT = 50,
 		COLD = 50,
 		BOMB = 50

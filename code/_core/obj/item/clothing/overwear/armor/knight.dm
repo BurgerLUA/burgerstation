@@ -16,7 +16,7 @@
 		PIERCE = 50,
 		LASER = 75,
 		HEAT = -25,
-		MAGIC = -75
+		ARCANE = -75
 	)
 
 	size = SIZE_6
@@ -53,7 +53,7 @@
 		BLUNT = 90,
 		PIERCE = 90,
 		LASER = 50,
-		MAGIC = -125,
+		ARCANE = -125,
 		HEAT = -75,
 		COLD = 25,
 		BOMB = 25
@@ -77,7 +77,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 25,
-		MAGIC = -25,
+		ARCANE = -25,
 		HEAT = -25,
 		HOLY = 50,
 		DARK = -100
@@ -100,7 +100,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 50,
-		MAGIC = 25,
+		ARCANE = 25,
 		HOLY = -50,
 		DARK = -50
 	)
@@ -122,7 +122,7 @@
 		BLUNT = 90,
 		PIERCE = 90,
 		LASER = -25,
-		MAGIC = -100,
+		ARCANE = -100,
 		HEAT = -100,
 		COLD = 15,
 		BOMB = 10,
@@ -146,7 +146,7 @@
 		BLUNT = 25,
 		PIERCE = 10,
 		LASER = -25,
-		MAGIC = 75,
+		ARCANE = 75,
 		HEAT = 25,
 		COLD = 15,
 		HOLY = -25,

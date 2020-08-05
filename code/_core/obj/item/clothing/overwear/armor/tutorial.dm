@@ -9,7 +9,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = -25,
-		MAGIC = 25,
+		ARCANE = 25,
 		HOLY = 25,
 		DARK = 25
 	)

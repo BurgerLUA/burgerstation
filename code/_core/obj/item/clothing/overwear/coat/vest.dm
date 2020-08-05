@@ -18,7 +18,7 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = -25,
-		MAGIC = -25
+		ARCANE = -25
 	)
 
 	protected_limbs = list(BODY_TORSO)
@@ -65,7 +65,7 @@
 		BLUNT = 10,
 		PIERCE = 10,
 		LASER = -10,
-		MAGIC = 10,
+		ARCANE = 10,
 		HEAT = 10,
 		COLD = 25
 	)

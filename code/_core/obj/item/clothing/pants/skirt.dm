@@ -9,7 +9,7 @@
 		BLADE = 5,
 		BLUNT = 5,
 		PIERCE = 5,
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 10,
 		COLD = 5
 	)

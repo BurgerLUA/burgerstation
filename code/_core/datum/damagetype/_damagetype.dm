@@ -43,7 +43,7 @@
 		BLUNT = BRUTE,
 		PIERCE = BRUTE,
 		LASER = BURN,
-		MAGIC = BURN,
+		ARCANE = BURN,
 		HEAT = BURN,
 		COLD = BURN,
 		BOMB = BRUTE,
@@ -156,8 +156,6 @@
 	var/mob/living/L = attacker
 	var/list/new_attack_damage = attack_damage_base.Copy()
 
-	if(debug) LOG_DEBUG("Found an initial base damage list of [length(new_attack_damage)] values.")
-
 	for(var/attribute in attribute_stats)
 		if(!islist(attribute_damage[attribute]))
 			var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01
@@ -168,6 +166,7 @@
 				var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01 * (1/length(attribute_damage[attribute]))
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [attribute].")
+
 
 	for(var/skill in skill_stats)
 		if(!islist(skill_damage[skill]))
@@ -186,8 +185,6 @@
 
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= bonus_damage_multiplier
-
-	if(debug) LOG_DEBUG("Returning a list of [length(new_attack_damage)] values.")
 
 	return new_attack_damage
 
@@ -262,7 +259,7 @@
 			if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
 				if(debug) LOG_DEBUG("Victim's [damage_type] defense after penetration: [victim_defense].")
-			if(old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
+			if(old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 				if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 					damage_to_deal[damage_type] = 0
 					continue
@@ -282,12 +279,12 @@
 				fatigue_damage += fatigue_damage_to_convert
 
 		if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)
-			damage_to_deal[FATIGUE] += FLOOR(fatigue_damage,1)
+			damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
 
 		for(var/damage_type in damage_to_deal)
 			var/damage_amount = damage_to_deal[damage_type]
 			var/real_damage_type = attack_damage_conversion[damage_type]
-			damage_to_deal_main[real_damage_type] += damage_amount
+			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
 
 		do_attack_animation(attacker,victim,weapon,hit_object,critical_hit_multiplier > 1)
 

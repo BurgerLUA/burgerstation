@@ -12,7 +12,7 @@
 		BLADE = 75,
 		BLUNT = 25,
 		PIERCE = 25,
-		MAGIC = 25,
+		ARCANE = 25,
 		HEAT = 50,
 		COLD = 25,
 		DARK = 50,

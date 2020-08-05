@@ -8,7 +8,7 @@
 	protected_limbs = list(BODY_TORSO)
 
 	defense_rating = list(
-		MAGIC = 15
+		ARCANE = 15
 	)
 
 	size = SIZE_1

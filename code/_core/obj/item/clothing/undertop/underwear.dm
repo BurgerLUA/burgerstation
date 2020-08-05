@@ -12,7 +12,7 @@
 	icon = 'icons/obj/item/clothing/underwear/bra.dmi'
 
 	defense_rating = list(
-		MAGIC = 15,
+		ARCANE = 15,
 		COLD = 10
 	)
 
@@ -58,7 +58,7 @@
 	icon = 'icons/obj/item/clothing/underwear/undershirt.dmi'
 
 	defense_rating = list(
-		MAGIC = 15,
+		ARCANE = 15,
 		COLD = 15
 	)
 

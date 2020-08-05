@@ -11,7 +11,7 @@
 	)
 
 	defense_rating = list(
-		MAGIC = 100,
+		ARCANE = 100,
 		COLD = 25,
 		HEAT = 15,
 		HOLY = -75,

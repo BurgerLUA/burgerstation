@@ -20,7 +20,7 @@
 		BLUNT = 25,
 		PIERCE = 25,
 		LASER = 25,
-		MAGIC = -75
+		ARCANE = -75
 	)
 
 	size = SIZE_5

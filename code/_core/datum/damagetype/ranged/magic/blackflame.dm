@@ -4,7 +4,7 @@
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		HEAT = 30,
-		MAGIC = 15,
+		ARCANE = 15,
 		DARK = 40
 	)
 

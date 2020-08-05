@@ -17,7 +17,7 @@
 		BLUNT = 50,
 		PIERCE = 25,
 		LASER = 25,
-		MAGIC = -75,
+		ARCANE = -75,
 		HEAT = 100,
 		COLD = 100,
 		BOMB = 25,

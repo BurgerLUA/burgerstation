@@ -10,7 +10,7 @@
 	rarity = RARITY_RARE
 
 	defense_rating = list(
-		MAGIC = 50,
+		ARCANE = 50,
 		HEAT = 15
 	)
 

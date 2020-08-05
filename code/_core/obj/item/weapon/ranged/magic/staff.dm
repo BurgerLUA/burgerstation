@@ -93,7 +93,7 @@
 /obj/item/weapon/ranged/magic/staff/basic
 
 	name = "Staff of Magic Missile"
-	desc = "MAGIC MISSILE!."
+	desc = "ARCANE MISSILE!."
 	desc_extended = "Point the orb end at the enemy for best result."
 	cost_charge = 100
 	total_charge = 1000

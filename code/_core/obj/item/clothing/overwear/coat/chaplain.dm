@@ -6,7 +6,7 @@
 	desc_extended = "Protects against magic attacks."
 
 	defense_rating = list(
-		MAGIC = 50,
+		ARCANE = 50,
 		DARK = -100,
 		HOLY = 100
 	)

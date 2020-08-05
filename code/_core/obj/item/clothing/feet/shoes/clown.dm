@@ -13,7 +13,7 @@
 
 	defense_rating = list(
 		BLUNT = 25,
-		MAGIC = 50,
+		ARCANE = 50,
 		HOLY = -50,
 		DARK = 75
 	)
