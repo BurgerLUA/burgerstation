@@ -2,7 +2,7 @@
 
 	if(length(O.inventories))
 		for(var/obj/hud/inventory/I in O.inventories)
-			I.remove_all_objects()
+			I.delete_all_objects()
 			I.remove_from_owner()
 
 	if(is_tail(O))
@@ -18,11 +18,10 @@
 
 	O.on_organ_remove(src)
 
-/mob/living/advanced/proc/remove_all_organs()
+/mob/living/advanced/proc/remove_all_organs(var/do_delete=TRUE)
 
 	for(var/obj/item/organ/O in organs)
-		remove_organ(O,TRUE)
-
+		remove_organ(O,do_delete)
 
 /*
 /mob/living/advanced/proc/update_all_organs()

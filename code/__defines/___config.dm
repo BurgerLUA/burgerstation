@@ -1,8 +1,13 @@
 //Loads your character instantly at a marker point.
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
+#define QUICK_VOTE FALSE
+#define SHOW_HOOKS FALSE
+
+#define LOAD_GROUND_MAP TRUE
 #define ENABLE_STOPLAG TRUE
-#define MOVEMENT_DELAY_MOD 0.6 //Lower values means faster.
 #define ENABLE_DAMAGE_NUMBERS TRUE
+
+#define MOVEMENT_DELAY_MOD 0.6 //Lower values means faster.
 
 //Game Options
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.

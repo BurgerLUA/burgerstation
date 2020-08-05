@@ -22,12 +22,14 @@
 		if(!k)
 			continue
 		var/footstep/F = SSfootstep.all_footsteps[k]
+		/*
 		if(F.has_footprints)
 			var/type_to_use = enter ? /obj/effect/footprint/emboss/ : /obj/effect/footprint/emboss/exit
 			var/obj/effect/footprint/emboss/P = new type_to_use(T,src.dir,TRUE,TRUE)
 			P.color = F.footprint_color
 			P.alpha = F.footprint_alpha
 			INITIALIZE(P)
+		*/
 		if(!footstep_counter)
 			var/footstep_volume = 50 * (move_mod-0.5)
 			if(is_sneaking)

@@ -29,6 +29,11 @@
 
 /objective/artifact/proc/artifact_post_move(var/obj/structure/interactive/artifact/H,args)
 
+	world.log << "Post move!"
+
+	world.log << "Completed: [completed]."
+	world.log << "z_level: [H.z]."
+
 	if(!completed && H.z == Z_LEVEL_CENTCOMM)
 		var/area/A = get_area(H)
 		if(istype(A,/area/burgerstation))
@@ -42,6 +47,7 @@
 	return TRUE
 
 /objective/artifact/start()
+	world.log << "Adding post_move to [created_artifact]."
 	HOOK_ADD("post_move","artifact_post_move",created_artifact,src,.proc/artifact_post_move)
 	HOOK_ADD("Destroy","artifact_Destroy",created_artifact,src,.proc/artifact_Destroy)
 	tracked_atoms += created_artifact

@@ -101,7 +101,7 @@
 		kept_items = drop_all_items(src,FALSE,TRUE)
 	else
 		for(var/obj/hud/inventory/I in inventory)
-			I.remove_all_objects()
+			I.delete_all_objects()
 
 	remove_all_organs()
 	remove_all_buttons()

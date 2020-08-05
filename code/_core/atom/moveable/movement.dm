@@ -116,7 +116,6 @@
 	for(thing in light_sources)
 		L = thing
 		L.source_atom.update_light()
-	return TRUE
 
 	HOOK_CALL("post_move")
 	return TRUE
