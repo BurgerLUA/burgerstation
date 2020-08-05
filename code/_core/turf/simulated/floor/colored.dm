@@ -18,6 +18,8 @@
 
 	delay_modifier = 1.2
 
+	material_id = /material/dirt/
+
 /turf/simulated/floor/colored/grass
 	name = "grass"
 	color = "#44683B"
@@ -77,6 +79,8 @@
 
 	delay_modifier = 1.1
 
+	material_id = /material/dirt/
+
 /turf/simulated/floor/colored/sand/oasis
 	name = "sand"
 	color = "#CCBC8A"
@@ -97,12 +101,13 @@
 	real_icon = 'icons/turf/floor/ash.dmi'
 	real_icon_state = "floor"
 
-
 	footstep = /footstep/asteroid
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/soil
 
 	delay_modifier = 1.05
+
+	material_id = /material/dirt/
 
 /turf/simulated/floor/colored/dirt/cave
 	name = "dirt"
@@ -174,6 +179,8 @@
 	delay_modifier = 1.1
 
 	layer = LAYER_FLOOR_LARGE + 0.3
+
+	material_id = /material/dirt/
 
 /turf/simulated/floor/colored/ash/grey
 	name = "ancient ash"

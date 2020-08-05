@@ -47,17 +47,30 @@
 	INITIALIZE(SP)
 	return TRUE
 
-/obj/item/supply_remote/ripley
+/obj/item/supply_remote/drill
+	name = "drop pod remote - Drill Kit"
+	desc_extended = "A special remote designed to drop things into the battlefield. This one contains a large mining drill and two mining braces."
+	stored_object_types = list(
+		/obj/structure/interactive/mining_drill,
+		/obj/structure/interactive/mining_brace,
+		/obj/structure/interactive/mining_brace
+	)
+	value = 500
+
+/obj/item/supply_remote/mech/
+	value = 1000
+
+/obj/item/supply_remote/mech/ripley
 	name = "drop pod remote - Ripley Mining Mech"
 	stored_object_types = list(/mob/living/vehicle/mech/ripley)
 	value = 1000
 
-/obj/item/supply_remote/gygax
+/obj/item/supply_remote/mech/gygax
 	name = "drop pod remote - Gygax Combat Mech"
 	stored_object_types = list(/mob/living/vehicle/mech/gygax)
 	value = 2500
 
-/obj/item/supply_remote/durand
+/obj/item/supply_remote/mech/durand
 	name = "drop pod remote - Durand Combat Mech"
 	stored_object_types = list(/mob/living/vehicle/mech/durand)
 	value = 5000

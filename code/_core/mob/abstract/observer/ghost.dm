@@ -10,10 +10,6 @@
 		/obj/hud/button/teleport_to_player
 	)
 
-	acceleration_mod = 1.5
-	acceleration = 10
-	deceleration = 5
-
 /mob/abstract/observer/ghost/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
 	return ..(text_to_say,should_sanitize,TEXT_GHOST)
 

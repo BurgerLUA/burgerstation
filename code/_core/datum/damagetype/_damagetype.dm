@@ -35,22 +35,7 @@
 	var/draw_weapon = FALSE //This should display the weapon attack animation when it does damage.
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	var/list/attack_damage_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		ION = 0
-	)
+	var/list/attack_damage_base = list()
 
 	//The damage conversion table of the weapon. Useful for when you want blade attacks to deal holy damage or something.
 	var/list/attack_damage_conversion = list(
@@ -71,22 +56,7 @@
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	var/list/attack_damage_penetration = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		MAGIC = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		ION = 0
-	)
+	var/list/attack_damage_penetration = list()
 
 
 	//Skill modifiers from 0 to 100.
@@ -117,6 +87,8 @@
 	var/fatigue_coefficient = 0.25 //What percentage of blocked damage to convert into fatigue damage. 1 means 100%, 0.25 means 25%, ect...
 
 	var/can_be_parried = TRUE //Can this damage be parried?
+
+	var/debug = FALSE
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -184,25 +156,38 @@
 	var/mob/living/L = attacker
 	var/list/new_attack_damage = attack_damage_base.Copy()
 
+	if(debug) LOG_DEBUG("Found an initial base damage list of [length(new_attack_damage)] values.")
+
 	for(var/attribute in attribute_stats)
-		var/class = attribute_stats[attribute]
 		if(!islist(attribute_damage[attribute]))
-			new_attack_damage[attribute_damage[attribute]] += L.get_attribute_level(attribute) * class * 0.01
+			var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01
+			new_attack_damage[attribute_damage[attribute]] += attack_damage
+			if(debug) LOG_DEBUG("Getting [attack_damage] [attribute_damage[attribute]] damage from [attribute].")
 		else
-			for(var/att in attribute_damage[attribute])
-				new_attack_damage[att] += L.get_attribute_level(attribute) * class * 0.01 * (1/length(attribute_damage[attribute]))
+			for(var/damage_type in attribute_damage[attribute])
+				var/attack_damage = L.get_attribute_level(attribute) * attribute_stats[attribute] * 0.01 * (1/length(attribute_damage[attribute]))
+				new_attack_damage[damage_type] += attack_damage
+				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [attribute].")
 
 	for(var/skill in skill_stats)
-		var/class = skill_stats[skill]
 		if(!islist(skill_damage[skill]))
-			new_attack_damage[skill_damage[skill]] += L.get_skill_level(skill) * class * 0.01
+			var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01
+			new_attack_damage[skill_damage[skill]] += attack_damage
+			if(debug) LOG_DEBUG("Getting [attack_damage] [skill_damage[skill]] damage from [skill].")
 		else
-			for(var/ski in skill_damage[skill])
-				new_attack_damage[ski] += L.get_skill_level(skill) * class * 0.01 * (1/length(skill_damage[skill]))
+			for(var/damage_type in skill_damage[skill])
+				var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01 * (1/length(skill_damage[skill]))
+				new_attack_damage[damage_type] += attack_damage
+				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [skill].")
+
+	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*hit_object.health.damage_multiplier*damage_multiplier
+
+	if(debug) LOG_DEBUG("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 
 	for(var/k in new_attack_damage)
-		new_attack_damage[k] *= hit_object.health.damage_multiplier*damage_multiplier
-		new_attack_damage[k] *= RAND_PRECISE(1,1.1)
+		new_attack_damage[k] *= bonus_damage_multiplier
+
+	if(debug) LOG_DEBUG("Returning a list of [length(new_attack_damage)] values.")
 
 	return new_attack_damage
 
@@ -262,24 +247,39 @@
 				object_to_check = A.labeled_organs[O.id]
 		var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check) : list()
 
+		if(debug) LOG_DEBUG("Calculating [length(damage_to_deal)] damage types...")
 		for(var/damage_type in damage_to_deal)
+			if(!damage_type)
+				continue
+			if(debug) LOG_DEBUG("Calculating [damage_type]...")
 			var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
+			if(debug) LOG_DEBUG("Initial [damage_type] damage: [old_damage_amount].")
 			var/victim_defense = defense_rating_victim[damage_type]
+			if(debug) LOG_DEBUG("Inital victim's defense against [damage_type]: [victim_defense].")
 			if(victim_defense >= INFINITY) //Defense is infinite. No point in calculating further armor.
 				damage_to_deal[damage_type] = 0
 				continue
-			if(victim_defense > 0) //Penetrate armor only if it exists.
+			if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
 				victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type])
+				if(debug) LOG_DEBUG("Victim's [damage_type] defense after penetration: [victim_defense].")
 			if(old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == MAGIC || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 				if(defense_rating_attacker[damage_type] == INFINITY) //Don't do any magic damage if we resist magic.
 					damage_to_deal[damage_type] = 0
 					continue
-				damage_to_deal[damage_type] = calculate_damage_with_armor(damage_to_deal[damage_type],-defense_rating_attacker[damage_type])
+				if(victim_defense == INFINITY)
+					continue
+				victim_defense -= defense_rating_attacker[damage_type]
+				if(debug) LOG_DEBUG("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
 			var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
-			damage_blocked += max(0,old_damage_amount - new_damage_amount)
+			if(debug) LOG_DEBUG("Final [damage_type] damage: [new_damage_amount].")
+			var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
+			if(debug) LOG_DEBUG("Blocked [damage_type] damage: [damage_to_block].")
+			damage_blocked += damage_to_block
 			damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 			if(damage_type == BLUNT || damage_type == BLADE || damage_type == PIERCE)
-				fatigue_damage += damage_blocked*src.fatigue_coefficient
+				var/fatigue_damage_to_convert = damage_blocked*src.fatigue_coefficient
+				if(debug) LOG_DEBUG("Converting blocked damage into [fatigue_damage_to_convert] fatigue damage.")
+				fatigue_damage += fatigue_damage_to_convert
 
 		if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)
 			damage_to_deal[FATIGUE] += FLOOR(fatigue_damage,1)
@@ -349,27 +349,35 @@
 			if(is_living(victim) && is_living(attacker) && attacker != victim && total_damage_dealt)
 				var/mob/living/A = attacker
 				var/mob/living/V = victim
+				var/list/experience_gained = list()
 				if(!V.dead && A.is_player_controlled())
 					var/experience_multiplier = victim.get_xp_multiplier()
 					if(critical_hit_multiplier > 1)
 						var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(SKILL_PRECISION,xp_to_give)
+							experience_gained += "[xp_to_give] [SKILL_PRECISION] xp"
 
 					for(var/skill in skill_stats)
 						var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
+							experience_gained += "[xp_to_give] [skill] xp"
 
 					for(var/attribute in attribute_stats)
 						var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 						if(xp_to_give > 0)
 							A.add_attribute_xp(attribute,xp_to_give)
+							experience_gained += "[xp_to_give] [attribute] xp"
 
 					for(var/skill in bonus_experience)
 						var/xp_to_give = CEILING(bonus_experience[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
 						if(xp_to_give > 0)
 							A.add_skill_xp(skill,xp_to_give)
+							experience_gained += "[xp_to_give] [skill] xp"
+				if(length(experience_gained))
+					A.to_chat(span("notice","You gained [english_list(experience_gained)]."),CHAT_TYPE_COMBAT)
+
 
 
 		src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)

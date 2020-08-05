@@ -3,7 +3,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		MAGIC = 10
+		MAGIC = 30
 	)
 
 	attribute_stats = list(
@@ -21,3 +21,5 @@
 	skill_damage = list(
 		SKILL_MAGIC = MAGIC
 	)
+
+	debug = TRUE

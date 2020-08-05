@@ -47,7 +47,7 @@
 		MAGIC = INFINITY,
 		HEAT = -100,
 		COLD = 50,
-		BOMB = -200,
+		BOMB = -500,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
@@ -56,6 +56,29 @@
 		ION = INFINITY
 	)
 
+
+/material/dirt/
+	name = "dirt"
+	color = COLOR_BROWN
+
+	value_per_unit = 1
+
+	armor = list(
+		BLADE = 50,
+		BLUNT = -25,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = INFINITY,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = -500,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
 
 
 /material/rock/

@@ -744,7 +744,7 @@
 			if(trigger_other_bump && L.ai)
 				L.ai.Bump(owner,FALSE)
 
-		if(attack_on_block && obstacle.health)
+		if(attack_on_block && obstacle.health && (frustration_path + frustration_move + frustration_attack) >= frustration_threshold*0.5)
 			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

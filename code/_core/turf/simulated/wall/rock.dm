@@ -80,9 +80,6 @@
 	corner_category = "rock_bedrock"
 
 	material_id = null
-
 	health = null
-
-	health_base = 0
-
+	health_base = null
 	destruction_turf = null
