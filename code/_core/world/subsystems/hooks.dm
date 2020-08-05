@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(hook)
 	name = "Hook Subsystem"
 	desc = "Controls the callback of hooks and whatnot."
-	priority = SS_ORDER_IMPORTANT
+	priority = SS_ORDER_FIRST
 
 //GMOD, anyone? Doesn't need a priority var as people should just add/overwrite the proc it calls.
 //Adds a hook to an event.

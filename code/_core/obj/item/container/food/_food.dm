@@ -17,6 +17,8 @@
 
 	value = 10
 
+	drop_sound = 'sound/items/drop/food.ogg'
+
 /obj/item/container/food/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	.["original_volume"] = original_volume

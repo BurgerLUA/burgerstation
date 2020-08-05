@@ -18,7 +18,7 @@
 
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall)
 
-	if(hit_wall)
+	if(hit_wall || hit_atom)
 		on_destruction(owner,TRUE)
 
 	return ..()
@@ -44,10 +44,11 @@
 	for(var/i=1,i<=5,i++)
 		new /obj/effect/temp/crate_gib/(src.loc,600)
 
+	. = ..()
 
 	qdel(src)
 
-	return TRUE
+	return .
 
 /obj/item/supply_crate/russian
 	loot = /loot/supply_crate/russian

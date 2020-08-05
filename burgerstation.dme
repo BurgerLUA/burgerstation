@@ -802,6 +802,7 @@
 #include "code\_core\obj\item\radio.dm"
 #include "code\_core\obj\item\soapstone.dm"
 #include "code\_core\obj\item\stacks.dm"
+#include "code\_core\obj\item\stripping.dm"
 #include "code\_core\obj\item\supply_crate.dm"
 #include "code\_core\obj\item\value.dm"
 #include "code\_core\obj\item\analyzer\_analyzer.dm"

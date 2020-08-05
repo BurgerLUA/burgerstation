@@ -18,6 +18,16 @@
 	)
 	*/
 
+/health/turf/Initialize()
+
+	if(isturf(owner))
+		var/turf/T = owner
+		if(T.material_id)
+			var/material/M = SSmaterials.all_materials[T.material_id]
+			if(M && M.armor)
+				armor_base = M.armor.Copy()
+
+	return ..()
 
 /health/turf/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
 

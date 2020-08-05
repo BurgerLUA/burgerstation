@@ -49,6 +49,8 @@
 /obj/item/material/sheet/glass
 	material_id = /material/glass
 
+	drop_sound = 'sound/items/drop/glass.ogg'
+
 /obj/item/material/sheet/glass/spawn_50/Generate()
 	item_count_current = 50
 	update_sprite()

@@ -10,5 +10,7 @@
 
 	crafting_id = "wood"
 
+	drop_sound = 'sound/items/drop/wooden.ogg'
+
 /obj/item/material/wood/normal
 	material = /material/wood

@@ -20,6 +20,8 @@
 
 	value = 5
 
+	drop_sound = 'sound/items/drop/bottle.ogg'
+
 /obj/item/container/beaker/get_consume_verb()
 	return "drink"
 

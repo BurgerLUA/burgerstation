@@ -53,6 +53,8 @@
 	var/attachment_stock_offset_x = 0
 	var/attachment_stock_offset_y = 0
 
+	drop_sound = 'sound/items/drop/gun.ogg'
+
 /obj/item/weapon/ranged/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("firing_pin")

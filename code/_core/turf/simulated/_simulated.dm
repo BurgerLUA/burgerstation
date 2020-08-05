@@ -105,6 +105,11 @@ var/global/saved_icons = 0
 		CRASH_SAFE("[get_debug_name()] called on_destruction without having a destruction turf!")
 		return FALSE
 
+	for(var/obj/effect/temp/impact/I in contents)
+		I.alpha = 0
+
+	. = ..()
+
 	pixel_x = 0
 	pixel_y = 0
 
@@ -112,7 +117,7 @@ var/global/saved_icons = 0
 
 	queue_update_turf_edges(src)
 
-	return ..()
+	return .
 
 /turf/simulated/Initialize()
 	var/area/A = loc

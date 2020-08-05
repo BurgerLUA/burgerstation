@@ -14,6 +14,8 @@
 	var/yield = 1 //How much does each harvest yield?
 	var/growth_speed = 5 //How much to add to growth every 10 seconds when the plant is done growing but is making fruit.
 
+	drop_sound = 'sound/items/drop/herb.ogg'
+
 /obj/item/container/food/plant/nitrogen_flower
 	name = "nitrogen flower"
 	icon_state = "nitrogen_flower"

@@ -5,3 +5,5 @@
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 	rarity = RARITY_MYTHICAL
 	blocks_clothing = SLOT_TORSO_A
+
+	drop_sound = 'sound/items/drop/metalboots.ogg'

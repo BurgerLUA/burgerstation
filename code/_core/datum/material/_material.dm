@@ -14,6 +14,52 @@
 	var/weight_per_unit = 0.1
 	var/value_per_unit = 1
 
+	var/list/armor = list( //This is used for constructables, like turfs or machines.
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0,
+		ION = 0
+	)
+
+
+/material/rock/
+	name = "rock"
+	color = COLOR_ROCK
+
+	icon_state_sheet = "glass"
+
+	icon_state_ore = "ore_sand"
+
+	value_per_unit = 1
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 0,
+		PIERCE = 25,
+		LASER = INFINITY,
+		MAGIC = INFINITY,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
+
 /material/glass/
 	name = "glass"
 	color = COLOR_GLASS
@@ -24,16 +70,67 @@
 
 	value_per_unit = 1
 
+	armor = list(
+		BLADE = 25,
+		BLUNT = 0,
+		PIERCE = 25,
+		LASER = INFINITY,
+		MAGIC = INFINITY,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/steel
 	name = "steel"
 	color = COLOR_STEEL
 
 	value_per_unit = 2
 
+	armor = list(
+		BLADE = 75,
+		BLUNT = 75,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = 0,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/aluminum
 	name = "aluminum"
 	color = COLOR_ALUMINUM
 	value_per_unit = 3
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 50,
+		MAGIC = 25,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 50,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
 
 /material/iron
 	name = "iron"
@@ -43,6 +140,24 @@
 
 	value_per_unit = 0.5
 
+	armor = list(
+		BLADE = 25,
+		BLUNT = 75,
+		PIERCE = 25,
+		LASER = 0,
+		MAGIC = 0,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 75,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
+
 /material/phoron
 	name = "phoron"
 	color = COLOR_PHORON
@@ -50,6 +165,23 @@
 	icon_state_ore_deposit = "deposit_phoron"
 
 	value_per_unit = 10
+
+	armor = list(
+		BLADE = 100,
+		BLUNT = 0,
+		PIERCE = 75,
+		LASER = -50,
+		MAGIC = INFINITY,
+		HEAT = -100,
+		COLD = INFINITY,
+		BOMB = -100,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
 
 /material/carbon
 	name = "carbon"
@@ -59,6 +191,23 @@
 
 	value_per_unit = 0.5
 
+	armor = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = -50,
+		MAGIC = 75,
+		HEAT = -100,
+		COLD = 50,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/gold
 	name = "gold"
 	color = COLOR_GOLD
@@ -66,6 +215,23 @@
 	icon_state_ore_deposit = "deposit_gold"
 
 	value_per_unit = 3
+
+	armor = list(
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 75,
+		MAGIC = INFINITY,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
 
 /material/diamond
 	name = "diamond"
@@ -75,6 +241,23 @@
 
 	value_per_unit = 50
 
+	armor = list(
+		BLADE = 200,
+		BLUNT = 200,
+		PIERCE = 200,
+		LASER = 50,
+		MAGIC = 200,
+		HEAT = 200,
+		COLD = 200,
+		BOMB = 200,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/silver
 	name = "silver"
 	color = COLOR_SILVER
@@ -82,6 +265,23 @@
 	icon_state_ore_deposit = "deposit_silver"
 
 	value_per_unit = 30
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 75,
+		MAGIC = 50,
+		HEAT = 25,
+		COLD = 25,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
 
 /material/uranium
 	name = "uranium"
@@ -91,6 +291,23 @@
 
 	value_per_unit = 20
 
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 50,
+		LASER = 25,
+		MAGIC = 25,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 100,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/titanium
 	name = "titanium"
 	color = COLOR_TITANIUM
@@ -98,18 +315,87 @@
 
 	value_per_unit = 30
 
+	armor = list(
+		BLADE = 100,
+		BLUNT = 75,
+		PIERCE = 100,
+		LASER = 100,
+		MAGIC = -25,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 75,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/plasteel
 	name = "plasteel"
 	color = COLOR_PLASTEEL
 
 	value_per_unit = 30
 
+	armor = list(
+		BLADE = 75,
+		BLUNT = 100,
+		PIERCE = 100,
+		LASER = 50,
+		MAGIC = 0,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 100,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
+
 /material/wood
 	name = "wood"
 	color = COLOR_WOOD
 	value_per_unit = 5
 
+	armor = list(
+		BLADE = 0,
+		BLUNT = 50,
+		PIERCE = 25,
+		LASER = -25,
+		MAGIC = 100,
+		HEAT = -75,
+		COLD = 25,
+		BOMB = 25,
+		BIO = 0,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = 0,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
 /material/adamantium_carbon
 	name = "adamantium-carbon"
 	color = COLOR_ADAMANITUM_CARBON
-	value_per_unit = 200
+	value_per_unit = 2000
+
+	armor = list(
+		BLADE = INFINITY,
+		BLUNT = INFINITY,
+		PIERCE = INFINITY,
+		LASER = INFINITY,
+		MAGIC = INFINITY,
+		HEAT = INFINITY,
+		COLD = INFINITY,
+		BOMB = INFINITY,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)

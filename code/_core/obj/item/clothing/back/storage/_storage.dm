@@ -8,3 +8,5 @@ obj/item/clothing/back/storage
 
 	size = 4
 	container_max_size = 3
+
+	drop_sound = 'sound/items/drop/backpack.ogg'

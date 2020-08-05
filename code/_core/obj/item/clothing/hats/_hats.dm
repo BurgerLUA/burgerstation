@@ -5,3 +5,10 @@
 	protected_limbs = list(BODY_HEAD)
 
 	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD
+
+
+/obj/item/clothing/head/hat
+	drop_sound = 'sound/items/drop/hat.ogg'
+
+/obj/item/clothing/head/helmet
+	drop_sound = 'sound/items/drop/helm.ogg'

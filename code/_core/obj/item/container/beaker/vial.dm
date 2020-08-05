@@ -10,6 +10,8 @@
 
 	value = 3
 
+	drop_sound = 'sound/items/drop/glass.ogg'
+
 
 /obj/item/container/beaker/vial/stand
 

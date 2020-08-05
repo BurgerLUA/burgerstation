@@ -23,8 +23,9 @@
 	var/health_states = 0
 
 /obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
 	qdel(src)
-	return TRUE
+	return .
 
 /obj/structure/interactive/blob/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 

@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/coin.dmi'
 	icon_state = "coin"
 
+	drop_sound = 'sound/items/drop/ring.ogg'
+
 /obj/item/coin/antag_token
 	name = "antag token"
 	desc = "Valid or salid?"

@@ -8,6 +8,8 @@
 
 	value = 3
 
+	drop_sound = 'sound/items/drop/flesh.ogg'
+
 /obj/item/slime_core/New(var/desired_loc)
 	generate_name()
 	return ..()

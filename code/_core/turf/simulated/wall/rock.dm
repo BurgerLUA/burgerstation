@@ -11,6 +11,13 @@
 	corner_icons = TRUE
 	corner_category = "rock"
 
+	material_id = /material/rock
+
+	health = /health/turf/
+	health_base = 1000
+
+	destruction_turf = /turf/simulated/floor/cave_dirt/
+
 /turf/simulated/wall/rock/snow
 	real_icon = 'icons/turf/wall/rock_snow.dmi'
 	real_icon_state = "wall"
@@ -56,3 +63,22 @@
 
 	corner_icons = TRUE
 	corner_category = "rock_desert"
+
+/turf/simulated/wall/rock/indestructable
+	name = "bedrock wall"
+
+	real_icon = 'icons/turf/wall/rock_bedrock.dmi'
+	real_icon_state = "wall"
+
+	icon_state = "bedrock"
+
+	corner_icons = TRUE
+	corner_category = "rock_bedrock"
+
+	material_id = null
+
+	health = null
+
+	health_base = 0
+
+	destruction_turf = null

@@ -12,6 +12,8 @@
 
 	value = 1
 
+	drop_sound = 'sound/items/drop/paper.ogg'
+
 /obj/item/paper/click_self(var/mob/caller,location,control,params)
 
 	if(!is_player(caller))

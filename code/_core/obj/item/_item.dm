@@ -65,6 +65,8 @@
 
 	var/crafting_id = null
 
+	var/drop_sound = 'sound/items/drop/accessory.ogg'
+
 	var/list/inventory_sounds = list(
 		'sound/effects/inventory/rustle1.ogg',
 		'sound/effects/inventory/rustle2.ogg',
@@ -120,7 +122,6 @@
 	var/dan_layer_below = LAYER_MOB_NONE
 
 	var/obj/item/clothing/additional_clothing_parent
-
 
 	var/list/block_defense_rating = list()
 
@@ -418,6 +419,9 @@
 	update_lighting_for_owner(old_inventory)
 
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
+
+	if(drop_sound)
+		play(drop_sound,get_turf(src))
 
 	return TRUE
 

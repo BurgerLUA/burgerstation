@@ -14,6 +14,8 @@
 
 	value = 1
 
+	drop_sound = 'sound/items/drop/gascan.ogg'
+
 /*
 /obj/item/material/save_item_data(var/save_inventory = TRUE)
 	. = ..()

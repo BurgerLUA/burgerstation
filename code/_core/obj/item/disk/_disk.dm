@@ -13,6 +13,8 @@
 
 	value = 20
 
+	drop_sound = 'sound/items/drop/card.ogg'
+
 /obj/item/disk/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("data")

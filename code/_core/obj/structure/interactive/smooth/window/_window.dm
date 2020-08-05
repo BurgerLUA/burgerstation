@@ -36,8 +36,9 @@
 /obj/structure/smooth/window/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 	queue_update_smooth_edges(src)
+	. = ..()
 	qdel(src)
-	return TRUE
+	return .
 
 /obj/structure/smooth/window/reinforced
 	name = "aluminum reinforced glass window"

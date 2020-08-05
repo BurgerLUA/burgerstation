@@ -117,7 +117,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	return ..()
 
-
 /client/proc/examine(var/atom/object)
 
 	for(var/v in object.get_examine_list(src.mob))

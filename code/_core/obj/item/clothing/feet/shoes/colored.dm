@@ -35,6 +35,8 @@
 
 	slowdown_mul_worn = 0.95
 
+	drop_sound = 'sound/items/drop/shoes.ogg'
+
 /obj/item/clothing/feet/shoes/colored/left
 	name = "left shoe"
 	icon_state = "inventory_left"

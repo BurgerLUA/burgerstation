@@ -41,12 +41,10 @@
 
 /obj/structure/interactive/wall_ore_deposit/Destroy()
 
-	. = ..()
-
 	if(loc)
 		HOOK_REMOVE("on_destruction","ore_on_destruction",loc)
 
-	return .
+	return ..()
 
 
 /obj/structure/interactive/wall_ore_deposit/proc/mine(var/turf/T,var/mob/caller,var/damage = FALSE)

@@ -8,6 +8,8 @@
 
 	var/active = FALSE
 
+	drop_sound = 'sound/items/drop/device.ogg'
+
 /obj/item/device/proc/on_active()
 	return TRUE
 

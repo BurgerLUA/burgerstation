@@ -13,6 +13,7 @@
 #define COLOR_PURPLE "#994499"
 #define COLOR_CYAN "#449999"
 
+#define COLOR_ROCK "#7A746F"
 
 #define COLOR_RED_DARK "#490000"
 

@@ -1,4 +1,4 @@
-"a" = (/turf/simulated/wall/rock/basalt,/area/lz_001/caves/lava)
+"a" = (/turf/simulated/wall/rock/indestructable,/area/lz_001/caves/lava)
 "b" = (/turf/unsimulated/generation/lava,/area/lz_001/caves/lava)
 
 (1,1,1) = {"

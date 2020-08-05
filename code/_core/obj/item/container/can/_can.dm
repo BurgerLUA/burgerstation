@@ -18,6 +18,8 @@
 
 	value = 1
 
+	drop_sound = 'sound/items/drop/soda.ogg'
+
 /obj/item/container/beaker/can/click_self(var/mob/caller,location,control,params)
 
 	if(open)

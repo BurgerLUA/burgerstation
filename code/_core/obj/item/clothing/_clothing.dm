@@ -26,7 +26,8 @@
 		RAD = 0,
 		HOLY = 0,
 		DARK = 0,
-		FATIGUE = 0
+		FATIGUE = 0,
+		ION = 0
 	)
 	*/
 
@@ -49,6 +50,8 @@
 	var/blocks_clothing = 0x0 //Flags of Clothing slots that are blocked from being equipped when this object is equipped.
 	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
 	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
+
+	drop_sound = 'sound/items/drop/clothing.ogg'
 
 /obj/item/clothing/proc/get_defense_rating()
 	return defense_rating.Copy()

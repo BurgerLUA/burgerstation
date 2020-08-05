@@ -12,3 +12,5 @@
 	attack_delay_max = 20
 
 	value = 80
+
+	drop_sound = 'sound/items/drop/axe.ogg'
