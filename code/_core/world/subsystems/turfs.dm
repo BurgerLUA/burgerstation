@@ -56,6 +56,7 @@ SUBSYSTEM_DEF(turfs)
 	return ..()
 
 /subsystem/turfs/on_life()
+
 	for(var/turf/T in queued_edges)
 		CHECK_TICK(75,FPS_SERVER*3)
 		T.update_sprite()

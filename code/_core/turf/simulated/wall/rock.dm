@@ -14,9 +14,13 @@
 	material_id = /material/rock
 
 	health = /health/turf/
-	health_base = 1000
+	health_base = 500
 
 	destruction_turf = /turf/simulated/floor/cave_dirt/
+
+/turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
+	CREATE(/obj/structure/scenery/rocks,src)
+	return ..()
 
 /turf/simulated/wall/rock/snow
 	real_icon = 'icons/turf/wall/rock_snow.dmi'

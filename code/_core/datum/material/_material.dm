@@ -32,25 +32,47 @@
 	)
 
 
+
+/material/grass/
+	name = "grass"
+	color = COLOR_GREEN
+
+	value_per_unit = 1
+
+	armor = list(
+		BLADE = -50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = -25,
+		MAGIC = INFINITY,
+		HEAT = -100,
+		COLD = 50,
+		BOMB = -200,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY
+	)
+
+
+
 /material/rock/
 	name = "rock"
 	color = COLOR_ROCK
-
-	icon_state_sheet = "glass"
-
-	icon_state_ore = "ore_sand"
 
 	value_per_unit = 1
 
 	armor = list(
 		BLADE = 25,
-		BLUNT = 0,
-		PIERCE = 25,
-		LASER = INFINITY,
+		BLUNT = -25,
+		PIERCE = -25,
+		LASER = -50, //Lasers chip away at rocks pretty easy.
 		MAGIC = INFINITY,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
+		HEAT = -25,
+		COLD = 25,
+		BOMB = -500, //Explosions clear rocks pretty easy.
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,

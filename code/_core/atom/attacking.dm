@@ -14,10 +14,7 @@
 		health.update_health(damage_amount,attacker)
 
 	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0)
-		if(isturf(src))
-			new/obj/effect/temp/damage_number(src,null,damage_amount)
-		else if(isturf(src.loc))
-			new/obj/effect/temp/damage_number(get_turf(src),null,damage_amount)
+		if(isturf(src.loc)) new/obj/effect/temp/damage_number(src.loc,null,damage_amount)
 
 	return TRUE
 

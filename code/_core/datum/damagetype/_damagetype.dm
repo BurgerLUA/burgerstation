@@ -174,18 +174,6 @@
 	return TRUE
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
-
-	/*
-	var/best_damage_type = null
-	var/best_damage_type_amount = 0
-
-	for(var/damage_type in damage_to_deal)
-		var/damage_amount = damage_to_deal[damage_type]
-		if(!best_damage_type || damage_amount > best_damage_type_amount)
-			best_damage_type = damage_type
-			best_damage_type_amount = damage_amount
-	*/
-
 	return crit_multiplier
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)

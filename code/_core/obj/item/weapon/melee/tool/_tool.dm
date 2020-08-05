@@ -132,7 +132,7 @@
 /obj/item/weapon/melee/tool/pickaxe
 	name = "steel pickaxe"
 	desc = "MINIIIIIING DIAAAAAMOOOOOOONDS."
-	desc_extended = "An extremely outdated tool for digging through hard rock."
+	desc_extended = "An extremely outdated tool for digging through hard rock. Extremely effective, however, and always dose a guaranteed x4 critical hit multiplier when attacking turfs."
 	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe_steel.dmi'
 
 	damage_type = /damagetype/melee/club/pickaxe/
@@ -153,7 +153,7 @@
 	desc_extended = "Shooting a rocket at your feet doesn't make this deal more damage, contrary to popular belief."
 	icon = 'icons/obj/item/weapons/melee/clubs/shovel.dmi'
 
-	damage_type = /damagetype/melee/club/pickaxe/
+	damage_type = /damagetype/melee/club/shovel
 
 	flags_tool = FLAG_TOOL_SHOVEL
 

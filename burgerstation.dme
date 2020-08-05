@@ -300,6 +300,7 @@
 #include "code\_core\datum\damagetype\melee\club\null_staff.dm"
 #include "code\_core\datum\damagetype\melee\club\pickaxe.dm"
 #include "code\_core\datum\damagetype\melee\club\shield.dm"
+#include "code\_core\datum\damagetype\melee\club\shovel.dm"
 #include "code\_core\datum\damagetype\melee\club\stunbaton.dm"
 #include "code\_core\datum\damagetype\melee\club\torch.dm"
 #include "code\_core\datum\damagetype\melee\spear\spear.dm"

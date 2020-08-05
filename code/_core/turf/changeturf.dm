@@ -33,6 +33,7 @@
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
+
 	if(force_edges_update)
 		update_edges()
 	else

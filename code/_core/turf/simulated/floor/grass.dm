@@ -1,5 +1,5 @@
 /turf/simulated/floor/grass/
-	name = "grass"
+	name = " dense grass"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "grass_new"
@@ -10,10 +10,18 @@
 
 	footstep = /footstep/grass
 
-/turf/simulated/floor/grass/jungle
-	name = "jungle grass"
-	color = "#969696"
+	destruction_turf = /turf/simulated/floor/colored/grass
 
+	layer = LAYER_FLOOR_LARGE + 0.2
+
+	corner_category = "dense_grass"
+
+/turf/simulated/floor/grass/jungle
+	name = "dense jungle grass"
+	color = "#969696"
+	destruction_turf = /turf/simulated/floor/colored/grass/jungle
+
+/*
 /turf/simulated/floor/grass/smooth_turfs()
 
 	var/list/smooth_code = get_smooth_code()
@@ -33,3 +41,4 @@
 	layer = initial(layer) + 0.1
 
 	return TRUE
+*/

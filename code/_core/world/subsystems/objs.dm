@@ -59,9 +59,10 @@ SUBSYSTEM_DEF(obj)
 
 	return TRUE
 
-/proc/queue_update_smooth_edges(var/obj/structure/smooth/S)
+/proc/queue_update_smooth_edges(var/obj/structure/smooth/S,var/include_self=TRUE)
 
-	SSobj.queued_smooth |= S
+	if(include_self)
+		SSobj.queued_smooth |= S
 
 	for(var/direction in DIRECTIONS_ALL)
 		var/turf/T = get_step(S,direction)

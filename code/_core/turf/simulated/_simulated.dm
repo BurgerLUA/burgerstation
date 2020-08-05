@@ -90,6 +90,7 @@ var/global/saved_icons = 0
 	. += div("notice","The slippery percentage is [get_slip_strength()*100]%.")
 	return .
 
+/*
 /turf/simulated/New(var/atom/desired_loc)
 
 	if(real_icon)
@@ -98,6 +99,7 @@ var/global/saved_icons = 0
 		icon_state = real_icon_state
 
 	return ..()
+*/
 
 /turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
 
@@ -113,9 +115,7 @@ var/global/saved_icons = 0
 	pixel_x = 0
 	pixel_y = 0
 
-	change_turf(destruction_turf,)
-
-	queue_update_turf_edges(src)
+	change_turf(destruction_turf)
 
 	return .
 
@@ -195,6 +195,15 @@ var/global/saved_icons = 0
 	return list(ne,nw,se,sw)
 
 
+/turf/simulated/update_sprite()
+
+	if(real_icon)
+		icon = real_icon
+	if(real_icon_state)
+		icon_state = real_icon_state
+
+	return ..()
+
 /turf/simulated/proc/smooth_turfs()
 
 	var/list/smooth_code = get_smooth_code()
@@ -242,6 +251,8 @@ var/global/saved_icons = 0
 		return ..()
 
 	smooth_turfs()
+
+	return TRUE
 
 /turf/simulated/update_overlays()
 

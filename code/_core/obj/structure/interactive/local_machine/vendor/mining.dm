@@ -20,6 +20,7 @@
 		/obj/item/storage/bags/mining,
 		/obj/item/crafting/smelter,
 		/obj/item/weapon/melee/tool/pickaxe,
+		/obj/item/weapon/melee/tool/shovel,
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/wrench
 	)

@@ -32,6 +32,8 @@
 
 	delay_modifier = 1.05
 
+	material_id = /material/grass/
+
 /*
 /turf/simulated/floor/colored/grass/New(loc)
 	var/desired_lightness = 104
@@ -46,6 +48,8 @@
 	color = "#42512B"
 	layer = LAYER_FLOOR_LARGE + 0.1
 	corner_category = "jungle_grass"
+
+	destruction_turf = /turf/simulated/floor/colored/dirt/jungle
 
 /turf/simulated/floor/colored/grass/mint
 	name = "mint grass"
@@ -87,7 +91,7 @@
 /turf/simulated/floor/colored/dirt
 	name = "dirt"
 	color = "#5B4128"
-	layer = LAYER_FLOOR_LARGE + 0.01
+	layer = LAYER_FLOOR_LARGE + 0.02
 	corner_category = "dirt_soft"
 
 	real_icon = 'icons/turf/floor/ash.dmi'
@@ -122,7 +126,7 @@
 	color = "#3D2414"
 	desired_light_color = "#3D2414"
 	corner_category = "soil"
-	layer = LAYER_FLOOR_LARGE + 0.02
+	layer = LAYER_FLOOR_LARGE + 0.01
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/cave
 
