@@ -420,7 +420,7 @@
 
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 
-	if(drop_sound)
+	if(drop_sound && isturf(loc) && !qdeleting)
 		play(drop_sound,get_turf(src))
 
 	return TRUE
