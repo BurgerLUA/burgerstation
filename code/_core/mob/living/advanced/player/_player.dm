@@ -26,7 +26,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/list/attack_logs = list()
 
-	var/currency = 1000
+	var/currency = 3000
 
 	var/logout_time = 0
 

@@ -19,7 +19,7 @@
 /datum/proc/Generate() //Generate the atom, giving it stuff if needed.
 	return TRUE
 
-/datum/proc/is_safe_to_delete()
+/datum/proc/is_safe_to_delete(var/check_loc = FALSE)
 	return TRUE
 
 /datum/Destroy()

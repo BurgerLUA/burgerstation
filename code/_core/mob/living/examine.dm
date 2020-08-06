@@ -5,7 +5,7 @@ mob/living/get_examine_list(var/mob/examiner)
 
 	if(dead)
 		if(client)
-			. += div("warning","They are dead and lifeless...")
+			. += div("danger","They are dead...")
 		else
 			. += div("warning","They are dead and lifeless, and their soul has departed...")
 

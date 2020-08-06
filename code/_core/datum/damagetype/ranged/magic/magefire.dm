@@ -22,3 +22,7 @@
 	skill_damage = list(
 		SKILL_SORCERY = list(HEAT,ARCANE)
 	)
+
+	bonus_experience = list(
+		SKILL_SORCERY = 50
+	)

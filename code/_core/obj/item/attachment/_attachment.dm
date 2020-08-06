@@ -33,7 +33,7 @@
 	desc_extended = "A supermagnetic barrel charger that uses the power of MAGNETS to launch bullets faster than what could normally occur with gunpowder. Increases damage at the cost of reduced accuracy, increased recoil, and decreased firerate for safety reasons."
 	icon_state = "barrel_charger"
 	attachment_damage_mod = 1.25
-	attachment_accuracy_mod = 1.25
+	attachment_heat_mul = 1.25
 	attachment_recoil_mod = 1.5
 	attachment_delay_mod = 1.1
 	value = 1000
@@ -45,6 +45,7 @@
 	icon_state = "laser_charger"
 	attachment_damage_mod = 1.5
 	attachment_recoil_mod = 2
+	attachment_heat_mul = 2
 	attachment_delay_mod = 2
 	value = 1200
 
@@ -65,7 +66,7 @@
 	desc = "Extendong."
 	desc_extended = "A silly barrel attachment that increases the barrel length of a gun. Better for accuracy, but poor for damage and recoil."
 	icon_state = "extended_barrel"
-	attachment_accuracy_mod = 0.9
+	attachment_accuracy_mod = 0.5
 	attachment_recoil_mod = 1.1
 	attachment_damage_mod = 0.95
 	value = 100
@@ -76,6 +77,7 @@
 	desc_extended = "A special muzzle attachment that redirects gas upwards and sideways to reduce the vertical and horizontal recoil of the weapon."
 	icon_state = "recoil_compensator"
 	attachment_recoil_mod = 0.5
+	attachment_heat_mul = 0.75
 	value = 300
 
 /obj/item/attachment/sight
@@ -95,7 +97,7 @@
 	desc_extended = "A high power laser sight used for increasing the precision of the gun. Does what it says; increases precision and accuracy."
 	icon_state = "laser_sight"
 	attachment_inaccuracy_mod = 0.75
-	attachment_accuracy_mod = 0.85
+	attachment_heat_mul = 0.90
 	value = 300
 
 /obj/item/attachment/sight/scope
@@ -103,8 +105,10 @@
 	desc = "What's wrong with ironsights?"
 	desc_extended = "A bulky rifle scope that increases the zoom range of the weapon. The weight and size increases recoil as a penalty."
 	icon_state = "x2_scope"
-	attachment_recoil_mod = 1.1
+	attachment_inaccuracy_mod = 0.75
+	attachment_accuracy_mod = 0.75
 	attachment_zoom_mul = 2
+	attachment_heat_mul = 1.25
 	value = 400
 
 /obj/item/attachment/sight/scope/large
@@ -112,8 +116,10 @@
 	desc = "What's wrong with ironsights?"
 	desc_extended = "A bulky sniper scope that increases the zoom range of the weapon. The weight and size increases recoil as a penalty."
 	icon_state = "x4_scope"
-	attachment_recoil_mod = 1.2
+	attachment_inaccuracy_mod = 0.5
+	attachment_accuracy_mod = 0.5
 	attachment_zoom_mul = 4
+	attachment_heat_mul = 1.5
 	value = 800
 
 /obj/item/attachment/sight/quickfire_adapter
@@ -122,6 +128,7 @@
 	desc_extended = "A complex weapon attachment that increases the fire rate of the gun at the cost of accuracy."
 	icon_state = "quickfire_adapter"
 	attachment_accuracy_mod = 1.1
+	attachment_heat_mul = 1.1
 	attachment_delay_mod = 0.75
 	value = 800
 
@@ -134,6 +141,7 @@
 	desc_extended = "A simple underbarrel vertical grip designed to reduce recoil and increase accuracy."
 	icon_state = "vertical_grip"
 	attachment_accuracy_mod = 0.85
+	attachment_heat_mul = 0.75
 	attachment_recoil_mod = 0.75
 	value = 150
 

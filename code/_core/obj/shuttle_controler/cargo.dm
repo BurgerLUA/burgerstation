@@ -19,7 +19,7 @@
 		for(var/atom/movable/O in A.contents)
 			if(!isobj(O) && !ismob(O))
 				continue
-			if(!O.is_safe_to_delete())
+			if(!O.is_safe_to_delete(check_loc = FALSE))
 				continue
 			if(is_living(O))
 				var/mob/living/L = O

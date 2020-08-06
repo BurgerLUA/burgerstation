@@ -3,6 +3,7 @@
 	var/desc = "Objective Description"
 	var/atom/list/tracked_atoms = list()
 	var/completion_state = ACTIVE
+	var/reward = 0 //Credit reward.
 
 /objective/New()
 
@@ -15,6 +16,20 @@
 	return TRUE
 
 /objective/proc/start()
+	return TRUE
+
+/objective/proc/on_completion()
+
+	if(reward)
+		for(var/mob/living/advanced/player/P in all_players)
+			if(P.loyalty_tag != "NanoTrasen")
+				continue
+			var/increased_currency = P.adjust_currency(reward)
+			P.to_chat(span("notice","You've been given [increased_currency] credits for completing [name]."))
+
+		reward = 0
+
+
 	return TRUE
 
 /objective/proc/check_completion()
@@ -57,6 +72,7 @@
 
 	if(. && update_gamemode)
 		G.next_objective_update = world.time + 50
+		if(completion_state == COMPLETED) on_completion()
 
 	return .
 

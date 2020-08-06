@@ -436,7 +436,7 @@
 		play(pick(miss_sounds),get_turf(victim))
 		create_alert(VIEW_RANGE,victim,attacker,ALERT_LEVEL_NOISE)
 
-/damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit)
+/damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/was_critical_hit = FALSE)
 
 	var/caller_attack_delay = attacker.attack_next - world.time
 	var/weapon_attack_delay = weapon ? weapon.attack_next - world.time : attacker ? caller_attack_delay : ATTACK_ANIMATION_LENGTH * 2
@@ -462,7 +462,9 @@
 		else
 			animate(transform = matrix(), time = FLOOR(caller_attack_delay*0.9,1), flags = ANIMATION_LINEAR_TRANSFORM)
 
-	sleep(CEILING(weapon_attack_delay*0.125,1))
+	var/sleepy_time = clamp(CEILING(weapon_attack_delay*0.125,1),1,30)
+
+	sleep(sleepy_time)
 
 	return TRUE
 

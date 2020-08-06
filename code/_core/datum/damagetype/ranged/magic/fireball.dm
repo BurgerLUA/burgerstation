@@ -23,6 +23,10 @@
 		SKILL_SORCERY = list(ARCANE)
 	)
 
+	bonus_experience = list(
+		SKILL_SORCERY = 50
+	)
+
 /damagetype/ranged/magic/fireball/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim

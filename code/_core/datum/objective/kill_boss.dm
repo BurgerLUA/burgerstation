@@ -15,7 +15,12 @@ var/list/possible_boss_targets
 	return "Kill [english_list(tracked_atoms)]. Location: [english_list(get_locations())]."
 
 /objective/kill_boss/get_valid_targets()
-	return possible_boss_targets
+	. = list()
+	for(var/mob/living/L in possible_boss_targets)
+		if(L.dead)
+			continue
+		. += L
+	return .
 
 /objective/kill_boss/start()
 	var/mob/living/L = get_random_target()

@@ -218,9 +218,12 @@
 /atom/proc/is_player_controlled()
 	return FALSE
 
-/atom/is_safe_to_delete()
+/atom/is_safe_to_delete(var/check_loc = TRUE)
 
 	if(is_player_controlled())
+		return FALSE
+
+	if(check_loc && loc && !isturf(loc))
 		return FALSE
 
 	for(var/atom/A in contents)
