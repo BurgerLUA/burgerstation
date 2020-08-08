@@ -305,6 +305,16 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 
 	return .
 
+obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
+
+	if(length(shoot_sounds_to_use))
+		play(pick(shoot_sounds_to_use),src)
+		if(shoot_alert_to_use)
+			create_alert(VIEW_RANGE,src,caller,shoot_alert_to_use)
+		return TRUE
+
+	return FALSE
+
 obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
 
 	if(!object)
@@ -392,10 +402,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/mob/living/L = caller
 			loyalty_tag = L.loyalty_tag
 
-		if(length(shoot_sounds))
-			play(pick(shoot_sounds_to_use),src)
-			if(shoot_alert_to_use)
-				create_alert(VIEW_RANGE,src,caller,shoot_alert_to_use)
+		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
 
 		if(!params || !length(params))
 			params = list()

@@ -6,6 +6,7 @@
 	screen_loc = "LEFT+2,BOTTOM+1"
 	item_slot = SLOT_HAND_LEFT
 	worn_slots = 1
+	held_slots = 0
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 
@@ -20,6 +21,7 @@
 	screen_loc = "LEFT,BOTTOM+1"
 	item_slot = SLOT_HAND_RIGHT
 	worn_slots = 1
+	held_slots = 0
 
 	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
 

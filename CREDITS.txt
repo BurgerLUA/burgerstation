@@ -1,14 +1,23 @@
-UI Sounds obtained from: http://raisedbeaches.com/octave/
+PATREONS
+	Sancronis
+	Kevvy-D
 
-Sprites taken from AuroraStation, Baystation, /tg/station, Citadel Station.
 
-Lighting taking from EuropaStation.
 
-Gravel footsteps taken from
-https://www.fesliyanstudios.com/royalty-free-sound-effects-download/footsteps-on-gravel-131
 
-Sand footsteps taken from
-https://freesound.org/people/Dymewiz/sounds/114390/
 
-Cursed as Love by XTaKeRuX
-https://freemusicarchive.org/music/XTaKeRuX/2019073141810785/Cursed_As_Love__1097
+ADDITIONAL CREDITS
+	UI Sounds obtained from: http://raisedbeaches.com/octave/
+
+	Sprites taken from AuroraStation, Baystation, /tg/station, Citadel Station.
+
+	Lighting taking from EuropaStation.
+
+	Gravel footsteps taken from
+	https://www.fesliyanstudios.com/royalty-free-sound-effects-download/footsteps-on-gravel-131
+
+	Sand footsteps taken from
+	https://freesound.org/people/Dymewiz/sounds/114390/
+
+	Cursed as Love by XTaKeRuX
+	https://freemusicarchive.org/music/XTaKeRuX/2019073141810785/Cursed_As_Love__1097

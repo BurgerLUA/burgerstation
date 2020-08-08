@@ -7,6 +7,8 @@
 
 	stored_bullets = null
 
+	var/empty_warning_percent = 0.2 //0-1, as a percentage
+
 /obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
@@ -128,3 +130,20 @@
 			return TRUE
 
 	return FALSE
+
+
+/obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
+
+	. = ..()
+
+	if(. && empty_warning_percent > 0 && length(empty_sounds))
+		var/sound_strength = 1
+
+		if(stored_magazine)
+			var/capacity = length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max
+			sound_strength = 1 - clamp(capacity/empty_warning_percent,0,1)
+
+		if(sound_strength > 0)
+			play('sound/effects/gun_empty_sound.ogg',caller, pitch = 1 + sound_strength*0.5, volume = 75 * sound_strength)
+
+	return .
