@@ -144,6 +144,6 @@
 			sound_strength = 1 - clamp(capacity/empty_warning_percent,0,1)
 
 		if(sound_strength > 0)
-			play('sound/effects/gun_empty_sound.ogg',caller, pitch = 1 + sound_strength*0.5, volume = 75 * sound_strength)
+			play('sound/effects/gun_empty_sound.ogg',caller, pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength)
 
 	return .

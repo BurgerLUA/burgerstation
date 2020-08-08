@@ -7,6 +7,8 @@
 
 	var/time_to_end //Set automatically.
 
+	var/weighted_mode = FALSE //Set to true if votes are made based on weight (random) rather than first past the post.
+
 	//New is called when the vote is created.
 	//Destroy is called when the vote is destroyed.
 
@@ -32,6 +34,7 @@
 		if(!C)
 			continue
 		C.to_chat(div("vote","A new vote has been started. Voting will end in [time_limit] seconds."))
+		if(weighted_mode) C.to_chat(div("vote","Note that the vote is weighted, meaning that an option is randomly chosen, with the probability proportional to voters."))
 		C.to_chat(div("vote","<u>[name]</u>"))
 		for(var/i=1,i<=length(options),i++)
 			var/option = options[i]
@@ -71,23 +74,41 @@
 
 	var/winner = null
 	var/winner_votes = -1
-
 	var/total_votes = 0
 
-	for(var/option in results)
-		var/list/voters = results[option]
-		var/vote_count = length(voters)
-		if(vote_count > winner_votes)
-			winner = option
-			winner_votes = vote_count
-		message_to_send += div("vote","[option]: [vote_count]")
-		total_votes += vote_count
+	if(weighted_mode)
+		var/list/results_list = list()
+		for(var/option in results)
+			var/list/voters = results[option]
+			var/vote_count = length(voters)
+			message_to_send += div("vote","[option]: [vote_count]")
+			results_list[option] = vote_count
+			total_votes += vote_count
+		if(length(results_list))
+			winner = pickweight(results_list)
+			winner_votes = results_list[winner]
+		else
+			winner = pick(options)
+			winner_votes = 0
+	else
+		for(var/option in results)
+			var/list/voters = results[option]
+			var/vote_count = length(voters)
+			if(vote_count > winner_votes)
+				winner = option
+				winner_votes = vote_count
+			message_to_send += div("vote","[option]: [vote_count]")
+			total_votes += vote_count
 
 	if(!total_votes)
-		message_to_send += div("vote","Defaulting to first option as there were no votes...")
-		message_to_send += div("vote","Winner: [winner] (0%).")
+		winner = pick(options)
+		message_to_send += div("vote","Defaulting to random option as there were no votes...")
+		message_to_send += div("vote","Winner: [winner].")
 	else
-		message_to_send += div("vote","Winner: [winner] ([FLOOR(100 * (winner_votes/total_votes),1)]%)")
+		if(weighted_mode)
+			message_to_send += div("vote","Winner (Weighted random mode): [winner] ([FLOOR(100 * (winner_votes/total_votes),1)]%)")
+		else
+			message_to_send += div("vote","Winner: [winner] ([FLOOR(100 * (winner_votes/total_votes),1)]%)")
 
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]

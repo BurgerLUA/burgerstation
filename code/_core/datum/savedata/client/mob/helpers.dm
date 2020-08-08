@@ -79,7 +79,7 @@
 
 	return TRUE
 
-/savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/force=FALSE)
+/savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
 	if(!A)
 		usr?.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 1000.</h2>"))
@@ -99,9 +99,12 @@
 		usr?.to_chat(span("danger","You cannot save this character!"))
 		return FALSE
 
-	var/list/loaded_data = A.get_mob_data(save_inventory,force)
+	var/list/loaded_data = A.get_mob_data(save_inventory,force,died)
 	if(write_json_data_to_id(loaded_data["id"],loaded_data))
-		A.to_chat(span("notice","Sucessfully saved character [A.name]."))
+		if(died)
+			A.to_chat(span("notice","Your mind and body was backed up in the NanoTrasen cloning network..."))
+		else
+			A.to_chat(span("notice","Sucessfully saved character [A.name]."))
 	else
 		A.to_chat(span("danger","<h2>Save failed. Please contact the server owner with error code: 99.</h2>"))
 

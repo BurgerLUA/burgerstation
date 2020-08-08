@@ -46,3 +46,9 @@
 	desc = "An implant that gives you COMMUNISM."
 	desc_extended = "A highly illegal Revolutionary Implant specifically designed to override and replace any other NanoTrasen Loyalty Implants. This implant prevents the user from doing harm to those who also have the same freedom implant model, and vice versa."
 	loyalty_tag = "Revolutionary"
+
+/obj/item/organ/internal/implant/head/loyalty/deathsquad
+	name = "deathsquad implant"
+	desc = "Do you swear loyalty? No? Well that doesn't matter."
+	desc_extended = "A state of the art NanoTrasen Loyalty Implant Tracker Deathsquad Variant, or NT-LIT-D, as the cool kids call it. This implant prevents the user from doing most forms of physical harm to those who also have the same loyalty implant model, and vice versa. Note that technology isn't advanced enough to stop other sources of harm, but NanoTrasen doesn't want you to know about that."
+	loyalty_tag = "Deathsquad"

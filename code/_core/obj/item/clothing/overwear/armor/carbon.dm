@@ -9,19 +9,22 @@
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 25,
-		ARCANE = -25,
-		BOMB = 25
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 100,
+		ARCANE = -75,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 75,
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_6
 
-
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
 
-	value = 400
+	value = 1000
 
 	dyeable = TRUE
 
@@ -36,11 +39,15 @@
 	slowdown_mul_worn = 1.2
 
 /obj/item/clothing/overwear/armor/carbon/nanotrasen
-
-	dyeable = TRUE
-
 	polymorphs = list(
 		"armor" = COLOR_NANOTRASEN,
 		"detail" = COLOR_GOLD,
+		"under" = "#FFFFFF"
+	)
+
+/obj/item/clothing/overwear/armor/carbon/deathsquad
+	polymorphs = list(
+		"armor" = COLOR_BLACK,
+		"detail" = COLOR_CRIMSON,
 		"under" = "#FFFFFF"
 	)

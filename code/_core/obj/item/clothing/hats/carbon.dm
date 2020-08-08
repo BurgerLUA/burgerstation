@@ -1,22 +1,26 @@
 /obj/item/clothing/head/helmet/carbon
-	name = "heavy protective helmet"
+	name = "space military helmet"
 	icon = 'icons/obj/item/clothing/hats/carbon.dmi'
-	desc = "RUSH B"
-	desc_extended = "A sturdy tactical helmet. Protects your head from bullets."
+	desc = "Military. In space!"
+	desc_extended = "A helmet made from hardened carbon fibres."
 
 	defense_rating = list(
 		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 25,
-		ARCANE = -25,
-		BOMB = 25
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 100,
+		ARCANE = -75,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 75,
+		BIO = 50,
+		RAD = 50
 	)
 
 	size = SIZE_3
 
 
-	value = 200
+	value = 500
 
 	polymorphs = list(
 		"visor" = "#FFFFFF",
@@ -44,6 +48,12 @@
 		"helmet" = COLOR_NANOTRASEN
 	)
 
+/obj/item/clothing/head/helmet/carbon/deathsquad
+	polymorphs = list(
+		"visor" = COLOR_BLUE,
+		"helmet" = COLOR_BLACK,
+		"stripe" = COLOR_CRIMSON
+	)
 
 /obj/item/clothing/head/helmet/carbon/dummy
 	name = "old space swat helmet"

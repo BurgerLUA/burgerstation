@@ -29,13 +29,20 @@
 	)
 	hidden = FALSE
 
-/*
+
 /gamemode/horde/beefmen
 	name = "Horde Mode (Beefmen)"
 	enemy_types_to_spawn = list(
 		/mob/living/advanced/npc/beefman = 1
 	)
-*/
+	hidden = TRUE
+
+/gamemode/horde/death_squad
+	name = "Horde Mode (Death Squad)"
+	enemy_types_to_spawn = list(
+		/mob/living/advanced/npc/deathsquad = 1
+	)
+	hidden = FALSE
 
 /gamemode/horde/ashwalkers
 	name = "Horde Mode (Ashwalkers)"

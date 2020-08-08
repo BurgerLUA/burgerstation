@@ -33,10 +33,13 @@ SUBSYSTEM_DEF(payday)
 		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
 			continue
 		valid_players += P
-		var/tax = FLOOR(P.currency * 0.05,10)
-		if(tax)
-			P.adjust_currency( -tax )
-			P.to_chat(span("notice","You were taxed 5% of your wealth ([tax] credits)."))
+		if(P.insurance)
+			var/tax = CEILING(P.currency * P.insurance_premiums,1)
+			if(tax)
+				var/charged_amount = -P.adjust_currency( -(tax + 50) )
+				P.insurance += FLOOR(charged_amount*0.5,1)
+				P.to_chat(span("notice","You were taxed your insurance premium of <b>[charged_amount] credits</b>. Your insurance pool is now <b>[P.insurance] credits</b>."))
+				P.update_premiums()
 
 	stored_payday *= 0.5 //Prevents gaming the system.
 

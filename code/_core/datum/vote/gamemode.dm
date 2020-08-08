@@ -4,6 +4,7 @@
 	time_limit = 120 //In seconds.
 
 	var/list/gamemode_name_to_type = list()
+	weighted_mode = TRUE
 
 
 /vote/gamemode/New()

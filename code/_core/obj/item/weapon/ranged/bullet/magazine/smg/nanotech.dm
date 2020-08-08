@@ -70,3 +70,12 @@
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_skill_spread(var/mob/living/L) //Base spread
 	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))
+
+
+/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/equipped/Generate()
+	. = ..()
+	attachment_barrel = new /obj/item/attachment/barrel/charger(src)
+	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
+	update_attachments()
+	update_sprite()
+	return .

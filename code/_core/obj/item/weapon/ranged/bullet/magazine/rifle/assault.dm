@@ -55,7 +55,6 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-
 /obj/item/weapon/ranged/bullet/magazine/rifle/assault/get_static_spread() //Base spread
 	if(!wielded)
 		return 0.2
@@ -65,3 +64,15 @@
 	if(!heat_current)
 		return 0
 	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/assault/equipped/Generate()
+
+	. = ..()
+
+	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
+	attachment_barrel = new /obj/item/attachment/barrel/compensator(src)
+
+	update_attachments()
+	update_sprite()
+
+	return .

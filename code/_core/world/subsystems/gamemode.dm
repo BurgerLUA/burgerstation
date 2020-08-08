@@ -7,7 +7,6 @@ SUBSYSTEM_DEF(gamemode)
 	var/list/all_gamemodes = list()
 	var/gamemode/active_gamemode
 
-
 /subsystem/gamemode/proc/set_active_gamemode(var/gamemode/desired_gamemode,var/source)
 	QDEL_NULL(active_gamemode)
 	active_gamemode = new desired_gamemode

@@ -1,3 +1,23 @@
+/mob/living/advanced/player/proc/update_premiums(var/messages=TRUE)
+	var/desired_premium_amount
+	switch(insurance/INSURANCE_PAYOUT) //How many payouts left?
+		if(0 to 0.5)
+			desired_premium_amount = 0.3
+		if(0.5 to 1)
+			desired_premium_amount = 0.2
+		if(1 to 2)
+			desired_premium_amount = 0.1
+		if(2 to 3)
+			desired_premium_amount = 0.05
+		if(3 to INFINITY)
+			desired_premium_amount = 0.03
+	if(desired_premium_amount > insurance_premiums)
+		if(messages) to_chat(span("warning","Your insurance premiums have increased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>..."))
+		insurance_premiums = desired_premium_amount
+	else if (desired_premium_amount < insurance_premiums)
+		if(messages) to_chat(span("notice","Your insurance premiums have decreased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>!"))
+		insurance_premiums = desired_premium_amount
+
 /mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/do_teleport = TRUE,var/update_blends=TRUE)
 
 	//Name
@@ -6,9 +26,21 @@
 	gender = loaded_data["gender"]
 	currency = loaded_data["currency"]
 	species = loaded_data["species"]
-	nutrition = loaded_data["nutrition"] ? loaded_data["nutrition"] : 1000
-	hydration = loaded_data["hydration"] ? loaded_data["hydration"] : 1000
+	nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : 1000
+	hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : 1000
 	save_id = loaded_data["id"]
+	insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 3
+	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 0
+
+	if(loaded_data["dead"]) //New body!
+		nutrition = 1000
+		hydration = 1000
+		if(isnum(insurance))
+			var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
+			insurance -= insurance_to_pay
+			to_chat(span("notice","You were paid <b>[insurance_to_pay] credits</b> in insurance. You have <b>[insurance] credits</b> left in your insurance pool."))
+			adjust_currency(insurance_to_pay)
+			update_premiums()
 
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
@@ -70,13 +102,15 @@
 	else
 		update_all_blends() //butts
 
-/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE)
+/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
 	. = list()
 
 	//Basic Information
 	.["name"] = real_name
 	.["currency"] = currency
+	.["insurance"] = insurance
+	.["insurance_premiums"] = insurance_premiums
 	.["species"] = species
 	.["gender"] = gender
 	.["sex"] = sex
@@ -84,6 +118,7 @@
 	.["hydration"] = hydration
 	.["known_languages"] = known_languages
 	.["id"] = save_id
+	.["dead"] = died
 
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)

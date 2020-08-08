@@ -28,6 +28,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 	var/currency = 3000
 
+	var/insurance //How much insurance the user has. This amount is paid out in death, up to 8000 credits.
+	var/insurance_premiums //How much your insurance premiums are. This is taxed from your current amount each payday.
+
 	var/logout_time = 0
 
 	death_threshold = -100

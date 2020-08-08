@@ -20,7 +20,7 @@
 	dyeable = TRUE
 
 /obj/item/clothing/head/hat/beret/shaleez
-	color = COLOR_SHALEEZ_RED
+	color = COLOR_CRIMSON
 
 /obj/item/clothing/head/hat/beret/armored
 	name = "armored beret"
@@ -35,7 +35,7 @@
 	value = 400
 
 /obj/item/clothing/head/hat/beret/armored/syndicate
-	color = COLOR_SHALEEZ_RED
+	color = COLOR_CRIMSON
 
 /obj/item/clothing/head/hat/beret/black
 	color = COLOR_BLACK

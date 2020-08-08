@@ -117,3 +117,40 @@
 	)
 
 	value = 1500
+
+/obj/item/weapon/ranged/energy/rifle/xray/deathsquad/
+	name = "AER13c-D X-Ray Rifle"
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special phoron battery that charges over time."
+
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"barrel" = COLOR_PURPLE
+	)
+
+	charge_max = 3000*3
+	charge_current = 3000*3
+	charge_cost = 3000
+	recharge_rate = 300
+
+	value = 4000
+
+/obj/item/weapon/ranged/energy/rifle/xray/deathsquad/Generate()
+
+	. = ..()
+
+	attachment_undermount = new/obj/item/attachment/undermount/burst_adapter(src)
+	INITIALIZE(attachment_undermount)
+	GENERATE(attachment_undermount)
+
+	attachment_sight = new /obj/item/attachment/sight/laser_sight(src)
+	INITIALIZE(attachment_sight)
+	GENERATE(attachment_sight)
+
+	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+
+	update_attachments()
+	update_sprite()
+
+	return .

@@ -22,3 +22,6 @@
 
 /obj/item/clothing/head/hat/headband/dark_grey
 	color = COLOR_GREY_DARK
+
+/obj/item/clothing/head/hat/headband/crimson
+	color = COLOR_CRIMSON

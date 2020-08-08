@@ -83,6 +83,7 @@
 				P.start_chargen()
 			P.save_id = character_id
 			P.tutorial = TRUE
+			P.update_premiums()
 			return TRUE
 		else
 			to_chat("You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this.")

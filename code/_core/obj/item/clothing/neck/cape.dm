@@ -32,9 +32,9 @@
 
 /obj/item/clothing/neck/cape/hunter
 	polymorphs = list(
-		"base" = COLOR_SHALEEZ_RED,
+		"base" = COLOR_CRIMSON,
 		"design" = COLOR_RED_DARK,
-		"trim" = COLOR_SHALEEZ_RED
+		"trim" = COLOR_CRIMSON
 	)
 
 /obj/item/clothing/neck/cape/hide

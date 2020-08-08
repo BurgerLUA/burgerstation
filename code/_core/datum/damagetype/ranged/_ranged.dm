@@ -1,4 +1,3 @@
-
 /damagetype/ranged/
 	name = "ranged weapon"
 

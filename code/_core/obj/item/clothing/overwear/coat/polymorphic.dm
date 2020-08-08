@@ -33,7 +33,7 @@
 
 /obj/item/clothing/overwear/coat/polymorphic/shaleez
 	polymorphs = list(
-		"base" = COLOR_SHALEEZ_RED,
+		"base" = COLOR_CRIMSON,
 		"sleeve" = COLOR_WHITE,
 		"buttons" = COLOR_GOLD
 	)

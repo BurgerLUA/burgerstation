@@ -2,10 +2,24 @@
 	var/charge_max = 1000
 	var/charge_current = 1000
 	var/charge_cost = 100
+	var/recharge_rate = 0
 
 	bullet_color = "#FF0000"
 
 	var/mech_only = FALSE
+
+/obj/item/weapon/ranged/energy/think()
+
+	. = ..()
+
+	if(recharge_rate && next_shoot_time + 1 <= world.time)
+		charge_current = min(charge_current + recharge_rate,charge_max)
+		update_sprite()
+		return TRUE
+
+	return .
+
+
 
 /obj/item/weapon/ranged/energy/New(var/desired_loc)
 	charge_cost = FLOOR(charge_cost, 1)
