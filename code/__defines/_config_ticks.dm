@@ -1,7 +1,7 @@
 #define LIFE_TICK 4 //Deciseconds per life tick interval.
 #define LIFE_TICK_SLOW 8 //Deciseconds per slow life tick interval.
 #define LIFE_TICKS_PER_SLOW_LIFE_TICKS (LIFE_TICK_SLOW / LIFE_TICK)
-#define AI_TICK 1 //Deciseconds per AI tick interval.
+#define AI_TICK 2 //Deciseconds per AI tick interval.
 
 
 #define CLIENT_TICK 2 //FRAMES per life tick interval

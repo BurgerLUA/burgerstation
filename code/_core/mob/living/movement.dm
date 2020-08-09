@@ -196,6 +196,8 @@
 		var/mob/living/L = O
 		if(L.loyalty_tag == src.loyalty_tag)
 			return TRUE
+		if(L.dead || src.dead)
+			return TRUE
 
 	return ..()
 

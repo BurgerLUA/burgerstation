@@ -31,7 +31,7 @@
 			total_value += calculated_value
 			if(is_living(O))
 				var/mob/living/L = O
-				L.death()
+				if(!L.dead) L.death()
 			qdel(O)
 
 		SSpayday.stored_payday += total_value

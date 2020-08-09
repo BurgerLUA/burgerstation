@@ -1,6 +1,5 @@
 /ai/xeno
 
-	objective_delay = 10
 	attack_delay = 1
 
 	var/next_leap = 0

@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(payday)
 	cpu_usage_max = 50
 
 /subsystem/payday/Initialize()
-	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
+	next_payday = world.time + SECONDS_TO_DECISECONDS(180)
 	return ..()
 
 /subsystem/payday/on_life()
@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(payday)
 		if(P.loyalty_tag != "NanoTrasen" || !P.client || P.dead)
 			continue
 		valid_players += P
-		if(P.insurance)
+		if(P.insurance_premiums)
 			var/tax = CEILING(P.currency * P.insurance_premiums,1)
 			if(tax)
 				var/charged_amount = -P.adjust_currency( -(tax + 50) )

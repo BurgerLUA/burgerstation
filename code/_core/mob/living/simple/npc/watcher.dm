@@ -42,6 +42,7 @@
 	health_base = 100
 
 /mob/living/simple/npc/watcher/post_death()
-	..()
+	. = ..()
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
+	return .

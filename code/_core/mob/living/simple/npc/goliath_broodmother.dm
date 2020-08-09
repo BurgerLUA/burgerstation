@@ -49,22 +49,20 @@
 	var/list/mob/living/simple/npc/goliath/baby/tracked_babies = list()
 
 /mob/living/simple/npc/goliath/broodmother/post_death()
-	..()
+	. = ..()
 	CREATE(/obj/structure/interactive/crate/necro,get_turf(src))
-
+	return .
 
 /mob/living/simple/npc/goliath/broodmother/on_life()
 	. = ..()
 
 	if(!dead && initialized)
-
 		for(var/mob/living/simple/npc/goliath/baby/B in tracked_babies)
 			if(B.dead || B.qdeleting)
 				tracked_babies -= B
 			if(ai && ai.objective_attack && B.ai && !B.ai.objective_attack)
 				B.ai.set_objective(ai.objective_attack)
-
-		for(var/i=1,i<=4-length(tracked_babies))
+		if(length(tracked_babies) <= 4 && prob(20))
 			var/turf/spawning_turf = get_step(src,pick(DIRECTIONS_ALL))
 			var/mob/living/simple/npc/goliath/baby/B = new(spawning_turf)
 			INITIALIZE(B)

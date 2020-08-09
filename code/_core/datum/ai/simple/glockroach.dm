@@ -5,7 +5,6 @@
 
 /ai/simple/glockroach/
 
-	objective_delay = 10
 	attack_delay = 10
 
 /ai/simple/glockroach/handle_attacking()

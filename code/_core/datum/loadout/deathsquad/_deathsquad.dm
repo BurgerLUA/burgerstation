@@ -15,16 +15,17 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/assault/equipped,
 		/obj/item/weapon/ranged/energy/rifle/xray/deathsquad,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
-		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/equipped
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull
 	)
 
 	var/list/random_secondary = list(
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical
 	)
 
 	var/list/random_melee = list(
-		/obj/item/weapon/melee/energy/stunbaton,
 		/obj/item/weapon/melee/energy/sword/green
 	)
 

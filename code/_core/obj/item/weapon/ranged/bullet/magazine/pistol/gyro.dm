@@ -31,15 +31,11 @@
 	bullet_diameter_max = 21
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE,
-		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
-		/obj/item/attachment/barrel/suppressor = TRUE,
 		/obj/item/attachment/sight/laser_sight = TRUE,
-		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
 	attachment_barrel_offset_x = 29 - 16

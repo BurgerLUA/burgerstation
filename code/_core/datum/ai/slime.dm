@@ -1,6 +1,5 @@
 /ai/slime/
 
-	objective_delay = 10
 	attack_delay = 1
 
 	roaming_distance = 32

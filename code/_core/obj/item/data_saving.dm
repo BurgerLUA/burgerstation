@@ -181,7 +181,7 @@
 	else
 		for(var/i=1,i<=length(inventory_data),i++)
 			var/obj/item/I = load_and_create(P,inventory_data[i],get_turf(src))
-			if(I && !src.add_object(I,TRUE,FALSE))
+			if(I && !src.add_object(I,TRUE,TRUE))
 				log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 				I.force_move(get_turf(P))
 

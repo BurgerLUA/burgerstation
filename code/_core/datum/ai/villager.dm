@@ -1,7 +1,6 @@
 /ai/villager
 	roaming_distance = 3
 
-	objective_delay = 20
 	attack_delay = 1000
 
 

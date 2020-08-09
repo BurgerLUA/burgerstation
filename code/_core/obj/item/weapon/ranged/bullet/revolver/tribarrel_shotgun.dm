@@ -39,6 +39,22 @@
 
 	inaccuracy_modifer = 1
 
+	attachment_whitelist = list(
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE
+	)
+
+	attachment_barrel_offset_x = 0 - 16
+	attachment_barrel_offset_y = 0 - 16
+
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 22 - 16
+
+	attachment_undermount_offset_x = 0 - 16
+	attachment_undermount_offset_y = 0 - 16
+
 /obj/item/weapon/ranged/bullet/revolver/tribarrel/get_base_spread()
 	return 0.05
 

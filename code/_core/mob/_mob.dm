@@ -222,4 +222,4 @@
 	return ..()
 
 /mob/is_player_controlled()
-	return ckey || (ckey_last && ckey_last != "")
+	return ckey || ckey_last

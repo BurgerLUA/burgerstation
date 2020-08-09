@@ -1,6 +1,5 @@
 /ai/advanced/daddy
 
-	objective_delay = 10
 	attack_delay = 1
 
 	var/next_chat_time = 0

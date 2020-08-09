@@ -33,8 +33,8 @@
 	insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 0
 
 	if(loaded_data["dead"]) //New body!
-		nutrition = 1000
-		hydration = 1000
+		nutrition = 600
+		hydration = 600
 		if(isnum(insurance))
 			var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
 			insurance -= insurance_to_pay

@@ -1,8 +1,5 @@
 /proc/within_range(var/atom/point_A,var/atom/point_B,var/range=VIEW_RANGE)
 
-	point_A = get_turf(point_A)
-	point_B = get_turf(point_B)
-
 	if(!point_A || !point_B)
 		return FALSE
 
@@ -25,16 +22,16 @@
 	var/list/list_of_ais = list()
 	list_of_ais.Add(SSbossai.inactive_ai,SSbossai.active_ai,SSai.active_ai,SSai.inactive_ai)
 
-	for(var/ai/AI in list_of_ais)
-		CHECK_TICK(75,FPS_SERVER*0.5)
-		if(AI.alert_level == ALERT_LEVEL_COMBAT)
+	for(var/k in list_of_ais)
+		CHECK_TICK(75,FPS_SERVER)
+		var/ai/AI = k
+		if(AI.owner.dead || AI.objective_attack)
 			continue
-		var/mob/M = AI.owner
-		if(!within_range(M,epicenter,range))
+		if(!within_range(AI.owner,epicenter,range))
 			continue
-		if(!AI.is_enemy(alert_source))
+		if(alert_source && !AI.is_enemy(alert_source))
 			continue
-		CALLBACK("alert_level_change_\ref[M]",CEILING(AI.reaction_time*0.1,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter)
+		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time*0.1,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter)
 
 	return TRUE
 

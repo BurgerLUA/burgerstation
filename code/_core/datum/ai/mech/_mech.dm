@@ -1,5 +1,4 @@
 /ai/mech/
-	objective_delay = 10
 	attack_delay = 1
 
 	distance_target_min = 3

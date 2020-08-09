@@ -1,6 +1,5 @@
 /ai/goliath
 
-	objective_delay = 10
 	attack_delay = 1
 
 	var/mob/living/simple/npc/goliath/owner_as_goliath
@@ -29,11 +28,9 @@
 
 
 /ai/goliath/ancient
-	objective_delay = 10
 	attack_delay = 1
 	tentacle_ttack_frequency = 50
 
 /ai/goliath/broodmother
-	objective_delay = 10
 	attack_delay = 1
 	tentacle_ttack_frequency = 50

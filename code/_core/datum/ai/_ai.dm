@@ -18,7 +18,7 @@
 	var/attack_ticks = 0
 
 	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 AI_TICK.
-	var/objective_delay = 10
+	var/objective_delay = 40 / AI_TICK
 	var/attack_delay = 0
 
 	var/list/target_distribution_x = list(8,16,16,16,24)

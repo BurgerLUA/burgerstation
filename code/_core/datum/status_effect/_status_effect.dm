@@ -164,11 +164,12 @@
 	if(source && is_living(source) && owner && !owner.dead && owner.dir == source.dir)
 		var/mob/living/L = source
 		if(L.loyalty_tag != owner.loyalty_tag)
-			L.add_status_effect(PARALYZE,30,30,source = source,stealthy = TRUE)
-			L.add_status_effect(DISARM,30,30,source = source)
+			owner.add_status_effect(PARALYZE,30,30,source = source,stealthy = TRUE)
+			owner.add_status_effect(DISARM,30,30,source = source)
 			return ..()
 
 	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
+
 	return ..()
 
 /status_effect/druggy

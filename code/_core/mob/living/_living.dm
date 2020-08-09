@@ -205,7 +205,7 @@
 	. = ..()
 	visible_message(span("danger","\The [src] is violently crushed!"))
 	death()
-	qdel(src)
+	if(!qdeleting) qdel(src)
 	return .
 
 /mob/living/calculate_value()
