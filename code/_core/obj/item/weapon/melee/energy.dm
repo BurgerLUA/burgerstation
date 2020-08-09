@@ -28,6 +28,7 @@
 /obj/item/weapon/melee/energy/click_self(var/mob/caller)
 	enabled = !enabled
 	update_sprite()
+	update_held_icon()
 	return TRUE
 /*
 /obj/item/weapon/melee/energy/can_parry()

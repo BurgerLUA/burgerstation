@@ -50,7 +50,7 @@
 
 	update_held_icon()
 
-	..()
+	return ..()
 
 
 /obj/item/weapon/melee/torch/lantern

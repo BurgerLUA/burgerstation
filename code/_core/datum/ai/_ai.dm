@@ -13,12 +13,12 @@
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
-
+	//All ticks measured in deciseconds.
 	var/objective_ticks = 0
 	var/attack_ticks = 0
 
 	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 AI_TICK.
-	var/objective_delay = 40 / AI_TICK
+	var/objective_delay = 40
 	var/attack_delay = 0
 
 	var/list/target_distribution_x = list(8,16,16,16,24)
@@ -114,7 +114,15 @@
 	else
 		SSai.active_ai -= src
 		SSai.inactive_ai |= src
+		set_objective(null)
+		set_move_objective(null)
+		attackers.Cut()
 
+	return TRUE
+
+/ai/proc/on_death()
+	set_active(FALSE)
+	set_path(null)
 	return TRUE
 
 /ai/Destroy()
@@ -203,20 +211,20 @@
 	return TRUE
 
 
-/ai/proc/on_life()
+/ai/proc/on_life(var/tick_rate=AI_TICK)
 
-	objective_ticks += 1
+	objective_ticks += tick_rate
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
 		handle_objectives()
 
-	attack_ticks += 1
+	attack_ticks += tick_rate
 	if(attack_ticks >= attack_delay)
 		attack_ticks = 0
 		handle_attacking()
 
 	if(alert_level >= ALERT_LEVEL_NOISE && alert_level <= ALERT_LEVEL_CAUTION)
-		alert_time -= LIFE_TICK
+		alert_time -= tick_rate
 		if(alert_time <= 0)
 			alert_time = initial(alert_time)
 			set_alert_level(alert_level-1,TRUE)
@@ -225,7 +233,7 @@
 		handle_movement_reset()
 		handle_movement()
 
-	owner.handle_movement(DECISECONDS_TO_TICKS(AI_TICK))
+	owner.handle_movement(tick_rate)
 
 	return TRUE
 
@@ -486,7 +494,7 @@
 
 	return FALSE
 
-/ai/proc/set_objective(var/atom/A,var/alert = TRUE)
+/ai/proc/set_objective(var/atom/A)
 
 	if(!owner || owner.qdeleting)
 		return FALSE
@@ -521,11 +529,10 @@
 			objective_move = null
 		owner.set_intent(objective_attack || owner.stand ? INTENT_HARM : INTENT_HELP)
 		return TRUE
-	else
-		frustration_attack = 0
-		objective_attack = null
-		owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
-		set_alert_level(ALERT_LEVEL_NONE,TRUE)
+
+	frustration_attack = 0
+	objective_attack = null
+	owner.set_intent(owner.stand ? INTENT_HARM : INTENT_HELP)
 
 	if(old_attack && !old_attack.qdeleting)
 		if(is_living(old_attack))
@@ -537,8 +544,7 @@
 		set_move_objective(old_attack)
 		return TRUE
 
-	if(alert)
-		set_alert_level(ALERT_LEVEL_NOISE,TRUE)
+	set_alert_level(ALERT_LEVEL_NONE,TRUE)
 
 	return TRUE
 

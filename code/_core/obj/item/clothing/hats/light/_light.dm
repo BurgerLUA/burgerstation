@@ -21,6 +21,8 @@
 
 	update_held_icon()
 
+	return ..()
+
 
 /obj/item/clothing/head/light/click_self(var/mob/caller)
 	enabled = !enabled

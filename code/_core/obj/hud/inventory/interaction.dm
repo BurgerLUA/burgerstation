@@ -1,3 +1,30 @@
+/obj/hud/inventory/click_self(var/mob/caller)
+
+	if(src.defer_click_on_object() != src)
+		return ..()
+
+	if(!is_advanced(caller))
+		return ..()
+
+	var/mob/living/advanced/A = caller
+
+	if(id == BODY_HAND_LEFT)
+		if(!A.right_hand)
+			return FALSE
+		caller.attack_flags &= ~ATTACK_SELF
+		. = src.click_on_object(caller,A.right_hand)
+		caller.attack_flags |= ATTACK_SELF
+		return .
+	else if(id == BODY_HAND_RIGHT)
+		if(!A.left_hand)
+			return FALSE
+		caller.attack_flags &= ~ATTACK_SELF
+		. = src.click_on_object(caller,A.left_hand)
+		caller.attack_flags |= ATTACK_SELF
+		return .
+
+	return ..()
+
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	if(is_living(caller))
@@ -25,9 +52,6 @@
 			return TRUE
 		else
 			return wield_object(caller,defer_object)
-
-	if(parent_inventory)
-		return TRUE
 
 	if(caller.attack_flags & ATTACK_ALT && ismovable(defer_object))
 		var/atom/movable/M = defer_object
@@ -68,6 +92,9 @@
 		return TRUE
 
 	else if(caller.attack_flags & ATTACK_DROP) //Drop the object if we are telling it to drop.
+		if(parent_inventory)
+			var/obj/item/I = parent_inventory.get_top_held_object()
+			return wield_object(caller,I)
 		if(grabbed_object)
 			return release_object(caller)
 		var/turf/caller_turf = get_turf(caller)

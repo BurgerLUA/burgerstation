@@ -27,6 +27,8 @@
 	if(choice)
 		caller.to_chat(span("notice","You dye \the [src.name]."))
 		update_sprite()
+		update_held_icon()
+		/*
 		if(is_inventory(loc))
 			var/obj/hud/inventory/I = loc
 			if(is_advanced(I.owner))
@@ -36,6 +38,7 @@
 					I.update_worn_icon(src)
 				if(src in I.held_objects)
 					I.update_held_icon(src)
+		*/
 		return TRUE
 	else
 		caller.to_chat(span("notice","You decide not to dye anything."))

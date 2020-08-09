@@ -20,6 +20,6 @@ SUBSYSTEM_DEF(ai)
 			qdel(AI)
 			continue
 		if(AI.should_life())
-			AI.on_life()
+			AI.on_life(AI_TICK)
 
 	return TRUE

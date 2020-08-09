@@ -31,7 +31,7 @@
 		remove_stand()
 
 	if(ai)
-		ai.set_active(TRUE)
+		ai.on_death()
 
 	movement_flags = 0x0
 	attack_flags = 0x0
