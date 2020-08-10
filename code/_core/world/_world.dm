@@ -25,7 +25,7 @@ var/global/world_state = STATE_STARTING
 	maxy = WORLD_SIZE
 	maxz = 3
 
-	loop_checks = 0
+	loop_checks = 1
 
 /world/New()
 	__detect_rust_g()

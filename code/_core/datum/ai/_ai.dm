@@ -99,6 +99,8 @@
 
 	var/delete_on_no_path = FALSE
 
+	var/idle_time = 0
+
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
 
 	if(!force && active == desired_active)
@@ -216,6 +218,13 @@
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
 		handle_objectives()
+		if(owner.move_dir || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
+			idle_time = 0
+		else
+			idle_time += tick_rate
+			if(idle_time >= 600) //Idle for more than a minute means you're just wasting space.
+				set_active(FALSE)
+				return FALSE
 
 	if(owner.attack_next <= world.time)
 		handle_attacking()
@@ -275,7 +284,7 @@
 	return FALSE
 
 /ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
-	set_active(TRUE)
+	if(desired_objective) set_active(TRUE)
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	return TRUE
@@ -502,8 +511,6 @@
 	if(A && A.qdeleting)
 		return FALSE
 
-	set_active(TRUE)
-
 	var/atom/old_attack = objective_attack
 
 	if(!A && old_attack && attackers[old_attack])
@@ -518,6 +525,7 @@
 		if(!should_attack_mob(A))
 			return FALSE
 		frustration_attack = 0
+		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT)
 		objective_attack = A
 		if(owner.boss && is_player(A))

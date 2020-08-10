@@ -246,13 +246,13 @@
 		following = null
 
 	for(var/k in attributes)
-		var/experience/E = k
+		var/experience/E = attributes[k]
 		qdel(E)
 
 	attributes.Cut()
 
 	for(var/k in skills)
-		var/experience/E = k
+		var/experience/E = skills[k]
 		qdel(E)
 
 	skills.Cut()
