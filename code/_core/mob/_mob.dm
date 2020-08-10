@@ -28,24 +28,16 @@
 
 	plane = PLANE_MOB
 
-	see_invisible = INVISIBILITY_LIGHTING
-
-	sight = 0x0
-
-	var/vision = 0x0
-
-	/*
-	var/list/quests/all_quests = list()
-	var/list/quests/active_quests = list()
-	*/
-
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = TRUE
 
 	var/move_mod = 2
 	var/move_mod_button = 0
 
+	var/vision = 0x0
+	sight = SEE_BLACKNESS
 	see_invisible = INVISIBILITY_DEFAULT
+
 	invisibility = INVISIBILITY_MOBS
 
 	var/draw_buttons = TRUE
@@ -98,9 +90,9 @@
 	var/last_hold = -1
 
 /mob/proc/update_eyes()
-	vision = 0x0
-	sight = SEE_BLACKNESS
-	see_invisible = INVISIBILITY_DEFAULT
+	vision = initial(vision)
+	sight = initial(sight)
+	see_invisible = initial(see_invisible)
 	return TRUE
 
 /mob/Destroy()

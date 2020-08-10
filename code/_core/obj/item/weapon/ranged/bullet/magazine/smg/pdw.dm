@@ -36,7 +36,8 @@
 		/obj/item/attachment/barrel/charger = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
-		/obj/item/attachment/barrel/suppressor = TRUE
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
 	attachment_barrel_offset_x = 31 - 16

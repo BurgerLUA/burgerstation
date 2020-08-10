@@ -42,7 +42,7 @@
 
 	fireball_delay -= 1
 	fly_delay -= 1
-	attack_ticks = 0
+	owner.attack_next = world.time + 10
 
 /ai/boss/ash_drake/handle_movement()
 

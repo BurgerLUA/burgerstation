@@ -124,6 +124,18 @@
 		if(I.add_held_object(B))
 			B.update_sprite()
 			stored_bullets -= B
+			update_sprite()
+		return TRUE
+
+	return ..()
+
+/obj/item/magazine/click_self(var/mob/caller)
+
+	if(length(stored_bullets))
+		var/obj/item/bullet_cartridge/B = stored_bullets[length(stored_bullets)]
+		B.drop_item(get_turf(caller))
+		B.update_sprite()
+		stored_bullets -= B
 		update_sprite()
 		return TRUE
 

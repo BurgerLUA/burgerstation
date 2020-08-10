@@ -16,8 +16,11 @@
 	if(ending_transit_id == "cargo_shuttle_planet")
 		var/area/A = get_area(src)
 		var/total_value = 0
+		for(var/obj/structure/interactive/crate/C in A.contents)
+			C.open()
+
 		for(var/atom/movable/O in A.contents)
-			if(!isobj(O) && !ismob(O))
+			if(!(isobj(O) || ismob(O)))
 				continue
 			if(!O.is_safe_to_delete(check_loc = FALSE))
 				continue

@@ -1,7 +1,4 @@
 /ai/carp
-
-	attack_delay = 1
-
 	var/mob/living/simple/npc/spacecarp/leader/carp_leader
 
 

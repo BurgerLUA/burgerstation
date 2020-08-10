@@ -1,6 +1,6 @@
 /mob/abstract/observer/ghost
 
-	alpha = 100
+	alpha = 200
 	anchored = FALSE
 
 	spawning_buttons = list(
@@ -9,6 +9,9 @@
 		/obj/hud/button/become_antag,
 		/obj/hud/button/teleport_to_player
 	)
+
+	invisibility = INVISIBLITY_GHOST
+	see_invisible = INVISIBLITY_GHOST
 
 /mob/abstract/observer/ghost/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK)
 	return ..(text_to_say,should_sanitize,TEXT_GHOST)

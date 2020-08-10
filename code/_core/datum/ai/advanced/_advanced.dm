@@ -1,7 +1,5 @@
 /ai/advanced/
 
-	attack_delay = 1
-
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
 	var/checked_weapons = FALSE
 
@@ -18,7 +16,6 @@
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()
-
 
 /ai/advanced/on_life()
 

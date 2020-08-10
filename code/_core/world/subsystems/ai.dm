@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(ai)
 	name = "AI Subsystem"
 	desc = "Controls the AI of mobs."
-	tick_rate = DECISECONDS_TO_TICKS(AI_TICK)
+	tick_rate = DECISECONDS_TO_TICKS(1) //Needs to be fast to handle mob movement.
 	priority = SS_ORDER_PRELOAD
 	cpu_usage_max = 80
 	tick_usage_max = 80
@@ -20,6 +20,6 @@ SUBSYSTEM_DEF(ai)
 			qdel(AI)
 			continue
 		if(AI.should_life())
-			AI.on_life(AI_TICK)
+			AI.on_life(tick_rate)
 
 	return TRUE

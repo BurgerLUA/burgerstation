@@ -188,6 +188,7 @@ var/global/list/all_clients = list() //Assoc list
 		if(world_state == STATE_RUNNING)
 			play_music_track("slow_fall", src)
 			mob.show_hud(TRUE,speed = 2)
+			mob.force_move(get_turf(lobby_positions[1]))
 
 	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
 	update_window()

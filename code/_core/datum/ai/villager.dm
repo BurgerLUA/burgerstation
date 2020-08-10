@@ -1,9 +1,6 @@
 /ai/villager
 	roaming_distance = 3
 
-	attack_delay = 1000
-
-
 /ai/villager/on_life()
 
 	if(!isturf(owner.loc))

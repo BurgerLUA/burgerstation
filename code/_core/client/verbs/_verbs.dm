@@ -42,6 +42,7 @@
 	//Game
 	verbs += /client/verb/stop_sound
 	verbs += /client/verb/ghost
+	verbs += /client/verb/check_objectives
 
 	//Admin
 	if(permissions & FLAG_PERMISSION_MODERATOR)

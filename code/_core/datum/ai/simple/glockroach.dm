@@ -5,8 +5,6 @@
 
 /ai/simple/glockroach/
 
-	attack_delay = 10
-
 /ai/simple/glockroach/handle_attacking()
 
 	if(objective_attack && prob(20))

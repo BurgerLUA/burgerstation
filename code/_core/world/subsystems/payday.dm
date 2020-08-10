@@ -52,6 +52,6 @@ SUBSYSTEM_DEF(payday)
 		else
 			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits for your efforts."))
 
-	next_payday = world.time + SECONDS_TO_DECISECONDS(600)
+	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
 
 	stored_payday = 0

@@ -1,7 +1,4 @@
 /ai/xeno
-
-	attack_delay = 1
-
 	var/next_leap = 0
 	var/next_spit = 0
 

@@ -227,7 +227,7 @@
 		return FALSE
 
 	for(var/atom/A in contents)
-		if(!A.is_safe_to_delete())
+		if(!A.is_safe_to_delete(FALSE))
 			return FALSE
 
 	return ..()

@@ -1,7 +1,5 @@
 /ai/advanced/ranged/wizard
 
-	attack_delay = 10
-
 	var/turf/list/teleport_locations = list()
 
 	left_click_chance = 70
@@ -18,7 +16,7 @@
 
 	. = ..()
 
-	if(objective_attack && attack_ticks == 0)
+	if(objective_attack && owner.attack_next - 3 >= world.time)
 		var/turf/desired_location = pick(teleport_locations)
 		new /obj/effect/temp/phase/out(get_turf(owner))
 		owner.force_move(desired_location)

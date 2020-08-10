@@ -4,8 +4,9 @@
 	desc_extended = "Those who perish in this world turn into these beings to then later be resurrected to die again and again."
 	icon = 'icons/mob/abstract/ghosts.dmi'
 	icon_state = "basic"
-	invisibility = INVISIBLITY_GHOST
-	see_invisible = INVISIBLITY_GHOST
+
+	invisibility = INVISIBILITY_DEFAULT
+	see_invisible = INVISIBILITY_DEFAULT
 
 	layer = LAYER_GHOST
 

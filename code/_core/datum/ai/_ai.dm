@@ -13,13 +13,11 @@
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
-	//All ticks measured in deciseconds.
+	//Measured in ticks.
 	var/objective_ticks = 0
-	var/attack_ticks = 0
 
-	//Measured in ticks. 0 means synced to life. 1 means a delay of 1 AI_TICK.
-	var/objective_delay = 40
-	var/attack_delay = 0
+	//Measured in ticks.
+	var/objective_delay = DECISECONDS_TO_TICKS(40)
 
 	var/list/target_distribution_x = list(8,16,16,16,24)
 	var/list/target_distribution_y = list(8,16,16,16,24)
@@ -114,8 +112,10 @@
 	else
 		SSai.active_ai -= src
 		SSai.inactive_ai |= src
+
 		set_objective(null)
 		set_move_objective(null)
+		CALLBACK_REMOVE("set_new_objective_\ref[src]")
 		attackers.Cut()
 
 	return TRUE
@@ -148,7 +148,6 @@
 
 	owner = desired_owner
 
-	attack_ticks = rand(0,attack_delay)
 	objective_ticks = rand(0,objective_delay)
 
 	start_turf = get_turf(owner)
@@ -218,9 +217,7 @@
 		objective_ticks = 0
 		handle_objectives()
 
-	attack_ticks += tick_rate
-	if(attack_ticks >= attack_delay)
-		attack_ticks = 0
+	if(owner.attack_next <= world.time)
 		handle_attacking()
 
 	if(alert_level >= ALERT_LEVEL_NOISE && alert_level <= ALERT_LEVEL_CAUTION)

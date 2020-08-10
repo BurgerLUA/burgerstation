@@ -43,3 +43,41 @@
 	set category = "Game"
 	mob << sound(null)
 	to_chat("All sounds have been stopped.")
+
+
+/client/verb/check_objectives()
+	set name = "Check Objectives"
+	set category = "Game"
+
+	if(!SSgamemode || !SSgamemode.active_gamemode)
+		to_chat(span("warning","The game is not ready yet!"))
+		return FALSE
+
+	var/gamemode/G = SSgamemode.active_gamemode
+
+	to_chat("<h2>Active Objectives</h2>")
+	if(length(G.active_objectives))
+		for(var/objective/O in G.active_objectives)
+			to_chat(O.get_description())
+	else
+		to_chat("No active objectives.")
+
+	to_chat("<h2>Completed Objectives</h2>")
+	if(length(G.completed_objectives))
+		for(var/objective/O in G.completed_objectives)
+			to_chat(O.get_description())
+	else
+		to_chat("No completed objectives.")
+
+	to_chat("<h2>Failed Objectives</h2>")
+	if(length(G.failed_objectives))
+		for(var/objective/O in G.failed_objectives)
+			to_chat(O.get_description())
+	else
+		to_chat("No failed objectives.")
+
+	return TRUE
+
+
+
+

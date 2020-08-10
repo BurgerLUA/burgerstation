@@ -1,7 +1,4 @@
 /ai/slime/
-
-	attack_delay = 1
-
 	roaming_distance = 32
 
 /ai/slime/proc/can_absorb_slime(var/mob/living/simple/npc/slime/S)

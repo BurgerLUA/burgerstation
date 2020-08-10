@@ -379,6 +379,9 @@
 
 /obj/hud/inventory/proc/add_held_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE)
 
+	if(bypass_checks && held_slots <= 0)
+		return FALSE
+
 	if(!bypass_checks && !can_hold_object(I,messages))
 		return FALSE
 
@@ -411,6 +414,9 @@
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
+
+	if(bypass_checks && worn_slots <= 0)
+		return FALSE
 
 	if(!bypass_checks && !can_wear_object(I,messages))
 		return FALSE
