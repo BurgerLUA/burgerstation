@@ -11,7 +11,8 @@ SUBSYSTEM_DEF(delete)
 
 /subsystem/delete/on_life()
 
-	for(var/datum/object_to_delete in objects_to_delete)
+	for(var/k in objects_to_delete)
+		var/datum/object_to_delete = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		if(object_to_delete.qdeleting)
 			objects_to_delete -= object_to_delete
@@ -29,7 +30,8 @@ SUBSYSTEM_DEF(delete)
 		qdel(object_to_delete)
 
 
-	for(var/datum/object_to_delete in objects_to_delete_safe) //Don't delete stuff if players are in view.
+	for(var/k in objects_to_delete_safe) //Don't delete stuff if players are in view.
+		var/datum/object_to_delete = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		if(!istype(object_to_delete) || object_to_delete.qdeleting)
 			objects_to_delete_safe -= object_to_delete

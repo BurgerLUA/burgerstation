@@ -147,7 +147,8 @@
 			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
 			return FALSE
 
-	for(var/mob/living/advanced/player/P in all_mobs_with_clients)
+	for(var/k in all_mobs_with_clients)
+		var/mob/living/advanced/player/P = k
 		if(P.loyalty_tag != desired_loyalty)
 			continue
 		var/name_mod = "[P.name] ([dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"
@@ -188,7 +189,8 @@
 
 	var/list/possible_landmarks = list()
 
-	for(var/obj/marker/landmark/L in all_landmarks)
+	for(var/k in all_landmarks)
+		var/obj/marker/landmark/L = k
 		if(!can_track(L))
 			continue
 		var/name_mod = "[L.name] ([dir2text(get_dir(caller,L))], [get_dist(src,L)]m)"
@@ -225,8 +227,10 @@
 
 	var/list/possible_artifacts = list()
 
-	for(var/objective/O in SSgamemode.active_gamemode.active_objectives)
-		for(var/atom/A in O.tracked_atoms)
+	for(var/v in SSgamemode.active_gamemode.active_objectives)
+		var/objective/O = v
+		for(var/k in O.tracked_atoms)
+			var/atom/A = k
 			if(!can_track(A))
 				continue
 			var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"

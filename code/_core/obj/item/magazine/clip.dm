@@ -10,7 +10,8 @@
 	if(is_bullet_gun(object))
 		var/obj/item/weapon/ranged/bullet/G = object
 		var/insert_count = 0
-		for(var/obj/item/bullet_cartridge/B in stored_bullets)
+		for(var/k in stored_bullets)
+			var/obj/item/bullet_cartridge/B = k
 			var/target_point = get_first_missing_value(G.stored_bullets)
 			if(target_point == 0)
 				break

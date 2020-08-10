@@ -38,7 +38,8 @@
 
 	if(loot)
 		var/list/spawned_loot = CREATE_LOOT(loot,src.loc)
-		for(var/obj/item/I in spawned_loot)
+		for(var/k in spawned_loot)
+			var/obj/item/I = k
 			animate(I,pixel_x = rand(-8,8),pixel_y = rand(-8,8),time=5)
 
 	for(var/i=1,i<=5,i++)

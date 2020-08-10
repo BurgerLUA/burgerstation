@@ -23,7 +23,8 @@ SUBSYSTEM_DEF(events)
 
 /subsystem/events/on_life()
 
-	for(var/event/E in all_events_active)
+	for(var/k in all_events_active)
+		var/event/E = k
 		if(E.end_time <= world.time)
 			E.on_end()
 			E.active = FALSE

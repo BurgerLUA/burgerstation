@@ -154,7 +154,7 @@
 
 	. = ..()
 
-	for(var/obj/item/organ/eye/E in labeled_organs)
+	for(var/obj/item/organ/eye/E in organs)
 		sight |= E.sight_mod
 		vision |= E.vision_mod
 		see_invisible = max(E.see_invisible,see_invisible)
@@ -190,10 +190,12 @@
 
 	var/slow_mul = 1
 
-	for(var/obj/item/I in worn_objects)
+	for(var/k in worn_objects)
+		var/obj/item/I = k
 		slow_mul *= I.get_slowdown_mul_worn()
 
-	for(var/obj/item/I in held_objects)
+	for(var/k in held_objects)
+		var/obj/item/I = k
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			if(I2.click_flags & RIGHT_HAND || I2.click_flags & LEFT_HAND)
@@ -243,7 +245,8 @@
 		O.delete_all_objects()
 
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
-	for(var/obj/item/clothing/C in clothing_list)
+	for(var/k in clothing_list)
+		var/obj/item/clothing/C = k
 		C.quick_equip(src)
 
 mob/living/advanced/Login()
@@ -256,7 +259,8 @@ mob/living/advanced/Login()
 	return .
 
 /mob/living/advanced/proc/restore_local_machines()
-	for(var/obj/structure/interactive/localmachine/L in local_machines)
+	for(var/k in local_machines)
+		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
 
 /mob/living/advanced/proc/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
@@ -328,14 +332,16 @@ mob/living/advanced/Login()
 	return TRUE
 
 /mob/living/advanced/proc/add_worn_item(var/obj/item/C)
-	for(var/obj/hud/inventory/I in inventory)
+	for(var/k in inventory)
+		var/obj/hud/inventory/I = k
 		if(I.add_worn_object(C,FALSE))
 			return TRUE
 
 	return FALSE
 
 /mob/living/advanced/proc/remove_worn_item(var/obj/item/C)
-	for(var/obj/hud/inventory/I in inventory)
+	for(var/k in inventory)
+		var/obj/hud/inventory/I = k
 		if(I.remove_object(C))
 			return TRUE
 
@@ -374,7 +380,8 @@ mob/living/advanced/Login()
 		blood_color = S.default_blood_color
 
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
-	for(var/obj/item/organ/O in organs)
+	for(var/k in organs)
+		var/obj/item/organ/O = k
 		if(!length(O.additional_blends))
 			continue
 		if(O.additional_blends[desired_id])

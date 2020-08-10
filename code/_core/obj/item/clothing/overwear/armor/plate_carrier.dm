@@ -35,7 +35,8 @@
 /obj/item/clothing/overwear/armor/plate_carrier/get_slowdown_mul_worn()
 	. = ..()
 
-	for(var/obj/item/armor_plate/P in installed_plate_carriers)
+	for(var/k in installed_plate_carriers)
+		var/obj/item/armor_plate/P = k
 		. *= P.get_slowdown_mul_worn()
 
 	return .
@@ -46,7 +47,8 @@
 
 	var/power_mul = length(installed_plate_carriers) > 1 ? 0.25 + ((1/length(installed_plate_carriers))*0.75) : 1
 
-	for(var/obj/item/armor_plate/P in installed_plate_carriers)
+	for(var/k in installed_plate_carriers)
+		var/obj/item/armor_plate/P = k
 		for(var/damagetype in P.armor_base)
 			.[damagetype] += P.armor_base[damagetype] > 0 ? P.armor_base[damagetype] * power_mul : P.armor_base[damagetype]
 

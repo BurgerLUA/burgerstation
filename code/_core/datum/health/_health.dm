@@ -55,7 +55,8 @@
 /health/Destroy()
 
 	/*
-	for(var/wound/W in wounds)
+	for(var/k in wounds)
+		var/wound/W = k
 		qdel(W)
 
 	wounds.Cut()

@@ -100,7 +100,8 @@
 	if(keep_items)
 		kept_items = drop_all_items(src,FALSE,TRUE)
 	else
-		for(var/obj/hud/inventory/I in inventory)
+		for(var/k in inventory)
+			var/obj/hud/inventory/I = k
 			I.delete_all_objects()
 
 	remove_all_organs()

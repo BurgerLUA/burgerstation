@@ -37,7 +37,8 @@
 	stored_item.force_move(src)
 	possible_items -= stored_item
 
-	for(var/obj/item/I in possible_items)
+	for(var/k in possible_items)
+		var/obj/item/I = k
 		qdel(I)
 
 	return .

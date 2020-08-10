@@ -21,7 +21,8 @@
 /objective/proc/on_completion()
 
 	if(reward)
-		for(var/mob/living/advanced/player/P in all_players)
+		for(var/k in all_players)
+			var/mob/living/advanced/player/P = k
 			if(P.loyalty_tag != "NanoTrasen")
 				continue
 			var/increased_currency = P.adjust_currency(reward)
@@ -38,7 +39,8 @@
 /objective/proc/get_locations()
 	. = list()
 
-	for(var/atom/A in tracked_atoms)
+	for(var/k in tracked_atoms)
+		var/atom/A = k
 		var/area/A2 = get_area(A)
 		if(A2) . += A2
 

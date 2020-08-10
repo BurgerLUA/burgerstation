@@ -15,7 +15,8 @@
 	if(!client)
 		return
 
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		client.screen += B
 
 	sync_buttons()
@@ -41,7 +42,8 @@
 	show_buttons(draw_buttons,show_flags_whitelist,show_flags_blacklist,speed)
 
 /mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		if(B.flags & show_flags_whitelist && !(B.flags & show_flags_blacklist))
 			B.show(show,speed)
 

@@ -73,6 +73,5 @@
 		verbs += /client/verb/rejuvenate_player
 		verbs += /client/verb/stress_test
 		verbs += /client/verb/print_dps
-		verbs += /client/verb/profile
 
 	return TRUE

@@ -29,7 +29,8 @@
 
 /loot/proc/do_spawn(var/spawn_loc)
 	. = create_loot_table(spawn_loc)
-	for(var/atom/movable/M in .)
+	for(var/k in .)
+		var/atom/movable/M = k
 		pre_spawn(M)
 		INITIALIZE(M)
 		GENERATE(M)

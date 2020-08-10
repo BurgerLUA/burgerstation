@@ -44,7 +44,8 @@
 
 	var/turf/T = get_turf(src)
 	var/did_drop = FALSE
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		if(length(I.drop_held_objects(T)))
 			did_drop = TRUE
 	if(did_drop && is_advanced(loc))

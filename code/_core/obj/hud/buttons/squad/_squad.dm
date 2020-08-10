@@ -39,7 +39,8 @@
 			if(P.current_squad)
 				squad_table["Leave Existing Squad"] = "Leave Existing Squad"
 
-			for(var/squad/S in all_squads)
+			for(var/k in all_squads)
+				var/squad/S = k
 				var/name_format = "[S.name] ([length(S.members)]/[SQUAD_MEMBERS_MAX])"
 				squad_table[name_format] = S
 
@@ -89,7 +90,8 @@
 			return FALSE
 
 		var/found_name = FALSE
-		for(var/squad/S in all_squads)
+		for(var/k in all_squads)
+			var/squad/S = k
 			if(S.name == squad_name)
 				found_name = TRUE
 

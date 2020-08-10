@@ -78,7 +78,8 @@ var/global/list/stored_paths = list()
 
 	sort_by_closest(adjacent_map_nodes,desired_node)
 
-	for(var/obj/marker/map_node/M in adjacent_map_nodes)
+	for(var/k in adjacent_map_nodes)
+		var/obj/marker/map_node/M = k
 		if(M == desired_node)
 			return current_path
 		if(checked_nodes[M])

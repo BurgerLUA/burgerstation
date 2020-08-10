@@ -26,7 +26,8 @@ var/global/list/local_machines = list()
 		cached_image.loc = src
 		icon = null
 
-	for(var/mob/M in all_mobs_with_clients)
+	for(var/k in all_mobs_with_clients)
+		var/mob/M = k
 		update_for_mob(M)
 
 /obj/structure/interactive/localmachine/clicked_on_by_object(caller,object,location,control,params)

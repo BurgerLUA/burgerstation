@@ -13,7 +13,8 @@ SUBSYSTEM_DEF(ai)
 
 /subsystem/ai/on_life()
 
-	for(var/ai/AI in active_ai)
+	for(var/k in active_ai)
+		var/ai/AI = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(AI && !AI.owner)
 			log_error("WARING! AI of type [AI.type] didn't have an owner!")

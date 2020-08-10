@@ -33,7 +33,8 @@ SUBSYSTEM_DEF(wikibot)
 	var/best_score = 0
 	var/best_answer = null
 
-	for(var/list/wikibot_key in wikibot_list)
+	for(var/k in wikibot_list)
+		var/list/wikibot_key = k
 		var/question_keys = wikibot_key["keywords"]
 		var/answer_key = wikibot_key["answer"]
 		var/current_score = 0

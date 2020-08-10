@@ -26,7 +26,8 @@
 
 /obj/marker/generation/proc/grow(var/desired_grow)
 
-	for(var/turf/T in valid_turfs)
+	for(var/k in valid_turfs)
+		var/turf/T = k
 		valid_turfs -= T
 		if(length(forbidden_turfs) && forbidden_turfs[T])
 			continue

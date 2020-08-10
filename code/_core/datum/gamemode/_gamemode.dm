@@ -63,16 +63,20 @@
 
 	objective_text = ""
 
-	for(var/objective/O in active_objectives)
+	for(var/k in active_objectives)
+		var/objective/O = k
 		objective_text += "[O.desc] (ACTIVE)<br>"
 
-	for(var/objective/O in completed_objectives)
+	for(var/k in completed_objectives)
+		var/objective/O = k
 		objective_text += "[O.desc] (COMPLETED)<br>"
 
-	for(var/objective/O in failed_objectives)
+	for(var/k in failed_objectives)
+		var/objective/O = k
 		objective_text += "[O.desc] (FAILED)<br>"
 
-	for(var/obj/hud/button/objectives/O in all_objective_buttons)
+	for(var/k in all_objective_buttons)
+		var/obj/hud/button/objectives/O = k
 		O.set_stored_text(objective_text)
 
 	announce("Central Command Update","Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/voice/station/new_command_report.ogg')

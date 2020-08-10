@@ -26,7 +26,8 @@
 
 	if(length(stored_containers))
 		.["stored_containers"] = list()
-		for(var/obj/item/container/beaker/B in stored_containers)
+		for(var/k in stored_containers)
+			var/obj/item/container/beaker/B = k
 			.["stored_containers"] += list(B.save_item_data(save_inventory))
 
 	return .
@@ -54,7 +55,8 @@
 
 /obj/item/grenade/Destroy()
 
-	for(var/obj/item/I in stored_containers)
+	for(var/k in stored_containers)
+		var/obj/item/I = k
 		qdel(I)
 	stored_containers.Cut()
 
@@ -71,7 +73,8 @@
 
 	. = ..()
 
-	for(var/obj/item/I in stored_containers)
+	for(var/k in stored_containers)
+		var/obj/item/I = k
 		INITIALIZE(I)
 		GENERATE(I)
 
@@ -175,7 +178,8 @@
 		P.damage_atom(T)
 		P.on_hit(T,TRUE)
 
-	for(var/obj/item/container/beaker/B in stored_containers)
+	for(var/k in stored_containers)
+		var/obj/item/container/beaker/B = k
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE)
 		B.reagents.update_container()
 

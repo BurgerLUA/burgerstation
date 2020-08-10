@@ -19,7 +19,7 @@
 	if(. && isturf(target))
 		var/turf/T = target
 		var/cleaning_power = volume_to_splash
-		for(var/obj/effect/cleanable/C in T)
+		for(var/obj/effect/cleanable/C in T.contents)
 			if(cleaning_power <= 0)
 				break
 			qdel(C)

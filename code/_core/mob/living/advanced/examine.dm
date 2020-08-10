@@ -16,17 +16,21 @@
 		for(var/obj/item/clothing/C in worn_objects)
 			var/bits_to_block = (C.blocks_clothing | C.hidden_clothing) & ~C.item_slot
 			blocked_clothing |= bits_to_block
-		for(var/obj/item/C in worn_objects)
+		for(var/k in worn_objects)
+			var/obj/item/C = k
 			if(!is_inventory(C.loc))
 				continue
 			var/obj/hud/inventory/I = C.loc
 			if((C.item_slot & I.item_slot) & blocked_clothing)
 				continue
 			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[C]'>Strip</a>) [capitalize(pronoun)] is wearing \the <b>[C.name]</b> on their [initial(I.loc.name)].")
-		for(var/obj/item/I in held_objects)
+		for(var/k in held_objects)
+			var/obj/item/I = k
 			. += div("notice","(<a href='?src=\ref[examiner];take=\ref[I]'>Take</a>) [capitalize(pronoun)] is holding \the <b>[I.name]</b> on their [initial(I.loc.name)].")
 
-	for(var/obj/item/organ/O in src.organs)
+	for(var/k in src.organs)
+
+		var/obj/item/organ/O = k
 
 		if(!O.health)
 			continue

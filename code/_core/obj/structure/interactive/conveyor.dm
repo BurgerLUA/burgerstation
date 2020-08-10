@@ -78,7 +78,8 @@
 
 	if(desired_turf)
 		var/conveyor_limit = 5
-		for(var/atom/movable/M in loc.contents)
+		for(var/k in loc.contents)
+			var/atom/movable/M = k
 			if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
 				continue
 			if(conveyor_limit <= 0)

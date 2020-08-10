@@ -78,7 +78,8 @@
 		var/mob/living/advanced/A = loc
 		if(!A.dead && A.send_pain(80))
 			on_pain()
-			for(var/obj/item/organ/O in attached_organs)
+			for(var/k in attached_organs)
+				var/obj/item/organ/O = k
 				O.on_pain()
 
 	return ..()
@@ -108,7 +109,8 @@
 /* HEALTH TODO: FIX THIS
 /obj/item/organ/get_examine_text(var/mob/examiner)
 	. = ..()
-	for(var/wound/W in wounds)
+	for(var/k in wounds)
+		var/wound/W = k
 		W.update_name()
 		. += span("notice",W.name)
 
@@ -153,7 +155,8 @@
 		attached_organ.attached_organs -= src
 		attached_organ = null
 
-	for(var/obj/item/organ/O in attached_organs)
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
 		O.unattach_from_parent(T)
 
 	if(T)
@@ -166,7 +169,8 @@
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 
 /obj/item/organ/proc/unattach_children(var/turf/T)
-	for(var/obj/item/organ/O in attached_organs)
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
 		O.unattach_from_parent(T)
 
 /obj/item/organ/proc/gib()

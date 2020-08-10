@@ -19,7 +19,8 @@
 
 		var/mob/living/advanced/A = caller
 
-		for(var/obj/hud/inventory/I in A.inventory)
+		for(var/k in A.inventory)
+			var/obj/hud/inventory/I = k
 			if(!(I.flags & FLAGS_HUD_CONTAINER))
 				continue
 			animate(I,alpha=0,time=4)

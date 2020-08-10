@@ -96,7 +96,8 @@ list(
 /obj/item/device/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(signal_freq == -1) //Sent
-		for(var/obj/item/device/radio/S in all_radios)
+		for(var/k in all_radios)
+			var/obj/item/device/radio/S = k
 			if(S == src)
 				continue
 			S.trigger(caller,src,frequency,signal_code)

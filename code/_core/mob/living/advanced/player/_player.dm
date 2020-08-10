@@ -170,7 +170,8 @@ mob/living/advanced/player/on_life_client()
 		ai_steps++
 
 		if(ai_steps >= VIEW_RANGE || (old_loc && src.loc && old_loc.z != src.loc.z))
-			for(var/ai/A in SSai.inactive_ai)
+			for(var/k in SSai.inactive_ai)
+				var/ai/A = k
 				if(!A.owner)
 					to_chat("Warning! [A.get_debug_name()] had no owner!")
 					qdel(A)

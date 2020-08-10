@@ -185,7 +185,8 @@
 		on_hit(collide_with_turf)
 		return TRUE
 
-	for(var/atom/movable/A in new_loc.contents)
+	for(var/k in new_loc.contents)
+		var/atom/movable/A = k
 		if(A == owner || A == weapon)
 			continue
 		var/atom/collide_atom = A.projectile_should_collide(src,new_loc,old_loc)
@@ -196,7 +197,8 @@
 		on_hit(collide_atom)
 		return TRUE
 
-	for(var/mob/living/L in new_loc.old_living)
+	for(var/k in new_loc.old_living)
+		var/mob/living/L = k
 		if(L.dead)
 			continue
 		if(L.move_delay > 0)

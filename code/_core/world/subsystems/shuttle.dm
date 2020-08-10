@@ -15,7 +15,8 @@ SUBSYSTEM_DEF(shuttle)
 
 /subsystem/shuttle/on_life()
 
-	for(var/obj/shuttle_controller/SC in all_shuttle_controlers)
+	for(var/k in all_shuttle_controlers)
+		var/obj/shuttle_controller/SC = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		SC.time++
 		if(!SC.on_shuttle_think())

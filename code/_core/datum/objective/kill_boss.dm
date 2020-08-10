@@ -16,7 +16,8 @@ var/list/possible_boss_targets
 
 /objective/kill_boss/get_valid_targets()
 	. = list()
-	for(var/mob/living/L in possible_boss_targets)
+	for(var/k in possible_boss_targets)
+		var/mob/living/L = k
 		if(L.dead)
 			continue
 		. += L
@@ -39,7 +40,8 @@ var/list/possible_boss_targets
 
 /objective/kill_boss/check_completion()
 
-	for(var/mob/living/L in tracked_atoms)
+	for(var/k in tracked_atoms)
+		var/mob/living/L = k
 		if(!(L.dead || L.qdeleting))
 			return ACTIVE
 

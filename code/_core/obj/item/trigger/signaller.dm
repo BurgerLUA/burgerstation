@@ -49,7 +49,8 @@ var/global/obj/item/device/signaller/all_signalers = list()
 /obj/item/device/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(signal_freq == -1 && signal_code == -1)
-		for(var/obj/item/device/signaller/S in all_signalers)
+		for(var/k in all_signalers)
+			var/obj/item/device/signaller/S = k
 			if(S == src)
 				continue
 			S.trigger(caller,src,frequency_current,signal_current)

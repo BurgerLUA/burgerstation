@@ -168,7 +168,8 @@
 
 		var/list/valid_spectators = list()
 
-		for(var/mob/M in all_mobs_with_clients)
+		for(var/k in all_mobs_with_clients)
+			var/mob/M = k
 			valid_spectators[M.name] = M
 
 		var/mob/selection = input("Who do you want to spectate?","Spectate Choice") as null|anything in valid_spectators

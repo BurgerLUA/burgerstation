@@ -62,7 +62,8 @@
 
 /obj/item/magazine/Destroy()
 
-	for(var/obj/item/bullet_cartridge/B in stored_bullets)
+	for(var/k in stored_bullets)
+		var/obj/item/bullet_cartridge/B = k
 		qdel(B)
 
 	stored_bullets.Cut()

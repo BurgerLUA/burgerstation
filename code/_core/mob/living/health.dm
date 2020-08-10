@@ -42,7 +42,8 @@
 		M.update_stats(src)
 
 	if(length(screen_blood))
-		for(var/obj/hud/screen_blood/SB in screen_blood)
+		for(var/k in screen_blood)
+			var/obj/hud/screen_blood/SB = k
 			SB.update_stats()
 
 	return TRUE
@@ -156,7 +157,8 @@
 		INITIALIZE(O)
 		GENERATE(O)
 
-	for(var/atom/movable/M in target.contents)
+	for(var/k in target.contents)
+		var/atom/movable/M = k
 		if(is_organ(M))
 			continue
 		M.force_move(T)

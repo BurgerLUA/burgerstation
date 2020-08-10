@@ -5,7 +5,8 @@
 
 	var/should_deploy = FALSE
 
-	for(var/obj/item/C in additional_clothing_stored)
+	for(var/k in additional_clothing_stored)
+		var/obj/item/C = k
 
 		if(!is_clothing(C))
 			if(caller.put_in_hands(C,caller.right_item))
@@ -25,7 +26,8 @@
 
 /obj/item/clothing/proc/remove_additonal_clothing()
 
-	for(var/obj/item/C in additional_clothing_stored)
+	for(var/k in additional_clothing_stored)
+		var/obj/item/C = k
 		C.drop_item(src)
 
 	return TRUE

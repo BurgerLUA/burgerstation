@@ -198,7 +198,8 @@
 
 	additional_clothing_parent = null
 
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		qdel(I)
 
 	inventories.Cut()
@@ -231,7 +232,8 @@
 	if(!length(inventories))
 		return null
 
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		if(bypass && length(I.held_objects) >= I.held_slots)
 			continue
 		if(I.can_hold_object(object,enable_messages))
@@ -375,7 +377,8 @@
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
 	if(is_container)
-		for(var/obj/hud/inventory/I in inventories)
+		for(var/k in inventories)
+			var/obj/hud/inventory/I = k
 			I.update_owner(new_location.owner)
 
 	if(old_location && new_location)
@@ -429,7 +432,8 @@
 
 	var/list/returning_list = list()
 
-	for(var/obj/hud/inventory/I in inventories)
+	for(var/k in inventories)
+		var/obj/hud/inventory/I = k
 		if(length(I.held_objects) && I.held_objects[1])
 			returning_list += I.held_objects[1]
 

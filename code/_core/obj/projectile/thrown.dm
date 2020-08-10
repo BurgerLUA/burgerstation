@@ -16,7 +16,8 @@
 
 	. = ..()
 
-	for(var/atom/movable/A in src.contents)
+	for(var/k in src.contents)
+		var/atom/movable/A = k
 		if(A.qdeleting)
 			A.force_move(null)
 			continue
@@ -35,7 +36,8 @@
 
 	. =..()
 
-	for(var/atom/movable/A in src.contents)
+	for(var/k in src.contents)
+		var/atom/movable/A = k
 		A.set_dir(dir)
 		if(!is_floor(hit_atom))
 			A.force_move(previous_loc)

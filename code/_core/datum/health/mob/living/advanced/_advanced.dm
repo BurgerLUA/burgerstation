@@ -134,7 +134,8 @@
 	var/mob/living/advanced/A = owner
 	damage[BRUTE] = 0
 	damage[BURN] = 0
-	for(var/obj/item/organ/O in A.organs)
+	for(var/k in A.organs)
+		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
 		damage[BRUTE] += O.health.damage[BRUTE] * O.health_coefficient

@@ -14,7 +14,8 @@
 	var/opening = FALSE
 	var/should_center = length(inventories) <= MAX_INVENTORY_X
 
-	for(var/obj/hud/inventory/I in A.inventory)
+	for(var/k in A.inventory)
+		var/obj/hud/inventory/I = k
 		CHECK_TICK(100,FPS_SERVER*0.5)
 		if(I in inventories)
 			continue

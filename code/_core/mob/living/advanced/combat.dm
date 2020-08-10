@@ -36,7 +36,9 @@
 	var/obj/item/organ/best_organ
 	var/obj/item/organ/best_distance_organ
 
-	for(var/obj/item/organ/O in src.organs)
+	for(var/k in src.organs)
+
+		var/obj/item/organ/O = k
 
 		if(!O.can_be_targeted)
 			continue

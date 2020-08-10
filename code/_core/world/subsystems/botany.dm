@@ -11,7 +11,8 @@ SUBSYSTEM_DEF(botany)
 
 /subsystem/botany/on_life()
 
-	for(var/obj/structure/interactive/plant/P in all_plants)
+	for(var/k in all_plants)
+		var/obj/structure/interactive/plant/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		P.on_life()
 

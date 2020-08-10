@@ -9,7 +9,8 @@ SUBSYSTEM_DEF(thinking)
 	tick_usage_max = 75
 
 /subsystem/thinking/on_life()
-	for(var/atom/A in all_thinkers)
+	for(var/k in all_thinkers)
+		var/atom/A = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(!A.think())
 			stop_thinking(A)

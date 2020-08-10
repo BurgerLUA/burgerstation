@@ -60,7 +60,8 @@
 		if(B)
 			var/turf/T = get_turf(B)
 			if(T)
-				for(var/obj/item/clothing/back/fulton/F in fulton_devices)
+				for(var/k in fulton_devices)
+					var/obj/item/clothing/back/fulton/F = k
 					F.try_extract(T)
 
 	return ..()

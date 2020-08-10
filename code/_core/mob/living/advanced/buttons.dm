@@ -12,7 +12,8 @@
 		B.update_owner(src)
 
 /mob/living/advanced/proc/remove_color_scheme_buttons()
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		if(B.type in color_scheme_buttons)
 			B.update_owner(null)
 
@@ -28,12 +29,14 @@
 			B.update_owner(src)
 
 /mob/living/advanced/proc/remove_chargen_buttons()
-	for(var/obj/hud/button/chargen/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		if(B.type in chargen_buttons)
 			B.update_owner(null)
 
 /mob/living/advanced/proc/remove_all_buttons()
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		B.update_owner(null)
 
 

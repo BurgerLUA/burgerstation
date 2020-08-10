@@ -62,7 +62,8 @@
 			valid_turfs += get_step(desired_target,WEST)
 			valid_turfs -= pick(valid_turfs)
 			valid_turfs += get_turf(desired_target)
-			for(var/turf/T in valid_turfs)
+			for(var/k in valid_turfs)
+				var/turf/T = k
 				new/obj/effect/temp/hazard/tentacle/(T,desired_owner = src)
 
 		sleep(10)

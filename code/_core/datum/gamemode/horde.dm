@@ -32,7 +32,8 @@
 	round_time_next = HORDE_DELAY_WAIT //Skip to gearing. Nothing to wait for.
 	announce("Free-Roam Horde Mode","Starting new round...","Roam around the map completing set objectives while hostile enemies prevent you from doing so.")
 
-	for(var/turf/T in horde_spawnpoints)
+	for(var/k in horde_spawnpoints)
+		var/turf/T = k
 		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)

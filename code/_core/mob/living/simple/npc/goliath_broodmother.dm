@@ -57,7 +57,8 @@
 	. = ..()
 
 	if(!dead && initialized)
-		for(var/mob/living/simple/npc/goliath/baby/B in tracked_babies)
+		for(var/k in tracked_babies)
+			var/mob/living/simple/npc/goliath/baby/B = k
 			if(B.dead || B.qdeleting)
 				tracked_babies -= B
 			if(ai && ai.objective_attack && B.ai && !B.ai.objective_attack)

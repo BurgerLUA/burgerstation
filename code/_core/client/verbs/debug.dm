@@ -317,35 +317,3 @@ client/verb/air_test(var/pressure as num)
 	SSvote.create_vote(/vote/continue_round)
 
 	return TRUE
-
-
-/client/verb/profile()
-	set name = "Profile"
-	set category = "Debug"
-
-	for(var/i=1,i<=100,i++)
-		method_01()
-	sleep(10)
-	for(var/i=1,i<=100,i++)
-		method_02()
-
-/proc/method_01()
-
-	. = 0
-
-	for(var/mob/living/L in all_living)
-		.++
-
-	return .
-
-
-/proc/method_02()
-
-	. = 0
-
-	for(var/k in all_living)
-		var/mob/living/L = k
-		.++
-
-
-	return .

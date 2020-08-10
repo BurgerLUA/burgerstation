@@ -34,7 +34,8 @@
 
 	. = ..()
 
-	for(var/obj/item/I in equipment)
+	for(var/k in equipment)
+		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
 
 	return .
@@ -42,7 +43,8 @@
 
 /mob/living/vehicle/on_crush()
 
-	for(var/mob/living/advanced/A in passengers)
+	for(var/k in passengers)
+		var/mob/living/advanced/A = k
 		exit_vehicle(A,loc)
 		A.on_crush()
 
@@ -52,11 +54,13 @@
 
 /mob/living/vehicle/Destroy()
 
-	for(var/mob/living/advanced/A in passengers)
+	for(var/k in passengers)
+		var/mob/living/advanced/A = k
 		exit_vehicle(A,loc)
 	passengers.Cut()
 
-	for(var/obj/item/I in equipment)
+	for(var/k in equipment)
+		var/obj/item/I = k
 		qdel(I)
 	equipment.Cut()
 
@@ -68,7 +72,8 @@
 	return ..()
 
 /mob/living/vehicle/post_death()
-	for(var/mob/living/advanced/A in passengers)
+	for(var/k in passengers)
+		var/mob/living/advanced/A = k
 		exit_vehicle(A, get_turf(src))
 	return ..()
 
@@ -79,7 +84,8 @@
 	return TRUE
 
 /mob/living/vehicle/proc/remove_buttons(var/mob/living/advanced/A)
-	for(var/obj/hud/button/B in A.buttons)
+	for(var/k in A.buttons)
+		var/obj/hud/button/B = k
 		if(B.type in buttons_to_add)
 			B.update_owner(null)
 	return TRUE
@@ -209,7 +215,8 @@
 	. = ..()
 
 	if(.)
-		for(var/mob/living/L in passengers)
+		for(var/k in passengers)
+			var/mob/living/L = k
 			L.set_dir(.)
 
 	return .
@@ -248,7 +255,8 @@
 	. = ..()
 
 	if(.)
-		for(var/atom/movable/M in passengers)
+		for(var/k in passengers)
+			var/atom/movable/M = k
 			M.force_move(src.loc)
 
 	return .

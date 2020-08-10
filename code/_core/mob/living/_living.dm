@@ -245,12 +245,14 @@
 		following.followers -= src
 		following = null
 
-	for(var/experience/E in attributes)
+	for(var/k in attributes)
+		var/experience/E = k
 		qdel(E)
 
 	attributes.Cut()
 
-	for(var/experience/E in skills)
+	for(var/k in skills)
+		var/experience/E = k
 		qdel(E)
 
 	skills.Cut()
@@ -258,7 +260,8 @@
 	QDEL_NULL(ai)
 
 	if(screen_blood)
-		for(var/obj/hud/screen_blood/S in screen_blood)
+		for(var/k in screen_blood)
+			var/obj/hud/screen_blood/S = k
 			qdel(S)
 
 		screen_blood.Cut()
@@ -357,7 +360,8 @@
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in view(src,VIEW_RANGE))
-			for(var/obj/hud/button/boss_health/B in P.buttons)
+			for(var/k in P.buttons)
+				var/obj/hud/button/boss_health/B = k
 				B.target_boss = src
 				B.update_stats()
 

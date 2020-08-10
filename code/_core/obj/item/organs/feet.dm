@@ -45,7 +45,8 @@
 	return .
 
 /obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
-	for(var/obj/hud/inventory/H in src.inventories)
+	for(var/k in src.inventories)
+		var/obj/hud/inventory/H = k
 		var/obj/item/I = H.get_top_worn_object()
 		if(I)
 			return I.get_footsteps(original_footsteps,enter)

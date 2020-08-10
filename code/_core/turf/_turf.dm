@@ -71,7 +71,8 @@
 			return v
 
 	if(old_living)
-		for(var/mob/living/L in old_living)
+		for(var/k in old_living)
+			var/mob/living/L = k
 			if(!L.dead && L.move_delay > 0 && attacker != L)
 				return L
 
@@ -147,7 +148,7 @@
 
 /turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
 
-	for(var/atom/A in contents)
+	for(var/atom/A in src.contents)
 		A.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
 
 	return ..()

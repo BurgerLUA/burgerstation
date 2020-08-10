@@ -16,7 +16,8 @@ SUBSYSTEM_DEF(living)
 	if(!ENABLE_MOB)
 		return ..()
 
-	for(var/mob/living/L in all_living)
+	for(var/k in all_living)
+		var/mob/living/L = k
 		if(istype(L.loc,/turf/simulated/wall))
 			qdel(L)
 			continue
@@ -31,7 +32,8 @@ SUBSYSTEM_DEF(living)
 
 	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
 
-	for(var/mob/living/L in all_living)
+	for(var/k in all_living)
+		var/mob/living/L = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		L.on_life()
 		if(do_slow)

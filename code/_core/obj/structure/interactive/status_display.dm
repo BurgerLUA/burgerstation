@@ -2,7 +2,8 @@ var/global/list/global_status_displays = list()
 
 /proc/set_status_display(var/status_id,var/message)
 
-	for(var/obj/structure/interactive/status_display/global_display/S in global_status_displays)
+	for(var/k in global_status_displays)
+		var/obj/structure/interactive/status_display/global_display/S = k
 		if(S.status_id == status_id)
 			S.set_text(message)
 

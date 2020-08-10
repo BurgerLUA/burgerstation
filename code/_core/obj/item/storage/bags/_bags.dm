@@ -132,7 +132,8 @@
 
 	var/chosen_color
 	var/filled_slots = 0
-	for(var/obj/hud/inventory/I in src.inventories)
+	for(var/k in src.inventories)
+		var/obj/hud/inventory/I = k
 		filled_slots += length(I.held_objects)
 		if(!chosen_color)
 			var/obj/item/I2 = I.get_top_held_object()

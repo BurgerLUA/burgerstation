@@ -12,7 +12,7 @@
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE
 
-	for(var/atom/movable/M in contents)
+	for(var/atom/movable/M in src.contents)
 		if(M.collision_flags & FLAG_COLLISION_WALKING)
 			return FALSE
 

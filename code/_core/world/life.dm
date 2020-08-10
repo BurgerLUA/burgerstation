@@ -21,7 +21,8 @@
 
 	var/benchmark = world.timeofday
 
-	for(var/subsystem/SS in active_subsystems)
+	for(var/k in active_subsystems)
+		var/subsystem/SS = k
 		var/local_benchmark = world.timeofday
 		log_subsystem(SS.name,"Initializing...")
 		INITIALIZE(SS)
@@ -35,7 +36,8 @@
 
 	//SSdiscord.send_message("Starting new round (ID: [SSlogging.round_id]). Join at <byond://[world.internet_address]:[world.port]>! <@&695106439911571516>")
 
-	for(var/subsystem/SS in active_subsystems)
+	for(var/k in active_subsystems)
+		var/subsystem/SS = k
 		spawn
 			while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
 				if(SS.overtime_count < SS.overtime_max)

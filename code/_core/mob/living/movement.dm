@@ -148,7 +148,8 @@
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
-	for(var/obj/hud/button/B in buttons)
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
 		if(B.type == /obj/hud/button/sneak)
 			var/obj/hud/button/sneak/S = B
 			S.sneaking = on
