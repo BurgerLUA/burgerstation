@@ -40,8 +40,8 @@
 			new object_to_place(T)
 			objects_placed++
 
-		for(var/k in DIRECTIONS_CARDINAL)
-			var/turf/T2 = get_step(T,k)
+		for(var/v in DIRECTIONS_CARDINAL)
+			var/turf/T2 = get_step(T,v)
 			if(!T2)
 				continue
 			if(prob(skip_chance))

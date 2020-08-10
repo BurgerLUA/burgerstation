@@ -174,7 +174,8 @@ var/global/list/all_clients = list() //Assoc list
 		sync_permissions()
 
 	var/mob/found_mob = null
-	for(var/mob/M in all_mobs)
+	for(var/k in all_mobs)
+		var/mob/M = k
 		if(M.ckey_last == ckey)
 			found_mob = M
 			break
@@ -201,7 +202,8 @@ var/global/list/all_clients = list() //Assoc list
 
 
 	if(SSvote && SSvote.initialized)
-		for(var/vote/V in SSvote.active_votes)
+		for(var/k in SSvote.active_votes)
+			var/vote/V = k
 			V.show(src)
 
 	return mob
@@ -211,7 +213,8 @@ var/global/list/all_clients = list() //Assoc list
 	var/list/rank/ranks = list(SSadmin.stored_ranks["user"])
 	if(world.port == 0) ranks |= SSadmin.stored_ranks["host"]
 	if(SSadmin.stored_user_ranks[ckey])
-		for(var/rank/R in SSadmin.stored_user_ranks[ckey])
+		for(var/k in SSadmin.stored_user_ranks[ckey])
+			var/rank/R = k
 			ranks |= R
 
 	return ranks
@@ -221,7 +224,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/list/rank/ranks = get_ranks()
 
-	for(var/rank/R in ranks)
+	for(var/k in ranks)
+		var/rank/R = k
 		to_chat("Adding [R.name] permissions...")
 		permissions |= R.permissions
 

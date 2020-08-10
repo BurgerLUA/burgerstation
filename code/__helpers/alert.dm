@@ -40,7 +40,8 @@
 	var/list/list_of_ais = list()
 	list_of_ais.Add(SSbossai.inactive_ai,SSbossai.active_ai,SSai.active_ai,SSai.inactive_ai)
 
-	for(var/ai/AI in list_of_ais)
+	for(var/k in list_of_ais)
+		var/ai/AI = k
 		var/mob/M = AI.owner
 		if(get_dist(M,epicenter) > range)
 			continue

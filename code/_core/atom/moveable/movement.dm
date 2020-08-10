@@ -84,7 +84,8 @@
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
 		if(loc) //This needs to be here.
-			for(var/atom/movable/AM in loc.contents)
+			for(var/k in loc.contents)
+				var/atom/movable/AM = k
 				if(AM == src)
 					continue
 				AM.Uncrossed(src,new_loc,old_loc)
@@ -94,7 +95,8 @@
 	if(loc)
 		loc.Entered(src, old_loc)
 		if(loc) //This needs to be here.
-			for(var/atom/movable/AM in loc.contents)
+			for(var/k in loc.contents)
+				var/atom/movable/AM = k
 				if(AM == src)
 					continue
 				AM.Crossed(src,new_loc,old_loc)
@@ -176,7 +178,8 @@
 		return FALSE
 
 	//TRY: Exit the contents.
-	for(var/atom/movable/M in OldLoc.contents)
+	for(var/k in OldLoc.contents)
+		var/atom/movable/M = k
 		if(M == src)
 			continue
 		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
@@ -187,7 +190,8 @@
 		return FALSE
 
 	//TRY: Enter the contents.
-	for(var/atom/movable/M in NewLoc.contents)
+	for(var/k in NewLoc.contents)
+		var/atom/movable/M = k
 		if(M == src)
 			continue
 		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
@@ -198,7 +202,8 @@
 		OldLoc.Exited(src,NewLoc)
 
 		//DO: Exited the contents.
-		for(var/atom/A in OldLoc.contents)
+		for(var/k in OldLoc.contents)
+			var/atom/movable/A = k
 			if(A == src)
 				continue
 			A.Uncrossed(src,NewLoc,OldLoc)
@@ -216,7 +221,8 @@
 		NewLoc.Entered(src,OldLoc)
 
 		//DO: Enter the contents.
-		for(var/atom/A in NewLoc.contents)
+		for(var/k in NewLoc.contents)
+			var/atom/movable/A = k
 			if(A == src)
 				continue
 			A.Crossed(src,NewLoc,OldLoc)

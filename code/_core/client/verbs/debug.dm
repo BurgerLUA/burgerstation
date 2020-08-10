@@ -256,7 +256,8 @@ client/verb/air_test(var/pressure as num)
 
 	var/report_string = "<h2>Subsystem Report</h2>CPU Usage: [CEILING(world.cpu,1)]%<br>Tick Usage: [CEILING(world.tick_usage,1)]%<br>"
 
-	for(var/subsystem/S in active_subsystems)
+	for(var/k in active_subsystems)
+		var/subsystem/S = k
 		if(S.last_run_duration || S.total_run_duration)
 			report_string += "<b>[S.name]</b>: <pre>LAST: [S.last_run_duration], TOTAL: [S.total_run_duration].</pre><br>"
 
@@ -274,7 +275,8 @@ client/verb/air_test(var/pressure as num)
 	set name = "Force Save Everyone (DANGER)"
 	set category = "Debug"
 
-	for(var/mob/living/advanced/player/P in world)
+	for(var/k in all_players)
+		var/mob/living/advanced/player/P = k
 		if(!P.ckey_last || !P.allow_save)
 			continue
 		try

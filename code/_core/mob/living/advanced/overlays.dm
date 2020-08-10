@@ -49,20 +49,6 @@ mob/living/advanced/proc/remove_overlay(var/k)
 	qdel(O)
 	return TRUE
 
-/*
-mob/living/advanced/proc/update_overlay(var/atom/A,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_pixel_x=0,var/desired_pixel_y=0)
-
-	for(var/image/overlay/O in overlays_assoc)
-		if(O.attached_object != A)
-			continue
-		update_overlay_direct(O,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends,desired_pixel_x,desired_pixel_y)
-		return TRUE
-
-	log_error("Tries to update an overlay [A.get_debug_name()] for player [src.get_debug_name()], but it did not exist!")
-
-	return FALSE
-*/
-
 /mob/living/advanced/proc/update_all_blends() //Avoid using this.
 	for(var/k in overlays_assoc)
 		var/image/overlay/O = overlays_assoc[k]

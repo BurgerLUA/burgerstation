@@ -21,7 +21,8 @@
 		output_target_list += "chat_combat.output"
 
 	if(chat_type & CHAT_TYPE_RADIO) //Prevents radio spam if you heard it already.
-		for(var/list/message_data in queued_chat_messages)
+		for(var/k in queued_chat_messages)
+			var/list/message_data = k
 			if(message_data["text"] == text)
 				return FALSE
 

@@ -35,7 +35,8 @@
 	if(get_dist(N,start_turf) > roaming_distance)
 		valid_directions -= NORTH
 	else
-		for(var/atom/A in N.contents)
+		for(var/k in N.contents)
+			var/atom/movable/A = k
 			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= NORTH
 				break
@@ -43,7 +44,8 @@
 	if(get_dist(E,start_turf) > roaming_distance)
 		valid_directions -= EAST
 	else
-		for(var/atom/A in E.contents)
+		for(var/k in E.contents)
+			var/atom/movable/A = k
 			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= EAST
 				break
@@ -51,7 +53,8 @@
 	if(get_dist(S,start_turf) > roaming_distance)
 		valid_directions -= SOUTH
 	else
-		for(var/atom/A in S.contents)
+		for(var/k in S.contents)
+			var/atom/movable/A = k
 			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= SOUTH
 				break
@@ -59,7 +62,8 @@
 	if(get_dist(W,start_turf) > roaming_distance)
 		valid_directions -= WEST
 	else
-		for(var/atom/A in W.contents)
+		for(var/k in W.contents)
+			var/atom/movable/A = k
 			if(ismob(A) || is_mob_blocker(A))
 				valid_directions -= WEST
 				break

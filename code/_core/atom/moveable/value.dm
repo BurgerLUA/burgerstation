@@ -5,7 +5,8 @@
 
 	. = get_base_value()
 
-	for(var/atom/movable/M in contents)
+	for(var/k in contents)
+		var/atom/movable/M = k
 		. += M.calculate_value()
 
 	if(reagents && length(reagents.stored_reagents))

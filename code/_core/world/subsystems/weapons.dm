@@ -16,8 +16,8 @@ SUBSYSTEM_DEF(weapons)
 
 	for(var/k in subtypesof(/obj/item/weapon/ranged/bullet))
 		var/obj/item/weapon/ranged/bullet/B = new k(locate(1,1,1))
-		for(var/k in created_bullets)
-			var/obj/item/bullet_cartridge/C = k
+		for(var/v in created_bullets)
+			var/obj/item/bullet_cartridge/C = v
 			if(C.bullet_length < B.bullet_length_min)
 				continue
 			if(C.bullet_length > B.bullet_length_max)
@@ -30,8 +30,8 @@ SUBSYSTEM_DEF(weapons)
 		qdel(B)
 
 	for(var/k in created_bullets)
-		var/obj/item/I
-		qdel(k)
+		var/obj/item/I = k
+		qdel(I)
 
 	created_bullets.Cut()
 

@@ -562,7 +562,8 @@
 		var/list/possible_targets = get_possible_targets()
 		var/atom/best_target
 		var/best_score = 0
-		for(var/mob/living/L in possible_targets)
+		for(var/k in possible_targets)
+			var/mob/living/L = k
 			var/local_score = get_attack_score(L)
 			if(!best_score || local_score > best_score)
 				best_target = L

@@ -57,21 +57,24 @@
 
 	to_chat("<h2>Active Objectives</h2>")
 	if(length(G.active_objectives))
-		for(var/objective/O in G.active_objectives)
+		for(var/k in G.active_objectives)
+			var/objective/O = k
 			to_chat(O.get_description())
 	else
 		to_chat("No active objectives.")
 
 	to_chat("<h2>Completed Objectives</h2>")
 	if(length(G.completed_objectives))
-		for(var/objective/O in G.completed_objectives)
+		for(var/k in G.completed_objectives)
+			var/objective/O = k
 			to_chat(O.get_description())
 	else
 		to_chat("No completed objectives.")
 
 	to_chat("<h2>Failed Objectives</h2>")
 	if(length(G.failed_objectives))
-		for(var/objective/O in G.failed_objectives)
+		for(var/k in G.failed_objectives)
+			var/objective/O = k
 			to_chat(O.get_description())
 	else
 		to_chat("No failed objectives.")

@@ -64,7 +64,8 @@
 		return FALSE
 
 	if(M.parallax)
-		for(var/obj/parallax/P in M.parallax)
+		for(var/k in M.parallax)
+			var/obj/parallax/P = k
 			qdel(P)
 			M.parallax -= P
 		M.parallax.Cut()

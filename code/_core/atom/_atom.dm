@@ -93,20 +93,16 @@
 
 	set_light(FALSE)
 
-	for(var/datum/O in underlays)
-		qdel(O)
-	underlays.Cut()
-
-	for(var/datum/O in overlays)
-		qdel(O)
-	overlays.Cut()
+	QDEL_CUT(underlays)
+	QDEL_CUT(overlays)
 
 	QDEL_NULL(reagents)
 	QDEL_NULL(health)
 
 	stop_thinking(src)
 
-	for(var/atom/A in contents)
+	for(var/k in contents)
+		var/atom/movable/A = k
 		qdel(A)
 
 	appearance = null
@@ -226,7 +222,8 @@
 	if(check_loc && loc && !isturf(loc))
 		return FALSE
 
-	for(var/atom/A in contents)
+	for(var/k in contents)
+		var/atom/movable/A = k
 		if(!A.is_safe_to_delete(FALSE))
 			return FALSE
 
