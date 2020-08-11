@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	shoot_delay = 2
 	view_punch = 4
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/tungsten_carbine/tungsten.ogg')
 
 	heat_per_shot = 0.01
 	heat_max = 0.03
