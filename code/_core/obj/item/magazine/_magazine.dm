@@ -63,6 +63,7 @@
 /obj/item/magazine/Destroy()
 
 	for(var/k in stored_bullets)
+		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
 		qdel(B)
 

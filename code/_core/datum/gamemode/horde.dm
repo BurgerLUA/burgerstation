@@ -50,6 +50,7 @@
 	add_objective(/objective/kill_boss)
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+	next_objective_update = world.time + 100
 	return TRUE
 
 /gamemode/horde/on_continue()

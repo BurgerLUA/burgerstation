@@ -128,6 +128,7 @@
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc,var/play_sound=FALSE)
 
 	for(var/k in stored_bullets)
+		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
 		eject_stored_bullet(caller,B,new_loc,play_sound)
 
@@ -136,6 +137,7 @@
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc,var/play_sound=FALSE)
 
 	for(var/k in stored_bullets)
+		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
 		if(!B.is_spent)
 			continue

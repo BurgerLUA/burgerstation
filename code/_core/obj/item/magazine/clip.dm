@@ -11,6 +11,7 @@
 		var/obj/item/weapon/ranged/bullet/G = object
 		var/insert_count = 0
 		for(var/k in stored_bullets)
+			if(!k) continue
 			var/obj/item/bullet_cartridge/B = k
 			var/target_point = get_first_missing_value(G.stored_bullets)
 			if(target_point == 0)
