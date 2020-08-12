@@ -89,6 +89,7 @@
 		/obj/item/attachment/sight/red_dot,
 		/obj/item/attachment/sight/scope,
 		/obj/item/attachment/sight/scope/large,
+		/obj/item/attachment/undermount/bipod,
 		/obj/item/attachment/undermount/burst_adapter,
 		/obj/item/attachment/undermount/vertical_grip
 	)
