@@ -92,3 +92,12 @@
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
 	defense_rating = SKELETON_ARMOR
+
+
+//Monkey
+/obj/item/organ/groin/monkey
+	name = "monkey groin"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+
+/obj/item/organ/groin/monkey/female
+	icon_state = BODY_GROIN_FEMALE

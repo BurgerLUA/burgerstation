@@ -46,6 +46,7 @@
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE
 	)
 

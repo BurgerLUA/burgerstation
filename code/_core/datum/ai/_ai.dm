@@ -589,10 +589,10 @@
 
 	if(dist <= attack_distance_max)
 		if(attackers[L])
-			return 3000 - L.health.health_current
+			return 3000 - (L.health ? L.health.health_current : 0)
 		if(L.ai && L.ai.objective_attack == owner)
-			return 2000 - L.health.health_current
-		return 1000 - L.health.health_current
+			return 2000 - (L.health ? L.health.health_current : 0)
+		return 1000 - (L.health ? L.health.health_current : 0)
 
 	return -dist
 

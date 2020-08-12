@@ -11,6 +11,8 @@
 	var/attachment_delay_mod
 	var/attachment_inaccuracy_mod
 
+	var/attachment_prone_mod
+
 	var/attachment_burst_add
 	var/attachment_shoot_alert //Should really only be used by barrels.
 	var/attachment_shoot_sound
@@ -138,11 +140,12 @@
 /obj/item/attachment/undermount/vertical_grip
 	name = "vertical grip"
 	desc = "Firmly grasp it."
-	desc_extended = "A simple underbarrel vertical grip designed to reduce recoil and increase accuracy."
+	desc_extended = "A simple underbarrel vertical grip designed to reduce recoil and increase accuracy. Difficult to use while prone."
 	icon_state = "vertical_grip"
 	attachment_accuracy_mod = 0.85
 	attachment_heat_mul = 0.75
 	attachment_recoil_mod = 0.75
+	attachment_prone_mod = 1.25
 	value = 150
 
 /obj/item/attachment/undermount/burst_adapter
@@ -156,6 +159,14 @@
 	attachment_force_automatic = TRUE
 	value = 400
 
+/obj/item/attachment/undermount/bipod
+	name = "bipod"
+	desc = "Firmly mount it."
+	desc_extended = "A simple bipod mount that nearly eliminates recoil and accuracy penalties when used while laying down or on a barricade. The bulkiness of the weapon causes inaccuracy while not prone."
+	icon_state = "bipod"
+	attachment_accuracy_mod = 1.1
+	attachment_prone_mod = 0.5
+	value = 250
 
 /obj/item/attachment/stock/
 	name = "stock attachment"

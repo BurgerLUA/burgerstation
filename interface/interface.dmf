@@ -298,7 +298,6 @@ window "control"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -306,8 +305,6 @@ window "control"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 814x814
-		inner-size = 800x800
 	elem "input"
 		type = INPUT
 		pos = 0,780
@@ -336,7 +333,6 @@ window "control"
 		size = 200x20
 		anchor1 = 50,0
 		anchor2 = 75,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Github"
 		command = "open-github"
@@ -346,7 +342,6 @@ window "control"
 		size = 200x20
 		anchor1 = 25,0
 		anchor2 = 50,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Discord"
 		command = "open-discord"
@@ -356,7 +351,6 @@ window "control"
 		size = 200x20
 		anchor1 = 0,0
 		anchor2 = 25,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = ""
@@ -366,13 +360,48 @@ window "control"
 		size = 800x760
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
 		right = "chat"
 		is-vert = false
 		splitter = 25
+
+window "edit"
+	elem "edit"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		border = sunken
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Edit"
+		outer-size = 656x538
+		inner-size = 640x499
+	elem "exit"
+		type = BUTTON
+		pos = 540,460
+		size = 100x20
+		anchor1 = 100,100
+		anchor2 = 100,100
+		background-color = none
+		saved-params = "is-checked"
+		text = "Save and Exit"
+		command = ""
+	elem "input"
+		type = INPUT
+		pos = 0,0
+		size = 640x460
+		anchor1 = 0,0
+		anchor2 = 100,96
+		font-family = "monospace"
+		is-default = true
+		saved-params = ""
+		multi-line = true
+		no-command = true
 
 window "info"
 	elem "info"
@@ -381,7 +410,6 @@ window "info"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -389,8 +417,6 @@ window "info"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 814x814
-		inner-size = 800x800
 	elem "info"
 		type = INFO
 		pos = 0,0
@@ -404,7 +430,6 @@ window "info"
 		right-click = true
 		saved-params = ""
 		highlight-color = #000000
-		tab-background-color = none
 		tab-font-family = "Arial Narrow"
 		tab-font-size = 10
 
@@ -415,7 +440,6 @@ window "main"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Burgerstation 13"
@@ -423,15 +447,12 @@ window "main"
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
-		outer-size = 816x878
-		inner-size = 800x819
 	elem "splitter"
 		type = CHILD
 		pos = 0,0
 		size = 800x800
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "map"

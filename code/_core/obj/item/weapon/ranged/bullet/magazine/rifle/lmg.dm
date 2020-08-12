@@ -48,6 +48,7 @@
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE
 	)
 

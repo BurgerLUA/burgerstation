@@ -310,3 +310,36 @@
 
 	target_bounds_y_min = 11
 	target_bounds_y_max = 14
+
+
+
+
+//Skeleton
+/obj/item/organ/hand/monkey
+	name = "right monkey hand"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+	inventories = list(
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
+	)
+
+	defense_rating = SKELETON_ARMOR
+
+/obj/item/organ/hand/monkey/left
+	name = "left monkey hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14

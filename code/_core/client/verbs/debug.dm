@@ -195,7 +195,7 @@ client/verb/air_test(var/pressure as num)
 		return FALSE
 
 	if(valid_count == 1)
-		var/datum/A = valid_count[1]
+		var/datum/A = valid_objects[1]
 		A = new A(usr.loc)
 		INITIALIZE(A)
 		if(isobj(A))

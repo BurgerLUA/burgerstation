@@ -53,4 +53,14 @@
 			close_menu(P,"paper")
 			P.active_paper = null
 
+		/*
+		if(href_list["edit"])
+			var/desired_page = clamp(text2num(href_list["edit"]),1,length(P.active_paper.data))
+			var/desired_new_text = input(usr,"What should the text say?","Edit Text",P.active_paper.data[desired_page]) as message
+			if(desired_new_text)
+				desired_new_text = sanitize(desired_new_text)
+				P.active_paper.data[desired_page] = desired_new_text
+				set_text(P,P.active_paper.data[desired_page],P.active_paper.name,desired_page,length(P.active_paper.data))
+		*/
+
 	return ..()

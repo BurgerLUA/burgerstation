@@ -366,7 +366,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(spent_bullet.projectile_count)
 			bullet_count_to_use = spent_bullet.projectile_count
 		if(spent_bullet.base_spread)
-			bullet_spread = spent_bullet.base_spread
+			bullet_spread += spent_bullet.base_spread
 		if(spent_bullet.projectile_speed)
 			projectile_speed_to_use = spent_bullet.projectile_speed
 		if(spent_bullet.bullet_color)
@@ -377,25 +377,35 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		handle_empty(caller)
 		return FALSE
 
-	var/list/attachment_list = list(attachment_barrel,attachment_sight,attachment_undermount,attachment_stock)
-
-	for(var/k in attachment_list)
-		if(!k)
-			continue
-		var/obj/item/attachment/A = k
-		if(A.attachment_accuracy_mod) bullet_spread *= A.attachment_accuracy_mod
-		if(A.attachment_damage_mod) damage_multiplier_to_use *= A.attachment_damage_mod
-		if(A.attachment_recoil_mod) view_punch_to_use *= A.attachment_recoil_mod
-		if(A.attachment_delay_mod) shoot_delay_to_use *= A.attachment_delay_mod
-		if(A.attachment_burst_add) max_bursts_to_use += A.attachment_burst_add
-		if(A.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= A.attachment_inaccuracy_mod
-		if(A.attachment_shoot_alert) shoot_alert_to_use = A.attachment_shoot_alert
-		if(A.attachment_shoot_sound) shoot_sounds_to_use = A.attachment_shoot_sound
-
-	next_shoot_time = world.time + shoot_delay_to_use
-	projectile_speed_to_use = min(projectile_speed_to_use,31)
-
 	if(projectile_to_use)
+
+		var/prone = FALSE
+		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
+		if(is_living(caller))
+			var/mob/living/L = caller
+			accuracy_loss += (get_skill_spread(L) + get_movement_spread(L))
+			if(L.horizontal)
+				prone = TRUE
+				accuracy_loss *= 0.75
+				inaccuracy_modifer_to_use *= 0.75
+
+		var/list/attachment_list = list(attachment_barrel,attachment_sight,attachment_undermount,attachment_stock)
+		for(var/k in attachment_list)
+			if(!k)
+				continue
+			var/obj/item/attachment/A = k
+			if(A.attachment_accuracy_mod) accuracy_loss *= A.attachment_accuracy_mod
+			if(A.attachment_damage_mod) damage_multiplier_to_use *= A.attachment_damage_mod
+			if(A.attachment_recoil_mod) view_punch_to_use *= A.attachment_recoil_mod
+			if(A.attachment_delay_mod) shoot_delay_to_use *= A.attachment_delay_mod
+			if(A.attachment_burst_add) max_bursts_to_use += A.attachment_burst_add
+			if(A.attachment_inaccuracy_mod) inaccuracy_modifer_to_use *= A.attachment_inaccuracy_mod
+			if(A.attachment_shoot_alert) shoot_alert_to_use = A.attachment_shoot_alert
+			if(A.attachment_shoot_sound) shoot_sounds_to_use = A.attachment_shoot_sound
+			if(prone && A.attachment_prone_mod)
+				accuracy_loss *= A.attachment_prone_mod
+				inaccuracy_modifer_to_use *= A.attachment_prone_mod
+				view_punch_to_use *= A.attachment_prone_mod
 
 		var/loyalty_tag = null
 		if(is_living(caller) && use_loyalty_tag)
@@ -416,15 +426,13 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/icon_pos_x = text2num(params[PARAM_ICON_X])
 		var/icon_pos_y = text2num(params[PARAM_ICON_Y])
 
-		var/accuracy_loss = get_static_spread() + get_heat_spread() + bullet_spread
-		if(is_living(caller))
-			var/mob/living/L = caller
-			accuracy_loss += (get_skill_spread(L) + get_movement_spread(L))
 		accuracy_loss = clamp(accuracy_loss,0,0.5)
+		projectile_speed_to_use = min(projectile_speed_to_use,31)
 
 		var/view_punch_time = shoot_delay
 		shoot_projectile(caller,object,location,params,projectile_to_use,damage_type_to_use,icon_pos_x,icon_pos_y,accuracy_loss,projectile_speed_to_use,bullet_count_to_use,bullet_color_to_use,view_punch_to_use,view_punch_time,damage_multiplier_to_use, istype(firing_pin) ? firing_pin.iff_tag : null,loyalty_tag ? loyalty_tag : null,inaccuracy_modifer_to_use)
 
+	next_shoot_time = world.time + shoot_delay_to_use
 	heat_current = min(heat_max, heat_current + heat_per_shot)
 	start_thinking(src)
 

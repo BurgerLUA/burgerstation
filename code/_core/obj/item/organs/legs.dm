@@ -175,3 +175,23 @@
 
 	target_bounds_y_min = 4
 	target_bounds_y_max = 8
+
+
+//Cyborg
+/obj/item/organ/leg/monkey
+	name = "right monkey leg"
+	icon = 'icons/mob/living/advanced/species/monkey.dmi'
+
+
+/obj/item/organ/leg/monkey/left
+	name = "left monkey leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
