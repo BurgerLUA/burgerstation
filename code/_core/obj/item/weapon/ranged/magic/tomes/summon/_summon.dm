@@ -16,8 +16,8 @@
 	if(is_living(summoned_object) && is_living(P.owner))
 		var/mob/living/L = summoned_object
 		var/mob/living/L2 = P.owner
-		L.iff_tag = L2.iff_tag
-		L.loyalty_tag = L2.loyalty_tag
+		L.set_iff_tag(L2.iff_tag)
+		L.set_loyalty_tag(L2.loyalty_tag)
 		if(L2.minion)
 			L2.minion.dust()
 		L2.minion = L
@@ -31,6 +31,11 @@
 			var/mob/living/L = summoned_object
 			if(is_living(P.owner))
 				var/mob/living/L2 = P.owner
-				if(L.ai) L.ai.set_move_objective(L2,TRUE)
+				if(L.ai)
+					L.ai.aggression = 2
+					L.ai.assistance = 1
+					L.ai.reaction_time = 5
+					L.ai.use_cone_vision = FALSE
+					L.ai.set_move_objective(L2,TRUE)
 
 	return ..()

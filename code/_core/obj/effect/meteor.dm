@@ -25,7 +25,7 @@
 	return ..()
 
 /obj/effect/falling_meteor/proc/land()
-	explode(get_turf(src),1,src,src)
+	explode(get_turf(src),2,src,src)
 	src.alpha = 0
 	queue_delete(src,10)
 	return TRUE

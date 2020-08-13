@@ -13,7 +13,11 @@
 		SKILL_UNARMED = 100 //100%
 	)
 
-	fatigue_coefficient =  1
+	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLADE = 1,
+		BLUNT = 1,
+		PIERCE = 1
+	)
 
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED

@@ -15,7 +15,10 @@
 
 	falloff = VIEW_RANGE*0.5
 
-	fatigue_coefficient = 1
+	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLUNT = 0.75,
+		PIERCE = 0.25
+	)
 
 /damagetype/ranged/bullet/shotgun_23/slug
 	name = "shotgun slug"
@@ -34,4 +37,7 @@
 
 	falloff = VIEW_RANGE
 
-	fatigue_coefficient = 0.25
+	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLUNT = 1,
+		PIERCE = 0.5
+	)

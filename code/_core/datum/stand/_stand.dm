@@ -115,8 +115,8 @@
 	linked_stand.sex = stand_user.gender
 	linked_stand.gender = stand_user.gender
 	linked_stand.owner = stand_user
-	linked_stand.iff_tag = stand_user.iff_tag
-	linked_stand.loyalty_tag = stand_user.loyalty_tag
+	linked_stand.set_iff_tag(stand_user.iff_tag)
+	linked_stand.set_loyalty_tag(stand_user.loyalty_tag)
 	INITIALIZE(linked_stand)
 	linked_stand.equip_loadout(pick(subtypesof(/loadout/stand/)))
 

@@ -55,6 +55,13 @@
 		ION = BURN
 	)
 
+	var/list/damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.
+		BLADE = 0.15,
+		BLUNT = 0.25,
+		PIERCE = 0.1,
+		BOMB = 0.5
+	)
+
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	var/list/attack_damage_penetration = list()
 
@@ -83,8 +90,6 @@
 	var/allow_friendly_fire = FALSE
 
 	var/cqc_tag
-
-	var/fatigue_coefficient = 0.25 //What percentage of blocked damage to convert into fatigue damage. 1 means 100%, 0.25 means 25%, ect...
 
 	var/can_be_parried = TRUE //Can this damage be parried?
 
@@ -273,9 +278,9 @@
 			if(debug) LOG_DEBUG("Blocked [damage_type] damage: [damage_to_block].")
 			damage_blocked += damage_to_block
 			damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
-			if(damage_type == BLUNT || damage_type == BLADE || damage_type == PIERCE)
-				var/fatigue_damage_to_convert = damage_blocked*src.fatigue_coefficient
-				if(debug) LOG_DEBUG("Converting blocked damage into [fatigue_damage_to_convert] fatigue damage.")
+			if(damage_type_to_fatigue[damage_type])
+				var/fatigue_damage_to_convert = damage_blocked*damage_type_to_fatigue[damage_type]
+				if(debug) LOG_DEBUG("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
 				fatigue_damage += fatigue_damage_to_convert
 
 		if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || defense_rating_victim[FATIGUE] != INFINITY)

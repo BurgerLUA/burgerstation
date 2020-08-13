@@ -197,11 +197,9 @@
 		CHECK_TICK(50,FPS_SERVER*10)
 		picks_remaining--
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
-		if(chosen_spawn.z < Z_LEVEL_MISSION)
-			continue
+		if(chosen_spawn.z < Z_LEVEL_MISSION) continue
 		var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
-		if(P)
-			continue
+		if(P && !P.dead) continue
 		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
 		if(!N_start)
 			log_error("WARNING: [chosen_spawn.get_debug_name()] didn't have a node to spawn enemies!")

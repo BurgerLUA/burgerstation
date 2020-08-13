@@ -155,6 +155,9 @@
 
 /atom/proc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
+	if(!src.initialized)
+		return FALSE
+
 	if(!src.health)
 		return FALSE
 

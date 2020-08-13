@@ -33,7 +33,7 @@
 
 	for(var/mob/living/advanced/A in view(radius_find_enemy,owner))
 		CHECK_TICK(75,FPS_SERVER)
-		if(should_attack_mob(A) && is_enemy(A))
+		if(should_attack_mob(A))
 			.[A] = TRUE
 
 	if(!length(.) && self.stored_slimes < self.stored_slimes_max)

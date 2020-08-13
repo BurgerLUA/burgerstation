@@ -218,7 +218,7 @@
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
 		handle_objectives()
-		if(owner.move_dir || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
+		if(length(current_path) || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
 			idle_time = 0
 		else
 			idle_time += tick_rate
@@ -596,7 +596,7 @@
 
 	return -dist
 
-/ai/proc/should_attack_mob(var/mob/living/L,var/do_aggression_check = TRUE)
+/ai/proc/should_attack_mob(var/mob/living/L)
 
 	if(L == owner)
 		return FALSE
@@ -608,6 +608,9 @@
 		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= timeout_threshold)
+		return FALSE
+
+	if(!is_enemy(L))
 		return FALSE
 
 	if(!L.can_be_attacked(owner))
@@ -659,28 +662,29 @@
 /ai/proc/is_in_view(var/atom/A)
 	return A in view(owner)
 
-/ai/proc/can_see(var/atom/A)
+/ai/proc/can_see(var/atom/A,var/check_view = TRUE)
 
+	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
+		return FALSE
+
+	if(check_view && !is_in_view(A))
+		return FALSE
+
+	if(A in attackers)
+		return TRUE
+
+	var/atom_alpha = A.alpha
+	if(alert_level == ALERT_LEVEL_COMBAT)
+		atom_alpha *= 2
+	if(atom_alpha >= 255)
+		return TRUE
+	var/distance = get_dist(owner,A)
+	if(distance <= 1)
+		return TRUE
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL)
-
-	var/atom_alpha = A.alpha
-
-	if(alert_level == ALERT_LEVEL_COMBAT)
-		atom_alpha *= 2
-
-	if(atom_alpha >= 255)
-		return TRUE
-
-	var/distance = get_dist(owner,A)
-
-	if(distance <= 1)
-		return TRUE
-
-	var/calc = ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
-
-	return A.alpha >= calc
+	return A.alpha >= ((distance/VIEW_RANGE)*255*0.5) + (1 - stored_sneak_power/1)*255*0.5
 
 /ai/proc/get_possible_targets()
 
@@ -704,34 +708,24 @@
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
 			CHECK_TICK(75,FPS_SERVER)
-			if(!can_detect(L) || !is_enemy(L))
+			if(!can_see(L))
+				continue
+			if(!should_attack_mob(L))
 				continue
 			.[L] = TRUE
 
 	return .
 
-/ai/proc/can_detect(var/atom/A)
-	if(!A.initialized)
-		return FALSE
-	if(!is_enemy(A))
-		return FALSE
-	if(ismob(A) && !should_attack_mob(A))
-		return FALSE
-	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !owner.is_facing(A))
-		return FALSE
-	if(!can_see(A))
-		return FALSE
-	return TRUE
-
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(!stealthy && attacker != objective_attack)
-		if(can_detect(attacker))
+		if(should_attack_mob(attacker))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
-			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+			if(!objective_attack && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
-			set_alert_level(ALERT_LEVEL_COMBAT,alert_source = attacker)
+			set_alert_level(ALERT_LEVEL_CAUTION,alert_source = attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
 	return TRUE
@@ -756,7 +750,7 @@
 			if(trigger_other_bump && L.ai)
 				L.ai.Bump(owner,FALSE)
 
-		if(attack_on_block && obstacle.health && (frustration_path + frustration_move + frustration_attack) >= frustration_threshold*0.5)
+		if(attack_on_block && (frustration_path + frustration_move + frustration_attack) >= frustration_threshold*0.5)
 			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

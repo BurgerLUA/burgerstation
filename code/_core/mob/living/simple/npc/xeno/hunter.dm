@@ -6,7 +6,7 @@
 
 	level_multiplier = 2
 
-	movement_delay = 1
+	movement_delay = 2
 
 	armor_base = list(
 		BLADE = 25,
@@ -32,6 +32,8 @@
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
 	health_base = 200
+
+	movement_delay = 3
 
 	armor_base = list(
 		BLADE = 50,
@@ -81,3 +83,4 @@
 
 	can_spit = TRUE
 
+	movement_delay = 4

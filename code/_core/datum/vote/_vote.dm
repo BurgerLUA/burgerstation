@@ -75,28 +75,31 @@
 	var/winner = null
 	var/winner_votes = -1
 	var/total_votes = 0
+	var/total_weight = 0
+
 
 	if(weighted_mode)
-		var/list/results_list = list()
+		var/list/weighted_results_list = list()
 		var/highest = 1
-		for(var/option in results)
-			var/list/voters = results[option]
+		for(var/option in results) //Go through the results.
+			var/list/voters = results[option] //Get the voters for this option.
 			var/vote_count = length(voters)
-			results_list[option] = vote_count
+			weighted_results_list[option] = vote_count
 			total_votes += vote_count
 			if(vote_count > highest)
 				highest = vote_count
 
-		for(var/option in results_list)
+		for(var/option in weighted_results_list) //Go through all the list of possible options that were voted.
 			var/list/voters = results[option]
 			var/vote_count = length(voters)
-			var/chance = CEILING((results_list[option]/highest)*100,1)
-			results_list[option] = chance
-			message_to_send += div("vote","[option]: [vote_count] (Weighted: [chance]%)")
+			var/weight = CEILING( (vote_count/highest)*100, 1)
+			weighted_results_list[option] = weight
+			total_weight += weight
+			message_to_send += div("vote","[option]: [vote_count] (Weighted: [weight]%)")
 
-		if(length(results_list))
-			winner = pickweight(results_list)
-			winner_votes = results_list[winner]
+		if(length(weighted_results_list))
+			winner = pickweight(weighted_results_list)
+			winner_votes = weighted_results_list[winner]
 		else
 			winner = pick(options)
 			winner_votes = 0
@@ -116,7 +119,7 @@
 		message_to_send += div("vote","Winner: [winner].")
 	else
 		if(weighted_mode)
-			message_to_send += div("vote","Winner (Weighted random mode): [winner] ([FLOOR(100 * (winner_votes/total_votes),1)]%)")
+			message_to_send += div("vote","Winner (Weighted random mode): [CEILING( (winner_votes/total_weight) * 100, 1)]%)")
 		else
 			message_to_send += div("vote","Winner: [winner].")
 
