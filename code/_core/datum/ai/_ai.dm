@@ -17,7 +17,7 @@
 	var/objective_ticks = 0
 
 	//Measured in ticks.
-	var/objective_delay = DECISECONDS_TO_TICKS(40)
+	var/objective_delay = DECISECONDS_TO_TICKS(10)
 
 	var/list/target_distribution_x = list(8,16,16,16,24)
 	var/list/target_distribution_y = list(8,16,16,16,24)
@@ -211,11 +211,20 @@
 
 	return TRUE
 
+/ai/proc/get_objective_delay()
+
+	. = objective_delay
+
+	if(objective_attack)
+		. *= 4
+
+	return .
+
 
 /ai/proc/on_life(var/tick_rate=AI_TICK)
 
 	objective_ticks += tick_rate
-	if(objective_ticks >= objective_delay)
+	if(objective_ticks >= get_objective_delay())
 		objective_ticks = 0
 		handle_objectives()
 		if(length(current_path) || objective_attack || alert_level >= ALERT_LEVEL_NOISE)
@@ -559,7 +568,7 @@
 		return TRUE
 
 	if(objective_attack)
-		if(objective_attack.dead || objective_attack.qdeleting || !should_attack_mob(objective_attack) || !can_see(objective_attack))
+		if(objective_attack.dead || objective_attack.qdeleting || (is_living(objective_attack) && !should_attack_mob(objective_attack)) || !can_see(objective_attack))
 			set_objective(null)
 		else if((get_dist(owner,objective_attack) > attack_distance_max + 1))
 			frustration_attack++
@@ -718,7 +727,7 @@
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	if(!stealthy && attacker != objective_attack)
+	if(is_living(attacker) && !stealthy && attacker != objective_attack)
 		if(should_attack_mob(attacker))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
