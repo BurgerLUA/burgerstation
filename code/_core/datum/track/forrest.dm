@@ -1,5 +1,3 @@
-
-
 /track/dawn
 	name = "Dawn"
 	path = 'sound/music/dawn.ogg'

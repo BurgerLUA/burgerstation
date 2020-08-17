@@ -95,7 +95,7 @@
 
 	return .
 
-/atom/proc/click_self(caller,location,control,params)
+/atom/proc/click_self(var/mob/caller as mob,location,control,params)
 	return FALSE
 
 /atom/proc/set_color(var/desired_color,var/desired_substype)

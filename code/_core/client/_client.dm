@@ -241,20 +241,20 @@ var/global/list/all_clients = list() //Assoc list
 	return TRUE
 */
 
-/client/proc/get_click_flags(aug,var/check_swap = FALSE)
+/client/proc/get_click_flags(var/list/params,var/check_swap = FALSE)
 
-	var/returning = 0x0
+	. = 0x0
 
-	if((swap_mouse && check_swap) ? ("left" in aug) :("right" in aug))
-		returning |= CLICK_RIGHT
+	if((swap_mouse && check_swap) ? ("left" in params) :("right" in params))
+		. |= CLICK_RIGHT
 
-	if((swap_mouse && check_swap) ? ("right" in aug) : ("left" in aug))
-		returning |= CLICK_LEFT
+	if((swap_mouse && check_swap) ? ("right" in params) : ("left" in params))
+		. |= CLICK_LEFT
 
-	if("middle" in aug)
-		returning |= CLICK_MIDDLE
+	if("middle" in params)
+		. |= CLICK_MIDDLE
 
-	return returning
+	return .
 
 /client/MouseDown(var/atom/object,location,control,params)
 

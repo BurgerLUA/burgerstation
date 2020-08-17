@@ -1,5 +1,3 @@
-
-
 /track/piano_depression
 	name = "Piano Depression"
 	path = 'sound/music/Piano Depression.ogg'
