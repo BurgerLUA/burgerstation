@@ -4,10 +4,7 @@
 	desc_extended = "Attach this to your weapon for EXTRA POWER."
 	icon = 'icons/obj/item/attachments.dmi'
 
-	var/list/stats_attachment_set = list()
-	var/list/stats_attachment_add = list()
-	var/list/stats_attachment_mul = list()
-
+	var/list/attachment_stats = list()
 
 	/*Possible stats:
 		damage_multiplier - The multiplier of damage.
@@ -23,10 +20,10 @@
 		view_punch - Basically recoil
 		shoot_delay - Delay of the gun.
 		bursts_to_use - How many shots does one sustained trigger pull give. Only works on automatic weapons.
-		shoot_sounds (SET ONLY)
-		shoot_alert (SET ONLY)
-		damage_type (SET ONLY)
-		bullet_color (SET ONLY)
+		shoot_sounds
+		shoot_alert
+		damage_type
+		bullet_color
 	*/
 
 	//TODO: ADD AUTOMATIC, ZOOM
@@ -35,3 +32,13 @@
 	var/attachment_offset_y = 0
 
 	value = 200
+
+/obj/item/attachment/get_examine_list(var/mob/caller)
+
+	. = ..()
+
+	for(var/k in attachment_stats)
+		var/v = attachment_stats[k]
+		. += span("notice","[k]: [v]")
+
+	return .

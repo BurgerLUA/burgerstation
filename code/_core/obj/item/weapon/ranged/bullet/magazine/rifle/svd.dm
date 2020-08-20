@@ -45,9 +45,16 @@
 		/obj/item/attachment/barrel/charger = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/gyro = TRUE,
+		/obj/item/attachment/barrel/laser_charger = FALSE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+
+		/obj/item/attachment/stock/c20r = FALSE,
+
+		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16

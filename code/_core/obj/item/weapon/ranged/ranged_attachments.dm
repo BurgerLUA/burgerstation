@@ -17,15 +17,16 @@
 	)
 
 	for(var/k in type_to_var)
+		var/v = type_to_var[k]
 		if(!istype(A,k))
 			continue
-		if(vars[k])
-			var/obj/item/I = vars[k]
+		if(vars[v])
+			var/obj/item/I = vars[v]
 			caller.to_chat(span("notice","There is already \a [I.name] attached to \the [src.name]!"))
 			return FALSE
 		caller.to_chat(span("notice","You attach \the [A.name] to \the [src.name]."))
 		A.drop_item(src)
-		vars[k] = A
+		vars[v] = A
 		update_sprite()
 		update_attachment_stats()
 		return TRUE
@@ -74,19 +75,28 @@
 		"attachment_stock"
 	)
 
+	var/list/modifier_count = list()
+
 	for(var/i in attachment_variables)
 		var/obj/item/attachment/A = vars[i]
-
-		for(var/k in A.stats_attachment_set)
-			var/v = A.stats_attachment_set[k]
-			attachment_stats[k] = v
-
-		for(var/k in A.stats_attachment_add)
-			var/v = A.stats_attachment_add[k]
+		if(!A) continue
+		for(var/k in A.attachment_stats)
+			var/v = A.attachment_stats[k]
 			attachment_stats[k] += v
+			if(isnum(v)) modifier_count[k] += 1
 
-		for(var/k in A.stats_attachment_mul)
-			var/v = A.stats_attachment_mul[k]
-			attachment_stats[k] *= v
+	for(var/k in modifier_count)
+		attachment_stats[k] *= (1/modifier_count[k])
 
 	return TRUE
+
+
+/obj/item/weapon/ranged/get_examine_list(var/mob/caller)
+
+	. = ..()
+
+	for(var/k in attachment_stats)
+		var/v = attachment_stats[k]
+		. += span("notice","[k]: [v]")
+
+	return .
