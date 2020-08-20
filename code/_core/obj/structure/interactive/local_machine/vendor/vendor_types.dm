@@ -235,7 +235,7 @@
 	icon_state = "robotics"
 
 /obj/structure/interactive/vending/robotics/mech_gun_fabricator
-	name = "mech gun fabricator"
+	name = "mech fabricator"
 	icon_state = "mech"
 	stored_types = list(
 		/obj/item/weapon/ranged/energy/mech/smg/mk1,

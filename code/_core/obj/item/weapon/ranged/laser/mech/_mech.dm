@@ -20,6 +20,8 @@
 
 	size = SIZE_6
 
+	var/icon_attached = 'icons/mob/living/advanced/mecha/weapons.dmi'
+	var/icon_state_attached = "mech_ballistic"
 
 /obj/item/weapon/ranged/energy/mech/can_gun_shoot(var/mob/caller)
 	if(!istype(loc,/mob/living/vehicle/))

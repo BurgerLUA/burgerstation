@@ -73,7 +73,7 @@
 	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
 	attachment_barrel = new /obj/item/attachment/barrel/compensator(src)
 
-	update_attachments()
 	update_sprite()
+	update_attachment_stats()
 
 	return .

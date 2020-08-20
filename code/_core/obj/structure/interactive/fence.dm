@@ -10,6 +10,16 @@ obj/structure/interactive/fence
 
 	pixel_y = 16
 
+	health = /health/construction/
+
+	health_base = 100
+
+/obj/structure/interactive/fence/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 4),/material/steel)
+	. = ..()
+	qdel(src)
+	return .
+
 obj/structure/interactive/fence/end
 	icon_state = "end"
 

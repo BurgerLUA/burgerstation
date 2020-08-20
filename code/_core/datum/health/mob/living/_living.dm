@@ -21,7 +21,7 @@
 		if(L.medical_hud_image)
 			var/health_icon_state
 			if(L.dead)
-				if(L.client && !L.suicide)
+				if(L.is_player_controlled() && !L.suicide)
 					health_icon_state = "revive"
 				else
 					health_icon_state = "dead"

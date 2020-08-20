@@ -16,7 +16,7 @@
 
 	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
 
-	health_base = 100
+	health_base = 300
 
 obj/structure/interactive/barricade/PostInitialize()
 	. = ..()

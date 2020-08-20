@@ -147,8 +147,7 @@
 			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
 			return FALSE
 
-	for(var/k in all_mobs_with_clients)
-		var/mob/living/advanced/player/P = k
+	for(var/mob/living/advanced/player/P in all_players)
 		if(P.loyalty_tag != desired_loyalty)
 			continue
 		var/name_mod = "[P.name] ([dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"

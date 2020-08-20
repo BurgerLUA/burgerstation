@@ -14,6 +14,6 @@ SUBSYSTEM_DEF(projectile)
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k
 		CHECK_TICK(tick_usage_max,1)
-		P.update_projectile()
+		P.update_projectile(tick_rate)
 
 	return TRUE

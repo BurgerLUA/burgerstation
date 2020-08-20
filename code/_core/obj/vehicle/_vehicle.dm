@@ -99,6 +99,7 @@
 	equipment += I
 	I.drop_item(src)
 	I.unremovable = TRUE
+	update_sprite()
 
 /mob/living/vehicle/proc/unattach_equipment(var/mob/caller,var/obj/item/I)
 	if(!(I in equipment))
@@ -107,6 +108,7 @@
 	equipment -= I
 	I.force_move(get_turf(caller))
 	I.unremovable = initial(I.unremovable)
+	update_sprite()
 
 /mob/living/vehicle/New(var/desired_loc)
 	..()
@@ -114,6 +116,17 @@
 	equipment = list()
 	update_sprite()
 
+
+/mob/living/vehicle/proc/can_attach_weapon(var/mob/caller,var/obj/item/weapon/W)
+
+	if(ai || length(passengers))
+		caller?.to_chat(span("warning","You can't add this while it's in use!"))
+		return FALSE
+	if(length(equipment) >= 2)
+		caller?.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
+		return FALSE
+
+	return TRUE
 
 /mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -142,13 +155,7 @@
 				return TRUE
 
 			if(istype(I,/obj/item/weapon) && !istype(I,/obj/item/weapon/ranged/magic))
-				if(ai || length(passengers))
-					caller.to_chat(span("warning","You can't add this while it's in use!"))
-					return TRUE
-				if(length(equipment) >= 2)
-					caller.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
-					return TRUE
-				attach_equipment(caller,I)
+				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
 				return TRUE
 
 			return TRUE
@@ -179,13 +186,13 @@
 		params["right"] = rand(0,1)
 		params["left"] = rand(0,1)
 
-	if(params["right"])
+	if(params["left"])
 		if(length(equipment) >= 1)
 			equipment[1].click_on_object(caller,object,location,control,params)
 		else
 			caller?.to_chat("<b>\the [src.name]</b> blares, \"No equipment found in slot 1!\"")
 
-	if(params["left"])
+	if(params["right"])
 		if(length(equipment) >= 2)
 			equipment[2].click_on_object(caller,object,location,control,params)
 		else

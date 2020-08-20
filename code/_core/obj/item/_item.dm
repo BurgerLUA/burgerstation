@@ -123,7 +123,7 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
-	var/list/block_defense_rating = list()
+	var/list/block_defense_rating = DEFAULT_BLOCK
 
 /obj/item/PostInitialize()
 	. = ..()

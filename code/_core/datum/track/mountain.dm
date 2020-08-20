@@ -12,3 +12,10 @@
 	name = "Snow Fall"
 	path = 'sound/music/Snow Fall.ogg'
 	length = 2*60 + 40
+
+/*
+/track/slow_fall
+	name = "Slow Fall"
+	path = 'sound/music/Slow Fall.ogg'
+	length = 2*60 + 28
+*/

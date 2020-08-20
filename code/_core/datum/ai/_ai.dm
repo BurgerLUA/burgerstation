@@ -73,7 +73,7 @@
 
 	var/list/enemy_tags = list()
 
-	var/reaction_time = 10
+	var/reaction_time = 4 //In Deciseconds.
 
 	var/stored_sneak_power = 0
 

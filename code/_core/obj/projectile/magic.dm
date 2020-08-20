@@ -52,7 +52,7 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-/obj/projectile/magic/crystal/primary/update_projectile()
+/obj/projectile/magic/crystal/primary/update_projectile(var/tick_rate=1)
 
 	. = ..()
 

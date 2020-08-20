@@ -21,7 +21,7 @@
 			"They promise it won't be your last."
 		)
 
-		play_music_track("space_wayfarer",src.client)
+		play_music_track(/track/space_wayfarer,src.client)
 
 		client.disable_controls = TRUE
 		client.update_zoom(3)

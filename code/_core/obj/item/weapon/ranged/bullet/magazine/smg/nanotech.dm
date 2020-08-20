@@ -76,6 +76,6 @@
 	. = ..()
 	attachment_barrel = new /obj/item/attachment/barrel/charger(src)
 	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
-	update_attachments()
+	update_attachment_stats()
 	update_sprite()
 	return .

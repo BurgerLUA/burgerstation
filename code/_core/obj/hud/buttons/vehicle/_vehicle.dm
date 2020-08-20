@@ -68,7 +68,7 @@
 /obj/hud/button/vehicle/ammo_display
 	name = "ammo display"
 	icon_state = "none"
-	var/weapon_slot = 2
+	var/weapon_slot = 1
 	screen_loc = "CENTER-1.4,BOTTOM+0.5"
 
 /obj/hud/button/vehicle/ammo_display/proc/set_map_text(var/desired_text)
@@ -100,7 +100,7 @@
 /obj/hud/button/vehicle/ammo_display/right
 	name = "ammo display"
 	icon_state = "none"
-	weapon_slot = 1
+	weapon_slot = 2
 	screen_loc = "CENTER+1.4,BOTTOM+0.5"
 
 /obj/hud/button/vehicle/ammo_display/right/set_map_text(var/desired_text)

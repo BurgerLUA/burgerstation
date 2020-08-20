@@ -24,8 +24,7 @@
 	name = "Horde Mode (Syndicate)"
 	enemy_types_to_spawn = list(
 		/mob/living/advanced/npc/syndicate = 40,
-		/mob/living/advanced/npc/sorcerer = 10,
-		/mob/living/vehicle/mech/gygax/dark = 1
+		/mob/living/advanced/npc/sorcerer = 10
 	)
 	hidden = FALSE
 

@@ -127,6 +127,14 @@
 
 	dan_mode = TRUE
 
+	block_defense_rating = list(
+		BLADE = 75,
+		BLUNT = 25,
+		PIERCE = 50,
+		LASER = 100,
+		MAGIC = 100
+	)
+
 /obj/item/weapon/melee/energy/shield/blue
 	color = "#0000FF"
 

@@ -152,7 +152,7 @@
 	INITIALIZE(attachment_barrel)
 	GENERATE(attachment_barrel)
 
-	update_attachments()
+	update_attachment_stats()
 	update_sprite()
 
 	return .

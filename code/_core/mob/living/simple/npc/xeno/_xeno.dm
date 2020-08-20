@@ -1,5 +1,5 @@
 /mob/living/simple/npc/xeno
-	name = "alien"
+	name = "xeno"
 	desc = "Xenos mad."
 	desc_extended = "Oh shit they're here too?!"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'

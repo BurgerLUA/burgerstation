@@ -215,7 +215,7 @@
 
 	return FALSE
 
-/obj/projectile/proc/update_projectile()
+/obj/projectile/proc/update_projectile(var/tick_rate=1)
 
 	if(!isturf(src.loc))
 		on_hit(src.loc,TRUE)
@@ -237,9 +237,9 @@
 		if(!start_time)
 			transform = M
 		else
-			animate(src, transform = M, time = TICKS_TO_DECISECONDS(PROJECTILE_TICK))
+			animate(src, transform = M, time = TICKS_TO_DECISECONDS(tick_rate))
 
-	start_time += TICKS_TO_DECISECONDS(PROJECTILE_TICK)
+	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
 	if(lifetime && start_time >= lifetime)
 		on_hit(src.loc,TRUE)

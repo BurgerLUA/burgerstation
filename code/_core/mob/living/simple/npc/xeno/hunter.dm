@@ -1,5 +1,5 @@
 /mob/living/simple/npc/xeno/hunter
-	name = "alien hunter"
+	name = "xeno hunter"
 	icon = 'icons/mob/living/simple/alien_hunter.dmi'
 
 	health_base = 100
@@ -28,7 +28,7 @@
 	can_leap = TRUE
 
 /mob/living/simple/npc/xeno/drone
-	name = "alien drone"
+	name = "xeno drone"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
 	health_base = 200
@@ -55,7 +55,7 @@
 	can_leap = TRUE
 
 /mob/living/simple/npc/xeno/sentinel
-	name = "alien sentinel"
+	name = "xeno sentinel"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
 	level_multiplier = 4

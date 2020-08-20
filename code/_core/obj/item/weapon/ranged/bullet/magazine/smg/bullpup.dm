@@ -74,7 +74,7 @@
 	var/obj/item/attachment/barrel/suppressor/SS = new(src)
 	attachment_barrel = SS
 
-	update_attachments()
+	update_attachment_stats()
 	update_sprite()
 
 	return .

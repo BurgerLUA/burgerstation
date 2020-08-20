@@ -59,7 +59,7 @@
 
 	return .
 
-/obj/projectile/bullet/gyrojet/update_projectile()
+/obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
 
 	. = ..()
 

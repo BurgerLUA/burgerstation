@@ -19,6 +19,10 @@
 
 	bullet_block_chance = 75
 
+	plane = PLANE_WALL_ATTACHMENTS
+
+	pixel_y = 8
+
 /obj/structure/interactive/vending/Destroy()
 	stored_types.Cut()
 	stored_objects.Cut()
