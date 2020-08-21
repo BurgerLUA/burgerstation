@@ -35,6 +35,8 @@
 	size = 0.01
 	value = 0.1
 
+	var/bullet_seed //For icon generation.
+
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
 	return 'sound/weapons/gun/general/mag_bullet_remove.ogg'
 
@@ -65,13 +67,25 @@
 		icon_state = "[initial(icon_state)]_[min(item_count_max_icon,item_count_current)]"
 	else
 		icon_state = "[initial(icon_state)]_spent"
-		if(item_count_current <= 1 && isturf(src.loc))
-			pixel_x = rand(-8,8)
-			pixel_y = rand(-8,8)
 
 	size = initial(size)*item_count_current
 
-	..()
+	return ..()
+
+/obj/item/bullet_cartridge/update_overlays()
+
+	. = ..()
+
+	if(is_spent)
+		if(!bullet_seed)
+			bullet_seed = rand(100,999)
+		for(var/i=1,i<=min(9,item_count_current-1),i++)
+			var/image/I = new(icon,icon_state)
+			I.pixel_x = sin(i*bullet_seed)*TILE_SIZE % 16
+			I.pixel_y = cos(i*bullet_seed)*TILE_SIZE % 16
+			add_overlay(I)
+
+	return .
 
 /obj/item/bullet_cartridge/get_examine_list(var/mob/examiner)
 
@@ -104,6 +118,8 @@
 			B.item_count_current += item_count_current
 			item_count_current = 0 //Just in case
 			B.update_sprite()
+			if(src.bullet_seed)
+				B.bullet_seed = src.bullet_seed
 			qdel(src)
 
 	return ..()

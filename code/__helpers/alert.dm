@@ -3,13 +3,19 @@
 	if(!point_A || !point_B)
 		return FALSE
 
+	if(!isturf(point_A))
+		point_A = get_turf(point_A)
+
+	if(!isturf(point_B))
+		point_B = get_turf(point_B)
+
 	if(point_A.z != point_B.z)
 		return FALSE
 
-	return get_dist(point_A,point_B) <= VIEW_RANGE
+	return (abs(point_A.x - point_B.x) + abs(point_A.y - point_B.y)) <= range
 
 
-/proc/create_alert(var/range = VIEW_RANGE,var/atom/epicenter=usr,var/atom/alert_source = usr,var/alert_level = ALERT_LEVEL_NOISE)
+/proc/create_alert(var/range = VIEW_RANGE,var/atom/epicenter=usr,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE)
 
 	if(!alert_source)
 		CRASH_SAFE("create_alert() had no alert_source!")
@@ -29,7 +35,7 @@
 			continue
 		if(!within_range(AI.owner,epicenter,range))
 			continue
-		if(alert_source && !AI.is_enemy(alert_source))
+		if(!AI.is_enemy(alert_source))
 			continue
 		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time*0.1,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter)
 

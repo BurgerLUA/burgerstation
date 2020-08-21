@@ -73,6 +73,9 @@ proc/queue_delete(var/datum/object_to_delete,var/delete_in = 1,var/safe=FALSE)
 	if(object_to_delete.qdelete_immune)
 		return FALSE
 
+	if(object_to_delete.qdeleting)
+		return FALSE
+
 	if(safe)
 		SSdelete.objects_to_delete_safe[object_to_delete] = world.time + delete_in
 	else

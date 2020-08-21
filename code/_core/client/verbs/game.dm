@@ -30,13 +30,13 @@
 		return FALSE
 
 	var/choice = input("Are you sure you want to abandon your body and become a ghost? You will no longer be able to be revived.","Abandon Body","No") in list("Yes","No") | null
-	if(choice == "Yes")
-		make_ghost(mob.loc)
-		to_chat("You abandon your body...")
-		return TRUE
+	if(choice != "Yes")
+		return FALSE
 
+	make_ghost(mob.loc)
+	to_chat("You abandon your body...")
+	return TRUE
 
-	return FALSE
 
 /client/verb/stop_sound()
 	set name = "Stop Sounds"

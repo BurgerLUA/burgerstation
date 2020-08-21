@@ -150,7 +150,7 @@
 	for(var/mob/living/advanced/player/P in all_players)
 		if(P.loyalty_tag != desired_loyalty)
 			continue
-		var/name_mod = "[P.name] ([dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"
+		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"
 		possible_crew[name_mod] = P
 
 	scan_mode = TRUE

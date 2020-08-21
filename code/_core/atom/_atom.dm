@@ -107,6 +107,7 @@
 
 	appearance = null
 	invisibility = 101
+	mouse_opacity = 0
 
 	return ..()
 

@@ -22,7 +22,10 @@
 			var/health_icon_state
 			if(L.dead)
 				if(L.is_player_controlled() && !L.suicide)
-					health_icon_state = "revive"
+					if(L.check_death())
+						health_icon_state = "revive_2"
+					else
+						health_icon_state = "revive_3"
 				else
 					health_icon_state = "dead"
 			else if (L.has_status_effect(CRIT))

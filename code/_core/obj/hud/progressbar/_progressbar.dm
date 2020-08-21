@@ -15,6 +15,8 @@
 
 	user_colors = FALSE
 
+	mouse_opacity = 0
+
 /obj/hud/progress_bar/New(var/atom/new_loc,var/desired_start_time = 0,var/desired_end_time = 1)
 
 	start_time = desired_start_time

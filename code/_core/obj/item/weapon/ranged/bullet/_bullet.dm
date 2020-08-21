@@ -101,8 +101,11 @@
 	B.update_sprite()
 	if(play_sound)
 		play(chambered_bullet.get_bullet_eject_sound(),src)
-	if(B.is_spent)
+	if(B.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(B)
+	else
+		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
+
 
 	chambered_bullet = null
 
@@ -119,8 +122,10 @@
 	stored_bullets += null
 	if(play_sound)
 		play(bullet_to_remove.get_bullet_eject_sound(),src)
-	if(bullet_to_remove.is_spent)
+	if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(bullet_to_remove)
+	else
+		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 
 	return bullet_to_remove
 
