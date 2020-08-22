@@ -16,8 +16,10 @@
 
 	maximum_support = SIZE_4
 
+	value = 400
+
 /obj/item/mech_part/arms/combat
-	name = "combat legs"
+	name = "combat arms"
 	icon_state = "combat_arms"
 
 	weight = 20
@@ -26,8 +28,10 @@
 
 	maximum_support = SIZE_4
 
+	value = 400
+
 /obj/item/mech_part/arms/light
-	name = "light legs"
+	name = "light arms"
 	icon_state = "light_arms"
 
 	weight = 15
@@ -36,8 +40,10 @@
 
 	maximum_support = SIZE_3
 
+	value = 300
+
 /obj/item/mech_part/arms/heavy
-	name = "heavy legs"
+	name = "heavy arms"
 	icon_state = "heavy_arms"
 
 	weight = 30
@@ -45,3 +51,5 @@
 	maximum_weapons = 2
 
 	maximum_support = SIZE_8
+
+	value = 600

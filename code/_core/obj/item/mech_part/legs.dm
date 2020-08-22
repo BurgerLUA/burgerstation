@@ -17,6 +17,8 @@
 	//Body: 40
 	//Head: 10
 
+	value = 30 * 20
+
 /obj/item/mech_part/legs/combat
 	name = "combat legs"
 	icon_state = "combat_legs"
@@ -29,6 +31,8 @@
 	//Legs: 30
 	//Body: 40
 	//Head: 10
+
+	value = 30 * 20
 
 /obj/item/mech_part/legs/light
 	name = "light legs"
@@ -43,6 +47,8 @@
 	//Body: 20
 	//Head: 5
 
+	value = 20*20
+
 /obj/item/mech_part/legs/heavy
 	name = "heavy legs"
 	icon_state = "heavy_legs"
@@ -56,6 +62,8 @@
 	//Body: 60
 	//Head: 20
 
+	value = 50*20
+
 /obj/item/mech_part/legs/tracks
 	name = "heavy legs"
 	icon_state = "tracks"
@@ -64,6 +72,8 @@
 
 	maximum_support = 150
 
+	value = 60 * 20
+
 /obj/item/mech_part/legs/spiderlegs
 	name = "light legs"
 	icon_state = "spiderlegs"
@@ -71,3 +81,5 @@
 	weight = 20
 
 	maximum_support = 50
+
+	value = 20 * 20

@@ -2,7 +2,7 @@
 	name = "xeno hunter"
 	icon = 'icons/mob/living/simple/alien_hunter.dmi'
 
-	health_base = 100
+	health_base = 50
 
 	level_multiplier = 2
 
@@ -31,7 +31,7 @@
 	name = "xeno drone"
 	icon = 'icons/mob/living/simple/alien_drone.dmi'
 
-	health_base = 200
+	health_base = 100
 
 	movement_delay = 3
 
@@ -60,7 +60,7 @@
 
 	level_multiplier = 4
 
-	health_base = 300
+	health_base = 150
 
 	movement_delay = DECISECONDS_TO_TICKS(AI_TICK)
 
