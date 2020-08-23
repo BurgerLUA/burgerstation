@@ -52,13 +52,19 @@
 		caller.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))
 		return FALSE
 
+	choice_list["Cancel"] = "Cancel"
+
 	var/attachment_choice = input("What would you like to remove?","Attachment Removal") as null|anything in choice_list
-	if(!attachment_choice)
+	if(!attachment_choice || attachment_choice == "Cancel")
 		caller.to_chat(span("notice","You decide not to remove anything."))
 		return FALSE
 
-	caller.to_chat(span("notice","You remove \the [vars[attachment_choice].name] from \the [src.name]."))
-	vars[attachment_choice].drop_item(get_turf(src))
+	attachment_choice = choice_list[attachment_choice]
+
+	var/obj/item/I = vars[attachment_choice]
+
+	caller.to_chat(span("notice","You remove \the [I.name] from \the [src.name]."))
+	I.drop_item(get_turf(src))
 	vars[attachment_choice] = null
 	update_sprite()
 	update_attachment_stats()

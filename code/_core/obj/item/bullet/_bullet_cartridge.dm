@@ -37,6 +37,15 @@
 
 	var/bullet_seed //For icon generation.
 
+/obj/item/bullet_cartridge/calculate_value()
+
+	. = ..()
+
+	if(is_spent)
+		. *= 0.05
+
+	return .
+
 /obj/item/bullet_cartridge/proc/get_bullet_eject_sound()
 	return 'sound/weapons/gun/general/mag_bullet_remove.ogg'
 
@@ -213,5 +222,21 @@
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
 				play(M.get_cock_sound("forward"),src)
 			return TRUE
+
+	return ..()
+
+
+/obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)
+
+	if(!istype(I,/obj/item/bullet_cartridge/))
+		return FALSE
+
+	var/obj/item/bullet_cartridge/BC = I
+
+	if(BC.bullet_length != bullet_length)
+		return FALSE
+
+	if(BC.bullet_diameter != bullet_diameter)
+		return FALSE
 
 	return ..()

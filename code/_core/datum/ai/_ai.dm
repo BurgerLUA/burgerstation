@@ -717,7 +717,7 @@
 	if(aggression > 0)
 		for(var/mob/living/L in view(range_to_use,owner))
 			CHECK_TICK(75,FPS_SERVER)
-			if(!can_see(L))
+			if(!can_see(L,FALSE))
 				continue
 			if(!should_attack_mob(L))
 				continue

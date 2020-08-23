@@ -30,6 +30,7 @@
 	)
 
 /loadout/deathsquad/get_spawning_items()
+
 	. = ..()
 
 	var/obj/item/chosen_primary = pick(random_primary)

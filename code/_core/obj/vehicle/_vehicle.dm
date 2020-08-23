@@ -154,7 +154,7 @@
 					caller.to_chat(span("notice","You choose not to remove anything."))
 				return TRUE
 
-			if(istype(I,/obj/item/weapon) && !istype(I,/obj/item/weapon/ranged/magic))
+			if(istype(I,/obj/item/weapon/ranged/energy/mech))
 				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
 				return TRUE
 

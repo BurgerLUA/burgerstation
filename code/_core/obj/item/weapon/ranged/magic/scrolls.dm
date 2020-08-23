@@ -20,17 +20,17 @@
 
 /obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
 	. = ..()
-	.["scroll_count"] = scroll_count
+	SAVEVAR("scroll_count")
 	return .
 
 /obj/item/weapon/ranged/magic/scroll/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	if(isnum(object_data["scroll_count"])) scroll_count = object_data["scroll_count"]
+	LOADVAR("scroll_count")
 	return .
 
 /obj/item/weapon/ranged/magic/scroll/calculate_value()
 	. = ..()
-	. *= scroll_count
+	. *= (1 + scroll_count)
 	return .
 
 /obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
@@ -111,7 +111,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
-	scroll_count -= 1
+	scroll_count--
 	update_sprite()
 	return ..()
 

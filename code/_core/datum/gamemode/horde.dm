@@ -22,7 +22,10 @@
 
 	if(!length(active_objectives) && length(completed_objectives) >= 1 && state == GAMEMODE_FIGHTING)
 		state = GAMEMODE_BREAK
-		SSvote.create_vote(/vote/continue_round)
+		if(can_continue())
+			SSvote.create_vote(/vote/continue_round)
+		else
+			world.end(WORLD_END_NANOTRASEN_VICTORY)
 
 	return .
 
@@ -45,6 +48,13 @@
 
 	return ..()
 
+/gamemode/horde/can_continue()
+
+	if(length(SSbosses.living_bosses) <= 0)
+		return FALSE
+
+	return ..()
+
 /gamemode/horde/proc/add_objectives()
 	add_objective(/objective/kill_boss)
 	add_objective(/objective/kill_boss)
@@ -54,7 +64,11 @@
 	return TRUE
 
 /gamemode/horde/on_continue()
-	add_objective(/objective/kill_boss)
+
+	if(!add_objective(/objective/kill_boss))
+		state = GAMEMODE_BREAK
+		SSvote.create_vote(/vote/continue_round)
+
 	return ..()
 
 /gamemode/horde/on_life()

@@ -25,11 +25,18 @@
 	)
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		FATIGUE = STAGGER,
-		DISARM = TRUE
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
+		DISARM = TRUE,
+		DRUGGY = TRUE,
+		FIRE = FALSE
 	)
 
 	ai = /ai/xeno

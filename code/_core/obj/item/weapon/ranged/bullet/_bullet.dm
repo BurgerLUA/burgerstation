@@ -104,7 +104,7 @@
 	if(B.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(B)
 	else
-		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
+		queue_delete(src,ITEM_DELETION_TIME_NEW)
 
 
 	chambered_bullet = null
@@ -125,7 +125,7 @@
 	if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(bullet_to_remove)
 	else
-		queue_delete(src,ITEM_DELETION_TIME_DROPPED)
+		queue_delete(src,ITEM_DELETION_TIME_NEW)
 
 	return bullet_to_remove
 

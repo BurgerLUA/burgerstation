@@ -66,14 +66,18 @@
 	return ..()
 
 /turf/change_victim(var/atom/attacker)
+
 	for(var/v in contents)
 		if(ismob(v) && attacker != v)
+			var/mob/M = v
+			if(M.mouse_opacity == 0)
+				continue
 			return v
 
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(!L.dead && L.move_delay > 0 && attacker != L)
+			if(L.mouse_opacity > 0 && !L.dead && L.move_delay > 0 && attacker != L)
 				return L
 
 	return src

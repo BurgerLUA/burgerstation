@@ -9,26 +9,11 @@ SUBSYSTEM_DEF(delete)
 	cpu_usage_max = 50
 	tick_usage_max = 50
 
+	var/max_deletions = 10
+
 /subsystem/delete/on_life()
 
-	for(var/k in objects_to_delete)
-		var/datum/object_to_delete = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
-		if(object_to_delete.qdeleting)
-			objects_to_delete -= object_to_delete
-			continue
-		var/time_to_delete = objects_to_delete[object_to_delete]
-		if(time_to_delete > world.time)
-			continue
-		if(is_atom(object_to_delete))
-			var/atom/A = object_to_delete
-			if(!A.is_safe_to_delete())
-				objects_to_delete[object_to_delete] = world.time + ITEM_DELETION_TIME_NEW
-				continue
-
-		objects_to_delete -= object_to_delete
-		qdel(object_to_delete)
-
+	var/i=0
 
 	for(var/k in objects_to_delete_safe) //Don't delete stuff if players are in view.
 		var/datum/object_to_delete = k
@@ -47,6 +32,33 @@ SUBSYSTEM_DEF(delete)
 
 		objects_to_delete_safe -= object_to_delete
 		qdel(object_to_delete)
+		i++
+		if(i >= max_deletions)
+			break
+
+	for(var/k in objects_to_delete)
+		var/datum/object_to_delete = k
+		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
+		if(object_to_delete.qdeleting)
+			objects_to_delete -= object_to_delete
+			continue
+		var/time_to_delete = objects_to_delete[object_to_delete]
+		if(time_to_delete > world.time)
+			continue
+		if(is_atom(object_to_delete))
+			var/atom/A = object_to_delete
+			if(!A.is_safe_to_delete())
+				objects_to_delete[object_to_delete] = world.time + ITEM_DELETION_TIME_NEW
+				continue
+
+		objects_to_delete -= object_to_delete
+		qdel(object_to_delete)
+		i++
+		if(i >= max_deletions)
+			break
+
+
+
 
 	return TRUE
 

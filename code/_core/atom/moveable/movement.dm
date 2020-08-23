@@ -138,6 +138,9 @@
 	var/stepped_x = 0
 	var/stepped_y = 0
 
+	if(!loc) //Use forcemove instead
+		return FALSE
+
 	//Try Pixel Movement x
 	if(desired_step_x)
 		if(step_x + desired_step_x >= TILE_SIZE)
@@ -157,17 +160,14 @@
 			NewLoc = get_step(NewLoc,SOUTH)
 			stepped_y = -TILE_SIZE
 
-	if(istype(src.loc,/obj/projectile))
+	if(!NewLoc)
+		return FALSE
+
+	if(istype(src.loc,/obj/projectile)) //TODO: GET RID OF THIS SHITCODE.
 		return FALSE
 
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
-
-	if(!NewLoc)
-		return FALSE
-
-	if(!loc)
-		return FALSE
 
 	var/atom/OldLoc = loc
 
@@ -208,11 +208,9 @@
 				continue
 			A.Uncrossed(src,NewLoc,OldLoc)
 
-	if(desired_step_x)
-		step_x += desired_step_x - stepped_x
+	if(desired_step_x) step_x += desired_step_x - stepped_x
 
-	if(desired_step_y)
-		step_y += desired_step_y - stepped_y
+	if(desired_step_y) step_y += desired_step_y - stepped_y
 
 	if(loc == OldLoc && loc != NewLoc)
 		loc = NewLoc

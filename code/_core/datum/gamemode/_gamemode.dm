@@ -46,6 +46,10 @@
 	state = GAMEMODE_FIGHTING
 	return TRUE
 
+/gamemode/proc/can_continue()
+	//Can we even continue?
+	return TRUE
+
 /gamemode/proc/add_objective(var/objective/O)
 	O = new O
 

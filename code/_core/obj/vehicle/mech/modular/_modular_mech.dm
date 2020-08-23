@@ -213,11 +213,11 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(mech_arms) add_overlay(mech_arms)
 	if(mech_head) add_overlay(mech_head)
 
-	if(length(equipment) >= 1)
+	if(length(equipment) >= 1 && istype(equipment[1],/obj/item/weapon/ranged/energy/mech))
 		var/image/I = new/image(equipment[1].icon_attached,"[equipment[1].icon_state_attached]_right hand")
 		add_overlay(I)
 
-	if(length(equipment) >= 2)
+	if(length(equipment) >= 2 && istype(equipment[2],/obj/item/weapon/ranged/energy/mech))
 		var/image/I = new/image(equipment[2].icon_attached,"[equipment[2].icon_state_attached]_left hand")
 		add_overlay(I)
 
