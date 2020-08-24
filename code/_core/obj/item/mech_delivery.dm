@@ -86,7 +86,10 @@
 			var/mob/living/vehicle/mech/modular/V = new(caller_turf)
 			V.owner_ckey = P.ckey
 			INITIALIZE(V)
-			V.load_mech_data(M.loaded_data["stored_mechs"][mech_choices[mech_choice]])
+
+			var/md5_id = mech_choices[mech_choice]
+			var/mech_data = existing_mechs[md5_id]
+			V.load_mech_data(P,mech_data)
 
 			var/obj/structure/interactive/crate/closet/supply_pod/centcomm/SP = new(caller_turf)
 			SP.add_to_crate(V)

@@ -104,6 +104,8 @@
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
+	var/savedata/client/mob/M = MOBDATA(ckey)
+
 	. = list()
 
 	//Basic Information
@@ -119,6 +121,7 @@
 	.["known_languages"] = known_languages
 	.["id"] = save_id
 	.["dead"] = died
+	.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.
 
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)
