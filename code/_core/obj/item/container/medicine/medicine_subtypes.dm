@@ -5,6 +5,7 @@
 	icon_state = "brutepack"
 	treatment_time = 1
 	heal_brute = 30
+	heal_brute_percent = 5
 	heal_bleeding = TRUE
 	item_count_current = 5
 	item_count_max = 10
@@ -27,6 +28,7 @@
 	icon_state = "ointment"
 	treatment_time = 1
 	heal_burn = 30
+	heal_burn_percent = 5
 	value = 10
 
 /obj/item/container/medicine/ointment/advanced
@@ -44,6 +46,7 @@
 	icon_state = "traumakit"
 	treatment_time = 30
 	heal_brute = 80
+	heal_brute_percent = 10
 	heal_bleeding = TRUE
 	item_count_current = 5
 	item_count_max = 10
@@ -66,6 +69,7 @@
 	icon_state = "burnkit"
 	treatment_time = 30
 	heal_burn = 80
+	heal_burn_percent = 10
 	item_count_current = 5
 	item_count_max = 10
 
@@ -86,8 +90,6 @@
 	desc_extended = "Patches like these can't be used to cover wounds on their own, but can administer a great quantity of medicines really fast. Of course, giving too much medicines can be a way to speed up death rather than delay it, so be careful."
 	icon_state = "patch"
 	treatment_time = 5
-	heal_burn = 0
-	heal_brute = 0
 	item_count_current = 3
 	item_count_max = 3
 

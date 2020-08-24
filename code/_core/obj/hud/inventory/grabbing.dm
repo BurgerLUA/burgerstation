@@ -1,5 +1,5 @@
 
-/mob/living/advanced/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/advanced/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	var/OldLoc = loc
 

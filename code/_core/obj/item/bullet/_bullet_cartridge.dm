@@ -114,7 +114,8 @@
 		if(misfire_chance && luck(list(caller,src,loc),misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
-		item_count_max = -1
+		plane = PLANE_BULLET_CASINGS
+		item_count_max = max(item_count_max,100000) //Some absurd value.
 		return src
 
 	return FALSE
@@ -123,13 +124,8 @@
 
 	if(is_bullet(O))
 		var/obj/item/bullet_cartridge/B = O
-		if(!B.qdeleting && B.damage_type == src.damage_type && B.is_spent && src.is_spent)
-			B.item_count_current += item_count_current
-			item_count_current = 0 //Just in case
-			B.update_sprite()
-			if(src.bullet_seed)
-				B.bullet_seed = src.bullet_seed
-			qdel(src)
+		if(!B.qdeleting && B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
+			src.transfer_item_count_to(B)
 
 	return ..()
 

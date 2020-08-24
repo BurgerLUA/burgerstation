@@ -1,5 +1,5 @@
 /obj/item/mech_delivery
-	name = "mech delivery utility"
+	name = "mech chassis delivery utility"
 	icon = 'icons/obj/item/supply_remote_mech.dmi'
 	icon_state = "inventory"
 	value = 100
@@ -23,7 +23,7 @@
 			if(length(existing_mechs) >= 5)
 				caller.to_chat(span("warning","Error: You reached your limit of 5 mechs! Load an existing one instead!"))
 				return TRUE
-			var/confirmation = input("Are you sure you wish to create a new mech? This will cost 1000 credits and take up 1 out of [5-length(existing_mechs)] remaining mech slots.","Mech Creation","Cancel") as null|anything in list("Yes","No","Cancel")
+			var/confirmation = input("Are you sure you wish to create a new mech chasis? This will cost 1000 credits and take up 1 out of [5-length(existing_mechs)] remaining mech slots.","Mech Creation","Cancel") as null|anything in list("Yes","No","Cancel")
 			if(confirmation != "Yes")
 				return TRUE
 

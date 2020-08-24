@@ -5,11 +5,13 @@ var/global/list/stored_mechs_by_ckey = list()
 	for(var/ckey in stored_mechs_by_ckey)
 		var/savedata/client/mob/M = MOBDATA(ckey)
 		if(!M)
+			log_error("ERROR: Mech Saving: Could not find mobdata for ckey [ckey]!")
 			continue
 		if(!M.loaded_data["stored_mechs"])
 			M.loaded_data["stored_mechs"] = list()
 		try
 			for(var/mob/living/vehicle/mech/modular/V in stored_mechs_by_ckey[ckey])
+				LOG_DEBUG("Mech Saving: Found mech [V.get_debug_name()].")
 				if(V.qdeleting)
 					M.loaded_data["stored_mechs"] -= V.mech_id //Gone forever.
 				else

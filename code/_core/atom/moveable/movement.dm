@@ -26,14 +26,9 @@
 		if(acceleration_mod > 0)
 			final_movement_delay *= 1 / (acceleration_mod + ((acceleration_value/100)*(1-acceleration_mod)))
 
-		var/atom/desired_loc = get_step(src,final_move_dir)
-		var/list/step_offsets = list(0,0)
-		if(step_size != TILE_SIZE)
-			step_offsets = direction_to_pixel_offset(final_move_dir)
-			desired_loc = src.loc
-			final_movement_delay = 0
-		if(isturf(desired_loc))
-			var/turf/T = desired_loc
+
+		if(isturf(loc))
+			var/turf/T = loc
 			final_movement_delay *= T.delay_modifier
 
 		move_delay = CEILING(max(final_movement_delay,move_delay + final_movement_delay), adjust_delay ? adjust_delay : 1) //Round to the nearest tick. Counting decimal ticks is dumb.
@@ -42,25 +37,18 @@
 
 		var/similiar_move_dir = FALSE
 
-		var/move_result = Move(desired_loc,final_move_dir,step_offsets[1],step_offsets[2])
-		if(move_result)
+		var/list/found_directions = split_direction(final_move_dir)
+
+		for(var/split_move_dir in found_directions)
+			var/turf/T = get_step(src,split_move_dir)
+			if(!src.can_move(src.loc,T,split_move_dir))
+				final_move_dir &= ~split_move_dir
+
+		var/turf/desired_loc = get_step(src,final_move_dir)
+		if(final_move_dir && Move(desired_loc,final_move_dir,force = TRUE))
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir
-		else if(final_move_dir in DIRECTIONS_INTERCARDINAL)
-			for(var/new_dir in DIRECTIONS_CARDINAL)
-				var/list/new_step_offsets = list(0,0)
-				var/atom/new_desired_loc = get_step(src,new_dir)
-				if(step_size != 32)
-					new_step_offsets = direction_to_pixel_offset(final_move_dir)
-					new_desired_loc = src.loc
-				if((new_dir & final_move_dir) && Move(new_desired_loc,new_dir,new_step_offsets[1],new_step_offsets[2]))
-					if(move_dir_last & final_move_dir)
-						similiar_move_dir = TRUE
-					move_dir_last = new_dir
-					return TRUE
-				else
-					move_dir_last = 0x0
 		else
 			move_dir_last = 0x0
 
@@ -69,9 +57,8 @@
 				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
 			else
 				acceleration_value *= 0.5
-
-
 		return TRUE
+
 	else
 		if(adjust_delay)
 			move_delay = move_delay - adjust_delay
@@ -132,8 +119,35 @@
 
 	return FALSE
 
+/atom/movable/proc/can_move(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
 
-/atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+	//TRY: Exit the turf.
+	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
+		return FALSE
+
+	//TRY: Exit the contents.
+	for(var/k in OldLoc.contents)
+		var/atom/movable/M = k
+		if(M == src)
+			continue
+		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
+			return FALSE
+
+	//TRY: Enter the contents.
+	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
+		return FALSE
+
+	//TRY: Enter the contents.
+	for(var/k in NewLoc.contents)
+		var/atom/movable/M = k
+		if(M == src)
+			continue
+		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
+			return FALSE
+
+	return TRUE
+
+/atom/movable/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 
 	var/stepped_x = 0
 	var/stepped_y = 0
@@ -171,31 +185,10 @@
 
 	var/atom/OldLoc = loc
 
-	var/real_dir = get_dir(loc,NewLoc)
+	var/real_dir = get_dir(OldLoc,NewLoc)
 
-	//TRY: Exit the turf.
-	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
+	if(!force && !can_move(OldLoc,NewLoc,real_dir))
 		return FALSE
-
-	//TRY: Exit the contents.
-	for(var/k in OldLoc.contents)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
-			return FALSE
-
-	//TRY: Enter the contents.
-	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
-		return FALSE
-
-	//TRY: Enter the contents.
-	for(var/k in NewLoc.contents)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
-			return FALSE
 
 	if(OldLoc != NewLoc)
 		//DO: Exited the turf.

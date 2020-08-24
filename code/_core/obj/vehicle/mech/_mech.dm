@@ -28,7 +28,7 @@
 
 	return .
 
-/mob/living/vehicle/mech/Move(var/atom/NewLoc,Dir=0,desired_step_x=0,desired_step_y=0,var/silent=FALSE)
+/mob/living/vehicle/mech/Move(var/atom/NewLoc,Dir=0x0,desired_step_x=0,desired_step_y=0,var/silent=FALSE,var/force=FALSE)
 	var/real_dir = get_dir(src,NewLoc)
 	if(real_dir & dir)
 		return ..()

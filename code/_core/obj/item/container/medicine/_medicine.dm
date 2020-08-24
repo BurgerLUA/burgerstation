@@ -7,7 +7,9 @@
 	icon = 'icons/obj/item/medicine.dmi'
 
 	var/heal_brute = 0
+	var/heal_brute_percent = 0
 	var/heal_burn = 0
+	var/heal_burn_percent = 0
 	var/heal_bleeding = FALSE
 
 	var/verb_to_use = "treat"
@@ -53,8 +55,14 @@
 	if(heal_brute)
 		A.health.adjust_brute_loss(-heal_brute)
 
+	if(heal_brute_percent)
+		A.health.adjust_brute_loss(-heal_brute_percent*A.health.get_brute_loss())
+
 	if(heal_burn)
 		A.health.adjust_burn_loss(-heal_burn)
+
+	if(heal_burn_percent)
+		A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss())
 
 	if(heal_brute || heal_burn)
 		A.health.update_health()
