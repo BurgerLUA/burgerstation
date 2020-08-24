@@ -33,9 +33,7 @@
 				continue
 			if(!P.tutorial)
 				continue
-			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
-			if(mobdata)
-				mobdata.save_character(P)
+			P.save()
 			P.tutorial = FALSE
 
 	return .

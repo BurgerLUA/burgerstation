@@ -39,6 +39,8 @@
 	verbs += /client/verb/pm
 	verbs += /client/verb/ooc
 
+	verbs += /client/verb/refactor_savedata
+
 	//Game
 	verbs += /client/verb/stop_sound
 	verbs += /client/verb/ghost

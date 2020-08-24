@@ -128,9 +128,8 @@
 
 		var/obj/marker/antag/M = pick(all_antag_markers)
 		all_antag_markers -= M
-		var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
-		mobdata.reset_data()
 		var/mob/living/advanced/player/antagonist/syndicate/SP = new(get_turf(M),C)
+		SP.reset() //TODO: FIX ANTAG SPAWNING DATA
 		SP.prepare()
 
 	return .

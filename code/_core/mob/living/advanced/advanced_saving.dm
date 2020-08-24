@@ -104,8 +104,6 @@
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
 
-	. = list()
-
 	//Basic Information
 	.["name"] = real_name
 	.["currency"] = currency

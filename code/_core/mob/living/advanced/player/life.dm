@@ -2,9 +2,7 @@
 
 	. = ..()
 
-	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
-	if(mobdata)
-		mobdata.save_character(src,save_inventory = FALSE,died = TRUE)
+	P.save(save_inventory = FALSE, died = TRUE)
 
 	return .
 

@@ -1,4 +1,4 @@
-client/verb/air_test(var/pressure as num)
+/client/verb/air_test(var/pressure as num)
 	set name = "Air Test"
 	set category = "Debug"
 
@@ -319,3 +319,41 @@ client/verb/air_test(var/pressure as num)
 	SSvote.create_vote(/vote/continue_round)
 
 	return TRUE
+
+
+/client/verb/refactor_savedata()
+	set name = "Refactor Savedata (SUPER DANGEROUS)"
+	set category = "SET TO HIDDEN WHEN DONE."
+
+	var/confirm = input("Are you sure you want to refactor save data? Type 'Yes.' to confirm.","Super Confirmation.")
+
+	if(confirm != "Yes.")
+		to_chat("Good choice.")
+		return FALSE
+
+	var/list/ckey_folders = flist("data/users/")
+
+	for(var/ckey_name in ckey_folders)
+		var/list/characters = flist("data/users/[ckey_name]characters/")
+		for(var/character_file in characters)
+			if(!has_suffix(character_file,".json"))
+				continue
+			var/selected_file = "data/users/[ckey_name]characters/[character_file]"
+			var/new_dir = copytext(character_file,1,-5)
+
+			LOG_DEBUG("Trying to copy: [selected_file]...")
+			var/list/file_data = json_decode(rustg_file_read(selected_file))
+
+			var/new_dir_02 = "data/client/[ckey_name]characters/[new_dir]/inventory.json"
+			var/list/data_02 = file_data["organs"]
+			LOG_DEBUG("Writing to file: [new_dir_02]...")
+			rustg_file_write(json_encode(data_02),new_dir_02)
+
+			var/list/data_01 = file_data
+			data_01 -= "organs"
+			var/new_dir_01 = "data/client/[ckey_name]characters/[new_dir]/character.json"
+			LOG_DEBUG("Writing to file: [new_dir_01]...")
+			rustg_file_write(json_encode(data_01),new_dir_01)
+
+			sleep(-1)
+			sleep(1)

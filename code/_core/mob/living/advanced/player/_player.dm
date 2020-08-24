@@ -94,9 +94,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
 
-	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
+	var/savedata/client/inventory/inventorydata = INVENTORYDATA(ckey_last)
 
-	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
+	if(!mobdata || !length(mobdata.loaded_data) || !do_load)
 		return ..()
 
 	add_species_languages()

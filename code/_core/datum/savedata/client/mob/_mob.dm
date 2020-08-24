@@ -8,7 +8,7 @@ var/global/list/ckey_to_mobdata = list()
 	return ..()
 
 /savedata/client/mob/get_folder(var/folder_id)
-	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
+	. = replacetext(CLIENT_PATH_FORMAT,"%CKEY",folder_id)
 	return
 
 /savedata/client/mob/reset_data()
@@ -18,7 +18,6 @@ var/global/list/ckey_to_mobdata = list()
 		"last_saved_date" = 0,
 		"last_saved_time" = 0,
 		"species" = "human",
-		"organs" = list(),
 		"skills" = list(),
 		"attributes" = list(),
 		"currency" = 0,
@@ -35,10 +34,6 @@ var/global/list/ckey_to_mobdata = list()
 	var/client/owner = CLIENT(ckey)
 	if(owner)
 		ckey_to_mobdata[ckey] = src
-
-/savedata/client/mob/Destroy()
-	log_error("SERIOUS ERROR: Mobdata for [ckey] was destroyed!")
-	return ..()
 
 /savedata/client/mob/get_file(var/file_id)
 	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"
