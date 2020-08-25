@@ -129,7 +129,7 @@
 		try
 			final_organ_list[id] = O.save_item_data(save_inventory)
 		catch(var/exception/e)
-			log_error("get_mob_data: [e] on [e.file]:[e.line]!")
+			log_error("get_mob_data:() [e] on [e.file]:[e.line]!")
 
 	.["organs"] = final_organ_list
 

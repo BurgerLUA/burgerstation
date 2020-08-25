@@ -41,25 +41,27 @@ var/global/list/stored_mechs_by_ckey = list()
 	value = 500
 
 	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 75,
-		ARCANE = -100,
-		HEAT = 100,
-		COLD = 100,
-		BOMB = 50,
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		ARCANE = 0,
+		HEAT = 0,
+		COLD = 0,
+		BOMB = 0,
 		BIO = INFINITY,
 		RAD = INFINITY,
 		HOLY = INFINITY,
 		DARK = INFINITY,
 		FATIGUE = INFINITY,
-		ION = -50
+		ION = -100
 	)
 
 	class = /class/gygax/
 
-	health_base = 1500
+	health = /health/mob/living/vehicle/mech/modular
+
+	health_base = 500
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
@@ -246,5 +248,48 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(!mech_body)
 		dir = SOUTH
 		return TRUE
+
+	return ..()
+
+
+/mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+
+	if(!length(params))
+		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
+
+	var/x_attack = text2num(params[PARAM_ICON_X])
+	var/y_attack = text2num(params[PARAM_ICON_Y])
+
+	if(!accurate && is_living(attacker) && attacker != src)
+		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
+		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
+		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
+
+	if(mech_arms && (x_attack < 12 || x_attack > 16) && y_attack > 12 && y_attack < 23)
+		return mech_arms
+
+	if(mech_legs && y_attack < 13)
+		return mech_legs
+
+	if(mech_head && y_attack > 24)
+		return mech_head
+
+	if(mech_body)
+		return mech_body
+
+	return src
+
+
+/mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(!mech_arms || mech_arms.health_current <= 0)
+		return FALSE
+
+	return ..()
+
+/mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 0)
+
+	if(!mech_legs || mech_legs.health_current <= 0)
+		return FALSE
 
 	return ..()
