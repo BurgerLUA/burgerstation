@@ -282,14 +282,14 @@ var/global/list/stored_mechs_by_ckey = list()
 
 /mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(!mech_arms || mech_arms.health_current <= 0)
+	if(!mech_arms || mech_arms.health.health_current <= 0)
 		return FALSE
 
 	return ..()
 
 /mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 0)
 
-	if(!mech_legs || mech_legs.health_current <= 0)
+	if(!mech_legs || mech_legs.health.health_current <= 0)
 		return FALSE
 
 	return ..()
