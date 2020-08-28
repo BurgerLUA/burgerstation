@@ -72,7 +72,7 @@
 	else if(length(lobby_positions))
 		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			O.force_move(get_turf(pick(lobby_positions)))
-			play_music_track(/track/space_wayfarer, O.client)
+			play_music_track(pick(TRACKS_LOBBY), O.client)
 			O.show_hud(TRUE,speed = 2)
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")

@@ -20,3 +20,5 @@
 		'sound/ambient/ambiruin_6.ogg',
 		'sound/ambient/ambiruin_7.ogg',
 	)
+
+	tracks = TRACKS_JUNGLE

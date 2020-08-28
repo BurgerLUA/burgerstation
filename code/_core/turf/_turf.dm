@@ -67,11 +67,13 @@
 
 /turf/change_victim(var/atom/attacker)
 
-	for(var/v in contents)
+	for(var/atom/movable/v in contents)
 		if(ismob(v) && attacker != v)
 			var/mob/M = v
 			if(M.mouse_opacity == 0)
 				continue
+			return v
+		if(v.health && v.can_be_attacked(attacker))
 			return v
 
 	if(old_living)

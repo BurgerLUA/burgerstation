@@ -235,7 +235,7 @@
 
 
 /obj/marker/generation/snow_tree
-	object_to_place = /obj/structure/scenery/pinetrees
+	object_to_place = /obj/structure/interactive/pine_tree
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 12

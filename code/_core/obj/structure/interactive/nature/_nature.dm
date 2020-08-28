@@ -1,4 +1,4 @@
-obj/structure/scenery
+/obj/structure/scenery
 	mouse_opacity = 0
 
 obj/structure/scenery/grass_bush

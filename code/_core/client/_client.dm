@@ -187,7 +187,7 @@ var/global/list/all_clients = list() //Assoc list
 		make_observer(FALLBACK_TURF)
 		mob.show_hud(FALSE,speed = 0)
 		if(world_state == STATE_RUNNING)
-			play_music_track(/track/space_wayfarer, src)
+			play_music_track(pick(TRACKS_LOBBY), src)
 			mob.show_hud(TRUE,speed = 2)
 			mob.force_move(get_turf(lobby_positions[1]))
 
