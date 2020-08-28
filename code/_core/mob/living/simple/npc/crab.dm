@@ -76,7 +76,7 @@
 
 	boss = TRUE
 	force_spawn = TRUE
-	boss_music = "crab_rave"
+	boss_music = /track/crab_rave
 
 	damage_type = /damagetype/npc/crab/king
 

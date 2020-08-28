@@ -27,7 +27,6 @@
 
 	return TRUE
 
-
 /mob/living/advanced/player/antagonist/default_appearance()
 	var/species/S = all_species[species]
 	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)

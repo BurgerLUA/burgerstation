@@ -6,7 +6,7 @@
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
-	boss_music = "skeletons"
+	boss_music = /track/skeletons
 	boss = TRUE
 	ai = /ai/advanced/skeleton
 
@@ -15,8 +15,36 @@
 
 	health_base = 1200
 
+	damage_received_multiplier = 0.5
+
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
+
+	var/next_revive = 0
+
+/mob/living/advanced/npc/unique/pirate_captain/on_life_slow()
+
+	. = ..()
+
+	if(. && ai && ai.active && next_revive <= world.time)
+
+		var/list/possible_targets = list()
+
+		for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
+			if(A.loyalty_tag != src.loyalty_tag)
+				continue
+			if(!A.dead)
+				continue
+			possible_targets += src
+
+		var/mob/living/advanced/A = pick(possible_targets)
+
+		shoot_projectile(src,A,null,null,/obj/projectile/magic/rift/revive,/damagetype/ranged/magic/fireball,projectile_speed_to_use = 8,desired_loyalty = loyalty_tag)
+
+		next_revive = world.time + SECONDS_TO_DECISECONDS(5)
+
+
+	return .
 
 /mob/living/advanced/npc/unique/pirate_captain/Initialize()
 	. = ..()
@@ -39,6 +67,8 @@
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
 	ai = /ai/advanced/skeleton
+
+	damage_received_multiplier = 0.5
 
 /mob/living/advanced/npc/unique/pirate_mate/Initialize()
 	. = ..()

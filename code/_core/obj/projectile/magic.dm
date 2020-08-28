@@ -36,6 +36,22 @@
 	name = "magic rift"
 	icon_state = "rift"
 
+/obj/projectile/magic/rift/revive
+	name = "revival rift"
+
+/obj/projectile/magic/rift/revive/post_on_hit(var/atom/hit_atom)
+
+	. = ..()
+
+	if(. && is_living(hit_atom))
+		var/mob/living/L = hit_atom
+		if(L.dead && L.loyalty_tag == src.loyalty_tag)
+			L.resurrect()
+
+	return .
+
+
+
 /obj/projectile/magic/lightning_bolt
 	name = "holy lightning bolt"
 	icon_state = "lightning"

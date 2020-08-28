@@ -16,6 +16,9 @@
 	name = "mech weapon"
 	var/obj/item/weapon/stored_weapon
 
+	pixel_x = 0
+	pixel_y = 0
+
 /obj/item/mech_part/equipment/weapon/save_item_data(var/save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_weapon")
