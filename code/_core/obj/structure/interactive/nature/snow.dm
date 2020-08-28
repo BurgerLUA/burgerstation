@@ -1,3 +1,4 @@
+/*
 obj/structure/scenery/pinetrees
 	name = "pinetree"
 	icon = 'icons/obj/structure/flora/pinetrees.dmi'
@@ -18,7 +19,7 @@ obj/structure/scenery/pinetrees
 obj/structure/scenery/pinetrees/New()
 	..()
 	icon_state = "pine_[rand(1,3)]"
-
+*/
 
 obj/structure/scenery/snow_grass
 	name = "grass"
@@ -44,25 +45,25 @@ obj/structure/scenery/snow_bush/New()
 
 
 
-/obj/structure/interactive/pine_tree
-	name = "dead tree"
-	icon = 'icons/obj/structure/flora/pinetrees.dmi'
-	icon_state = "pine_2"
-
+/obj/structure/interactive/tree/
 	layer = LAYER_LARGE_OBJ
 	plane = PLANE_SCENERY
-
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
-
 	health = /health/construction/
 	health_base = 250
-
-	pixel_x = -16
-
 	mouse_opacity = 1
 
-/obj/structure/interactive/pine_tree/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/tree/can_be_attacked()
+	return TRUE
+
+/obj/structure/interactive/tree/pine
+	name = "pine tree"
+	icon = 'icons/obj/structure/flora/pinetrees.dmi'
+	icon_state = "pine_2"
+	pixel_x = -16
+
+/obj/structure/interactive/tree/pine/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "pine_stump"
@@ -70,9 +71,64 @@ obj/structure/scenery/snow_bush/New()
 	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
 	return .
 
-/obj/structure/interactive/pine_tree/New(var/desired_loc)
+/obj/structure/interactive/tree/pine/New(var/desired_loc)
 	icon_state = "pine_[rand(1,3)]"
 	return ..()
 
-/obj/structure/interactive/pine_tree/can_be_attacked()
-	return TRUE
+
+
+/obj/structure/interactive/tree/evergreen
+	name = "evergreen tree"
+	icon = 'icons/obj/structure/flora/evergreen.dmi'
+	icon_state = "evergreen_2"
+	pixel_x = -16
+
+/obj/structure/interactive/tree/evergreen/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	QDEL_NULL(health)
+	icon_state = "evergreen_stump"
+	collision_flags = FLAG_COLLISION_CRAWLING
+	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	return .
+
+/obj/structure/interactive/tree/evergreen/New(var/desired_loc)
+	icon_state = "evergreen_[rand(1,3)]"
+	return ..()
+
+/obj/structure/interactive/tree/jungle_small
+	name = "small jungle tree"
+	icon = 'icons/obj/structure/flora/jungletreesmall.dmi'
+	icon_state = "tree"
+	pixel_x = -32
+	pixel_y = 0
+
+/obj/structure/interactive/tree/jungle_small/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	QDEL_NULL(health)
+	icon_state = "strump"
+	collision_flags = FLAG_COLLISION_CRAWLING
+	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	return .
+
+/obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
+	icon_state = "tree[rand(1,6)]"
+	return ..()
+
+/obj/structure/interactive/tree/jungle_large
+	name = "large jungle tree"
+	icon = 'icons/obj/structure/flora/jungletrees.dmi'
+	icon_state = "tree"
+	pixel_x = -48
+	pixel_y = -16
+
+/obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	QDEL_NULL(health)
+	icon_state = "strump"
+	collision_flags = FLAG_COLLISION_CRAWLING
+	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	return .
+
+/obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
+	icon_state = "tree[rand(1,6)]"
+	return ..()

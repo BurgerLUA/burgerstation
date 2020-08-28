@@ -56,6 +56,7 @@ obj/structure/scenery/rocks/New()
 	..()
 	icon_state = "rock_[rand(1,10)]"
 
+/*
 obj/structure/scenery/evergreen
 	name = "evergreen tree"
 	icon = 'icons/obj/structure/flora/evergreen.dmi'
@@ -75,6 +76,7 @@ obj/structure/scenery/evergreen
 obj/structure/scenery/evergreen/New()
 	..()
 	icon_state = "evergreen_[rand(1,3)]"
+*/
 
 
 

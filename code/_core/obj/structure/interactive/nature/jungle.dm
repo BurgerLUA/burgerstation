@@ -24,7 +24,7 @@ obj/structure/scenery/jungle_rock/New()
 	..()
 	icon_state = "rock[rand(1,5)]"
 
-
+/*
 obj/structure/scenery/jungle_trees
 	name = "jungle tree"
 	icon = 'icons/obj/structure/flora/jungletrees.dmi'
@@ -57,3 +57,4 @@ obj/structure/scenery/jungle_trees_small
 obj/structure/scenery/jungle_trees/New()
 	..()
 	icon_state = "tree[rand(1,6)]"
+*/

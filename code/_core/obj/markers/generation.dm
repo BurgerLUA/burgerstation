@@ -235,7 +235,7 @@
 
 
 /obj/marker/generation/snow_tree
-	object_to_place = /obj/structure/interactive/pine_tree
+	object_to_place = /obj/structure/interactive/tree/pine
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 12
@@ -249,7 +249,7 @@
 
 
 /obj/marker/generation/jungle_tree
-	object_to_place = /obj/structure/scenery/jungle_trees
+	object_to_place = /obj/structure/interactive/tree/jungle_large
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 2
@@ -262,7 +262,7 @@
 
 
 /obj/marker/generation/forest_tree
-	object_to_place = /obj/structure/scenery/evergreen
+	object_to_place = /obj/structure/interactive/tree/evergreen
 	grow_amount_min = 10
 	grow_amount_max = 20
 	objects_max = 5
@@ -304,7 +304,7 @@
 
 
 /obj/marker/generation/jungle_tree_small
-	object_to_place = /obj/structure/scenery/jungle_trees_small
+	object_to_place = /obj/structure/interactive/tree/jungle_small
 	grow_amount_min = 10
 	grow_amount_max = 30
 	objects_max = 3
