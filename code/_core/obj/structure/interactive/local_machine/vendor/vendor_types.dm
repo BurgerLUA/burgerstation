@@ -238,9 +238,11 @@
 	name = "mech fabricator"
 	icon_state = "mech"
 	stored_types = list(
-		/obj/item/weapon/ranged/energy/mech/smg/mk1,
-		/obj/item/weapon/ranged/energy/mech/smg/mk2,
-		/obj/item/weapon/ranged/energy/mech/smg/mk3,
+		/obj/item/mech_part/equipment/weapon/smg,
+		/obj/item/mech_part/equipment/weapon/rifle,
+		/obj/item/mech_part/equipment/weapon/laser,
+		/obj/item/mech_part/equipment/weapon/ion,
+		/obj/item/mech_part/equipment/weapon/missile_pod,
 
 		/obj/item/mech_part/legs/loader,
 		/obj/item/mech_part/legs/light,

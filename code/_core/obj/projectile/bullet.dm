@@ -79,3 +79,17 @@
 			return FALSE
 
 	return .
+
+
+/obj/projectile/bullet/rocket
+	name = "rocket"
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "rocket"
+
+/obj/projectile/bullet/rocket/post_on_hit(var/atom/hit_atom)
+	. = ..()
+
+	if(.)
+		explode(get_turf(hit_atom),2,owner,src,iff_tag)
+
+	return .

@@ -132,13 +132,13 @@
 /mob/living/vehicle/mech/gygax/dark/Generate()
 	. = ..()
 
-	var/obj/item/weapon/ranged/energy/mech/smg/mk1/M1 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/M1 = new(src.loc)
 	M1.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 	INITIALIZE(M1)
 	GENERATE(M1)
 	src.attach_equipment(null,M1)
 
-	var/obj/item/weapon/ranged/energy/mech/smg/mk2/M2 = new(src.loc)
+	var/obj/item/weapon/ranged/energy/mech/smg/M2 = new(src.loc)
 	M2.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 	INITIALIZE(M2)
 	GENERATE(M2)

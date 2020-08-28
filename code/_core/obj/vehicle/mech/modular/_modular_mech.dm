@@ -33,6 +33,19 @@ var/global/list/stored_mechs_by_ckey = list()
 	var/obj/item/mech_part/body/mech_body
 	var/obj/item/mech_part/head/mech_head
 
+	var/obj/item/mech_part/equipment/right_hand
+	var/obj/item/mech_part/equipment/left_hand
+
+	var/obj/item/mech_part/equipment/left_shoulder
+	var/obj/item/mech_part/equipment/right_shoulder
+
+	var/obj/item/mech_part/equipment/chest
+
+	var/obj/item/mech_part/equipment/back
+
+	var/obj/item/mech_part/equipment/head
+
+
 	var/owner_ckey //The owner of this mech.
 	var/mech_id //The unique ID of the mech.
 
@@ -65,6 +78,29 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
+/mob/living/vehicle/mech/modular/get_examine_list(var/mob/caller)
+
+	. = ..()
+
+	if(mech_head) . += span("notice","It has \the [mech_head.name] equipped. ([mech_head.health.health_current]/[mech_head.health.health_max])")
+	if(mech_body) . += span("notice","It has \the [mech_body.name] equipped. ([mech_body.health.health_current]/[mech_body.health.health_max])")
+	if(mech_arms) . += span("notice","It has \the [mech_arms.name] equipped. ([mech_arms.health.health_current]/[mech_arms.health.health_max])")
+	if(mech_legs) . += span("notice","It has \the [mech_legs.name] equipped. ([mech_legs.health.health_current]/[mech_legs.health.health_max])")
+
+	if(right_hand) . += span("notice","It has \the [right_hand.name] equipped in the right hand.")
+	if(left_hand) . += span("notice","It has \the [left_hand.name] equipped in the left hand.")
+
+	return .
+
+
+/mob/living/vehicle/mech/modular/attach_equipment(var/mob/caller,var/obj/item/I)
+	return FALSE
+
+/mob/living/vehicle/mech/modular/unattach_equipment(var/mob/caller,var/obj/item/I)
+	return FALSE
+
+/mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/weapon/W)
+	return FALSE
 
 /mob/living/vehicle/mech/modular/PostInitialize()
 
@@ -103,10 +139,22 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	SAVEVAR("name")
 	SAVEVAR("mech_id")
+
 	SAVEATOM("mech_arms")
 	SAVEATOM("mech_legs")
 	SAVEATOM("mech_body")
 	SAVEATOM("mech_head")
+
+	SAVEATOM("right_hand")
+	SAVEATOM("left_hand")
+
+	SAVEATOM("right_shoulder")
+	SAVEATOM("left_shoulder")
+
+	SAVEATOM("back")
+	SAVEATOM("head")
+	SAVEATOM("chest")
+
 
 	return .
 
@@ -116,10 +164,21 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	LOADVAR("name")
 	LOADVAR("mech_id")
+
 	LOADATOM("mech_arms")
 	LOADATOM("mech_legs")
 	LOADATOM("mech_body")
 	LOADATOM("mech_head")
+
+	LOADATOM("right_hand")
+	LOADATOM("left_hand")
+
+	LOADATOM("right_shoulder")
+	LOADATOM("left_shoulder")
+
+	LOADATOM("back")
+	LOADATOM("head")
+	LOADATOM("chest")
 
 	update_sprite()
 
@@ -132,6 +191,34 @@ var/global/list/stored_mechs_by_ckey = list()
 		return FALSE
 
 	return ..()
+
+
+/mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(!mech_arms || mech_arms.health.health_current <= 0)
+		world.log << "No mech arms."
+		return FALSE
+
+	if(params["right"])
+		if(left_shoulder && caller.attack_flags & ATTACK_ALT)
+			world.log << "left_shoulder"
+			return left_shoulder.click_on_object(caller,object,location,control,params)
+		else if(left_hand)
+			world.log << "left_hand"
+			return left_hand.click_on_object(caller,object,location,control,params)
+
+	if(params["left"])
+		if(right_shoulder && caller.attack_flags & ATTACK_ALT)
+			world.log << "right_shoulder"
+			return right_shoulder.click_on_object(caller,object,location,control,params)
+		else if(right_hand)
+			world.log << "right_hand"
+			return right_hand.click_on_object(caller,object,location,control,params)
+
+	world.log << "none"
+	src.attack(caller,object,params)
+
+	return TRUE
 
 /mob/living/vehicle/mech/modular/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -147,7 +234,67 @@ var/global/list/stored_mechs_by_ckey = list()
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WRENCH)
 			INTERACT_CHECK
-			if(mech_head)
+
+			var/list/valid_weapons = list()
+
+			if(left_hand)
+				valid_weapons["left_hand"] = left_hand
+			if(right_hand)
+				valid_weapons["right_hand"] = right_hand
+			if(left_shoulder)
+				valid_weapons["left_shoulder"] = left_shoulder
+			if(right_shoulder)
+				valid_weapons["right_shoulder"] = right_shoulder
+			if(head)
+				valid_weapons["head"] = head
+			if(back)
+				valid_weapons["back"] = back
+			if(chest)
+				valid_weapons["back"] = chest
+
+			if(length(valid_weapons))
+				valid_weapons["Cancel"] = "Cancel"
+				var/desired_remove = input("What would you like to remove?","Weapon Removal","Cancel") as null|anything in valid_weapons
+				switch(desired_remove)
+					if("left_hand")
+						left_hand.drop_item(get_turf(src))
+						if(caller) left_hand.force_move(get_turf(caller))
+						left_hand = null
+						update_sprite()
+					if("right_hand")
+						right_hand.drop_item(get_turf(src))
+						if(caller) right_hand.force_move(get_turf(caller))
+						right_hand = null
+						update_sprite()
+					if("left_shoulder")
+						left_shoulder.drop_item(get_turf(src))
+						if(caller) left_shoulder.force_move(get_turf(caller))
+						left_shoulder = null
+						update_sprite()
+					if("right_shoulder")
+						right_shoulder.drop_item(get_turf(src))
+						if(caller) right_shoulder.force_move(get_turf(caller))
+						right_shoulder = null
+						update_sprite()
+					if("back")
+						back.drop_item(get_turf(src))
+						if(caller) back.force_move(get_turf(caller))
+						back = null
+						update_sprite()
+					if("head")
+						head.drop_item(get_turf(src))
+						if(caller) head.force_move(get_turf(caller))
+						head = null
+						update_sprite()
+					if("chest")
+						chest.drop_item(get_turf(src))
+						if(caller) chest.force_move(get_turf(caller))
+						chest = null
+						update_sprite()
+					if("Cancel")
+						caller?.to_chat(span("notice","You decide not to remove anything."))
+
+			else if(mech_head)
 				caller?.to_chat(span("notice","You remove \the [mech_head.name] from \the [src.name]."))
 				mech_head.drop_item(get_turf(src))
 				if(caller) mech_head.force_move(get_turf(caller))
@@ -186,24 +333,70 @@ var/global/list/stored_mechs_by_ckey = list()
 						return TRUE
 					mech_arms = I
 					. = TRUE
-			if(istype(I,/obj/item/mech_part/legs))
+				else
+					caller?.to_chat(span("notice","There are already mech arms attached to \the [I.name]!"))
+			else if(istype(I,/obj/item/mech_part/legs))
 				if(!mech_legs)
 					mech_legs = I
 					. = TRUE
-			if(istype(I,/obj/item/mech_part/body))
+				else
+					caller?.to_chat(span("notice","There are already mech legs attached to \the [I.name]!"))
+			else if(istype(I,/obj/item/mech_part/body))
 				if(!mech_body)
 					if(!mech_legs)
 						caller?.to_chat(span("notice","You must add mech legs to this assembly before attaching \the [I.name]!"))
 						return TRUE
 					mech_body = I
 					. = TRUE
-			if(istype(I,/obj/item/mech_part/head))
+				else
+					caller?.to_chat(span("notice","There is already a mech body attached to \the [I.name]!"))
+			else if(istype(I,/obj/item/mech_part/head))
 				if(!mech_head)
 					if(!mech_body)
 						caller?.to_chat(span("notice","You must add a mech body to this assembly before attaching \the [I.name]!"))
 						return TRUE
 					mech_head = I
 					. = TRUE
+				else
+					caller?.to_chat(span("notice","There is already a mech head attached to \the [I.name]!"))
+			else if(istype(I,/obj/item/mech_part/equipment))
+				var/obj/item/mech_part/equipment/E = I
+				if(!mech_arms)
+					caller?.to_chat(span("notice","You must add mech arms to this assembly before attaching \the [E.name]!"))
+					return TRUE
+				if(!. && E.slot & MECH_SLOT_HAND)
+					if(!right_hand)
+						right_hand = E
+						E.current_slot = "right hand"
+						. = TRUE
+					else if(!left_hand)
+						left_hand = E
+						E.current_slot = "left hand"
+						. = TRUE
+				if(!. && E.slot & MECH_SLOT_SHOULDER)
+					if(!right_shoulder)
+						right_shoulder = E
+						E.current_slot = "right shoulder"
+						. = TRUE
+					else if(!left_shoulder)
+						left_shoulder = E
+						E.current_slot = "left shoulder"
+						. = TRUE
+				if(!. && E.slot & MECH_SLOT_BACK)
+					if(!back)
+						back = E
+						E.current_slot = "back"
+						. = TRUE
+				if(!. && E.slot & MECH_SLOT_CHEST)
+					if(!chest)
+						chest = E
+						E.current_slot = "chest"
+						. = TRUE
+				if(!. && E.slot & MECH_SLOT_HEAD)
+					if(!head)
+						head = E
+						E.current_slot = "head"
+						. = TRUE
 			if(.)
 				I.drop_item(src)
 				I.update_sprite()
@@ -221,13 +414,17 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(mech_arms) add_overlay(mech_arms)
 	if(mech_head) add_overlay(mech_head)
 
-	if(length(equipment) >= 1 && istype(equipment[1],/obj/item/weapon/ranged/energy/mech))
-		var/image/I = new/image(equipment[1].icon_attached,"[equipment[1].icon_state_attached]_right hand")
-		add_overlay(I)
+	if(right_shoulder) add_overlay(right_shoulder)
+	if(left_shoulder) add_overlay(left_shoulder)
 
-	if(length(equipment) >= 2 && istype(equipment[2],/obj/item/weapon/ranged/energy/mech))
-		var/image/I = new/image(equipment[2].icon_attached,"[equipment[2].icon_state_attached]_left hand")
-		add_overlay(I)
+	if(right_hand) add_overlay(right_hand)
+	if(left_hand) add_overlay(left_hand)
+
+	if(chest) add_overlay(chest)
+
+	if(back) add_overlay(back)
+
+	if(head) add_overlay(head)
 
 	return .
 
@@ -278,14 +475,6 @@ var/global/list/stored_mechs_by_ckey = list()
 		return mech_body
 
 	return src
-
-
-/mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	if(!mech_arms || mech_arms.health.health_current <= 0)
-		return FALSE
-
-	return ..()
 
 /mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 0)
 

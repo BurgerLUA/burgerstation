@@ -69,6 +69,8 @@
 
 	var/list/defense_rating = HUMAN_ARMOR
 
+	var/robotic = FALSE //Set to true if the limb is robotic.
+
 /obj/item/organ/proc/get_defense_rating()
 	return defense_rating
 

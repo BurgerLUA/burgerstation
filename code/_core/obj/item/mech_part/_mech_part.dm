@@ -28,3 +28,13 @@
 		FATIGUE = INFINITY,
 		ION = -50
 	)
+
+/obj/item/mech_part/update_sprite()
+
+	if(istype(src.loc,/mob/living/vehicle/mech/modular))
+		pixel_x = 0
+	else
+		pixel_x = initial(pixel_x)
+		pixel_y = initial(pixel_y)
+
+	return ..()
