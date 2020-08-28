@@ -26,9 +26,11 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 
 	return ..()
 
-obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
-	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
+
+/obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+
+	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALL)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in OldLoc.contents
 		if(T)

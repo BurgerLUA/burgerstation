@@ -46,7 +46,7 @@
 
 	var/kick_chance = 10
 
-	var/attack_on_block = TRUE
+	var/attack_on_block = FALSE
 
 	var/path_steps = 1
 	var/list/Vector3D/current_path = list()
@@ -66,10 +66,6 @@
 	var/grab_time_max = 20 //How long, in deciseconds, should we allow someone to grab us?
 
 	var/ignore_immortal = FALSE
-
-	var/block_chance = 25
-	var/parry_chance = 25
-	var/dodge_chance = 25
 
 	var/list/enemy_tags = list()
 

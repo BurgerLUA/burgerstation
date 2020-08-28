@@ -46,7 +46,6 @@
 		if(istype(src.loc,/mob/living/vehicle/mech/modular))
 			icon = initial(icon)
 			icon_state = "[stored_weapon.icon_state]_[current_slot]"
-			world.log << "The icon state is: [icon_state]"
 		else
 			icon = stored_weapon.icon
 			icon_state = stored_weapon.icon_state

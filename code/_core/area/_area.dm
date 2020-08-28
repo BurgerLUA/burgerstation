@@ -146,8 +146,6 @@ var/global/list/all_areas = list()
 
 	if(ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
 		var/mob/M = enterer
-		if(M.client)
-			world.log << "[M.client.next_music_track] <= [world.time]"
 		if(M.client && length(tracks) && (!M.client.next_music_track || M.client.next_music_track <= world.time))
 			play_music_track(pick(tracks),M.client)
 

@@ -78,6 +78,17 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
+/mob/living/vehicle/mech/modular/enter_vehicle(atom/movable/Obj,atom/OldLoc)
+
+	if(is_living(Obj))
+		var/mob/living/L = Obj
+		if(L.ckey != owner_ckey)
+			L.to_chat(span("notice","The DNA lock is preventing you from entering this vehicle!"))
+			return FALSE
+
+	return ..()
+
+
 /mob/living/vehicle/mech/modular/get_examine_list(var/mob/caller)
 
 	. = ..()
@@ -186,6 +197,10 @@ var/global/list/stored_mechs_by_ckey = list()
 
 /mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/I)
 
+	if(caller && caller.ckey != owner_ckey)
+		caller.to_chat(span("notice","The DNA lock is preventing you from modifying \the [src.name]!"))
+		return FALSE
+
 	if(!mech_arms)
 		caller?.to_chat(span("notice","You must add a set of arms to this assembly before attaching weapons!"))
 		return FALSE
@@ -196,32 +211,28 @@ var/global/list/stored_mechs_by_ckey = list()
 /mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(!mech_arms || mech_arms.health.health_current <= 0)
-		world.log << "No mech arms."
 		return FALSE
 
 	if(params["right"])
 		if(left_shoulder && caller.attack_flags & ATTACK_ALT)
-			world.log << "left_shoulder"
 			return left_shoulder.click_on_object(caller,object,location,control,params)
 		else if(left_hand)
-			world.log << "left_hand"
 			return left_hand.click_on_object(caller,object,location,control,params)
 
 	if(params["left"])
 		if(right_shoulder && caller.attack_flags & ATTACK_ALT)
-			world.log << "right_shoulder"
 			return right_shoulder.click_on_object(caller,object,location,control,params)
 		else if(right_hand)
-			world.log << "right_hand"
 			return right_hand.click_on_object(caller,object,location,control,params)
 
-	world.log << "none"
 	src.attack(caller,object,params)
 
 	return TRUE
 
 /mob/living/vehicle/mech/modular/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(caller && caller.ckey != owner_ckey)
+		return ..()
 
 	var/atom/A = object.defer_click_on_object(location,control,params)
 

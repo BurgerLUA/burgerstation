@@ -39,10 +39,11 @@
 
 		var/list/found_directions = split_direction(final_move_dir)
 
-		for(var/split_move_dir in found_directions)
-			var/turf/T = get_step(src,split_move_dir)
-			if(!src.can_move(src.loc,T,split_move_dir))
-				final_move_dir &= ~split_move_dir
+		if(final_move_dir in DIRECTIONS_INTERCARDINAL)
+			for(var/split_move_dir in found_directions)
+				var/turf/T = get_step(src,split_move_dir)
+				if(!src.can_move(src.loc,T,split_move_dir))
+					final_move_dir &= ~split_move_dir
 
 		var/turf/desired_loc = get_step(src,final_move_dir)
 		if(final_move_dir && Move(desired_loc,final_move_dir,force = TRUE))
