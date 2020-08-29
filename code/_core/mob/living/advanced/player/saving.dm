@@ -121,7 +121,10 @@
 	.["known_languages"] = known_languages
 	.["id"] = save_id
 	.["dead"] = died
-	.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.
+	if(M.loaded_data)
+		.["stored_mechs"] = M.loaded_data["stored_mechs"] //I hate that I have to do this.
+	else
+		CRASH_SAFE("WARNING: COULD NOT SAVE [src.get_debug_name()]'s mechs!")
 
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)

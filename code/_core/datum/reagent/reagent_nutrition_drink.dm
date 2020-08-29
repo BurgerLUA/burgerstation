@@ -8,9 +8,7 @@
 
 	liquid = 0.5
 
-	hydration_amount = 8
-
-	value = 0.2
+	hydration_amount = 30
 
 /reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
 
@@ -35,12 +33,10 @@
 	desc = "Carbonated water."
 	color = "#DDFFFF"
 
-	nutrition_amount = 0.1
-	hydration_amount = 5
+	nutrition_amount = 5
+	hydration_amount = 15
 
 	flavor = "white noise"
-
-	value = 0.15
 
 	liquid = 0.7
 

@@ -1,6 +1,6 @@
 #define METABOLISM_BLOOD 1
-#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.75
-#define METABOLISM_SKIN METABOLISM_BLOOD * 10
+#define METABOLISM_STOMACH METABOLISM_BLOOD * 0.5
+#define METABOLISM_SKIN METABOLISM_BLOOD * 4
 #define OVERDOSE_THRESHOLD_MEDICINE 30
 
 /reagent/medicine/
@@ -123,7 +123,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.tox_regen_buffer += 5*.
+		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.05 : 0) + 5)*.
 		L.health_regen_delay = 0
 
 	return .
@@ -133,7 +133,7 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		L.tox_regen_buffer += 4*.
+		L.tox_regen_buffer += ((L.health ? L.health.get_tox_loss()*0.04 : 0) + 4)*.
 		L.health_regen_delay = 0
 
 	return .
@@ -387,8 +387,6 @@
 	if(. + current_volume >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
 		L.add_status_effect(ADRENALINE,100,100)
-		. = 0
-		if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
 		if(L.dead && !L.check_death() && L.client)
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")
@@ -407,8 +405,8 @@
 
 	flavor = "cherry"
 
-	metabolism_blood = 10
-	metabolism_stomach = 10
+	metabolism_blood = METABOLISM_BLOOD * 10
+	metabolism_stomach = METABOLISM_BLOOD * 10
 
 	value = 3
 
@@ -442,8 +440,8 @@
 
 	flavor = "lime"
 
-	metabolism_blood = 10
-	metabolism_stomach = 10
+	metabolism_blood = METABOLISM_BLOOD * 10
+	metabolism_stomach = METABOLISM_BLOOD * 10
 
 	value = 3
 
@@ -472,8 +470,8 @@
 
 	flavor = "blueberry"
 
-	metabolism_blood = 10
-	metabolism_stomach = 10
+	metabolism_blood = METABOLISM_BLOOD * 10
+	metabolism_stomach = METABOLISM_BLOOD * 10
 
 	value = 3
 

@@ -10,8 +10,9 @@
 
 	var/area/area //The object's area.
 
-	var/tmp/move_dir = 0
-	var/tmp/move_dir_last = 0 //Used for momentum and speed.
+	var/tmp/move_dir = 0x0
+	var/tmp/move_dir_last = 0x0 //Used for momentum and speed.
+	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
 	var/tmp/move_delay = 0
 
 	var/movement_delay = 4 //Measured in ticks.
@@ -143,7 +144,12 @@
 
 /proc/is_valid_dir(var/direction)
 
+	/*
 	if(!direction || (direction & EAST && direction & WEST) || (direction & NORTH && direction & SOUTH))
+		return FALSE
+	*/
+
+	if(direction - (NORTH + EAST + SOUTH + WEST) > 0)
 		return FALSE
 
 	return TRUE

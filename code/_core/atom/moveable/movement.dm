@@ -8,6 +8,8 @@
 
 	var/final_move_dir = move_dir
 
+
+
 	if(!final_move_dir)
 		if(deceleration)
 			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
@@ -15,12 +17,15 @@
 			acceleration_value = 0
 		if(use_momentum && move_dir_last && acceleration_value)
 			final_move_dir = move_dir_last
+	else
+		final_move_dir = sanitize_direction(final_move_dir)
 
 	if(final_move_dir && is_valid_dir(final_move_dir) && move_delay <= 0)
 
 		var/final_movement_delay = get_movement_delay()
+		var/intercardinal = final_move_dir in DIRECTIONS_INTERCARDINAL
 
-		if(final_move_dir in DIRECTIONS_INTERCARDINAL)
+		if(intercardinal)
 			final_movement_delay *= HYPOTENUSE(1,1)
 
 		if(acceleration_mod > 0)
@@ -35,18 +40,31 @@
 
 		glide_size = move_delay ? step_size/move_delay : 1
 
+		var/move_check = FALSE
+
+		if(intercardinal)
+			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
+			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
+			var/turf/first_step = get_step(src,first_move_dir_to_use)
+			if(src.can_move(src.loc,first_step,final_move_dir))
+				move_check = TRUE
+			else
+				var/old_first_move_dir_to_use = first_move_dir_to_use
+				first_move_dir_to_use = second_move_dir_to_use
+				second_move_dir_to_use = old_first_move_dir_to_use
+				first_step = get_step(src,first_move_dir_to_use)
+				if(src.can_move(src.loc,first_step,final_move_dir))
+					move_check = TRUE
+				else
+					final_move_dir = 0x0
+			if(move_check)
+				var/turf/second_step = get_step(first_step,second_move_dir_to_use)
+				if(!src.can_move(first_step,second_step,final_move_dir))
+					final_move_dir &= ~second_move_dir_to_use
+
+
 		var/similiar_move_dir = FALSE
-
-		var/list/found_directions = split_direction(final_move_dir)
-
-		if(final_move_dir in DIRECTIONS_INTERCARDINAL)
-			for(var/split_move_dir in found_directions)
-				var/turf/T = get_step(src,split_move_dir)
-				if(!src.can_move(src.loc,T,split_move_dir))
-					final_move_dir &= ~split_move_dir
-
-		var/turf/desired_loc = get_step(src,final_move_dir)
-		if(final_move_dir && Move(desired_loc,final_move_dir,force = TRUE))
+		if(final_move_dir && Move(get_step(src,final_move_dir),final_move_dir,force = TRUE))
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir
@@ -58,12 +76,13 @@
 				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
 			else
 				acceleration_value *= 0.5
+
 		return TRUE
 
-	else
-		if(adjust_delay)
-			move_delay = move_delay - adjust_delay
-		return FALSE
+	if(adjust_delay)
+		move_delay = move_delay - adjust_delay
+
+	return FALSE
 
 /atom/movable/proc/force_move(var/atom/new_loc)
 

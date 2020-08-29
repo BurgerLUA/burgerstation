@@ -78,10 +78,11 @@
 			if(!mech_choice || mech_choice == "Cancel")
 				return TRUE
 
-			if(stored_mechs_by_ckey[P.ckey])
-				for(var/mech_id in stored_mechs_by_ckey[P.ckey])
-					var/mob/living/vehicle/mech/modular/V = stored_mechs_by_ckey[P.ckey]
-					if(V.mech_id == mech_id)
+			var/md5_id = mech_choices[mech_choice]
+
+			if(stored_mechs_by_ckey[P.ckey] && length(stored_mechs_by_ckey[P.ckey]))
+				for(var/mob/living/vehicle/mech/modular/V in stored_mechs_by_ckey[P.ckey])
+					if(V.mech_id == md5_id)
 						P.to_chat(span("warning","ERROR: That mech has already been delivered!"))
 						return TRUE
 
@@ -91,7 +92,7 @@
 			V.owner_ckey = P.ckey
 			INITIALIZE(V)
 
-			var/md5_id = mech_choices[mech_choice]
+
 			var/mech_data = existing_mechs[md5_id]
 			V.load_mech_data(P,mech_data)
 

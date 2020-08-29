@@ -37,11 +37,12 @@
 				continue
 			possible_targets += src
 
-		var/mob/living/advanced/A = pick(possible_targets)
+		if(length(possible_targets))
+			var/mob/living/advanced/A = pick(possible_targets)
 
-		shoot_projectile(src,A,null,null,/obj/projectile/magic/rift/revive,/damagetype/ranged/magic/fireball,projectile_speed_to_use = 8,desired_loyalty = loyalty_tag)
+			shoot_projectile(src,A,null,null,/obj/projectile/magic/rift/revive,/damagetype/ranged/magic/fireball,projectile_speed_to_use = 8,desired_loyalty_tag = loyalty_tag)
 
-		next_revive = world.time + SECONDS_TO_DECISECONDS(5)
+			next_revive = world.time + SECONDS_TO_DECISECONDS(5)
 
 
 	return .
