@@ -10,7 +10,7 @@ obj/structure/smooth/table
 
 	layer = LAYER_TABLE
 
-	collision_flags = FLAG_COLLISION_WALKING
+	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	bullet_block_chance = 50
@@ -30,7 +30,7 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 
 /obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
 
-	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALL)
+	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in OldLoc.contents
 		if(T)
@@ -47,7 +47,7 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 	return ..()
 
 /obj/structure/smooth/table/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(old_loc && is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
+	if(old_loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T = locate() in old_loc.contents
 		if(!T)
@@ -57,7 +57,7 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 	return ..()
 
 /obj/structure/smooth/table/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
-	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WALKING)
+	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		var/obj/structure/smooth/table/T
 		if(new_loc)
@@ -78,7 +78,7 @@ obj/structure/smooth/table/rack
 	corner_category = "rack"
 	corner_icons = FALSE
 
-	collision_flags = FLAG_COLLISION_WALKING
+	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 obj/structure/smooth/table/rack/grey

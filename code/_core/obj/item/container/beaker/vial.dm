@@ -12,9 +12,12 @@
 
 	drop_sound = 'sound/items/drop/glass.ogg'
 
+/obj/item/container/beaker/vial/enzymes
+	name = "vial of enzymes"
 
-/obj/item/container/beaker/vial/stand
-
+/obj/item/container/beaker/vial/enzymes/Generate()
+	reagents.add_reagent(/reagent/enzymes,reagents.volume_max)
+	return ..()
 
 /obj/item/container/beaker/vial/stand
 	name = "vial of stand powers"

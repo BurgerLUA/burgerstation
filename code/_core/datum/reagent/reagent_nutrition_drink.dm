@@ -8,7 +8,7 @@
 
 	liquid = 0.5
 
-	hydration_amount = 30
+	hydration_amount = 25
 
 /reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash)
 

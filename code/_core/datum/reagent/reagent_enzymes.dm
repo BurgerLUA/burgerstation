@@ -4,3 +4,5 @@
 	color = "#267F00"
 
 	liquid = 0.6
+
+	value = 10

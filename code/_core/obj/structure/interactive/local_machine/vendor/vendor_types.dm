@@ -389,6 +389,7 @@
 	name = "smart fridge"
 	icon_state = "smartfridge"
 	plane = PLANE_WALL_ATTACHMENTS
+	pixel_y = 0
 
 /obj/structure/interactive/vending/smart_fridge/chemistry
 	name = "chemistry smart fridge"
@@ -402,7 +403,7 @@
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"
 	stored_types = list(
-		/obj/item/container/beaker/bottle/large/enzymes,
+		/obj/item/container/beaker/vial/enzymes,
 		/obj/item/container/beaker/food/flour,
 		/obj/item/container/beaker/food/sugar,
 		/obj/item/container/beaker/food/milk,

@@ -4,8 +4,8 @@
 	desc = "Nutrition and flavor from cow's milk."
 	color = "#FFFFFF"
 
-	nutrition_amount = 10
-	hydration_amount = 10
+	nutrition_amount = 8
+	hydration_amount = 8
 
 	flavor = "milk"
 
@@ -18,8 +18,8 @@
 	desc = "Nutrition and flavor from milk cream."
 	color = "#EEEED9"
 
-	nutrition_amount = 14
-	hydration_amount = 6
+	nutrition_amount = 15
+	hydration_amount = 5
 
 	flavor = "milk"
 
@@ -33,7 +33,7 @@
 	desc = "Nutrition and flavor from processed cheese."
 	color = "#FFC237"
 
-	nutrition_amount = 24
+	nutrition_amount = 20
 
 	flavor = "processed cheese"
 

@@ -22,7 +22,7 @@
 	//Automatically set value.
 
 
-	value *= 0.1+((nutrition_amount*0.2)+(hydration_amount*0.10)+(heal_factor*2)*0.1)
+	value *= 0.1+((nutrition_amount*0.1)+(hydration_amount*0.05)+(heal_factor*2)*0.1)
 
 
 	LOG_DEBUG("Value of [src.type]: [value].")
@@ -149,16 +149,12 @@
 
 	flavor = "egg white"
 
-	value = 2
-
 /reagent/nutrition/egg_yellow
 	name = "egg yolk"
 	desc = "Nutrition and flavor from egg yellows."
 	color = "#FFFFE4"
 
-	nutrition_amount = 25
-	heal_factor = 5
+	nutrition_amount = 40
+	heal_factor = 3
 
 	flavor = "egg yolk"
-
-	value = 4

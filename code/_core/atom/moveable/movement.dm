@@ -23,7 +23,7 @@
 	if(final_move_dir && is_valid_dir(final_move_dir) && move_delay <= 0)
 
 		var/final_movement_delay = get_movement_delay()
-		var/intercardinal = final_move_dir in DIRECTIONS_INTERCARDINAL
+		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)
 			final_movement_delay *= HYPOTENUSE(1,1)
@@ -64,7 +64,7 @@
 
 
 		var/similiar_move_dir = FALSE
-		if(final_move_dir && Move(get_step(src,final_move_dir),final_move_dir,force = TRUE))
+		if(final_move_dir && Move(get_step(src,final_move_dir),final_move_dir,force = intercardinal))
 			if(move_dir_last & final_move_dir)
 				similiar_move_dir = TRUE
 			move_dir_last = final_move_dir

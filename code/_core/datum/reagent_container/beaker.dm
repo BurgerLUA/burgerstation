@@ -13,7 +13,7 @@
 
 
 /reagent_container/beaker/bottle/large
-	volume_max = 180
+	volume_max = 90
 
 
 /reagent_container/beaker/vial/
