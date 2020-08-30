@@ -39,3 +39,6 @@
 		pixel_y = initial(pixel_y)
 
 	return ..()
+
+/obj/item/mech_part/can_be_attacked()
+	return TRUE

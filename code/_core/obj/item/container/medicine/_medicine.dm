@@ -73,9 +73,12 @@
 		. = TRUE
 
 	if(.)
-		A.health.update_health()
-		if(is_organ(A) && A.loc.health)
-			A.loc.health.update_health()
+		if(is_organ(A) && is_living(A.loc))
+			var/mob/living/L = A.loc
+			A.health.update_health()
+			L.queue_health_update = TRUE
+		else
+			A.health.update_health()
 
 	var/reagent_transfer = CEILING((1/item_count_max)*reagents.volume_current, 1)
 	reagents.transfer_reagents_to(A.reagents,reagent_transfer)

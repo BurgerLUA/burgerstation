@@ -374,6 +374,19 @@
 
 	return TRUE
 
+/obj/item/post_move(var/atom/old_loc)
+
+	if(isturf(loc))
+		if(delete_on_drop)
+			qdel(src)
+			return TRUE
+		else
+			queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
+	else
+		undelete(src)
+
+	return ..()
+
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
 	if(is_container)
@@ -403,10 +416,6 @@
 
 /obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
 
-	if(delete_on_drop)
-		qdel(src)
-		return TRUE
-
 	if(additional_clothing_parent)
 		src.force_move(additional_clothing_parent)
 
@@ -420,8 +429,6 @@
 			new/obj/effect/temp/item_pickup(NL,2,OL,src,isturf(new_loc) ? "drop" : "transfer")
 
 	update_lighting_for_owner(old_inventory)
-
-	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 
 	if(drop_sound && isturf(loc) && !qdeleting)
 		play(drop_sound,get_turf(src))

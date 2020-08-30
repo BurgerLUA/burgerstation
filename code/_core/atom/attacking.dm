@@ -11,7 +11,7 @@
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if(health)
-		health.update_health(damage_amount,attacker)
+		health.update_health(attacker,damage_amount)
 
 	if(ENABLE_DAMAGE_NUMBERS && !stealthy && damage_amount > 0)
 		if(isturf(src.loc)) new/obj/effect/temp/damage_number(src.loc,null,damage_amount)

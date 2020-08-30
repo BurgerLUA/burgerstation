@@ -213,7 +213,7 @@ var/global/list/stored_mechs_by_ckey = list()
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
-	if(!mech_arms || mech_arms.health.health_current <= 0)
+	if(!mech_arms || (mech_arms && mech_arms.health.health_current <= 0))
 		return FALSE
 
 	if(params["right"])
@@ -492,7 +492,7 @@ var/global/list/stored_mechs_by_ckey = list()
 
 /mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 0)
 
-	if(!mech_legs || mech_legs.health.health_current <= 0)
+	if(!mech_legs || (mech_legs.health && mech_legs.health.health_current <= 0))
 		return FALSE
 
 	return ..()

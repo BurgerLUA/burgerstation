@@ -25,9 +25,12 @@
 		A.health.adjust_burn_loss(-heal_burn_percent*A.health.get_burn_loss())
 
 	if(heal_burn || heal_burn_percent)
-		A.health.update_health()
-		if(is_organ(A) && A.loc.health)
-			A.loc.health.update_health()
+		if(is_organ(A) && is_living(A.loc))
+			var/mob/living/L = A.loc
+			A.health.update_health()
+			L.queue_health_update = TRUE
+		else
+			A.health.update_health()
 
 	if(caller == A.loc)
 		caller.visible_message("\The [caller.name] replaces the wires in their [A.name].")

@@ -168,7 +168,6 @@
 		src.force_move(T)
 
 	update_sprite()
-	queue_delete(src,ITEM_DELETION_TIME_DROPPED,TRUE)
 
 /obj/item/organ/proc/unattach_children(var/turf/T)
 	for(var/k in attached_organs)

@@ -8,7 +8,7 @@
 	else
 		zoom_level = clamp(desired_zoom_level,MIN_ZOOM,MAX_ZOOM)
 
-	winset(src, "map.map","icon-size=[zoom_level*TILE_SIZE]")
+	winset(src, "map.map","zoom=[zoom_level]")
 
 	return TRUE
 

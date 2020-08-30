@@ -413,8 +413,6 @@
 	overlays.Cut()
 	update_overlays()
 
-	undelete(I)
-
 	return TRUE
 
 /obj/hud/inventory/proc/add_worn_object(var/obj/item/I, var/messages = TRUE, var/bypass_checks = FALSE)
@@ -453,8 +451,6 @@
 	I.on_pickup(old_location,src)
 	overlays.Cut()
 	update_overlays()
-
-	undelete(I)
 
 	return TRUE
 

@@ -46,22 +46,21 @@
 			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
 			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
-			if(src.can_move(src.loc,first_step,final_move_dir))
+			if(first_step != src.loc && src.can_move(src.loc,first_step,final_move_dir))
 				move_check = TRUE
 			else
 				var/old_first_move_dir_to_use = first_move_dir_to_use
 				first_move_dir_to_use = second_move_dir_to_use
 				second_move_dir_to_use = old_first_move_dir_to_use
 				first_step = get_step(src,first_move_dir_to_use)
-				if(src.can_move(src.loc,first_step,final_move_dir))
+				if(first_step != src.loc && src.can_move(src.loc,first_step,final_move_dir))
 					move_check = TRUE
 				else
 					final_move_dir = 0x0
 			if(move_check)
 				var/turf/second_step = get_step(first_step,second_move_dir_to_use)
-				if(!src.can_move(first_step,second_step,final_move_dir))
+				if(second_step != src.loc && !src.can_move(first_step,second_step,final_move_dir))
 					final_move_dir &= ~second_move_dir_to_use
-
 
 		var/similiar_move_dir = FALSE
 		if(final_move_dir && Move(get_step(src,final_move_dir),final_move_dir,force = intercardinal))
@@ -141,8 +140,20 @@
 
 /atom/movable/proc/can_move(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
 
+	if(!OldLoc)
+		CRASH_SAFE("Tried calling can_move without an OldLoc!")
+		return FALSE
+
+	if(!NewLoc)
+		CRASH_SAFE("Tried calling can_move without an NewLoc!")
+		return FALSE
+
 	//TRY: Exit the turf.
 	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
+		return FALSE
+
+	//TRY: Enter the turf.
+	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
 		return FALSE
 
 	//TRY: Exit the contents.
@@ -152,10 +163,6 @@
 			continue
 		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
 			return FALSE
-
-	//TRY: Enter the contents.
-	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
-		return FALSE
 
 	//TRY: Enter the contents.
 	for(var/k in NewLoc.contents)

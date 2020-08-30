@@ -1,4 +1,4 @@
-/health/mob/living/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
+/health/mob/living/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
 
@@ -11,7 +11,9 @@
 
 		damage[OXY] = clamp(1 - L.blood_volume/L.blood_volume_max,0,1) * 300
 
-		if(L.check_death())
+		var/should_be_dead = check_death && L.check_death()
+
+		if(check_death && should_be_dead)
 			L.death()
 
 		if(update_hud)
@@ -22,7 +24,7 @@
 			var/health_icon_state
 			if(L.dead)
 				if(L.is_player_controlled() && !L.suicide)
-					if(L.check_death())
+					if(should_be_dead)
 						health_icon_state = "revive_2"
 					else
 						health_icon_state = "revive_3"
@@ -92,7 +94,5 @@
 		if(damage_type == TOX && L.has_status_effect(ADRENALINE))
 			continue
 		returning_value += damage[damage_type]
-
-
 
 	return returning_value //min(returning_value,clamp(L.blood_volume/L.blood_volume_max,0,1)*health_max)

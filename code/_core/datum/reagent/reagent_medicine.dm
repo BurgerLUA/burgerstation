@@ -342,17 +342,29 @@
 	flavor = "pure speed"
 	metabolism_blood = 1
 	var/strength = 100
-	var/duration = 30
+	var/duration = 10 * 60 //Deciseconds, 1 Minute
 
 	value = 2
 
-/reagent/medicine/adrenaline/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/adrenaline/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
 
-	if(is_living(owner))
-		var/mob/living/L = owner
-		L.add_status_effect(ADRENALINE,strength,.*50)
+	if(is_living(container.owner))
+		var/mob/living/L = container.owner
+		if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+			L.add_status_effect(ADRENALINE,strength,-1)
+
+	return .
+
+/reagent/medicine/adrenaline/on_remove(var/reagent_container/container)
+
+	. = ..()
+
+	if(is_living(container.owner))
+		var/mob/living/L = container.owner
+		if(L.get_status_effect_magnitude(ADRENALINE) <= strength)
+			L.remove_status_effect(ADRENALINE)
 
 	return .
 
@@ -364,21 +376,9 @@
 	color = "#FFFFFF"
 	flavor = "bandaids"
 	strength = 50
-	duration = 50
+	duration = 10 * 60 //1 minute.
 
 	value = 1.5
-
-/reagent/medicine/adrenaline/epinephrine/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-
-	. = ..()
-
-	if(is_living(owner))
-		var/mob/living/L = owner
-		if(L.health && L.health.get_oxy_loss() > 100 - strength)
-			L.health.set_oxy_loss(100 - strength)
-			L.queue_health_update = TRUE
-
-	return .
 
 /reagent/medicine/adrenaline/epinephrine/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -386,7 +386,6 @@
 
 	if(. + current_volume >= 10 && is_living(container.owner))
 		var/mob/living/L = container.owner
-		L.add_status_effect(ADRENALINE,100,100)
 		if(L.dead && !L.check_death() && L.client)
 			L.revive()
 			L.visible_message("\The [L.name] jolts to life!")

@@ -29,7 +29,7 @@
 
 	return ..()
 
-/health/turf/update_health(var/damage_dealt,var/atom/attacker,var/update_hud=TRUE)
+/health/turf/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
 

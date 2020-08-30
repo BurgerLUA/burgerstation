@@ -103,9 +103,6 @@
 		play(chambered_bullet.get_bullet_eject_sound(),src)
 	if(B.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(B)
-	else
-		queue_delete(src,ITEM_DELETION_TIME_NEW)
-
 
 	chambered_bullet = null
 
@@ -124,8 +121,6 @@
 		play(bullet_to_remove.get_bullet_eject_sound(),src)
 	if(bullet_to_remove.is_spent && !ENABLE_BULLET_CASINGS)
 		qdel(bullet_to_remove)
-	else
-		queue_delete(src,ITEM_DELETION_TIME_NEW)
 
 	return bullet_to_remove
 

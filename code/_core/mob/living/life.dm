@@ -93,13 +93,14 @@
 	attack_flags = 0x0
 	dead = FALSE
 	plane = initial(plane)
-	if(health)
-		health.update_health()
 	if(ai)
 		ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
+	if(health)
+		health.update_health(update_hud=TRUE,check_death=TRUE)
 	handle_horizontal()
+	undelete(src)
 	return TRUE
 
 /mob/living/proc/resurrect()

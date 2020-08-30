@@ -375,6 +375,9 @@
 		else
 			stored_reagents_temperature[reagent_type] = temperature
 
+	if(stored_reagents[reagent_type] <= 0)
+		R.on_remove(src)
+
 	if(check_recipes)
 		process_recipes()
 
