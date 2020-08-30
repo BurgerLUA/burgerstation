@@ -1,6 +1,7 @@
+<!doctype html>
 <html>
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
 		<style>
 		</style>
 	</head>
@@ -12,6 +13,7 @@
 					Title
 				</td>
 				<td align='right' width=100px>
+					<button onclick="edit_page()" align='center'>Edit...</button>
 					<button onclick="close_page()" align='center'>X</button>
 				</td>
 			</tr>
@@ -28,12 +30,12 @@
 			</tr>
 		</table>
 		<hr>
-		<div id='text'>
+		<div id='content'>
 			Content
 		</div>
 
 	</body>
-
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	<script>
 		var global_reference
 	
@@ -51,7 +53,7 @@
 			desired_page = parseInt(desired_page)
 			desired_page_max = parseInt(desired_page_max)
 
-			document.getElementById("text").innerHTML = desired_text
+			document.getElementById("content").innerHTML = marked(desired_text)
 			document.getElementById("title").innerHTML = desired_title
 			
 			if(desired_page == 1) {
@@ -75,6 +77,11 @@
 		function close_page() {
 			var desired_location = "byond://?src="+global_reference+";close=1"
 			window.location = desired_location
+		}
+		
+		function edit_page() {
+			var desired_location = "byond://?src="+global_reference+";edit=1"
+			window.location = desired_location	
 		}
 
 		function change_page(desired_page) {

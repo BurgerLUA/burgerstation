@@ -298,6 +298,7 @@ window "control"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -305,6 +306,8 @@ window "control"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 814x814
+		inner-size = 800x800
 	elem "input"
 		type = INPUT
 		pos = 0,780
@@ -333,6 +336,7 @@ window "control"
 		size = 200x20
 		anchor1 = 50,0
 		anchor2 = 75,0
+		background-color = none
 		saved-params = "is-checked"
 		text = "Github"
 		command = "open-github"
@@ -342,6 +346,7 @@ window "control"
 		size = 200x20
 		anchor1 = 25,0
 		anchor2 = 50,0
+		background-color = none
 		saved-params = "is-checked"
 		text = "Discord"
 		command = "open-discord"
@@ -351,6 +356,7 @@ window "control"
 		size = 200x20
 		anchor1 = 0,0
 		anchor2 = 25,0
+		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = ""
@@ -360,6 +366,7 @@ window "control"
 		size = 800x760
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		saved-params = "splitter"
 		left = "info"
@@ -467,6 +474,7 @@ window "map"
 		size = 800x800
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -474,6 +482,8 @@ window "map"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 814x814
+		inner-size = 800x800
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -485,7 +495,6 @@ window "map"
 		is-default = true
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 32
 		zoom = 1
 		zoom-mode = distort
 	elem "paper"
@@ -494,6 +503,7 @@ window "map"
 		size = 600x680
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = #eaeaea
 		is-visible = false
 		border = sunken
 		saved-params = ""
@@ -503,6 +513,7 @@ window "map"
 		size = 680x320
 		anchor1 = 0,100
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		saved-params = ""
 

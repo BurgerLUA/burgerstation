@@ -57,11 +57,33 @@
 	return ..()
 
 /gamemode/horde/proc/add_objectives()
-	add_objective(/objective/kill_boss)
-	add_objective(/objective/kill_boss)
+
+	var/player_count = length(all_clients)
+
+	LOG_DEBUG("Current player count: [player_count].")
+
+	//Base Objectives.
 	add_objective(/objective/artifact)
 	add_objective(/objective/hostage)
+
+	if(player_count >= 10)
+		add_objective(/objective/hostage)
+		LOG_DEBUG("Adding player count 10 objectives.")
+
+	if(player_count >= 20)
+		add_objective(/objective/kill_boss)
+		LOG_DEBUG("Adding player count 20 objectives.")
+
+	if(player_count >= 30)
+		add_objective(/objective/kill_boss)
+		LOG_DEBUG("Adding player count 30 objectives.")
+
+	if(player_count >= 40)
+		add_objective(/objective/kill_boss)
+		LOG_DEBUG("Adding player count 40 objectives.")
+
 	next_objective_update = world.time + 100
+
 	return TRUE
 
 /gamemode/horde/on_continue()
