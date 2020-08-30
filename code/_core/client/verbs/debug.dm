@@ -1,3 +1,29 @@
+/client/verb/print_cleaning_log()
+
+	set name = "Print Cleaning Log (DANGER)"
+	set category = "Debug"
+
+	var/final_text = "<h1>Cleaned Objects</h1>"
+
+	for(var/k in SSdelete.cleaning_log)
+		final_text += "[k]<br>"
+
+	final_text += "<h1>Queued Objects</h1>"
+
+	for(var/k in SSdelete.objects_to_delete)
+		var/datum/D = k
+		var/value = SSdelete.objects_to_delete[k]
+		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
+
+	final_text += "<h1>Queued Objects (SAFE)</h1>"
+
+	for(var/k in SSdelete.objects_to_delete_safe)
+		var/datum/D = k
+		var/value = SSdelete.objects_to_delete_safe[k]
+		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",final_text)]</body>","window=help")
+
 client/verb/air_test(var/pressure as num)
 	set name = "Air Test"
 	set category = "Debug"
@@ -317,5 +343,25 @@ client/verb/air_test(var/pressure as num)
 		return FALSE
 
 	SSvote.create_vote(/vote/continue_round)
+
+	return TRUE
+
+
+/client/verb/create_dummy_objective()
+	set name = "Create Dummy Objective"
+	set category = "Debug"
+
+	var/gamemode/G = SSgamemode.active_gamemode
+
+	G.add_objective(/objective/dummy)
+
+	for(var/objective/dummy/D in G.active_objectives)
+		D.update()
+
+	sleep(100)
+
+	for(var/objective/dummy/D in G.active_objectives)
+		D.completed = TRUE
+		D.update()
 
 	return TRUE

@@ -486,6 +486,7 @@
 #include "code\_core\datum\menu\dialogue.dm"
 #include "code\_core\datum\menu\paper.dm"
 #include "code\_core\datum\objective\_objective.dm"
+#include "code\_core\datum\objective\dummy.dm"
 #include "code\_core\datum\objective\kill_boss.dm"
 #include "code\_core\datum\objective\obtain_artifact.dm"
 #include "code\_core\datum\objective\rescue_hostage.dm"

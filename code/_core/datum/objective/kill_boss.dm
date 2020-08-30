@@ -3,18 +3,21 @@ var/list/possible_boss_targets
 
 /objective/kill_boss
 	name = "Kill Boss"
+	credit_reward = 1000
+	burgerbux_reward = 1
 
 /objective/kill_boss/setup()
 
 	if(!possible_boss_targets)
 		possible_boss_targets = SSbosses.living_bosses.Copy()
 
+	if(!has_valid_targets())
+		log_error("Objective [src.type] has no valid targets.")
+		return FALSE
+
 	return ..()
 
-/objective/kill_boss/get_description()
-	return "Kill [english_list(tracked_atoms)]. Location: [english_list(get_locations())]."
-
-/objective/kill_boss/get_valid_targets()
+/objective/kill_boss/proc/get_valid_targets()
 	. = list()
 	for(var/k in possible_boss_targets)
 		var/mob/living/L = k
@@ -22,6 +25,21 @@ var/list/possible_boss_targets
 			continue
 		. += L
 	return .
+
+/objective/kill_boss/proc/has_valid_targets()
+	return length(get_valid_targets()) ? TRUE : FALSE
+
+/objective/kill_boss/proc/get_random_target()
+
+	var/list/valid_targets = get_valid_targets()
+
+	if(!length(valid_targets))
+		return FALSE
+
+	return pick(valid_targets)
+
+/objective/kill_boss/get_description()
+	return "Kill [english_list(tracked_atoms)]. Location: [english_list(get_locations())]."
 
 /objective/kill_boss/start()
 	var/mob/living/L = get_random_target()

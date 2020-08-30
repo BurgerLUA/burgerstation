@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(delete)
 
 	var/max_deletions = 50
 
+	var/list/cleaning_log = list()
+
 /subsystem/delete/on_life()
 
 	var/i=0
@@ -32,6 +34,7 @@ SUBSYSTEM_DEF(delete)
 
 		objects_to_delete_safe -= k
 		objects_to_delete -= k
+		cleaning_log += "Safe deleted [object_to_delete.get_debug_name()]."
 		qdel(object_to_delete)
 		i++
 		if(i >= max_deletions)
@@ -40,12 +43,15 @@ SUBSYSTEM_DEF(delete)
 	for(var/k in objects_to_delete)
 		var/datum/object_to_delete = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
+
 		if(object_to_delete.qdeleting)
 			objects_to_delete -= k
 			continue
+
 		var/time_to_delete = objects_to_delete[k]
 		if(time_to_delete > world.time)
 			continue
+
 		if(is_atom(k))
 			var/atom/A = k
 			if(!A.is_safe_to_delete())
@@ -54,6 +60,7 @@ SUBSYSTEM_DEF(delete)
 
 		objects_to_delete -= k
 		objects_to_delete_safe -= k
+		cleaning_log += "Deleted [object_to_delete.get_debug_name()]."
 		qdel(object_to_delete)
 		i++
 		if(i >= max_deletions)
@@ -121,9 +128,9 @@ proc/queue_delete(var/datum/object_to_delete,var/delete_in = 1,var/safe=FALSE)
 		return FALSE
 
 	if(safe)
-		SSdelete.objects_to_delete_safe[object_to_delete] = world.time + delete_in
+		SSdelete.objects_to_delete_safe[object_to_delete] = (world.time + delete_in)
 	else
-		SSdelete.objects_to_delete[object_to_delete] = world.time + delete_in
+		SSdelete.objects_to_delete[object_to_delete] = (world.time + delete_in)
 
 	return TRUE
 

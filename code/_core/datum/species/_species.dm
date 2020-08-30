@@ -97,6 +97,8 @@
 
 		/obj/hud/button/toggle_cash_money,
 		/obj/hud/button/cash_money,
+		/obj/hud/button/microstransactions,
+		/obj/hud/button/toggle_microtransactions,
 
 		/obj/hud/button/boss_health,
 

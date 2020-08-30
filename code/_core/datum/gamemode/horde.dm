@@ -30,10 +30,11 @@
 	return .
 
 /gamemode/horde/New()
+
 	state = GAMEMODE_WAITING
 	round_time = 0
 	round_time_next = HORDE_DELAY_WAIT //Skip to gearing. Nothing to wait for.
-	announce("Free-Roam Horde Mode","Starting new round...","Roam around the map completing set objectives while hostile enemies prevent you from doing so.")
+	announce(name,"Starting new round...",desc)
 
 	for(var/k in horde_spawnpoints)
 		var/turf/T = k

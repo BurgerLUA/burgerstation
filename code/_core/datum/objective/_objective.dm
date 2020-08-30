@@ -3,11 +3,12 @@
 	var/desc = "Objective Description"
 	var/atom/list/tracked_atoms = list()
 	var/completion_state = ACTIVE
-	var/reward = 0 //Credit reward.
+	var/credit_reward = 0
+	var/burgerbux_reward = 0
 
 /objective/New()
 
-	if(!setup() || !has_valid_targets() || !start())
+	if(!setup() || !start())
 		completion_state = IMPOSSIBLE
 
 	return ..()
@@ -20,16 +21,25 @@
 
 /objective/proc/on_completion()
 
-	if(reward)
+	if(credit_reward)
 		for(var/k in all_players)
 			var/mob/living/advanced/player/P = k
 			if(P.loyalty_tag != "NanoTrasen")
 				continue
-			var/increased_currency = P.adjust_currency(reward)
+			var/increased_currency = P.adjust_currency(credit_reward)
 			P.to_chat(span("notice","You've been given [increased_currency] credits for completing [name]."))
 
-		reward = 0
+		credit_reward = 0
 
+	if(burgerbux_reward)
+		for(var/k in all_players)
+			var/mob/living/advanced/player/P = k
+			if(P.loyalty_tag != "NanoTrasen")
+				continue
+			var/increased_currency = P.adjust_burgerbux(burgerbux_reward)
+			P.to_chat(span("notice","You've been given [increased_currency] burgerbux for completing [name]."))
+
+		burgerbux_reward = 0
 
 	return TRUE
 
@@ -70,32 +80,11 @@
 
 	desc = get_description()
 
-	. = old_completion_state != completion_state
+	. = (old_completion_state != completion_state)
 
 	if(. && update_gamemode)
 		G.next_objective_update = world.time + 50
-		if(completion_state == COMPLETED) on_completion()
+		if(completion_state == COMPLETED)
+			on_completion()
 
 	return .
-
-/objective/proc/get_valid_targets()
-	return list()
-
-/objective/proc/has_valid_targets()
-	return length(get_valid_targets()) ? TRUE : FALSE
-
-/objective/proc/get_random_target()
-
-	var/list/valid_targets = get_valid_targets()
-
-	if(!length(valid_targets))
-		return FALSE
-
-	return pick(valid_targets)
-
-
-
-
-
-
-
