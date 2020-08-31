@@ -5,6 +5,10 @@
 	icon = 'icons/obj/item/book.dmi'
 	icon_state = "book_template"
 
+	editable = FALSE
+
+	value = 99
+
 /obj/item/paper/book/firearms/Initialize()
 	. = ..()
 	name = "manual: A Guide to Firearms"

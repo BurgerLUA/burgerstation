@@ -4,6 +4,7 @@ obj/structure/interactive/computer
 	desc_extended = "Operates things, depending on what the console is."
 	icon = 'icons/obj/structure/computer.dmi'
 	var/on = TRUE
+	plane = PLANE_WALL_ATTACHMENTS
 
 obj/structure/interactive/computer/console
 	name = "computer console"
@@ -53,6 +54,8 @@ obj/structure/interactive/computer/console/laptop
 
 obj/structure/interactive/computer/console/old
 	name = "old computer"
+	desc = "An old, non-functional computer."
+	desc_extended = "It doesn't even work. What gives?!"
 	icon_state = "oldcomp"
 	pixel_y = 10
 

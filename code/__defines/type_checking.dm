@@ -121,3 +121,5 @@
 #define is_modular_mech(A) istype(A,/mob/living/vehicle/mech/modular)
 
 #define is_mech_part(A) istype(A,/obj/item/mech_part)
+
+#define is_paper(A) istype(A,/obj/item/paper)

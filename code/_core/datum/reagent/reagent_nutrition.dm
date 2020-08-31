@@ -20,14 +20,7 @@
 
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
-
-
 	value *= 0.1+((nutrition_amount*0.1)+(hydration_amount*0.05)+(heal_factor*2)*0.1)
-
-
-	LOG_DEBUG("Value of [src.type]: [value].")
-
-
 	return ..()
 
 

@@ -3,6 +3,10 @@
 	<head>
 		<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
 		<style>
+			a {
+				pointer-events: none;
+				cursor: default;
+			}
 		</style>
 	</head>
 
@@ -13,7 +17,6 @@
 					Title
 				</td>
 				<td align='right' width=100px>
-					<button onclick="edit_page()" align='center'>Edit...</button>
 					<button onclick="close_page()" align='center'>X</button>
 				</td>
 			</tr>
@@ -33,6 +36,7 @@
 		<div id='content'>
 			Content
 		</div>
+		<div align='center' id='edit_button'></div>
 
 	</body>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -48,7 +52,7 @@
 			window.location = desired_location
 		}
 
-		function set_text(desired_text,desired_title,desired_page,desired_page_max) {
+		function set_text(desired_text,desired_title,desired_page,desired_page_max,desired_editable) {
 		
 			desired_page = parseInt(desired_page)
 			desired_page_max = parseInt(desired_page_max)
@@ -72,6 +76,10 @@
 
 			document.getElementById("page_number").innerHTML = "(" + desired_page + "/" + desired_page_max + ")"
 			
+			if(desired_editable) {
+				document.getElementById("edit_button").innerHTML = "<button onclick=\"edit_page(" + desired_page + ")\" align='center'>Edit...</button>"
+			}
+			
 		}
 		
 		function close_page() {
@@ -79,8 +87,8 @@
 			window.location = desired_location
 		}
 		
-		function edit_page() {
-			var desired_location = "byond://?src="+global_reference+";edit=1"
+		function edit_page(desired_page) {
+			var desired_location = "byond://?src="+global_reference+";edit=" + desired_page
 			window.location = desired_location	
 		}
 

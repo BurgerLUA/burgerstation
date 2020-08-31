@@ -3,7 +3,6 @@ obj/structure/interactive/
 	desc = "What does it do?"
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 
-
 obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/object,location,control,params)
 
 	var/list/valid_interactables = list()
