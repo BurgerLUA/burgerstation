@@ -144,10 +144,10 @@
 	. = ..()
 
 	if(.)
-		if(health_current <= 0 && !A.status_effects[CRIT])
+		if(health_current <= 0 && !A.status_effects[ADRENALINE] && !A.status_effects[CRIT])
 			A.add_status_effect(CRIT,-1,-1,force = TRUE)
 
-		else if(health_current > 0 && A.status_effects[CRIT])
+		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
 			A.remove_status_effect(CRIT)
 
 	return .

@@ -1,3 +1,7 @@
+/health/mob/living/
+	var/has_bloodloss = TRUE
+
+
 /health/mob/living/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()
@@ -9,7 +13,8 @@
 
 		var/mob/living/L = owner
 
-		damage[OXY] = clamp(1 - L.blood_volume/L.blood_volume_max,0,1) * 300
+		if(has_bloodloss)
+			damage[OXY] = clamp(1 - L.blood_volume/L.blood_volume_max,0,1) * 300
 
 		var/should_be_dead = check_death && L.check_death()
 

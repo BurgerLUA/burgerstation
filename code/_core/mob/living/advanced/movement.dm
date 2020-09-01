@@ -21,7 +21,7 @@ mob/living/advanced/get_movement_delay()
 
 	. = ..()
 
-	if(health && health.health_current <= 0)
+	if(health && health.health_current <= 0 && !has_status_effect(ADRENALINE))
 		. *= 2
 
 	. *= slowdown_mul

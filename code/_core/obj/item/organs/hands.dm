@@ -323,8 +323,6 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 
-	defense_rating = SKELETON_ARMOR
-
 /obj/item/organ/hand/monkey/left
 	name = "left monkey hand"
 	id = BODY_HAND_LEFT
@@ -343,3 +341,35 @@
 
 	target_bounds_y_min = 11
 	target_bounds_y_max = 14
+
+
+
+
+//Zombie
+/obj/item/organ/hand/zombie
+	name = "right zombie hand"
+	inventories = list(
+		/obj/hud/inventory/organs/right_hand_worn,
+		/obj/hud/inventory/organs/right_hand_held
+	)
+
+/obj/item/organ/hand/zombie/left
+	name = "left zombie hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+	damage_type = /damagetype/unarmed/bite/zombie

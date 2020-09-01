@@ -92,6 +92,7 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 	dead = FALSE
+	remove_status_effect(CRIT)
 	plane = initial(plane)
 	if(ai)
 		ai.set_active(TRUE)
@@ -172,7 +173,7 @@
 
 	update_alpha(handle_alpha())
 
-	if(queue_health_update && health)
+	if(health && queue_health_update)
 		health.update_health()
 		queue_health_update = FALSE
 
@@ -258,7 +259,7 @@ mob/living/proc/on_life_slow()
 	return (brute_regen_buffer || burn_regen_buffer || tox_regen_buffer) && health_regen_delay <= 0
 
 /mob/living/proc/can_buffer_stamina()
-	return stamina_regen_buffer && (stamina_regen_delay <= 0 || (horizontal && move_delay <= 0))
+	return stamina_regen_buffer && (stamina_regen_delay <= 0 || (horizontal && move_delay <= 0)) && !has_status_effect(ADRENALINE)
 
 /mob/living/proc/can_buffer_mana()
 	return mana_regen_buffer && mana_regen_delay <= 0

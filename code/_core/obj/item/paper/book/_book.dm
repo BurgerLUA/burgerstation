@@ -37,3 +37,11 @@
 	desc_extended = "A guide on how to masteer self-control"
 	data = all_paper_data["a guide to controlling yourself"]
 	return .
+
+
+/obj/item/paper/book/cargo_catalog/Initialize()
+	. = ..()
+	name = "catalog: Cargo Catalog Vol 1"
+	desc_extended = "A catalog featuring the many items you can buy from cargo."
+	data = SScargo.catalog_data
+	return .

@@ -49,6 +49,10 @@
 	minimum = 10
 	maximum = 30
 
+/status_effect/fatigued/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	owner.remove_status_effect(ADRENALINE)
+	return ..()
+
 /status_effect/fire
 	name = "Fire"
 	desc = "You're on fire!"
@@ -124,15 +128,19 @@
 	id = CRIT
 
 /status_effect/energized
-	name = "Energized"
+	name = "Adrenaline"
 	desc = "You're filled with adrenaline!"
 	id = ADRENALINE
 	minimum = 100 // 10 seconds
 	maximum = 3 * 60 * 10 //5 minutes.
 
 /status_effect/energized/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+
 	. = ..()
+
 	if(owner.health) owner.health.update_health(check_death=FALSE)
+	owner.remove_status_effect(FATIGUE)
+
 	return .
 
 /status_effect/resting

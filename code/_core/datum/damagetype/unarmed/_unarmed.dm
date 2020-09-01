@@ -2,6 +2,8 @@
 	name = "Body"
 	draw_blood = TRUE
 
+	hit_effect = /obj/effect/temp/impact/combat/punch
+
 	impact_sounds = list(
 		'sound/weapons/fists/punch1.ogg',
 		'sound/weapons/fists/punch2.ogg',

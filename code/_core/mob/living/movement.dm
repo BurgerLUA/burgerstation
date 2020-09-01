@@ -143,6 +143,9 @@
 
 	. *= (2 - (get_nutrition_mod() * get_hydration_mod()))
 
+	if(has_status_effect(ADRENALINE))
+		. *= 0.9
+
 	return .
 
 
