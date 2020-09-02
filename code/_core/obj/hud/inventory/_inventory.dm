@@ -3,7 +3,7 @@
 /obj/hud/inventory/
 	name = "Inventory Holder"
 	desc = "Inventory"
-	id = "BADINVENTORY"
+	var/id = "BADINVENTORY"
 
 	alpha = 225
 

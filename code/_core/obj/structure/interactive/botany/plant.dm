@@ -1,13 +1,15 @@
-/obj/structure/interactive/plant/nitrogen
-	id = "nitrogen_flower"
+/obj/structure/interactive/plant/nitrogen_flower
+	plant_type = /plant_type/nitrogen_flower
+	icon_state = "nitrogen_flower"
 
 	potency = 20
 	yield = 1
 	growth_speed = 5
 	growth_min = 0
 
-/obj/structure/interactive/plant/oxygen
-	id = "oxygen_fruit"
+/obj/structure/interactive/plant/oxygen_fruit
+	plant_type = /plant_type/oxygen_fruit
+	icon_state = "oxygen_fruit"
 
 	potency = 20
 	yield = 1
@@ -15,7 +17,8 @@
 
 
 /obj/structure/interactive/plant/wheat
-	id = "wheat"
+	plant_type = /plant_type/wheat
+	icon_state = "wheat"
 
 	potency = 10
 	yield = 1
@@ -24,7 +27,8 @@
 
 
 /obj/structure/interactive/plant/sugarcane
-	id = "sugarcane"
+	plant_type = /plant_type/sugarcane
+	icon_state = "sugarcane"
 
 	potency = 5
 	yield = 3
@@ -33,7 +37,8 @@
 
 
 /obj/structure/interactive/plant/liberty_cap
-	id = "liberty_cap"
+	plant_type = /plant_type/liberty_cap
+	icon_state = "liberty_cap"
 
 	potency = 20
 	yield = 2
@@ -41,7 +46,8 @@
 	growth_min = 0
 
 /obj/structure/interactive/plant/chanterelle
-	id = "chanterelle"
+	plant_type = /plant_type/chanterelle
+	icon_state = "chanterelle"
 
 	potency = 20
 	yield = 2
@@ -50,7 +56,8 @@
 
 
 /obj/structure/interactive/plant/destroying_angel
-	id = "destroying_angel"
+	plant_type = /plant_type/destroying_angel
+	icon_state = "destroying_angel"
 
 	potency = 20
 	yield = 2
@@ -58,7 +65,8 @@
 	growth_min = 0
 
 /obj/structure/interactive/plant/fly_amanita
-	id = "fly_amanita"
+	plant_type = /plant_type/fly_amanita
+	icon_state = "fly_amanita"
 
 	potency = 20
 	yield = 2
@@ -66,7 +74,8 @@
 	growth_min = 0
 
 /obj/structure/interactive/plant/glowshroom
-	id = "glowshroom"
+	plant_type = /plant_type/glowshroom
+	icon_state = "glowshroom"
 
 	potency = 20
 	yield = 2
@@ -79,7 +88,8 @@
 
 
 /obj/structure/interactive/plant/tomato
-	id = "tomato"
+	plant_type = /plant_type/tomato
+	icon_state = "tomato"
 
 	potency = 20
 	yield = 7
@@ -88,7 +98,8 @@
 
 
 /obj/structure/interactive/plant/cabbage
-	id = "cabbage"
+	plant_type = /plant_type/cabbage
+	icon_state = "cabbage"
 
 	potency = 10
 	yield = 1

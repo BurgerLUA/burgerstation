@@ -1,5 +1,6 @@
 /obj/hud/button/slot
 	name = "slot button"
+	var/id = null
 	desc = "Slot button for quick actions."
 	desc_extended = "Press this button to activate that item on the tile you're pointing."
 	icon_state = "square_trim"

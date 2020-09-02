@@ -93,7 +93,7 @@
 			caller.to_chat(span("notice","The scroll is blank and void of magic!"))
 			return TRUE
 
-		if(S.id != id) //Need to be the exact same id.
+		if(S.type != type) //Need to be the exact same id.
 			caller.to_chat(span("notice","It wouldn't be a very good idea to mix scrolls together without a tome."))
 			return TRUE
 
@@ -118,7 +118,7 @@
 /obj/item/weapon/ranged/magic/scroll/fireball
 	name = "scroll of fireball"
 	desc = "Shoots a fireball."
-	id = "fireball"
+
 
 	projectile = /obj/projectile/magic/fireball
 
@@ -131,6 +131,6 @@
 
 	value = 20
 
-/obj/item/weapon/ranged/magic/scroll/fireball/amount_3/Generate()
+/obj/item/weapon/ranged/magic/scroll/fireball/Generate()
 	scroll_count = 5
 	return ..()

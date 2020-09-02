@@ -1,7 +1,7 @@
 /obj/item/organ/
 	name = "ORGAN"
 	desc = "An organ."
-	id = null
+	var/id = null
 
 	icon = 'icons/mob/living/advanced/species/human.dmi'
 	icon_state = null

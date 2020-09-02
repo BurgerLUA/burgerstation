@@ -1,6 +1,5 @@
 /obj/projectile/bullet/laser/
 	name = "laser"
-	id = "laser"
 	icon = 'icons/obj/projectiles/laser.dmi'
 	icon_state = "normal"
 

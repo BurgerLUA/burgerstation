@@ -1,6 +1,5 @@
 /obj/projectile/bullet/thrown/
 	name = "thrown object"
-	id = "thrown"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 	collision_flags_special = FLAG_COLLISION_WALKING | FLAG_COLLISION_CRAWLING

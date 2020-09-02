@@ -8,21 +8,37 @@ var/global/list/area/transit/transit_areas = list()
 	safe_storage = TRUE
 
 /area/transit/New(var/desired_loc)
-	transit_areas[id] = src
+	transit_areas[type] = src
 	return ..()
 
 /area/transit/cargo/ship
 	name = "cargo shuttle"
-	id = "cargo_shuttle_station"
 
 /area/transit/cargo/bluespace
 	name = "cargo shuttle"
-	id = "cargo_shuttle_bluespace"
 	transit_turf = /turf/unsimulated/bluespace
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 
-/area/transit/cargo/planet
+/area/transit/cargo/centcomm
 	name = "cargo shuttle"
-	id = "cargo_shuttle_planet"
+
+
+
+
+
+
+
+
+
+/area/transit/cargo_inbound/ship
+	name = "cargo shuttle"
+
+/area/transit/cargo_inbound/bluespace
+	name = "cargo shuttle"
+
+	cheese_type = /reagent/nutrition/cheese/bluespace
+
+/area/transit/cargo_inbound/centcomm
+	name = "cargo shuttle"
 

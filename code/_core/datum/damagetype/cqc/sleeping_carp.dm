@@ -2,6 +2,10 @@
 	name = "crashing wave kick"
 	attack_verbs = list("crashing wave kick")
 
+	impact_sounds = list(
+		'sound/weapons/fists/cqc/crashing_wave_kick.ogg',
+	)
+
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -42,15 +46,24 @@
 		var/list/offsets = direction_to_pixel_offset(get_dir(attacker,victim))
 		var/mob/living/L = victim
 		if(get_dist(attacker,victim) <= 0)
-			L.add_status_effect(STUN,10,10,source = attacker)
+			L.add_status_effect(STUN,20,20,source = attacker)
 		else
 			L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		L.add_status_effect(STUN,20,20)
 
 	return ..()
 
 
 /damagetype/cqc/sleeping_carp/keelhaul
 	name = "keelhaul"
+
+	impact_sounds = list(
+		'sound/weapons/fists/cqc/keelhaul_01.ogg',
+		'sound/weapons/fists/cqc/keelhaul_02.ogg'
+	)
 
 	attack_damage_base = list(
 		BLUNT = 10,
@@ -99,6 +112,11 @@
 /damagetype/cqc/sleeping_carp/gnashing_teeth
 	name = "gnashing teeth"
 	attack_verbs = list("gnashing teeth punch")
+
+	impact_sounds = list(
+		'sound/weapons/fists/cqc/gnashing_teeth_01.ogg',
+		'sound/weapons/fists/cqc/gnashing_teeth_02.ogg'
+	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 

@@ -3,7 +3,6 @@ var/global/list/all_areas = list()
 
 /area/
 	name = "AREA ERROR"
-	id = null
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA

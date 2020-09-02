@@ -10,7 +10,7 @@
 	icon = 'icons/obj/decal/station_markers.dmi'
 	icon_state = "right"
 	alpha = 200
-	id = "null"
+	var/id = "null"
 	var/offset = 0
 
 /obj/decal/directions/PostInitialize()

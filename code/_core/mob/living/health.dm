@@ -1,10 +1,10 @@
-/mob/living/proc/add_health_element(var/obj/hud/button/H)
+/mob/living/proc/add_health_element(var/obj/hud/button/health/H)
 	health_elements[H.id] = H
 	if(client)
 		client.screen += H
 	update_health_elements()
 
-/mob/living/proc/remove_health_element(var/obj/hud/button/H)
+/mob/living/proc/remove_health_element(var/obj/hud/button/health/H)
 	health_elements -= H
 	if(client)
 		client.screen -= H

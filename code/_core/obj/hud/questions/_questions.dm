@@ -11,5 +11,4 @@
 
 /obj/hud/button/question/skip_tutorial
 	name = "Skip Tutorial?"
-	id = "skip_tutorial"
 	icon_state = "skip_tutorial"

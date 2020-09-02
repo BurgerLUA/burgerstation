@@ -2,14 +2,14 @@
 	name = "cargo shuttle controler"
 	desc = "Controls the cargo shuttle."
 
-	transit_start = "cargo_shuttle_station"
-	transit_bluespace = "cargo_shuttle_bluespace"
-	transit_end = "cargo_shuttle_planet"
+	transit_start = /area/transit/cargo/centcomm
+	transit_bluespace = /area/transit/cargo/bluespace
+	transit_end = /area/transit/cargo/ship
 
 	status_id = "cargo"
 
-	default_waiting_time = 10
-	default_transit_time = 10
+	default_waiting_time = 150
+	default_transit_time = 30
 
 /obj/shuttle_controller/cargo/transit(var/starting_transit_id,var/ending_transit_id)
 

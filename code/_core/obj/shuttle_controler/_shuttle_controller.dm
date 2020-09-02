@@ -98,7 +98,7 @@ var/global/list/all_shuttle_controlers = list()
 			desired_transit_time = default_transit_time
 			break
 	transit_time = max(10,desired_transit_time)
-	if(A.id == transit_start)
+	if(A.type == transit_start)
 		transit_target = transit_end
 		transit_source = transit_start
 	else

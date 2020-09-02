@@ -5,29 +5,29 @@
 	name = "alpha shuttle controler"
 	desc = "Controls the alpha shuttle."
 
-	transit_start = "alpha_shuttle_station"
-	transit_bluespace = "alpha_shuttle_bluespace"
-	transit_end = "alpha_shuttle_landing"
+	transit_start = /area/transit/dropship/alpha/station
+	transit_bluespace = /area/transit/dropship/alpha/bluespace
+	transit_end = /area/transit/dropship/alpha/landing
 
 /obj/shuttle_controller/bravo
 	name = "bravo shuttle controler"
 	desc = "Controls the bravo shuttle."
 
-	transit_start = "bravo_shuttle_station"
-	transit_bluespace = "bravo_shuttle_bluespace"
-	transit_end = "bravo_shuttle_landing"
+	transit_start = /area/transit/dropship/bravo/station
+	transit_bluespace = /area/transit/dropship/bravo/bluespace
+	transit_end = /area/transit/dropship/bravo/landing
 
 /obj/shuttle_controller/charlie
 	name = "charlie shuttle controler"
 	desc = "Controls the charlie shuttle."
 
-	transit_start = "charlie_shuttle_station"
-	transit_bluespace = "charlie_shuttle_bluespace"
-	transit_end = "charlie_shuttle_landing"
+	transit_start = /area/transit/dropship/charlie/station
+	transit_bluespace = /area/transit/dropship/charlie/bluespace
+	transit_end = /area/transit/dropship/charlie/landing
 
 /obj/shuttle_controller/charlie/transit(var/starting_transit_id,var/ending_transit_id)
 
-	if(ending_transit_id != "charlie_shuttle_station")
+	if(ending_transit_id != /area/transit/dropship/charlie/station)
 		var/area/A = get_area(src)
 		for(var/obj/structure/interactive/ore_storage/OS in A.contents)
 			stop_thinking(OS)
@@ -36,7 +36,7 @@
 	. = ..()
 
 
-	if(. && ending_transit_id == "charlie_shuttle_station")
+	if(. && ending_transit_id == /area/transit/dropship/charlie/station)
 		var/area/A = get_area(src)
 		for(var/obj/structure/interactive/ore_storage/OS in A.contents)
 			start_thinking(OS)
@@ -48,9 +48,9 @@
 	name = "delta shuttle controler"
 	desc = "Controls the delta shuttle."
 
-	transit_start = "delta_shuttle_station"
-	transit_bluespace = "delta_shuttle_bluespace"
-	transit_end = "delta_shuttle_landing"
+	transit_start = /area/transit/dropship/charlie/station
+	transit_bluespace = /area/transit/dropship/delta/bluespace
+	transit_end = /area/transit/dropship/delta/landing
 
 /*
 /obj/shuttle_controller/delta/transit(var/starting_transit_id,var/ending_transit_id)
@@ -66,11 +66,3 @@
 
 	return ..()
 */
-
-/obj/shuttle_controller/golf
-	name = "golf shuttle controler"
-	desc = "Controls the golf shuttle."
-
-	transit_start = "golf_shuttle_station"
-	transit_bluespace = "golf_shuttle_bluespace"
-	transit_end = "golf_shuttle_landing"

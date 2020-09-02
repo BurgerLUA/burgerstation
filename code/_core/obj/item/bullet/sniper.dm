@@ -3,7 +3,6 @@
 	desc = "For when you want to shoot something so hard it's family will feel it too."
 	desc_extended = "For sniper rifles that require .50 ammo."
 	rarity = RARITY_RARE
-	id = ".50"
 	icon = 'icons/obj/item/bullet/50.dmi'
 
 
