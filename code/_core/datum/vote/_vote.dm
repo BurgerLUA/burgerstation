@@ -80,7 +80,7 @@
 
 	if(weighted_mode)
 		var/list/weighted_results_list = list()
-		var/highest = 1
+		var/highest = 0
 		for(var/option in results) //Go through the results.
 			var/list/voters = results[option] //Get the voters for this option.
 			var/vote_count = length(voters)
@@ -92,7 +92,11 @@
 		for(var/option in weighted_results_list) //Go through all the list of possible options that were voted.
 			var/list/voters = results[option]
 			var/vote_count = length(voters)
-			var/weight = CEILING( (vote_count/highest) * ( (vote_count == highest) ? 2 : 1), 0.01)
+			var/weight = 1
+			if(vote_count == highest && highest != 0)
+				weight = 2
+			else if(highest)
+				weight = vote_count/(highest*0.2)
 			weighted_results_list[option] = weight
 			total_weight += weight
 			message_to_send += div("vote","[option]: [vote_count] (Weight: [weight])")

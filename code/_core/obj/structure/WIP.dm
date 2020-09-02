@@ -9,6 +9,9 @@
 	density = 0
 	plane = PLANE_WALL
 
+	pixel_x = -16
+	pixel_y = -16
+
 
 /obj/structure/wip/main
 	name = "oh god oh fuck"

@@ -10,6 +10,8 @@
 
 	var/obj/item/paper/stored_paper
 
+	pixel_y = 4
+
 
 /obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -115,6 +117,5 @@
 			var/desired_key = split_line[1]
 			var/desired_value = trim(copytext(line,length(desired_key)+2,0))
 			found_data[desired_key] = desired_value
-			world.log << "Setting [desired_key] to [desired_value]."
 
 	return ..()

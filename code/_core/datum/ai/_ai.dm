@@ -521,7 +521,7 @@
 	if(!A && old_attack && attackers[old_attack])
 		attackers -= old_attack
 
-	owner.set_dir(get_dir(owner,A))
+	if(A) owner.set_dir(get_dir(owner,A))
 
 	if(objective_investigate)
 		objective_investigate = null
