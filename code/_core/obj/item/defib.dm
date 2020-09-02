@@ -104,6 +104,8 @@
 
 	value = 10
 
+	size = 99
+
 /obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(object == linked_defib)

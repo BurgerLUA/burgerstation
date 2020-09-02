@@ -59,6 +59,8 @@
 		/obj/item/magazine/sniper_762,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/magazine/lmg_762,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/equipped,
+		/obj/item/magazine/sniper_127,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/storage/ammo/buckshot,
 		/obj/item/storage/ammo/slug,

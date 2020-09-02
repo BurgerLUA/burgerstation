@@ -375,14 +375,17 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/target_fake_x = target.x*TILE_SIZE + icon_pos_x - 16
 	var/target_fake_y = target.y*TILE_SIZE + icon_pos_y - 16
 
-	var/final_pixel_target_x = rand(-8,8) //Fallback.
-	var/final_pixel_target_y = rand(-8,8) //Fallback.
+	var/final_pixel_target_x = 0
+	var/final_pixel_target_y = 0
 
 	if(is_living(caller))
 		var/mob/living/L = caller
 		var/list/target_cords = L.get_current_target_cords(params)
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
+	else
+		final_pixel_target_x = rand(-8,8)
+		final_pixel_target_y = rand(-8,8)
 
 	if(length(params) && params["screen-loc"])
 		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])

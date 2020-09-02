@@ -125,7 +125,7 @@
 	if(is_bullet(O))
 		var/obj/item/bullet_cartridge/B = O
 		if(!B.qdeleting && B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
-			src.transfer_item_count_to(B)
+			B.transfer_item_count_to(src)
 
 	return ..()
 

@@ -46,7 +46,10 @@
 	for(var/k in attachment_variables)
 		if(!vars[k])
 			continue
-		choice_list[vars[k].name] = k
+		var/obj/item/attachment/A = vars[k]
+		if(!A.removable)
+			continue
+		choice_list[A.name] = k
 
 	if(!length(choice_list))
 		caller.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))

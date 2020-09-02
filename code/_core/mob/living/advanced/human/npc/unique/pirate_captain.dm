@@ -2,7 +2,7 @@
 	name = "Captain Condom"
 	id = "captain"
 	desc = "The one and only."
-	desc = "The infamous Captain Condom. They lead a skeleton crew of murderous skeletons called the murderboners."
+	desc = "The infamous Captain Condom. They lead a skeleton crew of murderous skeletons called the murderboners. Given their high status, they seem to be immune from everything, including Space Law and Stuns."
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
@@ -11,14 +11,29 @@
 	ai = /ai/advanced/skeleton
 
 	class = /class/pirate
-	level_multiplier = 3
+	level_multiplier = 4
 
-	health_base = 1200
+	health_base = 3000
 
 	damage_received_multiplier = 0.5
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"
+
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
+		DISARM = TRUE,
+		DRUGGY = TRUE,
+		FIRE = TRUE
+	)
 
 	var/next_revive = 0
 
@@ -40,7 +55,7 @@
 		if(length(possible_targets))
 			var/mob/living/advanced/A = pick(possible_targets)
 
-			shoot_projectile(src,A,null,null,/obj/projectile/magic/rift/revive,/damagetype/ranged/magic/fireball,projectile_speed_to_use = 8,desired_loyalty_tag = loyalty_tag)
+			src.shoot_projectile(src,A,null,null,/obj/projectile/magic/rift/revive,/damagetype/ranged/magic/fireball,16,16,0,TILE_SIZE*0.25,1,"#FFFFFF",0,0,1,null,src.loyalty_tag)
 
 			next_revive = world.time + SECONDS_TO_DECISECONDS(5)
 

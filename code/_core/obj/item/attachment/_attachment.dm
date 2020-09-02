@@ -31,6 +31,8 @@
 	var/attachment_offset_x = 0
 	var/attachment_offset_y = 0
 
+	var/removable = TRUE
+
 	value = 200
 
 /obj/item/attachment/get_examine_list(var/mob/caller)

@@ -13,3 +13,15 @@
 		inaccuracy_modifer = 0.75,
 		view_punch = 0.75
 	)
+
+/obj/item/attachment/stock/sniper_127 //Actually not a stock but whatever. Players won't know this.
+	name = "12.7mm barrel"
+	desc = "Extendong."
+	desc_extended = "A silly barrel attachment that increases the barrel length of a 12.7mm gun. Increases projectile speed, bullet accuracy, precision, and weapon accuracy at the cost of higher recoil, movement spread, recoil spread, and spread from inexperience."
+	icon_state = "barrel_sniper"
+
+	attachment_stats = list()
+
+	value = 100
+
+	removable = FALSE

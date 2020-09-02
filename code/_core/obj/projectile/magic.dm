@@ -36,8 +36,11 @@
 	name = "magic rift"
 	icon_state = "rift"
 
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
 /obj/projectile/magic/rift/revive
 	name = "revival rift"
+	hit_laying = TRUE
 
 /obj/projectile/magic/rift/revive/post_on_hit(var/atom/hit_atom)
 
