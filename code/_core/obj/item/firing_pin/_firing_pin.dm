@@ -87,4 +87,4 @@
 	name = "deathsquad firing pin"
 	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Deathsquad IFF implant, and prevents firing at those with one."
 	iff_tag = "Deathsquad"
-	icon_state = "deathsquad"
+	icon_state = "revolution"
