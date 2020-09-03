@@ -20,8 +20,6 @@
 
 	if(enabled)
 		. += span("notice","It is active.")
-		. += span("notice","Icon state: [icon_state].")
-
 
 	return .
 
@@ -59,6 +57,42 @@
 
 	return ..()
 
+
+/obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+	//im sure changing this to /obj/item will break nothing at all and it will all be fine yes
+	var/obj/item/defer_object = object.defer_click_on_object(location,control,params)
+	//world.log << "START"
+
+	if(defer_object.flags_tool & FLAG_TOOL_MULTITOOL)
+		//world.log << "MULTITOOL"
+		//return ..()
+		if(length(polymorphs))
+			//world.log << "POLYMORPHS"
+			//return ..()
+			var/choice = input("What do you want to change the color of?","Color Selection") as null|anything in polymorphs
+
+			INTERACT_CHECK
+
+			if(!choice)
+				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+				return ..()
+
+			var/color = "#FFFFFF"
+			var/choice_color = input("What would you like the new color to be?") as color|null
+
+			INTERACT_CHECK
+
+			if(choice_color)
+				color = choice_color
+				polymorphs[choice] = blend_colors(polymorphs[choice],color,1000)
+				caller.to_chat(span("notice","You change \the [src.name]'s color."))
+			else
+				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+				return ..()
+			update_icon()
+			return ..()
+
+
 /obj/item/weapon/melee/energy/sword/
 	name = "energy sword"
 	desc = "A blade made out of ENERGY. Please do not sue."
@@ -86,6 +120,7 @@
 	else
 		play('sound/weapons/energy/energy_off.ogg',src)
 	return .
+
 
 /obj/item/weapon/melee/energy/sword/blue
 	polymorphs = list(
@@ -127,20 +162,23 @@
 
 	dan_mode = TRUE
 
+	polymorphs = list(base = "#FFFFFF")
+
+// changed from color to polymorphs because i can't be assed to add an exception for shields specifically
 /obj/item/weapon/melee/energy/shield/blue
-	color = "#0000FF"
+	polymorphs = list(base = "#0000FF")
 
 /obj/item/weapon/melee/energy/shield/green
-	color = "#00FF00"
+	polymorphs = list(base = "#00FF00")
 
 /obj/item/weapon/melee/energy/shield/red
-	color = "#FF0000"
+	polymorphs = list(base = "#FF0000")
 
 /obj/item/weapon/melee/energy/shield/yellow
-	color = "#FFFF00"
+	polymorphs = list(base = "#FFFF00")
 
 /obj/item/weapon/melee/energy/shield/classic
-	color = "#5EB9FF"
+	polymorphs = list(base = "#5EB9FF")
 
 /obj/item/weapon/melee/energy/sword/katana
 	name = "high frequency blade"
