@@ -59,16 +59,10 @@
 
 
 /obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
-	//im sure changing this to /obj/item will break nothing at all and it will all be fine yes
 	var/obj/item/defer_object = object.defer_click_on_object(location,control,params)
-	//world.log << "START"
 
 	if(defer_object.flags_tool & FLAG_TOOL_MULTITOOL)
-		//world.log << "MULTITOOL"
-		//return ..()
 		if(length(polymorphs))
-			//world.log << "POLYMORPHS"
-			//return ..()
 			var/choice = input("What do you want to change the color of?","Color Selection") as null|anything in polymorphs
 
 			INTERACT_CHECK
@@ -163,6 +157,13 @@
 	dan_mode = TRUE
 
 	polymorphs = list(base = "#FFFFFF")
+	block_defense_rating = list(
+		BLADE = 75,
+		BLUNT = 25,
+		PIERCE = 50,
+		LASER = 100,
+		MAGIC = 100
+	)
 
 // changed from color to polymorphs because i can't be assed to add an exception for shields specifically
 /obj/item/weapon/melee/energy/shield/blue
