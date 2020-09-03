@@ -6,14 +6,14 @@
 	species = "zombie"
 
 	var/loadout_to_use = /loadout/zombie
-	var/spear_chance = 0
-
 	health = /health/mob/living/advanced/zombie/
 	health_base = 300
 
-	movement_delay = DECISECONDS_TO_TICKS(10)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	var/next_talk = 0
+
+	value = 250
 
 
 
@@ -64,26 +64,30 @@
 	return .
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
+	setup_sex()
+	return ..()
 
+/mob/living/advanced/npc/zombie/proc/setup_sex()
 	gender = pick(MALE,FEMALE)
 	sex = gender //oh god oh fuck what have i done
+	return TRUE
 
-	return ..()
+/mob/living/advanced/npc/zombie/proc/setup_appearance()
+	var/list/valid_male_hair = list("none","hair_a","hair_c","hair_d","hair_e","hair_f")
+	var/list/valid_female_hair = list("hair_b","hair_ponytail2","hair_ponytail5")
+	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
+	change_organ_visual("hair_head", desired_icon_state = sex == MALE ? pick(valid_male_hair) : pick(valid_female_hair), desired_color = pick("#111111","#404040","#54341F","#D8BB6A"))
+	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
+	return TRUE
 
 
 /mob/living/advanced/npc/zombie/Initialize()
 
 	. = ..()
 
-	change_organ_visual("skin", desired_color = "#5D7F00")
-	change_organ_visual("hair_head", desired_icon_state = "hair_a", desired_color = "#111111")
-	change_organ_visual("eye", desired_color = "#FF0000")
-
+	setup_appearance()
 	update_all_blends()
 	equip_loadout(loadout_to_use)
-
-	if(spear_chance)
-		put_in_hands(new /obj/item/weapon/melee/spear(src.loc),FALSE)
 
 	return .
 
@@ -177,15 +181,39 @@
 
 /mob/living/advanced/npc/zombie/winter
 	loadout_to_use = /loadout/zombie/winter
-	spear_chance = 100
 	level_multiplier = 1.5
 
 /mob/living/advanced/npc/zombie/desert
 	loadout_to_use = /loadout/zombie/desert
-	spear_chance = 0
 	level_multiplier = 2
 
 /mob/living/advanced/npc/zombie/greytide
-	loadout_to_use = /loadout/greytide
-	spear_chance = 0
-	level_multiplier = 2
+	loadout_to_use = /loadout/zombie/greytide
+	level_multiplier = 1
+
+/mob/living/advanced/npc/zombie/greytide/setup_sex()
+	sex = MALE
+	gender = MALE
+	return TRUE
+
+/mob/living/advanced/npc/zombie/greytide/setup_appearance()
+	change_organ_visual("skin", desired_color = "#5D7F00")
+	change_organ_visual("hair_head", desired_icon_state = "hair_a", desired_color = "#111111")
+	change_organ_visual("eye", desired_color = "#FF0000")
+	return TRUE
+
+/mob/living/advanced/npc/zombie/captain
+	loadout_to_use = /loadout/zombie/captain
+	level_multiplier = 10
+
+/mob/living/advanced/npc/zombie/botanist
+	loadout_to_use = /loadout/zombie/botanist
+	level_multiplier = 3
+
+/mob/living/advanced/npc/zombie/chaplain
+	loadout_to_use = /loadout/zombie/chaplain
+	level_multiplier = 4
+
+/mob/living/advanced/npc/zombie/security
+	loadout_to_use = /loadout/zombie/security
+	level_multiplier = 4

@@ -94,7 +94,7 @@
 			var/vote_count = length(voters)
 			var/weight = 1
 			if(vote_count == highest && highest != 0)
-				weight = 2
+				weight = 2 * vote_count
 			else if(highest)
 				weight = vote_count/(highest*0.2)
 			weighted_results_list[option] = weight

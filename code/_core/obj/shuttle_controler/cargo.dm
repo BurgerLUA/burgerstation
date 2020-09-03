@@ -2,9 +2,9 @@
 	name = "cargo shuttle controler"
 	desc = "Controls the cargo shuttle."
 
-	transit_start = /area/transit/cargo/centcomm
+	transit_start = /area/transit/cargo/ship
 	transit_bluespace = /area/transit/cargo/bluespace
-	transit_end = /area/transit/cargo/ship
+	transit_end = /area/transit/cargo/centcomm
 
 	status_id = "cargo"
 
@@ -13,7 +13,7 @@
 
 /obj/shuttle_controller/cargo/transit(var/starting_transit_id,var/ending_transit_id)
 
-	if(ending_transit_id == "cargo_shuttle_planet")
+	if(ending_transit_id == /area/transit/cargo/centcomm)
 		var/area/A = get_area(src)
 		var/total_value = 0
 		for(var/obj/structure/interactive/crate/C in A.contents)

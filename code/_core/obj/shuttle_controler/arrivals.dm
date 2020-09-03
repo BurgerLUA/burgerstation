@@ -69,15 +69,15 @@
 	return ..()
 
 /obj/shuttle_controller/arrivals/alpha
-	transit_start = /area/transit/arrivals_shuttle_01/bluespace
-	transit_bluespace = /area/transit/arrivals_shuttle_01/centcomm
+	transit_start = /area/transit/arrivals_shuttle_01/centcomm
+	transit_bluespace = /area/transit/arrivals_shuttle_01/bluespace
 	transit_end = /area/transit/arrivals_shuttle_01/station
 
 	status_id = "arrivals_01"
 
 /obj/shuttle_controller/arrivals/bravo
-	transit_start = /area/transit/arrivals_shuttle_02/bluespace
-	transit_bluespace = /area/transit/arrivals_shuttle_02/centcomm
+	transit_start = /area/transit/arrivals_shuttle_02/centcomm
+	transit_bluespace = /area/transit/arrivals_shuttle_02/bluespace
 	transit_end = /area/transit/arrivals_shuttle_02/station
 
 	status_id = "arrivals_02"

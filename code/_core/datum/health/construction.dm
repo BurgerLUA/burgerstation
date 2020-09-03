@@ -26,7 +26,7 @@
 	. = ..()
 
 	if(. && health_current <= 0)
-		var/obj/structure/interactive/construction/C = owner
+		var/atom/C = owner
 		C.on_destruction(attacker,TRUE)
 
 	return .

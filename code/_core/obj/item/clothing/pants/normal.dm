@@ -60,6 +60,23 @@
 		"pants" = COLOR_SECURITY_DARK
 	)
 
+/obj/item/clothing/pants/normal/security/ancient
+	name = "ancient security pants"
+	desc = "From a forgotten age."
+	desc_extended = "An ancient pair of security pants. Rumor is that it's red to hide greytide blood."
+	polymorphs = list(
+		"pants" = COLOR_CRIMSON
+	)
+
+/obj/item/clothing/pants/normal/botany
+	name = "botanty pants"
+	desc = "Good for plants."
+	desc_extended = "Good pants to wear if you're on your knees a lot. Also good for botany."
+	polymorphs = list(
+		"pants" = COLOR_GREEN
+	)
+
+
 /obj/item/clothing/pants/normal/engineering
 	name = "engineering pants"
 	desc = "Offensively bright."

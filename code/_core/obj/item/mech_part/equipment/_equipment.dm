@@ -12,6 +12,8 @@
 	var/slot = MECH_SLOT_NONE
 	var/current_slot
 
+	health = null
+
 /obj/item/mech_part/equipment/weapon
 	name = "mech weapon"
 	var/obj/item/weapon/stored_weapon

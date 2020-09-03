@@ -353,6 +353,8 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 
+	damage_type = /damagetype/unarmed/bite/zombie
+
 /obj/item/organ/hand/zombie/left
 	name = "left zombie hand"
 	id = BODY_HAND_LEFT
@@ -371,5 +373,3 @@
 
 	target_bounds_y_min = 11
 	target_bounds_y_max = 14
-
-	damage_type = /damagetype/unarmed/bite/zombie

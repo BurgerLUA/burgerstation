@@ -19,6 +19,11 @@
 	return ..()
 
 
+/mob/living/advanced/defer_click_on_object(location,control,params)
+	if(driving)
+		return driving
+	return ..()
+
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))

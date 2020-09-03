@@ -48,7 +48,7 @@
 	name = "delta shuttle controler"
 	desc = "Controls the delta shuttle."
 
-	transit_start = /area/transit/dropship/charlie/station
+	transit_start = /area/transit/dropship/delta/station
 	transit_bluespace = /area/transit/dropship/delta/bluespace
 	transit_end = /area/transit/dropship/delta/landing
 

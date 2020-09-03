@@ -948,6 +948,7 @@
 #include "code\_core\obj\item\clothing\overwear\armor\knight.dm"
 #include "code\_core\obj\item\clothing\overwear\armor\medium.dm"
 #include "code\_core\obj\item\clothing\overwear\armor\molded.dm"
+#include "code\_core\obj\item\clothing\overwear\armor\old.dm"
 #include "code\_core\obj\item\clothing\overwear\armor\plate_carrier.dm"
 #include "code\_core\obj\item\clothing\overwear\armor\prototype.dm"
 #include "code\_core\obj\item\clothing\overwear\armor\shit.dm"
