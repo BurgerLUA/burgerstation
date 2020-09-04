@@ -19,6 +19,25 @@
 
 	value = 600
 
+
+/obj/item/attachment/barrel/charger/advanced
+	name = "advanced barrel charger"
+	desc = "SUPERCHARGE TO THE MAX."
+	desc_extended = "A supermagnetic barrel charger that uses the power of MAGNETS to launch bullets faster and stronger than what could normally occur with gunpowder. Increases damage and projectile speed, at the cost of reduced accuracy, increased recoil, and decreased firerate."
+	icon_state = "barrel_charger_advanced"
+
+	attachment_stats = list(
+		damage_multiplier = 1.5,
+		projectile_speed = 1.5,
+		bullet_spread = 1.25,
+		heat_spread = 1.25,
+		view_punch = 3,
+		shoot_delay = 1.5,
+		bullet_color = COLOR_CYAN
+	)
+
+	value = 600
+
 /obj/item/attachment/barrel/laser_charger
 	name = "modular laser charger"
 	desc = "SUPERCHARGE."
