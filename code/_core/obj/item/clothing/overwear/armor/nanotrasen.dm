@@ -13,6 +13,8 @@
 
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 
+	dyeable = TRUE
+
 
 
 /obj/item/clothing/overwear/armor/nanotrasen/light
