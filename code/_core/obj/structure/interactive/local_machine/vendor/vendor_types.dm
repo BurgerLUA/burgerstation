@@ -427,3 +427,20 @@
 		/obj/item/clothing/head/hat/paperbag,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/water
 	)
+
+
+/obj/structure/interactive/vending/experimental
+	name = "experimental vendor"
+	icon_state = "experimental"
+	desc = "For science! (And balance.)"
+	desc_extended = "An experimental vendor that vends even more experimental weapons, armor, and clothing. Use at your own risk!"
+
+	stored_types = list(
+		/obj/item/clothing/uniform/stealth,
+		/obj/item/clothing/head/helmet/nanotrasen/light,
+		/obj/item/clothing/head/helmet/nanotrasen/medium,
+		/obj/item/clothing/head/helmet/nanotrasen/heavy,
+		/obj/item/clothing/overwear/armor/nanotrasen/light,
+		/obj/item/clothing/overwear/armor/nanotrasen/medium,
+		/obj/item/clothing/overwear/armor/nanotrasen/heavy
+	)
