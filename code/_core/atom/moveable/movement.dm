@@ -138,6 +138,41 @@
 
 	return FALSE
 
+/atom/movable/proc/can_move_turf(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
+
+	//TRY: Exit the turf.
+	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
+		return FALSE
+
+	//TRY: Enter the turf.
+	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
+		return FALSE
+
+	return TRUE
+
+
+/atom/movable/proc/can_move_contents(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
+
+	//TRY: Exit the contents.
+	for(var/k in OldLoc.contents)
+		var/atom/movable/M = k
+		if(M == src)
+			continue
+		CHECK_TICK(100,FPS_SERVER)
+		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
+			return FALSE
+
+	//TRY: Enter the contents.
+	for(var/k in NewLoc.contents)
+		var/atom/movable/M = k
+		if(M == src)
+			continue
+		CHECK_TICK(100,FPS_SERVER)
+		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
+			return FALSE
+
+	return TRUE
+
 /atom/movable/proc/can_move(var/atom/OldLoc,var/atom/NewLoc,var/real_dir=0x0)
 
 	if(!OldLoc)
@@ -148,29 +183,11 @@
 		CRASH_SAFE("Tried calling can_move without an NewLoc!")
 		return FALSE
 
-	//TRY: Exit the turf.
-	if(!OldLoc.Exit(src,NewLoc) && !Bump(OldLoc,real_dir))
+	if(!can_move_turf(OldLoc,NewLoc,real_dir))
 		return FALSE
 
-	//TRY: Enter the turf.
-	if(!NewLoc.Enter(src,OldLoc) && !Bump(NewLoc,real_dir))
+	if(!can_move_contents(OldLoc,NewLoc,real_dir))
 		return FALSE
-
-	//TRY: Exit the contents.
-	for(var/k in OldLoc.contents)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
-			return FALSE
-
-	//TRY: Enter the contents.
-	for(var/k in NewLoc.contents)
-		var/atom/movable/M = k
-		if(M == src)
-			continue
-		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
-			return FALSE
 
 	return TRUE
 

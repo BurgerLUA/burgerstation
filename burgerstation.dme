@@ -1317,7 +1317,6 @@
 #include "code\_core\obj\structure\interactive\mining_drill.dm"
 #include "code\_core\obj\structure\interactive\misc.dm"
 #include "code\_core\obj\structure\interactive\ore_box.dm"
-#include "code\_core\obj\structure\interactive\ore_deposit.dm"
 #include "code\_core\obj\structure\interactive\ore_storage.dm"
 #include "code\_core\obj\structure\interactive\plank.dm"
 #include "code\_core\obj\structure\interactive\plastic_flaps.dm"

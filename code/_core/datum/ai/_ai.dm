@@ -238,7 +238,7 @@
 		alert_time -= tick_rate
 		if(alert_time <= 0)
 			alert_time = initial(alert_time)
-			set_alert_level(alert_level-1,TRUE)
+			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(owner.move_delay <= 0)
 		handle_movement_reset()
@@ -438,8 +438,12 @@
 	if(sidestep_next)
 		if(!owner.move_dir)
 			owner.move_dir = pick(DIRECTIONS_INTERCARDINAL)
-		var/move_cone = pick(45,90)
-		owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))
+
+		if(prob(50))
+			var/move_cone = pick(45,90)
+			owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))
+		else
+			owner.move_dir = turn(owner.dir,180)
 		sidestep_next = FALSE
 		frustration_move = 0
 		return TRUE
@@ -531,7 +535,7 @@
 			return FALSE
 		frustration_attack = 0
 		set_active(TRUE)
-		set_alert_level(ALERT_LEVEL_COMBAT)
+		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
 		objective_attack = A
 		if(owner.boss && is_player(A))
 			owner.add_player_to_boss(A)
@@ -548,7 +552,7 @@
 		if(is_living(old_attack))
 			var/mob/living/L2 = old_attack
 			if(L2.dead)
-				set_alert_level(ALERT_LEVEL_NONE,TRUE)
+				set_alert_level(ALERT_LEVEL_NOISE,TRUE)
 				return TRUE
 		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
 		set_move_objective(old_attack)
@@ -730,7 +734,7 @@
 			if(!objective_attack && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
-			set_alert_level(ALERT_LEVEL_CAUTION,alert_source = attacker)
+			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
 	return TRUE
@@ -751,7 +755,7 @@
 	if(obstacle)
 		if(is_living(obstacle))
 			var/mob/living/L = obstacle
-			set_alert_level(ALERT_LEVEL_CAUTION,alert_source=obstacle)
+			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
 			if(trigger_other_bump && L.ai)
 				L.ai.Bump(owner,FALSE)
 
@@ -773,7 +777,7 @@
 
 	return TRUE
 
-/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_source = null)
+/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
 
 	if(!use_alerts)
 		return FALSE
@@ -801,8 +805,8 @@
 
 	if(old_alert_level != alert_level)
 		set_active(TRUE)
-		if(should_investigate_alert && alert_source && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_source)
+		if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
+			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 

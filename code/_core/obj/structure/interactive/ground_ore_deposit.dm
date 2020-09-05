@@ -17,7 +17,7 @@
 	. = ..()
 
 	if(ore_score > 10)
-		for(var/turf/simulated/floor/T in orange(1,src)) //Floors only.
+		for(var/turf/simulated/floor/T in orange(1,src)) //Floors only. Yes it can spawn on tiles and reinforced plating, but that's fine.
 			if(locate(/obj/structure/interactive/ground_ore_deposit/) in T.contents)
 				continue
 			if(prob(25 + ore_score))

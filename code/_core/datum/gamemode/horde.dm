@@ -231,7 +231,7 @@
 	var/picks_remaining = 4
 
 	while(picks_remaining > 0)
-		CHECK_TICK(50,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*20)
 		picks_remaining--
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
 		if(chosen_spawn.z < Z_LEVEL_MISSION) continue

@@ -5,7 +5,13 @@
 	var/maximum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 	var/minimum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 
+	var/affects_dead = TRUE
+
 /status_effect/proc/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+
+	if(victim.dead && !affects_dead)
+		return FALSE
+
 	return TRUE
 
 /status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
@@ -28,12 +34,16 @@
 	minimum = 5
 	maximum = 40
 
+	affects_dead = FALSE
+
 /status_effect/sleeping
 	name = "Sleeping"
 	desc = "You're sleeping!"
 	id = SLEEP
 	minimum = 30
 	maximum = 600
+
+	affects_dead = FALSE
 
 /status_effect/paralyzed
 	name = "Paralyzed"
@@ -42,12 +52,16 @@
 	minimum = 10
 	maximum = 80
 
+	affects_dead = FALSE
+
 /status_effect/fatigued
 	name = "Fatigued"
 	desc = "You're fatigued!"
 	id = FATIGUE
 	minimum = 10
 	maximum = 30
+
+	affects_dead = FALSE
 
 /status_effect/fatigued/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	owner.remove_status_effect(ADRENALINE)
@@ -78,6 +92,8 @@
 	minimum = 1
 	maximum = 10
 
+	affects_dead = FALSE
+
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
 	. = ..()
@@ -105,6 +121,8 @@
 	minimum = 1
 	maximum = 100
 
+	affects_dead = FALSE
+
 /status_effect/slip/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	play('sound/effects/slip.ogg',get_turf(owner))
@@ -122,10 +140,14 @@
 	minimum = 10
 	maximum = 100
 
+	affects_dead = FALSE
+
 /status_effect/critical
 	name = "Critical"
 	desc = "You're in critical condition!"
 	id = CRIT
+
+	affects_dead = FALSE
 
 /status_effect/energized
 	name = "Adrenaline"
@@ -147,6 +169,8 @@
 	name = "Resting"
 	desc = "You're resting!"
 	id = REST
+
+	affects_dead = FALSE
 
 /status_effect/disarm
 	name = "Disarmed"
@@ -191,6 +215,8 @@
 	id = DRUGGY
 	minimum = 100
 	maximum = 3000
+
+	affects_dead = FALSE
 
 /status_effect/druggy/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 

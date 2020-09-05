@@ -96,7 +96,7 @@
 			if(vote_count == highest && highest != 0)
 				weight = 2 * vote_count
 			else if(highest)
-				weight = vote_count/(highest*0.2)
+				weight = vote_count/(highest*2)
 			weighted_results_list[option] = weight
 			total_weight += weight
 			message_to_send += div("vote","[option]: [vote_count] (Weight: [weight])")

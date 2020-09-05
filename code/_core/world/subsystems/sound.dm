@@ -257,7 +257,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 	for(var/k in hearers)
 		var/mob/M = k
 
-		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER)
+		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
 
 		if(!M.client)
 			continue

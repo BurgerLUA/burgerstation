@@ -33,6 +33,8 @@
 	if(ai)
 		ai.on_death()
 
+	create_alert(VIEW_RANGE*0.5, get_turf(src), alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+
 	movement_flags = 0x0
 	attack_flags = 0x0
 

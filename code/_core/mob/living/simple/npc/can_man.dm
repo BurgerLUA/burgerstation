@@ -54,7 +54,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	boss_music = "cursed_as_love"
+	//boss_music = "cursed_as_love"
 
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"
