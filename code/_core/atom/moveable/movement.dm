@@ -69,14 +69,13 @@
 			move_dir_last = final_move_dir
 		else
 			move_dir_last = 0x0
+			move_delay = max(move_delay,DECISECONDS_TO_TICKS(10))
 
 		if(acceleration_mod)
 			if(similiar_move_dir)
 				acceleration_value = round(min(acceleration_value + acceleration*adjust_delay,100),0.01)
 			else
 				acceleration_value *= 0.5
-
-		return TRUE
 
 	if(adjust_delay)
 		move_delay = move_delay - adjust_delay

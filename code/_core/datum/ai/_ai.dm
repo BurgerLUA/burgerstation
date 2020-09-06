@@ -34,13 +34,18 @@
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
 	var/frustration_attack = 0
+	var/frustration_attack_threshold = 4 //Above this means they'll try to find a new target.
+
 	var/frustration_move = 0
+	var/frustration_move_threshold = 4 //Above this means they'll try to alter their movement.
+
 	var/frustration_path = 0
+	var/frustration_path_threshold = 10 //Above this means they'll try to find a new path.
 
 	var/turf/path_start_turf
 	var/turf/path_end_turf
 
-	var/frustration_threshold = 10 //Above this means they'll try to find a new target.
+
 
 	var/list/attackers = list()
 
@@ -357,7 +362,7 @@
 
 /ai/proc/handle_movement_path_frustration()
 
-	if(frustration_path > frustration_threshold)
+	if(frustration_path > frustration_path_threshold)
 
 		frustration_path = 0
 
@@ -575,7 +580,7 @@
 		else
 			frustration_attack = 0
 
-	if(!objective_attack || frustration_attack > frustration_threshold || !prob(80)) //THE CLASSIC.
+	if(!objective_attack || frustration_attack > frustration_attack_threshold)
 		var/list/possible_targets = get_possible_targets()
 		var/atom/best_target
 		var/best_score = 0
@@ -745,7 +750,7 @@
 		frustration_move++
 		if(length(current_path))
 			frustration_path++
-		if(frustration_move >= frustration_threshold)
+		if(frustration_move >= frustration_move_threshold)
 			sidestep_next = TRUE
 
 	return TRUE
@@ -759,7 +764,7 @@
 			if(trigger_other_bump && L.ai)
 				L.ai.Bump(owner,FALSE)
 
-		if(attack_on_block && (frustration_path + frustration_move + frustration_attack) >= frustration_threshold*0.5)
+		if(attack_on_block)
 			spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

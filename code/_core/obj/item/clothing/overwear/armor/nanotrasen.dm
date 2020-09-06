@@ -37,7 +37,7 @@
 
 	value = 1200
 
-	slowdown_mul_worn = 1.15
+	slowdown_mul_worn = 1.10
 
 
 /obj/item/clothing/overwear/armor/nanotrasen/medium
@@ -60,7 +60,7 @@
 
 	value = 1700
 
-	slowdown_mul_worn = 1.30
+	slowdown_mul_worn = 1.25
 
 /obj/item/clothing/overwear/armor/nanotrasen/heavy
 	name = "heavy Jaeger armor"
@@ -70,9 +70,9 @@
 	)
 
 	defense_rating = list(
-		BLADE = 50,
-		BLUNT = 100,
-		PIERCE = 100,
+		BLADE = 75,
+		BLUNT = 90,
+		PIERCE = 90,
 		LASER = 50,
 		ARCANE = -200,
 		HEAT = 50,

@@ -44,6 +44,7 @@
 	)
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	butcher_contents = list(
 		/obj/item/clothing/overwear/armor/drake_armor,
@@ -51,11 +52,17 @@
 	)
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		FATIGUE = STAGGER,
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
 		DISARM = TRUE,
+		DRUGGY = TRUE,
 		FIRE = TRUE
 	)
 

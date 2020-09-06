@@ -13,10 +13,3 @@
 	ai = null
 	class = /class/passive/
 	damage_type = /damagetype/unarmed/claw/
-
-	anchored = TRUE
-
-
-	id = "ash_drake"
-	force_spawn = TRUE
-	boss = TRUE

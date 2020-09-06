@@ -280,6 +280,9 @@
 			damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 			if(damage_type_to_fatigue[damage_type])
 				var/fatigue_damage_to_convert = damage_blocked*damage_type_to_fatigue[damage_type]
+				if(is_living(victim))
+					var/mob/living/L = victim
+					fatigue_damage_to_convert *= L.fatigue_from_block_mul
 				if(debug) LOG_DEBUG("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
 				fatigue_damage += fatigue_damage_to_convert
 

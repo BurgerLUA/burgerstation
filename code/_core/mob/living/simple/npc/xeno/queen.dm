@@ -60,6 +60,7 @@
 	)
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS
 

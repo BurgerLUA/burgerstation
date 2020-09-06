@@ -16,6 +16,7 @@
 	health_base = 3000
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	loyalty_tag = "Skeleton"
 	iff_tag = "Skeleton"

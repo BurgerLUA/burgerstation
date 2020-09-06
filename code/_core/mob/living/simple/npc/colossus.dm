@@ -39,11 +39,17 @@
 	)
 
 	status_immune = list(
-		STUN = STAGGER,
-		SLEEP = STAGGER,
-		PARALYZE = STAGGER,
-		FATIGUE = STAGGER,
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		FATIGUE = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		CRIT = TRUE,
+		REST = TRUE,
+		ADRENALINE = TRUE,
 		DISARM = TRUE,
+		DRUGGY = TRUE,
 		FIRE = TRUE
 	)
 
@@ -51,6 +57,7 @@
 	loyalty_tag = "colossus"
 
 	damage_received_multiplier = 0.5
+	fatigue_from_block_mul = 0
 
 	mob_size = MOB_SIZE_BOSS
 
