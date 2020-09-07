@@ -1,4 +1,3 @@
-
 /world/proc/life()
 
 	LOG_SERVER("STARTING WORLD.")

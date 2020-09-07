@@ -13,7 +13,7 @@
 				params[PARAM_ICON_X] = rand(0,32)
 				params[PARAM_ICON_Y] = rand(0,32)
 				var/atom/object_to_damage = src.get_object_to_damage(src,src,params,TRUE,TRUE)
-				DT.do_damage(src,src,src,object_to_damage,src,damage_multiplier)
+				DT.hit(src,src,src,object_to_damage,src,damage_multiplier)
 
 	return TRUE
 

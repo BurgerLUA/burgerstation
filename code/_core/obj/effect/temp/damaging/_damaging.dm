@@ -47,7 +47,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
 	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,params,TRUE,TRUE)
-	return DT.do_damage(owner,victim,src,object_to_damage,owner,1)
+	return DT.hit(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()
 

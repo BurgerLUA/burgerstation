@@ -289,27 +289,11 @@
 			DT.perform_miss(owner,hit_atom,weapon)
 			return FALSE
 
-		/*
-		if(DT.allow_dodge)
-			var/dodging_return = can_dodge(owner,weapon,object_to_damage,DT)
-			if(dodging_return && hit_atom.perform_dodge(owner,weapon,object_to_damage,DT)) return FALSE
-
-		if(DT.allow_parry)
-			var/atom/parrying_atom = hit_atom.can_parry(owner,weapon,object_to_damage,DT)
-			if(parrying_atom && hit_atom.perform_parry(owner,weapon,object_to_damage,DT,parrying_atom)) return TRUE
-
-		if(DT.allow_block)
-			var/atom/blocking_atom = hit_atom.can_block(owner,weapon,object_to_damage,DT)
-			if(blocking_atom && hit_atom.perform_block(owner,weapon,object_to_damage,DT,blocking_atom))
-				damage_multiplier *= 0.75
-				damage_multiplier *= 1 - clamp(blocking_atom.get_block_power(hit_atom,owner,weapon,object_to_damage,DT) - DT.get_block_power_penetration(owner,hit_atom,weapon,object_to_damage,blocking_atom),0,1)
-		*/
-
 		if(DT.falloff > 0)
 			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
 		if(damage_multiplier > 0)
-			DT.do_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+			DT.hit(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 

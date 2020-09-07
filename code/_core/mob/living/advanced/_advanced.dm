@@ -455,7 +455,7 @@ mob/living/advanced/Login()
 	return null
 
 
-/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/critical_hit_mutliplier=1,var/damagetype/DT)
+/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
 
 	if(last_hold && (world.time - last_hold <= 5))
 		return TRUE
