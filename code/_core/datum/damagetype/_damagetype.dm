@@ -474,7 +474,7 @@
 	. = clamp(CEILING(weapon_attack_delay*0.125,1),1,30)
 
 	if(draw_weapon)
-		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),.,victim,attacker,weapon)
+		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 2,victim,attacker,weapon)
 
 	return
 
