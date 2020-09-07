@@ -235,12 +235,9 @@
 	return swing_time
 
 /damagetype/proc/hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
-	world.log << "Hit damage multiplier: [damage_multiplier]."
 	return SSdamagetype.add_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier,src)
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
-
-	world.log << "Damage Mul: [damage_multiplier]."
 
 	if(is_living(victim))
 		var/mob/living/L = victim

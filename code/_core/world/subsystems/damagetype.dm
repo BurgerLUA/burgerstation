@@ -14,7 +14,6 @@ SUBSYSTEM_DEF(damagetype)
 	for(var/d_id in damage_to_process)
 		var/list/damage_list = damage_to_process[d_id]
 		var/damagetype/DT = damage_list["damage_type"]
-		world.log << "Processed damage multiplier: [damage_list["damage_multiplier"]]."
 		DT.process_damage(damage_list["attacker"],damage_list["victim"],damage_list["weapon"],damage_list["hit_object"],damage_list["blamed"],damage_list["damage_multiplier"])
 		damage_to_process -= d_id
 
