@@ -25,7 +25,7 @@
 	bullet_diameter_max = 9.5
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,

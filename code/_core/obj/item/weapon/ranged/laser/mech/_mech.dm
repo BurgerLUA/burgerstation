@@ -10,8 +10,6 @@
 	automatic = FALSE
 	bullet_color = "#0000FF"
 
-	charge_max = 1000000
-	charge_current = 1000000
 	charge_cost = 1000
 
 	view_punch = 0
@@ -31,8 +29,6 @@
 
 	shoot_delay = 1.5
 
-	charge_max = 250*300
-	charge_current = 250*300
 	charge_cost = 250
 
 	projectile = /obj/projectile/bullet/firearm/pistol
@@ -66,8 +62,6 @@
 
 	shoot_delay = 2
 
-	charge_max = 500*240
-	charge_current = 500*240
 	charge_cost = 500
 
 	projectile = /obj/projectile/bullet/firearm/rifle
@@ -104,8 +98,6 @@
 
 	automatic = FALSE
 
-	charge_max = 1000*120
-	charge_current = 1000*120
 	charge_cost = 1000
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
@@ -141,8 +133,6 @@
 
 	automatic = FALSE
 
-	charge_max = 1000*120
-	charge_current = 1000*120
 	charge_cost = 1000
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
@@ -178,8 +168,6 @@
 
 	automatic = FALSE
 
-	charge_max = 3000*9
-	charge_current = 3000*9
 	charge_cost = 3000
 
 	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')

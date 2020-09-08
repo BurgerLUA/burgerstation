@@ -252,61 +252,67 @@ var/global/list/stored_mechs_by_ckey = list()
 			var/list/valid_weapons = list()
 
 			if(left_hand)
-				valid_weapons["left_hand"] = left_hand
+				valid_weapons[left_hand.name] = "left_hand"
 			if(right_hand)
-				valid_weapons["right_hand"] = right_hand
+				valid_weapons[right_hand.name] = "right_hand"
 			if(left_shoulder)
-				valid_weapons["left_shoulder"] = left_shoulder
+				valid_weapons[left_shoulder.name] = "left_shoulder"
 			if(right_shoulder)
-				valid_weapons["right_shoulder"] = right_shoulder
+				valid_weapons[right_shoulder.name] = "right_shoulder"
 			if(head)
-				valid_weapons["head"] = head
+				valid_weapons[head.name] = "head"
 			if(back)
-				valid_weapons["back"] = back
+				valid_weapons[back.name] = "back"
 			if(chest)
-				valid_weapons["back"] = chest
+				valid_weapons[chest.name] = "chest"
 
 			if(length(valid_weapons))
 				valid_weapons["Cancel"] = "Cancel"
 				var/desired_remove = input("What would you like to remove?","Weapon Removal","Cancel") as null|anything in valid_weapons
+
+				desired_remove = valid_weapons[desired_remove]
+
+				if(!caller)
+					return TRUE
+
 				switch(desired_remove)
 					if("left_hand")
-						left_hand.drop_item(get_turf(src))
-						if(caller) left_hand.force_move(get_turf(caller))
+						left_hand.drop_item(get_turf(caller))
+						left_hand.update_sprite()
 						left_hand = null
 						update_sprite()
 					if("right_hand")
-						right_hand.drop_item(get_turf(src))
-						if(caller) right_hand.force_move(get_turf(caller))
+						right_hand.drop_item(get_turf(caller))
+						right_hand.update_sprite()
 						right_hand = null
 						update_sprite()
 					if("left_shoulder")
-						left_shoulder.drop_item(get_turf(src))
-						if(caller) left_shoulder.force_move(get_turf(caller))
+						left_shoulder.force_move(get_turf(caller))
+						left_shoulder.update_sprite()
 						left_shoulder = null
 						update_sprite()
 					if("right_shoulder")
-						right_shoulder.drop_item(get_turf(src))
-						if(caller) right_shoulder.force_move(get_turf(caller))
+						right_shoulder.force_move(get_turf(caller))
+						right_shoulder.update_sprite()
 						right_shoulder = null
 						update_sprite()
 					if("back")
-						back.drop_item(get_turf(src))
-						if(caller) back.force_move(get_turf(caller))
+						back.force_move(get_turf(caller))
+						back.update_sprite()
 						back = null
 						update_sprite()
 					if("head")
-						head.drop_item(get_turf(src))
-						if(caller) head.force_move(get_turf(caller))
+						head.force_move(get_turf(caller))
+						head.update_sprite()
 						head = null
 						update_sprite()
 					if("chest")
-						chest.drop_item(get_turf(src))
-						if(caller) chest.force_move(get_turf(caller))
+						chest.drop_item(get_turf(caller))
+						chest.update_sprite()
 						chest = null
 						update_sprite()
 					if("Cancel")
-						caller?.to_chat(span("notice","You decide not to remove anything."))
+						caller.to_chat(span("notice","You decide not to remove anything."))
 
 			else if(mech_head)
 				caller?.to_chat(span("notice","You remove \the [mech_head.name] from \the [src.name]."))

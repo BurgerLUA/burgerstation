@@ -1,6 +1,6 @@
 /obj/item/powercell/
-	name = "basic power cell"
-	desc = "Please do not lick."
+	name = "standard power cell"
+	desc = "Do not ingest."
 	desc_extended = "A power cell for use in recharging energy weaponry. This one has a rating of 10000 megawatts."
 	icon = 'icons/obj/item/cells.dmi'
 	icon_state = "cell_basic"
@@ -17,7 +17,7 @@
 
 	. = ..()
 	. += CEILING(charge_current*0.01,1)
-	. += CEILING(charge_max*0.005,1)
+	. += CEILING(charge_max*0.003,1)
 	return .
 
 /obj/item/powercell/save_item_data(var/save_inventory = TRUE)
@@ -42,43 +42,13 @@
 	icon_state = initial(icon_state)
 
 	var/icon/I = new/icon(icon,icon_state)
-	var/charge_number = FLOOR((charge_current/charge_max) * 7, 1)
+	var/charge_number = FLOOR(min(charge_current/charge_max,1) * 7, 1)
 	var/desired_icon = "charge_[charge_number]"
 	var/icon/I2 = new/icon(icon,desired_icon)
 
 	I.Blend(I2,ICON_OVERLAY)
 
 	icon = I
-
-	return ..()
-
-/obj/item/powercell/click_on_object(var/mob/caller,var/atom/object,location,control,params)
-
-	object = object.defer_click_on_object(location,control,params)
-
-	if(get_dist(caller,object) > 1)
-		return FALSE
-
-	if(is_laser_gun(object) && is_living(caller))
-		var/obj/item/weapon/ranged/energy/L = object
-		var/mob/living/L2 = caller
-		var/amount_to_restore = min(charge_current,L.charge_max - L.charge_current)
-
-		if(L.charge_max == L.charge_current)
-			L2.to_chat(span("notice","\The [L.name] is already at full capacity!"))
-			return TRUE
-
-		if(charge_current <= 0)
-			L2.to_chat(span("notice","\The [src.name] has no charge left!"))
-			return TRUE
-
-		L.charge_current += amount_to_restore
-		charge_current -= amount_to_restore
-		update_sprite()
-		L.update_sprite()
-		L2.to_chat(span("notice","You recharge \the [object.name] with \the [src.name] [L.charge_current] / [L.charge_max]."))
-
-		return TRUE
 
 	return ..()
 

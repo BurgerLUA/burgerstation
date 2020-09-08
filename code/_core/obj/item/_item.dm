@@ -589,3 +589,6 @@
 
 /obj/item/proc/can_parry()
 	return TRUE
+
+/obj/item/proc/get_battery()
+	return null

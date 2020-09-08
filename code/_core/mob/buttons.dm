@@ -52,3 +52,32 @@
 	show_buttons(show,show_flags_whitelist,show_flags_blacklist,speed)
 	show_health(show,show_flags_whitelist,show_flags_blacklist,speed)
 
+/mob/proc/display_turf_contents(var/turf/T)
+
+	for(var/obj/hud/button/floor_object/B in buttons) //Clear existing.
+		B.update_owner(null)
+
+	var/list/valid_contents = list()
+	for(var/k in T.contents)
+		var/atom/movable/M = k
+		if(M.invisibility > src.see_invisible)
+			continue
+		if(M.mouse_opacity <= 0)
+			continue
+		valid_contents += k
+
+	var/i=0
+	var/content_length = length(valid_contents)
+	for(var/k in valid_contents)
+		var/atom/movable/M = k
+		var/obj/hud/button/floor_object/B = new(src)
+		var/x_pos = sin( (i/content_length)*360 ) * content_length*0.3
+		var/y_pos = cos( (i/content_length)*360 ) * content_length*0.3
+		world.log << "X: [x_pos], Y: [y_pos]."
+		B.screen_loc = "CENTER+[x_pos],CENTER+[y_pos]"
+		B.associated_object = M
+		B.associated_loc = T
+		B.update_owner(src)
+		i++
+
+	return TRUE

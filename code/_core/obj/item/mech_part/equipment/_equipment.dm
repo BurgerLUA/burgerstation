@@ -14,12 +14,18 @@
 
 	health = null
 
+
 /obj/item/mech_part/equipment/weapon
 	name = "mech weapon"
 	var/obj/item/weapon/stored_weapon
 
 	pixel_x = 0
 	pixel_y = 0
+
+/obj/item/mech_part/equipment/weapon/get_battery()
+	if(stored_weapon)
+		return stored_weapon.get_battery()
+	return ..()
 
 /obj/item/mech_part/equipment/weapon/save_item_data(var/save_inventory = TRUE)
 	. = ..()

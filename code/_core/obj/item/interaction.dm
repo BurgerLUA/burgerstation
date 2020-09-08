@@ -103,8 +103,17 @@
 	return ..()
 
 /obj/item/proc/can_be_dragged(var/mob/caller)
-
 	if(additional_clothing_parent)
 		return FALSE
-
 	return TRUE
+
+/obj/item/proc/drop_item(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0) //Should be used in place of forcemove when possible.
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		if(!new_location)
+			new_location = get_turf(I.owner)
+		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset))
+			return TRUE
+	force_move(new_location)
+	return FALSE
+

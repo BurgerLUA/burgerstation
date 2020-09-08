@@ -17,9 +17,7 @@
 	override_icon_state = TRUE
 	override_icon_state_held = FALSE //TODO: FIX THIS
 
-	charge_max = CELL_SIZE_ADVANCED
-	charge_current = CELL_SIZE_ADVANCED
-	charge_cost = CELL_SIZE_ADVANCED / 40
+	charge_cost = CELL_SIZE_BASIC / 60
 
 	view_punch = 16
 
@@ -82,7 +80,9 @@
 
 /obj/item/weapon/ranged/energy/rifle/update_overlays()
 
-	var/true_charge = FLOOR(charge_current/charge_cost, 1) / FLOOR(charge_max/charge_cost, 1)
+	var/obj/item/powercell/PC = get_battery()
+
+	var/true_charge = istype(PC) ? FLOOR(PC.charge_current/charge_cost, 1) / FLOOR(PC.charge_max/charge_cost, 1) : 0
 
 	var/image/I = new/image(initial(icon),"ammo_[CEILING(true_charge * 8, 1)]")
 	I.color = polymorphs["barrel"]
@@ -102,7 +102,7 @@
 	projectile_speed = 26
 	shoot_delay = 6
 
-	charge_cost = 2000
+	charge_cost = CELL_SIZE_BASIC / 50
 
 	view_punch = 20
 
@@ -121,7 +121,7 @@
 	projectile_speed = 20
 	shoot_delay = 4
 
-	charge_cost = 2000
+	charge_cost = CELL_SIZE_BASIC / 50
 
 	view_punch = 24
 
@@ -141,10 +141,7 @@
 		"barrel" = COLOR_PURPLE
 	)
 
-	charge_max = 3000*3
-	charge_current = 3000*3
 	charge_cost = 3000
-	recharge_rate = 300
 
 	value = 4000
 

@@ -142,7 +142,7 @@
 
 	possible_extra_weapon = list(
 		/obj/item/weapon/melee/sword/sabre = 5,
-		/obj/item/weapon/ranged/energy/recharging/captain = 1
+		/obj/item/weapon/ranged/energy/captain = 1
 	)
 
 	extra_weapon_chance = 100

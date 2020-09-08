@@ -271,6 +271,7 @@ var/global/list/all_clients = list() //Assoc list
 	var/click_flags = get_click_flags(aug,TRUE)
 
 	if(examine_mode)
+		if(mob) mob.display_turf_contents(get_turf(object))
 		examine(object)
 		return ..()
 

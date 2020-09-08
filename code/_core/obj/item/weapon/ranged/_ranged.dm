@@ -168,7 +168,7 @@
 
 	. = ..()
 
-	return . && (heat_current > 0 || istype(src,/obj/item/weapon/ranged/energy/recharging)) //Shitcode ahoy.
+	return . && heat_current > 0
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
