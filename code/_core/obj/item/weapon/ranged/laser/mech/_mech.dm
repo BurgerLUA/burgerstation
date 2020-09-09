@@ -20,6 +20,15 @@
 
 	size = SIZE_6
 
+/obj/item/weapon/ranged/energy/mech/get_battery()
+
+	if(istype(loc,/obj/item/mech_part))
+		var/obj/item/mech_part/MP = loc
+		if(istype(MP.loc,/mob/living/vehicle/mech/modular))
+			var/mob/living/vehicle/mech/modular/MM = MP.loc
+			return MM.battery
+
+	return ..()
 
 /obj/item/weapon/ranged/energy/mech/smg
 	name = "9x19mm SMG"
@@ -29,7 +38,7 @@
 
 	shoot_delay = 1.5
 
-	charge_cost = 250
+	charge_cost = CELL_SIZE_VEHICLE / 600
 
 	projectile = /obj/projectile/bullet/firearm/pistol
 	ranged_damage_type = /damagetype/ranged/bullet/pistol_9mm
@@ -38,13 +47,12 @@
 
 	shoot_sounds = list('sound/weapons/40/shoot_smg.ogg')
 
-	value = 500
-
-/obj/item/weapon/ranged/energy/mech/smg/
 	bullet_color = COLOR_BULLET
 
 	heat_per_shot = 0.01
 	heat_max = 0.03
+
+	value = 500
 
 /obj/item/weapon/ranged/energy/mech/smg/get_static_spread() //Base spread
 	return 0.005
@@ -62,7 +70,7 @@
 
 	shoot_delay = 2
 
-	charge_cost = 500
+	charge_cost = CELL_SIZE_VEHICLE / 500
 
 	projectile = /obj/projectile/bullet/firearm/rifle
 	ranged_damage_type = /damagetype/ranged/bullet/rifle_223
@@ -96,9 +104,9 @@
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 4
 
-	automatic = FALSE
+	automatic = TRUE
 
-	charge_cost = 1000
+	charge_cost = CELL_SIZE_VEHICLE / 600
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
@@ -106,7 +114,7 @@
 
 	value = 1400
 
-	bullet_color = COLOR_RED
+	bullet_color = "#FF0000"
 
 	heat_per_shot = 0.004
 	heat_max = 0.03
@@ -133,7 +141,7 @@
 
 	automatic = FALSE
 
-	charge_cost = 1000
+	charge_cost = CELL_SIZE_VEHICLE / 200
 
 	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
 
@@ -168,7 +176,7 @@
 
 	automatic = FALSE
 
-	charge_cost = 3000
+	charge_cost = CELL_SIZE_VEHICLE / 100
 
 	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
 

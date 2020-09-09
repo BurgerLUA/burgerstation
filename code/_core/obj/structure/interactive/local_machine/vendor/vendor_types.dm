@@ -268,7 +268,8 @@
 
 		/obj/item/weapon/melee/tool/wrench,
 		/obj/item/weapon/melee/tool/screwdriver,
-		/obj/item/weapon/melee/tool/multitool
+		/obj/item/weapon/melee/tool/multitool,
+		/obj/item/powercell/vehicle
 	)
 
 /obj/structure/interactive/vending/chaplain/wardrobe

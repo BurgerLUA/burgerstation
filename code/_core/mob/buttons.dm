@@ -54,6 +54,9 @@
 
 /mob/proc/display_turf_contents(var/turf/T)
 
+	if(!T)
+		return FALSE
+
 	for(var/obj/hud/button/floor_object/B in buttons) //Clear existing.
 		B.update_owner(null)
 
@@ -73,7 +76,6 @@
 		var/obj/hud/button/floor_object/B = new(src)
 		var/x_pos = sin( (i/content_length)*360 ) * content_length*0.3
 		var/y_pos = cos( (i/content_length)*360 ) * content_length*0.3
-		world.log << "X: [x_pos], Y: [y_pos]."
 		B.screen_loc = "CENTER+[x_pos],CENTER+[y_pos]"
 		B.associated_object = M
 		B.associated_loc = T

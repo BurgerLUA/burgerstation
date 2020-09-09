@@ -8,8 +8,6 @@
 
 	var/final_move_dir = move_dir
 
-
-
 	if(!final_move_dir)
 		if(deceleration)
 			acceleration_value = round(max(acceleration_value - deceleration*adjust_delay,0),0.01)
@@ -30,7 +28,6 @@
 
 		if(acceleration_mod > 0)
 			final_movement_delay *= 1 / (acceleration_mod + ((acceleration_value/100)*(1-acceleration_mod)))
-
 
 		if(isturf(loc))
 			var/turf/T = loc
@@ -69,7 +66,7 @@
 			move_dir_last = final_move_dir
 		else
 			move_dir_last = 0x0
-			move_delay = max(move_delay,DECISECONDS_TO_TICKS(10))
+			move_delay = max(move_delay,DECISECONDS_TO_TICKS(2))
 
 		if(acceleration_mod)
 			if(similiar_move_dir)

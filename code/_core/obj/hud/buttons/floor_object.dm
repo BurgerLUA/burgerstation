@@ -12,12 +12,13 @@
 
 
 /obj/hud/button/floor_object/Destroy()
-	HOOK_REMOVE("post_move","floor_object_post_move_\ref[src]",associated_object)
-	associated_object = null
+	if(associated_object)
+		HOOK_REMOVE("post_move","floor_object_post_move_\ref[src]",associated_object)
+		associated_object = null
 	return ..()
 
 /obj/hud/button/floor_object/proc/assoc_object_post_move()
-	if(associated_loc != associated_object.loc)
+	if(associated_object && associated_loc != associated_object.loc)
 		HOOK_REMOVE("post_move","floor_object_post_move_\ref[src]",associated_object)
 		associated_object = null
 		update_sprite()

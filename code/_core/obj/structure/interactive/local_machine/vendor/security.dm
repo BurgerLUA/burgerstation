@@ -68,7 +68,8 @@
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,
-		/obj/item/powercell/advanced
+		/obj/item/powercell/advanced,
+		/obj/item/cell_charger
 	)
 
 /obj/structure/interactive/vending/security/gundrobe/engineering

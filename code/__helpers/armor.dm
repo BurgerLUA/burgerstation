@@ -2,7 +2,7 @@
 
 /proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
 	if(damage_dealt < 0)
-		CRASH_SAFE("[damage_dealt] was negative!")
+		CRASH_SAFE("Damage [damage_dealt] was negative!")
 		return 0
 	if(!damage_dealt || !armor_rating)
 		return damage_dealt

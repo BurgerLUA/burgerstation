@@ -11,7 +11,7 @@
 
 	. = ..()
 
-	if(istype(battery)) . += battery.calculate_value()
+	if(battery) . += battery.calculate_value()
 
 	return .
 
@@ -26,11 +26,18 @@
 	LOADATOM("battery")
 	return .
 
+/obj/item/weapon/ranged/energy/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+
+	if(ispath(battery))
+		battery = null
+
+	return .
+
 
 /obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
-
 
 	if(istype(object,/obj/item/))
 
@@ -39,20 +46,30 @@
 		if(I.flags_tool & FLAG_TOOL_CROWBAR)
 			if(battery)
 				battery.drop_item(get_turf(src))
+				battery.update_sprite()
 				caller.to_chat(span("notice","You pry out \the [battery.name]."))
 				battery = null
+				update_sprite()
 			else
 				caller.to_chat(span("notice","There is nothing to pry out of \the [src.name]!"))
 			return TRUE
 
 		if(istype(object,/obj/item/powercell/))
 			var/obj/item/powercell/P = object
-			if(battery)
-				caller.to_chat(span("warning","You already have a [battery.name] installed in \the [src.name]!"))
+			if(P.size > SIZE_2) //Only fits size 2.
+				caller.to_chat(span("warning","\The [P.name] is too large to be put into \the [src.name]!"))
 				return TRUE
+			if(battery)
+				caller.to_chat(span("notice","You swap out \the [battery.name] for \the [P.name] in \the [src.name]."))
+				battery.drop_item(get_turf(caller))
+				battery.update_sprite()
+				battery = null
+			else
+				caller.to_chat(span("notice","You insert \the [P.name] into \the [src.name]."))
+
 			battery = P
 			P.drop_item(src)
-			caller.to_chat(span("notice","You insert \the [P.name] into \the [src.name]."))
+
 			update_sprite()
 
 			return TRUE

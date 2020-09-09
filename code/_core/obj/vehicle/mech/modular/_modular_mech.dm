@@ -45,6 +45,8 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	var/obj/item/mech_part/equipment/head
 
+	var/obj/item/powercell/battery
+
 
 	var/owner_ckey //The owner of this mech.
 	var/mech_id //The unique ID of the mech.
@@ -78,6 +80,10 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
+
+/mob/living/vehicle/mech/modular/proc/get_battery()
+	return battery
+
 /mob/living/vehicle/mech/modular/enter_vehicle(atom/movable/Obj,atom/OldLoc)
 
 	if(is_living(Obj))
@@ -100,6 +106,11 @@ var/global/list/stored_mechs_by_ckey = list()
 
 	if(right_hand) . += span("notice","It has \the [right_hand.name] equipped in the right hand.")
 	if(left_hand) . += span("notice","It has \the [left_hand.name] equipped in the left hand.")
+
+	if(right_shoulder) . += span("notice","It has \the [right_shoulder.name] equipped in the right shoulder.")
+	if(left_shoulder) . += span("notice","It has \the [left_shoulder.name] equipped in the left shoulder.")
+
+	if(battery) . += span("notice","It has \the [battery.name] inserted in the chassis. It has a charge rating of ([battery.charge_current]/[battery.charge_max]).")
 
 	return .
 
@@ -166,6 +177,8 @@ var/global/list/stored_mechs_by_ckey = list()
 	SAVEATOM("head")
 	SAVEATOM("chest")
 
+	SAVEATOM("battery")
+
 
 	return .
 
@@ -182,14 +195,41 @@ var/global/list/stored_mechs_by_ckey = list()
 	LOADATOM("mech_head")
 
 	LOADATOM("right_hand")
+	if(right_hand)
+		right_hand.current_slot = "right hand"
+		right_hand.update_sprite()
+
 	LOADATOM("left_hand")
+	if(left_hand)
+		left_hand.current_slot = "left hand"
+		left_hand.update_sprite()
 
 	LOADATOM("right_shoulder")
+	if(right_shoulder)
+		right_shoulder.current_slot = "right shoulder"
+		right_shoulder.update_sprite()
+
 	LOADATOM("left_shoulder")
+	if(left_shoulder)
+		left_shoulder.current_slot = "left shoulder"
+		left_shoulder.update_sprite()
 
 	LOADATOM("back")
+	if(back)
+		back.current_slot = "back"
+		back.update_sprite()
+
 	LOADATOM("head")
+	if(head)
+		head.current_slot = "head"
+		head.update_sprite()
+
 	LOADATOM("chest")
+	if(chest)
+		chest.current_slot = "chest"
+		chest.update_sprite()
+
+	LOADATOM("battery")
 
 	update_sprite()
 
@@ -228,7 +268,7 @@ var/global/list/stored_mechs_by_ckey = list()
 		else if(right_hand)
 			return right_hand.click_on_object(caller,object,location,control,params)
 
-	src.attack(caller,object,params)
+	//src.attack(caller,object,params)
 
 	return TRUE
 
@@ -265,6 +305,9 @@ var/global/list/stored_mechs_by_ckey = list()
 				valid_weapons[back.name] = "back"
 			if(chest)
 				valid_weapons[chest.name] = "chest"
+			if(battery)
+				valid_weapons[battery.name] = "battery"
+
 
 			if(length(valid_weapons))
 				valid_weapons["Cancel"] = "Cancel"
@@ -275,7 +318,7 @@ var/global/list/stored_mechs_by_ckey = list()
 				if(!caller)
 					return TRUE
 
-				switch(desired_remove)
+				switch(desired_remove) //TODO: Use vars[] for this.
 					if("left_hand")
 						left_hand.drop_item(get_turf(caller))
 						left_hand.update_sprite()
@@ -311,6 +354,11 @@ var/global/list/stored_mechs_by_ckey = list()
 						chest.update_sprite()
 						chest = null
 						update_sprite()
+					if("battery")
+						battery.drop_item(get_turf(caller))
+						battery.update_sprite()
+						battery = null
+						update_sprite()
 					if("Cancel")
 						caller.to_chat(span("notice","You decide not to remove anything."))
 
@@ -341,6 +389,20 @@ var/global/list/stored_mechs_by_ckey = list()
 			else
 				caller?.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))
 
+			return TRUE
+
+		if(istype(A,/obj/item/powercell/))
+			INTERACT_CHECK
+			var/obj/item/powercell/PC = A
+			if(battery)
+				caller.to_chat(span("notice","You replace the [battery.name] in \the [src.name] with \the [PC.name]."))
+				battery.update_sprite()
+				battery.drop_item(get_turf(caller))
+				battery = null
+			else
+				caller.to_chat(span("notice","You add \the [PC.name] to \the [src.name]."))
+			PC.drop_item(src)
+			battery = PC
 			return TRUE
 
 		if(istype(A,/obj/item/mech_part/))

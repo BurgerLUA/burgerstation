@@ -1,5 +1,4 @@
-var/list/possible_boss_targets
-
+var/list/tracked_bosses = list()
 
 /objective/kill_boss
 	name = "Kill Boss"
@@ -8,9 +7,6 @@ var/list/possible_boss_targets
 
 /objective/kill_boss/setup()
 
-	if(!possible_boss_targets)
-		possible_boss_targets = SSbosses.living_bosses.Copy()
-
 	if(!has_valid_targets())
 		log_error("Objective [src.type] has no valid targets.")
 		return FALSE
@@ -18,13 +14,7 @@ var/list/possible_boss_targets
 	return ..()
 
 /objective/kill_boss/proc/get_valid_targets()
-	. = list()
-	for(var/k in possible_boss_targets)
-		var/mob/living/L = k
-		if(L.dead)
-			continue
-		. += L
-	return .
+	return SSbosses.living_bosses - tracked_bosses
 
 /objective/kill_boss/proc/has_valid_targets()
 	return length(get_valid_targets()) ? TRUE : FALSE
@@ -43,7 +33,7 @@ var/list/possible_boss_targets
 
 /objective/kill_boss/start()
 	var/mob/living/L = get_random_target()
-	possible_boss_targets -= L
+	tracked_bosses += L //Global list
 	tracked_atoms += L
 	HOOK_ADD("post_death","kill_boss_post_death",L,src,.proc/kill_boss_post_death)
 	update()

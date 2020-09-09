@@ -10,8 +10,10 @@
 
 	size = SIZE_1
 
-
 	value = 10
+
+/obj/item/powercell/get_battery()
+	return src
 
 /obj/item/powercell/calculate_value()
 
@@ -59,7 +61,7 @@
 	icon_state = "cell_advanced"
 	charge_max = CELL_SIZE_ADVANCED
 
-	size = SIZE_2
+	size = SIZE_1
 
 
 	value = 15
@@ -71,7 +73,31 @@
 	icon_state = "cell_industrial"
 	charge_max = CELL_SIZE_INDUSTRIAL
 
-	size = SIZE_3
+	size = SIZE_2
 
 
 	value = 25
+
+
+/obj/item/powercell/bluespace
+	name = "bluespace power cell"
+	desc = "It's bluespace, I ain't gotta explain shit."
+	desc_extended = "A highly advanced bluespace power cell fitted with a minuture bag of holding packed with an absurd amount of diodes."
+	icon_state = "cell_bluespace"
+	charge_max = CELL_SIZE_BLUESPACE
+
+	size = SIZE_2
+
+	value = 1000
+
+
+/obj/item/powercell/vehicle
+	name = "mech-grade power cell"
+	desc = "Do not swallow."
+	desc_extended = "A massive mech-grade battery used commonly to power mechs and mech weapons as well as the systems inside the mech."
+	icon_state = "cell_vehicle"
+	charge_max = CELL_SIZE_VEHICLE
+
+	size = SIZE_4
+
+	value = 30

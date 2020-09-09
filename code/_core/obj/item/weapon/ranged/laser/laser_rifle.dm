@@ -12,7 +12,7 @@
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 4
 
-	automatic = FALSE
+	automatic = TRUE
 
 	override_icon_state = TRUE
 	override_icon_state_held = FALSE //TODO: FIX THIS

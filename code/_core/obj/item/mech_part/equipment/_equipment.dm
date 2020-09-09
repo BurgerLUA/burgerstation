@@ -35,6 +35,7 @@
 /obj/item/mech_part/equipment/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_weapon")
+	if(stored_weapon) stored_weapon.update_sprite()
 	update_sprite()
 	return .
 
