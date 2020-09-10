@@ -27,9 +27,15 @@
 
 /obj/hud/button/floor_object/update_owner()
 
+	var/mob/previous_owner = owner
+
 	. = ..()
 
+	if(previous_owner && previous_owner != owner)
+		previous_owner.examine_butons -= src
+
 	if(. && owner)
+		owner.examine_butons += src
 		if(!associated_object)
 			log_error("Warning: [get_debug_name()] didn't have an associated object on initialization!")
 			return FALSE

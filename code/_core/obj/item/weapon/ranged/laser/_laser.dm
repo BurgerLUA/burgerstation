@@ -27,9 +27,10 @@
 	return .
 
 /obj/item/weapon/ranged/energy/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+
 	. = ..()
 
-	if(ispath(battery))
+	if(!istype(battery))
 		battery = null
 
 	return .

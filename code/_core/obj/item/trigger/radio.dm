@@ -42,6 +42,9 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	return TRUE
 
 /obj/item/device/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+
 	if(!is_inventory(object))
 		return ..()
 	receiving = !receiving
@@ -49,6 +52,8 @@ var/global/list/obj/item/device/radio/all_radios = list()
 	return TRUE
 
 /obj/item/device/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+
+	INTERACT_CHECK
 
 	var/fixed_delta = delta_y > 0 ? 1 : -1
 

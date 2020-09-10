@@ -1,6 +1,8 @@
 /obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
+		if(delete_on_drop)
+			return TRUE
 		quick_equip(caller,ignore_held=TRUE)
 		return TRUE
 

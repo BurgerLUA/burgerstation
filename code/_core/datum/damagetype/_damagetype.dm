@@ -184,7 +184,7 @@
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*hit_object.health.damage_multiplier*damage_multiplier
+	var/bonus_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health && hit_object.health.damage_multiplier ? hit_object.health.damage_multiplier : 1)*damage_multiplier
 
 	if(debug) LOG_DEBUG("Getting final damage by [bonus_damage_multiplier] from bonuses.")
 
@@ -238,6 +238,30 @@
 	return SSdamagetype.add_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier,src)
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
+
+	if(!attacker)
+		CRASH_SAFE("Could not process damage as there was no attacker!")
+		return FALSE
+
+	if(!victim)
+		CRASH_SAFE("Could not process damage as there was no victim!")
+		return FALSE
+
+	if(!weapon)
+		CRASH_SAFE("Could not process damage as there was no weapon!")
+		return FALSE
+
+	if(!hit_object)
+		CRASH_SAFE("Could not process damage as there was no hit_object!")
+		return FALSE
+
+	if(!hit_object.health)
+		CRASH_SAFE("Could not process damage as there was no hit_object health!")
+		return FALSE
+
+	if(!victim.health)
+		CRASH_SAFE("Could not process damage as there was no victim health!")
+		return FALSE
 
 	if(is_living(victim))
 		var/mob/living/L = victim

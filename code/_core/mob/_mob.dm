@@ -11,6 +11,7 @@
 
 	var/list/obj/hud/button/buttons //List of HUD buttons
 	var/list/obj/hud/button/health_elements //List of health elements. This is an assoc list!
+	var/list/obj/hud/button/examine_butons //List of examine buttons.
 
 	//var/animation_pixel_x = 0
 	//var/animation_pixel_y = 0
@@ -206,6 +207,7 @@
 	parallax = list()
 	buttons = list()
 	health_elements = list()
+	examine_butons = list()
 
 	if(C)
 		C.control_mob(src,FALSE)

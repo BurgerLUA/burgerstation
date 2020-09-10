@@ -52,13 +52,25 @@
 	show_buttons(show,show_flags_whitelist,show_flags_blacklist,speed)
 	show_health(show,show_flags_whitelist,show_flags_blacklist,speed)
 
+
+/mob/proc/close_turf_contents()
+	for(var/k in examine_butons) //Clear existing.
+		var/obj/hud/button/B = k
+		B.update_owner(null)
+	return TRUE
+
 /mob/proc/display_turf_contents(var/turf/T)
+
+	close_turf_contents()
+
+	if(!(attack_flags & ATTACK_ALT))
+		return FALSE
+
+	if(get_dist(T,src) > 1 )
+		return FALSE
 
 	if(!T)
 		return FALSE
-
-	for(var/obj/hud/button/floor_object/B in buttons) //Clear existing.
-		B.update_owner(null)
 
 	var/list/valid_contents = list()
 	for(var/k in T.contents)

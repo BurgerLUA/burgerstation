@@ -12,9 +12,12 @@ SUBSYSTEM_DEF(damagetype)
 /subsystem/damagetype/on_life()
 
 	for(var/d_id in damage_to_process)
-		var/list/damage_list = damage_to_process[d_id]
-		var/damagetype/DT = damage_list["damage_type"]
-		DT.process_damage(damage_list["attacker"],damage_list["victim"],damage_list["weapon"],damage_list["hit_object"],damage_list["blamed"],damage_list["damage_multiplier"])
+		try
+			var/list/damage_list = damage_to_process[d_id]
+			var/damagetype/DT = damage_list["damage_type"]
+			DT.process_damage(damage_list["attacker"],damage_list["victim"],damage_list["weapon"],damage_list["hit_object"],damage_list["blamed"],damage_list["damage_multiplier"])
+		catch(var/exception/e)
+			log_error("Damage Subsystem Error: [e] on [e.file]:[e.line]!")
 		damage_to_process -= d_id
 
 	return ..()
