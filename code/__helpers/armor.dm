@@ -1,4 +1,4 @@
-//https://www.desmos.com/calculator/ns37turjfy
+//https://www.desmos.com/calculator/uyznrero9w
 
 /proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
 	if(damage_dealt < 0)
