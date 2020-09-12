@@ -18,15 +18,15 @@
 
 #define PLANE_SHUTTLE -11
 
-#define PLANE_BLOOD -10
+#define PLANE_WALL -10
 
-#define PLANE_OBJ -9
+#define PLANE_WALL_ATTACHMENTS -9
 
-#define PLANE_BULLET_CASINGS -8
+#define PLANE_BLOOD -8
 
-#define PLANE_WALL -7
+#define PLANE_OBJ -7
 
-#define PLANE_WALL_ATTACHMENTS -6
+#define PLANE_BULLET_CASINGS -6
 
 #define PLANE_MOB -5
 

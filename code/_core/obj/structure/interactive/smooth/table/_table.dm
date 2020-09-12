@@ -1,4 +1,4 @@
-obj/structure/smooth/table
+/obj/structure/smooth/table
 	name = "table"
 	desc = "A table for placing objects down or taking them."
 	desc_extended = "To place items on a table, press Q + Left/Right click depending on if the item is in your left or right hand. Climbing over tables is automatic; Walk into a table for long enough to climb over it."
@@ -15,7 +15,33 @@ obj/structure/smooth/table
 
 	bullet_block_chance = 50
 
-obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
+	initialize_type = INITIALIZE_LATE
+
+	var/table_height = 8
+
+/obj/structure/smooth/table/PostInitialize()
+
+	var/turf/T = get_turf(src)
+
+	var/list/valid_items = list()
+
+	for(var/obj/item/I in T.contents)
+		valid_items += I
+
+	var/items_length = length(valid_items)
+	var/i=1
+
+	for(var/k in valid_items)
+		var/obj/item/I = k
+		I.pixel_x = -16 + (32*(i/items_length))
+		I.pixel_y = i % 2 ? 10 : 6
+		i++
+
+
+	return ..()
+
+
+/obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 
 	if((is_item(object) || is_structure(object)) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
 		var/obj/O = object
@@ -29,6 +55,8 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 
 
 /obj/structure/smooth/table/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+
+
 
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
@@ -53,6 +81,8 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 		if(!T)
 			animate(L,pixel_z = initial(L.pixel_z) + 10,time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
 			L.move_delay += DECISECONDS_TO_TICKS(10)
+	else
+		O.pixel_y += table_height
 
 	return ..()
 
@@ -65,6 +95,8 @@ obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
 		if(!T)
 			animate(L,pixel_z = initial(L.pixel_z),time = TICKS_TO_DECISECONDS(L.move_delay), easing = CIRCULAR_EASING | EASE_OUT)
 			L.move_delay += DECISECONDS_TO_TICKS(5)
+	else
+		O.pixel_y -= table_height
 
 	return ..()
 

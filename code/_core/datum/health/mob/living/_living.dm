@@ -2,6 +2,35 @@
 	var/has_bloodloss = TRUE
 
 
+/health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object)
+
+	. = ..()
+
+	var/mob/living/advanced/A = owner
+
+	if(A.intoxication >= 300)
+		var/list/bonus_armor = list(
+			BLADE = A.intoxication*0.025,
+			BLUNT = A.intoxication*0.025,
+			PIERCE = A.intoxication*0.025,
+			ARCANE = -A.intoxication*0.025,
+			HEAT = A.intoxication*0.025,
+			COLD = A.intoxication*0.025,
+			BOMB = A.intoxication*0.025,
+		)
+
+		for(var/damage_type in bonus_armor)
+			if(.[damage_type])
+				if(IS_INFINITY(.[damage_type]))
+					continue
+				.[damage_type] += bonus_armor[damage_type]
+			else
+				.[damage_type] = bonus_armor[damage_type]
+
+	return .
+
+
+
 /health/mob/living/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
 	. = ..()

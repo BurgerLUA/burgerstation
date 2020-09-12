@@ -415,6 +415,41 @@
 		/obj/item/container/beaker/bottle/large/water
 	)
 
+
+/obj/structure/interactive/vending/smart_fridge/bar
+	name = "bar smart fridge"
+	icon_state = "boozeomat"
+	stored_types = list(
+		/obj/item/container/beaker/glass,
+		/obj/item/container/beaker/shot,
+		/obj/item/container/beaker/alcohol/absinthe,
+		/obj/item/container/beaker/alcohol/ale,
+		/obj/item/container/beaker/alcohol/beer,
+		/obj/item/container/beaker/alcohol/brandy,
+		/obj/item/container/beaker/alcohol/cider,
+		/obj/item/container/beaker/alcohol/coffee_liqueur,
+		/obj/item/container/beaker/alcohol/fernet,
+		/obj/item/container/beaker/alcohol/gin,
+		/obj/item/container/beaker/alcohol/grappa,
+		/obj/item/container/beaker/alcohol/hearty_punch,
+		/obj/item/container/beaker/alcohol/nothing,
+		/obj/item/container/beaker/alcohol/rum,
+		/obj/item/container/beaker/alcohol/tequila,
+		/obj/item/container/beaker/alcohol/vodka,
+		/obj/item/container/beaker/alcohol/whiskey,
+		/obj/item/container/beaker/alcohol/wine,
+		/obj/item/container/beaker/alcohol/wine/vermouth,
+		/obj/item/container/beaker/can/cola,
+		/obj/item/container/beaker/can/dr_gibb,
+		/obj/item/container/beaker/can/grape_soda,
+		/obj/item/container/beaker/can/grey_bull,
+		/obj/item/container/beaker/can/iced_tea,
+		/obj/item/container/beaker/can/mountain_wind,
+		/obj/item/container/beaker/can/orange_soda,
+		/obj/item/container/beaker/can/space_up
+	)
+
+
 /obj/structure/interactive/vending/dinnerware
 	name = "dinnerware vendor"
 	icon_state = "dinnerware"

@@ -9,6 +9,7 @@
 	var/value = 0 //Value per unit.
 
 	var/color = "#FFFFFF" //Reagent's color.
+	var/alpha = 255 //Reagent's alpha
 
 	var/temperature_mod = 0.3 //Lower is more reactive. Higher is less reactive.
 

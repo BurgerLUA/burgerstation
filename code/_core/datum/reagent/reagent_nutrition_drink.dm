@@ -1,5 +1,5 @@
 /reagent/nutrition/water //Found through organic things
-	name = "Water"
+	name = "water"
 	desc = "What most lifeforms drink."
 	color = "#99D5FF"
 

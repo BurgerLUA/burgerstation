@@ -242,6 +242,36 @@ mob/living/proc/on_life_slow()
 
 	handle_hunger()
 
+	handle_intoxication()
+
+	return TRUE
+
+/mob/living/proc/handle_intoxication()
+
+	if(intoxication) intoxication = max(0,(intoxication*0.999) - 0.1)
+
+	switch(intoxication)
+		if(0 to 200)
+			if(last_intoxication_message != 0)
+				to_chat(span("notice","You feel sober."))
+				last_intoxication_message = 0
+		if(200 to 400)
+			if(last_intoxication_message != 1)
+				to_chat(span("notice","You feel buzzed."))
+				last_intoxication_message = 1
+		if(400 to 800)
+			if(last_intoxication_message != 2)
+				to_chat(span("warning","You feel drunk."))
+				last_intoxication_message = 2
+		if(800 to 1600)
+			if(last_intoxication_message != 3)
+				to_chat(span("danger","You feel shitfaced."))
+				last_intoxication_message = 3
+		if(1600 to INFINITY)
+			if(last_intoxication_message != 4)
+				to_chat(span("danger","You feel gjkpeagheutyhaophghe."))
+				last_intoxication_message = 4
+
 	return TRUE
 
 /mob/living/proc/handle_alpha()

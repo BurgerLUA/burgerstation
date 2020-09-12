@@ -127,6 +127,7 @@
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
 
+	var/consume_size = BITE_SIZE
 
 /obj/item/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	return TRUE
@@ -495,7 +496,7 @@
 
 /obj/item/proc/get_reagents_to_consume()
 	var/reagent_container/temp/T = new(src,1000)
-	reagents.transfer_reagents_to(T,BITE_SIZE)
+	reagents.transfer_reagents_to(T,consume_size)
 	return T.qdeleting ? null : T
 
 /obj/item/proc/feed(var/mob/caller,var/mob/living/target)

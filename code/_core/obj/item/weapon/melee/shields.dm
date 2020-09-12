@@ -32,7 +32,7 @@
 		BLADE = 75,
 		BLUNT = 25,
 		PIERCE = 25,
-		MAGIC = 200,
+		ARCANE = 200,
 		DARK = 100,
 		HOLY = 100
 	)

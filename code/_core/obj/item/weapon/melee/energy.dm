@@ -132,7 +132,7 @@
 		BLUNT = 25,
 		PIERCE = 50,
 		LASER = 100,
-		MAGIC = 100
+		ARCANE = 100
 	)
 
 /obj/item/weapon/melee/energy/shield/blue

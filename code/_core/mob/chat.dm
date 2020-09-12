@@ -16,11 +16,40 @@
 /mob/proc/mod_speech(var/text)
 	return text
 
+/mob/living/mod_speech(var/text)
+
+	if(intoxication >= 300)
+		var/list/exploded_words = splittext(text," ")
+		var/final_text = ""
+		for(var/word in exploded_words)
+			if(prob(intoxication/100))
+				word = "*BURP*"
+			else if(prob(intoxication/100))
+				word = "*HICCUP*"
+			else if(length(word) > 2 && prob(intoxication/10))
+				var/list/exploded_letters = splittext(word,"")
+				var/min = 1
+				var/max = exploded_letters-1
+				var/choice = rand(min,max)
+				exploded_letters.Swap(choice,choice+1)
+				word = jointext(exploded_letters,"")
+			else if(prob(intoxication/20))
+				vowels.Replace(word,"")
+
+			if(prob(intoxication/20))
+				word = "[word] uhhh..."
+
+			final_text += "[word] "
+
+		text = trim(final_text)
+
+	return ..(text)
+
 /mob/living/advanced/mod_speech(var/text)
 	var/species/S = all_species[species]
 	if(!S)
 		return text
-	return S.mod_speech(src,text)
+	return ..(S.mod_speech(src,text))
 
 /mob/proc/to_chat(var/text,var/chat_type = CHAT_TYPE_INFO)
 
@@ -47,9 +76,6 @@
 	if(!text_to_say)
 		return FALSE
 
-	if(should_sanitize && src.client)
-		text_to_say = police_input(src.client,text_to_say)
-
 	if(client && !check_spam(client,text_to_say))
 		to_chat(span("warning","You are out of breath!"))
 		return FALSE
@@ -59,6 +85,8 @@
 
 	if(!length(text_to_say))
 		return FALSE
+
+	text_to_say = copytext(text_to_say,1,MAX_MESSAGE_LEN)
 
 	var/first_character = copytext(text_to_say,1,2)
 	//var/last_character = copytext(text_to_say,-1,0)
@@ -73,8 +101,6 @@
 		var/final_emote = trim(copytext(text_to_say,2,0))
 		do_emote(final_emote)
 		return TRUE
-
-	text_to_say = mod_speech(text_to_say)
 
 	var/language_to_use = LANGUAGE_BASIC
 	var/frequency_to_use = null
@@ -125,10 +151,13 @@
 	else if(has_suffix(text_to_say,"!"))
 		talk_type_to_use = TEXT_YELL
 
-	text_to_say = trim(text_to_say)
-
 	if(frequency_to_use)
 		talk_type_to_use = TEXT_RADIO
+
+	text_to_say = trim(mod_speech(text_to_say))
+
+	if(should_sanitize && src.client)
+		text_to_say = police_input(src.client,text_to_say)
 
 	talk(src,src,text_to_say,talk_type_to_use,frequency_to_use,language_to_use)
 

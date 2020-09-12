@@ -27,6 +27,8 @@
 
 	var/nutrition = 1000
 	var/hydration = 1000
+	var/intoxication = 0
+	var/last_intoxication_message = 0
 
 	var/first_life = TRUE
 

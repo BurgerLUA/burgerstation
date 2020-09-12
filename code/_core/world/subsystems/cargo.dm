@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(cargo)
 
 /subsystem/cargo/Initialize()
 
+	var/turf/T = locate(1,1,1)
+
 	if(fexists(CARGO_DIR))
 		var/loaded_data = file2text(CARGO_DIR)
 		var/line_count = 0
@@ -22,7 +24,7 @@ SUBSYSTEM_DEF(cargo)
 			if(!P)
 				log_error("Cargo Subsystem: Could not parse line [line_count] of [CARGO_DIR].")
 				continue
-			P = new P
+			P = new P(T)
 			//INITIALIZE(P) //Handled elsewhere
 			//GENERATE(P) //Handled elsewhere
 			P.invisibility = 101

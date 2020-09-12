@@ -140,7 +140,9 @@
 		/obj/hud/button/health/body
 	)
 
-/species/proc/mod_speech(var/mob/M,var/text,var/intensity=50)
+var/regex/vowels = new("\[aeiou\]", "i")
+
+/species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
 
 	if(!accent || !length(accent))
 		return text
