@@ -152,14 +152,17 @@
 	attachment_undermount = new/obj/item/attachment/undermount/burst_adapter(src)
 	INITIALIZE(attachment_undermount)
 	GENERATE(attachment_undermount)
+	FINALIZE(attachment_undermount)
 
 	attachment_sight = new /obj/item/attachment/sight/laser_sight(src)
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
+	FINALIZE(attachment_sight)
 
 	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
 	INITIALIZE(attachment_barrel)
 	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)
 
 	update_attachment_stats()
 	update_sprite()

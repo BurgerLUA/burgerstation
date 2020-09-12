@@ -55,7 +55,7 @@
 				rotation = 90
 			M.set_dir(turn(M.dir,rotation))
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
-		return TRUE
+			return TRUE
 
 	else if(caller.attack_flags & ATTACK_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
 		var/mob/living/L = caller

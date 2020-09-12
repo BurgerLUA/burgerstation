@@ -2,15 +2,17 @@
 	var/desired_premium_amount
 	switch(insurance/INSURANCE_PAYOUT) //How many payouts left?
 		if(0 to 0.5)
-			desired_premium_amount = 0.3
-		if(0.5 to 1)
 			desired_premium_amount = 0.2
-		if(1 to 2)
+		if(0.5 to 1)
 			desired_premium_amount = 0.1
-		if(2 to 3)
+		if(1 to 2)
 			desired_premium_amount = 0.05
-		if(3 to INFINITY)
+		if(2 to 3)
 			desired_premium_amount = 0.03
+		if(3 to 4)
+			desired_premium_amount = 0.02
+		if(4 to INFINITY)
+			desired_premium_amount = 0.01
 	if(desired_premium_amount > insurance_premiums)
 		if(messages) to_chat(span("warning","Your insurance premiums have increased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>..."))
 		insurance_premiums = desired_premium_amount

@@ -71,6 +71,7 @@
 	I.load_item_data_pre(P,object_data)
 	INITIALIZE(I)
 	I.load_item_data_post(P,object_data)
+	FINALIZE(I)
 	I.force_move(loc)
 	I.update_sprite()
 

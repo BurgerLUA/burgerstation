@@ -87,6 +87,7 @@
 		var/mob/living/advanced/npc/beefman/B = new(src.loc)
 		INITIALIZE(B)
 		GENERATE(B)
+		FINALIZE(B)
 		step_rand(B)
 
 	return TRUE

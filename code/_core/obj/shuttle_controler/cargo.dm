@@ -8,8 +8,11 @@
 
 	status_id = "cargo"
 
-	default_waiting_time = 150
-	default_transit_time = 30
+	default_waiting_time = 120
+	default_transit_time = 10
+
+
+/obj/shuttle_controller/cargo/proc/sell_items_in_area()
 
 /obj/shuttle_controller/cargo/transit(var/starting_transit_id,var/ending_transit_id)
 
@@ -17,8 +20,10 @@
 		var/area/A = get_area(src)
 		var/total_value = 0
 		for(var/obj/structure/interactive/crate/C in A.contents)
-			C.open()
-
+			if(istype(C,/obj/structure/interactive/crate/secure))
+				qdel(C)
+			else
+				C.open()
 		for(var/atom/movable/O in A.contents)
 			if(!(isobj(O) || ismob(O)))
 				continue

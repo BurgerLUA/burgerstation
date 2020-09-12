@@ -60,12 +60,14 @@
 		var/obj/item/slime_core/SC = new(src.loc)
 		SC.color = slime_color
 		INITIALIZE(SC)
+		FINALIZE(SC)
 
 	for(var/i=1,i<=stored_slimes-1,i++)
 		var/mob/living/simple/npc/slime/S = new(get_turf(src))
 		S.slime_color = slime_color
 		S.stored_slimes = 1
 		INITIALIZE(S)
+		FINALIZE(S)
 
 		var/xvel = rand(-1,1)
 		var/yvel = rand(-1,1)

@@ -42,9 +42,13 @@
 		var/atom/movable/M = new k(T)
 		INITIALIZE(M)
 		GENERATE(M)
+		FINALIZE(M)
 		SP.add_to_crate(M)
 
 	INITIALIZE(SP)
+	FINALIZE(SP)
+
+
 	return TRUE
 
 /obj/item/supply_remote/drill

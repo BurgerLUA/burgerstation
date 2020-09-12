@@ -51,6 +51,7 @@
 		var/b_type = object_data["chambered_bullet"]
 		var/obj/item/bullet_cartridge/B = new b_type(src)
 		INITIALIZE(B)
+		FINALIZE(B)
 		src.chambered_bullet = B
 
 	if(object_data["stored_bullets"] && length(object_data["stored_bullets"]))
@@ -59,6 +60,7 @@
 			if(b_type)
 				var/obj/item/bullet_cartridge/B = new b_type(src)
 				INITIALIZE(B)
+				FINALIZE(B)
 				src.stored_bullets[i] = B
 
 	return .

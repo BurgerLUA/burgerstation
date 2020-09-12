@@ -29,7 +29,6 @@ var/global/list/all_shuttle_controlers = list()
 	var/transit_end
 
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME
-	var/default_transit_time_no_living = SHUTTLE_DEFAULT_TRANSIT_TIME_NO_LIVING
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME
 
 	anchored = TRUE
@@ -90,13 +89,7 @@ var/global/list/all_shuttle_controlers = list()
 		create_alert(VIEW_RANGE*3,src,last_caller,ALERT_LEVEL_CAUTION)
 
 	var/area/A = get_area(src)
-	if(!desired_transit_time)
-		desired_transit_time = default_transit_time_no_living
-		for(var/mob/living/advanced/P in A.contents)
-			if(P.dead)
-				continue
-			desired_transit_time = default_transit_time
-			break
+	if(!desired_transit_time) desired_transit_time = default_transit_time
 	transit_time = max(10,desired_transit_time)
 	if(A.type == transit_start)
 		transit_target = transit_end

@@ -66,6 +66,7 @@
 			P.color = F.footprint_color
 			P.alpha = F.footprint_alpha
 			INITIALIZE(P)
+			FINALIZE(P)
 		if(length(F.footstep_sounds))
 			play(pick(F.footstep_sounds), T, volume = 50, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch))
 

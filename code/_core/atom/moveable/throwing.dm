@@ -20,6 +20,7 @@
 	P.steps_allowed = steps_allowed
 	P.mouse_opacity = 0
 	INITIALIZE(P)
+	FINALIZE(P)
 	src.force_move(P) //Move it to contents.
 	return P
 

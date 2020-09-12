@@ -42,6 +42,7 @@
 	for(var/reagent_path in cheese_mix)
 		var/reagent_volume = (cheese_mix[reagent_path]/CHEESE_PROCESS_TIME)*total_non_enzyme_volume
 		C.reagents.add_reagent(reagent_path,reagent_volume,original_temperature,FALSE,FALSE)
+	FINALIZE(C)
 
 	T.visible_message("The cheese finishes molding!")
 

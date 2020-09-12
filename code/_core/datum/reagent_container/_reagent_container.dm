@@ -320,6 +320,7 @@
 			CHECK_TICK(75,FPS_SERVER)
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
+			FINALIZE(A)
 			if(!A.reagents)
 				break
 			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current))

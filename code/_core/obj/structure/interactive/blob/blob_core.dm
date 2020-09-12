@@ -21,6 +21,7 @@
 		var/turf/T = get_step(src,d)
 		var/obj/structure/interactive/blob/node/N = new(T,src)
 		INITIALIZE(N)
+		FINALIZE(N)
 		linked_nodes += N
 
 	return ..()
@@ -95,10 +96,12 @@
 				var/obj/structure/interactive/blob/node/B = new(F,src)
 				resources_to_spend -= 5
 				INITIALIZE(B)
+				FINALIZE(B)
 			else
 				var/obj/structure/interactive/blob/wall/B = new(F,src)
 				resources_to_spend -= 1
 				INITIALIZE(B)
+				FINALIZE(B)
 			valid_turfs -= F
 
 	return ..()

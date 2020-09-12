@@ -90,6 +90,7 @@ var/global/list/mob/living/advanced/player/all_players = list()
 	. = ..()
 	click_and_drag_icon	= new(src)
 	INITIALIZE(click_and_drag_icon)
+	FINALIZE(click_and_drag_icon)
 	return .
 
 /mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)

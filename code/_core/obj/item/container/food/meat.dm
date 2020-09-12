@@ -124,6 +124,7 @@
 				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
+				FINALIZE(M)
 				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=SECONDS_TO_DECISECONDS(1))
 			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=SECONDS_TO_DECISECONDS(1))
 
@@ -144,6 +145,7 @@
 				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
+				FINALIZE(M)
 				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=5)
 			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=5)
 			update_sprite()
@@ -172,6 +174,7 @@
 				M.icon_state = "ground"
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
+				FINALIZE(M)
 				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y=pixel_y + rand(-4,4),time=5)
 			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y=pixel_y + rand(-4,4),time=5)
 

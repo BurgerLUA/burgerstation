@@ -600,6 +600,10 @@
 
 /obj/hud/inventory/proc/can_hold_object(var/obj/item/I,var/messages = FALSE)
 
+	if(!I)
+		CRASH_SAFE("can_hold_object() called on a null object!")
+		return FALSE
+
 	if(loc && loc == I)
 		return FALSE
 

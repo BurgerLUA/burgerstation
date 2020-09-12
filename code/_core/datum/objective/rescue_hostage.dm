@@ -30,9 +30,11 @@ var/global/list/possible_hostage_types = list(
 	possible_hostage_types -= L
 	L = new L(get_turf(S))
 	INITIALIZE(L)
+	FINALIZE(L)
 	var/obj/item/handcuffs/H = new(get_turf(L))
 	INITIALIZE(H)
 	GENERATE(H)
+	FINALIZE(H)
 	L.set_handcuffs(TRUE,H)
 	created_hostage = L
 	return TRUE

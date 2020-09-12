@@ -34,6 +34,7 @@
 		pre_spawn(M)
 		INITIALIZE(M)
 		GENERATE(M)
+		FINALIZE(M)
 		post_spawn(M)
 		animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
 	return .

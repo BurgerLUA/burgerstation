@@ -127,6 +127,13 @@
 
 	var/list/block_defense_rating = DEFAULT_BLOCK
 
+
+/obj/item/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	return TRUE
+
+/obj/item/Cross(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+	return TRUE
+
 /obj/item/PostInitialize()
 	. = ..()
 	if(length(polymorphs))
@@ -481,14 +488,6 @@
 		I.update_held_icon(src)
 
 	return TRUE
-
-
-/obj/item/Cross(var/atom/movable/O)
-
-	if(istype(O,/obj/item/))
-		return TRUE
-
-	return ..()
 
 /obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	last_interacted = caller

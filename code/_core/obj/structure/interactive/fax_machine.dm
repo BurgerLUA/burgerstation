@@ -105,7 +105,6 @@
 	)
 
 	var/list/found_data = list()
-
 	if(length(data_to_process))
 		for(var/line in splittext(data_to_process[1],"\n"))
 			var/list/split_line = splittext(line,":")
@@ -116,6 +115,26 @@
 				continue
 			var/desired_key = split_line[1]
 			var/desired_value = trim(copytext(line,length(desired_key)+2,0))
-			found_data[desired_key] = desired_value
+			found_data[desired_key] = trim(desired_value)
+
+	var/real_quantity = found_data["Quantity"] ? clamp(text2num(found_data["Quantity"]),0,10) : 0
+	if(length(found_data) && found_data["Requisitioner's Name"] && found_data["Item ID"] && real_quantity)
+		var/atom/movable/stored_item = SScargo.cargo_id_to_type[found_data["Item ID"]]
+		var/obj/marker/cargo/C = locate() in world
+		var/obj/structure/interactive/crate/secure/cargo/SC = new(get_turf(C))
+		INITIALIZE(SC)
+		FINALIZE(SC)
+		for(var/i=1,i<=real_quantity,i++)
+			var/atom/movable/M = new stored_item.type(SC)
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			SC.add_to_crate(M)
+		SC.close()
+		SC.lock()
+		SC.owner_name = found_data["Requisitioner's Name"]
+		SC.name = "secure cargo crate ([found_data["Requisitioner's Name"]] [found_data["Item ID"]])"
+		SC.credits_required = SC.calculate_value()
+
 
 	return ..()

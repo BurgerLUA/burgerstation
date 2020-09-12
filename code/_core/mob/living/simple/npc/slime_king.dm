@@ -100,6 +100,7 @@
 		S.alpha = rand(50,200)
 		S.slime_color = S.color
 		INITIALIZE(S)
+		FINALIZE(S)
 
 	return .
 

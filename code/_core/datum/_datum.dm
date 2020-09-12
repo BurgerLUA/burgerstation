@@ -4,6 +4,7 @@
 	var/qdeleting = FALSE
 	var/initialized = FALSE
 	var/generated = FALSE
+	var/finalized = FALSE
 	var/qdelete_immune = FALSE
 	var/list/hooks
 
@@ -17,6 +18,9 @@
 	return TRUE
 
 /datum/proc/Generate() //Generate the atom, giving it stuff if needed.
+	return TRUE
+
+/datum/proc/Finalize() //We're good to go.
 	return TRUE
 
 /datum/proc/is_safe_to_delete(var/check_loc = FALSE)

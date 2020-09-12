@@ -75,6 +75,7 @@
 			var/mob/living/simple/npc/goliath/baby/B = new(spawning_turf)
 			INITIALIZE(B)
 			GENERATE(B)
+			FINALIZE(B)
 			tracked_babies += B
 
 	return .

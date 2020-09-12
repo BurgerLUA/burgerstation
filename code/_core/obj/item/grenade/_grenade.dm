@@ -77,10 +77,12 @@
 		var/obj/item/I = k
 		INITIALIZE(I)
 		GENERATE(I)
+		FINALIZE(I)
 
 	if(stored_trigger)
 		INITIALIZE(stored_trigger)
 		GENERATE(stored_trigger)
+		FINALIZE(stored_trigger)
 
 	update_sprite()
 

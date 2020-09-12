@@ -41,6 +41,7 @@
 		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)
+		FINALIZE(L)
 
 	for(var/obj/structure/interactive/computer/console/remote_flight/O in world)
 		if(O.z < Z_LEVEL_MISSION)
@@ -191,6 +192,7 @@
 		var/mob/living/L = pickweight(enemy_types_to_spawn)
 		L = new L(T)
 		INITIALIZE(L)
+		FINALIZE(L)
 		L.ai.set_path(found_path)
 		tracked_enemies += L
 		HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)

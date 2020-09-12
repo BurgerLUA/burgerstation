@@ -84,6 +84,7 @@
 
 	if(initialize)
 		INITIALIZE(O)
+		FINALIZE(O)
 
 	if(is_tail(O))
 		add_overlay_tracked("tail_behind",O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")

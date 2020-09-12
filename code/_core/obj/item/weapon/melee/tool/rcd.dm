@@ -94,6 +94,7 @@
 				var/atom/A = data["object"]
 				A = new A(T)
 				INITIALIZE(A)
+				FINALIZE(A)
 				caller.to_chat("You construct \a [A.name] with \the [src.name].")
 
 		return TRUE

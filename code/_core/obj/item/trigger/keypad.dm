@@ -54,6 +54,7 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 	for(var/v in keypad_buttons)
 		var/obj/hud/button/keypad/K = new v
 		INITIALIZE(K)
+		FINALIZE(K)
 		K.update_owner(A)
 		K.update_sprite()
 

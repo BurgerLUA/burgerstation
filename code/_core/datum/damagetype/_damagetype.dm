@@ -172,7 +172,6 @@
 				new_attack_damage[damage_type] += attack_damage
 				if(debug) LOG_DEBUG("Getting [attack_damage] [damage_type] damage from [attribute].")
 
-
 	for(var/skill in skill_stats)
 		if(!islist(skill_damage[skill]))
 			var/attack_damage = L.get_skill_level(skill) * skill_stats[skill] * 0.01
@@ -235,6 +234,8 @@
 	return swing_time
 
 /damagetype/proc/hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
+	if(!attacker || !victim || !weapon || !hit_object || !hit_object.health || !victim.health)
+		return FALSE
 	return SSdamagetype.add_damage(attacker,victim,weapon,hit_object,blamed,damage_multiplier,src)
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
@@ -256,11 +257,11 @@
 		return FALSE
 
 	if(!hit_object.health)
-		CRASH_SAFE("Could not process damage as there was no hit_object health!")
+		CRASH_SAFE("Could not process damage as there was no hit_object health! (Hitobject: [hit_object])")
 		return FALSE
 
 	if(!victim.health)
-		CRASH_SAFE("Could not process damage as there was no victim health!")
+		CRASH_SAFE("Could not process damage as there was no victim health! (Victim: [victim])")
 		return FALSE
 
 	if(is_living(victim))
@@ -314,7 +315,7 @@
 				continue
 			if(victim_defense == INFINITY)
 				continue
-			victim_defense -= defense_rating_attacker[damage_type]
+			victim_defense -= defense_rating_attacker[damage_type]*0.5
 			if(debug) LOG_DEBUG("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
 		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 		if(debug) LOG_DEBUG("Final [damage_type] damage: [new_damage_amount].")

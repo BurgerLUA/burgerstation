@@ -26,7 +26,7 @@
 	LOADATOM("battery")
 	return .
 
-/obj/item/weapon/ranged/energy/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/weapon/ranged/energy/Finalize()
 
 	. = ..()
 
@@ -83,6 +83,7 @@
 		battery = new battery(src)
 		INITIALIZE(battery)
 		GENERATE(battery)
+		FINALIZE(battery)
 		update_sprite()
 
 	return ..()

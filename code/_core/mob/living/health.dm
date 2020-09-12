@@ -156,6 +156,7 @@
 		var/obj/O = new k(T)
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	for(var/k in target.contents)
 		var/atom/movable/M = k

@@ -32,7 +32,14 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 		if(!D.Generate()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Generate() properly!");				\
 		D.generated = TRUE;
 
-#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D)
+#define FINALIZE(D)																									\
+	if(D.finalized)																									\
+		CRASH_SAFE("ERROR: [D.get_debug_name()] was finalized more than once!");									\
+	else																											\
+		if(!D.Finalize()) CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Finalize() properly!");				\
+		D.finalized = TRUE;
+
+#define CREATE(I,desired_loc) var/datum/D = new I(desired_loc);INITIALIZE(D);GENERATE(D);FINALIZE(D)
 
 #define CREATE_SAFE(I,desired_loc) \
 	var/mob/living/advanced/player/L1234 = locate() in view(VIEW_RANGE,desired_loc);\
@@ -51,6 +58,7 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 				var/obj/item/material/M2 = M
 				M2.material_id = material_id
 			INITIALIZE(M)
+			FINALIZE(M)
 			M.update_sprite()
 			//GENERATE(M)
 			animate(M,pixel_x = rand(-8,8), pixel_y = rand(-8,8), time = 3)

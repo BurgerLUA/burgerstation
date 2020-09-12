@@ -322,6 +322,7 @@ mob/living/advanced/Login()
 			spawning_outfit.pre_add(src,I)
 			INITIALIZE(I)
 			GENERATE(I)
+			FINALIZE(I)
 			if(spawning_outfit.on_add(src,I))
 				added_items += I
 		else

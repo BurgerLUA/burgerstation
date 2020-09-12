@@ -23,6 +23,7 @@ SUBSYSTEM_DEF(living)
 			continue
 		INITIALIZE(L)
 		GENERATE(L)
+		FINALIZE(L)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 

@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(ore)
 				var/obj/structure/interactive/wall_ore_deposit/map/random/WOD = new(S)
 				INITIALIZE(WOD)
 				GENERATE(WOD)
+				FINALIZE(WOD)
 				spawned_ore_chunks++
 
 	log_subsystem(name,"Spawned [spawned_ore_chunks] ore chunks.")

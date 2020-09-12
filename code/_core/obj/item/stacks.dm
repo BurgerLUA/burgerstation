@@ -17,8 +17,6 @@
 		catch()
 			log_error("Cannot write var [i]!")
 
-	//INITIALIZE(N)
-
 	return N
 
 /obj/item/proc/split_stack()

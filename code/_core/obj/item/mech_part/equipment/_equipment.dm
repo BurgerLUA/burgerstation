@@ -43,6 +43,7 @@
 	stored_weapon = new stored_weapon(src)
 	INITIALIZE(stored_weapon)
 	GENERATE(stored_weapon)
+	FINALIZE(stored_weapon)
 	update_sprite()
 	return ..()
 

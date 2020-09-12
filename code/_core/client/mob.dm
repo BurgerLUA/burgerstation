@@ -8,6 +8,7 @@
 
 	var/mob/abstract/observer/ghost/O = new(desired_loc,src)
 	INITIALIZE(O)
+	FINALIZE(O)
 	O.force_move(desired_loc)
 
 /client/proc/make_observer(var/turf/desired_loc)
@@ -19,6 +20,7 @@
 
 	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
+	FINALIZE(O)
 	O.force_move(desired_loc)
 
 /client/proc/control_mob(var/mob/M,var/delete_last_mob = FALSE)
@@ -87,5 +89,6 @@
 
 	var/mob/living/advanced/player/P = new(FALLBACK_TURF,src)
 	INITIALIZE(P)
+	FINALIZE(P)
 
 	return P

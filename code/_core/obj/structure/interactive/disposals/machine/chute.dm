@@ -20,6 +20,7 @@
 		disposals_container.sorting_tag = "disposals"
 		INITIALIZE(disposals_container)
 		GENERATE(disposals_container)
+		FINALIZE(disposals_container)
 		for(var/atom/movable/M in src.contents)
 			M.force_move(disposals_container)
 		stop_thinking(src)

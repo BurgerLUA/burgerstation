@@ -46,6 +46,7 @@
 			return TRUE
 		var/obj/item/bullet_cartridge/B = new M.ammo(src.loc)
 		INITIALIZE(B)
+		FINALIZE(B)
 		B.add_item_count(bullets_to_add - B.item_count_current,TRUE)
 		B.transfer_src_to_magazine(caller,M,location,control,params)
 		caller.to_chat(span("notice","\The [M.name] has been restocked with [bullets_to_add] bullets."))

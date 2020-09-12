@@ -9,5 +9,5 @@
 	if(abs(armor_rating) == INFINITY)
 		return 0
 	if(armor_rating <= 0)
-		return damage_dealt * (1 + (-armor_rating/100))
+		return damage_dealt * (1 + (-armor_rating/200))
 	return clamp((damage_dealt - (armor_rating*0.4)) * max(0.5,1 - (armor_rating/(50+damage_dealt))),damage_dealt*0.1,damage_dealt)

@@ -122,6 +122,7 @@
 	if(health)
 		health = new health(src)
 		INITIALIZE(health)
+		FINALIZE(health)
 
 	update_atom_light()
 

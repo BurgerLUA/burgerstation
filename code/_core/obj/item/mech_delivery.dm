@@ -45,6 +45,7 @@
 			V.generate_name()
 			INITIALIZE(V)
 			GENERATE(V)
+			FINALIZE(V)
 			if(!M.loaded_data["stored_mechs"])
 				M.loaded_data["stored_mechs"] = list()
 			M.loaded_data["stored_mechs"][V.mech_id] = V.save_mech_data()
@@ -52,6 +53,7 @@
 			var/obj/structure/interactive/crate/closet/supply_pod/centcomm/SP = new(caller_turf)
 			SP.add_to_crate(V)
 			INITIALIZE(SP)
+			FINALIZE(SP)
 
 			P.adjust_currency(-1000)
 
@@ -91,6 +93,7 @@
 			var/mob/living/vehicle/mech/modular/V = new(caller_turf)
 			V.owner_ckey = P.ckey
 			INITIALIZE(V)
+			FINALIZE(V)
 
 
 			var/mech_data = existing_mechs[md5_id]
@@ -99,6 +102,7 @@
 			var/obj/structure/interactive/crate/closet/supply_pod/centcomm/SP = new(caller_turf)
 			SP.add_to_crate(V)
 			INITIALIZE(SP)
+			FINALIZE(SP)
 
 			P.adjust_currency(-500)
 

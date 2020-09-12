@@ -49,6 +49,7 @@
 	L.color = R.color
 	INITIALIZE(L)
 	GENERATE(L)
+	FINALIZE(L)
 	caller.to_chat(span("notice","You place \the [L.name]."))
 	R.add_item_count(-2)
 	qdel(src)

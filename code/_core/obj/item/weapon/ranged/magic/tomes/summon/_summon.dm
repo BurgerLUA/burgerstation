@@ -25,6 +25,7 @@
 		L.minion_remove_time = world.time + duration
 	INITIALIZE(summoned_object)
 	GENERATE(summoned_object)
+	FINALIZE(summoned_object)
 	if(summoned_object)
 		summoned_object.Move(get_turf(hit_atom))
 		if(is_living(summoned_object))

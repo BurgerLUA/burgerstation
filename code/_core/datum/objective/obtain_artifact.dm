@@ -35,6 +35,7 @@
 	created_artifact = new /obj/structure/interactive/artifact(get_turf(S))
 	INITIALIZE(created_artifact)
 	GENERATE(created_artifact)
+	FINALIZE(created_artifact)
 	return TRUE
 
 /objective/artifact/check_completion()

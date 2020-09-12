@@ -79,6 +79,7 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/M = new(T)
 		M.dir = mob.dir
 		INITIALIZE(M)
+		FINALIZE(M)
 		M.ai.set_active(TRUE)
 
 /client/verb/generate_map_icon()
@@ -149,11 +150,13 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/nanotrasen/N_NPC = new(N)
 		N_NPC.dir = EAST
 		INITIALIZE(N_NPC)
+		FINALIZE(N_NPC)
 		N_NPC.ai.set_active(TRUE)
 
 		var/mob/living/advanced/npc/syndicate/S_NPC = new(S)
 		S_NPC.dir = WEST
 		INITIALIZE(S_NPC)
+		FINALIZE(S_NPC)
 		S_NPC.ai.set_active(TRUE)
 
 
@@ -224,6 +227,7 @@ client/verb/air_test(var/pressure as num)
 		var/datum/A = valid_objects[1]
 		A = new A(usr.loc)
 		INITIALIZE(A)
+		FINALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
 			GENERATE(O)
@@ -235,6 +239,7 @@ client/verb/air_test(var/pressure as num)
 		var/datum/A = selection
 		A = new A(usr.loc)
 		INITIALIZE(A)
+		FINALIZE(A)
 		if(isobj(A))
 			var/obj/O = A
 			GENERATE(O)
@@ -331,6 +336,7 @@ client/verb/air_test(var/pressure as num)
 		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
+		FINALIZE(ST)
 
 
 /client/verb/create_vote()

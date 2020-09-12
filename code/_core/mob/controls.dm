@@ -29,11 +29,7 @@ mob/proc/on_middle_drop(src_object,over_object,src_location,over_location,src_co
 	return TRUE
 
 mob/proc/on_left_up(object,location,control,params)
-	if(length(examine_butons) && isturf(object))
-		close_turf_contents()
 	return FALSE
 
 mob/proc/on_right_up(object,location,control,params)
-	if(length(examine_butons) && isturf(object))
-		close_turf_contents()
 	return FALSE

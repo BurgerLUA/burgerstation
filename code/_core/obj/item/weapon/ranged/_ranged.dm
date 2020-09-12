@@ -76,6 +76,16 @@
 	update_attachment_stats()
 	return .
 
+/obj/item/weapon/ranged/Finalize()
+
+	. = ..()
+
+	if(!istype(firing_pin))
+		firing_pin = null
+
+	return .
+
+
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
@@ -117,6 +127,7 @@
 		firing_pin = new firing_pin(src)
 		INITIALIZE(firing_pin)
 		GENERATE(firing_pin)
+		FINALIZE(firing_pin)
 	return ..()
 
 /obj/item/weapon/ranged/proc/get_heat_spread()

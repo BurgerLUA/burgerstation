@@ -44,6 +44,7 @@
 			for(var/i=1,i<=v,i++)
 				var/obj/item/bullet_cartridge/B = new k(src)
 				INITIALIZE(B)
+				FINALIZE(B)
 				stored_bullets += B
 
 	return .
@@ -54,6 +55,7 @@
 		for(var/i=1, i <= bullet_count_max, i++)
 			var/obj/item/bullet_cartridge/B = new ammo(src)
 			INITIALIZE(B)
+			FINALIZE(B)
 			stored_bullets += B
 
 		update_sprite()

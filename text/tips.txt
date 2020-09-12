@@ -46,3 +46,5 @@ It is actually possible for two people to hit eachother with a melee attack at t
 Backpacks slow you down when worn or carried. Remember to take only what you need.
 Wearing running shoes gives a bonus to movespeed.
 90% of player deaths are a result of going alone.
+Secure crates do not give any rewards when turned into cargo, regardless of contents. If you can't get them open, how do you expect Central Command to?
+Armor and clothing that give magic, holy, or dark defence give 0.5 armor penetration per 1 defense to attacks grant by the wearer.

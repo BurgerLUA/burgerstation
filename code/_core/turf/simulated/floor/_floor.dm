@@ -112,6 +112,7 @@
 	F.material_id = R.material_id
 	F.color = R.color
 	INITIALIZE(F)
+	FINALIZE(F)
 	caller.to_chat(span("notice","You place \the [F.name]."))
 	R.add_item_count(-2)
 	return TRUE

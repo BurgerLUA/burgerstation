@@ -37,6 +37,7 @@
 			pre_fill_inventory(I)
 			INITIALIZE(I)
 			GENERATE(I)
+			FINALIZE(I)
 			post_fill_inventory(I)
 			add_to_inventory(null,I,FALSE,TRUE)
 

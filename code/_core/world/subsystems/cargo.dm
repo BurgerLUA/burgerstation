@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(cargo)
 	var/list/cargo_id_to_type = list()
 	var/list/catalog_data = list() //What the catalog should look like
 
+	var/list/stored_orders = list()
 
 /subsystem/cargo/Initialize()
 
@@ -17,10 +18,14 @@ SUBSYSTEM_DEF(cargo)
 		var/line_count = 0
 		for(var/line in splittext(loaded_data,"\n"))
 			line_count++
-			var/datum/P = text2path(trim(line))
+			var/atom/P = text2path(trim(line))
 			if(!P)
 				log_error("Cargo Subsystem: Could not parse line [line_count] of [CARGO_DIR].")
 				continue
+			P = new P
+			//INITIALIZE(P) //Handled elsewhere
+			//GENERATE(P) //Handled elsewhere
+			P.invisibility = 101
 			var/md5_hash = copytext(rustg_hash_string(RUSTG_HASH_MD5,line),1,6)
 			cargo_id_to_type[md5_hash] = P
 			sortTim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
@@ -34,9 +39,9 @@ SUBSYSTEM_DEF(cargo)
 	var/list/cached_text = ""
 	for(var/md5 in cargo_id_to_type)
 		var/obj/item/I = cargo_id_to_type[md5]
-		var/actual_name = initial(I.name)
+		var/actual_name = I.name
 		actual_name = replacetextEx(actual_name,"\improper","")
-		var/desired_text = "# [actual_name]\n\n## [initial(I.desc_extended)]\n\n### Order Code: [md5]\n\n### Value: [initial(I.value)*4]\n\n"
+		var/desired_text = "# [actual_name]\n\n## [I.desc_extended]\n\n### Order Code: [md5]\n\n### Value: [I.calculate_value()]\n\n"
 		cached_text += desired_text
 		item_count++
 		if(item_count >= 5)

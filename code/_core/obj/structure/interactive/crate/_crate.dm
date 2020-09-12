@@ -24,6 +24,9 @@
 
 	var/loot/loot
 
+	value = 300
+
+	can_rotate = FALSE
 
 /obj/structure/interactive/crate/on_crush()
 

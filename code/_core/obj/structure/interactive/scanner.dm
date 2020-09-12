@@ -73,3 +73,16 @@
 		return FALSE
 
 	return ..()
+
+
+/obj/structure/interactive/scanner/crate_only
+	name = "\improper crate scanner"
+	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
+	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to only allow secure crates."
+
+/obj/structure/interactive/scanner/crate_only/Cross/(var/atom/movable/M)
+
+	if(!istype(M,/obj/structure/interactive/crate/secure))
+		return FALSE
+
+	return ..()

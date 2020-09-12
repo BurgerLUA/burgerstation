@@ -160,6 +160,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
 		B.is_spent = is_spent
 		INITIALIZE(B)
+		FINALIZE(B)
 		transfer_target.stored_bullets += B
 	if(talk)
 		caller.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
@@ -173,6 +174,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		INITIALIZE(B)
+		FINALIZE(B)
 		W.chambered_bullet += B
 		add_item_count(-1)
 		return TRUE
@@ -181,6 +183,7 @@
 		var/obj/item/bullet_cartridge/B = new src.type(W)
 		B.is_spent = is_spent
 		INITIALIZE(B)
+		FINALIZE(B)
 		var/valid_slot = 0
 		for(var/i=1,i<=length(W.stored_bullets),i++)
 			if(!W.stored_bullets[i])

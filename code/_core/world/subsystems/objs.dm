@@ -27,6 +27,7 @@ SUBSYSTEM_DEF(obj)
 		var/obj/O = k
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	log_subsystem(name,"Early: Initialized and spawned [length(initialize_early)] objects in world.")
 
@@ -34,6 +35,7 @@ SUBSYSTEM_DEF(obj)
 		var/obj/O = k
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	log_subsystem(name,"Normal: Initialized and spawned [length(initialize_normal)] objects in world.")
 
@@ -41,6 +43,7 @@ SUBSYSTEM_DEF(obj)
 		var/obj/O = k
 		INITIALIZE(O)
 		GENERATE(O)
+		FINALIZE(O)
 
 	log_subsystem(name,"Late: Initialized and spawned [length(initialize_late)] objects in world.")
 

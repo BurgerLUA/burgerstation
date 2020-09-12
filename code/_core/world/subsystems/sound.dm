@@ -190,7 +190,7 @@ play('sound',list_of_hearers, turf or vector) to play to that list of hearers at
 		return FALSE
 
 	if(!location_or_list)
-		CRASH_SAFE("Tried playing a sound without a target!")
+		CRASH_SAFE("Tried playing a sound \"[sound_path]\" without a target!")
 		return FALSE
 
 	var/list/hearers = list()

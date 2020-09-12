@@ -30,6 +30,7 @@
 	W.color = S.color
 	INITIALIZE(W)
 	GENERATE(W)
+	FINALIZE(W)
 	caller.to_chat(span("notice","You place \the [W]."))
 	S.add_item_count(-4)
 	return TRUE

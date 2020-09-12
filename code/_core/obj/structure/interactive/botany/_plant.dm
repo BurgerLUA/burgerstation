@@ -100,6 +100,7 @@ var/global/list/obj/structure/interactive/plant/all_plants = list()
 			P.growth_speed = growth_speed
 			INITIALIZE(P)
 			GENERATE(P)
+			FINALIZE(P)
 			for(var/r_id in associated_plant.reagents)
 				var/r_value = associated_plant.reagents[r_id] * potency
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)

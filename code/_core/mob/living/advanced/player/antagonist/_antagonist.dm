@@ -5,6 +5,7 @@
 
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)
+	FINALIZE(src)
 	stop_music_track(client)
 	nutrition *= RAND_PRECISE(0.9,1)
 	hydration *= RAND_PRECISE(0.9,1)

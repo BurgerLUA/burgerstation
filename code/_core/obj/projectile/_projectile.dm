@@ -125,6 +125,7 @@
 		if(desired_color)
 			M.color = desired_color
 		INITIALIZE(M)
+		FINALIZE(M)
 
 	pixel_x_float = pixel_x
 	pixel_y_float = pixel_y

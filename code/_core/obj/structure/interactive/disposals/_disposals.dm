@@ -30,6 +30,7 @@
 		disposals_container = new(src)
 		INITIALIZE(disposals_container)
 		GENERATE(disposals_container)
+		FINALIZE(disposals_container)
 
 	M.force_move(disposals_container)
 	M.glide_size = M.step_size / DECISECONDS_TO_TICKS(1)

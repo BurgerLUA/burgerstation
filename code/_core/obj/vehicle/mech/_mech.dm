@@ -136,12 +136,14 @@
 	M1.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 	INITIALIZE(M1)
 	GENERATE(M1)
+	FINALIZE(M1)
 	src.attach_equipment(null,M1)
 
 	var/obj/item/weapon/ranged/energy/mech/smg/M2 = new(src.loc)
 	M2.firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 	INITIALIZE(M2)
 	GENERATE(M2)
+	FINALIZE(M2)
 	src.attach_equipment(null,M2)
 
 	return .

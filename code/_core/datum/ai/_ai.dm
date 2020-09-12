@@ -639,6 +639,12 @@
 
 /ai/proc/is_enemy(var/atom/A)
 
+	if(istype(A,/mob/living/vehicle/))
+		var/mob/living/vehicle/V = A
+		if(!length(V.passengers))
+			return FALSE
+		A = V.passengers[1]
+
 	if(A == owner)
 		return FALSE
 

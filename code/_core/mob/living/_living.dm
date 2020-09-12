@@ -394,6 +394,7 @@
 		health.armor_base = armor_base
 	if(ai)
 		INITIALIZE(ai)
+		FINALIZE(ai)
 	setup_name()
 	return .
 

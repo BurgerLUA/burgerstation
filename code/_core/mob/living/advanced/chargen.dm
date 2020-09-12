@@ -1,6 +1,7 @@
 /mob/living/advanced/proc/start_chargen()
 
 	INITIALIZE(src)
+	FINALIZE(src)
 	default_appearance()
 	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)

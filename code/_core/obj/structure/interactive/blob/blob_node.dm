@@ -19,6 +19,7 @@
 		if(next_jug <= world.time)
 			linked_blobbernaught = new(get_turf(src),null,1,src)
 			INITIALIZE(linked_blobbernaught)
+			FINALIZE(linked_blobbernaught)
 			return TRUE
 	else if(linked_blobbernaught.dead)
 		linked_blobbernaught = null

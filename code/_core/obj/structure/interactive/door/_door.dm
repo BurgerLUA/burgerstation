@@ -49,6 +49,7 @@ obj/structure/interactive/door
 		S.signal_current = radio_signal
 		INITIALIZE(S)
 		GENERATE(S)
+		FINALIZE(S)
 		door_state = DOOR_STATE_CLOSED
 		locked = TRUE
 

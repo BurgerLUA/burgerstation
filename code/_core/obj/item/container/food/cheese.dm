@@ -39,6 +39,7 @@
 			C.icon_state = "wheel"
 			INITIALIZE(C)
 			reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
+			FINALIZE(C)
 			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 
 		if(is_living(attacker))
@@ -62,6 +63,7 @@
 				C.icon_state = "block"
 				INITIALIZE(C)
 				reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
+				FINALIZE(C)
 				animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 
 			if(is_living(attacker))
@@ -80,6 +82,7 @@
 			C.icon_state = "block"
 			INITIALIZE(C)
 			reagents.transfer_reagents_to(C.reagents,1)
+			FINALIZE(C)
 			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
 			if(is_living(attacker))
 				var/mob/living/L = attacker

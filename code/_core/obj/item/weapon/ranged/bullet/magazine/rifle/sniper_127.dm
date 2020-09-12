@@ -98,9 +98,11 @@
 	attachment_stock = new /obj/item/attachment/stock/sniper_127(src)
 	INITIALIZE(attachment_stock)
 	GENERATE(attachment_stock)
+	FINALIZE(attachment_stock)
 
 	attachment_sight = new /obj/item/attachment/sight/scope/large(src)
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
+	FINALIZE(attachment_sight)
 
 	return ..()

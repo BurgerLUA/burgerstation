@@ -30,6 +30,7 @@ obj/structure/interactive/sheet_maker/proc/make_sheet(var/atom/movable/O)
 		NM.item_count_current = M.item_count_current
 		NM.material_id = M.material_id
 		INITIALIZE(NM)
+		FINALIZE(NM)
 		NM.update_sprite()
 		qdel(M)
 		return TRUE
