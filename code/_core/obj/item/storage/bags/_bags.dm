@@ -228,3 +228,13 @@
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/pill/omnizine(src)
 	return ..()
+
+
+/obj/item/storage/pillbottle/antihol_small
+	name = "antihol bottle"
+	desc = "Contains 10 20u antihol pills."
+
+/obj/item/storage/pillbottle/antihol_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/pill/antihol(src)
+	return ..()

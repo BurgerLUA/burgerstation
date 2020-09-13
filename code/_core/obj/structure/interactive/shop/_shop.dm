@@ -65,6 +65,9 @@
 
 	. = ..()
 
+	stored_item.pixel_x = initial(stored_item.pixel_x)
+	stored_item.pixel_y = initial(stored_item.pixel_y)
+
 	var/image/U = new/image(icon,icon_state)
 	U.appearance = stored_item.appearance
 	U.pixel_x = 2

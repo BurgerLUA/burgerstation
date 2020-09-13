@@ -248,7 +248,9 @@ mob/living/proc/on_life_slow()
 
 /mob/living/proc/handle_intoxication()
 
-	if(intoxication) intoxication = max(0,(intoxication*0.999) - 0.1)
+	if(intoxication)
+		var/intoxication_to_remove = (0.05 + intoxication*0.005)*(LIFE_TICK_SLOW/10)
+		intoxication = max(0,intoxication-intoxication_to_remove)
 
 	switch(intoxication)
 		if(0 to 200)
@@ -271,6 +273,17 @@ mob/living/proc/on_life_slow()
 			if(last_intoxication_message != 4)
 				to_chat(span("danger","You feel gjkpeagheutyhaophghe."))
 				last_intoxication_message = 4
+			health.adjust_tox_loss(0.25*(LIFE_TICK_SLOW/10))
+			queue_health_update = TRUE
+
+	if(intoxication >= 400 && prob(intoxication/100))
+		var/list/possible_status_effects = list(
+			STAGGER,
+			CONFUSED,
+			SLIP
+		)
+		add_status_effect(pick(possible_status_effects),40,40)
+
 
 	return TRUE
 

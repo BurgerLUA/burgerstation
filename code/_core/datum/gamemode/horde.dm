@@ -92,6 +92,8 @@
 	if(!add_objective(/objective/kill_boss))
 		state = GAMEMODE_BREAK
 		SSvote.create_vote(/vote/continue_round)
+	else
+		add_objective(/objective/artifact)
 
 	return ..()
 
@@ -212,11 +214,11 @@
 
 /gamemode/horde/proc/find_horde_target()
 
-	var/picks_remaining = 4
+	var/picks_remaining = 3
 
 	while(picks_remaining > 0)
-		CHECK_TICK(50,FPS_SERVER*10)
 		picks_remaining--
+		CHECK_TICK(50,FPS_SERVER*10)
 		var/turf/chosen_target = get_turf(pick(horde_targets))
 		if(chosen_target.z < Z_LEVEL_MISSION)
 			continue
@@ -230,15 +232,23 @@
 
 /gamemode/horde/proc/find_horde_spawn()
 
-	var/picks_remaining = 4
+	var/picks_remaining = 3
 
 	while(picks_remaining > 0)
-		CHECK_TICK(50,FPS_SERVER*20)
 		picks_remaining--
+		CHECK_TICK(50,FPS_SERVER*20)
 		var/turf/chosen_spawn = pick(all_syndicate_spawns)
 		if(chosen_spawn.z < Z_LEVEL_MISSION) continue
-		var/mob/living/advanced/player/P = locate() in range(VIEW_RANGE + ZOOM_RANGE,chosen_spawn)
-		if(P && !P.dead) continue
+		var/found_player = FALSE
+		for(var/k in all_players)
+			CHECK_TICK(50,FPS_SERVER*20)
+			var/mob/living/advanced/player/P = k
+			if(P && !P.dead) continue
+			if(get_dist(P,chosen_spawn) <= VIEW_RANGE + ZOOM_RANGE)
+				found_player = TRUE
+				break
+		if(found_player)
+			continue
 		var/obj/marker/map_node/N_start = find_closest_node(get_turf(chosen_spawn))
 		if(!N_start)
 			log_error("WARNING: [chosen_spawn.get_debug_name()] didn't have a node to spawn enemies!")

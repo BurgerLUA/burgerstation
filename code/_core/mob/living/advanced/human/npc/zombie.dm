@@ -9,7 +9,7 @@
 	health = /health/mob/living/advanced/zombie/
 	health_base = 300
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	var/next_talk = 0
 

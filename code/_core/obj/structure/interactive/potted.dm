@@ -6,10 +6,9 @@ obj/structure/interactive/potted_plant
 
 	bullet_block_chance = 25
 
-	plane = PLANE_WALL_ATTACHMENTS
-
 	pixel_y = 8
 
+	plane = PLANE_SCENERY
 
 obj/structure/interactive/potted_plant/nanotrasen
 	icon_state = "nt_1"

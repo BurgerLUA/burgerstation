@@ -224,7 +224,28 @@
 			if(A.labeled_organs[O.id])
 				hit_object = A.labeled_organs[O.id]
 
-	if(!attacker || !victim || !weapon || !hit_object || !hit_object.health || !victim.health)
+	if(!is_valid(attacker))
+		CRASH_SAFE("Could not swing as there was no attacker!")
+		return FALSE
+
+	if(!is_valid(victim))
+		CRASH_SAFE("Could not swing as there was no victim!")
+		return FALSE
+
+	if(!is_valid(weapon))
+		CRASH_SAFE("Could not swing as there was no weapon!")
+		return FALSE
+
+	if(!is_valid(hit_object))
+		CRASH_SAFE("Could not swing as there was no hit_object!")
+		return FALSE
+
+	if(!is_valid(hit_object.health))
+		CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
+		return FALSE
+
+	if(!is_valid(victim.health))
+		CRASH_SAFE("Could not swing as there was no victim health! (Victim: [victim])")
 		return FALSE
 
 	var/swing_time = do_attack_animation(attacker,victim,weapon,hit_object)
@@ -240,27 +261,27 @@
 
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
-	if(!attacker)
+	if(!is_valid(attacker))
 		CRASH_SAFE("Could not process damage as there was no attacker!")
 		return FALSE
 
-	if(!victim)
+	if(!is_valid(victim))
 		CRASH_SAFE("Could not process damage as there was no victim!")
 		return FALSE
 
-	if(!weapon)
+	if(!is_valid(weapon))
 		CRASH_SAFE("Could not process damage as there was no weapon!")
 		return FALSE
 
-	if(!hit_object)
+	if(!is_valid(hit_object))
 		CRASH_SAFE("Could not process damage as there was no hit_object!")
 		return FALSE
 
-	if(!hit_object.health)
+	if(!is_valid(hit_object.health))
 		CRASH_SAFE("Could not process damage as there was no hit_object health! (Hitobject: [hit_object])")
 		return FALSE
 
-	if(!victim.health)
+	if(!is_valid(victim.health))
 		CRASH_SAFE("Could not process damage as there was no victim health! (Victim: [victim])")
 		return FALSE
 

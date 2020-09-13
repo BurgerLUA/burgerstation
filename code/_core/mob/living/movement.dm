@@ -103,9 +103,6 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAGGER,STUN))
 		return FALSE
 
-	if(has_status_effect(CONFUSED))
-		move_dir = pick(DIRECTIONS_ALL)
-
 	if(move_dir)
 		if(buckled_object && !buckled_object.unbuckle(src))
 			return FALSE
@@ -117,6 +114,9 @@
 		if(get_status_effect_magnitude(SLEEP) == -1)
 			remove_status_effect(SLEEP)
 			return FALSE
+
+		if(has_status_effect(CONFUSED))
+			move_dir = turn(move_dir,180)
 
 	. = ..()
 
@@ -145,6 +145,10 @@
 
 	if(has_status_effect(ADRENALINE))
 		. *= 0.9
+
+	if(intoxication)
+		. += intoxication*0.003
+
 
 	return .
 

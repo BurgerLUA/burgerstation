@@ -162,7 +162,7 @@
 	if(!src.health)
 		return FALSE
 
-	if(!BYPASS_AREA_NO_DAMAGE && attacker && is_valid(attacker))
+	if(!BYPASS_AREA_NO_DAMAGE)
 
 		var/area/A1 = get_area(attacker)
 		var/area/A2 = get_area(src)

@@ -489,3 +489,46 @@
 		owner.health.adjust_mana(.*10)
 
 	return .
+
+
+/reagent/medicine/antihol
+	name = "Antihol"
+	desc = "Purges alcohol from your system quickly."
+	desc_extended = "Works just as good when consumed."
+
+	color = "#999999"
+
+	flavor = "bitter grass"
+
+	metabolism_blood = METABOLISM_BLOOD * 5
+	metabolism_stomach = METABOLISM_BLOOD * 5
+
+	value = 5
+
+/reagent/medicine/antihol/on_metabolize_blood(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		L.intoxication = max(0,L.intoxication - .*10)
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(istype(R,/reagent/nutrition/ethanol))
+				container.remove_reagent(reagent_id,.*3)
+
+	return .
+
+/reagent/medicine/antihol/on_metabolize_stomach(var/atom/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+	if(owner && is_living(owner))
+		var/mob/living/L = owner
+		L.intoxication = max(0,L.intoxication - .*10)
+		for(var/reagent_id in container.stored_reagents)
+			var/reagent/R = REAGENT(reagent_id)
+			if(istype(R,/reagent/nutrition/ethanol))
+				container.remove_reagent(reagent_id,.*3)
+
+	return .

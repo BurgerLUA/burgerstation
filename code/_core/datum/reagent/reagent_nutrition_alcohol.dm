@@ -17,7 +17,7 @@
 /reagent/nutrition/ethanol/New(var/desired_loc)
 	. = ..()
 
-	value += power*0.25
+	value += power*0.02
 
 	return .
 

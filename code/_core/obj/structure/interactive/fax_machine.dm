@@ -132,8 +132,8 @@
 			SC.add_to_crate(M)
 		SC.close()
 		SC.lock()
-		SC.owner_name = found_data["Requisitioner's Name"]
-		SC.name = "secure cargo crate ([found_data["Requisitioner's Name"]] [found_data["Item ID"]])"
+		SC.owner_name = "[found_data["Requisitioner's Name"]]"
+		SC.name = "secure cargo crate ([SC.owner_name] [found_data["Item ID"]])"
 		SC.credits_required = SC.calculate_value()
 
 

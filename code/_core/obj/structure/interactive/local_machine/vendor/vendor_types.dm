@@ -153,10 +153,11 @@
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/syringe/epinephrine,
-		/obj/item/storage/pillbottle/iron_small,
+		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,
-		/obj/item/storage/pillbottle/bicaridine_small
+		/obj/item/storage/pillbottle/iron_small,
+		/obj/item/storage/pillbottle/antihol_small
 	)
 
 /obj/structure/interactive/vending/medical/chemistry

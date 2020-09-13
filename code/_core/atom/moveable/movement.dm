@@ -154,7 +154,6 @@
 		var/atom/movable/M = k
 		if(M == src)
 			continue
-		CHECK_TICK(100,FPS_SERVER)
 		if(!M.Uncross(src,NewLoc,OldLoc)) //Placing bump here is a bad idea. Easy way to cause infinite loops.
 			return FALSE
 
@@ -163,7 +162,6 @@
 		var/atom/movable/M = k
 		if(M == src)
 			continue
-		CHECK_TICK(100,FPS_SERVER)
 		if(!M.Cross(src,NewLoc,OldLoc) && !Bump(M,real_dir))
 			return FALSE
 

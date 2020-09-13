@@ -355,6 +355,9 @@
 
 	damage_type = /damagetype/unarmed/bite/zombie
 
+/obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim,var/atom/target)
+	return damage_type
+
 /obj/item/organ/hand/zombie/left
 	name = "left zombie hand"
 	id = BODY_HAND_LEFT

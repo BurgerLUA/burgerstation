@@ -22,29 +22,29 @@
 	initial_reagent = /reagent/nutrition/ethanol/beer
 
 /obj/item/container/beaker/alcohol/ale
-	name = "Ale"
+	name = "Urist's Ale"
 	icon_state = "ale"
 	reagents = /reagent_container/beaker
 	initial_reagent = /reagent/nutrition/ethanol/ale
 
 /obj/item/container/beaker/alcohol/cider
-	name = "Cider"
+	name = "Toolbox Hard Cider"
 	icon_state = "cider"
 	reagents = /reagent_container/beaker
 	initial_reagent = /reagent/nutrition/ethanol/cider
 
 /obj/item/container/beaker/alcohol/rum
-	name = "Rum"
+	name = "Captain Pete's Spiced Rum"
 	icon_state = "rum"
 	initial_reagent = /reagent/nutrition/ethanol/rum
 
 /obj/item/container/beaker/alcohol/whiskey
-	name = "Whiskey"
+	name = "Uncle Git's Special Reserve Whiskey"
 	icon_state = "whiskey"
 	initial_reagent = /reagent/nutrition/ethanol/whiskey
 
 /obj/item/container/beaker/alcohol/vodka
-	name = "Vodka"
+	name = "Vladimr Vodka"
 	icon_state = "vodka"
 	initial_reagent = /reagent/nutrition/ethanol/vodka
 
@@ -54,17 +54,17 @@
 	initial_reagent = /reagent/nutrition/ethanol/vodka/premium
 
 /obj/item/container/beaker/alcohol/gin
-	name = "Gin"
+	name = "Griffeater's Gin"
 	icon_state = "gin"
 	initial_reagent = /reagent/nutrition/ethanol/gin
 
 /obj/item/container/beaker/alcohol/brandy
-	name = "Brandy"
+	name = "Woody & Andy's Brandy"
 	icon_state = "brandy"
 	initial_reagent = /reagent/nutrition/ethanol/brandy
 
 /obj/item/container/beaker/alcohol/schnapps/gold
-	name = "Gold Schnapps"
+	name = "Gold Sparkle Schnapps"
 	icon_state = "schnapps_gold"
 	initial_reagent = /reagent/nutrition/ethanol/schnapps/gold
 
@@ -74,27 +74,27 @@
 	initial_reagent = /reagent/nutrition/ethanol/nothing
 
 /obj/item/container/beaker/alcohol/coffee_liqueur
-	name = "Coffee Liqueur"
+	name = "Robusto Coffee Liqueur"
 	icon_state = "coffee_liqueur"
 	initial_reagent = /reagent/nutrition/ethanol/coffee_liqueur
 
 /obj/item/container/beaker/alcohol/tequila
-	name = "Tequila"
+	name = "Spaceworm Tequila"
 	icon_state = "tequila"
 	initial_reagent = /reagent/nutrition/ethanol/tequila
 
 /obj/item/container/beaker/alcohol/tequila/premium
-	name = "Premium Tequila"
+	name = "Star Premium Tequila"
 	icon_state = "tequila_premium"
 	initial_reagent = /reagent/nutrition/ethanol/tequila/premium
 
 /obj/item/container/beaker/alcohol/wine
-	name = "Red Wine"
+	name = "Doublebeard's Red Wine"
 	icon_state = "wine"
 	initial_reagent = /reagent/nutrition/ethanol/wine
 
 /obj/item/container/beaker/alcohol/wine/vermouth
-	name = "Vermouth"
+	name = "Bernie Sander's Vermouth"
 	icon_state = "vermouth"
 	initial_reagent = /reagent/nutrition/ethanol/wine/vermouth
 
@@ -113,12 +113,24 @@
 	icon_state = "absinthe"
 	initial_reagent = /reagent/nutrition/ethanol/absinthe
 
+/obj/item/container/beaker/alcohol/absinthe/New(var/desired_loc)
+
+	var/list/possible_names = list(
+		"\[CENSORED]-Strong Absinthe",
+		"Extra-Strong Absinthe",
+		"EXTREMELY ROBUST Absinthe"
+	)
+
+	name = pick(possible_names)
+
+	return ..()
+
 /obj/item/container/beaker/alcohol/absinthe/premium
-	name = "Premium Absinthe"
+	name = "Premium Yellowliver Absinthe"
 	icon_state = "absinthepremium"
 	initial_reagent = /reagent/nutrition/ethanol/absinthe/premium
 
 /obj/item/container/beaker/alcohol/grappa
-	name = "Grappa"
+	name = "Grandpa's Grappa"
 	icon_state = "grappa"
 	initial_reagent = /reagent/nutrition/ethanol/grappa
