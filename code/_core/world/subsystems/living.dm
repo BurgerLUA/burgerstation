@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(living)
 	tick_usage_max = 80
 	cpu_usage_max = 80
 
+	use_time_dialation = FALSE
+
 /subsystem/living/Initialize()
 
 	if(!ENABLE_MOB)

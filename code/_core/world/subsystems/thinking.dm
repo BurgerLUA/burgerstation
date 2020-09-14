@@ -5,8 +5,8 @@ SUBSYSTEM_DEF(thinking)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	var/list/all_thinkers = list() //associative list
 
-	cpu_usage_max = 75
-	tick_usage_max = 75
+	cpu_usage_max = 100
+	tick_usage_max = 100
 
 /subsystem/thinking/on_life()
 	for(var/k in all_thinkers)

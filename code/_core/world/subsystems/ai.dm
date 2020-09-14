@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(ai)
 
 	var/turf/list/stuck_turfs = list() //List of turfs that the AI keeps getting stuck on.
 
+	use_time_dialation = FALSE
+
 /subsystem/ai/on_life()
 
 	for(var/k in active_ai)

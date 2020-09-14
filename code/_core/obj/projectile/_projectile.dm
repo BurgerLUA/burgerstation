@@ -238,7 +238,7 @@
 		if(!start_time)
 			transform = M
 		else
-			animate(src, transform = M, time = TICKS_TO_DECISECONDS(tick_rate))
+			animate(src, transform = M, time = CEILING(TICKS_TO_DECISECONDS(tick_rate),1))
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 

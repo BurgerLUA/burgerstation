@@ -48,6 +48,27 @@
 	var/desired_light_color = "#FFFFFF" //Color of the light.
 	var/desired_light_angle = LIGHT_OMNI //Angle of the light.
 
+
+
+	var/light_sprite_range = 0
+	var/light_sprite_alpha = 0
+
+/atom/proc/set_light_sprite(var/desired_range,var/desired_alpha)
+
+	var/update_overlays = FALSE
+
+	if(isnum(desired_range))
+		light_sprite_range = desired_range
+		update_overlays = TRUE
+
+	if(isnum(desired_alpha))
+		light_sprite_alpha = desired_alpha
+		update_overlays = TRUE
+
+	if(update_overlays)
+		update_sprite()
+
+
 /atom/proc/get_consume_verb()
 	return "eat"
 

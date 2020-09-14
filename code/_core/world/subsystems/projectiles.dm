@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(projectile)
 	cpu_usage_max = 95
 	tick_usage_max = 95
 
+	use_time_dialation = FALSE
+
 /subsystem/projectile/on_life()
 
 	for(var/k in all_projectiles)

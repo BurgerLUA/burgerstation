@@ -21,6 +21,8 @@
 	var/last_run_duration = 0
 	var/total_run_duration = 0
 
+	var/use_time_dialation = TRUE
+
 /subsystem/New(var/desired_loc)
 	tick_rate = FLOOR(tick_rate,1)
 	return ..()

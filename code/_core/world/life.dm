@@ -1,3 +1,5 @@
+var/global/time_dialation = 0
+
 /world/proc/life()
 
 	LOG_SERVER("STARTING WORLD.")
@@ -48,6 +50,8 @@
 						SS.overtime_count++
 						sleep(TICK_LAG)
 						continue
+				if(time_dialation && SS.use_time_dialation)
+					sleep(time_dialation)
 				try
 					SS.overtime_count = 0
 					var/start_time = world.time
