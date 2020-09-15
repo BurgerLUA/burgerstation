@@ -6,7 +6,7 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	anchored = 1
+	anchored = TRUE
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 

@@ -130,12 +130,12 @@ client/verb/air_test(var/pressure as num)
 	var/list/turf/possible_NT = list()
 	var/list/turf/possible_SY = list()
 
-	for(var/turf/simulated/floor/tile/F in range(src.view*0.4,N_T))
+	for(var/turf/simulated/floor/F in range(src.view*0.4,N_T))
 		if(F.is_occupied())
 			continue
 		possible_NT += F
 
-	for(var/turf/simulated/floor/tile/F in range(src.view*0.4,S_T))
+	for(var/turf/simulated/floor/F in range(src.view*0.4,S_T))
 		if(F.is_occupied())
 			continue
 		possible_SY += F
@@ -329,14 +329,15 @@ client/verb/air_test(var/pressure as num)
 
 	var/list/valid_turfs = list()
 
-	for(var/turf/simulated/S in view(VIEW_RANGE + ZOOM_RANGE,mob))
+	for(var/turf/simulated/floor/S in view(VIEW_RANGE + ZOOM_RANGE,mob))
 		valid_turfs += S
 
 	for(var/i=1,i<=60,i++)
-		var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
-		INITIALIZE(ST)
-		GENERATE(ST)
-		FINALIZE(ST)
+		spawn
+			var/mob/living/advanced/npc/syndicate/stress_test/ST = new(pick(valid_turfs))
+			INITIALIZE(ST)
+			GENERATE(ST)
+			FINALIZE(ST)
 
 
 /client/verb/create_vote()

@@ -66,10 +66,4 @@
 
 /mob/living/advanced/npc/syndicate/stress_test
 	name = "stress test"
-	iff_tag = "Syndicate"
-	loyalty_tag = null
-
-/mob/living/advanced/npc/syndicate/stress_test/PostInitialize()
-	. = ..()
-	ai.aggression = 3
-	return .
+	ai = /ai/advanced/syndicate/stress_test

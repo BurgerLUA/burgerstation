@@ -231,6 +231,9 @@ mob/living/proc/on_life_slow()
 	if(dead)
 		return FALSE
 
+	if(ai && !ai.active)
+		return FALSE
+
 	blood_volume = clamp(blood_volume + 1,0,blood_volume_max)
 
 	handle_regen()

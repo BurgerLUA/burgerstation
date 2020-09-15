@@ -156,3 +156,16 @@
 	return TRUE
 
 
+/atom/movable/proc/set_anchored(var/desired_anchored=TRUE)
+
+	if(anchored == desired_anchored)
+		return FALSE
+
+	anchored = desired_anchored
+
+	if(!anchored)
+		force_move(loc)
+
+	return TRUE
+
+

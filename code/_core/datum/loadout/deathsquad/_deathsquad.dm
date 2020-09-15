@@ -1,12 +1,11 @@
 /loadout/deathsquad
 	spawning_items = list(
 		/obj/item/clothing/uniform/stealth,
+		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/glasses/sun,
-		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/overwear/armor/carbon/deathsquad,
 		/obj/item/clothing/head/helmet/carbon/deathsquad
 	)

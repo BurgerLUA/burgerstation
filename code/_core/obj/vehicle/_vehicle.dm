@@ -9,7 +9,7 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	opacity = 0
-	anchored = 0
+	anchored = FALSE
 
 	layer = LAYER_MOB_BELOW
 

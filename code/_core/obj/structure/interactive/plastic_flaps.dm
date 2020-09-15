@@ -5,7 +5,7 @@
 	anchored = TRUE
 	icon = 'icons/obj/structure/plastic_flaps.dmi'
 	icon_state = "plastic_flaps"
-	plane = PLANE_WALL
+	plane = PLANE_SCENERY
 
 	bullet_block_chance = 25
 
