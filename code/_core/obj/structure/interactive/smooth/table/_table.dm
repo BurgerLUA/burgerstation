@@ -41,7 +41,7 @@
 	return ..()
 
 
-/obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object)
+/obj/structure/smooth/table/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if((is_item(object) || is_structure(object)) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
 		var/obj/O = object

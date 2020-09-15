@@ -88,10 +88,10 @@
 		//animate(src,alpha=100,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE
 
-/obj/hud/button/slot/dropped_on_by_object(var/mob/caller,var/atom/object)
+/obj/hud/button/slot/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(stored_atom)
-		stored_atom.dropped_on_by_object(caller,object)
+		stored_atom.dropped_on_by_object(caller,object,location,control,params)
 		return TRUE
 
 	return clicked_on_by_object(caller,object)

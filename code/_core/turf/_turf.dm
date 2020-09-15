@@ -160,7 +160,7 @@
 	return ..()
 
 /*
-/turf/dropped_on_by_object(var/mob/caller,var/atom/object)
+/turf/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_structure(object) && get_dist(src,object) <= 1 && get_dist(caller,object) <= 1)
 		var/obj/structure/S = object

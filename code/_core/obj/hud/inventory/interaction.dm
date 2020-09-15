@@ -153,20 +153,6 @@
 
 	return FALSE
 
-/obj/hud/inventory/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
-
-	if(is_inventory(object))
-		var/obj/hud/inventory/object_as_inventory = object
-		var/obj/item/I = src.get_top_object()
-		if(I && I.can_be_dragged(caller) && get_dist(src,object) <= 1)
-			object_as_inventory.add_object(I)
-		return TRUE
-
-	return ..()
-
-
-
-
 /obj/hud/inventory/proc/wield_object(var/mob/caller,var/obj/item/item_to_wield)
 
 	if(!is_item(item_to_wield) || !item_to_wield.can_wield)
@@ -191,6 +177,8 @@
 
 /obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
 
+	object = object.defer_click_on_object(location,control,params)
+
 	if(is_item(object) && get_dist(caller,object) <= 1) //Put the itme in the inventory slot.
 		var/obj/item/object_as_item = object
 		var/atom/defer_self = src.defer_click_on_object(location,control,params)
@@ -202,6 +190,21 @@
 			return TRUE
 
 	return ..()
+
+/*
+/obj/hud/inventory/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+
+	if(is_inventory(object))
+		var/obj/hud/inventory/object_as_inventory = object
+		var/obj/item/I = src.get_top_object()
+		if(I && I.can_be_dragged(caller) && get_dist(src,object) <= 1)
+			object_as_inventory.add_object(I)
+		return TRUE
+
+	return ..()
+*/
+
+
 
 /obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc

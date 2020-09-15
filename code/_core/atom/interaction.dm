@@ -34,7 +34,7 @@
 
 	var/atom/defer_self = src.defer_click_on_object(location,control,params)
 
-	if(src != defer_self && defer_self.clicked_on_by_object(caller,object))
+	if(src != defer_self && defer_self.clicked_on_by_object(caller,object,location,control,params))
 		return TRUE
 
 	return FALSE
@@ -46,19 +46,16 @@
 	if(src != defer_self && defer_self.drop_on_object(caller,object,location,control,params))
 		return TRUE
 
-	if(src != defer_self && object && object.dropped_on_by_object(caller,defer_self))
-		return TRUE
-
-	if(object && object.dropped_on_by_object(caller,src))
+	if(object.dropped_on_by_object(caller,src,location,control,params))
 		return TRUE
 
 	return FALSE
 
-/atom/proc/dropped_on_by_object(var/mob/caller,var/atom/object)
+/atom/proc/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	var/atom/defer_self = src.defer_click_on_object(null,null,null) //TODO: FIX
+	var/atom/defer_self = src.defer_click_on_object(location,control,params)
 
-	if(src != defer_self && defer_self.dropped_on_by_object(caller,object))
+	if(src != defer_self && defer_self.dropped_on_by_object(caller,object,location,control,params))
 		return TRUE
 
 	return FALSE
