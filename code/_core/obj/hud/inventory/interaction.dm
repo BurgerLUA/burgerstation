@@ -78,8 +78,8 @@
 			vel_x *= 1/highest
 			vel_y *= 1/highest
 
-			vel_x *= 12
-			vel_y *= 12
+			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
+			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
 
 			I.drop_item(get_turf(caller))
 			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)

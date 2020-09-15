@@ -11,11 +11,7 @@
 	)
 
 	var/list/random_primary = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/assault/equipped,
 		/obj/item/weapon/ranged/energy/rifle/xray/deathsquad,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
-		/obj/item/weapon/ranged/bullet/magazine/shotgun/bull
 	)
 
 	var/list/random_secondary = list(
@@ -40,12 +36,8 @@
 	. += chosen_secondary
 	. += chosen_melee
 
-	if(SSweapons.weapon_to_magazine[chosen_primary])
-		for(var/i=1,i<=4,i++)
-			. += SSweapons.weapon_to_magazine[chosen_primary]
-
 	if(SSweapons.weapon_to_magazine[chosen_secondary])
-		for(var/i=1,i<=2,i++)
+		for(var/i=1,i<=4,i++)
 			. += SSweapons.weapon_to_magazine[chosen_secondary]
 
 	return .

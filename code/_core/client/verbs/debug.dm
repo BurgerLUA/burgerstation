@@ -227,10 +227,8 @@ client/verb/air_test(var/pressure as num)
 		var/datum/A = valid_objects[1]
 		A = new A(usr.loc)
 		INITIALIZE(A)
+		GENERATE(A)
 		FINALIZE(A)
-		if(isobj(A))
-			var/obj/O = A
-			GENERATE(O)
 		return TRUE
 
 	var/selection = input("Spawn object.","Spawn object") as null|anything in valid_objects

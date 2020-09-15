@@ -134,30 +134,32 @@
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad/
 	name = "AER13c-D X-Ray Rifle"
-	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special phoron battery that charges over time."
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special fusion battery that charges over time."
+
+	projectile_speed = 30
+	shoot_delay = 5
+
+	view_punch = 30
 
 	polymorphs = list(
-		"base" = COLOR_WHITE,
-		"barrel" = COLOR_PURPLE
+		"base" = "#EEEEEE",
+		"barrel" = "#FF00DC"
 	)
 
-	charge_cost = 3000
+	charge_cost = CELL_SIZE_BASIC / 12
 
-	value = 4000
+	battery = /obj/item/powercell/recharging
+
+	value = 2000
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad/Generate()
 
 	. = ..()
 
-	attachment_undermount = new/obj/item/attachment/undermount/burst_adapter(src)
+	attachment_undermount = new/obj/item/attachment/undermount/angled_grip(src)
 	INITIALIZE(attachment_undermount)
 	GENERATE(attachment_undermount)
 	FINALIZE(attachment_undermount)
-
-	attachment_sight = new /obj/item/attachment/sight/laser_sight(src)
-	INITIALIZE(attachment_sight)
-	GENERATE(attachment_sight)
-	FINALIZE(attachment_sight)
 
 	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
 	INITIALIZE(attachment_barrel)

@@ -101,3 +101,25 @@
 	size = SIZE_4
 
 	value = 30
+
+
+/obj/item/powercell/recharging
+	name = "fusion power cell"
+	desc = "Do not ingest."
+	desc_extended = "A power cell for use in recharging energy weaponry. This one has a rating of 10000 megawatts, and self-charges"
+	icon = 'icons/obj/item/cells.dmi'
+	icon_state = "cell_recharging"
+
+	charge_max = CELL_SIZE_BASIC
+
+	size = SIZE_2
+
+	value = 1000
+
+/obj/item/powercell/recharging/PostInitialize()
+	start_thinking(src)
+	return ..()
+
+/obj/item/powercell/recharging/think()
+	charge_current = min(charge_current + charge_max*0.005,charge_max)
+	return ..()

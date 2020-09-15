@@ -26,8 +26,9 @@
 
 	size = SIZE_3
 
-
 	value = 2000
+
+	battery = /obj/item/powercell/recharging
 
 /obj/item/weapon/ranged/energy/captain/update_overlays()
 	. = ..()

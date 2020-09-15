@@ -92,7 +92,44 @@
 /obj/item/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	return clicked_on_by_object(caller,object,location,control,params)
 
+/obj/item/proc/can_empty_contents()
+
+
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+
+	if(get_dist(src,object) > 1)
+		if(is_living(caller))
+			var/mob/living/L = caller
+			object = object.defer_click_on_object(location,control,params)
+			if(!is_clothing(src))
+				caller.face_atom(object)
+			if(src.additional_clothing_parent)
+				caller.to_chat(span("warning","You can't throw this!"))
+				return TRUE
+			var/vel_x = object.x - caller.x
+			var/vel_y = object.y - caller.y
+			var/highest = max(abs(vel_x),abs(vel_y))
+
+			if(!highest)
+				src.drop_item(get_step(caller,caller.dir))
+				return TRUE
+
+			vel_x *= 1/highest
+			vel_y *= 1/highest
+
+			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
+			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
+
+			src.drop_item(get_turf(caller))
+			src.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+		return TRUE
+	else if(isturf(object) || istype(object,/obj/structure/smooth/table))
+		var/turf/T = get_turf(object)
+		if(is_container)
+			caller.to_chat(span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
+		else
+			src.drop_item(T)
+		return TRUE
 
 	if(!can_be_dragged(caller))
 		return TRUE
